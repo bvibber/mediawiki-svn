@@ -130,16 +130,17 @@ mvSequencer.prototype = {
 		'cliplib':{
 			'd':0,	
 			'html': getMsg('loading_txt'),			
-			'js':function( this_seq ){				
+			'js':function( this_seq ){
+				
 				//load the search interface with sequence tool targets 		
-				mvJsLoader.doLoad({'remoteSearchDriver':'libRemoteMediaSearch/mv_remote_media_search.js'}, function(){					
+				/*mvJsLoader.doLoad({'remoteSearchDriver':'libRemoteMediaSearch/mv_remote_media_search.js'}, function(){					
 					this_seq.mySearch = new remoteSearchDriver({
 						'profile':'sequence',
 						'p_seq':this_seq,
 						'target_id':'cliplib_ic',										
 						'instance_name': this.instance_name + '.mySearch'		
 					 });
-				});
+				});*/
 			}
 		},
 		'transition':{
@@ -181,7 +182,7 @@ mvSequencer.prototype = {
 	key_ctrl_down:false,
 	
 	init:function( initObj ){	
-		//set up pointer to this_seq for current scope: 
+		//set up pointer to this_seq for current scope:		 
 		var this_seq = this;
 		//set the default values:
 		for(var i in sequencerDefaultValues){
@@ -252,8 +253,7 @@ mvSequencer.prototype = {
 		}			
 		$j('#'+this.video_container_id).html('<playlist ' + src_attr +
 			' style="width:' + this.video_width + 'px;height:' + this.video_height + 'px;" '+
-			' sequencer="true" id="' + this.plObj_id + '" />');
-		
+			' sequencer="true" id="' + this.plObj_id + '" />');		
 		rewrite_by_id( this.plObj_id );	
 		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);		
 	},
@@ -431,6 +431,7 @@ mvSequencer.prototype = {
 	},
 	plReadyInit:function(){
 		var this_seq = this;
+		//debugger;
 		js_log('plReadyInit');		
 		js_log( this.plObj );
 		//give the playlist a pointer to its parent seq: 
@@ -441,23 +442,27 @@ mvSequencer.prototype = {
 			$j('#'+this.plObj_id).html('empty playlist');
 		}	
 		
-		//propogate the edit tokens 
+		//propagate the edit tokens 
 		//if on an edit page just grab from the form:		
 		this.sequenceEditToken = $j('input[@wpEditToken]').val();
 		if(typeof this.sequenceEditToken == 'undefined'){			
 			var reqObj = {'action':'query','prop':'info','intoken':'edit','titles': this_seq.plObj.mTitle};
 			var api_url = this.plObj.interface_url.replace(/index\.php/, 'api.php'); 
 			do_api_req( reqObj, api_url,function(data){
-				if(data.page[0]['edittoken'])
-					this_seq.sequenceEditToken = data.page[0]['edittoken'];
+				for(var i in data.query.pages){ 
+					if(data.query.pages[i]['edittoken'])
+						this_seq.sequenceEditToken = data.query.pages[i]['edittoken'];
+				}
 				this_seq.updateSeqSaveButtons();
 			});
 			reqObj['titles']=this_seq.plObj.mTalk;
-			do_api_req(reqObj, api_url, function(){
-				if(data.page[0]['edittoken'])
-					this_seq.clipboardEditToken = data.page[0]['edittoken'];
+			do_api_req(reqObj, api_url, function( data ){
+				for(var j in data.query.pages){
+					if(data.query.pages[j]['edittoken'])
+						this_seq.clipboardEditToken = data.query.pages[j]['edittoken'];
+				}
 			});
-			//also grab permmisions for sending clipboard commands to the server
+			//also grab permisions for sending clipboard commands to the server
 			
 			//(calling the sequencer inline) try and get edit token via api call:			
 			//(somewhat fragile way to get at the api... should move to config 
@@ -474,7 +479,7 @@ mvSequencer.prototype = {
 					
 				}
 			});*/			
-			//also grab permmisions for sending clipboard commands to the server
+			//also grab permisions for sending clipboard commands to the server
 			/*$j.ajax({
 				type:"GET",
 				url: token_url + this_seq.plObj.mTalk,

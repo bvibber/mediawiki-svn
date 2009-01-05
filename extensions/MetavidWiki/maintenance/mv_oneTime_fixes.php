@@ -17,7 +17,7 @@ actions:
 	strip_speech_by  //strips extra speech by text
 	update_stream_desc //updates stream desc
 	update_archive_org_files [stream_name] //updates pointers to archive.org mp4 streaming
-	update_flv_meta //gennerates meta data for all .flv files in /metavid/video_archive
+	update_flv_meta //generates meta data for all .flv files in /metavid/video_archive
 
 EOT;
 	exit ();

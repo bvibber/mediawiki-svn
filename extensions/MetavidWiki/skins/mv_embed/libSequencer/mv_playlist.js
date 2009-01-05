@@ -25,7 +25,6 @@ var mv_default_playlist_attributes = {
 var MV_ANIMATION_CB_RATE = 33;
 
 //globals:
-var mv_lock_vid_updates=false;
 //10 possible colors for clips: (can be in hexadecimal)
 var mv_clip_colors = new Array('aqua', 'blue', 'fuchsia', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red');
 //the base url for requesting stream metadata 
@@ -213,8 +212,8 @@ mvPlayList.prototype = {
 		if( error){
 			this.load_error=error;
 			this.is_ready=false;
-		}else if( _this.clip_ready_count == this.getClipCount() ){
-			js_log("done init all clips");			
+		}else if( _this.clip_ready_count == _this.getClipCount() ){
+			js_log("done init all clips: " +  _this.clip_ready_count + ' = ' + _this.getClipCount());			
 			this.doWhenClipLoadDone();
 		}else{
 			js_log("only "+ _this.clip_ready_count +" clips done, scheduling callback:");
@@ -222,10 +221,10 @@ mvPlayList.prototype = {
 				setTimeout('document.getElementById(\''+this.id+'\').doWhenParseDone()', 250);
 		}				    	    	
 	},
-	doWhenClipLoadDone:function(){
-		this.loading = false;
+	doWhenClipLoadDone:function(){		
 		this.ready_to_play = true;
-		this.getHTML();
+		this.loading = false;
+		this.getHTML();		
 	},	
 	getDuration:function( regen ){			
 		//js_log("GET PL DURRATION for : "+ this.tracks[this.default_track_id].clips.length + 'clips');
@@ -251,7 +250,7 @@ mvPlayList.prototype = {
 		//determine the type / first is it m3u or xml? 	
 		var pl_parent = this;
 		this.makeURLAbsolute();
-		if(this.src!=null){
+		if(this.src!=null){			
 			do_request(this.src, function(data){
 				pl_parent.data=data;
 				pl_parent.getSourceType();
@@ -340,11 +339,11 @@ mvPlayList.prototype = {
 	//takes in the playlist 
 	// inherits all the properties 
 	// swaps in the playlist object html/interface div	
-	getHTML:function(){						
+	getHTML:function(){							
 		if(this.loading){
 			js_log('called getHTML (loading)');
 			$j('#'+this.id).html('loading playlist<blink>...</blink>'); 
-			if(this.loading_external_data){
+			if( this.loading_external_data ){
 				//load the data source chain of functions (to update the innerHTML)   			
 				this.getDataSource();  
 			}else{
@@ -477,18 +476,6 @@ mvPlayList.prototype = {
 		this.cur_clip.embed.pe_setSliderValue( value );
 		//call seq playline update here
 	},	
-	getSeqThumb: function(){
-		//for each clip 
-		if(this.getClipCount()>3){
-			this.pl_layout.seq_thumb=.17;
-		}else{
-			this.pl_layout.seq_thumb=.25;
-		}
-		$j.each(this.default_track.clips, function(i,n){
-			//js_log('add thumb for:' + n.src);
-			n.getThumb();
-		});
-	},
 	getPlayHeadPos: function(prec_done){
 		var	plObj = this;
 		if($j('#mv_seeker_'+this.id).length==0){
@@ -817,24 +804,6 @@ mvPlayList.prototype = {
 		else
 			this.default_track.clips[ clip_inx ][ trans_type ].run_transition();		
 	}
-}	
-var gclipFocus=null;
-//delay the swap by .2 seconds
-function mvSeqOver(clipID,playlistID){
-	setTimeout('doMvSeqOver(\''+clipID+'\',\''+playlistID+'\')', 200);
-	gclipFocus=clipID;
-}
-function mvSeqOut(){
-	gclipFocus=null;
-}
-function doMvSeqOver(clipID, playlistID){
-	if(!mv_lock_vid_updates){
-		if(gclipFocus==clipID){
-			plElm = document.getElementById(playlistID);
-			//js_log("got playlist by id: "+ plElm.id);
-			if(plElm)plElm.swapClipDesc(clipID);
-		}
-	}
 }
 
 /* Object Stubs: 
@@ -981,29 +950,6 @@ mvClip.prototype = {
 			
 		return 'untitled clip ' + this.order;
 	},
-	getThumb:function(){
-		var out='';
-		//if we have the parent playlist grab it to get the image scale 
-		if(this.pp){
-			//js_log('pl height:' + this.pp.height + ' * ' +  pl_layout.seq);
-			var th = Math.round( this.pp.height * this.pl_layout.seq_thumb );
-			//assume standard 4 by 3 video thumb res:
-			var tw = Math.round( th * this.pl_layout.clip_aspect );
-			//js_log('set by relative position:'+ th + ' '+tw);
-		}					
-		var img = this.getClipImg();
-		
-		out+='<span ';
-		if(this.title)out+='title="'+this.title+'" ';
-		out+='style="position:relative;display:inline;padding:2px;" ';
-		out+='onclick="document.getElementById(\''+this.pp.id+'\').play()" ';
-		out+='onmouseover="mvSeqOver(\''+this.id+'\',\''+this.pp.id+'\')" ';
-		out+='onmouseout="mvSeqOut()" ';
-		out+='>';
-		out+='<img style="border:solid 2px '+this.getColor()+'" height="'+th+'" width="'+tw+'" src="'+img+'"></span>';
-	
-		$j('#seqThumb_'+this.pp.id).append(out);
-	},
 	getClipImg:function(start_offset, size){
 		js_log('f:getClipImg ' + start_offset + ' s:'+size);	
 		if( !this.img){			
@@ -1093,14 +1039,16 @@ PlMvEmbed.prototype = {
 		//run the parent stop:
 		this.pe_stop();
 		var pl_height = (plObj.sequencer=='true')?plObj.height+27:plObj.height;
+		
+		plEmbed.getHTML();
+		
 		//restore control offsets: 		
 		/*(if(this.pc.pp.controls){
 			$j('#dc_'+plObj.id).animate({
 				height:pl_height
 			},"slow");
 		}*/	
-		//if(plObj.sequencer=='true'){			
-			plEmbed.getHTML();
+		//if(plObj.sequencer=='true'){						
 		/*}else{
 			//fade in elements
 			$j('#big_play_link_'+this.id+',#lb_'+this.id+',#le_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeIn("slow");	
@@ -1120,20 +1068,15 @@ PlMvEmbed.prototype = {
 		}*/
 	},
 	play:function(){
-		js_log('pl eb play');
-		var plEmbed = this;
+		js_log('pl eb play');		
 		var plObj = this.pc.pp;	
 		//check if we are already playing
 		if( !this.thumbnail_disp ){
-			plEmbed.pe_play();	
+			this.pe_play();	
 			return '';
 		}
-		mv_lock_vid_updates=true; 
-
-		js_log('controls: '+plObj.controls);
-		//fade out interface elements
-		/*$j('#big_play_link_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeOut("slow");*/				
-		plEmbed.pe_play();			
+		mv_lock_vid_updates=true; 				
+		this.pe_play();			
 	},
 	//do post interface operations
 	postEmbedJS:function(){		

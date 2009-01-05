@@ -171,7 +171,7 @@ remoteSearchDriver.prototype = {
 									' id="rms_search_button"/>'+
 							'</td>'+
 							'<td>';
-			out += '<a href="#" id="mso_selprovider" >Select Providers</a><br>';
+			//out += '<a href="#" id="mso_selprovider" >Select Providers</a><br>';
 			out += '<a href="#" id="mso_cancel" >Cancel</a><br>';
 			out +=			'</td>'+
 						'</tr>'+
@@ -487,6 +487,7 @@ remoteSearchDriver.prototype = {
 			});				
 		}
 		if( mediaType == 'video'){
+		
 			$j('#clip_edit_disp').append(
 				rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})				
 			);	
@@ -495,7 +496,8 @@ remoteSearchDriver.prototype = {
 				//grab any information that we got from the ROE xml or parsed from the media file
 				rObj = rObj.pSobj.getEmbedObjParsedInfo(rObj, 'embed_vid');					
 				//add the resizable to the doLoad request: 
-				loadLibs['$j.ui.resizable']	= 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
+				loadLibs['$j.ui.resizable']	  = 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
+				loadLibs['$j.fn.hoverIntent'] = 'jquery/plugins/jquery.hoverIntent.js';
 				mvJsLoader.doLoad( loadLibs,function(){				
 					//run the image clip tools 
 					_this.cEdit = new mvClipEdit( mvClipInit );

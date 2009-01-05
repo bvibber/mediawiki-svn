@@ -21,8 +21,8 @@ if( MV_EMBED_VERSION ){
 	MV_DO_INIT=false;	
 }
 
-//used to grab unnique copies of scripts. 
-var MV_EMBED_VERSION = '1.0rc2';
+//used to grab fresh copies of scripts. (should be changed on every deployable commit)  
+var MV_EMBED_VERSION = '1.0rc3';
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -599,7 +599,7 @@ var ctrlBuilder = {
      * addControlHooks
      * to be run once controls are attached to the dom
      */
-    addControlHooks:function(embedObj){        	    	    	
+    addControlHooks:function(embedObj){        	    	    	    
     	//add in drag/seek hooks: 
 		if(!embedObj.base_seeker_slider_offset &&  $j('#mv_seeker_slider_'+embedObj.id).get(0))
         	embedObj.base_seeker_slider_offset = $j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft;              
@@ -891,8 +891,7 @@ var mvJsLoader = {
 	 	 this.ctime++;
 	 	 //js_log('doLoad: '+this.ctime);
 	 	 //stack callbacks	
-	 	 if(callback){
-	 	 	//js_log('add callback: '+callback); 
+	 	 if(callback){ 
 	 	 	this.callbacks.push(callback);
 	 	 }				 	 		
 		 //merge any new requested libs
@@ -994,7 +993,7 @@ function init_mv_embed(force){
  * this function allows for targeted rewriting 
  */
 function rewrite_by_id( vid_id, ready_callback ){
-	js_log('f:rewrite_by_id: ' + vid_id);
+	js_log('f:rewrite_by_id: ' + vid_id);	
 	//force a recheck of the dom for playlist or video element: 	
 	mvEmbed.load_libs( ready_callback, vid_id );
 }
@@ -1035,7 +1034,9 @@ function mv_embed( force_id ){
 	var j_selector = 'video,playlist';
 	if( force_id !=null )
 		var j_selector = '#'+force_id;
-		
+	
+	js_log('SELECTOR: '+ j_selector);
+	
 	//process selected elements: 
 	$j(j_selector).each(function(){
 		js_log( "Do SWAP: " + $j(this).attr("id") + ' tag: '+ this.tagName.toLowerCase() );
@@ -1106,6 +1107,7 @@ function mv_do_remote_search(initObj){
  
 /* init the sequencer */
 function mv_do_sequence(initObj){
+	//debugger;
 	//issue a request to get the css file (if not already included):
 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css'))
 		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
@@ -1123,12 +1125,17 @@ function mv_do_sequence(initObj){
 				//'$j.effects.puff':'jquery/jquery.ui-1.5.2/ui/minified/effects.scale.min.js'
 				//'$j.ui.sortable':'jquery/plugins/ui.sortable.js'
 			},function(){
+				//debugger;
 				//load the sequencer
 				mvJsLoader.doLoad({
 						'mvSequencer':'libSequencer/mv_sequencer.js'						
-					},function(){						
-						//init the sequence object (it will take over from there)
-						_global['mvSeq'] = new mvSequencer(initObj);
+					},function(){												
+						//init the sequence object (it will take over from there) no more than one mvSeq obj: 
+						if(!_global['mvSeq']){
+							_global['mvSeq'] = new mvSequencer(initObj);
+						}else{
+							js_log('mvSeq already init');
+						}
 					});
 		});
 	});
@@ -1317,7 +1324,7 @@ mediaSource.prototype =
     */
     getURI : function(seek_time_sec)
     {    	
-    	//js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.supports_url_time_encoding);
+    	js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.supports_url_time_encoding);
     	if( !seek_time_sec || !this.supports_url_time_encoding ){    		
        		return this.src;       		       	
     	}
