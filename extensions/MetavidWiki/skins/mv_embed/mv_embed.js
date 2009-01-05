@@ -2661,7 +2661,7 @@ embedVideo.prototype = {
 			//the plugin is already being displayed			
 			this.paused=false; //make sure we are not "paused"
 		}				
-       	$j("#mv_play_pause_button_"+this.id).attr({
+       	$j("#mv_play_pause_button_" + this_id).attr({
        		'class':'pause_button'
        	}).unbind( "click" ).click(function(){
        		$j('#' + this_id ).get(0).pause();
@@ -2673,12 +2673,12 @@ embedVideo.prototype = {
 	 *  must be overwritten by embed object to support this functionality.
 	 */
 	pause: function(){
-		 js_log('mv_embed:do pause');
-		 var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
-         //(playing) do pause          
-         this.paused=true; 
-         //update the ctrl "paused state"            	
-        $j("#mv_play_pause_button_"+this.id).attr({
+		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;		
+		js_log('mv_embed:do pause');		
+        //(playing) do pause        
+        this.paused=true; 
+        //update the ctrl "paused state"            	
+        $j("#mv_play_pause_button_" + this_id).attr({
         		'class':'play_button'        		
         }).unbind( "click" ).click(function(){
         	$j('#'+this_id).get(0).play();

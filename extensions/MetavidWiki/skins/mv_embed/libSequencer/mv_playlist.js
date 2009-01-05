@@ -381,12 +381,12 @@ mvPlayList.prototype = {
 				'</div>'+
 			'</div>'
 		);
-		//once the controls are in the DOM add hooks: 
-		ctrlBuilder.addControlHooks(this);
 		//add the play button:						
 	  	$j('#dc_'+plObj.id).append(
 	  		this.cur_clip.embed.getPlayButton()
 	  	);
+		//once the controls are in the DOM add hooks: 
+		ctrlBuilder.addControlHooks(this);
 		
 		this.setupClipDisplay();									 	
 						
@@ -575,6 +575,8 @@ mvPlayList.prototype = {
 		if(this.paused)
 			this.paused=false;
 		
+		//update the control: 
+		
 		this.start_clip = this.cur_clip;		
 		this.start_clip_src= this.cur_clip.src;
 		 
@@ -585,10 +587,8 @@ mvPlayList.prototype = {
 			js_log('clip obj supports playlist swap_loader (ie playlist controlled playback)');
 			//update cur clip based if sequence playhead set: 
 			var d = new Date();
-			this.clockStartTime = d.getTime();
-			
-			this.monitor();
-		
+			this.clockStartTime = d.getTime();			
+			this.monitor();		
 			//@@todo pre-load each clip: 
 			this.cur_clip.embed.play();			
 		}else if(this.cur_clip.embed.supports['playlist_driver']){				
@@ -609,9 +609,9 @@ mvPlayList.prototype = {
 		js_log('f:pause: playlist');
 		var ct = new Date();
 		this.pauseTime = this.currentTime;
-		js_log('pause time: '+ this.pauseTime);				
-		
-		window.clearInterval( this.smil_monitorTimerId );	
+		this.paused=true;
+		js_log('pause time: '+ this.pauseTime + ' call embed pause:');					
+		this.cur_clip.embed.pause();		
 	},
 	fullscreen:function(){
 		this.cur_clip.embed.fullscreen();

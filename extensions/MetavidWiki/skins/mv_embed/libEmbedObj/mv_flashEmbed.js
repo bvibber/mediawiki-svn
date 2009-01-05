@@ -1733,7 +1733,7 @@ var flashEmbed = {
 		*/       
 		
         if(!this.userSlide){			   		       		
-	        if((this.currentTime - ntp2seconds(start_ntp))<0){
+	        if((this.currentTime - ntp2seconds(start_ntp)) < 0){
 	        	this.setStatus('buffering...');
 	        	this.fla.setVolume(0);
 	        }else{        			   		       		
