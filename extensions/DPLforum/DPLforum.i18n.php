@@ -12,8 +12,8 @@ $messages = array();
  */
 $messages['en'] = array(
 	'dplforum-desc'    => 'DPL-based forum extension',
-	'dplforum-by'      => 'by',
-	'dplforum-edited'  => ' - Last edited',
+	'dplforum-by'      => 'by $1',
+	'dplforum-edited'  => '- Last edited',
 	'dplforum-never'   => 'Never',
 	'dplforum-toofew'  => 'DPL Forum: Too few categories!',
 	'dplforum-toomany' => 'DPL Forum: Too many categories!'
@@ -35,8 +35,8 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'dplforum-desc' => 'امتداد منتدى معتمد على DPL',
-	'dplforum-by' => 'بواسطة',
-	'dplforum-edited' => '  - آخر تعديل',
+	'dplforum-by' => 'بواسطة $1',
+	'dplforum-edited' => '- آخر تعديل',
 	'dplforum-never' => 'أبدا',
 	'dplforum-toofew' => 'منتدى DPL: تصنيفات قليلة جدا!',
 	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
@@ -47,8 +47,8 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'dplforum-desc' => 'امتداد منتدى معتمد على DPL',
-	'dplforum-by' => 'بواسطة',
-	'dplforum-edited' => '  - آخر تعديل',
+	'dplforum-by' => 'بواسطة $1',
+	'dplforum-edited' => '- آخر تعديل',
 	'dplforum-never' => 'أبدا',
 	'dplforum-toofew' => 'منتدى DPL: تصنيفات قليلة جدا!',
 	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
@@ -59,7 +59,7 @@ $messages['arz'] = array(
  */
 $messages['bg'] = array(
 	'dplforum-desc' => 'DPL-базирано форумно разширение',
-	'dplforum-by' => 'от',
+	'dplforum-by' => 'от $1',
 	'dplforum-never' => 'Никога',
 	'dplforum-toofew' => 'DPL Форум: Твърде малко категории!',
 	'dplforum-toomany' => 'DPL Форум: Твърде много категории!',
@@ -77,8 +77,8 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'dplforum-desc' => 'Rozšíření DPL fórum',
-	'dplforum-by' => ',',
-	'dplforum-edited' => '  - poslední úprava',
+	'dplforum-by' => ', $1',
+	'dplforum-edited' => '- poslední úprava',
 	'dplforum-never' => 'Nikdy',
 	'dplforum-toofew' => 'DPL fórum: Příliš málo kategorií!',
 	'dplforum-toomany' => 'DPL fórum: Příliš mnoho kategorií!',
@@ -91,8 +91,8 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'dplforum-desc' => 'DPL-basierte Forumserweiterung',
-	'dplforum-by' => 'durch',
-	'dplforum-edited' => '  - Zuletzt bearbeitet',
+	'dplforum-by' => 'durch $1',
+	'dplforum-edited' => '- Zuletzt bearbeitet',
 	'dplforum-never' => 'Nie',
 	'dplforum-toofew' => 'DPL Forum: Zu wenig Kategorien!',
 	'dplforum-toomany' => 'DPL Forum: Zu viele Kategorien!',
@@ -103,7 +103,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'dplforum-desc' => 'Forumowe rozšyrjenje na zakłaźe DPL',
-	'dplforum-by' => 'wót',
+	'dplforum-by' => 'wót $1',
 	'dplforum-edited' => '- Slědna změna',
 	'dplforum-never' => 'Žednje',
 	'dplforum-toofew' => 'DPL-forum: Pśemało kategorijow!',
@@ -122,8 +122,8 @@ $messages['ee'] = array(
  */
 $messages['eo'] = array(
 	'dplforum-desc' => 'DPL-bazita foruma etendilo',
-	'dplforum-by' => 'de',
-	'dplforum-edited' => '  - Laste redaktita',
+	'dplforum-by' => 'de $1',
+	'dplforum-edited' => '- Laste redaktita',
 	'dplforum-never' => 'Neniam',
 	'dplforum-toofew' => 'DPL-Forumo: Tro malmultaj kategorioj!',
 	'dplforum-toomany' => 'DPL-Forumo: Tro multaj da kategorioj!',
@@ -134,8 +134,8 @@ $messages['eo'] = array(
  */
 $messages['fa'] = array(
 	'dplforum-desc' => 'افزونهٔ تالار گفتگو مبتنی بر DPL',
-	'dplforum-by' => 'توسط',
-	'dplforum-edited' => '  - آخرین ویرایش',
+	'dplforum-by' => 'توسط $1',
+	'dplforum-edited' => '- آخرین ویرایش',
 	'dplforum-never' => 'هرگز',
 	'dplforum-toofew' => 'تالار گفتگوی DPL: تعداد ناکافی رده‌ها!',
 	'dplforum-toomany' => 'تالار گفتگوی DPL: تعداد بیش از حد رده‌ها!',
@@ -147,8 +147,8 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'dplforum-desc' => 'DPL-pohjainen foorumilaajennus',
-	'dplforum-by' => 'tehnyt',
-	'dplforum-edited' => ' - Viimeksi muokattu',
+	'dplforum-by' => 'tehnyt $1',
+	'dplforum-edited' => '- Viimeksi muokattu',
 	'dplforum-never' => 'Ei koskaan',
 	'dplforum-toofew' => 'DPL-forum: Liian vähän luokkia!',
 	'dplforum-toomany' => 'DPL-forum: Liian paljon luokkia!',
@@ -162,8 +162,8 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'dplforum-desc' => 'Extension forum basée sur DPL',
-	'dplforum-by' => 'par',
-	'dplforum-edited' => '  - Dernière modification',
+	'dplforum-by' => 'par $1',
+	'dplforum-edited' => '- Dernière modification',
 	'dplforum-never' => 'Jamais',
 	'dplforum-toofew' => 'DPL Forum : pas assez de catégories !',
 	'dplforum-toomany' => 'DPL Forum : trop de catégories !',
@@ -174,8 +174,8 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'dplforum-desc' => 'Extensión DPL baseada no foro',
-	'dplforum-by' => 'por',
-	'dplforum-edited' => '  - Última edición',
+	'dplforum-by' => 'por $1',
+	'dplforum-edited' => '- Última edición',
 	'dplforum-never' => 'Nunca',
 	'dplforum-toofew' => 'Foro DPL: moi poucas categorías!',
 	'dplforum-toomany' => 'Foro DPL: demasiadas categorías!',
@@ -186,8 +186,8 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'dplforum-desc' => 'Ἐπέκτασις τῆς ἀγορὰς βεβασισμένη εἰς τὴν DPL',
-	'dplforum-by' => 'ὑπὸ',
-	'dplforum-edited' => '  - Ἐσχάτως μεταγεγραμμένη',
+	'dplforum-by' => 'ὑπὸ $1',
+	'dplforum-edited' => '- Ἐσχάτως μεταγεγραμμένη',
 	'dplforum-never' => 'Οὔποτε',
 	'dplforum-toofew' => 'Ἀγορὰ DPL: Τὰ μάλα ὀλίγαι κατηγορίαι!',
 	'dplforum-toomany' => 'Ἀγορὰ DPL: Τὰ μάλα πολλαὶ κατηγορίαι!',
@@ -199,8 +199,8 @@ $messages['grc'] = array(
  */
 $messages['he'] = array(
 	'dplforum-desc' => 'הרחבת פורום מבוסס DPL',
-	'dplforum-by' => 'על ידי',
-	'dplforum-edited' => '  - נערכה לאחרונה',
+	'dplforum-by' => 'על ידי $1',
+	'dplforum-edited' => '- נערכה לאחרונה',
 	'dplforum-never' => 'מעולם לא',
 	'dplforum-toofew' => 'פורום DPL: מעט מדי קטגוריות!',
 	'dplforum-toomany' => 'פורום DPL: יותר מדי קטגוריות!',
@@ -211,7 +211,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'dplforum-desc' => 'Forumowe rozšěrjenje na zakładźe DPL',
-	'dplforum-by' => 'wot',
+	'dplforum-by' => 'wot $1',
 	'dplforum-edited' => '- Posledni raz wobdźěłany',
 	'dplforum-never' => 'Ženje',
 	'dplforum-toofew' => 'Forum DPL: Přemało kategorijow!',
@@ -223,7 +223,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'dplforum-desc' => 'DPL-alapú fórumkiterjesztés',
-	'dplforum-edited' => '  - Utolsó szerkesztés',
+	'dplforum-edited' => '- Utolsó szerkesztés',
 	'dplforum-never' => 'soha',
 	'dplforum-toofew' => 'DPL fórum: túl kevés kategória!',
 	'dplforum-toomany' => 'DPL fórum: túl sok kategória!',
@@ -234,8 +234,8 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'dplforum-desc' => 'Extension pro foros basate in DPL',
-	'dplforum-by' => 'per',
-	'dplforum-edited' => '  - Ultime modification',
+	'dplforum-by' => 'per $1',
+	'dplforum-edited' => '- Ultime modification',
 	'dplforum-never' => 'Nunquam',
 	'dplforum-toofew' => 'Foro DPL: Non bastante categorias!',
 	'dplforum-toomany' => 'Foro DPL: Troppo de categorias!',
@@ -246,8 +246,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'dplforum-desc' => 'Ekstensi forum berbasis-DPL',
-	'dplforum-by' => 'oleh',
-	'dplforum-edited' => '  - Terakhir disunting',
+	'dplforum-by' => 'oleh $1',
+	'dplforum-edited' => '- Terakhir disunting',
 	'dplforum-never' => 'Tidak pernah',
 	'dplforum-toofew' => 'Forum DPL: Terlalu sedikit kategori!',
 	'dplforum-toomany' => 'Forum DPL: Terlalu banyak kategori!',
@@ -258,8 +258,8 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'dplforum-desc' => 'Estensione forum basata su DPL',
-	'dplforum-by' => 'da',
-	'dplforum-edited' => '  - Modificato ultima volta',
+	'dplforum-by' => 'da $1',
+	'dplforum-edited' => '- Modificato ultima volta',
 	'dplforum-never' => 'Mai',
 	'dplforum-toofew' => 'DPL Forum: Troppo poche categorie!',
 	'dplforum-toomany' => 'DPL Forum: Troppe categorie!',
@@ -270,7 +270,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'dplforum-desc' => 'DynamicPageList ベースのフォーラムを実現する拡張機能',
-	'dplforum-edited' => '  - 最終編集',
+	'dplforum-edited' => '- 最終編集',
 	'dplforum-toofew' => 'DPL Forum: カテゴリが少なすぎます！',
 	'dplforum-toomany' => 'DPL Forum: カテゴリが多すぎます！',
 );
@@ -280,7 +280,7 @@ $messages['ja'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
-	'dplforum-by' => 'ដោយ',
+	'dplforum-by' => 'ដោយ$1',
 	'dplforum-edited' => 'កែប្រែជាចុងក្រោយ',
 	'dplforum-never' => 'មិនដែល',
 	'dplforum-toofew' => 'ចំណាត់ថ្នាក់ក្រុមតិចតួចណាស់!',
@@ -292,8 +292,8 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'dplforum-desc' => 'Ene Forum-Zosatz op dä Basis fum DPL.',
-	'dplforum-by' => 'fum',
-	'dplforum-edited' => '  - zoläz beärbeidt',
+	'dplforum-by' => 'fum $1',
+	'dplforum-edited' => '- zoläz beärbeidt',
 	'dplforum-never' => 'Nimohls',
 	'dplforum-toofew' => 'DPL Forum: Nit jenooch Saachjruppe!',
 	'dplforum-toomany' => 'DPL Forum: Zofill Saachjruppe!',
@@ -304,7 +304,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'dplforum-desc' => 'DPL-baséiert Forumerweiderungen',
-	'dplforum-by' => 'vum',
+	'dplforum-by' => 'vum $1',
 	'dplforum-edited' => "- Vir d'läscht geännert",
 	'dplforum-never' => 'Ni',
 	'dplforum-toofew' => 'DPL Forum: Ze wéineg Kategorien!',
@@ -333,7 +333,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'dplforum-desc' => 'DPL-आधारित चर्चासत्र विस्तार',
-	'dplforum-by' => 'कडून',
+	'dplforum-by' => 'कडून $1',
 	'dplforum-edited' => '- शेवटी बदललेली',
 	'dplforum-never' => 'कधीच नाही',
 	'dplforum-toofew' => 'डीपीएल चर्चासत्र: खूपच कमी वर्ग!',
@@ -345,8 +345,8 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'dplforum-desc' => 'penyambung forum berdasarkan DPL',
-	'dplforum-by' => 'oleh',
-	'dplforum-edited' => '  - Suntingan terakhir',
+	'dplforum-by' => 'oleh $1',
+	'dplforum-edited' => '- Suntingan terakhir',
 	'dplforum-never' => 'Tiada',
 	'dplforum-toofew' => 'Forum DPL: Kategori terlalu sedikit!',
 	'dplforum-toomany' => 'Forum DPL: Kategori terlalu banyak!',
@@ -370,7 +370,7 @@ $messages['nah'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'dplforum-by' => 'vun',
+	'dplforum-by' => 'vun $1',
 	'dplforum-never' => 'Nie',
 );
 
@@ -380,8 +380,8 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'dplforum-desc' => 'Forumuitbreiding gebaseerd op DPL',
-	'dplforum-by' => 'door',
-	'dplforum-edited' => ' - Laatste bewerking',
+	'dplforum-by' => 'door $1',
+	'dplforum-edited' => '- Laatste bewerking',
 	'dplforum-never' => 'Nooit',
 	'dplforum-toofew' => 'DPL Forum: te weinig categorieën!',
 	'dplforum-toomany' => 'DPL Forum: te veel categorieën!',
@@ -392,8 +392,8 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'dplforum-desc' => 'DPL-basert forumtillegg',
-	'dplforum-by' => 'av',
-	'dplforum-edited' => '  - sist endra',
+	'dplforum-by' => 'av $1',
+	'dplforum-edited' => '- sist endra',
 	'dplforum-never' => 'Aldri',
 	'dplforum-toofew' => 'DPL-forum: For få kategoriar!',
 	'dplforum-toomany' => 'DPL-forum: For mange kategoriar!',
@@ -404,8 +404,8 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'dplforum-desc' => 'DPL-basert forumutvidelse',
-	'dplforum-by' => 'av',
-	'dplforum-edited' => '  - sist endret',
+	'dplforum-by' => 'av $1',
+	'dplforum-edited' => '- sist endret',
 	'dplforum-never' => 'Aldri',
 	'dplforum-toofew' => 'DPL-forum: For få kategorier.',
 	'dplforum-toomany' => 'DPL-forum: For mange kategorier.',
@@ -416,8 +416,8 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'dplforum-desc' => 'DPL basada sus l’extension fòrum',
-	'dplforum-by' => 'per',
-	'dplforum-edited' => '  - Darrièr cambiament',
+	'dplforum-by' => 'per $1',
+	'dplforum-edited' => '- Darrièr cambiament',
 	'dplforum-never' => 'Pas jamai',
 	'dplforum-toofew' => 'DPL Forum : Pas pro de categorias !',
 	'dplforum-toomany' => 'DPL Forum : Tròp de categorias !',
@@ -430,8 +430,8 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'dplforum-desc' => 'Forum oparte na DPL',
-	'dplforum-by' => 'przez',
-	'dplforum-edited' => '  - ostatnia edycja',
+	'dplforum-by' => 'przez $1',
+	'dplforum-edited' => '- ostatnia edycja',
 	'dplforum-never' => 'Nigdy',
 	'dplforum-toofew' => 'Forum DPL: Zbyt mało kategorii!',
 	'dplforum-toomany' => 'Forum DPL: Zbyt wiele kategorii!',
@@ -451,8 +451,8 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'dplforum-desc' => 'Extensão de fórum baseada em DPL',
-	'dplforum-by' => 'por',
-	'dplforum-edited' => '  - Última edição',
+	'dplforum-by' => 'por $1',
+	'dplforum-edited' => '- Última edição',
 	'dplforum-never' => 'Nunca',
 	'dplforum-toofew' => 'DPL Forum: Categorias em número insuficiente!',
 	'dplforum-toomany' => 'DPL Forum: Demasiadas categorias!',
@@ -470,8 +470,8 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'dplforum-desc' => 'Форумное расширение, основанное на DPL',
-	'dplforum-by' => 'от',
-	'dplforum-edited' => '  - последняя правка',
+	'dplforum-by' => 'отv $1',
+	'dplforum-edited' => '- последняя правка',
 	'dplforum-never' => 'Никогда',
 	'dplforum-toofew' => 'Форум DPL: Слишком мало категорий!',
 	'dplforum-toomany' => 'Форум DPL: Слишком много категорий!',
@@ -482,7 +482,7 @@ $messages['ru'] = array(
  */
 $messages['scn'] = array(
 	'dplforum-desc' => 'Estenzioni forum basata sù DPL',
-	'dplforum-by' => 'di',
+	'dplforum-by' => 'di $1',
 	'dplforum-edited' => '- Mudificatu ùrtima vota',
 	'dplforum-never' => 'Mai',
 	'dplforum-toofew' => 'DPL Forum: Troppi picca catigurìi!',
@@ -494,8 +494,8 @@ $messages['scn'] = array(
  */
 $messages['sk'] = array(
 	'dplforum-desc' => 'Rozšírenie DPL fórum',
-	'dplforum-by' => ',',
-	'dplforum-edited' => '  - posledná úprava',
+	'dplforum-by' => ', $1',
+	'dplforum-edited' => '- posledná úprava',
 	'dplforum-never' => 'Nikdy',
 	'dplforum-toofew' => 'DPL fórum: Príliš málo kategórií!',
 	'dplforum-toomany' => 'DPL fórum: Príliš mnoho kategórií!',
@@ -506,8 +506,8 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'dplforum-desc' => 'Forumtillägg baserat på DPL',
-	'dplforum-by' => 'av',
-	'dplforum-edited' => '  - senast ändrad',
+	'dplforum-by' => 'av $1',
+	'dplforum-edited' => '- senast ändrad',
 	'dplforum-never' => 'Aldrig',
 	'dplforum-toofew' => 'DPL-forum: För få kategorier!',
 	'dplforum-toomany' => 'DPL-forum: För många kategorier!',
@@ -525,8 +525,8 @@ $messages['tet'] = array(
  */
 $messages['tl'] = array(
 	'dplforum-desc' => 'Karugtong na nakabatay sa talakayang DPL',
-	'dplforum-by' => 'ni',
-	'dplforum-edited' => '  - Huling nabago',
+	'dplforum-by' => 'ni $1',
+	'dplforum-edited' => '- Huling nabago',
 	'dplforum-never' => 'Hindi kailanman',
 	'dplforum-toofew' => 'Talakayang DPL: Napakakaunting mga kaurian!',
 	'dplforum-toomany' => 'Talakayang DPL: Napakaraming mga kaurian!',
@@ -544,7 +544,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'dplforum-desc' => 'Форумне розширення, засноване на DPL',
-	'dplforum-by' => 'від',
+	'dplforum-by' => 'від $1',
 	'dplforum-edited' => '- Остання правка',
 	'dplforum-never' => 'Ніколи',
 	'dplforum-toofew' => 'Форум DPL: Занадто мало категорій!',
@@ -556,7 +556,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'dplforum-desc' => 'Estension forum basà su DPL',
-	'dplforum-by' => 'da',
+	'dplforum-by' => 'da $1',
 	'dplforum-edited' => " - Modifegà l'ultima òlta",
 	'dplforum-never' => 'Mai',
 	'dplforum-toofew' => 'DPL Forum: Massa poche categorie!',
@@ -568,8 +568,8 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'dplforum-desc' => 'Gói mở rộng diễn đàn dựa trên DPL',
-	'dplforum-by' => 'bởi',
-	'dplforum-edited' => '  - Lần sửa đổi cuối',
+	'dplforum-by' => 'bởi $1',
+	'dplforum-edited' => '- Lần sửa đổi cuối',
 	'dplforum-never' => 'Chưa bao giờ',
 	'dplforum-toofew' => 'Diễn đàn DPL: Quá ít thể loại!',
 	'dplforum-toomany' => 'Diễn đàn DPL: Quá nhiều thể loại!',
