@@ -365,6 +365,13 @@ $messages['vi'] = array(
 	'breadcrumbs-desc' => 'Hiển thị lối đến trang wiki',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'breadcrumbs-desc' => 'Jonön gebanaluvegi da vük.',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

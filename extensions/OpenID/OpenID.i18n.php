@@ -3071,6 +3071,7 @@ Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp ID M
  * @author Smeira
  */
 $messages['vo'] = array(
+	'openiderror' => 'Kontrolamapöl',
 	'openidoptional' => 'No peflagon',
 	'openidrequired' => 'Peflagon',
 	'openidnickname' => 'Näinem',
