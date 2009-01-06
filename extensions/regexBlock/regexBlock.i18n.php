@@ -1954,3 +1954,4 @@ $messages['zh-hant'] = array(
 	'regexblock-view-block-infinite' => '永久封禁',
 	'regexblock-view-stats' => '（統計）',
 );
+
