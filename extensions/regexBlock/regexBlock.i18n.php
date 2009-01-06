@@ -1,92 +1,75 @@
 <?php
 /**
- * Internationalisation file for extension regexBlock.
+ * Internationalisation file for regexBlock extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
+/** English
+ * @author Bartek Łapiński
+ * @author Piotr Molski
+ * @author Tomasz Klim
+ */
 $messages['en'] = array(
-	'regexblock'                      => 'Regex block',
-	'regexblock-desc'                 => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a [[Special:Regexblock|special page]] to add/manage blocks',
-	'regexblock-special-desc'         => 'alternate user block (by given name, using regular expressions)',
-	'regexblock-stat-desc'            => 'Displays [[Special:Regexblockstats|block statistics]] for the regexblock extension',
-	'regexblock-page-title'           => 'Regular expression name block',
-	'regexblockstats'                 => 'Regex block statistics',
-	'regexblock-reason-ip'            => 'This IP address is prevented from editing due to vandalism or other disruption by you or by someone who shares your IP address.
-If you believe this is in error, please $1' ,
-	'regexblock-reason-name'          => 'This username is prevented from editing due to vandalism or other disruption.
-If you believe this is in error, please $1',
-	'regexblock-reason-regex'         => 'This username is prevented from editing due to vandalism or other disruption by a user with a similar name.
-Please create an alternate user name or $1 about the problem',
-	'regexblock-help'                 => 'Use the form below to block write access from a specific IP address or username.
+	'regexblock' => 'Regex block',
+	'regexblock-already-blocked' => '$1 is already blocked.',
+	'regexblock-block-log' => 'User name or IP address \'\'\'$1\'\'\' has been blocked.',
+	'regexblock-block-success' => 'Block succedeed',
+	'regexblock-currently-blocked' => 'Currently blocked addresses:',
+	'regexblock-desc' => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a [[Special:Regexblock|special page]] to add/manage blocks',
+	'regexblock-expire-duration' => '1 hour,2 hours,4 hours,6 hours,1 day,3 days,1 week,2 weeks,1 month,3 months,6 months,1 year,infinite',
+	'regexblock-page-title' => 'Regular expression name block',
+	'regexblockstats' => 'Regex block statistics',
+	'regexblock-help' => 'Use the form below to block write access from a specific IP address or username.
 This should be done only to prevent vandalism, and in accordance with policy.
 \'\'This page will allow you to block even non-existing users, and will also block users with names similar to given, i.e. "Test" will be blocked along with "Test 2" etc.
 You can also block full IP addresses, meaning that no one logging in from them will be able to edit pages.
 Note: partial IP addresses will be treated by usernames in determining blocking.
 If no reason is specified, a default generic reason will be used.\'\'',
-	'regexblock-page-title-1'         => 'Block address using regular expressions',
-	'regexblock-unblock-success'      => 'Unblock succeeded',
-	'regexblock-unblock-log'          => 'User name or IP address \'\'\'$1\'\'\' has been unblocked.',
-	'regexblock-unblock-error'        => 'Error unblocking $1.
+	'regexblock-page-title-1' => 'Block address using regular expressions',
+	'regexblock-reason-ip' => 'This IP address is prevented from editing due to vandalism or other disruption by you or by someone who shares your IP address.
+If you believe this is in error, please $1' ,
+	'regexblock-reason-name' => 'This username is prevented from editing due to vandalism or other disruption.
+If you believe this is in error, please $1',
+	'regexblock-reason-regex' => 'This username is prevented from editing due to vandalism or other disruption by a user with a similar name.
+Please create an alternate user name or $1 about the problem',
+	'regexblock-form-username' => 'IP address or username:',
+	'regexblock-form-reason' => 'Reason:',
+	'regexblock-form-expiry' => 'Expiry:',
+	'regexblock-form-match' => 'Exact match',
+	'regexblock-form-account-block' => 'Block creation of new accounts',
+	'regexblock-form-submit' => 'Block this user',
+	'regexblock-form-submit-empty' => 'Give a user name or an IP address to block.',
+	'regexblock-form-submit-regex' => 'Invalid regular expression.',
+	'regexblock-form-submit-expiry' => 'Please specify an expiration period.',
+	'regexblock-match-stats-record' => "$1 blocked '$2' on '$3' at '$4', logging from address '$5'",
+	'regexblock-nodata-found' => 'No data found',
+	'regexblock-stats-title' => 'Regex block statistics',
+	'regexblock-unblock-success' => 'Unblock succeeded',
+	'regexblock-unblock-log' => 'User name or IP address \'\'\'$1\'\'\' has been unblocked.',
+	'regexblock-unblock-error' => 'Error unblocking $1.
 Probably there is no such user.',
-	'regexblock-form-username'        => 'IP address or username:',
-	'regexblock-form-reason'          => 'Reason:',
-	'regexblock-form-expiry'          => 'Expiry:',
-	'regexblock-form-match'           => 'Exact match',
-	'regexblock-form-account-block'   => 'Block creation of new accounts',
-	'regexblock-form-submit'          => 'Block this user',
-	'regexblock-block-log'            => 'User name or IP address \'\'\'$1\'\'\' has been blocked.',
-	'regexblock-block-success'        => 'Block succedeed',
-	'regexblock-form-submit-empty'    => 'Give a user name or an IP address to block.',
-	'regexblock-form-submit-regex'    => 'Invalid regular expression.',
-	'regexblock-form-submit-expiry'   => 'Please specify an expiration period.',
-	'regexblock-already-blocked'      => '$1 is already blocked.',
-	'regexblock-stats-title'          => 'Regex block statistics',
-	'regexblock-stats-username'       => 'For $1',
-	'regexblock-stats-times'          => 'was blocked on',
-	'regexblock-stats-logging'        => 'logging from address',
-	'regexblock-currently-blocked'    => 'Currently blocked addresses:',
-	'regexblock-view-blocked'         => 'View blocked by:',
-	'regexblock-view-all'             => 'All',
-	'regexblock-view-go'              => 'Go',
-	'regexblock-view-match'           => '(exact match)',
-	'regexblock-view-regex'           => '(regex match)',
-	'regexblock-view-account'         => '(account creation block)',
-	'regexblock-view-reason'          => 'reason: $1',
-	'regexblock-view-reason-default'  => 'generic reason',
-	'regexblock-view-block-infinite'  => 'permanent block',
+	'regexblock-regex-filter' => ' or regex value: ',
+	'regexblock-view-blocked' => 'View blocked by:',
+	'regexblock-view-all' => 'All',
+	'regexblock-view-go' => 'Go',
+	'regexblock-view-match' => '(exact match)',
+	'regexblock-view-regex' => '(regex match)',
+	'regexblock-view-account' => '(account creation block)',
+	'regexblock-view-reason' => 'reason: $1',
+	'regexblock-view-reason-default' => 'generic reason',
+	'regexblock-view-block-infinite' => 'permanent block',
 	'regexblock-view-block-temporary' => 'expires on ',
-	'regexblock-view-block-expired'   => 'EXPIRED on ',
-	'regexblock-view-block-by'        => 'blocked by ',
-	'regexblock-view-block-unblock'   => 'unblock',
-	'regexblock-view-stats'           => '(stats)',
-	'regexblock-view-empty'           => 'The list of blocked names and addresses is empty.',
-	'regexblock-view-time'            => 'on $1',
-);
-
-/** Message documentation (Message documentation)
- * @author Jon Harald Søby
- * @author Purodha
- * @author SPQRobin
- */
-$messages['qqq'] = array(
-	'regexblock-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
-	'regexblock-special-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
-	'regexblock-stat-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
-	'regexblock-reason-ip' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
-	'regexblock-reason-name' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
-	'regexblock-reason-regex' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
-	'regexblock-form-reason' => '{{Identical|Reason}}',
-	'regexblock-form-expiry' => '{{Identical|Expiry}}',
-	'regexblock-form-match' => '{{Identical|Exact match}}',
-	'regexblock-already-blocked' => '{{Identical|$1 is already blocked}}',
-	'regexblock-stats-username' => '{{Identical|For $1}}',
-	'regexblock-view-all' => '{{Identical|All}}',
-	'regexblock-view-go' => '{{Identical|Go}}',
-	'regexblock-view-match' => '{{Identical|Exact match}}',
-	'regexblock-view-block-temporary' => '{{Identical|Expires on}}',
+	'regexblock-view-block-expired' => 'EXPIRED on ',
+	'regexblock-view-block-by' => 'blocked by ',
+	'regexblock-view-block-unblock' => 'unblock',
+	'regexblock-view-stats' => 'stats',
+	'regexblock-view-empty' => 'The list of blocked names and addresses is empty.',
+	'regexblock-view-time' => 'on $1',
+	'right-regexblock' => 'Block users from editing on all wikis on the wiki farm',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -1971,4 +1954,3 @@ $messages['zh-hant'] = array(
 	'regexblock-view-block-infinite' => '永久封禁',
 	'regexblock-view-stats' => '（統計）',
 );
-
