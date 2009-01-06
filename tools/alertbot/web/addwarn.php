@@ -51,13 +51,15 @@ if($msg=="") {//no errors, we can proceed
 	else
 		$project=$language.".".$project;
 
-	$problem=$problem_correspond[$problem];
 	if($problem=="other" || $problem=="parts")
-		$problem.=$problem_other;
+		$problem=$problem_correspond[$problem].$problem_other;
+	else
+		$problem=$problem_correspond[$problem];
+		
 	$res=mysqli_query($mysql_link,"INSERT INTO `alertbot`.`alerts` (`id`, `time`, `reporter`, `project`, `affected`, `problem`, `state`) VALUES (NULL, CURRENT_TIMESTAMP, '".$_SERVER['REMOTE_ADDR']."', '$project', '".$level_correspond[$level]."', '".$problem."', '0');");
 	if(mysqli_affected_rows($mysql_link)!=1)
 		$msg.="Error occurred: ".mysqli_error($mysql_link)." (".mysqli_errno($mysql_link).")";
-	$msg.="Thanks for your submission.<br />\r\n"."INSERT INTO `alertbot`.`alerts` (`id`, `time`, `reporter`, `project`, `affected`, `problem`, `state`) VALUES (NULL, CURRENT_TIMESTAMP, '".$_SERVER['REMOTE_ADDR']."', '$project', '".$level_correspond[$level]."', '".$problem."', '0');";
+	$msg.="Thanks for your submission.<br />\r\n";
 }
 $msg.="<a href='warning.php'>Back</a> to main page.";
 ?>
