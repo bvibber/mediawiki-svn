@@ -1191,7 +1191,7 @@ var xspfPlaylist ={
 		//js_log('do xsfp parse: '+ this.data.innerHTML);
 		var properties = { title:'title', linkback:'info', 
 						   author:'creator',desc:'annotation',
-						   img:'image', date:'date' };
+						   poster:'image', date:'date' };
 		var tmpElm = null;
 		//get the first instance of any of the meta tags (ok that may be the meta on the first clip)
 		//js_log('do loop on properties:' + properties);
@@ -1210,7 +1210,7 @@ var xspfPlaylist ={
 		//add any clip specific properties 
 		properties.src = 'location';
 		for (var i=0;i<clips.length;i++){
-			var cur_clip = new mvClip({type:'srcClip',id:'p_'+this.id+'_c_'+i,pp:this,order:i});			
+			var cur_clip = new mvClip({id:'p_'+this.id+'_c_'+i,pp:this,order:i});			
 			//js_log('cur clip:'+ cur_clip.id);
 			for(var j in properties){
 				tmpElm = clips[i].getElementsByTagName( properties[j] )[0];

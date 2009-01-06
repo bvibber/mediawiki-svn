@@ -52,10 +52,10 @@ mvClipEdit.prototype = {
 		var eb = $j('#embed_vid').get(0);
 		//turn on preview to avoid onDone actions
 		eb.preview_mode = true;
-		
-		$j('#'+this.control_ct).html(
-			'<h3>Edit Video Tools:</h3>' +
-			'<strong>Set in-out points</strong>'+
+		$j('#'+this.control_ct).html('<h3>Edit Video Tools:</h3>');
+		if( eb.supportsURLTimeEncoding() ){
+			js_log("SUPPORTS supports_url_time_encoding do start end");
+			$j('#'+this.control_ct).append('<strong>Set in-out points</strong>'+
 			'<table border="0" style="background: transparent; width:94%;height:50px;">'+
 				'<tr>' +
 					'<td style="width:50px">'+
@@ -89,22 +89,22 @@ mvClipEdit.prototype = {
 				'<input name="mv_end_hr_rsd" id="mv_end_hr_rsd" value="' + eb.end_ntp + '" maxlength="8" size="8" class="mv_adj_hr"/>'+
 			'</span>'+
 			'<div style="clear: both;"/>'+		
-			'<input id="mv_preview_clip" type="button" value="Preview/Play In-out points">'+
-				this.getInsertControl()					
-		); 	
-		//setup bindings: 
-		add_adjust_hooks('rsd');
-		
-		$j('#mv_preview_clip').click(function(){			
-			$j('#embed_vid').get(0).stop();
-			$j('#embed_vid').get(0).play();
-		});		
+			'<input id="mv_preview_clip" type="button" value="Preview/Play In-out points">');
+			
+			//setup bindings for adjust / preview:
+			add_adjust_hooks('rsd');			 
+			$j('#mv_preview_clip').click(function(){			
+				$j('#embed_vid').get(0).stop();
+				$j('#embed_vid').get(0).play();
+			});		
+		}															
+		$j('#'+this.control_ct).append( this.getInsertControl()	);				
 		
 		this.applyInsertControlBindings();
 	},
 	getInsertControl:function(){
 		return '<h3>Inline Description</h3>' +
-				'(you can copy and paste from the transcript by clicking on the cc button below the video)'+ 				
+				'(you can copy and paste from the transcript by clicking on the cc button below the video)<br>'+ 				
 					'<textarea style="width:300px;" id="mv_inline_img_desc" rows="4" cols="30"></textarea><br>'+
 				'<h3>Actions</h3>'+
 				'<input type="button" class="mv_insert_image_page" value="' + getMsg('mv_insert_image_page') + '"> '+				
@@ -123,7 +123,7 @@ mvClipEdit.prototype = {
 		$j('.mv_insert_image_page').click(function(){
 			_this.applyEdit();			
 			//copy over the desc text to the resource object
-			rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
+			_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
 			_this.p_rsdObj.insertResource( _this.rObj );
 		});
 		$j('.mv_preview_insert').click(function(){
@@ -150,10 +150,10 @@ mvClipEdit.prototype = {
 				'<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+getMsg('mv_scale')+'"></div>'+
 				'<a href="#" class="mv_scale_msg">' + getMsg('mv_scale') + '</a><br>'+
 				'<a href="#" style="display:none" class="mv_apply_scale">' + getMsg('mv_apply_scale') + '</a> '+
-				'<a href="#" style="display:none" class="mv_rest_scale">' + getMsg('mv_reset_scale') + '</a> '+				
+				'<a href="#" style="display:none" class="mv_rest_scale">' + getMsg('mv_reset_scale') + '</a><br> '+				
 				_this.getInsertControl()					
 		);
-		//add bidings: 
+		//add bindings: 
 		$j('#mv_crop_button,.mv_crop_msg,.mv_apply_crop').click(function(){
 			js_log('click:mv_crop_button: base width: ' + _this.rObj.width + ' bh: ' + _this.rObj.height);
 			if($j('#mv_crop_button').hasClass('mv_crop_button_selected')){				

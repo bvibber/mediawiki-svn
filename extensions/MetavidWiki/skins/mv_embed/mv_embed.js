@@ -1236,13 +1236,18 @@ mediaSource.prototype =
     init : function(element)
     {
     	//js_log('adding mediaSource: ' + element);    	    	
-        this.src = $j(element).attr('src');               
+        this.src = $j(element).attr('src');
         this.marked_default = false;
         if ( element.tagName.toLowerCase() == 'video')
             this.marked_default = true;        
         
-        //set default timeFormat: 
-        this['timeFormat']='anx';
+        //set default timeFormat if we have a time  url:
+        //not ideal way to discover if content is on an oggz_chop server. 
+        //should check some other way. 
+        var pUrl = parseUri ( this.src );
+        if(typeof pUrl['queryKey']['t'] != 'undefined'){
+        	this['timeFormat']='anx';
+        }        
                     
         for(var i=0; i < mv_default_source_attr.length; i++){ //for in loop oky on object
         	var attr = mv_default_source_attr[ i ];
@@ -1261,10 +1266,7 @@ mediaSource.prototype =
 		
 		//set the title if unset:         
         if( !this.title ){
-            var parts = this.mime_type.split("/",2);
-            parts[0]=parts[0].replace('video', 'stream');
-            parts[1]=parts[1].replace('x-flv', 'flash');
-            this.title = parts[1] + ' ' + parts[0];
+            this.title = this.mime_type;
         }
         this.parseURLDuration();
     },
@@ -1406,10 +1408,12 @@ mediaSource.prototype =
     	//we can issue a HEAD request and read the mime type of the media...
     	// (this will detect media mime type independently of the url name)
     	//http://www.jibbering.com/2002/4/httprequest.html (this should be done by extending jquery's ajax objects)
-        switch(uri.substr(uri.lastIndexOf('.'),4)){
+    	var end_inx =  (uri.indexOf('?')!=-1)? uri.indexOf('?') : uri.length;
+    	var no_param_uri = uri.substr(0, end_inx);
+        switch( no_param_uri.substr(no_param_uri.lastIndexOf('.'),4) ){
         	case '.flv':return 'video/x-flv';break;
         	case '.ogg':return 'video/ogg';break;
-        	case '.anx':return 'video/annodex';break;
+        	case '.anx':return 'video/ogg';break;
 	    }
     }
 };
@@ -1921,14 +1925,14 @@ embedVideo.prototype = {
 	// first check if seek can be done on locally downloaded content. 
 	doSeek : function( perc ){
 		js_log('f:mv_embed:doSeek:'+perc);
-		if( this.media_element.selected_source.supports_url_time_encoding ){
+		if( this.supportsURLTimeEncoding() ){
 			js_log('Seeking to ' + this.seek_time_sec + ' (local copy of clip not loaded at' + perc + '%)');
 			this.stop();			
 			//this.seek_time_sec = 0; 
 		}
 		//do play in 100ms (give things time to clear) 
 		setTimeout('$j(\'#' + this.id + '\').get(0).play()',100);
-	},
+	},	
     doEmbedHTML:function()
     {
     	js_log('f:doEmbedHTML');
@@ -2769,12 +2773,16 @@ embedVideo.prototype = {
 	        	return  document.embeds[this.pid];
 		}
 		return null;
-	},	
+	},
+	//HELPER Functions for selected source	
 	/*
 	* returns the selected source url for players to play
 	*/
 	getURI : function(seek_time_sec){
 		return this.media_element.selected_source.getURI( this.seek_time_sec );
+	},
+	supportsURLTimeEncoding: function(){
+		return this.media_element.selected_source.supports_url_time_encoding;
 	},
 	setSliderValue: function(perc, hide_progress){
 		

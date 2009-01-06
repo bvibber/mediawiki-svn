@@ -280,7 +280,7 @@ remoteSearchDriver.prototype = {
 	drawTabs: function(){
 		var _this = this;
 		//add the tabs to the rsd_results container: 
-		var o='<div class="rsd_tabs_container" style="position:absolute;top:53px;width:100%;left:12px;">';
+		var o='<div class="rsd_tabs_container" style="position:absolute;top:49px;width:100%;left:12px;height:25px;">';
 		o+= '<ul class="rsd_cp_tabs" style="margin: 0 0 0 0;position:absolute;top:0px;padding:0;">'; //no idea why margin does not overwrite from the css
 			o+='<li id="rsd_tab_combined" ><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/remote_search/combined_tab.png"></li>';		 			 	
 			for(var cp_id in  this.content_providers){
@@ -366,7 +366,6 @@ remoteSearchDriver.prototype = {
 			var rObj = _this.getResourceFromId( this.id );						
 			//remove any existing resource edit interface: 
 			$j('#rsd_resource_edit').remove();					
-			
 			//set the media type:
 			if(rObj.mime.indexOf('image')!=-1){	 			
 				//set width to default image_edit_width
@@ -418,6 +417,7 @@ remoteSearchDriver.prototype = {
 				'width': maxWidth + 'px',
 				'height': parseInt( tRatio * maxWidth)  + 'px'
 			}, "slow"); // do it slow to give it a chance to finish loading the HQ version
+			
 			_this.loadHQImg(rObj, {'width':maxWidth}, 'rsd_edit_img', function(){
 				$j('.mv_img_loader').remove();
 			});
@@ -487,7 +487,7 @@ remoteSearchDriver.prototype = {
 			});				
 		}
 		if( mediaType == 'video'){
-		
+			js_log('append html: ' + rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'}) );
 			$j('#clip_edit_disp').append(
 				rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})				
 			);	
@@ -495,7 +495,7 @@ remoteSearchDriver.prototype = {
 			rewrite_by_id('embed_vid',function(){
 				//grab any information that we got from the ROE xml or parsed from the media file
 				rObj = rObj.pSobj.getEmbedObjParsedInfo(rObj, 'embed_vid');					
-				//add the resizable to the doLoad request: 
+				//add the re-sizable to the doLoad request: 
 				loadLibs['$j.ui.resizable']	  = 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
 				loadLibs['$j.fn.hoverIntent'] = 'jquery/plugins/jquery.hoverIntent.js';
 				mvJsLoader.doLoad( loadLibs,function(){				
@@ -724,14 +724,10 @@ remoteSearchDriver.prototype = {
 							'<input type="button" id="preview_do_insert" value="Do Insert">' +
 							'<a href="#" id="preview_close">Do More Modification</a>' +
 						'</div>' +
-					'</div>');
-			//do a page preview given the original page text, insert point
-			js_log('insert at: ' + _this.caret_pos.s + "\n" + rObj.pSobj.getEmbedWikiText( rObj ) );
-			
+					'</div>');						
 			//update the preview_wtext
-			_this.preview_wtext = _this.caret_pos.text.substring(0, _this.caret_pos.s) + 
-								rObj.pSobj.getEmbedWikiText( rObj ) + 
-							   _this.caret_pos.text.substring( _this.caret_pos.s );
+			_this.updatePreviewText( rObj );
+			
 							   
 			_this.getParsedWikiText(_this.preview_wtext, _this.target_title,
 				function(phtml){
@@ -747,6 +743,15 @@ remoteSearchDriver.prototype = {
 			});
 		});
 	},	
+	updatePreviewText:function( rObj ){
+		var _this = this;		
+		//insert at start if textInput cursor has not been set (ie == length) 
+		if( _this.caret_pos.text.length == _this.caret_pos.s)
+			_this.caret_pos.s=0;
+		_this.preview_wtext = _this.caret_pos.text.substring(0, _this.caret_pos.s) + 
+								rObj.pSobj.getEmbedWikiText( rObj ) + 
+							   _this.caret_pos.text.substring( _this.caret_pos.s );
+	},
 	getParsedWikiText:function( wikitext, title,  callback ){
 		var reqObj = {
 			'action':'parse', 
@@ -757,6 +762,7 @@ remoteSearchDriver.prototype = {
 		});	
 	},	
 	insertResource:function( rObj){
+		this.updatePreviewText( rObj );
 		$j('#'+this.target_textbox).val( this.preview_wtext );
 		this.closeAll();
 	},
@@ -924,6 +930,9 @@ mvBaseRemoteSearch.prototype = {
 	//by default just return the existing image: 
 	getImageObj:function( rObj, size, callback){
 		callback( {'url':rObj.poster} );
+	},
+	getEmbedObjParsedInfo:function(rObj, eb_id){
+		return rObj;
 	},
 	getEmbedWikiText:function(rObj){
 		var layout = ( rObj.layout)? rObj.layout:"right"
@@ -1116,7 +1125,7 @@ mediaWikiSearch.prototype = {
 					'thumbwidth':page.imageinfo[0].thumbwidth,
 					'thumbheight':page.imageinfo[0].thumbheight,
 					'mime':page.imageinfo[0].mime,
-					'src':page.imageinfo.url,
+					'src':page.imageinfo[0].url,
 					'desc':page.revisions[0]['*'],		
 					//add pointer to parent serach obj:
 					'pSobj':_this,			
@@ -1124,9 +1133,9 @@ mediaWikiSearch.prototype = {
 						'categories':page.categories
 					}
 				}
-				for(var i in this.resultsObj[page_id]){
-					//js_log('added '+ i +' '+ this.resultsObj[page_id][i]);
-				}
+				//for(var i in this.resultsObj[page_id]){
+				//	js_log('added '+ i +' '+ this.resultsObj[page_id][i]);
+				//}
 			}
 		}else{
 			js_log('no results:' + data);
@@ -1141,6 +1150,9 @@ mediaWikiSearch.prototype = {
 		}
 	},	
 	getImageObj:function( rObj, size, callback ){			
+		if( rObj.mime=='application/ogg' )
+			return callback( {'url':rObj.src, 'poster' : rObj.url } );
+	
 		//build the query to get the req size image: 
 		var reqObj = {
 			'action':'query',
@@ -1155,7 +1167,7 @@ mediaWikiSearch.prototype = {
 		do_api_req( reqObj, this.cp.api_url , function(data){
 			var imObj = {};
 			for(var page_id in  data.query.pages){
-				var iminfo =  data.query.pages[ page_id ].imageinfo[0];
+				var iminfo =  data.query.pages[ page_id ].imageinfo[0];				
 				//check if thumb size > than image size and is jpeg or png (it will not scale well above its max res) 
 				if( ( iminfo.mime=='image/jpeg' || iminfo=='image/png' ) &&
 					iminfo.thumbwidth > iminfo.width ){ 		
@@ -1163,7 +1175,7 @@ mediaWikiSearch.prototype = {
 					imObj['width'] = iminfo.width;
 					imObj['height'] = iminfo.height;					
 				}else{					
-					imObj['url'] = iminfo.thumburl;
+					imObj['url'] = iminfo.thumburl;					
 					imObj['width'] = iminfo.thumbwidth;
 					imObj['height'] = iminfo.thumbheight;
 				}
@@ -1179,14 +1191,25 @@ mediaWikiSearch.prototype = {
 	},
 	getEmbedHTML: function( rObj , options) {
 		//set up the output var with the default values: 
-		var outOpt = { 'width': rObj.width, 'height': rObj.height, 'src' : rObj.url};
-		if( options.max_height ){			
+		var outOpt = { 'width': rObj.width, 'height': rObj.height};
+		if( options['max_height'] ){			
 			outOpt.height = (options.max_height > rObj.height) ? rObj.height : options.max_height;	
-			outOpt.width = (rObj.width / rObj.height) *outOpt.height;	
-		}		
+			outOpt.width = (rObj.width / rObj.height) *outOpt.height;			
+		}				
+		var style_attr = 'style="width:' + outOpt.width + 'px;height:' + outOpt.height +'px"';
+		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
+		
+		//return the html type: 
 		if(rObj.mime.indexOf('image')!=-1){
-			return '<img src="' + outOpt.src  + '" style="width:' + outOpt.width + 'px;height:' + outOpt.height +'px">';
+			return '<img ' + id_attr + ' src="' + rObj.url  + '"' + style_attr + ' >';
 		}
+		if(rObj.mime.indexOf('application/ogg')!=-1){
+			return '<video ' + id_attr + 
+						' src="' + rObj.src + '" ' +
+						style_attr +
+						' poster="'+  outOpt.url + '" '+
+						' ></video>'; 
+		}		
 		js_log('ERROR:unsupored mime type: ' + rObj.mime);
 	},
 	//returns the inline wikitext for insertion (template based crops for now) 
@@ -1195,8 +1218,7 @@ mediaWikiSearch.prototype = {
 			var layout = ( rObj.layout)? rObj.layout:"right"
 			//if crop is null do base output: 
 			if( rObj.crop == null)
-				return this.parent_getEmbedWikiText( rObj );		
-									
+				return this.parent_getEmbedWikiText( rObj );											
 			//using the preview crop template: http://en.wikipedia.org/wiki/Template:Preview_Crop
 			//@@todo should be replaced with server side cropping 
 			return '{{Preview Crop ' + "\n" +

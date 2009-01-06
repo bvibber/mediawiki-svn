@@ -1720,7 +1720,7 @@ var flashEmbed = {
         	$f().getPlugin('screen').css({'opacity':'1.0'});    	
         }
         /* to support local seeks */
-		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
+		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.supportsURLTimeEncoding() )
 		{
 			js_log('flashEmbed: _local_ Seeking to ' + this.seek_time_sec);
 			this.fla.seek( this.seek_time_sec );

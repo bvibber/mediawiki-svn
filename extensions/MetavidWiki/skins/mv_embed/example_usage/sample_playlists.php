@@ -8,7 +8,7 @@ $mv_path = str_replace( 'example_usage/', '', $mv_path );
 <html>
 <head>
 	<title>sample playlist usage</title>
- 	<script type="text/javascript" src="<?php echo htmlspecialchars( $mv_path ) ?>mv_embed.js"></script> 	
+ 	<script type="text/javascript" src="<?php echo htmlspecialchars( $mv_path ) ?>mv_embed.js?<?php echo time()?>"></script> 	
 </head>
 <body>
 <h3> Sample Playlists</h3>
@@ -59,7 +59,7 @@ $sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach ( $sample_embed as $key => $aval ) {
-  		// $key!=8 
+  		//  &&
   		if ( $key != 9 && $key != 8)continue;
   	 ?>
 	    <tr>

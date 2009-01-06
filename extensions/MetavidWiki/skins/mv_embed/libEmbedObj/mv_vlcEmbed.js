@@ -182,7 +182,7 @@ var vlcEmbed = {
     },
     liveFeedRoll: 0,
     onPlaying: function(){
-		if(this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
+		if(this.seek_time_sec != 0 && !this.supportsURLTimeEncoding() )
 		{
 			// VLC seems to have a problem seeking into the future this way
 			var ms_difference = this.seek_time_sec * 1000 - this.vlc.input.time;
