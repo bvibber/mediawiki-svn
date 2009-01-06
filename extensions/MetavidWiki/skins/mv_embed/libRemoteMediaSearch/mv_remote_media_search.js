@@ -11,7 +11,10 @@
 gMsg['mv_media_search']	= 'Media Search';
 gMsg['rsd_box_layout'] 	= 'Box layout';
 gMsg['rsd_list_layout'] = 'List Layout';
-gMsg['rsd_results_desc']= 'Results <b>$0</b> of <b>$1</b>';
+gMsg['rsd_results_desc']= 'Results ';
+gMsg['rsd_results_next'] = ' next ';
+gMsg['rsd_results_prev'] = ' previus ';
+
 gMsg['rsd_layout'] = 	  'Layout:';
 gMsg['rsd_resource_edit']='Edit Resource:';
 
@@ -81,9 +84,13 @@ remoteSearchDriver.prototype = {
 			'lib'	:'mediaWiki',			
 			'resource_prefix': 'WC_', //prefix on imported resources (not applicable if the repository is local)
 			
+			//list all the domains where commons is local? or set this some other way
 			'local_domains': ['wikimedia','wikipedia','wikibooks'],
 			//specific to wiki commons config: 
-			'search_title':false //disable title search 
+			'search_title':false, //disable title search 
+			//set up default range limit
+			'offset'			: 0,
+			'limit'				: 30			
 		},
 		'metavid':{
 			'enabled':1,
@@ -100,6 +107,9 @@ remoteSearchDriver.prototype = {
 			'local_domains': ['metavid'], // if the domain name contains metavid 
 									   // no need to import metavid content to metavid sites
 									   
+			'stream_import_key': 'mv_ogg_low_quality', // which stream to import, could be mv_ogg_high_quality 
+													  //or flash stream, see ROE xml for keys
+													  
 			'remote_embed_ext': false //if running the remoteEmbed extension no need to copy local 
 									  //syntax will be [remoteEmbed:roe_url link title]							   		 
 		},
@@ -120,7 +130,7 @@ remoteSearchDriver.prototype = {
 	image_edit_width	: 600,
 	video_edit_width	: 400,
 	insert_text_pos		: 0, //insert at the start (will be overwiten by the user cursor pos) 
-	result_display_mode : 'box', //box or list or preview
+	result_display_mode : 'box', //box or list or preview	
 	
 	init:function( initObj ){
 		js_log('remoteSearchDriver:init');
@@ -242,20 +252,31 @@ remoteSearchDriver.prototype = {
 			'</div>');		
 		//get a remote search object for each search provider and run the search
 		for(var cp_id in  this.content_providers){
-			cp = this.content_providers[ cp_id ];
+			var cp = this.content_providers[ cp_id ];			
+				
 			//only run the search for default item (unless combined is selected) 
 			if( !cp.d || this.disp_item == 'combined' )
 				continue;			
+			
+			//set display if unset
+			if(!this.disp_item)
+				this.disp_item = cp_id;
+				
 			//check if we need to update: 
 			if(typeof cp.sObj != 'undefined'){
-				if(cp.sObj.last_query == $j('#rsd_q').val())
+				if(cp.sObj.last_query == $j('#rsd_q').val() && cp.sObj.last_offset == cp.offset)
 					continue;					
 			}			
 			//else we need to run the search: 
 			var iObj = {'cp':cp, 'rsd':this};			
 			eval('cp.sObj = new '+cp.lib+'Search(iObj);');
 			if(!cp.sObj)
-				js_log('Error: could not find search lib for ' + cp_id);						
+				js_log('Error: could not find search lib for ' + cp_id);
+			
+			//inherit defaults if not set: 
+			cp.limit = (cp.limit) ? cp.limit : cp.sObj.limit;
+			cp.offset = (cp.offset) ? cp.offset : cp.sObj.offset;
+			
 			//do search:
 			cp.sObj.getSearchResults();							
 		}	
@@ -338,8 +359,8 @@ remoteSearchDriver.prototype = {
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
-						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result res_' + rInx +'" style="' + disp + 'width:90%">';
-							o+='<img class="rsd_res_item" id="res_' + cp_id +'" style="float:left;width:' + _this.thumb_width + 'px; padding:5px;" src="' + rItem.poster + '">';			
+						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
+							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="float:left;width:' + _this.thumb_width + 'px; padding:5px;" src="' + rItem.poster + '">';			
 							o+= rItem.desc ;							
 						o+='</div>';
 						o+='<div style="clear:both" />';
@@ -355,13 +376,13 @@ remoteSearchDriver.prototype = {
 	},
 	addResultBindings:function(){
 		var _this = this;			
-		$j('.mv_clip_box_result').hover(function(){
-			$j(this).addClass('mv_clip_box_result_over');
+		$j('.mv_clip_'+_this.result_display_mode+'_result').hover(function(){
+			$j(this).addClass('mv_clip_'+_this.result_display_mode+'_result_over');
 		},function(){
-			$j(this).removeClass('mv_clip_box_result_over');
-		});		
+			$j(this).removeClass('mv_clip_'+_this.result_display_mode+'_result_over');
+		});				
 		//resource click action: (bring up the resource editor) 		
-		$j('.rsd_res_item').click(function(){		
+		$j('.rsd_res_item').click(function(){				
 			//get the resource obj:
 			var rObj = _this.getResourceFromId( this.id );						
 			//remove any existing resource edit interface: 
@@ -381,7 +402,7 @@ remoteSearchDriver.prototype = {
 			//append to the top level of model window: 
 			$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
 				'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
-					'<h3 style="margin:4px;">' + getMsg('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
+					'<h3 id="rsd_resource_title" style="margin:4px;">' + getMsg('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
 					'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:30px;left:0px;bottom:0px;'+
 						'width:' + (maxWidth + 30) + 'px;" >' +
 							mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
@@ -727,8 +748,7 @@ remoteSearchDriver.prototype = {
 					'</div>');						
 			//update the preview_wtext
 			_this.updatePreviewText( rObj );
-			
-							   
+										   
 			_this.getParsedWikiText(_this.preview_wtext, _this.target_title,
 				function(phtml){
 					$j('#rsd_preview_display').html( phtml );
@@ -761,10 +781,13 @@ remoteSearchDriver.prototype = {
 			callback( data.parse.text['*'] );
 		});	
 	},	
-	insertResource:function( rObj){
-		this.updatePreviewText( rObj );
-		$j('#'+this.target_textbox).val( this.preview_wtext );
-		this.closeAll();
+	insertResource:function( rObj){		
+		var _this = this
+		this.checkImportResource( rObj, function(){
+			_this.updatePreviewText( rObj );
+			$j('#'+_this.target_textbox).val( _this.preview_wtext );
+			_this.closeAll();
+		});			
 	},
 	closeAll:function( rObj ){
 		$j('#modalbox').fadeOut("normal",function(){
@@ -792,9 +815,11 @@ remoteSearchDriver.prototype = {
 					'title = "' + getMsg('rsd_list_layout') + '" '+
 					'src = "' +  ( (_this.result_display_mode=='list')?list_dark_url:list_light_url ) + '" '+			
 					'style="width:20px;height:20px;cursor:pointer;">'+			
-			'<span style="position:absolute;right:5px;">'+ getMsg('rsd_results_desc', new Array('1 - 20', '420'))+'</span>'+
+			'<span id="rsd_paging_ctrl" style="position:absolute;right:5px;"></span>'+
 			'</div>'
 		);
+		//get paging with bindings:
+		this.getPaging('#rsd_paging_ctrl');
 				
 		$j('#msc_box_layout').hover(function(){			
 			$j(this).attr("src", box_dark_url );
@@ -816,9 +841,44 @@ remoteSearchDriver.prototype = {
 			_this.setDispMode('list');
 		});
 	},
+	getPaging:function(target){
+		var _this = this;
+		//if more than one repository displayed (disable paging)
+		if(this.disp_item ==  'combined'){
+			$j(target).html('no paging for combined results');
+			return ;
+		}				
+		for(var cp_id in  this.content_providers){
+			var cp = this.content_providers[ cp_id ];			
+			if(this.disp_item == cp_id){				
+				js_log('getPaging:'+ cp_id);
+				var out = getMsg('rsd_results_desc') +  (cp.offset+1) + ' to ' + (cp.offset + cp.limit);
+				//check if we have more results (next prev link)
+				if(  cp.offset >=  cp.limit )
+					out+=' <a href="#" id="rsd_pprev">' + getMsg('rsd_results_prev') + cp.limit + '</a>';
+				if( cp.sObj.more_results )					
+					out+=' <a href="#" id="rsd_pnext">' + getMsg('rsd_results_next') + cp.limit + '</a>';
+				$j(target).html(out);
+				//set bindings 
+				$j('#rsd_pnext').click(function(){
+					cp.offset += cp.limit;
+					_this.runSearch();
+				});
+				$j('#rsd_pprev').click(function(){
+					cp.offset -= cp.limit;
+					if(cp.offset<0)
+						cp.offset=0;
+					_this.runSearch();
+				});
+				
+				return;				
+			}
+		}						
+		
+	},
 	selectTab:function( selected_cp_id ){
 		js_log('select tab: ' + selected_cp_id);
-		this.disp_item =selected_cp_id;
+		this.disp_item = selected_cp_id;
 		//set display to unselected: 
 		for(var cp_id in  this.content_providers){
 			cp = this.content_providers[ cp_id ];
@@ -857,7 +917,14 @@ mvBaseRemoteSearch.prototype = {
 	completed_req:0,
 	num_req:0,	
 		
-	resultsObj:{},
+	resultsObj:{},	
+	
+	//default search result values for paging: 
+	offset 			:0,	
+	limit  			:20,
+	more_results	:false,
+	num_results		:null,
+	
 	//init the object: 
 	init:function( initObj ){		
 		js_log('mvBaseRemoteSearch:init');
@@ -921,7 +988,8 @@ mvBaseRemoteSearch.prototype = {
 			}			
 			//force a mime type for now.. in the future generalize for other RSS feeds 
 			rObj['mime'] = 'video/ogg';
-			//add pointer to parent search obj:
+			//add pointer to parent search obj:( this.cp.limit )? this.cp.limit : this.limit,
+		
 			rObj['pSobj'] = _this;
 			//add the result to the result set: 
 			_this.resultsObj[inx] = rObj;			
@@ -986,18 +1054,25 @@ metavidSearch.prototype = {
 		}
 		//do basic query:
 		this.last_query = $j('#rsd_q').val();
+		this.last_offset = cp.offset;
 		url += '&f[0][t]=match&f[0][v]=' + $j('#rsd_q').val();
+		//add offset limit: 
+		url+='&limit=' + this.cp.limit;
+		url+='&offset=' + this.cp.offset;
+		
 		do_request(url, function(data){ 
 			//should have an xml rss data object:
 			_this.addRSSData( data , url );
-			//do some metavid specific pos proccessing on the rObj data: 
+			//do some metavid specific pos processing on the rObj data: 
 			for(var i in _this.resultsObj){
 				var rObj = _this.resultsObj[i];	
 				var proe = parseUri( rObj['roe_url'] );				
 				rObj['start_time'] = proe.queryKey['t'].split('/')[0];
 				rObj['end_time'] = proe.queryKey['t'].split('/')[1];	
+				rObj['stream_name'] = proe.queryKey['stream_name'];
 				//transform the title into a wiki_safe title: 			
-				rObj['titleKey'] = proe.queryKey['stream_name'] + '_' + rObj['start_time'].replace(/:/g,'.') + '_' + rObj['end_time'].replace(/:/g,'.') + '.ogg';						
+				//rObj['titleKey'] = proe.queryKey['stream_name'] + '_' + rObj['start_time'].replace(/:/g,'.') + '_' + rObj['end_time'].replace(/:/g,'.') + '.ogg';
+				rObj['titleKey'] = proe.queryKey['stream_name'] + '/' + rObj['start_time'] + '/' + rObj['end_time'] + '__.ogg';						
 			}			
 			//done loading: 
 			_this.loading=0;
@@ -1006,10 +1081,8 @@ metavidSearch.prototype = {
 	getEmbedWikiText:function(rObj, options){
 		//if we are using a local copy do the standard b:  
 		if( this.cp.local_copy == true)
-			return this.parent_getEmbedWikiText(rObj, options);						
-		
-		//if local_copy is false and embed metavid extension is enabled: 
-		
+			return this.parent_getEmbedWikiText(rObj, options);								
+		//if local_copy is false and embed metavid extension is enabled: 		
 		return 
 	},
 	getEmbedHTML:function( rObj , options ){
@@ -1043,10 +1116,10 @@ metavidSearch.prototype = {
 		var year_full = (dParts[3].length==2)?'20'+dParts[3].toString():dParts[3];
 		d.setFullYear(year_full, dParts[1]-1, dParts[2]);	
 		rObj['date'] = 	d.toDateString();		
-		rObj['licence_template_tag']='PD-USGov';
-				
-		js_log('url is: '+rObj.url);				
-		
+		rObj['licence_template_tag']='PD-USGov';		
+		//update based on new start time: 		
+		js_log('url is: ' + rObj.src + ' ns: ' + rObj.start_time + ' ne:' + rObj.end_time);		
+						
 		return rObj;
 	}
 }
@@ -1065,6 +1138,7 @@ mediaWikiSearch.prototype = {
 				this['parent_'+i] =  baseSearch[i];
 			}
 		}
+		//inherit the cp settings for 
 	},
 	getSearchResults:function(){
 		var _this = this;
@@ -1072,7 +1146,8 @@ mediaWikiSearch.prototype = {
 		js_log('f:getSearchResults for:' + $j('#'+this.target_input).val() );		
 		//empty out the current results: 
 		this.resultsObj={};
-		//do two queries against the Image / File / MVD namespace: 								
+		//do two queries against the Image / File / MVD namespace:
+		 								
 		//build the image request object: 
 		var reqObj = {
 			'action':'query', 
@@ -1080,7 +1155,8 @@ mediaWikiSearch.prototype = {
 			'gsrsearch': encodeURIComponent( $j('#rsd_q').val() ),  
 			'gsrnamespace':6, //(only search the "file" namespace (audio, video, images)
 			'gsrwhat':'title',
-			'gsrlimit':30,
+			'gsrlimit':  this.cp.limit,
+			'gsroffset': this.cp.offset,
 			'prop':'imageinfo|revisions|categories',
 			'iiprop':'url|mime',
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
@@ -1107,7 +1183,10 @@ mediaWikiSearch.prototype = {
 	},	
 	addResults:function( data ){	
 		var _this = this
-		//make sure we have pages to idoerate: 
+		//check if we have 
+		if( typeof data['query-continue'].search != 'undefined')
+			this.more_results = true;			
+		//make sure we have pages to iderate: 
 		if(data.query && data.query.pages){
 			for(var page_id in  data.query.pages){
 				var page =  data.query.pages[ page_id ];

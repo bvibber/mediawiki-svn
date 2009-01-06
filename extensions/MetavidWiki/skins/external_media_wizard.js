@@ -14,11 +14,16 @@ var mv_embed_url = null;
 if(wgAction=='edit'){
 	//add onPage ready request:
 	addOnloadHook( function(){			
-		var toolbar = document.getElementById("toolbar");	
-		toolbar.innerHTML =  toolbar.innerHTML + ''+
-			'<img src="http://upload.wikimedia.org/wikipedia/commons/8/86/Button_add_media.png" '+
-				'style="cursor:pointer;" ' +
-				'onClick="mv_do_load_wiz()" />';
+		var toolbar = document.getElementById("toolbar");
+		var imE = document.createElement('img');
+		imE.style.cursor = 'pointer';		
+		imE.src = 'http://upload.wikimedia.org/wikipedia/commons/8/86/Button_add_media.png';
+		toolbar.appendChild(imE);	
+		imE.setAttribute('onClick', 'mv_do_load_wiz()');
+		//addHandler only works once
+		/*addHandler( imE, 'click', function() {
+			mv_do_load_wiz();
+		});*/
 	});
 }
 var caret_pos={};
@@ -27,20 +32,25 @@ function mv_do_load_wiz(){
 	var txtarea = document.editform.wpTextbox1;
 	caret_pos.s = getTextCusorStartPos( txtarea );
 	caret_pos.e = getTextCusorEndPos( txtarea );		
-	caret_pos.text = txtarea.value;
-
+	caret_pos.text = txtarea.value;	
 	//show the loading screen:
-	var body_elm = document.getElementsByTagName("body")[0];
-	body_elm.innerHTML = body_elm.innerHTML + ''+		
-		'<div id="modalbox" style="background:#DDD;border:3px solid #666666;font-size:115%;'+
-			'top:30px;left:20px;right:20px;bottom:30px;position:fixed;z-index:100;">'+
-			
-			'loading external media wizard<blink>...</blink>'+
-			
-		'</div>'+		
-		'<div id="mv_overlay" style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
-			'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
-			'opacity: 0.6;"/>';
+	var elm = document.getElementById('modalbox')
+	if(elm){
+		//use jquery to re-display the search
+		if( typeof $j != 'undefined'){
+			$j('#modalbox,#mv_overlay').show();
+		}
+	}else{
+		var body_elm = document.getElementsByTagName("body")[0];
+		body_elm.innerHTML = body_elm.innerHTML + ''+		
+			'<div id="modalbox" style="background:#DDD;border:3px solid #666666;font-size:115%;'+
+				'top:30px;left:20px;right:20px;bottom:30px;position:fixed;z-index:100;">'+			
+				'loading external media wizard<blink>...</blink>'+			
+			'</div>'+		
+			'<div id="mv_overlay" style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
+				'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
+				'opacity: 0.6;"/>';
+	}
 
 	//get mv_embed path from _this_ file location: 
 	if(!mv_embed_url)
@@ -70,7 +80,7 @@ function check_for_mv_embed(){
 			'target_id':'modalbox',
 			'profile':'mediawiki_edit',
 			'target_textbox': 'wpTextbox1', 
-			'caret_pos':caret_pos,			
+			'caret_pos': caret_pos,			
 			//note selections in the textbox will take over the default query
 			'default_query': wgTitle,
 			'target_title':wgPageName,
@@ -80,7 +90,7 @@ function check_for_mv_embed(){
 	}
 }
 function getMvEmbedUrl(){
-	for(var i in document.getElementsByTagName('script')){
+	for(var i=0; i < document.getElementsByTagName('script').length; i++){
 		var s = document.getElementsByTagName('script')[i];
 		if( s.src.indexOf('external_media_wizard.js') != -1 ){
 			//use the path: 

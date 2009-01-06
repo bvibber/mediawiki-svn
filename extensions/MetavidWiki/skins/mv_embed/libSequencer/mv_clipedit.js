@@ -178,6 +178,14 @@ mvClipEdit.prototype = {
 		//update video related keys		
 		this.rObj['start_time'] = $j('#mv_start_hr_rsd').val();
 		this.rObj['end_time'] = $j('#mv_end_hr_rsd').val();
+		//select the ogg stream		
+		if( this.rObj.pSobj.cp.stream_import_key && this.rObj.roe_url){			
+			var source = $j('#embed_vid').get(0).media_element.getSourceById( this.rObj.pSobj.cp.stream_import_key );
+			this.rObj['src'] = source.getURI();
+			js_log("g src_key: " + this.rObj.pSobj.cp.stream_import_key + ' src:' + this.rObj['src']) ;
+		}
+		//update the title: 
+		this.rObj['title'] = ' updated title';
 	},
 	applyCrop:function(){
 		var _this = this;
@@ -215,7 +223,7 @@ mvClipEdit.prototype = {
 		});
 	}
 }
-// mv_lock_vid_updates defeined in mv_stream.js (we need further refactoring)
+// mv_lock_vid_updates defined in mv_stream.js (we need further refactoring )
 if(typeof mv_lock_vid_updates == 'undefined')
 	mv_lock_vid_updates= false;
 

@@ -81,7 +81,7 @@ function mv_do_setup_search(req_mode){
 					'size="9"  type="text" name="f['+inx+'][v]" value="" >');
 			break;	
 			case 'date_range':
-				$j('#mvs_'+inx+'_tc').html(global_loading_txt);
+				$j('#mvs_'+inx+'_tc').html( getMsg('loading_txt') );
 				var load_js_set = { 'Date.fromString':'jquery/plugins/date.js',
 									'$j.fn.datePicker':'jquery/plugins/jquery.datePicker.js'};
 				if(embedTypes.msie6){

@@ -1264,10 +1264,10 @@ mediaSource.prototype =
         else        	
             this.mime_type = this.detectType(this.src);
 		
-		//set the title if unset:         
-        if( !this.title ){
+		//set the title if unset:
+        if( !this.title )
             this.title = this.mime_type;
-        }
+
         this.parseURLDuration();
     },
     updateSource:function(element){
@@ -1484,9 +1484,24 @@ mediaElement.prototype =
     /** Returns the array of mediaSources of this element.
         \returns {Array} Array of mediaSource elements.
     */
-    getSources:function()
+    getSources:function( mime_filter )
     {
-        return this.sources;
+    	if(!mime_filter)
+        	return this.sources;
+        //apply mime filter: 
+       	var source_set = new Array();
+        for(var i=0; i < this.sources; i++){
+        	if( this.sources[i].mime_type.indexOf( mime_filter ) != -1 )
+        		source_set.push( this.sources[i] );
+        }
+        return source_set;
+    },
+    getSourceById:function( source_id ){
+    	for(var i=0; i < this.sources; i++){
+    		if( this.sources[i].id ==  source_id)
+    			return this.sources[i];
+    	}
+    	return null;
     },
     /** Selects a particular source for playback.
     */

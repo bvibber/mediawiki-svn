@@ -552,10 +552,21 @@ ul.rsd_cp_tabs li {
 	overflow:hidden;
 }
 .mv_clip_box_result_over{
-	border: thin solid #F99;
+	border: thin solid #F99;	
 }
 .mv_clip_list_result{
 	padding:10px;
+	border: thin solid #BBB;
+	clear:both;
+}
+.mv_clip_list_result_over{
+	padding:10px;
+	border: thin solid #F99;
+	clear:both;
+}
+.rsd_res_item{
+	cursor:pointer;
+	display:block;
 }
 #rds_results_bar{
 	margin:4px;
