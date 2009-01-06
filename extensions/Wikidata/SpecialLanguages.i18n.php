@@ -98,7 +98,7 @@ Please check the web address.',
 	'ow_meaningsofsubtitle'                 => '<em>Wiki link:</em> [[$1]]',
 	'ow_Permission_denied'                  => '<h2>Permission denied</h2>',
 	'ow_copy_no_action_specified'           => 'Please specify an action',
-	'ow_copy_help'                          => 'Someday, we might help you.',
+	'ow_copy_help'                          => 'Help is not implemented yet.',
 	'ow_please_proved_dmid'                 => 'It seems your input is missing a "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Please contact a server administrator.',
 	'ow_please_proved_dc1'                  => 'It seems your input is missing a "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
