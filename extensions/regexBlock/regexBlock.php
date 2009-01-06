@@ -1,6 +1,8 @@
 <?php
 /**
- * Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a special page to add/manage blocks
+ * Extension used for blocking users names and IP addresses with regular
+ * expressions. Contains both the blocking mechanism and a special page to
+ * add/manage blocks
  *
  * @file
  * @ingroup Extensions
@@ -34,15 +36,12 @@ define('REGEXBLOCK_BLOCKERS_KEY', 'regex_blockers');
 define('REGEXBLOCK_SPECIAL_KEY', 'regexBlockSpecial');
 define('REGEXBLOCK_SPECIAL_NUM_RECORD', 'number_records');
 
-/* add hook */
-$wgHooks['GetBlockedStatus'][] = 'wfRegexBlockCheck';
-
-/* generic reasons */
-global $wgContactLink;
-
-if( $wgContactLink == '' ){
-	$wgContactLink = '[[Special:Contact|contact us]]';
-}
+// generic reasons
+$wgContactLink = '[[Special:Contact|contact us]]';
+// Set this to the database to use for blockedby and stats_blockedby tables
+// false means local database
+// e.g. $wgRegexBlockDatabase = $wgSharedDB;
+$wgRegexBlockDatabase = false;
 
 // New user right
 $wgAvailableRights[] = 'regexblock';
@@ -58,13 +57,17 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'regexblock-desc',
 );
 
+// add hook
+$wgHooks['GetBlockedStatus'][] = 'RegexBlock::check';
+
 // Set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['RegexBlock'] = $dir . 'regexBlock.i18n.php';
+$wgExtensionAliasesFiles['RegexBlock'] = $dir . 'regexBlock.alias.php';
+
+$wgAutoloadClasses['RegexBlock'] = $dir . 'regexBlockCore.php';
+
+// Special page
 $wgAutoloadClasses['RegexBlockForm'] = $dir . 'SpecialRegexBlock.php';
 $wgSpecialPages['RegexBlock'] = 'RegexBlockForm';
-// Special page group for MW 1.13+
 $wgSpecialPageGroups['RegexBlock'] = 'users';
-
-/* core includes */
-require_once("$IP/extensions/regexBlock/regexBlockCore.php");

@@ -66,7 +66,7 @@ class RegexBlockForm extends SpecialPage {
 		}
 
 		// Initial output
-		$this->mTitle = Title::makeTitle( NS_SPECIAL, 'RegexBlock' );
+		$this->mTitle = $this->getTitle();
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setPageTitle( wfMsg('regexblock-page-title') );
 		$wgOut->setArticleRelated( false );
@@ -130,8 +130,7 @@ class RegexBlockForm extends SpecialPage {
 		wfProfileIn( __METHOD__ );
    
 		$token = htmlspecialchars( $wgUser->editToken() );
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'RegexBlock' );
-		$action = $titleObj->escapeLocalURL( "action=submit" )."&".$this->makeListUrlParams();
+		$action = $this->mTitle->escapeLocalURL( "action=submit&".$this->makeListUrlParams() );
 		$err = $this->mError;
 		$msg = $this->mMsg;
 
@@ -206,9 +205,8 @@ class RegexBlockForm extends SpecialPage {
 
 		wfProfileIn( __METHOD__ );
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'RegexBlock' );
-		$action = $titleObj->escapeLocalURL("") ."?".$this->makeListUrlParams();
-		$action_unblock = $titleObj->escapeLocalURL("action=delete") ."&".$this->makeListUrlParams();
+		$action = $this->mTitle->escapeLocalURL( $this->makeListUrlParams() );
+		$action_unblock = $this->mTitle->escapeLocalURL( "action=delete&".$this->makeListUrlParams() );
 
 		$regexData = new RegexBlockData();
 		$this->numResults = $regexData->fetchNbrResults();
@@ -261,7 +259,7 @@ class RegexBlockForm extends SpecialPage {
 				$exact_match = (($row['exact_match']) ? wfMsg('regexblock-view-match') : wfMsg('regexblock-view-regex'));
 				$create_block = ($row['create_block']) ? wfMsg('regexblock-view-account') : '';
 				$reason = '<i>'.$row['reason'].'</i>';
-				$stats_link = $mSkin->makeKnownLinkObj( $titleObj, wfMsg('regexblock-view-stats'), 'action=stats&blckid=' . urlencode($row['blckid']) . '&' . $urls);
+				$stats_link = $mSkin->makeKnownLinkObj( $this->mTitle, wfMsg('regexblock-view-stats'), 'action=stats&blckid=' . urlencode($row['blckid']));
 
 				$wgOut->addHTML('<li style="border-bottom:1px dashed #778899; padding-bottom:2px;font-size:11px">
 					<b><font style="color:#3B7F07; font-size:12px">'.$row['blckby_name'].'</font>'.$comma.$exact_match.$create_block.'</b>'.$comma.' 
@@ -332,13 +330,12 @@ class RegexBlockForm extends SpecialPage {
 		$result = RegexBlockData::blockUser($this->mRegexBlockedAddress, $expiry, $this->mRegexBlockedExact, $this->mRegexBlockedCreation, $this->mRegexBlockedReason);
 		/* clear memcached */
 		$uname = $wgUser->getName();
-		wfRegexBlockUnsetKeys($this->mRegexBlockedAddress);
+		RegexBlock::unsetKeys($this->mRegexBlockedAddress);
 
 		wfProfileOut( __METHOD__ );
 		
 		/* redirect */
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'RegexBlock' );
-		$wgOut->redirect( $titleObj->getFullURL( 'action=success_block&ip=' .urlencode( $this->mRegexBlockedAddress )."&".$this->makeListUrlParams() ) );
+		$wgOut->redirect( $this->mTitle->getFullURL( 'action=success_block&ip=' .urlencode( $this->mRegexBlockedAddress )."&".$this->makeListUrlParams() ) );
 
 		return;
 	}
@@ -351,34 +348,16 @@ class RegexBlockForm extends SpecialPage {
 
 		wfProfileIn( __METHOD__ );
 
-		$result = false;
 		$ip = $wgRequest->getVal( 'ip' );
 		$blocker = $wgRequest->getVal( 'blocker' );
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'RegexBlock' );
 
-		if ( function_exists( 'wfRegexBlockClearExpired' ) ) {
-			$result = wfRegexBlockClearExpired( $ip, $blocker );
-		} else {
-			/* delete */
-			$dbw = wfGetDB( DB_MASTER );
-
-			$dbw->delete( REGEXBLOCK_TABLE, 
-					array("blckby_name = {$dbw->addQuotes($ip)}"),
-					__METHOD__
-				);
-
-			if ( $dbw->affectedRows() ) {
-				/* success, remember to delete cache key  */
-				wfRegexBlockUnsetKeys( $ip );
-				$result = true;
-			}
-		}
+		$result = RegexBlock::clearExpired( $ip, $blocker );
 
 		wfProfileOut( __METHOD__ );
 		if ( $result === true ) {
-			$wgOut->redirect( $titleObj->getFullURL( 'action=success_unblock&ip='.urlencode($ip).'&'.$this->makeListUrlParams() ) );
+			$wgOut->redirect( $this->mTitle->getFullURL( 'action=success_unblock&ip='.urlencode($ip).'&'.$this->makeListUrlParams() ) );
 		} else {
-			$wgOut->redirect( $titleObj->getFullURL( 'action=failure_unblock&ip='.urlencode($ip).'&'.$this->makeListUrlParams() ) );
+			$wgOut->redirect( $this->mTitle->getFullURL( 'action=failure_unblock&ip='.urlencode($ip).'&'.$this->makeListUrlParams() ) );
 		}
 
 		return;
@@ -394,8 +373,7 @@ class RegexBlockForm extends SpecialPage {
 
 		wfProfileIn( __METHOD__ );
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'RegexBlock' );
-		$action = $titleObj->escapeLocalURL("") ."?".$this->makeListUrlParams(true);
+		$action = $this->mTitle->escapeLocalURL( $this->makeListUrlParams(true) );
 		$skin = $wgUser->getSkin();
 
 		$regexData = new RegexBlockData();
@@ -410,8 +388,8 @@ class RegexBlockForm extends SpecialPage {
 			$stats_list = $regexData->getStatsData($blckid, $this->mLimit, $this->mOffset);
 		}
 
-		$blocker_link = $skin->makeKnownLinkObj( $titleObj, $blockInfo->blckby_blocker, 'filter=' . urlencode($blockInfo->blckby_blocker) );
-		$blockername_link = $skin->makeKnownLinkObj( $titleObj, $blockInfo->blckby_name, 'rfilter=' . urlencode($blockInfo->blckby_name) );
+		$blocker_link = $skin->makeKnownLinkObj( $this->mTitle, $blockInfo->blckby_blocker, 'filter=' . urlencode($blockInfo->blckby_blocker) );
+		$blockername_link = $skin->makeKnownLinkObj( $this->mTitle, $blockInfo->blckby_name, 'rfilter=' . urlencode($blockInfo->blckby_name) );
 
 		$wgOut->addHTML('<h5>'.wfMsg('regexblock-stats-title').' <strong> '.$blockername_link.'</strong> ('.wfMsg('regexblock-view-block-by').': <b>'.$blocker_link.'</b>,&nbsp;<i>'.( ($blockInfo->blckby_reason) ? wfMsg('regexblock-form-reason') . $blockInfo->blckby_reason : wfMsg('regexblock-view-reason-default') ).'</i>)</h5><br />');
 		if ( !empty( $stats_list ) ) {
@@ -447,17 +425,17 @@ class RegexBlockData {
 	 * Fetch number of all rows 
 	 */
 	public function fetchNbrResults() {
-		global $wgMemc, $wgSharedDB;
+		global $wgMemc;
 
 		wfProfileIn( __METHOD__ );
 
 		$this->mNbrResults = 0;
 		/* we use memcached here */
-		$key = wfForeignMemcKey( $wgSharedDB, '', REGEXBLOCK_SPECIAL_KEY, REGEXBLOCK_SPECIAL_NUM_RECORD );
+		$key = RegexBlock::memcKey( REGEXBLOCK_SPECIAL_KEY, REGEXBLOCK_SPECIAL_NUM_RECORD );
 		$cached = $wgMemc->get( $key );
 
 		if ( empty( $cached ) ) {
-			$dbr = wfGetDB( DB_MASTER );
+			$dbr = RegexBlock::getDB( DB_MASTER );
 
 			$oRes = $dbr->select( REGEXBLOCK_TABLE,
 				array("COUNT(*) AS cnt"),
@@ -488,38 +466,7 @@ class RegexBlockData {
 	 * @return $blockers_array
 	 */
 	public function fetchBlockers() {
-		$blockers_array = array();
-		wfProfileIn( __METHOD__ );
-
-		if ( function_exists( 'wfRegexBlockGetBlockers' ) ) {
-			$blockers_array = wfRegexBlockGetBlockers();
-		} else {
-			global $wgMemc, $wgSharedDB;
-			$key = wfForeignMemcKey( $wgSharedDB, '', REGEXBLOCK_BLOCKERS_KEY );
-			$cached = $wgMemc->get( $key );
-
-			if ( !is_array( $cached ) ) {
-				/* get from database */
-				$dbr = wfGetDB( DB_MASTER );
-				$oRes = $dbr->select( REGEXBLOCK_TABLE,
-					array("blckby_blocker"),
-					array("blckby_blocker <> ''"),
-					__METHOD__,
-					array("GROUP BY" => "blckby_blocker")
-				);
-				while( $oRow = $dbr->fetchObject($oRes) ) {
-					$blockers_array[] = $oRow->blckby_blocker;
-				}
-				$dbr->freeResult($oRes);
-				$wgMemc->set( $key, $blockers_array, REGEXBLOCK_EXPIRE );
-			} else {
-				/* get from cache */
-				$blockers_array = $cached;
-			}
-		}
-
-		wfProfileOut( __METHOD__ );
-		return $blockers_array;
+		return RegexBlock::getBlockers();
 	}
 
 	/**
@@ -531,13 +478,13 @@ class RegexBlockData {
 	 * @return $blocker_list
 	 */
 	public function getBlockersData( $current = '', $username = '', $limit, $offset ) {
-		global $wgSharedDB, $wgLang, $wgUser;
+		global $wgLang, $wgUser;
 
 		wfProfileIn( __METHOD__ );
 
 		$blocker_list = array();
 		/* get data and play with data */
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = RegexBlock::getDB( DB_MASTER );
 		$conds = array("blckby_blocker <> ''");
 
 		if ( !empty( $current ) ) {
@@ -588,12 +535,10 @@ class RegexBlockData {
 	 * @return $nbrStats
 	 */
 	public function fetchNbrStatResults( $id ) {
-		global $wgSharedDB;
-
 		wfProfileIn( __METHOD__ );
 		$nbrStats = 0;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = RegexBlock::getDB( DB_SLAVE );
 		$oRes = $dbr->select( REGEXBLOCK_STATS_TABLE,
 			array("COUNT(*) AS cnt"),
 			array("stats_blckby_id = '".intval($id)."'"),
@@ -618,13 +563,11 @@ class RegexBlockData {
 	 * @return $stats
 	 */
 	public function getStatsData( $id, $limit = 50, $offset = 0 ) {
-		global $wgSharedDB;
-
 		wfProfileIn( __METHOD__ );
 		$stats = array();
 
 		/* from database */
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = RegexBlock::getDB( DB_SLAVE );
 		$conds = array("stats_blckby_id = '".intval($id)."'");
 		$oRes = $dbr->select( REGEXBLOCK_STATS_TABLE,
 			array("stats_blckby_id", "stats_user", "stats_blocker", "stats_timestamp", "stats_ip", "stats_match", "stats_dbname"),
@@ -649,12 +592,10 @@ class RegexBlockData {
 	 * @return $record
 	 */
 	public function getRegexBlockById( $id ) {
-		global $wgSharedDB;
-
 		wfProfileIn( __METHOD__ );
 		$record = null;
 
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = RegexBlock::getDB( DB_MASTER );
 		$oRes = $dbr->select( REGEXBLOCK_TABLE,
 			array("blckby_id", "blckby_name", "blckby_blocker", "blckby_timestamp", "blckby_expire", "blckby_create", "blckby_exact", "blckby_reason"),
 			array("blckby_id = '".intval($id)."'"),
@@ -684,7 +625,7 @@ class RegexBlockData {
 
 		wfProfileIn( __METHOD__ );
 		/* make insert */
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = RegexBlock::getDB( DB_MASTER );
 		$name = $wgUser->getName();
 
 		$oRes = $dbw->replace( REGEXBLOCK_TABLE,
