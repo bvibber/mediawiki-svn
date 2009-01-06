@@ -22,9 +22,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Darth Kule
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'dplforum-desc' => 'Short description of the DPLforum extension, shown on [[Special:Version]].',
+	'dplforum-by' => '* $1 is username',
 	'dplforum-never' => '{{Identical|Never}}',
 );
 
@@ -44,14 +46,22 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'dplforum-desc' => 'امتداد منتدى معتمد على DPL',
-	'dplforum-by' => 'بواسطة $1',
+	'dplforum-by' => 'بـ $1',
 	'dplforum-edited' => '- آخر تعديل',
 	'dplforum-never' => 'أبدا',
 	'dplforum-toofew' => 'منتدى DPL: تصنيفات قليلة جدا!',
 	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'dplforum-never' => 'Ніколі',
 );
 
 /** Bulgarian (Български)
@@ -65,10 +75,24 @@ $messages['bg'] = array(
 	'dplforum-toomany' => 'DPL Форум: Твърде много категории!',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'dplforum-desc' => 'Proširenje foruma bazirano na DPL-u',
+	'dplforum-by' => 'od korisnika $1',
+	'dplforum-edited' => '- Zadnji put uređeno',
+	'dplforum-never' => 'Nikad',
+	'dplforum-toofew' => 'DPL Forum: Premalo kategorija!',
+	'dplforum-toomany' => 'DPL Forum: Previše kategotija!',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Toniher
  */
 $messages['ca'] = array(
+	'dplforum-by' => 'per $1',
 	'dplforum-never' => 'Mai',
 );
 
@@ -103,7 +127,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'dplforum-desc' => 'Forumowe rozšyrjenje na zakłaźe DPL',
-	'dplforum-by' => 'wót $1',
+	'dplforum-by' => 'pśez $1',
 	'dplforum-edited' => '- Slědna změna',
 	'dplforum-never' => 'Žednje',
 	'dplforum-toofew' => 'DPL-forum: Pśemało kategorijow!',
@@ -142,6 +166,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Tarmo
  */
@@ -156,6 +181,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Cedric31
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Verdy p
@@ -182,6 +208,7 @@ $messages['gl'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
@@ -211,7 +238,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'dplforum-desc' => 'Forumowe rozšěrjenje na zakładźe DPL',
-	'dplforum-by' => 'wot $1',
+	'dplforum-by' => 'přez $1',
 	'dplforum-edited' => '- Posledni raz wobdźěłany',
 	'dplforum-never' => 'Ženje',
 	'dplforum-toofew' => 'Forum DPL: Přemało kategorijow!',
@@ -223,6 +250,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'dplforum-desc' => 'DPL-alapú fórumkiterjesztés',
+	'dplforum-by' => '',
 	'dplforum-edited' => '- Utolsó szerkesztés',
 	'dplforum-never' => 'soha',
 	'dplforum-toofew' => 'DPL fórum: túl kevés kategória!',
@@ -270,7 +298,9 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'dplforum-desc' => 'DynamicPageList ベースのフォーラムを実現する拡張機能',
+	'dplforum-by' => '$1 による',
 	'dplforum-edited' => '- 最終編集',
+	'dplforum-never' => '決してしない',
 	'dplforum-toofew' => 'DPL Forum: カテゴリが少なすぎます！',
 	'dplforum-toomany' => 'DPL Forum: カテゴリが多すぎます！',
 );
@@ -389,6 +419,7 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'dplforum-desc' => 'DPL-basert forumtillegg',
@@ -466,11 +497,12 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'dplforum-desc' => 'Форумное расширение, основанное на DPL',
-	'dplforum-by' => 'отv $1',
+	'dplforum-by' => 'от $1',
 	'dplforum-edited' => '- последняя правка',
 	'dplforum-never' => 'Никогда',
 	'dplforum-toofew' => 'Форум DPL: Слишком мало категорий!',
@@ -503,6 +535,7 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Najami
  */
 $messages['sv'] = array(
 	'dplforum-desc' => 'Forumtillägg baserat på DPL',
@@ -545,7 +578,7 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'dplforum-desc' => 'Форумне розширення, засноване на DPL',
 	'dplforum-by' => 'від $1',
-	'dplforum-edited' => '- Остання правка',
+	'dplforum-edited' => '- Последний раз редактировалось',
 	'dplforum-never' => 'Ніколи',
 	'dplforum-toofew' => 'Форум DPL: Занадто мало категорій!',
 	'dplforum-toomany' => 'Форум DPL: Занадто багато категорій!',

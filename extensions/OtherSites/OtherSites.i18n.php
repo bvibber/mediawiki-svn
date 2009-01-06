@@ -229,10 +229,12 @@ $messages['oc'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'othersites' => 'Outros sites',
+	'othersites-desc' => 'Move ligações interwiki que não sejam ligações de linguagem para o seu próprio "portlet"',
 );
 
 /** Romanian (Română)

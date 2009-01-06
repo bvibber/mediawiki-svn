@@ -22,6 +22,7 @@ This message is to notify you that at $3 user $4 $5.",
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
@@ -37,8 +38,8 @@ $messages['qqq'] = array(
 * $7 is the time of the change.',
 	'categorywatch-catmovein' => 'Substituted as $5 in {{msg-mw|categorywatch-emailbody}}.
 * $1 is a page name
-* $2 is the source category name
-* $3 is the target category name',
+* $2 is the target category name
+* $3 is the source category name',
 	'categorywatch-catmoveout' => 'Substituted as $5 in {{msg-mw|categorywatch-emailbody}}.
 * $1 is a page name
 * $2 is the source category name
@@ -283,10 +284,10 @@ $messages['ja'] = array(
 	'categorywatch-desc' => 'ウォッチリスト機能を拡張し、ウォッチしているカテゴリにおける所属構成の変更を通知するようにする',
 	'categorywatch-emailbody' => 'こんにちは $1、あなたが「$2」カテゴリをウォッチしているため、このメッセージを受け取りました。$3に利用者 $4 が$5ことをお知らせします。',
 	'categorywatch-emailsubject' => 'ウォッチしているカテゴリ「$1」に関する変更',
-	'categorywatch-catmovein' => '$1をカテゴリ$2へ$3から移しました',
-	'categorywatch-catmoveout' => '$1をカテゴリ$2から$3へ移しました',
-	'categorywatch-catadd' => '$1をカテゴリ$2に加えました',
-	'categorywatch-catsub' => '$1をカテゴリ$2から外しました',
+	'categorywatch-catmovein' => '$1をカテゴリ$2へ$3から移した',
+	'categorywatch-catmoveout' => '$1をカテゴリ$2から$3へ移した',
+	'categorywatch-catadd' => '$1をカテゴリ$2に加えた',
+	'categorywatch-catsub' => '$1をカテゴリ$2から外した',
 );
 
 /** Korean (한국어)
@@ -409,6 +410,21 @@ $3 użytkownik $4 $5.',
 	'categorywatch-catmoveout' => 'przeniósł $1 z kategorii $2 do $3',
 	'categorywatch-catadd' => 'dodał $1 do kategorii $2',
 	'categorywatch-catsub' => 'usunął $1 z kategorii $2',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'categorywatch-desc' => 'Estende a funcionalidade da lista de vigiados para incluir notificações sobre alterações nos membros de categorias vigiadas',
+	'categorywatch-emailbody' => 'Olá, $1.
+Você recebeu esta mensagem porque está a vigiar a categoria "$2".
+Esta mensagem serve para o notificar de que, em $3, o utilizador $4 $5.',
+	'categorywatch-emailsubject' => 'Actividade envolvendo a categoria vigiada "$1"',
+	'categorywatch-catmovein' => 'moveu $1 para a categoria $2 a partir de $3',
+	'categorywatch-catmoveout' => 'moveu $1 da categoria $2 para $3',
+	'categorywatch-catadd' => 'adicionou $1 à categoria $2',
+	'categorywatch-catsub' => 'removeu $1 da categoria $2',
 );
 
 /** Romanian (Română)

@@ -320,3 +320,10 @@ $messages['vi'] = array(
 	'multiboilerplate-submit' => 'Tải',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'multiboilerplate-submit' => 'Lodön',
+);
+

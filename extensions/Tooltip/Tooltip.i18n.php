@@ -165,6 +165,13 @@ $messages['lb'] = array(
 	'tooltip-desc' => 'Setzt den <tt><nowiki><tooltip></nowiki></tt> an den <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tag derbäi',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'tooltip-desc' => 'Додава <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt> приврзок',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

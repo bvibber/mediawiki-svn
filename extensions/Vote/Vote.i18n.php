@@ -379,9 +379,12 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
+	'vote' => 'Bozkatu',
+	'vote-caption' => 'Zure aukeraketa:',
 	'vote-submit' => 'Bozkatu',
 	'vote-registered' => 'Zure bozka erregistratu da.',
 	'vote-view-results' => 'Ikusi emaitzak',

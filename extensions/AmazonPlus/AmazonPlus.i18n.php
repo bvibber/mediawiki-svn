@@ -587,6 +587,8 @@ $messages['oc'] = array(
 	'amazonplus-new' => 'novèl',
 	'amazonplus-none' => "Cap de còpia d'aqueste article es pas disponible per crompar",
 	'amazonplus-cp-none' => 'Cap',
+	'amazonplus-more' => 'mai',
+	'amazonplus-less' => 'mens',
 );
 
 /** Polish (Polski)

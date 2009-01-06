@@ -271,7 +271,9 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'grouppermissions-comment' => 'Камэнтар:',
+	'grouppermissions-never' => 'Ніколі',
 	'grouppermissions-sp-save' => 'Захаваць',
+	'grouppermissions-sp-remove' => 'выдаліць',
 );
 
 /** Bulgarian (Български)
@@ -327,6 +329,7 @@ $messages['bs'] = array(
 	'grouppermissions-dologin' => 'Prijava',
 	'grouppermissions-dosearch' => 'Idi',
 	'grouppermissions-comment' => 'Komentar:',
+	'grouppermissions-never' => 'Nikad',
 	'grouppermissions-sp-remove' => 'ukloni',
 );
 
@@ -1065,6 +1068,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'grouppermissions' => 'グループパーミッションの管理',
@@ -1124,8 +1128,8 @@ $messages['ja'] = array(
 	'right-credits' => 'ページのクレジットを閲覧',
 	'right-history' => 'ページの履歴を閲覧',
 	'right-search' => 'ウィキを検索',
-	'right-contributions' => '投稿記録を表示',
-	'right-recentchanges' => '最近の更新を表示',
+	'right-contributions' => '投稿記録を閲覧',
+	'right-recentchanges' => '最近の更新を閲覧',
 	'right-edittalk' => 'ノートページの編集',
 	'right-edit-new' => '主ページ（ノートページではないページ）の編集',
 	'right-readold' => '過去の版の内容および過去の版との差分の閲覧',
@@ -1358,6 +1362,44 @@ Zet uw muisaanwijzer op een recht voor een beschrijving.',
 	'right-edittalk' => "Overlegpagina's bewerken",
 	'right-edit-new' => "Pagina's bewerken",
 	'right-readold' => 'Inhoud van en verschillen met oudere versies bekijken',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'removeunusedgroups' => 'Fjern unytta grupper',
+	'grouppermissions-search' => 'Gruppa:',
+	'grouppermissions-dologin' => 'Logg inn',
+	'grouppermissions-dosearch' => 'Gå',
+	'grouppermissions-searchlabel' => 'Søk etter gruppa',
+	'grouppermissions-deletelabel' => 'Slett gruppa',
+	'grouppermissions-add' => 'Legg til gruppa',
+	'grouppermissions-delete' => 'Slett gruppa',
+	'grouppermissions-comment' => 'Kommentar:',
+	'grouppermissions-addsuccess' => '$1 blei lagt til',
+	'grouppermissions-deletesuccess' => '$1 blei sletta',
+	'grouppermissions-changesuccess' => 'Rettane for $1 blei endra',
+	'grouppermissions-true' => 'Sant',
+	'grouppermissions-false' => 'Usant',
+	'grouppermissions-never' => 'Aldri',
+	'grouppermissions-nooldrev' => 'Feil oppstod under arkivering av konfigurasjonsfila. Ingen arkivering blei gjennomførd.',
+	'grouppermissions-sort-misc' => 'Ymse',
+	'grouppermissions-log-add' => 'la til gruppa «$2»',
+	'grouppermissions-log-change' => 'endra rettane for gruppa «$2»',
+	'grouppermissions-log-delete' => 'sletta gruppa «$2»',
+	'grouppermissions-log-name' => 'Logg for endringar i grupperettar',
+	'grouppermissions-log-header' => 'Denne sida syner endringar i rettane til brukargrupper.',
+	'grouppermissions-needjs' => 'Åtvaring: JavaScript er slege av i nettlesaren din. Nokre funksjonar vil ikkje fungera.',
+	'grouppermissions-sp-save' => 'Lagra',
+	'grouppermissions-sp-addperm' => 'Legg til rett',
+	'grouppermissions-sp-remove' => 'fjern',
+	'right-info' => 'Sjå sideinformasjon',
+	'right-search' => 'Søkja i wikien',
+	'right-recentchanges' => 'Sjå siste endringar',
+	'right-edittalk' => 'Endra diskusjonssider',
+	'right-edit-new' => 'Endra sider (som ikkje er diskusjonssider)',
+	'right-readold' => 'Syna innhaldet til eldre versjonar og skilnader',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1828,24 +1870,59 @@ $messages['tet'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
+	'grouppermissions' => 'Guvön grupadälis',
+	'sortpermissions' => 'Leodükön dälis',
+	'removeunusedgroups' => 'Moükön grupis no pagebölis',
+	'grouppermissions-desc' => 'Guvön grupadälis medü [[Special:GroupPermissions|pad patik]].',
+	'grouppermissions-desc4' => 'Dälon läükami stumas pluik Stumeme',
+	'grouppermissions-desc-nsm' => 'Guvön nemaspadis medü pad patik',
+	'grouppermissions-header' => 'Dalol gebön padi at ad votükön dälis dabinöl gebanagrupas.',
 	'grouppermissions-search' => 'Grup:',
+	'grouppermissions-dologin' => 'Nunädön oki',
+	'grouppermissions-dosearch' => 'Sukön',
 	'grouppermissions-searchlabel' => 'Sukön grupi',
 	'grouppermissions-deletelabel' => 'Moükön grupi',
+	'grouppermissions-error' => 'Pöl nesevädik ejenon. Välolös geikamaknopi bevüresodanaföma olik e steifülolös dönu.',
+	'grouppermissions-change' => 'Votükön grupadälis',
 	'grouppermissions-add' => 'Läükön grupi',
 	'grouppermissions-delete' => 'Moükön grupi',
+	'grouppermissions-comment' => 'Küpet:',
+	'grouppermissions-addsuccess' => '$1 peläükon benosekiko',
+	'grouppermissions-deletesuccess' => '$1 pemoükon benosekiko',
+	'grouppermissions-changesuccess' => 'Däls tefü $1 pevotükons benosekiko',
+	'grouppermissions-true' => 'Veratik',
+	'grouppermissions-false' => 'Dobik',
 	'grouppermissions-never' => 'Neai',
+	'grouppermissions-sort-read' => 'Reidam',
+	'grouppermissions-sort-edit' => 'Votükam',
+	'grouppermissions-sort-manage' => 'Guvam',
+	'grouppermissions-sort-admin' => 'Guvam',
+	'grouppermissions-sort-tech' => 'Kaenik',
 	'grouppermissions-log-add' => 'grup: „$2“ peläükon',
+	'grouppermissions-log-change' => 'evotükon dälis grupa: „$2“',
 	'grouppermissions-log-delete' => 'group: „$2“ pemoükon',
+	'grouppermissions-log-name' => 'Jenotalised grupadälas',
+	'grouppermissions-needjs' => 'Nuned: el JavaScript penefägükon pö bevüresodanaföm olik. Duns alik binons ba nemögiks!',
+	'grouppermissions-sp-sort' => 'Leodükamadäls',
 	'grouppermissions-sp-save' => 'Dakipön',
+	'grouppermissions-sp-addtype' => 'Läükön leodükamasoti',
+	'grouppermissions-sp-addperm' => 'Läükön däli',
 	'grouppermissions-sp-remove' => 'moükön',
+	'grouppermissions-sp-deltype' => 'Moükön leodükamasoti',
 	'grouppermissions-rug-header' => 'Dalol gebön padi at ad moükön gebanis se grups no pageböls (pemoüköls).',
+	'grouppermissions-rug-success' => 'Gebans pemoükons benosekiko se grups no pageböls!',
 	'grouppermissions-rug-confirm' => 'Moükön gebanis se grups no pageböls',
+	'right-grouppermissions' => 'Guvön grupadälis',
+	'right-viewsource' => 'Logön vükafonäti padas pejelöl',
+	'right-raw' => 'Logön padis „krüdik“',
 	'right-info' => 'Logön padanünis',
 	'right-history' => 'Logön padajenotemis',
 	'right-search' => 'Sukön in vük',
+	'right-contributions' => 'Logön keblünamapadis',
 	'right-recentchanges' => 'Logön votükamis brefabüik',
 	'right-edittalk' => 'Redakön bespikapadis',
 	'right-edit-new' => 'Redakön padis (kels no binons bespikapads)',
+	'right-readold' => 'Logön ninädi revidas e difas büikas',
 );
 
 /** Yiddish (ייִדיש)

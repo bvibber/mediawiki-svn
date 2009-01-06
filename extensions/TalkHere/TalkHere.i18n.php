@@ -231,9 +231,15 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'talkhere-talkpage' => 'eztabaida orria',
+	'talkhere-notalk' => "''(oraindik iruzkinik gabe)''",
+	'talkhere-addcomment' => 'iruzkina erantsi',
+	'talkhere-beforeinput' => 'Iruzkin bat erantsi dezakezu behean',
+	'talkhere-loading' => 'editorea kargatzen...',
+	'talkhere-collapse' => 'editorea ezkutatu',
 );
 
 /** Extremaduran (Estremeñu)
@@ -801,9 +807,19 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'talkhere-desc' => 'Pladon bespikapadi ini pad',
+	'talkhere-foottext' => 'Küpets löpo pepenons ba fa visitans.
+
+Guvans bevüresodatopäda at no gididons demü ninäd küpetas at.',
 	'talkhere-talkpage' => 'bespikapad',
+	'talkhere-notalk' => "''(nog küpets nonik)''",
+	'talkhere-addcomment' => 'läükön küpeti',
+	'talkhere-beforeinput' => 'Kanol läükön küpeti dono',
+	'talkhere-loading' => 'redaköm palodon...',
+	'talkhere-collapse' => 'klänedön redakömi',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -543,6 +543,15 @@ $messages['vi'] = array(
 Một tài khoản thành viên mới, $2, đã được tạo ra trên $3 lúc $4.',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'newusernotifbody' => 'Glidis, o $1!
+
+Gebanakal nulik: $2, pejafon su $3 tü $4.',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'newusernotifsubj' => '$1嘅新用戶通知',

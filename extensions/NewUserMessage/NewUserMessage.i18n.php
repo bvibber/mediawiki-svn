@@ -480,6 +480,14 @@ $messages['vi'] = array(
 	'newuseredit-summary' => 'Thêm [[{{int:newusermessage-template}}|thông báo hoan nghênh]] vào trang thảo luận của người dùng mới',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'newusermessage-desc' => 'Läükon nuni lä gebanabespikapads änu päjaföls',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Benokömanun]] paläükon lä bespikapad gebana nulik',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */

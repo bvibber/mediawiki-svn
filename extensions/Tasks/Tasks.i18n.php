@@ -181,7 +181,9 @@ $messages['arz'] = array(
 	'tasks_wontfix' => 'لن يصلح',
 	'tasks_delete' => 'امسح',
 	'tasks_no_task_delete_title' => 'مش مسموح',
+	'tasks_no_task_delete_texe' => 'انت مش مسموح لك تمسح مهمه.بس الاداريين هما اللي يقدرو يعملو كدا',
 	'tasks_action_delete' => 'في مهمة اتمسحت',
+	'tasks_task_was_deleted' => 'المهمه اتمسحت بنجاح.',
 	'tasks_reopen' => 'إعادة فتح مهمة',
 	'tasks_assignedto' => 'اتعينت ل$1',
 	'tasks_created_by' => 'أنشئت بواسطة $1',
@@ -545,11 +547,13 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'tasks' => 'Eginkizunak',
 	'tasks_tab' => 'Eginkizunak',
 	'tasks_form_new' => 'Egiteko berria sortu',
+	'tasks_form_comment' => 'Iruzkina',
 	'tasks_error1' => 'Egitekoa ez da sortu: badago aurrez eginda!',
 	'tasks_ok1' => 'Egiteko berria sortu da!',
 	'tasks_create_header' => 'Egiteko berria sortu',
@@ -1477,8 +1481,8 @@ $messages['oc'] = array(
 	'tasks_event_on_creation_anon' => 'verificar',
 	'tasks_on_creation_comment' => 'Prètzfach automatic, creat al moment de la creacion de la pagina',
 	'tasks_link_your_assignments' => 'distribucions dobertas',
-	'tasks_see_your_assignments' => 'Actualament, avètz $1 prètzfaches assignats. Vejatz vòstres $2.',
-	'tasks_my_assignments' => 'Vòstres assignaments en cors',
+	'tasks_see_your_assignments' => 'Actualament, avètz $1 {{PLURAL:$1|prètzfach assignat|prètzfaches assignats}}. Vejatz vòstres $2.',
+	'tasks_my_assignments' => '{{PLURAL:$1|Vòstre assignament|Vòstres assignaments}} en cors',
 	'tasks_table_header_page' => 'Pagina',
 	'tasks_you_have_no_assignments' => 'Avètz pas cap de prètzfach',
 	'tasks_search_form_title' => 'Cercar',

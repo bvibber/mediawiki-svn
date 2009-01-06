@@ -2406,11 +2406,11 @@ Di verschlisslet Version chunnt do unte. Si wird [[Special:Boardvote/dump|effent
 	'boardvote_invalidentered' => '<p><strong>Fähler:</strong> D Reihefolg vu dr Kandidate muess in ganze, positive Zahle usdruckt wäre (1, 2, 3, …) oder loss  s/d Chäschtli läär.</p>',
 	'boardvote_nosession' => 'Dyyni Wikimedia-Benutzer-ID cha nit usegfunde wäre.
 Bitte mäld di in däm wiki aa, wu du zue dr Wahl zuegloo bisch un gang dert uf <nowiki>[[Special:Boardvote]]</nowiki>.
-Wähle derfe Benutzer, wu s Benutzerchonto vun ene zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 ufwyyst, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 gmacht hän.',
+Wähle derfe Benutzer, wu s Benutzerkonto vun ene zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 ufwyyst, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 gmacht hän.',
 	'boardvote_notloggedin' => 'Du bisch nit aagmäldet.
-Zum abstimme chenne, muesch aagmäldet syy un e Benutzerchonto verwände, wu zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 demit gmacht wore {{PLURAL:$1|isch|sin}}, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 demit gmacht wore {{PLURAL:$1|isch|sinn}}.',
+Zum abstimme chenne, muesch aagmäldet syy un e Benutzerkonto verwände, wu zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 demit gmacht wore {{PLURAL:$1|isch|sin}}, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 demit gmacht wore {{PLURAL:$1|isch|sinn}}.',
 	'boardvote_notqualified' => 'Du bisch nit berächtigt an däre Wahl teilzneh.
-Zum abstimme chenne, muesch aagmäldet syy un e Benutzerchonto verwände, wu zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 demit gmacht wore {{PLURAL:$1|isch|sin}}, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 demit gmacht wore {{PLURAL:$1|isch|sin}}.',
+Zum abstimme chenne, muesch aagmäldet syy un e Benutzerkonto verwände, wu zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 demit gmacht wore {{PLURAL:$1|isch|sin}}, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 demit gmacht wore {{PLURAL:$1|isch|sin}}.',
 	'boardvote_novotes' => 'S het no niemer abgstimmt.',
 	'boardvote_time' => 'Zyt',
 	'boardvote_user' => 'Benutzer',
@@ -2431,7 +2431,7 @@ Zum abstimme chenne, muesch aagmäldet syy un e Benutzerchonto verwände, wu zmi
 	'group-boardvote-member' => 'Wahl-Administrator',
 	'grouppage-boardvote' => '{{ns:project}}:Wahl-Administrator',
 	'boardvote_blocked' => 'Excusez, aber Du bisch in Dyynem Wiki gsperrt wore. Gsperrti Benutzer derfe nit bi dr Wahl mitmache.',
-	'boardvote_bot' => 'Excusez, aber Dyy Benutzerchonto isch im regischtrierte Wiki as Bötli uszeichnet. Bötli derfe nit abstimme.',
+	'boardvote_bot' => 'Excusez, aber Dyy Benutzerkonto isch im regischtrierte Wiki as Bötli uszeichnet. Bötli derfe nit abstimme.',
 	'boardvote_welcome' => "Willchu '''$1'''!",
 	'go_to_board_vote' => 'Wahle zum Wikimedia-Kuratorium 2008',
 	'boardvote_redirecting' => 'Zum e hecheri Sicherheit un Transparenz z gwährleischte, findet d Wahl uf eme externe, uuabhängig kontrollierte Server statt.

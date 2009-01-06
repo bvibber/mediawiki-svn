@@ -43,6 +43,11 @@ $aliases['de'] = array(
 	'Invitations' => array( 'Einladungen' ),
 );
 
+/** Basque (Euskara) */
+$aliases['eu'] = array(
+	'Invitations' => array( 'Gonbidapenak' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'Invitations' => array( 'دعوت‌ها' ),

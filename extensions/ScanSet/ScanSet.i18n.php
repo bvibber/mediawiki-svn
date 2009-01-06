@@ -273,6 +273,24 @@ $messages['de'] = array(
 	'scanset_prev' => '← Vorheriger',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'scanset-desc' => 'Skanowane bokowe wobraze ze sajźby Andreas GroszŁs CD/DVD se woglědaś',
+	'scanset_no_name' => 'Zmólka: Musy se pódaś mě skanowańskeje sajźby, na pś. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Zmólka: Njepłaśiwa abo felujuca skanowańska sajźba',
+	'scanset_unrecognised_index_format' => 'Zmólka: Njeznaty indeksowy format',
+	'scanset_opendir_error' => 'Zmólka: Zapis $1 njedajo se wócyniś',
+	'scanset_no_files' => 'Zmólka: W pódanem zapisu njejsu dataje.',
+	'scanset_no_volumes' => 'Zmólka: Žedne zapise zwězkow namakane',
+	'scanset_missing_index_file' => 'Zmólka: Indeksowa dataj $1 njenamakana',
+	'scanset_index_file_error' => 'Zmólka: Zmólka w formaśe indeksoweje dataje na smužce $1',
+	'scanset_invalid_volume' => 'Zmólka: Njepłaśiwy zwězk',
+	'scanset_next' => 'Pśiducy &gt;',
+	'scanset_prev' => '&lt; Slědny',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -245,3 +245,10 @@ $messages['vi'] = array(
 	'psinotocnum-desc' => 'Từ ma thuật “<nowiki>__NOTOCNUM__</nowiki>” mới',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'psinotocnum-desc' => 'Vöd magivik nulik: „<nowiki>_NOTOCNUM_</nowiki>“',
+);
+

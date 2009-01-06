@@ -106,6 +106,13 @@ $messages['es'] = array(
 	'titlekey-desc' => 'Mecanismo para sugerir búsquedas por prefijo de título',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'titlekey-desc' => 'Izenburuaren aurrizkiarekin bilaketak iradokitzeko mekanismoa',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

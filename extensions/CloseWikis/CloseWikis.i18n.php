@@ -312,6 +312,17 @@ $messages['et'] = array(
 	'closewikis-list' => 'Suletud wikide list',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'closewikis-page-close-submit' => 'Itxi',
+	'closewikis-page-reopen-reason' => 'Arrazoia:',
+	'closewikis-page-reopen-submit' => 'Berrireki',
+	'closewikis-log-close' => '$2 itxita',
+	'closewikis-log-reopen' => '$2 berrirekia',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

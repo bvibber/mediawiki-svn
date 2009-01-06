@@ -284,6 +284,13 @@ $messages['et'] = array(
 	'authorprotect-success' => 'Kaitse edukas!',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'authorprotect-reason' => 'Arrazoia',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mardetanha

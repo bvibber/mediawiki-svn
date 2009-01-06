@@ -74,6 +74,19 @@ $messages['avk'] = array(
 	'specialwhoiswatchingaddbtn' => 'Loplekura va reban favesik',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'whoiswatching' => 'Хто назірае за старонкай',
+	'specialwhoiswatchingthepage' => 'Хто назірае за %s',
+	'specialwhoiswatchingusage' => 'Гэтая спэцыяльная старонка не можа выкарыстоўвацца самастойна.
+Калі ласка, карыстайцеся старонкай [[MediaWiki:Number_of_watching_users_pageview]] для вызначэньня ўваходнага пункту на гэту спэцыяльную старонку.',
+	'specialwhoiswatchingaddusers' => 'Дадаць удзельнікаў, якія будуць назіраюць за старонкай',
+	'specialwhoiswatchingaddbtn' => 'Дадаць выбраных удзельнікаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -197,10 +210,12 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
 	'whoiswatching' => 'Nor dago ikusten wiki orrialde bat',
+	'whoiswatching-desc' => 'Wiki orrialde bat begiratzen ari diren erabiltzaileen zerrenda ematen du.',
 	'specialwhoiswatchingaddbtn' => 'Gehitu aukeratutako lankideak',
 );
 

@@ -664,6 +664,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  * @author Kahusi
  * @author Mizusumashi
@@ -671,7 +672,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'imagemap_desc' => '<tt><nowiki><imagemap></nowiki></tt>タグによるクライアントサイドのクリッカブルマップ機能を有効にする',
 	'imagemap_no_image' => 'エラー: 最初の行で画像を指定して下さい。',
-	'imagemap_invalid_image' => 'エラー: 画像が無効、又は存在しません。',
+	'imagemap_invalid_image' => 'エラー: 画像が無効であるか、存在しません。',
 	'imagemap_bad_image' => 'エラー: このページでは画像が排除されています',
 	'imagemap_no_link' => 'エラー: 有効なリンクが$1行目の最後に存在しません。',
 	'imagemap_invalid_title' => 'エラー: $1行目のリンクのタイトルが無効です。',

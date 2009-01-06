@@ -603,3 +603,21 @@ $messages['vi'] = array(
 	'nss-db-error' => 'Lỗi truy cập cơ sở dữ liệu tài khoản',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'accountmanager' => 'Kaliguvöm',
+	'am-username' => 'gebananem',
+	'am-email' => 'pot leäktronik',
+	'am-active' => 'jäfedik',
+	'am-updated' => 'Votükams olik pedakipons benosekiko',
+	'nss-rights' => 'gitäts',
+	'nss-save-changes' => 'Dakipön votükamis',
+	'nss-create-account-header' => 'Jafön kali nulik',
+	'nss-create-account' => 'Jafön kali',
+	'nss-no-mail' => 'No sedolös poti leäktronik',
+	'nss-welcome-mail' => 'Kal labü gebananem: $1 e letavöd: $2 pejafon ole.',
+	'nss-welcome-mail-subject' => 'Kalijafam',
+);
+

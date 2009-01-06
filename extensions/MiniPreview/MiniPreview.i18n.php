@@ -498,6 +498,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'minipreview-desc' => 'MiniPreview apresenta, junto a uma imagem, pequenas previsões de outros ficheiros multimédia nas mesmas categoria ou apresentadas nas mesmas páginas',
 	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|ficheiro|ficheiros}} no total nesta categoria.",
 	'minipreview-files_in_gallery' => '$1 {{PLURAL:$1|ficheiro|ficheiros}} no total nesta galeria.',
 	'minipreview-no_more_files_here' => 'Não há mais ficheiros nesta direcção.',

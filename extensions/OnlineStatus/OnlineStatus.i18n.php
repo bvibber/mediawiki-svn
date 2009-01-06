@@ -220,6 +220,24 @@ $messages['es'] = array(
 	'onlinestatus-toggle-online' => 'Conectado',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'onlinestatus-js-anon' => 'Errorea: aplikazio hau erabiltzeko saioa irekita eduki behar duzu',
+	'onlinestatus-js-changed' => 'Zure egoera "$1" egoerara aldatu da',
+	'onlinestatus-js-error' => 'Ezinezkoa da egoera aldatzea, "$1" parametroa ez da baliozkoa',
+	'onlinestatus-subtitle-offline' => 'Erabiltzaile hau deskonektatuta dago orain',
+	'onlinestatus-subtitle-online' => 'Erabiltzaile hau konektatuta dago orain',
+	'onlinestatus-tab' => 'Egoera',
+	'onlinestatus-toggles-desc' => 'Zure egoera:',
+	'onlinestatus-toggles-show' => 'Erakutsi konexio egoera nire erabiltzaile orrialdean',
+	'onlinestatus-toggle-offline' => 'Deskonektatuta',
+	'onlinestatus-toggle-online' => 'Konektatuta',
+	'tog-onlineOnLogin' => 'Saioa hastean nire konexio-egoera konektatua jarri',
+	'tog-offlineOnLogout' => 'Saioa ixtean nire konexio-egoera deskonektatua jarri',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
@@ -623,9 +641,10 @@ $messages['ps'] = array(
  * @author 555
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
-	'onlinestatus-desc' => 'Adiciona uma preferência para mostrar se o utilizador está correntemente presente no wiki ou não',
+	'onlinestatus-desc' => 'Adiciona uma preferência para mostrar se o utilizador está atualmente presente no wiki ou não',
 	'onlinestatus-subtitle-offline' => 'Este utilizador encontra-se offline',
 	'onlinestatus-subtitle-online' => 'Este utilizador encontra-se online',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
@@ -749,6 +768,7 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'onlinestatus-desc' => 'Läükon buükami ad jonön if geban anu komon u no komon in vük',
+	'onlinestatus-js-anon' => 'Pöl: mutol nunädön oli büä gebol mögi at',
 	'onlinestatus-js-changed' => 'Stad olik pevotükon ad „$1“',
 	'onlinestatus-js-error' => 'Stadivotükam nemögon, völad: „$1“ no lonöfon',
 	'onlinestatus-tab' => 'Stad',

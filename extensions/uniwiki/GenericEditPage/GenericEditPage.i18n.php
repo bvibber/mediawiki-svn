@@ -241,6 +241,7 @@ Aldonu iujn uzante la iloj dekstre.',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -261,7 +262,7 @@ $messages['es'] = array(
 	'gep-classicmode' => 'Modo Clásico',
 	'gep-genericmode' => 'Modo Genérico',
 	'gep-nosectioninstructions' => 'No hay secciones en esta página.
-Agrega algunas secciones utilizando las herramientas a la derecha.',
+Agrega algunas secciones utilizando las herramientas en la barra de menús.',
 	'gep-nocategories' => 'Selecciona por lo menos una categoría antes de guardar',
 );
 
@@ -654,8 +655,8 @@ $messages['oc'] = array(
 	'gep-addsectionbutton' => 'Apondre',
 	'gep-classicmode' => 'Mòde classic',
 	'gep-genericmode' => 'Mòde generic',
-	'gep-nosectioninstructions' => "I a pas cap de seccion dins aquesta pagina.
-Apondètz-ne en utilizant l'esplech a drecha.",
+	'gep-nosectioninstructions' => 'I a pas cap de seccion dins aquesta pagina.
+Apondètz-ne en utilizant los espleches dins la barra de menut.',
 	'gep-nocategories' => 'Causir al mens una categoria abans de salvar la pagina',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -923,6 +924,25 @@ $messages['vi'] = array(
 	'gep-sections' => 'Đoạn',
 	'gep-addsection' => 'Thêm đoạn',
 	'gep-addsectionbutton' => 'Thêm',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'gep-emailsubject' => '[$1] Kladimob: $2',
+	'gep-emailbody' => 'Geban: „$1“ ämobon kladi: „$2“ pro topäd: „$3“.',
+	'gep-emailfailure' => 'Pidö! mob olik no pebevobon.',
+	'gep-emailsuccess' => 'Danö! bi emobol kladi: $1',
+	'gep-categories' => 'Klads',
+	'gep-addcategory' => 'Läükön kladi',
+	'gep-addcategorybutton' => 'Läükön',
+	'gep-suggestcategory' => 'Mobön kladi',
+	'gep-suggestcategorybutton' => 'Sedön',
+	'gep-sections' => 'Diläds',
+	'gep-sectionnotdisabled' => 'Diläd at no kanon panemögükön',
+	'gep-addsection' => 'Läükön dilädi',
+	'gep-addsectionbutton' => 'Läükön',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

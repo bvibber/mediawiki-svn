@@ -899,11 +899,13 @@ APC verŝajne ne funkcias.',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'viewapc-display-info' => 'Nombre',
+	'viewapc-display-type' => 'Tipo',
 	'viewapc-display-deletion_time' => 'Borrado',
 	'viewapc-ls-header-name' => 'Nombre',
 	'viewapc-ls-header-deleted' => 'Borrado',
@@ -1769,7 +1771,7 @@ $messages['ja'] = array(
 	'viewapc-filecache-info' => 'ファイルキャッシュ情報',
 	'viewapc-usercache-info' => 'ユーザーキャッシュ情報',
 	'viewapc-cached-files' => 'キャッシュされたファイル',
-	'viewapc-cached-files-d' => '$1 ファイル ($2)',
+	'viewapc-cached-files-d' => '$1個 ($2)',
 	'viewapc-hits' => 'ヒット',
 	'viewapc-misses' => 'ミス',
 	'viewapc-requests' => 'リクエスト率',
@@ -3904,6 +3906,16 @@ Dường như APC đang tắt.',
 Phiên bản $2 mới hơn có tại http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''Đã tẩy bộ đệm tập tin.'''''",
 	'viewapc-usercache-cleared' => "'''''Đã tẩy bộ đệm ứng dụng.'''''",
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'viewapc-memory-free' => 'Libik: $1 ($2)',
+	'viewapc-ls-header-name' => 'Nem',
+	'viewapc-ls-sort-name' => 'Nem',
+	'viewapc-ls-limit-none' => 'Valik',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

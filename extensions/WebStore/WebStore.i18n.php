@@ -338,6 +338,8 @@ $messages['bs'] = array(
 	'inplace_access_denied' => 'Ova usluga je zabranjena od strane IPa klijenta.',
 	'inplace_scaler_invalid_image' => 'Nevaljana slika, nije joj moguće odrediti veličinu.',
 	'webstore_src_open' => 'Ne može se otvoriti izvorišna datoteka "$1".',
+	'webstore_404' => 'Datoteka nije nađena.',
+	'webstore_no_response' => 'Nema odgovora od servera',
 );
 
 /** Czech (Česky)
@@ -537,13 +539,16 @@ $1',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'inplace_scaler_not_enough_params' => 'Parametro falta.',
 	'inplace_scaler_invalid_image' => 'Baliogabeko irudia, tamaina ezin da zehaztu.',
 	'webstore_no_file' => 'Fitxategirik ez da igo.',
 	'webstore_404' => 'Fitxategirik ez da aurkitu.',
+	'webstore_metadata_not_found' => 'Ez da fitxategia aurkitu: $1',
 	'webstore_no_response' => 'Zerbitzaritik ez da erantzunik jaso.',
+	'webstore_php_error' => 'PHPren erroreak aurkitu dira:',
 );
 
 /** Extremaduran (Estremeñu)
@@ -1866,6 +1871,33 @@ $messages['tr'] = array(
 $messages['vi'] = array(
 	'webstore_curl' => 'Lỗi cURL: $1',
 	'webstore_php_warning' => 'Cảnh báo PHP: $1',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'webstore_path_invalid' => 'Ragivanem no lonöföl.',
+	'webstore_dest_open' => 'No eplöpos ad maifükön zeilaragivi: „$1“.',
+	'webstore_dest_mkdir' => 'Jafam zeilaragiviära: „$1“ no eplöpon.',
+	'webstore_src_open' => 'No eplöpos ad maifükön ragivi: „$1“.',
+	'webstore_src_close' => 'Pöl pö färmükam zeilaragiva: „$1“.',
+	'webstore_src_delete' => 'Pöl pö moükam zeilaragiva: „$1“.',
+	'webstore_rename' => 'Pöl pö votanemam ragiva: „$1“ as „$2“.',
+	'webstore_lock_open' => 'Pöl pö maifükam lökaragiva: „$1“.',
+	'webstore_lock_close' => 'Pöl pö färmükam lökaragiva: „$1“.',
+	'webstore_dest_exists' => 'Pöl: zeilaragiv: „$1“ ya dabinon.',
+	'webstore_temp_open' => 'Pöl pö maifükam ragiva nelaidüpik: „$1“.',
+	'webstore_temp_copy' => 'Pök pö kopiedam ragiva nelaidüpik: „$1“ ad zeilaragiv: „$2“.',
+	'webstore_temp_close' => 'Pöl pö färmükam ragiva nelaidüpik: „$1“.',
+	'webstore_temp_lock' => 'Pöl pö lökofärmükam ragiva nelaidüpik: „$1“.',
+	'webstore_no_file' => 'Ragiv nonik pelöpükon.',
+	'webstore_move_uploaded' => 'Pöl pö topätükam ragiva pelöpüköl: „$1“ lü top nelaidüpik: „$2“.',
+	'webstore_curl' => 'Pöl se cURL: $1',
+	'webstore_404' => 'Ragiv no petuvon.',
+	'webstore_php_warning' => 'Nuned-PHP: $1',
+	'webstore_metadata_not_found' => 'Ragiv no petuvon: $1',
+	'webstore_php_error' => 'Pöls-PHP petuvons:',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

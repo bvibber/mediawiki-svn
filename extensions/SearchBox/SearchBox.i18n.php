@@ -134,9 +134,11 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'searchbox-search' => 'Bilatu',
+	'searchbox-go' => 'Joan',
 );
 
 /** Finnish (Suomi)
@@ -402,6 +404,16 @@ $messages['tl'] = array(
 	'searchbox-search' => 'Maghanap',
 	'searchbox-go' => 'Gawin na',
 	'searchbox-namespaces' => 'Mga espasyo ng pangalan:',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'searchbox-desc' => 'Dälon keninükami sukafometas',
+	'searchbox-search' => 'Sukön',
+	'searchbox-go' => 'Lügolön',
+	'searchbox-namespaces' => 'Nemaspads:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

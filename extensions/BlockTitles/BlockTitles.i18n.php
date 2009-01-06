@@ -158,10 +158,13 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author Pi
  * @author Theklan
  */
 $messages['eu'] = array(
 	'block_title_error_page_title' => 'Izenburu blokeatua',
+	'block_title_error-desc' => 'Titulu jakin batzuek dituzten orriak sortu edo gordetzea ezintzen duen modu soil batez hornitzen du',
+	'block_title_error' => 'Barkatu, ez da onartzen titulu horretako orrialderik gordetzea.',
 );
 
 /** Persian (فارسی)

@@ -128,6 +128,13 @@ $messages['eu'] = array(
 	'usercontactlink-baduser' => 'Lankide izen okerra',
 );
 
+/** Persian (فارسی)
+ * @author Meisam
+ */
+$messages['fa'] = array(
+	'usercontactlink-baduser' => 'نام‌کاربری نادرست',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

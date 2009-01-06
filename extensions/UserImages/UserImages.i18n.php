@@ -152,9 +152,11 @@ $messages['eo'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'userimages-caption' => 'Irudiak $1-(e)k igoak',
+	'userimages-noimages' => '$1 erabiltzaileak ez du irudirik igo.',
 );
 
 /** Extremaduran (Estremeñu)
@@ -163,6 +165,14 @@ $messages['eu'] = array(
 $messages['ext'] = array(
 	'userimages-caption' => 'Imahis empuntás pol $1',
 	'userimages-noimages' => '$1 nu á empuntau denguna imahin.',
+);
+
+/** Persian (فارسی)
+ * @author Meisam
+ */
+$messages['fa'] = array(
+	'userimages-caption' => 'تصاویر بارگذاری‌شده توسط $1',
+	'userimages-noimages' => '$1 هیچ تصویری بارگذاری نکرده‌‌است.',
 );
 
 /** French (Français)

@@ -67,6 +67,14 @@ $messages['cs'] = array(
 	'icon-desc' => 'Umožňuje používat obrázky jako ikony a ikonové odkazy',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'icon-badimage' => 'Delwedd wallus',
+	'icon-badwidth' => 'Lled gwallus',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Raimond Spekking

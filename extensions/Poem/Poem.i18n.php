@@ -284,6 +284,13 @@ $messages['lv'] = array(
 	'poem-desc' => 'Pievieno <tt>&lt;poem&gt;</tt> tagu dzejas formatēšanai',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'poem-desc' => 'Додава <tt>&lt;poem&gt;</tt> приврзок за форматирање на стихови',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

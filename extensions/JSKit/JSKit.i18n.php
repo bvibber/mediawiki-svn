@@ -51,9 +51,10 @@ $messages['dsb'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
-	'jskit-desc' => 'Integre herramientas js-kit en una página wiki',
+	'jskit-desc' => 'Integra herramientas js-kit en una página wiki',
 );
 
 /** French (Français)
@@ -124,6 +125,13 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'jskit-desc' => 'Integrerer js-kit-verkty på ei wikisida',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'jskit-desc' => 'Intègra los epleches js-kit dins las paginas del wiki',
 );
 
 /** Portuguese (Português)

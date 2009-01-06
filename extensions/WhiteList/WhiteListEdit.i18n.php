@@ -310,9 +310,29 @@ $messages['ay'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'whitelistedit' => 'Рэдактар сьпісу агульнадаступных старонак',
+	'whitelist' => 'Агульнадаступныя старонкі',
+	'mywhitelistpages' => 'Мае старонкі',
+	'whitelistfor' => '<center>Цяперашняя інфармацыя для <b>$1</b></center>',
+	'whitelisttablemodify' => 'Зьмяніць',
+	'whitelisttablemodifyall' => 'Усе',
+	'whitelisttablemodifynone' => 'Нічога',
+	'whitelisttablepage' => 'Старонка вікі',
+	'whitelisttabletype' => 'Тып доступу',
+	'whitelisttableexpires' => 'Канчаецца',
+	'whitelisttablemodby' => 'Апошні раз зьмененая',
+	'whitelisttablemodon' => 'Дата апошняй зьмены',
 	'whitelisttableedit' => 'Рэдагаваць',
+	'whitelisttableview' => 'Прагляд',
+	'whitelisttablenewdate' => 'Новая дата:',
+	'whitelisttablechangedate' => 'Зьмяніць тэрміну дзеяньня',
+	'whitelisttablesetedit' => 'Усталяваць для рэдагаваньня',
+	'whitelisttablesetview' => 'Усталяваць для прагляду',
+	'whitelisttableremove' => 'Выдаліць',
+	'whitelistnever' => 'ніколі',
 );
 
 /** Bulgarian (Български)
@@ -372,6 +392,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'whitelist-desc' => 'Uređivanje dopuštenja pristupa za ograničene korisnike',
 	'mywhitelistpages' => 'Moje stranice',
+	'whitelistfor' => '<center>Trenutne informacije za <b>$1</b></center>',
 	'whitelisttablemodify' => 'Izmijeni',
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttablemodifynone' => 'Ništa',
@@ -379,6 +400,7 @@ $messages['bs'] = array(
 	'whitelisttabletype' => 'Tip pristupa',
 	'whitelisttableexpires' => 'Ističe dana',
 	'whitelisttablemodby' => 'Zadnji put izmijenjeno od strane',
+	'whitelisttablemodon' => 'Zadnji put promijenjeno dana',
 	'whitelisttableedit' => 'Uredi',
 	'whitelisttableview' => 'Pregled',
 	'whitelisttablenewdate' => 'Novi datum:',
@@ -2535,9 +2557,24 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'mywhitelistpages' => 'Pads obik',
+	'whitelisttablemodify' => 'Votükön',
 	'whitelisttablemodifynone' => 'Nonik',
+	'whitelisttableedit' => 'Votükön',
+	'whitelisttableview' => 'Logön',
+	'whitelisttablenewdate' => 'Dät nulik:',
+	'whitelisttableremove' => 'Moükön',
+	'whitelistoverview' => '== Lovelogam votükamas ela $1 ==',
+	'whitelistoverviewcd' => "* Votükam däta ad '''$1''' pro [[:$2|$2]]",
+	'whitelistrequestconf' => 'Beg padas nulik pesedon ele $1',
+	'whitelistnever' => 'neai',
+	'right-restricttowhitelist' => 'Votükön e logön te padis liseda vietik',
+	'action-restricttowhitelist' => 'votükön e logön te padis liseda vietik',
+	'group-manager' => 'Guverans',
+	'group-manager-member' => 'Guveran',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

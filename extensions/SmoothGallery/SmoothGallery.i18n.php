@@ -441,8 +441,10 @@ $messages['oc'] = array(
 	'smoothgallery-error' => "'''Error de SmoothGallery :'''",
 	'smoothgallery-gallery-not-found' => "Cap d'imatge pas apondut a la galariá. Apondètz almens un imatge.",
 	'smoothgallery-not-found' => "Cap d'imatge pas apondut a la galariá. Apondètz almens un imatge.",
-	'smoothgallery-no-images' => "Cap d'imatge trobat dins aquesta galariá. Verificatz que totes los imatges requeses existisson. Aquestes imatges son pas estats trobats : $1.",
-	'smoothgallery-invalid-images' => 'Los imatges demandats seguents son d’un format incorrècte : $1',
+	'smoothgallery-no-images' => "Cap d'imatge es pas estat trobat dins aquesta galariá.
+Verificatz que {{PLURAL:$3|l'imatge requerit existís|totes los imatges requerits existisson}}.
+{{PLURAL:$2|Aqueste imatge es pas estat trobat|Aquestes imatges son pas estats trobats}} : $1.",
+	'smoothgallery-invalid-images' => "{{PLURAL:$2|L'imatge demandat seguent es|Los imatges demandats seguents son}} d’un format incorrècte : $1",
 	'smoothgallery-unexpected-error' => "Error imprevista. Mercés d'emplenar un rapòrt de bòg.",
 	'smoothgallery-javascript-disabled' => "JavaScript es necessari per veire aquesta galariá d'imatges (<code><nowiki><gallery>...</gallery></nowiki></code>).",
 );
@@ -618,5 +620,12 @@ Những hình sau không tìm thấy: $1',
 	'smoothgallery-unexpected-error' => 'Xảy ra lỗi không lường được.
 Xin hãy đăng một báo cáo lỗi.',
 	'smoothgallery-javascript-disabled' => 'Cần phải kích hoạt Javascript để trang ảnh hiển thị đúng.',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'smoothgallery-gallery-not-found' => 'Magodem pavilöl no dabinon.',
 );
 

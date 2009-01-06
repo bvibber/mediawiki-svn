@@ -796,7 +796,18 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'spamdifftool' => 'Gerir a lista negra de spam',
+	'spamdifftool-desc' => 'Fornece uma forma básica de adicionar novas entradas à lista negra de spam a partir de páginas de diferenças',
 	'spamdifftool_cantedit' => 'As nossas desculpas - você não tem permissão para editar a lista negra de spam.',
+	'spamdifftool_notext' => "Não há qualquer texto para adicionar à lista negra de spam.
+Clique <a href='$1'>aqui</a> para continuar.",
+	'spamdifftool_confirm' => "Confirme que pretende adicionar estas entradas à lista negra de spam.
+(Clique <a href='$1' target='new'>aqui</a> para reportar um problema.)",
+	'spamdifftool_summary' => 'A adicionar à lista negra de spam',
+	'spamdifftool_urls_detected' => 'As seguintes URLs foram detectadas na(s) edição(ões). Quais pretende que sejam adicionadas à lista negra de spam?
+Estas opções estão ordenadas da mais restritiva para a menos restritiva. O bloqueio de um domínio inteiro irá bloquear todas a ligações provenientes daquele domínio.
+
+Certifique-se de que não bloqueia domínios inteiros que sejam anfitriões de contas de utilizadores, tais como blogspot.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => "Nenhuns URL foram detectados.
 Carregue <a href='$1'>aqui</a> para voltar.",
 	'spamdifftool_spam_link_text' => 'adicionar como spam',

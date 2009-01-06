@@ -411,8 +411,13 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'newschannel' => 'Nunakanad',
+	'newschannel_format' => 'Fomät:',
 	'newschannel_limit' => 'Mied:',
+	'newschannel_include_category' => 'Klad pluik:',
+	'newschannel_exclude_category' => 'Plödakipön kladi:',
 );
 

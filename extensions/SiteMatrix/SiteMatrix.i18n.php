@@ -413,7 +413,10 @@ $messages['es'] = array(
 	'sitematrix-language' => 'Idioma',
 	'sitematrix-project' => 'Nombre del proyecto, enlace interproyecto y enlace interwiki',
 	'sitematrix-others' => 'Otros proyectos de Wikimedia',
+	'sitematrix-total' => "'''Cuenta total: $1'''",
+	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privado',
+	'sitematrix-fishbowl' => 'edición restringida',
 );
 
 /** Estonian (Eesti) */

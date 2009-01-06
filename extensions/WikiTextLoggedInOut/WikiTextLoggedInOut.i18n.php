@@ -219,6 +219,13 @@ $messages['pl'] = array(
 	'wikitextloggedinout-desc' => 'Dodaje dwa haki parsera <tt>&lt;loggedin&gt;</tt> oraz <tt>&lt;loggedout&gt;</tt> pozwalające wyświetlać różne teksty w zależności od statusu zalogowania się użytkownika',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'wikitextloggedinout-desc' => 'Dois "hooks" do analisador "parser", <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, para mostrar diferentes textos dependendo do estado de autenticação do utilizador',
+);
+
 /** Sicilian (Sicilianu)
  * @author Santu
  */

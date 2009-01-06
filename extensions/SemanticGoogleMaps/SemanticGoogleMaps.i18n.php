@@ -188,7 +188,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Estimar las coordenadas',
-	'semanticgooglemaps-desc' => 'Permet als utilizaires d’apondre Google Maps sus de paginas wiki sus la banca de donadas estructuradas',
+	'semanticgooglemaps-desc' => "Permet als utilizaires d'editar e d'afichar las donadas semanticas de coordenadas qu'utilizan Google Maps",
 );
 
 /** Polish (Polski)
@@ -206,7 +206,7 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Pesquisar coordenadas',
-	'semanticgooglemaps-desc' => 'Permite aos utilizadores adicionarem mapas do Google Maps a páginas wiki baseadas em dados estruturados',
+	'semanticgooglemaps-desc' => 'Permite aos utilizadores editarem e apresentarem dados semânticos coordenados usando Google Maps',
 );
 
 /** Slovak (Slovenčina)
@@ -232,6 +232,14 @@ $messages['sv'] = array(
 $messages['tl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => "Hanapin ang mga tugmaang-pampook (''coordinate'')",
 	'semanticgooglemaps-desc' => 'Nagpapahintulot sa mga tagagamit na makapagdagdag ng mga Mapa ng Google sa mga pahina ng wiki batay sa napagkayariang mga dato',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Tuvön koordinatis',
+	'semanticgooglemaps-desc' => 'Dälon gebanes ad votükön e jonön koordinatanünodis yufü el Google Maps.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

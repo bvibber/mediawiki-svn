@@ -105,6 +105,13 @@ $messages['eo'] = array(
 	'selectcategory-desc' => 'Permesas al la uzanto selekti de ekzistantaj kategorioj kiam redaktante paĝojn',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'selectcategory-title' => 'Kategoriak hautatu',
+);
+
 /** Persian (فارسی)
  * @author Tofighi
  */

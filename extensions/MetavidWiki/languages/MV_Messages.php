@@ -928,6 +928,7 @@ $messages['bcc'] = array(
  */
 $messages['be-tarask'] = array(
 	'mv_history' => 'Гісторыя',
+	'mv_remove' => 'выдаліць',
 	'mv_search_categories' => 'Катэгорыі',
 	'mv_search_category' => 'Катэгорыя',
 	'mv_category' => 'катэгорыя',
@@ -3630,21 +3631,56 @@ Klik op een clip om deze te bewerken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'metavid' => 'Metavid-sida',
+	'mv_missing_stream' => 'Manglar dataflyt: $1',
+	'specialpages-group-mv_group' => 'Spesialsider for MetaVidWiki',
+	'mv_save_changes' => 'Lagra endringar',
+	'mv_media_path' => 'mediestig',
 	'mv_remove_reason' => 'Slettingsårsak:',
 	'mv_upload_file' => 'Last opp fil',
 	'mv_tool_search' => 'Søk',
+	'mv_tool_navigate' => 'Naviger',
 	'mv_tool_export' => 'Eksporter',
+	'mv_click_to_edit' => 'klikk for å endra',
+	'mv_time_separator' => '$1 til $2',
+	'mv_play' => 'Spel',
 	'mv_edit' => 'Endre',
 	'mv_history' => 'Historikk',
+	'mv_edit_title' => 'Endra tekst',
 	'mv_remove' => 'fjern',
+	'mv_start_desc' => 'Starttid',
+	'mv_end_desc' => 'Sluttid',
+	'mv_of' => '&#32;av&#32;',
+	'mv_edit_metadata' => 'Endra metadata',
+	'mv_advanced_edit' => 'Avansert endring',
+	'mv_basic_edit' => 'Enkel endring',
+	'mv_remove_category' => 'Fjern kategori',
+	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategoriar}}:',
+	'mv_viewnext' => 'Syn ($1)',
+	'mv_viewprevnext' => 'Syn ($1) ($2)',
+	'mediasearch' => 'Mediesøk',
+	'mv_search_sel_t' => 'Vel søktype',
+	'mv_do_media_search' => 'Gjer eit Metavid-mediesøk for $1',
+	'mv_results_for' => 'Resultat for $1',
+	'mv_video_search' => 'Videosøk',
+	'mv_page_search' => 'Gjer eit sidesøk etter $1',
+	'mv_add_filter' => 'Legg til filter',
+	'mv_search_match' => 'Søkjetekst',
+	'mv_search_spoken_by' => 'Opplest av',
+	'mv_search_categories' => 'Kategoriar',
 	'mv_search_category' => 'Kategori',
+	'mv_search_and' => 'og',
+	'mv_search_or' => 'eller',
+	'mv_search_not' => 'ikkje',
 	'mv_category' => 'kategori',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -3768,7 +3804,7 @@ Denne overleggstypen kan brukes for å kategorisere seksjoner av videoer eller t
 	'mediasearch' => 'Mediesøk',
 	'mv_search_sel_t' => 'Velg søkemåte',
 	'mv_video_search' => 'Videosøk',
-	'mv_page_search' => 'GJør et sidesøk etter $1',
+	'mv_page_search' => 'Gjør et sidesøk etter $1',
 	'mv_add_filter' => 'Legg til filter',
 	'mv_search_match' => 'Søketekst',
 	'mv_search_spoken_by' => 'Opplest av',
@@ -5397,10 +5433,40 @@ Nhảy đến cảnh luồng: $2',
  * @author Smeira
  */
 $messages['vo'] = array(
+	'mv_path_type_label' => 'luvegasot',
 	'mv_duration_label' => 'Dul',
 	'mv_save_changes' => 'Dakipön votükamis',
+	'mv_redirect_and_delete_reason' => 'lüodükömapad pemoükon',
+	'mv_remove_reason' => 'Kod moükama:',
+	'mv_metavid_file' => 'Ragiv pö dünanünöm dabinöl',
 	'mv_upload_file' => 'Löpükön ragivi',
+	'mv_external_file' => 'Ragiv plödik',
+	'mv_tool_search' => 'Sukön',
+	'mv_tool_navigate' => 'Nafön',
+	'mv_tool_export' => 'Seveigön',
+	'mvd_default_mismatch' => 'Pöl in ragiv parametema',
+	'mv_edit_title' => 'Redakön vödemi',
+	'mv_remove' => 'moükön',
+	'mv_adjust_preview_stop' => 'Stöpädön büologedi',
+	'mv_adjust_old_title_missing' => 'Pad, keli steifülol ad topätükon se ($1), no dabinon',
+	'mv_remove_category' => 'Moükön kladi',
+	'mv_existing_categories' => '{{PLURAL:$1|klad|klads}}:',
+	'mv_basic_text_desc' => 'Bepenamavödem (no paflagöl)',
+	'mv_viewnext' => 'Logön ($1)',
+	'mv_viewprevnext' => 'Logön ($1) ($2)',
+	'mv_results_for' => 'Seks pro $1',
+	'mv_search_categories' => 'Klads',
 	'mv_search_category' => 'Klad',
+	'mv_search_and' => 'e',
+	'mv_search_or' => 'u',
+	'mv_search_not' => 'no',
+	'mv_most_relevant' => 'Drefikün',
+	'mv_most_recent' => 'Brefabüikün',
+	'mv_most_viewed' => 'Suvüno pelögol',
+	'mv_category' => 'klad',
+	'mv_view_wiki_page' => 'Logön padi vüka',
+	'mv_prev_cat' => 'Klad büik: $1',
+	'mv_next_cat' => 'Klad fovik: $1',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

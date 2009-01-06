@@ -46,12 +46,15 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'createpage' => 'أنشئ صفحة',
 	'createpage_submitbutton' => 'تنفيذ',
 	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد أنشائها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
+	'createpage_titleexists' => 'في صفحه موجوده بالفعل بالعنوان[[$1]] .
+عايز تعدل الصفحه الموجوده؟',
 	'createpage_tryagain' => 'لا. أريد إنشاء صفحة جديدة بعنوان مميز.',
 	'createpage_editexisting' => 'نعم. أريد المساهمة للصفحة الموجودة',
 	'createpage-badtitle' => 'لا بمكن إستخدامه كعنوان للصفحة "$1"',
@@ -173,10 +176,14 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'createpage' => 'Orri bat sortu',
+	'createpage_submitbutton' => 'Bidali',
 	'createpage_entertitle' => 'Zure orrirako izenburu bat sartu mesedez.',
+	'createpage_tryagain' => 'Ez. Orrialde berri bat sortu nahi dut izenburu desberdinarekin.',
+	'createpage-badtitle' => '"$1" ezin da orrialdearen izenburua bezala erabili.',
 );
 
 /** French (Français)
@@ -331,6 +338,22 @@ Wëll Dir déi Säit veränneren?',
 	'createpage_tryagain' => 'Neen. Ech wëll eng nei Säit mat engem aneren Titel uleeën.',
 	'createpage_editexisting' => 'Jo. Ech wëll déi Säit déi et gëtt änneren.',
 	'createpage-badtitle' => '"$1" kann net als Titel fir eng Säit benotzt ginn',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'createpage' => 'Креирај страница',
+	'createpage-desc' => 'Додава [[Special:CreatePage|специјална страница]] за креирање на нови страници',
+	'createpage_submitbutton' => 'Потврди',
+	'createpage_instructions' => 'Внесете наслов на страницата која сакате да ја креирате:',
+	'createpage_entertitle' => 'Внесете наслов на вашата страница.',
+	'createpage_titleexists' => 'Страница со наслов [[$1]] веќе постои.
+Дали сакате да ја уредувате постоечката страница?',
+	'createpage_tryagain' => 'Не. Сакам да креирам нова страница со различен наслов.',
+	'createpage_editexisting' => 'Да. Сакам да ја уредувам постоечката страница.',
+	'createpage-badtitle' => '"$1" не може да се искористи како наслов на страница',
 );
 
 /** Low German (Plattdüütsch)

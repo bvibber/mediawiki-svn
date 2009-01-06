@@ -806,7 +806,7 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'youtubeauthsub' => 'YouTube-Video uffelade',
 	'youtubeauthsub-desc' => 'Macht s Benutzer möglich, Video diräkt uf YouTube [[Special:YouTubeAuthSub|uffezlade]]',
-	'youtubeauthsub_info' => 'Zum e Video uf YouTube uffezlade go s in e Syte yyfiege, muesch die Fälder usfülle:',
+	'youtubeauthsub_info' => 'Zum e Video uf YouTube uffezlade go s in e Syte yyfüege, muesch die Fälder usfülle:',
 	'youtubeauthsub_title' => 'Titel',
 	'youtubeauthsub_description' => 'Bschryybig',
 	'youtubeauthsub_password' => 'YouTube-Passwort',
@@ -1044,6 +1044,14 @@ Silakan menunggu.',
 	'youtubeauthsub_jserror_nokeywords' => 'Silakan masukkan 1 atau lebih kata kunci.',
 	'youtubeauthsub_jserror_notitle' => 'Silakan masukkan judul video tersebut.',
 	'youtubeauthsub_jserror_nodesc' => 'Silakan masukkan keterangan video tersebut.',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'youtubeauthsub_title' => 'Titulo',
+	'youtubeauthsub_category' => 'Kategorio',
 );
 
 /** Icelandic (Íslenska)
@@ -1347,7 +1355,7 @@ $messages['mk'] = array(
 	'youtubeauthsub_tokenerror' => 'Грешка при генерирање на авторизациски токен, обидете се повторно.',
 	'youtubeauthsub_success' => "Честитки!
 Вашиот видео запис е подигнат.
-За да го погледнете вашиот видео запис кликнете <a href='http://www.youtube.com/watch?v=$1'>тука</a>.
+<a href='http://www.youtube.com/watch?v=$1'>Погледнете го вашиот видео запис</a>.
 Можеби ќе треба некое време YouTube да го подготви ведео записот, па нема да може да го погледнете токму сега.
 
 За да го вгнездите вашиот видео запис на некоја вики страница, внесете го следниов код:
@@ -1357,11 +1365,11 @@ $messages['mk'] = array(
 	'youtubeauthsub_uploadbutton' => 'Подигнување',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Овој видео запис може да се прегледа [http://www.youtube.com/watch?v=$1 тука]',
+[http://www.youtube.com/watch?v=$1 Погледни видео запис]',
 	'youtubeauthsub_summary' => 'Подигнување на YouTube видео запис',
-	'youtubeauthsub_uploading' => 'Вашето видео се подгнува.
-Молиме за трпеливост.',
-	'youtubeauthsub_viewpage' => 'Алтернативно, може да го погледнете вашиото видео запис [[$1|тука]].',
+	'youtubeauthsub_uploading' => 'Видео записот се подигнува.
+Почекајте ...',
+	'youtubeauthsub_viewpage' => 'Алтернативно, може да го [[$1|погледнете видео записот]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Внесете еден или повеќе клучни зборови.',
 	'youtubeauthsub_jserror_notitle' => 'Внесете наслов на видео записот.',
 	'youtubeauthsub_jserror_nodesc' => 'Внесете опис на видео записот.',
@@ -1681,21 +1689,21 @@ $messages['oc'] = array(
 	'youtubeauthsub_tokenerror' => 'Error dins la creacion de la presa d’autorizacion, ensajatz de refrescar la pagina.',
 	'youtubeauthsub_success' => "Felicitacions :
 Vòstra vidèo es importada.
-Per visionar vòstra vidèo clicatz <a href='http://www.youtube.com/watch?v=$1'>aicí</a>.
+<a href='http://www.youtube.com/watch?v=$1'>Visionatz vòstra vidèo</a>.
 YouTube pòt demandar un brieu de temps per prendre en compte vòstra vidèo, tanben, pòt èsser pas encara prèst.
 
-Per incorporar vòstra vidèo dins una pagina del wiki, inserissètz lo còde seguent dins aquesta :
+Per incorporar vòstra vidèo dins una pagina del wiki, inserissètz lo còde seguent dins aquesta darrièra :
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Per importar una vidèo, vos serà demandat de vos connectar d’en primièr sus YouTube.',
 	'youtubeauthsub_uploadhere' => 'Importar vòstra vidèo dempuèi aicí :',
 	'youtubeauthsub_uploadbutton' => 'Importar',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Aquesta vidèo pòt èsser visionada [http://www.youtube.com/watch?v=$1 aicí].',
+[http://www.youtube.com/watch?v=$1 Vejatz aquesta vidèo]',
 	'youtubeauthsub_summary' => 'Importar una vidèo YouTube',
 	'youtubeauthsub_uploading' => 'Vòstra vidèo es en cors d’importacion.
 Siatz pacient.',
-	'youtubeauthsub_viewpage' => 'Siquenon, podètz visionar vòstra vidèo [[$1|aicí]].',
+	'youtubeauthsub_viewpage' => 'Siquenon, podètz [[$1|visionar vòstra vidèo]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Mercés de picar un o mantuns mots claus.',
 	'youtubeauthsub_jserror_notitle' => 'Mercés de picar un títol per la vidèo.',
 	'youtubeauthsub_jserror_nodesc' => 'Picatz una descripcion per la vidèo.',
@@ -1839,6 +1847,9 @@ $messages['ro'] = array(
 	'youtubeauthsub_username' => 'Nume de utilizator YouTube',
 	'youtubeauthsub_keywords' => 'Cuvinte cheie',
 	'youtubeauthsub_category' => 'Categorie',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Vizualizează acest videoclip]',
 	'youtubeauthsub_summary' => 'Încărcare video YouTube',
 	'youtubeauthsub_uploading' => 'Videoclipul dumneavoastră este în curs de încărcare.
 Vă rugăm să aveţi răbdare.',

@@ -505,6 +505,7 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'usagestatisticsinterval' => 'Bitartea',
@@ -512,6 +513,8 @@ $messages['eu'] = array(
 	'usagestatisticsstart' => 'Hasiera data',
 	'usagestatisticsend' => 'Bukaera data',
 	'usagestatisticssubmit' => 'Estatistikak sortu',
+	'usagestatisticsnostart' => 'Hasierako data zehaztu, mesedez',
+	'usagestatisticsnoend' => 'Amaierako data zehaztu, mesedez',
 	'usagestatisticsintervalday' => 'Eguna',
 	'usagestatisticsintervalweek' => 'Astea',
 	'usagestatisticsintervalmonth' => 'Hilabetea',
@@ -608,8 +611,8 @@ $messages['gl'] = array(
 	'usagestatisticsstart' => 'Data de comezo',
 	'usagestatisticsend' => 'Data de fin',
 	'usagestatisticssubmit' => 'Xerar Estatísticas',
-	'usagestatisticsnostart' => 'Especifique unha data de comezo',
-	'usagestatisticsnoend' => 'Especifique unha data de fin',
+	'usagestatisticsnostart' => 'Por favor, especifique unha data de comezo',
+	'usagestatisticsnoend' => 'Por favor, especifique unha data de fin',
 	'usagestatisticsbadstartend' => '<b>Malo <i>Comezo</i> e/ou <i>Fin</i> da data!</b>',
 	'usagestatisticsintervalday' => 'Día',
 	'usagestatisticsintervalweek' => 'Semana',
@@ -756,6 +759,13 @@ $messages['ia'] = array(
 	'usagestatisticscalselect' => 'Seliger',
 	'usagestatistics-editindividual' => 'Statisticas $1 super le modificationes del usator individual',
 	'usagestatistics-editpages' => 'Statisticas $1 super le paginas del usator individual',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'usagestatisticsintervalday' => 'Dio',
 );
 
 /** Icelandic (Íslenska) */

@@ -21,12 +21,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'gur-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
+	'right-userrights-global' => '{{doc-right}}',
 );
 
 /** Arabic (العربية)
@@ -227,6 +229,18 @@ $messages['nn'] = array(
 	'gur-rightslog-header' => 'Dette er ein logg over endringar i globale brukarrettar.',
 	'gur-rightslog-entry' => 'endra globalt gruppemedlemskap for $1 frå $2 til $3',
 	'right-userrights-global' => 'Handsama globale brukarrettar',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'globaluserrights' => 'Håndtering av globale brukerrettigheter',
+	'gur-desc' => 'Enkel administrasjon av [[Special:GlobalUserRights|globale brukerrettigheter]]',
+	'gur-rightslog-name' => 'Logg for globale rettigheter',
+	'gur-rightslog-header' => 'Dette er en logg over endringer i globale brukerrettigheter',
+	'gur-rightslog-entry' => 'endret globale gruppemedlemsskap for $1 fra $2 til $3',
+	'right-userrights-global' => 'Administrer globale brukerrettigheter',
 );
 
 /** Occitan (Occitan)

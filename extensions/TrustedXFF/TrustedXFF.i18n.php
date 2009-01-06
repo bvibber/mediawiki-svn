@@ -87,6 +87,13 @@ $messages['es'] = array(
 	'trustedxff-desc' => 'Manejo de una lista de direcciones proxy confiables([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'trustedxff-desc' => 'Konfiantzazko proxy helbideen zerrendaren erabilera ([http://meta.wikimedia.org/wiki/XFF_project XFF proiektua])',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

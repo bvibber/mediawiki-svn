@@ -70,6 +70,13 @@ $messages['es'] = array(
 	'csshooks-desc' => 'Añade CSS a la salida HTML de las páginas para un mejor estilo',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'csshooks-desc' => 'Orrialdeen HTML irteerei CSS eransten dio apaintzeko',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Nike
@@ -141,6 +148,13 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'csshooks-desc' => 'Setzt en CSS an den HTML-code vun de Säiten derbäi fir datt se besser gestylt sinn',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'csshooks-desc' => 'Додава CSS на HTML излезните страници за подобар приказ.',
 );
 
 /** Nedersaksisch (Nedersaksisch)

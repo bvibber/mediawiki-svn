@@ -177,6 +177,13 @@ $messages['ia'] = array(
 	'formatchanges-editedby' => '$1 - modificate per $2 ($3)',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'formatchanges-anonymous' => 'Anonima',
+);
+
 /** Japanese (日本語)
  * @author Hosiryuhosi
  */
@@ -257,8 +264,8 @@ $messages['nn'] = array(
 $messages['oc'] = array(
 	'formatchanges-desc' => 'Tornar formatar los [[Special:RecentChanges|darrièrs cambiaments]]',
 	'formatchanges-anonymous' => 'Anonim',
-	'formatchanges-createdby' => 'creat per',
-	'formatchanges-editedby' => 'modificat per',
+	'formatchanges-createdby' => '$1 - creat per $2 ($3)',
+	'formatchanges-editedby' => '$1 - modificat per $2 ($3)',
 );
 
 /** Polish (Polski)
@@ -356,6 +363,13 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'formatchanges-anonymous' => 'Vô danh',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'formatchanges-anonymous' => 'Nennemik',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

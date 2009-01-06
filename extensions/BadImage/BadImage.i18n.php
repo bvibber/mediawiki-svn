@@ -322,7 +322,7 @@ $messages['bs'] = array(
 	'badimages-remove' => '(ukloni)',
 	'badimages-remove-btn' => 'Ukloni',
 	'badimages-remove-confirm' => 'Molimo potvrdite da li želite ukloniti $1 sa spiska:',
-	'badimages-removed' => '$ je uklonjen sa spiska.',
+	'badimages-removed' => '$1 je uklonjen sa spiska.',
 	'badimages-subheading' => 'Trenutne stavke',
 	'badimages-unprivileged' => '(Nemate dovoljno dopuštenja da mijenjate spisak)',
 	'badimages-log-name' => 'Spisak pogrešnih slika',
@@ -498,9 +498,29 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'badimages' => 'Irudi txarren zerrenda',
+	'badimages-desc' => 'MediaWikiren irudi txarren zerrend gaitasuna hedatu',
+	'badimages-add-btn' => 'Gehitu',
+	'badimages-added' => '$1 zerrendara gehitu da.',
+	'badimages-count' => "{{PLURAL:$1|Irudi '''$1'''|'''$1''' irudi}} {{PLURAL:$1|dago|daude}} irudi txarren zerrendan.",
 	'badimages-name' => 'Izena:',
+	'badimages-not-added' => 'Irudia ezin izan da gehitu.',
+	'badimages-not-removed' => 'Iruda ezin izan da kendu.',
+	'badimages-reason' => 'Arrazoia:',
+	'badimages-remove' => '(kendu)',
+	'badimages-remove-btn' => 'Kendu',
+	'badimages-remove-confirm' => 'Mesedez konfirma ezazu $1 zerrendatik kendu nahi duzula:',
+	'badimages-removed' => '$1 zerrendatik kendu da.',
+	'badimages-subheading' => 'Orain dauden elementuak',
+	'badimages-unprivileged' => '(Ez duzu eskumen nahikorik zerrenda aladatu ahal izateko)',
+	'badimages-log-name' => 'Irudi txarren zerrenda',
+	'badimages-log-header' => 'Hau [[{{MediaWiki:Badimages-page}}|irudi txarren zerrendako]] aldaketen loga da.',
+	'badimages-log-add' => '[[$1]] irudi txarren zerrendara gehitu da',
+	'badimages-log-remove' => '[[$1]] irudi txarren zerrendatik kendu da',
+	'badimages-page' => '{{ns:help}}:Irudi txarren zerrenda',
 );
 
 /** Extremaduran (Estremeñu)

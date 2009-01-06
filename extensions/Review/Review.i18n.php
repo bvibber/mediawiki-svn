@@ -124,7 +124,7 @@ $messages['ar'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>مراجعتك تم تخزينها!</span>",
 	'revision_review_this_page_version_link' => 'مراجعة هذه النسخة من الصفحة.',
 	'review_page_review' => 'مراجعة صفحة "$1"',
-	'review_blocked' => 'أنت ممنوع، اذهب بعيدا.',
+	'review_blocked' => 'أنت ممنوع ولا يمكنك المشاركة في عمليات المراجعة.',
 	'review_wrong_namespace' => 'الصفحات في هذا النطاق لا يمكن مراجعتها!',
 	'review_topic' => 'الموضوع',
 	'review_no_opinion' => 'لا رأي',
@@ -134,6 +134,7 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'review_sidebar_title' => 'مراجعة',
@@ -169,7 +170,7 @@ $messages['arz'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>مراجعتك تم تخزينها!</span>",
 	'revision_review_this_page_version_link' => 'مراجعة هذه النسخة من الصفحة.',
 	'review_page_review' => 'مراجعة صفحة "$1"',
-	'review_blocked' => 'أنت ممنوع، اذهب بعيدا.',
+	'review_blocked' => 'انت ممنوع و ما تقدرش تشارك في المراجعات.',
 	'review_wrong_namespace' => 'الصفحات فى هذا النطاق لا يمكن مراجعتها!',
 	'review_topic' => 'الموضوع',
 	'review_no_opinion' => 'لا رأي',
@@ -353,7 +354,7 @@ $messages['de'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Deine Prüfung wurde gespeichert!</span>",
 	'revision_review_this_page_version_link' => 'Prüfe diese Version der Seite.',
 	'review_page_review' => 'Prüfung der Seite „$1“',
-	'review_blocked' => 'Du bist gesperrt, es gibt nichts für dich zu tun.',
+	'review_blocked' => 'Du bist gesperrt und kannst an der Codeprüfung nicht teilnehmen.',
 	'review_wrong_namespace' => 'Seiten in diesem Namensraum können nicht geprüft werden!',
 	'review_topic' => 'Überschrift',
 	'review_no_opinion' => 'Keine Meinung',
@@ -415,6 +416,15 @@ $messages['es'] = array(
 	'review_comment' => 'Comentario',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'review_total_statistics' => 'Guztira',
+	'review_user_details_link' => '(xehetasunak)',
+	'review_blocked' => 'Blokeatuta zaude, ospa hemendik.',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -460,12 +470,13 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'review_total_statistics' => 'Yhteensä',
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Arvostelusi tallennettiin.</span>",
-	'review_blocked' => 'Olet estetty, mene pois.',
+	'review_blocked' => 'Olet estetty, joten et voi osallistua.',
 );
 
 /** French (Français)
@@ -521,7 +532,7 @@ $messages['fr'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Votre révision a été enregistrée.</span>",
 	'revision_review_this_page_version_link' => 'Réviser cette version de la page',
 	'review_page_review' => 'Révision de la page « $1 »',
-	'review_blocked' => 'Vous êtes bloqué.',
+	'review_blocked' => 'Vous êtes bloqué et ne pouvez pas participer aux relectures.',
 	'review_wrong_namespace' => 'Les pages dans cet espace de nom ne peuvent être révisées.',
 	'review_topic' => 'Sujet',
 	'review_no_opinion' => 'Sans opinion',
@@ -574,7 +585,7 @@ $messages['gl'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>A súa revisión foi almacenada!</span>",
 	'revision_review_this_page_version_link' => 'Examinar esta versión desta páxina.',
 	'review_page_review' => 'Revisión da páxina "$1"',
-	'review_blocked' => 'Vostede está bloqueado, desaparecerá.',
+	'review_blocked' => 'Está bloqueado e non pode participar nas revisións.',
 	'review_wrong_namespace' => 'As páxinas no espazo de nomes non poden ser revisadas!',
 	'review_topic' => 'Tema',
 	'review_no_opinion' => 'Sen opinión',
@@ -727,7 +738,7 @@ $messages['hsb'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Waše přepruwowanje je so składowało!</span>",
 	'revision_review_this_page_version_link' => 'Přepruwuj tutu wersiju strony.',
 	'review_page_review' => 'Přepruwowanje strony "$1"',
-	'review_blocked' => 'Sy blokowany, dźi preč.',
+	'review_blocked' => 'Sy zablokowany a njemóžeš so na přepruwowanjach wobdźělić.',
 	'review_wrong_namespace' => 'Strony w tutym mjenowym rumje njehodźa so přepruwować!',
 	'review_topic' => 'Tema',
 	'review_no_opinion' => 'Žane měnjenje',
@@ -882,7 +893,7 @@ $messages['lb'] = array(
 	'review_version_link' => 'Versioun #$1',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
 	'review_user_details_link' => '(Detailer)',
-	'review_blocked' => 'Dir sidd gespaart.',
+	'review_blocked' => 'Dir sidd gespaart a kënnt net beim Nokucke vu Säite matmaachen.',
 	'review_topic' => 'Thema',
 	'review_no_opinion' => 'Keng Meenung',
 	'review_comment' => 'Bemierkung',
@@ -1047,7 +1058,7 @@ Uw andere waarderingen worden samengevoegd met deze waar u 'geen mening' hebt op
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Uw beoordeling is opgeslagen!</span>",
 	'revision_review_this_page_version_link' => 'Deze versie van de pagina beoordelen.',
 	'review_page_review' => 'Beoordeling van pagina "$1"',
-	'review_blocked' => 'U bent geblokkeerd. Ga weg.',
+	'review_blocked' => 'U bent geblokkeerd en kunt geen beoordelingen uitbrengen.',
 	'review_wrong_namespace' => "Pagina's in deze naamruimte kunnen niet beoordeeld worden!",
 	'review_topic' => 'Onderwerp',
 	'review_no_opinion' => 'Geen mening',
@@ -1056,10 +1067,19 @@ Uw andere waarderingen worden samengevoegd met deze waar u 'geen mening' hebt op
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'review_error' => 'Noko er feil!',
+	'review_total_statistics' => 'Totalt',
+	'review_statistics_left_corner' => 'Versjon',
+	'review_version_link' => 'Versjon #$1',
+	'review_statistic_cell' => 'Snitt: $1 av $2<br />($4 registrerte, $5 uregistrerte)',
+	'review_version_statistic_cell' => '$1 av $2',
 	'review_user_details_link' => '(detaljar)',
+	'review_blocked' => 'Du er blokkert.',
+	'review_topic' => 'Emne',
 	'review_comment' => 'Kommentar',
 );
 
@@ -1469,7 +1489,7 @@ $messages['tl'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Naitabi/naitago na ang pagsusuri mo!</span>",
 	'revision_review_this_page_version_link' => 'Suriin ang bersyong ito ng pahina.',
 	'review_page_review' => 'Pagsusuri ng pahinang "$1"',
-	'review_blocked' => 'Hinadlangan ka, lumisan ka.',
+	'review_blocked' => 'Hinadlangan ka at hindi maaaring makilahok sa mga pagsusuri.',
 	'review_wrong_namespace' => 'Hindi masusuri ang mga pahinang nasa loob ng espasyo ng pangalang ito!',
 	'review_topic' => 'Paksa',
 	'review_no_opinion' => 'Walang pananaw (opinyon)',
@@ -1528,6 +1548,9 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'review_total_statistics' => 'Valod',
+	'review_blocked' => 'No dalol dunön atosi bi peblokol.',
+	'review_no_opinion' => 'Ced nonik',
+	'review_comment' => 'Küpet',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

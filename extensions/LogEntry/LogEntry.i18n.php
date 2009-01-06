@@ -210,6 +210,7 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'logentry-append' => 'Legg til',
+	'logentry-invalidpage' => 'Ugyldig sida',
 );
 
 /** Occitan (Occitan)
@@ -250,5 +251,12 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'logentry-invalidpage' => 'Ogiltig sida',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'logentry-invalidpage' => 'Pad no lonöföl',
 );
 

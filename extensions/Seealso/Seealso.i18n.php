@@ -109,6 +109,13 @@ $messages['es'] = array(
 	'seealso' => 'Véase también',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'seealso' => 'Ikus, gainera',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

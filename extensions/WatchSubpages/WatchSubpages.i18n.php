@@ -612,6 +612,21 @@ $messages['vi'] = array(
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'watchsubpages' => 'Galädön donapadis',
+	'watchsubpages-addedtowatchlist' => 'Sökölos peläükon galädalisede olik.',
+	'watchsubpages-addtitles' => 'Läükön padis',
+	'watchsubpages-addtitlestowatchlist' => 'Läükön padis galädalisede',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Läükön donapadis valik]] pada semik galädalisede vifiko',
+	'watchsubpages-form' => 'Välalös dono padis ad läükön galädalisede olik.
+Ad läükön padi, välolös bügili nilü on, poso välolös „Läükön padis“.
+
+Kipolös klavi: „Shift“ dono ad välön bügilis nilü ok.',
+);
+
 /** Chinese (China) (‪中文(中国大陆)‬)
  * @author Gzdavidwong
  */

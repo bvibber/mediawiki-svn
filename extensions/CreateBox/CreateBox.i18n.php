@@ -409,11 +409,18 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'createbox-desc' => 'Inputbox especializado para a criação de páginas',
 	'createbox-create' => 'Criar',
+	'createbox-exists' => "Desculpe, \"'''{{FULLPAGENAME}}'''\" já existe.
+
+Você não pode criar esta página, mas pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editá-la], 
+[{{fullurl:{{FULLPAGENAME}}}} lê-la], ou optar por criar uma página diferente usando a caixa abaixo.
+
+<createbox>break=no</createbox>",
 );
 
 /** Romanian (Română)

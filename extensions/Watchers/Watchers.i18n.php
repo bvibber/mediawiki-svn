@@ -155,6 +155,13 @@ $messages['br'] = array(
 	'watchers_less_than_x' => "Nebeutoc'h eget $1 implijer o deus lakaet ar bajenn-mañ war evezh.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'watchers_error_article' => "'''Greška:''' Stranica ne postoji.",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -231,6 +238,14 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'watchers' => 'Vigilantes',
 	'watchers_error_article' => "'''Error:''' La página no existe.",
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'watchers_link_title' => 'Nork begiratzen du orrialde hau?',
+	'watchers_error_article' => "'''Errorea:''' Orrialde hau ez da existitzen.",
 );
 
 /** Finnish (Suomi)
@@ -664,6 +679,20 @@ $messages['vec'] = array(
 	'watchers_noone_watches' => "Nissuni tien d'ocio sta pagina.",
 	'watchers_x_or_more' => "Almanco $1 {{PLURAL:$1|utente el|utenti i}} sta tegnendo d'ocio sta pagina.",
 	'watchers_less_than_x' => "Manco de $1 {{PLURAL:$1|utente el|utenti i}} tien d'ocio sta pagina.",
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'watchers' => 'Galädans',
+	'watchers-desc' => 'Jonon [[Special:Watchers|gebanis kinik labons padi in galädalised oksik]]',
+	'watchers_link_title' => 'Kin galädon-li padi at?',
+	'watchers_error_article' => "'''Pöl:''' Pad no dabinon.",
+	'watchers_header' => '{{PLURAL:$2|Geban, kel galädon|Gebans, kels galädons}} „$1“',
+	'watchers_noone_watches' => 'Nek galädon padi at.',
+	'watchers_x_or_more' => 'Gebans pu {{PLURAL:$1|bals|$1}} labons padi at in galädaliseds oksik.',
+	'watchers_less_than_x' => 'Gebans läs {{PLURAL:$1|bals|$1}} labons padi at in galädaliseds oksik.',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

@@ -117,6 +117,14 @@ $messages['bs'] = array(
 	'lookupuser-useroptions' => 'Korisničke postavke:',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'lookupuser-info-authenticated' => "Autenticació de l'adreça electrònica: $1",
+	'lookupuser-useroptions' => "Opcions d'usuari:",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -1046,9 +1054,15 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'lookupuser' => 'Sukön gebananünodis',
+	'lookupuser-intro' => 'Penolös gebananami ad logön buükamis gebana at.',
+	'lookupuser-nonexistent' => 'Pöl: Geban no dabinon',
+	'lookupuser-id' => 'Dientifanüm gebana: <tt>#$1</tt>',
 	'lookupuser-realname' => 'Nem jenöfik: $1',
+	'lookupuser-registration' => 'Registaramadät: $1',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -313,6 +313,15 @@ $messages['lb'] = array(
 	'whatismyip-out' => 'Är IP:',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'whatismyip' => 'Која е мојата IP адреса',
+	'whatismyip-desc' => 'Прикажува моментална корисничка IP адреса на [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Ваша IP адреса:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -500,6 +509,15 @@ $messages['vi'] = array(
 	'whatismyip' => 'IP của tôi là gì?',
 	'whatismyip-desc' => 'Hiển thị địa chỉ IP của người dùng tại [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'IP của bạn:',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'whatismyip' => 'Ladeti-IP kinik labob-li?',
+	'whatismyip-desc' => 'Jonon ladeti-IP gebana su [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Ladet-IP olik:',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

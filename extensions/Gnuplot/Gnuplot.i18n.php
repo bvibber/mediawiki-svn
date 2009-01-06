@@ -72,6 +72,13 @@ $messages['es'] = array(
 	'gnuplot-desc' => 'Añade la etiqueta <code><nowiki><gnuplot></nowiki></code> para usar Gnuplot',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'gnuplot-desc' => '<code><nowiki><gnuplot></nowiki></code> etiketa erantsi Gnuplot erabiltzeko',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */

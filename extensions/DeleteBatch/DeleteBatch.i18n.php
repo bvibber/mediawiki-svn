@@ -749,7 +749,7 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
 	'deletebatch-or' => '<b>o</b>',
 	'deletebatch-page' => 'Paginas de suprimir',
 	'deletebatch-reason' => 'Motiu de la supression',
-	'deletebatch-processing' => 'supression de las paginas',
+	'deletebatch-processing' => 'supression de las paginas $1',
 	'deletebatch-from-file' => 'dempuèi la tièra d’un fichièr',
 	'deletebatch-from-form' => 'a partir del formulari',
 	'deletebatch-success-subtitle' => 'per « $1 »',
@@ -760,6 +760,7 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
 	'deletebatch-select-script' => "suprimir l'escript de la pagina",
 	'deletebatch-select-yourself' => 'vos',
 	'deletebatch-no-page' => 'Indicatz al mens una pagina de suprimir O un fichièr donat que conten una tièra de paginas.',
+	'right-deletebatch' => 'Suprimir de paginas en lòt',
 );
 
 /** Polish (Polski)

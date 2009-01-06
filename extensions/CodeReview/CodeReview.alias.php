@@ -47,6 +47,11 @@ $aliases['de'] = array(
 	'Code' => array( 'Quelltext' ),
 );
 
+/** Basque (Euskara) */
+$aliases['eu'] = array(
+	'Code' => array( 'Kodea' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Code' => array( 'Código' ),

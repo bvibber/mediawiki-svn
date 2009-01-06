@@ -499,6 +499,15 @@ $messages['vi'] = array(
 	'layouts_unknown' => 'Không biết',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'layouts_title' => 'Jafön padi',
+	'layouts_choosecategory' => 'Välön kladi pro $1:',
+	'layouts_unknown' => 'Nesevädik',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

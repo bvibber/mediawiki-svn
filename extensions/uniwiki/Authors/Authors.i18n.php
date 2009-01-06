@@ -225,6 +225,15 @@ $messages['lb'] = array(
 	'authors_anonymous' => 'Anonym',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'authors-desc' => 'Додава листа на уредувачи на страници',
+	'authors_authors' => 'Автори',
+	'authors_anonymous' => 'Анонимни',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

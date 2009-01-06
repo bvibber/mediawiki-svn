@@ -614,6 +614,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'povwatch_desc' => 'Määt et müjjelesch, [[Special:PovWatch|Sigge op anderlüx Oppassleste ze donn]].',
+	'povwatch_title' => 'Siggetittel:',
 	'povwatch_added' => 'dobei jedonn',
 );
 

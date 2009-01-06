@@ -283,8 +283,10 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
+	'form' => 'Formularioa',
 	'formsave' => 'Gorde',
 );
 

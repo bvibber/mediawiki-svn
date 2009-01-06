@@ -251,6 +251,7 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'mp-userlevels-link' => 'Lankide mailak',
@@ -259,7 +260,12 @@ $messages['eu'] = array(
 	'mp-welcome-points' => '$1 puntu',
 	'mp-welcome-logged-in' => 'Kaixo $1',
 	'mp-requests-title' => 'Eskaerak',
+	'mp-requests-message' => 'Hurrengo eskaerak dituzu.',
 	'mp-request-new-message' => 'mezu berria',
+	'mp-request-new-award' => '{{PLURAL:$1|Sari berri bat|$1 sari berri}}',
+	'mp-request-new-gift' => '{{PLURAL:$1|Opari berri bat|$1 opari berri}}',
+	'mp-request-new-foe' => '{{PLURAL:$1|Etsai berri bat|$1 etsai berri}}',
+	'mp-request-new-friend' => '{{PLURAL:$1|Lagun berri bat|$1 lagun berri}}',
 );
 
 /** Finnish (Suomi)
@@ -394,6 +400,13 @@ $messages['ia'] = array(
 	'mp-request-new-gift' => '$1 nove {{PLURAL:$1|dono|donos}}',
 	'mp-request-new-foe' => '$1 nove {{PLURAL:$1|inimico|inimicos}}',
 	'mp-request-new-friend' => '$1 nove {{PLURAL:$1|amico|amicos}}',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'mp-welcome-points' => '$1 punti',
 );
 
 /** Japanese (日本語)

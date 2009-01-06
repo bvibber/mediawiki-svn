@@ -356,6 +356,16 @@ $messages['vi'] = array(
 	'signaturelogentry' => 'đã ký tài liệu $1',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'signaturelogpage' => 'Jenotalised dispenädas',
+	'signature-desc' => 'Mögükon [[Special:SignDocument|dispenami]] dokümas',
+	'signaturelogpagetext' => 'Is palisedons [[Special:SignDocument|dispenäds valik dokümes peläüköls]].',
+	'signaturelogentry' => 'edispenon dokümi: $1',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'signaturelogpage' => '簽名日誌',

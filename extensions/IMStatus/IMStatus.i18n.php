@@ -620,9 +620,32 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'imstatus-desc' => 'Adiciona marcas (tags) para mostrar vários estados de ligação de IM (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Sintaxe',
+	'imstatus_default' => 'Padrão',
 	'imstatus_example' => 'Exemplo',
+	'imstatus_possible_val' => 'Valores possíveis',
+	'imstatus_max' => 'máx',
+	'imstatus_min' => 'mín',
 	'imstatus_or' => 'ou',
+	'imstatus_style' => 'estilo do indicador de estado',
+	'imstatus_action' => 'acção quando o botão é pressionado',
+	'imstatus_details_saa' => 'Para mais detalhes sobre todos os estilos e acções, veja $1.',
+	'imstatus_your_name' => 'o seu nome $1',
+	'imstatus_aim_presence' => '$1 mostra o seu estado com uma ligação que iniciará o AIM para lhe enviar uma IM, desde que o utilizador o tenha instalado.',
+	'imstatus_aim_api' => '$1 mostra o seu estado com uma ligação que iniciará uma versão Javascript do AIM num <b>navegador</b> para lhe enviar uma IM.',
+	'imstatus_gtalk_code' => 'o seu código Google Talk',
+	'imstatus_gtalk_get_code' => 'o seu código Google Talk: obtenha-o em $1.',
+	'imstatus_gtalk_height' => 'altura da caixa, em pixels.',
+	'imstatus_gtalk_width' => 'largura da caixa, em pixels.',
+	'imstatus_icq_id' => 'o seu ID do ICQ',
+	'imstatus_icq_style' => 'um número entre 0 e 26 (sim, existem 27 estilos disponíveis...).',
+	'imstatus_live_code' => 'o seu ID do sítio Live Messenger',
+	'imstatus_live_get_code' => 'o seu ID do sítio Live Messenger: <strong>não é o seu endereço de e-mail</strong>, precisará de gerar um nas <a href="$1">opções do seu Live Messenger</a>.
+O ID que você precisa de fornecer consiste em números e letras entre "$2" e "$3".',
+	'imstatus_skype_nbstyle' => 'Nota: Se escolher um estilo que seja também uma acção, a sua escolha de acção será suplantada pela acção que corresponda ao seu estilo escolhido.',
+	'imstatus_xfire_size' => 'o tamanho do botão, de $1 (maior) a $2 (menor).',
+	'imstatus_yahoo_style' => 'o estilo do botão, de $1 (menor) a $2 (maior), $3 e $4 são para correio de voz.',
 );
 
 /** Romanian (Română)

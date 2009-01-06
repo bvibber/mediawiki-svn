@@ -753,3 +753,11 @@ $messages['vi'] = array(
 	'findspam-notextfound' => 'Không tìm thấy đóng góp',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'findspam-ip' => 'ladet-IP:',
+	'findspam-notextfound' => 'Keblünots nonik petuvons',
+);
+

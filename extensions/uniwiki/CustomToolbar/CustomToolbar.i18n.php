@@ -325,6 +325,55 @@ Bitte überprüfe deinen Popup-Blocker.',
 	'ct_user_sample' => 'Benutzername',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$wgCustomToolbarMessages['dsb'] = array(
+	'ct-desc' => 'Pśidawa rozšyrjabnu rědowu kšomu',
+	'ct_bold_sample' => 'Tucny tekst',
+	'ct_bold_tip_ins' => 'Tucny tekst zasunuś',
+	'ct_bold_tip_wrap' => 'Toś ten tekst tucny wobznamjeniś',
+	'ct_bold_caption' => 'Tucny',
+	'ct_italic_sample' => 'Kursiwny tekst',
+	'ct_italic_tip_ins' => 'Kursiwny tekst zasunuś',
+	'ct_italic_tip_wrap' => 'Toś ten tekst kursiwny wobznamjeniś',
+	'ct_italic_caption' => 'Kursiwny',
+	'ct_internal_sample' => 'Mě boka',
+	'ct_internal_tip_ins' => 'Interny wótkaz zasunuś',
+	'ct_internal_tip_wrap' => 'Toś ten tekst do internego wótkaza pśetworiś',
+	'ct_internal_caption' => 'Interny wótkaz',
+	'ct_external_tip_ins' => 'Eksterny wótkaz zasunuś',
+	'ct_external_tip_wrap' => 'Toś ten tekst do eksternego wótkaza pśetworiś',
+	'ct_external_caption' => 'Eksterny wótkaz',
+	'ct_image_tip' => 'Wobraz zasunuś',
+	'ct_image_caption' => 'Wobraz pśidaś',
+	'ct_attachment_tip' => 'Dodank zasunuś',
+	'ct_attachment_caption' => 'Dodank pśidaś',
+	'ct_math_sample' => 'How formulu LaTeX zasunuś',
+	'ct_math_tip_ins' => 'Matematisku formulu (LaTeX) zasunuś',
+	'ct_math_tip_wrap' => 'Toś ten tekst od matematiskeje formule (LaTeX) pśetworiś',
+	'ct_math_caption' => 'Formula',
+	'ct_nowiki_sample' => 'How njeformatěrowany tekst zasunuś',
+	'ct_nowiki_tip_ins' => 'Wikijowe formatěrowanje ingorěrowaś',
+	'ct_nowiki_tip_wrap' => 'Wikijowe formatěrowanje za toś ten tekst ignorěrowaś',
+	'ct_nowiki_caption' => 'Žeden wiki',
+	'ct_horizontal_tip' => 'Wódorownu liniju zasunuś (pšosym snadnje wužywaś)',
+	'ct_horizontal_caption' => 'Wódorowna linija',
+	'ct_upload' => '$1 nagraś',
+	'ct_select' => '$1 za nagraśe wubraś',
+	'ct_caption' => 'Pópisanje pśidaś (opcionalny)',
+	'ct_link' => 'Mě wótkaza pśidaś (opcionalny)',
+	'ct_submit' => 'Start!',
+	'ct_close' => 'Wokno zacyniś',
+	'ct_success' => 'Dataja jo se wuspěšnje nagrała!',
+	'ct_popupblocked' => 'Nagrawańskemu wuskokowańskemu woknoju jo se zawobarało wócynjenje.
+Pšosym pśekontrolěruj swój blokěrowak wuskokowańskich woknow.',
+	'ct_user_user' => 'Wužywaŕ',
+	'ct_user_tip' => 'Wótkaz k bokoju wužywarja zasunuś',
+	'ct_user_caption' => 'Wótkaz k wužywarjeju',
+	'ct_user_sample' => 'Wužywarske mě',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -422,8 +471,13 @@ $wgCustomToolbarMessages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $wgCustomToolbarMessages['eu'] = array(
+	'ct_bold_sample' => 'Testu beltza',
+	'ct_bold_tip_ins' => 'Testu beltza txertatu',
+	'ct_bold_tip_wrap' => 'Testu hau belztu',
+	'ct_bold_caption' => 'Beltza',
 	'ct_italic_sample' => 'Testu etzana',
 	'ct_italic_tip_ins' => 'Testu etzana jarri',
 	'ct_italic_tip_wrap' => 'Bihurtu testu etzanean',
@@ -446,6 +500,7 @@ $wgCustomToolbarMessages['eu'] = array(
 	'ct_horizontal_caption' => 'Lerro horizontala',
 	'ct_upload' => 'Igo $1',
 	'ct_link' => 'Lotura izena gehitu (hautazkoa)',
+	'ct_submit' => 'Joan!',
 	'ct_close' => 'Leihoa itxi',
 	'ct_success' => 'Fitxategi igoera arrakastatsua!',
 	'ct_user_user' => 'Lankide',
@@ -1625,6 +1680,13 @@ $wgCustomToolbarMessages['vi'] = array(
 	'ct_upload' => 'Tải liên $1',
 	'ct_close' => 'Đóng cửa sổ',
 	'ct_user_user' => 'Người dùng',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$wgCustomToolbarMessages['vo'] = array(
+	'ct_image_caption' => 'Läükön magodi',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

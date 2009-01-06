@@ -102,10 +102,12 @@ $messages['dsb'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'securepasswords-valid' => 'Zure pasahitza oker dago edo motzegia da.
 Honelakoa izan behar du:',
+	'securepasswords-minlength' => 'Gutxienez, {{PLURAL:$1|karaktere $1|$1 karaktere}} luze izan behar du',
 	'securepasswords-lowercase' => 'gutxienez hizki bat minuskulaz izan',
 	'securepasswords-uppercase' => 'gutxienez letra larri bat izan',
 	'securepasswords-digit' => 'gutxienez digitu bat izan',
@@ -410,6 +412,21 @@ Dapat itong:',
 	'securepasswords-special' => 'maglaman ng kahit na 1 natatanging panitik (ang natatanging mga panitik ay: $1)',
 	'securepasswords-username' => 'naiiba/kaiba mula sa iyong pangalan ng tagagamit',
 	'securepasswords-word' => 'hindi isang salita',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'securepasswords-valid' => 'Letavöd olik no lonöfon u binon tu brefik.
+Muton:',
+	'securepasswords-minlength' => 'labon lunoti {{PLURAL:$1|malata pu bala|malatas pu $1}}',
+	'securepasswords-lowercase' => 'ninädön minudi pu bali',
+	'securepasswords-uppercase' => 'ninädon mayudi pu bali',
+	'securepasswords-digit' => 'ninädön numati pu bali',
+	'securepasswords-special' => 'ninädon malati patik pu bali (malats patik binons: $1)',
+	'securepasswords-username' => 'difön de gebananam olik',
+	'securepasswords-word' => 'no binön vöd',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

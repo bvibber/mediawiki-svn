@@ -558,15 +558,18 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'postcomment_desc' => 'Permite que utilizadores escrevam comentários directamente em páginas de discussão.',
+	'postcomment_desc' => 'Permite que utilizadores coloquem comentários directamente em páginas de discussão.',
+	'postcomment_discussionprotected' => 'Esta página de discussão foi protegida contra mais comentários.',
 	'postcomment_notloggedin' => 'Você não se encontra autenticado.',
 	'postcomment_youareloggedinas' => 'Você está autenticado como $1',
 	'postcomment_addcommentdiscussionpage' => 'Acrescente o seu comentário a esta página de discussão',
 	'postcomment_leavemessagefor' => 'Deixe uma mensagem para $1',
+	'postcomment_post' => 'Colocar',
 	'postcomment_on' => 'Em',
 	'postcomment_said' => 'disse',
 	'postcomment_invalidrequest' => 'Pedido inválido.',
 	'postcomment_replyto' => 'Resposta a $1',
+	'postcomment_nopostingtoadd' => 'Nenhum comentário a adicionar.',
 );
 
 /** Romanian (Română)

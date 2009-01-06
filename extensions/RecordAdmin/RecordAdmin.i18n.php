@@ -501,6 +501,21 @@ $messages['nl'] = array(
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'recordadmin-alreadyexist' => '«$1» finst frå før.',
+	'recordadmin-buttonsearch' => 'Søk',
+	'recordadmin-buttoncreate' => 'Opprett',
+	'recordadmin-searchresult' => 'Søkjeresultat',
+	'recordadmin-edit' => 'Endrar $1',
+	'recordadmin-typeupdated' => 'Eigenskapane til $1 blei oppdaterte',
+	'recordadmin-buttonsave' => 'Lagra',
+	'recordadmin-editlink' => 'endra',
+	'recordadmin-created' => 'Oppretta',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -770,8 +770,12 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'showprocesslist-user' => 'Geban',
+	'showprocesslist-time' => 'Tim',
+	'showprocesslist-state' => 'Stad',
+	'showprocesslist-info' => 'Nüns',
 );
 

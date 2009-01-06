@@ -77,6 +77,7 @@ $messages['en'] = array(
  * @author Darth Kule
  * @author Fryed-peach
  * @author Jon Harald Søby
+ * @author Malafaya
  * @author Purodha
  */
 $messages['qqq'] = array(
@@ -87,7 +88,7 @@ $messages['qqq'] = array(
 * $2 is an end date',
 	'fundraiserstats-date' => '{{Identical|Date}}',
 	'fundraiserstats-day' => '* $1 is the nth day of an annual fundraiser
-* $2 is the year of a fundraiser',
+* $2 is the year/name of a fundraiser',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1179,7 +1180,7 @@ $messages['ja'] = array(
 	'contribstats-value-over' => '$1 以上',
 	'fundraiserstatistics' => '資金調達統計',
 	'fundraiserstats-date' => '日付',
-	'fundraiserstats-day' => '$2年の$1日目',
+	'fundraiserstats-day' => '$2 の$1日目',
 	'fundraiserstats-contributions' => '寄付',
 	'fundraiserstats-total' => '総額 (米ドル)',
 	'fundraiserstats-avg' => '平均 (米ドル)',
@@ -1791,6 +1792,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'contributionreporting-desc' => 'Relatório ao vivo da angariação de fundos da Wikimedia',
 	'contributiontotal' => 'Total de contribuições',
 	'contributionhistory' => 'Histórico de contribuições',
 	'contrib-hist-header' => 'Comentários em tempo real de doadores de todo o mundo',
@@ -1808,6 +1810,7 @@ $messages['pt'] = array(
 	'contribstats-currency-range-totals' => 'Totais por divisa (de $1 a $2)',
 	'contribstats-contribution-range-breakdown' => 'Separação das contribuições por valor (de $1 a $2)',
 	'contribstats-currency-totals' => 'Totais de divisa para o ano fiscal de $1',
+	'contribstats-contribution-breakdown' => 'Repartição das contribuições por valor para o ano fiscal de $1',
 	'contribstats-day' => 'Dia',
 	'contribstats-month' => 'Mês',
 	'contribstats-currency' => 'Divisa',
@@ -1822,6 +1825,7 @@ $messages['pt'] = array(
 	'contribstats-value-under' => 'Menos de $1',
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Mais de $1',
+	'fundraiserstatistics' => 'Estatísticas da angariação de fundos',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dia $1 de $2',
 	'fundraiserstats-contributions' => 'Contribuições',
@@ -1832,6 +1836,7 @@ $messages['pt'] = array(
 	'fundraiserstats-tab-contributions' => 'Número de contribuições',
 	'fundraiserstats-tab-averages' => 'Médias (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
+	'specialpages-group-contribution' => 'Contribuições/Angariação de fundos',
 );
 
 /** Romanian (Română)

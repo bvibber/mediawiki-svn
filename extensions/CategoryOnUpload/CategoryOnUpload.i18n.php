@@ -340,9 +340,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'categoryonupload-desc' => 'Pede a um utilizador que seleccione uma categoria quando este carrega um ficheiro',
 	'categoryonupload-label' => 'Categoria:',
 );
 

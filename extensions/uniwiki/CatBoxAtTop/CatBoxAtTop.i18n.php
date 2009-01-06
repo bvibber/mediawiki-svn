@@ -217,6 +217,13 @@ $messages['lb'] = array(
 	'catboxattop-categories' => 'Kategorien',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'catboxattop-categories' => 'Категории',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

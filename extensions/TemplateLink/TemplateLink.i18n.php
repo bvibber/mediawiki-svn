@@ -124,9 +124,11 @@ $messages['eo'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'templatelink' => 'Txantiloi lotura',
+	'templatelink_empty' => 'Parametroa bat eman behar diozu.',
 );
 
 /** French (Français)

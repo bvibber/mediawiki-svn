@@ -1104,6 +1104,53 @@ $messages['grc'] = array(
 	'oversight-oversighter' => 'Παρόραμα:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'hiderevision' => 'Versione fir immer useneh',
+	'hiderevision-desc' => 'Verbirgt us juristische Grind einzelni Versione vor allene Benutzern',
+	'group-oversight' => 'Oversighter',
+	'group-oversight-member' => 'Oversighter',
+	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'right-oversight' => 'E Version aaluege, wu bis jetz verborge gsi sich',
+	'right-hiderevision' => 'Versione aaluege un widerherstelle, wu au vor Ammanne verborge si',
+	'hiderevision-prompt' => 'Versionsnummere wu sott usegnuh wäre:',
+	'hiderevision-continue' => 'Wyter',
+	'hiderevision-text' => "Des derf '''ussschliessli numme''' in dääne Fäll gschäh:
+* Persenligi Informatione:
+*: ''Realname, Adräss, Telifonnummere un ähnlige private Detail''
+
+'''Dr Missbruuch vu däm Syschtem zieht dr Verluscht vu däne Rächt noch sich!'''
+
+Versione, wu usegnuh wore sin, chenne vu niemerem meh iber d Website aagluegt wäre. Si wäre aber protokolliert un chenne bi me Fähler dur e Datebankadministrator widerhärgstellt wäre",
+	'hiderevision-reason' => 'Grund (wird uusichtbar protokolliert):',
+	'hiderevision-submit' => 'Nimm die Version fir immer use',
+	'hiderevision-tab' => 'Version useneh',
+	'hiderevision-link' => 'Versteckti Benutzerbyyträg',
+	'hiderevision-norevisions' => 'S isch kei Version aagee wore zum Useneh.',
+	'hiderevision-noreason' => 'Du muesch e Grund aagee fir s Useneh.',
+	'hiderevision-status' => 'Version $1: $2',
+	'hiderevision-success' => 'Mit Erfolg archiviert un usegnuh.',
+	'hiderevision-error-missing' => 'Nit gfunde in dr Datebank.',
+	'hiderevision-error-current' => 'Di letscht Bearbeitig vun ere Syte cha nit usegnuh wäre. Setz d Bearbeitig zerscht zruck.',
+	'hiderevision-error-delete' => 'D Archivierung isch nit megli. Isch si glescht wore?',
+	'hiderevision-archive-status' => 'Gleschti Versione vu $1: $2',
+	'oversight-nodiff' => 'S isch kei Versionsverglych megli, wel s im Momänt kei friejeri Version vu däre Syte git. Megligi Grind:
+*D Syte isch glescht wore
+*D Version, wu usegnuh woren isch, isch di erscht gsi',
+	'oversight-log-hiderev' => 'het e Version vu „$1“ usegnuh',
+	'oversight' => 'Oversight',
+	'oversight-view' => 'Detail',
+	'oversight-difference' => '(Unterschid zue dr vorige Version wu blybt)',
+	'oversight-prev' => 'Letschti vorigi Version',
+	'oversight-hidden' => 'Version wu usegnuh isch',
+	'oversight-header' => 'Do chunnt e Lischt mit dr Versione, wu fir immer usegnuh wore sin zum effentli aaluege. D Vereffentlichung vu däne Informatione cha bedyte, ass eim fir immer d Oversight-Rächt ewäggnuh wäre.',
+	'oversight-legend' => 'Logbuech dursueche',
+	'oversight-oversighter' => 'Oversight-Berächtigter:',
+	'oversight-offender' => 'Benutzer:',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -2521,9 +2568,9 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'hiderevision' => 'Ocultar revisões permanentemente',
 	'hiderevision-desc' => 'Esconde, de todos os utilizadores, revisões individuais por razões legais, etc.',
-	'group-oversight' => 'Oversighters',
-	'group-oversight-member' => 'Oversight',
-	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'group-oversight' => 'Supervisores',
+	'group-oversight-member' => 'Supervisor',
+	'grouppage-oversight' => '{{ns:project}}:Supervisão',
 	'right-oversight' => 'Ver uma revisão previamente ocultada',
 	'right-hiderevision' => 'Rever e restaurar revisões ocultadas dos Sysops',
 	'hiderevision-prompt' => 'Número da revisão (edição) a ser removida:',
@@ -2553,7 +2600,7 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 *A página foi eliminada
 *Esta edição oculta era a primeira edição da página',
 	'oversight-log-hiderev' => 'removida uma edição de $1',
-	'oversight' => 'Oversight',
+	'oversight' => 'Supervisão',
 	'oversight-view' => 'detalhes',
 	'oversight-difference' => '(Diferenças entre as edições anteriores restantes)',
 	'oversight-prev' => 'Última edição anterior',
@@ -2561,6 +2608,8 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 	'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
 	'oversight-legend' => 'Pesquisar registro de revisões ocultas',
+	'oversight-oversighter' => 'Supervisor:',
+	'oversight-offender' => 'Ofensor:',
 );
 
 /** Quechua (Runa Simi)

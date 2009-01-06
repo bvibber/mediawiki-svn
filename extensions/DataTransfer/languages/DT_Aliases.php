@@ -32,6 +32,11 @@ $aliases['bs'] = array(
 	'ViewXML' => array( 'VidiXML' ),
 );
 
+/** Basque (Euskara) */
+$aliases['eu'] = array(
+	'ViewXML' => array( 'XMLIkusi' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'ViewXML' => array( 'Voir XML', 'VoirXML' ),

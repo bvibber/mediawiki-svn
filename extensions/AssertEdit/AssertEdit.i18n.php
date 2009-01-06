@@ -238,6 +238,15 @@ $messages['grc'] = array(
 	'assert_edit_message' => 'Ἡ καθωρισμένη δήλωσις ($1) ἀπετεύχθη.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'assert_edit_title' => 'Aaspruch fählgschla',
+	'assert_edit_desc' => 'Ergänzt Bearbeitigs-Aaspruch fir Bötli',
+	'assert_edit_message' => 'Dr Aaspruch ($1), wu aagee woren isch, isch fählgschla.',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

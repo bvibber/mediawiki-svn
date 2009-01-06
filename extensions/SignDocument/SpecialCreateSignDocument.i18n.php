@@ -1336,12 +1336,23 @@ Xin hãy cực kỳ chắc chắn rằng tài liệu đã đạt tới mức ổ
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'createsigndocument' => 'Mögükön dispenami dokümas',
 	'createsigndoc-pagename' => 'Pad:',
+	'createsigndoc-allowedgroup' => 'Grup pedälöl:',
+	'createsigndoc-email' => 'Ladet leäktronik:',
+	'createsigndoc-address' => 'Domaladet:',
 	'createsigndoc-extaddress' => 'Zif, Tat, Län:',
+	'createsigndoc-phone' => 'Telefonanüm:',
+	'createsigndoc-bday' => 'Motedadät:',
+	'createsigndoc-minage' => 'Bäldot puik:',
+	'createsigndoc-introtext' => 'Nüdugot:',
+	'createsigndoc-hidden' => 'Klänedik',
 	'createsigndoc-create' => 'Jafön',
 	'createsigndoc-error-generic' => 'Pöl: $1',
+	'createsigndoc-error-pagenoexist' => 'Pöl: Pad: [[$1]] no dabinon.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

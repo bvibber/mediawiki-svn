@@ -320,6 +320,7 @@ $wgGoogleMapsMessages['az'] = array(
  */
 $wgGoogleMapsMessages['be-tarask'] = array(
 	'gm-balloon-title' => 'Назва:',
+	'gm-remove' => 'выдаліць',
 	'gm-yes' => 'Так',
 	'gm-no' => 'Не',
 	'gm-save-path' => 'Захаваць',
@@ -504,6 +505,7 @@ $wgGoogleMapsMessages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Toniher
  */
 $wgGoogleMapsMessages['ca'] = array(
 	'gm-incompatible-browser' => "Per veure el mapa que hi ha en aquesta p&agrave;gina, has d'utilitzar un navegador compatible.",
@@ -552,6 +554,9 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-color-path' => 'canviar el color',
 	'gm-make-map' => 'inserir un mapa',
 	'gm-hide-map' => 'ocultar el mapa',
+	'gm-earth' => 'Terra',
+	'gm-moon' => 'Lluna',
+	'gm-mars' => 'Mart',
 );
 
 /** Chamorro (Chamoru)
@@ -930,10 +935,36 @@ $wgGoogleMapsMessages['es'] = array(
 
 /** Basque (Euskara)
  * @author Bengoa
+ * @author Kobazulo
  * @author Theklan
  */
 $wgGoogleMapsMessages['eu'] = array(
+	'gm-incompatible-browser' => 'Hutsune honetan legoken mapa ikusi ahal izateko, web nabigatzaile bateragarria erabili behar duzu.',
+	'gm-incompatible-browser-link' => 'Klikatu hemen web nabigatzaile bateragarrien zerrenda ikusteko.',
+	'gm-balloon-title' => 'Izenburua:',
+	'gm-save-point' => 'gorde eta itxi',
+	'gm-refresh-list' => 'Zerrenda berritu',
+	'gm-load-map' => 'Mapa kargatu',
 	'gm-no-results' => 'Barkatu, ez dago emaitzarik',
+	'gm-searching' => 'bilatzen...',
+	'gm-map' => 'Mapa',
+	'gm-are-you-sure' => 'Ziur al zaude?',
+	'gm-width' => 'Zabalera',
+	'gm-height' => 'Altuera',
+	'gm-scale-control' => 'Eskala',
+	'gm-large' => 'Handia',
+	'gm-medium' => 'Ertaina',
+	'gm-small' => 'Txikia',
+	'gm-yes' => 'Bai',
+	'gm-no' => 'Ez',
+	'gm-search' => 'Bilatu',
+	'gm-meters' => 'metroak',
+	'gm-miles' => 'miliak',
+	'gm-save-path' => 'Gorde',
+	'gm-color-path' => 'kolorez aldatu',
+	'gm-line-width' => 'Zabalera',
+	'gm-make-map' => 'mapa bat sortu',
+	'gm-hide-map' => 'mapa ezkutatu',
 	'gm-kml-loading' => 'kargatzen...',
 	'gm-earth' => 'Lurra',
 	'gm-moon' => 'Ilargia',
@@ -4239,6 +4270,7 @@ $wgGoogleMapsMessages['vo'] = array(
 	'gm-load-map' => 'Lodön kaedi',
 	'gm-clip-result' => 'Läükön kaede',
 	'gm-no-results' => 'Pidö! seks nonik',
+	'gm-searching' => 'sukon...',
 	'gm-map' => 'Kaed',
 	'gm-are-you-sure' => 'Fümiko?',
 	'gm-width' => 'Vidot',
@@ -4251,7 +4283,12 @@ $wgGoogleMapsMessages['vo'] = array(
 	'gm-no-zoom-control' => 'Nonik',
 	'gm-yes' => 'Si',
 	'gm-no' => 'Nö',
+	'gm-search' => 'Sukön',
+	'gm-save-path' => 'Dakipön',
 	'gm-line-width' => 'Vidot',
+	'gm-make-map' => 'mekön kaedi',
+	'gm-hide-map' => 'klänedön kaedi',
+	'gm-kml-loading' => 'lodon...',
 	'gm-earth' => 'Tal',
 	'gm-moon' => 'Mun',
 );

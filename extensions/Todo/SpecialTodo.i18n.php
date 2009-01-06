@@ -283,6 +283,41 @@ $4',
 	'todo-form-email' => 'Geben Sie Ihre E-Mail-Adresse ein, um eine Benachrichtigung zu erhalten, wenn der Eintrag geschlossen wurde:',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'todo' => 'Lisćina nadawkow',
+	'todo-desc' => 'Eksperimentelne rozšyrjenje za wósobinsku [[Special:Todo|lisćinu nadawkow]]',
+	'todo-tab' => 'nadawki',
+	'todo-new-queue' => 'nowy',
+	'todo-mail-subject' => 'Dokóńcony zapisk na lisćinje nadawkow wužywarja $1',
+	'todo-mail-body' => 'Sy pominał e-mailow wobkšuśenje wo dokóńcenju zapiska, kótaryž sy pósłał k lisćinje nadawkow online wužywarja $1.
+
+Zapisk: $2
+Wótpósłany: $3
+
+Toś ten zapisk jo se markěrował ako dokóńcony, z toś tym komentarom:
+$4',
+	'todo-invalid-item' => 'Felujucy abo njepłaśiwy zapisk',
+	'todo-update-else-item' => 'Wopyt zapiski někogo drugego aktualizěrowaś',
+	'todo-unrecognize-type' => 'Njeznaty typ',
+	'todo-user-invalide' => 'Nadawk njepłaśiwy, felujucy abo wužywaŕ njama lisćinu nadawkow',
+	'todo-item-list' => 'Twóje zapiski',
+	'todo-no-item' => 'Žedne zapiski za nadawki.',
+	'todo-invalid-owner' => 'Njepłaśiwy wobsejźaŕ za toś ten zapisk',
+	'todo-add-queue' => 'Rěd cakajucych pśidaś',
+	'todo-move-queue' => 'Do rěda cakajucych pśesunuś',
+	'todo-list-for' => 'Lisćina nadawkow za',
+	'todo-list-change' => 'Změniś',
+	'todo-list-cancel' => 'Pśetergnuś',
+	'todo-new-item' => 'Nowy zapisk',
+	'todo-issue-summary' => 'Zespominanje problema:',
+	'todo-form-details' => 'Drobnostki:',
+	'todo-form-email' => 'Zapiš swóju e-mailowu adresu, aby dostał powěsć, gaž zapisk se zacynja',
+	'todo-form-submit' => 'Napšašanje wótpósłaś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

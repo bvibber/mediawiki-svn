@@ -961,10 +961,11 @@ $messages['sv'] = array(
 );
 
 /** Silesian (Ślůnski)
+ * @author Djpalar
  * @author Herr Kriss
  */
 $messages['szl'] = array(
-	'editmsg-search' => 'Šnupej',
+	'editmsg-search' => 'Sznupej',
 );
 
 /** Tamil (தமிழ்)

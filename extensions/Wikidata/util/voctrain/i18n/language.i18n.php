@@ -818,6 +818,7 @@ $messages['es'] = array(
 	'voctrain_Languages' => 'Idiomas',
 	'voctrain_Questions' => 'Preguntas',
 	'voctrain_Answers' => 'Respuestas',
+	'voctrain_collection' => 'compilación',
 	'voctrain_Password' => 'Contraseña',
 	'voctrain_Language' => 'Idioma',
 	'voctrain_Log_in' => 'Iniciar sesión',
@@ -1200,6 +1201,7 @@ $messages['ja'] = array(
 	'voctrain_Number_of_questions' => '質問の数',
 	'voctrain_Languages' => '言語',
 	'voctrain_Please_specify_the_languages_you_want_to_test_in' => '試験したい言語を指定してください',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(例: eng は英語、deu はドイツ語)。',
 	'voctrain_Questions' => '質問',
 	'voctrain_Answers' => '回答',
 	'voctrain_start_exercise' => '課題を開始',
@@ -1232,7 +1234,10 @@ $messages['ja'] = array(
 	'voctrain_Log_in' => 'ログイン',
 	'voctrain_Definitions' => '定義',
 	'voctrain_Could_not_create_new_user' => '新規利用者を作成できませんでした',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => '利用者名と任意のパスワードを入力してください (または別の利用者名を試してください)',
+	'voctrain_Dictionary_definitions' => '辞書定義',
 	'voctrain_Translation' => '翻訳',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => '複数の言語を使うには値をコンマで区切ってください。',
 );
 
 /** Georgian (ქართული)

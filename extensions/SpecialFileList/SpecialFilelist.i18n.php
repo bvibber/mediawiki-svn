@@ -709,9 +709,14 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'filelist' => 'Ragivalised',
+	'filelist-desc' => '[[Special:Filelist|Pad patik]] ad lisedön ragivis pelöpüköl',
+	'filelist-show-list' => 'Jonön lisedi',
+	'filelist-show-gallery' => 'Jonön magodemi',
+	'filelist-image-desc' => 'bep',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

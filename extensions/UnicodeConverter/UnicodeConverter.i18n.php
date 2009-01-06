@@ -124,6 +124,8 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'unicodeconverter' => 'Conversor Unicode',
+	'unicodeconverter-desc' => 'Un ejemplo simple de un módulo de página especial. [[Special:UnicodeConverter|Dada una cadena en UTF-8]], la convierte en entidades HTML adecuadas para una página web en formato ISO 8859-1',
 	'unicodeconverter-ok' => 'Aceptar',
 	'unicodeconverter-oldtext' => 'Texto original:',
 	'unicodeconverter-newtext' => 'Texto convertido:',
@@ -131,9 +133,11 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'unicodeconverter' => 'Unicode bihurtzailea',
+	'unicodeconverter-ok' => 'Ongi da',
 	'unicodeconverter-oldtext' => 'Jatorrizko testua:',
 	'unicodeconverter-newtext' => 'Eraldatutako testua:',
 );
@@ -268,6 +272,16 @@ $messages['lb'] = array(
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Originaltext:',
 	'unicodeconverter-newtext' => 'Text ëmwandelen:',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'unicodeconverter' => 'Unicode конвертор',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Оригинален текст:',
+	'unicodeconverter-newtext' => 'Конвертиран текст:',
 );
 
 /** Erzya (Эрзянь)

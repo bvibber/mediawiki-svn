@@ -835,6 +835,54 @@ $messages['es'] = array(
 	'deletequeue-list-header-page' => 'Página',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'deletequeue-action-queued' => 'Ezabaketa',
+	'deletequeue-action' => 'Ezabatzeko iradoki',
+	'deletequeue-action-title' => '"$1" ezabatzeko iradoki',
+	'deletequeue-generic-reasons' => '* Arrazoi motak:
+** Bandalismoa
+** Spam
+** Mantenua
+** Proiektuaren esparrutik kanpo kokatua',
+	'deletequeue-nom-alreadyqueued' => 'Orrialde hau jada ezabaketa-ilaran dago.',
+	'deletequeue-prod-title' => '"$1" ezabatzeko proposamena',
+	'deletequeue-delnom-reason' => 'Izendapenaren arrazoia:',
+	'deletequeue-delnom-otherreason' => 'Beste arrazoi bat',
+	'deletequeue-delnom-extra' => 'Aparteko informazioa:',
+	'deletequeue-delnom-submit' => 'Izendapena bidali',
+	'deletequeue-log-dequeue' => "[[$1]] '$2' ezabatzeko ilaratik kendua.",
+	'right-speedy-nominate' => 'Lehenbailehen ezabatzeko orrialdeak izendatu',
+	'right-prod-nominate' => 'Orrialde bat ezabatzeko proposatu',
+	'right-deletediscuss-nominate' => 'Ezabatzeko eztabaidak hasi',
+	'deletequeue-queue-speedy' => 'Premiazko ezabaketa',
+	'deletequeue-queue-deletediscuss' => 'Ezabaketa-eztabaida',
+	'deletequeue-notqueued' => 'Zuk aukeratutako orrialdea ez dago ezabatzeko ilaran orain',
+	'deletequeue-review-action' => 'Egin beharreko ekintza:',
+	'deletequeue-review-delete' => 'Orrialdea ezabatu.',
+	'deletequeue-review-reason' => 'Iruzkinak:',
+	'deletequeue-review-newreason' => 'Arrazoi berria:',
+	'deletequeue-review-newextra' => 'Aparteko informazioa:',
+	'deletequeue-review-original' => 'Izendapenaren arrazoia',
+	'deletequeue-discusscreate-summary' => '[[$1]] ezabatzeko eztabaida orria sortzen.',
+	'deletequeue-vote-action' => 'Gomendioa:',
+	'deletequeue-vote-reason' => 'Iruzkinak:',
+	'deletequeue-vote-submit' => 'Bidali',
+	'deletequeue' => 'Ezabaketa-ilara',
+	'deletequeue-list-search-legend' => 'Orrialdeak bilatu',
+	'deletequeue-list-queue' => 'Ilara:',
+	'deletequeue-list-status' => 'Egoera:',
+	'deletequeue-list-search' => 'Bilatu',
+	'deletequeue-list-anyqueue' => '(edozein)',
+	'deletequeue-list-votes' => 'Bozen zerrenda',
+	'deletequeue-list-header-page' => 'Orrialdea',
+	'deletequeue-list-header-queue' => 'Ilara',
+	'deletequeue-list-header-expiry' => 'Epemuga',
+	'deletequeue-list-header-discusspage' => 'Eztabaida orrialdea',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
@@ -1632,8 +1680,13 @@ $messages['kri'] = array(
  */
 $messages['ksh'] = array(
 	'deletequeue-desc' => 'Schaff en Süßteem met [[Special:DeleteQueue|Schlange fun Sigge, di op et Fottschmiiße am waade]] sin.',
+	'deletequeue-permissions-noedit' => 'Do moß en Sigg ändere dörve, öm beshtemme ze dörve, of se fottjeschmeße weed udder nit.',
 	'deletequeue-delnom-otherreason' => 'Ene andere Jrund',
 	'deletequeue-delnom-extra' => 'Zosätzlijje Enfommazjuhne:',
+	'deletequeue-queue-deletediscuss' => 'Klaaf övver et Fottschmiiße',
+	'deletequeue-vote-endorse' => 'Zoshtimme zom Fottschmiiße.',
+	'deletequeue-vote-object' => 'Jäje et Fottschmiiße.',
+	'deletequeue-vote-submit' => 'Loß Jonn!',
 	'deletequeue-list-status' => 'Stattus:',
 	'deletequeue-list-search' => 'Söke',
 	'deletequeue-list-votes' => 'Leß met de Stemme',

@@ -415,6 +415,13 @@ $messages['vi'] = array(
 	'charinsert-desc' => 'Cho phép tạo nên một hộp dùng để [[MediaWiki:Edittools|chèn các ký tự không chuẩn hóa]] dùng JavaScript',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'charinsert-desc' => 'Dälon jafi bügila me el JavaScript ad [[MediaWiki:Edittools|nüpladön malatis nekösömik]]',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

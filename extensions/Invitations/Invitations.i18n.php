@@ -249,6 +249,13 @@ $messages['es'] = array(
 	'invitations-invite-success' => 'Ha invitado con éxito a $1 usar esta función.',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'invitations-inviteform-submit' => 'Gonbidatu',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Silvonen

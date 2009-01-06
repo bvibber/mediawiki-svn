@@ -613,6 +613,41 @@ $messages['de-formal'] = array(
 	'ogg-no-xiphqt' => 'Ihr System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laden Sie XiphQT</a> oder wählen Sie eine andere Abspielsoftware.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'ogg-desc' => 'Wóźeński program za dataje Ogg Theora a Vprbis z JavaScriptowym wótegrawakom',
+	'ogg-short-audio' => 'Ogg $1 awdiodataja, $2',
+	'ogg-short-video' => 'Ogg $1 wideodataja, $2',
+	'ogg-short-general' => 'Ogg $1 medijowa dataja, $2',
+	'ogg-long-audio' => '(Ogg $1 awdiodataja, dłujkosć $2, $3)',
+	'ogg-long-video' => '(Ogg $1 wideodataja, dłujkosć $2, $4×$5 pikselow, $3)',
+	'ogg-long-multiplexed' => '(ogg multipleksowa awdio-/wideodataja, $1, dłujkosć $2, $4×$5 pikselow, $3 dogromady)',
+	'ogg-long-general' => '(Ogg medijowa dataja, dłujkosć $2, $3)',
+	'ogg-long-error' => '(Njepłaśiwa ogg-dataja: $1)',
+	'ogg-play' => 'Wótegraś',
+	'ogg-pause' => 'Pśestank',
+	'ogg-stop' => 'Stoj',
+	'ogg-play-video' => 'Wideo wótegraś',
+	'ogg-play-sound' => 'Zuk wótegraś',
+	'ogg-no-player' => 'Wódaj, twój system njezda se pódpěrany wótegrawak měś.
+Pšosym <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ześěgni wótegrawak</a>.',
+	'ogg-no-xiphqt' => 'Zda se, až njamaš komponentu XiphQT za QuickTime.
+QuickTime njamóžo ogg-dataje bźez toś teje komponenty wótegraś.
+Pšosym <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Cient_download">ześěgni XiphQT</a> abo wubjeŕ drugi wótegrawak.',
+	'ogg-player-videoElement' => 'Zatwarjona pódpěra pśez wobglědowak',
+	'ogg-player-oggPlugin' => 'Tykac za wobglědowak',
+	'ogg-player-thumbnail' => 'Jano njegibny wobraz',
+	'ogg-player-soundthumb' => 'Žeden wótegrawak',
+	'ogg-player-selected' => '(wubrany)',
+	'ogg-use-player' => 'Wubjeŕ wótgrawak:',
+	'ogg-more' => 'Wěcej...',
+	'ogg-dismiss' => 'Zacyniś',
+	'ogg-download' => 'Dataju ześěgnuś',
+	'ogg-desc-link' => 'Wó toś tej dataji',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author ZaDiak
@@ -2743,6 +2778,7 @@ $messages['vo'] = array(
 	'ogg-player-videoElement' => 'Dilet: <video>',
 	'ogg-more' => 'Pluikos...',
 	'ogg-dismiss' => 'Färmükön',
+	'ogg-download' => 'Donükön ragivi',
 	'ogg-desc-link' => 'Tefü ragiv at',
 );
 

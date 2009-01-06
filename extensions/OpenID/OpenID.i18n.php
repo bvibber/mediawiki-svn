@@ -404,6 +404,7 @@ $messages['bs'] = array(
 možete odabrati jedan sa opcijama ispod.',
 	'openidchoosefull' => 'Vaše puno ime ($1)',
 	'openidchooseurl' => 'Ime uzeto sa Vašeg OpenID ($1)',
+	'openidchooseauto' => 'Automatski generisano ime ($1)',
 	'openidchoosemanual' => 'Naziv po Vašem izboru:',
 	'openidchooseexisting' => 'Postojeći račun na ovoj wiki:',
 	'openidchoosepassword' => 'šifra:',
@@ -794,6 +795,8 @@ $messages['fi'] = array(
 	'openiderror' => 'Todennusvirhe',
 	'openiderrortext' => 'Tapahtui virhe OpenID-osoitteen todentamisen aikana.',
 	'openidconfigerror' => 'OpenID-asetusvirhe',
+	'openidconfigerrortext' => 'OpenID-varaston määritykset ovat epäkelvolliset tässä wikissä.
+Ota yhteyttä [[Special:ListUsers/sysop|ylläpitäjään]].',
 	'openidpermission' => 'OpenID-oikeusvirhe',
 	'openidpermissiontext' => 'Tarjoamallasi OpenID:llä ei ole luvallista kirjautua tälle palvelimelle.',
 	'openidcancel' => 'Todennus peruutettiin',
@@ -804,7 +807,7 @@ $messages['fi'] = array(
 	'openidsuccesstext' => 'OpenID-osoitteen todennus onnistui.',
 	'openidusernameprefix' => 'OpenID-käyttäjä',
 	'openidserverlogininstructions' => 'Kirjaudu sisään sivustolle $3 käyttäjänä $2 (käyttäjäsivu $1) syöttämällä salasana alle.',
-	'openidtrustinstructions' => 'Haluatko jakaa tietoja $1:n kanssa.',
+	'openidtrustinstructions' => 'Tarkista, haluatko jakaa tietoja kohteen $1 kanssa.',
 	'openidnopolicy' => 'Sivusto ei ole määritellyt yksityisyyskäytäntöä.',
 	'openidpolicy' => 'Lisää tietoa on <a target="_new" href="$1">yksityisyyskäytännöissä</a>.',
 	'openidoptional' => 'Valinnainen',
@@ -2351,7 +2354,10 @@ $messages['pt'] = array(
 	'openidxrds' => 'Ficheiro Yadis',
 	'openidconvert' => 'Conversor de OpenID',
 	'openiderror' => 'Erro de verificação',
+	'openiderrortext' => 'Ocorreu um erro durante a verificação da URL OpenID.',
 	'openidconfigerror' => 'Erro de Configuração do OpenID',
+	'openidconfigerrortext' => 'A configuração de armazenamento OpenID para este wiki é inválida.
+Por favor, consulte um [[Special:ListUsers/sysop|administrator]].',
 	'openidpermission' => 'Erro de permissões OpenID',
 	'openidpermissiontext' => 'O OpenID fornecido não está autorizado a autenticar-se neste servidor.',
 	'openidcancel' => 'Verificação cancelada',
@@ -2373,12 +2379,16 @@ $messages['pt'] = array(
 	'openidemail' => 'Endereço de e-mail',
 	'openidlanguage' => 'Língua',
 	'openidnotavailable' => 'A sua alcunha preferida ($1) já está em uso por outro utilizador.',
+	'openidnotprovided' => 'O seu servidor OpenID não forneceu uma alcunha (ou porque não pôde, ou porque você lhe disse para não o fazer).',
+	'openidchooseinstructions' => 'Todos os utilizadores precisam de uma alcunha;
+pode escolher uma das opções abaixo.',
 	'openidchoosefull' => 'O seu nome completo ($1)',
 	'openidchooseurl' => 'Um nome escolhido a partir do seu OpenID ($1)',
 	'openidchooseauto' => 'Um nome gerado automaticamente ($1)',
 	'openidchoosemanual' => 'Um nome à sua escolha:',
 	'openidchooseexisting' => 'Uma conta existente neste wiki:',
 	'openidchoosepassword' => 'palavra-chave:',
+	'openidconvertinstructions' => 'Este formulário permite-lhe alterar a sua conta de utilizador para usar uma URL OpenID.',
 	'openidconvertsuccess' => 'Convertido para OpenID com sucesso',
 	'openidconvertsuccesstext' => 'Você converteu com sucesso o seu OpenID para $1.',
 	'openidconvertyourstext' => 'Esse já é o seu OpenID.',
@@ -2386,6 +2396,7 @@ $messages['pt'] = array(
 	'openidalreadyloggedin' => "'''Você já se encontra autenticado, $1!'''
 
 Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConvert|converter a sua conta para usar OpenID]].",
+	'tog-hideopenid' => 'Esconder o seu <a href="http://openid.net/">OpenID</a> na sua página de utilizador, se se autenticar com OpenID.',
 	'openidnousername' => 'Nenhum nome de utilizador especificado.',
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
 	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript activado.
@@ -3057,9 +3068,24 @@ Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp ID M
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'openidoptional' => 'No peflagon',
+	'openidrequired' => 'Peflagon',
+	'openidnickname' => 'Näinem',
+	'openidfullname' => 'Nem lölik',
+	'openidemail' => 'Ladet leäktronik',
 	'openidlanguage' => 'Pük',
+	'openidchooseinstructions' => 'Gebans valik neodons näinemi;
+kanol välön bali sökölas.',
+	'openidchoosefull' => 'Nem lölik ola ($1)',
+	'openidchooseauto' => 'Nem itjäfidiko pejaföl ($1)',
+	'openidchoosemanual' => 'Nem fa ol pevälöl:',
+	'openidchooseexisting' => 'Kal in vük at dabinöl:',
+	'openidchoosepassword' => 'letavöd:',
+	'openidnousername' => 'Gebananem nonik pegivon.',
+	'openidbadusername' => 'Gebananem no lonöföl pegivon.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

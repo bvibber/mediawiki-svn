@@ -466,6 +466,38 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'slippymap_desc' => 'Deit dä Befääl <tt> <nowiki>&lt;slippymap&gt;</nowiki> </tt> em Wiki dobei, öm en <i lang="en">OpenLayers slippy map</i> Kaat aanzezeije. De Landkaate-Date kumme dobei fun <i lang="en">[http://openstreetmap.org openstreetmap.org]</i> her.',
+	'slippymap_latmissing' => "Dä Wäät 'lat' för de Breed om Jlobus es nit aanjejovve.",
+	'slippymap_lonmissing' => "Dä Wäät 'lon' för de Läng om Jlobus es nit aanjejovve.",
+	'slippymap_zoommissing' => "Dä Wäät 'z' för dä Zoom es nit aanjejovve.",
+	'slippymap_longdepreciated' => "Bes esu joot un donn dä Parrameeter 'lon' för de Läng om Jlobus nämme,
+un nit mieh 'long' — dä Parrameeter wood enzwesche ömjanannt.",
+	'slippymap_widthnan' => "„%1“ en kein jöltijje positive janze Zahl för dä Wäät 'w' för de Breed fum Beld.",
+	'slippymap_heightnan' => "„%1“ en kein jöltijje positive janze Zahl för dä Wäät 'h' för de Hühde fum Beld.",
+	'slippymap_zoomnan' => "„%1“ en kein jöltijje janze Zahl för dä Wäät 'z' för der Zoom.",
+	'slippymap_latnan' => "„%1“ en kein jöltijje Zahl för dä Wäät 'lat' för de Brred om Jlobus.",
+	'slippymap_lonnan' => "„%1“ es kein jöltijje Zahl för dä Wäät 'lon' för de Läng om Jlobus.",
+	'slippymap_widthbig' => "Dä Wäät 'w' för de Breed fum Beld darf nit övver 1000 jonn.",
+	'slippymap_widthsmall' => "Dä Wäät 'w' för de Breed fum Beld darf nit unger 100 jonn.",
+	'slippymap_heightbig' => "Dä Wäät 'h' för de Hühde fum Beld darf nit övver 1000 jonn.",
+	'slippymap_heightsmall' => "Dä Wäät 'h' för de Hühde fum Beld darf nit unger 100 jonn.",
+	'slippymap_latbig' => "Dä Wäät 'lat' för de Breed om Jlobus darf nit övver 90 sin.",
+	'slippymap_latsmall' => "Dä Wäät 'lat' för de Breed om Jlobus darf nit unger -90 sin.",
+	'slippymap_lonbig' => "Dä Wäät 'lon' för de Läng om Jlobus darf nit övver 180 sin.",
+	'slippymap_lonsmall' => "Dä Wäät 'lon' för de Läng om Jlobus darf nit unger -180 sin.",
+	'slippymap_zoomsmall' => "Dä Wäät 'z' för der Zoom darf nit unger Noll sin.",
+	'slippymap_zoom18' => 'Dä Wäät \'z\' för dä Zoom darf nit övver 17 sin.
+Opjepaß: Hee dä Zosatz zor MediaWiki-ßoffwäer deiht de
+<i lang="en">OpenStreetMap</i>-Kaate vum Tüp
+\'<i lang="en">Osmarender</i>\' enbenge, wo dä Zoom bes 17 jeiht.
+De \'<i lang="en">Mapnik</i>\' Kaate sen och op
+http://openstreetmap.org/ ze fenge, un dänne iere Zoom jeiht bes 18.',
+	'slippymap_zoombig' => "Dä Wäät 'z' för dä Zoom darf nit övver 17 sin.",
+	'slippymap_invalidlayer' => "„%1“ es ene onjöltije Wäät för 'Schesch'.",
+	'slippymap_maperror' => 'Fähler met dä Kaat:',
+	'slippymap_osmtext' => 'Donn die Kaat op <i lang="en">OpenStreetMap.org</i> anloore',
+	'slippymap_code' => 'Dä Wiki-Kood för di Kaate-Aansesh es:',
+	'slippymap_button_code' => 'Donn dä Wiki-Kood zeije',
+	'slippymap_resetview' => 'Aansesh zeröcksetze',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -638,10 +670,15 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'slippymap_latmissing' => 'Faltando o valor lat (para a latitude).',
 	'slippymap_lonmissing' => 'Faltando o valor lon (para a longitude).',
+	'slippymap_zoommissing' => 'Falta valor z (para o nível de zoom).',
+	'slippymap_zoombig' => 'O valor de zoom (z) não pode ser maior que 17.',
+	'slippymap_maperror' => 'Erro no mapa:',
+	'slippymap_resetview' => 'Repor vista',
 );
 
 /** Romanian (Română)
@@ -798,6 +835,13 @@ $messages['vi'] = array(
 	'slippymap_code' => 'Mã wiki để nhúng phần bản đồ này:',
 	'slippymap_button_code' => 'Xem mã wiki',
 	'slippymap_resetview' => 'Mặc định lại bản đồ',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'slippymap_maperror' => 'Mapapöl:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

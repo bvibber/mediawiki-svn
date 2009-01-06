@@ -107,6 +107,14 @@ $messages['bs'] = array(
 	'importfreeimages_owner' => 'Autor',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'importa-ho',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

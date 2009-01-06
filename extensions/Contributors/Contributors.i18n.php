@@ -323,6 +323,15 @@ $messages['et'] = array(
 	'contributors-nosuchpage' => 'Lehekülge $1 ei ole.',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'contributors-target' => 'Izenburua:',
+	'contributors-submit' => 'Erakutsi',
+	'contributors-badtitle' => 'Izenburu ezegokia.',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

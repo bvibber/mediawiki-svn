@@ -43,6 +43,13 @@ $messages['bs'] = array(
 	'gotocategory-desc' => "Provjerava traženi pojam u kategorijama: imenski prostor za funkcionalnost 'jump to page' (skoči na stranicu)",
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'gotocategory-desc' => "Yn cymharu cynnwys y blwch chwilio yn erbyn y parth 'Categori:' wrth weithredu'r system 'neidio at dudalen' gyda'r botwm 'Mynd'.",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -154,6 +161,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'gotocategory-desc' => "Marcar los tèrmes de las recèrcas a l’endrech de la categoria : nom d'espaci per « Anar » a partir de la foncionalitat « anar a la pagina »",
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'gotocategory-desc' => "Verifica termos de pesquisa num espaço nominal Categoria: para a funcionalidade Ir 'saltar para página'",
 );
 
 /** Tarandíne (Tarandíne)

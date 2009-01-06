@@ -92,6 +92,7 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'countedits' => 'عد التعديلات',
@@ -102,7 +103,7 @@ $messages['arz'] = array(
 	'countedits-ok' => 'موافق',
 	'countedits-nosuchuser' => 'لا يوجد مستخدم بالاسم $1.',
 	'countedits-resultheader' => 'النتائج ل $1',
-	'countedits-resulttext' => '$1 لديه $2 مساهمة',
+	'countedits-resulttext' => '$1 عنده$2 {{PLURAL:$2|تعديل|تعديل}}',
 	'countedits-mostactive' => 'أكثر المساهمين نشاطا',
 	'countedits-nocontribs' => 'لا يوجد مساهمون فى هذه الويكي.',
 );
@@ -908,7 +909,7 @@ $messages['oc'] = array(
 	'countedits-ok' => "D'acòrdi",
 	'countedits-nosuchuser' => "I a pas d'utilizaire amb lo nom $1.",
 	'countedits-resultheader' => 'Resultats per $1',
-	'countedits-resulttext' => '$1 a fach $2 modificacions',
+	'countedits-resulttext' => '$1 a fach $2 {{PLURAL:$2|edicion|edicions}}',
 	'countedits-mostactive' => 'Contributors mai actius',
 	'countedits-nocontribs' => 'Cap de contribucion sus aqueste wiki.',
 );

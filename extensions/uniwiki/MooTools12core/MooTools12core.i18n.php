@@ -184,7 +184,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'mootools12core-desc' => 'Apondre [http://mootools.net mootools-1.2-core-yc.js] a cada pagina',
+	'mootools12core-desc' => 'Apond [http://mootools.net mootools-1.2-core-yc.js], un framework JavaScript compacte, a cada pagina',
 );
 
 /** Polish (Polski)
