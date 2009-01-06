@@ -132,7 +132,6 @@ Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert we
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'mibbit' => 'Mibbit-Chat',
 	'mibbit-header' => 'Diese Spezialseite ermöglicht es Ihnen, mit anderen Benutzern in Echtzeit zusammenzuarbeiten.
 Um die Verbindung herzustellen, klicken Sie auf die „Connect“-Schaltfläche.
 Wenn Sie angemeldet sind, wird Ihr Nickname automatisch vorbelegt.
