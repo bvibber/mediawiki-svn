@@ -26,16 +26,19 @@ require("config.php");
 </head>
 
 <body>
+<?
+require("../l18n/l18n-init.php");
+?>
 <form action="addwarn.php" method="post">
 	<ol>
-		<li>Is your problem related to a Wikimedia project being unreachable or broken?<br />
-		If not, please think of filing a bug at <a href="http://bugzilla.wikimedia.org">Bugzilla</a> instead.</li>
+		<li><?=gettext("Is your problem related to a Wikimedia project being unreachable or broken?<br />
+		If not, please think of filing a bug at <a href=\"http://bugzilla.wikimedia.org\">Bugzilla</a> instead.");?></li>
 
-		<li>Have you understood this script is <em>only</em> for emergencies?</li>
+		<li><?=gettext("Have you understood this script is <em>only</em> for emergencies?");?></li>
 
-		<li><strong>Is your problem listed on the list at the page end?</strong></li>
+		<li><?=gettext("<strong>Is your problem listed on the list at the page end?");?></strong></li>
 
-		<li>On which project did you encounter the problem?<br />
+		<li><?=gettext("On which project did you encounter the problem?");?><br />
 			<select name="project" onchange="chklang();">
 			<?PHP
 			foreach($acceptable_projects as $key=>$desc)
@@ -43,10 +46,10 @@ require("config.php");
 			?>
 			</select></li>
 
-		<div id="lang"><li>What language version of the project is it?<br />Please fill in the language code (de, en, etc.)<br />
+		<div id="lang"><li><?=gettext("What language version of the project is it?<br />Please fill in the language code (de, en, etc.)");?><br />
 			<input type="text" size="5" maxlength="10" name="language"/></li></div>
 			
-		<li>What is your problem? Choose:
+		<li><?=gettext("What is your problem? Choose:");?>
 			<select name="problem" onchange="chkother();">
 			<?PHP
 			foreach($acceptable_problems as $key=>$desc)
@@ -55,7 +58,7 @@ require("config.php");
 			</select><div id="other-fe" style="visibility:hidden;">
 			<input type="text" name="problem-other" maxlength="100" size="100" value=""/></div></li>
 
-		<li>Who is affected?
+		<li><?=gettext("Who is affected?");?>
 			<select name="affected" >
 			<?PHP
 			foreach($acceptable_levels as $key=>$desc)
@@ -63,8 +66,8 @@ require("config.php");
 			?>
 			</select></li>
 
-		<li>Submit your problem report: <input type="submit" value="Submit problem" /><br />
-		<small>Your IP address will be recorded to prevent abuse.</small></li>
+		<li><?=gettext("Submit your problem report:");?> <input type="submit" value="<?=gettext("Submit problem");?>" /><br />
+		<small><?=gettext("Your IP address will be recorded to prevent abuse.");?></small></li>
 	</ol>
 </form>
 

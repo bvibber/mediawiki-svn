@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2009-01-06 19:45+0100\n"
+"Last-Translator: Marco Schuster <marco@vmsoft-gbr.de>\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Wikipedia emergency problem report"
+msgstr ""
+
+msgid ""
+"Is your problem related to a Wikimedia project being unreachable or broken?"
+"<br />If not, please think of filing a bug at <a href=\"http://bugzilla."
+"wikimedia.org\">Bugzilla</a> instead."
+msgstr ""
+
+msgid "Have you understood this script is <em>only</em> for emergencies?"
+msgstr ""
+
+msgid "<strong>Is your problem listed on the list at the page end?</strong>"
+msgstr ""
+
+msgid "On which project did you encounter the problem?"
+msgstr ""
+
+msgid ""
+"What language version of the project is it?<br />Please fill in the language "
+"code (de, en, etc.)"
+msgstr ""
+
+msgid "What is your problem? Choose:"
+msgstr ""
+
+msgid "Who is affected?"
+msgstr ""
+
+msgid "Submit your problem report:"
+msgstr ""
+
+msgid "Submit problem"
+msgstr ""
+
+msgid "Your IP address will be recorded to prevent abuse."
+msgstr ""
+
+msgid "Current problems"
+msgstr ""
