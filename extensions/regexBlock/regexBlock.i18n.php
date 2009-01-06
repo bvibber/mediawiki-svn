@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'regexblock-block-success' => 'Block succedeed',
 	'regexblock-currently-blocked' => 'Currently blocked addresses:',
 	'regexblock-desc' => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a [[Special:Regexblock|special page]] to add/manage blocks',
-	'regexblock-expire-duration' => '1 hour,2 hours,4 hours,6 hours,1 day,3 days,1 week,2 weeks,1 month,3 months,6 months,1 year,infinite',
+	'regexblock-expire-duration' => '1 hour,2 hours,4 hours,6 hours,1 day,3 days,1 week,2 weeks,1 month,3 months,6 months,1 year,infinite', // FIXME: looks like bad i18n. See 'ipboptions' in core
 	'regexblock-page-title' => 'Regular expression name block',
 	'regexblockstats' => 'Regex block statistics',
 	'regexblock-help' => 'Use the form below to block write access from a specific IP address or username.
@@ -52,7 +52,7 @@ Please create an alternate user name or $1 about the problem',
 	'regexblock-unblock-log' => 'User name or IP address \'\'\'$1\'\'\' has been unblocked.',
 	'regexblock-unblock-error' => 'Error unblocking $1.
 Probably there is no such user.',
-	'regexblock-regex-filter' => ' or regex value: ',
+	'regexblock-regex-filter' => ' or regex value: ', // FIXME: bad i18n. Static formatting and lego
 	'regexblock-view-blocked' => 'View blocked by:',
 	'regexblock-view-all' => 'All',
 	'regexblock-view-go' => 'Go',
