@@ -827,6 +827,15 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',
 	),
 	array(
+		'name' => 'NewUserMessage',
+		'settings' => array(
+			'wgNewUserSuppressRC' => 'bool',
+			'wgNewUserMinorEdit' => 'bool',
+			'wgNewUserMessageOnAutoCreate' => 'bool',
+		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:NewUserMessage',
+	),
+	array(
 		'name' => 'Nuke',
 		'file' => 'SpecialNuke.php',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Nuke',
