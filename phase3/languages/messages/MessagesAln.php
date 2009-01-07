@@ -149,7 +149,7 @@ $messages = array(
 'mytalk'         => 'Diskutimet e mia',
 'anontalk'       => 'Diskutimet për këtë IP',
 'navigation'     => 'Shfleto',
-'and'            => 'dhe',
+'and'            => '&#32;dhe',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -210,8 +210,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Rreth {{SITENAME}}',
 'aboutpage'            => 'Project:Rreth',
-'bugreports'           => 'Kontakt',
-'bugreportspage'       => 'Project:Kontakt',
 'copyright'            => 'Përmbajtja asht në disponim nëpërmjet liqencës $1.',
 'copyrightpagename'    => '{{SITENAME}} Të drejta autori',
 'copyrightpage'        => '{{ns:project}}:Të drejta autori',
@@ -390,8 +388,8 @@ Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
 'hr_tip'          => 'vijë horizontale (përdoreni rallë)',
 
 # Edit pages
-'summary'            => 'Përmbledhje',
-'subject'            => 'Subjekt/Titull',
+'summary'            => 'Përmbledhje:',
+'subject'            => 'Subjekt/Titull:',
 'minoredit'          => 'Ky asht një redaktim i vogël',
 'watchthis'          => 'Mbikqyre kët faqe',
 'showpreview'        => 'Trego parapamjen',
@@ -451,7 +449,7 @@ Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet
 # Upload
 'upload' => 'Ngarkoni skeda',
 
-# Image description page
+# File description page
 'filehist'            => 'Historiku i dosjes',
 'filehist-datetime'   => 'Data/Ora',
 'filehist-user'       => 'Përdoruesi',

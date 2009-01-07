@@ -78,7 +78,7 @@ $messages = array(
 'qbspecialpages' => 'Nkásá ya ndéngé isúsu',
 'mytalk'         => 'Ntembe na ngáí',
 'navigation'     => 'Botamboli',
-'and'            => 'mpé',
+'and'            => '&#32;mpé',
 
 'errorpagetitle'   => 'Mbéba',
 'tagline'          => 'Artíclɛ ya {{SITENAME}}.',
@@ -108,10 +108,12 @@ $messages = array(
 'otherlanguages'   => 'Na nkótá isúsu',
 'redirectedfrom'   => '(Eyendísí útá $1)',
 'redirectpagesub'  => 'Lokásá la boyendisi',
+'jumpto'           => 'Kokɛndɛ na:',
 'jumptosearch'     => 'boluki',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'elɔ́kɔ elobí {{SITENAME}}',
+'copyrightpage'        => '{{ns:project}}:Mikokisi',
 'currentevents'        => 'Elɔ́kɔ ya sika',
 'edithelp'             => 'Kobimisela bosálisi',
 'mainpage'             => 'Lokásá ya libosó',
@@ -127,6 +129,9 @@ $messages = array(
 'toc'                => 'Etápe',
 'showtoc'            => 'komɔ́nisa',
 'hidetoc'            => 'kobomba',
+'site-rss-feed'      => 'Ebale RSS ya $1',
+'site-atom-feed'     => 'Ebale Atom ya $1',
+'page-rss-feed'      => 'Ebale RSS ya « $1 »',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'     => 'ekakoli',
@@ -136,17 +141,19 @@ $messages = array(
 'nstab-category' => 'loléngé',
 
 # General errors
-'error' => 'Mbéba',
+'error'         => 'Mbéba',
+'viewsourcefor' => 'na $1',
 
 # Login and logout pages
 'yourname'                => 'Nkómbó ya ekitoli :',
+'yourpassword'            => 'Banda nayó:',
 'yourpasswordagain'       => 'Banda naíno :',
 'login'                   => 'komíkitola (log in)',
 'nav-login-createaccount' => 'Komíkomisa tǒ kokɔtɔ',
 'userlogin'               => 'Komíkomisa tǒ kokɔtɔ',
 'logout'                  => 'kolongwa',
 'userlogout'              => 'kolongwa (log out)',
-'nologin'                 => 'Omíkomísí naíno tɛ̂ ? $1.',
+'nologin'                 => 'Omíkomísí naíno tɛ̂? $1.',
 'nologinlink'             => 'Míkomísá yɔ̌-mɛ́i',
 'gotaccount'              => 'Omíkomísí naíno ? $1.',
 'createaccountmail'       => 'na mokánda',
@@ -161,16 +168,18 @@ $messages = array(
 'bold_tip'        => 'Nkomá ya mbinga',
 'italic_sample'   => 'Nkomá ya kotɛ́ngama',
 'italic_tip'      => 'Nkomá ya kotɛ́ngama',
+'extlink_sample'  => 'http://www.example.com Litɛ́mɛ ya ekangisi',
 'headline_sample' => 'Nkomá ya litɛ́mɛ',
 'headline_tip'    => 'Litɛ́mɛ ya emeko 2',
 
 # Edit pages
-'summary'                => 'Likwé ya mokusé',
-'subject'                => 'Mokonza/litɛ́mɛ',
+'summary'                => 'Likwé ya mokusé:',
+'subject'                => 'Mokonza/litɛ́mɛ:',
 'minoredit'              => 'Ezalí mbóngwana ya mokɛ́',
 'watchthis'              => 'Kolanda lokásá loye',
 'savearticle'            => 'kobómbisa ekakoli',
 'preview'                => 'Botáli',
+'newarticle'             => '(Sika)',
 'editing'                => 'Kobimisela « $1 »',
 'editingcomment'         => 'Kokoma « $1 » (ndimbola)',
 'yourtext'               => 'Nkomá na yɔ̌',
@@ -241,8 +250,11 @@ $messages = array(
 'uploadbtn' => 'kokumbisa',
 'savefile'  => 'kobómbisa kásá-kásá',
 
-# Special:ImageList
-'imagelist_date' => 'Mokɔlɔ',
+# Special:ListFiles
+'listfiles_date' => 'Mokɔlɔ',
+
+# File description page
+'filehist' => 'Mokóló ya kásá',
 
 # File deletion
 'filedelete-submit' => 'Kolímwisa',
@@ -261,6 +273,7 @@ $messages = array(
 'doubleredirects' => 'Boyendisi mbala míbalé',
 
 # Miscellaneous special pages
+'nbytes'                  => '$1 {{PLURAL:$1|okté|baokté}}',
 'nmembers'                => '{{PLURAL:$1|ekakoli|bikakoli}} $1',
 'uncategorizedpages'      => 'Nkásá izángí loléngé',
 'uncategorizedcategories' => 'Ndéngé izángí loléngé',
@@ -275,6 +288,9 @@ $messages = array(
 
 # Book sources
 'booksources-go' => 'Kɛndɛ́',
+
+# Special:Log
+'log' => 'Bapasɔ́',
 
 # Special:AllPages
 'allpages'       => 'Nkásá ínsɔ',
@@ -304,7 +320,7 @@ $messages = array(
 'watch'             => 'Kolanda',
 'watchthispage'     => 'Kolanda lokásá loye',
 'unwatch'           => 'Kolanda tɛ́',
-'watchlist-details' => '{{PLURAL:$1|lokásá $1 lolandámí|nkásá $1 ilandámí}}, longola nkásá ya ntembe.',
+'watchlist-details' => '{{PLURAL:$1|Lokásá $1 lolandámí|Nkásá $1 ilandámí}}, longola nkásá ya ntembe.',
 'wlnote'            => "Áwa o nsé {{PLURAL:$1|ezalí mbóngwana ya nsúka|izalí mbóngwana '''$1''' ya nsúka}} o {{PLURAL:$2|ngonga|ngonga '''$2'''}} ya nsúka.",
 'wlshowlast'        => 'Komɔ́nisa ngónga $1 ya nsúka, mikɔ́lɔ $2 mya nsúka tǒ $3',
 
@@ -342,6 +358,7 @@ $messages = array(
 'move-watch'              => 'Kolánda lokásá loye',
 'movepagebtn'             => 'Kobóngola lokásá',
 'movedto'                 => 'nkómbó ya sika',
+'revertmove'              => 'kozóngela',
 'delete_and_move'         => 'Kolímwisa mpé kobóngola nkómbó',
 'delete_and_move_confirm' => 'Boye, kolímwisa lokásá',
 'delete_and_move_reason'  => 'Ntína ya bolímwisi mpé bobóngoli bwa nkómbó',
@@ -362,16 +379,18 @@ $messages = array(
 'tooltip-pt-preferences'    => 'Malúli ma ngáí',
 'tooltip-pt-watchlist'      => 'Nkásá nalandí mpɔ̂ na mbóngwana',
 'tooltip-pt-mycontris'      => 'Nkásá nakomí',
+'tooltip-pt-logout'         => 'Ombémbóí',
 'tooltip-search'            => 'Boluki {{SITENAME}}',
 'tooltip-p-logo'            => 'Lokásá ya libosó',
 'tooltip-n-mainpage'        => 'Kokɛndɛ na Lokásá ya libosó',
+'tooltip-n-help'            => 'Lisálisi',
 'tooltip-ca-nstab-template' => 'Komɔ́nisela emekoli',
 'tooltip-ca-nstab-category' => 'Komɔ́nisela lokásá ya loléngé',
 
 # Browsing diffs
 'previousdiff' => '← diff ya libosó',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Boluki',
 
 # EXIF tags

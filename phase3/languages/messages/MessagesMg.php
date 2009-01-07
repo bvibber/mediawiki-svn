@@ -11,6 +11,39 @@
 
 $fallback = 'fr';
 
+$namespaceNames = array(
+	NS_SPECIAL          => 'Manokana',
+	NS_TALK             => 'Dinika',
+	NS_USER             => 'Mpikambana',
+	NS_USER_TALK        => 'Dinika_amin\'ny_mpikambana',
+	NS_PROJECT_TALK     => 'Dinika_amin\'ny_$1',
+	NS_FILE             => 'Sary',
+	NS_FILE_TALK        => 'Dinika_amin\'ny_sary',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Dinika_amin\'ny_MediaWiki',
+	NS_TEMPLATE         => 'Endrika',
+	NS_TEMPLATE_TALK    => 'Dinika_amin\'ny_endrika',
+	NS_HELP             => 'Fanampiana',
+	NS_HELP_TALK        => 'Dinika_amin\'ny_fanampiana',
+	NS_CATEGORY         => 'Sokajy',
+	NS_CATEGORY_TALK    => 'Dinika_amin\'ny_sokajy',
+);
+
+$namespaceAliases = array(
+	'Discuter' => NS_TALK,
+	'Utilisateur' => NS_USER,
+	'Discussion_Utilisateur' => NS_USER_TALK,
+	'Discussion_$1' => NS_PROJECT_TALK,
+	'Discussion_Image' => NS_IMAGE_TALK,
+	'Discussion_MediaWiki' => NS_MEDIAWIKI_TALK,
+	'Modèle' => NS_TEMPLATE,
+	'Discussion_Modèle' => NS_TEMPLATE_TALK,
+	'Aide' => NS_HELP,
+	'Discussion_Aide' => NS_HELP_TALK,
+	'Catégorie' => NS_CATEGORY,
+	'Discussion_Catégorie' => NS_CATEGORY_TALK,
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Tsipiho ny rohy:',
@@ -93,7 +126,7 @@ $messages = array(
 'moredotdotdot'  => 'Tohiny...',
 'mypage'         => 'Pejiko',
 'mytalk'         => 'Ny diniko',
-'and'            => 'sy',
+'and'            => '&#32;sy',
 
 'errorpagetitle'    => 'Tsy fetezana',
 'returnto'          => "Hiverina any amin'ny $1.",
@@ -141,7 +174,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Mombamomba ny {{SITENAME}}',
 'aboutpage'            => 'Project:Mombamomba',
-'bugreports'           => 'Fitaterana tsi-fahatomombanana',
 'copyright'            => '$1 no mifehy ny fampiasana ny votoatin-kevitra eto.',
 'currentevents'        => 'Ny vaovao',
 'disclaimerpage'       => 'Project:General disclaimer',
@@ -312,6 +344,11 @@ mba hanaporofoana fa anao io kaonty io.",
 'invalidemailaddress'        => 'Tsy mety io imailaka nalefanao io satria tsy manaraka ny firafitra tokony ho izy.
 Azafady manomeza adiresy voasoratra tsara na avelao ho banga io toerana io.',
 
+# Password reset dialog
+'oldpassword' => 'Tenimiafina taloha:',
+'newpassword' => 'Tenimiafina vaovao:',
+'retypenew'   => 'Avereno ampidirina ny tenimiafina vaovao:',
+
 # Edit page toolbar
 'bold_sample'     => 'Soratra matavy',
 'bold_tip'        => 'Soratra matavy',
@@ -335,8 +372,8 @@ Azafady manomeza adiresy voasoratra tsara na avelao ho banga io toerana io.',
 'hr_tip'          => 'Tsipika mitsivalana (aza anaranam-po loatra)',
 
 # Edit pages
-'summary'                => 'Ambangovangony',
-'subject'                => 'Lohateny',
+'summary'                => 'Ambangovangony:',
+'subject'                => 'Lohateny:',
 'watchthis'              => 'Araho maso ity pejy ity',
 'savearticle'            => 'Tehirizo',
 'preview'                => 'Topi-maso',
@@ -463,9 +500,6 @@ ihany no miseho amin'ny vokatry ny karoka).",
 'prefs-misc'            => 'Hafa',
 'saveprefs'             => 'Tehirizo',
 'resetprefs'            => 'Avereno',
-'oldpassword'           => 'Tenimiafina taloha:',
-'newpassword'           => 'Tenimiafina vaovao:',
-'retypenew'             => 'Avereno ampidirina ny tenimiafina vaovao:',
 'textboxsize'           => 'Fanovana',
 'searchresultshead'     => 'Fikarohana',
 'recentchangescount'    => "Lohateny amin'ny vao niova:",
@@ -517,11 +551,11 @@ Fenoy araka ny datin'ny solosainan'ny mpitsidika",
 'uploadnologintext'           => 'Mila [[Special:UserLogin|misoratra anarana]] aloha vao afaka mandefa rakitra.',
 'upload_directory_read_only'  => "Ny répertoire ($1) handraisana ny rakitra alefan'ny mpikambana dia tsy afaka anoratana.",
 'uploaderror'                 => 'Nisy tsy fetezana ny fandefasana rakitra',
-'uploadtext'                  => "Ampiasao ity fisy ity handefasana rakitra. Jereo eto ny [[Special:ImageList|lisitry ny rakitra]] nalefan'ny mpikambana, na koa azonao ampiasaina ny [[Special:Log/upload|tantaran'asan'ny fandefasana sy famonoana rakitra]].
+'uploadtext'                  => "Ampiasao ity fisy ity handefasana rakitra. Jereo eto ny [[Special:FileList|lisitry ny rakitra]] nalefan'ny mpikambana, na koa azonao ampiasaina ny [[Special:Log/upload|tantaran'asan'ny fandefasana sy famonoana rakitra]].
 
 Raha hanisy sary ao anaty pejy, dia mampiasà rohy toy ny iray amin'ireto
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.jpg]]</nowiki>''', na
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.png|alt text]]</nowiki>''' na
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.jpg]]</nowiki>''', na
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.png|alt text]]</nowiki>''' na
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki>''' raha hirohy mivantana amin'ny rakitra.",
 'uploadlog'                   => "Tantaran'asan'ny fandefasana rakitra",
 'uploadlogpagetext'           => "Ity ny lisitr'ireo rakitra nalefa farany indrindra.",
@@ -539,9 +573,9 @@ Ngeza noho izay zakan'ny serveur io rakitra io.",
 'emptyfile'                   => "Ohatry ny tsy misy na inona na inona ilay rakitra nalefanao teo.
 Sao dia misy diso tsipelina ny anaran'ny rakitra? Azafady mba hamarino fa tena naniry handefa io rakitra io tokoa ianao.",
 'fileexists'                  => "Efa misy rakitra iray mitondra an'io anarana io, azafady jereo aloha <strong><tt>$1</tt></strong> raha tsy matoky tanteraka ianao fa te-hanova io rakitra io.",
-'fileexists-forbidden'        => "Efa misy rakitra iray mitondra an'io anarana io, azafady miverena amin'ny pejy teo aloha dia avereno alefa ilay rakitra ary omeo anarana hafa. [[Image:$1|thumb|center|$1]]",
+'fileexists-forbidden'        => "Efa misy rakitra iray mitondra an'io anarana io, azafady miverena amin'ny pejy teo aloha dia avereno alefa ilay rakitra ary omeo anarana hafa. [[File:$1|thumb|center|$1]]",
 'fileexists-shared-forbidden' => "
-Efa misy rakitra iray mitondra an'io anarana io ao amin'ny file repository, azafady miverena amin'ny pejy teo aloha dia avereno alefa ilay rakitra ary omeo anarana hafa. [[Image:$1|thumb|center|$1]]",
+Efa misy rakitra iray mitondra an'io anarana io ao amin'ny file repository, azafady miverena amin'ny pejy teo aloha dia avereno alefa ilay rakitra ary omeo anarana hafa. [[File:$1|thumb|center|$1]]",
 'successfulupload'            => 'Voaray soa aman-tsara ny rakitra',
 'uploadwarning'               => 'Fampitandremana',
 'savefile'                    => 'Tehirizo ny rakitra',
@@ -558,10 +592,10 @@ Hamarino tsara aloha dia avereno alefa indray.',
 
 'nolicense' => 'Tsy misy safidy',
 
-# Special:ImageList
-'imagelist' => 'Lisitry ny rakitra',
+# Special:ListFiles
+'listfiles' => 'Lisitry ny rakitra',
 
-# Image description page
+# File description page
 'imagelinks'                => 'Rohy',
 'linkstoimage'              => "Ireto avy no pejy mirohy amin'io rakitra io:",
 'nolinkstoimage'            => "Tsy misy pejy mirohy amin'ity sary ity.",
@@ -991,7 +1025,7 @@ Amporisihina ho an'ny navigateur moderna",
 'imagemaxsize' => "Ferana ny haben'ny sary ao amin'ny pejy famaritana ho:",
 'thumbsize'    => "Haben'ny thumbnail",
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'     => 'Tahala misy ny rakitra vaovao',
 'imagelisttext' => 'Eto ambany ny lisitry ny rakitra $1 milahatra araka ny $2.',
 'showhidebots'  => '(rôbô $1)',

@@ -4,6 +4,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Alexsh
  * @author BobChao
  * @author Roc michael
  * @author Urhixidur
@@ -21,8 +22,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => '使用者討論',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1討論',
-	NS_IMAGE            => '圖片',
-	NS_IMAGE_TALK       => '圖片討論',
+	NS_FILE             => '圖片',
+	NS_FILE_TALK        => '圖片討論',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_talk',
 	NS_TEMPLATE         => '模板',
@@ -33,11 +34,6 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK    => '分類討論'
 );
 
-$skinNames = array(
-	'standard' => '標準',
-	'nostalgia' => '懷舊',
-	'cologneblue' => '科隆香水藍',
-);
 
 $bookstoreList = array(
 	'博客來書店' => 'http://www.books.com.tw/exep/prod/booksfile.php?item=$1',
@@ -181,7 +177,7 @@ $messages = array(
 'mytalk'         => '我的對話頁',
 'anontalk'       => '該IP的對話頁',
 'navigation'     => '導航',
-'and'            => '和',
+'and'            => '&#32;和',
 
 # Metadata in edit box
 'metadata_help' => '元數據:',
@@ -242,8 +238,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '關於{{SITENAME}}',
 'aboutpage'            => 'Project:關於',
-'bugreports'           => '錯誤報告',
-'bugreportspage'       => 'Project:錯誤報告',
 'copyright'            => '本站的文字內容除另有聲明外，全部以 $1 條款授權使用。',
 'copyrightpagename'    => '{{SITENAME}}版權',
 'copyrightpage'        => '{{ns:project}}:版權訊息',
@@ -452,11 +446,13 @@ $2',
 'resetpass_announce'      => '您是透過臨時發送到郵件中的代碼登入的。要完成登入，您必須在這裡設定一個新密碼:',
 'resetpass_text'          => '<!-- 在此處加入文字 -->',
 'resetpass_header'        => '重設密碼',
+'oldpassword'             => '舊密碼',
+'newpassword'             => '新密碼',
+'retypenew'               => '確認密碼:',
 'resetpass_submit'        => '設定密碼並登入',
 'resetpass_success'       => '您的密碼已經被成功更改﹗現下正為您登入...',
 'resetpass_bad_temporary' => '無效的臨時密碼。您可能已成功地更改了您的密碼，或者需要請求一個新的臨時密碼。',
 'resetpass_forbidden'     => '無法在此 wiki 上更改密碼',
-'resetpass_missing'       => '無表單資料。',
 
 # Edit page toolbar
 'bold_sample'     => '粗體文字',
@@ -480,7 +476,7 @@ $2',
 
 # Edit pages
 'summary'                   => '摘要',
-'subject'                   => '主題',
+'subject'                   => '主題:',
 'minoredit'                 => '這是一個細微修改',
 'watchthis'                 => '監視本頁',
 'savearticle'               => '保存本頁',
@@ -492,8 +488,8 @@ $2',
 'missingsummary'            => "'''提示:''' 您沒有提供一個編輯摘要。如果您再次單擊儲存，您的編輯將不帶編輯摘要儲存。",
 'missingcommenttext'        => '請在下面輸入評論。',
 'missingcommentheader'      => "'''提示:''' 您沒有為此評論提供一個標題。如果您再次單擊儲存，您的編輯將不帶標題儲存。",
-'summary-preview'           => '摘要預覽',
-'subject-preview'           => '主題/標題預覽',
+'summary-preview'           => '摘要預覽:',
+'subject-preview'           => '主題/標題預覽:',
 'blockedtitle'              => '使用者被封鎖',
 'blockednoreason'           => '無給出原因',
 'blockedoriginalsource'     => "以下是'''$1'''的原始碼:",
@@ -737,9 +733,6 @@ $2',
 'prefs-misc'               => '雜項',
 'saveprefs'                => '保存偏好設定',
 'resetprefs'               => '重設參數',
-'oldpassword'              => '舊密碼',
-'newpassword'              => '新密碼',
-'retypenew'                => '確認密碼:',
 'textboxsize'              => '編輯',
 'rows'                     => '列:',
 'columns'                  => '欄:',
@@ -841,12 +834,12 @@ $2',
 'uploaderror'                 => '上載錯誤',
 'uploadtext'                  => "使用下面的表單來上傳用在頁面內新的圖片檔案。
 要檢視或搜尋以前上傳的圖片
-可以進入[[Special:ImageList|圖片清單]]，
+可以進入[[Special:FileList|圖片清單]]，
 上傳和刪除將在[[Special:Log/upload|上傳日誌]]中記錄。
 
 要在頁面中加入圖片，使用以下形式的連接:
-'''<nowiki>[[</nowiki>{{ns:image}}:file.jpg<nowiki>]]</nowiki>'''，
-'''<nowiki>[[</nowiki>{{ns:image}}:file.png|替換文字<nowiki>]]</nowiki>''' 或
+'''<nowiki>[[</nowiki>{{ns:file}}:file.jpg<nowiki>]]</nowiki>'''，
+'''<nowiki>[[</nowiki>{{ns:file}}:file.png|替換文字<nowiki>]]</nowiki>''' 或
 '''<nowiki>[[</nowiki>{{ns:media}}:file.ogg<nowiki>]]</nowiki>'''。",
 'uploadlog'                   => '上載紀錄',
 'uploadlogpage'               => '上載紀錄',
@@ -877,8 +870,8 @@ $2',
 如果檢查後的檔案是同原本圖片的大小是一樣的話，就不用再上載多一幅縮圖。',
 'file-thumbnail-no'           => '該檔名是以<strong><tt>$1</tt></strong>開始。它好像一幅圖片的縮圖版本<i>(縮圖)</i>。
 如果你有該圖片的完整大小，如不是請再修改檔名。',
-'fileexists-forbidden'        => '已存在相同名稱的檔案；請返回並用一個新的名稱來上傳此檔案。[[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => '在共享檔案庫中已存在此名稱的檔案；請返回並用一個新的名稱來上傳此檔案。[[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => '已存在相同名稱的檔案；請返回並用一個新的名稱來上傳此檔案。[[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => '在共享檔案庫中已存在此名稱的檔案；請返回並用一個新的名稱來上傳此檔案。[[File:$1|thumb|center|$1]]',
 'successfulupload'            => '上傳成功',
 'uploadwarning'               => '上載警告',
 'savefile'                    => '保存檔案',
@@ -918,17 +911,17 @@ $2',
 'upload_source_url'  => ' (一個有效的，可公開訪問的 URL)',
 'upload_source_file' => ' (在您電腦上的一個檔案)',
 
-# Special:ImageList
-'imagelist_search_for'  => '按圖片名稱搜尋:',
+# Special:ListFiles
+'listfiles_search_for'  => '按圖片名稱搜尋:',
 'imgfile'               => '檔案',
-'imagelist'             => '檔案列表',
-'imagelist_date'        => '日期',
-'imagelist_name'        => '名稱',
-'imagelist_user'        => '使用者',
-'imagelist_size'        => '大小',
-'imagelist_description' => '描述',
+'listfiles'             => '檔案列表',
+'listfiles_date'        => '日期',
+'listfiles_name'        => '名稱',
+'listfiles_user'        => '使用者',
+'listfiles_size'        => '大小',
+'listfiles_description' => '描述',
 
-# Image description page
+# File description page
 'filehist'                  => '檔案歷史',
 'filehist-help'             => '點擊日期／時間以檢視當時出現過的檔案。',
 'filehist-deleteall'        => '刪除全部',
@@ -1563,6 +1556,7 @@ $1',
 'import-interwiki-history'   => '複製此頁的所有歷史版本',
 'import-interwiki-submit'    => '匯入',
 'import-interwiki-namespace' => '將頁面轉移到名字空間:',
+'import-comment'             => '註解:',
 'importtext'                 => '請使用 Special:Export 功能從源 wiki 匯出檔案，儲存到您的磁片並上傳到這裡。',
 'importstart'                => '正在匯入頁面...',
 'import-revision-count'      => '$1個修訂',
@@ -1685,6 +1679,11 @@ $1',
 'numauthors'     => '作者數量 (頁面): $1',
 'numtalkauthors' => '作者數量 (討論頁): $1',
 
+# Skin names
+'skinname-standard'    => '標準',
+'skinname-nostalgia'   => '懷舊',
+'skinname-cologneblue' => '科隆香水藍',
+
 # Math options
 'mw_math_png'    => '永遠使用PNG圖片',
 'mw_math_simple' => '如果是簡單的公式使用HTML，否則使用PNG圖片',
@@ -1736,7 +1735,7 @@ $1',
 'show-big-image'       => '完整解像度',
 'show-big-image-thumb' => '<small>這幅縮圖的解像度: $1 × $2 像素</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'     => '新建圖片畫廊',
 'imagelisttext' => '以下是按$2排列的$1個檔案列表。',
 'showhidebots'  => '($1機器人)',

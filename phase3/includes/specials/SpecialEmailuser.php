@@ -171,7 +171,7 @@ class EmailUserForm {
 		$subject = $this->subject;
 
 		// Add a standard footer and trim up trailing newlines
-		$this->text = rtrim($this->text) . "\n\n---\n" . wfMsgExt( 'emailuserfooter',
+		$this->text = rtrim($this->text) . "\n\n-- \n" . wfMsgExt( 'emailuserfooter',
 			array( 'content', 'parsemag' ), array( $from->name, $to->name ) );
 		
 		if( wfRunHooks( 'EmailUser', array( &$to, &$from, &$subject, &$this->text ) ) ) {
@@ -268,9 +268,15 @@ class EmailUserForm {
 		}
 	
 		$nu = User::newFromName( $nt->getText() );
-		if( is_null( $nu ) || !$nu->canReceiveEmail() ) {
-			wfDebug( "Target is invalid user or can't receive.\n" );
+		if( is_null( $nu ) || !$nu->getId() ) {
+			wfDebug( "Target is invalid user.\n" );
+			return "notarget";
+		} else if ( !$nu->isEmailConfirmed() ) {
+			wfDebug( "User has no valid email.\n" );
 			return "noemail";
+		} else if ( !$nu->canReceiveEmail() ) {
+			wfDebug( "User does not allow user emails.\n" );
+			return "nowikiemail";
 		}
 		
 		return $nu;

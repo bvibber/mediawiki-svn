@@ -87,6 +87,7 @@ $wgAutoloadLocalClasses = array(
 	'HTMLCacheUpdateJob' => 'includes/HTMLCacheUpdate.php',
 	'HTMLFileCache' => 'includes/HTMLFileCache.php',
 	'Http' => 'includes/HttpFunctions.php',
+	'IEContentAnalyzer' => 'includes/IEContentAnalyzer.php',
 	'ImageGallery' => 'includes/ImageGallery.php',
 	'ImageHistoryList' => 'includes/ImagePage.php',
 	'ImagePage' => 'includes/ImagePage.php',
@@ -364,6 +365,7 @@ $wgAutoloadLocalClasses = array(
 	# includes/filerepo
 	'ArchivedFile' => 'includes/filerepo/ArchivedFile.php',
 	'File' => 'includes/filerepo/File.php',
+	'FileCache' => 'includes/filerepo/FileCache.php',
 	'FileRepo' => 'includes/filerepo/FileRepo.php',
 	'FileRepoStatus' => 'includes/filerepo/FileRepoStatus.php',
 	'ForeignAPIFile' => 'includes/filerepo/ForeignAPIFile.php',
@@ -435,7 +437,6 @@ $wgAutoloadLocalClasses = array(
 	'ParserOutput' => 'includes/parser/ParserOutput.php',
 	'Parser_DiffTest' => 'includes/parser/Parser_DiffTest.php',
 	'Parser_LinkHooks' => 'includes/parser/Parser_LinkHooks.php',
-	'Parser_OldPP' => 'includes/parser/Parser_OldPP.php',
 	'Preprocessor' => 'includes/parser/Preprocessor.php',
 	'Preprocessor_DOM' => 'includes/parser/Preprocessor_DOM.php',
 	'Preprocessor_Hash' => 'includes/parser/Preprocessor_Hash.php',
@@ -479,7 +480,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialContributions' => 'includes/specials/SpecialContributions.php',
 	'NewPagesPager' => 'includes/specials/SpecialNewpages.php',
 	'PageArchive' => 'includes/specials/SpecialUndelete.php',
-	'PasswordResetForm' => 'includes/specials/SpecialResetpass.php',
+	'SpecialResetpass' => 'includes/specials/SpecialResetpass.php',
 	'PopularPagesPage' => 'includes/specials/SpecialPopularpages.php',
 	'PreferencesForm' => 'includes/specials/SpecialPreferences.php',
 	'RandomPage' => 'includes/specials/SpecialRandompage.php',
@@ -488,6 +489,7 @@ $wgAutoloadLocalClasses = array(
 	'ShortPagesPage' => 'includes/specials/SpecialShortpages.php',
 	'SpecialAllpages' => 'includes/specials/SpecialAllpages.php',
 	'SpecialBookSources' => 'includes/specials/SpecialBooksources.php',
+	'SpecialImport' => 'includes/specials/SpecialImport.php',
 	'SpecialListGroupRights' => 'includes/specials/SpecialListgrouprights.php',
 	'SpecialMostlinkedtemplates' => 'includes/specials/SpecialMostlinkedtemplates.php',
 	'SpecialPrefixindex' => 'includes/specials/SpecialPrefixindex.php',
@@ -496,6 +498,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialRecentchangeslinked' => 'includes/specials/SpecialRecentchangeslinked.php',
 	'SpecialSearch' => 'includes/specials/SpecialSearch.php',
 	'SpecialSearchOld' => 'includes/specials/SpecialSearch.php',
+	'SpecialStatistics' => 'includes/specials/SpecialStatistics.php',
 	'SpecialVersion' => 'includes/specials/SpecialVersion.php',
 	'UncategorizedCategoriesPage' => 'includes/specials/SpecialUncategorizedcategories.php',
 	'UncategorizedPagesPage' => 'includes/specials/SpecialUncategorizedpages.php',
@@ -547,7 +550,6 @@ class AutoLoader {
 	static function autoload( $className ) {
 		global $wgAutoloadClasses, $wgAutoloadLocalClasses;
 
-		wfProfileIn( __METHOD__ );
 		if ( isset( $wgAutoloadLocalClasses[$className] ) ) {
 			$filename = $wgAutoloadLocalClasses[$className];
 		} elseif ( isset( $wgAutoloadClasses[$className] ) ) {
@@ -563,8 +565,9 @@ class AutoLoader {
 				}
 			}
 			if ( !$filename ) {
+				if( function_exists( 'wfDebug' ) ) 	
+					wfDebug( "Class {$className} not found; skipped loading" );
 				# Give up
-				wfProfileOut( __METHOD__ );
 				return false;
 			}
 		}
@@ -575,7 +578,6 @@ class AutoLoader {
 			$filename = "$IP/$filename";
 		}
 		require( $filename );
-		wfProfileOut( __METHOD__ );
 		return true;
 	}
 

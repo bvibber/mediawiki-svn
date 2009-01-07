@@ -161,8 +161,8 @@ $messages = array(
 'hr_tip'          => 'Linia orizontala (esnidivale)',
 
 # Edit pages
-'summary'                => 'Sumar',
-'subject'                => 'Subjekt / titlur',
+'summary'                => 'Sumar:',
+'subject'                => 'Subjekt / titlur:',
 'minoredit'              => 'Aceasta este o editare minoră',
 'watchthis'              => 'klăaere ce pažu',
 'showpreview'            => 'Rată previzualizare',
@@ -221,7 +221,7 @@ $3',
 # Upload
 'upload' => 'trimiţe fişirul',
 
-# Image description page
+# File description page
 'filehist'            => 'Historia fişirulu',
 'filehist-current'    => 'kurentu',
 'filehist-datetime'   => 'Data/Temp',

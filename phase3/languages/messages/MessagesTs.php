@@ -41,7 +41,7 @@ $messages = array(
 'mypage'         => 'Tluka ramina',
 'mytalk'         => 'Mbulavulo namina',
 'anontalk'       => 'Vulavula na IP leyi',
-'and'            => 'nakambe',
+'and'            => '&#32;nakambe',
 
 'errorpagetitle'   => 'Xihoxo',
 'returnto'         => 'Thlelela e $1.',
@@ -210,7 +210,7 @@ Query: $2',
 'yourlanguage'            => 'Ririmi:',
 
 # Edit pages
-'summary'          => 'Nkomiso',
+'summary'          => 'Nkomiso:',
 'minoredit'        => 'Lowu i ndzulamiso wu tsongo',
 'watchthis'        => 'Langutisa tluka leri',
 'savearticle'      => 'Hlayisa tluka',
@@ -269,13 +269,13 @@ U hi tshembisa nakambe leswaku hi wena mutsari wa leswi nyikeriwaka laha, kumbe 
 # Upload
 'upload' => 'Khandziyisa fayili',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'fayili',
-'imagelist'      => 'Nxaxamelo wa tifayili',
-'imagelist_date' => 'Siku',
-'imagelist_name' => 'vito',
+'listfiles'      => 'Nxaxamelo wa tifayili',
+'listfiles_date' => 'Siku',
+'listfiles_name' => 'vito',
 
-# Image description page
+# File description page
 'filehist-deleteall' => 'sula hinkwaswo',
 'filehist-deleteone' => 'Dlaya',
 'filehist-revert'    => 'thlerisela',

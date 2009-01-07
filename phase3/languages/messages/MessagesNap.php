@@ -20,8 +20,8 @@ $namespaceNames = array(
 	NS_USER             => 'Utente',
 	NS_USER_TALK        => 'Utente_chiàcchiera',
 	NS_PROJECT_TALK     => '$1_chiàcchiera',
-	NS_IMAGE            => 'Fiùra',
-	NS_IMAGE_TALK       => 'Fiùra_chiàcchiera',
+	NS_FILE             => 'Fiùra',
+	NS_FILE_TALK        => 'Fiùra_chiàcchiera',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_chiàcchiera',
 	NS_TEMPLATE         => 'Modello',
@@ -38,8 +38,8 @@ $namespaceAliases = array(
 	'Utente' => NS_USER,
 	'Discussioni_utente' => NS_USER_TALK,
 	'Discussioni_$1' => NS_PROJECT_TALK,
-	'Immagine' => NS_IMAGE,
-	'Discussioni_immagine' => NS_IMAGE_TALK,
+	'Immagine' => NS_FILE,
+	'Discussioni_immagine' => NS_FILE_TALK,
 	'MediaWiki' => NS_MEDIAWIKI,
 	'Discussioni_MediaWiki' => NS_MEDIAWIKI_TALK,
 	'Discussioni_template' => NS_TEMPLATE_TALK,
@@ -77,6 +77,13 @@ $messages = array(
 'thursday'      => 'gioverì',
 'friday'        => 'viernarì',
 'saturday'      => 'sàbbato',
+'sun'           => 'dum',
+'mon'           => 'lun',
+'tue'           => 'mar',
+'wed'           => 'mier',
+'thu'           => 'gio',
+'fri'           => 'ven',
+'sat'           => 'sab',
 'january'       => 'jennaro',
 'february'      => 'frevàro',
 'march'         => 'màrzo',
@@ -132,6 +139,11 @@ $messages = array(
 'mytalk'         => "'E mmie chiacchieriàte",
 'anontalk'       => 'Chiacchierate pe chisto IP',
 
+# Metadata in edit box
+'metadata_help' => 'Metadate:',
+
+'errorpagetitle'    => 'Sbaglio',
+'returnto'          => 'Torna a $1.',
 'help'              => 'Ajùto',
 'search'            => 'Truova',
 'searchbutton'      => 'Truova',
@@ -303,10 +315,10 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'fileexists-thumb' => "<center>'''Immagine esistente'''</center>",
 'uploadedimage'    => 'ha carecato "[[$1]]"',
 
-# Special:ImageList
-'imagelist_name' => 'Nomme',
+# Special:ListFiles
+'listfiles_name' => 'Nomme',
 
-# Image description page
+# File description page
 'filehist-user'    => 'Utente',
 'imagelinks'       => 'Jonte ê ffiure',
 'noimage-linktext' => 'carrecarlo mmo',
@@ -440,7 +452,7 @@ Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putit
 'numedits'    => "Nummero 'e cagnamiente (articulo): $1",
 'numwatchers' => "Nummero 'e asservature: $1",
 
-# Special:NewImages
+# Special:NewFiles
 'noimages' => "Nun nc'è nind' 'a veré.",
 'ilsubmit' => 'Truova',
 

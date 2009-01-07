@@ -50,7 +50,7 @@ class SpecialRecentChanges extends SpecialPage {
 		$opts->fetchValuesFromRequest( $wgRequest );
 
 		// Give precedence to subpage syntax
-		if ( $parameters !== null ) {
+		if( $parameters !== null ) {
 			$this->parseParameters( $parameters, $opts );
 		}
 
@@ -82,9 +82,9 @@ class SpecialRecentChanges extends SpecialPage {
 
 		# 10 seconds server-side caching max
 		$wgOut->setSquidMaxage( 10 );
-
+		# Check if the client has a cached version
 		$lastmod = $this->checkLastModified( $feedFormat );
-		if( $lastmod === false ){
+		if( $lastmod === false ) {
 			return;
 		}
 
@@ -94,7 +94,6 @@ class SpecialRecentChanges extends SpecialPage {
 
 		// Fetch results, prepare a batch link existence check query
 		$rows = array();
-		$batch = new LinkBatch;
 		$conds = $this->buildMainQueryConds( $opts );
 		$rows = $this->doMainQuery( $conds, $opts );
 		if( $rows === false ){
@@ -104,19 +103,19 @@ class SpecialRecentChanges extends SpecialPage {
 			return;
 		}
 
-		foreach( $rows as $row ) {
-			if ( !$feedFormat ) {
-				// User page and talk links
+		if( !$feedFormat ) {
+			$batch = new LinkBatch;
+			foreach( $rows as $row ) {
 				$batch->add( NS_USER, $row->rc_user_text  );
 				$batch->add( NS_USER_TALK, $row->rc_user_text  );
 			}
+			$batch->execute();
 		}
 
-		if ( $feedFormat ) {
+		if( $feedFormat ) {
 			list( $feed, $feedObj ) = $this->getFeedObject( $feedFormat );
 			$feed->execute( $feedObj, $rows, $opts['limit'], $opts['hideminor'], $lastmod );
 		} else {
-			$batch->execute();
 			$this->webOutput( $rows, $opts );
 		}
 
@@ -146,21 +145,21 @@ class SpecialRecentChanges extends SpecialPage {
 	 */
 	public function parseParameters( $par, FormOptions $opts ) {
 		$bits = preg_split( '/\s*,\s*/', trim( $par ) );
-		foreach ( $bits as $bit ) {
-			if ( 'hidebots' === $bit ) $opts['hidebots'] = true;
-			if ( 'bots' === $bit ) $opts['hidebots'] = false;
-			if ( 'hideminor' === $bit ) $opts['hideminor'] = true;
-			if ( 'minor' === $bit ) $opts['hideminor'] = false;
-			if ( 'hideliu' === $bit ) $opts['hideliu'] = true;
-			if ( 'hidepatrolled' === $bit ) $opts['hidepatrolled'] = true;
-			if ( 'hideanons' === $bit ) $opts['hideanons'] = true;
-			if ( 'hidemyself' === $bit ) $opts['hidemyself'] = true;
+		foreach( $bits as $bit ) {
+			if( 'hidebots' === $bit ) $opts['hidebots'] = true;
+			if( 'bots' === $bit ) $opts['hidebots'] = false;
+			if( 'hideminor' === $bit ) $opts['hideminor'] = true;
+			if( 'minor' === $bit ) $opts['hideminor'] = false;
+			if( 'hideliu' === $bit ) $opts['hideliu'] = true;
+			if( 'hidepatrolled' === $bit ) $opts['hidepatrolled'] = true;
+			if( 'hideanons' === $bit ) $opts['hideanons'] = true;
+			if( 'hidemyself' === $bit ) $opts['hidemyself'] = true;
 
-			if ( is_numeric( $bit ) ) $opts['limit'] =  $bit;
+			if( is_numeric( $bit ) ) $opts['limit'] =  $bit;
 
 			$m = array();
-			if ( preg_match( '/^limit=(\d+)$/', $bit, $m ) ) $opts['limit'] = $m[1];
-			if ( preg_match( '/^days=(\d+)$/', $bit, $m ) ) $opts['days'] = $m[1];
+			if( preg_match( '/^limit=(\d+)$/', $bit, $m ) ) $opts['limit'] = $m[1];
+			if( preg_match( '/^days=(\d+)$/', $bit, $m ) ) $opts['days'] = $m[1];
 		}
 	}
 
@@ -170,14 +169,14 @@ class SpecialRecentChanges extends SpecialPage {
 	 * update the timestamp
 	 *
 	 * @param $feedFormat String
-	 * @return int or false
+	 * @return string or false
 	 */
 	public function checkLastModified( $feedFormat ) {
 		global $wgUseRCPatrol, $wgOut;
 		$dbr = wfGetDB( DB_SLAVE );
 		$lastmod = $dbr->selectField( 'recentchanges', 'MAX(rc_timestamp)', false, __FUNCTION__ );
-		if ( $feedFormat || !$wgUseRCPatrol ) {
-			if( $lastmod && $wgOut->checkLastModified( $lastmod ) ){
+		if( $feedFormat || !$wgUseRCPatrol ) {
+			if( $lastmod && $wgOut->checkLastModified( $lastmod ) ) {
 				# Client cache fresh and headers sent, nothing more to do.
 				return false;
 			}
@@ -229,12 +228,12 @@ class SpecialRecentChanges extends SpecialPage {
 		$hideLoggedInUsers = $opts['hideliu'] && !$forcebot;
 		$hideAnonymousUsers = $opts['hideanons'] && !$forcebot;
 
-		if ( $opts['hideminor'] )  $conds['rc_minor'] = 0;
-		if ( $opts['hidebots'] )   $conds['rc_bot'] = 0;
-		if ( $hidePatrol )         $conds['rc_patrolled'] = 0;
-		if ( $forcebot )           $conds['rc_bot'] = 1;
-		if ( $hideLoggedInUsers )  $conds[] = 'rc_user = 0';
-		if ( $hideAnonymousUsers ) $conds[] = 'rc_user != 0';
+		if( $opts['hideminor'] )  $conds['rc_minor'] = 0;
+		if( $opts['hidebots'] )   $conds['rc_bot'] = 0;
+		if( $hidePatrol )         $conds['rc_patrolled'] = 0;
+		if( $forcebot )           $conds['rc_bot'] = 1;
+		if( $hideLoggedInUsers )  $conds[] = 'rc_user = 0';
+		if( $hideAnonymousUsers ) $conds[] = 'rc_user != 0';
 
 		if( $opts['hidemyself'] ) {
 			if( $wgUser->getId() ) {
@@ -245,8 +244,8 @@ class SpecialRecentChanges extends SpecialPage {
 		}
 
 		# Namespace filtering
-		if ( $opts['namespace'] !== '' ) {
-			if ( !$opts['invert'] ) {
+		if( $opts['namespace'] !== '' ) {
+			if( !$opts['invert'] ) {
 				$conds[] = 'rc_namespace = ' . $dbr->addQuotes( $opts['namespace'] );
 			} else {
 				$conds[] = 'rc_namespace != ' . $dbr->addQuotes( $opts['namespace'] );
@@ -278,7 +277,8 @@ class SpecialRecentChanges extends SpecialPage {
 		// JOIN on watchlist for users
 		if( $uid ) {
 			$tables[] = 'watchlist';
-			$join_conds = array( 'watchlist' => array('LEFT JOIN',"wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace") );
+			$join_conds = array( 'watchlist' => array('LEFT JOIN',
+				"wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace") );
 		}
 
 		wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
@@ -326,7 +326,7 @@ class SpecialRecentChanges extends SpecialPage {
 
 		$limit = $opts['limit'];
 
-		if ( !$this->including() ) {
+		if( !$this->including() ) {
 			// Output options box
 			$this->doHeader( $opts );
 		}
@@ -334,55 +334,46 @@ class SpecialRecentChanges extends SpecialPage {
 		// And now for the content
 		$wgOut->setSyndicated( true );
 
-		$list = ChangesList::newFromUser( $wgUser );
-
-		if ( $wgAllowCategorizedRecentChanges ) {
+		if( $wgAllowCategorizedRecentChanges ) {
 			$this->filterByCategories( $rows, $opts );
 		}
-
-		$s = $list->beginRecentChangesList();
-		$counter = 1;
 
 		$showWatcherCount = $wgRCShowWatchingUsers && $wgUser->getOption( 'shownumberswatching' );
 		$watcherCache = array();
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		foreach( $rows as $obj ){
-			if( $limit == 0) {
-				break;
+		$counter = 1;
+		$list = ChangesList::newFromUser( $wgUser );
+
+		$s = $list->beginRecentChangesList();
+		foreach( $rows as $obj ) {
+			if( $limit == 0 ) break;
+			$rc = RecentChange::newFromRow( $obj );
+			$rc->counter = $counter++;
+			# Check if the page has been updated since the last visit
+			if( $wgShowUpdatedMarker && !empty($obj->wl_notificationtimestamp) ) {
+				$rc->notificationtimestamp = ($obj->rc_timestamp >= $obj->wl_notificationtimestamp);
+			} else {
+				$rc->notificationtimestamp = false; // Default
 			}
-
-			if ( ! ( $opts['hideminor']     && $obj->rc_minor     ) &&
-			     ! ( $opts['hidepatrolled'] && $obj->rc_patrolled ) ) {
-				$rc = RecentChange::newFromRow( $obj );
-				$rc->counter = $counter++;
-
-				if ($wgShowUpdatedMarker
-					&& !empty( $obj->wl_notificationtimestamp )
-					&& ($obj->rc_timestamp >= $obj->wl_notificationtimestamp)) {
-						$rc->notificationtimestamp = true;
-				} else {
-					$rc->notificationtimestamp = false;
+			# Check the number of users watching the page
+			$rc->numberofWatchingusers = 0; // Default
+			if( $showWatcherCount && $obj->rc_namespace >= 0 ) {
+				if( !isset($watcherCache[$obj->rc_namespace][$obj->rc_title]) ) {
+					$watcherCache[$obj->rc_namespace][$obj->rc_title] =
+						 $dbr->selectField( 'watchlist',
+							'COUNT(*)',
+							array(
+								'wl_namespace' => $obj->rc_namespace,
+								'wl_title' => $obj->rc_title,
+							),
+							__METHOD__ . '-watchers' );
 				}
-
-				$rc->numberofWatchingusers = 0; // Default
-				if ($showWatcherCount && $obj->rc_namespace >= 0) {
-					if (!isset($watcherCache[$obj->rc_namespace][$obj->rc_title])) {
-						$watcherCache[$obj->rc_namespace][$obj->rc_title] =
-						 	$dbr->selectField( 'watchlist',
-								'COUNT(*)',
-								array(
-									'wl_namespace' => $obj->rc_namespace,
-									'wl_title' => $obj->rc_title,
-								),
-								__METHOD__ . '-watchers' );
-					}
-					$rc->numberofWatchingusers = $watcherCache[$obj->rc_namespace][$obj->rc_title];
-				}
-				$s .= $list->recentChangesLine( $rc, !empty( $obj->wl_user ) );
-				--$limit;
+				$rc->numberofWatchingusers = $watcherCache[$obj->rc_namespace][$obj->rc_title];
 			}
+			$s .= $list->recentChangesLine( $rc, !empty( $obj->wl_user ) );
+			--$limit;
 		}
 		$s .= $list->endRecentChangesList();
 		$wgOut->addHTML( $s );
@@ -413,13 +404,13 @@ class SpecialRecentChanges extends SpecialPage {
 		$submit = ' ' . Xml::submitbutton( wfMsg( 'allpagessubmit' ) );
 
 		$out = Xml::openElement( 'table', array( 'class' => 'mw-recentchanges-table' ) );
-		foreach ( $extraOpts as $optionRow ) {
+		foreach( $extraOpts as $optionRow ) {
 			# Add submit button to the last row only
 			++$count;
 			$addSubmit = $count === $extraOptsCount ? $submit : '';
 
 			$out .= Xml::openElement( 'tr' );
-			if ( is_array( $optionRow ) ) {
+			if( is_array( $optionRow ) ) {
 				$out .= Xml::tags( 'td', array( 'class' => 'mw-label' ), $optionRow[0] );
 				$out .= Xml::tags( 'td', array( 'class' => 'mw-input' ), $optionRow[1] . $addSubmit );
 			} else {
@@ -430,7 +421,7 @@ class SpecialRecentChanges extends SpecialPage {
 		$out .= Xml::closeElement( 'table' );
 
 		$unconsumed = $opts->getUnconsumedValues();
-		foreach ( $unconsumed as $key => $value ) {
+		foreach( $unconsumed as $key => $value ) {
 			$out .= Xml::hidden( $key, $value );
 		}
 
@@ -458,7 +449,7 @@ class SpecialRecentChanges extends SpecialPage {
 		$extraOpts['namespace'] = $this->namespaceFilterForm( $opts );
 
 		global $wgAllowCategorizedRecentChanges;
-		if ( $wgAllowCategorizedRecentChanges ) {
+		if( $wgAllowCategorizedRecentChanges ) {
 			$extraOpts['category'] = $this->categoryFilterForm( $opts );
 		}
 
@@ -492,7 +483,7 @@ class SpecialRecentChanges extends SpecialPage {
 	 * @return string
 	 */
 	protected function namespaceFilterForm( FormOptions $opts ) {
-		$nsSelect = HTMLnamespaceselector( $opts['namespace'], '' );
+		$nsSelect = Xml::namespaceSelector( $opts['namespace'], '' );
 		$nsLabel = Xml::label( wfMsg('namespace'), 'namespace' );
 		$invert = Xml::checkLabel( wfMsg('invert'), 'invert', 'nsinvert', $opts['invert'] );
 		return array( $nsLabel, "$nsSelect $invert" );
@@ -529,30 +520,30 @@ class SpecialRecentChanges extends SpecialPage {
 
 		# Filter categories
 		$cats = array();
-		foreach ( $categories as $cat ) {
+		foreach( $categories as $cat ) {
 			$cat = trim( $cat );
-			if ( $cat == "" ) continue;
+			if( $cat == "" ) continue;
 			$cats[] = $cat;
 		}
 
 		# Filter articles
 		$articles = array();
 		$a2r = array();
-		foreach ( $rows AS $k => $r ) {
+		foreach( $rows AS $k => $r ) {
 			$nt = Title::makeTitle( $r->rc_namespace, $r->rc_title );
 			$id = $nt->getArticleID();
-			if ( $id == 0 ) continue; # Page might have been deleted...
-			if ( !in_array($id, $articles) ) {
+			if( $id == 0 ) continue; # Page might have been deleted...
+			if( !in_array($id, $articles) ) {
 				$articles[] = $id;
 			}
-			if ( !isset($a2r[$id]) ) {
+			if( !isset($a2r[$id]) ) {
 				$a2r[$id] = array();
 			}
 			$a2r[$id][] = $k;
 		}
 
 		# Shortcut?
-		if ( !count($articles) || !count($cats) )
+		if( !count($articles) || !count($cats) )
 			return ;
 
 		# Look up
@@ -562,8 +553,8 @@ class SpecialRecentChanges extends SpecialPage {
 
 		# Filter
 		$newrows = array();
-		foreach ( $match AS $id ) {
-			foreach ( $a2r[$id] AS $rev ) {
+		foreach( $match AS $id ) {
+			foreach( $a2r[$id] AS $rev ) {
 				$k = $rev;
 				$newrows[$k] = $rows[$k];
 			}

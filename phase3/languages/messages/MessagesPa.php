@@ -16,14 +16,6 @@
  * @see http://bugzilla.wikimedia.org/show_bug.cgi?id=11145
  */
 
-$skinNames = array(
-	'standard'    => 'ਕਲਾਸਿਕ',
-	'monobook'    => 'ਮੋਨੋਬੁੱਕ',
-	'myskin'      => 'ਮੇਰੀਸਕਿਨ',
-	'chick'       => 'ਚੀਚਕ',
-	'simple'      => 'ਸੈਂਪਲ'
-);
-
 $namespaceNames = array(
 	NS_MEDIA          => 'ਮੀਡੀਆ',
 	NS_SPECIAL        => 'ਖਾਸ',
@@ -33,8 +25,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'ਮੈਂਬਰ_ਚਰਚਾ',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_ਚਰਚਾ',
-	NS_IMAGE          => 'ਤਸਵੀਰ',
-	NS_IMAGE_TALK     => 'ਤਸਵੀਰ_ਚਰਚਾ',
+	NS_FILE           => 'ਤਸਵੀਰ',
+	NS_FILE_TALK      => 'ਤਸਵੀਰ_ਚਰਚਾ',
 	NS_MEDIAWIKI      => 'ਮੀਡੀਆਵਿਕਿ',
 	NS_MEDIAWIKI_TALK => 'ਮੀਡੀਆਵਿਕਿ_ਚਰਚਾ',
 	NS_TEMPLATE       => 'ਨਮੂਨਾ',
@@ -152,7 +144,7 @@ $messages = array(
 'mytalk'         => 'ਮੇਰੀ ਗੱਲਬਾਤ',
 'anontalk'       => 'ਇਹ IP ਲਈ ਗੱਲਬਾਤ',
 'navigation'     => 'ਨੇਵੀਗੇਸ਼ਨ',
-'and'            => 'ਅਤੇ',
+'and'            => '&#32;ਅਤੇ',
 
 'errorpagetitle'    => 'ਗਲਤੀ',
 'returnto'          => '$1 ਤੇ ਵਾਪਸ ਜਾਓ',
@@ -210,8 +202,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} ਬਾਰੇ',
 'aboutpage'            => 'Project:ਬਾਰੇ',
-'bugreports'           => 'ਬੱਗ ਰਿਪੋਰਟਾਂ',
-'bugreportspage'       => 'Project:ਬੱਗ ਰਿਪੋਰਟ',
 'copyright'            => 'ਸਮੱਗਰੀ $1 ਹੇਠ ਉਪਲੱਬਧ ਹੈ।',
 'copyrightpagename'    => '{{SITENAME}} ਕਾਪੀਰਾਈਟ',
 'copyrightpage'        => '{{ns:project}}:ਕਾਪੀਰਾਈਟ',
@@ -365,11 +355,13 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'resetpass'               => 'ਅਕਾਊਂਟ ਪਾਸਵਰਡ ਰੀ-ਸੈੱਟ ਕਰੋ',
 'resetpass_announce'      => 'ਤੁਸੀਂ ਇੱਕ ਆਰਜ਼ੀ ਈ-ਮੇਲ ਕੀਤੇ ਕੋਡ ਨਾਲ ਲਾਗਇਨ ਕੀਤਾ ਹੈ। ਲਾਗਇਨ ਪੂਰਾ ਕਰਨ ਲਈ, ਤੁਹਾਨੂੰ ਇੱਥੇ ਨਵਾਂ ਪਾਸਵਰਡ ਦੇਣਾ ਪਵੇਗਾ:',
 'resetpass_header'        => 'ਪਾਸਵਰਡ ਰੀ-ਸੈੱਟ ਕਰੋ',
+'oldpassword'             => 'ਪੁਰਾਣਾ ਪਾਸਵਰਡ:',
+'newpassword'             => 'ਨਵਾਂ ਪਾਸਵਰਡ:',
+'retypenew'               => 'ਨਵਾਂ ਪਾਸਵਰਡ ਮੁੜ-ਲਿਖੋ:',
 'resetpass_submit'        => 'ਪਾਸਵਰਡ ਸੈੱਟ ਕਰੋ ਅਤੇ ਲਾਗਇਨ ਕਰੋ',
 'resetpass_success'       => 'ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਠੀਕ ਤਰਾਂ ਬਦਲਿਆ ਗਿਆ ਹੈ! ਹੁਣ ਤੁਸੀਂ ਲਾਗਇਨ ਕਰ ਸਕਦੇ ਹੋ...',
 'resetpass_bad_temporary' => 'ਗਲਤ ਆਰਜ਼ੀ ਪਾਸਵਰਡ ਹੈ। ਤੁਸੀਂ ਸ਼ਾਇਦ ਪਹਿਲਾਂ ਹੀ ਆਪਣਾ ਪਾਸਵਰਡ ਬਦਲ ਚੁੱਕੇ ਹੋ ਜਾਂ ਇੱਕ ਨਵੇਂ ਆਰਜ਼ੀ ਪਾਸਵਰਡ ਦੀ ਮੰਗ ਭੇਜੀ ਹੈ।',
 'resetpass_forbidden'     => 'ਇਹ ਵਿਕਿ ਲਈ ਪਾਸਵਰਡ ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।',
-'resetpass_missing'       => 'ਕੋਈ ਫਾਰਮ ਡਾਟਾ ਨਹੀਂ।',
 
 # Edit page toolbar
 'bold_sample'     => 'ਬੋਲਡ ਟੈਕਸਟ',
@@ -386,8 +378,8 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'hr_tip'          => 'ਹਾਰੀਜ਼ਟਲ ਲਾਈਨ (use sparingly)',
 
 # Edit pages
-'summary'                => 'ਸੰਖੇਪ',
-'subject'                => 'ਵਿਸ਼ਾ/ਹੈੱਡਲਾਈਨ',
+'summary'                => 'ਸੰਖੇਪ:',
+'subject'                => 'ਵਿਸ਼ਾ/ਹੈੱਡਲਾਈਨ:',
 'minoredit'              => 'ਇਹ ਛੋਟੀ ਸੋਧ ਹੈ',
 'watchthis'              => 'ਇਹ ਪੇਜ ਵਾਚ ਕਰੋ',
 'savearticle'            => 'ਪੇਜ ਸੰਭਾਲੋ',
@@ -397,8 +389,8 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'showdiff'               => 'ਬਦਲਾਅ ਵੇਖਾਓ',
 'anoneditwarning'        => "'''ਚੇਤਾਵਨੀ:''' ਤੁਸੀਂ ਲਾਗਇਨ ਨਹੀਂ ਕੀਤਾ ਹੈ। ਤੁਹਾਡਾ IP ਐਡਰੈੱਸ ਇਸ ਪੇਜ ਦੇ ਐਡਿਟ ਅਤੀਤ ਵਿੱਚ ਰਿਕਾਰਡ ਕੀਤਾ ਜਾਵੇਗਾ।",
 'missingcommenttext'     => 'ਹੇਠਾਂ ਇੱਕ ਟਿੱਪਣੀ ਦਿਓ।',
-'summary-preview'        => 'ਸੰਖੇਪ ਝਲਕ',
-'subject-preview'        => 'ਵਿਸ਼ਾ/ਹੈੱਡਲਾਈਨ ਝਲਕ',
+'summary-preview'        => 'ਸੰਖੇਪ ਝਲਕ:',
+'subject-preview'        => 'ਵਿਸ਼ਾ/ਹੈੱਡਲਾਈਨ ਝਲਕ:',
 'blockedtitle'           => 'ਯੂਜ਼ਰ ਬਲਾਕ ਕੀਤਾ ਗਿਆ',
 'whitelistedittitle'     => 'ਸੋਧਣ ਲਈ ਲਾਗਇਨ ਕਰਨਾ ਪਵੇਗਾ',
 'whitelistedittext'      => 'ਪੇਜ ਸੋਧਣ ਲਈ ਤੁਹਾਨੂੰ $1 ਕਰਨਾ ਪਵੇਗਾ।',
@@ -517,9 +509,6 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'prefs-misc'            => 'ਫੁਟਕਲ',
 'saveprefs'             => 'ਸੰਭਾਲੋ',
 'resetprefs'            => 'ਰੀ-ਸੈੱਟ',
-'oldpassword'           => 'ਪੁਰਾਣਾ ਪਾਸਵਰਡ:',
-'newpassword'           => 'ਨਵਾਂ ਪਾਸਵਰਡ:',
-'retypenew'             => 'ਨਵਾਂ ਪਾਸਵਰਡ ਮੁੜ-ਲਿਖੋ:',
 'textboxsize'           => 'ਸੰਪਾਦਨ',
 'rows'                  => 'ਕਤਾਰਾਂ:',
 'columns'               => 'ਕਾਲਮ:',
@@ -614,16 +603,16 @@ to upload files.',
 'license-nopreview'  => '(ਝਲਕ ਉਪਲੱਬਧ ਨਹੀਂ)',
 'upload_source_file' => ' (ਤੁਹਾਡੇ ਕੰਪਿਊਟਰ ਉੱਤੇ ਇੱਕ ਫਾਇਲ)',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'               => 'ਫਾਇਲ',
-'imagelist'             => 'ਫਾਇਲ ਲਿਸਟ',
-'imagelist_date'        => 'ਮਿਤੀ',
-'imagelist_name'        => 'ਨਾਂ',
-'imagelist_user'        => 'ਯੂਜ਼ਰ',
-'imagelist_size'        => 'ਆਕਾਰ',
-'imagelist_description' => 'ਵੇਰਵਾ',
+'listfiles'             => 'ਫਾਇਲ ਲਿਸਟ',
+'listfiles_date'        => 'ਮਿਤੀ',
+'listfiles_name'        => 'ਨਾਂ',
+'listfiles_user'        => 'ਯੂਜ਼ਰ',
+'listfiles_size'        => 'ਆਕਾਰ',
+'listfiles_description' => 'ਵੇਰਵਾ',
 
-# Image description page
+# File description page
 'filehist'                  => 'ਫਾਇਲ ਅਤੀਤ',
 'filehist-deleteall'        => 'ਸਭ ਹਟਾਓ',
 'filehist-deleteone'        => 'ਇਹ ਹਟਾਓ',
@@ -855,6 +844,7 @@ to upload files.',
 # Special:Import
 'import'                  => 'ਪੇਜ ਇੰਪੋਰਟ ਕਰੋ',
 'import-interwiki-submit' => 'ਇੰਪੋਰਟ',
+'import-comment'          => 'ਟਿੱਪਣੀ:',
 'importstart'             => 'ਪੇਜ ਇੰਪੋਰਟ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ...',
 'importfailed'            => 'ਇੰਪੋਰਟ ਫੇਲ੍ਹ: $1',
 'importnotext'            => 'ਖਾਲੀ ਜਾਂ ਕੋਈ ਟੈਕਸਟ ਨਹੀਂ',
@@ -904,6 +894,13 @@ to upload files.',
 # Info page
 'infosubtitle' => 'ਸਫ਼ੇ ਦੀ ਜਾਣਕਾਰੀ',
 
+# Skin names
+'skinname-standard' => 'ਕਲਾਸਿਕ',
+'skinname-monobook' => 'ਮੋਨੋਬੁੱਕ',
+'skinname-myskin'   => 'ਮੇਰੀਸਕਿਨ',
+'skinname-chick'    => 'ਚੀਚਕ',
+'skinname-simple'   => 'ਸੈਂਪਲ',
+
 # Patrol log
 'patrol-log-auto' => '(ਆਟੋਮੈਟਿਕ)',
 
@@ -920,7 +917,7 @@ to upload files.',
 'show-big-image'       => 'ਪੂਰਾ ਰੈਜ਼ੋਲੇਸ਼ਨ',
 'show-big-image-thumb' => '<small>ਇਹ ਝਲਕ ਦਾ ਆਕਾਰ: $1 × $2 ਪਿਕਸਲ</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'ਨਵੀਆਂ ਫਾਇਲਾਂ ਦੀ ਗੈਲਰੀ',
 'noimages'  => 'ਵੇਖਣ ਲਈ ਕੁਝ ਨਹੀਂ',
 'ilsubmit'  => 'ਖੋਜ',

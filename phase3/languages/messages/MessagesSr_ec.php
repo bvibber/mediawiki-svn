@@ -8,6 +8,7 @@
  * @author Millosh
  * @author Red Baron
  * @author Sasa Stefanovic
+ * @author Slaven Kosanovic
  * @author Јованвб
  * @author לערי ריינהארט
  */
@@ -21,8 +22,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => "Разговор_са_корисником",
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => "Разговор_о_$1",
-	NS_IMAGE            => "Слика",
-	NS_IMAGE_TALK       => "Разговор_о_слици",
+	NS_FILE             => "Слика",
+	NS_FILE_TALK        => "Разговор_о_слици",
 	NS_MEDIAWIKI        => "МедијаВики",
 	NS_MEDIAWIKI_TALK   => "Разговор_о_МедијаВикију",
 	NS_TEMPLATE         => 'Шаблон',
@@ -41,8 +42,8 @@ $namespaceAliases = array(
 	"Korisnik"                => NS_USER,
 	"Razgovor_sa_korisnikom"  => NS_USER_TALK,
 	"Razgovor_o_$1"           => NS_PROJECT_TALK,
-	"Slika"                   => NS_IMAGE,
-	"Razgovor_o_slici"        => NS_IMAGE_TALK,
+	"Slika"                   => NS_FILE,
+	"Razgovor_o_slici"        => NS_FILE_TALK,
 	"MedijaViki"              => NS_MEDIAWIKI,
 	"Razgovor_o_MedijaVikiju" => NS_MEDIAWIKI_TALK,
 	'Šablon'                  => NS_TEMPLATE,
@@ -53,9 +54,6 @@ $namespaceAliases = array(
 	'Razgovor_o_kategoriji'   => NS_CATEGORY_TALK,
 );
 
-$skinNames = array(
- "Обична", "Носталгија", "Келнско плаво"
-);
 
 $extraUserToggles = array(
 	'nolangconversion',
@@ -350,7 +348,7 @@ $messages = array(
 'mytalk'         => 'Мој разговор',
 'anontalk'       => 'Разговор за ову ИП адресу',
 'navigation'     => 'Навигација',
-'and'            => 'и',
+'and'            => '&#32;и',
 
 # Metadata in edit box
 'metadata_help' => 'Метаподаци:',
@@ -413,8 +411,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'О пројекту {{SITENAME}}',
 'aboutpage'            => 'Project:О',
-'bugreports'           => 'Пријаве грешака',
-'bugreportspage'       => 'Project:Пријаве грешака',
 'copyright'            => 'Садржај је објављен под $1.',
 'copyrightpagename'    => 'Ауторска права пројекта {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Ауторска права',
@@ -668,14 +664,17 @@ $2',
 'loginlanguagelabel'         => 'Језик: $1',
 
 # Password reset dialog
-'resetpass'               => 'Ресетујте корисничку лозинку',
-'resetpass_announce'      => 'Пријавили сте се са привременом лозинком послатом електронском поштом. Да бисте завршили са пријавом, морате подесити нову лозинку овде:',
-'resetpass_header'        => 'Ресетовање лозинке',
-'resetpass_submit'        => 'Подеси лозинку и пријави се',
-'resetpass_success'       => 'Ваша лозинка је успешно промењена! Пријављивање у току...',
-'resetpass_bad_temporary' => 'Привремена лозинка не одговара. Могуће је да сте већ успешно променили лозинку или да сте затражили да вам се пошаље нова привремена лозинка.',
-'resetpass_forbidden'     => 'Лозинке не могу бити промењене',
-'resetpass_missing'       => 'Недостају подаци формулара.',
+'resetpass'                 => 'Промените или ресетујте корисничку лозинку',
+'resetpass_announce'        => 'Пријавили сте се са привременом лозинком послатом електронском поштом. Да бисте завршили са пријавом, морате подесити нову лозинку овде:',
+'resetpass_header'          => 'Промените лозинку',
+'oldpassword'               => 'Стара лозинка:',
+'newpassword'               => 'Нова лозинка:',
+'retypenew'                 => 'Поново откуцајте нову лозинку:',
+'resetpass_submit'          => 'Подеси лозинку и пријави се',
+'resetpass_success'         => 'Ваша лозинка је успешно промењена! Пријављивање у току...',
+'resetpass_bad_temporary'   => 'Привремена лозинка не одговара. Могуће је да сте већ успешно променили лозинку или да сте затражили да вам се пошаље нова привремена лозинка.',
+'resetpass_forbidden'       => 'Лозинке не могу бити промењене',
+'resetpass-submit-loggedin' => 'Измени лозинку',
 
 # Edit page toolbar
 'bold_sample'     => 'подебљан текст',
@@ -700,8 +699,8 @@ $2',
 'hr_tip'          => 'Хоризонтална линија',
 
 # Edit pages
-'summary'                          => 'Опис измене',
-'subject'                          => 'Тема/Наслов',
+'summary'                          => 'Опис измене:',
+'subject'                          => 'Тема/Наслов:',
 'minoredit'                        => 'Ово је мала измена',
 'watchthis'                        => 'Надгледај овај чланак',
 'savearticle'                      => 'Сними страницу',
@@ -713,8 +712,8 @@ $2',
 'missingsummary'                   => "'''Опомена:''' Нисте унели опис измене. Уколико кликнете Сними страницу поново, ваше измене ће бити снимљене без описа.",
 'missingcommenttext'               => 'Унестите коментар доле.',
 'missingcommentheader'             => "'''Подсетник:''' Нисте навели наслов овог коментара. Уколико кликнете ''Сними поново'', ваш коментар ће бити снимљен без наслова.",
-'summary-preview'                  => 'Претпреглед описа измене',
-'subject-preview'                  => 'Претпреглед предмета/одељка',
+'summary-preview'                  => 'Претпреглед описа измене:',
+'subject-preview'                  => 'Претпреглед предмета/одељка:',
 'blockedtitle'                     => 'Корисник је блокиран',
 'blockedtext'                      => "<big>'''Ваше корисничко име или ИП адреса је блокирана.'''</big>
 
@@ -864,27 +863,28 @@ $2',
 Разлог који је дао $3 је ''$2''",
 
 # History pages
-'viewpagelogs'        => 'Протоколи за ову страну',
-'nohistory'           => 'Не постоји историја измена за ову страницу.',
-'currentrev'          => 'Тренутна ревизија',
-'revisionasof'        => 'Ревизија од $1',
-'revision-info'       => 'Ревизија од $1; $2', # Additionally available: $3: revision id
-'previousrevision'    => '← Претходна ревизија',
-'nextrevision'        => 'Следећа ревизија →',
-'currentrevisionlink' => 'Тренутна ревизија',
-'cur'                 => 'трен',
-'next'                => 'след',
-'last'                => 'посл',
-'page_first'          => 'прво',
-'page_last'           => 'последње',
-'histlegend'          => 'Одабирање разлика: одаберите кутијице ревизија за упоређивање и притисните ентер или дугме на дну.<br />
+'viewpagelogs'           => 'Протоколи за ову страну',
+'nohistory'              => 'Не постоји историја измена за ову страницу.',
+'currentrev'             => 'Тренутна ревизија',
+'revisionasof'           => 'Ревизија од $1',
+'revision-info'          => 'Ревизија од $1; $2', # Additionally available: $3: revision id
+'previousrevision'       => '← Претходна ревизија',
+'nextrevision'           => 'Следећа ревизија →',
+'currentrevisionlink'    => 'Тренутна ревизија',
+'cur'                    => 'трен',
+'next'                   => 'след',
+'last'                   => 'посл',
+'page_first'             => 'прво',
+'page_last'              => 'последње',
+'histlegend'             => 'Одабирање разлика: одаберите кутијице ревизија за упоређивање и притисните ентер или дугме на дну.<br />
 Објашњење: (трен) = разлика са тренутном верзијом,
 (посл) = разлика са претходном верзијом, М = мала измена',
-'deletedrev'          => '[обрисан]',
-'histfirst'           => 'Најраније',
-'histlast'            => 'Последње',
-'historysize'         => '({{PLURAL:$1|1 бајт|$1 бајта|$1 бајтова}})',
-'historyempty'        => '(празно)',
+'history-fieldset-title' => 'Прегледајте историју',
+'deletedrev'             => '[обрисан]',
+'histfirst'              => 'Најраније',
+'histlast'               => 'Последње',
+'historysize'            => '({{PLURAL:$1|1 бајт|$1 бајта|$1 бајтова}})',
+'historyempty'           => '(празно)',
 
 # Revision feed
 'history-feed-title'          => 'Контролна историја',
@@ -1019,10 +1019,8 @@ $2',
 'showingresults'            => "Приказујем испод до {{PLURAL:$1|'''1''' резултат|'''$1''' резултата}} почев од #'''$2'''.",
 'showingresultsnum'         => "Приказујем испод до {{PLURAL:$3|'''1''' резултат|'''$3''' резултата}} почев од #'''$2'''.",
 'showingresultstotal'       => "Приказивање {{PLURAL:$4|резултат '''$1''' од '''$3'''|резултата '''$1 - $2''' од '''$3'''}}",
-'nonefound'                 => "'''Напомена''': неуспешне претраге су
-често изазване тражењем честих речи као \"је\" или \"од\",
-које нису индексиране, или навођењем више од једног израза за тражење (само странице
-које садрже све изразе који се траже ће се појавити у резултату).",
+'nonefound'                 => "'''Напомена''': Само неколико именских простора се претражују по основном подешавању.
+Покушајте са префиксом '''све:''' да претражите цео садржај (укључујући странице за разговор, шаблоне итд.), или изаберите жељени именски простор као префикс.",
 'powersearch'               => 'Тражи',
 'powersearch-legend'        => 'Напредна претрага',
 'powersearch-ns'            => 'Тражи у именским просторима:',
@@ -1068,9 +1066,6 @@ $2',
 'prefs-misc'               => 'Разно',
 'saveprefs'                => 'Сачувај',
 'resetprefs'               => 'Очисти измене',
-'oldpassword'              => 'Стара лозинка:',
-'newpassword'              => 'Нова лозинка:',
-'retypenew'                => 'Поново откуцајте нову лозинку:',
 'textboxsize'              => 'Величине текстуалног поља',
 'rows'                     => 'Редова',
 'columns'                  => 'Колона',
@@ -1248,11 +1243,11 @@ $2',
 'upload_directory_read_only'  => 'На директоријум за слање ($1) сервер не може да пише.',
 'uploaderror'                 => 'Грешка при слању',
 'uploadtext'                  => "Користите формулар доле да бисте послали фајлове.
-Да бисте видели или тражили претходно послате фајлове идите на [[Special:ImageList|списак послатих фајлова]], поновна слања су записани у [[Special:Log/upload|историји слања]], а брисања у [[Special:Log/delete|историји брисања]].
+Да бисте видели или тражили претходно послате фајлове идите на [[Special:FileList|списак послатих фајлова]], поновна слања су записани у [[Special:Log/upload|историји слања]], а брисања у [[Special:Log/delete|историји брисања]].
 
 Слику додајете у погодне чланке користећи синтаксу:
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Слика.jpg]]</nowiki></tt>''' да бисте користили пуну верзију фајла
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Слика.png|200п|мини|лево|опис]]</nowiki></tt>''' да висте користили 200 пиксела широку уоквирену слику са леве стране и са \"опис\" као описом слике.
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Слика.jpg]]</nowiki></tt>''' да бисте користили пуну верзију фајла
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Слика.png|200п|мини|лево|опис]]</nowiki></tt>''' да висте користили 200 пиксела широку уоквирену слику са леве стране и са \"опис\" као описом слике.
 * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Фајл.ogg]]</nowiki></tt>''' да директно повежете ка фајлу без приказивања истог",
 'upload-permitted'            => 'Дозвољени типови фајлова су: $1.',
 'upload-preferred'            => 'Пожељни типови фајлова су: $1.',
@@ -1292,9 +1287,9 @@ $2',
 'file-thumbnail-no'           => 'Фајл почиње са <strong><tt>$1</tt></strong>. 
 Претпоставља се да је ово умањена верзија слике.
 Уколико имате ову слику у пуној резолицуји, пошаљите је, а уколико немате, промените име фајла.',
-'fileexists-forbidden'        => 'Фајл са овим именом већ постоји; молимо вратите се и пошаљите овај фајл под новим именом. [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Фајл са овим именом већ постоји; молимо вратите се и пошаљите овај фајл под новим именом. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Фајл са овим именом већ постоји у заједничкој остави. 
-Молимо вратите се и пошаљите овај фајл под новим именом. [[Image:$1|thumb|center|$1]]',
+Молимо вратите се и пошаљите овај фајл под новим именом. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Овај фајл је дупликат {{PLURAL:$1|следећег фајла|следеђих фајлова}}:',
 'successfulupload'            => 'Успешно слање',
 'uploadwarning'               => 'Упозорење при слању',
@@ -1336,18 +1331,18 @@ $2',
 'upload_source_url'  => ' (валидан, јавно доступан УРЛ)',
 'upload_source_file' => ' (фајл на вашем рачунару)',
 
-# Special:ImageList
-'imagelist-summary'     => 'Ова посебна страна приказује све послате фајлове. Подразумева се да је последњи послат фајл приказан на врху списка. Кликом на заглавље колоне мења се принцип сортирања.',
-'imagelist_search_for'  => 'Тражи име слике:',
+# Special:ListFiles
+'listfiles-summary'     => 'Ова посебна страна приказује све послате фајлове. Подразумева се да је последњи послат фајл приказан на врху списка. Кликом на заглавље колоне мења се принцип сортирања.',
+'listfiles_search_for'  => 'Тражи име слике:',
 'imgfile'               => 'фајл',
-'imagelist'             => 'Списак слика',
-'imagelist_date'        => 'Датум',
-'imagelist_name'        => 'Име',
-'imagelist_user'        => 'Корисник',
-'imagelist_size'        => 'Величина (бајтови)',
-'imagelist_description' => 'Опис слике',
+'listfiles'             => 'Списак слика',
+'listfiles_date'        => 'Датум',
+'listfiles_name'        => 'Име',
+'listfiles_user'        => 'Корисник',
+'listfiles_size'        => 'Величина (бајтови)',
+'listfiles_description' => 'Опис слике',
 
-# Image description page
+# File description page
 'filehist'                       => 'Историја фајла',
 'filehist-help'                  => 'Кликните на датум/време да видите верзију фајла из тог времена.',
 'filehist-deleteall'             => 'обриши све',
@@ -1423,16 +1418,17 @@ $2',
 
 # Unused templates
 'unusedtemplates'     => 'Неискоришћени шаблони',
-'unusedtemplatestext' => 'Ова страна наводи све странице у именском простору шаблона које нису укључене ни на једној другој страни. Не заборавите да проверите остале повезнице ка шаблонима пре него што их обришете.',
+'unusedtemplatestext' => 'Ова страна наводи све странице у {{ns:template}} именском простору које нису укључене ни на једној другој страни.
+Не заборавите да проверите остале повезнице ка шаблонима пре него што их обришете.',
 'unusedtemplateswlh'  => 'остале повезнице',
 
 # Random page
 'randompage'         => 'Случајна страница',
-'randompage-nopages' => 'Нема страница у овом именском простору.',
+'randompage-nopages' => 'Нема страница у именском простору „$1”.',
 
 # Random redirect
 'randomredirect'         => 'Случајно преусмерење',
-'randomredirect-nopages' => 'Нема преусмерења у овом именском простору.',
+'randomredirect-nopages' => 'Нема преусмерења у именском простору „$1”.',
 
 # Statistics
 'statistics'              => 'Статистике',
@@ -2082,7 +2078,8 @@ $1',
 'import-interwiki-text'      => 'Одаберите вики и назив стране за увоз. Датуми ревизије и имена уредника ће бити сачувани. Сви трансвики увози су забележени у [[Special:Log/import|историји увоза]].',
 'import-interwiki-history'   => 'Копирај све ревизије ове стране',
 'import-interwiki-submit'    => 'Увези',
-'import-interwiki-namespace' => 'Пребаци странице у именски простор:',
+'import-interwiki-namespace' => 'Именски простор:',
+'import-comment'             => 'Коментар:',
 'importtext'                 => 'Молимо извезите фајл из изворног викија користећи [[Special:Export|извоз]].
 Сачувајте га код себе и пошаљите овде.',
 'importstart'                => 'Увожење страна у току...',
@@ -2231,9 +2228,10 @@ $1',
 'markedaspatrollederror-noautopatrol' => 'Није ти дозвољено да обележиш своје измене патролираним.',
 
 # Patrol log
-'patrol-log-page' => 'Историја патролирања',
-'patrol-log-line' => 'обележена верзија $1 стране $2 као патролирана ($3)',
-'patrol-log-auto' => '(аутоматски)',
+'patrol-log-page'   => 'Историја патролирања',
+'patrol-log-header' => 'Ово је историја патролираних ревизија.',
+'patrol-log-line'   => 'обележена верзија $1 стране $2 као патролирана ($3)',
+'patrol-log-auto'   => '(аутоматски)',
 
 # Image deletion
 'deletedrevision'                 => 'Обрисана стара ревизија $1.',
@@ -2262,7 +2260,7 @@ $1',
 'show-big-image'       => 'Пуна резолуција',
 'show-big-image-thumb' => '<small>Величина овог приказа: $1 × $2 пиксела</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Галерија нових слика',
 'imagelisttext'         => "Испод је списак од '''$1''' {{PLURAL:$1|фајла|фајла|фајлова}} поређаних $2.",
 'newimages-summary'     => 'Ова посебна страна приказује последње послате фајлове.',
@@ -2555,7 +2553,7 @@ $1',
 
 # External editor support
 'edit-externally'      => 'Измените овај фајл користећи спољашњу апликацију',
-'edit-externally-help' => 'Погледајте [http://www.mediawiki.org/wiki/Manual:External_editors упутство за подешавање] за више информација.',
+'edit-externally-help' => '(Погледајте [http://www.mediawiki.org/wiki/Manual:External_editors упутство за подешавање] за више информација)',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'све',
@@ -2656,18 +2654,26 @@ $1
 'lag-warn-high'   => 'Због великог лага базе података, измене новије од $1 {{PLURAL:$1|секунде|секунде|секунди}} се неће приказати на списку.',
 
 # Watchlist editor
-'watchlistedit-numitems'      => 'Ваш списак надгледања садржи {{PLURAL:$1|1 наслов|$1 наслова}}, искључујући странице за разговор.',
-'watchlistedit-noitems'       => 'Нема наслова у вашем списку надгледања.',
-'watchlistedit-normal-title'  => 'Уреди списак надгледања',
-'watchlistedit-normal-legend' => 'Уклони наслове са списка надгледања',
-'watchlistedit-normal-submit' => 'Уклони наслове',
-'watchlistedit-raw-title'     => 'мењање сировог списка надгледања',
-'watchlistedit-raw-legend'    => 'мењање сировог списка надгледања',
-'watchlistedit-raw-titles'    => 'Наслови:',
-'watchlistedit-raw-submit'    => 'Освежите списак надгледања',
-'watchlistedit-raw-done'      => 'Ваш списак надгледања је освежен.',
-'watchlistedit-raw-added'     => '{{PLURAL:$1|1 наслов је додат|$1 наслова су додата|$1 наслова је додато}}:',
-'watchlistedit-raw-removed'   => '{{PLURAL:$1|1 наслов је уклоњен|$1 наслова су уклоњена|$1 наслова је уклоњено}}:',
+'watchlistedit-numitems'       => 'Ваш списак надгледања садржи {{PLURAL:$1|1 наслов|$1 наслова}}, искључујући странице за разговор.',
+'watchlistedit-noitems'        => 'Нема наслова у вашем списку надгледања.',
+'watchlistedit-normal-title'   => 'Уреди списак надгледања',
+'watchlistedit-normal-legend'  => 'Уклони наслове са списка надгледања',
+'watchlistedit-normal-explain' => 'Списак страница које надгледате је приказан испод.
+Да уклоните страницу, обележите квадратић поред, и кликните на дугме Уклони наслове.
+Такође, можете да [[Special:Watchlist/raw|измените сирову листу]].',
+'watchlistedit-normal-submit'  => 'Уклони наслове',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|1 чланак је уклоњен|$1 чланка су уклоњена|$1 чланака је уклоњено}} са вашег списка надгледања:',
+'watchlistedit-raw-title'      => 'мењање сировог списка надгледања',
+'watchlistedit-raw-legend'     => 'мењање сировог списка надгледања',
+'watchlistedit-raw-explain'    => 'Наслови у вашој страници надгледања су приказани испод, и могу се мењати додавањем или одузимањем са списка;
+један наслов по линији.
+Када завршите, кликните Освежи списак надгледања.
+Такође, можете [[Special:Watchlist/edit|користити стандардан уређивач списка]].',
+'watchlistedit-raw-titles'     => 'Наслови:',
+'watchlistedit-raw-submit'     => 'Освежите списак надгледања',
+'watchlistedit-raw-done'       => 'Ваш списак надгледања је освежен.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 наслов је додат|$1 наслова су додата|$1 наслова је додато}}:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 наслов је уклоњен|$1 наслова су уклоњена|$1 наслова је уклоњено}}:',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Преглед сродних промена',
@@ -2709,9 +2715,14 @@ $1
 'fileduplicatesearch-filename' => 'Име фајла:',
 'fileduplicatesearch-submit'   => 'Претрага',
 'fileduplicatesearch-info'     => '$1 × $2 поксел<br />Величина фајла: $3<br />MIME тип: $4',
+'fileduplicatesearch-result-1' => 'Датотека „$1“ нема идентичних дупликата.',
+'fileduplicatesearch-result-n' => 'Датотека "$1" има {{PLURAL:$2|1 идентичан дупликат|$2 идентична дупликата|$2 идентичних дупликата}}.',
 
 # Special:SpecialPages
 'specialpages'                   => 'Посебне странице',
+'specialpages-note'              => '----
+* Обичне посебне странице
+* <span class="mw-specialpagerestricted">Заштићене посебне странице.</span>',
 'specialpages-group-maintenance' => 'Извештаји',
 'specialpages-group-other'       => 'Остале посебне странице',
 'specialpages-group-login'       => 'Пријави се / региструј се',

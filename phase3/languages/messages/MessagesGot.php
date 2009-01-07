@@ -80,7 +80,7 @@ $messages = array(
 'moredotdotdot'  => 'Máis...',
 'mypage'         => '𐌼𐌴𐌹𐌽 𐍃𐌴𐌹𐌳𐍉',
 'mytalk'         => '𐌼𐌴𐌹𐌽𐌰 𐌼𐌰𐌸𐌻𐌴𐌹',
-'and'            => 'jah',
+'and'            => '&#32;jah',
 
 # Metadata in edit box
 'metadata_help' => 'Ufardata:',
@@ -123,7 +123,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Ufar {{SITENAME}}',
 'aboutpage'            => 'Project:Ufar',
-'bugreports'           => '𐌰𐌹𐍂𐌶𐌹𐌸𐌰𐌷𐌰𐌿𐍃𐌴𐌹𐌽𐌴𐌹𐍃',
 'copyrightpage'        => '{{ns:project}}:Manleikawitoþa',
 'currentevents'        => 'Niuja waíhts',
 'currentevents-url'    => 'Project:Nu her',
@@ -197,8 +196,8 @@ $messages = array(
 'hr_tip'          => 'Ráihtsbáurd (brukjan miþ niufarussus)',
 
 # Edit pages
-'summary'                => 'Máidjanspillon',
-'subject'                => 'Háubidaboka',
+'summary'                => 'Máidjanspillon:',
+'subject'                => 'Háubidaboka:',
 'minoredit'              => 'Sa ist lietila máideins',
 'watchthis'              => '𐍅𐌰𐍂𐌰𐌽 𐍃𐌴𐌹𐌳𐍉',
 'savearticle'            => 'Melja seido',
@@ -285,11 +284,11 @@ $messages = array(
 'uploadedimage'   => 'ushlaþiþ "[[$1]]"',
 'watchthisupload' => 'Witan so seido',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'   => 'Feilans',
-'imagelist' => 'Feilans tala',
+'listfiles' => 'Feilans tala',
 
-# Image description page
+# File description page
 'filehist'            => 'Feilans áiris',
 'filehist-current'    => 'nu',
 'filehist-datetime'   => 'Ƕeila',
@@ -471,7 +470,7 @@ $messages = array(
 # Media information
 'show-big-image' => 'Fullis wahstus',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Sokeiþ',
 
 # Metadata

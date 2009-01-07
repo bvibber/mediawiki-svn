@@ -19,8 +19,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Aжыглакчы_чугаа', //User_talk
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_чугаа', //_talk
-	NS_IMAGE            => 'Чурук', //Image
-	NS_IMAGE_TALK       => 'Чурук_чугаа', //Image_talk
+	NS_FILE             => 'Чурук', //Image
+	NS_FILE_TALK        => 'Чурук_чугаа', //Image_talk
 	NS_MEDIAWIKI        => 'МедиаВики', //MediaWiki
 	NS_MEDIAWIKI_TALK   => 'МедиаВики_чугаа', //MediaWiki_talk
 	NS_TEMPLATE         => 'Хээ', //Template
@@ -31,14 +31,6 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK    => 'Бөлүк_чугаа', //Category_talk
 );
 
-$skinNames = array(
-	'standard' => 'Classic', //Classic
-	'nostalgia' => 'Nostalgia', //Nostalgia
-	'cologneblue' => 'Cologne Blue', //Cologne Blue
-	'monobook' => 'Моно-Ном', //MonoBook
-	'myskin' => 'MySkin', //MySkin
-	'chick' => 'Chick' //Chick
-);
 
 $bookstoreList = array(
 	'ОЗОН' => 'http://www.ozon.ru/?context=advsearch_book&isbn=$1',
@@ -180,8 +172,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} дугайында',
 'aboutpage'            => 'Project:Дугайында',
-'bugreports'           => 'Сээк илеткелдер',
-'bugreportspage'       => 'Project:Сээк илеткелдер',
 'currentevents'        => 'Амгы үеде болуушкуннар',
 'currentevents-url'    => 'Project:Амгы үеде болуушкуннар',
 'edithelp'             => 'Өскертиринге дуза',
@@ -270,9 +260,10 @@ $1',
 
 # Password reset dialog
 'resetpass_header'    => 'Чажыт сөстү катап чогаадып кылыр',
+'oldpassword'         => 'Эгри чажыт сөс:',
+'newpassword'         => 'Чаа чажыт сөс:',
 'resetpass_submit'    => 'Чажыт сөстү чоогадып кылыр база кирер.',
 'resetpass_forbidden' => '{{grammar:locative|{{SITENAME}}}} чажыт сөстү өскертивейн болбас',
-'resetpass_missing'   => 'Бижиирии медээ чок.',
 
 # Edit page toolbar
 'bold_sample'     => 'Карартыр',
@@ -289,8 +280,8 @@ $1',
 'media_tip'       => 'Файл холбаазы',
 
 # Edit pages
-'summary'            => 'Түңнел',
-'subject'            => 'Кол сөс',
+'summary'            => 'Түңнел:',
+'subject'            => 'Кол сөс:',
 'minoredit'          => 'Бо өскерлиишкин биче-дир',
 'watchthis'          => 'Бо арынны хайгаараар',
 'savearticle'        => 'Арынны шыгжаар',
@@ -298,8 +289,8 @@ $1',
 'showpreview'        => 'Чижеглей көөр',
 'showdiff'           => 'Өскерлиишкиннерни көргүзер',
 'missingcommenttext' => 'Комментарийни адаанда чогаадыңар.',
-'summary-preview'    => 'Түңнелдү чижеглей көөр',
-'subject-preview'    => 'Кол сөс чижеглей көөр',
+'summary-preview'    => 'Түңнелдү чижеглей көөр:',
+'subject-preview'    => 'Кол сөс чижеглей көөр:',
 'nosuchsectiontitle' => 'Ындыг бөлгүм чок',
 'loginreqlink'       => 'кирер',
 'accmailtitle'       => 'Чажыт сөс чоргустунган.',
@@ -364,8 +355,6 @@ $1',
 'prefs-rc'           => 'Дээм чаагы өскерлиишкиннер',
 'prefs-watchlist'    => 'Хайгаарылга даңзызы',
 'saveprefs'          => 'Шыгжаар',
-'oldpassword'        => 'Эгри чажыт сөс:',
-'newpassword'        => 'Чаа чажыт сөс:',
 'textboxsize'        => 'Өскертир',
 'rows'               => 'Одуруглар:',
 'columns'            => 'Баганалар:',
@@ -417,15 +406,15 @@ $1',
 'upload-file-error' => 'Иштики алдаг',
 'upload-misc-error' => 'Билбес кииреринге алдаг',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'               => 'файл',
-'imagelist'             => 'Файл даңзызы',
-'imagelist_name'        => 'Ат',
-'imagelist_user'        => 'Ажыглакчы',
-'imagelist_size'        => 'Хемчээл',
-'imagelist_description' => 'Тодарадып бижээни',
+'listfiles'             => 'Файл даңзызы',
+'listfiles_name'        => 'Ат',
+'listfiles_user'        => 'Ажыглакчы',
+'listfiles_size'        => 'Хемчээл',
+'listfiles_description' => 'Тодарадып бижээни',
 
-# Image description page
+# File description page
 'filehist'           => 'Файлдың төөгүзү',
 'filehist-deleteall' => 'шуптуну ап каар',
 'filehist-deleteone' => 'мону ап каар',
@@ -620,6 +609,9 @@ $1',
 'allmessagesdefault' => 'Ниити сөзүглел',
 'allmessagescurrent' => 'Амгы сөзүглел',
 
+# Special:Import
+'import-comment' => 'Комментарий:',
+
 # Import log
 'import-logentry-upload-detail' => '$1 үндүрери(лер)',
 
@@ -654,6 +646,14 @@ $1',
 # Attribution
 'anonymous' => '{{grammar:genitive|{{SITENAME}}}} ат эвес ажыглакчызы(лары)',
 
+# Skin names
+'skinname-standard'    => 'Classic',
+'skinname-nostalgia'   => 'Nostalgia',
+'skinname-cologneblue' => 'Cologne Blue',
+'skinname-monobook'    => 'Моно-Ном',
+'skinname-myskin'      => 'MySkin',
+'skinname-chick'       => 'Chick',
+
 # Image deletion
 'filedelete-missing' => '"$1" деп файл чок, ынчангаш ол ап калдынмас.',
 
@@ -661,7 +661,7 @@ $1',
 'previousdiff' => '← Бүрүнгү ылгал',
 'nextdiff'     => 'Соонда ылгал →',
 
-# Special:NewImages
+# Special:NewFiles
 'showhidebots' => '(боцду $1)',
 'noimages'     => 'Чуруклар чок.',
 'ilsubmit'     => 'Дилээр',

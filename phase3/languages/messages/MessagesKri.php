@@ -108,8 +108,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Boht {{SITENAME}}',
 'aboutpage'            => 'Project:Boht',
-'bugreports'           => 'Wetin noh de wok',
-'bugreportspage'       => 'Project:Wetin noh de wok',
 'copyright'            => 'Dis kontehnt-im prais noh pas $1 .',
 'copyrightpagename'    => '{{wehbsait-im nem}} kohpirait',
 'disclaimers'          => 'Disklema-dehm',
@@ -245,7 +243,7 @@ Mehmba se sohmtehm dehm indeks-dehm noh ohp-tu-det {{SITENAME}}.',
 'uploadnologin'   => 'Yu noh kam insai di sait yet',
 'watchthisupload' => 'Wach dis pej-ya',
 
-# Image description page
+# File description page
 'filehist-deleteone' => 'ires',
 'filehist-datetime'  => 'Det/Taim',
 'filehist-thumb'     => 'Tohmnel',
@@ -366,7 +364,7 @@ Na im source nohmoh yu go ebul luk.',
 'tooltip-compareselectedversions' => 'Luk wetin difrehnt pan dehm tu vazhon-dehm we yu dohn chuz',
 'tooltip-watch'                   => 'Put dis pej-ya na yu list foh wach',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Luk foh am',
 
 # 'all' in various places, this might be different for inflected languages

@@ -15,12 +15,15 @@
  * @author Boivie
  * @author Cerealito
  * @author Clerc
+ * @author Crazymadlover
  * @author Cvmontuy
+ * @author David0811
  * @author Dmcdevit
  * @author Drini
  * @author Dvortygirl
  * @author Fluence
  * @author Icvav
+ * @author Imre
  * @author Jatrobat
  * @author Jurock
  * @author Lin linao
@@ -32,6 +35,7 @@
  * @author Piolinfax
  * @author Platonides
  * @author Remember the dot
+ * @author Richard Wolf VI
  * @author Sanbec
  * @author Spacebirdy
  * @author Technorum
@@ -41,28 +45,28 @@
  * @author לערי ריינהארט
  */
 
-$skinNames = array(
-	'standard' => 'Estándar',
-);
 $namespaceNames = array(
-	NS_MEDIA          => 'Media',
-	NS_SPECIAL        => 'Especial',
-	NS_MAIN           => '',
-	NS_TALK           => 'Discusión',
-	NS_USER           => 'Usuario',
-	NS_USER_TALK      => 'Usuario_Discusión',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => '$1_Discusión',
-	NS_IMAGE          => 'Imagen',
-	NS_IMAGE_TALK     => 'Imagen_Discusión',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'MediaWiki_Discusión',
-	NS_TEMPLATE       => 'Plantilla',
-	NS_TEMPLATE_TALK  => 'Plantilla_Discusión',
-	NS_HELP           => 'Ayuda',
-	NS_HELP_TALK      => 'Ayuda_Discusión',
-	NS_CATEGORY       => 'Categoría',
-	NS_CATEGORY_TALK  => 'Categoría_Discusión',
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Especial',
+	NS_TALK             => 'Discusión',
+	NS_USER             => 'Usuario',
+	NS_USER_TALK        => 'Usuario_Discusión',
+	NS_PROJECT_TALK     => '$1_Discusión',
+	NS_FILE             => 'Archivo',
+	NS_FILE_TALK        => 'Archivo_Discusión',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_Discusión',
+	NS_TEMPLATE         => 'Plantilla',
+	NS_TEMPLATE_TALK    => 'Plantilla_Discusión',
+	NS_HELP             => 'Ayuda',
+	NS_HELP_TALK        => 'Ayuda_Discusión',
+	NS_CATEGORY         => 'Categoría',
+	NS_CATEGORY_TALK    => 'Categoría_Discusión',
+);
+
+$namespaceAliases = array(
+	'Imagen' => NS_FILE,
+	'Imagen_Discusión' => NS_FILE_TALK,
 );
 
 $specialPageAliases = array(
@@ -76,7 +80,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Seguimiento', 'Lista de seguimiento' ),
 	'Recentchanges'             => array( 'CambiosRecientes', 'Cambios recientes' ),
 	'Upload'                    => array( 'SubirArchivo', 'Subir archivo' ),
-	'Imagelist'                 => array( 'ListaImágenes', 'Lista de imágenes' ),
+	'Listfiles'                 => array( 'ListaImágenes', 'Lista de imágenes' ),
 	'Newimages'                 => array( 'NuevasImágenes', 'Nuevas imágenes' ),
 	'Listusers'                 => array( 'ListaUsuarios', 'Lista de usuarios' ),
 	'Listgrouprights'           => array( 'ListaDerechosGrupos', 'Derechos de grupos de usuarios' ),
@@ -308,7 +312,7 @@ $messages = array(
 'mytalk'         => 'Mi discusión',
 'anontalk'       => 'Discusión para esta IP',
 'navigation'     => 'Navegación',
-'and'            => 'y',
+'and'            => '&#32;y',
 
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
@@ -371,8 +375,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Acerca de {{SITENAME}}',
 'aboutpage'            => 'Project:Acerca de',
-'bugreports'           => 'Informes de error de software',
-'bugreportspage'       => 'Project:Informes de error',
 'copyright'            => 'El contenido está disponible bajo los términos de la <i>$1</i>',
 'copyrightpagename'    => 'Copyright de {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Derechos de autor',
@@ -400,7 +402,7 @@ $messages = array(
 'versionrequired'     => 'La versión $1 de MediaWiki es necesaria para utilizar esta página',
 'versionrequiredtext' => 'Se necesita la versión $1 de MediaWiki para utilizar esta página. Para más información, consulte [[Special:Version|la página de versión]]',
 
-'ok'                      => 'OK',
+'ok'                      => 'Aceptar',
 'retrievedfrom'           => 'Obtenido de "$1"',
 'youhavenewmessages'      => 'Tiene $1 ($2).',
 'newmessageslink'         => 'mensajes nuevos',
@@ -491,7 +493,8 @@ Por favor, avisa a un [[Special:ListUsers/sysop|administrador]], tomando nota de
 'cannotdelete'         => 'No se pudo borrar la página o archivo especificado.
 Alguien puede haberla borrado antes.',
 'badtitle'             => 'Título incorrecto',
-'badtitletext'         => 'El título de la página solicitada esta vacío, no es válido, o es un enlace interlenguaje o interwiki incorrecto.',
+'badtitletext'         => 'El título de la página solicitada está vacío, no es válido, o es un enlace interidioma o interwiki incorrecto.
+Puede que contenga uno o más caracteres que no se pueden usar en los títulos.',
 'perfcached'           => 'Los siguientes datos están en caché y por tanto pueden estar desactualizados:',
 'perfcachedts'         => 'Estos datos están almacenados. Su última actualización fue el $1.',
 'querypage-no-updates' => 'Actualmente las actualizaciones de esta página están desactivadas. Estos datos no serán actualizados a corto plazo.',
@@ -533,7 +536,7 @@ Tu cuenta ha sido creada.
 No olvides personalizar [[Special:Preferences|tus preferencias]].',
 'loginpagetitle'             => 'Registrarse/Entrar',
 'yourname'                   => 'Su nombre de usuario',
-'yourpassword'               => 'Su contraseña',
+'yourpassword'               => 'Contraseña:',
 'yourpasswordagain'          => 'Repita su contraseña',
 'remembermypassword'         => 'Quiero que me recuerden entre sesiones.',
 'yourdomainname'             => 'Su dominio',
@@ -587,7 +590,6 @@ Verifique su deletreo, o [[Special:UserLogin/signup|cree una nueva cuenta]].',
 'passwordremindertitle'      => 'Recordatorio de contraseña de {{SITENAME}}',
 'passwordremindertext'       => 'Alguien (probablemente tú, desde la dirección IP $1) solicitó que te enviáramos una nueva contraseña para tu cuenta en {{SITENAME}} ($4).
 Se ha creado la siguiente contraseña temporal para el usuario «$2»: «$3»
-Ahora deberías iniciar sesión y cambiar tu contraseña.
 
 Si fue otro quien solicitó este mensaje o has recordado tu contraseña y ya no deseas cambiarla, puedes ignorar este mensaje y seguir usando tu contraseña original.',
 'noemail'                    => 'No hay una dirección de correo electrónico registrada para "$1".',
@@ -619,15 +621,22 @@ Puedes ignorar este mensaje si esta cuenta fue creado erróneamente.',
 'loginlanguagelabel'         => 'Idioma: $1',
 
 # Password reset dialog
-'resetpass'               => 'Restablecer la contraseña de usuario',
-'resetpass_announce'      => 'Has iniciado sesión con una contraseña temporal que fue enviada por correo electrónico. Por favor, ingresa una nueva contraseña aquí:',
-'resetpass_text'          => '<!-- Añada texto aquí -->',
-'resetpass_header'        => 'Restablecer contraseña',
-'resetpass_submit'        => 'Cambiar la contraseña e identificarse',
-'resetpass_success'       => 'Se ha cambiado su contraseña. Autenticándole...',
-'resetpass_bad_temporary' => 'Contraseña temporal no válida. Puede que ya hayas cambiado tu contraseña o que hayas solicitado el envío de otra.',
-'resetpass_forbidden'     => 'No se puede cambiar contraseñas',
-'resetpass_missing'       => 'No hay datos en el formulario.',
+'resetpass'                 => 'Cambiar la contraseña',
+'resetpass_announce'        => 'Has iniciado sesión con una contraseña temporal que fue enviada por correo electrónico. Por favor, ingresa una nueva contraseña aquí:',
+'resetpass_text'            => '<!-- Añada texto aquí -->',
+'resetpass_header'          => 'Cambiar la contraseña',
+'oldpassword'               => 'Contraseña antigua:',
+'newpassword'               => 'Contraseña nueva:',
+'retypenew'                 => 'Confirme la nueva contraseña:',
+'resetpass_submit'          => 'Cambiar la contraseña e identificarse',
+'resetpass_success'         => 'Se ha cambiado su contraseña. Autenticándole...',
+'resetpass_bad_temporary'   => 'Contraseña temporal no válida. Puede que ya hayas cambiado tu contraseña o que hayas solicitado el envío de otra.',
+'resetpass_forbidden'       => 'No se puede cambiar contraseñas',
+'resetpass-no-info'         => 'Debes identificarte para acceder directamente a esta página.',
+'resetpass-submit-loggedin' => 'Cambiar contraseña',
+'resetpass-wrong-oldpass'   => 'La contraseña antigua no es correcta.
+Puede que ya hayas cambiado la contraseña o que hayas pedido una temporal.',
+'resetpass-temp-password'   => 'Contraseña temporal:',
 
 # Edit page toolbar
 'bold_sample'     => 'Texto en negrita',
@@ -652,8 +661,8 @@ Puedes ignorar este mensaje si esta cuenta fue creado erróneamente.',
 'hr_tip'          => 'Línea horizontal (utilícela con moderación)',
 
 # Edit pages
-'summary'                          => 'Resumen',
-'subject'                          => 'Tema/título',
+'summary'                          => 'Resumen:',
+'subject'                          => 'Tema/título:',
 'minoredit'                        => 'Esta es una edición menor',
 'watchthis'                        => 'Vigilar este artículo',
 'savearticle'                      => 'Grabar la página',
@@ -665,8 +674,8 @@ Puedes ignorar este mensaje si esta cuenta fue creado erróneamente.',
 'missingsummary'                   => "'''Atención:''' No has escrito un resumen de edición. Si haces clic nuevamente en «{{MediaWiki:Savearticle}}» tu edición se grabará sin él.",
 'missingcommenttext'               => 'Por favor introduce texto debajo.',
 'missingcommentheader'             => "'''Atención:''' No has escrito un título para este comentario. Si haces clic nuevamente en Grabar tu edición se grabará sin él.",
-'summary-preview'                  => 'Previsualización del resumen',
-'subject-preview'                  => 'Previsualización del tema/título',
+'summary-preview'                  => 'Previsualización del resumen:',
+'subject-preview'                  => 'Previsualización del tema/título:',
 'blockedtitle'                     => 'El usuario está bloqueado',
 'blockedtext'                      => "<big>'''Tu nombre de usuario o dirección IP ha sido bloqueada.'''</big>
 
@@ -811,7 +820,7 @@ Ese o esos parámetros han sido omitidos.',
 'parser-template-recursion-depth-warning' => 'Se ha excedido el límite de recursión de plantillas ($1)',
 
 # "Undo" feature
-'undo-success' => 'La edición puede deshacerse. Antes de deshacer la edición, comprueba la siguiente comparación para verificar que realmente es lo que quiere hacer, y entonces guarde los cambios para así deshacer la edición.',
+'undo-success' => 'La edición puede deshacerse. Antes de deshacer la edición, comprueba la siguiente comparación para verificar que realmente es lo que quieres hacer, y entonces guarda los cambios para así deshacer la edición.',
 'undo-failure' => 'No se puede deshacer la edición ya que otro usuario ha realizado una edición intermedia.',
 'undo-norev'   => 'La edición no puede ser deshecha porque no existe o ha sido borrada.',
 'undo-summary' => 'Deshecha la edición $1 de [[Special:Contributions/$2|$2]] ([[User talk:$2|disc.]])',
@@ -1021,12 +1030,12 @@ Nota que usar los enlaces de navegación borrará las selecciones de esta column
 'viewprevnext'                     => 'Ver ($1) ($2) ($3).',
 'searchmenu-legend'                => 'Opciones de búsqueda',
 'searchmenu-exists'                => "'''Hay una página llamada «[[$1]]» en esta wiki'''",
-'searchmenu-new'                   => "'''¡[[:$1|Crear]] la página «[[:$1]]» en esta wiki!'''",
+'searchmenu-new'                   => "'''¡Crear la página «[[:$1]]» en esta wiki!'''",
 'searchhelp-url'                   => 'Help:Ayuda',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Otras páginas con este prefijo]]',
-'searchprofile-articles'           => 'Páginas',
-'searchprofile-articles-and-proj'  => 'Páginas y proyecto',
-'searchprofile-project'            => 'Proyecto',
+'searchprofile-articles'           => 'Páginas de contenido',
+'searchprofile-articles-and-proj'  => 'Páginas de contenido y del proyecto',
+'searchprofile-project'            => 'Páginas del proyecto',
 'searchprofile-images'             => 'Archivos',
 'searchprofile-everything'         => 'Todo',
 'searchprofile-advanced'           => 'Avanzado',
@@ -1041,9 +1050,9 @@ Nota que usar los enlaces de navegación borrará las selecciones de esta column
 'search-result-score'              => 'Relevancia: $1%',
 'search-redirect'                  => '(redirige a $1)',
 'search-section'                   => '(sección $1)',
-'search-suggest'                   => 'Dice usted: $1',
+'search-suggest'                   => 'Quizás quieres buscar: $1',
 'search-interwiki-caption'         => 'Proyectos hermanos',
-'search-interwiki-default'         => '$1 resultados:',
+'search-interwiki-default'         => 'Resultados de $1:',
 'search-interwiki-more'            => '(más)',
 'search-mwsuggest-enabled'         => 'con sugerencias',
 'search-mwsuggest-disabled'        => 'sin sugerencias',
@@ -1068,68 +1077,73 @@ Las búsquedas fallidas suelen producirse al buscar palabras comunes como «la»
 'searchdisabled'                   => 'Las búsquedas en {{SITENAME}} está temporalmente deshabilitadas. Mientras tanto puede buscar mediante buscadores externos, pero tenga en cuenta que sus índices relativos a {{SITENAME}} pueden estar desactualizados.',
 
 # Preferences page
-'preferences'              => 'Preferencias',
-'mypreferences'            => 'Mis preferencias',
-'prefs-edits'              => 'Cantidad de ediciones:',
-'prefsnologin'             => 'No está identificado',
-'prefsnologintext'         => 'Debe estar <span class="plainlinks">[{{fullurl:Especial:UserLogin|returnto=$1}} autenticado]</span> para cambiar las preferencias de usuario.',
-'prefsreset'               => 'Las preferencias han sido restauradas a los valores por defecto.',
-'qbsettings'               => 'Preferencias de "Quickbar"',
-'qbsettings-none'          => 'Ninguna',
-'qbsettings-fixedleft'     => 'Fija a la izquierda',
-'qbsettings-fixedright'    => 'Fija a la derecha',
-'qbsettings-floatingleft'  => 'Flotante a la izquierda',
-'qbsettings-floatingright' => 'Flotante a la derecha',
-'changepassword'           => 'Cambiar la contraseña',
-'skin'                     => 'Apariencia',
-'skin-preview'             => 'Ver cómo queda',
-'math'                     => 'Fórmulas',
-'dateformat'               => 'Formato de fecha',
-'datedefault'              => 'Sin preferencia',
-'datetime'                 => 'Fecha y hora',
-'math_failure'             => 'No se pudo entender',
-'math_unknown_error'       => 'error desconocido',
-'math_unknown_function'    => 'función desconocida',
-'math_lexing_error'        => 'error léxico',
-'math_syntax_error'        => 'error de sintaxis',
-'math_image_error'         => 'La conversión a PNG ha fallado; comprueba que latex, dvips, gs, y convert estén instalados correctamente',
-'math_bad_tmpdir'          => 'No se puede escribir o crear el directorio temporal de <em>math</em>',
-'math_bad_output'          => 'No se puede escribir o crear el directorio de salida de <em>math</em>',
-'math_notexvc'             => 'Falta el ejecutalbe de <strong>texvc</strong>. Por favor, lea <em>math/README</em> para configurarlo.',
-'prefs-personal'           => 'Datos personales',
-'prefs-rc'                 => 'Cambios recientes',
-'prefs-watchlist'          => 'Seguimiento',
-'prefs-watchlist-days'     => 'Número de días a mostrar en la lista de seguimiento:',
-'prefs-watchlist-edits'    => 'Número de ediciones a mostrar en la lista extendida:',
-'prefs-misc'               => 'Miscelánea',
-'saveprefs'                => 'Grabar preferencias',
-'resetprefs'               => 'Restaurar preferencias por defecto',
-'oldpassword'              => 'Contraseña antigua:',
-'newpassword'              => 'Contraseña nueva:',
-'retypenew'                => 'Confirme la nueva contraseña:',
-'textboxsize'              => 'Edición',
-'rows'                     => 'Filas:',
-'columns'                  => 'Columnas:',
-'searchresultshead'        => 'Búsquedas',
-'resultsperpage'           => 'Resultados por página:',
-'contextlines'             => 'Número de líneas de contexto por resultado',
-'contextchars'             => 'Caracteres de contexto por línea',
-'stub-threshold'           => 'Límite para formato de <a href="#" class="stub">enlace a esbozo</a> (bytes):',
-'recentchangesdays'        => 'Días a mostrar en cambios recientes:',
-'recentchangescount'       => 'Número de títulos en cambios recientes',
-'savedprefs'               => 'Sus preferencias han sido grabadas.',
-'timezonelegend'           => 'Huso horario',
-'timezonetext'             => '¹Indique el número de horas de diferencia entre su hora local y la hora del servidor (UTC).',
-'localtime'                => 'Hora local',
-'timezoneoffset'           => 'Diferencia¹',
-'servertime'               => 'La hora en el servidor es',
-'guesstimezone'            => 'Rellenar a partir de la hora del navegador',
-'allowemail'               => 'Habilitar la recepción de correo de otros usuarios',
-'prefs-searchoptions'      => 'Opciones de búsqueda',
-'prefs-namespaces'         => 'Espacios de nombres',
-'defaultns'                => 'Buscar en estos espacios de nombres por defecto:',
-'default'                  => 'por defecto',
-'files'                    => 'Archivos',
+'preferences'               => 'Preferencias',
+'mypreferences'             => 'Mis preferencias',
+'prefs-edits'               => 'Cantidad de ediciones:',
+'prefsnologin'              => 'No está identificado',
+'prefsnologintext'          => 'Debe estar <span class="plainlinks">[{{fullurl:Especial:UserLogin|returnto=$1}} autenticado]</span> para cambiar las preferencias de usuario.',
+'prefsreset'                => 'Las preferencias han sido restauradas a los valores por defecto.',
+'qbsettings'                => 'Preferencias de "Quickbar"',
+'qbsettings-none'           => 'Ninguna',
+'qbsettings-fixedleft'      => 'Fija a la izquierda',
+'qbsettings-fixedright'     => 'Fija a la derecha',
+'qbsettings-floatingleft'   => 'Flotante a la izquierda',
+'qbsettings-floatingright'  => 'Flotante a la derecha',
+'changepassword'            => 'Cambiar la contraseña',
+'skin'                      => 'Apariencia',
+'skin-preview'              => 'Ver cómo queda',
+'math'                      => 'Fórmulas',
+'dateformat'                => 'Formato de fecha',
+'datedefault'               => 'Sin preferencia',
+'datetime'                  => 'Fecha y hora',
+'math_failure'              => 'No se pudo entender',
+'math_unknown_error'        => 'error desconocido',
+'math_unknown_function'     => 'función desconocida',
+'math_lexing_error'         => 'error léxico',
+'math_syntax_error'         => 'error de sintaxis',
+'math_image_error'          => 'La conversión a PNG ha fallado; comprueba que latex, dvips, gs, y convert estén instalados correctamente',
+'math_bad_tmpdir'           => 'No se puede escribir o crear el directorio temporal de <em>math</em>',
+'math_bad_output'           => 'No se puede escribir o crear el directorio de salida de <em>math</em>',
+'math_notexvc'              => 'Falta el ejecutalbe de <strong>texvc</strong>. Por favor, lea <em>math/README</em> para configurarlo.',
+'prefs-personal'            => 'Datos personales',
+'prefs-rc'                  => 'Cambios recientes',
+'prefs-watchlist'           => 'Seguimiento',
+'prefs-watchlist-days'      => 'Número de días a mostrar en la lista de seguimiento:',
+'prefs-watchlist-days-max'  => '(máximo 7 días)',
+'prefs-watchlist-edits'     => 'Número de ediciones a mostrar en la lista extendida:',
+'prefs-watchlist-edits-max' => '(máximo: 1000)',
+'prefs-misc'                => 'Miscelánea',
+'prefs-resetpass'           => 'Cambiar contraseña',
+'saveprefs'                 => 'Guardar',
+'resetprefs'                => 'Restaurar preferencias por defecto',
+'textboxsize'               => 'Edición',
+'prefs-edit-boxsize'        => 'Tamaño de la ventana de edición.',
+'rows'                      => 'Filas:',
+'columns'                   => 'Columnas:',
+'searchresultshead'         => 'Búsquedas',
+'resultsperpage'            => 'Resultados por página:',
+'contextlines'              => 'Número de líneas de contexto por resultado',
+'contextchars'              => 'Caracteres de contexto por línea',
+'stub-threshold'            => 'Límite para formato de <a href="#" class="stub">enlace a esbozo</a> (bytes):',
+'recentchangesdays'         => 'Días a mostrar en cambios recientes:',
+'recentchangesdays-max'     => '(máximo {{PLURAL:$1|un día|$1 días}})',
+'recentchangescount'        => 'Número de títulos en cambios recientes',
+'savedprefs'                => 'Sus preferencias han sido grabadas.',
+'timezonelegend'            => 'Huso horario',
+'timezonetext'              => '¹Indique el número de horas de diferencia entre su hora local y la hora del servidor (UTC).',
+'localtime'                 => 'Hora local:',
+'timezoneselect'            => 'Zona horaria:',
+'timezoneuseserverdefault'  => 'Usar la hora del servidor',
+'timezoneuseoffset'         => 'Otra (especifica la diferencia horaria)',
+'timezoneoffset'            => 'Diferencia¹:',
+'servertime'                => 'Hora del servidor:',
+'guesstimezone'             => 'Rellenar a partir de la hora del navegador',
+'allowemail'                => 'Habilitar la recepción de correo de otros usuarios',
+'prefs-searchoptions'       => 'Opciones de búsqueda',
+'prefs-namespaces'          => 'Espacios de nombres',
+'defaultns'                 => 'Buscar en estos espacios de nombres por defecto:',
+'default'                   => 'por defecto',
+'files'                     => 'Archivos',
 
 # User rights
 'userrights'                  => 'Configuración de permisos de usuarios', # Not used as normal message but as header for the special page itself
@@ -1186,6 +1200,7 @@ Las búsquedas fallidas suelen producirse al buscar palabras comunes como «la»
 'right-move'                 => 'Trasladar páginas',
 'right-move-subpages'        => 'Trasladar páginas con sus subpáginas',
 'right-move-rootuserpages'   => 'Mover páginas del usuario raíz',
+'right-movefile'             => 'Mover archivos',
 'right-suppressredirect'     => 'No crear una redirección en el viejo nombre al trasladar una página',
 'right-upload'               => 'Subir archivos',
 'right-reupload'             => 'Subir una nueva versión de un archivo existente',
@@ -1246,6 +1261,7 @@ Las búsquedas fallidas suelen producirse al buscar palabras comunes como «la»
 'action-move'                 => 'mover esta página',
 'action-move-subpages'        => 'mover esta página y sus subpáginas',
 'action-move-rootuserpages'   => 'mover páginas del usuario raíz',
+'action-movefile'             => 'mover este archivo',
 'action-upload'               => 'subir este archivo',
 'action-reupload'             => 'remplazar este archivo existente',
 'action-reupload-shared'      => 'remplazar este archivo existente en un depósito compartido',
@@ -1320,13 +1336,13 @@ Las búsquedas fallidas suelen producirse al buscar palabras comunes como «la»
 'upload_directory_read_only'  => 'El servidor web no puede escribir en el directorio de subida de archivos ($1).',
 'uploaderror'                 => 'Error al intentar subir archivo',
 'uploadtext'                  => "Utilize el siguiente formulario para subir archivos.
-Para ver o buscar archivos subidos con anterioridad, ve a la [[Special:ImageList|lista de archivos subidos]].
+Para ver o buscar archivos subidos con anterioridad, ve a la [[Special:FileList|lista de archivos subidos]].
 Los archivos subidos quedarán registrado además en el [[Special:Log/upload|registro de archivos subidos]] y los borrados en el [[Special:Log/delete|registro de borrados]].
 
 Para incluir un archivo en una página, use un enlace como los que siguen
 
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki></tt>''' para usar el fichero en tamaño completo
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|200px|thumb|left|texto descriptivo]]</nowiki></tt>''' para una versión de 200 pixeles de ancho en una caja en el margen izquierdo con 'texto descriptivo' como descripción
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki></tt>''' para usar el fichero en tamaño completo
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|200px|thumb|left|texto descriptivo]]</nowiki></tt>''' para una versión de 200 pixeles de ancho en una caja en el margen izquierdo con 'texto descriptivo' como descripción
 * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki></tt>''' para enlazar directamente al fichero sin mostrarlo.",
 'upload-permitted'            => 'Tipos de archivo permitidos: $1.',
 'upload-preferred'            => 'Tipos de archivo aconsejados: $1.',
@@ -1334,7 +1350,7 @@ Para incluir un archivo en una página, use un enlace como los que siguen
 'uploadlog'                   => 'registro de subidas',
 'uploadlogpage'               => 'Subidas de archivos',
 'uploadlogpagetext'           => 'Abajo hay una lista de los últimos archivos subidos.
-Mira la [[Special:NewImages|galería de archivos nuevos]] para una descripción visual',
+Mira la [[Special:NewFiles|galería de archivos nuevos]] para una descripción visual',
 'filename'                    => 'Nombre del archivo',
 'filedesc'                    => 'Sumario',
 'fileuploadsummary'           => 'Descripción:',
@@ -1347,6 +1363,7 @@ Mira la [[Special:NewImages|galería de archivos nuevos]] para una descripción 
 'illegalfilename'             => 'El nombre de archivo «$1» contiene caracteres que no están permitidos en títulos de páginas. Por favor, renombra el archivo e intenta volver a subirlo.',
 'badfilename'                 => 'El nombre de la imagen se ha cambiado a "$1".',
 'filetype-badmime'            => 'No se permite subir archivos de tipo MIME "$1".',
+'filetype-bad-ie-mime'        => 'No se puede subir este fichero porque Internet Explorer podría considerarlo como «$1», que es un tipo de fichero deshabilitado y potencialmente peligroso.',
 'filetype-unwanted-type'      => "'''«.$1»''' no está entre los tipos de fichero aconsejados.
 {{PLURAL:$3|El único tipo aconsejado es|Los tipos aconsejados son}} $2.",
 'filetype-banned-type'        => "'''«.$1»''' no está entre los tipos de fichero permitidos.
@@ -1368,10 +1385,11 @@ Si el archivo comprobado es la misma imagen a tamaño original no es necesario s
 'file-thumbnail-no'           => 'El nombre del archivo comienza con <strong><tt>$1</tt></strong>.
 Parece ser una imagen de tamaño reducido <i>(thumbnail)</i>.
 Si tiene esta imagen a toda resolución súbala, si no, por favor cambie el nombre del archivo.',
-'fileexists-forbidden'        => 'Ya existe un archivo con este nombre. Por favor, cambie el nombre del archivo y vuelva a subirlo. [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Ya existe un archivo con este nombre. Por favor, cambie el nombre del archivo y vuelva a subirlo. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Ya existe un archivo con este nombre en el repositorio compartido.
-Si todavía quiere subir su archivo, por favor, regrese a la página anterior y use otro nombre. [[Image:$1|thumb|center|$1]]',
+Si todavía quiere subir su archivo, por favor, regrese a la página anterior y use otro nombre. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Este archivo es un duplicado {{PLURAL:$1|del siguiente|de los siguientes}}:',
+'file-deleted-duplicate'      => 'Un archivo idéntico a este ([[$1]]) ha sido borrado con anterioridad. Debes comprobar el historial de borrado del archivo ante de volver a subirlo.',
 'successfulupload'            => 'Subida con éxito',
 'uploadwarning'               => 'Advertencia de subida de archivo',
 'savefile'                    => 'Guardar archivo',
@@ -1414,20 +1432,21 @@ Por favor, elige un nombre más descriptivo.',
 'upload_source_url'  => ' (una URL válida y accesible públicamente)',
 'upload_source_file' => ' (un archivo en su ordenador)',
 
-# Special:ImageList
-'imagelist-summary'     => 'Esta página muestra todos los archivos subidos.
+# Special:ListFiles
+'listfiles-summary'     => 'Esta página muestra todos los archivos subidos.
 Por defecto, el último subido se muestra al principio de la lista.
 Un click sobre el encabezamiento de la columna cambia el orden.',
-'imagelist_search_for'  => 'Buscar por nombre de imagen:',
+'listfiles_search_for'  => 'Buscar por nombre de imagen:',
 'imgfile'               => 'archivo',
-'imagelist'             => 'Lista de imágenes',
-'imagelist_date'        => 'Fecha',
-'imagelist_name'        => 'Nombre',
-'imagelist_user'        => 'Usuario',
-'imagelist_size'        => 'Tamaño (bytes)',
-'imagelist_description' => 'Descripción',
+'listfiles'             => 'Lista de archivos',
+'listfiles_date'        => 'Fecha',
+'listfiles_name'        => 'Nombre',
+'listfiles_user'        => 'Usuario',
+'listfiles_size'        => 'Tamaño (bytes)',
+'listfiles_description' => 'Descripción',
+'listfiles_count'       => 'Versiones',
 
-# Image description page
+# File description page
 'filehist'                       => 'Historial del archivo',
 'filehist-help'                  => 'Haga clic sobre una fecha/hora para ver el
 archivo a esa fecha.',
@@ -1469,11 +1488,11 @@ También puedes consultar la [[Special:WhatLinksHere/$2|lista completa]].',
 # File reversion
 'filerevert'                => 'Revertir $1',
 'filerevert-legend'         => 'Reversión de archivos',
-'filerevert-intro'          => "Estás revirtiendo '''[[Media:$1|$1]]''' a la [$4 version del $2 a las $3].",
+'filerevert-intro'          => "Estás revirtiendo '''[[Media:$1|$1]]''' a la [$4 versión del $2 a las $3].",
 'filerevert-comment'        => 'Comentario:',
-'filerevert-defaultcomment' => 'Revirtiendo a la versión subida el $1 a las $2',
+'filerevert-defaultcomment' => 'Revertido a la versión subida el $1 a las $2',
 'filerevert-submit'         => 'Revertir',
-'filerevert-success'        => "'''[[Media:$1|$1]]''' ha sido revertido a la [$4 version del $2 a las $3].",
+'filerevert-success'        => "'''[[Media:$1|$1]]''' ha sido revertido a la [$4 versión del $2 a las $3].",
 'filerevert-badversion'     => 'No existe version local previa de este archivo con esa marca de tiempo.',
 
 # File deletion
@@ -1521,24 +1540,24 @@ Entrada: contenttype/subtype, p. ej. <tt>image/jpeg</tt>.',
 'randomredirect-nopages' => 'No hay redirecciones en el espacio de nombres «$1».',
 
 # Statistics
-'statistics'                      => 'Estadísticas',
-'statistics-header-pages'         => 'Estadísticas de páginas',
-'statistics-header-edits'         => 'Estadísticas de ediciones',
-'statistics-header-views'         => 'Estadísticas de visitas',
-'statistics-header-users'         => 'Estadísticas de usuario',
-'statistics-articles'             => 'Páginas de contenido',
-'statistics-pages'                => 'Páginas',
-'statistics-pages-tooltip'        => 'Todas las páginas de la wiki, incluyendo discusiones, redirecciones, etc.',
-'statistics-files'                => 'Ficheros subidos',
-'statistics-edits'                => 'Ediciones en páginas desde que {{SITENAME}} fue instalado',
-'statistics-edits-average'        => 'Media de ediciones por página',
-'statistics-views-total'          => 'Visitas totales',
-'statistics-views-peredit'        => 'Visitas por edición',
-'statistics-jobqueue'             => 'Longitud de la [http://www.mediawiki.org/wiki/Manual:Job_queue cola de trabajo]',
-'statistics-users'                => '[[Special:ListUsers|Usuarios]] registrados',
-'statistics-users-active'         => 'Usuarios activos',
-'statistics-users-active-tooltip' => 'Usuarios que han ejecutado una acción en el último mes',
-'statistics-mostpopular'          => 'Páginas más vistas',
+'statistics'                   => 'Estadísticas',
+'statistics-header-pages'      => 'Estadísticas de páginas',
+'statistics-header-edits'      => 'Estadísticas de ediciones',
+'statistics-header-views'      => 'Estadísticas de visitas',
+'statistics-header-users'      => 'Estadísticas de usuario',
+'statistics-articles'          => 'Páginas de contenido',
+'statistics-pages'             => 'Páginas',
+'statistics-pages-desc'        => 'Todas las páginas de la wiki, incluyendo discusiones, redirecciones, etc.',
+'statistics-files'             => 'Ficheros subidos',
+'statistics-edits'             => 'Ediciones en páginas desde que {{SITENAME}} fue instalado',
+'statistics-edits-average'     => 'Media de ediciones por página',
+'statistics-views-total'       => 'Visitas totales',
+'statistics-views-peredit'     => 'Visitas por edición',
+'statistics-jobqueue'          => 'Longitud de la [http://www.mediawiki.org/wiki/Manual:Job_queue cola de trabajo]',
+'statistics-users'             => '[[Special:ListUsers|Usuarios]] registrados',
+'statistics-users-active'      => 'Usuarios activos',
+'statistics-users-active-desc' => 'Usuarios que han ejecutado una acción en {{PLURAL:$1|el último día|los últimos $1 días}}',
+'statistics-mostpopular'       => 'Páginas más vistas',
 
 'disambiguations'      => 'Páginas de desambiguación',
 'disambiguationspage'  => 'Template:Desambiguación',
@@ -1627,6 +1646,7 @@ Cada fila contiene enlaces al segundo y tercer redirect, así como la primera l�
 'booksources-search-legend' => 'Buscar fuentes de libros',
 'booksources-go'            => 'Ir',
 'booksources-text'          => 'Abajo hay una lista de enlaces a otros sitios que venden libros nuevos y usados, puede que contengan más información sobre los libros que estás buscando.',
+'booksources-invalid-isbn'  => 'El número de ISBN no parece ser válido; comprueba los errores copiándolo de la fuente original.',
 
 # Special:Log
 'specialloguserlabel'  => 'Usuario:',
@@ -1704,27 +1724,29 @@ Puede haber información adicional sobre privilegios individuales en [[{{MediaWi
 'listgrouprights-removegroup-all' => 'Puede eliminar todos los grupos',
 
 # E-mail user
-'mailnologin'     => 'Ninguna dirección de envio',
-'mailnologintext' => 'Debes [[Special:UserLogin|iniciar sesión]] y tener una dirección electrónica válida en tus [[Special:Preferences|preferencias]] para enviar un correo electrónico a otros usuarios.',
-'emailuser'       => 'Enviar correo electrónico a este usuario',
-'emailpage'       => 'Correo electrónico a usuario',
-'emailpagetext'   => 'Puedes usar el formulario de abajo para enviar un correo electrónico a este usuario.
+'mailnologin'      => 'Ninguna dirección de envio',
+'mailnologintext'  => 'Debes [[Special:UserLogin|iniciar sesión]] y tener una dirección electrónica válida en tus [[Special:Preferences|preferencias]] para enviar un correo electrónico a otros usuarios.',
+'emailuser'        => 'Enviar correo electrónico a este usuario',
+'emailpage'        => 'Correo electrónico a usuario',
+'emailpagetext'    => 'Puedes usar el formulario de abajo para enviar un correo electrónico a este usuario.
 La dirección electrónica que indicaste en [[Special:Preferences|tus preferencias de usuario]] aparecerá en el remitente para que el destinatario pueda responderte.',
-'usermailererror' => 'El sistema de correo devolvió un error:',
-'defemailsubject' => 'Correo de {{SITENAME}}',
-'noemailtitle'    => 'No hay dirección de correo electrónico',
-'noemailtext'     => 'Este usuario no ha especificado una dirección de correo electrónico válida, o ha elegido no recibir correo electrónico de otros usuarios.',
-'email-legend'    => 'Enviar un correo electrónico a otro usuario de {{SITENAME}}',
-'emailfrom'       => 'De:',
-'emailto'         => 'Para:',
-'emailsubject'    => 'Asunto:',
-'emailmessage'    => 'Mensaje:',
-'emailsend'       => 'Enviar',
-'emailccme'       => 'Enviarme una copia de mi mensaje.',
-'emailccsubject'  => 'Copia de tu mensaje a $1: $2',
-'emailsent'       => 'Correo electrónico enviado',
-'emailsenttext'   => 'Su correo electrónico ha sido enviado.',
-'emailuserfooter' => 'Este correo electrónico fue enviado por $1 a $2 a través de la función «Enviar correo electrónico a este usuario» en {{SITENAME}}.',
+'usermailererror'  => 'El sistema de correo devolvió un error:',
+'defemailsubject'  => 'Correo de {{SITENAME}}',
+'noemailtitle'     => 'No hay dirección de correo electrónico',
+'noemailtext'      => 'Este usuario no ha especificado una dirección de correo electrónico válida.',
+'nowikiemailtitle' => 'correos electrónicos no permitidos',
+'nowikiemailtext'  => 'Este usuario ha elegido no recibir correos electrónicos de otros usuarios.',
+'email-legend'     => 'Enviar un correo electrónico a otro usuario de {{SITENAME}}',
+'emailfrom'        => 'De:',
+'emailto'          => 'Para:',
+'emailsubject'     => 'Asunto:',
+'emailmessage'     => 'Mensaje:',
+'emailsend'        => 'Enviar',
+'emailccme'        => 'Enviarme una copia de mi mensaje.',
+'emailccsubject'   => 'Copia de tu mensaje a $1: $2',
+'emailsent'        => 'Correo electrónico enviado',
+'emailsenttext'    => 'Su correo electrónico ha sido enviado.',
+'emailuserfooter'  => 'Este correo electrónico fue enviado por $1 a $2 a través de la función «Enviar correo electrónico a este usuario» en {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Lista de seguimiento',
@@ -1834,7 +1856,7 @@ Véase $2 para un registro de los borrados recientes.',
 'rollback_short'   => 'Revertir',
 'rollbacklink'     => 'Revertir',
 'rollbackfailed'   => 'No se pudo revertir',
-'cantrollback'     => 'No se pueden revertir las ediciones; el último colaborador es el único autor de este artículo.',
+'cantrollback'     => 'No se pueden revertir las ediciones; el último colaborador es el único autor de esta página.',
 'alreadyrolled'    => 'No se puede revertir la última edición de [[:$1]] hecha por [[User:$2|$2]] ([[User talk:$2|discusión]] | [[Special:Contributions/$2|{{int:contribslink}}]]); alguien más ya ha editado o revertido esa página.
 
 La última edición fue hecha por [[User:$3|$3]] ([[User talk:$3|discusión]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
@@ -1855,7 +1877,7 @@ Por favor, pulsa "Atrás", recarga la página de la que viniste e inténtalo de 
 'protect-title'               => 'Cambiando el nivel de protección de «$1»',
 'prot_1movedto2'              => 'heredando la protección al trasladar [[$1]] a [[$2]]',
 'protect-legend'              => 'Confirmar protección',
-'protectcomment'              => 'Motivo de la protección',
+'protectcomment'              => 'Comentario:',
 'protectexpiry'               => 'Caducidad:',
 'protect_expiry_invalid'      => 'Tiempo de caducidad incorrecto.',
 'protect_expiry_old'          => 'El tiempo de expiración está en el pasado.',
@@ -1910,7 +1932,8 @@ A continuación se muestran las opciones actuales de la página <strong>$1</stro
 'undeletepage'                 => 'Ver y restaurar páginas borradas',
 'undeletepagetitle'            => "'''Las siguientes son las revisiones borradas de [[:$1|$1]]'''.",
 'viewdeletedpage'              => 'Ver páginas borradas',
-'undeletepagetext'             => 'Las siguientes páginas han sido borradas pero aún están en el archivo y pueden ser restauradas. El archivo se puede limpiar periódicamente.',
+'undeletepagetext'             => '{{PLURAL:$1|La siguiente página ha sido borrada pero aún está en el archivo y puede ser restaurada.|Las siguientes $1 páginas han sido borradas pero aún están en el archivo y pueden ser restauradas.}}
+Puede que el archivo se limpie periódicamente.',
 'undelete-fieldset-title'      => 'Restaurar revisiones',
 'undeleteextrahelp'            => "Para restaurar todas las revisiones, deja todas las casillas sin seleccionar y pulsa '''''Restaurar'''''. Para restaurar sólo algunas revisiones, marca las revisiones que quieres restaurar y pulsa '''''Restaurar'''''. Haciendo clic en al botón '''''Cancelar''''', se deseleccionarán todas las casillas y eliminará el comentario que hayas escrito.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|revisión|revisiones}} archivadas',
@@ -1949,6 +1972,8 @@ Puede que ya haya sido restaurado.',
 'undelete-error-long'          => 'Se encontraron errores mientras se restauraba el archivo:
 
 $1',
+'undelete-show-file-confirm'   => '¿Estás seguro que quieres ver una revisión borrada del archivo «<nowiki>$1</nowiki>» del $2 a las $3?',
+'undelete-show-file-submit'    => 'Sí',
 
 # Namespace form on various pages
 'namespace'      => 'Espacio de nombres:',
@@ -2001,10 +2026,10 @@ Esto debería hacerse sólo para prevenir vandalismos, y de
 acuerdo a las [[{{MediaWiki:Policy-url}}|políticas]].
 Explica la razón específica del bloqueo (por ejemplo, citando
 las páginas en particular que han sido objeto de vandalismo).',
-'ipaddress'                       => 'Dirección IP',
+'ipaddress'                       => 'Dirección IP:',
 'ipadressorusername'              => 'Dirección IP o nombre de usuario',
 'ipbexpiry'                       => 'Caduca dentro de',
-'ipbreason'                       => 'Razón',
+'ipbreason'                       => 'Motivo:',
 'ipbreasonotherlist'              => 'Otra razón',
 'ipbreason-dropdown'              => '
 *Motivos comunes de bloqueo
@@ -2061,6 +2086,7 @@ las páginas en particular que han sido objeto de vandalismo).',
 'ipblocklist-no-results'          => 'El nombre de usuario o IP indicado no está bloqueado.',
 'blocklink'                       => 'bloquear',
 'unblocklink'                     => 'desbloquear',
+'change-blocklink'                => 'cambiar bloque',
 'contribslink'                    => 'contribuciones',
 'autoblocker'                     => 'Has sido bloqueado automáticamente porque tu dirección IP ha sido usada recientemente por «[[User:$1|$1]]». La razón esgrimida para bloquear a «[[User:$1|$1]]» fue «$2».',
 'blocklogpage'                    => 'Bloqueos de usuarios',
@@ -2113,14 +2139,13 @@ Sin embargo, está bloqueada como parte del rango $2, que puede ser desbloqueado
 'databasenotlocked'   => 'La base de datos no está bloqueada.',
 
 # Move page
-'move-page'                 => 'Trasladar $1',
-'move-page-legend'          => 'Renombrar página',
-'movepagetext'              => "Usando el siguiente formulario se renombrará una página, moviendo todo su historial al nuevo nombre.
+'move-page'                    => 'Trasladar $1',
+'move-page-legend'             => 'Renombrar página',
+'movepagetext'                 => "Usando el siguiente formulario se renombrará una página, moviendo todo su historial al nuevo nombre.
 El título anterior se convertirá en una redirección al nuevo título.
 Los enlaces al antiguo título de la página no se cambiarán.
-Asegúrate de no dejar  [[Special:DoubleRedirects|redirecciones dobles]] o [[Special:BrokenRedirects|rotas]].
+Asegúrate de no dejar [[Special:DoubleRedirects|redirecciones dobles]] o [[Special:BrokenRedirects|rotas]].
 Tú eres responsable de hacer que los enlaces sigan apuntando adonde se supone que deberían hacerlo.
-
 
 Recuerda que la página '''no''' será renombrada si ya existe una página con el nuevo título, a no ser que sea una página vacía o una redirección sin historial.
 Esto significa que podrás renombrar una página a su título original si has cometido un error, pero que no podrás sobreescribir una página existente.
@@ -2128,56 +2153,60 @@ Esto significa que podrás renombrar una página a su título original si has co
 '''¡ADVERTENCIA!'''
 Este puede ser un cambio drástico e inesperado para una página popular;
 por favor, asegúrate de entender las consecuencias del procedimiento antes de seguir adelante.",
-'movepagetalktext'          => "La página de discusión asociada, si existe, será renombrada automáticamente '''a menos que:'''
+'movepagetalktext'             => "La página de discusión asociada, si existe, será renombrada automáticamente '''a menos que:'''
 *Esté moviendo la página entre espacios de nombres diferentes,
 *Una página de discusión no vacía ya exista con el nombre nuevo, o
 *Desactivase la opción \"Renombrar la página de discusión también\".
 
 En estos casos, deberá trasladar manualmente el contenido de la página de discusión.",
-'movearticle'               => 'Renombrar página',
-'movenologin'               => 'No ha iniciado sesión',
-'movenologintext'           => 'Es necesario ser usuario registrado y [[Special:UserLogin|haber iniciado sesión]] para renombrar una página.',
-'movenotallowed'            => 'No tienes permiso para trasladar páginas.',
-'cant-move-user-page'       => 'No tienes permiso para mover páginas de usuario (excepto subpáginas).',
-'cant-move-to-user-page'    => 'No tienes permiso para mover una página a una página de usuario (excepto a subpáginas de usuario).',
-'newtitle'                  => 'A título nuevo',
-'move-watch'                => 'Vigilar este artículo',
-'movepagebtn'               => 'Renombrar página',
-'pagemovedsub'              => 'Renombrado realizado con éxito',
-'movepage-moved'            => '<big>\'\'\'"$1" ha sido trasladado a "$2".\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'             => 'Ya existe una página con ese nombre o el nombre que ha elegido no es válido. Por favor, elija otro nombre.',
-'cantmove-titleprotected'   => 'No se pueden mover páginas a esta ubicacion, porque se ha protegido la creación de este nuevo título.',
-'talkexists'                => 'La página fue renombrada con éxito, pero la discusión no se pudo mover porque ya existe una en el título nuevo. Por favor incorpore su contenido manualmente.',
-'movedto'                   => 'renombrado a',
-'movetalk'                  => 'Renombrar la página de discusión también, si es aplicable.',
-'move-subpages'             => 'Mover todas las subpáginas si es posible',
-'move-talk-subpages'        => 'Mover todas las subpáginas de discusión, si es posible',
-'movepage-page-exists'      => 'La página $1 ya existe, por lo que no puede ser renombrada automáticamente.',
-'movepage-page-moved'       => 'La página $1 ha sido trasladado a $2.',
-'movepage-page-unmoved'     => 'La página $1 no se ha podido trasladar a $2.',
-'movepage-max-pages'        => 'Se {{PLURAL:$1|ha trasladado un máximo de una página|han trasladado un máximo de $1 páginas}}, y no se van a mover más automáticamente.',
-'1movedto2'                 => '[[$1]] trasladada a [[$2]]',
-'1movedto2_redir'           => '[[$1]] trasladada a [[$2]] sobre una redirección',
-'movelogpage'               => 'Registro de traslados',
-'movelogpagetext'           => 'Abajo se encuentra una lista de páginas trasladadas.',
-'movereason'                => 'Motivo',
-'revertmove'                => 'revertir',
-'delete_and_move'           => 'Borrar y trasladar',
-'delete_and_move_text'      => '==Se necesita borrado==
+'movearticle'                  => 'Renombrar página',
+'movenologin'                  => 'No ha iniciado sesión',
+'movenologintext'              => 'Es necesario ser usuario registrado y [[Special:UserLogin|haber iniciado sesión]] para renombrar una página.',
+'movenotallowed'               => 'No tienes permiso para trasladar páginas.',
+'movenotallowedfile'           => 'No tienes permiso para mover archivos.',
+'cant-move-user-page'          => 'No tienes permiso para mover páginas de usuario (excepto subpáginas).',
+'cant-move-to-user-page'       => 'No tienes permiso para mover una página a una página de usuario (excepto a subpáginas de usuario).',
+'newtitle'                     => 'A título nuevo',
+'move-watch'                   => 'Vigilar este artículo',
+'movepagebtn'                  => 'Renombrar página',
+'pagemovedsub'                 => 'Renombrado realizado con éxito',
+'movepage-moved'               => '<big>\'\'\'"$1" ha sido trasladado a "$2".\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-noredirect'    => 'Se ha suprimido la creación de la redirección.',
+'articleexists'                => 'Ya existe una página con ese nombre o el nombre que ha elegido no es válido. Por favor, elija otro nombre.',
+'cantmove-titleprotected'      => 'No se pueden mover páginas a esta ubicacion, porque se ha protegido la creación de este nuevo título.',
+'talkexists'                   => 'La página fue renombrada con éxito, pero la discusión no se pudo mover porque ya existe una en el título nuevo. Por favor incorpore su contenido manualmente.',
+'movedto'                      => 'renombrado a',
+'movetalk'                     => 'Renombrar la página de discusión también, si es aplicable.',
+'move-subpages'                => 'Mover todas las subpáginas si es posible',
+'move-talk-subpages'           => 'Mover todas las subpáginas de discusión, si es posible',
+'movepage-page-exists'         => 'La página $1 ya existe, por lo que no puede ser renombrada automáticamente.',
+'movepage-page-moved'          => 'La página $1 ha sido trasladado a $2.',
+'movepage-page-unmoved'        => 'La página $1 no se ha podido trasladar a $2.',
+'movepage-max-pages'           => 'Se {{PLURAL:$1|ha trasladado un máximo de una página|han trasladado un máximo de $1 páginas}}, y no se van a mover más automáticamente.',
+'1movedto2'                    => '[[$1]] trasladada a [[$2]]',
+'1movedto2_redir'              => '[[$1]] trasladada a [[$2]] sobre una redirección',
+'move-redirect-suppressed'     => 'redireccionamiento suprimido',
+'movelogpage'                  => 'Registro de traslados',
+'movelogpagetext'              => 'Abajo se encuentra una lista de páginas trasladadas.',
+'movereason'                   => 'Motivo:',
+'revertmove'                   => 'revertir',
+'delete_and_move'              => 'Borrar y trasladar',
+'delete_and_move_text'         => '==Se necesita borrado==
 
 La página de destino ("[[:$1]]") ya existe. ¿Quiere borrarla para permitir al traslado?',
-'delete_and_move_confirm'   => 'Sí, borrar la página',
-'delete_and_move_reason'    => 'Borrada para permitir el traslado',
-'selfmove'                  => 'Los títulos de origen y destino son los mismos. No se puede trasladar un página sobre sí misma.',
-'immobile-source-namespace' => 'No se pueden trasladar páginas en el espacio de nombres «$1»',
-'immobile-target-namespace' => 'No se puede trasladar páginas al espacio de nombres «$1»',
-'immobile-source-page'      => 'Esta página no se puede renombrar.',
-'immobile-target-page'      => 'No se puede trasladar a tal título.',
-'imagenocrossnamespace'     => 'No se puede trasladar el fichero a otro espacio de nombres',
-'imagetypemismatch'         => 'La nueva extensión de archivo no corresponde con su tipo',
-'imageinvalidfilename'      => 'El nombre del fichero de destino no es válido',
-'fix-double-redirects'      => 'Actualizar las redirecciones que apuntan al título original',
-'move-leave-redirect'       => 'Dejar una redirección',
+'delete_and_move_confirm'      => 'Sí, borrar la página',
+'delete_and_move_reason'       => 'Borrada para permitir el traslado',
+'selfmove'                     => 'Los títulos de origen y destino son los mismos. No se puede trasladar un página sobre sí misma.',
+'immobile-source-namespace'    => 'No se pueden trasladar páginas en el espacio de nombres «$1»',
+'immobile-target-namespace'    => 'No se puede trasladar páginas al espacio de nombres «$1»',
+'immobile-target-namespace-iw' => 'Un enlace interwiki no es un destino válido para trasladar una página.',
+'immobile-source-page'         => 'Esta página no se puede renombrar.',
+'immobile-target-page'         => 'No se puede trasladar a tal título.',
+'imagenocrossnamespace'        => 'No se puede trasladar el fichero a otro espacio de nombres',
+'imagetypemismatch'            => 'La nueva extensión de archivo no corresponde con su tipo',
+'imageinvalidfilename'         => 'El nombre del fichero de destino no es válido',
+'fix-double-redirects'         => 'Actualizar las redirecciones que apuntan al título original',
+'move-leave-redirect'          => 'Dejar una redirección',
 
 # Export
 'export'            => 'Exportar páginas',
@@ -2220,9 +2249,12 @@ En el último caso también puedes usar un enlace, por ejemplo [[{{ns:special}}:
 'import-interwiki-text'      => 'Selecciona un wiki y un título de página para importar.
 Las fechas de revisiones y los nombres de editores se preservarán.
 Todas las importaciones transwiki se registran en el [[Special:Log/import|registro de importaciones]].',
+'import-interwiki-source'    => 'Wiki o página origen:',
 'import-interwiki-history'   => 'Copiar todas las versiones históricas para esta página',
 'import-interwiki-submit'    => 'Importar',
-'import-interwiki-namespace' => 'Transferir páginas al espacio de nombres:',
+'import-interwiki-namespace' => 'Espacio de nombres de destino:',
+'import-upload-filename'     => 'Nombre de archivo:',
+'import-comment'             => 'Comentario:',
 'importtext'                 => 'Por favor, exporte el archivo desde el wiki de origen usando la [[Special:Export|herramienta de exportación]], guárdelo en su ordenador y súbalo aquí.',
 'importstart'                => 'Importando páginas...',
 'import-revision-count'      => '$1 {{PLURAL:$1|revisión|revisiones}}',
@@ -2247,6 +2279,8 @@ No hay un directorio temporal.',
 'import-nonewrevisions'      => 'Todas las revisiones fueron previamente importadas.',
 'xml-error-string'           => '$1 en la línea $2, col $3 (byte $4): $5',
 'import-upload'              => 'Subir datos XML',
+'import-token-mismatch'      => 'Pérdida de datos de sesión. Por favor, inténtelo de nuevo.',
+'import-invalid-interwiki'   => 'No se puede importar de la wiki especificada.',
 
 # Import log
 'importlogpage'                    => 'Registro de importaciones',
@@ -2316,8 +2350,9 @@ No hay un directorio temporal.',
 'tooltip-watch'                   => 'Añadir esta página a su lista de seguimiento',
 'tooltip-recreate'                => 'Recupera una página que ha sido borrada',
 'tooltip-upload'                  => 'Empieza la subida',
-'tooltip-rollback'                => '"Revertir" revierte todas las últimas ediciones de un mismo usuario con un clic.',
-'tooltip-undo'                    => '"Deshacer" revierte la edición seleccionada y abre la página de edición en el modo de previsualización. Permite añadir una razón al resumen de edición.',
+'tooltip-rollback'                => '«Revertir» revierte todas las ediciones del último usuario con un solo clic.',
+'tooltip-undo'                    => '«Deshacer» revierte la edición seleccionada y abre la página de edición en el modo de previsualización.
+Permite añadir una razón al resumen de edición.',
 
 # Stylesheets
 'common.css'   => '/* Los estilos CSS definidos aquí aplicarán a todas las pieles (skins) */',
@@ -2358,6 +2393,16 @@ Esto podría estar causado por un enlace a un sitio externo incluido en la lista
 'numwatchers'    => 'Número de usuarios vigilándola: $1',
 'numauthors'     => 'Número de autores distintos (artículo): $1',
 'numtalkauthors' => 'Número de autores distintos (página de discusión): $1',
+
+# Skin names
+'skinname-standard'    => 'Estándar',
+'skinname-nostalgia'   => 'Nostalgia',
+'skinname-cologneblue' => 'Colonia azul',
+'skinname-monobook'    => 'MonoBook',
+'skinname-myskin'      => 'Mi piel',
+'skinname-chick'       => 'Pollito',
+'skinname-simple'      => 'Simple',
+'skinname-modern'      => 'Moderna',
 
 # Math options
 'mw_math_png'    => 'Producir siempre PNG',
@@ -2415,7 +2460,7 @@ $1',
 'show-big-image'       => 'Resolución original',
 'show-big-image-thumb' => '<small>Tamaño de esta vista previa: $1 × $2 píxeles</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Galería de imágenes nuevas',
 'imagelisttext'         => "Debajo hay una lista de '''$1''' {{PLURAL:$1|imagen|imágenes}} ordenadas $2.",
 'newimages-summary'     => 'Esta página especial muestra una galería de los últimos ficheros subidos.',
@@ -2713,14 +2758,14 @@ Existen otros campos que se mantendrán ocultos por defecto.
 
 # External editor support
 'edit-externally'      => 'Editar este archivo usando una aplicación externa',
-'edit-externally-help' => 'Lee las [http://www.mediawiki.org/wiki/Manual:External_editors instrucciones de configuración] (en inglés) para más información.',
+'edit-externally-help' => '(Lee las [http://www.mediawiki.org/wiki/Manual:External_editors instrucciones de configuración] (en inglés) para más información)',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'todos',
 'imagelistall'     => 'todas',
 'watchlistall2'    => 'todos',
 'namespacesall'    => 'todos',
-'monthsall'        => '(todos)',
+'monthsall'        => 'todos',
 
 # E-mail address confirmation
 'confirmemail'             => 'Confirmar dirección de correo electrónico',
@@ -2876,13 +2921,13 @@ También puedes utilizar el [[Special:Watchlist/edit|editor estándar]].',
 'filepath-summary' => 'Esta página devuelve la ruta completa de un archivo.
 Las imágenes se muestran en resolución máxima, otros tipos de archivo arrancan directamente con su programa asociado.
 
-Ingrese el nombre del archivo sin su prefijo "{{ns:image}}:".',
+Ingrese el nombre del archivo sin su prefijo "{{ns:file}}:".',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Búsqueda de archivos duplicados',
 'fileduplicatesearch-summary'  => 'Búsqueda de archivos duplicados en base a su valor hash. 
 
-Ingrese el nombre del archivo sin el prefijo "{{ns:image}}:".',
+Ingrese el nombre del archivo sin el prefijo "{{ns:file}}:".',
 'fileduplicatesearch-legend'   => 'Busca duplicados',
 'fileduplicatesearch-filename' => 'Nombre del fichero:',
 'fileduplicatesearch-submit'   => 'Buscar',

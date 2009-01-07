@@ -120,7 +120,7 @@ $messages = array(
 'mytalk'     => 'Góa ê thó-lūn',
 'anontalk'   => 'Chit ê IP ê thó-lūn-ia̍h',
 'navigation' => 'Se̍h chām',
-'and'        => 'kap',
+'and'        => '&#32;kap',
 
 'errorpagetitle'    => 'Chhò-gō·',
 'returnto'          => 'Tò-tńg khì $1.',
@@ -161,7 +161,6 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'hían-sī',
-'bugreports'           => 'Saⁿ-pò bug',
 'currentevents'        => 'Sin-bûn sū-kiāⁿ',
 'currentevents-url'    => 'Project:Sin-bûn sū-kiāⁿ',
 'disclaimers'          => 'Bô-hū-chek seng-bêng',
@@ -266,6 +265,11 @@ $messages = array(
 'emailnotauthenticated'      => 'Lí ê e-mail chū-chí iáu-bōe khak-jīn ū-hāu, só·-í ē--kha ê e-mail kong-lêng bē-ēng-tit.',
 'emailconfirmlink'           => 'Chhiáⁿ khak-jīn lí ê e-mail chū-chí ū-hāu',
 
+# Password reset dialog
+'oldpassword' => 'Kū bi̍t-bé:',
+'newpassword' => 'Sin bi̍t-bé:',
+'retypenew'   => 'Têng phah sin bi̍t-bé:',
+
 # Edit page toolbar
 'bold_sample'     => 'Chho·-thé bûn-jī',
 'bold_tip'        => 'Chho·-thé jī',
@@ -284,8 +288,8 @@ $messages = array(
 'sig_tip'         => 'Lí ê chhiam-miâ kap sî-kan ìn-á',
 
 # Edit pages
-'summary'                => 'Khài-iàu',
-'subject'                => 'Tê-bo̍k/piau-tê',
+'summary'                => 'Khài-iàu:',
+'subject'                => 'Tê-bo̍k/piau-tê:',
 'minoredit'              => 'Che sī sió siu-kái',
 'watchthis'              => 'Kàm-sī chit ia̍h',
 'savearticle'            => 'Pó-chûn chit ia̍h',
@@ -293,8 +297,8 @@ $messages = array(
 'showpreview'            => 'Seng khoàⁿ-māi',
 'showdiff'               => 'Khòaⁿ kái-piàn ê pō·-hūn',
 'anoneditwarning'        => "'''Kéng-kò:''' Lí bô teng-ji̍p. Lí ê IP chū-chí ē kì tī pún ia̍h ê pian-chi̍p le̍k-sú lāi-bīn.",
-'summary-preview'        => 'Khài-iàu ê preview',
-'subject-preview'        => 'Ū-lám tê-bo̍k/piau-tê',
+'summary-preview'        => 'Khài-iàu ê preview:',
+'subject-preview'        => 'Ū-lám tê-bo̍k/piau-tê:',
 'whitelistedittitle'     => 'Su-iàu teng-ji̍p chiah ē-sái siu-kái',
 'whitelistedittext'      => 'Lí ài $1 chiah ē-sái siu-kái.',
 'confirmedittitle'       => 'Su-iàu khak-jīn e-mail chū-chí chiah ē-tit pian-chi̍p',
@@ -394,9 +398,6 @@ $messages = array(
 'prefs-misc'            => 'Kî-thaⁿ ê siat-tēng',
 'saveprefs'             => 'Pó-chûn siat-tēng',
 'resetprefs'            => 'Têng siat-tēng',
-'oldpassword'           => 'Kū bi̍t-bé:',
-'newpassword'           => 'Sin bi̍t-bé:',
-'retypenew'             => 'Têng phah sin bi̍t-bé:',
 'textboxsize'           => 'Pian-chi̍p',
 'rows'                  => 'Chōa:',
 'columns'               => 'Nôa',
@@ -467,15 +468,15 @@ $messages = array(
 'destfilename'      => 'Tóng-àn sin miâ:',
 'watchthisupload'   => 'Kàm-sī chit ia̍h',
 
-# Special:ImageList
-'imagelist'             => 'Iáⁿ-siōng lia̍t-toaⁿ',
-'imagelist_date'        => 'Ji̍t-kî',
-'imagelist_name'        => 'Miâ',
-'imagelist_user'        => 'Iōng-chiá',
-'imagelist_size'        => 'Toā-sè',
-'imagelist_description' => 'Soat-bêng',
+# Special:ListFiles
+'listfiles'             => 'Iáⁿ-siōng lia̍t-toaⁿ',
+'listfiles_date'        => 'Ji̍t-kî',
+'listfiles_name'        => 'Miâ',
+'listfiles_user'        => 'Iōng-chiá',
+'listfiles_size'        => 'Toā-sè',
+'listfiles_description' => 'Soat-bêng',
 
-# Image description page
+# File description page
 'imagelinks'       => 'Iáⁿ-siōng liân-kiat',
 'linkstoimage'     => 'Í-hā ê ia̍h liân kàu chit ê iáⁿ-siōng:',
 'nolinkstoimage'   => 'Bô poàⁿ ia̍h liân kàu chit tiuⁿ iáⁿ-siōng.',
@@ -793,7 +794,7 @@ Liâu--lo̍h-khì chìn-chêng, chhiáⁿ seng khak-tēng lí ū liáu-kái chia
 'file-nohires'         => '<small>Bô khah koân ê kái-sek-tō͘.</small>',
 'show-big-image-thumb' => '<small>Chit tiuⁿ ū-lám tô͘ (preview) ê toā-sè: $1 × $2 pixel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'     => 'Sin iáⁿ-siōng oē-lóng',
 'imagelisttext' => "Í-hā sī '''$1''' tiuⁿ iáⁿ-siōng ê lia̍t-toaⁿ, $2 pâi-lia̍t.",
 'ilsubmit'      => 'Kiám-sek',

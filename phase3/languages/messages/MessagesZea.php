@@ -27,8 +27,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Overleg_gebruker',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Overleg_$1',
-	NS_IMAGE            => 'Plaetje',
-	NS_IMAGE_TALK       => 'Overleg_plaetje',
+	NS_FILE             => 'Plaetje',
+	NS_FILE_TALK        => 'Overleg_plaetje',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'Overleg_MediaWiki',
 	NS_TEMPLATE         => 'Sjabloon',
@@ -178,7 +178,7 @@ $messages = array(
 'mytalk'         => 'Mien overleg',
 'anontalk'       => 'Discussie vò dit IP-adres',
 'navigation'     => 'Navigaotie',
-'and'            => 'en',
+'and'            => '&#32;en',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -241,8 +241,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Over {{SITENAME}}',
 'aboutpage'            => 'Project:Info',
-'bugreports'           => "Foutrapport'n",
-'bugreportspage'       => "Project:Foutrapport'n",
 'copyright'            => 'Den inoud is beschikbaer onder de $1.',
 'copyrightpagename'    => '{{SITENAME}} auteursrechen',
 'copyrightpage'        => '{{ns:project}}:Auteursrechen',
@@ -473,11 +471,13 @@ Neheer dit bericht as deêze gebruker zonder joe medeweten is anemikt.',
 'resetpass'               => "Wachtwoôrd herinstell'n",
 'resetpass_announce'      => "Je bin anemeld mie een tiedelijke code die a je per e-mail is toe-ezon'n. Voer een nieuw wachtwoôrd in om 't anmelden te voltooien:",
 'resetpass_header'        => "Wachtwoôrd herinstell'n",
+'oldpassword'             => 'Udihe wachtwoôrd:',
+'newpassword'             => 'Nieuw wachtwoôrd:',
+'retypenew'               => 'Herhaolieng nieuwe wachtwoôrd:',
 'resetpass_submit'        => "Wachtwoôrd instell'n en anmelden",
 'resetpass_success'       => 'Je wachtwoord is ewiezigd. Bezig mie anmelden ...',
 'resetpass_bad_temporary' => 'Onheldig tiedelijk wachtwoôrd. Je ei je wachtwoôrd a ewiezigd of een nieuw tiedelijk wachtwoôrd anevrogen.',
 'resetpass_forbidden'     => "Wachtwoôrden kunn'n op {{SITENAME}} nie ewiezigd worn",
-'resetpass_missing'       => 'Je ei hin wachtwoôrd ineheven.',
 
 # Edit page toolbar
 'bold_sample'     => 'Vette tekst',
@@ -500,8 +500,8 @@ Neheer dit bericht as deêze gebruker zonder joe medeweten is anemikt.',
 'hr_tip'          => 'Horizontaele lien (gebruuk spaerzaem)',
 
 # Edit pages
-'summary'                   => 'Saemenvatting',
-'subject'                   => 'Onderwerp/kop',
+'summary'                   => 'Saemenvatting:',
+'subject'                   => 'Onderwerp/kop:',
 'minoredit'                 => 'Dit is een kleine wieziging',
 'watchthis'                 => 'Volg deêze bladzie',
 'savearticle'               => 'Bewaer bladzie',
@@ -513,8 +513,8 @@ Neheer dit bericht as deêze gebruker zonder joe medeweten is anemikt.',
 'missingsummary'            => "'''Herinnerieng:''' je ei hin saemenvattieng opeheven voe je bewerkieng. A je nog een keêr op ''Pagina opslaen'' klik wor de bewerkieng zonder saemenvattieng opeslogen.",
 'missingcommenttext'        => 'Plek jen opmerkieng asjeblieft ieronder.',
 'missingcommentheader'      => "'''Let op:''' Je ei hin onderwerp/kop voe deêze opmerkieng opeheven. A je opnieuw op \"opslaen\" klik, wor je wieziging zonder een onderwerp/kop opeslogen.",
-'summary-preview'           => 'Saemenvattieng naekieken',
-'subject-preview'           => 'Naekieken onderwerp/kop',
+'summary-preview'           => 'Saemenvattieng naekieken:',
+'subject-preview'           => 'Naekieken onderwerp/kop:',
 'blockedtitle'              => 'Gebruker is geblokkeerd',
 'blockedtext'               => "<big>'''Je gebruker of IP-adres is eblokkeerd.'''</big>
 
@@ -849,9 +849,6 @@ De hehevens over {{SITENAME}} zien meuhlijk nie bie'ewerkt.",
 'prefs-misc'               => 'Rest',
 'saveprefs'                => 'Opslaene',
 'resetprefs'               => 'Nie opeslogen wiezigiengen herstellen',
-'oldpassword'              => 'Udihe wachtwoôrd:',
-'newpassword'              => 'Nieuw wachtwoôrd:',
-'retypenew'                => 'Herhaolieng nieuwe wachtwoôrd:',
 'textboxsize'              => 'Bewerken',
 'rows'                     => 'Rehels:',
 'columns'                  => "Kolomm'n:",
@@ -966,12 +963,12 @@ om bestan'n te upload'n.",
 'upload_directory_read_only' => 'De webserver kan nie schrieven in de uploadmap ($1).',
 'uploaderror'                => 'Uploadfout',
 'uploadtext'                 => "Gebruuk 't onderstaende formelier om bestan'n te uploaden.
-Om eêder toehevoegde bestan'n te bekieken of te zoeken kan je ni de [[Special:ImageList|bestandslieste]] haen.
+Om eêder toehevoegde bestan'n te bekieken of te zoeken kan je ni de [[Special:FileList|bestandslieste]] haen.
 Uploads en verwiederiengen worn bie'ehouwen in 't [[Special:Log/upload|uploadlogboek]].
 
 Om 't bestand in te voehen in een pagina kan je eên van de volhende codes gebruken, a ni helang 't bestandsformaot dat van toepassieng is:
-* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Bestand.jpg]]</nowiki>'''
-* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Bestand.png|alternatieve tekst]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Bestand.jpg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Bestand.png|alternatieve tekst]]</nowiki>'''
 * '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Bestand.ogg]]</nowiki>'''
 
 De lèste lienk is bedoeld voe mediabestan'n die an hin plaetje zien.",

@@ -209,6 +209,10 @@ class WikiRevision {
 			) );
 		$revId = $revision->insertOn( $dbw );
 		$changed = $article->updateIfNewerOn( $dbw, $revision );
+		
+		# To be on the safe side...
+		$tempTitle = $GLOBALS['wgTitle'];
+		$GLOBALS['wgTitle'] = $this->title;
 
 		if( $created ) {
 			wfDebug( __METHOD__ . ": running onArticleCreate\n" );
@@ -229,6 +233,7 @@ class WikiRevision {
 				$this->timestamp,
 				$revId );
 		}
+		$GLOBALS['wgTitle'] = $tempTitle;
 
 		return true;
 	}
@@ -378,6 +383,7 @@ class WikiImporter {
 	var $mLogItemCallback = null;
 	var $mUploadCallback = null;
 	var $mTargetNamespace = null;
+	var $mXmlNamespace = false;
 	var $lastfield;
 	var $tagStack = array();
 
@@ -393,6 +399,22 @@ class WikiImporter {
 		wfDebug( "WikiImporter XML error: $err\n" );
 	}
 
+	function handleXmlNamespace ( $parser, $data, $prefix=false, $uri=false ) {
+    		 if( preg_match( '/www.mediawiki.org/',$prefix ) ) {
+	                $prefix = str_replace( '/','\/',$prefix );
+			$this->mXmlNamespace='/^'.$prefix.':/';
+		 }
+	}
+
+	function stripXmlNamespace($name) {
+		if( $this->mXmlNamespace ) {
+	               return(preg_replace($this->mXmlNamespace,'',$name,1));
+		}
+		else {
+		       return($name);
+                }
+	}
+   
 	# --------------
 
 	function doImport() {
@@ -400,13 +422,14 @@ class WikiImporter {
 			return new WikiErrorMsg( "importnotext" );
 		}
 
-		$parser = xml_parser_create( "UTF-8" );
+		$parser = xml_parser_create_ns( "UTF-8" );
 
 		# case folding violates XML standard, turn it off
 		xml_parser_set_option( $parser, XML_OPTION_CASE_FOLDING, false );
 
 		xml_set_object( $parser, $this );
 		xml_set_element_handler( $parser, "in_start", "" );
+		xml_set_start_namespace_decl_handler( $parser, "handleXmlNamespace" );
 
 		$offset = 0; // for context extraction on error reporting
 		do {
@@ -598,6 +621,7 @@ class WikiImporter {
 	}
 
 	function in_start( $parser, $name, $attribs ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_start $name" );
 		if( $name != "mediawiki" ) {
 			return $this->throwXMLerror( "Expected <mediawiki>, got <$name>" );
@@ -606,6 +630,7 @@ class WikiImporter {
 	}
 
 	function in_mediawiki( $parser, $name, $attribs ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_mediawiki $name" );
 		if( $name == 'siteinfo' ) {
 			xml_set_element_handler( $parser, "in_siteinfo", "out_siteinfo" );
@@ -625,6 +650,7 @@ class WikiImporter {
 		}
 	}
 	function out_mediawiki( $parser, $name ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "out_mediawiki $name" );
 		if( $name != "mediawiki" ) {
 			return $this->throwXMLerror( "Expected </mediawiki>, got </$name>" );
@@ -635,6 +661,7 @@ class WikiImporter {
 
 	function in_siteinfo( $parser, $name, $attribs ) {
 		// no-ops for now
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_siteinfo $name" );
 		switch( $name ) {
 		case "sitename":
@@ -650,6 +677,7 @@ class WikiImporter {
 	}
 
 	function out_siteinfo( $parser, $name ) {
+	        $name = $this->stripXmlNamespace($name);
 		if( $name == "siteinfo" ) {
 			xml_set_element_handler( $parser, "in_mediawiki", "out_mediawiki" );
 		}
@@ -657,6 +685,7 @@ class WikiImporter {
 
 
 	function in_page( $parser, $name, $attribs ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_page $name" );
 		switch( $name ) {
 		case "id":
@@ -697,6 +726,7 @@ class WikiImporter {
 	}
 
 	function out_page( $parser, $name ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "out_page $name" );
 		$this->pop();
 		if( $name != "page" ) {
@@ -716,6 +746,7 @@ class WikiImporter {
 	}
 
 	function in_nothing( $parser, $name, $attribs ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_nothing $name" );
 		return $this->throwXMLerror( "No child elements allowed here; got <$name>" );
 	}
@@ -726,6 +757,7 @@ class WikiImporter {
 	}
 
 	function out_append( $parser, $name ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "out_append $name" );
 		if( $name != $this->appendfield ) {
 			return $this->throwXMLerror( "Expected </{$this->appendfield}>, got </$name>" );
@@ -744,6 +776,9 @@ class WikiImporter {
 			if( is_null( $this->pageTitle ) ) {
 				// Invalid page title? Ignore the page
 				$this->notice( "Skipping invalid page title '$this->workTitle'" );
+			} elseif( $this->pageTitle->getInterwiki() != '' ) {
+				$this->notice( "Skipping interwiki page title '$this->workTitle'" );
+				$this->pageTitle = null;
 			} else {
 				$this->pageCallback( $this->workTitle );
 			}
@@ -818,6 +853,7 @@ class WikiImporter {
 	}
 
 	function in_revision( $parser, $name, $attribs ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_revision $name" );
 		switch( $name ) {
 		case "id":
@@ -839,6 +875,7 @@ class WikiImporter {
 	}
 
 	function out_revision( $parser, $name ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "out_revision $name" );
 		$this->pop();
 		if( $name != "revision" ) {
@@ -856,6 +893,7 @@ class WikiImporter {
 	}
 	
 	function in_logitem( $parser, $name, $attribs ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_logitem $name" );
 		switch( $name ) {
 		case "id":
@@ -879,6 +917,7 @@ class WikiImporter {
 	}
 
 	function out_logitem( $parser, $name ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "out_logitem $name" );
 		$this->pop();
 		if( $name != "logitem" ) {
@@ -896,6 +935,7 @@ class WikiImporter {
 	}
 
 	function in_upload( $parser, $name, $attribs ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_upload $name" );
 		switch( $name ) {
 		case "timestamp":
@@ -918,6 +958,7 @@ class WikiImporter {
 	}
 
 	function out_upload( $parser, $name ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "out_revision $name" );
 		$this->pop();
 		if( $name != "upload" ) {
@@ -935,6 +976,7 @@ class WikiImporter {
 	}
 
 	function in_contributor( $parser, $name, $attribs ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "in_contributor $name" );
 		switch( $name ) {
 		case "username":
@@ -950,6 +992,7 @@ class WikiImporter {
 	}
 
 	function out_contributor( $parser, $name ) {
+	        $name = $this->stripXmlNamespace($name);
 		$this->debug( "out_contributor $name" );
 		$this->pop();
 		if( $name != "contributor" ) {

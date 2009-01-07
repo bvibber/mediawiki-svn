@@ -99,7 +99,7 @@ $messages = array(
 'mytalk'         => 'Nguāi gì tō̤-lâung',
 'anontalk'       => 'Cī ciáh IP gì tō̤-lâung-hiĕk',
 'navigation'     => 'Īng-dô̤',
-'and'            => 'gâe̤ng',
+'and'            => '&#32;gâe̤ng',
 
 'returnto'         => 'Duōng kó̤ $1.',
 'tagline'          => 'Lài-nguòng: {{SITENAME}}',
@@ -258,6 +258,11 @@ Siŭ gáu hâiu, chiāng gái láuk diē siŏh làu.',
 'accountcreatedtext'         => '$1 gì ê̤ṳng-hô dióng-hô̤ ī-gĭng châung-gióng lāu.',
 'loginlanguagelabel'         => 'Ngṳ̄-ngiòng: $1',
 
+# Password reset dialog
+'oldpassword' => 'Gô mĭk-mā:',
+'newpassword' => 'Sĭng mĭk-mā:',
+'retypenew'   => 'Káuk-nêng sĭng mĭk-mā:',
+
 # Edit page toolbar
 'bold_sample'     => 'Chŭ-tā̤ ùng-cê',
 'bold_tip'        => 'Chŭ-tā̤ ùng-cê',
@@ -270,8 +275,8 @@ Siŭ gáu hâiu, chiāng gái láuk diē siŏh làu.',
 'media_tip'       => 'Mùi-tā̤ ùng-giông lièng-giék',
 
 # Edit pages
-'summary'                  => 'Cūng-giék',
-'subject'                  => 'Dà̤-mĕ̤k/biĕu-dà̤',
+'summary'                  => 'Cūng-giék:',
+'subject'                  => 'Dà̤-mĕ̤k/biĕu-dà̤:',
 'minoredit'                => 'Guó-éu siŭ-gāi',
 'watchthis'                => 'Gáng-sê ciā hiĕk',
 'savearticle'              => 'Bō̤-còng ciā hiĕk',
@@ -280,7 +285,7 @@ Siŭ gáu hâiu, chiāng gái láuk diē siŏh làu.',
 'showdiff'                 => 'Káng gāi-biéng gì buô-hông',
 'anoneditwarning'          => "'''GĪNG-GÓ̤:''' Nṳ̄ muôi láuk-diē.
 Nṳ̄ gì IP dê-cī â̤ ké̤ṳk gé diŏh ciā hiĕk-miêng siŭ-gāi lĭk-sṳ̄ diē-sié.",
-'summary-preview'          => 'Cūng-giék ché-káng',
+'summary-preview'          => 'Cūng-giék ché-káng:',
 'blockedtitle'             => 'Ê̤ṳng-hô ké̤ṳk hŭng-sō̤ lāu',
 'loginreqtitle'            => 'Chiāng sĕng láuk-diē',
 'loginreqlink'             => 'Láuk-diē',
@@ -385,9 +390,6 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'prefs-misc'            => 'Gì-tă',
 'saveprefs'             => 'Bō̤-còng',
 'resetprefs'            => 'Dṳ̀ng-sĭng siék-diâng',
-'oldpassword'           => 'Gô mĭk-mā:',
-'newpassword'           => 'Sĭng mĭk-mā:',
-'retypenew'             => 'Káuk-nêng sĭng mĭk-mā:',
 'searchresultshead'     => 'Sìng-tō̤',
 'resultsperpage'        => 'Mūi hiĕk huōng-ông-liông:',
 'recentchangescount'    => 'Cī-bŏng gāi-biéng gì dà̤-mĕ̤k:',
@@ -463,15 +465,15 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'destfilename'      => 'Mŭk-biĕu ùng-giông-miàng:',
 'watchthisupload'   => 'Gáng-sê ciā hiĕk',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'ùng-giông',
-'imagelist'      => 'Ùng-giông dăng-dăng',
-'imagelist_date' => 'Nĭk-gĭ',
-'imagelist_name' => 'Miàng',
-'imagelist_user' => 'Ê̤ṳng-hô',
-'imagelist_size' => 'Chióh-cháung',
+'listfiles'      => 'Ùng-giông dăng-dăng',
+'listfiles_date' => 'Nĭk-gĭ',
+'listfiles_name' => 'Miàng',
+'listfiles_user' => 'Ê̤ṳng-hô',
+'listfiles_size' => 'Chióh-cháung',
 
-# Image description page
+# File description page
 'imagelinks'                => 'Lièng-giék',
 'linkstoimage'              => 'Â-dā̤ gì hiĕk-miêng lièng gáu ciā ùng-giông:',
 'nolinkstoimage'            => 'Mò̤ hiĕk-miêng lièng gáu ciā ùng-giông.',
@@ -720,7 +722,7 @@ Có̤i âu gì siŭ-gāi sê [[User:$3|$3]] ([[User talk:$3|Tō̤-lâung]]) sū 
 'ipbenableautoblock'       => 'Cê̤ṳ-dông hŭng-sō̤ ciā ê̤ṳng-hô siā-ê̤ṳng gì IP dê-cī',
 'ipbsubmit'                => 'Hŭng-sō̤ ciā ê̤ṳng-hô',
 'ipbother'                 => 'Gì-tă sì-găng',
-'ipboptions'               => '2 dēng-cṳ̆ng:2 hours,1 gĕ̤ng:1 day,3 gĕ̤ng:3 days,1 lā̤-buái:1 week,2 lā̤-buái:2 weeks,1 month:1 nguŏk-nĭk,3 nguŏk-nĭk:3 months,6 nguŏk-nĭk:6 months,1 nièng:1 year,īng-uōng:infinite', # display1:time1,display2:time2,...
+'ipboptions'               => '2 dēng-cṳ̆ng:2 hours,1 gĕ̤ng:1 day,3 gĕ̤ng:3 days,1 lā̤-buái:1 week,2 lā̤-buái:2 weeks,1 nguŏk-nĭk:1 month,3 nguŏk-nĭk:3 months,6 nguŏk-nĭk:6 months,1 nièng:1 year,īng-uōng:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'           => 'gì-tă',
 'ipbotherreason'           => 'Gì-tă nguòng-ĭng:',
 'blockipsuccesssub'        => 'Hŭng-sō̤ sìng-gŭng',
@@ -818,7 +820,7 @@ Nâ cūng-kuāng, nṳ̄ â̤-sāi cê-gă iè-dông hĕ̤k-ciā sê hăk-biáng
 # Media information
 'file-nohires' => '<small>Cuòi sê có̤i duâi chióh-cháung.</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'showhidebots' => '($1 gĭ-ké-nè̤ng)',
 'ilsubmit'     => 'Sìng-tō̤',
 'bydate'       => 'áng nĭk-gĭ',

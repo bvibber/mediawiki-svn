@@ -13,31 +13,28 @@
  * @author Spacebirdy
  */
 
-$skinNames = array(
-	'standard' => 'Standaard',
-	'nostalgia' => 'Nostalgie',
-	'cologneblue' => 'Keulen blou',
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Spesiaal',
+	NS_TALK             => 'Bespreking',
+	NS_USER             => 'Gebruiker',
+	NS_USER_TALK        => 'Gebruikerbespreking',
+	NS_PROJECT_TALK     => '$1bespreking',
+	NS_FILE             => 'Lêer',
+	NS_FILE_TALK        => 'Lêerbespreking',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWikibespreking',
+	NS_TEMPLATE         => 'Sjabloon',
+	NS_TEMPLATE_TALK    => 'Sjabloonbespreking',
+	NS_HELP             => 'Hulp',
+	NS_HELP_TALK        => 'Hulpbespreking',
+	NS_CATEGORY         => 'Kategorie',
+	NS_CATEGORY_TALK    => 'Kategoriebespreking',
 );
 
-$namespaceNames = array(
-	NS_MEDIA          => 'Media',
-	NS_SPECIAL        => 'Spesiaal',
-	NS_MAIN           => '',
-	NS_TALK           => 'Bespreking',
-	NS_USER           => 'Gebruiker',
-	NS_USER_TALK      => 'Gebruikerbespreking',
-	# NS_PROJECT set by $wgMetaNamespace,
-	NS_PROJECT_TALK   => '$1bespreking',
-	NS_IMAGE          => 'Beeld',
-	NS_IMAGE_TALK     => 'Beeldbespreking',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'MediaWikibespreking',
-	NS_TEMPLATE       => 'Sjabloon',
-	NS_TEMPLATE_TALK  => 'Sjabloonbespreking',
-	NS_HELP           => 'Hulp',
-	NS_HELP_TALK      => 'Hulpbespreking',
-	NS_CATEGORY       => 'Kategorie',
-	NS_CATEGORY_TALK  => 'Kategoriebespreking'
+$namespaceAliases = array(
+	'Beeld' => NS_FILE,
+	'Beeldbespreking' => NS_FILE_TALK,
 );
 
 $specialPageAliases = array(
@@ -51,7 +48,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Dophoulys' ),
 	'Recentchanges'             => array( 'Onlangse wysigings', 'Onlangsewysigings' ),
 	'Upload'                    => array( 'Laai', 'Oplaai' ),
-	'Imagelist'                 => array( 'Beeldelys', 'Prentelys', 'Lêerslys' ),
+	'Listfiles'                 => array( 'Beeldelys', 'Prentelys', 'Lêerslys' ),
 	'Newimages'                 => array( 'Nuwe beelde', 'Nuwebeelde', 'Nuwe lêers', 'Nuwelêers' ),
 	'Listusers'                 => array( 'Gebruikerslys', 'Lysgebruikers' ),
 	'Listgrouprights'           => array( 'LysGroepRegte' ),
@@ -252,7 +249,7 @@ $messages = array(
 'mytalk'         => 'My besprekings',
 'anontalk'       => 'Besprekingsblad vir hierdie IP',
 'navigation'     => 'Navigasie',
-'and'            => 'en',
+'and'            => '&#32;en',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -315,8 +312,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Inligting oor {{SITENAME}}',
 'aboutpage'            => 'Project:Omtrent',
-'bugreports'           => 'Foutverslae',
-'bugreportspage'       => 'Project:Foutverslae',
 'copyright'            => 'Teks is beskikbaar onderhewig aan $1.',
 'copyrightpagename'    => '{{SITENAME}} kopiereg',
 'copyrightpage'        => '{{ns:project}}:kopiereg',
@@ -562,16 +557,20 @@ Indien hierdie rekening foutief geskep is, kan u hierdie boodskap ignoreer.',
 'loginlanguagelabel'         => 'Taal: $1',
 
 # Password reset dialog
-'resetpass'               => 'Herstel rekening wagwoord',
-'resetpass_announce'      => "U het aangeteken met 'n tydelike e-poskode.
+'resetpass'                 => 'Herstel rekening wagwoord',
+'resetpass_announce'        => "U het aangeteken met 'n tydelike e-poskode.
 Om voort te gaan moet u 'n nuwe wagwoord hier kies:",
-'resetpass_header'        => 'Herstel wagwoord',
-'resetpass_submit'        => 'Stel wagwoord en teken in',
-'resetpass_success'       => 'U wagwoord is suksesvol gewysig! Besig om u in te teken ...',
-'resetpass_bad_temporary' => "Ongeldige tydelike wagwoord. 
+'resetpass_header'          => 'Herstel wagwoord',
+'oldpassword'               => 'Ou wagwoord',
+'newpassword'               => 'Nuwe wagwoord',
+'retypenew'                 => 'Tik nuwe wagwoord weer in',
+'resetpass_submit'          => 'Stel wagwoord en teken in',
+'resetpass_success'         => 'U wagwoord is suksesvol gewysig! Besig om u in te teken ...',
+'resetpass_bad_temporary'   => "Ongeldige tydelike wagwoord. 
 U het u wagwoord al gewysig of 'n nuwe tydelike wagwoord aangevra.",
-'resetpass_forbidden'     => 'Wagwoorde kannie gewysig word nie.',
-'resetpass_missing'       => "U het nie 'n wagwoord verskaf nie.",
+'resetpass_forbidden'       => 'Wagwoorde kannie gewysig word nie.',
+'resetpass-submit-loggedin' => 'Verander wagwoord',
+'resetpass-temp-password'   => 'Tydelike wagwoord:',
 
 # Edit page toolbar
 'bold_sample'     => 'Vet teks',
@@ -596,8 +595,8 @@ U het u wagwoord al gewysig of 'n nuwe tydelike wagwoord aangevra.",
 'hr_tip'          => 'Horisontale streep (selde nodig)',
 
 # Edit pages
-'summary'                          => 'Opsomming',
-'subject'                          => 'Onderwerp/opskrif',
+'summary'                          => 'Opsomming:',
+'subject'                          => 'Onderwerp/opskrif:',
 'minoredit'                        => 'Klein wysiging',
 'watchthis'                        => 'Hou bladsy dop',
 'savearticle'                      => 'Stoor bladsy',
@@ -609,8 +608,8 @@ U het u wagwoord al gewysig of 'n nuwe tydelike wagwoord aangevra.",
 'missingsummary'                   => "'''Onthou:''' Geen opsomming van die wysiging is verskaf nie. As \"Stoor\" weer geklik word, word die wysiging sonder opsomming gestoor.",
 'missingcommenttext'               => 'Tik die opsomming onder.',
 'missingcommentheader'             => "'''Let op:''' U het geen onderwerp/opskrif vir die opmerking verskaf nie. As u weer op \"Stoor\" klik, sal u wysiging sonder die onderwerp/opskrif gestoor word.",
-'summary-preview'                  => 'Opsomming nakijken',
-'subject-preview'                  => 'Onderwerp/ opskrif voorskou',
+'summary-preview'                  => 'Opsomming nakijken:',
+'subject-preview'                  => 'Onderwerp/ opskrif voorskou:',
 'blockedtitle'                     => 'Gebruiker is geblokkeer',
 'blockedtext'                      => "<big>'''U gebruikersnaam of IP-adres is geblokkeer.'''</big>
 
@@ -981,9 +980,6 @@ bevat, word gewys).",
 'prefs-misc'               => 'Allerlei',
 'saveprefs'                => 'Stoor voorkeure',
 'resetprefs'               => 'Herstel voorkeure',
-'oldpassword'              => 'Ou wagwoord',
-'newpassword'              => 'Nuwe wagwoord',
-'retypenew'                => 'Tik nuwe wagwoord weer in',
 'textboxsize'              => 'Wysiging',
 'rows'                     => 'Rye',
 'columns'                  => 'Kolomme',
@@ -1148,7 +1144,7 @@ om lêers te laai.',
 [[{{MediaWiki:Copyrightpage}}|beleid oor prentgebruik]].
 
 Om prente wat voorheen gelaai is te sien of te soek, gaan na die
-[[Special:ImageList|lys van gelaaide prente]].
+[[Special:FileList|lys van gelaaide prente]].
 Laai van lêers en skrappings word aangeteken in die
 [[Special:Log/upload|laailog]].
 
@@ -1161,8 +1157,8 @@ Dit mag dalk 'n rukkie neem as u 'n stadige internetverbinding het.
 
 Die voorkeurformate is JPEG vir fotografiese prente, PNG vir tekeninge en ander ikoniese prente, en OGG vir klanklêers.
 Gebruik asseblief beskrywende lêername om verwarring te voorkom.
-Om die prent in 'n artikel te gebruik, gebruik 'n skakel met die formaat '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.jpg]]</nowiki>''' of
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.png|alt text]]</nowiki>''' of
+Om die prent in 'n artikel te gebruik, gebruik 'n skakel met die formaat '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.jpg]]</nowiki>''' of
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.png|alt text]]</nowiki>''' of
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki>''' vir klanklêers.
 
 Let asseblief op dat, soos met {{SITENAME}} bladsye, mag ander u gelaaide lêers redigeer as hulle dink dit dien die ensiklopedie, en u kan verhoed word om lêers te laai as u die stelsel misbruik.",
@@ -1228,20 +1224,20 @@ Die verwyderingsinligting van die lêer word vir u gemak hier herhaal:",
 'upload_source_url'  => " ('n geldige, publiek toeganklike URL)",
 'upload_source_file' => " ('n lêer op u rekenaar)",
 
-# Special:ImageList
-'imagelist-summary'     => 'Die spesiale bladsy wys al die opgelaaide lêers.
+# Special:ListFiles
+'listfiles-summary'     => 'Die spesiale bladsy wys al die opgelaaide lêers.
 Die nuutste lêer word eerste vertoon.
 Klik op die opskrifte om die tabel anders te sorteer.',
-'imagelist_search_for'  => 'Soek vir medianaam:',
+'listfiles_search_for'  => 'Soek vir medianaam:',
 'imgfile'               => 'lêer',
-'imagelist'             => 'Prentelys',
-'imagelist_date'        => 'Datum',
-'imagelist_name'        => 'Naam',
-'imagelist_user'        => 'Gebruiker',
-'imagelist_size'        => 'Grootte',
-'imagelist_description' => 'Beskrywing',
+'listfiles'             => 'Prentelys',
+'listfiles_date'        => 'Datum',
+'listfiles_name'        => 'Naam',
+'listfiles_user'        => 'Gebruiker',
+'listfiles_size'        => 'Grootte',
+'listfiles_description' => 'Beskrywing',
 
-# Image description page
+# File description page
 'filehist'                       => 'Lêergeskiedenis',
 'filehist-help'                  => 'Klik op die datum/tyd om te sien hoe die lêer destyds gelyk het.',
 'filehist-deleteall'             => 'verwyder alles',
@@ -1316,11 +1312,11 @@ Klik op die opskrifte om die tabel anders te sorteer.',
 
 # Random page
 'randompage'         => 'Lukrake bladsy',
-'randompage-nopages' => 'Daar is geen bladye in die naamspasie.',
+'randompage-nopages' => 'Daar is geen bladye in naamspasie "$1".',
 
 # Random redirect
 'randomredirect'         => 'Lukrake aanstuur',
-'randomredirect-nopages' => 'Daar is geen aansture in die naamspasie.',
+'randomredirect-nopages' => 'Daar is geen aansture in naamspasie "$1".',
 
 # Statistics
 'statistics'               => 'Statistiek',
@@ -1330,7 +1326,7 @@ Klik op die opskrifte om die tabel anders te sorteer.',
 'statistics-header-users'  => 'Gebruikerstatistiek',
 'statistics-articles'      => 'Inhoudelike bladsye',
 'statistics-pages'         => 'Bladsye',
-'statistics-pages-tooltip' => 'Alle bladsye in die wiki, insluitend besprekings-, aanstuur- en ander bladsye.',
+'statistics-pages-desc'    => 'Alle bladsye in die wiki, insluitend besprekings-, aanstuur- en ander bladsye.',
 'statistics-files'         => 'Ongelaaide lêers',
 'statistics-edits'         => 'Wysigings sedert {{SITENAME}} begin is',
 'statistics-edits-average' => 'Gemiddelde wysigings per bladsy',
@@ -1882,7 +1878,7 @@ Die eksportlêer kan daarna geïmporteer word na enige ander MediaWiki webwerf v
 
 Verskaf die name van die bladsye wat geëksporteer moet word in die onderstaande veld, een bladsy per lyn, en kies of u alle weergawes (met geskiedenis) of slegs die nuutste weergawe soek.
 
-In die laatste geval kan u ook \'n verwysing gebruik, byvoorbeeld [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] vir die bladsy "{{Mediawiki:Mainpage}}".',
+In die laatste geval kan u ook \'n verwysing gebruik, byvoorbeeld [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] vir die bladsy "{{MediaWiki:Mainpage}}".',
 'exportcuronly'     => 'Slegs die nuutste weergawes, sonder volledige geskiedenis',
 'export-submit'     => 'Eksporteer',
 'export-addcattext' => 'Voeg bladsye by van kategorie:',
@@ -1910,6 +1906,7 @@ In die laatste geval kan u ook \'n verwysing gebruik, byvoorbeeld [[{{ns:special
 'import'                     => 'Voer bladsye in',
 'import-interwiki-submit'    => 'importeer',
 'import-interwiki-namespace' => 'Plaas bladsye in naamruimte:',
+'import-comment'             => 'Opmerking:',
 'importstart'                => 'Importeer bladsye...',
 'import-revision-count'      => '$1 {{PLURAL:$1|weergawe|weergawes}}',
 'importnopages'              => 'Geen bladsye om te importeer nie.',
@@ -2007,6 +2004,11 @@ In die laatste geval kan u ook \'n verwysing gebruik, byvoorbeeld [[{{ns:special
 'numauthors'     => 'Aantal outeurs (bladsy): $1',
 'numtalkauthors' => 'Aantal outeurs (besprekingsblad): $1',
 
+# Skin names
+'skinname-standard'    => 'Standaard',
+'skinname-nostalgia'   => 'Nostalgie',
+'skinname-cologneblue' => 'Keulen blou',
+
 # Math options
 'mw_math_png'    => 'Gebruik altyd PNG.',
 'mw_math_simple' => 'Gebruik HTML indien dit eenvoudig is, andersins PNG.',
@@ -2055,7 +2057,7 @@ $1',
 'show-big-image'       => 'Volle resolusie',
 'show-big-image-thumb' => '<small>Grootte van hierdie voorskou: $1 × $2 pixels</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Gallery van nuwe beelde',
 'imagelisttext'         => "Hier onder is a lys van '''$1''' {{PLURAL:$1|lêer|lêers}}, $2 gesorteer.",
 'newimages-summary'     => 'Die spesiale bladsy wys die nuutste lêers wat na die wiki opgelaai is.',
@@ -2253,7 +2255,7 @@ Ander velde sal versteek wees.
 
 # External editor support
 'edit-externally'      => "Wysig hierdie lêer met 'n eksterne program",
-'edit-externally-help' => 'Sien die [http://www.mediawiki.org/wiki/Manual:External_editors instruksies] (in Engels) vir meer inligting.',
+'edit-externally-help' => '(Sien [http://www.mediawiki.org/wiki/Manual:External_editors instruksies] vir meer inligting)',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'alles',
@@ -2401,7 +2403,7 @@ U kan ook die [[Special:Watchlist/edit|standaard opdaterigskerm gebruik]].",
 'filepath-summary' => 'Die spesiale bladsy wys die volledige pad vir \'n lêer. 
 Beelde word in hulle volle resolusie gewys. Ander lêertipes word direk met hulle MIME-geskakelde programme geopen.
 
-Sleutel die lêernaam in sonder die "{{ns:image}}:" voorvoegsel.',
+Sleutel die lêernaam in sonder die "{{ns:file}}:" voorvoegsel.',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Soek duplikaat lêers',

@@ -150,6 +150,9 @@ class User {
 		'markbotedits',
 		'minoredit',
 		'move',
+		'movefile',
+		'move-rootuserpages',
+		'move-subpages',
 		'nominornewtalk',
 		'noratelimit',
 		'patrol',
@@ -436,11 +439,10 @@ class User {
 	/**
 	 * Get database id given a user name
 	 * @param $name \string Username
-	 * @return \2types{\int,\null} The corresponding user's ID, or null if user is nonexistent
-	 * @static
+	 * @return \types{\int,\null} The corresponding user's ID, or null if user is nonexistent
 	 */
 	static function idFromName( $name ) {
-		$nt = Title::newFromText( $name );
+		$nt = Title::makeTitleSafe( NS_USER, $name );
 		if( is_null( $nt ) ) {
 			# Illegal name
 			return null;
@@ -631,7 +633,7 @@ class User {
 	 * Given unvalidated user input, return a canonical username, or false if
 	 * the username is invalid.
 	 * @param $name \string User input
-	 * @param $validate \2types{\string,\bool} Type of validation to use:
+	 * @param $validate \types{\string,\bool} Type of validation to use:
 	 *                - false        No validation
 	 *                - 'valid'      Valid for batch processes
 	 *                - 'usable'     Valid for batch processes and login
@@ -1487,7 +1489,7 @@ class User {
 	 *
 	 * @see getNewtalk()
 	 * @param $field \string 'user_ip' for anonymous users, 'user_id' otherwise
-	 * @param $id \2types{\string,\int} User's IP address for anonymous users, User ID otherwise
+	 * @param $id \types{\string,\int} User's IP address for anonymous users, User ID otherwise
 	 * @param $fromMaster \bool true to fetch from the master, false for a slave
 	 * @return \bool True if the user has new messages
 	 * @private
@@ -1506,7 +1508,7 @@ class User {
 	/**
 	 * Add or update the new messages flag
 	 * @param $field \string 'user_ip' for anonymous users, 'user_id' otherwise
-	 * @param $id \2types{\string,\int} User's IP address for anonymous users, User ID otherwise
+	 * @param $id \types{\string,\int} User's IP address for anonymous users, User ID otherwise
 	 * @return \bool True if successful, false otherwise
 	 * @private
 	 */
@@ -1528,7 +1530,7 @@ class User {
 	/**
 	 * Clear the new messages flag for the given user
 	 * @param $field \string 'user_ip' for anonymous users, 'user_id' otherwise
-	 * @param $id \2types{\string,\int} User's IP address for anonymous users, User ID otherwise
+	 * @param $id \types{\string,\int} User's IP address for anonymous users, User ID otherwise
 	 * @return \bool True if successful, false otherwise
 	 * @private
 	 */
@@ -2279,8 +2281,8 @@ class User {
 	 * Set a cookie on the user's client. Wrapper for 
 	 * WebResponse::setCookie
 	 * @param $name \string Name of the cookie to set
-	 * @param $name \string Value to set
-	 * @param $name \int Expiration time, as a UNIX time value; 
+	 * @param $value \string Value to set
+	 * @param $exp \int Expiration time, as a UNIX time value; 
 	 *                   if 0 or not specified, use the default $wgCookieExpiration
 	 */
 	protected function setCookie( $name, $value, $exp=0 ) {
@@ -2319,7 +2321,7 @@ class User {
 		
 		wfRunHooks( 'UserSetCookies', array( $this, &$session, &$cookies ) );
 		#check for null, since the hook could cause a null value 
-		if ( !is_null( $session ) && !is_null( $_SESSION ) ){
+		if ( !is_null( $session ) && isset( $_SESSION ) ){
 			$_SESSION = $session + $_SESSION;
 		}
 		foreach ( $cookies as $name => $value ) {
@@ -2712,7 +2714,7 @@ class User {
 	 * login credentials aren't being hijacked with a foreign form
 	 * submission.
 	 *
-	 * @param $salt \2types{\string,\arrayof{\string}} Optional function-specific data for hashing
+	 * @param $salt \types{\string,\arrayof{\string}} Optional function-specific data for hashing
 	 * @return \string The new edit token
 	 */
 	function editToken( $salt = '' ) {
@@ -2778,7 +2780,7 @@ class User {
 	 * Generate a new e-mail confirmation token and send a confirmation/invalidation
 	 * mail to the user's given address.
 	 *
-	 * @return \2types{\bool,\type{WikiError}} True on success, a WikiError object on failure.
+	 * @return \types{\bool,\type{WikiError}} True on success, a WikiError object on failure.
 	 */
 	function sendConfirmationMail() {
 		global $wgLang;
@@ -2805,7 +2807,7 @@ class User {
 	 * @param $body \string Message body
 	 * @param $from \string Optional From address; if unspecified, default $wgPasswordSender will be used
 	 * @param $replyto \string Reply-To address
-	 * @return \2types{\bool,\type{WikiError}} True on success, a WikiError object on failure
+	 * @return \types{\bool,\type{WikiError}} True on success, a WikiError object on failure
 	 */
 	function sendMail( $subject, $body, $from = null, $replyto = null ) {
 		if( is_null( $from ) ) {
@@ -2983,14 +2985,32 @@ class User {
 	/**
 	 * Get the timestamp of account creation.
 	 *
-	 * @return \2types{\string,\bool} string Timestamp of account creation, or false for
+	 * @return \types{\string,\bool} string Timestamp of account creation, or false for
 	 *                                non-existent/anonymous user accounts.
 	 */
 	public function getRegistration() {
-		return $this->mId > 0
+		return $this->getId() > 0
 			? $this->mRegistration
 			: false;
 	}
+	
+	/**
+	 * Get the timestamp of the first edit
+	 *
+	 * @return \types{\string,\bool} string Timestamp of first edit, or false for
+	 *                                non-existent/anonymous user accounts.
+	 */
+	public function getFirstEditTimestamp() {
+		if( $this->getId() == 0 ) return false; // anons
+		$dbr = wfGetDB( DB_SLAVE );
+		$time = $dbr->selectField( 'revision', 'rev_timestamp',
+			array( 'rev_user' => $this->getId() ),
+			__METHOD__,
+			array( 'ORDER BY' => 'rev_timestamp ASC' )
+		);
+		if( !$time ) return false; // no edits
+		return wfTimestamp( TS_MW, $time );
+	}	
 
 	/**
 	 * Get the permissions associated with a given list of groups
@@ -3004,10 +3024,11 @@ class User {
 		foreach( $groups as $group ) {
 			if( isset( $wgGroupPermissions[$group] ) ) {
 				$rights = array_merge( $rights,
+					// array_filter removes empty items
 					array_keys( array_filter( $wgGroupPermissions[$group] ) ) );
 			}
 		}
-		return $rights;
+		return array_unique($rights);
 	}
 	
 	/**
@@ -3105,7 +3126,7 @@ class User {
 	 * Get the title of a page describing a particular group
 	 *
 	 * @param $group \string Internal group name
-	 * @return \2types{\type{Title},\bool} Title of the page if it exists, false otherwise
+	 * @return \types{\type{Title},\bool} Title of the page if it exists, false otherwise
 	 */
 	static function getGroupPage( $group ) {
 		global $wgMessageCache;
@@ -3249,13 +3270,18 @@ class User {
 	static function crypt( $password, $salt = false ) {
 		global $wgPasswordSalt;
 
-		if($wgPasswordSalt) {
+		$hash = '';
+		if( !wfRunHooks( 'UserCryptPassword', array( &$password, &$salt, &$wgPasswordSalt, &$hash ) ) ) {
+			return $hash;
+		}
+		
+		if( $wgPasswordSalt ) {
 			if ( $salt === false ) {
 				$salt = substr( wfGenerateToken(), 0, 8 );
 			}
 			return ':B:' . $salt . ':' . md5( $salt . '-' . md5( $password ) );
 		} else {
-			return ':A:' . md5( $password);
+			return ':A:' . md5( $password );
 		}
 	}
 
@@ -3271,6 +3297,12 @@ class User {
 	static function comparePasswords( $hash, $password, $userId = false ) {
 		$m = false;
 		$type = substr( $hash, 0, 3 );
+		
+		$result = false;
+		if( !wfRunHooks( 'UserComparePasswords', array( &$hash, &$password, &$userId, &$result ) ) ) {
+			return $result;
+		}
+		
 		if ( $type == ':A:' ) {
 			# Unsalted
 			return md5( $password ) === substr( $hash, 3 );
@@ -3286,7 +3318,7 @@ class User {
 	
 	/**
 	 * Add a newuser log entry for this user
-	 * @param bool $byEmail, account made by email?
+	 * @param $byEmail Boolean: account made by email?
 	 */
 	public function addNewUserLogEntry( $byEmail = false ) {
 		global $wgUser, $wgContLang, $wgNewUserLog;

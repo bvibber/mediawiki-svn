@@ -9,6 +9,21 @@
  * @author Magalahi
  */
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Espesiat',
+	NS_TALK             => 'Kombetsasion',
+	NS_USER             => 'Muna\'sesetbi',
+	NS_USER_TALK        => 'Kombetsasion_ni_muna\'sesetbi',
+	NS_PROJECT_TALK     => 'Kombetsasion_nu_$1',
+	NS_FILE             => 'Litratu',
+	NS_FILE_TALK        => 'Kombetsasion_ni_litratu',
+	NS_HELP             => 'Ayudo',
+	NS_HELP_TALK        => 'Kombetsasion_ni_ayudo',
+	NS_CATEGORY         => 'Katigoria',
+	NS_CATEGORY_TALK    => 'Kombetsasion_ni_katigoria',
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'            => "Na'raya i inachetton:",
@@ -127,7 +142,7 @@ $messages = array(
 'mytalk'         => 'Kombetsasion-hu',
 'anontalk'       => 'Kuentusiyi i IP este',
 'navigation'     => 'Nabegasion',
-'and'            => 'yan',
+'and'            => '&#32;yan',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -369,6 +384,9 @@ Ti para u na'hanao ni sigienti na inayek siha.",
 'loginlanguagelabel'         => 'Lengguahe: $1',
 
 # Password reset dialog
+'oldpassword'      => 'Password bihu:',
+'newpassword'      => 'Password nuebu:',
+'retypenew'        => "Na'tekla nuebu na password:",
 'resetpass_submit' => "Po'lo i password ya log in",
 
 # Edit page toolbar
@@ -391,8 +409,8 @@ Ti para u na'hanao ni sigienti na inayek siha.",
 'hr_tip'          => "Råya ni umadespatta (uho' fan)",
 
 # Edit pages
-'summary'                          => 'Sumaria',
-'subject'                          => "Suhetu/titulo mo'na",
+'summary'                          => 'Sumaria:',
+'subject'                          => "Suhetu/titulo mo'na:",
 'minoredit'                        => "Dikike' este na tiniliaka",
 'watchthis'                        => 'Pulan este na påhina',
 'savearticle'                      => 'Såtba i påhina',
@@ -406,8 +424,8 @@ An un yemme' Såtba ta'lo, para u såtba i tinilaika-mu sin sumaria.",
 'missingcommenttext'               => "Nå'ye kommentu gi papa'.",
 'missingcommentheader'             => "'''Nina'hasso:''' Ti un tuge' suhetu/titulon må'gas para i kommentu.
 Yanggen un yemme' \"Såtba\" ta'lo, masåtba tinilaika-mu sin titulo.",
-'summary-preview'                  => 'Ripasun sumaria',
-'subject-preview'                  => 'Ripasun suhetu/titulo',
+'summary-preview'                  => 'Ripasun sumaria:',
+'subject-preview'                  => 'Ripasun suhetu/titulo:',
 'blockedtitle'                     => "Machoma' i muna'sesetbi",
 'blockedtext'                      => "<big>'''Machomma' i na'an-mu muna'sesetbi pat IP-mu.'''</big>
 
@@ -708,9 +726,6 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 'prefs-misc'               => 'Misc',
 'saveprefs'                => 'Såtba',
 'resetprefs'               => "Na'funas i tinilaika ti manma'såtba siha",
-'oldpassword'              => 'Password bihu:',
-'newpassword'              => 'Password nuebu:',
-'retypenew'                => "Na'tekla nuebu na password:",
 'textboxsize'              => 'Tumulaika',
 'rows'                     => 'Fila siha:',
 'columns'                  => 'Kolumna siha:',
@@ -779,10 +794,10 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 'uploadlogpage' => "Na'kåtga i log",
 'uploadedimage' => 'mana\'kåtga hulu\' "[[$1]]"',
 
-# Special:ImageList
-'imagelist' => 'Listan atkibu',
+# Special:ListFiles
+'listfiles' => 'Listan atkibu',
 
-# Image description page
+# File description page
 'filehist'                  => 'Historian atkibu',
 'filehist-help'             => "Yemme' i fecha/ora para un li'e' i atkibu annai annok guihi na momentu.",
 'filehist-current'          => "pa'go",
@@ -1091,7 +1106,7 @@ Ayek fan otru nå'an-ña.",
 'show-big-image'       => 'Magåhet mineddong-ña',
 'show-big-image-thumb' => '<small>Mineddong i ripasu: $1 × $2 pixels</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Galarian atkibu mannuebu siha',
 'ilsubmit'  => 'Aligao',
 

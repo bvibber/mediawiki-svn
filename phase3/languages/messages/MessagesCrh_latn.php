@@ -22,8 +22,8 @@ $namespaceNames = array(
     NS_USER_TALK                 => 'Qullanıcı_muzakeresi',
     # NS_PROJECT set by $wgMetaNamespace
     NS_PROJECT_TALK              => '$1_muzakeresi',
-    NS_IMAGE                     => 'Resim',
-    NS_IMAGE_TALK                => 'Resim_muzakeresi',
+    NS_FILE                      => 'Resim',
+    NS_FILE_TALK                 => 'Resim_muzakeresi',
     NS_MEDIAWIKI                 => 'MediaViki',
     NS_MEDIAWIKI_TALK            => 'MediaViki_muzakeresi',
     NS_TEMPLATE                  => 'Şablon',
@@ -42,8 +42,8 @@ $namespaceAliases = array(
 	"Къулланыджы"            => NS_USER,
 	"Къулланыджы_музакереси" => NS_USER_TALK,
 	"$1_музакереси"          => NS_PROJECT_TALK,
-	"Ресим"                  => NS_IMAGE,
-	"Ресим_музакереси"       => NS_IMAGE_TALK,
+	"Ресим"                  => NS_FILE,
+	"Ресим_музакереси"       => NS_FILE_TALK,
 	"МедиаВики"              => NS_MEDIAWIKI,
 	"МедиаВики_музакереси"   => NS_MEDIAWIKI_TALK,
 	'Шаблон'                 => NS_TEMPLATE,
@@ -54,15 +54,6 @@ $namespaceAliases = array(
 	'Категория_музакереси'   => NS_CATEGORY_TALK,
 );
 
-$skinNames = array(
-    'standard'    => 'Standart',
-    'nostalgia'   => 'Nostalgiya',
-    'cologneblue' => 'Köln asretligi',
-    'monobook'    => 'MonoBook',
-    'myskin'      => 'Öz resimleme',
-    'chick'       => 'Çipçe',
-    'simple'      => 'Adiy'
-);
 
 $datePreferences = array(
     'default',
@@ -248,7 +239,7 @@ $messages = array(
 'mytalk'         => 'Muzakere saifem',
 'anontalk'       => 'Bu IP-niñ muzakeresi',
 'navigation'     => 'Saytta yol tapuv',
-'and'            => 've',
+'and'            => '&#32;ve',
 
 # Metadata in edit box
 'metadata_help' => 'Meta malümatı:',
@@ -311,8 +302,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} aqqında',
 'aboutpage'            => 'Project:Aqqında',
-'bugreports'           => 'Hatalar aqqında esabatlar',
-'bugreportspage'       => 'Project:Hatalar aqqında esabatlar',
 'copyright'            => 'Malümat $1 binaen keçilip ola.',
 'copyrightpagename'    => '{{SITENAME}} müelliflik aqları',
 'copyrightpage'        => '{{ns:project}}:Müelliflik aqları',
@@ -543,14 +532,16 @@ Siz oturım açıp paroliñizni şimdi deñiştirmek kereksiñiz.
 'loginlanguagelabel'         => 'Til: $1',
 
 # Password reset dialog
-'resetpass'               => 'Bu esapnıñ parolini sıfırla',
+'resetpass'               => 'Parolni deñiştir',
 'resetpass_announce'      => 'Muvaqqat kod vastasınen kirdiñiz. Kirişni tamamlamaq içün yañı parolni mında qoyuñız:',
-'resetpass_header'        => 'Parolni sıfırla',
+'resetpass_header'        => 'Esapnıñ parolini deñiştir',
+'oldpassword'             => 'Eski parol',
+'newpassword'             => 'Yañı parol',
+'retypenew'               => 'Yañı parolni tekrar yazıñız',
 'resetpass_submit'        => 'Parol qoyıp kir',
 'resetpass_success'       => 'Paroliñiz muvafaqiyetnen deñiştirildi! Oturımıñız açılmaqta...',
 'resetpass_bad_temporary' => 'Muvaqqat paroliñiz yañlıştır. Ola bilir ki, siz endi paroliñizni muvafaqiyetnen deñiştirgen ya da e-mail-ge yañı bir parol yollamağa rica etkendirsiñiz.',
 'resetpass_forbidden'     => 'Parol deñiştirmek yasaq',
-'resetpass_missing'       => 'Forma boştır.',
 
 # Edit page toolbar
 'bold_sample'     => 'Qalın yazılış',
@@ -575,8 +566,8 @@ Siz oturım açıp paroliñizni şimdi deñiştirmek kereksiñiz.
 'hr_tip'          => 'Gorizontal sızıq (pek sıq qullanmañız)',
 
 # Edit pages
-'summary'                          => 'Deñişiklik qısqa tarifi',
-'subject'                          => 'Mevzu/serleva',
+'summary'                          => 'Deñişiklik qısqa tasviri:',
+'subject'                          => 'Mevzu/serleva:',
 'minoredit'                        => 'Kiçik deñişiklik',
 'watchthis'                        => 'Saifeni közet',
 'savearticle'                      => 'Saifeni saqla',
@@ -588,8 +579,8 @@ Siz oturım açıp paroliñizni şimdi deñiştirmek kereksiñiz.
 'missingsummary'                   => "'''Hatırlatma.''' Deñiştirmeleriñizni qısqadan tarif etmediñiz. \"Saifeni saqla\" dögmesine tekrar basuv ile deñiştirmeleriñiz tefsirsiz saqlanacaqlar.",
 'missingcommenttext'               => 'Lütfen, aşağıda tefsir yazıñız.',
 'missingcommentheader'             => "'''Hatırlatuv:''' Tefsir serlevasını belgilemediñiz. \"Saifeni saqla\" dögmesine tekrar basqan soñ tefsiriñiz serlevasız saqlanır.",
-'summary-preview'                  => 'Baqıp çıquv tarifi',
-'subject-preview'                  => 'Baqıp çıquv serlevası',
+'summary-preview'                  => 'Baqıp çıquv tasviri:',
+'subject-preview'                  => 'Baqıp çıquv serlevası:',
 'blockedtitle'                     => 'Qullanıcı blok etildi.',
 'blockedtext'                      => '<big>\'\'\'Esabıñız ya da IP adresiñiz blok etildi.\'\'\'</big>
 
@@ -725,6 +716,7 @@ $3 mına böyle bir sebep belgiledi: ''$2''",
 'viewpagelogs'           => 'Bu saifeniñ jurnallarını köster',
 'nohistory'              => 'Bu saifeniñ keçmiş versiyası yoq.',
 'currentrev'             => 'Al-azırki versiya',
+'currentrev-asof'        => '$1 tarihında sоñki оlaraq deñiştirilgen saifeniñ şimdiki alı',
 'revisionasof'           => 'Saifeniñ $1 tarihındaki alı',
 'revision-info'          => 'Saifeniñ $2 tarafından oluştırılğan $1 tarihındaki alı', # Additionally available: $3: revision id
 'previousrevision'       => '← Evelki alı',
@@ -835,9 +827,6 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'prefs-misc'            => 'Diger sazlamalar',
 'saveprefs'             => 'Deñişikliklerni saqla',
 'resetprefs'            => 'Saqlanmağan sazlamalarnı ilk alına ketir',
-'oldpassword'           => 'Eski parol',
-'newpassword'           => 'Yañı parol',
-'retypenew'             => 'Yañı parolni tekrar yazıñız',
 'textboxsize'           => 'Saife yazuv penceresi',
 'rows'                  => 'Satır',
 'columns'               => 'Sutun',
@@ -850,9 +839,9 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'savedprefs'            => 'Sazlamalarıñız saqlandı.',
 'timezonelegend'        => 'Saat quşağı',
 'timezonetext'          => 'Viki serveri (UTC/GMT) ile arañızdaki saat farqı. (Ukraina ve Türkiye içün +02:00)',
-'localtime'             => 'Siziñ yerli vaqtıñız',
-'timezoneoffset'        => 'Saat farqı',
-'servertime'            => 'Viki serverinde şimdiki saat',
+'localtime'             => 'Yerli vaqıt:',
+'timezoneoffset'        => 'Saat farqı¹:',
+'servertime'            => 'Serverniñ saatı:',
 'guesstimezone'         => 'Brauzeriñiz siziñ yeriñizge toldursın',
 'allowemail'            => 'Diger qullanıcılar maña e-mail mektüpleri yollap olsun',
 'prefs-searchoptions'   => 'Qıdıruv sazlamaları',
@@ -897,7 +886,7 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'recentchangestext'                 => 'Yapılğan eñ soñki deñişikliklerni bu saifede körip olasıñız.',
 'recentchanges-feed-description'    => 'Bu lenta vastasınen vikide soñki deñişikliklerni közet.',
 'rcnote'                            => "$4 $5 tarihında soñki {{PLURAL:$2|künde|'''$2''' künde}} yapılğan '''{{PLURAL:$1|1|$1}}''' deñişiklik:",
-'rcnotefrom'                        => "'''$2''' tarihından itibaren yapılğan deñişiklikler aşağıdadır (eñ fazla '''$1''' dane saife kösterile).",
+'rcnotefrom'                        => "'''$2''' tarihından itibaren yapılğan deñişiklikler aşağıdadır (eñ çоq '''$1''' dane saife kösterile).",
 'rclistfrom'                        => '$1 tarihından berli yapılğan deñişikliklerni köster',
 'rcshowhideminor'                   => 'kiçik deñişikliklerni $1',
 'rcshowhidebots'                    => 'botlarnı $1',
@@ -935,11 +924,11 @@ Vikide bu saifege oşağan saifelerni [[Special:Search|tapıp baqıñız]].',
 'upload_directory_read_only'  => 'Web serverniñ ($1) cüzdanına fayllar saqlamağa aqları yoqtır.',
 'uploaderror'                 => 'Yükleme hatası',
 'uploadtext'                  => "Fayllar yüklemek içün aşağıdaki formanı qullanıñız.
-Evelce yüklengen resim tapmaq ya da baqmaq içün [[Special:ImageList|yüklengen fayllar cedveline]] keçiñiz, bundan ğayrı fayl yüklenüv ve yoq etilüv qaydlarını [[Special:Log/upload|yüklenüv jurnalında]] ve [[Special:Log/delete|yoq etilüv jurnalında]] tapıp olasıñız.
+Evelce yüklengen resim tapmaq ya da baqmaq içün [[Special:FileList|yüklengen fayllar cedveline]] keçiñiz, bundan ğayrı fayl yüklenüv ve yoq etilüv qaydlarını [[Special:Log/upload|yüklenüv jurnalında]] ve [[Special:Log/delete|yoq etilüv jurnalında]] tapıp olasıñız.
 
 Saifede resim qullanmaq içün böyle şekilli bağlantılar qullanıñız: 
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki></tt>''' faylnıñ tam versiyasını qullanmaq içün,
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|200px|thumb|left|tarif]]</nowiki></tt>''' bir tarif ile 200 piksel bir resim qullanmaq içün,
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki></tt>''' faylnıñ tam versiyasını qullanmaq içün,
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|200px|thumb|left|tarif]]</nowiki></tt>''' bir tarif ile 200 piksel bir resim qullanmaq içün,
 * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki></tt>''' faylğa vastasız bağlantı içün.",
 'upload-permitted'            => 'İzinli fayl çeşitleri: $1.',
 'upload-preferred'            => 'İstenilgen fayl çeşitleri: $1.',
@@ -947,7 +936,7 @@ Saifede resim qullanmaq içün böyle şekilli bağlantılar qullanıñız:
 'uploadlog'                   => 'yükleme jurnalı',
 'uploadlogpage'               => 'Fayl yükleme jurnalı',
 'uploadlogpagetext'           => 'Aşağıda eñ soñki qоşulğan fayllarnıñ cedveli buluna.
-Daa körgezmeli körüniş içün [[Special:NewImages|yañı fayllar galereyasına]] baqıñız.',
+Daa körgezmeli körüniş içün [[Special:NewFiles|yañı fayllar galereyasına]] baqıñız.',
 'filename'                    => 'Fayl',
 'filedesc'                    => 'Faylğa ait qısqa tarif',
 'fileuploadsummary'           => 'Qısqa tarif:',
@@ -981,10 +970,10 @@ Eger belgilengen fayl aynı şu resim olsa, onıñ küçülgen kopiyasını ayr�
 'file-thumbnail-no'           => 'Faylnıñ adı <strong><tt>$1</tt></strong>nen başlana. Belki de bu resimniñ ufaqlaştırılğan bir kopiyasıdır <i>(thumbnail)</i>.
 Eger sizde bu resim tam büyükliginde bar olsa, lütfen, onı yükleñiñiz ya da faylnıñ adını deñiştiriñiz.',
 'fileexists-forbidden'        => 'Bu isimde bir fayl mevcüttir. Lütfen, keri qaytıñız, fayl ismini
-deñiştirip yañıdan yükleñiz. [[Image:$1|thumb|center|$1]]',
+deñiştirip yañıdan yükleñiz. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Fayllar umumiy tutulğan yerinde bu isimde bir fayl mevcüttir.
 Eger bu faylnı ep bir yüklemege isteseñiz, keri qaytıñız ve fayl ismini deñiştirip yañıdan yükleñiz.
-[[Image:$1|thumb|center|$1]]',
+[[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Bu fayl aşağıdaki {{PLURAL:$1|faylnıñ|fayllarnıñ}} dublikatı ola:',
 'successfulupload'            => 'Yüklenüv becerildi',
 'uploadwarning'               => 'Tenbi',
@@ -1026,20 +1015,20 @@ Bu fayl içün yoq etüvniñ jurnalını mında baqıp olasıñız:",
 'upload_source_url'  => ' (doğru, püblik tarzda kirmege musaadeli internet adres)',
 'upload_source_file' => ' (kompyuteriñizdeki fayl)',
 
-# Special:ImageList
-'imagelist-summary'     => 'Bu mahsus saife bütün yüklengen fayllarnı köstere.
+# Special:ListFiles
+'listfiles-summary'     => 'Bu mahsus saife bütün yüklengen fayllarnı köstere.
 Yaqınlarda yüklengen fayllar cedvelniñ yuqarısında kösterile.
 Sutun serlevasına bir basuv sortirlemeniñ tertibini deñiştirir.',
-'imagelist_search_for'  => 'Fayl adını qıdıruv:',
+'listfiles_search_for'  => 'Fayl adını qıdıruv:',
 'imgfile'               => 'fayl',
-'imagelist'             => 'Resim cedveli',
-'imagelist_date'        => 'Tarih',
-'imagelist_name'        => 'Fayl adı',
-'imagelist_user'        => 'Qullanıcı',
-'imagelist_size'        => 'Büyüklik',
-'imagelist_description' => 'Tasvir',
+'listfiles'             => 'Resim cedveli',
+'listfiles_date'        => 'Tarih',
+'listfiles_name'        => 'Fayl adı',
+'listfiles_user'        => 'Qullanıcı',
+'listfiles_size'        => 'Büyüklik',
+'listfiles_description' => 'Tasvir',
 
-# Image description page
+# File description page
 'filehist'                  => 'Faylnıñ keçmişi',
 'filehist-help'             => 'Faylnıñ kerekli anki alını körmek içün tarihqa/saatqa basıñız.',
 'filehist-deleteall'        => 'episini yoq et',
@@ -1216,7 +1205,7 @@ Mında [[Special:UnusedCategories|qullanılmağan kategoriyalar]] kösterilmegen
 'usermailererror' => 'E-mail beyanatı yollanğan vaqıtta hata olıp çıqtı',
 'defemailsubject' => '{{SITENAME}} e-mail',
 'noemailtitle'    => 'E-mail adresi yoqtır',
-'noemailtext'     => 'Bu qullanıcı ya mevcüt olğan elektron poçta adresini yazmağan, ya da başqa qullanıcılardan mektüp aluvdan vazgeçken.',
+'noemailtext'     => 'Bu qullanıcı uyğun elektron poçta adresini bildirmegen.',
 'emailfrom'       => 'Kimden:',
 'emailto'         => 'Kimge:',
 'emailsubject'    => 'Mektüp mevzusı:',
@@ -1502,7 +1491,7 @@ Lütfen, başqa bir ad saylap yazıñız.',
 'allmessages'         => 'Sistema beyanatları',
 'allmessagesname'     => 'İsim',
 'allmessagesdefault'  => 'Original metin',
-'allmessagescurrent'  => 'Qullanımdaki metin',
+'allmessagescurrent'  => 'Şimdi qullanılğan metin',
 'allmessagestext'     => 'İşbu cedvel MediaWikide mevcüt olğan bütün sistema beyanatlarınıñ cedvelidir.
 MediaWiki interfeysiniñ çeşit tillerge tercime etüvde iştirak etmege isteseñiz [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] ve [http://translatewiki.net Betawiki] saifelerine ziyaret etiñiz.',
 'allmessagesfilter'   => 'Metin ayrıştırıcı filtrı:',
@@ -1514,6 +1503,9 @@ MediaWiki interfeysiniñ çeşit tillerge tercime etüvde iştirak etmege istese
 'thumbnail_error'          => 'Kiçik resim (thumbnail) yaratılğanda bir hata çıqtı: $1',
 'thumbnail_invalid_params' => 'Yañlış thumbnail parametri',
 'thumbnail_dest_directory' => 'İstenilgen direktoriyanı yaratmaqnıñ iç çaresi yoq',
+
+# Special:Import
+'import-comment' => 'İzaat:',
 
 # Import log
 'importlogpage' => 'İmport jurnalı',
@@ -1613,6 +1605,15 @@ MediaWiki interfeysiniñ çeşit tillerge tercime etüvde iştirak etmege istese
 'numauthors'     => 'Müellif sayısı (saife): $1',
 'numtalkauthors' => 'Müellif sayısı (muzakere saifesi): $1',
 
+# Skin names
+'skinname-standard'    => 'Standart',
+'skinname-nostalgia'   => 'Nostalgiya',
+'skinname-cologneblue' => 'Köln asretligi',
+'skinname-monobook'    => 'MonoBook',
+'skinname-myskin'      => 'Öz resimleme',
+'skinname-chick'       => 'Çipçe',
+'skinname-simple'      => 'Adiy',
+
 # Math options
 'mw_math_png'    => 'Daima PNG resim formatına çevir',
 'mw_math_simple' => 'Pek basit olsa HTML, yoqsa PNG',
@@ -1645,7 +1646,7 @@ MediaWiki interfeysiniñ çeşit tillerge tercime etüvde iştirak etmege istese
 'show-big-image'       => 'Tam çezinirlik',
 'show-big-image-thumb' => '<small>Baqıp çıquvda resim büyükligi: $1 × $2 piksel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Yañı resimler',
 'imagelisttext'         => "Aşağıdaki cedvelde $2 köre tizilgen {{PLURAL:$1|'''1''' fayldır|'''$1''' fayldır}}.",
 'showhidebots'          => '(botlarnı $1)',
@@ -1735,7 +1736,7 @@ Er satır * işaretinen başlamalı. Satırnıñ birinci bağlantısı qоşmağ
 
 # External editor support
 'edit-externally'      => 'Fayl üzerinde kompyuteriñizde bulunğan programmalar ile deñişiklikler yapıñız',
-'edit-externally-help' => 'Daa fazla malümat içün [http://www.mediawiki.org/wiki/Manual:External_editors bu saifege] (İnglizce)  baqıp olasıñız.',
+'edit-externally-help' => '(Daa ziyade malümat içün [http://www.mediawiki.org/wiki/Manual:External_editors bu saifege] (İnglizce)  baqıp olasıñız.)',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'episini',

@@ -9,24 +9,26 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA          => 'ສື່ອ',
-	NS_SPECIAL        => 'ພິເສດ',
-	NS_MAIN           => '',
-	NS_TALK           => 'ສົນທະນາ',
-	NS_USER           => 'ຜູ້ໃຊ້',
-	NS_USER_TALK      => 'ສົນທະນາຂອງຜູ້ໃຊ້',
-	# NS_PROJECT set by \$wgMetaNamespace
-	NS_PROJECT_TALK   => 'ສົນທະນາກ່ຽວກັບ$1',
-	NS_IMAGE          => 'ຮູບ',
-	NS_IMAGE_TALK     => 'ສົນທະນາກ່ຽວກັບຮູບ',
-	NS_MEDIAWIKI      => 'ມີເດຍວິກິ',
-	NS_MEDIAWIKI_TALK => 'ສົນທະນາກ່ຽວກັບມີເດຍວິກິ',
-	NS_TEMPLATE       => 'ແມ່ແບບ',
-	NS_TEMPLATE_TALK  => 'ສົນທະນາກ່ຽວກັບແມ່ແບບ',
-	NS_HELP           => 'ຊ່ວຍເຫຼືອ',
-	NS_HELP_TALK      => 'ສົນທະນາກ່ຽວກັບຊ່ວຍເຫຼືອ',
-	NS_CATEGORY       => 'ໝວດ',
-	NS_CATEGORY_TALK  => 'ສົນທະນາກ່ຽວກັບໝວດ',
+	NS_MEDIA            => 'ສື່',
+	NS_SPECIAL          => 'ພິເສດ',
+	NS_TALK             => 'ສົນທະນາ',
+	NS_USER             => 'ຜູ້ໃຊ້',
+	NS_USER_TALK        => 'ສົນທະນາຂອງຜູ້ໃຊ້',
+	NS_PROJECT_TALK     => 'ສົນທະນາກ່ຽວກັບ$1',
+	NS_FILE             => 'ຮູບ',
+	NS_FILE_TALK        => 'ສົນທະນາກ່ຽວກັບຮູບ',
+	NS_MEDIAWIKI        => 'ມີເດຍວິກິ',
+	NS_MEDIAWIKI_TALK   => 'ສົນທະນາກ່ຽວກັບມີເດຍວິກິ',
+	NS_TEMPLATE         => 'ແມ່ແບບ',
+	NS_TEMPLATE_TALK    => 'ສົນທະນາກ່ຽວກັບແມ່ແບບ',
+	NS_HELP             => 'ຊ່ວຍເຫຼືອ',
+	NS_HELP_TALK        => 'ສົນທະນາກ່ຽວກັບຊ່ວຍເຫຼືອ',
+	NS_CATEGORY         => 'ໝວດ',
+	NS_CATEGORY_TALK    => 'ສົນທະນາກ່ຽວກັບໝວດ',
+);
+
+$namespaceAliases = array(
+	'ສື່ອ' => NS_MEDIA,
 );
 
 $specialPageAliases = array(
@@ -40,7 +42,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'ຕິດຕາມ' ),
 	'Recentchanges'             => array( 'ການດັດແກ້ຫຼ້າສຸດ' ),
 	'Upload'                    => array( 'ອັປໂຫຼດໄຟລ໌' ),
-	'Imagelist'                 => array( 'ລາຍຊື່ຮູບ' ),
+	'Listfiles'                 => array( 'ລາຍຊື່ຮູບ' ),
 	'Newimages'                 => array( 'ຮູບໃໝ່' ),
 	'Listusers'                 => array( 'ລາຍຊື່ຜູ້ໃຊ້' ),
 	'Statistics'                => array( 'ສະຖິຕິ' ),
@@ -191,7 +193,7 @@ $messages = array(
 'mytalk'         => 'ສົນທະນາ',
 'anontalk'       => 'ສົນທະນາ ສຳຫຼັບ IP ນີ້',
 'navigation'     => 'ນຳທິດ',
-'and'            => 'ແລະ',
+'and'            => '&#32;ແລະ',
 
 'returnto'         => 'ກັບໄປ  $1.',
 'tagline'          => 'ຈາກ {{SITENAME}}',
@@ -238,8 +240,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'ກ່ຽວກັບ{{SITENAME}}',
 'aboutpage'            => 'Project:ກ່ຽວກັບ',
-'bugreports'           => 'ລາຍງານ ບັນຫາທາງໂປແກມ',
-'bugreportspage'       => 'Project:ລາຍງານບັນຫາທາງໂປແກມ',
 'copyright'            => 'ເນື້ອໃນ ສະໜອງໃຫ້ ພາຍໃຕ້ $1.',
 'copyrightpage'        => '{{ns:project}}:ລິຂະສິດ',
 'currentevents'        => 'ກິດຈະກຳພວມດຳເນີນ',
@@ -351,6 +351,9 @@ $messages = array(
 'accountcreatedtext'         => 'ບັນຊີ ຂອງ  $1 ໄດ້ ຖືກສ້າງແລ້ວ.',
 
 # Password reset dialog
+'oldpassword'       => 'ລະຫັດຜ່ານເກົ່າ:',
+'newpassword'       => 'ລະຫັດຜ່ານໃໝ່:',
+'retypenew'         => 'ພິມລະຫັດຜ່ານໃໝ່ອີກ:',
 'resetpass_submit'  => 'ຕັ້ງລະຫັດຜ່ານ ແລະ ເຊັນເຂົ້າ',
 'resetpass_success' => 'ສຳເລັດການປ່ຽນແປງ ລະຫັດຜ່ານຂອງທ່ານແລ້ວ! ດຽວນີ້ ທ່ານ ເຊັ່ນເຂົ້າ ໃນ ...',
 
@@ -370,8 +373,8 @@ $messages = array(
 'media_tip'       => 'ລິ້ງຄ໌ຫາໄຟລ໌',
 
 # Edit pages
-'summary'                  => 'ຄຳອະທິບາຍໂດຍຫຍໍ້',
-'subject'                  => 'ຫົວຂໍ້',
+'summary'                  => 'ຄຳອະທິບາຍໂດຍຫຍໍ້:',
+'subject'                  => 'ຫົວຂໍ້:',
 'minoredit'                => 'ນີ້ແມ່ນການດັດແກ້ເລັກນ້ອຍ',
 'watchthis'                => 'ຕິດຕາມໜ້ານີ້',
 'savearticle'              => 'ບັນທຶກ',
@@ -478,9 +481,6 @@ $messages = array(
 'prefs-misc'            => 'ແລະອື່ນໆ',
 'saveprefs'             => 'ບັນທຶກ',
 'resetprefs'            => 'ເລີ່ມຄືນໃໝ່',
-'oldpassword'           => 'ລະຫັດຜ່ານເກົ່າ:',
-'newpassword'           => 'ລະຫັດຜ່ານໃໝ່:',
-'retypenew'             => 'ພິມລະຫັດຜ່ານໃໝ່ອີກ:',
 'textboxsize'           => 'ການດັດແກ້',
 'rows'                  => 'ແຖວ:',
 'columns'               => 'ຖັນ:',
@@ -539,10 +539,10 @@ $messages = array(
 'savefile'          => 'ບັນທຶກໄຟລ໌',
 'watchthisupload'   => 'ຕິດຕາມໜ້ານີ້',
 
-# Special:ImageList
-'imagelist' => 'ລາຍຊື່ໄຟລ໌',
+# Special:ListFiles
+'listfiles' => 'ລາຍຊື່ໄຟລ໌',
 
-# Image description page
+# File description page
 'filehist'            => 'ປະຫວັດໄຟລ໌',
 'filehist-current'    => 'ປະຈຸບັນ',
 'filehist-datetime'   => 'ວັນເວລາ',
@@ -870,7 +870,7 @@ $messages = array(
 'show-big-image'       => 'ເຕັມຂະໜາດ',
 'show-big-image-thumb' => '<small>ຂະໜາດລອງເບິ່ງ: $1 × $2 ປິກເຊລ</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'         => 'ໄຟລ໌ຮູບໃໝ່',
 'newimages-summary' => 'ໜ້າພິເສດນີ້ສະແດງໄຟລ໌ທີ່ຖຶກອັປໂຫຼດຫຼ້າສຸດ',
 'noimages'          => 'ບໍ່ມີຫຍັງເບິ່ງ.',

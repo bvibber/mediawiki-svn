@@ -23,8 +23,8 @@ $namespaceNames = array(
 	NS_USER             => 'Теиця',
 	NS_USER_TALK        => 'Теицянь кортамось',
 	NS_PROJECT_TALK     => '$1 кортамось',
-	NS_IMAGE            => 'Артовкс',
-	NS_IMAGE_TALK       => 'Артовксто кортамось',
+	NS_FILE             => 'Артовкс',
+	NS_FILE_TALK        => 'Артовксто кортамось',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki-нь кортамось',
 	NS_TEMPLATE         => 'ЛопаПарцун',
@@ -35,13 +35,6 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK    => 'Категориядо кортамось',
 );
 
-$skinNames = array(
-	'standard'      => 'Классикань',
-	'nostalgia'     => 'ОдПингеньМазы',
-	'myskin'        => 'ЭсьМелемКоряс',
-	'simple'        => 'Шожда',
-	'modern'        => 'НееньШкань',
-);
 
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'КавтоньКирданьЛиявНевтемат' ),
@@ -52,7 +45,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'ВанстнемаКерькс' ),
 	'Recentchanges'             => array( 'ЧыяконьПолавтомат' ),
 	'Upload'                    => array( 'Йовкстамо' ),
-	'Imagelist'                 => array( 'АртовксКерькс' ),
+	'Listfiles'                 => array( 'АртовксКерькс' ),
 	'Newimages'                 => array( 'ОдАртовкст' ),
 	'Statistics'                => array( 'Статистика' ),
 	'Randompage'                => array( 'КодамоПонгсьЛопа' ),
@@ -256,7 +249,7 @@ $messages = array(
 'august-gen'    => 'Умарьковонь',
 'september-gen' => 'Таштамковонь',
 'october-gen'   => 'Ожоковонь',
-'november-gen'  => 'Сунденьковонь',
+'november-gen'  => 'Сундерьковонь',
 'december-gen'  => 'Ацамковонь',
 'jan'           => 'Якш',
 'feb'           => 'Дав',
@@ -305,7 +298,7 @@ $messages = array(
 'mytalk'         => 'Монь кортамом',
 'anontalk'       => 'Кортамс те IP-нть марто',
 'navigation'     => 'Навигация',
-'and'            => 'ды',
+'and'            => '&#32;ды',
 
 # Metadata in edit box
 'metadata_help' => 'Метадата:',
@@ -368,8 +361,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} ланга',
 'aboutpage'            => 'Project:Эстэдензэ',
-'bugreports'           => 'Ильведькстэ пачтямнэ',
-'bugreportspage'       => 'Project:Вишка сёрмадовкс ильведькстэ',
 'copyright'            => '$1-сто муят мезе тесэ.',
 'copyrightpagename'    => '{{SITENAME}} копиянь теемань прават',
 'copyrightpage'        => '{{ns:project}}:Ломанень видечинзэ',
@@ -542,10 +533,12 @@ $messages = array(
 # Password reset dialog
 'resetpass'           => 'Полавтомс совамотаркань совамо валот',
 'resetpass_header'    => 'Аравтомс од совамо валот',
+'oldpassword'         => 'Ташто совамо валот:',
+'newpassword'         => 'Од совамо валот:',
+'retypenew'           => 'Сёрмадык омбоцеде совамо валот:',
 'resetpass_submit'    => 'Тештик совамо валот ды совак',
 'resetpass_success'   => 'Совамо валот полавтовсь теть! Совавтыть эйсэть системас...',
 'resetpass_forbidden' => 'Совамо валтнэ а полавтовить',
-'resetpass_missing'   => 'Формань дата арась.',
 
 # Edit page toolbar
 'bold_sample'     => 'Эчке текст',
@@ -570,8 +563,8 @@ $messages = array(
 'hr_tip'          => 'Менель кирьксэнь кикс (тевс нолдыть ванстозь)',
 
 # Edit pages
-'summary'                          => 'Вейсэндязь',
-'subject'                          => 'Сёрмадовксонть лемезэ',
+'summary'                          => 'Вейсэндязь:',
+'subject'                          => 'Сёрмадовксонть лемезэ:',
 'minoredit'                        => 'Те апокшкэ витнема-петнема',
 'watchthis'                        => 'Ваномс те лопанть мельга',
 'savearticle'                      => 'Ванстомс лопанть',
@@ -581,8 +574,8 @@ $messages = array(
 'showdiff'                         => 'Невтемс мезе полавтовсь',
 'anoneditwarning'                  => "'''Ванок:''' Зярс эзить сова. IP адресэть совавтови те лопанть витнема-петнема икелькс умантень.",
 'missingcommenttext'               => 'Инеськеть мелеть-арьсемат путта тезэнь алов.',
-'summary-preview'                  => 'Цётомань седеикелев вановкс',
-'subject-preview'                  => 'Темань/коняксонь васнянь невтема',
+'summary-preview'                  => 'Цётомань седеикелев вановкс:',
+'subject-preview'                  => 'Темань/коняксонь васнянь невтема:',
 'blockedtitle'                     => 'Совицясь кардазь',
 'blockedtext'                      => "<big>'''Тонть теицянь леметь эли IP-тешкстэть совавтозь саймас.'''</big>
 
@@ -819,9 +812,6 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'prefs-misc'               => 'Минеть-сюнот',
 'saveprefs'                => 'Ванстомс',
 'resetprefs'               => 'Нардамс апак вансто полавтнемат',
-'oldpassword'              => 'Ташто совамо валот:',
-'newpassword'              => 'Од совамо валот:',
-'retypenew'                => 'Сёрмадык омбоцеде совамо валот:',
 'textboxsize'              => 'Витнема-петнема',
 'columns'                  => 'Палманть:',
 'searchresultshead'        => 'Вешнэма',
@@ -965,15 +955,15 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'nolicense'          => 'Лицензия арась',
 'upload_source_file' => ' (арси машинасот файла)',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'файл',
-'imagelist'      => 'Файлат-мезть',
-'imagelist_date' => 'Чи',
-'imagelist_name' => 'Лемезэ',
-'imagelist_user' => 'Теиця',
-'imagelist_size' => 'Покшолма',
+'listfiles'      => 'Файлат-мезть',
+'listfiles_date' => 'Чи',
+'listfiles_name' => 'Лемезэ',
+'listfiles_user' => 'Теиця',
+'listfiles_size' => 'Покшолма',
 
-# Image description page
+# File description page
 'filehist'                       => 'Файланть эрямопингезэ',
 'filehist-help'                  => 'Лепштинк чиннть/шканть ланкс, сестэ вансынк коли файлось ульнесь теезь.',
 'filehist-deleteall'             => 'нардамс весе',
@@ -1413,6 +1403,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'import'                     => 'Таргамс лопатнень',
 'import-interwiki-submit'    => 'Таргамс',
 'import-interwiki-namespace' => 'Печтевтемс лопатнень те лемпотмонтень:',
+'import-comment'             => 'Арсемат-мельть:',
 'importstart'                => 'Лопатне совавтовить...',
 'import-revision-count'      => '$1 {{PLURAL:$1|лиякстомтома|лиякстомтомат}}',
 'importnopages'              => 'Йовкстамс лопат арасть',
@@ -1480,7 +1471,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'anonymous'   => '{{SITENAME}} сайтэнть лемтеме {{PLURAL:$1|теицязо|теицянзо}}',
 'siteuser'    => '{{SITENAME}}-нь теиця $1',
 'others'      => 'лият',
-'siteusers'   => '{{SITENAME}} сайтэнь {{PLURAL:$2|теиця|теицят}} $1',
+'siteusers'   => '{{SITENAME}} сайтэнть {{PLURAL:$2|теицязо|теицянзо}} $1',
 'creditspage' => 'Лопасонть кинь путовксонзо',
 
 # Spam protection
@@ -1491,6 +1482,13 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'numedits'     => 'Зяроксть витнезь-петнезь (лопа): $1',
 'numtalkedits' => 'Зяроксть витнезь-петнезь (кортнема лопа): $1',
 'numwatchers'  => 'Зяро ванстнить тень мельга: $1',
+
+# Skin names
+'skinname-standard'  => 'Классикань',
+'skinname-nostalgia' => 'ОдПингеньМазы',
+'skinname-myskin'    => 'ЭсьМелемКоряс',
+'skinname-simple'    => 'Шожда',
+'skinname-modern'    => 'НееньШкань',
 
 # Patrol log
 'patrol-log-auto' => '(сонсь теи)',
@@ -1511,7 +1509,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'show-big-image'       => 'Пешксе теевксесь',
 'show-big-image-thumb' => '<small>Васнянь невтевксэнть покшолмазо: $1 × $2 пиксэлт</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'        => 'Од файлатьнень галлереясь',
 'newimages-legend' => 'Сувтеме',
 'newimages-label'  => 'Файлалем (эли пельксэзэ):',

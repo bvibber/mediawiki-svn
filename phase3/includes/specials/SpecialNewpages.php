@@ -70,6 +70,8 @@ class SpecialNewpages extends SpecialPage {
 			// PG offsets not just digits!
 			if ( preg_match( '/^offset=([^=]+)$/', $bit, $m ) )
 				$this->opts->setValue( 'offset',  intval($m[1]) );
+			if ( preg_match( '/^username=(.*)$/', $bit, $m ) )
+				$this->opts->setValue( 'username', $m[1] );
 			if ( preg_match( '/^namespace=(.*)$/', $bit, $m ) ) {
 				$ns = $wgLang->getNsIndex( $m[1] );
 				if( $ns !== false ) {
@@ -281,7 +283,7 @@ class SpecialNewpages extends SpecialPage {
 
 		$feed = new $wgFeedClasses[$type](
 			$this->feedTitle(),
-			wfMsg( 'tagline' ),
+			wfMsgExt( 'tagline', 'parsemag' ),
 			$this->getTitle()->getFullUrl() );
 
 		$pager = new NewPagesPager( $this, $this->opts );
@@ -322,13 +324,6 @@ class SpecialNewpages extends SpecialPage {
 		}
 	}
 
-	/**
-	 * Quickie hack... strip out wikilinks to more legible form from the comment.
-	 */
-	protected function stripComment( $text ) {
-		return preg_replace( '/\[\[([^]]*\|)?([^]]+)\]\]/', '\2', $text );
-	}
-
 	protected function feedItemAuthor( $row ) {
 		return isset( $row->rc_user_text ) ? $row->rc_user_text : '';
 	}
@@ -337,7 +332,7 @@ class SpecialNewpages extends SpecialPage {
 		$revision = Revision::newFromId( $row->rev_id );
 		if( $revision ) {
 			return '<p>' . htmlspecialchars( $revision->getUserText() ) . ': ' .
-				htmlspecialchars( $this->stripComment( $revision->getComment() ) ) . 
+				htmlspecialchars( FeedItem::stripComment( $revision->getComment() ) ) . 
 				"</p>\n<hr />\n<div>" .
 				nl2br( htmlspecialchars( $revision->getText() ) ) . "</div>";
 		}

@@ -152,7 +152,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Tunggəd sa {{SITENAME}}',
 'aboutpage'            => 'Project:Tunggəd',
-'bugreports'           => "Mga report kang ''bug''",
 'disclaimers'          => 'Mga Panginwala',
 'disclaimerpage'       => 'Project:Panginwala nga Pangtanan',
 'edithelp'             => 'Panoytoy sa Pag-ilis',
@@ -230,7 +229,7 @@ Lantawa sa [[Special:Version|version kang page]].',
 
 'upload-file-error' => 'Sayup internal',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile' => 'inayap',
 
 # File deletion
@@ -291,7 +290,7 @@ Lantawa sa [[Special:Version|version kang page]].',
 'tooltip-t-contributions'       => 'Lantawa ang listahan kang mga ginbulig kang user nga ja',
 'tooltip-t-emailuser'           => 'Padarhi kang e-mail ang user nga ja',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Sagap',
 
 # action=purge

@@ -15,8 +15,8 @@ $namespaceNames = array(
 	NS_USER_TALK       => 'Utente_discussioni',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK    => '$1_discussioni',
-	NS_IMAGE           => 'Immàgini',
-	NS_IMAGE_TALK      => 'Immàgini_contièndha'
+	NS_FILE            => 'Immàgini',
+	NS_FILE_TALK       => 'Immàgini_contièndha'
 );
 
 $dateFormats = array(
@@ -116,8 +116,6 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A proposito di {{SITENAME}}',
-'bugreports'           => 'Segnalazioni di malfunzionamento',
-'bugreportspage'       => 'Project:Malfunzionamenti',
 'currentevents'        => 'Attualità',
 'edithelp'             => 'Guida per la modifica o la scrittura di un articolo',
 'edithelppage'         => 'Help:Come_scrivere_un_articolo',
@@ -194,8 +192,13 @@ Per evidenti ragioni di sicurezza, dovresti fare un log in il prima possibile, e
 'passwordsent'            => 'Una nuova password è stata inviata alla casella e-mail registrata per l\'Utente "$1".
 Per favore, fai subito un log in non appena la ricevi.',
 
+# Password reset dialog
+'oldpassword' => 'Vecchia password',
+'newpassword' => 'Nuova password',
+'retypenew'   => 'Riscrivi qui la nuova password',
+
 # Edit pages
-'summary'         => 'Oggetto',
+'summary'         => 'Oggetto:',
 'minoredit'       => 'Questa è una modifica minore',
 'watchthis'       => "Tieni d'occhio questo articolo",
 'savearticle'     => 'Salva la pagina',
@@ -276,9 +279,6 @@ per poter personalizzare le tue preferenze.',
 'skin'                     => 'Aspetto',
 'saveprefs'                => 'Salva preferenze',
 'resetprefs'               => 'Resetta preferenze',
-'oldpassword'              => 'Vecchia password',
-'newpassword'              => 'Nuova password',
-'retypenew'                => 'Riscrivi qui la nuova password',
 'textboxsize'              => 'Dimensione della casella di edizione',
 'rows'                     => 'Righe',
 'columns'                  => 'Colonne',
@@ -319,7 +319,7 @@ per fare lo upload di files.',
 'uploadtext'        => "'''FERMA!''' Prima di effettuare un upload su {{SITENAME}}, accertati di avere ben letto e soprattutto compreso
 le regole di {{SITENAME}} sull'uso delle immagini.
 
-Per visualizzare o cercare immagini precedentemente caricate su {{SITENAME}}, vai alla [[Special:ImageList|lista delle immagini già caricate]].
+Per visualizzare o cercare immagini precedentemente caricate su {{SITENAME}}, vai alla [[Special:FileList|lista delle immagini già caricate]].
 Uploads e cancellazioni delle immagini sono registrati nello
 upload log.
 
@@ -351,10 +351,10 @@ Tutti i tempi indicati sono calcolati sul fuso orario del server.',
 'savefile'          => 'Salva file',
 'uploadedimage'     => 'caricato "[[$1]]"',
 
-# Special:ImageList
-'imagelist' => 'Lista delle immagini',
+# Special:ListFiles
+'listfiles' => 'Lista delle immagini',
 
-# Image description page
+# File description page
 'imagelinks'     => 'Link alle immagini',
 'linkstoimage'   => 'Le pagine seguenti linkano questa immagine:',
 'nolinkstoimage' => 'Nessuna pagina linka questa immagine.',
@@ -538,7 +538,7 @@ Scegli, per cortesia, un titolo diverso per l'articolo.",
 'movedto'          => 'spostata a',
 'movetalk'         => 'Sposta anche la corrispondente pagina "discussione", se possibile.',
 
-# Special:NewImages
+# Special:NewFiles
 'imagelisttext' => 'Qui di seguito una lista di $1 immagini, ordinate per $2.',
 'ilsubmit'      => 'Cerca',
 'bydate'        => 'data',

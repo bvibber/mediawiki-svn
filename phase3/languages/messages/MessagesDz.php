@@ -120,8 +120,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} གི་སྐོར་ལས།',
 'aboutpage'            => 'Project:སྐོར་ལས།',
-'bugreports'           => 'སྐྱོན་གྱི་སྙན་ཞུ།',
-'bugreportspage'       => 'Project:སྐྱོན་གྱི་སྙན་ཞུ།',
 'copyrightpage'        => '{{ns:project}}:འདྲ་བཤུས་འབད་ཆ།',
 'currentevents'        => 'ད་ལྟོའི་བྱུང་ལས།',
 'currentevents-url'    => 'Project:ད་ལྟོའི་བྱུང་ལས།',
@@ -207,6 +205,9 @@ $messages = array(
 'eauthentsent'            => 'ངེས་དཔྱད་གློག་འཕྲིན་འདི་ གདམ་ཁ་བརྐྱབས་ཡོད་པའི་གློག་འཕྲིན་ཁ་བྱང་ལུ་ བཏང་ཡོདཔ།
 གཞན་གློག་འཕྲིན་གང་རུང་ རྩིས་ཐོ་ནང་མ་གཏང་པའི་ཧེ་མ་ རྩིས་ཐོ་འདི་ཁྱོད་ར་གི་ཨིན་པའི་ངེས་དཔྱད་འབད་ནི་ལུ་ གློག་འཕྲིན་ནང་གི་བཀོད་རྒྱ་དང་འཁྲིལ་དགོཔ་ཨིན།',
 
+# Password reset dialog
+'retypenew' => 'ཆོག་ཡིག་གསརཔ་ལོག་ཡིག་དཔར་རྐྱབས:',
+
 # Edit page toolbar
 'bold_sample'     => 'ཚིག་ཡིག་རྒྱགས་པ།',
 'bold_tip'        => 'ཚིག་ཡིག་རྒྱགས་པ།',
@@ -228,8 +229,8 @@ $messages = array(
 'hr_tip'          => 'ཐད་སྙོམས་གྲལ་ཐིག་ (ཉུང་སུ་སྦེ་ལག་ལེན་འཐབ)',
 
 # Edit pages
-'summary'                => 'བཅུད་དོན།',
-'subject'                => 'དོན་ཚན་/གཙོ་དོན།',
+'summary'                => 'བཅུད་དོན།:',
+'subject'                => 'དོན་ཚན་/གཙོ་དོན།:',
 'minoredit'              => 'འདི་ གལ་གནད་ཆུང་བའི་ཞུན་དག་ཅིག་ཨིན།',
 'watchthis'              => 'ཤོག་ལེབ་འདི་ལུ་བལྟ།',
 'savearticle'            => 'ཤོག་ལེབ་སྲུངས།',
@@ -238,7 +239,7 @@ $messages = array(
 'showdiff'               => 'བསྒྱུར་བཅོས་ཚུ་སྟོན།',
 'anoneditwarning'        => "'''ཉེན་བརྡ:''' ཁྱོད་ཀྱིས་ ནང་བསྐྱོད་མ་འབད་བས།
 ཁྱོད་ཀྱི་ ཨའི་པི་ཁ་བྱང་འདི་ ཤོག་ལེབ་ཀྱི་ཞུན་དག་སྤྱོད་ཤུལ་འདི་ནང་ ཐོ་བཀོད་འབད་དེ་བཞག་འོང་།",
-'summary-preview'        => 'བཅུད་དོན་སྔོན་ལྟ།',
+'summary-preview'        => 'བཅུད་དོན་སྔོན་ལྟ།:',
 'blockedtext'            => "<big>'''ཁྱོད་ཀྱི་ ལག་ལེན་པའི་མིང་ ཡང་ན་ ཨའི་པི་ཁ་བྱང་འདི་ བཀག་དམ་འབད་ཡོདཔ།'''</big>
 
 དེ་ཡང་ $1 གིས་ བཀག་ཡོདཔ། བཀག་དགོ་པའི་རྒྱུ་མཚན་འདི་  ''$2''ཨིན་པས།
@@ -315,7 +316,6 @@ $messages = array(
 # Preferences page
 'preferences'   => 'དགའ་གདམ།',
 'mypreferences' => 'ངེ་གི་དགའ་གདམ།',
-'retypenew'     => 'ཆོག་ཡིག་གསརཔ་ལོག་ཡིག་དཔར་རྐྱབས:',
 
 'grouppage-sysop' => '{{ns:project}}:བདག་སྐྱོང་པ།',
 
@@ -357,10 +357,10 @@ $messages = array(
 'uploadlogpage' => 'ལོག་སྐྱེལ་བཙུགས་འབད།',
 'uploadedimage' => '"[[$1]]" སྐྱེལ་བཙུགས་འབད་ཡོདཔ།',
 
-# Special:ImageList
-'imagelist' => 'ཡིག་སྣོད་ཐོ་ཡིག།',
+# Special:ListFiles
+'listfiles' => 'ཡིག་སྣོད་ཐོ་ཡིག།',
 
-# Image description page
+# File description page
 'filehist'                  => 'ཡིག་སྣོད་སྤྱོད་ཤུལ།',
 'filehist-help'             => 'ཡིག་སྣོད་འདི་ དེ་བསྒང་སྟོན་དོ་བཟུམ་སྦེ་ བལྟ་ནི་གི་དོན་ལུ་ ཚེས་གྲངས་/ཆུ་ཚོད་གུ་ ཨེབ་གཏང་འབད།',
 'filehist-current'          => 'ད་ལྟོ།',
@@ -659,7 +659,7 @@ $messages = array(
 'show-big-image'       => 'ཧུམ་ཆ་གང་།',
 'show-big-image-thumb' => '<small>སྔོན་ལྟའི་ཚད་: $1 × $2 པིག་སེལསི་</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'ཡིག་སྣོད་གསར་པའི་སྟོན་ཁང་།',
 
 # Bad image list

@@ -9,6 +9,19 @@
  * @author Wōdenhelm
  */
 
+$namespaceNames = array(
+	NS_SPECIAL          => 'Syndrig',
+	NS_TALK             => 'Gesprec',
+	NS_FILE             => 'Biliþ',
+	NS_FILE_TALK        => 'Biliþgesprec',
+	NS_TEMPLATE         => 'Bysen',
+	NS_TEMPLATE_TALK    => 'Bysengesprec',
+	NS_HELP             => 'Help',
+	NS_HELP_TALK        => 'Helpgesprec',
+	NS_CATEGORY         => 'Flocc',
+	NS_CATEGORY_TALK    => 'Floccgesprec',
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'          => 'Undermearcian bendas:',
@@ -222,6 +235,11 @@ Edscēawa þīne wrītunge, oþþe brūc þone form under tō settene nīwne br�
 'accountcreated'             => 'Hordcleofan gescapen',
 'loginlanguagelabel'         => 'Sprǣc: $1',
 
+# Password reset dialog
+'oldpassword' => 'Eald gelēafnesword:',
+'newpassword' => 'Nīwe gelēafnesword',
+'retypenew'   => 'Nīwe gelēafnesword edwrītan',
+
 # Edit page toolbar
 'bold_sample'     => 'Beald traht',
 'bold_tip'        => 'Beald traht',
@@ -238,7 +256,7 @@ Edscēawa þīne wrītunge, oþþe brūc þone form under tō settene nīwne br�
 'sig_tip'         => 'Þín namansegn mid tídstempunge',
 
 # Edit pages
-'summary'                => 'Scortnes',
+'summary'                => 'Scortnes:',
 'minoredit'              => 'Þēos is lȳtlu ādihtung',
 'savearticle'            => 'Sparian tramet',
 'showpreview'            => 'Forescēawian',
@@ -315,9 +333,6 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'prefs-rc'           => 'Nīwlica hweorfunga',
 'prefs-watchlist'    => 'Behealdnestalu',
 'saveprefs'          => 'Sparian',
-'oldpassword'        => 'Eald gelēafnesword:',
-'newpassword'        => 'Nīwe gelēafnesword',
-'retypenew'          => 'Nīwe gelēafnesword edwrītan',
 'rows'               => 'Rǣwa',
 'columns'            => 'Sȳla:',
 'searchresultshead'  => 'Sōcnfintan',
@@ -364,15 +379,15 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 
 'nolicense' => 'Nǣnne gecorenne',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Sēcan biliþnaman:',
-'imagelist'             => 'Biliþgetalu',
-'imagelist_date'        => 'Tælmearc',
-'imagelist_name'        => 'Nama',
-'imagelist_user'        => 'Brūcend',
-'imagelist_description' => 'Tōwritennes',
+# Special:ListFiles
+'listfiles_search_for'  => 'Sēcan biliþnaman:',
+'listfiles'             => 'Biliþgetalu',
+'listfiles_date'        => 'Tælmearc',
+'listfiles_name'        => 'Nama',
+'listfiles_user'        => 'Brūcend',
+'listfiles_description' => 'Tōwritennes',
 
-# Image description page
+# File description page
 'filehist-user'  => 'Brūcend',
 'imagelinks'     => 'Biliþbendas',
 'linkstoimage'   => 'Þā folgendan trametas bindaþ tō þissum biliðe:',
@@ -600,7 +615,7 @@ Bidde cēos ōðerne naman.',
 'imagemaxsize' => 'Settan biliðu on biliþgemearcungtrametum tō:',
 'thumbsize'    => 'Þumannæglmicelnes:',
 
-# Special:NewImages
+# Special:NewFiles
 'imagelisttext' => 'Under is getalu $1 biliða gedæfted $2.',
 'noimages'      => 'Nāht tō sēonne.',
 'ilsubmit'      => 'Sēcan',

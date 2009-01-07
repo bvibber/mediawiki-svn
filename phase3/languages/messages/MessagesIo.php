@@ -15,22 +15,25 @@
 $namespaceNames = array(
 	NS_MEDIA          => 'Media',
 	NS_SPECIAL        => 'Specala',
-	NS_MAIN           => '',
 	NS_TALK           => 'Debato',
 	NS_USER           => 'Uzanto',
 	NS_USER_TALK      => 'Uzanto_Debato',
-	# NS_PROJECT set by \$wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_Debato',
-	NS_IMAGE          => 'Imajo',
-	NS_IMAGE_TALK     => 'Imajo_Debato',
+	NS_FILE           => 'Imajo',
+	NS_FILE_TALK      => 'Imajo_Debato',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'MediaWiki_Debato',
-	NS_TEMPLATE       => 'Shablono',
-	NS_TEMPLATE_TALK  => 'Shablono_Debato',
+	NS_TEMPLATE       => 'Modelo',
+	NS_TEMPLATE_TALK  => 'Modelo_Debato',
 	NS_HELP           => 'Helpo',
 	NS_HELP_TALK      => 'Helpo_Debato',
 	NS_CATEGORY       => 'Kategorio',
 	NS_CATEGORY_TALK  => 'Kategorio_Debato',
+);
+
+$namespaceAliases = array(
+	'Shablono' => NS_TEMPLATE,
+	'Shablono_Debato' => NS_TEMPLATE_TALK,
 );
 
 $messages = array(
@@ -126,7 +129,7 @@ $messages = array(
 'mytalk'         => 'Mea diskuti',
 'anontalk'       => 'Diskuto relatant ad ica IP',
 'navigation'     => 'Navigado',
-'and'            => 'ed',
+'and'            => '&#32;ed',
 
 # Metadata in edit box
 'metadata_help' => 'Metadonaji:',
@@ -184,8 +187,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Pri {{SITENAME}}',
 'aboutpage'            => 'Project:Pri',
-'bugreports'           => 'Informajo pri erori',
-'bugreportspage'       => 'Project:Informajo pri erori',
 'copyright'            => 'La kontenajo esas disponebla sub $1.',
 'currentevents'        => 'Aktualaji',
 'currentevents-url'    => 'Project:Aktualaji',
@@ -328,6 +329,11 @@ Voluntez enirar altrafoye pos recevar ol.',
 'createaccount-title'        => 'Kreo di konto en {{SITENAME}}',
 'loginlanguagelabel'         => 'Linguo: $1',
 
+# Password reset dialog
+'oldpassword' => 'Anciena pasovorto:',
+'newpassword' => 'Nova pasovorto:',
+'retypenew'   => 'Riskribez la nova pasovorto:',
+
 # Edit page toolbar
 'bold_sample'     => 'Dika literi',
 'bold_tip'        => 'Dika literi',
@@ -351,8 +357,8 @@ Voluntez enirar altrafoye pos recevar ol.',
 'hr_tip'          => 'Horizontala lineo (ne trouzez ol)',
 
 # Edit pages
-'summary'              => 'Rezumo',
-'subject'              => 'Temo / Titulo',
+'summary'              => 'Rezumo:',
+'subject'              => 'Temo / Titulo:',
 'minoredit'            => 'Ico esas mikra chanjo',
 'watchthis'            => 'Surveyez ica artiklo',
 'savearticle'          => 'Registragar pagino',
@@ -482,9 +488,6 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'prefs-misc'         => 'Mixaji',
 'saveprefs'          => 'Registragar',
 'resetprefs'         => 'Riestablisar preferaji',
-'oldpassword'        => 'Anciena pasovorto:',
-'newpassword'        => 'Nova pasovorto:',
-'retypenew'          => 'Riskribez la nova pasovorto:',
 'textboxsize'        => 'Grandeso dil areo por texto',
 'rows'               => 'Linei:',
 'columns'            => 'Kolumni:',
@@ -529,7 +532,7 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'nchanges'          => '$1 {{PLURAL:$1|chanjo|chanji}}',
 'recentchanges'     => 'Recenta chanji',
 'recentchangestext' => 'Regardez la maxim recenta chanji en Wiki per ica pagino.',
-'rcnote'            => "Infre esas la lasta {{PLURAL:$1|'''1''' chanjo|'''$1''' chanji}} dum la lasta {{PLURAL:$2|dio|'''$2''' dii}} ($3).",
+'rcnote'            => "Infre esas la lasta {{PLURAL:$1|'''1''' chanjo|'''$1''' chanji}} dum la lasta {{PLURAL:$2|dio|'''$2''' dii}} en $5, $4.",
 'rcnotefrom'        => "Infre esas la lasta chanji depos '''$2''' (montrita til '''$1''').",
 'rclistfrom'        => 'Montrar nova chanji startante de $1',
 'rcshowhideminor'   => '$1 mikra redakti',
@@ -575,14 +578,14 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'uploadedimage'     => 'adkargita "[[$1]]"',
 'uploaddisabled'    => 'Pardonez, la adkargo esas desaktiva.',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'arkivo',
-'imagelist'      => 'Listo di imaji',
-'imagelist_date' => 'Dato',
-'imagelist_name' => 'Nomo',
-'imagelist_user' => 'Uzanto',
+'listfiles'      => 'Listo di imaji',
+'listfiles_date' => 'Dato',
+'listfiles_name' => 'Nomo',
+'listfiles_user' => 'Uzanto',
 
-# Image description page
+# File description page
 'filehist'                       => 'Historio dil arkivo',
 'filehist-help'                  => 'Klikez sur la dato/horo por vidar arkivo quale ol aparis ye ta tempo.',
 'filehist-current'               => 'aktuala',
@@ -989,7 +992,7 @@ Voluntez selektar altra nomo.',
 # Media information
 'widthheightpage' => '$1×$2, $3 {{PLURAL:$3|pagino|pagini}}',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'     => 'Galerio di nova arkivi',
 'imagelisttext' => "Infre esas listo di '''$1''' {{PLURAL:$1|arkivo|arkivi}} rangizita $2.",
 'showhidebots'  => '($1 bot-i)',

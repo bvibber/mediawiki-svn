@@ -124,7 +124,7 @@ $messages = array(
 'mytalk'         => 'Mu ságastallan',
 'anontalk'       => 'Ságastala dán IP-čujuhusain',
 'navigation'     => 'Navigašuvdna',
-'and'            => 'ja',
+'and'            => '&#32;ja',
 
 # Metadata in edit box
 'metadata_help' => 'Sisdoallogovvádusat:',
@@ -150,7 +150,7 @@ $messages = array(
 'deletethispage'    => 'Sihko dán siiddu',
 'undelete_short'    => 'Máhcat {{PLURAL:$1|ovtta rievdadusa|$1 rievdadusa}}',
 'protect'           => 'Suodjal',
-'protect_change'    => 'rievdat suodjálusa',
+'protect_change'    => 'rievdat',
 'protectthispage'   => 'Suodjal dán siiddu',
 'unprotect'         => 'Sihko suodjalusa',
 'unprotectthispage' => 'Sihko dán siiddu suodjalusa',
@@ -185,8 +185,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Dieđut {{GRAMMAR:elative|{{SITENAME}}}}',
 'aboutpage'            => 'Project:Dieđut',
-'bugreports'           => 'Váttisvuođat ja buorridanevttohusat',
-'bugreportspage'       => 'Project:Váttisvuođat ja buorridanevttohusat',
 'copyright'            => 'Sisdoalu sáhttá geavahit liseanssain $1.',
 'currentevents'        => 'Áigeguovdil',
 'currentevents-url'    => 'Project:Áigeguovdil',
@@ -210,6 +208,7 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Dutnje lea ođđa dieđut siiddus $1',
 'editsection'             => 'rievdat',
 'editold'                 => 'rievdat',
+'editlink'                => 'ođasmahte',
 'editsectionhint'         => 'Rievdat oasi $1',
 'toc'                     => 'Sisdoallu',
 'showtoc'                 => 'čájet',
@@ -329,15 +328,18 @@ Du geavaheaddjidovddaldat lea dál anus.
 'loginlanguagelabel'         => 'Giella: $1',
 
 # Password reset dialog
-'resetpass'               => 'Suollemassáni gurren',
-'resetpass_announce'      => 'Čálligohtet sisa e-poasttain sáddejuvvon suollemassánin. Fertet addit ođđa suollemassáni dasa:',
-'resetpass_text'          => '<!-- Lasit dasa teavstta -->',
-'resetpass_header'        => 'Ođđa suollemassáni čállin',
-'resetpass_submit'        => 'Čále suollemassáni ja čálligoađe sisa',
-'resetpass_success'       => 'Suollemassáni rievdadeapmim lihkosmuvai.',
-'resetpass_bad_temporary' => 'Dohkemeahttun gaskabottosaš suollemassátni. Leat sáhttán čállit ođđa suollemassáni dahje bivdán ođđa gaskabottosaš suollemassáni.',
-'resetpass_forbidden'     => 'Suollemassániid rievdan ii lihkosmuva dán wikis.',
-'resetpass_missing'       => 'Ii teaksta.',
+'resetpass'                 => 'Suollemassáni gurren',
+'resetpass_announce'        => 'Čálligohtet sisa e-poasttain sáddejuvvon suollemassánin. Fertet addit ođđa suollemassáni dasa:',
+'resetpass_text'            => '<!-- Lasit dasa teavstta -->',
+'resetpass_header'          => 'Ođđa suollemassáni čállin',
+'oldpassword'               => 'Boares suollemassátni',
+'newpassword'               => 'Ođđa suollemassátni',
+'retypenew'                 => 'Ođđa suollemassátni ođđasit',
+'resetpass_submit'          => 'Čále suollemassáni ja čálligoađe sisa',
+'resetpass_success'         => 'Suollemassáni rievdadeapmim lihkosmuvai.',
+'resetpass_bad_temporary'   => 'Dohkemeahttun gaskabottosaš suollemassátni. Leat sáhttán čállit ođđa suollemassáni dahje bivdán ođđa gaskabottosaš suollemassáni.',
+'resetpass_forbidden'       => 'Suollemassániid rievdan ii lihkosmuva dán wikis.',
+'resetpass-submit-loggedin' => 'Molsso suollemassáni',
 
 # Edit page toolbar
 'bold_sample'     => 'Buoiddes teaksta',
@@ -361,8 +363,8 @@ Du geavaheaddjidovddaldat lea dál anus.
 'hr_tip'          => 'Láskkosárggis',
 
 # Edit pages
-'summary'                  => 'Čoahkkáigeassu',
-'subject'                  => 'Fáddá',
+'summary'                  => 'Čoahkkáigeassu:',
+'subject'                  => 'Fáddá:',
 'minoredit'                => 'Dát lea unna rievdadus',
 'watchthis'                => 'Lasit čuovvunlistui',
 'savearticle'              => 'Vurke siiddu',
@@ -374,8 +376,8 @@ Du geavaheaddjidovddaldat lea dál anus.
 'missingsummary'           => 'It leat čállán čoahkkáigeasu. Jus válljet Vurke ođđasit, de rievdadusat maid ráhkadit vurkejuvvo čoahkkáigeasuhaga.',
 'missingcommenttext'       => 'Čále čoahkkáigeasu vuollái.',
 'missingcommentheader'     => 'It leat čállán bajilčállaga du oaivilii. Vállje <em>Vurke</em>, jus it hálit čállit bajilčállaga.',
-'summary-preview'          => 'Čoahkkáigeasu ovdalgihtiigeahččan',
-'subject-preview'          => 'Bájilčállaga ovdalgihtiigeahččan',
+'summary-preview'          => 'Čoahkkáigeasu ovdalgihtiigeahččan:',
+'subject-preview'          => 'Bájilčállaga ovdalgihtiigeahččan:',
 'blockedtitle'             => 'Geavaheaddji lea cakkastallojuvvon',
 'blockedoriginalsource'    => 'Siiddu ”$1” prográmmagálvu:',
 'blockededitsource'        => 'Du rievdadusat siidui ”$1”:',
@@ -514,9 +516,6 @@ $1 | $2',
 'prefs-misc'               => 'Eará',
 'saveprefs'                => 'Vurke ásahusaid',
 'resetprefs'               => 'Máhcat vurkejuvvon ásahusaid',
-'oldpassword'              => 'Boares suollemassátni',
-'newpassword'              => 'Ođđa suollemassátni',
-'retypenew'                => 'Ođđa suollemassátni ođđasit',
 'textboxsize'              => 'Rievdadeapmi',
 'rows'                     => 'Gurgadasat',
 'columns'                  => 'Kolumnat',
@@ -645,17 +644,17 @@ $1 | $2',
 'upload_source_url'  => ' (almmolaš URL-čujuhus)',
 'upload_source_file' => ' (fiila dihtoris)',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Nammaohcan',
+# Special:ListFiles
+'listfiles_search_for'  => 'Nammaohcan',
 'imgfile'               => 'fiila',
-'imagelist'             => 'Fiilalogahallan',
-'imagelist_date'        => 'Beaivemearri',
-'imagelist_name'        => 'Namma',
-'imagelist_user'        => 'Vurkejeaddji',
-'imagelist_size'        => 'Sturrodat',
-'imagelist_description' => 'Govvádus',
+'listfiles'             => 'Fiilalogahallan',
+'listfiles_date'        => 'Beaivemearri',
+'listfiles_name'        => 'Namma',
+'listfiles_user'        => 'Vurkejeaddji',
+'listfiles_size'        => 'Sturrodat',
+'listfiles_description' => 'Govvádus',
 
-# Image description page
+# File description page
 'filehist'                  => 'Fiilla historjá',
 'filehist-help'             => 'Go deaddilat beaivemeari, oainnat makká fiila lei dalle.',
 'filehist-deleteall'        => 'sihko buot',
@@ -1069,6 +1068,7 @@ Siiddus $2 lea listu maŋimus sihkomiin.',
 'filemissing' => 'Fiila váilo',
 
 # Special:Import
+'import-comment'        => 'Sivva',
 'import-revision-count' => '$1 {{PLURAL:$1|veršuvdna|veršuvnna}}',
 
 # Import log
@@ -1161,7 +1161,7 @@ Siiddus $2 lea listu maŋimus sihkomiin.',
 # Media information
 'widthheightpage' => '$1×$2, $3 siiddut',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Ođđa govat',
 'imagelisttext'         => "Vuolábealde lea '''$1''' fiilla ordnejuvvon $2.",
 'ilsubmit'              => 'Oza',

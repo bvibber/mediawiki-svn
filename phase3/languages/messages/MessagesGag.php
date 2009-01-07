@@ -139,7 +139,7 @@ $messages = array(
 'mytalk'         => 'Sözleşmäk sayfam',
 'anontalk'       => 'Bu IP-nin konuşmaları',
 'navigation'     => 'Saytda yol bulmaa',
-'and'            => 'hem',
+'and'            => '&#32;hem',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -200,8 +200,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} için',
 'aboutpage'            => 'Project:Uurunda',
-'bugreports'           => 'Yannışnık raportları',
-'bugreportspage'       => 'Project:Yannışnık raportları',
 'copyright'            => 'İçersindeki $1 altında.',
 'copyrightpagename'    => '{{SITENAME}} korunmak hakları',
 'copyrightpage'        => '{{ns:project}}:Avtorluk hakları',
@@ -358,6 +356,7 @@ O zamana kadar ani e-maildaki instrukțiyalar yapılmaycêk hem doorulanmaycêk 
 'loginlanguagelabel'         => 'Dil: $1',
 
 # Password reset dialog
+'retypenew'           => 'Eni parolu tekrar girin',
 'resetpass_forbidden' => '{{SITENAME}} saytında parol yok nicä diiştirilsin',
 
 # Edit page toolbar
@@ -381,8 +380,8 @@ O zamana kadar ani e-maildaki instrukțiyalar yapılmaycêk hem doorulanmaycêk 
 'hr_tip'          => 'Gorizontal liniya (çok sık kullanmayın)',
 
 # Edit pages
-'summary'                => 'Kısaca',
-'subject'                => 'Konu/başlık',
+'summary'                => 'Kısaca:',
+'subject'                => 'Konu/başlık:',
 'minoredit'              => 'Küçük diişilmäkler',
 'watchthis'              => 'Bak bu sayfaa',
 'savearticle'            => 'Sayfayı registrat et',
@@ -391,8 +390,8 @@ O zamana kadar ani e-maildaki instrukțiyalar yapılmaycêk hem doorulanmaycêk 
 'showlivepreview'        => 'Cannı ön siir',
 'showdiff'               => 'Diişilmäkleri göster',
 'anoneditwarning'        => 'Sessiya açmadınız deyni yazının diişmäk istoriyasına diil nik, IP adresiniz registrat olunacêk.',
-'summary-preview'        => 'Ön siir özeti',
-'subject-preview'        => 'Konu/başlık ön siiri',
+'summary-preview'        => 'Ön siir özeti:',
+'subject-preview'        => 'Konu/başlık ön siiri:',
 'blockedtitle'           => 'Kullanıcı kösteklendi.',
 'blockedtext'            => '<big>Kullanıcı adınız yaki parolunuz $1 tarafından kösteklendi.</big>
 
@@ -503,7 +502,6 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'preferences'   => 'Seçimner',
 'mypreferences' => 'Seçimnerim',
 'skin-preview'  => 'Ön siir',
-'retypenew'     => 'Eni parolu tekrar girin',
 
 # User rights
 'editinguser' => '"$1" sayfasını diiştirersiniz ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])',
@@ -547,10 +545,10 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'uploadlogpage' => 'Fayl üklemäk jurnalları',
 'uploadedimage' => 'Üklenen: "[[$1]]"',
 
-# Special:ImageList
-'imagelist' => 'Pätret listası',
+# Special:ListFiles
+'listfiles' => 'Pätret listası',
 
-# Image description page
+# File description page
 'filehist'                  => 'Fayl istoriyası',
 'filehist-help'             => 'Fayl istoriyasın görmää deyni Gün/Zaman bölümündeki dataları tıklayınız.',
 'filehist-current'          => 'Şindiki',
@@ -858,7 +856,7 @@ Yalvarêrêz başka bir ad seçmää.',
 'show-big-image'       => 'Taman aydınnık',
 'show-big-image-thumb' => '<small>Ön siir ölçüsü: $1 × $2 piksel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Eni pätretler',
 
 # Bad image list

@@ -9,6 +9,25 @@
  * @author Wikimistusik
  */
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Mamind',
+	NS_SPECIAL          => 'Aptaca',
+	NS_TALK             => 'Prilara',
+	NS_USER             => 'Favesik',
+	NS_USER_TALK        => 'Favesikprilara',
+	NS_PROJECT_TALK     => '$1 prilara',
+	NS_FILE             => 'Ewava',
+	NS_FILE_TALK        => 'Ewavaprilara',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki prilara',
+	NS_TEMPLATE         => 'Teza',
+	NS_TEMPLATE_TALK    => 'Tezaprilara',
+	NS_HELP             => 'Pomara',
+	NS_HELP_TALK        => 'Pomaraprilara',
+	NS_CATEGORY         => 'Loma',
+	NS_CATEGORY_TALK    => 'Lomaprilara',
+);
+
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'JontolafGraskakseem' ),
 	'BrokenRedirects'           => array( 'EmpayanGraskakseem' ),
@@ -16,7 +35,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Suzdasiki' ),
 	'Recentchanges'             => array( 'NoeltafBetakseem' ),
 	'Upload'                    => array( 'Kalvajara' ),
-	'Imagelist'                 => array( 'Ewaveem' ),
+	'Listfiles'                 => array( 'Ewaveem' ),
 	'Newimages'                 => array( 'WarzafEwaveem' ),
 	'Listusers'                 => array( 'Favesikeem' ),
 	'Statistics'                => array( 'Enkopaceem' ),
@@ -205,7 +224,7 @@ $messages = array(
 'mytalk'         => 'Jinafo keyaksexo',
 'anontalk'       => 'Prilara kan IP mane',
 'navigation'     => 'Bugrablera',
-'and'            => 'is',
+'and'            => '&#32;is',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -268,8 +287,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Icde {{SITENAME}}',
 'aboutpage'            => 'Project:Icdeuca',
-'bugreports'           => 'Roklamunsteks',
-'bugreportspage'       => 'Project:Roklamunsteks',
 'copyright'            => 'Deraykan cek kare $1.',
 'copyrightpagename'    => 'sorta {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Digirarokeem',
@@ -486,12 +503,14 @@ Meka 'email' staksa icde vlevefa staava zo staksatar.",
 'resetpass_announce'      => "Rin kan ugalorafa 'email' beksa va int pilkomodayal.
 Ta da wan zo pilkomodal, va warzaf remravlem batlize gobazel :",
 'resetpass_header'        => 'Va beksa tolbazel !',
+'oldpassword'             => 'Savsaf remravlem',
+'newpassword'             => 'Warzaf remravlem',
+'retypenew'               => 'Va warzaf remravlem gruyel',
 'resetpass_submit'        => 'Va beksa bazel nume zo dogluyatal !',
 'resetpass_success'       => 'Rinaf remravlem kiewatcon su zo betar ! Nume rinafa dogluyara tir...',
 'resetpass_bad_temporary' => 'Meenaf ugaloraf remravlem.
 Rin lanon vaon al betanhal oke va warzaf al kucilal.',
 'resetpass_forbidden'     => 'Beksa koe {{SITENAME}} me zo robetar',
-'resetpass_missing'       => 'Me tazukorig.',
 
 # Edit page toolbar
 'bold_sample'     => 'Bold krent',
@@ -516,8 +535,8 @@ Rin lanon vaon al betanhal oke va warzaf al kucilal.',
 'hr_tip'          => 'Zidafi gluyasiki (me faversel)',
 
 # Edit pages
-'summary'                   => 'Vildeks',
-'subject'                   => 'Detce/vergumvelt',
+'summary'                   => 'Vildeks:',
+'subject'                   => 'Detce/vergumvelt:',
 'minoredit'                 => 'Betamaks.',
 'watchthis'                 => 'Va bat teliz suzdá',
 'savearticle'               => 'Giwara',
@@ -527,8 +546,8 @@ Rin lanon vaon al betanhal oke va warzaf al kucilal.',
 'showdiff'                  => 'Nedira va betakseem',
 'anoneditwarning'           => "'''Obral !''' Rin til medogluyayas. Rinafe IP mane ko bubetarizvot zo stragatar.",
 'missingcommenttext'        => 'Va sebuks vlevon bazel, vay !',
-'summary-preview'           => 'Abdinedira va vildeks',
-'subject-preview'           => 'Abdinedira va detce ik kroj',
+'summary-preview'           => 'Abdinedira va vildeks:',
+'subject-preview'           => 'Abdinedira va detce ik kroj:',
 'blockedtitle'              => 'Elekan favesik',
 'blockedtext'               => '<big>\'\'\'Rinafa favesikpata oku IP mane tid elekayane.\'\'\'</big>
 
@@ -809,9 +828,6 @@ contenant tous les termes apparaissent dans les résultats).",
 'prefs-misc'               => 'Gedrafa lodamaca yo',
 'saveprefs'                => 'Va lodamaceem tuená',
 'resetprefs'               => 'Va lodamceem dimplekú',
-'oldpassword'              => 'Savsaf remravlem',
-'newpassword'              => 'Warzaf remravlem',
-'retypenew'                => 'Va warzaf remravlem gruyel',
 'textboxsize'              => 'Sutelaxo',
 'rows'                     => 'Emacekeem',
 'columns'                  => 'Brizeem',
@@ -972,11 +988,11 @@ Bu koe [[Special:Watchlist|rinafi suzdasiki]] tid '''vastaakorafu'''.",
 'upload_directory_read_only'  => 'Sutera ko kalvajarabonja ($1) gan web zanisiko zo pour.',
 'uploaderror'                 => 'Rokla',
 'uploadtext'                  => "Ta iyeltakkalvajara, va vlevefi tazukasiki favel.
-Ta wira va kalvajayan iyeltak oku aneyara, ko [[Special:ImageList|vexala dem kalvajayan iyeltak]] grablel, kalvajaks is sulaks \"log\" tid koe [[Special:Log/upload|kalvajara \"log\"]].
+Ta wira va kalvajayan iyeltak oku aneyara, ko [[Special:FileList|vexala dem kalvajayan iyeltak]] grablel, kalvajaks is sulaks \"log\" tid koe [[Special:Log/upload|kalvajara \"log\"]].
 
 Ta kobura va iyeltak, koe tazukasiki va gluyasiki favel
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' oke
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|alt text]]</nowiki>''' oke
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' ta rontifa gluyara va iyeltak.",
 'upload-permitted'            => 'Rictan iyeltakordeem : $1.',
 'upload-preferred'            => 'Abdualban iyeltakordeem : $1.',
@@ -1012,8 +1028,8 @@ Va amidaf yolt vay kiblal !',
 'fileexists-thumb'            => "<center>'''Kruldes iyeltak'''</center>",
 'fileexists-thumbnail-yes'    => 'Iyeltak nuvelar da tir lumamafa ewava <i>(aluk)</i>. Vay va <strong><tt>$1</tt></strong> iyeltak stujel.<br />
 Ede stujen iyeltak tir mila lumanhafa ewava, va aptaf aluk me kalvajal !',
-'fileexists-forbidden'        => 'Milyoltaf iyeltak ixam krulder; vay dimpil aze va memilyoltaf bat iyeltak kalvajal. [[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'Koe pakana bonja milyoltaf iyeltak ixam tir; vay dimpil aze kan ar yolt va bat iyeltak kalvajal. [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Milyoltaf iyeltak ixam krulder; vay dimpil aze va memilyoltaf bat iyeltak kalvajal. [[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'Koe pakana bonja milyoltaf iyeltak ixam tir; vay dimpil aze kan ar yolt va bat iyeltak kalvajal. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Bat iyeltak tir jontolaca ke {{PLURAL:$1|iyeltak|iyeltak}}:',
 'successfulupload'            => 'Ksudanhara',
 'uploadwarning'               => 'Obral !',
@@ -1050,17 +1066,17 @@ Sulara \"log\" va batu bu krafiason batlize zo nedir :",
 'upload_source_url'  => ' (enafe sanegon rovansane URL mane)',
 'upload_source_file' => ' (iyeltak koe rinafo vusiko)',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Aneyara va ewavayolt :',
+# Special:ListFiles
+'listfiles_search_for'  => 'Aneyara va ewavayolt :',
 'imgfile'               => 'iyeltak',
-'imagelist'             => 'Ewavavexala',
-'imagelist_date'        => 'Evla',
-'imagelist_name'        => 'Yolt',
-'imagelist_user'        => 'Favesik',
-'imagelist_size'        => 'Lum',
-'imagelist_description' => 'Pimtara',
+'listfiles'             => 'Ewavavexala',
+'listfiles_date'        => 'Evla',
+'listfiles_name'        => 'Yolt',
+'listfiles_user'        => 'Favesik',
+'listfiles_size'        => 'Lum',
+'listfiles_description' => 'Pimtara',
 
-# Image description page
+# File description page
 'filehist'                       => 'Iyeltakizvot',
 'filehist-help'                  => 'Ta da va iyeltak wil dum in batoulon awir va evla/bartiv vulegal !',
 'filehist-deleteall'             => 'Sulara va kotcoba',
@@ -1678,7 +1694,7 @@ bu ika int me zo rotarrundar.',
 'allmessagesname'           => 'Yolt',
 'allmessagesdefault'        => 'Omavaf krent',
 'allmessagescurrent'        => 'Noelaf krent',
-'allmessagestext'           => 'Batcoba tir vexala ke bolkstakseem koe Mediawiki xo',
+'allmessagestext'           => 'Batcoba tir vexala ke bolkstakseem koe MediaWiki xo',
 'allmessagesnotsupportedDB' => "Batu bu me zo rofaver kire '''\$wgUseDatabaseMessages''' mea tir tegis.",
 'allmessagesfilter'         => 'Staksesparayolt :',
 'allmessagesmodified'       => 'Anton nedira va betakseem',
@@ -1698,6 +1714,7 @@ bu ika int me zo rotarrundar.',
 'import-interwiki-history'   => 'Ksudara va kot izvotsiatos ke batu bu',
 'import-interwiki-submit'    => 'Koburera',
 'import-interwiki-namespace' => 'Buremburera ko yoltxo :',
+'import-comment'             => 'Sebuks :',
 'importtext'                 => 'Exportez un fichier depuis le wiki source en utilisant la fonction Special:Export, sauvez la page sur votre disque puis envoyez là ici.',
 'importstart'                => 'Kobures va bu...',
 'import-revision-count'      => '$1 {{PLURAL:$1|betaks|betaks}}',
@@ -1799,7 +1816,7 @@ bu ika int me zo rotarrundar.',
 'spamprotectiontitle' => 'Page automatiquement protégée pour cause de spam',
 'spamprotectiontext'  => 'Page automatiquement protégée pour cause de spam',
 'spamprotectionmatch' => 'Le texte suivant a déclenché le détecteur de spam: $1',
-'spambot_username'    => 'Tucuara va Mediawiki "spam"
+'spambot_username'    => 'Tucuara va MediaWiki "spam"
 MediaWiki spam cleanup',
 'spam_reverting'      => 'Dimplekura va ironokaf siatos meruldas va gluyasiki do $1',
 'spam_blanking'       => 'Kot betaks ruldas va gluyasiki do $1, tuvlardara',
@@ -1860,7 +1877,7 @@ $1',
 'show-big-image'       => 'Geltraf lum',
 'show-big-image-thumb' => '<small>Lum ke bata abdinedira : $1 × $2 pixels</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Warzaf ewaviyeltak yo',
 'imagelisttext'         => "Tir vexala dem '''$1''' {{PLURAL:$1|iyeltak|iyeltak}} $2 pulana.",
 'newimages-summary'     => 'Batu aptafu bu va ironokaf kalvajayan iyeltakeem nedir.',

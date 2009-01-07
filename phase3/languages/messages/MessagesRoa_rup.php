@@ -106,7 +106,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'username'           => 'Numa di ufilizitor:',
 
 # Edit pages
-'summary'            => 'Rezime',
+'summary'            => 'Rezime:',
 'minoredit'          => 'Aistã easte alãxire njicã',
 'watchthis'          => 'Mutrits-u frãndzã aistã',
 'savearticle'        => 'Avigljats-u frãndzã',
@@ -202,7 +202,7 @@ Isape a vostrã ira adratã. Nu agãrshits s-le alãxits alidzerle-a vostre ti {
 'tooltip-pt-logout'      => 'Disligats-vã',
 'tooltip-p-logo'         => 'Prota frãndzã',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Caftã',
 
 # Multipage image navigation

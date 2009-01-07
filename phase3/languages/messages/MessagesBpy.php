@@ -32,8 +32,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'আতাকুরার_য়্যারী',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_য়্যারী',
-	NS_IMAGE          => 'ছবি',
-	NS_IMAGE_TALK     => 'ছবি_য়্যারী',
+	NS_FILE           => 'ছবি',
+	NS_FILE_TALK      => 'ছবি_য়্যারী',
 	NS_MEDIAWIKI      => 'মিডিয়াউইকি',
 	NS_MEDIAWIKI_TALK => 'মিডিয়াউইকির_য়্যারী',
 	NS_TEMPLATE       => 'মডেল',
@@ -178,7 +178,7 @@ $messages = array(
 'mytalk'         => 'মর য়্যারি-পরি',
 'anontalk'       => 'অচিনা এগর য়্যারির পাতা',
 'navigation'     => 'দিশা-ধরুনী',
-'and'            => 'বারো',
+'and'            => '&#32;বারো',
 
 # Metadata in edit box
 'metadata_help' => 'মেটাডাটা:',
@@ -241,8 +241,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}}র বারে',
 'aboutpage'            => 'Project:বারে',
-'bugreports'           => 'লাল বিবরণী',
-'bugreportspage'       => 'Project:লাল_বিবরণী',
 'copyright'            => '$1-র মাতুঙে এহানর মেথেলহানি পানা একরের।',
 'copyrightpagename'    => '{{SITENAME}} স্বত্তাধিকারহান',
 'copyrightpage'        => '{{ns:project}}:স্বত্তাধিকারহানি',
@@ -365,6 +363,9 @@ $messages = array(
 'accountcreated'             => 'একাউন্টহান হঙকরানি ইল',
 'accountcreatedtext'         => 'আতাকুরা $1 -র কা একাউন্টহান হঙকরানি ইল।',
 
+# Password reset dialog
+'retypenew' => 'নুৱা খন্তাচাবি বারো টাইপ কর:',
+
 # Edit page toolbar
 'bold_sample'     => 'গাঢ়পা ৱাহি',
 'bold_tip'        => 'গাঢ়পা ৱাহি',
@@ -386,8 +387,8 @@ $messages = array(
 'hr_tip'          => 'পাথারি খাস (খানি করা ইয়া আতা)',
 
 # Edit pages
-'summary'                => 'সারমর্ম',
-'subject'                => 'বিষয়/চিঙনাঙ',
+'summary'                => 'সারমর্ম:',
+'subject'                => 'বিষয়/চিঙনাঙ:',
 'minoredit'              => 'এহান হুরু-মুরু সম্পাদনাহানহে।',
 'watchthis'              => 'পাতাএহান খিয়ালে থ',
 'savearticle'            => 'পাতাহান ইতুকর',
@@ -395,7 +396,7 @@ $messages = array(
 'showpreview'            => 'আগচা',
 'showdiff'               => 'পতাসিতা দেহাদে',
 'anoneditwarning'        => "'''সিঙুইসঃ''' তি লগইন নাকরিসত। পতানির ইতিহাসহাত তর IP addressহান সিজিল ইতই।",
-'summary-preview'        => 'সারমর্মর আগচা',
+'summary-preview'        => 'সারমর্মর আগচা:',
 'blockedtitle'           => 'আতাকুরাগরে থেপ করানি অসে',
 'blockedtext'            => "<big>'''তর আতাকুরা নাঙহান নাইলেউ আইপি ঠিকানাহানরে থেপকরানি অসে।'''</big>
 
@@ -483,7 +484,6 @@ $messages = array(
 'changepassword' => 'খন্তাচাবি(password) পতা',
 'skin-preview'   => 'আগচা',
 'saveprefs'      => 'ইতু',
-'retypenew'      => 'নুৱা খন্তাচাবি বারো টাইপ কর:',
 'columns'        => 'দুরগিঃ',
 'allowemail'     => 'আরতা(ব্যবহার করেকুরা)ই ইমেইল করানির য়্যাথাং দে।',
 
@@ -529,10 +529,10 @@ $messages = array(
 'uploadedimage'   => 'আপলোডকরানি অইল "[[$1]]"',
 'watchthisupload' => 'পাতাএহান খিয়ালে থ',
 
-# Special:ImageList
-'imagelist' => 'ছবির তালিকা',
+# Special:ListFiles
+'listfiles' => 'ছবির তালিকা',
 
-# Image description page
+# File description page
 'filehist'                  => 'ফাইলর ইতিহাস',
 'filehist-help'             => 'দিন/সময়-র গজে যাতিলে ঔ খেন্তাম পেয়া হঙিসে ফাইলগ চ পারতেই।',
 'filehist-current'          => 'এপাগা',
@@ -860,7 +860,7 @@ $messages = array(
 'show-big-image'       => 'পুল্লাপ রিজলিউশন',
 'show-big-image-thumb' => '<small>আগচা হানর সাইজহান: $1 × $2 পিক্সেলস</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'নুৱা ফাইলর গ্যালারিগ',
 'ilsubmit'  => 'বিসারা',
 'bydate'    => 'তারিখর সিজিলন',

@@ -150,7 +150,7 @@ $messages = array(
 'mytalk'         => 'ಎನ್ನ ಚರ್ಚೆ',
 'anontalk'       => 'ಈ ಐ.ಪಿ ಗ್ ಪಾತೆರ್’ಲೆ',
 'navigation'     => 'ಸಂಚಾರ',
-'and'            => 'ಬೊಕ್ಕ',
+'and'            => '&#32;ಬೊಕ್ಕ',
 
 # Metadata in edit box
 'metadata_help' => 'ಮೂಲಮಾಹಿತಿ:',
@@ -213,8 +213,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} ದ ಬಗ್ಗೆ',
 'aboutpage'            => 'Project:ನಮ್ಮ ಬಗ್ಗೆ',
-'bugreports'           => 'ದೋಷ ವರದಿಲು',
-'bugreportspage'       => 'Project:ದೋಷ ವರದಿಲು',
 'copyright'            => 'ಉಂದು ಈ ಕಾಪಿರೈಟ್‌ಡ್ ಲಭ್ಯವುಂಡು $1.',
 'copyrightpagename'    => '{{SITENAME}} ಕಾಪಿರೈಟ್',
 'copyrightpage'        => '{{ns:project}}:ಕೃತಿಸ್ವಾಮ್ಯತೆಲು',
@@ -338,8 +336,8 @@ $1',
 'hr_tip'          => 'ಅಡ್ಡ ಗೆರೆ(ಆಯಿನಾತ್ ಕಮ್ಮಿ ಉಪಯೋಗಿಸಾಲೆ)',
 
 # Edit pages
-'summary'                => 'ಸಾರಾಂಶ',
-'subject'                => 'ವಿಷಯ/ಮುಖ್ಯಾ೦ಶ',
+'summary'                => 'ಸಾರಾಂಶ:',
+'subject'                => 'ವಿಷಯ/ಮುಖ್ಯಾ೦ಶ:',
 'minoredit'              => 'ಉಂದು ಎಲ್ಯ ಬದಲಾವಣೆ',
 'watchthis'              => 'ಈ ಪುಟೊನು ತೂಲೆ',
 'savearticle'            => 'ಪುಟೊನು ಒರಿಪಾಲೆ',
@@ -353,8 +351,8 @@ $1',
 ಈರ್ ಪಿರ 'ಒರಿಪಾಲೆ' ಬಟನ್ ನ್ ಒತ್ತ್೦ಡ ಸಾರಾ೦ಶ ಇಜ್ಜ೦ದೆನೇ ಈರ್ನ ಬದಲಾವಣೆ ದಾಖಲಾಪು೦ಡು.",
 'missingcommenttext'     => 'ದಯ ಮಲ್ತ್ ದ ಈರ್ನ ಅಭಿಪ್ರಾಯನ್ ತಿರ್ತ್ ಕೊರ್ಲೆ',
 'missingcommentheader'   => "'''ಗಮನಿಸಾಲೆ:''' ಈರ್ ಈ ಅಭಿಪ್ರಾಯಗ್ \"ವಿಷಯ/ಮುಖ್ಯಾ೦ಶ\" ದಾಲ ಕೊರ್ತಿಜರ್. ಈರ್ ಪಿರ ’ಒರಿಪಾಲೆ’ ಬಟನ್ ನ್ ಒತ್ತ್೦ಡ ಈರ್ನ ಬದಲಾವಣೆ ವಿಷಯ/ಮುಖ್ಯಾ೦ಶ ಇಜ್ಜ೦ದನೇ ಒರಿಪ್ಪಾವು೦ಡು.",
-'summary-preview'        => 'ಸಾರಾ೦ಶ ಮುನ್ನೋಟ',
-'subject-preview'        => 'ವಿಷಯ/ಮುಖ್ಯಾ೦ಶದ ಮುನ್ನೋಟ',
+'summary-preview'        => 'ಸಾರಾ೦ಶ ಮುನ್ನೋಟ:',
+'subject-preview'        => 'ವಿಷಯ/ಮುಖ್ಯಾ೦ಶದ ಮುನ್ನೋಟ:',
 'blockedtitle'           => 'ಈ ಸದಸ್ಯೆರೆನ್ ತಡೆ ಮಲ್ತ್ ದ್೦ಡ್.',
 'newarticletext'         => "ನನಲ ಅಸ್ಥಿತ್ವಡ್ ಉಪ್ಪಂದಿನ ಪುಟೊಗು ಈರ್ ಬೈದರ್.
 ಈ ಪುಟೊನು ಸೃಷ್ಟಿ ಮಲ್ಪೆರೆ ತಿರ್ತ್’ದ ಚೌಕೊಡು ಬರೆಯೆರೆ ಸುರು ಮಲ್ಪುಲೆ.
@@ -428,7 +426,7 @@ $1',
 # Upload
 'upload' => 'ಫೈಲ್ ಅಪ್ಲೋಡ್',
 
-# Image description page
+# File description page
 'filehist'            => 'ಫೈಲ್’ದ ಇತಿಹಾಸ',
 'filehist-help'       => 'ಫೈಲ್ ಆ ದಿನೊಟು ಎಂಚ ಇತ್ತ್’ನ್ಡ್’ನ್ದ್ ತೂಯೆರೆ ಆ ದಿನ/ಪೊರ್ತುದ ಮಿತ್ತ್ ಕ್ಲಿಕ್ ಮಲ್ಪುಲೆ.',
 'filehist-current'    => 'ಪ್ರಸಕ್ತ',

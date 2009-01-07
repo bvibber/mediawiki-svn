@@ -9,6 +9,22 @@
  * @author Urhixidur
  */
 
+$namespaceNames = array(
+	NS_SPECIAL          => 'Spesial',
+	NS_TALK             => 'Discute',
+	NS_USER             => 'Usor',
+	NS_USER_TALK        => 'Usor_Discute',
+	NS_PROJECT_TALK     => '$1_Discute',
+	NS_FILE             => 'Fix',
+	NS_FILE_TALK        => 'Fix_Discute',
+	NS_TEMPLATE         => 'Model',
+	NS_TEMPLATE_TALK    => 'Model_Discute',
+	NS_HELP             => 'Aida',
+	NS_HELP_TALK        => 'Aida_Discute',
+	NS_CATEGORY         => 'Categoria',
+	NS_CATEGORY_TALK    => 'Categoria_Discute',
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Sulinia lias:',
@@ -137,7 +153,7 @@ $messages = array(
 'mytalk'         => 'Me discutes',
 'anontalk'       => 'Discutes per esta IP',
 'navigation'     => 'Naviga',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -199,8 +215,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Supra {{SITENAME}}',
 'aboutpage'            => 'Project:Supra',
-'bugreports'           => 'Reportas de defetos',
-'bugreportspage'       => 'Project:Reportas de defetos',
 'copyrightpage'        => '{{ns:project}}:Diretos de autor',
 'currentevents'        => 'Avenis presente',
 'currentevents-url'    => 'Project:Avenis presente',
@@ -306,6 +320,9 @@ Ante alga otra eposta es enviada a la conta, tu va nesesa segue la instruis en l
 'emailconfirmlink'        => 'Aproba tu adirije de eposta',
 'loginlanguagelabel'      => 'Lingua: $1',
 
+# Password reset dialog
+'retypenew' => 'Re-entra tu sinia secreta nova:',
+
 # Edit page toolbar
 'bold_sample'     => 'Testo en leteras forte',
 'bold_tip'        => 'Testo en leteras forte',
@@ -327,8 +344,8 @@ Ante alga otra eposta es enviada a la conta, tu va nesesa segue la instruis en l
 'hr_tip'          => 'Linia orizonal (usa nonfrecuente)',
 
 # Edit pages
-'summary'                => 'Soma',
-'subject'                => 'Sujeto/titulo',
+'summary'                => 'Soma:',
+'subject'                => 'Sujeto/titulo:',
 'minoredit'              => 'Esta es un cambia minor',
 'watchthis'              => 'Oserva esta paje',
 'savearticle'            => 'Fisa paje',
@@ -337,7 +354,7 @@ Ante alga otra eposta es enviada a la conta, tu va nesesa segue la instruis en l
 'showdiff'               => 'Mostra diferes',
 'anoneditwarning'        => "'''Avisa:''' Tu no ia sinia per entra.
 Tu adirije de IP va es memorada en la istoria de revisas de esta paje.",
-'summary-preview'        => 'Previde soma',
+'summary-preview'        => 'Previde soma:',
 'blockedtitle'           => 'Usor es impedida',
 'blockedtext'            => "<big>'''Tu nom de usor o adirije de IP ia es impedida.'''</big>
 
@@ -435,7 +452,6 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'skin-preview'      => 'Previde',
 'math'              => 'Matematica',
 'saveprefs'         => 'Fisa',
-'retypenew'         => 'Re-entra tu sinia secreta nova:',
 'rows'              => 'Linias:',
 'columns'           => 'Colonas:',
 'searchresultshead' => 'Xerca',
@@ -500,12 +516,12 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 
 'upload-file-error' => 'Era interna',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'fix',
-'imagelist'      => 'Lista de imajes',
-'imagelist_name' => 'Nom',
+'listfiles'      => 'Lista de imajes',
+'listfiles_name' => 'Nom',
 
-# Image description page
+# File description page
 'filehist'                  => 'Istoria de fix',
 'filehist-help'             => 'Clica a un data/tempo per vide la fix como el ia aperi alora.',
 'filehist-current'          => 'aora',
@@ -711,6 +727,7 @@ Asi es la ajustas presente per la paje <strong>$1</strong>:',
 
 'sp-contributions-newbies-sub' => 'Per contas nova',
 'sp-contributions-blocklog'    => 'Impedi arcivo',
+'sp-contributions-username'    => 'Adirije de IP o nom de usor:',
 'sp-contributions-submit'      => 'Xerca',
 
 # What links here
@@ -849,7 +866,7 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 'show-big-image'       => 'Densia masima',
 'show-big-image-thumb' => '<small>Grandia de eesta previde: $1 × $2 pixeles</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Imajes nova',
 'ilsubmit'  => 'Xerca',
 

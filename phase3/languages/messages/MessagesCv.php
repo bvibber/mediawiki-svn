@@ -22,8 +22,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Хутшăнаканăн_канашлу_страници',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_сӳтсе_явмалли',
-	NS_IMAGE            => 'Ӳкерчĕк',
-	NS_IMAGE_TALK       => 'Ӳкерчĕке_сӳтсе_явмалли',
+	NS_FILE             => 'Ӳкерчĕк',
+	NS_FILE_TALK        => 'Ӳкерчĕке_сӳтсе_явмалли',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_сӳтсе_явмалли',
 	NS_TEMPLATE         => 'Шаблон',
@@ -175,7 +175,7 @@ $messages = array(
 'mytalk'         => 'Ман канашлу страници',
 'anontalk'       => 'Çак IP-адреса сӳтсе явни',
 'navigation'     => 'Меню',
-'and'            => 'тата',
+'and'            => '&#32;тата',
 
 # Metadata in edit box
 'metadata_help' => 'Метаданнăйсем:',
@@ -238,8 +238,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} çинчен',
 'aboutpage'            => 'Project:çинчен',
-'bugreports'           => 'Йăнăш çинчен пĕлтерни',
-'bugreportspage'       => 'Project:Йăнăшсен пĕтĕмлетĕвĕ',
 'copyright'            => 'Ку ăшлăх $1 килĕшӳллĕн сарăлать.',
 'copyrightpagename'    => '{{SITENAME}} проектăн автор прависем',
 'copyrightpage'        => '{{ns:project}}:Автор прависем',
@@ -446,10 +444,11 @@ $1',
 'loginlanguagelabel'         => 'Чĕлхе: $1',
 
 # Password reset dialog
-'resetpass'         => 'Хутшăнаканăн вăрттăн сăмахне çĕнетесси',
-'resetpass_header'  => 'Пароле пăрахăçла',
-'resetpass_submit'  => 'Вăрттăн сăмаха лартса сайта кĕр',
-'resetpass_missing' => 'Формăра даннăйсем çук.',
+'resetpass'        => 'Хутшăнаканăн вăрттăн сăмахне çĕнетесси',
+'resetpass_header' => 'Пароле пăрахăçла',
+'oldpassword'      => 'Кивě пароль',
+'newpassword'      => 'Çěнě пароль',
+'resetpass_submit' => 'Вăрттăн сăмаха лартса сайта кĕр',
 
 # Edit page toolbar
 'bold_sample'    => 'Çурмахулăм текст',
@@ -471,8 +470,8 @@ $1',
 'hr_tip'         => 'Горизонтальлĕ йĕр (сахалтарах усă курăр)',
 
 # Edit pages
-'summary'                => 'Улшăнусен кĕске ăнлантарăвĕ',
-'subject'                => 'Тема',
+'summary'                => 'Улшăнусен кĕске ăнлантарăвĕ:',
+'subject'                => 'Тема:',
 'minoredit'              => 'Кунта пěчěк улшăнусем кăна кěртнě',
 'watchthis'              => 'Ку страницăна кěртекен  улшăнусем  хыççăн сăнамалла',
 'savearticle'            => 'Страницăна çырса хур',
@@ -482,8 +481,8 @@ $1',
 'showdiff'               => 'Кĕртнĕ улшăнусем',
 'anoneditwarning'        => "'''Асăрхăр''': Эсир сайта хăвăр çинчен пĕлтермен, çавăнпа та ку страницăна улăштарнин журналне сирĕн IP-адреса çырса хума тивĕ.",
 'missingcommenttext'     => 'Аяларах, тархасшăн, хăвар пĕлтерĕве çырăр.',
-'summary-preview'        => 'Ăнлантару çапла пулĕ',
-'subject-preview'        => 'Статья ячĕ çапла пулĕ',
+'summary-preview'        => 'Ăнлантару çапла пулĕ:',
+'subject-preview'        => 'Статья ячĕ çапла пулĕ:',
 'blockedtitle'           => 'Хутшăнакана ĕçлеме чарнă',
 'blockedtext'            => "<big>'''Ку аккаунта е IP-адреса ĕçлеме чарнă.'''</big>
 
@@ -622,8 +621,6 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'prefs-watchlist'    => 'Сăнав списокĕ',
 'prefs-misc'         => 'Ытти ĕнерлевсем',
 'saveprefs'          => 'Çырса хур',
-'oldpassword'        => 'Кивě пароль',
-'newpassword'        => 'Çěнě пароль',
 'textboxsize'        => 'Тӳрлетни',
 'rows'               => 'Йěркесем',
 'columns'            => 'Юпасем:',
@@ -737,18 +734,18 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'upload_source_url'  => ' (тĕрĕс, пурте курма пултаракан интертетел адресĕ)',
 'upload_source_file' => ' (сирĕн компьютер çинчи файл)',
 
-# Special:ImageList
-'imagelist-summary'     => 'Ку ятарлă страницăра эсир пур кĕртнĕ файлсене куратăр.
+# Special:ListFiles
+'listfiles-summary'     => 'Ку ятарлă страницăра эсир пур кĕртнĕ файлсене куратăр.
 Нумай пулмасть кĕртнисем çулте вырнаçнă.
 Юпа тăррине пуссан йĕркелӳ майĕ улшăнĕ.',
-'imagelist_search_for'  => 'Ӳкерчĕк ячĕ тăрăх шырани:',
-'imagelist'             => 'Ӳкерчěксен списокě',
-'imagelist_name'        => 'Файл ячĕ',
-'imagelist_user'        => 'Хутшăнакан',
-'imagelist_size'        => 'Виçи',
-'imagelist_description' => 'Ăнлантаркăч',
+'listfiles_search_for'  => 'Ӳкерчĕк ячĕ тăрăх шырани:',
+'listfiles'             => 'Ӳкерчěксен списокě',
+'listfiles_name'        => 'Файл ячĕ',
+'listfiles_user'        => 'Хутшăнакан',
+'listfiles_size'        => 'Виçи',
+'listfiles_description' => 'Ăнлантаркăч',
 
-# Image description page
+# File description page
 'filehist'                  => 'Файл историйĕ',
 'imagelinks'                => 'Ссылкăсем',
 'linkstoimage'              => 'Çак страницăсем ку файл çине кăтартаççĕ:',
@@ -1120,7 +1117,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'file-info-size' => '($1 × $2 пиксел, файл пысăкăше: $3, MIME-тĕсĕ: $4)',
 'file-nohires'   => '<small>Пысăкрах калăпăшли çук.</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'         => 'Çĕнĕ файлсен галерейи',
 'newimages-summary' => 'Ку ятарлă страницăра эсир нумай пулмасть кĕртнĕ файлсене куратăр',
 'noimages'          => 'Ӳкерчĕксем çук.',

@@ -72,7 +72,7 @@ class ApiDelete extends ApiBase {
 			$this->dieUsageMsg(array('notanarticle'));
 
 		$reason = (isset($params['reason']) ? $params['reason'] : NULL);
-		if ($titleObj->getNamespace() == NS_IMAGE) {
+		if ($titleObj->getNamespace() == NS_FILE) {
 			$retval = self::deleteFile($params['token'], $titleObj, $params['oldimage'], $reason, false);
 			if(count($retval))
 				// We don't care about multiple errors, just report one of them
@@ -161,7 +161,8 @@ class ApiDelete extends ApiBase {
 			
 		if( !FileDeleteForm::haveDeletableFile($file, $oldfile, $oldimage) )
 			return array(array('nofile'));
-
+		if (is_null($reason)) # Log and RC don't like null reasons
+			$reason = '';
 		$status = FileDeleteForm::doDelete( $title, $file, $oldimage, $reason, $suppress );
 				
 		if( !$status->isGood() )

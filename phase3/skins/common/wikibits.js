@@ -44,15 +44,14 @@ function addOnloadHook(hookFunct) {
 }
 
 function hookEvent(hookName, hookFunct) {
-	if (window.addEventListener) {
-		window.addEventListener(hookName, hookFunct, false);
-	} else if (window.attachEvent) {
-		window.attachEvent("on" + hookName, hookFunct);
-	}
+	addHandler(window, hookName, hookFunct);
 }
 
 function importScript(page) {
-	return importScriptURI(wgScript + '?action=raw&ctype=text/javascript&title=' + encodeURIComponent(page.replace(/ /g,'_')));
+	var uri = wgScript + '?title=' +
+		encodeURIComponent(page.replace(/ /g,'_')).replace('%2F','/').replace('%3A',':') +
+		'&action=raw&ctype=text/javascript';
+	return importScriptURI(uri);
 }
  
 var loadedScripts = {}; // included-scripts tracker
@@ -293,6 +292,28 @@ function addPortletLink(portlet, href, text, id, tooltip, accesskey, nextnode) {
 	return item;
 }
 
+function getInnerText(el) {
+	if (typeof el == "string") return el;
+	if (typeof el == "undefined") { return el };
+	if (el.textContent) return el.textContent; // not needed but it is faster
+	if (el.innerText) return el.innerText;     // IE doesn't have textContent
+	var str = "";
+
+	var cs = el.childNodes;
+	var l = cs.length;
+	for (var i = 0; i < l; i++) {
+		switch (cs[i].nodeType) {
+			case 1: //ELEMENT_NODE
+				str += ts_getInnerText(cs[i]);
+				break;
+			case 3:	//TEXT_NODE
+				str += cs[i].nodeValue;
+				break;
+		}
+	}
+	return str;
+}
+
 
 /**
  * Set up accesskeys/tooltips from the deprecated ta array.  If doId
@@ -433,8 +454,19 @@ function toggle_element_check(ida,idb) {
 	From http://www.robertnyman.com/2005/11/07/the-ultimate-getelementsbyclassname/
 */
 function getElementsByClassName(oElm, strTagName, oClassNames){
-	var arrElements = (strTagName == "*" && oElm.all)? oElm.all : oElm.getElementsByTagName(strTagName);
 	var arrReturnElements = new Array();
+	if ( typeof( oElm.getElementsByClassName ) == "function" ) {
+		/* Use a native implementation where possible FF3, Saf3.2, Opera 9.5 */
+		var arrNativeReturn = oElm.getElementsByClassName( oClassNames );
+		if ( strTagName == "*" )
+			return arrNativeReturn;
+		for ( var h=0; h < arrNativeReturn.length; h++ ) {
+			if( arrNativeReturn[h].tagName.toLowerCase() == strTagName.toLowerCase() )
+				arrReturnElements[arrReturnElements.length] = arrNativeReturn[h];
+		}
+		return arrReturnElements;
+	}
+	var arrElements = (strTagName == "*" && oElm.all)? oElm.all : oElm.getElementsByTagName(strTagName);
 	var arrRegExpClassNames = new Array();
 	if(typeof oClassNames == "object"){
 		for(var i=0; i<oClassNames.length; i++){
@@ -534,7 +566,14 @@ function ts_makeSortable(table) {
 	for (var i = 0; i < firstRow.cells.length; i++) {
 		var cell = firstRow.cells[i];
 		if ((" "+cell.className+" ").indexOf(" unsortable ") == -1) {
-			cell.innerHTML += '&nbsp;&nbsp;<a href="#" class="sortheader" onclick="ts_resortTable(this);return false;"><span class="sortarrow"><img src="'+ ts_image_path + ts_image_none + '" alt="&darr;"/></span></a>';
+			cell.innerHTML += '&nbsp;&nbsp;'
+				+ '<a href="#" class="sortheader" '
+				+ 'onclick="ts_resortTable(this);return false;">'
+				+ '<span class="sortarrow">'
+				+ '<img src="'
+				+ ts_image_path
+				+ ts_image_none
+				+ '" alt="&darr;"/></span></a>';
 		}
 	}
 	if (ts_alternate_row_colors) {
@@ -543,25 +582,7 @@ function ts_makeSortable(table) {
 }
 
 function ts_getInnerText(el) {
-	if (typeof el == "string") return el;
-	if (typeof el == "undefined") { return el };
-	if (el.textContent) return el.textContent; // not needed but it is faster
-	if (el.innerText) return el.innerText;     // IE doesn't have textContent
-	var str = "";
-
-	var cs = el.childNodes;
-	var l = cs.length;
-	for (var i = 0; i < l; i++) {
-		switch (cs[i].nodeType) {
-			case 1: //ELEMENT_NODE
-				str += ts_getInnerText(cs[i]);
-				break;
-			case 3:	//TEXT_NODE
-				str += cs[i].nodeValue;
-				break;
-		}
-	}
-	return str;
+	return getInnerText( el );
 }
 
 function ts_resortTable(lnk) {
@@ -616,13 +637,16 @@ function ts_resortTable(lnk) {
 	var reverse = (span.getAttribute("sortdir") == 'down');
 
 	var newRows = new Array();
+	var staticRows = new Array();
 	for (var j = rowStart; j < table.rows.length; j++) {
 		var row = table.rows[j];
-		var keyText = ts_getInnerText(row.cells[column]);
-		var oldIndex = (reverse ? -j : j);
-		var preprocessed = preprocessor( keyText );
+		if((" "+row.className+" ").indexOf(" unsortable ") < 0) {
+			var keyText = ts_getInnerText(row.cells[column]);
+			var oldIndex = (reverse ? -j : j);
+			var preprocessed = preprocessor( keyText );
 
-		newRows[newRows.length] = new Array(row, preprocessed, oldIndex);
+			newRows[newRows.length] = new Array(row, preprocessed, oldIndex);
+		} else staticRows[staticRows.length] = new Array(row, false, j-rowStart);
 	}
 
 	newRows.sort(sortfn);
@@ -635,6 +659,11 @@ function ts_resortTable(lnk) {
 	} else {
 		arrowHTML = '<img src="'+ ts_image_path + ts_image_up + '" alt="&uarr;"/>';
 		span.setAttribute('sortdir','down');
+	}
+
+	for (var i = 0; i < staticRows.length; i++) {
+		var row = staticRows[i];
+		newRows.splice(row[2], 0, row);
 	}
 
 	// We appendChild rows that already exist to the tbody, so it moves them rather than creating new ones
@@ -855,6 +884,7 @@ function jsMsg( message, className ) {
 	}
 
 	messageDiv.setAttribute( 'id', 'mw-js-message' );
+	messageDiv.style.display = 'block';
 	if( className ) {
 		messageDiv.setAttribute( 'class', 'mw-js-message-'+className );
 	}
@@ -944,6 +974,21 @@ function addHandler( element, attach, handler ) {
  */
 function addClickHandler( element, handler ) {
 	addHandler( element, 'click', handler );
+}
+
+/**
+ * Removes an event handler from an element
+ *
+ * @param Element element Element to remove handler from
+ * @param String remove Event to remove
+ * @param callable handler Event handler callback to remove
+ */
+function removeHandler( element, remove, handler ) {
+	if( window.removeEventListener ) {
+		element.removeEventListener( remove, handler, false );
+	} else if( window.detachEvent ) {
+		element.detachEvent( 'on' + remove, handler );
+	}
 }
 //note: all skins should call runOnloadHook() at the end of html output,
 //      so the below should be redundant. It's there just in case.

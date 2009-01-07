@@ -145,6 +145,10 @@ class MathRenderer {
 				return $this->_error( 'math_image_error' );
 			}
 
+			if( filesize( "$wgTmpDirectory/{$this->hash}.png" ) == 0 ) {
+				return $this->_error( 'math_image_error' );
+			}
+
 			$hashpath = $this->_getHashPath();
 			if( !file_exists( $hashpath ) ) {
 				if( !@wfMkdirParents( $hashpath, 0755 ) ) {
@@ -175,7 +179,14 @@ class MathRenderer {
 				  ), $fname
 				);
 			}
-
+			
+			// If we're replacing an older version of the image, make sure it's current.
+			global $wgUseSquid;
+			if ( $wgUseSquid ) {
+				$urls = array( $this->_mathImageUrl() );
+				$u = new SquidUpdate( $urls );
+				$u->doUpdate();
+			}
 		}
 
 		return $this->_doRender();
@@ -209,8 +220,14 @@ class MathRenderer {
 			$this->html = $rpage->math_html;
 			$this->mathml = $rpage->math_mathml;
 
-			if( file_exists( $this->_getHashPath() . "/{$this->hash}.png" ) ) {
-				return true;
+			$filename = $this->_getHashPath() . "/{$this->hash}.png";
+			if( file_exists( $filename ) ) {
+				if( filesize( $filename ) == 0 ) {
+					// Some horrible error corrupted stuff :(
+					@unlink( $filename );
+				} else {
+					return true;
+				}
 			}
 
 			if( file_exists( $wgMathDirectory . "/{$this->hash}.png" ) ) {
@@ -268,10 +285,7 @@ class MathRenderer {
 	}
 
 	function _linkToMathImage() {
-		global $wgMathPath;
-		$url = "$wgMathPath/" . substr($this->hash, 0, 1)
-					.'/'. substr($this->hash, 1, 1) .'/'. substr($this->hash, 2, 1)
-					. "/{$this->hash}.png";
+		$url = $this->_mathImageUrl();
 
 		return Xml::element( 'img',
 			$this->_attribs(
@@ -283,13 +297,23 @@ class MathRenderer {
 					'src' => $url ) ) );
 	}
 
+	function _mathImageUrl() {
+		global $wgMathPath;
+		$dir = $this->_getHashSubPath();
+		return "$wgMathPath/$dir/{$this->hash}.png";
+	}
+	
 	function _getHashPath() {
 		global $wgMathDirectory;
-		$path = $wgMathDirectory .'/'. substr($this->hash, 0, 1)
-					.'/'. substr($this->hash, 1, 1)
-					.'/'. substr($this->hash, 2, 1);
+		$path = $wgMathDirectory .'/' . $this->_getHashSubPath();
 		wfDebug( "TeX: getHashPath, hash is: $this->hash, path is: $path\n" );
 		return $path;
+	}
+	
+	function _getHashSubPath() {
+		return substr($this->hash, 0, 1)
+					.'/'. substr($this->hash, 1, 1)
+					.'/'. substr($this->hash, 2, 1);
 	}
 
 	public static function renderMath( $tex, $params=array() ) {

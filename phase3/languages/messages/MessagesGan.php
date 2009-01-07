@@ -145,7 +145,7 @@ $messages = array(
 'mytalk'         => '偶嗰對話框',
 'anontalk'       => '箇隻IP嗰對話框',
 'navigation'     => '導航',
-'and'            => '同到',
+'and'            => '&#32;同到',
 
 # Metadata in edit box
 'metadata_help' => '元數據:',
@@ -171,7 +171,7 @@ $messages = array(
 'deletethispage'    => '刪吥箇頁',
 'undelete_short'    => '反刪吥$1嗰修改',
 'protect'           => '保護',
-'protect_change'    => '更改保護',
+'protect_change'    => '修改',
 'protectthispage'   => '保護箇頁',
 'unprotect'         => '解除保護',
 'unprotectthispage' => '解除保護箇頁',
@@ -206,8 +206,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '關於 {{SITENAME}}',
 'aboutpage'            => 'Project:關於',
-'bugreports'           => '報告錯誤',
-'bugreportspage'       => 'Project:錯報報告',
 'copyright'            => '箇版嗰內容係根據$1嗰條款發佈。',
 'copyrightpagename'    => '{{SITENAME}} 版權',
 'copyrightpage'        => '{{ns:project}}:版權資訊',
@@ -244,6 +242,7 @@ $messages = array(
 'editsection'             => '編寫',
 'editold'                 => '編寫',
 'viewsourceold'           => '眵吖原始碼',
+'viewsourcelink'          => '望吖原碼',
 'editsectionhint'         => '編寫段落: $1',
 'toc'                     => '目錄',
 'showtoc'                 => '敨開',
@@ -336,6 +335,9 @@ $2',
 'customcssjsprotected' => '倷冇權編寫箇頁，佢含到別嗰用戶嗰個人設定。',
 'ns-specialprotected'  => '編寫伓正{{ns:special}}空間嗰頁面。',
 
+# Virus scanner
+'virus-unknownscanner' => '不曉得嗰防病毒:',
+
 # Login and logout pages
 'logouttitle'                => '用戶退出',
 'logouttext'                 => '<strong>倷退出正嘞。</strong>
@@ -358,7 +360,7 @@ $2',
 'logout'                     => '退出',
 'userlogout'                 => '退出',
 'notloggedin'                => '冇登入',
-'nologin'                    => '倷冇有帳戶？ $1.',
+'nologin'                    => '倷還冇得帳戶么？ $1。',
 'nologinlink'                => '開隻新帳戶',
 'createaccount'              => '開隻新帳戶',
 'gotaccount'                 => '有嘍帳戶？ $1.',
@@ -401,25 +403,30 @@ $2',
 'throttled-mailpassword'     => '$1嗰鐘頭前發出嘞密碼提醒。怕別嗰人亂扤，$1嗰鐘頭之內就只會發一隻密碼提醒。',
 'mailerror'                  => '發送email錯誤: $1',
 'acct_creation_throttle_hit' => '對伓住，倷建嘞$1隻帳號。倷再建伓正囉。',
-'emailauthenticated'         => '倷嗰email已經拕$1確認有效嘍。',
+'emailauthenticated'         => '倷嗰電子郵件地址在$2 $3確認有效。',
 'emailnotauthenticated'      => '倷嗰email<strong>哈冇拕認證</strong>。底下嗰功能都伓會發任何郵件。',
 'noemailprefs'               => '<strong>話正隻email來用箇隻功能</strong>',
 'emailconfirmlink'           => '確認倷嗰email',
-'invalidemailaddress'        => 'email嗰格式伓合，請輸隻正確嗰email位址或清吥箇隻空格。',
+'invalidemailaddress'        => '電子郵件地址嗰格式伓對，請輸隻對嗰電子郵件地址或著清吥箇隻輸入框。',
 'accountcreated'             => '帳戶扤正嘍',
 'accountcreatedtext'         => '扤正嘍$1嗰帳戶。',
 'createaccount-title'        => '到{{SITENAME}}創建嗰帳戶',
+'createaccount-text'         => '有人在{{SITENAME}}中用倷嗰電子郵件地址開設了一隻名字係 "$2" 嗰新帳戶($4)，密碼是 "$3" 。您應該馬上登錄並修改密碼。
+
+要是帳戶創建不對嗰話，倷可以不搭私箇隻消息。',
 'loginlanguagelabel'         => '語言: $1',
 
 # Password reset dialog
 'resetpass'               => '設過帳戶密碼',
 'resetpass_announce'      => '倷係用到臨時email嗰代碼登入嗰。要登正入，倷要到箇首設定隻新密碼:',
 'resetpass_header'        => '設過密碼',
+'oldpassword'             => '老密碼：',
+'newpassword'             => '新密碼：',
+'retypenew'               => '確認密碼:',
 'resetpass_submit'        => '設定密碼同到登入',
 'resetpass_success'       => '倷嗰密碼改正嘍！正幫倷登入...',
 'resetpass_bad_temporary' => '冇用嗰臨時密碼。可能倷改正嘞倷嗰密碼，或者重新要過隻新嗰臨時密碼。',
 'resetpass_forbidden'     => '到{{SITENAME}}上改伓正密碼',
-'resetpass_missing'       => '尋伓到資料。',
 
 # Edit page toolbar
 'bold_sample'     => '粗體字',
@@ -442,8 +449,8 @@ $2',
 'hr_tip'          => '橫線 (小聲使用)',
 
 # Edit pages
-'summary'                   => '摘要',
-'subject'                   => '主題/頭條',
+'summary'                   => '摘要:',
+'subject'                   => '主題/頭條:',
 'minoredit'                 => '箇係隻細修改',
 'watchthis'                 => '眏到箇頁',
 'savearticle'               => '存到著',
@@ -455,8 +462,8 @@ $2',
 'missingsummary'            => "'''提示:''' 倷冇提供編寫摘要。要係倷再按係保存嗰話，倷保存嗰編輯就會冇編輯摘要。",
 'missingcommenttext'        => '請到底下評論。',
 'missingcommentheader'      => "'''提示:''' 倷嗰評論冇提供標題。要係倷再按係保存嗰話，倷保存嗰編輯就會冇標題。",
-'summary-preview'           => '摘要預覽',
-'subject-preview'           => '主題/頭條預覽',
+'summary-preview'           => '摘要預覽:',
+'subject-preview'           => '主題/頭條預覽:',
 'blockedtitle'              => '用戶封到嘞',
 'blockedtext'               => "<big>倷嗰用戶名或IP地址拕$1封到嘞。</big>
 
@@ -612,12 +619,12 @@ $2',
 'revdelete-text'              => "'''刪吥嗰改動哈會到頁面歷史裡頭顯示, 但公眾瀏覽伓正佢嗰內容。'''
 
 箇站別嗰管理員哈係能眵吖弆到嗰內容，同到通過同佢一樣嗰界面恢復刪除，除非設正嘞附加嗰限制。",
-'revdelete-legend'            => '設置修改限制',
+'revdelete-legend'            => '設置可見性嗰限制',
 'revdelete-hide-text'         => '弆到修改內容',
 'revdelete-hide-name'         => '弆到動作同目標',
 'revdelete-hide-comment'      => '弆到編輯說明',
 'revdelete-hide-user'         => '弆到編者嗰用戶名/IP',
-'revdelete-hide-restricted'   => '同樣嗰限制應用到管理員',
+'revdelete-hide-restricted'   => '同樣限制管理員而且鎖定這個界面',
 'revdelete-suppress'          => '同時壓到由操作員同別嗰用戶嗰資料',
 'revdelete-hide-image'        => '弆到檔內容',
 'revdelete-unsuppress'        => '移吥恢復正嗰改動嗰限制',
@@ -627,6 +634,8 @@ $2',
 'logdelete-logentry'          => '已更改[[$1]]嗰事件可見性',
 'revdelete-success'           => "'''修訂嗰可見性設置正嘍。'''",
 'logdelete-success'           => "'''事件嗰可見性設置正嘍。'''",
+'deletedhist'                 => '刪吥嗰歷史',
+'revdelete-hid'               => '隱藏 $1',
 
 # History merging
 'mergehistory'                     => '合併頁面嗰歷史',
@@ -713,9 +722,6 @@ $2',
 'prefs-misc'               => '雜項',
 'saveprefs'                => '存到參數',
 'resetprefs'               => '設過參數',
-'oldpassword'              => '老密碼：',
-'newpassword'              => '新密碼：',
-'retypenew'                => '確認密碼:',
 'textboxsize'              => '編寫',
 'rows'                     => '橫:',
 'columns'                  => '豎:',
@@ -780,7 +786,7 @@ $2',
 'recentchanges'                     => '最晏嗰改動',
 'recentchangestext'                 => '跟到箇隻wiki上嗰最新改動。',
 'recentchanges-feed-description'    => '跟到箇隻 wiki 上集合嗰最後改動。',
-'rcnote'                            => "下底係到$3，最近'''$2'''日之內嗰最後'''$1'''回改動:",
+'rcnote'                            => "下底係到$4 $5，最近'''$2'''工嗰'''$1'''回改動:",
 'rcnotefrom'                        => "底下係自'''$2'''嗰更改(頂多顯示'''$1'''):",
 'rclistfrom'                        => '顯示自$1後嗰新改動',
 'rcshowhideminor'                   => '$1細編輯',
@@ -806,7 +812,8 @@ $2',
 'recentchangeslinked'          => '連結頁嗰更改',
 'recentchangeslinked-title'    => '連結頁嗰改動到 "$1"',
 'recentchangeslinked-noresult' => '箇段時間嗰連結頁冇更改。',
-'recentchangeslinked-summary'  => "箇隻特殊頁列出箇頁連出去頁面嗰最晏改動。倷監視列表嗰頁面會用'''粗體'''顯到。",
+'recentchangeslinked-summary'  => "箇隻特殊頁列出箇頁連出去頁面嗰最晏改動（或是某隻分類嗰頁面）。
+[[Special:Watchlist|倷嗰監視列表]]頁面會用'''粗體'''顯到。",
 
 # Upload
 'upload'                      => '上傳檔案',
@@ -818,11 +825,11 @@ $2',
 'upload_directory_read_only'  => '上傳目錄($1)伓存在或冇寫入許可權。',
 'uploaderror'                 => '上傳出錯',
 'uploadtext'                  => "用下底嗰表格上傳檔案。
-要眵或要尋先前上傳嗰圖像請去[[Special:ImageList|圖像列表]]，上傳同刪除會記到[[Special:Log/upload|上傳日誌]]裡度。
+要眵或要尋先前上傳嗰圖像請去[[Special:FileList|圖像列表]]，上傳同刪除會記到[[Special:Log/upload|上傳日誌]]裡度。
 
 要係想扻文件到頁面，用得正下底嗰方式連結:
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' 或
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|alt text]]</nowiki>''' 或
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' 直接連接到箇隻文件。",
 'upload-permitted'            => '容許嗰文件類型：$1。',
 'upload-preferred'            => '優先嗰文件類型：$1。',
@@ -851,8 +858,8 @@ $2',
 'fileexists-thumb'            => "<center>'''早就有嘍嗰文件'''</center>",
 'fileexists-thumbnail-yes'    => '箇隻檔案好像係一隻圖像嗰縮小版<i>(縮圖)</i>。請檢查清楚箇隻檔案<strong><tt>$1</tt></strong>。<br /> 如果檢查後嗰檔同原先圖像嗰大小係一樣嗰話，就嫑再上傳多一隻縮圖。',
 'file-thumbnail-no'           => '箇隻檔案名係以<strong><tt>$1</tt></strong>開頭。佢好像一隻圖像嗰縮小版<i>(縮圖)</i>。如果倷有箇隻圖像嗰完整版，伓然請再改過隻檔名。',
-'fileexists-forbidden'        => '箇隻檔案名已存在；請回頭並換過隻新嗰名稱來上傳箇隻檔案。[[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => '到共用檔案庫裡度有嘞同名嗰檔案；請回頭並換過隻新嗰名稱來上傳箇隻檔案。[[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => '箇隻檔案名已存在；請回頭並換過隻新嗰名稱來上傳箇隻檔案。[[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => '到共用檔案庫裡度有嘞同名嗰檔案；請回頭並換過隻新嗰名稱來上傳箇隻檔案。[[File:$1|thumb|center|$1]]',
 'successfulupload'            => '上傳正嘞',
 'uploadwarning'               => '上傳警告',
 'savefile'                    => '保存檔案',
@@ -892,17 +899,17 @@ $2',
 'upload_source_url'  => '(一隻有效嗰，公開嗰 URL)',
 'upload_source_file' => '(倷電腦嗰一隻檔案)',
 
-# Special:ImageList
-'imagelist_search_for'  => '按媒體名字尋:',
+# Special:ListFiles
+'listfiles_search_for'  => '按媒體名字尋:',
 'imgfile'               => '檔案',
-'imagelist'             => '檔案列表',
-'imagelist_date'        => '日期',
-'imagelist_name'        => '名稱',
-'imagelist_user'        => '用戶',
-'imagelist_size'        => '大細',
-'imagelist_description' => '簡話',
+'listfiles'             => '檔案列表',
+'listfiles_date'        => '日期',
+'listfiles_name'        => '名稱',
+'listfiles_user'        => '用戶',
+'listfiles_size'        => '大細',
+'listfiles_description' => '簡話',
 
-# Image description page
+# File description page
 'filehist'                  => '檔案歷史',
 'filehist-help'             => '按到日期／時間去眵吖許時間有過嗰檔案。',
 'filehist-deleteall'        => '全部刪掉',
@@ -1442,7 +1449,8 @@ $NEWPAGE
 'newtitle'                => '新標題:',
 'move-watch'              => '眏到箇頁',
 'movepagebtn'             => '換卟箇頁',
-'pagemovedsub'            => '換正嘞',
+'pagemovedsub'            => '移正嘞',
+'movepage-moved'          => "<big>'''「$1」已經移動到「$2」'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => '已經有頁面叫箇隻名字，要伓倷揀嗰名字冇用。請揀過隻名字。',
 'cantmove-titleprotected' => '倷移伓正一隻頁面到箇隻位置，箇隻新題目已經拕保護起來嘞，新建伓正。',
 'talkexists'              => '頁面本身移動正嘞，但係新標題下底有嘞對話頁，所以對話頁移伓正。請手工合併兩頁。',
@@ -1503,6 +1511,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'import-interwiki-history'   => '複製箇頁嗰全部歷史',
 'import-interwiki-submit'    => '導入',
 'import-interwiki-namespace' => '拿頁面移到空間名:',
+'import-comment'             => '說明:',
 'importtext'                 => '請用 Special:Export 從源 wiki 導出檔案，再存到倷嗰磁盤然後上傳到箇首。',
 'importstart'                => '導入頁面中...',
 'import-revision-count'      => '$1隻修改',
@@ -1683,7 +1692,7 @@ $1',
 'show-big-image'       => '完整解析度',
 'show-big-image-thumb' => '<small>箇幅縮略圖嗰解析度: $1 × $2 像素</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => '新建圖像畫廊',
 'imagelisttext'         => '底下係按$2排列嗰$1隻檔案列表。',
 'showhidebots'          => '($1機器人)',

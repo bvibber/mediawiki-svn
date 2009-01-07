@@ -11,32 +11,32 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Media',
-	NS_SPECIAL        => 'Especial',
-	NS_MAIN           => '',
-	NS_TALK           => 'Alderique',
-	NS_USER           => 'Usuariu',
-	NS_USER_TALK      => 'Usuariu_alderique',
-	# NS_PROJECT set by \$wgMetaNamespace
-	NS_PROJECT_TALK   => '$1_alderique',
-	NS_IMAGE          => 'Imaxe',
-	NS_IMAGE_TALK     => 'Imaxe_alderique',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'MediaWiki_alderique',
-	NS_TEMPLATE       => 'Plantía',
-	NS_TEMPLATE_TALK  => 'Plantía_alderique',
-	NS_HELP           => 'Aida',
-	NS_HELP_TALK      => 'Aida_alderique',
-	NS_CATEGORY       => 'Categoría',
-	NS_CATEGORY_TALK  => 'Categoría_alderique',
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Especial',
+	NS_TALK             => 'Alderique',
+	NS_USER             => 'Usuariu',
+	NS_USER_TALK        => 'Usuariu_alderique',
+	NS_PROJECT_TALK     => '$1_alderique',
+	NS_FILE             => 'Archivu',
+	NS_FILE_TALK        => 'Archivu_alderique',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_alderique',
+	NS_TEMPLATE         => 'Plantía',
+	NS_TEMPLATE_TALK    => 'Plantía_alderique',
+	NS_HELP             => 'Aida',
+	NS_HELP_TALK        => 'Aida_alderique',
+	NS_CATEGORY         => 'Categoría',
+	NS_CATEGORY_TALK    => 'Categoría_alderique',
 );
 
 $namespaceAliases = array(
+	'Imaxe' => NS_FILE,
+	'Imaxe alderique' => NS_FILE_TALK,
 	'Discusión'           => NS_TALK,
 	'Usuariu_discusión'   => NS_USER_TALK,
 	'$1_discusión'        => NS_PROJECT_TALK,
-	'Imaxen'              => NS_IMAGE,
-	'Imaxen_discusión'    => NS_IMAGE_TALK,
+	'Imaxen'              => NS_FILE,
+	'Imaxen_discusión'    => NS_FILE_TALK,
 	'MediaWiki_discusión' => NS_MEDIAWIKI_TALK,
 	'Plantilla'           => NS_TEMPLATE,
 	'Plantilla_discusión' => NS_TEMPLATE_TALK,
@@ -187,7 +187,7 @@ $messages = array(
 'mytalk'         => "La mio páxina d'alderique",
 'anontalk'       => 'Alderique pa esta IP',
 'navigation'     => 'Navegación',
-'and'            => 'y',
+'and'            => '&#32;y',
 
 # Metadata in edit box
 'metadata_help' => 'Metadatos:',
@@ -250,8 +250,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Tocante a {{SITENAME}}',
 'aboutpage'            => 'Project:Tocante a',
-'bugreports'           => "Informes d'errores",
-'bugreportspage'       => "Project:Informes d'errores",
 'copyright'            => 'Esti conteníu ta disponible baxo los términos de la  $1.',
 'copyrightpagename'    => "Drechos d'autor de {{SITENAME}}",
 'copyrightpage'        => "{{ns:project}}:Derechos d'autor",
@@ -501,14 +499,18 @@ Pues inorar esti mensaxe si la cuenta foi creada por error.',
 'loginlanguagelabel'         => 'Llingua: $1',
 
 # Password reset dialog
-'resetpass'               => "Restablecer la clave d'usuariu",
-'resetpass_announce'      => "Identificástiti con una clave temporal unviada per corréu. P'acabar d'identificate has escribir equí una clave nueva:",
-'resetpass_header'        => 'Restablecer contraseña',
-'resetpass_submit'        => 'Camudar clave y identificase',
-'resetpass_success'       => '¡La to clave cambióse correutamente! Agora identificándote...',
-'resetpass_bad_temporary' => 'Clave temporal non válida. Seique yá camudaras correutamente la clave o solicitaras una nueva clave temporal.',
-'resetpass_forbidden'     => 'Les claves nun se puen camudar',
-'resetpass_missing'       => 'Nun hai datos en formulariu.',
+'resetpass'                 => "Restablecer la clave d'usuariu",
+'resetpass_announce'        => "Identificástiti con una clave temporal unviada per corréu. P'acabar d'identificate has escribir equí una clave nueva:",
+'resetpass_header'          => 'Camudar la clave de la cuenta',
+'oldpassword'               => 'Clave vieya:',
+'newpassword'               => 'Clave nueva:',
+'retypenew'                 => 'Repiti la nueva clave:',
+'resetpass_submit'          => 'Camudar clave y identificase',
+'resetpass_success'         => '¡La to clave cambióse correutamente! Agora identificándote...',
+'resetpass_bad_temporary'   => 'Clave temporal non válida. Seique yá camudaras correutamente la clave o solicitaras una nueva clave temporal.',
+'resetpass_forbidden'       => 'Les claves nun se puen camudar',
+'resetpass-submit-loggedin' => 'Camudar clave',
+'resetpass-temp-password'   => 'Clave temporal:',
 
 # Edit page toolbar
 'bold_sample'     => 'Testu en negrina',
@@ -533,8 +535,8 @@ Pues inorar esti mensaxe si la cuenta foi creada por error.',
 'hr_tip'          => 'Llinia horizontal (úsala con moderación)',
 
 # Edit pages
-'summary'                          => 'Resume',
-'subject'                          => 'Asuntu/títulu',
+'summary'                          => 'Resume:',
+'subject'                          => 'Asuntu/títulu:',
 'minoredit'                        => 'Esta ye una edición menor',
 'watchthis'                        => 'Vixilar esta páxina',
 'savearticle'                      => 'Grabar páxina',
@@ -546,8 +548,8 @@ Pues inorar esti mensaxe si la cuenta foi creada por error.',
 'missingsummary'                   => "'''Recordatoriu:''' Nun escribisti un resume d'edición. Si vuelves a calcar en Guardar, la to edición sedrá guardada ensin nengún resume.",
 'missingcommenttext'               => 'Por favor, escribi un comentariu embaxo.',
 'missingcommentheader'             => "'''Recordatoriu:''' Nun-y punxisti tema/títulu a esti comentariu. Si vuelves a calcar en Guardar, la to edición va grabase ensin él.",
-'summary-preview'                  => 'Previsualización del resume',
-'subject-preview'                  => 'Previsualización del tema/títulu',
+'summary-preview'                  => 'Previsualización del resume:',
+'subject-preview'                  => 'Previsualización del tema/títulu:',
 'blockedtitle'                     => "L'usuariu ta bloquiáu",
 'blockedtext'                      => "<big>'''El to nome d'usuariu o la to direición IP foi bloquiáu.'''</big>
 
@@ -905,12 +907,12 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'viewprevnext'                     => 'Ver ($1) ($2) ($3)',
 'searchmenu-legend'                => 'Opciones de busca',
 'searchmenu-exists'                => "'''Hai una páxina nomada \"[[\$1]]\" nesta wiki'''",
-'searchmenu-new'                   => "'''¡[[\$1|Crear]] la páxina \"[[\$1]]\" nesta wiki!'''",
+'searchmenu-new'                   => "'''¡Crear la páxina \"[[:\$1]]\" nesta wiki!'''",
 'searchhelp-url'                   => 'Help:Conteníos',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Ver páxines con esti prefixu]]',
 'searchprofile-articles'           => 'Páxines',
-'searchprofile-articles-and-proj'  => 'Páxines y proyeutu',
-'searchprofile-project'            => 'Proyeutu',
+'searchprofile-articles-and-proj'  => 'Páxines de conteníu y de proyeutu',
+'searchprofile-project'            => 'Páxines de proyeutu',
 'searchprofile-images'             => 'Archivos',
 'searchprofile-everything'         => 'Too',
 'searchprofile-advanced'           => 'Avanzao',
@@ -983,9 +985,6 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'prefs-misc'               => 'Varios',
 'saveprefs'                => 'Guardar preferencies',
 'resetprefs'               => 'Volver a les preferencies por defeutu',
-'oldpassword'              => 'Clave vieya:',
-'newpassword'              => 'Clave nueva:',
-'retypenew'                => 'Repiti la nueva clave:',
 'textboxsize'              => 'Edición',
 'rows'                     => 'Files:',
 'columns'                  => 'Columnes:',
@@ -999,9 +998,10 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'savedprefs'               => 'Les tos preferencies quedaron grabaes.',
 'timezonelegend'           => 'Zona horaria',
 'timezonetext'             => '¹Diferencia horaria ente la UTC y la to hora llocal.',
-'localtime'                => 'Hora llocal',
-'timezoneoffset'           => 'Diferencia¹',
-'servertime'               => 'Hora del sirvidor',
+'localtime'                => 'Hora llocal:',
+'timezoneselect'           => 'Zona horaria:',
+'timezoneoffset'           => 'Diferencia¹:',
+'servertime'               => 'Hora del sirvidor:',
 'guesstimezone'            => 'Obtener del navegador',
 'allowemail'               => 'Dexar a los otros usuarios mandate correos',
 'prefs-searchoptions'      => 'Opciones de busca',
@@ -1199,11 +1199,11 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'upload_directory_read_only'  => "El sirvidor nun pue modificar el direutoriu de xubida d'archivos ($1).",
 'uploaderror'                 => 'Error de xubida',
 'uploadtext'                  => "Usa'l formulariu d'abaxo pa xubir archivos.
-Pa ver o buscar archivos xubíos previamente, vete a la [[Special:ImageList|llista d'archivos xubíos]]. Les xubíes tamién queden conseñaos nel [[Special:Log/upload|rexistru de xubíes]], y los esborraos nel [[Special:Log/delete|rexistru d'esborraos]].
+Pa ver o buscar archivos xubíos previamente, vete a la [[Special:FileList|llista d'archivos xubíos]]. Les xubíes tamién queden conseñaos nel [[Special:Log/upload|rexistru de xubíes]], y los esborraos nel [[Special:Log/delete|rexistru d'esborraos]].
 
 P'amiestar un archivu nuna páxina, usa un enllaz con ún de los siguientes formatos:
-*'''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Archivu.jpg]]</nowiki></tt>''' pa usar la versión completa del archivu
-*'''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:Archivu.png|200px|thumb|left|testu alternativu]]</nowiki></tt>''' pa usar un renderizáu de 200 píxeles d'anchu nun caxellu al marxe esquierdu con 'testu alternativu' como la so descripción
+*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Archivu.jpg]]</nowiki></tt>''' pa usar la versión completa del archivu
+*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Archivu.png|200px|thumb|left|testu alternativu]]</nowiki></tt>''' pa usar un renderizáu de 200 píxeles d'anchu nun caxellu al marxe esquierdu con 'testu alternativu' como la so descripción
 *'''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Archivu.ogg]]</nowiki></tt>''' pa enllazar direutamente al archivu ensin amosar l'archivu",
 'upload-permitted'            => "Menes d'archivu permitíes: $1.",
 'upload-preferred'            => "Menes d'archivu preferíes: $1.",
@@ -1211,7 +1211,7 @@ P'amiestar un archivu nuna páxina, usa un enllaz con ún de los siguientes form
 'uploadlog'                   => 'rexistru de xubíes',
 'uploadlogpage'               => 'Rexistru de xubíes',
 'uploadlogpagetext'           => "Abaxo amuésase una llista de les xubíes d'archivos más recientes.
-Mira la [[Special:NewImages|galería d'archivos nuevos]] pa una güeyada más visual.",
+Mira la [[Special:NewFiles|galería d'archivos nuevos]] pa una güeyada más visual.",
 'filename'                    => "Nome d'archivu",
 'filedesc'                    => 'Resume',
 'fileuploadsummary'           => 'Resume:',
@@ -1244,9 +1244,9 @@ Si l'archivu comprobáu tien el mesmu tamañu que la imaxe orixinal, nun ye nece
 'file-thumbnail-no'           => "L'archivu entama con <strong><tt>$1</tt></strong>.
 Paez ser una imaxe de tamañu menguáu <i>(miniatura)</i>.
 Si tienes esta imaxe a resolución completa xúbila; si non, por favor camuda'l nome del archivu.",
-'fileexists-forbidden'        => 'Yá esiste un archivu con esti nome; por favor vuelvi atrás y xubi esti archivu con otru nome. [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Yá esiste un archivu con esti nome; por favor vuelvi atrás y xubi esti archivu con otru nome. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => "Yá esiste un archivu con esti nome nel direutoriu d'archivos compartíos.
-Si tovía asina quies xubir l'archivu, por favor vuelvi atrás y usa otru nome. [[Image:$1|thumb|center|$1]]",
+Si tovía asina quies xubir l'archivu, por favor vuelvi atrás y usa otru nome. [[File:$1|thumb|center|$1]]",
 'file-exists-duplicate'       => 'Esti archivu ye un duplicáu {{PLURAL:$1|del siguiente archivu|de los siguientes archivos}}:',
 'successfulupload'            => 'Xubida correuta',
 'uploadwarning'               => "Avisu de xubíes d'archivos",
@@ -1291,20 +1291,20 @@ Si'l problema persiste, contauta con un [[Special:ListUsers/sysop|alministrador]
 'upload_source_url'  => ' (una URL válida y accesible públicamente)',
 'upload_source_file' => ' (un archivu del to ordenador)',
 
-# Special:ImageList
-'imagelist-summary'     => "Esta páxina especial amuesa tolos archivos xubíos.
+# Special:ListFiles
+'listfiles-summary'     => "Esta páxina especial amuesa tolos archivos xubíos.
 Por defeutu los caberos archivos xubíos amuésense a lo cimero de la llista.
 Calcando na cabecera d'una columna camúdase l'orde acordies con ella.",
-'imagelist_search_for'  => "Buscar por nome d'archivu multimedia:",
+'listfiles_search_for'  => "Buscar por nome d'archivu multimedia:",
 'imgfile'               => 'archivu',
-'imagelist'             => "Llista d'imáxenes",
-'imagelist_date'        => 'Fecha',
-'imagelist_name'        => 'Nome',
-'imagelist_user'        => 'Usuariu',
-'imagelist_size'        => 'Tamañu',
-'imagelist_description' => 'Descripción',
+'listfiles'             => "Llista d'imáxenes",
+'listfiles_date'        => 'Fecha',
+'listfiles_name'        => 'Nome',
+'listfiles_user'        => 'Usuariu',
+'listfiles_size'        => 'Tamañu',
+'listfiles_description' => 'Descripción',
 
-# Image description page
+# File description page
 'filehist'                       => 'Historial del archivu',
 'filehist-help'                  => "Calca nuna fecha/hora pa ver l'archivu como taba daquélla.",
 'filehist-deleteall'             => 'esborrar too',
@@ -1396,24 +1396,24 @@ Alcuérdate de comprobar otros enllaces a les plantíes enantes d'esborrales.",
 'randomredirect-nopages' => 'Nun hai redireiciones nel espaciu de nomes "$1".',
 
 # Statistics
-'statistics'                      => 'Estadístiques',
-'statistics-header-pages'         => 'Estadístiques de páxines',
-'statistics-header-edits'         => "Estadístiques d'ediciones",
-'statistics-header-views'         => 'Estadístiques de visites',
-'statistics-header-users'         => "Estadístiques d'usuariu",
-'statistics-articles'             => 'Páxines de conteníu',
-'statistics-pages'                => 'Páxines',
-'statistics-pages-tooltip'        => "Toles páxines de la wiki, incluyendo páxines d'alderique, redireiciones, etc.",
-'statistics-files'                => 'Archivos xubíos',
-'statistics-edits'                => "Ediciones de páxines dende qu'entamó {{SITENAME}}",
-'statistics-edits-average'        => "Media d'ediciones per páxina",
-'statistics-views-total'          => 'Visites totales',
-'statistics-views-peredit'        => 'Visites por edición',
-'statistics-jobqueue'             => 'Llonxitú de la [http://www.mediawiki.org/wiki/Manual:Job_queue cola de xeres]',
-'statistics-users'                => '[[Special:ListUsers|Usuarios]] rexistraos',
-'statistics-users-active'         => 'Usuarios activos',
-'statistics-users-active-tooltip' => 'Usuarios que realizaron una aición nel caberu mes',
-'statistics-mostpopular'          => 'Páxines más vistes',
+'statistics'                   => 'Estadístiques',
+'statistics-header-pages'      => 'Estadístiques de páxines',
+'statistics-header-edits'      => "Estadístiques d'ediciones",
+'statistics-header-views'      => 'Estadístiques de visites',
+'statistics-header-users'      => "Estadístiques d'usuariu",
+'statistics-articles'          => 'Páxines de conteníu',
+'statistics-pages'             => 'Páxines',
+'statistics-pages-desc'        => "Toles páxines de la wiki, incluyendo páxines d'alderique, redireiciones, etc.",
+'statistics-files'             => 'Archivos xubíos',
+'statistics-edits'             => "Ediciones de páxines dende qu'entamó {{SITENAME}}",
+'statistics-edits-average'     => "Media d'ediciones per páxina",
+'statistics-views-total'       => 'Visites totales',
+'statistics-views-peredit'     => 'Visites por edición',
+'statistics-jobqueue'          => 'Llonxitú de la [http://www.mediawiki.org/wiki/Manual:Job_queue cola de xeres]',
+'statistics-users'             => '[[Special:ListUsers|Usuarios]] rexistraos',
+'statistics-users-active'      => 'Usuarios activos',
+'statistics-users-active-desc' => 'Usuarios que realizaron una aición nel caberu mes',
+'statistics-mostpopular'       => 'Páxines más vistes',
 
 'disambiguations'      => 'Páxines de dixebra',
 'disambiguationspage'  => 'Template:dixebra',
@@ -1832,6 +1832,7 @@ Consulta'l [[Special:Log/delete|rexistru d'esborraos]] pa ver los esborraos y re
 'undelete-error-long'          => "Atopáronse errores al restaurar l'archivu:
 
 $1",
+'undelete-show-file-submit'    => 'Sí',
 
 # Namespace form on various pages
 'namespace'      => 'Espaciu de nomes:',
@@ -2113,6 +2114,7 @@ Toles aiciones d'importación treswiki queden rexistraes nel [[Special:Log/impor
 'import-interwiki-history'   => "Copiar toles versiones d'historial d'esta páxina",
 'import-interwiki-submit'    => 'Importar',
 'import-interwiki-namespace' => 'Tresferir páxines al espaciu de nome:',
+'import-comment'             => 'Comentariu:',
 'importtext'                 => "Por favor, esporta l'archivu dende la wiki d'orixe usando la [[Special:Export|utilidá d'esportación]].
 Guárdalu nel to ordenador y xúbilu equí.",
 'importstart'                => 'Importando les páxines...',
@@ -2295,7 +2297,7 @@ $1",
 'show-big-image'       => 'Resolución completa',
 'show-big-image-thumb' => "<small>Tamañu d'esta previsualización: $1 × $2 píxeles</small>",
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => "Galería d'imáxenes nueves",
 'imagelisttext'         => "Embaxo ta la llista {{PLURAL:$1|d'un archivu ordenáu|de '''$1''' archivos ordenaos}} $2.",
 'newimages-summary'     => 'Esta páxina especial amuesa los caberos archivos xubíos.',
@@ -2757,13 +2759,13 @@ Tamién pues [[Special:Watchlist/edit|usar l'editor estándar]].",
 'filepath-submit'  => 'Ruta',
 'filepath-summary' => "Esta páxina especial devuelve la ruta completa d'un archivu. Les imáxenes amuésense a resolución completa; les demás tribes d'archivu execútense direutamente col so programa asociáu.
 
-Escribi'l nome d'archivu ensin el prefixu \"{{ns:image}}:\".",
+Escribi'l nome d'archivu ensin el prefixu \"{{ns:file}}:\".",
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Buscar archivos duplicaos',
 'fileduplicatesearch-summary'  => 'Busca archivos duplicaos basándose nos sos valores fragmentarios.
 
-Escribi\'l nome del archivu ensin el prefixu "{{ns:image}}:".',
+Escribi\'l nome del archivu ensin el prefixu "{{ns:file}}:".',
 'fileduplicatesearch-legend'   => 'Buscar duplicaos',
 'fileduplicatesearch-filename' => "Nome d'archivu:",
 'fileduplicatesearch-submit'   => 'Buscar',

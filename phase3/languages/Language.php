@@ -56,9 +56,9 @@ class Language {
 	var $mConverter, $mVariants, $mCode, $mLoaded = false;
 	var $mMagicExtensions = array(), $mMagicHookDone = false;
 
-	static public $mLocalisationKeys = array( 'fallback', 'namespaceNames',
-		'skinNames', 'mathNames',
-		'bookstoreList', 'magicWords', 'messages', 'rtl', 'digitTransformTable',
+	static public $mLocalisationKeys = array(
+		'fallback', 'namespaceNames', 'mathNames', 'bookstoreList',
+		'magicWords', 'messages', 'rtl', 'digitTransformTable',
 		'separatorTransformTable', 'fallback8bitEncoding', 'linkPrefixExtension',
 		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases',
 		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap',
@@ -135,6 +135,10 @@ class Language {
 	 */
 	static function factory( $code ) {
 		if ( !isset( self::$mLangObjCache[$code] ) ) {
+			if( count( self::$mLangObjCache ) > 10 ) {
+				// Don't keep a billion objects around, that's stupid.
+				self::$mLangObjCache = array();
+			}
 			self::$mLangObjCache[$code] = self::newFromCode( $code );
 		}
 		return self::$mLangObjCache[$code];
@@ -316,7 +320,7 @@ class Language {
 		if ( isset( $aliases[$name][0] ) ) {
 			$name = $aliases[$name][0];
 		}
-		return $this->getNsText(NS_SPECIAL) . ':' . $name;
+		return $this->getNsText( NS_SPECIAL ) . ':' . $name;
 	}
 
 	function getQuickbarSettings() {
@@ -327,11 +331,6 @@ class Language {
 			$this->getMessage( 'qbsettings-floatingleft' ),
 			$this->getMessage( 'qbsettings-floatingright' )
 		);
-	}
-
-	function getSkinNames() {
-		$this->load();
-		return $this->skinNames;
 	}
 
 	function getMathNames() {
@@ -475,39 +474,50 @@ class Language {
 	function userAdjust( $ts, $tz = false )	{
 		global $wgUser, $wgLocalTZoffset;
 
-		if (!$tz) {
+		if ( $tz === false ) {
 			$tz = $wgUser->getOption( 'timecorrection' );
 		}
 
-		# minutes and hours differences:
-		$minDiff = 0;
-		$hrDiff  = 0;
+		$data = explode( '|', $tz, 3 );
 
-		if ( $tz === '' ) {
-			# Global offset in minutes.
-			if( isset($wgLocalTZoffset) ) {
-				if( $wgLocalTZoffset >= 0 ) {
-					$hrDiff = floor($wgLocalTZoffset / 60);
-				} else {
-					$hrDiff = ceil($wgLocalTZoffset / 60);
-				}
-				$minDiff = $wgLocalTZoffset % 60;
+		if ( $data[0] == 'ZoneInfo' ) {
+			if ( function_exists( 'timezone_open' ) && @timezone_open( $data[2] ) !== false ) {
+				$date = date_create( $ts, timezone_open( 'UTC' ) );
+				date_timezone_set( $date, timezone_open( $data[2] ) );
+				$date = date_format( $date, 'YmdHis' );
+				return $date;
 			}
-		} elseif ( strpos( $tz, ':' ) !== false ) {
-			$tzArray = explode( ':', $tz );
-			$hrDiff = intval($tzArray[0]);
-			$minDiff = intval($hrDiff < 0 ? -$tzArray[1] : $tzArray[1]);
+			# Unrecognized timezone, default to 'Offset' with the stored offset.
+			$data[0] = 'Offset';
+		}
+
+		$minDiff = 0;
+		if ( $data[0] == 'System' || $tz == '' ) {
+			# Global offset in minutes.
+			if( isset($wgLocalTZoffset) ) $minDiff = $wgLocalTZoffset;
+		} else if ( $data[0] == 'Offset' ) {
+			$minDiff = intval( $data[1] );
 		} else {
-			$hrDiff = intval( $tz );
+			$data = explode( ':', $tz );
+			if( count( $data ) == 2 ) {
+				$data[0] = intval( $data[0] );
+				$data[1] = intval( $data[1] );
+				$minDiff = abs( $data[0] ) * 60 + $data[1];
+				if ( $data[0] < 0 ) $minDiff = -$minDiff;
+			} else {
+				$minDiff = intval( $data[0] ) * 60;
+			}
 		}
 
 		# No difference ? Return time unchanged
-		if ( 0 == $hrDiff && 0 == $minDiff ) { return $ts; }
+		if ( 0 == $minDiff ) return $ts;
 
 		wfSuppressWarnings(); // E_STRICT system time bitching
-		# Generate an adjusted date
+		# Generate an adjusted date; take advantage of the fact that mktime
+		# will normalize out-of-range values so we don't have to split $minDiff 
+		# into hours and minutes.
 		$t = mktime( (
-		  (int)substr( $ts, 8, 2) ) + $hrDiff, # Hours
+		  (int)substr( $ts, 8, 2) ), # Hours
 		  (int)substr( $ts, 10, 2 ) + $minDiff, # Minutes
 		  (int)substr( $ts, 12, 2 ), # Seconds
 		  (int)substr( $ts, 4, 2 ), # Month
@@ -525,9 +535,10 @@ class Language {
 	 * internationalisation, a reduced set of format characters, and a better 
 	 * escaping format.
 	 *
-	 * Supported format characters are dDjlNwzWFmMntLYyaAgGhHiscrU. See the 
-	 * PHP manual for definitions. There are a number of extensions, which 
-	 * start with "x":
+	 * Supported format characters are dDjlNwzWFmMntLoYyaAgGhHiscrU. See the 
+	 * PHP manual for definitions. "o" format character is supported since
+	 * PHP 5.1.0, previous versions return literal o.
+	 * There are a number of extensions, which start with "x":
 	 *
 	 *    xn   Do not translate digits of the next numeric format character
 	 *    xN   Toggle raw digit (xn) flag, stays set until explicitly unset
@@ -548,10 +559,10 @@ class Language {
 	 *    xjn  n (month number) in Hebrew calendar
 	 *    xjY  Y (full year) in Hebrew calendar
 	 *
-	 *   xmj  j (day number) in Hijri calendar
-	 *   xmF  F (month name) in Hijri calendar
-	 *   xmn  n (month number) in Hijri calendar
-	 *   xmY  Y (full year) in Hijri calendar
+	 *    xmj  j (day number) in Hijri calendar
+	 *    xmF  F (month name) in Hijri calendar
+	 *    xmn  n (month number) in Hijri calendar
+	 *    xmY  Y (full year) in Hijri calendar
 	 *
 	 *    xkY  Y (full year) in Thai solar calendar. Months and days are
 	 *                       identical to the Gregorian calendar
@@ -572,6 +583,8 @@ class Language {
 	 * @param $ts String: 14-character timestamp
 	 *      YYYYMMDDHHMMSS
 	 *      01234567890123
+	 * @todo emulation of "o" format character for PHP pre 5.1.0
+	 * @todo handling of "o" format character for Iranian, Hebrew, Hijri & Thai?
 	 */
 	function sprintfDate( $format, $ts ) {
 		$s = '';
@@ -708,6 +721,16 @@ class Language {
 				case 'L':
 					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
 					$num = gmdate( 'L', $unix );
+					break;
+				# 'o' is supported since PHP 5.1.0
+				# return literal if not supported
+				# TODO: emulation for pre 5.1.0 versions
+				case 'o':
+					if ( !$unix ) $unix = wfTimestamp( TS_UNIX, $ts );
+					if ( version_compare(PHP_VERSION, '5.1.0') === 1 )
+						$num = date( 'o', $unix );
+					else
+						$s .= 'o';
 					break;
 				case 'Y':
 					$num = substr( $ts, 0, 4 );
@@ -1523,24 +1546,71 @@ class Language {
 			return $string;
 		}
 
-		# MySQL fulltext index doesn't grok utf-8, so we
-		# need to fold cases and convert to hex
 
 		wfProfileIn( __METHOD__ );
-		if( function_exists( 'mb_strtolower' ) ) {
+		
+		// MySQL fulltext index doesn't grok utf-8, so we
+		// need to fold cases and convert to hex
+		$out = preg_replace_callback(
+			"/([\\xc0-\\xff][\\x80-\\xbf]*)/",
+			array( $this, 'stripForSearchCallback' ),
+			$this->lc( $string ) );
+		
+		// And to add insult to injury, the default indexing
+		// ignores short words... Pad them so we can pass them
+		// through without reconfiguring the server...
+		$minLength = $this->minSearchLength();
+		if( $minLength > 1 ) {
+			$n = $minLength-1;
 			$out = preg_replace(
-				"/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
-				"'U8' . bin2hex( \"$1\" )",
-				mb_strtolower( $string ) );
-		} else {
-			list( , $wikiLowerChars ) = self::getCaseMaps();
-			$out = preg_replace(
-				"/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
-				"'U8' . bin2hex( strtr( \"\$1\", \$wikiLowerChars ) )",
-				$string );
+				"/\b(\w{1,$n})\b/",
+				"$1U800",
+				$out );
 		}
+		
+		// Periods within things like hostnames and IP addresses
+		// are also important -- we want a search for "example.com"
+		// or "192.168.1.1" to work sanely.
+		//
+		// MySQL's search seems to ignore them, so you'd match on
+		// "example.wikipedia.com" and "192.168.83.1" as well.
+		$out = preg_replace(
+			"/(\w)\.(\w|\*)/u",
+			"$1U82e$2",
+			$out );
+		
 		wfProfileOut( __METHOD__ );
 		return $out;
+	}
+	
+	/**
+	 * Armor a case-folded UTF-8 string to get through MySQL's
+	 * fulltext search without being mucked up by funny charset
+	 * settings or anything else of the sort.
+	 */
+	protected function stripForSearchCallback( $matches ) {
+		return 'U8' . bin2hex( $matches[1] );
+	}
+	
+	/**
+	 * Check MySQL server's ft_min_word_len setting so we know
+	 * if we need to pad short words...
+	 */
+	protected function minSearchLength() {
+		if( !isset( $this->minSearchLength ) ) {
+			$sql = "show global variables like 'ft\\_min\\_word\\_len'";
+			$dbr = wfGetDB( DB_SLAVE );
+			$result = $dbr->query( $sql );
+			$row = $result->fetchObject();
+			$result->free();
+			
+			if( $row && $row->Variable_name == 'ft_min_word_len' ) {
+				$this->minSearchLength = intval( $row->Value );
+			} else {
+				$this->minSearchLength = 0;
+			}
+		}
+		return $this->minSearchLength;
 	}
 
 	function convertForSearchResult( $termsArray ) {
@@ -1837,12 +1907,12 @@ class Language {
 		if (!$nocommafy) {
 			$number = $this->commafy($number);
 			$s = $this->separatorTransformTable();
-			if (!is_null($s)) { $number = strtr($number, $s); }
+			if ($s) { $number = strtr($number, $s); }
 		}
 
 		if ($wgTranslateNumerals) {
 			$s = $this->digitTransformTable();
-			if (!is_null($s)) { $number = strtr($number, $s); }
+			if ($s) { $number = strtr($number, $s); }
 		}
 
 		return $number;
@@ -1850,10 +1920,10 @@ class Language {
 
 	function parseFormattedNumber( $number ) {
 		$s = $this->digitTransformTable();
-		if (!is_null($s)) { $number = strtr($number, array_flip($s)); }
+		if ($s) { $number = strtr($number, array_flip($s)); }
 
 		$s = $this->separatorTransformTable();
-		if (!is_null($s)) { $number = strtr($number, array_flip($s)); }
+		if ($s) { $number = strtr($number, array_flip($s)); }
 
 		$number = strtr( $number, array (',' => '') );
 		return $number;
@@ -1881,33 +1951,40 @@ class Language {
 
 
 	/**
-	 * For the credit list in includes/Credits.php (action=credits)
+	 * Take a list of strings and build a locale-friendly comma-separated
+	 * list, using the local comma-separator message.
+	 * The last two strings are chained with an "and".
 	 *
 	 * @param $l Array
 	 * @return string
 	 */
 	function listToText( $l ) {
 		$s = '';
-		$m = count($l) - 1;
-		for ($i = $m; $i >= 0; $i--) {
-			if ($i == $m) {
-				$s = $l[$i];
-			} else if ($i == $m - 1) {
-				$s = $l[$i] . ' ' . $this->getMessageFromDB( 'and' ) . ' ' . $s;
-			} else {
-				$s = $l[$i] . ', ' . $s;
-			}
+		$m = count( $l ) - 1;
+		if( $m == 1 ) {
+			return $l[0] . $this->getMessageFromDB( 'and' ) . $this->getMessageFromDB( 'word-separator' ) . $l[1];
 		}
-		return $s;
+		else {
+			for ( $i = $m; $i >= 0; $i-- ) {
+				if ( $i == $m ) {
+					$s = $l[$i];
+				} else if( $i == $m - 1 ) {
+					$s = $l[$i] . $this->getMessageFromDB( 'and' ) . $this->getMessageFromDB( 'word-separator' ) . $s;
+				} else {
+					$s = $l[$i] . $this->getMessageFromDB( 'comma-separator' ) . $s;
+				}
+			}
+			return $s;
+		}
 	}
-	
+
 	/**
 	 * Take a list of strings and build a locale-friendly comma-separated
 	 * list, using the local comma-separator message.
 	 * @param $list array of strings to put in a comma list
 	 * @return string
 	 */
-	function commaList( $list, $forContent = false ) {
+	function commaList( $list ) {
 		return implode(
 			$list,
 			wfMsgExt( 'comma-separator', array( 'escapenoentities', 'language' => $this ) ) );
@@ -2232,7 +2309,7 @@ class Language {
 	 */
 	static function loadLocalisation( $code, $disableCache = false ) {
 		static $recursionGuard = array();
-		global $wgMemc, $wgCheckSerialized;
+		global $wgMemc, $wgEnableSerializedMessages, $wgCheckSerialized;
 
 		if ( !$code ) {
 			throw new MWException( "Invalid language code requested" );
@@ -2247,16 +2324,18 @@ class Language {
 			wfProfileIn( __METHOD__ );
 
 			# Try the serialized directory
-			$cache = wfGetPrecompiledData( self::getFileName( "Messages", $code, '.ser' ) );
-			if ( $cache ) {
-				if ( $wgCheckSerialized && self::isLocalisationOutOfDate( $cache ) ) {
-					$cache = false;
-					wfDebug( "Language::loadLocalisation(): precompiled data file for $code is out of date\n" );
-				} else {
-					self::$mLocalisationCache[$code] = $cache;
-					wfDebug( "Language::loadLocalisation(): got localisation for $code from precompiled data file\n" );
-					wfProfileOut( __METHOD__ );
-					return self::$mLocalisationCache[$code]['deps'];
+			if( $wgEnableSerializedMessages ) {
+				$cache = wfGetPrecompiledData( self::getFileName( "Messages", $code, '.ser' ) );
+				if ( $cache ) {
+					if ( $wgCheckSerialized && self::isLocalisationOutOfDate( $cache ) ) {
+						$cache = false;
+						wfDebug( "Language::loadLocalisation(): precompiled data file for $code is out of date\n" );
+					} else {
+						self::$mLocalisationCache[$code] = $cache;
+						wfDebug( "Language::loadLocalisation(): got localisation for $code from precompiled data file\n" );
+						wfProfileOut( __METHOD__ );
+						return self::$mLocalisationCache[$code]['deps'];
+					}
 				}
 			}
 

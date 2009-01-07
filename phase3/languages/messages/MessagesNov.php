@@ -64,7 +64,7 @@ $messages = array(
 'mytalk'         => 'Men parla-pagine',
 'anontalk'       => 'Parlo por disi IP',
 'navigation'     => 'Navigatione',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 'returnto'         => 'Rivada a $1.',
 'tagline'          => 'Fro {{SITENAME}}',
@@ -167,7 +167,7 @@ kom li sami o altri usere.',
 'image_sample' => 'Exemple.jpg',
 
 # Edit pages
-'summary'               => 'Resume',
+'summary'               => 'Resume:',
 'minoredit'             => 'Dise es mikri modifiko',
 'watchthis'             => 'Observa disi pagine',
 'savearticle'           => 'Spara pagine',
@@ -238,14 +238,14 @@ Proba [[Special:Search|sercho sur li wiki]] por relatet pagines.',
 'fileuploadsummary' => 'Resume:',
 'watchthisupload'   => 'Observa disi pagine',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Sercha imaje nome:',
-'imagelist_name'        => 'Nome',
-'imagelist_user'        => 'Usere',
-'imagelist_size'        => 'Grandeso (bites)',
-'imagelist_description' => 'Deskriptione',
+# Special:ListFiles
+'listfiles_search_for'  => 'Sercha imaje nome:',
+'listfiles_name'        => 'Nome',
+'listfiles_user'        => 'Usere',
+'listfiles_size'        => 'Grandeso (bites)',
+'listfiles_description' => 'Deskriptione',
 
-# Image description page
+# File description page
 'filehist-user' => 'Usere',
 'imagelinks'    => 'Linkes',
 
@@ -386,7 +386,7 @@ Si vu voli plu tardim ekarta li pagine fro vun observa-liste, klikta \"Desobserv
 # Info page
 'infosubtitle' => 'Informatione pri pagine',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Sercha',
 'bydate'   => 'segun date',
 

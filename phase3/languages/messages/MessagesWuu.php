@@ -123,7 +123,7 @@ $messages = array(
 'mytalk'         => '我个讲张',
 'anontalk'       => '该IP个讲张',
 'navigation'     => '导航',
-'and'            => '搭仔',
+'and'            => '&#32;搭仔',
 
 'errorpagetitle'    => '错误',
 'returnto'          => '返回到$1。',
@@ -282,6 +282,11 @@ $messages = array(
 'accountcreatedtext'         => '$1 个户头已经建立哉。',
 'loginlanguagelabel'         => '语言：$1',
 
+# Password reset dialog
+'oldpassword' => '旧密码:',
+'newpassword' => '新密码:',
+'retypenew'   => '再打一遍新密码:',
+
 # Edit page toolbar
 'bold_sample'    => '黑体文本',
 'bold_tip'       => '黑体文本',
@@ -296,7 +301,7 @@ $messages = array(
 'sig_tip'        => '倷个签名搭仔辰光记录',
 
 # Edit pages
-'summary'            => '总结',
+'summary'            => '总结:',
 'minoredit'          => '该个是个小改动',
 'watchthis'          => '监控该只页面',
 'savearticle'        => '保存页面',
@@ -379,9 +384,6 @@ $messages = array(
 'prefs-watchlist-days'  => '勒拉监控列表里向显示个日数：',
 'prefs-watchlist-edits' => '勒拉扩展个监控列表里向显示个编辑趟数：',
 'saveprefs'             => '保存',
-'oldpassword'           => '旧密码:',
-'newpassword'           => '新密码:',
-'retypenew'             => '再打一遍新密码:',
 'textboxsize'           => '编辑',
 'searchresultshead'     => '搜索',
 'recentchangescount'    => '近段辰光个改动标题数：',
@@ -443,11 +445,11 @@ $messages = array(
 'uploadnologin'     => '朆登录',
 'uploadnologintext' => '倷板定要[[Special:UserLogin|登录]]仔再好上载文件。',
 'uploaderror'       => '上载出错',
-'uploadtext'        => "拿下头只表格来上载文件。要查看或者搜寻之前上载个图片个说法，请到[[Special:ImageList|已上载文件列表]]，上载搭仔删脱也记录勒拉[[Special:Log/upload|上载日志]]里向。
+'uploadtext'        => "拿下头只表格来上载文件。要查看或者搜寻之前上载个图片个说法，请到[[Special:FileList|已上载文件列表]]，上载搭仔删脱也记录勒拉[[Special:Log/upload|上载日志]]里向。
 
 要勒拉页面里向摆进图片个说法，用下头该种形式个链接
-'''<nowiki>[[{{ns:image}}:文件.jpg]]</nowiki>'''，
-'''<nowiki>[[{{ns:image}}:文件.png|替代文本]]</nowiki>''' 或者用
+'''<nowiki>[[{{ns:file}}:文件.jpg]]</nowiki>'''，
+'''<nowiki>[[{{ns:file}}:文件.png|替代文本]]</nowiki>''' 或者用
 '''<nowiki>[[{{ns:media}}:文件.ogg]]</nowiki>''' 直接链到文件。",
 'uploadlog'         => '文件上载日志',
 'uploadlogpage'     => '文件上载日志',
@@ -467,17 +469,17 @@ $messages = array(
 'destfilename'      => '目标文件名:',
 'watchthisupload'   => '监控该只页面',
 
-# Special:ImageList
-'imagelist_search_for'  => '寻图片名字:',
+# Special:ListFiles
+'listfiles_search_for'  => '寻图片名字:',
 'imgfile'               => '源文件',
-'imagelist'             => '文件列表',
-'imagelist_date'        => '日脚',
-'imagelist_name'        => '名字',
-'imagelist_user'        => '用户',
-'imagelist_size'        => '尺寸 (bytes)',
-'imagelist_description' => '描述',
+'listfiles'             => '文件列表',
+'listfiles_date'        => '日脚',
+'listfiles_name'        => '名字',
+'listfiles_user'        => '用户',
+'listfiles_size'        => '尺寸 (bytes)',
+'listfiles_description' => '描述',
 
-# Image description page
+# File description page
 'filehist'                  => '文物历史',
 'filehist-deleteall'        => '全删',
 'filehist-deleteone'        => '删',
@@ -762,7 +764,7 @@ $messages = array(
 # Image deletion
 'deletedrevision' => '拨删脱个旧修订 $1',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'    => '新文件陈列室',
 'showhidebots' => '（$1机器人）',
 'ilsubmit'     => '搜寻',

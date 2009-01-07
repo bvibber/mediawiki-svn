@@ -9,6 +9,23 @@
  * @author Felis
  */
 
+$namespaceNames = array(
+	NS_SPECIAL          => 'Ippiziari',
+	NS_TALK             => 'Dischussioni',
+	NS_USER             => 'Utenti',
+	NS_USER_TALK        => 'Dischussioni_utenti',
+	NS_PROJECT_TALK     => 'Dischussioni_$1',
+	NS_FILE             => 'Immagina',
+	NS_FILE_TALK        => 'Dischussioni_immagina',
+	NS_MEDIAWIKI_TALK   => 'Dischussioni_MediaWiki',
+	NS_TEMPLATE         => 'Mudellu',
+	NS_TEMPLATE_TALK    => 'Dischussioni_mudellu',
+	NS_HELP             => 'Aggiuddu',
+	NS_HELP_TALK        => 'Dischussioni_aggiuddu',
+	NS_CATEGORY         => 'Categuria',
+	NS_CATEGORY_TALK    => 'Dischussioni_categuria',
+);
+
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'RinviiDoppi' ),
 	'BrokenRedirects'           => array( 'RinviiIbbagliaddi' ),
@@ -19,7 +36,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'AbbaidaddiIppiziari' ),
 	'Recentchanges'             => array( 'UlthimiMudìfigghi' ),
 	'Upload'                    => array( 'Carrigga' ),
-	'Imagelist'                 => array( 'Immagini' ),
+	'Listfiles'                 => array( 'Immagini' ),
 	'Newimages'                 => array( 'ImmaginiRizzenti' ),
 	'Listusers'                 => array( 'Utenti', 'ErencuUtenti' ),
 	'Statistics'                => array( 'Sthatisthigghi' ),
@@ -219,7 +236,7 @@ Li sighenti cullegamenti so in linga ingrese:
 'mytalk'         => "Li me' dischussioni",
 'anontalk'       => 'Dischussioni pa chisthu IP',
 'navigation'     => 'Nabiggazioni',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 # Metadata in edit box
 'metadata_help' => 'Metadati:',
@@ -282,8 +299,6 @@ Li sighenti cullegamenti so in linga ingrese:
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Infuimmazioni in {{SITENAME}}',
 'aboutpage'            => 'Project:Infuimmazioni',
-'bugreports'           => 'Maiffunzionamenti',
-'bugreportspage'       => 'Project:Maiffunzionamenti',
 'copyright'            => "Cuntinuddi suggetti a licèntzia d'usu $1.",
 'copyrightpagename'    => 'Lu copyright i {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Copyright',
@@ -510,11 +525,13 @@ Si la registhrazioni è isthadda criadda pa un\'errori, pói ignorà chisth\'imb
 Pa cumprità la registhrazioni è nezzessàriu impusthà una noba paràura d'órdhini inogghi:",
 'resetpass_text'          => '<!-- Aggiungi lu testhu inogghi -->',
 'resetpass_header'        => "Rimpustha paràura d'órdhini",
+'oldpassword'             => "Véccia paràura d'órdhini:",
+'newpassword'             => "Noba paràura d'órdhini:",
+'retypenew'               => "Turra a ischribì la noba paràura d'órdhini:",
 'resetpass_submit'        => "Impustha la paràura d'órdhini e intra",
 'resetpass_success'       => "La paràura d'órdhini tóia è isthadda mudìfiggadda. Abà sei intrendi...",
 'resetpass_bad_temporary' => "Paràura d'órdhini timpuràniua invàridda. La paràura d'órdhini pudaria assé isthadda già ciambadda, oppuru pudaria assé isthadda dumandadda una noba paràura d'órdhini timpurània.",
 'resetpass_forbidden'     => "No è pussìbiri mudifiggà li paràuri d'órdhini in {{SITENAME}}.",
-'resetpass_missing'       => "Dati mancanti i' lu mòdulu.",
 
 # Edit page toolbar
 'bold_sample'     => 'Grassetu',
@@ -539,8 +556,8 @@ Pa cumprità la registhrazioni è nezzessàriu impusthà una noba paràura d'ór
 'hr_tip'          => 'Lìnia orizontari (usà cun moderazioni)',
 
 # Edit pages
-'summary'                   => 'Oggettu',
-'subject'                   => 'Tìturu',
+'summary'                   => 'Oggettu:',
+'subject'                   => 'Tìturu:',
 'minoredit'                 => 'Chistha è una mudìfigga minori',
 'watchthis'                 => "Aggiungi a l'abbaidaddi ippiziari",
 'savearticle'               => 'Sàivva la pàgina',
@@ -552,8 +569,8 @@ Pa cumprità la registhrazioni è nezzessàriu impusthà una noba paràura d'ór
 'missingsummary'            => "'''Promimória:''' Nò ài ippizzificaddu l'oggettu di la mudìfigga. Turrendi à incalchà '''Sàivva la pàgina''' lu mudìfigga sarà sàivvadda cun l'oggettu bioddu.",
 'missingcommenttext'        => 'Insirì un cummentu in giossu.',
 'missingcommentheader'      => "'''Promimória:''' Nò hai ippizzificaddu l'intisthazioni di chisthu cummentu. Turrendi à incalchà '''Sàivva la pàgina''' lu mudìfigga sarà sàivvadda chena intisthazioni.",
-'summary-preview'           => 'Antiprimma oggettu',
-'subject-preview'           => 'Antiprimma oggettu/intisthazioni',
+'summary-preview'           => 'Antiprimma oggettu:',
+'subject-preview'           => 'Antiprimma oggettu/intisthazioni:',
 'blockedtitle'              => 'Utenti broccaddu.',
 'blockedtext'               => "<big>'''Chisth'innòmmu utenti o indirizzu IP so isthaddi broccaddi.'''</big>
 
@@ -837,9 +854,6 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rigisthru di ca
 'prefs-misc'               => 'Vari',
 'saveprefs'                => 'Sàivva li prifirenzi',
 'resetprefs'               => 'Rimpusthà li prifirènzi',
-'oldpassword'              => "Véccia paràura d'órdhini:",
-'newpassword'              => "Noba paràura d'órdhini:",
-'retypenew'                => "Turra a ischribì la noba paràura d'órdhini:",
 'textboxsize'              => 'Casella di mudìfigga',
 'rows'                     => 'Righi:',
 'columns'                  => 'Curonni:',
@@ -949,11 +963,11 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rigisthru di ca
 'upload_directory_read_only'  => "L'elaburaddori sivvidori nò è bonu à ischribì i' la carthella di carriggamentu ($1).",
 'uploaderror'                 => "Errori i' lu carriggamentu",
 'uploadtext'                  => "Usà lu mòdulu in giossu pà carriggà file.
-Pà visuarizzà o zirchà li file già carriggaddi, cunsulthà  lu [[Special:ImageList|rigisthru di li file carriggaddi]]. Carriggamenti e ischarriggamenti di file so registhraddi i' lu  [[Special:Log/upload|rigisthru di li carriggamenti]].
+Pà visuarizzà o zirchà li file già carriggaddi, cunsulthà  lu [[Special:FileList|rigisthru di li file carriggaddi]]. Carriggamenti e ischarriggamenti di file so registhraddi i' lu  [[Special:Log/upload|rigisthru di li carriggamenti]].
 
 Pa insirì un'immàgina i'na pàgina, fà un cullegamentu cussì:
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''' ,
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' ;
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki>''' ,
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|alt text]]</nowiki>''' ;
 usà inveci
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' pà culligà direttamenti l'althri tipi di file.",
 'upload-permitted'            => 'Fuimmaddi di file autorizaddi: $1.',
@@ -990,8 +1004,8 @@ Verifiggà ch'i dui file nò siani lu matessi o sciubarà un'innòmmu diffarènt
 S'è la matessi immàgina, i' li misuri originari, nò è nezzessàriu carriggà althri antiprimmi.",
 'file-thumbnail-no'           => "L'innòmmu di lu file ischumenza cun <strong><tt>$1</tt></strong>. Pari assé lu risulthaddu d'un'antiprimma <i>(thumbnail)</i>.
 Si si diponi di l'immàgina i' la risoruzioni originari, pa piazeri carriggalla. A l'invessu, pa piazeri ciambà l'innòmmu di lu file.",
-'fileexists-forbidden'        => "Un file cun chisthu innòmmu isisthi già. Turrà indareddu e mudìfiggà l'innòmmu cu' lu quari carriggà lu file. [[Image:$1|thumb|center|$1]]",
-'fileexists-shared-forbidden' => "Un file cun chisthu innòmmu isisthi già i l'archìbiu di li risuzzi mùrthimediari cundibisi. Turrà indareddu e mudìfiggà l'innòmmu cu' lu quari carriggà lu file. [[Image:$1|thumb|center|$1]]",
+'fileexists-forbidden'        => "Un file cun chisthu innòmmu isisthi già. Turrà indareddu e mudìfiggà l'innòmmu cu' lu quari carriggà lu file. [[File:$1|thumb|center|$1]]",
+'fileexists-shared-forbidden' => "Un file cun chisthu innòmmu isisthi già i l'archìbiu di li risuzzi mùrthimediari cundibisi. Turrà indareddu e mudìfiggà l'innòmmu cu' lu quari carriggà lu file. [[File:$1|thumb|center|$1]]",
 'successfulupload'            => 'Carriggamentu cumpritaddu',
 'uploadwarning'               => 'Avvisu di carriggamentu',
 'savefile'                    => 'Sàivva file',
@@ -1030,17 +1044,17 @@ Pa piazeri verifigga si vói carriggà avveru chisthu file; inogghi v'è lu rigi
 'upload_source_url'  => " (un'indirizzu vàriddu e pùbbriggu)",
 'upload_source_file' => " (un file i' lu propriu elaburaddori)",
 
-# Special:ImageList
-'imagelist_search_for'  => 'Zercha immàgini pa innòmu:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Zercha immàgini pa innòmu:',
 'imgfile'               => 'file',
-'imagelist'             => 'Listha di li file',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Innòmu',
-'imagelist_user'        => 'Utenti',
-'imagelist_size'        => 'Misuri in byte',
-'imagelist_description' => 'Deschrizioni',
+'listfiles'             => 'Listha di li file',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Innòmu',
+'listfiles_user'        => 'Utenti',
+'listfiles_size'        => 'Misuri in byte',
+'listfiles_description' => 'Deschrizioni',
 
-# Image description page
+# File description page
 'filehist'                  => 'Cronologia di lu file',
 'filehist-help'             => "Fà clic i' un gruppu data/ora pa vidé lu file cumenti era i' lu mamentu indicaddu.",
 'filehist-deleteall'        => 'canzella tuttu',
@@ -1636,6 +1650,7 @@ Tutti l'operazioni d'impurthazioni trans-wiki so rigisthraddi i' lu [[Special:Lo
 'import-interwiki-history'   => "Cupia l'intrea cronologia di chistha pàgina",
 'import-interwiki-submit'    => 'Impurtha',
 'import-interwiki-namespace' => "Traiffira li pàgini i' lu tipu di pàgina:",
+'import-comment'             => 'Oggettu:',
 'importtext'                 => "Pa piazeri ippurthà lu file da lu situ wiki d'origini cu' la funzioni Special:Export utility, saivvàllu i' lu propriu dischu e daboi carriggallu inogghi.",
 'importstart'                => 'Impurthendi li pàgini...',
 'import-revision-count'      => '{{PLURAL:$1|una ribisioni impurthadda|$1 ribisioni impurthaddi}}',
@@ -1804,7 +1819,7 @@ $1",
 'show-big-image'       => 'Versioni a altha risoruzioni',
 'show-big-image-thumb' => "<small>Misuri di chisth'antiprimma: $1 × $2 punti</small>",
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Galleria di li file nobi',
 'imagelisttext'         => "Inogghi una listha di '''$1''' {{PLURAL:$1|file|file}} ordhinaddi pa $2.",
 'showhidebots'          => '($1 li bot)',

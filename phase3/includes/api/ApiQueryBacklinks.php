@@ -60,7 +60,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 	);
 
 	public function __construct($query, $moduleName) {
-		$code = $prefix = $linktbl = null;
 		extract($this->backlinksSettings[$moduleName]);
 
 		parent :: __construct($query, $moduleName, $code);
@@ -124,9 +123,9 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
 	private function prepareSecondQuery($resultPageSet = null) {
 		/* SELECT page_id, page_title, page_namespace, page_is_redirect, pl_title, pl_namespace
-		 * FROM pagelinks, page WHERE pl_from=page_id
-		 * AND (pl_title='Foo' AND pl_namespace=0) OR (pl_title='Bar' AND pl_namespace=1)
-		 * LIMIT 11 ORDER BY pl_namespace, pl_title, pl_from
+		   FROM pagelinks, page WHERE pl_from=page_id
+		   AND (pl_title='Foo' AND pl_namespace=0) OR (pl_title='Bar' AND pl_namespace=1)
+		   ORDER BY pl_namespace, pl_title, pl_from LIMIT 11
 		 */
 		$db = $this->getDB();
 		$this->addTables(array('page', $this->bl_table));
@@ -186,7 +185,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$this->prepareFirstQuery($resultPageSet);
 
 		$db = $this->getDB();
-		$res = $this->select(__METHOD__);
+		$res = $this->select(__METHOD__.'::firstQuery');
 
 		$count = 0;
 		$this->data = array ();
@@ -215,7 +214,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		{
 			$this->resetQueryParams();
 			$this->prepareSecondQuery($resultPageSet);
-			$res = $this->select(__METHOD__);
+			$res = $this->select(__METHOD__.'::secondQuery');
 			$count = 0;
 			while($row = $db->fetchObject($res))
 			{
@@ -226,7 +225,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 					if($this->hasNS)
 						$contTitle = Title::makeTitle($row->{$this->bl_ns}, $row->{$this->bl_title});
 					else
-						$contTitle = Title::makeTitle(NS_IMAGE, $row->{$this->bl_title});
+						$contTitle = Title::makeTitle(NS_FILE, $row->{$this->bl_title});
 					$this->continueStr = $this->getContinueRedirStr($contTitle->getArticleID(), $row->page_id);
 					break;
 				}
@@ -270,7 +269,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		ApiQueryBase::addTitleInfo($a, Title::makeTitle($row->page_namespace, $row->page_title));
 		if($row->page_is_redirect)
 			$a['redirect'] = '';
-		$ns = $this->hasNS ? $row->{$this->bl_ns} : NS_IMAGE;
+		$ns = $this->hasNS ? $row->{$this->bl_ns} : NS_FILE;
 		$this->data[$ns][$row->{$this->bl_title}]['redirlinks'][] = $a;
 		$this->getResult()->setIndexedTagName($this->data[$ns][$row->{$this->bl_title}]['redirlinks'], $this->bl_code);
 	}
@@ -292,7 +291,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		}
 
 		// only image titles are allowed for the root in imageinfo mode
-		if (!$this->hasNS && $this->rootTitle->getNamespace() !== NS_IMAGE)
+		if (!$this->hasNS && $this->rootTitle->getNamespace() !== NS_FILE)
 			$this->dieUsage("The title for {$this->getModuleName()} query must be an image", 'bad_image_title');
 	}
 

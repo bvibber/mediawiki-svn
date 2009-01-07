@@ -5,6 +5,7 @@
  * @file
  *
  * @author Behdarvandyani
+ * @author GerardM
  * @author Meno25
  */
 
@@ -180,8 +181,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'درباره {{SITENAME}}',
 'aboutpage'            => 'Project:درباره',
-'bugreports'           => 'گزارشهای مهم',
-'bugreportspage'       => 'Project:گزارشهای مهم',
 'copyright'            => 'محتوا باای شماره قابل دسترسیه
  $1.',
 'copyrightpagename'    => '{{SITENAME}} کپی رایت',
@@ -256,7 +255,7 @@ $1',
 'yourpassword'            => 'رمز:',
 'remembermypassword'      => 'رمز اویدن به سیستم را دراین رایانه به خاطر بسپار',
 'login'                   => 'اویدن به سیستم',
-'nav-login-createaccount' => 'اویدن به سیستم / درست کردن حساب کاربری',
+'nav-login-createaccount' => 'اویدن به سیستم',
 'loginprompt'             => 'ایسا وا کوکی ها رافعال کنین سی اویدن به  {{SITENAME}}.',
 'userlogin'               => 'اویدن به سیستم / درست کردن حساب کاربری',
 'logout'                  => 'رهدن زه سیستم',
@@ -293,6 +292,9 @@ $1',
 لطفا بعد از دریافت آن داخل سیستم بوین.',
 'eauthentsent'            => 'یه نامه الکترونیکی سی تایید نشانی پست الکترونیکی به نشانی مورنظر ارسال وابید. قبل زه یو که نامه دیگری قابل ارسال به این نشانی بوه، وا دستورهایی که در آن نامه اویده را جهت تأیید ای مساله که ای نشانی مال ایسانه اجرا کنین.',
 
+# Password reset dialog
+'retypenew' => 'تایپ دوباره رمز:',
+
 # Edit page toolbar
 'bold_sample'     => 'متن گپ نما',
 'bold_tip'        => 'متن گپ نما',
@@ -315,8 +317,8 @@ $1',
 'hr_tip'          => 'خط افقی (کم استفاده کنین)',
 
 # Edit pages
-'summary'                => 'خلاصه',
-'subject'                => 'موضوع/سرخط',
+'summary'                => 'خلاصه:',
+'subject'                => 'موضوع/سرخط:',
 'minoredit'              => 'ای یه اصلاح ریزه-رز',
 'watchthis'              => 'پیگیری ای صفحه',
 'savearticle'            => 'صفحه ضبط بوه',
@@ -325,7 +327,7 @@ $1',
 'showdiff'               => 'نشودادن تغییرات',
 'anoneditwarning'        => "'''توجه:''' ایسا داخل سیستم نوابیدین.
 آی پی آدرستو درگزارش اصلاح صفحه ضبط ابوه.",
-'summary-preview'        => 'پیش نمایش - خلاصه',
+'summary-preview'        => 'پیش نمایش - خلاصه:',
 'blockedtext'            => ' "<big>\'\'\'دسترسی نام کاربری یا نشانی اینترنتی ایسا بسته وابیده.\'\'\'</big>
 ای کار توسط $1 انجام شده‌است.
 دلیلی که گده اینه: $2\'\'
@@ -406,7 +408,6 @@ $1',
 # Preferences page
 'preferences'   => 'اولویتها',
 'mypreferences' => 'اولویتهای مو',
-'retypenew'     => 'تایپ دوباره رمز:',
 
 'grouppage-sysop' => '{{ns:project}}:مدیران',
 
@@ -448,10 +449,10 @@ $1',
 'uploadlogpage' => 'نمایه آپلود',
 'uploadedimage' => 'آپلود وابید "[[$1]]"',
 
-# Special:ImageList
-'imagelist' => 'لیست فایل',
+# Special:ListFiles
+'listfiles' => 'لیست فایل',
 
-# Image description page
+# File description page
 'filehist'                  => 'گزارش تاریخی فایل',
 'filehist-help'             => 'رو تاریخ‌ها کلیک کنید تا نسخه مرتبط را ببینین.',
 'filehist-current'          => 'جاری',
@@ -578,15 +579,15 @@ $2',
 'deletepage'            => 'حذف صفحه',
 'historywarning'        => 'توجه: آن صفحه ای که ایسا اخوین حذف کنین گزارش تاریخی داره:',
 'confirmdeletetext'     => 'ایسا اخوین یه صفحه بلند با همه گزارش تاریخی هونه حذف کنین.
-لطفا کانفیرم یا تائید کنین که تمایل وقصد ای کار را دارین, وایسا دوین یا می دانید نتایج وآثار ای کار را, و ایسا انجام ادین ای کار را مطابق با [[{{MediaWiki:Policy-url}}|the policy]].',
+لطفا کانفیرم یا تائید کنین که تمایل وقصد ای کار را دارین, وایسا دوین یا می دانید نتایج وآثار ای کار را, و ایسا انجام ادین ای کار را مطابق با [[{{MediaWiki:Policy-url}}|سیاست‌ها]].',
 'actioncomplete'        => 'عمل  مربوطه راکامل کن',
 'deletedtext'           => '"<nowiki>$1</nowiki>" حذف وابیده.
 بوین $2 سی ثبت حذف آخر.',
 'deletedarticle'        => 'حذف وابید "[[$1]]"',
 'dellogpage'            => 'نمایه _ حذف',
 'deletecomment'         => 'دلیل سی حذف:',
-'deleteotherreason'     => 'دیگر/دلیل اضافی:',
-'deletereasonotherlist' => 'دلیل دیگر',
+'deleteotherreason'     => 'دیه/دلیل اضافی:',
+'deletereasonotherlist' => 'دلیل دیه',
 
 # Rollback
 'rollbacklink' => 'عقب گرد',
@@ -598,7 +599,7 @@ $2',
 'protectexpiry'               => 'سپری وابیده ها:',
 'protect_expiry_invalid'      => 'با سپری وابیدن وقت غیر معتبره.',
 'protect_expiry_old'          => 'سپری وابیدن وقت مربوط به گذشته.',
-'protect-unchain'             => 'باز کردن جابجایی با اجازه گرفتن',
+'protect-unchain'             => 'واز کردن جابجایی با اجازه گرئدن',
 'protect-text'                => 'ایسا ممکنه بوینین وتغییر بدین سطح حمایت زه ای صفحه<strong><nowiki>$1</nowiki></strong>.',
 'protect-locked-access'       => 'حساب کاربری ایسا اجازه تغییر سطح حمایت ای صفحه را نداره.
 ای چونه تنظیمات جاری سی آن صفحه <strong>$1</strong>:',
@@ -688,8 +689,8 @@ $2',
 'movepagebtn'      => 'جابجایی صفحه',
 'pagemovedsub'     => 'جابجایی با بخت وتوفیق انجام وابید',
 'movepage-moved'   => '<big>\'\'\'"$1" جابجا وابیده به "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'    => 'یه صفحه زه آن نام تقریبا موجوده, یا نامی که ایسا انتخاب کردین غیر  معتبره
-لطفا نام دیگری انتخاب کنین.',
+'articleexists'    => 'یه صفحه زه ای  نوم تقریبا موجوده, یا نومی که ایسا انتخاب کردین غیر  معتبره
+لطفا نوم دیه انتخاب کنین.',
 'talkexists'       => "'''آن صفحه خوس با بخت وتوفیق جابجا وابید, ولی صفحه صحبت نتره جابجا بوه چونکه یکی تقریبا موجوده درعنوان تازه 
 لطفا به صورت دستی آنها را ترکیب کنین.'''",
 'movedto'          => 'جابجا وابید به',
@@ -777,7 +778,7 @@ $2',
 'show-big-image'       => 'تصویر با قابلیت تفکیک کامل',
 'show-big-image-thumb' => '<کوچیک>اندازه پیش نمایش: $1 × $2 پیکسلها</کوچیک>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'گالری فایلهای تازه',
 
 # Bad image list

@@ -853,6 +853,14 @@ $wgMsgCacheExpiry	= 86400;
 $wgMaxMsgCacheEntrySize = 10000;
 
 /**
+ * If true, serialized versions of the messages arrays will be
+ * read from the 'serialized' subdirectory if they are present.
+ * Set to false to always use the Messages files, regardless of
+ * whether they are up to date or not.
+ */
+$wgEnableSerializedMessages = true;
+
+/**
  * Set to false if you are thorough system admin who always remembers to keep
  * serialized files up to date to save few mtime calls.
  */
@@ -962,7 +970,7 @@ $wgSiteSupportPage	= ''; # A page where you users can receive donations
 $wgReadOnly             = null;
 
 /***
- * If this lock file exists, the wiki will be forced into read-only mode.
+ * If this lock file exists (size > 0), the wiki will be forced into read-only mode.
  * Its contents will be shown to users as part of the read-only warning
  * message.
  */
@@ -1155,41 +1163,42 @@ $wgEmailConfirmToEdit=false;
 $wgGroupPermissions = array();
 
 // Implicit group for all visitors
-$wgGroupPermissions['*'    ]['createaccount']    = true;
-$wgGroupPermissions['*'    ]['read']             = true;
-$wgGroupPermissions['*'    ]['edit']             = true;
-$wgGroupPermissions['*'    ]['createpage']       = true;
-$wgGroupPermissions['*'    ]['createtalk']       = true;
-$wgGroupPermissions['*'    ]['writeapi']         = true;
+$wgGroupPermissions['*']['createaccount']    = true;
+$wgGroupPermissions['*']['read']             = true;
+$wgGroupPermissions['*']['edit']             = true;
+$wgGroupPermissions['*']['createpage']       = true;
+$wgGroupPermissions['*']['createtalk']       = true;
+$wgGroupPermissions['*']['writeapi']         = true;
 
 // Implicit group for all logged-in accounts
-$wgGroupPermissions['user' ]['move']             = true;
-$wgGroupPermissions['user' ]['move-subpages']    = true;
-$wgGroupPermissions['user' ]['move-rootuserpages'] = true; // can move root userpages
-$wgGroupPermissions['user' ]['read']             = true;
-$wgGroupPermissions['user' ]['edit']             = true;
-$wgGroupPermissions['user' ]['createpage']       = true;
-$wgGroupPermissions['user' ]['createtalk']       = true;
-$wgGroupPermissions['user' ]['writeapi']         = true;
-$wgGroupPermissions['user' ]['upload']           = true;
-$wgGroupPermissions['user' ]['reupload']         = true;
-$wgGroupPermissions['user' ]['reupload-shared']  = true;
-$wgGroupPermissions['user' ]['minoredit']        = true;
-$wgGroupPermissions['user' ]['purge']            = true; // can use ?action=purge without clicking "ok"
+$wgGroupPermissions['user']['move']             = true;
+$wgGroupPermissions['user']['move-subpages']    = true;
+$wgGroupPermissions['user']['move-rootuserpages'] = true; // can move root userpages
+//$wgGroupPermissions['user']['movefile']         = true;	// Disabled for now due to possible bugs and security concerns
+$wgGroupPermissions['user']['read']             = true;
+$wgGroupPermissions['user']['edit']             = true;
+$wgGroupPermissions['user']['createpage']       = true;
+$wgGroupPermissions['user']['createtalk']       = true;
+$wgGroupPermissions['user']['writeapi']         = true;
+$wgGroupPermissions['user']['upload']           = true;
+$wgGroupPermissions['user']['reupload']         = true;
+$wgGroupPermissions['user']['reupload-shared']  = true;
+$wgGroupPermissions['user']['minoredit']        = true;
+$wgGroupPermissions['user']['purge']            = true; // can use ?action=purge without clicking "ok"
 
 // Implicit group for accounts that pass $wgAutoConfirmAge
 $wgGroupPermissions['autoconfirmed']['autoconfirmed'] = true;
 
 // Users with bot privilege can have their edits hidden
 // from various log pages by default
-$wgGroupPermissions['bot'  ]['bot']              = true;
-$wgGroupPermissions['bot'  ]['autoconfirmed']    = true;
-$wgGroupPermissions['bot'  ]['nominornewtalk']   = true;
-$wgGroupPermissions['bot'  ]['autopatrol']       = true;
-$wgGroupPermissions['bot'  ]['suppressredirect'] = true;
-$wgGroupPermissions['bot'  ]['apihighlimits']    = true;
-$wgGroupPermissions['bot'  ]['writeapi']         = true;
-#$wgGroupPermissions['bot'  ]['editprotected']    = true; // can edit all protected pages without cascade protection enabled
+$wgGroupPermissions['bot']['bot']              = true;
+$wgGroupPermissions['bot']['autoconfirmed']    = true;
+$wgGroupPermissions['bot']['nominornewtalk']   = true;
+$wgGroupPermissions['bot']['autopatrol']       = true;
+$wgGroupPermissions['bot']['suppressredirect'] = true;
+$wgGroupPermissions['bot']['apihighlimits']    = true;
+$wgGroupPermissions['bot']['writeapi']         = true;
+#$wgGroupPermissions['bot']['editprotected']    = true; // can edit all protected pages without cascade protection enabled
 
 // Most extra permission abilities go to this group
 $wgGroupPermissions['sysop']['block']            = true;
@@ -1223,6 +1232,7 @@ $wgGroupPermissions['sysop']['markbotedits']     = true;
 $wgGroupPermissions['sysop']['apihighlimits']    = true;
 $wgGroupPermissions['sysop']['browsearchive']    = true;
 $wgGroupPermissions['sysop']['noratelimit']      = true;
+$wgGroupPermissions['sysop']['movefile']         = true;
 #$wgGroupPermissions['sysop']['mergehistory']     = true;
 
 // Permission to change users' group assignments
@@ -1436,7 +1446,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '184';
+$wgStyleVersion = '196';
 
 
 # Server-side caching:
@@ -1590,6 +1600,9 @@ $wgHTCPMulticastTTL = 1;
 # $wgHTCPMulticastAddress = "224.0.0.85";
 $wgHTCPMulticastAddress = false;
 
+/** Should forwarded Private IPs be accepted? */
+$wgUsePrivateIPs = false;
+
 # Cookie settings:
 #
 /**
@@ -1657,8 +1670,8 @@ $wgAllowExternalImagesFrom = '';
  */
 $wgEnableImageWhitelist = true;
  
-/** Allows to move images and other media files. Experemintal, not sure if it always works */
-$wgAllowImageMoving = false;
+/** Allows to move images and other media files */
+$wgAllowImageMoving = true;
 
 /** Disable database-intensive features */
 $wgMiserMode = false;
@@ -1882,6 +1895,8 @@ $wgMimeTypeBlacklist= array(
 	'application/x-php', 'text/x-php',
 	# Other types that may be interpreted by some servers
 	'text/x-python', 'text/x-perl', 'text/x-bash', 'text/x-sh', 'text/x-csh',
+	# Client-side hazards on Internet Explorer
+	'text/scriptlet', 'application/x-msdownload',
 	# Windows metafile, client-side vulnerability on some systems
 	'application/x-msmetafile',
 	# A ZIP file may be a valid Java archive containing an applet which exploits the
@@ -1912,7 +1927,7 @@ $wgNamespacesWithSubpages = array(
 	NS_USER           => true,
 	NS_USER_TALK      => true,
 	NS_PROJECT_TALK   => true,
-	NS_IMAGE_TALK     => true,
+	NS_FILE_TALK      => true,
 	NS_MEDIAWIKI_TALK => true,
 	NS_TEMPLATE_TALK  => true,
 	NS_HELP_TALK      => true,
@@ -2010,7 +2025,7 @@ $wgCustomConvertCommand = false;
 #
 # An external program is required to perform this conversion:
 $wgSVGConverters = array(
-	'ImageMagick' => '$path/convert -background white -geometry $width $input PNG:$output',
+	'ImageMagick' => '$path/convert -background white -thumbnail $widthx$height\! $input PNG:$output',
 	'sodipodi' => '$path/sodipodi -z -w $width -f $input -e $output',
 	'inkscape' => '$path/inkscape -z -w $width -f $input -e $output',
 	'batik' => 'java -Djava.awt.headless=true -jar $path/batik-rasterizer.jar -w $width -d $output $input',
@@ -2374,6 +2389,10 @@ $wgDefaultUserOptions = array(
 	'imagesize'               => 2,
 	'thumbsize'               => 2,
 	'rememberpassword'        => 0,
+	'nocache'                 => 0,
+	'diffonly'                => 0,
+	'showhiddencats'          => 0,
+	'norollbackdiff'          => 0,
 	'enotifwatchlistpages'    => 0,
 	'enotifusertalkpages'     => 1,
 	'enotifminoredits'        => 0,
@@ -2382,7 +2401,9 @@ $wgDefaultUserOptions = array(
 	'fancysig'                => 0,
 	'externaleditor'          => 0,
 	'externaldiff'            => 0,
+	'forceeditsummary'        => 0,
 	'showjumplinks'           => 1,
+	'justify'                 => 0,
 	'numberheadings'          => 0,
 	'uselivepreview'          => 0,
 	'watchlistdays'           => 3.0,
@@ -2390,6 +2411,8 @@ $wgDefaultUserOptions = array(
 	'watchlisthideminor'      => 0,
 	'watchlisthidebots'       => 0,
 	'watchlisthideown'        => 0,
+	'watchlisthideanons'      => 0,
+	'watchlisthideliu'        => 0,
 	'watchcreations'          => 0,
 	'watchdefault'            => 0,
 	'watchmoves'              => 0,
@@ -2889,6 +2912,7 @@ $wgLogActions = array(
 	'suppress/event'    => 'logdelete-logentry',
 	'suppress/delete'   => 'suppressedarticle',
 	'suppress/block'	=> 'blocklogentry',
+	'suppress/reblock'  => 'reblock-logentry',
 );
 
 /**
@@ -2943,7 +2967,7 @@ $wgSpecialPageGroups = array(
 	'Log'                       => 'changes',
 
 	'Upload'                    => 'media',
-	'Imagelist'                 => 'media',
+	'Listfiles'                 => 'media',
 	'MIMEsearch'                => 'media',
 	'FileDuplicateSearch'       => 'media',
 	'Filepath'                  => 'media',
@@ -3316,7 +3340,7 @@ $wgUseAjax = true;
  * List of Ajax-callable functions.
  * Extensions acting as Ajax callbacks must register here
  */
-$wgAjaxExportList = array( 'wfAjaxGetThumbnailUrl' );
+$wgAjaxExportList = array( 'wfAjaxGetThumbnailUrl', 'wfAjaxGetFileUrl' );
 
 /**
  * Enable watching/unwatching pages using AJAX.
@@ -3517,8 +3541,6 @@ $wgSlaveLagCritical = 30;
  *                    If this parameter is not given, it uses Preprocessor_DOM if the
  *                    DOM module is available, otherwise it uses Preprocessor_Hash.
  *
- *                    Has no effect on Parser_OldPP.
- *
  * The entire associative array will be passed through to the constructor as
  * the first parameter. Note that only Setup.php can use this variable --
  * the configuration will change at runtime via $wgParser member functions, so
@@ -3609,3 +3631,10 @@ $wgEdititis = false;
 * See http://universaleditbutton.org for more background information
 */
 $wgUniversalEditButton = true;
+
+/**
+ * Allow id's that don't conform to HTML4 backward compatibility requirements.
+ * This is currently for testing; if all goes well, this option will be removed
+ * and the functionality will be enabled universally.
+ */
+$wgEnforceHtmlIds = true;

@@ -97,9 +97,11 @@ $messages = array(
 'dec'           => 'Dis',
 
 # Categories related messages
-'pagecategories'  => '{{PLURAL:$1|Qaybta|Qaybaha}}',
-'category_header' => 'Maqaalada ku jirta qaybta "$1"',
-'subcategories'   => 'Qaybaha hoose',
+'pagecategories'           => '{{PLURAL:$1|Qaybta|Qaybaha}}',
+'category_header'          => 'Maqaalada ku jirta qaybta "$1"',
+'subcategories'            => 'Qaybaha hoose',
+'hidden-category-category' => 'Qeybaha qarsoon', # Name of the category where hidden categories will be listed
+'category-subcat-count'    => '{{PLURAL:$2|Qeybtaan waxaa kaliya ay leedahay qeyb-hooseedyadaan.|Qeybtaan waxay leedahay {{PLURAL:$1|qeyb-hoosaad|$1 qeyb-hoosaadyo}} ee soo socda, guud ahaan $2 marka loo fiiriyo.}}',
 
 'about'          => 'Warbixin',
 'article'        => 'Bogga maqaalka',
@@ -114,7 +116,7 @@ $messages = array(
 'mypage'         => 'Boggeyga',
 'mytalk'         => 'Wadahadalkeyga',
 'anontalk'       => 'Wadahadalka IP:gan',
-'and'            => 'iyo',
+'and'            => '&#32;iyo',
 
 'errorpagetitle'    => 'Qalad',
 'returnto'          => 'Ku noqo $1.',
@@ -277,6 +279,11 @@ Wax e-boosto ah oo ku saabsan arrimaha soo socdo looma soo diridoono.',
 'accountcreatedtext'         => "Akoonka isticmaalaha $1 waa la'sameeyay.",
 'loginlanguagelabel'         => 'Luqada: $1',
 
+# Password reset dialog
+'oldpassword' => 'Ereysirkii hore:',
+'newpassword' => 'Ereysir cusub:',
+'retypenew'   => 'Qor mar labaad ereysirka cusub:',
+
 # Edit pages
 'minoredit'                 => 'Kan waa wax ka bedel yar',
 'watchthis'                 => 'Boggaan waardiyey',
@@ -356,9 +363,6 @@ Iskuday in aad [[Special:Search|karaadiso wikigan]] beyjaj laxiira oo cusub.',
 'prefs-watchlist'      => 'liiska-waardiyaha',
 'prefs-watchlist-days' => 'Tirada maalamaha ay ku jirayaan liiska-waardiyaha:',
 'saveprefs'            => 'Kaydi',
-'oldpassword'          => 'Ereysirkii hore:',
-'newpassword'          => 'Ereysir cusub:',
-'retypenew'            => 'Qor mar labaad ereysirka cusub:',
 'textboxsize'          => 'Wax ka bedelka',
 'searchresultshead'    => 'Raadi',
 'recentchangesdays'    => 'Tirada maalmaha lagu tusaayo isbedelada dhow:',
@@ -391,7 +395,7 @@ Iskuday in aad [[Special:Search|karaadiso wikigan]] beyjaj laxiira oo cusub.',
 'savefile'        => 'Faylka kaydi',
 'watchthisupload' => 'Boggaan waardiyey',
 
-# Image description page
+# File description page
 'nolinkstoimage'   => "Ma'ay jiraan beyjaj ku xiran faylkaan.",
 'shareduploadwiki' => 'Fadlan meeshaa $1 ka fiiri warbixin dheeraad ah.',
 
@@ -589,7 +593,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 # Info page
 'numwatchers' => 'Tirada waardiyeyaasha: $1',
 
-# Special:NewImages
+# Special:NewFiles
 'imagelisttext' => "Hoos waxaa yaala liiska '''$1''' {{PLURAL:$1|file|faylalka}} oo u kala soocan $2.",
 'bydate'        => 'hab taariikheed',
 

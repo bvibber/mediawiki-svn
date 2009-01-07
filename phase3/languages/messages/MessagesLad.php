@@ -106,7 +106,7 @@ $messages = array(
 'mypage'         => 'Mi pajina',
 'mytalk'         => 'Mi diścuśión',
 'anontalk'       => 'Diskusion para esta IP',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 'errorpagetitle'   => 'Yerro',
 'tagline'          => 'De {{SITENAME}}',
@@ -221,8 +221,8 @@ $messages = array(
 'media_tip'      => 'Link al arxivo multimedia',
 
 # Edit pages
-'summary'          => 'Resumen',
-'subject'          => 'Tema/título',
+'summary'          => 'Resumen:',
+'subject'          => 'Tema/título:',
 'minoredit'        => 'Esta es una edición chiquitica',
 'watchthis'        => 'Vigilar este artículo',
 'savearticle'      => 'Registrar la página',
@@ -272,7 +272,7 @@ $messages = array(
 # Upload
 'upload' => 'Cargar un dosyé',
 
-# Image description page
+# File description page
 'filehist'          => 'Istoria del dosyé',
 'filehist-datetime' => 'Data/Hora',
 'imagelinks'        => 'Linkes',

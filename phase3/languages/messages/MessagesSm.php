@@ -118,7 +118,7 @@ $messages = array(
 'email'             => "'Imeli",
 
 # Edit pages
-'summary'      => "'Oto'otoga",
+'summary'      => "'Oto'otoga:",
 'minoredit'    => "'O se teuteuga la'itiiti lenei",
 'watchthis'    => 'Matau lenei itulau',
 'savearticle'  => 'Sefe le itulau',
@@ -203,7 +203,7 @@ $messages = array(
 # Namespace 8 related
 'allmessagesname' => 'Igoa',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => "Su'e",
 
 # 'all' in various places, this might be different for inflected languages

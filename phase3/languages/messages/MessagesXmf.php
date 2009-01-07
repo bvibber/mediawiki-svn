@@ -96,7 +96,7 @@ $messages = array(
 'mypage'         => 'ჩქიმ ხასილა',
 'mytalk'         => 'ჩქიმ სხუნუა',
 'navigation'     => 'ნავიგაცია',
-'and'            => 'დო',
+'and'            => '&#32;დო',
 
 'errorpagetitle'   => 'შეცთომა',
 'returnto'         => 'დირთი $1-შა',
@@ -139,7 +139,7 @@ $messages = array(
 'currentevents'        => 'მიმალ მოლინეფ',
 'currentevents-url'    => 'Project:მიმალ მოლინეფ',
 'disclaimers'          => 'გამამინჯალაშ მონწყუმა',
-'disclaimerpage'       => 'Project::პასუხისმგებლობაშ ვარება',
+'disclaimerpage'       => 'Project:პასუხისმგებლობაშ ვარება',
 'edithelp'             => 'მოხვარა',
 'edithelppage'         => 'Help:ტექსტიშ რედაქტირაფა (იოლი)',
 'helppage'             => 'Help:მოხვარა',
@@ -229,8 +229,8 @@ $messages = array(
 'hr_tip'          => 'ჰორიზონტალურ ხაზ (ნუ გამოიყენებთ ხშირას)',
 
 # Edit pages
-'summary'                => 'რეზიუმე',
-'subject'                => 'თემა/სახელ',
+'summary'                => 'რეზიუმე:',
+'subject'                => 'თემა/სახელ:',
 'minoredit'              => 'ჭიჭე რედაქტირაფა',
 'watchthis'              => 'თე ხასილაშ კონტროლ',
 'savearticle'            => 'ჩუალა',
@@ -238,7 +238,7 @@ $messages = array(
 'showpreview'            => 'ოწოხიან გინოჯინა',
 'showdiff'               => 'თირაფეფიშ ძირაფა',
 'anoneditwarning'        => "'''გათხილება:''' თქვა ვარეთ რეგისტრირებულ. თქვან IP მისამართ დინოჭარილ იჸიი თე ხასილაშ რედაქტირაფაშ ისტორიას.",
-'summary-preview'        => 'რეზიუმეშ ოწოხიან გინოჯინა',
+'summary-preview'        => 'რეზიუმეშ ოწოხიან გინოჯინა:',
 'blockedtext'            => "<big>'''თქვან მახვარებუშ ჯოხო ვარა IP მიოწურაფუქ ბლოკირქ იჸუ. '''</big> 
 
 ბლოკირაფა ღოლუ $-ქ. 
@@ -328,9 +328,9 @@ $messages = array(
 'nchanges'                       => '$1 თირუა',
 'recentchanges'                  => 'ბოლო თირაფეფ',
 'recentchanges-feed-description' => 'ვიკიშ უახალაშ თირაფეფიშ თოლჸუჯ თე არხის.',
-'rcnote'                         => "თუდოლე ძირით ეკონია {{PLURAL:$1|'''1''' თირაფა|$1 თირაფა}} ბოლო {{PLURAL:$2|დღაშ|'''$2''' დღაშ}} მალობას, $3 რენჯობათ",
+'rcnote'                         => "თუდოლე ძირით ეკონია {{PLURAL:$1|'''1''' თირაფა|$1 თირაფა}} ბოლო {{PLURAL:$2|დღა|'''$2''' დღაშ}} მალობას, $3 რენჯობათ",
 'rcnotefrom'                     => 'თუდო მოჸუნაფილიე თირაფეფ, ”’$2””-შე (ძირაფილიე ”’$1”’)',
-'rclistfrom'                     => 'ახალ თირაფეფიშ ძირაფა დოჭყაფულ $1-იშე',
+'rclistfrom'                     => 'ახალ თირაფეფიშ ძირაფა დოჭყაფილ $1-შე',
 'rcshowhideminor'                => 'ჭიჭე რედაქტირებაშ $1',
 'rcshowhidebots'                 => 'რობოტეფიშ  $1',
 'rcshowhideliu'                  => 'რეგისტრირებულ მახვარებელეფიშ $1',
@@ -357,11 +357,11 @@ $messages = array(
 'uploadlogpage' => 'გიმოხარგუაშ რეგისტრაცია',
 'uploadedimage' => 'გეთებაა "[[$1]]"',
 
-# Special:ImageList
-'imagelist'      => 'სურათეფიშ ერკებულ',
-'imagelist_name' => 'სახელ',
+# Special:ListFiles
+'listfiles'      => 'სურათეფიშ ერკებულ',
+'listfiles_name' => 'სახელ',
 
-# Image description page
+# File description page
 'filehist'            => 'ფაილიშ ისტორია',
 'filehist-help'       => 'ქოგეუნჭირით ბორჯის, ნამდა ქოძირათ ფაილი თეშ, მუჭოთ თინა თიწკუმა კილეძირედუ.',
 'filehist-current'    => 'მიმალ',
@@ -593,7 +593,7 @@ $messages = array(
 'show-big-image'       => 'რსული გარჩევადობა',
 'show-big-image-thumb' => '<small>ზომა ოწმახ ძირაშ დროს: $1 × $2 პიქსელ</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'ახალ სურათეფ',
 
 # Bad image list

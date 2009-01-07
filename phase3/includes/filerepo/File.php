@@ -683,8 +683,9 @@ abstract class File {
 	 * @param $limit integer Limit of rows to return
 	 * @param $start timestamp Only revisions older than $start will be returned
 	 * @param $end timestamp Only revisions newer than $end will be returned
+	 * @param $inc bool Include the endpoints of the time range
 	 */
-	function getHistory($limit = null, $start = null, $end = null) {
+	function getHistory($limit = null, $start = null, $end = null, $inc=true) {
 		return array();
 	}
 
@@ -1217,7 +1218,7 @@ abstract class File {
 		if ( $handler ) {
 			return $handler->getLongDesc( $this );
 		} else {
-			return MediaHandler::getLongDesc( $this );
+			return MediaHandler::getGeneralLongDesc( $this );
 		}
 	}
 
@@ -1226,7 +1227,7 @@ abstract class File {
 		if ( $handler ) {
 			return $handler->getShortDesc( $this );
 		} else {
-			return MediaHandler::getShortDesc( $this );
+			return MediaHandler::getGeneralShortDesc( $this );
 		}
 	}
 
@@ -1246,7 +1247,7 @@ abstract class File {
 	function getRedirectedTitle() {
 		if ( $this->redirected ) {
 			if ( !$this->redirectTitle )
-				$this->redirectTitle = Title::makeTitle( NS_IMAGE, $this->redirected );
+				$this->redirectTitle = Title::makeTitle( NS_FILE, $this->redirected );
 			return $this->redirectTitle;
 		}
 	}

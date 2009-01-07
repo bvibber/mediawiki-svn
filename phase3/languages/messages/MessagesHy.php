@@ -22,14 +22,12 @@ $linkPrefixExtension = true;
 $namespaceNames = array(
 	NS_MEDIA          => 'Մեդիա',
 	NS_SPECIAL        => 'Սպասարկող',
-	NS_MAIN           => '',
 	NS_TALK           => 'Քննարկում',
 	NS_USER           => 'Մասնակից',
 	NS_USER_TALK      => 'Մասնակցի_քննարկում',
-	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '{{GRAMMAR:genitive|$1}}_քննարկում',
-	NS_IMAGE          => 'Պատկեր',
-	NS_IMAGE_TALK     => 'Պատկերի_քննարկում',
+	NS_FILE           => 'Պատկեր',
+	NS_FILE_TALK      => 'Պատկերի_քննարկում',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'MediaWiki_քննարկում',
 	NS_TEMPLATE       => 'Կաղապար',
@@ -44,15 +42,6 @@ $namespaceAliases = array(
 	'Սպասարկող' => NS_SPECIAL,
 );
 
-$skinNames = array(
-	'standard'    => 'Դասական',
-	'nostalgia'   => 'Հայրենաբաղձություն',
-	'cologneblue' => 'Քյոլնի թախիծ',
-	'monobook'    => 'ՄիաԳիրք',
-	'myskin'      => 'ԻմՏեսք',
-	'chick'       => 'Ծիտ',
-	'simple'      => 'Պարզ',
-);
 
 $datePreferences = array(
 	'default',
@@ -210,7 +199,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Հսկողությանցանկը' ),
 	'Recentchanges'             => array( 'Վերջինփոփոխությունները' ),
 	'Upload'                    => array( 'Բեռնել' ),
-	'Imagelist'                 => array( 'Պատկերներիցանկը' ),
+	'Listfiles'                 => array( 'Պատկերներիցանկը' ),
 	'Newimages'                 => array( 'Նորպատկերներ' ),
 	'Listusers'                 => array( 'Մասնակիցներիցանկը' ),
 	'Statistics'                => array( 'Վիճակագրություն' ),
@@ -405,7 +394,7 @@ $messages = array(
 'mytalk'         => 'Իմ քննարկումները',
 'anontalk'       => 'Քննարկում այս IP-հասցեի համար',
 'navigation'     => 'Շրջել կայքում',
-'and'            => 'և',
+'and'            => '&#32;և',
 
 # Metadata in edit box
 'metadata_help' => 'Մետատվյալներ։',
@@ -468,8 +457,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{grammar:genitive|{{SITENAME}}}} մասին',
 'aboutpage'            => 'Project:Էությունը',
-'bugreports'           => 'Սխալի զեկուցում',
-'bugreportspage'       => 'Project:Սխալների զեկուցում',
 'copyright'            => 'Կայքի բովանդակությունը գտնվում է «$1» լիցենզիայի տակ։',
 'copyrightpagename'    => '{{SITENAME}} հեղինակային իրավունքները',
 'copyrightpage'        => '{{ns:project}}:Հեղինակային իրավունքներ',
@@ -685,11 +672,13 @@ $2 մասնակցի նոր գաղտնաբառն է՝ <code>$3</code>։
 'resetpass_announce'      => 'Դուք ներկայացել եք էլ-փոստով ստացված ժամանակավոր գաղտնաբառով։ Համակարգ մուտքի համար անհրաժեշտ է նոր գաղտնաբառ ընտրել այստեղ.',
 'resetpass_text'          => '<!-- Ավելացնել տեքստը այստեղ -->',
 'resetpass_header'        => 'Վերականգնել գաղտնաբառը',
+'oldpassword'             => 'Հին գաղտնաբառը.',
+'newpassword'             => 'Նոր գաղտնաբառը.',
+'retypenew'               => 'Հաստատեք նոր գաղտնաբառը.',
 'resetpass_submit'        => 'Հաստատել գաղտնաբառը և մտնել համակարգ',
 'resetpass_success'       => 'Ձեր գաղտնաբառը փոխված է։ Մուտք համակարգ…',
 'resetpass_bad_temporary' => 'Ժամանակավոր գաղտնաբառը սխալ է։ Հնարավոր է դուք արդեն փոխել եք գաղտնաբառը կամ նորն եք հայցել։',
 'resetpass_forbidden'     => 'Գաղտնաբառի փոփոխություն {{SITENAME}} կայքում չի թույլատրվում',
-'resetpass_missing'       => 'Ձևը տվյալներ չի պարունակում։',
 
 # Edit page toolbar
 'bold_sample'     => 'Թավատառ տեքստ',
@@ -712,8 +701,8 @@ $2 մասնակցի նոր գաղտնաբառն է՝ <code>$3</code>։
 'hr_tip'          => 'Հորիզոնական գիծ (միայն անհրաժեշտության դեպքում)',
 
 # Edit pages
-'summary'                   => 'Ամփոփում',
-'subject'                   => 'Վերնագիր',
+'summary'                   => 'Ամփոփում:',
+'subject'                   => 'Վերնագիր:',
 'minoredit'                 => 'Սա չնչին խմբագրում է',
 'watchthis'                 => 'Հսկել այս էջը',
 'savearticle'               => 'Հիշել էջը',
@@ -725,8 +714,8 @@ $2 մասնակցի նոր գաղտնաբառն է՝ <code>$3</code>։
 'missingsummary'            => "'''Հիշեցում.''' Դուք չեք տվել խմբագրման ամփոփում։ «Հիշել» կոճակի կրկնակի մատնահարման դեպքում փոփոխությունները կհիշվեն առանց ամփոփման։",
 'missingcommenttext'        => 'Խնդրում ենք մեկնաբանություն ավելացնել ստորև։',
 'missingcommentheader'      => "'''Հիշեցում.''' Դուք չեք նշել մեկնաբանության վերնագիրը։ «Հիշել» կոճակի կրկնակի մատնահարման դեպքում ձեր մեկնաբանությունը կհիշվի առանց վերնագրի։",
-'summary-preview'           => 'Ամփոփման նախադիտում',
-'subject-preview'           => 'Վերնագրի նախադիտում',
+'summary-preview'           => 'Ամփոփման նախադիտում:',
+'subject-preview'           => 'Վերնագրի նախադիտում:',
 'blockedtitle'              => 'Մասնակիցը արգելափակված է',
 'blockedtext'               => "<big>'''Ձեր մասնակցի անունը կամ IP-հասցեն արգելափակված է։'''</big>
 
@@ -976,9 +965,6 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'prefs-misc'               => 'Այլ',
 'saveprefs'                => 'Հիշել',
 'resetprefs'               => 'Անտեսել փոփոխությունները',
-'oldpassword'              => 'Հին գաղտնաբառը.',
-'newpassword'              => 'Նոր գաղտնաբառը.',
-'retypenew'                => 'Հաստատեք նոր գաղտնաբառը.',
 'textboxsize'              => 'Խմբագրում',
 'rows'                     => 'Տողեր`',
 'columns'                  => 'Սյունակներ',
@@ -1082,11 +1068,11 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'uploadnologintext'           => 'Ֆայլեր բեռնելու համար անհրաժեշտ է [[Special:UserLogin|մտնել համակարգ]]։',
 'upload_directory_read_only'  => 'Վեբ-սերվերը չունի գրելու իրավունք բեռնումների թղթապանակում ($1)։',
 'uploaderror'                 => 'Բեռնման սխալ',
-'uploadtext'                  => "Ֆայլ բեռնելու համար օգտագործեք ստորև բերված ձևը։ Նախկինում բեռնված ֆայլերը դիտելու կամ որոնելու համար այցելեք [[Special:ImageList|բեռնված ֆայլերի ցանկը]]։ Բեռնումները և ջնջումները նաև գրանցվում են [[Special:Log/upload|բեռնումների տեղեկամատյանում]]։
+'uploadtext'                  => "Ֆայլ բեռնելու համար օգտագործեք ստորև բերված ձևը։ Նախկինում բեռնված ֆայլերը դիտելու կամ որոնելու համար այցելեք [[Special:FileList|բեռնված ֆայլերի ցանկը]]։ Բեռնումները և ջնջումները նաև գրանցվում են [[Special:Log/upload|բեռնումների տեղեկամատյանում]]։
 
 Այս ֆայլը որևէ էջում ընդգրկելու համար օգտագործեք հետևյալ հղման ձևերը.
-* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
-* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|այլ. տեքստ]]</nowiki>''' կամ
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki>''',
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|այլ. տեքստ]]</nowiki>''' կամ
 * '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' - ֆայլին ուղիղ հղման համար",
 'uploadlog'                   => 'բեռնման տեղեկամատյան',
 'uploadlogpage'               => 'Բեռնման տեղեկամատյան',
@@ -1115,8 +1101,8 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'fileexists-thumb'            => "<center>'''Գոյություն ունեցող պատկեր'''</center>",
 'fileexists-thumbnail-yes'    => 'Ֆայլը ըստ երևույթին փոքրացված պատճեն է <i>(պատկերիկ)</i>: Խնդրում ենք ստուգել <strong><tt>$1</tt></strong> ֆայլը։<br /> Եթե նշված ֆայլը նույն պատկերն է բնօրինակ չափով, ապա հարկովոր չէ բեռնել նրա փոքրացված պատճենը։',
 'file-thumbnail-no'           => 'Ֆայլի անվանման սկիզբն է՝ <strong><tt>$1</tt></strong>։ Հավանաբար սա փոքրացված պատճեն է <i>(պատկերիկ)</i>։ Եթե դուք ունեք այս պատկերը ամբողջական չափով, ապա խնդրում ենք բեռնել այն, հակառակ դեպքում՝ խնդրում ենք փոխել ֆայլի անվանումը։',
-'fileexists-forbidden'        => 'Այսպիսի անվանմամբ ֆայլ արդեն գոյություն ունի։ Խնդրում ենք ետ վերադառնալ և բեռնել ֆայլը նոր անվանմամբ։ [[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'Այսպիսի անվանմամբ ֆայլ արդեն գոյություն ունի ֆայլերի ընդհանուր զետեղարանում։ Խնդրում ենք ետ վերադառնալ և բեռնել ֆայլը նոր անվանմամբ։ [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Այսպիսի անվանմամբ ֆայլ արդեն գոյություն ունի։ Խնդրում ենք ետ վերադառնալ և բեռնել ֆայլը նոր անվանմամբ։ [[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'Այսպիսի անվանմամբ ֆայլ արդեն գոյություն ունի ֆայլերի ընդհանուր զետեղարանում։ Խնդրում ենք ետ վերադառնալ և բեռնել ֆայլը նոր անվանմամբ։ [[File:$1|thumb|center|$1]]',
 'successfulupload'            => 'Բեռնումը կատարված է',
 'uploadwarning'               => 'Զգուշացում',
 'savefile'                    => 'Հիշել ֆայլը',
@@ -1156,17 +1142,17 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'upload_source_url'  => ' (գործուն, հանրամատչելի URL-հասցե)',
 'upload_source_file' => ' (ֆայլ ձեր համակարգչի վրա)',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Որոնել պատկերի անվանմամբ.',
+# Special:ListFiles
+'listfiles_search_for'  => 'Որոնել պատկերի անվանմամբ.',
 'imgfile'               => 'ֆայլ',
-'imagelist'             => 'Ֆայլերի ցանկ',
-'imagelist_date'        => 'Օր/Ժամ',
-'imagelist_name'        => 'Անվանում',
-'imagelist_user'        => 'Մասնակից',
-'imagelist_size'        => 'Չափ',
-'imagelist_description' => 'Նկարագրություն',
+'listfiles'             => 'Ֆայլերի ցանկ',
+'listfiles_date'        => 'Օր/Ժամ',
+'listfiles_name'        => 'Անվանում',
+'listfiles_user'        => 'Մասնակից',
+'listfiles_size'        => 'Չափ',
+'listfiles_description' => 'Նկարագրություն',
 
-# Image description page
+# File description page
 'filehist'                  => 'Ֆայլի պատմություն',
 'filehist-help'             => 'Մատնահարեք օրվան/ժամին՝ ֆայլի այդ պահին տեսքը դիտելու համար։',
 'filehist-deleteall'        => 'ջնջել բոլորը',
@@ -1783,6 +1769,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'import-interwiki-history'   => 'Պատճենել այս էջի փոփոխումների լրիվ պատմությունը',
 'import-interwiki-submit'    => 'Ներմուծել',
 'import-interwiki-namespace' => 'Տեղադրել էջերը անվանատարածքում.',
+'import-comment'             => 'Մեկնաբանություն.',
 'importtext'                 => 'Խնդրում ենք արտածեք էջը ելակետային վիքիից օգտագործելով Special:Export, հիշեք այն ֆայլի տեսքով ձեր սկավառակի վրա և այնուհետև, բեռնեք այն այստեղ։',
 'importstart'                => 'Էջերի ներմուծում...',
 'import-revision-count'      => '$1 տարբերակ',
@@ -1906,6 +1893,15 @@ The wiki server can't provide data in a format your client can read.",
 'numauthors'     => 'Տարբեր հեղինակների թիվ (հոդված). $1',
 'numtalkauthors' => 'Տարբեր հեղինակների թիվ (քննարկման էջ). $1',
 
+# Skin names
+'skinname-standard'    => 'Դասական',
+'skinname-nostalgia'   => 'Հայրենաբաղձություն',
+'skinname-cologneblue' => 'Քյոլնի թախիծ',
+'skinname-monobook'    => 'ՄիաԳիրք',
+'skinname-myskin'      => 'ԻմՏեսք',
+'skinname-chick'       => 'Ծիտ',
+'skinname-simple'      => 'Պարզ',
+
 # Math options
 'mw_math_png'    => 'Միշտ դարձնել PNG',
 'mw_math_simple' => 'HTML՝ պարզ դեպքերում, այլապես՝ PNG',
@@ -1957,7 +1953,7 @@ $1',
 'show-big-image'       => 'Լրիվ թույլատվությամբ',
 'show-big-image-thumb' => '<small>Նախադիտման չափ. $1 × $2 փիքսել</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Նոր ֆայլերի սրահ',
 'imagelisttext'         => "Ստորև բերված է '''$1''' {{PLURAL:$1|ֆայլի|ֆայլերի}} ցանկ՝ դասավորված ըստ $2։",
 'showhidebots'          => '($1 բոտերին)',

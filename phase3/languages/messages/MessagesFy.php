@@ -11,11 +11,6 @@
  * @author לערי ריינהארט
  */
 
-$skinNames = array(
-	'standard' => 'Standert',
-	'nostalgia' => 'Nostalgy',
-);
-
 $datePreferences = array(
 	'default',
 	'fy normal',
@@ -46,8 +41,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Meidogger_oerlis',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_oerlis',
-	NS_IMAGE          => 'Ofbyld',
-	NS_IMAGE_TALK     => 'Ofbyld_oerlis',
+	NS_FILE           => 'Ofbyld',
+	NS_FILE_TALK      => 'Ofbyld_oerlis',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'MediaWiki_oerlis',
 	NS_TEMPLATE       => 'Berjocht',
@@ -74,7 +69,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Folchlist', 'Jo Folchlist' ),
 	'Recentchanges'             => array( 'Koartlyn feroare', 'Koarts feroare' ),
 	'Upload'                    => array( 'Bied triem oan', 'Oanbied', 'Bied bestân oan' ),
-	'Imagelist'                 => array( 'Ofbyld list', 'Ofbyldlist' ),
+	'Listfiles'                 => array( 'Ofbyld list', 'Ofbyldlist' ),
 	'Newimages'                 => array( 'Nije ôfbylden', 'Nije ôfbyldings', 'Nije ôfbyldingen', 'List mei nije ôfbylden', 'Nije Ofbylden' ),
 	'Listusers'                 => array( 'Meidoggerlist', 'Brûkerlist' ),
 	'Statistics'                => array( 'Statistyk' ),
@@ -284,7 +279,7 @@ $messages = array(
 'mytalk'         => 'Myn oerlis',
 'anontalk'       => 'Oerlisside foar dit IP-adres',
 'navigation'     => 'Navigaasje',
-'and'            => 'en',
+'and'            => '&#32;en',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -347,8 +342,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Oer de {{SITENAME}}',
 'aboutpage'            => 'Project:Ynfo',
-'bugreports'           => 'Brekmelding',
-'bugreportspage'       => 'Project:Brekmelding',
 'copyright'            => 'Ynhâld is beskikber ûnder de $1.',
 'copyrightpagename'    => '{{SITENAME}} auteursrjocht',
 'copyrightpage'        => '{{ns:project}}:Auteursrjocht',
@@ -587,11 +580,13 @@ Jo moatte efkes wachtsje foar't jo it op'e nij besykje kinne.",
 'resetpass'               => 'Wachtwurd opnij ynstelle',
 'resetpass_announce'      => "Jo binne oanmeld mei in tydlike koade dy't jo per e-mail tastjoerd is. Fier in nij wachtwurd yn om it oanmelden ôf te meitsjen.",
 'resetpass_header'        => "Wachtwurd op 'e nij ynstelle",
+'oldpassword'             => 'Ald wachtwurd',
+'newpassword'             => 'Nij wachtwurd',
+'retypenew'               => 'Nij wachtwurd (nochris)',
 'resetpass_submit'        => 'Wachtwurd ynstelle en oanmelde',
 'resetpass_success'       => 'Jo wachtwurd is feroare. Dwaande mei oanmelden ...',
 'resetpass_bad_temporary' => 'Unjildich tydlik wachtwurd. Jo hawwe jo wachtwurd al feroare of in nij tydlik wachtwurd oanfrege.',
 'resetpass_forbidden'     => 'Wachtwurden kinne net feroare wurde',
-'resetpass_missing'       => 'Jo hawwe gjin wachtwurd ynjûn.',
 
 # Edit page toolbar
 'bold_sample'     => 'Fette tekst',
@@ -614,8 +609,8 @@ Jo moatte efkes wachtsje foar't jo it op'e nij besykje kinne.",
 'hr_tip'          => 'Horizontale line (mei ferdrach brûke)',
 
 # Edit pages
-'summary'                          => 'Gearfetting',
-'subject'                          => 'Mêd',
+'summary'                          => 'Gearfetting:',
+'subject'                          => 'Mêd:',
 'minoredit'                        => 'Dit is in tekstwiziging',
 'watchthis'                        => 'Folgje dizze side',
 'savearticle'                      => 'Fêstlizze',
@@ -627,8 +622,8 @@ Jo moatte efkes wachtsje foar't jo it op'e nij besykje kinne.",
 'missingsummary'                   => "'''Wink:''' jo hawwe gjin gearfetting jûn foar jo bewurking. As jo nochris op ''Side opslaan'' klikke wurdt de bewurking sûnder gearfetting opslein.",
 'missingcommenttext'               => 'Set jo opmerking beleaven hjir ûnder.',
 'missingcommentheader'             => "'''Tink derom:''' Jo hawwe gjin ûnderwerp/kop foar dizze opmerking opjûn. As jo op 'e nij op \"opslaan\" klikke, wurdt jo feroaring sûnder in ûnderwerp/kop opslein.",
-'summary-preview'                  => 'Gearfetting sa at dy brûkt wurdt',
-'subject-preview'                  => 'Neisjen ûnderwerp/kop',
+'summary-preview'                  => 'Gearfetting sa at dy brûkt wurdt:',
+'subject-preview'                  => 'Neisjen ûnderwerp/kop:',
 'blockedtitle'                     => 'Meidogger is útsletten troch',
 'blockedtext'                      => "<big>'''Jo meidoggernamme of Ynternet-adres is útsletten.'''</big>
 
@@ -1046,9 +1041,6 @@ Gean nei oft latex, dvips, en gs goed ynstallearre binne en set om',
 'prefs-misc'               => 'Ferskaat',
 'saveprefs'                => 'Ynstellings fêstlizze',
 'resetprefs'               => 'Ynstellings werom sette',
-'oldpassword'              => 'Ald wachtwurd',
-'newpassword'              => 'Nij wachtwurd',
-'retypenew'                => 'Nij wachtwurd (nochris)',
 'textboxsize'              => 'Siden bewurkje',
 'rows'                     => 'Rigen',
 'columns'                  => 'Kolommen',
@@ -1223,12 +1215,12 @@ Gean nei oft latex, dvips, en gs goed ynstallearre binne en set om',
 'upload_directory_missing'    => 'De heechlaadmap ($1) is der net en koe net oanmakke wurde troch de webserver.',
 'upload_directory_read_only'  => 'De webserver kin net skriuwe yn de oanbiedpad ($1).',
 'uploaderror'                 => 'Oanbiedfout',
-'uploadtext'                  => "Om in nije triemmen oan te bieden, brûke jo de ûndersteande formulier. Earder oanbeane triemmen, kinne jo fine op de [[Special:ImageList|list fan oanbeane ôfbylden]].
+'uploadtext'                  => "Om in nije triemmen oan te bieden, brûke jo de ûndersteande formulier. Earder oanbeane triemmen, kinne jo fine op de [[Special:FileList|list fan oanbeane ôfbylden]].
 Wat oanbean en wat wiske wurdt, wurdt delskreaun yn it [[Special:Log/upload|lochboek]].
 
 Om de triem yn in side op te nimmen, meitsje jo dêr sa'n keppeling:
-*'''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:jo_foto.jpg]]</nowiki></tt>''', foar grutte ferzje,
-*'''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:jo_logo.png|omskriuwing]]</nowiki></tt>''' foar 200 in piksel ferzje, mei 'alternative tekst' as beskriuwing, of
+*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:jo_foto.jpg]]</nowiki></tt>''', foar grutte ferzje,
+*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:jo_logo.png|omskriuwing]]</nowiki></tt>''' foar 200 in piksel ferzje, mei 'alternative tekst' as beskriuwing, of
 *'''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:jo_lûd.ogg]]</nowiki></tt>''', foar direkt keppeling nei de triem (sûnder byld).",
 'upload-permitted'            => 'Talitten triemtypen: $1.',
 'upload-preferred'            => 'Oanwiisde triemtypen: $1.',
@@ -1278,10 +1270,10 @@ As jo dy ôfbylding yn folsleine resolúsje hawwe, bied him dan oan.
 Feroarje oars de triemnamme.',
 'fileexists-forbidden'        => 'Der bestiet al in triem mei dizze namme.
 Bied jo triem ûnder in oare namme oan.
-[[Image:$1|thumb|center|$1]]',
+[[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Der bestiet al in triem mei dizze namme by de dielde triemmen.
 As jo de triem dochs noch oanbiede wolle, gean dan werom en kies in oare namme.
-[[Image:$1|thumb|center|$1]]',
+[[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Dizze triem is idintyk oan {{PLURAL:$1|de folgjende triem|de folgjende triemmen}}:',
 'successfulupload'            => 'Oanbieden slagge.',
 'uploadwarning'               => 'Oanbied-warskôging',
@@ -1346,20 +1338,20 @@ Jo kinne it faaks besykje as it wat minder drok is.",
 'upload_source_url'  => ' (in jildige, publyk tagonklike URL)',
 'upload_source_file' => ' (in triem op jo kompjûter)',
 
-# Special:ImageList
-'imagelist-summary'     => 'Op dizze spesjale side binne alle tafoege triemmen te besjen.
+# Special:ListFiles
+'listfiles-summary'     => 'Op dizze spesjale side binne alle tafoege triemmen te besjen.
 Standert wurde de lêst tafoege triemmen boppe oan de list werjûn.
 Klikken op in kolomkop feroaret de sortearring.',
-'imagelist_search_for'  => 'Sykje nei triem:',
+'listfiles_search_for'  => 'Sykje nei triem:',
 'imgfile'               => 'triem',
-'imagelist'             => 'Ofbyld list',
-'imagelist_date'        => 'Datum',
-'imagelist_name'        => 'Namme',
-'imagelist_user'        => 'Meidogger',
-'imagelist_size'        => 'Grutte',
-'imagelist_description' => 'Beskriuwing',
+'listfiles'             => 'Ofbyld list',
+'listfiles_date'        => 'Datum',
+'listfiles_name'        => 'Namme',
+'listfiles_user'        => 'Meidogger',
+'listfiles_size'        => 'Grutte',
+'listfiles_description' => 'Beskriuwing',
 
-# Image description page
+# File description page
 'filehist'                       => 'Triem skiednis',
 'filehist-help'                  => 'Klik op in tiid om de ferzje fan de triem op dat stuit te sjen.',
 'filehist-deleteall'             => 'wiskje alles',
@@ -1931,6 +1923,7 @@ Sjoch: [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation], [htt
 # Special:Import
 'import'                  => 'Importearje siden',
 'import-interwiki-submit' => 'Ymportearje',
+'import-comment'          => 'Oanmerking:',
 'importstart'             => 'Siden oan it ymportearjen ...',
 'import-revision-count'   => '$1 {{PLURAL:$1|ferzje|ferzjes}}',
 'importnopages'           => 'Gjin siden te ymportearjen.',
@@ -2015,6 +2008,10 @@ Sjoch: [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation], [htt
 # Info page
 'infosubtitle' => 'Ynformaasje foar side',
 
+# Skin names
+'skinname-standard'  => 'Standert',
+'skinname-nostalgia' => 'Nostalgy',
+
 # Math options
 'mw_math_png'    => 'Altiten as PNG ôfbyldzje',
 'mw_math_simple' => 'HTML foar ienfâldiche formules, oars PNG',
@@ -2046,7 +2043,7 @@ Sjoch: [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation], [htt
 'show-big-image'       => 'Hegere resolúsje',
 'show-big-image-thumb' => '<small>Grutte fan dizze ôfbylding: $1 × $2 pixels</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'        => 'Nije ôfbylden',
 'imagelisttext'    => "Dit is in list fan '''$1''' {{PLURAL:$1|triem|triemen}}, op $2.",
 'newimages-legend' => 'Filter',

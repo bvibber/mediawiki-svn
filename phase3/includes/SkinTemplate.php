@@ -311,7 +311,7 @@ class SkinTemplate extends Skin {
 			$sep = str_replace("_", " ", wfMsgHtml("newtalkseparator"));
 			$msgs = array();
 			foreach ($newtalks as $newtalk) {
-				$msgs[] = wfElement("a",
+				$msgs[] = Xml::element("a",
 					array('href' => $newtalk["link"]), $newtalk["wiki"]);
 			}
 			$parts = implode($sep, $msgs);
@@ -438,7 +438,7 @@ class SkinTemplate extends Skin {
 		// XXX: attach this from javascript, same with section editing
 		if($this->iseditable &&	$wgUser->getOption("editondblclick") )
 		{
-			$encEditUrl = wfEscapeJsString( $this->mTitle->getLocalUrl( $this->editUrlOptions() ) );
+			$encEditUrl = Xml::escapeJsString( $this->mTitle->getLocalUrl( $this->editUrlOptions() ) );
 			$tpl->set('body_ondblclick', 'document.location = "' . $encEditUrl . '";');
 		} else {
 			$tpl->set('body_ondblclick', false);
@@ -594,10 +594,9 @@ class SkinTemplate extends Skin {
 		if( $selected ) {
 			$classes[] = 'selected';
 		}
-		if( $checkEdit && !$title->isAlwaysKnown() && $title->getArticleId() == 0 &&
-			!($title->getNamespace() == NS_IMAGE && wfFindFile( $title )) ) {
+		if( $checkEdit && !$title->isKnown() ) {
 			$classes[] = 'new';
-			$query = 'action=edit';
+			$query = 'action=edit&redlink=1';
 		}
 
 		$text = wfMsg( $message );
@@ -696,7 +695,7 @@ class SkinTemplate extends Skin {
 						'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
 					);
 				}
-			} elseif ( $this->mTitle->exists() || $this->mTitle->isAlwaysKnown() ) {
+			} elseif ( $this->mTitle->isKnown() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
 					'text' => wfMsg('viewsource'),
@@ -880,9 +879,10 @@ class SkinTemplate extends Skin {
 
 			// Also add a "permalink" while we're at it
 			if ( $this->mRevisionId ) {
+				global $wgScript;
 				$nav_urls['permalink'] = array(
 					'text' => wfMsg( 'permalink' ),
-					'href' => $wgTitle->getLocalURL( "oldid=$this->mRevisionId" )
+					'href' => "{$wgScript}?oldid={$this->mRevisionId}"
 				);
 			}
 

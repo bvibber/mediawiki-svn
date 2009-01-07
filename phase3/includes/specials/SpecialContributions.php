@@ -299,7 +299,7 @@ class SpecialContributions extends SpecialPage {
 
 		$feed = new $wgFeedClasses[$type](
 			$this->feedTitle(),
-			wfMsg( 'tagline' ),
+			wfMsgExt( 'tagline', 'parsemag' ),
 			$this->getTitle()->getFullUrl() );
 			
 		// Already valid title
@@ -347,13 +347,6 @@ class SpecialContributions extends SpecialPage {
 		}
 	}
 
-	/**
-	 * Quickie hack... strip out wikilinks to more legible form from the comment.
-	 */
-	protected function stripComment( $text ) {
-		return preg_replace( '/\[\[([^]]*\|)?([^]]+)\]\]/', '\2', $text );
-	}
-
 	protected function feedItemAuthor( $revision ) {
 		return $revision->getUserText();
 	}
@@ -361,7 +354,7 @@ class SpecialContributions extends SpecialPage {
 	protected function feedItemDesc( $revision ) {
 		if( $revision ) {
 			return '<p>' . htmlspecialchars( $revision->getUserText() ) . ': ' .
-				htmlspecialchars( $this->stripComment( $revision->getComment() ) ) . 
+				htmlspecialchars( FeedItem::stripComment( $revision->getComment() ) ) . 
 				"</p>\n<hr />\n<div>" .
 				nl2br( htmlspecialchars( $revision->getText() ) ) . "</div>";
 		}
@@ -483,8 +476,7 @@ class ContribsPager extends ReverseChronologicalPager {
 				$difftext .= $this->messages['newarticle'];
 			}
 
-			if( !$page->getUserPermissionsErrors( 'rollback', $wgUser )
-			&&  !$page->getUserPermissionsErrors( 'edit', $wgUser ) ) {
+			if( $page->userCan( 'rollback') && $page->userCan( 'edit' ) ) {
 				$topmarktext .= ' '.$sk->generateRollback( $rev );
 			}
 
@@ -498,7 +490,8 @@ class ContribsPager extends ReverseChronologicalPager {
 		$histlink='('.$sk->makeKnownLinkObj( $page, $this->messages['hist'], 'action=history' ) . ')';
 
 		$comment = $wgContLang->getDirMark() . $sk->revComment( $rev, false, true );
-		$d = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->rev_timestamp ), true );
+		$date = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->rev_timestamp ), true );
+		$d = $sk->makeKnownLinkObj( $page, $date, 'oldid='.intval($row->rev_id) );
 
 		if( $this->target == 'newbies' ) {
 			$userlink = ' . . ' . $sk->userLink( $row->rev_user, $row->rev_user_text );

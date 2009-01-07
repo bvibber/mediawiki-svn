@@ -152,8 +152,8 @@ $messages = array(
 'hr_tip'          => 'अक्षांशीय पंक्ति (अल्प उपयोग)',
 
 # Edit pages
-'summary'              => 'सारांश',
-'subject'              => 'विषय/मुख्यपंक्ति',
+'summary'              => 'सारांश:',
+'subject'              => 'विषय/मुख्यपंक्ति:',
 'minoredit'            => 'अल्प संपादन',
 'watchthis'            => 'एहि पृष्ठकेँ देखू',
 'showpreview'          => 'पूर्वप्रदर्शन',
@@ -203,7 +203,7 @@ $messages = array(
 'uploadbtn'     => 'फाइल अपलोड',
 'uploadedimage' => 'अपलोड भेल "[[$1]]"',
 
-# Image description page
+# File description page
 'filehist'   => 'फाइल इतिहास',
 'imagelinks' => 'लिंक्स',
 

@@ -71,7 +71,7 @@ $messages = array(
 'username'    => 'Ciu bouxdeiz:',
 
 # Edit pages
-'summary'            => 'Saegmangj',
+'summary'            => 'Saegmangj:',
 'minoredit'          => 'Di-nej gaij noix',
 'watchthis'          => 'Demq mae-nej',
 'savearticle'        => 'Zonzdiuz mae-nej',
@@ -143,7 +143,7 @@ $messages = array(
 'tooltip-pt-preferences' => 'Doenghgaeq gou hae',
 'tooltip-p-logo'         => 'Mae meh',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Cwmh',
 
 # Multipage image navigation

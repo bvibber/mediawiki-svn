@@ -103,8 +103,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Xef {{SITENAME}}',
 'aboutpage'            => 'Project:Xef',
-'bugreports'           => 'ina-neɣ x ca n (Bug)',
-'bugreportspage'       => 'Project:ina-neɣ x ca n (Bug)',
 'copyrightpage'        => '{{ns:project}}:izrefan ussenɣel',
 'currentevents'        => 'Mayn itemsaren rux',
 'currentevents-url'    => 'Project:mayn itmesaren ruxa',
@@ -191,6 +189,9 @@ adeff-d xmi ɣa teṭfed.',
 'eauthentsent'            => 'ijj n e-mail itwasekked ɣar e-mail nni.
 zzat ma ca n e-mail nniḍen ma ad itwasekk ɣar umiḍan , ixessa ad tegged manayenni di e-mail, bac ad nessen ila qa amiḍan a inec.',
 
+# Password reset dialog
+'retypenew' => 'Ɛawd arri Taguri n wadaf tamaynut:',
+
 # Edit page toolbar
 'bold_sample'     => 'Tirra tizurarin',
 'bold_tip'        => 'Tirra tizurarin',
@@ -212,8 +213,8 @@ zzat ma ca n e-mail nniḍen ma ad itwasekk ɣar umiḍan , ixessa ad tegged man
 'hr_tip'          => 'Acariḍ aglawan',
 
 # Edit pages
-'summary'                => 'Tagḍwit',
-'subject'                => 'Subject/headline',
+'summary'                => 'Tagḍwit:',
+'subject'                => 'Subject/headline:',
 'minoredit'              => 'Ta d taẓrigt d-tamẓeyant',
 'watchthis'              => 'Ẓar Tasna ya',
 'savearticle'            => 'Ḥaḍ Tasna',
@@ -222,7 +223,7 @@ zzat ma ca n e-mail nniḍen ma ad itwasekk ɣar umiḍan , ixessa ad tegged man
 'showdiff'               => 'Ẓar mayn teẓṛegd.',
 'anoneditwarning'        => "'''ɣark:''' war tudifd ca s isem inec.
 Tansa n IP inac ad-teqqim deg umezruy n teẓṛigin n Tasna ya .",
-'summary-preview'        => 'Azar-ascan n Tegḍwit',
+'summary-preview'        => 'Azar-ascan n Tegḍwit:',
 'blockedtext'            => "<big>'''Isem useqdac niɣ tansa IP inecc tewabluca  .'''</big>
 
 iblocat  $1.
@@ -304,7 +305,6 @@ tzemred ad [[:\$1|tarnid cek]].",
 # Preferences page
 'preferences'       => 'Isemyifiyen',
 'mypreferences'     => 'Isemyifiyen inu',
-'retypenew'         => 'Ɛawd arri Taguri n wadaf tamaynut:',
 'searchresultshead' => 'Tarzzut',
 
 # Groups
@@ -353,10 +353,10 @@ Tasniwin di [[Special:Watchlist|Tabdart uḥṭṭu inec]] d '''tizurarin'''.",
 'uploadedimage'     => 'itwazdem-d "[[$1]]"',
 'watchthisupload'   => 'Xm tasbtirt a',
 
-# Special:ImageList
-'imagelist' => 'Tabdart n ifayluten',
+# Special:ListFiles
+'listfiles' => 'Tabdart n ifayluten',
 
-# Image description page
+# File description page
 'filehist'                  => 'Amzruy n ufaylu',
 'filehist-help'             => 'Tka di date/time bac ad tẓerd afaylu mamec ja d-itban di Lwaqt a .',
 'filehist-deleteone'        => 'sfaḍ',
@@ -678,7 +678,7 @@ snaqlitent s ufus.'''",
 'show-big-image'       => 'Resolution ameqran',
 'show-big-image-thumb' => '<small>Tiddi n uzar-ascan: $1 × $2 pixel </small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Amewlaf n ifayluten imaynuten',
 'ilsubmit'  => 'Tarzzut',
 

@@ -89,7 +89,7 @@ $messages = array(
 'userlogout' => 'Ынкиде сесиуня',
 
 # Edit pages
-'summary'     => 'Резумат',
+'summary'     => 'Резумат:',
 'watchthis'   => 'Привеште ачастэ паӂинэ',
 'showpreview' => 'Аратэ превизуализаре',
 
@@ -118,7 +118,7 @@ $messages = array(
 # Upload
 'upload' => 'Тримите фишиер',
 
-# Image description page
+# File description page
 'filehist'      => 'Историкул фишиерулуй',
 'filehist-user' => 'Утилизатор',
 'imagelinks'    => 'Легэтурь',

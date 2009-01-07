@@ -16,34 +16,29 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Медија',
-	NS_SPECIAL        => 'Специјални',
-	NS_MAIN           => '',
-	NS_TALK           => 'Разговор',
-	NS_USER           => 'Корисник',
-	NS_USER_TALK      => 'Разговор_со_корисник',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => 'Разговор_за_$1',
-	NS_IMAGE          => 'Слика',
-	NS_IMAGE_TALK     => 'Разговор_за_слика',
-	NS_MEDIAWIKI      => 'МедијаВики',
-	NS_MEDIAWIKI_TALK => 'Разговор_за_МедијаВики',
-	NS_TEMPLATE       => 'Шаблон',
-	NS_TEMPLATE_TALK  => 'Разговор_за_шаблон',
-	NS_HELP           => 'Помош',
-	NS_HELP_TALK      => 'Разговор_за_помош',
-	NS_CATEGORY       => 'Категорија',
-	NS_CATEGORY_TALK  => 'Разговор_за_категорија',
+	NS_MEDIA            => 'Медија',
+	NS_SPECIAL          => 'Специјални',
+	NS_TALK             => 'Разговор',
+	NS_USER             => 'Корисник',
+	NS_USER_TALK        => 'Разговор_со_корисник',
+	NS_PROJECT_TALK     => 'Разговор_за_$1',
+	NS_FILE             => 'Податотека',
+	NS_FILE_TALK        => 'Разговор_за_податотека',
+	NS_MEDIAWIKI        => 'МедијаВики',
+	NS_MEDIAWIKI_TALK   => 'Разговор_за_МедијаВики',
+	NS_TEMPLATE         => 'Шаблон',
+	NS_TEMPLATE_TALK    => 'Разговор_за_шаблон',
+	NS_HELP             => 'Помош',
+	NS_HELP_TALK        => 'Разговор_за_помош',
+	NS_CATEGORY         => 'Категорија',
+	NS_CATEGORY_TALK    => 'Разговор_за_категорија',
 );
 
-$skinNames = array(
-	'standard'    => 'Класика',
-	'nostalgia'   => 'Носталгија',
-	'cologneblue' => 'Келнско сино',
-	'monobook'    => 'Monobook',
-	'myskin'      => 'Моја маска',
-	'chick'       => 'Шик'
+$namespaceAliases = array(
+	'Слика' => NS_FILE,
+	'Разговор_за_слика' => NS_FILE_TALK,
 );
+
 
 $datePreferences = array(
 	'default',
@@ -99,9 +94,10 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'ЛистаНаНабљудувања' ),
 	'Recentchanges'             => array( 'СкорешниПромени' ),
 	'Upload'                    => array( 'Подигнување', 'Подигнувања' ),
-	'Imagelist'                 => array( 'ЛистаНаСлики' ),
-	'Newimages'                 => array( 'НовиСлики' ),
-	'Listusers'                 => array( 'ЛистаНаКорисници' ),
+	'Listfiles'                 => array( 'ЛистаНаСлики', 'ЛистаНаПодатотеки' ),
+	'Newimages'                 => array( 'НовиСлики', 'НовиПодатотеки' ),
+	'Listusers'                 => array( 'ЛистаНаКорисници', 'ЛистаКорисници' ),
+	'Listgrouprights'           => array( 'ЛистаНаГрупниПрава' ),
 	'Statistics'                => array( 'Статистики' ),
 	'Randompage'                => array( 'Случајна', 'СлучајнаСтраница' ),
 	'Lonelypages'               => array( 'ОсамениСтраници', 'СтранциСирачиња' ),
@@ -110,31 +106,41 @@ $specialPageAliases = array(
 	'Uncategorizedimages'       => array( 'НекатегоризираниСлики' ),
 	'Uncategorizedtemplates'    => array( 'НекатегоризираниШаблони' ),
 	'Unusedcategories'          => array( 'НеискористениКатегории' ),
-	'Unusedimages'              => array( 'НеискористениСлики' ),
+	'Unusedimages'              => array( 'НеискористениСлики', 'НеискористениПодатотеки' ),
 	'Wantedpages'               => array( 'ПрекинатиВрски' ),
 	'Wantedcategories'          => array( 'БараниКатегории' ),
 	'Wantedfiles'               => array( 'БараниПодатотеки' ),
 	'Wantedtemplates'           => array( 'БараниШаблони' ),
+	'Mostlinked'                => array( 'СоНајмногуВрски', 'СтранициСоНајмногуВрски' ),
+	'Mostlinkedcategories'      => array( 'НајупотребуваниКатегории' ),
+	'Mostlinkedtemplates'       => array( 'НајупотребуваниШаблони' ),
+	'Mostimages'                => array( 'НајмногуСлики', 'НајмногуПодатотеки', 'ПодатотекиСоНајмногуВрски' ),
 	'Mostcategories'            => array( 'НајмногуКатегории' ),
-	'Mostimages'                => array( 'НајмногуСлики' ),
 	'Mostrevisions'             => array( 'НајмногуРевизии' ),
 	'Fewestrevisions'           => array( 'НајмалкуРевизии' ),
 	'Shortpages'                => array( 'КраткиСтраници' ),
 	'Longpages'                 => array( 'ДолгиСтраници' ),
 	'Newpages'                  => array( 'НовиСтраници' ),
 	'Ancientpages'              => array( 'НајстариСтраници' ),
+	'Deadendpages'              => array( 'ЌорсокакСтраници' ),
 	'Protectedpages'            => array( 'ЗаштитениСтраници' ),
 	'Protectedtitles'           => array( 'ЗаштитениНаслови' ),
 	'Allpages'                  => array( 'СитеСтраници' ),
+	'Prefixindex'               => array( 'ИндексНаПрефикси' ),
+	'Ipblocklist'               => array( 'ЛистаНаБлокираниIP' ),
 	'Specialpages'              => array( 'СпецијалниСтраници' ),
 	'Contributions'             => array( 'Придонеси' ),
+	'Whatlinkshere'             => array( 'ШтоВодиОвде' ),
+	'Recentchangeslinked'       => array( 'ПоврзаниПромени' ),
 	'Movepage'                  => array( 'ПреместиСтраница' ),
 	'Blockme'                   => array( 'БлокирајМе' ),
+	'Booksources'               => array( 'ПечатенИзвор' ),
 	'Categories'                => array( 'Категории' ),
 	'Export'                    => array( 'Извоз' ),
 	'Version'                   => array( 'Верзија' ),
 	'Allmessages'               => array( 'СитеПораки' ),
 	'Log'                       => array( 'Дневник', 'Дневници' ),
+	'Blockip'                   => array( 'Блокирање', 'БлокIP', 'БлокирајКорисник' ),
 	'Undelete'                  => array( 'Врати' ),
 	'Import'                    => array( 'Увоз' ),
 	'Lockdb'                    => array( 'ЗаклучиБаза' ),
@@ -144,6 +150,7 @@ $specialPageAliases = array(
 	'FileDuplicateSearch'       => array( 'ПребарувањеДупликатПодатотека' ),
 	'Unwatchedpages'            => array( 'НенабљудуваниСтраници' ),
 	'Listredirects'             => array( 'ЛистаНаПренасочувања' ),
+	'Revisiondelete'            => array( 'БришењеРевизија' ),
 	'Unusedtemplates'           => array( 'НеискористениШаблони' ),
 	'Randomredirect'            => array( 'СлучајноПренасочување' ),
 	'Mypage'                    => array( 'МојаСтраница' ),
@@ -156,46 +163,92 @@ $specialPageAliases = array(
 	'Resetpass'                 => array( 'РесетирајЛозинка' ),
 	'Withoutinterwiki'          => array( 'БезИнтервики' ),
 	'MergeHistory'              => array( 'СпојувањеИсторија' ),
+	'Filepath'                  => array( 'ПатДоПодатотека' ),
 	'Invalidateemail'           => array( 'ПогрешнаЕпошта' ),
 	'Blankpage'                 => array( 'ПразнаСтраница' ),
+	'LinkSearch'                => array( 'ПребарајВрска' ),
 	'DeletedContributions'      => array( 'ИзбришаниПридонеси' ),
 );
 
 $magicWords = array(
-	'redirect'              => array( 0, '#redirect', '#пренасочување', '#види' ),
-	'notoc'                 => array( 0, '__NOTOC__', '__БЕЗСОДРЖИНА__' ),
-	'forcetoc'              => array( 0, '__FORCETOC__', '__СОСОДРЖИНА__' ),
-	'toc'                   => array( 0, '__TOC__', '__СОДРЖИНА__' ),
-	'noeditsection'         => array( 0, '__NOEDITSECTION__' , '__БЕЗ_УРЕДУВАЊЕ_НА_СЕКЦИИ__'),
-	'currentmonth'          => array( 1, 'CURRENTMONTH', 'СЕГАШЕНМЕСЕЦ' ),
-	'currentmonthname'      => array( 1, 'CURRENTMONTHNAME', 'СЕГАШЕНМЕСЕЦИМЕ' ),
-	'currentmonthnamegen'   => array( 1, 'CURRENTMONTHNAMEGEN', 'СЕГАШЕНМЕСЕЦИМЕРОД' ),
-	'currentmonthabbrev'    => array( 1, 'CURRENTMONTHABBREV', 'СЕГАШЕНМЕСЕЦСКР' ),
-	'currentday'            => array( 1, 'CURRENTDAY', 'СЕГАШЕНДЕН' ),
-	'currentdayname'        => array( 1, 'CURRENTDAYNAME', 'СЕГАШЕНДЕНИМЕ' ),
-	'currentyear'           => array( 1, 'CURRENTYEAR', 'СЕГАШНАГОДИНА' ),
-	'currenttime'           => array( 1, 'CURRENTTIME', 'СЕГАШНОВРЕМЕ' ),
-	'numberofarticles'      => array( 1, 'NUMBEROFARTICLES', 'БРОЈСТАТИИ' ),
-	'pagename'              => array( 1, 'PAGENAME', 'СТРАНИЦА' ),
-	'pagenamee'             => array( 1, 'PAGENAMEE', 'СТРАНИЦАИ' ),
-	'namespace'             => array( 1, 'NAMESPACE', 'ИМЕПРОСТОР' ),
-	'subst'                 => array( 0, 'SUBST:', 'ЗАМЕСТ:' ),
-	'msgnw'                 => array( 0, 'MSGNW:', 'ИЗВЕШТNW:' ),
-	'img_thumbnail'         => array( 1, 'thumbnail', 'thumb', 'мини' ),
-	'img_right'             => array( 1, 'right', 'десно', 'д' ),
-	'img_left'              => array( 1, 'left', 'лево', 'л' ),
-	'img_none'              => array( 1, 'none', 'н' ),
-	'img_width'             => array( 1, '$1px', '$1пкс' , '$1п' ),
-	'img_center'            => array( 1, 'center', 'centre', 'центар', 'ц' ),
-	'img_framed'            => array( 1, 'framed', 'enframed', 'frame', 'рамка', 'ворамка' ),
-	'sitename'              => array( 1, 'SITENAME', 'ИМЕНАСАЈТ' ),
-	'localurl'              => array( 0, 'LOCALURL:', 'ЛОКАЛНААДРЕСА:' ),
-	'localurle'             => array( 0, 'LOCALURLE:', 'ЛОКАЛНААДРЕСАИ:' ),
-	'server'                => array( 0, 'SERVER', 'СЕРВЕР' ),
-	'grammar'               => array( 0, 'GRAMMAR:', 'ГРАМАТИКА:' ),
-	'notitleconvert'        => array( 0, '__NOTITLECONVERT__', '__NOTC__'),
-	'nocontentconvert'      => array( 0, '__NOCONTENTCONVERT__', '__NOCC__'),
-	'currentweek'           => array( 1, 'CURRENTWEEK', 'СЕГАШНАСЕДМИЦА'),
+	'redirect'              => array( '0', '#redirect', '#пренасочување', '#види' ),
+	'notoc'                 => array( '0', '__БЕЗСОДРЖИНА__', '__NOTOC__' ),
+	'nogallery'             => array( '0', '__БЕЗГАЛЕРИЈА__', '__NOGALLERY__' ),
+	'forcetoc'              => array( '0', '__СОСОДРЖИНА__', '__FORCETOC__' ),
+	'toc'                   => array( '0', '__СОДРЖИНА__', '__TOC__' ),
+	'noeditsection'         => array( '0', '__БЕЗ_УРЕДУВАЊЕ_НА_СЕКЦИИ__', '__NOEDITSECTION__' ),
+	'noheader'              => array( '0', '__БЕЗНАСЛОВ__', '__NOHEADER__' ),
+	'currentmonth'          => array( '1', 'СЕГАШЕНМЕСЕЦ', 'CURRENTMONTH' ),
+	'currentmonthname'      => array( '1', 'СЕГАШЕНМЕСЕЦИМЕ', 'CURRENTMONTHNAME' ),
+	'currentmonthnamegen'   => array( '1', 'СЕГАШЕНМЕСЕЦИМЕРОД', 'CURRENTMONTHNAMEGEN' ),
+	'currentmonthabbrev'    => array( '1', 'СЕГАШЕНМЕСЕЦСКР', 'CURRENTMONTHABBREV' ),
+	'currentday'            => array( '1', 'СЕГАШЕНДЕН', 'CURRENTDAY' ),
+	'currentday2'           => array( '1', 'СЕГАШЕНДЕН2', 'CURRENTDAY2' ),
+	'currentdayname'        => array( '1', 'СЕГАШЕНДЕНИМЕ', 'CURRENTDAYNAME' ),
+	'currentyear'           => array( '1', 'СЕГАШНАГОДИНА', 'CURRENTYEAR' ),
+	'currenttime'           => array( '1', 'СЕГАШНОВРЕМЕ', 'CURRENTTIME' ),
+	'currenthour'           => array( '1', 'СЕГАШЕНЧАС', 'CURRENTHOUR' ),
+	'localmonth'            => array( '1', 'МЕСЕЦ_ЛОКАЛНО', 'LOCALMONTH' ),
+	'localmonthname'        => array( '1', 'МЕСЕЦИМЕ_ЛОКАЛНО', 'LOCALMONTHNAME' ),
+	'localday'              => array( '1', 'ДЕН_ЛОКАЛНО', 'LOCALDAY' ),
+	'localday2'             => array( '1', 'ДЕН2_ЛОКАЛНО', 'LOCALDAY2' ),
+	'localdayname'          => array( '1', 'ИМЕНАДЕН_ЛОКАЛНО', 'LOCALDAYNAME' ),
+	'localyear'             => array( '1', 'ГОДИНА_ЛОКАЛНО', 'LOCALYEAR' ),
+	'localtime'             => array( '1', 'ВРЕМЕ_ЛОКАЛНО', 'LOCALTIME' ),
+	'localhour'             => array( '1', 'ЧАС_ЛОКАЛНО', 'LOCALHOUR' ),
+	'numberofpages'         => array( '1', 'БРОЈНАСТРАНИЦИ', 'NUMBEROFPAGES' ),
+	'numberofarticles'      => array( '1', 'БРОЈСТАТИИ', 'БРОЈНАСТАТИИ', 'NUMBEROFARTICLES' ),
+	'numberoffiles'         => array( '1', 'БРОЈНАПОДАТОТЕКИ', 'NUMBEROFFILES' ),
+	'numberofusers'         => array( '1', 'БРОЈНАКОРИСНИЦИ', 'NUMBEROFUSERS' ),
+	'numberofedits'         => array( '1', 'БРОЈНАУРЕДУВАЊА', 'NUMBEROFEDITS' ),
+	'numberofviews'         => array( '1', 'БРОЈНАПРЕГЛЕДУВАЊА', 'NUMBEROFVIEWS' ),
+	'pagename'              => array( '1', 'СТРАНИЦА', 'PAGENAME' ),
+	'pagenamee'             => array( '1', 'СТРАНИЦАИ', 'PAGENAMEE' ),
+	'namespace'             => array( '1', 'ИМЕПРОСТОР', 'ИМЕНСКИПРОСТОР', 'NAMESPACE' ),
+	'talkspace'             => array( '1', 'РАЗГОВОРПРОСТОР', 'TALKSPACE' ),
+	'fullpagename'          => array( '1', 'ЦЕЛОСНОИМЕНАСТРАНИЦА', 'FULLPAGENAME' ),
+	'subpagename'           => array( '1', 'ИМЕНАПОДСТРАНИЦА', 'SUBPAGENAME' ),
+	'basepagename'          => array( '1', 'ИМЕНАОСНОВНАСТРАНИЦА', 'BASEPAGENAME' ),
+	'talkpagename'          => array( '1', 'СТРАНИЦАЗАРАЗГОВОР', 'TALKPAGENAME' ),
+	'subst'                 => array( '0', 'ЗАМЕСТ:', 'SUBST:' ),
+	'msgnw'                 => array( '0', 'ИЗВЕШТNW:', 'MSGNW:' ),
+	'img_thumbnail'         => array( '1', 'мини', 'мини-слика', 'thumbnail', 'thumb' ),
+	'img_manualthumb'       => array( '1', 'мини-слика=$1', 'мини=$1', 'thumbnail=$1', 'thumb=$1' ),
+	'img_right'             => array( '1', 'десно', 'д', 'right' ),
+	'img_left'              => array( '1', 'лево', 'л', 'left' ),
+	'img_none'              => array( '1', 'н', 'нема', 'none' ),
+	'img_width'             => array( '1', '$1пкс', '$1п', '$1px' ),
+	'img_center'            => array( '1', 'центар', 'ц', 'center', 'centre' ),
+	'img_framed'            => array( '1', 'рамка', 'ворамка', 'framed', 'enframed', 'frame' ),
+	'img_frameless'         => array( '1', 'безрамка', 'frameless' ),
+	'img_page'              => array( '1', 'страница=$1', 'страница $1', 'page=$1', 'page $1' ),
+	'img_top'               => array( '1', 'врв', 'top' ),
+	'img_middle'            => array( '1', 'средина', 'middle' ),
+	'img_bottom'            => array( '1', 'дно', 'bottom' ),
+	'img_link'              => array( '1', 'врска=$1', 'link=$1' ),
+	'sitename'              => array( '1', 'ИМЕНАСАЈТ', 'SITENAME' ),
+	'localurl'              => array( '0', 'ЛОКАЛНААДРЕСА:', 'LOCALURL:' ),
+	'localurle'             => array( '0', 'ЛОКАЛНААДРЕСАИ:', 'LOCALURLE:' ),
+	'server'                => array( '0', 'СЕРВЕР', 'SERVER' ),
+	'servername'            => array( '0', 'ИМЕНАСЕРВЕР', 'SERVERNAME' ),
+	'grammar'               => array( '0', 'ГРАМАТИКА:', 'GRAMMAR:' ),
+	'notitleconvert'        => array( '0', '__БЕЗСОДРЖИНА__', '__NOTITLECONVERT__', '__NOTC__' ),
+	'currentweek'           => array( '1', 'СЕГАШНАСЕДМИЦА', 'CURRENTWEEK' ),
+	'localweek'             => array( '1', 'СЕДМИЦА_ЛОКАЛНО', 'LOCALWEEK' ),
+	'plural'                => array( '0', 'МНОЖИНА:', 'PLURAL:' ),
+	'raw'                   => array( '0', 'РЕД:', 'RAW:' ),
+	'displaytitle'          => array( '1', 'ПРИКАЖИНАСЛОВ', 'DISPLAYTITLE' ),
+	'currentversion'        => array( '1', 'ТЕКОВНАВЕРЗИЈА', 'CURRENTVERSION' ),
+	'language'              => array( '0', '#ЈАЗИК:', '#LANGUAGE:' ),
+	'numberofadmins'        => array( '1', 'БРОЈНААДМИНИСТРАТОРИ', 'NUMBEROFADMINS' ),
+	'defaultsort'           => array( '1', 'ОСНОВНОПОДРЕДУВАЊЕ:', 'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
+	'tag'                   => array( '0', 'приврзок', 'tag' ),
+	'hiddencat'             => array( '1', '__СКРИЕНА_КАТЕГОРИЈА__', '__СКРИЕНАКАТЕГОРИЈА__', '__HIDDENCAT__' ),
+	'pagesincategory'       => array( '1', 'СТРАНИЦИВОКАТЕГОРИЈА', 'СТРАНИЦИВОКАТ', 'PAGESINCATEGORY', 'PAGESINCAT' ),
+	'pagesize'              => array( '1', 'ГОЛЕМИНА_НА_СТРАНИЦА', 'PAGESIZE' ),
+	'index'                 => array( '1', '__ИНДЕКС__', '__INDEX__' ),
+	'noindex'               => array( '1', '__БЕЗИНДЕКС__', '__NOINDEX__' ),
+	'staticredirect'        => array( '1', '__СТАТИЧНОПРЕНАСОЧУВАЊЕ__', '__STATICREDIRECT__' ),
 );
 
 $linkTrail = '/^([a-zабвгдѓежзѕијклљмнњопрстќуфхцчџш]+)(.*)$/sDu';
@@ -246,6 +299,7 @@ $messages = array(
 'tog-diffonly'                => 'Не ја покажувај содржината на страницата под разликите',
 'tog-showhiddencats'          => 'Прикажи скриени категории',
 'tog-noconvertlink'           => 'Оневозможи конверзија на наслов на врска',
+'tog-norollbackdiff'          => 'Изостави разлика после употребата на враќање',
 
 'underline-always'  => 'Секогаш',
 'underline-never'   => 'Никогаш',
@@ -344,7 +398,7 @@ $messages = array(
 'mytalk'         => 'Мои разговори',
 'anontalk'       => 'Разговор за оваа IP адреса',
 'navigation'     => 'Навигација',
-'and'            => 'и',
+'and'            => '&#32;и',
 
 # Metadata in edit box
 'metadata_help' => 'Метаподатоци:',
@@ -407,8 +461,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'За {{SITENAME}}',
 'aboutpage'            => 'Project:За {{SITENAME}}',
-'bugreports'           => 'Извештаи за грешки',
-'bugreportspage'       => 'Project:Извештаи за грешки',
 'copyright'            => 'Сите текстови се достапни под условите на $1.',
 'copyrightpagename'    => '{{SITENAME}} авторски права',
 'copyrightpage'        => '{{ns:project}}:Авторски права',
@@ -667,17 +719,24 @@ $2',
 'loginlanguagelabel'         => 'Јазик: $1',
 
 # Password reset dialog
-'resetpass'               => 'Смени ја лозинката',
-'resetpass_announce'      => 'Најавени сте со привремена лозинка пратена по е-пошта.
+'resetpass'                 => 'Промена на лозинка',
+'resetpass_announce'        => 'Најавени сте со привремена лозинка пратена по е-пошта.
 За да го завршите пријавувањето, мора да поставите нова лозинка овде:',
-'resetpass_text'          => '<!-- Додадете текст тука -->',
-'resetpass_header'        => 'Ресетирај ја лозинката',
-'resetpass_submit'        => 'Поставете лозинка и најавете се',
-'resetpass_success'       => 'Вашата лозинка беше успешно променета! Најавувањето е во тек...',
-'resetpass_bad_temporary' => 'Неважечка привремена лозинка.
+'resetpass_text'            => '<!-- Додадете текст тука -->',
+'resetpass_header'          => 'Промена на корисничка лозинка',
+'oldpassword'               => 'Стара лозинка:',
+'newpassword'               => 'Нова лозинка:',
+'retypenew'                 => 'Повторно внеси нова лозинка:',
+'resetpass_submit'          => 'Поставете лозинка и најавете се',
+'resetpass_success'         => 'Вашата лозинка беше успешно променета! Најавувањето е во тек...',
+'resetpass_bad_temporary'   => 'Неважечка привремена лозинка.
 Можно е веќе да сте ја промениле вашата лозинка или да сте побарале нова привремена лозинка.',
-'resetpass_forbidden'     => 'Лозинките не може да се менуваат',
-'resetpass_missing'       => 'Формуларот не содржи податоци.',
+'resetpass_forbidden'       => 'Лозинките не може да се менуваат',
+'resetpass-no-info'         => 'Мора да бидете најавени ако сакате да имате директен пристап до оваа страница.',
+'resetpass-submit-loggedin' => 'Промени лозинка',
+'resetpass-wrong-oldpass'   => 'Погрешна привремена или тековна лозинка.
+Можеби веќе ја имате успешно променето вашата лизинка или сте побарале нова привремена лозинка.',
+'resetpass-temp-password'   => 'Привремена лозинка:',
 
 # Edit page toolbar
 'bold_sample'     => 'Задебелен текст',
@@ -702,8 +761,8 @@ $2',
 'hr_tip'          => 'Хоризонтална линија',
 
 # Edit pages
-'summary'                          => 'Опис',
-'subject'                          => 'Наслов',
+'summary'                          => 'Опис:',
+'subject'                          => 'Наслов:',
 'minoredit'                        => 'Ова е ситна промена',
 'watchthis'                        => 'Набљудувај ја оваа страница',
 'savearticle'                      => 'Зачувај страница',
@@ -715,8 +774,8 @@ $2',
 'missingsummary'                   => "'''Потсетник:''' Не внесовте опис на измените. Ако притиснете Зачувај повторно, вашите измени ќе се зачуваат без опис.",
 'missingcommenttext'               => 'Ве молиме внесете коментар подолу.',
 'missingcommentheader'             => "'''Потсетување:''' Не внесовте наслов за овој коментар. Ако повторно кликнете на Зачувај, вашето уредување ќе биде запамтено без наслов.",
-'summary-preview'                  => 'Изглед на описот',
-'subject-preview'                  => 'Преглед на предметот/насловот',
+'summary-preview'                  => 'Изглед на описот:',
+'subject-preview'                  => 'Преглед на предметот/насловот:',
 'blockedtitle'                     => 'Корисникот е блокиран',
 'blockedtext'                      => "<big>'''Вашето корисничко име или IP адреса се блокирани.'''</big>
 
@@ -765,10 +824,10 @@ $2',
 'newarticletext'                   => "Следевте врска која води до страница која сè уште не постои. 
 За да ја креирате страницата, почнете со пишување во долното прозорче (видете ја [[{{MediaWiki:Helppage}}|страницата за помош]] за повеќе информации). Ако сте овде по грешка, само притиснете го копчето '''назад''' во вашиот веб прелистувач.",
 'anontalkpagetext'                 => "''Ова е страница за разговор со анонимен корисник кој сеуште не регистрирал корисничка сметка или не ја користи. Затоа мораме да ја користиме неговата нумеричка [[IP адреса]] за негова идентификација. Една IP адреса може да биде делена од повеќе корисници. Ако сте анонимен корисник и сметате дека кон вас се упатени ирелевантни коментари, ве молиме [[Special:UserLogin|креирајте корисничка сметка]] или [[Special:UserLogin|најавете се]] за да избегнете поистоветување со други анонимни корисници.''",
-'noarticletext'                    => 'Моментално нема текст на оваа страница, можете да направите [[Special:Search/{{PAGENAME}}|пребарување]] на овој назлов во други страници или да ја [{{fullurl:{{FULLPAGENAME}}|action=edit}} креирате оваа страница].',
+'noarticletext'                    => 'Моментално нема текст на оваа страница, можете да направите [[Special:Search/{{PAGENAME}}|пребарување]] на овој наслов во други страници или да ја [{{fullurl:{{FULLPAGENAME}}|action=edit}} креирате оваа страница].',
 'userpage-userdoesnotexist'        => 'Корисничката сметка „$1“ не е регистрирана. 
 Ве молиме размислете дали навистина сакате да ја создадете/уредите оваа страница.',
-'clearyourcache'                   => "'''Забелешка - По зачувување морате да го исчистите кешот на вашиот веб прелистувач за да ги видите промените.'''
+'clearyourcache'                   => "'''Забелешка - По секое зачувување морате да го исчистите кешот на вашиот веб прелистувач за да ги видите промените.'''
 '''Mozilla / Firefox / Safari:''' држете ''Shift'' додека кликате на ''Reload'' или одеднаш притиснете ''Ctrl-F5'' или ''Ctrl-R'' (''Command-R'' на Мекинтош);
 '''Konqueror:''' кликнете на ''Reload'' или притиснете ''F5'';
 '''Opera:''' избришете го кешот во ''Tools → Preferences'';
@@ -867,6 +926,8 @@ $2',
 'post-expand-template-argument-warning'   => 'Предупредување: Оваа страница содржи најмалку еден аргумент на шаблон кој е со преголема должина.
 Таквите аргументи ќе бидат изземени при парсирањето.',
 'post-expand-template-argument-category'  => 'Страници кои содржат изземени аргументи на шаблони',
+'parser-template-loop-warning'            => 'Детектиран циклус во шаблонот: [[$1]]',
+'parser-template-recursion-depth-warning' => 'Ограничувањето на рекурзивната длабочина надмината во шаблонот ($1)',
 
 # "Undo" feature
 'undo-success' => 'Уредувањето може да се откаже. 
@@ -935,34 +996,43 @@ $2',
 'revdelete-text'              => "'''Избришаните измени и настани сѐ уште ќе се појавуваат во историјата на страницата и дневниците, но делови од нивната содржина ќе бидат недостапни за јавноста.'''
 
 Други администратори на {{SITENAME}} сѐ уште ќе имаат пристап до скриената содржина и ќе можат да ја вратат преку истиот интерфејс, освен ако не се поставени дополнителни ограничувања.",
-'revdelete-legend'            => 'Постави ограничувања на верзијата',
-'revdelete-hide-text'         => 'Сокриј го текстот на верзијата',
-'revdelete-hide-comment'      => 'Сокриј го описот на измената',
-'revdelete-hide-user'         => 'Сокриј име/адреса на уредувачот',
-'revdelete-hide-restricted'   => 'Постави ги овие ограничувања и за администраторите и заклучи го овој интерфејс',
+'revdelete-legend'            => 'Постави ограничувања за видливост',
+'revdelete-hide-text'         => 'Сокриј текст на реввизија',
+'revdelete-hide-name'         => 'Сокриј акција и нејзина цел',
+'revdelete-hide-comment'      => 'Сокриј опис на уредување',
+'revdelete-hide-user'         => 'Сокриј корисничко име/IP на уредувачи',
+'revdelete-hide-restricted'   => 'Постави ги овие ограничувања и за Систем операторите и заклучи го овој интерфејс',
+'revdelete-suppress'          => 'Сокриј податоци од Систем оператори и други корисници',
 'revdelete-hide-image'        => 'Сокриј содржина на податотека',
-'revdelete-log'               => 'Коментар за лог:',
-'revdelete-submit'            => 'Примени на следните верзии:',
-'revdelete-logentry'          => 'променет приказ на верзија за [[$1]]',
+'revdelete-unsuppress'        => 'Отстрани ограничувања на обновени ревизии',
+'revdelete-log'               => 'Опис на дневнички запис:',
+'revdelete-submit'            => 'Примени на селектирани ревизии',
+'revdelete-logentry'          => 'променето видливост на ревизија на [[$1]]',
 'logdelete-logentry'          => 'променета видливост на настан од [[$1]]',
-'logdelete-success'           => 'Успешно поставена видливост на настанот.',
+'revdelete-success'           => "'''Успешно нагодена видливост на ревизија.'''",
+'logdelete-success'           => "'''Успешно нагодување на дневник на видливост.'''",
+'revdel-restore'              => 'Промена на видливост',
 'pagehist'                    => 'Историја на страница',
 'deletedhist'                 => 'Историја на бришења',
 'revdelete-content'           => 'содржина',
-'revdelete-summary'           => 'опис на уредувањето',
+'revdelete-summary'           => 'опис на уредување',
 'revdelete-uname'             => 'корисничко име',
-'revdelete-restricted'        => 'применети ограничувања на администратори',
-'revdelete-unrestricted'      => 'отстранети ограничувања за администратори',
+'revdelete-restricted'        => 'применети ограничувања на систем оператори',
+'revdelete-unrestricted'      => 'отстранети ограничувања за систем оператори',
 'revdelete-hid'               => 'сокриј $1',
 'revdelete-unhid'             => 'прикажи $1',
 'revdelete-log-message'       => '$1 од $2 {{PLURAL:$2|ревизија|ревизии}}',
 'logdelete-log-message'       => '$1 од $2 {{PLURAL:$2|настан|настани}}',
 
 # Suppression log
-'suppressionlog' => 'Дневник на сокривања',
+'suppressionlog'     => 'Дневник на сокривања',
+'suppressionlogtext' => 'Подолу е листата на бришења и блокирања каде има и содржини скриени и за администраторите.<br />
+Види [[Special:IPBlockList|Листа на блокирани IP адреси]] за листа на моментални банирања и блокирања.',
 
 # History merging
 'mergehistory'                     => 'Спојување на истории на страница',
+'mergehistory-header'              => 'Оваа страница овозможува спојување на ревизии на изворна страница во нова (друга) страница.
+Претходно проверете дека таа промена ќе го сочува историскиот континуитетот на страницата.',
 'mergehistory-box'                 => 'Спојување на ревизии на две страници:',
 'mergehistory-from'                => 'Изворна страница:',
 'mergehistory-into'                => 'Целна страница:',
@@ -1049,6 +1119,8 @@ $2',
 'diff-big'                => "'''големо'''",
 'diff-del'                => "'''избришано'''",
 'diff-tt'                 => "'''фиксна ширина'''",
+'diff-sub'                => "'''подпис'''",
+'diff-sup'                => "'''надпис'''",
 'diff-strike'             => "'''прецртано'''",
 
 # Search results
@@ -1070,12 +1142,12 @@ $2',
 'viewprevnext'                     => 'Види ($1) ($2) ($3).',
 'searchmenu-legend'                => 'Опции за пребарување',
 'searchmenu-exists'                => "'''Постои страница именувана како \"[[\$1]]\" на ова вики'''",
-'searchmenu-new'                   => "'''[[\$1|Креирај]] ја страницата \"[[\$1]]\" на ова вики!'''",
+'searchmenu-new'                   => "Креирај ја страницата ''[[:$1]]'' на ова вики!'''",
 'searchhelp-url'                   => 'Help:Содржина',
-'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Прелистување на страниците со овој префикс]]',
-'searchprofile-articles'           => 'Страници',
-'searchprofile-articles-and-proj'  => 'Страници & Проект',
-'searchprofile-project'            => 'Проект',
+'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Прелистување на страници со овој префикс]]',
+'searchprofile-articles'           => 'Статии',
+'searchprofile-articles-and-proj'  => 'Статии & проектни страници',
+'searchprofile-project'            => 'Проектни страници',
 'searchprofile-images'             => 'Податотеки',
 'searchprofile-everything'         => 'Се',
 'searchprofile-advanced'           => 'Напредно',
@@ -1085,7 +1157,7 @@ $2',
 'searchprofile-everything-tooltip' => 'Пребарај низ сета содржина (вклучително и страници за разговор)',
 'searchprofile-advanced-tooltip'   => 'Пребарај во посебни именски простори',
 'prefs-search-nsdefault'           => 'Пребарување по основно:',
-'prefs-search-nscustom'            => 'Пребарај специјални именски простори:',
+'prefs-search-nscustom'            => 'Пребарај посебни именски простори:',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 збор|$2 збора}})',
 'search-result-score'              => 'Релевантност: $1%',
 'search-redirect'                  => '(пренасочување $1)',
@@ -1103,8 +1175,9 @@ $2',
 'showingresults'                   => "Подолу {{PLURAL:$1|е прикажан '''1''' резултат|се прикажани '''$1''' резултати}} почнувајќи од #'''$2'''.",
 'showingresultsnum'                => "Подолу {{PLURAL:$3|е прикажан '''1''' резултат|се прикажани '''$3''' резултати}} почнувајќи од '''$2'''.",
 'showingresultstotal'              => "Подолу {{PLURAL:$4|е прикажан '''$1''' резултат|се прикажани '''$1 - $2''' од '''$3''' резултати}}",
-'nonefound'                        => "'''Напомена''': По основно, пребарувањето се врши само низ некои именски простори. 
-Обидете се со додавање на префиксот ''се:'' за да пребарувате низ сите содржини (вклучувајќи страници за разговор, шаблони, итн) или користете го бараниот именски простор како префикс.",
+'nonefound'                        => "'''Напомена''': Само некои именски простори се пребаруваат по основно. 
+Обидете се со додавање на префиксот ''all:'' за да пребарувате низ сите содржини (вклучувајќи страници за разговор, шаблони, итн) или користете го бараниот именски простор како префикс.",
+'search-nonefound'                 => 'Нема резултати кои го задоволуваат упитот.',
 'powersearch'                      => 'Напредно пребарување',
 'powersearch-legend'               => 'Напредно пребарување',
 'powersearch-ns'                   => 'Пребарување во именски простори:',
@@ -1116,69 +1189,74 @@ $2',
 Да напоменеме дека нивното индексирање на {{SITENAME}} содржините може да биде застарено.',
 
 # Preferences page
-'preferences'              => 'Нагодувања',
-'mypreferences'            => 'мои нагодувања',
-'prefs-edits'              => 'Број на уредувања:',
-'prefsnologin'             => 'Не сте најавени',
-'prefsnologintext'         => 'Мора да бидете <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} најавени]</span> за промена на вашите кориснички нагодувања.',
-'prefsreset'               => 'Воспоставени се стандардните нагодувања.',
-'qbsettings'               => 'Лента за брз избор',
-'qbsettings-none'          => 'Без мени',
-'qbsettings-fixedleft'     => 'Фиксирано лево',
-'qbsettings-fixedright'    => 'Фиксирано десно',
-'qbsettings-floatingleft'  => 'Пловечко лево',
-'qbsettings-floatingright' => 'Пловечки десно',
-'changepassword'           => 'Промени лозинка',
-'skin'                     => 'Маска',
-'skin-preview'             => 'Прегледај',
-'math'                     => 'Математика',
-'dateformat'               => 'Формат на датум',
-'datedefault'              => 'Небитно',
-'datetime'                 => 'Датум и време',
-'math_failure'             => 'Неможам да парсирам',
-'math_unknown_error'       => 'непозната грешка',
-'math_unknown_function'    => 'непозната функција',
-'math_lexing_error'        => 'лексичка грешка',
-'math_syntax_error'        => 'синтаксна грешка',
-'math_image_error'         => 'неуспешна PNG конверзија',
-'math_bad_tmpdir'          => 'Невозможно е создавањето на привремен директориум за математичките операции',
-'math_bad_output'          => 'Невозможно е создавањето на аутпут директориум за математичките операции',
-'math_notexvc'             => 'Недостасува извршната податотека texvc; 
-погледнете math/README за подесувања.',
-'prefs-personal'           => 'Кориснички профил',
-'prefs-rc'                 => 'Скорешни промени',
-'prefs-watchlist'          => 'Листа на набљудувања',
-'prefs-watchlist-days'     => 'Број на денови прикажани во листата на набљудувања:',
-'prefs-watchlist-edits'    => 'Максимален број на промени прикажани во проширената листа на набљудувања:',
-'prefs-misc'               => 'Разно',
-'saveprefs'                => 'Зачувај нагодувања',
-'resetprefs'               => 'Избриши незачувани измени',
-'oldpassword'              => 'Стара лозинка:',
-'newpassword'              => 'Нова лозинка:',
-'retypenew'                => 'Повторно внеси нова лозинка:',
-'textboxsize'              => 'Уредување',
-'rows'                     => 'Редови:',
-'columns'                  => 'Колони:',
-'searchresultshead'        => 'Пребарување',
-'resultsperpage'           => 'Резултати по страница:',
-'contextlines'             => 'Линии по резултат:',
-'contextchars'             => 'Карактери од содржината по линија',
-'stub-threshold'           => 'Минимална големина за <a href="#" class="stub">никулци</a> (бајти):',
-'recentchangesdays'        => 'Денови за прикажување во скорешни промени:',
-'recentchangescount'       => 'Број на уредувања кои ќе се прикажуват во скорешни промени, историја и дневници:',
-'savedprefs'               => 'Вашите нагодувања се зачувани.',
-'timezonelegend'           => 'Временска зона',
-'timezonetext'             => '¹Број на часови за колку се разликува вашето локално време од серверското време (UTC).',
-'localtime'                => 'Локално време',
-'timezoneoffset'           => 'Отстапка¹',
-'servertime'               => 'Серверско време',
-'guesstimezone'            => 'Пополни од веб прелистувачот',
-'allowemail'               => 'Дозволи е-пошта од други корисници',
-'prefs-searchoptions'      => 'Опции за пребарување',
-'prefs-namespaces'         => 'Именски простори',
-'defaultns'                => 'Пребарувај во овие именски простори по основно:',
-'default'                  => 'по основно',
-'files'                    => 'Податотеки',
+'preferences'               => 'Нагодувања',
+'mypreferences'             => 'Мои нагодувања',
+'prefs-edits'               => 'Број на уредувања:',
+'prefsnologin'              => 'Не сте најавени',
+'prefsnologintext'          => 'Мора да бидете <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} најавени]</span> за промена на вашите кориснички нагодувања.',
+'prefsreset'                => 'Воспоставени се стандардните нагодувања.',
+'qbsettings'                => 'Лента за брз избор',
+'qbsettings-none'           => 'Без мени',
+'qbsettings-fixedleft'      => 'Фиксирано лево',
+'qbsettings-fixedright'     => 'Фиксирано десно',
+'qbsettings-floatingleft'   => 'Пловечко лево',
+'qbsettings-floatingright'  => 'Пловечки десно',
+'changepassword'            => 'Промени лозинка',
+'skin'                      => 'Маска',
+'skin-preview'              => 'Прегледај',
+'math'                      => 'Математика',
+'dateformat'                => 'Формат на датум',
+'datedefault'               => 'Небитно',
+'datetime'                  => 'Датум и време',
+'math_failure'              => 'Неможам да парсирам',
+'math_unknown_error'        => 'непозната грешка',
+'math_unknown_function'     => 'непозната функција',
+'math_lexing_error'         => 'лексичка грешка',
+'math_syntax_error'         => 'синтаксна грешка',
+'math_image_error'          => 'неуспешна PNG конверзија',
+'math_bad_tmpdir'           => 'Невозможно е создавањето на привремен директориум за математичките операции',
+'math_bad_output'           => 'Невозможно е создавањето на аутпут директориум за математичките операции',
+'math_notexvc'              => 'Недостасува извршната податотека texvc; 
+погледнете math/README за нејзино нагодување.',
+'prefs-personal'            => 'Кориснички профил',
+'prefs-rc'                  => 'Скорешни промени',
+'prefs-watchlist'           => 'Листа на набљудувања',
+'prefs-watchlist-days'      => 'Број на денови прикажани во листата на набљудувања:',
+'prefs-watchlist-days-max'  => '(максимум 7 дена)',
+'prefs-watchlist-edits'     => 'Максимален број на промени прикажани во проширената листа на набљудувања:',
+'prefs-watchlist-edits-max' => '(максимален број: 1000)',
+'prefs-misc'                => 'Разно',
+'prefs-resetpass'           => 'Смени лозинка',
+'saveprefs'                 => 'Зачувај нагодувања',
+'resetprefs'                => 'Избриши незачувани измени',
+'textboxsize'               => 'Уредување',
+'prefs-edit-boxsize'        => 'Големина на прозорецот за уредување.',
+'rows'                      => 'Редови:',
+'columns'                   => 'Колони:',
+'searchresultshead'         => 'Пребарување',
+'resultsperpage'            => 'Резултати по страница:',
+'contextlines'              => 'Линии по резултат:',
+'contextchars'              => 'Карактери од содржината по линија',
+'stub-threshold'            => 'Минимална големина за <a href="#" class="stub">никулци</a> (бајти):',
+'recentchangesdays'         => 'Денови за прикажување во скорешни промени:',
+'recentchangesdays-max'     => '(максимум $1 {{PLURAL:$1|ден|денови}})',
+'recentchangescount'        => 'Број на уредувања кои ќе се прикажуват во скорешни промени, историја и дневници:',
+'savedprefs'                => 'Вашите нагодувања се зачувани.',
+'timezonelegend'            => 'Временска зона',
+'timezonetext'              => '¹Број на часови за колку се разликува вашето локално време од серверското време (UTC).',
+'localtime'                 => 'Локално време:',
+'timezoneselect'            => 'Временска зона:',
+'timezoneuseserverdefault'  => 'Користи серверско време',
+'timezoneuseoffset'         => 'Друго (наведи отстапување)',
+'timezoneoffset'            => 'Отстапка¹:',
+'servertime'                => 'Серверско време:',
+'guesstimezone'             => 'Пополни од веб прелистувачот',
+'allowemail'                => 'Дозволи е-пошта од други корисници',
+'prefs-searchoptions'       => 'Опции за пребарување',
+'prefs-namespaces'          => 'Именски простори',
+'defaultns'                 => 'Пребарувај во овие именски простори по основно:',
+'default'                   => 'по основно',
+'files'                     => 'Податотеки',
 
 # User rights
 'userrights'                     => 'Управување со кориснички права', # Not used as normal message but as header for the special page itself
@@ -1231,12 +1309,15 @@ $2',
 'right-minoredit'            => 'Означување на уредувањата како ситни',
 'right-move'                 => 'Преместување страници',
 'right-move-subpages'        => 'Преместување страници со нивните подстраници',
+'right-move-rootuserpages'   => 'Преместување на основна корисничка страница',
+'right-movefile'             => 'Преместување на податотеки',
+'right-suppressredirect'     => 'Не прави пренасочување од старото име при преместување на страница',
 'right-upload'               => 'Подигнување податотеки',
 'right-reupload'             => 'Пребришување постоечка податотека',
-'right-upload_by_url'        => 'Подигни податотека од URL адреса',
+'right-upload_by_url'        => 'Подигнување податотека од URL адреса',
 'right-purge'                => 'Избриши серверски кеш за страницата без барање потврда за тоа',
 'right-autoconfirmed'        => 'Уредување на делумно заштитени страници',
-'right-bot'                  => 'Третирај како автоматски процес (бот)',
+'right-bot'                  => 'Третиран како автоматски процес',
 'right-delete'               => 'Бришење страници',
 'right-bigdelete'            => 'Бришење страници со долга историја',
 'right-deleterevision'       => 'Бришење и враќање на специфични ревизии на страници',
@@ -1253,6 +1334,11 @@ $2',
 'right-editprotected'        => 'Уредување на заштитени страници (без каскадна заштита)',
 'right-editinterface'        => 'Уредување на кориснички интерфејс',
 'right-editusercssjs'        => 'Уредување на CSS и JS податотеки на други корисници',
+'right-import'               => 'Увезување страници од други викија',
+'right-importupload'         => 'Увезување страници од подигната податотека',
+'right-patrol'               => 'Означи ги уредувањата на другите како проверени',
+'right-unwatchedpages'       => 'Прегледување на листа на ненабљудувани страници',
+'right-trackback'            => 'Потврдување на враќање',
 'right-mergehistory'         => 'Спојување на историите на страниците',
 'right-userrights'           => 'Уредување на сите кориснички права',
 'right-userrights-interwiki' => 'Уредување на кориснички права на корисници на други викија',
@@ -1265,36 +1351,44 @@ $2',
 'rightsnone'     => '(нема)',
 
 # Associated actions - in the sentence "You do not have permission to X"
-'action-read'             => 'читање на оваа страница',
-'action-edit'             => 'уредување на оваа страница',
-'action-createpage'       => 'креирање страници',
-'action-createtalk'       => 'креирање страници за разговор',
-'action-createaccount'    => 'креирање на оваа корисничка сметка',
-'action-minoredit'        => 'означување на ова уредување како ситно',
-'action-move'             => 'преместување на оваа страница',
-'action-move-subpages'    => 'преместување на оваа страница и нејзините подстраници',
-'action-upload'           => 'подигнување на оваа податотека',
-'action-reupload'         => 'пребришување на оваа постоечка податотека',
-'action-reupload-shared'  => 'пребришување на оваа податотека на заедничката ризница',
-'action-upload_by_url'    => 'подигнување на оваа податотека од URL адреса',
-'action-delete'           => 'бриши ја оваа страница',
-'action-deleterevision'   => 'бриши ја оваа ревизија',
-'action-deletedhistory'   => 'прегледај ја историјата на бришења за оваа страница',
-'action-browsearchive'    => 'барање на избришани страници',
-'action-undelete'         => 'обнови ја оваа страница',
-'action-suppressrevision' => 'прегледај ја и обновија оваа скриена ревизија',
-'action-suppressionlog'   => 'погледни го овој приватен дневник',
-'action-block'            => 'оневозможи го овој корисник да уредува',
-'action-protect'          => 'промени го нивото на заштита на оваа страница',
-'action-import'           => 'увези ја оваа страница од друго вики',
-'action-importupload'     => 'увези ја оваа страница од подигната податотека',
-'action-patrol'           => 'означи ги уредувањата на другите како проверени',
+'action-read'                 => 'читање на оваа страница',
+'action-edit'                 => 'уредување на оваа страница',
+'action-createpage'           => 'креирање страници',
+'action-createtalk'           => 'креирање страници за разговор',
+'action-createaccount'        => 'креирање на оваа корисничка сметка',
+'action-minoredit'            => 'означување на ова уредување како ситно',
+'action-move'                 => 'преместување на оваа страница',
+'action-move-subpages'        => 'преместување на оваа страница и нејзините подстраници',
+'action-move-rootuserpages'   => 'преместување на основна корисничка страница',
+'action-movefile'             => 'премести ја оваа податотека',
+'action-upload'               => 'подигнување на оваа податотека',
+'action-reupload'             => 'пребришување на оваа постоечка податотека',
+'action-reupload-shared'      => 'пребришување на оваа податотека на заедничката ризница',
+'action-upload_by_url'        => 'подигнување на оваа податотека од URL адреса',
+'action-delete'               => 'бриши ја оваа страница',
+'action-deleterevision'       => 'бриши ја оваа ревизија',
+'action-deletedhistory'       => 'прегледај ја историјата на бришења за оваа страница',
+'action-browsearchive'        => 'барање на избришани страници',
+'action-undelete'             => 'обнови ја оваа страница',
+'action-suppressrevision'     => 'прегледај ја и обновија оваа скриена ревизија',
+'action-suppressionlog'       => 'погледни го овој приватен дневник',
+'action-block'                => 'оневозможи го овој корисник да уредува',
+'action-protect'              => 'промени го нивото на заштита на оваа страница',
+'action-import'               => 'увези ја оваа страница од друго вики',
+'action-importupload'         => 'увези ја оваа страница од подигната податотека',
+'action-patrol'               => 'означи ги уредувањата на другите како проверени',
+'action-unwatchedpages'       => 'преглед на листа на ненабљудувани страници',
+'action-trackback'            => 'потврда на враќање',
+'action-mergehistory'         => 'спојување на историјата на оваа страница',
+'action-userrights'           => 'уредување на сите кориснички права',
+'action-userrights-interwiki' => 'уредување на кориснички права на корисници на други викија',
+'action-siteadmin'            => 'заклучување или отклучување на базата на податоци',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|промена|промени}}',
 'recentchanges'                     => 'Скорешни промени',
 'recentchanges-legend'              => 'Опции за скорешни промени',
-'recentchangestext'                 => 'Забележете ги најновите промени на викито на оваа страница.',
+'recentchangestext'                 => 'Следење на последните промени на викито на оваа страница.',
 'recentchanges-feed-description'    => 'Следење на скорешните промени на викито во овој фид.',
 'rcnote'                            => "Долу {{PLURAL:$1|е прикажана '''1''' промена|се прикажани скорешните '''$1''' промени}} {{PLURAL:$2|денес|во последниве '''$2''' дена}}, почнувајќи од $5, $4.",
 'rcnotefrom'                        => 'Подолу се промените од <b>$2</b> (се прикажуваат до <b>$1</b>).',
@@ -1343,11 +1437,11 @@ $2',
 'upload_directory_read_only'  => 'Веб серверот не може да запишува во именикот за подигнување ($1).',
 'uploaderror'                 => 'Грешка во подигнувањето',
 'uploadtext'                  => "Користете го долниот формулар за подигнување на податотеки.
-За преглед или пребарување на претходно подигнати податотеки погледнете ја [[Special:ImageList|листата на подигнати податотеки]], повторните подигнувања се ажурирани во [[Special:Log|дневникот на подигнувања]], бришењата се ажурирани во [[Special:Log/delete|дневникот на бришења]].
+За преглед или пребарување на претходно подигнати податотеки погледнете ја [[Special:FileList|листата на подигнати податотеки]], повторните подигнувања се ажурирани во [[Special:Log|дневникот на подигнувања]], бришењата се ажурирани во [[Special:Log/delete|дневникот на бришења]].
 
 За да вклучите слика во страница, користете врска во некој од следниве формати:
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki></tt>''' за верзија на сликата во целосна големина
-* '''<tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|200px|thumb|left|alt text]]</nowiki><tt>''' за верзија на сликата со големина од 200 пиксели рендерирана во соодветна кутија, со опис како што е наведено во '''alt text'''
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki></tt>''' за верзија на сликата во целосна големина
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|200px|thumb|left|alt text]]</nowiki><tt>''' за верзија на сликата со големина од 200 пиксели рендерирана во соодветна кутија, со опис како што е наведено во '''alt text'''
 * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki><tt>''' за директно поврзување со податотеката без нејзино прикажување",
 'upload-permitted'            => 'Дозволени типови на податотеки: $1.',
 'upload-preferred'            => 'Преферирани типови на податотеки: $1.',
@@ -1355,7 +1449,7 @@ $2',
 'uploadlog'                   => 'дневник на подигнувања',
 'uploadlogpage'               => 'Дневник на подигнувања',
 'uploadlogpagetext'           => 'Подолу е листа на најновите подигнувања на податотеки.
-Погледнете ја [[Special:NewImages|галеријата на нови податотеки]] за визуелен преглед.',
+Погледнете ја [[Special:NewFiles|галеријата на нови податотеки]] за визуелен преглед.',
 'filename'                    => 'Име на податотека',
 'filedesc'                    => 'Опис',
 'fileuploadsummary'           => 'Опис:',
@@ -1396,10 +1490,11 @@ $2',
 Ако ја имате оваа слика во оригинална големина, подигнете ја неа, во спротивно сменете го името на податотеката.',
 'fileexists-forbidden'        => 'Податотека со тоа име веќе постои.
 Ако и понатаму сакате да ја подигнете податотеката, ве молиме вратете се назад и подигнете ја оваа податотека под друго име.
-[[Image:$1|thumb|center|$1]]',
+[[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Податотека со ова име веќе постои во заедничката ризница.
-Ако и понатаму сакате да ја подигнете податотеката, ве молиме вратете се и повторно подигнете ја податотеката со ново име. [[Image:$1|thumb|center|$1]]',
+Ако и понатаму сакате да ја подигнете податотеката, ве молиме вратете се и повторно подигнете ја податотеката со ново име. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Оваа податотека е дупликат со {{PLURAL:$1|следнава податотека|следниве податотеки}}:',
+'file-deleted-duplicate'      => 'Податотека индентична со податотеката ([[$1]]) претходно била избришана. Треба да проверите во дневникот на бришења за оваа податотека пред повторно да ја подигнете.',
 'successfulupload'            => 'Успешно подигнување',
 'uploadwarning'               => 'Предупредување при подигнување',
 'savefile'                    => 'Зачувај податотека',
@@ -1463,20 +1558,21 @@ PICT # misc.
 'upload_source_url'  => ' (валидна, јавно достапна адреса (URL))',
 'upload_source_file' => '(податотека на вашиот компјутер)',
 
-# Special:ImageList
-'imagelist-summary'     => 'Оваа специјална страница ги покажува сите подигнати податотеки.
+# Special:ListFiles
+'listfiles-summary'     => 'Оваа специјална страница ги покажува сите подигнати податотеки.
 По основно последно подигнатите страници се прикажани на почеток од листата.
 Со клик на насловот на колоната може да се промени подредувањето.',
-'imagelist_search_for'  => 'Побарај име на медија:',
+'listfiles_search_for'  => 'Побарај име на медија:',
 'imgfile'               => 'податотека',
-'imagelist'             => 'Листа на слики',
-'imagelist_date'        => 'Датум',
-'imagelist_name'        => 'Име',
-'imagelist_user'        => 'Корисник',
-'imagelist_size'        => 'Големина (бајти)',
-'imagelist_description' => 'Опис',
+'listfiles'             => 'Листа на слики',
+'listfiles_date'        => 'Датум',
+'listfiles_name'        => 'Име',
+'listfiles_user'        => 'Корисник',
+'listfiles_size'        => 'Големина (бајти)',
+'listfiles_description' => 'Опис',
+'listfiles_count'       => 'Верзии',
 
-# Image description page
+# File description page
 'filehist'                       => 'Историја на податотеката',
 'filehist-help'                  => 'Кликнете на датум/време за да ја видите податотеката како изгледала тогаш.',
 'filehist-deleteall'             => 'бриши се',
@@ -1569,30 +1665,30 @@ PICT # misc.
 'randomredirect-nopages' => 'Нема пренасочувања во именскиот простор "$1".',
 
 # Statistics
-'statistics'                      => 'Статистики',
-'statistics-header-pages'         => 'Статистики за страници',
-'statistics-header-edits'         => 'Статистики на уредувања',
-'statistics-header-views'         => 'Статистики на посети',
-'statistics-header-users'         => 'Статистики за корисници',
-'statistics-articles'             => 'Статии',
-'statistics-pages'                => 'Страници',
-'statistics-pages-tooltip'        => 'Сите страници на викито, вклучувајќи и страници за разговор, пренасочувања, и.т.н.',
-'statistics-files'                => 'Подигнати податотеки',
-'statistics-edits'                => 'Број на уредувања од започнувањето на {{SITENAME}}',
-'statistics-edits-average'        => 'Просечен број на уредувања по страница',
-'statistics-views-total'          => 'Вкупно посети',
-'statistics-views-peredit'        => 'Посети по уредување',
-'statistics-jobqueue'             => 'Должина на [http://www.mediawiki.org/wiki/Manual:Job_queue редица на чекање]',
-'statistics-users'                => 'Регистрирани [[Special:ListUsers|корисници]]',
-'statistics-users-active'         => 'Активни корисници',
-'statistics-users-active-tooltip' => 'Корисници кои имаат извршено некоја активност во последниот месец',
-'statistics-mostpopular'          => 'Најпосетувани страници',
+'statistics'                   => 'Статистики',
+'statistics-header-pages'      => 'Статистики за страници',
+'statistics-header-edits'      => 'Статистики на уредувања',
+'statistics-header-views'      => 'Статистики на посети',
+'statistics-header-users'      => 'Статистики за корисници',
+'statistics-articles'          => 'Статии',
+'statistics-pages'             => 'Страници',
+'statistics-pages-desc'        => 'Сите страници на викито, вклучувајќи и страници за разговор, пренасочувања, и.т.н.',
+'statistics-files'             => 'Подигнати податотеки',
+'statistics-edits'             => 'Број на уредувања од започнувањето на {{SITENAME}}',
+'statistics-edits-average'     => 'Просечен број на уредувања по страница',
+'statistics-views-total'       => 'Вкупно посети',
+'statistics-views-peredit'     => 'Посети по уредување',
+'statistics-jobqueue'          => 'Должина на [http://www.mediawiki.org/wiki/Manual:Job_queue редица на чекање]',
+'statistics-users'             => 'Регистрирани [[Special:ListUsers|корисници]]',
+'statistics-users-active'      => 'Активни корисници',
+'statistics-users-active-desc' => 'Корисници кои имаат извршено некоја акција во {{PLURAL:$1|претходниот ден|претходните $1 дена}}',
+'statistics-mostpopular'       => 'Најпосетувани страници',
 
 'disambiguations'      => 'Страници за појаснување',
-'disambiguationspage'  => 'Template:Врски до страници за појаснување',
-'disambiguations-text' => "Следните страници покажуваат до '''страница за појаснување'''.
-Тие треба да покажуваат кон соодветната тема.<br />
-Страница се третира како појаснувачка ако користи шаблон кој е наведен во [[MediaWiki:Disambiguationspage]]",
+'disambiguationspage'  => 'Template:Појаснување',
+'disambiguations-text' => "Следните страници имаат врски кои водат до '''страница за појаснување'''.
+Наместо тоа тие треба да водат до соодветната тема.<br />
+Страница се третира како страница за појаснување ако таа го користи шаблонот кој е наведен [[MediaWiki:Disambiguationspage|тука]]",
 
 'doubleredirects'            => 'Двојни пренасочувања',
 'doubleredirectstext'        => 'Секој ред содржи врски кон првото и второто пренасочување, којшто обично ја посочува <i>вистинската</i> целна страница кон кое првото пренасочување би требало да насочува.',
@@ -1604,9 +1700,10 @@ PICT # misc.
 'brokenredirects-edit'   => '(уреди)',
 'brokenredirects-delete' => '(бриши)',
 
-'withoutinterwiki'        => 'Страници без интервики (јазични) врски',
-'withoutinterwiki-legend' => 'Префикс',
-'withoutinterwiki-submit' => 'Прикажи',
+'withoutinterwiki'         => 'Страници без интервики (јазични) врски',
+'withoutinterwiki-summary' => 'Следните страници немаат врски до други јазични верзии.',
+'withoutinterwiki-legend'  => 'Префикс',
+'withoutinterwiki-submit'  => 'Прикажи',
 
 'fewestrevisions' => 'Статии со најмалку ревизии',
 
@@ -1635,14 +1732,15 @@ PICT # misc.
 'mostlinkedcategories'    => 'Најмногу врски до категории',
 'mostlinkedtemplates'     => 'Најмногу врски кон шаблони',
 'mostcategories'          => 'Статии со најмногу категории',
-'mostimages'              => 'Најмногу поврзувања до податоци',
+'mostimages'              => 'Најмногу врски до податотеки',
 'mostrevisions'           => 'Статии со најмногу верзии',
-'prefixindex'             => 'Список на префикси',
+'prefixindex'             => 'Список на страници по префикс',
 'shortpages'              => 'Кратки страници',
 'longpages'               => 'Долги страници',
 'deadendpages'            => 'Ќорсокак страници',
 'deadendpagestext'        => 'Следните страници немаат врски кон ниту една друга страница на ова вики.',
 'protectedpages'          => 'Заштитени страници',
+'protectedpages-indef'    => 'Само бесконечни заштити',
 'protectedpages-cascade'  => 'Само каскадни заштити',
 'protectedpagestext'      => 'Следните страници се заштитени во поглед на преместување и уредување',
 'protectedpagesempty'     => 'Во моментов нема заштитени страници со параметрите кои ги зададовте.',
@@ -1661,15 +1759,19 @@ PICT # misc.
 'unusedcategoriestext'    => 'Следните категории постојат и покрај тоа што ниедна статија и категорија не ги користи.',
 'notargettitle'           => 'Нема цел',
 'notargettext'            => 'Не одредивте целна страница или корисник на кој би се применила функцијата.',
+'nopagetitle'             => 'Не постои таков наслов',
+'nopagetext'              => 'Целната страница која ја наведовте не постои.',
 'pager-newer-n'           => '{{PLURAL:$1|понова 1|понови $1}}',
 'pager-older-n'           => '{{PLURAL:$1|постар 1|постари $1}}',
 'suppress'                => 'Надзор',
 
 # Book sources
-'booksources'      => 'Печатени извори',
-'booksources-go'   => 'Оди',
-'booksources-text' => 'Ова е листа на врски кон други сајтови кои продаваат нови и користени книги, и кои може
+'booksources'               => 'Печатени извори',
+'booksources-search-legend' => 'Пребарување на извори за книга',
+'booksources-go'            => 'Оди',
+'booksources-text'          => 'Ова е листа на врски кон други сајтови кои продаваат нови и користени книги, и кои може
 да имаат повеќе информации за книгите кои ги баравте:',
+'booksources-invalid-isbn'  => 'Наведениот ISBN код изгледа не е валидно запишан; проверете да не настанала некоја грешка при копирање од оригиналниот извор.',
 
 # Special:Log
 'specialloguserlabel'  => 'Корисник:',
@@ -1678,7 +1780,7 @@ PICT # misc.
 'all-logs-page'        => 'Сите дневници',
 'alllogstext'          => 'Комбиниран приказ на сите расположиви дневници на {{SITENAME}}.
 Изберете соодветен дневник од предложената листа, корисничко име или страница (се прави разлика помеѓу големи и мали букви).',
-'logempty'             => 'Нема одговарачки записи во дневникот.',
+'logempty'             => 'Нема соодветни записи во дневникот.',
 'log-title-wildcard'   => 'Пребарај наслови кои почнуваат со овој текст',
 
 # Special:AllPages
@@ -1748,27 +1850,29 @@ PICT # misc.
 'listgrouprights-removegroup-all' => 'Може да ги брише сите групи',
 
 # E-mail user
-'mailnologin'     => 'Нема адреса за праќање',
-'mailnologintext' => 'Мора да бидете [[Special:UserLogin|најавени]] и да имате валидна е-поштенска адреса во вашите [[Special:Preferences|нагодувања]] за да може да праќате е-пошта до други корисници.',
-'emailuser'       => 'Прати е-пошта до овој корисник',
-'emailpage'       => 'Е-пошта до корисник',
-'emailpagetext'   => 'Можете да го користите следниов формулар за праќање на е-поштенска порака до овој корисник.
+'mailnologin'      => 'Нема адреса за праќање',
+'mailnologintext'  => 'Мора да бидете [[Special:UserLogin|најавени]] и да имате валидна е-поштенска адреса во вашите [[Special:Preferences|нагодувања]] за да може да праќате е-пошта до други корисници.',
+'emailuser'        => 'Прати е-пошта до овој корисник',
+'emailpage'        => 'Е-пошта до корисник',
+'emailpagetext'    => 'Можете да го користите следниов формулар за праќање на е-поштенска порака до овој корисник.
 Е-поштенската адреса која ја имате наведено во [[Special:Preferences|вашите нагодувања]] ќе се прикаже во "Од" полето на е-пораката, со што примачот ќе може да ви одговори директно вам.',
-'usermailererror' => 'Настана следната грешка при праќање е-пошта:',
-'defemailsubject' => '{{SITENAME}} е-пошта',
-'noemailtitle'    => 'Нема е-поштенска адреса',
-'noemailtext'     => 'Овој корисник нема наведено валидна е-поштенска адреса, или избрал да не прима е-пошта од други корисници.',
-'email-legend'    => 'Праќање на е-пошта до друг {{SITENAME}} корисник',
-'emailfrom'       => 'Од:',
-'emailto'         => 'До:',
-'emailsubject'    => 'Предмет:',
-'emailmessage'    => 'Порака:',
-'emailsend'       => 'Прати',
-'emailccme'       => 'Прати ми копија од пораката по е-пошта.',
-'emailccsubject'  => 'Копија од вашата порака до $1: $2',
-'emailsent'       => 'Е-поштата е пратена',
-'emailsenttext'   => 'Вашата е-пошта е пратена.',
-'emailuserfooter' => 'Оваа е-порака беше пратена од $1 до $2 со помош на функцијата Е-пошта на {{SITENAME}}.',
+'usermailererror'  => 'Настана следната грешка при праќање е-пошта:',
+'defemailsubject'  => '{{SITENAME}} е-пошта',
+'noemailtitle'     => 'Нема е-поштенска адреса',
+'noemailtext'      => 'Овој корисник нема наведено валидна е-поштенска адреса.',
+'nowikiemailtitle' => 'Не е допуштено користење на е-пошта',
+'nowikiemailtext'  => 'Овој корисник избрал да не прима е-пошта од други корисници.',
+'email-legend'     => 'Праќање на е-пошта до друг {{SITENAME}} корисник',
+'emailfrom'        => 'Од:',
+'emailto'          => 'До:',
+'emailsubject'     => 'Предмет:',
+'emailmessage'     => 'Порака:',
+'emailsend'        => 'Прати',
+'emailccme'        => 'Прати ми копија од пораката по е-пошта.',
+'emailccsubject'   => 'Копија од вашата порака до $1: $2',
+'emailsent'        => 'Е-поштата е пратена',
+'emailsenttext'    => 'Вашата е-пошта е пратена.',
+'emailuserfooter'  => 'Оваа е-порака беше пратена од $1 до $2 со помош на функцијата Е-пошта на {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Мои набљудувања',
@@ -1814,9 +1918,9 @@ PICT # misc.
 'enotif_lastvisited'           => 'Видете $1 за сите промени од вашата последна посета.',
 'enotif_lastdiff'              => 'Видете $1 за да ја видите оваа промена.',
 'enotif_anon_editor'           => 'анонимен корисник $1',
-'enotif_body'                  => 'Драги $WATCHINGUSERNAME,
+'enotif_body'                  => '$WATCHINGUSERNAME,
 
-Страницата $PAGETITLE на {{SITENAME}} беше $CHANGEDORCREATED на $PAGEEDITDATE од страна на $PAGEEDITOR, видете $PAGETITLE_URL за сегашната верзија.
+Страницата за разговор на {{SITENAME}} беше променета на $PAGEEDITDATE од \'\'\'$PAGEEDITOR\'\'\', види $PAGETITLE_URL.
 
 $NEWPAGE
 
@@ -1826,16 +1930,14 @@ $NEWPAGE
 е-пошта: $PAGEEDITOR_EMAIL
 вики: $PAGEEDITOR_WIKI
 
-Веќе нема да има известувања за следните промени освен ако не ја посетите оваа страница. Исто така треба да ги ресетирате знаменцата за известување за сите ваши набљудувани страни во вашата листа на набљудувања.
+Веќе нема да има известувања за следните промени освен ако не ја посетите оваа страница. Исто така треба да ги ресетирате знаменцата за известување за сите ваши набљудувани страници во вашата листа на набљудувања.
 
-             Вашиот пријателски {{SITENAME}} систем за известување
+{{SITENAME}} систем за известување
 
 --
-За да ги промените нагодувањата на вашата листа на набљудувања, посетете
-{{fullurl:Special:Watchlist/edit}}
+За промена на нагодувањата на вашата листа на набљудувања, види {{fullurl:Special:Watchlist/edit}}
 
-Фидбек и помош:
-{{fullurl:Help:Содржина}}',
+Дополнителна помош: {{fullurl:Help:Содржина}}',
 
 # Delete
 'deletepage'             => 'Избриши страница',
@@ -1848,7 +1950,8 @@ $NEWPAGE
 'delete-backlink'        => '← $1',
 'delete-legend'          => 'Бриши',
 'historywarning'         => 'Предупредување: Страницата која сакате да ја избришете има историја:',
-'confirmdeletetext'      => 'На пат сте трајно да избришете страница или слика заедно со нејзината историја од базата на податоци. Ве молиме потврдете дека имате намера да го направите ова, дека ги разбирате последиците од тоа, дека го правите ова во согласност со [[Project:Википедија политика|нашата политика на однесување]].',
+'confirmdeletetext'      => 'На пат сте трајно да избришете страница заедно со нејзината историја. 
+Потврдете дека имате намера да го направите ова, дека ги разбирате последиците од тоа, дека го правите ова во согласност со [[{{MediaWiki:Policy-url}}|политиката]].',
 'actioncomplete'         => 'Дејството беше извршено',
 'deletedtext'            => '"<nowiki>$1</nowiki>" беше избришана. Видете $2 за досие на скорешните бришења.',
 'deletedarticle'         => 'избришано "[[$1]]"',
@@ -1893,10 +1996,12 @@ $NEWPAGE
 
 # Protect
 'protectlogpage'              => 'Дневник на заштитувања',
-'protectlogtext'              => 'Подолу е листа на отклучувања/заклучувања на страницата. Видете [[Project:Заштитена страница]] за повеќе информации.',
+'protectlogtext'              => 'Подолу е листа на отклучувања/заклучувања на страницата. 
+Погледни [[Special:ProtectedPages|листа на заштитени страници]] за листа на тековни заштити на страници.',
 'protectedarticle'            => 'заштитена "[[$1]]"',
 'modifiedarticleprotection'   => 'сменето ниво на заштита за „[[$1]]“',
 'unprotectedarticle'          => 'отстранета заштита на "[[$1]]"',
+'movedarticleprotection'      => 'преместени нагодувања за заштита од "[[$2]]" во "[[$1]]"',
 'protect-title'               => 'Заштитување "$1"',
 'prot_1movedto2'              => '[[$1]] преместена како [[$2]]',
 'protect-legend'              => 'Потврдете ја заштитата',
@@ -1934,7 +2039,7 @@ $NEWPAGE
 ** Бескорисна уредувачка војна
 ** Страница со зачестена посета',
 'protect-edit-reasonlist'     => 'Уреди причини за заштита',
-'protect-expiry-options'      => '2 часа:2 hours,1 ден:1 day,3 дена:3 days,1 недела:1 week,2 недели:2 weeks,1 месец:1 month,3 месеци:3 months,6 месеци:6 months,1 година:1 year,бесконечно:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 час: 1 hour,1 ден:1 day,1 недела:1 week,2 недели:2 weeks,1 месец:1 month,3 месеци:3 months,6 месеци:6 months,1 година:1 year,бесконечно:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'Пермисии:',
 'restriction-level'           => 'Ниво на заштита:',
 'minimum-size'                => 'Минимална големина',
@@ -1956,7 +2061,8 @@ $NEWPAGE
 'undelete'                   => 'Врати избришани страници',
 'undeletepage'               => 'Погледај и врати избришани страници',
 'viewdeletedpage'            => 'Прегледај ги избришаните страници',
-'undeletepagetext'           => 'Следните страници се избришани, но сеуште се во архивата и можат да бидат обновени. Архивата може периодично да се чисти.',
+'undeletepagetext'           => '{{PLURAL:$1|Следната страница била избришана но сеуште е во архивата и може да биде вратена.|Следните $1 страници биле избришани но сеуште се во архивата и можат да бидат вратени.}}
+Архивата може периодично да се чисти.',
 'undelete-fieldset-title'    => 'Обнови ревизии',
 'undeleteextrahelp'          => "За да вратите целосна историја на страница, одселектирајте ги сите полиња и притиснете на '''''Врати'''''.
 За да извршите селективно враќање, селектирајте ги полињата до соодветните ревизии за враќање и притиснете на '''''Врати'''''.
@@ -1967,6 +2073,9 @@ $NEWPAGE
 'undeletehistorynoadmin'     => 'Оваа статија беше избришана. Причината за бришењето е наведена подолу,
 заедно со информации за корисникот кој ја уредувал страницата пред бришењето. Целиот текст
 од избришаните верзии е достапен само за администраторите.',
+'undelete-revision'          => 'Избришана ревизија на $1 (од $4, во $5) уредувач $3:',
+'undeleterevision-missing'   => 'Грешна или непостоечка ревизија.
+Можеби имате лоша врска, ревизијата била обновена или избришана од архивата.',
 'undelete-nodiff'            => 'Не постои постара ревизија.',
 'undeletebtn'                => 'Обнови',
 'undeletelink'               => 'врати',
@@ -1993,6 +2102,8 @@ $NEWPAGE
 'undelete-error-long'        => 'Се појавија грешки при обновувањето на податотеката:
 
 $1',
+'undelete-show-file-confirm' => 'Дали навистина сакате да ја погледнете избришаната ревизија на податотеката "<nowiki>$1</nowiki>" од $2 на $3?',
+'undelete-show-file-submit'  => 'Да',
 
 # Namespace form on various pages
 'namespace'      => 'Именски простор:',
@@ -2068,6 +2179,7 @@ $1',
 'ipbhidename'                     => 'Сокриј го корисничкото име во дневникот на блокирања, активната листа на блокирања и листата на корисници',
 'ipbwatchuser'                    => 'Набљудувај ја корисничката страница и страницата за разговор на овој корисник',
 'ipballowusertalk'                => 'Овозможи овој корисник да ја уредува својата страница за разговор додека е блокиран',
+'ipb-change-block'                => 'Повторно блокирај го корисникот со овие нагодувања',
 'badipaddress'                    => 'Невалидна IP адреса',
 'blockipsuccesssub'               => 'Успешно блокирање',
 'blockipsuccesstext'              => '[[Special:Contributions/$1|$1]] беше блокиран.<br />
@@ -2102,13 +2214,15 @@ $1',
 'ipblocklist-no-results'          => 'Бараната IP адреса или корисничка сметка не е блокирана.',
 'blocklink'                       => 'блокирај',
 'unblocklink'                     => 'деблокирај',
+'change-blocklink'                => 'промена на блок',
 'contribslink'                    => 'придонеси',
 'autoblocker'                     => 'Автоматски сте блокирани бидејќи вашата IP адреса била скоро користена од "[[User:$1|$1]]".
 Причината за блокирање на $1 била: "$2"',
 'blocklogpage'                    => 'Дневник на блокирања',
 'blocklog-fulllog'                => 'Комплетен дневник на блокирања',
 'blocklogentry'                   => 'блокирано [[$1]] со рок на истекување до $2, $3',
-'blocklogtext'                    => 'Ова е дневник на блокирањата и деблокирањата, за овој корисник.
+'reblock-logentry'                => 'променети нагодувања за блокирање на [[$1]] со рок на истекување од $2 $3',
+'blocklogtext'                    => 'Ова е дневник на акции за блокирање и деблокирање, на овој корисник.
 Автоматски блокираните IP адреси не се наведени.
 Видете [[Special:IPBlockList|листата на блокирани IP адреси]] за листа на тековни забрани и блокирања.',
 'unblocklogentry'                 => 'деблокиран "$1"',
@@ -2139,6 +2253,7 @@ $1 е веќе блокиран. Дали сакате да направите �
 'sorbsreason'                     => 'Вашата IP адреса е запишана како отворен прокси во DNSBL кој го користи {{SITENAME}}..',
 'sorbs_create_account_reason'     => 'Вашата IP адреса е наведена како отворен прокси во DNSBL користена од {{SITENAME}}.
 Не можете да креирате корисничка сметка.',
+'cant-block-while-blocked'        => 'Не можете да блокирате други корисници додека и вие самите сте блокирани.',
 
 # Developer tools
 'lockdb'              => 'Заклучи база на податоци',
@@ -2162,10 +2277,10 @@ $1 е веќе блокиран. Дали сакате да направите �
 'databasenotlocked'   => 'Базата не е заклучена.',
 
 # Move page
-'move-page'                 => 'Премести $1',
-'move-page-backlink'        => '← $1',
-'move-page-legend'          => 'Премести страница',
-'movepagetext'              => "Со користењето на овој формулар можете да преименувате страница, преместувајќи ја целата нејзина историја под ново име. 
+'move-page'                    => 'Премести $1',
+'move-page-backlink'           => '← $1',
+'move-page-legend'             => 'Премести страница',
+'movepagetext'                 => "Со користењето на овој формулар можете да преименувате страница, преместувајќи ја целата нејзина историја под ново име. 
 Стариот наслов ќе стане страница за пренасочување кон новиот наслов.
 Автоматски можете да ги ажурирате пренасочувањата кои покажуваат кон првобитниот наслов.
 Ако не изберете автоматско ажурирање, проверете на [[Special:DoubleRedirects|двојни]] или [[Special:BrokenRedirects|прекинати пренасочувања]].
@@ -2176,55 +2291,61 @@ $1 е веќе блокиран. Дали сакате да направите �
 '''ПРЕДУПРЕДУВАЊЕ!'''
 Ова може да биде драстична и неочекувана промена за популарна страница;
 осигурајте се дека сте ги разбрале последиците од ова пред да продолжите.",
-'movepagetalktext'          => 'Соодветната страница за разговор, доколку постои, ќе биде автоматски преместена заедно со неа, освен ако:
+'movepagetalktext'             => 'Соодветната страница за разговор, доколку постои, ќе биде автоматски преместена заедно со неа, освен ако:
 *Непразна страница за разговор веќе постои за новиот наслов, или
 *Не сте го одштиклирале долното поле. 
 
 Во тие случаи, вие ќе треба да ја преместите или споите страницата рачно, доколку сакате.',
-'movearticle'               => 'Премести страница:',
-'movenologin'               => 'Не сте најавени',
-'movenologintext'           => 'Мора да бидете регистриран корисник и [[Special:UserLogin|најавен]] за да преместите страница.',
-'movenotallowed'            => 'Немате доволно привилегии за преместување на страници.',
-'newtitle'                  => 'Кон новиот наслов:',
-'move-watch'                => 'Набљудувај ја оваа страница',
-'movepagebtn'               => 'Премести страница',
-'pagemovedsub'              => 'Успешно преместување',
-'movepage-moved'            => '<big>\'\'\'"$1" беше преместена во "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'             => 'Страница со тоа име веќе постои или името што го избравте не е валидно.
-Ве молиме изберете друго име.',
-'cantmove-titleprotected'   => 'Не може да ја преместите страницата на таа локација бидејќи има забрана за креирање на страница со нов наслов како што наведовте.',
-'talkexists'                => "'''Самата страница беше преместена успешно, но страницата за разговор не можеше да биде преместена бидејќи веќе постои таква на новиот наслов. 
+'movearticle'                  => 'Премести страница:',
+'movenologin'                  => 'Не сте најавени',
+'movenologintext'              => 'Мора да бидете регистриран корисник и [[Special:UserLogin|најавен]] за да преместите страница.',
+'movenotallowed'               => 'Немате доволно привилегии за преместување на страници.',
+'movenotallowedfile'           => 'Немате пермисии за преместување податотеки.',
+'cant-move-user-page'          => 'Немате пермисии за преместување на основни кориснички страници (одделно од подстраници).',
+'newtitle'                     => 'Кон новиот наслов:',
+'move-watch'                   => 'Набљудувај ја оваа страница',
+'movepagebtn'                  => 'Премести страница',
+'pagemovedsub'                 => 'Успешно преместување',
+'movepage-moved'               => '<big>\'\'\'"$1" беше преместена во "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-noredirect'    => 'Креирањето на пренасочување е исклучено.',
+'articleexists'                => 'Страница со тоа име веќе постои или името што го избравте не е валидно.
+Изберете друго име.',
+'cantmove-titleprotected'      => 'Не може да ја преместите страницата на таа локација бидејќи има забрана за креирање на страница со нов наслов како што наведовте.',
+'talkexists'                   => "'''Самата страница беше преместена успешно, но страницата за разговор не можеше да биде преместена бидејќи веќе постои таква на новиот наслов. 
 Ве молиме спојте ги рачно.'''",
-'movedto'                   => 'преместена како',
-'movetalk'                  => 'Премести ја и страницата за разговор, ако е возможно.',
-'move-subpages'             => 'Премести ги сите подстраници, ако е можно',
-'move-talk-subpages'        => 'Премести ги сите подстраници и страници за разговор, ако е можно',
-'movepage-page-exists'      => 'Страницата $1 веќе постои и не може автоматски да биде заменета.',
-'movepage-page-moved'       => 'Страницата $1 беше преместена како $2.',
-'movepage-page-unmoved'     => 'Страницата $1 не може да биде преместена во $2.',
-'movepage-max-pages'        => 'Максимално $1 {{PLURAL:$1|страница|страници}} беа преместени, повеќе не може да бидат автоматски преместени.',
-'1movedto2'                 => '[[$1]] преместена како [[$2]]',
-'1movedto2_redir'           => '[[$1]] преместена како [[$2]] преку пренасочување',
-'movelogpage'               => 'Дневник на преместувања',
-'movelogpagetext'           => 'Подолу е листа на преместени страници.',
-'movereason'                => 'Причина:',
-'revertmove'                => 'врати',
-'delete_and_move'           => 'Избриши и премести',
-'delete_and_move_text'      => '==Потребно бришење== 
+'movedto'                      => 'преместена како',
+'movetalk'                     => 'Премести ја и страницата за разговор, ако е возможно.',
+'move-subpages'                => 'Премести ги сите подстраници, ако е можно',
+'move-talk-subpages'           => 'Премести ги сите подстраници и страници за разговор, ако е можно',
+'movepage-page-exists'         => 'Страницата $1 веќе постои и не може автоматски да биде заменета.',
+'movepage-page-moved'          => 'Страницата $1 беше преместена како $2.',
+'movepage-page-unmoved'        => 'Страницата $1 не може да биде преместена во $2.',
+'movepage-max-pages'           => 'Максимално $1 {{PLURAL:$1|страница|страници}} беа преместени, повеќе не може да бидат автоматски преместени.',
+'1movedto2'                    => '[[$1]] преместена како [[$2]]',
+'1movedto2_redir'              => '[[$1]] преместена како [[$2]] преку пренасочување',
+'move-redirect-suppressed'     => 'исклучено пренасочување',
+'movelogpage'                  => 'Дневник на преместувања',
+'movelogpagetext'              => 'Подолу е листа на преместени страници.',
+'movereason'                   => 'Причина:',
+'revertmove'                   => 'врати',
+'delete_and_move'              => 'Избриши и премести',
+'delete_and_move_text'         => '==Потребно бришење== 
 Целната статија "[[:$1]]" веќе постои. 
 Дали сакате да ја избришете за да ослободите место за преместувањето?',
-'delete_and_move_confirm'   => 'Да, избриши ја страницата',
-'delete_and_move_reason'    => 'Избришано за да се ослободи место за преместувањето',
-'selfmove'                  => 'Страницата не може да биде преместена бидејќи целниот наслов се совпаѓа со првобитниот наслов;
+'delete_and_move_confirm'      => 'Да, избриши ја страницата',
+'delete_and_move_reason'       => 'Избришано за да се ослободи место за преместувањето',
+'selfmove'                     => 'Страницата не може да биде преместена бидејќи целниот наслов се совпаѓа со првобитниот наслов;
 не може да се премести страница во самата себе.',
-'immobile-source-namespace' => 'Не може да се преместуваат страници во именскиот простор "$1"',
-'immobile-target-namespace' => 'Не може да се преместуваат страници во именскиот простор "$1"',
-'immobile-source-page'      => 'Оваа страница не може да се преместува.',
-'immobile-target-page'      => 'Не може да се премести под бараниот наслов.',
-'imagenocrossnamespace'     => 'Не може да се преместува податотека во именски простор кој не е наменет за податотеки',
-'imagetypemismatch'         => 'Новата наставка на податотеката не соодветствува на нејзиниот тип',
-'imageinvalidfilename'      => 'Целниот наслов на податотеката е невалиден',
-'fix-double-redirects'      => 'Ажурирајте ги сите пренасочувања кои покажуваат на првобитниот наслов',
+'immobile-source-namespace'    => 'Не може да се преместуваат страници во именскиот простор "$1"',
+'immobile-target-namespace'    => 'Не може да се преместуваат страници во именскиот простор "$1"',
+'immobile-target-namespace-iw' => 'Интервики врска не е валидна цел за преместување на страница.',
+'immobile-source-page'         => 'Оваа страница не може да се преместува.',
+'immobile-target-page'         => 'Не може да се премести под бараниот наслов.',
+'imagenocrossnamespace'        => 'Не може да се премести податотека во неподатотечен именски простор',
+'imagetypemismatch'            => 'Новата наставка на податотеката не соодветствува на нејзиниот тип',
+'imageinvalidfilename'         => 'Целниот наслов на податотеката е невалиден',
+'fix-double-redirects'         => 'Ажурирајте ги сите пренасочувања кои покажуваат на првобитниот наслов',
+'move-leave-redirect'          => 'Направи пренасочување',
 
 # Export
 'export'            => 'Извезување на страници',
@@ -2255,19 +2376,26 @@ $1 е веќе блокиран. Дали сакате да направите �
 'allmessagesmodified'       => 'Прикажи само изменети',
 
 # Thumbnails
-'thumbnail-more'  => 'Зголеми',
-'filemissing'     => 'Датотеката недостасува',
-'thumbnail_error' => 'Грешка во креирањето на мини-слика: $1',
+'thumbnail-more'           => 'Зголеми',
+'filemissing'              => 'Датотеката недостасува',
+'thumbnail_error'          => 'Грешка во креирањето на мини-слика: $1',
+'djvu_page_error'          => 'Недостапна DjVu страница',
+'djvu_no_xml'              => 'Не е можно да се излачи XML за DjVu податотеки',
+'thumbnail_invalid_params' => 'Погрешни параметри на мини слика',
+'thumbnail_dest_directory' => 'Не може да се креира целниот именик',
 
 # Special:Import
 'import'                     => 'Увезување на страници',
 'importinterwiki'            => 'Трансвики увезување',
-'import-interwiki-text'      => 'Изберете вики и наслов на страница за внесување.
-Времињата и авторите на ревизиите ќе се зачуваат.
-Сите трансвики акции за внесување се бележат во [[Special:Log/import|историјата за внесување]].',
+'import-interwiki-text'      => 'Избери вики и наслов на страница за увоз.
+Датумите и имињата на уредувачите ќе бидат зачувани.
+Сите трансвики акции за увоз се запишуваат во [[Special:Log/import|дневникот на увезувања]].',
+'import-interwiki-source'    => 'Извор вики/страница:',
 'import-interwiki-history'   => 'Копирај ги сите постари верзии за оваа страница',
-'import-interwiki-submit'    => 'Внеси',
-'import-interwiki-namespace' => 'Премести страница во именски простор:',
+'import-interwiki-submit'    => 'Увези',
+'import-interwiki-namespace' => 'Целен именски простор:',
+'import-upload-filename'     => 'Име на податотека:',
+'import-comment'             => 'Коментар:',
 'importtext'                 => 'Извезете ја податотеката од изворното вики со користење на [[Special:Export|алатката за извоз]].
 Зачувајте ја на вашиот диск и подигнете ја овде.',
 'importstart'                => 'Увоз на страници...',
@@ -2293,6 +2421,8 @@ $1 е веќе блокиран. Дали сакате да направите �
 'import-nonewrevisions'      => 'Сите ревизии се претходно увезени.',
 'xml-error-string'           => '$1 на линија $2, колона $3 (бајт $4): $5',
 'import-upload'              => 'Подигнување на XML податок',
+'import-token-mismatch'      => 'Губење на сесиските податоци. Обидете се повторно.',
+'import-invalid-interwiki'   => 'Не може да се увезува од специфицираното вики.',
 
 # Import log
 'importlogpage'                    => 'Дневник на увезувања',
@@ -2419,6 +2549,14 @@ $1 е веќе блокиран. Дали сакате да направите �
 'numauthors'     => 'Број на различни автори (страница): $1',
 'numtalkauthors' => 'Број на различни автори (страница за разговор): $1',
 
+# Skin names
+'skinname-standard'    => 'Класика',
+'skinname-nostalgia'   => 'Носталгија',
+'skinname-cologneblue' => 'Келнско сино',
+'skinname-monobook'    => 'Monobook',
+'skinname-myskin'      => 'Моја маска',
+'skinname-chick'       => 'Шик',
+
 # Math options
 'mw_math_png'    => 'Секогаш исцртувај во PNG',
 'mw_math_simple' => 'HTML ако е многу едноставно ако не во PNG',
@@ -2439,13 +2577,14 @@ $1 е веќе блокиран. Дали сакате да направите �
 'markedaspatrollederror-noautopatrol' => 'Не можете да ги означите своите промени како проверени.',
 
 # Patrol log
-'patrol-log-page'   => 'Дневник на патролирања',
-'patrol-log-header' => 'Ова е дневник на патролирани ревизии.',
-'patrol-log-line'   => 'означено $1 од $2 како патролирано $3',
-'patrol-log-auto'   => '(автоматски)',
+'patrol-log-page'      => 'Дневник на патролирања',
+'patrol-log-header'    => 'Ова е дневник на патролирани ревизии.',
+'patrol-log-line'      => 'означено $1 од $2 како патролирано $3',
+'patrol-log-auto'      => '(автоматски)',
+'log-show-hide-patrol' => '$1 дневник на патролирање',
 
 # Image deletion
-'deletedrevision'                 => 'Избришана стара верзија $1.',
+'deletedrevision'                 => 'Избришана стара ревизија $1.',
 'filedeleteerror-short'           => 'Грешка при бришење на податотека: $1',
 'filedeleteerror-long'            => 'Се појавија грешки при бришењето на податотеката:
 
@@ -2453,6 +2592,7 @@ $1',
 'filedelete-missing'              => 'Податотеката "$1" не може да се избрише, бидејќи не постои.',
 'filedelete-old-unregistered'     => 'Наведената ревизија на податотеката "$1" не се наоѓа во базата на податоци.',
 'filedelete-current-unregistered' => 'Наведената податотека "$1" не се наоѓа во базата на податоци.',
+'filedelete-archive-read-only'    => 'Во именикот за архивирање "$1" веб серверот не може да запишува.',
 
 # Browsing diffs
 'previousdiff' => '← Постаро уредување',
@@ -2474,7 +2614,7 @@ $1',
 'show-big-image'       => 'Вистинска големина',
 'show-big-image-thumb' => '<small>Големина на овој приказ: $1 × $2 пиксели</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Галерија на нови податотеки',
 'imagelisttext'         => "Следи листа на '''$1''' {{PLURAL:$1|податотека|податотеки}} подредени $2.",
 'newimages-summary'     => 'Оваа специјална страница ги покажува скоро подигнатите податотеки.',
@@ -2746,6 +2886,11 @@ Variants for Chinese language
 # Flash modes
 'exif-flash-fired-0'    => 'Блицот не засветил',
 'exif-flash-fired-1'    => 'Блицот засветил',
+'exif-flash-return-0'   => 'без употреба на функција на стробоскоп',
+'exif-flash-return-2'   => 'не е детектирано повратно светло од стробоскопот',
+'exif-flash-return-3'   => 'детектирано повратно светло од стробоскоп',
+'exif-flash-mode-1'     => 'активиран е блиц',
+'exif-flash-mode-2'     => 'исклучен блиц',
 'exif-flash-mode-3'     => 'автоматски начин',
 'exif-flash-function-1' => 'Нема функција за блиц',
 'exif-flash-redeye-1'   => 'режим на редукција на црвено-око',
@@ -2827,7 +2972,7 @@ Variants for Chinese language
 
 # External editor support
 'edit-externally'      => 'Уреди ја оваа податотека со надворешна апликација',
-'edit-externally-help' => 'Видете [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions] за повеќе информации.',
+'edit-externally-help' => '(Види [http://www.mediawiki.org/wiki/Manual:External_editors повеќе инстрикции] за нагодување).',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'сите',
@@ -2837,28 +2982,30 @@ Variants for Chinese language
 'monthsall'        => 'сите',
 
 # E-mail address confirmation
-'confirmemail'            => 'Потврда на е-поштенска адреса',
-'confirmemail_noemail'    => 'Немате наведено валидна е-поштенска адреса во вашите [[Special:Preferences|нагодувања]].',
-'confirmemail_text'       => '{{SITENAME}} бара да ја потврдите вашата е-поштенска адреса пред да ги користите можностите за е-пошта.
+'confirmemail'             => 'Потврда на е-поштенска адреса',
+'confirmemail_noemail'     => 'Немате наведено валидна е-поштенска адреса во вашите [[Special:Preferences|нагодувања]].',
+'confirmemail_text'        => '{{SITENAME}} бара да ја потврдите вашата е-поштенска адреса пред да ги користите можностите за е-пошта.
 Притиснете на копчето подолу за да пратите потврдувачка порака на вашата адреса.
 Во оваа порака е вклучена врска којашто содржи код;
 отворете ја врската во вашиот прелистувач за да потврдите дека вашата е-поштенска адреса е важечка.',
-'confirmemail_send'       => 'Прати код за потврда',
-'confirmemail_sent'       => 'Пораката за потврда е пратена.',
-'confirmemail_oncreate'   => 'Код за потврда е пратен на вашата е-поштенска адреса.
+'confirmemail_pending'     => '<div class="error">Код за потврда веќе е испратен по е-пошта до вас;
+ако скоро сте креирале корисничка сметка, потребно е да почекате неколку минути за да пристигне пораката пред да побарате нов код.</div>',
+'confirmemail_send'        => 'Прати код за потврда',
+'confirmemail_sent'        => 'Пораката за потврда е пратена.',
+'confirmemail_oncreate'    => 'Код за потврда е пратен на вашата е-поштенска адреса.
 Овој код не е потребен за најавување, но ќе треба да го внесете пред да
 ги вклучите е-поштенските можности во викито.',
-'confirmemail_sendfailed' => '{{SITENAME}} не може да ви прати порака за потврда.
+'confirmemail_sendfailed'  => '{{SITENAME}} не може да ви прати порака за потврда.
 Проверете дали е-поштенската адреса е правилно запишана.
 
 Вратена е следнава грешка: $1',
-'confirmemail_invalid'    => 'Неточен код за потврда. Кодот можеби е истечен.',
-'confirmemail_needlogin'  => 'Морате да $1 за да ја потврдите вашата е-поштенска адреса.',
-'confirmemail_success'    => 'Вашата е-поштенска адреса сега е потврдена. Можете да се најавите и да уживате во викито.',
-'confirmemail_loggedin'   => 'Вашата е-поштенска адреса сега е потврдена.',
-'confirmemail_error'      => 'Нешто тргна наопаку при снимањето на вашата потврда.',
-'confirmemail_subject'    => '{{SITENAME}} потврда за е-поштенска адреса',
-'confirmemail_body'       => 'Некој, веројатно вие, од IP адресата $1,
+'confirmemail_invalid'     => 'Неточен код за потврда. Кодот можеби е истечен.',
+'confirmemail_needlogin'   => 'Морате да $1 за да ја потврдите вашата е-поштенска адреса.',
+'confirmemail_success'     => 'Вашата е-поштенска адреса сега е потврдена. Можете да се најавите и да уживате во викито.',
+'confirmemail_loggedin'    => 'Вашата е-поштенска адреса сега е потврдена.',
+'confirmemail_error'       => 'Нешто тргна наопаку при снимањето на вашата потврда.',
+'confirmemail_subject'     => '{{SITENAME}} потврда за е-поштенска адреса',
+'confirmemail_body'        => 'Некој, веројатно вие, од IP адресата $1,
 ја регистрирал сметката „$2“ со оваа е-поштенска адреса на {{SITENAME}}.
 
 За да потврдите дека оваа сметка навистина ви припаѓа вам и да ја активирате
@@ -2872,33 +3019,36 @@ $3
 $5
 
 Овој код за потврда ќе истече на $4.',
+'confirmemail_invalidated' => 'Потврдата на е-поштенската адреса е откажана',
+'invalidateemail'          => 'Откажување на потврда на е-пошта',
 
 # Scary transclusion
-'scarytranscludedisabled' => '[Интервики вклучувањето е оневозможено]',
+'scarytranscludedisabled' => '[Интервики трансклудирање е оневозможено]',
 'scarytranscludefailed'   => '[Неуспешно превземање на шаблонот за $1]',
 'scarytranscludetoolong'  => '[Премногу долго URL]',
 
 # Trackbacks
 'trackbackbox'      => '<div id="mw_trackbacks">
-Враќања за оваа статија:<br />
+Враќања за оваа страница:<br />
 $1
 </div>',
-'trackbackremove'   => ' ([$1 Бришење])',
+'trackbackremove'   => ' ([$1 Бриши])',
 'trackbacklink'     => 'Враќање',
 'trackbackdeleteok' => 'Враќањето беше успешно избришано.',
 
 # Delete conflict
 'deletedwhileediting' => "'''Предупредување''': Оваа страница беше избришана откако почнавте со нејзино уредување!",
-'confirmrecreate'     => "Корисникот [[User:$1|$1]] ([[User talk:$1|talk]]) ја избриша оваа статија откако почнавте да ја уредувате заради:
+'confirmrecreate'     => "Корисникот [[User:$1|$1]] ([[User talk:$1|разговор]]) ја избриша оваа страница откако вие почнавте со уредување заради:
 : ''$2''
-Потврдете дека навистина сакате повторно да ја креирате оваа статија.",
-'recreate'            => 'Повторно направи',
+Потврдете дека навистина сакате повторно да ја креирате оваа страница.",
+'recreate'            => 'Повторно креирај',
 
-'unit-pixel' => 'п',
+'unit-pixel' => 'px',
 
 # action=purge
-'confirm_purge_button' => 'Да',
-'confirm-purge-top'    => 'Да се исчисти кешот на оваа страница?',
+'confirm_purge_button' => 'OK',
+'confirm-purge-top'    => 'Исчисти го кешот на оваа страница?',
+'confirm-purge-bottom' => 'Со оваа операција се чисти серверскиот кеш и се прикажува најновата верзија.',
 
 # Multipage image navigation
 'imgmultipageprev' => '&larr; претходна страница',
@@ -2970,22 +3120,30 @@ $1
 # Iranian month names
 'iranian-calendar-m1' => 'Farvardin',
 
+# Core parser functions
+'unknown_extension_tag' => 'Непознат приврзок на проширување "$1"',
+'duplicate-defaultsort' => 'Предупредување: Основниот клуч за подредување "$2" го поништува претходниот основен клуч за подредување "$1".',
+
 # Special:Version
-'version'                       => 'Верзија', # Not used as normal message but as header for the special page itself
-'version-extensions'            => 'Инсталирани проширувања',
-'version-specialpages'          => 'Специјални страници',
-'version-parserhooks'           => 'Парсер куки',
-'version-variables'             => 'Променливи',
-'version-other'                 => 'Друго',
-'version-hooks'                 => 'Куки',
-'version-parser-function-hooks' => 'Куки на парсер функција',
-'version-hook-name'             => 'Име на кука',
-'version-hook-subscribedby'     => 'Претплатено од',
-'version-version'               => 'Верзија',
-'version-license'               => 'Лиценца',
-'version-software'              => 'Инсталиран софтвер',
-'version-software-product'      => 'Производ',
-'version-software-version'      => 'Верзија',
+'version'                          => 'Верзија', # Not used as normal message but as header for the special page itself
+'version-extensions'               => 'Инсталирани проширувања',
+'version-specialpages'             => 'Специјални страници',
+'version-parserhooks'              => 'Парсер куки',
+'version-variables'                => 'Променливи',
+'version-other'                    => 'Друго',
+'version-mediahandlers'            => 'Медија ракувачи',
+'version-hooks'                    => 'Куки',
+'version-extension-functions'      => 'Функции на проширувањето',
+'version-parser-extensiontags'     => 'Приврзоци на парсер проширување',
+'version-parser-function-hooks'    => 'Куки на парсер функција',
+'version-skin-extension-functions' => 'Функции на проширување на изглед',
+'version-hook-name'                => 'Име на кука',
+'version-hook-subscribedby'        => 'Претплатено од',
+'version-version'                  => 'Верзија',
+'version-license'                  => 'Лиценца',
+'version-software'                 => 'Инсталиран софтвер',
+'version-software-product'         => 'Производ',
+'version-software-version'         => 'Верзија',
 
 # Special:FilePath
 'filepath'         => 'Патека до податотека',
@@ -2994,13 +3152,13 @@ $1
 'filepath-summary' => 'Оваа специјална страница го враќа целосниот пат на податотеката.
 Сликите се прикажани во оригинална големина, другите типови на податотеки се отвораат со соодветно асоцираните програми, директно.
 
-Внесете го името на податотеката без префиксот "{{ns:image}}:".',
+Внесете го името на податотеката без префиксот "{{ns:file}}:".',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Барање на дупликат податотеки',
 'fileduplicatesearch-summary'  => 'Пребарување на дуплирани податотеки врз база на нивната hash вредност.
 
-Внесете име на податотека без префиксот "{{ns:image}}:".',
+Внесете име на податотека без префиксот "{{ns:file}}:".',
 'fileduplicatesearch-legend'   => 'Барање на дупликат',
 'fileduplicatesearch-filename' => 'Име на податотека:',
 'fileduplicatesearch-submit'   => 'Барај',

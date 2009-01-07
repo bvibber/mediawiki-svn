@@ -646,7 +646,7 @@ END;
 		if($wgOut->isArticle() && $wgUser->getOption('editondblclick') &&
 		  $wgTitle->quickUserCan( 'edit' ) ) {
 			$s = $wgTitle->getFullURL( $this->editUrlOptions() );
-			$s = 'document.location = "' .wfEscapeJSString( $s ) .'";';
+			$s = 'document.location = "' .Xml::escapeJsString( $s ) .'";';
 			$a += array ('ondblclick' => $s);
 
 		}
@@ -942,7 +942,7 @@ END;
 		}
 
 		if ( $wgOut->isArticleRelated() ) {
-			if ( $wgTitle->getNamespace() == NS_IMAGE ) {
+			if ( $wgTitle->getNamespace() == NS_FILE ) {
 				$name = $wgTitle->getDBkey();
 				$image = wfFindFile( $wgTitle );
 				if( $image ) {
@@ -1013,7 +1013,7 @@ END;
 
 	function pageTitle() {
 		global $wgOut;
-		$s = '<h1 class="pagetitle">' . htmlspecialchars( $wgOut->getPageTitle() ) . '</h1>';
+		$s = '<h1 class="pagetitle">' . $wgOut->getPageTitle() . '</h1>';
 		return $s;
 	}
 
@@ -1023,7 +1023,7 @@ END;
 		$sub = $wgOut->getSubtitle();
 		if ( '' == $sub ) {
 			global $wgExtraSubtitle;
-			$sub = wfMsg( 'tagline' ) . $wgExtraSubtitle;
+			$sub = wfMsgExt( 'tagline', 'parsemag' ) . $wgExtraSubtitle;
 		}
 		$subpages = $this->subPageSubtitle();
 		$sub .= !empty($subpages)?"</p><p class='subpages'>$subpages":'';
@@ -1148,7 +1148,8 @@ END;
 		  . '<input type="text" id="searchInput'.$this->searchboxes.'" name="search" size="19" value="'
 		  . htmlspecialchars(substr($search,0,256)) . "\" />\n"
 		  . '<input type="submit" name="go" value="' . wfMsg ('searcharticle') . '" />&nbsp;'
-		  . '<input type="submit" name="fulltext" value="' . wfMsg ('searchbutton') . "\" />\n</form>";
+		  . '<input type="submit" name="fulltext" value="' . wfMsg ('searchbutton') . "\" />\n"
+		  . '<a href="' . $this->escapeSearchLink() . '" rel="search">' . wfMsg ('powersearch-legend') . '</a></form>';
 
 		// Ensure unique id's for search boxes made after the first
 		$this->searchboxes = $this->searchboxes == '' ? 2 : $this->searchboxes + 1;
@@ -1265,6 +1266,7 @@ END;
 		$oldid = $wgRequest->getVal( 'oldid' );
 		$diff = $wgRequest->getVal( 'diff' );
 		if ( ! $wgOut->isArticle() ) { return ''; }
+		if( !$wgArticle instanceOf Article ) { return ''; }
 		if ( isset( $oldid ) || isset( $diff ) ) { return ''; }
 		if ( 0 == $wgArticle->getID() ) { return ''; }
 
@@ -1650,12 +1652,6 @@ END;
 		return $s;
 	}
 
-	function bugReportsLink() {
-		$s = $this->makeKnownLink( wfMsgForContent( 'bugreportspage' ),
-		  wfMsg( 'bugreports' ) );
-		return $s;
-	}
-
 	function talkLink() {
 		global $wgTitle;
 
@@ -1678,7 +1674,7 @@ END;
 				case NS_PROJECT:
 					$text = wfMsg( 'projectpage' );
 					break;
-				case NS_IMAGE:
+				case NS_FILE:
 					$text = wfMsg( 'imagepage' );
 					# Make link known if image exists, even if the desc. page doesn't.
 					if( wfFindFile( $link ) )
@@ -1844,7 +1840,9 @@ END;
 					$link = wfMsgForContent( $line[0] );
 					if ($link == '-')
 						continue;
-					if (wfEmptyMsg($line[1], $text = wfMsg($line[1])))
+
+					$text = wfMsgExt($line[1], 'parsemag');
+					if (wfEmptyMsg($line[1], $text))
 						$text = $line[1];
 					if (wfEmptyMsg($line[0], $link))
 						$link = $line[0];

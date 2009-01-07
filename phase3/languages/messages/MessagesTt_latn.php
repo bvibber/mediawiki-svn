@@ -18,8 +18,8 @@ $namespaceNames = array(
         NS_USER_TALK        => "Äğzä_bäxäse",
         # NS_PROJECT set by $wgMetaNamespace
         NS_PROJECT_TALK     => '$1_bäxäse',
-        NS_IMAGE            => "Räsem",
-        NS_IMAGE_TALK       => "Räsem_bäxäse",
+        NS_FILE             => "Räsem",
+        NS_FILE_TALK        => "Räsem_bäxäse",
         NS_MEDIAWIKI        => "MediaWiki",
         NS_MEDIAWIKI_TALK   => "MediaWiki_bäxäse",
         NS_TEMPLATE         => "Ürnäk",
@@ -139,7 +139,7 @@ $messages = array(
 'mytalk'         => 'Bäxäsem',
 'anontalk'       => 'Bu IP turında bäxäs',
 'navigation'     => 'Küçü',
-'and'            => 'wä',
+'and'            => '&#32;wä',
 
 'errorpagetitle'    => 'Xata',
 'returnto'          => '«$1» bitenä qaytu.',
@@ -184,8 +184,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} Turında',
 'aboutpage'            => 'Project:Turında',
-'bugreports'           => 'Xatanamä',
-'bugreportspage'       => 'Project:Xata_yomğağı',
 'copyright'            => 'Eçtälek $1 buyınça ireşüle.',
 'copyrightpagename'    => '{{SITENAME}} qälämxaqı',
 'copyrightpage'        => '{{ns:project}}:Qälämxaq',
@@ -274,6 +272,11 @@ Sineñ xísabıñ yasaldı. {{SITENAME}}'dağı köyläwläreñne dä üzgärter
 Anı alğaç monda tağın kerep qara.',
 'mailerror'             => 'Xat künderü xatası: $1',
 
+# Password reset dialog
+'oldpassword' => 'İske sersüz',
+'newpassword' => 'Yaña sersüz',
+'retypenew'   => 'Yaña sersüz (qabat)',
+
 # Edit page toolbar
 'bold_sample'     => 'Qalın mäten',
 'bold_tip'        => 'Qalın mäten',
@@ -296,8 +299,8 @@ Anı alğaç monda tağın kerep qara.',
 'hr_tip'          => 'Yatma sızıq (siräk qullan)',
 
 # Edit pages
-'summary'            => 'Yomğaq',
-'subject'            => 'Ni turında/başlıq',
+'summary'            => 'Yomğaq:',
+'subject'            => 'Ni turında/başlıq:',
 'minoredit'          => 'Bu waq-töyäk üzgärmä genä',
 'watchthis'          => 'Bitne küzätep torası',
 'savearticle'        => 'Saqla biremne',
@@ -363,9 +366,6 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'prefs-misc'            => 'Başqa köyläwlär',
 'saveprefs'             => 'Saqla köyläwlärne',
 'resetprefs'            => 'Awdar köyläwne',
-'oldpassword'           => 'İske sersüz',
-'newpassword'           => 'Yaña sersüz',
-'retypenew'             => 'Yaña sersüz (qabat)',
 'textboxsize'           => 'Mätenqır ülçäme',
 'rows'                  => 'Yul:',
 'columns'               => 'Buy:',
@@ -430,11 +430,11 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'uploaddisabled'    => 'Ğafu it, yökläw sünderelgän kileş tora.',
 'uploadcorrupt'     => 'Bu birem yä üze watıq, yä quşımtası yaraqsız. Birem tikşerüdän soñ qabat yöklä zínhar.',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'   => 'fayl',
-'imagelist' => 'Räsem tezmäse',
+'listfiles' => 'Räsem tezmäse',
 
-# Image description page
+# File description page
 'filehist-dimensions' => 'Ölçemi',
 'filehist-comment'    => 'Açıqlama',
 'imagelinks'          => 'Räsem läñkerläre',
@@ -645,10 +645,11 @@ yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 'thumbnail-more' => 'Zuraytası',
 
 # Special:Import
-'import'        => 'Bitlärne yökläw',
-'importfailed'  => 'Yökläw xatası: $1',
-'importnotext'  => 'Buş yä ki mäten tügel',
-'importsuccess' => 'Yökläw uñışlı buldı!',
+'import'         => 'Bitlärne yökläw',
+'import-comment' => 'Açıqlama:',
+'importfailed'   => 'Yökläw xatası: $1',
+'importnotext'   => 'Buş yä ki mäten tügel',
+'importsuccess'  => 'Yökläw uñışlı buldı!',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'        => 'Şäxsi bitem',
@@ -700,7 +701,7 @@ yä isä saylanğan isem yaraqsız buldı. Başqa isem sayla zínhar.',
 # Media information
 'show-big-image' => 'Towlı ölçemi',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Ezläw',
 'bydate'   => 'waqıt buyınça',
 

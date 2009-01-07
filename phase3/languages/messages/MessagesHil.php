@@ -75,7 +75,7 @@ $messages = array(
 'qbspecialpages' => 'Pinasahi nga mga panid',
 'mytalk'         => 'Akon paghisayranay',
 'navigation'     => 'Nabigayson',
-'and'            => 'kag',
+'and'            => '&#32;kag',
 
 'tagline'          => 'Halin sa {{SITENAME}}',
 'help'             => 'Bulig',
@@ -149,7 +149,7 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 'email'                   => 'E-mail',
 
 # Edit pages
-'summary'            => 'Kabilogan',
+'summary'            => 'Kabilogan:',
 'minoredit'          => 'Ini menor nga pag-ilis',
 'watchthis'          => 'Bantayan ining panid',
 'savearticle'        => 'Tiponon ining panid',
@@ -289,7 +289,7 @@ Indi pagkalimti ang pag ilis sang imo mga pagpasulabi sa {{SITENAME}}.',
 # Media information
 'show-big-image' => 'Kabilogan nga resolusyon',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Pangita-a',
 
 # 'all' in various places, this might be different for inflected languages

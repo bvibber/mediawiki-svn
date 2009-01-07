@@ -23,7 +23,7 @@ class UploadForm {
 	const BEFORE_PROCESSING = 1;
 	const LARGE_FILE_SERVER = 2;
 	const EMPTY_FILE = 3;
-	const MIN_LENGHT_PARTNAME = 4;
+	const MIN_LENGTH_PARTNAME = 4;
 	const ILLEGAL_FILENAME = 5;
 	const PROTECTED_PAGE = 6;
 	const OVERWRITE_EXISTING_FILE = 7;
@@ -300,7 +300,7 @@ class UploadForm {
 				$this->mainUploadForm( wfMsgHtml( 'emptyfile' ) );
 				break;
 
-			case self::MIN_LENGHT_PARTNAME:
+			case self::MIN_LENGTH_PARTNAME:
 				$this->mainUploadForm( wfMsgHtml( 'minlength1' ) );
 				break;
 
@@ -399,7 +399,15 @@ class UploadForm {
 			$basename = $this->mSrcName;
 		}
 		$filtered = wfStripIllegalFilenameChars( $basename );
-
+		
+		/* Normalize to title form before we do any further processing */
+		$nt = Title::makeTitleSafe( NS_FILE, $filtered );
+		if( is_null( $nt ) ) {
+			$resultDetails = array( 'filtered' => $filtered );
+			return self::ILLEGAL_FILENAME;
+		}
+		$filtered = $nt->getDBkey();
+		
 		/**
 		 * We'll want to blacklist against *any* 'extension', and use
 		 * only the final one for the whitelist.
@@ -407,7 +415,7 @@ class UploadForm {
 		list( $partname, $ext ) = $this->splitExtensions( $filtered );
 
 		if( count( $ext ) ) {
-			$finalExt = trim( $ext[count( $ext ) - 1] );
+			$finalExt = $ext[count( $ext ) - 1];
 		} else {
 			$finalExt = '';
 		}
@@ -420,14 +428,9 @@ class UploadForm {
 		}
 
 		if( strlen( $partname ) < 1 ) {
-			return self::MIN_LENGHT_PARTNAME;
+			return self::MIN_LENGTH_PARTNAME;
 		}
 
-		$nt = Title::makeTitleSafe( NS_IMAGE, $filtered );
-		if( is_null( $nt ) ) {
-			$resultDetails = array( 'filtered' => $filtered );
-			return self::ILLEGAL_FILENAME;
-		}
 		$this->mLocalFile = wfLocalFile( $nt );
 		$this->mDestName = $this->mLocalFile->getName();
 
@@ -604,7 +607,7 @@ class UploadForm {
 			// extensions (eg 'jpg' rather than 'JPEG').
 			//
 			// Check for another file using the normalized form...
-			$nt_lc = Title::makeTitle( NS_IMAGE, $partname . '.' . $file->getExtension() );
+			$nt_lc = Title::makeTitle( NS_FILE, $partname . '.' . $file->getExtension() );
 			$file_lc = wfLocalFile( $nt_lc );
 		} else {
 			$file_lc = false;
@@ -731,7 +734,7 @@ class UploadForm {
 	public static function ajaxGetLicensePreview( $license ) {
 		global $wgParser, $wgUser;
 		$text = '{{' . $license . '}}';
-		$title = Title::makeTitle( NS_IMAGE, 'Sample.jpg' );
+		$title = Title::makeTitle( NS_FILE, 'Sample.jpg' );
 		$options = ParserOptions::newFromUser( $wgUser );
 
 		// Expand subst: first, then live templates...
@@ -764,7 +767,7 @@ class UploadForm {
 				"</li>\n";
 		} elseif ( $archivedImage->getID() > 0 ) {
 			global $wgOut;
-			$name = Title::makeTitle( NS_IMAGE, $archivedImage->getName() )->getPrefixedText();
+			$name = Title::makeTitle( NS_FILE, $archivedImage->getName() )->getPrefixedText();
 			return Xml::tags( 'li', null, wfMsgExt( 'file-deleted-duplicate', array( 'parseinline' ), array( $name ) ) );
 		} else {
 			return '';
@@ -960,7 +963,7 @@ wgUploadAutoFill = {$autofill};
 		}
 
 		if( $this->mDesiredDestName ) {
-			$title = Title::makeTitleSafe( NS_IMAGE, $this->mDesiredDestName );
+			$title = Title::makeTitleSafe( NS_FILE, $this->mDesiredDestName );
 			// Show a subtitle link to deleted revisions (to sysops et al only)
 			if( $title instanceof Title && ( $count = $title->isDeleted() ) > 0 && $wgUser->isAllowed( 'deletedhistory' ) ) {
 				$link = wfMsgExt(
@@ -1324,11 +1327,11 @@ wgUploadAutoFill = {$autofill};
 		$magic = MimeMagic::singleton();
 		$mime = $magic->guessMimeType($tmpfile,false);
 
+
 		#check mime type, if desired
 		global $wgVerifyMimeType;
 		if ($wgVerifyMimeType) {
-
-		  wfDebug ( "\n\nmime: <$mime> extension: <$extension>\n\n");
+			wfDebug ( "\n\nmime: <$mime> extension: <$extension>\n\n");
 			#check mime type against file extension
 			if( !self::verifyExtension( $mime, $extension ) ) {
 				return new WikiErrorMsg( 'uploadcorrupt' );
@@ -1336,9 +1339,22 @@ wgUploadAutoFill = {$autofill};
 
 			#check mime type blacklist
 			global $wgMimeTypeBlacklist;
-			if( isset($wgMimeTypeBlacklist) && !is_null($wgMimeTypeBlacklist)
-				&& $this->checkFileExtension( $mime, $wgMimeTypeBlacklist ) ) {
-				return new WikiErrorMsg( 'filetype-badmime', htmlspecialchars( $mime ) );
+			if( isset($wgMimeTypeBlacklist) && !is_null($wgMimeTypeBlacklist) ) {
+				if ( $this->checkFileExtension( $mime, $wgMimeTypeBlacklist ) ) {
+					return new WikiErrorMsg( 'filetype-badmime', htmlspecialchars( $mime ) );
+				}
+
+				# Check IE type
+				$fp = fopen( $tmpfile, 'rb' );
+				$chunk = fread( $fp, 256 );
+				fclose( $fp );
+				$extMime = $magic->guessTypesForExtension( $extension );
+				$ieTypes = $magic->getIEMimeTypes( $tmpfile, $chunk, $extMime );
+				foreach ( $ieTypes as $ieType ) {
+					if ( $this->checkFileExtension( $ieType, $wgMimeTypeBlacklist ) ) {
+						return new WikiErrorMsg( 'filetype-bad-ie-mime', $ieType );
+					}
+				}
 			}
 		}
 
@@ -1401,6 +1417,7 @@ wgUploadAutoFill = {$autofill};
 			return false;
 		}
 	}
+
 
 	/**
 	 * Heuristic for detecting files that *could* contain JavaScript instructions or

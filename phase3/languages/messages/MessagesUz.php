@@ -14,24 +14,22 @@ $fallback8bitEncoding = 'windows-1252';
 $linkPrefixExtension = true;
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Media',
-	NS_SPECIAL        => 'Maxsus',
-	NS_MAIN           => '',
-	NS_TALK           => 'Munozara',
-	NS_USER           => 'Foydalanuvchi',
-	NS_USER_TALK      => 'Foydalanuvchi_munozarasi',
-	# NS_PROJECT set by \$wgMetaNamespace
-	NS_PROJECT_TALK   => '$1_munozarasi',
-	NS_IMAGE          => 'Tasvir',
-	NS_IMAGE_TALK     => 'Tasvir_munozarasi',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'MediaWiki_munozarasi',
-	NS_TEMPLATE       => 'Andoza',
-	NS_TEMPLATE_TALK  => 'Andoza_munozarasi',
-	NS_HELP           => 'Yordam',
-	NS_HELP_TALK      => 'Yordam_munozarasi',
-	NS_CATEGORY       => 'Turkum',
-	NS_CATEGORY_TALK  => 'Turkum_munozarasi',
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Maxsus',
+	NS_TALK             => 'Munozara',
+	NS_USER             => 'Foydalanuvchi',
+	NS_USER_TALK        => 'Foydalanuvchi_munozarasi',
+	NS_PROJECT_TALK     => '$1_munozarasi',
+	NS_FILE             => 'Tasvir',
+	NS_FILE_TALK        => 'Tasvir_munozarasi',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_munozarasi',
+	NS_TEMPLATE         => 'Andoza',
+	NS_TEMPLATE_TALK    => 'Andoza_munozarasi',
+	NS_HELP             => 'Yordam',
+	NS_HELP_TALK        => 'Yordam_munozarasi',
+	NS_CATEGORY         => 'Turkum',
+	NS_CATEGORY_TALK    => 'Turkum_munozarasi',
 );
 	
 $namespaceAliases = array(
@@ -124,7 +122,7 @@ $messages = array(
 'mytalk'         => 'Mening suhbatim',
 'anontalk'       => 'Bu IP uchun suhbat',
 'navigation'     => 'Saytda harakatlanish',
-'and'            => 'va',
+'and'            => '&#32;va',
 
 'errorpagetitle'   => 'Xato',
 'returnto'         => '$1 sahifasiga qaytish.',
@@ -229,6 +227,9 @@ $messages = array(
 'loginsuccess'            => "'''{{SITENAME}}ga \"\$1\" foydalanuvchi nomi bilan kirdingiz.'''",
 'wrongpassword'           => 'Kiritgan mahfiy soʻzingiz notoʻgʻri. Iltimos, qaytadan kiritib koʻring.',
 
+# Password reset dialog
+'retypenew' => 'Yangi mahfiy soʻzni qayta tering:',
+
 # Edit page toolbar
 'bold_sample'     => 'Qalin matn',
 'bold_tip'        => 'Qalin matn',
@@ -246,7 +247,7 @@ $messages = array(
 'sig_tip'         => 'Imzoingiz va sana',
 
 # Edit pages
-'summary'                => 'Qisqa izoh',
+'summary'                => 'Qisqa izoh:',
 'minoredit'              => 'Bu kichik tahrir',
 'watchthis'              => 'Sahifani kuzatish',
 'savearticle'            => 'Saqlash',
@@ -338,7 +339,6 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 'prefs-misc'        => 'Boshqa moslamalar',
 'saveprefs'         => 'Saqlash',
 'resetprefs'        => 'Bekor qilish',
-'retypenew'         => 'Yangi mahfiy soʻzni qayta tering:',
 'textboxsize'       => 'Tahrirlash',
 'searchresultshead' => 'Qidiruv natijalari',
 'files'             => 'Fayllar',
@@ -374,10 +374,10 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 'uploadlogpage' => 'Yuklash qaydlari',
 'uploadedimage' => '"[[$1]]" yuklandi',
 
-# Special:ImageList
-'imagelist' => 'Fayllar roʻyxati',
+# Special:ListFiles
+'listfiles' => 'Fayllar roʻyxati',
 
-# Image description page
+# File description page
 'filehist'                  => 'Fayl tarixi',
 'filehist-help'             => 'Faylning biror paytdagi holatini koʻrish uchun tegishli sana/vaqtga bosingiz.',
 'filehist-current'          => 'joriy',
@@ -597,7 +597,7 @@ Yaqinda sodir etilgan yoʻqotishlar uchun $2ni koʻring.',
 'show-big-image'       => 'Asl hajmdagi tasvir',
 'show-big-image-thumb' => '<small>Ushbu koʻrinish oʻlchamlari: $1 × $2 piksel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Qidirish',
 
 # Metadata

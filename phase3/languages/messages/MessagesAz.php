@@ -18,8 +18,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'İstifadəçi_müzakirəsi',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_müzakirəsi',
-	NS_IMAGE            => 'Şəkil',
-	NS_IMAGE_TALK       => 'Şəkil_müzakirəsi',
+	NS_FILE             => 'Şəkil',
+	NS_FILE_TALK        => 'Şəkil_müzakirəsi',
 	NS_MEDIAWIKI        => 'MediyaViki',
 	NS_MEDIAWIKI_TALK   => 'MediyaViki_müzakirəsi',
 	NS_TEMPLATE         => 'Şablon',
@@ -147,7 +147,7 @@ $messages = array(
 'mytalk'         => 'Danişiqlarım',
 'anontalk'       => 'Bu IP-yə aid müzakirə',
 'navigation'     => 'Rəhbər',
-'and'            => 'və',
+'and'            => '&#32;və',
 
 'errorpagetitle'    => 'Xəta',
 'returnto'          => '$1 səhifəsinə qayıt.',
@@ -200,8 +200,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} haqqında',
 'aboutpage'            => 'Project:İzah',
-'bugreports'           => "Xəta mə'ruzəsı",
-'bugreportspage'       => "Project:Xəta_mə'ruzəsı",
 'copyright'            => 'Bu məzmun $1 əhatəsindədir.',
 'copyrightpagename'    => '{{SITENAME}} müəllif',
 'copyrightpage'        => '{{ns:project}}:Müəllif',
@@ -309,6 +307,9 @@ Xahiş edirik, e-məktubu aldıqdan sonra yenidən daxil olasınız.',
 
 # Password reset dialog
 'resetpass_text' => '<!-- Şərhinizi bura daxil edin -->',
+'oldpassword'    => 'Köhne parol:',
+'newpassword'    => 'Yeni parol:',
+'retypenew'      => 'Yeni parolu təkrar yazın:',
 
 # Edit page toolbar
 'bold_sample'     => 'Qalın mətn',
@@ -331,8 +332,8 @@ Xahiş edirik, e-məktubu aldıqdan sonra yenidən daxil olasınız.',
 'hr_tip'          => 'Horizontal cizgi',
 
 # Edit pages
-'summary'                  => 'Qısa məzmun',
-'subject'                  => 'Mövzu/başlıq',
+'summary'                  => 'Qısa məzmun:',
+'subject'                  => 'Mövzu/başlıq:',
 'minoredit'                => 'Kiçik redaktə',
 'watchthis'                => 'Bu səhifəni izlə',
 'savearticle'              => 'Səhifəni qeyd et',
@@ -439,9 +440,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'prefs-misc'            => 'Digər tərcihlər',
 'saveprefs'             => 'Qeyd et',
 'resetprefs'            => 'Reset',
-'oldpassword'           => 'Köhne parol:',
-'newpassword'           => 'Yeni parol:',
-'retypenew'             => 'Yeni parolu təkrar yazın:',
 'textboxsize'           => 'Redaktə',
 'rows'                  => 'Sıralar:',
 'searchresultshead'     => 'Axtar',
@@ -558,13 +556,13 @@ Bu səhifə üçün silmə qeydləri aşağıda göstərilmişdir:",
 'license'   => 'Lisenziya',
 'nolicense' => 'Heç biri seçilməmişdir',
 
-# Special:ImageList
-'imagelist'      => 'Fayl siyahısı',
-'imagelist_date' => 'Tarix',
-'imagelist_name' => 'Ad',
-'imagelist_user' => 'İstifadəçi',
+# Special:ListFiles
+'listfiles'      => 'Fayl siyahısı',
+'listfiles_date' => 'Tarix',
+'listfiles_name' => 'Ad',
+'listfiles_user' => 'İstifadəçi',
 
-# Image description page
+# File description page
 'imagelinks'                     => 'İstifadə edilən səhifələr',
 'shareduploadwiki-linktext'      => 'fayl təsvir səhifəsi',
 'shareduploadduplicate-linktext' => 'başqa fayl',
@@ -1020,7 +1018,7 @@ $1',
 'file-info-size' => '($1 × $2 piksel, fayl həcmi: $3, MIME növü: $4)',
 'file-nohires'   => '<small>Daha dəqiq versiyası yoxdur.</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'    => 'Yeni faylların siyahısı',
 'showhidebots' => '($1 bot redaktə)',
 'ilsubmit'     => 'Axtar',

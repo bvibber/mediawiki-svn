@@ -164,6 +164,11 @@ $messages = array(
 'loginsuccesstitle'       => 'မှတ်​ပုံ​တင်​ဖြင့်​ဝင်​ခြင်းအောင်မြင်သည်။',
 'loginlanguagelabel'      => 'ဘာသာ: $1',
 
+# Password reset dialog
+'oldpassword' => 'ဝှက်​စ​ကား​လုံးအဟောင်း:',
+'newpassword' => 'ဝှက်​စ​ကား​လုံးအသစ်:',
+'retypenew'   => 'ဝှက်​စ​ကား​လုံးပအသစ်ကိုထပ်ရိုက်ပါ:',
+
 # Edit page toolbar
 'italic_sample' => 'စာသားဆောင်း',
 'italic_tip'    => 'စာသားဆောင်း',
@@ -172,7 +177,7 @@ $messages = array(
 'hr_tip'        => 'မျဉ်းလဲ',
 
 # Edit pages
-'summary'            => 'အ​ကျဉ်း​ချုပ်​',
+'summary'            => 'အ​ကျဉ်း​ချုပ်​:',
 'minoredit'          => 'သာ​မန်​ပြင်​ဆင်​မှု​ဖြစ်​ပါ​သည်​',
 'watchthis'          => 'ဤ​စာ​မျက်​နှာ​အား​စောင့်​ကြည့်​ပါ​',
 'savearticle'        => 'သိမ်း​ပါ​',
@@ -180,7 +185,7 @@ $messages = array(
 'showpreview'        => 'န​မူ​နာ​ပြ​ပါ​',
 'showlivepreview'    => 'နမူနာအရှင်',
 'showdiff'           => 'ပြင်​ဆင်​ထား​သည်​များ​ကို​ပြ​ပါ​',
-'summary-preview'    => 'အ​ကျဉ်း​ချုပ်​န​မူ​နာ',
+'summary-preview'    => 'အ​ကျဉ်း​ချုပ်​န​မူ​နာ:',
 'whitelistedittitle' => 'ပြင်​ဆင်​ခြင်း​သည်​မှတ်​ပုံ​တင်​ရန်​လို​သည်​',
 'loginreqtitle'      => 'မှတ်​ပုံ​တင်​ဖြင့်​ဝင်​ဖို့လိုပါတယ်',
 'loginreqlink'       => 'မှတ်​ပုံ​တင်​ဖြင့်​ဝင်​ပါ​',
@@ -205,9 +210,6 @@ $messages = array(
 'skin-preview'      => 'နမူနာ',
 'math'              => 'သင်္ချာ',
 'datetime'          => 'နေ့စွဲနှင့် အချိန်',
-'oldpassword'       => 'ဝှက်​စ​ကား​လုံးအဟောင်း:',
-'newpassword'       => 'ဝှက်​စ​ကား​လုံးအသစ်:',
-'retypenew'         => 'ဝှက်​စ​ကား​လုံးပအသစ်ကိုထပ်ရိုက်ပါ:',
 'searchresultshead' => 'ရှာ​ဖွေ​ရန်​',
 
 # Groups
@@ -234,12 +236,12 @@ $messages = array(
 'fileuploadsummary' => 'အ​ကျဉ်း​ချုပ်:',
 'watchthisupload'   => 'ဤ​စာ​မျက်​နှာ​အား​စောင့်​ကြည့်​ပါ​',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'ဖိုင်',
-'imagelist'      => 'ဖိုင်စာရင်း',
-'imagelist_date' => 'နေ့စွဲ',
+'listfiles'      => 'ဖိုင်စာရင်း',
+'listfiles_date' => 'နေ့စွဲ',
 
-# Image description page
+# File description page
 'filehist'           => 'ဖိုင်မှတ်တမ်း',
 'filehist-deleteall' => 'အားလုံးဖျက်',
 'filehist-deleteone' => 'ဖျက်',
@@ -361,7 +363,7 @@ $messages = array(
 'tooltip-t-upload'       => 'ဖိုင်တင်ပါ',
 'tooltip-save'           => 'ပြင်ဆင်ရန်သိမ်းပါ',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'ရှာ​ဖွေ​ရန်​',
 
 # EXIF tags

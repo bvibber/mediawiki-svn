@@ -13,6 +13,38 @@
 
 $fallback = 'it';
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Speçiale',
+	NS_TALK             => 'Discûscion',
+	NS_USER             => 'Utente',
+	NS_USER_TALK        => 'Discûscioîn_ûtente',
+	NS_PROJECT_TALK     => 'Discûscioîn_$1',
+	NS_FILE             => 'Immaggine',
+	NS_FILE_TALK        => 'Discûscioîn_immaggine',
+	NS_MEDIAWIKI_TALK   => 'Discûscioîn_MediaWiki',
+	NS_TEMPLATE_TALK    => 'Discûscioîn_template',
+	NS_HELP             => 'Agiûtto',
+	NS_HELP_TALK        => 'Discûscioîn_agiûtto',
+	NS_CATEGORY         => 'Categorîa',
+	NS_CATEGORY_TALK    => 'Discûscioîn_categorîa',
+);
+
+$namespaceAliases = array(
+	'Speciale' => NS_SPECIAL,
+	'Discussione' => NS_TALK,
+	'Discussioni_utente' => NS_USER_TALK,
+	'Discussioni_$1' => NS_PROJECT_TALK,
+	'Immagine' => NS_FILE,
+	'Discussioni_immagine' => NS_FILE_TALK,
+	'Discussioni_MediaWiki' => NS_MEDIAWIKI_TALK,
+	'Discussioni_template' => NS_TEMPLATE_TALK,
+	'Aiuto' => NS_HELP,
+	'Discussioni_aiuto' => NS_HELP_TALK,
+	'Categoria' => NS_CATEGORY,
+	'Discussioni_categoria' => NS_CATEGORY_TALK,
+);
+
 $specialPageAliases = array(
 	'Userlogin'                 => array( 'Intra', 'Registrate' ),
 	'Userlogout'                => array( 'Sciorti' ),
@@ -20,7 +52,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Osservæ speçiali' ),
 	'Recentchanges'             => array( 'Ûrtime modiffiche' ),
 	'Upload'                    => array( 'Carrega' ),
-	'Imagelist'                 => array( 'Immaggini' ),
+	'Listfiles'                 => array( 'Immaggini' ),
 	'Newimages'                 => array( 'Immaggini reçenti' ),
 	'Listusers'                 => array( 'Utenti' ),
 	'Statistics'                => array( 'Statistighe' ),
@@ -181,7 +213,7 @@ $messages = array(
 'mytalk'         => 'Mæ discuscioin',
 'anontalk'       => 'Discuscion pe questo indirisso IP',
 'navigation'     => 'Navegaçion',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 'errorpagetitle'    => 'Errô',
 'returnto'          => 'Tornâ a $1.',
@@ -231,8 +263,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Informaçioin in scia {{SITENAME}}',
 'aboutpage'            => 'Project:Informassioîn',
-'bugreports'           => 'Danni',
-'bugreportspage'       => 'Project:Danni',
 'copyright'            => 'O contegnûo o se peu trovâ a $1.',
 'copyrightpagename'    => "Diritti d'autô de {{SITENAME}}",
 'copyrightpage'        => "{{ns:project}}:Diritti d'autô",
@@ -371,6 +401,7 @@ Pe abilitâ l'invîo de messaggi e-mail pe quest'accesso, o se deive seguî l'is
 # Password reset dialog
 'resetpass'           => 'Reverti a pòula segretta',
 'resetpass_header'    => 'Reverti a pòula segretta',
+'retypenew'           => "Ripette a nêuva paròlla d'ordine:",
 'resetpass_forbidden' => "E paròlle d'ordine no se pêuan cangiâ in {{SITENAME}}",
 
 # Edit page toolbar
@@ -396,8 +427,8 @@ Pe abilitâ l'invîo de messaggi e-mail pe quest'accesso, o se deive seguî l'is
 'hr_tip'          => 'Linnia orissontâ',
 
 # Edit pages
-'summary'                => 'Oggetto',
-'subject'                => 'Argomento (tittolo)',
+'summary'                => 'Oggetto:',
+'subject'                => 'Argomento (tittolo):',
 'minoredit'              => 'Cangiamento minô (m)',
 'watchthis'              => 'Azzonze a-i osservæ speçiâli',
 'savearticle'            => 'Sârva a pagina',
@@ -405,7 +436,7 @@ Pe abilitâ l'invîo de messaggi e-mail pe quest'accesso, o se deive seguî l'is
 'showpreview'            => "Veddi l'anteprimma",
 'showdiff'               => 'Veddi i cangiamenti',
 'anoneditwarning'        => "'''Attension:''' No ti t'hæ registròu. O têu indirisso IP o sajà misso inta stöja di cangiamenti da paggina.",
-'summary-preview'        => 'Anteprimma oggetto',
+'summary-preview'        => 'Anteprimma oggetto:',
 'blockedtitle'           => "L'utente o l'é bloccòu",
 'blockedtext'            => "<big>''''Sto nomme d'ûtente ou indirisso IP o l'è stæto bloccòu.'''</big>
 
@@ -527,7 +558,6 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'dateformat'        => 'Formato da a data',
 'datetime'          => 'Data e oùa',
 'saveprefs'         => 'Sarva',
-'retypenew'         => "Ripette a nêuva paròlla d'ordine:",
 'textboxsize'       => 'Cangia',
 'searchresultshead' => 'Çerca',
 'timezonelegend'    => 'Oùa',
@@ -582,7 +612,7 @@ E paggine in osservassion son dipinte in '''grascietto'''.",
 'uploadedfiles'        => 'Papê caregæ',
 'badfilename'          => 'O nomme do papê o l\'è stæto cangioö in "$1".',
 'fileexists'           => "Un papê co sto nomme o existe de zà, pe piaxei da unn'euggiâ a <strong><tt>$1</tt></strong> se non ti tei seguo de voleilo cangiâ.",
-'fileexists-forbidden' => 'Un papê co sto nomme o existe de zà, pe piaxei vanni in derrê e carega sto papê co un ätro nomme. [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden' => 'Un papê co sto nomme o existe de zà, pe piaxei vanni in derrê e carega sto papê co un ätro nomme. [[File:$1|thumb|center|$1]]',
 'savefile'             => 'Sarva o papê',
 'uploadedimage'        => 'O s\'ha caregòu "[[$1]]"',
 'uploaddisabledtext'   => 'In {{SITENAME}} non se peu caregâ de papê.',
@@ -596,13 +626,13 @@ E paggine in osservassion son dipinte in '''grascietto'''.",
 'license'   => 'Permisso:',
 'nolicense' => 'Nisciûnn-a liçensa indicâa',
 
-# Special:ImageList
-'imagelist_search_for' => "Çerca pe nomme de l'imàgine:",
+# Special:ListFiles
+'listfiles_search_for' => "Çerca pe nomme de l'imàgine:",
 'imgfile'              => 'papê',
-'imagelist'            => "Lista d'archivvi",
-'imagelist_date'       => 'Dæta',
+'listfiles'            => "Lista d'archivvi",
+'listfiles_date'       => 'Dæta',
 
-# Image description page
+# File description page
 'filehist'                  => "Cronologîa de l'archivvio",
 'filehist-help'             => "Sciacca inscie 'n grûppo data/ôa pe vedde l'archivvio comme o se presentâva into momento indicòu.",
 'filehist-current'          => 'Corrente',
@@ -1012,7 +1042,7 @@ Inte 'sti câxi, se o se vêu fâ coscì, o se deive stramûâ ò azzonze manual
 'show-big-image'       => "Verscion d'ærta resolûxon",
 'show-big-image-thumb' => "<small>Dimensioîn de 'st'anteprimma: $1 × $2 pixel</small>",
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Gallerîa de nêuvi archivvi',
 'ilsubmit'  => 'Çerca',
 'bydate'    => 'pe dâta',

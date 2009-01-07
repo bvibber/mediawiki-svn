@@ -110,7 +110,7 @@ Ua nimo ke hiki e haau tau manako {{SITENAME}}.',
 'email'                   => 'Meli hila',
 
 # Edit pages
-'summary'            => 'Fakakatoakatoa',
+'summary'            => 'Fakakatoakatoa:',
 'minoredit'          => 'Ko e fakahakohako fakatote',
 'watchthis'          => 'Onoono e lau e',
 'savearticle'        => 'Taofi e lau',
@@ -144,7 +144,7 @@ Ua nimo ke hiki e haau tau manako {{SITENAME}}.',
 'fileuploadsummary' => 'Fakakatoakatoa:',
 'watchthisupload'   => 'Onoono e lau e',
 
-# Image description page
+# File description page
 'filehist-deleteone' => 'tamate',
 
 # File deletion
@@ -215,7 +215,7 @@ Ua nimo ke hiki e haau tau manako {{SITENAME}}.',
 'tooltip-pt-logout'      => 'Hu mai ki tua',
 'tooltip-p-logo'         => 'Matapatu Lau',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Kumi',
 
 # Multipage image navigation

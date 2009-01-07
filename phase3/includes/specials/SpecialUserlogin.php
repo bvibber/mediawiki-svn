@@ -311,14 +311,15 @@ class LoginForm {
 
 		if ( $wgAccountCreationThrottle && $wgUser->isPingLimitable() ) {
 			$key = wfMemcKey( 'acctcreate', 'ip', $ip );
-			$value = $wgMemc->incr( $key );
+			$value = $wgMemc->get( $key );
 			if ( !$value ) {
-				$wgMemc->set( $key, 1, 86400 );
+				$wgMemc->set( $key, 0, 86400 );
 			}
-			if ( $value > $wgAccountCreationThrottle ) {
+			if ( $value >= $wgAccountCreationThrottle ) {
 				$this->throttleHit( $wgAccountCreationThrottle );
 				return false;
 			}
+			$wgMemc->incr( $key );
 		}
 
 		if( !$wgAuth->addUser( $u, $this->mPassword, $this->mEmail, $this->mRealName ) ) {
@@ -582,8 +583,8 @@ class LoginForm {
 
 	function resetLoginForm( $error ) {
 		global $wgOut;
-		$wgOut->addWikiText( "<div class=\"errorbox\">$error</div>" );
-		$reset = new PasswordResetForm( $this->mName, $this->mPassword );
+		$wgOut->addHTML( Xml::element('p', array( 'class' => 'error' ), $error ) );
+		$reset = new SpecialResetpass();
 		$reset->execute( null );
 	}
 
@@ -653,7 +654,6 @@ class LoginForm {
 	 * @private
 	 */
 	function mailPasswordInternal( $u, $throttle = true, $emailTitle = 'passwordremindertitle', $emailText = 'passwordremindertext' ) {
-		global $wgCookiePath, $wgCookieDomain, $wgCookiePrefix, $wgCookieSecure;
 		global $wgServer, $wgScript, $wgUser;
 
 		if ( '' == $u->getEmail() ) {
@@ -789,7 +789,7 @@ class LoginForm {
 	 */
 	function mainLoginForm( $msg, $msgtype = 'error' ) {
 		global $wgUser, $wgOut, $wgAllowRealName, $wgEnableEmail;
-		global $wgCookiePrefix, $wgAuth, $wgLoginLanguageSelector;
+		global $wgCookiePrefix, $wgLoginLanguageSelector;
 		global $wgAuth, $wgEmailConfirmToEdit, $wgCookieExpiration;
 		
 		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
@@ -927,7 +927,9 @@ class LoginForm {
 		global $wgOut;
 
 		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
-		$check = $titleObj->getFullURL( 'wpCookieCheck='.$type );
+		$query = array( 'wpCookieCheck' => $type );
+		if ( $this->mReturnTo ) $query['returnto'] = $this->mReturnTo;
+		$check = $titleObj->getFullURL( $query );
 
 		return $wgOut->redirect( $check );
 	}

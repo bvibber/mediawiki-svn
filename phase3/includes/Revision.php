@@ -319,9 +319,9 @@ class Revision {
 				$this->mSize = intval( $row->rev_len );
 
 			if( isset( $row->page_latest ) ) {
-				$this->mCurrent   = ( $row->rev_id == $row->page_latest );
-				$this->mTitle     = Title::makeTitle( $row->page_namespace,
-				                                      $row->page_title );
+				$this->mCurrent = ( $row->rev_id == $row->page_latest );
+				$this->mTitle = Title::makeTitle( $row->page_namespace, $row->page_title );
+				$this->mTitle->resetArticleID( $this->mPage );
 			} else {
 				$this->mCurrent = false;
 				$this->mTitle = null;
@@ -720,9 +720,11 @@ class Revision {
 			}
 
 			global $wgLegacyEncoding;
-			if( $wgLegacyEncoding && !in_array( 'utf-8', $flags ) ) {
+			if( $wgLegacyEncoding && !in_array( 'utf-8', $flags ) && !in_array( 'utf8', $flags ) ) {
 				# Old revisions kept around in a legacy encoding?
 				# Upconvert on demand.
+				# ("utf8" checked for compatibility with some broken
+				#  conversion scripts 2008-12-30)
 				global $wgInputEncoding, $wgContLang;
 				$text = $wgContLang->iconv( $wgLegacyEncoding, $wgInputEncoding, $text );
 			}
@@ -906,7 +908,7 @@ class Revision {
 
 		$current = $dbw->selectRow(
 			array( 'page', 'revision' ),
-			array( 'page_latest', 'rev_text_id' ),
+			array( 'page_latest', 'rev_text_id', 'rev_len' ),
 			array(
 				'page_id' => $pageId,
 				'page_latest=rev_id',
@@ -919,7 +921,8 @@ class Revision {
 				'comment'    => $summary,
 				'minor_edit' => $minor,
 				'text_id'    => $current->rev_text_id,
-				'parent_id'  => $current->page_latest
+				'parent_id'  => $current->page_latest,
+				'len'        => $current->rev_len
 				) );
 		} else {
 			$revision = null;

@@ -631,6 +631,9 @@ class OutputPage {
 	 */
 	public function parse( $text, $linestart = true, $interface = false ) {
 		global $wgParser, $wgTitle;
+		if( is_null( $wgTitle ) ) {
+			throw new MWException( 'Empty $wgTitle in ' . __METHOD__ );
+		}
 		$popts = $this->parserOptions();
 		if ( $interface) { $popts->setInterfaceMessage(true); }
 		$parserOutput = $wgParser->parse( $text, $wgTitle, $popts,
@@ -699,7 +702,7 @@ class OutputPage {
 	 * If it does, it's very important that we don't allow public caching
 	 */
 	function haveCacheVaryCookies() {
-		global $wgRequest, $wgCookiePrefix;
+		global $wgRequest;
 		$cookieHeader = $wgRequest->getHeader( 'cookie' );
 		if ( $cookieHeader === false ) {
 			return false;
@@ -718,7 +721,6 @@ class OutputPage {
 
 	/** Get a complete X-Vary-Options header */
 	public function getXVO() {
-		global $wgCookiePrefix;
 		$cvCookies = $this->getCacheVaryCookies();
 		$xvo = 'X-Vary-Options: Accept-Encoding;list-contains=gzip,Cookie;';
 		$first = true;
@@ -1381,6 +1383,7 @@ class OutputPage {
 	 */
 	public function addReturnTo( $title ) {
 		global $wgUser;
+		$this->addLink( array( 'rel' => 'next', 'href' => $title->getFullUrl() ) );
 		$link = wfMsg( 'returnto', $wgUser->getSkin()->makeLinkObj( $title ) );
 		$this->addHTML( "<p>{$link}</p>\n" );
 	}

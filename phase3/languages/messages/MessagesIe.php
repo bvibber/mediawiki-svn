@@ -82,7 +82,7 @@ $messages = array(
 'moredotdotdot'  => 'Plu mult...',
 'mytalk'         => 'Mi discussion',
 'anontalk'       => 'Discussion por ti ci IP',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 'errorpagetitle'   => 'Errore',
 'returnto'         => 'Retornar a $1.',
@@ -122,8 +122,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Apropó de {{SITENAME}}',
 'aboutpage'            => 'Project:Apropó',
-'bugreports'           => 'Raportes de malfunctiones',
-'bugreportspage'       => 'Project:Raportes de malfunctiones',
 'copyright'            => 'Contenete disponibil sub $1.',
 'disclaimers'          => 'Advertimentes',
 'edithelp'             => 'Auxilie',
@@ -186,8 +184,13 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'acct_creation_throttle_hit' => 'Vu ja ha creat $1 contos. Vu ne posse crear pli mult quam to.',
 'loginlanguagelabel'         => 'Lingue: $1',
 
+# Password reset dialog
+'oldpassword' => 'Anteyan passa-parol:',
+'newpassword' => 'Nov passa-parol:',
+'retypenew'   => 'Confirmar nov passa-parol',
+
 # Edit pages
-'summary'          => 'Resumate',
+'summary'          => 'Resumate:',
 'minoredit'        => 'Modification minori',
 'watchthis'        => 'Sequer ti articul',
 'savearticle'      => 'Conservar págine',
@@ -216,9 +219,6 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'qbsettings'     => 'Personalisation del barre de utensiles',
 'changepassword' => 'Modificar passa-parol',
 'saveprefs'      => 'Conservar preferenties',
-'oldpassword'    => 'Anteyan passa-parol:',
-'newpassword'    => 'Nov passa-parol:',
-'retypenew'      => 'Confirmar nov passa-parol',
 
 # Groups
 'group-user' => 'Usatores',
@@ -250,10 +250,10 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'filedesc'  => 'Descrition',
 'savefile'  => 'Conservar file',
 
-# Special:ImageList
-'imagelist' => 'Liste de images',
+# Special:ListFiles
+'listfiles' => 'Liste de images',
 
-# Image description page
+# File description page
 'filehist-comment' => 'Comenta',
 
 # Random page
@@ -347,7 +347,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 'tooltip-n-mainpage'     => 'Visita li Principal págine',
 'tooltip-t-specialpages' => 'Liste de omni special págines',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Galerie de nov images',
 
 # 'all' in various places, this might be different for inflected languages

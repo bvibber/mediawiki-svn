@@ -8,26 +8,27 @@
  * @author Kaustubh
  * @author Shyam
  * @author Sunil Mohan
+ * @author Taxman
  * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Media',
-	NS_SPECIAL        => 'विशेष',
-	NS_MAIN           => '',
-	NS_TALK           => 'वार्ता',
-	NS_USER           => 'सदस्य',
-	NS_USER_TALK      => 'सदस्य_वार्ता',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => '$1_वार्ता',
-	NS_IMAGE          => 'चित्र',
-	NS_IMAGE_TALK     => 'चित्र_वार्ता',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'MediaWiki_talk',
-	NS_TEMPLATE       => 'साँचा',
-	NS_TEMPLATE_TALK  => 'साँचा_वार्ता',
-	NS_CATEGORY       => 'श्रेणी',
-	NS_CATEGORY_TALK  => 'श्रेणी_वार्ता',
+	NS_MEDIA            => 'मीडिया',
+	NS_SPECIAL          => 'विशेष',
+	NS_TALK             => 'वार्ता',
+	NS_USER             => 'सदस्य',
+	NS_USER_TALK        => 'सदस्य_वार्ता',
+	NS_PROJECT_TALK     => '$1_वार्ता',
+	NS_FILE             => 'चित्र',
+	NS_FILE_TALK        => 'चित्र_वार्ता',
+	NS_MEDIAWIKI        => 'मीडियाविकि',
+	NS_MEDIAWIKI_TALK   => 'मीडियाविकि_वार्ता',
+	NS_TEMPLATE         => 'साँचा',
+	NS_TEMPLATE_TALK    => 'साँचा_वार्ता',
+	NS_HELP             => 'सहायता',
+	NS_HELP_TALK        => 'सहायता_वार्ता',
+	NS_CATEGORY         => 'श्रेणी',
+	NS_CATEGORY_TALK    => 'श्रेणी_वार्ता',
 );
 
 $digitTransformTable = array(
@@ -183,7 +184,7 @@ $messages = array(
 'mytalk'         => 'मेरी सदस्य वार्ता',
 'anontalk'       => 'इस आई पी के लिये वार्ता',
 'navigation'     => 'नैविगेशन',
-'and'            => 'और',
+'and'            => '&#32;और',
 
 # Metadata in edit box
 'metadata_help' => 'मेटाडाटा:',
@@ -246,8 +247,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} के बारे में',
 'aboutpage'            => 'Project:अबाउट',
-'bugreports'           => 'बग रिपोर्ट',
-'bugreportspage'       => 'Project:बग रिपोर्ट',
 'copyright'            => 'यहां का पाठ्य $1 के अंतर्गत उपलब्ध हैं ।',
 'copyrightpagename'    => '{{SITENAME}} कॉपीराइट',
 'copyrightpage'        => '{{ns:project}}:कोपिराइट',
@@ -494,12 +493,14 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 लॉग इन को पूरा करने के लिये, आप एक नया कूटशब्द दें:',
 'resetpass_text'          => '<!-- पाठ यहां लिखें -->',
 'resetpass_header'        => 'कूटशब्द रिसेट करें',
+'oldpassword'             => 'पुराना पासवर्ड',
+'newpassword'             => 'नया कूटशब्द',
+'retypenew'               => 'नया कूटशब्द पुन: लिखें',
 'resetpass_submit'        => 'कूटशब्द बनाईयें और लॉग इन करें',
 'resetpass_success'       => 'आपका कूटशब्द बदल दिया गया हैं! अभी आपको लॉग इन करवा रहें हैं...',
 'resetpass_bad_temporary' => 'अस्थायी कूटशब्द गलत हैं ।
 आपने ही पहले ही अपना कूटशब्द बदल दिया हो या फिर आपने नया अस्थायी कूटशब्द मंगाया होगा ।',
 'resetpass_forbidden'     => '{{SITENAME}} पर कूटशब्द बदलें नहीं जा सकतें',
-'resetpass_missing'       => 'फ़ार्म डाटा मिला नहीं ।',
 
 # Edit page toolbar
 'bold_sample'     => 'मोटा पाठ',
@@ -524,8 +525,8 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'hr_tip'          => 'हॉरिझॉंटल लाईन (कम इस्तेमाल करें)',
 
 # Edit pages
-'summary'                          => 'सारांश',
-'subject'                          => 'विषय/शीर्षक',
+'summary'                          => 'सारांश:',
+'subject'                          => 'विषय/शीर्षक:',
 'minoredit'                        => 'यह एक छोटा बदलाव है',
 'watchthis'                        => 'इस पृष्ठ को ध्यानसूची में डालें',
 'savearticle'                      => 'बदलाव संजोयें',
@@ -539,8 +540,8 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'missingcommenttext'               => 'कृपया नीचे टिप्पणी दें ।',
 'missingcommentheader'             => "'''स्मरण-पत्र:''' आपने इस टिप्पणीको शीर्षक नहीं दिया हैं ।
 अगर आप दुबारा संजोयें पर क्लीक करें तो आपके बदलाव संजोयें जायेंगे ।",
-'summary-preview'                  => 'सारांशकी झलक',
-'subject-preview'                  => 'विषय/शीर्षक की झलक',
+'summary-preview'                  => 'सारांशकी झलक:',
+'subject-preview'                  => 'विषय/शीर्षक की झलक:',
 'blockedtitle'                     => 'सदस्य अवरुद्ध है',
 'blockedtext'                      => "<big>'''आपका सदस्यनाम अथवा IP एड्रेस ब्लॉक कर दिया गया हैं ।'''</big>
 
@@ -892,9 +893,6 @@ latex, dvips, gs, और convert के इन्स्टॉलेशन की
 'prefs-misc'               => 'अन्य',
 'saveprefs'                => 'संजोयें',
 'resetprefs'               => 'ना संजोये गये बदलाव रद्द करें',
-'oldpassword'              => 'पुराना पासवर्ड',
-'newpassword'              => 'नया कूटशब्द',
-'retypenew'                => 'नया कूटशब्द पुन: लिखें',
 'textboxsize'              => 'संपादन',
 'rows'                     => 'कतारें:',
 'columns'                  => 'कॉलम:',
@@ -1069,11 +1067,11 @@ latex, dvips, gs, और convert के इन्स्टॉलेशन की
 'upload_directory_read_only'  => 'अपलोड डाइरेक्टरी ($1) में सर्वर लिख नहीं पा रहा हैं।',
 'uploaderror'                 => 'अपलोड एरर',
 'uploadtext'                  => "नईं फ़ाईलें अपलोड करने के लिये इस पन्ने का इस्तेमाल करें।
-इसके पहले [[Special:ImageList|अपलोड की गईं फ़ाईलों की सूची]] देखें। अपलोड की हुईं और हटाईं हुई फ़ाइलों के लिये [[Special:Log/upload|सूची]] देखें।
+इसके पहले [[Special:FileList|अपलोड की गईं फ़ाईलों की सूची]] देखें। अपलोड की हुईं और हटाईं हुई फ़ाइलों के लिये [[Special:Log/upload|सूची]] देखें।
 
 अपने लेखोंमें यह फ़ाईल इस्तेमाल के लिये नीचे दिये गये उदाहरणोंके अनुसार कड़ियां बनाईयें।
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' या फिर
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|alt text]]</nowiki>''' या फिर
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' डाइरेक्ट कड़ि बनाने के लिये।",
 'upload-permitted'            => 'अनुमतित फ़ाईल प्रकार: $1।',
 'upload-preferred'            => 'पसंदीदा फ़ाईल प्रकार: $1।',
@@ -1117,9 +1115,9 @@ latex, dvips, gs, और convert के इन्स्टॉलेशन की
 हो सकता हैं यह शायद <i>(thumbnail)</i> हों।
 अगर आपके पास पूरे रिज़ोल्यूशन की फ़ाईल हैं तो उसे अपलोड करें या फिर इस फ़ाईल का नाम बदलें।',
 'fileexists-forbidden'        => 'इस नाम से एक फ़ाईल पहलेसे अस्तित्वमें हैं;
-कॄपया पीछे जाकर इस फ़ाईल को नये नाम से अपलोड करें। [[Image:$1|thumb|center|$1]]',
+कॄपया पीछे जाकर इस फ़ाईल को नये नाम से अपलोड करें। [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'शेअर्ड फ़ाईल रिपोज़िटरीमें इस नाम से एक फ़ाईल हैं;
-कृपया पीछे जाकर इसे नये नाम से अपलोड करें। [[Image:$1|thumb|center|$1]]',
+कृपया पीछे जाकर इसे नये नाम से अपलोड करें। [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'यह फ़ाईल निम्नलिखित {{PLURAL:$1|फ़ाइल की|फ़ाइलोंकी}} कापी हैं:',
 'successfulupload'            => 'अपलोड हो गईं',
 'uploadwarning'               => 'अपलोड वार्निंग',
@@ -1184,20 +1182,20 @@ PICT # misc.
 'upload_source_url'  => ' (एक वैध, सभी जगहोंसे उपलब्ध URL)',
 'upload_source_file' => ' (आपके कम्प्यूटरपर होनेवाली फ़ाईल)',
 
-# Special:ImageList
-'imagelist-summary'     => 'यह विशेष पृष्ठ सभी अपलोड की हुई फ़ाईलें दर्शाता हैं।
+# Special:ListFiles
+'listfiles-summary'     => 'यह विशेष पृष्ठ सभी अपलोड की हुई फ़ाईलें दर्शाता हैं।
 सामान्यत: सबसे बादमें अपलोड हुई फ़ाईलें सबसे उपर दिखती हैं।
 कालम कें शीर्षकमें क्लिक करने से अनुक्रम बदला जा सकता हैं।',
-'imagelist_search_for'  => 'इस मीडिया नाम से खोजें:',
+'listfiles_search_for'  => 'इस मीडिया नाम से खोजें:',
 'imgfile'               => 'फ़ाईल',
-'imagelist'             => 'चित्र सूची',
-'imagelist_date'        => 'दिनांक',
-'imagelist_name'        => 'नाम',
-'imagelist_user'        => 'सदस्य',
-'imagelist_size'        => 'आकार',
-'imagelist_description' => 'ज़ानकारी',
+'listfiles'             => 'चित्र सूची',
+'listfiles_date'        => 'दिनांक',
+'listfiles_name'        => 'नाम',
+'listfiles_user'        => 'सदस्य',
+'listfiles_size'        => 'आकार',
+'listfiles_description' => 'ज़ानकारी',
 
-# Image description page
+# File description page
 'filehist'                       => 'फ़ाईलका इतिहास',
 'filehist-help'                  => 'फ़ाईलका पुराना अवतरण देखनेके लिये दिनांक/समय पर क्लीक करें।',
 'filehist-deleteall'             => 'सभी हटायें',
@@ -1701,7 +1699,7 @@ $1',
 
 # What links here
 'whatlinkshere'            => 'यहाँ क्या जुड़ता है',
-'whatlinkshere-title'      => '$1को जुडे हुए पन्ने',
+'whatlinkshere-title'      => '$1 से जुड़े हुए पन्ने',
 'whatlinkshere-page'       => 'पन्ना:',
 'linkshere'                => "नीचे दिये हुए पन्ने '''[[:$1]]''' से जुडते हैं:",
 'nolinkshere'              => "'''[[:$1]]''' को कुछभी जुडता नहीं हैं ।",
@@ -1930,6 +1928,7 @@ $1 को बाध्य करने का कारण है: "$2"',
 'import-interwiki-history'   => 'इस पन्ने के सभी इतिहास अवतरण कापी करें',
 'import-interwiki-submit'    => 'आयात',
 'import-interwiki-namespace' => 'पन्ने नामस्थानमें स्थानांतरित करें:',
+'import-comment'             => 'टिप्पणी:',
 'importtext'                 => 'कृपया Special:Export सुविधा का इस्तेमाल कर स्रोत विकिसे फ़ाईल निर्यात करें, उसे अपने डिस्क पर डालें और यहां अपलोड करें।',
 'importstart'                => 'पन्ने आयात कर रहें हैं...',
 'import-revision-count'      => '$1 {{PLURAL:$1|अवतरण|अवतरण}}',
@@ -2112,7 +2111,7 @@ $1',
 'show-big-image'       => 'सम्पूर्ण रिज़ोल्यूशन',
 'show-big-image-thumb' => '<small>इस झलक का आकार: $1 × $2 पीक्सेल्स</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'नई फ़ाईल्सकी गैलरी',
 'imagelisttext'         => "नीचे $2 के नुसार '''$1''' {{PLURAL:$1|फ़ाईल दी है।|फ़ाईलें दी हुईं हैं।}}",
 'newimages-summary'     => 'यह विशेष पन्ना हाल में अपलोड हुई फ़ाईलोंकी सूची दर्शाता हैं',
@@ -2612,16 +2611,16 @@ $5
 'filepath'         => 'फ़ाइल पाथ',
 'filepath-page'    => 'फ़ाइल:',
 'filepath-submit'  => 'पाथ',
-'filepath-summary' => 'यह विशेष पृष्ठ फ़ाईल का पूरा पाथ देता हैं।
-चित्र पूरे रिज़ोल्यूशनके साथ दिखता हैं, अन्य फ़ाईल प्रकार उनके संबंधित प्रोग्रेम डाइरेक्टरी से शुरू होते हैं।
+'filepath-summary' => 'यह विशेष पृष्ठ फ़ाईल का पूरा पाथ देता हैं।
+चित्र पूरे रिज़ोल्यूशनके साथ दिखता हैं, अन्य फ़ाईल प्रकार उनके संबंधित प्रोग्रेम डाइरेक्टरी से शुरू होते हैं।
 
-फ़ाईलनाम "{{ns:image}}:" उपपद के बिना लिखें।',
+फ़ाईलनाम "{{ns:file}}:" उपपद के बिना लिखें।',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'फ़ाईल द्विरावृत्ति खोजें',
-'fileduplicatesearch-summary'  => 'हैश वैल्यू के अनुसार फ़ाईल की द्विरावृत्ति खोजें।
+'fileduplicatesearch-summary'  => 'हैश वैल्यू के अनुसार फ़ाईल की द्विरावृत्ति खोजें।
 
-फ़ाईलनाम "{{ns:image}}:" उपपद के बिना लिखें।',
+फ़ाईलनाम "{{ns:file}}:" उपपद के बिना लिखें।',
 'fileduplicatesearch-legend'   => 'द्विरावृत्ति के लिये खोजें',
 'fileduplicatesearch-filename' => 'फ़ाईलनाम:',
 'fileduplicatesearch-submit'   => 'खोज',

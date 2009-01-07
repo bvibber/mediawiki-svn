@@ -134,7 +134,7 @@ $messages = array(
 'mytalk'         => 'Heczaxö',
 'anontalk'       => 'Czaxöde IP',
 'navigation'     => 'Navigacion',
-'and'            => 'ö',
+'and'            => '&#32;ö',
 
 # Metadata in edit box
 'metadata_help' => 'Datade Meta:',
@@ -195,8 +195,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} mii',
 'aboutpage'            => 'Project:Miilà',
-'bugreports'           => 'Iitómde bug',
-'bugreportspage'       => 'Project:Iitómde bug',
 'copyright'            => 'Contentua coitáamb $1 tan.',
 'copyrightpagename'    => 'Copyright {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Copyrightám',
@@ -408,11 +406,13 @@ confirmom account zo coccebj de'me.",
 'resetpass'               => "Account quimx canj'reset",
 'resetpass_announce'      => "Me caápo code temp e-iitomöx mii. Fini caápo, me reset' hunquimx canj cmaadexepe:",
 'resetpass_header'        => "Reset'quimx canj",
+'oldpassword'             => 'Janquimx canj:',
+'newpassword'             => 'Hunquimx canj:',
+'retypenew'               => 'Vanhunquimx canj:',
 'resetpass_submit'        => 'Vanquimx canj ö caápo',
 'resetpass_success'       => 'Me quimx canj coccebj quiixde success! Caápo cmaa...',
 'resetpass_bad_temporary' => "Quimx canj temp invalidanj. Me coccebj reset' quimx canjde success jöx requestan hunquimx canj temp pac.",
 'resetpass_forbidden'     => 'Quimx cánj nereset jan wiki iti',
-'resetpass_missing'       => 'Formdata fan.',
 
 # Edit page toolbar
 'bold_sample'     => 'Text ccomca',
@@ -437,8 +437,8 @@ confirmom account zo coccebj de'me.",
 'hr_tip'          => 'I horizont (seperatman)',
 
 # Edit pages
-'summary'                   => 'Abvuatl',
-'subject'                   => 'Subject/ccanzam',
+'summary'                   => 'Abvuatl:',
+'subject'                   => 'Subject/ccanzam:',
 'minoredit'                 => 'Jan coccebj editám z bajlöxám',
 'watchthis'                 => 'Cáminot jan páhina',
 'savearticle'               => 'Xuniim páhina',
@@ -450,8 +450,8 @@ confirmom account zo coccebj de'me.",
 'missingsummary'            => "'''Attencion:''' Me necoccebj providöx abvuatlde ticpatlöx zo. Clicköx 'Xuniim páhina' xuniim meticpatlöx sans abvuatlde ticpatlöx.",
 'missingcommenttext'        => 'Enterom commentua !-cmaa.',
 'missingcommentheader'      => "'''Attencion:''' Me necoccebj providöx subjectua/corridor zode jan commentua. Clickom 'Xuniim páhina' xuniim meticpatlöx sans subjectua/corridor zo.",
-'summary-preview'           => 'Cuáxiitde abvuatl',
-'subject-preview'           => 'Cuáxiitde subjectua/corridor',
+'summary-preview'           => 'Cuáxiitde abvuatl:',
+'subject-preview'           => 'Cuáxiitde subjectua/corridor:',
 'blockedtitle'              => 'Caitom blockámit',
 'blockedtext'               => "<big>'''Hexuatl jöx adressade IP cáablockom.'''</big>
 
@@ -644,9 +644,6 @@ Informacion: (curt) = quiíxde vercion currentua,
 'prefs-misc'            => 'Jömc',
 'saveprefs'             => 'Xuniim',
 'resetprefs'            => "Reset'",
-'oldpassword'           => 'Janquimx canj:',
-'newpassword'           => 'Hunquimx canj:',
-'retypenew'             => 'Vanhunquimx canj:',
 'textboxsize'           => 'Ticpatlöx',
 'rows'                  => 'Rowám:',
 'columns'               => 'Columnám:',
@@ -760,17 +757,17 @@ Informacion: (curt) = quiíxde vercion currentua,
 'nolicense'         => 'Seleccion coccebj hun',
 'license-nopreview' => '(Necuáxiit)',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Yahöxde IDde ciúchan:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Yahöxde IDde ciúchan:',
 'imgfile'               => 'ciúchan',
-'imagelist'             => 'Listade ciúchán',
-'imagelist_date'        => 'Datum',
-'imagelist_name'        => 'Nom',
-'imagelist_user'        => 'Caitom',
-'imagelist_size'        => 'Bajlip',
-'imagelist_description' => 'Discripcion',
+'listfiles'             => 'Listade ciúchán',
+'listfiles_date'        => 'Datum',
+'listfiles_name'        => 'Nom',
+'listfiles_user'        => 'Caitom',
+'listfiles_size'        => 'Bajlip',
+'listfiles_description' => 'Discripcion',
 
-# Image description page
+# File description page
 'filehist'                  => 'Historiade ciúchan',
 'filehist-deleteall'        => 'delatom jömde man',
 'filehist-deleteone'        => 'delatom jande man',
@@ -1019,6 +1016,7 @@ iitom e-iitomde diijömde caitóm.',
 # Special:Import
 'import'                  => 'Importóm páhinóm',
 'import-interwiki-submit' => 'Importom',
+'import-comment'          => 'Commentua:',
 'importstart'             => 'Importom páhinám...',
 'importfailed'            => 'Römjde import: $1',
 
@@ -1061,7 +1059,7 @@ iitom e-iitomde diijömde caitóm.',
 # Media information
 'widthheightpage' => '$1×$2, $3 páhinám',
 
-# Special:NewImages
+# Special:NewFiles
 'showhidebots' => '($1 botám)',
 'ilsubmit'     => 'Yahöx',
 'bydate'       => 'de datum',

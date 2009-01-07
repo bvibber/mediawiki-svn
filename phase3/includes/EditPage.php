@@ -104,6 +104,10 @@ class EditPage {
 		$this->editFormTextAfterTools =
 		$this->editFormTextBottom = "";
 	}
+	
+	function getArticle() {
+		return $this->mArticle;
+	}
 
 	/**
 	 * Fetch initial editing page content.
@@ -556,7 +560,7 @@ class EditPage {
 			$this->textbox2 = $this->safeUnicodeInput( $request, 'wpTextbox2' );
 			$this->mMetaData = rtrim( $request->getText( 'metadata' ) );
 			# Truncate for whole multibyte characters. +5 bytes for ellipsis
-			$this->summary = $wgLang->truncate( $request->getText( 'wpSummary'  ), 250 );
+			$this->summary = $wgLang->truncate( $request->getText( 'wpSummary' ), 250 );
 
 			# Remove extra headings from summaries and new sections.
 			$this->summary = preg_replace('/^\s*=+\s*(.*?)\s*=+\s*$/', '$1', $this->summary);
@@ -738,7 +742,7 @@ class EditPage {
 		}
 
 		# Check image redirect
-		if ( $this->mTitle->getNamespace() == NS_IMAGE &&
+		if ( $this->mTitle->getNamespace() == NS_FILE &&
 			Title::newFromRedirect( $this->textbox1 ) instanceof Title &&
 			!$wgUser->isAllowed( 'upload' ) ) {
 				if ( $wgUser->isAnon() ) {
@@ -1254,9 +1258,8 @@ class EditPage {
 		#if ( "no" == $redirect ) { $q .= "&redirect=no"; }
 		$action = $wgTitle->escapeLocalURL( $q );
 
-		$colonSep = wfMsg( 'colon-separator' );
-		$summary = wfMsg( 'summary' ) . $colonSep;
-		$subject = wfMsg( 'subject' ) . $colonSep;
+		$summary = wfMsg( 'summary' );
+		$subject = wfMsg( 'subject' );
 
 		$cancel = $sk->makeKnownLink( $wgTitle->getPrefixedText(),
 				wfMsgExt('cancel', array('parseinline')) );
@@ -1333,12 +1336,12 @@ class EditPage {
 			$editsummary = "<div class='editOptions'>\n";
 			global $wgParser;
 			$formattedSummary = wfMsgForContent( 'newsectionsummary', $wgParser->stripSectionName( $this->summary ) );
-			$subjectpreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('subject-preview').$colonSep.$sk->commentBlock( $formattedSummary, $this->mTitle, true )."</div>\n" : '';
+			$subjectpreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">". wfMsg('subject-preview') . $sk->commentBlock( $formattedSummary, $this->mTitle, true )."</div>\n" : '';
 			$summarypreview = '';
 		} else {
 			$commentsubject = '';
 			$editsummary="<div class='editOptions'>\n<span id='wpSummaryLabel'><label for='wpSummary'>{$summary}</label></span>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
-			$summarypreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">".wfMsg('summary-preview').$colonSep.$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
+			$summarypreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">". wfMsg('summary-preview') .$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
 			$subjectpreview = '';
 		}
 
@@ -1384,7 +1387,7 @@ class EditPage {
 
 		$tabindex = 2;
 
-		$checkboxes = self::getCheckboxes( $tabindex, $sk,
+		$checkboxes = $this->getCheckboxes( $tabindex, $sk,
 			array( 'minor' => $this->minoredit, 'watch' => $this->watchthis ) );
 
 		$checkboxhtml = implode( $checkboxes, "\n" );
@@ -1632,7 +1635,7 @@ END
 	 * @return string
 	 */
 	function getPreviewText() {
-		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgLang, $wgContLang;
+		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgLang, $wgContLang, $wgMessageCache;
 
 		wfProfileIn( __METHOD__ );
 
@@ -1684,19 +1687,9 @@ END
 
 			// Parse mediawiki messages with correct target language
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
-				$pos = strrpos( $this->mTitle->getText(), '/' );
-				if ( $pos !== false ) {
-					$code = substr( $this->mTitle->getText(), $pos+1 );
-					switch ($code) {
-						case $wgLang->getCode():
-							$obj = $wgLang; break;
-						case $wgContLang->getCode():
-							$obj = $wgContLang; break;
-						default:
-							$obj = Language::factory( $code );
-					}
-					$parserOptions->setTargetLanguage( $obj );
-				}
+				list( /* $unused */, $lang ) = $wgMessageCache->figureMessage( $this->mTitle->getText() );
+				$obj = wfGetLangObj( $lang );
+				$parserOptions->setTargetLanguage( $obj );
 			}
 
 
@@ -1788,7 +1781,7 @@ END
 
 	/**
 	 * Creates a basic error page which informs the user that
-	 * they have attempted to edit a nonexistant section.
+	 * they have attempted to edit a nonexistent section.
 	 */
 	function noSuchSectionPage() {
 		global $wgOut, $wgTitle;
@@ -1971,7 +1964,7 @@ END
 			array(
 				'image'  => $wgLang->getImageFile('button-image'),
 				'id'     => 'mw-editbutton-image',
-				'open'   => '[['.$wgContLang->getNsText(NS_IMAGE).':',
+				'open'   => '[['.$wgContLang->getNsText(NS_FILE).':',
 				'close'  => ']]',
 				'sample' => wfMsg('image_sample'),
 				'tip'    => wfMsg('image_tip'),
@@ -2061,7 +2054,7 @@ END
 	 *
 	 * @return array
 	 */
-	public static function getCheckboxes( &$tabindex, $skin, $checked ) {
+	public function getCheckboxes( &$tabindex, $skin, $checked ) {
 		global $wgUser;
 
 		$checkboxes = array();
@@ -2091,6 +2084,7 @@ END
 				Xml::check( 'wpWatchthis', $checked['watch'], $attribs ) .
 				"&nbsp;<label for='wpWatchthis'".$skin->tooltip('watch', 'withaccess').">{$watchLabel}</label>";
 		}
+		wfRunHooks( 'EditPageBeforeEditChecks', array( &$this, &$checkboxes, &$tabindex ) );
 		return $checkboxes;
 	}
 
@@ -2168,7 +2162,7 @@ END
 		);
 		$buttons['diff'] = Xml::element('input', $temp, '');
 
-		wfRunHooks( 'EditPageBeforeEditButtons', array( &$this, &$buttons ) );
+		wfRunHooks( 'EditPageBeforeEditButtons', array( &$this, &$buttons, &$tabindex ) );
 		return $buttons;
 	}
 

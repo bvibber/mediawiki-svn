@@ -126,8 +126,12 @@ class CoreParserFunctions {
 		# attempt, url-decode and try for a second.
 		if( is_null( $title ) )
 			$title = Title::newFromUrl( urldecode( $s ) );
-		if ( !is_null( $title ) ) {
-			if ( !is_null( $arg ) ) {
+		if( !is_null( $title ) ) {
+			# Convert NS_MEDIA -> NS_FILE
+			if( $title->getNamespace() == NS_MEDIA ) {
+				$title = Title::makeTitle( NS_FILE, $title->getDBKey() );
+			}
+			if( !is_null( $arg ) ) {
 				$text = $title->$func( $arg );
 			} else {
 				$text = $title->$func();
@@ -279,12 +283,12 @@ class CoreParserFunctions {
 		if( isset( $cache[$page] ) ) {
 			$length = $cache[$page];
 		} elseif( $parser->incrementExpensiveFunctionCount() ) {
-			$length = $cache[$page] = $title->getLength();
+			$rev = Revision::newFromTitle($title);
+			$id = $rev ? $rev->getPage() : 0;
+			$length = $cache[$page] = $rev ? $rev->getSize() : 0;
 	
 			// Register dependency in templatelinks
-			$id = $title->getArticleId();
-			$revid = Revision::newFromTitle($title);
-			$parser->mOutput->addTemplate($title, $id, $revid);
+			$parser->mOutput->addTemplate( $title, $id, $rev ? $rev->getId() : 0 );
 		}	
 		return self::formatRaw( $length, $raw );
 	}
@@ -349,7 +353,7 @@ class CoreParserFunctions {
 		if( $file ) {
 			$url = $file->getFullUrl();
 			if( $option == 'nowiki' ) {
-				return "<nowiki>$url</nowiki>";
+				return array( $url, 'nowiki' => true );
 			}
 			return $url;
 		} else {

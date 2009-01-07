@@ -148,7 +148,7 @@ $messages = array(
 'mytalk'         => 'La mi caraba',
 'anontalk'       => 'Caraba pa esta IP',
 'navigation'     => 'Güiquipeandu',
-'and'            => 'i',
+'and'            => '&#32;i',
 
 # Metadata in edit box
 'metadata_help' => 'Metadatus:',
@@ -211,8 +211,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Al tentu {{SITENAME}}',
 'aboutpage'            => 'Project:Enholmación',
-'bugreports'           => 'Enholmis de marrus',
-'bugreportspage'       => 'Project:Enholmis de marrus',
 'copyright'            => 'Continiu disponibri bahu $1.',
 'copyrightpagename'    => 'Copyright de {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Copyright',
@@ -442,11 +440,13 @@ Si s\'á criau la cuenta ebiu a angún marru, inora esti mensahi.',
 'resetpass_announce'      => 'As entrau ena tu cuenta con una consínia temporal. Pol favol, escrebi una nueva consínia aquí:',
 'resetpass_text'          => '<!-- Aquí s´escrebi el testu -->',
 'resetpass_header'        => 'Reahustal consínia',
+'oldpassword'             => 'Consínia antigua:',
+'newpassword'             => 'Consínia nueva:',
+'retypenew'               => 'Güervi a escrebil la nueva consínia:',
 'resetpass_submit'        => 'Escrebi la consínia i entra',
 'resetpass_success'       => 'La tu consínia á siu chambá! Ya pueis entral otra vezi ena tu cuenta...',
 'resetpass_bad_temporary' => "Consínia temporal embilmá. Es posibri que ya aigas chambau la tu consínia u qu'aigas solicitau el enviu d'otra.",
 'resetpass_forbidden'     => 'Nu se puein chambal las consínias nesti güiqui',
-'resetpass_missing'       => 'Nu ai datus nel hormuláriu.',
 
 # Edit page toolbar
 'bold_sample'     => 'Testu en letra "Bold"',
@@ -471,8 +471,8 @@ Si s\'á criau la cuenta ebiu a angún marru, inora esti mensahi.',
 'hr_tip'          => 'Línia orizontal (deseparaol)',
 
 # Edit pages
-'summary'                          => 'Síntesis',
-'subject'                          => 'Tema/entítulu',
+'summary'                          => 'Síntesis:',
+'subject'                          => 'Tema/entítulu:',
 'minoredit'                        => 'Esta es una eición chiquenina',
 'watchthis'                        => 'Vehilal esta páhina',
 'savearticle'                      => 'Emburacal páhina',
@@ -484,8 +484,8 @@ Si s\'á criau la cuenta ebiu a angún marru, inora esti mensahi.',
 'missingsummary'                   => "'''Atención:''' Nu as escrebiu una síntesis al tentu la tu eición. Si pursas otra vezi sobri «{{MediaWiki:Savearticle}}» la tu eición s´emburacará sin él.",
 'missingcommenttext'               => 'Pol favol, escrebi un testu embahu.',
 'missingcommentheader'             => "'''Atención:''' Nu as escrebiu un entítulu pal tu comentáriu. Si güervis a pursal sobri \"Emburacal\", s'emburacará sin él.",
-'summary-preview'                  => 'Previsoreal síntesis',
-'subject-preview'                  => 'Previsoreal tema/entítulu',
+'summary-preview'                  => 'Previsoreal síntesis:',
+'subject-preview'                  => 'Previsoreal tema/entítulu:',
 'blockedtitle'                     => 'Esti usuáriu está atarugau',
 'blockedtext'                      => "<big>'''El tu nombri d'usuáriu/direción IP está atarugau/á.'''</big>
 
@@ -798,9 +798,6 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.",
 'prefs-misc'               => 'Bandallu (una mihina e tó)',
 'saveprefs'                => 'Emburacal',
 'resetprefs'               => 'Esborral los chambus nu emburacaus',
-'oldpassword'              => 'Consínia antigua:',
-'newpassword'              => 'Consínia nueva:',
-'retypenew'                => 'Güervi a escrebil la nueva consínia:',
 'textboxsize'              => 'Eitandu',
 'rows'                     => 'Filas:',
 'columns'                  => 'Colunas:',
@@ -934,11 +931,11 @@ Las páhinas de la tu [[Special:Watchlist|lista e seguimientu]] están en '''neg
 pa empuntal archivus.',
 'upload_directory_read_only'  => "Nu puei escrebilsi nel diretoriu d'empuntu ($1) el sirviol.",
 'uploaderror'                 => 'Marru d´empuntu',
-'uploadtext'                  => "Gasta el hormuláriu d'embahu pa empuntal archivus, pa vel u landeal imahin ya empuntás vaiti pala [[Special:ImageList|lista d'archivus empuntaus]]. Tantu los archivus empuntaus cumu los esborraus se rustrin nel [[Special:Log/upload|rustrihu d'empuntu]].
+'uploadtext'                  => "Gasta el hormuláriu d'embahu pa empuntal archivus, pa vel u landeal imahin ya empuntás vaiti pala [[Special:FileList|lista d'archivus empuntaus]]. Tantu los archivus empuntaus cumu los esborraus se rustrin nel [[Special:Log/upload|rustrihu d'empuntu]].
 
 P'añiil la imahin nuna páhina, gasta el atihu el hormuláriu
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' u
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|alt text]]</nowiki>''' u
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' p'atihal diretamenti al archivu.",
 'upload-permitted'            => "Crasis d'archivus premitias: $1.",
 'upload-preferred'            => "Crasis d'archivus preferias: $1.",
@@ -975,8 +972,8 @@ Pol favol, lihi un nombri deferenti.',
 Nel chascu en que huera la mesm imahin (inque seya en grandi) nu es mestel qu'empuntis el tu archivu.",
 'file-thumbnail-no'           => 'El nombri el archivu esmiença pol <strong><tt>$1</tt></strong>. Paci sel una imahin pequeña <i>(cuairu)</i>.
 Si tiinis la imahin cola resolución orihinal, empúntala, si nu, pol favol, chamba el nombri del archivu.',
-'fileexists-forbidden'        => 'Ya desisti un archivu con esti nombri; pol favol, güervi p´atrás i empunta el archivu con otru nombri. [[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => "Ya desisti un archivu con esti nombri; pol favol, vaiti p'atrás i empunta el archivu con otru nombri. [[Image:$1|thumb|center|$1]]",
+'fileexists-forbidden'        => 'Ya desisti un archivu con esti nombri; pol favol, güervi p´atrás i empunta el archivu con otru nombri. [[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => "Ya desisti un archivu con esti nombri; pol favol, vaiti p'atrás i empunta el archivu con otru nombri. [[File:$1|thumb|center|$1]]",
 'successfulupload'            => 'Empuntu satisfatoriu',
 'uploadwarning'               => 'Avisu d´empuntu',
 'savefile'                    => 'Emburacal archivu',
@@ -1017,20 +1014,20 @@ Velaquí el antigu rustrihu d´esborrau pa esti archivu:",
 'upload_source_url'  => ' (una URL vália i acesibri)',
 'upload_source_file' => ' (un archivu nel tu ordinaol)',
 
-# Special:ImageList
-'imagelist-summary'     => 'Esta páhina especial muestra tolos archivus empuntaus.
+# Special:ListFiles
+'listfiles-summary'     => 'Esta páhina especial muestra tolos archivus empuntaus.
 Pol defetu los úrtimus archivus empuntaus se muestran ena parti arta la lista.
 Pursa nel entítulu la coluna pa chambal el ordin.',
-'imagelist_search_for'  => 'Landeal pol nombri la imahin:',
+'listfiles_search_for'  => 'Landeal pol nombri la imahin:',
 'imgfile'               => 'archivu',
-'imagelist'             => 'Lista d´archivus',
-'imagelist_date'        => 'Fecha',
-'imagelist_name'        => 'Nombri',
-'imagelist_user'        => 'Usuáriu',
-'imagelist_size'        => 'Grandol',
-'imagelist_description' => 'Descrición',
+'listfiles'             => 'Lista d´archivus',
+'listfiles_date'        => 'Fecha',
+'listfiles_name'        => 'Nombri',
+'listfiles_user'        => 'Usuáriu',
+'listfiles_size'        => 'Grandol',
+'listfiles_description' => 'Descrición',
 
-# Image description page
+# File description page
 'filehist'                  => 'Estorial el archivu',
 'filehist-help'             => 'Pursa nuna fecha/ora pa vel cumu era el archivu nesi momentu.',
 'filehist-deleteall'        => 'esborral tós',
@@ -1688,6 +1685,7 @@ Tolas acionis d'emporteau transwiki se rustrin nel [[Special:Log/import|rustrihu
 'import-interwiki-history'   => "Copial tolas velsionis estóricas d'esta páhina",
 'import-interwiki-submit'    => 'Emporteal',
 'import-interwiki-namespace' => 'Movel páhinas al espaciu e nombris:',
+'import-comment'             => 'Comentáriu:',
 'importstart'                => 'Emporteandu páhinas...',
 'import-revision-count'      => '$1 {{PLURAL:$1|revisión|revisionis}}',
 'importnopages'              => 'Nu ai páhinas pa emporteal.',
@@ -1854,7 +1852,7 @@ $1',
 'show-big-image'       => 'Resolución máisima',
 'show-big-image-thumb' => '<small>Grandol al previsoreal: $1 × $2 pixelis</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Correol d´archivus nuevus',
 'imagelisttext'         => "Embahu ai una lista con '''$1''' {{PLURAL:$1|archivu|archivus}} ordenaus $2.",
 'noimages'              => 'Nu ai ná pa vel.',
@@ -2255,7 +2253,7 @@ Pol favol, confirma si rialmenti quieis gorvel a crial la páhina.",
 'filepath-submit'  => 'Ruta',
 'filepath-summary' => "Esta páhina especial degüervi la ruta compreta dun archivu. Las imahin se muestran a resolución compreta; las demas crasis d'archivu s'ehecutan diretamenti con el su pograma asociau.
 
-Escribi el nombri d'archivu sin el prefihu \"{{ns:image}}:\".",
+Escribi el nombri d'archivu sin el prefihu \"{{ns:file}}:\".",
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Landeal archivus dupricaus',

@@ -16,36 +16,28 @@
  * @author शࣿरीहरि
  */
 
-$skinNames = array(
-	'standard'    => 'अभिजात',
-	'nostalgia'   => 'रम्य',
-	'cologneblue' => 'सुरेखनीळी',
-	'monobook'    => 'मोनोबुक',
-	'myskin'      => 'माझीकांती',
-	'chick'       => 'मस्त',
-	'simple'      => 'साधी',
-	'modern'      => 'आधुनिक',
+$namespaceNames = array(
+	NS_MEDIA            => 'मिडिया',
+	NS_SPECIAL          => 'विशेष',
+	NS_TALK             => 'चर्चा',
+	NS_USER             => 'सदस्य',
+	NS_USER_TALK        => 'सदस्य चर्चा',
+	NS_PROJECT_TALK     => '$1_चर्चा',
+	NS_FILE             => 'चित्र',
+	NS_FILE_TALK        => 'चित्र_चर्चा',
+	NS_MEDIAWIKI        => 'मिडियाविकी',
+	NS_MEDIAWIKI_TALK   => 'मिडियाविकी_चर्चा',
+	NS_TEMPLATE         => 'साचा',
+	NS_TEMPLATE_TALK    => 'साचा_चर्चा',
+	NS_HELP             => 'सहाय्य',
+	NS_HELP_TALK        => 'सहाय्य_चर्चा',
+	NS_CATEGORY         => 'वर्ग',
+	NS_CATEGORY_TALK    => 'वर्ग_चर्चा',
 );
 
-$namespaceNames = array(
-	NS_MEDIA          => 'मिडिया',
-	NS_SPECIAL        => 'विशेष',
-	NS_MAIN           => '',
-	NS_TALK           => 'चर्चा',
-	NS_USER           => 'सदस्य',
-	NS_USER_TALK      => 'सदस्य_चर्चा',
-	# NS_PROJECT set by \$wgMetaNamespace
-	NS_PROJECT_TALK   => '$1_चर्चा',
-	NS_IMAGE          => 'चित्र',
-	NS_IMAGE_TALK     => 'चित्र_चर्चा',
-	NS_MEDIAWIKI      => 'मिडियाविकी',
-	NS_MEDIAWIKI_TALK => 'मिडियाविकी_चर्चा',
-	NS_TEMPLATE       => 'साचा',
-	NS_TEMPLATE_TALK  => 'साचा_चर्चा',
-	NS_HELP           => 'साहाय्य',
-	NS_HELP_TALK      => 'साहाय्य_चर्चा',
-	NS_CATEGORY       => 'वर्ग',
-	NS_CATEGORY_TALK  => 'वर्ग_चर्चा',
+$namespaceAliases = array(
+	'साहाय्य' => NS_HELP,
+	'साहाय्य_चर्चा' => NS_HELP_TALK,
 );
 
 $specialPageAliases = array(
@@ -58,7 +50,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'पहार्‍याची सूची' ),
 	'Recentchanges'             => array( 'अलीकडील बदल' ),
 	'Upload'                    => array( 'चढवा' ),
-	'Imagelist'                 => array( 'चित्रयादी' ),
+	'Listfiles'                 => array( 'चित्रयादी' ),
 	'Newimages'                 => array( 'नवीन चित्रे' ),
 	'Listusers'                 => array( 'सदस्यांची यादी' ),
 	'Listgrouprights'           => array( 'गट अधिकार यादी' ),
@@ -314,7 +306,7 @@ $messages = array(
 'mytalk'         => 'माझ्या चर्चा',
 'anontalk'       => 'या अंकपत्त्याचे चर्चा पान उघडा',
 'navigation'     => 'सुचालन',
-'and'            => 'आणि',
+'and'            => '&#32;आणि',
 
 # Metadata in edit box
 'metadata_help' => 'मेटाडाटा:',
@@ -377,8 +369,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} बद्दल',
 'aboutpage'            => 'Project:माहितीपृष्ठ',
-'bugreports'           => 'दोष अहवाल',
-'bugreportspage'       => 'Project:दोष अहवाल',
 'copyright'            => 'येथील मजकूर $1च्या अंतर्गत उपलब्ध आहे.',
 'copyrightpagename'    => '{{SITENAME}} प्रताधिकार',
 'copyrightpage'        => '{{ns:project}}:प्रताधिकार',
@@ -615,11 +605,13 @@ $2',
 'resetpass_announce'      => 'तुम्ही इमेलमधून दिलेल्या तात्पुरत्या शब्दांकाने प्रवेश केलेला आहे. आपली सदस्य नोंदणी पूर्ण करण्यासाठी कृपया इथे नवीन परवलीचा शब्द द्या:',
 'resetpass_text'          => '<!-- मजकूर इथे लिहा -->',
 'resetpass_header'        => 'परवलीचे पुर्नयोजन करा',
+'oldpassword'             => 'जुना परवलीचा शब्दः',
+'newpassword'             => 'नवीन परवलीचा शब्द:',
+'retypenew'               => 'पुन्हा एकदा परवलीचा शब्द',
 'resetpass_submit'        => 'परवलीचा शब्द टाका आणि प्रवेश करा',
 'resetpass_success'       => 'तुमचा परवलीचा शब्द बदललेला आहे! आता तुमचा प्रवेश करीत आहोत...',
 'resetpass_bad_temporary' => 'तात्पुरता परवलीचा शब्द चुकीचा आहे. तुम्ही कदाचित पूर्वीच परवलीचा शब्द बदललेला असेल किंवा नवीन तात्पुरता परवलीचा शब्द मागितलेला असेल.',
 'resetpass_forbidden'     => '{{SITENAME}} वर परवलीचा शब्द बदलता येत नाही.',
-'resetpass_missing'       => 'सारणी विदा नाही.',
 
 # Edit page toolbar
 'bold_sample'     => 'ठळक मजकूर',
@@ -642,8 +634,8 @@ $2',
 'hr_tip'          => 'आडवी रेषा (कमी वापरा)',
 
 # Edit pages
-'summary'                          => 'सारांश',
-'subject'                          => 'विषय',
+'summary'                          => 'सारांश:',
+'subject'                          => 'विषय:',
 'minoredit'                        => 'हा एक छोटा बदल आहे',
 'watchthis'                        => 'या लेखावर लक्ष ठेवा',
 'savearticle'                      => 'हा लेख साठवून ठेवा',
@@ -655,8 +647,8 @@ $2',
 'missingsummary'                   => "'''आठवण:''' तूम्ही संपादन सारांश पुरवलेला नाही.आपण जतन करा वर पुन्हा टीचकी मारली तर तेत्या शिवाय जतन होईल.",
 'missingcommenttext'               => 'कृपया खाली प्रतिक्रीया भरा.',
 'missingcommentheader'             => "'''आठवण:'''आपण या लेखनाकरिता विषय किंवा अधोरेषा दिलेली नाही .आपण पुन्ह जतन करा अशी सुचना केली तर, तुमचे संपादन त्याशिवायच जतन होईल.",
-'summary-preview'                  => 'आढाव्याची झलक',
-'subject-preview'                  => 'विषय/मथळा झलक',
+'summary-preview'                  => 'आढाव्याची झलक:',
+'subject-preview'                  => 'विषय/मथळा झलक:',
 'blockedtitle'                     => 'या सदस्यासाठी प्रवेश नाकारण्यात आलेला आहे.',
 'blockedtext'                      => "<big>'''तुमचे सदस्यनाव अथवा IP पत्ता ब्लॉक केलेला आहे.'''</big>
 
@@ -792,27 +784,28 @@ $2',
 $3ने ''$2'' कारण दिले आहे.",
 
 # History pages
-'viewpagelogs'        => 'या पानाच्या नोंदी पहा',
-'nohistory'           => 'या पृष्ठासाठी आवृत्ती इतिहास अस्तित्वात नाही.',
-'currentrev'          => 'चालू आवृत्ती',
-'revisionasof'        => '$1 नुसारची आवृत्ती',
-'revision-info'       => '$2ने $1चे आवर्तन', # Additionally available: $3: revision id
-'previousrevision'    => '←मागील आवृत्ती',
-'nextrevision'        => 'पुढील आवृत्ती→',
-'currentrevisionlink' => 'आताची आवृत्ती',
-'cur'                 => 'चालू',
-'next'                => 'पुढील',
-'last'                => 'मागील',
-'page_first'          => 'प्रथम',
-'page_last'           => 'अंतिम',
-'histlegend'          => 'बदल निवडणे: जुन्या आवृत्तींमधील फरक पाहण्यासाठी रेडियो बॉक्स निवडा व एन्टर कळ दाबा अथवा खाली दिलेल्या कळीवर टिचकी द्या.<br />
+'viewpagelogs'           => 'या पानाच्या नोंदी पहा',
+'nohistory'              => 'या पृष्ठासाठी आवृत्ती इतिहास अस्तित्वात नाही.',
+'currentrev'             => 'चालू आवृत्ती',
+'revisionasof'           => '$1 नुसारची आवृत्ती',
+'revision-info'          => '$2ने $1चे आवर्तन', # Additionally available: $3: revision id
+'previousrevision'       => '←मागील आवृत्ती',
+'nextrevision'           => 'पुढील आवृत्ती→',
+'currentrevisionlink'    => 'आताची आवृत्ती',
+'cur'                    => 'चालू',
+'next'                   => 'पुढील',
+'last'                   => 'मागील',
+'page_first'             => 'प्रथम',
+'page_last'              => 'अंतिम',
+'histlegend'             => 'बदल निवडणे: जुन्या आवृत्तींमधील फरक पाहण्यासाठी रेडियो बॉक्स निवडा व एन्टर कळ दाबा अथवा खाली दिलेल्या कळीवर टिचकी द्या.<br />
 लिजेंड: (चालू) = चालू आवृत्तीशी फरक,
 (मागील) = पूर्वीच्या आवृत्तीशी फरक, छो = छोटा बदल',
-'deletedrev'          => '[वगळले]',
-'histfirst'           => 'सर्वात जुने',
-'histlast'            => 'सर्वात नवीन',
-'historysize'         => '({{PLURAL:$1|1 बाइट|$1 बाइट}})',
-'historyempty'        => '(रिकामे)',
+'history-fieldset-title' => 'इतिहास विंचरण करा',
+'deletedrev'             => '[वगळले]',
+'histfirst'              => 'सर्वात जुने',
+'histlast'               => 'सर्वात नवीन',
+'historysize'            => '({{PLURAL:$1|1 बाइट|$1 बाइट}})',
+'historyempty'           => '(रिकामे)',
 
 # Revision feed
 'history-feed-title'          => 'आवृत्ती इतिहास',
@@ -992,9 +985,6 @@ $3ने ''$2'' कारण दिले आहे.",
 'prefs-misc'               => 'इतर',
 'saveprefs'                => 'जतन करा',
 'resetprefs'               => 'न जतन केलेले बदल रद्द करा',
-'oldpassword'              => 'जुना परवलीचा शब्दः',
-'newpassword'              => 'नवीन परवलीचा शब्द:',
-'retypenew'                => 'पुन्हा एकदा परवलीचा शब्द',
 'textboxsize'              => 'संपादन',
 'rows'                     => 'ओळी:',
 'columns'                  => 'स्तंभ:',
@@ -1170,11 +1160,11 @@ $3ने ''$2'' कारण दिले आहे.",
 'upload_directory_read_only'  => '$1 या डिरेक्टरी मध्ये सर्व्हर लिहू शकत नाही.',
 'uploaderror'                 => 'चढवण्यात चुक',
 'uploadtext'                  => "खालील अर्ज नवीन संचिका चढविण्यासाठी वापरा.
-पूर्वी चढविलेल्या संचिका पाहण्यासाठी अथवा शोधण्यासाठी [[Special:ImageList|चढविलेल्या संचिकांची यादी]] पहा. चढविलेल्या तसेच वगळलेल्या संचिकांची यादी पहाण्यासाठी [[Special:Log/upload|सूची]] पहा.
+पूर्वी चढविलेल्या संचिका पाहण्यासाठी अथवा शोधण्यासाठी [[Special:FileList|चढविलेल्या संचिकांची यादी]] पहा. चढविलेल्या तसेच वगळलेल्या संचिकांची यादी पहाण्यासाठी [[Special:Log/upload|सूची]] पहा.
 
 एखाद्या लेखात ही संचिका वापरण्यासाठी खालीलप्रमाणे दुवा द्या
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:File.png|alt text]]</nowiki>''' किंवा
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|alt text]]</nowiki>''' किंवा
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki>''' संचिकेला थेट दुवा देण्यासाठी वापरा.",
 'upload-permitted'            => 'अनुमतीत संचिका वर्ग: $1.',
 'upload-preferred'            => 'श्रेयस्कर संचिका प्रकार:$1.',
@@ -1212,8 +1202,8 @@ $3ने ''$2'' कारण दिले आहे.",
 'file-thumbnail-no'           => 'या संचिकेचे नाव <strong><tt>$1</tt></strong> पासून सुरू होत आहे. ही कदाचित झलक <i>(thumbnail)</i> असू शकते.
 जर तुमच्या कडे पूर्ण रिझोल्यूशनची संचिका असेल तर चढवा अथवा संचिकेचे नाव बदला.',
 'fileexists-forbidden'        => 'या नावाची संचिका अगोदरच अस्तित्त्वात आहे; कृपया पुन्हा मागे जाऊन ही संचिका नवीन नावाने चढवा.
-[[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'हे नाव असलेली एक संचिका शेअर्ड संचिका कोशात आधी पासून आहे; कृपया परत फिरा आणि नविन(वेगळ्या) नावाने ही संचिका पुन्हा चढवा.[[Image:$1|इवले|मध्य|$1]]',
+[[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'हे नाव असलेली एक संचिका शेअर्ड संचिका कोशात आधी पासून आहे; कृपया परत फिरा आणि नविन(वेगळ्या) नावाने ही संचिका पुन्हा चढवा.[[File:$1|इवले|मध्य|$1]]',
 'file-exists-duplicate'       => 'ही संचिका खालील {{PLURAL:$1|संचिकेची|संचिकांची}} प्रत आहे:',
 'successfulupload'            => 'यशस्वीरीत्या चढवले',
 'uploadwarning'               => 'चढवताना सूचना',
@@ -1255,20 +1245,20 @@ $3ने ''$2'' कारण दिले आहे.",
 'upload_source_url'  => '(एक सुयोग्य,सार्वजनिकरित्या उपलब्ध URL)',
 'upload_source_file' => '(तुमच्या संगणकावरील एक संचिका)',
 
-# Special:ImageList
-'imagelist-summary'     => 'हे विशेष पान सर्व चढविलेल्या संचिका दर्शिविते.
+# Special:ListFiles
+'listfiles-summary'     => 'हे विशेष पान सर्व चढविलेल्या संचिका दर्शिविते.
 सर्वसाधारणपणे सगळ्यात शेवटी बदल झालेल्या संचिका सर्वात वर दिसतात.
 रकान्याच्या नावापुढे टिचकी देऊन संचिकांचा अनुक्रम बदलता येतो.',
-'imagelist_search_for'  => 'चित्र नावाने शोध:',
+'listfiles_search_for'  => 'चित्र नावाने शोध:',
 'imgfile'               => 'संचिका',
-'imagelist'             => 'चित्र यादी',
-'imagelist_date'        => 'दिनांक',
-'imagelist_name'        => 'नाव',
-'imagelist_user'        => 'सदस्य',
-'imagelist_size'        => 'आकार (बाईट्स)',
-'imagelist_description' => 'वर्णन',
+'listfiles'             => 'चित्र यादी',
+'listfiles_date'        => 'दिनांक',
+'listfiles_name'        => 'नाव',
+'listfiles_user'        => 'सदस्य',
+'listfiles_size'        => 'आकार (बाईट्स)',
+'listfiles_description' => 'वर्णन',
 
-# Image description page
+# File description page
 'filehist'                       => 'संचिकेचा इतिहास',
 'filehist-help'                  => 'संचिकेची पूर्वीची आवृत्ती बघण्यासाठी दिनांक/वेळ वर टिचकी द्या.',
 'filehist-deleteall'             => 'सर्व वगळा',
@@ -1581,7 +1571,7 @@ $NEWPAGE
 
 तुम्ही पानास भेट देत नाही तोपर्यंत पुढे होणार्‍या बदलांची इतर कोणतीही वेगळी सूचना नसेल.तुम्ही पहार्‍याच्या सूचीतील पहारा ठेवलेल्या पानांकरिताच्या सूचना पताकांचे पुर्नयोजन करु शकता.
 
-::::::तुमची मैत्रीपूर्ण {{SITENAME}} सुचना प्रणाली
+तुमची मैत्रीपूर्ण {{SITENAME}} सुचना प्रणाली
 
 --
 
@@ -1974,6 +1964,7 @@ $1',
 'import-interwiki-history'   => 'या पानाकरिताची सार्‍या इतिहास आवर्तनांची नक्कल करा',
 'import-interwiki-submit'    => 'आयात',
 'import-interwiki-namespace' => 'पाने नामविश्वात स्थानांतरीत करा:',
+'import-comment'             => 'प्रतिक्रीया:',
 'importtext'                 => 'कृपया Special:Export सुविधा वापरून स्रोत विकिकडून संचिका निर्यात करा,ती तुमच्या तबकडीवर जतन करा आणि येथे चढवा.',
 'importstart'                => 'पाने आयात करत आहे...',
 'import-revision-count'      => '$1 {{PLURAL:$1|आवर्तन|आवर्तने}}',
@@ -2096,6 +2087,16 @@ $1',
 'numauthors'     => 'स्पष्ट पणे वेगळ्या लेखकांची संख्या (पान): $1',
 'numtalkauthors' => 'स्पष्टपणे वेग-वेगळ्या लेखकांची संख्या(चर्चा पान): $1',
 
+# Skin names
+'skinname-standard'    => 'अभिजात',
+'skinname-nostalgia'   => 'रम्य',
+'skinname-cologneblue' => 'सुरेखनीळी',
+'skinname-monobook'    => 'मोनोबुक',
+'skinname-myskin'      => 'माझीकांती',
+'skinname-chick'       => 'मस्त',
+'skinname-simple'      => 'साधी',
+'skinname-modern'      => 'आधुनिक',
+
 # Math options
 'mw_math_png'    => 'नेहमीच पीएनजी (PNG) रेखाटा',
 'mw_math_simple' => 'सुलभ असल्यास एचटीएमएल (HTML); अन्यथा पीएनजी (PNG)',
@@ -2147,7 +2148,7 @@ $1',
 'show-big-image'       => 'संपूर्ण रिजोल्यूशन',
 'show-big-image-thumb' => '<small>या झलकेचा आकार: $1 × $2 pixels</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'नवीन संचिकांची यादी',
 'imagelisttext'         => "खाली '''$1''' संचिका {{PLURAL:$1|दिली आहे.|$2 क्रमाने दिल्या आहेत.}}",
 'newimages-summary'     => 'हे विशेष पान शेवटी चढविलेल्या संचिका दर्शविते',
@@ -2429,7 +2430,7 @@ $1',
 
 # External editor support
 'edit-externally'      => 'बाहेरील संगणक प्रणाली वापरून ही संचिका संपादा.',
-'edit-externally-help' => 'अधिक माहितीसाठी [http://www.mediawiki.org/wiki/Manual:External_editors स्थापन करण्याच्या सूचना] पहा.',
+'edit-externally-help' => 'अधिक माहितीसाठी स्थापन करण्याच्या सूचना [http://www.mediawiki.org/wiki/Manual:External_editors] येथे पहा.',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'सर्व',
@@ -2580,13 +2581,13 @@ $5
 'filepath-summary' => 'हे विशेष पान संचिकेचा संपूर्ण मार्ग कळवते.
 चित्रे संपूर्ण रिझोल्यूशन मध्ये दाखवली आहेत,इतर संचिका प्रकार त्यांच्या संबधीत प्रोग्रामने प्रत्यक्ष सुरू होतात.
 
-"{{ns:image}}:" पूर्वपदा शिवाय संचिकेचे नाव भरा.',
+"{{ns:file}}:" पूर्वपदा शिवाय संचिकेचे नाव भरा.',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'जुळ्या संचिका शोधा',
 'fileduplicatesearch-summary'  => 'हॅश किंमतीप्रमाणे जुळ्या संचिका शोधा.
 
-"{{ns:image}}:" न लिहिता फक्त संचिकेचे नाव लिहा.',
+"{{ns:file}}:" न लिहिता फक्त संचिकेचे नाव लिहा.',
 'fileduplicatesearch-legend'   => 'जुळी संचिका शोधा',
 'fileduplicatesearch-filename' => 'संचिकानाव:',
 'fileduplicatesearch-submit'   => 'शोधा',

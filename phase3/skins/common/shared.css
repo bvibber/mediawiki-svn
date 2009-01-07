@@ -142,8 +142,14 @@ span.searchalttitle {
 
 div.searchdidyoumean {
 	font-size: 127%;
-	padding-bottom:1ex;
-	padding-top:1ex; 
+	margin-bottom: 1ex;
+	margin-top: 1ex;
+	/* Note that this color won't affect the link, as desired. */
+	color: #c00;
+}
+
+div.searchdidyoumean em {
+	font-weight: bold;
 }
 
 .searchmatch {
@@ -152,10 +158,10 @@ div.searchdidyoumean {
 
 div.searchresults {
 	border:1px solid darkblue;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 /*

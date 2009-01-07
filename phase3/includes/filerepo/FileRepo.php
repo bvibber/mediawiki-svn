@@ -59,7 +59,7 @@ abstract class FileRepo {
 	 */
 	function newFile( $title, $time = false ) {
 		if ( !($title instanceof Title) ) {
-			$title = Title::makeTitleSafe( NS_IMAGE, $title );
+			$title = Title::makeTitleSafe( NS_FILE, $title );
 			if ( !is_object( $title ) ) {
 				return null;
 			}
@@ -85,7 +85,7 @@ abstract class FileRepo {
 	 */
 	function findFile( $title, $time = false, $flags = 0 ) {
 		if ( !($title instanceof Title) ) {
-			$title = Title::makeTitleSafe( NS_IMAGE, $title );
+			$title = Title::makeTitleSafe( NS_FILE, $title );
 			if ( !is_object( $title ) ) {
 				return false;
 			}
@@ -115,7 +115,7 @@ abstract class FileRepo {
 			return false;
 		}
 		$redir = $this->checkRedirect( $title );		
-		if( $redir && $redir->getNamespace() == NS_IMAGE) {
+		if( $redir && $redir->getNamespace() == NS_FILE) {
 			$img = $this->newFile( $redir );
 			if( !$img ) {
 				return false;
@@ -131,12 +131,12 @@ abstract class FileRepo {
 	/*
 	 * Find many files at once. 
 	 * @param array $titles, an array of titles
-	 * @param int $flags
+	 * @todo Think of a good way to optionally pass timestamps to this function.
 	 */
-	function findFiles( $titles, $flags ) {
+	function findFiles( $titles ) {
 		$result = array();
 		foreach ( $titles as $index => $title ) {
-			$file = $this->findFile( $title, $flags );
+			$file = $this->findFile( $title );
 			if ( $file )
 				$result[$file->getTitle()->getDBkey()] = $file;
 		}
@@ -255,25 +255,6 @@ abstract class FileRepo {
 	}
 
 	/**
-	 * Get the file description page base URL, or false if there isn't one.
-	 * @private
-	 */
-	function getDescBaseUrl() {
-		if ( is_null( $this->descBaseUrl ) ) {
-			if ( !is_null( $this->articleUrl ) ) {
-				$this->descBaseUrl = str_replace( '$1',
-					wfUrlencode( MWNamespace::getCanonicalName( NS_IMAGE ) ) . ':', $this->articleUrl );
-			} elseif ( !is_null( $this->scriptDirUrl ) ) {
-				$this->descBaseUrl = $this->scriptDirUrl . '/index.php?title=' .
-					wfUrlencode( MWNamespace::getCanonicalName( NS_IMAGE ) ) . ':';
-			} else {
-				$this->descBaseUrl = false;
-			}
-		}
-		return $this->descBaseUrl;
-	}
-
-	/**
 	 * Get the URL of an image description page. May return false if it is
 	 * unknown or not applicable. In general this should only be called by the
 	 * File class, since it may return invalid results for certain kinds of
@@ -283,12 +264,29 @@ abstract class FileRepo {
 	 * constructor, whereas local repositories use the local Title functions.
 	 */
 	function getDescriptionUrl( $name ) {
-		$base = $this->getDescBaseUrl();
-		if ( $base ) {
-			return $base . wfUrlencode( $name );
-		} else {
-			return false;
+		$encName = wfUrlencode( $name );
+		if ( !is_null( $this->descBaseUrl ) ) {
+			# "http://example.com/wiki/Image:"
+			return $this->descBaseUrl . $encName;
 		}
+		if ( !is_null( $this->articleUrl ) ) {
+			# "http://example.com/wiki/$1"
+			#
+			# We use "Image:" as the canonical namespace for
+			# compatibility across all MediaWiki versions.
+			return str_replace( '$1',
+				"Image:$encName", $this->articleUrl );
+		}
+		if ( !is_null( $this->scriptDirUrl ) ) {
+			# "http://example.com/w"
+			#
+			# We use "Image:" as the canonical namespace for
+			# compatibility across all MediaWiki versions,
+			# and just sort of hope index.php is right. ;)
+			return $this->scriptDirUrl .
+				"/index.php?title=Image:$encName";
+		}
+		return false;
 	}
 
 	/**
@@ -300,12 +298,12 @@ abstract class FileRepo {
 	function getDescriptionRenderUrl( $name ) {
 		if ( isset( $this->scriptDirUrl ) ) {
 			return $this->scriptDirUrl . '/index.php?title=' .
-				wfUrlencode( MWNamespace::getCanonicalName( NS_IMAGE ) . ':' . $name ) .
+				wfUrlencode( 'Image:' . $name ) .
 				'&action=render';
 		} else {
-			$descBase = $this->getDescBaseUrl();
-			if ( $descBase ) {
-				return wfAppendQuery( $descBase . wfUrlencode( $name ), 'action=render' );
+			$descUrl = $this->getDescriptionUrl( $name );
+			if ( $descUrl ) {
+				return wfAppendQuery( $descUrl, 'action=render' );
 			} else {
 				return false;
 			}

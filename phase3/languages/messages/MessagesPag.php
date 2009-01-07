@@ -25,7 +25,7 @@ $messages = array(
 'mypage'         => 'Say bolong ko',
 'mytalk'         => 'Say tongtongan ko',
 'anontalk'       => 'Tongtongan para ed sayan IP',
-'and'            => 'san',
+'and'            => '&#32;san',
 
 'returnto'          => 'Impawel ed $1.',
 'help'              => 'Tolong',
@@ -106,6 +106,9 @@ $messages = array(
 'accountcreated'             => 'Agawa so account',
 'accountcreatedtext'         => 'Agawa la so user account para $1.',
 
+# Password reset dialog
+'newpassword' => 'Balon password:',
+
 # Edit page toolbar
 'link_tip' => 'Gawing ed loob',
 
@@ -157,7 +160,6 @@ $messages = array(
 'math_unknown_error' => 'aga-antan error',
 'prefs-rc'           => 'Sampot ran binalo',
 'prefs-watchlist'    => 'Listaan na babantayan',
-'newpassword'        => 'Balon password:',
 'textboxsize'        => 'Babaloen',
 'searchresultshead'  => 'Anapen',
 
@@ -181,10 +183,10 @@ $messages = array(
 'sourcefilename'  => 'Filename na pinanlapuan:',
 'watchthisupload' => 'Bantayan yan bolong',
 
-# Special:ImageList
-'imagelist_name' => 'Ngaran',
+# Special:ListFiles
+'listfiles_name' => 'Ngaran',
 
-# Image description page
+# File description page
 'imagelinks'       => 'Saray Gawing',
 'noimage-linktext' => 'I-segep ya',
 
@@ -354,7 +356,7 @@ Pinengneng so $2 para ed listaan na saray abural ran balo.',
 # Attribution
 'lastmodifiedatby' => 'Sampot ya binalo yan bolong nen agew ya $2, $1 nen $3.', # $1 date, $2 time, $3 user
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Anapen',
 
 # EXIF tags

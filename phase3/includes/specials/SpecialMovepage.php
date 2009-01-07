@@ -305,6 +305,12 @@ class MovePageForm {
 				return;
 			}
 
+			// Delete an associated image if there is
+			$file = wfLocalFile( $nt );
+			if( $file->exists() ) {
+				$file->delete( wfMsgForContent( 'delete_and_move_reason' ), false );
+			}
+
 			// This may output an error message and exit
 			$article->doDelete( wfMsgForContent( 'delete_and_move_reason' ) );
 		}
@@ -343,7 +349,9 @@ class MovePageForm {
 		$oldLink = "<span class='plainlinks'>[$oldUrl $oldText]</span>";
 		$newLink = "<span class='plainlinks'>[$newUrl $newText]</span>";
 
+		$msgName = $createRedirect ? 'movepage-moved-redirect' : 'movepage-moved-noredirect';
 		$wgOut->addWikiMsg( 'movepage-moved', $oldLink, $newLink, $oldText, $newText );
+		$wgOut->addWikiMsg( $msgName );
 
 		# Now we move extra pages we've been asked to move: subpages and talk
 		# pages.  First, if the old page or the new page is a talk page, we
@@ -440,7 +448,7 @@ class MovePageForm {
 				$link = $skin->makeKnownLinkObj( $newSubpage );
 				$extraOutput []= wfMsgHtml( 'movepage-page-exists', $link );
 			} else {
-				$success = $oldSubpage->moveTo( $newSubpage, true, $this->reason );
+				$success = $oldSubpage->moveTo( $newSubpage, true, $this->reason, $createRedirect );
 				if( $success === true ) {
 					if ( $this->fixRedirects ) {
 						DoubleRedirectJob::fixRedirects( 'move', $oldSubpage, $newSubpage );

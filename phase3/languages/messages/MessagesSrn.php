@@ -13,6 +13,40 @@
 
 $fallback = 'nl';
 
+$namespaceNames = array(
+	NS_SPECIAL          => 'Spesyal',
+	NS_TALK             => 'Taki',
+	NS_USER             => 'Masyin',
+	NS_USER_TALK        => 'Taki_fu_masyin',
+	NS_PROJECT_TALK     => 'Taki_fu_$1',
+	NS_FILE             => 'Gefre',
+	NS_FILE_TALK        => 'Taki_fu_gefre',
+	NS_MEDIAWIKI_TALK   => 'Taki_fu_MediaWiki',
+	NS_TEMPLATE         => 'Ankra',
+	NS_TEMPLATE_TALK    => 'Taki_fu_ankra',
+	NS_HELP             => 'Yepi',
+	NS_HELP_TALK        => 'Taki_fu_yepi',
+	NS_CATEGORY         => 'Guru',
+	NS_CATEGORY_TALK    => 'Taki_fu_guru',
+);
+
+$namespaceAliases = array(
+	'Speciaal' => NS_SPECIAL,
+	'Overleg' => NS_TALK,
+	'Gebruiker' => NS_USER,
+	'Overleg_gebruiker' => NS_USER_TALK,
+	'Overleg_$1' => NS_PROJECT_TALK,
+	'Afbeelding' => NS_FILE,
+	'Overleg_afbeelding' => NS_FILE_TALK,
+	'Overleg_MediaWiki' => NS_MEDIAWIKI_TALK,
+	'Sjabloon' => NS_TEMPLATE,
+	'Overleg_sjabloon' => NS_TEMPLATE_TALK,
+	'Help' => NS_HELP,
+	'Overleg_help' => NS_HELP_TALK,
+	'Categorie' => NS_CATEGORY,
+	'Overleg_categorie' => NS_CATEGORY_TALK,
+);
+
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'Tustirpeprewoysi' ),
 	'BrokenRedirects'           => array( 'BrokoStirpeprewoysi' ),
@@ -22,7 +56,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Sirey' ),
 	'Recentchanges'             => array( 'BakaseywanKenki' ),
 	'Upload'                    => array( 'Uploti' ),
-	'Imagelist'                 => array( 'Gefrerey' ),
+	'Listfiles'                 => array( 'Gefrerey' ),
 	'Newimages'                 => array( 'NyunGefre' ),
 	'Listusers'                 => array( 'Masyinrey' ),
 	'Randompage'                => array( 'SomaPapira' ),
@@ -211,7 +245,7 @@ $messages = array(
 'mytalk'         => 'Mi kruderi',
 'anontalk'       => 'Taki fu disi IP',
 'navigation'     => 'Fenipresi',
-'and'            => 'nanga',
+'and'            => '&#32;nanga',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -274,8 +308,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Abra {{SITENAME}}',
 'aboutpage'            => 'Project:Abra',
-'bugreports'           => 'Buku fu fowtu',
-'bugreportspage'       => 'Project:Buku fu fowtu',
 'copyright'            => 'Ala san skrifi dyaso de ondro $1.',
 'copyrightpagename'    => '{{SITENAME}} kopi leti',
 'copyrightpage'        => '{{ns:project}}:Kopi leti',
@@ -457,6 +489,9 @@ Bifo tra e-mail kan seni go na a account, yu musu du san skrifi ini a e-mail fu 
 # Password reset dialog
 'resetpass'        => 'Kenki yu waktiwortu',
 'resetpass_header' => 'Kenki yu waktiwortu',
+'oldpassword'      => 'Owru waktiwortu:',
+'newpassword'      => 'Nyun waktiwortu:',
+'retypenew'        => 'Nyun psa wortu ete wan tron:',
 'resetpass_submit' => 'Kenki yu waktiwortu nanga kon',
 
 # Edit page toolbar
@@ -480,8 +515,8 @@ Bifo tra e-mail kan seni go na a account, yu musu du san skrifi ini a e-mail fu 
 'hr_tip'          => 'Didon lini (no kebroiki furu)',
 
 # Edit pages
-'summary'                => "In' syatu",
-'subject'                => 'Abra san/ede',
+'summary'                => "In' syatu:",
+'subject'                => 'Abra san/ede:',
 'minoredit'              => 'Disi na wan pikin kenki',
 'watchthis'              => 'Tan luku a papira disi',
 'savearticle'            => 'Kibri a papira disi',
@@ -491,8 +526,8 @@ Bifo tra e-mail kan seni go na a account, yu musu du san skrifi ini a e-mail fu 
 'showdiff'               => 'Sori den kenki',
 'anoneditwarning'        => "'''Warskow:''' Yu no psa kon ete. Yu IP o kibri poti ini a kenki historia fu a papira disi.",
 'missingcommenttext'     => 'Presi yu oponaki dyaso-ondro.',
-'summary-preview'        => "Luku In'syatu na fesi",
-'subject-preview'        => 'Ondroinfru/edelen fusi',
+'summary-preview'        => "Luku In'syatu na fesi:",
+'subject-preview'        => 'Ondroinfru/edelen fusi:',
 'blockedtitle'           => 'Masyin ben spikri',
 'blockedtext'            => "<big>'''Pasi tapu gi yu kebroikiman-nen noso IP.'''</big>
 
@@ -632,9 +667,6 @@ Yu kan [[:\$1|meki a papira disi]].",
 'prefs-misc'               => 'Diversi',
 'saveprefs'                => 'Oponaki',
 'resetprefs'               => 'Bakadray na owru si',
-'oldpassword'              => 'Owru waktiwortu:',
-'newpassword'              => 'Nyun waktiwortu:',
-'retypenew'                => 'Nyun psa wortu ete wan tron:',
 'textboxsize'              => 'Kenki',
 'rows'                     => 'Rei:',
 'columns'                  => 'Kolum:',
@@ -738,17 +770,17 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 
 'license-nopreview' => '(No fusi)',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Suku na gefre:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Suku na gefre:',
 'imgfile'               => 'gefre',
-'imagelist'             => 'Réy fu file',
-'imagelist_date'        => 'Datum',
-'imagelist_name'        => 'Nen',
-'imagelist_user'        => 'Masyin',
-'imagelist_size'        => 'Gran (byte)',
-'imagelist_description' => 'Infrumasi',
+'listfiles'             => 'Réy fu file',
+'listfiles_date'        => 'Datum',
+'listfiles_name'        => 'Nen',
+'listfiles_user'        => 'Masyin',
+'listfiles_size'        => 'Gran (byte)',
+'listfiles_description' => 'Infrumasi',
 
-# Image description page
+# File description page
 'filehist'                  => 'File historia',
 'filehist-help'             => 'Naki na tapu a dei/ten fu a file fu si fa a ben de na a ten dati.',
 'filehist-deleteall'        => 'trowe ala',
@@ -1065,6 +1097,9 @@ Gi wan trawan papiranen.',
 'thumbnail-more'  => 'Moro bigi',
 'thumbnail_error' => 'Fowtu na a meki fu a thumbnail: $1',
 
+# Special:Import
+'import-comment' => 'Opotaki:',
+
 # Import log
 'importlogpage' => "Log buku fu den sen'teki",
 
@@ -1131,7 +1166,7 @@ Yu ka luku a source.',
 'show-big-image'       => 'Moro srapu',
 'show-big-image-thumb' => '<small>Bigi fu a luku-na-fesi disi: $1 × $2 pixel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'    => 'Nyun file',
 'showhidebots' => '(Bot $1)',
 'noimages'     => 'Noti a si.',

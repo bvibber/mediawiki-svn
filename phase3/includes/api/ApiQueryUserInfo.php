@@ -76,7 +76,8 @@ class ApiQueryUserInfo extends ApiQueryBase {
 			$result->setIndexedTagName($vals['groups'], 'g');	// even if empty
 		}
 		if (isset($this->prop['rights'])) {
-			$vals['rights'] = $wgUser->getRights();
+			// User::getRights() may return duplicate values, strip them
+			$vals['rights'] = array_values(array_unique($wgUser->getRights()));
 			$result->setIndexedTagName($vals['rights'], 'r');	// even if empty
 		}
 		if (isset($this->prop['options'])) {
@@ -113,6 +114,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 			if(!$wgUser->isAnon())
 				$categories[] = 'newbie';
 		}
+		$categories = array_merge($categories, $wgUser->getGroups());
 
 		// Now get the actual limits
 		$retval = array();

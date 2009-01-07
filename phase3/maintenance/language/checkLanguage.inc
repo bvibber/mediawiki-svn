@@ -74,7 +74,7 @@ class CheckLanguageCLI {
 		return array(
 			'untranslated', 'duplicate', 'obsolete', 'variables', 'empty', 'plural',
 			'whitespace', 'xhtml', 'chars', 'links', 'unbalanced', 'namespace',
-			'projecttalk', 'skin', 'magic', 'magic-old', 'magic-over', 'magic-case',
+			'projecttalk', 'magic', 'magic-old', 'magic-over', 'magic-case',
 			'special', 'special-old',
 		);
 	}
@@ -85,7 +85,7 @@ class CheckLanguageCLI {
 	 */
 	protected function nonMessageChecks() {
 		return array(
-			'namespace', 'projecttalk', 'skin', 'magic', 'magic-old', 'magic-over',
+			'namespace', 'projecttalk', 'magic', 'magic-old', 'magic-over',
 			'magic-case', 'special', 'special-old',
 		);
 	}
@@ -120,7 +120,6 @@ class CheckLanguageCLI {
 			'unbalanced'   => 'getMessagesWithUnbalanced',
 			'namespace'    => 'getUntranslatedNamespaces',
 			'projecttalk'  => 'getProblematicProjectTalks',
-			'skin'         => 'getUntranslatedSkins',
 			'magic'        => 'getUntranslatedMagicWords',
 			'magic-old'    => 'getObsoleteMagicWords',
 			'magic-over'   => 'getOverridingMagicWords',
@@ -140,7 +139,6 @@ class CheckLanguageCLI {
 		return array(
 			'namespace'    => array( 'getNamespaceNames', 'en' ),
 			'projecttalk'  => null,
-			'skin'         => array( 'getSkinNames', 'en' ),
 			'magic'        => array( 'getMagicWords', 'en' ),
 			'magic-old'    => array( 'getMagicWords', null ),
 			'magic-over'   => array( 'getMagicWords', null ),
@@ -169,7 +167,6 @@ class CheckLanguageCLI {
 			'unbalanced'   => '$1 message(s) of $2 in $3 have unbalanced {[]}:',
 			'namespace'    => '$1 namespace name(s) of $2 are not translated to $3, but exist in en:',
 			'projecttalk'  => '$1 namespace name(s) and alias(es) in $3 are project talk namespaces without the parameter:',
-			'skin'         => '$1 skin name(s) of $2 are not translated to $3, but exist in en:',
 			'magic'        => '$1 magic word(s) of $2 are not translated to $3, but exist in en:',
 			'magic-old'    => '$1 magic word(s) of $2 do not exist in en, but exist in $3:',
 			'magic-over'   => '$1 magic word(s) of $2 in $3 do not contain the original en word(s):',
@@ -211,7 +208,6 @@ Check codes (ideally, all of them should result 0; all the checks are executed b
 	* unbalanced: Messages which contains unequal numbers of opening {[ and closing ]}.
 	* namespace: Namespace names that were not translated.
 	* projecttalk: Namespace names and aliases where the project talk does not contain $1.
-	* skin: Skin names that were not translated.
 	* magic: Magic words that were not translated.
 	* magic-old: Magic words which do not exist.
 	* magic-over: Magic words that override the original English word.
@@ -520,6 +516,12 @@ class CheckExtensionsCLI extends CheckLanguageCLI {
 				$group = MessageGroups::getGroup( $extension );
 				$this->extensions[] = new extensionLanguages( $group );
 			}
+		} elseif ( $extension == 'flaggedrevs' ) {
+			foreach ( MessageGroups::singleton()->getGroups() as $group ) {
+				if ( strpos( $group->getId(), 'ext-flaggedrevs-' ) === 0 && !$group->isMeta() ) {
+					$this->extensions[] = new extensionLanguages( $group );
+				}
+			}
 		} else {
 			$extensions = explode( ',', $extension );
 			foreach ( $extensions as $extension ) {
@@ -572,7 +574,7 @@ class CheckExtensionsCLI extends CheckLanguageCLI {
 Run this script to check the status of a specific language in extensions, or all of them.
 Command line settings are in form --parameter[=value], except for the first one.
 Parameters:
-	* First parameter (mandatory): Extension name, multiple extension names (separated by commas), "all" for all the extensions or "wikimedia" for extensions used by Wikimedia.
+	* First parameter (mandatory): Extension name, multiple extension names (separated by commas), "all" for all the extensions, "wikimedia" for extensions used by Wikimedia or "flaggedrevs" for all FLaggedRevs extension messages.
 	* lang: Language code (default: the installation default language).
 	* help: Show this help.
 	* level: Show the following display level (default: 2).

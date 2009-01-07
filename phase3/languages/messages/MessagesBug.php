@@ -68,7 +68,7 @@ $messages = array(
 'mytalk'         => 'Bicarana iyya',
 'anontalk'       => 'Bicarana IP édé',
 'navigation'     => 'Navigasi',
-'and'            => 'na',
+'and'            => '&#32;na',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -189,6 +189,9 @@ $messages = array(
 'loginerror'              => 'Éro log attama',
 'mailmypassword'          => 'E-mail pasewodo baru',
 
+# Password reset dialog
+'oldpassword' => 'Pasewodo matoa:',
+
 # Edit page toolbar
 'bold_tip'    => 'Teks maumpek',
 'italic_tip'  => 'Teks Italik',
@@ -200,7 +203,7 @@ $messages = array(
 'showpreview'      => 'Ita pribiu',
 'showlivepreview'  => 'Pribiu live',
 'showdiff'         => 'Mita perubahan',
-'summary-preview'  => 'Pribiu summary',
+'summary-preview'  => 'Pribiu summary:',
 'blockedtitle'     => 'Papaké riblok',
 'accmailtitle'     => 'Ada sandi ni riantarak.',
 'accmailtext'      => 'Ada sandi "$1" riantarak ri $2.',
@@ -269,7 +272,6 @@ $messages = array(
 'prefs-watchlist'   => 'Watchlist',
 'prefs-misc'        => 'Misc',
 'saveprefs'         => 'Taro',
-'oldpassword'       => 'Pasewodo matoa:',
 'textboxsize'       => 'Mapadécéŋ',
 'searchresultshead' => 'Masappa',
 
@@ -305,10 +307,10 @@ $messages = array(
 'upload'    => 'Lureng berkas',
 'uploadbtn' => 'Lureng berkas',
 
-# Special:ImageList
-'imagelist_name' => 'Aseŋ',
+# Special:ListFiles
+'listfiles_name' => 'Aseŋ',
 
-# Image description page
+# File description page
 'filehist-user'       => 'Papaké',
 'filehist-dimensions' => 'Dimensi',
 'imagelinks'          => 'Liŋke',
@@ -421,6 +423,9 @@ Eloko peddéï supaya weddiŋi mapalecé?',
 'tooltip-pt-preferences' => "Preferencena iya'",
 'tooltip-pt-logout'      => 'Log maessu',
 'tooltip-ca-talk'        => 'Appabicaranna iyé leppa',
+'tooltip-ca-move'        => 'Paléccé leppa édé',
+'tooltip-search'         => 'Sappa ri {{SITENAME}}',
+'tooltip-search-go'      => 'Lao ri leppa aseŋna pappada iyyé rekko eŋkaï',
 'tooltip-n-mainpage'     => 'Lao ri Leppa Indoë',
 
 # Attribution
@@ -429,7 +434,7 @@ Eloko peddéï supaya weddiŋi mapalecé?',
 # Media information
 'imagemaxsize' => 'Gangkai rapang pada keterangan rapang ri halamang hingga:',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Sappa',
 
 # 'all' in various places, this might be different for inflected languages

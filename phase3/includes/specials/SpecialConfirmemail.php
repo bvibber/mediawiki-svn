@@ -36,7 +36,8 @@ class EmailConfirmation extends UnlistedSpecialPage {
 				$title = SpecialPage::getTitleFor( 'Userlogin' );
 				$self = SpecialPage::getTitleFor( 'Confirmemail' );
 				$skin = $wgUser->getSkin();
-				$llink = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $self->getPrefixedUrl() );
+				$llink = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'loginreqlink' ), 
+					'returnto=' . $self->getPrefixedUrl() );
 				$wgOut->addHTML( wfMsgWikiHtml( 'confirmemail_needlogin', $llink ) );
 			}
 		} else {
@@ -71,10 +72,10 @@ class EmailConfirmation extends UnlistedSpecialPage {
 			}
 			$wgOut->addWikiMsg( 'confirmemail_text' );
 			$self = SpecialPage::getTitleFor( 'Confirmemail' );
-			$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-			$form .= wfHidden( 'token', $wgUser->editToken() );
-			$form .= wfSubmitButton( wfMsgHtml( 'confirmemail_send' ) );
-			$form .= wfCloseElement( 'form' );
+			$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+			$form .= Xml::hidden( 'token', $wgUser->editToken() );
+			$form .= Xml::submitButton( wfMsgHtml( 'confirmemail_send' ) );
+			$form .= Xml::closeElement( 'form' );
 			$wgOut->addHTML( $form );
 		}
 	}

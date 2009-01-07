@@ -41,8 +41,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => "Uzeu_copene", /* User_talk */
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_copene',
-	NS_IMAGE          => "Imådje", /* Image */
-	NS_IMAGE_TALK     => "Imådje_copene", /* Image_talk */
+	NS_FILE           => "Imådje", /* Image */
+	NS_FILE_TALK      => "Imådje_copene", /* Image_talk */
 	NS_MEDIAWIKI      => "MediaWiki", /* MediaWiki */
 	NS_MEDIAWIKI_TALK => "MediaWiki_copene", /* MediaWiki_talk */
 	NS_TEMPLATE       => "Modele",
@@ -189,7 +189,7 @@ $messages = array(
 'mytalk'         => 'Mi copinaedje',
 'anontalk'       => 'Pådje di copene po ciste adresse IP',
 'navigation'     => 'Naiviaedje',
-'and'            => 'eyet',
+'and'            => '&#32;eyet',
 
 # Metadata in edit box
 'metadata_help' => 'Meta-dnêyes :',
@@ -245,8 +245,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Åd fwait di {{SITENAME}}',
 'aboutpage'            => 'Project:Åd fwait',
-'bugreports'           => 'Rapoirts di bugs',
-'bugreportspage'       => 'Project:Rapoirts di bugs',
 'copyright'            => "Li contnou est dizo l' $1.",
 'copyrightpagename'    => 'Abondroets {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Abondroets',
@@ -420,6 +418,11 @@ Divant d' poleur evoyî èn ôte emile a ci conte la, vos dvroz shure les instru
 'accountcreatedtext'         => "Li conte d' uzeu «$1» a stî ahivé.",
 'loginlanguagelabel'         => 'Lingaedje: $1',
 
+# Password reset dialog
+'oldpassword' => 'Vî scret',
+'newpassword' => 'Noû scret',
+'retypenew'   => "Ritapez l' noû scret",
+
 # Edit page toolbar
 'bold_sample'     => 'Cråssès letes',
 'bold_tip'        => 'Tecse e cråssès letes',
@@ -443,8 +446,8 @@ Divant d' poleur evoyî èn ôte emile a ci conte la, vos dvroz shure les instru
 'hr_tip'          => "Roye di coûtchî (a n' nén eployî d' trop)",
 
 # Edit pages
-'summary'                   => 'Rascourti',
-'subject'                   => 'Sudjet/tiestire',
+'summary'                   => 'Rascourti:',
+'subject'                   => 'Sudjet/tiestire:',
 'minoredit'                 => "Ci n' est k' ene tchitcheye",
 'watchthis'                 => 'Shuve cist årtike',
 'savearticle'               => "Schaper l' pådje",
@@ -651,9 +654,6 @@ Les ôtes manaedjeus so ç' wiki ci pôront todi vey li contnou catchî eyet l' 
 'prefs-misc'               => 'Totes sôres',
 'saveprefs'                => 'Schaper les preferinces',
 'resetprefs'               => 'Rimete les prémetowès valixhances',
-'oldpassword'              => 'Vî scret',
-'newpassword'              => 'Noû scret',
-'retypenew'                => "Ritapez l' noû scret",
 'textboxsize'              => 'Grandeu del boesse di tecse',
 'rows'                     => 'Royes',
 'columns'                  => 'Colones',
@@ -744,11 +744,11 @@ Les ôtes manaedjeus so ç' wiki ci pôront todi vey li contnou catchî eyet l' 
 'uploaderror'                 => "Aroke d' eberwetaedje",
 'uploadtext'                  => "Eployîz les boesses d' intrêye chal pa dzo po-z eberweter des noveas fitchîs d' imådjes po vos årtikes. Sol plupårt des betchteus, vos voeroz on boton «Foyter...» (ou «Browse...») ki vs permetrè di foyter dins les ridants del deure plake da vosse po tchoezi l' fitchî, çou ki rimplirè otomaticmint li tchamp do no do fitchî k' est a costé.
 
-Po håyner ou cweri des imådjes k' ont ddja stî rçuvowes, alez sol [[Special:ImageList|djivêye des imådjes dedja eberwetêyes]]. Les eberwetaedjes et disfaçaedjes sont metous èn on [[Special:Log/upload|djournå des eberwetaedjes]].
+Po håyner ou cweri des imådjes k' ont ddja stî rçuvowes, alez sol [[Special:FileList|djivêye des imådjes dedja eberwetêyes]]. Les eberwetaedjes et disfaçaedjes sont metous èn on [[Special:Log/upload|djournå des eberwetaedjes]].
 
 Po håyner l' imådje dins èn årtike, eployîz on loyén del foûme
-* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Fitchî.jpg]]</nowiki>'''
-* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Fitchî.png|thumb|tecse a mete padzo]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fitchî.jpg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fitchî.png|thumb|tecse a mete padzo]]</nowiki>'''
 ou co po les sons
 * '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Fitchî.ogg]]</nowiki>'''",
 'uploadlog'                   => 'djournå des eberwetaedjes',
@@ -767,8 +767,8 @@ ou co po les sons
 'largefileserver'             => "Ci fitchî ci est pus pezant ki çou k' li sierveu est apontyî po-z accepter.",
 'emptyfile'                   => "I shonnreut kel fitchî k' vos eberwetez soeye vude. Çoula pout esse cåze d' ene aroke di tapaedje dins l' no do fitchî. Acertinez si vos vloz evoyî po do bon ç' fitchî ci, s' i vs plait.",
 'fileexists'                  => "On fitchî avou ç' no la egzistêye dedja, loukîz s' i vs plait a <strong><tt>$1</tt></strong> po vs acertiner ki vos vloz bén replaecî l' fitchî avou l' ci ki vos eberwetez asteure, oubén si vos l' voloz eberweter dizo èn ôte no.",
-'fileexists-forbidden'        => "I gn a ddja on fitchî avou ç' no la; rivnoz s' i vs plait en erî et s' reberwetez l' fitchî dizo èn ôte no. [[Image:$1|thumb|center|$1]]",
-'fileexists-shared-forbidden' => "I gn a ddja on fitchî avou ç' no la e ridant des fitchîs pårtaedjîs; rivnoz s' i vs plait en erî et s' reberwetez l' fitchî dizo èn ôte no. [[Image:$1|thumb|center|$1]]",
+'fileexists-forbidden'        => "I gn a ddja on fitchî avou ç' no la; rivnoz s' i vs plait en erî et s' reberwetez l' fitchî dizo èn ôte no. [[File:$1|thumb|center|$1]]",
+'fileexists-shared-forbidden' => "I gn a ddja on fitchî avou ç' no la e ridant des fitchîs pårtaedjîs; rivnoz s' i vs plait en erî et s' reberwetez l' fitchî dizo èn ôte no. [[File:$1|thumb|center|$1]]",
 'successfulupload'            => "L' eberwetaedje a stî comifåt",
 'uploadwarning'               => "Adviertixhmint so l' eberwetaedje",
 'savefile'                    => "Schaper l' fitchî",
@@ -788,16 +788,16 @@ ou co po les sons
 'nolicense'          => 'Nole licince tchoezeye',
 'upload_source_file' => ' (on fitchî sol copiutrece da vosse)',
 
-# Special:ImageList
-'imagelist_search_for'  => "Cweri l' no d' imådje:",
+# Special:ListFiles
+'listfiles_search_for'  => "Cweri l' no d' imådje:",
 'imgfile'               => 'fitchî',
-'imagelist'             => 'Djivêye des imådjes',
-'imagelist_name'        => 'No',
-'imagelist_user'        => 'Uzeu',
-'imagelist_size'        => 'Grandeu',
-'imagelist_description' => 'Discrijhaedje',
+'listfiles'             => 'Djivêye des imådjes',
+'listfiles_name'        => 'No',
+'listfiles_user'        => 'Uzeu',
+'listfiles_size'        => 'Grandeu',
+'listfiles_description' => 'Discrijhaedje',
 
-# Image description page
+# File description page
 'filehist-deleteall'        => 'disfacer ttafwait',
 'filehist-deleteone'        => 'disfacer çouci',
 'filehist-datetime'         => 'Date/Eure',
@@ -1252,6 +1252,7 @@ Les dates des diferinnès modêyes eyet les nos des contribouweus seront consier
 Totes les accions di rcopiaedje eterwiki sont metowes e [[Special:Log/import|djournå des ristitchaedjes]].",
 'import-interwiki-history' => "Ristitchî avou l' istwere di totes les modêyes",
 'import-interwiki-submit'  => 'Ristitchî',
+'import-comment'           => 'Comintaire:',
 'importtext'               => "S' vs plait ricopyîz l' fitchî foû do sourdant wiki avou l' usteye di rcopiaedje foû (Special:Export), el schaper so voste éndjole, et poy l' eberweter droci.",
 'importstart'              => "Dj' enonde li ristitchaedje...",
 'import-revision-count'    => '$1 modêye(s)',
@@ -1364,7 +1365,7 @@ Totes les accions di rcopiaedje eterwiki sont metowes e [[Special:Log/import|djo
 'imagemaxsize' => "Limite pol håynaedje ezès pådjes d' imådje:",
 'thumbsize'    => 'Grandeu po les imådjetes (thumb):',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Galreye des nouvès imådjes',
 'imagelisttext'         => "Chal pa dzo c' est ene djivêye di '''$1''' {{PLURAL:$1|imådje relîte|imådjes relîtes}} $2.",
 'showhidebots'          => '($1 robots)',

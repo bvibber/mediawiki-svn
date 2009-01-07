@@ -68,7 +68,7 @@ class LocalFile extends File
 	 * Do not call this except from inside a repo class.
 	 */
 	static function newFromRow( $row, $repo ) {
-		$title = Title::makeTitle( NS_IMAGE, $row->img_name );
+		$title = Title::makeTitle( NS_FILE, $row->img_name );
 		$file = new self( $title, $repo );
 		$file->loadFromRow( $row );
 		return $file;
@@ -624,30 +624,37 @@ class LocalFile extends File
 	/** purgeDescription inherited */
 	/** purgeEverything inherited */
 
-	function getHistory($limit = null, $start = null, $end = null) {
+	function getHistory($limit = null, $start = null, $end = null, $inc = true) {
 		$dbr = $this->repo->getSlaveDB();
 		$tables = array('oldimage');
-		$join_conds = array();
 		$fields = OldLocalFile::selectFields();
-		$conds = $opts = array();
+		$conds = $opts = $join_conds = array();
+		$eq = $inc ? "=" : "";
 		$conds[] = "oi_name = " . $dbr->addQuotes( $this->title->getDBKey() );
-		if( $start !== null ) {
-			$conds[] = "oi_timestamp <= " . $dbr->addQuotes( $dbr->timestamp( $start ) );
+		if( $start ) {
+			$conds[] = "oi_timestamp <$eq " . $dbr->addQuotes( $dbr->timestamp( $start ) );
 		}
-		if( $end !== null ) {
-			$conds[] = "oi_timestamp >= " . $dbr->addQuotes( $dbr->timestamp( $end ) );
+		if( $end ) {
+			$conds[] = "oi_timestamp >$eq " . $dbr->addQuotes( $dbr->timestamp( $end ) );
 		}
 		if( $limit ) {
 			$opts['LIMIT'] = $limit;
 		}
-		$opts['ORDER BY'] = 'oi_timestamp DESC';
+		// Search backwards for time > x queries
+		$order = (!$start && $end !== null) ? "ASC" : "DESC";
+		$opts['ORDER BY'] = "oi_timestamp $order";
+		$opts['USE INDEX'] = array('oldimage' => 'oi_name_timestamp');
 		
-		wfRunHooks( 'LocalFile::getHistory', array( &$this, &$tables, &$fields, &$conds, &$opts, &$join_conds ) );
+		wfRunHooks( 'LocalFile::getHistory', array( &$this, &$tables, &$fields, 
+			&$conds, &$opts, &$join_conds ) );
 		
 		$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $opts, $join_conds );
 		$r = array();
 		while( $row = $dbr->fetchObject($res) ) {
 			$r[] = OldLocalFile::newFromRow($row, $this->repo);
+		}
+		if( $order == "ASC" ) {
+			$r = array_reverse( $r ); // make sure it ends up descending
 		}
 		return $r;
 	}
@@ -883,7 +890,8 @@ class LocalFile extends File
 		}
 
 		$descTitle = $this->getTitle();
-		$article = new Article( $descTitle );
+		$article = new ImagePage( $descTitle );
+		$article->setFile( $this );
 
 		# Add the log entry
 		$log = new LogPage( 'upload' );
@@ -893,10 +901,11 @@ class LocalFile extends File
 		if( $descTitle->exists() ) {
 			# Create a null revision
 			$latest = $descTitle->getLatestRevID();
-			$nullRevision = Revision::newNullRevision( $dbw, $descTitle->getArticleId(), $log->getRcComment(), false );
+			$nullRevision = Revision::newNullRevision( $dbw, $descTitle->getArticleId(),
+				$log->getRcComment(), false );
 			$nullRevision->insertOn( $dbw );
 			
-			wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest) );
+			wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest, $user) );
 			$article->updateRevisionOn( $dbw, $nullRevision );
 
 			# Invalidate the cache for the description page

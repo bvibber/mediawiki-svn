@@ -161,8 +161,8 @@ $messages = array(
 'hr_tip'          => 'Линеа оризонтала (еснидивале)',
 
 # Edit pages
-'summary'                => 'Сумар',
-'subject'                => 'Субјект / титлур',
+'summary'                => 'Сумар:',
+'subject'                => 'Субјект / титлур:',
 'minoredit'              => 'Ацеаста есте о едитаре минорај',
 'watchthis'              => 'Клајаере це пажу',
 'showpreview'            => 'Ратај превизуализаре',
@@ -221,7 +221,7 @@ $3',
 # Upload
 'upload' => 'тримиће фиширул',
 
-# Image description page
+# File description page
 'filehist'            => 'Хисториа фиширулу',
 'filehist-current'    => 'куренту',
 'filehist-datetime'   => 'Дата/Темп',

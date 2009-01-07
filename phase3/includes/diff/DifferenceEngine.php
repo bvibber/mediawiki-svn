@@ -145,14 +145,15 @@ CONTROL;
 		} else {
 			$wgOut->setPageTitle( $oldTitle . ', ' . $newTitle );
 		}
-		$wgOut->setSubtitle( wfMsg( 'difference' ) );
+		$wgOut->setSubtitle( wfMsgExt( 'difference', array( 'parseinline' ) ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
-		if ( !( $this->mOldPage->userCanRead() && $this->mNewPage->userCanRead() ) ) {
+		if ( !$this->mOldPage->userCanRead() || !$this->mNewPage->userCanRead() ) {
 			$wgOut->loginToUse();
 			$wgOut->output();
+			$wgOut->disable();
 			wfProfileOut( __METHOD__ );
-			exit;
+			return;
 		}
 
 		$sk = $wgUser->getSkin();
@@ -166,7 +167,7 @@ CONTROL;
 		}
 
 		// Prepare a change patrol link, if applicable
-		if( $wgUseRCPatrol && $wgUser->isAllowed( 'patrol' ) ) {
+		if( $wgUseRCPatrol && $this->mTitle->userCan('patrol') ) {
 			// If we've been given an explicit change identifier, use it; saves time
 			if( $this->mRcidMarkPatrolled ) {
 				$rcid = $this->mRcidMarkPatrolled;
@@ -177,10 +178,10 @@ CONTROL;
 				array(
 				// Add redundant user,timestamp condition so we can use the existing index
 						'rc_user_text'  => $this->mNewRev->getUserText( Revision::FOR_THIS_USER ),
-						'rc_timestamp' => $db->timestamp( $this->mNewRev->getTimestamp() ),
+						'rc_timestamp'  => $db->timestamp( $this->mNewRev->getTimestamp() ),
 						'rc_this_oldid' => $this->mNewid,
 						'rc_last_oldid' => $this->mOldid,
-						'rc_patrolled' => 0
+						'rc_patrolled'  => 0
 				),
 				__METHOD__
 				);
@@ -194,10 +195,10 @@ CONTROL;
 			// Build the link
 			if( $rcid ) {
 				$patrol = ' <span class="patrollink">[' . $sk->makeKnownLinkObj(
-				$this->mTitle,
-				wfMsgHtml( 'markaspatrolleddiff' ),
-					"action=markpatrolled&rcid={$rcid}"
-				) . ']</span>';
+					$this->mTitle,
+					wfMsgHtml( 'markaspatrolleddiff' ),
+						"action=markpatrolled&rcid={$rcid}"
+					) . ']</span>';
 			} else {
 				$patrol = '';
 			}
@@ -219,11 +220,11 @@ CONTROL;
 		$newminor = '';
 
 		if ($this->mOldRev->mMinorEdit == 1) {
-			$oldminor = Xml::span( wfMsg( 'minoreditletter'), 'minor' ) . ' ';
+			$oldminor = Xml::span( wfMsg( 'minoreditletter' ), 'minor' ) . ' ';
 		}
 
 		if ($this->mNewRev->mMinorEdit == 1) {
-			$newminor = Xml::span( wfMsg( 'minoreditletter'), 'minor' ) . ' ';
+			$newminor = Xml::span( wfMsg( 'minoreditletter' ), 'minor' ) . ' ';
 		}
 
 		$rdel = ''; $ldel = '';
@@ -231,10 +232,10 @@ CONTROL;
 			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			if( !$this->mOldRev->userCan( Revision::DELETED_RESTRICTED ) ) {
 				// If revision was hidden from sysops
-				$ldel = wfMsgHtml('rev-delundel');
+				$ldel = wfMsgHtml( 'rev-delundel' );
 			} else {
 				$ldel = $sk->makeKnownLinkObj( $revdel,
-				wfMsgHtml('rev-delundel'),
+				wfMsgHtml( 'rev-delundel' ),
 					'target=' . urlencode( $this->mOldRev->mTitle->getPrefixedDbkey() ) .
 					'&oldid=' . urlencode( $this->mOldRev->getId() ) );
 				// Bolden oversighted content
@@ -245,13 +246,13 @@ CONTROL;
 			// We don't currently handle well changing the top revision's settings
 			if( $this->mNewRev->isCurrent() ) {
 				// If revision was hidden from sysops
-				$rdel = wfMsgHtml('rev-delundel');
+				$rdel = wfMsgHtml( 'rev-delundel' );
 			} else if( !$this->mNewRev->userCan( Revision::DELETED_RESTRICTED ) ) {
 				// If revision was hidden from sysops
-				$rdel = wfMsgHtml('rev-delundel');
+				$rdel = wfMsgHtml( 'rev-delundel' );
 			} else {
 				$rdel = $sk->makeKnownLinkObj( $revdel,
-				wfMsgHtml('rev-delundel'),
+				wfMsgHtml( 'rev-delundel' ),
 					'target=' . urlencode( $this->mNewRev->mTitle->getPrefixedDbkey() ) .
 					'&oldid=' . urlencode( $this->mNewRev->getId() ) );
 				// Bolden oversighted content
@@ -423,11 +424,11 @@ CONTROL;
 
 		# Check if user is allowed to look at this page. If not, bail out.
 		#
-		if ( !( $this->mTitle->userCanRead() ) ) {
+		if ( !$this->mTitle->userCanRead() ) {
 			$wgOut->loginToUse();
 			$wgOut->output();
 			wfProfileOut( __METHOD__ );
-			exit;
+			throw new MWException("Permission Error: you do not have access to view this page");
 		}
 
 		# Prepare the header box
@@ -442,7 +443,7 @@ CONTROL;
 
 		$wgOut->addHTML( $header );
 
-		$wgOut->setSubtitle( wfMsg( 'difference' ) );
+		$wgOut->setSubtitle( wfMsgExt( 'difference', array( 'parseinline' ) ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		wfProfileOut( __METHOD__ );
@@ -668,7 +669,7 @@ CONTROL;
 
 	function localiseLineNumbersCb( $matches ) {
 		global $wgLang;
-		return wfMsgExt( 'lineno', array('parseinline'), $wgLang->formatNum( $matches[1] ) );
+		return wfMsgExt( 'lineno', array( 'parseinline' ), $wgLang->formatNum( $matches[1] ) );
 	}
 
 

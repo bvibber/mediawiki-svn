@@ -138,7 +138,7 @@ $messages = array(
 'mytalk'         => 'Min diskusje',
 'anontalk'       => 'Diskusjeside før denne IP-adresse',
 'navigation'     => 'Navigasje',
-'and'            => 'og',
+'and'            => '&#32;og',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -201,8 +201,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => "{{SITENAME}}'m",
 'aboutpage'            => 'Project:Åm',
-'bugreports'           => 'Fejlgåde',
-'bugreportspage'       => 'Project:Fejlgåde',
 'copyright'            => 'Endholtet er udgævet under $1.',
 'copyrightpagename'    => '{{SITENAME}} åphavsret',
 'copyrightpage'        => '{{ns:project}}:Åphavsret',
@@ -358,6 +356,9 @@ Du bør loĝge på og ændre din adgangskode straks æfter du harst modtaget æ 
 
 Før en e-mail ken modtages åf andre brugere åf æ {{SITENAME}}-mailfunksje, skel æ adresse og dens tilhørsførholt til denne bruger bekræftes. Følg venlegst anvesnengerne i denne mail.',
 
+# Password reset dialog
+'retypenew' => 'Gentag ny adgangskode',
+
 # Edit page toolbar
 'bold_sample'     => 'Fed skrevselenger',
 'bold_tip'        => 'Fed skrevselenger',
@@ -379,8 +380,8 @@ Før en e-mail ken modtages åf andre brugere åf æ {{SITENAME}}-mailfunksje, s
 'hr_tip'          => 'Plat lenje (brug den sparsåmt)',
 
 # Edit pages
-'summary'                => 'Beskrevelse',
-'subject'                => 'Emne/åverskreft',
+'summary'                => 'Beskrevelse:',
+'subject'                => 'Emne/åverskreft:',
 'minoredit'              => "Dette'r en mendre æller lile ændrenge.",
 'watchthis'              => 'Åvervåg denne ertikel',
 'savearticle'            => 'Gem side',
@@ -388,7 +389,7 @@ Før en e-mail ken modtages åf andre brugere åf æ {{SITENAME}}-mailfunksje, s
 'showpreview'            => 'Førhåndsvesnenge',
 'showdiff'               => 'Ves ændrenger',
 'anoneditwarning'        => "Du arbejder uden at være loĝget på. Estedet før brugernav veses så'n IP-adresse i'n hersenengerskigt.",
-'summary-preview'        => 'Førhåndsvesnenge åf beskrevelselejne',
+'summary-preview'        => 'Førhåndsvesnenge åf beskrevelselejne:',
 'blockedtext'            => "<big>'''Dit brugernav æller din IP-adresse er blevet blokeret.'''</big>
 
 Æ blokerenge er lavet åf $1. Æ begrundelse er ''$2''.
@@ -466,7 +467,6 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'preferences'   => 'Endstellenger',
 'mypreferences' => 'Endstellenger',
 'skin-preview'  => 'Førhåndsvesnenge',
-'retypenew'     => 'Gentag ny adgangskode',
 
 'grouppage-sysop' => '{{ns:project}}:Administråtorer',
 
@@ -507,10 +507,10 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'uploadlogpage' => 'Åplægnengslog',
 'uploadedimage' => 'Låĝde "[[$1]]" åp',
 
-# Special:ImageList
-'imagelist' => 'Billetliste',
+# Special:ListFiles
+'listfiles' => 'Billetliste',
 
-# Image description page
+# File description page
 'filehist'                  => 'Billetskigt',
 'filehist-help'             => "Klik på'n dato/tid før at se den hersenenge åf gøret.",
 'filehist-current'          => 'nuværende',
@@ -827,7 +827,7 @@ navn du harst valgt er ekke gyldegt. Vælg et andet navn.',
 'show-big-image'       => 'Hersenenge i større åpløsnenge',
 'show-big-image-thumb' => '<small>Størrelse åf førhåndsvesnenge: $1 × $2 pixel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Liste ve de nyeste billeter',
 
 # Bad image list

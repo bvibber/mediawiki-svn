@@ -11,7 +11,7 @@
  * @author Urhixidur
  */
 
-$fallback='hi';
+$fallback='bn';
 
 $namespaceNames = array(
 	NS_MEDIA            => 'মাধ্যম',
@@ -20,8 +20,8 @@ $namespaceNames = array(
 	NS_USER             => 'সদস্য',
 	NS_USER_TALK        => 'সদস্য বার্তা',
 	NS_PROJECT_TALK     => '$1 বার্তা',
-	NS_IMAGE            => 'চিত্র',
-	NS_IMAGE_TALK       => 'চিত্র বার্তা',
+	NS_FILE             => 'চিত্র',
+	NS_FILE_TALK        => 'চিত্র বার্তা',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki বার্তা',
 	NS_TEMPLATE         => 'সাঁচ',
@@ -38,8 +38,8 @@ $namespaceAliases = array(
 	'सदस्य' => NS_USER,
 	'सदस्य_वार्ता' => NS_USER_TALK,
 	'$1_वार्ता' => NS_PROJECT_TALK,
-	'चित्र' => NS_IMAGE,
-	'चित्र_वार्ता' => NS_IMAGE_TALK,
+	'चित्र' => NS_FILE,
+	'चित्र_वार्ता' => NS_FILE_TALK,
 	'साँचा' => NS_TEMPLATE,
 	'साँचा_वार्ता' => NS_TEMPLATE_TALK,
 	'श्रेणी' => NS_CATEGORY,
@@ -54,7 +54,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'লক্ষ্যতালিকা' ),
 	'Recentchanges'             => array( 'শেহতীয়া কাম' ),
 	'Upload'                    => array( 'বোজাই' ),
-	'Imagelist'                 => array( 'চিত্র-তালিকা' ),
+	'Listfiles'                 => array( 'চিত্র-তালিকা' ),
 	'Newimages'                 => array( 'নতুন চিত্র' ),
 	'Listusers'                 => array( 'সদস্য-তালিকা' ),
 	'Listgrouprights'           => array( 'গোটৰ অধিকাৰসমুহ' ),
@@ -214,7 +214,7 @@ $messages = array(
 'mytalk'         => 'মোৰ আলাপ',
 'anontalk'       => 'এই IP-ত যোগাযোগ কৰক',
 'navigation'     => 'দিকদৰ্শন',
-'and'            => 'আৰু',
+'and'            => '&#32;আৰু',
 
 # Metadata in edit box
 'metadata_help' => 'মেটাডাটা:',
@@ -277,8 +277,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}}ৰ ইতিবৃত্ত',
 'aboutpage'            => 'Project:ইতিবৃত্ত',
-'bugreports'           => 'বাগ ৰিপোর্ট',
-'bugreportspage'       => 'Project:বাগ ৰিপোর্ট',
 'copyright'            => 'এই লিখনী $1 ৰ অন্তর্গত উপলব্ধ।',
 'copyrightpagename'    => '{{SITENAME}} স্বত্বাধিকাৰ',
 'copyrightpage'        => '{{ns:project}}:স্বত্ব',
@@ -489,12 +487,14 @@ $1',
 'resetpass_announce'      => 'আপুনি ই-মেইলত পোৱা অস্থায়ী গুপ্তশব্দৰে প্রৱেশ কৰিছে।
 প্রৱেশ সম্পুর্ণ কৰিবলৈ, আপুনি এটা নতুন গুপ্তশব্দ দিব লাগিব:',
 'resetpass_header'        => 'গুপ্তশব্দ পূণর্স্থাপন কৰক',
+'oldpassword'             => 'পূৰণি গুপ্তশব্দ:',
+'newpassword'             => 'নতুন গুপ্তশব্দ:',
+'retypenew'               => 'নতুন গুপ্তশব্দ আকৌ টাইপ কৰক',
 'resetpass_submit'        => 'গুপ্তশব্দ বনাওক আৰু প্রৱেশ কৰক',
 'resetpass_success'       => 'আপোনাৰ গুপ্তশব্দ সফলতাৰে সলনি কৰা হৈছে, এতিয়া আপুনি প্রৱেশ কৰি আছে...',
 'resetpass_bad_temporary' => 'অস্থায়ী গুপ্তশব্দ ভুল ।
 হয়তো আপুনি আগতেই গুপ্তশব্দ সলনি কৰিছে, অথবা নতুন গুপ্তশব্দৰ কাৰণে অনুৰোধ পঠাইছে।',
 'resetpass_forbidden'     => '{{SITENAME}} ত গুপ্তশব্দ সলনি কৰিব নোৱাৰি',
-'resetpass_missing'       => 'ফর্মৰ তথ্য নাই ।',
 
 # Edit page toolbar
 'bold_sample'     => 'শকত পাঠ্য',
@@ -517,8 +517,8 @@ $1',
 'hr_tip'          => 'পথালী ৰেখা (কমকৈ ব্যৱহাৰ কৰিব)',
 
 # Edit pages
-'summary'                => 'সাৰাংশ',
-'subject'                => 'বিষয় / শীর্ষক',
+'summary'                => 'সাৰাংশ:',
+'subject'                => 'বিষয় / শীর্ষক:',
 'minoredit'              => 'এইটো নগন্য সম্পদনা',
 'watchthis'              => 'এই পৃষ্ঠাটো অনুসৰণ-সূচীভুক্ত কৰক',
 'savearticle'            => 'পৃষ্ঠা সংৰাক্ষিত কৰক',
@@ -532,8 +532,8 @@ $1',
 'missingcommenttext'     => 'অনুগ্রহ কৰি তলত মন্তব্য এটা দিয়্ক।',
 'missingcommentheader'   => "'''স্মাৰক:''' আপুনি এই মন্তব্যটোত শিৰোণামা দিয়া নাই।
 যদি আকৌ এবাৰ সংৰক্ষিত কৰে, তেনেহলে শিৰোণামা অবিহনে সংৰক্ষিত হব।",
-'summary-preview'        => 'সাৰাংশৰ খচৰা',
-'subject-preview'        => 'বিষয়/শিৰোণামাৰ খচৰা',
+'summary-preview'        => 'সাৰাংশৰ খচৰা:',
+'subject-preview'        => 'বিষয়/শিৰোণামাৰ খচৰা:',
 'blockedtitle'           => 'সদস্যজনক অবৰোধ কৰা হৈছে',
 'blockedtext'            => "<big>'''আপোনাৰ সদস্যনাম অথবা আই-পি ঠিকণা অবৰোধ কৰা হৈছে ।'''</big>
 
@@ -708,9 +708,6 @@ $1',
 'prefs-misc'               => 'অন্যান্য',
 'saveprefs'                => 'সঞ্চিত কৰক',
 'resetprefs'               => 'অসঞ্চিত সাল-সলনী বাতিল কৰক',
-'oldpassword'              => 'পূৰণি গুপ্তশব্দ:',
-'newpassword'              => 'নতুন গুপ্তশব্দ:',
-'retypenew'                => 'নতুন গুপ্তশব্দ আকৌ টাইপ কৰক',
 'textboxsize'              => 'সম্পাদন',
 'rows'                     => 'পথালী শাৰী:',
 'columns'                  => 'ঠিয় শাৰী:',
@@ -784,10 +781,10 @@ $1',
 'uploadlogpage' => 'আপলোড সুচী',
 'uploadedimage' => '"[[$1]]" আপলোড কৰা হ’ল',
 
-# Special:ImageList
-'imagelist' => 'ফাইলৰ তালিকা',
+# Special:ListFiles
+'listfiles' => 'ফাইলৰ তালিকা',
 
-# Image description page
+# File description page
 'filehist'                  => 'ফাইলৰ ইতিবৃত্ত',
 'filehist-help'             => 'ফাইলৰ আগৰ অৱ্স্থা চাবলৈ সেই তাৰিখ/সময়ত টিপা মাৰক|',
 'filehist-current'          => 'বর্তমান',
@@ -1054,7 +1051,7 @@ $1',
 'show-big-image'       => 'সম্পূর্ণ দৃশ্য',
 'show-big-image-thumb' => '<small>এই খচৰাৰ আকাৰ: $1 × $2 পিক্সেল </small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'নতুন ফাইলৰ বিথীকা',
 'ilsubmit'  => 'সন্ধান কৰক',
 

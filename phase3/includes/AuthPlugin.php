@@ -244,6 +244,11 @@ class AuthPluginUser {
 		# Override this!
 	}
 	
+	public function getId() {
+		# Override this!
+		return -1;
+	}
+	
 	public function isLocked() {
 		# Override this!
 		return false;
@@ -252,5 +257,10 @@ class AuthPluginUser {
 	public function isHidden() {
 		# Override this!
 		return false;
+	}
+	
+	public function resetAuthToken() {
+		# Override this!
+		return true;
 	}
 }

@@ -29,7 +29,7 @@ $messages = array(
 'moredotdotdot'  => 'Barrachd...',
 'mypage'         => 'Mo dhuilleag',
 'anontalk'       => 'Labhairt air an IP seo',
-'and'            => 'agus',
+'and'            => '&#32;agus',
 
 'errorpagetitle'    => 'Mearachd',
 'returnto'          => 'Till gu $1.',
@@ -121,6 +121,11 @@ $1",
 'wrongpassword'              => "Chan eil am facal-faire a sgrìobh sibh a-steach ceart. Feuchaibh a-rithis, ma's e ur toil e.",
 'acct_creation_throttle_hit' => 'Tha sinn duilich; tha sibh air {{PLURAL:$1|1 cùnntas|$1 cùnntasan}} a chruthachadh cheana agus chan fhaod sibh barrachd a dhèanamh.',
 
+# Password reset dialog
+'oldpassword' => 'Seann fhacal-faire',
+'newpassword' => 'Facal-faire ùr',
+'retypenew'   => 'Ath-sgrìobh facal-faire ùr',
+
 # Edit page toolbar
 'italic_sample'   => 'Teacsa eadailteach',
 'italic_tip'      => 'Teacsa eadailteach',
@@ -128,8 +133,8 @@ $1",
 'headline_tip'    => 'Ceann-loidhne ìre 2',
 
 # Edit pages
-'summary'         => 'Geàrr-chùnntas',
-'subject'         => 'Cuspair/ceann-loidhne',
+'summary'         => 'Geàrr-chùnntas:',
+'subject'         => 'Cuspair/ceann-loidhne:',
 'minoredit'       => 'Seo mùthadh beag',
 'watchthis'       => 'Cùm sùil air an aithris seo',
 'savearticle'     => 'Sàbhail duilleag',
@@ -183,9 +188,6 @@ $1",
 'prefs-personal'     => "Dàta a'chleachdair",
 'saveprefs'          => 'Sàbhail roghainnean',
 'resetprefs'         => 'Ath-shuidhich taghaidhean',
-'oldpassword'        => 'Seann fhacal-faire',
-'newpassword'        => 'Facal-faire ùr',
-'retypenew'          => 'Ath-sgrìobh facal-faire ùr',
 'rows'               => 'Sreathan',
 'columns'            => 'Colbhan',
 'savedprefs'         => 'Tha na roghainnean agaibh air an sàbhaladh.',
@@ -219,8 +221,8 @@ $1",
 'fileexists'    => 'Tha faidhle leis an ainm seo ann cheana; nach faigh sibh cinnt air <strong><tt>$1</tt></strong> gu bheil sibh ag iarraidh atharrachadh.',
 'savefile'      => 'Sàbhail faidhle',
 
-# Special:ImageList
-'imagelist' => 'Liosta nan ìomhaigh',
+# Special:ListFiles
+'listfiles' => 'Liosta nan ìomhaigh',
 
 # Random page
 'randompage' => 'Duilleag thuairmeach',
@@ -342,7 +344,7 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 
 # Namespace 8 related
 'allmessages'     => 'Uile teachdaireachdan an t-siostam',
-'allmessagestext' => 'Seo liosta de\'n a h-uile teachdaireachd an t-siostam ri fhaotainn anns an fhànais-ainm "Mediawiki:".',
+'allmessagestext' => 'Seo liosta de\'n a h-uile teachdaireachd an t-siostam ri fhaotainn anns an fhànais-ainm "MediaWiki:".',
 
 # Thumbnails
 'thumbnail-more' => 'Meudaich',
@@ -364,7 +366,7 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 'infosubtitle' => 'Fiosrachadh air duilleig',
 'numwatchers'  => 'Aireamh luchd-faire: $1',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Rannsaich',
 'bydate'   => 'air ceann-latha',
 

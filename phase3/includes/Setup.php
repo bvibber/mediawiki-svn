@@ -68,6 +68,14 @@ if ( empty( $wgFileStore['deleted']['directory'] ) ) {
 $wgNamespaceProtection[NS_MEDIAWIKI] = 'editinterface';
 
 /**
+ * The canonical names of namespaces 6 and 7 are, as of v1.14, "File"
+ * and "File_talk".  The old names "Image" and "Image_talk" are
+ * retained as aliases for backwards compatibility.
+ */
+$wgNamespaceAliases['Image'] = NS_FILE;
+$wgNamespaceAliases['Image_talk'] = NS_FILE_TALK;
+
+/**
  * Initialise $wgLocalFileRepo from backwards-compatible settings
  */
 if ( !$wgLocalFileRepo ) {
@@ -201,15 +209,19 @@ wfDebug( 'Main cache: ' . get_class( $wgMemc ) .
 	"\nParser cache: " . get_class( $parserMemc ) . "\n" );
 
 wfProfileOut( $fname.'-memcached' );
+
+## Most of the config is out, some might want to run hooks here.
+wfRunHooks( 'SetupAfterCache' );
+
 wfProfileIn( $fname.'-SetupSession' );
 
 # Set default shared prefix
 if( $wgSharedPrefix === false ) $wgSharedPrefix = $wgDBprefix;
 
 if( !$wgCookiePrefix ) {
-	if ( in_array('user', $wgSharedTables) && $wgSharedDB && $wgSharedPrefix ) {
+	if ( $wgSharedDB && $wgSharedPrefix && in_array('user',$wgSharedTables) ) {
 		$wgCookiePrefix = $wgSharedDB . '_' . $wgSharedPrefix;
-	} elseif ( in_array('user', $wgSharedTables) && $wgSharedDB ) {
+	} elseif ( $wgSharedDB && in_array('user',$wgSharedTables) ) {
 		$wgCookiePrefix = $wgSharedDB;
 	} elseif ( $wgDBprefix ) {
 		$wgCookiePrefix = $wgDBname . '_' . $wgDBprefix;

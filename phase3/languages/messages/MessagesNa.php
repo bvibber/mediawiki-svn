@@ -21,7 +21,7 @@ $messages = array(
 
 'qbedit'        => 'Kiwiwid',
 'moredotdotdot' => 'Iyuw...',
-'and'           => 'me',
+'and'           => '&#32;me',
 
 'errorpagetitle' => 'Dairinaiya',
 'help'           => 'Ipuok',
@@ -109,7 +109,7 @@ $messages = array(
 # Contributions
 'contributions' => 'Mana engame totow inne',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Anani ko',
 
 );

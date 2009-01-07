@@ -25,9 +25,9 @@ class SkinMonoBook extends SkinTemplate {
 		$this->skinname  = 'monobook';
 		$this->stylename = 'monobook';
 		$this->template  = 'MonoBookTemplate';
-		
+
 	}
-	
+
 	function setupSkinUserCss( OutputPage $out ) {
 		global $wgHandheldStyle;
 
@@ -39,12 +39,12 @@ class SkinMonoBook extends SkinTemplate {
 			// Currently in testing... try 'chick/main.css'
 			$out->addStyle( $wgHandheldStyle, 'handheld' );
 		}
-		
+
 		$out->addStyle( 'monobook/IE50Fixes.css', 'screen', 'lt IE 5.5000' );
 		$out->addStyle( 'monobook/IE55Fixes.css', 'screen', 'IE 5.5000' );
 		$out->addStyle( 'monobook/IE60Fixes.css', 'screen', 'IE 6' );
 		$out->addStyle( 'monobook/IE70Fixes.css', 'screen', 'IE 7' );
-		
+
 		$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );
 	}
 }
@@ -72,7 +72,7 @@ class MonoBookTemplate extends QuickTemplate {
 		wfSuppressWarnings();
 
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php 
+<html xmlns="<?php $this->text('xhtmldefaultnamespace') ?>" <?php
 	foreach($this->data['xhtmlnamespaces'] as $tag => $ns) {
 		?>xmlns:<?php echo "{$tag}=\"{$ns}\" ";
 	} ?>xml:lang="<?php $this->text('lang') ?>" lang="<?php $this->text('lang') ?>" dir="<?php $this->text('dir') ?>">
@@ -84,9 +84,9 @@ class MonoBookTemplate extends QuickTemplate {
 
 		<!--[if lt IE 7]><script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath') ?>/common/IEFixes.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script>
 		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-		
+
 		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
-                
+
 		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
 		<!-- Head Scripts -->
 <?php $this->html('headscripts') ?>
@@ -115,7 +115,7 @@ class MonoBookTemplate extends QuickTemplate {
 	<div id="content">
 		<a name="top" id="top"></a>
 		<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-		<h1 class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
+		<h1 id="firstHeading" class="firstHeading"><?php $this->data['displaytitle']!=""?$this->html('title'):$this->text('title') ?></h1>
 		<div id="bodyContent">
 			<h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
 			<div id="contentSub"><?php $this->html('subtitle') ?></div>
@@ -138,7 +138,7 @@ class MonoBookTemplate extends QuickTemplate {
 			<ul>
 	<?php		foreach($this->data['content_actions'] as $key => $tab) {
 					echo '
-				 <li id="ca-' . Sanitizer::escapeId($key).'"';
+				 <li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
 					if( $tab['class'] ) {
 						echo ' class="'.htmlspecialchars($tab['class']).'"';
 					}
@@ -165,7 +165,7 @@ class MonoBookTemplate extends QuickTemplate {
 		<div class="pBody">
 			<ul>
 <?php 			foreach($this->data['personal_urls'] as $key => $item) { ?>
-				<li id="pt-<?php echo Sanitizer::escapeId($key) ?>"<?php
+				<li id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"<?php
 					if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
 				echo htmlspecialchars($item['href']) ?>"<?php echo $skin->tooltipAndAccesskey('pt-'.$key) ?><?php
 				if(!empty($item['class'])) { ?> class="<?php
@@ -181,8 +181,8 @@ class MonoBookTemplate extends QuickTemplate {
 			echo $skin->tooltipAndAccesskey('n-mainpage') ?>></a>
 	</div>
 	<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
-<?php 
-		$sidebar = $this->data['sidebar'];		
+<?php
+		$sidebar = $this->data['sidebar'];
 		if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
 		if ( !isset( $sidebar['TOOLBOX'] ) ) $sidebar['TOOLBOX'] = true;
 		if ( !isset( $sidebar['LANGUAGES'] ) ) $sidebar['LANGUAGES'] = true;
@@ -210,20 +210,28 @@ class MonoBookTemplate extends QuickTemplate {
 <?php	}
 
 		// Generate additional footer links
-?>
-			<ul id="f-list">
-<?php
 		$footerlinks = array(
 			'lastmod', 'viewcount', 'numberofwatchingusers', 'credits', 'copyright',
 			'privacy', 'about', 'disclaimer', 'tagline',
 		);
+		$validFooterLinks = array();
 		foreach( $footerlinks as $aLink ) {
 			if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
-?>				<li id="<?php echo$aLink?>"><?php $this->html($aLink) ?></li>
-<?php 		}
+				$validFooterLinks[] = $aLink;
+			}
 		}
+		if ( count( $validFooterLinks ) > 0 ) {
+?>			<ul id="f-list">
+<?php
+			foreach( $validFooterLinks as $aLink ) {
+				if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
+?>					<li id="<?php echo$aLink?>"><?php $this->html($aLink) ?></li>
+<?php 			}
+			}
 ?>
 			</ul>
+<?php	}
+?>
 		</div>
 </div>
 <?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
@@ -251,6 +259,7 @@ class MonoBookTemplate extends QuickTemplate {
 						?> value="<?php $this->text('search') ?>"<?php } ?> />
 				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg('searcharticle') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-go' ); ?> />&nbsp;
 				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> />
+				<a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a>
 			</div></form>
 		</div>
 	</div>
@@ -283,7 +292,7 @@ class MonoBookTemplate extends QuickTemplate {
 <?php 	}
 		if($this->data['feeds']) { ?>
 			<li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
-					?><span id="feed-<?php echo Sanitizer::escapeId($key) ?>"><a href="<?php
+					?><span id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>"><a href="<?php
 					echo htmlspecialchars($feed['href']) ?>"<?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
 					<?php } ?></li><?php
 		}
@@ -319,7 +328,7 @@ class MonoBookTemplate extends QuickTemplate {
 
 	/*************************************************************************************************/
 	function languageBox() {
-		if( $this->data['language_urls'] ) { 
+		if( $this->data['language_urls'] ) {
 ?>
 	<div id="p-lang" class="portlet">
 		<h5><?php $this->msg('otherlanguages') ?></h5>
@@ -339,7 +348,7 @@ class MonoBookTemplate extends QuickTemplate {
 	/*************************************************************************************************/
 	function customBox( $bar, $cont ) {
 ?>
-	<div class='generated-sidebar portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $this->skin->tooltip('p-'.$bar) ?>>
+	<div class='generated-sidebar portlet' id='<?php echo Sanitizer::escapeId( "p-$bar" ) ?>'<?php echo $this->skin->tooltip('p-'.$bar) ?>>
 		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
 		<div class='pBody'>
 <?php   if ( is_array( $cont ) ) { ?>

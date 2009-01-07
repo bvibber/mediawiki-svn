@@ -91,7 +91,7 @@ $messages = array(
 'mytalk'         => 'Mov dïjveldidh',
 'anontalk'       => 'Dïjveldidh ihke dïhte IP',
 'navigation'     => 'Navigasjovne',
-'and'            => 'jih',
+'and'            => '&#32;jih',
 
 'errorpagetitle'   => 'Båajhtode',
 'returnto'         => 'Bååstide gåajkoe $1.',
@@ -139,8 +139,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}}en bïjre',
 'aboutpage'            => 'Project:Bïjre',
-'bugreports'           => 'Bug reektehtse',
-'bugreportspage'       => 'Project:Bug reektehtse',
 'copyrightpage'        => '{{ns:project}}:Bäjjesereaktah',
 'currentevents'        => 'Daaletje deahpadimmieh',
 'currentevents-url'    => 'Project:Daaletje deahpadimmieh',
@@ -181,7 +179,7 @@ $messages = array(
 'nstab-special'   => 'Joekoelaakan',
 'nstab-project'   => 'Prosjekte bielie',
 'nstab-image'     => 'Baalka',
-'nstab-mediawiki' => 'Mediawiki',
+'nstab-mediawiki' => 'MediaWiki',
 'nstab-template'  => 'Maale',
 'nstab-help'      => 'Viehke bielie',
 'nstab-category'  => 'Kategorije',
@@ -241,6 +239,11 @@ Gïemhpes logge sïjse vihth männgan datne åtna låhka dïhte.',
 'accountcreated'          => 'Nuhtjien skaepede',
 'loginlanguagelabel'      => 'Gïele: $1',
 
+# Password reset dialog
+'oldpassword' => 'Båeries loevesbaakoe:',
+'newpassword' => 'Orre loevesbaakoe:',
+'retypenew'   => 'Odhasit orre loevesbaakoe:',
+
 # Edit page toolbar
 'bold_sample'     => 'Buajtehks tjaalege',
 'bold_tip'        => 'Buajtehks tjaalege',
@@ -262,8 +265,8 @@ Gïemhpes logge sïjse vihth männgan datne åtna låhka dïhte.',
 'hr_tip'          => 'Horisontele sïeve (nuhtjie bïhteles-laakan)',
 
 # Edit pages
-'summary'                => 'Tjohkehtehteme',
-'subject'                => 'Ïebne/rubriike',
+'summary'                => 'Tjohkehtehteme:',
+'subject'                => 'Ïebne/rubriike:',
 'minoredit'              => 'Dïhte lea ohtje värrhtoedimmie',
 'watchthis'              => 'Sïektjedh dïhte bielie',
 'savearticle'            => 'Spååredh bielie',
@@ -271,7 +274,7 @@ Gïemhpes logge sïjse vihth männgan datne åtna låhka dïhte.',
 'showpreview'            => 'Vuesehte åvte-vuesiehtidh',
 'showdiff'               => 'Vuesehte värrhtoedimmie',
 'anoneditwarning'        => "'''Vaaroehtidh:''' Dov lea ijje logge sïjse. Dov IP tjaalesijjie båetedh spååredh sïjse dïhte bielie värrhtoedimmie histovrije.",
-'summary-preview'        => 'Tjohkehtehteme åvte-vuesiehtidh',
+'summary-preview'        => 'Tjohkehtehteme åvte-vuesiehtidh:',
 'loginreqlink'           => 'logge sïjse',
 'loginreqpagetext'       => 'Dov galkedh $1 ihke vuesehte jeatjebh bielieh.',
 'accmailtitle'           => 'Loevesbaakoe seedtie.',
@@ -348,9 +351,6 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 'skin-preview'       => 'Åvte-vuesiehtidh',
 'math_unknown_error' => 'ammes båajhtede',
 'saveprefs'          => 'Spååredh',
-'oldpassword'        => 'Båeries loevesbaakoe:',
-'newpassword'        => 'Orre loevesbaakoe:',
-'retypenew'          => 'Odhasit orre loevesbaakoe:',
 'searchresultshead'  => 'Ohtsedh',
 'timezonelegend'     => 'Tïjjedajve',
 'localtime'          => 'Byjrehks tïjje',
@@ -415,15 +415,15 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 
 'license' => 'Liseense',
 
-# Special:ImageList
-'imagelist_search_for' => 'Ohtsedh ihke guvvie nomme:',
+# Special:ListFiles
+'listfiles_search_for' => 'Ohtsedh ihke guvvie nomme:',
 'imgfile'              => 'guvvie',
-'imagelist'            => 'Guvvie lästoe',
-'imagelist_name'       => 'Nomme',
-'imagelist_user'       => 'Nuhtjien',
-'imagelist_size'       => 'Stoerre',
+'listfiles'            => 'Guvvie lästoe',
+'listfiles_name'       => 'Nomme',
+'listfiles_user'       => 'Nuhtjien',
+'listfiles_size'       => 'Stoerre',
 
-# Image description page
+# File description page
 'filehist'                  => 'Baalka histovrije',
 'filehist-help'             => 'Diedtedh nille biejjie ihke vuajna man baalkan lij bealese dïhte tïjje.',
 'filehist-current'          => 'daaletje',
@@ -783,7 +783,7 @@ Gïemhpes veeljeme jeatjebh nomme.',
 'show-big-image'       => 'Dïeves stoerre',
 'show-big-image-thumb' => '<small>Stoerre ihke dïhte vuesiehtidh: $1 × $2 pixel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Gallerije dejstie orre baalkah',
 'ilsubmit'  => 'Ohtsedh',
 

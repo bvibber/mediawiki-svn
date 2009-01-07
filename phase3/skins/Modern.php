@@ -113,7 +113,7 @@ class ModernTemplate extends QuickTemplate {
 			<ul>
 	<?php		foreach($this->data['content_actions'] as $key => $tab) {
 					echo '
-				 <li id="ca-' . Sanitizer::escapeId($key).'"';
+				 <li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
 					if( $tab['class'] ) {
 						echo ' class="'.htmlspecialchars($tab['class']).'"';
 					}
@@ -143,6 +143,7 @@ class ModernTemplate extends QuickTemplate {
 	     for the margins -->
 	<div id="mw_contentholder">
 		<div class='mw-topboxes'>
+			<div id="mw-js-message" style="display:none;"></div>
 			<div class="mw-topbox" id="siteSub"><?php $this->msg('tagline') ?></div>
 			<?php if($this->data['newtalk'] ) {
 				?><div class="usermessage mw-topbox"><?php $this->html('newtalk')  ?></div>
@@ -200,7 +201,7 @@ class ModernTemplate extends QuickTemplate {
 		<div class="pBody">
 			<ul>
 <?php 			foreach($this->data['personal_urls'] as $key => $item) { ?>
-				<li id="pt-<?php echo Sanitizer::escapeId($key) ?>"<?php
+				<li id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"<?php
 					if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
 				echo htmlspecialchars($item['href']) ?>"<?php echo $skin->tooltipAndAccesskey('pt-'.$key) ?><?php
 				if(!empty($item['class'])) { ?> class="<?php
@@ -255,6 +256,7 @@ class ModernTemplate extends QuickTemplate {
 						?> value="<?php $this->text('search') ?>"<?php } ?> />
 				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="<?php $this->msg('searcharticle') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-go' ); ?> />&nbsp;
 				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="<?php $this->msg('searchbutton') ?>"<?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?> />
+				<a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a>
 			</div></form>
 		</div><!-- pBody -->
 	</div><!-- portlet -->
@@ -288,7 +290,7 @@ class ModernTemplate extends QuickTemplate {
 <?php 	}
 		if($this->data['feeds']) { ?>
 			<li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
-					?><span id="feed-<?php echo Sanitizer::escapeId($key) ?>"><a href="<?php
+					?><span id="<?php echo Sanitizer::escapeId( "feed-$key" ) ?>"><a href="<?php
 					echo htmlspecialchars($feed['href']) ?>"<?php echo $this->skin->tooltipAndAccesskey('feed-'.$key) ?>><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
 					<?php } ?></li><?php
 		}
@@ -344,7 +346,7 @@ class ModernTemplate extends QuickTemplate {
 	/*************************************************************************************************/
 	function customBox( $bar, $cont ) {
 ?>
-		<div class='generated-sidebar portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $this->skin->tooltip('p-'.$bar) ?>>
+		<div class='generated-sidebar portlet' id='<?php echo Sanitizer::escapeId( "p-$bar" ) ?>'<?php echo $this->skin->tooltip('p-'.$bar) ?>>
 		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
 		<div class='pBody'>
 <?php   if ( is_array( $cont ) ) { ?>

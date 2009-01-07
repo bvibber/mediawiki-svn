@@ -137,7 +137,7 @@ $messages = array(
 'email'              => 'དྲ་འཕྲིན།',
 
 # Edit pages
-'summary'      => 'བསྡུས་དོན།',
+'summary'      => 'བསྡུས་དོན།:',
 'minoredit'    => 'འདི་རྩོམ་སྒྲིག་ཚར་མེད།',
 'watchthis'    => 'དྲ་ངོས་འདི་ལ་མཉམ་འཇོག་པ།',
 'savearticle'  => 'དྲ་ངོས་ཉར་བ།',
@@ -235,7 +235,7 @@ $messages = array(
 'tooltip-ca-move'        => 'ཨཾོབེ༹་ ཐིས་ པགེ་',
 'tooltip-p-logo'         => 'གཙོ་ངོས།',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'འཚོལ།',
 
 # Multipage image navigation

@@ -196,8 +196,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => "Qui c'est {{SITENAME}}?",
 'aboutpage'            => 'Project:Info',
-'bugreports'           => "Rapport d'erreurs",
-'bugreportspage'       => "Project:Rapport d'erreurs",
 'copyright'            => 'Les matières sont avalable en accord avec $1',
 'copyrightpagename'    => '{{SITENAME}} Protection de Droits',
 'copyrightpage'        => '{{ns:project}}:Protection de Droits',
@@ -398,7 +396,6 @@ Si quèqu\'une d\'autre a demandé ce mot de passe ou si vous vous rappelez de v
 'resetpass_success'       => 'Vous avez bien changé votre mot de passe!  On est après vous connecter...',
 'resetpass_bad_temporary' => 'Mauvais mot de passe de peu de durée.  Il est possible que vous avez déjà changé votre mot de passe ou demandé un nouveau mot de passe de peu de durée.',
 'resetpass_forbidden'     => 'Vous pouvez pas changer votre mot de passe sus ce wiki ici.',
-'resetpass_missing'       => 'Vide.',
 
 # Edit page toolbar
 'bold_sample'     => 'Gras',
@@ -423,8 +420,8 @@ Si quèqu\'une d\'autre a demandé ce mot de passe ou si vous vous rappelez de v
 'hr_tip'          => 'Ligne horizontale (Abusez-lé pas.)',
 
 # Edit pages
-'summary'                   => 'Description',
-'subject'                   => 'Sujet',
+'summary'                   => 'Description:',
+'subject'                   => 'Sujet:',
 'minoredit'                 => "Ça ici, c'est un petit changement.",
 'watchthis'                 => 'Guetter cette page',
 'savearticle'               => 'Sauver la page',
@@ -436,8 +433,8 @@ Si quèqu\'une d\'autre a demandé ce mot de passe ou si vous vous rappelez de v
 'missingsummary'            => "'''Attention:'''  Vous avez pas mis de description.  Si vous cliquez le bouton \"Sauver\" encore, votre changement va être sauvé sans description.",
 'missingcommenttext'        => 'Mettez donc un commentaire en bas.',
 'missingcommentheader'      => "'''Attention:'''  Vous avez pas pas mis de sujet pour ce commentaire.  Si vous cliquez le bouton \"Sauver\" encore, votre changement va être sauvé sans sujet.",
-'summary-preview'           => "Vue d'avance de la description",
-'subject-preview'           => "Vue d'avance du sujet",
+'summary-preview'           => "Vue d'avance de la description:",
+'subject-preview'           => "Vue d'avance du sujet:",
 'blockedtitle'              => "L'useur est bloqué",
 'blockedtext'               => "<big>'''Votre compte d'useur (ou votre adresse IP) est bloqué.'''</big>
 

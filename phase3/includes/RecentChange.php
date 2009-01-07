@@ -215,9 +215,12 @@ class RecentChange
 			$conn = socket_create( AF_INET, SOCK_DGRAM, SOL_UDP );
 			if( $conn ) {
 				$line = $prefix . $line;
+				wfDebug( __METHOD__ . ": sending UDP line: $line\n" );
 				socket_sendto( $conn, $line, strlen($line), 0, $address, $wgRC2UDPPort );
 				socket_close( $conn );
 				return true;
+			} else {
+				wfDebug( __METHOD__ . ": failed to create UDP socket\n" );
 			}
 		}
 		return false;
@@ -310,8 +313,8 @@ class RecentChange
 	}
 
 	# Makes an entry in the database corresponding to an edit
-	public static function notifyEdit( $timestamp, &$title, $minor, &$user, $comment,
-		$oldId, $lastTimestamp, $bot, $ip = '', $oldSize = 0, $newSize = 0, $newId = 0)
+	public static function notifyEdit( $timestamp, &$title, $minor, &$user, $comment, $oldId,
+		$lastTimestamp, $bot, $ip='', $oldSize=0, $newSize=0, $newId=0, $patrol=0 )
 	{
 		if( !$ip ) {
 			$ip = wfGetIP();
@@ -338,7 +341,7 @@ class RecentChange
 			'rc_moved_to_ns'	=> 0,
 			'rc_moved_to_title'	=> '',
 			'rc_ip'		=> $ip,
-			'rc_patrolled'	=> 0,
+			'rc_patrolled'	=> intval($patrol),
 			'rc_new'	=> 0,  # obsolete
 			'rc_old_len'	=> $oldSize,
 			'rc_new_len'	=> $newSize,
@@ -365,7 +368,7 @@ class RecentChange
 	 * @todo Document parameters and return
 	 */
 	public static function notifyNew( $timestamp, &$title, $minor, &$user, $comment, $bot,
-	  $ip='', $size = 0, $newId = 0 )
+		$ip='', $size=0, $newId=0, $patrol=0 )
 	{
 		if( !$ip ) {
 			$ip = wfGetIP();
@@ -392,7 +395,7 @@ class RecentChange
 			'rc_moved_to_ns'    => 0,
 			'rc_moved_to_title' => '',
 			'rc_ip'             => $ip,
-			'rc_patrolled'      => 0,
+			'rc_patrolled'      => intval($patrol),
 			'rc_new'	    	=> 1, # obsolete
 			'rc_old_len'        => 0,
 			'rc_new_len'	    => $size,
@@ -523,7 +526,6 @@ class RecentChange
 		$this->mAttribs = get_object_vars( $row );
 		$this->mAttribs['rc_timestamp'] = wfTimestamp(TS_MW, $this->mAttribs['rc_timestamp']);
 		$this->mAttribs['rc_deleted'] = $row->rc_deleted; // MUST be set
-		$this->mExtra = array();
 	}
 
 	# Makes a pseudo-RC entry from a cur row
@@ -556,7 +558,6 @@ class RecentChange
 			'rc_log_id' => isset($row->rc_log_id) ? $row->rc_log_id: 0,
 			'rc_deleted' => $row->rc_deleted // MUST be set
 		);
-		$this->mExtra = array();
 	}
 
 	/**
@@ -604,19 +605,22 @@ class RecentChange
 		$title = $titleObj->getPrefixedText();
 		$title = self::cleanupForIRC( $title );
 
-		// FIXME: *HACK* these should be getFullURL(), hacked for SSL madness --brion 2005-12-26
 		if( $rc_type == RC_LOG ) {
 			$url = '';
-		} elseif( $rc_new && ($wgUseRCPatrol || $wgUseNPPatrol) ) {
-			$url = $titleObj->getInternalURL("rcid=$rc_id");
-		} else if( $rc_new ) {
-			$url = $titleObj->getInternalURL();
-		} else if( $wgUseRCPatrol ) {
-			$url = $titleObj->getInternalURL("diff=$rc_this_oldid&oldid=$rc_last_oldid&rcid=$rc_id");
-			$url = preg_replace('/title=[^&]*&/', '', $url);
 		} else {
-			$url = $titleObj->getInternalURL("diff=$rc_this_oldid&oldid=$rc_last_oldid");
-			$url = preg_replace('/title=[^&]*&/', '', $url);
+			if( $rc_type == RC_NEW ) {
+				$url = "oldid=$rc_this_oldid";
+			} else {
+				$url = "diff=$rc_this_oldid&oldid=$rc_last_oldid";
+			}
+			if( $wgUseRCPatrol || ($rc_type == RC_NEW && $wgUseNPPatrol) ) {
+				$url .= "&rcid=$rc_id";
+			}
+			// XXX: *HACK* this should use getFullURL(), hacked for SSL madness --brion 2005-12-26
+			// XXX: *HACK^2* the preg_replace() undoes much of what getInternalURL() does, but we 
+			// XXX: need to call it so that URL paths on the Wikimedia secure server can be fixed
+			// XXX: by a custom GetInternalURL hook --vyznev 2008-12-10
+			$url = preg_replace( '/title=[^&]*&/', '', $titleObj->getInternalURL( $url ) );
 		}
 
 		if( isset( $oldSize ) && isset( $newSize ) ) {

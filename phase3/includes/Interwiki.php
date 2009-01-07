@@ -139,7 +139,7 @@ class Interwiki {
 	 *
 	 */
 	protected static function load( $prefix ) {
-		global $wgMemc;
+		global $wgMemc, $wgInterwikiExpiry;
 		$key = wfMemcKey( 'interwiki', $prefix );
 		$mc = $wgMemc->get( $key );
 		$iw = false;
@@ -157,7 +157,7 @@ class Interwiki {
 		$iw = Interwiki::loadFromArray( $row );
 		if ( $iw ) {
 			$mc = array( 'iw_url' => $iw->mURL, 'iw_local' => $iw->mLocal, 'iw_trans' => $iw->mTrans );
-			$wgMemc->add( $key, $mc );
+			$wgMemc->add( $key, $mc, $wgInterwikiExpiry );
 			return $iw;
 		}
 		

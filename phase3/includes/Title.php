@@ -383,7 +383,7 @@ class Title {
 
 		$t = preg_replace( "/\\s+/", ' ', $t );
 
-		if ( $ns == NS_IMAGE ) {
+		if ( $ns == NS_FILE ) {
 			$t = preg_replace( "/ (png|gif|jpg|jpeg|ogg)$/", "", $t );
 		}
 		return trim( $t );
@@ -451,13 +451,13 @@ class Title {
 	 * Escape a text fragment, say from a link, for a URL
 	 */
 	static function escapeFragmentForURL( $fragment ) {
-		$fragment = str_replace( ' ', '_', $fragment );
-		$fragment = urlencode( Sanitizer::decodeCharReferences( $fragment ) );
-		$replaceArray = array(
-			'%3A' => ':',
-			'%' => '.'
-		);
-		return strtr( $fragment, $replaceArray );
+		global $wgEnforceHtmlIds;
+		# Note that we don't urlencode the fragment.  urlencoded Unicode
+		# fragments appear not to work in IE (at least up to 7) or in at least
+		# one version of Opera 9.x.  The W3C validator, for one, doesn't seem
+		# to care if they aren't encoded.
+		return Sanitizer::escapeId( $fragment,
+			$wgEnforceHtmlIds ? 'noninitial' : 'xml' );
 	}
 
 #----------------------------------------------------------------------------
@@ -764,7 +764,9 @@ class Title {
 						$query = $matches[1];
 						if( isset( $matches[4] ) ) $query .= $matches[4];
 						$url = str_replace( '$1', $dbkey, $wgActionPaths[$action] );
-						if( $query != '' ) $url .= '?' . $query;
+						if( $query != '' ) {
+							$url = wfAppendQuery( $url, $query );
+						}
 					}
 				}
 				if ( $url === false ) {
@@ -1100,61 +1102,55 @@ class Title {
 		$errors = array();
 
 		// Use getUserPermissionsErrors instead
-		if ( !wfRunHooks( 'userCan', array( &$this, &$user, $action, &$result ) ) ) {
+		if( !wfRunHooks( 'userCan', array( &$this, &$user, $action, &$result ) ) ) {
 			wfProfileOut( __METHOD__ );
 			return $result ? array() : array( array( 'badaccess-group0' ) );
 		}
 
-		if (!wfRunHooks( 'getUserPermissionsErrors', array( &$this, &$user, $action, &$result ) ) ) {
-			if ($result != array() && is_array($result) && !is_array($result[0]))
+		if( !wfRunHooks( 'getUserPermissionsErrors', array(&$this,&$user,$action,&$result) ) ) {
+			if( is_array($result) && count($result) && !is_array($result[0]) )
 				$errors[] = $result; # A single array representing an error
-			else if (is_array($result) && is_array($result[0]))
+			else if( is_array($result) && is_array($result[0]) )
 				$errors = array_merge( $errors, $result ); # A nested array representing multiple errors
-			else if ($result != '' && $result != null && $result !== true && $result !== false)
+			else if( $result !== '' && is_string($result) )
 				$errors[] = array($result); # A string representing a message-id
-			else if ($result === false )
+			else if( $result === false )
 				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
 		}
-		if ($doExpensiveQueries && !wfRunHooks( 'getUserPermissionsErrorsExpensive', array( &$this, &$user, $action, &$result ) ) ) {
-			if ($result != array() && is_array($result) && !is_array($result[0]))
+		if( $doExpensiveQueries && !wfRunHooks( 'getUserPermissionsErrorsExpensive', array(&$this,&$user,$action,&$result) ) ) {
+			if( is_array($result) && count($result) && !is_array($result[0]) )
 				$errors[] = $result; # A single array representing an error
-			else if (is_array($result) && is_array($result[0]))
+			else if( is_array($result) && is_array($result[0]) )
 				$errors = array_merge( $errors, $result ); # A nested array representing multiple errors
-			else if ($result != '' && $result != null && $result !== true && $result !== false)
+			else if( $result !== '' && is_string($result) )
 				$errors[] = array($result); # A string representing a message-id
-			else if ($result === false )
+			else if( $result === false )
 				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
 		}
 		
+		// TODO: document
 		$specialOKActions = array( 'createaccount', 'execute' );
 		if( NS_SPECIAL == $this->mNamespace && !in_array( $action, $specialOKActions) ) {
 			$errors[] = array('ns-specialprotected');
 		}
 
-		if ( $this->isNamespaceProtected() ) {
-			$ns = $this->getNamespace() == NS_MAIN
-				? wfMsg( 'nstab-main' )
-				: $this->getNsText();
-			$errors[] = (NS_MEDIAWIKI == $this->mNamespace
-				? array('protectedinterface')
-				: array( 'namespaceprotected',  $ns ) );
-		}
-
-		if( $this->mDbkeyform == '_' ) {
-			# FIXME: Is this necessary? Shouldn't be allowed anyway...
-			$errors[] = array('badaccess-group0');
+		if( $this->isNamespaceProtected() ) {
+			$ns = $this->getNamespace() == NS_MAIN ?
+				wfMsg( 'nstab-main' ) : $this->getNsText();
+			$errors[] = NS_MEDIAWIKI == $this->mNamespace ?
+				array('protectedinterface') : array( 'namespaceprotected',  $ns );
 		}
 
 		# protect css/js subpages of user pages
 		# XXX: this might be better using restrictions
 		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssJsSubpage() from working
-		if( $this->isCssJsSubpage()
-			&& !$user->isAllowed('editusercssjs')
-			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) ) {
+		if( $this->isCssJsSubpage() && !$user->isAllowed('editusercssjs')
+			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) )
+		{
 			$errors[] = array('customcssjsprotected');
 		}
 
-		if ( $doExpensiveQueries && !$this->isCssJsSubpage() ) {
+		if( $doExpensiveQueries && !$this->isCssJsSubpage() ) {
 			# We /could/ use the protection level on the source page, but it's fairly ugly
 			#  as we have to establish a precedence hierarchy for pages included by multiple
 			#  cascade-protected pages. So just restrict it to people with 'protect' permission,
@@ -1179,18 +1175,18 @@ class Title {
 
 		foreach( $this->getRestrictions($action) as $right ) {
 			// Backwards compatibility, rewrite sysop -> protect
-			if ( $right == 'sysop' ) {
+			if( $right == 'sysop' ) {
 				$right = 'protect';
 			}
 			if( '' != $right && !$user->isAllowed( $right ) ) {
-				//Users with 'editprotected' permission can edit protected pages
+				// Users with 'editprotected' permission can edit protected pages
 				if( $action=='edit' && $user->isAllowed( 'editprotected' ) ) {
-					//Users with 'editprotected' permission cannot edit protected pages
-					//with cascading option turned on.
-					if($this->mCascadeRestriction) {
+					// Users with 'editprotected' permission cannot edit protected pages
+					// with cascading option turned on.
+					if( $this->mCascadeRestriction ) {
 						$errors[] = array( 'protectedpagetext', $right );
 					} else {
-						//Nothing, user can edit!
+						// Nothing, user can edit!
 					}
 				} else {
 					$errors[] = array( 'protectedpagetext', $right );
@@ -1198,78 +1194,75 @@ class Title {
 			}
 		}
 
-		if ($action == 'protect') {
-			if ($this->getUserPermissionsErrors('edit', $user) != array()) {
+		if( $action == 'protect' ) {
+			if( $this->getUserPermissionsErrors('edit', $user) != array() ) {
 				$errors[] = array( 'protect-cantedit' ); // If they can't edit, they shouldn't protect.
 			}
 		}
 
-		if ($action == 'create') {
+		if( $action == 'create' ) {
 			$title_protection = $this->getTitleProtection();
+			if( is_array($title_protection) ) {
+				extract($title_protection); // is this extract() really needed?
 
-			if (is_array($title_protection)) {
-				extract($title_protection);
-
-				if ($pt_create_perm == 'sysop')
-					$pt_create_perm = 'protect';
-
-				if ($pt_create_perm == '' || !$user->isAllowed($pt_create_perm)) {
-					$errors[] = array ( 'titleprotected', User::whoIs($pt_user), $pt_reason );
+				if( $pt_create_perm == 'sysop' ) {
+					$pt_create_perm = 'protect'; // B/C
+				}
+				if( $pt_create_perm == '' || !$user->isAllowed($pt_create_perm) ) {
+					$errors[] = array( 'titleprotected', User::whoIs($pt_user), $pt_reason );
 				}
 			}
 
-			if( (  $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
-				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
+			if( ( $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
+				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) 
+			{
 				$errors[] = $user->isAnon() ? array ('nocreatetext') : array ('nocreate-loggedin');
 			}
-
-		} elseif ( $action == 'move' ) {
-			if ( !$user->isAllowed( 'move' ) ) {
+		} elseif( $action == 'move' ) {
+			if( !$user->isAllowed( 'move' ) ) {
 				// User can't move anything
 				$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
-			} elseif ( !$user->isAllowed( 'move-rootuserpages' ) 
+			} elseif( !$user->isAllowed( 'move-rootuserpages' ) 
 					&& $this->getNamespace() == NS_USER && !$this->isSubpage() ) 
 			{
 				// Show user page-specific message only if the user can move other pages
 				$errors[] = array( 'cant-move-user-page' );
 			}
-
+			// Check if user is allowed to move files if it's a file
+			if( $this->getNamespace() == NS_FILE && !$user->isAllowed( 'movefile' ) ) {
+				$errors[] = array( 'movenotallowedfile' );
+			}
 			// Check for immobile pages
-			if ( !MWNamespace::isMovable( $this->getNamespace() ) ) {
+			if( !MWNamespace::isMovable( $this->getNamespace() ) ) {
 				// Specific message for this case
 				$errors[] = array( 'immobile-source-namespace', $this->getNsText() );
-			} elseif ( !$this->isMovable() ) {
+			} elseif( !$this->isMovable() ) {
 				// Less specific message for rarer cases
 				$errors[] = array( 'immobile-page' );
 			}
-
-		} elseif ( $action == 'move-target' ) {
-			if ( !$user->isAllowed( 'move' ) ) {
+		} elseif( $action == 'move-target' ) {
+			if( !$user->isAllowed( 'move' ) ) {
 				// User can't move anything
 				$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
-			} elseif ( !$user->isAllowed( 'move-rootuserpages' ) 
-					&& $this->getNamespace() == NS_USER && !$this->isSubpage() ) 
+			} elseif( !$user->isAllowed( 'move-rootuserpages' ) 
+				&& $this->getNamespace() == NS_USER && !$this->isSubpage() ) 
 			{
 				// Show user page-specific message only if the user can move other pages
 				$errors[] = array( 'cant-move-to-user-page' );
 			}
-			if ( !MWNamespace::isMovable( $this->getNamespace() ) ) {
+			if( !MWNamespace::isMovable( $this->getNamespace() ) ) {
 				$errors[] = array( 'immobile-target-namespace', $this->getNsText() );
-			} elseif ( !$this->isMovable() ) {
+			} elseif( !$this->isMovable() ) {
 				$errors[] = array( 'immobile-target-page' );
 			}
-
-		} elseif ( !$user->isAllowed( $action ) ) {
+		} elseif( !$user->isAllowed( $action ) ) {
 			$return = null;
 			$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
 				User::getGroupsWithPermission( $action ) );
-			if ( $groups ) {
+			if( $groups ) {
 				$return = array( 'badaccess-groups',
-					array(
-						implode( ', ', $groups ),
-						count( $groups ) ) );
-			}
-			else {
+					array( implode( ', ', $groups ), count( $groups ) ) );
+			} else {
 				$return = array( "badaccess-group0" );
 			}
 			$errors[] = $return;
@@ -1325,7 +1318,7 @@ class Title {
 
 		$expiry_description = '';
 		if ( $encodedExpiry != 'infinity' ) {
-			$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry ) ).')';
+			$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry ) , $wgContLang->date( $expiry ) , $wgContLang->time( $expiry ) ).')';
 		}
 		else {
 			$expiry_description .= ' (' . wfMsgForContent( 'protect-expiry-indefinite' ).')';
@@ -1626,7 +1619,7 @@ class Title {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		if ( $this->getNamespace() == NS_IMAGE ) {
+		if ( $this->getNamespace() == NS_FILE ) {
 			$tables = array ('imagelinks', 'page_restrictions');
 			$where_clauses = array(
 				'il_to' => $this->getDBkey(),
@@ -1863,7 +1856,7 @@ class Title {
 			$dbr = wfGetDB( DB_SLAVE );
 			$n = $dbr->selectField( 'archive', 'COUNT(*)', array( 'ar_namespace' => $this->getNamespace(),
 				'ar_title' => $this->getDBkey() ), $fname );
-			if( $this->getNamespace() == NS_IMAGE ) {
+			if( $this->getNamespace() == NS_FILE ) {
 				$n += $dbr->selectField( 'filearchive', 'COUNT(*)',
 					array( 'fa_name' => $this->getDBkey() ), $fname );
 			}
@@ -1973,7 +1966,6 @@ class Title {
 	 * @return \type{\bool} true if the update succeded
 	 */
 	public function invalidateCache() {
-		global $wgUseFileCache;
 		if( wfReadOnly() ) {
 			return;
 		}
@@ -1983,10 +1975,7 @@ class Title {
 			$this->pageCond(), 
 			__METHOD__
 		);
-		if( $wgUseFileCache) {
-			$cache = new HTMLFileCache( $this );
-			@unlink( $cache->fileCacheName() );
-		}
+		HTMLFileCache::clearFileCache( $this );
 		return $success;
 	}
 
@@ -2047,8 +2036,7 @@ class Title {
 		# Strip Unicode bidi override characters.
 		# Sometimes they slip into cut-n-pasted page titles, where the
 		# override chars get included in list displays.
-		$dbkey = str_replace( "\xE2\x80\x8E", '', $dbkey ); // 200E LEFT-TO-RIGHT MARK
-		$dbkey = str_replace( "\xE2\x80\x8F", '', $dbkey ); // 200F RIGHT-TO-LEFT MARK
+		$dbkey = preg_replace( '/\xE2\x80[\x8E\x8F\xAA-\xAE]/S', '', $dbkey );
 
 		# Clean up whitespace
 		#
@@ -2428,6 +2416,9 @@ class Title {
 		if( !$this->isMovable() ) {
 			$errors[] = array( 'immobile-source-namespace', $this->getNsText() );
 		}
+		if ( $nt->getInterwiki() != '' ) {
+			$errors[] = array( 'immobile-target-namespace-iw' );
+		}
 		if ( !$nt->isMovable() ) {
 			$errors[] = array('immobile-target-namespace', $nt->getNsText() );
 		}
@@ -2445,10 +2436,10 @@ class Title {
 		}
 
 		// Image-specific checks
-		if( $this->getNamespace() == NS_IMAGE ) {
+		if( $this->getNamespace() == NS_FILE ) {
 			$file = wfLocalFile( $this );
 			if( $file->exists() ) {
-				if( $nt->getNamespace() != NS_IMAGE ) {
+				if( $nt->getNamespace() != NS_FILE ) {
 					$errors[] = array('imagenocrossnamespace');
 				}
 				if( $nt->getText() != wfStripIllegalFilenameChars( $nt->getText() ) ) {
@@ -2671,7 +2662,7 @@ class Title {
 		$nullRevId = $nullRevision->insertOn( $dbw );
 		
 		$article = new Article( $this );
-		wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest) );
+		wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest, $wgUser) );
 
 		# Change the name of the target page:
 		$dbw->update( 'page',
@@ -2699,7 +2690,7 @@ class Title {
 			$redirectRevision->insertOn( $dbw );
 			$redirectArticle->updateRevisionOn( $dbw, $redirectRevision, 0 );
 			
-			wfRunHooks( 'NewRevisionFromEditComplete', array($redirectArticle, $redirectRevision, false) );
+			wfRunHooks( 'NewRevisionFromEditComplete', array($redirectArticle, $redirectRevision, false, $wgUser) );
 
 			# Now, we record the link from the redirect to the new title.
 			# It should have no other outgoing links...
@@ -2710,12 +2701,14 @@ class Title {
 					'pl_namespace' => $nt->getNamespace(),
 					'pl_title'     => $nt->getDBkey() ),
 				$fname );
+			$redirectSuppressed = false;
 		} else {
 			$this->resetArticleID( 0 );
+			$redirectSuppressed = true;
 		}
-		
+
 		# Move an image if this is a file
-		if( $this->getNamespace() == NS_IMAGE ) {
+		if( $this->getNamespace() == NS_FILE ) {
 			$file = wfLocalFile( $this );
 			if( $file->exists() ) {
 				$status = $file->move( $nt );
@@ -2728,7 +2721,7 @@ class Title {
 
 		# Log the move
 		$log = new LogPage( 'move' );
-		$log->addEntry( 'move_redir', $this, $reason, array( 1 => $nt->getPrefixedText() ) );
+		$log->addEntry( 'move_redir', $this, $reason, array( 1 => $nt->getPrefixedText(), 2 => $redirectSuppressed ) );
 
 		# Purge squid
 		if ( $wgUseSquid ) {
@@ -2768,7 +2761,7 @@ class Title {
 		$nullRevId = $nullRevision->insertOn( $dbw );
 		
 		$article = new Article( $this );
-		wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest) );
+		wfRunHooks( 'NewRevisionFromEditComplete', array($article, $nullRevision, $latest, $wgUser) );
 
 		# Rename page entry
 		$dbw->update( 'page',
@@ -2796,7 +2789,7 @@ class Title {
 			$redirectRevision->insertOn( $dbw );
 			$redirectArticle->updateRevisionOn( $dbw, $redirectRevision, 0 );
 			
-			wfRunHooks( 'NewRevisionFromEditComplete', array($redirectArticle, $redirectRevision, false) );
+			wfRunHooks( 'NewRevisionFromEditComplete', array($redirectArticle, $redirectRevision, false, $wgUser) );
 
 			# Record the just-created redirect's linking to the page
 			$dbw->insert( 'pagelinks',
@@ -2805,12 +2798,14 @@ class Title {
 					'pl_namespace' => $nt->getNamespace(),
 					'pl_title'     => $nt->getDBkey() ),
 				$fname );
+			$redirectSuppressed = false;
 		} else {
 			$this->resetArticleID( 0 );
+			$redirectSuppressed = true;
 		}
-		
+
 		# Move an image if this is a file
-		if( $this->getNamespace() == NS_IMAGE ) {
+		if( $this->getNamespace() == NS_FILE ) {
 			$file = wfLocalFile( $this );
 			if( $file->exists() ) {
 				$status = $file->move( $nt );
@@ -2823,7 +2818,7 @@ class Title {
 
 		# Log the move
 		$log = new LogPage( 'move' );
-		$log->addEntry( 'move', $this, $reason, array( 1 => $nt->getPrefixedText()) );
+		$log->addEntry( 'move', $this, $reason, array( 1 => $nt->getPrefixedText(), 2 => $redirectSuppressed ) );
 
 		# Purge caches as per article creation
 		Article::onArticleCreate( $nt );
@@ -2881,7 +2876,7 @@ class Title {
 	public function isValidMoveTarget( $nt ) {
 		$dbw = wfGetDB( DB_MASTER );
 		# Is it an existsing file?
-		if( $nt->getNamespace() == NS_IMAGE ) {
+		if( $nt->getNamespace() == NS_FILE ) {
 			$file = wfLocalFile( $nt );
 			if( $file->exists() ) {
 				wfDebug( __METHOD__ . ": file exists\n" );
@@ -2992,7 +2987,12 @@ class Title {
 	 * @return \type{\array} Selection array
 	 */
 	public function pageCond() {
-		return array( 'page_namespace' => $this->mNamespace, 'page_title' => $this->mDbkeyform );
+		if( $this->mArticleID > 0 ) {
+			// PK avoids secondary lookups in InnoDB, shouldn't hurt other DBs
+			return array( 'page_id' => $this->mArticleID );
+		} else {
+			return array( 'page_namespace' => $this->mNamespace, 'page_title' => $this->mDbkeyform );
+		}
 	}
 
 	/**
@@ -3031,6 +3031,16 @@ class Title {
 			__METHOD__,
 			array( 'ORDER BY' => 'rev_id' )
 		);
+	}
+	
+	/**
+	 * Check if this is a new page
+	 *
+	 * @return bool
+	 */
+	public function isNewPage() {
+		$dbr = wfGetDB( DB_SLAVE );
+		return (bool)$dbr->selectField( 'page', 'page_is_new', $this->pageCond(), __METHOD__ );
 	}
 
 	/**
@@ -3102,7 +3112,12 @@ class Title {
 	}
 
 	/**
-	 * Check if page exists
+	 * Check if page exists.  For historical reasons, this function simply
+	 * checks for the existence of the title in the page table, and will
+	 * thus return false for interwiki links, special pages and the like.
+	 * If you want to know if a title can be meaningfully viewed, you should
+	 * probably call the isKnown() method instead.
+	 *
 	 * @return \type{\bool} TRUE or FALSE
 	 */
 	public function exists() {
@@ -3110,21 +3125,65 @@ class Title {
 	}
 
 	/**
-	 * Do we know that this title definitely exists, or should we otherwise
-	 * consider that it exists?
+	 * Should links to this title be shown as potentially viewable (i.e. as
+	 * "bluelinks"), even if there's no record by this title in the page
+	 * table?
+	 *
+	 * This function is semi-deprecated for public use, as well as somewhat
+	 * misleadingly named.  You probably just want to call isKnown(), which
+	 * calls this function internally.
+	 *
+	 * (ISSUE: Most of these checks are cheap, but the file existence check
+	 * can potentially be quite expensive.  Including it here fixes a lot of
+	 * existing code, but we might want to add an optional parameter to skip
+	 * it and any other expensive checks.)
 	 *
 	 * @return \type{\bool} TRUE or FALSE
 	 */
 	public function isAlwaysKnown() {
-		// If the page is form Mediawiki:message/lang, calling wfMsgWeirdKey causes
-		// the full l10n of that language to be loaded. That takes much memory and
-		// isn't needed. So we strip the language part away.
-		// Also, extension messages which are not loaded, are shown as red, because
-		// we don't call MessageCache::loadAllMessages.
-		list( $basename, /* rest */ ) = explode( '/', $this->mDbkeyform, 2 );
-		return $this->isExternal()
-			|| ( $this->mNamespace == NS_MAIN && $this->mDbkeyform == '' )
-			|| ( $this->mNamespace == NS_MEDIAWIKI && wfMsgWeirdKey( $basename ) );
+		if( $this->mInterwiki != '' ) {
+			return true;  // any interwiki link might be viewable, for all we know
+		}
+		switch( $this->mNamespace ) {			
+		case NS_MEDIA:
+		case NS_FILE:
+			return wfFindFile( $this );  // file exists, possibly in a foreign repo
+		case NS_SPECIAL:
+			return SpecialPage::exists( $this->getDBKey() );  // valid special page
+		case NS_MAIN:
+			return $this->mDbkeyform == '';  // selflink, possibly with fragment
+		case NS_MEDIAWIKI:
+			// If the page is form Mediawiki:message/lang, calling wfMsgWeirdKey causes
+			// the full l10n of that language to be loaded. That takes much memory and
+			// isn't needed. So we strip the language part away.
+			// Also, extension messages which are not loaded, are shown as red, because
+			// we don't call MessageCache::loadAllMessages.
+			list( $basename, /* rest */ ) = explode( '/', $this->mDbkeyform, 2 );
+			return wfMsgWeirdKey( $basename );  // known system message
+		default:
+			return false;
+		}
+	}
+
+	/**
+	 * Does this title refer to a page that can (or might) be meaningfully
+	 * viewed?  In particular, this function may be used to determine if
+	 * links to the title should be rendered as "bluelinks" (as opposed to
+	 * "redlinks" to non-existent pages).
+	 *
+	 * @return \type{\bool} TRUE or FALSE
+	 */
+	public function isKnown() {
+		return $this->exists() || $this->isAlwaysKnown();
+	}
+	
+	/**
+	* Is this in a namespace that allows actual pages?
+	*
+	* @return \type{\bool} TRUE or FALSE
+	*/
+	public function canExist() {
+		return $this->mNamespace >= 0 && $this->mNamespace != NS_MEDIA;
 	}
 
 	/**
@@ -3244,8 +3303,8 @@ class Title {
 			case NS_PROJECT:
 			case NS_PROJECT_TALK:
 				return 'nstab-project';
-			case NS_IMAGE:
-			case NS_IMAGE_TALK:
+			case NS_FILE:
+			case NS_FILE_TALK:
 				return 'nstab-image';
 			case NS_MEDIAWIKI:
 			case NS_MEDIAWIKI_TALK:

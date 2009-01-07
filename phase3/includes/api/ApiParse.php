@@ -49,7 +49,9 @@ class ApiParse extends ApiBase {
 		$prop = array_flip($params['prop']);
 		$revid = false;
 
-		global $wgParser, $wgUser;
+		// The parser needs $wgTitle to be set, apparently the
+		// $title parameter in Parser::parse isn't enough *sigh*
+		global $wgParser, $wgUser, $wgTitle;
 		$popts = new ParserOptions();
 		$popts->setTidy(true);
 		$popts->enableLimitReport();
@@ -66,6 +68,7 @@ class ApiParse extends ApiBase {
 					$this->dieUsage("You don't have permission to view deleted revisions", 'permissiondenied');
 				$text = $rev->getText( Revision::FOR_THIS_USER );
 				$titleObj = $rev->getTitle();
+				$wgTitle = $titleObj;
 				$p_result = $wgParser->parse($text, $titleObj, $popts);
 			}
 			else
@@ -111,6 +114,17 @@ class ApiParse extends ApiBase {
 			$titleObj = Title::newFromText($title);
 			if(!$titleObj)
 				$titleObj = Title::newFromText("API");
+			$wgTitle = $titleObj;
+			if($params['pst'] || $params['onlypst'])
+				$text = $wgParser->preSaveTransform($text, $titleObj, $wgUser, $popts);
+			if($params['onlypst'])
+			{
+				// Build a result and bail out
+				$result_array['text'] = array();
+				$this->getResult()->setContent($result_array['text'], $text);
+				$this->getResult()->addValue(null, $this->getModuleName(), $result_array);
+				return;
+			}
 			$p_result = $wgParser->parse($text, $titleObj, $popts);
 		}
 
@@ -222,7 +236,9 @@ class ApiParse extends ApiBase {
 					'sections',
 					'revid'
 				)
-			)
+			),
+			'pst' => false,
+			'onlypst' => false,
 		);
 	}
 
@@ -235,6 +251,12 @@ class ApiParse extends ApiBase {
 			'oldid' => 'Parse the content of this revision. Overrides page',
 			'prop' => array('Which pieces of information to get.',
 					'NOTE: Section tree is only generated if there are more than 4 sections, or if the __TOC__ keyword is present'
+			),
+			'pst' => array(	'Do a pre-save transform on the input before parsing it.',
+					'Ignored if page or oldid is used.'
+			),
+			'onlypst' => array('Do a PST on the input, but don\'t parse it.',
+					'Returns PSTed wikitext. Ignored if page or oldid is used.'
 			),
 		);
 	}

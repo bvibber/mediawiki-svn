@@ -54,7 +54,7 @@ $messages = array(
 'mypage'         => 'ami mappitaq',
 'mytalk'         => 'atlarqutikka',
 'navigation'     => 'mianirivaa',
-'and'            => 'amma',
+'and'            => '&#32;amma',
 
 'help'              => 'qajalippaa',
 'search'            => 'ivaaqpuq',
@@ -143,14 +143,14 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'bold_tip'    => 'ijjujug taqsaliqpaa',
 
 # Edit pages
-'summary'         => 'suvit',
+'summary'         => 'suvit:',
 'minoredit'       => 'ukiukiluaq asianngutuq',
 'watchthis'       => 'uvva',
 'savearticle'     => 'uqausillaringgita titiraqtauninggil',
 'preview'         => 'uvva qangasaanguliqtuq',
 'showpreview'     => 'surkuqpaa alakkautivuq sivuliqpaa uqaasillarigita titiraqtauningigit',
 'showdiff'        => 'alakkatippaa asianngutuq',
-'summary-preview' => 'suvit preview',
+'summary-preview' => 'suvit preview:',
 'blockedtitle'    => 'aaqqiksuiji uminngasisijuq',
 'loginreqlink'    => 'akunnapuq',
 'newarticle'      => '(pigivuk)',
@@ -331,7 +331,7 @@ pigivuq qatannguti uikipitia kiinaujaqutiqarvik isuillingaitjapaa. iqtuu suqusiq
 'previousdiff' => '← tunullipaaq asiaNngutuq',
 'nextdiff'     => 'tagga asiaNngutuq mappitaq →',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'ivaaqpuq',
 'bydate'   => 'pitaaruttuq inuulirvik',
 

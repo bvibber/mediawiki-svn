@@ -19,8 +19,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Jeno_vakyarimata',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => '{{grammar:genitive-pl|$1}}_vakyarimata',
-	NS_IMAGE          => 'Chitro',
-	NS_IMAGE_TALK     => 'Chitro_vakyarimata',
+	NS_FILE           => 'Chitro',
+	NS_FILE_TALK      => 'Chitro_vakyarimata',
 	NS_MEDIAWIKI      => 'MediyaViki',
 	NS_MEDIAWIKI_TALK => 'MediyaViki_vakyarimata',
 	NS_TEMPLATE       => 'Sikavno',
@@ -82,7 +82,7 @@ $messages = array(
 'mypage'         => 'Miri patrin',
 'mytalk'         => 'Mire vakyarimata',
 'navigation'     => 'Phiripen',
-'and'            => 'thai',
+'and'            => '&#32;thai',
 
 'errorpagetitle'   => 'Dosh',
 'returnto'         => 'Ja palpale kai $1.',
@@ -213,11 +213,15 @@ Mishto si te jas kai {{SITENAME}} thai te paruves tiro lav sigo.',
 'accountcreated'             => 'Akount kerdo',
 'accountcreatedtext'         => 'Kerdo o akonto le jenesko ko $1.',
 
+# Password reset dialog
+'oldpassword' => 'Purano nakahvipnasko lav',
+'newpassword' => 'Nevo nakhavipnasko lav:',
+
 # Edit page toolbar
 'image_sample' => 'Misal.jpg',
 
 # Edit pages
-'summary'            => 'Xarno xalyaripen',
+'summary'            => 'Xarno xalyaripen:',
 'minoredit'          => 'Kadava si ek tikno editisarimos',
 'watchthis'          => 'Dikh kadaya patrin',
 'savearticle'        => 'Uxtav i patrin',
@@ -281,8 +285,6 @@ Kana avilyan kathe doshatar, ja palpale.',
 'prefs-rc'              => 'Neve paruvimata',
 'saveprefs'             => 'Uxtav le kamimata',
 'resetprefs'            => 'Thov le kamimata sar ko shirdipen',
-'oldpassword'           => 'Purano nakahvipnasko lav',
-'newpassword'           => 'Nevo nakhavipnasko lav:',
 'columns'               => 'Uche vortorina:',
 'contextlines'          => 'Vortorinyango gin pe avimos:',
 'contextchars'          => 'Grafemengo gin pe ekh vortorin:',
@@ -344,10 +346,10 @@ Kana avilyan kathe doshatar, ja palpale.',
 'badfilename' => 'O chitrosko anav sas paruvdo; o nevo anav si "$1".',
 'savefile'    => 'Uxtav file',
 
-# Special:ImageList
-'imagelist' => 'Patrinipen le chitrengo',
+# Special:ListFiles
+'listfiles' => 'Patrinipen le chitrengo',
 
-# Image description page
+# File description page
 'imagelinks' => 'Chitroske phandimata',
 
 # Unused templates
@@ -528,7 +530,7 @@ Dikh ando $2 ek patrinipen le palutne butyange khosle.',
 'previousdiff' => '← Purano ververipen',
 'nextdiff'     => 'Anglutno paruvipen →',
 
-# Special:NewImages
+# Special:NewFiles
 'showhidebots' => '($1 boturya)',
 'ilsubmit'     => 'Rod',
 

@@ -22,8 +22,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Ciaciarade',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Discussion_ant_sla_$1',
-	NS_IMAGE            => 'Figura',
-	NS_IMAGE_TALK       => 'Discussion_dla_figura',
+	NS_FILE             => 'Figura',
+	NS_FILE_TALK        => 'Discussion_dla_figura',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'Discussion_dla_MediaWiki',
 	NS_TEMPLATE         => 'Stamp',
@@ -175,7 +175,7 @@ dj'artìcol ancó pa scrit",
 'mytalk'         => 'Mie ciaciarade',
 'anontalk'       => "Ciaciarade për st'adrëssa IP-sì",
 'navigation'     => 'Navigassion',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 # Metadata in edit box
 'metadata_help' => 'Metadat:',
@@ -238,8 +238,6 @@ dj'artìcol ancó pa scrit",
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A propòsit ëd {{SITENAME}}',
 'aboutpage'            => 'Project:A propòsit',
-'bugreports'           => 'Malfunsionament',
-'bugreportspage'       => 'Project:Malfonsionament',
 'copyright'            => 'Ël contnù a resta disponibil sota a na licensa $1.',
 'copyrightpagename'    => "Drit d'autor ëd {{SITENAME}}",
 'copyrightpage'        => "{{ns:project}}:Drit d'autor",
@@ -459,11 +457,13 @@ Se sòn a l\'é rivà për eror, a peul lassé sté e fe gnente sensa problema.'
 'resetpass_announce'      => "A l'é rintrà ant ël sistema con na ciav provisòria mandà via për pòsta eletrònica. Për podej finì la procedura a l'ha da butesse na ciav neuva ambelessì:",
 'resetpass_text'          => '<!-- Gionté dël test ambelessì -->',
 'resetpass_header'        => 'Buta ël valor për sòlit',
+'oldpassword'             => 'Veja ciav',
+'newpassword'             => 'Neuva ciav',
+'retypenew'               => 'Che a scriva torna soa neuva ciav',
 'resetpass_submit'        => 'Registra la ciav e rintra ant ël sistema',
 'resetpass_success'       => "Soa ciav a l'é staita registrà sensa problema. I soma dapress a rintré ant ël sistema...",
 'resetpass_bad_temporary' => "Ciav provisòria nen bon-a. A peul esse che a l'abia già cambiasse soa ciav, ò pura che a l'abia ciamà na ciav provisòria neuva.",
 'resetpass_forbidden'     => 'An {{SITENAME}} le ciav as peulo pa cambiesse.',
-'resetpass_missing'       => "Ël mòdulo a l'avìa gnun dat andrinta (ò pura a son përdusse për la stra).",
 
 # Edit page toolbar
 'bold_sample'     => 'Test an grassèt',
@@ -488,8 +488,8 @@ Se sòn a l\'é rivà për eror, a peul lassé sté e fe gnente sensa problema.'
 'hr_tip'          => 'Riga orisontal (da dovresse nen tròp soèns)',
 
 # Edit pages
-'summary'                   => 'Somari',
-'subject'                   => 'Sogèt',
+'summary'                   => 'Somari:',
+'subject'                   => 'Sogèt:',
 'minoredit'                 => "Costa-sì a l'è na modìfica cita",
 'watchthis'                 => "Ten sot euj st'artìcol-sì",
 'savearticle'               => 'Salva sta pàgina',
@@ -501,8 +501,8 @@ Se sòn a l\'é rivà për eror, a peul lassé sté e fe gnente sensa problema.'
 'missingsummary'            => "'''Nòta:''' a l'ha pa butà gnun somari dla modìfica. Se a sgnaca Salva n'àutra vira, soa modìfica a resterà salvà sensa pa ëd somari.",
 'missingcommenttext'        => 'Për piasì che a buta un coment ambelessì sota.',
 'missingcommentheader'      => "'''A l'euj!:''' ës coment-sì a l'é sensa intestassion. Se a sgnaca torna \"Salva sta pàgina\" soa modìfica a sarà salvà sensa gnun-a intestassion.",
-'summary-preview'           => "Preuva dl'oget",
-'subject-preview'           => "Preuva d'oget/intestassion",
+'summary-preview'           => "Preuva dl'oget:",
+'subject-preview'           => "Preuva d'oget/intestassion:",
 'blockedtitle'              => "Belavans cost ëstranòm-sì a resta col ëd n'utent che a l'é stait disabilità a fé 'd modìfiche a j'articoj.",
 'blockedtext'               => "<big>'''Sò stranòm ò pura adrëssa IP a l'é stait blocà.'''</big>
 
@@ -805,9 +805,6 @@ për podej specifiché ij sò gust.',
 'prefs-misc'               => 'Sòn e lòn',
 'saveprefs'                => 'Salvé ij sò gust',
 'resetprefs'               => 'Buta torna ij "mè gust" coma a-i ero al prinsipi',
-'oldpassword'              => 'Veja ciav',
-'newpassword'              => 'Neuva ciav',
-'retypenew'                => 'Che a scriva torna soa neuva ciav',
 'textboxsize'              => 'Amzure dël quàder ëd modìfica dël test',
 'rows'                     => 'Righe',
 'columns'                  => 'Colòne',
@@ -915,7 +912,7 @@ për podej carié dj'archivi.",
 'uploadtext'                  => "'''DOSMAN!''' Anans che carié dla ròba ansima a {{SITENAME}}, che a sia motobin sigur d'avej bin lesù e capì
 [[{{MediaWiki:Policy-url}}|ël regolament ëd {{SITENAME}} ansima al dovré dle figure]].
 
-Për vardé ò pura sërché figure già carià ant sla {{SITENAME}}, che a vada ant sla [[Special:ImageList|lista dle figure]].
+Për vardé ò pura sërché figure già carià ant sla {{SITENAME}}, che a vada ant sla [[Special:FileList|lista dle figure]].
 Lòn che as caria e së scancela a resta marcà ant ël [[Special:Log/upload|registr dij càrich]].
 
 Che a dòvra ël mòdulo ambelessì sota për carié neuv archivi con figure da dovré për fé pì bej e bin spiegà ij sò artìcoj.
@@ -974,9 +971,9 @@ Për piasì, ch'a serna un nòm diferent.",
 S'a l'é la midema figura a amzura pijn-a, a veul dì ch'a fa nen dë manca dë carié na figurin-a.",
 'file-thumbnail-no'           => "Ël nòm dl'archivi as anandia con <strong><tt>$1</tt></strong>. A-j ësmija a na <i>figurin-a</i>.
 Se a l'ha na figura a amzura pijn-a a l'é mej ch'a carìa cola-lì, dësnò ch'a-j cangia nòm a l'archivi, për piasì.",
-'fileexists-forbidden'        => "Belavans n'archivi con ës nòm-sì a-i é già, donca ël nòm as peul pa pì dovresse; për piasì che a torna andré e che as caria sò archivi con un nòm diferent. [[Image:$1|thumb|center|$1]]",
+'fileexists-forbidden'        => "Belavans n'archivi con ës nòm-sì a-i é già, donca ël nòm as peul pa pì dovresse; për piasì che a torna andré e che as caria sò archivi con un nòm diferent. [[File:$1|thumb|center|$1]]",
 'fileexists-shared-forbidden' => "Belavans n'archivi con ës nòm-sì ant la diretriss dj'archivi condivis a-i é già, donca ël nòm as peul pa pì dovresse; për piasì che a torna andré e che as caria sò archivi con un nòm diferent.
-[[Image:$1|thumb|center|$1]]",
+[[File:$1|thumb|center|$1]]",
 'successfulupload'            => 'Carià complet',
 'uploadwarning'               => 'Avis che i soma dapress a carié',
 'savefile'                    => "Salva l'archivi",
@@ -1030,20 +1027,20 @@ PICT # vàire marche diferente
 'upload_source_url'  => "  (n'anliura bon-a e che as peula dovresse)",
 'upload_source_file' => " (n'archivi da sò calcolator)",
 
-# Special:ImageList
-'imagelist-summary'     => "Sta pàgina special-sì a la smon tuti j'archivi ch'a ëstàit carià.
+# Special:ListFiles
+'listfiles-summary'     => "Sta pàgina special-sì a la smon tuti j'archivi ch'a ëstàit carià.
 Për sòlit j'ùltim carià a resto an sima.
 Ch'a-i bata 'n colp col rat ansima a j'antestassion dle colòne për cangé órdin.",
-'imagelist_search_for'  => "Arsërca për nòm d'archivi multimojen:",
+'listfiles_search_for'  => "Arsërca për nòm d'archivi multimojen:",
 'imgfile'               => 'archivi',
-'imagelist'             => 'Lista dle figure',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Nòm',
-'imagelist_user'        => 'Utent',
-'imagelist_size'        => 'Amzura an byte',
-'imagelist_description' => 'Descrission',
+'listfiles'             => 'Lista dle figure',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Nòm',
+'listfiles_user'        => 'Utent',
+'listfiles_size'        => 'Amzura an byte',
+'listfiles_description' => 'Descrission',
 
-# Image description page
+# File description page
 'filehist'                  => "Stòria dl'archivi",
 'filehist-help'             => "Ch'a-i daga un colp col rat ant sna cobia data/ora për ës-ciairé coma restèissa l'archivi ant col moment-là.",
 'filehist-deleteall'        => 'dëscancelé tut',
@@ -1727,6 +1724,7 @@ Tute le amportassion antra wiki diferente a resto marcà ant ël [[Special:Log/i
 'import-interwiki-history'   => 'Còpia tute le version stòriche dë sta pàgina-sì',
 'import-interwiki-submit'    => 'Amporté',
 'import-interwiki-namespace' => 'Tramuda ste pàgine-sì ant lë spassi nominal:',
+'import-comment'             => 'Oget:',
 'importtext'                 => "Për piasì, che as espòrta l'archivi da 'nt la sorgiss wiki esterna ën dovrand l'utiss  Special:Esportassion, che as lo salva ansima a sò disch e peui che a lo caria ambelessì.",
 'importstart'                => 'I soma antramentr che amportoma le pàgine...',
 'import-revision-count'      => '{{PLURAL:$1|Na|$1}} revision',
@@ -1909,7 +1907,7 @@ $1",
 'show-big-image'       => 'Version a amzura pijn-a',
 'show-big-image-thumb' => '<small>Amzure dë sta figurin-a: $1 × $2 pixel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Galerìa ëd figure e son neuv',
 'imagelisttext'         => "Ambelessì sota a-i é {{PLURAL:$1|l'ùnica figura che a-i sia|na lista ëd '''$1''' figure, ordinà për $2}}.",
 'newimages-summary'     => "Sta pàgina special-sì a la smon j'ùltim archivi carià.",
@@ -2386,13 +2384,13 @@ a podrìo ëdcò nen ess-ie ant sta lista -sì.",
 'filepath-summary' => "Sta pàgina special-sì a la smon ël përcors complet për rive-ie a n'archivi.
 Le figure as ësmon-o a amzura pijn-a, j'àotre sòrt d'archivi a ven-o faite parte da sò programa a pòsta.
 
-Ch'a buta mach ël nòm dl'archivi sensa pa ël prefiss \"{{ns:image}}:\".",
+Ch'a buta mach ël nòm dl'archivi sensa pa ël prefiss \"{{ns:file}}:\".",
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => "Arsërca dj'archivi dobi",
 'fileduplicatesearch-summary'  => "Arsërca dj'archivi dobi a parte dal valor d'ordinament.
 
-Ch'a bata 'l nòm dl'archivi sensa pa bute-ie 'l prefiss \"{{ns:image}}:\".",
+Ch'a bata 'l nòm dl'archivi sensa pa bute-ie 'l prefiss \"{{ns:file}}:\".",
 'fileduplicatesearch-legend'   => 'Arsërca ëd na dobia',
 'fileduplicatesearch-filename' => "Nòm dl'archivi:",
 'fileduplicatesearch-submit'   => 'Arsërca',

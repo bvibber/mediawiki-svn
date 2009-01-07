@@ -1709,7 +1709,7 @@ class Parser
 
 			if ($might_be_img) { # if this is actually an invalid link
 				wfProfileIn( __METHOD__."-might_be_img" );
-				if ($ns == NS_IMAGE && $noforce) { #but might be an image
+				if ($ns == NS_FILE && $noforce) { #but might be an image
 					$found = false;
 					while ( true ) {
 						#look at the next 'line' to see if we can close it there
@@ -1769,7 +1769,7 @@ class Parser
 				}
 				wfProfileOut( __METHOD__."-interwiki" );
 
-				if ( $ns == NS_IMAGE ) {
+				if ( $ns == NS_FILE ) {
 					wfProfileIn( __METHOD__."-image" );
 					if ( !wfIsBadImage( $nt->getDBkey(), $this->mTitle ) ) {
 						# recursively parse links inside the image caption
@@ -1813,14 +1813,15 @@ class Parser
 			}
 
 			# Self-link checking
-			if( $nt->getFragment() === '' && $nt->getNamespace() != NS_SPECIAL ) {
+			if( $nt->getFragment() === '' && $ns != NS_SPECIAL ) {
 				if( in_array( $nt->getPrefixedText(), $selflink, true ) ) {
 					$s .= $prefix . $sk->makeSelfLinkObj( $nt, $text, '', $trail );
 					continue;
 				}
 			}
 
-			# Special and Media are pseudo-namespaces; no pages actually exist in them
+			# NS_MEDIA is a pseudo-namespace for linking directly to a file
+			# FIXME: Should do batch file existence checks, see comment below
 			if( $ns == NS_MEDIA ) {
 				# Give extensions a chance to select the file revision for us
 				$skip = $time = false;
@@ -1834,25 +1835,20 @@ class Parser
 				$s .= $prefix . $this->armorLinks( $link ) . $trail;
 				$this->mOutput->addImage( $nt->getDBkey() );
 				continue;
-			} elseif( $ns == NS_SPECIAL ) {
-				if( SpecialPage::exists( $nt->getDBkey() ) ) {
-					$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
-				} else {
-					$s .= $holders->makeHolder( $nt, $text, '', $trail, $prefix );
-				}
-				continue;
-			} elseif( $ns == NS_IMAGE ) {
-				$img = wfFindFile( $nt );
-				if( $img ) {
-					// Force a blue link if the file exists; may be a remote
-					// upload on the shared repository, and we want to see its
-					// auto-generated page.
-					$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
-					$this->mOutput->addLink( $nt );
-					continue;
-				}
 			}
-			$s .= $holders->makeHolder( $nt, $text, '', $trail, $prefix );
+
+			# Some titles, such as valid special pages or files in foreign repos, should
+			# be shown as bluelinks even though they're not included in the page table
+			#
+			# FIXME: isAlwaysKnown() can be expensive for file links; we should really do
+			# batch file existence checks for NS_FILE and NS_MEDIA
+			if( $iw == '' && $nt->isAlwaysKnown() ) {
+				$this->mOutput->addLink( $nt );
+				$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
+			} else {
+				# Links will be added to the output link list after checking
+				$s .= $holders->makeHolder( $nt, $text, '', $trail, $prefix );
+			}
 		}
 		wfProfileOut( __METHOD__ );
 		return $holders;
@@ -3452,7 +3448,7 @@ class Parser
 	 * @private
 	 */
 	function formatHeadings( $text, $isMain=true ) {
-		global $wgMaxTocLevel, $wgContLang;
+		global $wgMaxTocLevel, $wgContLang, $wgEnforceHtmlIds;
 
 		$doNumberHeadings = $this->mOptions->getNumberHeadings();
 		$showEditLink = $this->mOptions->getEditSection();
@@ -3621,13 +3617,60 @@ class Parser
 
 			# Save headline for section edit hint before it's escaped
 			$headlineHint = $safeHeadline;
-			$safeHeadline = Sanitizer::escapeId( $safeHeadline );
-			# HTML names must be case-insensitively unique (bug 10721)
+
+			if ( $wgEnforceHtmlIds ) {
+				$legacyHeadline = false;
+				$safeHeadline = Sanitizer::escapeId( $safeHeadline,
+					'noninitial' );
+			} else {
+				# For reverse compatibility, provide an id that's
+				# HTML4-compatible, like we used to.
+				#
+				# It may be worth noting, academically, that it's possible for
+				# the legacy anchor to conflict with a non-legacy headline
+				# anchor on the page.  In this case likely the "correct" thing
+				# would be to either drop the legacy anchors or make sure
+				# they're numbered first.  However, this would require people
+				# to type in section names like "abc_.D7.93.D7.90.D7.A4"
+				# manually, so let's not bother worrying about it.
+				$legacyHeadline = Sanitizer::escapeId( $safeHeadline,
+					'noninitial' );
+				$safeHeadline = Sanitizer::escapeId( $safeHeadline, 'xml' );
+
+				if ( $legacyHeadline == $safeHeadline ) {
+					# No reason to have both (in fact, we can't)
+					$legacyHeadline = false;
+				} elseif ( $legacyHeadline != Sanitizer::escapeId(
+				$legacyHeadline, 'xml' ) ) {
+					# The legacy id is invalid XML.  We used to allow this, but
+					# there's no reason to do so anymore.  Backward
+					# compatibility will fail slightly in this case, but it's
+					# no big deal.
+					$legacyHeadline = false;
+				}
+			}
+
+			# HTML names must be case-insensitively unique (bug 10721).  FIXME:
+			# Does this apply to Unicode characters?  Because we aren't
+			# handling those here.
 			$arrayKey = strtolower( $safeHeadline );
+			if ( $legacyHeadline === false ) {
+				$legacyArrayKey = false;
+			} else {
+				$legacyArrayKey = strtolower( $legacyHeadline );
+			}
 
 			# count how many in assoc. array so we can track dupes in anchors
-			isset( $refers[$arrayKey] ) ? $refers[$arrayKey]++ : $refers[$arrayKey] = 1;
-			$refcount[$headlineCount] = $refers[$arrayKey];
+			if ( isset( $refers[$arrayKey] ) ) {
+				$refers[$arrayKey]++;
+			} else {
+				$refers[$arrayKey] = 1;
+			}
+			if ( isset( $refers[$legacyArrayKey] ) ) {
+				$refers[$legacyArrayKey]++;
+			} else {
+				$refers[$legacyArrayKey] = 1;
+			}
 
 			# Don't number the heading if it is the only one (looks silly)
 			if( $doNumberHeadings && count( $matches[3] ) > 1) {
@@ -3637,8 +3680,12 @@ class Parser
 
 			# Create the anchor for linking from the TOC to the section
 			$anchor = $safeHeadline;
-			if($refcount[$headlineCount] > 1 ) {
-				$anchor .= '_' . $refcount[$headlineCount];
+			$legacyAnchor = $legacyHeadline;
+			if ( $refers[$arrayKey] > 1 ) {
+				$anchor .= '_' . $refers[$arrayKey];
+			}
+			if ( $legacyHeadline !== false && $refers[$legacyArrayKey] > 1 ) {
+				$legacyAnchor .= '_' . $refers[$legacyArrayKey];
 			}
 			if( $enoughToc && ( !isset($wgMaxTocLevel) || $toclevel<$wgMaxTocLevel ) ) {
 				$toc .= $sk->tocLine($anchor, $tocline, $numbering, $toclevel);
@@ -3656,7 +3703,9 @@ class Parser
 			} else {
 				$editlink = '';
 			}
-			$head[$headlineCount] = $sk->makeHeadline( $level, $matches['attrib'][$headlineCount], $anchor, $headline, $editlink );
+			$head[$headlineCount] = $sk->makeHeadline( $level,
+				$matches['attrib'][$headlineCount], $anchor, $headline,
+				$editlink, $legacyAnchor );
 
 			$headlineCount++;
 		}
@@ -4107,7 +4156,7 @@ class Parser
 		$content = StringUtils::delimiterReplace( '<nowiki>', '</nowiki>', '$1', $text, 'i' );
 
 		$attribs = Sanitizer::validateTagAttributes( $attribs, 'pre' );
-		return wfOpenElement( 'pre', $attribs ) .
+		return Xml::openElement( 'pre', $attribs ) .
 			Xml::escapeTagsOnly( $content ) .
 			'</pre>';
 	}
@@ -4163,7 +4212,7 @@ class Parser
 			
 			if ( strpos( $matches[0], '%' ) !== false )
 				$matches[1] = urldecode( $matches[1] );
-			$tp = Title::newFromText( $matches[1]/*, NS_IMAGE*/ );
+			$tp = Title::newFromText( $matches[1]/*, NS_FILE*/ );
 			$nt =& $tp;
 			if( is_null( $nt ) ) {
 				# Bogus title. Ignore these so we don't bomb out later.
@@ -4180,7 +4229,7 @@ class Parser
 			$ig->add( $nt, $html );
 
 			# Only add real images (bug #5586)
-			if ( $nt->getNamespace() == NS_IMAGE ) {
+			if ( $nt->getNamespace() == NS_FILE ) {
 				$this->mOutput->addImage( $nt->getDBkey() );
 			}
 		}

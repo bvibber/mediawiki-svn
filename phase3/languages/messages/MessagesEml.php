@@ -74,7 +74,7 @@ Putiv cuntinuèr ad usèr {{SITENAME}} anonimamèint, o putiv cunnètterv dòp c
 'accountcreated'       => 'Et criê un nôv account',
 
 # Edit pages
-'summary'          => "Mutîv d'al cambiamèint",
+'summary'          => "Mutîv d'al cambiamèint:",
 'minoredit'        => "Còst cambiamèint ché l'é un gnînt in tót",
 'watchthis'        => "Tîn a drê a c'la pàgina chè",
 'savearticle'      => 'Salva',
@@ -105,8 +105,8 @@ Putiv cuntinuèr ad usèr {{SITENAME}} anonimamèint, o putiv cunnètterv dòp c
 'filedesc'          => "Ugêt d'al cambiamèint",
 'fileuploadsummary' => "Ugêt d'al cambiamèint:",
 
-# Special:ImageList
-'imagelist_size' => 'Dimensiòun (bytes)',
+# Special:ListFiles
+'listfiles_size' => 'Dimensiòun (bytes)',
 
 # Random page
 'randompage' => 'Una pàgina a chès',
@@ -154,7 +154,7 @@ Guèrda $2 par vèdder la lésta d\'al pàgin ch\'i sun stèdi scanzlèdi di rec
 '1movedto2'   => "[[$1]] l'è stê mòs a [[$2]]",
 'movelogpage' => 'Regestér di muvimèint',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'Zerca',
 
 # Special:SpecialPages

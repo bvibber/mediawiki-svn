@@ -190,15 +190,7 @@ class Linker {
 		# If we don't know whether the page exists, let's find out.
 		wfProfileIn( __METHOD__ . '-checkPageExistence' );
 		if( !in_array( 'known', $options ) and !in_array( 'broken', $options ) ) {
-			if( $target->getNamespace() == NS_SPECIAL ) {
-				if( SpecialPage::exists( $target->getDBKey() ) ) {
-					$options []= 'known';
-				} else {
-					$options []= 'broken';
-				}
-			} elseif( $target->isAlwaysKnown() or
-			($target->getPrefixedText() == '' and $target->getFragment() != '')
-			or $target->exists() ) {
+			if( $target->isKnown() ) {
 				$options []= 'known';
 			} else {
 				$options []= 'broken';
@@ -861,7 +853,7 @@ class Linker {
 		} else {
 			if ( isset( $fp['manualthumb'] ) ) {
 				# Use manually specified thumbnail
-				$manual_title = Title::makeTitleSafe( NS_IMAGE, $fp['manualthumb'] );
+				$manual_title = Title::makeTitleSafe( NS_FILE, $fp['manualthumb'] );
 				if( $manual_title ) {
 					$manual_img = wfFindFile( $manual_title );
 					if ( $manual_img ) {
@@ -967,7 +959,7 @@ class Linker {
 
 	/** @deprecated use Linker::makeMediaLinkObj() */
 	function makeMediaLink( $name, $unused = '', $text = '', $time = false ) {
-		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
+		$nt = Title::makeTitleSafe( NS_FILE, $name );
 		return $this->makeMediaLinkObj( $nt, $text, $time );
 	}
 
@@ -1429,8 +1421,8 @@ class Linker {
 		 . "</ul>\n</td></tr></table>"
 		 . '<script type="' . $wgJsMimeType . '">'
 		 . ' if (window.showTocToggle) {'
-		 . ' var tocShowText = "' . wfEscapeJsString( wfMsg('showtoc') ) . '";'
-		 . ' var tocHideText = "' . wfEscapeJsString( wfMsg('hidetoc') ) . '";'
+		 . ' var tocShowText = "' . Xml::escapeJsString( wfMsg('showtoc') ) . '";'
+		 . ' var tocHideText = "' . Xml::escapeJsString( wfMsg('hidetoc') ) . '";'
 		 . ' showTocToggle();'
 		 . ' } '
 		 . "</script>\n";
@@ -1523,11 +1515,21 @@ class Linker {
 	 * @param string $anchor  The anchor to give the headline (the bit after the #)
 	 * @param string $text    The text of the header
 	 * @param string $link    HTML to add for the section edit link
+	 * @param mixed  $legacyAnchor A second, optional anchor to give for
+	 *   backward compatibility (false to omit)
 	 *
 	 * @return string HTML headline
 	 */
-	public function makeHeadline( $level, $attribs, $anchor, $text, $link ) {
-		return "<a name=\"$anchor\"></a><h$level$attribs$link <span class=\"mw-headline\">$text</span></h$level>";
+	public function makeHeadline( $level, $attribs, $anchor, $text, $link, $legacyAnchor = false ) {
+		$ret = "<a name=\"$anchor\" id=\"$anchor\"></a>"
+			. "<h$level$attribs"
+			. $link
+			. " <span class=\"mw-headline\">$text</span>"
+			. "</h$level>";
+		if ( $legacyAnchor !== false ) {
+			$ret = "<a name=\"$legacyAnchor\" id=\"$legacyAnchor\"></a>$ret";
+		}
+		return $ret;
 	}
 
 	/**
@@ -1587,6 +1589,7 @@ class Linker {
 		);
 		if( $wgRequest->getBool( 'bot' ) ) {
 			$query['bot'] = '1';
+			$query['hidediff'] = '1'; // bug 15999
 		}
 		$query['token'] = $wgUser->editToken( array( $title->getPrefixedText(),
 			$rev->getUserText() ) );
@@ -1604,11 +1607,8 @@ class Linker {
 	 * @param bool $section Whether this is for a section edit
 	 * @return string HTML output
 	 */
-	public function formatTemplates( $templates, $preview = false, $section = false) {
-		global $wgUser;
+	public function formatTemplates( $templates, $preview = false, $section = false ) {
 		wfProfileIn( __METHOD__ );
-
-		$sk = $wgUser->getSkin();
 
 		$outText = '';
 		if ( count( $templates ) > 0 ) {
@@ -1628,7 +1628,7 @@ class Linker {
 			} else {
 				$outText .= wfMsgExt( 'templatesused', array( 'parse' ) );
 			}
-			$outText .= '</div><ul>';
+			$outText .= "</div><ul>\n";
 
 			usort( $templates, array( 'Title', 'compare' ) );
 			foreach ( $templates as $titleObj ) {
@@ -1641,11 +1641,11 @@ class Linker {
 					$protected = '';
 				}
 				if( $titleObj->quickUserCan( 'edit' ) ) {
-					$editLink = $sk->makeLinkObj( $titleObj, wfMsg('editlink'), 'action=edit' );
+					$editLink = $this->makeLinkObj( $titleObj, wfMsg('editlink'), 'action=edit' );
 				} else {
-					$editLink = $sk->makeLinkObj( $titleObj, wfMsg('viewsourcelink'), 'action=edit' );
+					$editLink = $this->makeLinkObj( $titleObj, wfMsg('viewsourcelink'), 'action=edit' );
 				}
-				$outText .= '<li>' . $sk->link( $titleObj ) . ' (' . $editLink . ') ' . $protected . '</li>';
+				$outText .= '<li>' . $this->link( $titleObj ) . ' (' . $editLink . ') ' . $protected . '</li>';
 			}
 			$outText .= '</ul>';
 		}
@@ -1660,21 +1660,19 @@ class Linker {
 	 * or similar
 	 * @return string HTML output
 	 */
-	public function formatHiddenCategories( $hiddencats) {
-		global $wgUser, $wgLang;
+	public function formatHiddenCategories( $hiddencats ) {
+		global $wgLang;
 		wfProfileIn( __METHOD__ );
-
-		$sk = $wgUser->getSkin();
 
 		$outText = '';
 		if ( count( $hiddencats ) > 0 ) {
 			# Construct the HTML
 			$outText = '<div class="mw-hiddenCategoriesExplanation">';
 			$outText .= wfMsgExt( 'hiddencategories', array( 'parse' ), $wgLang->formatnum( count( $hiddencats ) ) );
-			$outText .= '</div><ul>';
+			$outText .= "</div><ul>\n";
 
 			foreach ( $hiddencats as $titleObj ) {
-				$outText .= '<li>' . $sk->link( $titleObj, null, array(), array(), 'known' ) . '</li>'; # If it's hidden, it must exist - no need to check with a LinkBatch
+				$outText .= '<li>' . $this->link( $titleObj, null, array(), array(), 'known' ) . "</li>\n"; # If it's hidden, it must exist - no need to check with a LinkBatch
 			}
 			$outText .= '</ul>';
 		}

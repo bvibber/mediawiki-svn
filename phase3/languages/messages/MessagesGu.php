@@ -9,6 +9,25 @@
  * @author לערי ריינהארט
  */
 
+$namespaceNames = array(
+	NS_MEDIA            => 'દ્રશ્ય-શ્રાવ્ય_(મિડિયા)',
+	NS_SPECIAL          => 'વિશેષ',
+	NS_TALK             => 'ચર્ચા',
+	NS_USER             => 'સભ્ય',
+	NS_USER_TALK        => 'સભ્યની_ચર્ચા',
+	NS_PROJECT_TALK     => '$1_ચર્ચા',
+	NS_FILE             => 'ચિત્ર',
+	NS_FILE_TALK        => 'ચિત્રની_ચર્ચા',
+	NS_MEDIAWIKI        => 'મીડિયાવિકિ',
+	NS_MEDIAWIKI_TALK   => 'મીડિયાવિકિ_ચર્ચા',
+	NS_TEMPLATE         => 'ઢાંચો',
+	NS_TEMPLATE_TALK    => 'ઢાંચાની_ચર્ચા',
+	NS_HELP             => 'મદદ',
+	NS_HELP_TALK        => 'મદદની_ચર્ચા',
+	NS_CATEGORY         => 'શ્રેણી',
+	NS_CATEGORY_TALK    => 'શ્રેણીની_ચર્ચા',
+);
+
 $digitTransformTable = array(
 	'0' => '૦', # &#x0ae6;
 	'1' => '૧', # &#x0ae7;
@@ -122,7 +141,7 @@ $messages = array(
 'mypage'        => 'મારું પાનું',
 'mytalk'        => 'મારી ચર્ચા',
 'navigation'    => 'ભ્રમણ',
-'and'           => 'અને',
+'and'           => '&#32;અને',
 
 'errorpagetitle'   => 'ત્રુટિ',
 'returnto'         => '$1 પર પાછા જાઓ.',
@@ -149,7 +168,7 @@ $messages = array(
 'personaltools'    => 'વ્યક્તિગત સાધનો',
 'talk'             => 'ચર્ચા',
 'views'            => 'અવલોકનો',
-'toolbox'          => 'ઓજારની પેટી',
+'toolbox'          => 'સાધન પેટી',
 'userpage'         => 'સભ્યનું પાનું જુઓ',
 'viewtalkpage'     => 'ચર્ચા જુઓ',
 'otherlanguages'   => 'બીજી ભાષાઓમાં',
@@ -256,6 +275,9 @@ $messages = array(
 'noemail'                 => 'સભ્ય "$1"નું કોઇ ઇ-મેલ સરનામું નોંધાયેલું નથી.',
 'accountcreated'          => 'ખાતું ખોલવામાં આવ્યું છે',
 
+# Password reset dialog
+'retypenew' => 'નવી ગુપ્ત સંજ્ઞા (પાસવર્ડ) ફરી લખો:',
+
 # Edit page toolbar
 'bold_sample'     => 'ઘાટા અક્ષર',
 'bold_tip'        => 'ઘાટા અક્ષર',
@@ -277,14 +299,14 @@ $messages = array(
 'hr_tip'          => 'આડી લીટી (શક્ય તેટલો ઓછો ઉપયોગ કરો)',
 
 # Edit pages
-'summary'                => 'સારાંશ',
-'subject'                => 'વિષય/શિર્ષક',
+'summary'                => 'સારાંશ:',
+'subject'                => 'વિષય/શિર્ષક:',
 'minoredit'              => 'આ એક નાનો સુધારો છે.',
 'watchthis'              => 'આ પાનાને ધ્યાનમાં રાખો',
-'savearticle'            => 'કાર્ય સુરક્ષિત કરો',
+'savearticle'            => 'સાચવો',
 'preview'                => 'પૂર્વાવલોકન',
-'showpreview'            => 'ઝલક બતાવો',
-'showdiff'               => 'ફેરફારો બતાવો',
+'showpreview'            => 'ઝલક',
+'showdiff'               => 'ફેરફારો',
 'anoneditwarning'        => "'''ચેતવણી:''' તમે તમારા સભ્ય નામથી પ્રવેશ કર્યો નથી.
 આ પાનાનાં ઇતિહાસમાં તમારૂં આઇ.પી. (IP) એડ્રેસ નોંધવામાં આવશે.",
 'blockedtext'            => "<big>'''આપનાં સભ્ય નામ અથવા આઇ.પી. એડ્રેસ પર પ્રતિબંધ મુકવામાં આવ્યો છે.'''</big>
@@ -328,6 +350,9 @@ $messages = array(
 
 આગળ વધતાં બે વખત વિચારજો અને જો તમને લાગે કે આ પાનું ફરી વાર બનાવવું ઉચિત છે, તો જ અહીં ફેરફાર કરજો.
 પાનું હટવ્યાં પહેલાનાં બધા ફેરફારોની સૂચિ તમારી સહુલીયત માટે અહીં આપી છે:",
+
+# Account creation failure
+'cantcreateaccounttitle' => 'ખાતું ખોલી શકાય તેમ નથી',
 
 # History pages
 'viewpagelogs'        => 'આ પાનાનાં લૉગ જુઓ',
@@ -373,8 +398,7 @@ $messages = array(
 'mypreferences'     => 'મારી પસંદ',
 'skin-preview'      => 'ફેરફાર બતાવો',
 'datetime'          => 'તારીખ અને સમય',
-'prefs-watchlist'   => 'ધ્યાનસૂચી',
-'retypenew'         => 'નવી ગુપ્ત સંજ્ઞા (પાસવર્ડ) ફરી લખો:',
+'prefs-watchlist'   => 'ધ્યાનસૂચિ',
 'searchresultshead' => 'શોધો',
 
 # Groups
@@ -428,10 +452,10 @@ $messages = array(
 'uploadlogpage' => 'ચઢાવેલી ફાઇલોનું માહિતિ પત્રક',
 'filesource'    => 'સ્ત્રોત:',
 
-# Special:ImageList
-'imagelist' => 'ફાઇલોની યાદી',
+# Special:ListFiles
+'listfiles' => 'ફાઇલોની યાદી',
 
-# Image description page
+# File description page
 'filehist'                  => 'ફાઇલનો ઇતિહાસ',
 'filehist-help'             => 'તારિખ/સમય ઉપર ક્લિક કરવાથી તે સમયે ફાઇલ કેવી હતી તે જોવા મળશે',
 'filehist-current'          => 'વર્તમાન',
@@ -518,7 +542,9 @@ $messages = array(
 
 # Special:Categories
 'categories'         => 'શ્રેણીઓ',
-'categoriespagetext' => 'નીચેની શ્રેણીઓમાં પાના કે અન્ય સભ્યો છે.',
+'categoriespagetext' => 'નીચેની શ્રેણીઓમાં પાના કે અન્ય સભ્યો છે.
+[[Special:UnusedCategories|વણ વપરાયેલી શ્રેણીઓ]] અત્રે દર્શાવવામાં આવી નથી.
+[[Special:WantedCategories|ઈચ્છિત શ્રેણીઓ]] પણ જોઈ જુઓ.',
 
 # Special:LinkSearch
 'linksearch-ok' => 'શોધ',
@@ -528,10 +554,10 @@ $messages = array(
 
 # E-mail user
 'emailuser'    => 'સભ્યને ઇ-મેલ કરો',
-'emailfrom'    => 'મોકલનાર',
-'emailto'      => 'લેનાર',
-'emailsubject' => 'વિષય',
-'emailmessage' => 'સંદેશ',
+'emailfrom'    => 'પ્રેષક:',
+'emailto'      => 'પ્રતિ:',
+'emailsubject' => 'વિષય:',
+'emailmessage' => 'સંદેશો:',
 'emailsend'    => 'મોકલો',
 
 # Watchlist
@@ -738,7 +764,7 @@ $messages = array(
 'show-big-image'       => 'મહત્તમ આવર્તન',
 'show-big-image-thumb' => '<small>આ પુર્વાવલોકનનું પરિમાણ: $1 × $2 પીક્સલ</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'નવી ફાઇલોની ઝાંખી',
 'noimages'  => 'જોવા માટે કશું નથી.',
 'ilsubmit'  => 'શોધો',
@@ -785,7 +811,7 @@ $messages = array(
 
 # External editor support
 'edit-externally'      => 'બાહ્ય સોફ્ટવેર વાપરીને આ ફાઇલમાં ફેરફાર કરો',
-'edit-externally-help' => 'વધુ માહિતિ માટે જુઓ: [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions]',
+'edit-externally-help' => '(વધુ માહિતિ માટે [http://www.mediawiki.org/wiki/Manual:External_editors સેટ-અપ સુચનાઓ] જુઓ)',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'બધા',

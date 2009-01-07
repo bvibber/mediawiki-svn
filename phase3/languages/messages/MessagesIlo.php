@@ -141,7 +141,7 @@ $messages = array(
 'mytalk'         => 'pakitungtongak',
 'anontalk'       => 'Tungtongan iti daytoy nga IP',
 'navigation'     => 'Pagdaliasatan',
-'and'            => 'ken',
+'and'            => '&#32;ken',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -204,8 +204,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Maipapan iti {{SITENAME}}',
 'aboutpage'            => 'Project:Maipapan',
-'bugreports'           => 'Dagiti report iti kammali',
-'bugreportspage'       => 'Project:Dagiti report iti kammali',
 'copyright'            => 'Dagiti linaon ket maidaya babaen ti $1.',
 'copyrightpagename'    => '{{SITENAME}} karbengan-pablaak',
 'copyrightpage'        => '{{ns:project}}:Dagiti Karbengan-Panagipablaak',
@@ -414,10 +412,12 @@ Saankan a makaaramid pay.',
 # Password reset dialog
 'resetpass'           => 'Sukatan ti pasesbalikas ti account',
 'resetpass_header'    => 'Sukatan ti pasesbalikas',
+'oldpassword'         => 'Daan a pasesbalikas:',
+'newpassword'         => 'Baro a pasesbalikas:',
+'retypenew'           => 'Isurat manen ti baro a pasesbalikas:',
 'resetpass_submit'    => 'Ikabil ti pasesbalikas ken login',
 'resetpass_success'   => 'Sibaballigi a nabaliwan ti pasesbalikasmo! Sumsumrekkan...',
 'resetpass_forbidden' => 'Saan a mabalin a baliwan dagiti pasesbalikas iti {{SITENAME}}',
-'resetpass_missing'   => 'Awan ti form data.',
 
 # Edit page toolbar
 'bold_sample'     => 'Napuskol a texto',
@@ -440,8 +440,8 @@ Saankan a makaaramid pay.',
 'hr_tip'          => 'Pakuros a linia (manmano la nga aramaten)',
 
 # Edit pages
-'summary'                          => 'Pakabuklan',
-'subject'                          => 'Sujeto/paulo',
+'summary'                          => 'Pakabuklan:',
+'subject'                          => 'Sujeto/paulo:',
 'minoredit'                        => 'Bassit a balbaliw laeng daytoy',
 'watchthis'                        => 'Bantayan',
 'savearticle'                      => 'Idulin ti panid',
@@ -456,8 +456,8 @@ No iklikmo ti Idulin manen, saan a maidulin ti editmo no awan pakabuklan.",
 'missingcommenttext'               => 'Pangngaasim ta mangipanka iti komento iti baba.',
 'missingcommentheader'             => "'''Palagip:''' Saanka a nangipan iti subject/paulo para iti daytoy a komento.
 No iklikmo manen ti Save, maidulin ti panageditmo nga awanan subject wenno paulo.",
-'summary-preview'                  => 'Preview ti pakabuklan',
-'subject-preview'                  => 'Preview ti subject/headline',
+'summary-preview'                  => 'Preview ti pakabuklan:',
+'subject-preview'                  => 'Preview ti subject/headline:',
 'blockedtitle'                     => 'Nabangenan ti agar-aramat',
 'blockedtext'                      => "<big>'''Naserraan ti nagan wenno ti IP addressmo.'''</big>
 
@@ -701,9 +701,6 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'prefs-misc'               => 'Misc',
 'saveprefs'                => 'I-save',
 'resetprefs'               => 'Dalusan dagiti saan a naidulin a panamalbaliw',
-'oldpassword'              => 'Daan a pasesbalikas:',
-'newpassword'              => 'Baro a pasesbalikas:',
-'retypenew'                => 'Isurat manen ti baro a pasesbalikas:',
 'searchresultshead'        => 'Sapulen',
 'resultsperpage'           => 'Hits ti kada panid:',
 'contextlines'             => 'Hit kada linia:',
@@ -863,17 +860,17 @@ Dagiti panid iti [[Special:Watchlist|listaan ti bambantayam]] ket '''naipuskol''
 'upload_source_url'  => ' (maysa a valido, ken maakses ti publico nga URL)',
 'upload_source_file' => ' (file iti kompiutermo)',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Agsapul iti nagan ti media:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Agsapul iti nagan ti media:',
 'imgfile'               => 'file',
-'imagelist'             => 'Listaan ti file',
-'imagelist_date'        => 'Petsa',
-'imagelist_name'        => 'Nagan',
-'imagelist_user'        => 'Agar-aramat',
-'imagelist_size'        => 'Kadakkel',
-'imagelist_description' => 'Deskripsion',
+'listfiles'             => 'Listaan ti file',
+'listfiles_date'        => 'Petsa',
+'listfiles_name'        => 'Nagan',
+'listfiles_user'        => 'Agar-aramat',
+'listfiles_size'        => 'Kadakkel',
+'listfiles_description' => 'Deskripsion',
 
-# Image description page
+# File description page
 'filehist'                       => 'Pakasaritaan ti file',
 'filehist-help'                  => 'Mangiklikka iti maysa a petsa/oras tapno makitam ti file iti kasisigudna a langa iti dayta nga oras.',
 'filehist-deleteall'             => 'ikkaten amin',
@@ -1388,6 +1385,7 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 'importinterwiki'          => 'Angkat a transwiki',
 'import-interwiki-history' => 'Kopiaen amin a versions ti pakasaritaan daytoy a panid',
 'import-interwiki-submit'  => 'Angkaten',
+'import-comment'           => 'Komento:',
 'importstart'              => 'Agang-angkat iti pampanid...',
 'import-revision-count'    => '$1 {{PLURAL:$1|a revision|a revisions}}',
 'importnopages'            => 'Awan pampanid a maangkat.',
@@ -1504,7 +1502,7 @@ Pangngaasim ta i-manualmo lattan a pagtiponem ida.'''",
 'show-big-image'       => 'Sibubukel a resolusion',
 'show-big-image-thumb' => '<small>Rukod daytoy a preview: $1 × $2 a pixels</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Galeria dagiti kabarbaro a files',
 'imagelisttext'         => "Adda iti baba ti listaan ti '''$1''' {{PLURAL:$1|a file|a files}} a naurnos kas $2.",
 'showhidebots'          => '($1 bots)',

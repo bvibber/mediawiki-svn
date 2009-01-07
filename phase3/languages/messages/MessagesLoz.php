@@ -123,7 +123,7 @@ $messages = array(
 'mytalk'         => 'Zwa bulelezi',
 'anontalk'       => 'Bulelezi di bye IP',
 'navigation'     => 'Muya',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 # Metadata in edit box
 'metadata_help' => 'Meta ngesi:',
@@ -184,8 +184,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => "Ngesi ye ng'i atulile {{SITENAME}}",
 'aboutpage'            => "Project:Ngesi ye ng'i atulile",
-'bugreports'           => 'Filubani di bug',
-'bugreportspage'       => 'Project:Filubani di bug',
 'copyright'            => 'Bye sa ilonungi di $1.',
 'copyrightpagename'    => "{{SITENAME}} copyright ng'i",
 'copyrightpage'        => "{{ns:project}}:Copyright ng'i",
@@ -339,10 +337,10 @@ Sa ku bye fatukile zwa sebu dafi e a ni petuho, ni petuho e mulumiwasibukirisize
 'loginlanguagelabel'        => 'Zwa Siselect: $1',
 
 # Password reset dialog
-'resetpass'         => 'Lisetize sebelu sebu dafi',
-'resetpass_header'  => 'Lisetize sebu dafi',
-'resetpass_submit'  => 'Setize sebu dafi e menuhile',
-'resetpass_missing' => 'Ni form datani.',
+'resetpass'        => 'Lisetize sebelu sebu dafi',
+'resetpass_header' => 'Lisetize sebu dafi',
+'retypenew'        => 'Sebu dafi:',
+'resetpass_submit' => 'Setize sebu dafi e menuhile',
 
 # Edit page toolbar
 'bold_sample'     => 'Selt ombelu',
@@ -367,8 +365,8 @@ Sa ku bye fatukile zwa sebu dafi e a ni petuho, ni petuho e mulumiwasibukirisize
 'hr_tip'          => 'Lani - (sepalati)',
 
 # Edit pages
-'summary'                => 'Lyangutukezi',
-'subject'                => 'Lyangutukezi selt',
+'summary'                => 'Lyangutukezi:',
+'subject'                => 'Lyangutukezi selt:',
 'minoredit'              => 'A sa pili kenki',
 'watchthis'              => 'Kantezi bye petulo',
 'savearticle'            => 'Bulukezi',
@@ -378,7 +376,7 @@ Sa ku bye fatukile zwa sebu dafi e a ni petuho, ni petuho e mulumiwasibukirisize
 'showdiff'               => 'Kamukile nca petuho',
 'anoneditwarning'        => "'''!:''' A ni sa menuhile.
 Zwa adresi di IP sa bulukezi kwa kenki bundau di petulo.",
-'summary-preview'        => 'Lyangutukezi pendiBe',
+'summary-preview'        => 'Lyangutukezi pendiBe:',
 'blockedtitle'           => 'Sebelu sa bolok',
 'blockedtext'            => "<big>'''Zwa sebelu/IP sa bolok.'''</big>
 
@@ -505,7 +503,6 @@ Informasi: (bye) = petuho a nca selt,
 'prefs-watchlist'   => 'Mukoloko di kentezi',
 'saveprefs'         => 'Bulukezi',
 'resetprefs'        => 'Lisetize',
-'retypenew'         => 'Sebu dafi:',
 'textboxsize'       => "Hloli ye ng'i",
 'rows'              => 'Roo:',
 'columns'           => 'Kalom:',
@@ -579,12 +576,12 @@ di uplodezi media.',
 
 'license-nopreview' => '(PendiBe di nupdeti)',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'imegi',
-'imagelist'      => 'Mukoloko di imegina',
-'imagelist_user' => 'Sebelu',
+'listfiles'      => 'Mukoloko di imegina',
+'listfiles_user' => 'Sebelu',
 
-# Image description page
+# File description page
 'filehist'                  => 'Imegi bundau',
 'filehist-help'             => 'Tampa datum/taimi di kamukile imegi a sa kwa bye datum.',
 'filehist-current'          => 'bye',
@@ -931,6 +928,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 # Special:Import
 'import'                  => 'Petulo import',
 'import-interwiki-submit' => 'Petulo import',
+'import-comment'          => 'Lyangutukezi:',
 
 # Import log
 'importlogpage' => 'Desu di import',
@@ -1019,7 +1017,7 @@ $1',
 'show-big-image'       => 'Risolusi bakisize',
 'show-big-image-thumb' => '<small>PendiBe: $1 × $2 pixel</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Imegina nca',
 'ilsubmit'              => 'Fatukile',
 'sp-newimages-showfrom' => 'Kamukile nca imegi di $1',

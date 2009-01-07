@@ -67,6 +67,16 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		if (isset ($params['prefix']))
 			$this->addWhere("page_title LIKE '" . $db->escapeLike($this->titlePartToKey($params['prefix'])) . "%'");
 
+		if (is_null($resultPageSet)) {
+			$selectFields = array (
+				'page_namespace',
+				'page_title',
+				'page_id'
+			);
+		} else {
+			$selectFields = $resultPageSet->getPageTableFields();
+		}
+		$this->addFields($selectFields);
 		$forceNameTitleIndex = true;
 		if (isset ($params['minsize'])) {
 			$this->addWhere('page_len>=' . intval($params['minsize']));
@@ -89,6 +99,10 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 			$prlevel = array_diff($params['prlevel'], array('', '*'));
 			if (!empty($prlevel))
 				$this->addWhereFld('pr_level', $prlevel);
+			if ($params['prfiltercascade'] == 'cascading')
+				$this->addWhereFld('pr_cascade', 1);
+			if ($params['prfiltercascade'] == 'noncascading')
+				$this->addWhereFld('pr_cascade', 0);
 
 			$this->addOption('DISTINCT');
 
@@ -106,21 +120,16 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		} else if($params['filterlanglinks'] == 'withlanglinks') {
 			$this->addTables('langlinks');
 			$this->addWhere('page_id=ll_from');
-			$this->addOption('DISTINCT');
+			$this->addOption('STRAIGHT_JOIN');
+			// We have to GROUP BY all selected fields to stop
+			// PostgreSQL from whining
+			$this->addOption('GROUP BY', implode(', ', $selectFields));
 			$forceNameTitleIndex = false;
 		}
 		if ($forceNameTitleIndex)
 			$this->addOption('USE INDEX', 'name_title');
 
-		if (is_null($resultPageSet)) {
-			$this->addFields(array (
-				'page_id',
-				'page_namespace',
-				'page_title'
-			));
-		} else {
-			$this->addFields($resultPageSet->getPageTableFields());
-		}
+		
 
 		$limit = $params['limit'];
 		$this->addOption('LIMIT', $limit+1);
@@ -187,6 +196,14 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 				ApiBase :: PARAM_TYPE => $wgRestrictionLevels,
 				ApiBase :: PARAM_ISMULTI => true
 			),
+			'prfiltercascade' => array (
+				ApiBase :: PARAM_DFLT => 'all',
+				ApiBase :: PARAM_TYPE => array (
+					'cascading',
+					'noncascading',
+					'all'
+				),
+			),
 			'limit' => array (
 				ApiBase :: PARAM_DFLT => 10,
 				ApiBase :: PARAM_TYPE => 'limit',
@@ -223,6 +240,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 			'maxsize' => 'Limit to pages with at most this many bytes',
 			'prtype' => 'Limit to protected pages only',
 			'prlevel' => 'The protection level (must be used with apprtype= parameter)',
+			'prfiltercascade' => 'Filter protections based on cascadingness (ignored when apprtype isn\'t set)',
 			'filterlanglinks' => 'Filter based on whether a page has langlinks',
 			'limit' => 'How many total pages to return.'
 		);

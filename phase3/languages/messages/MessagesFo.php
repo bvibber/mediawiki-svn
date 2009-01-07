@@ -12,43 +12,42 @@
  * @author לערי ריינהארט
  */
 
-$skinNames = array(
-	'standard'    => 'Standardur',
-	'nostalgia'   => 'Nostalgiskur',
-	'cologneblue' => 'Cologne-bláur'
-);
-
 $bookstoreList = array(
 	'Bokasolan.fo' => 'http://www.bokasolan.fo/vleitari.asp?haattur=bok.alfa&Heiti=&Hovindur=&Forlag=&innbinding=Oell&bolkur=Allir&prisur=Allir&Aarstal=Oell&mal=Oell&status=Oell&ISBN=$1',
 	'inherit' => true,
 );
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Miðil',
-	NS_SPECIAL        => 'Serstakur',
-	NS_MAIN           => '',
-	NS_TALK           => 'Kjak',
-	NS_USER           => 'Brúkari',
-	NS_USER_TALK      => 'Brúkari_kjak',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK   => '$1_kjak',
-	NS_IMAGE          => 'Mynd',
-	NS_IMAGE_TALK     => 'Mynd_kjak',
-	NS_MEDIAWIKI      => 'MidiaWiki',
-	NS_MEDIAWIKI_TALK => 'MidiaWiki_kjak',
-	NS_TEMPLATE       => 'Fyrimynd',
-	NS_TEMPLATE_TALK  => 'Fyrimynd_kjak',
-	NS_HELP           => 'Hjálp',
-	NS_HELP_TALK      => 'Hjálp kjak',
-	NS_CATEGORY       => 'Bólkur',
-	NS_CATEGORY_TALK  => 'Bólkur_kjak',
+	NS_MEDIA            => 'Miðil',
+	NS_SPECIAL          => 'Serstakt',
+	NS_TALK             => 'Kjak',
+	NS_USER             => 'Brúkari',
+	NS_USER_TALK        => 'Brúkarakjak',
+	NS_PROJECT_TALK     => '$1-kjak',
+	NS_FILE             => 'Mynd',
+	NS_FILE_TALK        => 'Myndakjak',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki-kjak',
+	NS_TEMPLATE         => 'Fyrimynd',
+	NS_TEMPLATE_TALK    => 'Fyrimyndakjak',
+	NS_HELP             => 'Hjálp',
+	NS_HELP_TALK        => 'Hjálparkjak',
+	NS_CATEGORY         => 'Bólkur',
+	NS_CATEGORY_TALK    => 'Bólkakjak',
 );
 
-$skinNames = array(
-	'standard' => 'Standardur',
-	'nostalgia' => 'Nostalgiskur',
-	'cologneblue' => 'Cologne-bláur',
+$namespaceAliases = array(
+	'Serstakur' => NS_SPECIAL,
+	'Brúkari_kjak' => NS_USER_TALK,
+	'$1_kjak' => NS_PROJECT_TALK,
+	'Mynd_kjak' => NS_FILE_TALK,
+	'MidiaWiki' => NS_MEDIAWIKI,
+	'MidiaWiki_kjak' => NS_MEDIAWIKI_TALK,
+	'Fyrimynd_kjak' => NS_TEMPLATE_TALK,
+	'Hjálp_kjak' => NS_HELP_TALK,
+	'Bólkur_kjak' => NS_CATEGORY_TALK,
 );
+
 
 $datePreferences = false;
 $defaultDateFormat = 'dmy';
@@ -68,7 +67,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Mítt eftirlit' ),
 	'Recentchanges'             => array( 'Seinastu broytingar' ),
 	'Upload'                    => array( 'Legg fílu upp' ),
-	'Imagelist'                 => array( 'Myndalisti' ),
+	'Listfiles'                 => array( 'Myndalisti' ),
 	'Newimages'                 => array( 'Nýggjar myndir' ),
 	'Listusers'                 => array( 'Brúkaralisti' ),
 	'Statistics'                => array( 'Hagtøl' ),
@@ -220,7 +219,7 @@ $messages = array(
 'mytalk'         => 'Mítt kjak',
 'anontalk'       => 'Kjak til hesa ip-adressuna',
 'navigation'     => 'Navigatión',
-'and'            => 'og',
+'and'            => '&#32;og',
 
 'errorpagetitle'    => 'Villa',
 'returnto'          => 'Vend aftur til $1.',
@@ -276,8 +275,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Um {{SITENAME}}',
 'aboutpage'            => 'Project:Um',
-'bugreports'           => 'Lúsafrágreiðingar',
-'bugreportspage'       => 'Project:Lúsafrágreiðingar',
 'copyright'            => 'Innihald er tøkt undir $1.',
 'copyrightpagename'    => '{{SITENAME}} útgávurættur',
 'copyrightpage'        => '{{ns:project}}:Útgávurættur',
@@ -418,6 +415,11 @@ verður sendur fyri nakað av fylgjandi hentleikum.',
 'accountcreated'             => 'Konto upprættað',
 'loginlanguagelabel'         => 'Mál: $1',
 
+# Password reset dialog
+'oldpassword' => 'Gamalt loyniorð:',
+'newpassword' => 'Nýtt loyniorð:',
+'retypenew'   => 'Skriva nýtt loyniorð umaftur:',
+
 # Edit page toolbar
 'bold_sample'     => 'Feitir stavir',
 'bold_tip'        => 'Feitir stavir',
@@ -440,8 +442,8 @@ verður sendur fyri nakað av fylgjandi hentleikum.',
 'hr_tip'          => 'Vatnrøtt linja (vera sparin við)',
 
 # Edit pages
-'summary'                  => 'Samandráttur',
-'subject'                  => 'Evni/heiti',
+'summary'                  => 'Samandráttur:',
+'subject'                  => 'Evni/heiti:',
 'minoredit'                => 'Hetta er smábroyting',
 'watchthis'                => 'Hav eftirlit við hesi síðuni',
 'savearticle'              => 'Goym síðu',
@@ -451,7 +453,7 @@ verður sendur fyri nakað av fylgjandi hentleikum.',
 'showdiff'                 => 'Sýn broytingar',
 'anoneditwarning'          => "'''Ávaring:''' Tú hevur ikki ritað inn.
 Tín IP-adressa verður goymd í rættisøguni fyri hesa síðuna.",
-'summary-preview'          => 'Samandráttaforskoðan',
+'summary-preview'          => 'Samandráttaforskoðan:',
 'blockedtitle'             => 'Brúkarin er bannaður',
 'loginreqtitle'            => 'Innritan kravd',
 'loginreqlink'             => 'rita inn',
@@ -560,9 +562,6 @@ Vinarliga umhugsa at býta síðuna sundur í styttri pettir.</strong>',
 'prefs-misc'              => 'Ymiskar innstillingar',
 'saveprefs'               => 'Goym innstillingar',
 'resetprefs'              => 'Endurset innstillingar',
-'oldpassword'             => 'Gamalt loyniorð:',
-'newpassword'             => 'Nýtt loyniorð:',
-'retypenew'               => 'Skriva nýtt loyniorð umaftur:',
 'textboxsize'             => 'Broyting av greinum',
 'rows'                    => 'Røð:',
 'columns'                 => 'Teigar:',
@@ -652,12 +651,12 @@ fyri at leggja fílur upp.',
 'license'   => 'Loyvi:',
 'nolicense' => 'Onki valt',
 
-# Special:ImageList
-'imagelist'      => 'Myndalisti',
-'imagelist_name' => 'Navn',
-'imagelist_user' => 'Brúkari',
+# Special:ListFiles
+'listfiles'      => 'Myndalisti',
+'listfiles_name' => 'Navn',
+'listfiles_user' => 'Brúkari',
 
-# Image description page
+# File description page
 'filehist'          => 'Søga fílu',
 'filehist-current'  => 'streymur',
 'filehist-datetime' => 'Dagur/Tíð',
@@ -1051,6 +1050,11 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 # Info page
 'infosubtitle' => 'Upplýsingar um síðu',
 
+# Skin names
+'skinname-standard'    => 'Standardur',
+'skinname-nostalgia'   => 'Nostalgiskur',
+'skinname-cologneblue' => 'Cologne-bláur',
+
 # Math options
 'mw_math_png'    => 'Vís altíð sum PNG',
 'mw_math_simple' => 'HTML um sera einfalt annars PNG',
@@ -1073,7 +1077,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'file-info-size' => '($1 × $2 pixel, stødd fílu: $3, MIME-slag: $4)',
 'svg-long-desc'  => '(SVG fíle, nominelt $1 × $2 pixel, fíle stødd: $3)',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Nýggjar myndir',
 'noimages'  => 'Einki at síggja.',
 'ilsubmit'  => 'Leita',

@@ -420,6 +420,7 @@ $oldPageID: the page ID of the revision when archived (may be null)
 $article: the article that was edited
 $user: the user who did the rollback
 $revision: the revision the page was reverted back to
+$current: the reverted revision
 
 'ArticleSave': before an article is saved
 $article: the article (object) being saved
@@ -504,13 +505,6 @@ rendered inline in wiki pages or galleries in category pages.
 'BeforeParserrenderImageGallery': before an image gallery is rendered by Parser
 &$parser: Parser object
 &$ig: ImageGallery object
-
-'BeforeWatchlist': Override watchlist display or add extra SQL clauses.
-$nondefaults: Assoc array with the following keys:
-              days, hideOwn, hideBots, hideMinor, namespace
-$wgUser: wgUser.
-&$hookSql: a string which will be inserted without sanitation into the SQL query
-           used to get the watchlist, at the end of the WHERE part.
 
 'BlockIp': before an IP address or user is blocked
 $block: the Block object about to be saved
@@ -622,6 +616,12 @@ sections.
 'EditPageBeforeEditButtons':  allows modifying the edit buttons below the textarea in the edit form
 &$editpage: The current EditPage object
 &$buttons: Array of edit buttons "Save", "Preview", "Live", and "Diff"
+&$tabindex: HTML tabindex of the last edit check/button
+
+'EditPageBeforeEditChecks':  allows modifying the edit checks below the textarea in the edit form
+&$editpage: The current EditPage object
+&$checks: Array of edit checks like "watch this page"/"minor edit"
+&$tabindex: HTML tabindex of the last edit check/button
 
 'EditSectionLink': Do not use, use DoEditSectionLink instead.
 $skin: Skin rendering the UI
@@ -754,6 +754,7 @@ $title: Title object ($wgTitle)
 $request: WebRequest
 $ignoreRedirect: boolean to skip redirect check
 $target: Title/string of redirect target
+$article: Article object
 
 'InitPreferencesForm': called at the end of PreferencesForm's constructor
 $form: the PreferencesForm
@@ -931,6 +932,7 @@ $tools: array of tools
 $article: the article edited
 $rev: the new revision
 $baseID: the revision ID this was based off, if any
+$user: the editing user
 
 'NormalizeMessageKey': Called before the software gets the text of a message
   (stuff in the MediaWiki: namespace), useful for changing WHAT message gets displayed
@@ -1115,6 +1117,8 @@ $text : Current text being indexed
 $term : Search term string
 &$title : Outparam; set to $title object and return false for a match
 
+'SetupAfterCache': Called in Setup.php, after cache objects are set
+
 'ShowRawCssJs': Customise the output of raw CSS and JavaScript in page views
 $text: Text being shown
 $title: Title of the custom script/stylesheet page
@@ -1230,7 +1234,7 @@ $list: list (array) of core special pages
 $opts: FormOptions for this request
 
 'SpecialRecentChangesQuery': called when building sql query for SpecialRecentChanges
-&$conds: array of where conditionals for query
+&$conds: array of WHERE conditionals for query
 &$tables: array of tables to be queried
 &$join_conds: join conditions for the tables
 $opts: FormOptions for this request
@@ -1248,6 +1252,12 @@ $term: string of search term
 
 'SpecialVersionExtensionTypes': called when generating the extensions credits, use this to change the tables headers
 $extTypes: associative array of extensions types
+
+'SpecialWatchlistQuery': called when building sql query for SpecialWatchlist
+&$conds: array of WHERE conditionals for query
+&$tables: array of tables to be queried
+&$join_conds: join conditions for the tables
+&$fields: array of query fields
 
 'TitleArrayFromResult': called when creating an TitleArray object from a database result
 &$titleArray: set this to an object to override the default object returned
@@ -1325,8 +1335,20 @@ $user: User (object) whose permission is being checked
 'UserClearNewTalkNotification': called when clearing the "You have new messages!" message, return false to not delete it
 $user: User (object) that'll clear the message
 
+'UserComparePasswords': called when checking passwords, return false to override the default password checks
+&$hash: String of the password hash (from the database)
+&$password: String of the plaintext password the user entered
+&$userId: Integer of the user's ID or Boolean false if the user ID was not supplied
+&$result: If the hook returns false, this Boolean value will be checked to determine if the password was valid
+
 'UserCreateForm': change to manipulate the login form
 $template: SimpleTemplate instance for the form
+
+'UserCryptPassword': called when hashing a password, return false to implement your own hashing method
+&$password: String of the plaintext password to encrypt
+&$salt: String of the password salt or Boolean false if no salt is provided
+&$wgPasswordSalt: Boolean of whether the salt is used in the default hashing method
+&$hash: If the hook returns false, this String will be used as the hash
 
 'UserEffectiveGroups': Called in User::getEffectiveGroups()
 $user: User to get groups for
@@ -1395,12 +1417,6 @@ $addergroups : Array of groups that the user is in
 					'add-self'    => array( addablegroups to self ),
 					'remove-self' => array( removable groups from self )
 				)
-
-'UserRights::showEditUserGroupsForm': called right before the form to edit group memberships at Special:UserRights is shown
-&$user: User or UserRightsProxy you're editing
-&$addable: Array of groups you can add the user into
-&$removable: Array of groups that you can remove the user from
-
 'UserRetrieveNewTalks': called when retrieving "You have new messages!" message(s)
 $user: user retrieving new talks messages
 $talks: array of new talks page(s)

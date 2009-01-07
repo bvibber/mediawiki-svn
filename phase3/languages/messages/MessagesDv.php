@@ -11,6 +11,46 @@
 
 $rtl = true;
 
+$namespaceNames = array(
+	NS_SPECIAL          => 'ހާއްޞަ',
+	NS_TALK             => 'ޚިޔާލު',
+	NS_USER             => 'މެމްބަރު',
+	NS_FILE             => 'ފައިލް',
+	NS_FILE_TALK        => 'ފައިލް_ޚިޔާލު',
+	NS_MEDIAWIKI        => 'މީޑިއާވިކީ',
+	NS_MEDIAWIKI_TALK   => 'މީޑިޔާވިކި_ޚިޔާލު',
+	NS_TEMPLATE         => 'ފަންވަތް',
+	NS_TEMPLATE_TALK    => 'ފަންވަތް_ޚިޔާލު',
+	NS_HELP             => 'އެހީ',
+	NS_HELP_TALK        => 'އެހީ_ޚިޔާލު',
+	NS_CATEGORY         => 'ޤިސްމު',
+	NS_CATEGORY_TALK    => 'ޤިސްމު_ޚިޔާލު',
+);
+
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'ވަދެވަޑައިގަންނަވާ' ),
+	'Userlogout'                => array( 'ބޭރަށް ވަޑައިގަންނަވާ' ),
+	'CreateAccount'             => array( 'މެމްބަރުކަން ހާސިލްކުރައްވާ' ),
+	'Preferences'               => array( 'ތަރުޖީހުތައް' ),
+	'Recentchanges'             => array( 'އެންމެ ފަހުގެ ބަދަލްތައް' ),
+	'Upload'                    => array( 'ފޮނުއްވާ' ),
+	'Listfiles'                 => array( 'ފައިލް ލިސްޓް' ),
+	'Newimages'                 => array( 'އާ ފައިލް' ),
+	'Randompage'                => array( 'ކޮންމެވެސް ސަފްޙާއެއް' ),
+	'Uncategorizedtemplates'    => array( 'ޤިސްމުކުރެވިފައި ނުވާ ފަންވަތް' ),
+	'Unusedcategories'          => array( 'ބޭނުން ނުކުރާ ޤިސްމުތައް' ),
+	'Unusedimages'              => array( 'ބޭނުން ނުކުރާ ފައިލް' ),
+	'Shortpages'                => array( 'ކުރު ސަފްޙާތައް' ),
+	'Longpages'                 => array( 'ދިގު ސަފްޙާތައް' ),
+	'Newpages'                  => array( 'އާ ސަފްހާތައް' ),
+	'Protectedpages'            => array( 'ދިފާޢުކުރެވިފައިވާ ސަފްޙާތައް' ),
+	'Allpages'                  => array( 'ހުރިހާ ސަފްޙާއެއް' ),
+	'Ipblocklist'               => array( 'ބްލޮކް ކުރެވިފައިވާ ލިސްޓް' ),
+	'Specialpages'              => array( 'ޙާއްސަ ސަފްޙާތައް' ),
+	'Contributions'             => array( 'ޙިއްސާ' ),
+	'Emailuser'                 => array( 'މެމްބަރަށް އީ-މެއިލް ފޮނުވާ' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-hideminor'    => 'ކުޑަ ކުޑަ އުނި އިތުރުތައް ފަހު ބަދަލު އިން ފޮރުއްވަވާ',
@@ -20,30 +60,47 @@ $messages = array(
 'underline-never'  => 'ހަމަހިލާ ނޫން',
 
 # Dates
-'sunday'    => 'އާދީއްތަ',
-'monday'    => 'ހޯމަ',
-'tuesday'   => 'އަންގާރަ',
-'wednesday' => 'ބުދަ',
-'thursday'  => 'ބުރާސްފަތި',
-'friday'    => 'ހުކުރު',
-'saturday'  => 'ހޮނިހިރު',
-'january'   => 'ޖެނުއަރީ',
-'february'  => 'ފެބްރުއަރީ',
-'march'     => 'މާރޗް',
-'april'     => 'އެޕްރީލް',
-'may_long'  => 'މެއި',
-'june'      => 'ޖޫން',
-'july'      => 'ޖުލައި',
-'august'    => 'އޮގަސްޓު',
-'september' => 'ސެޕްޓެމްބަރު',
-'october'   => 'އޮކްޓޫބަރު',
-'november'  => 'ނޮވެމްބަރު',
-'december'  => 'ޑިސެމްބަރު',
-'may'       => 'މެއި',
-'sep'       => 'ސެޕްޓެމްބަރ',
-'oct'       => 'އޮކްޓޯބަރ',
-'nov'       => 'ނޮވެމްބަރ',
-'dec'       => 'ޑިސެމްބަރ',
+'sunday'       => 'އާދީއްތަ',
+'monday'       => 'ހޯމަ',
+'tuesday'      => 'އަންގާރަ',
+'wednesday'    => 'ބުދަ',
+'thursday'     => 'ބުރާސްފަތި',
+'friday'       => 'ހުކުރު',
+'saturday'     => 'ހޮނިހިރު',
+'sun'          => 'އާދީއްތަ',
+'mon'          => 'ހޯމަ',
+'tue'          => 'އަންގާރަ',
+'wed'          => 'ބުދަ',
+'thu'          => 'ބުރާސްފަތި',
+'fri'          => 'ހުކުރު',
+'sat'          => 'ހޮނިހިރު',
+'january'      => 'ޖެނުއަރީ',
+'february'     => 'ފެބްރުއަރީ',
+'march'        => 'މާރޗް',
+'april'        => 'އެޕްރީލް',
+'may_long'     => 'މެއި',
+'june'         => 'ޖޫން',
+'july'         => 'ޖުލައި',
+'august'       => 'އޮގަސްޓު',
+'september'    => 'ސެޕްޓެމްބަރު',
+'october'      => 'އޮކްޓޫބަރު',
+'november'     => 'ނޮވެމްބަރު',
+'december'     => 'ޑިސެމްބަރު',
+'january-gen'  => 'ޖެނުއަރީ',
+'february-gen' => 'ފެބްރުއަރީ',
+'march-gen'    => 'މާޗް',
+'jan'          => 'ޖެނުއަރީ',
+'feb'          => 'ފެބްރުއަރީ',
+'mar'          => 'މާޗް',
+'apr'          => 'އޭޕްރިލް',
+'may'          => 'މެއި',
+'jun'          => 'ޖޫން',
+'jul'          => 'ޖުލައި',
+'aug'          => 'އޯގަސްޓް',
+'sep'          => 'ސެޕްޓެމްބަރ',
+'oct'          => 'އޮކްޓޯބަރ',
+'nov'          => 'ނޮވެމްބަރ',
+'dec'          => 'ޑިސެމްބަރ',
 
 # Categories related messages
 'category_header' => 'ގިސްމު "$1" ގައިވާ މަޒުމޫނުތައް',
@@ -60,7 +117,7 @@ $messages = array(
 'qbmyoptions'   => 'މަގޭ ސަފްހާ ތައް',
 'mytalk'        => 'މަގޭ ވާހަކަ',
 'navigation'    => 'ސަމުގާ',
-'and'           => 'އަދި',
+'and'           => '&#32;އަދި',
 
 'errorpagetitle'    => 'ކުށް',
 'returnto'          => 'އަނބުރާ $1 އަށް ވަޑައިގަންނަވާ!',
@@ -114,11 +171,12 @@ $messages = array(
 
 'badaccess' => 'ހުއްދައިގެ ކުށެއް',
 
-'ok'          => 'ރަނގަޅު',
-'editsection' => 'އުނިއިތުރު ގެންނަވާ',
-'toc'         => 'ފިހުރިސްތު',
-'showtoc'     => 'ދައްކަވާ',
-'hidetoc'     => 'ފޮރުއްވާ',
+'ok'              => 'ރަނގަޅު',
+'editsection'     => 'އުނިއިތުރު ގެންނަވާ',
+'editsectionhint' => 'މަޒްމޫނުގެ $1 ބަޔަށް އުނިއިތުރު ގެންނަނީ',
+'toc'             => 'ފިހުރިސްތު',
+'showtoc'         => 'ދައްކަވާ',
+'hidetoc'         => 'ފޮރުއްވާ',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'މަޒުމޫނު',
@@ -161,6 +219,9 @@ $messages = array(
 'mailmypassword'             => 'ސިއްރުބަސް އީމޭލުކުރައްވާ',
 'acct_creation_throttle_hit' => 'މާފު ކުރައްވާ، އެހެނީ ތިޔަބޭފުޅާ ވަނީ ކުރީއްސުރެ $1 މެންބަރުކަން ހޯއްދަވާފައި އެހެންވީމާ އިތުރަށް ލިބިވަޑައެއް ނުގަންނަވާނެ.',
 
+# Password reset dialog
+'oldpassword' => 'ކުރީގެ ސިއްރުބަސް:',
+
 # Edit page toolbar
 'bold_sample'     => 'ބޯ އިބާރާތް',
 'bold_tip'        => 'ބޯ އިބާރާތް',
@@ -169,8 +230,8 @@ $messages = array(
 'headline_sample' => 'ސުރުހީގެ އިބާރާތް',
 
 # Edit pages
-'summary'                  => 'ހުލާސާ',
-'subject'                  => 'މާއްދާ/ސުރުހީ',
+'summary'                  => 'ހުލާސާ:',
+'subject'                  => 'މާއްދާ/ސުރުހީ:',
 'minoredit'                => 'މިއީ ކުޑަކުޑަ އުނިއިތުރެކެވެ',
 'watchthis'                => 'މި ޞަފްޙާއަށް ނަޒަރުބަހައްޓަވާ',
 'savearticle'              => 'ޞަފްޙާ ރައްކާކުރައްވާ',
@@ -197,6 +258,7 @@ $messages = array(
 'accmailtitle'             => 'ސިއްރުބަސް ފޮނުވިއްޖެ.',
 'accmailtext'              => '"$1" އަށްޓަކައިވާ ސިއްރު ބަސް $2 އަށް ވަނީ ފޮނުވިފައި',
 'newarticle'               => '(އައު)',
+'editing'                  => '$1 އަށް އުނިއިތުރު ގެންނަނީ',
 'editingsection'           => '$1 ގެ (ބަޔަކަށް) އުނި އިތުރު ގެންނަނީ',
 'editconflict'             => 'އުނިއިތުރުގެންނެވުމުގައި އަރާރުން: $1',
 'yourtext'                 => 'ތިޔބޭފުޅާގެ ލިޔުއްވުން',
@@ -219,7 +281,6 @@ $messages = array(
 'preferences'    => 'ތަރުޖީހުތައް',
 'mypreferences'  => 'މަގޭ ތަރުޖީހުތައް',
 'changepassword' => 'ސިއްރުބަސް ބަދަލުކުރައްވާ',
-'oldpassword'    => 'ކުރީގެ ސިއްރުބަސް:',
 'columns'        => 'ކޮލަންތައް:',
 'files'          => 'ފައިލުތައް',
 
@@ -247,10 +308,10 @@ $messages = array(
 'uploadedfiles'     => 'ފޮނުވިފައިވާ ފައިލުތައް',
 'uploadwarning'     => 'ފައިލުފޮނުއްވުމުގެ ކުރިން ދެވޭ އިންޒާރު',
 
-# Special:ImageList
-'imagelist' => 'ފައިލުތަކުގެ ފިހުރިސްތު',
+# Special:ListFiles
+'listfiles' => 'ފައިލުތަކުގެ ފިހުރިސްތު',
 
-# Image description page
+# File description page
 'imagelinks' => 'ފާލަންތައް',
 
 # Random page
@@ -341,6 +402,7 @@ $messages = array(
 'badipaddress'      => 'ނުރަނގަޅު އައި.ޕީ އެޑްރެހެއް',
 'expiringblock'     => 'މުއްދަތު ހަމަވާނީ $1',
 'blocklink'         => 'ފިޔަވަޅުއަޅުއްވާ',
+'contribslink'      => 'ޙިއްޞާ',
 'proxyblocksuccess' => 'ފުރިހަމަވެއްޖެ.',
 
 # Developer tools
@@ -369,7 +431,11 @@ $messages = array(
 'allmessagesdefault' => 'ކުރީގެ މަތަން',
 'allmessagescurrent' => 'މިހާރުގެ މަތަން',
 
-# Special:NewImages
+# Tooltip help for the actions
+'tooltip-pt-logout'  => 'ބޭރަށްވަޑައިގަންނަވާ',
+'tooltip-n-mainpage' => 'މައި ސަފްޙާއަށް ވަަޑައިގަންނަވާ',
+
+# Special:NewFiles
 'showhidebots' => '($1 ސެއްޓި)',
 'ilsubmit'     => 'ހޯއްދަވާ',
 

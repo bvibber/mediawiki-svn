@@ -16,8 +16,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'छ्येलेमि_खँलाबँला',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_खँलाबँला',
-	NS_IMAGE            => 'किपा',
-	NS_IMAGE_TALK       => 'किपा_खँलाबँला',
+	NS_FILE             => 'किपा',
+	NS_FILE_TALK        => 'किपा_खँलाबँला',
 	NS_MEDIAWIKI        => 'मिडियाविकि',
 	NS_MEDIAWIKI_TALK   => 'मिडियाविकि_खँलाबँला',
 	NS_HELP             => 'ग्वाहालि',
@@ -162,16 +162,23 @@ $messages = array(
 'moredotdotdot' => 'अप्व॰॰॰',
 'mypage'        => 'जिगु पौ',
 'mytalk'        => 'जिगु खं',
+'anontalk'      => 'थ्व IPया निंतिं खँल्हाबल्हा',
 'navigation'    => 'परिवहन',
-'and'           => 'व',
+'and'           => '&#32;व',
 
+# Metadata in edit box
+'metadata_help' => 'मेटाडेटा:',
+
+'returnto'         => '$1य् लिहाँझासँ।',
+'tagline'          => '{{SITENAME}}नं',
 'help'             => 'ग्वहालि',
-'search'           => 'मालादिसं',
+'search'           => 'मालादिसँ',
 'searchbutton'     => 'मालादिसँ',
 'go'               => 'झासँ',
 'searcharticle'    => 'झासँ',
 'history'          => 'पौया इतिहास',
 'history_short'    => 'इतिहास',
+'updatedmarker'    => 'जिं दक्ले लिपा पौ स्वे धुंकाया अपडेट',
 'info_short'       => 'जानकारी',
 'printableversion' => 'ध्वायेज्युगु संस्करण',
 'permalink'        => 'स्थायी लिङ्क',
@@ -191,8 +198,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}}या बारेय्',
 'aboutpage'            => 'Project:बारेय्',
-'bugreports'           => 'बग रिपोर्ट',
-'bugreportspage'       => 'Project:बग रिपोर्ट',
 'copyright'            => 'कण्टेण्ट $1 कथं उपलब्ध दु।',
 'copyrightpagename'    => '{{SITENAME}} लेखाधिकार',
 'copyrightpage'        => '{{ns:project}}:लेखाधिकार',
@@ -244,11 +249,31 @@ $messages = array(
 'nstab-category'  => 'पुचः',
 
 # Main script and global functions
-'nosuchaction' => 'थन्यागु ज्या मदु',
+'nosuchaction'      => 'थन्यागु ज्या मदु',
+'nosuchactiontext'  => 'URLनं या धाःगु ज्या विकिं मस्यु',
+'nosuchspecialpage' => 'थन्यागु विशेष पौ मदु',
+'nospecialpagetext' => "<big>'''छिं मदुगु विशेष पौया माग तयादिल।'''</big>
+
+अस्थित्वय् दुगु विशेष पौया धलः [[विशेष:विशेषपौ|{{int:specialpages}}]]य् दु।",
 
 # General errors
+'databaseerror'   => 'डेटाबेस इरर',
+'dberrortext'     => 'छगू डेटाबेस क्वेरी सिन्ट्याक्स इरर जूगु दु।
+थ्व इररं सफ्टवेयरय् bug दूगु इंगीत यायेफु।
+थ्व स्वया न्हः कोशिस जूगु डेटाबेस क्वेरी 
+"<tt>$2</tt>" फंक्सनया 
+<blockquote><tt>$1</tt></blockquote> ख। 
+MySQL नं इरर "<tt>$3: $4</tt>" क्यंगु दु।',
+'noconnect'       => 'माफ यानादिसँ! थ्व विकिइ छुं प्राविधिक कठिनाइ वयाच्वँगु दु व डेटाबेस सर्भरयात स्वापू तये मफयाच्वँगु दु।<br />
+$1',
+'nodb'            => 'डेटाबेस $1यात ल्यये मफुत।',
+'cachederror'     => 'थ्व पौ अनुरोधित पौया क्यासे कपि ख व अप-टु-डेट मजुइफु।',
 'laggedslavemode' => 'चेतावनी: पतिइ न्हुगु अपदेत मदेफु ।',
 'readonly'        => 'देताबेस संरक्षित',
+'enterlockreason' => 'पौ कुनातयेगुया निंतिं कारण बियादिसँ, नापं पौ गब्ले चायेकिगु जुइफु उकिया अनुमान नं बियादिसँ',
+'readonlytext'    => 'थ्व डेटाबेस आःया ईले, सम्भवतः नियमित डेटाबेस मेन्टेनेन्सया निंतिं, न्हूगु एन्ट्रि व मेमेगु हिलेज्याया यायेमछिंकः कुनातःगु दु। थ्व धुंका हानं डेटाबेस साधारण जुइ।
+
+थ्व डेटाबेस कुनाःतम्ह प्रबन्धकं थ्व वर्णन ब्यूगु दु: $1',
 'internalerror'   => 'इन्तरनल इरर',
 'viewsource'      => 'स्रोत स्वयादिसँ',
 
@@ -279,7 +304,7 @@ $messages = array(
 'loginlanguagelabel'      => 'भाषा: $1',
 
 # Edit pages
-'summary'       => 'सारांश',
+'summary'       => 'सारांश:',
 'savearticle'   => 'पौ मुंकादिसं',
 'preview'       => 'स्वयादिसं',
 'newarticle'    => '(न्हु)',
@@ -328,7 +353,7 @@ $messages = array(
 # Upload
 'upload' => 'फाइल अपलोड',
 
-# Image description page
+# File description page
 'filehist-user' => 'छ्य्‌लामि',
 
 # Random page

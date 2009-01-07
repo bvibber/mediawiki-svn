@@ -74,14 +74,16 @@ class ApiQueryRevisions extends ApiQueryBase {
 	}
 
 	public function execute() {
-		$limit = $startid = $endid = $start = $end = $dir = $prop = $user = $excludeuser = $expandtemplates = $section = $token = null;
-		extract($this->extractRequestParams(false));
+		$params = $this->extractRequestParams(false);
 
 		// If any of those parameters are used, work in 'enumeration' mode.
 		// Enum mode can only be used when exactly one page is provided.
 		// Enumerating revisions on multiple pages make it extremely
 		// difficult to manage continuations and require additional SQL indexes
-		$enumRevMode = (!is_null($user) || !is_null($excludeuser) || !is_null($limit) || !is_null($startid) || !is_null($endid) || $dir === 'newer' || !is_null($start) || !is_null($end));
+		$enumRevMode = (!is_null($params['user']) || !is_null($params['excludeuser']) ||
+				!is_null($params['limit']) || !is_null($params['startid']) ||
+				!is_null($params['endid']) || $params['dir'] === 'newer' ||
+				!is_null($params['start']) || !is_null($params['end']));
 
 
 		$pageSet = $this->getPageSet();
@@ -103,7 +105,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->addTables( 'page' );
 		$this->addWhere('page_id = rev_page');
 
-		$prop = array_flip($prop);
+		$prop = array_flip($params['prop']);
 
 		// Optional fields
 		$this->fld_ids = isset ($prop['ids']);
@@ -113,9 +115,9 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->fld_comment = isset ($prop['comment']);
 		$this->fld_size = isset ($prop['size']);
 		$this->fld_user = isset ($prop['user']);
-		$this->token = $token;
+		$this->token = $params['token'];
 
-		if ( !is_null($this->token) || ( $this->fld_content && $this->expandTemplates ) || $pageCount > 0) {
+		if ( !is_null($this->token) || $pageCount > 0) {
 			$this->addFields( Revision::selectPageFields() );
 		}
 
@@ -136,15 +138,17 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 			$this->fld_content = true;
 
-			$this->expandTemplates = $expandtemplates;
-			if(isset($section))
-				$this->section = $section;
+			$this->expandTemplates = $params['expandtemplates'];
+			$this->generateXML = $params['generatexml'];
+			if(isset($params['section']))
+				$this->section = $params['section'];
 			else
 				$this->section = false;
 		}
 
 		$userMax = ( $this->fld_content ? ApiBase::LIMIT_SML1 : ApiBase::LIMIT_BIG1 );
 		$botMax  = ( $this->fld_content ? ApiBase::LIMIT_SML2 : ApiBase::LIMIT_BIG2 );
+		$limit = $params['limit'];
 		if( $limit == 'max' ) {
 			$limit = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
 			$this->getResult()->addValue( 'limits', $this->getModuleName(), $limit );
@@ -153,13 +157,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 		if ($enumRevMode) {
 
 			// This is mostly to prevent parameter errors (and optimize SQL?)
-			if (!is_null($startid) && !is_null($start))
+			if (!is_null($params['startid']) && !is_null($params['start']))
 				$this->dieUsage('start and startid cannot be used together', 'badparams');
 
-			if (!is_null($endid) && !is_null($end))
+			if (!is_null($params['endid']) && !is_null($params['end']))
 				$this->dieUsage('end and endid cannot be used together', 'badparams');
 
-			if(!is_null($user) && !is_null( $excludeuser))
+			if(!is_null($params['user']) && !is_null($params['excludeuser']))
 				$this->dieUsage('user and excludeuser cannot be used together', 'badparams');
 
 			// This code makes an assumption that sorting by rev_id and rev_timestamp produces
@@ -169,10 +173,12 @@ class ApiQueryRevisions extends ApiQueryBase {
 			// one row with the same timestamp for the same page.
 			// The order needs to be the same as start parameter to avoid SQL filesort.
 
-			if (is_null($startid) && is_null($endid))
-				$this->addWhereRange('rev_timestamp', $dir, $start, $end);
+			if (is_null($params['startid']) && is_null($params['endid']))
+				$this->addWhereRange('rev_timestamp', $params['dir'],
+					$params['start'], $params['end']);
 			else
-				$this->addWhereRange('rev_id', $dir, $startid, $endid);
+				$this->addWhereRange('rev_id', $params['dir'],
+					$params['startid'], $params['endid']);
 
 			// must manually initialize unset limit
 			if (is_null($limit))
@@ -182,10 +188,11 @@ class ApiQueryRevisions extends ApiQueryBase {
 			// There is only one ID, use it
 			$this->addWhereFld('rev_page', current(array_keys($pageSet->getGoodTitles())));
 
-			if(!is_null($user)) {
-				$this->addWhereFld('rev_user_text', $user);
-			} elseif (!is_null( $excludeuser)) {
-				$this->addWhere('rev_user_text != ' . $this->getDB()->addQuotes($excludeuser));
+			if(!is_null($params['user'])) {
+				$this->addWhereFld('rev_user_text', $params['user']);
+			} elseif (!is_null( $params['excludeuser'])) {
+				$this->addWhere('rev_user_text != ' .
+					$this->getDB()->addQuotes($params['excludeuser']));
 			}
 		}
 		elseif ($revCount > 0) {
@@ -319,6 +326,17 @@ class ApiQueryRevisions extends ApiQueryBase {
 				if($text === false)
 					$this->dieUsage("There is no section {$this->section} in r".$revision->getId(), 'nosuchsection');
 			}
+			if ($this->generateXML) {
+				$wgParser->startExternalParse( $title, new ParserOptions(), OT_PREPROCESS );
+				$dom = $wgParser->preprocessToDom( $text );
+				if ( is_callable( array( $dom, 'saveXML' ) ) ) {
+					$xml = $dom->saveXML();
+				} else {
+					$xml = $dom->__toString();
+				}
+				$vals['parsetree'] = $xml;
+				
+			}
 			if ($this->expandTemplates) {
 				$text = $wgParser->preprocess( $text, $title, new ParserOptions() );
 			}
@@ -373,11 +391,9 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'excludeuser' => array(
 				ApiBase :: PARAM_TYPE => 'user'
 			),
-
 			'expandtemplates' => false,
-			'section' => array(
-				ApiBase :: PARAM_TYPE => 'integer'
-			),
+			'generatexml' => false,
+			'section' => null,
 			'token' => array(
 				ApiBase :: PARAM_TYPE => array_keys($this->getTokenFunctions()),
 				ApiBase :: PARAM_ISMULTI => true
@@ -397,6 +413,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'user' => 'only include revisions made by user',
 			'excludeuser' => 'exclude revisions made by user',
 			'expandtemplates' => 'expand templates in revision content',
+			'generatexml' => 'generate XML parse tree for revision content',
 			'section' => 'only retrieve the content of this section',
 			'token' => 'Which tokens to obtain for each revision',
 		);

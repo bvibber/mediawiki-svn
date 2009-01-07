@@ -186,7 +186,7 @@ Ul tò permèss d'entrava l è prunt. Dismentéga mia de mudifigá i prefereenz 
 'userlogin'               => 'Vegna drent/Crea un cünt',
 'logout'                  => 'Và fö',
 'userlogout'              => 'Và fö',
-'nologin'                 => 'Sii-f gnamò registraa? $1.',
+'nologin'                 => "A gh'hiiv anmò da registrav? $1.",
 'nologinlink'             => 'Creé un cünt!',
 'createaccount'           => 'Creá un cünt',
 'createaccountmail'       => 'par adressa da cureel (e-mail)',
@@ -200,13 +200,29 @@ Ul tò permèss d'entrava l è prunt. Dismentéga mia de mudifigá i prefereenz 
 'noname'                  => "Vüü avii mía specificaa un nomm d'üsüari valévul.",
 'loginsuccesstitle'       => "La cunessiun l'è scumenzada cun sücess.",
 'loginsuccess'            => 'Te set cuness a {{SITENAME}} cume "$1".',
+'nosuchusershort'         => "Ghe n'è mia d'ütent cun el nom de \"<nowiki>\$1</nowiki>\". Ch'el cuntrola se l'ha scrivüü giüst.",
+'nouserspecified'         => "Te gh'heet da specificà un nom del druvatt.",
+'wrongpassword'           => "La ciav che t'hee metüü dreent l'è no giüsta. Pröva turna per piasè.",
+'wrongpasswordempty'      => "T'hee no metüü drent la parola ciav. Pröva turna per piasè.",
 'mailmypassword'          => "Desmentegaa la parola d'urdin?",
+'passwordremindertext'    => "Un Quajdün (prubabilment ti, cun l'indiriz IP \$1) l'ha ciamaa da mandagh 'na ciav növa per andà dreent int el sistema de {{SITENAME}} (\$4).
+La ciav per l'ütent \"\$2\" adess l'è \"\$3\".
+Sariss mej andà drent int el sit almanch una völta prima de cambià la ciav.
+
+Se te no staa ti a ciamà 'sta ciav chì, o magara t'hee truaa la ciav vegia e te vör pü cambiala, te pör ignurà 'stu messag chì e 'ndà inanz a druà la ciav vegia.",
+'passwordsent'            => "Una parola ciav bele növa l'è staa spedii a l'indiriz e-mail registra da l'ütent \"\$1\".
+Per piasè, ve drent anmò dop che te l'ricevüü.",
 'emailauthenticated'      => 'Ul tò adrèss e-mail l è staa verificaa: $1.',
 'emailnotauthenticated'   => 'Ul tò adrèss da pòsta letronica l è mia staa gnamò verificaa. Nissün mesacc al saraa mandaa par i servizzi che segütan.',
 'accountcreated'          => 'Cunt bell-e-cread',
 
+# Password reset dialog
+'oldpassword' => "Paròla d'urdin végja:",
+'newpassword' => "Paròla d'urdin növa:",
+'retypenew'   => "Scriif ancamò la paròla d'urdin növa:",
+
 # Edit pages
-'summary'              => 'Argument de la mudifica',
+'summary'              => 'Argument de la mudifica:',
 'minoredit'            => "Chesta chi l'è una mudifica da impurtanza minuur",
 'watchthis'            => "Tegn d'öcc quela pagina chì",
 'savearticle'          => 'Salva',
@@ -261,9 +277,6 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'prefs-misc'         => 'Vari',
 'saveprefs'          => 'Tegn i mudifech',
 'resetprefs'         => 'Trá via i mudifech',
-'oldpassword'        => "Paròla d'urdin végja:",
-'newpassword'        => "Paròla d'urdin növa:",
-'retypenew'          => "Scriif ancamò la paròla d'urdin növa:",
 'textboxsize'        => 'Mudifich',
 'rows'               => 'Riich:',
 'columns'            => 'Culònn:',
@@ -335,14 +348,14 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'sourcefilename'    => "Nomm da l'archivi surgeent:",
 'destfilename'      => "Nomm da l'archivi da destinazziun:",
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'archivi',
-'imagelist'      => 'Listá i imàgin',
-'imagelist_date' => 'Dada',
-'imagelist_name' => 'Nomm',
-'imagelist_user' => 'Dovratt',
+'listfiles'      => 'Listá i imàgin',
+'listfiles_date' => 'Dada',
+'listfiles_name' => 'Nomm',
+'listfiles_user' => 'Dovratt',
 
-# Image description page
+# File description page
 'filehist-revert' => "Butar torna 'me ch'al era",
 'imagelinks'      => 'Ligámm',
 
@@ -489,7 +502,7 @@ L'ültima redatazziún l eva da [[User:$3|$3]] ([[User talk:$3|Discüssiún]])."
 
 # Block/unblock
 'blockip'       => "Bloca l'ütent",
-'ipblocklist'   => 'Listá i adrèss IP e i üteent blucaa',
+'ipblocklist'   => 'Listá di adrèss IP e di üteent blucaa',
 'blocklistline' => "$1, $2 l'ha blucaa $3 ($4)",
 'blocklink'     => 'bloca',
 'contribslink'  => 'cuntribüzziún',
@@ -505,6 +518,11 @@ una pàgina intúe l'évuf renuminada via par eruur, e che vüü pudii mia suras
 
 <b>ATENZIUN!</b>
 Cheest-chí al pöö vess un canbi dràstegh e inaspetaa par una pàgina pupülara: par piasée assürévas ch'a ii capii i cunsegueenz da cheest-chí prima da ná inaanz.",
+'movearticle'     => "Möva l'articul",
+'newtitle'        => 'Titul növ:',
+'move-watch'      => "Gionta quela pagina chì ai paginn che te tegn d'ögg.",
+'pagemovedsub'    => "San Martin l'è bele fat!",
+'movepage-moved'  => "<big>'''\"\$1\" l'è staa muvüü a \"\$2\"'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movedto'         => 'spustaa vers:',
 '1movedto2'       => '[[$1]] spustaa in [[$2]]',
 '1movedto2_redir' => '[[$1]] spustaa in [[$2]] atravèerz re-indirizzameent',
@@ -557,7 +575,7 @@ Cheest-chí al pöö vess un canbi dràstegh e inaspetaa par una pàgina pupüla
 'imagemaxsize' => 'Limitá i imagin süi pagin da descrizziún dii imagin a:',
 'thumbsize'    => 'Dimensiún diapusitiif:',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Espusizziun di imàgin nööf',
 'ilsubmit'  => 'Truvá',
 

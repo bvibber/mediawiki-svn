@@ -143,7 +143,7 @@ $messages = array(
 'mytalk'         => 'Ma collogue',
 'anontalk'       => 'Collogue for this IP',
 'navigation'     => 'Navigation',
-'and'            => 'an',
+'and'            => '&#32;an',
 
 # Metadata in edit box
 'metadata_help' => 'Metadata:',
@@ -204,8 +204,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Aboot {{SITENAME}}',
 'aboutpage'            => 'Project:Aboot',
-'bugreports'           => 'Mishanter reports',
-'bugreportspage'       => 'Project:Bug reports',
 'copyright'            => 'Aa text is available unner $1',
 'copyrightpagename'    => '{{SITENAME}} copyricht',
 'copyrightpage'        => '{{ns:project}}:Copyrichts',
@@ -425,11 +423,11 @@ Ye can sling a deifie on this message, if this accoont wis creatit by mistak.',
 'resetpass'               => 'Set yer accoont passwaird again',
 'resetpass_announce'      => 'Ye loggit in wi a short term e-mailed code. To be duin logging in, ye hae tae mak a new passwaird here:',
 'resetpass_header'        => 'Reset passwaird',
+'oldpassword'             => 'Auld password',
 'resetpass_submit'        => 'Mak passwaird an log in',
 'resetpass_success'       => 'Yer passwaird chynge wis braw! Nou loggin ye in...',
 'resetpass_bad_temporary' => 'Yer short term passwaird wisnae habile. Ye micht hae already chynged yer passwaird or requestit a new short term passwaird.',
 'resetpass_forbidden'     => 'Passwairds cannae be chynged on this wiki',
-'resetpass_missing'       => 'Nae form data!',
 
 # Edit page toolbar
 'bold_sample'     => 'Bauld text',
@@ -454,8 +452,8 @@ Ye can sling a deifie on this message, if this accoont wis creatit by mistak.',
 'hr_tip'          => 'Horizontal line (dinna ower uise)',
 
 # Edit pages
-'summary'                   => 'Ootline',
-'subject'                   => 'Subject/headline',
+'summary'                   => 'Ootline:',
+'subject'                   => 'Subject/headline:',
 'minoredit'                 => 'This is a smaa edit',
 'watchthis'                 => 'Leuk ower this page',
 'savearticle'               => 'Hain page',
@@ -467,8 +465,8 @@ Ye can sling a deifie on this message, if this accoont wis creatit by mistak.',
 'missingsummary'            => "'''Mynd:''' Ye hivna gien an edit summary. Gin ye dab on Hain again, yer edit will be haint athoot ane.",
 'missingcommenttext'        => 'Please enter a comment ablo.',
 'missingcommentheader'      => "'''Mynd:''' Ye hivna gien a subject/heidline for this comment. Gin ye dab on Hain again, yer edit will be haint athoot ane.",
-'summary-preview'           => 'Ootline leuk ower',
-'subject-preview'           => 'Subject/headline leuk ower',
+'summary-preview'           => 'Ootline leuk ower:',
+'subject-preview'           => 'Subject/headline leuk ower:',
 'blockedtitle'              => 'Uiser is blockit',
 'blockedtext'               => '<big>\'\'\'Yer uisername or IP address haes been blockit.\'\'\'</big>
 
@@ -667,7 +665,6 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'prefs-rc'           => 'Recent chynges an shawin stubs',
 'prefs-misc'         => 'Antrin settins',
 'saveprefs'          => 'Hain preferences',
-'oldpassword'        => 'Auld password',
 'textboxsize'        => 'Editin',
 'searchresultshead'  => 'Rake result settins',
 'resultsperpage'     => 'Hits tae shaw per page',
@@ -715,12 +712,12 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'uploadnologintext'           => 'Ye maun be [[Special:UserLogin|loggit in]] til uplaid files.',
 'uploaderror'                 => 'Uplaid error',
 'uploadtext'                  => "Uise the form ablo tae uplaid new files;
-tae keek at or rake throu aareadies uplaidit eimages gang tae the [[Special:ImageList|leet o uplaidit files]];
+tae keek at or rake throu aareadies uplaidit eimages gang tae the [[Special:FileList|leet o uplaidit files]];
 uplaids an deletions is recordit in the [[Special:Log|project log]].
 
 Tae pit the eimage intae a page, uise an airtin i the form
-'''<nowiki>[[</nowiki>{{ns:image}}:file.jpg<nowiki>]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}:file.png|alt text<nowiki>]]</nowiki>''' or
+'''<nowiki>[[</nowiki>{{ns:file}}:file.jpg<nowiki>]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:file}}:file.png|alt text<nowiki>]]</nowiki>''' or
 '''<nowiki>[[</nowiki>{{ns:media}}:file.ogg<nowiki>]]</nowiki>''' for pyntin strecht tae the file",
 'uploadlog'                   => 'uplaid log',
 'uploadlogpage'               => 'Uplaid log',
@@ -734,8 +731,8 @@ Tae pit the eimage intae a page, uise an airtin i the form
 'badfilename'                 => 'Eimage name haes been chynged tae "$1".',
 'largefileserver'             => 'This file is bigger nor the server is confeigurt tae allou.',
 'fileexists'                  => "A file wi this name exists aareadies, please check <strong><tt>$1</tt></strong> gin ye'r no siccar that ye want tae chynge it.",
-'fileexists-forbidden'        => 'A file wi this name aareadies exists; please gang back an uplaid this file unner a new name. [[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'A file wi this name aareadies exists in the shared file depose; please gang back an uplaid this file unner a new name. [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'A file wi this name aareadies exists; please gang back an uplaid this file unner a new name. [[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'A file wi this name aareadies exists in the shared file depose; please gang back an uplaid this file unner a new name. [[File:$1|thumb|center|$1]]',
 'uploadwarning'               => 'Uplaid warnin',
 'savefile'                    => 'Hain file',
 'uploadedimage'               => 'uplaidit "$1"',
@@ -747,10 +744,10 @@ Tae pit the eimage intae a page, uise an airtin i the form
 
 'nolicense' => 'Nane selected',
 
-# Special:ImageList
-'imagelist' => 'Eimage leet',
+# Special:ListFiles
+'listfiles' => 'Eimage leet',
 
-# Image description page
+# File description page
 'imagelinks'     => 'Eimage airtins',
 'linkstoimage'   => 'The follaein $1 pages airts tae this image:',
 'nolinkstoimage' => "The'r nae pages airts tae this eimage.",
@@ -1099,7 +1096,7 @@ In the saicont case ye can uise an airtin forbye, for exemplar [[{{ns:special}}:
 'mediawarning' => "'''Warnin''': This file micht haud mislushious code; bi executin it yer seestem micht be compromised.<hr />",
 'imagemaxsize' => 'Limit eimages on eimage description pages tae:',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'     => 'Gallery o new files',
 'imagelisttext' => 'Ablo is a leet o $1 {{PLURAL:$1|eimage|eimages}} sortit $2.',
 'noimages'      => 'Naething tae see.',

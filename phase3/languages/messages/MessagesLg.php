@@ -204,6 +204,11 @@ olwa 'yogera nange' nga ggwe tewetaaze kulaga bikufaako.",
 'accountcreated'             => 'Akawunti ekoleddwa',
 'accountcreatedtext'         => "Akawunti ey'obwa memba eya $1 ekoleddwa.",
 
+# Password reset dialog
+'oldpassword' => 'Ekigambo ekikuumi ekikadde:',
+'newpassword' => 'Ekigambo ekikuumi ekipya:',
+'retypenew'   => 'Ddamu ekikagambo ekikuumi ekipya ekyo:',
+
 # Edit page toolbar
 'bold_sample'     => "Ennukuta z'owandiika wano zonna ziba nziggumivu",
 'bold_tip'        => "Bw'onyiga kano, ofuna w'oyinza okuwandiikira ennukuta ezo ne zivaamu nga nziggumivu",
@@ -225,7 +230,7 @@ olwa 'yogera nange' nga ggwe tewetaaze kulaga bikufaako.",
 'hr_tip'          => "Bw'onyiga ku kano ofuna olusaze olwawula mu by'owandiika. (Gezaako butakozesa nyingi)",
 
 # Edit pages
-'summary'                => "Wandika wano ebinyonyola enkyukakyuka z'okoze",
+'summary'                => "Wandika wano ebinyonyola enkyukakyuka z'okoze:",
 'minoredit'              => 'Eno nkyukakyuka ntono',
 'watchthis'              => 'Goberera olupapula luno',
 'savearticle'            => 'Kaza olupapula',
@@ -310,9 +315,6 @@ oba ku gano agali ku lupapula luno.<br />
 'prefs-personal'    => 'Ebikufaako',
 'saveprefs'         => 'Bino bikaze',
 'resetprefs'        => 'Gyawo enkyukakyuka ze sinnakaza',
-'oldpassword'       => 'Ekigambo ekikuumi ekikadde:',
-'newpassword'       => 'Ekigambo ekikuumi ekipya:',
-'retypenew'         => 'Ddamu ekikagambo ekikuumi ekipya ekyo:',
 'searchresultshead' => 'Noonya',
 'savedprefs'        => 'Enteekateeka yo ekazidwa.',
 'allowemail'        => 'Kkiriza bamemba abalala okukusindikira e-mail',
@@ -347,10 +349,10 @@ oba ku gano agali ku lupapula luno.<br />
 'upload'        => 'Teekayo fayiro',
 'uploadlogpage' => 'Likooda eya fayiro eziteekedwa ku wiki',
 
-# Special:ImageList
-'imagelist_user' => 'Memba',
+# Special:ListFiles
+'listfiles_user' => 'Memba',
 
-# Image description page
+# File description page
 'filehist'            => 'Ebyafaayo ebya fayiro eno',
 'filehist-help'       => "Bw'onyiga ku nnaku n'essaawa, ojjakulaba fayiro nga bwe yali efaanana ku kiseera ekyo.",
 'filehist-datetime'   => "Ennaku n'obudde",

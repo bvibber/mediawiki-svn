@@ -78,7 +78,7 @@ $messages = array(
 'mytalk'         => 'E mo discussioni',
 'anontalk'       => 'Discussione per istu indirizzu IP',
 'navigation'     => 'Navigazione',
-'and'            => 'è',
+'and'            => '&#32;è',
 
 'errorpagetitle'   => 'Errore',
 'returnto'         => 'Vultà à $1.',
@@ -171,6 +171,9 @@ $messages = array(
 'accountcreatedtext'         => "U registramentu di l'utilizatore $1 hè statu fattu.",
 'loginlanguagelabel'         => 'Lingua: $1',
 
+# Password reset dialog
+'retypenew' => 'Scrive torna a nova parulla secreta:',
+
 # Edit page toolbar
 'image_sample' => 'Esempiu.jpg',
 
@@ -221,7 +224,6 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 'math_syntax_error' => 'errore di sintassa',
 'prefs-rc'          => 'Ultimi cambiamenti',
 'prefs-watchlist'   => 'Articuli seguitati',
-'retypenew'         => 'Scrive torna a nova parulla secreta:',
 'columns'           => 'Culonne:',
 'searchresultshead' => 'Ricerca',
 'localtime'         => 'Ora lucale',
@@ -272,13 +274,13 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 
 'upload-file-error' => 'Errore internu',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'schedariu',
-'imagelist_date' => 'Data',
-'imagelist_name' => 'Nome',
-'imagelist_user' => 'Utilizatore',
+'listfiles_date' => 'Data',
+'listfiles_name' => 'Nome',
+'listfiles_user' => 'Utilizatore',
 
-# Image description page
+# File description page
 'filehist'         => "Cronolugia di l'imagine",
 'filehist-user'    => 'Utilizatore',
 'imagelinks'       => 'Ligami',
@@ -462,7 +464,7 @@ U to indirizzu IP serà registratu indu a cronolugia di ista pagina.",
 # Media information
 'show-big-image' => 'Imagine in alta resoluzione',
 
-# Special:NewImages
+# Special:NewFiles
 'showhidebots' => '($1 boti)',
 'noimages'     => 'Nulla da vede.',
 'ilsubmit'     => 'Ricerca',

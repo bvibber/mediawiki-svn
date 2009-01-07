@@ -10,6 +10,7 @@
  * @author לערי ריינהארט
  */
 
+$fallback8bitEncoding = 'windows-1256';
 $rtl = true;
 $defaultUserOptionOverrides = array(
 	# Swap sidebar to right side by default
@@ -27,8 +28,8 @@ $namespaceNames = array(
 	NS_USER_TALK => 'تبادلۂ_خیال_صارف',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK => 'تبادلۂ_خیال_$1',
-	NS_IMAGE => 'تصویر',
-	NS_IMAGE_TALK => 'تبادلۂ_خیال_تصویر',
+	NS_FILE => 'تصویر',
+	NS_FILE_TALK => 'تبادلۂ_خیال_تصویر',
 	NS_MEDIAWIKI => 'میڈیاوکی',
 	NS_MEDIAWIKI_TALK => 'تبادلۂ_خیال_میڈیاوکی',
 	NS_TEMPLATE => 'سانچہ',
@@ -97,7 +98,7 @@ $messages = array(
 'mytalk'        => 'میری گفتگو',
 'anontalk'      => 'اس IP کیلیے بات چیت',
 'navigation'    => 'رہنمائی',
-'and'           => 'اور',
+'and'           => '&#32;اور',
 
 'returnto'          => 'واپس $1۔',
 'tagline'           => '{{SITENAME}} سے',
@@ -240,20 +241,25 @@ $messages = array(
 'accountcreated'             => 'تخلیقِ کھاتہ',
 'accountcreatedtext'         => 'تخیلقِ کھاتۂ صارف براۓ $1۔',
 
+# Password reset dialog
+'oldpassword' => 'پرانا کلمۂ شناخت:',
+'newpassword' => 'نیا کلمۂ شناخت',
+'retypenew'   => 'نیا کلمۂ شناخت دوبارہ درج کریں:',
+
 # Edit page toolbar
 'headline_sample' => 'شہ سرخی',
 'headline_tip'    => 'شہ سرخی درجہ دوم',
 
 # Edit pages
-'summary'              => 'خلاصہ',
-'subject'              => 'مضمون/شہ سرخی',
+'summary'              => 'خلاصہ:',
+'subject'              => 'مضمون/شہ سرخی:',
 'minoredit'            => 'معمولی ترمیم',
 'watchthis'            => 'یہ صفحہ زیر نظر کیجیۓ',
 'savearticle'          => 'محفوظ',
 'preview'              => 'نمائش',
 'showpreview'          => 'نمائش',
 'anoneditwarning'      => 'آپ {{SITENAME}} میں داخل نہیں ہوۓ لہذا آپکا IP پتہ اس صفحہ کے تاریخچہ ء ترمیم میں محفوظ ہوجاۓ گا۔',
-'summary-preview'      => 'نمائش خلاصہ',
+'summary-preview'      => 'نمائش خلاصہ:',
 'whitelistedittext'    => 'ترمیم و تدوین کے لیۓ آپکا [[Special:UserLogin|داخل ہونا]] لا زمی ہے۔',
 'loginreqtitle'        => 'داخلہ / اندراج لازم',
 'loginreqlink'         => 'داخلہ',
@@ -319,9 +325,6 @@ $messages = array(
 'prefs-rc'          => 'حالیہ تبدیلیاں',
 'prefs-misc'        => 'دیگر',
 'saveprefs'         => 'محفوظ',
-'oldpassword'       => 'پرانا کلمۂ شناخت:',
-'newpassword'       => 'نیا کلمۂ شناخت',
-'retypenew'         => 'نیا کلمۂ شناخت دوبارہ درج کریں:',
 'rows'              => 'قـطاریں:',
 'searchresultshead' => 'تلاش',
 'savedprefs'        => 'آپ کی ترجیہات محفوظ کر لی گئی ہیں۔',
@@ -380,7 +383,7 @@ $messages = array(
  
 جب کوئی صارف مستقل ایسی ملف زبراثقال کرتا رہے کہ جس کے اجازہ کے بارے میں غلط بیانی کی گئی ہو یا وہ مستقل ایسے عکس زبراثقال کرتا رہے کہ جنکے بارے میں کوئی بیان تحریر نہ کیا گیا ہو تو ایسی صورت میں پابندی لگاۓ جانے کا قوی امکان موجود ہے۔ 
 
-مِلَف (فائل) بھیجنے کیلیے درج ذیل ورقہ (فارم) استعمال کیجیے، اگر آپ اب تک ارسال کردہ تصاویر کو دیکھنا یا تلاش کرنا چاہتے ہیں تو [[Special:ImageList|ارسال کردہ تصاویر]] کے ربط پر جائیے۔ <br /> تمام ارسال و حذف کی گئی تصاویر کو [[Special:Log/upload|نوشتۂ منتقلی]] میں درج کر لیا جاتا ہے۔
+مِلَف (فائل) بھیجنے کیلیے درج ذیل ورقہ (فارم) استعمال کیجیے، اگر آپ اب تک ارسال کردہ تصاویر کو دیکھنا یا تلاش کرنا چاہتے ہیں تو [[Special:FileList|ارسال کردہ تصاویر]] کے ربط پر جائیے۔ <br /> تمام ارسال و حذف کی گئی تصاویر کو [[Special:Log/upload|نوشتۂ منتقلی]] میں درج کر لیا جاتا ہے۔
 
 تصویر کی منتقلی کے بعد، اسکو کسی صفحہ پر رکھنے کیلیے مندرجہ ذیل صورت میں رمـز (کوڈ) استعمال کیجیۓ۔
 
@@ -408,10 +411,10 @@ $messages = array(
 'destfilename'      => 'تعین شدہ اسم ملف:',
 'watchthisupload'   => 'یہ صفحہ زیر نظر کیجیۓ',
 
-# Special:ImageList
-'imagelist' => 'فہرست فائل',
+# Special:ListFiles
+'listfiles' => 'فہرست فائل',
 
-# Image description page
+# File description page
 'imagelinks'     => 'روابط',
 'linkstoimage'   => 'اس ملف (فائل) سے درج ذیل صفحات رابطہ رکھتے ہیں:',
 'nolinkstoimage' => 'ایسے کوئی صفحات نہیں جو اس ملف (فائل) سے رابطہ رکھتے ہوں۔',
@@ -638,7 +641,7 @@ $messages = array(
 'previousdiff' => '> گذشتہ فرق',
 'nextdiff'     => '< اگلا فرق',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'    => 'نئی فائلوں کی گیلری',
 'showhidebots' => '($1 بوٹ)',
 'ilsubmit'     => 'تلاش',

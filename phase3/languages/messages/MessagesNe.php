@@ -75,7 +75,7 @@ $messages = array(
 'mytalk'        => 'मेरो कुरा',
 'anontalk'      => 'यस् IP को वारेमा वार्तालाप गर्नुहोस्',
 'navigation'    => 'अन्वेषण',
-'and'           => 'र',
+'and'           => '&#32;र',
 
 'help'             => 'सहयोग',
 'search'           => 'खोज',
@@ -108,7 +108,6 @@ $messages = array(
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutpage'            => 'Project:बारेमा',
-'bugreports'           => 'त्रुटी बिवरण',
 'copyright'            => 'लेखका सामाग्री $1 अनुसार उपलब्ध छ।',
 'currentevents'        => 'हालैका घटनाहरु',
 'currentevents-url'    => 'Project:हालैका घटनाहरु',
@@ -190,6 +189,10 @@ $messages = array(
 'accountcreatedtext'         => '$1 को लागी प्रयोगकर्ता खाता खोलियो ।',
 'loginlanguagelabel'         => 'भाषा: $1',
 
+# Password reset dialog
+'oldpassword' => 'पुरानो पासवर्ड:',
+'newpassword' => 'नयाँ पासवर्ड:',
+
 # Edit page toolbar
 'bold_sample'     => 'गाढा अक्षर',
 'bold_tip'        => 'गाढा अक्षर',
@@ -202,8 +205,8 @@ $messages = array(
 'media_sample'    => 'उदाहरण.ogg',
 
 # Edit pages
-'summary'                => 'सारांश',
-'subject'                => 'विषय/शिर्षक',
+'summary'                => 'सारांश:',
+'subject'                => 'विषय/शिर्षक:',
 'minoredit'              => 'यो सानो सम्पादन हो',
 'watchthis'              => 'यो पृष्ठ अवलोकन गर्नुहोस्',
 'savearticle'            => 'संग्रह गर्नुहोस्',
@@ -211,7 +214,7 @@ $messages = array(
 'showpreview'            => 'पूर्वालोकन देखाउनुहोस्',
 'showlivepreview'        => 'प्रत्यक्ष पूर्वालोकन',
 'showdiff'               => 'परिवर्तन देखाउनुहोस्',
-'summary-preview'        => 'सारांश पूर्वालोकन',
+'summary-preview'        => 'सारांश पूर्वालोकन:',
 'blockedoriginalsource'  => "'''$1''' को स्रोत तल देखाइएको छ:",
 'whitelistedittitle'     => 'सम्पादन गर्नको लागि प्रवेश (लग इन) आवश्यक छ',
 'whitelistedittext'      => 'पाना सम्पादन गर्न तपाँईले $1 गर्नु पर्दछ।',
@@ -263,8 +266,6 @@ $messages = array(
 'prefs-personal'        => 'प्रयोगकर्ताको विवरण',
 'prefs-rc'              => 'नयाँ परिवर्तनहरु',
 'prefs-watchlist'       => 'अवलोकन पृष्ठ',
-'oldpassword'           => 'पुरानो पासवर्ड:',
-'newpassword'           => 'नयाँ पासवर्ड:',
 'recentchangescount'    => 'नयाँ परिवर्तित शिर्षकहरु',
 'savedprefs'            => 'तपाँईका अभिरुचिहरू सङ्ग्रहित भयो।',
 'localtime'             => 'स्थानीय समय',
@@ -301,13 +302,13 @@ $messages = array(
 
 'nolicense' => 'केहिपनि छानिएन',
 
-# Special:ImageList
-'imagelist_date'        => 'मिति',
-'imagelist_name'        => 'नाम',
-'imagelist_user'        => 'प्रयोगकर्ता',
-'imagelist_description' => 'वर्णन',
+# Special:ListFiles
+'listfiles_date'        => 'मिति',
+'listfiles_name'        => 'नाम',
+'listfiles_user'        => 'प्रयोगकर्ता',
+'listfiles_description' => 'वर्णन',
 
-# Image description page
+# File description page
 'nolinkstoimage'   => 'यो फाईलसंग लिंकभएको कुनै पृष्ठ छैन.',
 'noimage-linktext' => 'अपलोड गर्नुहोस्',
 
@@ -519,7 +520,7 @@ $messages = array(
 'previousdiff' => '← अधिल्लो भिन्नता',
 'nextdiff'     => 'पछिल्लो भिन्नता →',
 
-# Special:NewImages
+# Special:NewFiles
 'noimages' => 'हेर्नको लागि केही छैन.',
 'ilsubmit' => 'खोज्नुहोस्',
 'bydate'   => 'मिति अनुसार',

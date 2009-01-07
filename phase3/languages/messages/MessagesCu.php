@@ -4,6 +4,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Omnipaedista
  * @author Svetko
  * @author Wolliger Mensch
  * @author ОйЛ
@@ -17,24 +18,22 @@ $separatorTransformTable = array(
 $linkPrefixExtension = true;
 
 $namespaceNames = array(
-	NS_MEDIA          => 'Срѣ́дьства',
-	NS_SPECIAL        => 'Наро́чьна',
-	NS_MAIN           => '',
-	NS_TALK           => 'Бєсѣ́да',
-	NS_USER           => 'По́льꙃєватєл҄ь',
-	NS_USER_TALK      => 'По́льꙃєватєлꙗ_бєсѣ́да',
-	# NS_PROJECT set by \$wgMetaNamespace
-	NS_PROJECT_TALK   => '{{grammar:genitive|$1}}_бєсѣ́да',
-	NS_IMAGE          => 'Ви́дъ',
-	NS_IMAGE_TALK     => 'Ви́да_бєсѣ́да',
-	NS_MEDIAWIKI      => 'MediaWiki',
-	NS_MEDIAWIKI_TALK => 'MediaWiki_бєсѣ́да',
-	NS_TEMPLATE       => 'Обраꙁь́ць',
-	NS_TEMPLATE_TALK  => 'Обраꙁьца́_бєсѣ́да',
-	NS_HELP           => 'По́мощь',
-	NS_HELP_TALK      => 'По́мощи_бєсѣ́да',
-	NS_CATEGORY       => 'Катигорі́ꙗ',
-	NS_CATEGORY_TALK  => 'Катигорі́ѩ_бєсѣ́да',
+	NS_MEDIA            => 'Срѣ́дьства',
+	NS_SPECIAL          => 'Наро_чьна',
+	NS_TALK             => 'Бєсѣ́да',
+	NS_USER             => 'По́льꙃєватєл҄ь',
+	NS_USER_TALK        => 'По́льꙃєватєлꙗ_бєсѣ́да',
+	NS_PROJECT_TALK     => '{{grammar:genitive|$1}}_бєсѣ́да',
+	NS_FILE             => 'Дѣ́ло',
+	NS_FILE_TALK        => 'Дѣ́ла_бєсѣ́да',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_бєсѣ́да',
+	NS_TEMPLATE         => 'Обраꙁь́ць',
+	NS_TEMPLATE_TALK    => 'Обраꙁьца́_бєсѣ́да',
+	NS_HELP             => 'По́мощь',
+	NS_HELP_TALK        => 'По́мощи бєсѣ́да',
+	NS_CATEGORY         => 'Катигорі́ꙗ',
+	NS_CATEGORY_TALK    => 'Катигорі́ѩ_бєсѣ́да',
 );
 
 $namespaceAliases = array(
@@ -44,8 +43,10 @@ $namespaceAliases = array(
 	'Польѕевател҄ь'                  => NS_USER,
 	'Польѕевател_бесѣда'             => NS_USER_TALK,
 	'{{grammar:genitive|$1}}_бесѣда' => NS_PROJECT_TALK,
-	'Видъ'                           => NS_IMAGE,
-	'Вида_бесѣда'                    => NS_IMAGE_TALK,
+	'Ви́дъ'                          => NS_FILE,
+	'Видъ'                           => NS_FILE,
+	'Ви́да_бєсѣ́да'                   => NS_FILE_TALK,
+	'Вида_бесѣда'                    => NS_FILE_TALK,
 	'MediaWiki_бесѣда'               => NS_MEDIAWIKI_TALK,
 	'Образьць'                       => NS_TEMPLATE,
 	'Образьца_бесѣда'                => NS_TEMPLATE_TALK,
@@ -144,7 +145,7 @@ $messages = array(
 'mypage'         => 'моꙗ́ страни́ца',
 'mytalk'         => 'моꙗ́ бєсѣ́да',
 'navigation'     => 'пла́ваниѥ',
-'and'            => 'и',
+'and'            => '&#32;и',
 
 'errorpagetitle'   => 'блаꙁна',
 'help'             => 'по́мощь',
@@ -169,6 +170,7 @@ $messages = array(
 'talkpage'         => 'си страни́цѧ бєсѣ́да',
 'talkpagelinktext' => 'бєсѣ́да',
 'specialpage'      => 'наро́чьна страни́ца',
+'personaltools'    => 'моꙗ́ орѫ́диꙗ',
 'talk'             => 'бєсѣ́да',
 'toolbox'          => 'орѫ́диꙗ',
 'otherlanguages'   => 'ДРОУГꙐ́ ѨꙀꙐКꙐ́',
@@ -195,6 +197,7 @@ $messages = array(
 'editsection'         => 'испра́ви',
 'editold'             => 'испра́ви',
 'editlink'            => 'испра́ви',
+'showtoc'             => 'ви́ждь',
 'hidetoc'             => 'съкрꙑи',
 'viewdeleted'         => '$1 ви́дєти хо́щєши ;',
 'red-link-title'      => '$1 (ѥщє нє напь́сано ѥ́стъ)',
@@ -212,7 +215,8 @@ $messages = array(
 'nstab-category'  => 'катигорі́ꙗ',
 
 # General errors
-'viewsource' => 'страни́цѧ исто́чьнъ о́браꙁъ',
+'viewsource'    => 'страни́цѧ исто́чьнъ о́браꙁъ',
+'viewsourcefor' => 'бо $1',
 
 # Login and logout pages
 'logouttitle'             => 'ис̾хо́дъ',
@@ -231,6 +235,7 @@ $messages = array(
 'userexists'              => 'сѫщє по́льꙃєватєлꙗ и́мѧ пьса ⁙ ино иꙁобрѧщи',
 'username'                => 'по́льꙃєватєлꙗ и́мѧ :',
 'uid'                     => 'по́льꙃєватєлꙗ число́ :',
+'yourrealname'            => 'и́стиньно и́мѧ :',
 'yourlanguage'            => 'ѩꙁꙑ́къ :',
 'yournick'                => 'аѵто́графъ :',
 'loginerror'              => 'Въхода блазна',
@@ -242,7 +247,7 @@ $messages = array(
 'extlink_sample' => 'http://www.example.com съвѧ́ꙁи и́мѧ',
 
 # Edit pages
-'summary'            => 'опьса́ниѥ',
+'summary'            => 'опьса́ниѥ :',
 'minoredit'          => 'ма́лаꙗ мѣ́на',
 'watchthis'          => 'си страни́цѧ блюдє́ниѥ',
 'savearticle'        => 'съхранѥ́ниѥ',
@@ -259,16 +264,24 @@ $messages = array(
 'viewpagelogs' => 'си страни́цѧ їсторі́ѩ',
 'cur'          => 'нꙑ҃н',
 'last'         => 'пс҃лд',
+'page_first'   => 'прь́ва страни́ца',
+'page_last'    => 'послѣ́дьнꙗ страни́ца',
 'historyempty' => '(поу́сто)',
 
 # Revision feed
-'history-feed-title' => 'мѣ́нъ їсторі́ꙗ',
+'history-feed-title'          => 'мѣ́нъ їсторі́ꙗ',
+'history-feed-item-nocomment' => '$1 при $2', # user at time
 
 # Revision deletion
 'revdelete-uname' => 'по́льꙃєватєлꙗ и́мѧ',
 
+# Diffs
+'diff-with'       => '&#32;съ $1 $2',
+'diff-with-final' => '&#32;и $1 $2',
+
 # Search results
 'searchresults'            => 'иска́ниꙗ ито́гъ',
+'searchprofile-images'     => 'дѣ́ла',
 'search-result-size'       => '$1 ({{PLURAL:$2|$2 сло́во|$2 сло́ва|$2 словє́съ}})',
 'search-interwiki-caption' => 'ро́дьствьна опꙑтьствова́ниꙗ',
 'searchall'                => 'вьсꙗ́',
@@ -312,6 +325,7 @@ $messages = array(
 'diff'            => 'ра҃ꙁн',
 'hist'            => 'їс҃т',
 'hide'            => 'съкрꙑи',
+'show'            => 'ви́ждь',
 'minoreditletter' => 'м҃л',
 'newpageletter'   => 'н҃в',
 'boteditletter'   => 'а҃ѵ',
@@ -321,22 +335,25 @@ $messages = array(
 'recentchangeslinked-page' => 'страни́цѧ и́мѧ :',
 
 # Upload
-'upload'           => 'положє́ниѥ дѣ́ла',
-'uploadbtn'        => 'положє́ниѥ дѣ́ла',
-'uploadlog'        => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
-'uploadlogpage'    => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
-'successfulupload' => 'дѣ́ло положєно ѥ́стъ',
-'uploadedimage'    => '⁖ [[$1]] ⁖ положє́нъ ѥ́стъ',
-'watchthisupload'  => 'си страни́цѧ блюдє́ниѥ',
+'upload'            => 'положє́ниѥ дѣ́ла',
+'uploadbtn'         => 'положє́ниѥ дѣ́ла',
+'uploadlog'         => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
+'uploadlogpage'     => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
+'filename'          => 'дѣ́лъ и́мѧ',
+'filedesc'          => 'опьса́ниѥ',
+'fileuploadsummary' => 'опьса́ниѥ:',
+'successfulupload'  => 'дѣ́ло положєно ѥ́стъ',
+'uploadedimage'     => '⁖ [[$1]] ⁖ положє́нъ ѥ́стъ',
+'watchthisupload'   => 'си страни́цѧ блюдє́ниѥ',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'дѣ́ло',
-'imagelist'      => 'дѣ́лъ ката́логъ',
-'imagelist_name' => 'и́мѧ',
-'imagelist_user' => 'по́льꙃєватєл҄ь',
-'imagelist_size' => 'мѣ́ра',
+'listfiles'      => 'дѣ́лъ ката́логъ',
+'listfiles_name' => 'и́мѧ',
+'listfiles_user' => 'по́льꙃєватєл҄ь',
+'listfiles_size' => 'мѣ́ра',
 
-# Image description page
+# File description page
 'filehist-deleteone' => 'поничьжє́ниѥ',
 'filehist-current'   => 'нꙑнѣщьн҄ь о́браꙁъ',
 'filehist-user'      => 'по́льꙃєватєл҄ь',
@@ -403,13 +420,16 @@ $messages = array(
 # Special:LinkSearch
 'linksearch-ok' => 'ищи́',
 
+# Special:ListUsers
+'listusers-submit' => 'ви́ждь',
+
 # Special:Log/newusers
 'newuserlogpage'              => 'но́въ мѣ́стъ сътворѥ́ниꙗ їсторі́ꙗ',
 'newuserlog-create-entry'     => 'но́въ по́льꙃєватєл҄ь',
 'newuserlog-autocreate-entry' => 'по́льꙃєватєлꙗ мѣ́сто аѵтомати́чьно сътворєно́ ѥ́стъ',
 
 # E-mail user
-'emailuser' => 'Посъли епїстолѫ',
+'emailuser' => 'Посъли епїстолѫ єлєктроникѫ',
 
 # Watchlist
 'watchlist'      => 'моꙗ́ блюдє́ниꙗ',
@@ -498,6 +518,7 @@ $messages = array(
 'allmessagesname' => 'и́мѧ',
 
 # Tooltip help for the actions
+'tooltip-pt-userpage'     => 'моꙗ́ по́льꙃєватєл҄ьска страни́ца',
 'tooltip-pt-mytalk'       => 'моꙗ́ бєсѣ́дꙑ страни́ца',
 'tooltip-pt-logout'       => 'ис̾хо́дъ',
 'tooltip-ca-viewsource'   => 'си страни́ца ꙁабранєна́ ѥ́стъ ⁙
@@ -516,7 +537,7 @@ $messages = array(
 'svg-long-desc'  => '(дѣ́ло SVG · обꙑ́чьнъ о́браꙁъ : $1 × $2 п҃ѯ · дѣ́ла мѣ́ра : $3)',
 'show-big-image' => 'пль́нъ ви́да о́браꙁъ',
 
-# Special:NewImages
+# Special:NewFiles
 'ilsubmit' => 'ищи́',
 
 # EXIF tags

@@ -19,8 +19,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Amyannan_umsqedac',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => 'Amyannan_n_$1',
-	NS_IMAGE            => 'Tugna',
-	NS_IMAGE_TALK       => 'Amyannan_n_tugna',
+	NS_FILE             => 'Tugna',
+	NS_FILE_TALK        => 'Amyannan_n_tugna',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'Amyannan_n_MediaWiki',
 	NS_TEMPLATE         => 'Talɣa',
@@ -157,7 +157,7 @@ $messages = array(
 'mytalk'         => 'Amyannan inu',
 'anontalk'       => 'Amyannan n IP-yagi',
 'navigation'     => 'Ẓer isebtar',
-'and'            => 'u',
+'and'            => '&#32;u',
 
 'errorpagetitle'    => 'Agul',
 'returnto'          => 'Uɣal ar $1.',
@@ -215,8 +215,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Awal ɣef {{SITENAME}}',
 'aboutpage'            => 'Project:Awal ɣef...',
-'bugreports'           => "In'aɣ ibugiyen (bug)",
-'bugreportspage'       => "Project:In'aɣ ibugiyen",
 'copyright'            => 'Tzemreḍ ad twaliḍ ayen yella deg $1.',
 'copyrightpagename'    => 'Copyright n {{SITENAME}}',
 'currentevents'        => 'Isallen',
@@ -282,7 +280,7 @@ $messages = array(
 'databaseerror'        => 'Agul n database',
 'dberrortext'          => 'Yella ugul n tseddast deg database.
 Waqila yella bug deg software.
-Query n database taneggarut hatt::
+Query n database taneggarut hatt:
 <blockquote><tt>$1</tt></blockquote>
 seg tawuri  "<tt>$2</tt>".
 MySQL yerra-d agul "<tt>$3: $4</tt>".',
@@ -412,11 +410,13 @@ iwakken ad tbeyyneḍ belli tansa n email inek.',
 'resetpass_announce'      => 'Tkecmeḍ s ungal yettwazen-ak s e-mail (ungal-nni qrib yemmut). Iwekken tkemmleḍ, yessefk ad textareḍ awal n tbaḍnit amaynut dagi:',
 'resetpass_text'          => '<!-- Rnu aḍris dagi -->',
 'resetpass_header'        => 'Ɛiwed awal n tbaḍnit',
+'oldpassword'             => 'Awal n tbaḍnit aqdim:',
+'newpassword'             => 'Awal n tbaḍnit amaynut:',
+'retypenew'               => 'Ɛiwed ssekcem n tbaḍnit amaynut:',
 'resetpass_submit'        => 'Eg awal n tbaḍnit u kcem',
 'resetpass_success'       => 'Awal n tbaḍnit yettubeddel! Qrib ad tkecmeḍ...',
 'resetpass_bad_temporary' => 'Ungal mačči d ṣaḥiḥ. Ahat tbeddleḍ awal n tbaḍnit inek neɣ tetseqsiḍ ɣef wawal n tbaḍnit amaynut.',
 'resetpass_forbidden'     => 'Ur tezmireḍ ara ad tbeddleḍ awal n tbaḍnit deg wiki-yagi',
-'resetpass_missing'       => 'Ulac talɣut.',
 
 # Edit page toolbar
 'bold_sample'     => 'Aḍris aberbuz',
@@ -441,8 +441,8 @@ iwakken ad tbeyyneḍ belli tansa n email inek.',
 'hr_tip'          => 'Ajerriḍ aglawan (ur teččerɛiḍ ara)',
 
 # Edit pages
-'summary'                   => 'Agzul',
-'subject'                   => 'Asentel/Azwel azellum',
+'summary'                   => 'Agzul:',
+'subject'                   => 'Asentel/Azwel azellum:',
 'minoredit'                 => 'Wagi d abeddel afessas',
 'watchthis'                 => 'Ɛass asebter-agi',
 'savearticle'               => 'Beddel asebter',
@@ -454,8 +454,8 @@ iwakken ad tbeyyneḍ belli tansa n email inek.',
 'missingsummary'            => "'''Ur tettuḍ ara:''' Ur tefkiḍ ara azwel i ubeddel inek. Lukan twekkiḍ ''Smekti'' tikelt nniḍen, abeddel inek ad yettusmekti mebla azwel.",
 'missingcommenttext'        => 'Ssekcem awennit deg ukessar.',
 'missingcommentheader'      => "'''Ur tettuḍ ara:''' Ur tefkiḍ ara azwel-azellum i ubeddel inek. Lukan twekkiḍ ''Smekti'' tikelt nniḍen, abeddel inek ad yettusmekti mebla azwel-azellum.",
-'summary-preview'           => 'Pre-timeẓriwt n ugzul',
-'subject-preview'           => 'Pre-timeẓriwt asentel/azwel azellum',
+'summary-preview'           => 'Pre-timeẓriwt n ugzul:',
+'subject-preview'           => 'Pre-timeẓriwt asentel/azwel azellum:',
 'blockedtitle'              => 'Amseqdac iɛekkel',
 'blockedtext'               => "<big>'''Isem n wemseqdac neɣ tansa n IP inek ɛekkelen.'''</big>
 
@@ -683,9 +683,6 @@ i yesɛan akk awalen i banen-d).",
 'prefs-misc'               => 'Isemyifiyen wiyaḍ',
 'saveprefs'                => 'Smekti',
 'resetprefs'               => 'Reset/réinitialiser isemyifiyen',
-'oldpassword'              => 'Awal n tbaḍnit aqdim:',
-'newpassword'              => 'Awal n tbaḍnit amaynut:',
-'retypenew'                => 'Ɛiwed ssekcem n tbaḍnit amaynut:',
 'textboxsize'              => 'Abedddil',
 'rows'                     => 'Ijerriḍen:',
 'columns'                  => 'Tigejda:',
@@ -768,11 +765,11 @@ i yesɛan akk awalen i banen-d).",
 iwakken ad tazneḍ afaylu.',
 'upload_directory_read_only'  => 'Weserver/serveur Web ur yezmir ara ad yaru deg ($1).',
 'uploaderror'                 => 'Agul deg usekcam',
-'uploadtext'                  => "Sseqdec talɣa deg ukessar akken ad tazeneḍ tugnawin, akken ad teẓred neɣ ad tnadiḍ tugnawin yettwaznen, ruḥ ɣer [[Special:ImageList|umuɣ n usekcam n tugnawin]], Amezruy n usekcam d umḥay hatent daɣen deg [[Special:Log/upload|amezruy n usekcam]].
+'uploadtext'                  => "Sseqdec talɣa deg ukessar akken ad tazeneḍ tugnawin, akken ad teẓred neɣ ad tnadiḍ tugnawin yettwaznen, ruḥ ɣer [[Special:FileList|umuɣ n usekcam n tugnawin]], Amezruy n usekcam d umḥay hatent daɣen deg [[Special:Log/upload|amezruy n usekcam]].
 
 Akken ad tessekcmeḍ tugna deg usebter, seqdec azay am wagi
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Afaylu.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Afaylu.png|aḍris]]</nowiki>''' neɣ
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Afaylu.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Afaylu.png|aḍris]]</nowiki>''' neɣ
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Afaylu.ogg]]</nowiki>''' akken ad iruḥ wezday qbala ar ufaylu.",
 'uploadlog'                   => 'amezruy n usekcam',
 'uploadlogpage'               => 'Amezruy n usekcam',
@@ -802,8 +799,8 @@ Amgirred i yella kan deg isekkilen imecṭuḥen/imeqqranen deg taseggiwit (am "
 Ma llant kif-kif ur tt-taznepd ara.',
 'file-thumbnail-no'           => 'Isem n tugna yebda s <strong><tt>$1</tt></strong>. Waqila tugna-nni d tugna tamecṭuht n tugna nniḍen <i>(thumbnail)</i>.
 Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.',
-'fileexists-forbidden'        => 'Tugna s yisem kif-kif tewǧed yagi; g leɛnayek uɣal u beddel isem-is. [[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'Tugna s yisem kif-kif tewǧed yagi; g leɛnayek uɣal u beddel isem-is. [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Tugna s yisem kif-kif tewǧed yagi; g leɛnayek uɣal u beddel isem-is. [[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'Tugna s yisem kif-kif tewǧed yagi; g leɛnayek uɣal u beddel isem-is. [[File:$1|thumb|center|$1]]',
 'successfulupload'            => 'Azen yekfa',
 'uploadwarning'               => 'Aɣtal deg wazan n ufayluwen',
 'savefile'                    => 'Smekti afaylu',
@@ -836,17 +833,17 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'upload_source_url'  => ' (URL saḥiḥ)',
 'upload_source_file' => ' (afaylu deg uselkim inek)',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Nadi ɣef yisem n tugna:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Nadi ɣef yisem n tugna:',
 'imgfile'               => 'afaylu',
-'imagelist'             => 'Umuɣ n tugniwin',
-'imagelist_date'        => 'Azemz',
-'imagelist_name'        => 'Isem',
-'imagelist_user'        => 'Amseqdac',
-'imagelist_size'        => 'Tiddi (bytes/octets)',
-'imagelist_description' => 'Aglam',
+'listfiles'             => 'Umuɣ n tugniwin',
+'listfiles_date'        => 'Azemz',
+'listfiles_name'        => 'Isem',
+'listfiles_user'        => 'Amseqdac',
+'listfiles_size'        => 'Tiddi (bytes/octets)',
+'listfiles_description' => 'Aglam',
 
-# Image description page
+# File description page
 'filehist-current'          => 'Lux a',
 'filehist-user'             => 'Amseqdac',
 'imagelinks'                => 'Izdayen',
@@ -1396,7 +1393,7 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'show-big-image'       => 'Resolution tameqqrant',
 'show-big-image-thumb' => '<small>Tiddi n pre-timeẓriwt-agi: $1 × $2 pixels</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Umuɣ n ifayluwen imaynuten',
 'imagelisttext'         => "Deg ukessar yella wumuɣ n '''$1''' {{PLURAL:$1|ufaylu|yifayluwen}} $2.",
 'noimages'              => 'Tugna ulac-itt.',

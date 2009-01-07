@@ -13,11 +13,6 @@
 
 $fallback = 'it';
 
-$skinNames = array(
-	'standard'    => 'Classiche',
-	'nostalgia'   => 'Nostalgjie',
-	'modern'      => 'Moderne',
-);
 
 $namespaceNames = array(
 	NS_MEDIA          => 'Media',
@@ -28,8 +23,8 @@ $namespaceNames = array(
 	NS_USER_TALK      => 'Discussion_utent',
 	# NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK   => 'Discussion_$1',
-	NS_IMAGE          => 'Figure',
-	NS_IMAGE_TALK     => 'Discussion_figure',
+	NS_FILE           => 'Figure',
+	NS_FILE_TALK      => 'Discussion_figure',
 	NS_MEDIAWIKI      => 'MediaWiki',
 	NS_MEDIAWIKI_TALK => 'Discussion_MediaWiki',
 	NS_TEMPLATE       => 'Model',
@@ -51,7 +46,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'TignudisDiVoli' ),
 	'Recentchanges'             => array( 'UltinsCambiaments' ),
 	'Upload'                    => array( 'Cjame' ),
-	'Imagelist'                 => array( 'Figuris' ),
+	'Listfiles'                 => array( 'Figuris' ),
 	'Newimages'                 => array( 'GnovisFiguris' ),
 	'Listusers'                 => array( 'Utents', 'ListeUtents' ),
 	'Statistics'                => array( 'Statistichis' ),
@@ -241,7 +236,7 @@ $messages = array(
 'mytalk'         => 'Mês discussions',
 'anontalk'       => 'Discussion par chest IP',
 'navigation'     => 'somari',
-'and'            => 'e',
+'and'            => '&#32;e',
 
 'errorpagetitle'    => 'Erôr',
 'returnto'          => 'Torne a $1.',
@@ -298,8 +293,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Informazions su {{SITENAME}}',
 'aboutpage'            => 'Project:Informazions',
-'bugreports'           => 'Segnalazions di malfunzionaments',
-'bugreportspage'       => 'Project:Malfunzionaments',
 'copyright'            => 'Il contignût al è disponibil sot de $1',
 'copyrightpage'        => '{{ns:project}}:Copyrights',
 'currentevents'        => 'Lis gnovis',
@@ -449,6 +442,11 @@ Prime di ricevi cualsisei altri messaç di pueste, tu scugnis seguî lis istruzi
 'createaccount-title'       => 'Creazion di une identitât par {{SITENAME}}',
 'loginlanguagelabel'        => 'Lenghe: $1',
 
+# Password reset dialog
+'oldpassword' => 'Vecje peraule clâf',
+'newpassword' => 'Gnove peraule clâf',
+'retypenew'   => 'Torne a scrivi chê gnove',
+
 # Edit page toolbar
 'bold_sample'     => 'Test in gruessut',
 'bold_tip'        => 'Test in gruessut',
@@ -472,8 +470,8 @@ Prime di ricevi cualsisei altri messaç di pueste, tu scugnis seguî lis istruzi
 'hr_tip'          => 'Rie orizontâl (no stâ doprâle masse spes)',
 
 # Edit pages
-'summary'                   => 'Somari',
-'subject'                   => 'Argoment (intestazion)',
+'summary'                   => 'Somari:',
+'subject'                   => 'Argoment (intestazion):',
 'minoredit'                 => 'Cheste al è un piçul cambiament',
 'watchthis'                 => 'Ten di voli cheste pagjine',
 'savearticle'               => 'Salve la pagjine',
@@ -483,8 +481,8 @@ Prime di ricevi cualsisei altri messaç di pueste, tu scugnis seguî lis istruzi
 'showdiff'                  => 'Mostre cambiaments',
 'anoneditwarning'           => 'No tu sês jentrât cuntun non utent. La to direzion IP e vignarà regjistrade tal storic di cheste pagjine.',
 'missingcommenttext'        => 'Inserìs un coment ca sot.',
-'summary-preview'           => 'Anteprime dal somari',
-'subject-preview'           => 'Anteprime ogjet/intestazion',
+'summary-preview'           => 'Anteprime dal somari:',
+'subject-preview'           => 'Anteprime ogjet/intestazion:',
 'blockedtitle'              => 'Utent blocât',
 'blockedtext'               => "<big>'''Chest non utent o direzion IP a son stâts blocâts.'''</big>
 
@@ -636,9 +634,6 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 'prefs-misc'               => 'Variis',
 'saveprefs'                => 'Salve lis preferencis',
 'resetprefs'               => 'Predeterminât',
-'oldpassword'              => 'Vecje peraule clâf',
-'newpassword'              => 'Gnove peraule clâf',
-'retypenew'                => 'Torne a scrivi chê gnove',
 'textboxsize'              => 'Cambiament',
 'rows'                     => 'Riis',
 'columns'                  => 'Colonis:',
@@ -719,11 +714,11 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 'uploadnologin'      => 'No jentrât',
 'uploadnologintext'  => 'Tu scugnis [[Special:UserLogin|jentrâ]] cul to non utent par cjamâ sù files.',
 'uploaderror'        => 'Erôr cjamant sù',
-'uploadtext'         => "Dopre la form ca sot par cjamâ sù un file, par cjalâ o cirî i files cjamâts sù in precedence va te [[Special:ImageList|liste dai files cjamâts sù]], lis cjamadis e lis eliminazions a son ancje regjistrâts tal [[Special:Log/upload|regjistri des cjamadis]].
+'uploadtext'         => "Dopre la form ca sot par cjamâ sù un file, par cjalâ o cirî i files cjamâts sù in precedence va te [[Special:FileList|liste dai files cjamâts sù]], lis cjamadis e lis eliminazions a son ancje regjistrâts tal [[Special:Log/upload|regjistri des cjamadis]].
 
 Par includi une figure intune pagjine, dopre un leam inte form
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.png|alt text]]</nowiki>''' or
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.jpg]]</nowiki>''',
+'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.png|alt text]]</nowiki>''' or
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki>''' par un leam diret al file.",
 'uploadlog'          => 'regjistri cjamâts sù',
 'uploadlogpage'      => 'Regjistri dai files cjamâts sù',
@@ -745,15 +740,15 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'sourcefilename'     => 'Non dal file origjinâl:',
 'destfilename'       => 'Non dal file di destinazion:',
 
-# Special:ImageList
-'imagelist'             => 'Liste des figuris',
-'imagelist_date'        => 'Date',
-'imagelist_name'        => 'Non',
-'imagelist_user'        => 'Utent',
-'imagelist_size'        => 'Dimension in bytes',
-'imagelist_description' => 'Descrizion',
+# Special:ListFiles
+'listfiles'             => 'Liste des figuris',
+'listfiles_date'        => 'Date',
+'listfiles_name'        => 'Non',
+'listfiles_user'        => 'Utent',
+'listfiles_size'        => 'Dimension in bytes',
+'listfiles_description' => 'Descrizion',
 
-# Image description page
+# File description page
 'filehist'                  => 'Storic dal file',
 'filehist-help'             => 'Frache suntune date/ore par viodi il file cemût che al jere in chel moment.',
 'filehist-current'          => 'corint',
@@ -1226,6 +1221,11 @@ Sielç par plasê un altri non.',
 'numauthors'     => 'Numar di autôrs diviers (vôs): $1',
 'numtalkauthors' => 'Numar di autôrs diviers (pagjine di discussion): $1',
 
+# Skin names
+'skinname-standard'  => 'Classiche',
+'skinname-nostalgia' => 'Nostalgjie',
+'skinname-modern'    => 'Moderne',
+
 # Math options
 'mw_math_png'    => 'Torne simpri PNG',
 'mw_math_simple' => 'HTML se une vore sempliç, se no PNG',
@@ -1248,7 +1248,7 @@ Sielç par plasê un altri non.',
 'show-big-image'       => 'Version a risoluzion plene',
 'show-big-image-thumb' => '<small>Dimensions di cheste anteprime: $1 × $2 pixels</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'     => 'Galarie dai gnûfs files',
 'imagelisttext' => 'Ca sot e je une liste di $1 {{PLURAL:$1|file|files}} ordenâts $2.',
 'showhidebots'  => '($1 i bots)',

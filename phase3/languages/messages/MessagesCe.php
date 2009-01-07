@@ -14,14 +14,12 @@ $fallback = 'ru';
 $namespaceNames = array(
 	NS_MEDIA          => 'Медйа',
 	NS_SPECIAL        => 'Башхо',
-	NS_MAIN           => '',
 	NS_TALK           => 'Дийца',
 	NS_USER           => 'Юзер',
 	NS_USER_TALK      => 'Юзери_дийца',
-	# NS_PROJECT set by \$wgMetaNamespace
 	NS_PROJECT_TALK   => '$1_Дийца',
-	NS_IMAGE          => 'Сурт',
-	NS_IMAGE_TALK     => 'Сурти_дийца',
+	NS_FILE           => 'Сурт',
+	NS_FILE_TALK      => 'Сурти_дийца',
 	NS_MEDIAWIKI      => 'МедйаВики',
 	NS_MEDIAWIKI_TALK => 'МедйаВики_дийца',
 	NS_TEMPLATE       => 'Дакъа',
@@ -65,7 +63,7 @@ $messages = array(
 'qbfind'    => 'Лахар',
 'mytalk'    => 'Сан цІера дийцар',
 'anontalk'  => 'ХІар IP-адреси дийцар',
-'and'       => 'а',
+'and'       => '&#32;а',
 
 'errorpagetitle'    => 'ГІалат',
 'help'              => 'ГIo',
@@ -154,8 +152,11 @@ $messages = array(
 'accountcreatedtext' => '$1 юзер аккаунт кхоллна.',
 'loginlanguagelabel' => 'Мотт: $1',
 
+# Password reset dialog
+'newpassword' => 'Керла тешаман дош:',
+
 # Edit pages
-'summary'         => 'Хийцами комментарий',
+'summary'         => 'Хийцами комментарий:',
 'minoredit'       => 'Жим Хийцам',
 'watchthis'       => 'TIяргалдеш таптарш юккхе язде',
 'savearticle'     => 'ДIаязде Таптар',
@@ -185,7 +186,6 @@ $messages = array(
 'mypreferences'   => 'сан настройки',
 'changepassword'  => 'Тешаман дош хийцар хьам',
 'prefs-watchlist' => 'тергалдеш таптарш',
-'newpassword'     => 'Керла тешаман дош:',
 'textboxsize'     => 'Xийца',
 
 # User rights
@@ -203,9 +203,9 @@ $messages = array(
 'upload'   => 'Чуоза Файл',
 'filename' => 'файл цIе',
 
-# Special:ImageList
-'imagelist_name' => 'Файли цІе',
-'imagelist_user' => 'юзер',
+# Special:ListFiles
+'listfiles_name' => 'Файли цІе',
+'listfiles_user' => 'юзер',
 
 # Random page
 'randompage' => 'Ца хууш нисделла таптар',
@@ -293,7 +293,7 @@ $messages = array(
 # Media information
 'show-big-image' => 'Доккха де сурт',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'Керла файлаш галерей',
 
 'exif-scenetype-1' => 'Сурт сфотографировано напрямую',

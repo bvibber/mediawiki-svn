@@ -124,7 +124,7 @@ function wfSpecialNewimages( $par, $specialPage ) {
 		$name = $s->img_name;
 		$ut = $s->img_user_text;
 
-		$nt = Title::newFromText( $name, NS_IMAGE );
+		$nt = Title::newFromText( $name, NS_FILE );
 		$ul = $sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
 
 		$gallery->add( $nt, "$ul<br />\n<i>".$wgLang->timeanddate( $s->img_timestamp, true )."</i><br />\n" );
@@ -177,12 +177,12 @@ function wfSpecialNewimages( $par, $specialPage ) {
 
 
 	$opts = array( 'parsemag', 'escapenoentities' );
-	$prevLink = wfMsgExt( 'prevn', $opts, $wgLang->formatNum( $limit ) );
+	$prevLink = wfMsgExt( 'pager-newer-n', $opts, $wgLang->formatNum( $limit ) );
 	if( $firstTimestamp && $firstTimestamp != $latestTimestamp ) {
 		$prevLink = $sk->makeKnownLinkObj( $titleObj, $prevLink, 'from=' . $firstTimestamp . $botpar . $searchpar );
 	}
 
-	$nextLink = wfMsgExt( 'nextn', $opts, $wgLang->formatNum( $limit ) );
+	$nextLink = wfMsgExt( 'pager-older-n', $opts, $wgLang->formatNum( $limit ) );
 	if( $shownImages > $limit && $lastTimestamp ) {
 		$nextLink = $sk->makeKnownLinkObj( $titleObj, $nextLink, 'until=' . $lastTimestamp.$botpar.$searchpar );
 	}

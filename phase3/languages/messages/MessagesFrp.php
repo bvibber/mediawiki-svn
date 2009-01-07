@@ -10,13 +10,6 @@
 
 $fallback = 'fr';
 
-$skinNames = array(
-    'standard'    => 'Estandârd',
-    'nostalgia'   => 'Encrêt',
-    'cologneblue' => 'Cologne Blu',
-    'chick'       => 'Pugin',
-    'simple'      => 'Simplo'
-);
 
 $bookstoreList = array(
     'Amazon.fr'    => 'http://www.amazon.fr/exec/obidos/ISBN=$1',
@@ -26,24 +19,22 @@ $bookstoreList = array(
 );
 
 $namespaceNames = array(
-    NS_MEDIA          => 'Mèdia',
-    NS_SPECIAL        => 'Spèciâl',
-    NS_MAIN           => '',
-    NS_TALK           => 'Discutar',
-    NS_USER           => 'Utilisator',
-    NS_USER_TALK      => 'Discussion_Utilisator',
-    # NS_PROJECT set by $wgMetaNamespace
-    NS_PROJECT_TALK   => 'Discussion_$1',
-    NS_IMAGE          => 'Émâge',
-    NS_IMAGE_TALK     => 'Discussion_Émâge',
-    NS_MEDIAWIKI      => 'MediaWiki',
-    NS_MEDIAWIKI_TALK => 'Discussion_MediaWiki',
-    NS_TEMPLATE       => 'Modèlo',
-    NS_TEMPLATE_TALK  => 'Discussion_Modèlo',
-    NS_HELP           => 'Éde',
-    NS_HELP_TALK      => 'Discussion_Éde',
-    NS_CATEGORY       => 'Catègorie',
-    NS_CATEGORY_TALK  => 'Discussion_Catègorie'
+	NS_MEDIA            => 'Mèdia',
+	NS_SPECIAL          => 'Spèciâl',
+	NS_TALK             => 'Discutar',
+	NS_USER             => 'Utilisator',
+	NS_USER_TALK        => 'Discussion_Utilisator',
+	NS_PROJECT_TALK     => 'Discussion_$1',
+	NS_FILE             => 'Émâge',
+	NS_FILE_TALK        => 'Discussion_Émâge',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'Discussion_MediaWiki',
+	NS_TEMPLATE         => 'Modèlo',
+	NS_TEMPLATE_TALK    => 'Discussion_Modèlo',
+	NS_HELP             => 'Éde',
+	NS_HELP_TALK        => 'Discussion_Éde',
+	NS_CATEGORY         => 'Catègorie',
+	NS_CATEGORY_TALK    => 'Discussion_Catègorie',
 );
 
 $linkTrail = '/^([a-zàâçéèêîœôû·’æäåāăëēïīòöōùü‘]+)(.*)$/sDu';
@@ -204,7 +195,7 @@ $messages = array(
 'mytalk'         => 'Pâge de discussion',
 'anontalk'       => 'Discussion avouéc ceta adrèce IP',
 'navigation'     => 'Navigacion',
-'and'            => 'et',
+'and'            => '&#32;et',
 
 # Metadata in edit box
 'metadata_help' => 'Mètabalyês :',
@@ -267,8 +258,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A propôs de {{SITENAME}}',
 'aboutpage'            => 'Project:A propôs',
-'bugreports'           => 'Rapôrt d’èrrors',
-'bugreportspage'       => 'Project:Rapôrt d’èrrors',
 'copyright'            => 'Lo contegnu est disponiblo d’aprés los tèrmos de la licence $1.',
 'copyrightpagename'    => 'licence {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:Drêt d’ôtor',
@@ -494,11 +483,13 @@ Ignorâd ceti mèssâjo se ceti compto at étâ crèâ per èrror.',
 'resetpass_announce'      => 'Vos vos éte enregistrâ avouéc un mot de pâssa temporèro emmandâ per mèl. Por chavonar l’enregistrament, vos dête entrar un novél mot de pâssa ique :',
 'resetpass_text'          => '<!-- Apond de tèxte ique -->',
 'resetpass_header'        => 'Remisa a zérô du mot de pâssa',
+'oldpassword'             => 'Viely mot de pâssa :',
+'newpassword'             => 'Novél mot de pâssa :',
+'retypenew'               => 'Confirmar lo novél mot de pâssa :',
 'resetpass_submit'        => 'Changiér lo mot de pâssa et s’enregistrar',
 'resetpass_success'       => 'Voutron mot de pâssa at étâ changiê avouéc reusséta ! Enregistrament en cors...',
 'resetpass_bad_temporary' => 'Mot de pâssa temporèro envalido. Vos éd pôt-étre ja changiê voutron mot de pâssa avouéc reusséta, ou ben demandâ un novél mot de pâssa temporèro.',
 'resetpass_forbidden'     => 'Los mots de pâssa pôvont pas étre changiês dessus {{SITENAME}}.',
-'resetpass_missing'       => 'Niona balyê entrâ.',
 
 # Edit page toolbar
 'bold_sample'     => 'Tèxte grâs',
@@ -523,8 +514,8 @@ Ignorâd ceti mèssâjo se ceti compto at étâ crèâ per èrror.',
 'hr_tip'          => 'Legne plana (pas nen abusar)',
 
 # Edit pages
-'summary'                   => 'Rèsumâ&nbsp;',
-'subject'                   => 'Sujèt/titro',
+'summary'                   => 'Rèsumâ&nbsp;:',
+'subject'                   => 'Sujèt/titro:',
 'minoredit'                 => 'Modificacion minora',
 'watchthis'                 => 'Siuvre ceta pâge',
 'savearticle'               => 'Sôvar ceta pâge',
@@ -536,8 +527,8 @@ Ignorâd ceti mèssâjo se ceti compto at étâ crèâ per èrror.',
 'missingsummary'            => "'''Atencion :''' vos éd pas modifiâ lo rèsumâ de voutra modificacion. Se vos tornâd clicar sur lo boton « Sôvar ceta pâge », la pâge serat sôvâ sen novél avèrtissement.",
 'missingcommenttext'        => 'Volyéd fâre voutron comentèro ce-desot.',
 'missingcommentheader'      => "'''Rapèl :''' vos éd pas forni de sujèt/titro a ceti comentèro. Se vos tornâd clicar dessus « Sôvar ceta pâge », voutra èdicion serat enregistrâ sen titro.",
-'summary-preview'           => 'Prèvisualisacion du rèsumâ ',
-'subject-preview'           => 'Prèvisualisacion du sujèt/titro ',
+'summary-preview'           => 'Prèvisualisacion du rèsumâ :',
+'subject-preview'           => 'Prèvisualisacion du sujèt/titro :',
 'blockedtitle'              => 'L’utilisator est blocâ.',
 'blockedtext'               => "<big>'''Voutron compto utilisator ou voutra adrèce IP at étâ blocâ.'''</big>
 
@@ -824,9 +815,6 @@ Atencion, lor endèxacion du contegnu de {{SITENAME}} pôt pas étre a jorn.',
 'prefs-misc'               => 'Prèferences de totes sôrtes',
 'saveprefs'                => 'Enregistrar les prèferences',
 'resetprefs'               => 'Rètablir les prèferences',
-'oldpassword'              => 'Viely mot de pâssa :',
-'newpassword'              => 'Novél mot de pâssa :',
-'retypenew'                => 'Confirmar lo novél mot de pâssa :',
 'textboxsize'              => 'Fenétra d’èdicion',
 'rows'                     => 'Renchiês :',
 'columns'                  => 'Colones :',
@@ -930,11 +918,11 @@ Atencion, lor endèxacion du contegnu de {{SITENAME}} pôt pas étre a jorn.',
 'uploadnologintext'           => 'Vos dête étre [[Special:UserLogin|conèctâ]] por copiyér des fichiérs sur lo sèrvior.',
 'upload_directory_read_only'  => 'Lo sèrvior Vouèbe pôt pas ècrire dens lo dossiér ciba ($1).',
 'uploaderror'                 => 'Èrror',
-'uploadtext'                  => "Utilisâd ceti formulèro por copiyér des fichiérs, por vêre ou rechèrchiér des émâges prècèdament copiyês consultâd la [[Special:ImageList|lista de fichiérs copiyês]], les copies et suprèssions sont asse-ben enregistrâs dens lo [[Special:Log/upload|jornal de les copies]].
+'uploadtext'                  => "Utilisâd ceti formulèro por copiyér des fichiérs, por vêre ou rechèrchiér des émâges prècèdament copiyês consultâd la [[Special:FileList|lista de fichiérs copiyês]], les copies et suprèssions sont asse-ben enregistrâs dens lo [[Special:Log/upload|jornal de les copies]].
 
 Por encllure una émâge dens una pâge, utilisâd un lim de la fôrma :
-* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Fichiér.jpg]]</nowiki>'''
-* '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:Fichiér.png|tèxte altèrnatif]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fichiér.jpg]]</nowiki>'''
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fichiér.png|tèxte altèrnatif]]</nowiki>'''
 ou ben por liyér tot drêt vers lo fichiér :
 * '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Fichiér.ogg]]</nowiki>'''",
 'upload-permitted'            => 'Formats de fichiérs ôtorisâs : $1.',
@@ -972,8 +960,8 @@ la solèta difèrence est la câssa (grantes lètres / petiôtes lètres) de l�
 Se lo fichiér controlâ est la méma émâge (dens una rèsolucion mèlyora), y at pas fôta d’importar una vèrsion rèduita.',
 'file-thumbnail-no'           => 'Lo nom du fichiér comence per <strong><tt>$1</tt></strong>. O est possiblo que s’ag·ésse d’una vèrsion rèduita <i>(figura)</i>.
 Se vos disposâd du fichiér en rèsolucion hôta, importâd-lo, ôtrament volyéd changiér lo nom du fichiér.',
-'fileexists-forbidden'        => 'Un fichiér avouéc ceti nom ègziste ja ; marci de tornar arriér et de copiyér lo fichiér desot un novél nom. [[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'Un fichiér portent lo mémo nom ègziste ja dens la bâsa de balyês comena ; volyéd tornar arriér et pués l’emmandar desot un novél nom. [[Image:$1|thumb|center|$1]]',
+'fileexists-forbidden'        => 'Un fichiér avouéc ceti nom ègziste ja ; marci de tornar arriér et de copiyér lo fichiér desot un novél nom. [[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'Un fichiér portent lo mémo nom ègziste ja dens la bâsa de balyês comena ; volyéd tornar arriér et pués l’emmandar desot un novél nom. [[File:$1|thumb|center|$1]]',
 'successfulupload'            => 'Copia reussia',
 'uploadwarning'               => 'Atencion !',
 'savefile'                    => 'Sôvar lo fichiér',
@@ -1027,17 +1015,17 @@ PICT # de totes sôrtes
 'upload_source_url'  => ' (una URL valida et accèssibla publicament)',
 'upload_source_file' => ' (un fichiér sur voutron ordenator)',
 
-# Special:ImageList
-'imagelist_search_for'  => 'Rechèrche por l’émâge apelâ :',
+# Special:ListFiles
+'listfiles_search_for'  => 'Rechèrche por l’émâge apelâ :',
 'imgfile'               => 'fichiér',
-'imagelist'             => 'Lista de les émâges',
-'imagelist_date'        => 'Dâta',
-'imagelist_name'        => 'Nom',
-'imagelist_user'        => 'Utilisator',
-'imagelist_size'        => 'Octèts',
-'imagelist_description' => 'Dèscripcion',
+'listfiles'             => 'Lista de les émâges',
+'listfiles_date'        => 'Dâta',
+'listfiles_name'        => 'Nom',
+'listfiles_user'        => 'Utilisator',
+'listfiles_size'        => 'Octèts',
+'listfiles_description' => 'Dèscripcion',
 
-# Image description page
+# File description page
 'filehist'                  => 'Historico du fichiér',
 'filehist-help'             => 'Clicar sur una dâta et una hora por vêre lo fichiér tâl qu’il ére a cél moment.',
 'filehist-deleteall'        => 'tot suprimar',
@@ -1716,6 +1704,7 @@ Totes les accions d’importacion entèrvouiqui sont consèrvâs dens lo [[Speci
 'import-interwiki-history'   => 'Copiyér totes les vèrsions de l’historico de ceta pâge',
 'import-interwiki-submit'    => 'Importar',
 'import-interwiki-namespace' => 'Transferar les pâges dens l’èspâço de nom :',
+'import-comment'             => 'Comentèro :',
 'importtext'                 => 'Volyéd èxportar lo fichiér dês lo vouiqui d’origina en utilisent l’outil [[Special:Export]], lo sôvar sur voutron disco dur et pués lo copiyér ique.',
 'importstart'                => 'Impôrt de les pâges...',
 'import-revision-count'      => '$1 {{PLURAL:$1|vèrsion|vèrsions}}',
@@ -1845,6 +1834,13 @@ Totes les accions d’importacion entèrvouiqui sont consèrvâs dens lo [[Speci
 'numauthors'     => 'Nombro d’ôtors difèrents : $1',
 'numtalkauthors' => 'Nombro d’ôtors difèrents (pâge de discussion) : $1',
 
+# Skin names
+'skinname-standard'    => 'Estandârd',
+'skinname-nostalgia'   => 'Encrêt',
+'skinname-cologneblue' => 'Cologne Blu',
+'skinname-chick'       => 'Pugin',
+'skinname-simple'      => 'Simplo',
+
 # Math options
 'mw_math_png'    => 'Tojorn fâre una émâge PNG',
 'mw_math_simple' => 'HTML se prod simplo, ôtrament PNG',
@@ -1896,7 +1892,7 @@ Totes les accions d’importacion entèrvouiqui sont consèrvâs dens lo [[Speci
 'show-big-image'       => 'Émâge en rèsolucion ples hôta',
 'show-big-image-thumb' => '<small>Talye de ceta vua : $1 × $2 pixèles</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages'             => 'Galerie des novéls fichiérs',
 'imagelisttext'         => "Vê-que una lista de '''$1''' {{PLURAL:$1|fichiér cllassiê|fichiérs cllassiês}} $2.",
 'showhidebots'          => '($1 bots)',
@@ -2380,7 +2376,7 @@ Volyéd confirmar que vos dèsirâd recrèar ceti articllo.",
 'filepath-submit'  => 'Chemin d’accès',
 'filepath-summary' => 'Ceta pâge afiche lo chemin d’accès complèt d’un fichiér ; les émâges sont montrâs en rèsolucion hôta, los fichiérs ôdiô et vidèô s’ègzécutont avouéc lor programe associyê.
 
-Entrâd lo nom du fichiér sen lo prèfixe « {{ns:image}}: ».',
+Entrâd lo nom du fichiér sen lo prèfixe « {{ns:file}}: ».',
 
 # Special:SpecialPages
 'specialpages' => 'Pâges spèciâles',

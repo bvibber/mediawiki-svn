@@ -7,7 +7,27 @@
  * @author Aursani
  */
 
+$fallback8bitEncoding = 'windows-1256';
 $rtl = true;
+
+$namespaceNames = array(
+	NS_MEDIA            => 'ذريعات',
+	NS_SPECIAL          => 'خاص',
+	NS_TALK             => 'بحث',
+	NS_USER             => 'يوزر',
+	NS_USER_TALK        => 'يوزر_بحث',
+	NS_PROJECT_TALK     => '$1_بحث',
+	NS_FILE             => 'عڪس',
+	NS_FILE_TALK        => 'عڪس_بحث',
+	NS_MEDIAWIKI        => 'ذريعات_وڪي',
+	NS_MEDIAWIKI_TALK   => 'ذريعات_وڪي_بحث',
+	NS_TEMPLATE         => 'سانچو',
+	NS_TEMPLATE_TALK    => 'سنچو_بحث',
+	NS_HELP             => 'مدد',
+	NS_HELP_TALK        => 'مدد_بحث',
+	NS_CATEGORY         => 'زمرو',
+	NS_CATEGORY_TALK    => 'زمرو_بحث',
+);
 
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'ٻٽا چورڻا' ),
@@ -20,7 +40,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'ٽيٽ فهرست' ),
 	'Recentchanges'             => array( 'تازيون تبديليون' ),
 	'Upload'                    => array( 'چاڙهيو' ),
-	'Imagelist'                 => array( 'عڪس فهرست' ),
+	'Listfiles'                 => array( 'عڪس فهرست' ),
 	'Newimages'                 => array( 'نوان عڪس' ),
 	'Listusers'                 => array( 'يوزر فهرست' ),
 	'Statistics'                => array( 'انگ اکر' ),
@@ -171,7 +191,7 @@ $messages = array(
 'moredotdotdot'  => 'اڃا...',
 'mypage'         => 'منهنجو صفحو',
 'mytalk'         => 'مون سان ڳالهه',
-'and'            => '۽',
+'and'            => '&#32;۽',
 
 'errorpagetitle'    => 'چُڪَ',
 'returnto'          => '$1 ڏانهن وَرو.',
@@ -227,8 +247,6 @@ $messages = array(
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} بابت',
 'aboutpage'            => 'Project:بابت',
-'bugreports'           => 'چُڪَ ناما',
-'bugreportspage'       => 'Project:چُڪَ ناما',
 'copyright'            => 'سمورو مواد $1 تحت ميسر ڪجي ٿو',
 'copyrightpagename'    => '{{SITENAME}} حق ۽ واسطا',
 'copyrightpage'        => '{{ns:project}}:حق ۽ واسطا',
@@ -347,6 +365,9 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'accountcreated'             => 'کاتو کلي چڪو',
 'accountcreatedtext'         => '$1 نالي يوزر کاتو کلي چڪو آھي.',
 
+# Password reset dialog
+'retypenew' => 'نئون ڳجھو لفظ ٻيهر ٽائيپ ڪندا:',
+
 # Edit page toolbar
 'bold_sample'     => 'گهري تحرير',
 'bold_tip'        => 'گهري لکت',
@@ -366,8 +387,8 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'hr_tip'          => 'افقي لڪير (غيرضروري استعمال کان پاسو ڪندا)',
 
 # Edit pages
-'summary'                => 'تَتُ',
-'subject'                => 'موضوع/سُرخي',
+'summary'                => 'تَتُ:',
+'subject'                => 'موضوع/سُرخي:',
 'minoredit'              => 'هيءَ هڪ معمولي ترميم آهي',
 'watchthis'              => 'هيءُ صفحو سانڍيو',
 'savearticle'            => 'صفحو سانڍيو',
@@ -377,7 +398,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'anoneditwarning'        => "'''خبردار:''' توهان لاگ اِن ٿيل ناهيو.
 هن صفحي جي سوانح ۾ توهان جو آءِ پي پتو درج ڪيو ويندو.",
 'missingcommenttext'     => 'براءِ مهرباني هيٺ پنهنجا تاثرات درج ڪندا.',
-'summary-preview'        => 'تت تي پيش نگاهه',
+'summary-preview'        => 'تت تي پيش نگاهه:',
 'blockedtitle'           => 'يُوزر بندشيل آهي.',
 'blockedtext'            => "<big>'''توهان جي يوزرنانءُ يا آءِ پي کي بندشيو ويو آهي.'''</big>
 
@@ -458,7 +479,6 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'skin-preview'   => 'پيش نگاهه',
 'datedefault'    => 'بلا ترجيحا',
 'datetime'       => 'تاريخ ۽ وقت',
-'retypenew'      => 'نئون ڳجھو لفظ ٻيهر ٽائيپ ڪندا:',
 'allowemail'     => 'ٻين يُوزرس کان ايندڙ برق ٽپال بحال ڪريو',
 
 # User rights
@@ -509,10 +529,10 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'uploadlogpage' => 'چاڙهه لاگ',
 'uploadedimage' => '"[[$1]]" چاڙهيو ويو',
 
-# Special:ImageList
-'imagelist' => 'فائيل فهرست',
+# Special:ListFiles
+'listfiles' => 'فائيل فهرست',
 
-# Image description page
+# File description page
 'filehist'                       => 'فائيل جي سوانح',
 'filehist-help'                  => 'ڪنهن به تاريخ/وقت تي ڪلڪ ڪري ڏسندا ته تڏڻي اهو فائيل ڪيئن هو.',
 'filehist-current'               => 'هاڻوڪو',
@@ -830,7 +850,7 @@ $1 {{PLURAL:$1|اکر|اکرن}} کان ننڍي هوڻ گھرجي.',
 'show-big-image'       => 'سنهو ترين تحلل',
 'show-big-image-thumb' => '<small>هن پيش نگاهه جي ماپ: $1 × $2 عڪسلون</small>',
 
-# Special:NewImages
+# Special:NewFiles
 'newimages' => 'نون فائيلن جي گيلري',
 'noimages'  => 'ڏسڻ لاءِ ڪجھه ناهي.',
 'bydate'    => 'تاريخوار',

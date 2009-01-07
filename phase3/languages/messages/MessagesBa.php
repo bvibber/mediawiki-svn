@@ -18,8 +18,8 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'Ҡатнашыусы_м-н_фекер_алышыу', 
 	#NS_PROJECT set by $wgMetaNamespace
 	NS_PROJECT_TALK     => '$1_б-са_фекер_алышыу',
-	NS_IMAGE            => 'Рәсем',
-	NS_IMAGE_TALK       => 'Рәсем_б-са_фекер_алышыу',
+	NS_FILE             => 'Рәсем',
+	NS_FILE_TALK        => 'Рәсем_б-са_фекер_алышыу',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'MediaWiki_б-са_фекер_алышыу',
 	NS_TEMPLATE         => 'Ҡалып',
@@ -106,7 +106,7 @@ $messages = array(
 'mypage'         => 'Шәхси бит',
 'mytalk'         => 'Минең менән фекер алышыу',
 'navigation'     => 'Төп йүнәлештәр',
-'and'            => 'һәм',
+'and'            => '&#32;һәм',
 
 'errorpagetitle'   => 'Хата',
 'returnto'         => '$1 битенә ҡайтыу.',
@@ -195,7 +195,7 @@ $messages = array(
 'mailmypassword'          => 'Яңы пароль ебәрергә',
 
 # Edit pages
-'summary'        => 'Үҙгәртеүҙең ҡыҫҡаса тасуирламаһы',
+'summary'        => 'Үҙгәртеүҙең ҡыҫҡаса тасуирламаһы:',
 'minoredit'      => 'Әҙ генә үҙгәрештәр',
 'watchthis'      => 'Был битте күҙәтеүҙәр исемлегенә индерергә',
 'savearticle'    => 'Яҙҙырып ҡуйырға',
@@ -225,8 +225,8 @@ $messages = array(
 # Recent changes linked
 'recentchangeslinked' => 'Бәйле үҙгәртеүҙәр',
 
-# Special:ImageList
-'imagelist_user' => 'Ҡатнашыусы',
+# Special:ListFiles
+'listfiles_user' => 'Ҡатнашыусы',
 
 # MIME search
 'mimesearch' => 'MIME буйынса эҙләү',

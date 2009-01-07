@@ -200,6 +200,11 @@ $messages = array(
 'emailauthenticated'      => 'Тыйын почто адресетым пеҥгыдемдыме $1.',
 'loginlanguagelabel'      => 'Йылме: $1',
 
+# Password reset dialog
+'oldpassword' => 'Тошто шолыпмут:',
+'newpassword' => 'У шолыпмут:',
+'retypenew'   => 'Пеҥгыдемдыза у шолыпмутым:',
+
 # Edit page toolbar
 'bold_sample'     => 'Кӱжгӧ текст',
 'bold_tip'        => 'Кӱжгӧ текст',
@@ -221,7 +226,7 @@ $messages = array(
 'hr_tip'          => 'Тореш (шуэн кучылт)',
 
 # Edit pages
-'summary'            => 'Тӧрлатымаш нерген',
+'summary'            => 'Тӧрлатымаш нерген:',
 'minoredit'          => 'Тиде изирак тӧрлатыме',
 'watchthis'          => 'Тиде лаштыкым эскераш',
 'savearticle'        => 'Лаштыкым аралаш',
@@ -280,9 +285,6 @@ $messages = array(
 'prefs-misc'            => 'Тӱрлӧ',
 'saveprefs'             => 'Аралаш',
 'resetprefs'            => 'Тӧрлатымым шотыш налаш огыл',
-'oldpassword'           => 'Тошто шолыпмут:',
-'newpassword'           => 'У шолыпмут:',
-'retypenew'             => 'Пеҥгыдемдыза у шолыпмутым:',
 'searchresultshead'     => 'Кычалме',
 'savedprefs'            => 'Тыйын настройке-влакетым аралыме.',
 'allowemail'            => 'Вес ушнышо-влак деч электрон почтым налаш кӧнаш',
@@ -326,11 +328,11 @@ $messages = array(
 'fileuploadsummary' => 'Тидын нерген кӱчыкын:',
 'watchthisupload'   => 'Тиде лаштыкым эскераш',
 
-# Special:ImageList
+# Special:ListFiles
 'imgfile'        => 'файл',
-'imagelist_user' => 'Пайдаланыше',
+'listfiles_user' => 'Пайдаланыше',
 
-# Image description page
+# File description page
 'filehist-deleteone' => 'шӧраш',
 'filehist-current'   => 'кызыт',
 'filehist-user'      => 'Пайдаланыше',
@@ -523,7 +525,7 @@ $messages = array(
 # Media information
 'widthheightpage' => '$1×$2, $3 {{PLURAL:$3|лаштык|лаштык}}',
 
-# Special:NewImages
+# Special:NewFiles
 'showhidebots' => '(Бот-влакым $1 )',
 'ilsubmit'     => 'Кычал',
 

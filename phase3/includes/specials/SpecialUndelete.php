@@ -119,7 +119,7 @@ class PageArchive {
 	 * @todo Does this belong in Image for fuller encapsulation?
 	 */
 	function listFiles() {
-		if( $this->title->getNamespace() == NS_IMAGE ) {
+		if( $this->title->getNamespace() == NS_FILE ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select( 'filearchive',
 				array(
@@ -336,7 +336,7 @@ class PageArchive {
 		$restoreText = $restoreAll || !empty( $timestamps );
 		$restoreFiles = $restoreAll || !empty( $fileVersions );
 
-		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
+		if( $restoreFiles && $this->title->getNamespace() == NS_FILE ) {
 			$img = wfLocalFile( $this->title );
 			$this->fileStatus = $img->restore( $fileVersions, $unsuppress );
 			$filesRestored = $this->fileStatus->successCount;
@@ -547,7 +547,7 @@ class PageArchive {
 				Article::onArticleEdit( $this->title );
 			}
 
-			if( $this->title->getNamespace() == NS_IMAGE ) {
+			if( $this->title->getNamespace() == NS_FILE ) {
 				$update = new HTMLCacheUpdate( $this->title, 'imagelinks' );
 				$update->doUpdate();
 			}
@@ -679,17 +679,16 @@ class UndeleteForm {
 			Xml::openElement( 'form', array(
 				'method' => 'get',
 				'action' => $wgScript ) ) .
-			'<fieldset>' .
-			Xml::element( 'legend', array(),
-				wfMsg( 'undelete-search-box' ) ) .
+			Xml::fieldset( wfMsg( 'undelete-search-box' ) ) .
 			Xml::hidden( 'title',
 				SpecialPage::getTitleFor( 'Undelete' )->getPrefixedDbKey() ) .
 			Xml::inputLabel( wfMsg( 'undelete-search-prefix' ),
 				'prefix', 'prefix', 20,
-				$this->mSearchPrefix ) .
+				$this->mSearchPrefix ) . ' ' .
 			Xml::submitButton( wfMsg( 'undelete-search-submit' ) ) .
-			'</fieldset>' .
-			'</form>' );
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' )
+		);
 	}
 
 	// Generic list of deleted pages
@@ -701,7 +700,7 @@ class UndeleteForm {
 			return;
 		}
 
-		$wgOut->addWikiMsg( "undeletepagetext" );
+		$wgOut->addWikiMsg( 'undeletepagetext', $wgLang->formatNum( $result->numRows() ) );
 
 		$sk = $wgUser->getSkin();
 		$undelete = SpecialPage::getTitleFor( 'Undelete' );
@@ -710,7 +709,6 @@ class UndeleteForm {
 			$title = Title::makeTitleSafe( $row->ar_namespace, $row->ar_title );
 			$link = $sk->makeKnownLinkObj( $undelete, htmlspecialchars( $title->getPrefixedText() ),
 				'target=' . $title->getPrefixedUrl() );
-			#$revs = wfMsgHtml( 'undeleterevisions', $wgLang->formatNum( $row->count ) );
 			$revs = wfMsgExt( 'undeleterevisions',
 				array( 'parseinline' ),
 				$wgLang->formatNum( $row->count ) );
@@ -791,37 +789,37 @@ class UndeleteForm {
 		}
 
 		$wgOut->addHTML(
-			wfElement( 'textarea', array(
+			Xml::element( 'textarea', array(
 					'readonly' => 'readonly',
 					'cols' => intval( $wgUser->getOption( 'cols' ) ),
 					'rows' => intval( $wgUser->getOption( 'rows' ) ) ),
 				$rev->getText( Revision::FOR_THIS_USER ) . "\n" ) .
-			wfOpenElement( 'div' ) .
-			wfOpenElement( 'form', array(
+			Xml::openElement( 'div' ) .
+			Xml::openElement( 'form', array(
 				'method' => 'post',
 				'action' => $self->getLocalURL( "action=submit" ) ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'type' => 'hidden',
 				'name' => 'target',
 				'value' => $this->mTargetObj->getPrefixedDbKey() ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'type' => 'hidden',
 				'name' => 'timestamp',
 				'value' => $timestamp ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'type' => 'hidden',
 				'name' => 'wpEditToken',
 				'value' => $wgUser->editToken() ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'type' => 'submit',
 				'name' => 'preview',
 				'value' => wfMsg( 'showpreview' ) ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'name' => 'diff',
 				'type' => 'submit',
 				'value' => wfMsg( 'showdiff' ) ) ) .
-			wfCloseElement( 'form' ) .
-			wfCloseElement( 'div' ) );
+			Xml::closeElement( 'form' ) .
+			Xml::closeElement( 'div' ) );
 	}
 
 	/**
@@ -898,7 +896,8 @@ class UndeleteForm {
 		$file = new ArchivedFile( $this->mTargetObj, '', $this->mFile );
 		$wgOut->addWikiMsg( 'undelete-show-file-confirm',
 			$this->mTargetObj->getText(),
-			$wgLang->timeanddate( $file->getTimestamp() ) );
+			$wgLang->date( $file->getTimestamp() ),
+			$wgLang->time( $file->getTimestamp() ) );
 		$wgOut->addHTML( 
 			Xml::openElement( 'form', array( 
 				'method' => 'POST',
@@ -1014,8 +1013,7 @@ class UndeleteForm {
 				$unsuppressBox = "";
 			}
 			$table =
-				Xml::openElement( 'fieldset' ) .
-				Xml::element( 'legend', null, wfMsg( 'undelete-fieldset-title' ) ).
+				Xml::fieldset( wfMsg( 'undelete-fieldset-title' ) ) .
 				Xml::openElement( 'table', array( 'id' => 'mw-undelete-table' ) ) .
 					"<tr>
 						<td colspan='2'>" .
@@ -1033,8 +1031,8 @@ class UndeleteForm {
 					<tr>
 						<td>&nbsp;</td>
 						<td class='mw-submit'>" .
-							Xml::submitButton( wfMsg( 'undeletebtn' ), array( 'name' => 'restore', 'id' => 'mw-undelete-submit' ) ) .
-							Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'undeletereset' ), 'id' => 'mw-undelete-reset' ) ) .
+							Xml::submitButton( wfMsg( 'undeletebtn' ), array( 'name' => 'restore', 'id' => 'mw-undelete-submit' ) ) . ' ' .
+							Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'undeletereset' ), 'id' => 'mw-undelete-reset' ) ) . ' ' .
 							Xml::submitButton( wfMsg( 'undeleteinvert' ), array( 'name' => 'invert', 'id' => 'mw-undelete-invert' ) ) .
 						"</td>
 					</tr>" .
