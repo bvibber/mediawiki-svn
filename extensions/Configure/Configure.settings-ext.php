@@ -752,6 +752,7 @@ $extensions = array(
 			'wgGoogleAdSenseClient' => 'text',
 			'wgGoogleAdSenseSlot' => 'text',
 			'wgGoogleAdSenseID' => 'text',
+			'wgGoogleAdSenseAnonOnly' => 'bool',
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Google_AdSense_2',
 	),
