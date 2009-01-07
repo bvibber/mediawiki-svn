@@ -943,6 +943,7 @@ $messages['vo'] = array(
 	'gep-sectionnotdisabled' => 'Diläd at no kanon panemögükön',
 	'gep-addsection' => 'Läükön dilädi',
 	'gep-addsectionbutton' => 'Läükön',
+	'gep-nocategories' => 'Välolös kladi pu bali bü dakip',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

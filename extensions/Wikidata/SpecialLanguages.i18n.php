@@ -427,7 +427,7 @@ $wdMessages['arz'] = array(
 	'ow_meaningsofsubtitle' => '<em>وصلة ويكي:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>السماح مرفوض</h2>',
 	'ow_copy_no_action_specified' => 'من فضلك حدد فعلا',
-	'ow_copy_help' => 'يوما ما، ربما نساعدك.',
+	'ow_copy_help' => 'المساعدة لسه ما اشتغلتش.',
 	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something>  (dmid=رقم المعنى المعرف)<br />
 من فضلك اتصل بإدارى خادم.',
 	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something>  (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />
@@ -653,7 +653,7 @@ $wdMessages['be-tarask'] = array(
 	'ow_meaningsofsubtitle' => '<em>Вікі спасылка:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Доступ забаронены</h2>',
 	'ow_copy_no_action_specified' => 'Калі ласка, пазначце дзеяньне',
-	'ow_copy_help' => 'Калі-небудзь мы Вам дапаможам.',
+	'ow_copy_help' => 'Дапамога яшчэ ня зьдзейсьнена.',
 	'ow_please_proved_dmid' => 'Падобна, што ва ўведзеных зьвестках адсутнічае «?dmid=<ID>» (dmid=Ідэнтыфікатар Вызначанага Значэньня)<br />
 Калі ласка, зьвяжыцеся з адміністратарам сэрвэра.',
 	'ow_please_proved_dc1' => 'Падобна, што ва ўведзеных зьвестках адсутнічае «?dc1=<something>» (dc1=кантэкст набору зьвестак 1, набор зьвестак адкуль капіяваць)<br />
@@ -1975,7 +1975,7 @@ $wdMessages['he'] = array(
 <li>&action=help  הצגת עזרה מועילה.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>מיפוי תפיסתי מאפשר לכם לזהות איזו משמעות מוגדרת בערכת נתונים אחת זהה למשמעויות מוגדרות בערכות נתונים אחרות.</p>',
-	'ow_conceptmapping_no_action_specified' => 'מצטערים, איננו יודעים כיצד לבצע "$1".',
+	'ow_conceptmapping_no_action_specified' => 'הפעולה "$1" אינה נתמכת.',
 	'ow_dm_OK' => 'מאושר',
 	'ow_dm_not_present' => 'לא הוכנס',
 	'ow_dm_not_found' => 'לא נמצא במסד הנתונים או שהוא פגום',
@@ -2042,7 +2042,7 @@ $wdMessages['he'] = array(
 	'ow_meaningsofsubtitle' => '<em>קישור ויקי:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>הגישה נדחתה</h2>',
 	'ow_copy_no_action_specified' => 'אנא הגדירו פעולה',
-	'ow_copy_help' => 'ייתכן שנעזור לכם יום אחד.',
+	'ow_copy_help' => 'העזרה לא הוטמעה עדיין.',
 	'ow_please_proved_dmid' => 'נראה שלקלט שלכם חסר "<span dir="ltr">?dmid=<ID></span>" (הפירוש של dmid: מספר משמעות מוגדרת)<br />
 אנא צרו קשר עם מנהל השרת.',
 	'ow_please_proved_dc1' => "נראה שלקלט שלכם חסר \"<span dir=\"ltr\">?dc1=<something></span>\" (הפירוש של dc1: הקשר ערכת נתונים 1, ערכת נתונים שיש להעתיק '''ממנה''')<br />
@@ -2195,7 +2195,7 @@ $wdMessages['hsb'] = array(
 	'ow_meaningsofsubtitle' => '<em>Wikiwotkaz:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>DOWOLNOSĆ ZAPOWĚDŹENA</h2>',
 	'ow_copy_no_action_specified' => 'Podaj prošu akciju',
-	'ow_copy_help' => 'Jednoho dnja móžemy ći pomhać.',
+	'ow_copy_help' => 'Pomoc hišće njeje implementowana.',
 	'ow_please_proved_dmid' => 'Zda so, zo w twojim zapodaću "?dmid=<ID>" (dmid=Defined Meaning ID) faluje.<br />Prošu skontaktuj serweroweho administratora.',
 	'ow_please_proved_dc1' => 'Zda so, zo w twojim zapodaću "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />Prošu skontaktuj serweroweho administratora.',
 	'ow_please_proved_dc2' => 'Zda so, zo w twojim zapodaću "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO)<br />Prošu skontaktuj serweroweho administratora.',
@@ -5240,7 +5240,7 @@ Pakisuri ang adres na pangweb.',
 	'ow_meaningsofsubtitle' => '<em>Wiki-kawing:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Tinanggihan ang pagpapahintulot</h2>',
 	'ow_copy_no_action_specified' => 'Pakitukoy ang isang galaw',
-	'ow_copy_help' => 'Maaaring matulungan ka namin, balang araw.',
+	'ow_copy_help' => 'Hindi pa naisasakatuparan ang pagtulong.',
 	'ow_please_proved_dmid' => 'Tila may kulang na "?dmid=<ID>" (dmid=ID ng Nilarawang Kahulugan) ang ipinasok mong puhunan (impormasyon)<br />
 Makipagugnayan sa isang tagapangasiwa ng serbidor',
 	'ow_please_proved_dc1' => 'Tila may kulang na isang "?dc1=<isang bagay>" (dc1=konteksto bilang 1 ng pangkat ng dato, PAGMUMULANG pangkat ng dato) ang ipinasok mong puhunan (impormasyon)<br />

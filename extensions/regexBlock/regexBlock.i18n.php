@@ -320,6 +320,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Church of emacs
  * @author Imre
  * @author Melancholie
  * @author Purodha
@@ -332,8 +333,15 @@ $messages['de'] = array(
 	'regexblock-block-success' => 'Sperrung erfolgreich',
 	'regexblock-currently-blocked' => 'Derzeit gesperrte Adressen:',
 	'regexblock-desc' => 'Erweiterung zum Sperren von Benutzernamen und IP-Adressen mit regulären Ausdrücken. Enthält den Sperrmechanismus und eine [[Special:Regexblock|Spezialseite]] um Sperren hinzuzufügen und zu verwalten',
+	'regexblock-expire-duration' => '1 hour,2 hours,4 hours,6 hours,1 day,3 days,1 week,2 weeks,1 month,3 months,6 months,1 year,infinite',
 	'regexblock-page-title' => 'Namenssperre mit regulären Ausdrücken',
 	'regexblockstats' => 'Regex-Sperrstatistiken',
+	'regexblock-help' => "Verwende das folgende Formular um eine IP-Adresse oder einen angemeldeten Benutzer zu sperren.
+Diese Funktion sollte nur zur Verhinderung von Vandalismus und gemäß der Richtlinien eingesetzt werden.
+''Diese Seite erlaubt es auch nicht existierende Benutzerkonten zu sperren, sowie solche, die ähnliche Namen zu bestehenden Konten haben, zum Beispiel eine Sperre von „Test” sperrt auch „Test 2“ usw.
+Du kannst auch ganze IP-Adressen sperren, so dass niemand der sich unter diesen IP-Adressen einloggt, Seiten editieren kann.
+Achtung: Teile von IP-Adressen werden als Benutzernamen beim Sperren aufgefasst.
+Falls kein Sperrgrund angegeben ist, wird ein Standard-Begründung verwendet.",
 	'regexblock-page-title-1' => 'Sperre Adressen anhand regulärer Ausdrücke',
 	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu Editieren, da von dieser IP-Adresse – von dir oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, $1',
@@ -350,11 +358,13 @@ Bitte melde dich mit einem anderen Benutzernamen an oder $1 über das Problem.',
 	'regexblock-form-submit-empty' => 'Einen Benutzernamen oder eine IP-Adresse für die Sperrung angeben.',
 	'regexblock-form-submit-regex' => 'Ungültiger regulärer Ausdruck.',
 	'regexblock-form-submit-expiry' => 'Bitte wähle einen Verfallszeitraum.',
+	'regexblock-nodata-found' => 'Keine Daten gefunden',
 	'regexblock-stats-title' => 'Regex-Sperrstatistiken',
 	'regexblock-unblock-success' => 'Entsperrung erfolgreich',
 	'regexblock-unblock-log' => "Benutzername oder IP-Adresse '''$1''' wurde entsperrt.",
 	'regexblock-unblock-error' => 'Fehler beim Entsperren von $1.
 Vermutlich gibt es keinen solchen Benutzer.',
+	'regexblock-regex-filter' => '  oder regulärer Ausdruck:',
 	'regexblock-view-blocked' => 'Ansicht gesperrt von:',
 	'regexblock-view-all' => 'Alle',
 	'regexblock-view-go' => 'Los',
@@ -1783,10 +1793,21 @@ $messages['th'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'regexblock' => 'Paghadlang na pangpangkaraniwang pagsasaad',
 	'regexblock-already-blocked' => 'Hinadlangan na si $1.',
 	'regexblock-block-log' => "Hinadlangan na ang pangalan ng tagagamit o adres ng IP na '''$1'''.",
 	'regexblock-block-success' => 'Nagtagumpay ang paghadlang',
+	'regexblock-currently-blocked' => 'Pangkalasalukuyang hinahadlangang mga adres:',
 	'regexblock-expire-duration' => '1 oras,2 oras,4 na oras,6 na oras,1 araw,3 mga araw,1 linggo,2 linggo,1 buwan,3 buwan,6 na buwan,1 taon,walang hanggan',
+	'regexblock-page-title' => 'Paghadlang sa pangalan ng pangkaraniwang pagsasaad',
+	'regexblockstats' => 'Mga estadistika ng paghadlang na pangpangkaraniwang pagsasaad',
+	'regexblock-page-title-1' => 'Hadlangan ang adres sa pamamagitan ng paggamit ng pangkaraniwang mga pagsasaad',
+	'regexblock-reason-ip' => 'Ang adres ng IP na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa bandalismo (pambababoy) o ibang pangaabala mo o ng isang nakikisalo sa iyong adres ng IP.
+Kung naniniwala kang isa itong kamalian, paki $1',
+	'regexblock-reason-name' => 'Ang pangalan ng tagagamit na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa bandalismo (pambababoy) o ibang pangaabala.
+Kung naniniwala kang isa itong kamalian, paki $1',
+	'regexblock-reason-regex' => 'Ang pangalan ng tagagamit na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa bandalismo (pambababoy) o ibang pangaabala ng isang tagagamit na may kahawig na pangalan.
+Pakilikha ang isang kapalit na pangalan ng tagagamit o $1 tungkol sa suliranin',
 	'regexblock-form-username' => 'Adres ng IP o pangalan ng tagagamit:',
 	'regexblock-form-reason' => 'Dahilan:',
 	'regexblock-form-expiry' => 'Katapusan:',
@@ -1820,6 +1841,7 @@ Marahal ay walang ganyang tagagamit.',
 	'regexblock-view-stats' => 'mga estadistika',
 	'regexblock-view-empty' => 'Walang laman ang talaan ng hinadlangang mga pangalan at mga adres.',
 	'regexblock-view-time' => 'noong $1',
+	'right-regexblock' => 'Hadlangan ang mga tagagamit na makagawa ng mga pagbabago sa lahat ng mga wiki na nasa linangan ("bukid") ng wiki',
 );
 
 /** Turkish (Türkçe)

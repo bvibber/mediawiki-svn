@@ -3910,12 +3910,41 @@ Phiên bản $2 mới hơn có tại http://pecl.php.net/package/APC/$2',
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'viewapc-mode-version-check' => 'Kontrolön fomami',
+	'viewapc-cached-files-d' => '{{PLURAL:$1|Ragiv bal|Ragivs $1}} ($2)',
+	'viewapc-rps' => 'Begs $1 a sekun',
+	'viewapc-memory-usage' => 'Memigeb',
 	'viewapc-memory-free' => 'Libik: $1 ($2)',
+	'viewapc-display-value' => 'Völad',
+	'viewapc-display-filename' => 'Ragivanem',
+	'viewapc-display-info' => 'Nem',
+	'viewapc-display-type' => 'Sot',
+	'viewapc-display-mtime' => 'Pevotüköl',
+	'viewapc-display-creation_time' => 'Pejafon',
+	'viewapc-display-deletion_time' => 'Pemoükon',
+	'viewapc-display-no-delete' => 'No pemoükon',
+	'viewapc-display-mem_size' => 'Gretot',
+	'viewapc-display-stored-value' => 'Völad pedakipöl',
+	'viewapc-display-too-big' => "'''Ninäd binon tu gretik, adas pajonon.'''",
+	'viewapc-ls-submit' => 'Ledunön',
 	'viewapc-ls-header-name' => 'Nem',
+	'viewapc-ls-header-size' => 'Gretot',
+	'viewapc-ls-header-created' => 'Pejafon',
+	'viewapc-ls-header-deleted' => 'Pemoükon',
+	'viewapc-ls-delete' => '[Moükön anu]',
+	'viewapc-ls-scope-active' => 'Jäfedik',
+	'viewapc-ls-scope-deleted' => 'Pemoükon',
+	'viewapc-ls-scope-both' => 'Bofiks',
+	'viewapc-ls-sort-size' => 'Gretot',
 	'viewapc-ls-sort-name' => 'Nem',
+	'viewapc-ls-sort-created' => 'Pejafon',
+	'viewapc-ls-sort-deleted' => 'Pemoükon',
 	'viewapc-ls-limit-none' => 'Valik',
+	'viewapc-version-info' => 'Nüns tefü fomam',
+	'viewapc-version-failed' => 'No eplöpos ad dagetön fomamanünis.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

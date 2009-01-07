@@ -80,6 +80,7 @@ $messages['avk'] = array(
  */
 $messages['be-tarask'] = array(
 	'whoiswatching' => 'Хто назірае за старонкай',
+	'whoiswatching-desc' => 'Адлюстроўвае сьпіс удзельнікаў, якія назіраюць за гэтай старонкай',
 	'specialwhoiswatchingthepage' => 'Хто назірае за %s',
 	'specialwhoiswatchingusage' => 'Гэтая спэцыяльная старонка не можа выкарыстоўвацца самастойна.
 Калі ласка, карыстайцеся старонкай [[MediaWiki:Number_of_watching_users_pageview]] для вызначэньня ўваходнага пункту на гэту спэцыяльную старонку.',

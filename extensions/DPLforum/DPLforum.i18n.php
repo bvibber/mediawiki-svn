@@ -558,7 +558,7 @@ $messages['tet'] = array(
  */
 $messages['tl'] = array(
 	'dplforum-desc' => 'Karugtong na nakabatay sa talakayang DPL',
-	'dplforum-by' => 'ni $1',
+	'dplforum-by' => 'ni (sa pamamagitan ni) $1',
 	'dplforum-edited' => '- Huling nabago',
 	'dplforum-never' => 'Hindi kailanman',
 	'dplforum-toofew' => 'Talakayang DPL: Napakakaunting mga kaurian!',

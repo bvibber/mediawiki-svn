@@ -313,6 +313,7 @@ $messages['ay'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'whitelist-desc' => 'Рэдагаваць правоў доступу ўдзельнікаў з абмежаваньнямі',
 	'whitelistedit' => 'Рэдактар сьпісу агульнадаступных старонак',
 	'whitelist' => 'Агульнадаступныя старонкі',
 	'mywhitelistpages' => 'Мае старонкі',
@@ -332,6 +333,30 @@ $messages['be-tarask'] = array(
 	'whitelisttablesetedit' => 'Усталяваць для рэдагаваньня',
 	'whitelisttablesetview' => 'Усталяваць для прагляду',
 	'whitelisttableremove' => 'Выдаліць',
+	'whitelistnewpagesfor' => 'Дадаць новую старонку да сьпісу агульнадаступных старонак <b>$1</b><br />
+Карыстайцеся * ці % для стварэньня групавых сымбаляў',
+	'whitelistnewtabledate' => 'Дата сканчэньня:',
+	'whitelistnewtableedit' => 'Пазначаць для рэдагаваньня',
+	'whitelistnewtableview' => 'Пазначыць для прагляду',
+	'whitelistnowhitelistedusers' => 'У групе «{{MediaWiki:Group-restricted}}» няма ўдзельнікаў.
+Вам неабходна [[Special:UserRights|дадаць удзельнікаў у групу]] перад тым, як Вам можна будзе дадаваць старонкі ў белы сьпіс удзельнікаў.',
+	'whitelistnewtableprocess' => 'Працэс',
+	'whitelistnewtablereview' => 'Агляд',
+	'whitelistselectrestricted' => '== Выберыце імя ўдзельніка ==',
+	'whitelistpagelist' => 'Старонкі {{SITENAME}} для $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Верагодна пашырэньне [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] не было ўсталявана адпаведным чынам!</font>",
+	'whitelistoverview' => '== Агляд зьменаў для $1 ==',
+	'whitelistoverviewcd' => "* Зьмена даты на '''$1''' для [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Усталяваць доступ '''$1''' для [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Зьняць доступ да [[:$1|$1]]',
+	'whitelistoverviewna' => "* Даданьне [[:$1|$1]] у белы сьпіс з доступам '''$2''' і датай сканчэньня '''$3'''",
+	'whitelistrequest' => 'Запыт доступу для большай колькасьці старонак',
+	'whitelistrequestmsg' => 'Удзельнік $1 спытаў аб доступе да {{PLURAL:$3|наступнай старонкі|наступных старонак}}:
+
+$2',
+	'whitelistrequestconf' => 'Запыт па новым старонкам быў адпраўлены да $1',
+	'whitelistnonrestricted' => "Удзельнік '''$1''' не мае абмежаваньняў.
+Гэта старонка прызначана толькі для ўдзельнікаў з абмежаваньнямі",
 	'whitelistnever' => 'ніколі',
 );
 

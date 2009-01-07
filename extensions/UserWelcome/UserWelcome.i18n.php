@@ -883,6 +883,21 @@ $messages['vi'] = array(
 	'mp-request-new-friend' => '$1 người bạn mới',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'mp-userlevels-link' => 'Gebananivods',
+	'mp-welcome-upload' => 'Löpükön',
+	'mp-welcome-logged-in' => 'Glidis, o $1!',
+	'mp-requests-title' => 'Begs',
+	'mp-requests-message' => 'Labol begis sököl.',
+	'mp-request-new-message' => 'nun nulik',
+	'mp-request-new-gift' => '{{PLURAL:$1|Legivot|Legivots}} nulik $1',
+	'mp-request-new-foe' => '{{PLURAL:$1|Neflen|Neflens}} nulik $1',
+	'mp-request-new-friend' => '{{PLURAL:$1|Flen|Flens}} nulik $1',
+);
+
 /** Wolof (Wolof)
  * @author Ibou
  */

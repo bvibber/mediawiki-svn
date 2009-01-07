@@ -602,3 +602,10 @@ $messages['vi'] = array(
 	'contrib-tracking-button' => 'Tiếp tục',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'contrib-tracking-error' => 'Pöl',
+);
+

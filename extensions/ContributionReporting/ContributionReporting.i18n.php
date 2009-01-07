@@ -2310,9 +2310,20 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'contrib-hist-name' => 'Nem',
 	'contrib-hist-date' => 'Tim e dät',
+	'contrib-hist-anonymous' => 'Nennemik',
 	'contribstats-day' => 'Del',
 	'contribstats-month' => 'Mul',
 	'contribstats-currency' => 'Völäd',
+	'contribstats-total' => 'Valod (USD)',
+	'contribstats-avg' => 'Zäned (USD)',
+	'contribstats-max' => 'Maxum (USD)',
+	'contribstats-total-ytd' => 'Valod (YTD)',
 	'fundraiserstats-date' => 'Dät',
+	'fundraiserstats-total' => 'Valod (USD)',
+	'fundraiserstats-avg' => 'Zäned (USD)',
+	'fundraiserstats-max' => 'Maxum (USD)',
+	'fundraiserstats-tab-totals' => 'Valods (USD)',
+	'fundraiserstats-tab-averages' => 'Zäneds (USD)',
+	'fundraiserstats-tab-maximums' => 'Maxums (USD)',
 );
 

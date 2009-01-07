@@ -448,6 +448,51 @@ $4',
 	'specialpages-group-developer' => 'أدوات المطورين',
 );
 
+/** Southern Balochi (بلوچی مکرانی)
+ * @author Mostafadaneshvar
+ */
+$messages['bcc'] = array(
+	'code' => 'باز بینی کد',
+	'code-comments' => 'توضیح',
+	'code-change-removed' => 'زورگ:',
+	'code-change-added' => 'هوربیت:',
+	'code-notes' => 'بازدید نکته',
+	'code-authors' => 'نویسوکان',
+	'code-tags' => 'برچسپ',
+	'code-author-name' => 'نوکین کاربری نام وارد کن:',
+	'code-field-author' => 'نویسوک',
+	'code-field-user' => 'نظر دیوک',
+	'code-field-message' => 'خلاصه دیم دیگ',
+	'code-field-status' => 'وضعیت',
+	'code-field-timestamp' => 'تاریح',
+	'code-field-comments' => 'یادداشت',
+	'code-field-path' => 'جاه',
+	'code-field-text' => 'نکته',
+	'code-rev-author' => 'نویسوک:',
+	'code-rev-date' => 'تاریح:',
+	'code-rev-message' => 'توضیح:',
+	'code-rev-repo' => 'مخزن:',
+	'code-rev-rev' => 'نسخه:',
+	'code-rev-modified-a' => 'هوربوت',
+	'code-rev-modified-r' => 'جاه په جاه بوت',
+	'code-rev-modified-d' => 'حذف بوت',
+	'code-rev-modified-m' => 'عوض بوت',
+	'code-status-new' => 'نوکین',
+	'code-status-reverted' => 'ترینگ',
+	'code-status-resolved' => 'حل بیتت',
+	'code-status-ok' => 'هوبنت',
+	'code-pathsearch-path' => 'جاه:',
+	'code-rev-submit' => 'ذخیره تغییرات',
+	'code-rev-submit-next' => 'ذخیره کتن و روگ په دگه حل نه بوتگین',
+	'codereview-reply-link' => 'جواب',
+	'repoadmin' => 'مدیریت مخزن',
+	'repoadmin-new-legend' => 'شرکتن یک نوکین مخزن',
+	'repoadmin-new-label' => 'مخزن نام:',
+	'repoadmin-new-button' => 'شرکتن',
+	'repoadmin-edit-button' => 'هوبنت',
+	'specialpages-group-developer' => 'وسایل پیشبروک',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

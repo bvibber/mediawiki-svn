@@ -1016,11 +1016,21 @@ Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tá
  * @author Smeira
  */
 $messages['vo'] = array(
+	'deletebatch' => 'Moükön padamödoti',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Moükön padamödoti]]',
 	'deletebatch-button' => 'Moükön',
 	'deletebatch-caption' => 'Padalised',
+	'deletebatch-title' => 'Moükön padamödoti',
 	'deletebatch-or' => '<b>u</b>',
 	'deletebatch-page' => 'Pads moükabik',
 	'deletebatch-reason' => 'Kod moükama',
+	'deletebatch-processing' => 'pads $1 pamoükons',
+	'deletebatch-from-file' => 'se ragivalised',
+	'deletebatch-from-form' => 'se fomet',
+	'deletebatch-success-subtitle' => 'pro $1',
+	'deletebatch-omitting-nonexistant' => 'Pad no dabinöl $1 pamoädon.',
+	'deletebatch-omitting-invalid' => 'Pad no lonöföl $1 pamoädon.',
+	'deletebatch-file-missing' => 'No mögos ad reidön ragivi pavilöl',
 	'deletebatch-select-yourself' => 'ol',
 );
 

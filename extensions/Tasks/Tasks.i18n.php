@@ -2077,6 +2077,39 @@ $messages['vi'] = array(
 	'tasks_logpage' => 'Nhật trình việc cần làm',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'tasks' => 'Vobod',
+	'tasks_desc' => 'Veitükumam ad guvön vobodis.',
+	'tasks_tab' => 'Vobods',
+	'tasks_title' => 'Vobods pro el „$1“',
+	'tasks_form_new' => 'Jafön vobodi nulik',
+	'tasks_form_comment' => 'Küpet',
+	'tasks_error1' => 'Vobod no pejafon: ya dabinon vobod somik!',
+	'tasks_ok1' => 'Vobod nulik pejafon!',
+	'tasks_create_header' => 'Jafön vobodi nulik',
+	'tasks_existing_header' => 'Vobods dabinöl',
+	'tasks_close' => 'Färmükön vobodi',
+	'tasks_delete' => 'Moükön',
+	'tasks_no_task_delete_title' => 'No pedälöl',
+	'tasks_no_task_delete_texe' => 'No dalol moükön vobodi. Te guvans dalons dunön atosi.',
+	'tasks_action_delete' => 'Vobod pemoükon.',
+	'tasks_created_by' => 'Pejafon fa geban: $1',
+	'tasks_discussion_page_link' => 'Bespikapad voboda',
+	'tasks_closedby' => 'Pefärmükon fa geban: $1',
+	'tasks_here' => 'is',
+	'tasks_help_page' => 'Vobods',
+	'tasks_table_header_page' => 'Pad',
+	'tasks_search_form_title' => 'Sukön',
+	'tasks_search_tasks' => 'Vobods',
+	'tasks_search_status' => 'Stad',
+	'tasks_search_results' => 'Sukaseks',
+	'tasks_previous' => 'Büik',
+	'tasks_next' => 'Fovik',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */
