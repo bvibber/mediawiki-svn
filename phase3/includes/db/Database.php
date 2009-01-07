@@ -1608,6 +1608,19 @@ class Database {
 	}
 
 	/**
+	 * Convert a wildcard (as used in LIKE) to a regex
+	 * Slashes are escaped, slash terminators included
+	 */
+	function likeToRegex( $wildcard ) {
+		$r = preg_quote( $wildcard, '/' );
+		$r = strtr( $r, array(
+			'%' => '.*',
+			'_' => '.'
+		) );
+		return "/$r/s";
+	}
+
+	/**
 	 * Returns an appropriately quoted sequence value for inserting a new row.
 	 * MySQL has autoincrement fields, so this is just NULL. But the PostgreSQL
 	 * subclass will return an integer, and save the value for insertId()

@@ -28,15 +28,15 @@ class SqliteInstaller extends InstallerDBType {
 
 	function getConnectForm() {
 		return 
-			$this->getLabelledTextBox( 'wgSQLiteDataDir', 'config-sqlite-dir' ) .
+			$this->getTextBox( 'wgSQLiteDataDir', 'config-sqlite-dir' ) .
 			$this->parent->getHelpBox( 'config-sqlite-dir-help' ) .
-			$this->getLabelledTextBox( 'wgDBname', 'config-db-name' ) .
+			$this->getTextBox( 'wgDBname', 'config-db-name' ) .
 			$this->parent->getHelpBox( 'config-sqlite-name-help' );			
 	}
 
 	function submitConnectForm() {
 		global $wgSQLiteDataDirMode, $wgSQLiteDataDir;
-		$newValues = $this->setVarsFromRequest();
+		$newValues = $this->setVarsFromRequest( array( 'wgSQLiteDataDir', 'wgDBname' ) );
 		$dir = $newValues['wgSQLiteDataDir'];
 		if ( !is_dir( $dir ) ) {
 			if ( !is_writable( dirname( $dir ) ) ) {
@@ -55,17 +55,46 @@ class SqliteInstaller extends InstallerDBType {
 			return Status::newFatal( 'config-sqlite-unwritable', $dir );
 		}
 		return Status::newGood();
-		/* -- during install:
+	}
+
+	function getConnection() {
 		$status = Status::newGood();
+		$dir = $this->getVar( 'wgSQLiteDataDir' );
+		$dbName = $this->getVar( 'wgDBname' );
+
 		try {
 			# FIXME: need more sensible constructor parameters, e.g. single associative array
 			# Setting globals kind of sucks
 			$wgSQLiteDataDir = $dir;
-			$this->conn = new DatabaseSqlite( false, false, false, $newValues['wgDBname'] );
+			$this->conn = new DatabaseSqlite( false, false, false, $dbName );
+			return $this->conn;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-sqlite-connection-error', $e->getMessage() );
 		}
 		return $status;
-		 */
+	}
+
+	function needsUpgrade() {
+		$dir = $this->getVar( 'wgSQLiteDataDir' );
+		$dbName = $this->getVar( 'wgDBname' );
+		// Don't create the data file yet
+		if ( !file_exists( "$dir/$dbName.sqlite" ) ) {
+			return false;
+		}
+
+		// If the data file exists, look inside it
+		return parent::needsUpgrade();
+	}
+
+	function getSettingsForm() {
+		return false;
+	}
+
+	function submitSettingsForm() {
+		return Status::newGood();
+	}
+
+	function install() {
+		echo "TODO";
 	}
 }

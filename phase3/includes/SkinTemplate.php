@@ -143,6 +143,7 @@ class SkinTemplate extends Skin {
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks, $wgUseSiteJs;
 		global $wgArticlePath, $wgScriptPath, $wgServer, $wgLang, $wgCanonicalNamespaceNames;
+		global $wgLogoHeight;
 
 		wfProfileIn( __METHOD__ );
 
@@ -264,6 +265,11 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'scriptpath', $wgScriptPath );
 		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
+		if ( strval( $wgLogo ) == '' ) {
+			$tpl->set( 'logoHeight', 10 );
+		} else {
+			$tpl->set( 'logoHeight', $wgLogoHeight );
+		}
 		$tpl->setRef( "lang", $wgContLanguageCode );
 		$tpl->set( 'dir', $wgContLang->isRTL() ? "rtl" : "ltr" );
 		$tpl->set( 'rtl', $wgContLang->isRTL() );

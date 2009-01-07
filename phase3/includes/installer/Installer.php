@@ -22,15 +22,16 @@ abstract class Installer {
 		'wgRightsUrl',
 		'wgMainCacheType',
 		'wgEnableEmail', 
-		'wgEnableUserEmail',
-		'wgEnotifUserTalk',
-		'wgEnotifWatchlist',
 		'wgDBtype',
 		'wgDiff3',
 		'wgImageMagickConvertCommand',
 		'IP',
 		'wgScriptPath',
 		'wgScriptExtension',
+		'wgMetaNamespace',
+		'wgDeletedDirectory',
+		'wgEnableUploads',
+		'wgLogo',
 	);
 
 	/**
@@ -40,12 +41,27 @@ abstract class Installer {
 	 * @protected
 	 */
 	var $internalDefaults = array(
+		'_UserLang' => 'en',
 		'_Environment' => false,
 		'_CompiledDBs' => array(),
 		'_SafeMode' => false,
 		'_RaiseMemory' => false,
 		'_UpgradeDone' => false,
 		'_Caches' => array(),
+		'_InstallUser' => 'root',
+		'_InstallPassword' => '',
+		'_SameAccount' => true,
+		'_CreateDBAccount' => false,
+		'_NamespaceType' => 'site-name',
+		'_AdminName' => '',
+		'_AdminPassword' => '',
+		'_AdminPassword2' => '',
+		'_AdminEmail' => '',
+		'_Subscribe' => false,
+		'_SkipOptional' => 'continue',
+		'_RightsProfile' => 'wiki',
+		'_LicenseCode' => 'none',
+		'_CCDone' => false,
 	);
 
 	/**
@@ -61,6 +77,11 @@ abstract class Installer {
 		'postgres',
 		'sqlite'
 	);
+
+	/**
+	 * Minimum memory size in MB
+	 */
+	var $minMemory = 50;
 
 	/**
 	 * Cached DB installer instances, access using getDBInstaller()
@@ -103,6 +124,57 @@ abstract class Installer {
 		'eaccel' => 'eaccelerator_get'
 	);
 
+	/**
+	 * User rights profiles
+	 */
+	var $rightsProfiles = array(	
+		'wiki' => array(),
+		'no-anon' => array(
+			'*' => array( 'edit' => false )
+		),
+		'fishbowl' => array(
+			'*' => array( 
+				'createaccount' => false,
+				'edit' => false,
+			),
+		),
+		'private' => array(
+			'*' => array(
+				'createaccount' => false,
+				'edit' => false,
+				'read' => false,
+			),
+		),
+	);
+
+	/**
+	 * License types
+	 */
+	var $licenses = array(
+		'none' => array(
+			'url' => '',
+			'icon' => '',
+			'text' => ''
+		),
+		'pd' => array(
+			'url' => 'http://creativecommons.org/licenses/publicdomain/',
+			'icon' => '${wgScriptPath}/skins/common/images/public-domain.png',
+		),
+		'gfdl-old' => array(
+			'url' => 'http://www.gnu.org/licenses/old-licenses/fdl-1.2.html',
+			'icon' => '${wgScriptPath}/skins/common/images/gnu-fdl.png',
+		),
+		'gfdl-current' => array(
+			'url' => 'http://www.gnu.org/copyleft/fdl.html',
+			'icon' => '${wgScriptPath}/skins/common/images/gnu-fdl.png',
+		),
+		'cc-choose' => array(
+			// details will be filled in by the selector
+			'url' => '', 
+			'icon' => '',
+			'text' => '',
+		),
+	);
 	/**
 	 * Cached Title and ParserOptions used by parse()
 	 * @private
@@ -343,11 +415,12 @@ abstract class Installer {
 		if( preg_match( '/^([0-9]+)[Mm]$/', trim( $limit ), $m ) ) {
 			$n = intval( $m[1] * (1024*1024) );
 		}
-		if( $n < 20*1024*1024 ) {
-			if( false === ini_set( "memory_limit", "20M" ) ) {
+		if( $n < $this->minMemorySize*1024*1024 ) {
+			$newLimit = "{$this->minMemorySize}M";
+			if( false === ini_set( "memory_limit", $newLimit ) ) {
 				$this->showMessage( 'config-memory-bad', $limit );
 			} else {
-				$this->showMessage( 'config-memory-raised', $limit );
+				$this->showMessage( 'config-memory-raised', $limit, $newLimit );
 				$this->setVar( '_RaiseMemory', true );
 			}
 		} else {
@@ -507,18 +580,35 @@ abstract class Installer {
 	 * @param string $text
 	 * @return string
 	 */
-	function parse( $text ) {
+	function parse( $text, $lineStart = false ) {
 		global $wgParser;
 		try {
-			$out = $wgParser->parse( $text, $this->parserTitle, $this->parserOptions, false );
+			$out = $wgParser->parse( $text, $this->parserTitle, $this->parserOptions, $lineStart );
 			$html = $out->getText();
 		} catch ( InstallerDBAccessError $e ) {
 			$html = '<!--DB access attempted during parse-->  ' . htmlspecialchars( $text );
-			if ( $this->debug ) {
+			if ( !empty( $this->debug ) ) {
 				$html .= "<!--\n" . $e->getTraceAsString() . "\n-->";
 			}
 		}
 		return $html;
+	}
+
+	/**
+	 * Extension tag hook for a documentation link
+	 */
+	function docLink( $linkText, $attribs, $parser ) {
+		$url = $this->getDocUrl( $attribs['href'] );
+		return '<a href="' . htmlspecialchars( $url ) . '">' . 
+			htmlspecialchars( $linkText ) . 
+			'</a>';
+	}
+
+	/**
+	 * Overridden by WebInstaller to provide lastPage parameters
+	 */
+	protected function getDocUrl( $page ) {
+		return "{$_SERVER['PHP_SELF']}?page=" . urlencode( $attribs['href'] );
 	}
 }
 

@@ -155,12 +155,14 @@ $wgVariantArticlePath = false;
 $wgUploadPath       = false; ///< defaults to "{$wgScriptPath}/images"
 $wgUploadDirectory	= false; ///< defaults to "{$IP}/images"
 $wgHashedUploadDirectory	= true;
-$wgLogo				= false; ///< defaults to "{$wgStylePath}/common/images/wiki.png"
+$wgLogo				= false;
+$wgLogoHeight       = 135;
 $wgFavicon			= '/favicon.ico';
 $wgAppleTouchIcon   = false; ///< This one'll actually default to off. For iPhone and iPod Touch web app bookmarks
 $wgMathPath         = false; ///< defaults to "{$wgUploadPath}/math"
 $wgMathDirectory    = false; ///< defaults to "{$wgUploadDirectory}/math"
 $wgTmpDirectory     = false; ///< defaults to "{$wgUploadDirectory}/tmp"
+$wgDeletedDirectory = false; ///< defaults to "{$wgUploadDirectory}/deleted"
 $wgUploadBaseUrl    = "";
 /**@}*/
 
@@ -177,7 +179,7 @@ $wgDirectoryMode = 0777;
  *
  */
 $wgFileStore = array();
-$wgFileStore['deleted']['directory'] = false;///< Defaults to $wgUploadDirectory/deleted
+$wgFileStore['deleted']['directory'] = false;///< Defaults to $wgDeletedDirectory
 $wgFileStore['deleted']['url'] = null;       ///< Private
 $wgFileStore['deleted']['hash'] = 3;         ///< 3-level subdirectory split
 

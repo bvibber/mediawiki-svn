@@ -4,15 +4,20 @@ define( 'MW_NO_DB', 1 );
 define( 'MW_CONFIG_CALLBACK', 'wfInstallerConfig' );
 
 function wfInstallerConfig() {
+	// Don't access the database
 	$GLOBALS['wgUseDatabaseMessages'] = false;
 	$GLOBALS['wgLBFactoryConf'] = array( 'class' => 'LBFactory_InstallerFake' );
+	// Debug-friendly
 	$GLOBALS['wgShowExceptionDetails'] = true;
+	// Don't break forms
+	$GLOBALS['wgExternalLinkTarget'] = '_blank';
 }
 
 chdir( ".." );
 require( './includes/WebStart.php' );
 
 $installer = new WebInstaller( $wgRequest );
+$wgParser->setHook( 'doclink', array( $installer, 'docLink' ) );
 
 if ( !$installer->startSession() ) {
 	$installer->finish();
@@ -30,6 +35,9 @@ if ( isset( $session['settings']['_UserLang'] ) ) {
 }
 $wgLang = Language::factory( $langCode );
 
+$wgMetaNamspace = $wgCanonicalNamespaceNames[NS_PROJECT];
+
 $session = $installer->execute( $session );
+
 $_SESSION['installData'] = $session;
 

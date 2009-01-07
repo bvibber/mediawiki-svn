@@ -39,28 +39,24 @@ class PostgresInstaller extends InstallerDBType {
 
 	function getConnectForm() {
 		return
-			$this->getLabelledTextBox( 'wgDBserver', 'config-db-host' ) .
+			$this->getTextBox( 'wgDBserver', 'config-db-host' ) .
 			$this->parent->getHelpBox( 'config-db-host-help' ) . 
-			$this->getLabelledTextBox( 'wgDBport', 'config-db-port' ) .
+			$this->getTextBox( 'wgDBport', 'config-db-port' ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'config-db-wiki-settings' ) ) .
-			$this->getLabelledTextBox( 'wgDBname', 'config-db-name' ) .
+			$this->getTextBox( 'wgDBname', 'config-db-name' ) .
 			$this->parent->getHelpBox( 'config-db-name-help' ) .
-			$this->getLabelledTextBox( 'wgDBmwschema', 'config-db-schema' ) .
-			$this->getLabelledTextBox( 'wgDBts2schema', 'config-db-ts2-schema' ) .
+			$this->getTextBox( 'wgDBmwschema', 'config-db-schema' ) .
+			$this->getTextBox( 'wgDBts2schema', 'config-db-ts2-schema' ) .
 			$this->parent->getHelpBox( 'config-db-schema-help' ) .
 			Xml::closeElement( 'fieldset' ) .
-			Xml::openElement( 'fieldset' ) . 
-			Xml::element( 'legend', array(), wfMsg( 'config-db-install-account' ) ) .
-			$this->getLabelledTextBox( '_PostgresInstallUser', 'config-db-username' ) .
-			$this->getLabelledPasswordBox( '_PostgresInstallPassword', 'config-db-password' ) .
-			$this->parent->getHelpBox( 'config-db-install-help' ) .
-			Xml::closeElement( 'fieldset' );		
+			$this->getInstallUserBox();
 	}
 
 	function submitConnectForm() {
 		// Get variables from the request
-		$newValues = $this->setVarsFromRequest();
+		$newValues = $this->setVarsFromRequest( array( 'wgDBserver', 'wgDBport', 
+			'wgDBname', 'wgDBmwschema', 'wgDBts2schema' ) );
 
 		// Validate them
 		$status = Status::newGood();
@@ -107,4 +103,24 @@ class PostgresInstaller extends InstallerDBType {
 		return $status;
 	}
 
+	function getConnection() {
+		$status = $this->attemptConnection();
+		if ( $status->isOK() ) {
+			return $this->conn;
+		} else {
+			return $status;
+		}
+	}
+
+	function getSettingsForm() {
+		return false;
+	}
+
+	function submitSettingsForm() {
+		return Status::newGood();
+	}
+
+	function install() {
+		echo "TODO";
+	}
 }

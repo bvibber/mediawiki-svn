@@ -131,8 +131,8 @@ class MonoBookTemplate extends QuickTemplate {
 		</div>
 	</div>
 		</div>
-		<div id="column-one">
-	<div id="p-cactions" class="portlet">
+		<div id="column-one" style="padding-top: <? echo intval($this->data['logoHeight'] + 25); ?>px">
+		<div id="p-cactions" class="portlet">
 		<h5><?php $this->msg('views') ?></h5>
 		<div class="pBody">
 			<ul>
@@ -175,12 +175,17 @@ class MonoBookTemplate extends QuickTemplate {
 			</ul>
 		</div>
 	</div>
+<?php
+if ( strval( $this->data['logopath'] ) !== '' ):
+?>
 	<div class="portlet" id="p-logo">
 		<a style="background-image: url(<?php $this->text('logopath') ?>);" <?php
 			?>href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"<?php
 			echo $skin->tooltipAndAccesskey('n-mainpage') ?>></a>
 	</div>
 	<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
+<? endif; ?>
+
 <?php
 		$sidebar = $this->data['sidebar'];
 		if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;

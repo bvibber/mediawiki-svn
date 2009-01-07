@@ -42,8 +42,6 @@ if( $wgArticlePath === false ) {
 if( $wgStylePath === false ) $wgStylePath = "$wgScriptPath/skins";
 if( $wgStyleDirectory === false) $wgStyleDirectory   = "$IP/skins";
 
-if( $wgLogo === false ) $wgLogo = "$wgStylePath/common/images/wiki.png";
-
 if( $wgUploadPath === false ) $wgUploadPath = "$wgScriptPath/images";
 if( $wgUploadDirectory === false ) $wgUploadDirectory = "$IP/images";
 
@@ -53,9 +51,9 @@ if( $wgTmpDirectory === false ) $wgTmpDirectory = "{$wgUploadDirectory}/tmp";
 
 if( $wgReadOnlyFile === false ) $wgReadOnlyFile = "{$wgUploadDirectory}/lock_yBgMBwiR";
 if( $wgFileCacheDirectory === false ) $wgFileCacheDirectory = "{$wgUploadDirectory}/cache";
-
+if ( $wgDeletedDirectory === false ) $wgDeletedDirectory = "{$wgUploadDirectory}/deleted";
 if ( empty( $wgFileStore['deleted']['directory'] ) ) {
-	$wgFileStore['deleted']['directory'] = "{$wgUploadDirectory}/deleted";
+	$wgFileStore['deleted']['directory'] = $wgDeletedDirectory;
 }
 
 /**
