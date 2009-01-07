@@ -932,6 +932,10 @@ $extensions = array(
 		'file' => 'SpecialRenameuser.php',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Renameuser',
 	),
+	array(
+		'name' => 'ReplaceText',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:ReplaceText',
+	),
 
 	// S
 	array(
