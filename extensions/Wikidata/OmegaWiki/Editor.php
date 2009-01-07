@@ -1034,8 +1034,8 @@ class DefinedMeaningHeaderEditor extends ScalarEditor {
 
 		if ($this->truncate && strlen($definition) > $this->truncateAt)
 			$escapedDefinition = '<span title="'. $escapedDefinition .'">'. htmlspecialchars(substr($definition, 0, $this->truncateAt)) . '...</span>' . EOL;
-
-		return $definedMeaningAsLink . wfMsg( 'colon-separator' ) . $escapedDefinition;
+			
+		return $definedMeaningAsLink . ": " . $escapedDefinition;			
 	}
 
 	public function getEditHTML(IdStack $idPath, $value) {
