@@ -50,7 +50,6 @@ class ApiCodeUpdate extends ApiBase {
 		// Mainly for WMF post-commit ping hook...
 		if( count($result) <= 2 ) {
 			foreach( $result as $revData ) {
-				$rev = $repo->getRevision( $revData['id'] );
 				$diff = $repo->getDiff( $revData['id'] ); // trigger caching
 			}
 		}
