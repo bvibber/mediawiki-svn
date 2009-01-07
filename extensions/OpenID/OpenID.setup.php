@@ -148,3 +148,4 @@ $wgHooks['PersonalUrls'][] = 'OpenIDHooks::onPersonalUrls';
 $wgHooks['UserToggles'][] = 'OpenIDHooks::onUserToggles';
 $wgHooks['ArticleViewHeader'][] = 'OpenIDHooks::onArticleViewHeader';
 $wgHooks['SpecialPage_initList'][] = 'OpenIDHooks::onSpecialPage_initList';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'OpenIDHooks::onLoadExtensionSchemaUpdates';
