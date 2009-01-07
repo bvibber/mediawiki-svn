@@ -78,6 +78,15 @@ class SpecialCode extends SpecialPage {
 			}
 		}
 		$view->execute();
+		
+		// Add subtitle for easy navigation
+		global $wgOut;
+		if ( $view instanceof CodeView ) {
+			$repo = $view->getRepo();
+			if ( $repo )
+				$wgOut->setSubtitle( wfMsgExt( 'codereview-subtitle', 'parse', 
+					CodeRepoListView::getNavItem( $repo->getName() ) ) );
+		}
 	}
 }
 
@@ -143,6 +152,12 @@ abstract class CodeView {
 			$html .= "<tr><td>" . wfMsgHtml( $label ) . "</td><td>$data</td></tr>\n";
 		}
 		return $html . "</table>\n";
+	}
+	
+	function getRepo() {
+		if ( $this->mRepo )
+			return $this->mRepo;
+		return false;
 	}
 }
 

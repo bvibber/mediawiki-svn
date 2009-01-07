@@ -75,6 +75,8 @@ $messages['en'] = array(
 	'code-rev-submit' => 'Save changes',
 	'code-rev-submit-next' => 'Save & next unresolved',
 	
+	'codereview-subtitle' => 'For $1',
+	
 	'codereview-reply-link' => 'reply',
 	
 	'codereview-email-subj' => '[$1] [r$2]: New comment added',
