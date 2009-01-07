@@ -449,7 +449,7 @@ class FormField {
 			  Xml::closeElement('textarea');
 			break;
 		 case 'text':
-			return Xml::element('label', array('for' => $this->name), $this->label) . ": " .
+			return Xml::element( 'label', array( 'for' => $this->name ), $this->label ) . wfMsg( 'colon-separator' ) .
 			  Xml::element('input', array('type' => 'text',
 									   'name' => $this->name,
 									   'id' => $this->name,
@@ -463,7 +463,7 @@ class FormField {
 			if ($def == 'checked') {
 				$attrs['checked'] = 'checked';
 			}
-			return Xml::element('label', array('for' => $this->name), $this->label) . ": " .
+			return Xml::element( 'label', array( 'for' => $this->name ), $this->label ) . wfMsg( 'colon-separator' ) .
 			  Xml::element('input', $attrs);
 			break;
 		 case 'radio':
@@ -491,7 +491,7 @@ class FormField {
 									 $item);
 			}
 
-			return Xml::element('label', array('for' => $this->name), $this->label) . ": " .
+			return Xml::element( 'label', array( 'for' => $this->name ), $this->label ) . wfMsg( 'colon-separator' ) .
 			  Xml::openElement('select', array('name' => $this->name, 'id' => $this->name)) .
 			  implode("", $items) .
 		      Xml::closeElement('select');

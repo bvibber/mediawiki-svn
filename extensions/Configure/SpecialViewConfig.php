@@ -138,7 +138,7 @@ class SpecialViewConfig extends ConfigurationPage {
 			'allowedExtensionsAll' => $wgUser->isAllowed( 'extensions-interwiki' ),
 			'self' => $self,
 			'skin' => $wgUser->getSkin(),
-			'editMsg' => wfMsg( 'edit' ) . ': ',
+			'editMsg' => wfMsg( 'edit' ) . wfMsg( 'colon-separator' ),
 		);
 
 		if ( $formatConf['allowedConfig'] )

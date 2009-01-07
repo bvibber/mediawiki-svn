@@ -93,9 +93,9 @@ class OmegaWiki extends DefaultWikidataApplication {
 	public function getTitle() {
 		global
 			$wgTitle, $wgExpressionPageTitlePrefix;
-	
+
 		if ($wgExpressionPageTitlePrefix != "")
-			$prefix = $wgExpressionPageTitlePrefix . ": ";
+			$prefix = $wgExpressionPageTitlePrefix . wfMsg( 'colon-separator' );
 		else
 			$prefix	= "";
 					

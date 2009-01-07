@@ -170,7 +170,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$wgTitle, $wgDefinedMeaningPageTitlePrefix;
 	
 		if ($wgDefinedMeaningPageTitlePrefix != "")
-			$prefix = $wgDefinedMeaningPageTitlePrefix . ": ";
+			$prefix = $wgDefinedMeaningPageTitlePrefix . wfMsg( 'colon-separator' );
 		else
 			$prefix	= "";
 					
