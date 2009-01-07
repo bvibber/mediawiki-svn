@@ -849,6 +849,41 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
 	),
 	array(
+		'name' => 'OpenID',
+		'file' => 'OpenID.setup.php',
+		'settings' => array(
+			'wgHideOpenIDLoginLink' => 'bool',
+			'wgOpenIDLoginLogoUrl' => 'text',
+			'wgOpenIDShowUrlOnUserPage' => array(
+				'always' => 'Always',
+				'user' => 'User choice',
+				'never' => 'Never',
+			),
+			'wgOpenIDServerForceAllowTrust' => 'array',
+			'wgOpenIDServerStoreType' => 'text',
+			'wgOpenIDServerStorePath' => 'text',
+			'wgTrustRoot' => 'text',
+			'wgOpenIDConsumerDenyByDefault' => 'bool',
+			'wgOpenIDConsumerAllow' => 'array',
+			'wgOpenIDConsumerDeny' => 'array',
+			'wgOpenIDConsumerStoreType' => 'text',
+			'wgOpenIDConsumerStorePath' => 'text',
+			'wgOpenIDCookieExpiration' => 'int',
+			'wgOpenIDOnly' => 'bool',
+			'wgOpenIDClientOnly' => 'bool',
+		),
+		'array' => array(
+			'wgOpenIDServerForceAllowTrust' => 'simple',
+			'wgOpenIDConsumerAllow' => 'simple',
+			'wgOpenIDConsumerDeny' => 'simple',
+		),
+		'empty' => array(
+			'wgTrustRoot' => null,
+		),
+		'schema' => true,
+		'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
+	),
+	array(
 		'name' => 'OpenSearchXml',
 		'settings' => array(
 			'wgOpenSearchAdvertiseXml' => 'bool',
