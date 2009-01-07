@@ -455,6 +455,12 @@ remoteSearchDriver.prototype = {
 		//get the HQ image url: 
 		rObj.pSobj.getImageObj( rObj, size, function( imObj ){			
 			rObj['url'] = imObj.url;
+			
+			//update the rObj
+			rObj['org_width'] = imObj.org_width;			
+			rObj['width'] = imObj.width;
+			rObj['height'] = imObj.height;
+				
 			//see if we need to animate some transition
 			var newSize = false;
 			if( size.width != imObj.width ){ 
@@ -462,10 +468,7 @@ remoteSearchDriver.prototype = {
 				newSize={
 					'width':imObj.width + 'px',
 					'height':imObj.height + 'px'
-				}
-				//update the rObj (hopefully this happens before people select their crop)
-				rObj['width'] = imObj.width;
-				rObj['height'] = imObj.height;
+				}			
 				//set the target id to the new size: 
 				$j('#'+target_img_id).animate( newSize );
 			}else{		
@@ -1246,8 +1249,10 @@ mediaWikiSearch.prototype = {
 		do_api_req( reqObj, this.cp.api_url , function(data){
 			var imObj = {};
 			for(var page_id in  data.query.pages){
-				var iminfo =  data.query.pages[ page_id ].imageinfo[0];				
-				//check if thumb size > than image size and is jpeg or png (it will not scale well above its max res) 
+				var iminfo =  data.query.pages[ page_id ].imageinfo[0];
+				//store the orginal width: 				
+				imObj['org_width']=iminfo.width;
+				//check if thumb size > than image size and is jpeg or png (it will not scale well above its max res)				
 				if( ( iminfo.mime=='image/jpeg' || iminfo=='image/png' ) &&
 					iminfo.thumbwidth > iminfo.width ){ 		
 					imObj['url'] = iminfo.url;
