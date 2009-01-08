@@ -34,7 +34,6 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     private String urlString;
     private boolean audio;
     private boolean video;
-    private int kateIndex;
     private boolean showSpeaker;
     private boolean keepAspect;
     private boolean autoPlay;
@@ -101,7 +100,6 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
                 "Total duration of the file in seconds (default unknown)"},
             {"audio", "boolean", "Enable audio playback (default true)"},
             {"video", "boolean", "Enable video playback (default true)"},
-            {"kateIndex", "boolean", "Enable playback of a particular Kate stream (default -1 (none))"},
             {"statusHeight", "int", "The height of the status area (default 12)"},
             {"autoPlay", "boolean", "Automatically start playback (default true)"},
             {"showStatus", "enum", "Show status area (auto|show|hide) (default auto)"},
@@ -225,7 +223,6 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         durationParam = getDoubleParam("duration", -1.0);
         audio = getBoolParam("audio", true);
         video = getBoolParam("video", true);
-        kateIndex = getIntParam("kateIndex", -1);
         statusHeight = getIntParam("statusHeight", 12);
         autoPlay = getBoolParam("autoPlay", true);
         showStatus = getEnumParam("showStatus", showStatusVals, "auto");
@@ -260,7 +257,6 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         pipeline.setPassword(password);
         pipeline.enableAudio(audio);
         pipeline.enableVideo(video);
-        pipeline.enableKateIndex(kateIndex);
         pipeline.setBufferSize(bufferSize);
         pipeline.setBufferLow(bufferLow);
         pipeline.setBufferHigh(bufferHigh);

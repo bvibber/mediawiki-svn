@@ -41,8 +41,7 @@ public class OggDemux extends Element
 
   private OggPayload payloads[] = {
     new TheoraDec(),
-    new VorbisDec(),
-    new KateDec()
+    new VorbisDec()
   };
 
   class OggStream extends Pad {
@@ -223,20 +222,15 @@ public class OggDemux extends Element
 	complete = true;
 	return Pad.OK;
       }
-
       /* first read all the headers */
       if (!haveHeaders) {
 	if (payload.isHeader(op)) {
-          int result = payload.takeHeader (op);
-          if (result < 0) {
+          if (payload.takeHeader (op) < 0) {
             postMessage (Message.newError (this, "cannot read header"));
 	    return Pad.ERROR;
 	  }
           com.fluendo.jst.Buffer data = bufferFromPacket (op);
           headers.addElement(data);
-          if (result > 0) {
-            haveHeaders = true;
-          }
         }
         else {
           haveHeaders = true;
@@ -244,10 +238,6 @@ public class OggDemux extends Element
       }
       /* if we have all the headers we can stream */
       if (haveHeaders) {
-        /* discontinuous codecs do not need to wait for data to allow playback */
-        if (!complete && payload.isDiscontinuous()) {
-          complete = true;
-        }
         if (complete && started) {
           int ret;
           com.fluendo.jst.Buffer data = bufferFromPacket (op);

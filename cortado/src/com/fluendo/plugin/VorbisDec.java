@@ -56,10 +56,6 @@ public class VorbisDec extends Element implements OggPayload
   {
     return true;
   }
-  public boolean isDiscontinuous ()
-  {
-    return false;
-  }
   public long getFirstTs (Vector packets)
   {
     int len = packets.size();
