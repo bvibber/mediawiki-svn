@@ -20,7 +20,7 @@ if(wgAction=='edit'){
 		imE.src = 'http://upload.wikimedia.org/wikipedia/commons/8/86/Button_add_media.png';
 		toolbar.appendChild(imE);	
 		imE.setAttribute('onClick', 'mv_do_load_wiz()');
-		//addHandler only works once
+		//addHandler only works once cuz of dom manipluations 
 		/*addHandler( imE, 'click', function() {
 			mv_do_load_wiz();
 		});*/

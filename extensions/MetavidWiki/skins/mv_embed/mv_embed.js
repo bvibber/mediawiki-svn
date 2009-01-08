@@ -2222,7 +2222,7 @@ embedVideo.prototype = {
 	        if(this.controls)
 	        {
 	        	js_log("f:getHTML:AddControls");
-	            html_code +='<div id="mv_embedded_controls_'+this.id+'" class="controls" style="width:'+this.width+'px">';
+	            html_code +='<div id="mv_embedded_controls_' + this.id + '" class="controls" style="width:' + this.width + 'px">';
 	            html_code += this.getControlsHTML();       
 	            html_code +='</div>';      
 	            //block out some space by encapulating the top level div 
@@ -2716,6 +2716,8 @@ embedVideo.prototype = {
 		}else{
 			this.pause();
 		}	
+		//reset the currentTime: 
+		this.currentTime=0;
 		//check if thumbnail is being displayed in which case do nothing
 		if(this.thumbnail_disp){
 			//already in stooped state

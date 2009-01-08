@@ -217,7 +217,8 @@ var vlcEmbed = {
         	//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration()); 
         }else{
         	this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;       
-        }       	       	
+        }       	      
+        //js_log('cur vlc:time: ' +  	this.currentTime);
         if( this.duration > 0 || this.vlc.input.time > 0){                             				     					
 			this.start_offset=this.media_element.selected_source.start_offset;		
 			

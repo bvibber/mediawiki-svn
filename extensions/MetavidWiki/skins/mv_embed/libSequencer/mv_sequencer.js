@@ -414,7 +414,11 @@ mvSequencer.prototype = {
 	},
 	//once playlist is ready continue 
 	checkReadyPlObj:function(){		
+		//set up pointers from sequencer to pl obj 
 		this.plObj = $j('#'+ this.plObj_id ).get(0);
+		//& from seq obj to sequencer
+		this.plObj.pSeq = this;
+		
 		if( this.plObj )
 			if( ! this.plObj.loading )
 				this.plReadyInit();
@@ -437,7 +441,7 @@ mvSequencer.prototype = {
 		//give the playlist a pointer to its parent seq: 
 		this.plObj['seqObj'] = this;
 							
-		//update playlist (since if its empty right now) 
+		//update playlist (if its empty right now)
 		if(this.plObj.getClipCount()==0){
 			$j('#'+this.plObj_id).html('empty playlist');
 		}	
@@ -546,7 +550,7 @@ mvSequencer.prototype = {
 		
 		//set up key bidnings
 		$j().keydown(function(e){
-			js_log('pushed down on:' + e.which); 
+			js_log('pushed down on:' + e.which);			
 			if( e.which == 16 )
 				this_seq.key_shift_down = true;
 						
@@ -563,8 +567,8 @@ mvSequencer.prototype = {
 				this_seq.pasteClipBoardClips();
 				
 		});
-		$j().keyup(function(e){
-			js_log('key up on ' + e.which);
+		$j().keyup(function(e){			
+			js_log('key up on ' + e.which);			
 			//user let go of "shift" turn off multi-select
 			if( e.which == 16 )
 				this_seq.key_shift_down = false;
@@ -573,7 +577,7 @@ mvSequencer.prototype = {
 				this_seq.key_ctrl_down = false;							
 			
 			//backspace or delete key:   
-			if( e.which == 8 || e.which == 46 ){					
+			if( e.which == 8 || e.which == 46 ){							
 				this_seq.removeSelectedClips();	
 			}		
 		});
@@ -737,7 +741,8 @@ mvSequencer.prototype = {
 			//grab the track index from the id (assumes track_#_clip_# 					
 			remove_clip_ary.push ( $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_') );																				
 		});		
-		this.removeClips(remove_clip_ary);
+		if(remove_clip_ary.length !=0 )
+			this.removeClips(remove_clip_ary);		
 	},
 	//add a single or set of clips
 	//to a given position and track_inx 
@@ -1334,11 +1339,22 @@ mvSeqPlayList.prototype = {
 		//do specific mods:(controls and title are managed by the sequencer)  
 		this.pl_layout.title_bar_height=0;
 		this.pl_layout.control_height=0;
-	},
-	//update the timeline playhead and passalong to parent
+	},	
 	setSliderValue:function( perc ){
-		js_log("set " + perc + ' of cur_clip: ' + this.cur_clip.order );
-		//$j('#'+ this.seqObj.timeline_id + '_playline').css('left')
+		//get the track_clipThumb_height from parent mvSequencer	
+		var frame_width = Math.round( this.pSeq.track_clipThumb_height * 1.3333333 );
+		var container_width = frame_width+60;
+		
+		var perc_clip = this.cur_clip.embed.currentTime / this.cur_clip.getDuration();
+		
+		var left_px = parseInt( (this.cur_clip.order * container_width) + (frame_width*perc_clip) ) + 'px';	
+		js_log("set " + perc + ' of cur_clip: ' + this.cur_clip.order + ' lp:'+left_px);
+					
+				
+		//update the timeline playhead and 			
+		$j('#'+ this.seqObj.timeline_id + '_playline').css('left', left_px);
+			
+		//pass update request to parent:
 		this.parent_setSliderValue( perc );
 	},
 	getControlsHTML:function(){				

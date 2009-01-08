@@ -372,10 +372,10 @@ mvPlayList.prototype = {
 		
 		//add the playlist controls:						
 		$j('#dc_'+plObj.id).append(
-			'<div class="videoPlayer" style="position:absolute;top:'+(plObj.height+plObj.pl_layout.title_bar_height)+'px">' +
+			'<div class="videoPlayer" style="position:absolute;top:'+(plObj.height+plObj.pl_layout.title_bar_height+4)+'px">' +
 				'<div id="mv_embedded_controls_'+plObj.id+'" ' +
 					'style="postion:relative;top:'+(plObj.height+plObj.pl_layout.title_bar_height)+'px;' +
-						'width:'+plObj.width+'px" ' +
+						'width:' + ( plObj.width + 2 ) + 'px" ' +
 					'class="controls">' + 
 					 plObj.getControlsHTML() +
 				'</div>'+
@@ -460,8 +460,14 @@ mvPlayList.prototype = {
 		$j('#ptitle_'+this.id).html(''+
 			'<b>' + this.title + '</b> '+				
 			this.getClipCount()+' clips, <i>'+
-			seconds2ntp( this.getDuration() ) + '</i>' + 
-			'<a href="#" onclick="$j(\'#'+this.id+'\').get(0).doEditor();" style="position:absolute;top:0px;right:0px">edit</a>');
+			seconds2ntp( this.getDuration() ) + '</i>');
+			
+		//only show the inline edit button if mediaWiki write API is enabled:
+		if(wgEnableWriteAPI==true)
+			$j('#ptitle_'+this.id).append(
+				'<a href="#" onclick="$j(\'#'+this.id+'\').get(0).doEditor();"'+ 
+				'style="position:absolute;top:0px;right:0px">edit</a>'
+			);
 		//render out the dividers on the timeline: 
 		this.colorPlayHead();		
 		//update status:
@@ -584,11 +590,7 @@ mvPlayList.prototype = {
 			//navtive support:
 			// * pre-loads clips
 			// * mv_playlist smil extension, manages transitions animations overlays etc. 			
-			js_log('clip obj supports playlist swap_loader (ie playlist controlled playback)');
-			//update cur clip based if sequence playhead set: 
-			var d = new Date();
-			this.clockStartTime = d.getTime();			
-			this.monitor();		
+			js_log('clip obj supports playlist swap_loader (ie playlist controlled playback)');							
 			//@@todo pre-load each clip: 
 			this.cur_clip.embed.play();			
 		}else if(this.cur_clip.embed.supports['playlist_driver']){				
@@ -601,6 +603,8 @@ mvPlayList.prototype = {
 			//play cur_clip			
 			this.cur_clip.embed.play();		
 		}
+		//start up the playlist monitor	
+		this.monitor();		
 	},	
 	toggleMute:function(){
 		this.cur_clip.embed.toggleMute();
@@ -1244,8 +1248,7 @@ var xspfPlaylist ={
  *****************************/
 /*playlist driver extensions to the playlist object*/
 mvPlayList.prototype.monitor = function(){	
-	//js_log('pl:monitor');		
-	//js_log('mvPlayList:monitor trueTime: '+ ( (ct.getTime() - this.clockStartTime )/1000));	
+	//js_log('pl:monitor');			
 	//if paused stop updates
 	if( this.paused ){
 		//clearInterval( this.smil_monitorTimerId );
@@ -1258,6 +1261,7 @@ mvPlayList.prototype.monitor = function(){
 	
 	//update the playlist current time: 
 	this.currentTime = this.cur_clip.dur_offset + this.cur_clip.embed.currentTime;	
+		
 	//update slider: 
 	if(!this.userSlide){
 		this.setStatus(seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.getDuration()) );				

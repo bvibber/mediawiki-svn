@@ -526,7 +526,7 @@ ul.rsd_cp_tabs li {
 	right:2px;
 	top:100px;
 	bottom:2px;
-	z-index:-1;
+	z-index:200;
 	overflow:auto;
 }
 #rsd_results {

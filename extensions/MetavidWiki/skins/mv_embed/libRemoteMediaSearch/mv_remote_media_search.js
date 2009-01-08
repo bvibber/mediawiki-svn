@@ -367,9 +367,9 @@ remoteSearchDriver.prototype = {
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="float:left;width:' + _this.thumb_width + 'px; padding:5px;" src="' + rItem.poster + '">';			
-							o+= rItem.desc ;							
-						o+='</div>';
-						o+='<div style="clear:both" />';
+							o+= rItem.desc ;					
+						o+='<div style="clear:both" />';			
+						o+='</div>';						
 					}			
 				});	
 			}						

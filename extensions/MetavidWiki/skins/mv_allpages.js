@@ -21,14 +21,7 @@ function mv_setup_allpage(){
 	//make sure we have jQuery and any base required libs:
 	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){
  		_global['$j'] = jQuery.noConflict();
- 		js_log('allpage_ did jquery check');
- 		
- 		if(typeof wgCanonicalNamespace != 'undefined'){
-			//(@@todo genneralize to a script action taken by the php so its not language specifc) 
-			if(wgCanonicalNamespace=='Sequence' && $j('#ca-edit').hasClass("selected")){
-				mv_do_sequence_edit_swap('seq');
-			}
- 		}
+ 		js_log('allpage_ did jquery check'); 		 		
  		
  		var reqLibs = {'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
  					   '$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'};
