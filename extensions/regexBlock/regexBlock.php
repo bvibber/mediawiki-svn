@@ -57,7 +57,8 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'regexblock-desc',
 );
 
-// add hook
+// Hooked functions
+$wgHooks['ContributionsToolLinks'][] = 'RegexBlock::loadContribsLink';
 $wgHooks['GetBlockedStatus'][] = 'RegexBlock::check';
 
 // Set up the new special page

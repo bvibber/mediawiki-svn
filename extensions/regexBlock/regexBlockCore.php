@@ -625,4 +625,22 @@ class RegexBlock {
 
 		wfProfileOut( __METHOD__ );
 	}
+
+	/**
+	 * Add a link to Special:RegexBlock from Special:Contributions/USERNAME
+	 * pages if the user has 'regexblock' permission
+	 * @return true
+	 */
+	public static function loadContribsLink( $id, $nt, &$links ){
+		global $wgUser;
+		if( $wgUser->isAllowed( 'regexblock' ) ) {
+			wfLoadExtensionMessages( 'RegexBlock' );
+			$links[] = $wgUser->getSkin()->makeKnownLinkObj(
+						SpecialPage::getTitleFor( 'RegexBlock' ),
+						wfMsgHtml( 'regexblock' ),
+						'&ip=' . urlencode( $nt->getText() ) );
+		}
+		return true;
+	}
+
 }
