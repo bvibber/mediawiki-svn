@@ -21,6 +21,7 @@ $messages['en'] = array(
 	'code-load-diff'=> 'Loading diff…',
 	'code-notes' => 'review notes',
 	'code-authors' => 'authors',
+	'code-status' => 'status',
 	'code-tags' => 'tags',
 	'code-authors-text' => 'Below is a list of repo authors in order of recent commits.',
 	'code-author-haslink' => 'This author is linked to the wiki user $1',
