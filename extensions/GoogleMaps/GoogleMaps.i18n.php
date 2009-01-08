@@ -1998,6 +1998,8 @@ $wgGoogleMapsMessages['ja'] = array(
 	'gm-tab-title' => 'タブタイトル',
 	'gm-tab' => 'タブ',
 	'gm-no-zoom-control' => 'なし',
+	'gm-yes' => 'はい',
+	'gm-no' => 'いいえ',
 	'gm-search' => '検索',
 	'gm-save-path' => '保存',
 );

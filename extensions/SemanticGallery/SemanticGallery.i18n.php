@@ -130,6 +130,13 @@ $messages['oc'] = array(
 	'semanticgallery-desc' => 'Apond un format de sortida de la galariá dins las requèstas en linha de SMW',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'semanticgallery-desc' => 'Adiciona uma formato de saída tipo galeria a comandos embebidos SMW',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

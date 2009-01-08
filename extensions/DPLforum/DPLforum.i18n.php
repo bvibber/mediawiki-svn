@@ -22,11 +22,12 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Darth Kule
  * @author Jon Harald Søby
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'dplforum-desc' => 'Short description of the DPLforum extension, shown on [[Special:Version]].',
-	'dplforum-by' => '* $1 is username',
+	'dplforum-by' => '* $1 is a username',
 	'dplforum-never' => '{{Identical|Never}}',
 );
 
@@ -455,6 +456,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author McMonster
  * @author Sp5uhe
  * @author Wpedzich
@@ -526,7 +528,7 @@ $messages['scn'] = array(
  */
 $messages['sk'] = array(
 	'dplforum-desc' => 'Rozšírenie DPL fórum',
-	'dplforum-by' => ', $1',
+	'dplforum-by' => 'napísal $1',
 	'dplforum-edited' => '- posledná úprava',
 	'dplforum-never' => 'Nikdy',
 	'dplforum-toofew' => 'DPL fórum: Príliš málo kategórií!',

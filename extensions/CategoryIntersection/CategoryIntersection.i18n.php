@@ -129,6 +129,23 @@ $messages['eo'] = array(
 	'categoryintersection-results' => 'La serĉo trovis $1 {{PLURAL:$1|pafon|pafojn}}.',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'categoryintersection' => 'Categoría intersección',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'categoryintersection' => 'Kategorien elkargunea',
+	'categoryintersection-doit' => 'Kategoria guzti hauetan dauden orrialdeak zerrendatu',
+	'categoryintersection-maxcategories' => 'Gehienez, {{PLURAL:$1|kategoria bat gurutza daiteke|$1 kategoria gurutza daitezke.}}',
+	'categoryintersection-results' => 'Bilaketak {{PLURAL:$1|emaitza bat eman du|$1 emaitza eman ditu}}.',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku
@@ -150,6 +167,7 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
+ * @author Kobazulo
  * @author Toliño
  */
 $messages['gl'] = array(

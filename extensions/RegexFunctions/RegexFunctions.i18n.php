@@ -80,6 +80,13 @@ $messages['gl'] = array(
 	'regexfunctions-desc' => 'Funcións de análise de expresións regulares',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'regexfunctions-desc' => 'פונקציות פענוח לביטויים רגולריים',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

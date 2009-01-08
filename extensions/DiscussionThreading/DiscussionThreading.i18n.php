@@ -327,10 +327,15 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'discussionthreading-desc' => 'Adiciona a funcionalidade de tópicos às páginas de discussão',
 	'discussionthreading-replysection' => 'responder',
+	'discussionthreading-replysectionhint' => 'Responder a este comentário',
+	'discussionthreading-threadnewsection' => 'novo',
+	'discussionthreading-threadnewsectionhint' => 'Iniciar um novo tópico',
 );
 
 /** Tarandíne (Tarandíne)

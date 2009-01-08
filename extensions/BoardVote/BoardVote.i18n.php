@@ -1699,6 +1699,7 @@ Sekureca averto pri nevalida atesto eble estos montrata.',
  * @author Alpertron
  * @author Ascánder
  * @author Bengoa
+ * @author Crazymadlover
  * @author Dalton2
  * @author Lin linao
  * @author Remember the dot
@@ -1755,7 +1756,7 @@ Necesitas tener {{PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber he
 $1 para los datos codificados.</p>',
 	'boardvote_dumplink' => 'Haz click aquí',
 	'boardvote_submit' => 'Aceptar',
-	'boardvote_strike' => 'Tachar',
+	'boardvote_strike' => 'Strike',
 	'boardvote_unstrike' => 'Quitar tachado',
 	'boardvote_needadmin' => 'Sólo los administradores de la elección pueden realizar esta operación.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Elecciones del Consejo de Administración de Wikimedia</a>:
@@ -1807,6 +1808,7 @@ Robotitel ei ole hääletusõigust.',
 
 /** Basque (Euskara)
  * @author Bengoa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'boardvote' => 'Wikimediaren Administrazio Kontseiluaren aukeraketa',
@@ -1814,23 +1816,24 @@ $messages['eu'] = array(
 * [[Special:Boardvote/list|Orain arteko botuen zerrenda]]
 * [[Special:Boardvote/dump|Erregistroa]]',
 	'boardvote_intro_change' => '<p>Lehenago ere bozkatu duzu. Dena dela, beheko formularioa erabiliz zure botua aldatu dezakezu. Hautatu ezazu bozkatu nahi duzun aukera.</p>',
-	'boardvote_entered' => 'Mila esker, zure botua gorde egin da.
+	'boardvote_entered' => 'Mila esker, zure botoa gorde egin da.
 
-Nahi izanez gero, hurrengo datuak gorde ditzakezu. Zure botu erregistroa:
+Nahi izanez gero, hurrengo datuak gorde ditzakezu. Zure boto erregistroa:
 
 <pre>$1</pre>
 
 Hauteskundeetako administratzaileen gako publikoarekin zifratu da:
 
-<pre>$2</pre>.
+<pre>$2</pre>
 
-Publikoki erakutsiko da [[Special:Boardvote/dump]] orrialdean.
+Ondoriozko bertsio enkriptatua hurrengo orrialdean jarraitzen du. [[Special:Boardvote/dump|Publikoki erakutsiko]] da.
 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Atzera]]',
-	'boardvote_notloggedin' => 'Ez duzu saioa hasi. $2 baino lehenago $1 ekarpen izatea eta lehen aldaketa $3 baino lehenagokoa izatea beharrezkoa da bozkatu ahal izateko.',
-	'boardvote_notqualified' => 'Ez duzu hauteskunde hauetan bozkatzeko baimenik. $2 baino lehenago $3 ekarpen eginda izatea beharrezkoa da, eta zuk $1 egin dituzu. Gainera, lehen aldaketa $4 egin zenuen, eta $5 baino lehenagokoa izan beharra dauka.',
+	'boardvote_notloggedin' => 'Ez duzu saioa hasi. 
+Bozkatzeko, gutxienez, $2 baino lehenago {{PLURAL:$1|ekarpen bat duen|$1 ekarpen dituen}} kontua erabili behar duzu, eta gutxienez $4 eta $5 artean {{PLURAL:$3|ekarpen bat|$3 ekarpen}} egin.',
+	'boardvote_notqualified' => 'Ez duzu hauteskunde hauetan bozkatzeko baimenik. $2 baino lehenago {{PLURAL:$3|ekarpen bat|$3 ekarpen}} eginda izatea beharrezkoa da, eta zuk {{PLURAL:$1|ekarpen bat egin duzu|$1 ekarpen egin dituzu}}. Gainera, lehen aldaketa $4 egin zenuen, eta $5 baino lehenagokoa izan beharra dauka.',
 	'boardvote_novotes' => 'Oraindik ez du inork bozkatu.',
 	'boardvote_time' => 'Ordua',
 	'boardvote_user' => 'Erabiltzaile',
@@ -1839,11 +1842,18 @@ Publikoki erakutsiko da [[Special:Boardvote/dump]] orrialdean.
 	'boardvote_ua' => 'Erabiltzaile agentea',
 	'boardvote_listintro' => '<p>Honako hau orain arteko botu guztien zerrenda da. Zifratutako datuentzako $1.</p>',
 	'boardvote_dumplink' => 'Egin klik hemen',
+	'boardvote_submit' => 'Onartu',
+	'boardvote_unstrike' => 'Marratua kendu',
 	'boardvote_needadmin' => 'Hauteskundeko administratzaileek baino ezin dute eragiketa hori burutu.',
 	'boardvote_notstarted' => 'Oraindik ez da bozketa hasi',
 	'boardvote_closed' => 'Bozketa itxita dago orain, ikus [[meta:Board elections/2008/en|hauteskundeen orrialdea]] emaitzak jakiteko.',
 	'boardvote_edits_many' => 'hainbat',
+	'group-boardvote' => 'Hautaketaren administratzaileak',
+	'group-boardvote-member' => 'hautaketaren administratzailea',
+	'grouppage-boardvote' => '{{ns:project}}:hautaketaren administratzailea',
 	'boardvote_welcome' => "Ongi etorri '''$1'''!",
+	'go_to_board_vote' => '2008ko Wikimedia Fundazioaren Administrazio Kontseilurako Hauteskundeak',
+	'right-boardvote' => 'Hauteskundeak kudeatu',
 );
 
 /** Extremaduran (Estremeñu)

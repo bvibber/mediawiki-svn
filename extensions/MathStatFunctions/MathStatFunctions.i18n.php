@@ -138,8 +138,10 @@ $messages['eo'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
+	'msfunc_desc' => 'Matematikako eta estatistikako funtzio-sorta',
 	'msfunc_nan' => 'Azken balioa ez da zenbakia',
 	'msfunc_inf' => 'Azken balioa infinito da',
 	'msfunc_div_zero' => 'Zeroz zatitu',

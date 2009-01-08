@@ -475,7 +475,18 @@ Per farlo richiedi una chiave API [http://www.flickr.com/services/api/misc.api_k
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'importfreeimages' => 'フリーの画像をインポート',
+	'importfreeimages-desc' => '[http://www.flickr.com Flickr] から[[Special:ImportFreeImages|適切にライセンスされた写真をインポートする]]手段を提供する',
+	'importfreeimages_description' => 'このページを使うと、Flickr で適切にライセンスされた画像を検索し、あなたのウィキにインポートすることができます。',
+	'importfreeimages_noapikey' => 'あなたの Flickr APIキーが設定されていません。[http://www.flickr.com/services/api/misc.api_keys.html こちら]でAPIキーを取得して、ImportFreeImages.php 内で wgFlickrAPIKey に設定してください。',
+	'importfreeimages_nophotosfound' => '検索条件「$1」に適う写真は見つかりませんでした。もう一度試してください。',
+	'importfreeimages_invalidurl' => 'URL "$1" は有効な Flickr 画像ではありません。',
 	'importfreeimages_owner' => '著者',
+	'importfreeimages_importthis' => 'これをインポート',
+	'importfreeimages_next' => '次 $1',
+	'importfreeimages_filefromflickr' => 'Flickr の利用者 <b>[$2]</b> による $1。元のURL',
+	'importfreeimages_promptuserforfilename' => '変更先ファイル名を入力してください:',
+	'importfreeimages_returntoform' => "もしくは、<a href='$1'>ここ</a>をクリックして検索結果に戻ります",
 );
 
 /** Javanese (Basa Jawa)
@@ -732,6 +743,7 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  * @author Maikking
  * @author McMonster
  * @author Sp5uhe
@@ -740,6 +752,8 @@ $messages['pl'] = array(
 	'importfreeimages' => 'Import grafik z odpowiednią licencją.',
 	'importfreeimages-desc' => 'Umożliwia [[Special:ImportFreeImages|import grafik z odpowiednią licencją]] z [http://www.flickr.com flickra]',
 	'importfreeimages_description' => 'Ta strona pozwala na wyszukiwanie na serwisie flickr zdjęć z odpowiednią licencją i na ich import do wiki.',
+	'importfreeimages_noapikey' => 'Nie masz skonfigurowanego klucza API Flickr.
+Klucz API można uzyskać [http://www.flickr.com/services/api/misc.api_keys.html tutaj], a następnie należy ustawić wgFlickrAPIKey w ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => 'Żadne zdjęcie nie zostało odnalezione na podstawie kryterium „$1”. Spróbuj ponownie.',
 	'importfreeimages_invalidurl' => 'Adres URL „$1” nie jest prawidłowym odwołaniem do obrazka w serwisie Flickr.',
 	'importfreeimages_owner' => 'Autor',

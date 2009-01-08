@@ -358,6 +358,15 @@ $messages['tl'] = array(
 	'stalkerlog-log-text' => 'Isa itong talaan ng mga mga paglagda at pag-alis mula sa pagkakalagda ng tagagamit.',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'stalkerlog-log-login' => 'enunädon oki.',
+	'stalkerlog-log-logout' => 'esänunädon oki.',
+	'stalkerlog-log-text' => 'Is palisedons nunädams e sänunädams gebanas.',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

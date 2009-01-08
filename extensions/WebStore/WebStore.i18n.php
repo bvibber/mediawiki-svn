@@ -210,6 +210,42 @@ $messages['bcl'] = array(
 	'webstore_no_response' => 'Mayong simbag hali sa server',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'inplace_access_disabled' => 'Доступ да гэтага сэрвісу быў адключаны для ўсіх кліентаў.',
+	'inplace_access_denied' => 'Гэты сэрвіс быў абмежаваны праз ІР-адрас кліента.',
+	'inplace_scaler_no_temp' => 'Часовая дырэкторыя не існуе.
+Пазначце $wgLocalTmpDirectory для дырэкторыі даступнай для запісу.',
+	'inplace_scaler_not_enough_params' => 'Недастаткова парамэтраў.',
+	'inplace_scaler_invalid_image' => 'Няслушная выява, немагчыма вызначыць памер.',
+	'inplace_scaler_failed' => 'Узьнікла памылка пад час маштабаваньня выявы: $1',
+	'inplace_scaler_no_handler' => 'Няма апрацоўшчыка для пераўтварэньня гэтага MIME-тыпу',
+	'inplace_scaler_no_output' => 'Мэтавы файл пераўтварэньня ня створаны .',
+	'inplace_scaler_zero_size' => 'Пераўтварэньне стварыла файл з нулявым памерам.',
+	'webstore-desc' => 'Праграмнае забесьпячэньне для захоўваньня файлаў у Інтэрнэт (NFS не ўжываецца)',
+	'webstore_access' => 'Гэты сэрвіс забаронены для ІР-адрас кліента.',
+	'webstore_path_invalid' => 'Няслушная назва файла.',
+	'webstore_dest_open' => 'Немагчыма адкрыць мэтавы файл «$1».',
+	'webstore_dest_lock' => 'Не атрымалася заблякаваць мэтавы файл «$1».',
+	'webstore_dest_mkdir' => 'Не атрымалася стварыць мэтавую дырэкторыю «$1».',
+	'webstore_archive_lock' => 'Не атрымалася заблякаваць архіўны файл «$1».',
+	'webstore_archive_mkdir' => 'Не атрымалася стварыць архіўную дырэкторыю «$1».',
+	'webstore_src_open' => 'Не атрымалася адкрыць крынічны файл «$1».',
+	'webstore_src_close' => 'Памылка закрыцьця крынічнага файла «$1».',
+	'webstore_src_delete' => 'Памылка выдаленьня крынічнага файла «$1».',
+	'webstore_rename' => 'Памылка перайменаваньня файла «$1» ў «$2».',
+	'webstore_lock_open' => 'Памылка адкрыцьця файла блякаваньня «$1».',
+	'webstore_lock_close' => 'Памылка закрыцьця файла блякаваньня «$1».',
+	'webstore_dest_exists' => 'Памылка, мэтавы файл «$1» ужо існуе.',
+	'webstore_temp_open' => 'Памылка адкрыцьця часовага файла «$1».',
+	'webstore_temp_copy' => 'Памылка капіяваньня часовага файла «$1» у мэтавы файл «$2».',
+	'webstore_temp_close' => 'Памылка закрыцьця часовага файла «$1».',
+	'webstore_temp_lock' => 'Памылка блякаваньня часовага файла «$1».',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -1645,6 +1681,62 @@ $1',
 $1',
 	'webstore_php_error' => 'Vyskytli sa chyby PHP:',
 	'webstore_no_handler' => 'Pre transformáciu tohto typu MIME neexistuje obsluha',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'inplace_access_disabled' => 'Die Tougriep ap dissen Service wuud foar aal Cliente deaktivierd.',
+	'inplace_access_denied' => 'Die Tougriep ap dissen Service wäd truch ju IP-Adresse fon dän Client regulierd.',
+	'inplace_scaler_no_temp' => 'Neen gultich temporär Ferteeknis.
+Sät $wgLocalTmpDirectory ap n Ferteeknis mäd Schrieuwtougriep.',
+	'inplace_scaler_not_enough_params' => 'Tou min Parametere.',
+	'inplace_scaler_invalid_image' => 'Uungultige Bielde, Grööte kuud nit fääststoald wäide.',
+	'inplace_scaler_failed' => 'Bie dät Skalierjen fon ju Bielde is n Failer aptreeden: $1',
+	'inplace_scaler_no_handler' => 'Neen Routine tou ju Transformation fon dissen MIME-Typ deer',
+	'inplace_scaler_no_output' => 'Ju Transformation moakede neen Uutgoawedoatäi.',
+	'inplace_scaler_zero_size' => 'Ju Transformation moakede ne Utgoawedoatäi mäd laangte Nul.',
+	'webstore-desc' => 'Online-Twiskenanweendenge tou ju Doatäileegerenge (neen NFS)',
+	'webstore_access' => 'Die Tougriep ap dissen Service wäd truch ju IP-Adresse fon dän Client regulierd.',
+	'webstore_path_invalid' => 'Die Doatäinoome waas uungultich.',
+	'webstore_dest_open' => 'Sieldoatäi "$1" kon nit eepend wäide.',
+	'webstore_dest_lock' => 'Sieldoatäi "$1" kon nit speerd wäide.',
+	'webstore_dest_mkdir' => 'Sielferteeknis "$1" kon nit moaked wäide.',
+	'webstore_archive_lock' => 'Archivdoatäi "$1" kon nit speerd wäide.',
+	'webstore_archive_mkdir' => 'Archivferteeknis "$1" kon nit moaked wäide.',
+	'webstore_src_open' => 'Wälledoatäi "$1" kon nit eepend wäide.',
+	'webstore_src_close' => 'Failer bie dät Sluuten fon Wälledoatäi "$1".',
+	'webstore_src_delete' => 'Failer bie dät Läskjen fon Wälledoatäi "$1".',
+	'webstore_rename' => 'Failer bie dät Uumnaamen fon ju Doatäi „$1“ tou „$2“.',
+	'webstore_lock_open' => 'Failer bie dät Eepenjen fon ju Lockdoatäi "$1".',
+	'webstore_lock_close' => 'Failer bie dät Sluuten fon ju Lockdoatäi "$1".',
+	'webstore_dest_exists' => 'Failer, Sieldoatäi "$1" existiert.',
+	'webstore_temp_open' => 'Kon temporäre Doatäi "$1" nit eepenje.',
+	'webstore_temp_copy' => 'Failer bie dät Kopierjen fon ju temporäre Doatäi "$1" tou ju Sieldoatäi "$2".',
+	'webstore_temp_close' => 'Failer bie dät Sluuten fon ju temporäre Doatäi "$1".',
+	'webstore_temp_lock' => 'Failer bie dät Speeren fon ju temporäre Doatäi "$1".',
+	'webstore_no_archive' => 'Sieldoatäi existiert un neen Archiv wuud anroat.',
+	'webstore_no_file' => 'Der wuud neen Doatäi hoochleeden.',
+	'webstore_move_uploaded' => 'Failer bie dät Ferschuuwen fon ju hoochleedene Doatäi "$1" tou ju Twiskespiekersteede "$2".',
+	'webstore_invalid_zone' => 'Uungultige Zone "$1".',
+	'webstore_no_deleted' => 'Der wuud neen Achivferteeknis foar läskede Doatäie definierd.',
+	'webstore_curl' => 'Failer fon cURL: $1',
+	'webstore_404' => 'Doatäi nit fuunen.',
+	'webstore_php_warning' => 'PHP-Woarschauenge: $1',
+	'webstore_metadata_not_found' => 'Doatäi nit fuunen: $1',
+	'webstore_postfile_not_found' => 'Neen Doatäi toun Ienstaalen fuunen.',
+	'webstore_scaler_empty_response' => 'Die Bieldeskalierder häd ne loose Oantwoud mäd de Oantoudkode 200 touräächroat.
+Dit kuud truch n fatoalen PHP-Failer in dän Skalierder feruurseeked wäide.',
+	'webstore_invalid_response' => 'Uungultige Oantwoud fon dän Server:
+
+$1',
+	'webstore_no_response' => 'Neen Oantwoud fon dän Server',
+	'webstore_backend_error' => 'Failer fon dän Spiekerserver:
+
+$1',
+	'webstore_php_error' => 'Der trieden PHP-Failere ap.',
+	'webstore_no_handler' => 'Neen Routine tou ju Transformation fon dissen MIME-Typ deer',
 );
 
 /** Swedish (Svenska)

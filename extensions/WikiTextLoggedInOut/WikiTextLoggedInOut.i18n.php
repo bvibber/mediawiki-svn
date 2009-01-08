@@ -240,6 +240,13 @@ $messages['sk'] = array(
 	'wikitextloggedinout-desc' => 'Dva prípojné body syntaktického analyzátora, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> na zobrazenie odlišného textu v závslosti na stave prihlásenia používateľa',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'wikitextloggedinout-desc' => 'Two Parser-Hooks, <tt>&lt;loggedin&gt;</tt> un <tt>&lt;loggedout&gt;</tt>, uum unnerscheedelken Text foar an- blw. oumäldede Benutsere antouwiesen',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

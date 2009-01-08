@@ -126,6 +126,13 @@ $messages['eo'] = array(
 	'emergencydesysop-noright' => 'Vi ne havas sufiĉajn rajtojn por atingi ĉi tiun paĝon',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'emergencydesysop-nogroups' => 'Ninguno',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

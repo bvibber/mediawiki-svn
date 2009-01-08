@@ -259,6 +259,7 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'tasklist' => 'Egitekoen zerrenda',
@@ -266,7 +267,9 @@ $messages['eu'] = array(
 	'tasklistunknownproject' => 'Proiektu ezezaguna',
 	'tasklistunspecuser' => 'Zehaztugabeko lankidea',
 	'tasklistincorrectuser' => 'Lankide izen okerra',
+	'tasklistemail' => '%s estimatua',
 	'tasklistmytasks' => 'Nire eginkizunak',
+	'tasklistchooseproj' => 'Proiektua hautatu:',
 	'tasklistprojdisp' => 'Erakutsi',
 );
 
@@ -789,6 +792,14 @@ Para uma lista de projectos válidos, ver [[MediaWiki:TodoTasksValidProjects]]."
 	'tasklistchooseproj' => 'Seleccione Projecto:',
 	'tasklistprojdisp' => 'Mostrar',
 	'tasklistbyname' => '== Lista de tarefas de %s ==',
+	'tasklistnoprojects' => "Erro: Aparentemente você activou '''\$wgUseProjects''', mas não criou [[MediaWiki:TodoTasksValidProjects]]. Veja as [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instruções de Instalação] para mais detalhes.",
+	'tasklistemailbody' => ',
+
+Alguém atribuiu-lhe uma nova Tarefa em %s.
+
+Para ver a sua Lista de Tarefas completa, vá a %s.
+
+O seu sistema de notificação amigável',
 );
 
 /** Romanian (Română)
@@ -974,9 +985,17 @@ $messages['tr'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'tasklist' => 'Vobodalised',
+	'tasklistunknownproject' => 'Proyeg nesevädik',
+	'tasklistincorrectuser' => 'Gebananem neverätik',
 	'tasklistemail' => 'O %s löfik',
+	'tasklistmytasks' => 'Vobods obik',
+	'tasklistbyprojectbad' => "Proyeg: '''%s''' no lonöfon.
+Kanol tuvön lisedi proyegas lonöföl su pad: [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistchooseproj' => 'Välön proyega:',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬) */

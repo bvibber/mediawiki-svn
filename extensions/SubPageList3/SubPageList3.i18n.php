@@ -348,6 +348,13 @@ $messages['vi'] = array(
 	'spl3_nosubpages' => '$1 không có trang con nào cả.',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'spl3_nosubpages' => 'Pad: $1 no labon donapadis ad palisedön.',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

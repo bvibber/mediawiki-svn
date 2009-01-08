@@ -904,7 +904,7 @@ Molimo provjerite web adresu.',
 	'ow_meaningsoftitle' => 'Značenje od "$1"',
 	'ow_Permission_denied' => '<h2>Pristup onemogućen</h2>',
 	'ow_copy_no_action_specified' => 'Molimo Vas da odredite akciju',
-	'ow_copy_help' => 'Jednog dana ćemo Vam moći pomoći.',
+	'ow_copy_help' => 'Pomoć još nije implementirana.',
 	'ow_please_proved_dmid' => 'Izgleda da Vašem unosu nedostaje "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Molimo kontaktirajte administratora servera.',
 	'ow_copy_successful' => '<h2>Kopiranje uspješno</h2>
@@ -1306,6 +1306,7 @@ Neniu kopia operacio okazis.',
 
 /** Spanish (Español)
  * @author Ascánder
+ * @author Kobazulo
  * @author Sanbec
  */
 $wdMessages['es'] = array(
@@ -1393,7 +1394,7 @@ $wdMessages['es'] = array(
 	'ow_meaningsofsubtitle' => '<em>Wiki enlace:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMISO NEGADO</h2>',
 	'ow_copy_no_action_specified' => 'Especifique una acción por favor',
-	'ow_copy_help' => 'Esperamos tener la ayuda disponible en poco tiempo.',
+	'ow_copy_help' => 'La ayuda no está implementada aún.',
 	'ow_please_proved_dmid' => 'Falta un ?dmid=<...> (dmid=Id de SentidoDefinido)
 Favor contactar al administrador.',
 	'ow_please_proved_dc1' => 'Falta un ?dc1=<...> (dc1=contexto de la base DESDE la cual se copia)<br />Contacta a un administrador.',
@@ -1443,6 +1444,7 @@ $wdMessages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  * @author Pi
  * @author Theklan
  */
@@ -1524,7 +1526,7 @@ Ziurtatu ezazu berriro web helbidea, mesedez.',
 	'ow_meaningsofsubtitle' => '<em>Wiki lotura:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Baimena ukatua</h2>',
 	'ow_copy_no_action_specified' => 'Zehaztu ezazu ekintza bat, mesedez',
-	'ow_copy_help' => 'Egunen batean lagunduko dizugu.',
+	'ow_copy_help' => 'Sentitzen dugu, oraindik ez dugu laguntza abian jarri.',
 	'ow_copy_successful' => '<h2>Behar bezala kopiatu da</h2>
 Dirudienez zure datuak behar bezala kopiatu dira.
 Berriz egiaztatzea ez ahaztu ziurtatzeko!',
@@ -2042,7 +2044,7 @@ $wdMessages['he'] = array(
 	'ow_meaningsofsubtitle' => '<em>קישור ויקי:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>הגישה נדחתה</h2>',
 	'ow_copy_no_action_specified' => 'אנא הגדירו פעולה',
-	'ow_copy_help' => 'העזרה לא הוטמעה עדיין.',
+	'ow_copy_help' => 'אפשרות העזרה לא פותחה עדיין.',
 	'ow_please_proved_dmid' => 'נראה שלקלט שלכם חסר "<span dir="ltr">?dmid=<ID></span>" (הפירוש של dmid: מספר משמעות מוגדרת)<br />
 אנא צרו קשר עם מנהל השרת.',
 	'ow_please_proved_dc1' => "נראה שלקלט שלכם חסר \"<span dir=\"ltr\">?dc1=<something></span>\" (הפירוש של dc1: הקשר ערכת נתונים 1, ערכת נתונים שיש להעתיק '''ממנה''')<br />
@@ -3054,7 +3056,7 @@ $wdMessages['lb'] = array(
 	'ow_meaningsofsubtitle' => '<em>Wiki-Link:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>ERLAABNIS REFUSÉIERT</h2>',
 	'ow_copy_no_action_specified' => 'Gitt w.e.g. eng Aktioun un',
-	'ow_copy_help' => 'Fréier oder spéider kënne mir iech hëllefen.',
+	'ow_copy_help' => "D'Hellëf gouf nach net implementéiert.",
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
@@ -3354,9 +3356,12 @@ $wdMessages['myv'] = array(
 	'ow_ExactMeanings' => 'Цяр вравты чарькодевкс',
 	'ow_Language' => 'Кель',
 	'ow_Spelling' => 'Сёрмадома лувозо',
+	'ow_Synonyms' => 'Синонимат',
+	'ow_SynonymsAndTranslations' => 'Ютавтовкс марто синонимат',
 	'ow_Source' => 'Лисьмапрязо',
 	'ow_Text' => 'Текст',
 	'ow_TranslatedText' => 'Ютавтонь текст',
+	'ow_TranslatedTextAttributeValue' => 'Текст',
 	'ow_LinkAttributeValues' => 'Сюлмавома пенеть',
 	'ow_meaningsoftitle' => '"$1" чарькодеви',
 );
@@ -3825,7 +3830,7 @@ als senses definits dins las autras donadas.</p>",
 	'ow_meaningsofsubtitle' => '<em>ligam wiki :</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMISSION REFUSADA</h2>',
 	'ow_copy_no_action_specified' => "Mercé d'especificar una accion",
-	'ow_copy_help' => 'Ajuda de venir...',
+	'ow_copy_help' => "L'ajuda es pas encara estada implementada.",
 	'ow_please_proved_dmid' => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del servidor.',
 	'ow_please_proved_dc1' => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI la quala òm copia)<br />
 Contactatz l’administrator.',
@@ -4129,7 +4134,7 @@ $wdMessages['pt'] = array(
 	'ow_meaningsofsubtitle' => '<em>Ligação Wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMISSÃO NEGADA</h2>',
 	'ow_copy_no_action_specified' => 'Por favor, especifique uma acção',
-	'ow_copy_help' => 'Um dia pode ser que possamos ajudá-lo.',
+	'ow_copy_help' => 'A ajuda ainda não está implementada.',
 	'ow_please_proved_dmid' => 'Epá, parece que está a faltar um "?dmid=<qualquercoisa>" (dmid=ID do Significado Definido) aos dados introduzidos<br />
 Por favor, contacte um administrador do servidor.',
 	'ow_please_proved_dc1' => 'Epá, parece que está a faltar um "?dc1=<qualquercoisa>" (dc1=contexto de conjunto de dados 1, conjunto de dados DO qual copiar) aos dados introduzidos<br />
@@ -4345,16 +4350,19 @@ $wdMessages['roa-tara'] = array(
 	'ow_OptionAttributeOptions' => 'Opzione',
 	'ow_TextAttribute' => 'Proprietà',
 	'ow_Text' => 'Teste',
+	'ow_TranslatedTextAttribute' => 'Proprietà',
 	'ow_TranslatedText' => 'Teste tradotte',
 	'ow_TranslatedTextAttributeValue' => 'Teste',
 	'ow_TranslatedTextAttributeValues' => 'Teste ca ponne essere tradotte',
+	'ow_LinkAttribute' => 'Proprietà',
 	'ow_LinkAttributeValues' => 'Collegaminde',
 	'ow_Property' => 'Proprietà',
 	'ow_Value' => 'Valore',
 	'ow_meaningsoftitle' => 'Significhete de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Collegamende de Uicchi:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Permesse neghete</h2>',
-	'ow_copy_help' => "Quacche giurne, pò essere ca v'aiuteme.",
+	'ow_copy_help' => "L'aiute angore non g'è presende.
+<!-- Quacche giurne, pò essere ca v'aiuteme. -->",
 );
 
 /** Russian (Русский)
@@ -4481,12 +4489,12 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 <li>&action=help  Zobraziť pomocníka.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mapovanie pojmov vám umožňuje určiť, ktorý Definovaný význam v jednej množine dát je zhodný s Definovanými významami v ostatných množinách dát.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Ospravedlňujem sa, neviem ako „$1“.',
+	'ow_conceptmapping_no_action_specified' => 'Operácia „$1“ nie je podporovaná.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nezadané',
 	'ow_dm_not_found' => 'nenájdené v databáze alebo v zlom tvare',
 	'ow_mapping_successful' => 'Všetky polia označené [OK] boli namapované<br />',
-	'ow_mapping_unsuccessful' => 'Potrebujem aspoň dva Definované významy aby som ich mohol spojiť.',
+	'ow_mapping_unsuccessful' => 'Je potrebné mať aspoň dva Definované významy, aby ich bolo možné spojiť.',
 	'ow_will_insert' => 'Vloží nasledovné:',
 	'ow_contents_of_mapping' => 'Obsah mapovania',
 	'ow_available_contexts' => 'Dostupné kontexty',
@@ -4546,7 +4554,7 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'ow_meaningsofsubtitle' => '<em>Wiki odkaz:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>NEMÁTE POTREBNÉ OPRÁVNENIE</h2>',
 	'ow_copy_no_action_specified' => 'Prosím, zadajte činnosť',
-	'ow_copy_help' => 'Jedného dňa vám možno pomôžeme.',
+	'ow_copy_help' => 'Pomocník zatiaľ nie je implementovaný.',
 	'ow_please_proved_dmid' => 'Zdá sa, že vo vašom vstupe chýba „?dmid=<ID>“ (dmid=ID Definovaného významu)<br />Prosím kontaktujte správcu servera.',
 	'ow_please_proved_dc1' => 'Zdá sa, že ste zabudli zadať „?dc1=<niečo>“ (dcl=kontext množiny dát 1, z ktorej sa kopíruje)<br />Prosím, kontaktujte správcu servera.',
 	'ow_please_proved_dc2' => 'Zdá sa že ste zabudli zadať „?dc2=<niečo>“ (dcl=kontext množiny dát 2, do ktorej sa kopíruje)<br />Prosím kontaktujte správcu servera.',
@@ -4667,7 +4675,7 @@ $wdMessages['stq'] = array(
 	'ow_none_selected' => 'niks uutwääld',
 	'ow_conceptmapping_help' => '<p>Muugelke Aktione: <ul> <li>&action=insert&<data_context_prefix>=<defined_id>&... Ne Ferknättenge bietoutouföigjen</li> <li>&action=get&concept=<concept_id> Ne Ferknättenge ouroupe</li> <li>&action=list_sets Wies ne Lieste fon muugelke Doatenkontextpräfixe un ap wät jo sik beluuke</li> <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> foar ne DefinedMeaning in n Kontext, wies aal uur</li> <li>&action=help Hälpe anwiese.</li> </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mäd Concept Mapping kon fäästlaid wäide, wäkke DefinedMeaning in n Doataset mäd uur DefinedMeanings uut uur Doatasets identisk is.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Äntscheeldenge, iek kon nit "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Ju Aktion "$1" wäd nit unnerstutsed.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nit ienroat',
 	'ow_dm_not_found' => 'nit in ju Doatenboank fuunen of failerhaft',
@@ -4732,7 +4740,7 @@ $wdMessages['stq'] = array(
 	'ow_meaningsofsubtitle' => '<em>Wikilink:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>FERLOF FERWÄIGERD</h2>',
 	'ow_copy_no_action_specified' => 'Lääs ne Aktion fääst.',
-	'ow_copy_help' => 'Ap n Dai konnen wie die hälpe.',
+	'ow_copy_help' => 'Der is noch neen Hälpe implementierd.',
 	'ow_please_proved_dmid' => 'Dät lät, dät an dien Iengoawe failt "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Kontaktier dän Serveradminstrator.',
 	'ow_please_proved_dc1' => 'Dät lät, as wan an dien Iengoawe  failt "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
@@ -4740,6 +4748,9 @@ Kontaktier dän Serveradminstrator.',
 	'ow_please_proved_dc2' => 'Dät lät, as wan an dien Iengoawe failt "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO) <br />
 Kontaktier dän Serveradminstrator.',
 	'ow_copy_successful' => '<h2>Kopierjen mäd Ärfoulch</h2>Dien Doaten schiene mäd Ärfoulch kopierd wuuden tou weesen. Ferjät nit noch moal tou wröigjen uum sichertougungen!',
+	'ow_copy_unsuccessful' => '<h3>Kopierjen sunner Ärfoulch</h3> Der is neen Kopieraktion geböärd.',
+	'ow_no_action_specified' => '<h3>Der wuud neen Aktion ounroat</h3> Fielicht koomst du fluks tou disse Siede?',
+	'ow_db_consistency_not_found' => '<h2>Failer</h2>Ju Doatenboank is nit moor konsistent. Wikidata kon neen gultige Doaten tou ju ID fiende. Kontaktier dän Server-Administrator.',
 );
 
 /** Sundanese (Basa Sunda)

@@ -697,6 +697,18 @@ $messages['tg-cyrl'] = array(
 	'randomincategory-submit' => 'Бирав',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'randomincategory' => 'Alin mang pahina sa loob ng kaurian',
+	'randomincategory-desc' => '[[Special:Randomincategory|Natatanging pahina]] upang makakuha ng alin mang pahinang nasa loob ng kaurian',
+	'randomincategory-toolbox' => 'Alin mang pahina',
+	'randomincategory-nocategory' => 'Hindi umiiral o walang laman ang kauriang $1',
+	'randomincategory-label' => 'Kaurian:',
+	'randomincategory-submit' => 'Gawin na',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

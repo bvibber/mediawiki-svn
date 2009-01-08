@@ -142,6 +142,13 @@ $messages['gl'] = array(
 	'titlekey-desc' => 'Procura de suxestión por prefixos de títulos',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'titlekey-desc' => 'Hintergrundprozäss fir d Titelsuechi',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

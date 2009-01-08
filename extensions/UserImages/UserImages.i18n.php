@@ -430,6 +430,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'userimages-desc' => 'Gera galerias de imagens carregadas por utilizadores com <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Imagens carregadas por $1',
 	'userimages-noname' => 'Nome de utilizador inválido ou não fornecido.',
 	'userimages-noimages' => '$1 não carregou quaisquer imagens.',

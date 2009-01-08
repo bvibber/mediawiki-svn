@@ -122,6 +122,13 @@ $messages['gl'] = array(
 	'trustedxff-desc' => 'Xestión dunha lista de enderezos proxy de confianza ([http://meta.wikimedia.org/wiki/XFF_project proxecto XFF])',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'trustedxff-desc' => 'E Lischt vu vertrauenswirdige Proxyadrässe verarbeite ([http://meta.wikimedia.org/wiki/XFF_project XFF-Projäkt])',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

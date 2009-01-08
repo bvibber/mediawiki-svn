@@ -224,9 +224,11 @@ $messages['eo'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'slippymap_button_code' => 'Wikikodea lortu',
+	'slippymap_resetview' => 'Bista berrezarri',
 );
 
 /** Finnish (Suomi)

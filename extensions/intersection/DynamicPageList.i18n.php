@@ -276,6 +276,17 @@ $messages['grc'] = array(
 	'intersection_noincludecats' => 'Σφάλμα: Ἔξεστί σοι περιλαμβάνειν μίαν τοὐλάχιστον κατηγορίαν, ἢ καθορίζειν ὀνοματεῖον τι!',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'intersection-desc' => 'Usgabe vun ere Lischt vu dr aktuällschte Yyträg in ere Kategorii, oder vu dr Schnittmängi vu mehrere Kategorie',
+	'intersection_toomanycats' => 'Fähler: Zvyyl Kategorie!',
+	'intersection_toofewcats' => 'Fähler: Zwenig Kategorie!',
+	'intersection_noresults' => 'Fähler: Kei Ergebnis!',
+	'intersection_noincludecats' => 'Fähler: S muess zmindescht ei Kategorii yybunde wäre oder gib e Namensruum aa!',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

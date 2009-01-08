@@ -246,6 +246,19 @@ Aquò vos permet tanben d'utilizar vòstra page d'utilizaire coma OpenID.",
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL :',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'linkopenid-desc' => 'Permite aos utilizadores associarem a sua conta a um OpenID externo',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Se possui um OpenID de um fornecedor externo, pode especificá-lo aqui.
+Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
+	'linkopenid-prefstext-openid' => 'O seu OpenID:',
+	'linkopenid-prefstext-v1url' => 'URL do servidor para OpenID versão 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL do servidor para OpenID versão 2:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

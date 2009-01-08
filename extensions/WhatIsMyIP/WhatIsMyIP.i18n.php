@@ -53,6 +53,16 @@ $messages['arz'] = array(
 	'whatismyip-out' => 'الأيبى الخاص بك:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'whatismyip' => 'Які мой IP-адрас',
+	'whatismyip-desc' => 'Паказвае цяперашні ІР-адрас ўдзельніка на [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Ваш ІР-адрас:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -437,6 +447,15 @@ $messages['sk'] = array(
 	'whatismyip' => 'Akú mám IP',
 	'whatismyip-desc' => 'Zobrazí aktuálnu IP adresu na [[Special:WhatIsMyIP|špeciálnej stránke]]',
 	'whatismyip-out' => 'Vaša IP:',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'whatismyip' => 'Wo lut mien IP-Adresse',
+	'whatismyip-desc' => 'Wiest ju apstuunse IP-Adresse fon dän Benutser ap [[Special:WhatIsMyIP]] an',
+	'whatismyip-out' => 'Dien IP-Adresse',
 );
 
 /** Sundanese (Basa Sunda)

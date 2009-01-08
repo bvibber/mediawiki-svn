@@ -205,6 +205,36 @@ Achtung: Das Aktualisieren kann auf großen Wikis länger dauern.',
 	'refreshspecial-js-disabled' => '(<i>Sie können nicht alle Seiten auswählen, wenn Sie Javascript deaktiviert haben</i>)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'refreshspecial' => 'Specialne boki wobnowiś',
+	'refreshspecial-desc' => 'Zmóžnja [[Special:RefreshSpecial|manuelne wobnowjenje specialnych bokow]]',
+	'refreshspecial-title' => 'Specialne boki wobnowiś',
+	'refreshspecial-help' => 'Toś ten specialny bok staja rěd za manuelne wobnowjenje specialnych bokow k dispoziciji.
+Gaž sy wubrał wše boki, kótarež coš wobnowiś, klikni na tłocašk "Wubrane wobnowiś" dołojce, aby wobnowił specialne wubrane boki.
+Warnowanje: Wobnowjenje móžo na wjelikich wikijach wobdłujko traś.',
+	'refreshspecial-button' => 'Wubrane wobnowiś',
+	'refreshspecial-fail' => 'Pšosym wubjeŕ nanejmjenjej jaden specialny bok za wobnowjenje.',
+	'refreshspecial-refreshing' => 'specialne boki se wobnowjaju',
+	'refreshspecial-skipped' => 'bźeze gódnoty, pśeskocony',
+	'refreshspecial-success-subtitle' => 'specialne boki se wobnowjaju',
+	'refreshspecial-choice' => 'specialne boki se wobnowjaju',
+	'refreshspecial-js-disabled' => '(<i>Njamóžoš wše boki wubraś, gaž JavaScript jo znjemóžnjony</i>)',
+	'refreshspecial-select-all-pages' => 'Wše boki wubraś',
+	'refreshspecial-link-back' => 'Slědk k specialnemu bokoju',
+	'refreshspecial-none-selected' => 'Njejsy wubrał specialne boki. Wrośenje k standardnemu wuběrkoju.',
+	'refreshspecial-db-error' => 'Njewuspěch: zmólka datoweje banki',
+	'refreshspecial-no-page' => 'Žeden taki specialny bok',
+	'refreshspecial-slave-lagged' => 'Serwer slave jo pómały, caka se...',
+	'refreshspecial-reconnected' => 'Znowego zwězany.',
+	'refreshspecial-reconnecting' => 'Zwisk jo se njeraźił, znowegozwězowanje za 10 sekundow...',
+	'refreshspecial-page-result' => 'wopśimujo $1 {{PLURAL:$1|rěd|rěda|rědy|rědow}} w',
+	'refreshspecial-total-display' => 'Som wobnowił $1 {{PLURAL:$1|bok|boka|boki|bokow}}, dogromady $2 {{PLURAL:$2|rěd|rěda|rědy|rědow}} w casu $3 (ceły cas běga jo $4)',
+	'right-refreshspecial' => 'Specialne boki wobnowiś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -352,7 +382,39 @@ $messages['he'] = array(
 	'refreshspecial-no-page' => 'אין דף מיוחד כזה',
 	'refreshspecial-reconnected' => 'בוצעה התחברות מחדש.',
 	'refreshspecial-reconnecting' => 'ההתחברות נכשלה, מתחבר תוך 10 שניות...',
+	'refreshspecial-page-result' => 'יש {{PLURAL:$1|שורה אחת|$1 שורות}} ב',
+	'refreshspecial-total-display' => '{{PLURAL:$1|דף אחד עבר|$1 דפים עברו}} רענון, בסך הכל {{PLURAL:$2|שורה אחת|$2 שורות}} תוך $3 (זמן השלמת הרצת הסקריפט הוא $4)',
 	'right-refreshspecial' => 'רענון דפים מיוחדים',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'refreshspecial' => 'Specialne strony aktualizować',
+	'refreshspecial-desc' => 'Zmóznja [[Special:RefreshSpecial|manuelne wobnowjenje specialnych stronow]]',
+	'refreshspecial-title' => 'Specialne strony wobnowić',
+	'refreshspecial-help' => 'Tua specialna strona staja srědki za manuelne wobnowjenje specialnych bokow k dispoziciji.
+Hdyž sy wšě strony wubrał, kotrež chceš wobnowić, klikń na tłóčatko "Wubrane wobnowić" deleka, zo by wubrane specialne strony wobnowił.
+Warnowanje: wobnowjenje móže na wulkich wikijach chětro dołho trać.',
+	'refreshspecial-button' => 'Wubrane wobnowić',
+	'refreshspecial-fail' => 'Prošu wubjer znajmjeńša jednu stronu za wobnowjenje.',
+	'refreshspecial-refreshing' => 'Specialne strony so wobnowjeja',
+	'refreshspecial-skipped' => 'tuni, přeskočeny',
+	'refreshspecial-success-subtitle' => 'specialne strony so wobnowjeja',
+	'refreshspecial-choice' => 'specialne strony so wobnowjeja',
+	'refreshspecial-js-disabled' => '(<i>Njemóžeš wšě strony wubrać, hdyž sy JavaScript znjemóžnił</i>)',
+	'refreshspecial-select-all-pages' => 'Wšě strony wubrać',
+	'refreshspecial-link-back' => 'Wróćo k specialnej stronje',
+	'refreshspecial-none-selected' => 'Njejsy specialne strony wubrał. Nawrót k standardnemu wuběrej',
+	'refreshspecial-db-error' => 'Njewuspěch: zmylk datoweje banki',
+	'refreshspecial-no-page' => 'Žana tajka specialna strona',
+	'refreshspecial-slave-lagged' => 'Zwisk ze serwerom slave je pomały, čaka so...',
+	'refreshspecial-reconnected' => 'Znowa zwjazany.',
+	'refreshspecial-reconnecting' => 'Zwisk je so njeporadźił, znowazwjazowanje za 10 sekundow...',
+	'refreshspecial-page-result' => 'wobsahuje $1 {{PLURAL:$1|rjad|rjadaj|rjady|rjadow}} w',
+	'refreshspecial-total-display' => 'Zaktualizowa $1 {{PLURAL:$1|stronu|stronje|strony|stronow}}, w cyłku $2 {{PLURAL:$2|rjad|rjadaj|rjady|rjadow}} w dobje $3 (cyłkowny čas běha skripta je $4)',
+	'right-refreshspecial' => 'Specialne strony wobnowić',
 );
 
 /** Interlingua (Interlingua)

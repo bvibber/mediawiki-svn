@@ -309,6 +309,45 @@ $messages['gl'] = array(
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'recordadmin' => 'ניהול רשומות',
+	'recordadmin-desc' => '[[Special:RecordAdmin|דף מיוחד]] למציאה ועריכה של דפי רשומות באמצעות טופס',
+	'recordadmin-category' => 'רשומות',
+	'recordadmin-select' => 'בחירת סוג הרשומות לחיפוש',
+	'recordadmin-newsearch' => 'חיפוש $1 חדש',
+	'recordadmin-newrecord' => 'בחירת סוג אחר של רשומות',
+	'recordadmin-submit' => 'שליחה',
+	'recordadmin-create' => 'מציאת או יצירת רשומת "$1"',
+	'recordadmin-alreadyexist' => '"$1" כבר קיים!',
+	'recordadmin-createsuccess' => '$1 נוצרה',
+	'recordadmin-createerror' => 'אירעה שגיאה בעת הנסיון ליצור את $1!',
+	'recordadmin-badtitle' => 'כותרת בלתי תקינה!',
+	'recordadmin-recordid' => 'מספר הרשומה:',
+	'recordadmin-invert' => 'הפיכת הבחירה',
+	'recordadmin-buttonsearch' => 'חיפוש',
+	'recordadmin-buttoncreate' => 'יצירה',
+	'recordadmin-buttonreset' => 'איפוס',
+	'recordadmin-searchresult' => 'תוצאות החיפוש',
+	'recordadmin-nomatch' => 'לא נמצאו רשומות תואמות!',
+	'recordadmin-edit' => 'עריכת $1',
+	'recordadmin-typeupdated' => 'עודכנו $1 מאפיינים',
+	'recordadmin-updatesuccess' => '$1 עודכנה',
+	'recordadmin-updateerror' => 'אירעה שגיאה במהלך העדכון',
+	'recordadmin-buttonsave' => 'שמירה',
+	'recordadmin-noform' => 'אין טופס המשוייך לרשומות "$1"!',
+	'recordadmin-createlink' => '<a href=$1>יצירת אחת כזו</a>',
+	'recordadmin-newcreated' => 'נוצרה $1 חדשה מטופס ציבורי',
+	'recordadmin-summary-typecreated' => 'נוצרה $1 חדשה',
+	'recordadmin-viewlink' => 'הצגה',
+	'recordadmin-editlink' => 'עריכה',
+	'recordadmin-created' => 'נוצרה',
+	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -666,6 +705,44 @@ $messages['te'] = array(
 	'recordadmin-buttonsave' => 'భద్రపరచు',
 	'recordadmin-viewlink' => 'చూడు',
 	'recordadmin-editlink' => 'మార్చు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'recordadmin' => 'Pangangasiwa ng tala (rekord)',
+	'recordadmin-desc' => 'Isang [[Special:RecordAdmin|natatanging pahina]] para sa paghahanap at pagbabago ng pahina ng mga tala/rekord na gumagamit ng isang pormularyo',
+	'recordadmin-category' => 'Mga tala (rekord)',
+	'recordadmin-select' => 'Paliin ang uri ng tala/rekord na hahanapin',
+	'recordadmin-newsearch' => 'Bagong paghahanap ng $1',
+	'recordadmin-newrecord' => 'Pumili ng iba pang uri ng tala/rekord',
+	'recordadmin-submit' => 'Ipasa/ipadala',
+	'recordadmin-create' => 'Hanapin o likhain ang isang "$1" tala/rekord',
+	'recordadmin-alreadyexist' => 'Paumanhin, umiiral na ang "$1"!',
+	'recordadmin-createsuccess' => '$1 nalikha na',
+	'recordadmin-createerror' => 'Naganap ang isang kamalian habang sinusubok na likhain ang $1!',
+	'recordadmin-badtitle' => 'Masamang pamagat!',
+	'recordadmin-recordid' => 'ID ng tala/rekord:',
+	'recordadmin-invert' => 'Baligtarin ang pagpipilian',
+	'recordadmin-buttonsearch' => 'Maghanap/Hanapin',
+	'recordadmin-buttoncreate' => 'Likhain',
+	'recordadmin-buttonreset' => 'Muling itakda',
+	'recordadmin-searchresult' => 'Kinalabasan/resulta ng paghahanap',
+	'recordadmin-nomatch' => 'Walang natagpuang mga tala/rekord na tumutugma!',
+	'recordadmin-edit' => 'Binabago ang $1',
+	'recordadmin-typeupdated' => '$1 mga pag-aari ang naisapanahon na',
+	'recordadmin-updatesuccess' => '$1 naisapanahon na',
+	'recordadmin-updateerror' => 'Naganap ang isang kamalian habang nagsasapanahon',
+	'recordadmin-buttonsave' => 'Sagipin',
+	'recordadmin-noform' => 'Walang pormularyong kaugnay ng "$1" mga tala/rekord!',
+	'recordadmin-createlink' => '<a href=$1>lumikha ng isa</a>',
+	'recordadmin-newcreated' => 'Bagong $1 nalikha na mula sa pormularyong pangmadla/publiko',
+	'recordadmin-summary-typecreated' => 'Bagong $1 nalikha na',
+	'recordadmin-viewlink' => 'tingnan',
+	'recordadmin-editlink' => 'baguhin',
+	'recordadmin-created' => 'Nilikha na',
+	'right-recordadmin' => 'Hanapin at baguhin ang mga pahina ng tala/rekord',
 );
 
 /** Vietnamese (Tiếng Việt)

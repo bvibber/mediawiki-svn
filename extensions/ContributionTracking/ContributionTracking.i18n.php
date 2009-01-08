@@ -607,5 +607,7 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'contrib-tracking-error' => 'Pöl',
+	'contrib-tracking-error-text' => 'Fometised no lonöföl',
+	'contrib-tracking-button' => 'Föfiö!',
 );
 

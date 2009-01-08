@@ -274,6 +274,15 @@ $messages['es'] = array(
 	'edituser-dosearch' => 'Buscar',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'edituser' => 'Erabiltzailea editatu',
+	'edituser-username' => 'Izena',
+	'edituser-dosearch' => 'Bilatu',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix

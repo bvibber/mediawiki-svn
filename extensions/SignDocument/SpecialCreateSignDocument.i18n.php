@@ -353,6 +353,7 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'createsigndoc-pagename' => 'Orri:',
@@ -362,8 +363,11 @@ $messages['eu'] = array(
 	'createsigndoc-phone' => 'Telefono zenbakia:',
 	'createsigndoc-bday' => 'Urtebetetzea:',
 	'createsigndoc-minage' => 'Gutxienezko adina:',
+	'createsigndoc-introtext' => 'Sarrera:',
 	'createsigndoc-optional' => 'Hautazkoa',
 	'createsigndoc-create' => 'Sortu',
+	'createsigndoc-error-generic' => 'Errorea: $1',
+	'createsigndoc-error-pagenoexist' => 'Errorea: [[$1]] orrialdea ez da existitzen.',
 );
 
 /** Extremaduran (Estremeñu)
@@ -883,8 +887,8 @@ Zorg er ook voor dat alle velden de juiste waarden hebben ''voordat u het formul
 	'createsigndoc-create' => 'Aanmaken',
 	'createsigndoc-error-generic' => 'Fout: $1',
 	'createsigndoc-error-pagenoexist' => 'Error: De pagina [[$1]] bestaat niet.',
-	'createsigndoc-success' => 'Documentondertekening is ingeschakeld op
-[[$1]]. Ga alstublieft naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
+	'createsigndoc-success' => 'Documentondertekening is ingeschakeld op [[$1]].
+Ga naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
 	'createsigndoc-error-alreadycreated' => 'De documentondertekening "$1" bestaat al.',
 );
 
@@ -1050,9 +1054,17 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'createsigndocument' => 'Ativar a assinatura de documentos',
+	'createsigndoc-head' => "Use este formulário para criar uma página \"Assinar o documento\" para a página relacionada, de forma a que os utilizadores [[Special:SignDocument|o possam assinar]].
+Por favor, especifique o nome da página na qual quer activar a assinatura digital, o grupo de utilizadores cujos membros podem assiná-lo, quais os campos que quer que estejam visíveis aos utilizadores e quais deverão ser opcionais, a idade mínima a exigir dos utilizadores para poderem assinar o documento (sem mínimo se omitido);
+e um breve texto introdutório que descreva o documento e forneça instruções aos utilizadores.
+
+<b>Actualmente não há forma de eliminar ou modificar os documentos de assinatura depois de serem criados</b> sem acesso directo à base de dados. Além disso, o texto da página apresentado na página de assinaturas será o texto ''actual'' da página, independentemente das alterações que lhe sejam feitas a partir de hoje.
+Por favor, certifique-se com o máximo rigor de que o documento está numa situação de estabilidade antes de assiná-lo.
+Assegure-se também de que especificou todos os campos exactamente como devem ser, ''antes de enviar este formulário''.",
 	'createsigndoc-pagename' => 'Página:',
 	'createsigndoc-allowedgroup' => 'Grupo autorizado:',
 	'createsigndoc-email' => 'Endereço de e-mail:',
+	'createsigndoc-address' => 'Endereço da residência:',
 	'createsigndoc-extaddress' => 'Cidade, Estado, País:',
 	'createsigndoc-phone' => 'Número de telefone:',
 	'createsigndoc-bday' => 'Data de nascimento:',

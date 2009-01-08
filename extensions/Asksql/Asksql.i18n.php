@@ -295,6 +295,18 @@ $messages['eo'] = array(
 	'querysuccessful' => 'Serĉomendo sukcesas',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'asksql' => 'SQL kontsulta',
+	'asksql-desc' => 'SQL kontsultak egin [[Special:Asksql|orrialde berezi]] batekin',
+	'sqlquery' => 'Kontsulta sartu',
+	'querybtn' => 'Kontsulta bidali',
+	'querysuccessful' => 'Kontsulta ondo egina',
+	'right-asksql' => 'SQL kontsultak egin',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

@@ -1095,9 +1095,14 @@ Xin đừng cấm cả tên miền của website chứa tên miền phụ của 
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'spamdifftool_no_urls_detected' => "Els URL nonik petuvons.
+Välolös <a href='$1'>is</a> ad geikön.",
 	'spamdifftool_option_none' => 'nos',
+	'spamdifftool_block' => 'Blokön:',
+	'spamdifftool_submit_buttom' => 'Sedön',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

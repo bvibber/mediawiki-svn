@@ -703,6 +703,13 @@ $messages['mt'] = array(
 	'spamregex-already-blocked' => '"$1" diġà bblokkjat',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'spamregex-already-blocked' => '"$1" уш саймас саезь',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

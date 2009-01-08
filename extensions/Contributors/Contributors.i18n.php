@@ -305,9 +305,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Kobazulo
  * @author Sanbec
  */
 $messages['es'] = array(
+	'contributors' => 'Colaboradores',
 	'contributors-toolbox' => 'Colaboradores principales',
 	'contributors-target' => 'Título:',
 );
@@ -327,9 +329,15 @@ $messages['et'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'contributors' => 'Lankideak',
+	'contributors-toolbox' => 'Lankide nagusiak',
+	'contributors-legend' => 'Orrialde baten lankide nagusiak zerrendatu',
 	'contributors-target' => 'Izenburua:',
 	'contributors-submit' => 'Erakutsi',
+	'contributors-subtitle' => 'Lankide nagusiak $1-en',
+	'contributors-others' => 'eta {{PLURAL:$1|beste bat|beste $1}}',
 	'contributors-badtitle' => 'Izenburu ezegokia.',
+	'contributors-nosuchpage' => '$1 orrialdea ez da existitzen.',
 );
 
 /** Extremaduran (Estremeñu)

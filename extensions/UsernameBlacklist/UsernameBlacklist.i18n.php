@@ -542,6 +542,25 @@ $messages['gl'] = array(
 	'right-uboverride' => 'Ignorar os nomes de usuario da listaxe negra (blacklist)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'usernameblacklist-desc' => 'Ergänzt e [[MediaWiki:Usernameblacklist|Lischt vu nit gwinschte Benutzernäme]], wu s Aalege vun ene uf dr Grundlag vu reguläre Usdrick unterbunde wird',
+	'blacklistedusername' => 'Benutzername uf dr Sperrlischt',
+	'blacklistedusernametext' => 'Dr gwehlt Benutzername stoht uf dr [[MediaWiki:Usernameblacklist|Lischt vu nit gwinschte Benutzernäme]]. Bitte wehl e andere.',
+	'usernameblacklist' => '<pre>
+# Yyträg in däre Lischt sind Teil vun eme reguläre Usdruck,
+# wu bi dr Priefig vu Nejaamäldige uf nit gwinschti Benutzernäme aagwändet wird.
+# Jedi Zyylete muess mit eme * aafange, z.B.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|Zyylete|Zyylete}} in dr Lischt vu nit gwinschte Benutzernäme {{PLURAL:$1|isch|sin}} nit giltig; bitte korrigier si vor em Spychere:',
+	'right-uboverride' => 'D Lischt vu nit gwinschte Benutzernäme ußer Chraft setze',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

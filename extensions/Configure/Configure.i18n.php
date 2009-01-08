@@ -1352,13 +1352,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Academo
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'configure' => 'Configurar la wiki',
 	'configure-desc' => 'Permite que usuarios autorizados [[Special:Configure|configuren]] la wiki desde una interfaz web',
-	'configure-desc-group' => 'Grupos',
+	'configure-desc-group' => 'Grupo',
 	'configure-desc-key' => 'Clave',
 	'configure-desc-ns' => 'Espacio de nombre',
 	'configure-desc-val' => 'Valor',
@@ -2156,6 +2157,7 @@ $messages['he'] = array(
 	'configure-transwiki-not-in-range' => 'הוויקי הנבחר, $1, אינו בערכים המורשים ($2).',
 	'configure-view' => 'צפייה',
 	'configure-view-all-versions' => 'רשימת הגרסאות המלאה',
+	'configure-view-default' => 'הגדרות ברירת המחדל',
 	'configure-view-not-allowed' => 'אינכם מורשים לעיין בהגדרה זו',
 	'extensions' => 'הגדרת ההרחבות',
 	'right-configure' => 'הגדרת הוויקי',

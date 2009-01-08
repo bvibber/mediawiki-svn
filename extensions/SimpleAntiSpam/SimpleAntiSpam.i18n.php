@@ -174,6 +174,16 @@ NE ENIGU ion ajn!',
 	'simpleantispam-desc' => 'Aldonas simplan kontraŭspamilon/kontraŭrobotilon al paĝoj',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'simpleantispam' => 'Zure aldaketak anti-spam mekanismoa abiarazi du',
+	'simpleantispam-label' => "Anti-spam egiaztapena.
+Atal hau '''EZ''' bete!",
+	'simpleantispam-desc' => 'Spam/bot baten egiaztapen sinple bat eransten du',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -213,6 +223,15 @@ $messages['gl'] = array(
 	'simpleantispam-label' => "Comprobación antispam.
 '''NON''' encha isto!",
 	'simpleantispam-desc' => 'Engade unha verificación simple de spam/bot nos formularios',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'simpleantispam' => 'Dyyni Bearbeitig het dr Spamschutz usglest.',
+	'simpleantispam-label' => "Spamschutz-Priefig. Do '''nyt''' yytrage!",
+	'simpleantispam-desc' => 'Ergänzt Formular um e eifache Bot-Spamschutz',
 );
 
 /** Hebrew (עברית)

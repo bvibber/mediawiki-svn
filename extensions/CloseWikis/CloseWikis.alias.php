@@ -59,7 +59,7 @@ $aliases['hu'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'CloseWiki' => array( '閉鎖ウィキ', '閉鎖されたウィキ' ),
+	'CloseWiki' => array( 'ウィキ閉鎖', 'ウィキを閉鎖する' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */

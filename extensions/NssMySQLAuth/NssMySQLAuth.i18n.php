@@ -180,6 +180,20 @@ $messages['es'] = array(
 	'am-active' => 'activo',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'am-username' => 'lankide izena',
+	'am-email' => 'e-posta',
+	'am-updated' => 'Zure aldaketak ondo gorde dira',
+	'nss-rights' => 'eskubideak',
+	'nss-save-changes' => 'Aldaketak gorde',
+	'nss-create-account-header' => 'Kontu berria sortu',
+	'nss-create-account' => 'Kontua sortu',
+	'nss-welcome-mail-subject' => 'Kontuen sorrera',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

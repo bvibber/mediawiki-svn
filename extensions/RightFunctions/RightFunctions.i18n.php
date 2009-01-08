@@ -283,6 +283,16 @@ $messages['te'] = array(
 	'rightfunctions-local' => '(స్థానిక పేజీ నుండి)',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'rightfunctions-desc' => 'Mga tungkuling pambanghay na nakabatay sa kapahintulutan',
+	'rightfunctions-casc' => '(mula sa mga pinagmumulang baita-baitang)',
+	'rightfunctions-local' => '(mula sa pampook/lokal na pahina)',
+	'rightfunctions-ns' => '(mula sa pagsasanggalang ng espasyo ng pangalan)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

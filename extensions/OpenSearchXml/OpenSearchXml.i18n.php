@@ -115,6 +115,13 @@ $messages['gl'] = array(
 	'opensearchxml-desc' => 'A interface que [http://www.opensearch.org OpenSearch] XML proporciona para extractar textos',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Schnittstell fir Täxtuszig',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

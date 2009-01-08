@@ -2078,14 +2078,28 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'badimages' => 'Lised magodas badik',
+	'badimages-desc' => 'Veitükumön fägis ela MediaWiki tefü liseds magodas badik',
 	'badimages-add-btn' => 'Läükön',
+	'badimages-added' => '$1 peläükon lisede.',
 	'badimages-count' => "{{PLURAL:$1|Dabinon magod|Dabinons magods}} '''$1''' in lised magodas badik.",
 	'badimages-name' => 'Nem:',
+	'badimages-not-added' => 'No eplöpos ad läükön magodi.',
+	'badimages-not-removed' => 'No eplöpos ad moükön magodi.',
 	'badimages-reason' => 'Kod:',
+	'badimages-remove' => '(moükön)',
+	'badimages-remove-btn' => 'Moükön',
+	'badimages-remove-confirm' => 'Fümedolös, das vilol moükön magodi: $1 se lised.',
+	'badimages-removed' => '$1 pemoükon se lised.',
+	'badimages-subheading' => 'Lisedabinets nuik',
+	'badimages-unprivileged' => '(No labol dälis saidik ad moükön lisedi)',
 	'badimages-log-name' => 'Lised magodas badik',
+	'badimages-log-header' => 'Is palisedons votükams [[{{MediaWiki:Badimages-page}}|liseda magodas badik]].',
+	'badimages-log-add' => '[[$1]] peläükon lisede magodas badik',
+	'badimages-log-remove' => '[[$1]] pemoükon se lised magodas badik',
 	'badimages-page' => '{{ns:help}}:Lised magodas badik',
 );
 

@@ -121,6 +121,16 @@ $messages['eo'] = array(
 	'pageby-anon' => '<i>anonima</i>',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'pageby-first' => '$1 erabiltzaileak sortutako orrialdea, $2',
+	'pageby-last' => 'Azken <a href="$3">aldaketa</a> $1 erabiltzaileak egin zuen, $2',
+	'pageby-contributors' => 'Lankideak:',
+	'pageby-anon' => '<i>egile ezezaguna</i>',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  * @author Vililikku

@@ -417,6 +417,15 @@ $messages['vec'] = array(
 	'templatelink_newtitle' => '$1 (trasclusión)',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'templatelink' => 'Samafomotayüm',
+	'templatelink_desc' => 'Veitükumam at kanon jonön samafomoti as pad nulik.',
+	'templatelink_empty' => 'Mutol gevön parameti.',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

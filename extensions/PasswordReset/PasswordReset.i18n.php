@@ -263,9 +263,22 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Kobazulo
  */
 $messages['es'] = array(
 	'passwordreset-username' => 'Nombre de usuario:',
+	'passwordreset-submit' => 'Pasahitza berrezarri',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'passwordreset' => 'Pasahitzaren berrezarpena',
+	'passwordreset-nopassmatch' => 'Pasahitzak ez datoz bat',
+	'passwordreset-username' => 'Lankide izena:',
+	'passwordreset-newpass' => 'Pasahitz berria:',
+	'passwordreset-confirmpass' => 'Pasahitza egiaztatu:',
 );
 
 /** Finnish (Suomi)

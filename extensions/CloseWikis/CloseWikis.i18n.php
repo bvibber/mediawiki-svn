@@ -613,17 +613,37 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'closewikis-page' => '閉鎖されたウィキ',
-	'closewikis-page-close' => '閉鎖されたウィキ',
+	'closewikis-desc' => 'ウィキファーム内のウィキサイトを閉鎖できるようにする',
+	'closewikis-page' => 'ウィキを閉鎖する',
+	'closewikis-page-close' => 'ウィキを閉鎖する',
 	'closewikis-page-close-wiki' => 'ウィキ:',
+	'closewikis-page-close-dreason' => '理由 (表示用):',
+	'closewikis-page-close-reason' => '理由 (記録用):',
 	'closewikis-page-close-submit' => '閉鎖',
-	'closewikis-page-close-success' => '正常に閉鎖されたウィキ',
+	'closewikis-page-close-success' => 'ウィキの閉鎖に成功しました',
+	'closewikis-page-reopen' => 'ウィキを再開する',
 	'closewikis-page-reopen-wiki' => 'ウィキ:',
 	'closewikis-page-reopen-reason' => '理由:',
+	'closewikis-page-reopen-submit' => '再開',
+	'closewikis-page-reopen-success' => 'ウィキの再開に成功しました',
+	'closewikis-page-err-nowiki' => '無効なウィキが指定されました',
+	'closewikis-page-err-closed' => 'ウィキは既に閉鎖されています',
+	'closewikis-page-err-opened' => 'ウィキは閉鎖されていません',
+	'closewikis-list' => '閉鎖されたウィキの一覧',
+	'closewikis-list-intro' => 'このリストにはスチュワードによって閉鎖されたウィキが載っています。',
 	'closewikis-list-header-wiki' => 'ウィキ',
+	'closewikis-list-header-by' => '閉鎖者',
+	'closewikis-list-header-timestamp' => '閉鎖日',
+	'closewikis-list-header-dispreason' => '表示理由',
+	'closewikis-log' => 'ウィキ閉鎖記録',
+	'closewikis-log-header' => 'これはスチュワードによるすべてのウィキの閉鎖および再開の記録です',
+	'closewikis-log-close' => '$2 を閉鎖',
+	'closewikis-log-reopen' => '$2 を再開',
+	'right-editclosedwikis' => '閉鎖されたウィキを編集する',
 	'right-closewikis' => 'ウィキを閉鎖する',
 );
 
@@ -914,12 +934,18 @@ $messages['pt'] = array(
 	'closewikis-page-err-nowiki' => 'A wiki especificada é inválida',
 	'closewikis-page-err-closed' => 'Wiki já está fechada',
 	'closewikis-page-err-opened' => 'Esta wiki não está fechada',
+	'closewikis-list' => 'Lista de wikis fechados',
+	'closewikis-list-intro' => 'Esta lista contém wikis que foram fechados por stewards.',
 	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Fechado por',
+	'closewikis-list-header-timestamp' => 'Fechado em',
+	'closewikis-list-header-dispreason' => 'Razão apresentada',
 	'closewikis-log' => 'Registro de Wikis fechadas',
 	'closewikis-log-header' => 'Aqui está um registro de todas as wikis que foram fechadas ou reabertas por stewards',
 	'closewikis-log-close' => 'fechada $2',
 	'closewikis-log-reopen' => 'reaberta $2',
 	'right-editclosedwikis' => 'Editar wikis fechadas',
+	'right-closewikis' => 'Fechar wikis',
 );
 
 /** Romanian (Română)

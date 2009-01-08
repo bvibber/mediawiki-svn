@@ -288,6 +288,7 @@ $messages['es'] = array(
 $messages['eu'] = array(
 	'form' => 'Formularioa',
 	'formsave' => 'Gorde',
+	'formarticleexists' => 'Orrialdea existitzen da',
 );
 
 /** Finnish (Suomi)

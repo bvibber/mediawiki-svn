@@ -1882,6 +1882,7 @@ $messages['ko'] = array(
 	'hiderevision-error-missing' => '데이터베이스에서 찾을 수 없습니다.',
 	'hiderevision-error-current' => '이 문서의 마지막 편집을 삭제할 수 없습니다.
 이 편집을 먼저 되돌리십시오.',
+	'hiderevision-error-delete' => '숨길 수 없습니다; 이전에 삭제되었습니까?',
 	'hiderevision-archive-status' => '삭제된 판의 $1 버전: $2',
 	'oversight-nodiff' => '이 문서의 이전 판이 없기 때문에 차이를 보여 줄 수 없습니다. 아마도:
 *문서가 삭제되었거나,
@@ -3378,23 +3379,30 @@ Nếu đưa ra thông tin này, bạn sẽ mất vĩnh viễn quyền giám sát
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
 	'hiderevision' => 'Klänedön krütamis laidüpio',
+	'group-oversight' => 'Lovelogans',
+	'group-oversight-member' => 'lovelogam',
+	'grouppage-oversight' => '{{ns:project}}:Lovelogam',
 	'hiderevision-prompt' => 'Dientifakot fomama moükabik:',
 	'hiderevision-continue' => 'Fövön',
 	'hiderevision-reason' => 'Kod (polisedon kläniko):',
 	'hiderevision-submit' => 'Klänedön nünis at laidüpio',
 	'hiderevision-tab' => 'Klänedön revidi',
+	'hiderevision-link' => 'Gebanakeblünots peklänedöl',
 	'hiderevision-norevisions' => 'Fomams nonik pevälons ad pamoükön.',
 	'hiderevision-noreason' => 'Mutol bepenön kodi moükama at.',
 	'hiderevision-status' => 'Fomam $1: $2',
 	'hiderevision-success' => 'Pepladon ini ragiv e pemoükon benosekiko.',
 	'hiderevision-archive-status' => 'Pemoükon fomam se $1: $2',
 	'oversight-log-hiderev' => 'emoükon redakami se $1',
+	'oversight' => 'Lovelogam',
 	'oversight-view' => 'pats',
 	'oversight-hidden' => 'Fomam peklänedöl',
+	'oversight-oversighter' => 'Lovelogan:',
 );
 
 /** Yiddish (ייִדיש)

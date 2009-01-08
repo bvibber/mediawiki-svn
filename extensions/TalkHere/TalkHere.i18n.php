@@ -648,6 +648,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'talkhere-desc' => 'Coloca a página de discussão dentro da página',
 	'talkhere-foottext' => 'Os comentários acima podem ter sido deixados por visitantes.
 
 Os responsáveis por este site não podem ser responsabilizados pelo conteúdo desses comentários.',

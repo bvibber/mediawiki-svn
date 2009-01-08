@@ -331,10 +331,13 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'newschannel' => 'Canal de "news"',
+	'newschannel-desc' => 'Implementa um canal de "news" como uma [[Special:NewsChannel|página especial]] dinâmica',
 	'newschannel_format' => 'Formato:',
 	'newschannel_limit' => 'Limite:',
 	'newschannel_include_category' => 'Categoria adicional:',
 	'newschannel_exclude_category' => 'Excluir categoria:',
+	'newschannel_submit_button' => 'Criar feed',
 );
 
 /** Russian (Русский)

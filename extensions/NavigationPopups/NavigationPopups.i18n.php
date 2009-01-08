@@ -178,6 +178,13 @@ $messages['oc'] = array(
 	'navigationpopups-desc' => 'Carga, dins mèdiawiki, los escripts de las fenèstras de navigacion de Lupin',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'navigationpopups-desc' => 'Carrega janelas de pop-up dos scripts de navegação de Lupin no MediaWiki',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

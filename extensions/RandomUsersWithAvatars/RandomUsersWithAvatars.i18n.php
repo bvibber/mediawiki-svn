@@ -176,10 +176,12 @@ $messages['oc'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'random-users-avatars-title' => 'Conheça a comunidade',
+	'random-users-avatars-desc' => 'Adiciona a marca <tt>&lt;randomuserswithavatars&gt;</tt> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
 );
 
 /** Slovak (Slovenčina)
@@ -196,5 +198,13 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'random-users-avatars-title' => 'Träffa gemenskapen',
 	'random-users-avatars-desc' => 'Lägger till taggen <tt>&lt;randomuserswithavatars&gt;</tt> för att visa avatarerna för slumpvis utvalda användare',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'random-users-avatars-title' => 'Makipagtagpo sa pamayanan',
+	'random-users-avatars-desc' => "Nagdaragdag ng tatak na <tt>&lt;randomuserswithavatars&gt;</tt> upang maipakita/mapalitaw ang mga abatar/huwaran ng mga tagagamit na napili ayon sa ibinigay ng pagkakataon/tsansa (''random'')",
 );
 

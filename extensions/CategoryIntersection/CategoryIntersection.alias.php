@@ -102,6 +102,11 @@ $aliases['ia'] = array(
 	'CategoryIntersection' => array( 'Intersection de categorias', 'IntersectionDeCategorias' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'CategoryIntersection' => array( 'カテゴリ交差' ),
+);
+
 /** Javanese (Basa Jawa) */
 $aliases['jv'] = array(
 	'CategoryIntersection' => array( 'Intersèksi Kategori' ),

@@ -241,6 +241,15 @@ $messages['ja'] = array(
 	'searchbox-namespaces' => '名前空間:',
 );
 
+/** Georgian (ქართული)
+ * @author Sopho
+ */
+$messages['ka'] = array(
+	'searchbox-search' => 'ძიება',
+	'searchbox-go' => 'გადასვლა',
+	'searchbox-namespaces' => 'სახელთა სივრცეები:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -345,9 +354,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'searchbox-desc' => 'Permite a inclusão de formulários de pesquisa',
 	'searchbox-search' => 'Pesquisar',
 	'searchbox-go' => 'Ir',
 	'searchbox-namespaces' => 'Domínios:',

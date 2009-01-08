@@ -199,6 +199,13 @@ $messages['pl'] = array(
 	'csshooks-desc' => 'Dodaje CSS do stron HTML dla lepszego wyglądu',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'csshooks-desc' => 'Adiciona CSS ao resultado HTML das páginas para uma melhor estilização',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -650,7 +650,7 @@ $messages['he'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>הסקירה שלכם נשמרה!</span>",
 	'revision_review_this_page_version_link' => 'סקירת גרסה זו של הדף.',
 	'review_page_review' => 'סקירת הדף "$1"',
-	'review_blocked' => 'נחסמתם, לכו מפה.',
+	'review_blocked' => 'נחסמתם ולכן לא תוכלו לקחת חלק בסיקורים.',
 	'review_wrong_namespace' => 'לא ניתן לסקור דפים במרחב שם זה!',
 	'review_topic' => 'נושא',
 	'review_no_opinion' => 'אין דעה',
@@ -865,7 +865,7 @@ $messages['km'] = array(
 	'review_user_details_link' => '(លំអិត)',
 	'revision_review_this_page_version_link' => 'ពិនិត្យ​កំណែ​នៃ​ទំព័រ​នេះ​ឡើងវិញ​។',
 	'review_page_review' => 'ពិនិត្យ​ឡើងវិឡ​នៃ​ទំព័រ "$1"',
-	'review_blocked' => 'អ្នក​ត្រូវ​បាន​រាំងខ្ទប់​ហើយ, ចូរ​ចេញ​ឱ្យ​ឆ្ងាយ​។',
+	'review_blocked' => 'អ្នក​ត្រូវ​បាន​រាំងខ្ទប់ ហើយ​មិន​អាច​ចូលរួម​ក្នុង​ការ​ពិនិត្យឡើងវិញ​ទេ​។',
 	'review_wrong_namespace' => 'ទំព័រ​នៅក្នុង​លំហឈ្មោះ​នេះ មិន​អាច​ត្រូវ​បាន​ពិនិត្យឡើងវិញ​បាន​ឡើយ​!',
 	'review_topic' => 'ប្រធានបទ',
 	'review_no_opinion' => 'គ្មានមតិ',
@@ -1175,7 +1175,7 @@ $messages['oc'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Vòstra revision es estada salvada.</span>",
 	'revision_review_this_page_version_link' => 'Revisar aquesta version de la pagina',
 	'review_page_review' => 'Revision de la pagina « $1 »',
-	'review_blocked' => 'Sètz blocat(ada).',
+	'review_blocked' => 'Sètz blocat(ada) e podètz pas participar a las relecturas.',
 	'review_wrong_namespace' => 'Las paginas dins aqueste espaci de nom pòdon pas èsser revisadas.',
 	'review_topic' => 'Subjècte',
 	'review_no_opinion' => 'Sens opinion',
@@ -1340,7 +1340,7 @@ $messages['sk'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Vaša kontrola bola uložená!</span>",
 	'revision_review_this_page_version_link' => 'Skontrolovať túto verziu stránky.',
 	'review_page_review' => 'Kontrola stránky „$1“',
-	'review_blocked' => 'Ste zablokovaný, choďte preč.',
+	'review_blocked' => 'Váš účet je zablokovaný a nemôžete sa zúčastňovať kontrol.',
 	'review_wrong_namespace' => 'Stránky v tomto mennom priestore nemožno kontrolovať!',
 	'review_topic' => 'Téma',
 	'review_no_opinion' => 'bez názoru',
@@ -1357,6 +1357,7 @@ $messages['sr-ec'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'review_sidebar_title' => 'Granska',
@@ -1392,7 +1393,7 @@ $messages['sv'] = array(
 	'review_has_been_stored' => '<span id="review_has_benn_stored">Din granskning har sparats!</span>',
 	'revision_review_this_page_version_link' => 'Granska den här versionen av sidan.',
 	'review_page_review' => 'Granskning av sidan "$1"',
-	'review_blocked' => 'Du är blockerad, gå bort.',
+	'review_blocked' => 'Du är blockerad och kan inte delta i granskningar.',
 	'review_wrong_namespace' => 'Sidor i den här namnrymden kan inte granskas!',
 	'review_topic' => 'Ämne',
 	'review_no_opinion' => 'Ingen mening',

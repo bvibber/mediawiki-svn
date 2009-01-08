@@ -173,12 +173,16 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'findspam' => 'Encontrar spam',
+	'findspam-desc' => 'Agregue una [[Special:FindSpam|página especial]] que permita encontrar spam recientemente agregado',
 	'findspam-ip' => 'Dirección IP:',
 	'findspam-ok' => 'Aceptar',
+	'findspam-notextfound' => 'Sin contribuciones encontradas',
 );
 
 /** Estonian (Eesti)

@@ -327,6 +327,13 @@ $messages['lb'] = array(
 	'layouts_unknown' => 'Onbekannt',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'layouts_unknown' => 'Апак содань',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -400,7 +407,9 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'layouts_title' => 'Criar uma página',
+	'layouts_continue' => 'Continuar',
 	'layouts_choosecategory' => 'Escolha uma categoria para $1:',
+	'layouts_unknown' => 'Desconhecido',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

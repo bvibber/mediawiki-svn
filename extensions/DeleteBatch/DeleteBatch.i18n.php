@@ -249,13 +249,14 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  * @author Mobe
  * @author Nike
  */
 $messages['fi'] = array(
 	'deletebatch' => 'Poista useita sivuja',
-	'deletebatch-desc' => '[[Special:DeleteBatch|Poista erä sivuja]]',
+	'deletebatch-desc' => 'Mahdollistaa [[Special:DeleteBatch|sivujen poistamisen erissä]].',
 	'deletebatch-button' => 'POISTA',
 	'deletebatch-help' => 'Poista useita sivuja. Voit joko tehdä yhden poiston tai poistaa tiedostossa listatut sivut. Valitse käyttäjä, joka näytetään poistolokeissa. Tallennetun tiedoston tulisi sisältää sivun nimi ja vapaaehtoinen syy | -merkin erottamina joka rivillä.',
 	'deletebatch-caption' => 'Sivulista',
@@ -277,6 +278,7 @@ $messages['fi'] = array(
 	'deletebatch-select-script' => 'sivunpoistoskripti',
 	'deletebatch-select-yourself' => 'sinä',
 	'deletebatch-no-page' => 'Määrittele ainakin yksi poistettava sivu TAI valitse tiedosto, joka sisältää sivulistan.',
+	'right-deletebatch' => 'Poistaa sivuja erissä',
 );
 
 /** French (Français)

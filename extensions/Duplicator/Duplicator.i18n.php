@@ -1244,6 +1244,31 @@ Có lỗi lạ xảy ra.',
 Giới hạn hiện nay là $3.',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'duplicator' => 'Telükön padi',
+	'duplicator-desc' => 'Jafön [[Special:Duplicate|padakopiedis nesekidik]] labü redakamajenotems lölöfik',
+	'duplicator-toolbox' => 'Telükön padi at',
+	'duplicator-source' => 'Fonät:',
+	'duplicator-dest' => 'Zeil:',
+	'duplicator-dotalk' => 'Telükön bespikapadi (if dabinon)',
+	'duplicator-submit' => 'Telükön',
+	'duplicator-summary' => 'Pekopiedon se [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] pekopiedon lü [[$2]].'''</big>",
+	'duplicator-success-revisions' => '{{PLURAL:$1|Revid bal pekopiedon|Revids $1 pekopiedons}}.',
+	'duplicator-success-talkcopied' => 'I bespikapad pekopiedon.',
+	'duplicator-success-talknotcopied' => 'No eplöpos ad kopiedön bespikapadi.',
+	'duplicator-failed' => 'No eplöpos ad telükön padi.
+Pöl nesevädik ejenon.',
+	'duplicator-source-invalid' => 'Penolös fonätatiädi lonöföl.',
+	'duplicator-source-notexist' => 'Pad: [[$1]] no dabinon. Penolös tiädi pada dabinöl.',
+	'duplicator-dest-invalid' => 'Penolös zeilatiädi lonöföl.',
+	'duplicator-dest-exists' => 'Pad: [[$1]] ya dabinon. Penolös zeilatiädi no dabinöli.',
+	'duplicator-toomanyrevisions' => 'Pad: [[$1]] labon revidis tu mödikis ($1) e no kanon pakopiedön. Mied anuik binon $3.',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

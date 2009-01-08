@@ -875,6 +875,38 @@ $messages['grc'] = array(
 	'fundraiserstats-date' => 'Ἡμερομηνία',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Chlämens
+ */
+$messages['gsw'] = array(
+	'contribstats-day' => 'Dag',
+	'contribstats-month' => 'Monet',
+	'contribstats-currency' => 'Wäärig',
+	'contribstats-amount' => 'Betroog (US-$)',
+	'contribstats-contributions' => 'Spände',
+	'contribstats-total' => 'Gsamt (USD)',
+	'contribstats-avg' => 'Durchschnitt (USD)',
+	'contribstats-max' => 'Maximum (USD)',
+	'contribstats-percentage-ytd' => 'Prozentsatz (YTD)',
+	'contribstats-total-ytd' => 'Gsamt (YTD)',
+	'contribstats-value-exactly' => 'Gnau $1',
+	'contribstats-value-under' => 'Weniger wie $1',
+	'contribstats-value-from' => 'Zwüsche $1 un $2',
+	'contribstats-value-over' => 'Mee wie $1',
+	'fundraiserstatistics' => 'Spändestatischtik',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Dag $1 vo $2',
+	'fundraiserstats-contributions' => 'Spände',
+	'fundraiserstats-total' => 'Gsamt (USD)',
+	'fundraiserstats-avg' => 'Durchschnitt (USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
+	'fundraiserstats-tab-totals' => 'Summe (USD)',
+	'fundraiserstats-tab-contributions' => 'Spändeaazaal',
+	'fundraiserstats-tab-averages' => 'Durchschnittswärt (USD)',
+	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
+	'specialpages-group-contribution' => 'Spände/Spändeufruef',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

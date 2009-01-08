@@ -217,6 +217,15 @@ $messages['pl'] = array(
 	'untidy' => 'Anuluj uporządkowanie',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'tidy-desc' => 'Adiciona uma pestana arrumado ou desarrumado (dependendo de $wgUseTidy) em páginas normais, permitindo sobrepor a configuração de arrumação de HTML global para uma vista única',
+	'tidy' => 'Arrumado',
+	'untidy' => 'Desarrumado',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  */

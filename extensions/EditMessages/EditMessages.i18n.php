@@ -855,10 +855,17 @@ $messages['pt'] = array(
 	'editmsg-target' => 'Mensagem alvo:',
 	'editmsg-search' => 'Pesquisar',
 	'editmsg-show-list' => 'Mostrando valores para o nome de mensagem "$1"',
+	'editmsg-get-patch' => 'Gerar correcção',
 	'editmsg-new-search' => 'Nova pesquisa',
+	'editmsg-warning-parse1' => '* Expressão regular de nome de mensagem sem qualquer correspondência: $1',
 	'editmsg-warning-parse2' => '* Caracter de aspa esperado após seta: $1',
 	'editmsg-warning-parse3' => '* Fim de cadeia de caracteres de valor não encontrado: $1',
 	'editmsg-warning-file' => 'Erros de leitura de ficheiro foram encontrados para {{PLURAL:$2|a seguinte língua|as seguintes línguas}}: $1',
+	'editmsg-warning-mismatch' => '* O texto original não tinha o valor esperado para {{PLURAL:$2|a seguinte língua|as seguintes línguas}}: $1',
+	'editmsg-apply-patch' => 'Aplicar correcção',
+	'editmsg-no-patch' => 'Não foi possível executar comando de correcção "patch"',
+	'editmsg-patch-failed' => 'Aplicação de correcção falhou com estado de saída $1',
+	'editmsg-patch-success' => 'Correcção aplicada com sucesso.',
 );
 
 /** Tarifit (Tarifit)

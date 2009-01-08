@@ -360,6 +360,14 @@ $messages['tr'] = array(
 	'stalepages' => 'Eski sayfalar',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'stalepages-desc' => 'Jafon [[Special:Stalepages|lisedi padas]], kels no peredakons brefabüiko',
+	'stalepages-summary' => 'Is palisedons pads, kels no peredakons dü dels lätik $1.',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

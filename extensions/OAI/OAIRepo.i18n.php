@@ -137,6 +137,13 @@ $messages['gl'] = array(
 	'oai-desc' => 'Proporciona a interface [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] no repositorio',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'oai-desc' => 'Stellt e [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium-Schnittstelle z Verfiegig',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

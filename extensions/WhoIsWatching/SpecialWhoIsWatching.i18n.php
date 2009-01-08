@@ -80,7 +80,7 @@ $messages['avk'] = array(
  */
 $messages['be-tarask'] = array(
 	'whoiswatching' => 'Хто назірае за старонкай',
-	'whoiswatching-desc' => 'Адлюстроўвае сьпіс удзельнікаў, якія назіраюць за гэтай старонкай',
+	'whoiswatching-desc' => 'Паказвае сьпіс удзельнікаў, якія назіраюць за вікі старонкай',
 	'specialwhoiswatchingthepage' => 'Хто назірае за %s',
 	'specialwhoiswatchingusage' => 'Гэтая спэцыяльная старонка не можа выкарыстоўвацца самастойна.
 Калі ласка, карыстайцеся старонкай [[MediaWiki:Number_of_watching_users_pageview]] для вызначэньня ўваходнага пункту на гэту спэцыяльную старонку.',
@@ -215,8 +215,10 @@ $messages['et'] = array(
  * @author Theklan
  */
 $messages['eu'] = array(
-	'whoiswatching' => 'Nor dago ikusten wiki orrialde bat',
-	'whoiswatching-desc' => 'Wiki orrialde bat begiratzen ari diren erabiltzaileen zerrenda ematen du.',
+	'whoiswatching' => 'Nor ari da wiki orrialde bat zaintzen',
+	'whoiswatching-desc' => 'Wiki orrialde bat zaintzen ari diren erabiltzaileen zerrenda ematen du.',
+	'specialwhoiswatchingthepage' => 'Nor ari da %s zaintzen',
+	'specialwhoiswatchingaddusers' => 'Lankideak gehitu orrialdea zaintzeko',
 	'specialwhoiswatchingaddbtn' => 'Gehitu aukeratutako lankideak',
 );
 
@@ -601,6 +603,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'whoiswatching' => 'Wäl beooboachtet ne Siede',
+	'whoiswatching-desc' => 'Wiest ne Lieste fon Benutsere an, do ne Siede beooboachtje',
 	'specialwhoiswatchingthepage' => 'Wäl beooboachtet %s',
 	'specialwhoiswatchingusage' => 'Disse Spezioalsiede kon nit ap sik sälwen anwoand wäide. Definier uur ju Siede [[MediaWiki:Number_of_watching_users_pageview]] ne Ienstiegssiede foar disse Spezioalsiede.',
 	'specialwhoiswatchingaddusers' => 'Föich Benutser tou dät Bekiekjen fon ju Siede bietou.',

@@ -628,6 +628,18 @@ $messages['eo'] = array(
 	'math_WrongFontEncodingWithHint' => 'La simbolo "$1" eble ne aperos en tiparo kodprezento "$2" (provu uzi la komandon "$3{...}" anstataŭe)',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'math_CannotCreateTexFile' => 'Ezin da tex fitxategia sortu',
+	'math_CannotRunDvipng' => 'dvipng ezin da exekutatu',
+	'math_CannotRunLatex' => 'latex ezin da exekutatu',
+	'math_CannotWriteTexFile' => 'Ezin da tex fitxategia idatzi',
+	'math_InvalidColour' => '"$1" kolorea ez da baliozkoa',
+	'math_MismatchedBeginAndEnd' => '"$1" eta "$2" komandoek ez datoz bat',
+);
+
 /** Persian (فارسی)
  * @author Mardetanha
  */
@@ -2622,6 +2634,8 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'math_CannotChangeDirectory' => 'Vobaragiviär no kanon pavotükön',
+	'math_CannotCreateTexFile' => 'Ragiv fomätü tex no kanon pajafön',
+	'math_InvalidColour' => 'Köl: „$1“ no lonöfon',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -268,6 +268,7 @@ Agrega algunas secciones utilizando las herramientas en la barra de menús.',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'gep-emailfailure' => 'Barkatu, zure iradokizuna ezin izan da prozesatu.',
@@ -275,9 +276,12 @@ $messages['eu'] = array(
 	'gep-addcategory' => 'Kategoria gehitu',
 	'gep-addcategorybutton' => 'Gehitu',
 	'gep-suggestcategory' => 'Kategoria iradokitu',
+	'gep-suggestcategorybutton' => 'Bidali',
 	'gep-sections' => 'Atalak',
 	'gep-addsection' => 'Saila gehitu',
 	'gep-addsectionbutton' => 'Gehitu',
+	'gep-classicmode' => 'Modu klasikoa',
+	'gep-genericmode' => 'Modu generikoa',
 	'gep-nocategories' => 'Mesedez aukeratu kategoria bat gutxienez gorde baino lehen',
 );
 
@@ -575,6 +579,13 @@ $messages['mk'] = array(
 	'gep-sections' => 'Секции',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'gep-categories' => 'Категорият',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -702,13 +713,18 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'gep-emailsubject' => '[$1] Sugestão de categoria: $2',
 	'gep-emailbody' => 'O utilizador "$1" sugeriu a categoria "$2" para o sítio "$3".',
+	'gep-emailfailure' => 'Desculpe, a sua sugestão não pôde ser processada.',
 	'gep-emailsuccess' => 'Obrigado por sugerir a categoria: $1.',
 	'gep-categories' => 'Categorias',
+	'gep-addcategory' => 'Adicionar uma categoria',
 	'gep-addcategorybutton' => 'Adicionar',
+	'gep-suggestcategory' => 'Sugerir uma categoria',
 	'gep-addsectionbutton' => 'Adicionar',
 	'gep-classicmode' => 'Modo clássico',
 	'gep-genericmode' => 'Modo genérico',
+	'gep-nocategories' => 'Por favor, seleccione pelo menos uma categoria antes de gravar',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

@@ -90,6 +90,13 @@ $messages['bg'] = array(
 	'postcomment_nopostingtoadd' => 'Няма коментар за добавяне.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'postcomment_leavemessagefor' => 'Ostavi poruku za $1',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -169,6 +176,19 @@ $messages['eo'] = array(
 	'postcomment_invalidrequest' => 'Nevalida peto.',
 	'postcomment_replyto' => 'Respondo al $1',
 	'postcomment_nopostingtoadd' => 'Neniu afiŝaĵo aldonebla.',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'postcomment_notloggedin' => 'Ez duzu saioa hasi.',
+	'postcomment_youareloggedinas' => '$1 bezala saioa hasi duzu',
+	'postcomment_addcommentdiscussionpage' => 'Eztabaida orrialde honetan zure iruzkina erantsi',
+	'postcomment_leavemessagefor' => '$1 lankideari mezua utzi',
+	'postcomment_post' => 'Bidali',
+	'postcomment_said' => 'esan du',
+	'postcomment_replyto' => '$1 lankideari erantzun',
 );
 
 /** Finnish (Suomi)
@@ -341,6 +361,24 @@ $messages['it'] = array(
 	'postcomment_invalidrequest' => 'Richiesta non valida.',
 	'postcomment_replyto' => 'Rispondi a $1',
 	'postcomment_nopostingtoadd' => 'Nessun post da aggiungere.',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'postcomment_desc' => '利用者がコメントを直接ノートページに投稿できるようにする。',
+	'postcomment_discussionprotected' => 'このノートページはこれ以上の投稿ができないように保護されています。',
+	'postcomment_notloggedin' => 'あなたはログインしていません。',
+	'postcomment_youareloggedinas' => 'あなたは $1 としてログインしています',
+	'postcomment_addcommentdiscussionpage' => 'このノートページにコメントを追加する',
+	'postcomment_leavemessagefor' => '$1 に伝言を残す',
+	'postcomment_post' => '投稿',
+	'postcomment_on' => '時刻:',
+	'postcomment_said' => 'の発言',
+	'postcomment_invalidrequest' => '無効な要求。',
+	'postcomment_replyto' => '$1 に返信',
+	'postcomment_nopostingtoadd' => '追加すべき投稿はありません。',
 );
 
 /** Javanese (Basa Jawa)

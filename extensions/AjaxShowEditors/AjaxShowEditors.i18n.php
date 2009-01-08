@@ -825,8 +825,13 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'ajax-se-desc' => "Fa vedè le utinde ca stonne a cangene 'a stessa pàgene",
+	'ajax-se-title' => 'Cangiamende de mò:',
+	'ajax-se-pending' => "aggiornamende in attese… (cazze sta scatole o accuminze 'u cangiamende)",
 	'ajax-se-idling' => '($1 passate)',
 	'ajax-se-pagedoesnotexist' => "'A pàgene non g'esiste",
+	'ajax-se-userinvalid' => 'Errore:utende invalide',
+	'ajax-se-usernotfound' => "Errore:utende ca non g'esiste",
 );
 
 /** Russian (Русский)

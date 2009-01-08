@@ -33,8 +33,13 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
+	'autocreatecategorypages-desc' => 'بيعمل صفحات تصانيف مش موجوده بشكل اوتوماتيكي لما تسيف الصفحه',
+	'autocreatecategorypages-stub' => 'دي صفحة تصنيف.
+فيها ليسته بكل الصفحات في التصنيف "$1" و كمان التصنيفات الفرعيه اللي في التصنيف "$1" لو كانت موجوده',
+	'autocreatecategorypages-createdby' => 'اتعملت اوتوماتيكي عن طريق الامتداد AutoCreateCategoryPages',
 	'autocreatecategorypages-editor' => 'منشئ تصنيف تلقائي',
 );
 
@@ -253,9 +258,14 @@ Gromadzi ona wszystkie strony, którym przypisana jest kategoria „$1”, a tak
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'autocreatecategorypages-desc' => 'Criar automaticamente páginas de categorias em falta ao gravar',
+	'autocreatecategorypages-stub' => 'Esta é uma página de categoria.
+Lista todas as páginas na categoria "$1" bem como todas as subcategorias da categoria "$1" se existirem.',
+	'autocreatecategorypages-createdby' => 'Criada automaticamente pela extensão AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Gerador automático de categorias',
 );
 

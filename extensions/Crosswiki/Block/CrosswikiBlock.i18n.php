@@ -1248,6 +1248,7 @@ $messages['myv'] = array(
 	'crosswikiblock-expiry' => 'Таштомома шказо:',
 	'crosswikiblock-reason' => 'Тувталось:',
 	'crosswikiunblock-reason' => 'Тувталось:',
+	'crosswikiblock-alreadyblocked' => 'Теиця "$3" уш саймас саезь.',
 );
 
 /** Nahuatl (Nāhuatl)

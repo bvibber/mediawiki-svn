@@ -244,8 +244,10 @@ $messages['es'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'watchers' => 'Zaintzaileak',
 	'watchers_link_title' => 'Nork begiratzen du orrialde hau?',
 	'watchers_error_article' => "'''Errorea:''' Orrialde hau ez da existitzen.",
+	'watchers_header' => '"$1" zaintzen ari {{PLURAL:$2|den erabaltzailea|diren erabaltzaileak}}',
 );
 
 /** Finnish (Suomi)
@@ -561,9 +563,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'watchers' => 'Vigiadores',
 	'watchers-desc' => 'Mostra [[Special:Watchers|quais utilizadores têm uma dada página na sua lista de vigiados]]',
 	'watchers_link_title' => 'Quem está vigiando esta página?',
 	'watchers_error_article' => '<b>Erro:</b> Página inexistente.',

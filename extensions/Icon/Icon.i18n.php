@@ -103,6 +103,14 @@ $messages['eo'] = array(
 	'icon-desc' => 'Permesas al vi utiligi bildojn kiel ikonojn kaj ikonligilojn',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'icon-badimage' => 'Okerreko irudia',
+	'icon-badwidth' => 'Okerreko zabalera',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

@@ -105,10 +105,12 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'semanticgooglemaps-desc' => 'מתן האפשרות למשתמשים להוספת מפות של גוגל לדפי ויקי בהתבסס על נתונים מבניים',
+	'semanticgooglemaps_lookupcoordinates' => 'חיפוש קואורדינטות',
+	'semanticgooglemaps-desc' => 'מתן האפשרות למשתמשים לערוך ולהציג נתוני קואורדינטות סמנטיים באמצעות מפות Google.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

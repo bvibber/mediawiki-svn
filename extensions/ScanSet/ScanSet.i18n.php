@@ -420,6 +420,24 @@ $messages['grc'] = array(
 	'scanset_next' => 'Ἑπομέναι &gt;',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'scanset-desc' => 'Gscannti Syte vum CD/DVD-Set vum Andreas Groszs aazeige',
+	'scanset_no_name' => 'Fähler: Du muesch e Scan-Set-Name aagee, z. B. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Fähler: Scan-Set isch nit giltig oder fählt',
+	'scanset_unrecognised_index_format' => 'Error: Indexformat isch nit bekannt',
+	'scanset_opendir_error' => 'Fähler: S Verzeichnis $1 cha nit ufgmacht wäre',
+	'scanset_no_files' => 'Fähler: Im Verzeichnis, wu aagee woren isch, het s keini Dateie.',
+	'scanset_no_volumes' => 'Fähler: Kei Volume-Verzeichnis gfunde',
+	'scanset_missing_index_file' => 'Fähler: Indexdatei $1 isch nit gfunde wore',
+	'scanset_index_file_error' => 'Fähler: Fähler im Format vu dr Indexdatei in dr Zyylete $1',
+	'scanset_invalid_volume' => 'Fähler: Nit giltig Volume',
+	'scanset_next' => 'Negscht →',
+	'scanset_prev' => '← Vorig',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

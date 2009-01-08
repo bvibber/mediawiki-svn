@@ -778,6 +778,7 @@ $messages['pl'] = array(
 	'lookupuser-realname' => 'Imię i nazwisko $1',
 	'lookupuser-registration' => 'Zarejestrowany $1',
 	'lookupuser-no-registration' => 'taki użytkownik nie istnieje',
+	'lookupuser-touched' => 'Ostatnią aktywność użytkownika zanotowano $1',
 	'lookupuser-info-authenticated' => 'Uwierzytelnienie e-mailem: $1',
 	'lookupuser-useroptions' => 'Opcje użytkownika:',
 );

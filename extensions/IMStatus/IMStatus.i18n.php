@@ -825,6 +825,24 @@ $messages['vi'] = array(
 	'imstatus_yahoo_style' => 'kiểu nút, từ $1 (nhỏ nhất) đến $2 (lớn nhất); $3 và $4 dành cho thư thoại.',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'imstatus_syntax' => 'Süntag',
+	'imstatus_default' => 'Stad kösömik',
+	'imstatus_example' => 'Sam',
+	'imstatus_possible_val' => 'Völads mögik',
+	'imstatus_max' => 'maxum',
+	'imstatus_min' => 'minum',
+	'imstatus_or' => 'u',
+	'imstatus_style' => 'stül stadijoniana',
+	'imstatus_details_saa' => 'Ad reidön patis pluik dö stüls e duns, logolös eli $1.',
+	'imstatus_your_name' => 'nem-$1 olik',
+	'imstatus_icq_id' => 'Dientifäd-ICQ olik',
+	'imstatus_live_code' => 'Dientifäd olik pro bevüresodatopäd: Live Messenger',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */

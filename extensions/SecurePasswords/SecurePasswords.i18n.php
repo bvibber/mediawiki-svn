@@ -327,6 +327,15 @@ Det må:',
  */
 $messages['oc'] = array(
 	'securepasswords-desc' => "Crèa d'hachages de senhals mai segurs e apond un verificator de complexitat de senhal",
+	'securepasswords-valid' => 'Vòstre senhal es invalid o tròp cort.
+Deu :',
+	'securepasswords-minlength' => 'èsser long d’al mens $1 {{PLURAL:$1|caractèr|caractèrs}}',
+	'securepasswords-lowercase' => 'conténer al mens 1 letra minuscula',
+	'securepasswords-uppercase' => 'conténer al mens 1 letra majuscula',
+	'securepasswords-digit' => 'conténer al mens 1 chifra',
+	'securepasswords-special' => 'conténer al mens 1 caractèr especial (los caractèrs especials son : $1)',
+	'securepasswords-username' => "èsser diferent de vòstre nom d'utilizaire",
+	'securepasswords-word' => 'pas èsser un mot',
 );
 
 /** Romanian (Română)

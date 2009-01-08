@@ -313,7 +313,7 @@ $messages['ay'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'whitelist-desc' => 'Рэдагаваць правоў доступу ўдзельнікаў з абмежаваньнямі',
+	'whitelist-desc' => 'Рэдагаваць правы доступу ўдзельнікаў з абмежаваньнямі',
 	'whitelistedit' => 'Рэдактар сьпісу агульнадаступных старонак',
 	'whitelist' => 'Агульнадаступныя старонкі',
 	'mywhitelistpages' => 'Мае старонкі',
@@ -330,34 +330,43 @@ $messages['be-tarask'] = array(
 	'whitelisttableview' => 'Прагляд',
 	'whitelisttablenewdate' => 'Новая дата:',
 	'whitelisttablechangedate' => 'Зьмяніць тэрміну дзеяньня',
-	'whitelisttablesetedit' => 'Усталяваць для рэдагаваньня',
-	'whitelisttablesetview' => 'Усталяваць для прагляду',
+	'whitelisttablesetedit' => 'Пазначыць для рэдагаваньня',
+	'whitelisttablesetview' => 'Пазначыць для прагляду',
 	'whitelisttableremove' => 'Выдаліць',
 	'whitelistnewpagesfor' => 'Дадаць новую старонку да сьпісу агульнадаступных старонак <b>$1</b><br />
 Карыстайцеся * ці % для стварэньня групавых сымбаляў',
 	'whitelistnewtabledate' => 'Дата сканчэньня:',
-	'whitelistnewtableedit' => 'Пазначаць для рэдагаваньня',
+	'whitelistnewtableedit' => 'Пазначыць для рэдагаваньня',
 	'whitelistnewtableview' => 'Пазначыць для прагляду',
 	'whitelistnowhitelistedusers' => 'У групе «{{MediaWiki:Group-restricted}}» няма ўдзельнікаў.
 Вам неабходна [[Special:UserRights|дадаць удзельнікаў у групу]] перад тым, як Вам можна будзе дадаваць старонкі ў белы сьпіс удзельнікаў.',
 	'whitelistnewtableprocess' => 'Працэс',
-	'whitelistnewtablereview' => 'Агляд',
+	'whitelistnewtablereview' => 'Праглядзець',
 	'whitelistselectrestricted' => '== Выберыце імя ўдзельніка ==',
 	'whitelistpagelist' => 'Старонкі {{SITENAME}} для $1',
-	'whitelistnocalendar' => "<font color='red' size=3>Верагодна пашырэньне [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] не было ўсталявана адпаведным чынам!</font>",
+	'whitelistnocalendar' => "<font color='red' size=3>Верагодна пашырэньне [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], якое патрабуецца для працы гэтага пашырэньня, не было ўсталявана адпаведным чынам!</font>",
 	'whitelistoverview' => '== Агляд зьменаў для $1 ==',
 	'whitelistoverviewcd' => "* Зьмена даты на '''$1''' для [[:$2|$2]]",
-	'whitelistoverviewsa' => "* Усталяваць доступ '''$1''' для [[:$2|$2]]",
-	'whitelistoverviewrm' => '* Зьняць доступ да [[:$1|$1]]',
+	'whitelistoverviewsa' => "* Пазначэньне доступу да '''$1''' для [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Зьняцьце доступу да [[:$1|$1]]',
 	'whitelistoverviewna' => "* Даданьне [[:$1|$1]] у белы сьпіс з доступам '''$2''' і датай сканчэньня '''$3'''",
 	'whitelistrequest' => 'Запыт доступу для большай колькасьці старонак',
-	'whitelistrequestmsg' => 'Удзельнік $1 спытаў аб доступе да {{PLURAL:$3|наступнай старонкі|наступных старонак}}:
+	'whitelistrequestmsg' => 'Удзельнік $1 запытаў доступ да {{PLURAL:$3|наступнай старонкі|наступных старонак}}:
 
 $2',
-	'whitelistrequestconf' => 'Запыт па новым старонкам быў адпраўлены да $1',
+	'whitelistrequestconf' => 'Запыт па новым старонкам быў дасланы да $1',
 	'whitelistnonrestricted' => "Удзельнік '''$1''' не мае абмежаваньняў.
 Гэта старонка прызначана толькі для ўдзельнікаў з абмежаваньнямі",
 	'whitelistnever' => 'ніколі',
+	'whitelistnummatches' => '  - $1 {{PLURAL:$1|супадзеньне|супадзеньні|супадзеньняў}}',
+	'right-editwhitelist' => 'Зьмяняць белы сьпіс для існуючых удзельнікаў',
+	'right-restricttowhitelist' => 'Рэдагаваць і праглядаць толькі старонкі з белага сьпісу',
+	'action-editwhitelist' => 'зьмяненьне белага сьпісу для існуючых удзельнікаў',
+	'action-restricttowhitelist' => 'рэдагаваньне і прагляд толькі старонак з белага сьпісу',
+	'group-restricted' => 'Удзельнікі абмежаваныя ў правах',
+	'group-restricted-member' => 'удзельнік абмежаваны ў правах',
+	'group-manager' => 'Кіраўнікі',
+	'group-manager-member' => 'кіраўнік',
 );
 
 /** Bulgarian (Български)
@@ -1603,8 +1612,10 @@ $2',
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'mywhitelistpages' => 'Монь лопан',
 	'whitelisttablemodifyall' => 'Весе',
 	'whitelisttableremove' => 'Нардык',
+	'whitelistnever' => 'зярдояк',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -2227,6 +2238,66 @@ $messages['sr-ec'] = array(
 	'whitelisttablemodifynone' => 'Нема',
 	'whitelisttableedit' => 'Уреди',
 	'whitelisttableremove' => 'Уклони',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'whitelist-desc' => 'Tougriepsgjuchte fon betuunde Benutsere beoarbaidje',
+	'whitelistedit' => 'Whitelist-Tougriep-Editor',
+	'whitelist' => 'Whitelist-Sieden',
+	'mywhitelistpages' => 'Mien Sieden',
+	'whitelistfor' => '<center>Aktuelle Information foar <b>$1</b></center>',
+	'whitelisttablemodify' => 'Modifizierje',
+	'whitelisttablemodifyall' => 'Aal modifizierje',
+	'whitelisttablemodifynone' => 'Niks modifizierje',
+	'whitelisttablepage' => 'Siede',
+	'whitelisttabletype' => 'Tougriepstyp',
+	'whitelisttableexpires' => 'Ouloop an n',
+	'whitelisttablemodby' => 'Toulääst modifizierd fon',
+	'whitelisttablemodon' => 'Toulääst modifizierd an n',
+	'whitelisttableedit' => 'Beoarbaidje',
+	'whitelisttableview' => 'Bekiekje',
+	'whitelisttablenewdate' => 'Näi Doatum:',
+	'whitelisttablechangedate' => 'Ouloopsdoatum annerje',
+	'whitelisttablesetedit' => 'Beoarbaidje',
+	'whitelisttablesetview' => 'Bekiekje',
+	'whitelisttableremove' => 'Wächhoalje',
+	'whitelistnewpagesfor' => "Näie Sieden tou <b>$1's</b> Whitelist bietouföigje<br />
+Äntweeder * of % as Maskenteeken benutsje",
+	'whitelistnewtabledate' => 'Ouloopdoatum:',
+	'whitelistnewtableedit' => 'Beoarbaidje',
+	'whitelistnewtableview' => 'Bekiekje',
+	'whitelistnowhitelistedusers' => 'Dät rakt neen Benutsere, do ju Gruppe „{{MediaWiki:Group-restricted}}“ anheere.
+Du moast [[Special:UserRights|Benutsere tou ju Gruppe bietouföigje]] eer du Sieden ap ju Beooboachtengslieste fon n Benutser sätte koast.',
+	'whitelistnewtableprocess' => 'Beoarbaidje',
+	'whitelistnewtablereview' => 'Wröigje',
+	'whitelistselectrestricted' => '== Betuunden Benutser uutwääle ==',
+	'whitelistpagelist' => '{{SITENAME}} Sieden foar $1',
+	'whitelistnocalendar' => "<font color='red' size=3>[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Ju Extension:UsageStatistics], ne Bedingenge foar disse Extension, wuud nit installierd of kon nit fuunen wäide!</font>",
+	'whitelistoverview' => '== Annerengsuursicht foar $1 ==',
+	'whitelistoverviewcd' => "* Doatum '''($1)''' foar [[:$2|$2]] wäd annerd",
+	'whitelistoverviewsa' => "* Tougriep '''$1''' foar [[:$2|$2]] wäd anwoand",
+	'whitelistoverviewrm' => '* Tougriep ap [[:$1|$1]] wäd wächhoald',
+	'whitelistoverviewna' => "* [[:$1|$1]] wäd tou ju Whitelist bietouföiged. (Tougriep: '''$2''', Ouloopdoatum: '''$3''')",
+	'whitelistrequest' => 'Wiederen Tougriep fräigje',
+	'whitelistrequestmsg' => '$1 häd Tougriep ap {{PLURAL:$3|ju foulgjende Siede|do foulgjende Sieden}} fräiged:
+
+$2',
+	'whitelistrequestconf' => 'Anfroage foar näie Sieden an $1 soand',
+	'whitelistnonrestricted' => "'''$1''' is naan betuunden Benutser.
+Disse Siede jält bloot foar betuunde Benutsere.",
+	'whitelistnever' => 'sieläärge nit',
+	'whitelistnummatches' => '- $1 {{PLURAL:$1|Uureenstimmenge|Uureenstimmengen}}',
+	'right-editwhitelist' => 'Wiete Lieste foar existierjende Benutsere beoarbaidje',
+	'right-restricttowhitelist' => 'Beoarbaidje un bekiekje bloot Sieden do der in ju Positivlieste apnuumen sunt.',
+	'action-editwhitelist' => 'modifizier ju Positivlieste foar existierjende Benutsere',
+	'action-restricttowhitelist' => 'beoarbaidje un betrachtje bloot Sieden do in ju Positivlieste apnuumen sunt',
+	'group-restricted' => 'Ientuunde Benutsere',
+	'group-restricted-member' => 'Ientuunden Benutser',
+	'group-manager' => 'Ferwaltere',
+	'group-manager-member' => 'Ferwalter',
 );
 
 /** Sundanese (Basa Sunda)

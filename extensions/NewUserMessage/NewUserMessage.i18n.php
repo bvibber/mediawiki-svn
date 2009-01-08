@@ -173,6 +173,14 @@ $messages['gl'] = array(
 	'newuseredit-summary' => 'Engadindo [[{{int:newusermessage-template}}|unha mensaxe de benvida]] ás páxinas dos usuarios novos',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'newusermessage-desc' => 'Fiegt e Nochricht uf dr Benutzerdiskussionssyte vu nej aagmäldete Benutzer yy',
+	'newuseredit-summary' => 'Begrießt e neije Benutzer uf syynere Diskussionssyte mit ere [[{{int:newusermessage-template}}|Willkummensnochricht]]',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

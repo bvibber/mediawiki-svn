@@ -142,6 +142,13 @@ $messages['gl'] = array(
 	'antibot-desc' => 'Estrutura sinxela para as comprobacións de spanm por parte dos bots e mais activación de cargas útiles',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'antibot-desc' => 'Eifach Framework fir Spambot-Priefige',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

@@ -518,6 +518,8 @@ $messages['eu'] = array(
 	'usagestatisticsintervalday' => 'Eguna',
 	'usagestatisticsintervalweek' => 'Astea',
 	'usagestatisticsintervalmonth' => 'Hilabetea',
+	'usagestatisticsincremental' => 'Inkrementala',
+	'usagestatisticsincremental-text' => 'inkrementala',
 	'usagestatisticscalselect' => 'Aukeratu',
 );
 
@@ -1005,7 +1007,13 @@ $messages['mr'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'usagestatisticsstart' => 'Ушодома чи',
+	'usagestatisticsend' => 'Прядома чи',
+	'usagestatisticsintervalday' => 'Чи',
+	'usagestatisticsintervalweek' => 'Тарго',
 	'usagestatisticsintervalmonth' => 'Ковось',
+	'usagestatisticscumulative' => 'Весемезэ',
+	'usagestatisticscumulative-text' => 'весемезэ',
 );
 
 /** Low German (Plattdüütsch)

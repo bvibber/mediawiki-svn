@@ -569,6 +569,14 @@ $messages['grc'] = array(
 	'sitematrix-private' => 'ἰδιωτική',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'sitematrix' => 'Lischt vu dr Wikimedia-Wiki',
+	'sitematrix-summary' => 'Die Spezialsyte zeigt alli Wiki vu dr Wikimedia Foundation.',
+);
+
 /** Gujarati (ગુજરાતી)
  * @author Dsvyas
  */
@@ -818,9 +826,15 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author Malafaya
+ * @author Sopho
  */
 $messages['ka'] = array(
 	'sitematrix-language' => 'ენა',
+	'sitematrix-others' => 'ვიკიმედიას სხვა პროექტები',
+	'sitematrix-total' => "'''საერთო რაოდენობა: $1'''",
+	'sitematrix-sitetotal' => 'სულ',
+	'sitematrix-private' => 'კერძო',
+	'sitematrix-fishbowl' => 'რედაქტირება შეზღუდულია',
 );
 
 /** Kara-Kalpak (Qaraqalpaqsha)

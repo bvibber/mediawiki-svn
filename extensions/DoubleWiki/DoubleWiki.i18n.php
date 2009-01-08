@@ -166,6 +166,13 @@ $messages['gl'] = array(
 	'doublewiki-desc' => 'Amosa unha páxina e a súa tradución doutro wiki en dúas columnas na mesma páxina',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'doublewiki-desc' => 'Zeigt e Syte un ihri Ibersetzig us eme andere Wiki zwoospaltig uf derglyyche Syte aa',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

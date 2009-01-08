@@ -54,7 +54,7 @@ $messages['qqq'] = array(
 	'povwatch_comment' => '{{Identical|Log comment}}',
 	'povwatch_added' => '{{Identical|Added}}',
 	'right-povwatch_admin' => '{{doc-right}}',
-	'right-povwatch_user' => '{{doc-right}}',
+	'right-povwatch_user' => '{{doc-right|povwatch user}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -243,7 +243,7 @@ Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werde und es gi
 	'povwatch_subscribe_intro' => 'Du bist nicht für PovWatch registriert. Klicke auf die Schaltfläche, um dich anzumelden.',
 	'povwatch_subscribe' => 'Registrieren',
 	'povwatch_added' => 'hinzugefügt',
-	'right-povwatch_admin' => 'Administriere Benutzerrechte zur Hinzufügung von Seiten zur Beobachtungsliste anderer Benutzer',
+	'right-povwatch_admin' => 'Das Benutzerrecht Zuteilen oder Entziehen, Seiten zur Beobachtungsliste anderer Benutzer hinzufügen zu dürfen',
 	'right-povwatch_user' => 'Hinzufügen von Seiten zur Beobachtungsliste anderer Benutzer',
 );
 
@@ -614,8 +614,17 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'povwatch_desc' => 'Määt et müjjelesch, [[Special:PovWatch|Sigge op anderlüx Oppassleste ze donn]].',
+	'povwatch_not_allowed_push' => 'Do beß keine <i lang="en">PovWatch</i>-Köbes, Do kanns kein Sigge op anderlüx Oppassleste donn.',
+	'povwatch_invalid_title' => 'Dä aanjejovve Tettel es nit jöltesch',
+	'povwatch_pushed' => 'De Sigg „[[$1]]“ es jetz op {{PLURAL:$2|einem Metmaacher sing Oppassleß|$2 Metmaacher ier Oppassleste|keinem sing Oppassleß}} drop jesatz.',
+	'povwatch_unknown_subpage' => 'De Ungersigg jidd_et nit.',
+	'povwatch_push' => 'Loß Jonn! Dobeidonn!',
 	'povwatch_title' => 'Siggetittel:',
+	'povwatch_comment' => 'Endraach för en et Logbooch:',
+	'povwatch_no_log' => 'En däm Logboch es nix dren.',
 	'povwatch_added' => 'dobei jedonn',
+	'right-povwatch_admin' => 'Dat Rääsch, Sigge en anderlüx Oppassleste erin donn ze dörfe, Jevve un Fottnämme',
+	'right-povwatch_user' => 'Sigge op Oppassleste vun ander Metmaacher drop donn',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

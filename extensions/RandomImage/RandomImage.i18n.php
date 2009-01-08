@@ -67,6 +67,13 @@ $messages['es'] = array(
 	'randomimage-desc' => 'Proporciona un archivo multimedia al azar usando <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'randomimage-desc' => 'Ausazko hautagailu multimedia sortzen du <tt>&lt;randomimage /&gt;</tt> kodea idatziz',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -241,6 +248,13 @@ $messages['scn'] = array(
  */
 $messages['sk'] = array(
 	'randomimage-desc' => 'Poskytuje náhodný výber multimediálnych súborov pomocou značky <tt>&lt;randomimage /&gt;</tt>',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'randomimage-desc' => 'Föiget dät <tt>&lt;randomimage /&gt;</tt>-Tag toun Anwiesen fon ne toufällige Bielde bietou',
 );
 
 /** Swedish (Svenska)

@@ -295,6 +295,14 @@ $messages['jv'] = array(
 	'absenteelandlord-desc' => 'Ngunci sacara otomatis basis data wiki yèn para opsis ora aktif sawetara wektu',
 );
 
+/** Georgian (ქართული)
+ * @author Sopho
+ */
+$messages['ka'] = array(
+	'absenteelandlord-reason' => 'მონაცემთა ბაზა ავტომატურად დაიხურა ადმინისტრატორების უაქტივობის გამო.',
+	'absenteelandlord-desc' => 'ავტომატურად ხურავს ვიკის მონაცემთა ბაზას, თუ არცერთი ადმინისტრატორი არ არის აქტიური გარკვეული ხნის განმავლობაში.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

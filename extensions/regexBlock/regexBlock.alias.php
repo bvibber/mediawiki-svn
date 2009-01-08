@@ -15,6 +15,16 @@ $aliases['en'] = array(
 	'RegexBlock'  => array( 'RegexBlock' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'RegexBlock' => array( 'منع_ريجيكس' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'RegexBlock' => array( 'منع_ريجيكس' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RegexBlock' => array( '正規表現ブロック' ),

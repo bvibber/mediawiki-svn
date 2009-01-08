@@ -278,6 +278,13 @@ $messages['sk'] = array(
 	'woopra-desc' => 'Umožňuje fungovanie [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vašej MediaWiki',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'woopra-desc' => 'Moaket dän [http://www.woopra.com/ „Woopra Live Tracking Software“] ju Touhoopeoarbaid muugelk mäd MediaWiki',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

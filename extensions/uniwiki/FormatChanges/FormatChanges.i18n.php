@@ -31,14 +31,15 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  * @author Ouda
  */
 $messages['ar'] = array(
 	'formatchanges-desc' => 'يعيد تنسيق [[Special:RecentChanges|أحدث التغييرات]]',
 	'formatchanges-anonymous' => 'مجهول',
-	'formatchanges-createdby' => 'أنشئت بواسطة',
-	'formatchanges-editedby' => 'عدلت بواسطة',
+	'formatchanges-createdby' => '$1 - تم إنشاؤها بواسطة $2 ($3)',
+	'formatchanges-editedby' => '$1 - تم تعديلها بواسطة $2 ($3)',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

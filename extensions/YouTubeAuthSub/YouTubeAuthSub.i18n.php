@@ -1874,6 +1874,13 @@ $messages['roa-tara'] = array(
 	'youtubeauthsub_submit' => 'Conferme',
 	'youtubeauthsub_clickhere' => 'Cazze aqquà pe collegarte sus a YouTube',
 	'youtubeauthsub_tokenerror' => "Errore mendre ca ste ccrejeve 'u gettone pe l'autorizzazione, reprueve a aggiornà.",
+	'youtubeauthsub_success' => "Comblimende!
+'U filmete tue ha state carechete.
+<a href='http://www.youtube.com/watch?v=$1'>Vide 'u filmete</a>.
+YouTube pò mettere 'nu picche de timbe pe processà 'u filmete tue, accussì pò essere ca angore non g'è pronde.
+
+Pe ingludere 'u filmete tue jndr'à 'na pàgene sus a Uicchi, mitte 'u codece ca avène jndr'à pàgene:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => "Pe carecà 'nu filmete sus a YouTube, apprime t'à collegà.",
 	'youtubeauthsub_uploadhere' => "Careche 'u video tue d'aqquà:",
 	'youtubeauthsub_uploadbutton' => 'Careche',
@@ -2047,6 +2054,44 @@ $messages['sr-ec'] = array(
 	'youtubeauthsub_title' => 'Наслов:',
 	'youtubeauthsub_category' => 'Категорија',
 	'youtubeauthsub_submit' => 'Прихвати',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'youtubeauthsub' => 'YouTube-Video hoochleede',
+	'youtubeauthsub-desc' => 'Moaket dät foar Benutsere muugelk, Videos fluks tou YouTube [[Special:YouTubeAuthSub|hoochtouleeden]]',
+	'youtubeauthsub_info' => 'Uum n Video tou YouTube hoochtouleeden, uum et ansluutend ap ne Siede ientoubäädjen, moast du do foulgjende Fäilde uutfälle:',
+	'youtubeauthsub_title' => 'Tittel',
+	'youtubeauthsub_description' => 'Beschrieuwenge',
+	'youtubeauthsub_password' => 'YouTube-Paaswoud',
+	'youtubeauthsub_username' => 'YouTube-Benutsernoome',
+	'youtubeauthsub_keywords' => 'Koaiwoude',
+	'youtubeauthsub_category' => 'Kategorie',
+	'youtubeauthsub_submit' => 'Seende',
+	'youtubeauthsub_clickhere' => 'Hier klikke toun Ienlogjen bie YouTube',
+	'youtubeauthsub_tokenerror' => 'Failer bie dät Moakjen fon n Authorisierengstoken. Fersäik ju Siede näi tou leeden.',
+	'youtubeauthsub_success' => "Grätlierje!
+Dien Video wuud hoochleeden.
+<a href='http://www.youtube.com/watch?v=$1'>Bekiekje dien Video</a>.
+YouTube kuud wät Tied bruuke, uum dien Video tou feroarbaidjen, sodät ju Siede eventuell noch nit kloor is.
+
+Uum dät Video ap ne Siede ientoubäädjen, föich foulgjenden Text ien:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Du moast die eerste bie YouTube ienlogje, uum n Video hoochtouleeden.',
+	'youtubeauthsub_uploadhere' => 'Video fon deer hoochleede:',
+	'youtubeauthsub_uploadbutton' => 'Hoochleede',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Dit Video bekiekje]',
+	'youtubeauthsub_summary' => 'Leed YouTube-Video hooch',
+	'youtubeauthsub_uploading' => 'Dien Video wäd fluks hoochleeden.
+Ieuwen täiwe.',
+	'youtubeauthsub_viewpage' => 'Alternativ koast du [[$1|dien Video bekiekje]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Reek een of moor Koaiwoude ien.',
+	'youtubeauthsub_jserror_notitle' => 'Reek n Tittel foar dät Video an.',
+	'youtubeauthsub_jserror_nodesc' => 'Reek ne Beschrieuwenge foar dät Video ien.',
 );
 
 /** Sundanese (Basa Sunda)
@@ -2467,6 +2512,13 @@ $messages['vo'] = array(
 	'youtubeauthsub_category' => 'Klad',
 	'youtubeauthsub_submit' => 'Sedön',
 	'youtubeauthsub_uploadbutton' => 'Löpükön',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'youtubeauthsub_category' => 'קאַטעגאריע',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

@@ -2403,6 +2403,19 @@ Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConv
 Caso contrário, utilize o botão \\"Continuar\\".',
 	'openidclientonlytext' => 'Você pode usar contas deste wiki como OpenIDs noutro sítio.',
 	'openidloginlabel' => 'URL do OpenID',
+	'openidlogininstructions' => "{{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação única entre sítios Web.
+O OpenID permite-lhe autenticar-se em diversos sítios Web sem usar uma palavra-chave diferente em cada um.
+(Veja [http://pt.wikipedia.org/wiki/OpenID o artigo OpenID na Wikipédia] para mais informação.)
+
+Se já possui uma conta em {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]] com o seu nome de utilizador e palavra-chave como habitualmente.
+Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta em OpenID]] após autenticar-se normalmente.
+
+Existems vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID Públicos], e você poderá já ter uma conta activada para OpenID noutro serviço.
+
+; Outros wikis : Se possui uma conta num wiki com OpenID activado, como o [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] ou [http://kei.ki/ Keiki], pode autenticar-se em {{SITENAME}} introduzindo a '''URL completa''' da sua página de utilizador daquele outro wiki na caixa acima. Por exemplo, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Se possui uma conta no Yahoo!, pode autenticar-se neste sítio introduzindo o seu OpenID fornecido pelo Yahoo! na caixa acima. URLs OpenID do Yahoo! têm a forma ''<nowiki>https://me.yahoo.com/oseunomedeutilizador</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Se possui uma conta na [http://www.aol.com/ AOL], tal como uma conta [http://www.aim.com/ AIM], pode autenticar-se em {{SITENAME}} introduzindo o seu OpenID fornecido pela AOL na caixa acima. URLs OpenID AOL têm a forma ''<nowiki>http://openid.aol.com/oseunomedeutilizador</nowiki>''. O seu nome de utilizador deverá ser todos em minúsculas, sem espaços.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Se possui um blogue em qualquer um destes serviços, introduza a URL do seu blogue na caixa acima. Por exemplo, ''<nowiki>http://oseunomedeutilizador.blogspot.com/</nowiki>'', ''<nowiki>http://oseunomedeutilizador.wordpress.com/</nowiki>'', ''<nowiki>http://oseunomedeutilizador.livejournal.com/</nowiki>'', or ''<nowiki>http://oseunomedeutilizador.vox.com/</nowiki>''.",
 );
 
 /** Romanian (Română)

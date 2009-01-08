@@ -334,8 +334,22 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
+	'importusers' => 'Lankideak inportatu',
+	'importusers-uploadfile' => 'Fitxategia igo',
+	'importusers-form-file' => 'Lankidearen fitxategiaren formatua (csv):',
+	'importusers-form-replace-present' => 'Existitzen diren lankideak ordeztu',
+	'importusers-form-button' => 'Inportatu',
+	'importusers-user-added' => '<b>%s</b> lankidea gehitu da.',
+	'importusers-user-present-update' => '<b>%s</b> erabiltzailea jada existitzen da. Eguneratua.',
+	'importusers-user-present-not-update' => '<b>%s</b> lankidea jada existitzen da. Ez da eguneratu.',
+	'importusers-log-summary-added' => 'Gehitua',
+	'importusers-log-summary-updated' => 'Eguneratua',
+	'importusers-login-name' => 'Saioa hasteko izena',
+	'importusers-password' => 'pasahitza',
+	'importusers-email' => 'e-posta',
 	'importusers-realname' => 'benetako izena',
 );
 

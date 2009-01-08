@@ -67,6 +67,11 @@ $aliases['id'] = array(
 	'Badimages' => array( 'Berkas dilarang' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Badimages' => array( '不良画像' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Badimages' => array( 'Net gewënschte Biller' ),

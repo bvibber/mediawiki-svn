@@ -191,6 +191,13 @@ $messages['pl'] = array(
 	'javascript-desc' => 'Dodaje uniwiki.js do każdej strony zawierającej kod JavaScript dzielony pomiędzy rozszerzenia Uniwiki',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'javascript-desc' => 'Adiciona uniwiki.js a cada página que contém código JavaScript partilhado entre extensões Uniwiki',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

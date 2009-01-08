@@ -67,6 +67,11 @@ $aliases['hu'] = array(
 	'ChangeAuthor' => array( 'Szerző megváltoztatása' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ChangeAuthor' => array( '著者変更' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'ChangeAuthor' => array( 'ផ្លាស់ប្ដូរអ្នកនិពន្ធ' ),

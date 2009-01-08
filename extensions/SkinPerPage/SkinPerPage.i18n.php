@@ -136,6 +136,13 @@ $messages['gl'] = array(
 	'skinperpage-desc' => 'Engade a etiqueta <tt>&lt;skin&gt;</tt> para usar diferentes apariencias por páxina',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'skinperpage-desc' => 'Ergänzt s <tt>&lt;skin&gt;</tt>-Tag, zum pro Syte unterschidligi Skin z nutze',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

@@ -366,6 +366,7 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Kobazulo
  */
 $messages['eu'] = array(
 	'todo-new-queue' => 'berria',
@@ -375,6 +376,7 @@ $messages['eu'] = array(
 	'todo-list-cancel' => 'Utzi',
 	'todo-issue-summary' => 'Gaiaren laburpena:',
 	'todo-form-details' => 'Xehetasunak:',
+	'todo-form-submit' => 'Galdeketa bidali',
 );
 
 /** French (Français)
@@ -1235,11 +1237,13 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'todo-new-queue' => 'nulik',
 	'todo-list-change' => 'Votükön',
 	'todo-form-details' => 'Notets:',
+	'todo-form-submit' => 'Sedön seividi',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

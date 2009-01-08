@@ -1065,6 +1065,14 @@ Kuckt w.e.g. d'Astellunge vu ärem Popup-Blocker no.",
 	'ct_user_sample' => 'Benotzernumm',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$wgCustomToolbarMessages['myv'] = array(
+	'ct_bold_sample' => 'Эчкстэ текст',
+	'ct_italic_sample' => 'Комавтонь текст',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

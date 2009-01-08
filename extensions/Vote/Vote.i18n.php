@@ -385,6 +385,9 @@ $messages['et'] = array(
 $messages['eu'] = array(
 	'vote' => 'Bozkatu',
 	'vote-caption' => 'Zure aukeraketa:',
+	'vote-choices' => 'joker|Jokerra
+penguin|Pinguinoa
+riddler|Riddlerra',
 	'vote-submit' => 'Bozkatu',
 	'vote-registered' => 'Zure bozka erregistratu da.',
 	'vote-view-results' => 'Ikusi emaitzak',
@@ -1035,6 +1038,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'vote' => 'Votar',
+	'vote-desc' => 'Fornece funcionalidades simples de sondagem',
 	'vote-header' => "Pode votar no '''Senhor Supremo do Mundo''' aqui!",
 	'vote-current' => "O seu voto actual é a favor de '''$1'''.",
 	'vote-legend' => 'Colocar ou corrigir voto',

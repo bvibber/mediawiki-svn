@@ -219,6 +219,13 @@ $messages['ja'] = array(
 	'abcdownload' => 'ダウンロード:',
 );
 
+/** Georgian (ქართული)
+ * @author Sopho
+ */
+$messages['ka'] = array(
+	'abcdownload' => 'ჩამოტვირთვა:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

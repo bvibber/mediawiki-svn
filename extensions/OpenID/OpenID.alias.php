@@ -18,3 +18,22 @@ $aliases['en'] = array(
 	'OpenIDServer' => array( 'OpenIDServer' ),
 	'OpenIDXRDS' => array( 'OpenIDXRDS' ),
 );
+
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'OpenIDLogin' => array( 'دخول_الهوية_المفتوحة' ),
+	'OpenIDFinish' => array( 'نهاية_الهوية_المفتوحة' ),
+	'OpenIDConvert' => array( 'تحويل_الهوية_المفتوحة' ),
+	'OpenIDServer' => array( 'خادم_الهوية_المفتوحة' ),
+	'OpenIDXRDS' => array( 'إكسردس_الهوية_المفتوحة' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'OpenIDLogin' => array( 'دخول_الهوية_المفتوحة' ),
+	'OpenIDFinish' => array( 'نهاية_الهوية_المفتوحة' ),
+	'OpenIDConvert' => array( 'تحويل_الهوية_المفتوحة' ),
+	'OpenIDServer' => array( 'خادم_الهوية_المفتوحة' ),
+	'OpenIDXRDS' => array( 'إكسردس_الهوية_المفتوحة' ),
+);
+

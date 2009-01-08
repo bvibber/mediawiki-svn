@@ -130,6 +130,16 @@ Este correo ha sido enviado por $1 a través del sistema de correo electrónico 
 $2',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+E-posta hau $1 erabiltzaileak bidali dizu {{SITENAME}} e-posta sistemaren bidez.
+
+$2',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

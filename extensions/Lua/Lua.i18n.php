@@ -373,6 +373,20 @@ $messages['oc'] = array(
 	'lua_overflow_time' => 'Durada maximala d’execucion atencha',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'lua_desc' => 'Estende o analisador "parser" com suporte para blocos incorporados de código [http://www.lua.org/ Lua]',
+	'lua_error' => 'Erro na linha $1',
+	'lua_extension_notfound' => 'Extensão Lua não configurada',
+	'lua_interp_notfound' => 'Interpretador Lua não encontrado',
+	'lua_error_internal' => 'Erro interno',
+	'lua_overflow_recursion' => 'Limite de chamadas recursivas atingido',
+	'lua_overflow_loc' => 'Limite máximo de linhas de código atingido',
+	'lua_overflow_time' => 'Tempo máximo de execução atingido',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

@@ -145,6 +145,13 @@ $messages['gl'] = array(
 	'charinsert-desc' => 'Permite a creación dunha caixa de JavaScript para [[MediaWiki:Edittools|inserir caracteres que non son estándar]]',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'charinsert-desc' => 'Erlaubt s Aalege vun ere JavaScript gstyyrte Leischte zum [[MediaWiki:Edittools|Yyfiege vu Sonderzeiche]]',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
