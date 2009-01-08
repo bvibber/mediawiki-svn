@@ -30,7 +30,7 @@ var default_remote_search_options = {
 	
 	'target_textbox':null,
 	'instance_name': null, //a globally accessible callback instance name
-	'default_query':'', //default search query
+	'default_query':null, //default search query
 	//specific to sequence profile
 	'p_seq':null,
 	'cFileNS':'Image' //what is the cannonical namespace for images 
@@ -166,6 +166,7 @@ remoteSearchDriver.prototype = {
 	},
 	//sets up the initial html interface 
 	init_interface_html:function(){
+		var dq = (this.default_query)? this.default_query : '';
 		var out = '<div class="rsd_control_container" style="width:100%">' + 
 					'<table style="width:100%;background-color:transparent;">' +
 						'<tr>'+
@@ -173,7 +174,7 @@ remoteSearchDriver.prototype = {
 								'<h3> Media Search </h3>'+
 							'</td>'+
 							'<td style="width:190px">'+
-								'<input type="text" tabindex="1" value="' + this.default_query + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
+								'<input type="text" tabindex="1" value="' + dq + '" maxlength="512" id="rsd_q" name="rsd_q" '+ 
 									'size="20" autocomplete="off"/>'+
 							'</td>'+
 							'<td style="width:115px">'+
@@ -182,7 +183,11 @@ remoteSearchDriver.prototype = {
 							'</td>'+
 							'<td>';
 			//out += '<a href="#" id="mso_selprovider" >Select Providers</a><br>';
-			out += '<a href="#" id="mso_cancel" >Cancel</a><br>';
+			
+			//if mediawiki_edit don't output cancel button 
+			if( this.profile == 'mediawiki_edit'){
+				out += '<a href="#" id="mso_cancel" >Cancel</a><br>';
+			}
 			out +=			'</td>'+
 						'</tr>'+
 					'</table>';			
@@ -212,7 +217,8 @@ remoteSearchDriver.prototype = {
 		//draw the tabs: 
 		this.drawTabs();
 		//run the default search: 
-		this.runSearch();
+		if(this.default_query)
+			this.runSearch();
 	}, 
 	add_interface_bindings:function(){
 		var _this = this;

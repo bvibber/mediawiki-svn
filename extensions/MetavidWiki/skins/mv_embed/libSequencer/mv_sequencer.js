@@ -130,17 +130,17 @@ mvSequencer.prototype = {
 		'cliplib':{
 			'd':0,	
 			'html': getMsg('loading_txt'),			
-			'js':function( this_seq ){
-				
+			'js':function( this_seq ){				
 				//load the search interface with sequence tool targets 		
-				/*mvJsLoader.doLoad({'remoteSearchDriver':'libRemoteMediaSearch/mv_remote_media_search.js'}, function(){					
+				mvJsLoader.doLoad({'remoteSearchDriver':'libRemoteMediaSearch/mv_remote_media_search.js'}, function(){					
 					this_seq.mySearch = new remoteSearchDriver({
 						'profile':'sequence',
 						'p_seq':this_seq,
 						'target_id':'cliplib_ic',										
-						'instance_name': this.instance_name + '.mySearch'		
+						'instance_name': this_seq.instance_name + '.mySearch'		
+						
 					 });
-				});*/
+				});
 			}
 		},
 		'transition':{
@@ -684,6 +684,8 @@ mvSequencer.prototype = {
 		//saves the clip updates
 	},
 	closeModEditor:function(){
+		//unset the sequencer
+		_global['mvSeq'] = null;
 		$j('#modalbox,#mv_overlay').remove();
 	},
 	closeModWindow:function(){

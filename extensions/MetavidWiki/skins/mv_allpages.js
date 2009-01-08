@@ -146,7 +146,7 @@ function mv_do_mvd_link_rewrite(){
 					$j('#mv_pglink_'+i).click(function(){
 						inx = this.id.substr(10);
 						js_log('inx: '+ inx);
-						window.location=wgArticlePath.replace('$1',gMvd[inx]['url']);
+						window.location = wgArticlePath.replace('$1',gMvd[inx]['url']);
 					})
 				}
 			}

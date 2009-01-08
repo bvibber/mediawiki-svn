@@ -1129,7 +1129,8 @@ function mv_do_sequence(initObj){
 				//load the sequencer
 				mvJsLoader.doLoad({
 						'mvSequencer':'libSequencer/mv_sequencer.js'						
-					},function(){												
+					},function(){					
+						js_log('calling new mvSequencer');						
 						//init the sequence object (it will take over from there) no more than one mvSeq obj: 
 						if(!_global['mvSeq']){
 							_global['mvSeq'] = new mvSequencer(initObj);
