@@ -60,7 +60,7 @@ $sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
   <table border="1" cellpadding="6" width="600">
   	<? foreach ( $sample_embed as $key => $aval ) {
   		//  &&
-  		if ( $key != 9 && $key != 8)continue;
+  		if ( $key != 9 && $key != 8 && $key !=4)continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>
