@@ -54,12 +54,17 @@ class CodeRevisionView extends CodeView {
 		if( $paths ){
 			$paths = "<div class='mw-codereview-paths'><ul>\n$paths</ul></div>\n";
 		}
+		$comments = $this->formatComments();
+		$commentsLink = "";
+		if( $comments ) {
+			$commentsLink = " (<a href=\"#code-comments\">" . wfMsgHtml( 'code-comments' ) ."</a>)\n";
+		}
 		$fields = array(
 			'code-rev-repo' => $repoLink,
 			'code-rev-rev' => $revText,
 			'code-rev-date' => $wgLang->timeanddate( $this->mRev->getTimestamp(), true ),
 			'code-rev-author' => $this->authorLink( $this->mRev->getAuthor() ),
-			'code-rev-status' => $this->statusForm(),
+			'code-rev-status' => $this->statusForm() . $commentsLink,
 			'code-rev-tags' => $this->tagForm(),
 			'code-rev-message' => $this->formatMessage( $this->mRev->getMessage() ),
 			'code-rev-paths' => $paths,
@@ -82,7 +87,6 @@ class CodeRevisionView extends CodeView {
 					wfMsg('code-rev-purge-link'), 'action=purge' ) . ']</small></h2>' .
 				"<div class='mw-codereview-diff' id='mw-codereview-diff'>" . $diffHtml . "</div>\n";
 		}
-		$comments = $this->formatComments();
 		if( $comments ) {
 			$html .= "<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" . $comments;
 		}
