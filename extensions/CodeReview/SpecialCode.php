@@ -13,6 +13,8 @@ class SpecialCode extends SpecialPage {
 
 		$this->setHeaders();
 		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
+		# Remove stray slashes
+		$subpage = preg_replace( '/\/$/','', $subpage );
 
 		if( $subpage == '' ) {
 			$view = new CodeRepoListView();
