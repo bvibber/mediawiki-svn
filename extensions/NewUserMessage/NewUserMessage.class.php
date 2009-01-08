@@ -16,13 +16,14 @@ class NewUserMessage {
 	/*
 	 * Add the template message if the users talk page doesn't already exist
 	 */
-	static function createNewUserMessage($user) {
-		if (!$talk->exists()) {
+	static function createNewUserMessage( $user ) {
+		$talk = $user->getTalkPage();
+
+		if ( !$talk->exists() ) {
 			global $wgUser, $wgNewUserMinorEdit, $wgNewUserSuppressRC;
 
 			$name = $user->getName();
 			$realName = $user->getRealName();
-			$talk = $user->getTalkPage();
 
 			wfLoadExtensionMessages( 'NewUserMessage' );
 
