@@ -20,7 +20,7 @@
 
 package com.fluendo.jkate;
 
-class KateException extends java.lang.Exception {
-  public KateException(String s) { super(); }
+class KateBadPacketException extends KateException {
+  public KateBadPacketException() { super("Bad packet"); }
 }
 

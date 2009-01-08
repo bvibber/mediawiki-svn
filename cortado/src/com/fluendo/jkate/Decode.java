@@ -73,12 +73,7 @@ public final class Decode {
           ev.motions[n] = info.motions[idx];
         }
         else {
-          try {
-            ev.motions[n] = info.unpackMotion(opb);
-          }
-          catch (KateException ke) {
-            return Result.KATE_E_BAD_PACKET;
-          }
+          ev.motions[n] = info.unpackMotion(opb);
         }
       }
     }
@@ -114,12 +109,7 @@ public final class Decode {
         ev.kr = info.regions[idx];
       }
       if (opb.read1() != 0) {
-        try {
-          ev.kr = info.unpackRegion(opb);
-        }
-        catch (KateException ke) {
-          return Result.KATE_E_BAD_PACKET;
-        }
+        ev.kr = info.unpackRegion(opb);
       }
 
       /* style override */
@@ -130,12 +120,7 @@ public final class Decode {
         ev.ks = info.styles[idx];
       }
       if (opb.read1() != 0) {
-        try {
-          ev.ks = info.unpackStyle(opb);
-        }
-        catch (KateException ke) {
-          return Result.KATE_E_BAD_PACKET;
-        }
+        ev.ks = info.unpackStyle(opb);
       }
       if (opb.read1() != 0) {
         int idx = Bitwise.read32v(opb);
@@ -144,12 +129,7 @@ public final class Decode {
         ev.ks2 = info.styles[idx];
       }
       if (opb.read1() != 0) {
-        try {
-          ev.ks2 = info.unpackStyle(opb);
-        }
-        catch (KateException ke) {
-          return Result.KATE_E_BAD_PACKET;
-        }
+        ev.ks2 = info.unpackStyle(opb);
       }
 
       /* font mapping */

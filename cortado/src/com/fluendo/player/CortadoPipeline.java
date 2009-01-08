@@ -183,6 +183,25 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
       /* The selector is created when the first Kate stream is encountered */
       if (kselector == null) {
         Debug.debug("No Kate selector yet, creating one");
+
+        /* insert an overlay before the video sink */
+        ovsinkpad.unlink();
+        videodec.getPad("src").unlink();
+        overlay = ElementFactory.makeByName("kateoverlay", "overlay");
+        if (overlay == null) {
+          noSuchElement ("overlay");
+          return;
+        }
+        ovsinkpad = overlay.getPad("videosink");
+        oksinkpad = overlay.getPad("katesink");
+        if (!videodec.getPad("src").link(ovsinkpad)) {
+          postMessage (Message.newError (this, "Failed linking video decoder to overlay"));
+          return;
+        }
+        add(overlay);
+        overlay.setProperty ("component", component);
+        overlay.getPad("videosrc").link(videosink.getPad("sink"));
+
         kselector = ElementFactory.makeByName("selector", "selector");
         if (kselector == null) {
           noSuchElement ("selector");
@@ -544,20 +563,7 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
       videosink.setProperty ("max-lateness", Long.toString(Clock.MSECOND * 20));
       add(videosink);
 
-      /* TODO: we need that in case there are kate streams, but could be
-         better to build it only when kate streams are actually found later */
-      overlay = ElementFactory.makeByName("kateoverlay", "overlay");
-      if (overlay == null) {
-        noSuchElement ("overlay");
-        return false;
-      }
-      ovsinkpad = overlay.getPad("videosink");
-      oksinkpad = overlay.getPad("katesink");
-      add(overlay);
-
-      overlay.setProperty ("component", component);
-
-      overlay.getPad("videosrc").link(videosink.getPad("sink"));
+      ovsinkpad = videosink.getPad("sink");
     }
     if (audiosink == null && videosink == null) {
       postMessage(Message.newError(this, "Both audio and video are disabled, can't play anything"));

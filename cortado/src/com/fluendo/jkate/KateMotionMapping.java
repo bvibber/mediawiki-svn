@@ -21,20 +21,20 @@
 package com.fluendo.jkate;
 
 public class KateMotionMapping {
-  public static final KateMotionMapping kate_motion_mapping_none = new KateMotionMapping ();
-  public static final KateMotionMapping kate_motion_mapping_frame = new KateMotionMapping ();
-  public static final KateMotionMapping kate_motion_mapping_window = new KateMotionMapping ();
-  public static final KateMotionMapping kate_motion_mapping_region = new KateMotionMapping ();
-  public static final KateMotionMapping kate_motion_mapping_event_duration = new KateMotionMapping ();
-  public static final KateMotionMapping kate_motion_mapping_bitmap_size = new KateMotionMapping ();
+  public static final KateMotionMapping kmm_none = new KateMotionMapping ();
+  public static final KateMotionMapping kmm_frame = new KateMotionMapping ();
+  public static final KateMotionMapping kmm_window = new KateMotionMapping ();
+  public static final KateMotionMapping kmm_region = new KateMotionMapping ();
+  public static final KateMotionMapping kmm_event_duration = new KateMotionMapping ();
+  public static final KateMotionMapping kmm_bitmap_size = new KateMotionMapping ();
 
   private static final KateMotionMapping[] list = {
-    kate_motion_mapping_none,
-    kate_motion_mapping_frame,
-    kate_motion_mapping_window,
-    kate_motion_mapping_region,
-    kate_motion_mapping_event_duration,
-    kate_motion_mapping_bitmap_size,
+    kmm_none,
+    kmm_frame,
+    kmm_window,
+    kmm_region,
+    kmm_event_duration,
+    kmm_bitmap_size,
   };
 
   private KateMotionMapping() {

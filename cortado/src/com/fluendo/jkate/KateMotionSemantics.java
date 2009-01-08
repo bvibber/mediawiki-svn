@@ -21,88 +21,88 @@
 package com.fluendo.jkate;
 
 public class KateMotionSemantics {
-  public static final KateMotionSemantics kate_motion_semantics_time = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_z = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_region_position = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_region_size = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_alignment_int = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_alignment_ext = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_position = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_size = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_marker1_position = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_marker2_position = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_marker3_position = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_marker4_position = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_glyph_pointer_1 = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_glyph_pointer_2 = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_glyph_pointer_3 = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_glyph_pointer_4 = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_color_rg = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_color_ba = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_background_color_rg = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_background_color_ba = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_draw_color_rg = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_draw_color_ba = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_style_morph = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_path = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_path_section = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_draw = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_text_visible_section = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_horizontal_margins = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_vertical_margins = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_bitmap_position = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_bitmap_size = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_marker1_bitmap = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_marker2_bitmap = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_marker3_bitmap = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_marker4_bitmap = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_glyph_pointer_1_bitmap = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_glyph_pointer_2_bitmap = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_glyph_pointer_3_bitmap = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_glyph_pointer_4_bitmap = new KateMotionSemantics ();
-  public static final KateMotionSemantics kate_motion_semantics_draw_width = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_time = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_z = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_region_position = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_region_size = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_alignment_int = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_alignment_ext = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_position = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_size = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_marker1_position = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_marker2_position = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_marker3_position = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_marker4_position = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_glyph_pointer_1 = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_glyph_pointer_2 = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_glyph_pointer_3 = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_glyph_pointer_4 = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_color_rg = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_color_ba = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_background_color_rg = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_background_color_ba = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_draw_color_rg = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_draw_color_ba = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_style_morph = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_path = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_path_section = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_draw = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_text_visible_section = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_horizontal_margins = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_vertical_margins = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_bitmap_position = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_bitmap_size = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_marker1_bitmap = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_marker2_bitmap = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_marker3_bitmap = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_marker4_bitmap = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_glyph_pointer_1_bitmap = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_glyph_pointer_2_bitmap = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_glyph_pointer_3_bitmap = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_glyph_pointer_4_bitmap = new KateMotionSemantics ();
+  public static final KateMotionSemantics kms_draw_width = new KateMotionSemantics ();
 
   private static final KateMotionSemantics[] list = {
-    kate_motion_semantics_time,
-    kate_motion_semantics_z,
-    kate_motion_semantics_region_position,
-    kate_motion_semantics_region_size,
-    kate_motion_semantics_text_alignment_int,
-    kate_motion_semantics_text_alignment_ext,
-    kate_motion_semantics_text_position,
-    kate_motion_semantics_text_size,
-    kate_motion_semantics_marker1_position,
-    kate_motion_semantics_marker2_position,
-    kate_motion_semantics_marker3_position,
-    kate_motion_semantics_marker4_position,
-    kate_motion_semantics_glyph_pointer_1,
-    kate_motion_semantics_glyph_pointer_2,
-    kate_motion_semantics_glyph_pointer_3,
-    kate_motion_semantics_glyph_pointer_4,
-    kate_motion_semantics_text_color_rg,
-    kate_motion_semantics_text_color_ba,
-    kate_motion_semantics_background_color_rg,
-    kate_motion_semantics_background_color_ba,
-    kate_motion_semantics_draw_color_rg,
-    kate_motion_semantics_draw_color_ba,
-    kate_motion_semantics_style_morph,
-    kate_motion_semantics_text_path,
-    kate_motion_semantics_text_path_section,
-    kate_motion_semantics_draw,
-    kate_motion_semantics_text_visible_section,
-    kate_motion_semantics_horizontal_margins,
-    kate_motion_semantics_vertical_margins,
-    kate_motion_semantics_bitmap_position,
-    kate_motion_semantics_bitmap_size,
-    kate_motion_semantics_marker1_bitmap,
-    kate_motion_semantics_marker2_bitmap,
-    kate_motion_semantics_marker3_bitmap,
-    kate_motion_semantics_marker4_bitmap,
-    kate_motion_semantics_glyph_pointer_1_bitmap,
-    kate_motion_semantics_glyph_pointer_2_bitmap,
-    kate_motion_semantics_glyph_pointer_3_bitmap,
-    kate_motion_semantics_glyph_pointer_4_bitmap,
-    kate_motion_semantics_draw_width,
+    kms_time,
+    kms_z,
+    kms_region_position,
+    kms_region_size,
+    kms_text_alignment_int,
+    kms_text_alignment_ext,
+    kms_text_position,
+    kms_text_size,
+    kms_marker1_position,
+    kms_marker2_position,
+    kms_marker3_position,
+    kms_marker4_position,
+    kms_glyph_pointer_1,
+    kms_glyph_pointer_2,
+    kms_glyph_pointer_3,
+    kms_glyph_pointer_4,
+    kms_text_color_rg,
+    kms_text_color_ba,
+    kms_background_color_rg,
+    kms_background_color_ba,
+    kms_draw_color_rg,
+    kms_draw_color_ba,
+    kms_style_morph,
+    kms_text_path,
+    kms_text_path_section,
+    kms_draw,
+    kms_text_visible_section,
+    kms_horizontal_margins,
+    kms_vertical_margins,
+    kms_bitmap_position,
+    kms_bitmap_size,
+    kms_marker1_bitmap,
+    kms_marker2_bitmap,
+    kms_marker3_bitmap,
+    kms_marker4_bitmap,
+    kms_glyph_pointer_1_bitmap,
+    kms_glyph_pointer_2_bitmap,
+    kms_glyph_pointer_3_bitmap,
+    kms_glyph_pointer_4_bitmap,
+    kms_draw_width,
   };
 
   private KateMotionSemantics() {

@@ -61,7 +61,6 @@ public class State
 
     /* get packet type */
     type = (byte)dec.opb.read(8);
-    Debug.log(Debug.DEBUG, "decodePacketin: got packet type "+type);
 
     /* ignore headers */
     if ((type & 0x80) != 0)
