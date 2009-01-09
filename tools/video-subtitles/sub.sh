@@ -20,6 +20,12 @@ fi
 if [ "x$1" == "xja" ]; then
   font="kochi-gothic-subst.ttf"
 fi
+if [ "x$1" == "xzh-hant" ]; then
+  font="uming.ttc"
+fi
+if [ "x$1" == "xzh-hans" ]; then
+  font="uming.ttc"
+fi
 if [ "x$1" == "xzh" ]; then
   font="uming.ttc"
 fi
