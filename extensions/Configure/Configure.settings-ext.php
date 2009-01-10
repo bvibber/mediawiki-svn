@@ -928,6 +928,10 @@ $extensions = array(
 
 	// R
 	array(
+		'name' => 'Redirect',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Redirect',
+	),
+	array(
 		'name' => 'Renameuser',
 		'file' => 'SpecialRenameuser.php',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Renameuser',
