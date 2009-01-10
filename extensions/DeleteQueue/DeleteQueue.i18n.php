@@ -9,6 +9,7 @@ $messages = array();
 
 /** English
  * @author Andrew Garrett
+ * @author Purodha
  */
 $messages['en'] = array(
 	// General
@@ -152,7 +153,7 @@ Due to your objection, the page has been moved to the $1 queue.',
 	// View all votes
 	'deletequeue-showvotes' => "Endorsements and objections to deletion of \"$1\"",
 	'deletequeue-showvotes-text' => "Below are the endorsements and objections made to the deletion of the page \"'''$1'''\".
-You can register your own endorsement of, or objection to this deletion [{{fullurl:{{FULLPAGENAME}}|action=delvote}} here].",
+You can [{{fullurl:{{FULLPAGENAME}}|action=delvote}} register your own endorsement of, or objection] to this deletion.",
 	'deletequeue-showvotes-restrict-endorse' => "Show endorsements only",
 	'deletequeue-showvotes-restrict-object' => "Show objections only",
 	'deletequeue-showvotes-restrict-none' => "Show all endorsements and objections",
