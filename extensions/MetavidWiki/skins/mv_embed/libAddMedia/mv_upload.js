@@ -23,6 +23,8 @@ mvUploader.prototype = {
 	init:function( iObj ){
 		var _this = this;	
 		js_log('init uploader');
+		if(!iObj)
+			iObj = {};
 		for(var i in default_upload_options){
 			if(iObj[i]){
 				this[i] = iObj[i];
@@ -30,41 +32,57 @@ mvUploader.prototype = {
 				this[i] = default_upload_options[i];
 			}
 		}
+		//check if we are on the uplaod page: 
+		this.on_upload_page = ( wgPageName== "Special:Upload")?true:false;					
+		js_log('f:mvUploader: onuppage:' + this.on_upload_page);
 		//grab firefogg.js: 
-		mvJsLoader.doLoad({'upFirefogg' : 'libAddMedia/firefogg.js'},function(){	
-			//for now grab the upload HTML (uggly but will be replaced by API shortly I promise )
-			$j.get(wgArticlePath.replace(/\$1/, 'Special:Upload'), {}, function(data){
-				//filter the data: 
-				sp = data.indexOf('<div id="content">');
-				se = data.indexOf('<!-- end content -->');			
-				if(sp!=-1 && se !=-1){				
-					$j('#'+_this.target_div).html( data.substr(sp, (se-sp) ) );
-				}
-				//add firebug html if not already there: ( same as $wgEnableFirebug )  
-				if( $j('#fogg-video-file').length==0 ){
-					_this.addFirebugHtml();
-				}else{
-					js_log('firefogg already there init:');					
-				}				
-				init_firefogg({'add_done_action':function( rTitle ){
-						js_log('add_done_action callback for uploader');
-						//call the parent insert resource preview
-						
-					}
-				});			
-				//set up the bindings
-				$j('#mw-upload-form').submit(function(){
-					//do an ajax submit
-					
-					//(don't do the normal submit)
-					return false;
-				});
-			});				
+		mvJsLoader.doLoad({'upFirefogg' : 'libAddMedia/firefogg.js'},function(){
+			//if we are not on the upload page grab the upload html via ajax:		
+			if( !_this.on_upload_page){					
+				$j.get(wgArticlePath.replace(/\$1/, 'Special:Upload'), {}, function(data){				
+					sp = data.indexOf('<div id="content">');
+					se = data.indexOf('<!-- end content -->');			
+					if(sp!=-1 && se !=-1){				
+						$j('#'+_this.target_div).html( data.substr(sp, (se-sp) ) );
+					}	
+					_this.setupFirefogg();	
+				});				
+			}else{
+				_this.setupFirefogg();
+			}							
 		});
 	},
+	setupFirefogg:function(){
+		var _this = this;
+		//add firebug html if not already there: ( same as $wgEnableFirebug added in SpecialUpload.php )  
+		if( $j('#fogg-video-file').length==0 ){
+			js_log('add addFirefoggHtml');
+			_this.addFirefoggHtml();
+		}else{
+			js_log('firefogg already there init:');					
+		}	
+		//set up the upload_done action 
+		//redirect if we are on the upload page  
+		//do a callback if in called from gui) 
+		var intFirefoggObj = (this.on_upload_page)? 
+				{'upload_done_action':'redirect'}:
+				{'upload_done_action':function( rTitle ){
+						js_log('add_done_action callback for uploader');
+						//call the parent insert resource preview				
+					}
+				};
+		init_firefogg( intFirefoggObj );			
+		//firefogg handles the form submit (even on image uploads when called by gui)
+		if( !this.on_upload_page ){
+			$j('#mw-upload-form').submit(function(){			
+				return false;
+			});
+		}
+	},
 	//same add code as specialUpload if($wgEnableFirefogg){
-	addFirebugHtml:function(){						
-		$j('#mw-upload-table .mw-input :first').wrap('<div id="wg-base-upload"></div>');
+	addFirefoggHtml:function(){		
+		var itd_html = $j('#mw-upload-table .mw-input:first').html();			
+		$j('#mw-upload-table .mw-input').eq(0).html('<div id="wg-base-upload">' + itd_html + '</div>');
 		//add in firefogg control			
 		$j('#wg-base-upload').after('<p id="fogg-enable-item" >' + 
 						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="Select File..">' +
@@ -74,9 +92,7 @@ mvUploader.prototype = {
 						'<span id="wgfogg_installed"  style="display:none" >'+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 								getMsg('upload-enable-converter') +
-						'<span><br></p>');
-		alert('wtf');
-		js_log('FOUND: ' + $j('#fogg-enable-item').length + ' wg: ' + $j('#wgEnableFirefogg').length );
+						'<span><br></p>');		
 		//add in loader dl box: 
 		$j('#mw-upload-table').before('<div id="dlbox-centered" class="dlbox-centered" >'+			
 				'<h5>' + getMsg('upload-in-progress') + '</h5>' +
@@ -87,9 +103,6 @@ mvUploader.prototype = {
 				'<span id="fogg-status-transcode">' + getMsg('upload-transcoded-status') + '</span>'+  
 				'<span style="display:none" id="fogg-status-upload">' + getMsg('uploaded-status') + '</span>' +
 			'</div>'+					
-			'<div class="dlbox-overlay" ></div>');			
-		//init firefogg (check for its existance)
-		js_log('FOUND: ' + $j('#wgEnableFirefogg').length );
-		js_log('run init_firefogg');					
+			'<div class="dlbox-overlay" ></div>');						
 	}
 }

@@ -194,12 +194,12 @@ upFirefogg.prototype = {
 								var sstring = 'var wgTitle = "' + data['wpDestFile'].replace('_',' ');
 								if( result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
 									js_log('upload done got redirect found: ' +sstring);										
-									if(_this.add_done_action == 'redirect'){
+									if(_this.upload_done_action == 'redirect'){
 										window.location = wgArticlePath.replace(/\$1/, 'File:' + data['wpDestFile'] );
 									}else{
 										//check if the add_done_action is a callback:
-										if(typeof _this.add_done_action == 'function')
-											_this.add_done_action();
+										if(typeof _this.upload_done_action == 'function')
+											_this.upload_done_action();
 									}									
 								}else{								
 									js_log('upload page error: did not find: ' +sstring);	
