@@ -3,6 +3,8 @@ Localisation updates are done on betawiki and aren't listed here.
 
 0.11.7 - 10 January 2009
   * Added support for Redirect
+  * Fixed Special:Extensions: was sometimes throwing an error when saving the
+    configuration
 
 0.11.6 - 7 January 2009
   * Added support for OpenID, NewUserMessage and ReplaceText extensions.
