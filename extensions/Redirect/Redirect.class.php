@@ -21,7 +21,7 @@ class RedirectHooks {
 	}
 
 	private static function addRedirect( $hookName ) {
-		global $wgOut, $wgServer, $wgScript;
+		global $wgOut;
 
 		wfLoadExtensionMessages( 'Redirect' );
 
@@ -35,7 +35,7 @@ class RedirectHooks {
 		$target = Title::newFromText( $targetPage );
 
 		if ( $target->isKnown() ) {
-			$wgOut->redirect( $wgServer . $wgScript . "?title=" . $target );
+			$wgOut->redirect( $target->getFullUrl() );
 		}
 
 		return true;
