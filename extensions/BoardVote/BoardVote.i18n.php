@@ -2,18 +2,22 @@
 /**
  * Internationalisation file for BoardVote extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
 */
 
 $messages = array();
-
+/** English
+ * @author Tim Starling
+ * @author Kwan Ting Chan
+*/
 $messages['en'] = array(
-	'boardvote'               => "Wikimedia Board of Trustees election",
-	'boardvote-desc'          => '[[meta:Board elections/2008|Wikimedia Board of Trustees election]]',
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
-* [[Special:Boardvote/list|List votes to date]]
-* [[Special:Boardvote/dump|Dump encrypted election record]]",
-	'boardvote_intro'         => "<p>Welcome to the 2008 election for the Wikimedia Board of Trustees.
+	'boardvote' => 'Wikimedia Board of Trustees election',
+	'boardvote-desc' => '[[meta:Board elections/2008|Wikimedia Board of Trustees election]]',
+	'boardvote_entry' => "* [[Special:BoardVote/vote|Vote]]
+* [[Special:BoardVote/list|List votes to date]]
+* [[Special:BoardVote/dump|Dump encrypted election record]]",
+	'boardvote_intro' => "<p>Welcome to the 2008 election for the Wikimedia Board of Trustees.
 We are voting for one person to represent the community of users on the various Wikimedia projects.
 They will help to determine the future direction that the Wikimedia projects will take, individually and as a group, and represent <em>your</em> interests and concerns to the Board of Trustees.
 They will decide on ways to generate income and the allocation of moneys raised.</p>
@@ -31,12 +35,12 @@ It is presumed that you prefer all ranked candidates to all not ranked candidate
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Board elections 2008</a></li>
 <li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Candidates</a></li>
 <li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze method</a></li></ul>",
-	'boardvote_intro_change'  => "<p>You have voted before. However you may change
+	'boardvote_intro_change' => "<p>You have voted before. However you may change
 your vote using the form below. Please rank the candidates in your order of preferences, whereby a smaller number
 indicate a higher preference for that particular candidate. You may give the same preference to more than one
 candidate and may keep candidates unranked.</p>",
-	'boardvote_footer'        => "&nbsp;", # Do not translate this
-	'boardvote_entered'       => "Thank you, your vote has been recorded.
+	'boardvote_footer' => "&nbsp;", # Do not translate this
+	'boardvote_entered' => "Thank you, your vote has been recorded.
 
 If you wish, you may record the following details. Your voting record is:
 
@@ -46,55 +50,54 @@ It has been encrypted with the public key of the Election Administrators:
 
 <pre>$2</pre>
 
-The resulting encrypted version follows. It will be [[Special:Boardvote/dump|displayed publicly]].
+The resulting encrypted version follows. It will be [[Special:BoardVote/dump|displayed publicly]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Back]]",
-	'boardvote_invalidentered'=> "<p><strong>Error</strong>: candidate preference must be expressed in positive whole number only (1, 2, 3, ....), or
+[[Special:BoardVote/entry|Back]]",
+	'boardvote_invalidentered' => "<p><strong>Error</strong>: candidate preference must be expressed in positive whole number only (1, 2, 3, ....), or
 left empty.</p>",
-	'boardvote_nosession'     => "Your Wikimedia user ID could not be determined.
-Please log in to the wiki where you are qualified to vote, and go to <nowiki>[[Special:Boardvote]]</nowiki>.
+	'boardvote_nosession' => "Your Wikimedia user ID could not be determined.
+Please log in to the wiki where you are qualified to vote, and go to <nowiki>[[Special:BoardVote]]</nowiki>.
 You must use an account with at least $1 {{PLURAL:$1|contribution|contributions}} before $2, and have made at least $3 {{PLURAL:$3|contribution|contributions}} between $4 and $5.",
-	'boardvote_notloggedin'   => "You are not logged in.
+	'boardvote_notloggedin' => "You are not logged in.
 To vote, you must use an account with at least $1 {{PLURAL:$1|contribution|contributions}} before $2, and have made at least $3 {{PLURAL:$3|contribution|contributions}} between $4 and $5.",
-	'boardvote_notqualified'  => "You are not qualified to vote in this election.
+	'boardvote_notqualified' => "You are not qualified to vote in this election.
 You need to have made at least $1 {{PLURAL:$1|contribution|contributions}} before $2, and have made at least $3 {{PLURAL:$3|contribution|contributions}} between $4 and $5.",
-	'boardvote_novotes'       => "Nobody has voted yet.",
-	'boardvote_time'          => "Time",
-	'boardvote_user'          => "User",
-	'boardvote_edits'         => "Edits",
-	'boardvote_days'          => "Days",
-	'boardvote_ip'            => "IP",
-	'boardvote_ua'            => "User agent",
-	'boardvote_listintro'     => "<p>This is a list of all votes which have been recorded to date.
+	'boardvote_novotes' => 'Nobody has voted yet.',
+	'boardvote_time' => 'Time',
+	'boardvote_user' => 'User',
+	'boardvote_edits' => 'Edits',
+	'boardvote_days' => 'Days',
+	'boardvote_ip' => 'IP',
+	'boardvote_ua' => 'User agent',
+	'boardvote_listintro' => "<p>This is a list of all votes which have been recorded to date.
 $1 for the encrypted data.</p>",
-	'boardvote_dumplink'      => "Click here",
-	'boardvote_submit'        => 'OK',
-	'boardvote_strike'        => "Strike",
-	'boardvote_unstrike'      => "Unstrike",
-	'boardvote_needadmin'     => "Only election administrators can perform this operation.",
-	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Wikimedia Board Elections</a>:
-Vote open until June 22",
-	'boardvote_notstarted'    => 'Voting has not yet started',
-	'boardvote_closed'        => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Board_elections/2008/Results the elections page for results] soon.',
-	'boardvote_edits_many'    => 'many',
-	'group-boardvote'         => 'Board vote admins',
-	'group-boardvote-member'  => 'board vote admin',
-	'grouppage-boardvote'     => '{{ns:project}}:Board vote admin',
-	'boardvote_blocked'       => 'You have been blocked on your registered wiki.
+	'boardvote_dumplink' => 'Click here',
+	'boardvote_submit' => 'OK',
+	'boardvote_strike' => 'Strike',
+	'boardvote_unstrike' => 'Unstrike',
+	'boardvote_needadmin' => 'Only election administrators can perform this operation.',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Wikimedia Board Elections</a>:
+Vote open until June 22',
+	'boardvote_notstarted' => 'Voting has not yet started',
+	'boardvote_closed' => 'Voting is now closed, see [http://meta.wikimedia.org/wiki/Board_elections/2008/Results the elections page for results] soon.',
+	'boardvote_edits_many' => 'many',
+	'group-boardvote' => 'Board vote admins',
+	'group-boardvote-member' => 'board vote admin',
+	'grouppage-boardvote' => '{{ns:project}}:Board vote admin',
+	'boardvote_blocked' => 'You have been blocked on your registered wiki.
 Blocked users are not allowed to vote.',
-	'boardvote_bot'           => 'You are flagged as a bot on your registered wiki.
+	'boardvote_bot' => 'You are flagged as a bot on your registered wiki.
 Bot accounts are not allowed to vote.',
-	'boardvote_welcome'       => "Welcome '''$1'''!",
-	'go_to_board_vote'        => 'Wikimedia Board Elections 2008',
-	'boardvote_redirecting'   => 'For improved security and transparency, we are running the vote on an external, independently controlled server.
+	'boardvote_welcome' => "Welcome '''$1'''!",
+	'go_to_board_vote' => 'Wikimedia Board Elections 2008',
+	'boardvote_redirecting' => 'For improved security and transparency, we are running the vote on an external, independently controlled server.
 
 You will be redirected to this external server in 20 seconds. [$1 Click here] to go there now.
 
 A security warning about an unsigned certificate may be displayed.',
-
-	'right-boardvote'         => 'Administer elections',
+	'right-boardvote' => 'Administer elections',
 );
 
 /** Message documentation (Message documentation)

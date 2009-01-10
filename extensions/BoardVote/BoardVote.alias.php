@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:BoardVote
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();
