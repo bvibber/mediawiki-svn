@@ -132,7 +132,7 @@ mvSequencer.prototype = {
 			'html': getMsg('loading_txt'),			
 			'js':function( this_seq ){				
 				//load the search interface with sequence tool targets 		
-				mvJsLoader.doLoad({'remoteSearchDriver':'libRemoteMediaSearch/mv_remote_media_search.js'}, function(){					
+				mvJsLoader.doLoad({'remoteSearchDriver':'libAddMedia/mv_remote_media_search.js'}, function(){					
 					this_seq.mySearch = new remoteSearchDriver({
 						'profile':'sequence',
 						'p_seq':this_seq,

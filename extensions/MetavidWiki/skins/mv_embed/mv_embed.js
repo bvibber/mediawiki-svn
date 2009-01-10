@@ -138,6 +138,13 @@ function mv_get_loading_img( style , class_attr ){
 	var class_attr = (class_attr)?'class="'+class_attr+'"':'class="mv_loading_img"';
 	return '<div '+class_attr+' style="' + style +'"></div>';
 }
+function mv_set_loading(target, load_id){
+	var id_attr = ( load_id )?' id="' + load_id + '" ':'';
+	$j(target).append('<div '+id_attr+' style="position:absolute;top:0px;left:0px;height:100%;width:100%;'+
+		'background-color:#FFF;">' + 			
+			mv_get_loading_img('top:30px;left:30px') + 
+		'</div>');	
+}
 
 /*  the base video control JSON object with default attributes
 *    for supported attribute details see README
@@ -1097,7 +1104,7 @@ function mv_do_remote_search(initObj){
 	mvEmbed.load_libs(function(){
 		//load search specifc extra stuff 
 		mvJsLoader.doLoad({
-			'mvBaseRemoteSearch':'libRemoteMediaSearch/mv_remote_media_search.js'
+			'mvBaseRemoteSearch':'libAddMedia/mv_remote_media_search.js'
 		}, function(){
 			initObj['instance_name']= 'rsdMVRS';
 			rsdMVRS = new remoteSearchDriver( initObj );
@@ -3172,12 +3179,12 @@ function js_log(string){
       */
      /*var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
-     	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
+     	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:50px;"><textarea id="mv_js_log" cols="80" rows="2"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){
      	log_elm.value+=string+"\n";
-     }*/         
+     }*/       
   }
   //return false;
 }

@@ -16,14 +16,15 @@ if(wgAction=='edit'){
 	addOnloadHook( function(){			
 		var toolbar = document.getElementById("toolbar");
 		var imE = document.createElement('img');
-		imE.style.cursor = 'pointer';		
+		imE.style.cursor = 'pointer';	
+		imE.id = 'mv-add_media';
 		imE.src = 'http://upload.wikimedia.org/wikipedia/commons/8/86/Button_add_media.png';
 		toolbar.appendChild(imE);	
-		imE.setAttribute('onClick', 'mv_do_load_wiz()');
+		//imE.setAttribute('onClick', 'mv_do_load_wiz()');
 		//addHandler only works once cuz of dom manipluations 
-		/*addHandler( imE, 'click', function() {
+		addHandler( imE, 'click', function() {
 			mv_do_load_wiz();
-		});*/
+		});
 	});
 }
 var caret_pos={};
@@ -51,6 +52,13 @@ function mv_do_load_wiz(){
 				'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
 				'opacity: 0.6;"/>';
 	}
+	//make sure the click action is still there
+	imE = document.getElementById('mv-add_media');	
+	if(imE){
+		addHandler( imE, 'click', function() {
+				mv_do_load_wiz();
+		});
+	}
 
 	//get mv_embed path from _this_ file location: 
 	if(!mv_embed_url)
@@ -59,7 +67,7 @@ function mv_do_load_wiz(){
 	//inject mv_embed
 	if( typeof MV_EMBED_VERSION == 'undefined'){
 		var e = document.createElement("script");
-	    e.setAttribute('src', mv_embed_url);
+	    e.setAttribute('src', mv_embed_url);	    
 	    e.setAttribute('type',"text/javascript");
 	    document.getElementsByTagName("head")[0].appendChild(e);
 	    setTimeout('check_for_mv_embed();', 25); 
@@ -93,7 +101,7 @@ function getMvEmbedUrl(){
 	for(var i=0; i < document.getElementsByTagName('script').length; i++){
 		var s = document.getElementsByTagName('script')[i];
 		if( s.src.indexOf('external_media_wizard.js') != -1 ){
-			//use the path: 
+			//use the external_media_wizard path: 
 			return s.src= s.src.replace('external_media_wizard.js', '') + 'mv_embed/mv_embed.js';
 		}
 	}

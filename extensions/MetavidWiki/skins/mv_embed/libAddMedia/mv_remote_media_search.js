@@ -14,6 +14,7 @@ gMsg['rsd_list_layout'] = 'List Layout';
 gMsg['rsd_results_desc']= 'Results ';
 gMsg['rsd_results_next'] = ' next ';
 gMsg['rsd_results_prev'] = ' previus ';
+gMsg['upload'] 			= 'Upload';
 
 gMsg['rsd_layout'] = 	  'Layout:';
 gMsg['rsd_resource_edit']='Edit Resource:';
@@ -32,9 +33,11 @@ var default_remote_search_options = {
 	'instance_name': null, //a globally accessible callback instance name
 	'default_query':null, //default search query
 	//specific to sequence profile
-	'p_seq':null,
-	'cFileNS':'Image' //what is the cannonical namespace for images 
-					  //@@todo (should be able to get that from the api in the future) 
+	'p_seq':null,	
+	'cFileNS':'Image', //what is the cannonical namespace for images 
+					  //@@todo (should be able to get that from the api in the future)
+					  
+	'enable_uploads':true // if we want to enable an uploads tab:  
 }
 var remoteSearchDriver = function(initObj){
 	return this.init( initObj );
@@ -71,7 +74,7 @@ remoteSearchDriver.prototype = {
 			'api_url': wgScriptPath + '/api.php',
 			'lib'	:'mediaWiki',
 			'local'	:true
-		},
+		},		
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
@@ -131,6 +134,9 @@ remoteSearchDriver.prototype = {
 	video_edit_width	: 400,
 	insert_text_pos		: 0, //insert at the start (will be overwiten by the user cursor pos) 
 	result_display_mode : 'box', //box or list or preview	
+	
+	cUpLoader				: null,
+	cEdit				: null,
 	
 	init:function( initObj ){
 		js_log('remoteSearchDriver:init');
@@ -249,13 +255,33 @@ remoteSearchDriver.prototype = {
 			_this.runSearch();
 		});		
 	},
+	doUploadInteface:function(){	
+		var _this = this;	
+		mv_set_loading('#rsd_results');
+		
+		//load the (firefog enhanced) upload manager:
+		if(!_this.cUpLoader){
+			mvJsLoader.doLoad( {'mvUploader': 'libAddMedia/mv_upload.js'},function(){				
+				_this.cUpLoader = new mvUploader({
+						'target_div': 'rsd_results',
+						'upload_cb:': function( rTitle){
+							//set to loading:
+							mv_set_loading('#rsd_results');
+							//do a direct api query for resource info (to build rObj
+							_this.getResourceFromTitle( rTitle, function(rObj){
+								//call resource Edit: 
+								_this.resourceEdit( rObj );	
+							}); 
+						}												
+					}
+				);
+			});  
+		}
+	},
 	runSearch: function(){
 		var _this = this;						
 		//set loading div: 
-		$j('#rsd_results').append('<div style="position:absolute;top:0px;left:0px;height:100%;width:100%;'+
-			'background-color:#FFF;">' + 			
-				mv_get_loading_img('top:30px;left:30px') + 
-			'</div>');		
+		mv_set_loading('#rsd_results');			
 		//get a remote search object for each search provider and run the search
 		for(var cp_id in  this.content_providers){
 			var cp = this.content_providers[ cp_id ];			
@@ -314,9 +340,14 @@ remoteSearchDriver.prototype = {
 				var cp = this.content_providers[cp_id];
 				if( cp.enabled && cp.checked){
 					var class_attr = (cp.d)?'class="rsd_selected"':'';
-					o+='<li id="rsd_tab_'+cp_id+'" ' + class_attr + '><img src="' + mv_embed_path + 'skins/' + mv_skin_name + '/remote_search/' + cp_id + '_tab.png">';
+					o+='<li id="rsd_tab_'+cp_id+'" ' + class_attr + '><img src="' + mv_embed_path + 'skins/' + mv_skin_name + '/remote_search/' + cp_id + '_tab.png"></li>';
 				}
 			}
+		//do an upload tab if enabled: 
+		if( this.enable_uploads ){
+			var class_attr = ( this.disp_item =='upload' ) ? 'class="rsd_selected"':'';	
+			o+='<li id="rsd_tab_upload" ' + class_attr + ' >'+getMsg('upload');+'</li>';
+		}
 		o+='</ul>';		
 		o+='</div>';
 		//outout the resource results holder	
@@ -327,7 +358,19 @@ remoteSearchDriver.prototype = {
 		$j('.rsd_cp_tabs li').click(function(){
 			_this.selectTab( $j(this).attr('id').replace(/rsd_tab_/, '') );
 		});
-	},			
+	},
+	//resource title 		
+	getResourceFromTitle:function( rTitle , callback){
+		var _this = this;
+		reqObj={
+			'action':'query', 
+			'titles': _this.cFileNS + ':' + rTitle
+		};								
+		do_api_req( reqObj, this.local_wiki_api_url, function(data){
+			//propogate the rO
+			var rObj = {};
+		});
+	},	
 	//@@todo we could load the id with the content provider id to find the object faster...
 	getResourceFromId:function( rid ){
 		//strip out /res/ if preset: 
@@ -390,72 +433,75 @@ remoteSearchDriver.prototype = {
 		//resource click action: (bring up the resource editor) 		
 		$j('.rsd_res_item').click(function(){				
 			//get the resource obj:
-			var rObj = _this.getResourceFromId( this.id );						
-			//remove any existing resource edit interface: 
-			$j('#rsd_resource_edit').remove();					
-			//set the media type:
-			if(rObj.mime.indexOf('image')!=-1){	 			
-				//set width to default image_edit_width
-				var maxWidth = _this.image_edit_width;		
-				var mediaType = 'image';										
-			}else{
-				//set to default video size: 
-				var maxWidth = _this.video_edit_width;
-				var mediaType = 'video';
-			}
-			//so that transcripts show ontop
-			var overflow_style = ( mediaType =='video' )?'':'overflow:auto;';
-			//append to the top level of model window: 
-			$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
-				'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
-					'<h3 id="rsd_resource_title" style="margin:4px;">' + getMsg('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
-					'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:30px;left:0px;bottom:0px;'+
-						'width:' + (maxWidth + 30) + 'px;" >' +
-							mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
-					'</div>'+
-					'<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
-						'top:30px;left:' + (maxWidth+30) +'px;bottom:0px;right:0px;">'+
-						mv_get_loading_img() +  					
-					'</div>'+
-				'</div>');
-			$j('#rsd_resource_edit').css('opacity',0);
-			
-			$j('#rsd_edit_img').remove();//remove any existing rsd_edit_img 
-			
-			//left side holds the image right size the controls /														
-			$j(this).clone().attr('id', 'rsd_edit_img').appendTo('#clip_edit_disp').css({
-				'position':'absolute',
-				'top':'40%',
-				'left':'20%',
-				'opacity':0	
-			});															
-			
-			//assume we keep aspect ratio for the thumbnail that we clicked:			
-			var tRatio = $j(this).height() / $j(this).width();
-			if(	! tRatio )		
-				var tRatio = 1; //set ratio to 1 if the width of the thumbnail can't be found for some reason
-			
-			js_log('set from ' +  $j('#rsd_edit_img').width()+'x'+ $j('#rsd_edit_img').height() + ' to init thumbimage to ' + maxWidth + ' x ' + parseInt( tRatio * maxWidth) );	
-			//scale up image and swap with high res version
-			$j('#rsd_edit_img').animate({
-				'opacity':1,
-				'top':'0px',
-				'left':'0px',
-				'width': maxWidth + 'px',
-				'height': parseInt( tRatio * maxWidth)  + 'px'
-			}, "slow"); // do it slow to give it a chance to finish loading the HQ version
-			
-			_this.loadHQImg(rObj, {'width':maxWidth}, 'rsd_edit_img', function(){
-				$j('.mv_img_loader').remove();
-			});
-			//also fade in the container: 
-			$j('#rsd_resource_edit').animate({
-				'opacity':1,
-				'background-color':'#FFF',
-				'z-index':99
-			});			
-			_this.doMediaEdit( rObj , mediaType );			
+			var rObj = _this.getResourceFromId( this.id );					
+			_this.resourceEdit( rObj );										
 		});
+	},
+	resourceEdit:function( rObj ){
+		//remove any existing resource edit interface: 
+		$j('#rsd_resource_edit').remove();					
+		//set the media type:
+		if(rObj.mime.indexOf('image')!=-1){	 			
+			//set width to default image_edit_width
+			var maxWidth = _this.image_edit_width;		
+			var mediaType = 'image';										
+		}else{
+			//set to default video size: 
+			var maxWidth = _this.video_edit_width;
+			var mediaType = 'video';
+		}
+		//so that transcripts show ontop
+		var overflow_style = ( mediaType =='video' )?'':'overflow:auto;';
+		//append to the top level of model window: 
+		$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
+			'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
+				'<h3 id="rsd_resource_title" style="margin:4px;">' + getMsg('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
+				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:30px;left:0px;bottom:0px;'+
+					'width:' + (maxWidth + 30) + 'px;" >' +
+						mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
+				'</div>'+
+				'<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
+					'top:30px;left:' + (maxWidth+30) +'px;bottom:0px;right:0px;">'+
+					mv_get_loading_img() +  					
+				'</div>'+
+			'</div>');
+		$j('#rsd_resource_edit').css('opacity',0);
+		
+		$j('#rsd_edit_img').remove();//remove any existing rsd_edit_img 
+		
+		//left side holds the image right size the controls /														
+		$j(this).clone().attr('id', 'rsd_edit_img').appendTo('#clip_edit_disp').css({
+			'position':'absolute',
+			'top':'40%',
+			'left':'20%',
+			'opacity':0	
+		});															
+		
+		//assume we keep aspect ratio for the thumbnail that we clicked:			
+		var tRatio = $j(this).height() / $j(this).width();
+		if(	! tRatio )		
+			var tRatio = 1; //set ratio to 1 if the width of the thumbnail can't be found for some reason
+		
+		js_log('set from ' +  $j('#rsd_edit_img').width()+'x'+ $j('#rsd_edit_img').height() + ' to init thumbimage to ' + maxWidth + ' x ' + parseInt( tRatio * maxWidth) );	
+		//scale up image and swap with high res version
+		$j('#rsd_edit_img').animate({
+			'opacity':1,
+			'top':'0px',
+			'left':'0px',
+			'width': maxWidth + 'px',
+			'height': parseInt( tRatio * maxWidth)  + 'px'
+		}, "slow"); // do it slow to give it a chance to finish loading the HQ version
+		
+		_this.loadHQImg(rObj, {'width':maxWidth}, 'rsd_edit_img', function(){
+			$j('.mv_img_loader').remove();
+		});
+		//also fade in the container: 
+		$j('#rsd_resource_edit').animate({
+			'opacity':1,
+			'background-color':'#FFF',
+			'z-index':99
+		});			
+		_this.doMediaEdit( rObj , mediaType );	
 	},
 	loadHQImg:function(rObj, size, target_img_id, callback){		
 		//get the HQ image url: 
@@ -664,7 +710,7 @@ remoteSearchDriver.prototype = {
 								var editToken = data.query.pages[-1]['edittoken'];
 								if(!editToken){
 									//@@todo give an ajax login or be more friendly in some way:  
-									js_error("You don't have permision to upload (are you logged in?)");
+									js_error("You don't have permission to upload (are you logged in?)");
 									//remove top level: 
 									$j('#modalbox').fadeOut("normal",function(){
 										$j(this).remove();
@@ -887,7 +933,7 @@ remoteSearchDriver.prototype = {
 	},
 	selectTab:function( selected_cp_id ){
 		js_log('select tab: ' + selected_cp_id);
-		this.disp_item = selected_cp_id;
+		this.disp_item = selected_cp_id;					
 		//set display to unselected: 
 		for(var cp_id in  this.content_providers){
 			cp = this.content_providers[ cp_id ];
@@ -899,8 +945,13 @@ remoteSearchDriver.prototype = {
 		}	
 		//redraw tabs
 		this.drawTabs();
-		//update the search results: 
-		this.runSearch();	 		
+		
+		if( this.disp_item == 'upload' ){
+			this.doUploadInteface();
+		}else{
+			//update the search results: 
+			this.runSearch();
+		}	 		
 	},
 	setDispMode:function(mode){
 		js_log('setDispMode:' + mode);
