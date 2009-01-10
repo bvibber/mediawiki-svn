@@ -69,7 +69,7 @@ interface ConfigureHandler {
 	 * @return Array of versions
 	 */
 	public function listArchiveVersions( $options = array() );
-	
+
 	/**
 	 * Return a bool whether the version exists
 	 *

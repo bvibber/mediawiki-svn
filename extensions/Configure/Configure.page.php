@@ -124,12 +124,12 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function getSettingValue( $setting ) {
 		static $defaults;
-		
+
 		if (!$defaults) {
 			global $wgConf;
 			$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
 		}
-		
+
 		if ( isset( $this->conf[$setting] ) ) {
 			return $this->conf[$setting];
 		} else {
@@ -312,7 +312,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $version = $wgRequest->getVal( 'version' ) ) {
 			if ( $version == 'default' || $wgConf->versionExists( $version ) ) {
 				$conf = $wgConf->getOldSettings( $version );
-				
+
 				if ( $version == 'default' ) { ## Hacky special case.
 					$conf[$this->mWiki] = $conf['default'];
 				}
@@ -573,20 +573,20 @@ abstract class ConfigurationPage extends SpecialPage {
 							}
 						}
 					}
-					
+
 					break;
 				case 'rate-limits':
 					$all = array();
 					## TODO put this stuff in a central place.
 					$validActions = array( 'edit', 'move', 'mailpassword', 'emailuser', 'rollback' );
 					$validGroups = array( 'anon', 'user', 'newbie', 'ip', 'subnet' );
-					
+
 					foreach( $validActions as $action ) {
 						$all[$action] = array();
 						foreach( $validGroups as $group ) {
 							$count = $wgRequest->getIntOrNull( "wp$name-key-$action-$group-count" );
 							$period = $wgRequest->getIntOrNull( "wp$name-key-$action-$group-period" );
-							
+
 							if ($count && $period) {
 								$all[$action][$group] = array( $count, $period );
 							} else {
@@ -594,7 +594,7 @@ abstract class ConfigurationPage extends SpecialPage {
 							}
 						}
 					}
-					
+
 					$settings[$name] = $all;
 					break;
 				case 'promotion-conds':
@@ -619,7 +619,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						if ( empty( $op ) ) {
 							$op = 'and';
 						}
-						
+
 						if( !isset( $options[$op] ) )
 							throw new MWException( "'{$op}' for group '{$group}' is not a valid operator for 'promotion-conds' type" );
 						$op = $options[$op];
@@ -651,7 +651,7 @@ abstract class ConfigurationPage extends SpecialPage {
 								foreach( $val as $reqGroup )
 									if( $reqGroup )
 										$reqGroups[] = $reqGroup;
-	
+
 								if( count( $reqGroups ) )
 									$condsVal[] = array_merge( array( $condName ), $reqGroups );
 							}
@@ -668,14 +668,14 @@ abstract class ConfigurationPage extends SpecialPage {
 			case 'lang':
 			case 'image-url':
 				$setting = $wgRequest->getVal( 'wp' . $name );
-				
+
 				if ( $file = wfFindFile( $setting ) ) {
 					## It's actually a local file.
 					$setting = $file->getUrl();
 				}
-				
+
 				$settings[$name] = $setting;
-				
+
 				break;
 			case 'int':
 				$settings[$name] = $wgRequest->getInt( 'wp' . $name );
@@ -719,7 +719,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		if (!empty($val) || $val) {
 			return $val;
 		}
-		
+
 		static $list = null;
 		if ( $list === null )
 			$list = $this->mConfSettings->getEmptyValues();
@@ -727,7 +727,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		static $defaults = null;
 		if ($defaults === null)
 			$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
-		
+
 		if ( array_key_exists( $name, $list ) ) {
 			return $list[$name];
 		} elseif ( !array_key_exists( $name, $defaults ) ) {
@@ -817,7 +817,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		global $wgOut, $wgUser, $wgRequest;
 
 		$action = $this->getTitle()->escapeLocalURL();
-		
+
 		$reason = $wgRequest->getText( 'wpReason' );
 
 		$wgOut->addHTML(
@@ -853,7 +853,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		);
 		$this->injectScriptsAndStyles();
 	}
-	
+
 	/** Show a hidden-by-default search form */
 	protected function buildSearchForm() {
 		$form = wfMsgExt( 'configure-js-search-prompt', 'parseinline' ) . '&nbsp;' . Xml::element( 'input', array( 'id' => 'configure-search-input', 'size' => 45 ) );
@@ -883,7 +883,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		$biglist_hide = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hide' ) );
 		$summary_none = Xml::encodeJsVar( wfMsg( 'configure-js-summary-none' ) );
 		$throttle_summary = Xml::encodeJsVar( wfMsg( 'configure-throttle-summary' ) );
-		
+
 		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
 		$script = array(
 			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
@@ -1087,32 +1087,33 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $type == 'rate-limits' ) { ## Some of this is stolen from assoc, since it's an assoc with an assoc.
 			$keydesc = wfMsgExt( "configure-setting-$conf-key", 'parseinline' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
-			
+
 			if ( wfEmptyMsg( "configure-setting-$conf-key", $keydesc ) )
 				$keydesc = wfMsgHtml( 'configure-desc-key' );
 			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
-				
+
 			$classes = array( 'configure-array-table', 'configure-rate-limits' );
 
 			if ( !$allowed )
 				$classes[] = 'disabled';
-			
+
 			$rows = Xml::tags( 'tr', null, Xml::tags( 'th', null, $keydesc ) . " " . Xml::tags( 'th', null, $valdesc ) )."\n";
-			
+
 			# TODO put this stuff in one place.
 			$validActions = array( 'edit', 'move', 'mailpassword', 'emailuser', 'rollback' );
 			$validGroups = array( 'anon', 'user', 'newbie', 'ip', 'subnet' );
-			
+
 			foreach( $validActions as $action ) {
 				$val = array();
 				if ( isset( $default[$action] ) )
 					$val = $default[$action];
-				
+
 				$key = Xml::tags( 'td', null, wfMsgExt( "configure-throttle-action-$action", 'parseinline' ) );
-				
+
 				## Build YET ANOTHER ASSOC TABLE ARGH!
-				$innerRows = Xml::tags( 'tr', null, Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-group', 'parseinline' ) ) . ' ' . Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-limit', 'parseinline' ) ) )."\n";
+				$innerRows = Xml::tags( 'tr', null, Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-group', 'parseinline' ) ) . ' ' .
+					Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-limit', 'parseinline' ) ) )."\n";
 				foreach( $validGroups as $type ) {
 					$limits = null;
 					if ( isset( $default[$action][$type] ) )
@@ -1121,10 +1122,10 @@ abstract class ConfigurationPage extends SpecialPage {
 						list( $count, $period ) = $limits;
 					else
 						$count = $period = 0;
-					
+
 					$id = 'wp'.$conf.'-key-'.$action.'-'.$type;
 					$left_col = Xml::tags( 'td', null, wfMsgExt( "configure-throttle-group-$type", 'parseinline' ) );
-					
+
 					if ( $allowed ) {
 						$right_col = Xml::inputLabel( wfMsg( 'configure-throttle-count' ), "$id-count", "$id-count", 15, $count ) . ' <br /> ' .
 							Xml::inputLabel( wfMsg( 'configure-throttle-period' ), "$id-period", "$id-period", 15, $period );
@@ -1134,14 +1135,14 @@ abstract class ConfigurationPage extends SpecialPage {
 						$right_col .= "\n" . Xml::hidden( "$id-count", $count, array( 'id' => "$id-count" ) ) . Xml::hidden( "$id-period", $period, array( 'id' => "$id-period" ) );
 					}
 					$right_col = Xml::tags( 'td', null, $right_col );
-					
+
 					$innerRows .= Xml::tags( 'tr', array( 'id' => $id ), $left_col . $right_col ) . "\n";
 				}
-				
+
 				$value = Xml::tags( 'td', null, Xml::tags( 'table', array( 'class' => 'configure-biglist configure-rate-limits-action' ), Xml::tags( 'tbody', null, $innerRows ) ) );
 				$rows .= Xml::tags( 'tr', null, $key.$value )."\n";
 			}
-			
+
 			return Xml::tags( 'table', array( 'class' => implode( ' ', $classes ) ), Xml::tags( 'tbody', null, $rows ) );
 		}
 		if ( $type == 'simple-dual' ) {
@@ -1319,24 +1320,24 @@ abstract class ConfigurationPage extends SpecialPage {
 		static $options = array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' );
 		static $conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool',
 			APCOND_INGROUPS => 'array', APCOND_ISIP => 'text', APCOND_IPINRANGE => 'text' );
-		
+
 		$row = '<div class="configure-biglist promotion-conds-element">';
 		$row .= wfMsgHtml( 'configure-condition-operator' ) . ' ';
 		$encConf = htmlspecialchars( $conf );
 		$encGroup = htmlspecialchars( $group );
 		$encId = 'wp'.$encConf.'-'.$encGroup;
 		$curOpt = is_array( $groupConds ) ? array_shift( $groupConds ) : '&';
-		
+
 		if ( empty($curOpt) )
 			$curOpt = '&';
-		
+
 		$extra = $allowed ? array() : array( 'disabled' => 'disabled' );
 		foreach ( $options as $desc => $opt ) {
 			$row .= Xml::radioLabel( wfMsg( 'configure-condition-operator-'.$desc ), $encId.'-opt', $desc,
 				$encId.'-opt-'.$desc, $curOpt == $opt, $extra ) . "\n";
 		}
 		$row .= "<br />\n";
-		
+
 		if ( !is_array( $groupConds ) )
 			$groupConds = array( $groupConds );
 
@@ -1413,7 +1414,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			$id = Sanitizer::escapeId( 'wp' . $conf . '-' . $group . '-' . $right );
 			if( $type == 'group-bool' )
 				$desc = User::getRightDescription( $right ) . " (" .Xml::element( 'tt', array( 'class' => 'configure-right-id' ), $right ) . ")";
-			else 
+			else
 				$desc = User::getGroupName( $right );
 			$row .= '<li>' . Xml::check( $id, $checked, $attr + array( 'id' => $id ) ) . '&nbsp;' . Xml::tags( 'label', array( 'for' => $id ), $desc ) . "</li>\n";
 		}
@@ -1430,9 +1431,9 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function buildTableRow( $conf, $params ) {
 		global $wgContLang;
-		
+
 		$rowClasses = array();
-		
+
 		if ( $params['customised'] )
 			$rowClasses[] = 'configure-customised';
 
@@ -1455,15 +1456,15 @@ abstract class ConfigurationPage extends SpecialPage {
 			$msgVal = $link;
 		else
 			$msgVal = "$msgVal ($link)";
-			
+
 		if ( $params['customised'] )
 			$msgVal = Xml::tags( 'p', null, $msgVal ).wfMsgExt( 'configure-customised', 'parse' );
 		$attribs['class'] = 'configure-left-column';
 		$td1 = Xml::tags( 'td', $attribs, $msgVal );
-		
+
 		## Only the class is customised per-cell, so we'll just redefine that.
 		$attribs['class'] = 'configure-right-column';
-	    
+
 		$td2 = Xml::tags( 'td', $attribs, $this->buildInput( $conf, $params ) );
 
 		return Xml::tags( 'tr', array( 'class' => implode( ' ', $rowClasses ) ), $td1 . $td2 ) . "\n";
@@ -1478,7 +1479,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function buildSettings( $settings, $param = array() ) {
 		wfLoadExtensionMessages( 'ConfigureSettings' );
-		
+
 		global $wgConf;
 		$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
 
@@ -1540,9 +1541,9 @@ abstract class ConfigurationPage extends SpecialPage {
 
 						$customised = !array_key_exists( $setting, $defaults );
 						$customised = $customised || ( WebConfiguration::filterVar( $defaults[$setting] ) != WebConfiguration::filterVar( $params['value'] ) );
-						
+
 						$params['customised'] = $customised;
-						
+
 						$show = $this->mCanEdit ?
 							( isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $setting ) ) :
 							( isset( $params['read'] ) ? $params['read'] : $this->userCanRead( $setting ) );

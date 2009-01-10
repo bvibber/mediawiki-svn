@@ -58,10 +58,10 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		if ( !is_array( $settings ) )
 			# Weird, should not happen too
 			return array();
-			
+
 		if ( isset( $settings['__metadata'] ) )
 			unset( $settings['__metadata'] );
-			
+
 		return $settings;
 	}
 
@@ -94,17 +94,17 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 */
 	public function saveNewSettings( $settings, $wiki, $ts = false, $reason = '' ) {
 		global $wgUser;
-		
+
 		$arch = $this->getArchiveFileName();
 		$cur = $this->getFileName();
-		
+
 		## Add meta-data
 		$settings['__metadata'] = array(
 			'user_wiki' => wfWikiID(),
 			'user_name' => $wgUser->getName(),
 			'reason' => $reason
 		);
-		
+
 		$cont = '<?php $settings = '.var_export( $settings, true ).";";
 		@file_put_contents( $arch, $cont );
 		return ( @file_put_contents( $cur, $cont ) !== false );
@@ -118,19 +118,19 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		if ( !$dir = opendir( $this->mDir ) )
 			return array();
 		$files = array();
-		
+
 		while ( ( $file = readdir( $dir ) ) !== false ) {
 			if ( preg_match( '/^conf-(\d{14})\.php$/', $file, $m ) ) {
 				## Read the data.
 				require( $this->mDir."/$file" );
-				
+
 				if( isset( $options['wiki'] ) && !isset( $settings[$options['wiki']] ) )
 					continue;
-				
+
 				if ( isset( $settings['__metadata'] ) ) {
 					$metadata = $settings['__metadata'];
-					
-					$files[$m[1]] = array( 'username' => $metadata['user_name'], 
+
+					$files[$m[1]] = array( 'username' => $metadata['user_name'],
 						'userwiki' => $metadata['user_wiki'], 'reason' => $metadata['reason'], 'timestamp' => $m[1] );
 				} else {
 					$files[$m[1]] = array( 'username' => false, 'userwiki' => false, 'reason' => false, 'timestamp' => $m[1] );
@@ -205,17 +205,17 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 */
 	public function getArchiveFileName( $ts = null ) {
 		$ts_orig = $ts;
-		
+
 		if ( $ts === null )
 			$ts = wfTimestampNow();
 
 		$file = "{$this->mDir}conf-$ts.php";
-		
+
 		## Hack hack hack
 		## Basically, if the file already exists, pretend that the setting change was made in a second's time.
 		if ( $ts_orig === null && file_exists( $file ) )
 			return $this->getArchiveFileName( $ts+1 );
-			
+
 		return $file;
 	}
 

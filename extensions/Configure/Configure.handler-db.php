@@ -207,15 +207,15 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 */
 	protected function saveSettingsForWiki( $settings, $wiki, $ts, $reason = '' ) {
 		global $wgUser;
-		
+
 		$dbw = $this->getMasterDB();
 		if ( !$ts )
 			$ts = wfTimestampNow();
-			
+
 		## Look for dupes
 		if ($this->versionExists( $ts ))
 			$this->saveSettingsForWiki( $settings, $wiki, $ts+1, $reason );
-		
+
 		$dbw->begin();
 		$dbw->insert( 'config_version',
 			array(

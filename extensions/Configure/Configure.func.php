@@ -70,9 +70,9 @@ function efConfigureSetup( $wiki = 'default' ) {
 	$wgConf->settings = $oldConf->settings;
 	$wgConf->localVHosts = $oldConf->localVHosts;
 	$wgConf->siteParamsCallback = $oldConf->siteParamsCallback;
-	
+
 	$wgConf->snapshotDefaults();
-	
+
 	global $wgConfigureHandler;
 	if ( $wgConfigureHandler == 'db' ) {
 		// Defer to after caches and database are set up.
