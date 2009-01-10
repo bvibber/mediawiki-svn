@@ -17,7 +17,7 @@ if( !defined('MEDIAWIKI') ) {
 # Extension credits
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
-	'author' => array( 'Tim Starling', 'Kwan Ting Chan', 'others' )
+	'author' => array( 'Tim Starling', 'Kwan Ting Chan', 'others' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BoardVote',
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
