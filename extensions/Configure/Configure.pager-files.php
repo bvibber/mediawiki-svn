@@ -21,7 +21,7 @@ class ConfigurationPagerFiles implements ConfigurationPager {
 		$ret = array();
 		if( $this->mWiki )
 			$ret['wiki'] = $this->mWiki;
-		return $ret;	
+		return $ret;
 	}
 
 	function getBody() {

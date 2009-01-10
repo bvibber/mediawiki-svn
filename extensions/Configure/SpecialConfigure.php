@@ -29,6 +29,8 @@ class SpecialConfigure extends ConfigurationPage {
 			if( isset( $current[$name] ) )
 				$settings[$name] = $current[$name];
 		}
+		## Also save activated extensions :)
+		$settings['__includes'] = $wgConf->getIncludedFiles( $this->mWiki );
 
 		$settings = $this->removeDefaults( $settings );
 		if ( $wgConfigureUpdateCacheEpoch )

@@ -129,10 +129,10 @@ $wgConfigureEditableSettings = array(
 	'wgSitename', 'wgLogo', 'wgContentNamespaces', 'wgMetaNamespace', 'wgMetaNamespaceTalk',
 	'wgNamespaceAliases', 'wgNamespaceProtection', 'wgNamespaceRobotPolicies', 'wgNamespacesToBeSearchedDefault',
 	'wgNamespacesToBeSearchedProject', 'wgNamespacesWithSubpages', 'wgNoFollowNsExceptions', 'wgNonincludableNamespaces',
-	'wgSitemapNamespaces', 'wgAutopromote', 'wgGroupPermissions', 'wgAddGroups', 'wgRemoveGroups', 'wgGroupsAddToSelf',
-	'wgGroupsRemoveFromSelf', 'wgArticleRobotPolicies', 'wgCapitalLinks', 'wgDefaultLanguageVariant', 'wgExtraSubtitle',
-	'wgImportSources', 'wgRateLimits', 'wgAutoConfirmAge', 'wgAutoConfirmCount', 'wgMaxSigChars', 'wgExtraNamespaces',
-	'wgLocaltimezone', 'wgExemptFromUserRobotsControl',
+	'wgSitemapNamespaces', 'wgAutopromote', 'wgGroupPermissions', 'wgImplicitGroups', 'wgAddGroups', 'wgRemoveGroups',
+	'wgGroupsAddToSelf', 'wgGroupsRemoveFromSelf', 'wgArticleRobotPolicies', 'wgCapitalLinks', 'wgDefaultLanguageVariant',
+	'wgExtraSubtitle', 'wgImportSources', 'wgRateLimits', 'wgAutoConfirmAge', 'wgAutoConfirmCount', 'wgMaxSigChars',
+	'wgExtraNamespaces', 'wgLocaltimezone', 'wgExemptFromUserRobotsControl',
 );
 
 /**

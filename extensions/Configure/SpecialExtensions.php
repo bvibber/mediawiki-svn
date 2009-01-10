@@ -31,7 +31,7 @@ class SpecialExtensions extends ConfigurationPage {
 		$new = $this->removeDefaults( $new );
 		$new['__includes'] = $this->getRequiredFiles();
 		$ok = $wgConf->saveNewSettings( $new, $this->mWiki, $reason );
-		
+
 		$result = $ok ? 'success' : 'failure';
 
 		$url = $this->getTitle()->getLocalURL( "result=$result" );
@@ -100,7 +100,7 @@ class SpecialExtensions extends ConfigurationPage {
 					if ( !$globalDone ) {
 						extract( $GLOBALS, EXTR_REFS );
 						global $wgHooks;
-						
+
 						$oldHooks = $wgHooks;
 						$globalDone = true;
 					}

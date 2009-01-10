@@ -883,7 +883,7 @@ $emptyValues = array(
 	'wgSearchForwardUrl' => null,
 	'wgExemptFromUserRobotsControl' => null,
 	'wgArticlePath' => false,
-	
+
 );
 
 /**

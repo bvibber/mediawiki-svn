@@ -43,7 +43,7 @@ class WebConfiguration extends SiteConfiguration {
 			$this->mOldSettings = $this->settings;
 		else
 			$this->settings = $this->mOldSettings;
-			
+
 		# We'll need to invert the order of keys as SiteConfiguration uses
 		# $settings[$setting][$wiki] and the extension uses $settings[$wiki][$setting]
 		foreach ( $this->mConf as $site => $settings ) {
@@ -74,8 +74,10 @@ class WebConfiguration extends SiteConfiguration {
 			}
 		}
 	}
-	
+
 	public function snapshotDefaults( /* options */ ) {
+		// FIXME: don't hardcode all this stuff here
+		static $alwaysSnapshot = array( 'wgGroupPermissions', 'wgImplicitGroups', 'wgAutopromote' );
 		$options = func_get_args();
 		$noOverride = in_array( 'no_override', $options );
 		if( !is_array( $this->mDefaults ) || in_array( 'allow_empty', $options ) ) {
@@ -83,8 +85,9 @@ class WebConfiguration extends SiteConfiguration {
 				$this->mDefaults = array();
 			}
 			$allSettings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getEditableSettings();
+			$allSettings += array_flip( $alwaysSnapshot );
 			foreach( $allSettings as $setting => $type ) {
-				if( array_key_exists( $setting, $GLOBALS ) && 
+				if( array_key_exists( $setting, $GLOBALS ) &&
 					!( $noOverride && array_key_exists( $setting, $this->mDefaults ) ) )
 				{
 					$this->mDefaults[$setting] = $GLOBALS[$setting];
@@ -100,7 +103,7 @@ class WebConfiguration extends SiteConfiguration {
 		// Include files before so that customized settings won't be overridden
 		// by the default ones
 		$this->includeFiles();
-		
+
 		$this->snapshotDefaults( 'allow_empty', 'no_override' );
 
 		list( $site, $lang ) = $this->siteFromDB( $this->mWiki );
@@ -108,9 +111,11 @@ class WebConfiguration extends SiteConfiguration {
 		$this->extractAllGlobals( $this->mWiki, $site, $rewrites );
 	}
 
-	public function getIncludedFiles() {
-		if ( isset( $this->mConf[$this->mWiki]['__includes'] ) )
-			return $this->mConf[$this->mWiki]['__includes'];
+	public function getIncludedFiles( $wiki = null ) {
+		if ( is_null( $wiki ) )
+			$wiki = $this->mWiki;
+		if ( isset( $this->mConf[$wiki]['__includes'] ) )
+			return $this->mConf[$wiki]['__includes'];
 		else
 			return array();
 	}
@@ -185,13 +190,13 @@ class WebConfiguration extends SiteConfiguration {
 	public function getWikisInVersion( $ts ) {
 		return $this->getHandler()->getWikisInVersion( $ts );
 	}
-	
+
 	/** Recursive doohicky for normalising variables so we can compare them. */
 	public static function filterVar( $var ) {
 		if ( empty( $var ) && !$var ) {
 			return null;
 		}
-		
+
 		if ( is_array( $var ) ) {
 			return array_filter( array_map( array( __CLASS__, 'filterVar' ), $var ) );
 		}
@@ -237,7 +242,7 @@ class WebConfiguration extends SiteConfiguration {
 				$this->initialise( false );
 			}
 		}
-		
+
 		// Hmm, a better solution would be nice!
 		$savedSettings = $this->settings;
 		$this->settings = $this->mOldSettings;

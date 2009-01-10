@@ -187,12 +187,12 @@ class WebExtension {
 	}
 
   	/**
- 	 * Whether this extension 
+ 	 * Whether this extension
  	 */
  	public function useVariable(){
  		return !is_null( $this->mExtVar );
  	}
- 
+
  	/**
  	 * Get the variable for this extension
  	 */

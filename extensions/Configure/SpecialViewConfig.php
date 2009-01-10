@@ -32,11 +32,11 @@ class SpecialViewConfig extends ConfigurationPage {
 			$versions = $wgConf->listArchiveVersions();
 			if ( in_array( $version, $versions ) || $version == 'default' ) {
 				$conf = $wgConf->getOldSettings( $version );
-				
+
 				if ($version == 'default') { ## Yucky special case.
 					$conf[$this->mWiki] = $conf['default'];
 				}
-				
+
 				if ( $this->isUserAllowedAll() ) {
 					$wiki = $wgRequest->getVal( 'wiki', $wgConf->getWiki() );
 				} else {
@@ -176,7 +176,7 @@ class SpecialViewConfig extends ConfigurationPage {
 
 		extract( $this->formatConf );
 		$time = $wgLang->timeAndDate( $ts );
-		
+
 		## Make user link...
 		$userLink = '';
 		if (!$arr['user_wiki'] && !$arr['user_name'] ) {
@@ -254,14 +254,14 @@ class SpecialViewConfig extends ConfigurationPage {
 				Xml::element( 'input', array_merge(
 					array( 'type' => 'radio', 'name' => 'version', 'value' => $ts ),
 					$versionCheck ) );
-			
+
 			$actions[] = $skin->link( $this->getTitle(), wfMsgHtml( 'configure-viewconfig-default-diff' ), array(), array( 'version' => $ts, 'diff' => 'default' ) );
 		} else {
 			$buttons = '';
 		}
-		
+
 		$comment = $arr['reason'] ? $skin->commentBlock( $arr['reason'] ) : '';
-		
+
 		$action = implode( ', ', $actions );
 		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $buttons, $time, $userLink, $action, $comment ) ) )."\n";
 	}
@@ -281,7 +281,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		$form .= Xml::radioLabel( wfMsg( 'configure-select-wiki-view-all' ), 'view', 'all', 'wiki-all', $all );
 		$form .= "<br />\n";
 		$form .= Xml::radioLabel( wfMsg( 'configure-select-wiki-view-specific' ), 'view', 'specific', 'wiki-specific', !$all ) . ' ';
-		
+
 		if ( is_array( $wgConfigureWikis ) ) {
 			$selector = new XmlSelect( 'wiki', 'wiki', $this->mWiki );
 			foreach( $wgConfigureWikis as $wiki ) {
@@ -291,7 +291,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		} else {
 			$form .= Xml::input( 'wiki', false, $this->mWiki )."<br/>";
 		}
-		
+
 		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );
 		$form .= '</form></fieldset>';
 		return $form;

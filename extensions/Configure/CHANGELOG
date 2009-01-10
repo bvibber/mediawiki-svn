@@ -5,6 +5,10 @@ Localisation updates are done on betawiki and aren't listed here.
   * Added support for Redirect
   * Fixed Special:Extensions: was sometimes throwing an error when saving the
     configuration
+  * (bug 16953) Fixed error on Special:Configure and Special:ViewConfig
+  * Added $wgImplicitGroups to the default list of editable settings
+  * Enabled extension are no more resetted when after an edit on
+    Special:Configure
 
 0.11.6 - 7 January 2009
   * Added support for OpenID, NewUserMessage and ReplaceText extensions.
