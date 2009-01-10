@@ -95,10 +95,12 @@ class ConfigurationSettings {
 			$ret = $this->settings;
 		}
 		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
-			static $extArr;
-			if( !isset($extArr) ) {
+			static $extArr = null;
+			if( is_null( $extArr ) ) {
 				$extArr = array();
 				foreach( $this->getAllExtensionsObjects() as $ext ) {
+					if( !$ext->isInstalled() )
+						continue;
  					$extSettings = $ext->getSettings();
  					if( $ext->useVariable() )
  						$extSettings[$ext->getVariable()] = 'bool';
@@ -244,7 +246,7 @@ class ConfigurationSettings {
 		}
 		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
 			foreach ( $this->getAllExtensionsObjects() as $ext ) {
-				$list  += $ext->getArrayDefs();
+				$list += $ext->getArrayDefs();
 			}
 		}
 		return $this->cache['array'] = $list;
