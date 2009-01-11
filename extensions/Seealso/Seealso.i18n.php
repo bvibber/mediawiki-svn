@@ -116,6 +116,14 @@ $messages['eu'] = array(
 	'seealso' => 'Ikus, gainera',
 );
 
+/** Persian (فارسی)
+ * @author Vahid
+ */
+$messages['fa'] = array(
+	'seealso' => 'جستارهای وابسته',
+	'seealso-desc' => 'بومی‌سازی سر صفحه «جستارهای وابسته»  با استفاده از برچسب <code><nowiki><seealso></nowiki></code>',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

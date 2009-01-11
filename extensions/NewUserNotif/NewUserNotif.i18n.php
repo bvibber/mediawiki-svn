@@ -513,9 +513,12 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Srhat
  */
 $messages['tr'] = array(
+	'newusernotifsubj' => '$1 için yeni kullanıcı bildirisi',
+	'newusernotif-desc' => 'Kullanıcı hesapları oluşturulduğunda e-posta bildirisi yolla',
 	'newusernotifbody' => "Merhaba $1
 
 Yeni kullanıcı hesabı, $2,$3 üzerinde $4'te oluşturuldu.",

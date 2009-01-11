@@ -168,11 +168,27 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'vote' => 'Галасаваньне',
+	'vote-desc' => 'Надае магчымасьць простага галасаваньня',
+	'vote-header' => "Вы можаце галасаваць за '''Вышэйшага Ўладара Сьвету''' тут!",
+	'vote-current' => "Ваш цяперашні голас адданы за '''$1'''.",
+	'vote-legend' => 'Прагаласаваць альбо зьмяніць голас',
 	'vote-caption' => 'Ваш выбар:',
+	'vote-choices' => 'джокер|Джокер
+пінгвін|Пінгвін
+загадка|Загадка',
+	'vote-submit' => 'Галасаваць',
 	'vote-registered' => 'Ваш голас быў залічаны.',
 	'vote-view-results' => 'Паказаць вынікі',
+	'vote-results' => 'Вынікі галасаваньня',
+	'vote-results-choice' => 'Выбар',
+	'vote-results-count' => 'Колькасьць',
+	'vote-results-none' => 'Няма галасоў адданых за гэты час.',
+	'vote-login' => 'Каб галасаваць Вам трэба $1.',
+	'vote-login-link' => 'увайсьці у сыстэму',
 	'vote-invalid-choice' => 'Вы павінны выбраць адзін з прапанаваных варыянтаў.',
 );
 

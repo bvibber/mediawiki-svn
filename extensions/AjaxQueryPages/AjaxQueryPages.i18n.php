@@ -116,6 +116,13 @@ $messages['eu'] = array(
 	'ajax-qp-desc' => '[[Berezi:Shortpages|{{int:shortpages}}]] bezalako orrialdeak bilatzeko AJAX pixka bat gehitzen du',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'ajax-qp-desc' => 'افزدون اندکی AJAX به صفحه‌های جستجو نظیر [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */

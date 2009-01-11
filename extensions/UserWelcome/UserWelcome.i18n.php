@@ -91,6 +91,27 @@ $messages['arz'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|صديق|صديق}} جديد',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'userwelcome-desc' => 'Дадае тэг <tt>&lt;welcomeUser&gt;</tt>, каб паказваць сацыяльную інфармацыю пра удзельніка іншым зарэгістраваным удзельнікам',
+	'mp-userlevels-link' => 'Узроўні ўдзельніка',
+	'mp-welcome-upload' => 'Загрузіць',
+	'mp-welcome-edit' => 'Рэдагаваць',
+	'mp-welcome-points' => '$1 {{PLURAL:$1|пункт|пункты|пунктаў}}',
+	'mp-welcome-needed-points' => 'Каб узьняцца да <b><a href="$1">$2</a></b> неабходна здабыць яшчэ <i>$3</i>  {{PLURAL:$3|пункт|пункты|пунктаў}}!',
+	'mp-welcome-logged-in' => 'Прывітаньне $1',
+	'mp-requests-title' => 'Запыты',
+	'mp-requests-message' => 'Вы атрымалі наступныя запыты.',
+	'mp-request-new-message' => 'новае паведамленьне',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|новая ўзнагарода|новыя ўзнагароды|новых узнагародаў}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|новы падарунак|новыя падарункі|новых падарункаў}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|новы вораг|новыя ворагі|новых ворагаў}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|новы сябар|новыя сябры|новых сябраў}}',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -474,7 +495,7 @@ $messages['ksh'] = array(
 	'mp-userlevels-link' => 'Ebene för Metmaacher',
 	'mp-welcome-upload' => 'Huhlaade',
 	'mp-welcome-edit' => 'Ändere',
-	'mp-welcome-points' => '$1 Pungkte',
+	'mp-welcome-points' => '{{PLURAL:$1|Eine Pungk|$1 Pungkte|nix}}',
 	'mp-welcome-needed-points' => 'Öm föraanzekumme op <b><a href="$1">$2</a></b>, donn {{PLURAL:$3|<i>eine</i> Pungk mieh|<i>$3</i> zosätzlijje Pungkte|<i>kein</i> Pungkte dobei}} sammele!',
 	'mp-welcome-logged-in' => 'Daach $1,',
 	'mp-requests-title' => 'Wönsch und Aanfroore',

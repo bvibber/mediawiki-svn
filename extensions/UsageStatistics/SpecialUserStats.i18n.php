@@ -777,6 +777,15 @@ $messages['is'] = array(
 	'usagestatisticsintervalmonth' => 'Mánuður',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'usagestatisticsstart' => 'Data di inizio',
+	'usagestatisticsend' => 'Data di fine',
+	'usagestatisticsnoend' => 'Specificare una data di fine',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

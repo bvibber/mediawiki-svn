@@ -210,6 +210,38 @@ $messages['de-formal'] = array(
 	'deletebatch-link-back' => 'Sie können zur Erweiterung zurückgehen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'deletebatch' => 'Někotare boki wulašowaś',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Někotare boki wulašowaś]]',
+	'deletebatch-button' => 'Lašowaś',
+	'deletebatch-help' => 'Wulašuj někotare boki. Móžoš pak jadnotliwe wulašowanje pśewjasć pak boki z dataje wulašowaś.
+Wubjeŕ wužywarja, kótaryž se pokažo w protokolach wulašowanjow.
+Nagrata dataja by měła mě boka a opcionelnu pśicynu wopśimjeś, kótarejž stej pśez znamuško "|" w  kuždej smužce wótźělonej.',
+	'deletebatch-caption' => 'Lisćina bokow',
+	'deletebatch-title' => 'Někotare boki wulašowaś',
+	'deletebatch-link-back' => 'Móžoš se k rozšyrjenjeju wróśiś',
+	'deletebatch-as' => 'Skript wuwjasć ako',
+	'deletebatch-both-modes' => 'Pšosym wubjeŕ pak jaden pódany boka pak danu lisćinu bokow.',
+	'deletebatch-or' => '<b>abo</b>',
+	'deletebatch-page' => 'Boki, kótarež maju se wulašowaś',
+	'deletebatch-reason' => 'Pśicyna za wulašowanje',
+	'deletebatch-processing' => 'boki $1 se lašuju',
+	'deletebatch-from-file' => 'z lisćiny datajow',
+	'deletebatch-from-form' => 'z formulara',
+	'deletebatch-success-subtitle' => 'za $1',
+	'deletebatch-omitting-nonexistant' => 'Njeeksistujucy bok $1 se wuwóstaja.',
+	'deletebatch-omitting-invalid' => 'Njepłaśiwy bok $1 se wuwóstaja.',
+	'deletebatch-file-bad-format' => 'Dataja by měła lutny tekst wopśimjeś',
+	'deletebatch-file-missing' => 'Jo njemóžno danu dataju cytaś',
+	'deletebatch-select-script' => 'skript za wulašowanje bokow',
+	'deletebatch-select-yourself' => 'ty',
+	'deletebatch-no-page' => 'Pšosym pódaj nanejmjenjej jaden bok za wulašowanje ABO wujeŕ dataju, kótaraž wopśimujo lisćinu bokow.',
+	'right-deletebatch' => 'Někotare boki wulašowaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -427,6 +459,37 @@ Postavljena datoteka treba sadržavati nazive stranica, a dodatno razlog odvojen
 	'deletebatch-select-script' => 'skripta za brisanje',
 	'deletebatch-select-yourself' => 'vi',
 	'deletebatch-no-page' => 'Molimo vas odredite barem jednu stranicu za brisanje ILI odaberite datoteku koja sadrži popis.',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'deletebatch' => 'Wjacore strony wušmórnyć',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Wjacore strony wušmórnyć]]',
+	'deletebatch-button' => 'Wušmórnyć',
+	'deletebatch-help' => 'Wušmórń wjacore strony. Móžeš pak jednotliwe wušmórnjenje přewjesć pak strony z dataje wušmórnyc. Wubjer wužiwarja, kotryž so w protokolach wušmórnjenjow pokaza.
+Nahrata dataja měła mjeno strony a opcionalnu přičinu wobsahować, kotrejž so přez znamješko "|" na kóždej lince wotdźěletej.',
+	'deletebatch-caption' => 'Lisćina stronow',
+	'deletebatch-title' => 'Wjacore strony wušmórnyć',
+	'deletebatch-link-back' => 'Móžeš so k rozšěrjenju wróćić',
+	'deletebatch-as' => 'Skript wuwjesć jako',
+	'deletebatch-both-modes' => 'Prošu wubjer pak jednu podatu stronu abo datu lisćinu stronow.',
+	'deletebatch-or' => '<b>abo</b>',
+	'deletebatch-page' => 'Strony, kotrež maja so wušmórnyć',
+	'deletebatch-reason' => 'Přičina za wušmórnjenje',
+	'deletebatch-processing' => 'strony $1 so šmórnu',
+	'deletebatch-from-file' => 'z datajoweje lisćiny',
+	'deletebatch-from-form' => 'z formulara',
+	'deletebatch-success-subtitle' => 'za $1',
+	'deletebatch-omitting-nonexistant' => 'Njeeksistowaca strona $1 so wuwostaja.',
+	'deletebatch-omitting-invalid' => 'Njepłaćiwa strona $1 so wuwostaja.',
+	'deletebatch-file-bad-format' => 'Dataja měła z luteho teksta wobstać.',
+	'deletebatch-file-missing' => 'Je njemóžno datu dataju čitać',
+	'deletebatch-select-script' => 'skript za wušmórnjenje strony',
+	'deletebatch-select-yourself' => 'ty',
+	'deletebatch-no-page' => 'Prošu podaj znajmjeńša jednun stronu abo wušmórń ABO wubjer dataju, kotraž lisćinu stronow wobsahuje.',
+	'right-deletebatch' => 'Wjacore strony wušmórnyć',
 );
 
 /** Hungarian (Magyar)

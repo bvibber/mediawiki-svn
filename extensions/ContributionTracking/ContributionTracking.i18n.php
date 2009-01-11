@@ -169,9 +169,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Remember the dot
  */
 $messages['es'] = array(
+	'contrib-tracking-error' => 'Error',
+	'contrib-tracking-continue' => 'Si usted no es automáticamente redirigido, haga click en el botón para completar su donación en Paypal.',
 	'contrib-tracking-button' => 'Continuar',
 );
 

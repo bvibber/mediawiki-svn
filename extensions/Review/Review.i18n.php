@@ -877,8 +877,13 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'review-desc' => 'Dat widder operstandene [[Special:Review|Nohlesse]].',
+	'review_sidebar_explanation' => 'Dat lenkeste Käßje bedügk emmer „kein Meinung“.',
+	'review_error' => 'Öhnzjät es verkiehrt!',
 	'review_total_statistics' => 'Zosamme',
+	'review_statistic_cell' => 'Dä Dorschnett: $1 vun $2<br />($4 Metmaacher, $5 Namloose)',
+	'review_version_statistic_cell' => '$1 vun $2',
 	'review_user_details_link' => '(Einzelheite)',
+	'review_no_opinion' => 'Kein Meinung',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

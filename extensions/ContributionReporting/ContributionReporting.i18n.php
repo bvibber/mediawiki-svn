@@ -82,6 +82,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'contributionreporting-desc' => 'Description for the ContributionReporting Extension. Shown in [[Special:Version]]. Do not translate or change tag names.',
+	'contrib-hist-header' => 'Title of Special:ContributionHistory. See http://wikimediafoundation.org/wiki/Special:ContributionHistory for example.',
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
@@ -623,30 +624,49 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
+	'contributiontotal' => 'Contribución total',
 	'contributionhistory' => 'Historial de contribuciones',
 	'contrib-hist-name' => 'Nombre',
 	'contrib-hist-date' => 'Fecha y hora',
 	'contrib-hist-amount' => 'Cantidad',
+	'contrib-hist-next' => 'Primeras donaciones',
+	'contrib-hist-previous' => 'Donaciones recientes',
 	'contrib-hist-anonymous' => 'Anónimo',
 	'contributionstatistics' => 'Estadísticas de contribución',
 	'contribstats-desc' => 'Muestra estadísticas de contribuciones hechas a la Fundación Wikimedia',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Total por hoy|Totales diarios enn los últimos $1 días}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Total por este mes|Totales mensuales en los últimos $1 meses}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Total por $1 mes|totales mensuales para $1 meses}}',
 	'contribstats-day' => 'Día',
 	'contribstats-month' => 'Mes',
 	'contribstats-currency' => 'Moneda',
 	'contribstats-amount' => 'Cantidad (USD)',
 	'contribstats-contributions' => 'Contribuciones',
+	'contribstats-total' => 'Total (USD)',
 	'contribstats-avg' => 'Promedio (USD)',
 	'contribstats-max' => 'Máximo (USD)',
+	'contribstats-percentage-ytd' => 'Porcentaje (YTD)',
+	'contribstats-total-ytd' => 'Total (YTD)',
 	'contribstats-value-exactly' => 'Exactamente $1',
+	'contribstats-value-under' => 'Debajo de $1',
 	'contribstats-value-from' => 'De $1 a $2',
+	'contribstats-value-over' => 'Sobre $1',
 	'fundraiserstats-date' => 'Fecha',
 	'fundraiserstats-day' => 'Día $1 de $2',
 	'fundraiserstats-contributions' => 'Contribuciones',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Promedio (USD)',
+	'fundraiserstats-max' => 'Máximo (USD)',
+	'fundraiserstats-tab-totals' => 'Totales (USD)',
+	'fundraiserstats-tab-contributions' => 'Número de contribuciones',
+	'fundraiserstats-tab-averages' => 'Promedios (USD)',
+	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 );
 
 /** Persian (فارسی)
@@ -1160,17 +1180,47 @@ $messages['ia'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'contributionreporting-desc' => 'Aggiornamento in tempo reale sulla raccolta fondi Wikimedia',
+	'contributiontotal' => 'Totale contributi',
+	'contributionhistory' => 'Cronologia dei contributi',
+	'contrib-hist-header' => 'Commenti in tempo reale dei donatori da tutto il mondo',
 	'contrib-hist-name' => 'Nome',
+	'contrib-hist-date' => 'Ora e data',
+	'contrib-hist-amount' => 'Somma',
+	'contrib-hist-next' => 'Donazioni precedenti',
+	'contrib-hist-previous' => 'Donazioni successive',
+	'contrib-hist-anonymous' => 'Anonimo',
 	'contributionstatistics' => 'Statistiche dei contributi',
 	'contribstats-desc' => 'Mostra le statistiche dei contributi dati alla WikiMedia Foundation',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Totale per oggi|Totale giornaliero per gli scorsi $1 giorni}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Totale per questo mese|Totale mensile per gli scorsi $1 mesi}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Totale per $1 mese|Totale mensile per $1 mesi}}',
 	'contribstats-day' => 'Giorno',
 	'contribstats-month' => 'Mese',
+	'contribstats-currency' => 'Valuta',
+	'contribstats-amount' => 'Somma (USD)',
 	'contribstats-contributions' => 'Contributi',
 	'contribstats-total' => 'Totale (USD)',
 	'contribstats-avg' => 'Media (USD)',
 	'contribstats-max' => 'Massimo (USD)',
 	'contribstats-percentage-ytd' => 'Percentuale (YTD)',
 	'contribstats-total-ytd' => 'Totale (YTD)',
+	'contribstats-value-exactly' => 'Esattamente $1',
+	'contribstats-value-under' => 'Meno di $1',
+	'contribstats-value-from' => 'Fra $1 - $2',
+	'contribstats-value-over' => 'Più di $1',
+	'contribstats-percentage' => '$1%',
+	'fundraiserstatistics' => 'Statistiche della raccolta fondi',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Giorno $1 di $2',
+	'fundraiserstats-contributions' => 'Contributi',
+	'fundraiserstats-total' => 'Totale (USD)',
+	'fundraiserstats-avg' => 'Media (USD)',
+	'fundraiserstats-max' => 'Massimo (USD)',
+	'fundraiserstats-tab-totals' => 'Totali (USD)',
+	'fundraiserstats-tab-contributions' => 'Numero di contributi',
+	'fundraiserstats-tab-averages' => 'Medie (USD)',
+	'fundraiserstats-tab-maximums' => 'Massimi (USD)',
 );
 
 /** Japanese (日本語)

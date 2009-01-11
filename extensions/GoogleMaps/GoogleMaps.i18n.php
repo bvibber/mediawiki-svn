@@ -763,6 +763,79 @@ $wgGoogleMapsMessages['diq'] = array(
 	'gm-no-zoom-control' => 'çino',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$wgGoogleMapsMessages['dsb'] = array(
+	'gm-incompatible-browser' => 'Aby wiźeł kórtu, kótaraž ma se how zwobrazniś, trjebaš kompatibelny webwobglědowak.',
+	'gm-incompatible-browser-link' => 'Klikni sem, aby wiźeł lisćinu kompatibelnych wobglědowakow.',
+	'gm-no-editor' => 'Bóžko twój wobglědowak njepódpěra funkcije interaktiwnego napóranja kórtow. Ześěgni aktualnu wersiju <a href="http://www.microsoft.com/ie">Internet Explorera</a> (Windows) abo <a href="http://www.mozilla.org/products/firefox">Firefoxa</a> (Windows, Mac a Linux).',
+	'gm-balloon-title' => 'Titel:',
+	'gm-balloon-link-article' => 'Wótkaz k toś tomu bokoju (opcionalny):',
+	'gm-make-marker' => 'Wopisanje (wikijowa syntaksa jo w pórěźe):',
+	'gm-remove' => 'wótwónoźeś',
+	'gm-caption' => 'Wopisanje',
+	'gm-tab-title' => 'Titel rejtarka',
+	'gm-tab' => 'Rejtark',
+	'gm-start-path' => 'sćažku zachopiś',
+	'gm-trace-area' => 'Wobcerk wuslěźiś',
+	'gm-save-point' => 'składowaś &amp; zacyniś',
+	'gm-load-map-from-article' => 'Kórtu zacytaś z boka:',
+	'gm-no-maps' => 'Toś ten bok njewopśimujo kórty.',
+	'gm-refresh-list' => 'Lisćinu wobnowiś',
+	'gm-load-map' => 'Kórtu zacytaś',
+	'gm-clip-result' => 'Ku korśe pśidaś',
+	'gm-no-results' => 'Wódaj, žedne wuslědki',
+	'gm-searching' => 'pyta se...',
+	'gm-map' => 'Kórta',
+	'gm-note' => 'Glědaj: Kopěruj nejpjerwjej, což coš do boka (dołojce) składowaś, pjerwjej až kliknjoš na "Kórtu zacytaś", "Składowaś" abo "Pśeglěd"!',
+	'gm-instructions' => 'Dołojce jo wikijowa syntaksa za napóranje kórty.',
+	'gm-are-you-sure' => 'Coš napšawdu?',
+	'gm-clear-all-points' => 'Wše dypki wótpóraś',
+	'gm-refresh-points' => 'Dypki wobnowiś',
+	'gm-width' => 'Šyrokosć',
+	'gm-height' => 'Wusokosć',
+	'gm-scale-control' => 'Měritko',
+	'gm-overview-control' => 'Pśeglěd',
+	'gm-selector-control' => 'Funkcija k wubraśu kórty/satelita',
+	'gm-zoom-control' => 'Nawigacija',
+	'gm-large' => 'Wjeliki',
+	'gm-medium' => 'Srědny',
+	'gm-small' => 'Mały',
+	'gm-no-zoom-control' => 'Žeden',
+	'gm-yes' => 'Jo',
+	'gm-no' => 'Ně',
+	'gm-search-preface' => 'Klikni na kórtu, aby pśidał dypk abo skóc k městoju, krajoju, adresy abo pśedewześoju:',
+	'gm-geocode-preface' => 'Klikni na kórtu, aby pśidał kórtu abo skóc k městoju, krajoju abo adresy:',
+	'gm-no-search-preface' => 'Klikni na kórtu, aby pśidał dypk.',
+	'gm-search' => 'Pytaś',
+	'gm-clear-search' => 'pytańske wuslědki lašowaś',
+	'gm-meters' => 'metry',
+	'gm-miles' => 'mile',
+	'gm-editing-path' => 'Klikni na kórtu, aby pśidał sćažce dalšne dypki.',
+	'gm-save-path' => 'Składowaś',
+	'gm-edit-path' => 'dypki pśidaś',
+	'gm-show-path' => 'dypki pokazaś',
+	'gm-color-path' => 'barwu změniś',
+	'gm-color-fill' => 'połnjecu barwu změniś',
+	'gm-add-fill' => 'płoninu wupołniś',
+	'gm-remove-fill' => 'połnjenje wótpóraś',
+	'gm-fill-color' => 'Połnjeca barwa',
+	'gm-line-color' => 'Linijowa barwa',
+	'gm-opacity' => 'Opaknosć',
+	'gm-line-width' => 'Šyrokosć',
+	'gm-make-map' => 'Kórtu napóraś',
+	'gm-hide-map' => 'Kórtu schowaś',
+	'gm-back' => 'slědk',
+	'gm-kml-include' => 'Eksterny KML/GeoRSS:',
+	'gm-kml-include-link' => 'kórśe pśidaś',
+	'gm-kml-loading' => 'zacytujo se...',
+	'gm-kml-export' => 'Toś tu kórtu do KML eksportěrowaś',
+	'gm-earth' => 'Zemja',
+	'gm-moon' => 'Mjasec',
+	'gm-mars' => 'Mars',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -4380,6 +4453,7 @@ $wgGoogleMapsMessages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author <anonymous>
+ * @author Wmr89502270
  */
 $wgGoogleMapsMessages['zh-hans'] = array(
 	'gm-incompatible-browser' => '您必须使用相容的网页浏览器以利设查看所设置于此处的地图',
@@ -4393,6 +4467,7 @@ $wgGoogleMapsMessages['zh-hans'] = array(
 	'gm-tab-title' => '选项卡标题名称',
 	'gm-tab' => '选项卡',
 	'gm-start-path' => '开始路径',
+	'gm-trace-area' => '记录一个区域',
 	'gm-save-point' => '保存 &amp; 关闭',
 	'gm-load-map-from-article' => '从文章中读取已经存在的地图文件:',
 	'gm-no-maps' => '在本文章中找不到存在的地图.',

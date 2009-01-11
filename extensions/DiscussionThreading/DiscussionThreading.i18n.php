@@ -413,3 +413,14 @@ $messages['vi'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Bắt đầu luồng mới',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'discussionthreading-desc' => 'Givön bespikapades mögi ad jafön fadis',
+	'discussionthreading-replysection' => 'gepenön',
+	'discussionthreading-replysectionhint' => 'Gepenön keblünote at',
+	'discussionthreading-threadnewsection' => 'nulik',
+	'discussionthreading-threadnewsectionhint' => 'Primön fadi nulik',
+);
+

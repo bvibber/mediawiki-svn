@@ -305,6 +305,25 @@ $3',
 	'latexdoc-desc' => 'Modification collaborative de documentos LaTeX',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'latexdoc_no_text' => 'ページには文章がなく、DVIを生成できません',
+	'latexdoc_cant_create_dir' => '一時ディレクトリ $1 を作成できません',
+	'latexdoc_cant_write' => 'ファイル $1 へ書き込めません',
+	'latexdoc_error' => 'LaTeX エラー
+
+コマンド: $1
+
+出力: $2
+
+$3',
+	'latexdoc_get_dvi' => 'DVIを取得',
+	'latexdoc_get_pdf' => 'PDFを取得',
+	'latexdoc-desc' => 'LaTeX 文書の共同編集',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

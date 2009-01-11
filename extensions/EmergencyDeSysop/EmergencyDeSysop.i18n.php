@@ -58,11 +58,15 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'emergencydesysop-reason' => 'سبب الحذف',
 	'emergencydesysop-submit' => 'تنفيذ',
+	'emergencydesysop-incomplete' => 'كل الفراغات اللى في الاستماره لازم تتملى. لو سمحت تحاول تانى',
+	'emergencydesysop-notasysop' => 'اليوزر المستهدف مش عضو في مجموعة السيسوبات',
 	'emergencydesysop-nogroups' => 'لا يوجد',
+	'emergencydesysop-noright' => 'انت ما عندكش التصاريح اللازمه عشان تدخل الصفحه دى',
 );
 
 /** Bosnian (Bosanski)

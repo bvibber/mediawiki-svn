@@ -1495,6 +1495,26 @@ $messages['dsb'] = array(
 	'boardvote_entry' => '* [[Special:BoardVote/vote|Głosowaś]]
 * [[Special:BoardVote/list|Lisćina doněntejšnych głosow]]
 * [[Special:BoardVote/dump|Skoděrowane wólbne zapiski]]',
+	'boardvote_entered' => 'Źěkujomy se, twójo wótedaśe głosa jo se zregistrěrowało.
+
+Jolic coš, móžoš slědujuce drobnostki zapisaś. Twój wótgłosowański zapis jo:
+
+<pre>$1</pre>
+
+Jo se skoděrował ze zjawnym klucom wólbnych administratorow:
+
+<pre>$2</pre>
+
+Z togo slědujuca skoděrowana wersija slědujo. Buźo se [[Special:BoardVote/dump|zjawnje zwobraznjowaś]].
+
+<pre>$3</pre>
+
+[[Special:BoardVote/entry|Slědk]]',
+	'boardvote_invalidentered' => '<p><strong>Zmólka</strong>: preferenca kandidata musy se jano pśez pozitiwnu cełu licbu zwurazniś (1, 2, 3, ....) abo prozna byś.</p>',
+	'boardvote_notloggedin' => 'Njejsy se pśizjawił.
+Aby wótgłosował, musyš konto z nanejmjenje $1 {{PLURAL:$1|změnu|změnoma|změnami|změnami}} do $2  cyniś a z nanejmjenjej $3 {{PLURAL:$3|změnu|změnoma|změnami|změnami}} mjazy $4 a $5.',
+	'boardvote_notqualified' => 'Njamaš pšawo na toś tej wólbje wótgłosowaś.
+Musyš nanejmjenjej $1 {{PLURAL:$1|změnu|změnje|změny|změnow}} do $2 cyniś a nanejmjenjej $3 {{PLURAL:$3|změnu|změnje|změny|změnow}} mjazy $4 a $5.',
 	'boardvote_novotes' => 'Až doněnta njejo nichten wótgłosował.',
 	'boardvote_time' => 'Cas',
 	'boardvote_user' => 'Wužywaŕ',
@@ -1502,10 +1522,12 @@ $messages['dsb'] = array(
 	'boardvote_days' => 'Dny',
 	'boardvote_ip' => 'IP',
 	'boardvote_ua' => 'Wobznamjenje wobglědowaka',
+	'boardvote_listintro' => '<p>To jo lisćina wšych głosow, kótarež su se dotychměst zregistrěrowali. $1 za skoděrowane daty.</p>',
 	'boardvote_dumplink' => 'How kliknuś',
 	'boardvote_submit' => 'W pórědku',
 	'boardvote_strike' => 'Wušmarnuś',
 	'boardvote_unstrike' => 'Wušmarnjenje slědk wześ',
+	'boardvote_needadmin' => 'Jano wólbne administratory mógu toś tu akciju pśewjasć.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Wólby do rady administratorow Wikimedije</a>: Wótgłosowanje jo až do 22. junija móžno.',
 	'boardvote_notstarted' => 'Wótgłosowanje hyšći njejo se zachopiło',
 	'boardvote_closed' => 'Wólby su něnto skóńcone, glědaj [http://meta.wikimedia.org/wiki/Board_elections/2008/Results wuslědki].',
@@ -1513,6 +1535,10 @@ $messages['dsb'] = array(
 	'group-boardvote' => 'Wólbne administratory',
 	'group-boardvote-member' => 'Wólbny administrator',
 	'grouppage-boardvote' => '{{ns:project}}:Wólbny administrator',
+	'boardvote_blocked' => 'Sy na swójom zregistrěrowanem wikiju blokěrowany.
+Blokěrowane wužywarje njesměju wótgłosowaś.',
+	'boardvote_bot' => 'Sy na swójom zregistrěrowanem wikiju ako bot wobznamjenjony.
+Botowe konta njesměju wótgłosowaś.',
 	'boardvote_welcome' => "Witaj '''$1'''!",
 	'go_to_board_vote' => 'Wólby administratorow Wikimedije 2008',
 	'right-boardvote' => 'Wólby administrowaś',
@@ -6728,6 +6754,7 @@ Is palisedon fomam pejüföl. [[Special:BoardVote/dump|Pojonon valikanes]].
 <pre>$3</pre>
 
 [[Special:BoardVote/entry|Geikön]]',
+	'boardvote_invalidentered' => '<p><strong>Pöl</strong>: steifädanibuükams kanons penotodon te me lölanums positik (1, 2, 3, ...), voto muton vagön.</p>',
 	'boardvote_nosession' => 'Gebanadientif olik no kanon pafümükön. Nunädolös oli pö vük olik, e logolös eli <nowiki>[[Special:BoardVote]]</nowiki>. Mutol gebön kali labü keblünots pu $1 bü $2, e kela redakam balid äjenon bü $3.',
 	'boardvote_notloggedin' => 'No enunädol oli.
 Ad vögodön, mutol gebön kali labü {{PLURAL:$1|keblünot|keblünots}} pu $1 bü $2, e kela redakam balid äjenon bü $3.',
@@ -6754,6 +6781,8 @@ Vögodam padälon jü yunul 22',
 	'group-boardvote-member' => 'guvan Daväla Kipedalefa',
 	'grouppage-boardvote' => '{{ns:project}}:guvan Daväla Kipedalefa',
 	'boardvote_blocked' => 'Liedo peblokol in vük olik. Gebans pebloköl no dalons vögodön.',
+	'boardvote_bot' => 'Peregistarol as bot in vük olik.
+Kals botas no dalons vögodön.',
 	'boardvote_welcome' => "Benokömö, o '''$1'''!",
 	'go_to_board_vote' => 'Daväl Kipedalefa ela Wikimedia (yelü 2008)',
 	'boardvote_redirecting' => 'Ad gretükön sefi e dulogamovi, vögodam pajenükon medü dünanünöm plödik nesekidiko pekontrolöl.
@@ -6761,6 +6790,7 @@ Vögodam padälon jü yunul 22',
 Olüodükol lü dünanünöm plödik at pos sekuns 20. [$1 Klikolös is] ad golön usio anu.
 
 Sefanüned tefü doküm no pedispenöl ba pojonon.',
+	'right-boardvote' => 'Guvön daväli',
 );
 
 /** Walloon (Walon) */

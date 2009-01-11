@@ -129,10 +129,11 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Meisam
  */
 $messages['fa'] = array(
-	'usercontactlink-baduser' => 'نام‌کاربری نادرست',
+	'usercontactlink-baduser' => 'نام کاربری نادرست',
 );
 
 /** Finnish (Suomi)

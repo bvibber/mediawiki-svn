@@ -68,6 +68,25 @@ $2',
 	'userrightsnotif-desc' => 'يبعت إيميل لليوزرز على تغييرات الحقوق',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'userrightsnotifysubject' => 'Зьменены ўдзел у групах $1',
+	'userrightsnotifybody' => 'Вітаем, $1.
+
+Гэта паведамленьне інфармуе Вас пра тое, што Ваш удзел у групах $2 быў зьменена з $3 у $4.
+
+Дададзеная: $5
+Выдалена: $6
+
+З найлепшымі пажаданьнямі,
+
+$2',
+	'userrightsnotif-desc' => 'Дасылае паведамленьні пра зьмены правоў ўдзельнікам па электроннай пошце',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

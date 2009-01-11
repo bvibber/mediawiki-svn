@@ -403,6 +403,7 @@ Přidaj někotre z pomocu nastrojow w menijowej lajsće.',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dorgan
  */
 $messages['hu'] = array(
 	'gep-desc' => 'Felhasználóbarátabbá teszi a szerkesztőlapot',

@@ -679,6 +679,54 @@ $messages['de-formal'] = array(
 	'hiderevision-error-current' => 'Die letzte Bearbeitung einer Seite kann nicht entfernt werden. Setzen Sie die Bearbeitung erst zurück.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'hiderevision' => 'Wersije na pśecej schowaś',
+	'hiderevision-desc' => 'Jadnotliwe wersije pśed wšymi wužywarjami z juristiskich pśicynow schowaś',
+	'group-oversight' => 'Doglědowarje',
+	'group-oversight-member' => 'doglědowaś',
+	'grouppage-oversight' => '{{ns:project}}:Doglêdowanje',
+	'right-oversight' => 'Do togo schowanu wersiju se woglědaś',
+	'right-hiderevision' => 'Wersije pśeglědaś a wótnowiś, kótarež su pśed administratorami schowane',
+	'hiderevision-prompt' => 'Wersijowy numer, kótaryž ma se wótpóraś:',
+	'hiderevision-continue' => 'Dalej',
+	'hiderevision-text' => "To by měło se '''jano''' za slědujuce pady wužywaś:
+* Njegóźece se wósobinske informacije
+*: ''bydleńska adresa a telefonowe numery, numery socialnego zawěsćenje atd.''
+
+'''Znjewužywanje toś togo systema buźo zgubjenje pšawow zawinowaś.'''
+
+Wótpórane zapiski njebudu widobne za nikogo na webowem boku, ale wulašowanja protokolěruju se a daju se manuelnje wót administratora datoweje banki wótnowiś, jolic cyniš zmólku.",
+	'hiderevision-reason' => 'Pśicyna (protokolěrujo se njewidobnje):',
+	'hiderevision-submit' => 'Toś te daty na pśecej schowaś',
+	'hiderevision-tab' => 'Wersiju schowaś',
+	'hiderevision-link' => 'Schowane wužywarske pśinoski',
+	'hiderevision-norevisions' => 'Njeju se pódali wersije za wulašowanje.',
+	'hiderevision-noreason' => 'Musyš pśicynu za toś to wulašowanje pódaś.',
+	'hiderevision-status' => 'Wersija $1: $2',
+	'hiderevision-success' => 'Wuspěšnje archiwěrowana a wulašowana.',
+	'hiderevision-error-missing' => 'W datowej bance njenamakany.',
+	'hiderevision-error-current' => 'Slědna změna boka njedajo se wulašowaś.
+Anulěruj do togo toś tu změnu.',
+	'hiderevision-error-delete' => 'Archiwěrowanje njejo móžno było; jo se do togo wulašowała?',
+	'hiderevision-archive-status' => 'Wulašowane wersije wót $1: $2',
+	'oversight-nodiff' => 'Njejo móžno změny slědowaś, dokulaž tuchylu njejo pjerwjejšna wersija boka. Móžne pśicyny:
+*Bok jo se wulašował
+*Toś ta schowana wersija jo była prědna wersija',
+	'oversight-log-hiderev' => 'jo změnu z $1 wótpórał',
+	'oversight' => 'Oversight',
+	'oversight-view' => 'drobnostki',
+	'oversight-difference' => '(Rozdźěl k zwóstawacej wersiji do togo)',
+	'oversight-prev' => 'Slědna wersija do togo',
+	'oversight-hidden' => 'Schowana wersija',
+	'oversight-header' => 'Slědujo lisćina wersijow, kótarež su tuchylu na pśecej ze zjawnego naglěda wuzamknjone. Wózjawjenje toś tych informacijow móžo trajne zgubjenje doglědowańskich pšawow zawinowaś.',
+	'oversight-legend' => 'Protokol wó schowanju wersijow pśepytaś',
+	'oversight-oversighter' => 'Doglědowaŕ:',
+	'oversight-offender' => 'Njestatkaŕ:',
+);
+
 /** Greek (Ελληνικά)
  * @author Badseed
  * @author Consta
@@ -1056,15 +1104,13 @@ $messages['gl'] = array(
 	'right-hiderevision' => 'Revisar e restaurar as revisións agochadas dos administradores',
 	'hiderevision-prompt' => 'Número de revisión a eliminar:',
 	'hiderevision-continue' => 'Continuar',
-	'hiderevision-text' => "Isto debe ser usado '''só''' para os seguintes casos:
+	'hiderevision-text' => "Isto '''só''' debe ser usado para os seguintes casos:
 * Información persoal inapropiada
-*:''Enderezos e números de teléfono, números de seguridade social, etcétera''
+*: ''enderezo do domicilio e números de teléfono, números da seguridade social, etc.''
 
-'''O uso indebido deste sistema terá como resultado a pérdida de privilexios.'''
+'''O uso indebido deste sistema terá como resultado a perda de privilexios.'''
 
-Os elementos eliminados non serán visíbeis para calquera persoa a través da páxina web,
-pero as supresións son rexistradas e poden ser restauradas de forma manual por un
-administrador das bases de datos no caso de que vostede cometa un erro.",
+Os elementos eliminados non serán visíbeis para calquera persoa que visite a páxina web, pero os borrados son rexistrados e poden ser restaurados de forma manual por un administrador da base de datos en caso de erro.",
 	'hiderevision-reason' => 'Motivo (rexistrarase de maneira privada):',
 	'hiderevision-submit' => 'Agochar estes datos permanentemente',
 	'hiderevision-tab' => 'Agochar revisión',
@@ -3214,15 +3260,52 @@ Magreresulta/Hahantong ang paglalabas ng kabatirang (impormasyon) ito sa pagkawa
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  * @author Runningfridgesrule
  */
 $messages['tr'] = array(
+	'hiderevision' => 'Revizyonları kalıcı olarak gizle',
+	'hiderevision-desc' => 'Tüm kullanıcılardan herbir revizyonları gizle, yasal sebepler vs için',
+	'group-oversight' => 'Gözetmenler',
+	'group-oversight-member' => 'gözetmen',
+	'grouppage-oversight' => '{{ns:project}}:Gözetmen',
+	'right-oversight' => 'Önceden gizlenmiş bir revizyonu gör',
+	'right-hiderevision' => 'Sysoplardan gizlenmiş revizyonları gözden geçir ve eski haline döndür',
+	'hiderevision-prompt' => 'Kaldırılacak revizyon numarası:',
 	'hiderevision-continue' => 'Devam',
+	'hiderevision-text' => "Bu '''sadece''' aşağıdaki durumlar için kullanılmalıdır:
+* Uygun olmayan kişisel bilgi
+*: '' ev adresleri ve telefon numaraları, sosyal güvenlik numaraları, vs''
+
+'''Bu sistemin kötüye kullanımı imtiyazların kaybı ile sonuçlanacaktır.'''
+
+Silinmiş öğeler web sitesi boyunca kimseye görünür olmayacaktır, fakat silmelerin günlüğü tutulmuştur ve eğer bir hata yaparsanız bir veritabanı yöneticisi tarafından elle eski haline döndürülebilir.",
+	'hiderevision-reason' => 'Sebep (gizli olarak günlüğü tutulacaktır):',
 	'hiderevision-submit' => 'Bilgiyi süresizce gizle',
-	'hiderevision-error-missing' => 'Veritabanında bulunamadı',
+	'hiderevision-tab' => 'Revizyonu gizle',
+	'hiderevision-link' => 'Gizli kullanıcı katkıları',
+	'hiderevision-norevisions' => 'Silmek için hiçbir revizyon belirtilmedi.',
+	'hiderevision-noreason' => 'Bu kaldırma için sebebini tanımlamalısınız.',
+	'hiderevision-status' => 'Revizyon $1: $2',
+	'hiderevision-success' => 'Başarıyla arşivlenip silindi.',
+	'hiderevision-error-missing' => 'Veritabanında bulunamadı.',
+	'hiderevision-error-current' => 'Bir sayfaya son değişiklik silinemez.
+Önce bu değişikliği geri döndürün.',
 	'hiderevision-error-delete' => 'Arşivlenilemedi; daha önce silindi mi?',
+	'oversight-nodiff' => 'Sayfa için hiç önceki revizyon olmadığı için değişiklikler izlenemiyor. Ya:
+*Sayfa silinmiş
+*Bu gizli revizyon ilk revizyon',
+	'oversight' => 'Gözetmen',
 	'oversight-view' => 'detaylar',
+	'oversight-difference' => '(Önceki kalan revizyondan fark)',
+	'oversight-prev' => 'En son önceki revizyon',
+	'oversight-hidden' => 'Gizli revizyon',
+	'oversight-header' => 'Aşağıdaki liste yakın zamanda genel görüşten kalıcı olarak gizlenen revizyonların listesidir.
+Bu bilgiyi yaymak, Gözetmen ayrıcalıklarının kalıcı olarak kaybıyla sonuçlanabilir.',
+	'oversight-legend' => 'Revizyon gizleme günlüğünü ara',
+	'oversight-oversighter' => 'Gözetmen:',
+	'oversight-offender' => 'Kabahatli:',
 );
 
 /** Ukrainian (Українська)

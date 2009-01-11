@@ -280,6 +280,13 @@ Besuchen Sie bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Se
  */
 $messages['dsb'] = array(
 	'createsigndocument' => 'Signěrowanje dokumentow zmóžniś',
+	'createsigndoc-head' => "Wuž toś ten formular, aby napórał 'signaturowy dokument' za pódany bok, tak až wužywarje mógu jen [[Special:SignDocument|signěrowaś]].
+Pšosym pódaj mě boka, za kótaryž coš digitalne signěrowanje zmóžniś, cłonki kótareje wužywarskeje kupki směju jen signěrowaś, kótare póla maju widobne byś a kótare maju opcionalne byś, minimalne starstwo, kótarež wužywarje deje měś, aby wóne mógu dokument signěrowaś (jolic to se wuwóstaja, minimum njejo) a krotki zawjeźeński tekst, kótaryž wopisujo dokument a dawa wukazanja wužywarjeju.
+
+<b>Tuchylu njejo žedna móžnosć signaturowe dokumenty pó jich napóranju wulašowaś abo změniś</b> bźez direktnego pśistup k datowej bance.
+Pśidatnje buźo tekst boka, kótaryž se zwobraznjujo na signaturowem boku, ''aktualny'' tekst boka, njeglědajucy na změny, kótarež su se na njen pśewjadli pótom.
+Pšosym pśeznań se, až dokument jo pśigótowany za signěrowanje.
+Pšosym pśeznań se teke, až sy pódał wše póla tak, ako maju byś, ''pjerwjej až wótpósćeloš toś ten formular''.",
 	'createsigndoc-pagename' => 'Bok:',
 	'createsigndoc-allowedgroup' => 'Dowólona kupka:',
 	'createsigndoc-email' => 'E-mailowa adresa:',

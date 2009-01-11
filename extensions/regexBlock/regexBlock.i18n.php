@@ -73,6 +73,7 @@ Probably there is no such user.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  * @author SPQRobin
@@ -81,6 +82,7 @@ Probably there is no such user.',
 $messages['qqq'] = array(
 	'regexblock-already-blocked' => '{{Identical|$1 is already blocked}}',
 	'regexblock-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'regexblock-expire-duration' => '{{Identical|Infinite}}',
 	'regexblock-reason-ip' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
 	'regexblock-reason-name' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
 	'regexblock-reason-regex' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
@@ -97,6 +99,7 @@ $messages['qqq'] = array(
 	'regexblock-view-go' => '{{Identical|Go}}',
 	'regexblock-view-match' => '{{Identical|Exact match}}',
 	'regexblock-view-block-temporary' => '{{Identical|Expires on}}',
+	'right-regexblock' => '{{doc-right}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -937,29 +940,45 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'regexblock' => '正規表現ブロック',
+	'regexblock-already-blocked' => '$1 は既にブロックされています。',
+	'regexblock-block-log' => "利用者名もしくはIPアドレス '''$1''' はブロックされました。",
+	'regexblock-block-success' => 'ブロック成功',
+	'regexblock-currently-blocked' => '現在ブロックされているアドレス:',
 	'regexblock-desc' => '利用者名やIPアドレスを正規表現でブロックするための拡張機能。ブロック機構とブロックを追加・管理するための[[Special:Regexblock|特別ページ]]の両方を含む',
-	'regexblock-special-desc' => '代替利用者ブロック (正規表現を使用)',
-	'regexblock-stat-desc' => '正規表現ブロック拡張機能の[[Special:Regexblockstats|ブロック統計]]を表示する',
+	'regexblock-expire-duration' => '1時間,2時間,4時間,6時間,1日,3日,1週間,2週間,1か月,3か月,6か月,1年,無期限',
 	'regexblock-page-title' => '正規表現による利用者名のブロック',
 	'regexblockstats' => '正規表現ブロック統計',
+	'regexblock-help' => '以下のフォームを使って特定のIPアドレスまたは利用者名からの書き込みアクセスをブロックします。これは荒らしを防ぐためのみになされるべきであり、方針と合致しているべきです。\'\'このページを使うとまだ存在していない利用者さえブロックすることができます。また、指定した名前に類似した利用者もブロックします。つまり、"Test" をブロックすると "Test 2" もブロックされます。また、完全なIPアドレスをブロックすることもできます。つまり、そこからログインしている誰も編集できないようにできるということです。注：部分的なIPアドレスはブロック決定過程において利用者名として処理されます。理由を指定しなかった場合は、既定の一般的な理由が使われます。\'\'',
+	'regexblock-page-title-1' => '正規表現を使ってアドレスをブロックする',
 	'regexblock-reason-ip' => 'あなたかあなたとIPアドレスを共有するだれかによる荒らしなどの破壊のため、このIPアドレスは編集が禁止されています。これが間違いだとお考えなら、$1 してください',
 	'regexblock-reason-name' => 'この利用者名は荒らしなどの破壊のため編集が禁止されています。これが間違いだとお考えなら、$1 してください',
 	'regexblock-reason-regex' => '類似した名前の利用者による荒らしなどの破壊のため、この利用者名は編集が禁止されています。これが間違いだとお考えなら、$1 してください',
-	'regexblock-help' => '以下のフォームを使って特定のIPアドレスまたは利用者名からの書き込みアクセスをブロックします。これは荒らしを防ぐためのみになされるべきであり、方針と合致しているべきです。\'\'このページを使うとまだ存在していない利用者さえブロックすることができます。また、指定した名前に類似した利用者もブロックします。つまり、"Test" をブロックすると "Test 2" もブロックされます。また、完全なIPアドレスをブロックすることもできます。つまり、そこからログインしている誰も編集できないようにできるということです。注：部分的なIPアドレスはブロック決定過程において利用者名として処理されます。理由を指定しなかった場合は、既定の一般的な理由が使われます。\'\'',
-	'regexblock-page-title-1' => '正規表現を使ってアドレスをブロックする',
-	'regexblock-unblock-success' => 'ブロック解除成功',
-	'regexblock-unblock-log' => "利用者名またはIPアドレス '''$1''' のブロックを解除しました。",
-	'regexblock-unblock-error' => '$1 のブロック解除エラー。おそらく、その利用者は存在しません。',
 	'regexblock-form-username' => 'IPアドレスまたは利用者名:',
 	'regexblock-form-reason' => '理由:',
 	'regexblock-form-expiry' => '期限:',
 	'regexblock-form-match' => '完全一致',
 	'regexblock-form-account-block' => '新規アカウントの作成をブロックする',
 	'regexblock-form-submit' => 'この利用者をブロックする',
-	'regexblock-already-blocked' => '$1 は既にブロックされています。',
+	'regexblock-form-submit-empty' => 'ブロックする利用者名かIPアドレスを入力してください。',
+	'regexblock-form-submit-regex' => '無効な正規表現です。',
+	'regexblock-form-submit-expiry' => '期限を設定してください。',
+	'regexblock-match-stats-record' => '$1 が $2 (アドレス $5) を $3 で $4 にブロックしました',
+	'regexblock-nodata-found' => '該当データなし',
+	'regexblock-stats-title' => '正規表現ブロックの統計',
+	'regexblock-unblock-success' => 'ブロック解除成功',
+	'regexblock-unblock-log' => "利用者名またはIPアドレス '''$1''' のブロックを解除しました。",
+	'regexblock-unblock-error' => '$1 のブロック解除エラー。おそらく、その利用者は存在しません。',
+	'regexblock-regex-filter' => ' あるいは正規表現:',
 	'regexblock-view-all' => 'すべて',
+	'regexblock-view-go' => '表示',
 	'regexblock-view-match' => '(完全一致)',
+	'regexblock-view-regex' => '(正規表現マッチ)',
+	'regexblock-view-account' => '(アカウント作成ブロック)',
 	'regexblock-view-reason' => '理由: $1',
+	'regexblock-view-block-infinite' => '無期限ブロック',
+	'regexblock-view-block-unblock' => 'ブロック解除',
+	'regexblock-view-stats' => '統計',
+	'right-regexblock' => '利用者をウィキファーム上のすべてのウィキで投稿ブロックする',
 );
 
 /** Javanese (Basa Jawa)

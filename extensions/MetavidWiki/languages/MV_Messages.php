@@ -927,6 +927,7 @@ $messages['bcc'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'mv_edit' => 'Рэдагаваць',
 	'mv_history' => 'Гісторыя',
 	'mv_remove' => 'выдаліць',
 	'mv_search_categories' => 'Катэгорыі',

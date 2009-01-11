@@ -1024,6 +1024,25 @@ $messages['tg-cyrl'] = array(
 	'player-goto-file' => 'парванда',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'player' => 'Tagapagpaandar/pampatugtog',
+	'player-desc' => "Nakabaong pampaandar/pampatugtog ng maramihang midya na ginagamitan ng mga pampasak/pampasok na pang-pangkaraniwang pantingin-tingin (''browser''), at isang [[Special:Player|natatangging pahina]]",
+	'player-title' => 'Tagapagpaandar/pampatugtog',
+	'player-playertitle' => 'Pampaandar/pampatugtog: $1',
+	'player-file' => 'Pangalan ng talaksan',
+	'player-play' => 'Paandarin/patugtugin',
+	'player-not-allowed' => 'Hindi pinapahintulutang anyo/pormat',
+	'player-not-found' => 'hindi natagpuan ang talaksan',
+	'player-invalid-title' => 'hindi tanggap na pamagat',
+	'player-clicktoplay' => 'Paandarin/patugtugin ang $1',
+	'player-goto-player' => 'pampaandar/pampatugtog',
+	'player-goto-page' => 'Pahina',
+	'player-goto-file' => 'talaksan',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  * @author Suelnur

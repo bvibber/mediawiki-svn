@@ -240,9 +240,14 @@ $messages['is'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'categoryintersection' => 'カテゴリの交差検索',
+	'categoryintersection-desc' => '[[Special:CategoryIntersection|カテゴリの交差検索]]に利用するハッシュ値を含むテーブルを保持する',
+	'categoryintersection-doit' => 'これらのカテゴリすべてに属しているページを列挙する',
+	'categoryintersection-maxcategories' => '交差できるカテゴリの最大数は$1です。',
+	'categoryintersection-results' => '検索結果は$1件です。',
 );
 
 /** Javanese (Basa Jawa)

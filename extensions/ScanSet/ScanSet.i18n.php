@@ -310,12 +310,19 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Remember the dot
  */
 $messages['es'] = array(
 	'scanset-desc' => 'Ver imágenes escaneadas de los conjuntos CD/DVD de Andreas Grosz',
 	'scanset_unrecognised_index_format' => 'Error: Índice de formato desconocido',
 	'scanset_opendir_error' => 'Error: No se puede abrir el directorio $1',
+	'scanset_no_files' => 'Error: Sin archivos presentes en el directorio especificado.',
+	'scanset_no_volumes' => 'Error: directorios de volúmenes no encontrados',
+	'scanset_missing_index_file' => 'Error: Archivo de índices $1 no encontrado',
+	'scanset_invalid_volume' => 'Error: Volumen inválido',
+	'scanset_next' => 'Siguiente &gt;',
+	'scanset_prev' => '&lt; Anterior',
 );
 
 /** Persian (فارسی)

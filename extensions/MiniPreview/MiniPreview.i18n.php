@@ -601,3 +601,22 @@ $messages['vi'] = array(
 * Self',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'minipreview-desc' => 'Büologedil jonon, nilü magod, büologedis smalik ragivas valik in klad ot u pejonölas su pads ot',
+	'minipreview-files_in_category' => "Klad at ninädon {{PLURAL:$1|ragivi|ragivis}} '''$1'''.",
+	'minipreview-files_in_gallery' => "Magodem at ninädon {{PLURAL:$1|ragivi|ragivis}} '''$1'''.",
+	'minipreview-no_more_files_here' => 'Ragivs pluik nonik ma lüod at.',
+	'minipreview-no_category_gallery' => 'Klads u magodems noniks!',
+	'minipreview-ignore_categories' => 'Is palisedons kladanems e nemaprims.
+Klads at no pojenons fa Büologedil.
+Samo: „* PD-“ no ojenon kladis valik, kels primons me: „PD-“ , äs „PD-old“.
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+

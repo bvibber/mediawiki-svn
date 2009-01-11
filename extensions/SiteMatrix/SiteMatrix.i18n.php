@@ -1525,14 +1525,19 @@ $messages['to'] = array(
 
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
+ * @author Joseph
  * @author Mach
  * @author Runningfridgesrule
  * @author לערי ריינהארט
  */
 $messages['tr'] = array(
 	'sitematrix' => 'Tüm Wikimedia vikilerin listesi',
+	'sitematrix-summary' => 'Bu özel sayfa tüm Wikimedia vikilerini listeler.',
+	'sitematrix-desc' => '[[Special:SiteMatrix|Wikimedia vikilerinin listesini]] gösterir',
 	'sitematrix-language' => 'Dil',
+	'sitematrix-project' => 'Projenin adı, projelerarası bağlantısı ve vikilerarası bağlantısı',
 	'sitematrix-others' => 'Diğer Wikimedia projeleri',
+	'sitematrix-total' => "'''Toplam sayı: $1'''",
 	'sitematrix-sitetotal' => 'Toplam',
 	'sitematrix-private' => 'mahrem',
 	'sitematrix-fishbowl' => 'değiştirmek engellendi',

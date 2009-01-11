@@ -28,6 +28,7 @@ $messages['qqq'] = array(
 	'gur-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
+	'gur-rightslog-entry' => 'Similar to {{msg-mw|Rightslogentry}}.',
 	'right-userrights-global' => '{{doc-right}}',
 );
 
@@ -41,9 +42,15 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
+	'globaluserrights' => 'ادارة حقوق اليوزر العامه',
+	'gur-desc' => 'ادارة سهله لـ[[Special:GlobalUserRights|حقوق اليوزر العامه]]',
 	'gur-rightslog-name' => 'سجل الحقوق العالمي',
+	'gur-rightslog-header' => 'دا سجل بالتغييرات اللى حصلت للحقوق العامه',
+	'gur-rightslog-entry' => 'عضوية المجموعه العامه اتغيرت لـ  $1 من $2 و بقت $3',
+	'right-userrights-global' => 'إدارة سجل الحقوق العامه',
 );
 
 /** Bulgarian (Български)
@@ -163,6 +170,18 @@ $messages['ia'] = array(
 	'gur-rightslog-header' => 'Isto es un registro de modificationes in le derectos global.',
 	'gur-rightslog-entry' => 'cambiava le membrato de gruppos global pro $1 de $2 a $3',
 	'right-userrights-global' => 'Gerer le derectos global de usatores',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'globaluserrights' => 'グローバル利用者権限管理',
+	'gur-desc' => '簡単な[[Special:GlobalUserRights|グローバル利用者権限]]管理',
+	'gur-rightslog-name' => 'グローバル権限の記録',
+	'gur-rightslog-header' => 'これはグローバル権限の変更の記録です。',
+	'gur-rightslog-entry' => '$1 のグローバル利用者権限を $2 から $3 へと変更しました',
+	'right-userrights-global' => 'グローバル利用者権限を管理する',
 );
 
 /** Khmer (ភាសាខ្មែរ)

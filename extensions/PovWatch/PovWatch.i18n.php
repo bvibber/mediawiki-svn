@@ -1170,6 +1170,45 @@ $messages['tg-cyrl'] = array(
 	'povwatch_title' => 'Унвон:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Karugtong para [[Special:PovWatch|pagtulak ng mga pahina patungo sa ibabaw ng mga talaan ng binabantayan]] ng ibang mga tagagamit',
+	'povwatch_no_session' => 'Kamalian: Hindi maipasa ang pormularyo dahil sa isang kawalan ng nakalaang oras/panahon na nakalaan para sa dato.',
+	'povwatch_not_allowed_push' => "Hindi ka isang tagapangasiwa ng ''PovWatch'', hindi mo maitutulak ang mga pahina patungo sa mga talaan ng binabantayan.",
+	'povwatch_already_subscribed' => "Tumatanggap ka na ng sipi ng ''PovWatch''",
+	'povwatch_subscribed' => "Tatanggap ka na ngayon ng sipi ng ''PovWatch''",
+	'povwatch_not_subscribed' => "Hindi ka pa tumatanggap ng sipi ng ''PovWatch'', kaya't hindi ka maaaring humiling na huwag tumanggap ng sipi.",
+	'povwatch_unsubscribed' => "Hindi na ngayon tatanggap ng sipi ng ''PovWatch''",
+	'povwatch_invalid_title' => 'Hindi tanggap ang tinukoy na pamagat',
+	'povwatch_pushed' => 'Matagumpay na naitulak ang [[$1]] patungo sa $2 {{PLURAL:$2|talaan ng binabantayan|mga talaan ng binabantayan}} ng tagagamit',
+	'povwatch_intro' => "Ang ''PovWatch'' ay isang paglilingkod/serbisyo na nagpapahintulot sa mga pahinang sumasalungat/maaaring pagtalunan na matahimik na maitulat patungo sa ibabaw ng mga talaan ng binabantayan ng mga tagapangasiwang tumatanggap ng sipi.
+
+Makakakuha mula sa [[Special:PovWatch/log]] ng isang talaan ng kamakailang naitulak na mga talaan ng binabantayan.",
+	'povwatch_subscriber_list' => 'Makakakuha ng isang [[Special:PovWatch/subscribers|talaan ng mga tumatanggap ng sipi]].',
+	'povwatch_subscriber_list_intro' => '<strong>Talaan ng mga tumatanggap ng sipi</strong>',
+	'povwatch_not_allowed_subscribers' => "Hindi ka pinapahintulutang matingnan ang talaan ng mga tumatanggap ng sipi ng ''PovWatch''.",
+	'povwatch_unknown_subpage' => 'Hindi alam na kabahaging pahina.',
+	'povwatch_push' => 'Itulak',
+	'povwatch_push_intro' => 'Gamitin ang pormularyo sa ibaba upang maitulak ang mga pahina patungo sa ibabaw ng mga talaan ng binabantayan ng mga tagagamit na tumatanggap ng sipi.
+Mangyaring mag-ingat lamang sa pagmamakinilya ng pamagat: maidaragdag ang kahit mga pamagat na hindi pa umiiral, at walang paraan para matanggal ang isang pamagat kapag naitulak na ito palabas.',
+	'povwatch_title' => 'Pamagat:',
+	'povwatch_comment' => 'Tala ng kumento/puna:',
+	'povwatch_no_log' => 'Wala pang mga nakapasok/entrada sa tala.',
+	'povwatch_no_subscribers' => 'Walang mga tumatanggap ng sipi.',
+	'povwatch_unsubscribe_intro' => "Tumatanggap ka ng sipi ng ''PovWatch''.
+Pindutin ang pindutan sa ibaba upang huwag nang tumanggap ng sipi.",
+	'povwatch_unsubscribe' => 'Pahintuin na ang pagtanggap ng sipi',
+	'povwatch_subscribe_intro' => "Hindi ka pa tumatanggap ng sipi ng ''PovWatch''.
+Pindutin ang pindutan sa ibaba upang tumanggap ng sipi.",
+	'povwatch_subscribe' => 'Pumayag na tumanggap ng sipi',
+	'povwatch_added' => 'naidagdag na',
+	'right-povwatch_admin' => 'Pangasiwaan ang mga karapatan ng tagagamit para sa pagdaragdag ng mga pahina sa mga talaan ng binabantayan ng iba pang mga tagagamit',
+	'right-povwatch_user' => 'Magdagdag ng mga pahina sa mga talaan ng binabantayan ng iba pang mga tagagamit',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

@@ -203,6 +203,16 @@ $messages['ext'] = array(
 	'languageselector-setlang' => 'Acetal',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ * @author Vahid
+ */
+$messages['fa'] = array(
+	'languageselector' => 'زبان',
+	'languageselector-desc' => 'انتخاب کنندهٔ زبان در همهٔ صفحه‌ها باشد، و نیز برای مشاهده کنندگان',
+	'languageselector-setlang' => 'اعمال',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

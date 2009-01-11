@@ -78,6 +78,13 @@ $messages['es'] = array(
 	'psinotocnum-desc' => 'Nueva palabra mágica «<nowiki>__NOTOCNUM__</nowiki>»',
 );
 
+/** Persian (فارسی)
+ * @author Vahid
+ */
+$messages['fa'] = array(
+	'psinotocnum-desc' => 'کلمه جادویی جدید "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Mobe
