@@ -40,7 +40,7 @@ Removed items will not be visible to anyone through the web site, but the deleti
 
 	// Status & errors on action
 	'hiderevision-norevisions'    => 'No revisions specified to delete.',
-	'hiderevision-noreason'       => 'You must decribe the reason for this removal.',
+	'hiderevision-noreason'       => 'You must describe the reason for this removal.',
 	'hiderevision-status'         => 'Revision $1: $2',
 	'hiderevision-success'        => 'Archived and deleted successfully.',
 	'hiderevision-error-missing'  => 'Not found in database.',
