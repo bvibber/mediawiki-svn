@@ -82,7 +82,7 @@ class SvnRevTablePager extends TablePager {
 		if( $this->getDefaultSort() === 'cp_rev_id' ) {
 			return array(
 				'tables' => array( 'code_paths', 'code_rev', 'code_comment' ),
-				'fields' => array_keys( $this->getFieldNames() ),
+				'fields' => $this->getSelectFields(),
 				'conds' => array( 
 					'cp_repo_id' => $this->mRepo->getId(),
 					'cp_path LIKE '.$this->mDb->addQuotes($this->mDb->escapeLike( $this->getSVNPath() ).'%'),
@@ -99,7 +99,7 @@ class SvnRevTablePager extends TablePager {
 		} else {
 			return array(
 				'tables' => array( 'code_rev', 'code_comment' ),
-				'fields' => array_keys( $this->getFieldNames() ),
+				'fields' => $this->getSelectFields(),
 				'conds' => array( 'cr_repo_id' => $this->mRepo->getId() ),
 				'options' => array( 'GROUP BY' => 'cr_id' ),
 				'join_conds' => array( 
@@ -109,12 +109,17 @@ class SvnRevTablePager extends TablePager {
 		}
 		return false;
 	}
+	
+	function getSelectFields() {
+		return array( $this->getDefaultSort(), 'cr_status', 'COUNT( DISTINCT cc_id ) AS comments',
+			'cr_path', 'cr_message', 'cr_author', 'cr_timestamp' );
+	}
 
 	function getFieldNames() {
 		return array(
 			$this->getDefaultSort() => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
-			'COUNT( DISTINCT cc_id)' => wfMsg( 'code-field-comments' ),
+			'comments' => wfMsg( 'code-field-comments' ),
 			'cr_path' => wfMsg( 'code-field-path' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
@@ -142,7 +147,7 @@ class SvnRevTablePager extends TablePager {
 		case 'cr_timestamp':
 			global $wgLang;
 			return $wgLang->timeanddate( $value, true );
-		case 'COUNT( DISTINCT cc_id)':
+		case 'comments':
 			return intval( $value );
 		case 'cr_path':
 			return Xml::element('div', array( 'title' => (string)$value ),
