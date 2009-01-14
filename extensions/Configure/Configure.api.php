@@ -265,7 +265,7 @@ class ApiConfigure extends ApiBase {
 				case 'promotion-conds':
 					$opToName = array_flip( array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' ) );
 					$condsName = array( 1 => 'editcount', 2 => 'age', 3 => 'emailconfirmed',
-						4 => 'in-groups', 5 => 'is-ip', 6 => 'ip-in-range' );
+						4 => 'in-groups', 5 => 'is-ip', 6 => 'ip-in-range', 7 => 'age-from-first-edit' );
 					$validOps = array_keys( $opToName );
 
 					$settingRet['values'] = array();

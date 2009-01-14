@@ -600,7 +600,8 @@ abstract class ConfigurationPage extends SpecialPage {
 				case 'promotion-conds':
 					$options = array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' );
 					$conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool',
-						APCOND_INGROUPS => 'array', APCOND_ISIP => 'text', APCOND_IPINRANGE => 'text' );
+						APCOND_INGROUPS => 'array', APCOND_ISIP => 'text', APCOND_IPINRANGE => 'text',
+						APCOND_AGE_FROM_EDIT => 'int' );
 
 					if ( isset( $_REQUEST['wp' . $name . '-vals'] ) ) {
 						$groups = explode( "\n", trim( $wgRequest->getText( 'wp' . $name . '-vals' ) ) );
@@ -1319,7 +1320,8 @@ abstract class ConfigurationPage extends SpecialPage {
 	public static function buildPromotionCondsSettingRow( $conf, $allowed, $group, $groupConds ){
 		static $options = array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' );
 		static $conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool',
-			APCOND_INGROUPS => 'array', APCOND_ISIP => 'text', APCOND_IPINRANGE => 'text' );
+			APCOND_INGROUPS => 'array', APCOND_ISIP => 'text', APCOND_IPINRANGE => 'text',
+			APCOND_AGE_FROM_EDIT => 'int' );
 
 		$row = '<div class="configure-biglist promotion-conds-element">';
 		$row .= wfMsgHtml( 'configure-condition-operator' ) . ' ';
