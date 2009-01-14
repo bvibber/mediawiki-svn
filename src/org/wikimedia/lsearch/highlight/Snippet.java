@@ -127,11 +127,14 @@ public class Snippet implements Serializable {
 		for(Range r : highlighted){
 			sb.append(text.substring(last,r.start));
 			sb.append(beginTag);
-			sb.append(text.substring(r.start,r.end));
+			if(r.end > text.length())
+				sb.append(text.substring(r.start));
+			else
+				sb.append(text.substring(r.start,r.end));
 			sb.append(endTag);
 			last = r.end;
 		}
-		if(last != text.length())
+		if(last < text.length())
 			sb.append(text.substring(last));
 		return sb.toString();
 	}

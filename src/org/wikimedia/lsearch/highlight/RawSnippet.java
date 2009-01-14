@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.lucene.analysis.Token;
 import org.wikimedia.lsearch.analyzers.Alttitles;
+import org.wikimedia.lsearch.analyzers.CJKFilter;
 import org.wikimedia.lsearch.analyzers.ExtToken;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.ExtToken.Position;
@@ -289,7 +290,7 @@ public class RawSnippet {
 					mid = start;
 					String tt = t.getText();
 					int len = tt.length();
-					if(len>=2){ 
+					if(len>=2 && CJKFilter.isCJKChar(tt.codePointAt(0))){ 
 						// not terminal, calculate new midpoint
 						int point = len-1;
 						if(Character.isSurrogatePair(tt.charAt(len-2),tt.charAt(len-1)))

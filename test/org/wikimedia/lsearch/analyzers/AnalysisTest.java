@@ -49,6 +49,11 @@ public class AnalysisTest extends WikiTestCase {
 			GlobalConfiguration.getInstance();
 		}
 	}
+	
+	public void testCJKAnalyzer(){
+		a = new CJKAnalyzer();
+		assertEquals("[(いわ,0,2,type=double), (わさ,1,3,type=double), (さき,2,4,type=double), (ic,4,6,type=single), (カー,6,8,type=double), (ード,7,9,type=double)]",tokens("いわさきicカード"));
+	}
 
 	/** Common test for indexer and searcher analyzers */
 	public void commonEnglish(){
@@ -225,7 +230,7 @@ public class AnalysisTest extends WikiTestCase {
 		printCodePoints("“കൊറിയ”");
 		
 		QueryParser parser = new QueryParser("contents",new CJKAnalyzer());
-		Query q = parser.parse("プロサッカークラブをつくろう");
+		Query q = parser.parse("いわさきicカード プロサッカークラブをつくろう");
 		System.out.println("Japanese in standard analyzer: "+q);
 		displayTokens(new CJKAnalyzer(),"は、工学者、大学教授、工学博士。『パンツぱんくろう』というタイトルは、阪本牙城の漫画『タンクタンクロー』が元ネタになっているといわれる。ただし、このアニメと『タンクタンクロー』に内容的な直接の関係は全く無い。");
 		displayTokens(Analyzers.getHighlightAnalyzer(IndexId.get("jawiki"),false),"鈴木 孝治（すずき こうじ、1954年 - ）『パンツぱんくろう』というタイトルは、阪本牙城の漫画『タンクタンクロー』が元ネタになっているといわれる。ただし、このアニメと『タンクタンクロー』に内容的な直接の関係は全く無い。");

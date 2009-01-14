@@ -27,6 +27,7 @@ import org.wikimedia.lsearch.analyzers.TokenizerOptions;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.IndexThread;
@@ -97,18 +98,20 @@ public class PrefixIndexBuilder {
 	public static void main(String[] args) throws IOException{
 		int perPrefix = 15;
 		boolean usetemp = false;
-		String dbname = null;
 		boolean useSnapshot = false;
+		ArrayList<String> dbnames = new ArrayList<String>();
 		
 		System.out.println("MediaWiki lucene-search indexer - rebuild prefix index used for ajax suggestions.");
 		
 		Configuration.open();		
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		if(args.length == 0){
-			System.out.println("Syntax: java PrefixIndexBuilder [-t] [-p <num>] <dbname>");
+			System.out.println("Syntax: java PrefixIndexBuilder [-t] [-l] [-p <num>] <dbname>");
 			System.out.println("Options:");
 			System.out.println("   -p       - reuse temporary precursor index (import path)");
 			System.out.println("   -s       - reuse latest temporary precursor snapshot");
 			System.out.println("   -t <num> - titles per prefix (default: "+perPrefix+")");
+			System.out.println("   -l    rebuild all local indexes from snapshots");
 			return;
 		}
 		for(int i=0;i<args.length;i++){
@@ -116,24 +119,36 @@ public class PrefixIndexBuilder {
 				usetemp = true;
 			else if(args[i].equals("-t"))
 				perPrefix = Integer.parseInt(args[++i]);
-			else if(args[i].equals("-s")){
+			else if(args[i].equals("-l")){
+				useSnapshot = true;
+				dbnames.addAll(global.getMyIndexDBnames());
+			} else if(args[i].equals("-s")){
 				usetemp = true;
 				useSnapshot = true;
 			} else if(args[i].startsWith("-")){
 				System.out.println("Unrecognized option "+args[i]);
 				return;
 			} else
-				dbname = args[i];
+				dbnames.add(args[i]);
 		}		
 		
-		IndexId iid = IndexId.get(dbname);
-		PrefixIndexBuilder builder = usetemp? newForPrefixOnly(iid) : newFromStandalone(iid);
-		IndexId pre = iid.getPrefix().getPrecursor();
-		String precursorPath = pre.getImportPath();
-		if(useSnapshot)
-			precursorPath = IndexRegistry.getInstance().getLatestSnapshot(pre).path;
-		
-		builder.createNewFromLinks(perPrefix,usetemp,precursorPath);
+		for(String dbname : dbnames){
+			try{
+				log.info("Building prefix index for "+dbname);
+				IndexId iid = IndexId.get(dbname);
+				if( !iid.hasPrefix() )
+					continue;
+				PrefixIndexBuilder builder = usetemp? newForPrefixOnly(iid) : newFromStandalone(iid);
+				IndexId pre = iid.getPrefix().getPrecursor();
+				String precursorPath = pre.getImportPath();
+				if(useSnapshot)
+					precursorPath = IndexRegistry.getInstance().getLatestSnapshot(pre).path;
+
+				builder.createNewFromLinks(perPrefix,usetemp,precursorPath);
+			} catch(Exception e){
+				log.error("Exception building prefix index for "+dbname+" "+e.getMessage(),e);
+			}
+		}
 	}
 
 	/**

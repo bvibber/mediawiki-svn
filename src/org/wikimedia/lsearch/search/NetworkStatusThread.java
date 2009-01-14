@@ -84,8 +84,8 @@ public class NetworkStatusThread extends Thread {
 					cache.reInitializeRemote(sh.iid,sh.host);
 				}
 			} catch (RemoteException e) {
-				log.warn("Host "+sh.host+" still down.");
-				noRetryHosts.add(sh.host);
+				log.warn("Host "+sh.host+" for "+sh.iid+" still down.",e);
+				//noRetryHosts.add(sh.host);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
