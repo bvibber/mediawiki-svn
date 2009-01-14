@@ -15,29 +15,25 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $wgExtensionMessagesFiles['SkinPerPage'] = dirname( __FILE__ ) . "/SkinPerPage.i18n.php";
 
-$wgParserOutputHooks['SkinPerPage'] = array( 'SkinPerPage', 'outputHook' );
-
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'SkinPerPage::setup';
-} else {
-	$wgExtensionFunctions[] = array( 'SkinPerPage', 'setup' );
-}
+$wgExtensionFunctions[] = array( 'SkinPerPage', 'setup' );
+$wgHooks['OutputPageParserOutput'][] = 'SkinPerPage::outputHook';
 
 class SkinPerPage {
 	static function setup() {
 		global $wgParser;
 		$wgParser->setHook( 'skin', array( __CLASS__, 'parserHook' ) );
-		return true;
 	}
 
 	static function parserHook( $text, $attribs, $parser ) {
-		$parser->mOutput->addOutputHook( 'SkinPerPage', trim( $text ) );
+		$parser->mOutput->spp_skin = trim( $text );
 		return '';
 	}
 
-	static function outputHook( $out, $parserOutput, $skin ) {
+	static function outputHook( $out, $parserOutput ) {
 		global $wgUser;
-		$wgUser->mSkin =& Skin::newFromKey( $skin );
+		if ( isset( $parserOutput->spp_skin ) ) {
+			$wgUser->mSkin =& Skin::newFromKey( $parserOutput->spp_skin );
+		}
 		return true;
 	}
 }
