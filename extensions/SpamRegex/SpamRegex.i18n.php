@@ -1,7 +1,8 @@
 <?php
 /**
- * Internationalisation file for extension SpamRegex.
+ * Internationalisation file for SpamRegex extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -11,35 +12,36 @@ $messages = array();
  * @author Bartek Łapiński
  */
 $messages['en'] = array(
-	'spamregex'                      => 'Spam regex',
-	'spamregex-desc'                 => '[[Special:SpamRegex|Filter]] out unwanted phrases in edited pages, based on regular expressions',
+	'spamregex' => 'Spam regex',
+	'spamregex-desc' => '[[Special:SpamRegex|Filter]] out unwanted phrases in edited pages, based on regular expressions',
 	'spamregex-error-unblocking' => 'Error unblocking "$1". Probably there is no such pattern.',
-	'spamregex-summary'              => 'The text was found in the page\'s summary.',
-	'spamregex-intro'                => 'Use this form to effectively block expressions from saving into a page\'s text.
+	'spamregex-summary' => 'The text was found in the page\'s summary.',
+	'spamregex-intro' => 'Use this form to effectively block expressions from saving into a page\'s text.
 If the text contains the given expression, change would not be saved and an explanation will be displayed to user that tried to save the page.
 Caution advised, expressions should not be too short or too common.',
-	'spamregex-page-title'           => 'Spam regex unwanted expressions block',
-	'spamregex-currently-blocked'    => "'''Currently blocked phrases:'''",
+	'spamregex-page-title' => 'Spam regex unwanted expressions block',
+	'spamregex-currently-blocked' => "'''Currently blocked phrases:'''",
 	'spamregex-move' => 'The reason you entered contained a blocked phrase. ',
 	'spamregex-no-currently-blocked' => "'''There are no blocked phrases.'''",
-	'spamregex-log-1'                => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 remove]) added by ',
-	'spamregex-log-2'                => ' on $1',
-	'spamregex-page-title-1'         => 'Block phrase using regular expressions',
-	'spamregex-unblock-success'      => 'Unblock succedeed',
-	'spamregex-unblock-message'      => 'Phrase \'\'\'$1\'\'\' has been unblocked from editing.',
-	'spamregex-page-title-2'         => 'Block phrases from saving using regular expressions',
-	'spamregex-block-success'        => 'Block succedeed',
-	'spamregex-block-message'        => 'Phrase \'\'\'$1\'\'\' has been blocked.',
-	'spamregex-warning-1'            => 'Give a phrase to block.',
-	'spamregex-error-1'              => 'Invalid regular expression.',
-	'spamregex-warning-2'            => 'Please check at least one blocking mode.',
-	'spamregex-already-blocked'      => '"$1" is already blocked',
-	'spamregex-phrase-block'         => 'Phrase to block:',
-	'spamregex-phrase-block-text'    => 'block phrase in page text',
+	'spamregex-log-1' => '* \'\'\'$1\'\'\' $2 ([{{SERVER}}$3&text=$4 remove]) added by ',
+	'spamregex-log-2' => ' on $1',
+	'spamregex-page-title-1' => 'Block phrase using regular expressions',
+	'spamregex-unblock-success' => 'Unblock succedeed',
+	'spamregex-unblock-message' => 'Phrase \'\'\'$1\'\'\' has been unblocked from editing.',
+	'spamregex-page-title-2' => 'Block phrases from saving using regular expressions',
+	'spamregex-block-success' => 'Block succedeed',
+	'spamregex-block-message' => 'Phrase \'\'\'$1\'\'\' has been blocked.',
+	'spamregex-warning-1' => 'Give a phrase to block.',
+	'spamregex-error-1' => 'Invalid regular expression.',
+	'spamregex-warning-2' => 'Please check at least one blocking mode.',
+	'spamregex-already-blocked' => '"$1" is already blocked',
+	'spamregex-phrase-block' => 'Phrase to block:',
+	'spamregex-phrase-block-text' => 'block phrase in page text',
 	'spamregex-phrase-block-summary' => 'block phrase in summary',
-	'spamregex-block-submit'         => 'Block&nbsp;this&nbsp;phrase',
-	'spamregex-text'                 => '(Text)',
-	'spamregex-summary-log'          => '(Summary)',
+	'spamregex-block-submit' => 'Block&nbsp;this&nbsp;phrase',
+	'spamregex-text' => '(Text)',
+	'spamregex-summary-log' => '(Summary)',
+	'right-spamregex' => 'Block spam phrases through [[Special:SpamRegex]]',
 );
 
 /** Message documentation (Message documentation)

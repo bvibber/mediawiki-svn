@@ -27,6 +27,7 @@ $messages['en'] = array(
 	'lookupuser-touched' => 'User record last touched: $1',
 	'lookupuser-info-authenticated' => 'E-mail authentication: $1',
 	'lookupuser-useroptions' => 'User options:',
+	'right-lookupuser' => 'Look up user preferences',
 );
 
 /** Message documentation (Message documentation)

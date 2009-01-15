@@ -25,34 +25,38 @@ EOT;
 
 $messages = array();
 
+/** English
+ * @author Roan Kattouw
+ */
 $messages['en'] = array(
-	'changeauthor'                      => 'Change revision author',
-	'changeauthor-short'                => 'ChangeAuthor',
-	'changeauthor-desc'                 => 'Allows changing a revision\'s author',
-	'changeauthor-title'                => 'Change the author of a revision',
-	'changeauthor-search-box'           => 'Search revisions',
-	'changeauthor-pagename-or-revid'    => 'Page name or revision ID:',
-	'changeauthor-pagenameform-go'      => 'Go',
-	'changeauthor-comment'              => 'Comment:',
-	'changeauthor-changeauthors-multi'  => 'Change {{PLURAL:$1|author|authors}}',
-	'changeauthor-explanation-multi'    => 'With this form you can change revision authors.
+	'changeauthor' => 'Change revision author',
+	'changeauthor-short' => 'ChangeAuthor',
+	'changeauthor-desc' => 'Allows changing a revision\'s author',
+	'changeauthor-title' => 'Change the author of a revision',
+	'changeauthor-search-box' => 'Search revisions',
+	'changeauthor-pagename-or-revid' => 'Page name or revision ID:',
+	'changeauthor-pagenameform-go' => 'Go',
+	'changeauthor-comment' => 'Comment:',
+	'changeauthor-changeauthors-multi' => 'Change {{PLURAL:$1|author|authors}}',
+	'changeauthor-explanation-multi' => 'With this form you can change revision authors.
 Simply change one or more usernames in the list below, add a comment (optional) and click the \'Change author(s)\' button.',
 	'changeauthor-changeauthors-single' => 'Change author',
-	'changeauthor-explanation-single'   => 'With this form you can change a revision author.
+	'changeauthor-explanation-single' => 'With this form you can change a revision author.
 Simply change the username below, add a comment (optional) and click the \'Change author\' button.',
-	'changeauthor-invalid-username'     => 'Invalid username "$1".',
-	'changeauthor-nosuchuser'           => 'No such user "$1".',
-	'changeauthor-revview'              => 'Revision #$1 of $2',
-	'changeauthor-nosuchtitle'          => 'There is no page called "$1".',
-	'changeauthor-weirderror'           => 'A very strange error occurred.
+	'changeauthor-invalid-username' => 'Invalid username "$1".',
+	'changeauthor-nosuchuser' => 'No such user "$1".',
+	'changeauthor-revview' => 'Revision #$1 of $2',
+	'changeauthor-nosuchtitle' => 'There is no page called "$1".',
+	'changeauthor-weirderror' => 'A very strange error occurred.
 Please retry your request.
 If this error keeps showing up, the database is probably broken.',
-	'changeauthor-invalidform'          => 'Please use the form provided by the [[Special:ChangeAuthor|special page]] rather than a custom form.',
-	'changeauthor-success'              => 'Your request has been processed successfully.',
-	'changeauthor-logentry'             => 'Changed author of $2 of $1 from $3 to $4',
-	'changeauthor-logpagename'          => 'Author change log',
-	'changeauthor-logpagetext'          => '',
-	'changeauthor-rev'                  => 'r$1',
+	'changeauthor-invalidform' => 'Please use the form provided by the [[Special:ChangeAuthor|special page]] rather than a custom form.',
+	'changeauthor-success' => 'Your request has been processed successfully.',
+	'changeauthor-logentry' => 'Changed author of $2 of $1 from $3 to $4',
+	'changeauthor-logpagename' => 'Author change log',
+	'changeauthor-logpagetext' => '',
+	'changeauthor-rev' => 'r$1',
+	'right-changeauthor' => 'Change the author of a revision',
 );
 
 /** Message documentation (Message documentation)
