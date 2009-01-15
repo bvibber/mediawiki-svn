@@ -1520,7 +1520,7 @@ mediaElement.prototype =
     	for(var i=0; i < playable_sources.length; i++){
     		if( i==index ){
     			this.selected_source = playable_sources[i];
-    			//update the user prefrance: 
+    			//update the user selected format: 
     			embedTypes.players.userSelectFormat( playable_sources[i].mime_type);
     			break;
     		}

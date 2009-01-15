@@ -56,29 +56,38 @@ remoteSearchDriver.prototype = {
 	content_providers:{				
 		/*content_providers documentation: 			
 			@enabled: whether the search provider can be selected
-			@checked: whether the search provideer will show up as seletable tab (todo: user prefrence) 
-			@d: 	  if the current cp should be displayed (only one should be the default) 
+			@checked: whether the search provider will show up as seleatable tab (todo: user prefrence) 
+			@d: 	  default: if the current cp should be displayed (only one should be the default) 
 			@title:   the title of the search provider
 			@desc: 	  can use html... todo: need to localize
 			@api_url: the url to query against given the library type: 
 			@lib: 	  the search library to use corresponding to the 
 						search object ie: 'mediaWiki' = new mediaWikiSearchSearch() 
-			@local : if the content provider assets need to be imported or not.  
-		*/ 		 
+			@tab_img: the tab image (if set to false use title text) 
+						if === "ture" use standard location skin/images/{cp_id}_tab.png
+						if === string use as url for image
+						 
+			@linkback_icon default is: /wiki/skins/common/images/magnify-clip.png
+			
+			//domain insert: two modes: simple config or domain list: 
+			@local : if the content provider assets need to be imported or not.
+			@local_domains : sets of domains for which the content is local   
+		*/ 		 		
 		'this_wiki':{
-			'enabled':0,
-			'checked':0,
-			'd'		:0,
-			'title'	:'The Current Wiki',
-			'desc'	: '(should be updated with the proper text)',
-			'api_url': wgScriptPath + '/api.php',
-			'lib'	:'mediaWiki',
-			'local'	:true
+			'enabled':1,
+			'checked':1,
+			'd'		:1,
+			'title'	:'This Wiki',
+			'desc'	: '(should be updated with the proper text) maybe import from some config value',
+			'api_url': wgServer + wgScriptPath + '/api.php',
+			'lib'	:'mediaWiki',		
+			'local'	:true,
+			'tab_img':false
 		},		
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,
+			'd'		:0,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -87,13 +96,15 @@ remoteSearchDriver.prototype = {
 			'lib'	:'mediaWiki',			
 			'resource_prefix': 'WC_', //prefix on imported resources (not applicable if the repository is local)
 			
-			//list all the domains where commons is local? or set this some other way
+			//list all the domains where commons is local? or set this some other way by doing an api query 
+			//or by seeding this config when calling the remote search 			
 			'local_domains': ['wikimedia','wikipedia','wikibooks'],
 			//specific to wiki commons config: 
 			'search_title':false, //disable title search 
 			//set up default range limit
 			'offset'			: 0,
-			'limit'				: 30			
+			'limit'				: 30,
+			'tab_img':true			
 		},
 		'metavid':{
 			'enabled':1,
@@ -113,8 +124,9 @@ remoteSearchDriver.prototype = {
 			'stream_import_key': 'mv_ogg_low_quality', // which stream to import, could be mv_ogg_high_quality 
 													  //or flash stream, see ROE xml for keys
 													  
-			'remote_embed_ext': false //if running the remoteEmbed extension no need to copy local 
-									  //syntax will be [remoteEmbed:roe_url link title]							   		 
+			'remote_embed_ext': false, //if running the remoteEmbed extension no need to copy local 
+									  //syntax will be [remoteEmbed:roe_url link title]		
+			'tab_img':true					   		 
 		},
 		'archive_org':{
 			'enabled':0,
@@ -125,17 +137,18 @@ remoteSearchDriver.prototype = {
 			'homepage':'http://archive.org',
 			'lib'	: 'archive',
 			'local'	: false,
-			'resource_prefix': 'AO_'
+			'resource_prefix': 'AO_',
+			'tab_img':false
 		}
 	},	
 	//some default layout values:		
 	thumb_width 		: 80,
 	image_edit_width	: 600,
 	video_edit_width	: 400,
-	insert_text_pos		: 0, //insert at the start (will be overwiten by the user cursor pos) 
-	result_display_mode : 'box', //box or list or preview	
+	insert_text_pos		: 0, 	 //insert at the start (will be overwitten by the user cursor pos) 
+	result_display_mode : 'box', //box or list
 	
-	cUpLoader				: null,
+	cUpLoader			: null,
 	cEdit				: null,
 	
 	init:function( initObj ){
@@ -209,7 +222,7 @@ remoteSearchDriver.prototype = {
 						' style="float:left;cursor:pointer;">'+
 						'<input class="mv_cps_input" type="checkbox" name="mv_cps" '+ checked_attr+'>';
 
-				out+= '<img alt="'+cp.title+'" src="' + mv_embed_path + 'skins/' + mv_skin_name + '/remote_search/' + cp_id + '_tab.png">'; 				
+				out+= '<img alt="'+cp.title+'" src="' + mv_embed_path + 'skins/' + mv_skin_name + '/images/remote_cp/' + cp_id + '_tab.png">'; 				
 				out+='</div>';
 			}		 		
 			out+='<div style="clear:both"/><a id="mso_selprovider_close" href="#">'+getMsg('close')+'</a></div>';
@@ -228,7 +241,7 @@ remoteSearchDriver.prototype = {
 	}, 
 	add_interface_bindings:function(){
 		var _this = this;
-		js_log("add_interface_bindings:");		
+		js_log("f:add_interface_bindings:");		
 		//setup for this.main_search_options:
 		$j('#mso_cancel').click(function(){ 
 			_this.closeAll(); 
@@ -335,12 +348,19 @@ remoteSearchDriver.prototype = {
 		//add the tabs to the rsd_results container: 
 		var o='<div class="rsd_tabs_container" style="position:absolute;top:49px;width:100%;left:12px;height:25px;">';
 		o+= '<ul class="rsd_cp_tabs" style="margin: 0 0 0 0;position:absolute;top:0px;padding:0;">'; //no idea why margin does not overwrite from the css
-			o+='<li id="rsd_tab_combined" ><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/remote_search/combined_tab.png"></li>';		 			 	
+			o+='<li id="rsd_tab_combined" ><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/images/remote_cp/combined_tab.png"></li>';		 			 	
 			for(var cp_id in  this.content_providers){
 				var cp = this.content_providers[cp_id];
 				if( cp.enabled && cp.checked){
 					var class_attr = (cp.d)?'class="rsd_selected"':'';
-					o+='<li id="rsd_tab_'+cp_id+'" ' + class_attr + '><img src="' + mv_embed_path + 'skins/' + mv_skin_name + '/remote_search/' + cp_id + '_tab.png"></li>';
+					o+='<li id="rsd_tab_'+cp_id+'" ' + class_attr + '>';
+					if(cp.tab_img === true){
+						o+='<img alt="' + cp.title +'" src="' + mv_embed_path + 'skins/' + mv_skin_name + '/images/remote_cp/' + cp_id + '_tab.png"></li>';
+					}else if(typeof cp.tab_img=='string'){
+						o+='<img alt="' + cp.title +'" src="' + cp.tab_img + '"></li>';
+					}else if(cp.tab_img === false){
+						o+= cp.title;
+					}
 				}
 			}
 		//do an upload tab if enabled: 
@@ -404,8 +424,11 @@ remoteSearchDriver.prototype = {
 					var disp = ( cp.d ) ? '' : 'display:none;';
 					if( _this.result_display_mode == 'box' ){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_box_result" style="' + disp + 'width:' +
-								_this.thumb_width + 'px;height:'+ (_this.thumb_width-20) +'px">';
+								_this.thumb_width + 'px;height:'+ (_this.thumb_width-20) +'px;position:relative;">';
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
+							//add a linkback to resource page in lower left:
+							if(rItem.link) 
+							o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + getMsg('Resource Description Page') + '" href="' + rItem.link + '"><img src="' + wgScriptPath + '/skins/common/images/magnify-clip.png"></a>';
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
@@ -431,15 +454,17 @@ remoteSearchDriver.prototype = {
 			$j(this).removeClass('mv_clip_'+_this.result_display_mode+'_result_over');
 		});				
 		//resource click action: (bring up the resource editor) 		
-		$j('.rsd_res_item').click(function(){				
+		$j('.rsd_res_item').click(function(){						
 			//get the resource obj:
 			var rObj = _this.getResourceFromId( this.id );					
-			_this.resourceEdit( rObj );										
+			_this.resourceEdit( rObj, this );										
 		});
 	},
-	resourceEdit:function( rObj ){
+	resourceEdit:function( rObj, rsdElement){
+		js_log('f:resourceEdit');		
+		var _this = this;
 		//remove any existing resource edit interface: 
-		$j('#rsd_resource_edit').remove();					
+		$j('#rsd_resource_edit').remove();				
 		//set the media type:
 		if(rObj.mime.indexOf('image')!=-1){	 			
 			//set width to default image_edit_width
@@ -465,12 +490,15 @@ remoteSearchDriver.prototype = {
 					mv_get_loading_img() +  					
 				'</div>'+
 			'</div>');
+		
+		js_log('did append to: '+ _this.target_id );
+		
 		$j('#rsd_resource_edit').css('opacity',0);
 		
 		$j('#rsd_edit_img').remove();//remove any existing rsd_edit_img 
 		
 		//left side holds the image right size the controls /														
-		$j(this).clone().attr('id', 'rsd_edit_img').appendTo('#clip_edit_disp').css({
+		$j(rsdElement).clone().attr('id', 'rsd_edit_img').appendTo('#clip_edit_disp').css({
 			'position':'absolute',
 			'top':'40%',
 			'left':'20%',
@@ -478,7 +506,7 @@ remoteSearchDriver.prototype = {
 		});															
 		
 		//assume we keep aspect ratio for the thumbnail that we clicked:			
-		var tRatio = $j(this).height() / $j(this).width();
+		var tRatio = $j(rsdElement).height() / $j(rsdElement).width();
 		if(	! tRatio )		
 			var tRatio = 1; //set ratio to 1 if the width of the thumbnail can't be found for some reason
 		
@@ -501,6 +529,8 @@ remoteSearchDriver.prototype = {
 			'background-color':'#FFF',
 			'z-index':99
 		});			
+		js_log('do load the media editor:');
+		//do load the media Editor
 		_this.doMediaEdit( rObj , mediaType );	
 	},
 	loadHQImg:function(rObj, size, target_img_id, callback){		
@@ -586,18 +616,23 @@ remoteSearchDriver.prototype = {
 		var cp = rObj.pSobj.cp;	
 		var _this = this;
 		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');					
-		
-		//check if we can embed the content locally per a domain name check:
-		var local_embed_ref=false;
-		var local_host = parseUri(this.local_wiki_api_url).host;
-		if( rObj.pSobj.cp.local_domains ) {								
-			for(var i=0;i < rObj.pSobj.cp.local_domains.length; i++){
-				var ld = rObj.pSobj.cp.local_domains[i];
-				 if( local_host.indexOf( ld ) != -1)
-				 	local_embed_ref=true;
-			}
-		}		
-		//locally embeddalbe jump to callback:
+			
+		//first do the simple check
+		if( rObj.pSobj.cp.local ){
+			local_embed_ref=true;
+		}else{
+			//check if we can embed the content locally per a domain name check:
+			var local_embed_ref=false;
+			var local_host = parseUri(this.local_wiki_api_url).host;
+			if( rObj.pSobj.cp.local_domains ) {								
+				for(var i=0;i < rObj.pSobj.cp.local_domains.length; i++){
+					var ld = rObj.pSobj.cp.local_domains[i];
+					 if( local_host.indexOf( ld ) != -1)
+					 	local_embed_ref=true;
+				}
+			}		
+		}
+		//locally embed jump to callback:
 		if( local_embed_ref ){
 		 	cir_callback( rObj );
 		}else{											
@@ -903,11 +938,14 @@ remoteSearchDriver.prototype = {
 			$j(target).html('no paging for combined results');
 			return ;
 		}				
-		for(var cp_id in  this.content_providers){
-			var cp = this.content_providers[ cp_id ];			
-			if(this.disp_item == cp_id){				
-				js_log('getPaging:'+ cp_id);
-				var out = getMsg('rsd_results_desc') +  (cp.offset+1) + ' to ' + (cp.offset + cp.limit);
+		for(var cp_id in  this.content_providers){			
+			if(this.disp_item == cp_id){			
+				var cp = this.content_providers[ cp_id ];							
+				//js_log('getPaging:'+ cp_id + ' len: ' + cp.sObj.num_results);
+				var to_num = ( cp.limit > cp.sObj.num_results )?
+								(cp.offset + cp.sObj.num_results):
+								(cp.offset + cp.limit);  
+				var out = getMsg('rsd_results_desc') +  (cp.offset+1) + ' to ' + to_num;
 				//check if we have more results (next prev link)
 				if(  cp.offset >=  cp.limit )
 					out+=' <a href="#" id="rsd_pprev">' + getMsg('rsd_results_prev') + cp.limit + '</a>';
@@ -983,7 +1021,7 @@ mvBaseRemoteSearch.prototype = {
 	offset 			:0,	
 	limit  			:20,
 	more_results	:false,
-	num_results		:null,
+	num_results		:0,	
 	
 	//init the object: 
 	init:function( initObj ){		
@@ -1052,8 +1090,9 @@ mvBaseRemoteSearch.prototype = {
 		
 			rObj['pSobj'] = _this;
 			//add the result to the result set: 
-			_this.resultsObj[inx] = rObj;			
-		});
+			_this.resultsObj[inx] = rObj;	
+			_this.num_results++;		
+		});		
 	},
 	//by default just return the existing image: 
 	getImageObj:function( rObj, size, callback){
@@ -1203,7 +1242,7 @@ mediaWikiSearch.prototype = {
 	getSearchResults:function(){
 		var _this = this;
 		this.loading=true;
-		js_log('f:getSearchResults for:' + $j('#'+this.target_input).val() );		
+		js_log('f:getSearchResults for:' + $j('#rsd_q').val() );		
 		//empty out the current results: 
 		this.resultsObj={};
 		//do two queries against the Image / File / MVD namespace:
@@ -1242,11 +1281,15 @@ mediaWikiSearch.prototype = {
 		});			
 	},	
 	addResults:function( data ){	
-		var _this = this
+		js_log("f:addResults");
+		var _this = this		
 		//check if we have 
-		if( typeof data['query-continue'].search != 'undefined')
-			this.more_results = true;			
+		if( typeof data['query-continue'] != 'undefined'){
+			if( typeof data['query-continue'].search != 'undefined')
+				this.more_results = true;			
+		}
 		//make sure we have pages to iderate: 
+		
 		if(data.query && data.query.pages){
 			for(var page_id in  data.query.pages){
 				var page =  data.query.pages[ page_id ];
@@ -1257,23 +1300,24 @@ mediaWikiSearch.prototype = {
 				}
 												
 				this.resultsObj[page_id]={
-					'titleKey':page.title,
-					'link':page.imageinfo[0].descriptionurl,				
-					'title':page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv/ig, ''),
-					'poster':page.imageinfo[0].thumburl,
+					'titleKey'	: page.title,
+					'link'		:page.imageinfo[0].descriptionurl,				
+					'title'		:page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv/ig, ''),
+					'poster'	:page.imageinfo[0].thumburl,
 					'thumbwidth':page.imageinfo[0].thumbwidth,
 					'thumbheight':page.imageinfo[0].thumbheight,
-					'mime':page.imageinfo[0].mime,
-					'src':page.imageinfo[0].url,
-					'desc':page.revisions[0]['*'],		
-					//add pointer to parent serach obj:
-					'pSobj':_this,			
+					'mime'		:page.imageinfo[0].mime,
+					'src'		:page.imageinfo[0].url,
+					'desc'		:page.revisions[0]['*'],		
+					//add pointer to parent search obj:
+					'pSobj'		:_this,			
 					'meta':{
 						'categories':page.categories
 					}
 				}
+				this.num_results++;	
 				//for(var i in this.resultsObj[page_id]){
-				//	js_log('added '+ i +' '+ this.resultsObj[page_id][i]);
+				//	js_log('added: '+ i +' '+ this.resultsObj[page_id][i]);
 				//}
 			}
 		}else{
@@ -1348,7 +1392,7 @@ mediaWikiSearch.prototype = {
 			return '<video ' + id_attr + 
 						' src="' + rObj.src + '" ' +
 						style_attr +
-						' poster="'+  outOpt.url + '" '+
+						' poster="'+  rObj.poster + '" '+
 						' ></video>'; 
 		}		
 		js_log('ERROR:unsupored mime type: ' + rObj.mime);

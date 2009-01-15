@@ -50,7 +50,7 @@ function init_firefogg( iObj ){
 }
 
 var default_firefogg_options = {
-	'add_done_action':'redirect',
+	'upload_done_action':'redirect',
 	'enabled':false
 }
 var upFirefogg = function(iObj){
@@ -187,13 +187,13 @@ upFirefogg.prototype = {
 					        }
 					        //upload sucsefull, state can also be 'upload failed'
 					        else if(_this.ogg.state == 'upload done') {	
-					        	js_log('upload done');							        			        
+					        	//js_log('upload done: ' + JSON.parse(_this.ogg.uploadstatus()).responseText);							        			        
 					        	//@@todo handle errors same problem as #695 in mv_remote_media_search.js
 					        	//we need to add image uploading to the api rather than parse the HTML output of the pages  
 								var result_page = JSON.parse(_this.ogg.uploadstatus()).responseText;
 								var sstring = 'var wgTitle = "' + data['wpDestFile'].replace('_',' ');
 								if( result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
-									js_log('upload done got redirect found: ' +sstring);										
+									js_log('upload done got redirect found: ' +sstring + ' r:' + _this.upload_done_action);										
 									if(_this.upload_done_action == 'redirect'){
 										window.location = wgArticlePath.replace(/\$1/, 'File:' + data['wpDestFile'] );
 									}else{
