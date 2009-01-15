@@ -53,8 +53,7 @@ $wgCustomToolbarMessages['en'] = array(
 	'ct_submit'  => "Go!",
 	'ct_close'   => "Close window",
 	'ct_success' => "File upload successful!",
-	'ct_popupblocked'   => "The upload popup was prevented from opening.
-Please check your popup blocker.",
+	'ct_popupblocked'   => "The upload popup was prevented from opening. Please check your popup blocker.",
 
 	'ct_user_user' => "User",
 	'ct_user_tip' => "Insert a link to a user page",
