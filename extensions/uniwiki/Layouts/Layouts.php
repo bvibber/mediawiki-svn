@@ -86,7 +86,8 @@ function UW_Layouts_maybeRedirectToLayout( $article, $user ) {
 	 * and the page is in a namespace that is using the extension
 	 * and we are not submitting the form (either saving OR preview)
 	 * and we're NOT editing an old revision */
-	if ( ( !isset( $wgRequest->data['oldid'] ) || $article->fetchContent( $wgRequest->data['oldid'] ) === false )
+	if ( $article->getID() === 0 
+	&& ( !isset( $wgRequest->data['oldid'] ) || $article->fetchContent( $wgRequest->data['oldid'] ) === false )
 	&& ( $wgRequest->getVal ( "layout" ) === NULL )
 	&& in_array ( $article->mTitle->getNamespace(), $wgLayoutWhiteList )
 	&& ( $wgRequest->getVal( "action" ) != "submit" ) )
