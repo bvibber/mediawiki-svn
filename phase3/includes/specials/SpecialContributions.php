@@ -392,13 +392,18 @@ class ContribsPager extends ReverseChronologicalPager {
 
 	function getQueryInfo() {
 		list( $tables, $index, $userCond, $join_cond ) = $this->getUserCond();
-		$conds = array_merge( array('page_id=rev_page'), $userCond, $this->getNamespaceCond() );
+
+		$tables[] = 'tag_summary';
+		$join_cond['tag_summary'] = array('LEFT JOIN','ts_rev_id=rev_id');
+		$join_cond['page'] = array( 'INNER JOIN', 'page_id=rev_page' );
+		
+		$conds = array_merge( $userCond, $this->getNamespaceCond() );
 		$queryInfo = array(
 			'tables' => $tables,
 			'fields' => array(
 				'page_namespace', 'page_title', 'page_is_new', 'page_latest', 'rev_id', 'rev_page',
 				'rev_text_id', 'rev_timestamp', 'rev_comment', 'rev_minor_edit', 'rev_user',
-				'rev_user_text', 'rev_parent_id', 'rev_deleted'
+				'rev_user_text', 'rev_parent_id', 'rev_deleted', 'ts_tags',
 			),
 			'conds' => $conds,
 			'options' => array( 'USE INDEX' => array('revision' => $index) ),
@@ -464,6 +469,7 @@ class ContribsPager extends ReverseChronologicalPager {
 
 		$sk = $this->getSkin();
 		$rev = new Revision( $row );
+		$classes = array();
 
 		$page = Title::makeTitle( $row->page_namespace, $row->page_title );
 		$link = $sk->makeKnownLinkObj( $page );
@@ -520,10 +526,28 @@ class ContribsPager extends ReverseChronologicalPager {
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
+
+		# Tags, if any.
+		if ($row->ts_tags) {
+			$tags = explode( ',', $row->ts_tags );
+			$displayTags = array();
+			foreach( $tags as $tag ) {
+				if (!wfEmptyMsg( "recentchanges-tag-$tag" , wfMsg( "recentchanges-tag-$tag" ) ) ) {
+					$displayTags[] = wfMsgExt( "recentchanges-tag-$tag", 'parseinline' );
+				} else {
+					$displayTags[] = $tag;
+				}
+			}
+
+			$ret .= ' (' . implode( ', ', $displayTags ) . ')';
+			$classes = array_merge( $classes, $tags );
+		}
+
 		// Let extensions add data
 		wfRunHooks( 'ContributionsLineEnding', array( &$this, &$ret, $row ) );
-		
-		$ret = "<li>$ret</li>\n";
+
+		$classes = implode( ' ', $classes );
+		$ret = "<li class=\"$classes\">$ret</li>\n";
 		wfProfileOut( __METHOD__ );
 		return $ret;
 	}

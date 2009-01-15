@@ -235,6 +235,9 @@ class SpecialNewpages extends SpecialPage {
 	 */
 	public function formatRow( $result ) {
 		global $wgLang, $wgContLang, $wgUser;
+
+		$classes = array();
+		
 		$dm = $wgContLang->getDirMark();
 
 		$title = Title::makeTitleSafe( $result->rc_namespace, $result->rc_title );
@@ -247,9 +250,30 @@ class SpecialNewpages extends SpecialPage {
 		$ulink = $this->skin->userLink( $result->rc_user, $result->rc_user_text ) . ' ' .
 			$this->skin->userToolLinks( $result->rc_user, $result->rc_user_text );
 		$comment = $this->skin->commentBlock( $result->rc_comment );
-		$css = $this->patrollable( $result ) ? " class='not-patrolled'" : '';
+		
+		if ( $this->patrollable( $result ) )
+			$classes[] = 'not-patrolled';
 
-		return "<li{$css}>{$time} {$dm}{$plink} ({$hist}) {$dm}[{$length}] {$dm}{$ulink} {$comment}</li>\n";
+		# Tags, if any.
+		$tagDisplay = '';
+		if ($result->ts_tags) {
+			$tags = explode( ',', $result->ts_tags );
+			$displayTags = array();
+			foreach( $tags as $tag ) {
+				if (!wfEmptyMsg( "recentchanges-tag-$tag" , wfMsg( "recentchanges-tag-$tag" ) ) ) {
+					$displayTags[] = wfMsgExt( "recentchanges-tag-$tag", 'parseinline' );
+				} else {
+					$displayTags[] = $tag;
+				}
+			}
+
+			$tagDisplay = ' (' . implode( ', ', $displayTags ) . ')';
+			$classes = array_merge( $classes, $tags );
+		}
+
+		$css = count($classes) ? ' class="'.implode( " ", $classes).'"' : '';
+
+		return "<li{$css}>{$time} {$dm}{$plink} ({$hist}) {$dm}[{$length}] {$dm}{$ulink} {$comment} {$tagDisplay}</li>\n";
 	}
 
 	/**
@@ -378,7 +402,6 @@ class NewPagesPager extends ReverseChronologicalPager {
 		} else {
 			$rcIndexes = array( 'rc_timestamp' );
 		}
-		$conds[] = 'page_id = rc_cur_id';
 
 		# $wgEnableNewpagesUserFilter - temp WMF hack
 		if( $wgEnableNewpagesUserFilter && $user ) {
@@ -401,11 +424,15 @@ class NewPagesPager extends ReverseChronologicalPager {
 		}
 
 		return array(
-			'tables' => array( 'recentchanges', 'page' ),
+			'tables' => array( 'recentchanges', 'page', 'tag_summary' ),
 			'fields' => 'rc_namespace,rc_title, rc_cur_id, rc_user,rc_user_text,rc_comment,
-				rc_timestamp,rc_patrolled,rc_id,page_len as length, page_latest as rev_id',
+				rc_timestamp,rc_patrolled,rc_id,page_len as length, page_latest as rev_id, ts_tags',
 			'conds' => $conds,
-			'options' => array( 'USE INDEX' => array('recentchanges' => $rcIndexes) )
+			'options' => array( 'USE INDEX' => array('recentchanges' => $rcIndexes) ),
+			'join_conds' => array(
+				'tag_summary' => array('LEFT JOIN', 'ts_rc_id=rc_id'),
+				'page' => array('INNER JOIN', 'page_id=rc_cur_id'),
+			),
 		);
 	}
 

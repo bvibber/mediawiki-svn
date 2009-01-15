@@ -82,6 +82,11 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$join_conds['watchlist'] = array( 'LEFT JOIN', "wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace" );
 		}
 
+		// JOIN on tag_summary
+		$tables[] = 'tag_summary';
+		$select[] = 'ts_tags';
+		$join_conds['tag_summary'] = array( 'LEFT JOIN', 'ts_rc_id=rc_id' );
+
 		// XXX: parent class does this, should we too?
 		// wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
 

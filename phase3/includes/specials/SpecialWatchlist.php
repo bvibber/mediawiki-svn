@@ -189,12 +189,13 @@ function wfSpecialWatchlist( $par ) {
 	}
 	$form .= '<hr />';
 	
-	$tables = array( 'recentchanges', 'watchlist', 'page' );
-	$fields = array( "{$recentchanges}.*" );
+	$tables = array( 'recentchanges', 'watchlist', 'page', 'tag_summary' );
+	$fields = array( "{$recentchanges}.*", 'ts_tags' );
 	$conds = array();
 	$join_conds = array(
 		'watchlist' => array('INNER JOIN',"wl_user='{$uid}' AND wl_namespace=rc_namespace AND wl_title=rc_title"),
-		'page'      => array('LEFT JOIN','rc_cur_id=page_id')
+		'page'      => array('LEFT JOIN','rc_cur_id=page_id'),
+		'tag_summary' => array('LEFT JOIN', 'ts_rc_id=rc_id'),
 	);
 	$options = array( 'ORDER BY' => 'rc_timestamp DESC' );
 	if( $wgShowUpdatedMarker ) {

@@ -274,12 +274,18 @@ class SpecialRecentChanges extends SpecialPage {
 		$namespace = $opts['namespace'];
 		$invert = $opts['invert'];
 
+		$join_conds = array();
+
 		// JOIN on watchlist for users
 		if( $uid ) {
 			$tables[] = 'watchlist';
-			$join_conds = array( 'watchlist' => array('LEFT JOIN',
-				"wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace") );
+			$join_conds['watchlist'] = array('LEFT JOIN',
+				"wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace");
 		}
+
+		// JOIN on tag_summary
+		$tables[] = 'tag_summary';
+		$join_conds['tag_summary'] = array( 'LEFT JOIN', 'ts_rc_id=rc_id' );
 
 		wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
 

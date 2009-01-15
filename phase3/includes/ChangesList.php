@@ -338,6 +338,7 @@ class OldChangesList extends ChangesList {
 		$this->insertDateHeader( $dateheader, $rc->mAttribs['rc_timestamp'] );
 
 		$s = '';
+		$classes = array();
 		// Moved pages
 		if( $rc->mAttribs['rc_type'] == RC_MOVE || $rc->mAttribs['rc_type'] == RC_MOVE_OVER_REDIRECT ) {
 			$this->insertMove( $s, $rc );
@@ -383,11 +384,28 @@ class OldChangesList extends ChangesList {
 			$s .= ' ' . wfMsg( 'number_of_watching_users_RCview', 
 				$wgContLang->formatNum($rc->numberofWatchingusers) );
 		}
+		# Tags, if any.
+		if ($rc->mAttribs['ts_tags']) {
+			$tags = explode( ',', $rc->mAttribs['ts_tags'] );
+			$displayTags = array();
+			foreach( $tags as $tag ) {
+				if (!wfEmptyMsg( "recentchanges-tag-$tag" , wfMsg( "recentchanges-tag-$tag" ) ) ) {
+					$displayTags[] = wfMsgExt( "recentchanges-tag-$tag", 'parseinline' );
+				} else {
+					$displayTags[] = $tag;
+				}
+			}
+			
+			$s .= ' (' . implode( ', ', $displayTags ) . ')';
+			$classes = array_merge( $classes, $tags );
+		}
 
+		## Classes
+		$classes = implode( ' ', $classes );
 		wfRunHooks( 'OldChangesListRecentChangesLine', array(&$this, &$s, $rc) );
 
 		wfProfileOut( __METHOD__ );
-		return "$dateheader<li>$s</li>\n";
+		return "$dateheader<li class=\"$classes\">$s</li>\n";
 	}
 }
 
