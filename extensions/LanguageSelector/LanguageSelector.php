@@ -297,7 +297,7 @@ function wfLanguageSelectorDetectLanguage( $mode ) {
 	* see if the content language is accepted by the 
 	* client.
 	*/
-	if ( $mode == LANGUAGE_SELECTOR_PREFER_CONTENT_LANG && array_key_exist( $contLang, $languages ) ) {
+	if ( $mode == LANGUAGE_SELECTOR_PREFER_CONTENT_LANG && array_key_exists( $contLang, $languages ) ) {
 		return $contLang;
 	}
 	
