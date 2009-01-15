@@ -102,18 +102,30 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
+	'gep-desc' => 'Дапаўняе старонку рэдагаваньня, каб зрабіць яе больш зручнай для ўдзельніка',
 	'gep-emailsubject' => '[$1] Прапанаваная катэгорыя: $2',
+	'gep-emailbody' => 'Удзельнік «$1» прапанаваў катэгорыю «$2» для сайта «$3».',
+	'gep-emailfailure' => 'Прабачце, Вашая прапанова ня можа быць апрацаваная.',
 	'gep-emailsuccess' => 'Дзякуй за прапанову катэгорыі «$1».',
 	'gep-categories' => 'Катэгорыі',
 	'gep-addcategory' => 'Дадаць катэгорыю',
 	'gep-addcategorybutton' => 'Дадаць',
 	'gep-suggestcategory' => 'Прапанаваць катэгорыю',
+	'gep-suggestcategorybutton' => 'Даслаць',
 	'gep-sections' => 'Сэкцыі',
+	'gep-sectionnotdisabled' => 'Гэтая сэкцыя ня можа быць адключаная',
 	'gep-addsection' => 'Дадаць сэкцыю',
 	'gep-addsectionbutton' => 'Дадаць',
+	'gep-classicmode' => 'Клясычны рэжым',
+	'gep-genericmode' => 'Агульны рэжым',
+	'gep-nosectioninstructions' => 'На гэтай старонцы няма сэкцыяў.
+Дадайце іх з дапамогай інструмэнтаў у мэню.',
+	'gep-nocategories' => 'Калі ласка, выберыце хаця б адну катэгорыю перад захаваньнем',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Bulgarian (Български)
@@ -121,16 +133,19 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'gep-emailbody' => 'Потребител „$1“ предложи категория „$2“ за сайта „$3“.',
+	'gep-emailfailure' => 'За съжаление предложението не може да бъде обработено.',
+	'gep-emailsuccess' => 'Благодарности за предложената категория: $1.',
 	'gep-categories' => 'Категории',
 	'gep-addcategory' => 'Добавяне на категория',
 	'gep-addcategorybutton' => 'Добавяне',
+	'gep-suggestcategory' => 'Предлагане на категория',
 	'gep-suggestcategorybutton' => 'Изпращане',
 	'gep-sections' => 'Раздели',
 	'gep-sectionnotdisabled' => 'Този раздел не може да бъде изключен',
 	'gep-addsection' => 'Добавяне на раздел',
 	'gep-addsectionbutton' => 'Добавяне',
 	'gep-nosectioninstructions' => 'Тази страница не съдържа раздели.
-Раздели могат да бъдат добавяни чрез инструментите в дясно.',
+Раздели могат да бъдат добавяни чрез менюто.',
 	'gep-nocategories' => 'Преди да съхраните, изберете поне една категория',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -714,6 +729,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'gep-desc' => 'Suplementa a página de edição por forma a ser mais amigável',
 	'gep-emailsubject' => '[$1] Sugestão de categoria: $2',
 	'gep-emailbody' => 'O utilizador "$1" sugeriu a categoria "$2" para o sítio "$3".',
 	'gep-emailfailure' => 'Desculpe, a sua sugestão não pôde ser processada.',
@@ -722,10 +738,17 @@ $messages['pt'] = array(
 	'gep-addcategory' => 'Adicionar uma categoria',
 	'gep-addcategorybutton' => 'Adicionar',
 	'gep-suggestcategory' => 'Sugerir uma categoria',
+	'gep-suggestcategorybutton' => 'Submeter',
+	'gep-sections' => 'Secções',
+	'gep-sectionnotdisabled' => 'Esta secção não pode ser desativada',
+	'gep-addsection' => 'Adicionar uma secção',
 	'gep-addsectionbutton' => 'Adicionar',
 	'gep-classicmode' => 'Modo clássico',
 	'gep-genericmode' => 'Modo genérico',
-	'gep-nocategories' => 'Por favor, seleccione pelo menos uma categoria antes de gravar',
+	'gep-nosectioninstructions' => 'Não há quaisquer seleções nesta página.
+Adicione algumas utilizando as ferramentas na barra de menu.',
+	'gep-nocategories' => 'Por favor, selecione pelo menos uma categoria antes de gravar',
+	'gep-categorypage' => 'MediaWiki:MarcasPáginaEdição',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
@@ -842,6 +865,32 @@ $messages['sk'] = array(
 	'gep-nosectioninstructions' => 'Na tejto stránke nie sú žiadne sekcie.
 Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
 	'gep-nocategories' => 'Prosím, vyberte pred uložením aspoň jednu kategóriu.',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'gep-desc' => 'Tousätse tou ju Beoarbaidengssiede, uum ju benutserfründelk tou moakjen',
+	'gep-emailsubject' => '[$1] Foarsleek Kategorie: $2',
+	'gep-emailbody' => 'Benutser „$1“ häd ju Kategorie „$2“ foar ju Siede „$3“ uutwääld.',
+	'gep-emailfailure' => 'Dät is spietelk, man din Foarsleek kuud nit feroarbaided wäide.',
+	'gep-emailsuccess' => 'Tonk foar dän Foarsleek fon ju Kategorie: $1.',
+	'gep-categories' => 'Kategorien',
+	'gep-addcategory' => 'Ne Kategorie ienföigje',
+	'gep-addcategorybutton' => 'Ienföigje',
+	'gep-suggestcategory' => 'Ne Kategorie foarslo',
+	'gep-suggestcategorybutton' => 'Seende',
+	'gep-sections' => 'Ousnitte',
+	'gep-sectionnotdisabled' => 'Dissen Ousnit kon nit aphieuwed wäide',
+	'gep-addsection' => 'N Ousnit ienföigje',
+	'gep-addsectionbutton' => 'Ienföigje',
+	'gep-classicmode' => 'Normoalen Modus',
+	'gep-genericmode' => 'Generellen Modus',
+	'gep-nosectioninstructions' => 'Disse Siede häd neen Ousnitte.
+Mäd do Reewen an ju Siede konnen wäkke bietouföiged wäide.',
+	'gep-nocategories' => 'Foar dät Ouspiekerjen toumindest een Kategorie uutsäike',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 

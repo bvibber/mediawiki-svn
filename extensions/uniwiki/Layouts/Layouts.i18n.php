@@ -56,9 +56,18 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
+	'layouts-desc' => 'Запаўняе новыя старонкі «макетамі» для заахвочваньня ўжываньня агульнай структуры старонак',
 	'layouts_title' => 'Стварыць старонку',
+	'layouts_chooselayout' => 'Выбар макету для $1:',
+	'layouts_nolayout' => 'Няма макету',
+	'layouts_continue' => 'Працягваць',
+	'layouts_choosecategory' => 'Выбар катэгорыі для $1:',
+	'layouts_unknown' => 'Невядомы',
+	'layouts_tagline' => "Гэта старонка была створаная з дапамогай макету '''$1'''.",
 );
 
 /** Bulgarian (Български)
@@ -462,6 +471,20 @@ $messages['sk'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'layouts-desc' => 'Bestukket frisk moakede Sieden mäd beoarbaidboare „Gestaltengen“, uum ne eenhaidlike Struktur fon Sieden tou föärderjen',
+	'layouts_title' => 'Näie Siede moakje',
+	'layouts_chooselayout' => 'Säik n Formoat foar $1 uut:',
+	'layouts_nolayout' => 'Neen Formoat',
+	'layouts_continue' => 'Fääre',
+	'layouts_choosecategory' => 'Säik ne Kategorie foar $1 uut:',
+	'layouts_unknown' => 'Uunbekoand',
+	'layouts_tagline' => "Disse Siede wuud mäd dät '''$1''' moaked.",
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */
@@ -513,6 +536,7 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'layouts_title' => 'Jafön padi',
+	'layouts_continue' => 'Föfiö!',
 	'layouts_choosecategory' => 'Välön kladi pro $1:',
 	'layouts_unknown' => 'Nesevädik',
 );

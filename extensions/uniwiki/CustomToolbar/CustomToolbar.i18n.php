@@ -182,21 +182,52 @@ $wgCustomToolbarMessages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
+ * @author Red Winged Duck
  */
 $wgCustomToolbarMessages['be-tarask'] = array(
+	'ct-desc' => 'Дадае пашыраную панэль',
 	'ct_bold_sample' => 'Тлусты тэкст',
+	'ct_bold_tip_ins' => 'Уставіць тлусты тэкст',
+	'ct_bold_tip_wrap' => 'Зрабіць гэты тэкст тлустым',
 	'ct_bold_caption' => 'Тлусты шрыфт',
 	'ct_italic_sample' => 'Курсіўны тэкст',
+	'ct_italic_tip_ins' => 'Уставіць курсіўны тэкст',
+	'ct_italic_tip_wrap' => 'Зрабіць гэты тэкст курсіўным',
 	'ct_italic_caption' => 'Курсіў',
 	'ct_internal_sample' => 'Назва старонкі',
+	'ct_internal_tip_ins' => 'Уставіць унутраную спасылку',
+	'ct_internal_tip_wrap' => 'Зрабіць гэты тэкст унутранай спасылкай',
 	'ct_internal_caption' => 'Унутраная спасылка',
+	'ct_external_tip_ins' => 'Уставіць вонкавую спасылку',
+	'ct_external_tip_wrap' => 'Зрабіць гэты тэкст вонкавай спасылкай',
 	'ct_external_caption' => 'Вонкавая спасылка',
+	'ct_image_tip' => 'Уставіць выяву',
 	'ct_image_caption' => 'Дадаць выяву',
+	'ct_attachment_tip' => 'Уставіць далучэньне',
+	'ct_attachment_caption' => 'Дадаць далучэньне',
+	'ct_math_sample' => 'Уставіць сюды формулу LaTeX',
+	'ct_math_tip_ins' => 'Уставіць матэматычную формулу (LaTeX)',
+	'ct_math_tip_wrap' => 'Зрабіць гэты тэкст матэматычнай формулай (LaTeX)',
 	'ct_math_caption' => 'Формула',
+	'ct_nowiki_sample' => 'Устаўце сюды нефарматаваны тэкст',
 	'ct_nowiki_tip_ins' => 'Ігнараваць вікі-фарматаваньне',
+	'ct_nowiki_tip_wrap' => 'Ігнараваць вікі-фарматаваньне для гэтага тэксту',
+	'ct_nowiki_caption' => 'Бязь вікі-фарматаваньня',
+	'ct_horizontal_tip' => 'Уставіць гарызантальную лінію (не выкарыстоўвайце часта)',
 	'ct_horizontal_caption' => 'Гарызантальная лінія',
 	'ct_upload' => 'Загрузіць $1',
+	'ct_select' => 'Выбраць $1 для загрузкі',
+	'ct_caption' => 'Дадаць загаловак (неабавязкова)',
+	'ct_link' => 'Дадаць назву спасылкі (неабавязкова)',
+	'ct_submit' => 'Наперад!',
+	'ct_close' => 'Зачыніць акно',
+	'ct_success' => 'Файл пасьпяхова загружаны!',
+	'ct_popupblocked' => 'Усплываючае акно загрузкі не было адчыненае.
+Калі ласка, праверце блякаваньне ўсплываючых вокнаў.',
 	'ct_user_user' => 'Удзельнік',
+	'ct_user_tip' => 'Уставіць спасылку на старонку ўдзельніка',
+	'ct_user_caption' => 'Спасылка на старонку ўдзельніка',
 	'ct_user_sample' => 'Імя ўдзельніка',
 );
 
@@ -1298,6 +1329,24 @@ $wgCustomToolbarMessages['ps'] = array(
 	'ct_user_sample' => 'کارن-نوم',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$wgCustomToolbarMessages['pt'] = array(
+	'ct-desc' => 'Adiciona uma barra de ferramentas extensível',
+	'ct_bold_sample' => 'Texto negrito',
+	'ct_bold_caption' => 'Negrito',
+	'ct_italic_sample' => 'Texto itálico',
+	'ct_italic_caption' => 'Itálico',
+	'ct_internal_sample' => 'NomeDaPágina',
+	'ct_image_caption' => 'Adicionar imagem',
+	'ct_math_caption' => 'Fórmula',
+	'ct_upload' => 'Carregar $1',
+	'ct_close' => 'Fechar janela',
+	'ct_user_user' => 'Utilizador',
+	'ct_user_sample' => 'Nome de utilizador',
+);
+
 /** Brazilian Portuguese (Português do Brasil) */
 $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_bold_sample' => 'Texto em negrito',
@@ -1480,6 +1529,55 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
 	'ct_user_tip' => 'Vložiť odkaz na používateľskú stránku',
 	'ct_user_caption' => 'Odkaz na používateľa',
 	'ct_user_sample' => 'Používateľské meno',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$wgCustomToolbarMessages['stq'] = array(
+	'ct-desc' => 'Föiget ne ärwiederboare Reewelieste bietou',
+	'ct_bold_sample' => 'Fatten Text',
+	'ct_bold_tip_ins' => 'Fatten Text ienföigje',
+	'ct_bold_tip_wrap' => 'Dissen Text fat markierje',
+	'ct_bold_caption' => 'Fat',
+	'ct_italic_sample' => 'Scheeuwen Text',
+	'ct_italic_tip_ins' => 'Scheeuwen Text ienföigje',
+	'ct_italic_tip_wrap' => 'Dissen Text scheeuw markierje',
+	'ct_italic_caption' => 'Scheeuw',
+	'ct_internal_sample' => 'Siedennoome',
+	'ct_internal_tip_ins' => 'N internen Link ienföigje',
+	'ct_internal_tip_wrap' => 'Dissen Text in n internen Link uumewondelje',
+	'ct_internal_caption' => 'Internen Link',
+	'ct_external_tip_ins' => 'N externen Link ienföigje',
+	'ct_external_tip_wrap' => 'Moak dissen Text n externen Link',
+	'ct_external_caption' => 'Externen Link',
+	'ct_image_tip' => 'Ne Bielde ienföigje',
+	'ct_image_caption' => 'Bielde ienföigje',
+	'ct_attachment_tip' => 'Ne Anloage ienföigje',
+	'ct_attachment_caption' => 'Ne Anloage anföigje',
+	'ct_math_sample' => 'Hier LaTex Formel ienföigje',
+	'ct_math_tip_ins' => 'Hier mathematisken Formel ienföigje (LaTex)',
+	'ct_math_tip_wrap' => 'Dissen Text in n mathematisken Text uumewondelje (LaTex)',
+	'ct_math_caption' => 'Formel',
+	'ct_nowiki_sample' => 'Hier uunformattierden Text ienreeke',
+	'ct_nowiki_tip_ins' => 'Ignorierje Wiki-Formatierenge',
+	'ct_nowiki_tip_wrap' => 'Ignorierje Wiki-Formatierenge foar dissen Text',
+	'ct_nowiki_caption' => 'Neen Wiki',
+	'ct_horizontal_tip' => 'Ne woage Lienje ienföigje (nit al tou oaft ferweende)',
+	'ct_horizontal_caption' => 'Woage Lienje',
+	'ct_upload' => 'Hoochleede $1',
+	'ct_select' => 'Wääl $1 toun Hoochleeden',
+	'ct_caption' => 'Beschriftenge ienföigje (optionoal)',
+	'ct_link' => 'Link benaame (optionoal)',
+	'ct_submit' => 'Go!',
+	'ct_close' => 'Finster sluute',
+	'ct_success' => 'Doatäi mäd Ärfoulch hoochleeden!',
+	'ct_popupblocked' => 'Dät Hoochleeden-Popup wuud an dät Eepenjen hinnerd.
+Wröich din Popup-Blocker.',
+	'ct_user_user' => 'Benutser',
+	'ct_user_tip' => 'N Link tou ju Siede fon n Früünd ienföigje',
+	'ct_user_caption' => 'N Link tou n Früünd ienföigje',
+	'ct_user_sample' => 'Benutsernoome',
 );
 
 /** Swedish (Svenska)
@@ -1691,10 +1789,34 @@ $wgCustomToolbarMessages['vi'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $wgCustomToolbarMessages['vo'] = array(
+	'ct_bold_sample' => 'Vödem bigik',
+	'ct_bold_tip_ins' => 'Nüpladön vödemi bigik',
+	'ct_bold_tip_wrap' => 'Bigükön vödemi at',
+	'ct_bold_caption' => 'Bigik',
+	'ct_italic_sample' => 'Vödem korsivik',
+	'ct_italic_tip_ins' => 'Nüpladön vödemi korsivik',
+	'ct_italic_tip_wrap' => 'Korsivükön vödemi at',
+	'ct_italic_caption' => 'Korsivik',
+	'ct_internal_sample' => 'PadaNem',
+	'ct_internal_caption' => 'Yüm ninik',
+	'ct_external_caption' => 'Yüm plödik',
+	'ct_image_tip' => 'Nüpladön magodi',
 	'ct_image_caption' => 'Läükön magodi',
+	'ct_nowiki_tip_ins' => 'Nedemön fomätami vükik',
+	'ct_nowiki_tip_wrap' => 'Nedemön fomätami vükik in vödem at',
+	'ct_upload' => 'Löpükön $1',
+	'ct_select' => 'Välön $1 ad palöpükön',
+	'ct_link' => 'Läükön yümanemi (no paflagöl)',
+	'ct_submit' => 'Ledunön',
+	'ct_close' => 'Färmükön fenäti',
+	'ct_success' => 'Ragivalöpükam benosekik!',
+	'ct_user_user' => 'Geban',
+	'ct_user_caption' => 'Gebanayüm',
+	'ct_user_sample' => 'Gebananem',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

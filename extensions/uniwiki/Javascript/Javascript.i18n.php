@@ -35,6 +35,20 @@ $messages['arz'] = array(
 	'javascript-desc' => 'بيضيف uniwiki.js لكل صفحة فيها شفرة جافاسكربت مشاركة بين امتدادات يونيويكى',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'javascript-desc' => 'Дадае uniwiki.js, агульны для пашырэньняў Uniwiki, на кожную старонку, якая ўтрымлівае код JavaScript',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'javascript-desc' => 'Добавя uniwiki.js към всяка страница, съдържаща Джаваскрипт код, използван от разширенията Uniwiki',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -217,6 +231,20 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'javascript-desc' => 'Pridáva uniwiki.js na každú stránku obsahujúci JavaScriptový kód spoločný pre rozšírenia Uniwiki',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'javascript-desc' => 'Föiget uniwiki.js in älke Siede ien ju n JavaScript-Code änthaalt, die der fon ferscheedene Uniwiki-Erwiederengen deeld wäd.',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'javascript-desc' => 'Nambahkeun uniwiki.js kana unggal kaca anu ngandung sandi JavaScript nu dipaké ku éksténsi Uniwiki',
 );
 
 /** Swedish (Svenska)

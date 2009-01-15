@@ -308,6 +308,13 @@ $messages['ast'] = array(
 	'openidlanguage' => 'Llingua',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'openidlanguage' => 'Мова',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -1008,6 +1015,80 @@ $messages['grc'] = array(
 	'openidemail' => 'Ἡλεκτρονικὴ διεύθυνσις',
 	'openidlanguage' => 'Γλῶττα',
 	'openidchoosepassword' => 'σύνθημα:',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'openid-desc' => 'Mit eme Wiki-Benutzerkonto in däm Wiki mit ere [http://openid.net/ OpenID] aamälde un bi andere Netzsyte aamälde, wu OpenID unterstitze',
+	'openidlogin' => 'Aamälde mit OpenID',
+	'openidfinish' => 'OpenID-Aamäldig abschliesse',
+	'openidserver' => 'OpenID-Server',
+	'openidxrds' => 'Yadis-Datei',
+	'openidconvert' => 'OpenID-Konverter',
+	'openiderror' => 'Iberpriefigsfähler',
+	'openiderrortext' => 'S het e Fähle gee derwyylscht d OpenID-URL iberprieft woren isch.',
+	'openidconfigerror' => 'OpenID-Konfigurationsfähler',
+	'openidconfigerrortext' => 'D OpenID-Spycherkonfiguarion fir des Wiki isch fählerhaft.
+Bitte gib eme [[Special:ListUsers/sysop|Ammann]] e Nochricht.',
+	'openidpermission' => 'OpenID-Berächtigungsfähler',
+	'openidpermissiontext' => 'D OpenID, wu Du aagee hesch, berächtigt nit zue dr Aamäldig bi däm Server.',
+	'openidcancel' => 'Iberpriefig abbroche',
+	'openidcanceltext' => 'D Iberpriefig vu dr OpenID-URL isch abbroche wore.',
+	'openidfailure' => 'Iberpriefigsfähler',
+	'openidfailuretext' => 'D Iberpriefig vu dr OpenID-URL isch fählgschlaa. Fählermäldig: „$1“',
+	'openidsuccess' => 'Erfolgryych iberprieft',
+	'openidsuccesstext' => 'D Iberpriefig vu dr OpenID-URL isch erfolgryych gsi.',
+	'openidusernameprefix' => 'OpenID-Benutzer',
+	'openidserverlogininstructions' => 'Gib Dyy Passwort unten yy go Di as Benutzer $2 an $3 aazmälde (Benutzersyte $1).',
+	'openidtrustinstructions' => 'Prief, eb Du Date mit $1 wit teile.',
+	'openidallowtrust' => 'Erlaub $1, däm Benutzerkonto z vertröue.',
+	'openidnopolicy' => 'D Syte het kei Dateschutzrichtlinie aagee.',
+	'openidpolicy' => 'Prief d <a target="_new" href="$1">Dateschutzrichtlinie</a> fir wyteri Informatione.',
+	'openidoptional' => 'Optional',
+	'openidrequired' => 'Pflicht',
+	'openidnickname' => 'Benutzername',
+	'openidfullname' => 'Vollständiger Name',
+	'openidemail' => 'E-Mail-Adräss:',
+	'openidlanguage' => 'Sproch',
+	'openidnotavailable' => 'Dyy bevorzugte Benutzername ($1) wird scho vun eme andere Benutzer verwändet.',
+	'openidnotprovided' => 'Dyy OpenID-Server unterstitzt kei Nicknäme (wel er s nit cha oder wel Du s ihm nit erlaubt hesch).',
+	'openidchooseinstructions' => 'Alli Benutzer bruuche ne Benutzername;
+Du chasch us däre Lischt ein uussueche.',
+	'openidchoosefull' => 'Dyy vollständige Name ($1)',
+	'openidchooseurl' => 'E Name us Dyynere OpenID ($1)',
+	'openidchooseauto' => 'E automatisch aagleite Name ($1)',
+	'openidchoosemanual' => 'E vu Dir gwehlte Name:',
+	'openidchooseexisting' => 'E Benutzerkonto, wu s in däm Wiki git:',
+	'openidchoosepassword' => 'Passwort:',
+	'openidconvertinstructions' => 'Mit däm Formular chasch Dyy Benutzerkonto frejgee fir d Benutzig vun ere OpenID-URL.',
+	'openidconvertsuccess' => 'Erfolgryych no OpenID konvertiert',
+	'openidconvertsuccesstext' => 'Du hesch d Konvertierig vu Dyynere OpenID no $1 erfolgryych durgfiert.',
+	'openidconvertyourstext' => 'Des isch scho Dyyni OpenID.',
+	'openidconvertothertext' => 'Des isch d OpenID vu eber anderem.',
+	'openidalreadyloggedin' => "'''Du bisch scho aagmäldet, $1!'''
+
+Wänn Du OpenID fir s Aamälde in Zuechumft wit nutze, no chasch [[Special:OpenIDConvert|Dyy Benutzerkonto no OpenID konvertiere]].",
+	'tog-hideopenid' => 'Versteck Dyyni <a href="http://openid.net/">OpenID</a> uf Dyynere Benutzersyte, wänn Di mit OpenID aamäldsch.',
+	'openidnousername' => 'Kei Benutzername aagee.',
+	'openidbadusername' => 'Falsche Benutzername aagee.',
+	'openidautosubmit' => 'Uf däre Syte het s e Formular, wu automatisch ibertrait wird, wänn JavaSkript aktiviert isch. Wänn nit, no druck bitte uf „Wyter“.',
+	'openidclientonlytext' => 'Du chasch kei Benutzerkonte us däm Wiki as OpenID fir anderi Syte verwände.',
+	'openidloginlabel' => 'OpenID-URL',
+	'openidlogininstructions' => "{{SITENAME}} unterstitzt dr [http://openid.net/ OpenID]-Standard zum sich fir mehreri Websites aazmälde.
+OpenID mäldet Di bi vyyle unterschidlige Netzsyte aa, ohni ass Du fir jedi e ander Passwort muesch verwände.
+(Meh Informatione bietet dr [http://de.wikipedia.org/wiki/OpenID dytsch Wikipedia-Artikel zue dr OpenID].)
+
+Wänn Du imfall scho ne Benutzerkonto bi {{SITENAME}} hesch, no chasch Di ganz normal mit em Benutzername un em Passwort [[Special:UserLogin|aamälde]].
+Wänn Du in Zuechumft OpenID mechtsch verwände, chasch [[Special:OpenIDConvert|Dyy Account zue OpenID konvertiere]], wänn Di normal aagmäldet hesch.
+
+S git vyyl [http://wiki.openid.net/Public_OpenID_providers effentligi OpenID-Provider] un villicht hesch scho ne  Benutzerkonto mit aktiviertem OpenID bin eme andere Aabieter.
+
+; Anderi Sites: Wänn Du scho ne Benutzerkonto uf eme Wiki mit aktiviertem OpenID hesch, wie z. B. [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] oder [http://kei.ki/ Keiki], chasch Di bi {{SITENAME}} aamälde, wänn Du di '''komplett URL''' vu Dyynere Benutzersyte uf däm andere Wiki in Textfäld obe yygisch. Z. B.  ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!]: Wänn Du ne Yahoo!-Konto hesch, chasch Di mit dr OpenID, wu vu Yahoo! aagee wird, im Textfäld obe aamälde. Yahoo!-OpenID hän d Form ''<nowiki>https://me.yahoo.com/dyybenutzername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL]: Wänn Du ne [http://www.aol.com/ AOL]-Konto hesch, z B. e  [http://www.aim.com/ AIM]-Benutzerkonto, chasch Di bi {{SITENAME}} aamälde, wänn Du OpenID, wu vu AOL aagee wird, im  Textfäld yygisch. AOL-OpenID hän d Form ''<nowiki>http://openid.aol.com/dyybenutzername</nowiki>''. Dyy Benutzername sott nume us chleine Buechstabe bstoh un s sott kei Läärzeiche din haa.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Wänn Du uf däne Syte ne Blog hesch, no gib d URL vu Dyynem Blog in s Textfäld obe yy. Z. B. ''<nowiki>http://deinbenutzername.blogspot.com/</nowiki>'', ''<nowiki>http://dyybenutzername.wordpress.com/</nowiki>'', ''<nowiki>http://dyybenutzername.livejournal.com/</nowiki>'', oder ''<nowiki>http://dyybenutzername.vox.com/</nowiki>''.",
 );
 
 /** Manx (Gaelg)
@@ -2879,6 +2960,19 @@ Maraming mga [http://wiki.openid.net/Public_OpenID_providers Pangmadlang tagapag
 ; [http://openid.yahoo.com/ Yahoo!] : Kung mayroon kang kuwenta sa Yahoo!, maaari kang lumagda sa sayt na ito sa pamamagitan ng paglalagay ng iyong Open-ID na ibinigay ng Yahoo! sa loob ng kahong nasa itaas. Ang mga URL ng OpenID ng Yahoo! ay mayroong pormularyong ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL] : Kung mayroon kang kuwenta sa [http://www.aol.com/ AOL], katulad ng akawnt na [http://www.aim.com/ AIM], maaari kang lumagda sa {{SITENAME}} sa pamamagitan ng OpenID na ibinigay ng AOL sa loob ng kahong nasa itaas. Ang mga URL ng OpenID ng AOL ay maryoong pormularyong ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Ang kalahatan/kabuoan ng  iyong pangalan ng tagagamit ay dapat na nasa/may maliliit na mga panitik, at walang mga puwang/patlang.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Kung mayroon kang isang ''blog'' sa alin man sa mga palingkurang (serbisyong) ito, ipasok/ilagay ang URL ng ''blog'' mo sa kahong nasa itaas. Bilang halimbawa, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', o ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'openid-desc' => 'Vikiye bir [http://openid.net/ OpenID] ile giriş yapın, ve diğer OpenID kullanan web sitelerine bir viki kullanıcı hesabıyla giriş yapın.',
+	'openidlogin' => 'OpenID ile giriş yapın',
+	'openidfinish' => 'OpenID girişini tamamlayın',
+	'openidserver' => 'OpenID sunucusu',
+	'openidconvert' => 'OpenID çeviricisi',
+	'openiderror' => 'Doğrulama hatası',
+	'openiderrortext' => 'OpenID adresi doğrulanırken bir hata oluştu.',
 );
 
 /** Ukrainian (Українська)

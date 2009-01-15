@@ -50,8 +50,10 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'catboxattop-desc' => 'Дадае поле катэгорыяў у верхні правы кут старонак',
 	'catboxattop-categories' => 'Катэгорыі',
 );
 
@@ -309,6 +311,14 @@ $messages['sk'] = array(
 	'catboxattop-categories' => 'Kategórie',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'catboxattop-desc' => 'Föiget in Sieden buppe gjuchts ne Kategorienbox ien',
+	'catboxattop-categories' => 'Kategorien',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */
@@ -351,6 +361,13 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'catboxattop-categories' => 'Thể loại',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'catboxattop-categories' => 'Klads',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

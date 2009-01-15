@@ -35,6 +35,20 @@ $messages['arz'] = array(
 	'formatsearch-desc' => 'تنضيف صفحة نتايج التدوير',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'formatsearch-desc' => 'Чысьціць старонку з вынікамі пошуку',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'formatsearch-desc' => 'Почиства страницата с резултати от търсенето',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -218,6 +232,13 @@ $messages['ro'] = array(
 	'formatsearch-desc' => 'Curăţă pagina cu rezultatele căutării',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'formatsearch-desc' => "Pulizze 'a pàgene de le resultete d'a ricerche",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -230,6 +251,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'formatsearch-desc' => 'Vyčistí stránku s výsledkami vyhľadávania',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'formatsearch-desc' => 'Moaket ju Säikresultoat-Siede loos',
 );
 
 /** Sundanese (Basa Sunda)

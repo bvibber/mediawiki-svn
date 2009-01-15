@@ -52,6 +52,18 @@ $messages['arz'] = array(
 	'formatchanges-editedby' => '$1 - عدلها $2 ($3)',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'formatchanges-desc' => 'Зьмяняе фармат [[Special:RecentChanges|апошніх зьменаў]]',
+	'formatchanges-anonymous' => 'Ананім',
+	'formatchanges-createdby' => '$1 - створаная $2 ($3)',
+	'formatchanges-editedby' => '$1 — рэдагаваная $2 ($3)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -321,6 +333,16 @@ $messages['sk'] = array(
 	'formatchanges-editedby' => '$1 - upravil $2 ($3)',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'formatchanges-desc' => 'Moaket ju [[Special:RecentChanges|Lääste Annerengen]] fon näien kloor',
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => '$1 - moaked fon $2 ($3)',
+	'formatchanges-editedby' => '$1 - beoarbaided truch $2 ($3)',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */
@@ -370,7 +392,10 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
+	'formatchanges-desc' => 'Dönufomätön padi: [[SPecial:RecentChanges|votükams nulik]]',
 	'formatchanges-anonymous' => 'Nennemik',
+	'formatchanges-createdby' => 'Pad: $1 - pejafon fa geban: $2 ($3)',
+	'formatchanges-editedby' => 'Pad: $1 - peredakon fa geban: $2 ($3)',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

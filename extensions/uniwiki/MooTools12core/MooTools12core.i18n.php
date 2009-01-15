@@ -29,11 +29,18 @@ $messages['ar'] = array(
 	'mootools12core-desc' => 'يضيف [http://mootools.net mootools-1.2-core-yc.js]، إطار جافاسكريبت مضغوط، لكل صفحة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'mootools12core-desc' => 'Дадае на кожную старонку [http://mootools.net mootools-1.2-core-yc.js], невялікую бібліятэку JavaScript',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'mootools12core-desc' => 'Добавя [http://mootools.net mootools-1.2-core-yc.js] към всяка страница',
+	'mootools12core-desc' => '!Добавя [http://mootools.net mootools-1.2-core-yc.js], компактна Джаваскрипт платформа, към всяка страница',
 );
 
 /** Czech (Česky)
@@ -229,6 +236,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'mootools12core-desc' => 'Pridáva kompaktnú javascriptovú platformu [http://mootools.net mootools-1.2-core-yc.js] na každú stránku',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'mootools12core-desc' => 'Föiget [http://mootools.net mootools-1.2-core-yc.js], n JavaScript-Framework, in älke Siede ien',
 );
 
 /** Swedish (Svenska)

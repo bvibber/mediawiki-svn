@@ -101,6 +101,14 @@ $messages['gl'] = array(
 	'tog-microid' => 'Publicar unha <a href="http://microid.org/">MicroID</a> para confirmar a conta con servizos externos',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'microid-desc' => 'Fiegt e [http://www.microid.org/ MicroID] uf Benutzersyten yy go ne Account mit eme externe Dienscht z bstätige.',
+	'tog-microid' => 'Vereffentlig e <a href="http://microid.org/">MicroID</a> go s Benutzerkonto dur e externe Servive z bstätige.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

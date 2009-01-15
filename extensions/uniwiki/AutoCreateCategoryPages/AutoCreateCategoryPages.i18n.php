@@ -43,6 +43,18 @@ $messages['arz'] = array(
 	'autocreatecategorypages-editor' => 'منشئ تصنيف تلقائي',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'autocreatecategorypages-desc' => 'Стварае неіснуючыя катэгорыі аўтаматычна пад час захаваньня',
+	'autocreatecategorypages-stub' => 'Гэта старонка катэгорыі.
+Яна ўтрымлівае сьпіс старонак у катэгорыі «$1», а таксама падкатэгорыі «$1», калі яны існуюць.',
+	'autocreatecategorypages-createdby' => 'Створана аўтаматычна праз пашырэньне AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Аўтаматычнае стварэньне катэгорыяў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -310,6 +322,17 @@ Obsahuje všetky stránky v kategórii „$1“ ako aj všeky podkategórie kate
 	'autocreatecategorypages-editor' => 'Autoamtická tvorba kategórií',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'autocreatecategorypages-desc' => 'Lääs failjende Kategoriensieden bie dät Spiekerjen automatisk an',
+	'autocreatecategorypages-stub' => 'Dit is ne Kategoriensiede.
+Ju liestet aal Sieden in ju Kategorie "$1" as uk aal Unnerkategorien fon ju Kategorie "$1", insowied wäkke deer sunt.',
+	'autocreatecategorypages-createdby' => 'Automatisk fon ju AutoCreateCategoryPages-Erwiederenge moaked.',
+	'autocreatecategorypages-editor' => 'Automatisk Moakjen fon Kategorien',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -338,5 +361,16 @@ $messages['uk'] = array(
 На ній перераховані всі сторінки з категорії «$1», а також всі підкатегорії категорії «$1», якщо вони існують.',
 	'autocreatecategorypages-createdby' => 'Створена автоматично за допомогою розширення AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Автоматичний творець категорій',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'autocreatecategorypages-desc' => 'Jafön kladapadis deföl itjäfidiko pö dakip',
+	'autocreatecategorypages-stub' => 'Atos binon kladapad.
+Lisedon padis valik in klad: „$1“, äsi donakladis valik klada: „$1“ if dabinons.',
+	'autocreatecategorypages-createdby' => 'Pejafon itjäfidiko fa veitükumam: AutoCreateCategoryPages',
+	'autocreatecategorypages-editor' => 'Kladijafan itjäfidik',
 );
 

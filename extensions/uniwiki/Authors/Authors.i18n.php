@@ -41,9 +41,12 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'authors-desc' => 'Дадае сьпіс аўтараў на старонкі',
 	'authors_authors' => 'Аўтары',
+	'authors_anonymous' => 'Ананім',
 );
 
 /** Bulgarian (Български)
@@ -323,6 +326,15 @@ $messages['sk'] = array(
 	'authors_anonymous' => 'Anonym',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'authors-desc' => 'Honget an Sieden ne Lieste fon Autore an',
+	'authors_authors' => 'Autore',
+	'authors_anonymous' => 'Anonym',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -355,6 +367,16 @@ $messages['uk'] = array(
 $messages['vi'] = array(
 	'authors_authors' => 'Tác giả',
 	'authors_anonymous' => 'Vô danh',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'authors-desc' => 'Lenlagon lisedi padekeblünanas',
+	'authors_authors' => 'Lautans',
+	'authors_anonymous' => 'Nennemik',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
