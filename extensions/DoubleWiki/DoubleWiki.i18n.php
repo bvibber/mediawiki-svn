@@ -475,6 +475,13 @@ $messages['vo'] = array(
 	'doublewiki-desc' => 'Jonön padi sa tradutod onik se vük votik su padüls tel pada ot',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'doublewiki-desc' => 'ווײַזט א בלאַט און זיין איבערזעצונג פון אַן אַנדער וויקי אויף צוויי עמודים אין איין בלאַט',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

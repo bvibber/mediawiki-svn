@@ -269,6 +269,13 @@ $messages['pt'] = array(
 	'trustedxff-desc' => 'Manuseamento de uma lista de endereços proxy confiáveis ([http://meta.wikimedia.org/wiki/XFF_project projecto XFF])',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'trustedxff-desc' => "Gestisce d'a liste de le indirizze proxy secure secure ([http://meta.wikimedia.org/wiki/XFF_project Pruggette XFF])",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -288,6 +295,13 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'trustedxff-desc' => 'Správa zoznamu dôveryhodných proxy adries ([http://meta.wikimedia.org/wiki/XFF_project Projekt XFF])',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'trustedxff-desc' => 'Feroarbaidenge fon ne Lieste fertjouenswäidige Proxyadressen ([http://meta.wikimedia.org/wiki/XFF_project XFF-Projekt])',
 );
 
 /** Swedish (Svenska)

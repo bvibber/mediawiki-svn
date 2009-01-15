@@ -609,9 +609,20 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author J. 'mach' wust
  */
 $messages['gsw'] = array(
+	'expandtemplates' => 'Vorlage expandiere',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandiert Vorlage, Parser-Funktione un Variable]] zue vollständigem Wikitext un zeigt di grendert Vorschau',
+	'expand_templates_intro' => 'In däre Spezialsyte cha Täxt yygee wäre und alli Vorlage in ere wäre rekursiv expandiert. Au Parserfunkione wie <nowiki>{{</nowiki>#if:…}} un Variable wie <nowiki>{{</nowiki>CURRENTDAY}} wäre usgwärtet - faktisch alles was in dopplete gschweifte Chlammere din isch. Des gschiht dur dr Ufruef vu dr jewyylige Parser-Phase in MediaWiki.',
+	'expand_templates_title' => 'Kontexttitel, fir {{PAGENAME}} etc.:',
+	'expand_templates_input' => 'Yygabfäld:',
+	'expand_templates_output' => 'Ergebnis',
+	'expand_templates_xml_output' => 'XML-Usgab',
+	'expand_templates_ok' => 'Uusfiere',
+	'expand_templates_remove_comments' => 'Kommentar useneh',
+	'expand_templates_generate_xml' => 'Zeig XML-Parser-Baum',
 	'expand_templates_preview' => 'Vorschou',
 );
 
@@ -828,7 +839,7 @@ $messages['ja'] = array(
 	'expandtemplates' => 'テンプレートを展開',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|テンプレート・パーサー関数・変数を展開し]]、展開されたウィキテキストと生成されたプレビューページを表示する',
 	'expand_templates_intro' => 'この特別ページは入力したテキストに含まれているすべてのテンプレートを再帰的に展開します。<nowiki>{{</nowiki>#if:…}} のようなパーサー関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、<nowiki>{{</nowiki> ～ }} で囲まれているほとんどのものを展開します。この機能は、MediaWiki 自身から関連する構文解析段階を呼び出すことで実現されています。',
-	'expand_templates_title' => '{{PAGENAME}} などの評価を行うページの名前:',
+	'expand_templates_title' => '{{PAGENAME}} などに代入するページ名:',
 	'expand_templates_input' => '展開するテキスト',
 	'expand_templates_output' => '展開結果',
 	'expand_templates_xml_output' => 'XML出力',

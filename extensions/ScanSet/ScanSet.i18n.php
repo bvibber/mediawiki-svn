@@ -1009,6 +1009,7 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'scanset-desc' => 'Deerstaalenge fon scande Sieden fon Andreas Groszs CD/DVD-Set',
 	'scanset_no_name' => 'Error: Der mout n Scan-Set-Noome anroat wäide, t.B. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Error: Uungultich of failjend Scan-Set.',
 	'scanset_unrecognised_index_format' => 'Error: Uunbekoand Indexformoat',
@@ -1104,8 +1105,19 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
+ * @author Joseph
  */
 $messages['tr'] = array(
+	'scanset-desc' => "Taranmış sayfa resimlerini Andreas Grosz'ın CD/DVD setlerinden görüntüle",
+	'scanset_no_name' => 'Hata: Bir tarama seti ismi girmelisiniz, ör, &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Hata: Geçersiz ya da eksik tarama seti.',
+	'scanset_unrecognised_index_format' => 'Hata: Bilinmeyen endeks formatı',
+	'scanset_opendir_error' => 'Hata: $1 dizini açılamıyor',
+	'scanset_no_files' => 'Hata: Belirtilen dizinde hiç dosya bulunmuyor.',
+	'scanset_no_volumes' => 'Hata: Hiç cilt dizini bulunamadı',
+	'scanset_missing_index_file' => 'Hata: $1 endeks dosyası bulunamadı',
+	'scanset_index_file_error' => 'Hata: $1. satırdaki endeks dosyası formatında hata',
+	'scanset_invalid_volume' => 'Hata: Geçersiz cilt',
 	'scanset_next' => 'Sonraki &gt;',
 	'scanset_prev' => '&lt; Önceki',
 );
@@ -1167,8 +1179,11 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'scanset_opendir_error' => 'Pöl: ragiviär: $1 no maifikon',
+	'scanset_no_files' => 'Pöl: Ragivs nonik dabinons in ragiviär pavilöl.',
 	'scanset_next' => 'Sököl &gt;',
 	'scanset_prev' => '&lt; Büik',
 );

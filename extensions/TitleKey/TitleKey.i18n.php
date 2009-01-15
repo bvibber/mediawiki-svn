@@ -332,6 +332,13 @@ $messages['sr-ec'] = array(
 	'titlekey-desc' => 'Позадинска машина за претрагу префикса наслова.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'titlekey-desc' => 'Bäätergruundprozess foar ju Tittelsäike',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

@@ -526,6 +526,16 @@ $messages['tl'] = array(
 	'simpleantispam-desc' => "Nagdaragdag ng isang payak na pansuri ng \"manlulusob\" (''spam'') o ''bot'' sa mga pormularyo",
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'simpleantispam' => 'Değişikliğiniz anti-spam mekanizmasını harekete geçirdi',
+	'simpleantispam-label' => "Anti-spam denetimi.
+Bunu '''doldurmayın'''!",
+	'simpleantispam-desc' => 'Formlara basit bir spam/bot denetimi ekler',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */
@@ -554,6 +564,13 @@ $messages['vi'] = array(
 	'simpleantispam-label' => "Kiểm tra chống spam.
 Xin '''ĐỪNG''' điền gì vào!",
 	'simpleantispam-desc' => 'Thêm một kiểm tra spam/bot vào mẫu',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'simpleantispam' => 'Redakam olik ekodon blokami fa sul taspamik',
 );
 
 /** Yue (粵語)

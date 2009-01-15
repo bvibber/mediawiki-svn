@@ -1213,7 +1213,7 @@ $messages['cs'] = array(
 	'boardvote-desc' => '[[meta:Board elections/2008/cs|Volby do správní rady nadace Wikimedia]]',
 	'boardvote_entry' => '* [[Special:BoardVote/vote|Hlasovat]]
 * [[Special:BoardVote/list|Seznam již hlasujících]]
-* [[Special:BoardVote/dump||Šifrovaný záznam hlasování]]',
+* [[Special:BoardVote/dump|Šifrovaný záznam hlasování]]',
 	'boardvote_intro' => '<p>Vítejte u letošních voleb do Správní rady nadace Wikimedia. Hlasováním bude zvolen jeden zástupce komunity uživatelů všech projektů nadace. Tento zástupce bude pomáhat při rozhodování o budoucím směru rozvoje projektů a bude reprezentovat <em>vaše</em> zájmy a ohledy ve Správní radě. Bude také spolurozhodovat o způsobech získávání finančních prostředků a využívání získaných peněz.</p>
 
 <p>Před hlasováním si laskavě důkladně přečtěte vyjádření kandidátů a jejich odpovědi na dotazy. Všichni kandidáti jsou respektovanými uživateli, kteří přispěli velkým množstvím času a úsilí při snaze učinit z projektů přátelské prostředí cílené na shromažďování a volné šíření znalostí lidstva.</p>
@@ -1495,6 +1495,25 @@ $messages['dsb'] = array(
 	'boardvote_entry' => '* [[Special:BoardVote/vote|Głosowaś]]
 * [[Special:BoardVote/list|Lisćina doněntejšnych głosow]]
 * [[Special:BoardVote/dump|Skoděrowane wólbne zapiski]]',
+	'boardvote_intro' => '<p>Witaj k wólbje 2009 kuratoriuma Wikimedije.
+Wótgłosujomy za jadnu wósobu, kótaraž ma zgromaźeństwo wužywarjow pla wšakich projektow Wikimedije  reprezentěrowaś.
+Buźo pomagaś pśiducy směr póstajiś, kótaryž projekty Wikimedije se deriju, jadnotliwje a ako kupka a zastupujo <em>twóje</em> zajmy a nastupnosći napśeśiwo kuratoriumoju.
+Buźo wó metodach dojśpiśa nabrankow a wužywanju zezběranych pjenjez rozsuźiś.</p>
+
+<p>Pšosym pśecytaj wuzjawjenja a wótegrona na pšašanja kandidatow kradosćiwje, pjerwjej až wótgłosujoš.
+Kuždy kandidat jo cesćony wužywaŕ, kenž jo nałožył bejny cas a bejnu móc, aby toś te projekty  cynił k wabjecemu wokolinje, kótaraž jo zawězana procowanjeju wó cłowjesku wědu a jeje rozšyrjenje.</p>
+
+<p>Pšosym zrěduj kandidatow pó swójich preferencach pśez pódaśe licby pódla kašćika (1 = faworit, 2 = drugi faworit, ...).
+Móžoš někotarym kandidatam samku preferencu daś a teke kandidatow njezrědowane wóstajiś.
+Mysli se, až maš lubjej wšych zrědowanych kandidatow ako wšych njezrědowanych kandidatow a až sy neutralny mjazy wšymi njezrědowanymi kandidatami.</p>
+
+<p>Dobywaŕ wólby woblicyjo z pomocu metody Schulze. Za dalšne informacije, glěj oficielne wólbne boki.</p>
+
+<p>Za dalšne informacije glěj:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2009" class="external">Wólba kuratoriuma 2009</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2009/Candidates" class="external">Kandidaty</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metoda Schulze</a></li></ul>',
+	'boardvote_intro_change' => '<p>Sy južo wótgłosował. Ale móžoš swój głos z pomocu slědujucego formulara změniś. Pšosym zrěduj kandidatow pó pórěźe swójich preferencow, pśi comž mjeńšy numer pódawa wušu preferencu za jadnotliwego kandidata. Móžoš samku preferencu někotarym kandidatam daś a kandidatow njezrědowane daś.</p>',
 	'boardvote_entered' => 'Źěkujomy se, twójo wótedaśe głosa jo se zregistrěrowało.
 
 Jolic coš, móžoš slědujuce drobnostki zapisaś. Twój wótgłosowański zapis jo:
@@ -1511,6 +1530,10 @@ Z togo slědujuca skoděrowana wersija slědujo. Buźo se [[Special:BoardVote/du
 
 [[Special:BoardVote/entry|Slědk]]',
 	'boardvote_invalidentered' => '<p><strong>Zmólka</strong>: preferenca kandidata musy se jano pśez pozitiwnu cełu licbu zwurazniś (1, 2, 3, ....) abo prozna byś.</p>',
+	'boardvote_nosession' => 'Twój ID wužywarja Wikimedije njejo dał se zwěsćiś.
+Pšosym pśizjaw se pla wikija, źož maš pšawo wótgłosowaś a źi k
+<nowiki>[[Special:BoardVote]]</nowiki>.
+Musyš konto z nanejmjenjej $1 {{PLURAL:$1|pśinoskom|pßsinoskoma|pśinoskami|pśinoskami}} do $2 wužywaś a nanejmjenjej $3 {{PLURAL:$3|pśinosk|pśinoska|pśinoski|pśinoskow}} mjazy $4 a $5 cyniś.',
 	'boardvote_notloggedin' => 'Njejsy se pśizjawił.
 Aby wótgłosował, musyš konto z nanejmjenje $1 {{PLURAL:$1|změnu|změnoma|změnami|změnami}} do $2  cyniś a z nanejmjenjej $3 {{PLURAL:$3|změnu|změnoma|změnami|změnami}} mjazy $4 a $5.',
 	'boardvote_notqualified' => 'Njamaš pšawo na toś tej wólbje wótgłosowaś.
@@ -1541,6 +1564,11 @@ Blokěrowane wužywarje njesměju wótgłosowaś.',
 Botowe konta njesměju wótgłosowaś.',
 	'boardvote_welcome' => "Witaj '''$1'''!",
 	'go_to_board_vote' => 'Wólby administratorow Wikimedije 2008',
+	'boardvote_redirecting' => 'Za pólěpšonu wěstotu a transparencu pśewjedujomy wótgłosowanje na eksternem, njewótwisnje kontrolěrowanem serwerje.
+
+Pósrědnjaš se dalej k toś tomu eksternemu serweroju za 20 sekundow. [$1 Klikni sem], aby pśišeł něnto tam.
+
+Jo móžno, až se wěstotne warnowanje wó njesigněrowanem certifikaśe zwobraznjujo.',
 	'right-boardvote' => 'Wólby administrowaś',
 );
 
@@ -2243,12 +2271,19 @@ Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.
  * @author Klenje
  */
 $messages['fur'] = array(
+	'boardvote_invalidentered' => '<p><strong>Erôr</strong>: la preference pal candidât e à di jessi esprimude dome cuntun numar intîr positîf (1, 2, 3, ...), o e à di jessi lassade vueide.</p>',
+	'boardvote_nosession' => 'No si à rivât a determinâ il to ID utent Wikimedia. Par plasê, jentre intal progjet dulà che tu âs i recuisîts par votâ e va ae pagjine <nowiki>[[Special:BoardVote]]</nowiki>. Tu scugnis vê une identitât cun almancul $1 {{PLURAL:$1|contribût|contribûts}} prime dal $2 e $3 {{PLURAL:$3|contribût|contribûts}} tra i $4 e i $5.',
+	'boardvote_notloggedin' => 'No tu sês jentrât. Par votâ, tu scugnis doprâ une identitât cun almancul $1 {{PLURAL:$1|contribût|contribûts}} prime dal $2 e $3 {{PLURAL:$3|contribût|contribûts}} tra i $4 e i $5.',
+	'boardvote_notqualified' => 'No tu âs i recuisîts par votâ in chestis elezions. Tu scugnis vê almancul $1 {{PLURAL:$1|contribût|contribûts}} prime dal $2 e $3 {{PLURAL:$3|contribût|contribûts}} tra i $4 e i $5.',
+	'boardvote_novotes' => "No nd'à ancjemò votât nissun.",
+	'boardvote_time' => 'Date e ore',
 	'boardvote_user' => 'Utent',
 	'boardvote_edits' => 'Cambiaments',
 	'boardvote_days' => 'Zornadis',
 	'boardvote_ip' => 'IP',
 	'boardvote_dumplink' => 'Frache culì',
 	'boardvote_submit' => 'Va ben',
+	'boardvote_edits_many' => 'tantis',
 	'boardvote_welcome' => "Benvignût/Benvignude '''$1'''!",
 );
 
@@ -4926,6 +4961,7 @@ $1 per las donadas criptadas.</p>',
  */
 $messages['os'] = array(
 	'boardvote_time' => 'Рæстæг',
+	'boardvote_user' => 'Архайæг',
 	'boardvote_ip' => 'IP-адрис',
 	'boardvote_submit' => 'Афтæ уæд!',
 );
@@ -5356,7 +5392,11 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'boardvote' => "Elezione d'a '''Wikimedia Board of Trustees'''",
 	'boardvote-desc' => "[[meta:Board elections/2008|'A lavagne de Uicchimedia pe l'eleziune de fiducie]]",
+	'boardvote_entry' => "* [[Special:BoardVote/vote|Votaziune]]
+* [[Special:BoardVote/list|Liste de le votaziune a 'a date]]
+* [[Special:BoardVote/dump|Fà 'u dumpe criptete de le record de le eleziune]]",
 	'boardvote_novotes' => 'Nisciune ha vutate angore.',
 	'boardvote_time' => 'Orarie',
 	'boardvote_user' => 'Utende',
@@ -5365,6 +5405,7 @@ $messages['roa-tara'] = array(
 	'boardvote_dumplink' => 'Cazze aqquà',
 	'boardvote_submit' => 'OK',
 	'boardvote_edits_many' => 'assaje',
+	'boardvote_welcome' => "Bovegne '''$1'''!",
 );
 
 /** Russian (Русский)
@@ -5935,12 +5976,14 @@ Ju deeruut foulgjende, ferslöätelde Version foulget hierunner. Ju wäd eepente
 <pre>$3</pre>
 
 [[Special:BoardVote/entry|Tourääch]]',
+	'boardvote_invalidentered' => '<p><strong>Failer:</strong> Ju Riegenfoulge fon do Kandidate mout in ganse, positive Taalen uutdrukt wäide (1, 2, 3, …) of läit ju Kaste/do Kasten loos.</p>',
 	'boardvote_nosession' => 'Dien Wikimedia-Benutser-ID kon nit fääststoald wäide. Mäld die in dän Wiki an, in dän du tou ju Woal toulät bäst un gung deer ätter <nowiki>[[Special:BoardVote]]</nowiki>. Wäälen duur wäl, dän sien Benutserkonto nit minner as $1 Beoarbaidengen foar dän $2 apwiest, ju eerste Beoarbaidenge mout foar dän $3 geböärd weese.
 
 Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalcomputer
 <tt>wikimedia.spi-inc.org</tt> akzeptiert.',
-	'boardvote_notloggedin' => 'Du bäst nit ienlogged. Uum oustämme tou konnen, moast du ienlogged weese un n Benutserkonto ferweende, wiermäd al foar dän Täldai ($2) ap minste $1 Beoarbaidengen moaked wuuden, un mäd ne eerste Beoarbaidenge foar $3.',
-	'boardvote_notqualified' => 'Du bäst nit begjuchtiged an dissen Woal deeltouniemen. Du moast $3 Beoarbaidengen foar dän $2 moaked hääbe un die eerste Beoarbaidenge mout foar dän $5 geböärd weese. Aal Bedingengengen mouten tou ju Woaldeelnoame ärfäld weese.',
+	'boardvote_notloggedin' => 'Du bäst nit ienlogged. Uum oustämme tou konnen, moast du ienlogged weese un n Benutserkonto ferweende, wiermäd al foar dän Täldai ($2) ap minste $1 {{PLURAL:$1|Beoarbaidenge|Beoarbaidengen}} moaked wuuden, un wiermäd ap minste $3 {{PLURAL:$3|Beoarbaidenge|Beoarbaidengen}} twiske $4 un $5 moaked {{PLURAL:$1|wuud|wuuden}}.',
+	'boardvote_notqualified' => 'Du bäst nit begjuchtiged an dissen Woal deeltouniemen. 
+Uum oustämme tou konnen, moast du ienlogged weese un n Benutserkonto ferweende, wiermäd al foar dän Täldai ($2) ap minste $1 {{PLURAL:$1|Beoarbaidenge|Beoarbaidengen}} moaked wuuden, un wiermäd ap minste $3 {{PLURAL:$3|Beoarbaidenge|Beoarbaidengen}} twiske $4 un $5 moaked {{PLURAL:$1|wuud|wuuden}}.',
 	'boardvote_novotes' => 'Tou nu tou häd noch neemens oustämd.',
 	'boardvote_time' => 'Tied',
 	'boardvote_user' => 'Benutser',
@@ -5957,14 +6000,15 @@ Din Browser mout so konfigurierd weese, dät hie Cookies fon dän externe Woalco
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Woale tou dät Wikimedia-Kuratorium</a>:
 Vote open until 22 June',
 	'boardvote_notstarted' => 'Ju Woal is noch nit ounfangd.',
-	'boardvote_closed' => 'Ju Woal is be-eended. Dät Resultoat is [http://meta.wikimedia.org/wiki/Election_results_2008/De in Meta-Wiki] ientoukiekjen.',
+	'boardvote_closed' => 'Ju Woal is be-eended. Dät Resultoat is [http://meta.wikimedia.org/wiki/Board_elections/2008/Results im Meta-Wiki] ientoukiekjen.',
 	'boardvote_edits_many' => 'fuul',
 	'group-boardvote' => 'Woal-Administratore',
 	'group-boardvote-member' => 'Woal-Administrator',
 	'grouppage-boardvote' => '{{ns:project}}:Woal-Administrator',
 	'boardvote_blocked' => 'Äntscheeldigenge, man du wuudest in din Wiki speerd. Speerde Benutsere duuren nit an ju Woal deelnieme.',
+	'boardvote_bot' => 'Dien Benutserkonto is in dän registrierde Wiki as Bot känteekend. Bots duuren nit oustimme.',
 	'boardvote_welcome' => "Wäilkuumen '''$1'''!",
-	'go_to_board_vote' => 'Woalen tou dät Wikimedia-Kuratorium 2007',
+	'go_to_board_vote' => 'Woalen tou dät Wikimedia-Kuratorium 2008',
 	'boardvote_redirecting' => 'Foar ne haagere Sicherhaid un Klooregaid, wäd ju Woal moaked ap n externen, uunouhongich kontrollierden Server.
 
 Du wädst in 20 Sekunden tou dissen externen Server fääre lat. [$1 klik hier], uum fluks deerwai tou kuumen.',
@@ -6447,7 +6491,12 @@ $messages['to'] = array(
  */
 $messages['tr'] = array(
 	'boardvote' => 'Wikimedia Mütevelli Heyeti Seçimleri',
+	'boardvote-desc' => '[[meta:Board elections/2008|Wikimedya Mütevelli Heyeti seçimi]]',
+	'boardvote_entry' => '* [[Special:Boardvote/vote|Oy ver]]
+* [[Special:Boardvote/list|Bugüne kadarki oylar]]
+* [[Special:Boardvote/dump|Şifreli seçim kayıtlarını boşalt]]',
 	'boardvote_intro_change' => '<p>Daha evvel oy kullanmıştınız. Ama oyunuzu değiştirebilirsiniz. Aşağıdaki formu kullanarak, uygun olduğunu düşündüğünüz aday ya da adayların yanına işart koyup, oyunuzu gönderiniz.</p>',
+	'boardvote_invalidentered' => '<p><strong>Hata</strong>: aday tercihi pozitif tam sayı olarak (1, 2, 3, ....) belirtilmeli, ya da boş bırakılmalıdır.</p>',
 	'boardvote_notloggedin' => 'Oturum açmamışsınız.
 Oy kullanabilmek için, $2 tarihinden önce en az $1 {{PLURAL:$1|değişikliğe|değişikliğe}}, $4 ve $5 tarihleri arasında en az $3 {{PLURAL:$3|değişikliğe|değişikliğe}} sahip bir hesap kullanmanız gereklidir.',
 	'boardvote_novotes' => 'Henüz kimse oy kullanmadı.',

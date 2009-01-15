@@ -332,6 +332,13 @@ $messages['sk'] = array(
 	'antibot-desc' => 'Jednoduchý framework na kontrolu spambotov a zachytávanie špecifických úprav',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'antibot-desc' => 'Eenfach Framework foar Spambot-Wröigen',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

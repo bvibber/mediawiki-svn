@@ -209,6 +209,13 @@ $messages['jv'] = array(
 	'oairepository' => 'Panyimpenan OAI',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] 저장소 인터페이스를 제공',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -335,6 +342,13 @@ $messages['sv'] = array(
 $messages['tl'] = array(
 	'oai-desc' => 'Nagbibigay ng ugnayan-hangganang pangrepositoryong [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 	'oairepository' => 'Repositoryong OAI',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] depo arayüzünü sağlar',
 );
 
 /** Ukrainian (Українська)

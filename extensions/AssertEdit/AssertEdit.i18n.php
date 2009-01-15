@@ -395,11 +395,12 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
-	'assert_edit_title' => 'Bevestiging mislukdj.',
+	'assert_edit_title' => 'Bevestiging mislök.',
 	'assert_edit_desc' => 'Maak rolbevestiginge meugelik veur gebroek door bots',
-	'assert_edit_message' => 'De gevraogdje bevestiging ($1) mislukdje.',
+	'assert_edit_message' => 'De gevraogde bevestiging ($1) mislökde.',
 );
 
 /** Malayalam (മലയാളം)

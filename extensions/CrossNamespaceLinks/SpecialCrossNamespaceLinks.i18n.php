@@ -305,6 +305,16 @@ $messages['grc'] = array(
 	'crossnamespacelinks' => 'Σύνδεσμοι μεταξὺ ὀνοματείων',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'crossnamespacelinks' => 'Syte mit Gleicher in anderi Namensryym',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lischt vu dr Gleicher uf Syte in anderi Namensryym]], wu s in {{SITENAME}} nit sott gee',
+	'crossnamespacelinks-summary' => 'Die Lischt zeigt Syte, wu s Gleicher din het uf Syte vu andere Namensryym. Dodervu usgnuh sin d Namensryym {{ns:special}}, {{ns:talk}}, {{ns:project}} un {{ns:template}}.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Gleich zeigt|Gleicher zeigen}} in dr $3-Namensruum',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

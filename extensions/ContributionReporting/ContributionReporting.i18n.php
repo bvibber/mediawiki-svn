@@ -275,7 +275,7 @@ $messages['arz'] = array(
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'contributionreporting-desc' => 'Актуальныя справаздачы пра збор ахвяраваньняў на карысьць Фундацыі «Вікімэдыя»',
+	'contributionreporting-desc' => 'Актуальныя справаздачы пра збор ахвяраваньняў на карысьць фундацыі «Вікімэдыя»',
 	'contributiontotal' => 'Усяго ахвяраваньняў',
 	'contributionhistory' => 'Гісторыя ахвяраваньняў',
 	'contrib-hist-header' => 'Камэнтары ахвяравальнікаў з усяго сьвету ў рэальным часе',
@@ -286,7 +286,7 @@ $messages['be-tarask'] = array(
 	'contrib-hist-previous' => 'Апошнія ахвяраваньні',
 	'contrib-hist-anonymous' => 'Ананімнае',
 	'contributionstatistics' => 'Статыстыка ахвяраваньняў',
-	'contribstats-desc' => 'Паказвае статыстыку ахвяраваньняў на карысьць Фундацыі «Вікімэдыя»',
+	'contribstats-desc' => 'Паказвае статыстыку ахвяраваньняў на карысьць фундацыі «Вікімэдыя»',
 	'contribstats-daily-totals' => 'Усяго за {{PLURAL:$1|апошні $1 дзень|апошнія $1 дні|апошнія $1 дзён}}',
 	'contribstats-monthly-totals' => 'Усяго за {{PLURAL:$1|апошні $1 месяц|апошнія $1 месяцы|апошнія $1 месяцаў}}',
 	'contribstats-month-range-totals' => 'Усяго штомесячна за {{PLURAL:$1|$1 месяц|$1 месяцы|$1 месяцаў}}',
@@ -829,6 +829,16 @@ $messages['fr'] = array(
 	'specialpages-group-contribution' => 'Contributions / Levée de fonds',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'fundraiserstatistics' => 'Statistichis su la racuelte di fonts',
+	'fundraiserstats-date' => 'Date',
+	'fundraiserstats-day' => 'Zornade $1 di $2',
+	'fundraiserstats-tab-contributions' => 'Numar di contribûts',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -897,8 +907,28 @@ $messages['grc'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Chlämens
+ * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'contributionreporting-desc' => 'Live-Berichterstattig vu dr Wikimedia-Spändekampagne',
+	'contributiontotal' => 'Spände insgsamt',
+	'contributionhistory' => 'Spändeverlauf',
+	'contrib-hist-header' => 'Spändekommentar in Ächtzyt us dr ganze Wält',
+	'contrib-hist-name' => 'Name',
+	'contrib-hist-date' => 'Zyt un Datum',
+	'contrib-hist-amount' => 'Betrag',
+	'contrib-hist-next' => 'Elteri Spände',
+	'contrib-hist-previous' => 'Neijeri Spände',
+	'contrib-hist-anonymous' => 'Anonym',
+	'contributionstatistics' => 'Spändestatischtik',
+	'contribstats-desc' => 'Statischtik iber d Spände an d Wikimedia Foundation',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Gsamtsumme fir dr Tag|Gsamtsumme fir di letschte $1 Täg}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Gsamtsumme fir dää Monet|Gsamtsumme fir di letschte $1 Monet}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Gsamtsumme fir ei Monet|Gsamtsumme fir $1 Monet}}',
+	'contribstats-currency-range-totals' => 'Währige gsamt (vu $1 bis $2)',
+	'contribstats-contribution-range-breakdown' => 'Spändenibersicht noch Wärt (vu $1 bis $2)',
+	'contribstats-currency-totals' => 'Gsamtsumme fir s fiskalisch Johr $1',
+	'contribstats-contribution-breakdown' => 'Spändenibersicht noch Wärt fir s fiskalisch Johr $1',
 	'contribstats-day' => 'Dag',
 	'contribstats-month' => 'Monet',
 	'contribstats-currency' => 'Wäärig',
@@ -1384,9 +1414,11 @@ $messages['ko'] = array(
 	'contribstats-value-under' => '$1 미만',
 	'contribstats-value-from' => '$1 - $2 사이',
 	'contribstats-value-over' => '$1 초과',
+	'fundraiserstatistics' => '모금 활동 통계',
 	'fundraiserstats-date' => '날짜',
 	'fundraiserstats-total' => '합계 (USD)',
 	'fundraiserstats-avg' => '평균 (USD)',
+	'fundraiserstats-max' => '최대 (USD)',
 	'fundraiserstats-tab-totals' => '합계 (USD)',
 	'fundraiserstats-tab-averages' => '평균 (USD)',
 );
@@ -2231,6 +2263,57 @@ $messages['tl'] = array(
 	'specialpages-group-contribution' => 'Mga ambag/Pangangalap ng salaping panustos',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'contributionreporting-desc' => 'Wikimedya fonsağlayıcısının canlı haberleri',
+	'contributiontotal' => 'Katkı toplamı',
+	'contributionhistory' => 'Katkı geçmişi',
+	'contrib-hist-header' => 'Dünyanın dört bir yanından gerçek-zamanlı bağışçı yorumları',
+	'contrib-hist-name' => 'İsim',
+	'contrib-hist-date' => 'Zaman ve tarih',
+	'contrib-hist-amount' => 'Miktar',
+	'contrib-hist-next' => 'Eski bağışlar',
+	'contrib-hist-previous' => 'Yeni bağışlar',
+	'contrib-hist-anonymous' => 'Anonim',
+	'contributionstatistics' => 'Katkı istatistikleri',
+	'contribstats-desc' => 'Wikimedya Kuruluşuna yapılan katkıların istatistiklerini gösterir',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Bugün için toplam|Geçmiş $1 gün için günlük toplamlar}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Bu ay için toplam|Geçmiş $1 ay için aylık toplamlar}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|$1 ay için toplam|$1 ay için aylık toplamlar}}',
+	'contribstats-currency-range-totals' => 'Para toplamı ($1 tarihinden $2 tarihine)',
+	'contribstats-contribution-range-breakdown' => 'Değere göre katkıların analizi ($1 tarihinden $2 tarihine)',
+	'contribstats-currency-totals' => '$1 mali yılı için para toplamı',
+	'contribstats-contribution-breakdown' => '$1 mali yılı için değere göre katkıların analizi',
+	'contribstats-day' => 'Gün',
+	'contribstats-month' => 'Ay',
+	'contribstats-currency' => 'Para birimi',
+	'contribstats-amount' => 'Miktar (USD)',
+	'contribstats-contributions' => 'Katkılar',
+	'contribstats-total' => 'Toplam (USD)',
+	'contribstats-avg' => 'Ortalama (USD)',
+	'contribstats-max' => 'Maksimum (USD)',
+	'contribstats-percentage-ytd' => 'Yüzde (YTD)',
+	'contribstats-total-ytd' => 'Toplam (YTD)',
+	'contribstats-value-exactly' => 'Tam olarak $1',
+	'contribstats-value-under' => '$1 altında',
+	'contribstats-value-from' => '$1 - $2 arası',
+	'contribstats-value-over' => '$1 üzerinde',
+	'fundraiserstatistics' => 'Fonsağlayıcı istatistikleri',
+	'fundraiserstats-date' => 'Tarih',
+	'fundraiserstats-day' => '$2 fonsağlayıcısının $1. günü',
+	'fundraiserstats-contributions' => 'Katkılar',
+	'fundraiserstats-total' => 'Toplam (USD)',
+	'fundraiserstats-avg' => 'Ortalama (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
+	'fundraiserstats-tab-totals' => 'Toplamlar (USD)',
+	'fundraiserstats-tab-contributions' => 'Katkı sayısı',
+	'fundraiserstats-tab-averages' => 'Ortalamalar (USD)',
+	'fundraiserstats-tab-maximums' => 'Maksimumlar (USD)',
+	'specialpages-group-contribution' => 'Katkı/Fonsağlayıcı',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Aleksandrit
@@ -2390,6 +2473,8 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
+	'contributiontotal' => 'Valod keblünotas',
+	'contributionhistory' => 'Keblünamajenotem',
 	'contrib-hist-name' => 'Nem',
 	'contrib-hist-date' => 'Tim e dät',
 	'contrib-hist-anonymous' => 'Nennemik',
@@ -2401,10 +2486,12 @@ $messages['vo'] = array(
 	'contribstats-max' => 'Maxum (USD)',
 	'contribstats-total-ytd' => 'Valod (YTD)',
 	'fundraiserstats-date' => 'Dät',
+	'fundraiserstats-contributions' => 'Keblünots',
 	'fundraiserstats-total' => 'Valod (USD)',
 	'fundraiserstats-avg' => 'Zäned (USD)',
 	'fundraiserstats-max' => 'Maxum (USD)',
 	'fundraiserstats-tab-totals' => 'Valods (USD)',
+	'fundraiserstats-tab-contributions' => 'Num keblünotas',
 	'fundraiserstats-tab-averages' => 'Zäneds (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxums (USD)',
 );

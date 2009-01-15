@@ -97,10 +97,11 @@ $messages['be'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'sitenotice_close' => 'схаваць',
-	'sitenotice-desc' => 'Дазваляе ўдзельніка хаваць паведамленьні сайту',
+	'sitenotice-desc' => 'Дазваляе ўдзельнікам хаваць паведамленьні сайту',
 );
 
 /** Bulgarian (Български)
@@ -769,10 +770,12 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'sitenotice_close' => 'Kapat',
+	'sitenotice-desc' => 'Kullanıcıların sitebildirimini kapatmasına izin verir',
 );
 
 /** Tsonga (Xitsonga)

@@ -163,7 +163,7 @@ $messages['be-tarask'] = array(
 	'imagemap_invalid_coord' => 'Памылка: няправільная каардыната ў радку $1, павінна быць лічба',
 	'imagemap_invalid_desc' => 'Памылка: няслушнае значэньне desc, павінна быць адно з: <tt>$1</tt>',
 	'imagemap_description' => 'Апісаньне выявы',
-	'imagemap_poly_odd' => 'Памылка: у радку $1 знойдзены шматкутнік з няцотнай колькасьцю каардынатаў',
+	'imagemap_poly_odd' => 'Памылка: у радку $1 знойдзены шматкутнік зь няцотнай колькасьцю каардынатаў',
 );
 
 /** Bulgarian (Български)
@@ -488,6 +488,25 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'imagemap_description' => 'Περὶ τῆσδε τῆς εἰκόνος',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'imagemap_desc' => "Macht s Aalege vu verwyys-sensitive Grafike ''(image maps)'' megli mit dr Hilf vu dr <tt><nowiki><imagemap></nowiki></tt>-Syntax",
+	'imagemap_no_image' => 'Fähler: in dr erschte Zyylete muess e Bild aagee wäre',
+	'imagemap_invalid_image' => 'Fähler: Bild ist nit giltig oder s git s nit',
+	'imagemap_bad_image' => 'Fähler: S Bild stoht uf dr Lischt vu nit gwinschte Bilder',
+	'imagemap_no_link' => 'Fähler: Am Änd vu Zyyle $1 isch kei giltig Gleich gfunde wore',
+	'imagemap_invalid_title' => 'Fähler: uugiltiger Titel im Gleich in dr Zyyle $1',
+	'imagemap_missing_coord' => 'Fähler: Z wenig Koordinate in dr Zyyle $1 fir dr Umriss',
+	'imagemap_unrecognised_shape' => 'Fähler: Nit bekannti Umrissform in dr Zyyle $1. Jedi Zyyle muess mit eim vu däne Parameter aafange: <tt>default, rect, circle</tt> oder <tt>poly</tt>',
+	'imagemap_no_areas' => 'Fähler: S muess zmindescht ei Gebiet definiert wäre',
+	'imagemap_invalid_coord' => 'Fähler: Uugiltigi Koordinate in dr Zyyle $1: s sin nume Zahle erlaubt',
+	'imagemap_invalid_desc' => 'Fähler: Uugiltige „desc“-Parameter, megli sin: <tt>$1</tt>',
+	'imagemap_description' => 'Iber des Bild',
+	'imagemap_poly_odd' => 'Fähler: Polygon mit ere uugrade Anzahl vu Koordinate in dr Zyyle $1',
 );
 
 /** Gujarati (ગુજરાતી) */
@@ -1230,6 +1249,7 @@ $messages['stq'] = array(
 	'imagemap_desc' => "Moaket dät muugelk ferwies-sensitive Grafike ''(image maps)'' tou moakjen mäd Hälpe fon ju <tt><nowiki><imagemap></nowiki></tt>-Syntax",
 	'imagemap_no_image' => 'Failer: In ju eerste Riege mout ne Bielde ounroat wäide',
 	'imagemap_invalid_image' => 'Failer: Bielde is uungultich of is nit deer',
+	'imagemap_bad_image' => 'Failer: Ju Bielde stoant ap ju Lieste fon nit wonskede Bielden',
 	'imagemap_no_link' => 'Failer: Ap Eende fon Riege $1 wuude neen gultige Link fuunen',
 	'imagemap_invalid_title' => 'Failer: uungultigen Tittel in dän Link in Riege $1',
 	'imagemap_missing_coord' => 'Failer: Tou min Koordinate in Riege $1 foar dän Uumriet',
@@ -1238,6 +1258,7 @@ $messages['stq'] = array(
 	'imagemap_invalid_coord' => 'Failer: Uungultige Koordinate in Riege $1: der sunt bloot Taale toulät',
 	'imagemap_invalid_desc' => 'Failer: Uungultigen „desc“-Parameter, muugelk sunt: <tt>$1</tt>',
 	'imagemap_description' => 'Uur disse Bielde',
+	'imagemap_poly_odd' => 'Failer: Polygon mäd uunpooren Antaal an Koordinoaten in Riege $1',
 );
 
 /** Sundanese (Basa Sunda)
@@ -1330,10 +1351,23 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'imagemap_desc' => '<tt><nowiki><imagemap></nowiki></tt> etiketini kullanarak, alıcı-tarafında tıklanabilir resim haritalarına izin verir',
+	'imagemap_no_image' => 'Hata: ilk satırda bir resim belirtmelisiniz',
+	'imagemap_invalid_image' => 'Hata: resim geçersiz ya da mevcut değil',
+	'imagemap_bad_image' => 'Hata: resim bu sayfada karalistelenmiş',
+	'imagemap_no_link' => 'Hata: $1. satırın sonunda geçerli bir bağlantı bulunamadı',
+	'imagemap_invalid_title' => 'Hata: $1. satırdaki bağlantıda geçersiz başlık',
+	'imagemap_missing_coord' => 'Hata: $1. satırda şekil için yeterli koordinat yok',
+	'imagemap_unrecognised_shape' => 'Hata: $1. satırda tanımlanmamış şekil, her satır şunlardan biriyle başlamalı: default, rect, cirle ya da poly',
+	'imagemap_no_areas' => 'Hata: en az bir alan belirlemesi verilmelidir',
+	'imagemap_invalid_coord' => 'Hata: $1. satırda geçersiz koordinat, bir sayı olmalı',
+	'imagemap_invalid_desc' => 'Hata: geçersiz desc belirlemesi, şunlardan biri olmalı: <tt>$1</tt>',
 	'imagemap_description' => 'Resim hakkında',
+	'imagemap_poly_odd' => 'Hata: $1. satırda tek sayıda koordinata sahip poly bulundu',
 );
 
 /** Ukrainian (Українська)
@@ -1401,6 +1435,7 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'imagemap_no_image' => 'Error: lien balid muton keninükön magodanemi',
 	'imagemap_invalid_image' => 'Error: magod no lonöfon u no dabinon',
+	'imagemap_bad_image' => 'Pöl: magod binon in blägalised',
 	'imagemap_no_link' => 'Error: yüm lonöföl no petuvon finü lien: $1',
 	'imagemap_invalid_title' => 'Error: tiäd no lonöföl pö yüm su lien: $1',
 	'imagemap_invalid_coord' => 'Error: koordinats no lonöföls su lien $1: mutons binön num',

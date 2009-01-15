@@ -1942,6 +1942,7 @@ $messages['ko'] = array(
 	'oversight-header' => '아래 목록은 최근에 영구히 숨겨진 판의 목록입니다.
 이 정보를 공개할 경우 오버사이트 권한이 영구히 박탈될 수 있습니다.',
 	'oversight-legend' => '특정 판 숨기기 기록 찾기',
+	'oversight-oversighter' => '오버사이트',
 	'oversight-offender' => '편집자:',
 );
 
@@ -2121,6 +2122,28 @@ $messages['mdf'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'hiderevision' => 'Трајно сокриј ревизии',
+	'hiderevision-desc' => 'Сокриј индивидуални ревизии за сите други корисници поради правни причини, итн.',
+	'group-oversight' => 'Надгледувачи',
+	'group-oversight-member' => 'надгледувач',
+	'grouppage-oversight' => '{{ns:project}}:Надгледувач',
+	'right-oversight' => 'Погледни претходно сокриени ревизии',
+	'right-hiderevision' => 'Преглед и обнова на ревизии скриени од систем оператори',
+	'hiderevision-prompt' => 'Број на ревизија за бришење:',
+	'hiderevision-continue' => 'Продолжи',
+	'hiderevision-submit' => 'Трајно сокриј ги овие податоци',
+	'hiderevision-tab' => 'Сокриј ревизија',
+	'hiderevision-link' => 'Придонеси на скриени корисници',
+	'hiderevision-norevisions' => 'Не се наведени ревизии за бришење.',
+	'hiderevision-noreason' => 'Мора да ја опишете причината за ова бришење.',
+	'hiderevision-status' => 'Ревизија $1: $2',
+	'hiderevision-success' => 'Успешно архивирано и избришано.',
+	'hiderevision-error-missing' => 'Не е пронајдено во базата на податоци.',
+	'hiderevision-error-current' => 'Не може да се брише последното уредување на страница.
+Прво направете враќање на оваа промена.',
+	'hiderevision-error-delete' => 'Не може да се архивира; дали претходно е избришано?',
+	'hiderevision-archive-status' => 'Избришани ревизии од $1: $2',
+	'oversight' => 'Надгледување',
 	'oversight-view' => 'детали',
 	'oversight-difference' => '(Разлика од претходно останатата ревизија)',
 	'oversight-hidden' => 'Скриена ревизија',
@@ -3470,6 +3493,8 @@ $messages['vo'] = array(
 	'group-oversight' => 'Lovelogans',
 	'group-oversight-member' => 'lovelogam',
 	'grouppage-oversight' => '{{ns:project}}:Lovelogam',
+	'right-oversight' => 'Logön revidi büo päklänedöli',
+	'right-hiderevision' => 'Logön e geblinön revidis de guvans peklänedölis',
 	'hiderevision-prompt' => 'Dientifakot fomama moükabik:',
 	'hiderevision-continue' => 'Fövön',
 	'hiderevision-reason' => 'Kod (polisedon kläniko):',
@@ -3480,11 +3505,16 @@ $messages['vo'] = array(
 	'hiderevision-noreason' => 'Mutol bepenön kodi moükama at.',
 	'hiderevision-status' => 'Fomam $1: $2',
 	'hiderevision-success' => 'Pepladon ini ragiv e pemoükon benosekiko.',
+	'hiderevision-error-missing' => 'No petuvon in nünodem.',
+	'hiderevision-error-current' => 'Padiredakam lätik no kanon pamoükön.
+Büo sädunolös votükami at.',
 	'hiderevision-archive-status' => 'Pemoükon fomam se $1: $2',
 	'oversight-log-hiderev' => 'emoükon redakami se $1',
 	'oversight' => 'Lovelogam',
 	'oversight-view' => 'pats',
+	'oversight-prev' => 'Revid büik lätik',
 	'oversight-hidden' => 'Fomam peklänedöl',
+	'oversight-legend' => 'Sukön in jenotalised revidiklänedamas',
 	'oversight-oversighter' => 'Lovelogan:',
 );
 

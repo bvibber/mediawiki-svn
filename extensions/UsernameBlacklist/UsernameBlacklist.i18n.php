@@ -399,6 +399,7 @@ Bonvolu elekti alian nomon.',
 );
 
 /** Spanish (Español)
+ * @author Muro de Aguas
  * @author Sanbec
  * @author Titoxd
  */
@@ -407,6 +408,7 @@ $messages['es'] = array(
 	'blacklistedusername' => 'Nombre de usuario no permitido',
 	'blacklistedusernametext' => 'El nombre de usuario que has seleccionado está en la [[MediaWiki:Usernameblacklist|lista de nombres no permitidos]]. Por favor, elige otro.',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La siguiente línea|Las siguientes líneas}} en la lista negra de nombres de usuario no {{PLURAL:$1|es válida|son válidas}}; por favor, corríge{{PLURAL:la|las}} antes de guardar:',
+	'right-uboverride' => 'Ignorar la lista negra de usuarios',
 );
 
 /** Basque (Euskara) */
@@ -1268,6 +1270,7 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'usernameblacklist-desc' => 'Föiget ne [[MediaWiki:Usernameblacklist|Lieste fon nit wonskede Benutsernoomen]] bietou, do der ap Basis fon reguläre Uutdrukke nit moaked wäide konnen',
 	'blacklistedusername' => 'Benutsernoome ap ju Speerlieste',
 	'blacklistedusernametext' => 'Die wäälde Benutsernoome stoant ap ju [[MediaWiki:Usernameblacklist|Lieste fon do speerde Benutsernoomen]]. Wääl n uur Noome.',
 	'usernameblacklist' => '<pre>
@@ -1279,6 +1282,7 @@ $messages['stq'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Ju foulgjende Riege|Do foulgjende Riegen}} in ju Lieste fon nit-wonskede Benutsernoomen {{PLURAL:$1|is|sunt}} uungultich; korrigier do foar dät Spiekerjen:',
+	'right-uboverride' => 'Buute Kraft sätten fon ju Lieste fon nit wonskede Benutsernoomen',
 );
 
 /** Sundanese (Basa Sunda)
@@ -1397,8 +1401,11 @@ Pumili lamang ng ibang pangalan.',
 	'right-uboverride' => 'Daigin (pangibabawan) ang talaan ng pinagbabawalang pangalan ng tagagamit',
 );
 
-/** Turkish (Türkçe) */
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
 $messages['tr'] = array(
+	'usernameblacklist-desc' => 'Bir veya daha fazla düzenli ifade ile eşleşen kullanıcı hesaplarının oluşturulmasını kısıtlamak için bir [[MediaWiki:Usernameblacklist|kullanıcı adı kara listesi]] ekler',
 	'blacklistedusername' => 'Kara listedeki kullanıcılar',
 	'blacklistedusernametext' => 'Seçtiğiniz isim [[MediaWiki:Usernameblacklist|Kara listedeki kullanıcılar]] listesinde sıralanan bir kullanıcı adıyla aynı isme sahiptir. Lütfen başka bir kullanıcı adı seçiniz.',
 );
@@ -1460,6 +1467,14 @@ $messages['vi'] = array(
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Dòng|Những dòng}} sau đây trong Danh sách đen về tên người dùng bị sai; xin hãy sửa chữa {{PLURAL:$1|nó|chúng}} trước khi lưu:',
 	'right-uboverride' => 'Bỏ qua danh sách tên người dùng bị cấm',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'blacklistedusername' => 'Gebananem in blägalised',
+	'right-uboverride' => 'Nedemön blägalisedi gebananemas',
 );
 
 /** Yue (粵語)

@@ -704,6 +704,17 @@ $messages['tl'] = array(
 	'intersection_noincludecats' => 'Kamalian: Kinakailangan mong magsama ng kahit na isang kaurian, o tumukoy ng isang espasyo ng pangalan!',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'intersection-desc' => 'Bir kategoride, yada birçok kategorinin kesişiminde bulunan en son öğelerin, madde işaretli listesini üretir',
+	'intersection_toomanycats' => 'Hata: Çok fazla kategori!',
+	'intersection_toofewcats' => 'Hata: Çok az kategori!',
+	'intersection_noresults' => 'Hata: Sonuç yok!',
+	'intersection_noincludecats' => 'Hata: En az bir kategori eklemeli, ya da bir ad alanı belirtmelisiniz!',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

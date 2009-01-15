@@ -179,11 +179,12 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'sitematrix' => 'Сьпіс усіх праектаў фундацыі «Вікімэдыя»',
-	'sitematrix-summary' => 'Гэтая спэцыяльная старонка ўтрымлівае сьпіс усіх вікі Фундацыі «Вікімэдыя».',
-	'sitematrix-desc' => 'Паказвае [[Special:SiteMatrix|сьпіс вікі Фундацыі «Вікімэдыя»]]',
+	'sitematrix-summary' => 'Гэтая спэцыяльная старонка ўтрымлівае сьпіс усіх вікі фундацыі «Вікімэдыя».',
+	'sitematrix-desc' => 'Паказвае [[Special:SiteMatrix|сьпіс вікі фундацыі «Вікімэдыя»]]',
 	'sitematrix-language' => 'Мова',
 	'sitematrix-project' => 'Назва праекту, міжпраектная спасылка і спасылка інтэрвікі',
 	'sitematrix-others' => 'Іншыя праекты фундацыі «Вікімэдыя»',
@@ -575,6 +576,14 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'sitematrix' => 'Lischt vu dr Wikimedia-Wiki',
 	'sitematrix-summary' => 'Die Spezialsyte zeigt alli Wiki vu dr Wikimedia Foundation.',
+	'sitematrix-desc' => 'Zeigt e [[Special:SiteMatrix|Lischt vu dr Wikimedia-Wiki]]',
+	'sitematrix-language' => 'Sproch',
+	'sitematrix-project' => 'Projäktname, Interprojäkt-Gleich un Interwiki-Gleich',
+	'sitematrix-others' => 'Wyteri Wikimedia-Projäkt',
+	'sitematrix-total' => "'''Gsamtaazahl: $1'''",
+	'sitematrix-sitetotal' => 'Gsamt',
+	'sitematrix-private' => 'Privat',
+	'sitematrix-fishbowl' => 'Bearbeitig yygschränkt',
 );
 
 /** Gujarati (ગુજરાતી)

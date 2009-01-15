@@ -178,6 +178,13 @@ $messages['jv'] = array(
 	'opensearchxml-desc' => 'Antarmuka [http://www.opensearch.org OpenSearch] XML sing nyadiakaké èkstraksi tèks.',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'opensearchxml-desc' => '텍스트 인용을 위한 [http://www.opensearch.org OpenSearch] XML 인터페이스를 제공',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -281,6 +288,13 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'opensearchxml-desc' => 'Nagbibigay ang ugnayan-hangganang XML ng [http://www.opensearch.org OpenSearch] ("Bukas na Paghahanap") ng mga hango/halaw na teksto',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML arayüzü metin aktarımını sağlar',
 );
 
 /** Ukrainian (Українська)

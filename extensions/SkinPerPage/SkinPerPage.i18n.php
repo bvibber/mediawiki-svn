@@ -136,6 +136,13 @@ $messages['gl'] = array(
 	'skinperpage-desc' => 'Engade a etiqueta <tt>&lt;skin&gt;</tt> para usar diferentes apariencias por páxina',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'skinperpage-desc' => 'Προσθέτει τὸ προσάρτημα <tt>&lt;skin&gt;</tt> διὰ τὴν χρῆσιν διαφόρων ὅψεων ἀνὰ δέλτον',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -311,6 +318,13 @@ $messages['pt'] = array(
 	'skinperpage-desc' => 'Adiciona a tag <tt>&lt;skin&gt;</tt> para usar temas diferentes por página',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'skinperpage-desc' => "Aggiunge 'u tag <tt>&lt;skin&gt;</tt> pe ausà diffeernde skin pe pàgene",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -358,6 +372,13 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'skinperpage-desc' => "Nagdaragdag ng tatak na <tt>&lt;pabalat&gt;</tt> upang gumamit/makagamit ng iba't ibang mga pabalat sa bawat pahina",
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'skinperpage-desc' => 'Her sayfada farklı dış görünüm kullanmak için <tt>&lt;skin&gt;</tt> etiketini ekler',
 );
 
 /** Ukrainian (Українська)

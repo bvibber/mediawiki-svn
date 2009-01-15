@@ -78,7 +78,7 @@ $messages['arz'] = array(
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'contributiontracking-desc' => 'Сачэньне за зборам ахвяраваньняў на карысьць Фундацыі «Вікімэдыя»',
+	'contributiontracking-desc' => 'Сачэньне за зборам ахвяраваньняў на карысьць фундацыі «Вікімэдыя»',
 	'contributiontracking' => 'Сачэньне за зборам ахвяраваньняў',
 	'contrib-tracking-error' => 'Памылка',
 	'contrib-tracking-error-text' => 'Няслушная перадача зьвестак з формы',
@@ -240,6 +240,19 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'contrib-tracking-error' => 'Σφάλμα',
 	'contrib-tracking-button' => 'Ἀκολουθεῖν',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'contributiontracking-desc' => 'Spändeverfolgig fir d Wikimedia Spändekampagne',
+	'contributiontracking' => 'Spändeverfolgig',
+	'contrib-tracking-error' => 'Fähler',
+	'contrib-tracking-error-text' => 'Nit giltig Ibertragigsformular',
+	'contrib-tracking-submitting' => 'Ibertragig an dr Zahligsprovider …',
+	'contrib-tracking-continue' => 'Wänn Si nit automatisch wytergleitet wäre, no drucke Si bitte uf „Wyter“ go Ihri Spände iber PayPal abzschließe.',
+	'contrib-tracking-button' => 'Wyter',
 );
 
 /** Hebrew (עברית)

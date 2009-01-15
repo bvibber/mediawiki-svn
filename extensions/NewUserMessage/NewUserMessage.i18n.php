@@ -463,6 +463,14 @@ $messages['tl'] = array(
 	'newuseredit-summary' => 'Nagdaragdag ng [[{{int:newusermessage-template}}|pahina ng pagbati]] sa pahina ng usapan ng bagong tagagamit',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'newusermessage-desc' => 'Yeni oluşturulmuş kullanıcının tartışma sayfasına bir mesaj ekler',
+	'newuseredit-summary' => 'Yeni kullanıcının tartışma sayfasına [[{{int:newusermessage-template}}|hoşgeldin mesajı]] ekleniyor',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

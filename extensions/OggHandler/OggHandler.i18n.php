@@ -342,6 +342,7 @@ $messages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'ogg-desc' => 'Апрацоўшчык файлаў Ogg Theora і Vorbis з прайгравальнікам JavaScript',
@@ -360,7 +361,7 @@ $messages['be-tarask'] = array(
 	'ogg-play-sound' => 'Прайграць аўдыё',
 	'ogg-no-player' => 'Прабачце, Ваша сыстэма ня мае неабходнага праграмнага забесьпячэньня для прайграваньня файлаў. Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце прайгравальнік</a>.',
 	'ogg-no-xiphqt' => 'Адсутнічае кампанэнт  XiphQT для QuickTime.
-QuickTime не можа прайграваць файлы ў фармаце Ogg бяз гэтага кампанэнта.
+QuickTime ня можа прайграваць файлы ў фармаце Ogg бяз гэтага кампанэнта.
 Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце XiphQT</a> альбо выберыце іншы прайгравальнік.',
 	'ogg-player-videoElement' => 'Убудаваная падтрымка браўзэра',
 	'ogg-player-oggPlugin' => 'Плагін для браўзэра',
@@ -903,6 +904,7 @@ $messages['frp'] = array(
  * @author Klenje
  */
 $messages['fur'] = array(
+	'ogg-desc' => 'Gjestôr pai files Ogg Theora e Vorbis, cuntun riprodutôr JavaScript',
 	'ogg-short-audio' => 'File audio Ogg $1, $2',
 	'ogg-short-video' => 'File video Ogg $1, $2',
 	'ogg-short-general' => 'File multimediâl Ogg $1, $2',
@@ -917,6 +919,8 @@ $messages['fur'] = array(
 	'ogg-play-sound' => 'Riprodûs il file audio',
 	'ogg-no-player' => 'Nus displâs ma il to sisteme nol à riprodutôrs software supuartâts.
 Par plasê <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">discjame un riprodutôr</a>.',
+	'ogg-player-videoElement' => 'Supuart sgarfadôr natîf',
+	'ogg-player-oggPlugin' => 'Plugin sgarfadôr',
 	'ogg-player-thumbnail' => 'Dome figure fisse',
 	'ogg-player-soundthumb' => 'Nissun riprodutôr',
 	'ogg-player-selected' => '(selezionât)',
@@ -979,10 +983,36 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author Melancholie
  */
 $messages['gsw'] = array(
+	'ogg-desc' => 'Styyrigsprogramm fir Ogg Theora- un Vorbis-Dateie, mit ere JavaScript-Abspiilsoftware',
+	'ogg-short-audio' => 'Ogg-$1-Audiodatei, $2',
+	'ogg-short-video' => 'Ogg-$1-Videodatei, $2',
+	'ogg-short-general' => 'Ogg-$1-Mediadatei, $2',
 	'ogg-long-audio' => '(Ogg-$1-Audiodatei, Längi: $2, $3)',
+	'ogg-long-video' => '(Ogg-$1-Videodatei, Längi: $2, $4×$5 Pixel, $3)',
+	'ogg-long-multiplexed' => '(Ogg-Audio-/Video-Datei, $1, Längi: $2, $4×$5 Pixel, $3)',
+	'ogg-long-general' => '(Ogg-Mediadatei, Längi: $2, $3)',
+	'ogg-long-error' => '(Uugiltigi Ogg-Datei: $1)',
+	'ogg-play' => 'Start',
+	'ogg-pause' => 'Paus',
+	'ogg-stop' => 'Stopp',
+	'ogg-play-video' => 'Video abspiile',
+	'ogg-play-sound' => 'Audio abspiile',
+	'ogg-no-player' => 'Dyy Syschtem het schyyns kei Abspiilsoftware. Bitte installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Abspiilsoftware</a>.',
+	'ogg-no-xiphqt' => 'Dyy Syschtem het schyyns d XiphQT-Komponent fir QuickTime nit. QuickTime cha ohni die Komponent kei Ogg-Dateie abspiile. Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lad XiphQT</a> oder wehl e anderi Abspiilsoftware.',
+	'ogg-player-videoElement' => 'Vorhandeni Browserunterstitzig',
+	'ogg-player-oggPlugin' => 'Browser-Plugin',
+	'ogg-player-thumbnail' => 'Zeig Vorschaubild',
+	'ogg-player-soundthumb' => 'Kei Player',
+	'ogg-player-selected' => '(usgwehlt)',
+	'ogg-use-player' => 'Abspiilsoftware:',
+	'ogg-more' => 'Meh …',
+	'ogg-dismiss' => 'Zuemache',
+	'ogg-download' => 'Datei spychere',
+	'ogg-desc-link' => 'Iber die Datei',
 );
 
 /** Manx (Gaelg)
@@ -2775,7 +2805,7 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'ogg-player-videoElement' => 'Dilet: <video>',
+	'ogg-player-videoElement' => 'Stüt bevüresodanaföm gebidon',
 	'ogg-more' => 'Pluikos...',
 	'ogg-dismiss' => 'Färmükön',
 	'ogg-download' => 'Donükön ragivi',

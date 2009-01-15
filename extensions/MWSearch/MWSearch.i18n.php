@@ -166,6 +166,13 @@ $messages['gl'] = array(
 	'mwsearch-desc' => 'Complemento de procura MediaWiki',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'mwsearch-desc' => 'Hintergrundprozäss fir d Lucene-Suechmaschin',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -438,6 +445,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'mwsearch-desc' => 'program: MWSearch',
 );
 
 /** Yue (粵語)
