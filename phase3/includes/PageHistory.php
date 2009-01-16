@@ -287,6 +287,7 @@ class PageHistory {
 		$lastlink = $this->lastLink( $rev, $next, $counter );
 		$arbitrary = $this->diffButtons( $rev, $firstInList, $counter );
 		$link = $this->revLink( $rev );
+		$classes = array();
 
 		$s = "($curlink) ($lastlink) $arbitrary";
 
@@ -359,9 +360,27 @@ class PageHistory {
 			$s .= ' (' . implode( ' | ', $tools ) . ')';
 		}
 
+		# Tags
+		if ($row->ts_tags) {
+			$tags = explode( ',', $row->ts_tags );
+			$displayTags = array();
+			foreach( $tags as $tag ) {
+				if (!wfEmptyMsg( "recentchanges-tag-$tag" , wfMsg( "recentchanges-tag-$tag" ) ) ) {
+					$displayTags[] = wfMsgExt( "recentchanges-tag-$tag", 'parseinline' );
+				} else {
+					$displayTags[] = $tag;
+				}
+				$classes[] = "mw-contributions-tag-$tag";
+			}
+
+			$s .= ' (' . implode( ', ', $displayTags ) . ')';
+		}
+
 		wfRunHooks( 'PageHistoryLineEnding', array( $this, &$row , &$s ) );
 
-		return "<li>$s</li>\n";
+		$classes = implode( ' ', $classes );
+
+		return "<li class=\"$classes\">$s</li>\n";
 	}
 
 	/**
@@ -602,10 +621,11 @@ class PageHistoryPager extends ReverseChronologicalPager {
 
 	function getQueryInfo() {
 		$queryInfo = array(
-			'tables'  => array('revision'),
-			'fields'  => Revision::selectFields(),
+			'tables'  => array('revision', 'tag_summary'),
+			'fields'  => array_merge( Revision::selectFields(), array('ts_tags') ),
 			'conds'   => array('rev_page' => $this->mPageHistory->mTitle->getArticleID() ),
-			'options' => array( 'USE INDEX' => array('revision' => 'page_timestamp') )
+			'options' => array( 'USE INDEX' => array('revision' => 'page_timestamp') ),
+			'join_conds' => array( 'tag_summary' => array( 'LEFT JOIN', 'ts_rev_id=rev_id' ) ),
 		);
 		wfRunHooks( 'PageHistoryPager::getQueryInfo', array( &$this, &$queryInfo ) );
 		return $queryInfo;

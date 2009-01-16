@@ -394,10 +394,10 @@ class OldChangesList extends ChangesList {
 				} else {
 					$displayTags[] = $tag;
 				}
+				$classes[] = "mw-changeslist-tag-$tag"
 			}
 			
 			$s .= ' (' . implode( ', ', $displayTags ) . ')';
-			$classes = array_merge( $classes, $tags );
 		}
 
 		## Classes

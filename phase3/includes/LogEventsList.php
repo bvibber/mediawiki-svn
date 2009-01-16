@@ -230,6 +230,7 @@ class LogEventsList {
 		global $wgLang, $wgUser, $wgContLang;
 
 		$title = Title::makeTitle( $row->log_namespace, $row->log_title );
+		$classes = array( "mw-logline-{$row->log_type}" );
 		$time = $wgLang->timeanddate( wfTimestamp(TS_MW, $row->log_timestamp), true );
 		// User links
 		if( self::isDeleted($row,LogPage::DELETED_USER) ) {
@@ -357,12 +358,29 @@ class LogEventsList {
 				$this->skin, $paramArray, true );
 		}
 
+		// Any tags...
+		$tagDisplay = '';
+		if ($row->ts_tags) {
+			$tags = explode( ',', $row->ts_tags );
+			$displayTags = array();
+			foreach( $tags as $tag ) {
+				if (!wfEmptyMsg( "logeventslist-tag-$tag" , wfMsg( "logeventslist-tag-$tag" ) ) ) {
+					$displayTags[] = wfMsgExt( "logeventslist-tag-$tag", 'parseinline' );
+				} else {
+					$displayTags[] = $tag;
+				}
+				$classes[] = "mw-logeventslist-tag-$tag";
+			}
+
+			$tagDisplay = ' (' . implode( ', ', $displayTags ) . ')';
+		}
+
 		if( $revert != '' ) {
 			$revert = '<span class="mw-logevent-actionlink">' . $revert . '</span>';
 		}
 
-		return Xml::tags( 'li', array( "class" => "mw-logline-$row->log_type" ),
-			$del . $time . ' ' . $userLink . ' ' . $action . ' ' . $comment . ' ' . $revert ) . "\n";
+		return Xml::tags( 'li', array( "class" => implode( ' ', $classes ) ),
+			$del . $time . ' ' . $userLink . ' ' . $action . ' ' . $comment . ' ' . $revert . " $tagDisplay" ) . "\n";
 	}
 
 	/**
@@ -645,11 +663,12 @@ class LogPager extends ReverseChronologicalPager {
 			$index = array( 'USE INDEX' => array( 'logging' => 'times' ) );
 		}
 		return array(
-			'tables' => array( 'logging', 'user' ),
+			'tables' => array( 'logging', 'user', 'tag_summary' ),
 			'fields' => array( 'log_type', 'log_action', 'log_user', 'log_namespace', 'log_title', 'log_params',
-				'log_comment', 'log_id', 'log_deleted', 'log_timestamp', 'user_name', 'user_editcount' ),
+				'log_comment', 'log_id', 'log_deleted', 'log_timestamp', 'user_name', 'user_editcount', 'ts_tags' ),
 			'conds' => $this->mConds,
-			'options' => $index
+			'options' => $index,
+			'join_conds' => array( 'tag_summary' => array( 'LEFT JOIN', 'ts_log_id=log_id' ), 'user' => array( 'INNER JOIN', 'user_id=log_user' ) ),
 		);
 	}
 

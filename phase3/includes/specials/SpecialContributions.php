@@ -537,10 +537,10 @@ class ContribsPager extends ReverseChronologicalPager {
 				} else {
 					$displayTags[] = $tag;
 				}
+				$classes[] = "mw-contributions-tag-$tag";
 			}
 
 			$ret .= ' (' . implode( ', ', $displayTags ) . ')';
-			$classes = array_merge( $classes, $tags );
 		}
 
 		// Let extensions add data
