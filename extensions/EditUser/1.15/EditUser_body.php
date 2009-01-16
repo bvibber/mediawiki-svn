@@ -1,14 +1,15 @@
 <?php
-/* Shamelessly copied and modified from /includes/specials/SpecialPreferences.php v1.13 */
+/* Shamelessly copied and modified from /includes/specials/SpecialPreferences.php v1.15 */
 class EditUser extends SpecialPage {
-	var $mQuickbar, $mOldpass, $mNewpass, $mRetypePass, $mStubs;
+	var $mQuickbar, $mStubs;
 	var $mRows, $mCols, $mSkin, $mMath, $mDate, $mUserEmail, $mEmailFlag, $mNick;
 	var $mUserLanguage, $mUserVariant;
-	var $mSearch, $mRecent, $mRecentDays, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
-	var $mReset, $mPosted, $mToggles, $mUseAjaxSearch, $mSearchNs, $mRealName, $mImageSize;
+	var $mSearch, $mRecent, $mRecentDays, $mTimeZone, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
+	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
 	var $mUnderline, $mWatchlistEdits;
-	var $user, $target;
-
+	# password changing was removed from prefs in 1.14, so we just add it back in now :)
+	var $mNewpass, $mRetypePass;
+	
 	function __construct() {
 		SpecialPage::SpecialPage('EditUser', 'edituser');
 	}
@@ -17,17 +18,20 @@ class EditUser extends SpecialPage {
 	 * Load some values
 	 */
 	function loadGlobals( $par ) {
-		global $wgContLang, $wgAllowRealName, $wgRequest, $wgUser;
-		$request = $wgRequest;
+		global $wgContLang, $wgUser, $wgAllowRealName;
+		# Begin EditUser additions
+		global $wgRequest;
+		$request = $wgRequest; 
 		$this->user = User::newFromName($par);
 		$this->user->load();
-		$this->mQuickbar = $request->getVal( 'wpQuickbar' );
 		$this->mNewpass = $request->getVal( 'wpNewpass' );
-		$this->mRetypePass = $request->getVal( 'wpRetypePass' );
+		$this->mRetypePass =$request->getVal( 'wpRetypePass' );
+		# End EditUser additions
+		$this->mQuickbar = $request->getVal( 'wpQuickbar' );
 		$this->mStubs = $request->getVal( 'wpStubs' );
 		$this->mRows = $request->getVal( 'wpRows' );
 		$this->mCols = $request->getVal( 'wpCols' );
-		$this->mSkin = $request->getVal( 'wpSkin' );
+		$this->mSkin = Skin::normalizeKey( $request->getVal( 'wpSkin' ) );
 		$this->mMath = $request->getVal( 'wpMath' );
 		$this->mDate = $request->getVal( 'wpDate' );
 		$this->mUserEmail = $request->getVal( 'wpUserEmail' );
@@ -39,6 +43,7 @@ class EditUser extends SpecialPage {
 		$this->mSearch = $request->getVal( 'wpSearch' );
 		$this->mRecent = $request->getVal( 'wpRecent' );
 		$this->mRecentDays = $request->getVal( 'wpRecentDays' );
+		$this->mTimeZone = $request->getVal( 'wpTimeZone' );
 		$this->mHourDiff = $request->getVal( 'wpHourDiff' );
 		$this->mSearchLines = $request->getVal( 'wpSearchLines' );
 		$this->mSearchChars = $request->getVal( 'wpSearchChars' );
@@ -47,12 +52,13 @@ class EditUser extends SpecialPage {
 		$this->mUnderline = $request->getInt( 'wpOpunderline' );
 		$this->mAction = $request->getVal( 'action' );
 		$this->mReset = $request->getCheck( 'wpReset' );
+		$this->mRestoreprefs = $request->getCheck( 'wpRestore' );
 		$this->mPosted = $request->wasPosted();
 		$this->mSuccess = $request->getCheck( 'success' );
 		$this->mWatchlistDays = $request->getVal( 'wpWatchlistDays' );
 		$this->mWatchlistEdits = $request->getVal( 'wpWatchlistEdits' );
-		$this->mUseAjaxSearch = $request->getCheck( 'wpUseAjaxSearch' );
 		$this->mDisableMWSuggest = $request->getCheck( 'wpDisableMWSuggest' );
+
 		$this->mSaveprefs = $request->getCheck( 'wpSaveprefs' ) &&
 			$this->mPosted &&
 			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );
@@ -88,8 +94,10 @@ class EditUser extends SpecialPage {
 		wfRunHooks( 'InitPreferencesForm', array( $this, $request ) );
 	}
 
-	function execute( $par ) {
-		global $wgOut, $wgUser, $wgRequest;
+	public function execute( $par ) {
+		global $wgUser, $wgOut, $wgTitle;
+		#Begin EditUser additions
+		global $wgRequest;
 		if( !$wgUser->isAllowed( 'edituser' ) ) {
 			$wgOut->permissionRequired( 'edituser' );
 			return false;
@@ -98,9 +106,9 @@ class EditUser extends SpecialPage {
 		wfLoadExtensionMessages( 'EditUser' );
 
 		$this->setHeaders();
-		$this->target = (isset($par)) ? $par : $wgRequest->getText('username', '');
-		if($this->target === '') {
-			$wgOut->addHtml($this->makeSearchForm());
+		$this->target = ( isset( $par ) ) ? $par : $wgRequest->getText( 'username', '' );
+		if( $this->target === '' ) {
+			$wgOut->addHtml( $this->makeSearchForm() );
 			return;
 		}
 		$targetuser = User::NewFromName( $this->target );
@@ -113,9 +121,9 @@ class EditUser extends SpecialPage {
 			$wgOut->addWikiText( wfMsg( 'edituser-exempt' ) );
 			return;
 		}
-		$this->loadGlobals($this->target);
-		$wgOut->addHtml($this->makeSearchForm());
-		$wgOut->addHtml('<br />');
+		$this->loadGlobals( $this->target );
+		$wgOut->addHtml( $this->makeSearchForm() . '<br />' );
+		#End EditUser additions
 		if ( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
@@ -125,11 +133,14 @@ class EditUser extends SpecialPage {
 			$this->mainPrefsForm( 'reset', wfMsg( 'prefsreset' ) );
 		} else if ( $this->mSaveprefs ) {
 			$this->savePreferences();
+		} else if ( $this->mRestoreprefs ) {
+			$this->restorePreferences();
 		} else {
 			$this->resetPrefs();
 			$this->mainPrefsForm( '' );
 		}
 	}
+	
 	/**
 	 * @access private
 	 */
@@ -179,34 +190,37 @@ class EditUser extends SpecialPage {
 
 	/**
 	 * Used to validate the user inputed timezone before saving it as
-	 * 'timecorrection', will return '00:00' if fed bogus data.
-	 * Note: It's not a 100% correct implementation timezone-wise, it will
-	 * accept stuff like '14:30',
+	 * 'timecorrection', will return 'System' if fed bogus data.
 	 * @access private
-	 * @param string $s the user input
+	 * @param string $tz the user input Zoneinfo timezone
+	 * @param string $s  the user input offset string
 	 * @return string
 	 */
-	function validateTimeZone( $s ) {
-		if ( $s !== '' ) {
-			if ( strpos( $s, ':' ) ) {
-				# HH:MM
-				$array = explode( ':' , $s );
-				$hour = intval( $array[0] );
-				$minute = intval( $array[1] );
-			} else {
-				$minute = intval( $s * 60 );
-				$hour = intval( $minute / 60 );
-				$minute = abs( $minute ) % 60;
-			}
-			# Max is +14:00 and min is -12:00, see:
-			# http://en.wikipedia.org/wiki/Timezone
-			$hour = min( $hour, 14 );
-			$hour = max( $hour, -12 );
-			$minute = min( $minute, 59 );
-			$minute = max( $minute, 0 );
-			$s = sprintf( "%02d:%02d", $hour, $minute );
+	function validateTimeZone( $tz, $s ) {
+		$data = explode( '|', $tz, 3 );
+		switch ( $data[0] ) {
+			case 'ZoneInfo':
+			case 'System':
+				return $tz;
+			case 'Offset':
+			default:
+				$data = explode( ':', $s, 2 );
+				$minDiff = 0;
+				if( count( $data ) == 2 ) {
+					$data[0] = intval( $data[0] );
+					$data[1] = intval( $data[1] );
+					$minDiff = abs( $data[0] ) * 60 + $data[1];
+					if ( $data[0] < 0 ) $minDiff = -$minDiff;
+				} else {
+					$minDiff = intval( $data[0] ) * 60;
+				}
+
+				# Max is +14:00 and min is -12:00, see:
+				# http://en.wikipedia.org/wiki/Timezone
+				$minDiff = min( $minDiff, 840 );  # 14:00
+				$minDiff = max( $minDiff, -720 ); # -12:00
+				return 'Offset|'.$minDiff;
 		}
-		return $s;
 	}
 
 	/**
@@ -218,8 +232,8 @@ class EditUser extends SpecialPage {
 		global $wgEmailAuthentication, $wgRCMaxAge;
 		global $wgAuth, $wgEmailConfirmToEdit;
 
-
-		if ( '' != $this->mNewpass && $wgAuth->allowPasswordChange() ) {
+		#Begin EditUser additions
+		if ( $this->mNewpass !== '' && $wgAuth->allowPasswordChange() ) {
 			if ( $this->mNewpass != $this->mRetypePass ) {
 				wfRunHooks( 'PrefsPasswordAudit', array( $this->user, $this->mNewpass, 'badretype' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'badretype' ) );
@@ -236,6 +250,8 @@ class EditUser extends SpecialPage {
 				return;
 			}
 		}
+		#End EditUser additions
+		
 		$this->user->setRealName( $this->mRealName );
 		$oldOptions = $this->user->mOptions;
 
@@ -268,7 +284,10 @@ class EditUser extends SpecialPage {
 		$this->user->setOption( 'variant', $this->mUserVariant );
 		$this->user->setOption( 'nickname', $this->mNick );
 		$this->user->setOption( 'quickbar', $this->mQuickbar );
-		$this->user->setOption( 'skin', $this->mSkin );
+		global $wgAllowUserSkin;
+		if( $wgAllowUserSkin ) {
+			$this->user->setOption( 'skin', $this->mSkin );
+		}
 		global $wgUseTeX;
 		if( $wgUseTeX ) {
 			$this->user->setOption( 'math', $this->mMath );
@@ -283,12 +302,11 @@ class EditUser extends SpecialPage {
 		$this->user->setOption( 'rows', $this->validateInt( $this->mRows, 4, 1000 ) );
 		$this->user->setOption( 'cols', $this->validateInt( $this->mCols, 4, 1000 ) );
 		$this->user->setOption( 'stubthreshold', $this->validateIntOrNull( $this->mStubs ) );
-		$this->user->setOption( 'timecorrection', $this->validateTimeZone( $this->mHourDiff, -12, 14 ) );
+		$this->user->setOption( 'timecorrection', $this->validateTimeZone( $this->mTimeZone, $this->mHourDiff ) );
 		$this->user->setOption( 'imagesize', $this->mImageSize );
 		$this->user->setOption( 'thumbsize', $this->mThumbSize );
 		$this->user->setOption( 'underline', $this->validateInt($this->mUnderline, 0, 2) );
 		$this->user->setOption( 'watchlistdays', $this->validateFloat( $this->mWatchlistDays, 0, 7 ) );
-		$this->user->setOption( 'ajaxsearch', $this->mUseAjaxSearch );
 		$this->user->setOption( 'disablesuggest', $this->mDisableMWSuggest );
 
 		# Set search namespace options
@@ -314,7 +332,7 @@ class EditUser extends SpecialPage {
 				if( $this->user->isValidEmailAddr( $newadr ) ) {
 					# new behaviour: set this new emailaddr from login-page into user database record
 					$this->user->setEmail( $newadr );
-					# auto-authenticate it
+					# auto-authenticate it (EditUser change -- original Prefs form required authentication)
 					$this->user->confirmEmail();
 				} else {
 					$error = wfMsg( 'invalidemailaddress' );
@@ -342,6 +360,7 @@ class EditUser extends SpecialPage {
 			return;
 		}
 
+		# DON'T set cookies here :)
 		$this->user->saveSettings();
 
 		if( $needRedirect && $error === false ) {
@@ -358,9 +377,11 @@ class EditUser extends SpecialPage {
 	 * @access private
 	 */
 	function resetPrefs() {
-		global $wgUser, $wgLang, $wgContLang, $wgContLanguageCode, $wgAllowRealName;
+		global $wgUser, $wgLang, $wgContLang, $wgContLanguageCode, $wgAllowRealName, $wgLocalTZoffset;
 
+		#Begin EditUser additions
 		$this->mNewpass = $this->mRetypePass = '';
+		#End EditUser additions
 		$this->mUserEmail = $this->user->getEmail();
 		$this->mUserEmailAuthenticationtimestamp = $this->user->getEmailAuthenticationtimestamp();
 		$this->mRealName = ($wgAllowRealName) ? $this->user->getRealName() : '';
@@ -379,7 +400,47 @@ class EditUser extends SpecialPage {
 		$this->mRows = $this->user->getOption( 'rows' );
 		$this->mCols = $this->user->getOption( 'cols' );
 		$this->mStubs = $this->user->getOption( 'stubthreshold' );
-		$this->mHourDiff = $this->user->getOption( 'timecorrection' );
+
+		$tz = $this->user->getOption( 'timecorrection' );
+		$data = explode( '|', $tz, 3 );
+		$minDiff = null;
+		switch ( $data[0] ) {
+			case 'ZoneInfo':
+				$this->mTimeZone = $tz;
+				# Check if the specified TZ exists, and change to 'Offset' if 
+				# not.
+				if ( !function_exists('timezone_open') || @timezone_open( $data[2] ) === false ) {
+					$this->mTimeZone = 'Offset';
+					$minDiff = intval( $data[1] );
+				}
+				break;
+			case '':
+			case 'System':
+				$this->mTimeZone = 'System|'.$wgLocalTZoffset;
+				break;
+			case 'Offset':
+				$this->mTimeZone = 'Offset';
+				$minDiff = intval( $data[1] );
+				break;
+			default:
+				$this->mTimeZone = 'Offset';
+				$data = explode( ':', $tz, 2 );
+				if( count( $data ) == 2 ) {
+					$data[0] = intval( $data[0] );
+					$data[1] = intval( $data[1] );
+					$minDiff = abs( $data[0] ) * 60 + $data[1];
+					if ( $data[0] < 0 ) $minDiff = -$minDiff;
+				} else {
+					$minDiff = intval( $data[0] ) * 60;
+				}
+				break;
+		}
+		if ( is_null( $minDiff ) ) {
+			$this->mHourDiff = '';
+		} else {
+			$this->mHourDiff = sprintf( '%+03d:%02d', floor($minDiff/60), abs($minDiff)%60 );
+		}
+
 		$this->mSearch = $this->user->getOption( 'searchlimit' );
 		$this->mSearchLines = $this->user->getOption( 'contextlines' );
 		$this->mSearchChars = $this->user->getOption( 'contextchars' );
@@ -390,7 +451,6 @@ class EditUser extends SpecialPage {
 		$this->mWatchlistEdits = $this->user->getOption( 'wllimit' );
 		$this->mUnderline = $this->user->getOption( 'underline' );
 		$this->mWatchlistDays = $this->user->getOption( 'watchlistdays' );
-		$this->mUseAjaxSearch = $this->user->getBoolOption( 'ajaxsearch' );
 		$this->mDisableMWSuggest = $this->user->getBoolOption( 'disablesuggest' );
 
 		$togs = User::getToggles();
@@ -408,6 +468,17 @@ class EditUser extends SpecialPage {
 		wfRunHooks( 'ResetPreferences', array( $this, $this->user ) );
 	}
 
+	/**
+	 * @access private
+	 */
+	function restorePreferences() {
+		global $wgUser, $wgOut;
+		$this->user->restoreOptions();
+		$this->user->saveSettings();
+		$title = SpecialPage::getTitleFor( 'Preferences' );
+		$wgOut->redirect( $title->getFullURL( 'success' ) );
+	}
+	
 	/**
 	 * @access private
 	 */
@@ -499,15 +570,17 @@ class EditUser extends SpecialPage {
 	 * @access private
 	 */
 	function mainPrefsForm( $status , $message = '' ) {
-		global $wgUser, $wgOut, $wgLang, $wgContLang;
+		global $wgUser, $wgOut, $wgLang, $wgContLang, $wgAuth;
 		global $wgAllowRealName, $wgImageLimits, $wgThumbLimits;
-		global $wgDisableLangConversion;
+		global $wgDisableLangConversion, $wgDisableTitleConversion;
 		global $wgEnotifWatchlist, $wgEnotifUserTalk,$wgEnotifMinorEdits;
 		global $wgRCShowWatchingUsers, $wgEnotifRevealEditorAddress;
 		global $wgEnableEmail, $wgEnableUserEmail, $wgEmailAuthentication;
-		global $wgContLanguageCode, $wgDefaultSkin, $wgSkipSkins, $wgAuth;
-		global $wgEmailConfirmToEdit, $wgAjaxSearch, $wgEnableMWSuggest;
+		global $wgContLanguageCode, $wgDefaultSkin, $wgCookieExpiration;
+		global $wgEmailConfirmToEdit, $wgEnableMWSuggest, $wgLocalTZoffset;
 
+		$wgOut->setArticleRelated( false );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->addScriptFile( 'prefs.js' );
 
 		$wgOut->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
@@ -521,11 +594,11 @@ class EditUser extends SpecialPage {
 		}
 
 		$qbs = $wgLang->getQuickbarSettings();
-		$skinNames = $wgLang->getSkinNames();
 		$mathopts = $wgLang->getMathNames();
 		$dateopts = $wgLang->getDatePreferences();
 		$togs = User::getToggles();
 
+		# Changed to be EditUser :)
 		$titleObj = SpecialPage::getTitleFor( 'EditUser' );
 
 		# Pre-expire some toggles so they won't show if disabled
@@ -537,6 +610,7 @@ class EditUser extends SpecialPage {
 		$this->mUsedToggles[ 'enotifrevealaddr' ] = true;
 		$this->mUsedToggles[ 'ccmeonemails' ] = true;
 		$this->mUsedToggles[ 'uselivepreview' ] = true;
+		$this->mUsedToggles[ 'noconvertlink' ] = true;
 
 
 		if ( !$this->mEmailFlag ) { $emfc = 'checked="checked"'; }
@@ -545,7 +619,13 @@ class EditUser extends SpecialPage {
 
 		if ($wgEmailAuthentication && ($this->mUserEmail != '') ) {
 			if( $this->user->getEmailAuthenticationTimestamp() ) {
-				$emailauthenticated = wfMsg('emailauthenticated',$wgLang->timeanddate($this->user->getEmailAuthenticationTimestamp(), true ) ).'<br />';
+				// date and time are separate parameters to facilitate localisation.
+				// $time is kept for backward compat reasons.
+				// 'emailauthenticated' is also used in SpecialConfirmemail.php
+				$time = $wgLang->timeAndDate( $this->user->getEmailAuthenticationTimestamp(), true );
+				$d = $wgLang->date( $this->user->getEmailAuthenticationTimestamp(), true );
+				$t = $wgLang->time( $this->user->getEmailAuthenticationTimestamp(), true );
+				$emailauthenticated = wfMsg('emailauthenticated', $time, $d, $t ).'<br />';
 				$disableEmailPrefs = false;
 			} else {
 				$disableEmailPrefs = true;
@@ -605,26 +685,26 @@ class EditUser extends SpecialPage {
 		$toolLinks = array();
 		$toolLinks[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'ListGroupRights' ), wfMsg( 'listgrouprights' ) );
 		# At the moment one tool link only but be prepared for the future...
-		# FIXME: Add a link to Special:Userrights for users who are allowed to use it. 
-		# $wgUser->isAllowed( 'userrights' ) seems to strict in some cases
+		# FIXME: Add a link to Special:Userrights for users who are allowed to use it.
+		# $this->user->isAllowed( 'userrights' ) seems to strict in some cases
 
 		$userInformationHtml =
 			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $this->user->getName() ) ) .
-			$this->tableRow( wfMsgHtml( 'uid' ), htmlspecialchars( $this->user->getId() ) ) .
+			$this->tableRow( wfMsgHtml( 'uid' ), $wgLang->formatNum( htmlspecialchars( $this->user->getId() ) ) ).
 
 			$this->tableRow(
 				wfMsgExt( 'prefs-memberingroups', array( 'parseinline' ), count( $userEffectiveGroupsArray ) ),
-				implode( wfMsg( 'comma-separator' ), $userEffectiveGroupsArray ) . 
+				$wgLang->commaList( $userEffectiveGroupsArray ) .
 				'<br />(' . implode( ' | ', $toolLinks ) . ')'
 			) .
 
 			$this->tableRow(
 				wfMsgHtml( 'prefs-edits' ),
-				$wgLang->formatNum( User::edits( $this->user->getId() ) )
+				$wgLang->formatNum( $this->user->getEditCount() )
 			);
 
 		if( wfRunHooks( 'PreferencesUserInformationPanel', array( $this, &$userInformationHtml ) ) ) {
-			$wgOut->addHtml( $userInformationHtml );
+			$wgOut->addHTML( $userInformationHtml );
 		}
 
 		if ( $wgAllowRealName ) {
@@ -709,7 +789,7 @@ class EditUser extends SpecialPage {
 			}
 
 			if(count($variantArray) > 1) {
-				$wgOut->addHtml(
+				$wgOut->addHTML(
 					$this->tableRow(
 						Xml::label( wfMsg( 'yourvariant' ), 'wpUserVariant' ),
 						Xml::tags( 'select',
@@ -719,9 +799,19 @@ class EditUser extends SpecialPage {
 					)
 				);
 			}
+
+			if(count($variantArray) > 1 && !$wgDisableLangConversion && !$wgDisableTitleConversion) {
+				$wgOut->addHTML(
+					Xml::tags( 'tr', null,
+						Xml::tags( 'td', array( 'colspan' => '2' ),
+							$this->getToggle( "noconvertlink" )
+						)
+					)
+				);
+			}
 		}
 
-		# Password
+		# Password -- brought back here from ResetPass because it's easier to edit people this way
 		if( $wgAuth->allowPasswordChange() ) {
 			$wgOut->addHTML(
 				$this->tableRow( Xml::element( 'h2', null, wfMsg( 'changepassword' ) ) ) .
@@ -732,13 +822,19 @@ class EditUser extends SpecialPage {
 				$this->tableRow(
 					Xml::label( wfMsg( 'retypenew' ), 'wpRetypePass' ),
 					Xml::password( 'wpRetypePass', 25, $this->mRetypePass, array( 'id' => 'wpRetypePass' ) )
-				) .
-				Xml::tags( 'tr', null,
-					Xml::tags( 'td', array( 'colspan' => '2' ),
-						$this->getToggle( "rememberpassword" )
-					)
 				)
 			);
+			if( $wgCookieExpiration > 0 ){
+				$wgOut->addHTML(
+					Xml::tags( 'tr', null,
+						Xml::tags( 'td', array( 'colspan' => '2' ),
+							$this->getToggle( "rememberpassword" )
+						)
+					)
+				);
+			} else {
+				$this->mUsedToggles['rememberpassword'] = true;
+			}
 		}
 
 		# <FIXME>
@@ -780,48 +876,49 @@ class EditUser extends SpecialPage {
 		# Quickbar
 		#
 		if ($this->mSkin == 'cologneblue' || $this->mSkin == 'standard') {
-			$wgOut->addHtml( "<fieldset>\n<legend>" . wfMsg( 'qbsettings' ) . "</legend>\n" );
+			$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg( 'qbsettings' ) . "</legend>\n" );
 			for ( $i = 0; $i < count( $qbs ); ++$i ) {
 				if ( $i == $this->mQuickbar ) { $checked = ' checked="checked"'; }
 				else { $checked = ""; }
 				$wgOut->addHTML( "<div><label><input type='radio' name='wpQuickbar' value=\"$i\"$checked />{$qbs[$i]}</label></div>\n" );
 			}
-			$wgOut->addHtml( "</fieldset>\n\n" );
+			$wgOut->addHTML( "</fieldset>\n\n" );
 		} else {
 			# Need to output a hidden option even if the relevant skin is not in use,
 			# otherwise the preference will get reset to 0 on submit
-			$wgOut->addHtml( Xml::hidden( 'wpQuickbar', $this->mQuickbar ) );
+			$wgOut->addHTML( Xml::hidden( 'wpQuickbar', $this->mQuickbar ) );
 		}
 
 		# Skin
 		#
-		$wgOut->addHTML( "<fieldset>\n<legend>\n" . wfMsg('skin') . "</legend>\n" );
-		$mptitle = Title::newMainPage();
-		$previewtext = wfMsg('skinpreview');
-		# Only show members of Skin::getSkinNames() rather than
-		# $skinNames (skins is all skin names from Language.php)
-		$validSkinNames = Skin::getSkinNames();
-		# Sort by UI skin name. First though need to update validSkinNames as sometimes
-		# the skinkey & UI skinname differ (e.g. "standard" skinkey is "Classic" in the UI).
-		foreach ($validSkinNames as $skinkey => & $skinname ) {
-			if ( isset( $skinNames[$skinkey] ) )  {
-				$skinname = $skinNames[$skinkey];
+		global $wgAllowUserSkin;
+		if( $wgAllowUserSkin ) {
+			$wgOut->addHTML( "<fieldset>\n<legend>\n" . wfMsg( 'skin' ) . "</legend>\n" );
+			$mptitle = Title::newMainPage();
+			$previewtext = wfMsg( 'skin-preview' );
+			# Only show members of Skin::getSkinNames() rather than
+			# $skinNames (skins is all skin names from Language.php)
+			$validSkinNames = Skin::getUsableSkins();
+			# Sort by UI skin name. First though need to update validSkinNames as sometimes
+			# the skinkey & UI skinname differ (e.g. "standard" skinkey is "Classic" in the UI).
+			foreach ( $validSkinNames as $skinkey => &$skinname ) {
+				$msgName = "skinname-{$skinkey}";
+				$localisedSkinName = wfMsg( $msgName );
+				if ( !wfEmptyMsg( $msgName, $localisedSkinName ) )  {
+					$skinname = $localisedSkinName;
+				}
 			}
-		}
-		asort($validSkinNames);
-		foreach ($validSkinNames as $skinkey => $sn ) {
-			if ( in_array( $skinkey, $wgSkipSkins ) ) {
-				continue;
+			asort($validSkinNames);
+			foreach ($validSkinNames as $skinkey => $sn ) {
+				$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
+				$mplink = htmlspecialchars( $mptitle->getLocalURL( "useskin=$skinkey" ) );
+				$previewlink = "(<a target='_blank' href=\"$mplink\">$previewtext</a>)";
+				if( $skinkey == $wgDefaultSkin )
+					$sn .= ' (' . wfMsg( 'default' ) . ')';
+				$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br />\n" );
 			}
-			$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
-
-			$mplink = htmlspecialchars($mptitle->getLocalURL("useskin=$skinkey"));
-			$previewlink = "<a target='_blank' href=\"$mplink\">$previewtext</a>";
-			if( $skinkey == $wgDefaultSkin )
-				$sn .= ' (' . wfMsg( 'default' ) . ')';
-			$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br />\n" );
+			$wgOut->addHTML( "</fieldset>\n\n" );
 		}
-		$wgOut->addHTML( "</fieldset>\n\n" );
 
 		# Math
 		#
@@ -841,24 +938,12 @@ class EditUser extends SpecialPage {
 
 		# Files
 		#
-		$wgOut->addHTML(
-			"<fieldset>\n" . Xml::element( 'legend', null, wfMsg( 'files' ) ) . "\n"
-		);
-
 		$imageLimitOptions = null;
 		foreach ( $wgImageLimits as $index => $limits ) {
 			$selected = ($index == $this->mImageSize);
-			$imageLimitOptions .= Xml::option( "{$limits[0]}Ã—{$limits[1]}" .
+			$imageLimitOptions .= Xml::option( "{$limits[0]}×{$limits[1]}" .
 				wfMsg('unit-pixel'), $index, $selected );
 		}
-
-		$imageSizeId = 'wpImageSize';
-		$wgOut->addHTML(
-			"<div>" . Xml::label( wfMsg('imagemaxsize'), $imageSizeId ) . " " .
-			Xml::openElement( 'select', array( 'name' => $imageSizeId, 'id' => $imageSizeId ) ) .
-				$imageLimitOptions .
-			Xml::closeElement( 'select' ) . "</div>\n"
-		);
 
 		$imageThumbOptions = null;
 		foreach ( $wgThumbLimits as $index => $size ) {
@@ -867,15 +952,33 @@ class EditUser extends SpecialPage {
 				$selected);
 		}
 
+		$imageSizeId = 'wpImageSize';
 		$thumbSizeId = 'wpThumbSize';
 		$wgOut->addHTML(
-			"<div>" . Xml::label( wfMsg('thumbsize'), $thumbSizeId ) . " " .
-			Xml::openElement( 'select', array( 'name' => $thumbSizeId, 'id' => $thumbSizeId ) ) .
-				$imageThumbOptions .
-			Xml::closeElement( 'select' ) . "</div>\n"
+			Xml::fieldset( wfMsg( 'files' ) ) . "\n" .
+			Xml::openElement( 'table' ) .
+				'<tr>
+					<td class="mw-label">' .
+						Xml::label( wfMsg( 'imagemaxsize' ), $imageSizeId ) .
+					'</td>
+					<td class="mw-input">' .
+						Xml::openElement( 'select', array( 'name' => $imageSizeId, 'id' => $imageSizeId ) ) .
+						$imageLimitOptions .
+						Xml::closeElement( 'select' ) .
+					'</td>
+				</tr><tr>
+					<td class="mw-label">' .
+						Xml::label( wfMsg( 'thumbsize' ), $thumbSizeId ) .
+					'</td>
+					<td class="mw-input">' .
+						Xml::openElement( 'select', array( 'name' => $thumbSizeId, 'id' => $thumbSizeId ) ) .
+						$imageThumbOptions .
+						Xml::closeElement( 'select' ) .
+					'</td>
+				</tr>' .
+ 			Xml::closeElement( 'table' ) .
+ 			Xml::closeElement( 'fieldset' )
 		);
-
-		$wgOut->addHTML( "</fieldset>\n\n" );
 
 		# Date format
 		#
@@ -910,18 +1013,61 @@ class EditUser extends SpecialPage {
 			$wgOut->addHTML( Xml::closeElement( 'fieldset' ) . "\n" );
 		}
 
-		$nowlocal = $wgLang->time( $now = wfTimestampNow(), true );
-		$nowserver = $wgLang->time( $now, false );
+		$nowlocal = Xml::openElement( 'span', array( 'id' => 'wpLocalTime' ) ) .
+			$wgLang->time( $now = wfTimestampNow(), true ) .
+			Xml::closeElement( 'span' );
+		$nowserver = $wgLang->time( $now, false ) .
+			Xml::hidden( 'wpServerTime', substr( $now, 8, 2 ) * 60 + substr( $now, 10, 2 ) );
 
 		$wgOut->addHTML(
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMsg( 'timezonelegend' ) ) .
 			Xml::openElement( 'table' ) .
 		 	$this->addRow( wfMsg( 'servertime' ), $nowserver ) .
-			$this->addRow( wfMsg( 'localtime' ), $nowlocal ) .
+			$this->addRow( wfMsg( 'localtime' ), $nowlocal )
+		);
+		$opt = Xml::openElement( 'select', array(
+			'name' => 'wpTimeZone',
+			'id' => 'wpTimeZone',
+			'onchange' => 'javascript:updateTimezoneSelection(false)' ) );
+		$opt .= Xml::option( wfMsg( 'timezoneuseserverdefault' ), "System|$wgLocalTZoffset", $this->mTimeZone === "System|$wgLocalTZoffset" );
+		$opt .= Xml::option( wfMsg( 'timezoneuseoffset' ), 'Offset', $this->mTimeZone === 'Offset' );
+		if ( function_exists( 'timezone_identifiers_list' ) ) {
+			$optgroup = '';
+			$tzs = timezone_identifiers_list();
+			sort( $tzs );
+			$selZone = explode( '|', $this->mTimeZone, 3);
+			$selZone = ( $selZone[0] == 'ZoneInfo' ) ? $selZone[2] : null;
+			$now = date_create( 'now' );
+			foreach ( $tzs as $tz ) {
+				$z = explode( '/', $tz, 2 );
+				# timezone_identifiers_list() returns a number of
+				# backwards-compatibility entries. This filters them out of the 
+				# list presented to the user.
+				if ( count( $z ) != 2 || !in_array( $z[0], array( 'Africa', 'America', 'Antarctica', 'Arctic', 'Asia', 'Atlantic', 'Australia', 'Europe', 'Indian', 'Pacific' ) ) ) continue;
+				if ( $optgroup != $z[0] ) {
+					if ( $optgroup !== '' ) $opt .= Xml::closeElement( 'optgroup' );
+					$optgroup = $z[0];
+					$opt .= Xml::openElement( 'optgroup', array( 'label' => $z[0] ) );
+				}
+				$minDiff = floor( timezone_offset_get( timezone_open( $tz ), $now ) / 60 );
+				$opt .= Xml::option( str_replace( '_', ' ', $tz ), "ZoneInfo|$minDiff|$tz", $selZone === $tz, array( 'label' => $z[1] ) );
+			}
+			if ( $optgroup !== '' ) $opt .= Xml::closeElement( 'optgroup' );
+		}
+		$opt .= Xml::closeElement( 'select' );
+		$wgOut->addHTML(
+			$this->addRow(
+				Xml::label( wfMsg( 'timezoneselect' ), 'wpTimeZone' ),
+				$opt )
+		);
+		$wgOut->addHTML(
 			$this->addRow(
 				Xml::label( wfMsg( 'timezoneoffset' ), 'wpHourDiff'  ),
-				Xml::input( 'wpHourDiff', 6, $this->mHourDiff, array( 'id' => 'wpHourDiff' ) ) ) .
+				Xml::input( 'wpHourDiff', 6, $this->mHourDiff, array(
+					'id' => 'wpHourDiff',
+					'onfocus' => 'javascript:updateTimezoneSelection(true)',
+					'onblur' => 'javascript:updateTimezoneSelection(false)' ) ) ) .
 			"<tr>
 				<td></td>
 				<td class='mw-submit'>" .
@@ -942,12 +1088,11 @@ class EditUser extends SpecialPage {
 		# Editing
 		#
 		global $wgLivePreview;
-		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'textboxsize' ) . '</legend>
-			<div>' .
-				wfInputLabel( wfMsg( 'rows' ), 'wpRows', 'wpRows', 3, $this->mRows ) .
-				' ' .
-				wfInputLabel( wfMsg( 'columns' ), 'wpCols', 'wpCols', 3, $this->mCols ) .
-			"</div>" .
+		$wgOut->addHTML(
+			Xml::fieldset( wfMsg( 'textboxsize' ) ) .
+			wfMsgHTML( 'prefs-edit-boxsize' ) . ' ' .
+			Xml::inputLabel( wfMsg( 'rows' ), 'wpRows', 'wpRows', 3, $this->mRows ) . ' ' .
+			Xml::inputLabel( wfMsg( 'columns' ), 'wpCols', 'wpCols', 3, $this->mCols ) .
 			$this->getToggles( array(
 				'editsection',
 				'editsectiononrightclick',
@@ -961,62 +1106,76 @@ class EditUser extends SpecialPage {
 				'externaldiff',
 				$wgLivePreview ? 'uselivepreview' : false,
 				'forceeditsummary',
-			) ) . '</fieldset>'
+			) )
 		);
 
+		$wgOut->addHTML( Xml::closeElement( 'fieldset' ) );
+
 		# Recent changes
-		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'prefs-rc' ) . '</legend>' );
-
-		$rc  = '<table><tr>';
-		$rc .= '<td>' . Xml::label( wfMsg( 'recentchangesdays' ), 'wpRecentDays' ) . '</td>';
-		$rc .= '<td>' . Xml::input( 'wpRecentDays', 3, $this->mRecentDays, array( 'id' => 'wpRecentDays' ) ) . '</td>';
-		$rc .= '</tr><tr>';
-		$rc .= '<td>' . Xml::label( wfMsg( 'recentchangescount' ), 'wpRecent' ) . '</td>';
-		$rc .= '<td>' . Xml::input( 'wpRecent', 3, $this->mRecent, array( 'id' => 'wpRecent' ) ) . '</td>';
-		$rc .= '</tr></table>';
-		$wgOut->addHtml( $rc );
-
-		$wgOut->addHtml( '<br />' );
+		global $wgRCMaxAge;
+		$wgOut->addHTML(
+			Xml::fieldset( wfMsg( 'prefs-rc' ) ) .
+ 			Xml::openElement( 'table' ) .
+				'<tr>
+					<td class="mw-label">' .
+						Xml::label( wfMsg( 'recentchangesdays' ), 'wpRecentDays' ) .
+					'</td>
+					<td class="mw-input">' .
+						Xml::input( 'wpRecentDays', 3, $this->mRecentDays, array( 'id' => 'wpRecentDays' ) ) . ' ' .
+						wfMsgExt( 'recentchangesdays-max', 'parsemag',
+							$wgLang->formatNum( ceil( $wgRCMaxAge / ( 3600 * 24 ) ) ) ) .
+					'</td>
+				</tr><tr>
+					<td class="mw-label">' .
+						Xml::label( wfMsg( 'recentchangescount' ), 'wpRecent' ) .
+					'</td>
+					<td class="mw-input">' .
+						Xml::input( 'wpRecent', 3, $this->mRecent, array( 'id' => 'wpRecent' ) ) .
+					'</td>
+				</tr>' .
+ 			Xml::closeElement( 'table' ) .
+			'<br />'
+		);
 
 		$toggles[] = 'hideminor';
 		if( $wgRCShowWatchingUsers )
 			$toggles[] = 'shownumberswatching';
 		$toggles[] = 'usenewrc';
-		$wgOut->addHtml( $this->getToggles( $toggles ) );
 
-		$wgOut->addHtml( '</fieldset>' );
+		$wgOut->addHTML(
+			$this->getToggles( $toggles ) .
+			Xml::closeElement( 'fieldset' )
+		);
 
 		# Watchlist
-		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'prefs-watchlist' ) . '</legend>' );
+		$wgOut->addHTML( 
+			Xml::fieldset( wfMsg( 'prefs-watchlist' ) ) .
+			Xml::inputLabel( wfMsg( 'prefs-watchlist-days' ), 'wpWatchlistDays', 'wpWatchlistDays', 3, $this->mWatchlistDays ) . ' ' .
+			wfMsgHTML( 'prefs-watchlist-days-max' ) .
+			'<br /><br />' .
+			$this->getToggle( 'extendwatchlist' ) .
+			Xml::inputLabel( wfMsg( 'prefs-watchlist-edits' ), 'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) . ' ' .
+			wfMsgHTML( 'prefs-watchlist-edits-max' ) .
+			'<br /><br />' .
+			$this->getToggles( array( 'watchlisthideminor', 'watchlisthidebots', 'watchlisthideown', 'watchlisthideanons', 'watchlisthideliu' ) )
+		);
 
-		$wgOut->addHtml( wfInputLabel( wfMsg( 'prefs-watchlist-days' ), 'wpWatchlistDays', 'wpWatchlistDays', 3, $this->mWatchlistDays ) );
-		$wgOut->addHtml( '<br /><br />' );
+		if( $this->user->isAllowed( 'createpage' ) || $this->user->isAllowed( 'createtalk' ) ) {
+			$wgOut->addHTML( $this->getToggle( 'watchcreations' ) );
+		}
 
-		$wgOut->addHtml( $this->getToggle( 'extendwatchlist' ) );
-		$wgOut->addHtml( wfInputLabel( wfMsg( 'prefs-watchlist-edits' ), 'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) );
-		$wgOut->addHtml( '<br /><br />' );
-
-		$wgOut->addHtml( $this->getToggles( array( 'watchlisthideown', 'watchlisthidebots', 'watchlisthideminor' ) ) );
-
-		if( $this->user->isAllowed( 'createpage' ) || $this->user->isAllowed( 'createtalk' ) )
-			$wgOut->addHtml( $this->getToggle( 'watchcreations' ) );
 		foreach( array( 'edit' => 'watchdefault', 'move' => 'watchmoves', 'delete' => 'watchdeletion' ) as $action => $toggle ) {
 			if( $this->user->isAllowed( $action ) )
-				$wgOut->addHtml( $this->getToggle( $toggle ) );
+				$wgOut->addHTML( $this->getToggle( $toggle ) );
 		}
 		$this->mUsedToggles['watchcreations'] = true;
 		$this->mUsedToggles['watchdefault'] = true;
 		$this->mUsedToggles['watchmoves'] = true;
 		$this->mUsedToggles['watchdeletion'] = true;
 
-		$wgOut->addHtml( '</fieldset>' );
+		$wgOut->addHTML( Xml::closeElement( 'fieldset' ) );
 
 		# Search
-		$ajaxsearch = $wgAjaxSearch ?
-			$this->addRow(
-				Xml::label( wfMsg( 'useajaxsearch' ), 'wpUseAjaxSearch' ),
-				Xml::check( 'wpUseAjaxSearch', $this->mUseAjaxSearch, array( 'id' => 'wpUseAjaxSearch' ) )
-			) : '';
 		$mwsuggest = $wgEnableMWSuggest ?
 			$this->addRow(
 				Xml::label( wfMsg( 'mwsuggest-disable' ), 'wpDisableMWSuggest' ),
@@ -1030,7 +1189,6 @@ class EditUser extends SpecialPage {
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', null, wfMsg( 'prefs-searchoptions' ) ) .
 			Xml::openElement( 'table' ) .
-			$ajaxsearch .
 			$this->addRow(
 				Xml::label( wfMsg( 'resultsperpage' ), 'wpSearch' ),
 				Xml::input( 'wpSearch', 4, $this->mSearch, array( 'id' => 'wpSearch' ) )
@@ -1059,8 +1217,8 @@ class EditUser extends SpecialPage {
 		# Misc
 		#
 		$wgOut->addHTML('<fieldset><legend>' . wfMsg('prefs-misc') . '</legend>');
-		$wgOut->addHtml( '<label for="wpStubs">' . wfMsg( 'stub-threshold' ) . '</label>&nbsp;' );
-		$wgOut->addHtml( Xml::input( 'wpStubs', 6, $this->mStubs, array( 'id' => 'wpStubs' ) ) );
+		$wgOut->addHTML( '<label for="wpStubs">' . wfMsg( 'stub-threshold' ) . '</label>&nbsp;' );
+		$wgOut->addHTML( Xml::input( 'wpStubs', 6, $this->mStubs, array( 'id' => 'wpStubs' ) ) );
 		$msgUnderline = htmlspecialchars( wfMsg ( 'tog-underline' ) );
 		$msgUnderlinenever = htmlspecialchars( wfMsg ( 'underline-never' ) );
 		$msgUnderlinealways = htmlspecialchars( wfMsg ( 'underline-always' ) );
@@ -1079,9 +1237,13 @@ class EditUser extends SpecialPage {
 
 		foreach ( $togs as $tname ) {
 			if( !array_key_exists( $tname, $this->mUsedToggles ) ) {
-				$wgOut->addHTML( $this->getToggle( $tname ) );
+				if( $tname == 'norollbackdiff' && $this->user->isAllowed( 'rollback' ) )
+					$wgOut->addHTML( $this->getToggle( $tname ) );
+				else
+					$wgOut->addHTML( $this->getToggle( $tname ) );
 			}
 		}
+
 		$wgOut->addHTML( '</fieldset>' );
 
 		wfRunHooks( 'RenderPreferencesForm', array( $this, $wgOut ) );
@@ -1090,18 +1252,18 @@ class EditUser extends SpecialPage {
 		$skin = $this->user->getSkin();
 		$wgOut->addHTML( "
 	<div id='prefsubmit'>
-	<div>
 		<input type='hidden' name='username' value=\"{$this->target}\" />
-		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . '"'.$skin->tooltipAndAccesskey('save')." />
+		<input type='submit' name='wpRestore' class='btnSavePrefs' style='float:right;' value=\"" . 
+			wfMsgHtml( 'restoreprefs' ) . "\" />
+		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . 
+			'"'.$skin->tooltipAndAccesskey('save')." />
 		<input type='submit' name='wpReset' value=\"" . wfMsgHtml( 'resetprefs' ) . "\" />
-	</div>
-
 	</div>
 
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 	</div></form>\n" );
 
-		$wgOut->addHtml( Xml::tags( 'div', array( 'class' => "prefcache" ),
+		$wgOut->addHTML( Xml::tags( 'div', array( 'class' => "prefcache" ),
 			wfMsgExt( 'clearyourcache', 'parseinline' ) )
 		);
 	}

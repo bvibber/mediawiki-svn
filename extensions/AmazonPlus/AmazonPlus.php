@@ -84,7 +84,7 @@ function efAmazonPlusSetup() {
 
 # Set up the javascript
 function efAmazonPlusJavascript( &$out, $sk ) {
-	global $wgScriptPath;
+	global $wgScriptPath, $wgAmazonPlusJSVersion;
 	$src = $wgScriptPath . "/extensions/AmazonPlus/AmazonPlus.js?$wgAmazonPlusJSVersion";
 	$out->addScript( '<script type="text/javascript" src="' . $src . '"></script>' . "\n" );
 	return true;
