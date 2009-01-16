@@ -517,9 +517,22 @@ class SpecialAbuseFilter extends SpecialPage {
 		$warnMsg = empty($setActions['warn']) ? 'abusefilter-warning' : $actions['warn']['parameters'][0];
 		$warnFields['abusefilter-edit-warn-message'] = Xml::input( 'wpFilterWarnMessage', 45, $warnMsg );
 		$output .= Xml::tags( 'p', null, Xml::buildForm( $warnFields ) );
+
+		// Special case: tagging
+		if ($setActions['tag']) {
+			$tags = $actions['tag']['parameters'];
+		} else {
+			$tags = array();
+		}
+
+		$checkbox = Xml::checkLabel( wfMsg('abusefilter-edit-action-tag'), 'wpFilterActionTag', 'wpFilterActionTag', $setActions['tag'] );
+		$output .= Xml::tags( 'p', null, $checkbox );
+
+		$tagFields['abusefilter-edit-tag-tag'] = Xml::textarea( 'wpFilterTags', implode( "\n", $tags ) );
+		$output .= Xml::tags( 'p', null, Xml::buildForm( $tagFields ) );
 		
 		// The remainder are just toggles
-		$remainingActions = array_diff( $wgAbuseFilterAvailableActions, array( 'flag', 'throttle', 'warn' ) );
+		$remainingActions = array_diff( $wgAbuseFilterAvailableActions, array( 'flag', 'throttle', 'warn', 'tag' ) );
 		
 		foreach( $remainingActions as $action ) {
 			$message = 'abusefilter-edit-action-'.$action;
@@ -661,6 +674,8 @@ class SpecialAbuseFilter extends SpecialPage {
 					$parameters = array_merge( $parameters, $throttleGroups );
 				} elseif ($action == 'warn') {
 					$parameters[0] = $wgRequest->getVal( 'wpFilterWarnMessage' );
+				} elseif ($action == 'tag') {
+					$parameters = explode("\n", $wgRequest->getText( 'wpFilterTags' ) );
 				}
 				
 				$thisAction = array( 'action' => $action, 'parameters' => $parameters );

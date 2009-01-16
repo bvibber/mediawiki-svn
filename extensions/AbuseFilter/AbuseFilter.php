@@ -44,6 +44,7 @@ $wgHooks['AbortNewAccount'][] = 'AbuseFilterHooks::onAbortNewAccount';
 $wgHooks['ArticleDelete'][] = 'AbuseFilterHooks::onArticleDelete';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'AbuseFilterHooks::onSchemaUpdate';
 $wgHooks['AbortDeleteQueueNominate'][] = 'AbuseFilterHooks::onAbortDeleteQueueNominate';
+$wgHooks['RecentChange_save'][] = 'AbuseFilterHooks::onRecentChangeSave';
 
 $wgAvailableRights[] = 'abusefilter-modify';
 $wgAvailableRights[] = 'abusefilter-log-detail';
@@ -51,7 +52,7 @@ $wgAvailableRights[] = 'abusefilter-view';
 $wgAvailableRights[] = 'abusefilter-log';
 $wgAvailableRights[] = 'abusefilter-private';
 
-$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'rangeblock' );
+$wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'rangeblock', 'tag' );
 
 // Conditions take about 4ms to check, so 100 conditions would take 400ms
 // Currently, has no effect.

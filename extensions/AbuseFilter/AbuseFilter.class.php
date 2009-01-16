@@ -10,6 +10,7 @@ class AbuseFilter {
 	public static $condLimitEnabled = true;
 	public static $condCount = 0;
 	public static $filters = array();
+	public static $tagsToSet = array();
 
 	public static function generateUserVars( $user ) {
 		$vars = array();
@@ -354,26 +355,26 @@ class AbuseFilter {
 				foreach( $parameters as $throttleType ) {
 					$hitThrottle = $hitThrottle || self::isThrottled( $throttleId, $throttleType, $title, $rateCount, $ratePeriod );
 				}
-				
+
 				return $hitThrottle;
 				break;
 			case 'degroup':
 				wfLoadExtensionMessages( 'AbuseFilter' );
-				
+
 				global $wgUser;
 				if (!$wgUser->isAnon()) {
 					// Remove all groups from the user. Ouch.
 					$groups = $wgUser->getGroups();
-					
+
 					foreach( $groups as $group ) {
 						$wgUser->removeGroup( $group );
 					}
-					
+
 					$display .= wfMsgNoTrans( 'abusefilter-degrouped', $rule_desc ) ."<br />\n";
-					
+
 					// Log it.
 					$log = new LogPage( 'rights' );
-			
+
 					$log->addEntry( 'rights',
 						$wgUser->getUserPage(),
 						wfMsgForContent( 'abusefilter-degroupreason', $rule_desc ),
@@ -383,22 +384,33 @@ class AbuseFilter {
 						)
 					, self::getFilterUser() );
 				}
-				
+
 				break;
 			case 'blockautopromote':
 				global $wgUser, $wgMemc;
 				if (!$wgUser->isAnon()) {
 					wfLoadExtensionMessages( 'AbuseFilter' );
-					
+
 					$blockPeriod = (int)mt_rand( 3*86400, 7*86400 ); // Block for 3-7 days.
 					$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
-					
+
 					$display .= wfMsgNoTrans( 'abusefilter-autopromote-blocked', $rule_desc ) ."<br />\n";
 				}
 				break;
 
 			case 'flag':
 				// Do nothing. Here for completeness.
+				break;
+
+			case 'tag':
+				// Mark with a tag on recentchanges.
+				global $wgUser;
+				
+				$actionID = implode( '-', array(
+						$title->getPrefixedText(), $wgUser->getName(), $vars['ACTION']
+					) );
+
+				AbuseFilter::$tagsToSet[$actionID] = $parameters;
 				break;
 		}
 		

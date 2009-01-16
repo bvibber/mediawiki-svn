@@ -15,9 +15,11 @@ function processSyntaxResult( request ) {
 	if (response.match( /OK/ )) {
 		// Successful
 		changeText( el, 'No syntax errors.' );
+		el.syntaxOk = true;
 	} else {
 		var error = response.substr(4);
 		changeText( el, 'Syntax error: '+error );
+		el.syntaxOk = false;
 	}
 }
 function addText() {
@@ -51,6 +53,9 @@ function insertAtCursor(myField, myValue) {
 
 addOnloadHook( function() {
 	addHandler( document.getElementById( 'wpFilterRules' ), 'keyup', function() {
-		document.getElementById( 'mw-abusefilter-syntaxresult' ).style.display = 'none';
+		el = document.getElementById( 'mw-abusefilter-syntaxresult' );
+		if (el.syntaxOk == true) {
+			el.style.display = 'none';
+		}
 	} );
 } );
