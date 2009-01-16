@@ -259,6 +259,7 @@ $defaultNames = array(
 	'wgEnableCascadingProtection' => "Enable cascade protection",
 	'wgFilterCallback' => "Similarly (to [[Manual:\$wgSpamRegex|\$wgSpamRegex]]) if this function returns true",
 	'wgIPBlockExpiration' => "IP blocks expire after this many seconds",
+	'wgNewPasswordExpiry' => "The time, in seconds, when an emailed temporary password expires",
 	'wgPasswordAttemptThrottle' => "Limit password attempts per IP per address",
 	'wgPasswordSalt' => "For compatibility with old installations set to false",
 	'wgRestrictionTypes' => "Actions that can be restricted",

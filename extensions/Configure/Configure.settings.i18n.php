@@ -158,6 +158,7 @@ $messages['en'] = array(
 	'configure-setting-wgAutoblockExpiry' => "Number of seconds before autoblock entries expire",
 	'configure-setting-wgDeleteRevisionsLimit' => "Integer of how many revisions a page must have before the ''bigdelete'' right is required to delete it",
 	'configure-setting-wgDisabledActions' => "Disabled page actions",
+	'configure-setting-wgNewPasswordExpiry' => "The time, in seconds, when an emailed temporary password expires",
 	'configure-setting-wgEmailConfirmToEdit' => "Require users to confirm e-mail address before they can edit",
 	'configure-setting-wgEnableAPI' => "Enable API",
 	'configure-setting-wgEnableWriteAPI' => "Enable Write API",

@@ -375,6 +375,7 @@ $settings = array(
 			'wgAccountCreationThrottle' => 'int',
 			'wgAllowPageInfo' => 'bool',
 			'wgDisabledActions' => 'array',
+			'wgNewPasswordExpiry' => 'int',
 			'wgEmailConfirmToEdit' => 'bool',
 			'wgImplicitGroups' => 'array',
 			'wgPasswordSalt' => 'bool',
@@ -1065,4 +1066,6 @@ $notEditableSettings = array(
 /**
  * Array of settings depending of the Core version
  */
-$settingsVersion = array();
+$settingsVersion = array(
+	'wgNewPasswordExpiry' => array( array( '1.15alpha', '>=' ) ),
+);
