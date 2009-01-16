@@ -32,6 +32,11 @@ class SpecialAbuseFilter extends SpecialPage {
 			$this->displayRestrictionError();
 			return;
 		}
+
+		if ( $wgRequest->getVal( 'result' ) == 'success' ) {
+			$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-done-subtitle' ) );
+			$wgOut->wrapWikiMsg( '<p class="success">$1</p>', array('abusefilter-edit-done', $wgRequest->getVal( 'changedfilter' ) ) );
+		}
 		
 		$this->mSkin = $wgUser->getSkin();
 		
@@ -318,8 +323,7 @@ class SpecialAbuseFilter extends SpecialPage {
 			
 			global $wgOut;
 			
-			$wgOut->setSubtitle( wfMsg('abusefilter-edit-done-subtitle' ) );
-			return wfMsgExt( 'abusefilter-edit-done', array( 'parse' ) );
+			$wgOut->redirect( $this->getTitle()->getLocalURL( 'result=success&changedfilter='.$new_id ) );
 		} else {
 			return $this->buildFilterEditor( null, $filter, $history_id );
 		}
