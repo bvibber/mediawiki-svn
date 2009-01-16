@@ -253,6 +253,8 @@ class SpecialAbuseFilter extends SpecialPage {
 				$new_id = $this->mFilter;
 				$is_new = false;
 			}
+
+			$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
 			
 			$newRow['af_id'] = $new_id;
 			
