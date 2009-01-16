@@ -28,6 +28,7 @@ $wgAutoloadLocalClasses = array(
 	'CategoryViewer' => 'includes/CategoryPage.php',
 	'ChangesList' => 'includes/ChangesList.php',
 	'ChangesFeed' => 'includes/ChangesFeed.php',
+	'ChangeTags' => 'includes/ChangeTags.php',
 	'ChannelFeed' => 'includes/Feed.php',
 	'ConcatenatedGzipHistoryBlob' => 'includes/HistoryBlob.php',
 	'ConstantDependency' => 'includes/CacheDependency.php',

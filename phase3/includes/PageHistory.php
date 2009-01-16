@@ -361,20 +361,7 @@ class PageHistory {
 		}
 
 		# Tags
-		if ($row->ts_tags) {
-			$tags = explode( ',', $row->ts_tags );
-			$displayTags = array();
-			foreach( $tags as $tag ) {
-				if (!wfEmptyMsg( "recentchanges-tag-$tag" , wfMsg( "recentchanges-tag-$tag" ) ) ) {
-					$displayTags[] = wfMsgExt( "recentchanges-tag-$tag", 'parseinline' );
-				} else {
-					$displayTags[] = $tag;
-				}
-				$classes[] = "mw-contributions-tag-$tag";
-			}
-
-			$s .= ' (' . implode( ', ', $displayTags ) . ')';
-		}
+		$s .= ' ' . ChangeTags::formatSummaryRow( $row->ts_tags, 'history', &$classes );
 
 		wfRunHooks( 'PageHistoryLineEnding', array( $this, &$row , &$s ) );
 

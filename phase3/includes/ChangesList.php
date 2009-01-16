@@ -384,21 +384,9 @@ class OldChangesList extends ChangesList {
 			$s .= ' ' . wfMsg( 'number_of_watching_users_RCview', 
 				$wgContLang->formatNum($rc->numberofWatchingusers) );
 		}
+		
 		# Tags, if any.
-		if ($rc->mAttribs['ts_tags']) {
-			$tags = explode( ',', $rc->mAttribs['ts_tags'] );
-			$displayTags = array();
-			foreach( $tags as $tag ) {
-				if (!wfEmptyMsg( "recentchanges-tag-$tag" , wfMsg( "recentchanges-tag-$tag" ) ) ) {
-					$displayTags[] = wfMsgExt( "recentchanges-tag-$tag", 'parseinline' );
-				} else {
-					$displayTags[] = $tag;
-				}
-				$classes[] = "mw-changeslist-tag-$tag"
-			}
-			
-			$s .= ' (' . implode( ', ', $displayTags ) . ')';
-		}
+		$s .= ' ' . ChangeTags::formatSummaryRow( $rc->mAttribs['ts_tags'], 'changeslist', &$classes);
 
 		## Classes
 		$classes = implode( ' ', $classes );

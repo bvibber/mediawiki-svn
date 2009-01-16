@@ -359,21 +359,7 @@ class LogEventsList {
 		}
 
 		// Any tags...
-		$tagDisplay = '';
-		if ($row->ts_tags) {
-			$tags = explode( ',', $row->ts_tags );
-			$displayTags = array();
-			foreach( $tags as $tag ) {
-				if (!wfEmptyMsg( "logeventslist-tag-$tag" , wfMsg( "logeventslist-tag-$tag" ) ) ) {
-					$displayTags[] = wfMsgExt( "logeventslist-tag-$tag", 'parseinline' );
-				} else {
-					$displayTags[] = $tag;
-				}
-				$classes[] = "mw-logeventslist-tag-$tag";
-			}
-
-			$tagDisplay = ' (' . implode( ', ', $displayTags ) . ')';
-		}
+		$tagDisplay = ChangeTags::formatSummaryRow( $row->ts_tags, 'logevent', &$classes );
 
 		if( $revert != '' ) {
 			$revert = '<span class="mw-logevent-actionlink">' . $revert . '</span>';

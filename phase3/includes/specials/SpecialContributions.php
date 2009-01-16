@@ -528,20 +528,7 @@ class ContribsPager extends ReverseChronologicalPager {
 		}
 
 		# Tags, if any.
-		if ($row->ts_tags) {
-			$tags = explode( ',', $row->ts_tags );
-			$displayTags = array();
-			foreach( $tags as $tag ) {
-				if (!wfEmptyMsg( "recentchanges-tag-$tag" , wfMsg( "recentchanges-tag-$tag" ) ) ) {
-					$displayTags[] = wfMsgExt( "recentchanges-tag-$tag", 'parseinline' );
-				} else {
-					$displayTags[] = $tag;
-				}
-				$classes[] = "mw-contributions-tag-$tag";
-			}
-
-			$ret .= ' (' . implode( ', ', $displayTags ) . ')';
-		}
+		$ret .= ' ' . ChangeTags::formatSummaryRow( $row->ts_tags, 'contributions', &$classes );
 
 		// Let extensions add data
 		wfRunHooks( 'ContributionsLineEnding', array( &$this, &$ret, $row ) );

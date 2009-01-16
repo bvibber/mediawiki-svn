@@ -255,21 +255,7 @@ class SpecialNewpages extends SpecialPage {
 			$classes[] = 'not-patrolled';
 
 		# Tags, if any.
-		$tagDisplay = '';
-		if ($result->ts_tags) {
-			$tags = explode( ',', $result->ts_tags );
-			$displayTags = array();
-			foreach( $tags as $tag ) {
-				if (!wfEmptyMsg( "recentchanges-tag-$tag" , wfMsg( "recentchanges-tag-$tag" ) ) ) {
-					$displayTags[] = wfMsgExt( "recentchanges-tag-$tag", 'parseinline' );
-				} else {
-					$displayTags[] = $tag;
-				}
-			}
-
-			$tagDisplay = ' (' . implode( ', ', $displayTags ) . ')';
-			$classes = array_merge( $classes, $tags );
-		}
+		$tagDisplay = ChangeTags::formatSummaryRow( $result->ts_tags, 'newpages', &$classes );
 
 		$css = count($classes) ? ' class="'.implode( " ", $classes).'"' : '';
 
