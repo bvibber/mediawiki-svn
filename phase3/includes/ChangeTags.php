@@ -32,10 +32,20 @@ class ChangeTags {
 			throw new MWException( "At least one of: RCID, revision ID, and log ID MUST be specified when adding a tag to a change!" );
 		}
 
+		$dbr = wfGetDB( DB_SLAVE );
+
+		// Might as well look for rcids and so on.
+		if (!$rc_id) {
+			if ($log_id) {
+				$rc_id = $dbr->selectField( 'recentchanges', 'rc_id', array( 'rc_logid' => $log_id ), __METHOD__ );
+			} elseif ($rev_id) {
+				$rc_id = $dbr->selectField( 'recentchanges', 'rc_id', array( 'rc_this_oldid' => $rev_id ), __METHOD__ );
+			}
+		}
+
 		$tsConds = array_filter( array( 'ts_rc_id' => $rc_id, 'ts_rev_id' => $rev_id, 'ts_log_id' => $log_id ) );
 
 		## Update the summary row.
-		$dbr = wfGetDB( DB_SLAVE );
 		$prevTags = $dbr->selectField( 'tag_summary', 'ts_tags', $tsConds, __METHOD__ );
 		$prevTags = $prevTags ? $prevTags : '';
 		$prevTags = array_filter( explode( ',', $prevTags ) );
@@ -50,7 +60,7 @@ class ChangeTags {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->replace( 'tag_summary', array( 'ts_rev_id', 'ts_rc_id', 'ts_log_id' ),  array( array_merge( $tsConds, array( 'ts_tags' => implode( ',', $newTags ) ) ) ), __METHOD__ );
+		$dbw->replace( 'tag_summary', array( 'ts_rev_id', 'ts_rc_id', 'ts_log_id' ),  array_filter( array_merge( $tsConds, array( 'ts_tags' => implode( ',', $newTags ) ) ) ), __METHOD__ );
 
 		// Insert the tags rows.
 		$tagsRows = array();
