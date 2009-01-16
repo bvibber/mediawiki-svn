@@ -170,7 +170,7 @@ class AbuseFilterHooks {
 			) );
 
 		if ( !empty( AbuseFilter::$tagsToSet[$actionID] ) && count( $tags = AbuseFilter::$tagsToSet[$actionID]) ) {
-			ChangeTags::addTags( $tags, $recentChange->mAttribs['rc_id'], $recentChange->mAttribs['rc_logid'], $recentChange->mAttribs['rc_this_oldid'] );
+			ChangeTags::addTags( $tags, $recentChange->mAttribs['rc_id'], $recentChange->mAttribs['rc_this_oldid'], $recentChange->mAttribs['rc_logid'] );
 		}
 
 		return true;

@@ -33,6 +33,7 @@ $wgHooks['AbortAutoblock'][] = 'TorBlock::onAbortAutoblock';
 $wgHooks['GetAutoPromoteGroups'][] = 'TorBlock::onGetAutoPromoteGroups';
 $wgHooks['GetBlockedStatus'][] = 'TorBlock::onGetBlockedStatus';
 $wgHooks['AutopromoteCondition'][] = 'TorBlock::onAutopromoteCondition';
+$wgHooks['RecentChange_save'][] = 'TorBlock::onRecentChangeSave';
 
 // Define new autopromote condition
 define('APCOND_TOR', 'tor'); // Numbers won't work, we'll get collisions
