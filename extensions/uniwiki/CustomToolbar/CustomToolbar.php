@@ -22,7 +22,7 @@ if (!defined('MEDIAWIKI'))
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'CustomToolbar',
-	'author'         => 'Mark Johnston, Adam Mckaig, Evan Wheeler',
+	'author'         => array( 'Mark Johnston', 'Adam Mckaig', 'Evan Wheeler' ),
 	'version'        => '0.1',
 	'description'    => 'Extension to build an extensible toolbar for MediaWiki',
 	'descriptionmsg' => 'ct-desc',
@@ -134,10 +134,10 @@ class CustomToolbarUploadForm extends UploadForm {
 		$wgOut->addHTML("
  			<html>
                 <head>
-                    <title>". wfMsg('ct_upload', $this->mType) . " </title>
+                    <title>". wfMsg('ct_upload', htmlspecialchars( $this->mType ) ) . " </title>
                 </head>
             	<body>");
-		$wgOut->addHTML("<h2>". wfMsg('ct_upload', $this->mType) . " </h2>");
+		$wgOut->addHTML("<h2>". wfMsg('ct_upload', htmlspecialchars( $this->mType ) ) . " </h2>");
 		UploadForm::execute();
         $wgOut->addHTML("
 				</body>
