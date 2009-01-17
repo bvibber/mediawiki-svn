@@ -11,12 +11,12 @@ class ChangeTags {
 		$tags = explode( ',', $tags );
 		$displayTags = array();
 		foreach( $tags as $tag ) {
-			if (!wfEmptyMsg( "$page-tag-$tag" , wfMsg( "$page-tag-$tag" ) ) ) {
-				$displayTags[] = wfMsgExt( "$page-tag-$tag", 'parseinline' );
+			if (!wfEmptyMsg( "tag-$tag" , wfMsg( "tag-$tag" ) ) ) {
+				$displayTags[] = wfMsgExt( "tag-$tag", 'parseinline' );
 			} else {
 				$displayTags[] = $tag;
 			}
-			$classes[] = "mw-$page-tag-$tag";
+			$classes[] = "mw-tag-$tag";
 		}
 
 		return '(' . implode( ', ', $displayTags ) . ')';
@@ -36,11 +36,16 @@ class ChangeTags {
 
 		// Might as well look for rcids and so on.
 		if (!$rc_id) {
+			$dbr = wfGetDB( DB_MASTER ); // Info might be out of date, somewhat fractionally, on slave.
 			if ($log_id) {
 				$rc_id = $dbr->selectField( 'recentchanges', 'rc_id', array( 'rc_logid' => $log_id ), __METHOD__ );
 			} elseif ($rev_id) {
 				$rc_id = $dbr->selectField( 'recentchanges', 'rc_id', array( 'rc_this_oldid' => $rev_id ), __METHOD__ );
 			}
+		} elseif (!$log_id && !$rev_id) {
+			$dbr = wfGetDB( DB_MASTER ); // Info might be out of date, somewhat fractionally, on slave.
+			$log_id = $dbr->selectField( 'recentchanges', 'rc_logid', array( 'rc_id' => $rc_id ), __METHOD__ );
+			$rev_id = $dbr->selectField( 'recentchanges', 'rc_this_oldid', array( 'rc_id' => $rc_id ), __METHOD__ );
 		}
 
 		$tsConds = array_filter( array( 'ts_rc_id' => $rc_id, 'ts_rev_id' => $rev_id, 'ts_log_id' => $log_id ) );
@@ -55,7 +60,6 @@ class ChangeTags {
 
 		if ( $prevTags == $newTags ) {
 			// No change.
-			#print var_export( sort($prevTags), sort($newTags) );
 			return false;
 		}
 
