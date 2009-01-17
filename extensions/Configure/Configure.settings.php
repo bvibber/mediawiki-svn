@@ -210,7 +210,16 @@ class ConfigurationSettings {
 		$notEditable = array_merge( $notEditable, $wgConf->getUneditableSettings() );
 
 		if ( !count( $wgConfigureNotEditableSettings ) && count( $wgConfigureEditableSettings ) ) {
-			$wgConfigureNotEditableSettings = array_diff( array_keys( $this->getAllSettings() ), $wgConfigureEditableSettings );
+			// Only disallow core settings, not extensions settings!
+			$coreSettings = array();
+			foreach( $this->settings as $section ) {
+			foreach( $section as $group ) {
+				foreach( $group as $var => $type ) {
+					$coreSettings[] = $var;
+				}
+			}
+		}
+			$wgConfigureNotEditableSettings = array_diff( $coreSettings, $wgConfigureEditableSettings );
 		}
 
 		$notEditable = array_merge( $notEditable,
