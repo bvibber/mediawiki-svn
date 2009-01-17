@@ -282,6 +282,18 @@ $messages['es'] = array(
 	'countedits-ok' => 'Aceptar',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'countedits' => 'Edizioak zenbatu',
+	'countedits-desc' => '[[Special:CountEdits|Edizio-kontadoreak]] erabiltzailearen edizioak zenbatzeaz gain, ekarpen gehien egin dituzten hamar lankideen zerrenda erakusten du.',
+	'countedits-username' => 'Lankide izena:',
+	'countedits-ok' => 'Ados',
+	'countedits-resulttext' => '$1 lankideak {{PLURAL:$2|aldaketa bat egin du|$2 aldaketa egin ditu}}',
+	'countedits-mostactive' => 'Lankiderik langileenak',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -561,7 +573,7 @@ $messages['it'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => '$1 non corrisponde a un nome utente valido.',
 	'countedits-resultheader' => "Risultati per l'utente $1",
-	'countedits-resulttext' => '$1 ha effettuato $2 modifiche',
+	'countedits-resulttext' => '$1 ha effettuato $2 {{PLURAL:$2|modifica|modifiche}}',
 	'countedits-mostactive' => 'Autori con il maggior numero di contributi',
 	'countedits-nocontribs' => 'Il sito non ha subito alcuna modifica.',
 );
@@ -824,12 +836,13 @@ $messages['nah'] = array(
  */
 $messages['nds'] = array(
 	'countedits' => 'Tellen, wo faken de Bruker Sieden ännert hett',
+	'countedits-desc' => '[[Special:CountEdits|Spezialsied]], de Brukerbidrääg tellt un en Top-10-List wiest',
 	'countedits-warning' => "'''Wohrschau:''' Schasst de Deern nich na ehr Schört reken. Wo faken en Bruker Sieden ännert hett, seggt nix över sien Arbeit ut.",
 	'countedits-username' => 'Brukernaam:',
 	'countedits-ok' => 'Okay',
 	'countedits-nosuchuser' => 'Dat gifft keen Bruker mit’n Naam $1.',
 	'countedits-resultheader' => 'Wat för $1 rutkamen is',
-	'countedits-resulttext' => '$1 hett $2 Maal wat ännert.',
+	'countedits-resulttext' => '$1 hett {{PLURAL:$2|een Maal|$2 Maal}} wat ännert.',
 	'countedits-mostactive' => 'Brukers, de opmehrst Maal wat ännert hebbt',
 	'countedits-nocontribs' => 'Kene Bidrääg op dit Wiki.',
 );

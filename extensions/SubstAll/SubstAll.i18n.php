@@ -161,6 +161,13 @@ $messages['lb'] = array(
 	'substall-desc' => 'Erstellt en <nowiki><substall></nowiki>-Tag, den all Schablounen a Wikisyntax ëmwandelt',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'substall-desc' => 'Föögt en <nowiki><substall></nowiki>-Tag to, de all Vörlagen in Wikisyntax ümwannelt',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

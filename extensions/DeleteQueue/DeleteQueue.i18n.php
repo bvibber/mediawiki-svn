@@ -622,10 +622,10 @@ Wenn nach fünf Tagen niemand Einspruch gegen die Löschung eingelegt hat, wird 
 	'deletequeue-delnom-otherreason' => 'Anderer Grund',
 	'deletequeue-delnom-extra' => 'Weitere Informationen:',
 	'deletequeue-delnom-submit' => 'Löschung eintragen',
-	'deletequeue-log-nominate' => "hat [[$1]] zur Löschung in der Lösch-Warteschlange '$2' vorgeschlagen.",
+	'deletequeue-log-nominate' => 'hat [[$1]] zur Löschung in der Lösch-Warteschlange „$2“ vorgeschlagen.',
 	'deletequeue-log-rmspeedy' => 'hat den Schnelllöschantrag für [[$1]] abgelehnt.',
-	'deletequeue-log-requeue' => "hat [[$1]] zu einer anderen Lösch-Warteschlange verschoben: von '$2' zu '$3'.",
-	'deletequeue-log-dequeue' => "hat [[$1]] aus der Lösch-Warteschlange '$2' entfernt.",
+	'deletequeue-log-requeue' => 'hat [[$1]] zu einer anderen Lösch-Warteschlange verschoben: von „$2“ zu „$3“.',
+	'deletequeue-log-dequeue' => 'hat [[$1]] aus der Lösch-Warteschlange „$2“ entfernt.',
 	'right-speedy-nominate' => 'Seiten zur Schnelllöschung vorschlagen',
 	'right-speedy-review' => 'Schnelllöschanträge prüfen',
 	'right-prod-nominate' => 'Seite zur Löschung vorschlagen',
@@ -688,7 +688,7 @@ Du kannst die Löschung [{{fullurl:$1|action=delvote}} befürworten oder ablehne
 	'deletequeue-vote-text' => "Auf dieser Seite kannst du die Löschung von „'''$1'''“ befürworten oder ablehnen.
 Diese Aktion überschreibt alle Stimmen, die du vorher zur Löschung dieser Seite abgegeben hast.
 Du kannst die bereits abgegebenen Stimmen [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} ansehen].
-Der Löschantragsgrund war ''$2'.",
+Der Löschantragsgrund war ''$2''.",
 	'deletequeue-vote-legend' => 'Löschung befürworten/ablehnen',
 	'deletequeue-vote-action' => 'Empfehlung:',
 	'deletequeue-vote-endorse' => 'Löschung befürworten.',
@@ -1681,15 +1681,64 @@ $messages['kri'] = array(
  */
 $messages['ksh'] = array(
 	'deletequeue-desc' => 'Schaff en Süßteem met [[Special:DeleteQueue|Schlange fun Sigge, di op et Fottschmiiße am waade]] sin.',
+	'deletequeue-action-queued' => 'Fottschmiiße',
+	'deletequeue-action' => 'Fottschmiiße vürjeschlare',
+	'deletequeue-action-title' => '„$1“ för fottzeschmiiße vörschlare',
 	'deletequeue-permissions-noedit' => 'Do moß en Sigg ändere dörve, öm beshtemme ze dörve, of se fottjeschmeße weed udder nit.',
+	'deletequeue-generic-reasons' => '* jrundläje Jründ
+   ** Vandaleere
+   ** Reklame
+   ** Waadung
+   ** Paß nit ent Projäk',
+	'deletequeue-nom-alreadyqueued' => 'Die Sigg es ald en dä Fotschmiiß-Leß',
+	'deletequeue-speedy-title' => '„$1“ för flöck fottzeschmiiße vörschlaare',
+	'deletequeue-delnom-reason' => 'Dä Jrund för dä Vörschlach:',
 	'deletequeue-delnom-otherreason' => 'Ene andere Jrund',
 	'deletequeue-delnom-extra' => 'Zosätzlijje Enfommazjuhne:',
+	'deletequeue-log-rmspeedy' => 'hät affjelehnt, [[$1]] flöck fottzeschmiiße.',
+	'right-deletequeue-vote' => 'Dämm Fottschmiiße zoshtemme odder derwidder sin',
+	'deletequeue-queue-prod' => 'Förjeschlare fottzeschmiiße',
 	'deletequeue-queue-deletediscuss' => 'Klaaf övver et Fottschmiiße',
+	'deletequeue-review-action' => 'Wat ze donn es:',
+	'deletequeue-review-delete' => 'Die Sigg fottschmiiße.',
+	'deletequeue-review-change' => 'De Sigg fottschmiiße, ävver met enem andere Jrond.',
+	'deletequeue-review-newreason' => 'Neue Jrund:',
+	'deletequeue-review-newextra' => 'Zosätzlijje Enfommazjuhn:',
+	'deletequeue-reviewspeedy-tab' => 'Et flöcke Fottschmiiße pröfe',
+	'deletequeue-reviewspeedy-title' => '„$1“ flöck Fottschmiiße pröfe',
+	'deletequeue-reviewdeletediscuss-tab' => 'Et Fottschmiiße pröfe',
+	'deletequeue-reviewdeletediscuss-title' => 'Dä Klaaf övver et Fottschmiiße fun „$1“ pröfe',
+	'deletequeue-deletediscuss-discussionpage' => 'Dat hee es de Klaafsigg offer et Fottschmiiße fun [[$1]].
+Mer han jez jraad {{PLURAL:$2|eine|$2|keine}} Metmaacher,
+die do för sin, un {{PLURAL:$3|eine|$3|keine}} Metmaacher,
+die do jäje sin.
+Do kanns [{{fullurl:$1|action=delvote}} zoshtemme odder afflehne], dat
+die Sigg fottjeschmeße wedd, un Der de
+[{{fullurl:$1|action=delviewvotes}} Zostemmunge un Afflehnunge aankike].',
+	'deletequeue-discusscreate-summary' => 'Dä Klaaf övver et Fottschmiiße vun [[$1]] weed opjemaat.',
+	'deletequeue-discusscreate-text' => 'Dat Fottschmiiße wood vörjeschlare wäje: $2',
+	'deletequeue-role-nominator' => 'Wä dat Fottschmiiße et eets förjeschlaare hät',
+	'deletequeue-role-vote-endorse' => 'Wä för et Fottschmiiße es',
+	'deletequeue-role-vote-object' => 'Wä jäje et Fottschmiiße es',
+	'deletequeue-vote-tab' => 'Övver et Fottschmiiße affshtemme',
+	'deletequeue-vote-title' => 'Däm Fottschmiiße vun „$1“ zoshtemme odder et aflähne',
+	'deletequeue-vote-legend' => 'Däm Fottschmiiße zoshtemme odder et aflähne',
 	'deletequeue-vote-endorse' => 'Zoshtimme zom Fottschmiiße.',
 	'deletequeue-vote-object' => 'Jäje et Fottschmiiße.',
 	'deletequeue-vote-submit' => 'Loß Jonn!',
+	'deletequeue-showvotes-text' => "Unge sen de Zoshtemmunge un Aflehnunge för et Fottschmiiße vun dä Sigg „'''$1'''“ opjeleß.
+Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odder Aflehnung zom Fottschmiiße endraare].",
+	'deletequeue-showvotes-restrict-endorse' => 'Nur Zoshtemmunge zeije',
+	'deletequeue-showvotes-restrict-object' => 'Nur Aflehnunge zeije',
+	'deletequeue-showvotes-restrict-none' => 'Alle Zoshtemmunge un Aflehnunge zeije',
+	'deletequeue-showvotes-vote-endorse' => "Am $1 öm $2 et Fottschmiiße '''zojeshtemmp'''",
+	'deletequeue-showvotes-vote-object' => "Am $1 öm $2 et Fottschmiiße '''affjelehnt'''",
+	'deletequeue-showvotes-showingonly-endorse' => 'Nur de Zostemmunge',
+	'deletequeue-showvotes-showingonly-object' => 'Nur de Afflehnunge',
+	'deletequeue-list-search-legend' => 'Noh Sigge söke',
 	'deletequeue-list-status' => 'Stattus:',
 	'deletequeue-list-search' => 'Söke',
+	'deletequeue-list-anyqueue' => '(jede)',
 	'deletequeue-list-votes' => 'Leß met de Stemme',
 	'deletequeue-list-votecount' => '{{PLURAL:$1|Eine es|$1 sin|Keine es}} doför, un {{PLURAL:$2|eine|$2|keine}} dojähje',
 	'deletequeue-list-header-page' => 'Sigg',
@@ -2016,6 +2065,58 @@ Gjer deg viss om at sida kan verta snøggsletta i høve til retningslinene.",
 
 Ei [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] over støtta til og motstand mot denne slettinga er tilgjengeleg; og sjølve diskusjonen finst på [[$2]].
 Gjer deg viss om at avgjersla di samsvarer med utkoma av diskusjonen.",
+	'deletequeue-deletediscuss-discussionpage' => 'Dette er diskusjonssida for slettinga av [[$1]].
+Det er no {{PLURAL:$2|éin brukar|$2 brukarar}} som er for sletting, og {{PLURAL:$3|éin brukar|$3 brukarar}} som er imot.
+Du ynskjer kanskje [{{fullurl:$1|action=delvote}} å støtta eller gå imot] ei sletting, eller [{{fullurl:$1|action=delviewvotes}} å sjå all støtta og motstand].',
+	'deletequeue-discusscreate-summary' => 'Opprettar ein diskusjon for sletting av [[$1]].',
+	'deletequeue-discusscreate-text' => 'Sletting føreslege av følgjande grunn: $2',
+	'deletequeue-role-nominator' => 'opphavleg nominert av',
+	'deletequeue-role-vote-endorse' => 'støttar sletting',
+	'deletequeue-role-vote-object' => 'går imot sletting',
+	'deletequeue-vote-tab' => 'Røyst over slettinga',
+	'deletequeue-vote-title' => 'Støtt eller gå imot sletting av «$1»',
+	'deletequeue-vote-text' => "Du kan nytta dette skjemaet for å støtta eller gå imot slettinga av «'''$1'''».
+Denne handlinga vil telja i staden for tidlegare støtta for eller motstand mot slettinga som du har gjeve.
+Du kan [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} sjå] støtta og motstanden som finst frå før.
+Årsaka gjeven for slettenomineringa var ''$2''.",
+	'deletequeue-vote-legend' => 'Støtt/gå imot sletting',
+	'deletequeue-vote-action' => 'Rår til:',
+	'deletequeue-vote-endorse' => 'Støtt sletting.',
+	'deletequeue-vote-object' => 'Gå imot sletting.',
+	'deletequeue-vote-reason' => 'Kommentarar:',
+	'deletequeue-vote-submit' => 'Send',
+	'deletequeue-vote-success-endorse' => 'Du har støtta slettinga av sida.',
+	'deletequeue-vote-success-object' => 'Du har gått imot slettinga av sida.',
+	'deletequeue-vote-requeued' => 'Du har gått imot sletting av sida.
+Grunna mostanden din har sida vorten flytta til køen $1.',
+	'deletequeue-showvotes' => 'Støtta og motstand mot sletting av «$1»',
+	'deletequeue-showvotes-text' => "Nedanfor er støtta og motstand mot slettinga av sida «'''$1'''».
+Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} leggja inn di eiga støtta for eller motstand] mot slettinga.",
+	'deletequeue-showvotes-restrict-endorse' => 'Syn berre støtta',
+	'deletequeue-showvotes-restrict-object' => 'Syn berre motstand',
+	'deletequeue-showvotes-restrict-none' => 'Syn all støtta og motstand',
+	'deletequeue-showvotes-vote-endorse' => "'''Støtta''' sletting den $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Gjekk imot''' sletting den $1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'Syner berre støtta',
+	'deletequeue-showvotes-showingonly-object' => 'Syner berre motstand',
+	'deletequeue-showvotes-none' => 'Det finst korkje støtta eller motstand mot slettinga av denne sida.',
+	'deletequeue-showvotes-none-endorse' => 'Det finst ikkje støtta for slettinga av denne sida.',
+	'deletequeue-showvotes-none-object' => 'Det finst ikkje motstand mot slettinga av denne sida.',
+	'deletequeue' => 'Slettekø',
+	'deletequeue-list-text' => 'Denne sida syner alle sidene som er i slettesystemet.',
+	'deletequeue-list-search-legend' => 'Søk etter sider',
+	'deletequeue-list-queue' => 'Kø:',
+	'deletequeue-list-status' => 'Stoda:',
+	'deletequeue-list-expired' => 'Syn berre nominasjonar som krev stenging.',
+	'deletequeue-list-search' => 'Søk',
+	'deletequeue-list-anyqueue' => '(kva som helst)',
+	'deletequeue-list-votes' => 'Lista over røyster',
+	'deletequeue-list-votecount' => '{{PLURAL:$1|éi røyst for|$1 røyster for}}, {{PLURAL:$2|éi røyst mot|$2 røyster mot}}',
+	'deletequeue-list-header-page' => 'Sida',
+	'deletequeue-list-header-queue' => 'Kø',
+	'deletequeue-list-header-votes' => 'Støtta og motstand',
+	'deletequeue-list-header-expiry' => 'Går ut',
+	'deletequeue-list-header-discusspage' => 'Diskusjonssida',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -2252,6 +2353,13 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'deletequeue-list-search' => 'ସନ୍ଧାନ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
@@ -2294,18 +2402,25 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'deletequeue-desc' => 'Cria um [[Special:DeleteQueue|sistema baseado em fila para gerir eliminações]]',
 	'deletequeue-speedy-title' => 'Marcar "$1" para eliminação rápida',
 	'deletequeue-delnom-otherreason' => 'Outro motivo',
+	'right-prod-nominate' => 'Propor eliminação de página',
 	'deletequeue-review-action' => 'Acção a tomar:',
 	'deletequeue-review-reason' => 'Comentários:',
 	'deletequeue-review-newreason' => 'Novo motivo:',
+	'deletequeue-review-newextra' => 'Informação extra:',
 	'deletequeue-vote-action' => 'Recomendação:',
 	'deletequeue-vote-reason' => 'Comentários:',
 	'deletequeue-vote-submit' => 'Submeter',
 	'deletequeue-list-text' => 'Esta página mostra todas as páginas que estão no sistema de exclusão.',
+	'deletequeue-list-search-legend' => 'Pesquisar páginas',
+	'deletequeue-list-queue' => 'Fila:',
+	'deletequeue-list-search' => 'Pesquisar',
 	'deletequeue-list-anyqueue' => '(qualquer)',
 	'deletequeue-list-votes' => 'Lista de votos',
 	'deletequeue-list-header-page' => 'Página',
+	'deletequeue-list-header-discusspage' => 'Página de discussão',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2963,6 +3078,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'deletequeue-action-queued' => '删除',
@@ -2979,6 +3095,7 @@ $messages['zh-hans'] = array(
 	'deletequeue-list-search' => '搜索',
 	'deletequeue-list-anyqueue' => '（任何）',
 	'deletequeue-list-votes' => '投票列表',
+	'deletequeue-list-header-page' => '页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

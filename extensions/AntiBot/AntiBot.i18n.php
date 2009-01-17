@@ -283,6 +283,13 @@ $messages['oc'] = array(
 	'antibot-desc' => 'Quadre simple per las verificacions del bòt antispam e de las cargas utilas del trigger.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'antibot-desc' => 'Хуымæтæг системæ спам-роботты ссарынæн',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Wikipeeta
  */

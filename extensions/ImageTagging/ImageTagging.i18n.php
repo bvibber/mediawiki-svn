@@ -249,6 +249,7 @@ $messages['cy'] = array(
  * @author DaSch
  * @author Melancholie
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'taggedimages' => 'Bilder mit Tags',
@@ -268,8 +269,8 @@ $messages['de'] = array(
 	'imagetagging-tag-button' => 'Taggen',
 	'imagetagging-tagcancel-button' => 'Abbrechen',
 	'imagetagging-tagging-instructions' => 'Klick auf Personen oder Dinge in dem Bild um sie mit einem Tag zu versehen.',
-	'imagetagging-addingtag' => 'Füge Tag hinzu…',
-	'imagetagging-removingtag' => 'Entferne Tag…',
+	'imagetagging-addingtag' => 'Füge Tag hinzu …',
+	'imagetagging-removingtag' => 'Entferne Tag …',
 	'imagetagging-addtagsuccess' => 'Hinzugefügte Tags.',
 	'imagetagging-removetagsuccess' => 'Entfernte Tags.',
 	'imagetagging-canteditneedloginmessage' => 'Du kannst diese Seite nicht bearbeiten.
@@ -917,6 +918,13 @@ Esperatz la fin de l’accion en cors.",
 	'tag-logpagetext' => 'Aquò es lo jornal de totes los ajustons e de totas las supressions de las balisas d’imatge.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'imagetagging-imghistory' => 'ଇତିହାସ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
@@ -1155,5 +1163,12 @@ Xin hãy chờ tác vụ hoàn thành.',
 	'imagetagging-imagetag-seemoreimages' => 'Xem nhiều hình của "$1" hơn ($2)',
 	'imagetagging-taggedimages-title' => 'Hình của "$1"',
 	'imagetagging-taggedimages-displaying' => 'Hiển thị $1 - $2 trong tổng số $3 hình của "$4"',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'imagetagging-article' => '页面：',
 );
 

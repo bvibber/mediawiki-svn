@@ -60,6 +60,7 @@ If this error keeps showing up, the database is probably broken.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Meno25
  * @author Purodha
@@ -90,6 +91,7 @@ $messages['qqq'] = array(
 	'changeauthor-success' => 'Displayed after a successful change.',
 	'changeauthor-logentry' => 'The log message for author changes. $1 is the page title, $2 the revision ID, $3 the old author and $4 the new one',
 	'changeauthor-logpagename' => 'Displayed on top of Special:Log/changeauth and in the list of available logs.',
+	'right-changeauthor' => '{{doc-right}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -362,6 +364,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'changeauthor' => 'Autor einer Version ändern',
@@ -385,6 +388,7 @@ $messages['de'] = array(
 	'changeauthor-logentry' => 'änderte Autorenname der $2 von $1 von $3 auf $4',
 	'changeauthor-logpagename' => 'Autorenname-Änderungslogbuch',
 	'changeauthor-rev' => 'Version $1',
+	'right-changeauthor' => 'Ändere den Autor einer Version',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -415,6 +419,7 @@ Jolic toś ta zmólka dalej wustupujo, jo nejskerjej datowa banka wobškóźona.
 	'changeauthor-success' => 'Twójo změnjenje jo se wuspěšnje pśewjadło.',
 	'changeauthor-logentry' => 'Awtora za $2 $1 wót $3 do $4 změnjony',
 	'changeauthor-logpagename' => 'Protokol změnow awtorow',
+	'right-changeauthor' => 'Awtora wersije změniś',
 );
 
 /** Ewe (Eʋegbe) */
@@ -458,12 +463,14 @@ Se ĉi tiu eraro daŭras okazi, tiel la datumbazo verŝajne estas rompita.',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Jatrobat
  */
 $messages['es'] = array(
 	'changeauthor-pagenameform-go' => 'Ir',
 	'changeauthor-comment' => 'Comentario:',
+	'changeauthor-changeauthors-multi' => 'Cambie {{PLURAL:$1|autor|autores}}',
 );
 
 /** Estonian (Eesti)
@@ -480,6 +487,14 @@ $messages['et'] = array(
 	'changeauthor-changeauthors-single' => 'Muuda autorit',
 	'changeauthor-invalid-username' => 'Kehtetu kasutajanimi "$1".',
 	'changeauthor-nosuchuser' => 'Ei ole sellist kasutajat nagu "$1".',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'changeauthor-pagenameform-go' => 'Joan',
+	'changeauthor-comment' => 'Iruzkina:',
 );
 
 /** Finnish (Suomi)
@@ -542,6 +557,7 @@ $messages['fr'] = array(
 	'changeauthor-logentry' => "Modification de l'auteur de $2 de $1 depuis $3 vers $4",
 	'changeauthor-logpagename' => "Journal des changements faits par l'auteur",
 	'changeauthor-rev' => 'r$1',
+	'right-changeauthor' => "Modifier l'auteur d'une révision",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -610,6 +626,7 @@ $messages['gl'] = array(
 	'changeauthor-logentry' => 'Cambie autor de $2 de $1 a $3 de $4',
 	'changeauthor-logpagename' => 'Rexistro dos cambios do autor',
 	'changeauthor-rev' => 'r$1',
+	'right-changeauthor' => 'Cambiar o autor dunha revisión',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -749,6 +766,7 @@ $messages['hsb'] = array(
 	'changeauthor-success' => 'Waše požadanje je so wuspěšnje wobdźěłało.',
 	'changeauthor-logentry' => 'Změni so awtor wot $2 wot $1 z $3 do $4',
 	'changeauthor-logpagename' => 'Protokol wo změnach awtorow',
+	'right-changeauthor' => 'Awtora wersije změnić',
 );
 
 /** Hungarian (Magyar)
@@ -882,6 +900,7 @@ Se l'errore dovesse persistere, il database è probabilmente rotto.",
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -906,6 +925,7 @@ $messages['ja'] = array(
 	'changeauthor-logentry' => '$1 の特定版 $2 の投稿者を $3 から $4 へ変更しました。',
 	'changeauthor-logpagename' => '投稿者変更記録',
 	'changeauthor-rev' => '第$1版',
+	'right-changeauthor' => '版の投稿者を変更する',
 );
 
 /** Javanese (Basa Jawa)
@@ -996,6 +1016,7 @@ un kei eije Fommolaa.',
 	'changeauthor-logentry' => 'hät dä Schriiver fun dä Version $2 fun dä Sigg jeändert, et wohr dä Metmaacher $3 un es jetz dä Metmaacher $4.',
 	'changeauthor-logpagename' => 'Logbooch fum Schriiver Ußtuusche',
 	'changeauthor-rev' => '$1',
+	'right-changeauthor' => 'Dä Metmaacher ußwääßelle, dä en Version jemaat hät',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1116,6 +1137,7 @@ $messages['nds'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'changeauthor' => 'Auteur versie wijzigen',
@@ -1140,6 +1162,7 @@ Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de
 	'changeauthor-success' => 'Uw verzoek is verwerkt.',
 	'changeauthor-logentry' => 'Auteur van $2 van $1 gewijzigd van $3 naar $4',
 	'changeauthor-logpagename' => 'Auteurswijzigingenlogboek',
+	'right-changeauthor' => 'De auteur van een bewerking wijzigen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1243,6 +1266,7 @@ $messages['oc'] = array(
  * @author Derbeth
  * @author Equadus
  * @author Leinad
+ * @author Matma Rex
  * @author McMonster
  * @author Sp5uhe
  * @author Wpedzich
@@ -1272,6 +1296,7 @@ Jeśli błąd wystąpi ponownie, prawdopodobnie uszkodzona jest baza danych.',
 	'changeauthor-success' => 'Twoje polecenie zostało wykonane z powodzeniem.',
 	'changeauthor-logentry' => 'zmienił autora wersji $2 strony $1 z $3 na $4',
 	'changeauthor-logpagename' => 'Rejestr zmiany autora',
+	'right-changeauthor' => 'Zmiana autora wersji',
 );
 
 /** Pashto (پښتو)
@@ -1308,6 +1333,7 @@ $messages['pt'] = array(
 	'changeauthor-success' => 'O seu pedido foi processado com sucesso.',
 	'changeauthor-logentry' => 'Alterado autor de $2 de $1, de $3 para $4',
 	'changeauthor-logpagename' => 'Registo de alterações de autor',
+	'right-changeauthor' => 'Alterar o autor de uma revisão',
 );
 
 /** Quechua (Runa Simi)
@@ -1423,6 +1449,7 @@ $messages['sk'] = array(
 	'changeauthor-success' => 'Vaša požiadavka bola úspešne spracovaná.',
 	'changeauthor-logentry' => 'Autor $2 z $1 bol zmenený z $3 na $4',
 	'changeauthor-logpagename' => 'Záznam zmien autorov',
+	'right-changeauthor' => 'Zmeniť autora revízie',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -1445,12 +1472,13 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'changeauthor' => 'Autor fon ne Version annerje',
+	'changeauthor-desc' => 'Ferlööwet dän Autor, ne Version tou annerjen',
 	'changeauthor-title' => 'Autor fon ne Revision annerje',
 	'changeauthor-search-box' => 'Version säike',
 	'changeauthor-pagename-or-revid' => 'Siedennoome of Versionsnummer',
 	'changeauthor-pagenameform-go' => 'Säik',
 	'changeauthor-comment' => 'Kommentoar:',
-	'changeauthor-changeauthors-multi' => 'Uur Autor(e)',
+	'changeauthor-changeauthors-multi' => 'Uur {{PLURAL:$1|Autor|Autore}}',
 	'changeauthor-explanation-multi' => 'Mäd dit Formular koast du do Autore fon do Versione annerje. Annere eenfach aan of moor Autorennoomen in ju Lieste, moak n Kommentoar (optionoal) un klik ap dän „Autor annerje“-Knoop.',
 	'changeauthor-changeauthors-single' => 'Autor annerje',
 	'changeauthor-explanation-single' => 'Mäd dit Formular koast du do Autoren fon ne Version annerje. Annerje eenfach dän Autorennoome in ju Lieste, beoarbaidje n Kommentoar (optionoal) un klik ap dän „Autor annerje“-Knoop.',
@@ -1459,11 +1487,12 @@ $messages['stq'] = array(
 	'changeauthor-revview' => 'Version #$1 fon $2',
 	'changeauthor-nosuchtitle' => 'Dät rakt neen Siede „$1“.',
 	'changeauthor-weirderror' => 'N gjucht säildenen Failer is aptreeden. Wierhoal dien Annerenge. Wan dissen Failer fonnäien apträt, is fermoudelk ju Doatenboank fernäild.',
-	'changeauthor-invalidform' => 'Benutsje dät Formular unner Special:ChangeAuthor.',
+	'changeauthor-invalidform' => 'Benutsje dät Formular ap ju [[Special:ChangeAuthor|Spezioalsiede]].',
 	'changeauthor-success' => 'Dian Annerenge wuude mäd Ärfoulch truchfierd.',
 	'changeauthor-logentry' => 'annerde Autorennoome fon ju $2 fon $1 fon $3 ap $4',
 	'changeauthor-logpagename' => 'Autorennoome-Annerengslogbouk',
 	'changeauthor-rev' => 'Version $1',
+	'right-changeauthor' => 'Annerje dän Autor fon ne Revision',
 );
 
 /** Sundanese (Basa Sunda)

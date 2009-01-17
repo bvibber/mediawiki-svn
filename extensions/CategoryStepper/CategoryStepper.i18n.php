@@ -81,6 +81,15 @@ $messages['br'] = array(
 	'categorystepper-start' => '(penn-kentañ ar rummad)',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'categorystepper-desc' => 'Prikazuje kutiju izlistavanja kategorije koja omogućuje da se ide naprijed i nazad po abecedi kroz jednu ili više kategorija u kojima je stranica',
+	'categorystepper-end' => '(Kraj kategorije)',
+	'categorystepper-start' => '(Početak kategorije)',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -277,6 +286,15 @@ $messages['lo'] = array(
 	'categorystepper-start' => '(ເລິ່ມໝວດ)',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'categorystepper-desc' => 'Прикажува навигациска кутија за навигација низ азбучна листа на категории на страница',
+	'categorystepper-end' => '(Крај на категорија)',
+	'categorystepper-start' => '(Почеток на категорија)',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -373,6 +391,14 @@ $messages['pt'] = array(
 $messages['ro'] = array(
 	'categorystepper-end' => '(Sfârşitul categoriei)',
 	'categorystepper-start' => '(Începutul categoriei)',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'categorystepper-end' => "(Fine d'a categorije)",
+	'categorystepper-start' => "(Inizie d'a categorije)",
 );
 
 /** Russian (Русский)

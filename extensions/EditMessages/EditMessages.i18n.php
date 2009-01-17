@@ -810,6 +810,13 @@ $messages['oc'] = array(
 	'editmsg-patch-success' => 'Patch aplicat amb succès.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'editmsg-search' => 'ସନ୍ଧାନ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
@@ -1075,5 +1082,14 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'editmsg-search' => 'זוכן',
 	'editmsg-new-search' => 'ניי זוכן',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'editmessages' => '编辑消息',
+	'editmsg-search' => '搜索',
+	'editmsg-new-search' => '新搜索',
 );
 

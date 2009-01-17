@@ -136,6 +136,13 @@ $messages['lb'] = array(
 	'regexfunctions-desc' => 'Parserfunktioune fir regulär Ausdréck',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'regexfunctions-desc' => 'Parserfunktionen för reguläre Utdrück',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -164,6 +171,13 @@ $messages['oc'] = array(
 	'regexfunctions-desc' => 'Foncions parsers de las expressions regularas',
 );
 
+/** Polish (Polski)
+ * @author Matma Rex
+ */
+$messages['pl'] = array(
+	'regexfunctions-desc' => 'Funkcje parsera: wyrażenia regularne',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -176,6 +190,13 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'regexfunctions-desc' => 'Funcţii de parsare a expresiilor regulate',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'regexfunctions-desc' => "Funziune d'u 'nderprete de le espressiune regolere",
 );
 
 /** Slovak (Slovenčina)

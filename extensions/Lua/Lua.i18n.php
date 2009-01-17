@@ -224,6 +224,21 @@ $messages['grc'] = array(
 	'lua_error_internal' => 'Ἐσώτερον σφάλμα',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'lua_desc' => 'הרחבת המפענח לתמיכה במקטעים של קוד [http://www.lua.org/ Lua]',
+	'lua_error' => 'שגיאה בשורה $1',
+	'lua_extension_notfound' => 'הרחבת ה־Lua לא מוגדרת',
+	'lua_interp_notfound' => 'מנוע הפירוש של Lua לא נמצא',
+	'lua_error_internal' => 'שגיאה פנימית',
+	'lua_overflow_recursion' => 'מגבלת הרקורסיה הושגה',
+	'lua_overflow_loc' => 'מגבלת מספר שורות הקוד המירבי הושגה',
+	'lua_overflow_time' => 'זמן הריצה המירבי הושג',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

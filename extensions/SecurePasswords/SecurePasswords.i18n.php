@@ -338,6 +338,37 @@ Deu :',
 	'securepasswords-word' => 'pas èsser un mot',
 );
 
+/** Polish (Polski)
+ * @author Matma Rex
+ */
+$messages['pl'] = array(
+	'securepasswords-valid' => 'Twoje hasło jest nieprawidłowe lub zbyt krótkie.
+Musi:',
+	'securepasswords-minlength' => 'składać się z co najmniej $1 {{PLURAL:$1|znak|znaki/ów}}',
+	'securepasswords-lowercase' => 'zawierać przynajmniej 1 małą literę',
+	'securepasswords-uppercase' => 'zawierać przynajmniej 1 wielką literę',
+	'securepasswords-digit' => 'zawierać przynajmniej 1 cyfrę',
+	'securepasswords-special' => 'zawierać przynajmniej 1 znak specjalny ($1)',
+	'securepasswords-username' => 'różnić się od nazwy użytkownika',
+	'securepasswords-word' => 'nie być słowem',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'securepasswords-desc' => 'Cria hashes de palavras-chaves mais seguros e adiciona um verificador da força da palavra-chave',
+	'securepasswords-valid' => 'A sua palavra-chave é inválida ou demasiado curta.
+Tem de:',
+	'securepasswords-minlength' => 'ter pelo menos $1 {{PLURAL:$1|caracter|caracteres}} de comprimento',
+	'securepasswords-lowercase' => 'conter pelo menos 1 letra minúscula',
+	'securepasswords-uppercase' => 'conter pelo menos 1 letra maiúscula',
+	'securepasswords-digit' => 'conter pelo menos 1 dígito',
+	'securepasswords-special' => 'conter pelo menos 1 caracter especial (caracteres especiais são: $1)',
+	'securepasswords-username' => 'ser diferente do seu nome de utilizador',
+	'securepasswords-word' => 'não ser uma palavra',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
@@ -374,6 +405,22 @@ $messages['sk'] = array(
 	'securepasswords-special' => 'musí obsahovať aspoň jeden špeciálny znak (povolené špeciálne znaky: $1)',
 	'securepasswords-username' => 'musí byť iné ako vaše používateľské meno',
 	'securepasswords-word' => 'nesmie to byť slovo zo slovníka',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'securepasswords-desc' => 'Moaket sicherere Paaswoud-Hashes un föiget ne Paaswoudstäärken-Wröige bietou',
+	'securepasswords-valid' => 'Dien Paaswoud is uungultich of tou kuut.
+Et mout:',
+	'securepasswords-minlength' => 'ap minste $1 Teekene loang weese',
+	'securepasswords-lowercase' => 'ap minste ne Littikbouksteeuwe änthoolde',
+	'securepasswords-uppercase' => 'ap minste ne Grootbouksteeuwe änthoolde',
+	'securepasswords-digit' => 'ap minste een Ziffer änthoolde',
+	'securepasswords-special' => 'ap minste een Sunnerteeken änthoolde (Sunnerteekene sunt: $1)',
+	'securepasswords-username' => 'sik fon din Benutsernoome unnerscheede',
+	'securepasswords-word' => 'wät uurs weese as n Woud',
 );
 
 /** Swedish (Svenska)

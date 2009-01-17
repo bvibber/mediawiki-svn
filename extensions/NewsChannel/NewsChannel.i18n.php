@@ -386,6 +386,19 @@ $messages['te'] = array(
 	'newschannel_include_category' => 'అదనపు వర్గం:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'newschannel' => 'Istasyon ng mga Bagong Balita',
+	'newschannel-desc' => 'Nagpapatupad ng isang estasyon ng mga bagong balita bilang isang masiglang [[Special:NewsChannel|natatanging pahina]]',
+	'newschannel_format' => 'Anyo/Pormat:',
+	'newschannel_limit' => 'Hangganan:',
+	'newschannel_include_category' => 'Karagdagang kaurian:',
+	'newschannel_exclude_category' => 'Huwag isali ang kaurian:',
+	'newschannel_submit_button' => 'Lumikha ng pasubo/pakain',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

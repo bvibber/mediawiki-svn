@@ -315,6 +315,31 @@ $messages['es'] = array(
 	'duplicator-submit' => 'Duplicado',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'duplicator' => 'Orrialde bat bikoiztu',
+	'duplicator-toolbox' => 'Orrialde hau bikoiztu',
+	'duplicator-options' => 'Aukerak',
+	'duplicator-source' => 'Iturburua:',
+	'duplicator-dest' => 'Helburua:',
+	'duplicator-dotalk' => 'Eztabaida orrialdea bikoiztu (egokia bada)',
+	'duplicator-submit' => 'Bikoiztu',
+	'duplicator-summary' => '[[$1]] orrialdetik kopiatua',
+	'duplicator-success' => "<big>'''[[$1]] [[$2]] orrialdean kopiatu da.'''</big>",
+	'duplicator-success-revisions' => '{{PLURAL:$1|Berrikuspen bat kopiatu da|$1 berrikuspen kopiatu dira}}.',
+	'duplicator-success-talkcopied' => 'Eztabaida orrialdea ere kopiatu da.',
+	'duplicator-success-talknotcopied' => 'Eztabaida orrialdea ezin izan da kopiatu.',
+	'duplicator-failed' => 'Ezin izan da orrialdea bikoiztu.
+Errore ezezagun bat jazo da.',
+	'duplicator-source-invalid' => 'Mesedez, iturburuaren baliozko izenburu bat eman.',
+	'duplicator-source-notexist' => '[[$1]] ez da existitzen. Mesedez, existitzen den iturburu baten izenburua eman.',
+	'duplicator-dest-invalid' => 'Mesedez, helburuaren baliozko izenburu bat eman.',
+	'duplicator-dest-exists' => '[[$1]] jada existitzen da. Mesedez, existitzen ez den helburu bat eman.',
+	'duplicator-toomanyrevisions' => '[[$1]] orrialdeak ($2) berrikuspen gehiegi ditu eta ezin izan da kopiatu. Egungo berrikuspenen muga $3 da.',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

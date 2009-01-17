@@ -167,7 +167,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'gotocategory-desc' => "Verifica termos de pesquisa num espaço nominal Categoria: para a funcionalidade Ir 'saltar para página'",
+	'gotocategory-desc' => "Verifica termos de pesquisa no espaço nominal Categoria: para a funcionalidade Ir 'saltar para página'",
 );
 
 /** Tarandíne (Tarandíne)
@@ -189,6 +189,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'gotocategory-desc' => 'Vyhľadá slová v mennom priestore Kategória: pomocou funkcie „Ísť na stránku“',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'gotocategory-desc' => "Pariksa istilah nu disungsi dina namespace Kategori: pikeun fungsi Jung 'luncat ka kaca'",
 );
 
 /** Swedish (Svenska)

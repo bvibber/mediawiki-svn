@@ -360,6 +360,7 @@ $messages['da'] = array(
  * @author Melancholie
  * @author Purodha
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'regexblock' => 'Regex-Sperre',
@@ -376,7 +377,7 @@ Diese Funktion sollte nur zur Verhinderung von Vandalismus und gemäß der Richt
 ''Diese Seite erlaubt es auch nicht existierende Benutzerkonten zu sperren, sowie solche, die ähnliche Namen zu bestehenden Konten haben, zum Beispiel eine Sperre von „Test” sperrt auch „Test 2“ usw.
 Du kannst auch ganze IP-Adressen sperren, so dass niemand der sich unter diesen IP-Adressen einloggt, Seiten editieren kann.
 Achtung: Teile von IP-Adressen werden als Benutzernamen beim Sperren aufgefasst.
-Falls kein Sperrgrund angegeben ist, wird ein Standard-Begründung verwendet.",
+Falls kein Sperrgrund angegeben ist, wird ein Standard-Begründung verwendet.''",
 	'regexblock-page-title-1' => 'Sperre Adressen anhand regulärer Ausdrücke',
 	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu Editieren, da von dieser IP-Adresse – von dir oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, $1',
@@ -393,6 +394,7 @@ Bitte melde dich mit einem anderen Benutzernamen an oder $1 über das Problem.',
 	'regexblock-form-submit-empty' => 'Einen Benutzernamen oder eine IP-Adresse für die Sperrung angeben.',
 	'regexblock-form-submit-regex' => 'Ungültiger regulärer Ausdruck.',
 	'regexblock-form-submit-expiry' => 'Bitte wähle einen Verfallszeitraum.',
+	'regexblock-match-stats-record' => '$1 sperrte „$2“ auf „$3“ um „$4“, eingeloggt von Adresse „$5“',
 	'regexblock-nodata-found' => 'Keine Daten gefunden',
 	'regexblock-stats-title' => 'Regex-Sperrstatistiken',
 	'regexblock-unblock-success' => 'Entsperrung erfolgreich',
@@ -416,6 +418,7 @@ Vermutlich gibt es keinen solchen Benutzer.',
 	'regexblock-view-stats' => 'Statistiken',
 	'regexblock-view-empty' => 'Die Liste der gesperrten Namen und Adressen ist leer.',
 	'regexblock-view-time' => 'am $1',
+	'right-regexblock' => 'Entzieht Benutzern das Recht auf allen Wikis der Wiki-Farm Bearbeitungen zu tätigen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -903,7 +906,7 @@ Probabilemente non existe tal usator.',
 	'regexblock-view-block-expired' => 'EXPIRATE le',
 	'regexblock-view-block-by' => 'blocate per',
 	'regexblock-view-block-unblock' => 'disblocar',
-	'regexblock-view-stats' => '(statisticas)',
+	'regexblock-view-stats' => 'statisticas',
 	'regexblock-view-empty' => 'Le lista de nomines e adresses blocate es vacue.',
 	'regexblock-view-time' => 'le $1',
 );
@@ -975,9 +978,11 @@ $messages['ja'] = array(
 	'regexblock-view-regex' => '(正規表現マッチ)',
 	'regexblock-view-account' => '(アカウント作成ブロック)',
 	'regexblock-view-reason' => '理由: $1',
+	'regexblock-view-reason-default' => '一般の理由',
 	'regexblock-view-block-infinite' => '無期限ブロック',
 	'regexblock-view-block-unblock' => 'ブロック解除',
 	'regexblock-view-stats' => '統計',
+	'regexblock-view-empty' => 'ブロックされた利用者名とアドレスの一覧には項目がありません。',
 	'right-regexblock' => '利用者をウィキファーム上のすべてのウィキで投稿ブロックする',
 );
 
@@ -1088,6 +1093,7 @@ $messages['lb'] = array(
 	'regexblock-block-log' => "De Benotzer oder d'IP-Adress '''$1''' gouf gespaart.",
 	'regexblock-block-success' => "D'Spär ass elo ageschalt",
 	'regexblock-currently-blocked' => 'Aktuell gespaarten Adressen:',
+	'regexblock-expire-duration' => '1 Stonn,2 Stonnen, 4 Stonnen,6 Stonnen,1 Dag,3 Deeg,1 Woch,2 Wochen,1 Mount,3 Méint,6 Méint,1 Joer,onbegrenzt',
 	'regexblockstats' => 'Regex Spärstatistiken',
 	'regexblock-reason-name' => 'Dëse Benotzer ass wéinst Vandalismus oder ähnlech Ursaache gespaart an däerf keng Ännerunge maachen. Wann Dir iwwerzeecht sidd datt et sech ëm ee Feeler handelt, $1',
 	'regexblock-form-username' => 'IP-Adress oder Benotzer:',
@@ -1095,6 +1101,7 @@ $messages['lb'] = array(
 	'regexblock-form-account-block' => 'Uleeë vun neie Benotzerkonte spären',
 	'regexblock-form-submit' => 'Dëse Benotzer spären',
 	'regexblock-form-submit-empty' => 'Gitt e Benotzernumm oder eng IP-Adress un fir ze spären.',
+	'regexblock-nodata-found' => 'Keng Date fonnt',
 	'regexblock-stats-title' => 'Regex Spärstatistik',
 	'regexblock-unblock-success' => 'Spär opgehuewen',
 	'regexblock-unblock-log' => "D'Spär vum Benotzer oder vun der IP-Adress '''$1'''' gouf opgehuewen.",
@@ -1323,6 +1330,7 @@ $messages['nn'] = array(
 	'regexblock-block-success' => 'Blokkering lukkast',
 	'regexblock-currently-blocked' => 'Noverande blokkerte adresser:',
 	'regexblock-desc' => 'Utviding nytta for blokkering av brukarnamn og IP-adressar ved hjelp av regulære uttrykk. Innheld både blokkeringsmekanismen og ei [[Special:Regexblock|spesialsida]] for å leggja til og endra blokkeringar.',
+	'regexblock-expire-duration' => 'éin time,to timar,fire timar,seks timar,éin dag,tre dagar,éi veka,to veker,éin månad,tre månader,seks månader,eitt år,endelaus',
 	'regexblock-page-title' => 'Namneblokkering ved hjelp av regulært uttrykk',
 	'regexblockstats' => 'Regex-blokkeringsstatistikk',
 	'regexblock-help' => "Nytt skjemaet nedanfor for å hindra visse IP-adresser eller brukarnamn frå å endra. 
@@ -1345,11 +1353,14 @@ Opprett eit anna brukarnamn eller $1 om problemet.',
 	'regexblock-form-submit-empty' => 'Oppgje eit brukarnamn eller ei IP-adressa til å blokkera.',
 	'regexblock-form-submit-regex' => 'Ugyldig regulært uttrykk.',
 	'regexblock-form-submit-expiry' => 'Oppgje ei tid for enden på blokkeringa.',
+	'regexblock-match-stats-record' => '$1 blokkerte «$2» på «$3» den «$4», frå IP-adressa «$5»',
+	'regexblock-nodata-found' => 'Fann ingen data',
 	'regexblock-stats-title' => 'Statistikk for blokkering med regulære uttrykk',
 	'regexblock-unblock-success' => 'Avblokkering lukkast',
 	'regexblock-unblock-log' => "Brukarnamnet eller IP-adressa '''$1''' har blitt avblokkert.",
 	'regexblock-unblock-error' => 'Det oppstod ein feil under avblokkeringa av $1. 
 Truleg finst det ingen brukar med dette namnet.',
+	'regexblock-regex-filter' => ' eller regex-verdi:',
 	'regexblock-view-blocked' => 'Syn dei blokkerte etter:',
 	'regexblock-view-all' => 'Alle',
 	'regexblock-view-go' => 'Gå',
@@ -1363,9 +1374,10 @@ Truleg finst det ingen brukar med dette namnet.',
 	'regexblock-view-block-expired' => 'ENDA',
 	'regexblock-view-block-by' => 'blokkert av',
 	'regexblock-view-block-unblock' => 'avblokker',
-	'regexblock-view-stats' => '(statistikk)',
+	'regexblock-view-stats' => 'statistikk',
 	'regexblock-view-empty' => 'Lista over blokkerte namn og adresser er tom.',
 	'regexblock-view-time' => '$1',
+	'right-regexblock' => 'Blokker brukarar frå å endra på alle wikiane i wikisamlinga',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1506,14 +1518,21 @@ $messages['pa'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'regexblock' => 'Blokada wyrażeniem regularnym',
+	'regexblock' => 'Blokada z użyciem wyrażenia regularnego',
 	'regexblock-already-blocked' => '$1 jest już zablokowany',
 	'regexblock-block-log' => "Nazwa użytkownika lub adres IP '''$1''' zostały zablokowane.",
 	'regexblock-block-success' => 'Pomyślnie zablokowano',
-	'regexblock-currently-blocked' => 'Zablokowane adresy:',
+	'regexblock-currently-blocked' => 'Obecnie zablokowane adresy:',
 	'regexblock-desc' => 'Rozszerzenie umożliwiające blokowanie nazw użytkowników oraz adresów IP opisanych wyrażeniami regularnymi. Zawiera mechanizm blokujący oraz [[Special:Regexblock|stronę specjalną]] dla dodawania i zarządzania blokadami',
-	'regexblock-page-title' => 'Blokada wyrażeniem regularnym',
-	'regexblockstats' => 'Statystyki blokad z wyrażeniami regularnymi',
+	'regexblock-expire-duration' => '1 godzina,2 godziny,4 godziny,6 godzin,1 dzień,3 dni,1 tydzień,2 tygodnie,1 miesiąc,3 miesiące,6 miesięcy,1 rok,na zawsze',
+	'regexblock-page-title' => 'Blokada nazwy z użyciem wyrażenia regularnego',
+	'regexblockstats' => 'Statystyki blokad z użyciem wyrażeń regularnych',
+	'regexblock-help' => "Użyj poniższego formularza do zablokowania możliwości wykonywania zapisu określonemu użytkownikowi lub spod wskazanego adresu IP.
+Powinno być to wykonywane zgodnie z obowiązującymi zasadami, wyłącznie w celu zapobiegania wandalizmom.
+''Na tej stronie możesz zablokować również nieistniejące konta użytkowników oraz konta o nazwach podobnych do zadanej, „Test” zostanie zablokowany razem z „Test 2” itd.
+Możesz również zablokować adresy IP, co spowoduje, że nikt bez zalogowania nie będzie mógł z nich edytować stron.
+Uwaga: adresy IP będą traktowane jak nazwa użytkownika w celu ustalenia blokowania.
+Jeżeli nie podano powodu blokady, zostaniu użyty domyślny typowy opis blokady.''",
 	'regexblock-page-title-1' => 'Zablokuj adres, używając wyrażenia regularnego',
 	'regexblock-reason-ip' => 'Ten adres IP został zablokowany z powodu wandalizmu lub innego naruszenia zasad przez Ciebie lub przez kogoś, z kim współdzielisz ten adres IP.
 Jeżeli uważasz, że nastąpiła pomyłka, $1',
@@ -1530,11 +1549,14 @@ Utwórz nową nazwę użytkownika lub skontaktuj się z $1 w celu rozwiązania p
 	'regexblock-form-submit-empty' => 'Podaj nazwę użytkownika lub adres IP do zablokowania.',
 	'regexblock-form-submit-regex' => 'Nieprawidłowe wyrażenie regularne',
 	'regexblock-form-submit-expiry' => 'Określ czas zakończenia blokady.',
-	'regexblock-stats-title' => 'Statystyki blokad wyrażeń regularnych',
+	'regexblock-match-stats-record' => '$1 zablokowało „$2” w „$3” o „$4”, zalogowanego „$5”',
+	'regexblock-nodata-found' => 'Nie odnaleziono danych',
+	'regexblock-stats-title' => 'Statystyki blokad z użyciem wyrażeń regularnych',
 	'regexblock-unblock-success' => 'Odblokowano',
 	'regexblock-unblock-log' => "Użytkownik lub adres IP '''$1''' został odblokowany.",
 	'regexblock-unblock-error' => 'Błąd przy odblokowaniu $1.
 Prawdopodobnie brak takiego użytkownika.',
+	'regexblock-regex-filter' => ' lub wyrażenie regularne',
 	'regexblock-view-blocked' => 'Pokaż zablokowanych, posortowanych według',
 	'regexblock-view-all' => 'Wszystkie',
 	'regexblock-view-go' => 'Przejdź',
@@ -1542,13 +1564,16 @@ Prawdopodobnie brak takiego użytkownika.',
 	'regexblock-view-regex' => '(dopasowanie wyrażenia regularnego)',
 	'regexblock-view-account' => '(blokada tworzenia konta)',
 	'regexblock-view-reason' => 'powód: $1',
+	'regexblock-view-reason-default' => 'typowa przyczyna',
+	'regexblock-view-block-infinite' => 'blokada stała',
 	'regexblock-view-block-temporary' => 'upływa',
 	'regexblock-view-block-expired' => 'upłynęła',
 	'regexblock-view-block-by' => 'zablokowany przez',
 	'regexblock-view-block-unblock' => 'odblokuj',
-	'regexblock-view-stats' => '(statystyki)',
+	'regexblock-view-stats' => 'statystyki',
 	'regexblock-view-empty' => 'Lista zablokowanych nazw i adresów jest pusta.',
 	'regexblock-view-time' => '$1',
+	'right-regexblock' => 'Zablokuj użytkownikom możliwość edycji na wszystkich wiki na tej farmie.',
 );
 
 /** Pashto (پښتو)
@@ -1621,6 +1646,15 @@ $messages['ro'] = array(
 	'regexblock-view-reason' => 'motiv: $1',
 	'regexblock-view-reason-default' => 'motiv generic',
 	'regexblock-view-block-temporary' => 'expiră la',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'regexblock-form-reason' => 'Mutive:',
+	'regexblock-view-all' => 'Tutte',
+	'regexblock-view-go' => 'Veje',
 );
 
 /** Russian (Русский)

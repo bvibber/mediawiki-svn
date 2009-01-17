@@ -645,13 +645,19 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'onlinestatus-desc' => 'Adiciona uma preferência para mostrar se o utilizador está atualmente presente no wiki ou não',
+	'onlinestatus-js-anon' => 'Erro: tem que estar autenticado para usar esta funcionalidade',
+	'onlinestatus-js-changed' => 'O seu estado foi alterado para "$1"',
+	'onlinestatus-js-error' => 'Impossível alterar estado, o valor "$1" é inválido',
 	'onlinestatus-subtitle-offline' => 'Este utilizador encontra-se offline',
 	'onlinestatus-subtitle-online' => 'Este utilizador encontra-se online',
+	'onlinestatus-tab' => 'Estado',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
 	'onlinestatus-toggles-explain' => 'Permite que seja exibido a outros utilizadores, através de sua página de usuário, se você se encontra online ou não.',
 	'onlinestatus-toggles-show' => 'Exibir meu status de conexão em minha página de usuário',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Alterar o meu estado para online quando me autenticar',
+	'tog-offlineOnLogout' => 'Alterar o meu estado para offline quando me desautenticar',
 );
 
 /** Russian (Русский)
@@ -732,6 +738,26 @@ $messages['te'] = array(
 	'onlinestatus-js-changed' => 'మీ స్థితిని "$1"కి మార్చాం',
 	'onlinestatus-tab' => 'స్థితి',
 	'onlinestatus-toggles-desc' => 'మీ స్థితి:',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'onlinestatus-desc' => 'Magdagdag ng isang kagustuhan upang maipakita kung pangkasalukuyang nasa wiki ba o hindi ang tagagamit',
+	'onlinestatus-js-anon' => 'Kamalian: dapat kang nakalagda muna upang magamit ang kasangkapang-katangiang ito',
+	'onlinestatus-js-changed' => 'Pinalitan ang iyong kalagayan na naging "$1"',
+	'onlinestatus-js-error' => 'Imposibleng mabago ang kalagayan, hindi tanggap ang halagang "$1"',
+	'onlinestatus-subtitle-offline' => 'Kasalukuyang hindi nakaugnay sa internet ang tagagamit na ito',
+	'onlinestatus-subtitle-online' => 'Kasalukuyang nakaugnay sa internet ang tagagamit na ito',
+	'onlinestatus-tab' => 'Kalagayan',
+	'onlinestatus-toggles-desc' => 'Kalagayan mo:',
+	'onlinestatus-toggles-explain' => 'Nagpapahintulot ito sa iyong maipakita sa ibang mga tagagamit kung talagang nakaugnay ka sa internet o hindi sa pamamagitan ng pagtingin sa pahina mo.',
+	'onlinestatus-toggles-show' => 'Ipakita sa ibabaw ng aking pahina ng tagagamit ang aking katayuan ng pagkakaugnay sa internet',
+	'onlinestatus-toggle-offline' => 'Hindi nakaugnay sa internet',
+	'onlinestatus-toggle-online' => 'Nakaugnay sa internet',
+	'tog-onlineOnLogin' => 'Palitan ang katayuan ko bilang nakakunekta sa internet kapag lumalagda',
+	'tog-offlineOnLogout' => 'Palitan ang katayuan ko bilang hindi nakakunekta sa internet kapag umaalis sa pagkakalagda',
 );
 
 /** Vèneto (Vèneto)

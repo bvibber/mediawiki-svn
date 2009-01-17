@@ -290,7 +290,7 @@ Die meisten Erweiterungen arbeiten mit vielen MediaWiki-Versionen zusammen. Wenn
 	'extdist-svn-error' => 'Subversion hat einen Fehler gemeldet: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'XML-Daten von „svn info“ können nicht verarbeitet werden: <pre>$1</pre>',
 	'extdist-tar-error' => 'Das Tar-Programm lieferte den Beendigungscode $1:',
-	'extdist-created' => "Ein Schnappschuss der Version <b>$2</b> der MediaWiki-Erweiterung <b>$1</b> wurde erstellt (MediaWiki Version <b>$3</b>). Der Download startet automatisch in 5 Sekunden.
+	'extdist-created' => "Ein Schnappschuss der Version <b>$2</b> der MediaWiki-Erweiterung <b>$1</b> wurde erstellt (MediaWiki-Version <b>$3</b>). Der Download startet automatisch in 5 Sekunden.
 
 Die URL für den Schnappschuss lautet:
 :$4
@@ -463,6 +463,57 @@ Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extens
 $messages['grc'] = array(
 	'extdist-submit-extension' => 'Συνεχίζειν',
 	'extdist-submit-version' => 'Συνεχίζειν',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'extensiondistributor' => 'Rožsěrjenje za MediaWiki sćahnyć',
+	'extdist-desc' => 'Rozšěrjenje za rozdźělenje archiwow njejapkich fotow rozšěrjenjow',
+	'extdist-not-configured' => 'Prošu konfiguruj $wgExtDistTarDir a $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Konfigurowany zapis dźěłoweje kopije njeeksistuje!',
+	'extdist-no-such-extension' => 'Rozšěrjenje "$1" njeeksistuje',
+	'extdist-no-such-version' => 'Rozšěrjenje "$1" we wersiji "$2" njeeksistuje.',
+	'extdist-choose-extension' => 'Wubjer, kotre rozšěrjenje chceš sćahnyć:',
+	'extdist-wc-empty' => 'Konfigurowany zapis dźěłoweje kopije nima rozdźělujomne rozšěrjenja!',
+	'extdist-submit-extension' => 'Dale',
+	'extdist-current-version' => 'Aktualna wersija (trunk)',
+	'extdist-choose-version' => '<big>Sćahuješ rozšěrjenje <b>$1</b>.</big>
+
+Wubjer swoju wersiju MediaWiki.
+
+Najwjace rozšěrjenjow funguje přez wjacore wersije MediaWiki, jeli twoja wersija tuž tu njeje abo trjebaš najnowše funkcije rozšěrjenja, spytaj aktualnu wersiju wužiwać.',
+	'extdist-no-versions' => 'Wubrane rozšěrjenje ($1) w žanej wersiji k dispoziciji njesteji!',
+	'extdist-submit-version' => 'Dale',
+	'extdist-no-remote' => 'Njeje móžno nazdalny klient Subversion kontaktować.',
+	'extdist-remote-error' => 'Zmylk z nazdalneho klienta Subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Njepłaćiwa wotmołwa nazdalneho klienta Subversion.',
+	'extdist-svn-error' => 'Subversion je na zmylk storčił: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Njemóžno XML-daty wot "svn info" předźełać: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar je kod skónčenja $1 wróćił:',
+	'extdist-created' => "Pakćik wersije <b>$2</b> rozšěrjenja <b>$1</b> wersije MediaWiki <b>$3</b> je so wutworił. Twoje sćehnjenje dyrbjało za 5 sekundow awtomatisce startować.
+
+URL za tutón pakćik je:
+:$4
+Hodźi so za hnydomniše sćehnjenje do serwera wužiwać, prošu njeskładuj jón jako zapołožku, dokelž wobsah so njezaktualizuje a móhł so pozdźîso zničił.
+
+Tar-archiw měł so do twojeho zapisa rozšěrjenjow wupakować, na přikład na uniksowym dźěłowym systemje:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Na Windowsu móžeš [http://www.7-zip.org/ 7-zip] wužiwać, zo by dataje wupakował.
+
+Jeli twój wiki je na nazdalnym serwerje, wupakuj dataje do nachwilneho zapisa na swojim lokalnym ličaku a nahraj potom '''wšě''' wupakowane dataje do zapisa rozšěrjenjow na serwerje.
+
+Dźiwaj na to, zo někotre rozšěrjenja trjebaja dataju z mjenom ExtensionFunctions.php, kotraž je na <tt>extensions/ExtensionFunctions.php</tt>, to rěka, w ''nadrjadowanym'' zapisu zapisa wotpowědneho rozšěrjenja. Pakćik za tute rozšěrjenja wobsahuje tutu dataju jako tar-bombu, wupakowana do ./ExtensionFunctions.php. Njezabudź tutu dataju na swój nazdalny serwer nahrać.
+
+Po tym zo sy dataje wupakował, dyrbiš rozšěrjenje w dataji LocalSettings.php registrować. Dokumentacija rozšěrjenja dyrbjała instrukcije wobsahować, kak móžeš to činić.
+
+Jeli maš prašenja wo systemje rozdźělowanja rozšěrjenjow, prošu dźi k [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Dalše rozšěrjenje wobstarać',
 );
 
 /** Interlingua (Interlingua)
@@ -993,7 +1044,15 @@ Jeśli masz jakieś pytania na temat systemu dystrybuującego rozszerzenia, pros
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'extensiondistributor' => 'Descarregar extensão MediaWiki',
+	'extdist-desc' => 'Extensão para distribuir arquivos snapshot de extensões',
+	'extdist-not-configured' => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
+	'extdist-submit-extension' => 'Continuar',
+	'extdist-current-version' => 'Versão atual (tronco)',
+	'extdist-no-versions' => 'A extensão selecionada ($1) não está disponível em nenhuma versão!',
 	'extdist-submit-version' => 'Continuar',
+	'extdist-tar-error' => 'Tar retornou código de saída $1:',
+	'extdist-want-more' => 'Obter outra extensão',
 );
 
 /** Romanian (Română)
@@ -1145,6 +1204,13 @@ Om du har några frågor om programtilläggets distributionssystem, gå till [[E
 $messages['te'] = array(
 	'extdist-submit-extension' => 'కొనసాగించు',
 	'extdist-submit-version' => 'కొనసాగించు',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'extensiondistributor' => 'MedyaViki eklentisini indir',
 );
 
 /** Yue (粵語)

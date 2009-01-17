@@ -512,6 +512,17 @@ $messages['tg-cyrl'] = array(
 Ҳисоби корбарии ҷадид, $2, дар $3 дар $4 эҷод шуд.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'newusernotifsubj' => 'Pabatid na pambagong tagagamit para kay $1',
+	'newusernotif-desc' => 'Nagpapadala ng isang pabatid na pang-e-liham kapag nalikha ang bagong mga kuwenta ng tagagamit',
+	'newusernotifbody' => 'Kumusta ka $1,
+
+Isang bagong kuwenta/akawnt, $2, ang nalikha na sa $3 noong $4.',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Srhat
@@ -550,6 +561,8 @@ Một tài khoản thành viên mới, $2, đã được tạo ra trên $3 lúc 
  * @author Smeira
  */
 $messages['vo'] = array(
+	'newusernotifsubj' => 'Nunod gebaan nulik demü $1',
+	'newusernotif-desc' => 'Sedon nunodi leäktronik ven gebanakals pajafons',
 	'newusernotifbody' => 'Glidis, o $1!
 
 Gebanakal nulik: $2, pejafon su $3 tü $4.',

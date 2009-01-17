@@ -183,6 +183,13 @@ $messages['mr'] = array(
 	'pnghandler-desc' => 'pngds चा वापर करून पीएनजी संचिकांचा आकार बदला',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'pnghandler-desc' => 'Ännert de Grött vun PNGs mit Hülp vun „pngds“',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -258,6 +265,13 @@ $messages['sr-ec'] = array(
  */
 $messages['sv'] = array(
 	'pnghandler-desc' => 'Ändra storleken på PNG-bilder med pngds',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'pnghandler-desc' => "Muling bigyan ng sukat ang mga PNG sa pamamagitan ng paggamit ng ''pngds''",
 );
 
 /** Vèneto (Vèneto)

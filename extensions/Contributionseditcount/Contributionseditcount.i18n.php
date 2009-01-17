@@ -58,6 +58,14 @@ $messages['bn'] = array(
 	'contributionseditcount' => 'এ ব্যবহারকারীর $1 সম্পাদনা হয়েছে।',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'contributionseditcount' => 'Ovaj korisnik ima $1 izmjena.',
+	'contributionseditcount-desc' => 'Prikazuje brojač izmjena na [[Special:Contributions|stranici doprinosa korisnika]]',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */
@@ -501,6 +509,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'contributionseditcount' => 'דער באַניצער האט $1 רעדאַקטירונגען.',
+	'contributionseditcount-desc' => 'ווײַזט אַ רעדאַקטירונג רעכענונג אויפֿן [[Special:Contributions|באניצער בײַשטײַערונגען בלאַט]]',
 );
 
 /** Yoruba (Yorùbá)

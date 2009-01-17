@@ -88,9 +88,11 @@ Anfonodd $1 yr e-bost hwn atoch trwy system e-bost ((SITENAME)).
 $2',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Umherirrender
+ */
 $messages['de'] = array(
-	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen in der E-Mail Funktion zu verwenden',
+	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen in der E-Mail-Funktion zu verwenden',
 	'email_footer' => '----------------------------------------------------------------------------
 Diese E-Mail wurde dir von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
 
@@ -192,6 +194,17 @@ $messages['grc'] = array(
 	'email-desc' => 'Ἐπιτρέπει ταῖς συνήθεσι ἐπικεφαλίσι/ὑποσημειώσεσι προστεθειμέναι εἶναι εἰς τὰς ἐπιστολὰς τῶν χρωμένων',
 	'email_footer' => '----------------------------------------------------------------------------
 Ἥδε ἡ ἐπιστολὴ ἐστάλη πρὸς ἐσὲ μέσῳ τοῦ συστήματος ἠλεκτρονικοῦ ταχυδρομείου τοῦ {{SITENAME}} ὑπὸ τὸν $1.
+
+$2',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'email-desc' => 'Erlaubt Benutzer persenligi Chopf- un Fuesszyylete in dr E-Mail Funktion z verwände',
+	'email_footer' => '----------------------------------------------------------------------------
+Die E-Mail isch Dir vu $1 iber s {{SITENAME}}-E-Mail-Syschtem zuegschickt wore.
 
 $2',
 );

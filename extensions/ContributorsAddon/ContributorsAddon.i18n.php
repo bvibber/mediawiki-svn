@@ -118,10 +118,11 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'contributorsaddon-desc' => 'JavaScriptのonMouseOverを用いて、"主な投稿者"へのリンクをポップアップする',
+	'contributorsaddon-desc' => 'JavaScript を用いて、「主な投稿者」へのリンクをポップアップする',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -258,6 +258,13 @@ $messages['haw'] = array(
 	'profiling-ok' => 'Hiki nō',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'profiling-no-data' => 'לא נמצאו נתונים מתאימים.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -584,10 +591,17 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'profiling' => 'Dados de perfilagem',
+	'profiling-desc' => '[[Special:Profiling|Página especial]] para pesquisar e inspeccionar dados de perfilagem',
+	'profiling-process' => 'Comando do processo:',
+	'profiling-wildcard' => 'Usar carácter universal',
 	'profiling-ok' => 'OK',
+	'profiling-data' => 'A perfilar dados para `$1`',
+	'profiling-data-process' => 'Processo',
 	'profiling-data-count' => 'Contagem',
 	'profiling-data-time' => 'Tempo (todos)',
 	'profiling-data-average' => 'Tempo (média)',
+	'profiling-no-data' => 'Dados correspondentes não encontrados.',
 );
 
 /** Romanian (Română)
@@ -681,6 +695,23 @@ $messages['th'] = array(
 	'profiling-ok' => 'ตกลง',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'profiling' => 'Dato ng talaang pangkatangian',
+	'profiling-desc' => '[[Special:Profiling|Natatanging pahina]] para sa paghahanap at pagsisiyasat ng dato ng talaang pangkatangian',
+	'profiling-process' => 'Bagting ng proseso/pagpapatakbo:',
+	'profiling-wildcard' => 'Gamitin ang "barahang pamalit"',
+	'profiling-ok' => "Sige/Ayos 'yan",
+	'profiling-data' => 'Dato ng talaang pangkatangian para sa/kay `$1`',
+	'profiling-data-process' => 'Proseso (pagpapatakbo)',
+	'profiling-data-count' => 'Bilang',
+	'profiling-data-time' => 'Oras (lahat)',
+	'profiling-data-average' => 'Oras (karaniwan)',
+	'profiling-no-data' => 'Walang natagpuang tumutugmang dato.',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
@@ -712,6 +743,15 @@ $messages['vi'] = array(
 	'profiling-data-time' => 'Thời gian (tất cả)',
 	'profiling-data-average' => 'Thời gian (trung bình)',
 	'profiling-no-data' => 'Không có dữ liệu trùng khớp.',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'profiling-data-time' => 'Tim (valodo)',
+	'profiling-data-average' => 'Tim (zänedik)',
+	'profiling-no-data' => 'Nünods leigöl nonik petuvons.',
 );
 
 /** Yue (粵語)

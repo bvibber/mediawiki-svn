@@ -94,9 +94,10 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'userwelcome-desc' => 'Дадае тэг <tt>&lt;welcomeUser&gt;</tt>, каб паказваць сацыяльную інфармацыю пра удзельніка іншым зарэгістраваным удзельнікам',
+	'userwelcome-desc' => 'Дадае тэг <tt>&lt;welcomeUser&gt;</tt>, каб паказваць сацыяльную інфармацыю пра ўдзельніка іншым зарэгістраваным удзельнікам',
 	'mp-userlevels-link' => 'Узроўні ўдзельніка',
 	'mp-welcome-upload' => 'Загрузіць',
 	'mp-welcome-edit' => 'Рэдагаваць',
@@ -245,16 +246,20 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Fluence
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'userwelcome-desc' => 'Añade la etiqueta <tt>&lt;welcomeUser&gt;</tt> para mostrar información social específica de cada usuario a los usuarios registrados',
+	'mp-userlevels-link' => 'Niveles de usuario',
 	'mp-welcome-upload' => 'Subir',
 	'mp-welcome-edit' => 'Editar',
 	'mp-welcome-points' => '$1 puntos',
 	'mp-welcome-logged-in' => 'Hola $1',
+	'mp-requests-title' => 'Solicitudes',
+	'mp-requests-message' => 'Usted tien las siguientes solicitudes.',
 	'mp-request-new-message' => 'nuevo mensaje',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nuevo amigo|nuevos amigos}}',
 );
@@ -669,6 +674,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'mp-welcome-edit' => 'سمون',
 	'mp-welcome-logged-in' => '$1 سلامونه',
 	'mp-requests-title' => 'غوښتنې',
 	'mp-requests-message' => 'تاسو دغه لاندينۍ غوښتنې لری.',
@@ -682,12 +688,19 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'userwelcome-desc' => 'Adiciona a marca <tt>&lt;welcomeUser&gt;</tt> para apresentar informação social específica do utilizador, para utilizadores autenticados',
 	'mp-userlevels-link' => 'Níveis de usuário',
 	'mp-welcome-upload' => 'Carregar',
 	'mp-welcome-edit' => 'Editar',
 	'mp-welcome-points' => '$1 pontos',
+	'mp-welcome-needed-points' => 'Para avançar para <b><a href="$1">$2</a></b>, ganhe mais <i>$3</i> {{PLURAL:$3|ponto|pontos}}!',
 	'mp-welcome-logged-in' => 'Olá, $1',
+	'mp-requests-title' => 'Pedidos',
+	'mp-requests-message' => 'Você tem os seguinte pedidos.',
 	'mp-request-new-message' => 'nova mensagem',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|novo galardão|novos galardões}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nova prenda|novas prendas}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|novo inimigo|novos inimigos}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|novo amigo|novos amigos}}',
 );
 
@@ -776,6 +789,26 @@ $messages['sk'] = array(
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|nový dar|nové dary|nových darov}}',
 	'mp-request-new-foe' => '$1 {{PLURAL:$1|nový nepriateľ|noví nepriatelia|nových nepriateľov}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nový priateľ|noví priatelia|nových priateľov}}',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'userwelcome-desc' => 'Föiget n <tt>&lt;welcomeUser&gt;</tt>-Tag bietou, wiermäd me benutserspezifiske sozioale Informatione fon ienloggede Benutsere wiese kon',
+	'mp-userlevels-link' => 'Benutser-Ieuwenen',
+	'mp-welcome-upload' => 'Hoochleede',
+	'mp-welcome-edit' => 'Beoarbaidje',
+	'mp-welcome-points' => '$1 Punkte',
+	'mp-welcome-needed-points' => 'Uum <b><a href="$1">$2</a></b> tou wäiden moast du noch <i>$3</i> {{PLURAL:$3|wiederen Punkt|wiedere Punkte}} fertjoonje!',
+	'mp-welcome-logged-in' => 'Hallo $1',
+	'mp-requests-title' => 'Anfroagen',
+	'mp-requests-message' => 'Do hääst do foulgjende Anfroagen.',
+	'mp-request-new-message' => 'näie Ättergjucht',
+	'mp-request-new-award' => '$1 näie {{PLURAL:$1|Uutteekenge|Uutteekengen}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|näi Geschoank|näie Geschoanke}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|näien Fäind|näie Fäinde}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|näien Früünd|näie Früünde}}',
 );
 
 /** Swedish (Svenska)
@@ -905,11 +938,13 @@ $messages['vi'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
 	'mp-userlevels-link' => 'Gebananivods',
 	'mp-welcome-upload' => 'Löpükön',
+	'mp-welcome-edit' => 'Redakön',
 	'mp-welcome-logged-in' => 'Glidis, o $1!',
 	'mp-requests-title' => 'Begs',
 	'mp-requests-message' => 'Labol begis sököl.',

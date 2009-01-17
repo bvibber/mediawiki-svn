@@ -342,6 +342,13 @@ $messages['jv'] = array(
 	'contrib-tracking-button' => 'Terus',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'contrib-tracking-error' => 'შეცდომა',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */

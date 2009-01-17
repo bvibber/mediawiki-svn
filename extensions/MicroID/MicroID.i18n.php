@@ -53,10 +53,11 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author MichaelFrey
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'microid-desc' => 'Fügt eine [http://www.microid.org/ MicroID] auf Benutzerseiten ein, um einen Account mit einem externen Dienst zu bestätigen.',
-	'tog-microid' => 'Veröffentliche eine <a href="http://microid.org/">MicroID</a>, um das Benutzerkonto durch einen externen Servive zu bestätigen.',
+	'tog-microid' => 'Veröffentliche eine <a href="http://microid.org/">MicroID</a>, um das Benutzerkonto durch einen externen Service zu bestätigen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

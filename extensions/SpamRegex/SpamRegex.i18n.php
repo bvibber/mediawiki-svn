@@ -53,6 +53,7 @@ $messages['qqq'] = array(
 	'spamregex-already-blocked' => '{{Identical|$1 is already blocked}}',
 	'spamregex-text' => '{{Identical|Text}}',
 	'spamregex-summary-log' => '{{Identical|Summary}}',
+	'right-spamregex' => '{{doc-right|spamregex}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -208,6 +209,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'spamregex' => 'Spam regex',
@@ -239,6 +241,7 @@ Sei aber vorsichtig, Phrasen sollten nicht zu kurz oder zu allgemein sein.',
 	'spamregex-block-submit' => 'Phrase sperren',
 	'spamregex-text' => '(Text)',
 	'spamregex-summary-log' => '(Zusammenfassung)',
+	'right-spamregex' => 'Blockiere ungewollte Phrasen über [[Special:SpamRegex]]',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -345,6 +348,7 @@ $messages['fr'] = array(
 	'spamregex-block-submit' => 'Bloquer&nbsp;cette&nbsp;phrase',
 	'spamregex-text' => '(Texte)',
 	'spamregex-summary-log' => '(Commentaire)',
+	'right-spamregex' => 'Bloquer du spam depuis [[Special:SpamRegex]]',
 );
 
 /** Western Frisian (Frysk)
@@ -389,6 +393,7 @@ Teña en conta que as expresións non deberían ser moi curtas ou moi comúns.',
 	'spamregex-block-submit' => 'Bloquear&nbsp;esta&nbsp;frase',
 	'spamregex-text' => '(Texto)',
 	'spamregex-summary-log' => '(Resumo)',
+	'right-spamregex' => 'Bloquear as frases de spam mediante [[Special:SpamRegex]]',
 );
 
 /** Hebrew (עברית)
@@ -480,6 +485,7 @@ $messages['hsb'] = array(
 	'spamregex-block-submit' => 'Tutu&nbsp;frazu&nbsp;blokować',
 	'spamregex-text' => '(Tekst)',
 	'spamregex-summary-log' => '(Zjeće)',
+	'right-spamregex' => 'Spamowe wurazy přez [[Special:SpamRegex]] blokować',
 );
 
 /** Interlingua (Interlingua)
@@ -616,6 +622,7 @@ do es e Stöck Tex dren, dä jesperrt es.',
 	'spamregex-block-submit' => 'Dat&nbsp;Texstöck&nbsp;sperre',
 	'spamregex-text' => '(Tex)',
 	'spamregex-summary-log' => '(Zosammefaßung)',
+	'right-spamregex' => '<i lang="en">SPAM</i>-Wööter övver <i lang="en">[[Special:SpamRegex]]</i> sperre',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -731,6 +738,7 @@ $messages['nds'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'spamregex' => 'SpamRegex',
@@ -762,6 +770,7 @@ Zorg dat de uitdrukkingen niet te kort of veelvoorkomend zijn.',
 	'spamregex-block-submit' => 'Deze&nbsp;zin&nbsp;blokkeren',
 	'spamregex-text' => '(Tekst)',
 	'spamregex-summary-log' => '(Samenvatting)',
+	'right-spamregex' => 'Spamwoorden blokkeren via [[Special:SpamRegex]]',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -862,6 +871,13 @@ $messages['oc'] = array(
 	'spamregex-block-submit' => 'Blocar&nbsp;aquesta&nbsp;frasa',
 	'spamregex-text' => '(Tèxt)',
 	'spamregex-summary-log' => '(Comentari)',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'spamregex-summary-log' => '(ସାରକଥା)',
 );
 
 /** Polish (Polski)
@@ -973,6 +989,7 @@ $messages['sk'] = array(
 	'spamregex-block-submit' => 'Blokovať&nbsp;túto&nbsp;frázu',
 	'spamregex-text' => '(v texte)',
 	'spamregex-summary-log' => '(v zhrnutí)',
+	'right-spamregex' => 'Blokovať spam v texte pomocou [[Special:SpamRegex]]',
 );
 
 /** Southern Sami (Åarjelsaemien)

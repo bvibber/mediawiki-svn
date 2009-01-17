@@ -384,6 +384,16 @@ $messages['te'] = array(
 	'piwik-browsers' => 'విహారిణులు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'piwik-desc' => "Nagsisingit ng panitik na ''Piwik'' sa mga pahina ng MediaWiki para sa paghanap ng bakas at nagdaragdag ng [[Special:Piwik|ilang mga estadistika]]",
+	'piwik-lastvisits' => 'Huling mga pagdalaw',
+	'piwik-countries' => 'Mga bansa',
+	'piwik-browsers' => 'Mga pantingin-tingin',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

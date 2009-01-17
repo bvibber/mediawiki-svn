@@ -367,6 +367,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'selectcategory-title' => 'Kategorien uutwääle',
+	'selectcategory-desc' => 'Moaket et dän Benutser muugelk, bie dät Beoarbaidjen fon ne Siede uut bestoundene Kategorien uuttouwäälen',
 	'selectcategory-subtitle' => 'Shift-Muus uum moorere ätterfoulgjende Iendraage tou (de-)selektierjen, Strg-Muus uum eenpelde Iendraage tou (de-)selektierjen.',
 );
 

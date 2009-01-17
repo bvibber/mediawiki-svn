@@ -1108,6 +1108,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'createsigndocument' => "Abbilite le firme sus a 'u documende",
 	'createsigndoc-pagename' => 'Pàgene:',
 	'createsigndoc-allowedgroup' => 'Gruppe permesse:',
 	'createsigndoc-email' => 'Indirizze e-mail:',
@@ -1376,9 +1377,11 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'createsigndocument' => '启用文档签名',
+	'createsigndoc-pagename' => '页面：',
 	'createsigndoc-phone' => '电话号码：',
 	'createsigndoc-bday' => '出生日期：',
 	'createsigndoc-hidden' => '隐藏',

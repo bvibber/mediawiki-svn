@@ -535,10 +535,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'dt-desc' => 'テンプレート呼び出しに関わるデータ構造の入出力を行う',
+	'dt-desc' => 'テンプレート呼び出しに関わる構造化データのインポートおよびエクスポートを可能にする',
 	'viewxml' => 'XML表示',
 	'dt_viewxml_docu' => 'XML形式で表示するカテゴリや名前空間を以下から選択してください。',
 	'dt_viewxml_categories' => 'カテゴリ',

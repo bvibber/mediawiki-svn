@@ -468,9 +468,10 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
-	'poem-desc' => '加入 <tt>&lt;poem&gt;</tt> 标签给予诗歌格式使用',
+	'poem-desc' => '加入 <tt>&lt;poem&gt;</tt> 标签用于诗歌格式',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

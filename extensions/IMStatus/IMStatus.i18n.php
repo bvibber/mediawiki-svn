@@ -166,6 +166,7 @@ Indentifikítor, který musíte zadat, jsou písmena a číslice mezi $2 a $3.',
 
 /** German (Deutsch)
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'imstatus-desc' => 'Fügt Tags hinzu, um den Online-Status verschiedener Instant-Messenger anzuzeigen (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
@@ -182,12 +183,12 @@ $messages['de'] = array(
 	'imstatus_your_name' => 'dein $1-Name',
 	'imstatus_aim_presence' => '$1 zeigt deinen Status mit einem Link, der AIM startet (sofern es installiert ist), um dir eine Nachricht zu senden.',
 	'imstatus_aim_api' => '$1 zeigt deinen Status mit einem Link, der eine <b>Browser</b>, JavaScript Version von AIM, startet, um dir eine Nachricht zu senden.',
-	'imstatus_gtalk_code' => 'dein Google-Talk Code',
-	'imstatus_gtalk_get_code' => 'deinen Google-Talk Code erhälst du bei $1.',
+	'imstatus_gtalk_code' => 'dein Google-Talk-Code',
+	'imstatus_gtalk_get_code' => 'deinen Google-Talk-Code erhälst du bei $1.',
 	'imstatus_gtalk_height' => 'Höhe der Box in Pixel.',
 	'imstatus_gtalk_width' => 'Breite der Box in Pixel.',
 	'imstatus_icq_id' => 'deine ICQ-UIN',
-	'imstatus_icq_style' => 'eine Zahl zwischen 0 und 26 (ja, es gibt 27 verschiedene Stile…).',
+	'imstatus_icq_style' => 'eine Zahl zwischen 0 und 26 (ja, es gibt 27 verschiedene Stile …).',
 	'imstatus_live_code' => 'deine Live Messenger Website-ID',
 	'imstatus_live_get_code' => 'deine Live Messenger Website-ID: <strong>Das ist nicht deine E-Mail-Adresse</strong>.
 Du musst dir eine in den <a href="$1">Live Messenger Optionen</a> erstellen.

@@ -270,6 +270,13 @@ $messages['sk'] = array(
 	'googleadsense-desc' => 'Pridá do postranného panela [http://www.google.com/adsense Google AdSense]',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'googleadsense-desc' => 'Nambahkeun [http://www.google.com/adsense Google AdSense] kana bar gigir',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

@@ -195,7 +195,7 @@ $messages['de'] = array(
 	'form-desc' => 'Eine [[Special:Form|Eingabemaske]] für das Erzeugen von neuen Seiten',
 	'form' => 'Formular',
 	'formnoname' => 'Kein Formularname',
-	'formnonametext' => 'Du musst einen Formularnamen angeben, z.B. „{{ns:Special}}:Form/Formularname“.',
+	'formnonametext' => 'Du musst einen Formularnamen angeben, z. B. „{{ns:Special}}:Form/Formularname“.',
 	'formbadname' => 'Falscher Formularname',
 	'formbadnametext' => 'Es gibt kein Formular mit diesem Namen',
 	'formpattern' => '$1-Formular',
@@ -876,13 +876,15 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'form' => 'Formulário',
+	'formnonametext' => 'Tem de fornecer um nome para o formulário, tal como "Special:Form/Nomedoformulario".',
+	'formbadnametext' => 'Não existe nenhum formulário com esse nome.',
 	'formtitlepattern' => 'Adicionar Novo $1',
 	'formsave' => 'Salvar',
-	'formarticleexists' => 'Página Existe',
+	'formarticleexists' => 'A página existe',
 	'formarticleexiststext' => 'A página [[$1]] já existe.',
 	'formrequiredfieldpluralerror' => 'Os campos $1 são obrigatórios neste formulário. Por favor, preencha-os.',
 	'formsavesummary' => 'Nova página usando [[Special:Form/$1|formulário $1]]',
-	'formsaveerror' => 'Erro ao salvar formulário',
+	'formsaveerror' => 'Erro ao gravar formulário',
 	'formsaveerrortext' => "Houve um erro desconhecido ao salvar a página '$1'.",
 );
 
@@ -1105,6 +1107,32 @@ Pakipunuan ito.',
 $messages['uk'] = array(
 	'formsave' => 'Зберегти',
 	'formarticleexists' => 'Сторінка існує',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'form-desc' => '[[Special:Form|Fomet]] ad primön padis nulik',
+	'form' => 'Fomet',
+	'formnoname' => 'Fometanem nonik',
+	'formnonametext' => 'Mutol penön fometanemi, a.s. „Special:Form/Fometanem“.',
+	'formbadname' => 'Fometanem no lonöföl',
+	'formbadnametext' => 'No dabinon fomet labü nem at.',
+	'formpattern' => 'fomet-$1',
+	'formtitlepattern' => 'Läükön $1i nulik',
+	'formsave' => 'Dakipön',
+	'formarticleexists' => 'Pad dabinon',
+	'formarticleexiststext' => 'Pad at: [[$1]] ya dabinon.',
+	'formbadpagename' => 'Padanem no lonöföl',
+	'formbadpagenametext' => 'Fometanünods fa ol pepenöls jafons padanemi no lonöföl: „$1“.',
+	'formrequiredfieldpluralerror' => 'Fels: $1 paflagons pö fomet at.
+Fulükolös oni.',
+	'formrequiredfielderror' => 'Fel: $1 paflagon in fomet at.
+Fulükolös oni.',
+	'formsavesummary' => 'Pad nulik me [[Special:Form/$1|fomet: $1]]',
+	'formsaveerror' => 'Pöl pö dakip fometa',
+	'formsaveerrortext' => 'Pöl nesevädik ejenon dü dakip pada: „$1“.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

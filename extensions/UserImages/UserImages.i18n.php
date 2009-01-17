@@ -75,6 +75,16 @@ $messages['avk'] = array(
 	'userimages-noimages' => 'Meka kalvajayana ewava gan $1.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'userimages-desc' => 'Стварэньне галерэі выяваў загружаных удзельнікамі з дапамогай <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'Выявы загружаныя ўдзельнікам $1',
+	'userimages-noname' => 'Няслушнае імя ўдзельніка.',
+	'userimages-noimages' => 'Удзельнік $1 не загружаў ніякіх выяваў.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -148,6 +158,16 @@ $messages['eo'] = array(
 	'userimages-caption' => 'Bildoj alŝutitaj de $1',
 	'userimages-noname' => 'Nevalida salutnomo aŭ nenio provizita.',
 	'userimages-noimages' => '$1 havas neniujn alŝutojn de bildoj.',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'userimages-desc' => 'Generar galerías de imágenes cargadas por usuarios con <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'Imágenes cargadas por $1',
+	'userimages-noname' => 'Nombre de usuario inválido ninguno proveído.',
+	'userimages-noimages' => '$1 no tiene imágenes cargadas.',
 );
 
 /** Basque (Euskara)
@@ -496,10 +516,21 @@ $messages['sr-el'] = array(
 	'userimages-noimages' => '$1 nema poslatih slika.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'userimages-desc' => 'Moak mäd <code><nowiki><userimage /></nowiki></code> Galerien fon Bielden, do der fon do jeewielige Benutsere hoochleeden wuuden',
+	'userimages-caption' => 'Fon $1 hoochleedene Bielden',
+	'userimages-noname' => 'Uungultigen Benutsernoome of Iengoawefäild loos.',
+	'userimages-noimages' => '$1 häd neen hoochleedene Bielden.',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
 $messages['su'] = array(
+	'userimages-desc' => 'Nyieun galeri gambar-gambar nu dimuatkeun ku pamaké migunakeun <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Gambar nu dimuatkeun ku $1',
 	'userimages-noname' => 'Ngaran landihanana salah atawa mémang teu aya.',
 	'userimages-noimages' => '$1 can kungsi ngamuatkeun gambar.',

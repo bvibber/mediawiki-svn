@@ -27,10 +27,12 @@ This page could also use your help: $1.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'editsimilar-desc' => 'Extension description displayed on [[Special:Version]].',
+	'editsimilar-thankyou' => '* $1 is a username.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -300,6 +302,20 @@ Anche questa pagina potrebbe usufruire del tuo aiuto: $1.',
 	'tog-edit-similar' => 'Attiva suggerimenti di pagine simili',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'editsimilar-desc' => '利用者がページを保存した後に、類似のページを編集するよう勧める',
+	'editsimilar-thanks' => '投稿ありがとうございます。関連するこれらのページにも目を通してみてください: $1。',
+	'editsimilar-thanks-singleresult' => '投稿ありがとうございます。関連するこのページにも目を通してみてください: $1。',
+	'editsimilar-thanks-notsimilar' => '投稿ありがとうございます。これらのページにもあなたの助けが活かせるかもしれません: $1。',
+	'editsimilar-thanks-notsimilar-singleresult' => '投稿ありがとうございます。このページにもあなたの助けが活かせるかもしれません: $1。',
+	'editsimilar-thankyou' => '$1さん、投稿ありがとうございます!',
+	'editsimilar-link-disable' => '設定する',
+	'tog-edit-similar' => '類似ページの提案を有効にする',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -418,9 +434,11 @@ Aquesta pagina deuriá aver, ela tanben, besonh de vòstra ajuda : $1.',
 
 /** Polish (Polski)
  * @author Bartek Łapiński
+ * @author Matma Rex
  * @author Łukasz 'TOR' Garczewski
  */
 $messages['pl'] = array(
+	'editsimilar-desc' => 'Zachęca do edycji podobnych artykułów po zapisaniu strony',
 	'editsimilar-thanks' => 'Dzięki za edycję!
 Zerknij też na podobne artykuły: $1.',
 	'editsimilar-thanks-singleresult' => 'Dzięki za edycję!

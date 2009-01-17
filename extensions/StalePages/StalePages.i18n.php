@@ -184,12 +184,13 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'stalepages' => '古くなったページ',
-	'stalepages-desc' => '最近編集されていない[[Special:Stalepages|ページのリスト]]を生成する',
-	'stalepages-summary' => 'これは、直近$1日間に編集されていないページのリストです。',
+	'stalepages-desc' => '最近編集されていない[[Special:Stalepages|ページの一覧]]を生成する',
+	'stalepages-summary' => 'これは過去$1日間に編集されていないページの一覧です。',
 );
 
 /** Javanese (Basa Jawa)

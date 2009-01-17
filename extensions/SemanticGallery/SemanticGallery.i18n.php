@@ -116,6 +116,13 @@ $messages['lb'] = array(
 	'semanticgallery-desc' => 'Setzt a Semantic MediaWiki-Ufroen e Gallerie-Output-Format derbäi',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'semanticgallery-desc' => 'Föögt en Galerie to SMW-Affragen to',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

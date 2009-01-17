@@ -77,12 +77,13 @@ $messages['avk'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'whoiswatching' => 'Хто назірае за старонкай',
-	'whoiswatching-desc' => 'Паказвае сьпіс удзельнікаў, якія назіраюць за вікі старонкай',
+	'whoiswatching-desc' => 'Паказвае сьпіс удзельнікаў, якія назіраюць за вікі-старонкай',
 	'specialwhoiswatchingthepage' => 'Хто назірае за %s',
-	'specialwhoiswatchingusage' => 'Гэтая спэцыяльная старонка не можа выкарыстоўвацца самастойна.
+	'specialwhoiswatchingusage' => 'Гэтая спэцыяльная старонка ня можа выкарыстоўвацца самастойна.
 Калі ласка, карыстайцеся старонкай [[MediaWiki:Number_of_watching_users_pageview]] для вызначэньня ўваходнага пункту на гэту спэцыяльную старонку.',
 	'specialwhoiswatchingaddusers' => 'Дадаць удзельнікаў, якія будуць назіраюць за старонкай',
 	'specialwhoiswatchingaddbtn' => 'Дадаць выбраных удзельнікаў',
@@ -265,6 +266,19 @@ $messages['gl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Engadir os usuarios seleccionados',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'whoiswatching' => 'Wär beobachtet e Syte',
+	'whoiswatching-desc' => 'Zeigt e Lischt vu Benutzer, wu ne Syte beobachte',
+	'specialwhoiswatchingthepage' => 'Wär beobachtet %s',
+	'specialwhoiswatchingusage' => 'Die Spezialsyte cha nit elai bruucht wäre.
+Bitte definier iber d Syte [[MediaWiki:Number_of_watching_users_pageview]] e Aafangssyte fir die Spezialsyte.',
+	'specialwhoiswatchingaddusers' => 'Fieg Benutzer zum Beobachte vu dr Syte dezue',
+	'specialwhoiswatchingaddbtn' => 'Fieg Benutzer dezue',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
@@ -348,7 +362,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'whoiswatching' => '誰がページをウォッチしているのか',
 	'whoiswatching-desc' => 'ページをウォッチしている利用者の一覧を提供する',
-	'specialwhoiswatchingthepage' => '誰が%sをウォッチしているのか',
+	'specialwhoiswatchingthepage' => '誰が %s をウォッチしているのか',
 	'specialwhoiswatchingusage' => 'この特別ページは単独では利用できません。この特別ページへのエントリーポイントを定義するためには [[MediaWiki:Number_of_watching_users_pageview]] を使用してください。',
 	'specialwhoiswatchingaddusers' => '利用者のウォッチリストにページを追加',
 	'specialwhoiswatchingaddbtn' => '選択した利用者を追加',
@@ -508,6 +522,13 @@ $messages['oc'] = array(
 	'specialwhoiswatchingusage' => "Aquesta pagina especiala pòt pas èsser utilizada sola. Passatz per [[MediaWiki:Number_of_watching_users_pageview]] per definir un punt d'entrada cap a aquesta pagina especiala.",
 	'specialwhoiswatchingaddusers' => 'Apondre los utilizaires per veire la pagina',
 	'specialwhoiswatchingaddbtn' => 'Apondre los utilizaires seleccionats',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'whoiswatching' => 'Чи йæ цæст дары фарсмæ',
 );
 
 /** Polish (Polski)

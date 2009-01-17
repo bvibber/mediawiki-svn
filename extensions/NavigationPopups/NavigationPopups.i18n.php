@@ -150,6 +150,13 @@ $messages['mr'] = array(
 	'navigationpopups-desc' => 'मीडियाविकि मध्ये ल्युपिनच्या नेव्हिगेशन स्क्रीप्ट्स पॉप-अप्स लोड करतो',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'navigationpopups-desc' => 'Läädt Lupin sien Navigationsskript-Popups in MediaWiki',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

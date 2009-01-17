@@ -1368,7 +1368,12 @@ Zet uw muisaanwijzer op een recht voor een beschrijving.',
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'grouppermissions' => 'Handsam grupperettar',
+	'sortpermissions' => 'Sorter rettar',
 	'removeunusedgroups' => 'Fjern unytta grupper',
+	'grouppermissions-desc' => 'Handsam grupperettar gjennom ei [[Special:GroupPermissions|spesialsida]]',
+	'grouppermissions-desc2' => 'Utvida system for rettar',
+	'grouppermissions-desc4' => 'Lèt brukarar leggja til ekstra ting i verktøyboksen',
 	'grouppermissions-search' => 'Gruppa:',
 	'grouppermissions-dologin' => 'Logg inn',
 	'grouppermissions-dosearch' => 'Gå',
@@ -1384,6 +1389,9 @@ $messages['nn'] = array(
 	'grouppermissions-false' => 'Usant',
 	'grouppermissions-never' => 'Aldri',
 	'grouppermissions-nooldrev' => 'Feil oppstod under arkivering av konfigurasjonsfila. Ingen arkivering blei gjennomførd.',
+	'grouppermissions-sort-read' => 'Lesing',
+	'grouppermissions-sort-edit' => 'Endring',
+	'grouppermissions-sort-tech' => 'Teknisk',
 	'grouppermissions-sort-misc' => 'Ymse',
 	'grouppermissions-log-add' => 'la til gruppa «$2»',
 	'grouppermissions-log-change' => 'endra rettane for gruppa «$2»',
@@ -1391,11 +1399,17 @@ $messages['nn'] = array(
 	'grouppermissions-log-name' => 'Logg for endringar i grupperettar',
 	'grouppermissions-log-header' => 'Denne sida syner endringar i rettane til brukargrupper.',
 	'grouppermissions-needjs' => 'Åtvaring: JavaScript er slege av i nettlesaren din. Nokre funksjonar vil ikkje fungera.',
+	'grouppermissions-sp-sort' => 'Sorter rettar',
 	'grouppermissions-sp-save' => 'Lagra',
 	'grouppermissions-sp-addperm' => 'Legg til rett',
 	'grouppermissions-sp-remove' => 'fjern',
+	'right-grouppermissions' => 'Handsama grupperettar',
+	'right-viewsource' => 'Sjå kjeldekoden til verna sider',
+	'right-raw' => 'Sjå sider i råformat',
 	'right-info' => 'Sjå sideinformasjon',
+	'right-history' => 'Sjå sidehistorikk',
 	'right-search' => 'Søkja i wikien',
+	'right-contributions' => 'Sjå bidragssider',
 	'right-recentchanges' => 'Sjå siste endringar',
 	'right-edittalk' => 'Endra diskusjonssider',
 	'right-edit-new' => 'Endra sider (som ikkje er diskusjonssider)',
@@ -1933,5 +1947,12 @@ $messages['yi'] = array(
 	'grouppermissions-dosearch' => 'גיין',
 	'grouppermissions-searchlabel' => 'זוכן גרופע',
 	'right-search' => 'זוכן אין וויקי',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'grouppermissions-never' => '从不',
 );
 

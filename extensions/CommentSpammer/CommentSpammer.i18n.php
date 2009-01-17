@@ -116,6 +116,13 @@ $messages['eo'] = array(
 	'cspammer-log-page' => 'Protokolo de komentaj spamistoj',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'commentspammer-save-blocked' => 'Zure IP helbidea spam egile batena den susmoa hartu diogu eta ondorioz, orrialdean egindako aldaketak ez dira gorde. [[Special:UserLogin|Saioa hasi edo kontu bat sortu]] hau ekiditeko.',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku
@@ -487,5 +494,17 @@ $messages['vi'] = array(
 [http://www.projecthoneypot.org/search_ip.php?ip=$4 Xem chi tiết], hoặc [[Special:Blockip/$4|cấm]].',
 	'cspammerlogpagetext' => 'Bản lưu các sửa đổi đã được cho phép hoặc từ chối dựa trên nguồn đó có phải là một spammer chú thích đã biết hay không.',
 	'cspammer-log-page' => 'Nhật trình Spammer chú thích',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'commentspammer-save-blocked' => 'Ladet-IP olik paniludon as küpetaspaman; kodü atos, pad no pedakipon.
+[[Special:UserLogin|Nunädolös oli u jafolös kali]] ad vitön atosi.',
+	'commentspammer-desc' => 'Refudon votükamis de küpetaspamans peniludöl in blägalised-DNS.',
+	'commentspammer-log-msg' => 'votükam de [[Special:Contributions/$1|$1]] ad [[:$2]].',
+	'cspammerlogpagetext' => 'Lised votükamas, kels pezepons u perefudons stabü sev, das fonät äbinon (u no) küpetaspaman sevädik',
+	'cspammer-log-page' => 'Jenotalised tefü küpetaspamans',
 );
 

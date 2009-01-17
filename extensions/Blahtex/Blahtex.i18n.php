@@ -501,6 +501,7 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'math_noblahtex' => 'blahtex konnte in $1 nicht ausgeführt werden.',
@@ -536,9 +537,9 @@ Vielleicht magst du „$2“ stattdessen verwenden?',
 	'math_MismatchedBeginAndEnd' => 'Die öffnende Anweisung „$1“ entspricht nicht der schließenden „$2“',
 	'math_MisplacedLimits' => 'Die Anweisung „$1“ kann nur hinter einem mathematischen Operator vorkommen.
 Überlege es dir „\\mathop“ zu verwenden.',
-	'math_MissingCommandAfterNewcommand' => 'Fehlender oder ungültiger Befehlsname nach "\\newcommand".
+	'math_MissingCommandAfterNewcommand' => 'Fehlender oder ungültiger Befehlsname nach „\\newcommand“.
 Es muss genau ein Befehl definiert werden;
-er muss mit einem umgekehrten Schrägstrich (Backslash) "\\" beginnen und darf nur alphabetische Zeichen enthalten.',
+er muss mit einem umgekehrten Schrägstrich (Backslash) „\\“ beginnen und darf nur alphabetische Zeichen enthalten.',
 	'math_MissingDelimiter' => 'Fehlendes Trennzeichen hinter „$1“',
 	'math_MissingOpenBraceAfter' => 'Öffnende Klammer „{“ hinter „$1“ fehlt',
 	'math_MissingOpenBraceAtEnd' => 'Öffnende Klammer „{“ am Ende der Eingabe fehlt',
@@ -638,6 +639,9 @@ $messages['eu'] = array(
 	'math_CannotWriteTexFile' => 'Ezin da tex fitxategia idatzi',
 	'math_InvalidColour' => '"$1" kolorea ez da baliozkoa',
 	'math_MismatchedBeginAndEnd' => '"$1" eta "$2" komandoek ez datoz bat',
+	'math_UnexpectedNextCell' => '"&" komandoa "\\begin ... \\end" blokearen barruan egon daiteke bakarrik',
+	'math_UnexpectedNextRow' => '"\\\\" komandoa "\\begin ... \\end" blokearen barruan egon daiteke bakarrik',
+	'math_UnrecognisedCommand' => '"$1" komandoa ezezaguna da',
 );
 
 /** Persian (فارسی)

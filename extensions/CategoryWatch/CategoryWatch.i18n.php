@@ -125,6 +125,20 @@ Toto je oznámení, že $3 uživatel $4 $5.',
 	'categorywatch-catsub' => 'odstranil $1 z kategorie $2',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'categorywatch-desc' => "Yn hysbysu defnyddwyr sy'n dilyn hynt rhyw gategori bod aelodaeth y categori wedi newid",
+	'categorywatch-emailbody' => 'Cyfarchion $1. Anfonwyd y neges hon atoch am fod y categori "$2" ar eich rhestr gwylio.
+Diben y neges yw eich hysbysu bod y defnyddiwr $4 $5 am $3.',
+	'categorywatch-emailsubject' => 'Symudiadau ar y categori "$1"',
+	'categorywatch-catmovein' => "wedi symud $1 o'r categori $3 ac i'r categori $2",
+	'categorywatch-catmoveout' => "wedi symud $1 o'r categori $2 ac i'r categori $3",
+	'categorywatch-catadd' => "wedi ychwanegu $1 i'r categori $2",
+	'categorywatch-catsub' => "wedi tynnu $1 o'r categori $2",
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
@@ -337,6 +351,20 @@ Dëse Message informéiert iech datt den $3 Auer de Benotzer $4 $5.',
 	'categorywatch-catsub' => '$1 aus der Kategorie $2 erausgeholl huet',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'categorywatch-desc' => 'Проширување на функциите на набљудувана листа, известување за промени врз членови од набљудувани категории',
+	'categorywatch-emailbody' => 'Здраво $1, ја добивте оваа порака бидејќи ја набљудувате категоријата "$2".
+Оваа порака ве известува дека на $3 корисникот $4 $5.',
+	'categorywatch-emailsubject' => 'Активности поврзани со набљудувана категорија "$1"',
+	'categorywatch-catmovein' => 'преместено $1 во категорија $2 од $3',
+	'categorywatch-catmoveout' => 'преместено $1 од категорија $2 во $3',
+	'categorywatch-catadd' => 'додадено $1 во категорија $2',
+	'categorywatch-catsub' => 'избришано $1 од категорија $2',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -482,6 +510,20 @@ Toto je oznam, že $3 používateľ $4 $5.',
 	'categorywatch-catmoveout' => 'presunul $1 z kategórie $2 do $3',
 	'categorywatch-catadd' => 'pridal $1 do kategórie $2',
 	'categorywatch-catsub' => 'odstránil $1 z kategórie $2',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'categorywatch-desc' => 'Ärwiedert ju Beooboachtengslieste, sodät me Waiwiesengen kricht, wan Sieden in beooboachtede Kategorien iendrain of deeruut wächhoald wäide.',
+	'categorywatch-emailbody' => 'Moin $1, du krichst disse Ättergjucht, wült du ju Kategorie „$2“ beooboachtest.
+Disse Ättergjucht mäldet die, dät Benutser $4 uum $3 $5.',
+	'categorywatch-emailsubject' => 'Beoarbaidenge beträffend beooboachtede Kategorie "$1"',
+	'categorywatch-catmovein' => '$1 in Kategorie $2 fon $3 ferschäuwen häd',
+	'categorywatch-catmoveout' => '$1 fon Kategorie $2 in $3 ferschäuwen häd',
+	'categorywatch-catadd' => '$1 tou Kategorie $2 bietouföiged häd',
+	'categorywatch-catsub' => '$1 uut Kategorie $2 wächhoald häd',
 );
 
 /** Swedish (Svenska)

@@ -1446,10 +1446,10 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird [[Special:Boa
 	'boardvote_nosession' => 'Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden.
 Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:BoardVote]]</nowiki>.
 Wählen dürfen Benutzer, deren Benutzerkonto mindestens $1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} vor dem $2 aufweist, und die mindestens $3 {{PLURAL:$3|Bearbeitung|Bearbeitungen}} zwischen $4 und $5 getätigt haben.',
-	'boardvote_notloggedin' => 'Du bist nicht eingeloggt.
-Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} vor dem $2 getätigt {{PLURAL:$1|wurde|wurden}}, und mit dem mindestens $3 {{PLURAL:$3|Bearbeitung|Bearbeitungen}} zwischen $4 und $5 getätigt {{PLURAL:$1|wurde|wurden}}.',
+	'boardvote_notloggedin' => 'Du bist nicht angemeldet.
+Um abstimmen zu können, musst du angemeldet sein und ein Benutzerkonto verwenden, mit dem mindestens $1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} vor dem $2 getätigt {{PLURAL:$1|wurde|wurden}}, und mit dem mindestens $3 {{PLURAL:$3|Bearbeitung|Bearbeitungen}} zwischen $4 und $5 getätigt {{PLURAL:$1|wurde|wurden}}.',
 	'boardvote_notqualified' => 'Du bist nicht berechtigt an dieser Wahl teilzunehmen.
-Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem mindestens $1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} vor dem $2 getätigt {{PLURAL:$1|wurde|wurden}}, und mit dem mindestens $3 {{PLURAL:$3|Bearbeitung|Bearbeitungen}} zwischen $4 und $5 getätigt {{PLURAL:$1|wurde|wurden}}.',
+Um abstimmen zu können, musst du angemeldet sein und ein Benutzerkonto verwenden, mit dem mindestens $1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} vor dem $2 getätigt {{PLURAL:$1|wurde|wurden}}, und mit dem mindestens $3 {{PLURAL:$3|Bearbeitung|Bearbeitungen}} zwischen $4 und $5 getätigt {{PLURAL:$1|wurde|wurden}}.',
 	'boardvote_novotes' => 'Bislang hat noch keiner abgestimmt.',
 	'boardvote_time' => 'Zeit',
 	'boardvote_user' => 'Benutzer',
@@ -4080,7 +4080,9 @@ $messages['lez'] = array(
  * @author Malafaya
  */
 $messages['lfn'] = array(
+	'boardvote_time' => 'Tempo',
 	'boardvote_user' => 'Usor',
+	'boardvote_days' => 'Dias',
 	'boardvote_dumplink' => 'Clica asi',
 	'boardvote_submit' => 'Oce',
 	'boardvote_edits_many' => 'multe',
@@ -4201,6 +4203,7 @@ $messages['loz'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Hugo.arg
  * @author Matasg
  */
@@ -4239,12 +4242,12 @@ Paskutinė koduota versija žemiau. Ji bus viešai rodoma [[Special:BoardVote/du
 	'boardvote_needadmin' => 'Tik rinkimų administratoriai gali vykdyti šią operaciją.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Vikimedijos tarybos rinkimai</a>:  Balsavimas vyksta iki liepos 22 June',
 	'boardvote_notstarted' => 'Balsavimas dar neprasidėjo',
-	'boardvote_closed' => 'Balsavimas uždarytas, žiūrėkite [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En rinkimų puslapį rezultatams].',
+	'boardvote_closed' => 'Balsavimas baigtas, žiūrėkite [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En rinkimų puslapį rezultatams].',
 	'boardvote_edits_many' => 'daug',
 	'boardvote_blocked' => 'Atsiprašome, jūs buvote užblokuotas wiki, kurioje užsiregistravote. Užblokuotiems naudotojams nėra leidžiama balsuoti.',
 	'boardvote_welcome' => "Sveiki '''$1'''!",
 	'go_to_board_vote' => 'Wikimedia tarybos rinkimai 2007',
-	'boardvote_redirecting' => 'Pagerintam saugumui ir aiškumui, mes balsavimą leidžiame išoriniame, nepriklausomai kontroliuojamame serveryje.
+	'boardvote_redirecting' => 'Kad būtų pagerintas saugumas ir aiškumas, mes balsavimą leidžiame išoriniame, nepriklausomai kontroliuojamame serveryje.
 
 Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [$1 Spauskite čia], jei norite patekti dabar.
 

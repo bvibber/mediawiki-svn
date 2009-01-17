@@ -150,6 +150,7 @@ Nevhodné soubory budou okmažitě smazány, vizte [[{{MediaWiki:Multipleupload-
 /** German (Deutsch)
  * @author Purodha
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'multipleupload' => 'Dateien hochladen',
@@ -160,7 +161,7 @@ $messages['de'] = array(
 	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
 	'multipleupload-text' => "Gleichzeitiges Hochladen mehrerer Dateien.
 
-Wähle 'Browse' und wähle jede Datei aus, die du hochladen möchtest. Du kannst gleichzeitig zwischen 1 und $1 Dateien hochladen.
+Wähle „Browse“ und wähle jede Datei aus, die du hochladen möchtest. Du kannst gleichzeitig zwischen 1 und $1 Dateien hochladen.
 
 Du kannst wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für deine Dateien.
 
@@ -354,6 +355,27 @@ Pode introducir un '''Nome de ficheiro de destino''' opcional e fornecer un '''R
 Os ficheiros inapropiados eliminaranse inmediatamente: vexa a [[{{MediaWiki:Multipleupload-page}}|política de eliminación de ficheiros]].",
 	'multiupload-fileuploaded' => 'Ficheiro cargado.',
 	'multiupload-toolbox' => 'Cargar múltiples arquivos',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'multipleupload' => 'Dateie uffelade',
+	'multipleupload-desc' => 'Erlaubt s [[Special:MultipleUpload|Uffelade vu mehrere Dateie]] in einere Aktion',
+	'multipleupload-ignoreallwarnings' => "Ignorier '''alli Warnige''' un spychere di Dateie.",
+	'multipleupload-saveallfiles' => 'Alli Dateie spychere',
+	'multipleupload-addresswarnings' => 'Bitte jedi Warnig bearbeite un uusruume, voreb Du die Dateie nomoluffeladesch.',
+	'multipleupload-page' => '{{ns:project}}:Leschrichtlinie',
+	'multipleupload-text' => "Mehreri Dateie glyychzytig uffelade.
+
+Wehl 'Browse' un wehl jedi Datei us, wu Du wit uffelade. Du chasch glyychzytig zwische 1 un $1 Dateie uffelade.
+
+Du chasch au ne '''Ziil-Dateiname''' vorgee un e '''Bschryybig''' fir Dyyni Dateie.
+
+Dateie, wu nit geignet sin, wäre sofort glescht, lueg d [[{{MediaWiki:Multipleupload-page}}|Leschrichtlinie]].",
+	'multiupload-fileuploaded' => 'Datei uffeglade.',
+	'multiupload-toolbox' => 'Uffelade vu mehrere Dateie',
 );
 
 /** Hawaiian (Hawai`i)
@@ -990,6 +1012,7 @@ Nevhodné súbory budú okamžite zmazané, pozri [[{{MediaWiki:Multipleupload-p
  */
 $messages['stq'] = array(
 	'multipleupload' => 'Doatäie hoochleede',
+	'multipleupload-desc' => 'Ferlööwet dät [[Special:MultipleUpload|Hoochleeden fon moorere Doatäie]] in een Aktion',
 	'multipleupload-ignoreallwarnings' => "Ignorier '''aal Woarschauengen''' un spiekerje do Doatäie",
 	'multipleupload-saveallfiles' => 'Aal Doatäie spiekerje',
 	'multipleupload-addresswarnings' => 'Älke Woarschauenge anwiese foar dät fonnäien Hoochleeden fon Doatäie.',

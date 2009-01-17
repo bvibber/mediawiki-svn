@@ -44,6 +44,14 @@ $messages['br'] = array(
 	'catfeed-desc' => 'Implijout a ra bitoù evit boueta an degasadennoù nevez. Sevel a ra stumm ur bajenn, ar pezh zo emsav-tre evit Wikinews.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'catfeed-desc' => 'Koristi bitove iz fida nedavnih promjena.
+Pravi verziju in-page, naročito korisna za Wikivijesti.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -159,6 +167,14 @@ $messages['mr'] = array(
 	'catfeed-desc' => 'अलीकडील बदलांमधील फीड्स वापरते. पानातच आवृत्ती तयार होते, विकिन्युज साठी विशेष उपयुक्त.',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'catfeed-desc' => 'Bruukt Delen vun de Toletzt-Ännert-Newsfeeds.
+Maakt en inbunnen Version; besünners praktisch för Wikinews.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -232,6 +248,14 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'catfeed-desc' => 'Používa kúsky z kanálov posledných zmien. Vytvorí verziu v rámci stránky. Obzvlášť užitočné pre Wikinews.',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'catfeed-desc' => 'Nutset Deele fon ju Lääste-Annerengen-Newsfeeds.
+Moakjen fon ne ienbäädede Version; besunners foar Wikinews nutselk.',
 );
 
 /** Swedish (Svenska)

@@ -484,6 +484,17 @@ $messages['tg-cyrl'] = array(
 	'pageby-contributors' => 'Ҳиссагузорон:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'pageby-desc' => 'Nagpapakita ng mga tagapag-ambag sa loob ng kahanayan sa ibabaw ng isang pahina ng wiki na gumagamit ng tatak na <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Pahinang nilikha ni $1, $2',
+	'pageby-last' => 'Huling <a href="$3">binago</a> ni $1, $2',
+	'pageby-contributors' => 'Mga tagapag-ambag:',
+	'pageby-anon' => '<i>hindi nagpapakilala</i>',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

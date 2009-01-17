@@ -339,11 +339,27 @@ $messages['oc'] = array(
 	'searchbox-namespaces' => 'Espacis de nom :',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'searchbox-search' => 'ସନ୍ଧାନ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
 $messages['os'] = array(
 	'searchbox-search' => 'Агур',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'searchbox-search' => 'Szukaj',
+	'searchbox-go' => 'Idź',
+	'searchbox-namespaces' => 'Przestrzenie nazw',
 );
 
 /** Pashto (پښتو)
@@ -371,6 +387,16 @@ $messages['ro'] = array(
 	'searchbox-namespaces' => 'Spaţiu de nume:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'searchbox-desc' => "Permitte l'inglusione de le schermete de ricerche",
+	'searchbox-search' => 'Cirche',
+	'searchbox-go' => 'Veje',
+	'searchbox-namespaces' => 'Namespace:',
+);
+
 /** Russian (Русский)
  * @author Rubin
  */
@@ -387,6 +413,16 @@ $messages['sk'] = array(
 	'searchbox-search' => 'Hľadať',
 	'searchbox-go' => 'Vykonať',
 	'searchbox-namespaces' => 'Menné priestory:',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'searchbox-desc' => 'Moaket dät Ienbienden muugelk fon n Säikformular',
+	'searchbox-search' => 'Säik',
+	'searchbox-go' => 'OK',
+	'searchbox-namespaces' => 'Noomensruume:',
 );
 
 /** Swedish (Svenska)

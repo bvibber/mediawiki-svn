@@ -181,6 +181,7 @@ $messages['bcc'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'youtubeauthsub' => 'Загрузка відэафайла YouTube',
@@ -189,7 +190,7 @@ $messages['be-tarask'] = array(
 	'youtubeauthsub_title' => 'Назва',
 	'youtubeauthsub_description' => 'Апісаньне',
 	'youtubeauthsub_password' => 'Пароль у YouTube',
-	'youtubeauthsub_username' => 'Назва ўдзельніка ў YouTube',
+	'youtubeauthsub_username' => 'Імя ўдзельніка ў YouTube',
 	'youtubeauthsub_keywords' => 'Ключавыя словы',
 	'youtubeauthsub_category' => 'Катэгорыя',
 	'youtubeauthsub_submit' => 'Даслаць',
@@ -202,17 +203,17 @@ YouTube можа патрабавацца пэўны час, каб апраца
 
 Каб дадаць Вашае відэа на вікі-старонку, устаўце на старонку наступны код:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'Каб загрузіць відэа, Вам неабходна спачатку увайсьці ў YouTube.',
+	'youtubeauthsub_authsubinstructions' => 'Каб загрузіць відэа, Вам неабходна спачатку ўвайсьці ў YouTube.',
 	'youtubeauthsub_uploadhere' => 'Загрузіць Ваша відэа адсюль:',
 	'youtubeauthsub_uploadbutton' => 'Загрузіць',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Праглядзець гэтае відэа [http://www.youtube.com/watch?v=$1 тут]',
+[http://www.youtube.com/watch?v=$1 Праглядзець гэтае відэа]',
 	'youtubeauthsub_summary' => 'Загрузка відэа YouTube',
 	'youtubeauthsub_uploading' => 'Ваша відэа загружаецца.
 Калі ласка, пачакайце.',
-	'youtubeauthsub_viewpage' => 'Таксама, Вы можаце паглядзець Вашае відэа [[$1|тут]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Калі ласка, увядзіце адно ці некалькі ключавых слоў.',
+	'youtubeauthsub_viewpage' => 'Таксама, Вы можаце [[$1|паглядзець Вашае відэа]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Калі ласка, увядзіце адно ці некалькі ключавых словаў.',
 	'youtubeauthsub_jserror_notitle' => 'Калі ласка, увядзіце назву відэа.',
 	'youtubeauthsub_jserror_nodesc' => 'Калі ласка, увядзіце апісаньне відэа.',
 );
@@ -1720,6 +1721,7 @@ $messages['os'] = array(
 	'youtubeauthsub_uploadhere' => 'Дæ видео ам сæвæр:',
 	'youtubeauthsub_uploadbutton' => 'Сæвæр',
 	'youtubeauthsub_jserror_notitle' => 'Дæ хорзæхæй, дæ видеойæн сæргонд ныффысс.',
+	'youtubeauthsub_jserror_nodesc' => 'Дæ хорзæхæй, дæ видео сфысс.',
 );
 
 /** Polish (Polski)
@@ -1917,7 +1919,7 @@ $messages['ru'] = array(
 	'youtubeauthsub_tokenerror' => 'ошибка создания токена авторизации, попробуйте обновить страницу.',
 	'youtubeauthsub_success' => "Поздравляем!
 Ваше видео загружено.
-Чтобы просмотреть ваше видео, нажмите <a href='http://www.youtube.com/watch?v=$1'>здесь</a>.
+<a href='http://www.youtube.com/watch?v=$1'>Просмотреть видео</a>.
 YouTube, возможно, будет некоторое время обрабатывать ваше видео, поэтому оно может быть недоступно прямо сейчас.
 
 Чтобы добавить ваше видео на вики-страницу, вставьте на страницу следующий код:
@@ -1927,7 +1929,7 @@ YouTube, возможно, будет некоторое время обраба
 	'youtubeauthsub_uploadbutton' => 'Загрузить',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Это видео может быть просмотрено [http://www.youtube.com/watch?v=$1 здесь]',
+[http://www.youtube.com/watch?v=$1 Просмотреть это видео]',
 	'youtubeauthsub_summary' => 'Загрузка видео YouTube',
 	'youtubeauthsub_uploading' => 'Ваше видео загружается.
 Пожалуйста, подождите.',
@@ -2509,6 +2511,9 @@ Có thể coi video này [http://www.youtube.com/watch?v=$1 tại đây].',
 $messages['vo'] = array(
 	'youtubeauthsub_title' => 'Tiäd',
 	'youtubeauthsub_description' => 'Bepenam',
+	'youtubeauthsub_password' => 'Letavöd (YouTube)',
+	'youtubeauthsub_username' => 'Gebananem (YouTube)',
+	'youtubeauthsub_keywords' => 'Kikavöds',
 	'youtubeauthsub_category' => 'Klad',
 	'youtubeauthsub_submit' => 'Sedön',
 	'youtubeauthsub_uploadbutton' => 'Löpükön',

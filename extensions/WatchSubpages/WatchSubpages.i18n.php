@@ -77,6 +77,22 @@ P'añader una páxina, activa'l caxellu d'al llau y calca n'\"Añader páxines\"
 Cuando quieras activar o desactivar múltiples páxines, caltener pulsada la tecla de mayúscules permítete seleicionar elementos consecutivos clicando nel postreru que quieras clicar.",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'watchsubpages' => 'Назіраць за падстаронкамі',
+	'watchsubpages-addedtowatchlist' => 'Наступныя старонкі былі дададзеныя ў Ваш сьпіс назіраньня.',
+	'watchsubpages-addtitles' => 'Дадаць старонкі',
+	'watchsubpages-addtitlestowatchlist' => 'Дадаць старонкі ў сьпіс назіраньня',
+	'watchsubpages-desc' => 'Хуткае [[Special:WatchSubpages|даданьне ўсіх падстаронак]] любой старонкі ў сьпіс назіраньня',
+	'watchsubpages-form' => 'Выберыце старонкі са сьпіса ўнізе, якія трэба дадаць у Ваш сьпіс назіраньня.
+Каб дадаць старонку, пазначце поле каля старонкі, і націсьніце «Дадаць старонкі».
+
+Калі Вы жадаеце дадаць болей адной старонкі, карыстайцеся клявішай Shift, утрымліваючы якую пазначце першую і апошнюю старонкі з дыяпазону, які жадаеце дадаць ў сьпіс назіраньня.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -155,9 +171,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Fluence
  */
 $messages['es'] = array(
+	'watchsubpages' => 'Vigilar subpáginas',
+	'watchsubpages-addedtowatchlist' => 'Lo siguiente ha sido agregado a su lista de vigilancia.',
 	'watchsubpages-addtitles' => 'Agregar páginas',
 	'watchsubpages-addtitlestowatchlist' => 'Agregar páginas a la lista de seguimiento',
 );
@@ -289,10 +308,18 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'watchsubpages' => 'サブページのウォッチ',
+	'watchsubpages-addedtowatchlist' => '以下をあなたのウォッチリストに追加しました。',
 	'watchsubpages-addtitles' => 'ページの追加',
+	'watchsubpages-addtitlestowatchlist' => 'ページ群をウォッチリストに追加',
+	'watchsubpages-desc' => 'ウォッチリストに素早く、あるページの[[Special:WatchSubpages|すべてのサブページを追加する]]',
+	'watchsubpages-form' => 'あなたのウォッチリストに加えたいページを以下で選んでください。ページを追加するには、隣のボックスにチェックをいれて、「ページの追加」をクリックしてください。
+
+複数のページをチェックあるいはチェック解除する場合は、シフトキーを押しながら、選択する範囲の始点と終点のチェックボックスをクリックすることで、その範囲の連続するすべてのボックスを選択できます。',
 );
 
 /** Javanese (Basa Jawa)
@@ -470,17 +497,25 @@ Jeśli chcesz wybrać więcej niż jedną stronę, możesz posłużyć się klaw
  */
 $messages['ps'] = array(
 	'watchsubpages' => 'وړوکي مخونه کتل',
-	'watchsubpages-addedtowatchlist' => 'دا لانديني مخونه ستاسو په کتلي لړليک کې ورګډ شوي.',
+	'watchsubpages-addedtowatchlist' => 'دا لانديني مخونه ستاسو په کتنلړليک کې ورګډ شوي.',
 	'watchsubpages-addtitles' => 'مخونه ورګډول',
-	'watchsubpages-addtitlestowatchlist' => 'کتلي لړليک کې مخونه ورګډول',
-	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
+	'watchsubpages-addtitlestowatchlist' => 'کتنلړليک کې مخونه ورګډول',
+	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتنلړليک ته ورګډ شي',
 );
 
 /** Portuguese (Português)
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'watchsubpages' => 'Vigiar subpáginas',
+	'watchsubpages-addedtowatchlist' => 'As seguintes foram adicionadas à sua lista de páginas vigiadas.',
 	'watchsubpages-addtitles' => 'Adicionar páginas',
+	'watchsubpages-addtitlestowatchlist' => 'Adicionar páginas à lista de páginas vigiadas',
+	'watchsubpages-desc' => 'Rapidamente [[Special:WatchSubpages|adicione todas as subpáginas]] de uma página à sua lista de páginas vigiadas',
+	'watchsubpages-form' => 'Seleccione as páginas a adicionar à sua lista de páginas vigiadas abaixo.
+Para adicionar uma página, marque a caixa junto a esta, e clique em "Adicionar páginas".
+
+Quando marca ou desmarca múltiplas páginas, premindo a tecla "Shift" pode seleccionar caixas de marcação consecutivas, clicando em cada extremo do intervalo a seleccionar.',
 );
 
 /** Romanian (Română)
@@ -523,6 +558,17 @@ Pri označovaní alebo odznačovaní viacerých stránok môžete držaním klá
 $messages['sr-ec'] = array(
 	'watchsubpages' => 'Надгледај подстранице',
 	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додај све подстранице]] странице на списак надгледања',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'watchsubpages' => 'Beooboachtje Unnersieden',
+	'watchsubpages-addedtowatchlist' => 'Do foulgjende Sieden wuuden dien Beooboachtengslieste bietouföiged.',
+	'watchsubpages-addtitles' => 'Sieden bietouföigje',
+	'watchsubpages-addtitlestowatchlist' => 'Sieden tou ju Beooboachtengssiede bietouföigje',
+	'watchsubpages-desc' => 'Gau [[Special:WatchSubpages|Bietouföigjen fon aal Unnersieden]] fon ne Siede tou ju Beooboachtengslieste',
 );
 
 /** Sundanese (Basa Sunda)

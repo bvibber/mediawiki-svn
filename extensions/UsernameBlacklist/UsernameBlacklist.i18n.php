@@ -1474,6 +1474,7 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'blacklistedusername' => 'Gebananem in blägalised',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Ked|Keds}} sököl blägaliseda gebananemas no {{PLURAL:$1|lonöfon|lonöfons}}; gudükumolös {{PLURAL:$1|oni|onis}} bü dakip:',
 	'right-uboverride' => 'Nedemön blägalisedi gebananemas',
 );
 

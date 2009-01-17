@@ -1350,6 +1350,16 @@ $messages['jv'] = array(
 	'fundraiserstats-tab-maximums' => 'Paling akèh (USD)',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'contrib-hist-name' => 'სახელი',
+	'contribstats-day' => 'დღე',
+	'contribstats-month' => 'თვე',
+	'fundraiserstats-date' => 'თარიღი',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
@@ -1897,6 +1907,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'contrib-hist-name' => 'نوم',
 	'contrib-hist-date' => 'وخت او نېټه',
 	'fundraiserstats-date' => 'نېټه',
 );

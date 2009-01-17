@@ -113,6 +113,13 @@ $messages['lb'] = array(
 	'jskit-desc' => 'Integréiert JS-Kit-Toolen a Wiki-Säiten',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'jskit-desc' => 'Föögt JS-Kit-Warktüüch för Wikisieden in',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -134,11 +141,26 @@ $messages['oc'] = array(
 	'jskit-desc' => 'Intègra los epleches js-kit dins las paginas del wiki',
 );
 
+/** Polish (Polski)
+ * @author Matma Rex
+ */
+$messages['pl'] = array(
+	'jskit-desc' => 'Integruje narzędzia js-kit na stronę wiki',
+);
+
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'jskit-desc' => 'Integra as ferramentas js-kit a uma página wiki',
+	'jskit-desc' => 'Integra as ferramentas js-kit numa página wiki',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'jskit-desc' => 'Indegre le tool js-kit sus a le pàggene de Uicchi',
 );
 
 /** Slovak (Slovenčina)

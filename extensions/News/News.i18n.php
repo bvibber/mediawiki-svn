@@ -156,6 +156,13 @@ $messages['mr'] = array(
 	'newsextension-desc' => 'एखाद्या विकिवरील पानांमध्ये झालेले अलीकडील बदल आरएसएस फीड किंवा ऍटम फीड च्या स्वरुपात दर्शविते',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'newsextension-desc' => 'Wiest anpasst „Toletzt ännert“ inbunnen in Wikisieden oder as RSS- oder Atom-Feed.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

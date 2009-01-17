@@ -398,6 +398,16 @@ $messages['tg-cyrl'] = array(
 	'protectsection_forbidden' => 'Мамнӯъ',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'protectsection_desc' => 'Nagpapahintulot sa mga pinapayagang mga tagagamit na isanggalang ang mga bahagi ng isang pahina sa pamamagitan ng tatak na <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Sinubukan mong magdagdag o magtanggal ng isang nakasanggalang na seksyon',
+	'protectsection_modify' => 'Sinubukan mong baguhin ang nakasanggalang na teksto',
+	'protectsection_forbidden' => 'Ipinagbabawal',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

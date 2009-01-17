@@ -39,6 +39,7 @@ Warning: the refresh may take a while on larger wikis.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Darth Kule
  * @author Purodha
  * @author Siebrand
  */
@@ -65,6 +66,7 @@ Text displayed in the subtitle below the actual page title once the user has pre
 	'refreshspecial-reconnected' => 'Displayed if the connection to the database was lost for some reason but the extension was able to reconnect to it.',
 	'refreshspecial-reconnecting' => 'Displayed if the connection to the database was lost for some reason.',
 	'refreshspecial-total-display' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button if the refreshing was done successfully. $1 is the amount of special pages refreshed, $2 is the amount of database rows touched, $3 is the time how long it took to refresh all the selected special pages and $4 is the complete time of the script run.',
+	'right-refreshspecial' => '{{doc-right}}',
 );
 
 /** Arabic (العربية)
@@ -454,21 +456,22 @@ $messages['it'] = array(
 	'refreshspecial' => 'Aggiorna pagine speciali',
 	'refreshspecial-desc' => "Permette l'[[Special:RefreshSpecial|aggiornamento manuale]] di pagine speciali",
 	'refreshspecial-title' => 'Aggiorna pagine speciali',
-	'refreshspecial-help' => "Questa pagina speciale permette di aggiornare manualmente le pagine speciali. Quando hai scelto tutte le pagine che vuoi aggiornare, fai clic sul pulsante Aggiorna per effettuarlo. Attenzione: l'aggiornamento potrebbe richiedere un po' di tempo sulle wiki più grandi.",
+	'refreshspecial-help' => 'Questa pagina speciale permette di aggiornare manualmente le pagine speciali. Quando hai scelto tutte le pagine che vuoi aggiornare, fai clic sul pulsante "Aggiorna pagine selezionate" per aggiornare le pagine speciali selezionate. Attenzione: l\'aggiornamento potrebbe richiedere un po\' di tempo sulle wiki più grandi.',
 	'refreshspecial-button' => 'Aggiorna pagine selezionate',
 	'refreshspecial-fail' => 'Seleziona almeno una pagina speciale da aggiornare.',
 	'refreshspecial-refreshing' => 'aggiornamento pagine speciali',
 	'refreshspecial-success-subtitle' => 'aggiornamento pagine speciali',
 	'refreshspecial-choice' => 'aggiornamento pagine speciali',
 	'refreshspecial-js-disabled' => '(<i>Non è possibile selezionare tutte le pagine se JavaScript è disattivato</i>)',
-	'refreshspecial-select-all-pages' => 'seleziona tutte le pagine',
+	'refreshspecial-select-all-pages' => 'Seleziona tutte le pagine',
 	'refreshspecial-link-back' => "Torna all'estensione",
 	'refreshspecial-none-selected' => 'Non è stata selezionata alcuna pagina speciale. Ripristino alla selezione di default.',
 	'refreshspecial-db-error' => 'Fallito: errore del database',
 	'refreshspecial-no-page' => 'Pagina speciale inesistente',
 	'refreshspecial-reconnected' => 'Riconnesso.',
 	'refreshspecial-reconnecting' => 'Connessione fallita, prossimo tentativo fra 10 secondi...',
-	'refreshspecial-total-display' => '$1 pagine aggiornate per un totale di $2 linee in un tempo di $3 (il tempo totale di esecuzione dello script è di $4)',
+	'refreshspecial-total-display' => '$1 {{PLURAL:$1|pagina aggiornata|pagine aggiornate}} per un totale di $2 {{PLURAL:$1|linea|linee}} in un tempo di $3 (il tempo totale di esecuzione dello script è di $4)',
+	'right-refreshspecial' => 'Aggiorna pagine speciali',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -679,14 +682,16 @@ Atencion : l’actualizacion pòt préne un cèrt temps sus de wikis que dispaus
  * @author Derbeth
  * @author Jwitos
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'refreshspecial' => 'Odśwież strony specjalne',
-	'refreshspecial-desc' => 'Umożliwia [[Special:RefreshSpecial|za pomocą strony specjalnej ręcznie odświeżać]] strony specjalne',
+	'refreshspecial-desc' => 'Umożliwia [[Special:RefreshSpecial|za pomocą strony specjalnej ręcznie odświeżać]] zawartość innych stron specjalnych',
 	'refreshspecial-title' => 'Odśwież strony specjalne',
 	'refreshspecial-button' => 'Odśwież wybrane',
 	'refreshspecial-fail' => 'Proszę zaznaczyć co najmniej jedną stronę specjalną do odświeżenia.',
 	'refreshspecial-refreshing' => 'odświeżanie stron specjalnych',
+	'refreshspecial-skipped' => 'nieważne, pominięte',
 	'refreshspecial-success-subtitle' => 'odświeżanie stron specjalnych',
 	'refreshspecial-choice' => 'odświeżanie stron specjalnych',
 	'refreshspecial-js-disabled' => '(<i>Nie możesz wybrać wszystkich stron, gdy JavaScript jest wyłączony</i>)',
@@ -697,6 +702,7 @@ $messages['pl'] = array(
 	'refreshspecial-no-page' => 'Nie ma takiej strony specjalnej',
 	'refreshspecial-reconnected' => 'Ponownie połączono.',
 	'refreshspecial-reconnecting' => 'Połączenie nie powiodło się, ponowne połączenie nastąpi za 10 sekund...',
+	'right-refreshspecial' => 'Odśwież strony specjalne',
 );
 
 /** Portuguese (Português)

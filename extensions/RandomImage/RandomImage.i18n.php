@@ -103,6 +103,13 @@ $messages['gl'] = array(
 	'randomimage-desc' => 'Proporciona un seleccionador multimedia ao chou usando <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'randomimage-desc' => 'Fiegt s <tt>&lt;randomimage /&gt;</tt>-Tag dryy fir zum Aazeige vun eme zuefellige Bild',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -178,6 +185,13 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'randomimage-desc' => 'Membekalkan pemilih media rawak menggunakan <tt>&lt;randomimage /&gt;</tt>',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'randomimage-desc' => 'Föögt mit <tt>&lt;randomimage /&gt;</tt> en Tag to, tofällige Biller to wiesen',
 );
 
 /** Dutch (Nederlands)

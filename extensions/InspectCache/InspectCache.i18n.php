@@ -405,7 +405,16 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'inspectcache' => 'キャッシュの点検',
+	'inspectcache-desc' => '共有キャッシュの中身を点検するための簡素なデバッグツール',
 	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => '一般キャッシュ',
+	'inspectcache-parser' => 'パーサーキャッシュ',
+	'inspectcache-message' => 'メッセージキャッシュ',
+	'inspectcache-get' => '取得',
+	'inspectcache-delete' => '削除',
+	'inspectcache-deleted' => '削除済みキャッシュ',
+	'inspectcache-list' => '一覧',
 );
 
 /** Javanese (Basa Jawa)

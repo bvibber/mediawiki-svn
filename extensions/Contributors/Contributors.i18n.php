@@ -854,13 +854,14 @@ $messages['nah'] = array(
  */
 $messages['nds'] = array(
 	'contributors' => 'Lüüd, de bidragen hebbt',
+	'contributors-desc' => 'Wiest de wichtigsten Autorn to en Sied',
 	'contributors-toolbox' => 'Lüüd, de wichtige Delen bidragen hebbt',
 	'contributors-legend' => 'Lüüd oplisten, de to en Artikel bidragen hebbt',
 	'contributors-target' => 'Titel:',
 	'contributors-submit' => 'Wiesen',
 	'contributors-subtitle' => 'Lüüd, de wichtige Delen to $1 bidragen hebbt',
-	'contributors-others-long' => 'Gifft $1 annere Lüüd, de to disse Siet bidragen hebbt.',
-	'contributors-others' => 'un $1 annere',
+	'contributors-others-long' => 'Gifft {{PLURAL:$1|een annere Person|$1 annere Lüüd}}, de to disse Sied bidragen {{PLURAL:$1|hett|hebbt}}.',
+	'contributors-others' => 'un {{PLURAL:$1|een annere|$1 annere}}',
 	'contributors-badtitle' => 'Titel ungüllig.',
 	'contributors-nosuchpage' => 'Siet $1 gifft dat nich.',
 );

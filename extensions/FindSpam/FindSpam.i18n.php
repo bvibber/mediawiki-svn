@@ -260,6 +260,17 @@ $messages['grc'] = array(
 	'findspam-ok' => 'εἶεν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'findspam' => 'Spam finde',
+	'findspam-desc' => 'Ergänzt e [[Special:FindSpam|Spezialsyte]] zum Uffinde vu Spam',
+	'findspam-ip' => 'IP-Adräss:',
+	'findspam-ok' => 'In Ornig',
+	'findspam-notextfound' => 'Kei Byyträg gfunde',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -639,6 +650,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'findspam' => 'Spam fiende',
+	'findspam-desc' => 'Föiget ne [[Special:FindSpam|Spezioalsiede]] bietou tou dät Apfienden fon Spam',
 	'findspam-ip' => 'IP-Adresse:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Neen Biedraage fuunen',
@@ -763,5 +775,16 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'findspam-ip' => 'ladet-IP:',
 	'findspam-notextfound' => 'Keblünots nonik petuvons',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'findspam' => '查找垃圾信息',
+	'findspam-desc' => '添加一个[[Special:FindSpam|特殊页面]]来查找最近加入的垃圾信息',
+	'findspam-ip' => 'IP地址：',
+	'findspam-ok' => '确定',
+	'findspam-notextfound' => '没有查找到贡献',
 );
 

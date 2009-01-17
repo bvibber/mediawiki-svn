@@ -305,3 +305,10 @@ $messages['vi'] = array(
 	'othersites-desc' => 'Di chuyển các liên kết liên wiki chứ không di chuyển liên kết ngôn ngữ trong chính portley của nó',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'othersites' => 'Bevüresodatopäds votik',
+);
+

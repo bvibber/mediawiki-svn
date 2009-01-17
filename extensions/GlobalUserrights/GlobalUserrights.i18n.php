@@ -286,6 +286,18 @@ $messages['pl'] = array(
 	'right-userrights-global' => 'Zarządzanie globalnymi uprawnieniami użytkownika',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'globaluserrights' => 'Gestão de Permissões de Utilizadores Globais',
+	'gur-desc' => 'Administração fácil das [[Special:GlobalUserRights|permissões de utilizadores globais]]',
+	'gur-rightslog-name' => 'Registo de permissões globais',
+	'gur-rightslog-header' => 'Este é um registo das alterações às permissões globais.',
+	'gur-rightslog-entry' => 'alterou o grupo global de $1, de $2 para $3',
+	'right-userrights-global' => 'Gerir permissões de utilizadores globais',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
@@ -315,5 +327,17 @@ $messages['tl'] = array(
 	'gur-rightslog-header' => 'Isa itong talaan ng mga pagbabago sa pandaigdigang mga karapatan.',
 	'gur-rightslog-entry' => 'binago ang kasapian ng pandaigdigang kapangkatan para kay $1 mula $2 patungo sa $3',
 	'right-userrights-global' => 'Pamahalaan ang mga karapatan ng pandaigdigang tagagamit',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'globaluserrights' => '全域用户权限管理',
+	'gur-desc' => '简单的[[Special:GlobalUserRights|全域用户权限]]管理信息',
+	'gur-rightslog-name' => '全域权限历史记录',
+	'gur-rightslog-header' => '这是改变全域用户权限的历史记录',
+	'gur-rightslog-entry' => '为$1改变全域用户组权限自$2到$3',
+	'right-userrights-global' => '管理全域用户权限',
 );
 

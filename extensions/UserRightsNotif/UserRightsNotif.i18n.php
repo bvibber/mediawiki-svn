@@ -71,12 +71,13 @@ $2',
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'userrightsnotifysubject' => 'Зьменены ўдзел у групах $1',
 	'userrightsnotifybody' => 'Вітаем, $1.
 
-Гэта паведамленьне інфармуе Вас пра тое, што Ваш удзел у групах $2 быў зьменена з $3 у $4.
+Гэтае паведамленьне інфармуе Вас пра тое, што Ваш удзел у групах $2 быў зьменены з $3 у $4.
 
 Дададзеная: $5
 Выдалена: $6
@@ -84,7 +85,7 @@ $messages['be-tarask'] = array(
 З найлепшымі пажаданьнямі,
 
 $2',
-	'userrightsnotif-desc' => 'Дасылае паведамленьні пра зьмены правоў ўдзельнікам па электроннай пошце',
+	'userrightsnotif-desc' => 'Дасылае ўдзельнікам паведамленьні па электроннай пошце пра зьмены правоў',
 );
 
 /** Bulgarian (Български)
@@ -500,6 +501,7 @@ $2',
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'userrightsnotifysubject' => '$1에서의 사용자 권한 변경',
 	'userrightsnotifybody' => '$1님 안녕하세요.
 
 이 메일을 통해 $4에 $2의 사용자 권한이 $3에 의해 변경되었음을 알리고자 합니다.
@@ -510,6 +512,7 @@ $messages['ko'] = array(
 안녕히 계세요.
 
 $2',
+	'userrightsnotif-desc' => '사용자 권한 변경 후 사용자에게 알림 이메일을 보냄',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -747,6 +750,7 @@ Wächhoald: $6\\
 Mäd früntelke Gröitnis,
 
 $2',
+	'userrightsnotif-desc' => 'Soant E-Mail-Bescheed uur Gjuchte-Annerengen an dän Benutser',
 );
 
 /** Sundanese (Basa Sunda)
@@ -889,5 +893,12 @@ Bớt: $6
 Trân trọng,
 
 $2',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'userrightsnotifysubject' => 'Votükam grupalimanama in $1',
 );
 

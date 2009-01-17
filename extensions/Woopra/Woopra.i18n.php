@@ -122,6 +122,13 @@ $messages['gl'] = array(
 	'woopra-desc' => 'Permite ao [http://www.woopra.com/ software de adestramento en vivo Woopra] traballar coa súa instalación MediaWiki',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'woopra-desc' => 'Macht fir d [http://www.woopra.com/ „Woopra Live Tracking Software“] d Zämmearbet mit MediaWiki megli',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -318,5 +325,12 @@ $messages['tl'] = array(
  */
 $messages['uk'] = array(
 	'woopra-desc' => 'Дозволяє [http://www.woopra.com/ Woopra Live Tracking Software] працювати з вашою MediaWiki-інсталяцією',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'woopra-desc' => '允许[http://www.woopra.com/ Woopra 在线跟踪软件]为阁下的MediaWiki安装程序工作',
 );
 

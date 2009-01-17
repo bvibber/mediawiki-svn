@@ -58,6 +58,13 @@ $messages['arz'] = array(
   # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'metakeywords-desc' => 'Позволява конфигурирането на етикетите <tt><nowiki><meta "keywords"></nowiki></tt> и <tt><nowiki><meta "description"></nowiki></tt> за всяко именно пространство',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -113,6 +120,20 @@ $messages['gl'] = array(
 	'metakeywords-desc' => 'Permite a configuración de <tt><nowiki><meta "keywords"></nowiki></tt> e mais de etiquetas <tt><nowiki><meta "description"></nowiki></tt> por espazo de nomes',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'metakeywords-desc' => 'Erlaubt d Konfiguration vu <tt><nowiki><meta "keywords"></nowiki></tt>- und <tt><nowiki><meta "description"></nowiki></tt>-Tag pro Namensruum',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'metakeywords-desc' => 'מתן האפשרות להגדרת תגיות <tt><nowiki><meta "keywords"></nowiki></tt> ו־<tt><nowiki><meta "description"></nowiki></tt> לכל מרחב שם בנפרד',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -137,6 +158,11 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'metakeywords-desc' => '名前空間ごとに <tt><nowiki><meta "keywords"></nowiki></tt> および <tt><nowiki><meta "description"></nowiki></tt> タグの設定を可能にする',
+	'metakeywords' => ' # このページに "namespace|comma separated,keywords,to,add" という形式で行を追加します
+ # 名前空間識別子 (all) と (main) はそれぞれ、全名前空間と標準名前空間のデフォルトを指定します。',
+	'metadescription' => ' # このページに "namespace|description tag to set" という形式で行を追加します
+ # 名前空間識別子 (all) と (main) はそれぞれ、全名前空間と標準名前空間のデフォルトを指定します。
+ # $1 は現在のページの名前に置換されます。',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -159,6 +185,13 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'metakeywords-desc' => 'Erlaabt d\'Konfiguratioun vun <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> Tagen pro Nummraum',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'metakeywords-desc' => 'Verlöövt dat Instellen vun <tt><nowiki><meta "keywords"></nowiki></tt>- un <tt><nowiki><meta "description"></nowiki></tt>-Tags för elk Naamruum',
 );
 
 /** Dutch (Nederlands)

@@ -60,6 +60,15 @@ $messages['avk'] = array(
 	'usercontactlink-baduser' => 'Favesikyoltaj',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'usercontactlink-baduser' => 'няслушнае імя ўдзельніка',
+	'usercontactlink-desc' => 'Дае магчымасьць простага даданьня подпісу ўдзельніка з дапамогай устаўкі ^^^user^^^',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */
@@ -357,6 +366,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'usercontactlink-baduser' => 'falsken Benutsernoome',
+	'usercontactlink-desc' => 'Moakt et muugelk, Benutsernoomen eenfach mäd ^^^Benutser^^^ tou ferlinkjen',
 );
 
 /** Swedish (Svenska)
@@ -402,6 +412,13 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'usercontactlink-baduser' => 'tên hiệu không đúng',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'usercontactlink-baduser' => 'gebananem neveräton',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

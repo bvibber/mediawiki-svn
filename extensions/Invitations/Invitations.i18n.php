@@ -414,6 +414,36 @@ $messages['hi'] = array(
 	'invitations-invite-success' => 'आपने $1 को यह फीचर इस्तेमाल करने के लिये आमंत्रित किया!',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'invite-logpage' => 'Protokol přeprošenjow',
+	'invite-logpagetext' => 'To je protokol wužiwarjow, kotřiž mjez sobu přeprošuja, zo bychu wšelake softwarowe funkcije wužiwali.',
+	'invite-logentry' => 'je $1 přeprosył, zo by funkciju <i>$2</i> wužiwał.',
+	'invitations' => 'Přeprošenja k softwarowym funkcijam zrjadować',
+	'invitations-desc' => 'Zmóžnja [[Special:Invitations|zrjadowanje nowych funkcijow]] z wobmjezowanjom na system, kotryž na přeprošenja bazěruje',
+	'invitations-invitedlist-description' => 'Maš přistup k slědowacym funkcijam softwary na zakładźe přeprošenjow.
+Zo by softwaru za jednotliwu funkciju zrjadował, klikń na jeje mjeno.',
+	'invitations-invitedlist-none' => 'Njejsy dotal přeprošenja za wužiwanje funkcijow softwary, kotraž na přeprošenjach bazěruje, dóstał',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Jedne přeprošenje|$1 přeprošeni|$1 přeprošenja|$1 přeprošenjow}} k dispoziciji)',
+	'invitations-pagetitle' => 'Funkcije softwary na zakładźe přeprošenjow',
+	'invitations-uninvitedlist-description' => 'Nimaš přistup k tutym druhim funkcijam softwary, kotraž na přeprošenjach bazěruje.',
+	'invitations-uninvitedlist-none' => 'Tuchwilu njejsu žane softwarowe funkcije jako na přeprošenjach bazěrowace woznamjenjene.',
+	'invitations-feature-pagetitle' => 'Zrjadowanje přeprošenja - $1',
+	'invitations-feature-access' => 'Maš tuchwilu přistup k wužiwanju <i>$1</i>.',
+	'invitations-feature-numleft' => 'Maš hišće {{PLURAL:$2|jedne přeprošenje|<b>$1</b> ze swojich $2 {{PLURAL:$2|přeprošenja|přeprošenjow|přeprošenjow|přeprošenjow}}}}.',
+	'invitations-feature-noneleft' => 'Sy wšě swojich tebi přidźělenych přeprošenjow za tutu funkciju wužił',
+	'invitations-feature-noneyet' => 'Dotal njejsu so ći žane přeprošenja za tutu funkciju přidźělili.',
+	'invitations-feature-notallowed' => 'Nimaš přistup k wužiwanju <i>$1</i>.',
+	'invitations-inviteform-title' => 'Wužiwarja za wužiwanje $1 přeprosyć',
+	'invitations-inviteform-username' => 'Wužiwar, kotryž ma so přeprosyć',
+	'invitations-inviteform-submit' => 'Přeprosyć',
+	'invitations-error-baduser' => 'Wužiwar, kotrehož sy podał, njezda so eksistować.',
+	'invitations-error-alreadyinvited' => 'Wužiwar, kotrehož sy podał, ma hižo přistup k tutej funkciji!',
+	'invitations-invite-success' => 'Sy $1 wuspěšnje přeprosył, zo by tutu funkciju wužiwał!',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

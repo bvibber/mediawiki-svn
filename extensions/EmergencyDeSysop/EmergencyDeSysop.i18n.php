@@ -80,22 +80,23 @@ $messages['bs'] = array(
  * @author ChrisiPK
  * @author Metalhead64
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'emergencydesysop' => 'Not-DeSysop',
+	'emergencydesysop' => 'Not-DeAdministrierung',
 	'emergencydesysop-desc' => 'Ermöglicht einem Administrator, seine Privilegien aufzugeben, um den Adminstatus eines anderen Administrators zu entfernen',
-	'emergencydesysop-title' => 'Entfernt den Sysop-Status des aktuellen und eines anderen Benutzers',
-	'emergencydesysop-otheradmin' => 'Anderen Sysop zum Deklassieren',
+	'emergencydesysop-title' => 'Entfernt den Administrator-Status des aktuellen und eines anderen Benutzers',
+	'emergencydesysop-otheradmin' => 'Anderen Administrator zum Deklassieren',
 	'emergencydesysop-reason' => 'Grund für die Entfernung',
 	'emergencydesysop-submit' => 'Übertragen',
 	'emergencydesysop-incomplete' => 'Es werden Eingaben in allen Feldern benötigt. Bitte erneut versuchen.',
-	'emergencydesysop-notasysop' => "Der gewählte Benutzer ist nicht in der Gruppe ''Sysop''.",
+	'emergencydesysop-notasysop' => "Der gewählte Benutzer ist nicht in der Gruppe ''Administrator''.",
 	'emergencydesysop-nogroups' => 'Keine',
 	'emergencydesysop-done' => 'Aktion erfolgreich. Du und [[$1]] wurden degradiert.',
 	'emergencydesysop-invalidtarget' => 'Der gewählte Benutzer existiert nicht.',
 	'emergencydesysop-blocked' => 'Du kannst nicht auf diese Seite zugreifen, während du gesperrt bist',
 	'emergencydesysop-noright' => 'Du hast keine ausreichenden Berechtigungen für diese Seite',
-	'right-emergencydesysop' => 'Das Recht zur Degradierung eines anderen Sysop auf Gegenseitigkeit',
+	'right-emergencydesysop' => 'Das Recht zur Degradierung eines anderen Administrator auf Gegenseitigkeit',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -236,8 +237,20 @@ $messages['hsb'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'emergencydesysop' => '緊急管理者解任',
+	'emergencydesysop-desc' => '管理者が自らの権限を犠牲にして、別の利用者の管理者権限を除去できるようにする',
+	'emergencydesysop-title' => '現在の利用者ともう一人の管理者の両方から管理者権限を除去する',
+	'emergencydesysop-otheradmin' => '権限を除去するもう一人の管理者',
+	'emergencydesysop-reason' => '除去の理由',
 	'emergencydesysop-submit' => '送信',
+	'emergencydesysop-incomplete' => 'フォームのすべての欄が必須です。もう一度試してください。',
+	'emergencydesysop-notasysop' => '対象とした利用者は管理者ではありません。',
 	'emergencydesysop-nogroups' => 'なし',
+	'emergencydesysop-done' => '操作完了、あなたと[[$1]]の両名は管理者権限を除去されました。',
+	'emergencydesysop-invalidtarget' => '対象とした利用者は存在しません。',
+	'emergencydesysop-blocked' => 'あなたはブロック中にこのページにアクセスすることはできません。',
+	'emergencydesysop-noright' => 'あなたはこのページにアクセスするために必要な許可がありません。',
+	'right-emergencydesysop' => 'もう一人の利用者と管理者権限を相互に除去できる',
 );
 
 /** Khmer (ភាសាខ្មែរ)

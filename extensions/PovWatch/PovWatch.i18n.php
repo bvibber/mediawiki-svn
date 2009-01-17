@@ -613,15 +613,44 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Määt et müjjelesch, [[Special:PovWatch|Sigge op anderlüx Oppassleste ze donn]].',
+	'povwatch_no_session' => 'Fähler: De Date en dämm Fommulaa kunnte nicht beärbeidt wäde.
+De Date för Ding Setzung wohre fott. Versöhk et noch ens.',
 	'povwatch_not_allowed_push' => 'Do beß keine <i lang="en">PovWatch</i>-Köbes, Do kanns kein Sigge op anderlüx Oppassleste donn.',
+	'povwatch_already_subscribed' => 'Do bes ald för {{int:povwatch}} enjeschrevve.',
+	'povwatch_subscribed' => 'Do bes jez för {{int:povwatch}} enjeschrevve.',
+	'povwatch_not_subscribed' => 'Do bes nit för {{int:povwatch}} enjeschrevve, alsu kanns De Desch nit ußdraare.',
+	'povwatch_unsubscribed' => 'Do bes jez bei {{int:povwatch}} wider ußjedraare.',
 	'povwatch_invalid_title' => 'Dä aanjejovve Tettel es nit jöltesch',
 	'povwatch_pushed' => 'De Sigg „[[$1]]“ es jetz op {{PLURAL:$2|einem Metmaacher sing Oppassleß|$2 Metmaacher ier Oppassleste|keinem sing Oppassleß}} drop jesatz.',
+	'povwatch_intro' => '{{int:povwatch}} es ene Deens, dä et müjjelesch määt, Sigge op anderlüx Oppassleste ennzedraare.
+Dat määt mer met Sigge, woh mer meint, dat dat nüüdesch wöhr.
+Wä esu Sigge op singe Oppassless enjedraare krijje well, moß dat extra zohlohße,
+un sesch doför beim {{int:povwatch}} enschriive.
+
+En Leß met de neußte Endraarunge op anderlüx Oppassleß kam_mer sesch
+op dä Sigg [[Special:PovWatch/log]] aanbekike.',
+	'povwatch_subscriber_list' => 'En [[Special:PovWatch/subscribers|Leß met de {{int:povwatch}}-Metmaachere]] jidd_et och.',
+	'povwatch_subscriber_list_intro' => '<strong>Leß met de enjedraare Metmaacher</strong>',
+	'povwatch_not_allowed_subscribers' => 'Do häs nit dat Rääsch, Der de Leß met de bei {{int:povwatch}} enjeschrevve Metmaacher aanzeloore.',
 	'povwatch_unknown_subpage' => 'De Ungersigg jidd_et nit.',
 	'povwatch_push' => 'Loß Jonn! Dobeidonn!',
+	'povwatch_push_intro' => 'Met dämm Fommulaa unge kanns De Sigge op der Metmaacher ier Oppassleste
+donn, die sesch bei {{int:povwatch}} enjeschrevve han.
+Beß vörseschtesch, wann de Tittele vun Sigge schrievs, selvs Tittele, wo
+et noch jaa kei Sigg för jitt, kanns De op anderlüx Oppassleste donn,
+un wat do eimohl drop esm kanns Do nit mieh dovun fott nämme.',
 	'povwatch_title' => 'Siggetittel:',
 	'povwatch_comment' => 'Endraach för en et Logbooch:',
 	'povwatch_no_log' => 'En däm Logboch es nix dren.',
+	'povwatch_no_subscribers' => 'Et sin kein Metmaacher för {{int:povwatch}} enjedraare.',
+	'povwatch_unsubscribe_intro' => 'Do bes bei {{int:povwatch}} ennjeschrevve.
+Onge övver der Knopp kanns de Desch ußdraare lohße.',
+	'povwatch_unsubscribe' => 'Ußdraare!',
+	'povwatch_subscribe_intro' => 'Do bes noch nit bei {{int:povwatch}} ennjeschrevve.
+Onge övver der Knopp kanns de Desch endraare lohße.',
+	'povwatch_subscribe' => 'Ennschriive!',
 	'povwatch_added' => 'dobei jedonn',
 	'right-povwatch_admin' => 'Dat Rääsch, Sigge en anderlüx Oppassleste erin donn ze dörfe, Jevve un Fottnämme',
 	'right-povwatch_user' => 'Sigge op Oppassleste vun ander Metmaacher drop donn',
@@ -1097,6 +1126,43 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
  */
 $messages['sr-ec'] = array(
 	'povwatch_title' => 'Наслов:',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Ärwiederenge, uum [[Special:PovWatch|Sieden fon ju Beoboachtengslieste]] fon uur Benutsere bietoutouföigjen',
+	'povwatch_no_session' => 'Failer: Formulardoaten konnen nit feroarbaided wäide, deer do Sittengsdoaten ferlädden geen sunt.',
+	'povwatch_not_allowed_push' => 'Du bäst naan PovWatch-Administrator un koast froamde Beooboachtengsliesten neen Sieden bietouföigje.',
+	'povwatch_already_subscribed' => 'Du bäst al foar PovWatch registrierd',
+	'povwatch_subscribed' => 'Du bäst nu foar Povwatch registrierd',
+	'povwatch_not_subscribed' => 'Du bäst nit foar PovWatch registrierd; ne Oumäldenge is deeruum nit muugelk.',
+	'povwatch_unsubscribed' => 'Du bäst nu fon PovWatch oumälded',
+	'povwatch_invalid_title' => 'Die anroate Siedennoome is uungultich',
+	'povwatch_pushed' => '[[$1]] wuud mäd Ärfoulch {{PLURAL:$2|ju Beooboachtengslieste fon n Benutser|do Beooboachtungsliesten fon $2 Benutsere}} bietouföiged.',
+	'povwatch_intro' => 'PovWatch is n Service, uum uumstriedede Sieden diskret do Beooboachtengsliesten fon registrierde Administratore bietoutouföigjen.
+
+N Logbouk fon do uur PovWatch bietouföigede Sieden is ferföichboar unner [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Ne [[Special:PovWatch/subscribers|Lieste fon do registrierde Benutsere]] is ferföichboar.',
+	'povwatch_subscriber_list_intro' => '<strong>Lieste fon do registrierde Benutsere</strong>',
+	'povwatch_not_allowed_subscribers' => 'Du hääst neen Begjuchtigenge, ju PovWatch-Benutserlieste ientoukiekjen.',
+	'povwatch_unknown_subpage' => 'Uunbekoande Unnersiede',
+	'povwatch_push' => 'Bietouföigje',
+	'povwatch_push_intro' => 'Benuts dät Formular, uum Sieden an do Beooboachtengsliesten mäd registrierde Benutsere bietoutouföigjen.
+Beoachtje: uk nit foarhoundene Sieden konnen bietouföiged wäide un dät rakt naan Wai, dät tourääch tou traalen.',
+	'povwatch_title' => 'Siedennoome:',
+	'povwatch_comment' => 'Logbouk-Kommentoar:',
+	'povwatch_no_log' => 'Dät Logbouk änthaalt neen Iendraage.',
+	'povwatch_no_subscribers' => 'Dät rakt neen registrierde Benutsere.',
+	'povwatch_unsubscribe_intro' => 'Du bäst foar Povwatch registrierd. Klik ap dän Knoop unner, uum die antoumäldjen.',
+	'povwatch_unsubscribe' => 'Oumäldje',
+	'povwatch_subscribe_intro' => 'Du bäst nit foar PovWatch registrierd. Klik ap dän Knoop unner, uum die antoumäldjen.',
+	'povwatch_subscribe' => 'Registrierje',
+	'povwatch_added' => 'bietouföiged',
+	'right-povwatch_admin' => 'Dät Benutsergjucht touluuke of äntluuke, Sieden tou ju Beooboachtengslieste fon uur Benutsere bietouföigje tou duuren',
+	'right-povwatch_user' => 'Bietouföigjen fon Sieden tou ju Beooboachtengslieste fon uur Benutsere',
 );
 
 /** Swedish (Svenska)

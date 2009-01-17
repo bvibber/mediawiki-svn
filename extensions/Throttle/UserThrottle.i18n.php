@@ -45,6 +45,18 @@ $messages['arz'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'حد إنشاء اليوزر',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Магчымасьць стварэньня новых рахункаў была аўтаматычна прыпыненая на некаторы час з прычыны вялікай колькасьці спробаў уваходу ў сыстэму.
+Калі ласка, пачакайце некалькі хвілінаў і паспрабуйце ізноў.',
+	'acct_creation_global_hard_throttle_hit' => 'Магчымасьць стварэньня новых рахункаў была аўтаматычна прыпыненая на некалькі сэкундаў каб абараніцца ад атакі на сэрвэр зьдзейсьненую праз спробы стварэньня рахункаў.
+Калі ласка, пачакайце і націсьніце кнопку «Абнавіць» у Вашым браўзэры, каб паспрабаваць ізноў.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Абмежаваньне частаты стварэньня новых рахункаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -265,9 +277,14 @@ Poczekaj chwilę i wciśnij „odśwież” w przeglądarce by ponowić operacj�
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'A criação de contas foi automaticamente suspensa por uns momentos devido ao anormalmente grande número de tentativas recentes de autenticação.
+Por favor, aguarde alguns minutos e tente novamente.',
+	'acct_creation_global_hard_throttle_hit' => "A criação de contas foi automaticamente suspensa por alguns segundos para reduzir os ataques de registo em massa.
+Por favor, aguarde um momento e carregue em 'refrescar' no seu navegador para reenviar os dados.",
 	'acct_creation_global_soft_throttle_hit-desc' => 'Restringir a criação de utilizadores',
 );
 
@@ -297,5 +314,12 @@ Var god vänta några minuter och pröva igen.',
 	'acct_creation_global_hard_throttle_hit' => 'Skapande av konton har automatiskt stängts av under några sekunder för att reducera massregistreringsangrepp.
 Var god vänta en liten stund och tryck på "uppdatera" i webbläsaren för att pröva igen.',
 	'acct_creation_global_soft_throttle_hit-desc' => 'Begränsar antal konton som kan skapas under en tidsperiod',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Kalijaf pablokon itjäfidiko dü timüls anik bi brefabüo edabinons ninädamasteifüls tu mödiks. Stebedolös dü minuts anik e steifülolös nogna.',
 );
 

@@ -113,10 +113,14 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'formatchanges-desc' => 'Reformatear los [[Special:RecentChanges|cambios recientes]]',
 	'formatchanges-anonymous' => 'Anónimo',
+	'formatchanges-createdby' => '$1 - creado por $2 ($3)',
+	'formatchanges-editedby' => '$1 - editado por $2 ($3)',
 );
 
 /** Basque (Euskara)

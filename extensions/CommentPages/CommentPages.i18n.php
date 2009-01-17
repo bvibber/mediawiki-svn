@@ -69,6 +69,14 @@ $messages['cs'] = array(
 	'nstab-comments' => 'Komentář',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'commentpages-desc' => 'Tudalennau sylwadau ar gyfer y prif barth',
+	'nstab-comments' => 'Sylwadau',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -100,6 +108,13 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'commentpages-desc' => 'Comentar páginas en el espacio de nombres principal',
 	'nstab-comments' => 'Comentario',
+);
+
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'nstab-comments' => 'Iruzkina',
 );
 
 /** French (Français)

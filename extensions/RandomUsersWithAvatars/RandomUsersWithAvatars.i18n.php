@@ -94,6 +94,13 @@ $messages['gl'] = array(
 	'random-users-avatars-desc' => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'random-users-avatars-title' => 'פגשו את הקהילה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -182,6 +189,13 @@ $messages['oc'] = array(
 $messages['pt'] = array(
 	'random-users-avatars-title' => 'Conheça a comunidade',
 	'random-users-avatars-desc' => 'Adiciona a marca <tt>&lt;randomuserswithavatars&gt;</tt> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'random-users-avatars-title' => "Ingontre 'a comunitate",
 );
 
 /** Slovak (Slovenčina)

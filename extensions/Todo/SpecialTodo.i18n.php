@@ -162,6 +162,42 @@ $4',
 	'todo-form-submit' => 'تنفيذ الاستعلام',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'todo' => 'Сьпіс заданьняў',
+	'todo-desc' => 'Экспэрымэнтальнае пашырэньне [[Special:Todo|пэрсанальнага сьпісу заданьняў]]',
+	'todo-tab' => 'заданьні',
+	'todo-new-queue' => 'новае(ыя)',
+	'todo-mail-subject' => 'Выкананае заданьне са сьпісу заданьняў удзельніка $1',
+	'todo-mail-body' => 'Вы запатрабавалі пацьверджаньне пра выкананьне заданьня са сьпісе заданьняў удзельніка $1.
+
+Заданьне: $2
+Выкананае: $3
+
+Заданьне пазначанае як выкананае з наступным камэнтарам:
+$4',
+	'todo-invalid-item' => 'Неіснуючае ці няслушнае заданьне',
+	'todo-update-else-item' => 'Спроба зьмены сьпісу заданьняў іншага ўдзельніка',
+	'todo-unrecognize-type' => 'Невядомы тып',
+	'todo-user-invalide' => 'Пададзенае няслушнае, неіснуючае альбо немагчымае да выкананьня заданьне.',
+	'todo-item-list' => 'Вашы заданьні',
+	'todo-no-item' => 'Няма заданьняў.',
+	'todo-invalid-owner' => 'Няслушны ўладальнік гэтага заданьня',
+	'todo-add-queue' => 'Дадаць чаргу…',
+	'todo-move-queue' => 'Перанесьці ў чаргу…',
+	'todo-list-for' => 'Сьпіс заданьняў для',
+	'todo-list-change' => 'Зьмяніць',
+	'todo-list-cancel' => 'Адмяніць',
+	'todo-new-item' => 'Новае заданьне',
+	'todo-issue-summary' => 'Агульная колькасьць:',
+	'todo-form-details' => 'Падрабязнасьці:',
+	'todo-form-email' => 'Каб атрымліваць паведамленьні пра выкананьні заданьняў па электроннай пошце, упішыце сюды свой адрас электроннай пошты:',
+	'todo-form-submit' => 'Запытаць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -1009,18 +1045,34 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'todo' => 'Lista de tarefas',
+	'todo-desc' => 'Extensão experimental de [[Special:Todo|lista pessoal de tarefas]]',
 	'todo-tab' => 'tarefas',
 	'todo-new-queue' => 'novo',
 	'todo-mail-subject' => 'Itens completos na lista de tarefas de $1',
+	'todo-mail-body' => 'Você pediu um e-mail de confirmação sobre a finalização de um item que você submeteu para a lista de tarefas online de $1.
+
+Item: $2
+Submetido: $3
+
+Este item foi marcado como completo, com este comentário:
+$4',
 	'todo-invalid-item' => 'Item em falta ou inválido',
+	'todo-update-else-item' => 'A tentar atualizar os itens de outra pessoa',
 	'todo-unrecognize-type' => 'Tipo não reconhecido',
+	'todo-user-invalide' => 'Tarefa fornecida inválida, em falta, ou utilizador sem possibilidade de tarefas',
 	'todo-item-list' => 'Seus itens',
 	'todo-no-item' => 'Sem tarefas.',
+	'todo-invalid-owner' => 'Proprietário inválido neste item',
+	'todo-add-queue' => 'Adicionar fila…',
+	'todo-move-queue' => 'Mover para fila…',
 	'todo-list-for' => 'Lista de tarefas de',
 	'todo-list-change' => 'Alterar',
 	'todo-list-cancel' => 'Cancelar',
 	'todo-new-item' => 'Novo item',
+	'todo-issue-summary' => 'Sumário do problema:',
 	'todo-form-details' => 'Detalhes:',
+	'todo-form-email' => 'Para receber uma notificação por e-mail quando este item for fechado, escreva o seu endereço aqui:',
+	'todo-form-submit' => 'Submeter pesquisa',
 );
 
 /** Tarifit (Tarifit)
@@ -1095,6 +1147,41 @@ $4',
 	'todo-form-details' => 'Podrobnosti:',
 	'todo-form-email' => 'Dostať upozornenie emailom, keď bude úloha uzatvorená. Napíšte svoju adresu:',
 	'todo-form-submit' => 'Poslať požiadavku',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'todo' => 'Apgoawenlieste',
+	'todo-desc' => 'Experimentelle persöönelke [[Special:Todo|Apgoawenlieste]]',
+	'todo-tab' => 'Apgoawen',
+	'todo-new-queue' => 'Näi',
+	'todo-mail-subject' => 'Iendraach foar $1s Apgoawenlieste ousleeten',
+	'todo-mail-body' => 'Du hääst uum Bescheed bidded, wan n Apdraach, dän du an $1 uurroat hääst, ousleeten wuude.
+
+Iendraach: $2
+Uurroat: $3
+
+Dissen Iendraach wuud mäd dissen Kommentoar as ousleeten markierd:
+$4',
+	'todo-invalid-item' => 'Failjenden of falsken Iendraach',
+	'todo-update-else-item' => 'De fersäkst, do Iendraage fon uurswäl tou beoarbaidjen',
+	'todo-unrecognize-type' => 'Uunbekoanden Typ',
+	'todo-user-invalide' => 'Die roate Apdraach is uungultich: Benutser failt of häd neen Apgoawenlieste.',
+	'todo-item-list' => 'Dien Iendraage',
+	'todo-no-item' => 'Neen Apgoawen',
+	'todo-invalid-owner' => 'Uungultigen Besitter foar dissen Iendraach',
+	'todo-add-queue' => 'Täiweslange bietouföigje ...',
+	'todo-move-queue' => 'Ätter Täiweslange ferschuuwe ...',
+	'todo-list-for' => 'Apgoawenlieste foar',
+	'todo-list-change' => 'Annerje',
+	'todo-list-cancel' => 'Oubreeke',
+	'todo-new-item' => 'Näien Iendraach',
+	'todo-issue-summary' => 'Touhoopefoatenge fon dän Apdraach:',
+	'todo-form-details' => 'Details:',
+	'todo-form-email' => 'Reek dien E-Mail-Adresse ien, uum Bescheed tou kriegen, wan dän Iendraach sleeten wuude:',
+	'todo-form-submit' => 'Anfroage uurreeke',
 );
 
 /** Swedish (Svenska)
@@ -1248,8 +1335,10 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'todo-new-queue' => '新',
 	'todo-list-cancel' => '取消',
 );
 

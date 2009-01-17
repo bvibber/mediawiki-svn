@@ -82,6 +82,13 @@ $messages['arz'] = array(
 	'importfreeimages_returntoform' => "أو، اضغط <a href='$1'>هنا</a> للعودة إلى نتائج بحثك",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'importfreeimages_owner' => 'Аўтар',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -215,10 +222,16 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'importfreeimages' => 'Importar imágenes libres',
+	'importfreeimages_nophotosfound' => "Ninguna fotografía fue encontrada para sus criterios de búsqueda '$1', por favor intente nuevamente",
+	'importfreeimages_invalidurl' => 'El URL "$1" no es una imagen Flickr válida.',
 	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'Importe esto',
+	'importfreeimages_next' => 'Próximo $1',
 );
 
 /** Persian (فارسی)
@@ -314,6 +327,24 @@ $messages['grc'] = array(
 	'importfreeimages_owner' => 'Δημιουργός',
 	'importfreeimages_importthis' => 'τόδε εἰσάγειν',
 	'importfreeimages_next' => 'Ἑπόμεναι $1',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'importfreeimages' => 'Freji Bilder importiere',
+	'importfreeimages-desc' => 'Macht  dr [[Special:ImportFreeImages|Import vu freje Bilder]] vu [http://www.flickr.com Flickr] megli',
+	'importfreeimages_description' => 'Die Syte erlaubt Dir, in Flickr no Bilder unter ere freje Lizänz z sueche un die derno in Dyy Wiki z importiere.',
+	'importfreeimages_noapikey' => 'Du hesch no kei Flickr-API-Schlissel konfiguriert. Bitte stell [http://www.flickr.com/services/api/misc.api_keys.html do] ne Aatrag und setz e derno in $wgFlickrAPIKey in ImportFreeImages.php yy.',
+	'importfreeimages_nophotosfound' => 'S sin keini Foto mit dr Suechkriterie „$1“ gfunde wore.',
+	'importfreeimages_invalidurl' => 'D URL „$1“ isch kei giltig Flickr-Bild.',
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'importiere',
+	'importfreeimages_next' => 'Negschti $1',
+	'importfreeimages_filefromflickr' => '$1 vu Benutzer <b>[$2]</b> vu flickr. Original URL',
+	'importfreeimages_promptuserforfilename' => 'Bitte gib e Ziil-Dateiname yy:',
+	'importfreeimages_returntoform' => "Oder druck <a href='$1'>do</a> go uf d Syte mit dr Suechergebniss zruggzchu.",
 );
 
 /** Manx (Gaelg)

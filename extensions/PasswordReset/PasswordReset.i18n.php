@@ -262,12 +262,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Kobazulo
  */
 $messages['es'] = array(
 	'passwordreset-username' => 'Nombre de usuario:',
-	'passwordreset-submit' => 'Pasahitza berrezarri',
+	'passwordreset-submit' => 'Reestablecer contraseña',
 );
 
 /** Basque (Euskara)
@@ -974,15 +975,18 @@ $messages['pt'] = array(
 	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
 	'passwordreset-emptyusername' => 'Nome de Utilizador Vazio',
 	'passwordreset-nopassmatch' => 'Palavras-Chave não coincidem',
+	'passwordreset-badtoken' => 'Token de edição inválido',
 	'passwordreset-username' => 'Nome de utilizador:',
 	'passwordreset-newpass' => 'Nova palavra-chave:',
 	'passwordreset-confirmpass' => 'Confirme a palavra-chave:',
 	'passwordreset-submit' => 'Repor Palavra-Chave',
 	'passwordreset-success' => 'A palavra-chave foi reposta para o utilizador com o ID: $1',
 	'passwordreset-disableuser' => 'Desactivar Conta de Utilizador?',
+	'passwordreset-disableuserexplain' => '(estabelece um hash de palavra-chave inválido - o utilizador não se consegue autenticar)',
 	'passwordreset-disablesuccess' => 'A conta de utilizador foi desactivada (ID do utilizador: $1)',
 	'passwordreset-accountdisabled' => 'A conta foi desactivada',
 	'disabledusers' => 'Utilizadores desactivados',
+	'disabledusers-summary' => 'Esta é a lista de utilizadores que foram desactivados via PasswordReset.',
 	'right-passwordreset' => 'Repor palavra-chave de um utilizador ([[Special:PasswordReset|página especial]])',
 );
 
@@ -1165,6 +1169,30 @@ $messages['th'] = array(
 	'passwordreset-accountdisabled' => 'บัญชีถูกระงับแล้ว',
 	'disabledusers' => 'ผู้ใช้ที่ถูกระงับ',
 	'disabledusers-summary' => 'นี่คือรายชื่อของผู้ใช้ที่ถูกระงับโดยการล้างรหัสผ่าน',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'passwordreset' => 'Muling pagtatakda ng hudyat',
+	'passwordreset-desc' => "[[Special:PasswordReset|Muling nagtatakda ng mga hudyat ng tagagamit]] - nangangailangan ng mga karapatang pang-'passwordreset'",
+	'passwordreset-invalidusername' => 'Hindi tanggap na pangalan ng tagagamit',
+	'passwordreset-emptyusername' => 'Walang lamang pangalan ng tagagamit',
+	'passwordreset-nopassmatch' => 'Hindi nagtutugma ang mga hudyat',
+	'passwordreset-badtoken' => 'Hindi tanggap na kahalip/tanda ng pagbabago',
+	'passwordreset-username' => 'Pangalan ng tagagamit:',
+	'passwordreset-newpass' => 'Bagong hudyat:',
+	'passwordreset-confirmpass' => 'Tiyakin ang hudyat:',
+	'passwordreset-submit' => 'Muling itakda ang hudyat',
+	'passwordreset-success' => 'Muli nang itinakda ang hudyat para sa ID ng tagagamit: $1',
+	'passwordreset-disableuser' => 'Huwag nang paganahin ang kuwenta ng tagagamit?',
+	'passwordreset-disableuserexplain' => '(nagtatakda ng hindi tanggap na pampagulo ng hudyat - hindi makalalagda ang tagagamit)',
+	'passwordreset-disablesuccess' => 'Hindi na pinagana ang kuwenta ng tagagamit para sa ID ng tagagamit: $1',
+	'passwordreset-accountdisabled' => 'Hindi na pinagana ang kuwenta/akawnt',
+	'disabledusers' => 'Mga hindi na pinagaganang mga tagagamit',
+	'disabledusers-summary' => "Isa itong talaan ng mga tagagamit na hindi na pinagana sa pamamagitan ng ''PasswordReset''.",
+	'right-passwordreset' => 'Muling itinakdang hudyat para sa isang tagagamit ([[Special:PasswordReset|natatanging pahina]])',
 );
 
 /** Vietnamese (Tiếng Việt)

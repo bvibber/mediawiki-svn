@@ -724,6 +724,13 @@ $messages['jv'] = array(
 	'imagemap_poly_odd' => 'Kasalahan: ana poligon kanthi nomer koordinat kliru ing larikan $1',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'imagemap_description' => 'ამ სურათის შესახებ',
+);
+
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
  * @author AlefZet
  */

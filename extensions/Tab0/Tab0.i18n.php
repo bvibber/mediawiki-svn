@@ -180,6 +180,13 @@ $messages['lb'] = array(
 	'tab0-desc' => "Setzt den ''Onglet'' ''0'' derbäi, den et erlaabt déi éischt Sectioun vun enger Säit z'änneren",
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'tab0-desc' => 'Föögt en „0“-Tab to, dat een den eersten Afsnidd vun en Sied ännern kann',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author Tvdm

@@ -166,6 +166,16 @@ $messages['it'] = array(
 	'rightfunctions-desc' => 'Funzioni del parser basate sui permessi',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'rightfunctions-desc' => 'パーミッションベースのパーサー関数',
+	'rightfunctions-casc' => '(カスケード元より)',
+	'rightfunctions-local' => '(ローカルページより)',
+	'rightfunctions-ns' => '(名前空間保護より)',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -245,6 +255,16 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'rightfunctions-desc' => 'Funkcje parsera pracujące na uprawnieniach',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'rightfunctions-desc' => 'Funções do "parser" baseadas em permissões',
+	'rightfunctions-casc' => '(de fontes em cascata)',
+	'rightfunctions-local' => '(de página local)',
+	'rightfunctions-ns' => '(de protecção de espaços nominais)',
 );
 
 /** Russian (Русский)

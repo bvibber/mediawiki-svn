@@ -272,6 +272,13 @@ $messages['oc'] = array(
 	'authors_anonymous' => 'Anomin',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'authors_authors' => 'Автортæ',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */

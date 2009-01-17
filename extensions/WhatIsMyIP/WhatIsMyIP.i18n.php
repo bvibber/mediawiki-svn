@@ -56,10 +56,11 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'whatismyip' => 'Які мой IP-адрас',
-	'whatismyip-desc' => 'Паказвае цяперашні ІР-адрас ўдзельніка на [[Special:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Паказвае цяперашні ІР-адрас удзельніка на [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'Ваш ІР-адрас:',
 );
 
@@ -270,12 +271,13 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'whatismyip' => '自分のIP',
+	'whatismyip' => '自分のIPアドレス',
 	'whatismyip-desc' => '現在の利用者のIPアドレスを[[Special:WhatIsMyIP]]で表示する',
-	'whatismyip-out' => 'あなたのIP:',
+	'whatismyip-out' => 'あなたのIPアドレス:',
 );
 
 /** Javanese (Basa Jawa)
@@ -321,6 +323,15 @@ $messages['lb'] = array(
 	'whatismyip' => 'Wéi ass meng IP',
 	'whatismyip-desc' => 'Weist dem Benotzer seng aktuell IP-Adress op [[Special:WhatIsMyIP|Wéi ass meng IP]]',
 	'whatismyip-out' => 'Är IP:',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'whatismyip' => 'Inona ny Adiresy IP ako',
+	'whatismyip-desc' => "Ampiseho ny adiresy IP an'ny mpikambana anatin'ny [[Special:WhatIsMyIP]]",
+	'whatismyip-out' => 'Ny IP anao',
 );
 
 /** Macedonian (Македонски)
@@ -381,6 +392,7 @@ $messages['oc'] = array(
  * @author Amikeco
  */
 $messages['os'] = array(
+	'whatismyip' => 'Цы IP-адрис мæм и?',
 	'whatismyip-out' => 'Дæ IP:',
 );
 

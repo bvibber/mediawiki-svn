@@ -247,6 +247,24 @@ $messages['gl'] = array(
 	'postcomment_nopostingtoadd' => 'Non pongas a engadir.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'postcomment_desc' => 'Benutzer s Kommentiere uf Diskussionssyten erlaube',
+	'postcomment_discussionprotected' => 'Die Diskussionssyte isch gsperrt wore fir wyteri Zuefiegige.',
+	'postcomment_notloggedin' => 'Du isch it aagmäldet.',
+	'postcomment_youareloggedinas' => 'Du bisch jetz as $1 aagmäldet.',
+	'postcomment_addcommentdiscussionpage' => 'Fieg Dyy Kommentar uf däre Diskussionssyte dezue',
+	'postcomment_leavemessagefor' => '$1 e Nochricht hinterloo',
+	'postcomment_post' => 'Schicke',
+	'postcomment_on' => 'Am',
+	'postcomment_said' => 'het gschribe',
+	'postcomment_invalidrequest' => 'Nit giltigi Aafrog.',
+	'postcomment_replyto' => 'Antwort an $1',
+	'postcomment_nopostingtoadd' => 'Nyt zum Zuefiege',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -671,6 +689,24 @@ $messages['sk'] = array(
 	'postcomment_nopostingtoadd' => 'Niet pridať aký príspevok.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'postcomment_desc' => 'Benutsere dät Kommentierjen ap Diskussionssieden ferlööwje',
+	'postcomment_discussionprotected' => 'Disse Diskussionssiede wuud juunuur fääre Bietouföigjen speerd.',
+	'postcomment_notloggedin' => 'Du bäst nit anmälded.',
+	'postcomment_youareloggedinas' => 'Du bäst nu as $1 anmälded.',
+	'postcomment_addcommentdiscussionpage' => 'Föich din Kommentoar ap disse Diskussionssiede bietou',
+	'postcomment_leavemessagefor' => '$1 ne Ättergjucht bääteläite',
+	'postcomment_post' => 'Seende',
+	'postcomment_on' => 'An n',
+	'postcomment_said' => 'schreeuw',
+	'postcomment_invalidrequest' => 'Uungultige Anfroage.',
+	'postcomment_replyto' => 'Oantwoud an $1',
+	'postcomment_nopostingtoadd' => 'Niks toun Bietouföigjen.',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
@@ -801,6 +837,7 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'postcomment_desc' => '允许用户直接在讨论页添加评论。',
@@ -813,6 +850,7 @@ $messages['zh-hans'] = array(
 	'postcomment_said' => '说',
 	'postcomment_invalidrequest' => '无效请求。',
 	'postcomment_replyto' => '回复$1',
+	'postcomment_nopostingtoadd' => '没有可加入的评论。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

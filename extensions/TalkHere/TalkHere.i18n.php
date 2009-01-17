@@ -384,11 +384,20 @@ Operator situs ini tidak bertanggung jawab atas isi komentar-komentar tersebut.'
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'talkhere-desc' => 'ノートページを主ページの中に置く',
+	'talkhere-foottext' => '以上のコメントはサイトの訪問者によるものかもしれません。
+
+このサイトの運営者はそのようなコメントの内容について責任を取ることはできません。',
 	'talkhere-talkpage' => '会話ページ',
+	'talkhere-notalk' => "''(まだコメントなし)''",
 	'talkhere-addcomment' => 'コメントの追加',
+	'talkhere-beforeinput' => '以下にコメントを追加できます',
+	'talkhere-loading' => 'エディタを読み込み中…',
+	'talkhere-collapse' => 'エディタを非表示',
 );
 
 /** Javanese (Basa Jawa)

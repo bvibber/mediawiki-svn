@@ -36,10 +36,19 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'errorhandler-desc' => 'Extension description displayed on [[Special:Version]].',
+	'errorhandler-msg-text' => '*$1 - error name
+*$2 - error message
+*$3 - filename
+*$4 - line number',
+	'errorhandler-msg-html' => '*$1 - error name
+*$2 - error message
+*$3 - filename
+*$4 - line number',
 );
 
 /** Arabic (العربية)
@@ -409,11 +418,32 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'errorhandler-desc' => 'MediaWiki 用のエラーハンドラ',
+	'errorhandler-errors' => 'エラー:',
+	'errorhandler-error-fatal' => '致命的エラー',
+	'errorhandler-error-warning' => '警告',
+	'errorhandler-error-parse' => 'パーサーエラー',
+	'errorhandler-error-notice' => '注意',
+	'errorhandler-error-deprecated' => '非推奨',
+	'errorhandler-error-core-error' => 'コアエラー',
+	'errorhandler-error-core-warning' => 'コア警告',
+	'errorhandler-error-compile-error' => 'コンパイルエラー',
+	'errorhandler-error-compile-warning' => 'コンパイル警告',
 	'errorhandler-error-user-error' => 'ユーザーエラー',
 	'errorhandler-error-user-warning' => 'ユーザー警告',
+	'errorhandler-error-user-notice' => 'ユーザー注意',
+	'errorhandler-error-user-deprecated' => 'ユーザー非推奨',
+	'errorhandler-error-strict' => '厳格基準',
+	'errorhandler-error-recoverable' => '捕捉可能な致命的エラー',
+	'errorhandler-msg-text' => '$1 : $2 (ファイル $3、行 $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> (ファイル <b>$3</b>、行 <b>$4</b>)',
+	'errorhandler-trace' => 'トレース:',
+	'errorhandler-trace-line' => '$1 (行 $2): $3',
+	'errorhandler-trace-line-internal' => '[内部関数]: $1',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -628,6 +658,7 @@ $messages['pt'] = array(
 	'errorhandler-errors' => 'Erros:',
 	'errorhandler-error-fatal' => 'Erro fatal',
 	'errorhandler-error-warning' => 'Aviso',
+	'errorhandler-error-deprecated' => 'Obsoleto',
 	'errorhandler-msg-text' => '$1 : $2 em $3 (linha $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> em <b>$3</b> (linha <b>$4</b>)',
 	'errorhandler-trace-line' => '$1 (linha $2): $3',

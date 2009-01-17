@@ -355,7 +355,7 @@ Wëll Dir déi Säit veränneren?',
  * @author Brest
  */
 $messages['mk'] = array(
-	'createpage' => 'Креирај страница',
+	'createpage' => 'Создади страница',
 	'createpage-desc' => 'Додава [[Special:CreatePage|специјална страница]] за креирање на нови страници',
 	'createpage_submitbutton' => 'Потврди',
 	'createpage_instructions' => 'Внесете наслов на страницата која сакате да ја креирате:',

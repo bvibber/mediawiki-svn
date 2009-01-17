@@ -385,6 +385,18 @@ $messages['pl'] = array(
 	'interwikilist-prefix' => 'Przedrostek interwiki:',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'interwikilist' => 'Lista de interwikis',
+	'interwikilist-desc' => 'Adiciona uma [[Special:Interwikilist|página especial]] para ver as ligações interwiki disponíveis',
+	'interwikilist-linkname' => 'Ligação interwiki',
+	'interwikilist-target' => 'URL alvo',
+	'interwikilist-filter' => 'Lista de filtros',
+	'interwikilist-prefix' => 'Prefixo interwiki:',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

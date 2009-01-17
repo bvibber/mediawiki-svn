@@ -160,6 +160,18 @@ $messages['ia'] = array(
 	'logentry-invalidtoken' => 'Indicio invalide',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'logentry-append' => '追加',
+	'logentry-parserhook-desc' => 'このタグ拡張機能はログページの先頭または末尾に項目を追加するフォームを提供します',
+	'logentry-specialpage-desc' => 'このタグ拡張機能はログページに項目を追加する処理を提供します',
+	'logentry' => 'ログ項目',
+	'logentry-invalidpage' => '無効なページ',
+	'logentry-invalidtoken' => '無効な字句',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
@@ -223,6 +235,18 @@ $messages['oc'] = array(
 	'logentry' => 'Jornal de las entradas',
 	'logentry-invalidpage' => 'Pagina incorrècta',
 	'logentry-invalidtoken' => 'Presa incorrècta',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'logentry-append' => 'Acrescentar',
+	'logentry-parserhook-desc' => 'Esta extensão de marca fornece uma forma de acrescentar ao início/fim de páginas de registo',
+	'logentry-specialpage-desc' => 'Esta extensão de marca fornece processamento para acrescentar a páginas de registo',
+	'logentry' => 'Entrada de Registo',
+	'logentry-invalidpage' => 'Página inválida',
+	'logentry-invalidtoken' => 'Token inválido',
 );
 
 /** Russian (Русский)

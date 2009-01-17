@@ -139,6 +139,13 @@ $messages['arz'] = array(
 	'importusers-realname' => 'الاسم الحقيقي',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'importusers-password' => 'пароль',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -981,6 +988,13 @@ $messages['oc'] = array(
 	'importusers-realname' => 'nom vertadièr',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'importusers-log-summary' => 'ସାରକଥା',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
@@ -1344,5 +1358,12 @@ $messages['vo'] = array(
 	'importusers-password' => 'letavöd',
 	'importusers-email' => 'ladet leäktronik',
 	'importusers-realname' => 'nem jenöfik',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'importusers-form-button' => 'אימפארט',
 );
 

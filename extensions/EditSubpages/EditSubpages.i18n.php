@@ -157,6 +157,22 @@ $messages['gl'] = array(
   #</pre><!-- deixe esta liña como está -->',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'editsubpages-desc' => 'מתן האפשרות למפעילי מערכת לשחרר נעילת דפים ודפי משנה לעריכה אנונימית באמצעות [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => '  #<!-- אין לערוך שורה זו --><pre>
+# הוסיפו דפים שברצונכם לשחרר להלן באופן בא
+# * שם_הדף
+# על הדפים המשוחררים להתחיל בתבליט כדי שייחשבו,
+# כל דבר אחר נחשב כהערה
+# שמות הדפים יכולים להיות [[קישורים]] והינם תלויי רישיות
+# כמו כן, דפי השיחה ישוחררו אוטומטית עם אותו הדף
+# עיינו בכתובת http://www.mediawiki.org/wiki/Extension:EditSubpages למידע נוסף
+  #</pre><!-- אין לערוך שורה זו -->',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -1435,7 +1435,7 @@ $messages['fa'] = array(
 	'code-desc' => '[[Special:Code|ابزار بازبینی کد]] با [[Special:RepoAdmin|پشتیبانی از Subversion]]',
 	'code-no-repo' => 'هیچ مخزنی تنظیم نشده‌است!',
 	'code-load-diff' => 'در حال بارگیری تفاوت...',
-	'code-notes' => 'نکته‌های بازدید',
+	'code-notes' => 'توضیحات تازه',
 	'code-authors' => 'مولفان',
 	'code-status' => 'وضعیت',
 	'code-tags' => 'برچسب‌ها',
@@ -1456,7 +1456,7 @@ $messages['fa'] = array(
 	'code-field-message' => 'خلاصهٔ سپردن',
 	'code-field-status' => 'وضعیت',
 	'code-field-timestamp' => 'تاریخ',
-	'code-field-comments' => 'نکات',
+	'code-field-comments' => 'توضیحات',
 	'code-field-path' => 'مسیر',
 	'code-field-text' => 'نکته',
 	'code-rev-author' => 'مولف:',
@@ -2792,8 +2792,10 @@ $4',
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'code-authors' => 'ავტორები',
 	'code-field-author' => 'ავტორი',
 	'code-field-timestamp' => 'თარიღი',
+	'code-rev-author' => 'ავტორი:',
 	'code-rev-date' => 'თარიღი:',
 );
 
@@ -2859,6 +2861,7 @@ $messages['ko'] = array(
 	'code-tags' => '태그',
 	'code-author-name' => '사용자 이름을 입력하십시오:',
 	'code-author-success' => '제작자 $1은(는) 위키 사용자 $2(으)로 연결되었습니다.',
+	'code-field-id' => '버전',
 	'code-field-status' => '상태',
 	'code-field-timestamp' => '날짜',
 	'code-field-path' => '경로',
@@ -3026,7 +3029,7 @@ $messages['lb'] = array(
 	'code-change-added' => 'derbäi gesat:',
 	'code-prop-changes' => 'Logbuch vum Status an den Taggen',
 	'code-desc' => "[[Special:Code|Tool fir de Code nozekucken]] matt [[Special:RepoAdmin|Subversioun's Ënnerstëtzung]]",
-	'code-notes' => 'Notizen nokucken',
+	'code-notes' => 'rezent Bemierkungen',
 	'code-authors' => 'Auteuren',
 	'code-tags' => 'Tagen',
 	'code-author-haslink' => 'Dësen Auteur ass mam Wiki-Benotzer $1 verbonn',
@@ -3093,6 +3096,17 @@ $4',
 	'right-codereview-set-status' => 'Ännere vum Status vun de Versiounen',
 	'right-codereview-link-user' => 'Auteure mat Wiki-Benotzer verbannen (verlinken)',
 	'specialpages-group-developer' => 'Handwierksgeschir fir Entwéckler (Programméierer)',
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'code-authors' => 'autores',
+	'code-field-author' => 'Autor',
+	'code-rev-author' => 'Autor:',
+	'repoadmin-new-button' => 'Crea',
+	'repoadmin-edit-button' => 'Oce',
 );
 
 /** Macedonian (Македонски)
@@ -4371,7 +4385,7 @@ $messages['sk'] = array(
 	'code-desc' => '[[Special:Code|Nástroj na kontrolu kódu]] s [[Special:RepoAdmin|podporou Subversion]]',
 	'code-no-repo' => 'Nebolo nastavené žiadne úložisko',
 	'code-load-diff' => 'Načítava sa rozdiel…',
-	'code-notes' => 'skontrolovať poznámky',
+	'code-notes' => 'posledné komentáre',
 	'code-authors' => 'autori',
 	'code-status' => 'stav',
 	'code-tags' => 'značky',
@@ -5401,6 +5415,7 @@ $messages['vo'] = array(
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'gesagön',
 	'codereview-email-subj' => '[$1] [r$2]: Küpet nulik peläükon',
+	'repoadmin' => 'Guvam Kipedöpa',
 	'repoadmin-new-legend' => 'Jafön kipedöpi nulik',
 	'repoadmin-new-label' => 'Nem kipedöpa:',
 	'repoadmin-new-button' => 'Jafön',

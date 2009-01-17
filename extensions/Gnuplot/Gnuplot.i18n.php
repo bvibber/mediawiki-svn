@@ -255,6 +255,13 @@ $messages['sk'] = array(
 	'gnuplot-desc' => 'Pridáva značku <code><nowiki><gnuplot></nowiki></code> pre použitie Gnuplot',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'gnuplot-desc' => 'Nambahkeun tag <code><nowiki><gnuplot></nowiki></code> pikeun maké Gnuplot',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

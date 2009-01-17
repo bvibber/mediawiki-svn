@@ -770,7 +770,15 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'chemicalsources' => 'fonde chimiche',
+	'chemicalsource-desc' => "Aggiunge 'u tag <nowiki><chemform></nowiki>, pe le formule chimiche",
+	'chemFunctions_ListPage' => 'fonde chimiche',
+	'chemFunctions_CAS' => 'Numere CAS',
+	'chemFunctions_ATCCode' => 'Codece ATC',
+	'chemFunctions_ECNumber' => 'Numere EC',
 	'chemFunctions_Formula' => 'Formule',
+	'chemFunctions_Name' => 'Nome IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Errore de dati mise!',
 );
 
 /** Russian (Русский)

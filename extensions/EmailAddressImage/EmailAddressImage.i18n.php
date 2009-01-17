@@ -196,6 +196,13 @@ $messages['mr'] = array(
 	'emailaddressimage-desc' => 'एखादा इमेल पत्ता चित्र म्हणून दर्शविण्यासाठी लागणारी <tt>&lt;email&gt;</tt> खूण वाढविते',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'emailaddressimage-desc' => 'Föögt dat <tt>&lt;email&gt;</tt>-Tag to, E-Mail-Adressen as Bild dortostellen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -320,6 +327,13 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'emailaddressimage-desc' => 'Läükon eli <tt>&lt;email&gt;</tt> ad jonön ladeti leäktronik as magod',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'emailaddressimage-desc' => 'לייגט צו <tt>&lt;email&gt;</tt> צו ווײַזן אן ע-פאסט אדרעס אלס בילד',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

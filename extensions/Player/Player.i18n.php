@@ -896,8 +896,10 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'player-title' => 'Jucător',
 	'player-file' => 'Nume fişier',
 	'player-invalid-title' => 'titlu incorect',
+	'player-goto-player' => 'jucător',
 	'player-goto-page' => 'Pagină',
 	'player-goto-file' => 'fişier',
 );
@@ -1102,10 +1104,16 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'player' => '播放器',
 	'player-title' => '播放器',
+	'player-file' => '文件名',
 	'player-not-found' => '找不到文件',
+	'player-clicktoplay' => '播放$1',
+	'player-goto-player' => '播放器',
+	'player-goto-page' => '页面',
 	'player-goto-file' => '文件',
 );
 

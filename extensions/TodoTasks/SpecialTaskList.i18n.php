@@ -116,6 +116,37 @@ $messages['arz'] = array(
 نظام إخطار %s الصديق',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'tasklist' => 'Сьпіс заданьняў',
+	'tasklist-parser-desc' => 'Дадае функцыю парсэра <nowiki>{{#todo:}}</nowiki> для прызначэньня заданьняў',
+	'tasklist-special-desc' => 'Дадае спэцыяльную старонку для прагляду [[Special:TaskList|прызначаных заданьняў]]',
+	'tasklistbyproject' => 'Сьпіс заданьняў па праектах',
+	'tasklistunknownproject' => 'Невядомы праект',
+	'tasklistunspecuser' => 'Непазначаны ўдзельнік',
+	'tasklistincorrectuser' => 'Няслушнае імя ўдзельніка',
+	'tasklistemail' => 'Паважаны %s',
+	'tasklistemailsubject' => '[%s] Зьмена сьпісу заданьняў',
+	'tasklistmytasks' => 'Мае заданьні',
+	'tasklistbyprojectbad' => "Няслушны праект '''%s'''.
+Сьпіс слушных праектаў глядзіце на [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Прызначана заданьне для '''%s'''",
+	'tasklistchooseproj' => 'Выберыце праект:',
+	'tasklistprojdisp' => 'Паказаць',
+	'tasklistbyname' => '== Сьпіс заданьняў для %s ==',
+	'tasklistnoprojects' => "Памылка: верагодна Вы ўключылі '''\$wgUseProjects''', але яшчэ ня стварылі [[MediaWiki:TodoTasksValidProjects]]. Глядзіце падрабязнасьці на [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions].",
+	'tasklistemailbody' => ',
+
+Нехта прызначыў Вам новае заданьне ў %s.
+
+Каб паглядзець поўны сьпіс заданьняў, перайдзіце на %s.
+
+Ваша сыстэма паведамленьняў %s',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -865,6 +896,8 @@ Váš priateľský upozorňovací systém %s',
  */
 $messages['stq'] = array(
 	'tasklist' => 'Apgoawenlieste',
+	'tasklist-parser-desc' => 'Föiget ju Parserfunktion <nowiki>{{#todo:}}</nowiki> toun Tou-oardenjen fon Apgoawen bietou',
+	'tasklist-special-desc' => 'Föiget ne Spezioalsiede foar ju Ätterpröiwenge fon [[Special:TaskList|Apgoawentoudeelengen]] bietou',
 	'tasklistbyproject' => 'Apgoawenlieste pro  Projekt',
 	'tasklistunknownproject' => 'Uunbekoand Projekt',
 	'tasklistunspecuser' => 'Uunbestimde Benutsernoome',
@@ -879,6 +912,13 @@ $messages['stq'] = array(
 	'tasklistbyname' => '== Apgoawenlieste foar %s ==',
 	'tasklistnoprojects' => "Failer: Dät sjucht so uut, as wan '''\$wgUseProjects''' aktivierd waas, man der wuuden neen Sieden [[MediaWiki:TodoTasksValidProjects]] moaked. Sjuch do
 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanwiesengen] foar wiedere Details.",
+	'tasklistemailbody' => ',
+
+Wäl häd die ne näie Apgoawe bie %s tou-oardend.
+
+Toun Bekiekjen fon dien komplette Apgoawenlieste sjuch %s.
+
+Dien früntelk %s-Bescheed-täl-System',
 );
 
 /** Swedish (Svenska)

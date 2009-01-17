@@ -43,6 +43,7 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Jon Harald Søby
+ * @author Malafaya
  * @author Purodha
  */
 $messages['qqq'] = array(
@@ -52,7 +53,7 @@ $messages['qqq'] = array(
 	'deletebatch-processing' => 'Used as page subtitle.
 * $1 is text from {{msg-mw|deletebatch-from-file}} or {{msg-mw|deletebatch-from-form}}',
 	'deletebatch-from-file' => 'Used as $1 in {{msg-mw|Deletebatch-processing}}',
-	'deletebatch-from-form' => 'Used as $1 in {{msg-mw|processing}}',
+	'deletebatch-from-form' => 'Used as $1 in {{msg-mw|Deletebatch-processing}}',
 	'deletebatch-success-subtitle' => '{{Identical|For $1}}',
 	'deletebatch-select-script' => 'User name. Entry in dropdown for user that should execute the deletions',
 	'deletebatch-select-yourself' => 'Entry in dropdown for user that should execute the deletions',
@@ -831,6 +832,7 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
 /** Polish (Polski)
  * @author Airwolf
  * @author Maikking
+ * @author Matma Rex
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -859,14 +861,39 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 	'deletebatch-select-script' => 'usuwanie stron',
 	'deletebatch-select-yourself' => 'Ty',
 	'deletebatch-no-page' => 'Wybierz pojedynczą stronę do usunięcia ALBO wybierz plik zawierający listę stron.',
+	'right-deletebatch' => 'usuwanie grupy stron',
 );
 
 /** Portuguese (Português)
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'deletebatch-here' => '<b>aqui</b>',
+	'deletebatch' => 'Apagar páginas em bloco',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Elimine um bloco de páginas]]',
+	'deletebatch-button' => 'Eliminar',
+	'deletebatch-help' => 'Elimine um bloco de páginas. Você pode realizar uma única eliminação, ou eliminar páginas listadas num ficheiro.
+Escolha um utilizador que será mostrado nos registos de eliminação.
+O ficheiro carregado deverá conter o nome da página e um motivo opcional, separados por um carácter "|" em cada linha.',
 	'deletebatch-caption' => 'Lista de páginas',
+	'deletebatch-title' => 'Apagar bloco',
+	'deletebatch-link-back' => 'Você pode voltar à extensão',
+	'deletebatch-as' => 'Executar o script como',
+	'deletebatch-both-modes' => 'Por favor, escolha uma página especificada ou uma dada lista de páginas.',
+	'deletebatch-or' => '<b>ou</b>',
+	'deletebatch-page' => 'Páginas a eliminar',
+	'deletebatch-reason' => 'Motivo da eliminação',
+	'deletebatch-processing' => 'a eliminar páginas $1',
+	'deletebatch-from-file' => 'de lista em ficheiro',
+	'deletebatch-from-form' => 'de formulário',
+	'deletebatch-success-subtitle' => 'para $1',
+	'deletebatch-omitting-nonexistant' => 'A omitir página não existente $1.',
+	'deletebatch-omitting-invalid' => 'A omitir página inválida $1.',
+	'deletebatch-file-bad-format' => 'O ficheiro deve conter texto pleno',
+	'deletebatch-file-missing' => 'Não foi possível ler o ficheiro fornecido',
+	'deletebatch-select-script' => 'script de eliminação de páginas',
+	'deletebatch-select-yourself' => 'você',
+	'deletebatch-no-page' => 'Por favor, especifique pelo menos uma página para eliminar OU escolha um ficheiro contendo uma lista de páginas.',
+	'right-deletebatch' => 'Apagar páginas em bloco',
 );
 
 /** Romanian (Română)

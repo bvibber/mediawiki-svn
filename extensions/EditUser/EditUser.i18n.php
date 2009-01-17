@@ -745,6 +745,13 @@ $messages['oc'] = array(
 	'right-edituser-exempt' => 'Pòt pas obténer lors preferéncias modificadas pels autres',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'edituser-dosearch' => 'ସନ୍ଧାନ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */

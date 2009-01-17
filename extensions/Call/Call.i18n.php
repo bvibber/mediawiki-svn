@@ -133,6 +133,30 @@ M'ho pez kudennoù e c'hallit klask ober gant <b>Special:Call/DebuG</b>",
 	'call-save-failed' => "N'EO KET BET enrollet an destenn da-heul war ar bajenn <big>[[$1]]</big> rak bez'ez eus anezhi c'hoazh.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'call' => 'Poziv',
+	'call-desc' => 'Pravi hiperlink prema šablonu (ili običnoj wiki stranici) sa datim parametrima.
+Može se koristiti i putem komandne linije preglednika ili unutar wiki teksta.',
+	'call-text' => "Proširenje poziva očekuje wiki stranicu i moguće parametre za tu stranicu kao arugumente.
+
+Primjer 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Primjer 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+Primjer 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Primjer 4 (URL preglednika): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
+
+<i>Proširenje poziva</i> će pozvati navedenu stranicu i unijeti parametre.<br />
+Vi ćete vidjeti sadržaj pozvane stranice i njen naslov ali njen 'tip' će biti kao da je specijalna stranica tj. takva stranica se ne može uređivati.<br />Sadržaji koji su prikazani mogu biti različiti u zavisnosti od vrijednosti parametara koje ste naveli.
+
+<i>Proširenje poziva</i> je korisno za pravljenje interaktivnih aplikacija sa MediaWiki.<br />Za primjer pogledajte na a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
+U slučaju problema možete pokušati <b>Special:Call/DebuG</b>",
+	'call-save' => "Izlaz ovog poziva će biti spremljen na stranicu ''$1''.",
+	'call-save-success' => 'Slijedeći tekst je spremljen na stranicu <big>[[$1]]</big> .',
+	'call-save-failed' => 'Slijedeći tekst NEĆE biti spremljen na stranicu <big>[[$1]]</big> jer ova stranica već postoji.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -385,21 +409,23 @@ In caso de problemas, tu pote probar <b>Special:Call/DebuG</b>",
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'call' => 'ページ呼び出し',
 	'call-desc' => 'テンプレート（または普通のウィキページ）にパラメータを渡すハイパーリンクを作成する。ブラウザのアドレス欄やウィキテキスト内部で利用可能',
-	'call-text' => "ページ呼び出しエクステンションは、あるウィキページに、そのページが取る引数であるオプションパラメータが設定されていることを想定しています。<br /><br />
+	'call-text' => "ページ呼び出し拡張機能は、あるウィキページに、そのページが取る引数であるオプションパラメータが設定されていることを想定しています。
+
 例1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
 例2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
-例3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
-例4 (ブラウザURL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:MyPage,parm1=value1</tt><br /><br />
+例3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+例4 (ブラウザURL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:MyPage,parm1=value1</tt>
 
-<i>ページ呼び出しエクステンション</i> は、与えられたページをパラメータ付きで呼び出します。<br />あなたは呼び出されたページ内容とタイトルを見ることはできますが、'ページのタイプ'は特別ページ、<br />つまりそのページを編集することはできません。<br />ページ内容は指定したパラメータによって変化します。<br /><br />
+<i>ページ呼び出しエクステンション</i> は、与えられたページをパラメータ付きで呼び出します。<br />あなたは呼び出されたページ内容とページ名を見ることはできますが、ページの「タイプ」は特別ページとなり、<br />つまりそのページを編集することはできません。<br />ページ内容は指定したパラメータによって変化します。
 
-<i>ページ呼び出しエクステンション</i> は、MediaWiki上でインタラクティブなアプリケーションを構築するのに便利です。<br />[http://semeb.com/dpldemo/Template:Catlist the DPL GUI]を参考にしてください。<br />
-問題が発生した場合は、<b>[[Special:Call/DebuG]]</b> をお試しください。",
+<i>ページ呼び出しエクステンション</i> は、MediaWiki 上で対話的なアプリケーションを構築するのに便利です。<br /><a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a>を参考にしてください。<br />
+問題が発生した場合は、<b>Special:Call/DebuG</b> をお試しください。",
 	'call-save' => "このページ呼び出し結果は、ページ ''$1'' として保存されます。",
 	'call-save-success' => '以下のテキストが、ページ <big>[[$1]]</big> として保存されました。',
 	'call-save-failed' => "以下のテキストは、既に同名のページが存在するため、ページ <big>[[$1]]</big> として'''保存されませんでした'''。",
@@ -711,6 +737,18 @@ V prípade problémov môžete skúsuť <b>Special:Call/DebuG</b>",
 	'call-save-failed' => "Nasledovný text NEBOL uložený na stránku ''$1'', pretože taká stránka už existuje.",
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'call' => 'Parameter-Aproup',
+	'call-desc' => 'Moaket n Hyperlink tou ne Foarloage (of tou ne normoale Siede) mäd Parameter-Uurgoawe.
+Kon in ju Iengoawe-Apfoarderenge fon dän Browser of in dän Wiki-Text ferwoand wäide.',
+	'call-save' => "Ju Uutgoawe fon dissen Aproup wüül as Siede ''$1'' spiekerd wäide.",
+	'call-save-success' => 'Die foulgjende Text wuud ap Siede <big>[[$1]]</big> spiekerd.',
+	'call-save-failed' => 'Die foulgjende Text wuud NIT ap Siede <big>[[$1]]</big> spiekerd, wült disse Siede al existiert.',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
@@ -813,6 +851,8 @@ Trong trường hợp có vấn đề bạn có thể thử <b>Special:Call/Debu
  * @author Smeira
  */
 $messages['vo'] = array(
+	'call' => 'Vokön',
+	'call-save' => "Seks voka at padakiponsöv as pad tiädü ''$1''.",
 	'call-save-success' => 'Vödem fovik pedakipon su pad: <big>[[$1]]</big>.',
 	'call-save-failed' => 'Vödem fovik NO pedakipon su pad: <big>[[$1]]</big> bi pad at ya dabinon.',
 );

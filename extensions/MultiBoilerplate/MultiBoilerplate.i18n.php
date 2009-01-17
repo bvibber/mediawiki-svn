@@ -164,10 +164,13 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'multiboilerplate-submit' => 'ロード',
+	'multiboilerplate-desc' => 'ページ編集時に編集フォームの上のドロップダウンボックスから定型句を選択できるようにする',
+	'multiboilerplate-legend' => '定型句の選択',
+	'multiboilerplate-submit' => '読み込み',
 );
 
 /** Javanese (Basa Jawa)
@@ -232,6 +235,8 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'multiboilerplate-desc' => 'Syner ein boks på toppen av endringssida for å velja og lasta ein standardtekst',
+	'multiboilerplate-legend' => 'Vel standardtekst',
 	'multiboilerplate-submit' => 'Last',
 );
 

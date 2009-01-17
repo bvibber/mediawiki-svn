@@ -1361,7 +1361,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'bookinfo-header' => 'Informatione uur Bouke',
-	'bookinfo-desc' => 'Föiget [[Special:Booksources]] tou mäd Informatione fon n Webangebod',
+	'bookinfo-desc' => 'Föiget [[Special:Booksources|Boukwällen-Spezioalsiede]] bietou mäd Informatione fon n Webanboad',
 	'bookinfo-result-title' => 'Tittel:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Ferlaach:',

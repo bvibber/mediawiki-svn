@@ -123,6 +123,13 @@ $messages['hsb'] = array(
 	'i18ntags-desc' => 'Přistup k funkcijam i18n za formatowanje ličbow, gramatiku a plural w kóždej k dispoziciji stejacej rěči',
 );
 
+/** Hungarian (Magyar)
+ * @author Gondnok
+ */
+$messages['hu'] = array(
+	'i18ntags-desc' => 'Hozzáférés a számformátum, nyelvtani- és többesszám-definíciók beállításaihoz az összes elérhető nyelven.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -170,6 +177,13 @@ $messages['lb'] = array(
  */
 $messages['mr'] = array(
 	'i18ntags-desc' => 'सर्व उपलब्ध भाषांमधील संख्यालेखन, व्याकरण व बहुवचने देण्यासाठीची i18n कार्ये वापरा',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'i18ntags-desc' => 'Togang to de i18n-Funktionen för dat Formateren vun Tallen un för dat Billen vun Mehrtall un Grammatikformen in elkeen Spraak',
 );
 
 /** Dutch (Nederlands)

@@ -454,9 +454,11 @@ Bonvolu kontroli vian ŝprucfenestran barilon.',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $wgCustomToolbarMessages['es'] = array(
+	'ct-desc' => 'Agregar una barra de herramientas extensible',
 	'ct_bold_sample' => 'Texto en negrita',
 	'ct_bold_tip_ins' => 'Insertar texto en negrita',
 	'ct_bold_tip_wrap' => 'Convertir este texto en negrita',
@@ -496,6 +498,8 @@ $wgCustomToolbarMessages['es'] = array(
 	'ct_success' => '¡El archivo se subió con éxito!',
 	'ct_popupblocked' => 'No se pudo abrir la ventana para subir el archivo. Revise su bloqueador de ventanas emergentes.',
 	'ct_user_user' => 'Usuario',
+	'ct_user_tip' => 'Insertar un vínculo a una página de usuario',
+	'ct_user_caption' => 'Vínculo de usuario',
 	'ct_user_sample' => 'Nombre de usuario',
 );
 
@@ -1253,6 +1257,14 @@ Consultatz vòstres paramètres de blocatge dels popups.',
 	'ct_user_sample' => 'Nom de l’utilizaire',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$wgCustomToolbarMessages['os'] = array(
+	'ct_external_caption' => 'Æддаг æрвитæн',
+	'ct_math_caption' => 'Формулæ',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
@@ -1801,12 +1813,20 @@ $wgCustomToolbarMessages['vo'] = array(
 	'ct_italic_tip_wrap' => 'Korsivükön vödemi at',
 	'ct_italic_caption' => 'Korsivik',
 	'ct_internal_sample' => 'PadaNem',
+	'ct_internal_tip_ins' => 'Nüpladön yümi ninik',
+	'ct_internal_tip_wrap' => 'Vedükön vödemi at yümi ninik',
 	'ct_internal_caption' => 'Yüm ninik',
+	'ct_external_tip_ins' => 'Nüpladön yümi plödik',
+	'ct_external_tip_wrap' => 'Vedükön vödemi at yümi plödik',
 	'ct_external_caption' => 'Yüm plödik',
 	'ct_image_tip' => 'Nüpladön magodi',
 	'ct_image_caption' => 'Läükön magodi',
+	'ct_nowiki_sample' => 'Nüpladön isio vödemi nenfomätik',
 	'ct_nowiki_tip_ins' => 'Nedemön fomätami vükik',
 	'ct_nowiki_tip_wrap' => 'Nedemön fomätami vükik in vödem at',
+	'ct_nowiki_caption' => 'Vük nonik',
+	'ct_horizontal_tip' => 'Nüpladön lieni horitätik (no gebolös tusuvo)',
+	'ct_horizontal_caption' => 'Lien horitätik',
 	'ct_upload' => 'Löpükön $1',
 	'ct_select' => 'Välön $1 ad palöpükön',
 	'ct_link' => 'Läükön yümanemi (no paflagöl)',
@@ -1814,6 +1834,7 @@ $wgCustomToolbarMessages['vo'] = array(
 	'ct_close' => 'Färmükön fenäti',
 	'ct_success' => 'Ragivalöpükam benosekik!',
 	'ct_user_user' => 'Geban',
+	'ct_user_tip' => 'Nüpladön yümi lü gebanapad',
 	'ct_user_caption' => 'Gebanayüm',
 	'ct_user_sample' => 'Gebananem',
 );

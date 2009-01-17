@@ -295,10 +295,12 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'review_sidebar_explanation' => "Krajnji lijevi potvrdni okvir uvijek znači 'bez mišljenja'.",
+	'review_error' => 'Nešto nije u redu!',
 	'review_total_statistics' => 'Ukupno',
 	'review_statistic_cell' => 'Prosjek: $1 of $2<br />($4 korisnika, $5 anonimnih)',
 	'review_user_details_link' => '(detalji)',
-	'review_blocked' => 'Blokirani ste, nemate pristup.',
+	'review_blocked' => 'Blokirani ste i ne možete učestvovati u pregledima.',
+	'review_topic' => 'Tema',
 	'review_comment' => 'Komentar',
 );
 
@@ -324,10 +326,16 @@ $messages['da'] = array(
  * @author MF-Warburg
  * @author Melancholie
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'review_sidebar_title' => 'Prüfung',
 	'review-desc' => 'Das wiederauferstandene [[Special:Review|Validierungswerkzeug]].',
+	'review_topics' => '# Nachfolgend die Liste der Themen und Bereiche für die Review-Extension.
+# Jedes Thema ist definiert durch eine Zeile von fünf Werten, getrennt durch „:“ (alle anderen Zeilen werden ignoriert).
+# Reihenfolge: Nummerischer Schlüssel (> 0), Name, maximaler Bereich (> 1; 2=ja/nein), Bedeutung des niedrigsten Wertes (z. B. „schlecht“), Bedeutung des höchsten Wertes (z. B. „gut“).
+1:Qualität:5:schlecht:gut
+2:Fertig für 1.0:2:nein:ja',
 	'review_topic_page' => 'Themen prüfen',
 	'review_sidebar_explanation' => 'Das ganz linke Auswahlkästchen bedeutet immer „keine Meinung“.',
 	'review_save' => 'Prüfung speichern',
@@ -783,7 +791,7 @@ $messages['ia'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Tu recension ha essite immagazinate!</span>",
 	'revision_review_this_page_version_link' => 'Recenser iste version del pagina.',
 	'review_page_review' => 'Recension del pagina "$1"',
-	'review_blocked' => 'Tu es blocate, va via.',
+	'review_blocked' => 'Tu es blocate e non pote participar in revisiones.',
 	'review_wrong_namespace' => 'Le pagina in iste spatio de nomines non pote esser recensite!',
 	'review_topic' => 'Topico',
 	'review_no_opinion' => 'Nulle opinion',
@@ -1076,15 +1084,44 @@ Uw andere waarderingen worden samengevoegd met deze waar u 'geen mening' hebt op
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'review_sidebar_title' => 'Vurder',
+	'review-desc' => 'Den gjenoppliva [[Special:Review|valideringsfunksjonen]].',
+	'review_topics' => '# Følgjande er ei lista over emne og verdiar for valideringsutvidinga.
+# Kvart emne er definert av ei lina på fem verdiar, skilte frå kvarandre med «:» (alle andre liner vert ignorerte).
+# Rekkjefølgja er: Numerisk verdi (>0), namn, maksimum verdi (>1; 2=yes/no), tyding av lågaste verdi (t.d. «dårleg»), tyding av høgaste verdi (t.d. «bra»).
+1:Kvalitet:5:dårleg:bra
+2:Klar for 1.0:2:no:yes',
+	'review_topic_page' => 'Vurderingsemne',
+	'review_sidebar_explanation' => 'Den venstre avmerkingsboksen tyder alltid «inga meining».',
+	'review_save' => 'Lagra vurdering',
+	'review_your_review' => 'Vuderinga di av denne sida/versjonen:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Du har alt vurdert andre versjonar av denne sida. Dei andre vurderingane dine vil verta slegne saman med denne der du har valt «inga meining».',
+	'review_page_link' => 'vurderingsstatistikk',
+	'review_sidebar_final' => 'For vurderingsinformasjon for denne sida, sjå $1',
+	'review_for_page' => 'Vurdering av sida «$1»',
+	'review_for_user' => 'Vurdering av brukaren «$1»',
 	'review_error' => 'Noko er feil!',
+	'review_no_reviews_for_page' => 'Det finst ingen vurderingar av «$1».',
 	'review_total_statistics' => 'Totalt',
 	'review_statistics_left_corner' => 'Versjon',
 	'review_version_link' => 'Versjon #$1',
 	'review_statistic_cell' => 'Snitt: $1 av $2<br />($4 registrerte, $5 uregistrerte)',
 	'review_version_statistic_cell' => '$1 av $2',
+	'review_version_reviews_link' => '<small>(versjonsvurderingar)</small>',
+	'review_concerns_page' => 'Denne vurderinga gjeld sida «$1».',
+	'review_concerns_user' => 'Dette er om vurderingar av brukaren «$1».',
+	'review_user_reviews' => '<small>(vurderingar av denne brukaren)</small>',
+	'review_user_page_list' => 'Brukaren har vurdert følgjande sider:',
 	'review_user_details_link' => '(detaljar)',
-	'review_blocked' => 'Du er blokkert.',
+	'review_do_merge' => 'Slå saman mine vurderingar av andre versjonar av denne sida med denne',
+	'review_has_been_stored' => '<span id="review_has_been_stored">Vurderinga di har vorten lagra!</span>',
+	'revision_review_this_page_version_link' => 'Vurder denne versjonen av sida.',
+	'review_page_review' => 'Vurdering av sida «$1»',
+	'review_blocked' => 'Du er blokkert og kan ikkje ta del i vurderingar.',
+	'review_wrong_namespace' => 'Kan ikkje vurdera sider i dette namnerommet.',
 	'review_topic' => 'Emne',
+	'review_no_opinion' => 'Inga meining',
+	'review_rating' => 'Vurdering',
 	'review_comment' => 'Kommentar',
 );
 
@@ -1218,7 +1255,7 @@ $messages['pl'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Twoja recenzja została zapisana!</span>",
 	'revision_review_this_page_version_link' => 'Recenzuj tę wersję strony.',
 	'review_page_review' => 'Recenzja strony „$1”',
-	'review_blocked' => 'Zostałeś zablokowany.',
+	'review_blocked' => 'Zostałeś zablokowany i nie możesz uczestniczyć w oznaczaniu wersji sprawdzonych.',
 	'review_wrong_namespace' => 'Strony w tej przestrzeni nazw nie mogą być recenzowane!',
 	'review_topic' => 'Temat',
 	'review_no_opinion' => 'Brak opinii',
@@ -1557,6 +1594,13 @@ $messages['vo'] = array(
 	'review_blocked' => 'No dalol dunön atosi bi peblokol.',
 	'review_no_opinion' => 'Ced nonik',
 	'review_comment' => 'Küpet',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'review_comment' => '评论',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

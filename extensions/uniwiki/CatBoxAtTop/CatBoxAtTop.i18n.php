@@ -258,6 +258,13 @@ $messages['oc'] = array(
 	'catboxattop-categories' => 'Categorias',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'catboxattop-categories' => 'Категоритæ',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */

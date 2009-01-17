@@ -213,6 +213,7 @@ $messages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'inplace_access_disabled' => 'Доступ да гэтага сэрвісу быў адключаны для ўсіх кліентаў.',
@@ -226,7 +227,7 @@ $messages['be-tarask'] = array(
 	'inplace_scaler_no_output' => 'Мэтавы файл пераўтварэньня ня створаны .',
 	'inplace_scaler_zero_size' => 'Пераўтварэньне стварыла файл з нулявым памерам.',
 	'webstore-desc' => 'Праграмнае забесьпячэньне для захоўваньня файлаў у Інтэрнэт (NFS не ўжываецца)',
-	'webstore_access' => 'Гэты сэрвіс забаронены для ІР-адрас кліента.',
+	'webstore_access' => 'Гэты сэрвіс забаронены для ІР-адрасу кліента.',
 	'webstore_path_invalid' => 'Няслушная назва файла.',
 	'webstore_dest_open' => 'Немагчыма адкрыць мэтавы файл «$1».',
 	'webstore_dest_lock' => 'Не атрымалася заблякаваць мэтавы файл «$1».',
@@ -236,7 +237,7 @@ $messages['be-tarask'] = array(
 	'webstore_src_open' => 'Не атрымалася адкрыць крынічны файл «$1».',
 	'webstore_src_close' => 'Памылка закрыцьця крынічнага файла «$1».',
 	'webstore_src_delete' => 'Памылка выдаленьня крынічнага файла «$1».',
-	'webstore_rename' => 'Памылка перайменаваньня файла «$1» ў «$2».',
+	'webstore_rename' => 'Памылка перайменаваньня файла «$1» у «$2».',
 	'webstore_lock_open' => 'Памылка адкрыцьця файла блякаваньня «$1».',
 	'webstore_lock_close' => 'Памылка закрыцьця файла блякаваньня «$1».',
 	'webstore_dest_exists' => 'Памылка, мэтавы файл «$1» ужо існуе.',
@@ -244,6 +245,27 @@ $messages['be-tarask'] = array(
 	'webstore_temp_copy' => 'Памылка капіяваньня часовага файла «$1» у мэтавы файл «$2».',
 	'webstore_temp_close' => 'Памылка закрыцьця часовага файла «$1».',
 	'webstore_temp_lock' => 'Памылка блякаваньня часовага файла «$1».',
+	'webstore_no_archive' => 'Мэтавы файл ужо існуе, архіў не пазначаны.',
+	'webstore_no_file' => 'Ніякіх файлаў не загружана.',
+	'webstore_move_uploaded' => 'Пад час перайменаваньня загружанага файла «$1» у часовую дырэкторыю «$2» узьнікла памылка.',
+	'webstore_invalid_zone' => 'Няслушная зона «$1».',
+	'webstore_no_deleted' => 'Не пазначана архіўная дырэкторыя для выдаленых файлаў.',
+	'webstore_curl' => 'Памылка cURL: $1',
+	'webstore_404' => 'Файл ня знойдзены.',
+	'webstore_php_warning' => 'Папярэджаньне РНР: $1',
+	'webstore_metadata_not_found' => 'Файл ня знойдзены: $1',
+	'webstore_postfile_not_found' => 'Файл да апублікаваньня ня знойдзены.',
+	'webstore_scaler_empty_response' => 'Пераўтваральнік маштабу выявы вярнуў пусты адказ з кодам памылкі 200.
+Гэта магло адбыцца ў выніку крытычнай памылкі РНР у пераўтваральніку маштабу.',
+	'webstore_invalid_response' => 'Памылковы адказ сэрвэра:
+
+$1',
+	'webstore_no_response' => 'Няма адказу сэрвэра.',
+	'webstore_backend_error' => 'Сэрвэр, на якім захоўваюцца зьвесткі, вярнуў памылку:
+
+$1',
+	'webstore_php_error' => 'Узьніклі наступныя памылкі РНР:',
+	'webstore_no_handler' => 'Ня знойдзены апрацоўшчык для пераўтварэньня гэтага тыпу MIME',
 );
 
 /** Bulgarian (Български)
@@ -372,9 +394,15 @@ $1',
  */
 $messages['bs'] = array(
 	'inplace_access_denied' => 'Ova usluga je zabranjena od strane IPa klijenta.',
+	'inplace_scaler_not_enough_params' => 'Nema dovoljno parametara.',
 	'inplace_scaler_invalid_image' => 'Nevaljana slika, nije joj moguće odrediti veličinu.',
+	'webstore_path_invalid' => 'Naziv datoteke nije valjan.',
 	'webstore_src_open' => 'Ne može se otvoriti izvorišna datoteka "$1".',
+	'webstore_dest_exists' => 'Greška, odredišna datoteka "$1" postoji.',
+	'webstore_invalid_zone' => 'Nevaljana zona "$1".',
 	'webstore_404' => 'Datoteka nije nađena.',
+	'webstore_php_warning' => 'PHP upozorenje: $1',
+	'webstore_metadata_not_found' => 'Datoteka nije nađena: $1',
 	'webstore_no_response' => 'Nema odgovora od servera',
 );
 
@@ -555,6 +583,7 @@ $1',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Fluence
  * @author Sanbec
  */
@@ -562,9 +591,11 @@ $messages['es'] = array(
 	'inplace_access_disabled' => 'Se ha deshabilitado el acceso a este servicio para todos los clientes.',
 	'inplace_access_denied' => 'Este servicio está restringido por IP de cliente.',
 	'inplace_scaler_not_enough_params' => 'Sin parámetros suficientes.',
+	'inplace_scaler_invalid_image' => 'Imagen inválida, no podría determinarse tamaño.',
 	'webstore_path_invalid' => 'El nombre de archivo no es válido.',
 	'webstore_dest_open' => 'No es posible abrir el archivo de destino «$1».',
 	'webstore_dest_mkdir' => 'No es posible crear el directorio de destino «$1».',
+	'webstore_no_file' => 'Ningún archivo fue cargado.',
 	'webstore_invalid_zone' => 'Zona no válida «$1».',
 	'webstore_404' => 'Archivo no encontrado.',
 	'webstore_metadata_not_found' => 'Archivo no encontrado: $1',
@@ -1418,9 +1449,11 @@ $1",
  * @author Amikeco
  */
 $messages['os'] = array(
+	'inplace_scaler_not_enough_params' => 'Параметртæ фаг не сты.',
 	'webstore_404' => 'Файл не ссардæуы.',
 	'webstore_metadata_not_found' => 'Файл не ссардæуы: $1',
 	'webstore_no_response' => 'Серверæй дзуапп нæ уыд',
+	'webstore_php_error' => 'PHP-рæдыдтæ:',
 );
 
 /** Polish (Polski)
@@ -1555,6 +1588,7 @@ $messages['pt'] = array(
 	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
 	'inplace_scaler_invalid_image' => 'Imagem inválida. Não foi possível determinar o tamanho.',
 	'inplace_scaler_failed' => 'Foi encontrado um erro durante o escalamento da imagem: $1',
+	'webstore_access' => 'Este serviço está restrito por IP cliente.',
 	'webstore_path_invalid' => 'O nome de ficheiro é inválido.',
 	'webstore_no_file' => 'Nenhum arquivo foi carregado.',
 	'webstore_invalid_zone' => 'Zona "$1" inválida.',
@@ -1605,6 +1639,16 @@ $1',
 
 $1',
 	'webstore_php_error' => 'Au fost întâlnite erori PHP:',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'webstore_invalid_response' => "Risposte sbagliete da 'u server:
+
+$1",
+	'webstore_no_response' => "Nisciuna risposte da 'u server",
 );
 
 /** Russian (Русский)
@@ -1969,6 +2013,9 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
+	'inplace_access_disabled' => 'Dün at penemögükon gebanes valik.',
+	'inplace_scaler_not_enough_params' => 'Paramets nesaidik',
+	'inplace_scaler_invalid_image' => 'Magod no lonöföl, no eplöpos ad fümetön gretoti.',
 	'webstore_path_invalid' => 'Ragivanem no lonöföl.',
 	'webstore_dest_open' => 'No eplöpos ad maifükön zeilaragivi: „$1“.',
 	'webstore_dest_mkdir' => 'Jafam zeilaragiviära: „$1“ no eplöpon.',
@@ -1989,6 +2036,10 @@ $messages['vo'] = array(
 	'webstore_404' => 'Ragiv no petuvon.',
 	'webstore_php_warning' => 'Nuned-PHP: $1',
 	'webstore_metadata_not_found' => 'Ragiv no petuvon: $1',
+	'webstore_invalid_response' => 'Gespik no lonöföl se dünanünöm:
+
+$1',
+	'webstore_no_response' => 'Gespik nonik se dünanünöm',
 	'webstore_php_error' => 'Pöls-PHP petuvons:',
 );
 

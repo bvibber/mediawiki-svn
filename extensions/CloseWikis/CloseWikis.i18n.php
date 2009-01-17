@@ -445,6 +445,40 @@ $messages['grc'] = array(
 	'closewikis-page-reopen-submit' => 'Ἀνοίγειν πάλιν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'closewikis-desc' => 'Macht s Zuemache megli vun eme einzelne Wiki in eme Wikihof',
+	'closewikis-page' => 'Wiki zuemache.',
+	'closewikis-page-close' => 'Wiki zuemache',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Aazeigter Grund:',
+	'closewikis-page-close-reason' => 'Grund, wu in s Logbuech yytrait wird:',
+	'closewikis-page-close-submit' => 'Zuemache',
+	'closewikis-page-close-success' => 'Wiki mit Erfolg zuegmacht',
+	'closewikis-page-reopen' => 'Wiki wider ufmache',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Grund:',
+	'closewikis-page-reopen-submit' => 'Wider ufmache',
+	'closewikis-page-reopen-success' => 'Wiki mit Erfolg wider ufgmacht',
+	'closewikis-page-err-nowiki' => 'Uugiltig Wiki aagee',
+	'closewikis-page-err-closed' => 'Wiki isch scho zuegmacht',
+	'closewikis-page-err-opened' => 'Wiki isch nit zuegmacht',
+	'closewikis-list' => 'Lischt vu Wiki, wu zuegmacht sin',
+	'closewikis-list-intro' => 'In däre Lischt het s Wiki, wu vu Steward zuegmacht wore sin.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zuegmacht vu',
+	'closewikis-list-header-timestamp' => 'Zuegmacht am',
+	'closewikis-list-header-dispreason' => 'Aazeigte Grund',
+	'closewikis-log' => 'Logbuech iber zuegmachti Wiki',
+	'closewikis-log-header' => 'In däm Logbuech het s alli Wiki, wu vu Steward zuegmacht un wider ufgmacht wore sin.',
+	'closewikis-log-close' => 'het $2 zuegmacht',
+	'closewikis-log-reopen' => 'het $2 wider ufgmacht',
+	'right-editclosedwikis' => 'Zuegmachti Wiki bearbeite',
+	'right-closewikis' => 'Wiki zuemache',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -1072,11 +1106,18 @@ $messages['stq'] = array(
 	'closewikis-page-err-nowiki' => 'Uungultich Wiki anroat',
 	'closewikis-page-err-closed' => 'Wiki is al sleeten',
 	'closewikis-page-err-opened' => 'Wiki is nit sleeten',
+	'closewikis-list' => 'Lieste fon sleetene Wikis',
+	'closewikis-list-intro' => 'Disse Lieste änthaalt Wikis, do der fon Stewards sleeten wuuden.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Sleeten fon:',
+	'closewikis-list-header-timestamp' => 'Sleeten an n',
+	'closewikis-list-header-dispreason' => 'Anwiesden Gruund',
 	'closewikis-log' => 'Wikisluutengs-Logbouk',
 	'closewikis-log-header' => 'Dit Logbouk wiest aal Sluutengen un Wiereepengen fon Wikis truch Stewards oun.',
 	'closewikis-log-close' => 'sloot $2',
 	'closewikis-log-reopen' => 'eepende $2 wier',
 	'right-editclosedwikis' => 'Sleetene Wikis beoarbaidje',
+	'right-closewikis' => 'Wikis sluute',
 );
 
 /** Swedish (Svenska)

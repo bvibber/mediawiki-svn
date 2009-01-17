@@ -419,7 +419,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'authorprotect' => 'Zaštiti stranicu od ne-autora',
-	'authorprotect-desc' => 'Omogućava autoru stranice da zaštiti istu stranicu od drugih suradnika',
+	'authorprotect-desc' => 'Omogućava autoru stranice zaštititi istu stranicu od drugih suradnika',
 	'authorprotect-notauthor' => 'Vi niste autor ove stranice',
 	'authorprotect-confirm' => 'Promijeni razinu zaštite',
 	'authorprotect-edit' => 'Samo za autore',
@@ -655,6 +655,25 @@ $messages['lb'] = array(
 	'authorprotect-failure' => "D'Säit konnt net protegéiert ginn",
 	'protect-level-author' => "Protegéiert viru ''Net-Auteuren''",
 	'restriction-level-author' => 'Auteur-protegéiert',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'authorprotect' => 'Pagina beveilige veur neet-auteurs',
+	'authorprotect-desc' => "Sjteit de auteur van 'n pagina toe um deze te beveilige veur ander gebroekers",
+	'authorprotect-notauthor' => 'Doe bis neet de auteur van dees pagina',
+	'authorprotect-confirm' => 'Beveiligingsniveau verangere',
+	'authorprotect-edit' => 'Elein bewirke door auteurs',
+	'authorprotect-move' => 'Elein hernoeme door auteurs',
+	'authorprotect-expiry' => 'Verlouptied',
+	'authorprotect-reason' => 'Raej',
+	'authorprotect-intro' => 'Gebroek dit formuleer om de pagina veur neet-auteurs te beveilige',
+	'authorprotect-success' => 'Beveiliging ingesjtèld!',
+	'authorprotect-failure' => 'Beveiliging neet ingesjtèld',
+	'protect-level-author' => 'Beveilige veur neet-auteurs',
+	'restriction-level-author' => 'Elein te bewirke door auteurs',
 );
 
 /** Lithuanian (Lietuvių)
@@ -932,7 +951,7 @@ $messages['stq'] = array(
 	'authorprotect' => 'Siedenbeoarbaidenge bloot foar Autoren touläite',
 	'authorprotect-desc' => 'Moaket dät muugelk foar n Autor fon ne Siede, ju juun uur Benutsere tou beschutsjen.',
 	'authorprotect-notauthor' => 'Du bäst nit die Autor fon disse Siede',
-	'authorprotect-confirm' => 'Beschutsje',
+	'authorprotect-confirm' => 'Annerje Schuts-Ieuwenen',
 	'authorprotect-edit' => 'Bloot Beoarbaidenge truch Autore',
 	'authorprotect-move' => 'Ferschuuwenge bloot foar Autore',
 	'authorprotect-expiry' => 'Speerduur',

@@ -352,6 +352,18 @@ $messages['pt'] = array(
 	'eval_code' => 'Código',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => "Aggiunge [[Special:Eval|'n'inderfacce]] a 'a funziona <code>eval()</code>",
+	'eval_submit' => 'Valute',
+	'eval_escape' => "Lasse 'u resultete",
+	'eval_out' => 'Resultete',
+	'eval_code' => 'Codece',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

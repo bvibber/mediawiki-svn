@@ -175,6 +175,13 @@ $messages['mr'] = array(
 	'psinotocnum-desc' => 'नवीन जादूईशब्द "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'psinotocnum-desc' => 'Föögt dat magische Woord „<nowiki>__NOTOCNUM__</nowiki>“ to',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -243,6 +250,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'psinotocnum-desc' => 'Lägger till det magiska ordet "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'psinotocnum-desc' => 'Bagong masalamangkang salita na "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
 /** Vietnamese (Tiếng Việt)

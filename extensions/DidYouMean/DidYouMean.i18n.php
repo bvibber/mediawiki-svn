@@ -217,6 +217,13 @@ $messages['nah'] = array(
 	'didyoumean-desc' => 'Tiquincēntilīz tzonhuiliztli zāzanilhuīc īca "achi neneuhqui" in ītōca',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'didyoumean-desc' => 'Föögt Lenken to Sieden mit ähnliche Titels to',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -287,6 +294,13 @@ $messages['sk'] = array(
 	'didyoumean-desc' => 'Pridať odkazy na stránky s „podobnými“ názvami',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'didyoumean-desc' => 'Nambahkeun tumbu ka kaca-kaca nu judulna "sawanda"',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
@@ -348,6 +362,13 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'didyoumean-desc' => 'Läükon yümis ad pads labü tiäds "sümik"',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'didyoumean-desc' => 'לייגט צו לינקען צו בלעטער מיט "ענלעכע" קעפלעך',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

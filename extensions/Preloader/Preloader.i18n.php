@@ -134,6 +134,13 @@ $messages['mr'] = array(
 	'preloader-desc' => 'नवीन पानांसाठी बदलता येण्याजोगी नामविश्व बॉइलरप्लेट देते',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'preloader-desc' => 'Verlöövt dat Tofögen vun ännerbore Vörlagen, de för elk Naamruum bi’t Opstellen vun ne’e Sieden wiest warrt',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

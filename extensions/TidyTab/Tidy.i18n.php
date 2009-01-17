@@ -39,6 +39,15 @@ $messages['arz'] = array(
 	'untidy' => 'لا ترتيب',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'tidy-desc' => 'Дадае закладку «акуратны HTML» альбо «неакуратны HTML» (у залежнасьці ад $wgUseTidy) на старонкі, што дазваляе зьмяняць глябальную ўстаноўку «акуратнасьці HTML» для асобных старонак',
+	'tidy' => 'Акуратны HTML',
+	'untidy' => 'Неакуратны HTML',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -130,6 +139,15 @@ $messages['ia'] = array(
 	'tidy-desc' => 'Adde un scheda "nettar" o "disnettar" (dependente de $wgUseTidy) in paginas normal permittente ultrapassar le configuration global del nettamento de HTML pro un singule visualisation',
 	'tidy' => 'Nettar',
 	'untidy' => 'Disnettar',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'tidy-desc' => '通常ページでグローバルな HTML Tidy 利用設定 ($wgUseTidy) を一画面単位でオーバーライドできるようにするタブを追加する',
+	'tidy' => 'Tidy を使う',
+	'untidy' => 'Tidy を使わない',
 );
 
 /** Javanese (Basa Jawa)
@@ -247,6 +265,7 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'tidy-desc' => 'Föiget ap normoale Sieden n Rieder „gultich“ un n Rieder „uungultich“ ien (ouhongich fon $wgUseTidy), uum ju globoale HTML-Tidy-Ienstaalenge foar ne eenpelde Betrachtenge uurschrieuwe tou konnen.',
 	'tidy' => 'Oardenje',
 	'untidy' => 'Nit oardenje',
 );

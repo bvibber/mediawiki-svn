@@ -67,6 +67,17 @@ $messages['bcl'] = array(
 	'templatelink_empty' => 'Kaipuhan mong suplayan an parametro.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'templatelink' => 'Спасылка на шаблён',
+	'templatelink_desc' => 'Гэта пашырэньне паказвае шаблён як новую старонку',
+	'templatelink_empty' => 'Вам неабходна пазначыць парамэтар.',
+	'templatelink_newtitle' => '$1 (пераўтвораны)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -337,9 +348,13 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
+	'templatelink' => 'Ligação de predefinição',
+	'templatelink_desc' => 'Esta extensão pode mostrar uma predefinição como uma nova página',
 	'templatelink_empty' => 'Deverá fornecer um parâmetro',
+	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
 /** Slovak (Slovenčina)

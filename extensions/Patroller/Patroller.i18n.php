@@ -238,6 +238,35 @@ $messages['de-formal'] = array(
 	'patrol-resume' => 'Klicken Sie hier zum Fortsetzen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'patrol' => 'Změny doglědowaś',
+	'patrol-desc' => 'Pólěpšony doglědowański interfejs z rozdźělenim źěłoweje śěźe',
+	'patrol-endorse' => 'Schwaliś',
+	'patrol-revert' => 'Slědk stajiś',
+	'patrol-revert-reason' => 'Pśicyna:',
+	'patrol-skip' => 'Pśeskócyś',
+	'patrol-reverting' => 'Slědkstajenje: $1',
+	'patrol-nonefound' => 'Žedne góźbne změny za doglědowanje namakane.',
+	'patrol-endorsed-ok' => 'Toś ta změna jo se markěrowała ako doglědowana.',
+	'patrol-endorsed-failed' => 'Změna njejo se dała ako doglědowana markěrowaś.',
+	'patrol-reverted-ok' => 'Změna jo se slědk stajiła.',
+	'patrol-reverted-failed' => 'Změna njejo se dała slědk stajiś.',
+	'patrol-skipped-ok' => 'Změna se ignorěrujo.',
+	'patrol-reasons' => '* Jadnory wandalizm
+* Test nowacka
+* Glěj diskusijny bok',
+	'patrol-another' => 'Drugu změnu pokazaś, jolic k dispoziciji.',
+	'patrol-stopped' => 'Sy rozsuźił žednu dalšnu změnu doglědowaś. $1',
+	'patrol-resume' => 'Klikni sem, aby pokšacował.',
+	'group-patroller' => 'Doglědowarje',
+	'group-patroller-member' => 'doglědowaŕ',
+	'grouppage-patroller' => '{{ns:project}}:Doglědowaŕ',
+	'right-patroller' => 'Boki doglědowaś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -412,6 +441,14 @@ $messages['gv'] = array(
  */
 $messages['haw'] = array(
 	'patrol-revert-reason' => 'Kumu:',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'patrol-revert-reason' => 'סיבה:',
+	'patrol-resume' => 'לחצו כאן להמשך.',
 );
 
 /** Hindi (हिन्दी)
@@ -856,10 +893,13 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
 	'patrol-revert-reason' => 'Årsak:',
+	'patrol-skip' => 'Hopp over',
+	'patrol-skipped-ok' => 'Ignorerer endring.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1220,6 +1260,35 @@ $messages['tet'] = array(
 $messages['tg-cyrl'] = array(
 	'patrol-revert-reason' => 'Сабаб:',
 	'patrol-skip' => 'Ҷаҳиш',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'patrol' => 'Patrulyahan ang mga pagbabago',
+	'patrol-desc' => 'Pinainam na ugnayang-hangganan na pangpatrolya na may pakikisalo sa dami ng bilang ng gawain',
+	'patrol-endorse' => 'Itaguyod',
+	'patrol-revert' => 'Ibalik sa dati',
+	'patrol-revert-reason' => 'Dahilan:',
+	'patrol-skip' => 'Laktawan',
+	'patrol-reverting' => 'Ibinabalik sa dati: $1',
+	'patrol-nonefound' => 'Walang natatagpuang naaangkop na mga pagbabago para sa pagpapatrolya.',
+	'patrol-endorsed-ok' => 'Minarkahan bilang napatrolya na ang pagbabago.',
+	'patrol-endorsed-failed' => 'Hindi maaaring markahan bilang napatrolya na ang pagbabagong ito.',
+	'patrol-reverted-ok' => 'Ibinalik sa dati ang pagbabago.',
+	'patrol-reverted-failed' => 'Hindi maibalik sa dati ang pagbabago.',
+	'patrol-skipped-ok' => 'Hindi pinapansin ang pagbabago.',
+	'patrol-reasons' => '* Payak na pambababoy/bandalismo
+* Pagsubok ng baguhan
+* Tingnan ang pahina ng usapan',
+	'patrol-another' => 'Magpakita ng iba pang pagbabago, kung may makukuha.',
+	'patrol-stopped' => 'Pinili mong huwag magpatrolya ng iba pang pagbabago. $1',
+	'patrol-resume' => 'Pindutin dito upang magpatuloy.',
+	'group-patroller' => 'Mga tagapatrolya',
+	'group-patroller-member' => 'tagapatrolya',
+	'grouppage-patroller' => '{{ns:project}}:Tagapatrolya',
+	'right-patroller' => 'Patrulyahan ang mga pahina',
 );
 
 /** Turkish (Türkçe)

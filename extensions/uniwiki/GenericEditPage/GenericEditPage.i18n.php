@@ -279,6 +279,7 @@ $messages['es'] = array(
 	'gep-nosectioninstructions' => 'No hay secciones en esta página.
 Agrega algunas secciones utilizando las herramientas en la barra de menús.',
 	'gep-nocategories' => 'Selecciona por lo menos una categoría antes de guardar',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Basque (Euskara)
@@ -686,6 +687,13 @@ $messages['oc'] = array(
 Apondètz-ne en utilizant los espleches dins la barra de menut.',
 	'gep-nocategories' => 'Causir al mens una categoria abans de salvar la pagina',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'gep-categories' => 'Категоритæ',
 );
 
 /** Polish (Polski)

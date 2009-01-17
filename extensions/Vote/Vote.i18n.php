@@ -169,6 +169,7 @@ $messages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'vote' => 'Галасаваньне',
@@ -188,7 +189,7 @@ $messages['be-tarask'] = array(
 	'vote-results-count' => 'Колькасьць',
 	'vote-results-none' => 'Няма галасоў адданых за гэты час.',
 	'vote-login' => 'Каб галасаваць Вам трэба $1.',
-	'vote-login-link' => 'увайсьці у сыстэму',
+	'vote-login-link' => 'увайсьці ў сыстэму',
 	'vote-invalid-choice' => 'Вы павінны выбраць адзін з прапанаваных варыянтаў.',
 );
 
@@ -364,17 +365,27 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Fluence
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'vote' => 'Votar',
+	'vote-desc' => 'Provea capacidades de encuesta simple',
+	'vote-header' => "Usted puede votar por '''Supremo Señor Feudal del Mundo''' aquí!",
 	'vote-current' => "Tu voto actual es para '''$1'''.",
+	'vote-caption' => 'Su selección:',
 	'vote-submit' => 'Votar',
+	'vote-registered' => 'Su voto ha sido registrado.',
 	'vote-view-results' => 'Ver resultados',
+	'vote-results' => 'Resultados de votación',
 	'vote-results-choice' => 'Selección',
+	'vote-results-count' => 'Contar',
+	'vote-results-none' => 'Ningún voto ha sido emitido en este momento.',
+	'vote-login' => 'Usted debe $1 votar.',
 	'vote-login-link' => 'entrar',
+	'vote-invalid-choice' => 'Usted debe seleccionar una de las opciones disponibles.',
 );
 
 /** Estonian (Eesti)
@@ -1036,15 +1047,19 @@ Gioanin|Gioanin',
  */
 $messages['ps'] = array(
 	'vote' => 'رايه ورکول',
+	'vote-desc' => 'په ساده توګه د رايو ورکولو آسانتياوې برابروي',
 	'vote-current' => "ستاسو اوسنۍ رايه د '''$1''' لپاره ورکړ شوې.",
 	'vote-caption' => 'ستاسو ټاکنه:',
 	'vote-submit' => 'رايه ورکول',
 	'vote-registered' => 'ستاسو رايه ثبته شوه.',
 	'vote-view-results' => 'پايلې کتل',
 	'vote-results' => 'د رايو پايلې',
+	'vote-results-choice' => 'خوښه',
 	'vote-results-count' => 'شمېرل',
+	'vote-results-none' => 'تر دم مهاله هېڅ کومه رايه نه ده ورکړ شوې.',
 	'vote-login' => 'ددې لپاره چې تاسو رايه ورکړی نو پکار ده چې $1.',
 	'vote-login-link' => 'ننوتل',
+	'vote-invalid-choice' => 'بايد چې د شتو خوښو نه يوه وټاکۍ.',
 );
 
 /** Portuguese (Português)
@@ -1167,6 +1182,31 @@ riddler|Riddler',
  */
 $messages['sq'] = array(
 	'vote' => 'Voto',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'vote' => 'Wääljen',
+	'vote-desc' => 'Bjut eenfache Uumfroage-Muugelkhaide',
+	'vote-header' => "Du koast hier dän '''Bupperste Buppeheer fon de Waareld''' wäälje!",
+	'vote-current' => "Dien aktuelle Stämme is foar '''$1'''",
+	'vote-legend' => 'Oustämme',
+	'vote-caption' => 'Dien Stämme:',
+	'vote-choices' => 'joker|Die Joker
+penguin|Die Pinguin
+riddler|Riddler',
+	'vote-submit' => 'Oustämme',
+	'vote-registered' => 'Dien Stämme wuud registrierd.',
+	'vote-view-results' => 'Resultoate wiese',
+	'vote-results' => 'Woal-Resultoate',
+	'vote-results-choice' => 'Woal',
+	'vote-results-count' => 'Antaal',
+	'vote-results-none' => 'Der wuuden noch neen Stämmen ouroat.',
+	'vote-login' => 'Du moast $1, uum oustämme tou konnen.',
+	'vote-login-link' => 'die anmäldje',
+	'vote-invalid-choice' => 'Du moast een fon do muugelke Optione wäälje.',
 );
 
 /** Sundanese (Basa Sunda)
@@ -1357,9 +1397,21 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'vote' => 'Vögodön',
+	'vote-current' => "Vögod anuik ola stüton gebani: '''$1'''.",
+	'vote-caption' => 'Väl olik:',
 	'vote-submit' => 'Vögodön',
+	'vote-registered' => 'Vögod olik peregistaron.',
+	'vote-view-results' => 'Logön sekis',
+	'vote-results' => 'Vögodamaseks',
+	'vote-results-choice' => 'Väl',
+	'vote-results-none' => 'Vögods nonik pegivons ün tim at.',
+	'vote-login' => 'Mutol $1 ad vögodön.',
+	'vote-login-link' => 'nunädön oki',
+	'vote-invalid-choice' => 'Mutol välön bali välas gebidik.',
 );
 
 /** Yue (粵語)

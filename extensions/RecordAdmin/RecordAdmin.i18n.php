@@ -88,12 +88,14 @@ $messages['ar'] = array(
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'recordadmin-category' => 'سجلات',
 	'recordadmin-newsearch' => 'بحث $1 جديد',
 	'recordadmin-newrecord' => 'أختار نوع سجل تانى',
 	'recordadmin-submit' => 'نفذ',
+	'recordadmin-alreadyexist' => 'متأسفين، "$1"  موجوده بالفعل',
 	'recordadmin-createsuccess' => '$1 أنشئت',
 	'recordadmin-badtitle' => '! عنوان سئ',
 	'recordadmin-invert' => 'أعكس الأختيار',
@@ -348,6 +350,44 @@ $messages['he'] = array(
 	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'recordadmin' => 'Administracija zregistrowanjow',
+	'recordadmin-desc' => '[[Special:RecordAdmin|Specialna strona]] za namakanje a wobdźěłowanje stronow zregistrowanjow z pomocu formulara',
+	'recordadmin-category' => 'Zregistrowanja',
+	'recordadmin-select' => 'Wubjer typ zregistrowanjow, kotrež so maja pytać',
+	'recordadmin-newsearch' => 'Nowe pytanje $1',
+	'recordadmin-newrecord' => 'Druhi typ zregistrowanja wubrać',
+	'recordadmin-submit' => 'Wotpósłać',
+	'recordadmin-create' => 'Zregistrowanje "$1" namakać abo wutworić',
+	'recordadmin-alreadyexist' => 'Wodaj, "$1" hižo eksistuje!',
+	'recordadmin-createsuccess' => '$1 wutworjene',
+	'recordadmin-createerror' => 'Při popyće $1 wutworić je zmylk nastał!',
+	'recordadmin-badtitle' => 'Wopačny titul!',
+	'recordadmin-recordid' => 'ID zregistrowanja:',
+	'recordadmin-invert' => 'Wuběr wobroćić',
+	'recordadmin-buttonsearch' => 'Pytać',
+	'recordadmin-buttoncreate' => 'Wutworić',
+	'recordadmin-buttonreset' => 'Wróćo stajić',
+	'recordadmin-searchresult' => 'Pytanske wuslědki',
+	'recordadmin-nomatch' => 'Žane wotpowědowace zregistrowanja namakane!',
+	'recordadmin-edit' => '$1 so wobdźěłuje',
+	'recordadmin-typeupdated' => '$1 {{PLURAL:$1|kajkosć zaktualizowana|kajkosći zaktualizowanej|kajkosće zaktualizowane|kajkosćow zaktualizowane}}',
+	'recordadmin-updatesuccess' => '$1 zaktualizowany',
+	'recordadmin-updateerror' => 'Při aktualizaciji je zmylk nastał',
+	'recordadmin-buttonsave' => 'Składować',
+	'recordadmin-noform' => 'Njeje formular za zregistrowanja "$1"!',
+	'recordadmin-createlink' => '<a href=$1>jedne wutworić</a>',
+	'recordadmin-newcreated' => 'Nowy $1 ze zjawneho formulara wutworjeny',
+	'recordadmin-summary-typecreated' => 'Nowy $1 wutworjeny',
+	'recordadmin-viewlink' => 'wobhladać sej',
+	'recordadmin-editlink' => 'wobdźěłać',
+	'recordadmin-created' => 'Wutworjeny',
+	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -545,12 +585,15 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'recordadmin-alreadyexist' => '«$1» finst frå før.',
+	'recordadmin-badtitle' => 'Ugyldig tittel!',
 	'recordadmin-buttonsearch' => 'Søk',
 	'recordadmin-buttoncreate' => 'Opprett',
 	'recordadmin-searchresult' => 'Søkjeresultat',
 	'recordadmin-edit' => 'Endrar $1',
 	'recordadmin-typeupdated' => 'Eigenskapane til $1 blei oppdaterte',
 	'recordadmin-buttonsave' => 'Lagra',
+	'recordadmin-createlink' => '<a href=$1>opprett ein</a>',
+	'recordadmin-viewlink' => 'sjå',
 	'recordadmin-editlink' => 'endra',
 	'recordadmin-created' => 'Oppretta',
 );
@@ -630,6 +673,44 @@ $messages['pl'] = array(
 	'recordadmin-editlink' => 'edytuj',
 	'recordadmin-created' => 'Utworzony',
 	'right-recordadmin' => 'Znajdź i edytuj rekord stron',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'recordadmin' => 'Administração de registos',
+	'recordadmin-desc' => 'Uma [[Special:RecordAdmin|página especial]] para encontrar e editar páginas de registos usando um formulário',
+	'recordadmin-category' => 'Registos',
+	'recordadmin-select' => 'Selecione o tipo de registo a pesquisar',
+	'recordadmin-newsearch' => 'Nova pesquisa $1',
+	'recordadmin-newrecord' => 'Selecionar outro tipo de registo',
+	'recordadmin-submit' => 'Submeter',
+	'recordadmin-create' => 'Procurar ou criar um registo "$1"',
+	'recordadmin-alreadyexist' => 'Desculpe, "$1" já existe!',
+	'recordadmin-createsuccess' => '$1 criado',
+	'recordadmin-createerror' => 'Ocorreu um erro ao tentar criar o $1!',
+	'recordadmin-badtitle' => 'Título inválido!',
+	'recordadmin-recordid' => 'ID do registo:',
+	'recordadmin-invert' => 'Inverter seleção',
+	'recordadmin-buttonsearch' => 'Pesquisar',
+	'recordadmin-buttoncreate' => 'Criar',
+	'recordadmin-buttonreset' => 'Repor',
+	'recordadmin-searchresult' => 'Resultados da pesquisa',
+	'recordadmin-nomatch' => 'Não foram encontrados resultados correspondentes!',
+	'recordadmin-edit' => 'A editar $1',
+	'recordadmin-typeupdated' => 'Propriedades de $1 atualizadas',
+	'recordadmin-updatesuccess' => '$1 atualizado',
+	'recordadmin-updateerror' => 'Ocorreu um erro durante a atualização',
+	'recordadmin-buttonsave' => 'Gravar',
+	'recordadmin-noform' => 'Não há um formulário associado com registos "$1"!',
+	'recordadmin-createlink' => '<a href=$1>criar um</a>',
+	'recordadmin-newcreated' => 'Novo $1 criado a partir de formulário público',
+	'recordadmin-summary-typecreated' => 'Novo $1 criado',
+	'recordadmin-viewlink' => 'ver',
+	'recordadmin-editlink' => 'editar',
+	'recordadmin-created' => 'Criado',
+	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 );
 
 /** Romanian (Română)

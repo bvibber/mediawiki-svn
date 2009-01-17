@@ -564,11 +564,12 @@ $wdMessages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $wdMessages['be-tarask'] = array(
-	'datasearch' => 'ВікіЗьвесткі: Пошук зьвестак',
+	'datasearch' => 'Вікізьвесткі: пошук зьвестак',
 	'langman_title' => 'Кіраваньне мовамі',
-	'languages' => 'ВікіЗьвесткі: Кіраваньне мовамі',
+	'languages' => 'Вікізьвесткі: кіраваньне мовамі',
 	'ow_save' => 'Захаваць',
 	'ow_history' => 'Гісторыя',
 	'ow_datasets' => 'Выбар набору зьвестак',
@@ -576,7 +577,7 @@ $wdMessages['be-tarask'] = array(
 	'ow_noedit' => 'Вам не дазволена рэдагаваць старонкі ў наборы зьвестак «$1».
 Калі ласка, паглядзіце [[{{MediaWiki:Ow editing policy url}}|нашы правілы рэдагаваньня]].',
 	'ow_uipref_datasets' => 'Выгляд па змоўчваньні',
-	'ow_uiprefs' => 'ВікіЗьвесткі',
+	'ow_uiprefs' => 'Вікізьвесткі',
 	'ow_none_selected' => 'Нічога ня выбрана',
 	'ow_conceptmapping_help' => '<p>магчымыя дзеяньні: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  уставіць адпаведнасьць</li>
@@ -591,7 +592,7 @@ $wdMessages['be-tarask'] = array(
 	'ow_dm_not_present' => 'ня ўведзена',
 	'ow_dm_not_found' => 'ня знойдзена ў базе зьвестак альбо няслушны фармат',
 	'ow_mapping_successful' => 'Усталяваная адпаведнасьць для ўсіх палёў пазначаных [OK]<br />',
-	'ow_mapping_unsuccessful' => 'Неабходна мець хаця б два вызначаных значэньня, каб было магчыма іх злучыць.',
+	'ow_mapping_unsuccessful' => 'Неабходна мець хаця б два вызначаныя значэньні, каб было магчыма іх злучыць.',
 	'ow_will_insert' => 'Будзе ўстаўлена наступнае:',
 	'ow_contents_of_mapping' => 'Зьмест адпаведнасьці',
 	'ow_available_contexts' => 'Даступныя кантэксты',
@@ -650,11 +651,11 @@ $wdMessages['be-tarask'] = array(
 	'ow_Property' => 'Уласьцівасьць',
 	'ow_Value' => 'Значэньне',
 	'ow_meaningsoftitle' => 'Значэньне «$1»',
-	'ow_meaningsofsubtitle' => '<em>Вікі спасылка:</em> [[$1]]',
+	'ow_meaningsofsubtitle' => '<em>Вікі-спасылка:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Доступ забаронены</h2>',
 	'ow_copy_no_action_specified' => 'Калі ласка, пазначце дзеяньне',
 	'ow_copy_help' => 'Дапамога яшчэ ня зьдзейсьнена.',
-	'ow_please_proved_dmid' => 'Падобна, што ва ўведзеных зьвестках адсутнічае «?dmid=<ID>» (dmid=Ідэнтыфікатар Вызначанага Значэньня)<br />
+	'ow_please_proved_dmid' => 'Падобна, што ва ўведзеных зьвестках адсутнічае «?dmid=<ID>» (dmid=Ідэнтыфікатар вызначанага значэньня)<br />
 Калі ласка, зьвяжыцеся з адміністратарам сэрвэра.',
 	'ow_please_proved_dc1' => 'Падобна, што ва ўведзеных зьвестках адсутнічае «?dc1=<something>» (dc1=кантэкст набору зьвестак 1, набор зьвестак адкуль капіяваць)<br />
 Калі ласка, зьвяжыцеся з адміністратарам сэрвэра.',
@@ -668,7 +669,7 @@ $wdMessages['be-tarask'] = array(
 	'ow_no_action_specified' => '<h3>Не пазначана ніякіх дзеяньняў</h3>
 Верагодна Вы зайшлі непасрэдна на гэту старонку? Звычайна Вы не павінны былі сюды трапіць.',
 	'ow_db_consistency_not_found' => '<h2>Памылка</h2>
-У сувязі з парушэньнем цэльнасьці базы зьвестак, ВікіЗьвесткі не могуць знайсьці слушных зьвестак злучаных з пазначаным ідэнтыфікатарам.
+У сувязі з парушэньнем цэльнасьці базы зьвестак, Вікізьвесткі ня могуць знайсьці слушных зьвестак злучаных з пазначаным ідэнтыфікатарам.
 Магчыма яны страчаны.
 Калі ласка, зьвяжыцеся з адміністратарам сэрвэра.',
 );
@@ -683,7 +684,7 @@ $wdMessages['bg'] = array(
 	'ow_noedit_title' => 'Необходими са права за редактиране',
 	'ow_uiprefs' => 'Уикиданни',
 	'ow_none_selected' => 'Нищо не е избрано',
-	'ow_conceptmapping_no_action_specified' => 'Извинения, но не знаем как да „$1“.',
+	'ow_conceptmapping_no_action_specified' => 'Действието „$1“ не се поддържа от системата.',
 	'ow_dm_OK' => 'Добре',
 	'ow_will_insert' => 'Ще бъде вмъкнато следното:',
 	'ow_AlternativeDefinition' => 'Алтернативно определение',
@@ -902,6 +903,7 @@ Molimo provjerite web adresu.',
 	'ow_Property' => 'Svojstvo',
 	'ow_Value' => 'Vrijednost',
 	'ow_meaningsoftitle' => 'Značenje od "$1"',
+	'ow_meaningsofsubtitle' => '<em>Wiki link:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Pristup onemogućen</h2>',
 	'ow_copy_no_action_specified' => 'Molimo Vas da odredite akciju',
 	'ow_copy_help' => 'Pomoć još nije implementirana.',
@@ -1917,6 +1919,108 @@ $wdMessages['grc'] = array(
 	'ow_Value' => 'Τιμή',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$wdMessages['gsw'] = array(
+	'datasearch' => 'Wikidata: Datesuech',
+	'langman_title' => 'Sprochmanager',
+	'languages' => 'Wikidata: Sproche-Manager',
+	'ow_save' => 'Spychere',
+	'ow_history' => 'Versione/Autore',
+	'ow_datasets' => 'Uswahl vum Dataset',
+	'ow_noedit_title' => 'Du derfsch die Syte nit bearbeite',
+	'ow_noedit' => 'Du derfsch Syte im Dataset „$1“ nit bearbeite.
+Lueg [[{{MediaWiki:Ow editing policy url}}|unseri Richtlinie]].',
+	'ow_uipref_datasets' => 'Standardaasicht',
+	'ow_uiprefs' => 'Wikidata',
+	'ow_none_selected' => 'Nyt usgwehlt',
+	'ow_conceptmapping_help' => '<p>Megligi Aktione: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&… E Verchnipfig zuefiege</li>
+<li>&action=get&concept=<concept_id> E Verchnipfig abruefe</li>
+<li>&action=list_sets Zeig e Lischt vu meglige Datekontextpräfix un uf was si sich bezien</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> fir e DefinedMeaning in eme Kontext, zeig alli andere</li>
+<li>&action=help Hilf aazeige.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>Mit Concept Mapping cha mer feschtlege, weli DefinedMeaning in eme Dataset mit andere DefinedMeanings us andere Dataset identisch isch.</p>',
+	'ow_conceptmapping_no_action_specified' => 'D Aktion „$1“ wird nit unterstitzt.',
+	'ow_dm_OK' => 'In Ornig',
+	'ow_dm_not_present' => 'nit yygee',
+	'ow_dm_not_found' => 'nit in dr Datebank gfunde oder fählerhaft',
+	'ow_mapping_successful' => 'Alli mit [OK] markierte Fälder sin zuegordnet wore<br />',
+	'ow_mapping_unsuccessful' => 'S bruucht zmindescht zwoo DefinedMeaning zum Verchnipfe.',
+	'ow_will_insert' => 'Des wird yygsetzt',
+	'ow_contents_of_mapping' => 'Inhalt vu dr Verchnipfig',
+	'ow_available_contexts' => 'Verfiegbari Kontext',
+	'ow_add_concept_link' => 'Gleicher zue andere Konzäpt zuefiege',
+	'ow_concept_panel' => 'Konzäptschaltflächi',
+	'ow_dm_badtitle' => 'Die Syte wyst nit zuen ere DefinedMeaning (Konzäpt). Bitte iberprief d Netzadräss.',
+	'ow_dm_missing' => 'Die Syte wyst zuen ere DefinedMeaning (Konzäpt), wu s nit git. Bitte iberprief d Netzadräss.',
+	'ow_AlternativeDefinition' => 'Alternativi Definition',
+	'ow_AlternativeDefinitions' => 'Alternativi Definitione',
+	'ow_Annotation' => 'Annotation',
+	'ow_ApproximateMeanings' => 'Unggfähri Bedytige',
+	'ow_ClassAttributeAttribute' => 'Attribut',
+	'ow_ClassAttributes' => 'Chlassenattribut',
+	'ow_ClassAttributeLevel' => 'Ebeni',
+	'ow_ClassAttributeType' => 'Typ',
+	'ow_ClassMembership' => 'Chlassezuegherigkeit',
+	'ow_Collection' => 'Sammlig',
+	'ow_CollectionMembership' => 'Sammligszuegherigkeit',
+	'ow_Definition' => 'Definition',
+	'ow_DefinedMeaningAttributes' => 'Annotation',
+	'ow_DefinedMeaning' => 'DefinedMeaning',
+	'ow_DefinedMeaningReference' => 'DefinedMeaning',
+	'ow_ExactMeanings' => 'Exakti Bedytige',
+	'ow_Expression' => 'Uusdruck',
+	'ow_ExpressionMeanings' => 'Uusdrucksbedytige',
+	'ow_Expressions' => 'Uusdrick',
+	'ow_IdenticalMeaning' => 'Identischi Bedytig?',
+	'ow_IncomingRelations' => 'Relatione, wu yygange sin',
+	'ow_GotoSource' => 'Gang zue dr Quälle',
+	'ow_Language' => 'Sproch',
+	'ow_LevelAnnotation' => 'Annotation',
+	'ow_OptionAttribute' => 'Eigeschaft',
+	'ow_OptionAttributeOption' => 'Option',
+	'ow_OptionAttributeOptions' => 'Optione',
+	'ow_OptionAttributeValues' => 'Optionswärt',
+	'ow_OtherDefinedMeaning' => 'Anderi DefinedMeaning',
+	'ow_PopupAnnotation' => 'Annotation',
+	'ow_Relations' => 'Relatione',
+	'ow_RelationType' => 'Relationstyp',
+	'ow_Spelling' => 'Schryybwyys',
+	'ow_Synonyms' => 'Synonym',
+	'ow_SynonymsAndTranslations' => 'Synonym un Ibersetzige',
+	'ow_Source' => 'Quälle',
+	'ow_SourceIdentifier' => 'Quällebezeichner',
+	'ow_TextAttribute' => 'Eigeschaft',
+	'ow_Text' => 'Täxt',
+	'ow_TextAttributeValues' => 'Plaintäxt',
+	'ow_TranslatedTextAttribute' => 'Eigeschaft',
+	'ow_TranslatedText' => 'Ibersetzter Täxt',
+	'ow_TranslatedTextAttributeValue' => 'Täxt',
+	'ow_TranslatedTextAttributeValues' => 'Ibersetzbarer Täxt',
+	'ow_LinkAttribute' => 'Eigeschaft',
+	'ow_LinkAttributeValues' => 'Gleicher',
+	'ow_Property' => 'Eigeschaft',
+	'ow_Value' => 'Wärt',
+	'ow_meaningsoftitle' => 'Bedytige vu „$1“',
+	'ow_meaningsofsubtitle' => '<em>Wikilink:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>ERLAUBNIS VERWEIGERET</h2>',
+	'ow_copy_no_action_specified' => 'Bitte leg e Aktion fescht.',
+	'ow_copy_help' => 'S isch kei Hilf implementiert.',
+	'ow_please_proved_dmid' => 'In Dyynere Yygab fählt „?dmid=<something>“ (dmid=Defined Meaning ID)<br />
+Bitte kontaktier dr Serveradminschtrator.',
+	'ow_please_proved_dc1' => 'In Dyynere Yygab fählt „?dc1=<something>“ (dc1=dataset context 1, dataset to copy FROM)<br />
+Bitte kontaktier dr Serveradminschtrator.',
+	'ow_please_proved_dc2' => 'In Dyynere Yygab fählt „?dc2=<something>“ (dc2=dataset context 2, dataset to copy TO) <br />
+Bitte kontaktier dr Serveradminschtrator.',
+	'ow_copy_successful' => '<h2>Kopiere erfolgryych</h2>Dyni Date sin schyyns erfolgryych kopiert wore. Bitte vergiss nit nomol z priefe zum sicher z syy!',
+	'ow_copy_unsuccessful' => '<h3>Kopiere nit erfolgryych</h3> S het kei Kopieraktion gee.',
+	'ow_no_action_specified' => '<h3>S isch kei Aktion aagee wore</h3> Villicht bisch diräkt zue däre Syte chu?',
+	'ow_db_consistency_not_found' => '<h2>Fähler</h2>D Datebank isch nimi konsischtent. Wikidata cha keini giltige Date zue dr ID finde. Bitte kontaktier dr Server-Adminischtrator.',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -2299,7 +2403,7 @@ Per favor vide [[{{MediaWiki:Ow editing policy url}}|nostre politica de modifica
 <li>&action=help  Monstrar adjuta utile.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Le carta de conceptos te permitte identificar qual significato definite in un collection de datos es identic a significatos definite in altere collectiones de datos.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Pardono, io non sape facer "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Le action "$1" non es supportate.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'non entrate',
 	'ow_dm_not_found' => 'non trovate in le base de datos o mal formate',
@@ -2366,7 +2470,7 @@ Per favor verifica le adresse web.',
 	'ow_meaningsofsubtitle' => '<em>Ligamine Wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Permission refusate</h2>',
 	'ow_copy_no_action_specified' => 'Per favor specifica un action',
-	'ow_copy_help' => 'Alcun die, nos poterea adjutar te.',
+	'ow_copy_help' => 'Le adjuta non es ancora implementate.',
 	'ow_please_proved_dmid' => 'Pare que manca un "?dmid=<ID>" a tu entrata (dmid=ID del Significato Definite)<br />
 Per favor contacta un administrator del servitor.',
 	'ow_please_proved_dc1' => 'Pare que manca un "?dc1=<alcun cosa>" a tu entrata (dc1=contexto de collection de datos 1, le collection de datos AB le qual se copia)<br />
@@ -3612,7 +3716,7 @@ $wdMessages['nn'] = array(
 	'ow_meaningsofsubtitle' => '<em>Wikilenkje:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>TILGANG FORBODE</h2>',
 	'ow_copy_no_action_specified' => 'Ver venleg og oppgje ei handling',
-	'ow_copy_help' => 'Ein dag kan vi hjelpe deg.',
+	'ow_copy_help' => 'Hjelp er ikkje implementert enno.',
 	'ow_please_proved_dmid' => 'Det ser ut som bidraget ditt manglar ein «?dmid=<ID>» (dmid=Defined Meaning ID, nummer på definert tyding)<br />Ver venleg og ta kontakt med ein administrator på tenaren.',
 	'ow_please_proved_dc1' => 'Det ser ut som bidraget ditt manglar ein «?dc1=<noko>» (dc1=dataset context 1, dataval å kopiere FRÅ)<br />Ver venleg og ta kontakt med ein administrator på tenaren.',
 	'ow_please_proved_dc2' => 'Det ser ut som bidraget ditt manglar ein «?dc2=<noko>» (dc2=dataset context 2, dataval å kopiere TIL)<br />Ver venleg og ta kontakt med ein administrator på tenaren.',
@@ -3842,12 +3946,20 @@ Contactatz l’administrator.',
 	'ow_db_consistency_not_found' => "<h2>Error</h2> Un problèma es estat trobat dins la banca de donadas. Wikidata pòt pas trobar de donadas validas ligadas al numèro de sens definit. Poiriá èsser perdut. Contactatz l'operator o l'administrator del servidor.",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$wdMessages['or'] = array(
+	'ow_history' => 'ଇତିହାସ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
 $wdMessages['os'] = array(
 	'ow_history' => 'Истори',
 	'ow_dm_OK' => 'Афтæ уæд!',
+	'ow_ClassAttributeType' => 'Тип',
 	'ow_Language' => 'Æвзаг',
 	'ow_Text' => 'Текст',
 	'ow_LinkAttributeValues' => 'Æрвитæнтæ',
@@ -3879,12 +3991,12 @@ $wdMessages['pl'] = array(
 <li>&action=help  pokazuje pomoc</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Odwzorowywanie pojęć pozwala na identyfikację tego, które ze zdefiniowanych w jednym zestawie danych znaczeń są identyczne do znaczeń zdefiniowanych w drugim zestawie danych.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Przykro mi, nie wiem, jak zrobić „$1”.',
+	'ow_conceptmapping_no_action_specified' => 'Akcja „$1” nie jest obsługiwana.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nie wprowadzono',
 	'ow_dm_not_found' => 'obiektu nie odnaleziono w bazie lub jest nieprawidłowo uformowany',
 	'ow_mapping_successful' => 'Odwzorowano wszystkie pola oznaczone jako [OK]<br />',
-	'ow_mapping_unsuccessful' => 'Zanim nastąpi połączenie dwóch zdefiniowanych znaczeń, muszą zostać one podane.',
+	'ow_mapping_unsuccessful' => 'Zanim nastąpi połączenie dwóch znaczeń, muszą zostać one zdefiniowane.',
 	'ow_will_insert' => 'Wstawia nastepujące dane:',
 	'ow_contents_of_mapping' => 'Zawartość odwzorowania',
 	'ow_available_contexts' => 'Dostępne konteksty',
@@ -3944,7 +4056,7 @@ $wdMessages['pl'] = array(
 	'ow_meaningsofsubtitle' => '<em>Link wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>DOSTĘP ZABRONIONY</h2>',
 	'ow_copy_no_action_specified' => 'Określ akcję',
-	'ow_copy_help' => 'Kiedyś może Ci pomożemy.',
+	'ow_copy_help' => 'Pomoc nie została jeszcze zaimplementowana.',
 	'ow_please_proved_dmid' => 'We wprowadzonych danych nie odnaleziono wpisu „?dmid=<ID>” (dmid=Defined Meaning ID)<br />Skontaktuj się z administratorem serwera.',
 	'ow_please_proved_dc1' => 'We wprowadzonych danych nie odnaleziono wpisu „?dc1=<jakieś_dane>” (dc1=dataset context 1, zestaw danych Z KTÓREGO ma nastąpić kopiowanie)<br />Skontaktuj się z administratorem serwera.',
 	'ow_please_proved_dc2' => 'We wprowadzonych danych nie odnaleziono wpisu „?dc2=<jakieś_dane>” (dc2=dataset context 2, zestaw danych DO KTÓREGO ma nastąpić kopiowanie)<br />Skontaktuj się z administratorem serwera.',
@@ -4173,12 +4285,12 @@ Por favor, veja [[{{MediaWiki:Ow editing policy url}}|nossa política de ediçã
 </ul>
 </p>',
 	'ow_conceptmapping_uitext' => '<p>O Mapeamento de Conceitos permite-lhe identificar que significado definido em um conjunto de dados é idêntico a significados definidos em outro conjunto de dados.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Desculpe, não sei como "$1".',
+	'ow_conceptmapping_no_action_specified' => 'A ação "$1" não é suportada.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'não introduzido',
 	'ow_dm_not_found' => 'não encontrado no banco de dados ou mal formado',
 	'ow_mapping_successful' => 'Mapeados todos os campos marcados com [OK]<br />',
-	'ow_mapping_unsuccessful' => 'É necessário ter ao menos dois significados definidos antes de eu poder ligá-los.',
+	'ow_mapping_unsuccessful' => 'É necessário ter pelo menos dois significados definidos antes de poder ligá-los.',
 	'ow_will_insert' => 'Será inserido o seguinte:',
 	'ow_contents_of_mapping' => 'Conteúdo do mapeamento',
 	'ow_available_contexts' => 'Contextos disponíveis',
@@ -4240,7 +4352,7 @@ Por favor, verifique o endereço ''web''.",
 	'ow_meaningsofsubtitle' => '<em>Ligação wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Permissão negada</h2>',
 	'ow_copy_no_action_specified' => 'Por favor, especifique uma ação',
-	'ow_copy_help' => 'Um dia talvez possamos ajudá-lo.',
+	'ow_copy_help' => 'A ajuda ainda não está implementada.',
 	'ow_please_proved_dmid' => 'Parece que em sua entrada está faltando um "?dmid=<qualquercoisa>" (dmid=ID do Significado Definido)<br />
 Por favor, contate um administrador do servidor.',
 	'ow_please_proved_dc1' => 'Parece que em sua entrada está faltando um "?dc1=<qualquercoisa>" (dc1=contexto de conjunto de dados 1, conjunto de dados DO QUAL copiar)<br />
@@ -4390,7 +4502,7 @@ $wdMessages['ru'] = array(
 <li>&action=help  вывести спрвочную информацию.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Установка соответствий концептов позволяет вам указать какое определённое значение в одном наборе данных тождественно определённым значениям в других наборах данных.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Извините, я не знаю что такое «$1».',
+	'ow_conceptmapping_no_action_specified' => 'Не поддерживается действие «$1».',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'не введено',
 	'ow_dm_not_found' => 'не найдено в базе данных или неформат',
@@ -5433,8 +5545,13 @@ $wdMessages['vi'] = array(
  * @author Smeira
  */
 $wdMessages['vo'] = array(
+	'datasearch' => 'Wikidata: Nünodisuk',
 	'ow_save' => 'Dakipolöd',
 	'ow_history' => 'Jenotem',
+	'ow_noedit_title' => 'Däl nonik ad redakön',
+	'ow_uipref_datasets' => 'Logam kösömik',
+	'ow_uiprefs' => 'Wikidata',
+	'ow_none_selected' => 'Nos pevälon',
 	'ow_conceptmapping_no_action_specified' => 'Dun: „$1“ no mögon.',
 	'ow_add_concept_link' => 'Läükön yümi tikädes votik',
 	'ow_concept_panel' => 'Tikädafremül',
@@ -5455,24 +5572,31 @@ $wdMessages['vo'] = array(
 	'ow_IdenticalMeaning' => 'Sinif ot?',
 	'ow_Language' => 'Pük',
 	'ow_LevelAnnotation' => 'Penet',
+	'ow_OptionAttribute' => 'Patöf',
 	'ow_OptionAttributeOption' => 'Välot',
 	'ow_OptionAttributeOptions' => 'Välots',
 	'ow_PopupAnnotation' => 'Penet',
 	'ow_Spelling' => 'Tonatam',
 	'ow_Source' => 'Fonät',
+	'ow_TextAttribute' => 'Patöf',
 	'ow_Text' => 'Vödem',
+	'ow_TranslatedTextAttribute' => 'Patöf',
 	'ow_TranslatedText' => 'Vödem petradutöl',
 	'ow_TranslatedTextAttributeValue' => 'Vödem',
 	'ow_TranslatedTextAttributeValues' => 'Vödems tradutovik',
+	'ow_LinkAttribute' => 'Patöf',
 	'ow_LinkAttributeValues' => 'Liuds',
+	'ow_Property' => 'Patöf',
 	'ow_Value' => 'Völad',
 	'ow_meaningsoftitle' => 'Sinifs ela „$1“',
 	'ow_meaningsofsubtitle' => '<em>Vükayüm:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Däl no pegevon</h2>',
+	'ow_copy_help' => 'Yuf no nog gebidon.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Wmr89502270
  */
 $wdMessages['zh-hans'] = array(
 	'datasearch' => 'Wikidata: 数据搜寻',
@@ -5480,9 +5604,24 @@ $wdMessages['zh-hans'] = array(
 	'languages' => 'Wikidata: 语言管理员',
 	'ow_save' => '保存',
 	'ow_history' => '历史',
+	'ow_datasets' => '选择数据集',
 	'ow_noedit_title' => '无权进行编辑',
 	'ow_noedit' => '您无权在 "$1" 中编辑页面。
 请见[[{{MediaWiki:Ow editing policy url}}|我们的编辑政策]]。',
+	'ow_uipref_datasets' => '默认视图',
+	'ow_uiprefs' => 'Wiki数据',
+	'ow_none_selected' => '未选择',
+	'ow_conceptmapping_help' => '<p>可能的action： <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  插入一个映射</li>
+<li>&action=get&concept=<concept_id>  阅读映射返回</li>
+<li>&action=list_sets  返回一个关于可能的背景前缀和他们可能提到的列表。</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> 为一个已经定义的概念返回所有其他的</li>
+<li>&action=help  阅读帮助</li>
+</ul></p>',
+	'ow_OptionAttributeOption' => '选择',
+	'ow_OptionAttributeOptions' => '选项',
+	'ow_Source' => '来源',
+	'ow_Text' => '文本',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

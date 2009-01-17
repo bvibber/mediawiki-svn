@@ -441,10 +441,23 @@ Reen:
 );
 
 /** Spanish (Español)
+ * @author Dferg
  * @author Imre
  */
 $messages['es'] = array(
+	'crosswikiblock-desc' => 'Permite bloquear a usuarios en otras wikis usando una [[Special:Crosswikiblock|página especial]]',
+	'crosswikiblock' => 'Bloquear al usuario en otra wiki',
+	'crosswikiblock-header' => 'Esta página le permite bloquear a un usuario en otra wiki.<br/>
+Por favor, verifique si está autorizado a actuar en esa wiki y que sus acciones siguen las políticas.',
+	'crosswikiblock-target' => 'Dirección IP o nombre de usuario y wiki de destino:',
+	'crosswikiblock-expiry' => 'Duración:',
 	'crosswikiblock-reason' => 'Motivo:',
+	'crosswikiblock-submit' => 'Bloquear al usuario',
+	'crosswikiblock-anononly' => 'Bloquear sólo usuarios anónimos',
+	'crosswikiblock-nocreate' => 'Prevenir la creación de cuenta de usuario',
+	'crosswikiblock-autoblock' => 'Bloquear automáticamente la dirección IP usada por este usuario, y cualquier IP posterior desde la cual intente editar',
+	'crosswikiblock-noemail' => 'Prevenir el envío de correo electrónico',
+	'crosswikiunblock' => 'Desbloquear usuario en otra wiki',
 	'crosswikiunblock-reason' => 'Motivo:',
 );
 

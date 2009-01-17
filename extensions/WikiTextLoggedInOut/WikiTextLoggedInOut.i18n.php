@@ -107,6 +107,13 @@ $messages['gl'] = array(
 	'wikitextloggedinout-desc' => 'Dous asociadores de análise, <tt>&lt;loggedin&gt;</tt> e mais <tt>&lt;loggedout&gt;</tt>, para amosar textos diferentes dependendo do estado do rexistro do usuario',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'wikitextloggedinout-desc' => 'Zwee Parser-Hook, <tt>&lt;loggedin&gt;</tt> un <tt>&lt;loggedout&gt;</tt>, fir zum unterschidlige Täxt aazeige fir aa- bzw. abgmäldeti Benutzer',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

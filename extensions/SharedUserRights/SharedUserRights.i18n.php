@@ -167,6 +167,17 @@ $messages['ia'] = array(
 	'gblrights-rights-entry' => 'cambiava le membrato de gruppos global pro $1 de $2 a $3',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'shareduserrights' => '共有利用者権限管理',
+	'gblrights-desc' => '簡単な[[Special:SharedUserRights|グローバル利用者権限管理]]',
+	'gblrights-logpage' => 'グローバル権限記録',
+	'gblrights-pagetext' => 'これはこのウィキファミリーのグローバル利用者権限テーブルに対するすべての変更の記録です',
+	'gblrights-rights-entry' => '$1 のグローバルグループ所属を $2 から $3 に変更',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
@@ -246,6 +257,17 @@ $messages['pl'] = array(
 	'gblrights-logpage' => 'Rejestr globalnych uprawnień',
 	'gblrights-pagetext' => 'To jest rejestr wszystkich zmian w globalnych uprawnieniach dokonanych dla grupy projektów wiki',
 	'gblrights-rights-entry' => 'zmienił globalną przynależność $1 do grup ($2 → $3)',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'shareduserrights' => 'Gestão de Permissões de Utilizadores Partilhadas',
+	'gblrights-desc' => '[[Special:SharedUserRights|Administração de permissões de utilizadores globais]] fácil',
+	'gblrights-logpage' => 'Registo de Permissões Globais',
+	'gblrights-pagetext' => 'Este é um registo de todas as alterações feitas à tabela de permissões globais da família de wikis',
+	'gblrights-rights-entry' => 'alterou grupo global de $1, de $2 para $3',
 );
 
 /** Russian (Русский)

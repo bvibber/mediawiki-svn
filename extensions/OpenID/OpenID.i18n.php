@@ -313,6 +313,7 @@ $messages['ast'] = array(
  */
 $messages['be-tarask'] = array(
 	'openidlanguage' => 'Мова',
+	'openidchoosepassword' => 'пароль:',
 );
 
 /** Bulgarian (Български)
@@ -520,6 +521,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'openid-desc' => 'Anmeldung an dieses Wiki mit einer [http://openid.net/ OpenID] und anmelden an anderen Websites, die OpenID unterstützen, mit einem Wiki-Benutzerkonto.',
@@ -554,7 +556,7 @@ Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidemail' => 'E-Mail-Adresse:',
 	'openidlanguage' => 'Sprache',
 	'openidnotavailable' => 'Dein bevorzugter Benutzername ($1) wird bereits von einem anderen Benutzer verwendet.',
-	'openidnotprovided' => 'Dein OpenID-Server unterstützt keine Nicknamen (entweder, weil er es nicht kann, oder weil du es ihm nicht erlaubst hast).',
+	'openidnotprovided' => 'Dein OpenID-Server unterstützt keine Nicknamen (entweder, weil er es nicht kann, oder weil du es ihm nicht erlaubt hast).',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidchoosefull' => 'Dein vollständiger Name ($1)',
@@ -577,7 +579,7 @@ Wenn du OpenID für künftige Anmeldevorgänge nutzen möchtest, kannst du [[Spe
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicke bitte auf „Weiter“.',
 	'openidclientonlytext' => 'Du kannst keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
 	'openidloginlabel' => 'OpenID-URL',
-	'openidlogininstructions' => "{{SITENAME}} unterstützt den [http://openid.net/ OpenID]-Standard für ein Login für mehrere Websites.
+	'openidlogininstructions' => "{{SITENAME}} unterstützt den [http://openid.net/ OpenID]-Standard für eine Anmeldung für mehrere Websites.
 OpenID meldet dich bei vielen unterschiedlichen Webseiten an, ohne dass du für jede ein anderes Passwort verwenden musst.
 (Mehr Informationen bietet der [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikel zu OpenID].)
 
@@ -738,15 +740,20 @@ Se ne, klaku la butonon \\"Daŭri\\".',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'openidlogin' => 'Conectarse con OpenID',
+	'openidserver' => 'servidor OpenID',
 	'openidoptional' => 'Opcional',
 	'openidrequired' => 'Necesario',
+	'openidfullname' => 'Nombre completo',
 	'openidemail' => 'Dirección de correo electrónico',
 	'openidlanguage' => 'Idioma',
 	'openidchoosepassword' => 'contraseña:',
+	'openidloginlabel' => 'URL OpenID',
 );
 
 /** Estonian (Eesti)
@@ -1757,6 +1764,7 @@ $messages['ko'] = array(
 	'openidemail' => '이메일 주소',
 	'openidlanguage' => '언어',
 	'openidchoosepassword' => '비밀번호:',
+	'openidloginlabel' => 'OpenID URL',
 );
 
 /** Ripoarisch (Ripoarisch)

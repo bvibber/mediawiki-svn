@@ -129,6 +129,13 @@ $messages['gl'] = array(
 	'stringfunctions-desc' => 'Realza a análise con funcións de cordas',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'stringfunctions-desc' => 'Erwyteret dr Parser mit Zeichechettefunktione (string functions)',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -176,6 +183,13 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'stringfunctions-desc' => 'Verbessert de parser mat String-Funktiounen',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'stringfunctions-desc' => 'Föögt Textfunktionen to’n Parser to',
 );
 
 /** Dutch (Nederlands)

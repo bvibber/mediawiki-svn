@@ -31,10 +31,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'lookupuser-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'right-lookupuser' => '{{doc-right}}',
 );
 
 /** Arabic (العربية)
@@ -149,6 +151,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Melancholie
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'lookupuser' => 'Benutzerinformationen einsehen',
@@ -166,6 +169,7 @@ $messages['de'] = array(
 	'lookupuser-touched' => 'Benutzerkonto zuletzt berührt: $1',
 	'lookupuser-info-authenticated' => 'E-Mail-Bestätigung: $1',
 	'lookupuser-useroptions' => 'Einstellungen des Benutzerkontos:',
+	'right-lookupuser' => 'Sehe die Benutzereinstellungen anderer Benutzer',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -194,6 +198,7 @@ $messages['dsb'] = array(
 	'lookupuser-touched' => 'Wužywarske daty slědny raz dotyknjone: $1',
 	'lookupuser-info-authenticated' => 'E-mailowa awtentifikacija: $1',
 	'lookupuser-useroptions' => 'Wužywarske nastajenja:',
+	'right-lookupuser' => 'Wužywarske nastajenja se woglědaś',
 );
 
 /** Greek (Ελληνικά)
@@ -229,10 +234,22 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'lookupuser-intro' => 'Ingrese un nombre de usuario para ver las preferencias de ese usuario.',
+	'lookupuser-nonexistent' => 'Error: Usuario no existe',
+	'lookupuser-authenticated' => 'autenticado en $1',
+	'lookupuser-not-authenticated' => 'no autenticado',
+	'lookupuser-id' => 'ID de usuario: <tt>#$1</tt>',
+	'lookupuser-email' => 'Correo electrónico: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'no proveído',
 	'lookupuser-realname' => 'Nombre real: $1',
+	'lookupuser-registration' => 'Fecha de registro: $1',
+	'lookupuser-no-registration' => 'no grabado',
+	'lookupuser-info-authenticated' => 'Autenticación de correo electrónico: $1',
+	'lookupuser-useroptions' => 'Opciones de usuario:',
 );
 
 /** Persian (فارسی)
@@ -301,6 +318,7 @@ $messages['fr'] = array(
 	'lookupuser-touched' => "Enregistrement de l'utilisateur touché pour la dernière fois : $1",
 	'lookupuser-info-authenticated' => 'Authentification du courriel : $1',
 	'lookupuser-useroptions' => "Options de l'utilisateur :",
+	'right-lookupuser' => 'Visionner les préférences des utilisateurs',
 );
 
 /** Galician (Galego)
@@ -324,6 +342,29 @@ $messages['gl'] = array(
 	'lookupuser-touched' => 'Rexistro do usuario tocado por última vez: $1',
 	'lookupuser-info-authenticated' => 'Autenticación por correo electrónico: $1',
 	'lookupuser-useroptions' => 'Opcións do usuario:',
+	'right-lookupuser' => 'Consultar as preferencias dun usuario',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'lookupuser' => 'Benutzerinformatione aaluege',
+	'lookupuser-desc' => '[[Special:LookupUser|Informatione]] iber Benutzer iberchu, z. B. E-Mail-Adräss oder ID.',
+	'lookupuser-intro' => 'Gib e Benutzername yy, go di persenlige Yystellige vu däm Benutzer aaluege.',
+	'lookupuser-nonexistent' => 'Fähler: Benutzer git s nit',
+	'lookupuser-authenticated' => 'E-Mail-Bstätigung: $1',
+	'lookupuser-not-authenticated' => 'nit bstätigt',
+	'lookupuser-id' => 'Benutzer-ID: <tt>$1</tt>',
+	'lookupuser-email' => 'E-Mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'git s nit',
+	'lookupuser-realname' => 'Wirklige Name: $1',
+	'lookupuser-registration' => 'Datum vu dr Regischtrierig: $1',
+	'lookupuser-no-registration' => 'nit verzeichnet',
+	'lookupuser-touched' => 'Benutzerkonto s letscht Mol aaglängt: $1',
+	'lookupuser-info-authenticated' => 'E-Mail-Bstätigung: $1',
+	'lookupuser-useroptions' => 'Yystellige vum Benutzerkonto:',
+	'right-lookupuser' => 'Suech no Benutzer Yystellige',
 );
 
 /** Manx (Gaelg)
@@ -351,6 +392,7 @@ $messages['he'] = array(
 	'lookupuser-registration' => 'תאריך ההרשמה: $1',
 	'lookupuser-no-registration' => 'לא נשמר',
 	'lookupuser-touched' => 'הפעם האחרונה בה ביצעו פעולה במידע המשתמש: $1',
+	'lookupuser-info-authenticated' => 'אימות כתובת דוא"ל: $1',
 	'lookupuser-useroptions' => 'אפשרויות המשתמש:',
 );
 
@@ -415,6 +457,7 @@ $messages['hsb'] = array(
 	'lookupuser-touched' => 'Posledni přistup na wužiwarske daty: $1',
 	'lookupuser-info-authenticated' => 'E-mejlowa awtentifikacija: $1',
 	'lookupuser-useroptions' => 'Wužiwarske opcije:',
+	'right-lookupuser' => 'Wužiwarske nastajenja sej wobhladać',
 );
 
 /** Hungarian (Magyar)
@@ -504,10 +547,11 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'lookupuser' => '利用者情報を調査',
-	'lookupuser-desc' => 'EメールアドレスまたはIDなどの利用者に関する[[Special:LookupUser|情報を取得]]する',
+	'lookupuser-desc' => '電子メールアドレスやIDなどの利用者に関する[[Special:LookupUser|情報を取得]]する',
 	'lookupuser-intro' => '利用者名を入力して、その利用者の個人設定をみることができます。',
 	'lookupuser-nonexistent' => 'エラー: 利用者は存在しません',
 	'lookupuser-authenticated' => 'Eメール確認日: $1',
@@ -521,6 +565,7 @@ $messages['ja'] = array(
 	'lookupuser-touched' => '利用者の最終記録: $1',
 	'lookupuser-info-authenticated' => 'Eメール認証: $1',
 	'lookupuser-useroptions' => '利用者オプション:',
+	'right-lookupuser' => '利用者の個人設定を調べる',
 );
 
 /** Javanese (Basa Jawa)
@@ -582,6 +627,7 @@ $messages['ksh'] = array(
 	'lookupuser-touched' => 'Letz Änderung am Metmaacher-Datesatz: $1',
 	'lookupuser-info-authenticated' => 'Bestätesch övver <i lang="en">e-mail</i>:',
 	'lookupuser-useroptions' => 'Enstellunge:',
+	'right-lookupuser' => 'Enem Metmaacher sing Enstellunge aankike',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -693,6 +739,7 @@ $messages['nl'] = array(
 	'lookupuser-touched' => 'Gebruikersvoorkeuren laatst gewijzigd: $1',
 	'lookupuser-info-authenticated' => 'E-mailbevestiging: $1',
 	'lookupuser-useroptions' => 'Gebruikersopties:',
+	'right-lookupuser' => 'Gebruikersvoorkeuren bekijken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -719,6 +766,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
 	'lookupuser' => 'Finn brukerinformasjon',
@@ -736,6 +784,7 @@ $messages['no'] = array(
 	'lookupuser-touched' => 'Innstillinger sist endret: $1',
 	'lookupuser-info-authenticated' => 'E-postverifisering: $1',
 	'lookupuser-useroptions' => 'Brukervalg:',
+	'right-lookupuser' => 'Se brukerinnstillinger',
 );
 
 /** Occitan (Occitan)
@@ -788,6 +837,8 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'lookupuser-nonexistent' => 'ستونزه: دا کارونکی نه شته',
+	'lookupuser-email' => 'برېښليک: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => 'اصلي نوم: $1',
 	'lookupuser-registration' => 'د نومليکنې نېټه: $1',
 );
@@ -811,6 +862,7 @@ $messages['pt'] = array(
 	'lookupuser-touched' => 'Registo de utilizador alterado pela última vez: $1',
 	'lookupuser-info-authenticated' => 'Autenticação de e-mail: $1',
 	'lookupuser-useroptions' => 'Opções de utilizador:',
+	'right-lookupuser' => 'Consultar preferências de utilizador',
 );
 
 /** Romanian (Română)
@@ -828,6 +880,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'lookupuser-nonexistent' => "Errore: L'utende non g'esiste",
 	'lookupuser-realname' => 'Nome vere: $1',
 );
 
@@ -893,6 +946,7 @@ $messages['sk'] = array(
 	'lookupuser-touched' => 'Posledný záznam používateľa: $1',
 	'lookupuser-info-authenticated' => 'Overenie emailu: $1',
 	'lookupuser-useroptions' => 'Nastavenia používateľa:',
+	'right-lookupuser' => 'Zistiť nastavenia používateľa',
 );
 
 /** Seeltersk (Seeltersk)
@@ -900,19 +954,24 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'lookupuser' => 'Benutserinformatione ienkiekje',
+	'lookupuser-desc' => '[[Special:LookupUser|Informatione]] uur Benutser kriege, as E-Mail-Adresse of ID.',
 	'lookupuser-intro' => 'Reek n Benutsernoome ien, uum die do persöönelke Ienstaalengen fon n Benutser antoukiekjen.',
 	'lookupuser-nonexistent' => 'Failer: Benutser bestoant nit',
 	'lookupuser-authenticated' => 'E-Mail-Bestäätigenge: $1',
 	'lookupuser-not-authenticated' => 'nit bestäätiged',
 	'lookupuser-id' => 'Benutser-ID: <tt>#$1</tt>',
 	'lookupuser-email' => 'E-Mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'nit deer',
 	'lookupuser-realname' => 'Wuddelken Noome: $1',
 	'lookupuser-registration' => 'Doatum fon ju Registrierenge: $1',
+	'lookupuser-no-registration' => 'nit ferteekend',
 	'lookupuser-touched' => 'Benutserkonto toulääst rööged: $1',
+	'lookupuser-info-authenticated' => 'E-Mail-Bestäätigenge: $1',
 	'lookupuser-useroptions' => 'Ienstaalengen fon dät Benutserkonto:',
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author M.M.S.
  * @author Najami
  */
@@ -932,6 +991,7 @@ $messages['sv'] = array(
 	'lookupuser-touched' => 'Inställningar sist ändrat: $1',
 	'lookupuser-info-authenticated' => 'E-postverifiering: $1',
 	'lookupuser-useroptions' => 'Användarval:',
+	'right-lookupuser' => 'Kolla användarpreferenser',
 );
 
 /** Telugu (తెలుగు)

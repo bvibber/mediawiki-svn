@@ -95,6 +95,15 @@ $messages['br'] = array(
 	'block_title_error' => "Ho tigarez met n'eo ket aotreet enrollañ titl ar pennad-mañ.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'block_title_error_page_title' => 'Blokirani naslov',
+	'block_title_error-desc' => 'Omogućuje osnovni način spriječavanja od pravljenja ili spremanja stranica sa određenim naslovima',
+	'block_title_error' => 'Žao nam je, nije dopušteno spremanje stranice s ovim naslovom.',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -224,6 +233,15 @@ $messages['grc'] = array(
 	'block_title_error_page_title' => 'Κεκλῃσμένη ἐπιγραφή',
 	'block_title_error-desc' => 'Παρέχει στοιχειώδη τρόπον τινὰ παρακωλύσεως τῆς καταγραφῆς ἢ ποιήσεως δέλτων φερουσῶν ἰδιαίτερα ὀνόματα',
 	'block_title_error' => 'Συγγνώμην, ἡ ἐπιγραφή τῆσδε τῆς δέλτου μὴ ἀποθηκεύσιμός ἐστιν.',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'block_title_error_page_title' => 'Gsperrte Sytename',
+	'block_title_error-desc' => 'Git e eifachi Megligkeit, s Aalege vu Syte mit bstimmte Titel z verhindere',
+	'block_title_error' => 'Excusez, aber e Syte mit däm Name derf nit aagleit wäre.',
 );
 
 /** Manx (Gaelg)
@@ -461,6 +479,13 @@ $messages['oc'] = array(
 	'block_title_error_page_title' => 'Títol invalid',
 	'block_title_error-desc' => 'Provesís un metòde simple per evitar que de paginas amb un cèrt títol pòscan èsser salvadas o creadas.',
 	'block_title_error' => "O planhèm, lo títol d'aqueste article es pas autorizat a èsser salvat.",
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'block_title_error_page_title' => 'Хъодыгонд сæргонд',
 );
 
 /** Polish (Polski)

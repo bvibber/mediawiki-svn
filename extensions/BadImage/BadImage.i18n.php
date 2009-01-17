@@ -2132,14 +2132,15 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
-	'badimages' => '坏图像列表',
+	'badimages' => '损坏的图像列表',
 	'badimages-desc' => '增加{{int:badimages}}到MediaWiki',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已经加入 $1 到列表中。',
-	'badimages-count' => "在坏图列表中共有 '''$1''' 幅图像。",
-	'badimages-name' => '名称:',
+	'badimages-count' => "共有'''$1'''张图像损坏。",
+	'badimages-name' => '名称：',
 	'badimages-not-added' => '这幅图像不能加入。',
 	'badimages-not-removed' => '这幅图像不能移除。',
 	'badimages-reason' => '原因:',
@@ -2152,8 +2153,8 @@ $messages['zh-hans'] = array(
 	'badimages-log-name' => '坏图像列表',
 	'badimages-log-header' => '这是在[[{{MediaWiki:Badimages-page}}|坏图像列表]]中的修订记录。',
 	'badimages-log-add' => '已经加入 [[$1]] 到坏图像列表',
-	'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
-	'badimages-page' => '{{ns:help}}:坏图像列表',
+	'badimages-log-remove' => '在损坏的图像列表中已经移除了[[$1]]',
+	'badimages-page' => '{{ns:help}}:损坏的图像列表',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

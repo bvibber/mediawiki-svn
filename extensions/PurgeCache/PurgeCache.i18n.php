@@ -408,6 +408,17 @@ $messages['th'] = array(
 	'purgecache-purged' => 'ล้างแคชเรีัยบร้อยแล้ว',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'purgecache' => 'Purgahin (linisin) ang taguan',
+	'purgecache-desc' => '[[Special:PurgeCache|Natatanging pahina]]ng ginagamit para linisin/punasan (hawiin ang laman) ang tabla ng OBJECTCACHE ("puntiryang taguan")',
+	'purgecache-warning' => 'Pupurgahin (lilinisin) nito ang mga tabla ng taguan.',
+	'purgecache-purged' => 'Napurga/nalinis na ang taguan.',
+	'purgecache-button' => 'Purgahin (linisin)',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

@@ -354,6 +354,13 @@ $messages['sr-ec'] = array(
 	'fixedimage-desc' => 'Додаје ознаку <tt><nowiki><fundraising></nowiki></tt> као слику.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'fixedimage-desc' => 'Nambahkeun tag <tt><nowiki><fundraising></nowiki></tt> salaku gambar',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
@@ -388,6 +395,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'fixedimage-desc' => 'Thêm thẻ <tt><nowiki><fundraising></nowiki></tt> để thành một hình',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'fixedimage-desc' => 'לייגט צו <tt><nowiki><fundraising></nowiki></tt>טאַג אלס בילד',
 );
 
 /** Yue (粵語)

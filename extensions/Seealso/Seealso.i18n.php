@@ -371,6 +371,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'seealso' => 'Sjuch uk',
+	'seealso-desc' => 'Lokalisierde Sjuch-uk-Uurschrifte middels <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Sundanese (Basa Sunda)
@@ -452,9 +453,11 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'seealso' => '参见',
+	'seealso-desc' => '使用标签<code><nowiki><seealso></nowiki></code>本地化“参见”标题',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

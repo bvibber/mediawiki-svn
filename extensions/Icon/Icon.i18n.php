@@ -411,6 +411,7 @@ $messages['stq'] = array(
 $messages['su'] = array(
 	'icon-badimage' => 'Gambar joré',
 	'icon-badwidth' => 'Ukuran teu loyog',
+	'icon-desc' => 'Bisa dipaké pikeun ngasupkeun gambar salaku ikon jeung ikon tumbu',
 );
 
 /** Swedish (Svenska)
@@ -471,6 +472,13 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'icon-badimage' => 'Magod badik',
 	'icon-badwidth' => 'Vidot badik',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'icon-badimage' => '损坏的图像',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

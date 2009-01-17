@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'tooltip-desc' => 'يضيف وسم <tt><nowiki><tooltip></nowiki></tt> و <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'tooltip-desc' => 'Дадае тэгі <tt><nowiki><tooltip></nowiki></tt> і <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -53,9 +60,10 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'tooltip-desc' => 'Ergänzt die <tt><nowiki><tooltip></nowiki></tt> und <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tags',
+	'tooltip-desc' => 'Ergänzt die <tt><nowiki><tooltip></nowiki></tt>- und <tt><nowiki>{{#tooltip:}}</nowiki></tt>-Tags',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -172,6 +180,13 @@ $messages['mk'] = array(
 	'tooltip-desc' => 'Додава <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt> приврзок',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'tooltip-desc' => 'Föögt de Tags <tt><nowiki><tooltip></nowiki></tt> un <tt><nowiki>{{#tooltip:}}</nowiki></tt> to',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -223,11 +238,25 @@ $messages['pt'] = array(
 	'tooltip-desc' => 'Acrescenta as tags <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'tooltip-desc' => 'Aggiunge le tag <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'tooltip-desc' => 'Pridáva značky <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'tooltip-desc' => 'Föiget do <tt><nowiki><tooltip></nowiki></tt> un <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tags bietou',
 );
 
 /** Sundanese (Basa Sunda)

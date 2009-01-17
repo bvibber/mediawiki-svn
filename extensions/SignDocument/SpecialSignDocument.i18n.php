@@ -495,13 +495,14 @@ $messages['da'] = array(
  * @author Leithian
  * @author Melancholie
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'signdocument' => 'Dokument signieren',
 	'sign-nodocselected' => 'Bitte wähle das zu signierende Dokument aus.',
 	'sign-selectdoc' => 'Dokument:',
 	'sign-docheader' => '<div class="noarticletext">Bitte benutze dieses Formular, um das hierunter angezeigte Dokument „[[$1]]“ zu signieren.
-Bitte lies das gesammte Dokument und wenn du ihm deine Zustimmung gibt, fülle bitte die nötigen Felder aus, um es zu signieren.',
+Bitte lies das gesammte Dokument und wenn du ihm deine Zustimmung gibt, fülle bitte die nötigen Felder aus, um es zu signieren.</div>',
 	'sign-error-nosuchdoc' => 'Das angeforderte Dokument ($1) existiert nicht.',
 	'sign-realname' => 'Name:',
 	'sign-address' => 'Straße:',
@@ -3135,6 +3136,13 @@ $1',
 	'sign-uniquequery-1signed2' => 'Nilagdaan ni [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ang [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'sign-submitreview' => 'Gözden geçirmeyi gönder',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
@@ -3292,6 +3300,7 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'sign-viewfield-realname' => '姓名',
@@ -3300,6 +3309,9 @@ $messages['zh-hans'] = array(
 	'sign-viewfield-phone' => '电话',
 	'sign-viewfield-email' => '电子邮件',
 	'sign-viewfield-age' => '年龄',
+	'sign-viewfield-options' => '选项',
+	'sign-viewfield-reviewcomment' => '评论',
+	'sign-review-comment' => '评论',
 	'sign-uniquequery-similarname' => '近似姓名',
 	'sign-uniquequery-similaraddress' => '近似地址',
 	'sign-uniquequery-similarphone' => '近似电话',

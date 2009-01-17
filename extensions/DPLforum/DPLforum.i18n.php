@@ -154,6 +154,15 @@ $messages['eo'] = array(
 	'dplforum-toomany' => 'DPL-Forumo: Tro multaj da kategorioj!',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'dplforum-never' => 'Nunca',
+	'dplforum-toofew' => 'Foro DPL: muy pocas categorías!',
+	'dplforum-toomany' => 'Foro DPL: demasiadas categorías!',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -219,6 +228,18 @@ $messages['grc'] = array(
 	'dplforum-never' => 'Οὔποτε',
 	'dplforum-toofew' => 'Ἀγορὰ DPL: Τὰ μάλα ὀλίγαι κατηγορίαι!',
 	'dplforum-toomany' => 'Ἀγορὰ DPL: Τὰ μάλα πολλαὶ κατηγορίαι!',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'dplforum-desc' => 'DPL-basierti Forumserwyterig',
+	'dplforum-by' => 'dur $1',
+	'dplforum-edited' => '- Zletscht bearbeitet',
+	'dplforum-never' => 'Nie',
+	'dplforum-toofew' => 'DPL Forum: Zwenig Kategorie!',
+	'dplforum-toomany' => 'DPL Forum: Zvyyl Kategorie!',
 );
 
 /** Hebrew (עברית)
@@ -433,6 +454,7 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
 	'dplforum-desc' => 'DPL-basert forumutvidelse',
@@ -535,6 +557,18 @@ $messages['sk'] = array(
 	'dplforum-toomany' => 'DPL fórum: Príliš mnoho kategórií!',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'dplforum-desc' => 'DPL-basierde Forumsärwiederenge',
+	'dplforum-by' => 'truch $1',
+	'dplforum-edited' => '- Toulääst beoarbaided',
+	'dplforum-never' => 'Sieläärge nit',
+	'dplforum-toofew' => 'DPL Forum: Tou min Kategorien!',
+	'dplforum-toomany' => 'DPL Forum: Tou fuul Kategorien!',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author Najami
@@ -615,5 +649,12 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'dplforum-never' => 'Neai',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'dplforum-never' => '从不',
 );
 

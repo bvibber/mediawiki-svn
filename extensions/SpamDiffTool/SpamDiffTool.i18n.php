@@ -203,6 +203,7 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Consta
  * @author Michawiki
  * @author Umherirrender
@@ -210,7 +211,7 @@ $messages['cy'] = array(
 $messages['de'] = array(
 	'spamdifftool' => 'Spam-Blacklist bearbeiten',
 	'spamdifftool-desc' => 'Ermöglicht das Hinzufügen neuer Einträge zur Spamblacklist aus Versionsunterschieden',
-	'spamdifftool_cantedit' => 'Du hast keine Berechitung zur Bearbeitung der Spam-Blacklist.',
+	'spamdifftool_cantedit' => 'Du hast keine Berechtigung zur Bearbeitung der Spam-Blacklist.',
 	'spamdifftool_notext' => "Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href='$1'>hier</a>, um fortzufahren.",
 	'spamdifftool_confirm' => "Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest.
 (Klicke <a href='$1' target='new'>hier</a>, um ein Problem zu melden.)",
@@ -363,6 +364,31 @@ Asegúrese de non bloquear dominios enteiros que bloqueen contas de usuario; com
  */
 $messages['grc'] = array(
 	'spamdifftool_submit_buttom' => 'Ὑποβάλλειν',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'spamdifftool' => 'Spam-Blacklist bearbeite',
+	'spamdifftool-desc' => 'Macht s megli neiji Yyträg zue dr Spamblacklist us Versionsunterschiid zuezfiege',
+	'spamdifftool_cantedit' => 'Excusez! Du derfsch d Spam-Blacklist nit bearbeite.',
+	'spamdifftool_notext' => "S git kei Täxt, wu mer zue dr Spam-Blacklist chennt zuefiege. Druck <a href='$1'>do</a> zum wyter mache.",
+	'spamdifftool_confirm' => "Bstätig, ass Du die Yyträg zue dr Spam-Blacklist wetsch zuefiege.
+(Druck <a href='$1' target='new'>do</a> go ne Probläm mälde.)",
+	'spamdifftool_summary' => 'Zue dr Spam-Blacklist zuefiege',
+	'spamdifftool_urls_detected' => 'Die URL sin in dr Bearbeitig gfunde wore. Weli dervu wit zue dr Spam-Blacklist zuefiege?
+D Reihefolg goht vu arg yygschränkt bis weniger yygschränkt. S Yytrage vun ere ganze Domain blockiert alli Gleicher, wu vu däre Domain chemme.
+
+Stell sicher, ass Du nit kompletti Domain blockiersch, wu separati Benutzerinhalt z Verfiegig stelle, wie z. B. blogpost.com, geocities.com usw.',
+	'spamdifftool_no_urls_detected' => "S sin kei URL gfunde wore. Druck <a href='$1'>do</a> zum zrugg z goh.",
+	'spamdifftool_spam_link_text' => 'zue Spam zuefiege',
+	'spamdifftool_option_domain' => 'alli vu däre Domain',
+	'spamdifftool_option_subdomain' => 'alli vu däre Subdomain',
+	'spamdifftool_option_directory' => 'die Subdomain un s Verzeichnis',
+	'spamdifftool_option_none' => 'nyt',
+	'spamdifftool_block' => 'Sperri:',
+	'spamdifftool_submit_buttom' => 'Spychere',
 );
 
 /** Hebrew (עברית)
@@ -922,6 +948,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'spamdifftool' => 'Spam-Blacklist beoarbaidje',
+	'spamdifftool-desc' => 'Rakt n Wai näie Iendraage bietoutouföigjen tou ju Spamblacklist uut Versionsunnerscheede',
 	'spamdifftool_cantedit' => 'Du hääst neen Begjuchtigenge tou ju Beoarbaidenge fon ju Spam-Blacklist.',
 	'spamdifftool_notext' => "Dät rakt naan Text, die der an ju Spam-Blacklist bietouföiged wäide kuude. Klik <a href='$1'>hier</a> toun Fääregungen.",
 	'spamdifftool_confirm' => "Bestäätigje, dät du disse Iendraage an ju Spam-Blacklist bietouföigje moatest. (Klik <a href='$1' target='new'>hier</a>, uum n Problem tou mäldjen.)",

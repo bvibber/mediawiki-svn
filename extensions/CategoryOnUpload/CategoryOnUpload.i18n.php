@@ -274,6 +274,14 @@ $messages['lb'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'categoryonupload-desc' => 'Потсетување на корисник да избере категорија за подигната податотека',
+	'categoryonupload-label' => 'Категорија:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -379,6 +387,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'categoryonupload-desc' => 'Pri nahrávaní súboru vyzve používateľa vybrať kategóriu',
 	'categoryonupload-label' => 'Kategória:',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'categoryonupload-desc' => 'Fräiget n Benutser bie dät Hoochleeden fon Doatäie ätter ne Kategorie',
+	'categoryonupload-label' => 'Kategorie:',
 );
 
 /** Sundanese (Basa Sunda)

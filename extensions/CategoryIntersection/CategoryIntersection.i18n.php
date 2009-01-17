@@ -73,6 +73,17 @@ $messages['br'] = array(
 	'categoryintersection-results' => 'Kavez ez eus bet $1 {{PLURAL:$1|titl|titl}} gant an taol klask.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'categoryintersection' => 'Preklapanje kategorija',
+	'categoryintersection-desc' => 'Održava tabelu sa haš vrijednostima za [[Special:CategoryIntersection|preklapanja kategorija]] unutar stranice',
+	'categoryintersection-doit' => 'Spisak stranica u svim ovim kategorijama',
+	'categoryintersection-maxcategories' => 'Najveći dopušteni broj preklapajućih kategorija je $1.',
+	'categoryintersection-results' => 'Pretraga je dala $1 {{PLURAL:$1|rezultat|rezultata}}.',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -511,5 +522,13 @@ $messages['vi'] = array(
 	'categoryintersection-doit' => 'Liệt kê các trang trong tất cả các thể loại này',
 	'categoryintersection-maxcategories' => 'Số thể loại giao nhau tối đa cho phép là $1.',
 	'categoryintersection-results' => 'Tìm được $1 tựa bài.',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'categoryintersection-doit' => 'Lisedön padis in klads valik at',
+	'categoryintersection-results' => 'Suk elabon {{PLURAL:$1|seki|sekis}} $1.',
 );
 

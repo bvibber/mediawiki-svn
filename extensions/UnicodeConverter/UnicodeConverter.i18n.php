@@ -63,9 +63,14 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'unicodeconverter' => 'Канвэртар Unicode',
+	'unicodeconverter-desc' => 'Просты прыклад модуля спэцыяльнай старонкі. [[Special:UnicodeConverter|Пададзены радок у кадыроўцы UTF-8]] будзе сканвэртаваны ў фармат HTML прыдатны для вэб-старонак у кадыроўцы ISO 8859-1',
 	'unicodeconverter-ok' => 'Добра',
+	'unicodeconverter-oldtext' => 'Арыгінальны тэкст:',
+	'unicodeconverter-newtext' => 'Канвэртаваны тэкст:',
 );
 
 /** Bulgarian (Български)
@@ -89,10 +94,11 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'unicodeconverter' => 'Unicode-Konverter',
-	'unicodeconverter-desc' => 'Einfaches Beispiel für eine Spezialseite. [[Special:UnicodeConverter|Eingabe eines Zeichens in UTF-8]], Ausgabe als HTML-Entität zum Gebrauch in einer ISO 8859-1 Webseite',
+	'unicodeconverter-desc' => 'Einfaches Beispiel für eine Spezialseite. [[Special:UnicodeConverter|Eingabe eines Zeichens in UTF-8]], Ausgabe als HTML-Entität zum Gebrauch in einer ISO-8859-1-Webseite',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Originaltext:',
 	'unicodeconverter-newtext' => 'Konvertierter Text:',
@@ -378,6 +384,15 @@ $messages['pnb'] = array(
 	'unicodeconverter-newtext' => 'بدلی ہوئی لکھائی:',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'unicodeconverter' => 'د يونيکوډ اړونکی',
+	'unicodeconverter-oldtext' => 'آرنی متن:',
+	'unicodeconverter-newtext' => 'اړول شوی متن:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -417,6 +432,17 @@ $messages['sk'] = array(
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Pôvodný text:',
 	'unicodeconverter-newtext' => 'Skonvertovaný text:',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'unicodeconverter' => 'Unicode-Konverter',
+	'unicodeconverter-desc' => 'Einfach Biespil foar ne Spezioalsiede. [[Special:UnicodeConverter|Iengoawe fon n Teeken in UTF-8]], Uutgoawe as HTML-Entität toun Gebruuk in ne ISO 8859-1 Websiede',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Originoaltext:',
+	'unicodeconverter-newtext' => 'Konvertierden Text:',
 );
 
 /** Swedish (Svenska)
@@ -489,6 +515,14 @@ $messages['vi'] = array(
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Nguyên văn:',
 	'unicodeconverter-newtext' => 'Văn bản chuyển đổi:',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'unicodeconverter-oldtext' => 'Vödem rigik:',
+	'unicodeconverter-newtext' => 'Vödem fomätü Unicode:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

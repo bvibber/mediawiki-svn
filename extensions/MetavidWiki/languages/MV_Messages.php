@@ -1257,7 +1257,7 @@ momentan eine sehr <b>eingeschränkte</b> Funktion. Klicke auf einen Clip um ihn
 	'mv_contextmenu_opt' => 'Kontextmenüs aktivieren',
 	'mv_sequence_timeline' => 'Sequenzen-Zeitleiste',
 	'mv_edit_sequence_desc_help' => 'Sequenzbeschreibung',
-	'mv_edithelpsequence' => 'Hilfe: Sequenz-Bearbeitung',
+	'mv_edithelpsequence' => 'Help:Sequenz-Bearbeitung',
 	'mv_seq_summary' => 'Bearbeitungszusammenfassung der Sequenz',
 	'mv_add_clip_by_name' => 'Clip anhand des Namens hinzufügen',
 	'mv_export_cmml' => 'CMML exportieren',
@@ -1365,6 +1365,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Feten7
  * @author Imre
  * @author Jatrobat
  * @author Sanbec
@@ -1376,6 +1377,7 @@ $messages['es'] = array(
 	'mv_tool_export' => 'Exportar',
 	'mv_edit' => 'Editar',
 	'mv_history' => 'Historial',
+	'mv_remove' => 'eliminar',
 	'mv_search_spoken_by' => 'Hablado por',
 	'mv_search_categories' => 'Categorías',
 	'mv_search_category' => 'Categoría',
@@ -1998,6 +2000,11 @@ $messages['haw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'mv_duration_label' => 'משך',
+	'mv_save_changes' => 'שמירת השינויים',
+	'mv_remove_reason' => 'סיבת המחיקה:',
+	'mv_tool_search' => 'חיפוש',
+	'mv_tool_navigate' => 'ניווט',
 	'mv_play' => 'ניגון',
 	'mv_edit' => 'עריכה',
 	'mv_history' => 'היסטוריה',
@@ -2964,6 +2971,12 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'metavid' => 'Metavid Sigg',
+	'mv_path_type_label' => 'Tüp fun enem Paad',
+	'mv_base_offset_label' => 'Aanfangs-Afshtand',
+	'mv_duration_label' => 'Door',
+	'mv_delete_stream_file' => 'Verwieß op de Strom-Dattei fottschmiiße',
+	'mv_save_changes' => 'Änderunge faßhallde',
+	'mv_file_with_same_desc' => 'Fähler: Mer han ald en Shtrom-Dattei met dämsellve Beschrievungsschlössel: <i>$1</i>',
 	'mv_tool_search' => 'Sööke',
 	'anno_en_desc' => 'Englesch katejoriseere un Aanmerkunge maache.
 Hemet kanns De Stöckscher uß em Viddeo en Kattejorije donn un
@@ -4120,6 +4133,14 @@ foncionalitat fòrça <b>limitada</b> actualament. Clicatz sus un clip per modif
 	'mv_protect_source_material' => 'Original protegit en escritura',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jose77
+ */
+$messages['or'] = array(
+	'mv_tool_search' => 'ସନ୍ଧାନ',
+	'mv_history' => 'ଇତିହାସ',
+);
+
 /** Ossetic (Иронау)
  * @author Amikeco
  */
@@ -4129,6 +4150,7 @@ $messages['os'] = array(
 	'mv_edit' => 'Баив æй',
 	'mv_history' => 'Истори',
 	'mv_adjust_preview_stop' => 'Разæркаст бауром',
+	'mv_search_categories' => 'Категоритæ',
 	'mv_search_category' => 'Категори',
 	'mv_category' => 'категори',
 );
@@ -4182,6 +4204,7 @@ $messages['ps'] = array(
 	'mv_watch_clip' => 'کليپ کتل',
 	'mv_close_clip' => 'کليپ تړل',
 	'mv_play' => 'غږول',
+	'mv_edit' => 'سمون',
 	'mv_history' => 'پېښليک',
 	'mv_remove' => 'غورځول',
 	'mv_start_desc' => 'د پيل وخت',
@@ -5253,6 +5276,127 @@ $messages['th'] = array(
 	'mv_tool_search' => 'ค้นหา',
 	'mv-category-media-count' => 'สื่อ $1 อันอยู่ในหมวดหมู่นี้',
 	'mv_search_categories' => 'หมวดหมู่',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'metavid' => "Pahina ng ''Metavid''",
+	'mv_missing_stream' => 'Nawawalang daloy: $1',
+	'specialpages-group-mv_group' => 'Natatanging mga pahina ng MetaVidWiki',
+	'mv_ogg_high_quality' => "Mataas na uri/kalidad - Ogg Theora na may 900 mga ''kilobyte''",
+	'mv_stream_added' => 'Idinagdag mo ang daloy na $1',
+	'mv_stream_meta' => 'Pahina ng daloy',
+	'mv_add_stream' => 'Dagdag daloy ng Metavid',
+	'mv_edit_stream' => 'Daloy ng pagbabago na pang-Metavid',
+	'mvexportsearch' => 'Pagluluwas na pang-Metavid',
+	'mvexportsequence' => 'Pagkakasunud-sunod ng pag-aangkat na pang-Metavid',
+	'mvexportstream' => 'Daloy ng pag-aangkat na pang-Metavid',
+	'mv_move_delete_msg' => "inilipat ang ''mvd'' patungo sa $1",
+	'mv_add_stream_submit' => 'Idagdag ang daloy',
+	'mv_no_stream_files' => 'Walang umiiral na mga talaksan ng daloy',
+	'mv_edit_stream_files' => 'Baguhin ang mga talaksan ng daloy',
+	'mv_path_type_url_anx' => 'url na pangkabuoan ng midya',
+	'mv_path_type_wiki_title' => 'pamagat ng midya na pang-wiki',
+	'mv_path_type_label' => 'uri ng daan',
+	'mv_duration_label' => 'Tagal ng panahon',
+	'mv_save_changes' => 'Sagipin ang mga pagbabago',
+	'mv_removed_file_stream' => 'Tinanggal na talaksan ng daloy: $1',
+	'mv_user_cant_edit' => 'Maaaring kailangan mong $1 upang makapagbago, $2',
+	'mv_add_stream_file' => 'Idagdag ang talaksan ng daloy',
+	'mv_media_path' => 'daanan ng midya',
+	'mv_file_list' => 'Mga talaksan ng daloy',
+	'mv_label_stream_name' => 'Pangalan ng daloy',
+	'mv_label_stream_desc' => 'Paglalarawan ng daloy',
+	'add_stream_permission' => 'Wala kang pahintulot upang makapagdagdag ng isang bagong daloy',
+	'edit_stream_missing' => 'Kulang ng pangalan ng daloy',
+	'mv_missing_req_time' => 'Kulang ng oras ng paghiling',
+	'mv_missing_cat' => 'Kulang ng pangalan ng kaurian',
+	'mv_error_stream_insert' => 'nabigo sa pagsisingit ng daloy',
+	'mv_redirect_and_delete_reason' => 'tinanggal ang pahinang panturo',
+	'mv_remove_reason' => 'Dahilan ng pagbubura:',
+	'mv_label_stream_type' => 'Uri ng daloy',
+	'mv_metavid_file' => 'Umiiral na talaksan sa ibabaw ng serbidor',
+	'mv_metavid_live' => 'Ihanda ang buhay na daloy',
+	'mv_upload_file' => 'Ikarga ang talaksan',
+	'mv_external_file' => 'Panlabas na talaksan',
+	'mv_tool_search' => 'Maghanap',
+	'mv_tool_navigate' => 'Maglibot',
+	'mv_tool_export' => 'Iluwas',
+	'mv_tool_embed' => 'Ibaon',
+	'mv_tool_mang_layers' => 'Pamahalaan ang mga sapin/patong',
+	'mv_update_layers' => 'Isapanahon ang tanawin ng mga patong/sapin',
+	'mv_watch_clip' => 'Panoorin ang kaputol ng palabas',
+	'mv_close_clip' => 'Isara ang kaputol ng palabas',
+	'mv_people_matches' => 'Tumutugma ang mga tao',
+	'mv_category_matches' => 'Tumutugma ang kaurian',
+	'mv_bill_matches' => 'Tumutugma ang talaan ng babayaran',
+	'mv_click_to_edit' => 'pindutin upang mabago',
+	'mvd_default_mismatch' => 'Kamalian sa mga pagtatakda ng talaksan',
+	'mv_data_page_title' => '$1 para sa $2 mula sa $3',
+	'mv_time_separator' => '$1 hanggang $2',
+	'mv_list_streams_none' => 'Walang umiiral na mga daloy',
+	'mv_play' => 'Paandarin/patugtugin',
+	'mv_edit' => 'Baguhin',
+	'mv_history' => 'Kasaysayan',
+	'mv_edit_title' => 'Baguhin ang teksto',
+	'mv_remove' => 'Tanggalin',
+	'mv_adjust' => 'iakma',
+	'mv_adjust_submit' => 'Sagipin ang pag-aakma',
+	'mv_adjust_title' => 'Iakma ang panahon/oras ng simula at pagwawakas',
+	'mv_adjust_preview' => 'Paunang tingnan ang ginawang pag-aakma',
+	'mv_adjust_preview_stop' => 'Ihinto ang paunang tingin',
+	'mv_adjust_old_title_missing' => 'Hindi umiiral ang pahinang sinusubok mong ilipat mula sa ($1)',
+	'mv_adjust_ok_move' => 'Tagumpay, iniaakma...',
+	'mv_start_desc' => 'Oras ng pagsisimula',
+	'mv_end_desc' => 'Oras ng pagwawakas',
+	'mv_basic_edit' => 'Payak na pagbago',
+	'mv_remove_category' => 'Tanggalin ang kaurian',
+	'mv_existing_categories' => '{{PLURAL:$1|kaurian|mga kaurian}}:',
+	'mv_add_category' => 'Magdagdag ng pagkakauri/kaurian',
+	'mv_basic_text_desc' => 'Paglalarawan ng teksto (maaaring wala nito)',
+	'mv_viewnext' => 'Tingnan ($1)',
+	'mv_viewprevnext' => 'Tingnan ($1) ($2)',
+	'mediasearch' => 'Paghahanap ng midya',
+	'mv_search_sel_t' => 'Pumili ng uri ng paghahanap',
+	'mv_results_for' => 'Kinalabasan para sa $1',
+	'mv_add_filter' => 'Magdagdag ng pansala',
+	'mv_search_match' => 'Hanapin ang teksto',
+	'mv_search_spoken_by' => 'Winiwika ng/ni',
+	'mv_search_categories' => 'Mga kaurian',
+	'mv_search_category' => 'Kaurian',
+	'mv_search_smw_property' => 'Mga pag-aaring hinggil sa kahulugan ng salita (semantiko)',
+	'mv_search_and' => 'at',
+	'mv_search_or' => 'o',
+	'mv_search_not' => 'hindi',
+	'mv_search_stream_name' => 'Pangalan ng daloy',
+	'mv_search_date_range' => 'Saklaw ng petsa',
+	'mv_stream_name' => 'pangalan ng daloy',
+	'mv_date_range' => 'saklaw ng petsa',
+	'mv_date_last_week' => 'Nakaraang linggo',
+	'mv_category_results' => 'Mga kinalabasang kaurian',
+	'mv_people_results' => 'Mga kinalabasang tao',
+	'mv_bill_results' => 'Mga kinalabasang talaan ng babayaran',
+	'mv_spoken_by' => 'winiwika ng/ni',
+	'mv_speech_by' => 'pananalita/talumpati ng/ni',
+	'mv_category' => 'kaurian',
+	'mv_search_no_results' => 'Walang tumutugmang midya',
+	'mv_media_matches' => 'Nagtutugma ang midya',
+	'mv_remove_filter' => 'tanggalin ang pansala',
+	'mv_match_text' => '~  $1 nagtutugma',
+	'mv_match_text_one' => '~ 1 mga tumutugma',
+	'mv_edit_sequence' => 'Pagkakasunud-sunod ng pagbabago:$1',
+	'mv_sequence_player_title' => 'pampaandar na ayon sa pagkakasunud-sunod',
+	'mv_resource_not_found' => "Hindi natagpuan ang pinagmulang '''$1'''",
+	'mv_resource_not_supported' => "Hindi sinusuportahan/tinatangkilik ang uring '''$1''' ng pinagmulan",
+	'mv_sequence_add_manual' => 'Idagdag ayon sa pangalan',
+	'mv_sequence_add_manual_desc' => 'Idagdag ang mga kaputol ng palabas ayon sa pangalan ng daloy',
+	'mv_sequence_add_search' => 'Idagdag ayon sa paghahanap',
+	'mv_sequence_add_search_desc' => 'Idagdag ang mga kaputol ng palabas ayon sa paghahanap ng midya',
+	'mv_seq_add_end' => 'Idagdag sa hulihan ng pagkakasunud-sunod/serye',
+	'mv_sequence_edit_text' => 'Lumipat sa Patnugot ng Teksto',
+	'mv_sequence_edit_visual_editor' => 'Lumipat sa Pampatnugot ng Natatanaw',
 );
 
 /** Turkish (Türkçe)

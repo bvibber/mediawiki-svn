@@ -1430,6 +1430,13 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-desc-link' => 'Prekara berkas iki',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'ogg-download' => 'ფაილის ჩამოტვირთვა',
+);
+
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
 	'ogg-short-audio' => 'Ogg $1 دىبىس فايلى, $2',

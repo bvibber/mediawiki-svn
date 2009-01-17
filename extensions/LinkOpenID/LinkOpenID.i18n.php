@@ -141,6 +141,19 @@ Isto permitiralle usar a súa páxina de usuario tamén como un OpenID.',
 	'linkopenid-prefstext-v2url' => 'URL do servidor para a versión 2 do OpenID:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'linkopenid-desc' => 'מתן האפשרות למשתמשים לקשר את חשבונותיהם לזהות OpenID חיצונית',
+	'linkopenid-prefstext-pre' => 'אם יש לכם זהות OpenID המאוחסנת אצל ספק חיצוני, תוכלו לציינה להלן.
+תכונה זו מאפשרת לכם להשתמש בדף המשתמש שלכם גם כזהות OpenID.',
+	'linkopenid-prefstext-openid' => 'זהות ה־OpenID שלכם:',
+	'linkopenid-prefstext-v1url' => 'כתובת השרת לזהות OpenID בגרסה 1.1:',
+	'linkopenid-prefstext-v2url' => 'כתובת השרת לזהות OpenID בגרסה 2:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -42,6 +42,13 @@ $messages['arz'] = array(
 	'editown-desc' => 'المستخدمون بدون الصلاحية editall يمكنهم تعديل الصفحات التى قاموا بإنشائها فقط',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'editown-desc' => 'Korisnici bez prava editall mogu uređivati samo stranice koje su napravili',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
@@ -180,6 +187,13 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'editown-desc' => 'ज्या सदस्यांना सर्वसंपादन अधिकार नाहीत ते फक्त त्यांनी तयार केलेली पानेच संपादित करू शकतात',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'editown-desc' => 'Brukers ahn dat editall-Recht dröfft blot sülvst opstell Sieden ännern',
 );
 
 /** Dutch (Nederlands)

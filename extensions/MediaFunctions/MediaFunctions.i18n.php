@@ -144,6 +144,16 @@ $messages['gl'] = array(
 	'mediafunctions-not-exist' => '"$1" non existe',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'mediafunctions-desc' => 'הוראות תנאי לקבלת מידע על קובצי מדיה',
+	'mediafunctions-invalid-title' => '"$1" אינה כותרת תקינה',
+	'mediafunctions-not-exist' => 'הקובץ "$1" אינו קיים',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
