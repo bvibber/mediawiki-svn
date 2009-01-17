@@ -1015,10 +1015,10 @@ abstract class ConfigurationPage extends SpecialPage {
 					"\n</pre>";
 			}
 			$text = wfMsgExt( 'configure-arrayinput-oneperline', 'parseinline' );
-			$text .= "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8' style='width: 95%;'>\n";
+			$text .= "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8' style='width: 95%;'>";
 			if ( is_array( $default ) )
 				$text .= implode( "\n", $default );
-			$text .= "\n</textarea>\n";
+			$text .= "</textarea>\n";
 			return $text;
 		}
 		if ( $type == 'assoc' ) {
