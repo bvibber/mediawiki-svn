@@ -184,9 +184,10 @@ $wgExtensionFunctions[] = 'wfGoogleMaps_Install'; # array( $wgGoogleMapExtension
 
 // extension credits
 $wgExtensionCredits['other'][] = array(
-	'name'        => 'Google Maps Extension',
-	'author'      => 'Evan Miller',
-	'version'     => GOOGLE_MAPS_EXTENSION_VERSION,
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Google_Maps',
-	'description' => 'Easily create maps with wiki-fied markers'
+	'name'           => 'Google Maps Extension',
+	'author'         => 'Evan Miller',
+	'version'        => GOOGLE_MAPS_EXTENSION_VERSION,
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Google_Maps',
+	'description'    => 'Easily create maps with wiki-fied markers',
+	'descriptionmsg' => 'gm-descs',
 );

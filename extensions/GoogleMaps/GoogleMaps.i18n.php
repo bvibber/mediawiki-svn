@@ -11,6 +11,7 @@ $wgGoogleMapsMessages = array();
  * @author Evan Miller
  */
 $wgGoogleMapsMessages['en'] = array(
+	'gm-desc'                      => 'Easily create maps with wiki-fied markers',
 	'gm-incompatible-browser'      => 'In order to see the map that would go in this space, you will need to use a compatible web browser.',
 	'gm-incompatible-browser-link' => 'Click here to see a list of compatible browsers.',
 	'gm-no-editor'                 => 'Unfortunately, your browser does not support the interactive map-making features.  Try the latest version of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) or <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',
