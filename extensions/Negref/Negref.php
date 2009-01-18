@@ -30,7 +30,6 @@ $wgExtensionCredits['parserhook'][] = array (
 
 $wgExtensionFunctions[] = 'efNegrefSetup';
 $wgHooks['LanguageGetMagic'][]   = 'efNegrefSetupLanguageMagic';
-$wgExtensionMessagesFiles['Negref'] = dirname(__FILE__).'/Negref.i18n.php';
 
 function efNegrefSetup() {
 	global $wgParser, $wgHooks;
