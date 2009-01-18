@@ -1355,11 +1355,17 @@ $wgCustomToolbarMessages['pt'] = array(
 	'ct_italic_tip_wrap' => 'Tornar este texto itálico',
 	'ct_italic_caption' => 'Itálico',
 	'ct_internal_sample' => 'NomeDaPágina',
+	'ct_internal_tip_ins' => 'Inserir uma ligação interna',
+	'ct_internal_caption' => 'Ligação interna',
+	'ct_external_caption' => 'Ligação externa',
 	'ct_image_caption' => 'Adicionar imagem',
 	'ct_math_caption' => 'Fórmula',
+	'ct_horizontal_caption' => 'Linha horizontal',
 	'ct_upload' => 'Carregar $1',
+	'ct_submit' => 'Ir!',
 	'ct_close' => 'Fechar janela',
 	'ct_user_user' => 'Utilizador',
+	'ct_user_caption' => 'Ligação de utilizador',
 	'ct_user_sample' => 'Nome de utilizador',
 );
 

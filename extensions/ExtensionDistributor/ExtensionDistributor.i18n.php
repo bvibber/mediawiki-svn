@@ -167,6 +167,58 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 	'extdist-want-more' => 'الحصول على امتداد آخر',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'extensiondistributor' => 'Загрузіць пашырэньне MediaWiki',
+	'extdist-desc' => 'Пашырэньне для распаўсюджваньня архіваў пашырэньняў',
+	'extdist-not-configured' => 'Калі ласка, задайце $wgExtDistTarDir і $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Зададзеная працоўная копія дырэкторыі не існуе!',
+	'extdist-no-such-extension' => 'Пашырэньне «$1» не існуе',
+	'extdist-no-such-version' => 'Вэрсія «$2» пашырэньня «$1» ня знойдзеная.',
+	'extdist-choose-extension' => 'Выберыце, якое пашырэньне Вы жадаеце загрузіць:',
+	'extdist-wc-empty' => 'Зададзеная працоўная копія дырэкторыі ня мае пашырэньняў для распаўсюджваньня!',
+	'extdist-submit-extension' => 'Працягваць',
+	'extdist-current-version' => 'Цяперашняя вэрсія (trunk)',
+	'extdist-choose-version' => '<big>Вы загружаеце пашырэньне <b>$1</b>.</big>
+
+Выберыце сваю вэрсію MediaWiki.
+
+Большасьць пашырэньняў працуе зь некалькімі вэрсіямі MediaWiki, таму, калі тут няма Вашай вэрсіі MediaWiki, альбо Вам патрабуюцца магчымасьці апошняй вэрсіі, паспрабуйце апошнюю вэрсію.',
+	'extdist-no-versions' => 'Выбранае пашырэньне ($1) не даступна ні ў якай вэрсіі!',
+	'extdist-submit-version' => 'Працягваць',
+	'extdist-no-remote' => 'Не атрымалася скантактавацца з аддаленым кліентам Subversion.',
+	'extdist-remote-error' => 'Памылка аддаленага кліента Subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Няслушны адказ ад аддаленага кліента Subversion.',
+	'extdist-svn-error' => 'Памылка Subversion: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Немагчыма апрацаваць XML ад «svn info»: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar вярнуў код памылкі $1:',
+	'extdist-created' => "Быў створаны архіў вэрсіі <b>$2</b> пашырэньня <b>$1</b> MediaWiki <b>$3</b>. Загрузка пачнецца аўтаматычна праз 5 сэкундаў.
+
+Спасылка на архіў:
+:$4
+Спасылку можна выкарыстоўваць для неадкладнай загрузкі на сэрвэр, але калі ласка, не занатоўвайце яе, таму што зьмест не будзе абнаўляцца і можа быць выдалены праз некаторы час.
+
+Архіў tar неабходна распакаваць у дырэкторыю пашырэньня. Напрыклад, у Unix-падобных сыстэмах гэта будзе выглядаць так:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+У сыстэмах Windows, для распакоўкі Вы можаце выкарыстоўваць праграму [http://www.7-zip.org/ 7-zip].
+
+Калі Вашая вікі знаходзіцца на аддаленым сэрвэры, распакуйце файлы ў часовую дырэкторыю на Вашым кампутары, і потым загрузіце '''ўсе''' распакаваныя файлы ў дырэкторыю пашырэньня на сэрвэры.
+
+Майце на ўвазе, што некаторыя пашырэньні патрабуюць файл з назвай ExtensionFunctions.php, які знаходзіцца на <tt>extensions/ExtensionFunctions.php</tt>, што знаходзіцца ў ''галоўнай'' дырэкторыі гэтага пашырэньня. Архіў гэтага пашырэньня ўтрымлівае гэты файл як tarbomb, які распакаваны ў ./ExtensionFunctions.php. Не забудзьце загрузіць гэты файл на Ваш аддалены сэрвэр.
+
+Пасьля распакоўкі файлаў, Вам трэба зарэгістраваць пашырэньне ў LocalSettings.php. Дакумэнтацыя пашырэньня павінна ўтрымліваць інструкцыю як гэта зрабіць.
+
+Калі Вы маеце якія-небудзь пытаньні пра сыстэму ўсталяваньня пашырэньня, калі ласка, задайце іх на старонцы [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Атрымаць іншае пашырэньне',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -1344,6 +1396,57 @@ Om du har några frågor om programtilläggets distributionssystem, gå till [[E
 $messages['te'] = array(
 	'extdist-submit-extension' => 'కొనసాగించు',
 	'extdist-submit-version' => 'కొనసాగించు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'extensiondistributor' => 'Ikarga pababa ang karugtong na pang-MediaWiki',
+	'extdist-desc' => 'Karugtong para sa pagpapamahagi ng sinupan/arkibo ng mga karugtong na para sa mga kuha ng larawan/litrato',
+	'extdist-not-configured' => 'Paki-isaayos ang $wgExtDistTarDir at $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Hindi umiiral ang naisaayos nang direktoryo ng siping panggawain!',
+	'extdist-no-such-extension' => 'Walang ganyang karugtong na "$1"',
+	'extdist-no-such-version' => 'Hindi umiiral ang karugtong na "$1" sa loob ng bersyong "$2".',
+	'extdist-choose-extension' => 'Piliin kung aling karugtong ang nais mong ikarga pababa:',
+	'extdist-wc-empty' => 'Walang maaaring ipamahaging mga karugtong ang naisaayos na direktoryo ng siping panggawain!',
+	'extdist-submit-extension' => 'Ipagpatuloy',
+	'extdist-current-version' => 'Kasulukyang bersyon (baul)',
+	'extdist-choose-version' => "<big>Ikinakarga mo pababa ang <b>$1</b> na karugtong.</big>
+
+Piliin ang iyong bersyon ng MediaWiki.  
+
+Gumagawa sa kahabaan ng maramihang mga bersyon ng MediaWiki ang karamihan sa mga karugtong, kaya't kung ang iyong bersyon ng MediaWiki ay hindi dito, o kung kailangan mo ng isang pinakabagong mga kasangkapang-katangian ng karugtong, subuking gamitin ang pangkasalukuyang bersyon.",
+	'extdist-no-versions' => 'Hindi makukuha mula sa loob ng anumang bersyon ang napiling karugtong na ($1)!',
+	'extdist-submit-version' => 'Ipagpatuloy',
+	'extdist-no-remote' => 'Hindi nagawang makipag-ugnayan sa malayong kliyente ng kabahaging bersyon.',
+	'extdist-remote-error' => 'Kamalian mula sa malayong kliyente ng kabahaging bersyon: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Hindi tanggap na tugon mula sa malayong kliyente ng kabahaging bersyon.',
+	'extdist-svn-error' => 'Nakaranas ng isang kamalian ang kabahaging bersyon: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Hindi naisagawa ang XML mula sa "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => "Ibinalik ng pormat na ''tar'' ang kodigo sa paglabas na $1:",
+	'extdist-created' => "Nalikha na ang isang kuha ng larawan ng bersyong <b>\$2</b> ng karugtong na <b>\$1</b> para sa MediaWiking <b>\$3</b>. Dapat na kusang magsimula na ang iyong pagkakargang pababa sa loob ng 5 mga segundo.
+
+Ang URL ng kuha ng larawang ito ay:
+:\$4
+Maaaring gamitin ito para sa kaagad na pagkakargang pababa patungo sa isang serbidor, ngunit huwag po lamang itong lagyan ng \"panandang pang-aklat\" (''bookmark''), dahil hindi maisasapanahon ang mga nilalaman, at maaaring mabura ito sa paglaon.
+
+Dapat na hanguin ang sinupan/arkibo ng ''tar'' (pormat ng talaksan) patungo sa iyong direktoryo ng mga karugtong.  Halimbawa na, sa isang mistulang ''unix'' na OS:
+
+<pre>
+tar -xzf \$5 -C /var/www/mediawiki/extensions
+</pre>
+
+Sa Windows, maaari mong gamitin ang [http://www.7-zip.org/ 7-zip] upang mahango ang mga talaksan.
+
+Kung ang wiki mo ay nasa ibabaw ng isang malayong serbidor/tagahain, hanguin ang mga talaksan patungo sa isang pansamantalang direktoryong nasa ibabaw ng pampook/lokal mong kompyuter, at pagkatapos ay ikarga pataas ang '''lahat''' ng nahangong mga talaksan papunta sa direktoryo ng mga karugtong na nasa ibabaw ng serbidor.
+
+Tandaan na nangangailangan ang ilang mga karugtong ng isang talaksang tinatawag na ExtensionFunctions.php, na nasa <tt>extensions/ExtensionFunctions.php</tt>, na ang ibig sabihin ay nasa loob ng ''magulang'' na direktoryo ng partikular na direktoryong ito ng karugtong.  Ang mga kuha ng larawang para sa mga karugtong na ito ay napapalooban ng ganitong talaksan upang magsilbi bilang isang \"pampasabog na tar\" (''tarbomb''), na hinahango patungo sa ./ExtensionFunctions.php. Huwag kalimutang ikarga pataas ang talaksang ito patungo sa iyong malayong serbidor.
+
+Matapos  mong hangunin ang mga talaksan, kakailanganin mong itala/irehistro ang karugtong sa loob ng LocalSettings.php.  Ang kasulatan ng karugtong ay dapat na mayroong mga panuntunan hinggil sa kung paano ito maisasagawa.
+
+Kung mayroon kang anumang katanungan hinggil sa sistemang ito ng pagpapamahagi ng karugtong, mangyaring pumunta lamang po sa [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Kumuha ng iba pang karugtong',
 );
 
 /** Turkish (Türkçe)

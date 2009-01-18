@@ -348,11 +348,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'profiling-data-process' => 'プロセス',
-	'profiling-data-count' => 'カウント',
+	'profiling-data-count' => '件数',
 );
 
 /** Javanese (Basa Jawa)

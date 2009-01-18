@@ -47,13 +47,14 @@ Please wait for the existing action to complete.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author M.M.S.
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'imagetagging-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'imagetagging-article' => '{{Identical/Page}}',
+	'imagetagging-article' => '{{Identical|Page}}',
 	'imagetagging-imghistory' => '{{Identical|History}}',
 	'imagetagging-tagcancel-button' => '{{Identical|Cancel}}',
 );
@@ -596,10 +597,35 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'taggedimages' => 'ラベル付画像',
+	'imagetagging-desc' => '利用者がページ中の画像の領域を選択し、その領域にページを関連付けることをできるようにする',
+	'imagetagging-addimagetag' => 'この画像をラベル付け',
+	'imagetagging-article' => 'ページ:',
+	'imagetagging-articletotag' => 'ラベルを付けるページ',
+	'imagetagging-canteditothermessage' => 'あなたは必要な権限をもっていないか、ページがその他の理由でロックされているため、このページを編集できません。',
 	'imagetagging-imghistory' => '履歴',
-	'imagetagging-removetag' => 'タグの削除',
-	'imagetagging-tag-button' => 'タグ',
-	'imagetagging-tagcancel-button' => 'キャンセル',
+	'imagetagging-images' => '画像',
+	'imagetagging-inthisimage' => 'この画像中: $1',
+	'imagetagging-logentry' => '$2 が付けたページ [[$1]] へのラベルを除去',
+	'imagetagging-log-tagged' => '$4 が画像 [[$1|$2]] に [[$3]] をラベル付け',
+	'imagetagging-new' => '<sup><span style="color:red">新!</span></sup>',
+	'imagetagging-removetag' => 'ラベルを除去',
+	'imagetagging-done-button' => 'ラベル付け完了',
+	'imagetagging-tag-button' => 'ラベル',
+	'imagetagging-tagcancel-button' => '中止',
+	'imagetagging-tagging-instructions' => '画像中でラベル付けしたい人物や風物をクリックしてください。',
+	'imagetagging-addingtag' => 'ラベル追加中…',
+	'imagetagging-removingtag' => 'ラベル除去中…',
+	'imagetagging-addtagsuccess' => 'ラベル追加完了。',
+	'imagetagging-removetagsuccess' => 'ラベル除去完了。',
+	'imagetagging-canteditneedloginmessage' => 'あなたはこの画像を編集できません。画像にラベル付けするにはログインしなければならないことがあります。今ログインしますか？',
+	'imagetagging-oneactionatatimemessage' => 'ラベル付けの操作は一度に一回しかできません。前の操作が完了するのを待ってください。',
+	'imagetagging-oneuniquetagmessage' => 'この画像は既にこの名前でラベル付けされています。',
+	'imagetagging-imagetag-seemoreimages' => '「$1」($2) の画像をもっと見る',
+	'imagetagging-taggedimages-title' => '「$1」の画像',
+	'imagetagging-taggedimages-displaying' => '「$4」の画像$3個中 $1 - $2個目を表示しています',
+	'tag-logpagename' => 'ラベル付け記録',
+	'tag-logpagetext' => 'これはすべての画像ラベルの追加と除去の記録です。',
 );
 
 /** Khmer (ភាសាខ្មែរ)

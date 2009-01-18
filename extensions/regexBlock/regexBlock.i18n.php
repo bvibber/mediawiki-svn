@@ -594,7 +594,6 @@ Isto debería facerse só para previr vandalismo, e segundo a política e normas
 $messages['got'] = array(
 	'regexblock-form-reason' => 'Faírina',
 );
-
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
  */
@@ -1078,13 +1077,17 @@ $messages['lb'] = array(
 	'regexblock-form-account-block' => 'Uleeë vun neie Benotzerkonte spären',
 	'regexblock-form-submit' => 'Dëse Benotzer spären',
 	'regexblock-form-submit-empty' => 'Gitt e Benotzernumm oder eng IP-Adress un fir ze spären.',
+	'regexblock-form-submit-expiry' => "Gitt w.e.g. en Zäitraum fir d'Spär un.",
 	'regexblock-nodata-found' => 'Keng Date fonnt',
 	'regexblock-stats-title' => 'Regex Spärstatistik',
 	'regexblock-unblock-success' => 'Spär opgehuewen',
 	'regexblock-unblock-log' => "D'Spär vum Benotzer oder vun der IP-Adress '''$1'''' gouf opgehuewen.",
+	'regexblock-unblock-error' => 'Feeler beim Ophiewe vun der Spär vum $1.
+Warscheinlech gëtt et esou e Benotzer net.',
 	'regexblock-view-blocked' => "Weis d'Späre vum:",
 	'regexblock-view-all' => 'Alleguer',
 	'regexblock-view-go' => 'Lass',
+	'regexblock-view-account' => '(Opmaache vu Benotzerkonte gespaart)',
 	'regexblock-view-reason' => 'Grond: $1',
 	'regexblock-view-block-infinite' => 'permanent Spär',
 	'regexblock-view-block-by' => 'gespaart vum',
@@ -1092,6 +1095,7 @@ $messages['lb'] = array(
 	'regexblock-view-stats' => 'Statistik',
 	'regexblock-view-empty' => "D'Lëscht vun de gespaarte Benotzer an IP-Adressen ass eidel.",
 	'regexblock-view-time' => 'den $1',
+	'right-regexblock' => 'Spär Benotzer fir Ännerungen op alle Wikiën vun der Wiki-Farm',
 );
 
 /** Moksha (Мокшень)

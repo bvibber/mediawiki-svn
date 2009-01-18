@@ -342,7 +342,15 @@ Bes esu joot, un donn dä Fähler melde.',
  * @author Robby
  */
 $messages['lb'] = array(
+	'smoothgallery' => 'SmoothGallerie',
+	'smoothgallery-desc' => 'Erméiglecht de Benotzer et fir Gallerie mat Biller unzelleën déi eropgeluede goufen.
+Erméiglecht déi meescht Optioune vun SmoothGallerie',
+	'smoothgallery-title' => 'SmoothGallerie',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallerie: $1',
+	'smoothgallery-error' => '<b>SmoothGallerie Feeler:</b>',
 	'smoothgallery-gallery-not-found' => 'Déi ugefrote Gallerie gëtt et net.',
+	'smoothgallery-not-found' => "Et goufe keng Biller an d'Gallerie derbäigesat.
+Setzt w.e.g. mindestens ee Bild derbäi.",
 	'smoothgallery-javascript-disabled' => 'JavaScriot gëtt gebraucht fir dës Gallerie korrekt ze gesinn.',
 );
 

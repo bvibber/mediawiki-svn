@@ -501,6 +501,7 @@ $messages['ia'] = array(
 	'lookupuser-touched' => 'Ultime alteration del informationes del usator: $1',
 	'lookupuser-info-authenticated' => 'Authentication de e-mail: $1',
 	'lookupuser-useroptions' => 'Optiones del usator:',
+	'right-lookupuser' => 'Consultar preferentias de usatores',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -649,6 +650,14 @@ $messages['lb'] = array(
 	'lookupuser-touched' => "Benotzerkont de fir d'lescht beréiert gouf: $1",
 	'lookupuser-info-authenticated' => 'E-Mail Authentifikatioun: $1',
 	'lookupuser-useroptions' => 'Astellunge vum Benotzer:',
+	'right-lookupuser' => 'Benotzerastellungen nokucken',
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'lookupuser-email' => 'Eposta: [[Special:EmailUser/$2|$1]]',
 );
 
 /** Malayalam (മലയാളം)

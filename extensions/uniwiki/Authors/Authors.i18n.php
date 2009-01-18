@@ -228,6 +228,13 @@ $messages['lb'] = array(
 	'authors_anonymous' => 'Anonym',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'authors_authors' => 'Autores',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

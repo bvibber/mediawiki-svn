@@ -2418,8 +2418,13 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'deletequeue-desc' => 'Cria um [[Special:DeleteQueue|sistema baseado em fila para gerir eliminações]]',
+	'deletequeue-action-queued' => 'Eliminação',
+	'deletequeue-action' => 'Sugerir eliminação',
+	'deletequeue-action-title' => 'Sugerir eliminação de "$1"',
 	'deletequeue-speedy-title' => 'Marcar "$1" para eliminação rápida',
+	'deletequeue-delnom-reason' => 'Motivo da nomeação:',
 	'deletequeue-delnom-otherreason' => 'Outro motivo',
+	'deletequeue-delnom-submit' => 'Submeter nomeação',
 	'right-prod-nominate' => 'Propor eliminação de página',
 	'deletequeue-review-action' => 'Acção a tomar:',
 	'deletequeue-review-reason' => 'Comentários:',
@@ -2428,6 +2433,7 @@ $messages['pt'] = array(
 	'deletequeue-vote-action' => 'Recomendação:',
 	'deletequeue-vote-reason' => 'Comentários:',
 	'deletequeue-vote-submit' => 'Submeter',
+	'deletequeue' => 'Fila de eliminações',
 	'deletequeue-list-text' => 'Esta página mostra todas as páginas que estão no sistema de exclusão.',
 	'deletequeue-list-search-legend' => 'Pesquisar páginas',
 	'deletequeue-list-queue' => 'Fila:',
@@ -2435,6 +2441,8 @@ $messages['pt'] = array(
 	'deletequeue-list-anyqueue' => '(qualquer)',
 	'deletequeue-list-votes' => 'Lista de votos',
 	'deletequeue-list-header-page' => 'Página',
+	'deletequeue-list-header-queue' => 'Fila',
+	'deletequeue-list-header-expiry' => 'Validade',
 	'deletequeue-list-header-discusspage' => 'Página de discussão',
 );
 

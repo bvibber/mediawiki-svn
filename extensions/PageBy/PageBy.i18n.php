@@ -305,6 +305,17 @@ $messages['lb'] = array(
 	'pageby-anon' => '<i>anonym Benotzer</i>',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'pageby-desc' => 'Прикажува уредувачи на самата вики страница со користење на приврзокот <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Страница креирана од $1, $2',
+	'pageby-last' => 'Последно <a href="$3">модифицирано</a> од $1, $2',
+	'pageby-contributors' => 'Уредувачи:',
+	'pageby-anon' => '<i>анонимни</i>',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

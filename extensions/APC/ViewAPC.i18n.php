@@ -129,6 +129,7 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Meno25
  * @author Nike
@@ -143,6 +144,7 @@ $messages['qqq'] = array(
 *$3 can be something like <tt>mmap</tt>
 *$4 can be something like <tt>pthread mutex</tt>',
 	'viewapc-cached-files-d' => '* $2 is the size of files in Xbytes',
+	'viewapc-cachefull' => 'It can be paraphrased to "Number of times the cache has been full".',
 	'viewapc-rps' => '$1 is the number of requests with two decimal places. Do not use PLURAL.',
 	'viewapc-fragmentation-info' => '* $1 is percentage
 * $2 is size of fragmentation in Xbytes
@@ -2881,6 +2883,7 @@ Den nyaste versjonen ($2) finst på http://pecl.php.net/package/APC/$2',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author H92
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -2916,7 +2919,7 @@ APC ser ikke ut til å fungere.',
 	'viewapc-hitrate' => 'Treffrate',
 	'viewapc-missrate' => 'Bomrate',
 	'viewapc-insertrate' => 'Insettingsrate',
-	'viewapc-cachefull' => 'Mellomlagre hele tellingen',
+	'viewapc-cachefull' => 'Ganger mellomlageret har vært fullt',
 	'viewapc-rps' => '$1 forespørsler per sekund',
 	'viewapc-info-runtime' => 'Kjøretidsinformasjon',
 	'viewapc-info-memory' => 'Vertstatusdiagrammer',

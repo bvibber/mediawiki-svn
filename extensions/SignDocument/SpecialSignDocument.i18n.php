@@ -1668,6 +1668,7 @@ $messages['lb'] = array(
 	'sign-selectdoc' => 'Dokument:',
 	'sign-error-nosuchdoc' => 'Dat Dokument, dat Dir ugefrot hutt ($1), gëtt et net.',
 	'sign-realname' => 'Numm:',
+	'sign-address' => 'Adress Strooss:',
 	'sign-city' => 'Stad/Gemeng:',
 	'sign-state' => 'Staat:',
 	'sign-zip' => 'Postleitzuel:',

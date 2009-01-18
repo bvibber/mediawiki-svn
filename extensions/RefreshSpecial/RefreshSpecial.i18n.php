@@ -40,6 +40,7 @@ Warning: the refresh may take a while on larger wikis.',
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
@@ -56,6 +57,7 @@ Title of the special page Special:RefreshSpecial',
 Text displayed in the subtitle below the actual page title once the user has pressed the "Refresh selected" button.',
 	'refreshspecial-success-subtitle' => '{{Identical|Refreshing special pages}}
 Text displayed in the subtitle below the actual page title once the user has pressed the "Refresh selected" button.',
+	'refreshspecial-choice' => '{{Identical|Refreshing special pages}}',
 	'refreshspecial-js-disabled' => 'Displayed to users with JavaScript disabled so that they won\'t wonder why the "select all pages" checkbox isn\'t working properly.',
 	'refreshspecial-select-all-pages' => 'Text displayed next to a checkbox on Special:RefreshSpecial; checking the checkbox allows to select all listed pages.',
 	'refreshspecial-link-back' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button, at the bottom of the page.',
@@ -65,6 +67,7 @@ Text displayed in the subtitle below the actual page title once the user has pre
 	'refreshspecial-slave-lagged' => 'Displayed if a slave database server is lagging',
 	'refreshspecial-reconnected' => 'Displayed if the connection to the database was lost for some reason but the extension was able to reconnect to it.',
 	'refreshspecial-reconnecting' => 'Displayed if the connection to the database was lost for some reason.',
+	'refreshspecial-page-result' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button and results were gotten from the DB.',
 	'refreshspecial-total-display' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button if the refreshing was done successfully. $1 is the amount of special pages refreshed, $2 is the amount of database rows touched, $3 is the time how long it took to refresh all the selected special pages and $4 is the complete time of the script run.',
 	'right-refreshspecial' => '{{doc-right}}',
 );
@@ -465,6 +468,35 @@ $messages['it'] = array(
 	'refreshspecial-reconnecting' => 'Connessione fallita, prossimo tentativo fra 10 secondi...',
 	'refreshspecial-total-display' => '$1 {{PLURAL:$1|pagina aggiornata|pagine aggiornate}} per un totale di $2 {{PLURAL:$1|linea|linee}} in un tempo di $3 (il tempo totale di esecuzione dello script è di $4)',
 	'right-refreshspecial' => 'Aggiorna pagine speciali',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'refreshspecial' => '特別ページを更新する',
+	'refreshspecial-desc' => '[[Special:RefreshSpecial|特別ページを手動で更新]]できるようにする',
+	'refreshspecial-title' => '特別ページの更新',
+	'refreshspecial-help' => 'この特別ページは、特別ページを手動で更新する手段を提供します。更新したい特別ページをすべて選択し、以下の「選択したものを更新」ボタンを押すと選択したページを更新します。
+警告: 規模の大きなウィキでは更新にしばらくかかります。',
+	'refreshspecial-button' => '選択したものを更新',
+	'refreshspecial-fail' => '更新する特別ページを最低でも1つは選んでください。',
+	'refreshspecial-refreshing' => '特別ページを更新中',
+	'refreshspecial-skipped' => '負荷が低いので飛ばしました',
+	'refreshspecial-success-subtitle' => '特別ページを更新中',
+	'refreshspecial-choice' => '特別ページを更新中',
+	'refreshspecial-js-disabled' => '(<i>JavaScript を無効にしていると「すべてのページを選択」機能が使えません</i>)',
+	'refreshspecial-select-all-pages' => 'すべてのページを選択',
+	'refreshspecial-link-back' => '元のページに戻る',
+	'refreshspecial-none-selected' => '特別ページを一つも選択していません。デフォルトの選択状態に戻します。',
+	'refreshspecial-db-error' => '失敗: データベースのエラー',
+	'refreshspecial-no-page' => 'そのような特別ページはありません',
+	'refreshspecial-slave-lagged' => 'スレーブサーバーの遅延、待機中…',
+	'refreshspecial-reconnected' => '再接続しました。',
+	'refreshspecial-reconnecting' => '接続失敗、10秒間の再接続中…',
+	'refreshspecial-page-result' => '$1行を取得',
+	'refreshspecial-total-display' => '$1個のページ (データベース行数合計: $2) を $3で更新しました (スクリプトの全実行時間: $4)',
+	'right-refreshspecial' => '特別ページを更新する',
 );
 
 /** Khmer (ភាសាខ្មែរ)

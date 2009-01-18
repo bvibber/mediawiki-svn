@@ -379,6 +379,10 @@ $messages['lb'] = array(
 	'watchsubpages-addtitles' => 'Säiten derbäisetzen',
 	'watchsubpages-addtitlestowatchlist' => "Säiten op d'Iwwerwaachungslëscht derbäisetzen",
 	'watchsubpages-desc' => "Séier [[Special:WatchSubpages|all Ënner-Säiten]] vun enger Säit op d'Iwwerwwachungslëscht derbäisetzen",
+	'watchsubpages-form' => 'Wielt hei ënnedrënner déi Säiten eraus déi Dir op Är Iwwerwaachungslëscht derbäisetze wëllt.
+Fir eng Sàit derbäizesetzen, klickt d\'Kescht nierwendrunn un, a klickt "Säiten derbäisetzen".
+
+Fir méi Säite mateneen unzwielen oder ze desaktivéieren, kënnt Dir d\'Shift-Tast drécken fir méi Keschten hannereneen unzewielen an dann einfach déi éischt an déi lescht Kescht uklicken fir och all déi dertëschent matuzewielen.',
 );
 
 /** Malayalam (മലയാളം)

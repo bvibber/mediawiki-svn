@@ -873,18 +873,38 @@ $messages['pms'] = array(
  * @author 555
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'form-desc' => 'Uma [[Special:Form|interface em formulário]] para criar novas páginas',
 	'form' => 'Formulário',
+	'formnoname' => 'Sem nome de formulário',
 	'formnonametext' => 'Tem de fornecer um nome para o formulário, tal como "Special:Form/Nomedoformulario".',
+	'formbadname' => 'Nome de formulário incorreto',
 	'formbadnametext' => 'Não existe nenhum formulário com esse nome.',
+	'formpattern' => 'formulário $1',
 	'formtitlepattern' => 'Adicionar Novo $1',
-	'formsave' => 'Salvar',
+	'formsave' => 'Gravar',
+	'formindexmismatch-title' => 'Padrão do nome e predefinição não correspondem',
+	'formindexmismatch' => 'Este formulário tem padrões de nome e predefinições não correspondentes a partir do índice $1.',
 	'formarticleexists' => 'A página existe',
 	'formarticleexiststext' => 'A página [[$1]] já existe.',
+	'formbadpagename' => 'Nome de página incorreto',
+	'formbadrecaptcha' => 'Valores de reCaptha incorretos. Tente novamente.',
+	'formbadpagenametext' => 'Os dados que introduziu no formulário formam um nome de página incorreto, "$1".',
 	'formrequiredfieldpluralerror' => 'Os campos $1 são obrigatórios neste formulário. Por favor, preencha-os.',
+	'formrequiredfielderror' => 'O campo $1 é obrigatório para este formulário.
+Por favor preencha-o.',
 	'formsavesummary' => 'Nova página usando [[Special:Form/$1|formulário $1]]',
 	'formsaveerror' => 'Erro ao gravar formulário',
+	'formsaveerrortext' => "Houve um erro desconhecido ao gravar a página '$1'.",
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Malafaya
+ */
+$messages['pt-br'] = array(
+	'formsave' => 'Salvar',
 	'formsaveerrortext' => "Houve um erro desconhecido ao salvar a página '$1'.",
 );
 

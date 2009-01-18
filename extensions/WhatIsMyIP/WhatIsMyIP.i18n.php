@@ -289,6 +289,13 @@ $messages['jv'] = array(
 	'whatismyip-out' => 'IP panjenengan:',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'whatismyip-out' => 'თქვენი IP:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

@@ -83,8 +83,10 @@ $wgGoogleMapsMessages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $wgGoogleMapsMessages['qqq'] = array(
+	'gm-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change tag names, or link anchors.',
 	'gm-balloon-title' => '{{Identical|Title}}',
 	'gm-remove' => '{{Identical|Remove}}',
 	'gm-no-results' => '{{Identical|Sorry, no results}}',
@@ -1321,6 +1323,7 @@ $wgGoogleMapsMessages['fo'] = array(
  * @author Zetud
  */
 $wgGoogleMapsMessages['fr'] = array(
+	'gm-desc' => 'Création simple de plans avec la syntaxe wiki',
 	'gm-incompatible-browser' => 'Pour voir la carte qui devrait être dans cet espace, utilisez un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigateur compatible</a>.',
 	'gm-incompatible-browser-link' => 'Cliquez ici pour voir une liste de navigateurs compatibles.',
 	'gm-no-editor' => 'Malheureusement, votre navigateur ne supporte pas la création interactive de carte. Essayez d’installer la dernière version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) ou au pire <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
@@ -1610,6 +1613,7 @@ $wgGoogleMapsMessages['haw'] = array(
  * @author שומבלע
  */
 $wgGoogleMapsMessages['he'] = array(
+	'gm-desc' => 'יצירת מפות עם סימונים בתקן ויקי בקלות',
 	'gm-incompatible-browser' => 'לצורך צפייה במפה שתצרו כאן, הנכם צריכים להשתמש בדפדפן אינטרנט מתאים.',
 	'gm-incompatible-browser-link' => 'לחצו כאן לצפייה ברשימת דפדפנים תואמים.',
 	'gm-no-editor' => 'מצטערים, הדפדפן שלכם אינו תומך ביצירת מפה אינטראקטיבית. נסו את הגרסאות האחרונות של <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) או <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, ו- Linux).',
@@ -1927,6 +1931,7 @@ $wgGoogleMapsMessages['hy'] = array(
  * @author McDutchie
  */
 $wgGoogleMapsMessages['ia'] = array(
+	'gm-desc' => 'Crea facilemente cartas geographic con le syntaxe wiki',
 	'gm-incompatible-browser' => 'Pro vider le carta que venirea in iste spatio, tu debe usar un navigator del web compatibile.',
 	'gm-incompatible-browser-link' => 'Clicca hic pro vider un lista de navigatores del web compatibile.',
 	'gm-no-editor' => 'Infelicemente, tu navigator non supporta le functionalitate pro creation interactive de cartas. Essaya le ultime version de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, e Linux).',
@@ -2157,7 +2162,7 @@ $wgGoogleMapsMessages['it'] = array(
  * @author Hosiryuhosi
  */
 $wgGoogleMapsMessages['ja'] = array(
-	'gm-desc' => '標識にウィキリンクのついた地図を簡単に作成する',
+	'gm-desc' => 'ラベルにウィキリンクのついた地図を簡単に作成する',
 	'gm-incompatible-browser' => 'ここに表示される地図を確認するためには、互換性のあるウェブブラウザを利用する必要があります。',
 	'gm-incompatible-browser-link' => '互換性のあるブラウザの一覧を確認するには、ここをクリックしてください。',
 	'gm-no-editor' => '残念ですが、あなたのブラウザは対話的な地図作成機能に対応していません。<a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) か <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows、Mac、Linux) の最新バージョンを試してください。',
@@ -2404,6 +2409,7 @@ $wgGoogleMapsMessages['krj'] = array(
  * @author Purodha
  */
 $wgGoogleMapsMessages['ksh'] = array(
+	'gm-desc' => 'Landkaate op ein eijfach Aat maache met Makeerunge, di zom Wiki paße donn.',
 	'gm-incompatible-browser' => 'Öm di Kaat ze sinn ze krijje, di en he dä Plaz jeiht, moß De ne zopaß Web-Brauser hann.',
 	'gm-incompatible-browser-link' => 'Donn he klicke, öm en Leß met zopaß Brausere jezeijsch ze krijje.',
 	'gm-no-editor' => "'''Schadt.'''
@@ -2490,6 +2496,7 @@ $wgGoogleMapsMessages['ku-latn'] = array(
  * @author Robby
  */
 $wgGoogleMapsMessages['lb'] = array(
+	'gm-desc' => 'Einfacht Uleeë vu Kaarten matt wikifizéierte Markéierungen',
 	'gm-incompatible-browser' => 'fir déi Kaart ze gesinn déi hei misst ugewise ginn, musst Dir e kompatibele Browser benotzen.',
 	'gm-incompatible-browser-link' => 'Klickt heihinner fir eng Lëscht vu kompatibele Browser ze gesinn.',
 	'gm-balloon-title' => 'Titel:',
@@ -2840,7 +2847,7 @@ $wgGoogleMapsMessages['nah'] = array(
  * @author Tvdm
  */
 $wgGoogleMapsMessages['nl'] = array(
-	'gm-desc' => 'Gemakkelijk kaarten maken met gewikificeerde markeringen',
+	'gm-desc' => 'Eenvoudig kaarten maken met gewikificeerde markeringen',
 	'gm-incompatible-browser' => 'Om deze kaart te bekijken dient u gebruik te maken van een <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">geschikte browser</a>.',
 	'gm-incompatible-browser-link' => 'Klik hier voor een lijst met compatibele browsers.',
 	'gm-no-editor' => 'Helaas ondersteunt uw browser het interactief maken van kaarten niet. Probeer het eens met de nieuwste versie van <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Mac, Linux en Windows) of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
@@ -2987,8 +2994,10 @@ $wgGoogleMapsMessages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Anderssl
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $wgGoogleMapsMessages['no'] = array(
+	'gm-desc' => 'Lag kart med wikifiserte markører enkelt',
 	'gm-incompatible-browser' => 'Du må bruke en <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibel nettleser</a> for å se kartet som skulle ha vært her.',
 	'gm-incompatible-browser-link' => 'Gå hit for å se en liste over nettlesere dette fungerer i.',
 	'gm-no-editor' => 'Dessverre støtter ikke nettleseren din de interaktive kartlagingstjenestene. Prøv den nyeste versjonen av <a href="http://www.microsoft.com/norge/windows/ie/default.mspx">Internet Explorer</a> (Windows) eller <a href="http://www.mozilla-europe.org/no/products/firefox/">Firefox</a> (Windows, Mac og Linux).',

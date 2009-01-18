@@ -526,6 +526,7 @@ $messages['lb'] = array(
 	'mp-requests-title' => 'Ufroen',
 	'mp-requests-message' => 'Dir hutt dës Ufroen',
 	'mp-request-new-message' => 'neie Message',
+	'mp-request-new-award' => '$1 nei {{PLURAL:$1|Auszeechnung|Auszeechnungen}}',
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|neie Cadeau|nei Cadeauen}}',
 	'mp-request-new-foe' => '$1 nei {{PLURAL:$1|Géigner|Géigner}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|neie Frënd|nei Frënn}}',

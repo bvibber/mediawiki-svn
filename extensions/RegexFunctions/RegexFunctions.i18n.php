@@ -173,9 +173,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Matma Rex
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'regexfunctions-desc' => 'Funkcje parsera: wyrażenia regularne',
+	'regexfunctions-desc' => 'Funkcje parsera obsługi wyrażeń regularnych',
 );
 
 /** Portuguese (Português)

@@ -334,6 +334,7 @@ $messages['lb'] = array(
 	'layouts_continue' => 'Weider',
 	'layouts_choosecategory' => 'Wielt eng Kategorie fir $1:',
 	'layouts_unknown' => 'Onbekannt',
+	'layouts_tagline' => "Dës Säit gouf mam '''$1''' Layout generéiert.",
 );
 
 /** Erzya (Эрзянь)

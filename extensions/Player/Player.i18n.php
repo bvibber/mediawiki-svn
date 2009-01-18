@@ -360,7 +360,6 @@ $messages['gl'] = array(
 $messages['got'] = array(
 	'player-goto-file' => 'feilans',
 );
-
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
  */
@@ -665,6 +664,15 @@ $messages['li'] = array(
 $messages['mhr'] = array(
 	'player-goto-page' => 'Лаштык',
 	'player-goto-file' => 'файл',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'player-file' => 'Име на податотека',
+	'player-goto-page' => 'Страница',
+	'player-goto-file' => 'податотека',
 );
 
 /** Malayalam (മലയാളം)

@@ -42,6 +42,11 @@ $aliases['hu'] = array(
 	'ImageTagging' => array( 'Képcímkézés' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ImageTagging' => array( '画像のラベル付け', 'ラベル付画像' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ImageTagging' => array( 'Ofbeeldingen_annoteren' ),

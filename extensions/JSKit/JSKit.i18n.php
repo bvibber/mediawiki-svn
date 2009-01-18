@@ -143,9 +143,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Matma Rex
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'jskit-desc' => 'Integruje narzędzia js-kit na stronę wiki',
+	'jskit-desc' => 'Integruje narzędzia js-kit ze stroną wiki',
 );
 
 /** Portuguese (Português)

@@ -125,6 +125,13 @@ $messages['bcl'] = array(
 	'duplicator-summary' => 'Kinopya sa [[$1]]',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'duplicator-source' => 'Крыніца:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

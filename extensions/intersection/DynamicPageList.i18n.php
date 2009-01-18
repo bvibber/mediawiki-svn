@@ -439,6 +439,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'intersection-desc' => 'Generéiert eng Lëscht mat de rezentesten Androungen an eng Kategorie, oder an eng Intersektioun vu méi Kategorien',
 	'intersection_toomanycats' => 'Dynamesch Säite-Lëscht: Zevill Kategorien!',
 	'intersection_toofewcats' => 'Dynamesch Säite-Lëscht: Ze wéineg Kategorien!',
 	'intersection_noresults' => 'Dynamesch Säite-Lëscht: Kee Resultat!',

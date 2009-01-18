@@ -97,6 +97,15 @@ $messages['cs'] = array(
 	'searchbox-namespaces' => 'Jmenné prostory:',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Kaszeba
+ */
+$messages['csb'] = array(
+	'searchbox-desc' => 'Zezwôlô na dodanié fòrmùlara szëkbë',
+	'searchbox-search' => 'Szëkba',
+	'searchbox-go' => 'Biéj',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'searchbox-desc' => 'Ermöglicht das Einbinden eines Suchformulares',
@@ -287,6 +296,15 @@ $messages['lb'] = array(
  */
 $messages['lfn'] = array(
 	'searchbox-search' => 'Xerca',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'searchbox-search' => 'Барај',
+	'searchbox-go' => 'Оди',
+	'searchbox-namespaces' => 'Именски простори:',
 );
 
 /** Malay (Bahasa Melayu)

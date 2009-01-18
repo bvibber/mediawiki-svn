@@ -52,6 +52,11 @@ $aliases['hu'] = array(
 	'RefreshSpecial' => array( 'Különleges frissítés' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'RefreshSpecial' => array( '特別ページの更新' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'RefreshSpecial' => array( 'Spezialsäiten aktualiséieren' ),

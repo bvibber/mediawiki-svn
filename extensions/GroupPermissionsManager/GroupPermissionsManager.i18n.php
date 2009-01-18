@@ -1558,6 +1558,13 @@ $messages['oc'] = array(
 	'right-readold' => 'Veire lo contengut de las versions ancianas e de las difs',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'grouppermissions-search' => 'Къорд:',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Maikking
@@ -1617,6 +1624,8 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'sortpermissions' => 'Ordenar permissões',
+	'removeunusedgroups' => 'Remover grupos não usados',
 	'grouppermissions-search' => 'Grupo:',
 	'grouppermissions-dologin' => 'Autenticar-se',
 	'grouppermissions-dosearch' => 'Ir',
@@ -1624,7 +1633,11 @@ $messages['pt'] = array(
 	'grouppermissions-true' => 'Verdadeiro',
 	'grouppermissions-false' => 'Falso',
 	'grouppermissions-never' => 'Nunca',
+	'grouppermissions-log-name' => 'Registo de permissões de grupo',
 	'grouppermissions-sp-save' => 'Gravar',
+	'grouppermissions-sp-addtype' => 'Adicionar tipo de ordenação',
+	'grouppermissions-sp-addperm' => 'Adicionar permissão',
+	'right-search' => 'Pesquisar no wiki',
 );
 
 /** Tarifit (Tarifit)

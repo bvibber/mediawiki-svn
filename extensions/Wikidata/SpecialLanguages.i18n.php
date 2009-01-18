@@ -4885,28 +4885,28 @@ $wdMessages['sv'] = array(
 	'languages' => 'Wikidata: Språkhanterare',
 	'ow_save' => 'Spara',
 	'ow_history' => 'Historia',
-	'ow_datasets' => 'Val av data-set',
+	'ow_datasets' => 'Val av datauppsättning',
 	'ow_noedit_title' => 'Ingen tillåtelse till redigering',
-	'ow_noedit' => 'Du är inte tillåten till att redigera sidor i datasetet "$1". Var god se [[{{MediaWiki:Ow editing policy url}}|våra redigerings riktlinjer]].',
-	'ow_uipref_datasets' => 'Standardvisning',
+	'ow_noedit' => 'Du har inte tillåtelse att redigera sidor i datauppsättningen "$1". Läs [[{{MediaWiki:Ow editing policy url}}|våra redigeringsriktlinjer]].',
+	'ow_uipref_datasets' => 'Förvald visning',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ingen vald',
 	'ow_conceptmapping_help' => '<p>möjliga handlingar: <ul>
-<li>&action=insert&<datakontextprefix>=<definerad_id>&... sätta in en karta</li>
-<li>&action=get&concept=<koncept-id> läsa en karta igen</li>
-<li>&action=list_sets visar en lista över möjliga datakontextprefix och vad dom refererar till.</li>
-<li>&action=get_associated&dm=<definerat_betydnings-ID>&dc=<datavisningskontextprefix> visar alla andra för en definerad betydning i ett koncept</li>
+<li>&action=insert&<datakontextprefix>=<definerad_id>&... ange en motsvarighet</li>
+<li>&action=get&concept=<koncept-id> hämta motsvarigheter</li>
+<li>&action=list_sets visar en lista över möjliga datakontextprefix och vad de refererar till.</li>
+<li>&action=get_associated&dm=<definerat_betydnings-ID>&dc=<datavisningskontextprefix> för en given definierad betydelse så visas alla andra definierade betydelser inom ett begrepp</li>
 <li>&action=help Visar hjälp.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext' => '<p>Karta över koncept låter dig hitta vilken definierad betydelse i en datavisning som är lik definierade betydelser i andra datavisningar.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Beklagar, jag vet inte hur man "$1".',
+	'ow_conceptmapping_uitext' => '<p>Begreppskartläggning låter dig hitta vilken definierad betydelse i en datauppsättning som motsvarar definierade betydelser i andra datauppsättningar.</p>',
+	'ow_conceptmapping_no_action_specified' => 'Handlingen "$1" stöds inte.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'inte angivet',
-	'ow_dm_not_found' => 'inte hittat i databasen eller missformat',
-	'ow_mapping_successful' => 'Alla fälten märkta med [OK] till kartan<br />',
-	'ow_mapping_unsuccessful' => 'Måste ha minst två definierade betydelser före jag kan länka till dom.',
+	'ow_dm_not_found' => 'inte hittat i databasen eller felaktigt formaterat',
+	'ow_mapping_successful' => 'Alla fälten märkta med [OK] länkades till begreppskartan<br />',
+	'ow_mapping_unsuccessful' => 'Det måste finnas åtminstone två definierade betydelser innan de kan länkas.',
 	'ow_will_insert' => 'Kommer sätta in följande:',
-	'ow_contents_of_mapping' => 'Innehållet i kartan',
+	'ow_contents_of_mapping' => 'Innehållet i begreppskartan',
 	'ow_available_contexts' => 'Tillgängliga sammanhang',
 	'ow_add_concept_link' => 'Lägg till länk till andra koncept',
 	'ow_concept_panel' => 'Konceptpanel',
@@ -4919,7 +4919,7 @@ Var god kolla webbadressen.',
 	'ow_Annotation' => 'Notering',
 	'ow_ApproximateMeanings' => 'Ungefärliga betydelser',
 	'ow_ClassAttributeAttribute' => 'Attribut',
-	'ow_ClassAttributes' => 'Klassattributer',
+	'ow_ClassAttributes' => 'Klassattribut',
 	'ow_ClassAttributeLevel' => 'Nivå',
 	'ow_ClassAttributeType' => 'Typ',
 	'ow_ClassMembership' => 'Klassmedlemskap',
@@ -4966,24 +4966,24 @@ Var god kolla webbadressen.',
 	'ow_meaningsofsubtitle' => '<em>Wiki länk:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>TILLTRÄDE NEKAS</h2>',
 	'ow_copy_no_action_specified' => 'Var god ange en handling',
-	'ow_copy_help' => 'Vi kanske kommer att hjälpa dig någon dag.',
+	'ow_copy_help' => 'Hjälp är ännu inte implementerat.',
 	'ow_please_proved_dmid' => 'Det verkar som att din text har missat en "?dmid=<ID>" (dmid=ID för definierad betydelse)<br />
-Var god kontakta en administratör på servern.',
-	'ow_please_proved_dc1' => 'Det verkar som att din text har missat en "?dc1=<något>" (dc1=datasättkontext 1, datasättet ska kopieras FRÅN)<br />
-Var god kontakta en administratör på servern.',
-	'ow_please_proved_dc2' => 'Det verkar som att din text har missat en "?dc2=<något>" (dc2=datasättkontext 2, datasätt att kopiera TILL)<br />
+Var god kontakta en serveradministratör.',
+	'ow_please_proved_dc1' => 'Det verkar som att din text har missat en "?dc1=<något>" (dc1=datauppsättningskontext 1, datauppsättningen ska kopieras FRÅN)<br />
+Var god kontakta en serveradministratör.',
+	'ow_please_proved_dc2' => 'Det verkar som att din text har missat en "?dc2=<något>" (dc2=datauppsättningskontext 2, datauppsättning att kopiera TILL)<br />
 Var god kontakta en systemadministratör.',
-	'ow_copy_successful' => '<h2>Kopiering slutförd</h2>
-Dina datan är kopierade.
+	'ow_copy_successful' => '<h2>Kopiering genomförd</h2>
+Det verkar som dina data kopierats utan problem.
 Glöm inte att dubbelkolla för att vara säker!',
-	'ow_copy_unsuccessful' => '<h3>Kopiering inte slutförd</h3>
-Ingen kopiering har tagit plats.',
-	'ow_no_action_specified' => '<h3>Ingen hanndling angedd</h3>
+	'ow_copy_unsuccessful' => '<h3>Kopiering inte genomförd</h3>
+Ingenting har kopierats.',
+	'ow_no_action_specified' => '<h3>Ingen handling angiven</h3>
 Kanske kom du direkt till den här sidan? Vanligtvis ska du inte vara här.',
 	'ow_db_consistency_not_found' => '<h2>Fel</h2>
-Det är något fel med uppbyggningen av databasen, wikidata hittar inte giltig data som är knytet till detta nummer på en definierad betydelse.
-Datan kan vara förlorad.
-Var god kontakta systemadministratören.',
+Det är något fel med databasintegriteten, wikidata hittar inte giltig data som är knuten till detta ID för en definierad betydelse.
+Datan kan ha gått förlorad.
+Var god kontakta serveroperatören eller systemadministratören.',
 );
 
 /** Silesian (Ślůnski)

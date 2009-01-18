@@ -212,6 +212,7 @@ $messages['lb'] = array(
 	'shareduserrights' => 'Administratioun vun de gedeelte Benotzerrechter',
 	'gblrights-desc' => 'Einfach [[Special:SharedUserRights|Administratioun vun de globale Benotzerrechter]]',
 	'gblrights-logpage' => 'Lëscht vun de globale Rechter',
+	'gblrights-pagetext' => 'Dëst ass e Logbuch vun allen Ännerungen déi un der Tabell vun de globale Rechter vun der Wikifamill gemaach ginn',
 	'gblrights-rights-entry' => 'huet déi global Benotzerrechter vum $1 vun $2 op $3 geännert',
 );
 

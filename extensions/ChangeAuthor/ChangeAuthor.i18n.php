@@ -1048,6 +1048,7 @@ Wann dëse Feeler sech widderhëlt dann ass d'Datebank waarscheinlech futti.",
 	'changeauthor-logentry' => 'Den Auteur gouf vun $2 op $1 vum $3 op den $4 geännert',
 	'changeauthor-logpagename' => 'Lëscht vun den Ännerunge vun dësem Auteur',
 	'changeauthor-rev' => 'Versioun $1',
+	'right-changeauthor' => 'Den auteur vun enger Versioun änneren',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)

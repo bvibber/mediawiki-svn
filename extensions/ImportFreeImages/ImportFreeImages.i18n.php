@@ -600,6 +600,13 @@ $messages['lb'] = array(
 	'importfreeimages_returntoform' => "oder, klickt <a href='$1'>heihinn</a> fir op d'Resultat vun ärer Sich zréckzegoen",
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'importfreeimages_owner' => 'Autor',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

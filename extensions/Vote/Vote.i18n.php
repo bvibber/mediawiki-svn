@@ -697,12 +697,29 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'vote' => '投票',
+	'vote-desc' => '簡素な投票機能を提供する',
+	'vote-header' => "あなたはここで'''世界最高君主'''に投票することができます！",
+	'vote-current' => "あなたは現在'''$1'''に投票しています。",
+	'vote-legend' => '投票または票の修正',
+	'vote-caption' => 'あなたの選択:',
+	'vote-choices' => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
+	'vote-submit' => '投票',
+	'vote-registered' => 'あなたの投票を受け付けました。',
+	'vote-view-results' => '結果を表示',
+	'vote-results' => '投票結果',
 	'vote-results-choice' => '選択',
-	'vote-results-count' => 'カウント',
+	'vote-results-count' => '票数',
+	'vote-results-none' => '現時点までになされた投票はありません。',
+	'vote-login' => '投票するには$1しなければなりません。',
 	'vote-login-link' => 'ログイン',
+	'vote-invalid-choice' => 'あなたは選択肢のうち1つを選ばなければなりません。',
 );
 
 /** Javanese (Basa Jawa)

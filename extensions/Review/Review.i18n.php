@@ -1277,16 +1277,28 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'review_sidebar_title' => 'Revisão',
+	'review-desc' => 'A ressuscitada funcionalidade de [[Special:Review|validação]]',
+	'review_topic_page' => 'Tópicos de revisão',
+	'review_sidebar_explanation' => "A caixa de seleção mais à esquerda significa sempre 'sem opinião'.",
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Você já reviu outras versões desta página.
+As suas outras classificações serão fundidas nesta onde selecionou 'sem opinião'.",
+	'review_page_link' => 'estatísticas de revisão',
+	'review_for_page' => 'Revisão da página "$1"',
+	'review_for_user' => 'Revisão do utilizador "$1"',
 	'review_error' => 'Algo está errado!',
 	'review_total_statistics' => 'Total',
-	'review_statistics_left_corner' => 'REvisão',
+	'review_statistics_left_corner' => 'Revisão',
 	'review_version_link' => 'Revisão #$1',
 	'review_statistic_cell' => 'Média: $1 de $2<br />($4 utilizadores, $5 anónimos)',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_user_details_link' => '(detalhes)',
 	'review_has_been_stored' => "<span id='review_has_been_stored'>A sua revisão analisada foi guardada!</span>",
+	'revision_review_this_page_version_link' => 'Rever esta versão da página.',
+	'review_page_review' => 'Revisão da página "$1"',
 	'review_topic' => 'Tópico',
 	'review_no_opinion' => 'Sem opinião',
+	'review_rating' => 'Classificação',
 	'review_comment' => 'Comentário',
 );
 

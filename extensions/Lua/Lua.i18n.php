@@ -322,6 +322,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'lua_error' => 'Feeler an der Linn $1',
+	'lua_extension_notfound' => 'Lua-Erweiderung net configuréiert',
 	'lua_error_internal' => 'Interne Feeler',
 );
 
@@ -386,6 +387,13 @@ $messages['oc'] = array(
 	'lua_overflow_recursion' => 'Limit de la recursion atench',
 	'lua_overflow_loc' => 'Nombre maximal de linhas de còde atench',
 	'lua_overflow_time' => 'Durada maximala d’execucion atencha',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'lua_error_internal' => 'Мидæг рæдыд',
 );
 
 /** Portuguese (Português)

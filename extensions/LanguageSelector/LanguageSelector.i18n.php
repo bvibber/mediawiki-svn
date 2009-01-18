@@ -124,6 +124,15 @@ $messages['cs'] = array(
 	'languageselector-setlang' => 'nastavit',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Kaszeba
+ */
+$messages['csb'] = array(
+	'languageselector' => 'Jãzëk',
+	'languageselector-desc' => 'Wëbiérk jãzëka na kòżdi starnie, a téż dlô gòsców',
+	'languageselector-setlang' => 'nastôwi',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

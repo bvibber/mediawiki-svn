@@ -190,6 +190,15 @@ $messages['gv'] = array(
 	'categorystepper-start' => '(Toshiaght y ronney)',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'categorystepper-desc' => 'הצגת תיבת צעידה בין הקטגוריות ובכך ניתנת האפשרות לנווט קדימה ואחורה בסדר אלפביתי בין קטגוריה אחת או יותר אשר בהן נמצא הדף',
+	'categorystepper-end' => '(סוף הקטגוריה)',
+	'categorystepper-start' => '(תחילת הקטגוריה)',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

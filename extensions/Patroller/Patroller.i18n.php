@@ -421,7 +421,6 @@ $messages['gl'] = array(
 $messages['got'] = array(
 	'patrol-revert-reason' => 'Faírina',
 );
-
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
  */
@@ -785,6 +784,18 @@ $messages['lb'] = array(
  */
 $messages['mhr'] = array(
 	'patrol-revert-reason' => 'Амал:',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'patrol-revert-reason' => 'Причина:',
+	'patrol-skip' => 'Прескокни',
+	'group-patroller' => 'Патролирачи',
+	'group-patroller-member' => 'патролирач',
+	'grouppage-patroller' => '{{ns:project}}:Патролирач',
+	'right-patroller' => 'Патролни страници',
 );
 
 /** Malayalam (മലയാളം)

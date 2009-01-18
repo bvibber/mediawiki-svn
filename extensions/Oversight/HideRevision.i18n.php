@@ -71,6 +71,7 @@ Releasing this information can result in permanent loss of Oversight privileges.
 /** Message documentation (Message documentation)
  * @author Aotake
  * @author Darth Kule
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Kwj2772
  * @author Meno25
@@ -82,6 +83,7 @@ $messages['qqq'] = array(
 {{Identical|Oversight}}',
 	'right-oversight' => '{{doc-right}}',
 	'right-hiderevision' => '{{doc-right}}',
+	'hiderevision-continue' => '{{Identical|Continue}}',
 	'hiderevision-link' => 'Used in [[Special:Contributions]], only visible to Oversight.',
 	'hiderevision-error-current' => '{{Identical|Delete}}
 {{Identical|Revert}}',
@@ -1620,6 +1622,7 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
+ * @author Fryed-peach
  * @author JtFuruhata
  * @author Kahusi
  * @author Marine-Blue
@@ -1633,7 +1636,7 @@ $messages['ja'] = array(
 	'right-oversight' => '秘匿前の版を閲覧する',
 	'right-hiderevision' => '管理者から秘匿された版の閲覧・復帰',
 	'hiderevision-prompt' => '秘匿する特定版ID:',
-	'hiderevision-continue' => '続ける',
+	'hiderevision-continue' => '続行',
 	'hiderevision-text' => "これは、'''以下の場合に限って'''使用すべきです：
 * 不適切な個人情報
 *: ''個人の住所や電話番号、社会保障番号、その他''
@@ -2143,9 +2146,10 @@ $messages['mk'] = array(
 	'right-hiderevision' => 'Преглед и обнова на ревизии скриени од систем оператори',
 	'hiderevision-prompt' => 'Број на ревизија за бришење:',
 	'hiderevision-continue' => 'Продолжи',
+	'hiderevision-reason' => 'Причина (ќе биде дискретно евидентирано):',
 	'hiderevision-submit' => 'Трајно сокриј ги овие податоци',
 	'hiderevision-tab' => 'Сокриј ревизија',
-	'hiderevision-link' => 'Придонеси на скриени корисници',
+	'hiderevision-link' => 'Скриени придонеси на корисник',
 	'hiderevision-norevisions' => 'Не се наведени ревизии за бришење.',
 	'hiderevision-noreason' => 'Мора да ја опишете причината за ова бришење.',
 	'hiderevision-status' => 'Ревизија $1: $2',
@@ -2155,10 +2159,17 @@ $messages['mk'] = array(
 Прво направете враќање на оваа промена.',
 	'hiderevision-error-delete' => 'Не може да се архивира; дали претходно е избришано?',
 	'hiderevision-archive-status' => 'Избришани ревизии од $1: $2',
+	'oversight-log-hiderev' => 'избришано уредување од $1',
 	'oversight' => 'Надгледување',
 	'oversight-view' => 'детали',
 	'oversight-difference' => '(Разлика од претходно останатата ревизија)',
+	'oversight-prev' => 'Последна претходна ревизија',
 	'oversight-hidden' => 'Скриена ревизија',
+	'oversight-header' => 'Следи листа на ревизии кои биле трајно сокриени од јавноста.
+Оддавањето на овие информации може да резултира со губење на надгледувачките привилегии.',
+	'oversight-legend' => 'Пребарување низ дневникот на скриени ревизии',
+	'oversight-oversighter' => 'Надгледувач:',
+	'oversight-offender' => 'Прекршител:',
 );
 
 /** Malayalam (മലയാളം)

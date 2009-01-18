@@ -552,9 +552,11 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'invite-logpage' => 'Lëscht vun den Invitatiounen',
+	'invite-logpagetext' => 'Dëst ass e Logbuch vu Benotzer déi een den aneren invitéieren fir verschidde Softwaren ze benotzen.',
 	'invite-logentry' => "huet $1 invitéiert fir d'Functionalitéit <i>$2</i> ze benotzen.",
 	'invitations' => 'Gestioun vun den Invitatioune fir Software-Functionalitéiten',
 	'invitations-desc' => "Erméiglecht d'[[Special:Invitations|Gestioun vun neie Fonctionnalitéiten]] déi op déi Benotzer limitéiert sinn, déi dofir invitéiert ginn",
+	'invitations-invitedlist-none' => 'Dir gouft net invitéiert fir eng Softwarefonctioun ze benotzen fir déi een invitéiert gëtt.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eng Invitatioun|$1 Invitatioune}} disponibel)',
 	'invitations-pagetitle' => 'Fonctionnalitéiten op Invitatiouns-Basis',
 	'invitations-feature-pagetitle' => 'Gestioun vun der Invitatioun - $1',

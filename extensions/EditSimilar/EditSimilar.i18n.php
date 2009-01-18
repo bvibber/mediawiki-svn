@@ -435,10 +435,11 @@ Aquesta pagina deuriá aver, ela tanben, besonh de vòstra ajuda : $1.',
 /** Polish (Polski)
  * @author Bartek Łapiński
  * @author Matma Rex
+ * @author Sp5uhe
  * @author Łukasz 'TOR' Garczewski
  */
 $messages['pl'] = array(
-	'editsimilar-desc' => 'Zachęca do edycji podobnych artykułów po zapisaniu strony',
+	'editsimilar-desc' => 'Zachęca do edycji podobnego artykułu po zapisaniu strony',
 	'editsimilar-thanks' => 'Dzięki za edycję!
 Zerknij też na podobne artykuły: $1.',
 	'editsimilar-thanks-singleresult' => 'Dzięki za edycję!

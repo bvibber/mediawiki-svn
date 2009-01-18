@@ -340,16 +340,17 @@ Deu :',
 
 /** Polish (Polski)
  * @author Matma Rex
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'securepasswords-valid' => 'Twoje hasło jest nieprawidłowe lub zbyt krótkie.
 Musi:',
-	'securepasswords-minlength' => 'składać się z co najmniej $1 {{PLURAL:$1|znak|znaki/ów}}',
-	'securepasswords-lowercase' => 'zawierać przynajmniej 1 małą literę',
-	'securepasswords-uppercase' => 'zawierać przynajmniej 1 wielką literę',
-	'securepasswords-digit' => 'zawierać przynajmniej 1 cyfrę',
-	'securepasswords-special' => 'zawierać przynajmniej 1 znak specjalny ($1)',
-	'securepasswords-username' => 'różnić się od nazwy użytkownika',
+	'securepasswords-minlength' => 'składać się z co najmniej $1 {{PLURAL:$1|znaku|znaków}}',
+	'securepasswords-lowercase' => 'zawierać co najmniej 1 małą literę',
+	'securepasswords-uppercase' => 'zawierać co najmniej 1 wielką literę',
+	'securepasswords-digit' => 'zawierać co najmniej 1 cyfrę',
+	'securepasswords-special' => 'zawierać co najmniej 1 znak specjalny (taki jak: $1)',
+	'securepasswords-username' => 'różnić się od Twojej nazwy użytkownika',
 	'securepasswords-word' => 'nie być słowem',
 );
 

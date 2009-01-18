@@ -654,7 +654,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'todo-new-queue' => '新規',
 	'todo-list-change' => '変更',
-	'todo-list-cancel' => 'キャンセル',
+	'todo-list-cancel' => '中止',
 	'todo-form-details' => '詳細:',
 );
 

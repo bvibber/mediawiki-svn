@@ -975,7 +975,6 @@ Esta páxina só é aplicable aos usuarios limitados",
 $messages['got'] = array(
 	'whitelisttableedit' => 'Máidjan',
 );
-
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
  * @author Omnipaedista
@@ -2053,10 +2052,13 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'whitelist-desc' => 'Edite as permissões de acesso de utilizadores restritos',
+	'whitelistedit' => 'Editor de acessos da lista branca',
 	'whitelist' => 'Páginas na lista branca',
 	'mywhitelistpages' => 'Minhas Páginas',
 	'whitelistfor' => '<center>Informação actual para <b>$1</b></center>',
 	'whitelisttablemodify' => 'Modificar',
+	'whitelisttablemodifyall' => 'Todas',
+	'whitelisttablemodifynone' => 'Nenhuma',
 	'whitelisttablepage' => 'página wiki',
 	'whitelisttabletype' => 'Tipo de acesso',
 	'whitelisttableexpires' => 'Expira a',
@@ -2066,13 +2068,26 @@ $messages['pt'] = array(
 	'whitelisttableview' => 'Ver',
 	'whitelisttablenewdate' => 'Nova Data:',
 	'whitelisttablechangedate' => 'Alterar validade',
+	'whitelisttablesetedit' => 'Activar edição',
+	'whitelisttablesetview' => 'Activar visualização',
 	'whitelisttableremove' => 'Remover',
 	'whitelistnewpagesfor' => 'Adicione novas páginas à lista branca de <b>$1</b><br />
 Use * ou % como carácter polivalente',
 	'whitelistnewtabledate' => 'Validade:',
+	'whitelistnewtableedit' => 'Activar edição',
+	'whitelistnewtableview' => 'Activar visualização',
+	'whitelistnowhitelistedusers' => 'Não há utilizadores no grupo "{{MediaWiki:Group-restricted}}".
+Você tem de [[Special:UserRights|adicionar utilizadores ao grupo]] antes de poder adicionar páginas à lista branca de um utilizador.',
+	'whitelistnewtableprocess' => 'Processar',
+	'whitelistnewtablereview' => 'Rever',
 	'whitelistselectrestricted' => '== Selecionar nome de utilizador restrito ==',
 	'whitelistpagelist' => 'Página de {{SITENAME}} para $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Parece que [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], um pré-requisito para esta extensão, não foi instalada devidamente!</font>",
 	'whitelistoverview' => '== Resumo das alterações a $1 ==',
+	'whitelistoverviewcd' => "* A alterar data de [[:$2|$2]] para '''$1'''",
+	'whitelistoverviewsa' => "* A modificar o acesso de [[:$2|$2]] para '''$1'''",
+	'whitelistoverviewrm' => '* A remover acesso a [[:$1|$1]]',
+	'whitelistoverviewna' => "* A adicionar [[:$1|$1]] à lista branca com acesso '''$2''' e validade '''$3'''",
 	'whitelistrequest' => 'Requisitar acesso a mais páginas',
 	'whitelistrequestmsg' => '$1 requisitou acesso {{PLURAL:$3|à seguinte página|às seguintes páginas}}:
 
@@ -2082,6 +2097,10 @@ $2',
 Esta página só se aplica a utilizadores restritos.",
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => ' - {{PLURAL:$1|um resultado|$1 resultados}}',
+	'right-editwhitelist' => 'Modificar a lista branca para utilizadores existentes',
+	'right-restricttowhitelist' => 'Editar e ver apenas páginas na lista branca',
+	'action-editwhitelist' => 'modificar a lista branca para utilizadores existentes',
+	'action-restricttowhitelist' => 'editar e ver apenas páginas na lista branca',
 	'group-restricted' => 'Utilizadores restritos',
 	'group-restricted-member' => 'Utilizador restrito',
 	'group-manager' => 'Gestores',
