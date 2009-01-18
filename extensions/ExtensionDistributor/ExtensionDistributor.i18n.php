@@ -516,6 +516,58 @@ $messages['grc'] = array(
 	'extdist-submit-version' => 'Συνεχίζειν',
 );
 
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'extensiondistributor' => 'הורדת הרחבה של מדיה־ויקי',
+	'extdist-desc' => 'הרחבה להפצת קבצים מכווצים של הרחבות',
+	'extdist-not-configured' => 'אנא הגדירו את $wgExtDistTarDir ואת $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'התיקייה שהוגדרה כתיקיית ההרחבות אינה קיימת!',
+	'extdist-no-such-extension' => 'אין הרחבה בשם "$1"',
+	'extdist-no-such-version' => 'ההרחבה "$1" אינה קיימת בגרסה "$2".',
+	'extdist-choose-extension' => 'בחרו איזו הרחבה תרצו להוריד:',
+	'extdist-wc-empty' => 'בתיקייה שהוגדרה כתיקיית ההרחבות אין הרחבות שניתן להוריד!',
+	'extdist-submit-extension' => 'המשך',
+	'extdist-current-version' => 'הגרסה הנוכחית (trunk)',
+	'extdist-choose-version' => '
+<big>אתם מורידים את ההרחבה <b>$1</b>.</big>
+
+אנא בחרו את גרסת מדיה־ויקי שאתם משתמשים בה.
+
+רוב ההרחבות עובדות בגרסאות מרובות של מדיה־ויקי, לכן אם גרסת מדיה־ויקי שאתם משתמשים בה אינה מופיעה כאן, או אם אתם צריכים את התכונות האחרונות שנוספו להרחבה, נסו להשתמש בגרסה הנוכחית.',
+	'extdist-no-versions' => 'ההרחבה שנבחרה ($1) אינה זמינה בשום גרסה!',
+	'extdist-submit-version' => 'המשך',
+	'extdist-no-remote' => 'לא ניתן להתחבר ללקוח ה־Subversion המרוחק.',
+	'extdist-remote-error' => 'שגיאה מלקוח ה־Subversion המרוחק: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'תשובה בלתי תקינה מלקוח ה־Subversion המרוחק.',
+	'extdist-svn-error' => 'תוכנת Subversion נתקלה בשגיאה: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'לא ניתן לעבד את ה־XML שהוחזר מפקודת "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'פקודת tar החזירה את קוד היציאה $1:',
+	'extdist-created' => "נוצר קובץ של גרסה <b>$2</b> של ההרחבה <b>$1</b> עבור מדיה־ויקי <b>$3</b>. ההורדה תתחיל אוטומטית בעוד 5 שניות.
+
+כתובת ה־URL של קובץ זה היא:
+:$4
+ניתן להשתמש בה להורדה מיידית לשרת, אבל אנא אל תוסיפו אותה לסימניות הדפדפן, כיוון שתכניה לא יעודכנו, וכיוון שייתכן שהיא תימחק מאוחר יותר.
+
+עליכם לפרוס את קובץ ה־tar לתוך תיקיית ההרחבות שלכם. לדוגמה, במערכת הפעלה דמוית יוניקס:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+בחלונות, באפשרותכם להשתמש בתוכנת [http://www.7-zip.org/ 7-zip] כדי לפרוס את הקבצים.
+
+אם אתר הוויקי שלכם הוא בשרת מרוחק, פרסו את הקבצים לתוך תיקייה זמנית במחשב המקומי שלכם, ואז העלו את '''כל''' הקבצים שנפרסו לתיקיית ההרחבות בשרת.
+
+שימו לב שכמה הרחבות דורשות קובץ הנקרא ExtensionFunctions.php, הממוקם בתיקייה <tt>extensions/ExtensionFunctions.php</tt>, כלומר, בתיקיית ה'''הורה''' של התיקייה של ההרחבה המסוימת הזאת. הקובץ שנוצר להרחבות כאלה מכיל את הקובץ כקובץ שנפרס לתיקיית העבודה הנוכחית (Tarbomb), כלומר נפרס לנתיב ./ExtensionFunctions.php. אל תשכחו להעלות גם את הקובץ הזה לשרת המרוחק שלכם.
+
+לאחר שפרסתם את הקבצים, תצטרכו לרשום את ההרחבה בקובץ LocalSettings.php. תיעוד ההרחבה אמור לכלול הנחיות כיצד לעשות זאת.
+
+אם יש לכם שאלות כלשהן על מערכת הפצת ההרחבות הזו, אנא עברו לדף [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'הורדת הרחבה נוספת',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
