@@ -21,7 +21,7 @@ if( MV_EMBED_VERSION ){
 	MV_DO_INIT=false;	
 }
 
-//used to grab fresh copies of scripts. (should be changed on every deployable commit)  
+//used to grab fresh copies of scripts. (should be changed on commit)  
 var MV_EMBED_VERSION = '1.0rc3';
 
 //the name of the player skin (default is mvpcf)
@@ -37,32 +37,20 @@ var mv_media_iframe_path = '/mv_embed/';
 //the default height/width of the video (if no style or width attribute provided)
 var mv_default_video_size = '400x300'; 
 
-//this restricts playable sources to ROE xml media without start end time attribute
-var mv_restrict_roe_time_source = true;
-
 var global_player_list = new Array();
 var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
 var global_cb_count =0;
 
-/*
- * its best if you just require all your external data sources to serve up json data.
- * or
- * have a limited set of domains that you accept data from
- * enabling mv_proxy is not such a good idea from security standpoint but if you know what your doing 
- * you can enable it here (also you have to un comment mv_data_proxy die(); line)  
-*/  
-var MV_ENABLE_DATA_PROXY=false;
-
-/*parseUri class:*/
+/*parseUri class parses URIs:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
 
 //get mv_embed location if it has not been set
 if( !mv_embed_path ){
 	var mv_embed_path =getMvEmbedPath();
 }
-//set the unique request id (for ensuring fresh copies of scripts on udpates) 
+//set the unique request id (for ensuring fresh copies of scripts on updates) 
 if( !mv_embed_urid ){
 	var mv_embed_urid = getMvUniqueReqId();
 }
@@ -117,7 +105,7 @@ gMsg['current_clip_msg'] = 'Continue Playing this Clip';
 gMsg['seek_to'] = 'Seek to';
 
 //grabs from the globalMsg obj
-//@@todo integrate msg serving into CMS
+//@@todo integrate msg serving into script loader
 function getMsg( key , args ) {
 	 if ( key in gMsg ) {
 	    if(typeof args == 'object'){	    		 
@@ -3100,7 +3088,7 @@ function styleSheetPresent(url){
     return false;
 }
 function loadExternalCss(url){
-	if( url.indexOf('?')==-1 ){
+	if( url.indexOf('?') == -1 ){
 		url+='?'+mv_embed_urid;
 	}
    js_log('load css: ' + url);

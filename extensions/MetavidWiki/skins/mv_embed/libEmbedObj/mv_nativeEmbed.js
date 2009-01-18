@@ -97,7 +97,7 @@ var nativeEmbed = {
 				}				
 			}
 		}					
-		//update load progress if nessisary f
+		//update load progress if needed
 		if( ! this.monitorTimerId ){
 	    	if(document.getElementById(this.id)){
 	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);

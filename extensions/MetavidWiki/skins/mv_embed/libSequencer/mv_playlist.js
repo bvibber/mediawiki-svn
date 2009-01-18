@@ -31,7 +31,7 @@ var mv_clip_colors = new Array('aqua', 'blue', 'fuchsia', 'green', 'lime', 'maro
 if(typeof wgServer=='undefined'){
 	var defaultMetaDataProvider = 'http://metavid.org/overlay/archive_browser/export_cmml?stream_name=';
 }else{
-	var defaultMetaDataProvider = wgServer+wgScript+'?title=Special:MvExportStream&feed_format=roe&stream_name=';
+	var defaultMetaDataProvider = wgServer + wgScript + '?title=Special:MvExportStream&feed_format=roe&stream_name=';
 }
 
 var mvPlayList = function(element) {		
@@ -297,8 +297,7 @@ mvPlayList.prototype = {
 					this.srcType = 'smil';
 				}
 			}
-		}
-		
+		}		
 		if(this.srcType){
 			js_log('is of type:'+ this.srcType);
 			this.getPlaylist();
@@ -1567,28 +1566,29 @@ var smilPlaylist ={
 		return false;
 	} 
 }
+//http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#smilMediaNS-BasicMedia
+//and added resource description elements
+var mv_smil_ref_supported_attributes = new Array(
+		'id',
+		'src',
+		'type',
+		'region',
+		'transIn',
+		'transOut',
+		'fill',
+		'dur',
+		
+		'uri',			
+		'poster'
+);
 /* extension to mvClip to support smil properties */
-var mvSMILClip=function(smil_clip_element, mvClipInit){
-	return this.init(smil_clip_element, mvClipInit);
+var mvSMILClip=function(sClipElm, mvClipInit){
+	return this.init(sClipElm, mvClipInit);
 }
 //all the overwritten and new methods for SMIL extension of mv_embed
-mvSMILClip.prototype = {	
-	//http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#smilMediaNS-BasicMedia
-	//and added resource description elements
-	supported_attributes : new Array(
-			'id',
-			'src',
-			'type',
-			'region',
-			'transIn',
-			'transOut',
-			'fill',
-			'dur',
-			
-			'uri',			
-			'poster'
-	),
-	init:function(smil_clip_element, mvClipInit){
+mvSMILClip.prototype = {		
+	params : {}, //support param as child of ref clips per SMIL spec  
+	init:function(sClipElm, mvClipInit){
 		_this = this;				
 		
 		//make new mvCLip with ClipInit vals  
@@ -1604,21 +1604,21 @@ mvSMILClip.prototype = {
 		}				 
 		
 		//get supported media attr init non-set		
-		$j.each(this.supported_attributes, function(i, attr){			
-			if( $j(smil_clip_element).attr(attr)){
-				_this[attr]=$j(smil_clip_element).attr(attr);
+		$j.each(mv_smil_ref_supported_attributes, function(i, attr){			
+			if( $j(sClipElm).attr(attr)){
+				_this[attr]=$j(sClipElm).attr(attr);
 			}
 		})				
-		this['tagName'] = smil_clip_element.tagName;	
+		this['tagName'] = sClipElm.tagName;	
 		
-		if( smil_clip_element.firstChild ){
-			this['wholeText'] = smil_clip_element.firstChild.nodeValue;
+		if( sClipElm.firstChild ){
+			this['wholeText'] = sClipElm.firstChild.nodeValue;
 			js_log("SET wholeText for: "+this['tagName'] + ' '+ this['wholeText']);
 		}
 		//debugger;
 		//mv_embed specific property: 
-		if( $j(smil_clip_element).attr('poster') )
-			this['img'] = $j(smil_clip_element).attr('poster');
+		if( $j(sClipElm).attr('poster') )
+			this['img'] = $j(sClipElm).attr('poster');
 		
 		//lookup and assign copies of transitions 
 		// (since transition needs to hold some per-instance state info)		
@@ -1641,14 +1641,22 @@ mvSMILClip.prototype = {
 		if(this['type']=='application/ogg'){
 			this['type']='video/ogg'; //conform to 'video/ogg' type
 		}	
+		
+		//also grab andy child param elements if present: 
+		if( sClipElm.getElementsByTagName('param')[0] ){			
+			for(var i=0; i< sClipElm.getElementsByTagName('param').length; i++){
+				this.params[ sClipElm.getElementsByTagName('param')[i].getAttribute("name") ] = 
+				 		sClipElm.getElementsByTagName('param')[i].firstChild.nodeValue;
+			}			
+		}
 			
 		return this;		
 	},
 	//returns the values of supported_attributes: 
 	getAttributeObj:function(){
 		var elmObj = {};
-		for(var i in this.supported_attributes){
-			var attr = this.supported_attributes[i];
+		for(var i=0; i < mv_smil_ref_supported_attributes.length; i++){
+			var attr = mv_smil_ref_supported_attributes[i];
 			if(this[attr])
 				elmObj[ attr ] = this[attr]; 
 		}		
@@ -1805,7 +1813,7 @@ function smilParseTime(time_str){
  }
  var supported_track_attr =
 trackObj.prototype = {
-	//eventualy should be something like "seq" per SMIL spec
+	//should be something like "seq" per SMIL spec
 	//http://www.w3.org/TR/SMIL3/smil-timing.html#edef-seq
 	// but we don't really support anywhere near the full concept of seq containers yet either
 	supported_attributes: new Array(

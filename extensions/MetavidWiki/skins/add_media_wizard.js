@@ -9,15 +9,16 @@ var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
 //if mv_embed is hosted somewhere other than near by the add_media_wizard you can define it here: 
 var mv_add_media_wizard_path = 'http://mvbox2.cse.ucsc.edu/w/extensions/MetavidWiki/skins/';
 
+
 //*code should not have to modify anything below*/
 //check if we are on a edit page:
 if(wgAction=='edit'){
 	//add onPage ready request:
-	addOnloadHook( function(){							
+	addOnloadHook( function(){						
 		var imE = document.createElement('img');
 		imE.style.cursor = 'pointer';	
 		imE.id = 'mv-add_media';		
-		imE.src = wgScriptPath + '/extensions/MetavidWiki/skins/mv_embed/images/Button_add_media.png';
+		imE.src = getAddMediaPath( 'mv_embed/images/Button_add_media.png' );
 		
 		var toolbar = document.getElementById("toolbar");
 		toolbar.appendChild(imE);	 
@@ -30,14 +31,11 @@ if(wgAction=='edit'){
 //add firefog support to Special Upload page:
 if(wgPageName== "Special:Upload"){	
 	addOnloadHook( function(){		
-		js_log("!!upload hook");
-		load_mv_embed( function(){
-			js_log('!!loaded mv_embed');
+		//alert("!!upload hook");
+		load_mv_embed( function(){			
 			//load jQuery and what not (we need to refactor the loading system for mv_embed)
 			mvEmbed.load_libs(function(){
-				js_log('!!loaded load libs');
-				mvJsLoader.doLoad({'mvUploader' : 'libAddMedia/mv_upload.js'},function(){
-					js_log("!!make uploaer");					
+				mvJsLoader.doLoad({'mvUploader' : 'libAddMedia/mv_upload.js'},function(){					
 					mvUp = new mvUploader();		
 				});
 			});
@@ -119,29 +117,21 @@ function load_mv_embed( callback ){
 	if( typeof mvEmbed == 'undefined'){		
 		//get mv_embed path from _this_ file location: 	
 		var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );
-		//make sure its not already there: 
-		for(var i=0; i < document.getElementsByTagName('script').length; i++){
-			var s = document.getElementsByTagName('script')[i];
-			if(s.src == mv_embed_url){
-				check_for_mv_embed( callback );		
-				return ;
-			}
-		}		
 		var e = document.createElement("script");
 	    e.setAttribute('src', mv_embed_url);	    
 	    e.setAttribute('type',"text/javascript");
 	    document.getElementsByTagName("head")[0].appendChild(e);
-	    setTimeout('check_for_mv_embed(callback);', 25); 
+	    check_for_mv_embed( callback ); 
 	}else{		
 		check_for_mv_embed( callback );
 	}      	
 }
 
 function check_for_mv_embed( callback ){
-	js_log('check_for_mv_embed');
 	if( typeof mvEmbed == 'undefined'){		 
-		setTimeout('check_for_mv_embed( callback );', 25);
+		setTimeout('check_for_mv_embed( ' + callback +');', 25);
 	}else{
+		js_log('callback is now: ' + callback);
 		callback();
 	}
 }
@@ -155,7 +145,6 @@ function getAddMediaPath( replace_str ){
 			return s.src.replace('add_media_wizard.js', replace_str);
 		}
 	}
-	js_log('Error: could not find add media path force config:');
 	return mv_add_media_wizard_path + replace_str;
 }
 

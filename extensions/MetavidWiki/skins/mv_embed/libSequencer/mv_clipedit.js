@@ -13,13 +13,32 @@ gMsg['mv_insert_image_page']='Insert Into page';
 gMsg['mv_preview_insert']= 'Preview Insert';
 gMsg['mv_cancel_image_insert']='Cancel Image Insert';
 
+	gMsg['sc_fileopts']		='Clip Detail Edit';
+	gMsg['sc_inoutpoints']	='Set In-Out points';
+	gMsg['sc_panzoom']		='Pan Zoom Crop';
+	gMsg['sc_overlays']		='Overlays';
+	gMsg['sc_audio']		='Audio Control';
+	gMsg['sc_duration']		='Duration';
+	
+gMsg['mv_template_properties'] = 'Template Properties';
+gMsg['mv_custom_title']	=	'Custom Title';
+gMsg['mv_edit_properties'] = 'Edit Properties';
+gMsg['mv_other_properties'] = 'Other Properties';
+gMsg['mv_resource_page']	= 'Resource Page';
+
 var default_clipedit_values = {
 	'rObj':	null, 		// the resource object
 	'clip_disp_ct':null,//target clip disp
 	'control_ct':null, 	//control container
 	'media_type': null, //media type
+	'parent_ct': null, 	//parent container
+			
 	'p_rsdObj': null,	//parent remote search object
-	'parent_ct': null 	//parent container
+	'p_seqObj': null, 	//parent sequence Object
+	
+	'edit_action': null, //the requested edit action
+	'profile': 'inpage' //the given profile either "inpage" or "sequence"
+						//timeline invokes the timeline editor (letting you set keyframes)
 }
 var mvClipEdit = function(initObj) {		
 	return this.init(initObj);
@@ -37,15 +56,217 @@ mvClipEdit.prototype = {
 				this[i] = initObj[i];
 			}
 		}
-		//check the media_type:
-		js_log('mvClipEdit:: media type:' + this.media_type + 'base width: ' + this.rObj.width + ' bh: ' + this.rObj.height);		
+
+		//if media type was not supplied detect for resoure if possible:
+		//@@todo more advanced detection. 
+		if(!this.media_type){
+			if( this.rObj.type.indexOf("image/") === 0){
+				this.media_type = 'image';
+			}else if( this.rObj.type.indexOf("video/") === 0){
+				this.media_type = 'video';
+			}else if( this.rObj.type.indexOf("text/") === 0){
+				this.media_type = 'template';
+			}
+		}
 		
-		//could seperate out into media Types objects for now just call method
-		if(this.media_type == 'image'){
-			this.setUpImageCtrl();
-		}else if(this.media_type=='video'){
-			this.setUpVideoCtrl();
+		//display control:
+		if(this.profile == 'sequence'){			
+			this.doEditTypesMenu();
+			this.doDisplayEdit();
+		}else{				
+			//check the media_type:
+			js_log('mvClipEdit:: media type:' + this.media_type + ' base width: ' + this.rObj.width + ' bh: ' + this.rObj.height);		
+			//could seperate out into media Types objects for now just call method
+			if(this.media_type == 'image'){
+				this.setUpImageCtrl();
+			}else if(this.media_type=='video'){
+				this.setUpVideoCtrl();
+			}		
+		}
+	},
+	
+	//master edit types object:
+	//maybe we should refactor these into their own classes  
+	//more refactor each media type should be its own class inheriting the shared baseEditType object
+	edit_types:{
+		'fileopts':{
+			'd':1,
+			'media':['image','video','template'],
+			'doEdit':function( _this ){		
+				var doEditHtml = function(){
+					//add html for rObj resource:
+					var o=	'<table>' +
+							'<tr>' +
+								'<td colspan="2"><b>'+getMsg('mv_edit_properties')+'</b></td>'+
+							'</tr>'+
+							'<tr>'+
+								'<td>' + 
+									getMsg('mv_custom_title') + 
+								'</td>'+
+								'<td><input type="text" size="15" maxwidth="255" value="';
+									if(_this.rObj.title != null)
+										o+=_this.rObj.title;
+									o+='">'+
+								'</td>'+
+							'</tr>';		
+					if( _this.rObj.tVars){
+						var existing_p = _this.rObj.params;
+						var testing_a = _this.rObj.tVars;
+						//debugger;
+						o+= '<tr>'+
+								'<td colspan="2"><b>'+getMsg('mv_template_properties')+'</b></td>'+
+							'</tr>';
+						for(var i =0; i < _this.rObj.tVars.length ; i++){
+							o+='<tr>'+
+								'<td>' + 
+									_this.rObj.tVars[i] + 
+								'</td>' +
+								'<td><input type="text" size="15" maxwidth="255" value="';
+							if(_this.rObj.params[ _this.rObj.tVars[i] ]){
+								o+= _this.rObj.params[ _this.rObj.tVars[i] ];
+							}
+							o+='">'+ 
+								'</td>'+
+							'</tr>';		
+						}
+					}		
+					o+=		'<tr>'+
+								'<td colspan="2"><b>'+getMsg('mv_other_properties')+'</b></td>'+
+							'</tr>'+
+							'<tr>'+
+								'<td>' + 
+									getMsg('mv_resource_page') + 
+								'</td>' +
+								'<td><a href="' + wgArticlePath.replace(/\$1/, _this.rObj.uri ) +'">'+
+										_this.rObj.uri + '</a>'+
+								'</td>'+
+							'</tr>';
+					o+='</table>'; 
+					
+					$j('#sub_cliplib_ic').html ( o );
+					//add update bindings			
+				}	
+				//if media type is template we have to query to get its URI to get its paramaters
+				if(_this.media_type == 'template' && !_this.rObj.tVars){		
+					mv_set_loading('#sub_cliplib_ic');
+					var reqObj ={	'action':'query',
+									'prop':'revisions',
+									'titles': _this.rObj.uri,
+									'rvprop':'content' 
+								};
+					//get the interface uri from the plObject
+					var api_url = _this.p_seqObj.plObj.interface_url.replace(/index\.php/, 'api.php'); 
+					//first check 					
+					do_api_req( reqObj, api_url,function(data){
+						if(typeof data.query.pages == 'undefined')
+							return doEditHtml();
+						for(var i in data.query.pages){
+							var page = data.query.pages[i];
+							var template_rev = page['revisions'][0]['*'];
+						}						
+						
+						//do a regular ex to get the ~likely~ template values 
+						//(ofcourse this sucks)
+						//but maybe this will make its way into the api sometime soon to support wysiwyg type editors
+						//idealy it would expose a good deal of info about the template params
+						js_log('matching against: ' + template_rev);
+						var tempVars = template_rev.match(/\{\{\{([^\}]*)\}\}\}/gi);
+						//clean up results:
+						_this.rObj.tVars = new Array();
+						for(var i=0; i < tempVars.length; i++){
+							var tvar = tempVars[i].replace('{{{','').replace('}}}','');
+							//strip anything after a | 
+							if(tvar.indexOf('|') != -1){
+								tvar = tvar.substr(0, tvar.indexOf('|'));
+							}														
+							//check for duplicates: 
+							var do_add=true;
+							for(var j=0; j < _this.rObj.tVars.length; j++){
+								js_log('checking: ' + _this.rObj.tVars[j] + ' against:' + tvar);
+								if( _this.rObj.tVars[j] == tvar)
+									do_add=false;
+							}
+							//add the template vars to the output obj
+							if(do_add)
+								_this.rObj.tVars.push( tvar );
+						}					
+						doEditHtml();
+					});
+				}else{
+					doEditHtml();
+				}
+				
+				
+			}		
+		},
+		'duration':{
+			d:0,
+			'media':['image','template']
+			'doEdit':function(){
+				
+			}			
+		},
+		'inoutpoints':{
+			'd':0,
+			'media':['video']
+		},
+		'panzoom':{
+			'd':0,
+			'media':['image','video']
+		},				
+		'overlays':{
+			'd':0,
+			'media':['image','video']
+		},
+		'audio':{
+			'd':0,
+			'media':['image','video', 'template']
 		}		
+	},	
+	doEditTypesMenu:function(){
+		var _this = this;
+		//add in subMenus if set
+		//check for submenu and add to item container		
+		var o='';								
+		o+= '<ul id="mv_submenu_clipedit" class="mv_submenu">';		 
+		$j.each(this.edit_types, function(sInx, editType){			
+			//check if the given editType is valid for our given media type
+			var include = false;
+			for(var i =0; i < editType.media.length;i++){
+				if( editType.media[i] == _this.media_type)
+					include = true; 
+			}
+			if(include){
+				var sub_sel_class = (editType.d == 1)?'class="mv_sub_selected"':'';							 
+				o+= '<li ' + sub_sel_class + ' id="mv_smi_' + sInx + '">' + 
+					getMsg('sc_' + sInx ) + '</li>';
+			} 	
+		});
+		o+= '</ul>';
+		//add sub menu container with menu html: 
+		o+= '<div id="sub_cliplib_ic" class="submenu_container"></div>';	
+		$j('#'+this.control_ct).html( o ) ;	
+		//set up bindings: 	
+		for( var i in this.edit_types){
+			$j('#mv_smi_'+ i).click( function(){				
+				_this.doDisplayEdit( $j(this).attr("id").replace('mv_smi_','')  );
+			});
+		}
+	},
+	doDisplayEdit:function( edit_type ){
+		if(!edit_type)
+			for(var i in this.edit_types){
+				if(this.edit_types[i].d == 1)
+					edit_type = i;
+			}
+		js_log('doDisplayEdit: ' + edit_type );
+		//remove from all
+		$j('#mv_submenu_clipedit li').removeClass('mv_sub_selected');
+		//add selected class:
+		$j('#mv_smi_' + edit_type).addClass('mv_sub_selected');		
+		
+		//do edit interface for that edit type: 
+		this.edit_types[ edit_type ].doEdit( this );
 	},
 	setUpVideoCtrl:function(){
 		js_log('setUpVideoCtrl:f');
@@ -143,6 +364,7 @@ mvClipEdit.prototype = {
 			'<h3>Edit tools</h3>' + 				
 					'<div class="mv_edit_button mv_crop_button_base" id="mv_crop_button" alt="crop" title="'+getMsg('mv_crop')+'"/>'+
 					'<a href="#" class="mv_crop_msg">' + getMsg('mv_crop') + '</a> '+
+					'<span style="display:none" class="mv_crop_msg_load">' + getMsg('loading_txt') + '<span> '+
 					'<a href="#" style="display:none" class="mv_apply_crop">' + getMsg('mv_apply_crop') + '</a> '+
 					'<a href="#" style="display:none" class="mv_rest_crop">' + getMsg('mv_reset_crop') + '</a> '+
 				'<br style="clear:both"><br>'+
@@ -208,22 +430,41 @@ mvClipEdit.prototype = {
 			);
 		}
 	},
+	//right now enableCrop loads "just in time" 
+	//@@todo we really need an "auto loader" type system. 
 	enableCrop:function(){
 		var _this = this;
 		$j('.mv_crop_msg').hide();
-		$j('.mv_rest_crop,.mv_apply_crop').show();				
-		$j('#mv_crop_button').removeClass('mv_crop_button_base').addClass('mv_crop_button_selected').attr('title',getMsg('mv_crop_done'));				
-		$j('#' + _this.clip_disp_ct + ' img').Jcrop({
-		 		onSelect: function(c){
-		 			js_log('on select:' + c.x +','+ c.y+','+ c.x2+','+ c.y2+','+ c.w+','+ c.h);
-		 			_this.rObj.crop = c;
-		 		},
-      			onChange: function(c){            				
-      			}        				
-		});
+		$j('.mv_crop_msg_load').show();
+		var doEnableCrop = function(){	
+			$j('.mv_crop_msg_load').hide();
+			$j('.mv_rest_crop,.mv_apply_crop').show();				
+			$j('#mv_crop_button').removeClass('mv_crop_button_base').addClass('mv_crop_button_selected').attr('title',getMsg('mv_crop_done'));				
+			$j('#' + _this.clip_disp_ct + ' img').Jcrop({
+			 		onSelect: function(c){
+			 			js_log('on select:' + c.x +','+ c.y+','+ c.x2+','+ c.y2+','+ c.w+','+ c.h);
+			 			_this.rObj.crop = c;
+			 		},
+	      			onChange: function(c){            				
+	      			}        				
+			});
+		}		
+		if(typeof $j.Jcrop == 'undefined'){
+			loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
+			//load the jcrop library if needed:
+			mvJsLoader.doLoad({'$j.Jcrop':'jquery/plugins/Jcrop/js/jquery.Jcrop.js'},function(){
+				doEnableCrop();
+			});			
+		}else{
+			doEnableCrop();
+		}
+		
 	}
 }
-// mv_lock_vid_updates defined in mv_stream.js (we need further refactoring )
+
+
+
+// mv_lock_vid_updates defined in mv_stream.js (we need to do some more refactoring )
 if(typeof mv_lock_vid_updates == 'undefined')
 	mv_lock_vid_updates= false;
 
@@ -301,7 +542,7 @@ function add_adjust_hooks(mvd_id){
 
 	//if re-size width less than width of image bump it up:
 	var resize_width = Math.round((slider_end*track_width)-(slider_start*track_width));
-	if(resize_width<17)resize_width=17;
+	if( resize_width < 17 ) resize_width=17;
 
 	$j('#resize_'+mvd_id).css({
 		left:Math.round(slider_start*track_width)+'px',

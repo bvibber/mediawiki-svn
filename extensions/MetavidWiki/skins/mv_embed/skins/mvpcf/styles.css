@@ -12,11 +12,12 @@
 .modal_editor {
 	background:#AAA none repeat scroll 0 0;
 	border:3px solid #666666;
-	left:10%;
-	top:5%;	
+	left:2px;
+	top:2px;
+	right:2px;
 	position:fixed;
-	width:80%;
-	height:90%;	
+	width:99%;
+	height:99%;	
 	z-index:100;
 }
 .mv_track {

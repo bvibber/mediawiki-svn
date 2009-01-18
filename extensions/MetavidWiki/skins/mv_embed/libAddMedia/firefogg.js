@@ -12,11 +12,12 @@ function init_firefogg( iObj ){
 	if(!iObj)
 		iObj = {};
 	//init based on if Firefogg is available 
-	if(typeof(Firefogg) == 'undefined') {
-		
+	if(typeof(Firefogg) == 'undefined') {				
 		e = document.getElementById('wgfogg_not_installed');
 		if(e) 
 			e.style.display='inline';
+		//no support for firefogg
+		return false;
 	}else{
 		e = document.getElementById('wgfogg_not_installed');
 		if(e) 
@@ -27,7 +28,7 @@ function init_firefogg( iObj ){
 			e.style.display='inline';			
 		
 		fe = document.getElementById('wgEnableFirefogg');				
-		if(fe){
+		if(fe){			
 			js_log('wgEnableFirefogg found:');
 			//get a new fogg object with default options
 			var fogg = new upFirefogg( iObj );
@@ -43,10 +44,12 @@ function init_firefogg( iObj ){
 					fogg.disable_fogg();
 				}
 			});					
-		}else{
+		}else{			
 			js_log('could not find wgEnableFirefogg');
 		}
 	}		
+	//we did init with support
+	return true;
 }
 
 var default_firefogg_options = {
@@ -93,14 +96,13 @@ upFirefogg.prototype = {
 	select_fogg:function(){			
 		var _this = this;
 		if(_this.ogg.selectVideo()) {
-			var editForm = document.getElementById( 'mw-upload-form' );	
+			var editForm = document.getElementById( 'mw-upload-form' );
+			_this.org_onsubmit = editForm.onsubmit;	
 			editForm.onsubmit = function return_false(){
 								return false;
-							};
-			//update the submit button: 
-			
+							};			
 			//set binding for "upload" button to call our transcode process
-			addHandler( editForm, 'submit', function() {	
+			addHandler( editForm, 'submit', function() {			
 				//check if the title and or description are empty don't let the person submit
 				e = document.getElementById('wpDestFile')
 				if(typeof e.value == 'undefined' || e.value=='' || e.value.substr(-4) != '.ogg')
@@ -135,7 +137,7 @@ upFirefogg.prototype = {
 			    	if( _this.ogg.state == 'encoding' ) {
 			      		setTimeout(encodingStatus, 500);
 			    	}
-			    	//encoding sucessfull, state can also be 'encoding failed'
+			    	//encoding done, state can also be 'encoding failed'
 			    	else if ( _this.ogg.state == 'encoding done' ) {
 			    		//hide the fogg-status-transcode
 			    		e = document.getElementById('fogg-status-transcode');
@@ -143,31 +145,12 @@ upFirefogg.prototype = {
 			    		//show the fogg-status-upload
 			    		e = document.getElementById('fogg-status-upload');
 			    		e.style.display='inline';
-			    		
-			    		var data = {};
-				      	
-				      	//get all the form fields: 
-						var inputs = editForm.getElementsByTagName('input');					
-						for(var i=0;i < inputs.length; i++){
-							if( inputs[i].getAttribute('name') != 'wpUploadFile'){
-								if(	inputs[i].getAttribute('type')=='checkbox'){
-									if(inputs[i].checked){
-										data[ inputs[i].getAttribute('name') ] = 'true';
-									}else{
-										data[ inputs[i].getAttribute('name') ] = 'false';
-									}
-								}else{
-									data[ inputs[i].getAttribute('name') ] = inputs[i].value;
-								}
-							}
-						}
+			    					    		
+						//get the input 
+						var data = _this.getEditFormData( editForm );
+												
 						//hard code some values 
-						data['wpSourceType']='file';
-						//get text area input: 
-						var inputs = editForm.getElementsByTagName('textarea');					
-						for(var i=0;i < inputs.length; i++){
-							data[ inputs[i].getAttribute('name') ] = inputs[i].value;
-						}
+						data['wpSourceType']='file';						 						
 						
 						var data_str = JSON.stringify(data);					
 						//alert('send data:'+ data_str);
@@ -233,12 +216,35 @@ upFirefogg.prototype = {
 				    }
 			  }
 			  encodingStatus();
-			  //don't submit the form (let firefogg hanndle it)	
+			  //don't submit the form (let firefogg handle it)	
 			  return false;			
 			});	//addHandler mapping
 		}else{
-			//remove upload bidning if no file was selected
+			//remove upload binding if no file was selected
 		}	 
+	},
+	getEditFormData:function( editForm ){
+		var data = {};				      	
+      	//get all the form fields: 
+		var inputs = editForm.getElementsByTagName('input');					
+		for(var i=0;i < inputs.length; i++){
+			if( inputs[i].getAttribute('name') != 'wpUploadFile'){
+				if(	inputs[i].getAttribute('type')=='checkbox'){
+					if(inputs[i].checked){
+						data[ inputs[i].getAttribute('name') ] = 'true';
+					}else{
+						data[ inputs[i].getAttribute('name') ] = 'false';
+					}
+				}else{
+					data[ inputs[i].getAttribute('name') ] = inputs[i].value;
+				}
+			}
+		}
+		var inputs = editForm.getElementsByTagName('textarea');					
+		for(var i=0;i < inputs.length; i++){
+			data[ inputs[i].getAttribute('name') ] = inputs[i].value;
+		}
+		return data;
 	},
 	disable_fogg:function(){
 		//show normal file upload
@@ -248,8 +254,12 @@ upFirefogg.prototype = {
 		//hide fogg stuff
 		e = document.getElementById('fogg-video-file');
 		if(e) e.style.display='none';
-		
-		//disable the fogg
+				
+		if( this.upload_done_action == 'redirect' ){
+			//restore the original form action 			
+			editForm.onsubmit = this.org_onsubmit;
+		}	
+		//disable the fogg:
 		this.enabled=false;
 	},
 	fogg_update_progress:function(progress){

@@ -5,7 +5,8 @@ WILL BE REPLACED WITH CODE TO ACCESS THE upload api
 ONCE THAT IS READY
 */
 
-gMsg['upload-enable-converter']		= 'Enable video converter (to upload source video footage not yet converted to theora format) <i>more info</i>';
+gMsg['upload-enable-converter']		= 'Enable video converter (to upload source video not yet converted to theora format)'+
+										'<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>';
 gMsg['upload-fogg_not_installed']	= 'If you want to upload video consider installing <a href="http://firefogg.org">firefogg.org</a>, <i>more info</i>';
 gMsg['upload-in-progress']			= 'Doing Transcode & Upload (do not close this window)';
 gMsg['upload-transcoded-status']	= 'Transcoded';
@@ -13,7 +14,8 @@ gMsg['uploaded-status']				= 'Uploaded';
 gMsg['upload-select-file']			= 'Select File...';
 
 var default_upload_options = {
-	'target_div':''
+	'target_div':'',
+	'upload_done_action':'redirect'
 }
 
 var mvUploader = function(initObj){
@@ -39,13 +41,20 @@ mvUploader.prototype = {
 		mvJsLoader.doLoad({'upFirefogg' : 'libAddMedia/firefogg.js'},function(){
 			//if we are not on the upload page grab the upload html via ajax:		
 			if( !_this.on_upload_page){					
-				$j.get(wgArticlePath.replace(/\$1/, 'Special:Upload'), {}, function(data){				
-					sp = data.indexOf('<div id="content">');
-					se = data.indexOf('<!-- end content -->');			
-					if(sp!=-1 && se !=-1){				
-						$j('#'+_this.target_div).html( data.substr(sp, (se-sp) ) );
-					}	
-					_this.setupFirefogg();	
+				$j.get(wgArticlePath.replace(/\$1/, 'Special:Upload'), {}, function(data){
+					//add upload.js: 
+					$j.getScript( stylepath + '/common/upload.js', function(){ 	
+						//really need "upload api"
+						wgAjaxUploadDestCheck = true;
+						wgAjaxLicensePreview = false;
+						wgUploadAutoFill = true;			
+						sp = data.indexOf('<div id="content">');
+						se = data.indexOf('<!-- end content -->');			
+						if(sp!=-1 && se !=-1){											
+							$j('#'+_this.target_div).html( data.substr(sp, (se-sp) ) );
+						}							
+						_this.setupFirefogg();
+					});	
 				});				
 			}else{
 				_this.setupFirefogg();
@@ -68,15 +77,16 @@ mvUploader.prototype = {
 				{'upload_done_action':'redirect'}:
 				{'upload_done_action':function( rTitle ){
 						js_log('add_done_action callback for uploader');
-						//call the parent insert resource preview				
+						//call the parent insert resource preview	
+						_this.upload_done_action( rTitle );		
 					}
 				};
-		init_firefogg( intFirefoggObj );			
-		//firefogg handles the form submit (even on image uploads when called by gui)
-		if( !this.on_upload_page ){
-			$j('#mw-upload-form').submit(function(){			
-				return false;
-			});
+		//if firefog is not taking over the submit we can here: 
+		if( ! init_firefogg( intFirefoggObj ) ){			
+			//firefogg handles the form submit (even on image uploads when called by gui)
+			if( !this.on_upload_page ){
+				
+			}
 		}
 	},
 	//same add code as specialUpload if($wgEnableFirefogg){

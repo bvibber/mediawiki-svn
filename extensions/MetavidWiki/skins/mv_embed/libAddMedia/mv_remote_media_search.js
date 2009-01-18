@@ -138,7 +138,7 @@ remoteSearchDriver.prototype = {
 			'lib'	: 'archive',
 			'local'	: false,
 			'resource_prefix': 'AO_',
-			'tab_img':false
+			'tab_img':true
 		}
 	},	
 	//some default layout values:		
@@ -273,23 +273,23 @@ remoteSearchDriver.prototype = {
 		mv_set_loading('#rsd_results');
 		
 		//load the (firefog enhanced) upload manager:
-		if(!_this.cUpLoader){
-			mvJsLoader.doLoad( {'mvUploader': 'libAddMedia/mv_upload.js'},function(){				
-				_this.cUpLoader = new mvUploader({
-						'target_div': 'rsd_results',
-						'upload_cb:': function( rTitle){
-							//set to loading:
-							mv_set_loading('#rsd_results');
-							//do a direct api query for resource info (to build rObj
-							_this.getResourceFromTitle( rTitle, function(rObj){
-								//call resource Edit: 
-								_this.resourceEdit( rObj );	
-							}); 
-						}												
-					}
-				);
-			});  
-		}
+		
+		//load the upload.js from mediaWiki:		
+		mvJsLoader.doLoad( {'mvUploader': 'libAddMedia/mv_upload.js'},function(){				
+			_this.cUpLoader = new mvUploader({
+					'target_div': 'rsd_results',
+					'upload_done_action:': function( rTitle){
+						//set to loading:
+						mv_set_loading('#rsd_results');
+						//do a direct api query for resource info (to build rObj
+						_this.getResourceFromTitle( rTitle, function(rObj){
+							//call resource Edit: 
+							_this.resourceEdit( rObj );	
+						}); 
+					}												
+				}
+			);
+		});  
 	},
 	runSearch: function(){
 		var _this = this;						
@@ -582,10 +582,10 @@ remoteSearchDriver.prototype = {
 		};
 		var loadLibs =  {'mvClipEdit':'libSequencer/mv_clipedit.js'};		
 		if( mediaType == 'image'){
-			//load the croping library:
-			loadLibs['$j.Jcrop']='jquery/plugins/Jcrop/js/jquery.Jcrop.js';
+			//load the crop library:
+			//loadLibs['$j.Jcrop']='jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 			//@@todo integrate css calls into mvJsLoader or move jcrop css
-			loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
+			//loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
 			//display the mvClipEdit obj once we are done loading:
 			mvJsLoader.doLoad( loadLibs,function(){				
 				//run the image clip tools 
@@ -982,8 +982,7 @@ remoteSearchDriver.prototype = {
 			}			
 		}	
 		//redraw tabs
-		this.drawTabs();
-		
+		this.drawTabs();		
 		if( this.disp_item == 'upload' ){
 			this.doUploadInteface();
 		}else{
@@ -1293,12 +1292,15 @@ mediaWikiSearch.prototype = {
 		if(data.query && data.query.pages){
 			for(var page_id in  data.query.pages){
 				var page =  data.query.pages[ page_id ];
+				//make sure the reop is shared
+				if( page.imagerepository == 'shared'){
+					continue;
+				}
 				//make sure the page is not a redirect
 				if(page.revisions[0]['*'].indexOf('#REDIRECT')===0){
 					//skip page is redirect 
 					continue;
-				}
-												
+				}																
 				this.resultsObj[page_id]={
 					'titleKey'	: page.title,
 					'link'		:page.imageinfo[0].descriptionurl,				
