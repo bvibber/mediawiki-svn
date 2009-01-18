@@ -92,3 +92,8 @@ $aliases['no'] = array(
 	'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'AdvancedRandom' => array( 'प्रगताअविशीष्ट' ),
+);
+

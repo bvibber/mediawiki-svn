@@ -415,7 +415,7 @@ $messages['gl'] = array(
 	'right-patroller' => 'Patrullar páxinas',
 );
 
-/** Gothic (𐌲𐌿𐍄𐌹𐍃𐌺)
+/** Gothic
  * @author Jocke Pirat
  */
 $messages['got'] = array(
@@ -657,8 +657,29 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'patrol' => '編集をパトロール',
+	'patrol-desc' => 'パトロール負荷を共有する機能をもつ、パトロール機能の拡張インタフェース',
+	'patrol-endorse' => '承認',
+	'patrol-revert' => '差し戻し',
 	'patrol-revert-reason' => '理由:',
 	'patrol-skip' => 'スキップ',
+	'patrol-reverting' => '差し戻し中: $1',
+	'patrol-nonefound' => 'パトロールすべき編集は見つかりませんでした。',
+	'patrol-endorsed-ok' => '編集をパトロール済みにしました。',
+	'patrol-endorsed-failed' => '編集をパトロール済みにできませんでした。',
+	'patrol-reverted-ok' => '編集を差し戻しました。',
+	'patrol-reverted-failed' => '編集を差し戻せませんでした。',
+	'patrol-skipped-ok' => '編集を無視しています。',
+	'patrol-reasons' => '* 単なる荒らし
+* 新規参加者によるテスト
+* ノートを参照',
+	'patrol-another' => 'あれば別の編集を表示する。',
+	'patrol-stopped' => 'あなたは別の編集をパトロールしないよう設定しています。$1',
+	'patrol-resume' => '再開するにはここをクリックしてください。',
+	'group-patroller' => 'パトローラー',
+	'group-patroller-member' => 'パトローラー',
+	'grouppage-patroller' => '{{ns:project}}:パトローラー',
+	'right-patroller' => 'ページをパトロールする',
 );
 
 /** Javanese (Basa Jawa)

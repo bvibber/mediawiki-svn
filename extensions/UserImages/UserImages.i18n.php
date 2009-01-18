@@ -326,6 +326,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'userimages-desc' => 'Generéiert Gallerien vu Biller déi vu Benotzer eropgeluede goufen mat Hëllef vun <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Biller eropgeluede vum $1',
 	'userimages-noname' => 'Ongültegen oder kee Benotzernumm uginn.',
 	'userimages-noimages' => '$1 huet keng Biller eropgelueden.',
@@ -338,6 +339,14 @@ $messages['lt'] = array(
 	'userimages-caption' => 'Iliustracijos, įkeltos $1',
 	'userimages-noname' => 'Neteisingas naudotojo vardas arba netiekiama.',
 	'userimages-noimages' => '$1 nėra įkėlęs iliustracijų.',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'userimages-caption' => "Sary nampidirin'ny $1",
+	'userimages-noname' => "Tsy ampy na diso ny anaran'ny mpikambana.",
 );
 
 /** Macedonian (Македонски)

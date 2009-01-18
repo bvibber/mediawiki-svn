@@ -20,6 +20,11 @@ $aliases['arz'] = array(
 	'RandomInCategory' => array( 'عشوائى_فى_تصنيف' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'RandomInCategory' => array( 'Zufällige Seite in Kategorie' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'RandomInCategory' => array( 'Satunnainen sivu luokasta' ),
@@ -28,6 +33,11 @@ $aliases['fi'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'RandomInCategory' => array( 'Zuefelligi Kategori' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'RandomInCategory' => array( 'カテゴリ中のランダムなページ' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -48,5 +58,10 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'RandomInCategory' => array( 'Tilfeldig fra kategori' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'RandomInCategory' => array( 'अविशिष्टवर्ग' ),
 );
 

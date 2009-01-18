@@ -34,6 +34,11 @@ $aliases['gsw'] = array(
 	'StalePages' => array( 'Abglofeni Syte' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'StalePages' => array( '古くなったページ' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'StalePages' => array( "Verouwerde_pagina's" ),

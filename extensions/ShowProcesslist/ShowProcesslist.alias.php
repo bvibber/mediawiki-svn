@@ -59,6 +59,11 @@ $aliases['id'] = array(
 	'ShowProcesslist' => array( 'Daftar proses' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ShowProcesslist' => array( 'プロセス一覧表示' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ShowProcesslist' => array( 'Prozessless' ),

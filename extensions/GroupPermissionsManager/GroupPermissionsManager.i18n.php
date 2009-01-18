@@ -333,6 +333,13 @@ $messages['bs'] = array(
 	'grouppermissions-sp-remove' => 'ukloni',
 );
 
+/** Catalan (Català)
+ * @author Loupeter
+ */
+$messages['ca'] = array(
+	'grouppermissions-comment' => 'Comentari:',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian
@@ -1612,6 +1619,10 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'grouppermissions-search' => 'Grupo:',
 	'grouppermissions-dologin' => 'Autenticar-se',
+	'grouppermissions-dosearch' => 'Ir',
+	'grouppermissions-comment' => 'Comentário:',
+	'grouppermissions-true' => 'Verdadeiro',
+	'grouppermissions-false' => 'Falso',
 	'grouppermissions-never' => 'Nunca',
 	'grouppermissions-sp-save' => 'Gravar',
 );

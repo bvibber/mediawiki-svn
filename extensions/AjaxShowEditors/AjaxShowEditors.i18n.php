@@ -184,11 +184,12 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Pill
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'ajax-se-desc' => 'Zeigt Benutzer, die momentan dieselbe Seite bearbeiten',
 	'ajax-se-title' => 'Wird zur Zeit bearbeitet von:',
-	'ajax-se-pending' => 'bevorstehende Aktualisierungen… (klicke auf diesen Kasten oder beginne mit der Bearbeitung)',
+	'ajax-se-pending' => 'bevorstehende Aktualisierungen … (klicke auf diesen Kasten oder beginne mit der Bearbeitung)',
 	'ajax-se-idling' => '(vor $1 s)',
 	'ajax-se-pagedoesnotexist' => 'Seite existiert nicht',
 	'ajax-se-userinvalid' => 'Fehler: Benutzer ungültig',

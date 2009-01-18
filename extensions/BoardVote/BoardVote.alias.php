@@ -98,6 +98,11 @@ $aliases['ko'] = array(
 	'BoardVote' => array( '이사회선거', '보드보트' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'BoardVote' => array( 'Vörstandswahl' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'BoardVote' => array( 'Wiel fir de Verwaltungsrot' ),
@@ -136,5 +141,10 @@ $aliases['oc'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'BoardVote' => array( 'Głosowanie' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'BoardVote' => array( 'मण्डलमतदान' ),
 );
 

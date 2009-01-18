@@ -683,6 +683,7 @@ $messages['as'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'configure-js-remove' => 'Выдаліць',
 	'configure-no-old' => 'Няма даступнай старай вэрсіі канфігурацыі.',
 	'configure-section-category' => 'Катэгорыі',
 );
@@ -1196,6 +1197,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-condition-name-4' => 'Mitglied der Gruppen',
 	'configure-condition-name-5' => 'IP-Adresse des Benutzers',
 	'configure-condition-name-6' => 'IP-Adresse des Benutzer in CIDR-Range',
+	'configure-condition-name-7' => 'Mindestalter nach der ersten Bearbeitung',
 	'configure-autopromote-noconds' => 'Keine Voraussetzungen',
 	'configure-condition-description-1' => 'Minimaler Bearbeitungszählerstand von $1',
 	'configure-condition-description-2' => 'Minimales Benutzerkontenalter von $1 {{PLURAL:$1|Sekunde|Sekunden}}',
@@ -1203,6 +1205,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-condition-description-4' => 'Mitglied {{PLURAL:$2|dieser Gruppe|aller dieser Gruppen}}: $1',
 	'configure-condition-description-5' => 'IP-Adresse des Benutzers ist $1',
 	'configure-condition-description-6' => 'IP-Adresse des Benutzers liegt in der Range $1',
+	'configure-condition-description-7' => 'Mindestalter des Benutzerkontos von $1 {{PLURAL:$1|Sekunde|Sekunden}} nach der ersten Bearbeitung',
 	'configure-boolop-description-and' => 'Alle Bedingungen müssen wahr sein',
 	'configure-boolop-description-or' => 'Mindestens eine Bedingung muss wahr sein',
 	'configure-boolop-description-xor' => 'Genau eine Bedingung muss wahr sein',
@@ -3230,6 +3233,13 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-condition-description-5' => 'Dem Benotzer seng IP-Adress ass $1',
 	'configure-condition-description-6' => 'Deb Bentzer seng IP-Adress ass am Beräich $1',
 	'configure-boolop-description-and' => 'All Bedingunge mussen erfëllt sinn',
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'configure-section-search' => 'Xerca',
 );
 
 /** Limburgish (Limburgs)

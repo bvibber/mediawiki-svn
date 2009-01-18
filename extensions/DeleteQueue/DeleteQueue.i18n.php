@@ -586,6 +586,14 @@ $messages['bs'] = array(
 	'deletequeue-list-header-page' => 'Stranica',
 );
 
+/** Catalan (Català)
+ * @author Loupeter
+ */
+$messages['ca'] = array(
+	'deletequeue-review-reason' => 'Comentaris:',
+	'deletequeue-vote-reason' => 'Comentaris:',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Umherirrender
@@ -1797,6 +1805,13 @@ $messages['lb'] = array(
 	'deletequeue-list-votes' => 'Lëscht vun de Stëmmen',
 	'deletequeue-list-header-page' => 'Säit',
 	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'deletequeue-list-search' => 'Xerca',
 );
 
 /** Limburgish (Limburgs)

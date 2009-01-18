@@ -960,6 +960,13 @@ $messages['bs'] = array(
 	'configure-setting-wgEnableUploads' => 'Omogući postavljanja',
 );
 
+/** Catalan (Català)
+ * @author Loupeter
+ */
+$messages['ca'] = array(
+	'configure-setting-wgDisableSearchContext' => "S'ha desactivat informació extra per a dates i revisions de pàgines específiques als resultats de la cerca.",
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -5120,6 +5127,7 @@ $messages['pt'] = array(
 	'configure-setting-wgMaxArticleSize' => 'Tamanho máximo de página (kB)',
 	'configure-setting-wgNoFollowLinks' => 'Adicionar rel="nofollow" às ligações',
 	'configure-setting-wgSiteNotice' => 'Aviso do Sítio',
+	'configure-setting-wgSiteSupportPage' => 'Página com informação de donativos',
 	'configure-setting-wgUseExternalEditor' => 'Permitir uso de editor externo',
 	'configure-setting-wgUseMetadataEdit' => 'Permitir edição de metadados',
 	'configure-setting-wgAjaxLicensePreview' => 'Usar AJAX para pré-visualizar licenciamento nos carregamentos',

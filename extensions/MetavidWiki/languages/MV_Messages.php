@@ -997,6 +997,7 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Loupeter
  * @author SMP
  */
 $messages['ca'] = array(
@@ -1016,6 +1017,7 @@ $messages['ca'] = array(
 	'mv_viewnext' => 'Veure ($1)',
 	'mv_viewprevnext' => 'Veure ($1) ($2)',
 	'mv_search_category' => 'Categoria',
+	'mv_date_range' => 'interval de dates',
 	'mv_category' => 'categoria',
 );
 
@@ -3063,6 +3065,13 @@ $messages['lb'] = array(
 	'mv_next_bill' => 'Nächst Rechnung: $1',
 	'mv_prev_cat' => 'Vireg Kategorie: $1',
 	'mv_next_cat' => 'Nächst Kategorie: $1',
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'mv_tool_search' => 'Xerca',
 );
 
 /** Lithuanian (Lietuvių)

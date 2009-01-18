@@ -6513,7 +6513,12 @@ Oy kullanabilmek için, $2 tarihinden önce en az $1 {{PLURAL:$1|değişikliğe|
 	'boardvote_submit' => 'Oyunuzu kullanın',
 	'boardvote_needadmin' => 'Bu işlemi sadece seçim yöneticileri yapabilir.',
 	'boardvote_notstarted' => 'Oylama henüz başlamadı',
+	'boardvote_closed' => 'Oylama bitmiştir, [http://meta.wikimedia.org/wiki/Board_elections/2008/Results sonuçlar için seçim sayfasına] bakın.',
 	'boardvote_edits_many' => 'çok',
+	'boardvote_blocked' => 'Kayıtlı olduğunuz vikide engellenmişsiniz.
+Engellenmiş kullanıcıların oy kullanmasına izin verilmez.',
+	'boardvote_bot' => 'Kayıtlı olduğunuz vikide bot olarak işaretlenmişsiniz.
+Bot hesaplarının oy kullanmasına izin verilmez.',
 	'boardvote_welcome' => "Hoş geldiniz '''$1'''!",
 	'go_to_board_vote' => '2008 Wikimedia Yönetim Kurulu Seçimleri',
 );

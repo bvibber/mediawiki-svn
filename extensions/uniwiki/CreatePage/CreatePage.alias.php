@@ -25,6 +25,11 @@ $aliases['de'] = array(
 	'CreatePage' => array( 'Seite erstellen' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'CreatePage' => array( 'Crear a páxina' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'CreatePage' => array( 'Syte aalege' ),
@@ -38,6 +43,11 @@ $aliases['hu'] = array(
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'CreatePage' => array( 'បង្កើត​ទំព័រ' ),
+);
+
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'CreatePage' => array( 'Sigge_aanlääje', 'Sigg_aanlääje' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -63,6 +73,16 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CreatePage' => array( 'PaginaAanmaken' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'CreatePage' => array( 'مخ جوړول', 'CreatPage' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'CreatePage' => array( 'पृष्ठस्यसृजन' ),
 );
 
 /** Swedish (Svenska) */

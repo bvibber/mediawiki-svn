@@ -770,7 +770,7 @@ $messages['lb'] = array(
 	'duplicator-source-invalid' => 'Gitt w.e.g. e gëltege Quell-Titel un.',
 	'duplicator-source-notexist' => '[[$1]] gëtt et net. Gitt w.e.g. den Titel vun enger Säit un déi et gëtt.',
 	'duplicator-dest-invalid' => 'Gitt w.e.g. eng valabel Zilsäit unn.',
-	'duplicator-dest-exists' => '{{$1]] gëtt et schonn. Gitt w.e.g. eng Zilsäit unn déi et nach net gëtt.',
+	'duplicator-dest-exists' => '[[$1]] gëtt et schonn. Gitt w.e.g. eng Zilsäit unn déi et nach net gëtt.',
 	'duplicator-toomanyrevisions' => '[[$1]] huet zevill ($2) Versiounen an et ka keen Doublon dovu gemaach ginn. Déi aktuell Limit vun der Zuel vun de Versiounen ass $3.',
 );
 

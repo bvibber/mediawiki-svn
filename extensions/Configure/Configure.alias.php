@@ -252,6 +252,13 @@ $aliases['ro'] = array(
 	'Extensions' => array( 'Extensii' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Configure' => array( 'संरूपण' ),
+	'Extensions' => array( 'विस्तार' ),
+	'ViewConfig' => array( 'संकूटसङ्केतपश्यति' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Configure' => array( 'Konfigurera' ),

@@ -54,6 +54,11 @@ $aliases['fr'] = array(
 	'WhatIsMyIP' => array( 'Quelle est mon IP', 'QuelleEstMonIP' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'WhatIsMyIP' => array( 'Cal é a miña IP' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'WhatIsMyIP' => array( 'Myy IP-Adräss' ),
@@ -72,6 +77,11 @@ $aliases['hsb'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'WhatIsMyIP' => array( 'Mi az IP-címem' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'WhatIsMyIP' => array( '自分のIPアドレス' ),
 );
 
 /** Ripoarisch (Ripoarisch) */
@@ -107,6 +117,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'WhatIsMyIP' => array( 'Quina es mon IP', 'QuinaEsMonIP' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'WhatIsMyIP' => array( 'मदियअङ्कसंकेतकिमस्ती' ),
 );
 
 /** Albanian (Shqip) */

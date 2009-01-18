@@ -112,3 +112,8 @@ $aliases['pl'] = array(
 	'Badimages' => array( 'Nieprawidłowe grafiki' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Badimages' => array( 'कुचित्र:' ),
+);
+

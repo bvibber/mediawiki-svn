@@ -177,6 +177,11 @@ $aliases['ru'] = array(
 	'CategoryIntersection' => array( 'Пересечение категорий' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'CategoryIntersection' => array( 'वर्गविभाजन' ),
+);
+
 /** Tachelhit (Tašlḥiyt) */
 $aliases['shi'] = array(
 	'CategoryIntersection' => array( "taqatoɛ n'omgrd" ),

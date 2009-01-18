@@ -42,6 +42,11 @@ $aliases['es'] = array(
 	'CountEdits' => array( 'Contador_de_Ediciones' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'CountEdits' => array( 'Contador de edicións' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'CountEdits' => array( 'Byytreeg zelle' ),
@@ -55,6 +60,11 @@ $aliases['hsb'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'CountEdits' => array( 'Szerkesztések számolása' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'CountEdits' => array( '編集回数の集計' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
@@ -90,6 +100,11 @@ $aliases['no'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'CountEdits' => array( 'Licznik educji' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'CountEdits' => array( 'सम्पादन्‌गणन' ),
 );
 
 /** Swahili (Kiswahili) */

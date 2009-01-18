@@ -37,6 +37,11 @@ $aliases['fi'] = array(
 	'RefreshSpecial' => array( 'Toimintosivun päivitys' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'RefreshSpecial' => array( 'Actualizar a páxina especial' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'RefreshSpecial' => array( 'RefreshSpecial' ),

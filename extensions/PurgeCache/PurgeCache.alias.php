@@ -94,6 +94,11 @@ $aliases['oc'] = array(
 	'PurgeCache' => array( "Purgar l'amagatal", 'Purgar amagatal', 'PurgarAmagatal' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'PurgeCache' => array( 'पुनातिसंगणकसंस्मृति' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'PurgeCache' => array( 'ล้างแคช' ),

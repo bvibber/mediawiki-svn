@@ -42,6 +42,11 @@ $aliases['fr'] = array(
 	'ViewXML' => array( 'Voir XML', 'VoirXML' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'ViewXML' => array( 'Ver XML' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ViewXML' => array( 'Lueg XML' ),
@@ -50,6 +55,11 @@ $aliases['gsw'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ViewXML' => array( 'XML megtekintése' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ViewXML' => array( 'XML表示' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -75,6 +85,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ViewXML' => array( 'Vis XML' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ViewXML' => array( 'XMLपश्यति' ),
 );
 
 /** Swedish (Svenska) */

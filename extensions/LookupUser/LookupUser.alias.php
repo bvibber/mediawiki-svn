@@ -37,6 +37,11 @@ $aliases['hr'] = array(
 	'LookupUser' => array( 'Pogledaj_suradnika' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'LookupUser' => array( '利用者情報調査', '利用者情報を調査' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'LookupUser' => array( 'Benotzer nokucken' ),
@@ -55,6 +60,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'LookupUser' => array( 'Finn bruker' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'LookupUser' => array( 'योजकपश्यन्तु' ),
 );
 
 /** Swahili (Kiswahili) */

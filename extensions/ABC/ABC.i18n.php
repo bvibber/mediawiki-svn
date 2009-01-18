@@ -286,6 +286,14 @@ $messages['nah'] = array(
 	'abcdownload' => 'Tictemōz:',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'abcdesc' => 'Föögt dat Tag <tt>&lt;abc&gt;</tt> för dat Wiesen vun ABC-Musik to',
+	'abcdownload' => 'Dalladen:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -325,6 +333,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'abcdesc' => 'ABC موسيقي بڼې ته د <tt>&lt;abc&gt;</tt> لنډنوم ورګډوي',
 	'abcdownload' => 'ښکته کول:',
 );
 
@@ -362,12 +371,27 @@ $messages['ru'] = array(
 	'abcdownload' => 'Загрузить:',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'abcdownload' => 'Хачайдааһын:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
 	'abcdesc' => 'Pridáva značku <tt>&lt;abc&gt;</tt> na formátovanie ABC hudby',
 	'abcdownload' => 'Stiahnuť:',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'abcdesc' => 'Föiget dät <tt>&lt;abc&gt;</tt>-Tag tou ju Notation fon Musik in ABC bietou',
+	'abcdownload' => 'Deelleede:',
 );
 
 /** Sundanese (Basa Sunda)
@@ -421,6 +445,14 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'abcdesc' => 'ABC müziğini biçimlendirmek için <tt>&lt;abc&gt;</tt> etiketini ekler',
 	'abcdownload' => 'İndir:',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'abcdesc' => 'Додає тег <tt>&lt;abc&gt;</tt> для форматування музики ABC',
+	'abcdownload' => 'Завантажити:',
 );
 
 /** Vèneto (Vèneto)

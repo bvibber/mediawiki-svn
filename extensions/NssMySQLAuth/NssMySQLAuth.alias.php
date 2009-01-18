@@ -67,6 +67,11 @@ $aliases['pt-br'] = array(
 	'AccountManager' => array( 'Gerenciador de contas' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'AccountManager' => array( 'उपयोजकसंज्ञाप्रबन्धक' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'AccountManager' => array( 'AkauntiKuu' ),

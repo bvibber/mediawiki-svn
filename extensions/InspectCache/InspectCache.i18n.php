@@ -98,6 +98,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'inspectcache-ok' => 'Добра',
+	'inspectcache-delete' => 'Выдаліць',
 );
 
 /** Bulgarian (Български)

@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'SharedUserRights' => array( 'Geteilte Benutzerrechte' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'SharedUserRights' => array( 'Dereitos de usuario compartidos' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'SharedUserRights' => array( 'Teilti Benutzerrächt' ),
@@ -40,6 +45,11 @@ $aliases['gsw'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'SharedUserRights' => array( 'Megosztott felhasználói jogok' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'SharedUserRights' => array( '共有利用者権限', '共有利用者権限管理' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

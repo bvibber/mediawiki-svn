@@ -1193,6 +1193,7 @@ Om denne feilen held fram med å dukka opp, kan det vera noko gale med databasen
 	'changeauthor-success' => 'Førespurnaden har blitt utført.',
 	'changeauthor-logentry' => 'Endra forfattaren av $2 av $1 frå $3 til $4',
 	'changeauthor-logpagename' => 'Logg for endring av forfattar',
+	'right-changeauthor' => 'Endra forfattaren av ein versjon',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

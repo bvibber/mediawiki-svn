@@ -57,6 +57,11 @@ $aliases['hu'] = array(
 	'ImportFreeImages' => array( 'Szabad képek importálása' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ImportFreeImages' => array( 'フリー画像のインポート', 'フリーの画像をインポート' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ImportFreeImages' => array( 'Fräi Biller importéieren' ),
@@ -80,6 +85,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ImportFreeImages' => array( 'Importer frie bilder' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ImportFreeImages' => array( 'आयातमुक्तछायाचित्र' ),
 );
 
 /** Swedish (Svenska) */

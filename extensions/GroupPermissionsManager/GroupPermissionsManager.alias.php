@@ -76,6 +76,7 @@ $aliases['hu'] = array(
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'GroupPermissions' => array( 'グループパーミッション' ),
+	'RemoveUnusedGroups' => array( '未使用グループ除去' ),
 	'SortPermissions' => array( 'ソートパーミッション' ),
 );
 
@@ -116,6 +117,13 @@ $aliases['no'] = array(
 	'GroupPermissions' => array( 'Gruppetillatelser' ),
 	'RemoveUnusedGroups' => array( 'Fjern ubrukte grupper' ),
 	'SortPermissions' => array( 'Sorter tillatelser' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'GroupPermissions' => array( 'गटसंमती' ),
+	'RemoveUnusedGroups' => array( 'अप्रयूक्तगटत्यजति' ),
+	'SortPermissions' => array( 'अनुज्ञासंविचिनोति' ),
 );
 
 /** Swedish (Svenska) */

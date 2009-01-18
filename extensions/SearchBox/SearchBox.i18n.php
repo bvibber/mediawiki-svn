@@ -125,10 +125,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'searchbox-desc' => 'Permitir inclusión de formularios de búsqueda',
 	'searchbox-search' => 'Buscar',
+	'searchbox-go' => 'Ir',
 	'searchbox-namespaces' => 'Espacios de nombres:',
 );
 
@@ -277,6 +280,13 @@ $messages['lb'] = array(
 	'searchbox-search' => 'Sichen',
 	'searchbox-go' => 'Lass',
 	'searchbox-namespaces' => 'Nummraim:',
+);
+
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'searchbox-search' => 'Xerca',
 );
 
 /** Malay (Bahasa Melayu)

@@ -12,7 +12,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
- * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'poem-desc' => 'Extension description displayed on [[Special:Version]]',

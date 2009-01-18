@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'FindSpam' => array( 'Spam finden' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'FindSpam' => array( 'Atopar spam' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'FindSpam' => array( 'Spam finde' ),
@@ -45,6 +50,11 @@ $aliases['gsw'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'FindSpam' => array( 'Spam keresése' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'FindSpam' => array( 'スパムを探す' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -75,6 +85,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'FindSpam' => array( 'Finn spam' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'FindSpam' => array( 'समाप्नोतिअतिपत्राचार' ),
 );
 
 /** Swahili (Kiswahili) */

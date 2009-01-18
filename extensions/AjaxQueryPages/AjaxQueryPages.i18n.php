@@ -144,6 +144,13 @@ $messages['gl'] = array(
 	'ajax-qp-desc' => 'Engadir algún AJAX a QueryPages tales como [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'ajax-qp-desc' => 'Προσθέτει προγραμματιστικὴ γραφὴ AJAX εἰς δέλτους πεύσεως ὅπως ἡ [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -258,6 +265,13 @@ $messages['ms'] = array(
  */
 $messages['nah'] = array(
 	'ajax-qp-desc' => 'Ticcēntilīz AJAX ic tiquimpōhuāz zāzanilli quemeh [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'ajax-qp-desc' => 'Föögt wat AJAX to an Spezialsieden so as [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Nedersaksisch (Nedersaksisch)

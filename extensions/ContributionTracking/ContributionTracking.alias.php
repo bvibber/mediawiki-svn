@@ -28,9 +28,19 @@ $aliases['bs'] = array(
 	'ContributionTracking' => array( 'DoprinosiPracenje' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'ContributionTracking' => array( 'Seguimento das contribucións' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ContributionTracking' => array( 'Adományok követése' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ContributionTracking' => array( '寄付追跡' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
@@ -46,5 +56,10 @@ $aliases['nl'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ContributionTracking' => array( 'Przekierowanie do systemu płatnościowego' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ContributionTracking' => array( 'योगदानउन्नयति' ),
 );
 

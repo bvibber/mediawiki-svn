@@ -75,6 +75,11 @@ $aliases['hu'] = array(
 	'EditUser' => array( 'Szerkesztő szerkesztése' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'EditUser' => array( '利用者情報の編集' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'EditUser' => array( 'កែប្រែអ្នកប្រើប្រាស់' ),
@@ -110,6 +115,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'EditUser' => array( 'EditarUtilizaire', 'Editar l’utilizaire' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'EditUser' => array( 'सम्पादन्‌योजक' ),
 );
 
 /** Swedish (Svenska) */

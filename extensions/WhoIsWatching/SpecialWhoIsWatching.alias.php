@@ -35,6 +35,11 @@ $aliases['fa'] = array(
 	'WhoIsWatching' => array( 'چه_کسی_پی‌گیری_می‌کند' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'WhoIsWatching' => array( 'Quen está vixiando' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'WhoIsWatching' => array( 'Wär beobachtet?' ),
@@ -53,6 +58,11 @@ $aliases['hsb'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'WhoIsWatching' => array( 'Ki figyel' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'WhoIsWatching' => array( '誰がページをウォッチしているのか', 'ページをウォッチしている利用者' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
@@ -93,5 +103,10 @@ $aliases['no'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'WhoIsWatching' => array( 'Kto obserwuje' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'WhoIsWatching' => array( 'अन्यकतम्‌पश्यति' ),
 );
 

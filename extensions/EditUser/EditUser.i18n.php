@@ -603,6 +603,13 @@ $messages['lb'] = array(
 	'right-edituser-exempt' => "D'Astellunge kënnen net vun Anere geännert ginn",
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'edituser-dosearch' => 'Xerca',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Tomasdd
  */

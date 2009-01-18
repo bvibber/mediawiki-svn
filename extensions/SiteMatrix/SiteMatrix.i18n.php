@@ -1269,9 +1269,13 @@ $messages['pt'] = array(
 	'sitematrix-fishbowl' => 'edição restricta',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
 $messages['pt-br'] = array(
 	'sitematrix' => 'Lista de wikis da Wikimedia',
+	'sitematrix-project' => 'Nome do projeto, ligação interprojeto e ligação interwiki',
+	'sitematrix-others' => 'Outros projetos da Wikimedia',
 );
 
 /** Quechua (Runa Simi)

@@ -140,6 +140,11 @@ $aliases['pt-br'] = array(
 	'InterwikiList' => array( 'Lista de interwikis' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'InterwikiList' => array( 'आंन्तरविकिसूची' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'InterwikiList' => array( 'Interwikilista' ),

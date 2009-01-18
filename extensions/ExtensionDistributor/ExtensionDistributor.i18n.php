@@ -314,6 +314,57 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
 	'extdist-want-more' => 'Eine weitere Erweiterung holen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'extensiondistributor' => 'Rozšyrjenje MediaWiki ześěgnuś',
+	'extdist-desc' => 'Rozšyrjenje za rozdźělowanje archiwow rozšyrjenjow',
+	'extdist-not-configured' => 'Pšosym konfigurěruj $wgExtDistTarDir a $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Konfigurěrowany zapis źěłoweje kopije njeeksistěrujo!',
+	'extdist-no-such-extension' => 'Rozšyrjenje "$1" njeeksistěrujo',
+	'extdist-no-such-version' => 'Rozšyrjenje "$1" njeeksistěrujo we wersiji "$2".',
+	'extdist-choose-extension' => 'Wubjeŕ rozšyrjenje, kótarež coš ześěgnuś:',
+	'extdist-wc-empty' => 'Konfigurěrowany zapis źěłoweje kopije njama rozdźělujobne rozšyrjenja!',
+	'extdist-submit-extension' => 'Dalej',
+	'extdist-current-version' => 'Aktualna wersija (trunk)',
+	'extdist-choose-version' => '<big>Ześěgujoš rozšyrjenje <b>$1</b>.</big>
+
+Wubjeŕ swóju wersiju MediaWiki.
+
+Nejwěcej rozšyrjenjow funkcioněrujo w někotarych wersijach MediaWiki, jolic stakim twója wersija MediaWiki njejo how abo trjebaš nejnowše funkcije rozšyrjenja, wopytaj aktualnu wersiju wužywaś.',
+	'extdist-no-versions' => 'Wubrane rozšyrjenje ($1) njestoj k dispoziciji we wšych wersijach!',
+	'extdist-submit-version' => 'Dalej',
+	'extdist-no-remote' => 'Njemóžno zdalony klient Subversion kontaktěrowaś',
+	'extdist-remote-error' => 'Zmólka wót zdalonego klienta Subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Njepłaśiwe wótegrono wót zdalonego klienta Subversion.',
+	'extdist-svn-error' => 'Subversion jo starcył na zmólku: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Njejo móžno XML-daty ze "svn info" pśeźěłaś: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar jo wróśił kod skóncenja $1:',
+	'extdist-created' => "Pakśik wersije <b>$2</b> rozšyrjenja <b>$1</b> za MediaWiki <b>$3</b> jo se napórał. Twójo ześěgnjenje by měło za 5 sekundow awtomatiski startowaś.
+
+URL za toś ten pakśik jo:
+:$4
+Dataja wužywa se, aby se ned ześěgnuła na serwer, ale pšosym njeskładuj ju ako załožk, dokulaž se wopśimjeśe njezaktualizěrujo a wóna móžo se pózdźej wulašowaś.
+
+Tar-archiw by měł se do twójego zapisa rozšyrjenjow rozpakowaś. Na pśikład na uniksowych źěłowych systemach:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Na Windowsu móžoš [http://www.7-zip.org/ 7-zip] wužywaś, aby rozpakował dataje.
+
+Jolic twój wiki jo na zdalonem serwerje, rozpakuj dataje do nachylnego zapisa na swójom lokalnem licadle a nagraj pótom '''wše''' rozpakowane dataje do zapisa rozšyrjenjow na serwerje.
+
+Źiwaj na to, až někotare rozšyrjenja trjebaja dataju z mjenim ExtensionFunctions.php, kótaraž jo w <tt>extensions/ExtensionFunctions.php</tt>, to groni, w ''nadrědowanem'' zapisu zapisa wótpowědnego rozšyrjenja. Pakśik za toś te rozšyrjenja wopśimujo toś tu dataju ako tar-bombu, rozpakowanu do ./ExtensionFunctions.php. Njezabudni toś tu dataju do swójogo zdalonego serwera nagraś.
+
+Za tym, az sy rozpakował dataje, musyš rozšyrjenje w dataji localSettings.php registrěrowaś. Dokumentacija rozšyrjenja by měła instrukcije wopśimjeś, kak se dajo cyniś.
+
+Jolic maš pšašanja wo toś tom systemje rozdźělowanja rozšyrjenjow, źi pšosym k [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Druge rozšyrjenje wobstaraś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1047,11 +1098,48 @@ $messages['pt'] = array(
 	'extensiondistributor' => 'Descarregar extensão MediaWiki',
 	'extdist-desc' => 'Extensão para distribuir arquivos snapshot de extensões',
 	'extdist-not-configured' => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'A directoria de cópia de trabalho configurada não existe!',
+	'extdist-no-such-extension' => 'A extensão "$1" não existe',
+	'extdist-no-such-version' => 'A extensão "$1" não existe na versão "$2".',
+	'extdist-choose-extension' => 'Selecione que extensão pretende descarregar:',
+	'extdist-wc-empty' => 'A directoria de cópia de trabalho não possui extensões distribuíveis!',
 	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'Versão atual (tronco)',
+	'extdist-choose-version' => '
+<big>Você esteá a descarregar a extensão <b>$1</b>.</big>
+
+Selecione a versão do seu MediaWiki.
+
+A maioria das extensões funciona através de múltiplas versões do MediaWiki, portanto, se a versão do seu MediaWiki não estiver aqui, ou se tiver necessidade das últimas funcionalidades da extensão, experimente usar a versão atual.',
 	'extdist-no-versions' => 'A extensão selecionada ($1) não está disponível em nenhuma versão!',
 	'extdist-submit-version' => 'Continuar',
+	'extdist-no-remote' => 'Não foi possível contactar o cliente Subversion remoto.',
+	'extdist-remote-error' => 'Erro do cliente Subversion remoto: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Resposta inválida do cliente Subversion remoto.',
+	'extdist-svn-error' => 'O Subversion encontrou um erro: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Não foi possível processar o XML da informação SVN: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar retornou código de saída $1:',
+	'extdist-created' => "Um instantâneo (''snapshot'') da versão <b>$2</b> da extensão <b>$1</b> para o MediaWiki <b>$3</b> foi criado. A sua descarga deverá iniciar-se automaticamente em 5 segundos.
+
+A URL deste instantâneo é:
+:$4
+Esta pode ser utilizada para descarga imediata para um servidor, mas por favor não a adicione aos seus favoritos, já que o seu conteúdo não será atualizado, e poderá ser eliminado posteriormente.
+
+O arquivo tar deverá ser extraído para a sua diretoria de extensões. Por exemplo, num SO tipo UNIX:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+No Windows, poderá usar o [http://www.7-zip.org/ 7-zip] para extrair os ficheiros.
+
+Se o seu wiki está num servidor remoto, extraia os ficheiros para uma diretoria temporária no seu computador local, e depois carregue '''todos''' os ficheiros extraídos na diretoria de extensões do servidor.
+
+Note que algumas extensões precisam de um ficheiro chamado ExtensionFunctions.php, situado em <tt>extensions/ExtensionFunctions.php</tt>, ou seja, na diretoria ''pai'' da diretoria desta extensão em particular. O instantâneo destas extensões contém este ficheiro como uma 'tarbomb', extraída para ./ExtensionFunctions.php. Não negligencie o carregamento deste ficheiro para o seu servidor remoto.
+
+Após ter extraído os ficheiros, terá que registar a extensão em LocalSettings.php. A documentação da extensão deverá ter instruções de como o fazer.
+
+Se tiver alguma questão sobre este sistema de distribuição de extensões, por favor, vá a [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Obter outra extensão',
 );
 
@@ -1211,6 +1299,50 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'extensiondistributor' => 'MedyaViki eklentisini indir',
+	'extdist-desc' => 'Eklentilerin anlık görüntü arşivlerini dağıtmak için eklenti',
+	'extdist-not-configured' => 'Lütfen $wgExtDistTarDir ve $wgExtDistWorkingCopy ayarlayın',
+	'extdist-wc-missing' => 'Ayarlanan çalışma kopyası dizini mevcut değil!',
+	'extdist-no-such-extension' => '"$1" adında bir eklenti yok',
+	'extdist-no-such-version' => '"$2" versiyonunda "$1" eklentisi mevcut değil.',
+	'extdist-choose-extension' => 'İndirmek istediğiniz eklentiyi seçin:',
+	'extdist-wc-empty' => 'Ayarlanan çalışma kopyası dizininde hiç dağıtılabilir eklenti yok!',
+	'extdist-submit-extension' => 'Devam et',
+	'extdist-current-version' => 'Şuanki sürüm (trunk)',
+	'extdist-choose-version' => '<big><b>$1</b> eklentisini indiriyosunuz.</big>
+
+MedyaViki sürümünüzü seçin.
+
+Pekçok eklenti MedyaVikinin birçok sürümünde çalışır, eğer MedyaViki sürümünüz burada yoksa, ya da en son eklenti özelliklerine ihtiyacınız varsa, güncel sürümü kullanmayı deneyin.',
+	'extdist-no-versions' => 'Seçili eklenti ($1) hiçbir versiyonda mevcut değil!',
+	'extdist-submit-version' => 'Devam et',
+	'extdist-no-remote' => 'Uzaktan altsürüm istemcisiyle temas kurulamıyor.',
+	'extdist-remote-error' => 'Uzaktan altsürüm istemcisinde hata: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Uzaktan altsürüm istemcisinden geçersiz yanıt.',
+	'extdist-svn-error' => 'Altsürüm bir hatayla karşılaştı: <pre>$1</pre>',
+	'extdist-svn-parse-error' => '"svn info"daki XML işlenemiyor: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar çıkış kodu $1 geri döndürdü:',
+	'extdist-created' => "<b>$1</b> eklentisinin <b>$2</b> versiyonunun anlık görüntüsü MediaWiki <b>$3</b> için oluşturuldu. İndirmeniz 5 saniye içinde otomatik olarak başlamalıdır.  
+
+Anlık görüntünün URLsi:
+:$4
+Bu, bir sunucuya anında indirme için kullanılabilir. Ancak içerik güncellenmeyeceğinden ve ileri bir tarihte silinebileceğinden, lütfen yer imlerine eklemeyin.
+
+Tar arşivi eklenti dizininize çıkarılmalıdır. Örneğin, unix tipi işletim sistemlerinde:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Windows'ta, dosyaları çıkartmak için [http://www.7-zip.org/ 7-zip]'i kullanabilirsiniz.
+
+Eğer vikiniz uzaktan bir sunucuda ise, dosyaları yerel bilgisayarınızda geçici bir dizine çıkarın, ve sonra '''bütün''' çıkarılan dosyaları sunucunun eklenti dizinine kopyalayın.
+
+Bazı eklentiler ExtensionFunctions.php adlı bir dosyaya ihtiyaç duyar, <tt>extensions/ExtensionFunctions.php</tt>'de, bu belirli eklentinin dizininin ''ana'' dizininde. Bu eklentilerin anlık görüntüsü, bu dosyayı tarbomb olarak içerir, ExtensionFunctions.php'a çıkarılmıştır. Bu dosyayı uzaktan sunucunuza yüklemeyi ihmal etmeyin.
+
+Dosyaları çıkardıktan sonra, eklentiyi LocalSettings.php'de kaydetmelisiniz. Eklenti dokümantasyonu bunu nasıl yapacağınızın açıklamasını içerebilir.
+
+Eğer bu eklenti dağıtım sistemi ile herhangi bir sorunuz varsa, lütfen [[Extension talk:ExtensionDistributor]]'a gidin.",
+	'extdist-want-more' => 'Başka eklenti al',
 );
 
 /** Yue (粵語)

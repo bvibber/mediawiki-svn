@@ -407,6 +407,14 @@ $messages['bs'] = array(
 	'specialpages-group-contribution' => 'Doprinosi/donacije',
 );
 
+/** Catalan (Català)
+ * @author Loupeter
+ */
+$messages['ca'] = array(
+	'contrib-hist-date' => 'Data i hora',
+	'fundraiserstats-date' => 'Data',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Mormegil

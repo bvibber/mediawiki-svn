@@ -79,6 +79,13 @@ $messages['bs'] = array(
 	'createbox-create' => 'Napravi',
 );
 
+/** Catalan (Català)
+ * @author Loupeter
+ */
+$messages['ca'] = array(
+	'createbox-create' => 'Crear',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'createbox-create' => 'Creà',

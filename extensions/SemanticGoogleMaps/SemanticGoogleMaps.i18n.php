@@ -233,7 +233,7 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => "Hanapin ang mga tugmaang-pampook (''coordinate'')",
-	'semanticgooglemaps-desc' => 'Nagpapahintulot sa mga tagagamit na makapagdagdag ng mga Mapa ng Google sa mga pahina ng wiki batay sa napagkayariang mga dato',
+	'semanticgooglemaps-desc' => 'Nagpapahintulot sa mga tagagamit na makapagbago at makapagpakita/mapagpalitaw ng dato na pangtugmaang pampook na patungkol/umaayon sa kahulugan o ibig sabihin ng salita na ginagamitan ng mga Mapa ng Google',
 );
 
 /** Volapük (Volapük)

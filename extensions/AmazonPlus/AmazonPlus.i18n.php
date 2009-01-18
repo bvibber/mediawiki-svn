@@ -351,6 +351,8 @@ $messages['he'] = array(
 	'amazonplus-cp-gbp' => 'GBP',
 	'amazonplus-cp-eur' => 'EUR',
 	'amazonplus-cp-jpy' => 'JPY',
+	'amazonplus-more' => 'עוד',
+	'amazonplus-less' => 'פחות',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -413,8 +415,8 @@ $messages['ja'] = array(
 	'amazonplus-new' => '新品',
 	'amazonplus-none' => 'この商品は在庫・出品がありません。',
 	'amazonplus-cp-none' => '無し',
-	'amazonplus-more' => 'もっと',
-	'amazonplus-less' => '以下',
+	'amazonplus-more' => '続き',
+	'amazonplus-less' => '省略',
 );
 
 /** Georgian (ქართული)
@@ -661,6 +663,22 @@ $messages['ro'] = array(
 	'amazonplus-cp-none' => 'Nimic',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'amazonplus-used' => 'ausete',
+	'amazonplus-german' => 'Tedesche',
+	'amazonplus-french' => 'Frangese',
+	'amazonplus-japanese' => 'Giapponese',
+	'amazonplus-amazon' => 'prizze de amazon',
+	'amazonplus-new' => 'nuève',
+	'amazonplus-none' => 'Nisciuna copie de ste artichele ha state mise in vendita.',
+	'amazonplus-cp-none' => 'Ninde',
+	'amazonplus-more' => 'de cchiù',
+	'amazonplus-less' => 'de mene',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -707,6 +725,27 @@ $messages['sk'] = array(
 	'amazonplus-cp-jpy' => 'JPY',
 	'amazonplus-more' => 'viac',
 	'amazonplus-less' => 'menej',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'amazonplus-desc' => 'Ne goud appaasboare Ärwiederenge, uum Informatione fon Amazon antouwiesen',
+	'amazonplus-nores' => 'Failer: Neen Resultoate fuunen!',
+	'amazonplus-noidres' => 'Failer: Produkt-ID kuud nit fuunen wäide!',
+	'amazonplus-fgcerr' => 'Failer: Der kuuden neen Doaten fon Amazon hoald wäide.',
+	'amazonplus-slserr' => 'Failer: Fon Amazon ämpfangene Doaten kuuden nit feroarbaided wäide!',
+	'amazonplus-used' => 'bruukt',
+	'amazonplus-german' => 'Düütsk',
+	'amazonplus-french' => 'Frantsöösk',
+	'amazonplus-japanese' => 'Japanisk',
+	'amazonplus-amazon' => 'Pries bie Amazon',
+	'amazonplus-new' => 'näi',
+	'amazonplus-none' => 'Fon disse Publikation wäide apstuuns neen Kopien ferkooped.',
+	'amazonplus-cp-none' => 'Neen',
+	'amazonplus-more' => 'moor',
+	'amazonplus-less' => 'minner',
 );
 
 /** Sundanese (Basa Sunda)

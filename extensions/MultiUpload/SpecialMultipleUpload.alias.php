@@ -95,6 +95,11 @@ $aliases['pt-br'] = array(
 	'MultiUpload' => array( 'Carregamentos em massa' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'MultiUpload' => array( 'अनेकभारंन्यस्यति' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'MultiUpload' => array( 'Multiuppladdning' ),

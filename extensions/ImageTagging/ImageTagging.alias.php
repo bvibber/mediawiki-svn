@@ -32,6 +32,11 @@ $aliases['bs'] = array(
 	'ImageTagging' => array( 'OznacavanjeSlika' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'ImageTagging' => array( 'Bildmarkierung' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ImageTagging' => array( 'Képcímkézés' ),
@@ -50,6 +55,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ImageTagging' => array( 'Bildetagging' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ImageTagging' => array( 'छायाचित्रवीजक' ),
 );
 
 /** Swahili (Kiswahili) */

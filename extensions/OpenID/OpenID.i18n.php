@@ -1849,7 +1849,7 @@ Et jitt en jruuße Zahl [http://wiki.openid.net/Public_OpenID_providers <span la
  * @author Robby
  */
 $messages['lb'] = array(
-	'openid-desc' => "Sech an d'Wiki matt enger http://openid.net/ OpenID] aloggen, a sech op aneren Internetsiten, déi OpenID ënerstetzen, matt engem Wiki-Benotzerkont aloggen.",
+	'openid-desc' => "Sech an d'Wiki matt enger [http://openid.net/ OpenID] aloggen, a sech op aneren Internetsiten, déi OpenID ënerstetzen, matt engem Wiki-Benotzerkont aloggen.",
 	'openidlogin' => 'Umellen mat OpenID',
 	'openidfinish' => "D'Aloggen mat OpenID ofschléissen",
 	'openidserver' => 'OpenID-Server',
@@ -1894,7 +1894,7 @@ $messages['lb'] = array(
 	'openidconvertothertext' => 'Dëst ass engem anere seng OpenID.',
 	'openidalreadyloggedin' => "'''Dir sidd schonn ageloggt, $1!'''
 
-Wann Dir OpenID benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [Special:OpenIDConvert|Äre Benotzerkont an en OpenID-Benotzerkont ëmwandelen]].",
+Wann Dir OpenID benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [[Special:OpenIDConvert|Äre Benotzerkont an en OpenID-Benotzerkont ëmwandelen]].",
 	'tog-hideopenid' => 'Verstoppt Är <a href="http://openid.net/">OpenID</a> op ärer Benotzersäit, wann dir Iech mat OpenID aloggt.',
 	'openidnousername' => 'Kee Benotzernumm uginn.',
 	'openidbadusername' => 'Falsche Benotzernumm uginn.',

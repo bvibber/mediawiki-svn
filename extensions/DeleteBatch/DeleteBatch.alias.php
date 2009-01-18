@@ -33,6 +33,11 @@ $aliases['bs'] = array(
 	'DeleteBatch' => array( 'BrisanjeBatch' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'DeleteBatch' => array( 'Stapel löschen' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'DeleteBatch' => array( 'Supression en série', 'SuppressionEnSérie', 'SuppressionEnSerie' ),
@@ -63,6 +68,11 @@ $aliases['ht'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'DeleteBatch' => array( 'Tömeges törlés' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'DeleteBatch' => array( '一括削除' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -100,6 +110,11 @@ $aliases['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
 	'DeleteBatch' => array( 'Apagar em massa' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'DeleteBatch' => array( 'गणपरित्याग' ),
 );
 
 /** Swahili (Kiswahili) */

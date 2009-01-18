@@ -55,6 +55,11 @@ $aliases['fi'] = array(
 	'SiteMatrix' => array( 'Sivumatriisi' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'SiteMatrix' => array( 'Wikis Wikimedia' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'SiteMatrix' => array( 'Lischt vu dr Wikimedia-Wikis' ),
@@ -89,7 +94,7 @@ $aliases['id'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'SiteMatrix' => array( 'Wikimediaのウィキ一覧' ),
+	'SiteMatrix' => array( 'ウィキメディアのウィキ一覧', 'Wikimediaのウィキ一覧' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

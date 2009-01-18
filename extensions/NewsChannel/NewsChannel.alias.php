@@ -32,6 +32,11 @@ $aliases['bs'] = array(
 	'NewsChannel' => array( 'KanalVijesti' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'NewsChannel' => array( 'Nachrichtenkanal' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'NewsChannel' => array( 'کانال_خبری' ),
@@ -85,6 +90,11 @@ $aliases['ps'] = array(
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
 	'NewsChannel' => array( 'Canal de notícias' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'NewsChannel' => array( 'वृत्तवाहिनी' ),
 );
 
 /** Swedish (Svenska) */

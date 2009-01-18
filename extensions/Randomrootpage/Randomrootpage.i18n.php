@@ -16,7 +16,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
- * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'randomrootpage-desc' => 'Extension description displayed on [[Special:Version]]',

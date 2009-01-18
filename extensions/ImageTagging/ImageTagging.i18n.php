@@ -182,6 +182,7 @@ $messages['arz'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'imagetagging-article' => 'Старонка:',
 	'imagetagging-imghistory' => 'Гісторыя',
 );
 
@@ -943,13 +944,22 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author 555
  * @author MF-Warburg
  * @author Malafaya
- * @author 555
  */
 $messages['pt'] = array(
+	'imagetagging-desc' => 'Permite que um utilizador selecione uma região de uma imagem incorporada e associe uma página a essa região',
+	'imagetagging-article' => 'Página:',
+	'imagetagging-canteditothermessage' => 'Você não pode editar esta página, porque não possui permissões para isso, ou porque a página está bloqueada por outros motivos.',
 	'imagetagging-imghistory' => 'Histórico',
+	'imagetagging-images' => 'imagens',
+	'imagetagging-inthisimage' => 'Nesta imagem: $1',
+	'imagetagging-new' => '<sup><span style="color:red">Nova!</span></sup>',
 	'imagetagging-tagcancel-button' => 'Cancelar',
+	'imagetagging-imagetag-seemoreimages' => 'Ver mais imagens de "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Imagens de "$1"',
+	'imagetagging-taggedimages-displaying' => 'A mostrar $1 - $2 de $3 imagens de "$4"',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

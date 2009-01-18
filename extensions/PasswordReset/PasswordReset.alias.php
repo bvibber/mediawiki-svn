@@ -61,7 +61,7 @@ $aliases['hr'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'PasswordReset' => array( 'パスワードのリセット', 'パスワードリセット' ),
+	'PasswordReset' => array( 'パスワードのリセット', 'パスワードリセット', 'パスワード再設定', 'パスワードの再設定' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
@@ -102,6 +102,12 @@ $aliases['nl'] = array(
 $aliases['no'] = array(
 	'PasswordReset' => array( 'Nullstill passord' ),
 	'Disabledusers' => array( 'Inaktive kontoer' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'PasswordReset' => array( 'सङ्केतशब्दपुन:प्रयु्क्ता' ),
+	'Disabledusers' => array( 'असमर्थयोजक' ),
 );
 
 /** Swahili (Kiswahili) */

@@ -1342,12 +1342,17 @@ $wgCustomToolbarMessages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $wgCustomToolbarMessages['pt'] = array(
 	'ct-desc' => 'Adiciona uma barra de ferramentas extensível',
 	'ct_bold_sample' => 'Texto negrito',
+	'ct_bold_tip_ins' => 'Inserir texto a negrito',
+	'ct_bold_tip_wrap' => 'Tornar este texto negrito',
 	'ct_bold_caption' => 'Negrito',
 	'ct_italic_sample' => 'Texto itálico',
+	'ct_italic_tip_ins' => 'Inserir texto em itálico',
+	'ct_italic_tip_wrap' => 'Tornar este texto itálico',
 	'ct_italic_caption' => 'Itálico',
 	'ct_internal_sample' => 'NomeDaPágina',
 	'ct_image_caption' => 'Adicionar imagem',

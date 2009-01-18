@@ -52,6 +52,11 @@ $aliases['fr'] = array(
 	'ViewAPC' => array( 'Voir APC', 'VoirAPC' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'ViewAPC' => array( 'Ver APC' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ViewAPC' => array( 'APC-Informatione' ),
@@ -60,6 +65,16 @@ $aliases['gsw'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ViewAPC' => array( 'APC megtekintése' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ViewAPC' => array( 'APC情報', 'APC表示' ),
+);
+
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ViewAPC' => array( 'APC-Enfommazjuhne' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -85,6 +100,11 @@ $aliases['no'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ViewAPC' => array( 'Podgląd APC' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ViewAPC' => array( 'एपीसिपश्यति' ),
 );
 
 /** Swedish (Svenska) */

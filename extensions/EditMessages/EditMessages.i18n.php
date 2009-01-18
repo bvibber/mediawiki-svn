@@ -655,6 +655,13 @@ $messages['lb'] = array(
 	'editmsg-patch-success' => 'gepatched!',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$messages['lfn'] = array(
+	'editmsg-search' => 'Xerca',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Tomasdd
  */

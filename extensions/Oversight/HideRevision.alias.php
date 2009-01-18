@@ -134,6 +134,12 @@ $aliases['pl'] = array(
 	'Oversight' => array( 'Rejestr ukrywania' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'HideRevision' => array( 'आवृत्तीलुपयति' ),
+	'Oversight' => array( 'वृजावलोकन' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'HideRevision' => array( 'Dölj version' ),

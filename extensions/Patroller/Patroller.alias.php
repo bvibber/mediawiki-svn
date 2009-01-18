@@ -57,6 +57,11 @@ $aliases['nl'] = array(
 	'Patroller' => array( 'Controleren' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Patroller' => array( 'पॅटरोलर' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Patroller' => array( 'Mwanadoria' ),

@@ -57,6 +57,11 @@ $aliases['hu'] = array(
 	'Asksql' => array( 'SQL-lekérdezés' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Asksql' => array( 'SQL-Frooch', 'SQL-Froore' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Asksql' => array( 'SQL-Ufroen' ),
@@ -85,5 +90,10 @@ $aliases['oc'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'Asksql' => array( 'Zapytanie SQL' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Asksql' => array( 'एस्‌क्यूएल्‌पृच्छा' ),
 );
 

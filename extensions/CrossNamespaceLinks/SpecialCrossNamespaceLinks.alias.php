@@ -144,3 +144,8 @@ $aliases['pt-br'] = array(
 	'CrossNamespaceLinks' => array( 'Links espalhados em diversos espaços nominais', 'Links espalhados em diversos domínios', 'Ligações espalhadas em diversos espaços nominais' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'CrossNamespaceLinks' => array( 'आन्तरनामविश्वसम्बद्ध:' ),
+);
+

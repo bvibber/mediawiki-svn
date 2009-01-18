@@ -1408,6 +1408,16 @@ $messages['tr'] = array(
 	'usernameblacklist-desc' => 'Bir veya daha fazla düzenli ifade ile eşleşen kullanıcı hesaplarının oluşturulmasını kısıtlamak için bir [[MediaWiki:Usernameblacklist|kullanıcı adı kara listesi]] ekler',
 	'blacklistedusername' => 'Kara listedeki kullanıcılar',
 	'blacklistedusernametext' => 'Seçtiğiniz isim [[MediaWiki:Usernameblacklist|Kara listedeki kullanıcılar]] listesinde sıralanan bir kullanıcı adıyla aynı isme sahiptir. Lütfen başka bir kullanıcı adı seçiniz.',
+	'usernameblacklist' => '<pre>
+# Kullanıcı adları kayıt için karalistelenirken, bu listedeki
+# girdiler düzenli tanımların parçası olarak kullanılacaktır.
+# Her öğe madde imli listenin parçası olmalıdır, ör:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => 'Kullanıcı adı karalistesindeki şu {{PLURAL:$1|satır|satırlar}} geçersiz; lütfen kaydetmeden önce düzeltin:',
+	'right-uboverride' => 'Kullanıcı adı karalistesini geçersiz kıl',
 );
 
 /** Ukrainian (Українська)

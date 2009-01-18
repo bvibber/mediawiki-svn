@@ -1338,6 +1338,14 @@ $messages['li'] = array(
 	'youtubeauthsub_uploadbutton' => 'Upload',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'youtubeauthsub_submit' => 'Alefa',
+	'youtubeauthsub_clickhere' => "Tsindrio eto ra tia hiditra anatin'ny Youtube",
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

@@ -353,7 +353,7 @@ $messages['gl'] = array(
 	'dt_xml_freetext' => 'Texto Libre',
 );
 
-/** Gothic (𐌲𐌿𐍄𐌹𐍃𐌺)
+/** Gothic
  * @author Jocke Pirat
  */
 $messages['got'] = array(

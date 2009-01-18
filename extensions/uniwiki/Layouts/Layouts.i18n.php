@@ -413,12 +413,17 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'layouts-desc' => 'Preencher as páginas recém-criadas com modelos editáveis para fomentar uma estrutura comum para as páginas',
 	'layouts_title' => 'Criar uma página',
+	'layouts_chooselayout' => 'Escolha um modelo para $1:',
+	'layouts_nolayout' => 'Nenhum modelo',
 	'layouts_continue' => 'Continuar',
 	'layouts_choosecategory' => 'Escolha uma categoria para $1:',
 	'layouts_unknown' => 'Desconhecido',
+	'layouts_tagline' => "Esta página foi gerada pelo modelo '''$1'''.",
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

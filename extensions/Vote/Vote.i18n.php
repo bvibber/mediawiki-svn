@@ -815,6 +815,14 @@ $messages['lt'] = array(
 	'vote-login-link' => 'registruotis',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'vote-results-none' => 'Tsy nisy vato nalatsaka ankehitriny.',
+	'vote-login-link' => 'hiditra',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

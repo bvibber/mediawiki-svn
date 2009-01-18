@@ -49,6 +49,11 @@ $aliases['nl'] = array(
 	'PovWatch' => array( 'PovVolglijst' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'PovWatch' => array( 'पक्षवृत्तीनिरिक्षा' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'PovWatch' => array( 'Povövervakning' ),

@@ -149,6 +149,11 @@ $aliases['ps'] = array(
 	'ImportUsers' => array( 'کارونکي واردول' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ImportUsers' => array( 'आयातयोजक:' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ImportUsers' => array( 'Importera användare' ),

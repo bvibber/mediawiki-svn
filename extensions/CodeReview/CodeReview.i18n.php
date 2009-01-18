@@ -759,6 +759,32 @@ $4',
 	'specialpages-group-developer' => 'Razvojni alati',
 );
 
+/** Catalan (Català)
+ * @author Loupeter
+ */
+$messages['ca'] = array(
+	'code-comments' => 'Comentaris',
+	'code-change-added' => 'afegit:',
+	'code-notes' => 'comentaris recents',
+	'code-authors' => 'autors',
+	'code-author-name' => "Indiqueu un nom d'usuari:",
+	'code-field-id' => 'Revisió',
+	'code-field-author' => 'Autor',
+	'code-field-timestamp' => 'Data',
+	'code-field-comments' => 'Notes',
+	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Data:',
+	'code-rev-message' => 'Comentari:',
+	'code-rev-rev' => 'Revisió:',
+	'code-rev-modified-a' => 'afegit',
+	'code-rev-modified-d' => 'esborrat',
+	'code-status-new' => 'nou',
+	'code-status-ok' => "d'acord",
+	'code-rev-submit' => 'Desar canvis',
+	'repoadmin-new-button' => 'Crear',
+	'specialpages-group-developer' => 'Eines de desenvolupador',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Matěj Grabovský

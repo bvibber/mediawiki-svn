@@ -95,6 +95,20 @@ $aliases['no'] = array(
 	'MediaSearch' => array( 'Mediesøk' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'MediaSearch' => array( 'मिडीयाशोध' ),
+	'Mv_Add_Stream' => array( 'मेवि_वृद्धी_प्रवाह' ),
+	'MVAdmin' => array( 'मेविपचालक' ),
+	'MvExportAsk' => array( 'मेविनिर्यातविनन्ती' ),
+	'MvExportSearch' => array( 'मेविनिर्यातशोध' ),
+	'MvExportSequence' => array( 'मेविनिर्यातअनुक्रम' ),
+	'MvExportStream' => array( 'मेविनिर्यातप्रवाह' ),
+	'Mv_List_Streams' => array( 'मेवि_सूची_प्रवाह' ),
+	'MV_SpecialSearch' => array( 'मेवि_विशेषशोध' ),
+	'MvVideoFeed' => array( 'मेविचलछायाप्रविष्टी' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'MediaSearch' => array( 'Mediasökning' ),

@@ -43,6 +43,11 @@ $aliases['fa'] = array(
 	'Watchers' => array( 'پی‌گیری‌کنندگان' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'Watchers' => array( 'Vixilantes' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Watchers' => array( 'Beobachter' ),
@@ -93,6 +98,16 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'Watchers' => array( 'Overvåkere' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'Watchers' => array( 'کتونکي' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Watchers' => array( 'पश्यक्‌' ),
 );
 
 /** Swahili (Kiswahili) */

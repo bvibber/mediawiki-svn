@@ -381,6 +381,15 @@ $messages['ps'] = array(
 	'emergencydesysop-nogroups' => 'هېڅ',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'emergencydesysop-submit' => 'Submeter',
+	'emergencydesysop-nogroups' => 'Nenhum',
+	'emergencydesysop-invalidtarget' => 'O utilizador alvo não existe.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

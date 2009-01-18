@@ -474,6 +474,13 @@ $messages['lv'] = array(
 	'intersection_toofewcats' => 'Kļūda: pārāk maz kategoriju!',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'intersection_toomanycats' => 'DynamicPageList : Be laotra ny sokajy',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

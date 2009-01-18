@@ -21,14 +21,29 @@ $aliases['bs'] = array(
 	'EmergencyDeSysop' => array( 'HitnoUklanjanjeSysopa' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'EmergencyDeSysop' => array( 'Notfall-Administratorrechtentzug' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'EmergencyDeSysop' => array( 'DesysopageUrgent', 'DésysopageUrgent', 'DéSysopageUrgent', 'DeSysopageUrgent' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'EmergencyDeSysop' => array( 'Emerxencia de administrador' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'EmergencyDeSysop' => array( 'Vészhelyzeti adminisztrátori jog elvonás' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'EmergencyDeSysop' => array( '緊急管理者解任' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -44,5 +59,10 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'EmergencyDeSysop' => array( 'NoodgreepBeheerdersrechtenVerwijderen' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'EmergencyDeSysop' => array( 'आपत्कालप्रचालकनिष्कासन' ),
 );
 

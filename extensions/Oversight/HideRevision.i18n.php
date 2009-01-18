@@ -434,13 +434,18 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Abdullah Harun Jewel
  * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
 	'hiderevision' => 'স্থায়ীভাবে সংশোধনগুলি লুকিয়ে রাখা হোক',
 	'hiderevision-desc' => 'আইনগত কারণ, ইতাদির জন্য ব্যক্তিগত সংশোধনগুলি সব ব্যবহারকারীর কাছ থেকে আড়াল করা হোক।',
+	'group-oversight' => 'গোপন পর্যবেক্ষকবৃন্দ',
+	'group-oversight-member' => 'গোপন পর্যবেক্ষক',
 	'right-oversight' => 'পূর্ববর্তী লুকায়িত পর্যালোচনা দেখাও',
+	'right-hiderevision' => 'নজরদারী
+পূন:নিরীক্ষা এবং প্রাক-নিরীক্ষা পর্যায়ে নীত করা যা প্রশাসকদের নিকট গোপন থাকে।',
 	'hiderevision-prompt' => 'যে সংশোধনটি সরিয়ে নিতে হবে তার ক্রমসংখ্যা:',
 	'hiderevision-continue' => 'অগ্রসর হোন',
 	'hiderevision-text' => "এটি '''শুধুমাত্র''' নিচের ক্ষেত্রগুলিতে ব্যবহার করা যাবে:
@@ -453,6 +458,7 @@ $messages['bn'] = array(
 	'hiderevision-reason' => 'কারণ (গোপনে লগ করা হবে):',
 	'hiderevision-submit' => 'এই উপাত্ত স্থায়ীভাবে লুকানো হোক',
 	'hiderevision-tab' => 'সংশোধন লুকানো হোক',
+	'hiderevision-link' => 'ব্যবহারকারীর গোপন অবদান',
 	'hiderevision-norevisions' => 'মুছে ফেলার জন্য কোন সংশোধন নির্দিষ্ট করা হয়নি।',
 	'hiderevision-noreason' => 'অবশ্যই আপনাকে মুছে ফেলার কারণ বর্ণনা করতে হবে।',
 	'hiderevision-status' => 'সংশোধন $1: $2',
@@ -467,6 +473,12 @@ $messages['bn'] = array(
 	'oversight-difference' => '(পূর্ববর্তী বাকী পোর্যালোচনা থেকে ভিন্ন)',
 	'oversight-prev' => 'সর্বশেষ পূর্ববর্তী পর্যালোচনা',
 	'oversight-hidden' => 'লুকায়িত সংশোধন',
+	'oversight-header' => 'গোপন নজরদারী
+নিম্নে পূন:নিরীক্ষণের একটি তালিকা দেয়া আছে যা সাধারনের নিকট সুপ্ত রাখা হয়েছে।
+এ তথ্যের প্রকাশ করা গোপন নজরদারী সুবিধার অপব্যবহারের এবং এটা এ সুবিধার স্থায়ী ক্ষতি করবে।',
+	'oversight-legend' => 'গোপন পূন নিরীক্ষা অনুসন্ধান লগ',
+	'oversight-oversighter' => 'গোপন পর্যবেক্ষকদৃন্দ
+গোপন পর্যবেক্ষক হলো ব্্যবহারকারী যার গোপন পূন নিরীক্ষা আছে।',
 );
 
 /** Breton (Brezhoneg)

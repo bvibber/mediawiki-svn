@@ -52,6 +52,11 @@ $aliases['fr'] = array(
 	'SpecialUserStats' => array( 'StatistiquesUtilisateur' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'SpecialUserStats' => array( 'Estatísticas do usuario' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'SpecialUserStats' => array( 'Benutzerstatischtik' ),
@@ -102,6 +107,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'SpecialUserStats' => array( 'Brukerstatistikk' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'SpecialUserStats' => array( 'सदस्यसांख्यिकी' ),
 );
 
 /** Swedish (Svenska) */

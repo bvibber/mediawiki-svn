@@ -37,3 +37,20 @@ $aliases['arz'] = array(
 	'OpenIDXRDS' => array( 'إكسردس_الهوية_المفتوحة' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'OpenIDLogin' => array( 'OpenIDログイン' ),
+	'OpenIDFinish' => array( 'OpenID完了' ),
+	'OpenIDConvert' => array( 'OpenID変換' ),
+	'OpenIDServer' => array( 'OpenIDサーバー' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'OpenIDLogin' => array( 'उद्घटपरिचयपत्रप्रवेश' ),
+	'OpenIDFinish' => array( 'उद्घटपरिचयपत्रसमापयति' ),
+	'OpenIDConvert' => array( 'उद्घटपरिचयपत्रांतर' ),
+	'OpenIDServer' => array( 'उद्घटपरिचयपत्रविदादाता' ),
+	'OpenIDXRDS' => array( 'उद्घटपरिचयपत्रXRDS' ),
+);
+

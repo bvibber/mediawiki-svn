@@ -676,11 +676,17 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'slippymap_desc' => 'Permite o uso da marca <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para apresentar um mapa corrediço OpenLayers. Os mapas provêm de [http://openstreetmap.org openstreetmap.org]',
 	'slippymap_latmissing' => 'Faltando o valor lat (para a latitude).',
 	'slippymap_lonmissing' => 'Faltando o valor lon (para a longitude).',
 	'slippymap_zoommissing' => 'Falta valor z (para o nível de zoom).',
+	'slippymap_longdepreciated' => "Por favor, use 'lon' em vez de 'long' (o parâmetro foi renomeado).",
 	'slippymap_zoombig' => 'O valor de zoom (z) não pode ser maior que 17.',
+	'slippymap_invalidlayer' => "Valor '%1' inválido para 'layer'",
 	'slippymap_maperror' => 'Erro no mapa:',
+	'slippymap_osmtext' => 'Veja este mapa em OpenStreetMap.org',
+	'slippymap_code' => 'Código wiki para esta vista do mapa:',
+	'slippymap_button_code' => 'Buscar código wiki',
 	'slippymap_resetview' => 'Repor vista',
 );
 

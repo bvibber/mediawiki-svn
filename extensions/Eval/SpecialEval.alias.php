@@ -65,6 +65,11 @@ $aliases['ht'] = array(
 	'Eval' => array( 'Evalye' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Eval' => array( '評価', 'PHPコードとして評価' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Eval' => array( 'Bewertung' ),
@@ -93,5 +98,10 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'Eval' => array( 'Evaluar' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Eval' => array( 'ईवाल्‌' ),
 );
 

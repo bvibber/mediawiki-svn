@@ -57,6 +57,11 @@ $aliases['fr'] = array(
 	'WhiteListEdit' => array( 'ModifierListeBlanche' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'WhiteList' => array( 'Lista branca', 'Listaxe branca' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'WhiteList' => array( 'Wyssi Lischte' ),
@@ -113,5 +118,11 @@ $aliases['nl'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'WhiteList' => array( 'Tièra blanca', 'Tièrablanca' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'WhiteList' => array( 'धवलसूची' ),
+	'WhiteListEdit' => array( 'धवलसूचीसम्पादनम्‌' ),
 );
 

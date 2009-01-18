@@ -669,9 +669,11 @@ $wgGoogleMapsMessages['da'] = array(
  * @author Purodha
  * @author Raimond Spekking
  * @author Revolus
+ * @author Umherirrender
  * @author [[mw:User:Helge.at]]
  */
 $wgGoogleMapsMessages['de'] = array(
+	'gm-desc' => 'Einfaches erstellen von Karten mit wikifizierten Markierungen',
 	'gm-incompatible-browser' => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchst du einen kompatiblen Browser.',
 	'gm-incompatible-browser-link' => 'Klicke hier für eine Liste kompatibler Browser.',
 	'gm-no-editor' => 'Leider unterstützt dein Browser den interaktiven Karten-Editor nicht. Versuche es mit der neuesten Version von <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
@@ -768,6 +770,7 @@ $wgGoogleMapsMessages['diq'] = array(
  * @author Michawiki
  */
 $wgGoogleMapsMessages['dsb'] = array(
+	'gm-desc' => 'Kórty z wikificěrowanymi markami lažko napóraś',
 	'gm-incompatible-browser' => 'Aby wiźeł kórtu, kótaraž ma se how zwobrazniś, trjebaš kompatibelny webwobglědowak.',
 	'gm-incompatible-browser-link' => 'Klikni sem, aby wiźeł lisćinu kompatibelnych wobglědowakow.',
 	'gm-no-editor' => 'Bóžko twój wobglědowak njepódpěra funkcije interaktiwnego napóranja kórtow. Ześěgni aktualnu wersiju <a href="http://www.microsoft.com/ie">Internet Explorera</a> (Windows) abo <a href="http://www.mozilla.org/products/firefox">Firefoxa</a> (Windows, Mac a Linux).',
@@ -1411,6 +1414,7 @@ $wgGoogleMapsMessages['ga'] = array(
  * @author Xosé
  */
 $wgGoogleMapsMessages['gl'] = array(
+	'gm-desc' => 'Creación sinxela de mapas con marcadores wikificados',
 	'gm-incompatible-browser' => 'Para poder ver o mapa que iría neste espazo ha de utilizar un navegador web compatíbel.',
 	'gm-incompatible-browser-link' => 'Faga clic aquí para ver unha listaxe dos navegadores compatibles.',
 	'gm-no-editor' => 'Desafortunadamente, o seu navegador non soporta o característica interactiva map-making.
@@ -1768,6 +1772,7 @@ $wgGoogleMapsMessages['hr'] = array(
  * @author Michawiki
  */
 $wgGoogleMapsMessages['hsb'] = array(
+	'gm-desc' => 'Mapy z wikificěrowanymi markami lochko wutworić',
 	'gm-incompatible-browser' => 'Zo by mapu widźał, kotraž ma so tu zwobrazniła, trjebaš kompatibelny wobhladowak.',
 	'gm-incompatible-browser-link' => 'Klikń tu za lisćinu kompatibelnych wobhladowakow.',
 	'gm-no-editor' => 'Bohužel twój wobhladowak interaktiwne funkcije za wutworjenje mapow njepodpěruje. Spytaj najnowšu wersiju <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Makintoš a Linuks) abo <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
@@ -2152,6 +2157,7 @@ $wgGoogleMapsMessages['it'] = array(
  * @author Hosiryuhosi
  */
 $wgGoogleMapsMessages['ja'] = array(
+	'gm-desc' => '標識にウィキリンクのついた地図を簡単に作成する',
 	'gm-incompatible-browser' => 'ここに表示される地図を確認するためには、互換性のあるウェブブラウザを利用する必要があります。',
 	'gm-incompatible-browser-link' => '互換性のあるブラウザの一覧を確認するには、ここをクリックしてください。',
 	'gm-no-editor' => '残念ですが、あなたのブラウザは対話的な地図作成機能に対応していません。<a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) か <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows、Mac、Linux) の最新バージョンを試してください。',
@@ -2539,6 +2545,13 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Lingua Franca Nova (Lingua Franca Nova)
+ * @author Malafaya
+ */
+$wgGoogleMapsMessages['lfn'] = array(
+	'gm-search' => 'Xerca',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Hugo.arg
  */
@@ -2824,8 +2837,10 @@ $wgGoogleMapsMessages['nah'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $wgGoogleMapsMessages['nl'] = array(
+	'gm-desc' => 'Gemakkelijk kaarten maken met gewikificeerde markeringen',
 	'gm-incompatible-browser' => 'Om deze kaart te bekijken dient u gebruik te maken van een <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">geschikte browser</a>.',
 	'gm-incompatible-browser-link' => 'Klik hier voor een lijst met compatibele browsers.',
 	'gm-no-editor' => 'Helaas ondersteunt uw browser het interactief maken van kaarten niet. Probeer het eens met de nieuwste versie van <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Mac, Linux en Windows) of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
@@ -3314,6 +3329,7 @@ $wgGoogleMapsMessages['ps'] = array(
  * @author Malafaya
  */
 $wgGoogleMapsMessages['pt'] = array(
+	'gm-desc' => 'Crie mapas facilmente com marcadores wikificados',
 	'gm-incompatible-browser' => 'Para ver o mapa que ocuparia este espaço, precisa de usar um "web browser" compatível.',
 	'gm-incompatible-browser-link' => 'Carregue aqui para ver uma lista de navegadores compatíveis.',
 	'gm-no-editor' => 'Infelizmente, o seu navegador não suporta as funcionalidades interactivas de criação de mapas.
@@ -3613,6 +3629,7 @@ $wgGoogleMapsMessages['si'] = array(
  * @author Helix84
  */
 $wgGoogleMapsMessages['sk'] = array(
+	'gm-desc' => 'Jednoduchá tvorba máp s wiki značením',
 	'gm-incompatible-browser' => 'Aby ste mohli vidieť mapu, ktorá patrí do tejto oblasti, museli by ste použiť <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibilný webový prehliadač</a>.',
 	'gm-incompatible-browser-link' => 'Kliknutím sem zobrazíte zoznam kompatibilných prehliadačov.',
 	'gm-no-editor' => 'Nanešťastie váš webový prehliadač nepodporuje interaktívne možnosti tvorby máp. Skúste najnovšiu verziu prehliadača <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) alebo <a href="http://www.mozilla.org/products/firefox">Mozilla Firefox</a> (Windows, Mac a Linux).',

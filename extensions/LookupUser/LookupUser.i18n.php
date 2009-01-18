@@ -762,6 +762,7 @@ $messages['nn'] = array(
 	'lookupuser-touched' => 'Innstillingar sist endra: $1',
 	'lookupuser-info-authenticated' => 'E-postverifisering: $1',
 	'lookupuser-useroptions' => 'Brukarval:',
+	'right-lookupuser' => 'Sjå brukarinnstillingar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

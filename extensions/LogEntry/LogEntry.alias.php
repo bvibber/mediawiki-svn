@@ -50,6 +50,11 @@ $aliases['hu'] = array(
 	'LogEntry' => array( 'Naplóbejegyzés' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'LogEntry' => array( 'ログ項目' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'LogEntry' => array( 'ЗаписВоДневник' ),
@@ -58,5 +63,10 @@ $aliases['mk'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'LogEntry' => array( 'अंकनप्रविष्टि' ),
 );
 

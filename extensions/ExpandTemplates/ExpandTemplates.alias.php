@@ -159,6 +159,11 @@ $aliases['ps'] = array(
 	'ExpandTemplates' => array( 'کينډۍ غځول' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ExpandTemplates' => array( 'बिंबधरविस्तारकरोसि' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ExpandTemplates' => array( 'Utöka mallar' ),

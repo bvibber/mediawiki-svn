@@ -150,6 +150,11 @@ $aliases['ro'] = array(
 	'Invitations' => array( 'Invitaţii' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Invitations' => array( 'आमन्त्रण' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Invitations' => array( 'Inbjudningar' ),
@@ -158,5 +163,10 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Invitations' => array( 'Mihaliko' ),
+);
+
+/** Telugu (తెలుగు) */
+$aliases['te'] = array(
+	'Invitations' => array( 'ఆహ్వానాలు' ),
 );
 

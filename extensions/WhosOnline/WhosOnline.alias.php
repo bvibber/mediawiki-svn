@@ -54,6 +54,11 @@ $aliases['fr'] = array(
 	'WhosOnline' => array( 'Qui est en ligne', 'QuiEstEnLigne' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'WhosOnline' => array( 'Quen está en liña' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'WhosOnline' => array( 'Wär isch online?' ),

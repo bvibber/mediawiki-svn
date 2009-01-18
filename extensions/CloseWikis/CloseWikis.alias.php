@@ -92,6 +92,11 @@ $aliases['no'] = array(
 	'CloseWiki' => array( 'Steng wiki' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'CloseWiki' => array( 'वृविकि' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'CloseWiki' => array( 'FungaWiki' ),

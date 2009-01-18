@@ -259,13 +259,6 @@ $messages['eo'] = array(
 	'right-refreshspecial' => 'Refreŝigi specialajn paĝojn',
 );
 
-/** Spanish (Español)
- * @author Imre
- */
-$messages['es'] = array(
-	'refreshspecial-here' => '<b>aquí</b>',
-);
-
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix
@@ -557,13 +550,6 @@ Opgepasst: op méi grousse Wikien kann d'Aktualisatioun eng Zäit daueren.",
 	'refreshspecial-reconnected' => 'Nees verbonn',
 	'refreshspecial-reconnecting' => "D'Verbindung koum net zustan, nei Verbindung an 10 Sekonnen ...",
 	'refreshspecial-total-display' => "$1 {{PLURAL:$1|Säit|Säiten}} aktuliséiert mat am Ganzen $2 {{PLURAL:$2|Rei|Reien}} an $3 (Dauer) (d'Gesamtzäit déi de Script gebraucht huet ass $4)",
-);
-
-/** Erzya (Эрзянь)
- * @author Botuzhaleny-sodamo
- */
-$messages['myv'] = array(
-	'refreshspecial-here' => '<b>тесэ</b>',
 );
 
 /** Dutch (Nederlands)

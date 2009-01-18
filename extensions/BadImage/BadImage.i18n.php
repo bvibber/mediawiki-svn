@@ -698,7 +698,7 @@ $messages['gl'] = array(
 	'badimages-page' => '{{ns:help}}:Listaxe de imaxes con fallas',
 );
 
-/** Gothic (𐌲𐌿𐍄𐌹𐍃𐌺)
+/** Gothic
  * @author Jocke Pirat
  */
 $messages['got'] = array(

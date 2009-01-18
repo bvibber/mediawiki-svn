@@ -57,6 +57,11 @@ $aliases['no'] = array(
 	'Player' => array( 'Medieavspiller' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Player' => array( 'खेळाडू' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Player' => array( 'Spelare' ),

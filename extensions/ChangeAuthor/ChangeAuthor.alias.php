@@ -47,6 +47,11 @@ $aliases['fr'] = array(
 	'ChangeAuthor' => array( 'Changer auteur', 'ChangerAuteur' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'ChangeAuthor' => array( 'Cambiar o autor' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ChangeAuthor' => array( 'Autor ändere' ),
@@ -120,6 +125,11 @@ $aliases['oc'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ChangeAuthor' => array( 'Zmiana autora' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ChangeAuthor' => array( 'सम्पादकपरिवर्तयति' ),
 );
 
 /** Albanian (Shqip) */

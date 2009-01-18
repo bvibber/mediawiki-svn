@@ -84,6 +84,11 @@ $aliases['id'] = array(
 	'Vote' => array( 'Beri suara' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Vote' => array( '投票' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Vote' => array( 'បោះឆ្នោត' ),
@@ -124,6 +129,11 @@ $aliases['oc'] = array(
 	'Vote' => array( 'Votar' ),
 );
 
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'Vote' => array( 'رايه ورکول', 'Vote' ),
+);
+
 /** Romanian (Română) */
 $aliases['ro'] = array(
 	'Vote' => array( 'Votează' ),
@@ -132,6 +142,11 @@ $aliases['ro'] = array(
 /** Tarandíne (Tarandíne) */
 $aliases['roa-tara'] = array(
 	'Vote' => array( 'Vote' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Vote' => array( 'मत' ),
 );
 
 /** Albanian (Shqip) */

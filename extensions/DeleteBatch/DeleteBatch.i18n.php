@@ -133,6 +133,13 @@ $messages['arz'] = array(
 	'right-deletebatch' => 'حذف باتش الصفحات',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'deletebatch-button' => 'Выдаліць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -500,7 +507,6 @@ $messages['hu'] = array(
 	'deletebatch' => 'Lapok tömeges törlése',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Lapok tömeges törlése]]',
 	'deletebatch-button' => 'Törlés',
-	'deletebatch-here' => '<b>itt</b>',
 	'deletebatch-help' => 'Törölhetsz egyetlen lapot, vagy egy fájlban listázottakat.
 Válaszd ki a felhasználói nevet, ami meg fog jelenni a törlési naplóban.
 A feltöltött fájl minden sora tartalmazhat „|” karakterrel elválasztva egy törlési okot.',
@@ -685,7 +691,6 @@ $messages['mhr'] = array(
  */
 $messages['myv'] = array(
 	'deletebatch-button' => 'Нардамс',
-	'deletebatch-here' => '<b>тесэ</b>',
 	'deletebatch-or' => '<b>эли</b>',
 );
 
@@ -927,7 +932,6 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'deletebatch-button' => 'Удалить',
-	'deletebatch-here' => '<b>здесь</b>',
 	'deletebatch-caption' => 'Список страниц',
 	'deletebatch-as' => 'Пустить скрипт как',
 	'deletebatch-both-modes' => 'Пожалуйста, выберите одну страницу или список страниц.',
@@ -1011,7 +1015,6 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
  */
 $messages['te'] = array(
 	'deletebatch-button' => 'తొలగించు',
-	'deletebatch-here' => '<b>ఇక్కడ</b>',
 	'deletebatch-caption' => 'పేజీల జాబితా',
 	'deletebatch-or' => '<b>లేదా</b>',
 	'deletebatch-page' => 'తొలగించాల్సిన పేజీలు',

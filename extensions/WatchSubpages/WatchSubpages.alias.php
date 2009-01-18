@@ -44,6 +44,11 @@ $aliases['fr'] = array(
 	'WatchSubpages' => array( 'VoirSousPages' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'WatchSubpages' => array( 'Vixiar as subpáxinas' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'WatchSubpages' => array( 'Untersyte beobachte' ),
@@ -62,6 +67,11 @@ $aliases['hsb'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'WatchSubpages' => array( 'Aloldalak figyelése' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'WatchSubpages' => array( 'サブページのウォッチ' ),
 );
 
 /** Ripoarisch (Ripoarisch) */
@@ -87,6 +97,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'WatchSubpages' => array( 'Overvåk undersider' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'WatchSubpages' => array( 'उपपृष्ठनिरीक्षा' ),
 );
 
 /** Swahili (Kiswahili) */

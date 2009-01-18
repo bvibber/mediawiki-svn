@@ -32,6 +32,11 @@ $aliases['bs'] = array(
 	'DeleteQueue' => array( 'RedZaBrisanje' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'DeleteQueue' => array( 'Löschliste' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'DeleteQueue' => array( 'Poistojono' ),
@@ -65,6 +70,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'DeleteQueue' => array( 'Slettingskø' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'DeleteQueue' => array( 'अनुपङ्क्तिपरित्याग' ),
 );
 
 /** Swedish (Svenska) */

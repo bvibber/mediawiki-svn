@@ -39,3 +39,8 @@ $aliases['no'] = array(
 	'ProfileMonitor' => array( 'Profilmonitor' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ProfileMonitor' => array( 'व्यक्तिविवरणावेक्षते' ),
+);
+

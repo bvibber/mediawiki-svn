@@ -52,6 +52,11 @@ $aliases['fr'] = array(
 	'Contributors' => array( 'Contributeurs' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'Contributors' => array( 'Contribuíntes' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Contributors' => array( 'Autore' ),
@@ -135,6 +140,11 @@ $aliases['pt-br'] = array(
 /** Romanian (Română) */
 $aliases['ro'] = array(
 	'Contributors' => array( 'Contribuitori' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Contributors' => array( 'योगदाता' ),
 );
 
 /** Swahili (Kiswahili) */

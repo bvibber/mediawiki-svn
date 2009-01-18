@@ -47,6 +47,11 @@ $aliases['hu'] = array(
 	'ChemicalSources' => array( 'Vegyszer források' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ChemicalSources' => array( '化学関連の検索' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ChemicalSources' => array( 'Chemisch Quellen' ),
@@ -75,5 +80,10 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ChemicalSources' => array( 'Kjemiske kilder' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'ChemicalSources' => array( 'रसायनस्रोत' ),
 );
 

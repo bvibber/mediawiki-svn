@@ -86,7 +86,7 @@ $aliases['km'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'Code' => array( 'Code' ),
+	'Code' => array( 'Quelltext' ),
 );
 
 /** Macedonian (Македонски) */
@@ -114,6 +114,12 @@ $aliases['no'] = array(
 $aliases['pl'] = array(
 	'Code' => array( 'Kod' ),
 	'RepoAdmin' => array( 'Administrowanie repozytorium' ),
+);
+
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'Code' => array( 'संकूटसङ्केतावलोकन' ),
+	'RepoAdmin' => array( 'रेपोप्रचालक' ),
 );
 
 /** Swahili (Kiswahili) */

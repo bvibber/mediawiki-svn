@@ -103,10 +103,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Sanbec
  */
 $messages['es'] = array(
 	'seealso' => 'Véase también',
+	'seealso-desc' => "Traducidos 'See also' encabezados usando la etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Basque (Euskara)

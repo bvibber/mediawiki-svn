@@ -290,9 +290,10 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
-	'advancedrandom' => 'Willekeurige pazjena (geavanceerdj)',
+	'advancedrandom' => 'Willekäörige pagina (geavanceerd)',
 	'advancedrandom-desc' => "Vraog 'n willekeurige euverlekpagina of pagina oet de hoofnaamruumte op die verwies nao 'n opgegaeve pagina.
 Kan gebroek waere es [[Special:AdvancedRandom/Template:Featured/Talk]] om 'n willekeurig etalage-artikel weer te gaeve of es [[Special:AdvancedRandom/Template:GFDL/Image]] om 'n willekeurig GFDL gelicenseerd bestandj weer te gaeve",
 );

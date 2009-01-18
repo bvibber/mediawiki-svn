@@ -110,22 +110,14 @@ $messages['niu'] = array(
 	'regexblock-view-go' => 'Fano',
 );
 
-/** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
- * @author Deepak D'Souza
- */
-$messages['gom-latn'] = array(
-	'regexblock-stats-username' => '$1 kahtir',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
  * @author SPQRobin
  */
 $messages['af'] = array(
-	'regexblock-form-reason' => 'Rede:',
 	'regexblock-already-blocked' => '$1 is reeds geblok.',
-	'regexblock-stats-username' => 'Vir $1',
+	'regexblock-form-reason' => 'Rede:',
 	'regexblock-view-all' => 'Alles',
 	'regexblock-view-go' => 'Gaan',
 	'regexblock-view-reason' => 'rede: $1',
@@ -144,8 +136,8 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'regexblock-form-reason' => 'Razón:',
 	'regexblock-already-blocked' => '$1 ya yera bloqueyato.',
+	'regexblock-form-reason' => 'Razón:',
 );
 
 /** Arabic (العربية)
@@ -350,7 +342,6 @@ $messages['cy'] = array(
  */
 $messages['da'] = array(
 	'regexblock-form-reason' => 'Begrundelse:',
-	'regexblock-stats-username' => 'For $1',
 );
 
 /** German (Deutsch)
@@ -436,7 +427,6 @@ Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, $1',
  */
 $messages['el'] = array(
 	'regexblock-form-reason' => 'Λόγος:',
-	'regexblock-stats-username' => 'Για $1',
 	'regexblock-view-reason' => 'Λόγος: $1',
 );
 
@@ -444,19 +434,17 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'regexblock-unblock-success' => 'Malforbaro sukcesis',
-	'regexblock-unblock-log' => "Salutnomo aŭ IP-adreso '''$1''' estis restarigita.",
-	'regexblock-unblock-error' => 'Eraro malforbarante $1.
-Verŝajne ne estas uzanto kun tiu nomo.',
+	'regexblock-already-blocked' => '$1 jam estas forbarita.',
+	'regexblock-block-success' => 'Forbaro sukcesis',
+	'regexblock-currently-blocked' => 'Nune forbaritaj adresoj:',
 	'regexblock-form-username' => 'IP Adreso aŭ salutnomo:',
 	'regexblock-form-reason' => 'Kialo:',
 	'regexblock-form-expiry' => 'Findato:',
 	'regexblock-form-submit' => 'Forbari ĉi tiun uzanton',
-	'regexblock-block-success' => 'Forbaro sukcesis',
-	'regexblock-already-blocked' => '$1 jam estas forbarita.',
-	'regexblock-stats-username' => 'Por $1',
-	'regexblock-stats-times' => 'estis forbarita je',
-	'regexblock-currently-blocked' => 'Nune forbaritaj adresoj:',
+	'regexblock-unblock-success' => 'Malforbaro sukcesis',
+	'regexblock-unblock-log' => "Salutnomo aŭ IP-adreso '''$1''' estis restarigita.",
+	'regexblock-unblock-error' => 'Eraro malforbarante $1.
+Verŝajne ne estas uzanto kun tiu nomo.',
 	'regexblock-view-all' => 'Ĉiuj',
 	'regexblock-view-go' => 'Ek!',
 	'regexblock-view-reason' => 'kialo: $1',
@@ -473,7 +461,6 @@ Verŝajne ne estas uzanto kun tiu nomo.',
  */
 $messages['es'] = array(
 	'regexblock-form-reason' => 'Motivo:',
-	'regexblock-stats-username' => 'Por $1',
 	'regexblock-view-all' => 'Todos',
 	'regexblock-view-go' => 'Ir',
 	'regexblock-view-reason' => 'Motivo: $1',
@@ -539,8 +526,8 @@ $messages['fr'] = array(
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'regexblock-form-expiry' => 'Ferrint nei:',
 	'regexblock-already-blocked' => '$1 is al útsluten.',
+	'regexblock-form-expiry' => 'Ferrint nei:',
 	'regexblock-view-all' => 'Alles',
 );
 
@@ -613,7 +600,6 @@ $messages['got'] = array(
  */
 $messages['grc'] = array(
 	'regexblock-form-reason' => 'Αἰτία:',
-	'regexblock-stats-username' => 'Διὰ τὸ $1',
 	'regexblock-view-all' => 'ἅπασαι',
 	'regexblock-view-go' => 'Ἱέναι',
 );
@@ -634,7 +620,6 @@ $messages['gv'] = array(
  */
 $messages['haw'] = array(
 	'regexblock-form-reason' => 'Kumu:',
-	'regexblock-stats-username' => 'No $1',
 );
 
 /** Hebrew (עברית)
@@ -923,9 +908,8 @@ $messages['id'] = array(
  * @author S.Örvarr.S
  */
 $messages['is'] = array(
-	'regexblock-form-reason' => 'Ástæða:',
 	'regexblock-already-blocked' => '$1 er nú þegar í banni.',
-	'regexblock-stats-username' => 'Fyrir $1',
+	'regexblock-form-reason' => 'Ástæða:',
 );
 
 /** Italian (Italiano)
@@ -990,6 +974,8 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
+	'regexblock-already-blocked' => '$1 wis diblokir',
+	'regexblock-block-log' => "Panganggo utawa alamat IP '''$1''' wis diblokir.",
 	'regexblockstats' => 'Statistik pamblokiran regex',
 	'regexblock-help' => "Nganggoa formulir ing ngisor iki kanggo mblokir aksès panulisan saka sawijining alamat IP tartamtu utawa jeneng panganggo.
 Iki nanging namung kudu dilakokaké waé kanggo menggak vandalisme, lan miturut kawicaksanan sing ana.
@@ -1000,10 +986,6 @@ Yèn ora ana alesan sing diwènèhaké, sawijining alesan umum baku bakal diengg
 	'regexblock-form-username' => 'Alamat IP utawa jeneng panganggo:',
 	'regexblock-form-reason' => 'Alesan:',
 	'regexblock-form-match' => 'Persis cocog',
-	'regexblock-block-log' => "Panganggo utawa alamat IP '''$1''' wis diblokir.",
-	'regexblock-already-blocked' => '$1 wis diblokir',
-	'regexblock-stats-username' => 'Kanggo $1',
-	'regexblock-stats-times' => 'wis diblokir ing',
 	'regexblock-view-blocked' => 'Ndeleng diblokir déning:',
 	'regexblock-view-all' => 'Kabèh',
 	'regexblock-view-go' => 'Golèk',
@@ -1029,22 +1011,19 @@ $messages['ka'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'regexblock-unblock-success' => 'បានឈប់ហាមឃាត់ដោយជោគជ័យ',
-	'regexblock-unblock-log' => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាសយដ្ឋាន IP '''$1''' បានត្រូវ​លែងរាំងខ្ទប់​។",
+	'regexblock-already-blocked' => '$1ត្រូវបានហាមឃាត់រួចហើយ។',
+	'regexblock-block-log' => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាសយដ្ឋាន IP '''$1''' បានត្រូវ រាំងខ្ទប់។",
+	'regexblock-block-success' => 'រាំងខ្ទប់ដោយជោគជ័យ',
+	'regexblock-currently-blocked' => 'អាសយដ្ឋានដែលត្រូវបានហាមឃាត់បច្ចុប្បន្ន៖',
 	'regexblock-form-username' => 'អាសយដ្ឋានIP ឬឈ្មោះអ្នកប្រើប្រាស់៖',
 	'regexblock-form-reason' => 'មូលហេតុ៖',
 	'regexblock-form-expiry' => 'ផុតកំណត់:',
 	'regexblock-form-account-block' => 'រាំងខ្ទប់​ការបង្កើត​គណនី​ថ្មី',
 	'regexblock-form-submit' => 'ហាមឃាត់អ្នកប្រើប្រាស់នេះ',
-	'regexblock-block-log' => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាសយដ្ឋាន IP '''$1''' បានត្រូវ រាំងខ្ទប់។",
-	'regexblock-block-success' => 'រាំងខ្ទប់ដោយជោគជ័យ',
 	'regexblock-form-submit-empty' => 'ផ្តល់ឈ្មោះអ្នកប្រើប្រាស់ឬអាសយដ្ឋានIPដើម្បីហាមឃាត់។',
 	'regexblock-form-submit-expiry' => 'សូម​ធ្វើការ​បញ្ជាក់​កាលបរិច្ឆេទ​ដែល​ត្រូវ​ផុតកំណត់​។',
-	'regexblock-already-blocked' => '$1ត្រូវបានហាមឃាត់រួចហើយ។',
-	'regexblock-stats-username' => 'សម្រាប់ $1',
-	'regexblock-stats-times' => 'បាន​ត្រូវ​រាំងខ្ទប់​នៅលើ',
-	'regexblock-stats-logging' => 'ឡុកអ៊ីនចូលពី​អាសយដ្ឋាន',
-	'regexblock-currently-blocked' => 'អាសយដ្ឋានដែលត្រូវបានហាមឃាត់បច្ចុប្បន្ន៖',
+	'regexblock-unblock-success' => 'បានឈប់ហាមឃាត់ដោយជោគជ័យ',
+	'regexblock-unblock-log' => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាសយដ្ឋាន IP '''$1''' បានត្រូវ​លែងរាំងខ្ទប់​។",
 	'regexblock-view-blocked' => 'មើល​ការ​រាំងខ្ទប់​ដោយ:',
 	'regexblock-view-all' => 'ទាំងអស់',
 	'regexblock-view-go' => 'ទៅ',
@@ -1077,8 +1056,6 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'regexblock-desc' => 'Määt et müjjelesch, Metmaacher  un IP-Addresse övver <i lang="en">regular expressions</i> ze sperre. Deit sperre, un hät en [[Special:Regexblock|Söndersigg]], öm de Sperre ze verwallde.',
-	'regexblock-special-desc' => 'Ander Metmaacher Sperr (övver Metmaacher ier Name, met <i lang="en">regular expressions</i>)',
-	'regexblock-stat-desc' => 'Zeish [[Special:Regexblockstats|Zahle fun Sperre]] för dä Zosatz <i lang="en">regexblock</i> zom Wiki.',
 	'regexblock-form-reason' => 'Aanlass:',
 	'regexblock-view-all' => 'All',
 	'regexblock-view-go' => 'Loß Jonn!',
@@ -1129,35 +1106,32 @@ $messages['mdf'] = array(
  */
 $messages['mhr'] = array(
 	'regexblock-form-reason' => 'Амал:',
-	'regexblock-stats-username' => '$1 лан',
 );
 
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
 $messages['ml'] = array(
+	'regexblock-already-blocked' => '$1 ഇതിനകം തന്നെ തടയപ്പെട്ടിരിക്കുന്നു.',
+	'regexblock-block-log' => "'''$1''' എന്ന ഉപയോക്തൃനാമം അല്ലെങ്കില്‍ ഐപി വിലാസം തടയപ്പെട്ടിരിക്കുന്നു.",
+	'regexblock-block-success' => 'തടയല്‍ വിജയിച്ചിരിക്കുന്നു',
+	'regexblock-currently-blocked' => 'നിലവില്‍ തടയപ്പെട്ട വിലാസങ്ങള്‍:',
 	'regexblock-reason-ip' => 'താങ്കളോ അല്ലെങ്കില്‍ മറ്റോരോ നടത്തിയ നശീകരണ പ്രവര്‍ത്തനം മൂലം താങ്കള്‍ ഇപ്പോള്‍ ഉപയോഗിക്കുന്ന ഐപി വിലാസം തിരുത്തല്‍ നടത്തുന്നതില്‍ നിന്നു തടയപ്പെട്ടിരിക്കുന്നു.
 ഇത് ഒരു പിഴവാണെന്നു താങ്കള്‍ കരുതുന്നെങ്കില്‍ ദയവായി $1',
 	'regexblock-reason-name' => 'നശീകരണ പ്രവര്‍ത്തനങ്ങള്‍ മൂലം താങ്കളുടെ ഉപയോക്തൃനാമത്തെ തിരുത്തല്‍ നടത്തുന്നതില്‍ നിന്നു തടഞ്ഞിരിക്കുന്നു. ഇത് ഒരു പിഴവാണെന്നു താങ്കള്‍ കരുതുന്നെങ്കില്‍ ദയവായി $1',
 	'regexblock-reason-regex' => 'ഈ ഉപയോക്തൃനാമത്തോടു സാമ്യമുള്ള ഉപയോക്താവിന്റെ നശീകരണ പ്രവര്‍ത്തനങ്ങള്‍ മൂലം ഈ ഉപയോക്തൃനാമത്തെ തിരുത്തല്‍ നടത്തുന്നതില്‍ നിന്നു തടഞ്ഞിരിക്കുന്നു. 
 ഒന്നുകില്‍ പുതിയൊരു ഉപയോക്തൃനാമം ഉണ്ടാക്കുക അല്ലെങ്കില്‍ ഈ പ്രശ്നത്തെക്കുറിച്ച് $1',
-	'regexblock-unblock-success' => 'സ്വതന്ത്രമാക്കല്‍ വിജയിച്ചിരിക്കുന്നു',
-	'regexblock-unblock-log' => "'''$1''' എന്ന ഉപയോക്തൃനാമം അല്ലെങ്കില്‍ ഐപിവിലാസം സ്വതന്ത്രമാക്കിയിരിക്കുന്നു.",
-	'regexblock-unblock-error' => '$1നെ സ്വതന്ത്രമാക്കുന്നതില്‍ പിശക്. അങ്ങനെയൊരു ഉപയോക്താവ് നിലവിലില്ലായിരിക്കും എന്നതാവും കാരണം.',
 	'regexblock-form-username' => 'ഐപി വിലാസം അല്ലെങ്കില്‍ ഉപയോക്തൃനാമം:',
 	'regexblock-form-reason' => 'കാരണം:',
 	'regexblock-form-expiry' => 'കാലാവധി:',
 	'regexblock-form-match' => 'കൃത്യമായി യോജിക്കുന്നവ',
 	'regexblock-form-account-block' => 'പുതിയ അക്കൗണ്ടുകള്‍ സൃഷ്ടിക്കുന്നതു തടയുക',
 	'regexblock-form-submit' => ' ഈ  ഉപയോക്താവിനെ തടയുക',
-	'regexblock-block-log' => "'''$1''' എന്ന ഉപയോക്തൃനാമം അല്ലെങ്കില്‍ ഐപി വിലാസം തടയപ്പെട്ടിരിക്കുന്നു.",
-	'regexblock-block-success' => 'തടയല്‍ വിജയിച്ചിരിക്കുന്നു',
 	'regexblock-form-submit-empty' => 'തടയുവാന്‍ വേണ്ടിയുള്ള ഉപയോക്തൃനാമമോ ഐപി വിലാസമോ ചേര്‍ക്കുക.',
 	'regexblock-form-submit-expiry' => 'ദയവായി തടയലിനു ഒരു കാലാവധി തിരഞ്ഞെടുക്കുക.',
-	'regexblock-already-blocked' => '$1 ഇതിനകം തന്നെ തടയപ്പെട്ടിരിക്കുന്നു.',
-	'regexblock-stats-username' => '$1നു വേണ്ടി',
-	'regexblock-stats-times' => 'തടയപ്പെട്ടത്',
-	'regexblock-currently-blocked' => 'നിലവില്‍ തടയപ്പെട്ട വിലാസങ്ങള്‍:',
+	'regexblock-unblock-success' => 'സ്വതന്ത്രമാക്കല്‍ വിജയിച്ചിരിക്കുന്നു',
+	'regexblock-unblock-log' => "'''$1''' എന്ന ഉപയോക്തൃനാമം അല്ലെങ്കില്‍ ഐപിവിലാസം സ്വതന്ത്രമാക്കിയിരിക്കുന്നു.",
+	'regexblock-unblock-error' => '$1നെ സ്വതന്ത്രമാക്കുന്നതില്‍ പിശക്. അങ്ങനെയൊരു ഉപയോക്താവ് നിലവിലില്ലായിരിക്കും എന്നതാവും കാരണം.',
 	'regexblock-view-all' => 'എല്ലാം',
 	'regexblock-view-go' => 'പോകൂ',
 	'regexblock-view-match' => '(കൃത്യമായി യോജിക്കുന്നവ)',
@@ -1432,12 +1406,10 @@ $messages['no'] = array(
  * @author Mohau
  */
 $messages['nso'] = array(
+	'regexblock-block-log' => "Leina la mošomiši goba IP atrese '''$1''' e thibilwe.",
 	'regexblock-form-username' => 'IP Atrese goba leina la mošomiši:',
 	'regexblock-form-reason' => 'Lebaka:',
-	'regexblock-block-log' => "Leina la mošomiši goba IP atrese '''$1''' e thibilwe.",
 	'regexblock-form-submit-empty' => 'Efa leina la mošomiši goba IP atrese go thiba.',
-	'regexblock-stats-username' => 'Ya $1',
-	'regexblock-stats-times' => 'e thibilwe ka',
 	'regexblock-view-all' => 'Kamoka',
 	'regexblock-view-go' => 'Sepela',
 	'regexblock-view-reason' => 'lebaka: $1',
@@ -1638,11 +1610,9 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'regexblock-already-blocked' => '$1 este deja blocat.',
 	'regexblock-form-username' => 'Adresă IP sau nume d utilizator:',
 	'regexblock-form-reason' => 'Motiv:',
-	'regexblock-already-blocked' => '$1 este deja blocat.',
-	'regexblock-stats-username' => 'Pentru $1',
-	'regexblock-stats-times' => 'a fost blocat la',
 	'regexblock-view-reason' => 'motiv: $1',
 	'regexblock-view-reason-default' => 'motiv generic',
 	'regexblock-view-block-temporary' => 'expiră la',
@@ -1785,8 +1755,8 @@ $messages['sr-ec'] = array(
  * @author Irwangatot
  */
 $messages['su'] = array(
-	'regexblock-form-reason' => 'Alesan:',
 	'regexblock-already-blocked' => '$1 geus dipeungpeuk.',
+	'regexblock-form-reason' => 'Alesan:',
 );
 
 /** Swedish (Svenska)
@@ -1899,7 +1869,6 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'regexblock-form-reason' => 'Motivu:',
-	'regexblock-stats-username' => 'Ba $1',
 	'regexblock-view-all' => 'Hotu',
 	'regexblock-view-go' => 'Bá',
 	'regexblock-view-reason' => 'motivu: $1',

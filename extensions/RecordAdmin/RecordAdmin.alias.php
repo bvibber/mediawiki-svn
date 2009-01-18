@@ -35,6 +35,11 @@ $aliases['nl'] = array(
 	'RecordAdmin' => array( 'Gegevensbeheer' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'RecordAdmin' => array( 'प्रचालकअङ्कन' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'RecordAdmin' => array( 'RekodizaMkabidhi' ),

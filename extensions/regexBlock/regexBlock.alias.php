@@ -25,6 +25,11 @@ $aliases['arz'] = array(
 	'RegexBlock' => array( 'منع_ريجيكس' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'RegexBlock' => array( 'Reguläre Ausrücke Sperrung' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RegexBlock' => array( '正規表現ブロック' ),
