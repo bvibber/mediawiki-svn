@@ -13,7 +13,7 @@ gMsg['rsd_box_layout'] 	= 'Box layout';
 gMsg['rsd_list_layout'] = 'List Layout';
 gMsg['rsd_results_desc']= 'Results ';
 gMsg['rsd_results_next'] = ' next ';
-gMsg['rsd_results_prev'] = ' previus ';
+gMsg['rsd_results_prev'] = ' previous ';
 gMsg['upload'] 			= 'Upload';
 
 gMsg['rsd_layout'] = 	  'Layout:';
@@ -37,7 +37,7 @@ var default_remote_search_options = {
 	'cFileNS':'Image', //what is the cannonical namespace for images 
 					  //@@todo (should be able to get that from the api in the future)
 					  
-	'enable_uploads':true // if we want to enable an uploads tab:  
+	'enable_uploads':false // if we want to enable an uploads tab:  
 }
 var remoteSearchDriver = function(initObj){
 	return this.init( initObj );
@@ -74,9 +74,9 @@ remoteSearchDriver.prototype = {
 			@local_domains : sets of domains for which the content is local   
 		*/ 		 		
 		'this_wiki':{
-			'enabled':1,
-			'checked':1,
-			'd'		:1,
+			'enabled':0,
+			'checked':0,
+			'd'		:0,
 			'title'	:'This Wiki',
 			'desc'	: '(should be updated with the proper text) maybe import from some config value',
 			'api_url': wgServer + wgScriptPath + '/api.php',
@@ -87,7 +87,7 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,
+			'd'		:1,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -145,7 +145,7 @@ remoteSearchDriver.prototype = {
 	thumb_width 		: 80,
 	image_edit_width	: 600,
 	video_edit_width	: 400,
-	insert_text_pos		: 0, 	 //insert at the start (will be overwitten by the user cursor pos) 
+	insert_text_pos		: 0, 	 //insert at the start (will be overwritten by the user cursor pos) 
 	result_display_mode : 'box', //box or list
 	
 	cUpLoader			: null,
@@ -157,7 +157,7 @@ remoteSearchDriver.prototype = {
 			if( initObj[i]){
 				this[ i ] = initObj[i];
 			}else{
-				this[ i ] =default_remote_search_options[i]; 
+				this[ i ] = default_remote_search_options[i]; 
 			}			
 		}		
 		//set up the content provider config: 
@@ -230,8 +230,8 @@ remoteSearchDriver.prototype = {
 		//close up the control container: 
 		out+='</div>';
 		//search provider tabs based on "checked" and "enabled" and "combined tab"
-		out+='<div id="rsd_results_container">';				
-		out+='</div>';							
+		out+='<div id="rsd_results_container"></div>';
+		
 		$j('#'+ this.target_id ).html( out );
 		//draw the tabs: 
 		this.drawTabs();

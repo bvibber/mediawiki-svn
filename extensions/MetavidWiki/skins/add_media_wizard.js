@@ -21,7 +21,8 @@ if(wgAction=='edit'){
 		imE.src = getAddMediaPath( 'mv_embed/images/Button_add_media.png' );
 		
 		var toolbar = document.getElementById("toolbar");
-		toolbar.appendChild(imE);	 
+		if(toolbar)
+			toolbar.appendChild(imE);	 
 		
 		addHandler( imE, 'click', function() {
 			mv_do_load_wiz();

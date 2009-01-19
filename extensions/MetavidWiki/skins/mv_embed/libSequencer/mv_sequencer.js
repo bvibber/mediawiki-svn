@@ -209,7 +209,7 @@ mvSequencer.prototype = {
 			'<div id="'+this.video_container_id+'" style="position:absolute;right:0px;top:0px;' +
 				'width:'+this.video_width+'px;height:'+this.video_height+'px;border:solid thin blue;background:#FFF;font-color:black;"/>'+
 			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
-				'left:0px;right:'+(this.video_width+10)+'px;top:0px;height:'+this.video_height+'px;border:solid thin black;"/>'+
+				'left:0px;right:'+(this.video_width+10)+'px;top:0px;height:'+(this.video_height+28)+'px;border:solid thin black;"/>'+
 			'<div id="'+this.timeline_id+'" style="position:absolute;' + 
 				'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:25px;overflow:auto;">'+
 					getMsg('loading_timeline')+ '</div>'+
@@ -308,8 +308,7 @@ mvSequencer.prototype = {
 		if(typeof mvTransLib == 'undefined'){
 			js_log('Error: missing mvTransLib');
 			return false;
-		}
-		
+		}		
 		for(var i in mvTransLib['type']){	
 			js_log('on tran type: ' + i);			
 			var base_trans_name = i;
@@ -484,7 +483,7 @@ mvSequencer.prototype = {
 					
 				}
 			});*/			
-			//also grab permisions for sending clipboard commands to the server
+			//also grab permissions for sending clipboard commands to the server
 			/*$j.ajax({
 				type:"GET",
 				url: token_url + this_seq.plObj.mTalk,

@@ -108,16 +108,24 @@ upFirefogg.prototype = {
 				if(typeof e.value == 'undefined' || e.value=='' || e.value.substr(-4) != '.ogg')
 					return alert('destination file is empty or does not end with .ogg');
 					
-				e = document.getElementById('wpUploadDescription')
-				if(typeof e.value == 'undefined' || e.value=='')
-					return alert('Description is empty');
+				e = document.getElementById('wpUploadDescription');
+				if(e){
+					if(typeof e.value == 'undefined' || e.value=='')
+						return alert('Description is empty');
+				}
+				//for commons check wpDescText1
+				e = document.getElementById('wpDescText1');
+				if(e){
+					if(typeof e.value == 'undefined' || e.value=='')
+						return alert('Description is empty');
+				}
 						
 				//display the loader:
-				e = document.getElementsByClassName('dlbox-centered')
-				e[0].style.display='block';
+				e = document.getElementById('dlbox-centered')
+				e.style.display='block';
 				
-				e = document.getElementsByClassName('dlbox-overlay')
-				e[0].style.display='block';			
+				e = document.getElementById('dlbox-overlay')
+				e.style.display='block';			
 				
 				//for some unknown reason we have to drop down the #p-search z-index:
 				e = document.getElementById('p-search');
@@ -256,6 +264,7 @@ upFirefogg.prototype = {
 		if(e) e.style.display='none';
 				
 		if( this.upload_done_action == 'redirect' ){
+			var editForm = document.getElementById( 'mw-upload-form' );
 			//restore the original form action 			
 			editForm.onsubmit = this.org_onsubmit;
 		}	

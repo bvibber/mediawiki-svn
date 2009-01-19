@@ -1,13 +1,12 @@
 /* the upload javascript 
 presently does hackery to work with Special:Upload page...
-
-WILL BE REPLACED WITH CODE TO ACCESS THE upload api 
-ONCE THAT IS READY
+will be replaced with upload API once that is ready
 */
 
 gMsg['upload-enable-converter']		= 'Enable video converter (to upload source video not yet converted to theora format)'+
+										' <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>';
+gMsg['upload-fogg_not_installed']	= 'If you want to upload video consider installing <a href="http://firefogg.org">firefogg.org</a>, '+ 
 										'<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>';
-gMsg['upload-fogg_not_installed']	= 'If you want to upload video consider installing <a href="http://firefogg.org">firefogg.org</a>, <i>more info</i>';
 gMsg['upload-in-progress']			= 'Doing Transcode & Upload (do not close this window)';
 gMsg['upload-transcoded-status']	= 'Transcoded';
 gMsg['uploaded-status']				= 'Uploaded';
@@ -44,15 +43,18 @@ mvUploader.prototype = {
 				$j.get(wgArticlePath.replace(/\$1/, 'Special:Upload'), {}, function(data){
 					//add upload.js: 
 					$j.getScript( stylepath + '/common/upload.js', function(){ 	
-						//really need "upload api"
+						//really _really_ need an "upload api"!
 						wgAjaxUploadDestCheck = true;
 						wgAjaxLicensePreview = false;
-						wgUploadAutoFill = true;			
+						wgUploadAutoFill = true;									
+						//strip out inline scripts:
 						sp = data.indexOf('<div id="content">');
-						se = data.indexOf('<!-- end content -->');			
-						if(sp!=-1 && se !=-1){											
-							$j('#'+_this.target_div).html( data.substr(sp, (se-sp) ) );
-						}							
+						se = data.indexOf('<!-- end content -->');	
+						if(sp!=-1 && se !=-1){		
+							result_data = data.substr(sp, (se-sp) ).replace('/\<script\s.*?\<\/script\>/gi',' ');
+							js_log("trying to set: " + result_data );																			
+							//$j('#'+_this.target_div).html( result_data );
+						}						
 						_this.setupFirefogg();
 					});	
 				});				
@@ -103,16 +105,21 @@ mvUploader.prototype = {
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 								getMsg('upload-enable-converter') +
 						'<span><br></p>');		
-		//add in loader dl box: 
-		$j('#mw-upload-table').before('<div id="dlbox-centered" class="dlbox-centered" >'+			
-				'<h5>' + getMsg('upload-in-progress') + '</h5>' +
-				'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
-					'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
-				'</div>' +
-				'<span id="fogg-pstatus">0%</span>' +
-				'<span id="fogg-status-transcode">' + getMsg('upload-transcoded-status') + '</span>'+  
-				'<span style="display:none" id="fogg-status-upload">' + getMsg('uploaded-status') + '</span>' +
+		//add in loader dl box: 	
+		//hard code style (since not always easy to import style sheets)
+		$j('[@name=wpUpload]').eq(0).before('<div id="dlbox-centered" class="dlbox-centered" style="display:none;'+
+				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
+				'height:50%;padding: 10px;z-index:100;top:50%;left:15%;" >'+			
+					'<h5>' + getMsg('upload-in-progress') + '</h5>' +
+					'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
+						'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
+					'</div>' +
+					'<span id="fogg-pstatus">0%</span>' +
+					'<span id="fogg-status-transcode">' + getMsg('upload-transcoded-status') + '</span>'+  
+					'<span style="display:none" id="fogg-status-upload">' + getMsg('uploaded-status') + '</span>' +
 			'</div>'+					
-			'<div class="dlbox-overlay" ></div>');						
+			'<div id="dlbox-overlay" class="dlbox-overlay" style="display:none;background:#000;cursor:wait;height:100%;'+
+						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
+						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');				
 	}
 }

@@ -13,12 +13,12 @@ gMsg['mv_insert_image_page']='Insert Into page';
 gMsg['mv_preview_insert']= 'Preview Insert';
 gMsg['mv_cancel_image_insert']='Cancel Image Insert';
 
-	gMsg['sc_fileopts']		='Clip Detail Edit';
-	gMsg['sc_inoutpoints']	='Set In-Out points';
-	gMsg['sc_panzoom']		='Pan Zoom Crop';
-	gMsg['sc_overlays']		='Overlays';
-	gMsg['sc_audio']		='Audio Control';
-	gMsg['sc_duration']		='Duration';
+gMsg['sc_fileopts']		='Clip Detail Edit';
+gMsg['sc_inoutpoints']	='Set In-Out points';
+gMsg['sc_panzoom']		='Pan Zoom Crop';
+gMsg['sc_overlays']		='Overlays';
+gMsg['sc_audio']		='Audio Control';
+gMsg['sc_duration']		='Duration';
 	
 gMsg['mv_template_properties'] = 'Template Properties';
 gMsg['mv_custom_title']	=	'Custom Title';
@@ -137,7 +137,8 @@ mvClipEdit.prototype = {
 								'<td>' + 
 									getMsg('mv_resource_page') + 
 								'</td>' +
-								'<td><a href="' + wgArticlePath.replace(/\$1/, _this.rObj.uri ) +'">'+
+								'<td><a href="' + wgArticlePath.replace(/\$1/, _this.rObj.uri ) +
+									' target="new">'+
 										_this.rObj.uri + '</a>'+
 								'</td>'+
 							'</tr>';
@@ -201,26 +202,43 @@ mvClipEdit.prototype = {
 		},
 		'duration':{
 			d:0,
-			'media':['image','template']
-			'doEdit':function(){
-				
+			'media':['image','template'],
+			'doEdit':function( _this ){
+				//do clock mouse scroll duration editor
+				$j('#sub_cliplib_ic').html('cur dur: ' + _this.rObj.dur );
 			}			
 		},
 		'inoutpoints':{
 			'd':0,
-			'media':['video']
+			'media':['video'],
+			'doEdit':function( _this ){
+				//do clock mouse scroll duration editor
+				$j('#sub_cliplib_ic').html('cur start: ' + _this.rObj.embed.start_ntp + ' end: ' + _this.rObj.embed.end_ntp );
+			}	
 		},
 		'panzoom':{
 			'd':0,
-			'media':['image','video']
+			'media':['image','video'],
+			'doEdit':function( _this ){
+				//do clock mouse scroll duration editor
+				$j('#sub_cliplib_ic').html('<h3>Set Position</h3><h3>Set Zoom</h3><h3>Set Crop</h3><h3>Set Aspect</h3>');
+			}	
 		},				
 		'overlays':{
 			'd':0,
-			'media':['image','video']
+			'media':['image','video'],
+			'doEdit':function( _this ){
+				//do clock mouse scroll duration editor
+				$j('#sub_cliplib_ic').html('<h3>Current Overlays:</h3>Add,Remove,Modify');
+			}	
 		},
 		'audio':{
 			'd':0,
-			'media':['image','video', 'template']
+			'media':['image','video', 'template'],
+			'doEdit':function( _this ){
+				//do clock mouse scroll duration editor
+				$j('#sub_cliplib_ic').html('<h3>Audio Volume:</h3>');
+			}	
 		}		
 	},	
 	doEditTypesMenu:function(){
@@ -266,7 +284,8 @@ mvClipEdit.prototype = {
 		$j('#mv_smi_' + edit_type).addClass('mv_sub_selected');		
 		
 		//do edit interface for that edit type: 
-		this.edit_types[ edit_type ].doEdit( this );
+		if( this.edit_types[ edit_type ].doEdit )
+			this.edit_types[ edit_type ].doEdit( this );
 	},
 	setUpVideoCtrl:function(){
 		js_log('setUpVideoCtrl:f');
@@ -318,16 +337,21 @@ mvClipEdit.prototype = {
 				$j('#embed_vid').get(0).stop();
 				$j('#embed_vid').get(0).play();
 			});		
-		}															
-		$j('#'+this.control_ct).append( this.getInsertControl()	);				
+		}
+		$j('#'+this.control_ct).append(	this.getInsertDesc() );
 		
-		this.applyInsertControlBindings();
+		$j('#'+this.control_ct).append(	'<b>Metavid clip inserts not yet supported</b>');					
+		//$j('#'+this.control_ct).append( this.getInsertDesc() + this.getInsertAction()	);				
+		
+		//this.applyInsertControlBindings();
 	},
-	getInsertControl:function(){
+	getInsertDesc:function(){
 		return '<h3>Inline Description</h3>' +
 				'(you can copy and paste from the transcript by clicking on the cc button below the video)<br>'+ 				
-					'<textarea style="width:300px;" id="mv_inline_img_desc" rows="4" cols="30"></textarea><br>'+
-				'<h3>Actions</h3>'+
+					'<textarea style="width:300px;" id="mv_inline_img_desc" rows="4" cols="30"></textarea><br>';
+	},
+	getInsertAction:function(){
+		return '<h3>Actions</h3>'+
 				'<input type="button" class="mv_insert_image_page" value="' + getMsg('mv_insert_image_page') + '"> '+				
 				'<input type="button" style="font-weight:bold" class="mv_preview_insert" value="' + getMsg('mv_preview_insert')+ '"> '+		
 				'<a href="#" class="mv_cancel_img_edit" title="' + getMsg('mv_cancel_image_insert')+'">' + getMsg('mv_cancel_image_insert') + '</a> ';
@@ -364,16 +388,17 @@ mvClipEdit.prototype = {
 			'<h3>Edit tools</h3>' + 				
 					'<div class="mv_edit_button mv_crop_button_base" id="mv_crop_button" alt="crop" title="'+getMsg('mv_crop')+'"/>'+
 					'<a href="#" class="mv_crop_msg">' + getMsg('mv_crop') + '</a> '+
-					'<span style="display:none" class="mv_crop_msg_load">' + getMsg('loading_txt') + '<span> '+
+					'<span style="display:none" class="mv_crop_msg_load">' + getMsg('loading_txt') + '</span> '+
 					'<a href="#" style="display:none" class="mv_apply_crop">' + getMsg('mv_apply_crop') + '</a> '+
 					'<a href="#" style="display:none" class="mv_rest_crop">' + getMsg('mv_reset_crop') + '</a> '+
-				'<br style="clear:both"><br>'+
-				
-				'<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+getMsg('mv_scale')+'"></div>'+
+				'<br style="clear:both"><br>'+				
+				/*'<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+getMsg('mv_scale')+'"></div>'+				
 				'<a href="#" class="mv_scale_msg">' + getMsg('mv_scale') + '</a><br>'+
 				'<a href="#" style="display:none" class="mv_apply_scale">' + getMsg('mv_apply_scale') + '</a> '+
-				'<a href="#" style="display:none" class="mv_rest_scale">' + getMsg('mv_reset_scale') + '</a><br> '+				
-				_this.getInsertControl()					
+				'<a href="#" style="display:none" class="mv_rest_scale">' + getMsg('mv_reset_scale') + '</a><br> '+
+				*/
+				_this.getInsertDesc() + 
+				_this.getInsertAction()					
 		);
 		//add bindings: 
 		$j('#mv_crop_button,.mv_crop_msg,.mv_apply_crop').click(function(){
@@ -393,8 +418,8 @@ mvClipEdit.prototype = {
 			$j('#' + _this.clip_disp_ct ).empty().html(
 				'<img src="' + _this.rObj.url + '" id="rsd_edit_img">'
 			);
-		});	
-		this.applyInsertControlBindings();	
+		});		
+		this.applyInsertControlBindings();
 	},
 	applyVideoAdj:function(){		
 		//update video related keys		
