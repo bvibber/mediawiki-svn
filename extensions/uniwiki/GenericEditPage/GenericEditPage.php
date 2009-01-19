@@ -439,8 +439,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 
 	/* special case: if the first (un-named) section has text in the layout,
 	 * but not in the page, copy it. otherwise, use the page text (even if empty) */
-	// FIXME: Undefined offset:  0 in scenario without layout
-	$result[] = ( $layout[0]['text'] && !$page[0]['text'] ) ? $layout[0] : $page[0];
+	$result[] = ( !empty($layout[0]) && $layout[0]['text'] && !$page[0]['text'] ) ? $layout[0] : $page[0];
 
 	/* only show the un-named section if it is being used. as
 	 * default, do not encourage people to use it by showing it */
@@ -589,8 +588,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 
 
 		// if this section has a title, show it
-		// FIXME: Undefined index: title in scenario without layout
-		if ( $result[$i]['title'] ) {
+		if ( !empty($result[$i]['title']) ) {
 			$title = $result[$i]['title'];
 			if ( $result[$i]['lock-header'] ) {
 				$out->addHTML ( "<h2>$title</h2>" );
@@ -607,8 +605,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 		/* always add a textarea, whether or
 		 * not it is currently in use. titles
 		 * without text are kind of useless */
-		// FIXME: Undefined index: lock-text in scenario without layout
-		if ( $result[$i]['lock-text'] ) {
+		if ( !empty($result[$i]['lock-text']) ) {
 
 			/* render the wiki markup into HTML, the old-school
 			 * way which actually works, unlike recursiveTagParse() */
@@ -617,7 +614,8 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 			$out->addHTML ( "<div class='locked-text' id='locked-text-$i'>" . $text . "</div>" );
 		} else {
 			// add the editable text for this section
-			$text = htmlspecialchars ( $result[$i]['text'], ENT_QUOTES );
+			$text = (empty($result[$i]['text'])) ? "" : $result[$i]['text']; 
+			$text = htmlspecialchars ($text , ENT_QUOTES );
 			$out->addHTML ( "<textarea name='section-$i' class='editor'>$text</textarea>" );
 		}
 
@@ -654,8 +652,8 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 
 
 	// pass the layout name back, to be re-appended
-	// FIXME: Undefined offset: 0 in scenario without layout
-	$out->addHTML ( "<input type='hidden' name='layout-name' value='{$layout[0]['name']}' />" );
+	if(!empty($layout))
+		$out->addHTML ( "<input type='hidden' name='layout-name' value='{$layout[0]['name']}' />" );
 
 
 	// build the sidebar (cats, sections) in its entirety
