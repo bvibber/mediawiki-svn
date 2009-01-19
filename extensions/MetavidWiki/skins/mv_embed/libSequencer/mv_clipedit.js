@@ -340,7 +340,8 @@ mvClipEdit.prototype = {
 		}
 		$j('#'+this.control_ct).append(	this.getInsertDesc() );
 		
-		$j('#'+this.control_ct).append(	'<b>Metavid clip inserts not yet supported</b>');					
+		$j('#'+this.control_ct).append(	'<b>Metavid clip inserts not yet supported</b>' +
+			'<a href="#" class="mv_cancel_img_edit" title="' + getMsg('mv_cancel_image_insert')+'">' + getMsg('mv_cancel_image_insert') + '</a> ');					
 		//$j('#'+this.control_ct).append( this.getInsertDesc() + this.getInsertAction()	);				
 		
 		//this.applyInsertControlBindings();
