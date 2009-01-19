@@ -241,7 +241,7 @@ class UploadForm {
 
 		if( !wfRunHooks( 'UploadForm:BeforeProcessing', array( &$this ) ) )
 		{
-			wfDebug( "Hook 'UploadForm:BeforeProcessing' broke processing the file." );
+			wfDebug( "Hook 'UploadForm:BeforeProcessing' broke processing the file.\n" );
 			return array( 'status' => UploadBase::BEFORE_PROCESSING );
 		}
 
@@ -407,7 +407,7 @@ class UploadForm {
 	public static function ajaxGetLicensePreview( $license ) {
 		global $wgParser, $wgUser;
 		$text = '{{' . $license . '}}';
-		$title = Title::makeTitle( NS_IMAGE, 'Sample.jpg' );
+		$title = Title::makeTitle( NS_FILE, 'Sample.jpg' );
 		$options = ParserOptions::newFromUser( $wgUser );
 
 		// Expand subst: first, then live templates...
@@ -581,7 +581,7 @@ wgUploadAutoFill = {$autofill};
 		}
 
 		if( $this->mDesiredDestName ) {
-			$title = Title::makeTitleSafe( NS_IMAGE, $this->mDesiredDestName );
+			$title = Title::makeTitleSafe( NS_FILE, $this->mDesiredDestName );
 			// Show a subtitle link to deleted revisions (to sysops et al only)
 			if( $title instanceof Title && ( $count = $title->isDeleted() ) > 0 && $wgUser->isAllowed( 'deletedhistory' ) ) {
 				$link = wfMsgExt(
@@ -614,8 +614,19 @@ wgUploadAutoFill = {$autofill};
 			$wgOut->addHTML( "<h2>{$sub}</h2>\n" .
 			  "<span class='error'>{$msg}</span>\n" );
 		}
+
+		$uploadMsg = $wgRequest->getVal( 'uploadmsg' );
+		if( $uploadMsg ) {
+			$uploadMsgName = 'uploadtext-' . $uploadMsg;
+			// Fall back to normal message if the custom messages is empty
+			if( wfEmptyMsg( $uploadMsgName, wfMsg( $uploadMsgName ) ) )
+				$uploadMsgName = 'uploadtext';
+		} else {
+			$uploadMsgName = 'uploadtext';
+		}
+
 		$wgOut->addHTML( '<div id="uploadtext">' );
-		$wgOut->addWikiMsg( 'uploadtext', $this->mDesiredDestName );
+		$wgOut->addWikiMsg( $uploadMsgName, $this->mDesiredDestName );
 		$wgOut->addHTML( "</div>\n" );
 
 		# Print a list of allowed file extensions, if so configured.  We ignore

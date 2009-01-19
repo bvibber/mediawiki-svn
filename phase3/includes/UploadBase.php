@@ -30,7 +30,14 @@ class UploadBase {
 	 */
 	static function isEnabled() {
 		global $wgEnableUploads;
-		return $wgEnableUploads;
+		if ( !$wgEnableUploads )
+			return false;
+		
+		# Check php's file_uploads setting
+		if( !wfIniGetBool( 'file_uploads' ) ) {
+			return false;
+		}
+		return true;
 	}
 	/**
 	 * Returns true if the user can use this upload module or else a string 
@@ -164,21 +171,23 @@ class UploadBase {
 
 		#check mime type, if desired
 		global $wgVerifyMimeType;
-		if ( $wgVerifyMimeType ) {
-
-		  wfDebug ( "\n\nmime: <$mime> extension: <{$this->mFinalExtension}>\n\n");
-			#check mime type against file extension
-			if( !self::verifyExtension( $mime, $this->mFinalExtension ) ) {
-				return 'uploadcorrupt';
-			}
-
-			#check mime type blacklist
-			global $wgMimeTypeBlacklist;
-			if( isset($wgMimeTypeBlacklist) && !is_null($wgMimeTypeBlacklist)
-				&& $this->checkFileExtension( $mime, $wgMimeTypeBlacklist ) ) {
+		if( isset($wgMimeTypeBlacklist) && !is_null($wgMimeTypeBlacklist) ) {
+			if ( $this->checkFileExtension( $mime, $wgMimeTypeBlacklist ) )
 				return array( 'filetype-badmime', $mime );
+
+			# Check IE type
+			$fp = fopen( $tmpfile, 'rb' );
+			$chunk = fread( $fp, 256 );
+			fclose( $fp );
+			$extMime = $magic->guessTypesForExtension( $this->mFinalExtension );
+			$ieTypes = $magic->getIEMimeTypes( $tmpfile, $chunk, $extMime );
+			foreach ( $ieTypes as $ieType ) {
+				if ( $this->checkFileExtension( $ieType, $wgMimeTypeBlacklist ) ) {
+					return array( 'filetype-bad-ie-mime', $ieType );
+				}
 			}
 		}
+			
 
 		#check for htmlish code and javascript
 		if( $this->detectScript ( $tmpfile, $mime, $this->mFinalExtension ) ) {
@@ -234,8 +243,16 @@ class UploadBase {
 		$n = strrpos( $filename, '.' );		
 		$partname = $n ? substr( $filename, 0, $n ) : $filename;
 
-		// Check whether the resulting filename is different from the desired one
-		if( $this->mDesiredDestName != $filename )
+		/* 
+		 * Check whether the resulting filename is different from the desired one,
+		 * but ignore things like ucfirst() and spaces/underscore things
+		 **/
+		$comparableName = str_replace( ' ', '_', $this->mDesiredDestName );
+		global $wgCapitalLinks, $wgContLang;
+		if ( $wgCapitalLinks ) {
+			$comparableName = $wgContLang->ucfirst( $comparableName );
+		}
+		if( $this->mDesiredDestName != $filename && $comparableName != $filename )
 			$warning['badfilename'] = $filename;
 
 		// Check whether the file extension is on the unwanted list
@@ -322,7 +339,14 @@ class UploadBase {
 
 		$basename = $this->mDesiredDestName;
 
-		$this->mFilteredName = wfStripIllegalFilenameChars( $basename );
+		$this->mFilteredName = wfStripIllegalFilenameChars( $basename );				
+		/* Normalize to title form before we do any further processing */
+		$nt = Title::makeTitleSafe( NS_FILE, $this->mFilteredName );
+		if( is_null( $nt ) ) {
+			$this->mTitleError = self::ILLEGAL_FILENAME;
+			return $this->mTitle = null;
+		}
+		$this->mFilteredName = $nt->getDBkey();
 
 		/**
 		 * We'll want to blacklist against *any* 'extension', and use
