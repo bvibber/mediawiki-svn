@@ -59,6 +59,7 @@ Do not translate or change tag names, or link anchors.',
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author Ouda
  */
 $messages['ar'] = array(
@@ -75,6 +76,7 @@ $messages['ar'] = array(
 	'recordadmin-invert' => 'أعكس الأختيار',
 	'recordadmin-buttonsearch' => 'بحث',
 	'recordadmin-buttoncreate' => 'أنشئ',
+	'recordadmin-buttonreset' => 'إعادة ضبط',
 	'recordadmin-searchresult' => 'نتائج البحث',
 	'recordadmin-edit' => 'تعديل',
 	'recordadmin-typeupdated' => '$1 تم تحديث خصائص',

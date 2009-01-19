@@ -1645,6 +1645,7 @@ Sett inn følgjande kode på ei side for å inkludere videoen på ei side på wi
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
 	'youtubeauthsub' => 'Last opp YouTube-video',
@@ -1671,10 +1672,10 @@ Sett inn følgende kode på en side for å inkludere videoen på en side på wik
 	'youtubeauthsub_uploadbutton' => 'Last opp',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}
 
-Denne videoen kan sees [http://youtube.com/watch?v=$1 her]',
+[http://youtube.com/watch?v=$1 Vis denne videoen]',
 	'youtubeauthsub_summary' => 'Laster opp YouTube-video',
 	'youtubeauthsub_uploading' => 'Videoen din blir lastet opp. Vær tålmodig.',
-	'youtubeauthsub_viewpage' => 'Alternativt kan du se videoen din [[$1|her]].',
+	'youtubeauthsub_viewpage' => 'Alternativt kan du [[$1|se videoen din]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Skriv inn ett eller flere nøkkelord.',
 	'youtubeauthsub_jserror_notitle' => 'Velg enn tittel for videoen.',
 	'youtubeauthsub_jserror_nodesc' => 'Skriv inn en beskrivelse av videoen.',

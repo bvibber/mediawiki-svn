@@ -79,6 +79,17 @@ $messages['be'] = array(
 	'filelist-image-desc' => 'апісанне',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'filelist' => 'Сьпіс файлаў',
+	'filelist-desc' => '[[Special:Filelist|Спэцыяльная старонка]] са сьпісам загружаных файлаў',
+	'filelist-show-list' => 'Паказаць сьпіс',
+	'filelist-show-gallery' => 'Паказаць галерэю',
+	'filelist-image-desc' => 'апісаньне',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

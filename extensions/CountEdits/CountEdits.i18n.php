@@ -425,7 +425,7 @@ $messages['he'] = array(
 	'countedits-ok' => 'אישור',
 	'countedits-nosuchuser' => 'אין משתמש בשם $1',
 	'countedits-resultheader' => 'תוצאות עבור $1',
-	'countedits-resulttext' => '$1 ביצע $2 עריכות',
+	'countedits-resulttext' => '$1 ביצע {{PLURAL:$2|עריכה אחת|$2 עריכות}}',
 	'countedits-mostactive' => 'התורמים הפעילים ביותר',
 	'countedits-nocontribs' => 'אין תורמים לוויקי זה.',
 );

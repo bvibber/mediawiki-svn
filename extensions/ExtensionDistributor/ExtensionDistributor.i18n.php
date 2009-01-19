@@ -314,6 +314,7 @@ Případné dotazy k tomuto systému distribuce rozšíření můžete klást na
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -360,7 +361,7 @@ Wenn dein Wiki auf einem entfernten Server läuft, entpacke die Dateien in ein t
 
 Bitte beachte, dass einige Erweiterungen die Datei <tt>ExtensionFunctions.php</tt> benötigen. Sie liegt unter <tt>extensions/ExtensionFunctions.php</tt>, dem Heimatverzeichnis der Erweiterungen. Der Schnappschuss dieser Erweiterung enthält diese Datei als tarbomb, entpackt nach <tt>./ExtensionFunctions.php</tt>. Vergiss nicht, auch diese Datei auf deinen entfernten Server hochzuladen.
 
-Nachdem du die Dateien entpackt hast, musst du die Erweiterung in der <tt>LocalSettings.php</tt> registrieren. Die Dokumenation zur Erweiterung sollte eine Anleitung dazu enthalten.
+Nachdem du die Dateien entpackt hast, musst du die Erweiterung in der <tt>LocalSettings.php</tt> registrieren. Die Dokumentation zur Erweiterung sollte eine Anleitung dazu enthalten.
 
 Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Eine weitere Erweiterung holen.',
@@ -566,6 +567,57 @@ Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extens
 $messages['grc'] = array(
 	'extdist-submit-extension' => 'Συνεχίζειν',
 	'extdist-submit-version' => 'Συνεχίζειν',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'extensiondistributor' => 'MediaWiki-Erwyterige abelade',
+	'extdist-desc' => 'Erwyterig fir d Verteilig vu Schnappschuss-Archiv vu Erwyterige',
+	'extdist-not-configured' => 'Bitte konfigurier $wgExtDistTarDir un $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'S konfiguriert Kopie-Arbetsverzeichnis git s nit!',
+	'extdist-no-such-extension' => 'D Erwyterig „$1“ git s nit',
+	'extdist-no-such-version' => 'D Erwyterig „$1“ git s nit in dr Version „$2“.',
+	'extdist-choose-extension' => 'Bitte wähl e Erwyterig uus zum Abelade:',
+	'extdist-wc-empty' => 'Im konfigurierte Kopie-Arbetsverzeichnis git s kei Erwyterige, wu mer cha verteile!',
+	'extdist-submit-extension' => 'Wyter',
+	'extdist-current-version' => 'Aktuälli Version (trunk)',
+	'extdist-choose-version' => '<big>Du ladsch d <b>$1</b>-Erwyterig abe.</big>
+
+Bitte wähl Dyyni MediaWiki-Version.
+
+Di meischte Erwyterige schaffe mit vyyle MediaWiki-Versione zämme. Wänn Dyyni MediaWiki-Version doo nit ufgfiert isch oder Du di nejschte Fähigkeite vu dr Eryterig witt nutze, no versuech s mit dr aktuälle Version.',
+	'extdist-no-versions' => 'Di gwählt Erwyterig ($1) git s nit in allene Versione!',
+	'extdist-submit-version' => 'Wyter',
+	'extdist-no-remote' => 'S git kei Kontakt zum färngstyyrte Subversion-Client.',
+	'extdist-remote-error' => 'Fählermäldig vum färngstyyrte Subversion-Client: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Uugiltigi Antwort vum färngstyyrte Subversion-Client.',
+	'extdist-svn-error' => 'Subversion het e Fähler gmäldet: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'XML-Date vu „svn info“ chenne nit verschafft wäre: <pre>$1</pre>',
+	'extdist-tar-error' => 'S Tar-Programm het dr Beändigungscode $1 gliferet:',
+	'extdist-created' => "E Schnappschuss vu dr Version <b>$2</b> vu dr MediaWiki-Erwyterig <b>$1</b> isch aagleit wore (MediaWiki-Version <b>$3</b>). S Abelade fangt automatisch in 5 Sekunde aa.
+
+D URL fir dr Schnappschuss isch:
+:$4
+D URL isch nume zum sofortige Abelade dänkt, bitte spychere si nit as Läsezeiche ab, wel dr Dateiinhalt nit aktualisiert wird un speter cha glescht wäre.
+
+S Tar-Archiv sott in s Erwyterigs-Verzeichnis uuspackt wäre. Uf eme Unix-ähnlige Betriebssystem mit:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Unter Windows chasch s Programm [http://www.7-zip.org/ 7-zip] zum Uuspacke vu dr Dateie neh.
+
+Wänn Dyy Wiki uf eme entfärnte Server lauft, no pack d Dateie in e temporäre Verzeichnis uf Dyynem lokale Computer uus un lad deno '''alli''' uuspackte Dateie uf dr entfärnt Server uffe.
+
+Bitte gib Acht, ass e Teil Erwyterige d Datei <tt>ExtensionFunctions.php</tt> bruuche. Si lyt unter <tt>extensions/ExtensionFunctions.php</tt>, em Heimetverzeichnis vu dr Erwyterige. Im Schnappschuss vu däre Erwyterig het s die Datei as tarbomb, no <tt>./ExtensionFunctions.php</tt> uuspackt. Vergiss nit, au die Datei uf Dyy entfärnte Server uufezlade.
+
+Wänn Du d Dateie uuspackt hesch, muesch d Erwyterig in dr <tt>LocalSettings.php</tt> regischtriere. In dr Dokumentation zue dr Erwyterig sott s a Aaleitig derzue haa.
+
+Wänn Du Froge hesch zue däm Erwyterigs-Verteil-Syschtem, no gang bitte uf d Syte [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'No ne Erwyterig hole',
 );
 
 /** Hebrew (עברית)
@@ -843,6 +895,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'extensiondistributor' => '미디어위키 확장 기능 내려받기',
 	'extdist-submit-extension' => '계속',
+	'extdist-current-version' => '현재 버전 (trunk)',
 	'extdist-want-more' => '다른 확장 기능 내려받기',
 );
 
@@ -1280,6 +1333,7 @@ $messages['ru'] = array(
 	'extdist-submit-version' => 'Продолжить',
 	'extdist-no-remote' => 'Не получилось связаться с удалённым клиентом Subversion.',
 	'extdist-remote-error' => 'Ошибка удалённого клиента Subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Ошибочный ответ клиента subversion.',
 	'extdist-svn-error' => 'Ошибка Subversion: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Ошибка обработки XML, возвращённого командой «svn info»: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar вернул код ошибки $1:',

@@ -235,6 +235,21 @@ Para engadir unha páxina, marque o casilla que está ao seu carón e prema en "
 Para marcar ou deixar de marcar diversas páxinas, só ten que premer na tecla "Maiúsculas", e isto permitiralle seleccionar casillas consecutivas con só facer clic en cada final do rexistro.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'watchsubpages' => 'Beobacht Untersyte',
+	'watchsubpages-addedtowatchlist' => 'Die Syte sin zue Dyynere Beobachtigslischt zuegfiegt wore.',
+	'watchsubpages-addtitles' => 'Syte zuefiege',
+	'watchsubpages-addtitlestowatchlist' => 'Syte zue dr Beobachtigslischt zuefiege',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Alli Untersyte]] vun ere Syte schnäll zuefiege zue dr Beobachtigslischt',
+	'watchsubpages-form' => 'Wähl d Syten uus, wu zue Dyynere Beobachtiglischt uegfiegt solle wäre.
+Go ne Syte zuefiege, gang uf s Chäschtli dernäbe un druck uf "Syte zuefiege".
+
+Wänn Du vyyl Syte witt iberneh, no heb d Shift-Taschte un druck uf s Chäschtli vu dr letschte Syte go alli markiere.',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

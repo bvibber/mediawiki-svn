@@ -586,6 +586,14 @@ $messages['tl'] = array(
 	'contrib-tracking-button' => 'Magpatuloy',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'contrib-tracking-error' => 'Hata',
+	'contrib-tracking-button' => 'Devam et',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

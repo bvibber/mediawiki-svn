@@ -62,6 +62,7 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  * @author Ouda
  */
@@ -79,6 +80,8 @@ $messages['ar'] = array(
 	'amazonplus-new' => 'جديد',
 	'amazonplus-none' => 'لا نُسخ من هذا العنصر معروضة للبيع.',
 	'amazonplus-cp-none' => 'لا شيء',
+	'amazonplus-more' => 'أكثر',
+	'amazonplus-less' => 'أقل',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

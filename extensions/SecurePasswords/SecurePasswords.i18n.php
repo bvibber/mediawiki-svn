@@ -31,13 +31,16 @@ Do not translate or change tag names, or link anchors.',
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author Ouda
  */
 $messages['ar'] = array(
+	'securepasswords-desc' => 'ينشئ هاشات كلمة سر أكثر أمنا ويضيف متحقق من قوة كلمة السر',
 	'securepasswords-valid' => 'كلمة السر غير صحيحة أو قصيرة جدا
 <br>يجب:
 
 <br />',
+	'securepasswords-minlength' => 'تكون على الأقل $1 {{PLURAL:$1|حرف|حرف}} طولا',
 	'securepasswords-lowercase' => 'lowercase تحتوى على الأقل على حرف في حالة',
 	'securepasswords-uppercase' => 'uppercase تحتوى على الأقل على حرف في حالة',
 	'securepasswords-digit' => 'يحتوى على رقم واحد على الأقل',
@@ -214,10 +217,20 @@ Illo debe:',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'securepasswords-desc' => 'より安全なパスワードのハッシュを生成し、パスワード文字列チェッカーを追加する',
+	'securepasswords-desc' => 'より安全なパスワードのハッシュを生成し、パスワード強度検査器を追加する',
+	'securepasswords-valid' => 'あなたのパスワードは不正であるか、または短すぎます。
+以下を充たさなければなりません:',
+	'securepasswords-minlength' => '$1文字以上の長さである',
+	'securepasswords-lowercase' => '最低1文字は小文字を含む',
+	'securepasswords-uppercase' => '最低1文字は大文字を含む',
+	'securepasswords-digit' => '最低1文字は数字を含む',
+	'securepasswords-special' => '最低1文字は特殊文字を含む (特殊文字: $1)',
+	'securepasswords-username' => '利用者名とは異なる',
+	'securepasswords-word' => '単語ではない',
 );
 
 /** Khmer (ភាសាខ្មែរ)

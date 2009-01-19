@@ -30,15 +30,18 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author Ouda
  */
 $messages['ar'] = array(
+	'layouts-desc' => 'يضيف للصفحات المنشأة حديثا "هيئات" يمكن تعديلها لتشجيع هيكل متشابه للصفحات',
 	'layouts_title' => 'إنشاء صفحة',
 	'layouts_chooselayout' => 'أختار تنسيق ل$1',
 	'layouts_nolayout' => 'لا يوجد تصميم',
 	'layouts_continue' => 'أستمرار',
 	'layouts_choosecategory' => 'أختار تصنيف ل$1',
 	'layouts_unknown' => 'غير معروف',
+	'layouts_tagline' => "هذه الصفحة تم توليدها بواسطة هيئة '''$1'''.",
 );
 
 /** Egyptian Spoken Arabic (مصرى)

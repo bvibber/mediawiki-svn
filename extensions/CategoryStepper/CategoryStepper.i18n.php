@@ -191,10 +191,11 @@ $messages['gv'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'categorystepper-desc' => 'הצגת תיבת צעידה בין הקטגוריות ובכך ניתנת האפשרות לנווט קדימה ואחורה בסדר אלפביתי בין קטגוריה אחת או יותר אשר בהן נמצא הדף',
+	'categorystepper-desc' => 'הצגת תיבת צעידה בין הקטגוריות, כדי לתת את האפשרות לנווט קדימה ואחורה בסדר אלפביתי בין קטגוריה אחת או יותר אשר בהן נמצא דף',
 	'categorystepper-end' => '(סוף הקטגוריה)',
 	'categorystepper-start' => '(תחילת הקטגוריה)',
 );

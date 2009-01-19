@@ -154,9 +154,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
-	'mwsearch-desc' => 'Plug-in Recherches MW',
+	'mwsearch-desc' => 'Plug-in pour les recherches dans MediaWiki',
 );
 
 /** Galician (Galego)

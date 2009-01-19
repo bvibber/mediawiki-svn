@@ -378,6 +378,52 @@ $messages['de-formal'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Ihre Prüfung wurde gespeichert!</span>",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'review_sidebar_title' => 'Pśeglědanje',
+	'review-desc' => 'Zasejwóžiwjona [[Special:Review|pśeglědowańska]] funkcija',
+	'review_topics' => "# Dołojce lisćina temow a wobcerkow za pśeglědowańske rozšyrjenje.
+# Kužda tema definěrujo se pśez smužku z pěś gódnotami, wótźělenymi pśez ':' (wše druge smužki se ignorěruju).
+# Pórěd jo: numeriski kluc (>0), mě, maksimalny wobcerk (>1; 2=jo/ně), wóznam nejnišeje gódnoty (na pś. 'špatny'), wóznam nejwušeje gódnoty (na pś. 'dobry').
+1:Kwalita:5:špatna:dobra
+2:Gótowy za 1.0:2:ně:jo",
+	'review_topic_page' => 'Temy pśeglědaś',
+	'review_sidebar_explanation' => "Kašćik ceło nalěwo ma pśecej groniś 'žedne měnjenje'.",
+	'review_save' => 'Pśeglědanje składowaś',
+	'review_your_review' => 'Twójo pśeglědanje toś togo boka/toś teje wersije:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Sy južo pśeglědał druge wersije toś togo boka.
+Twóje druge pógódnośenja zjadnośuju se do toś togo, źož sy wubrał 'žedne měnjenje'.",
+	'review_page_link' => 'pśeglědowańska statistika',
+	'review_sidebar_final' => 'Za pśeglědowańske daty toś togo boka, glědaj jogo $1.',
+	'review_for_page' => 'Pśeglědanje za bok "$1!',
+	'review_for_user' => 'Pśeglědanje za wužywarja "$1"',
+	'review_error' => 'Něco njejo w rěźe!',
+	'review_no_reviews_for_page' => 'Tuchylu njejsu pśeglědanja za "$1".',
+	'review_total_statistics' => 'Dogromady',
+	'review_statistics_left_corner' => 'Wersija',
+	'review_version_link' => 'Wersija #$1',
+	'review_statistic_cell' => 'Pśerězk: $1 z $2<br />($4 {{PLURAL:$4|wužywaŕ|wužywarja|wužywarje|wužywarjow}}, $5 {{PLURAL:$5|IP-adresa|IP-adresy|IP-adrese|IP-adresow}})',
+	'review_version_statistic_cell' => '$1 z $2',
+	'review_version_reviews_link' => '<small>(wersijowe pśeglědanja)</small>',
+	'review_concerns_page' => 'Toś to pśeglědanje jo wó boku "$1".',
+	'review_concerns_user' => 'To su pśeglědanja wót wužywarja "$1".',
+	'review_user_reviews' => '<small>(pśeglědanja wót toś togo wužywarja)</small>',
+	'review_user_page_list' => 'Wužywaŕ jo pśeglědał slědujuce boki:',
+	'review_user_details_link' => '(drobnostki)',
+	'review_do_merge' => 'Móje pśeglědanja drugich wersijow toś togo boka k toś tomu zjadnośiś',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>Twójo pśeglědanje jo se składowało!</span>",
+	'revision_review_this_page_version_link' => 'Pśeglědaj toś tu wersiju boka.',
+	'review_page_review' => 'Pśeglědanje boka "$1"',
+	'review_blocked' => 'Sy blokěrowany a njamóžoš se na pśeglědanjach wobźěliś.',
+	'review_wrong_namespace' => 'Boki w toś tom mjenjowem rumje njedaju se pśeglědaś!',
+	'review_topic' => 'Tema',
+	'review_no_opinion' => 'Žedne měnjenje',
+	'review_rating' => 'Pógódnośenje',
+	'review_comment' => 'Komentar',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -884,13 +930,20 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'review_sidebar_title' => 'Nohloore',
 	'review-desc' => 'Dat widder operstandene [[Special:Review|Nohlesse]].',
 	'review_sidebar_explanation' => 'Dat lenkeste Käßje bedügk emmer „kein Meinung“.',
+	'review_page_link' => 'Shtatistike vum Nohloore',
 	'review_error' => 'Öhnzjät es verkiehrt!',
 	'review_total_statistics' => 'Zosamme',
+	'review_statistics_left_corner' => 'Nohloore',
+	'review_version_link' => 'De Version $1 nohloore',
 	'review_statistic_cell' => 'Dä Dorschnett: $1 vun $2<br />($4 Metmaacher, $5 Namloose)',
 	'review_version_statistic_cell' => '$1 vun $2',
 	'review_user_details_link' => '(Einzelheite)',
+	'revision_review_this_page_version_link' => 'Donn hee die Version vun dä Sigg nohloore.',
+	'review_blocked' => 'Do bes jesperrt un kanns dröm nix nohloore.',
+	'review_wrong_namespace' => 'Sigge en dämm Appachtemang kam_mer nit nohloore!',
 	'review_no_opinion' => 'Kein Meinung',
 );
 
@@ -1281,21 +1334,32 @@ $messages['pt'] = array(
 	'review-desc' => 'A ressuscitada funcionalidade de [[Special:Review|validação]]',
 	'review_topic_page' => 'Tópicos de revisão',
 	'review_sidebar_explanation' => "A caixa de seleção mais à esquerda significa sempre 'sem opinião'.",
+	'review_save' => 'Gravar revisão',
+	'review_your_review' => 'A sua revisão desta página/versão:',
 	'review_sidebar_you_have_other_reviews_for_this_article' => "Você já reviu outras versões desta página.
 As suas outras classificações serão fundidas nesta onde selecionou 'sem opinião'.",
 	'review_page_link' => 'estatísticas de revisão',
+	'review_sidebar_final' => 'Para dados da revisão desta vista da página, veja a sua $1',
 	'review_for_page' => 'Revisão da página "$1"',
 	'review_for_user' => 'Revisão do utilizador "$1"',
 	'review_error' => 'Algo está errado!',
+	'review_no_reviews_for_page' => 'Atualmente, não há revisões para "$1".',
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Revisão',
 	'review_version_link' => 'Revisão #$1',
 	'review_statistic_cell' => 'Média: $1 de $2<br />($4 utilizadores, $5 anónimos)',
 	'review_version_statistic_cell' => '$1 de $2',
+	'review_version_reviews_link' => '<small>(revisões de versão)</small>',
+	'review_concerns_page' => 'Esta revisão é sobre a página "$1".',
+	'review_concerns_user' => 'Isto é sobre revisões do utilizador "$1".',
+	'review_user_reviews' => '<small>(revisões deste utilizador)</small>',
+	'review_user_page_list' => 'O utilizador reviu as seguintes páginas:',
 	'review_user_details_link' => '(detalhes)',
 	'review_has_been_stored' => "<span id='review_has_been_stored'>A sua revisão analisada foi guardada!</span>",
 	'revision_review_this_page_version_link' => 'Rever esta versão da página.',
 	'review_page_review' => 'Revisão da página "$1"',
+	'review_blocked' => 'Você está bloqueado e não pode participar em revisões.',
+	'review_wrong_namespace' => 'As páginas neste espaço nominal não podem ser revistas!',
 	'review_topic' => 'Tópico',
 	'review_no_opinion' => 'Sem opinião',
 	'review_rating' => 'Classificação',

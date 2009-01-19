@@ -95,11 +95,12 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'random-users-avatars-title' => 'פגשו את הקהילה',
-	'random-users-avatars-desc' => 'הוספת התגית <tt>&lt;randomuserswithavatars&gt;</tt> להצגת תמונות משתמשים של משתמשים שנבחרו באקראי',
+	'random-users-avatars-desc' => 'הוספת התגית <tt>&lt;randomuserswithavatars&gt;</tt> להצגת תמונות משתמש של משתמשים שנבחרו באקראי',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

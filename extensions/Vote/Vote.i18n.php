@@ -292,6 +292,31 @@ riddler|Riddler',
 	'vote-invalid-choice' => 'Musíte vybrat jednu z dostupných možností',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'vote' => 'Pleidleisio',
+	'vote-desc' => 'Yn cynnal etholiad syml',
+	'vote-header' => "Gallwch ethol '''Ymerawdwr y Bydysawd''' fan hyn!",
+	'vote-current' => "Rydych wedi dewis '''$1''' ar hyn o bryd.",
+	'vote-legend' => 'Bwrw pleidlais neu ei newid',
+	'vote-caption' => 'Eich dewis:',
+	'vote-choices' => 'joker|The Joker
+penguin|The Penguin
+riddler|The Riddler',
+	'vote-submit' => 'Bwrw pleidlais',
+	'vote-registered' => 'Cofnodwyd eich pleidlais.',
+	'vote-view-results' => 'Edrych ar y canlyniadau',
+	'vote-results' => "Canlyniadau'r bleidlais",
+	'vote-results-choice' => 'Y dewis',
+	'vote-results-count' => 'Cyfrif',
+	'vote-results-none' => 'Nid oes neb wedi pleidleisio eto.',
+	'vote-login' => 'Rhaid $1 i bleidleisio.',
+	'vote-login-link' => 'mewngofnodi',
+	'vote-invalid-choice' => "Rhaid dewis un o'r dewisiadau a gynigwyd.",
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -550,6 +575,31 @@ riddler|Riddler',
  */
 $messages['grc'] = array(
 	'vote-login-link' => 'συνδεῖσθαι',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'vote' => 'Wähle',
+	'vote-desc' => 'Bietet eifach Umfrogefähigkeite',
+	'vote-header' => "Du chasch doo dr '''Oberscht Oberherr vu dr Wält''' wähle!",
+	'vote-current' => "Dyyni aktuäll Stimm isch fir '''$1'''.",
+	'vote-legend' => 'Abstimme',
+	'vote-caption' => 'Dyyni Stimm:',
+	'vote-choices' => 'joker|Dr Joker
+penguin|Dr Pinguin
+riddler|Riddler',
+	'vote-submit' => 'Abstimme',
+	'vote-registered' => 'Dyyni Stimm isch regischtriert wore.',
+	'vote-view-results' => 'Ergebniss zeige',
+	'vote-results' => 'Wahlergebniss',
+	'vote-results-choice' => 'Wahl',
+	'vote-results-count' => 'Aazahl',
+	'vote-results-none' => 'S sin no kei Stimme abgee wore.',
+	'vote-login' => 'Du muesch $1 zum abstimme z chenne.',
+	'vote-login-link' => 'Di aamälde',
+	'vote-invalid-choice' => 'Du muesch eini vu dr meglige Optione wähle.',
 );
 
 /** Hebrew (עברית)

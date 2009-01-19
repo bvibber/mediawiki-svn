@@ -254,6 +254,7 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'categoryonupload-desc' => '파일을 올릴 때 분류 선택 양식을 출력',
 	'categoryonupload-label' => '분류:',
 );
 

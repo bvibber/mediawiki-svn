@@ -31,6 +31,7 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  * @author Ouda
  */
@@ -40,8 +41,11 @@ $messages['ar'] = array(
 	'createpage_submitbutton' => 'إرسال',
 	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد أنشائها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
+	'createpage_titleexists' => 'صفحة بالعنوان [[$1]] موجودة بالفعل.
+هل تريد تعديل الصفحة الموجودة؟',
 	'createpage_tryagain' => 'لا. أريد إنشاء صفحة جديدة بعنوان مميز.',
 	'createpage_editexisting' => 'نعم. أريد المساهمة للصفحة الموجودة.',
+	'createpage-badtitle' => '"$1" لا يمكن استخدامها كعنوان صفحة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -281,9 +285,11 @@ Vole tu modificar le pagina existente?',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'createpage' => 'ページ作成',
 	'createpage_submitbutton' => '送信',
 );
 

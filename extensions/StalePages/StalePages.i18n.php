@@ -38,6 +38,16 @@ $messages['arz'] = array(
 	'stalepages-summary' => 'هذه قائمة بالصفحات التى لم يتم تعديلها فى آخر $1 يوم.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'stalepages' => 'Старыя старонкі',
+	'stalepages-desc' => 'Стварае [[Special:Stalepages|сьпіс старонак]], якія не рэдагаваліся ў апошні час',
+	'stalepages-summary' => 'Гэта сьпіс старонак, якія не рэдагаваліся {{PLURAL:$1|апошні $1 дзень|апошнія $1 дні|апошнія $1 дзён}}.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -54,7 +64,7 @@ $messages['bg'] = array(
 $messages['de'] = array(
 	'stalepages' => 'Alte Seiten',
 	'stalepages-desc' => 'Erzeugt eine [[Special:Stalepages|Liste von Seiten]], die seit einer Weile nicht mehr bearbeitet wurden',
-	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',
+	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die {{PLURAL:$1|innerhalb der letzten 24 Stunden|in den letzten $1 Tagen}} nicht bearbeitet wurden.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -103,13 +113,14 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'stalepages' => 'Pages vieillies',
 	'stalepages-desc' => 'Crée une [[Special:Stalepages|liste des pages]] qui n’ont pas été éditées récemment',
-	'stalepages-summary' => "Ceci est une liste de pages qui n'ont pas été modifiées depuis {{PLURAL:$1|$1 jour|$1 jours}}.",
+	'stalepages-summary' => "Ceci est une liste de pages qui n'ont pas été modifiées depuis $1 {{PLURAL:$1|jour|jours}}.",
 );
 
 /** Galician (Galego)
@@ -117,9 +128,9 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'stalepages' => 'páxinas caducadas',
+	'stalepages' => 'Páxinas vellas',
 	'stalepages-desc' => 'Xera unha [[Special:Stalepages|lista de páxinas]] que non foron editadas recentemente',
-	'stalepages-summary' => 'Esta é unha listaxe das páxinas que non foron editadas nos últimos $1 días.',
+	'stalepages-summary' => 'Esta é unha lista coas páxinas que non foron editadas {{PLURAL:$1|no último día|nos últimos $1 días}}.',
 );
 
 /** Hawaiian (Hawai`i)
@@ -136,7 +147,7 @@ $messages['haw'] = array(
 $messages['he'] = array(
 	'stalepages' => 'דפים מיושנים',
 	'stalepages-desc' => 'יצירת [[Special:Stalepages|רשימת דפים]] שלא נערכו לאחרונה',
-	'stalepages-summary' => 'זוהי רשימת דפים שלא נערכו במשך $1 הימים האחרונים.',
+	'stalepages-summary' => 'זוהי רשימת דפים שלא נערכו במשך {{PLURAL:$1|היום האחרון|$1 הימים האחרונים|היומיים האחרונים}}.',
 );
 
 /** Croatian (Hrvatski)
@@ -258,7 +269,7 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'stalepages' => "Vergeten pagina's",
 	'stalepages-desc' => "Geeft een [[Special:Stalepages|lijst met pagina's]] weer die recent niet zijn bewerkt",
-	'stalepages-summary' => "Dit is een lijst van pagina's die niet bewerkt zijn in de afgelopen $1 dagen.",
+	'stalepages-summary' => "Dit is een lijst van pagina's die niet bewerkt zijn in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

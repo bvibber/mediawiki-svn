@@ -87,6 +87,13 @@ $messages['gl'] = array(
 	'navigationpopups-desc' => 'Carga emerxentes de escritura de navegación Lupin en MediaWiki',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'navigationpopups-desc' => 'טעינת חלוניות הסקריפטים לניווט של Lupin במדיה־ויקי',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

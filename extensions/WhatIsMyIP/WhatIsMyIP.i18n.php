@@ -214,6 +214,15 @@ $messages['gl'] = array(
 	'whatismyip-out' => 'O seu enderezo IP:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'whatismyip' => 'Wel isch myy IP-Adräss',
+	'whatismyip-desc' => 'Zeigt di aktuäll IP-Adräss vum Benutzer uf [[Special:WhatIsMyIP]] aa',
+	'whatismyip-out' => 'Dyyni IP-Adräss:',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

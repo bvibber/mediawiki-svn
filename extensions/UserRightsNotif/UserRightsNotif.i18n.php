@@ -334,6 +334,24 @@ $2',
 	'userrightsnotif-desc' => 'Envía unha notificación por correo electrónico aos usuarios unha vez que os seus dereitos cambien',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'userrightsnotifysubject' => 'Änderig vu dr Gruppezuegherigkeit vum $1',
+	'userrightsnotifybody' => 'Sali $1
+
+Des isch e Information, ass Dyyni Gruppezuegherigkeit vu $2 dur $3 am $4 gänderet woren isch.
+
+Zuegfeigt: $5
+Usegnuh: $6
+
+Mit härzlige Grieß,
+
+$2',
+	'userrightsnotif-desc' => 'Schickt E-Mail-Benochrichtunge iber Rächtänderige an dr Benutzer',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

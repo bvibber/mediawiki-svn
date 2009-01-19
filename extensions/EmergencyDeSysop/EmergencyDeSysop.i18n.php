@@ -43,17 +43,24 @@ Do not translate or change tag names, or link anchors.',
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author Ouda
  */
 $messages['ar'] = array(
 	'emergencydesysop' => 'سحب الإدارة الطارئ',
+	'emergencydesysop-desc' => 'يسمح لإداري بالتضحية بصلاحياته، في سبيل عزل آخر',
+	'emergencydesysop-title' => 'إزالة صلاحيات الإدارة من المستخدم الحالي ومدير نظام آخر معا',
+	'emergencydesysop-otheradmin' => 'مدير النظام الآخر لإزالته من المجموعة',
 	'emergencydesysop-reason' => 'سبب الحذف',
 	'emergencydesysop-submit' => 'تنفيذ',
+	'emergencydesysop-incomplete' => 'كل حقول الاستمارة مطلوبة، من فضلك حاول مرة ثانية.',
 	'emergencydesysop-notasysop' => 'المستخدم المستهدف ليس في مجموعة الإداريين',
 	'emergencydesysop-nogroups' => 'لا يوجد',
+	'emergencydesysop-done' => 'الفعل اكتمل، كلا منك و [[$1]] تم عزله.',
 	'emergencydesysop-invalidtarget' => 'المستخدم المراد لا يوجد',
 	'emergencydesysop-blocked' => 'لا يمكن الدخول على هذه الصفحة أثناء المنع',
 	'emergencydesysop-noright' => 'لا تملك الصلاحيات الكافية للدخول على هذه الصفحة',
+	'right-emergencydesysop' => 'القدرة على عزل مستخدم آخر، بشكل متبادل',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

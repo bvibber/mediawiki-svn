@@ -91,6 +91,13 @@ $messages['gl'] = array(
 	'newsextension-desc' => 'Amosa uns cambios recentes personalizados nas páxinas dun wiki ou como unha fonte de noticias RSS ou Atom',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'newsextension-desc' => 'הצגת השינויים האחרונים באופן מותאם אישית, בדף ויקי או כהזנות RSS או Atom',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

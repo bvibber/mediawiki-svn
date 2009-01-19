@@ -150,6 +150,7 @@ $messages['ar'] = array(
 	'regexblock-block-success' => 'المنع نجح',
 	'regexblock-currently-blocked' => 'العناوين الممنوعة حاليا:',
 	'regexblock-desc' => 'امتداد يستخدم لمنع أسماء المستخدمين وعناوين الأيبي باستخدام تعبيرات منتظمة. يحتوي على ميكانيكية المنع و [[Special:Regexblock|صفحة خاصة]] لإضافة/التحكم بعمليات المنع',
+	'regexblock-expire-duration' => '1 ساعة,2 ساعة,4 ساعة,6 ساعة,1 يوم,3 يوم,1 أسبوع,2 أسبوع,1 شهر,3 شهر,6 شهر,1 سنة,لا نهائي',
 	'regexblock-page-title' => 'منع الاسم بواسطة تعبير منتظم',
 	'regexblockstats' => 'إحصاءات تعبيرات المنع المنتظمة',
 	'regexblock-help' => 'استخدم الاستمارة بالأسفل لمنع التحرير من عنوان أيبي أو اسم مستخدم محدد.
@@ -174,11 +175,14 @@ $messages['ar'] = array(
 	'regexblock-form-submit-empty' => 'أعط اسم مستخدم أو عنوان أيبي للمنع.',
 	'regexblock-form-submit-regex' => 'تعبير منتظم غير صحيح.',
 	'regexblock-form-submit-expiry' => 'من فضلك حدد تاريخ انتهاء.',
+	'regexblock-match-stats-record' => "$1 منع '$2' في '$3' في '$4'، تسجيل من العنوان '$5'",
+	'regexblock-nodata-found' => 'لا بيانات تم العثور عليها',
 	'regexblock-stats-title' => 'إحصاءات تعبيرات المنع المنتظمة',
 	'regexblock-unblock-success' => 'رفع المنع نجح',
 	'regexblock-unblock-log' => "اسم المستخدم أو عنوان الأيبي '''$1''' تم رفع المنع عنه.",
 	'regexblock-unblock-error' => 'خطأ أثناء رفع المنع عن $1.
 على الأرجح لا يوجد مستخدم بهذا الاسم.',
+	'regexblock-regex-filter' => '  أو قيمة الريجيكس:',
 	'regexblock-view-blocked' => 'عرض الممنوع بواسطة:',
 	'regexblock-view-all' => 'الكل',
 	'regexblock-view-go' => 'اذهب',
@@ -192,9 +196,10 @@ $messages['ar'] = array(
 	'regexblock-view-block-expired' => 'انتهى في',
 	'regexblock-view-block-by' => 'ممنوع بواسطة',
 	'regexblock-view-block-unblock' => 'رفع المنع',
-	'regexblock-view-stats' => '(إحصاءات)',
+	'regexblock-view-stats' => 'إحصاءات',
 	'regexblock-view-empty' => 'قائمة الأسماء والعناوين الممنوعة فارغة.',
 	'regexblock-view-time' => 'في $1',
+	'right-regexblock' => 'منع المستخدمين من التعديل في كل الويكيات في مزرعة الويكي',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1087,9 +1092,13 @@ Warscheinlech gëtt et esou e Benotzer net.',
 	'regexblock-view-blocked' => "Weis d'Späre vum:",
 	'regexblock-view-all' => 'Alleguer',
 	'regexblock-view-go' => 'Lass',
+	'regexblock-view-regex' => '(Regex-Treffer)',
 	'regexblock-view-account' => '(Opmaache vu Benotzerkonte gespaart)',
 	'regexblock-view-reason' => 'Grond: $1',
+	'regexblock-view-reason-default' => 'allgemenge Grond',
 	'regexblock-view-block-infinite' => 'permanent Spär',
+	'regexblock-view-block-temporary' => 'bis den',
+	'regexblock-view-block-expired' => 'OFGELAF den',
 	'regexblock-view-block-by' => 'gespaart vum',
 	'regexblock-view-block-unblock' => 'Spär ophiewen',
 	'regexblock-view-stats' => 'Statistik',
@@ -1665,6 +1674,7 @@ $messages['ru'] = array(
 	'regexblock-form-submit-empty' => 'Укажите имя участника или IP-адрес для блокировки.',
 	'regexblock-form-submit-regex' => 'Ошибочное регулярное выражение.',
 	'regexblock-form-submit-expiry' => 'Пожалуйста, укажите время действия.',
+	'regexblock-nodata-found' => 'Ничего не найдено',
 	'regexblock-stats-title' => 'Статистика RegexBlock',
 	'regexblock-unblock-success' => 'Разблокировка выполнена успешно',
 	'regexblock-unblock-log' => "Имя участника или IP-адрес '''$1''' заблокирован.",
@@ -1683,9 +1693,10 @@ $messages['ru'] = array(
 	'regexblock-view-block-expired' => 'ИСТЕКЛА',
 	'regexblock-view-block-by' => 'заблокирован',
 	'regexblock-view-block-unblock' => 'разблокировать',
-	'regexblock-view-stats' => '(статистика)',
+	'regexblock-view-stats' => 'статистика',
 	'regexblock-view-empty' => 'Список заблокированных имён и адресов пуст.',
 	'regexblock-view-time' => '$1',
+	'right-regexblock' => 'Запретить участникам редактировать во всех вики этой вики-фермы',
 );
 
 /** Sassaresu (Sassaresu)

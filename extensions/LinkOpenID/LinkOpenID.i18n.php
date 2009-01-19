@@ -35,6 +35,19 @@ Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'linkopenid-desc' => 'يسمح للمستخدمين بوصل حسابهم لهوية مفتوحة خارجية',
+	'linkopenid-prefs' => 'الهوية المفتوحة',
+	'linkopenid-prefstext-pre' => 'لو أنك تمتلك هوية مفتوحة من مزود خارجي يمكنك تحديدها هنا.
+هذا يسمح لك باستخدام صفحة المستخدم الخاصة بك كهوية مفتوحة أيضا.',
+	'linkopenid-prefstext-openid' => 'هويتك المفتوحة:',
+	'linkopenid-prefstext-v1url' => 'مسار الخادم للهوية المفتوحة النسخة 1.1:',
+	'linkopenid-prefstext-v2url' => 'مسار الخادم للهوية المفتوحة النسخة 2:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */

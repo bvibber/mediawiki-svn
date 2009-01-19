@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'tab0-desc' => 'يضيف اللسان "0"، موصولا إلى صفحة التعديل لأول قسم من الصفحة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'tab0-desc' => 'Дадае закладку «0», якая спасылаецца на рэдагаваньне першай сэкцыі старонкі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

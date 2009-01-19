@@ -63,6 +63,16 @@ $messages['arz'] = array(
 	'spl3_nosubpages' => '$1 لا تمتلك أى صفحات فرعية لوضعها فى قائمة.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'spl3-desc' => 'Аўтаматычна стварае сьпіс падстаронак з дапамогай тэга <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Невядомае значэньне парамэтра $1.',
+	'spl3_nosubpages' => '$1 ня мае падстаронак.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

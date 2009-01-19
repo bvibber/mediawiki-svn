@@ -169,6 +169,7 @@ $wgGoogleMapsMessages['am'] = array(
  * @author ترجمان05
  */
 $wgGoogleMapsMessages['ar'] = array(
+	'gm-desc' => 'بسهولة أنشئ خرائط بمعالم ويكية',
 	'gm-incompatible-browser' => 'لكي تشاهد الخريطة المراد إدخالها في هذا الفضاء، ستحتاج لاستخدام متصفح ويب متوافق.',
 	'gm-incompatible-browser-link' => 'اضغط هنا لرؤية قائمة المتصفحات المتوافقة.',
 	'gm-no-editor' => 'لسوء الحظ، متصفحك لا يدعم ميزات إنشاء الخريطة التفاعلية. جرب آخر نسخة <a href="http://www.microsoft.com/ie">لإنترنت إكسبلورر</a> (ويندوز) أو <a href="http://www.mozilla.org/products/firefox">فايرفوكس</a> (ويندوز، ماك، ولينكس).',
@@ -1508,6 +1509,7 @@ $wgGoogleMapsMessages['grc'] = array(
  * @author Als-Holder
  */
 $wgGoogleMapsMessages['gsw'] = array(
+	'gm-desc' => 'Charten aifach aalege mit wikifizierte Markierige',
 	'gm-incompatible-browser' => 'Go d Charte bschaue z chenne, wu do soll aazeigt wäre, bruuchsch e kompatible Browser.',
 	'gm-incompatible-browser-link' => 'Druck do fir e Lischt vu kompatible Browser.',
 	'gm-no-editor' => 'Leider unterstitzt Dyy Browser dr interaktive Charte-Editor nit. Versuech s mit dr nejschte Version vu <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
@@ -1609,11 +1611,12 @@ $wgGoogleMapsMessages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  * @author שומבלע
  */
 $wgGoogleMapsMessages['he'] = array(
-	'gm-desc' => 'יצירת מפות עם סימונים בתקן ויקי בקלות',
+	'gm-desc' => 'יצירה קלה של מפות עם סימונים בקוד ויקי',
 	'gm-incompatible-browser' => 'לצורך צפייה במפה שתצרו כאן, הנכם צריכים להשתמש בדפדפן אינטרנט מתאים.',
 	'gm-incompatible-browser-link' => 'לחצו כאן לצפייה ברשימת דפדפנים תואמים.',
 	'gm-no-editor' => 'מצטערים, הדפדפן שלכם אינו תומך ביצירת מפה אינטראקטיבית. נסו את הגרסאות האחרונות של <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) או <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, ו- Linux).',

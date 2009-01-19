@@ -294,6 +294,15 @@ $messages['be-tarask'] = array(
 	'tasks_status_assigned' => 'Прызначана',
 	'tasks_status_closed' => 'Скончанае',
 	'tasks_status_wontfix' => 'Ня будзе вырашацца',
+	'tasks_action_open' => 'Заданьне «$1» адкрытае.',
+	'tasks_action_assigned' => 'Заданьне «$1» прызначана.',
+	'tasks_action_closed' => 'Заданьне «$1» выканана.',
+	'tasks_action_wontfix' => 'Заданьне «$1» ня будзе выканана.',
+	'tasks_sign_delete' => '<b>Быў запыт на выдаленьне гэтай старонкі!</b>',
+	'tasks_logpage' => 'Журнал заданьняў',
+	'tasks_logpagetext' => 'Гэта журнал зьменаў заданьняў',
+	'tasks_logentry' => 'Для «[[$1]]»',
+	'tog-show_task_comments' => 'Далучыць старонку камэнтараў заданьня.',
 );
 
 /** Bulgarian (Български)

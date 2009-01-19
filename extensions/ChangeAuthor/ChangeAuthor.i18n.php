@@ -176,6 +176,7 @@ $messages['ar'] = array(
 	'changeauthor-logentry' => 'غير مؤلف $2 ل$1 من $3 إلى $4',
 	'changeauthor-logpagename' => 'سجل تغيير المؤلفين',
 	'changeauthor-rev' => 'ن$1',
+	'right-changeauthor' => 'تغيير مؤلف مراجعة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -676,6 +677,7 @@ $messages['he'] = array(
 	'changeauthor-logentry' => 'שינה את הכותב של $2 של $1 מ$3 ל$4',
 	'changeauthor-logpagename' => 'יומן שינויי כותבים',
 	'changeauthor-rev' => 'גרסה $1',
+	'right-changeauthor' => 'שינוי מחבר של גרסה',
 );
 
 /** Hindi (हिन्दी)

@@ -58,6 +58,7 @@ $messages['ar'] = array(
 	'lookupuser-touched' => 'سجل المستخدم تم تعديله آخر مرة في: $1',
 	'lookupuser-info-authenticated' => 'توكيد البريد الإلكتروني: $1',
 	'lookupuser-useroptions' => 'خيارات المستخدم:',
+	'right-lookupuser' => 'مطالعة تفضيلات المستخدم',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -394,6 +395,7 @@ $messages['he'] = array(
 	'lookupuser-touched' => 'הפעם האחרונה בה ביצעו פעולה במידע המשתמש: $1',
 	'lookupuser-info-authenticated' => 'אימות כתובת דוא"ל: $1',
 	'lookupuser-useroptions' => 'אפשרויות המשתמש:',
+	'right-lookupuser' => 'בדיקת העדפות משתמש',
 );
 
 /** Hindi (हिन्दी)

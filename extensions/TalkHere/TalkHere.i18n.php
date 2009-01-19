@@ -108,6 +108,23 @@ Dai inaakò kan mga operador sa site na ini an mga responsibilidad para mga kome
 	'talkhere-collapse' => 'tagôon an editor',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'talkhere-desc' => 'Дадае старонку абмеркаваньня да старонкі',
+	'talkhere-foottext' => 'Камэнтары ўверсе маглі быць пакінутыя наведвальнікамі.
+
+Адміністратары гэтага сайта ня могуць несьці адказнасьць за зьмест падобных камэнтараў.',
+	'talkhere-talkpage' => 'старонка абмеркаваньня',
+	'talkhere-notalk' => "''(камэнтараў пакуль няма)''",
+	'talkhere-addcomment' => 'дадаць камэнтар',
+	'talkhere-beforeinput' => 'Вы можаце дадаць камэнтар ніжэй',
+	'talkhere-loading' => 'загрузка рэдактара…',
+	'talkhere-collapse' => 'схаваць рэдактар',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

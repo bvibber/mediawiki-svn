@@ -83,10 +83,12 @@ $wgCustomToolbarMessages['am'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  * @author Ouda
  */
 $wgCustomToolbarMessages['ar'] = array(
+	'ct-desc' => 'يضيف شريط أدوات ممدد',
 	'ct_bold_sample' => 'نص عريض',
 	'ct_bold_tip_ins' => 'إدراج نص عريض',
 	'ct_bold_tip_wrap' => 'جعل هذا النص عريضا',
@@ -106,6 +108,7 @@ $wgCustomToolbarMessages['ar'] = array(
 	'ct_image_caption' => 'أضف صورة',
 	'ct_attachment_tip' => 'إدراج مُرفق',
 	'ct_attachment_caption' => 'إضافة مرفق',
+	'ct_math_sample' => 'أضف صيغة LaTeX هنا',
 	'ct_math_tip_ins' => '(LaTeX) أدخل الصيغة الرياضية',
 	'ct_math_tip_wrap' => '(LaTeX) أجعل هذا النص صيغة رياضية',
 	'ct_math_caption' => 'صيغة',
@@ -122,6 +125,7 @@ $wgCustomToolbarMessages['ar'] = array(
 	'ct_submit' => '! أذهب',
 	'ct_close' => 'أغلق النافذة',
 	'ct_success' => '! تم رفع الملف بنجاح',
+	'ct_popupblocked' => 'نافذة الرفع تم منعها من الفتح. من فضلك تحقق من مانع النوافذ الخاص بك.',
 	'ct_user_user' => 'مستخدم',
 	'ct_user_tip' => 'إدراج وصلة لصفحة مستخدم',
 	'ct_user_caption' => 'وصلة المستخدم',
@@ -1356,15 +1360,26 @@ $wgCustomToolbarMessages['pt'] = array(
 	'ct_italic_caption' => 'Itálico',
 	'ct_internal_sample' => 'NomeDaPágina',
 	'ct_internal_tip_ins' => 'Inserir uma ligação interna',
+	'ct_internal_tip_wrap' => 'Tornar este texto uma ligação interna',
 	'ct_internal_caption' => 'Ligação interna',
+	'ct_external_tip_ins' => 'Inserir uma ligação externa',
+	'ct_external_tip_wrap' => 'Tornar este texto uma ligação externa',
 	'ct_external_caption' => 'Ligação externa',
+	'ct_image_tip' => 'Inserir uma imagem',
 	'ct_image_caption' => 'Adicionar imagem',
+	'ct_attachment_tip' => 'Inserir um anexo',
+	'ct_attachment_caption' => 'Adicionar um anexo',
 	'ct_math_caption' => 'Fórmula',
+	'ct_nowiki_sample' => 'Inserir texto não formatado aqui',
+	'ct_nowiki_tip_ins' => 'Ignorar formatação wiki',
+	'ct_nowiki_tip_wrap' => 'Ignorar formatação wiki neste texto',
+	'ct_horizontal_tip' => 'Inserir uma linha horizontal (usar com moderação)',
 	'ct_horizontal_caption' => 'Linha horizontal',
 	'ct_upload' => 'Carregar $1',
 	'ct_submit' => 'Ir!',
 	'ct_close' => 'Fechar janela',
 	'ct_user_user' => 'Utilizador',
+	'ct_user_tip' => 'Inserir uma ligação para uma página de utilizador',
 	'ct_user_caption' => 'Ligação de utilizador',
 	'ct_user_sample' => 'Nome de utilizador',
 );

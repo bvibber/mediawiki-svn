@@ -236,6 +236,21 @@ Esta mensaxe serve para notificarlle que o $3 o usuario $4 $5.',
 	'categorywatch-catsub' => 'eliminou $1 da categoría $2',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'categorywatch-desc' => 'הרחבת יכולות רשימת המעקב להכללת התרעות אודות שינויים בדפים החברים בקטגוריות שבמעקב',
+	'categorywatch-emailbody' => 'היי $1, הודעה זו התקבלה כיוון שאתם עוקבים אחר הקטגוריה "$2".
+הודעה זו נועדה להודיע לכם שב־$3 המשתמש $4 $5.',
+	'categorywatch-emailsubject' => 'פעילויות בהן מעורבת הקטגוריה שבמעקב "$1"',
+	'categorywatch-catmovein' => 'העביר את $1 להקטגוריה $2 מהקטגוריה $3',
+	'categorywatch-catmoveout' => 'העביר את $1 אל מחוץ לקטגוריה $2 אל הקטגוריה $3',
+	'categorywatch-catadd' => 'הוסיף את $1 לקטגוריה $2',
+	'categorywatch-catsub' => 'הסיר את $1 מהקטגוריה $2',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

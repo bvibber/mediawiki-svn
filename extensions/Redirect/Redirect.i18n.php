@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'redirect-userlogoutcomplete' => '', # do not translate or duplicate this message to other languages
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'redirect-desc' => 'يسمح بضبط سهل للتحويلات عند [[MediaWiki:Redirect-addnewaccount|إنشاء الحساب]] و [[MediaWiki:Redirect-userlogoutcomplete|تسجيل الخروج]]',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'redirect-desc' => 'Erlaubt das einfache Konfigurieren von Weiterleitungen beim [[MediaWiki:Redirect-addnewaccount|Erstellen von Benutzerkonten]] und beim [[MediaWiki:Redirect-userlogoutcomplete|Abmelden]]',
@@ -48,6 +55,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'redirect-desc' => 'Permite a configuración sinxela das redireccións na [[MediaWiki:Redirect-addnewaccount|creación de contas]] e na [[MediaWiki:Redirect-userlogoutcomplete|saída ao anonimato]]',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'redirect-desc' => 'מתן האפשרות להגדרה קלה של הפניות ב[[MediaWiki:Redirect-addnewaccount|יצירת חשבון]] וב[[MediaWiki:Redirect-userlogoutcomplete|יציאה מחשבון]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -425,7 +425,7 @@ $messages['he'] = array(
 	'deletebatch-or' => '<b>או</b>',
 	'deletebatch-page' => 'דפים למחיקה',
 	'deletebatch-reason' => 'סיבה למחיקה',
-	'deletebatch-processing' => 'מחיקת דפים',
+	'deletebatch-processing' => 'מחיקת דפים $1',
 	'deletebatch-from-file' => 'מרשימת בקובץ',
 	'deletebatch-from-form' => 'מתוך טופס',
 	'deletebatch-success-subtitle' => 'עבור $1',
@@ -436,6 +436,7 @@ $messages['he'] = array(
 	'deletebatch-select-script' => 'סקריפט מחיקת דפים',
 	'deletebatch-select-yourself' => 'אתם',
 	'deletebatch-no-page' => 'אנא ציינו לפחות דף אחד למחיקה או בחרו קובץ המכיל רשימת דפים.',
+	'right-deletebatch' => 'מחיקה של דפים רבים ביחד',
 );
 
 /** Croatian (Hrvatski)

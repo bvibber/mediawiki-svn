@@ -25,9 +25,14 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author Ouda
  */
 $messages['ar'] = array(
+	'autocreatecategorypages-desc' => 'ينشء صفحات التصنيف الناقصة تلقائيا عند الحفظ',
+	'autocreatecategorypages-stub' => 'هذه صفحة تصنيف.
+هي تعرض كل الصفحات في التصنيف "$1" بالإضافة للتصنيفات الفرعية للتصنيف "$1" لو كان أيا منها موجودا.',
+	'autocreatecategorypages-createdby' => 'تم إنشاؤها بواسطة امتداد AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'منشئ تصنيف تلقائي',
 );
 

@@ -597,7 +597,24 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'passwordreset' => 'パスワードの再設定',
+	'passwordreset-desc' => '[[Special:PasswordReset|ウィキ利用者のパスワードを再設定する]] - パスワード再設定権限 (passwordreset) が必要',
+	'passwordreset-invalidusername' => '無効な利用者名',
+	'passwordreset-emptyusername' => '利用者名が空',
+	'passwordreset-nopassmatch' => 'パスワードが一致しません',
+	'passwordreset-badtoken' => '編集トークンが不正',
 	'passwordreset-username' => '利用者名:',
+	'passwordreset-newpass' => '新しいパスワード:',
+	'passwordreset-confirmpass' => '確認用パスワード:',
+	'passwordreset-submit' => 'パスワードを再設定',
+	'passwordreset-success' => '利用者ID $1 のパスワードを再設定しました。',
+	'passwordreset-disableuser' => '利用者アカウントを無効化しますか？',
+	'passwordreset-disableuserexplain' => '(不正なパスワードハッシュを設定。利用者はログインできない)',
+	'passwordreset-disablesuccess' => '利用者ID $1 のアカウントは無効化されています。',
+	'passwordreset-accountdisabled' => 'アカウントを無効化しました',
+	'disabledusers' => '無効化済利用者',
+	'disabledusers-summary' => 'これはパスワードの再設定を使って無効化された利用者の一覧です。',
+	'right-passwordreset' => '利用者のパスワードを再設定する ([[Special:PasswordReset|特別ページ]])',
 );
 
 /** Javanese (Basa Jawa)

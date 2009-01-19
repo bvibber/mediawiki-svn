@@ -42,6 +42,18 @@ $messages['arz'] = array(
 	'stalkerlog-log-text' => 'ده سجل بعمليات تسجيل الدخول والخروج لليوزرز.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'stalkerlog-desc' => 'Дадае [[Special:Log/stalkerlog|журнал]] уваходу і выхаду ўдзельнікаў',
+	'stalkerlog-log-login' => 'уваходы.',
+	'stalkerlog-log-logout' => 'выхады.',
+	'stalkerlog-log-type' => 'Журнал аўтэнтыфікацыі ўдзельнікаў',
+	'stalkerlog-log-text' => 'Гэта журнал уваходаў і выхадаў удзельнікаў.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

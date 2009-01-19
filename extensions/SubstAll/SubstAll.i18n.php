@@ -38,6 +38,13 @@ $messages['arz'] = array(
 	'substall-hook' => 'نسخ_الكل',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'substall-desc' => 'Стварае тэг <nowiki><substall></nowiki>, які раскрывае ўсе шаблёны да ўзроўню вікі-сынтаксісу',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

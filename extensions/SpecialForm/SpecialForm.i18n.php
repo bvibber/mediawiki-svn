@@ -54,11 +54,13 @@ Please fill it in.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'form-desc' => 'Short description of the Form extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'formpattern' => 'The pattern of page names of form definitions. $1 is a given name for a form definition.',
 	'formsave' => '{{Identical|Save}}',
 );
 
@@ -137,9 +139,32 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'form-desc' => '[[Special:Form|Форма інтэрфэйсу]] для стварэньня новых старонак',
+	'form' => 'Форма',
+	'formnoname' => 'Няма назвы формы',
+	'formnonametext' => 'Вам трэба падаць назву формы, напрыклад, «Special:Form/Назва_формы».',
+	'formbadname' => 'Няслушная назва формы',
+	'formbadnametext' => 'Няма формы з такой назвай.',
+	'formpattern' => 'форма $1',
+	'formtitlepattern' => 'Дадаць новую $1',
 	'formsave' => 'Захаваць',
+	'formindexmismatch-title' => 'Узор назвы і шаблён не спалучаюцца',
+	'formindexmismatch' => 'Гэтай форме ўтрымлівае ўзоры назваў і шаблёнаў, якія не спалучаюцца, пачынаючы з індэксу $1.',
+	'formarticleexists' => 'Старонка існуе',
+	'formarticleexiststext' => 'Старонка [[$1]] ужо існуе.',
+	'formbadpagename' => 'Няслушная назва старонкі',
+	'formbadrecaptcha' => 'Памылковыя значэньні reCaptcha. Паспрабуйце ізноў.',
+	'formbadpagenametext' => 'Зьвесткі, якія Вы ўвялі ў форме, робяць назву старонкі няслушнай, «$1».',
+	'formrequiredfieldpluralerror' => 'У гэта форме патрабуюцца палі $1.
+Калі ласка, запоўніце іх.',
+	'formrequiredfielderror' => 'У гэта форме патрабуецца поле $1.
+Калі ласка, запоўніце яго.',
+	'formsavesummary' => 'Новая старонка створаная з дапамогай [[Special:Form/$1|формы $1]]',
+	'formsaveerror' => 'Памылка захаваньня формы',
+	'formsaveerrortext' => "Адбылася невядомая памылка пад час захаваньня старонкі '$1'.",
 );
 
 /** Bulgarian (Български)
@@ -497,10 +522,31 @@ $messages['is'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'form-desc' => 'ページを作成する[[Special:Form|フォーム形式のインタフェース]]',
+	'form' => 'フォーム',
+	'formnoname' => 'フォーム名がありません',
+	'formnonametext' => 'フォームの名前を決めなければなりません。(例: Special:Form/Nameofform)',
+	'formbadname' => '不正なフォーム名',
+	'formbadnametext' => 'その名前のフォームはありません。',
+	'formpattern' => '$1-form',
+	'formtitlepattern' => '新規$1を追加',
 	'formsave' => '保存',
+	'formindexmismatch-title' => '名前パターンとテンプレートの不整合',
+	'formindexmismatch' => 'このフォームには、インデックス $1 で始まる名前パターンとテンプレートの不整合があります。',
+	'formarticleexists' => 'ページが存在します',
+	'formarticleexiststext' => 'そのページ [[$1]] は既に存在します。',
+	'formbadpagename' => '不正なページ名',
+	'formbadrecaptcha' => 'reCAPTCHA 用の値が不正です。再度試してください。',
+	'formbadpagenametext' => 'あなたが入力したフォームのデータは不正なページ名「$1」を作ります。',
+	'formrequiredfieldpluralerror' => '欄「$1」はこのフォームで必須です。入力してください。',
+	'formrequiredfielderror' => '欄「$1」はこのフォームで必須です。入力してください。',
+	'formsavesummary' => '[[Special:Form/$1|$1フォーム]]を使ってページ作成',
+	'formsaveerror' => 'フォーム保存時のエラー',
+	'formsaveerrortext' => 'ページ「$1」の保存時に不明なエラーがありました。',
 );
 
 /** Javanese (Basa Jawa)

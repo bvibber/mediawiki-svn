@@ -315,7 +315,7 @@ $wdMessages['ar'] = array(
 	'ow_meaningsofsubtitle' => '<em>وصلة ويكي:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>السماح مرفوض</h2>',
 	'ow_copy_no_action_specified' => 'من فضلك حدد فعلا',
-	'ow_copy_help' => 'يوما ما، ربما نساعدك.',
+	'ow_copy_help' => 'المساعدة ليست مطبقة حاليا.',
 	'ow_please_proved_dmid' => 'على ما يبدو دخلك يفقد ?dmid=<something>  (dmid=رقم المعنى المعرف)<br />
 من فضلك اتصل بإداري خادم.',
 	'ow_please_proved_dc1' => 'على ما يبدو دخلك يفقد ?dc1=<something>  (dc1=سياق مجموعة البيانات 1، مجموعة البيانات للنسخ منها)<br />

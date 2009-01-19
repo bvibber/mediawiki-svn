@@ -703,6 +703,7 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  * @author Ouda
  */
@@ -727,6 +728,7 @@ $messages['ar'] = array(
 	'configure-setting-wgExtraLanguageNames-key' => 'كود اللغة',
 	'configure-setting-wgExtraLanguageNames-value' => 'اسم',
 	'configure-setting-wgExtraSubtitle' => 'عنوان فرعي (يظهر تحت عنوان الصفحة)',
+	'configure-setting-wgSiteNotice' => 'إعلان الموقع',
 	'configure-setting-wgCheckFileExtensions' => 'أفحص إمتدادات الملف',
 	'configure-setting-wgEnableUploads' => 'إتاحة رفع الملفات',
 	'configure-setting-wgFileStore' => 'أين تخزن الملفات المحذوفة',
@@ -742,6 +744,7 @@ $messages['ar'] = array(
 	'configure-setting-wgSpecialPageGroups' => 'مجموعات الصفحة الخاصة',
 	'configure-setting-wgSpecialPageGroups-key' => 'مجموعة',
 	'configure-setting-wgUseNPPatrol' => 'إستخدم دوريات الصفحات الجديدة لمراجعة التخريب',
+	'configure-setting-wgAutopromote-value' => 'شروط',
 	'configure-setting-wgEnableAPI' => 'API تفعيل',
 	'configure-setting-wgEnableWriteAPI' => 'API تفعيل كتاية',
 	'configure-setting-wgWhitelistRead' => 'الصفحات التي يمكن للمستخدم المجهول رؤيتها',
@@ -752,10 +755,12 @@ $messages['ar'] = array(
 	'configure-setting-wgDebugLogGroups-key' => 'دخول المجموعة',
 	'configure-setting-wgDebugLogGroups-value' => 'ملف',
 	'configure-setting-wgUpdateRowsPerJob' => 'عدد الصفوف لتحديثها في المهمة',
+	'configure-setting-wgDisableSearchUpdate' => 'تعطيل التحديثات للبحث',
 	'configure-setting-wgDisableTextSearch' => 'تعطيل البحث بالنص الكامل',
 	'configure-setting-wgCookieExpiration' => 'أنقضاء سجل المتصفح',
 	'configure-setting-wgCookieSecure' => 'سجلات متصفح آمنه',
 	'configure-setting-wgSessionName' => 'اسم القسم',
+	'configure-setting-wgUseSquid' => 'تفعيل السكويد',
 	'configure-setting-wgAvailableRights' => 'قائمة الحقوق المتاحة',
 	'configure-setting-wgExtensionFunctions' => 'وظائف الإمتداد',
 	'configure-setting-wgSpecialPages' => 'الصفحات الخاصة المخصصة',
@@ -770,12 +775,18 @@ $messages['ar'] = array(
 	'configure-setting-wgValidSkinNames' => 'اسماء واجهة صحيحة',
 	'configure-setting-wgValidSkinNames-key' => 'أسم داخلي',
 	'configure-setting-wgValidSkinNames-value' => 'أظهر أسم',
+	'configure-setting-wgExtraNamespaces-key' => 'رقم النطاق',
+	'configure-setting-wgExtraNamespaces-value' => 'اسم النطاق',
+	'configure-setting-wgNamespaceAliases' => 'تحويلات النطاق',
+	'configure-setting-wgNamespaceProtection' => 'حماية النطاق',
+	'configure-setting-wgNamespaceRobotPolicies-value' => 'سياسات الروبوت',
 	'configure-setting-wgRightsIcon' => 'أيقونة حقوق الطبع',
 	'configure-setting-wgActiveUserDays' => 'الوقت الذي بعده يكون المستخدم غير نشط',
 	'configure-setting-wgAllowRealName' => 'السماح بالاسماء الحقيقية',
 	'configure-setting-wgAllowUserSkin' => 'السماح للمستخدمين بتغيير واجهتهم',
 	'configure-setting-wgDefaultUserOptions' => 'تفضيلات المستخدم الأساسية',
 	'configure-setting-wgCompressRevisions' => 'أضغط الملفات القديمة لو أمكن',
+	'configure-setting-wgExternalDiffEngine' => 'محرك فرق خارجي',
 	'configure-setting-wgProxyList' => 'عنوان آي بي ممنوع',
 	'configure-setting-wgProxyWhitelist' => 'القائمة البيضاء للبروكسي',
 	'configure-setting-wgSecretKey' => 'مفتاح سري',
@@ -784,9 +795,13 @@ $messages['ar'] = array(
 	'configure-setting-wgAntivirusRequired' => 'يحتاج مسح فيروسات ناجح',
 	'configure-setting-wgSVGConverter' => 'SVG محول',
 	'configure-setting-wgSVGConverters' => 'SVG محولات',
+	'configure-setting-wgSVGConverters-key' => 'اسم المحول',
 	'configure-setting-wgMessageCacheType' => 'نوع كاش الرسائل',
 	'configure-setting-wgMsgCacheExpiry' => 'إنتهاء صلاحية كاش الرسائل',
 	'configure-setting-wgUseTeX' => 'TeX تفعيل',
+	'configure-setting-wgXhtmlNamespaces-key' => 'النطاق',
+	'configure-setting-wgArticlePath' => 'مسار المقالة',
+	'configure-setting-wgLogo' => 'مسار شعار الموقع',
 	'configure-setting-wgRCLinkDays' => 'أيام محددة في أحدث التغييرات',
 	'configure-setting-wgEnotifUseJobQ' => 'أرسل بريد إلكتروني بواسطة طابور الشغل',
 );

@@ -78,6 +78,7 @@ Releasing this information can result in permanent loss of Oversight privileges.
  */
 $messages['qqq'] = array(
 	'hiderevision-desc' => 'Short description of the Oversight extension, shown on [[Special:Version]].',
+	'group-oversight' => '{{Identical|Oversight}}',
 	'group-oversight-member' => 'A user in the group "Oversight". Translate it as "Oversighter".
 
 {{Identical|Oversight}}',

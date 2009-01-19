@@ -336,6 +336,20 @@ $messages['gl'] = array(
 	'watchers_less_than_x' => 'Menos de $1 {{PLURAL:$1|usuarios|usuarios}} están vixiando esta páxina.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'watchers' => 'Beobachter',
+	'watchers-desc' => 'Zeigt, [[Special:Watchers|wievyyl Benutzer]] e Seite uf ihre Beobachtigslischt hän.',
+	'watchers_link_title' => 'Wär beobachtet die Syte?',
+	'watchers_error_article' => "'''Fähler:''' Syte git s nit.",
+	'watchers_header' => '{{PLURAL:$2|Benutzer, wu „$1“ beobachtet|Benutzer, wu „$1“ beobachte}}',
+	'watchers_noone_watches' => 'S git kei Benutzer, wu die Syte beobachte.',
+	'watchers_x_or_more' => '$1 oder meh {{PLURAL:$1|Benutzer|Benutzer}} beobachte die Syte.',
+	'watchers_less_than_x' => 'Weniger as {{PLURAL:$1|$1 Benutzer|$1 Benutzer}} beobachte die Syte.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -51,11 +51,13 @@ $messages['ar'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'spamdifftool-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'spamdifftool_option_none' => '{{Identical|Nothing}}',
 	'spamdifftool_submit_buttom' => '{{Identical|Submit}}',
 );
 
@@ -552,9 +554,27 @@ Fai click <a href='$1'>qui</a> per tornare.",
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'spamdifftool' => 'スパム用ブラックリストの管理',
+	'spamdifftool-desc' => 'スパム用ブラックリストに差分ページから新規項目を追加するための基本手段を提供する',
+	'spamdifftool_cantedit' => 'あなたにはスパム用ブラックリストを編集する権限がありません。',
+	'spamdifftool_notext' => "スパム用ブラックリストに追加する文字列はありません。<a href='$1'>ここ</a>をクリックして続行します。",
+	'spamdifftool_confirm' => "これらの項目をスパム用ブラックリストに追加したいか確認してください。(問題を報告するには<a href='$1' target='new'>ここ</a>をクリックします)",
+	'spamdifftool_summary' => 'スパム用ブラックリストに追加中',
+	'spamdifftool_urls_detected' => '以下のURLが編集から検出されました。スパム用ブラックリストに追加したいのはどれですか？
+
+各オプションは制限の強いものから弱いものの順に並んでいます。ドメイン全体のブロックはそのドメインに属するあらゆるリンクをブロックします。
+
+blogpost.com や geocities.com といった、利用者アカウントを提供するものはドメイン全体をブロックしないように必ずしてください。',
+	'spamdifftool_no_urls_detected' => "URLはひとつも検出されませんでした。<a href='$1'>ここ</a>をクリックして戻ります。",
+	'spamdifftool_spam_link_text' => 'スパムに追加',
+	'spamdifftool_option_domain' => 'このドメインのすべて',
+	'spamdifftool_option_subdomain' => 'このサブドメインのすべて',
+	'spamdifftool_option_directory' => 'このサブドメインとディレクトリ',
+	'spamdifftool_option_none' => 'なし',
 	'spamdifftool_block' => 'ブロック:',
 	'spamdifftool_submit_buttom' => '送信',
 );

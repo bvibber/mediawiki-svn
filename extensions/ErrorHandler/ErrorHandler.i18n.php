@@ -37,6 +37,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author IAlex
  * @author Purodha
  */
 $messages['qqq'] = array(
@@ -49,6 +50,10 @@ $messages['qqq'] = array(
 *$2 - error message
 *$3 - filename
 *$4 - line number',
+	'errorhandler-trace-line' => '*$1: filename
+*$2: line number
+*$3: function name',
+	'errorhandler-trace-line-internal' => '* $1: function name',
 );
 
 /** Arabic (العربية)
@@ -359,6 +364,8 @@ $messages['he'] = array(
 	'errorhandler-msg-text' => '$1 : $2 ב־$3 (שורה $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> ב־<b>$3</b> (שורה <b>$4</b>)',
 	'errorhandler-trace' => 'עקבות:',
+	'errorhandler-trace-line' => '$1 (שורה $2): $3',
+	'errorhandler-trace-line-internal' => '[פונקציה פנימית]: $1',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

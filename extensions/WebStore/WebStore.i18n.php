@@ -762,6 +762,62 @@ $1',
 	'webstore_no_handler' => 'Non hai un programa para transformar este tipo MIME',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'inplace_access_disabled' => 'Dr Zuegriff uf dää Service isch fir alli Client deaktiviert wore.',
+	'inplace_access_denied' => 'Dr Zuegriff uf dää Service wird dur d IP-Adräss vum Client reguliert.',
+	'inplace_scaler_no_temp' => 'Kei giltig temporär Verzeichnis.
+Setz $wgLocalTmpDirectory uf e Verzeichnis mit Schryybzuegriff.',
+	'inplace_scaler_not_enough_params' => 'Z wenig Parameter.',
+	'inplace_scaler_invalid_image' => 'Uugiltig Bild, Greßi cha nit feschtgstellt wäre.',
+	'inplace_scaler_failed' => 'Bim Skaliere vum Bild isch e Fähler ufträtte: $1',
+	'inplace_scaler_no_handler' => 'S het kei Routine fir d Transformation vu däm MIME-Typ',
+	'inplace_scaler_no_output' => 'D Transformation het kei Uusgabedatei erzyygt.',
+	'inplace_scaler_zero_size' => 'D Transformation het e Uusgabedatei mit dr Längi Null erzyygt.',
+	'webstore-desc' => 'Online-Zwischenaawändig fir d Dateilagerig (kei NFS)',
+	'webstore_access' => 'Dr Zuegriff uf dää Service wird dur d IP-Adräss vum Client reguliert.',
+	'webstore_path_invalid' => 'Dr Dateiname isch nit giltig gsi.',
+	'webstore_dest_open' => 'Ziildatei „$1“ chaa nit ufgmacht wäre.',
+	'webstore_dest_lock' => 'Ziildatei „$1“ het nit chenne gsperrt wäre.',
+	'webstore_dest_mkdir' => 'Ziilverzeichnis „$1“ het nit chennen aagleit wäre.',
+	'webstore_archive_lock' => 'Archivdatei „$1“ het nit chenne gspycheret wäre.',
+	'webstore_archive_mkdir' => 'Archivverzeichnis „$1“ cha nit aagleit wäre.',
+	'webstore_src_open' => 'Quälldatei „$1“ cha nit ufgmacht wäre.',
+	'webstore_src_close' => 'Fähler bim Zuemache vu dr Quälldatei „$1“.',
+	'webstore_src_delete' => 'Fähler bim Lesche vu dr Quälldatei „$1“.',
+	'webstore_rename' => 'Fähler bim Umnänne vu dr Datei „$1“ in „$2“.',
+	'webstore_lock_open' => 'Fähler bim Ufmache vu dr Lockdatei „$1“.',
+	'webstore_lock_close' => 'Fähler bim Zuemache vu dr Lockdatei „$1“.',
+	'webstore_dest_exists' => 'Fähler, Ziildatei „$1“ git s scho.',
+	'webstore_temp_open' => 'Cha di temporär Datei „$1“ nit ufmache.',
+	'webstore_temp_copy' => 'Fähler bim Kopiere vu dr temporäre Datei „$1“ zue dr Ziildatei „$2“.',
+	'webstore_temp_close' => 'Fähler bim Zuemache vu dr temporäre Datei „$1“.',
+	'webstore_temp_lock' => 'Fähler bim Sperre vu dr temporäre Datei „$1“.',
+	'webstore_no_archive' => 'Ziildatei git s un kei Archiv isch aagee wore.',
+	'webstore_no_file' => 'S isch kei Datei uffeglade wore.',
+	'webstore_move_uploaded' => 'Fähler bim Verschiebe vu dr uffegladene Datei „$1“ zum Zwischespycherort „$2“.',
+	'webstore_invalid_zone' => 'Uugiltigi Zone „$1“.',
+	'webstore_no_deleted' => 'S isch kei Archivverzeichnis fir gleschti Dateie definiert wore.',
+	'webstore_curl' => 'Fähler vu cURL: $1',
+	'webstore_404' => 'Datei nit gfunde.',
+	'webstore_php_warning' => 'PHP-Warnig: $1',
+	'webstore_metadata_not_found' => 'Datei nit gfunde: $1',
+	'webstore_postfile_not_found' => 'Kei Datei zum Yystelle gfunde.',
+	'webstore_scaler_empty_response' => 'Dr Bildskalierer het e lääri Antwort mit em Antwortcode 200 zrugggee.
+Des chennt dur e fatale PHP-Fähler im Skalierer verursacht syy.',
+	'webstore_invalid_response' => 'Uugiltigi Antwort vum Server:
+
+$1',
+	'webstore_no_response' => 'Kei Antwort vum Server',
+	'webstore_backend_error' => 'Fähler vum Spycherserver:
+
+$1',
+	'webstore_php_error' => 'S het PHP-Fähler gee:',
+	'webstore_no_handler' => 'S git kei Routine fir d Transformation vu däm MIME-Typ',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

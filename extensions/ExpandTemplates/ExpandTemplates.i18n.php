@@ -359,13 +359,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Metalhead64
  * @author Raimond Spekking
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'expandtemplates' => 'Vorlagen expandieren',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandiert Vorlagen, Parser-Funktionen und Variablen]] zu vollständigem Wikitext und zeigt die gerenderte Vorschau',
-	'expand_templates_intro' => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunkionen wie <nowiki>{{</nowiki>#if:…}} und Variablen wie <nowiki>{{</nowiki>CURRENTDAY}} werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
+	'expand_templates_intro' => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunkionen wie <code><nowiki>{{</nowiki>#if:…}}</code> und Variablen wie <code><nowiki>{{</nowiki>CURRENTDAY}}</code> werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
 	'expand_templates_title' => 'Kontexttitel, für {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Eingabefeld:',
 	'expand_templates_output' => 'Ergebnis',
@@ -1011,6 +1012,10 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'expandtemplates' => 'Schablounen expandéieren',
 	'expandtemplates-desc' => "[[Special:ExpandTemplates|Erweidert Schablounen, Parser-Funktiounen a Variabelen]] zu engem komplette Wikitext a weist d'Säiten esou wéi wann se ofgespäichert wieren.",
+	'expand_templates_intro' => 'Op dëser Spezialsäit kann Text agi ginn an all Schablounen doran gi rekursiv expandéiert.
+Och Parserfonctioune wéi <nowiki>{{</nowiki>#if:…}} a Variabele wéi 
+<nowiki>{{</nowiki>CURRENTDAY}} ginn ausgewert&mdash; faktisch alles wat an duebele geschweefte Klamere steet.
+Dëst geschitt duerch Oprufe vun de jeweiligen Parser-Phasen vu MediaWiki selwer.',
 	'expand_templates_title' => 'Titel vun der Säit, dëst kann nëtzlech si wa(nn) {{PAGENAME}} benotzt gëtt:',
 	'expand_templates_input' => 'Gitt ären Text hei an:',
 	'expand_templates_output' => 'Resultat',

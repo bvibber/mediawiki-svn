@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'stringfunctions-desc' => 'يعزز المحلل بدوال سلسلة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'stringfunctions-desc' => 'Пашырае магчымасьці парсэра функцыямі працы з радкамі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

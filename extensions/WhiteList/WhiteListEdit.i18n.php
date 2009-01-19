@@ -339,7 +339,7 @@ $messages['be-tarask'] = array(
 	'whitelistnewtableview' => 'Пазначыць для прагляду',
 	'whitelistnowhitelistedusers' => 'У групе «{{MediaWiki:Group-restricted}}» няма ўдзельнікаў.
 Вам неабходна [[Special:UserRights|дадаць удзельнікаў у групу]] перад тым, як Вам можна будзе дадаваць старонкі ў белы сьпіс удзельнікаў.',
-	'whitelistnewtableprocess' => 'Працэс',
+	'whitelistnewtableprocess' => 'Пераўтварэньне',
 	'whitelistnewtablereview' => 'Праглядзець',
 	'whitelistselectrestricted' => '== Выберыце імя ўдзельніка ==',
 	'whitelistpagelist' => 'Старонкі {{SITENAME}} для $1',

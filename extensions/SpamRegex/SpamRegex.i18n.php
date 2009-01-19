@@ -120,6 +120,7 @@ $messages['ar'] = array(
 	'spamregex-block-submit' => 'منع&nbsp;هذه&nbsp;العبارة',
 	'spamregex-text' => '(نص)',
 	'spamregex-summary-log' => '(ملخص)',
+	'right-spamregex' => 'منع عبارات السبام من خلال [[Special:SpamRegex]]',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -430,6 +431,7 @@ $messages['he'] = array(
 	'spamregex-block-submit' => 'חסימת&nbsp;מונח&nbsp;זה',
 	'spamregex-text' => '(טקסט)',
 	'spamregex-summary-log' => '(תקציר)',
+	'right-spamregex' => 'חסימת מונחי ספאם דרך [[Special:SpamRegex]]',
 );
 
 /** Hindi (हिन्दी)

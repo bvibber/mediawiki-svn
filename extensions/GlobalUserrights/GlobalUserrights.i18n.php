@@ -33,10 +33,15 @@ Do not translate or change tag names, or link anchors.',
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author Ouda
  */
 $messages['ar'] = array(
+	'globaluserrights' => 'التحكم بصلاحيات المستخدمين العامة',
+	'gur-desc' => 'إدارة سهلة [[Special:GlobalUserRights|لصلاحيات المستخدمين العامة]]',
 	'gur-rightslog-name' => 'سجل الحقوق العالمي',
+	'gur-rightslog-header' => 'هذا سجل بالتغييرات للصلاحيات العامة.',
+	'gur-rightslog-entry' => 'غير عضوية المجموعة العامة ل$1 من $2 إلى $3',
 	'right-userrights-global' => 'إدارة سجل الحقوق العالمي',
 );
 

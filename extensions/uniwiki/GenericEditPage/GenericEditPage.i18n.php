@@ -52,12 +52,15 @@ $messages['am'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  * @author Ouda
  * @author ترجمان05
  */
 $messages['ar'] = array(
+	'gep-desc' => 'يدعم نافذة التعديل لتكون أفضل للمستخدم',
 	'gep-emailsubject' => '[$1] اقتراح التصنيف: $2',
+	'gep-emailbody' => 'المستخدم "$1" اقترح التصنيف "$2" للموقع "$3".',
 	'gep-emailfailure' => 'للأسف ، أقتراحك لا يمكن أن يتم',
 	'gep-emailsuccess' => 'شكرا لاقتراح التصنيف: $1.',
 	'gep-categories' => 'تصنيفات',
@@ -71,6 +74,8 @@ $messages['ar'] = array(
 	'gep-addsectionbutton' => 'أضف',
 	'gep-classicmode' => 'النمط التقليدي',
 	'gep-genericmode' => 'النمط العام',
+	'gep-nosectioninstructions' => 'لا توجد أقسام في هذه الصفحة.
+أضف البعض باستخدام الأدوات في شريط القائمة.',
 	'gep-nocategories' => 'من فضلك أختار على الأقل تصنيف واحد قبل الحفظ',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );

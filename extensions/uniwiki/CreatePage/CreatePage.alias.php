@@ -40,6 +40,11 @@ $aliases['hu'] = array(
 	'CreatePage' => array( 'Oldalkészítés', 'Oldal készítése' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'CreatePage' => array( 'ページ作成' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'CreatePage' => array( 'បង្កើត​ទំព័រ' ),

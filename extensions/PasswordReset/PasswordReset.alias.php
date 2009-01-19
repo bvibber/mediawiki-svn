@@ -61,7 +61,8 @@ $aliases['hr'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'PasswordReset' => array( 'パスワードのリセット', 'パスワードリセット', 'パスワード再設定', 'パスワードの再設定' ),
+	'PasswordReset' => array( 'パスワードの再設定', 'パスワード再設定', 'パスワードのリセット', 'パスワードリセット' ),
+	'Disabledusers' => array( '無効化済利用者' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
