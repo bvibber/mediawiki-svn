@@ -237,7 +237,7 @@ function UW_GenericEditPage_extractCategoriesIntoBox( &$text ) {
 					// only if a category name was entered...
 					var cat_name = field.value.trim();
 					if (cat_name != '') {
-						sajax_do_call ('emailSuggestion', [cat_name], function (msg) {
+						sajax_do_call ('UW_GenericEditPage_emailSuggestion', [cat_name], function (msg) {
 
 							/* got response from the server, append it after the
 							 * suggest form (so subsequent suggestions are injected
@@ -752,8 +752,8 @@ function UW_GenericEditPage_combineBeforeSave ( &$editpage_Obj ) {
 	/* put the section titles and text
 	 * back into the default textbox */
 	foreach ( array_keys ( $nodes ) as $k ) {
-		if ( $nodes[$k]['title'] ) $editpage_Obj->textbox1 .= $nodes[$k]['title'];
-		if ( $nodes[$k]['text'] )  $editpage_Obj->textbox1 .= $nodes[$k]['text'];
+		if ( !empty($nodes[$k]['title']) ) $editpage_Obj->textbox1 .= $nodes[$k]['title'];
+		if ( !empty($nodes[$k]['text']) )  $editpage_Obj->textbox1 .= $nodes[$k]['text'];
 	}
 
 	// then add back the categories

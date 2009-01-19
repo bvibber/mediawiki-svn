@@ -118,7 +118,7 @@ class CustomToolbarUploadForm extends UploadForm {
 	/* Some code poached from Travis Derouin's <travis@wikihow.com>
 	 * UploadPopup extension
 	 */
-	var $mType, $mSection, $mCaption;
+	var $mType, $mSection, $mCaption, $mDestFile;
 
 	function CustomToolbarUploadForm(&$request) {
 		$this->mType = $request->getVal('type');
