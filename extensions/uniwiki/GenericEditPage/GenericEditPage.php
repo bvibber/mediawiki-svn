@@ -29,6 +29,7 @@ $wgSuggestCategoryRecipient = $wgEmergencyContact;
 $wgUseCategoryPage          = false;
 $wgRequireCategory          = false;
 $wgGenericEditPageWhiteList = array( NS_MAIN );
+$wgAllowSimilarTitles		= true;
 
 /* not configurable. in fact,
  * it's a big ugly hack */
@@ -287,7 +288,7 @@ function UW_GenericEditPage_renderSectionBox ( $sections ) {
 	";
 
 	for ( $i = 1; $i < count ( $sections ); $i++ ) {
-		if ( $sections[$i]['required'] ) {
+		if ( !empty($sections[$i]['required']) ) {
 
 			/* required sections are checked and disabled, but...
 			 * this doesn't pass a value back to the server! so
@@ -342,7 +343,7 @@ function UW_GenericEditPage_renderSectionBox ( $sections ) {
 
 function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 	global $wgHooks, $wgParser, $wgTitle, $wgRequest, $wgUser, $wgCategoryBox, $wgSectionBox, $wgRequireCategory;
-	global $wgGenericEditPageClass, $wgSwitchMode, $wgGenericEditPageWhiteList;
+	global $wgGenericEditPageClass, $wgSwitchMode, $wgGenericEditPageWhiteList, $wgAllowSimilarTitles;
 
 	// disable this whole thing on conflict and comment pages
 	if ( $editor->section == "new" || $editor->isConflict )
@@ -466,9 +467,11 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 
 		// if this section is already in the result,
 		// then skip to the next page section
-		for ( $j = 0; $j < count ( $result ); $j++ ) {
-			if ( $page[$i]['title'] == $result[$j]['title'] )
-				continue 2;
+		if(!$wgAllowSimilarTitles){
+			for ( $j = 0; $j < count ( $result ); $j++ ) {
+				if (!empty($result[$j]['title']) && $page[$i]['title'] == $result[$j]['title'] )
+					continue 2;
+			}
 		}
 
 		/* this page section has not been added yet!
@@ -478,7 +481,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 		$insert_at = null;
 
 		for ( $j = 0; $j < count ( $result ); $j++ ) {
-			if ( $result[$j]['title'] == $page[$i - 1]['title'] ) {
+			if (!empty($result[$j]['title']) && $result[$j]['title'] == $page[$i - 1]['title'] ) {
 				$insert_at = $j + 1;
 				break;
 			}
@@ -590,7 +593,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 		// if this section has a title, show it
 		if ( !empty($result[$i]['title']) ) {
 			$title = $result[$i]['title'];
-			if ( $result[$i]['lock-header'] ) {
+			if (!empty($result[$i]['lock-header']) &&  $result[$i]['lock-header'] ) {
 				$out->addHTML ( "<h2>$title</h2>" );
 				$out->addHTML ( "<input type='hidden' name='title-$i' value='$title' />" );
 			} else {
