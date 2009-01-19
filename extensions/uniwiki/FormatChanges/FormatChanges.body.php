@@ -5,9 +5,9 @@ class UniwikiFormatChanges {
 		return false;
 	}
 }
-	
+
 class UniwikiChangesList extends ChangesList {
-	
+
 	public function recentChangesLine( &$rc, $watched = false ) {
 		global $wgLang;
 

@@ -614,7 +614,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 			$out->addHTML ( "<div class='locked-text' id='locked-text-$i'>" . $text . "</div>" );
 		} else {
 			// add the editable text for this section
-			$text = (empty($result[$i]['text'])) ? "" : $result[$i]['text']; 
+			$text = (empty($result[$i]['text'])) ? "" : $result[$i]['text'];
 			$text = htmlspecialchars ($text , ENT_QUOTES );
 			$out->addHTML ( "<textarea name='section-$i' class='editor'>$text</textarea>" );
 		}

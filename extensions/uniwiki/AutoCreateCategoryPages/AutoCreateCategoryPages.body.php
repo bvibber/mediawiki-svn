@@ -1,5 +1,5 @@
 <?php
-	
+
 class UniwikiAutoCreateCategoryPages {
 	public function UW_AutoCreateCategoryPages_Save ( &$article, &$user, &$text, &$summary, &$minoredit, &$watchthis, &$sectionanchor, &$flags, $revision ) {
 		global $wgDBprefix;
@@ -20,10 +20,10 @@ class UniwikiAutoCreateCategoryPages {
 		$on_page = array();
 		foreach ( $matches[1] as $cat )
 			$on_page[] = Title::newFromText ( $cat )->getDBkey();
-		
+
 		$regex = "/\[\[category:(.+?)(?:\|.*)?\]\]/i";
 		preg_match_all ( $regex, $text, $matches );
-		
+
 		foreach ( $matches[1] as $cat )
 			$on_page[] = Title::newFromText ( $cat )->getDBkey();
 
