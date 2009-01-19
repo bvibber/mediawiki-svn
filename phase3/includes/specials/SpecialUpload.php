@@ -418,10 +418,9 @@ class UploadForm {
 	}
 	
 	/**
-	 * Check for duplicate files and throw up a warning before the upload
-	 * completes.
+	 * Construct the human readable warning message from an array of duplicate files 
 	 */
-	public static function getDupeWarning( $dupes ) {
+	public static function getDupeWarning( $dupes, $archivedImage = null ) {		
 		if( $dupes ) {
 			global $wgOut;
 			$msg = "<gallery>";
@@ -439,6 +438,7 @@ class UploadForm {
 			return '';
 		}
 	}
+		
 
 	/**
 	 * Remove a temporarily kept file stashed by saveTempUploadedFile().
@@ -501,6 +501,9 @@ class UploadForm {
 						$msg = self::getExistsWarning( $args );
 				} elseif( $warning == 'duplicate' ) {
 					$msg = $this->getDupeWarning( $args );
+				} elseif( $warning == 'duplicate-archive' ) {
+					$titleText = Title::makeTitle( NS_FILE, $args )->getPrefixedText();
+					$msg = Xml::tags( 'li', null, wfMsgExt( 'file-deleted-duplicate', array( 'parseinline' ), array( $titleText ) ) );
 				} elseif( $warning == 'filewasdeleted' ) {
 					$ltitle = SpecialPage::getTitleFor( 'Log' );
 					$llink = $sk->makeKnownLinkObj( $ltitle, wfMsgHtml( 'deletionlog' ),

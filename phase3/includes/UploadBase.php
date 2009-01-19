@@ -252,6 +252,7 @@ class UploadBase {
 		if ( $this->mFileSize == 0 )
 			$warning['emptyfile'] = true;
 		
+
 		$exists = self::getExistsWarning( $this->mLocalFile );
 		if( $exists !== false )
 			$warning['exists'] = $exists;
@@ -262,10 +263,16 @@ class UploadBase {
 			$warning['file-thumbnail-no'] = substr( $filename , 0, 
 				strpos( $nt->getText() , '-' ) +1 );
 		
+		// Check dupes against existing files
 		$hash = File::sha1Base36( $this->mTempPath );
 		$dupes = RepoGroup::singleton()->findBySha1( $hash );
 		if( $dupes )
 			$warning['duplicate'] = $dupes;
+			
+		// Check dupes against archives
+		$archivedImage = new ArchivedFile( null, 0, "{$hash}.{$this->mFinalExtension}" );
+		if ( $archivedImage->getID() > 0 )
+			$warning['duplicate-archive'] = $archivedImage->getName();
 			
 		$filenamePrefixBlacklist = self::getFilenamePrefixBlacklist();
 		foreach( $filenamePrefixBlacklist as $prefix ) {
@@ -449,7 +456,7 @@ class UploadBase {
 	 *
 	 * @return array
 	 */
-	function splitExtensions( $filename ) {
+	public static function splitExtensions( $filename ) {
 		$bits = explode( '.', $filename );
 		$basename = array_shift( $bits );
 		return array( $basename, $bits );
@@ -463,7 +470,7 @@ class UploadBase {
 	 * @param array $list
 	 * @return bool
 	 */
-	function checkFileExtension( $ext, $list ) {
+	public static function checkFileExtension( $ext, $list ) {
 		return in_array( strtolower( $ext ), $list );
 	}
 
@@ -475,7 +482,7 @@ class UploadBase {
 	 * @param array $list
 	 * @return bool
 	 */
-	function checkFileExtensionList( $ext, $list ) {
+	public static function checkFileExtensionList( $ext, $list ) {
 		foreach( $ext as $e ) {
 			if( in_array( strtolower( $e ), $list ) ) {
 				return true;
