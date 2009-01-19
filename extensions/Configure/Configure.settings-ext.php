@@ -971,6 +971,13 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:SpamRegex',
 	),
 	array(
+		'name' => 'StalePages',
+		'settings' => array(
+			'wgStalePagesDays' => 'int',
+		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Stale_Pages',
+	),
+	array(
 		'name' => 'SyntaxHighlight_GeSHi',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:SyntaxHighlight_GeSHi',
 	),
