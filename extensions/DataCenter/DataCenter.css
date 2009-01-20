@@ -412,20 +412,20 @@ div.datacenter-ui div.widget-difference table {
 	border: solid 1px silver;
 	width: 100%;
 }
-div.datacenter-ui div.widget-difference td.field {
+div.datacenter-ui div.widget-difference td.label {
 	width: 20%;
 	padding-left: 8px;
 	padding-right: 8px;
 	color: gray;
 }
-div.datacenter-ui div.widget-difference td.value-a {
+div.datacenter-ui div.widget-difference td.previous {
 	width: 40%;
 	padding-left: 8px;
 	padding-right: 8px;
 	color: green;
 	background-color: #DDFFDD;
 }
-div.datacenter-ui div.widget-difference td.value-b {
+div.datacenter-ui div.widget-difference td.current {
 	width: 40%;
 	padding-left: 8px;
 	padding-right: 8px;

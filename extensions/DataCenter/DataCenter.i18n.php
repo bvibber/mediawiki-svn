@@ -166,6 +166,7 @@ $messages['en'] = array(
 	'datacenter-ui-heading-models-type' => '$1 Assets',
 	'datacenter-ui-heading-attaching-type' => 'Attaching $1',
 	'datacenter-ui-heading-configuring-type' => 'Configuring $1',
+	'datacenter-ui-heading-difference' => 'Difference',
 	// Bodies
 	'datacenter-ui-body-confirm-remove-type' => 'Removing this $1 will result in the removal of the following links and cannot be recovered from. Do you want to continue with the removal?',
 	'datacenter-ui-body-invalid-request' => 'You have requested a page with an invalid path.',

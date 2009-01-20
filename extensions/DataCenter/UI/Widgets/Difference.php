@@ -31,11 +31,6 @@ class DataCenterWidgetDifference extends DataCenterWidget {
 		 * @datatype	DataCenterDBRow
 		 */
 		'current' => null,
-		/**
-		 * Fields to display
-		 * @datatype	array
-		 */
-		'fields' => null,
 	);
 
 	/* Functions */
@@ -51,12 +46,13 @@ class DataCenterWidgetDifference extends DataCenterWidget {
 		$xmlOutput .= DataCenterXml::open( 'table' );
 		// Checks that an array of fields and valid rows were given
 		if (
-			is_array( $parameters['fields'] ) &&
-			( $parameters['previous'] instanceof DataCenterDBRow ) &&
-			( $parameters['current'] instanceof DataCenterDBRow )
+			is_array( $parameters['previous'] ) &&
+			is_array( $parameters['current'] )
 		) {
 			// Loops over each field
-			foreach ( $parameters['fields'] as $field ) {
+			foreach ( $parameters['current'] as $field => $value ) {
+				// Detects changed field
+				$different = ( $value !== $parameters['previous'][$field] );
 				// Adds row
 				$xmlOutput .= DataCenterXml::row(
 					DataCenterXml::cell(
@@ -65,11 +61,21 @@ class DataCenterWidgetDifference extends DataCenterWidget {
 					),
 					DataCenterXml::cell(
 						array( 'class' => 'previous' ),
-						$parameters['previous']->get( $field )
+						DataCenterXml::span(
+							array(
+								'class' => $different ? 'different' : 'same'
+							),
+							$parameters['previous'][$field]
+						)
 					),
 					DataCenterXml::cell(
 						array( 'class' => 'current' ),
-						$parameters['current']->get( $field )
+						DataCenterXml::span(
+							array(
+								'class' => $different ? 'different' : 'same'
+							),
+							$value
+						)
 					)
 				);
 			}

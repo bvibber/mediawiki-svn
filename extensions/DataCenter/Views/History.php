@@ -40,7 +40,8 @@ class DataCenterViewHistory extends DataCenterView {
 						'link' => array(
 							'page' => 'history',
 							'type' => 'change',
-							'action' => 'view'
+							'action' => 'view',
+							'id' => '#id',
 						)
 					)
 				)
@@ -58,7 +59,7 @@ class DataCenterViewHistory extends DataCenterView {
 		}
 		$change = DataCenterDB::getChange( $path['id'] );
 		$component = DataCenterDB::getRow(
-			'DataCenterComponent',
+			'DataCenterDBComponent',
 			$change->get( 'component_category' ),
 			$change->get( 'component_type' ),
 			$change->get( 'component_id' )
@@ -66,13 +67,24 @@ class DataCenterViewHistory extends DataCenterView {
 		return DataCenterUI::renderLayout(
 			'columns',
 			array(
-				DataCenterUI::renderWidget(
-					'difference',
+				DataCenterUI::renderLayout(
+					'rows',
 					array(
-						'row-a' => $component->get(),
-						'row-b' => unserialize( $change->get( 'state' ) )
+						DataCenterUI::renderWidget(
+							'heading',
+							array( 'message' => 'difference' )
+						),
+						DataCenterUI::renderWidget(
+							'difference',
+							array(
+								'current' => $component->get(),
+								'previous' => unserialize(
+									$change->get( 'state' )
+								)
+							)
+						)
 					)
-				)
+				),
 			)
 		);
 	}
@@ -83,7 +95,11 @@ class DataCenterViewHistory extends DataCenterView {
 		$path,
 		$component
 	) {
-		$changes = $component->getChanges();
+		$changes = $component->getChanges(
+			DataCenterDB::buildSort(
+				'meta', 'change', 'timestamp DESC'
+			)
+		);
 		return DataCenterUI::renderWidget( 'table',
 			array(
 				'rows' => $changes,
@@ -99,7 +115,8 @@ class DataCenterViewHistory extends DataCenterView {
 				'link' => array(
 					'page' => 'history',
 					'type' => 'change',
-					'action' => 'view'
+					'action' => 'view',
+					'id' => '#id',
 				)
 			)
 		);

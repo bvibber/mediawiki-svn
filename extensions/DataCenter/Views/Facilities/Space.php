@@ -73,6 +73,18 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 		);
 	}
 
+	public function history(
+		$path
+	) {
+		$asset = DataCenterDB::getSpace( $path['id'] );
+		return DataCenterUI::renderLayout(
+			'columns',
+			array(
+				DataCenterViewHistory::typeHistory( $path, $asset )
+			)
+		);
+	}
+
 	public function view(
 		$path
 	) {

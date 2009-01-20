@@ -1475,6 +1475,13 @@ class DataCenterDBRow {
 	}
 
 	/**
+	 * Determines whether a row is present in the database
+	 */
+	public function exists() {
+		return DataCenterDB::rowExists( $this );
+	}
+
+	/**
 	 * Automatically inserts or updates row
 	 */
 	public function save() {
@@ -1514,9 +1521,12 @@ class DataCenterDBComponent extends DataCenterDBRow {
 	/**
 	 * Gets changes that reference this object by category, type, and ID
 	 */
-	public function getChanges() {
+	public function getChanges(
+		array $options = array()
+	) {
 		return DataCenterDB::getChanges(
 			array_merge_recursive(
+				$options,
 				DataCenterDB::buildCondition(
 					'meta', 'change', 'component_category', $this->category
 				),
@@ -1976,7 +1986,8 @@ class DataCenterDBChange extends DataCenterDBRow  {
 		$type = null,
 		$note = null
 	) {
-		if ( !is_string( $type ) ) {
+		global $wgUser;
+		if ( $type !== null && !is_string( $type ) ) {
 			throw new MWException(
 				$type . ' is not a valid type of change'
 			);
@@ -1986,7 +1997,6 @@ class DataCenterDBChange extends DataCenterDBRow  {
 				$type . ' is not a valid change note'
 			);
 		}
-		global $wgUser;
 		return self::newFromValues(
 			array(
 				'timestamp' => wfTimestampNow(),

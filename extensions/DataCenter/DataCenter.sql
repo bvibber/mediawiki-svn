@@ -199,8 +199,7 @@ CREATE TABLE /*$wgDBPrefix*/dc_meta_plans (
     PRIMARY KEY (mta_pln_id)
 ) /*$wgDBTableOptions*/;
 -- 
--- Table of changes made to targets (locations, spaces, racks, objects,
--- ports, or connections)
+-- Table of changes made to targets (facilities, assets and models)
 DROP TABLE IF EXISTS dc_meta_changes;
 CREATE TABLE /*$wgDBPrefix*/dc_meta_changes (
     -- Unique ID of dc_meta_changes
@@ -390,8 +389,8 @@ INSERT INTO dc_facility_locations
         fcl_loc_longitude
     )
     VALUES
-        ( 'present', 'PMTPA', 'Tampa, FL', 27.949036, -82.457306 ),
-        ( 'present', 'SFO', 'San Francisco, CA', 37.782792, -122.394810 );
+        ( 'present', 'PMTPA', 'Tampa, FL', 27.98141, -82.451141 ),
+        ( 'present', 'SFO', 'San Francisco, CA', 37.775196, -122.419204 );
 -- 
 INSERT INTO dc_facility_spaces
     (

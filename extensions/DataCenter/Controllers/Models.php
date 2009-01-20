@@ -50,6 +50,8 @@ class DataCenterControllerModels extends DataCenterController {
 	) {
 		$model = DataCenterDBModel::newFromType( $type, $data );
 		$model->save();
+		$change = DataCenterDBChange::newFromComponent( $model );
+		$change->save();
 		return true;
 	}
 
