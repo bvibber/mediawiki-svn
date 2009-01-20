@@ -252,7 +252,6 @@ $1',
 	'sig-anonymous' => '<i>مجهول</i>',
 	'sig-private' => '<i>خاص</i>',
 	'sign-sigdetails' => 'تفاصيل التوقيع',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|نقاش]] • <!--
 -->[[Special:Contributions/$1|مساهمات]] • <!--
@@ -346,7 +345,6 @@ $1',
 	'sig-anonymous' => '<i>مجهول</i>',
 	'sig-private' => '<i>خاص</i>',
 	'sign-sigdetails' => 'تفاصيل التوقيع',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|نقاش]] • <!--
 -->[[Special:Contributions/$1|مساهمات]] • <!--
@@ -433,7 +431,6 @@ $messages['bg'] = array(
 	'sign-viewfield-age' => 'Възраст',
 	'sign-viewfield-options' => 'Настройки',
 	'sign-error-closed' => 'В момента подписването на този документ не е позволено.',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
 -->[[Special:Contributions/$1|приноси]] • <!--
@@ -560,7 +557,6 @@ $1',
 	'sig-anonymous' => '<i>Anonym</i>',
 	'sig-private' => '<i>Privat</i>',
 	'sign-sigdetails' => 'Signaturdetails',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|Diskussion]] • <!--
 -->[[Special:Contributions/$1|Beiträge]] • <!--
@@ -673,7 +669,6 @@ $messages['eo'] = array(
 	'sig-anonymous' => '<i>Anonima</i>',
 	'sig-private' => '<i>Privata</i>',
 	'sign-sigdetails' => 'Subskribaj detaloj',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-stricken' => 'Trostrekigi',
 	'sign-viewfield-reviewedby' => 'Kontrolanto',
 	'sign-viewfield-reviewcomment' => 'Komento',
@@ -804,7 +799,6 @@ $messages['fi'] = array(
 	'sign-closed' => 'suljettu',
 	'sig-anonymous' => '<i>Nimetön</i>',
 	'sig-private' => '<i>Yksityinen</i>',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|keskustelu]] • <!--
 -->[[Special:Contributions/$1|muokkaukset]] • <!--
@@ -879,7 +873,6 @@ $1',
 	'sig-anonymous' => "''Anonymement''",
 	'sig-private' => "''Privé''",
 	'sign-sigdetails' => 'Détails de la signature',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 		-->[[User:$1|$1]] ([[User talk:$1|Discussion]] • <!--
 		-->[[Special:Contributions/$1|Contributions]] • <!--
@@ -977,7 +970,6 @@ $1',
 	'sig-anonymous' => '<i>Anónimo</i>',
 	'sig-private' => '<i>Privado</i>',
 	'sign-sigdetails' => 'Detalles da sinatura',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|conversa]] • <!--
 -->[[Special:Contributions/$1|contribucións]] • <!--
@@ -1112,7 +1104,6 @@ $1',
 	'sig-anonymous' => '<i>אנונימי</i>',
 	'sig-private' => '<i>פרטי</i>',
 	'sign-sigdetails' => 'פרטי החתימה',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|שיחה]] • <!--
 -->[[Special:Contributions/$1|תרומות]] • <!--
@@ -1228,7 +1219,6 @@ $1',
 	'sig-anonymous' => '<i>Anonymny</i>',
 	'sig-private' => '<i>Priwatny</i>',
 	'sign-sigdetails' => 'Podrobnosće podpisanja',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 		-->[[User:$1|$1]] ([[User talk:$1|Diskusija]] • <!--
 		-->[[Special:Contributions/$1|Přinoški]] • <!--
@@ -1340,7 +1330,6 @@ $1',
 	'sig-anonymous' => '<i>Anonyme</i>',
 	'sig-private' => '<i>Private</i>',
 	'sign-sigdetails' => 'Detalios del signatura',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|discussion]] • <!--
 -->[[Special:Contributions/$1|contributiones]] • <!--
@@ -1459,7 +1448,6 @@ $messages['jv'] = array(
 	'sign-closed' => 'ditutup',
 	'sig-anonymous' => '<i>Anonim</i>',
 	'sig-private' => '<i>Pribadi</i>',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewcomment' => 'Komentar',
 	'sign-detail-uniquequery' => 'Èntitas sing mèmper',
 	'sign-detail-uniquequery-run' => 'Lakokna kwéri',
@@ -1532,7 +1520,6 @@ $messages['km'] = array(
 	'sig-anonymous' => '<i>អនាមិក</i>',
 	'sig-private' => '<i>ឯកជន</i>',
 	'sign-sigdetails' => 'ហត្ថលេខា​លំអិត',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewedby' => 'អ្នកត្រួតពិនិត្យឡើងវិញ',
 	'sign-viewfield-reviewcomment' => 'យោបល់',
 	'sign-detail-uniquequery' => 'ធាតុបញ្ចូល​ស្រដៀងគ្នា',
@@ -1620,7 +1607,6 @@ $1',
 	'sig-anonymous' => '<i>Nameloss</i>',
 	'sig-private' => '<i>Prevaat</i>',
 	'sign-sigdetails' => 'Einzelheite fun dä Ongerschreff',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|{{ns:talk}}]] • <!--
 -->[[Special:Contributions/$1|Beidrääsch]] • <!--
@@ -1708,7 +1694,6 @@ $messages['lb'] = array(
 	'sig-anonymous' => '<i>Anonym</i>',
 	'sig-private' => "''Privat''",
 	'sign-sigdetails' => 'Detailer vun der Ënnerschrëft',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-stricken' => 'Duerchgestrach',
 	'sign-viewfield-reviewedby' => 'Reviseur',
 	'sign-viewfield-reviewcomment' => 'Bemierkung',
@@ -1784,7 +1769,6 @@ $messages['ml'] = array(
 	'sig-anonymous' => '<i>അജ്ഞാതം</i>',
 	'sig-private' => "''സ്വകാര്യം''",
 	'sign-sigdetails' => 'ഒപ്പിന്റെ വിവരങ്ങള്‍',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewedby' => 'സം‌ശോധകന്‍',
 	'sign-viewfield-reviewcomment' => 'അഭിപ്രായം',
 	'sign-detail-strike' => 'ഒപ്പ് വെട്ടുക',
@@ -1865,7 +1849,6 @@ $1',
 	'sig-anonymous' => '<i>अनामिक</i>',
 	'sig-private' => '<i>खाजगी</i>',
 	'sign-sigdetails' => 'सही माहिती',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|चर्चा]] • <!--
 -->[[Special:Contributions/$1|योगदान]] • <!--
@@ -2013,7 +1996,6 @@ $1',
 	'sig-anonymous' => '<i>Anoniem</i>',
 	'sig-private' => '<i>Privé</i>',
 	'sign-sigdetails' => 'Ondertekeningsdetails',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|overleg]] • <!--
 -->[[Special:Contributions/$1|bijdragen]] • <!--
@@ -2101,7 +2083,6 @@ $1',
 	'sig-anonymous' => '<i>Anonym</i>',
 	'sig-private' => '<i>Privat</i>',
 	'sign-sigdetails' => 'Signaturdetaljar',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|diskusjon]] • <!--
 -->[[Special:Contributions/$1|bidrag]] • <!--
@@ -2188,7 +2169,6 @@ $1',
 	'sig-anonymous' => '<i>Anonym</i>',
 	'sig-private' => '<i>Privat</i>',
 	'sign-sigdetails' => 'Signaturdetaljer',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|diskusjon]] • <!--
 -->[[Special:Contributions/$1|bidrag]] • <!--
@@ -2289,7 +2269,6 @@ $messages['oc'] = array(
 	'sig-anonymous' => "''Anonimament''",
 	'sig-private' => "''Privat''",
 	'sign-sigdetails' => 'Detalhs de la signatura',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 		-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
 		-->[[Special:Contributions/$1|contribs]] • <!--
@@ -2370,7 +2349,6 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-viewfield-options' => 'Opcje',
 	'sign-sigadmin-close' => 'Wyłącz podpisywanie',
 	'sign-signatures' => 'Podpisy',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|dyskusja]] • <!--
 -->[[Special:Contributions/$1|wkład]] • <!--
@@ -2448,7 +2426,6 @@ Ch'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa 
 	'sig-anonymous' => '<i>Anònim</i>',
 	'sig-private' => '<i>Privà</i>',
 	'sign-sigdetails' => 'Detaj dla firma',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
 -->[[Special:Contributions/$1|contribs]] • <!-- -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!-- -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
@@ -2590,7 +2567,6 @@ $messages['ro'] = array(
 	'sign-signatures' => 'Semnături',
 	'sig-private' => '<i>Privat</i>',
 	'sign-sigdetails' => 'Detaliile semnăturii',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewcomment' => 'Comentariu',
 	'sign-detail-uniquequery' => 'Entităţi similare',
 	'sign-detail-uniquequery-run' => 'Rulează interogare',
@@ -2703,7 +2679,6 @@ $1',
 	'sig-anonymous' => '<i>Аноним</i>',
 	'sig-private' => '<i>Частный</i>',
 	'sign-sigdetails' => 'Подробнее о подписи',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|обсуждение]] • <!--
 -->[[Special:Contributions/$1|вклад]] • <!--
@@ -2790,7 +2765,6 @@ $1',
 	'sig-anonymous' => '<i>anonym</i>',
 	'sig-private' => '<i>súkromné</i>',
 	'sign-sigdetails' => 'Podrobnosti podpisu',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|diskusia]] • <!--
 -->[[Special:Contributions/$1|príspevky]] • <!--
@@ -2900,7 +2874,6 @@ $1',
 	'sig-anonymous' => '<i>Anonym</i>',
 	'sig-private' => '<i>Privat</i>',
 	'sign-sigdetails' => 'Signatur detaljer',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|diskussion]] • <!--
 -->[[Special:Contributions/$1|ändringar]] • <!--
@@ -2987,7 +2960,6 @@ $messages['te'] = array(
 	'sig-anonymous' => '<i>అనామకం</i>',
 	'sig-private' => '<i>అంతరంగికం</i>',
 	'sign-sigdetails' => 'సంతకం వివరాలు',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewedby' => 'సమీక్షకులు',
 	'sign-viewfield-reviewcomment' => 'వ్యాఖ్య',
 	'sign-reviewsig' => 'సంతకాన్ని సమీక్షించండి',
@@ -3111,7 +3083,6 @@ $1',
 	'sig-anonymous' => '<i>Anonimo/Hindi nagpapakilala</i>',
 	'sig-private' => '<i>Pribado/Pansarili</i>',
 	'sign-sigdetails' => 'Mga detalye ng lagda',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|usapan]] • <!--
 -->[[Special:Contributions/$1|mga ambag]] • <!--
@@ -3212,7 +3183,6 @@ $1',
 	'sig-anonymous' => '<i>Vô danh</i>',
 	'sig-private' => '<i>Riêng tư</i>',
 	'sign-sigdetails' => 'Chi tiết chữ ký',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|thảo luận]] • <!--
 -->[[Special:Contributions/$1|đóng góp]] • <!--
@@ -3290,7 +3260,6 @@ $messages['vo'] = array(
 	'sign-error-closed' => 'Dispenam doküma at nemögon anu.',
 	'sig-anonymous' => '<i>Nennemik</i>',
 	'sig-private' => '<i>Privatik</i>',
-	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewcomment' => 'Küpet',
 	'sign-review-comment' => 'Küpet',
 	'sign-uniquequery-similarname' => 'Nem sümik',
