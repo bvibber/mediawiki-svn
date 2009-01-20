@@ -119,7 +119,7 @@ class DataCenterWidgetMap extends DataCenterWidget {
 			DataCenterXml::link(
 				$location->get( 'name' ),
 				array(
-					'page' => 'assets',
+					'page' => 'facilities',
 					'type' => 'location',
 					'action' => 'view',
 					'id' => $location->getId(),
