@@ -224,6 +224,13 @@ class DataCenterPage extends SpecialPage {
 		$sub
 	) {
 		global $wgOut, $wgScriptPath, $wgUser, $wgRequest;
+		// Checks if the user is logged in
+		if ( !$wgUser->isLoggedIn() ) {
+			// Lets them know they need to
+			$wgOut->loginToUse();
+			// Returns true so MediaWiki can move on
+			return true;
+		}
 		// Keeps some state between pages
 		self::loadState();
 		// Begins output
