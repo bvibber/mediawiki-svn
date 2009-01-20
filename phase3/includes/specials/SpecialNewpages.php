@@ -32,6 +32,7 @@ class SpecialNewpages extends SpecialPage {
 		$opts->add( 'namespace', '0' );
 		$opts->add( 'username', '' );
 		$opts->add( 'feed', '' );
+		$opts->add( 'tagfilter', '' );
 
 		// Set values
 		$opts->fetchValuesFromRequest( $wgRequest );
@@ -176,6 +177,8 @@ class SpecialNewpages extends SpecialPage {
 		}
 		$hidden = implode( "\n", $hidden );
 
+		list( $tagFilterLabel, $tagFilterSelector ) = ChangeTags::buildTagFilterSelector( $this->opts['tagfilter'] );
+
 		$form = Xml::openElement( 'form', array( 'action' => $wgScript ) ) .
 			Xml::hidden( 'title', $this->getTitle()->getPrefixedDBkey() ) .
 			Xml::fieldset( wfMsg( 'newpages' ) ) .
@@ -186,6 +189,14 @@ class SpecialNewpages extends SpecialPage {
 				"</td>
 				<td class='mw-input'>" .
 					Xml::namespaceSelector( $namespace, 'all' ) .
+				"</td>
+			</tr>" .
+			"<tr>
+				<td class='mw-label'>" .
+					$tagFilterLabel .
+				"</td>
+				<td class='mw-input'>" .
+					$tagFilterSelector .
 				"</td>
 			</tr>" .
 			($wgEnableNewpagesUserFilter ?
@@ -409,17 +420,24 @@ class NewPagesPager extends ReverseChronologicalPager {
 			$conds['page_is_redirect'] = 0;
 		}
 
-		return array(
-			'tables' => array( 'recentchanges', 'page', 'tag_summary' ),
+		$info = array(
+			'tables' => array( 'recentchanges', 'page' ),
 			'fields' => 'rc_namespace,rc_title, rc_cur_id, rc_user,rc_user_text,rc_comment,
 				rc_timestamp,rc_patrolled,rc_id,page_len as length, page_latest as rev_id, ts_tags',
 			'conds' => $conds,
 			'options' => array( 'USE INDEX' => array('recentchanges' => $rcIndexes) ),
 			'join_conds' => array(
-				'tag_summary' => array('LEFT JOIN', 'ts_rc_id=rc_id'),
 				'page' => array('INNER JOIN', 'page_id=rc_cur_id'),
 			),
 		);
+
+		## Empty array for fields, it'll be set by us anyway.
+		$fields = array();
+
+		## Modify query for tags
+		ChangeTags::modifyDisplayQuery( $info['tables'], $fields, $info['conds'], $info['join_conds'], $this->opts['tagfilter'] );
+
+		return $info;
 	}
 
 	function getIndexField() {

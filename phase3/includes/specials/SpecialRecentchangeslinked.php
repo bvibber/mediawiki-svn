@@ -15,6 +15,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$opts = parent::getDefaultOptions();
 		$opts->add( 'target', '' );
 		$opts->add( 'showlinkedto', false );
+		$opts->add( 'tagfilter', '' );
 		return $opts;
 	}
 
@@ -82,10 +83,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$join_conds['watchlist'] = array( 'LEFT JOIN', "wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace" );
 		}
 
-		// JOIN on tag_summary
-		$tables[] = 'tag_summary';
-		$select[] = 'ts_tags';
-		$join_conds['tag_summary'] = array( 'LEFT JOIN', 'ts_rc_id=rc_id' );
+		ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds, $opts['tagfilter'] );
 
 		// XXX: parent class does this, should we too?
 		// wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
@@ -168,6 +166,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			Xml::input( 'target', 40, str_replace('_',' ',$opts['target']) ) .
 			Xml::check( 'showlinkedto', $opts['showlinkedto'], array('id' => 'showlinkedto') ) . ' ' .
 			Xml::label( wfMsg("recentchangeslinked-to"), 'showlinkedto' ) );
+		$extraOpts['tagfilter'] = ChangeTags::buildTagFilterSelector( $opts['tagfilter'] );
 		return $extraOpts;
 	}
 

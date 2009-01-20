@@ -68,7 +68,7 @@ class LogEventsList {
 	 * @param $filter Boolean
 	 */
 	public function showOptions( $type = '', $user = '', $page = '', $pattern = '', $year = '', 
-			$month = '', $filter = null ) 
+			$month = '', $filter = null, $tagFilter='' ) 
 	{
 		global $wgScript, $wgMiserMode;
 		$action = htmlspecialchars( $wgScript );
@@ -83,7 +83,8 @@ class LogEventsList {
 			$this->getTitleInput( $page ) . "\n" .
 			( !$wgMiserMode ? ($this->getTitlePattern( $pattern )."\n") : "" ) .
 			"<p>" . $this->getDateMenu( $year, $month ) . "\n" .
-			( $filter ? "</p><p>".$this->getFilterLinks( $type, $filter )."\n" : "" ) .
+			Xml::tags( 'p', null, implode( '&nbsp;', ChangeTags::buildTagFilterSelector( $tagFilter ) ) ) . "\n" .
+			( $filter ? "</p><p>".$this->getFilterLinks( $type, $filter )."\n" : "" ) . "\n" .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "</p>\n" .
 			"</fieldset></form>"
 		);
@@ -513,7 +514,7 @@ class LogPager extends ReverseChronologicalPager {
 	 * @param $month Integer
 	 */
 	public function __construct( $list, $type = '', $user = '', $title = '', $pattern = '', 
-		$conds = array(), $year = false, $month = false ) 
+		$conds = array(), $year = false, $month = false, $tagFilter = '' ) 
 	{
 		parent::__construct();
 		$this->mConds = $conds;
@@ -524,6 +525,7 @@ class LogPager extends ReverseChronologicalPager {
 		$this->limitUser( $user );
 		$this->limitTitle( $title, $pattern );
 		$this->getDateCond( $year, $month );
+		$this->mTagFilter = $tagFilter;
 	}
 
 	public function getDefaultQuery() {
@@ -648,14 +650,18 @@ class LogPager extends ReverseChronologicalPager {
 		} else {
 			$index = array( 'USE INDEX' => array( 'logging' => 'times' ) );
 		}
-		return array(
-			'tables' => array( 'logging', 'user', 'tag_summary' ),
+		$info = array(
+			'tables' => array( 'logging', 'user' ),
 			'fields' => array( 'log_type', 'log_action', 'log_user', 'log_namespace', 'log_title', 'log_params',
-				'log_comment', 'log_id', 'log_deleted', 'log_timestamp', 'user_name', 'user_editcount', 'ts_tags' ),
+				'log_comment', 'log_id', 'log_deleted', 'log_timestamp', 'user_name', 'user_editcount' ),
 			'conds' => $this->mConds,
 			'options' => $index,
-			'join_conds' => array( 'tag_summary' => array( 'LEFT JOIN', 'ts_log_id=log_id' ), 'user' => array( 'INNER JOIN', 'user_id=log_user' ) ),
+			'join_conds' => array( 'user' => array( 'INNER JOIN', 'user_id=log_user' ) ),
 		);
+
+		ChangeTags::modifyDisplayQuery( $info['tables'], $info['fields'], $info['conds'], $info['join_conds'], $this->mTagFilter );
+
+		return $info;
 	}
 
 	function getIndexField() {
@@ -706,6 +712,10 @@ class LogPager extends ReverseChronologicalPager {
 	public function getMonth() {
 		return $this->mMonth;
 	}
+
+	public function getTagFilter() {
+		return $this->mTagFilter;
+	}
 }
 
 /**
@@ -727,6 +737,7 @@ class LogReader {
 		$pattern = $request->getBool( 'pattern' );
 		$year = $request->getIntOrNull( 'year' );
 		$month = $request->getIntOrNull( 'month' );
+		$tagFilter = $request->getVal( 'tagfilter' );
 		# Don't let the user get stuck with a certain date
 		$skip = $request->getText( 'offset' ) || $request->getText( 'dir' ) == 'prev';
 		if( $skip ) {
@@ -735,7 +746,7 @@ class LogReader {
 		}
 		# Use new list class to output results
 		$loglist = new LogEventsList( $wgUser->getSkin(), $wgOut, 0 );
-		$this->pager = new LogPager( $loglist, $type, $user, $title, $pattern, $year, $month );
+		$this->pager = new LogPager( $loglist, $type, $user, $title, $pattern, $year, $month, $tagFilter );
 	}
 
 	/**

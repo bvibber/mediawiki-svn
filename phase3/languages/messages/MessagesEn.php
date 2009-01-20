@@ -3782,4 +3782,8 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 
 #Put all regex fragments above this line. Leave this line exactly as it is</pre>',
 
+## Taggng-related stuff
+'tag-filter' => 'Tag filter:',
+'tag-filter-submit' => 'Filter',
+
 );

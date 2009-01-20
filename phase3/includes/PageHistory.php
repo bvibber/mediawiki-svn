@@ -112,6 +112,7 @@ class PageHistory {
 		 */
 		$year = $wgRequest->getInt( 'year' );
 		$month = $wgRequest->getInt( 'month' );
+		$tagFilter = $wgRequest->getVal( 'tagfilter' );
 
 		$action = htmlspecialchars( $wgScript );
 		$wgOut->addHTML(
@@ -120,6 +121,7 @@ class PageHistory {
 			Xml::hidden( 'title', $this->mTitle->getPrefixedDBKey() ) . "\n" .
 			Xml::hidden( 'action', 'history' ) . "\n" .
 			$this->getDateMenu( $year, $month ) . '&nbsp;' .
+			implode( '&nbsp;', ChangeTags::buildTagFilterSelector( $tagFilter ) ) . '&nbsp;' .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			'</fieldset></form>'
 		);
@@ -129,7 +131,7 @@ class PageHistory {
 		/**
 		 * Do the list
 		 */
-		$pager = new PageHistoryPager( $this, $year, $month );
+		$pager = new PageHistoryPager( $this, $year, $month, $tagFilter );
 		$this->linesonpage = $pager->getNumRows();
 		$wgOut->addHTML(
 			$pager->getNavigationBar() .
@@ -599,21 +601,23 @@ class PageHistory {
 class PageHistoryPager extends ReverseChronologicalPager {
 	public $mLastRow = false, $mPageHistory, $mTitle;
 
-	function __construct( $pageHistory, $year='', $month='' ) {
+	function __construct( $pageHistory, $year='', $month='', $tagFilter = '' ) {
 		parent::__construct();
 		$this->mPageHistory = $pageHistory;
 		$this->mTitle =& $this->mPageHistory->mTitle;
+		$this->tagFilter = $tagFilter;
 		$this->getDateCond( $year, $month );
 	}
 
 	function getQueryInfo() {
 		$queryInfo = array(
-			'tables'  => array('revision', 'tag_summary'),
+			'tables'  => array('revision'),
 			'fields'  => array_merge( Revision::selectFields(), array('ts_tags') ),
 			'conds'   => array('rev_page' => $this->mPageHistory->mTitle->getArticleID() ),
 			'options' => array( 'USE INDEX' => array('revision' => 'page_timestamp') ),
 			'join_conds' => array( 'tag_summary' => array( 'LEFT JOIN', 'ts_rev_id=rev_id' ) ),
 		);
+		ChangeTags::modifyDisplayQuery( $queryInfo['tables'], $queryInfo['fields'], $queryInfo['conds'], $queryInfo['join_conds'], $this->tagFilter );
 		wfRunHooks( 'PageHistoryPager::getQueryInfo', array( &$this, &$queryInfo ) );
 		return $queryInfo;
 	}

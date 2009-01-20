@@ -76,4 +76,64 @@ class ChangeTags {
 
 		return true;
 	}
+
+	/**
+	 * Applies all tags-related changes to a query.
+	 * Handles selecting tags, and filtering.
+	 * Needs $tables to be set up properly, so we can figure out which join conditions to use.
+	*/
+	static function modifyDisplayQuery( &$tables, &$fields,  &$conds, &$join_conds, $filter_tag = false ) {
+		global $wgRequest;
+		
+		if ($filter_tag === false) {
+			$filter_tag = $wgRequest->getVal( 'tagfilter' );
+		}
+
+		// Figure out which conditions can be done.
+		$join_field = '';
+		if ( in_array('recentchanges', $tables) ) {
+			$join_cond = 'rc_id';
+		} elseif( in_array('logging', $tables) ) {
+			$join_cond = 'log_id';
+		} elseif ( in_array('revision', $tables) ) {
+			$join_cond = 'rev_id';
+		} else {
+			throw new MWException( "Unable to determine appropriate JOIN condition for tagging." );
+		}
+
+		// JOIN on tag_summary
+		$tables[] = 'tag_summary';
+		$join_conds['tag_summary'] = array( 'LEFT JOIN', "ts_$join_cond=$join_cond" );
+		$fields[] = 'ts_tags';
+		
+		if ($filter_tag) {
+			// Somebody wants to filter on a tag.
+			// Add an INNER JOIN on change_tag
+
+			$tables[] = 'change_tag';
+			$join_conds['change_tag'] = array( 'RIGHT JOIN', "ct_$join_cond=$join_cond" );
+			$conds['ct_tag'] = $filter_tag;
+		}
+	}
+
+	/**
+	 * If $fullForm is set to false, then it returns an array of (label, form).
+	 * If $fullForm is true, it returns an entire form.
+	 */
+	static function buildTagFilterSelector( $selected='', $fullForm = false /* used to put a full form around the selector */ ) {
+		global $wgTitle;
+		
+		$data = array( wfMsgExt( 'tag-filter', 'parseinline' ), Xml::input( 'tagfilter', 20, $selected ) );
+
+		if (!$fullForm) {
+			return $data;
+		}
+
+		$html = implode( '&nbsp;', $data );
+		$html .= "\n" . Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'tag-filter-submit' ) ) );
+		$html .= "\n" . Xml::hidden( 'title', $wgTitle-> getPrefixedText() );
+		$html = Xml::tags( 'form', array( 'action' => $wgTitle->getLocalURL(), 'method' => 'get' ), $html );
+
+		return $html;
+	}
 }
