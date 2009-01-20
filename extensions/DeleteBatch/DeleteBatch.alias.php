@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:DeleteBatch
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

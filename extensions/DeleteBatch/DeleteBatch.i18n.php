@@ -2,6 +2,7 @@
 /**
  * Internationalization file for the DeleteBatch extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -13,17 +14,16 @@ $messages = array();
 $messages['en'] = array(
 	'deletebatch' => 'Delete batch of pages',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Delete a batch of pages]]',
-	'deletebatch-button' => 'Delete',
 	'deletebatch-help' => 'Delete a batch of pages. You can either perform a single delete, or delete pages listed in a file.
 Choose a user that will be shown in deletion logs.
 Uploaded file should contain page name and optional reason separated by a "|" character in each line.',
-	'deletebatch-caption' => 'Page list',
+	'deletebatch-caption' => 'Page list:',
 	'deletebatch-title' => 'Delete batch',
 	'deletebatch-link-back' => 'Go back to the special page',
-	'deletebatch-as' => 'Run the script as',
+	'deletebatch-as' => 'Run the script as:',
 	'deletebatch-both-modes' => 'Please choose either one specified page or a given list of pages.',
 	'deletebatch-or' => '<b>or</b>',
-	'deletebatch-page' => 'Pages to be deleted',
+	'deletebatch-page' => 'Pages to be deleted:',
 	'deletebatch-reason' => 'Reason for deletion',
 	'deletebatch-processing' => 'deleting pages $1',
 	'deletebatch-from-file' => 'from file list',
@@ -297,15 +297,14 @@ $messages['es'] = array(
 $messages['fi'] = array(
 	'deletebatch' => 'Poista useita sivuja',
 	'deletebatch-desc' => 'Mahdollistaa [[Special:DeleteBatch|sivujen poistamisen erissä]].',
-	'deletebatch-button' => 'POISTA',
 	'deletebatch-help' => 'Poista useita sivuja. Voit joko tehdä yhden poiston tai poistaa tiedostossa listatut sivut. Valitse käyttäjä, joka näytetään poistolokeissa. Tallennetun tiedoston tulisi sisältää sivun nimi ja vapaaehtoinen syy | -merkin erottamina joka rivillä.',
-	'deletebatch-caption' => 'Sivulista',
+	'deletebatch-caption' => 'Sivulista:',
 	'deletebatch-title' => 'Poista useita sivuja',
 	'deletebatch-link-back' => 'Voit palata lisäosaan',
-	'deletebatch-as' => 'Suorita skripti käyttäjänä',
+	'deletebatch-as' => 'Suorita skripti käyttäjänä:',
 	'deletebatch-both-modes' => 'Valitse joko määritelty sivu tai annettu lista sivuista.',
 	'deletebatch-or' => '<b>TAI</b>',
-	'deletebatch-page' => 'Poistettavat sivut',
+	'deletebatch-page' => 'Poistettavat sivut:',
 	'deletebatch-reason' => 'Poiston syy',
 	'deletebatch-processing' => 'poistetaan sivuja $1',
 	'deletebatch-from-file' => 'tiedostolistasta',
