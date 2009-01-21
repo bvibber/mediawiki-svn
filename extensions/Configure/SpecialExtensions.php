@@ -105,14 +105,14 @@ class SpecialExtensions extends ConfigurationPage {
 						$globalDone = true;
 					}
 					require_once( $ext->getFile() );
-					if ( isset( $GLOBALS[$setting] ) )
-						$this->conf[$setting] = $GLOBALS[$setting];
+					if ( isset( $$setting ) )
+						$this->conf[$setting] = $$setting;
 				}
 			}
 			$ext->setPageObj( $this );
 			$ret .= $ext->getHtml();
 		}
-		if ( isset( $oldHooks ) )
+		if ( $globalDone )
 			$GLOBALS['wgHooks'] = $oldHooks;
 		return $ret;
 	}
