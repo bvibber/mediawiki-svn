@@ -545,7 +545,18 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'player' => 'プレイヤー',
+	'player-desc' => '一般的なブラウザ用プラグインを利用したマルチメディアの埋め込み再生と[[Special:Player|再生用特別ページ]]',
+	'player-title' => 'プレイヤー',
+	'player-playertitle' => 'プレイヤー: $1',
 	'player-file' => 'ファイル名',
+	'player-play' => '再生',
+	'player-not-allowed' => '許可されていない形式',
+	'player-not-found' => 'ファイルが見つかりません',
+	'player-invalid-title' => '無効な名前',
+	'player-clicktoplay' => '$1 を再生',
+	'player-goto-player' => 'プレイヤー',
+	'player-goto-page' => 'ページ',
+	'player-goto-file' => 'ファイル',
 );
 
 /** Javanese (Basa Jawa)
@@ -962,6 +973,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'player' => 'Player',
+	'player-desc' => 'Ienbääded Multimedia-Playback uur gebruukelke Browser-Plugins, as uk ne [[Special:Player|Spezioalsiede]]',
 	'player-title' => 'Player',
 	'player-playertitle' => 'Player: $1',
 	'player-file' => 'Doatäinoome',

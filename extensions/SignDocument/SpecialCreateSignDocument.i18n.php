@@ -649,8 +649,26 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'createsigndocument' => '文書への署名を有効化する',
+	'createsigndoc-head' => "このフォームを使って、指定したページに「{{int:Signdocument}}」ページを作成し、利用者が[[Special:SignDocument|署名]]できるようにします。デジタル署名を有効にしたいページの名前と、どの利用者グループに属す者が署名できるのか、どの欄を利用者に表示しどの欄を任意とするのか、文書に署名するのに必要な最低の年齢（既定では年齢制限なし）、さらに文書を解説し手順を説明する手短な序文、を指定してください。
+
+<b>現時点では、署名文書を作成した後にそれを削除もしくは改変するための手段は提供していません。</b>データベースに直接アクセスするのが唯一の手段です。くわえて、署名ページに表示される該当ページの内容はそのページの''現時点''の内容であり、現時点以降になされた変更は反映されません。その文書が署名にふさわしい安定度に達していると、絶対の確信をもってから行ってください。また、''このフォームの送信前に''、すべての欄の内容が完全に正確であることを確認してください。",
+	'createsigndoc-pagename' => 'ページ:',
+	'createsigndoc-allowedgroup' => '許可するグループ:',
+	'createsigndoc-email' => '電子メールアドレス:',
+	'createsigndoc-address' => '自宅の住所:',
+	'createsigndoc-extaddress' => '国・都道府県・市町村:',
+	'createsigndoc-phone' => '電話番号:',
+	'createsigndoc-bday' => '誕生日:',
+	'createsigndoc-minage' => '最低年齢:',
+	'createsigndoc-introtext' => '序文:',
+	'createsigndoc-hidden' => '非表示',
 	'createsigndoc-optional' => '任意',
 	'createsigndoc-create' => '作成',
+	'createsigndoc-error-generic' => 'エラー: $1',
+	'createsigndoc-error-pagenoexist' => 'エラー: ページ [[$1]] は存在しません。',
+	'createsigndoc-success' => '[[$1]] での文書署名の有効化に成功しました。試してみるには[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} このページ]を見てください。',
+	'createsigndoc-error-alreadycreated' => '「$1」の文書署名はすでに作成されています。',
 );
 
 /** Javanese (Basa Jawa)

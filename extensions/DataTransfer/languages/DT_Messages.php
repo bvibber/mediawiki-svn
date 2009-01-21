@@ -168,6 +168,7 @@ $messages['bs'] = array(
 	'dt_xml_field' => 'Polje',
 	'dt_xml_name' => 'Naziv',
 	'dt_xml_title' => 'Naslov',
+	'dt_xml_freetext' => 'Slobodni tekst',
 );
 
 /** Catalan (Català)

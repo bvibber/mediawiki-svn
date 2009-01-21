@@ -174,6 +174,7 @@ Provozovatelé této stránky nenesou odpovědnost za obsah takových komentář
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Daniel Kinzler, brightbyte.de
  * @author Melancholie
  * @author Umherirrender
@@ -182,7 +183,7 @@ $messages['de'] = array(
 	'talkhere-desc' => 'Baut die Diskussionsseite in eine Seite ein',
 	'talkhere-foottext' => 'Die obigen Kommentare wurden möglicherweise von Besuchern hinterlassen.
 
-Die Betreiber dieser Webseite können keine Verantwortung für den Inhalt diser Kommentare übernehmen.',
+Die Betreiber dieser Webseite können keine Verantwortung für den Inhalt dieser Kommentare übernehmen.',
 	'talkhere-talkpage' => 'Diskussionsseite',
 	'talkhere-notalk' => "''(Noch keine Kommentare)''",
 	'talkhere-addcomment' => 'Kommentar hinzufügen',
@@ -318,6 +319,16 @@ Os operadores deste sitio non poden asumir a responsabilidade polo contido de di
 	'talkhere-beforeinput' => 'Vostede pode engadir un comentario a continuación',
 	'talkhere-loading' => 'cargando editor...',
 	'talkhere-collapse' => 'ocultar editor',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'talkhere-desc' => 'Böut d Diskussionssyte in e Syten yy',
+	'talkhere-foottext' => 'D Kommentar dobe sin megligerwyys vu Bsuecher gschribe wore.
+
+D Betryyber vu däre Netzsyte chenne kei Verantwortig fir dr Inhalt vu däne Kommentar iberneh.',
 );
 
 /** Hebrew (עברית)

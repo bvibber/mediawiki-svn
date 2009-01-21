@@ -62,6 +62,11 @@ $aliases['id'] = array(
 	'NewsChannel' => array( 'Saluran berita' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'NewsChannel' => array( 'ニュース・チャンネル' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'NewsChannel' => array( 'Noriichtekanal' ),

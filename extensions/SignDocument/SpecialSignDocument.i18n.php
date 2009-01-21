@@ -98,6 +98,7 @@ $1',
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'signdocument' => '{{Identical|Sign document}}',
@@ -117,6 +118,7 @@ $messages['qqq'] = array(
 	'sign-viewfield-email' => '{{Identical|E-mail}}',
 	'sign-viewfield-options' => '{{Identical|Options}}',
 	'sig-private' => '{{Identical|Private}}',
+	'sign-emailto' => '{{optional}}',
 	'sign-viewfield-reviewedby' => '{{Identical|Reviewer}}',
 	'sign-viewfield-reviewcomment' => '{{Identical|Comment}}',
 	'sign-review-comment' => '{{Identical|Comment}}',
@@ -393,7 +395,9 @@ $messages['bcl'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'sign-country' => 'Краіна:',
 	'sign-viewfield-realname' => 'Імя',
+	'sign-viewfield-country' => 'Краіна',
 	'sign-viewfield-reviewcomment' => 'Камэнтар',
 	'sign-review-comment' => 'Камэнтар',
 );
@@ -1390,16 +1394,86 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'sign-selectdoc' => 'ドキュメント:',
+	'signdocument' => '文書の署名',
+	'sign-nodocselected' => '署名したい文書を選んでください。',
+	'sign-selectdoc' => '文書:',
+	'sign-docheader' => '<div class="noarticletext">以下の文書「[[$1]]」に署名するにはこのフォームを使います。文書全体を熟読し、その文書に支持を表明すると決めた場合、必須欄を埋めて署名してください。</div>',
+	'sign-error-nosuchdoc' => 'あなたが要求した文書 ($1) は存在しません。',
 	'sign-realname' => '名前:',
-	'sign-viewfield-timestamp' => 'タイムスタンプ',
+	'sign-address' => '番地:',
+	'sign-city' => '市町村:',
+	'sign-state' => '都道府県・州:',
+	'sign-zip' => '郵便番号:',
+	'sign-country' => '国:',
+	'sign-phone' => '電話番号:',
+	'sign-bday' => '年齢:',
+	'sign-email' => '電子メールアドレス:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> は必須欄を示す。</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> 注: 未掲載の情報も判定者には閲覧が可能です。</i></small>',
+	'sign-list-anonymous' => '匿名として掲載',
+	'sign-list-hideaddress' => '住所を非掲載',
+	'sign-list-hideextaddress' => '国、郵便番号、都道府県、市町村を非掲載',
+	'sign-list-hidephone' => '電話番号を非掲載',
+	'sign-list-hidebday' => '年齢を非掲載',
+	'sign-list-hideemail' => 'メールアドレスを非掲載',
+	'sign-submit' => '文書に署名',
+	'sign-information' => '<div class="noarticletext">この文書を読み通すことにお時間を割いていただき、ありがとうございます。同意されるのならば、以下の必須欄を埋めて「{{int:Sign-submit}}」をクリックし、支持を表明してください。あなたの個人情報が正確で、我々が身元を検証するために何らかのあなたへの連絡手段があることを確認してください。IPアドレスなどのあなたの識別情報はこのフォームによって記録され、判定者が重複する署名を削除しあなたの個人情報の正確性を確認するために利用されます。公開および匿名プロキシの使用は我々がこの作業を実行する妨げとなるため、その種のプロキシからの署名は無視されるでしょう。あなたが今、プロキシサーバー経由で接続しているのならば、接続を切断し、署名中は標準的な接続環境を使用してください。</div>
+
+$1',
+	'sig-success' => '文書の署名に成功しました。',
+	'sign-view-selectfields' => '<b>表示する欄:</b>',
+	'sign-viewfield-entryid' => 'ID',
+	'sign-viewfield-timestamp' => '時刻',
 	'sign-viewfield-realname' => '名前',
 	'sign-viewfield-address' => '住所',
+	'sign-viewfield-city' => '市町村',
+	'sign-viewfield-state' => '都道府県・州',
+	'sign-viewfield-country' => '国',
+	'sign-viewfield-zip' => '郵便番号',
 	'sign-viewfield-ip' => 'IPアドレス',
+	'sign-viewfield-agent' => 'ユーザーエージェント',
 	'sign-viewfield-phone' => '電話',
+	'sign-viewfield-email' => '電子メール',
+	'sign-viewfield-age' => '年齢',
 	'sign-viewfield-options' => 'オプション',
+	'sign-viewsigs-intro' => '以下は <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span> に記録された署名です。',
+	'sign-sigadmin-currentlyopen' => '現在、この文書への署名は有効になっています。',
+	'sign-sigadmin-close' => '署名を無効化する',
+	'sign-sigadmin-currentlyclosed' => '現在、この文書への署名は無効になっています。',
+	'sign-sigadmin-open' => '署名を有効化する',
+	'sign-signatures' => '署名',
+	'sign-sigadmin-closesuccess' => '署名の無効化に成功しました。',
+	'sign-sigadmin-opensuccess' => '署名の有効化に成功しました。',
+	'sign-viewsignatures' => '署名を閲覧',
+	'sign-closed' => '閉鎖完了',
+	'sign-error-closed' => 'この文書への署名は現在、無効になっています。',
+	'sig-anonymous' => '<i>匿名</i>',
+	'sig-private' => '<i>非公開</i>',
+	'sign-sigdetails' => '署名詳細',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|会話]] • <!--
+-->[[Special:Contributions/$1|投稿記録]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|ブロック]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} ブロック記録] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IPチェック])<!--
+--></span>',
+	'sign-viewfield-stricken' => '削除済',
+	'sign-viewfield-reviewedby' => '確認者',
 	'sign-viewfield-reviewcomment' => 'コメント',
+	'sign-detail-uniquequery' => '類似項目',
+	'sign-detail-uniquequery-run' => '問い合わせ実行',
+	'sign-detail-strike' => '署名を削除',
+	'sign-reviewsig' => '署名を見直し',
 	'sign-review-comment' => 'コメント',
+	'sign-submitreview' => '見直し提出',
+	'sign-uniquequery-similarname' => '名前の類似',
+	'sign-uniquequery-similaraddress' => '住所の類似',
+	'sign-uniquequery-similarphone' => '電話番号の類似',
+	'sign-uniquequery-similaremail' => 'メールアドレスの類似',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] が [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] に署名しました。',
 );
 
 /** Javanese (Basa Jawa)

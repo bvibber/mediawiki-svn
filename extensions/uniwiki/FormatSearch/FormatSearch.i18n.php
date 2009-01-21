@@ -113,6 +113,13 @@ $messages['gl'] = array(
 	'formatsearch-desc' => 'Limpa a páxina dos resultados da busca',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'formatsearch-desc' => 'Macht d Suechergebnissyte läär',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

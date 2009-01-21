@@ -217,6 +217,16 @@ $messages['gl'] = array(
 	'userimages-noimages' => '$1 non enviou ningunha imaxe.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'userimages-desc' => 'Leg per <code><nowiki><userimage /></nowiki></code> Galerie vu Bilder aa, wu vu dr jewyylige Benutzer uffeglade wore sin',
+	'userimages-caption' => 'Vu $1 uffegladeni Bilder',
+	'userimages-noname' => 'Nit giltiger Benutzername oder Yygabfäld isch läär.',
+	'userimages-noimages' => '$1 het kei Bilder uffeglade.',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

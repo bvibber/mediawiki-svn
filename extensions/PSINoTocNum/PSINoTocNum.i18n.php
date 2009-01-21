@@ -245,6 +245,13 @@ $messages['sk'] = array(
 	'psinotocnum-desc' => 'Nové magické slovo „<nowiki>__NOTOCNUM__</nowiki>”',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'psinotocnum-desc' => 'Föiget dät magiske Woud „<nowiki>__NOTOCNUM__</nowiki>“ tou',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

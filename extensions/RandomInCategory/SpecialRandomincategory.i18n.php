@@ -645,6 +645,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'randomincategory' => 'Toufällige Siede in ne Kategorie',
+	'randomincategory-desc' => '[[Special:Randomincategory|Spezioalsiede]], uum ne toufällige Siede ap ne Kategorie tou hoaljen',
 	'randomincategory-toolbox' => 'Toufällige Siede',
 	'randomincategory-nocategory' => 'Kategorie $1 bestoant nit of ju is loos',
 	'randomincategory-label' => 'Kategorie:',

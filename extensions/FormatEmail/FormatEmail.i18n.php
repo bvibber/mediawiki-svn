@@ -494,6 +494,7 @@ $2',
  * @author Pyt
  */
 $messages['stq'] = array(
+	'email-desc' => 'Ferlööwet Benutsere persöönelke Kop- un Fout-Riegen in ju E-mail-Funktion tou ferweenden',
 	'email_footer' => '----------------------------------------------------------------------------
 Disse E-Mail wuude die fon $1 uur dät {{SITENAME}}-E-Mail-System tousoand.
 

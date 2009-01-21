@@ -232,6 +232,20 @@ $messages['gl'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'layouts-desc' => 'Fiegt nej aagleite Syte bearbeitbari „Gstaltige“ zue go ne einheitligi Struktur vu Syte z ferdere',
+	'layouts_title' => 'Neji Syte aalege',
+	'layouts_chooselayout' => 'Suech e Format us fir $1:',
+	'layouts_nolayout' => 'Kei Format',
+	'layouts_continue' => 'Wyter',
+	'layouts_choosecategory' => 'Suech e Kategorie uus fir $1:',
+	'layouts_unknown' => 'Nit bekannt',
+	'layouts_tagline' => "Die Syte isch mit em '''$1'''-Layout aagleit wore.",
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

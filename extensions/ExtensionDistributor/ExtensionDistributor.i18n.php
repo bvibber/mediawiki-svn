@@ -56,12 +56,18 @@ If you have any questions about this extension distribution system, please go to
  * @author Aotake
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Александр Сигачёв
  */
 $messages['qqq'] = array(
 	'extensiondistributor' => '{{Identical|Download}}',
 	'extdist-desc' => 'Short description of the Extdist extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'extdist-submit-extension' => '{{Identical|Continue}}',
 	'extdist-submit-version' => '{{Identical|Continue}}',
+	'extdist-created' => '* $1 - extension
+* $2 - revision number 
+* $3 - branch name
+* $4 - URL
+* $5 - filename',
 );
 
 /** Arabic (العربية)
@@ -254,10 +260,43 @@ $messages['bs'] = array(
 	'extdist-no-such-extension' => 'Nema takve ekstenzije "$1"',
 	'extdist-no-such-version' => 'Proširenje "$1" ne postoji u verziji "$2".',
 	'extdist-choose-extension' => 'Odaberite koje proširenje želite da učitate:',
+	'extdist-wc-empty' => 'Konfigurirani radni direktorij kopiranja nema proširenja za distribuciju!',
 	'extdist-submit-extension' => 'Nastavi',
 	'extdist-current-version' => 'Trenutna verija (trunk)',
+	'extdist-choose-version' => '<big>Skidate proširenje <b>$1</b>.</big>
+
+Odaberite Vašu verziju MediaWikija.
+
+Većina proširenja radi na mnogim verzijama MediaWikija, pa ako se Vaša verzija MediaWikija ne nalazi ovdje, ili ako vam je potrebna za najnovije funkcije proširenja, pokušajte koristiti trenutnu verziju.',
+	'extdist-no-versions' => 'Odabrano proširenje ($1) nije dostupno u nijednoj verziji!',
 	'extdist-submit-version' => 'Nastavi',
+	'extdist-no-remote' => 'Ne može se kontaktirati udaljeni klijent subverzije.',
+	'extdist-remote-error' => 'Greška od udaljenog klijenta subverzije: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Nevaljan odgovor od udaljenog klijenta subverzije.',
+	'extdist-svn-error' => 'Desila se greška kod subverzije: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Ne mogu procesirati XML formu iz "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => "Program ''tar'' je vratio izlazni kod $1:",
+	'extdist-created' => "Napravljen je prikaz verzije <b>$2</b> od proširenja <b>$1</b> za MediaWiki <b>$3</b>. Vaše preuzimanje će otpočeti automatski za 5 sekundi.  
+
+URL za ovaj prikaz je:
+:$4
+Možete ga koristiti za direktno preuzimanje sa servera, ali ga ne stavljajte u favorite, pošto mu se sadržaj neće ažurirati, a možete ga obrisati kasnije.
+
+Tar arhiva bi se trebala otpakovati u Vaš direktorij za proširenja. Na primjer, na OS-u poput Unixa i Linuxa:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Na Windowsu, možete koristiti [http://www.7-zip.org/ 7-zip] za otpakiranje datoteka.
+
+Ako je Vaš wiki na udaljenom serveru, otpakujte datoteke u privremeni direktorij na Vašem računaru, zatim postavite '''sve''' otpakovane datoteke u direktorij za proširenja na serveru.
+
+Zapamtite da neka proširenja trebaju datoteku pod imenom ExtensionFunctions.php, koja se nalazi u <tt>extensions/ExtensionFunctions.php</tt>, to jest, u ''nadređenom'' direktoriju određenog direktorija proširenja. Prikaz za ova proširenja sadrži ovu datoteku kao tarbomb, otpakovanu u  ./ExtensionFunctions.php. Nemojte zaboraviti postaviti ovu datoteku na Vaš udaljeni server.
+
+Nakon što otpakujete datoteke, morat ćete registrovati proširenje u LocalSettings.php. Dokumentacija proširenja bi trebala imati detaljna objašnjenja kako se ovo radi.
+
+Ako imate nekih pitanja oko ovog sistema distribucije proširenja, molimo pogledajte [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Nađi slijedeće proširenje',
 );
 
@@ -894,8 +933,33 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'extensiondistributor' => '미디어위키 확장 기능 내려받기',
+	'extdist-not-configured' => '$wgExtDistTarDir 과 $wgExtDistWorkingCopy를 설정하십시오.',
+	'extdist-no-such-version' => '확장 기능 "$1"은 "$2" 버전용이 존재하지 않습니다.',
+	'extdist-choose-extension' => '당신이 다운로드하기를 원하는 확장 기능을 선택하십시오:',
 	'extdist-submit-extension' => '계속',
 	'extdist-current-version' => '현재 버전 (trunk)',
+	'extdist-submit-version' => '계속',
+	'extdist-created' => "미디어위키 확장 기능 <b>$1</b>의 <b>$2</b> 버전의 묶음 <b>$3</b> 이 생성되었습니다. 5초 후에 다운로드가 자동적으로 실행될 것입니다.
+
+묶음의 URL은 다음에 있습니다:
+:$4
+이 URL은 서버에서 즉시 다운로드할 때 사용될 것입니다. 하지만 즐겨찾기에 추가하지는 마세요. 내용이 업데이트되지 않고, 나중에 이 URL은 삭제될 것입니다.
+
+tar 압축 파일을 당신의 확장 기능 폴더에 압축을 푸십시오. 유닉스 계열의 운영 체제에서는:
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+을 이용하십시오.
+
+윈도에서는 압축을 풀 때 [http://www.7-zip.org/ 7-zip]을 이용하실 수 있습니다.
+
+만약 당신의 위키가 원격 서버에 있다면. 당신의 컴퓨터에 임시로 압축을 푼 뒤, 압축이 풀어진 '''모든''' 파일을 서버의 확장 기능 폴더에 올리십시오.
+
+일부 확장 기능은<tt>extensions/ExtensionFunctions.php</tt>에 위치한 ExtensionFunctions.php라는 파일을 필요로 할 것입니다. 이 파일은 각각의 확장 기능 폴더의 상위 폴더에 위치하고 있습니다. 이러한 확장 기능의 묶음은 ./ExtensionFunctions.php에 압축이 풀리도록 이 파일을 포함하고 있습니다. 당신의 원격 서버에 이 파일을 올리는 것을 잊지 마십시오.
+
+압축을 푼 후, 확장 기능을 LocalSettings.php에 등록해야 합니다. 확장 기능의 설명 문서가 어떻게 확장 기능을 등록하는 지에 대한 설명을 담고 있습니다.
+
+이 확장 기능에 대해 어떤 질문이 있다면, [[Extension talk:ExtensionDistributor]] 문서를 방문해주십시오.",
 	'extdist-want-more' => '다른 확장 기능 내려받기',
 );
 
@@ -1337,6 +1401,27 @@ $messages['ru'] = array(
 	'extdist-svn-error' => 'Ошибка Subversion: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Ошибка обработки XML, возвращённого командой «svn info»: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar вернул код ошибки $1:',
+	'extdist-created' => "Был создан снимок версии <b>$2</b> расширения <b>$1</b> для MediaWiki <b>$3</b>. Загрузка должна начаться автоматически через 5 секунд.
+
+URL данного снимка:
+:$4
+Этот адрес может быть использован для немедленного начала загрузки на сервер, но, пожалуйста, не заносите ссылку в закладки, так как содержание не будет обновляться, а адрес может перестать работать в будущем.
+
+Tar-архив следует распаковать в вашу директорию для расширений. Например, для юникс-подобных ОС это будет команда:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+В Windows для извлечения файлов вы можете использовать программу [http://www.7-zip.org/ 7-zip]
+
+Если ваша вики находится на удалённом сервере, извлеките файлы во временную директорию вашего компьютера и затем загрузите '''все''' извлечённые файлы в директорию расширения на сервере.
+
+Заметьте, что некоторые расширения требуют наличия файла ExtensionFunctions.php, размещённого в родительской директории по отношению к директории расширения — <tt>extensions/ExtensionFunctions.php</tt>. Снимок для таких расширений содержит этот файл в виде tar-бомбы, распакованной в ./ExtensionFunctions.php. Не забывайте загрузить этот файл на ваш сервер.
+
+После извлечения файлов, вам следует прописать это расширение в файл LocalSettings.php. Документация по расширению должна содержать соответствующие указания.
+
+Если у вас есть вопрос об этой системе распространения расширений, пожалуйста, обратитесь к странице [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Скачать другое расширение',
 );
 

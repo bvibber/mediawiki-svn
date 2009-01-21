@@ -189,6 +189,17 @@ $messages['grc'] = array(
 	'unicodeconverter-ok' => 'εἶεν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'unicodeconverter' => 'Unicode-Konverter',
+	'unicodeconverter-desc' => 'Eifach Byyspil fir e Spezialsyte. [[Special:UnicodeConverter|Yygab vun eme Zeiche in UTF-8]], Uusgab as HTML-Entität fir d Verwändig in ere ISO-8859-1-Netzsyte',
+	'unicodeconverter-ok' => 'In Ornig',
+	'unicodeconverter-oldtext' => 'Originaltext:',
+	'unicodeconverter-newtext' => 'Konvertierter Text:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

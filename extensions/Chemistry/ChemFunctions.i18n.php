@@ -773,6 +773,10 @@ $messages['roa-tara'] = array(
 	'chemicalsources' => 'fonde chimiche',
 	'chemicalsource-desc' => "Aggiunge 'u tag <nowiki><chemform></nowiki>, pe le formule chimiche",
 	'chemFunctions_ListPage' => 'fonde chimiche',
+	'chemFunctions_DataList' => 'Sotte stè \'na liste de collegaminde ca ponne dà \'mbormaziune sus a le sostanze chimiche ca tu ste cirche.<br /><br />
+
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Combosizione de $MIXCASNameFormula a \'u NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS a l\'Università de Oxford (UK) (senza ricerche)</a><br />',
 	'chemFunctions_CAS' => 'Numere CAS',
 	'chemFunctions_ATCCode' => 'Codece ATC',
 	'chemFunctions_ECNumber' => 'Numere EC',

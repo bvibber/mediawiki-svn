@@ -49,6 +49,13 @@ $messages['bs'] = array(
 	'editown-desc' => 'Korisnici bez prava editall mogu uređivati samo stranice koje su napravili',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Kaszeba
+ */
+$messages['csb'] = array(
+	'editown-desc' => 'Brëkòwnicë bez editorsczich praw mògą editowac blós starnë chtërné sómi ùsôdzelë',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

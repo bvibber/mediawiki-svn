@@ -274,6 +274,14 @@ $messages['sk'] = array(
 	'othersites-desc' => 'Presunie interwiki odkazy okrem odkazov na iné jazyky do ich vlastných portletov.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'othersites' => 'uur Sieden',
+	'othersites-desc' => 'Ferschuft Interwikilinks in ne oaine Box, fals jo neen Sproaklinke deerstaale',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

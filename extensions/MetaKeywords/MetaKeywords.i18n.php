@@ -84,6 +84,11 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'metakeywords-desc' => 'Erlaubt die Konfiguration von <tt><nowiki><meta "keywords"></nowiki></tt>- und <tt><nowiki><meta "description"></nowiki></tt>-Tags pro Namensraum',
+	'metakeywords' => '  # Zeilen dieser Seite müssen das folgendes Format haben: „Namensraum|Mit Komma getrennte,Schlüsselwörter,die hinzugefügt,werden sollen“
+  # Die Namensraumidentifiktoren „(all)“ und „(main)“ erlauben einen Standard für alle Namensräume oder den Hauptnamensraum.',
+	'metadescription' => '  # Zeilen dieser Seite müssen das folgendes Format haben: "Namensraum|Beschreibung des zu setzenden Tags"
+  # Die Namensraumidentifiktoren „(all)“ und „(main)“ erlauben einen Standard für alle Namensräume oder den Hauptnamensraum.
+  # Jedes Auftreten von $1 wird durch den jeweiligen Seitentitel ersetzt.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

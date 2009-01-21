@@ -1417,8 +1417,15 @@ $messages['ss'] = array(
  */
 $messages['stq'] = array(
 	'sitematrix' => 'Lieste fon Wikimedia-Wikis',
+	'sitematrix-summary' => 'Disse Spezioalsiede wiest aal Wikis fon ju Wikimedia Foundation.',
+	'sitematrix-desc' => 'Wiest ne [[Special:SiteMatrix|Lieste fon do Wikimedia-Wikis]]',
 	'sitematrix-language' => 'Sproake',
+	'sitematrix-project' => 'Projektnoome, Interprojekt-Link un Interwiki-Link',
 	'sitematrix-others' => 'Wiedere Wikimedia-Projekte',
+	'sitematrix-total' => "'''Antaal mädnunner: $1'''",
+	'sitematrix-sitetotal' => 'Mädnunner',
+	'sitematrix-private' => 'Privoat',
+	'sitematrix-fishbowl' => 'Beoarbaidenge ientuund',
 );
 
 /** Sundanese (Basa Sunda)

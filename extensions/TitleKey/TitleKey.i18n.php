@@ -207,10 +207,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'titlekey-desc' => 'タイトルの前方一致検索を容易にする内部機構',
+	'titlekey-desc' => 'ページ名の前方一致インクリメンタル検索を実現する内部機構',
 );
 
 /** Javanese (Basa Jawa)

@@ -353,6 +353,31 @@ riddler|Riddler',
 	'vote-invalid-choice' => 'Du musst eine der möglichen Optionen wählen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'vote' => 'Głosowaś',
+	'vote-desc' => 'Dawa jadnore napšašowańske móžnosći',
+	'vote-header' => "Móžoš how za '''Nanejwušego kněza swěta''' glosowaś!",
+	'vote-current' => "Twój aktualny głos jo za '''$1'''.",
+	'vote-legend' => 'Swój głos wótedaś abo změniś',
+	'vote-caption' => 'Twójo wuzwólenje:',
+	'vote-choices' => 'joker|Joker
+penguin|Penguin
+riddler|Riddler',
+	'vote-submit' => 'Głosowaś',
+	'vote-registered' => 'Twój głos jo se zregistrěrował.',
+	'vote-view-results' => 'Wuslědki pokazaś',
+	'vote-results' => 'Wuslědki wótgłosowanja',
+	'vote-results-choice' => 'Wuzwólenje',
+	'vote-results-count' => 'Licba',
+	'vote-results-none' => 'Dotychměst głose njejsu se wótedali.',
+	'vote-login' => 'Musyš $1, aby wótgłosował.',
+	'vote-login-link' => 'se pśizjawiś',
+	'vote-invalid-choice' => 'Musyš jadnu z k dispoziciji stojecych opcijow wubraś.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

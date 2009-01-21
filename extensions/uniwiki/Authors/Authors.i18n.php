@@ -158,6 +158,15 @@ $messages['gl'] = array(
 	'authors_anonymous' => 'Anónimos',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'authors-desc' => 'Hänkt an Syten e Lischt vu dr Autore aa',
+	'authors_authors' => 'Autore',
+	'authors_anonymous' => 'Anonym',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

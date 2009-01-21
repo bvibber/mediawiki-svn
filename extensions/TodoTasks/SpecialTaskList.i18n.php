@@ -378,6 +378,35 @@ Para ver a súa lista completa de tarefas vaia a %s.
 O seu sistema agradable de notificacións %s',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'tasklist' => 'Ufgabelischt',
+	'tasklist-parser-desc' => 'Fiegt d Parserfunktion <nowiki>{{#todo:}}</nowiki> zum Zueordne vu Ufgabe zue',
+	'tasklist-special-desc' => 'Fiegt e Spezialsyte fir d Nochpriefig vu [[Special:TaskList|Ufgabezueteilige]] zue',
+	'tasklistbyproject' => 'Ufgabelischt pro Projäkt',
+	'tasklistunknownproject' => 'Nit bekannt Projäkt',
+	'tasklistunspecuser' => 'Uubstimmter Benutzername',
+	'tasklistincorrectuser' => 'Falscher Benutzername',
+	'tasklistemail' => 'Sali %s',
+	'tasklistemailsubject' => '[%s]-Ufgabelischt Änderige',
+	'tasklistmytasks' => 'Myyni Ufgabe',
+	'tasklistbyprojectbad' => "Projäkt '''%s''' git s nit. Fir e Lischt vu giltige Projäkt lueg [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Zuegwiseni Ufgabe fir '''%s'''",
+	'tasklistchooseproj' => 'Projäkt uswehle:',
+	'tasklistprojdisp' => 'Aazeige',
+	'tasklistbyname' => '== Ufgabelischt fir %s ==',
+	'tasklistnoprojects' => "Fähler: S siht eso uus wie wänn '''\$wgUseProjects''' aktiviert wär, aber d Syte [[MediaWiki:TodoTasksValidProjects]] sin nit aagleit. Lueg d [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsaawyysige] fir meh Detail.",
+	'tasklistemailbody' => ',
+
+Eber het Dir e neji Ufgab bi %s zuegordnet.
+
+Go Dyy komplett Ufgabelischt bschaue lueg %s.
+
+Dyy fryndli %s-Benochrichtungssyschtem',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

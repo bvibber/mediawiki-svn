@@ -197,6 +197,18 @@ $messages['gv'] = array(
 	'categoryintersection-doit' => 'Cur duillagyn ayns ny ronnaghyn shen er rolley',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'categoryintersection' => 'הצלבת קטגוריות',
+	'categoryintersection-desc' => 'שמירת טבלה עם ערכי גיבוב עבור [[Special:CategoryIntersection|הצלבות בין קטגוריות]] בתוך דף',
+	'categoryintersection-doit' => 'הצגת הדפים בכל הקטגוריות האלו',
+	'categoryintersection-maxcategories' => 'מספר הקטגוריות המירבי המותר להצלבה הוא $1.',
+	'categoryintersection-results' => 'החיפוש החזיר {{PLURAL:$1|תוצאה אחת|$1 תוצאות}}.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

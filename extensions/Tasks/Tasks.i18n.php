@@ -438,6 +438,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Metalhead64
  * @author Purodha
  * @author Raimond Spekking
@@ -456,7 +457,7 @@ $messages['de'] = array(
 	'tasks_create_header' => 'Neue Aufgabe erstellen',
 	'tasks_existing_header' => 'Vorhandene Aufgaben',
 	'tasks_existing_table_header' => 'Aufgabe|Datum|Kommentar|Zuordnung/Aktionen/Seite',
-	'tasks_noone' => 'no one',
+	'tasks_noone' => 'keine',
 	'tasks_assign_me' => 'Selbst zuweisen',
 	'tasks_assign_to' => 'Zuweisen an',
 	'tasks_unassign_me' => 'Meine Zuordnung entfernen',
@@ -903,6 +904,83 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'tasks_search_status' => 'Καθεστώς',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'tasks' => 'Ufgabe',
+	'tasks_desc' => 'En Erwyterig zum Ufgabe verwalte',
+	'tasks_tab' => 'Ufgabe',
+	'tasks_title' => 'Ufgabe fir „$1“',
+	'tasks_form_new' => 'Neji Ufgabe aalege',
+	'tasks_form_comment' => 'Kommentar',
+	'tasks_error1' => 'Ufgab isch nit aagleit wore: S het schon eso ne Ufgab!',
+	'tasks_ok1' => 'Neji Ufgab isch aagleit wore!',
+	'tasks_create_header' => 'Neji Ufgab aalege',
+	'tasks_existing_header' => 'Ufgabe, wu s scho het',
+	'tasks_existing_table_header' => 'Ufgab|Datum|Kommentar|Zueornig/Aktione/Syte',
+	'tasks_noone' => 'keini',
+	'tasks_assign_me' => 'Sälber zuewyyse',
+	'tasks_assign_to' => 'Zuewyyse an',
+	'tasks_unassign_me' => 'Myyni Zueornig useneh',
+	'tasks_close' => 'Zuemache',
+	'tasks_wontfix' => 'Ablähne',
+	'tasks_delete' => 'Lesche',
+	'tasks_no_task_delete_title' => 'Nit erlaubt',
+	'tasks_no_task_delete_texe' => 'Du derfsch kei Ufgabe lesche.
+Des derfe nume Ammanne.',
+	'tasks_action_delete' => 'E Ufgab isch nit glescht wore:',
+	'tasks_task_was_deleted' => 'D Ufgab isch erfolgryych glescht wore.',
+	'tasks_reopen' => 'Ufgab wider ufmache',
+	'tasks_assignedto' => 'Zuegwisen an $1',
+	'tasks_created_by' => 'Aagleit vu $1',
+	'tasks_discussion_page_link' => 'Ufgabe-Diskussionssyte',
+	'tasks_closedby' => 'Zuegmacht vu $1',
+	'tasks_assigned_myself_log' => 'Sälbschtzuewyysig vu dr Ufgab $1',
+	'tasks_discussion_page_for' => 'Die Ufgab isch fir d Syte „$1“. D Lischt vu allene Ufgabe fir die Syte isch $2.',
+	'tasks_sidebar_title' => 'Ufgabe ufmache',
+	'tasks_here' => 'doo',
+	'tasks_returnto' => 'Du wirsch jetze wytergleitet.
+Wänn Du in e paar Sekunden imfall nit wytergleitet wirsch, no druck $1.',
+	'tasks_see_page_tasks' => '(Ufgabe vu däre Syte)',
+	'tasks_task_is_assigned' => '(zuegwise)',
+	'tasks_plain_text_only' => '(Klartext, nume 256 Zeiche)',
+	'tasks_help_page' => 'Ufgabe',
+	'tasks_more_like_it' => 'meh',
+	'tasks_task_types' => '1:cleanup:Syyfere|2:wikify:Wikify|3:rewrite:Umschryybe|4:delete:Lesche|5:create:Aalege|6:write:Schryybe|7:check:Priefe',
+	'tasks_significance_order' => 'iberschryybe<lesche',
+	'tasks_event_on_creation' => 'priefe',
+	'tasks_event_on_creation_anon' => 'priefe',
+	'tasks_on_creation_comment' => 'Automatischi Ufgab, aagleit dur s Aalege vun ere Syte',
+	'tasks_link_your_assignments' => 'Ufgabe, wu nonig gmacht sin',
+	'tasks_see_your_assignments' => 'Du hesch $1 {{PLURAL:$1|Ufgab, wu nonig gmacht isch|Ufgabe, wu nonig gmacht sin}}. Lueg Dyyni $2.',
+	'tasks_my_assignments' => 'Dyyni {{PLURAL:$1|aktuäll Ufgab|aktuälle Ufgabe}}',
+	'tasks_table_header_page' => 'Syte',
+	'tasks_you_have_no_assignments' => 'Du hesch kei Ufgabe, wu nonig gmacht sin',
+	'tasks_search_form_title' => 'Sueche',
+	'tasks_search_tasks' => 'Ufgabe',
+	'tasks_search_status' => 'Status',
+	'tasks_search_no_tasks_chosen_note' => '(Kei Uuswahl suecht in allene Ufgabe.)',
+	'tasks_search_results' => 'Suechergebniss',
+	'tasks_previous' => 'Vorigi',
+	'tasks_next' => 'Negschti',
+	'tasks_sort' => 'Sortiere',
+	'tasks_ascending' => 'Di Eltschte zerscht',
+	'tasks_status_open' => 'Uffe',
+	'tasks_status_assigned' => 'Zuegwise',
+	'tasks_status_closed' => 'Zue',
+	'tasks_status_wontfix' => 'Abglähnt',
+	'tasks_action_open' => 'Ufgab „$1“ ufgmacht.',
+	'tasks_action_assigned' => 'Ufgab „$1“ zuegwise.',
+	'tasks_action_closed' => 'Ufgab „$1“ zuegmacht.',
+	'tasks_action_wontfix' => 'Ufgab „$1“ abglähnt.',
+	'tasks_sign_delete' => '<b>S isch aagfrogt wore, die Syte z lesche!</b>',
+	'tasks_logpage' => 'Ufgabe-Logbuech',
+	'tasks_logpagetext' => 'In däm Logbuech stehn d Änderige an Ufgabe.',
+	'tasks_logentry' => 'Fir „[[$1]]“',
+	'tog-show_task_comments' => 'Ufgabe-Diskussionssyte yybinde.',
 );
 
 /** Hebrew (עברית)

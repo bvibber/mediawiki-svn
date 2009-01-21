@@ -369,6 +369,32 @@ $messages['grc'] = array(
 	'gep-addsectionbutton' => 'Προστιθέναι',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'gep-desc' => 'Zuesätz zue dr Bearbeitigssyte go die benutzerfryndliger z mache',
+	'gep-emailsubject' => '[$1] Vorschlag Kategorii: $2',
+	'gep-emailbody' => 'Benutzer „$1“ het d Kategorii „$2“ fir d Syte „$3“ uusgwehlt.',
+	'gep-emailfailure' => 'Leider het Dyy Vorschlag nit chenne verarbeitet wäre.',
+	'gep-emailsuccess' => 'Dankschen, ass Du Kategorie $1 vorgschlaa hesch.',
+	'gep-categories' => 'Kategorie',
+	'gep-addcategory' => 'E Kategorii yyfiege',
+	'gep-addcategorybutton' => 'Yyfiege',
+	'gep-suggestcategory' => 'E Kategorii vorschlaa',
+	'gep-suggestcategorybutton' => 'Schicke',
+	'gep-sections' => 'Abschnitt',
+	'gep-sectionnotdisabled' => 'Dää Abschnitt cha nit ufghobe wäre',
+	'gep-addsection' => 'E Abschnitt yyfiege',
+	'gep-addsectionbutton' => 'Yyfiege',
+	'gep-classicmode' => 'Normaler Modus',
+	'gep-genericmode' => 'Generälle Modus',
+	'gep-nosectioninstructions' => 'Die Syte het kei Abschnitt.
+Mit dr Wärchzyyg an dr Syte chenne Abschnitt yygfiegt wäre.',
+	'gep-nocategories' => 'Bitte vor em Abspychere zmindescht ei Kategorii uussueche',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -163,6 +163,14 @@ $messages['grc'] = array(
 	'catboxattop-categories' => 'Κατηγορίαι',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'catboxattop-desc' => 'Fiegt in Syten obe rächts e Kategoriechäschtli yy',
+	'catboxattop-categories' => 'Kategorie',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

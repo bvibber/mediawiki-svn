@@ -698,6 +698,55 @@ Por favor, comprobe o seu bloqueador de ventás emerxentes.',
 	'ct_user_sample' => 'Nome de usuario',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$wgCustomToolbarMessages['gsw'] = array(
+	'ct-desc' => 'Fiegt e uuswytbari Wärchzyygleischte zue',
+	'ct_bold_sample' => 'Fette Text',
+	'ct_bold_tip_ins' => 'Fette Text yyfiege',
+	'ct_bold_tip_wrap' => 'Dää Text fett markiere',
+	'ct_bold_caption' => 'Fett',
+	'ct_italic_sample' => 'Kursive Text',
+	'ct_italic_tip_ins' => 'Kursive Text yyfiege',
+	'ct_italic_tip_wrap' => 'Dää Text kursiv markiere',
+	'ct_italic_caption' => 'Kursiv',
+	'ct_internal_sample' => 'Sytename',
+	'ct_internal_tip_ins' => 'E intern Gleich yyfiege',
+	'ct_internal_tip_wrap' => 'Dää Text in e intern Gleich umwandle',
+	'ct_internal_caption' => 'Intern Gleich',
+	'ct_external_tip_ins' => 'E extern Gleich yyfiege',
+	'ct_external_tip_wrap' => 'Dää Text in e extern Gleich umwandle',
+	'ct_external_caption' => 'Extern Gleich',
+	'ct_image_tip' => 'E Bild yyfiege',
+	'ct_image_caption' => 'Bild yyfiege',
+	'ct_attachment_tip' => 'E Aalag yyfiege',
+	'ct_attachment_caption' => 'E Aalag aafiege',
+	'ct_math_sample' => 'Doo LaTeX Formle yyfiege',
+	'ct_math_tip_ins' => 'Doo mathematischi Formle yyfiege (LaTeX)',
+	'ct_math_tip_wrap' => 'Dää Text in e mathematischi Formle umwandle (LaTeX)',
+	'ct_math_caption' => 'Formle',
+	'ct_nowiki_sample' => 'Doo uuformatierte Text yygee',
+	'ct_nowiki_tip_ins' => 'Ignorier Wiki-Formatierig',
+	'ct_nowiki_tip_wrap' => 'Ignorier Wiki-Formatierig fir dää Text',
+	'ct_nowiki_caption' => 'Kei Wiki',
+	'ct_horizontal_tip' => 'E woogrächti Linie yyfiege (nit zvyyl bruuche)',
+	'ct_horizontal_caption' => 'Woogrächti Linie',
+	'ct_upload' => 'Uffelade $1',
+	'ct_select' => 'Wehl $1 zum Uffelade',
+	'ct_caption' => 'Bschriftig yyfiege (optional)',
+	'ct_link' => 'Im Gleich e Name gee (optional)',
+	'ct_submit' => 'Gang!',
+	'ct_close' => 'Fänschter zuemache',
+	'ct_success' => 'Datei mit Erfolg uffeglade',
+	'ct_popupblocked' => 'S Popup-Fänschter zum Uffelade het nit chenne ufgmacht wäre.
+Bitte iberprief Dyy Popup-Blocker.',
+	'ct_user_user' => 'Benutzer',
+	'ct_user_tip' => 'E Gleich yyfiege zue dr Syte vun eme Benutzer',
+	'ct_user_caption' => 'Gleich zuen eme Benutzer',
+	'ct_user_sample' => 'Benutzername',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

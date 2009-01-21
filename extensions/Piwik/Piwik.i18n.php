@@ -229,6 +229,16 @@ $messages['it'] = array(
 	'piwik-browsers' => 'Browser',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'piwik-desc' => '追跡と[[Special:Piwik|統計]]のために Piwki スクリプトを MediaWiki ページに挿入する',
+	'piwik-lastvisits' => '最新の訪問',
+	'piwik-countries' => '国',
+	'piwik-browsers' => 'ブラウザ',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -352,6 +362,16 @@ $messages['sk'] = array(
 	'piwik-lastvisits' => 'Posledné návštevy',
 	'piwik-countries' => 'Krajiny',
 	'piwik-browsers' => 'Prehliadače',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'piwik-desc' => 'Föiget n Piwik-Skript tou n Tracking in MediaWiki-Sieden ien un fergrattert ne [[Special:Piwik|Spezioalsiede]] mäd eenige Statistike',
+	'piwik-lastvisits' => 'Lääste Besäike',
+	'piwik-countries' => 'Lounde',
+	'piwik-browsers' => 'Browsere',
 );
 
 /** Sundanese (Basa Sunda)

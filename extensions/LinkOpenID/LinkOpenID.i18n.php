@@ -206,6 +206,14 @@ $messages['ja'] = array(
 	'linkopenid-prefstext-v2url' => 'OpenID バージョン2用の Server-URL:',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-openid' => '당신의 OpenID:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

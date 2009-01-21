@@ -130,6 +130,34 @@ $messages['arz'] = array(
 	'spamdifftool_submit_buttom' => 'تنفيذ',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'spamdifftool' => 'Кіраваньне чорным сьпісам спаму',
+	'spamdifftool-desc' => 'Дазваляе лёгка дадаваць новыя запісы ў чорны сьпіс спаму з параўнаньня вэрсіяў старонак',
+	'spamdifftool_cantedit' => 'Прабачце, Вы ня маеце правоў на рэдагаваньне чорнага сьпісу спаму.',
+	'spamdifftool_notext' => "Няма тэксту для даданьня ў чорны сьпіс спаму.
+Націсьніце <a href='$1'>тут</a>, каб працягваць.",
+	'spamdifftool_confirm' => "Пацьвердзіце, што Вы жадаеце дадаць гэтыя запісы ў чорны сьпіс спаму.
+(Націсьніце <a href='$1' target='new'>тут</a>, каб паведаміць пра праблему.)",
+	'spamdifftool_summary' => 'Дадаць у чорны сьпіс спаму.',
+	'spamdifftool_urls_detected' => 'Наступныя URL-адрасы былі выяўлены ў рэдагаваньні(ньнях), якія зь іх трэба дадаць у чорны сьпіс спаму?
+Гэтыя настройкі разьмешчаныя ад больш строгіх абмежаваньняў да менш строгіх, блякаваньне ўсяго дамэна заблякуе ўсе спасылкі на гэты дамэн.
+
+Пераканайцеся, што Вы не блякуеце дамэны, які ўтрымліваюць старонкі ўдзельнікаў, такія як blogpost.com, geocities.com і г.д.',
+	'spamdifftool_no_urls_detected' => "URL-адрасы ня знойдзеныя.
+Націсьніце <a href='$1'>тут</a>, каб вярнуцца.",
+	'spamdifftool_spam_link_text' => 'дадаць у спам',
+	'spamdifftool_option_domain' => 'усё з гэтага дамэну',
+	'spamdifftool_option_subdomain' => 'усё з гэтага паддамэну',
+	'spamdifftool_option_directory' => 'гэтага паддамэну і дырэкторыі',
+	'spamdifftool_option_none' => 'нічога',
+	'spamdifftool_block' => 'Блякаваньне:',
+	'spamdifftool_submit_buttom' => 'Адправіць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

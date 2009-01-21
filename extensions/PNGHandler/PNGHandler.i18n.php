@@ -260,6 +260,13 @@ $messages['sr-ec'] = array(
 	'pnghandler-desc' => 'Промени величину ПНГ слика користећи pngds',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'pnghandler-desc' => 'Annerje ju Grööte fon PNGs mäd Hilfe von „pngds“',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

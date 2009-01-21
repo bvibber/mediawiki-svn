@@ -307,6 +307,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'purge' => 'Cache loosmoakje',
+	'purge-desc' => 'Föiget n „Purge“-Rieder tou foar aal normoale Sieden tou ju gaue Cache-Löösenge un uumgungt ju Purge-Wröige foar anonyme Benutsere',
 );
 
 /** Swedish (Svenska)

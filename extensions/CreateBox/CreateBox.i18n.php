@@ -76,7 +76,13 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'createbox-desc' => 'Specijalizirana kutija unosa za pravljenje stranice',
 	'createbox-create' => 'Napravi',
+	'createbox-exists' => "Žao nam je, \"'''{{FULLPAGENAME}}'''\" već postoji.
+
+Ne možete napraviti ovu stranicu, ali je možete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti], [{{fullurl:{{FULLPAGENAME}}}} pročitati] ili odabrati pravljenje druge stranice koristeći kutiju ispod.
+
+<createbox>break=no</createbox>",
 );
 
 /** Catalan (Català)

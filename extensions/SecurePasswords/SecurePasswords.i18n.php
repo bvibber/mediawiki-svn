@@ -74,12 +74,13 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Melancholie
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'securepasswords-desc' => 'Erzeugt sicherere Passwort-Hashes und fügt eine Passwortstärkenprüfung hinzu',
 	'securepasswords-valid' => 'Dein Passwort ist ungültig oder zu kurz.
 Es muss:',
-	'securepasswords-minlength' => 'mindestens $1 Zeichen lang sein',
+	'securepasswords-minlength' => 'mindestens $1 {{PLURAL:$1|Zeichen|Zeichen}} lang sein',
 	'securepasswords-lowercase' => 'mindestens einen Kleinbuchstaben enthalten',
 	'securepasswords-uppercase' => 'mindestens einen Großbuchstaben enthalten',
 	'securepasswords-digit' => 'mindestens eine Ziffer enthalten',

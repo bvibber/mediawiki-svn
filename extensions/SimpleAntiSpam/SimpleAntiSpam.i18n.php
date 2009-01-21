@@ -506,6 +506,15 @@ $messages['sr-ec'] = array(
 	'simpleantispam-desc' => 'Додаје једноставну спам/бот проверу у форме.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'simpleantispam' => 'Dien Beoarbaidenge häd dän Spamschuts uutlöösd.',
+	'simpleantispam-label' => "Spamschuts-Wröige. Hier '''niks''' iendreege!",
+	'simpleantispam-desc' => 'Föiget do Formulare n eenfachen Bot-Spamschuts bietou',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

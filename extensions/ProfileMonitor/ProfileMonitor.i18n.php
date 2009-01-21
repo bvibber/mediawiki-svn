@@ -352,8 +352,17 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'profiling' => 'プロファイリングデータ',
+	'profiling-desc' => 'プロファイリングデータを検索し点検する[[Special:Profiling|特別ページ]]',
+	'profiling-process' => 'プロセス実行コマンド:',
+	'profiling-wildcard' => 'ワイルドカードを使用',
+	'profiling-ok' => 'OK',
+	'profiling-data' => '`$1` のプロファイリングデータ',
 	'profiling-data-process' => 'プロセス',
 	'profiling-data-count' => '件数',
+	'profiling-data-time' => '時間 (合計)',
+	'profiling-data-average' => '時間 (平均)',
+	'profiling-no-data' => '一致するデータは見つかりませんでした。',
 );
 
 /** Javanese (Basa Jawa)
@@ -649,7 +658,17 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'profiling' => 'Profildoaten winnen',
+	'profiling-desc' => '[[Special:Profiling|Spezioalsiede]], uum Profildoaten tou truchsäiken un tou bekiekjen',
+	'profiling-process' => 'Prozess-Aproup:',
+	'profiling-wildcard' => 'ferweend Ploatshoolder',
+	'profiling-ok' => 'OK',
+	'profiling-data' => 'Profildoaten foar „$1“',
+	'profiling-data-process' => 'Foargong',
 	'profiling-data-count' => 'täl',
+	'profiling-data-time' => 'Tied (aal)',
+	'profiling-data-average' => 'Tied (in n Truchsleek)',
+	'profiling-no-data' => 'Neen touträffende Doaten fuunen.',
 );
 
 /** Swedish (Svenska)

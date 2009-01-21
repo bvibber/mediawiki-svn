@@ -2467,6 +2467,7 @@ $messages['sr-ec'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'ogg-desc' => 'Stjuurengsprogramm foar Ogg Theora- un Vorbis-Doatäie, inklusive n JavaScript-Ouspielsoftware',
 	'ogg-short-audio' => 'Ogg-$1-Audiodoatäi, $2',
 	'ogg-short-video' => 'Ogg-$1-Videodoatäi, $2',
 	'ogg-short-general' => 'Ogg-$1-Mediadoatäi, $2',
@@ -2483,8 +2484,8 @@ $messages['stq'] = array(
 	'ogg-no-player' => 'Dien System schient uur neen Ouspielsoftware tou ferföigjen. Installier <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ne Ouspielsoftware</a>.',
 	'ogg-no-xiphqt' => 'Dien System schient nit uur ju XiphQT-Komponente foar QuickTime tou ferföigjen. QuickTime kon sunner disse Komponente neen Ogg-Doatäie ouspielje. 
 Dou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">leede XiphQT</a> of wääl ne uur Ouspielsoftware.',
-	'ogg-player-videoElement' => '<video>-Element>',
-	'ogg-player-oggPlugin' => 'Ogg-Plugin',
+	'ogg-player-videoElement' => 'Anweesende Browser-Unnerstutsenge',
+	'ogg-player-oggPlugin' => 'Browser-Plugin',
 	'ogg-player-thumbnail' => 'Wies Foarschaubielde',
 	'ogg-player-soundthumb' => 'Naan Player',
 	'ogg-player-selected' => '(uutwääld)',

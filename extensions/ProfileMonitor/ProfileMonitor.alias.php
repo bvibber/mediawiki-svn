@@ -26,7 +26,7 @@ $aliases['arz'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'ProfileMonitor' => array( 'プロフィールモニター' ),
+	'ProfileMonitor' => array( 'プロファイリングデータ', 'プロファイルモニター' ),
 );
 
 /** Dutch (Nederlands) */

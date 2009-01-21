@@ -325,6 +325,13 @@ $messages['tl'] = array(
 	'trustedxff-desc' => 'Ang paghahawak ng isang talaan ng pinagkakatiwalaang mga pamalit na adres/tirahan ([http://meta.wikimedia.org/wiki/XFF_project proyektong XFF])',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'trustedxff-desc' => 'Güvenilir proxy adresleri listesinin ele alınması ([http://meta.wikimedia.org/wiki/XFF_project XFF projesi])',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

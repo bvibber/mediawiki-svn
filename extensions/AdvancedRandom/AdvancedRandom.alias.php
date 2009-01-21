@@ -70,6 +70,11 @@ $aliases['ia'] = array(
 	'AdvancedRandom' => array( 'AleatoriAvantiate' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'AdvancedRandom' => array( '高度なおまかせ表示' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'AdvancedRandom' => array( 'Zoufall' ),

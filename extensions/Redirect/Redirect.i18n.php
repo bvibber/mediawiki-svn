@@ -142,3 +142,10 @@ $messages['sk'] = array(
 	'redirect-desc' => 'Umožňuje jednoduché nastavenie presmerovaní pri [[MediaWiki:Redirect-addnewaccount|tvorbe účtu]] a [[MediaWiki:Redirect-userlogoutcomplete|odhlásení]]',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'redirect-desc' => 'Ferlööwet dät eenfach Konfigurierjen fon Fäärelaitengen bie dät [[MediaWiki:Redirect-addnewaccount|Moakjen fon Benutserkonten]] un bie dät [[MediaWiki:Redirect-userlogoutcomplete|Oumäldjen]]',
+);
+

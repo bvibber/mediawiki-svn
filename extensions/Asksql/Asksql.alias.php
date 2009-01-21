@@ -57,6 +57,11 @@ $aliases['hu'] = array(
 	'Asksql' => array( 'SQL-lekérdezés' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Asksql' => array( 'SQLクエリの実行' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Asksql' => array( 'SQL-Frooch', 'SQL-Froore' ),

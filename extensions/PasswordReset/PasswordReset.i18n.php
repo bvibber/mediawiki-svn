@@ -1085,19 +1085,23 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'passwordreset' => 'Paaswoud touräächsätte',
+	'passwordreset-desc' => "[[Special:PasswordReset|Touräächsätten fon n Benutser-Paaswoud]] - ''passwordreset''-Gjucht nöödich",
 	'passwordreset-invalidusername' => 'Uungultigen Benutsernoome',
 	'passwordreset-emptyusername' => 'Loosen Benutsernoome',
 	'passwordreset-nopassmatch' => 'Paaswoude stimme nit uureen',
 	'passwordreset-badtoken' => 'Ungultigen „Edit Token“',
-	'passwordreset-username' => 'Benutsernoome',
-	'passwordreset-newpass' => 'Näi Paaswoud',
-	'passwordreset-confirmpass' => 'Paaswoud bestäätigje',
+	'passwordreset-username' => 'Benutsernoome:',
+	'passwordreset-newpass' => 'Näi Paaswoud:',
+	'passwordreset-confirmpass' => 'Paaswoud bestäätigje:',
 	'passwordreset-submit' => 'Paaswoud touräächsätte',
 	'passwordreset-success' => 'Paaswoud foar Benutser-ID $1 wuude touräächsät',
 	'passwordreset-disableuser' => 'Benutserkonto deaktivierje?',
 	'passwordreset-disableuserexplain' => '(sät n uungultich Paaswoud-Hash - Anmäldjen uunmuugelk)',
 	'passwordreset-disablesuccess' => 'Benutserkonto wuude deaktivierd (Benutser-ID: $1)',
 	'passwordreset-accountdisabled' => 'Benutserkonto is deaktivierd',
+	'disabledusers' => 'Deaktivierde Benutserkonten',
+	'disabledusers-summary' => 'Dit is ju Lieste fon do deaktivierde Benutserkonten (via PasswordReset).',
+	'right-passwordreset' => 'Paaswoud fon n Benutser touräächsätte ([[Special:PasswordReset|Spezioalsiede]])',
 );
 
 /** Sundanese (Basa Sunda)

@@ -101,6 +101,13 @@ $messages['gl'] = array(
 	'mootools12core-desc' => 'Engade [http://mootools.net mootools-1.2-core-yc.js], un armazón de JavaScript compacto, a cada páxina',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'mootools12core-desc' => 'Fiegt in jedi Syte [http://mootools.net mootools-1.2-core-yc.js], e JavaScript-Framework, yy',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

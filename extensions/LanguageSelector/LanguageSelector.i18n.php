@@ -54,6 +54,13 @@ $messages['ar'] = array(
 	'languageselector-setlang' => 'ضبط',
 );
 
+/** Araucanian (Mapudungun)
+ * @author Lin linao
+ */
+$messages['arn'] = array(
+	'languageselector' => 'Dungun',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -417,6 +424,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'languageselector' => '언어',
+	'languageselector-desc' => '방문자에게도 모든 문서에 언어 선택기를 추가',
 	'languageselector-setlang' => '설정',
 );
 

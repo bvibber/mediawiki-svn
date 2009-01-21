@@ -427,6 +427,13 @@ $messages['tl'] = array(
 	'mwsearch-desc' => "Pampasak na MWHanapin (''MWSearch'')",
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'mwsearch-desc' => 'MWSearch eklentisi',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

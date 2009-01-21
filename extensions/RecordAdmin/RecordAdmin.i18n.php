@@ -777,6 +777,44 @@ $messages['sk'] = array(
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'recordadmin' => 'Apteekenge-Administrierenge',
+	'recordadmin-desc' => 'Ne [[Special:RecordAdmin|spezielle Siede]] tou dät Fienden un Editierjen fon do Apteekenge-Sieden middels n Formular',
+	'recordadmin-category' => 'Apteekengen',
+	'recordadmin-select' => 'Wääl do Apteekenge-Typen, ätter do soacht wäide schäl',
+	'recordadmin-newsearch' => 'Näie $1-Säike',
+	'recordadmin-newrecord' => 'Wääl n uur Apteekenge-Typ',
+	'recordadmin-submit' => 'Uurmiddelje',
+	'recordadmin-create' => 'Fiend of moakje ne "$1"-Apteekenge',
+	'recordadmin-alreadyexist' => '"$1" existiert al!',
+	'recordadmin-createsuccess' => '$1 moaked',
+	'recordadmin-createerror' => 'Unner dät Moakjen fon $1 tried n Failer ap!',
+	'recordadmin-badtitle' => 'Uungultigen Tittel!',
+	'recordadmin-recordid' => 'Apteekenge-Määrk',
+	'recordadmin-invert' => 'Uutwoal uumekiere',
+	'recordadmin-buttonsearch' => 'Säike',
+	'recordadmin-buttoncreate' => 'Moak',
+	'recordadmin-buttonreset' => 'Touräächsätte',
+	'recordadmin-searchresult' => 'Säikresultoate',
+	'recordadmin-nomatch' => 'Neen paasjende Apteekengen fuunen!',
+	'recordadmin-edit' => 'Annerje $1',
+	'recordadmin-typeupdated' => '$1 Wäide aktualisierd',
+	'recordadmin-updatesuccess' => '$1 aktualisierd',
+	'recordadmin-updateerror' => 'Unner ju Aktualisierenge tried n Failer ap',
+	'recordadmin-buttonsave' => 'Spiekerje',
+	'recordadmin-noform' => 'Dät rakt neen Formular foar "$1"-Apteekengen!',
+	'recordadmin-createlink' => '<a href=$1>moak een</a>',
+	'recordadmin-newcreated' => 'Näi $1 ap n eepentelk Formular moaked',
+	'recordadmin-summary-typecreated' => 'Näi $1 moaked',
+	'recordadmin-viewlink' => 'bekiekje',
+	'recordadmin-editlink' => 'annerje',
+	'recordadmin-created' => 'Moaked',
+	'right-recordadmin' => 'Fiend un editier Apteekenge-Sieden',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

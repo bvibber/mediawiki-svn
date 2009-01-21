@@ -590,7 +590,12 @@ $messages['tl'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
+	'contributiontracking-desc' => 'Vikimedya fonsağlayıcı için katkı izlemesi',
+	'contributiontracking' => 'Katkı izlemesi',
 	'contrib-tracking-error' => 'Hata',
+	'contrib-tracking-error-text' => 'Geçersiz form teslimi',
+	'contrib-tracking-submitting' => 'Ödeme işlemcisine gönderiliyor...',
+	'contrib-tracking-continue' => "Eğer otomatik olarak yönlendirilmediyseniz, PayPal'daki bağışınızı tamamlamak için düğmeye basın.",
 	'contrib-tracking-button' => 'Devam et',
 );
 

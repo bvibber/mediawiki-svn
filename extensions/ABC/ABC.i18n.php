@@ -479,6 +479,14 @@ $messages['vo'] = array(
 	'abcdownload' => 'Donükön:',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'abcdesc' => 'לייגט צו <tt>&lt;abc&gt;</tt> טאַג צו פארמאַטירן ABC מוזיק',
+	'abcdownload' => 'אַראָפלאָדן',
+);
+
 /** Yoruba (Yorùbá)
  * @author Demmy
  */

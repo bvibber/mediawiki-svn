@@ -3074,6 +3074,7 @@ $wgGoogleMapsMessages['no'] = array(
  * @author Cedric31
  */
 $wgGoogleMapsMessages['oc'] = array(
+	'gm-desc' => 'Creacion simpla de plans amb la sintaxi wiki',
 	'gm-incompatible-browser' => 'Per veire la mapa que deuriá èsser dins aqueste espaci, utilizatz un <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">navigador compatible</a>.',
 	'gm-incompatible-browser-link' => 'Clicatz aicí per veire una lista de navigadors compatibles.',
 	'gm-no-editor' => 'Malurosament, vòstre navigador supòrta pas la creacion interactiva de mapa. Ensajatz d’installar la darrièra version de <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux) o al pièger <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows)',
@@ -3476,6 +3477,7 @@ $wgGoogleMapsMessages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $wgGoogleMapsMessages['ru'] = array(
+	'gm-desc' => 'Позволяет легко создавать карты с помощью вики-отметок',
 	'gm-incompatible-browser' => 'Для просмотра карты воспользуйтесь <a href=\\"http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499\\">совместимым броузером</a>.',
 	'gm-incompatible-browser-link' => 'Нажмите здесь, чтобы увидеть список подходящих браузеров.',
 	'gm-no-editor' => 'К сожалению, ваш броузер на поддерживает функцию создания интерактивных карт. Воспользуйтесь свежей версией <a href=\\"http://www.microsoft.com/ie\\">Internet Explorer</a> (Windows) или <a href=\\"http://www.mozilla.org/products/firefox\\">Firefox</a> (Windows, Mac и Linux).',
@@ -3771,6 +3773,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
  * @author Pyt
  */
 $wgGoogleMapsMessages['stq'] = array(
+	'gm-desc' => 'Eenfach moakjen fon Koarten mäd wikifizierde Markierengen',
 	'gm-incompatible-browser' => 'Uum ju Koarte sjo tou konnen, ju der hier anwiesd wäide schäl, bruukst du n kompatibelen Browser.',
 	'gm-incompatible-browser-link' => 'Klik hier foar ne Lieste fon kompatibele Browsere.',
 	'gm-no-editor' => 'Spietelk unnerstutset dien Browser dän interaktive Koarten-Editor nit. Fersäik et mäd ju näiste Version fon <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac un Linux) of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
@@ -3915,12 +3918,14 @@ Coba vérsi ahir <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Wi
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Jon Harald Søby
  * @author Lejonel
  * @author Leo Johannes
  * @author M.M.S.
  */
 $wgGoogleMapsMessages['sv'] = array(
+	'gm-desc' => 'Skapa enkelt kartor med wikifierade markörer',
 	'gm-incompatible-browser' => 'För att kunna se kartan som skulle ha visats här så måste du använda en kompatibel webbläsare.',
 	'gm-incompatible-browser-link' => 'Klicka här för att se en lista över kompatibla webbläsare.',
 	'gm-no-editor' => 'Tyvärr stöder inte din webbläsare funktionerna för att skapa kartor interaktivt. Pröva med den nyaste versionen av <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) eller <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac och Linux)',

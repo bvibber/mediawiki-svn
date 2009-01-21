@@ -235,6 +235,22 @@ Quere editar esta páxina?',
 	'createpage-badtitle' => '"$1" non pode ser usado como o título dunha páxina',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'createpage' => 'Neji Syte aalege',
+	'createpage-desc' => 'Fiegt e [[Special:CreatePage|Spezialsyte]] fir s Aalege vu neje Syte dezue',
+	'createpage_submitbutton' => 'Schicke',
+	'createpage_instructions' => 'Gib dr Name vu dr Syte yy, wu Du witt nej aalege:',
+	'createpage_entertitle' => 'Titel fir Dyyni Syte.',
+	'createpage_titleexists' => 'E Syte mit em Name [[$1]] git s scho.
+Mechtsch die Syte, wu s scho het, bearbeite?',
+	'createpage_tryagain' => 'Nei - Ich will e neji Syte aalege mit eme andere Titel.',
+	'createpage_editexisting' => 'Jo - Ich will die Syte, wu s scho het, bearbeite.',
+	'createpage-badtitle' => '„$1“ cha nit as Sytetitel bruucht wäre',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

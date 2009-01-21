@@ -228,6 +228,14 @@ $messages['sk'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Špeciálna stránka]], ktorá zobrazuje náhodnú koreňovú stránku',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'randomrootpage' => 'Toufällige Stamsiede',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Spezioalsiede]] uum ne toufällige Stamsiede aptouroupen',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

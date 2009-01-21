@@ -1179,6 +1179,7 @@ $messages['sr-ec'] = array(
  */
 $messages['stq'] = array(
 	'patrol' => 'Kontrolle fon do Beoarbaidengen',
+	'patrol-desc' => 'Ärwiederde Snitsteede foar ju Kontrolle fon Beoarbaidengen',
 	'patrol-endorse' => 'Bestäätigje',
 	'patrol-revert' => 'Touräächsätte',
 	'patrol-revert-reason' => 'Gruund:',
@@ -1199,6 +1200,7 @@ $messages['stq'] = array(
 	'group-patroller' => 'Kontrolleure',
 	'group-patroller-member' => 'Kontrolleur',
 	'grouppage-patroller' => '{{ns:project}}:Kontrolleur',
+	'right-patroller' => 'Sieden kontrollierje',
 );
 
 /** Sundanese (Basa Sunda)

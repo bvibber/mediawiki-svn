@@ -353,6 +353,13 @@ $messages['sr-ec'] = array(
 	'skinperpage-desc' => 'Додаје ознаку <tt>&lt;skin&gt;</tt> за коришћење различитих кожа на различитим странама.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'skinperpage-desc' => 'Föiget dät <tt>&lt;skin&gt;</tt>-Tag bietou, uum pro Siede unnerscheedelke Skins tou nutsjen',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

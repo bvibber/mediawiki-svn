@@ -81,12 +81,13 @@ Obsahuje všechny stránky v kategorii „$1“ a také všechny podkategorie ka
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Melancholie
  */
 $messages['de'] = array(
 	'autocreatecategorypages-desc' => 'Lege fehlende Kategorienseiten beim Speichern automatisch an',
 	'autocreatecategorypages-stub' => 'Dies ist eine Kategorieseite.
-Es listet alle Seiten in der Kategorie „$1“ sowie alle Unterkategorien der Kategorie „$1“, sofern welche vorhanden sind.',
+Sie listet alle Seiten in der Kategorie „$1“ sowie alle Unterkategorien der Kategorie „$1“, sofern welche vorhanden sind.',
 	'autocreatecategorypages-createdby' => 'Automatisch von der AutoCreateCategoryPages-Erweiterung erstellt.',
 	'autocreatecategorypages-editor' => 'Automatische Kategorienerstellung',
 );
@@ -154,6 +155,17 @@ $messages['gl'] = array(
 Lista todas as páxinas na categoría "$1" así como todas as súas subcategorías, se existisen.',
 	'autocreatecategorypages-createdby' => 'Creada automaticamente pola extensión AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Creador automático de categorías',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'autocreatecategorypages-desc' => 'Leg Kategoriesyte, wu fähle, automatisch bim Spychere aa',
+	'autocreatecategorypages-stub' => 'Des isch e Kategoriisyte.
+Do sin alli Syten ufglischtet in dr Kategorii „$1“ un alli Unterkategorie in dr Kategorie „$1“, wänn s sonigi git.',
+	'autocreatecategorypages-createdby' => 'Automatisch aagleit vu dr AutoCreateCategoryPages-Erwyterig.',
+	'autocreatecategorypages-editor' => 'Automatisches Aalege vu Kategorie',
 );
 
 /** Hebrew (עברית)

@@ -95,6 +95,11 @@ $aliases['id'] = array(
 	'Invitations' => array( 'Undangan' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Invitations' => array( '招待' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Invitations' => array( 'ការអញ្ជើញ' ),

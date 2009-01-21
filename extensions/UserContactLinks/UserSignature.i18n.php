@@ -170,6 +170,14 @@ $messages['gl'] = array(
 	'usercontactlink-desc' => 'Proporciona a capacidade de engadir sinxela e consistentemente outros nomes de usuario usando a sintaxe ^^^user^^^',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'usercontactlink-baduser' => 'falscher Benutzername',
+	'usercontactlink-desc' => 'Macht s megli, Benutzername eifach mit ^^^Benutzer^^^ z vergleiche',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -366,7 +374,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'usercontactlink-baduser' => 'falsken Benutsernoome',
-	'usercontactlink-desc' => 'Moakt et muugelk, Benutsernoomen eenfach mäd ^^^Benutser^^^ tou ferlinkjen',
+	'usercontactlink-desc' => 'Moaket et muugelk, Benutsernoomen eenfach mäd ^^^Benutser^^^ tou ferlinkjen',
 );
 
 /** Swedish (Svenska)

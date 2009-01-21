@@ -1655,7 +1655,7 @@ $messages['ja'] = array(
 	'openidrequired' => '必須',
 	'openidnickname' => 'ニックネーム',
 	'openidfullname' => 'フルネーム',
-	'openidemail' => 'Eメールアドレス',
+	'openidemail' => '電子メールアドレス',
 	'openidlanguage' => '言語',
 	'openidnotavailable' => 'あなたが選んだニックネーム ($1) は既に他の利用者が使っています。',
 	'openidnotprovided' => 'あなたの OpenID サーバーはニックネームを提供していません（提供できない場合と、提供しないようあなたが指示している場合とがあります）。',
@@ -2758,6 +2758,67 @@ Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných po
 $messages['sr-ec'] = array(
 	'openidemail' => 'Е-пошта',
 	'openidlanguage' => 'Језик',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'openid-desc' => 'Anmeldenge an dit Wiki mäd ne [http://openid.net/ OpenID] un anmäldje an uur Websites, do der OpenID unnerstutsje, mäd een Wiki-Benutserkonto.',
+	'openidlogin' => 'Anmäldje mäd OpenID',
+	'openidfinish' => 'OpenID-Anmäldenge ousluute',
+	'openidserver' => 'OpenID-Server',
+	'openidxrds' => 'Yadis-Doatäi',
+	'openidconvert' => 'OpenID-Konverter',
+	'openiderror' => 'Wröige-Failer',
+	'openiderrortext' => 'Aan Failer is unner ju Wröige fon ju OpenID-URL aptreeden.',
+	'openidconfigerror' => 'OpenID-Konfigurationsfailer',
+	'openidconfigerrortext' => 'Ju OpenID-Spiekerkonfiguration foar dit Wiki ist failerhaft.
+Täl n [[Special:ListUsers/sysop|Administrator]] Bescheed.',
+	'openidpermission' => 'OpenID-Begjuchtigengsfailer',
+	'openidpermissiontext' => 'Ju anroate OpenID begjuchtiget nit tou Anmäldenge an dissen Server.',
+	'openidcancel' => 'Wröige oubreeken',
+	'openidcanceltext' => 'Ju Wröige fon ju OpenID-URL wuud oubreeken.',
+	'openidfailure' => 'Wröige-Failer',
+	'openidfailuretext' => 'Ju Wröige fon ju OpenID-URL is failsloain. Failermäldenge: "$1"',
+	'openidsuccess' => 'Wröige mäd Ärfoulch be-eended',
+	'openidsuccesstext' => 'Ju Wröige fon ju Open-ID hied Ärfoulch.',
+	'openidusernameprefix' => 'OpenID-Benutser',
+	'openidserverlogininstructions' => 'Reek dien Paaswoud unner ien, uum die as Benutser $2 an $3 antoumäldjen (Benutsersiede $1).',
+	'openidtrustinstructions' => 'Wröich, of du Doaten mäd $1 deele moatest.',
+	'openidallowtrust' => 'Ferlööwje $1, dissen Benutserkonto tou tjouen.',
+	'openidnopolicy' => 'Ju Siede häd neen Doatenschuts-Gjuchtlienje anroat.',
+	'openidpolicy' => 'Wröich ju <a target="_new" href="$1">Doatenschuts-Gjuchtlienje</a> foar moor Informatione.',
+	'openidoptional' => 'Optionoal',
+	'openidrequired' => 'Plicht',
+	'openidnickname' => 'Benutsernoome',
+	'openidfullname' => 'Fulboodigen Noome',
+	'openidemail' => 'E-Mail-Adresse:',
+	'openidlanguage' => 'Sproake',
+	'openidnotavailable' => 'Die Noome ($1), dän du dät ljooste hääst, wäd al fon n uur Benutser ferwoand.',
+	'openidnotprovided' => 'Dien OpenID-Server unnerstutset neen Spitsnoomen (äntweeder, wil hie et nit kon, of deeruum dät du et him nit ferlööwed hääst).',
+	'openidchooseinstructions' => 'Aal Benutsere benöödigje n Benutsernoome;
+du koast aan uut ju unnerstoundene Lieste uutwääle.',
+	'openidchoosefull' => 'Din fulboodigen Noome ($1)',
+	'openidchooseurl' => 'N Noome uut dien OpenID ($1)',
+	'openidchooseauto' => 'N automatisk moakeden Noome ($1)',
+	'openidchoosemanual' => 'N Noome fon dien Woal:',
+	'openidchooseexisting' => 'N existierend Benutserkonto in dit Wiki:',
+	'openidchoosepassword' => 'Paaswoud:',
+	'openidconvertinstructions' => 'Mäd dit Formular koast du dien Benutserkonto tou Benutsenge fon n OpenID-URL fräireeke.',
+	'openidconvertsuccess' => 'Mäd Ärfoulch ätter OpenID konvertierd',
+	'openidconvertsuccesstext' => 'Du hääst ju Konvertierenge fon dien OpenID ätter $1 mäd Ärfoulch truchfierd.',
+	'openidconvertyourstext' => 'Dit is al dien OpenID.',
+	'openidconvertothertext' => 'Dit is ju OpenID fon uurswäl.',
+	'openidalreadyloggedin' => "'''Du bäst al anmälded, $1!'''
+
+Wan du OpenID foar kuumende Anmäldefoargonge nutsje moatest, koast du [[Special:OpenIDConvert|dien Benutserkonto ätter OpenID konvertierje]].",
+	'tog-hideopenid' => 'Fersteet dien <a href="http://openid.net/">OpenID</a> ap dien Benutsersiede, wan du die mäd OpenID anmäldest.',
+	'openidnousername' => 'Naan Benutsernoome anroat.',
+	'openidbadusername' => 'Falsken Benutsernoome anroat.',
+	'openidautosubmit' => 'Disse Siede änthaalt n Formular, dät automatisk uurdrain wäd, wan JavaSkript aktivierd is. Fals nit, klik ap „Fääre“.',
+	'openidclientonlytext' => 'Du koast neen Benutserkonten uut dissen Wiki as OpenID foar uur Sieden ferweende.',
+	'openidloginlabel' => 'OpenID-URL',
 );
 
 /** Sundanese (Basa Sunda)

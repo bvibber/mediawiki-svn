@@ -249,6 +249,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'forcepreview' => '문서 저장 (미리 보기 후)',
+	'forcepreview-desc' => '권한이 없는 사용자에게 미리 보기를 강제',
 	'right-forcepreviewexempt' => '미리 보기 없이 편집 가능',
 );
 

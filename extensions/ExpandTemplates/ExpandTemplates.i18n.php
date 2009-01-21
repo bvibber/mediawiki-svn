@@ -1657,6 +1657,7 @@ $messages['tr'] = array(
 	'expand_templates_xml_output' => 'XML üretim',
 	'expand_templates_ok' => 'Tamam',
 	'expand_templates_remove_comments' => 'Yorumları sil',
+	'expand_templates_generate_xml' => 'XML derleyici ağacını göster',
 	'expand_templates_preview' => 'Ön izleme',
 );
 

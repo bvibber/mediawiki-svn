@@ -276,6 +276,13 @@ $messages['sk'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML rozhranie umožňuje úryvky textu',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Snitsteede foar Textuuttoage',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

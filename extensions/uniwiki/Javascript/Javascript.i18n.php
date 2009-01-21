@@ -107,6 +107,13 @@ $messages['gl'] = array(
 	'javascript-desc' => 'Engade uniwiki.js a cada páxina que conteña código JavaScript entre extensións Uniwiki',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'javascript-desc' => 'Fiegt uniwiki.js in jedi Syte yy, wu s e JavaScript-Code din het, wu teilt wird vu verschidene Uniwiki-Erwyterige',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

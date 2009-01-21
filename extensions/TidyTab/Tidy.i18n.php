@@ -113,6 +113,15 @@ $messages['gl'] = array(
 	'untidy' => 'Desordenado',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'tidy-desc' => 'Fiegt uf normale Syte ne Ryter „giltig“ un e Ryter „uugiltig“ yy (abhängig vu $wgUseTidy) go di global HTML-Tidy-Yystellig fir e einzelni Betrachtig iberschryybe z chenne.',
+	'tidy' => 'Ordne',
+	'untidy' => 'Nit ordne',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

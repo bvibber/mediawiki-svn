@@ -197,6 +197,13 @@ $messages['sk'] = array(
 	'preloader-desc' => 'Poskytuje prispôsobiteľný šablónový text pre nové stránky na báze menných priestorov',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'preloader-desc' => 'Moaket dät Bietouföigjen muugelk fon pro Noomensruum anpaasboare Foarloagen bie dät Moakjen fon näie Sieden',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

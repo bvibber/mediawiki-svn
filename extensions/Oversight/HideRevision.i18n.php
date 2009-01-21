@@ -3057,7 +3057,13 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
  */
 $messages['stq'] = array(
 	'hiderevision' => 'Versione duurhaft wächhoalje',
-	'hiderevision-prompt' => 'Wäch tou hoaljende Versionsnummer:',
+	'hiderevision-desc' => 'Ferstat uut juristiske Gruunde eenpelde Versione foar aal Benutsere',
+	'group-oversight' => 'Oversightere',
+	'group-oversight-member' => 'Oversighter',
+	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'right-oversight' => 'Bekiekjen fon ne foartied ferstatte Version',
+	'right-hiderevision' => 'Bekiekjen en wier Moakjen fon Versione, do uk foar Administratore ferstat sunt',
+	'hiderevision-prompt' => 'Wäch tou hoaljene Versionsnummer:',
 	'hiderevision-continue' => 'Fääre',
 	'hiderevision-text' => "Dit duur '''bloot''' in do foulgjende Falle geböäre:
 * Persöönelke Informatione:
@@ -3070,6 +3076,7 @@ Jo wäide oawers protokollierd un konnen bie n Failer truch n Doatenboankadminis
 	'hiderevision-reason' => 'Gruund (wäd uunsichtboar protokollierd):',
 	'hiderevision-submit' => 'Hoal disse Texte duurhaft wäch',
 	'hiderevision-tab' => 'Hoal Versione wäch',
+	'hiderevision-link' => 'Ferstatte Benutserbiedraage',
 	'hiderevision-norevisions' => 'Der wuude neen Version ounroat toun Wächhoaljen.',
 	'hiderevision-noreason' => 'Jie mouten n Gruund foar dät Wächhoaljen ounreeke.',
 	'hiderevision-status' => 'Version $1: $2',
@@ -3089,6 +3096,9 @@ Muugelke Gruunde:
 	'oversight-prev' => 'Lääste foarige Version',
 	'oversight-hidden' => 'Wächhoalde Version',
 	'oversight-header' => 'Hierunner foulget ne Lieste fon do duurhaft wächhoalde Versione. Ju Bekoandmoakenge fon disse Informatione kon dän duurhafte Ferljus fon do Oversight-Gjuchte betjuude.',
+	'oversight-legend' => 'Logbouk truchsäike',
+	'oversight-oversighter' => 'Oversight-Begjuchtigede:',
+	'oversight-offender' => 'Benutser:',
 );
 
 /** Sundanese (Basa Sunda)

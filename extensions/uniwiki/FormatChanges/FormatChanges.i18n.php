@@ -163,6 +163,16 @@ $messages['gl'] = array(
 	'formatchanges-editedby' => '$1 - editado por $2 ($3)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'formatchanges-desc' => 'Formatiert di [[Special:RecentChanges|Letschte Änderige]] nej',
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => '$1 - aagleit vu $2 ($3)',
+	'formatchanges-editedby' => '$1 - bearbeitet dur $2 ($3)',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

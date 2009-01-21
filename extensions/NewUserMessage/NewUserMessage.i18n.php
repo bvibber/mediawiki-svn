@@ -430,6 +430,13 @@ $messages['sk'] = array(
 	'newuseredit-summary' => 'Pridanie [[{{int:newusermessage-template}}|uvítacej správy]] na diskusnú stránku nových používateľov',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'newusermessage-desc' => 'Föiget ne Ättergjucht ap do Benutserdiskussionssieden näi anmäldede Benutsere bietou',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  * @author Kandar

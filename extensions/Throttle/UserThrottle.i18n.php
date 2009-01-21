@@ -143,6 +143,15 @@ Por favor, agarde uns minutos e prema "recargar" no seu navegador para volver in
 	'acct_creation_global_soft_throttle_hit-desc' => 'Acelerador de creación de usuarios',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'D Megligkeit e Benutzerkonto aazlege isch fir e Momänt ufghobe wore, wel s e uugwehnli hochi Aazahl vu Aamäldversuech gee het. Bitte wart e paar Minute un versuech s deno nomol.',
+	'acct_creation_global_hard_throttle_hit' => 'D Megligkeit Benutzerkonte aazlege isch fir e paar Sekunde unterbroche wore go ne Fluet vu Regischtrierige reduziere. Bitte wart e Momänt un druck deno dr Nejlade-Chnopf in Dyynem Browser.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Nejaamäldige drossle',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -303,6 +312,7 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Ju Muugelkhaid tou dät Moakjen fon Benutserkonten wuude foar n Sät aphieuwed, deer et ne uungewöönelk hooge Antaal an Anmäldefersäike roate. Täiw n poor Minuten un fersäik et dan fonnäien.',
 	'acct_creation_global_hard_throttle_hit' => 'Ju Muugelkhaid tou dät Moakjen fon Benutserkonten wuude foar eenige Sekonden unnerbreeken, uum ne Floud fon Registrierengen tou reduzierjen. Täiw n Sät un tai dan dän Näileede-Knoop an dien Browser.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Dröiselenge fon do Näianmäldengen',
 );
 
 /** Swedish (Svenska)

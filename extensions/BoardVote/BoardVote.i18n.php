@@ -3819,6 +3819,7 @@ $messages['ko'] = array(
 	'boardvote_time' => '시간',
 	'boardvote_user' => '사용자',
 	'boardvote_edits' => '편집',
+	'boardvote_ua' => '사용자 에이전트',
 	'boardvote_dumplink' => '이곳을 클릭하세요.',
 	'boardvote_submit' => '확인',
 	'boardvote_strike' => '무효 처리',
@@ -4252,6 +4253,13 @@ Paskutinė koduota versija žemiau. Ji bus viešai rodoma [[Special:BoardVote/du
 Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [$1 Spauskite čia], jei norite patekti dabar.
 
 Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
+);
+
+/** Literary Chinese (文言) */
+$messages['lzh'] = array(
+	'boardvote_time' => '時辰',
+	'boardvote_user' => '編者',
+	'boardvote_submit' => '確定',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -6495,9 +6503,9 @@ $messages['to'] = array(
 $messages['tr'] = array(
 	'boardvote' => 'Wikimedia Mütevelli Heyeti Seçimleri',
 	'boardvote-desc' => '[[meta:Board elections/2008|Wikimedya Mütevelli Heyeti seçimi]]',
-	'boardvote_entry' => '* [[Special:Boardvote/vote|Oy ver]]
-* [[Special:Boardvote/list|Bugüne kadarki oylar]]
-* [[Special:Boardvote/dump|Şifreli seçim kayıtlarını boşalt]]',
+	'boardvote_entry' => '* [[Special:BoardVote/vote|Oy ver]]
+* [[Special:BoardVote/list|Bugüne kadarki oylar]]
+* [[Special:BoardVote/dump|Şifreli seçim kayıtlarını boşalt]]',
 	'boardvote_intro_change' => '<p>Daha evvel oy kullanmıştınız. Ama oyunuzu değiştirebilirsiniz. Aşağıdaki formu kullanarak, uygun olduğunu düşündüğünüz aday ya da adayların yanına işart koyup, oyunuzu gönderiniz.</p>',
 	'boardvote_invalidentered' => '<p><strong>Hata</strong>: aday tercihi pozitif tam sayı olarak (1, 2, 3, ....) belirtilmeli, ya da boş bırakılmalıdır.</p>',
 	'boardvote_notloggedin' => 'Oturum açmamışsınız.
@@ -6521,6 +6529,7 @@ Engellenmiş kullanıcıların oy kullanmasına izin verilmez.',
 Bot hesaplarının oy kullanmasına izin verilmez.',
 	'boardvote_welcome' => "Hoş geldiniz '''$1'''!",
 	'go_to_board_vote' => '2008 Wikimedia Yönetim Kurulu Seçimleri',
+	'right-boardvote' => 'Seçimleri yönet',
 );
 
 /** Tahitian (Reo Mā`ohi) */
@@ -7058,13 +7067,6 @@ Noe volg de versleutelde versie. Dezen is openbaer en nae te ziene op [[Special:
 	'boardvote_edits' => 'Bewerkiengen',
 	'boardvote_days' => 'Daegen',
 	'boardvote_ip' => 'IP-adres',
-);
-
-/** Literary Chinese (文言) */
-$messages['lzh'] = array(
-	'boardvote_time' => '時辰',
-	'boardvote_user' => '編者',
-	'boardvote_submit' => '確定',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

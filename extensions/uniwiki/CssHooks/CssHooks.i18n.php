@@ -107,6 +107,13 @@ $messages['gl'] = array(
 	'csshooks-desc' => 'Engade CSS á saída HTML das páxinas para un mellor estilo de páxinas',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'csshooks-desc' => 'Fiegt CSS-Stil-Deklaratione zue dr HTML-Uusgabe vu Syten dezue',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -498,10 +498,39 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author J. 'mach' wust
  */
 $messages['gsw'] = array(
+	'todo' => 'Ufgabelischt',
+	'todo-desc' => 'Experimentälli persenligi [[Special:Todo|Ufgabelischt]]',
+	'todo-tab' => 'Ufgabe',
 	'todo-new-queue' => 'Nöu',
+	'todo-mail-subject' => 'Yytrag uf dr Ufgabelischt vu $1 abgschlosse',
+	'todo-mail-body' => 'Du hesch e Nochricht gwinscht, wänn e Uftrag abgschlosse woren isch, wu Du an $1 wytergee hesh.
+
+Yytrag: $2
+Wytergeen: $3
+
+Dää Yytrag isch as abgschlosse markiert mit däm Kommentar:
+$4',
+	'todo-invalid-item' => 'Yytrag fählt oder isch falsch',
+	'todo-update-else-item' => 'Du versuechsch, d Yyträg vu eber anderem z bearbeite',
+	'todo-unrecognize-type' => 'Nit bekannter Typ',
+	'todo-user-invalide' => 'Dr erteilt Uftrag isch nit giltig: Benutzer fählt oder het kei Ufgabelischt.',
+	'todo-item-list' => 'Dyyni Yyträg',
+	'todo-no-item' => 'Kei Ufgabe.',
+	'todo-invalid-owner' => 'Uugiltiger Bsitzer fir dää Yytrag',
+	'todo-add-queue' => 'Warteschlang zuefiege …',
+	'todo-move-queue' => 'In d Warteschlang verschiebe ...',
+	'todo-list-for' => 'Ufgabelischt fir',
+	'todo-list-change' => 'Ändere',
+	'todo-list-cancel' => 'Abbräche',
+	'todo-new-item' => 'Neije Yytrag',
+	'todo-issue-summary' => 'Zämmefassig vum Uftrag:',
+	'todo-form-details' => 'Detail:',
+	'todo-form-email' => 'Gib Dyy E-Mail-Adräss yy go ne Benochrichtigung iberchu, wänn dr Yytrag zuegmacht woren isch:',
+	'todo-form-submit' => 'Aafrog ibergee',
 );
 
 /** Hebrew (עברית)

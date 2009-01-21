@@ -1060,6 +1060,33 @@ $messages['gl'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Separe os valores por comas para usar varias linguas.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ * @author LeighvsOptimvsMaximvs
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'voctrain_Hello_World' => 'ΧΑΙΡΕ!',
+	'voctrain_continue' => 'Συνεχίζειν',
+	'voctrain_Languages' => 'Γλῶτται',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(π.χ. eng διὰ τὴν ἀγγλικήν, deu διὰ τὴν γερμανικήν)',
+	'voctrain_Questions' => 'Ἀπορήματα',
+	'voctrain_Answers' => 'Ἀπαντήσεις',
+	'voctrain_collection' => 'συλλογή',
+	'voctrain_ISO_639_3_format' => 'Μορφή ISO-639-3',
+	'voctrain_Question' => 'Ἐρώτησις',
+	'voctrain_The_word_to_translate' => 'ὁ λόγος ὁ μετοιστέος',
+	'voctrain_Answer' => 'Ἀπάντησις',
+	'voctrain_logout' => 'Ἐξέρχεσθαι',
+	'voctrain_User_name' => 'Ὄνομα χρωμένου',
+	'voctrain_Password' => 'Σύνθημα',
+	'voctrain_Login' => 'Συνδεῖσθαι',
+	'voctrain_Language' => 'Γλῶττα',
+	'voctrain_Log_in' => 'Συνδεῖσθαι',
+	'voctrain_Definitions' => 'Ὁρισμοί',
+	'voctrain_hiding' => 'Κρύπτειν',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

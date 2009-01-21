@@ -160,6 +160,16 @@ $messages['ia'] = array(
 	'signaturelogentry' => 'signava le documento $1',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'signaturelogpage' => '署名記録',
+	'signature-desc' => '文書に[[Special:SignDocument|署名]]できるようにする',
+	'signaturelogpagetext' => 'これは[[Special:SignDocument|文書に付けられたすべての署名]]の記録です。',
+	'signaturelogentry' => '文書 $1 に署名',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

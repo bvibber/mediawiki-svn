@@ -655,12 +655,26 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'importusers' => '利用者のインポート',
+	'importusers-desc' => 'CSVファイル (文字コード: UTF-8) から一括して[[Special:ImportUsers|利用者をインポート]]',
+	'importusers-uploadfile' => 'アップロード',
+	'importusers-form-caption' => 'CSVファイルを入力してください (UTF-8)',
+	'importusers-form-file' => '利用者ファイル形式 (csv):',
+	'importusers-form-replace-present' => '既存利用者を置き換える',
 	'importusers-form-button' => 'インポート',
-	'importusers-log' => 'インポートログ',
+	'importusers-user-added' => '利用者 <b>%s</b> を追加しました。',
+	'importusers-user-present-update' => '利用者 <b>%s</b> が既に存在します。更新しました。',
+	'importusers-user-present-not-update' => '利用者 <b>%s</b> が既に存在します。更新しませんでした。',
+	'importusers-user-invalid-format' => '%s行目の利用者データは不正な形式であるか空です。飛ばしました。',
+	'importusers-log' => 'インポート記録',
 	'importusers-log-summary' => '要約',
 	'importusers-log-summary-all' => 'すべて',
+	'importusers-log-summary-added' => '追加',
+	'importusers-log-summary-updated' => '更新',
 	'importusers-login-name' => 'ログイン名',
 	'importusers-password' => 'パスワード',
+	'importusers-email' => 'メールアドレス',
+	'importusers-realname' => '実名',
 );
 
 /** Javanese (Basa Jawa)

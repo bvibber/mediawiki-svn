@@ -668,6 +668,35 @@ $messages['grc'] = array(
 	'usagestatisticsintervalmonth' => 'Μήν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'specialuserstats' => 'Nutzigs-Statischtik',
+	'usagestatistics' => 'Nutzigs-Statischtik',
+	'usagestatistics-desc' => 'Zeigt individuälli Benutzer- un allgmeini Wiki-Nutzigsstatischtiken aa',
+	'usagestatisticsfor' => '<h2>Nutzigs-Statischtik fir [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Nutzigs-Statischtik fir alli Benutzer</h2>',
+	'usagestatisticsinterval' => 'Zytruum',
+	'usagestatisticstype' => 'Berächnigsart',
+	'usagestatisticsstart' => 'Start-Datum',
+	'usagestatisticsend' => 'Änd-Datum',
+	'usagestatisticssubmit' => 'Statischtik generiere',
+	'usagestatisticsnostart' => 'Start-Datum yygee',
+	'usagestatisticsnoend' => 'Änd-Datum yygee',
+	'usagestatisticsbadstartend' => '<b>Falsch <i>Start-Datum</i> oder <i>Änd-Datum</i> !</b>',
+	'usagestatisticsintervalday' => 'Tag',
+	'usagestatisticsintervalweek' => 'Wuche',
+	'usagestatisticsintervalmonth' => 'Monet',
+	'usagestatisticsincremental' => 'Inkrementell',
+	'usagestatisticsincremental-text' => 'obsgi',
+	'usagestatisticscumulative' => 'Kumulativ',
+	'usagestatisticscumulative-text' => 'ghyflet',
+	'usagestatisticscalselect' => 'Wehl',
+	'usagestatistics-editindividual' => 'Individuälli Bearbeitigsstatischtike fir Benutzer $1',
+	'usagestatistics-editpages' => 'Individuälli Sytestatischtike fir Benutzer $1',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

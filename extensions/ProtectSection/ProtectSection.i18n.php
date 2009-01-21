@@ -368,6 +368,7 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'protectsection_desc' => 'Ferlööwet begjuchtigede Benutsere, Deele fon ne Siede anhound fon dät <tt>&lt;protect&gt;</tt>-Tag tou schutsjen.',
 	'protectsection_add_remove' => 'Du hääst fersoacht, n schutseden Ousnit bietoutouföigjen of wächtouhoaljen.',
 	'protectsection_modify' => 'Du hääst fersoacht, n schutseden Text tou beoarbaidjen.',
 	'protectsection_forbidden' => 'Ferbeeden',

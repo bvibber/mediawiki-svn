@@ -801,6 +801,27 @@ Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
 	'right-refreshspecial' => 'Obnoviť špeciálne stránky',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'refreshspecial' => 'Spezioalsieden aktualisierje',
+	'refreshspecial-desc' => 'Ferlööwet dät [[Special:RefreshSpecial|manuelle Apfriskjen fon Spezioalsieden]]',
+	'refreshspecial-title' => 'Spezioalsieden aktualisierje',
+	'refreshspecial-help' => 'Disse Spezioalsiede stoalt ne Reewe toun manuellen Aktualisierjen fon do Spezioalsieden kloor.
+Sogau du aal Spezioalsieden toun Aktualisierjen uutwääld hääst, druk ju Aktualisierje-Schaltfläche, uum ju Aktualisierenge tou starjen.
+Oachtenge: Dät Aktualisierjen kon ap groote Wikis laanger duurje.',
+	'refreshspecial-button' => 'uutwäälde apfriskje',
+	'refreshspecial-fail' => 'Hoak toumindest een Spezioalsiede toun Apfriskjen an.',
+	'refreshspecial-refreshing' => 'Spezioalsieden wäide aktualisierd',
+	'refreshspecial-skipped' => 'wäidloos, uursproangen',
+	'refreshspecial-success-subtitle' => 'aktualisier Spezioalsieden',
+	'refreshspecial-choice' => 'aktualisier Spezioalsieden',
+	'refreshspecial-js-disabled' => '(<i>Du koast nit aal Sieden uutwääle, wan du Javascript deaktivierd hääst</i>)',
+	'refreshspecial-select-all-pages' => 'aal Sieden uutwääle',
+	'refreshspecial-link-back' => 'Tourääch tou juu Spezioalsiede',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

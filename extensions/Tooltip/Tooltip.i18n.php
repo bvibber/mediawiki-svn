@@ -109,6 +109,13 @@ $messages['gl'] = array(
 	'tooltip-desc' => 'Engade a etiqueta <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'tooltip-desc' => 'Ergänzt d <tt><nowiki><tooltip></nowiki></tt>- un <tt><nowiki>{{#tooltip:}}</nowiki></tt>-Tag',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

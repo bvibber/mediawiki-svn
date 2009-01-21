@@ -381,6 +381,17 @@ $messages['sr-ec'] = array(
 	'purgecache-button' => 'Освежи',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'purgecache' => 'Cache läskje',
+	'purgecache-desc' => '[[Special:PurgeCache|Spezioalsiede]], uum ju OBJECTCACHE-Tabelle tou läskjen',
+	'purgecache-warning' => 'Dit läsket dän Cache.',
+	'purgecache-purged' => 'Die Cache wuud läsked.',
+	'purgecache-button' => 'Läskje',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

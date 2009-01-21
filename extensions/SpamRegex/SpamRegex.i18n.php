@@ -159,6 +159,43 @@ $messages['arz'] = array(
 	'spamregex-summary-log' => '(ملخص)',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'spamregex' => 'Рэгулярныя выразы для барацьбы са спамам',
+	'spamregex-desc' => '[[Special:SpamRegex|Фільтраваньне]] нежаданых фразаў на рэдагуемых старонках з выкарыстаньнем рэгулярных выразаў',
+	'spamregex-error-unblocking' => 'Памылка разблякаваньня «$1». Верагодна не існуе такога ўзору.',
+	'spamregex-summary' => 'Тэкст быў знойдзены ў кароткім апісаньні зьменаў старонкі.',
+	'spamregex-intro' => 'Карыстайцеся гэтай формай, каб эфэктыўна блякаваць фразы ад захаваньня ў тэксьце старонкі.
+Калі тэкст утрымлівае пададзеныя выразы, зьмены ня будуць захаваныя і будзе паказанае тлумачэньне для ўдзельніка, які спрабаваў захаваць старонку.
+Памятайце, што выразы не павінны быць занадта кароткімі ці агульна ўжываемымі.',
+	'spamregex-page-title' => 'Блякаваньне спама з дапамогай непажаданых фразаў',
+	'spamregex-currently-blocked' => "'''Цяперашнія выразы для блякаваньня:'''",
+	'spamregex-move' => 'Прычына ў тым, што Вы ўвялі заблякаваную фразу.',
+	'spamregex-no-currently-blocked' => "'''Няма заблякаваных фразаў.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 выдалены]) даданы",
+	'spamregex-log-2' => 'на $1',
+	'spamregex-page-title-1' => 'Блякаваньне фразы дапамогай рэгулярных выразаў',
+	'spamregex-unblock-success' => 'Разблякавана',
+	'spamregex-unblock-message' => "Фраза '''$1''' была разблякаваная для рэдагаваньня.",
+	'spamregex-page-title-2' => 'Блякаваньне фразаў ад захаваньня з дапамогай рэгулярных выразаў',
+	'spamregex-block-success' => 'Заблякавана',
+	'spamregex-block-message' => "Фраза '''$1''' была заблякаваная.",
+	'spamregex-warning-1' => 'Падайце фразу для блякаваньня.',
+	'spamregex-error-1' => 'Няслушны рэгулярны выраз.',
+	'spamregex-warning-2' => 'Калі ласка, праверце дзеяньне блякаваньня хаця б адзін раз.',
+	'spamregex-already-blocked' => '«$1» ужо заблякаваны',
+	'spamregex-phrase-block' => 'Фраза да блякаваньня:',
+	'spamregex-phrase-block-text' => 'блякаваньне фразы ў тэксьце старонкі',
+	'spamregex-phrase-block-summary' => 'блякаваньне фразы ў кароткім апісаньні зьменаў старонкі',
+	'spamregex-block-submit' => 'Блякаваньне&nbsp;гэтага&nbsp;выразу',
+	'spamregex-text' => '(Тэкст)',
+	'spamregex-summary-log' => '(Кароткае апісаньне зьменаў старонкі)',
+	'right-spamregex' => 'Блякаваньне спамавых фразаў з дапамогай [[Special:SpamRegex]]',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -873,6 +910,7 @@ $messages['oc'] = array(
 	'spamregex-block-submit' => 'Blocar&nbsp;aquesta&nbsp;frasa',
 	'spamregex-text' => '(Tèxt)',
 	'spamregex-summary-log' => '(Comentari)',
+	'right-spamregex' => 'Blocar de spam dempuèi [[Special:SpamRegex]]',
 );
 
 /** Oriya (ଓଡ଼ିଆ)

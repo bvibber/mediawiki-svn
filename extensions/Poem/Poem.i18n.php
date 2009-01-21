@@ -410,6 +410,13 @@ $messages['sr-ec'] = array(
 	'poem-desc' => 'Додаје <tt>&lt;poem&gt;</tt> ознаку за форматирање песме.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'poem-desc' => 'Föiget dät <tt>&lt;poem&gt;</tt>-Tag tou ju Formatierenge fon Gedichte bietou',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

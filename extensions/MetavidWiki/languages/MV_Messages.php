@@ -1165,6 +1165,8 @@ Dieser Einblendungstyp ist für gesprochenen Text.',
 	'anno_en_desc' => 'Englische Kategorisierungen und Anmerkungen.
 Dieses Overlay kann verwendet werden, um Videosektionen zu kategorisieren oder Anmerkungen hinzuzufügen, die nicht aus gesprochenem Text bestehen.',
 	'thomas_en' => 'Offizielle Kopie',
+	'thomas_en_desc' => 'Offizielles Thomas-Transkript von der „Library of Congress“.
+Quelltexte werden von C-SPAN’s c-spanarchives.org synchronisiert.',
 	'mvd_default_mismatch' => 'Fehler in der Einstellungs-Datei',
 	'mvd_default_mismatch_text' => 'Deine Einstellungsdatei ist fehlerhaft.
 $mvMVDTypeDefaultDisp sollte eine Teilmenge von $mvMVDTypeAllAvailable sein',
@@ -2811,8 +2813,10 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'mv_remove_reason' => '削除理由:',
+	'mv_upload_file' => 'アップロード',
 	'mv_tool_search' => '検索',
 	'mv_tool_export' => 'エクスポート',
+	'mv_play' => '再生',
 	'mv_history' => '履歴',
 	'mv_remove' => '削除',
 	'mv_category' => 'カテゴリ',
@@ -3003,19 +3007,37 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'metavid' => 'Metavid Sigg',
+	'specialpages-group-mv_group' => 'MetaVidWiki Söndersigge',
 	'mv_path_type_label' => 'Tüp fun enem Paad',
 	'mv_base_offset_label' => 'Aanfangs-Afshtand',
 	'mv_duration_label' => 'Door',
 	'mv_delete_stream_file' => 'Verwieß op de Strom-Dattei fottschmiiße',
 	'mv_save_changes' => 'Änderunge faßhallde',
 	'mv_file_with_same_desc' => 'Fähler: Mer han ald en Shtrom-Dattei met dämsellve Beschrievungsschlössel: <i>$1</i>',
+	'mv_metavid_file' => 'Die Dattei jit et ald op hee däm Server',
+	'mv_upload_file' => 'Dattei huhlaade',
+	'mv_external_file' => 'En Dattei ußerhallef',
 	'mv_tool_search' => 'Sööke',
 	'anno_en_desc' => 'Englesch katejoriseere un Aanmerkunge maache.
 Hemet kanns De Stöckscher uß em Viddeo en Kattejorije donn un
 Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'thomas_en' => 'Offizjäl Transkrip',
 	'thomas_en_desc' => 'Offizjäl Thomas Transkrip fun de Rijierung ierem THOMAS Opzeichnungs-Deens. De Zick es met de Quell sünkroniseet fun dem C-SPAN singem c-spanarchives.org',
+	'mv_play' => 'Afshpelle',
 	'mv_edit' => 'Ändere',
+	'mv_edit_title' => 'Tex ändere',
+	'mv_edit_adjust_title' => 'Tex un Viddejo-Aanpassung ändere',
+	'mv_remove' => 'fott nämme',
+	'mv_adjust' => 'Aanpasse',
+	'mv_adjust_submit' => 'Aanpassung faßhallde',
+	'mv_adjust_title' => 'Aanfangs- un Engk-Zick aanpasse',
+	'mv_adjust_preview' => 'Aanpassung aanloore',
+	'mv_adjust_preview_stop' => 'Vör-Aansich aanhallde',
+	'mv_start_desc' => 'Aanfangszick',
+	'mv_end_desc' => 'Zick vum Engk',
+	'mv_of' => '&#32;vun&#32;',
+	'mv_remove_category' => 'Saachjrupp fottnämme',
+	'mv_existing_categories' => '{{PLURAL:$1|{{ns:category}}|{{int:categories}}|{{int:categories}}}}:',
 	'mv_search_and' => ', un',
 );
 

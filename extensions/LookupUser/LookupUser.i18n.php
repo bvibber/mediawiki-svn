@@ -818,6 +818,7 @@ $messages['oc'] = array(
 	'lookupuser-touched' => "Enregistrament de l'utilizaire tocat pel darrièr còp : $1",
 	'lookupuser-info-authenticated' => 'Autentificacion del corrièr electronic : $1',
 	'lookupuser-useroptions' => "Opcions de l'utilizaire :",
+	'right-lookupuser' => 'Visionar las preferéncias dels utilizaires',
 );
 
 /** Polish (Polski)
@@ -916,6 +917,7 @@ $messages['ru'] = array(
 	'lookupuser-touched' => 'Последнее обновление записи участника: $1',
 	'lookupuser-info-authenticated' => 'Аутентификация по почте: $1',
 	'lookupuser-useroptions' => 'Настройки участника:',
+	'right-lookupuser' => 'поиск настроек участников',
 );
 
 /** Sicilian (Sicilianu)
@@ -980,6 +982,7 @@ $messages['stq'] = array(
 	'lookupuser-touched' => 'Benutserkonto toulääst rööged: $1',
 	'lookupuser-info-authenticated' => 'E-Mail-Bestäätigenge: $1',
 	'lookupuser-useroptions' => 'Ienstaalengen fon dät Benutserkonto:',
+	'right-lookupuser' => 'Sjuch do Benutserienstaalengen fon uur Benutsere',
 );
 
 /** Swedish (Svenska)

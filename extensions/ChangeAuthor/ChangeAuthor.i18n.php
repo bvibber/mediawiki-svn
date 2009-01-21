@@ -1264,6 +1264,7 @@ $messages['oc'] = array(
 	'changeauthor-success' => 'Vòstra requèsta es estada tractada amb succès.',
 	'changeauthor-logentry' => "Modificacion de l'autor de $2 de $1 dempuèi $3 cap a $4",
 	'changeauthor-logpagename' => "Jornal dels cambiaments faches per l'autor",
+	'right-changeauthor' => "Modificar l'autor d'una revision",
 );
 
 /** Polish (Polski)

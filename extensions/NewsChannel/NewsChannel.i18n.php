@@ -218,6 +218,19 @@ $messages['ia'] = array(
 	'newschannel_submit_button' => 'Crear syndication',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'newschannel' => 'ニュース・チャンネル',
+	'newschannel-desc' => '動的な[[Special:NewsChannel|特別ページ]]としてニュース・チャンネルを実装する',
+	'newschannel_format' => 'ファイル形式:',
+	'newschannel_limit' => '最大項目数:',
+	'newschannel_include_category' => '追加するカテゴリ:',
+	'newschannel_exclude_category' => '除外するカテゴリ:',
+	'newschannel_submit_button' => 'フィード作成',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */

@@ -329,6 +329,13 @@ $messages['sr-ec'] = array(
 	'oai-desc' => 'Даје складиште интерфејса [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH].',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'oai-desc' => 'Staalt ne [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium-Snitsteede kloor',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

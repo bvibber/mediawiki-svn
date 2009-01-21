@@ -92,7 +92,7 @@ $aliases['id'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'ImportUsers' => array( 'インポートユーザー' ),
+	'ImportUsers' => array( '利用者のインポート', 'インポートユーザー' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */

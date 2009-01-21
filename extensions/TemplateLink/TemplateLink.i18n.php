@@ -165,6 +165,16 @@ $messages['gl'] = array(
 	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'templatelink' => 'Vorlage-Gleich',
+	'templatelink_desc' => 'Die Erwyterig cha ne Vorlag as neji Syten aazeige',
+	'templatelink_empty' => 'Du muesch no ei Parameter aagee',
+	'templatelink_newtitle' => '$1 (ersetzt)',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author דניאל ב.

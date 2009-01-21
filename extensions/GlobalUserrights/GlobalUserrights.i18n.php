@@ -205,6 +205,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'gur-rightslog-name' => '공통 권한 기록',
+	'gur-rightslog-entry' => '$1의 공통 권한을 $2에서 $3으로 변경',
 );
 
 /** Ripoarisch (Ripoarisch)

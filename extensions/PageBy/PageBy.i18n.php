@@ -460,6 +460,7 @@ $messages['sk'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
+	'pageby-desc' => 'Wiest do Autore binne ne Wikisiede. Syntax: <tt><nowiki><pageby></nowiki></tt>',
 	'pageby-first' => 'Siede anlaid fon $1, $2',
 	'pageby-last' => 'Toulääst <a href="$3">annerd</a> fon $1, $2',
 	'pageby-contributors' => 'Biedraage:',

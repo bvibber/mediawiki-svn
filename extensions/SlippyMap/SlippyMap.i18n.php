@@ -434,6 +434,39 @@ $messages['it'] = array(
 	'slippymap_resetview' => 'Reimposta visuale',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'slippymap_desc' => 'OpenLayers による滑らかな地図を表示するための <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> タグを利用できるようにする。地図は [http://openstreetmap.org openstreetmap.org] から取得される',
+	'slippymap_latmissing' => '緯度値 lat が指定されていません。',
+	'slippymap_lonmissing' => '経度値 lon が指定されていません。',
+	'slippymap_zoommissing' => '拡大度 z が指定されていません。',
+	'slippymap_longdepreciated' => '"long" ではなく "lon" を用いてください（引数が改名されました）。',
+	'slippymap_widthnan' => '幅 (w) の値「%1」は有効な整数ではありません',
+	'slippymap_heightnan' => '高さ (h) の値「%1」は有効な整数ではありません',
+	'slippymap_zoomnan' => '拡大度 (z) の値「%1」は有効な整数ではありません',
+	'slippymap_latnan' => '緯度 (lat) の値「%1」は有効な数値ではありません',
+	'slippymap_lonnan' => '経度 (lon) の値「%1」は有効な数値ではありません',
+	'slippymap_widthbig' => '幅 (w) の値は1000より大きくはできません',
+	'slippymap_widthsmall' => '幅 (w) の値は100より小さくはできません',
+	'slippymap_heightbig' => '高さ (h) の値は1000より大きくはできません',
+	'slippymap_heightsmall' => '高さ (h) の値は100より小さくはできません',
+	'slippymap_latbig' => '緯度 (lat) の値は90より大きくはできません',
+	'slippymap_latsmall' => '緯度 (lat) の値は-90より小さくはできません',
+	'slippymap_lonbig' => '経度 (lon) の値は180より大きくはできません',
+	'slippymap_lonsmall' => '経度 (lon) の値は-180より小さくはできません',
+	'slippymap_zoomsmall' => '拡大度 (z) の値は0より小さくはできません',
+	'slippymap_zoom18' => '拡大度 (z) の値は17より大きくはできません。なお、この MediaWiki 拡張機能がフックしている、OpenStreetMap の "osmarender" レイヤーは17を超す拡大度を利用できません。openstreetmap.org で利用可能な "Mapnik" レイヤーは18までの拡大度が利用できます。',
+	'slippymap_zoombig' => '拡大度 (z) の値は17より大きくはできません',
+	'slippymap_invalidlayer' => '"layer" の値 "%1" は無効',
+	'slippymap_maperror' => '地図エラー:',
+	'slippymap_osmtext' => 'この地図を OpenStreetMap.org で見る',
+	'slippymap_code' => 'この地図表示用のウィキマークアップ:',
+	'slippymap_button_code' => 'ウィキマークアップを取得',
+	'slippymap_resetview' => '表示を更新',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */

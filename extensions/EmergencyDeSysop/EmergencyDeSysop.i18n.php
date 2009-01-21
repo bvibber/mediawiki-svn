@@ -276,6 +276,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'emergencydesysop' => '긴급 관리자 권한 해제',
 	'emergencydesysop-otheradmin' => '권한을 해제할 다른 관리자',
+	'emergencydesysop-reason' => '권한을 해제하는 이유',
 	'emergencydesysop-submit' => '확인',
 	'emergencydesysop-done' => '명령 완료, 당신과 [[$1]] 사용자는 관리자 권한이 해제되었습니다.',
 );

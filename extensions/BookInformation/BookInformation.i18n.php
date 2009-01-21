@@ -897,11 +897,14 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'bookinfo-header' => '책 정보',
+	'bookinfo-desc' => '웹 서비스의 정보를 바탕으로 [[Special:Booksources|책 찾기 특수 문서]]를 확장',
 	'bookinfo-result-title' => '제목:',
 	'bookinfo-result-author' => '저자:',
 	'bookinfo-result-publisher' => '출판사:',
 	'bookinfo-result-year' => '연도:',
 	'bookinfo-error-invalidisbn' => '잘못된 ISBN이 입력되었습니다.',
+	'bookinfo-error-nosuchitem' => '해당되는 결과가 없거나 찾을 수 없습니다.',
+	'bookinfo-error-noresponse' => '서버의 반응이 없가나 요청 시간을 초과했습니다.',
 	'bookinfo-purchase' => '$1에서 이 책을 구입하기',
 	'bookinfo-provider' => '데이터 제공자: $1',
 );

@@ -208,6 +208,14 @@ $messages['sk'] = array(
 	'random-users-avatars-desc' => 'Pridáva značku <tt>&lt;randomuserswithavatars&gt;</tt> na zobrazenie fotografií náhodne zvolených používateľov',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'random-users-avatars-title' => 'Träf ju Community',
+	'random-users-avatars-desc' => 'Föiget dät <tt>&lt;randomuserswithavatars&gt;</tt>-Tag tou n Anwiesen fon dän Avatar fon n toufällich uutwäälden Benutser tou',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

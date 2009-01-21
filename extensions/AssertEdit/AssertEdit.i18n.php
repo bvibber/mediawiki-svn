@@ -600,6 +600,15 @@ $messages['tl'] = array(
 	'assert_edit_message' => 'Nabigo ang tinukoy na panggigiit/pagtatanggol ($1).',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'assert_edit_title' => 'Açıklama başarısız oldu',
+	'assert_edit_desc' => 'Botlar tarafından kullanılmak için değişiklik açıklamaları ekler',
+	'assert_edit_message' => 'Belirtilen açıklama ($1) başarısız oldu.',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

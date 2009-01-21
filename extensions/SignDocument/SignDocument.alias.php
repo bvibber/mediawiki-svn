@@ -39,6 +39,12 @@ $aliases['gsw'] = array(
 	'CreateSignDocument' => array( 'Signiert Dokumänt aalege' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'SignDocument' => array( '文書の署名' ),
+	'CreateSignDocument' => array( '文書の署名を有効化' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'SignDocument' => array( 'Dokument ënnerschreiwen' ),

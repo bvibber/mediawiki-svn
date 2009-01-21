@@ -323,6 +323,7 @@ $messages['ja'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'categorywatch-desc' => '주시된 분류에 포함되는 문서의 분류 변경을 알리도록 주시문서 목록 기능을 확장',
 	'categorywatch-emailbody' => '$1님 안녕하세요. 당신은 "$2" 분류를 주시하고 있기 때문에 이 메시지를 수신하였습니다.
 이 메시지는 $3에 $4가 $5하였다는 것을 알리고자 전달되었습니다.',
 	'categorywatch-emailsubject' => '주시된 분류 "$1"에 대한 바뀜',

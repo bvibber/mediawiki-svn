@@ -474,6 +474,35 @@ Pro gerer le invitationes a un function particular, clicca super le nomine de il
 	'invitations-invite-success' => 'Tu ha invitate $1 a usar iste function con successo!',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'invite-logpage' => '招待記録',
+	'invite-logpagetext' => 'これは各種のソフトウェア機能を使えるように他の利用者の招待を行った利用者の記録です。',
+	'invite-logentry' => '<i>$2</i>機能を使えるよう $1 を招待',
+	'invitations' => 'ソフトウェア機能への招待を管理する',
+	'invitations-desc' => '招待された利用者でなければ利用できないような[[Special:Invitations|新機能管理]]を実現する',
+	'invitations-invitedlist-description' => 'あなたは以下の招待限定のソフトウェア機能を利用できます。各機能への招待を管理するには、その名前をクリックしてください。',
+	'invitations-invitedlist-none' => 'あなたは招待限定のソフトウェア機能にはひとつも招待されていません。',
+	'invitations-invitedlist-item-count' => '($1件の招待があります)',
+	'invitations-pagetitle' => '招待限定のソフトウェア機能',
+	'invitations-uninvitedlist-description' => 'あなたはこれらの招待限定のソフトウェア機能を利用できません。',
+	'invitations-uninvitedlist-none' => '現時点では、他に招待限定に設定されたソフトウェア機能はありません。',
+	'invitations-feature-pagetitle' => '招待の管理 - $1',
+	'invitations-feature-access' => 'あなたは現在、<i>$1</i> を利用できます。',
+	'invitations-feature-numleft' => 'あなたにはまだ{{PLURAL:$2|1件の招待|$2件中 <b>$1件</b>の招待}}が残っています。',
+	'invitations-feature-noneleft' => 'あなたはこの機能への招待の割り当てをすべて使い切りました。',
+	'invitations-feature-noneyet' => 'あなたはこの機能への招待の割り当てをまだ受け取っていません。',
+	'invitations-feature-notallowed' => 'あなたは <i>$1</i> を利用できません。',
+	'invitations-inviteform-title' => '$1を使えるよう利用者を招待する',
+	'invitations-inviteform-username' => '招待する利用者',
+	'invitations-inviteform-submit' => '招待',
+	'invitations-error-baduser' => '指定した利用者は存在しないようです。',
+	'invitations-error-alreadyinvited' => '指定した利用者は既にこの機能を利用できます。',
+	'invitations-invite-success' => 'この機能への $1 の招待に成功しました。',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

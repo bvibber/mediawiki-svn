@@ -47,6 +47,11 @@ $aliases['hu'] = array(
 	'DeleteQueue' => array( 'Törlési várólista' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'DeleteQueue' => array( '削除キュー' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'DeleteQueue' => array( 'БришиРедица' ),
