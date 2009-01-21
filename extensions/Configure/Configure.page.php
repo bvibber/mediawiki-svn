@@ -125,7 +125,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function getSettingValue( $setting ) {
 		static $defaults;
 
-		if (!$defaults) {
+		if ( !$defaults ) {
 			global $wgConf;
 			$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
 		}

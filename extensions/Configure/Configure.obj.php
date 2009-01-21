@@ -84,7 +84,7 @@ class WebConfiguration extends SiteConfiguration {
 			if( !is_array( $this->mDefaults ) ) {
 				$this->mDefaults = array();
 			}
-			$allSettings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getEditableSettings();
+			$allSettings = ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->getEditableSettings();
 			$allSettings += array_flip( $alwaysSnapshot );
 			foreach( $allSettings as $setting => $type ) {
 				if( array_key_exists( $setting, $GLOBALS ) &&
