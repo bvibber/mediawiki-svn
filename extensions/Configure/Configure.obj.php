@@ -88,7 +88,7 @@ class WebConfiguration extends SiteConfiguration {
 			if( !is_array( $this->mDefaults ) ) {
 				$this->mDefaults = array();
 			}
-			$settings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getSnapshotSettings();
+			$settings = ConfigurationSettings::singleton( CONF_SETTINGS_CORE )->getSnapshotSettings();
 			foreach( $settings as $setting ) {
 				if( array_key_exists( $setting, $GLOBALS ) &&
 					!( $noOverride && array_key_exists( $setting, $this->mDefaults ) ) )

@@ -209,7 +209,8 @@ class ConfigurationSettings {
 		global $wgConf, $wgConfigureNotEditableSettings, $wgConfigureEditableSettings;
 		$notEditable = array_merge( $notEditable, $wgConf->getUneditableSettings() );
 
-		if ( !count( $wgConfigureNotEditableSettings ) && count( $wgConfigureEditableSettings ) ) {
+		if ( !count( $wgConfigureNotEditableSettings ) && count( $wgConfigureEditableSettings ) &&
+			( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
 			// Only disallow core settings, not extensions settings!
 			$coreSettings = array();
 			foreach( $this->settings as $section ) {
@@ -248,6 +249,12 @@ class ConfigurationSettings {
 		if( count( $wgConfigureEditableSettings ) ) {
 			foreach( $wgConfigureEditableSettings as $setting ) {
 				$this->cache['editable'][$setting] = $this->getSettingType( $setting );
+			}
+			// We'll need to add extensions settings
+			if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
+				foreach ( $this->getAllExtensionsObjects() as $ext ) {
+					$this->cache['editable'] += $ext->getSettings();
+				}
 			}
 			return $this->cache['editable'];
 		}
