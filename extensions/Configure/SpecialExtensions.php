@@ -96,7 +96,7 @@ class SpecialExtensions extends ConfigurationPage {
 			if( !$ext->isInstalled() ) continue; // must exist
 			$settings = $ext->getSettings();
 			foreach ( $settings as $setting => $type ) {
-				if ( !isset( $GLOBALS[$setting] ) && !isset( $this->conf[$setting] ) && file_exists( $ext->getFile() ) ) {
+				if ( !isset( $this->conf[$setting] ) && file_exists( $ext->getFile() ) ) {
 					if ( !$globalDone ) {
 						extract( $GLOBALS, EXTR_REFS );
 						global $wgHooks;
