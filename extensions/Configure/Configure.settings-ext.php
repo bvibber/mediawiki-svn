@@ -1061,6 +1061,112 @@ $extensions = array(
 
 	// U
 	array(
+		'name' => 'UW Authors',
+		'dir' => 'uniwiki/Authors',
+		'file' => 'Authors.php',
+		'settings' => array(
+			'wgShowAuthorsNamespaces' => 'array',
+			'wgShowAuthors' => 'bool',
+		),
+		'array' => array(
+			'wgShowAuthorsNamespaces' => 'ns-simple',
+		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Authors',
+	),
+	array(
+		'name' => 'UW AutoCreateCategoryPages',
+		'dir' => 'uniwiki/AutoCreateCategoryPages',
+		'file' => 'AutoCreateCategoryPages.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Auto_Create_Category_Pages',
+	),
+	array(
+		'name' => 'UW CatBoxAtTop',
+		'dir' => 'uniwiki/CatBoxAtTop',
+		'file' => 'CatBoxAtTop.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Category_Box_at_Top',
+	),
+	array(
+		'name' => 'UW CreatePage',
+		'dir' => 'uniwiki/CreatePage',
+		'file' => 'CreatePage.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_CreatePage',
+	),
+	array(
+		'name' => 'UW CssHooks',
+		'dir' => 'uniwiki/CssHooks',
+		'file' => 'CssHooks.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_CSS_Hooks',
+	),
+	array(
+		'name' => 'UW CustomToolbar',
+		'dir' => 'uniwiki/CustomToolbar',
+		'file' => 'CustomToolbar.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Toolbar',
+	),
+	array(
+		'name' => 'UW FormatChanges',
+		'dir' => 'uniwiki/FormatChanges',
+		'file' => 'FormatChanges.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Format_Changes',
+	),
+	array(
+		'name' => 'UW FormatSearch',
+		'dir' => 'uniwiki/FormatSearch',
+		'file' => 'FormatSearch.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Format_FormatSearch',
+	),
+	array(
+		'name' => 'UW GenericEditPage',
+		'dir' => 'uniwiki/GenericEditPage',
+		'file' => 'GenericEditPage.php',
+		'settings' => array(
+			'wgSectionBox' => 'bool',
+			'wgCategoryBox' => 'bool',
+			'wgAddSection' => 'bool',
+			'wgAddCategory' => 'bool',
+			'wgSuggestCategory' => 'bool',
+			'wgUseCategoryPage' => 'bool',
+			'wgRequireCategory' => 'bool',
+			'wgAllowSimilarTitles' => 'bool',
+			'wgSuggestCategoryRecipient' => 'string',
+			'wgGenericEditPageWhiteList' => 'array',
+		),
+		'array' => array(
+			'wgGenericEditPageWhiteList' => 'ns-simple',
+		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Generic_Edit_Page',
+	),
+	array(
+		'name' => 'UW Javascript',
+		'dir' => 'uniwiki/Javascript',
+		'file' => 'Javascript.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Javascript',
+	),
+	array(
+		'name' => 'UW Layouts',
+		'dir' => 'uniwiki/Layouts',
+		'file' => 'Layouts.php',
+		'settings' => array(
+			'wgAddLayoutLink' => 'bool',
+			'wgLayoutCategories' => 'bool',
+			'wgLayoutUseCategoryPage' => 'bool',
+			'wgNoLayoutOption' => 'bool',
+			'wgLayoutWhiteList' => 'array',
+			'wgLayoutCategoryNSWhiteList' => 'array',
+		),
+		'array' => array(
+			'wgLayoutWhiteList' => 'ns-simple',
+			'wgLayoutCategoryNSWhiteList' => 'ns-simple',
+		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Layouts',
+	),
+	array(
+		'name' => 'UW MooTools12core',
+		'dir' => 'uniwiki/MooTools12core',
+		'file' => 'MooTools12core.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:MooTools_1.2_Core',
+	),
+	array(
 		'name' => 'UserMerge',
 		'settings' => array(
 			'wgUserMergeProtectedGroups' => 'array',
