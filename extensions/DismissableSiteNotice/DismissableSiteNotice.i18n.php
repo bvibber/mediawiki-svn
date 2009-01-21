@@ -830,7 +830,7 @@ $messages['yue'] = array(
 );
 
 /** Classical Chinese (文言) */
-$messages['zh-classical'] = array(
+$messages['lzh'] = array(
 	'sitenotice_close' => '關',
 );
 

@@ -1606,7 +1606,7 @@ $messages['yue'] = array(
 	'right-makesysop'      => '整用戶做操作員或事務員',
 );
 
-$messages['zh-classical'] = array(
+$messages['lzh'] = array(
 	'makesysoptitle'       => '封有秩',
 	'makesysopname'        => '簿名：',
 	'makesysopsubmit'      => '封之有秩',

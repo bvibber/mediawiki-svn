@@ -7060,8 +7060,8 @@ Noe volg de versleutelde versie. Dezen is openbaer en nae te ziene op [[Special:
 	'boardvote_ip' => 'IP-adres',
 );
 
-/** Classical Chinese (文言) */
-$messages['zh-classical'] = array(
+/** Literary Chinese (文言) */
+$messages['lzh'] = array(
 	'boardvote_time' => '時辰',
 	'boardvote_user' => '編者',
 	'boardvote_submit' => '確定',

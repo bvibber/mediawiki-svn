@@ -1428,7 +1428,7 @@ $messages['zea'] = array(
 );
 
 /** Classical Chinese (文言) */
-$messages['zh-classical'] = array(
+$messages['lzh'] = array(
 	'newuserlogpage' => '誌簿',
 	'newuserlogpagetext' => '此為誌簿之記也',
 	'newuserlog-desc' => '加一[[Special:Log/newusers|誌簿]]至[[Special:Log]]',
