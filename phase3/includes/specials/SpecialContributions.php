@@ -530,7 +530,9 @@ class ContribsPager extends ReverseChronologicalPager {
 		}
 
 		# Tags, if any.
-		$ret .= ' ' . ChangeTags::formatSummaryRow( $row->ts_tags, 'contributions', &$classes );
+		list($tagSummary, $newClasses) = ChangeTags::formatSummaryRow( $row->ts_tags, 'contributions' );
+		$classes = array_merge( $classes, $newClasses );
+		$ret .= " $tagSummary";
 
 		// Let extensions add data
 		wfRunHooks( 'ContributionsLineEnding', array( &$this, &$ret, $row ) );

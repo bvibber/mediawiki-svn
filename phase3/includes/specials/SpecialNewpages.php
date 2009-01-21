@@ -266,7 +266,8 @@ class SpecialNewpages extends SpecialPage {
 			$classes[] = 'not-patrolled';
 
 		# Tags, if any.
-		$tagDisplay = ChangeTags::formatSummaryRow( $result->ts_tags, 'newpages', &$classes );
+		list( $tagDisplay, $newClasses ) = ChangeTags::formatSummaryRow( $result->ts_tags, 'newpages' );
+		$classes = array_merge( $classes, $newClasses );
 
 		$css = count($classes) ? ' class="'.implode( " ", $classes).'"' : '';
 

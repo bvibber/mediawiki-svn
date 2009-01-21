@@ -4,9 +4,11 @@ if (!defined( 'MEDIAWIKI' ))
 	die;
 
 class ChangeTags {
-	static function formatSummaryRow( $tags, $page, &$classes ) {
+	static function formatSummaryRow( $tags, $page ) {
 		if (!$tags)
-			return '';
+			return array('',array());
+
+		$classes = array();
 		
 		$tags = explode( ',', $tags );
 		$displayTags = array();
@@ -19,7 +21,7 @@ class ChangeTags {
 			$classes[] = "mw-tag-$tag";
 		}
 
-		return '(' . implode( ', ', $displayTags ) . ')';
+		return array( '(' . implode( ', ', $displayTags ) . ')', $classes );
 	}
 
 	## Basic utility method to add tags to a particular change, given its rc_id, rev_id and/or log_id.

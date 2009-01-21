@@ -360,7 +360,8 @@ class LogEventsList {
 		}
 
 		// Any tags...
-		$tagDisplay = ChangeTags::formatSummaryRow( $row->ts_tags, 'logevent', &$classes );
+		list($tagDisplay, $newClasses) = ChangeTags::formatSummaryRow( $row->ts_tags, 'logevent' );
+		$classes = array_merge( $classes, $newClasses );
 
 		if( $revert != '' ) {
 			$revert = '<span class="mw-logevent-actionlink">' . $revert . '</span>';

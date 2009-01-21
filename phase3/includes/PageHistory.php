@@ -363,7 +363,9 @@ class PageHistory {
 		}
 
 		# Tags
-		$s .= ' ' . ChangeTags::formatSummaryRow( $row->ts_tags, 'history', &$classes );
+		list($tagSummary, $newClasses) = ChangeTags::formatSummaryRow( $row->ts_tags, 'history' );
+		$classes = array_merge( $classes, $newClasses );
+		$s .= " $tagSummary";
 
 		wfRunHooks( 'PageHistoryLineEnding', array( $this, &$row , &$s ) );
 

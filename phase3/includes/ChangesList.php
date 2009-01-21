@@ -386,7 +386,9 @@ class OldChangesList extends ChangesList {
 		}
 		
 		# Tags, if any.
-		$s .= ' ' . ChangeTags::formatSummaryRow( $rc->mAttribs['ts_tags'], 'changeslist', &$classes);
+		list($tagSummary, $newClasses) = ChangeTags::formatSummaryRow( $rc->mAttribs['ts_tags'], 'changeslist' );
+		$classes = array_merge( $classes, $newClasses );
+		$s .= ' ' . $tagSummary;
 
 		## Classes
 		$classes = implode( ' ', $classes );
