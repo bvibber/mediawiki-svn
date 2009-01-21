@@ -24,12 +24,37 @@ class DataCenterViewPlansObject extends DataCenterView {
 		$object = $objectLink->getAsset();
 		// Gets plan from database
 		$plan = DataCenterDB::getPlan( $objectLink->get( 'plan' ) );
-		// Gets rack link object is linked to
-		$rackLink = DataCenterDB::getAssetLink(
-			$objectLink->get( 'parent_link' )
-		);
-		// Extracts rack from rack link
-		$rack = $rackLink->getAsset();
+		// Initializes list of parameters for plan
+		$planParameters = array();
+		// Initializes list of fields to show in details
+		$detailsFields = array();
+		// Checks if object is a part of another asset
+		if ( $objectLink->get( 'parent_link' ) ) {
+			// Gets rack link object is linked to
+			$rackLink = DataCenterDB::getAssetLink(
+				$objectLink->get( 'parent_link' )
+			);
+			// Checks if object is in a rack
+			if ( $rackLink->get( 'asset_type' ) == 'rack' ) {
+				// Extracts rack from rack link
+				$rack = $rackLink->getAsset();
+				// Builds plan parameters
+				$planParameters = array(
+					'current-rack' => $rack->getId(),
+					'look-at-rack' => $rack->getId(),
+					'current-object' => $object->getId()
+				);
+				$detailsFields = array(
+					'position' => array(
+						'field' => 'z'
+					),
+					'side' => array(
+						'field' => 'orientation',
+						'format' => 'side'
+					)
+				);
+			}
+		}
 		// Gets structure of plan
 		$structure = $plan->getStructure(
 			DataCenterDB::buildSort(
@@ -50,14 +75,9 @@ class DataCenterViewPlansObject extends DataCenterView {
 							'details',
 							array(
 								'row' => $objectLink,
-								'fields' => array(
-									'position' => array(
-										'field' => 'z'
-									),
-									'side' => array(
-										'field' => 'orientation',
-										'format' => 'side'
-									)
+								'fields' => array_merge(
+									$detailsFields,
+									array( 'name' )
 								),
 							)
 						),
@@ -74,11 +94,11 @@ class DataCenterViewPlansObject extends DataCenterView {
 					)
 				),
 				DataCenterUI::renderWidget(
-					'plan', array(
-						'plan' => $plan,
-						'current-rack' => $rack->getId(),
-						'look-at-rack' => $rack->getId(),
-						'current-object' => $object->getId()
+					'plan', array_merge(
+						$planParameters,
+						array(
+							'plan' => $plan,
+						)
 					)
 				),
 			)
@@ -97,7 +117,9 @@ class DataCenterViewPlansObject extends DataCenterView {
 			// At least 3 parameters were given
 			count( $path['parameter'] ) >= 2 &&
 			// The deployment target is a location
-			( $path['parameter'][0] == 'rack' )
+			(
+				$path['parameter'][0] == 'rack'
+			)
 		) {
 			$rackLink = DataCenterDB::getAssetLink( $path['parameter'][1] );
 			$plan = DataCenterDB::getPlan( $rackLink->get( 'plan' ) );
@@ -120,41 +142,62 @@ class DataCenterViewPlansObject extends DataCenterView {
 			foreach ( $objectLinks as $objectLink ) {
 				$existsTable[$objectLink->get( 'asset_id' )] = true;
 			}
+			// Additional filters for racking objects
+			$conditions = array();
+			if ( $path['parameter'][0] == 'rack' ) {
+				$conditions = DataCenterDB::buildCondition(
+					'model', 'object', 'form_factor', 'rackunit'
+				);
+			}
 			// Gets objects from database in two varieties, local and remote
 			$objects = array(
 				'local' => DataCenterDB::getAssets(
 					'object',
-					DataCenterDB::buildCondition(
-						'asset', 'object', 'location', $space->get( 'location' )
+					array_merge_recursive(
+						$conditions,
+						DataCenterDB::buildCondition(
+							'asset',
+							'object',
+							'location',
+							$space->get( 'location' )
+						),
+						DataCenterDB::buildJoin(
+							'model', 'object', 'id',
+							'asset', 'object', 'model',
+							array( 'name', 'manufacturer' )
+						)
 					)
 				),
 				'remote' => DataCenterDB::getAssets(
 					'object',
-					DataCenterDB::buildCondition(
-						'asset',
-						'object',
-						'location',
-						$space->get( 'location' ),
-						'!='
+					array_merge_recursive(
+						$conditions,
+						DataCenterDB::buildCondition(
+							'asset',
+							'object',
+							'location',
+							$space->get( 'location' ),
+							'!='
+						),
+						DataCenterDB::buildJoin(
+							'model', 'object', 'id',
+							'asset', 'object', 'model',
+							array( 'name', 'manufacturer' )
+						)
 					)
-				)
+				),
 			);
 			$tabs = array();
 			foreach ( $objects as $groupName => $objectGroup ) {
+				// Removes objects which are already in use
 				foreach( $objectGroup as $key => $object ) {
-					if (
-						$object->get( 'tense' ) == 'past' ||
-						isset( $existsTable[$object->getId()] )
-					) {
+					if ( isset( $existsTable[$object->getId()] ) ) {
 						unset( $objectGroup[$key] );
-					} else {
-						$objectModel = $object->getModel();
-						$object->set(
-							$objectModel->get( array( 'name', 'manufacturer' ) )
-						);
 					}
 				}
+				// Checks if there are any objects to display
 				if ( count( $objectGroup ) > 0 ) {
+					// Builds table
 					$tabs[$groupName] = DataCenterUI::renderWidget(
 						'table',
 						array(
@@ -171,7 +214,9 @@ class DataCenterViewPlansObject extends DataCenterView {
 								'id' => $path['id'],
 								'action' => 'attach',
 								'parameter' => array(
-									'rack', $path['parameter'][1], '#id'
+									$path['parameter'][0],
+									$path['parameter'][1],
+									'#id'
 								),
 							),
 						)
@@ -190,7 +235,7 @@ class DataCenterViewPlansObject extends DataCenterView {
 							DataCenterUI::renderWidget(
 								'heading',
 								array(
-									'message' => 'select-type',
+									'message' => 'select-attach-type',
 									'type' => 'object'
 								)
 							),
@@ -313,51 +358,41 @@ class DataCenterViewPlansObject extends DataCenterView {
 			// At least 2 parameters were given
 			count( $path['parameter'] ) >= 3 &&
 			// The deployment target is...
-			(
-				( $path['parameter'][0] == 'rack' ) ||
-				( $path['parameter'][0] == 'object' ) // NOT READY
-			)
+			( $path['parameter'][0] == 'rack' )
 		) {
-			if ( $path['parameter'][0] == 'rack' ) {
-				$rackLink = DataCenterDB::getAssetLink( $path['parameter'][1] );
-				$rack = $rackLink->getAsset();
-				$plan = DataCenterDB::getPlan( $rackLink->get( 'plan' ) );
-				$object = DataCenterDB::getAsset(
-					'object', $path['parameter'][2]
-				);
-				$objectLink = DataCenterDBAssetLink::newFromValues(
-					array(
-						'name' => DataCenterUI::message( 'type', 'object' ),
-						'plan' => $plan->getId(),
-						'parent_link' => $rackLink->getId(),
-						'asset_type' => 'object',
-						'asset_id' => $object->getId(),
-						'z' => 1,
-						'orientation' => 0,
-					)
-				);
-				// Sets action specific parameters
-				$formParameters = array(
-					'label' => 'attach',
-					'hidden' => array(
-						'plan', 'parent_link', 'asset_type', 'asset_id'
-					),
-					'success' => array(
-						'page' => 'plans',
-						'type' => 'rack',
-						'action' => 'view',
-						'id' => $path['parameter'][1],
-					),
-				);
-				$headingParameters = array(
-					'message' => 'attaching-type',
-					'type' => 'object',
-				);
-			} else {
-				throw new MWException(
-					'Invalid parameters'
-				);
-			}
+			$object = DataCenterDB::getAsset( 'object', $path['parameter'][2] );
+			$model = $object->getModel();
+			$rackLink = DataCenterDB::getAssetLink( $path['parameter'][1] );
+			$rack = $rackLink->getAsset();
+			$plan = DataCenterDB::getPlan( $rackLink->get( 'plan' ) );
+			$objectLink = DataCenterDBAssetLink::newFromValues(
+				array(
+					'name' => $model->get( 'kind' ),
+					'plan' => $plan->getId(),
+					'parent_link' => $rackLink->getId(),
+					'asset_type' => 'object',
+					'asset_id' => $object->getId(),
+					'z' => 1,
+					'orientation' => 0,
+				)
+			);
+			// Sets action specific parameters
+			$formParameters = array(
+				'label' => 'attach',
+				'hidden' => array(
+					'plan', 'parent_link', 'asset_type', 'asset_id'
+				),
+				'success' => array(
+					'page' => 'plans',
+					'type' => $path['parameter'][0],
+					'action' => 'view',
+					'id' => $path['parameter'][1],
+				),
+			);
+			$headingParameters = array(
+				'message' => 'attaching-type',
+				'type' => 'object',
+			);
 		} else {
 			// Gets asset from database
 			$objectLink = DataCenterDB::getAssetLink( $path['id'] );
@@ -402,59 +437,47 @@ class DataCenterViewPlansObject extends DataCenterView {
 			( $rackModel->get( 'units' ) - $objectModel->get( 'units' ) ) + 1
 		);
 		// Builds form parameters
-		$formParameters = array_merge(
-			$formParameters,
-			array(
-				'do' => 'save',
-				'failure' => $path,
-				'action' => array(
-					'page' => 'plans',
-					'type' => 'object'
+		$formFields = array(
+			'name' => array( 'type' => 'string' ),
+			'position' => array(
+				'type' => 'number',
+				'field' => 'z',
+				'min' => 1,
+				'max' => $maxZ,
+				'effect' => DataCenterJs::chain(
+					array_merge(
+						$target,
+						array(
+							'setObjectPosition' => array(
+								DataCenterJs::toScalar( $rackId ),
+								DataCenterJs::toScalar( $objectId ),
+								'{this}.value',
+								DataCenterJs::toScalar( true )
+							)
+						)
+					),
+					false
 				),
-				'row' => $objectLink,
-				'fields' => array(
-					'name' => array( 'type' => 'string' ),
-					'position' => array(
-						'type' => 'number',
-						'field' => 'z',
-						'min' => 1,
-						'max' => $maxZ,
-						'effect' => DataCenterJs::chain(
-							array_merge(
-								$target,
-								array(
-									'setObjectPosition' => array(
-										DataCenterJs::toScalar( $rackId ),
-										DataCenterJs::toScalar( $objectId ),
-										'{this}.value',
-										DataCenterJs::toScalar( true )
-									)
-								)
-							),
-							false
-						),
+			),
+			'orientation' => array(
+				'type' => 'number',
+				'min' => 0,
+				'max' => 1,
+				'effect' => DataCenterJs::chain(
+					array_merge(
+						$target,
+						array(
+							'setObjectOrientation' => array(
+								DataCenterJs::toScalar( $rackId ),
+								DataCenterJs::toScalar( $objectId ),
+								'{this}.value',
+								DataCenterJs::toScalar( true )
+							)
+						)
 					),
-					'orientation' => array(
-						'type' => 'number',
-						'min' => 0,
-						'max' => 1,
-						'effect' => DataCenterJs::chain(
-							array_merge(
-								$target,
-								array(
-									'setObjectOrientation' => array(
-										DataCenterJs::toScalar( $rackId ),
-										DataCenterJs::toScalar( $objectId ),
-										'{this}.value',
-										DataCenterJs::toScalar( true )
-									)
-								)
-							),
-							false
-						),
-					),
-				)
-			)
+					false
+				),
+			),
 		);
 		// Returns 2 columm layout with a form and a scene
 		return DataCenterUI::renderLayout(
@@ -466,11 +489,27 @@ class DataCenterViewPlansObject extends DataCenterView {
 						DataCenterUI::renderWidget(
 							'heading', $headingParameters
 						),
-						DataCenterUI::renderWidget( 'form', $formParameters ),
+						DataCenterUI::renderWidget(
+							'form',
+							array_merge(
+								$formParameters,
+								array(
+									'do' => 'save',
+									'failure' => $path,
+									'action' => array(
+										'page' => 'plans',
+										'type' => 'object'
+									),
+									'row' => $objectLink,
+									'fields' => $formFields,
+								)
+							)
+						),
 					)
 				),
 				DataCenterUI::renderWidget(
-					'plan', array(
+					'plan',
+					array(
 						'plan' => $plan,
 						'current-rack' => $rack->getId(),
 						'look-at-rack' => $rack->getId(),

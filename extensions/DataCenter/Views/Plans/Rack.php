@@ -269,7 +269,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 							DataCenterUI::renderWidget(
 								'heading',
 								array(
-									'message' => 'select-type',
+									'message' => 'select-attach-type',
 									'type' => 'rack'
 								)
 							),

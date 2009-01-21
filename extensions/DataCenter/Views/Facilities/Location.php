@@ -188,7 +188,14 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 		if ( !$path['id'] ) {
 			// Creates a new facility location
 			$location = DataCenterDBLocation::newFromValues(
-				array( 'tense' => 'present' )
+				array(
+					'tense' => 'present',
+					'name' => DataCenterUI::message(
+						'default', 'new-type', DataCenterUI::message(
+							'type', 'location'
+						)
+					)
+				)
 			);
 			// Sets 'do' specific parameters
 			$formParameters = array(

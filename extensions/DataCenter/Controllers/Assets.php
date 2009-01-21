@@ -26,19 +26,19 @@ class DataCenterControllerAssets extends DataCenterController {
 				'page' => 'assets',
 				'type' => $path['type'],
 				'action' => 'manage',
-				'id' => $path['id']
+				'id' => $path['id'],
 			);
 			$this->actions['history'] = array(
 				'page' => 'assets',
 				'type' => $path['type'],
 				'action' => 'history',
-				'id' => $path['id']
+				'id' => $path['id'],
 			);
 			$this->actions['view'] = array(
 				'page' => 'assets',
 				'type' => $path['type'],
 				'action' => 'view',
-				'id' => $path['id']
+				'id' => $path['id'],
 			);
 		}
 	}

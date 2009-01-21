@@ -49,32 +49,28 @@ class DataCenterInputTense extends DataCenterInput {
 		$xmlOutput = parent::begin( $parameters['class'] );
 		// Adds buttons
 		foreach ( array( 'past', 'present', 'future' ) as $tense ) {
-			$radioAttributes = array();
+			$radioAttributes = array(
+				'type' => 'radio',
+				'id' => $parameters['id'] . '_' . $tense,
+				'name' => $parameters['name'],
+				'value' => $tense,
+				'class' => 'button',
+			);
+			$labelAttributes = array(
+				'for' => $parameters['id'] . '_' . $tense,
+				'class' => 'label'
+			);
 			if ( $parameters['value'] == $tense ) {
 				$radioAttributes['checked'] = 'checked';
 			}
 			if ( in_array( $tense, $parameters['disable'] ) ) {
 				$radioAttributes['disabled'] = 'true';
+				$labelAttributes['class'] .= ' disabled';
 			}
-			$xmlOutput .= DataCenterXml::tag(
-				'input',
-				array_merge(
-					$radioAttributes,
-					array(
-						'type' => 'radio',
-						'id' => $parameters['id'] . '_' . $tense,
-						'name' => $parameters['name'],
-						'value' => $tense,
-						'class' => 'button',
-					)
-				)
-			);
+			$xmlOutput .= DataCenterXml::tag( 'input', $radioAttributes );
 			$xmlOutput .= DataCenterXml::tag(
 				'label',
-				array(
-					'for' => $parameters['id'] . '_' . $tense,
-					'class' => 'label'
-				),
+				$labelAttributes,
 				DataCenterUI::message( 'option', $tense )
 			);
 		}

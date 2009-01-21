@@ -37,18 +37,20 @@ class DataCenterViewPlansPlan extends DataCenterView {
 		);
 		// Builds tables from structure
 		$tables = DataCenterDB::buildLookupTable( 'asset_type', $structure );
-		// Builds list of rack assets used in plan
+		// Builds list of rack/object assets used in plan
 		if ( isset( $tables['rack'] ) && is_array( $tables['rack'] ) ) {
 			foreach ( $tables['rack'] as $key => $link ) {
-				$rack = $link->getAsset();
-				$model = $rack->getModel();
+				$asset = $link->getAsset();
+				$model = $asset->getModel();
 				$tables['rack'][$key]->set(
-					array( 'model' => $model->get( 'name' ) )
+					array(
+						'model' => $model->get( 'name' ),
+						'manufacturer' => $model->get( 'manufacturer' )
+					)
 				);
 			}
-		}
-		if ( !isset( $tables['rack'] ) ) {
-			$tables['rack'] = array();
+		} else {
+			$tables['rack'] = null;
 		}
 		// Builds javascript that references the renderable plan
 		$target = array(
@@ -69,58 +71,57 @@ class DataCenterViewPlansPlan extends DataCenterView {
 			$rack = $rackLink->getAsset();
 			$zoomOptions['zoom-from-rack'] = $rack->getId();
 		}
-		// Builds table of racks
-		$racks = DataCenterUI::renderWidget(
-			'table',
-			array(
-				'rows' => $tables['rack'],
-				'fields' => array(
-					'name',
-					'model',
-					'position' => array(
-						'fields' => array( 'x', 'y' ),
-						'glue' => 'x'
-					)
-				),
-				'link' => array(
-					'page' => 'plans',
-					'type' => 'rack',
-					'action' => 'view',
-					'id' => '#id'
-				),
-				'effects' => array(
-					array(
-						'event' => 'onmouseover',
-						'script' => DataCenterJs::chain(
-							array_merge(
-								$target,
-								array(
-									'setRackHighlight' => array(
-										'{asset_id}',
-										DataCenterJs::toScalar( true ),
+		if ( $tables['rack'] ) {
+			// Builds table of racks
+			$racks = DataCenterUI::renderWidget(
+				'table',
+				array(
+					'rows' => $tables['rack'],
+					'fields' => array(
+						'name',
+						'manufacturer',
+						'model',
+					),
+					'link' => array(
+						'page' => 'plans',
+						'type' => 'rack',
+						'action' => 'view',
+						'id' => '#id'
+					),
+					'effects' => array(
+						array(
+							'event' => 'onmouseover',
+							'script' => DataCenterJs::chain(
+								array_merge(
+									$target,
+									array(
+										'setRackHighlight' => array(
+											'{asset_id}',
+											DataCenterJs::toScalar( true ),
+										)
 									)
-								)
+								),
+								false
 							),
-							false
+						),
+						array(
+							'event' => 'onmouseout',
+							'script' => DataCenterJs::chain(
+								array_merge(
+									$target,
+									array(
+										'clearRackHighlight' => array(
+											DataCenterJs::toScalar( true ),
+										)
+									)
+								),
+								false
+							),
 						),
 					),
-					array(
-						'event' => 'onmouseout',
-						'script' => DataCenterJs::chain(
-							array_merge(
-								$target,
-								array(
-									'clearRackHighlight' => array(
-										DataCenterJs::toScalar( true ),
-									)
-								)
-							),
-							false
-						),
-					),
-				),
-			)
-		);
+				)
+			);
+		}
 		// Returns single columm layout with a table
 		return DataCenterUI::renderLayout(
 			'columns',
@@ -350,7 +351,10 @@ class DataCenterViewPlansPlan extends DataCenterView {
 									),
 									'row' => $plan,
 									'fields' => array(
-										'tense' => array( 'type' => 'tense' ),
+										'tense' => array(
+											'type' => 'tense',
+											'disable' => array( 'past' )
+										),
 										'name' => array( 'type' => 'string' ),
 										'note' => array( 'type' => 'text' )
 									)

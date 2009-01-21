@@ -442,7 +442,8 @@ class DataCenterViewModels extends DataCenterView {
 										'name' => array( 'type' => 'string' ),
 										'quantity' => array(
 											'type' => 'number',
-											'range' => array( 1, 100 ),
+											'min' => 0,
+											'max' => 1000
 										),
 									),
 								)

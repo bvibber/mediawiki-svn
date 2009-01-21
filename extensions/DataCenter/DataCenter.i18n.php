@@ -139,6 +139,8 @@ $messages['en'] = array(
 	'datacenter-ui-label-browse-by' => 'Browse by:',
 	'datacenter-ui-label-num-spaces' => '$1 {{PLURAL:$1|Space|Spaces}}',
 	'datacenter-ui-label-degrees-value' => '$1&deg;',
+	// Defaults
+	'datacenter-ui-default-new-type' => 'New $1',
 	// List Headings
 	'datacenter-ui-heading-history' => 'History',
 	'datacenter-ui-heading-plans' => 'Plans',

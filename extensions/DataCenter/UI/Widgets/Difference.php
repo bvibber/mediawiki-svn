@@ -51,6 +51,11 @@ class DataCenterWidgetDifference extends DataCenterWidget {
 		) {
 			// Loops over each field
 			foreach ( $parameters['current'] as $field => $value ) {
+				// Detects new field
+				if ( !isset( $parameters['previous'][$field] ) ) {
+					$different = true;
+					$parameters['previous'][$field] = 'NULL';
+				}
 				// Detects changed field
 				$different = ( $value !== $parameters['previous'][$field] );
 				// Adds row

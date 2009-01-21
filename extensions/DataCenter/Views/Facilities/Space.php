@@ -210,7 +210,15 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 		) {
 			// Creates new facility with default parameters
 			$space = DataCenterDBSpace::newFromValues(
-				array( 'location' => $path['parameter'][1] )
+				array(
+					'location' => $path['parameter'][1],
+					'tense' => 'present',
+					'name' => DataCenterUI::message(
+						'default', 'new-type', DataCenterUI::message(
+							'type', 'space'
+						)
+					)
+				)
 			);
 			// Sets 'do' specific parameters
 			$formParameters = array(
@@ -266,7 +274,9 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 				),
 				'row' => $space,
 				'fields' => array(
-					'tense' => array( 'type' => 'tense' ),
+					'tense' => array(
+						'type' => 'tense', 'disable' => array( 'past' )
+					),
 					'name' => array( 'type' => 'string' ),
 					'width' => array(
 						'type' => 'number',

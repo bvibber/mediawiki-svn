@@ -60,7 +60,11 @@ class DataCenterControllerModels extends DataCenterController {
 		$type
 	) {
 		$link = DataCenterDBModelLink::newFromValues( $data );
-		$link->save();
+		if ( $link->get( 'quantity' ) == 0 ) {
+			$link->delete();
+		} else {
+			$link->save();
+		}
 		return true;
 	}
 }

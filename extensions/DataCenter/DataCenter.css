@@ -296,6 +296,10 @@ div.datacenter-ui div.input-tense label.label {
 	margin-right: 5px;
 }
 
+div.datacenter-ui div.input-tense label.disabled {
+	color: silver;
+}
+
 /**
  * Number Widget
  */

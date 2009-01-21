@@ -121,9 +121,7 @@ class DataCenterPage extends SpecialPage {
 	);
 
 	private static $state = array(
-		'private' => array(
-			'last-page' => null,
-		),
+		'private' => array( 'last-page' => null ),
 		'public' => array()
 	);
 
@@ -133,7 +131,15 @@ class DataCenterPage extends SpecialPage {
 		$url
 	) {
 		global $wgTitle;
-		return str_replace( $wgTitle->getFullUrl(), '', $url );
+		$start = stripos( $url, $wgTitle->getBaseText() );
+		if ( $start !== false ) {
+			$url = substr( $url, $start );
+			$start = strpos( $url, '/' );
+			if ( $start !== false ) {
+				return substr( $url, $start );
+			}
+		}
+		return $url;
 	}
 
 	private static function subToPath(
@@ -172,7 +178,8 @@ class DataCenterPage extends SpecialPage {
 	}
 
 	private static function loadState() {
-
+		// Load state from session
+		self::$state = $_SESSION['DATA_CENTER_STATE'];
 	}
 
 	private static function saveState() {
