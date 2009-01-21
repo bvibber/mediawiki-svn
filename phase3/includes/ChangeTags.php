@@ -68,11 +68,11 @@ class ChangeTags {
 
 		// Insert the tags rows.
 		$tagsRows = array();
-		foreach( $tags as $tag ) {
-			$tagsRows[] = array( 'ct_tag' => $tag, 'ct_rc_id' => $rc_id, 'ct_log_id' => $log_id, 'ct_rev_id' => $rev_id, 'ct_params' => $params );
+		foreach( $tags as $tag ) { // Filter so we don't insert NULLs as zero accidentally.
+			$tagsRows[] = array_filter( array( 'ct_tag' => $tag, 'ct_rc_id' => $rc_id, 'ct_log_id' => $log_id, 'ct_rev_id' => $rev_id, 'ct_params' => $params ) );
 		}
 
-		$dbw->replace( 'change_tag', array( array( 'ct_tag', 'ct_rc_id', 'ct_rev_id', 'ct_log_id' ) ), $tagsRows, __METHOD__ );
+		$dbw->insert( 'change_tag', array( array( 'ct_tag', 'ct_rc_id', 'ct_rev_id', 'ct_log_id' ) ), $tagsRows, __METHOD__, array('IGNORE') );
 
 		return true;
 	}
@@ -111,7 +111,7 @@ class ChangeTags {
 			// Add an INNER JOIN on change_tag
 
 			$tables[] = 'change_tag';
-			$join_conds['change_tag'] = array( 'RIGHT JOIN', "ct_$join_cond=$join_cond" );
+			$join_conds['change_tag'] = array( 'INNER JOIN', "ct_$join_cond=$join_cond" );
 			$conds['ct_tag'] = $filter_tag;
 		}
 	}
