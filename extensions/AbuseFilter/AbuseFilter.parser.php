@@ -558,21 +558,15 @@ class AbuseFilterParser {
 				throw new AFPEexception( "Expected ( at char {$this->mCur->value}" );
 			wfProfileIn( __METHOD__."-loadargs" );
 			$args = array();
-			if( $this->mCur->type != AFPToken::TBrace || $this->mCur->value != ')' )
-				do {
-					$this->move();
-					$r = new AFPData();
-					try {
-						$this->doLevelAtom( $r );
-					} catch (AFPException $e) {
-						$this->move( -1 );
-						$this->doLevelSet( $r );
-					}
-					$args[] = $r;
-				} while( $this->mCur->type == AFPToken::TComma );
+			do {
+				$this->move();
+				$r = new AFPData();
+				$this->doLevelSet( $r );
+				$args[] = $r;
+			} while( $this->mCur->type == AFPToken::TComma );
 			
 			if( $this->mCur->type != AFPToken::TBrace || $this->mCur->value != ')' ) {
-				throw new AFPException( "Expected ) at char {$this->mCur->pos}" );
+				throw new AFPException( "Expected ) at char {$this->mCur->pos}, instead I see {$this->mCur->value}, a {$this->mCur->type}" );
 			}
 			wfProfileOut( __METHOD__."-loadargs" );
 			
