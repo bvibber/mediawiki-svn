@@ -183,7 +183,7 @@ class WebExtension {
  		if( $this->useVariable() )
  			return 'wp'.$this->mExtVar;
  		else
- 			return 'wpUse'.$this->mName;
+ 			return 'wpUse'.str_replace( ' ', '_', $this->mName );
 	}
 
   	/**
