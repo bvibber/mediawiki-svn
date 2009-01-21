@@ -175,4 +175,17 @@ class AbuseFilterHooks {
 
 		return true;
 	}
+
+	public static function onListDefinedTags( &$emptyTags ) {
+		## This is a pretty awful hack.
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$res = $dbr->select( 'abuse_filter_action', 'afa_parameters', array( 'afa_consequence' => 'tag' ), __METHOD__ );
+
+		while( $row = $res->fetchObject() ) {
+			$emptyTags = array_filter( array_merge( explode( "\n", $row->afa_parameters ), $emptyTags ) );
+		}
+
+		return true;
+	}
 }

@@ -1260,4 +1260,9 @@ CREATE TABLE /*_*/tag_summary (
 	UNIQUE KEY (ts_rev_id),
 ) /*$wgDBTableOptions*/;
 
+CREATE TABLE /*_*/valid_tag (
+	vt_tag varchar(255) NOT NULL,
+	PRIMARY KEY (vt_tag)
+) /*$wgDBTableOptions*/;
+
 -- vim: sw=2 sts=2 et

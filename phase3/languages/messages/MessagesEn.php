@@ -3785,5 +3785,12 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 ## Taggng-related stuff
 'tag-filter' => 'Tag filter:',
 'tag-filter-submit' => 'Filter',
-
+'tags-title' => 'Tags',
+'tags-intro' => 'This page lists the tags that the software may mark an edit with, and their meaning.',
+'tags-tag' => 'Internal tag name',
+'tags-display-header' => 'Appearance on change lists',
+'tags-description-header' => 'Full description of meaning',
+'tags-hitcount-header' => 'Tagged edits',
+'tags-edit' => 'edit',
+'tags-hitcount' => '$1 changes',
 );

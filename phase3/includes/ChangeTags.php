@@ -13,15 +13,19 @@ class ChangeTags {
 		$tags = explode( ',', $tags );
 		$displayTags = array();
 		foreach( $tags as $tag ) {
-			if (!wfEmptyMsg( "tag-$tag" , wfMsg( "tag-$tag" ) ) ) {
-				$displayTags[] = wfMsgExt( "tag-$tag", 'parseinline' );
-			} else {
-				$displayTags[] = $tag;
-			}
+			$displayTags[] = self::tagDescription( $tag );
 			$classes[] = "mw-tag-$tag";
 		}
 
 		return array( '(' . implode( ', ', $displayTags ) . ')', $classes );
+	}
+
+	static function tagDescription( $tag ) {
+		$msg = wfMsgExt( "tag-$tag", 'parseinline' );
+		if ( wfEmptyMsg( "tag-$tag", $msg ) ) {
+			return htmlspecialchars($tag);
+		}
+		return $msg;
 	}
 
 	## Basic utility method to add tags to a particular change, given its rc_id, rev_id and/or log_id.
@@ -74,7 +78,7 @@ class ChangeTags {
 			$tagsRows[] = array_filter( array( 'ct_tag' => $tag, 'ct_rc_id' => $rc_id, 'ct_log_id' => $log_id, 'ct_rev_id' => $rev_id, 'ct_params' => $params ) );
 		}
 
-		$dbw->insert( 'change_tag', array( array( 'ct_tag', 'ct_rc_id', 'ct_rev_id', 'ct_log_id' ) ), $tagsRows, __METHOD__, array('IGNORE') );
+		$dbw->insert( 'change_tag', $tagsRows, __METHOD__, array('IGNORE') );
 
 		return true;
 	}
@@ -137,5 +141,21 @@ class ChangeTags {
 		$html = Xml::tags( 'form', array( 'action' => $wgTitle->getLocalURL(), 'method' => 'get' ), $html );
 
 		return $html;
+	}
+
+	/** Basically lists defined tags which count even if they aren't applied to anything */
+	static function listDefinedTags() {
+		$emptyTags = array();
+
+		// Some DB stuff
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'valid_tag', 'vt_tag', array(), __METHOD__ );
+		while( $row = $res->fetchObject() ) {
+			$emptyTags[] = $row->vt_tag;
+		}
+		
+		wfRunHooks( 'ListDefinedTags', array(&$emptyTags) );
+
+		return array_filter( array_unique( $emptyTags ) );
 	}
 }

@@ -175,4 +175,9 @@ class TorBlock {
 		}
 		return true;
 	}
+
+	public static function onListDefinedTags( &$emptyTags ) {
+		$emptyTags[] = 'tor';
+		return true;
+	}
 }
