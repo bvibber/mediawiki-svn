@@ -239,7 +239,7 @@ class DataCenterViewModels extends DataCenterView {
 				'rows',
 				array(
 					DataCenterUI::renderWidget(
-						'heading', array( 'message' => 'model-outline' )
+						'heading', array( 'message' => 'model-attachments' )
 					),
 					DataCenterUI::renderWidget(
 						'model',
@@ -339,7 +339,8 @@ class DataCenterViewModels extends DataCenterView {
 							DataCenterUI::renderWidget(
 								'heading',
 								array(
-									'message' => 'attach-' . $path['parameter']
+									'message' => 'select-attach-type',
+									'type' => 'model'
 								)
 							),
 							DataCenterUI::renderWidget(
@@ -410,7 +411,7 @@ class DataCenterViewModels extends DataCenterView {
 			);
 			$headingOptions = array(
 				'message' => 'configuring-type',
-				'subject' => DataCenterUI::message( 'type', $path['type'] )
+				'type' => 'attachment'
 			);
 		}
 		return DataCenterUI::renderLayout(
@@ -453,10 +454,9 @@ class DataCenterViewModels extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'details-for',
-								'subject' => $model->get( 'name' ),
+							'heading', array(
+								'message' => 'model-type',
+								'type' => $path['type']
 							)
 						),
 						DataCenterUI::renderWidget(

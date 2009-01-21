@@ -44,13 +44,27 @@ class DataCenterViewPlansObject extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
+							'heading', array( 'message' => 'configuration' )
+						),
+						DataCenterUI::renderWidget(
+							'details',
 							array(
-								'message' => 'details-for',
-								'subject' => $objectLink->get( 'name' ),
+								'row' => $objectLink,
+								'fields' => array(
+									'position' => array(
+										'field' => 'z'
+									),
+									'side' => array(
+										'field' => 'orientation',
+										'format' => 'side'
+									)
+								),
 							)
 						),
-						'details' => DataCenterUI::renderWidget(
+						DataCenterUI::renderWidget(
+							'heading', array( 'message' => 'asset' )
+						),
+						DataCenterUI::renderWidget(
 							'details',
 							array(
 								'row' => $object,
@@ -174,7 +188,11 @@ class DataCenterViewPlansObject extends DataCenterView {
 						'rows',
 						array(
 							DataCenterUI::renderWidget(
-								'heading', array( 'message' => 'select-object' )
+								'heading',
+								array(
+									'message' => 'select-type',
+									'type' => 'object'
+								)
 							),
 							DataCenterUI::renderLayout( 'tabs', $tabs )
 						)
@@ -211,8 +229,8 @@ class DataCenterViewPlansObject extends DataCenterView {
 						DataCenterUI::renderWidget(
 							'heading',
 							array(
-								'message' => 'confirm-remove',
-								'subject' => $objectLink->get( 'name' ),
+								'message' => 'remove-type',
+								'type' => 'object'
 							)
 						),
 						DataCenterUI::renderWidget(
@@ -331,6 +349,14 @@ class DataCenterViewPlansObject extends DataCenterView {
 						'id' => $path['parameter'][1],
 					),
 				);
+				$headingParameters = array(
+					'message' => 'attaching-type',
+					'type' => 'object',
+				);
+			} else {
+				throw new MWException(
+					'Invalid parameters'
+				);
 			}
 		} else {
 			// Gets asset from database
@@ -355,6 +381,10 @@ class DataCenterViewPlansObject extends DataCenterView {
 					'action' => 'view',
 					'id' => $path['id'],
 				),
+			);
+			$headingParameters = array(
+				'message' => 'configuring-type',
+				'type' => 'object',
 			);
 		}
 		// Builds javascript that references the renderable asset
@@ -434,11 +464,7 @@ class DataCenterViewPlansObject extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'editing-details-for',
-								'subject' => $objectLink->get( 'name' ),
-							)
+							'heading', $headingParameters
 						),
 						DataCenterUI::renderWidget( 'form', $formParameters ),
 					)

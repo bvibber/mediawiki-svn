@@ -161,12 +161,9 @@ class DataCenterViewAssets extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
+							'heading', array(
 								'message' => 'asset-type',
-								'subject' => DataCenterUI::message(
-									'type', $path['type']
-								)
+								'type' => $path['type'],
 							)
 						),
 						DataCenterUI::renderWidget(
@@ -190,18 +187,15 @@ class DataCenterViewAssets extends DataCenterView {
 								),
 							)
 						),
-						'[PLANS THAT USE THIS]'
 					)
 				),
 				DataCenterUI::renderLayout(
 					'rows',
 					array(
-
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'details-for',
-								'subject' => $model->get( 'name' )
+							'heading', array(
+								'message' => 'model-type',
+								'type' => $path['type'],
 							)
 						),
 						DataCenterUI::renderWidget(
@@ -234,10 +228,8 @@ class DataCenterViewAssets extends DataCenterView {
 							DataCenterUI::renderWidget(
 								'heading',
 								array(
-									'message' => 'deploy-type',
-									'subject' => DataCenterUI::message(
-										'type', $path['type']
-									),
+									'message' => 'select-deploy-type',
+									'type' => 'model'
 								)
 							),
 							DataCenterUI::renderWidget(
@@ -366,8 +358,8 @@ class DataCenterViewAssets extends DataCenterView {
 						DataCenterUI::renderWidget(
 							'heading',
 							array(
-								'message' => 'details-for',
-								'subject' => $model->get( 'name' )
+								'message' => 'model-type',
+								'type' => $path['type'],
 							)
 						),
 						DataCenterUI::renderWidget(

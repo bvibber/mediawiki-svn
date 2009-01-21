@@ -80,11 +80,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'objects-in',
-								'subject' => $rackLink->get( 'name' )
-							)
+							'heading', array( 'message' => 'objects' )
 						),
 						'objects' => DataCenterUI::renderWidget(
 							'table',
@@ -130,13 +126,27 @@ class DataCenterViewPlansRack extends DataCenterView {
 							)
 						),
 						DataCenterUI::renderWidget(
-							'heading',
+							'heading', array( 'message' => 'configuration' )
+						),
+						DataCenterUI::renderWidget(
+							'details',
 							array(
-								'message' => 'details-for',
-								'subject' => $rackLink->get( 'name' ),
+								'row' => $rackLink,
+								'fields' => array(
+									'position' => array(
+										'fields' => array( 'x', 'y' ),
+										'glue' => ' x '
+									),
+									'orientation' => array(
+										'format' => 'angle'
+									)
+								),
 							)
 						),
-						'details' => DataCenterUI::renderWidget(
+						DataCenterUI::renderWidget(
+							'heading', array( 'message' => 'asset' )
+						),
+						DataCenterUI::renderWidget(
 							'details',
 							array(
 								'row' => $rack,
@@ -227,7 +237,6 @@ class DataCenterViewPlansRack extends DataCenterView {
 					$tabs[$groupName] = DataCenterUI::renderWidget(
 						'table',
 						array(
-							'heading' => array( 'message' => 'select-rack' ),
 							'rows' => $rackGroup,
 							'fields' => array(
 								'manufacturer',
@@ -258,7 +267,11 @@ class DataCenterViewPlansRack extends DataCenterView {
 						'rows',
 						array(
 							DataCenterUI::renderWidget(
-								'heading', array( 'message' => 'select-rack' )
+								'heading',
+								array(
+									'message' => 'select-type',
+									'type' => 'rack'
+								)
 							),
 							DataCenterUI::renderLayout( 'tabs', $tabs )
 						)
@@ -289,8 +302,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 						DataCenterUI::renderWidget(
 							'heading',
 							array(
-								'message' => 'confirm-remove',
-								'subject' => $rackLink->get( 'name' ),
+								'message' => 'remove-type', 'type' => 'rack',
 							)
 						),
 						DataCenterUI::renderWidget(
@@ -401,8 +413,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 				),
 			);
 			$headingParameters = array(
-				'message' => 'attaching-type',
-				'subject' => DataCenterUI::message( 'type', $path['type'] )
+				'message' => 'attaching-type', 'type' => 'rack'
 			);
 		} else {
 			// Gets asset from database
@@ -423,8 +434,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 				),
 			);
 			$headingParameters = array(
-				'message' => 'configuring-type',
-				'subject' => DataCenterUI::message( 'type', $path['type'] )
+				'message' => 'configuring-type', 'type' => 'rack'
 			);
 		}
 		// Gets parent asset from database

@@ -32,6 +32,11 @@ class DataCenterWidgetHeading extends DataCenterWidget {
 		 */
 		 'subject' => null,
 		/**
+		 * Name of type of component to inject as parameter for message
+		 * @datatype	string
+		 */
+		 'type' => null,
+		/**
 		 * Text to display
 		 * @datatype	string
 		 */
@@ -59,6 +64,15 @@ class DataCenterWidgetHeading extends DataCenterWidget {
 				// Uses subject-based message
 				$message = DataCenterUI::message(
 					'heading', $parameters['message'], $parameters['subject']
+				);
+			}
+			// Checks if a type was given
+			else if ( $parameters['type'] !== null ) {
+				// Uses type-based message
+				$message = DataCenterUI::message(
+					'heading',
+					$parameters['message'],
+					DataCenterUI::message( 'type', $parameters['type'] )
 				);
 			} else {
 				// Uses plain message

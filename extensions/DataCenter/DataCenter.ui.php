@@ -835,6 +835,12 @@ class DataCenterUI {
 			case 'type':
 				return self::message( 'type', $value );
 				break;
+			case 'side':
+				return self::message( 'option', $value ? 'front' : 'back' );
+				break;
+			case 'angle':
+				return self::message( 'label', 'degrees-value', $value * 90 );
+				break;
 			default:
 				// Performs no formatting
 				return $value;

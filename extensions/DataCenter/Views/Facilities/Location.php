@@ -112,10 +112,6 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 				$tables[$tense] = DataCenterUI::renderWidget(
 					'table',
 					array(
-						'heading' => array(
-							'message' => 'spaces-in',
-							'subject' => $location->get( 'name' ),
-						),
 						'rows' => $spacesTable[$tense],
 						'fields' => array( 'name' ),
 						'link' => array(
@@ -138,11 +134,7 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'spaces-in',
-								'subject' => $location->get( 'name' )
-							)
+							'heading', array( 'message' => 'spaces' )
 						),
 						DataCenterUI::renderLayout( 'tabs', $tables ),
 						DataCenterUI::renderWidget(
@@ -162,10 +154,7 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 							)
 						),
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'details-for',
-								'subject' => $location->get( 'name' ) )
+							'heading', array( 'message' => 'location' )
 						),
 						DataCenterUI::renderWidget(
 							'details',

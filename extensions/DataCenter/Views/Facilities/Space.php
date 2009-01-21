@@ -106,10 +106,6 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 				$tables[$tense] = DataCenterUI::renderWidget(
 					'table',
 					array(
-						'heading' => array(
-							'message' => 'plans-for',
-							'subject' => $space->get( 'name' ),
-						),
 						'rows' => (
 							isset( $plansTable[$tense] ) ?
 							$plansTable[$tense] :
@@ -140,11 +136,7 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'plans-for',
-								'subject' => $space->get( 'name' ),
-							)
+							'heading', array( 'message' => 'plans' )
 						),
 						DataCenterUI::renderLayout(
 							'tabs', $tables
@@ -164,10 +156,7 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 							)
 						),
 						DataCenterUI::renderWidget(
-							'heading', array(
-								'message' => 'details-for',
-								'subject' => $space->get( 'name' ),
-							)
+							'heading', array( 'message' => 'space' )
 						),
 						DataCenterUI::renderWidget(
 							'details',

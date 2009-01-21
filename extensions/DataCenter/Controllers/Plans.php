@@ -35,12 +35,6 @@ class DataCenterControllerPlans extends DataCenterController {
 				'action' => 'configure',
 				'id' => $path['id']
 			);
-			$this->actions['history'] = array(
-				'page' => 'plans',
-				'type' => $path['type'],
-				'action' => 'history',
-				'id' => $path['id']
-			);
 			$this->actions['view'] = array(
 				'page' => 'plans',
 				'type' => $path['type'],

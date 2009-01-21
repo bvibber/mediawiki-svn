@@ -17,34 +17,43 @@ class DataCenterViewHistory extends DataCenterView {
 		return DataCenterUI::renderLayout(
 			'columns',
 			array(
-				DataCenterUI::renderWidget( 'table',
+				DataCenterUI::renderLayout(
+					'rows',
 					array(
-						'rows' => $changes,
-						'fields' => array(
-							'date' => array(
-								'field' => 'timestamp',
-								'format' => 'date'
-							),
-							'username',
-							'type',
-							'component' => array(
-								'fields' => array(
-									'component_category',
-									'component_type',
-									'component_id'
-								),
-								'glue' => ' / '
-							),
-							'note'
+						DataCenterUI::renderWidget(
+							'heading', array( 'message' => 'history' )
 						),
-						'link' => array(
-							'page' => 'history',
-							'type' => 'change',
-							'action' => 'view',
-							'id' => '#id',
-						)
+						DataCenterUI::renderWidget(
+							'table',
+							array(
+								'rows' => $changes,
+								'fields' => array(
+									'date' => array(
+										'field' => 'timestamp',
+										'format' => 'date'
+									),
+									'username',
+									'type',
+									'component' => array(
+										'fields' => array(
+											'component_category',
+											'component_type',
+											'component_id'
+										),
+										'glue' => ' / '
+									),
+									'note'
+								),
+								'link' => array(
+									'page' => 'history',
+									'type' => 'change',
+									'action' => 'view',
+									'id' => '#id',
+								)
+							)
+						),
 					)
-				)
+				),
 			)
 		);
 	}
@@ -100,24 +109,35 @@ class DataCenterViewHistory extends DataCenterView {
 				'meta', 'change', 'timestamp DESC'
 			)
 		);
-		return DataCenterUI::renderWidget( 'table',
+		return DataCenterUI::renderLayout(
+			'rows',
 			array(
-				'rows' => $changes,
-				'fields' => array(
-					'date' => array(
-						'field' => 'timestamp',
-						'format' => 'date'
-					),
-					'username',
-					'type',
-					'note'
+				DataCenterUI::renderWidget(
+					'heading',
+					array(
+						'message' => 'history-type', 'type' => $path['type']
+					)
 				),
-				'link' => array(
-					'page' => 'history',
-					'type' => 'change',
-					'action' => 'view',
-					'id' => '#id',
-				)
+				DataCenterUI::renderWidget( 'table',
+					array(
+						'rows' => $changes,
+						'fields' => array(
+							'date' => array(
+								'field' => 'timestamp',
+								'format' => 'date'
+							),
+							'username',
+							'type',
+							'note'
+						),
+						'link' => array(
+							'page' => 'history',
+							'type' => 'change',
+							'action' => 'view',
+							'id' => '#id',
+						)
+					)
+				),
 			)
 		);
 	}

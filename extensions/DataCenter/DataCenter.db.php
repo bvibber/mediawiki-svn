@@ -1922,6 +1922,10 @@ class DataCenterDBSpace extends DataCenterDBComponent {
 		}
 		return null;
 	}
+
+	public function getLocation() {
+		return DataCenterDB::getLocation( $this->get( 'location' ) );
+	}
 }
 
 /* Meta Rows */

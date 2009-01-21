@@ -22,8 +22,13 @@ class DataCenterViewPlansPlan extends DataCenterView {
 		$plan = DataCenterDB::getPlan( $path['id'] );
 		// Gets space of plan
 		$space = $plan->getSpace();
-		// Sets the space name in the plan
-		$plan->set( 'space_name', $space->get( 'name' ) );
+		// Gets location of space
+		$location = $space->getLocation();
+		// Sets location information to space
+		$space->set(
+			'location_name',
+			implode( ' / ', $location->get( array( 'name', 'region' ) ) )
+		);
 		// Gets structure of plan from database
 		$structure = $plan->getStructure(
 			DataCenterDB::buildSort(
@@ -124,11 +129,7 @@ class DataCenterViewPlansPlan extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'racks-in',
-								'subject' => $space->get( 'name' ),
-							)
+							'heading', array( 'message' => 'racks' )
 						),
 						$racks,
 						DataCenterUI::renderWidget(
@@ -147,21 +148,39 @@ class DataCenterViewPlansPlan extends DataCenterView {
 							)
 						),
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'details-for',
-								'subject' => $plan->get( 'name' ),
-							)
+							'heading', array( 'message' => 'configuration' )
 						),
 						DataCenterUI::renderWidget(
 							'details',
 							array(
 								'row' => $plan,
 								'fields' => array(
-									'name',
 									'tense' => array( 'format' => 'option' ),
-									'space' => array( 'field' => 'space_name' ),
+									'name',
 									'note',
+								),
+							)
+						),
+						DataCenterUI::renderWidget(
+							'heading', array( 'message' => 'facility' )
+						),
+						DataCenterUI::renderWidget(
+							'details',
+							array(
+								'row' => $space,
+								'fields' => array(
+									'tense' => array( 'format' => 'option' ),
+									'location' => array(
+										'field' => 'location_name'
+									),
+									'name',
+									'size' => array(
+										'fields' => array(
+											'width', 'depth', 'height'
+										),
+										'glue' => ' x '
+									),
+									'power',
 								),
 							)
 						),
@@ -192,8 +211,8 @@ class DataCenterViewPlansPlan extends DataCenterView {
 						DataCenterUI::renderWidget(
 							'heading',
 							array(
-								'message' => 'confirm-remove',
-								'subject' => $plan->get( 'name' ),
+								'message' => 'remove-type',
+								'type' => 'plan',
 							)
 						),
 						DataCenterUI::renderWidget(
@@ -280,6 +299,10 @@ class DataCenterViewPlansPlan extends DataCenterView {
 					'hidden' => array( 'space' ),
 					'success' => array( 'page' => 'plans' ),
 				);
+				$headingParameters = array(
+					'message' => 'adding-type',
+					'type' => 'plan'
+				);
 			} else {
 				throw new MWException(
 					'Invalid parameters. space,# expected.'
@@ -299,6 +322,10 @@ class DataCenterViewPlansPlan extends DataCenterView {
 					'id' => $path['id'],
 				),
 			);
+			$headingParameters = array(
+				'message' => 'configuring-type',
+				'type' => 'plan'
+			);
 		}
 		// Returns 2 columm layout with a form and a scene
 		return DataCenterUI::renderLayout(
@@ -308,11 +335,7 @@ class DataCenterViewPlansPlan extends DataCenterView {
 					'rows',
 					array(
 						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'editing-details-for',
-								'subject' => $plan->get( 'name' ),
-							)
+							'heading', $headingParameters
 						),
 						DataCenterUI::renderWidget(
 							'form',
@@ -327,8 +350,8 @@ class DataCenterViewPlansPlan extends DataCenterView {
 									),
 									'row' => $plan,
 									'fields' => array(
-										'name' => array( 'type' => 'string' ),
 										'tense' => array( 'type' => 'tense' ),
+										'name' => array( 'type' => 'string' ),
 										'note' => array( 'type' => 'text' )
 									)
 								)
