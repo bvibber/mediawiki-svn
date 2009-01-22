@@ -41,6 +41,16 @@ class AbuseFilter {
 		}
 	}
 
+	public static function triggerLimiter( $val = 1 ) {
+		self::$condCount += $val;
+
+		global $wgAbuseFilterConditionLimit;
+
+		if (self::$condCount > $wgAbuseFilterConditionLimit) {
+			throw new MWException( "Condition limit reached." );
+		}
+	}
+
 	public static function disableConditionLimit() {
 		// For use in batch scripts and the like
 		self::$condLimitEnabled = false;
@@ -165,7 +175,6 @@ class AbuseFilter {
 				$newLog['afl_filter'] = $row->af_id;
 				$newLog['afl_action'] = $vars['ACTION'];
 
-				if ($
 				$log_entries[] = $newLog;
 				
 				$doneActionsByFilter[$row->af_id] = array();

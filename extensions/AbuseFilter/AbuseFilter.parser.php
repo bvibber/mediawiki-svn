@@ -438,6 +438,7 @@ class AbuseFilterParser {
 	}
 	
 	protected function doLevelCompares( &$result ) {
+		AbuseFilter::triggerLimiter();
 		$this->doLevelSumRels( $result );
 		$ops = array( '==', '===', '!=', '!==', '<', '>', '<=', '>=', '=' );
 		while( $this->mCur->type == AFPToken::TOp && in_array( $this->mCur->value, $ops ) ) {
@@ -577,6 +578,7 @@ class AbuseFilterParser {
 			if (isset(self::$funcCache[$funcHash])) {
 				$result = self::$funcCache[$funcHash];
 			} else {
+				AbuseFilter::triggerLimiter();
 				$result = self::$funcCache[$funcHash] = $this->$func( $args );
 			}
 			
