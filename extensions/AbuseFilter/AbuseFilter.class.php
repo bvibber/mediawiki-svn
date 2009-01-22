@@ -149,134 +149,160 @@ class AbuseFilter {
 		
 		return $result;
 	}
-	
-	public static function filterAction( $vars, $title ) {
-		global $wgUser,$wgMemc;
-		
+
+	/** Returns an associative array of filters which were tripped */
+	public static function checkAllFilters( $vars ) {
 		// Fetch from the database.
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'abuse_filter', '*', array( 'af_enabled' => 1, 'af_deleted' => 0 ) );
-		
-		$blocking_filters = array();
-		$log_entries = array();
-		$log_template = array( 'afl_user' => $wgUser->getId(), 'afl_user_text' => $wgUser->getName(),
-					'afl_var_dump' => serialize( $vars ), 'afl_timestamp' => $dbr->timestamp(wfTimestampNow()),
-					'afl_namespace' => $title->getNamespace(), 'afl_title' => $title->getDBKey(), 'afl_ip' => wfGetIp() );
-		$doneActionsByFilter = array();
-		$filter_matched = array();
-		
+
 		while ( $row = $dbr->fetchObject( $res ) ) {
+			// Store the row somewhere convenient
 			self::$filters[$row->af_id] = $row;
+
+			// Check conditions...
 			$pattern = trim($row->af_pattern);
 			if ( self::checkConditions( $pattern, $vars ) ) {
-				$blocking_filters[$row->af_id] = $row;
-				
-				$newLog = $log_template;
-				$newLog['afl_filter'] = $row->af_id;
-				$newLog['afl_action'] = $vars['ACTION'];
-
-				$log_entries[] = $newLog;
-				
-				$doneActionsByFilter[$row->af_id] = array();
+				// Record match.
 				$filter_matched[$row->af_id] = true;
 			} else {
+				// Record non-match.
 				$filter_matched[$row->af_id] = false;
 			}
 		}
-		
-		//// Clean up from checking all the filters
-	
+
+		// Update statistics, and disable filters which are over-blocking.
 		self::recordStats( $filter_matched );
-		
-		if (count($blocking_filters) == 0 ) {
-			// No problems.
-			return true;
-		}
-		
-		// Retrieve the consequences.
-		$res = $dbr->select( 'abuse_filter_action', '*', array( 'afa_filter' => array_keys( $blocking_filters ) ), __METHOD__, array( "ORDER BY" => " (afa_consequence in ('throttle','warn'))-(afa_consequence in ('disallow')) desc" ) );
-		// We want throttles, warnings first, as they have a bit of a special treatment. We want disallow last, so that it can be "eaten" by other actions.
-		
-		$actions_done = array();
-		$throttled_filters = array();
-		
-		$display = '';
-		
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			// Don't do the same action-parameters twice
-			$action_key = md5( $row->afa_consequence . $row->afa_parameters );
-			
-			// Skip if we've already done this action-parameter, or a passive action has sufficed.
-			$skipAction = ( in_array( $action_key, $actions_done ) || in_array( $row->afa_filter, $throttled_filters ) );
-			
-			// Don't disallow if we've already done something active. It produces two messages, where one would suffice.
-			if ($row->afa_consequence == 'disallow' && !$skipAction) {
-				$doneActiveActions = array_diff( $doneActionsByFilter[$row->afa_filter], array( 'throttle', 'warn' /* passive actions */ ) );
-				$skipAction = (bool)count($doneActiveActions);
-			}
-			
-			if ( !$skipAction ) {
-				// Unpack parameters
-				$parameters = explode( "\n", $row->afa_parameters );
-				
-				// Take the action.
-				$result = self::takeConsequenceAction( $row->afa_consequence, $parameters, $title, $vars, $display, $continue, $blocking_filters[$row->afa_filter]->af_public_comments );
-				
-				// Don't do it twice.
-				$doneActionsByFilter[$row->afa_filter][] = $row->afa_consequence;
-				$actions_done[] = $action_key;
-				
-				// Only execute other actions for a filter if that filter's rate limiter has been tripped.
-				if (!$result) {
-					$throttled_filters[] = $row->afa_filter;
-				}
-			} else {
-				// Ignore it, until we hit the rate limit.
-			}
-		}
-		
-		$dbw = wfGetDB( DB_MASTER );
-		
-		// Log it
-		foreach( $log_entries as $index => $entry ) {
-			$actions = $log_entries[$index]['afl_actions'] = implode( ',', $doneActionsByFilter[$entry['afl_filter']] );
-			
-			if ($actions == 'throttle') {
-				// Just a throttle, don't record it.
-				unset($log_entries[$index]);
-			}
-			
-			// Increment the hit counter
-			$dbw->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ), array( 'af_id' => $entry['afl_filter'] ), __METHOD__ );
-		}
-		
-		if (!count($log_entries)) {
-			return;
-		}
-		
-		$dbw->insert( 'abuse_filter_log', $log_entries, __METHOD__ );
-		
-		return $display;
+
+		return $filter_matched;
 	}
-	
-	public static function takeConsequenceAction( $action, $parameters, $title, $vars, &$display, &$continue, $rule_desc ) {
+
+	/** Returns an array [ list of actions taken by filter, error message to display, if any ] */
+	public static function executeFilterActions( $filters, $title, $vars ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		// Retrieve the consequences.
+		$res = $dbr->select( 'abuse_filter_action', '*', array( 'afa_filter' => $filters ), __METHOD__ );
+
+		$actionsByFilter = array_fill_keys( $filters, array() );
+		$actionsTaken = array_fill_keys( $filters, array() );
+
+		// Categorise consequences by filter.
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			$actionsByFilter[$row->afa_filter][$row->afa_consequence] = array( 'action' => $row->afa_consequence, 'parameters' => explode( "\n", $row->afa_parameters ) );
+		}
+
 		wfLoadExtensionMessages( 'AbuseFilter' );
-		switch ($action) {
-			case 'warn':
-				if (!isset($_SESSION['abusefilter-warned']) || !$_SESSION['abusefilter-warned']) {
-					$_SESSION['abusefilter-warned'] = true;
-					
+
+		$messages = array();
+
+		foreach( $actionsByFilter as $filter => $actions ) {
+			// Special-case handling for warnings.
+			if ( !empty( $actions['warn'] ) ) {
+				$parameters = $actions['warn']['parameters'];
+				$warnKey = 'abusefilter-warned-'.$title->getPrefixedText();
+				if (!isset($_SESSION[$warnKey]) || !$_SESSION[$warnKey]) {
+					$_SESSION[$warnKey] = true;
+
 					// Threaten them a little bit
 					$msg = ( !empty($parameters[0]) && strlen($parameters[0]) ) ? $parameters[0] : 'abusefilter-warning';
-					$display .= wfMsgNoTrans( $msg, $rule_desc ) . "<br />\n";
-					
-					return false; // Don't apply the other stuff yet.
+					$messages[] = wfMsgNoTrans( $msg, self::$filters[$filter]->af_public_comments ) . "<br />\n";
+
+					$actionsTaken[] = 'warn';
+
+					continue; // Don't do anything else.
 				} else {
 					// We already warned them
-					$_SESSION['abusefilter-warned'] = false;
+					$_SESSION[$warnKey] = false;
 				}
-				break;
 				
+				unset( $actions['warn'] );
+			}
+
+			if ( !empty( $actions['throttle'] ) ) {
+				$parameters = $actions['throttle']['parameters'];
+				$throttleId = array_shift( $parameters );
+				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $parameters ) );
+
+				$hitThrottle = false;
+
+				// The rest are throttle-types.
+				foreach( $parameters as $throttleType ) {
+					$hitThrottle = $hitThrottle || self::isThrottled( $throttleId, $throttleType, $title, $rateCount, $ratePeriod );
+				}
+
+				unset( $actions['throttle'] );
+				if (!$hitThrottle) {
+					$actionsTaken[] = 'throttle';
+					continue;
+				}
+			}
+
+			// Do the rest of the actions
+			foreach( $actions as $action => $info ) {
+				$newMsg = self::takeConsequenceAction( $action, $info['parameters'], $title, $vars, self::$filters[$filter]->af_public_comments );
+
+				if ($newMsg)
+					$messages[] = $newMsg;
+				$actionsTaken[$filter][] = $action;
+			}
+		}
+
+		return array( $actionsTaken, implode( "\n", $messages ) );
+	}
+	
+	public static function filterAction( $vars, $title ) {
+		global $wgUser,$wgMemc;
+
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$filter_matched = self::checkAllFilters( $vars );
+
+		// Short-cut any remaining code if no filters were hit.
+		if ( count( array_filter( $filter_matched) ) == 0 ) {
+			die( var_dump( $filter_matched ) );
+			return true;
+		}
+
+		list( $actions_taken, $error_msg ) = self::executeFilterActions( array_keys( array_filter( $filter_matched ) ), $title, $vars );
+
+		// Create a template
+		$log_template = array( 'afl_user' => $wgUser->getId(), 'afl_user_text' => $wgUser->getName(),
+					'afl_var_dump' => serialize( $vars ), 'afl_timestamp' => $dbr->timestamp(wfTimestampNow()),
+					'afl_namespace' => $title->getNamespace(), 'afl_title' => $title->getDBKey(), 'afl_ip' => wfGetIp() );
+
+		self::addLogEntries( $actions_taken, $log_template, $vars['ACTION'] );
+		
+		return $error_msg;
+	}
+
+	public static function addLogEntries( $actions_taken, $log_template, $action ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$log_rows = array();
+
+		foreach( $actions_taken as $filter => $actions ) {
+			$thisLog = $log_template;
+			$thisLog['afl_filter'] = $filter;
+			$thisLog['afl_action'] = $action;
+			$thisLog['afl_actions'] = implode( ',', $actions_taken[$filter] );
+
+			// Don't log if we were only throttling.
+			if ($thisLog['afl_actions'] != 'throttle') {
+				$log_rows[] = $thisLog;
+			}
+		}
+
+		if (!count($log_rows)) {
+			return;
+		}
+
+		$dbw->insert( 'abuse_filter_log', $log_rows, __METHOD__ );
+	}
+	
+	public static function takeConsequenceAction( $action, $parameters, $title, $vars, $rule_desc ) {
+		wfLoadExtensionMessages( 'AbuseFilter' );
+		$display = '';
+		switch ($action) {
 			case 'disallow':
 				if (strlen($parameters[0])) {
 					$display .= wfMsgNoTrans( $parameters[0], $rule_desc ) . "\n";
@@ -352,20 +378,6 @@ class AbuseFilter {
 				
 				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
 				break;
-			
-			case 'throttle':
-				$throttleId = array_shift( $parameters );
-				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $parameters ) );
-				
-				$hitThrottle = false;
-				
-				// The rest are throttle-types.
-				foreach( $parameters as $throttleType ) {
-					$hitThrottle = $hitThrottle || self::isThrottled( $throttleId, $throttleType, $title, $rateCount, $ratePeriod );
-				}
-
-				return $hitThrottle;
-				break;
 			case 'degroup':
 				global $wgUser;
 				if (!$wgUser->isAnon()) {
@@ -418,7 +430,7 @@ class AbuseFilter {
 				break;
 		}
 		
-		return true;
+		return $display;
 	}
 	
 	public static function isThrottled( $throttleId, $types, $title, $rateCount, $ratePeriod ) {
@@ -496,81 +508,80 @@ class AbuseFilter {
 		global $wgAbuseFilterConditionLimit,$wgMemc;
 		
 		$blocking_filters = array_keys( array_filter( $filters ) );
-		
+
+		// Figure out if we've triggered overflows and blocks.
 		$overflow_triggered = (self::$condCount > $wgAbuseFilterConditionLimit);
-		$filter_triggered = count($blocking_filters);
-		
+		$filter_triggered = count( $blocking_filters ) > 0;
+
+		// Store some keys...
 		$overflow_key = self::filterLimitReachedKey();
-		
 		$total_key = self::filterUsedKey();
+		
 		$total = $wgMemc->get( $total_key );
 
-		$storage_period = self::$statsStoragePeriod; // One day.
+		$storage_period = self::$statsStoragePeriod;
 		
 		if (!$total || $total > 1000) {
-			$wgMemc->set( $total_key, 1, $storage_period );
-			
-			if ($overflow_triggered) {
-				$wgMemc->set( $overflow_key, 1, $storage_period );
-			} else {
-				$wgMemc->set( $overflow_key, 0, $storage_period );
-			}
-			
-			$anyMatch = false;
-			
+			// This is for if the total doesn't exist, or has gone past 1000.
+			//  Recreate all the keys at the same time, so they expire together.
+			$wgMemc->set( $total_key, 0, $storage_period );
+			$wgMemc->set( $overflow_key, 0, $storage_period );
+
 			foreach( $filters as $filter => $matched ) {
-				$filter_key = self::filterMatchesKey( $filter );
-				if ($matched) {
-					$anyMatch = true;
-					$wgMemc->set( $filter_key, 1, $storage_period );
-				} else {
-					$wgMemc->set( $filter_key, 0, $storage_period );
-				}
+				$wgMemc->set( self::filterMatchesKey( $filter ), 0, $storage_period );
 			}
-			
-			if ($anyMatch) {
-				$wgMemc->set( self::filterMatchesKey(), 1, $storage_period );
-			} else {
-				$wgMemc->set( self::filterMatchesKey(), 0, $storage_period );
-			}
+			$wgMemc->set( self::filterMatchesKey(), 0, $storage_period );
 			
 			return;
 		}
-		
+
+		// Increment total
 		$wgMemc->incr( $total_key );
-		
+
+		// Increment overflow counter, if our condition limit overflowed
 		if ($overflow_triggered) {
 			$wgMemc->incr( $overflow_key );
 		}
-		
-		$anyMatch = false;
-		
-		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount, $wgAbuseFilterEmergencyDisableAge;
-		
+
+		self::checkEmergencyDisable( $filters );
+
+		// Increment trigger counter
+		if ($filter_triggered) {
+			$wgMemc->incr( self::filterMatchesKey() );
+		}
+
+		$dbw = wfGetDB( DB_MASTER );
+
+		// Update hit-counter.
+		$dbw->update( 'abuse_filter', array( 'af_hit_count=af_hit_count+1' ), array( 'af_id' => array_keys( array_filter( $filters ) ) ), __METHOD__ );
+	}
+
+	public static function checkEmergencyDisable( $filters ) {
+		global $wgAbuseFilterEmergencyDisableThreshold, $wgAbuseFilterEmergencyDisableCount, $wgAbuseFilterEmergencyDisableAge, $wgMemc;
+
 		foreach( $filters as $filter => $matched ) {
 			if ($matched) {
-				$anyMatch = true;
-				$match_count = $wgMemc->get( self::filterMatchesKey( $filter ) );
-				
-				if ($match_count > 0) {
-					$wgMemc->incr( self::filterMatchesKey( $filter ) );
-				} else {
+				// Increment counter
+				$matchCount = $wgMemc->get( self::filterMatchesKey( $filter ) );
+
+				// Handle missing keys...
+				if (!$matchCount) {
 					$wgMemc->set( self::filterMatchesKey( $filter ), 1, self::$statsStoragePeriod );
+				} else {
+					$wgMemc->incr( self::filterMatchesKey( $filter ) );
 				}
-				
+				$matchCount++;
+			
+				// Figure out if the filter is subject to being deleted.
 				$filter_age = wfTimestamp( TS_UNIX, self::$filters[$filter]->af_timestamp );
 				$throttle_exempt_time = $filter_age + $wgAbuseFilterEmergencyDisableAge;
-				
-				if ($throttle_exempt_time > time() && $match_count > $wgAbuseFilterEmergencyDisableCount && ($match_count / $total) > $wgAbuseFilterEmergencyDisableThreshold) {
-					// More than X matches, constituting more than Y% of last Z edits. Disable it.
+
+				if ($throttle_exempt_time > time() && $matchCount > $wgAbuseFilterEmergencyDisableCount && ($matchCount / $total) > $wgAbuseFilterEmergencyDisableThreshold) {
+					// More than $wgAbuseFilterEmergencyDisableCount matches, constituting more than $wgAbuseFilterEmergencyDisableThreshold (a fraction) of last few edits. Disable it.
 					$dbw = wfGetDB( DB_MASTER );
 					$dbw->update( 'abuse_filter', array( 'af_enabled' => 0, 'af_throttled' => 1 ), array( 'af_id' => $filter ), __METHOD__ );
 				}
 			}
-		}
-		
-		if ($anyMatch) {
-			$wgMemc->incr( self::filterMatchesKey() );
 		}
 	}
 	
