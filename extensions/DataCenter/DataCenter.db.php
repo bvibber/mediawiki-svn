@@ -1540,12 +1540,58 @@ class DataCenterDBComponent extends DataCenterDBRow {
 		);
 	}
 
+	public function saveMetaValues(
+		$values = null
+	) {
+		if ( !is_array( $values ) ) {
+			return;
+		}
+		$metaValues = $this->getMetaValues();
+		$metaValuesTable = array();
+		foreach ( $metaValues as $metaValue ) {
+			$metaValuesTable[$metaValue->get( 'field' )] = $metaValue;
+		}
+		foreach ( $values as $field => $value ) {
+			if ( isset( $metaValuesTable[$field] ) ) {
+				$metaValue = DataCenterDBMetaValue::newFromComponent(
+					$this,
+					array(
+						'id' => $metaValuesTable[$field]->getId(),
+						'value' => $value
+					)
+				);
+				if ( $value !== '' ) {
+					$metaValue->update();
+				} else {
+					$metaValue->delete();
+				}
+			} else {
+				if ( $value !== '' ) {
+					$metaValue = DataCenterDBMetaValue::newFromComponent(
+						$this, array( 'field' => $field, 'value' => $value )
+					);
+					$metaValue->insert();
+				}
+			}
+		}
+	}
+
+	public function saveChange(
+		$values
+	) {
+		if ( !is_array( $values ) ) {
+			return;
+		}
+		$change = DataCenterDBChange::newFromComponent( $this, $values );
+		$change->save();
+	}
+
 	/**
 	 * Gets meta fields linked to this component
 	 */
 	public function getMetaFields() {
 		return DataCenterDB::getRows(
-			'DataCenterDBMeta',
+			'DataCenterDBMetaField',
 			'link',
 			'field',
 			array_merge_recursive(
@@ -1556,8 +1602,9 @@ class DataCenterDBComponent extends DataCenterDBRow {
 					'link', 'field', 'component_type', $this->type
 				),
 				DataCenterDB::buildJoin(
-					'meta', 'field', 'name', 'id',
-					'link', 'field', 'name', 'field'
+					'meta', 'field','id',
+					'link', 'field','field',
+					array( 'name', 'format' )
 				)
 			)
 		);
@@ -1568,7 +1615,7 @@ class DataCenterDBComponent extends DataCenterDBRow {
 	 */
 	public function getMetaValues() {
 		return DataCenterDB::getRows(
-			'DataCenterDBMeta',
+			'DataCenterDBMetaValue',
 			'meta',
 			'value',
 			array_merge_recursive(
@@ -1584,7 +1631,7 @@ class DataCenterDBComponent extends DataCenterDBRow {
 				DataCenterDB::buildJoin(
 					'meta', 'field', 'id',
 					'meta', 'value', 'field',
-					array( 'name' )
+					array( 'name', 'format' )
 				)
 			)
 		);
@@ -1839,7 +1886,7 @@ class DataCenterDBModelLink extends DataCenterDBLink  {
 
 class DataCenterDBMetaFieldLink extends DataCenterDBLink {
 
-	/* Functions */
+	/* Static Functions */
 
 	/**
 	 * Wraps DataCenterDBRow::newFromClass specializing...
@@ -1858,7 +1905,7 @@ class DataCenterDBMetaFieldLink extends DataCenterDBLink {
 
 class DataCenterDBLocation extends DataCenterDBComponent {
 
-	/* Functions */
+	/* Static Functions */
 
 	/**
 	 * Wraps DataCenterDBRow::newFromClass specializing...
@@ -1873,6 +1920,8 @@ class DataCenterDBLocation extends DataCenterDBComponent {
 			__CLASS__, 'facility', 'location', $values
 		);
 	}
+
+	/* Functions */
 
 	public function getSpaces(
 		array $options = array()
@@ -1893,7 +1942,7 @@ class DataCenterDBLocation extends DataCenterDBComponent {
 
 class DataCenterDBSpace extends DataCenterDBComponent {
 
-	/* Functions */
+	/* Static Functions */
 
 	/**
 	 * Wraps DataCenterDBRow::newFromClass specializing...
@@ -1932,7 +1981,7 @@ class DataCenterDBSpace extends DataCenterDBComponent {
 
 class DataCenterDBMetaField extends DataCenterDBRow  {
 
-	/* Functions */
+	/* Static Functions */
 
 	/**
 	 * Wraps DataCenterDBRow::newFromClass specializing...
@@ -1949,7 +1998,7 @@ class DataCenterDBMetaField extends DataCenterDBRow  {
 
 class DataCenterDBMetaValue extends DataCenterDBRow  {
 
-	/* Functions */
+	/* Static Functions */
 
 	/**
 	 * Wraps DataCenterDBRow::newFromClass specializing...
@@ -1962,11 +2011,33 @@ class DataCenterDBMetaValue extends DataCenterDBRow  {
 	) {
 		return parent::newFromClass( __CLASS__, 'meta', 'value', $values );
 	}
+
+	/**
+	 * Creates new meta value from object
+	 * @param	component		DataCenterDBComponent to create change for
+	 * @param	values			Array of fields and values for an instance
+	 * 							of DataCenterDBMetaValue
+	 */
+	public static function newFromComponent(
+		DataCenterDBComponent $component,
+		array $values = array()
+	) {
+		return self::newFromValues(
+			array_merge(
+				$values,
+				array(
+					'component_category' => $component->getCategory(),
+					'component_type' => $component->getType(),
+					'component_id' => $component->getId(),
+				)
+			)
+		);
+	}
 }
 
 class DataCenterDBChange extends DataCenterDBRow  {
 
-	/* Functions */
+	/* Static Functions */
 
 	/**
 	 * Wraps DataCenterDBRow::newFromClass specializing...
@@ -1981,36 +2052,27 @@ class DataCenterDBChange extends DataCenterDBRow  {
 	}
 
 	/**
-	 * Logs change to this object
-	 * @param	type			String of type of change being performed
-	 * @param	note			String of note to attach to change
+	 * Creates new change from object
+	 * @param	component		DataCenterDBComponent to create change for
+	 * @param	values			Array of fields and values for an instance
+	 * 							of DataCenterDBChange
 	 */
 	public static function newFromComponent(
 		DataCenterDBComponent $component,
-		$type = null,
-		$note = null
+		array $values = array()
 	) {
 		global $wgUser;
-		if ( $type !== null && !is_string( $type ) ) {
-			throw new MWException(
-				$type . ' is not a valid type of change'
-			);
-		}
-		if ( $note !== null && !is_string( $note ) ) {
-			throw new MWException(
-				$type . ' is not a valid change note'
-			);
-		}
 		return self::newFromValues(
-			array(
-				'timestamp' => wfTimestampNow(),
-				'user' => $wgUser->getId(),
-				'type' => $type,
-				'component_category' => $component->getCategory(),
-				'component_type' => $component->getType(),
-				'component_id' => $component->getId(),
-				'note' => $note,
-				'state' => serialize( $component->get() ),
+			array_merge(
+				$values,
+				array(
+					'timestamp' => wfTimestampNow(),
+					'user' => $wgUser->getId(),
+					'component_category' => $component->getCategory(),
+					'component_type' => $component->getType(),
+					'component_id' => $component->getId(),
+					'state' => serialize( $component->get() ),
+				)
 			)
 		);
 	}

@@ -82,6 +82,16 @@ class DataCenterWidgetForm extends DataCenterWidget {
 		 * @datatype	array
 		 */
 		'hidden' => array(),
+		/**
+		 * Whether to display meta fields as well
+		 * @datatype	boolean
+		 */
+		'meta' => true,
+		/**
+		 * Name of type of transaction being processed used when logging changes
+		 * @datatype	string
+		 */
+		'type' => null,
 	);
 
 	private static $defaultAttributes = array(
@@ -123,6 +133,24 @@ class DataCenterWidgetForm extends DataCenterWidget {
 			'align' => 'right',
 			'colspan' => 2
 		),
+		/**
+		 * Default XML attributes for data row
+		 */
+		'row' => array(
+			'class' => 'row',
+		),
+		/**
+		 * Default XML attributes for meta row
+		 */
+		'meta' => array(
+			'class' => 'meta',
+		),
+		/**
+		 * Default XML attributes for change row
+		 */
+		'change' => array(
+			'class' => 'change',
+		),
 	);
 
 	/* Functions */
@@ -160,7 +188,9 @@ class DataCenterWidgetForm extends DataCenterWidget {
 		// Loops over each field
 		foreach ( $parameters['fields'] as $label => $options ) {
 			// Begins row
-			$xmlOutput .= DataCenterXml::open( 'tr' );
+			$xmlOutput .= DataCenterXml::open(
+				'tr', self::$defaultAttributes['row']
+			);
 			// Checks if the key is a numeric index
 			if ( is_int( $label ) ) {
 				// Adds an empty cell
@@ -213,7 +243,7 @@ class DataCenterWidgetForm extends DataCenterWidget {
 						"field_{$options['type']}_{$count[$options['type']]}";
 					// Sets name of input for form processing
 					$inputOptions['name'] =
-						"{$parameters['do']}[{$inputOptions['field']}]";
+						"row[{$inputOptions['field']}]";
 				} else {
 					// Checks if a specific field was given
 					if ( isset( $inputOptions['field'] ) ) {
@@ -228,8 +258,7 @@ class DataCenterWidgetForm extends DataCenterWidget {
 						$inputOptions['id'] =
 							"field_{$inputOptions['field']}";
 						// Sets name of input for form processing
-						$inputOptions['name'] =
-							"{$parameters['do']}[{$inputOptions['field']}]";
+						$inputOptions['name'] = "row[{$inputOptions['field']}]";
 					// Alternatively checks if a list of fields were given
 					} else if ( isset( $inputOptions['fields'] ) ) {
 						// Loops over each sub-field
@@ -259,7 +288,7 @@ class DataCenterWidgetForm extends DataCenterWidget {
 								"field_{$fieldName}";
 							// Sets the name of the field
 							$inputOptions['fields'][$key]['name'] =
-								"{$parameters['do']}[{$fieldName}]";
+								"row[{$fieldName}]";
 						}
 					}
 				}
@@ -279,6 +308,75 @@ class DataCenterWidgetForm extends DataCenterWidget {
 			);
 			// Ends field row
 			$xmlOutput .= DataCenterXml::close( 'tr' );
+		}
+		// Checks if row is a component
+		if (
+			$parameters['meta'] &&
+			$parameters['row'] instanceof DataCenterDBComponent
+		) {
+			// Adds meta fields
+			$metaFields = $parameters['row']->getMetaFields();
+			$metaValues = $parameters['row']->getMetaValues();
+			$valuesTable = DataCenterDB::buildLookupTable(
+				'field', $metaValues
+			);
+			foreach( $metaFields as $metaField ) {
+				$field = $metaField->get( 'field' );
+				$value = '';
+				if (
+					isset( $valuesTable[$field][0] ) &&
+					$valuesTable[$field][0] instanceof DataCenterDBMetaValue
+				) {
+					$value = $valuesTable[$field][0]->get( 'value' );
+				}
+				// Begins row
+				$xmlOutput .= DataCenterXml::open(
+					'tr', self::$defaultAttributes['meta']
+				);
+				// Adds label cell
+				$xmlOutput .= DataCenterXml::cell(
+					self::$defaultAttributes['label'],
+					$metaField->get( 'name' )
+				);
+				// Adds input cell
+				$xmlOutput .= DataCenterXml::cell(
+					self::$defaultAttributes['field'],
+					DataCenterUI::renderInput(
+						$metaField->get( 'format' ),
+						array(
+							'name' => 'meta[' . $field . ']',
+							'id' => 'meta_' . $field,
+							'value' => $value
+						)
+					)
+				);
+				// Ends field row
+				$xmlOutput .= DataCenterXml::close( 'tr' );
+			}
+			// Adds change comment field
+			$xmlOutput .= DataCenterXml::row(
+				self::$defaultAttributes['change'],
+				DataCenterXml::cell(
+					self::$defaultAttributes['label'],
+					DataCenterUI::message( 'field', 'change-summary' )
+				),
+				DataCenterXml::cell(
+					self::$defaultAttributes['field'],
+					DataCenterUI::renderInput(
+						'string',
+						array( 'name' => 'change[note]', 'id' => 'change_note' )
+					)
+				)
+			);
+			// Adds type of edit field
+			$xmlOutput .= DataCenterXml::tag(
+				'input',
+				array(
+					'type' => 'hidden',
+					'name' => 'change[type]',
+					'value' => $parameters['type']
+				)
+			);
 		}
 		// Adds cancel and submit button
 		$xmlOutput .= DataCenterXML::row(
@@ -363,7 +461,7 @@ class DataCenterWidgetForm extends DataCenterWidget {
 					'input',
 					array(
 						'type' => 'hidden',
-						'name' => "{$parameters['do']}[{$value}]",
+						'name' => "row[{$value}]",
 						'value' => $parameters['row']->get( $value )
 					)
 				);
@@ -373,7 +471,7 @@ class DataCenterWidgetForm extends DataCenterWidget {
 					'input',
 					array(
 						'type' => 'hidden',
-						'name' => "{$parameters['do']}[{$key}]",
+						'name' => "row[{$key}]",
 						'value' => $value
 					)
 				);

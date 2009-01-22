@@ -99,12 +99,12 @@ class DataCenterPage extends SpecialPage {
 		'assets' => array(
 			'controller' => 'DataCenterControllerAssets',
 			'view' => 'DataCenterViewAssets',
-			'default' => 'rack'
+			'default' => 'object'
 		),
 		'models' => array(
 			'controller' => 'DataCenterControllerModels',
 			'view' => 'DataCenterViewModels',
-			'default' => 'rack'
+			'default' => 'object'
 		),
 		'history' => array(
 			'controller' => 'DataCenterControllerHistory',
@@ -291,8 +291,12 @@ class DataCenterPage extends SpecialPage {
 									$wgRequest->getText( 'cancellation' )
 								);
 							} else {
-								// Gets submitted data relevant to do
-								$data = $wgRequest->getArray( $do );
+								// Gets submitted data
+								$data = array(
+									'row' => $wgRequest->getArray( 'row' ),
+									'meta' => $wgRequest->getArray( 'meta' ),
+									'change' => $wgRequest->getArray( 'change' )
+								);
 								// Delegates handling of form submissions
 								$status = $controller->$do(
 									$data, $path['type']

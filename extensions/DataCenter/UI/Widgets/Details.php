@@ -110,19 +110,20 @@ class DataCenterWidgetDetails extends DataCenterWidget {
 		}
 		if (
 			$parameters['meta'] &&
-			$parameters['row'] instanceof DataCenterAsset
+			$parameters['row'] instanceof DataCenterDBComponent
 		) {
 			$values = $parameters['row']->getMetaValues();
 			foreach ( $values as $value ) {
 				// Adds row
 				$xmlOutput .= DataCenterXml::row(
 					DataCenterXml::cell(
-						array( 'class' => 'label' ),
-						$value->get( 'name' )
+						array( 'class' => 'label' ), $value->get( 'name' )
 					),
 					DataCenterXml::cell(
 						array( 'class' => 'value' ),
-						$value->get( 'value' )
+						DataCenterUI::format(
+							$value->get( 'value' ), $value->get( 'format' )
+						)
 					)
 				);
 			}

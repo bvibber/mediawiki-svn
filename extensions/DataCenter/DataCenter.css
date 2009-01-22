@@ -3,13 +3,6 @@
 div.datacenter-ui {
 	min-width: 720px;
 }
-.datacenter-ui form {
-	margin: 0px;
-	padding: 0px;	
-}
-.datacenter-ui form input.cancel {
-	margin-right: 10px;
-}
 div.datacenter-ui div.menu {
 	height: 22px;
 	border-bottom: solid 1px silver;
@@ -90,6 +83,36 @@ div.datacenter-ui div.toolbar div.action-current {
 	border-bottom: solid 1px white;
 	padding-left: 6px;
 	padding-right: 6px;
+}
+
+/*
+ * Form Widget
+ */
+ 
+.datacenter-ui div.widget-form {
+	border: solid 1px silver;
+}
+.datacenter-ui div.widget-form form {
+	margin: 0px;
+	padding: 0px;
+}
+.datacenter-ui div.widget-form input.cancel {
+	margin-right: 10px;
+}
+div.datacenter-ui div.widget-form tr td {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+div.datacenter-ui div.widget-form tr.row {
+	background-color: #FFFFFF;
+}
+div.datacenter-ui div.widget-form tr.meta {
+	background-color: #FFEEDD;
+}
+div.datacenter-ui div.widget-form tr.change {
+	background-color: #DDEEFF;
 }
 
 /**
@@ -295,9 +318,18 @@ div.datacenter-ui div.input-tense input.button {
 div.datacenter-ui div.input-tense label.label {
 	margin-right: 5px;
 }
-
 div.datacenter-ui div.input-tense label.disabled {
 	color: silver;
+}
+
+/**
+ * Boolean Widget
+ */
+div.datacenter-ui div.input-boolean input.button {
+	margin-right: 5px;
+}
+div.datacenter-ui div.input-boolean label.label {
+	margin-right: 5px;
 }
 
 /**

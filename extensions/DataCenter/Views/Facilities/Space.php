@@ -230,6 +230,7 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 					'action' => 'view',
 					'id' => $path['parameter'][1],
 				),
+				'type' => 'add',
 			);
 			$headingParameters = array(
 				'message' => 'adding-type',
@@ -248,6 +249,7 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 					'action' => 'view',
 					'id' => $path['id'],
 				),
+				'type' => 'edit',
 			);
 			$headingParameters = array(
 				'message' => 'editing-type',

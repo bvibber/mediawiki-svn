@@ -498,6 +498,7 @@ class DataCenterViewModels extends DataCenterView {
 					'page' => 'models',
 					'type' => $path['type']
 				),
+				'type' => 'create',
 			);
 			$headingParameters = array(
 				'message' => 'creating-model-type',
@@ -516,6 +517,7 @@ class DataCenterViewModels extends DataCenterView {
 					'action' => 'view',
 					'id' => $path['id'],
 				),
+				'type' => 'modify',
 			);
 			$headingParameters = array(
 				'message' => 'modifying-model-type',

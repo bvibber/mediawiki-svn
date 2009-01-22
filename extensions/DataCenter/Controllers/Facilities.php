@@ -49,16 +49,16 @@ class DataCenterControllerFacilities extends DataCenterController {
 	) {
 		switch ( $type ) {
 			case 'location':
-				$component = DataCenterDBLocation::newFromValues( $data );
+				$component = DataCenterDBLocation::newFromValues( $data['row'] );
 				break;
 			case 'space':
-				$component = DataCenterDBSpace::newFromValues( $data );
+				$component = DataCenterDBSpace::newFromValues( $data['row'] );
 				break;
 		}
 		if ( isset( $component ) ) {
 			$component->save();
-			$change = DataCenterDBChange::newFromComponent( $component );
-			$change->save();
+			$component->saveMetaValues( $data['meta'] );
+			$component->saveChange( $data['change'] );
 			return true;
 		}
 		return false;

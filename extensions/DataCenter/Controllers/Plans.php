@@ -94,7 +94,7 @@ class DataCenterControllerPlans extends DataCenterController {
 	) {
 		switch ( $type ) {
 			case 'plan':
-				$plan = DataCenterDBPlan::newFromValues( $data );
+				$plan = DataCenterDBPlan::newFromValues( $data['row'] );
 				foreach ( $plan->getLinks() as $childLink ) {
 					$childLink->delete();
 				}
@@ -102,7 +102,7 @@ class DataCenterControllerPlans extends DataCenterController {
 				return true;
 			case 'rack':
 			case 'object':
-				$link = DataCenterDBAssetLink::newFromValues( $data );
+				$link = DataCenterDBAssetLink::newFromValues( $data['row'] );
 				foreach ( $link->getLinks() as $childLink ) {
 					$childLink->delete();
 				}
@@ -118,12 +118,12 @@ class DataCenterControllerPlans extends DataCenterController {
 	) {
 		switch ( $type ) {
 			case 'plan':
-				$plan = DataCenterDBPlan::newFromValues( $data );
+				$plan = DataCenterDBPlan::newFromValues( $data['row'] );
 				$plan->save();
 				return true;
 			case 'rack':
 			case 'object':
-				$link = DataCenterDBAssetLink::newFromValues( $data );
+				$link = DataCenterDBAssetLink::newFromValues( $data['row'] );
 				$link->save();
 				return true;
 		}

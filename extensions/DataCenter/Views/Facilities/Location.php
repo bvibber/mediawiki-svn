@@ -99,6 +99,8 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 		}
 		// Gets location from database
 		$location = DataCenterDB::getLocation( $path['id'] );
+		// Gets meta values
+		$metaValues = $location->getMetaValues();
 		// Gets spaces in location from database
 		$spaces = $location->getSpaces(
 			DataCenterDB::buildSort( 'facility', 'space', 'name' )
@@ -204,6 +206,7 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 					'page' => 'facilities',
 					'type' => 'location'
 				),
+				'type' => 'add',
 			);
 			$headingParameters = array(
 				'message' => 'adding-type',
@@ -222,6 +225,7 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 					'action' => 'view',
 					'id' => $path['id'],
 				),
+				'type' => 'edit',
 			);
 			$headingParameters = array(
 				'message' => 'editing-type',

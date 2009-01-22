@@ -508,7 +508,8 @@ INSERT INTO dc_meta_fields
     VALUES
         ( 'WikiMedia Owned', 'boolean' ),
         ( 'Extra Notes', 'text' ),
-        ( 'Weight (LBS)', 'number' );
+        ( 'Weight (LBS)', 'number' ),
+        ( 'Assigned User', 'string' );
 -- 
 INSERT INTO dc_meta_values
     (
@@ -574,5 +575,6 @@ INSERT INTO dc_field_links
         ( 2, 'facility', 'space' ),
         ( 2, 'asset', 'rack' ),
         ( 2, 'asset', 'object' ),
-        ( 3, 'asset', 'object' );
+        ( 3, 'asset', 'object' ),
+        ( 4, 'asset', 'object' );
 -- 

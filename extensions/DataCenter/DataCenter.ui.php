@@ -841,6 +841,9 @@ class DataCenterUI {
 			case 'angle':
 				return self::message( 'label', 'degrees-value', $value * 90 );
 				break;
+			case 'boolean':
+				return self::message( 'option', $value ? 'true' : 'false' );
+				break;
 			default:
 				// Performs no formatting
 				return $value;

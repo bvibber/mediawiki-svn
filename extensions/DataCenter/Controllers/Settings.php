@@ -26,7 +26,7 @@ class DataCenterControllerSettings extends DataCenterController {
 		array $data,
 		$type
 	) {
-		$setting = DataCenterMeta::newFromValues( $type, $data );
+		$setting = DataCenterMeta::newFromValues( $type, $data['row'] );
 		return $setting->save();
 	}
 
@@ -34,7 +34,7 @@ class DataCenterControllerSettings extends DataCenterController {
 		array $data,
 		$type
 	) {
-		$setting = DataCenterMeta::newFromValues( $type, $data );
+		$setting = DataCenterMeta::newFromValues( $type, $data['row'] );
 		return $setting->save();
 	}
 }

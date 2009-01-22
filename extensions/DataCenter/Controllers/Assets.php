@@ -47,10 +47,10 @@ class DataCenterControllerAssets extends DataCenterController {
 		array $data,
 		$type
 	) {
-		$asset = DataCenterDBAsset::newFromType( $type, $data );
+		$asset = DataCenterDBAsset::newFromType( $type, $data['row'] );
 		$asset->save();
-		$change = DataCenterDBChange::newFromComponent( $asset );
-		$change->save();
+		$asset->saveMetaValues( $data['meta'] );
+		$asset->saveChange( $data['change'] );
 		return true;
 	}
 }

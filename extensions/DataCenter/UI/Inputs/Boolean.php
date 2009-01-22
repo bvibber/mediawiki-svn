@@ -37,19 +37,35 @@ class DataCenterInputBoolean extends DataCenterInput {
 		$parameters = array_merge( self::$defaultParameters, $parameters );
 		// Begins input
 		$xmlOutput = parent::begin( $parameters['class'] );
-		// Adds button
-		$xmlOutput .= DataCenterXml::tag(
-			'input',
-			array_merge(
-				array(
-					'type' => 'checkbox',
-					'id' => $parameters['id'],
-					'name' => $parameters['name'],
-					'class' => 'button',
-				),
-				( $parameters['value'] ? array( 'checked' => 'checked' ) : array() )
-			)
-		);
+		// Creates list of buttons
+		$buttons = array( 'true' => true, 'false' => false );
+		// Adds buttons
+		foreach ( $buttons as $button => $value ) {
+			$radioAttributes = array(
+				'type' => 'radio',
+				'id' => $parameters['id'] . '_' . $button,
+				'name' => $parameters['name'],
+				'value' => $value ? 1 : 0,
+				'class' => 'button',
+			);
+			$labelAttributes = array(
+				'for' => $parameters['id'] . '_' . $button,
+				'class' => 'label'
+			);
+			if (
+				( $parameters['value'] == ( $value ? 1 : 0 ) ) &&
+				( $parameters['value'] !== null ) &&
+				( $parameters['value'] !== '' )
+			) {
+				$radioAttributes['checked'] = 'checked';
+			}
+			$xmlOutput .= DataCenterXml::tag( 'input', $radioAttributes );
+			$xmlOutput .= DataCenterXml::tag(
+				'label',
+				$labelAttributes,
+				DataCenterUI::message( 'option', $button )
+			);
+		}
 		// Ends input
 		$xmlOutput .= parent::end();
 		// Returns XML

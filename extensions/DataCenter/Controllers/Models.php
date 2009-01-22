@@ -48,10 +48,10 @@ class DataCenterControllerModels extends DataCenterController {
 		array $data,
 		$type
 	) {
-		$model = DataCenterDBModel::newFromType( $type, $data );
+		$model = DataCenterDBModel::newFromType( $type, $data['row'] );
 		$model->save();
-		$change = DataCenterDBChange::newFromComponent( $model );
-		$change->save();
+		$model->saveMetaValues( $data['meta'] );
+		$model->saveChange( $data['change'] );
 		return true;
 	}
 
@@ -59,7 +59,7 @@ class DataCenterControllerModels extends DataCenterController {
 		array $data,
 		$type
 	) {
-		$link = DataCenterDBModelLink::newFromValues( $data );
+		$link = DataCenterDBModelLink::newFromValues( $data['row'] );
 		if ( $link->get( 'quantity' ) == 0 ) {
 			$link->delete();
 		} else {

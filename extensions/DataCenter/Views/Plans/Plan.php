@@ -71,57 +71,58 @@ class DataCenterViewPlansPlan extends DataCenterView {
 			$rack = $rackLink->getAsset();
 			$zoomOptions['zoom-from-rack'] = $rack->getId();
 		}
-		if ( $tables['rack'] ) {
-			// Builds table of racks
-			$racks = DataCenterUI::renderWidget(
-				'table',
-				array(
-					'rows' => $tables['rack'],
-					'fields' => array(
-						'name',
-						'manufacturer',
-						'model',
-					),
-					'link' => array(
-						'page' => 'plans',
-						'type' => 'rack',
-						'action' => 'view',
-						'id' => '#id'
-					),
-					'effects' => array(
-						array(
-							'event' => 'onmouseover',
-							'script' => DataCenterJs::chain(
-								array_merge(
-									$target,
-									array(
-										'setRackHighlight' => array(
-											'{asset_id}',
-											DataCenterJs::toScalar( true ),
-										)
-									)
-								),
-								false
-							),
-						),
-						array(
-							'event' => 'onmouseout',
-							'script' => DataCenterJs::chain(
-								array_merge(
-									$target,
-									array(
-										'clearRackHighlight' => array(
-											DataCenterJs::toScalar( true ),
-										)
-									)
-								),
-								false
-							),
-						),
-					),
-				)
-			);
+		if ( !isset( $tables['rack'] ) ) {
+			$tables['rack'] = array();
 		}
+		// Builds table of racks
+		$racks = DataCenterUI::renderWidget(
+			'table',
+			array(
+				'rows' => $tables['rack'],
+				'fields' => array(
+					'name',
+					'manufacturer',
+					'model',
+				),
+				'link' => array(
+					'page' => 'plans',
+					'type' => 'rack',
+					'action' => 'view',
+					'id' => '#id'
+				),
+				'effects' => array(
+					array(
+						'event' => 'onmouseover',
+						'script' => DataCenterJs::chain(
+							array_merge(
+								$target,
+								array(
+									'setRackHighlight' => array(
+										'{asset_id}',
+										DataCenterJs::toScalar( true ),
+									)
+								)
+							),
+							false
+						),
+					),
+					array(
+						'event' => 'onmouseout',
+						'script' => DataCenterJs::chain(
+							array_merge(
+								$target,
+								array(
+									'clearRackHighlight' => array(
+										DataCenterJs::toScalar( true ),
+									)
+								)
+							),
+							false
+						),
+					),
+				),
+			)
+		);
 		// Returns single columm layout with a table
 		return DataCenterUI::renderLayout(
 			'columns',
@@ -353,7 +354,9 @@ class DataCenterViewPlansPlan extends DataCenterView {
 									'fields' => array(
 										'tense' => array(
 											'type' => 'tense',
-											'disable' => array( 'past' )
+											'disable' => !$path['id'] ?
+												array( 'past' ) :
+												array()
 										),
 										'name' => array( 'type' => 'string' ),
 										'note' => array( 'type' => 'text' )

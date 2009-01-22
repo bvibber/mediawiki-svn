@@ -72,6 +72,8 @@ $messages['en'] = array(
 	'datacenter-ui-option-past' => 'Past',
 	'datacenter-ui-option-present' => 'Present',
 	'datacenter-ui-option-future' => 'Future',
+	'datacenter-ui-option-true' => 'True',
+	'datacenter-ui-option-false' => 'False',
 	// Errors
 	'datacenter-ui-error-insufficient-data' => 'You have provided insufficient data',
 	'datacenter-ui-error-invalid-data' => 'You have provided invalid data',
@@ -126,6 +128,7 @@ $messages['en'] = array(
 	'datacenter-ui-field-form-factor' => 'Form Factor',
 	'datacenter-ui-field-manufacturer' => 'Manufacturer',
 	'datacenter-ui-field-tense' => 'Tense',
+	'datacenter-ui-field-change-summary' => 'Change Summary',
 	// Label
 	'datacenter-ui-label-cancel' => 'Cancel',
 	'datacenter-ui-label-remove' => 'Remove',
@@ -165,7 +168,7 @@ $messages['en'] = array(
 	'datacenter-ui-heading-editing-type' => 'Editing $1',
 	'datacenter-ui-heading-adding-type' => 'Adding $1',
 	'datacenter-ui-heading-assets-type' => '$1 Assets',
-	'datacenter-ui-heading-models-type' => '$1 Assets',
+	'datacenter-ui-heading-models-type' => '$1 Models',
 	'datacenter-ui-heading-deploying-asset-type' => 'Deploying $1 Asset',
 	'datacenter-ui-heading-managing-asset-type' => 'Managing $1 Asset',
 	'datacenter-ui-heading-model-type' => '$1 Model',

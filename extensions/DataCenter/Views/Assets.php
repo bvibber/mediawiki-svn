@@ -283,6 +283,7 @@ class DataCenterViewAssets extends DataCenterView {
 					'page' => 'assets',
 					'type' => $path['type'],
 				),
+				'type' => 'deploy',
 			);
 			$headingParameters = array(
 				'message' => 'deploying-asset-type',
@@ -303,6 +304,7 @@ class DataCenterViewAssets extends DataCenterView {
 					'action' => 'view',
 					'id' => $path['id'],
 				),
+				'type' => 'manage',
 			);
 			$headingParameters = array(
 				'message' => 'managing-asset-type',
