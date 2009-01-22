@@ -201,6 +201,15 @@ class DataCenterViewSettingsField extends DataCenterView {
 					'type' => 'field'
 				),
 			);
+			$rows = array(
+				DataCenterUI::renderWidget(
+					'heading',
+					array(
+						'message' => 'adding-type',
+						'type' => 'field',
+					)
+				),
+			);
 		} else {
 			// Gets component from database
 			$field = DataCenterDB::getMetaField( $path['id'] );
@@ -215,6 +224,22 @@ class DataCenterViewSettingsField extends DataCenterView {
 					'id' => $path['id'],
 				),
 			);
+			$rows = array(
+				DataCenterUI::renderWidget(
+					'heading',
+					array(
+						'message' => 'configuring-type',
+						'type' => 'field',
+					)
+				),
+				DataCenterUI::renderWidget(
+					'body',
+					array(
+						'message' => 'important-configuring-field',
+						'style' => 'important',
+					)
+				),
+			);
 		}
 		// Returns 2 columm layout with a form and a scene
 		return DataCenterUI::renderLayout(
@@ -222,46 +247,38 @@ class DataCenterViewSettingsField extends DataCenterView {
 			array(
 				DataCenterUI::renderLayout(
 					'rows',
-					array(
-						DataCenterUI::renderWidget(
-							'heading',
-							array(
-								'message' => 'configuring-type',
-								'type' => 'field',
-							)
-						),
-						DataCenterUI::renderWidget(
-							'body',
-							array(
-								'message' => 'important-configuring-field',
-								'style' => 'important',
-							)
-						),
-						DataCenterUI::renderWidget(
-							'form',
-							array_merge(
-								$formParameters,
-								array(
-									'do' => 'save',
-									'failure' => $path,
-									'action' => array(
-										'page' => 'settings', 'type' => 'field'
-									),
-									'row' => $field,
-									'fields' => array(
-										'name' => array( 'type' => 'string' ),
-										'format' => array(
-											'type' => 'list',
-											'enum' => array(
-												'category' => 'meta',
-												'type' => 'field',
-												'field' => 'format',
+					array_merge(
+						$rows,
+						array(
+							DataCenterUI::renderWidget(
+								'form',
+								array_merge(
+									$formParameters,
+									array(
+										'do' => 'save',
+										'failure' => $path,
+										'action' => array(
+											'page' => 'settings',
+											'type' => 'field'
+										),
+										'row' => $field,
+										'fields' => array(
+											'name' => array(
+												'type' => 'string'
+											),
+											'format' => array(
+												'type' => 'list',
+												'enum' => array(
+													'category' => 'meta',
+													'type' => 'field',
+													'field' => 'format',
+												),
 											),
 										),
-									),
+									)
 								)
-							)
-						),
+							),
+						)
 					)
 				),
 				'&nbsp;'
