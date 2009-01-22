@@ -161,13 +161,10 @@ class SpecialForm extends SpecialPage {
 
 		# On error, show the form again with some error text.
 
-		if ($missedFields) {
-			if (count($missedFields) > 1) {
-				$msg = wfMsg('formrequiredfieldpluralerror', $wgLang->listToText($missedFields));
-			} else {
-				$msg = wfMsg('formrequiredfielderror', $missedFields[0]);
-			}
-			$this->showForm($form, $msg);
+		$missedFieldsCount = count( $missedFields );
+		if ( $missedFieldsCount > 0 ) {
+			$msg = wfMsgExt( 'formrequiredfielderror', 'parsemag', $wgLang->listToText( $missedFields ), $missedFieldsCount );
+			$this->showForm( $form, $msg );
 			return;
 		}
 
