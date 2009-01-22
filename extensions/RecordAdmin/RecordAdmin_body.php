@@ -448,23 +448,25 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function expandMagic(&$parser, $type) {
 		$parser->mOutput->mCacheTime = -1;
-		$filter = array();
-		$title  = '';
-		$invert = false;
+		$filter  = array();
+		$title   = '';
+		$invert  = false;
 		$orderby = false;
+		$cols    = false;
 		foreach (func_get_args() as $arg) if (!is_object($arg)) {
 			if (preg_match("/^(.+?)\\s*=\\s*(.+)$/", $arg, $match)) {
 				list(, $k, $v) = $match;
 				if ($k == 'title') $title = $v;
-				elseif ($k == 'invert') $invert = $v;
+				elseif ($k == 'invert')  $invert  = $v;
 				elseif ($k == 'orderby') $orderby = $v;
+				elseif ($k == 'cols')    $cols    = preg_split('/\s*,\s*/', $v);
 				else $filter[$match[1]] = $match[2];
 			}
 		}
 		$this->preProcessForm($type);
 		$this->examineForm();
 		$records = $this->getRecords($type, $filter, $title, $invert);
-		$table = $this->renderRecords($records, $orderby, $cols = false);
+		$table = $this->renderRecords($records, $orderby, $cols);
 		return array(
 			$table,
 			'noparse' => true,
