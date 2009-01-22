@@ -201,6 +201,7 @@ $messages['en'] = array(
 	'datacenter-ui-body-notice-removing-field' => 'Removing this field will result in the removal of the following links and all data associated with them and cannot be recovered from. Do you want to continue with the removal?',
 	'datacenter-ui-body-important-configuring-field' => 'Changing the format of this field may cause related data to be interpreted incorectly, espcially when switching between textual, numeric and boolean formats.',
 	'datacenter-ui-body-important-welcome' => 'Welcome to the beta-testing of DataCenter. Please poke around and give feedback Trevor Parscal. If you are going to help out, take a look at the media wiki extension page for DataCenter which has a list of feature priorities.',
+	'datacenter-ui-body-important-settings' => 'These settings may affect the system in irreversable ways. Please be careful when making adjustments.',
 	'datacenter-ui-body-error-invalid-request' => 'You have requested a page with an invalid path.',
 	// Tabs
 	'datacenter-ui-tab-racks' => 'Racks',

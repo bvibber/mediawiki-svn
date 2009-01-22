@@ -13,6 +13,22 @@ class DataCenterViewSettings extends DataCenterView {
 	public function main(
 		$path
 	) {
-		return __CLASS__;
+		return DataCenterUI::renderLayout(
+			'columns',
+			array(
+				DataCenterUI::renderLayout(
+					'columns',
+					array(
+						DataCenterUI::renderWidget(
+							'body',
+							array(
+								'message' => 'important-settings',
+								'style' => 'important'
+							)
+						)
+					)
+				)
+			)
+		);
 	}
 }
