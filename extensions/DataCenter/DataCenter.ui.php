@@ -754,6 +754,7 @@ class DataCenterUI {
 		'body' => 'DataCenterWidgetBody',
 		'details' => 'DataCenterWidgetDetails',
 		'difference' => 'DataCenterWidgetDifference',
+		'fieldlinks' => 'DataCenterWidgetFieldLinks',
 		'form' => 'DataCenterWidgetForm',
 		'gallery' => 'DataCenterWidgetGallery',
 		'heading' => 'DataCenterWidgetHeading',
@@ -834,6 +835,9 @@ class DataCenterUI {
 				break;
 			case 'type':
 				return self::message( 'type', $value );
+				break;
+			case 'category':
+				return self::message( 'category', $value );
 				break;
 			case 'side':
 				return self::message( 'option', $value ? 'front' : 'back' );

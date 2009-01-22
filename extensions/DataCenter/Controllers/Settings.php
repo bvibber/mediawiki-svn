@@ -11,7 +11,7 @@ class DataCenterControllerSettings extends DataCenterController {
 	/* Members */
 
 	public $types = array(
-		'meta' => array( 'page' => 'settings', 'type' => 'meta' ),
+		'field' => array( 'page' => 'settings', 'type' => 'field' ),
 	);
 
 	/* Functions */
@@ -20,21 +20,63 @@ class DataCenterControllerSettings extends DataCenterController {
 		array $path
 	) {
 		// Actions
+		if ( $path['id'] && $path['type'] == 'field' ) {
+			$this->actions['remove'] = array(
+				'page' => 'settings',
+				'type' => $path['type'],
+				'action' => 'remove',
+				'id' => $path['id']
+			);
+			$this->actions['configure'] = array(
+				'page' => 'settings',
+				'type' => $path['type'],
+				'action' => 'configure',
+				'id' => $path['id']
+			);
+			$this->actions['view'] = array(
+				'page' => 'settings',
+				'type' => $path['type'],
+				'action' => 'view',
+				'id' => $path['id']
+			);
+		}
 	}
 
-	public function add(
+	public function save(
 		array $data,
 		$type
 	) {
-		$setting = DataCenterMeta::newFromValues( $type, $data['row'] );
-		return $setting->save();
+		switch ( $type ) {
+			case 'field':
+				$field = DataCenterDBMetaField::newFromValues( $data['row'] );
+				$field->save();
+				return true;
+		}
+		return false;
 	}
 
-	public function edit(
+	public function remove(
 		array $data,
 		$type
 	) {
-		$setting = DataCenterMeta::newFromValues( $type, $data['row'] );
-		return $setting->save();
+		switch ( $type ) {
+			case 'field':
+				$field = DataCenterDBMetaField::newFromValues( $data['row'] );
+				$values = $field->getValues();
+				foreach ( $values as $value ) {
+					$value->delete();
+				}
+				$field->delete();
+				return true;
+		}
+		return false;
+	}
+
+	public function saveFieldLinks(
+		array $data,
+		$type
+	) {
+		DataCenterWidgetFieldLinks::saveFieldLinks( $data );
+		return true;
 	}
 }

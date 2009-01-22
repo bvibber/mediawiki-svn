@@ -22,8 +22,8 @@ class DataCenterViewOverview extends DataCenterView {
 						DataCenterUI::renderWidget(
 							'body',
 							array(
-								'message' => 'welcome',
-								'type' => 'important'
+								'message' => 'important-welcome',
+								'style' => 'important'
 							)
 						)
 					)

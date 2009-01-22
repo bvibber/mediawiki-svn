@@ -85,6 +85,7 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, array(
 	'DataCenterWidgetBody' => $dir . 'UI/Widgets/Body.php',
 	'DataCenterWidgetDetails' => $dir . 'UI/Widgets/Details.php',
 	'DataCenterWidgetDifference' => $dir . 'UI/Widgets/Difference.php',
+	'DataCenterWidgetFieldLinks' => $dir . 'UI/Widgets/FieldLinks.php',
 	'DataCenterWidgetForm' => $dir . 'UI/Widgets/Form.php',
 	'DataCenterWidgetGallery' => $dir . 'UI/Widgets/Gallery.php',
 	'DataCenterWidgetHeading' => $dir . 'UI/Widgets/Heading.php',
@@ -101,7 +102,7 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, array(
 	'DataCenterViewPlansPlan' => $dir . 'Views/Plans/Plan.php',
 	'DataCenterViewPlansRack' => $dir . 'Views/Plans/Rack.php',
 	// Views/Settings/*
-	'DataCenterViewSettingsMeta' => $dir . 'Views/Settings/Meta.php',
+	'DataCenterViewSettingsField' => $dir . 'Views/Settings/Field.php',
 	// Views/*
 	'DataCenterViewAssets' => $dir . 'Views/Assets.php',
 	'DataCenterViewFacilities' => $dir . 'Views/Facilities.php',

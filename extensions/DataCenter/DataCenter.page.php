@@ -114,7 +114,7 @@ class DataCenterPage extends SpecialPage {
 			'controller' => 'DataCenterControllerSettings',
 			'view' => 'DataCenterViewSettings',
 			'types' => array(
-				'meta' => 'DataCenterViewSettingsMeta',
+				'field' => 'DataCenterViewSettingsField',
 			),
 			'default' => 'meta'
 		)
@@ -178,8 +178,14 @@ class DataCenterPage extends SpecialPage {
 	}
 
 	private static function loadState() {
-		// Load state from session
-		self::$state = $_SESSION['DATA_CENTER_STATE'];
+		// Checks if state information is in the session
+		if ( isset( $_SESSION['DATA_CENTER_STATE'] ) ) {
+			// Load state from session
+			self::$state = $_SESSION['DATA_CENTER_STATE'];
+		} else {
+			// Use fallbacks for expected values where possible
+			self::$state['private']['last-page'] = $_SERVER['PHP_SELF'];
+		}
 	}
 
 	private static function saveState() {
@@ -209,10 +215,6 @@ class DataCenterPage extends SpecialPage {
 	}
 
 	public static function getRefererPath() {
-		if ( !self::$state['private']['last-page'] ) {
-			// Use this page as a fallback
-			self::$state['private']['last-page'] = $_SERVER['PHP_SELF'];
-		}
 		return self::subToPath(
 			self::urlToSub( self::$state['private']['last-page'] )
 		);

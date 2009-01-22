@@ -114,22 +114,23 @@ class DataCenterWidgetForm extends DataCenterWidget {
 		 * Default XML attributes for label cell
 		 */
 		'label' => array(
+			'class' => 'label',
 			'align' => 'left',
 			'nowrap' => 'nowrap',
-			'class' => 'label'
 		),
 		/**
 		 * Default XML attributes for field cell
 		 */
 		'field' => array(
+			'class' => 'field',
 			'width' => '200',
 			'align' => 'left',
-			'class' => 'field'
 		),
 		/**
 		 * Default XML attributes for submit button cell
 		 */
-		'submit' => array(
+		'buttons' => array(
+			'class' => 'buttons',
 			'align' => 'right',
 			'colspan' => 2
 		),
@@ -174,9 +175,7 @@ class DataCenterWidgetForm extends DataCenterWidget {
 			),
 		);
 		// Begins form
-		$xmlOutput .= DataCenterXml::open(
-			'form', $formAttributes
-		);
+		$xmlOutput .= DataCenterXml::open( 'form', $formAttributes );
 		// Inserts content before fields
 		$xmlOutput .= $parameters['insert'];
 		// Begins table
@@ -381,7 +380,7 @@ class DataCenterWidgetForm extends DataCenterWidget {
 		// Adds cancel and submit button
 		$xmlOutput .= DataCenterXML::row(
 			DataCenterXml::cell(
-				self::$defaultAttributes['submit'],
+				self::$defaultAttributes['buttons'],
 				DataCenterXml::tag(
 					'input',
 					array(

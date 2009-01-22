@@ -32,6 +32,11 @@ class DataCenterWidgetBody extends DataCenterWidget {
 		 */
 		 'subject' => null,
 		/**
+		 * Name of type of component to inject as parameter for message
+		 * @datatype	string
+		 */
+		 'type' => null,
+		/**
 		 * Text to display
 		 * @datatype	string
 		 */
@@ -40,7 +45,7 @@ class DataCenterWidgetBody extends DataCenterWidget {
 		 * Style of box to display body in
 		 * @datatype	string
 		 */
-		 'type' => 'generic',
+		 'style' => 'generic',
 	);
 
 	/* Functions */
@@ -56,7 +61,7 @@ class DataCenterWidgetBody extends DataCenterWidget {
 		if (
 			// Required parameters
 			isset( $parameters['message'] ) &&
-			// Required types
+			// Required styles
 			is_scalar( $parameters['message'] ) &&
 			// Required values
 			( $parameters['message'] !== null )
@@ -70,6 +75,14 @@ class DataCenterWidgetBody extends DataCenterWidget {
 				$message = DataCenterUI::message(
 					'body', $parameters['message'], $parameters['subject']
 				);
+			// Checks if a type was given
+			} else if ( $parameters['type'] !== null ) {
+				// Uses type-based message
+				$message = DataCenterUI::message(
+					'body',
+					$parameters['message'],
+					DataCenterUI::message( 'type', $parameters['type'] )
+				);
 			} else {
 				// Uses plain message
 				$message = DataCenterUI::message(
@@ -78,21 +91,21 @@ class DataCenterWidgetBody extends DataCenterWidget {
 			}
 			// Returns body with message
 			$xmlOutput .= DataCenterXml::div(
-				array( 'class' => $parameters['type'] ),
+				array( 'class' => $parameters['style'] ),
 				DataCenterXml::div( $message )
 			);
 		// Checks if text was given
 		} else if (
 			// Required parameters
 			isset( $parameters['text'] ) &&
-			// Required types
+			// Required styles
 			is_scalar( $parameters['text'] ) &&
 			// Required values
 			( $parameters['text'] !== null )
 		) {
 			// Returns a body with text
 			$xmlOutput .= DataCenterXml::div(
-				array( 'class' => $parameters['type'] ),
+				array( 'class' => $parameters['style'] ),
 				DataCenterXml::div( $parameters['text'] )
 			);
 		}

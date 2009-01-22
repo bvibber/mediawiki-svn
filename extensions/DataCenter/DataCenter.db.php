@@ -1091,6 +1091,84 @@ abstract class DataCenterDB {
 		return self::numRows( 'meta', 'change', $options );
 	}
 
+	/**
+	 * Wraps self::getRows specializing...
+	 * - class as DataCenterDBMetaField
+	 * - category as meta
+	 * - type as field
+	 */
+	public static function getMetaFields(
+		array $options = array()
+	) {
+		return self::getRows(
+			'DataCenterDBMetaField', 'meta', 'field', $options
+		);
+	}
+
+	/**
+	 * Wraps self::getRow specializing...
+	 * - class as DataCenterDBMetaFieldLink
+	 * - category as meta
+	 * - type as field
+	 */
+	public static function getMetaField(
+		$id
+	) {
+		return self::getRow(
+			'DataCenterDBMetaField', 'meta', 'field', $id
+		);
+	}
+
+	/**
+	 * Wraps self::numRows specializing...
+	 * - category as meta
+	 * - type as field
+	 */
+	public static function numMetaFields(
+		array $options = array()
+	) {
+		return self::numRows( 'meta', 'field', $options );
+	}
+
+	/**
+	 * Wraps self::getRows specializing...
+	 * - class as DataCenterDBMetaValue
+	 * - category as meta
+	 * - type as value
+	 */
+	public static function getMetaValues(
+		array $options = array()
+	) {
+		return self::getRows(
+			'DataCenterDBMetaValue', 'meta', 'value', $options
+		);
+	}
+
+	/**
+	 * Wraps self::getRow specializing...
+	 * - class as DataCenterDBMetaValueLink
+	 * - category as meta
+	 * - type as value
+	 */
+	public static function getMetaValue(
+		$id
+	) {
+		return self::getRow(
+			'DataCenterDBMetaValue', 'meta', 'value', $id
+		);
+	}
+
+	/**
+	 * Wraps self::numRows specializing...
+	 * - category as meta
+	 * - type as value
+	 */
+	public static function numMetaValues(
+		array $options = array()
+	) {
+		return self::numRows( 'meta', 'value', $options );
+	}
+
 	/* Option Builders */
 
 	/**
@@ -1899,6 +1977,52 @@ class DataCenterDBMetaFieldLink extends DataCenterDBLink {
 	) {
 		return parent::newFromClass( __CLASS__, 'link', 'field', $values );
 	}
+
+	/* Functions */
+
+	public function getValues() {
+		return DataCenterDB::getMetaValues(
+			array_merge_recursive(
+				DataCenterDB::buildCondition(
+					'meta', 'value', 'field', $this->get( 'field' )
+				),
+				DataCenterDB::buildCondition(
+					'meta',
+					'value',
+					'component_category',
+					$this->get( 'component_category' )
+				),
+				DataCenterDB::buildCondition(
+					'meta',
+					'value',
+					'component_type',
+					$this->get( 'component_type' )
+				)
+			)
+		);
+	}
+
+	public function numValues() {
+		return DataCenterDB::numMetaValues(
+			array_merge_recursive(
+				DataCenterDB::buildCondition(
+					'meta', 'value', 'field', $this->get( 'field' )
+				),
+				DataCenterDB::buildCondition(
+					'meta',
+					'value',
+					'component_category',
+					$this->get( 'component_category' )
+				),
+				DataCenterDB::buildCondition(
+					'meta',
+					'value',
+					'component_type',
+					$this->get( 'component_type' )
+				)
+			)
+		);
+	}
 }
 
 /* Facility Rows */
@@ -1993,6 +2117,37 @@ class DataCenterDBMetaField extends DataCenterDBRow  {
 		array $values = array()
 	) {
 		return parent::newFromClass( __CLASS__, 'meta', 'field', $values );
+	}
+
+	/* Functions */
+
+	public function getLinks(
+		array $options = array()
+	) {
+		return DataCenterDB::getMetaFieldLinks(
+			array_merge_recursive(
+				$options,
+				DataCenterDB::buildCondition(
+					'link', 'field', 'field', $this->getId()
+				)
+			)
+		);
+	}
+
+	public function getValues() {
+		return DataCenterDB::getMetaValues(
+			DataCenterDB::buildCondition(
+				'meta', 'value', 'field', $this->getId()
+			)
+		);
+	}
+
+	public function numValues() {
+		return DataCenterDB::numMetaValues(
+			DataCenterDB::buildCondition(
+				'meta', 'value', 'field', $this->getId()
+			)
+		);
 	}
 }
 
