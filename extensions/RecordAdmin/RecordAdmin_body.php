@@ -250,6 +250,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			}
 		}
 		$dbr->freeResult( $res );
+		return $records;
 	}
 
 	/**
