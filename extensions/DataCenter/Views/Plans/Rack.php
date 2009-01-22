@@ -203,18 +203,41 @@ class DataCenterViewPlansRack extends DataCenterView {
 			$racks = array(
 				'local' => DataCenterDB::getAssets(
 					'rack',
-					DataCenterDB::buildCondition(
-						'asset', 'rack', 'location', $space->get( 'location' )
+					array_merge_recursive(
+						DataCenterDB::buildCondition(
+							'asset',
+							'rack',
+							'location',
+							$space->get( 'location' )
+						),
+						DataCenterDB::buildJoin(
+							'facility', 'location', 'id',
+							'asset', 'rack', 'location',
+							array(
+								'name' => 'location_name',
+								'region' => 'location_region',
+							)
+						)
 					)
 				),
 				'remote' => DataCenterDB::getAssets(
 					'rack',
-					DataCenterDB::buildCondition(
-						'asset',
-						'rack',
-						'location',
-						$space->get( 'location' ),
-						'!='
+					array_merge_recursive(
+						DataCenterDB::buildCondition(
+							'asset',
+							'rack',
+							'location',
+							$space->get( 'location' ),
+							'!='
+						),
+						DataCenterDB::buildJoin(
+							'facility', 'location', 'id',
+							'asset', 'rack', 'location',
+							array(
+								'name' => 'location_name',
+								'region' => 'location_region',
+							)
+						)
 					)
 				)
 			);
@@ -242,7 +265,13 @@ class DataCenterViewPlansRack extends DataCenterView {
 								'manufacturer',
 								'model' => array( 'field' => 'name' ),
 								'serial',
-								'asset'
+								'asset',
+								'location' => array(
+									'fields' => array(
+										'location_name', 'location_region'
+									),
+									'glue' => ' / ',
+								),
 							),
 							'link' => array(
 								'page' => 'plans',

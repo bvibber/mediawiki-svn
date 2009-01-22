@@ -165,6 +165,14 @@ class DataCenterViewPlansObject extends DataCenterView {
 							'model', 'object', 'id',
 							'asset', 'object', 'model',
 							array( 'name', 'manufacturer' )
+						),
+						DataCenterDB::buildJoin(
+							'facility', 'location', 'id',
+							'asset', 'object', 'location',
+							array(
+								'name' => 'location_name',
+								'region' => 'location_region',
+							)
 						)
 					)
 				),
@@ -183,6 +191,14 @@ class DataCenterViewPlansObject extends DataCenterView {
 							'model', 'object', 'id',
 							'asset', 'object', 'model',
 							array( 'name', 'manufacturer' )
+						),
+						DataCenterDB::buildJoin(
+							'facility', 'location', 'id',
+							'asset', 'object', 'location',
+							array(
+								'name' => 'location_name',
+								'region' => 'location_region',
+							)
 						)
 					)
 				),
@@ -206,7 +222,13 @@ class DataCenterViewPlansObject extends DataCenterView {
 								'manufacturer',
 								'model' => array( 'field' => 'name' ),
 								'serial',
-								'asset'
+								'asset',
+								'location' => array(
+									'fields' => array(
+										'location_name', 'location_region'
+									),
+									'glue' => ' / ',
+								),
 							),
 							'link' => array(
 								'page' => 'plans',
