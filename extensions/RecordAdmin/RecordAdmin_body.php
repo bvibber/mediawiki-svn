@@ -241,7 +241,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Table header
 		$table = "<table class='sortable recordadmin $type-record'>\n<tr>";
 		$th = array(
-			'title'   => "<th class='col0'>" . wfMsg( 'recordadmin-record', $type ) . "<br></th>",
+			'title'   => "<th class='col0'>" . wfMsg( 'recordadmin-title', $type ) . "<br></th>",
 			'actions' => "<th class='col1'>" . wfMsg( 'recordadmin-actions' ) . "<br></th>",
 			'created' => "<th class='col2'>" . wfMsg( 'recordadmin-created' ) . "<br></th>"
 		);
