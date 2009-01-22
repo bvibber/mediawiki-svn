@@ -4,6 +4,9 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 class AbuseFilterHooks {
 
+// So far, all of the error message out-params for these hooks accept HTML.
+// Hooray!
+
 	public static function onEditFilter($editor, $text, $section, &$error, $summary) {
 		// Load vars
 		$vars = array();
