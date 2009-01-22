@@ -514,6 +514,7 @@ abstract class DataCenterDB {
 		$tableName = self::getTableName( $category, $type );
 		$columnName = self::getColumnName( $category, $type, $field );
 		$dbr = wfGetDB( DB_SLAVE );
+		$tableName = $dbr->tablePrefix() . $tableName;
 		$res = $dbr->query(
 			"SHOW COLUMNS FROM {$tableName} LIKE '{$columnName}'",
 			__METHOD__
