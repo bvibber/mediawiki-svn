@@ -5,6 +5,7 @@
 class SpecialRecordAdmin extends SpecialPage {
 
 	var $form = '';
+	var $type = '';
 	var $types = array();
 	var $guid = '';
 
@@ -12,7 +13,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Name to use for creating a new record either via RecordAdmin or a public form
 		# todo: should add a hook here for custom default-naming
 		$this->guid = strftime( '%Y%m%d', time() ) . '-' . substr( strtoupper( uniqid() ), -5 );
-
+		wfLoadExtensionMessages ( 'RecordAdmin' );
 		SpecialPage::SpecialPage( 'RecordAdmin', 'recordadmin' );
 	}
 
@@ -21,9 +22,6 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function execute( $param ) {
 		global $wgOut, $wgRequest, $wgRecordAdminUseNamespaces;
-
-		wfLoadExtensionMessages ( 'RecordAdmin' );
-
 		$this->setHeaders();
 		$type     = $wgRequest->getText( 'wpType' ) or $type = $param;
 		$record   = $wgRequest->getText( 'wpRecord' );
@@ -128,53 +126,11 @@ class SpecialRecordAdmin extends SpecialPage {
 				$wgOut->addWikiText( "<br>\n== " . wfMsg( 'recordadmin-searchresult' ) . " ==\n" );
 
 				# Select records which use the template and exhibit a matching title and other fields
-				$records = $this->getRecords($type, $posted, $wpTitle, $invert);
+				$records = $this->getRecords( $type, $posted, $wpTitle, $invert );
 
-				# Render search results
-				if ( count( $records ) ) {
+				# Render resulting records
+				$wgOut->addHTML( $this->renderRecords($records) );
 
-					# Pass1, scan the records to find the create date of each and sort by that
-					$dbr  = &wfGetDB( DB_SLAVE );
-					$sorted = array();
-					foreach ( $records as $k => $r ) {
-						$t = $r[0];
-						$id = $t->getArticleID();
-						$r[1] = $k;
-						$tbl = $dbr->tableName( 'revision' );
-						$row = $dbr->selectRow(
-							$tbl,
-							'rev_timestamp',
-							"rev_page = $id",
-							__METHOD__,
-							array( 'ORDER BY' => 'rev_timestamp' )
-						);
-						$sorted[$row->rev_timestamp] = $r;
-					}
-					krsort( $sorted );
-
-					$table = "<table class='sortable recordadmin $type-record'>\n<tr>
-					          <th class='col1'>$type<br></th><th class='col2'>" . wfMsg( 'recordadmin-created' ) . "<br></th>";
-					foreach ( array_keys( $this->types ) as $k ) $table .= "<th class='col$k'>$k<br></th>";
-					$table .= "</tr>\n";
-					$stripe = '';
-					foreach ( $sorted as $ts => $r ) {
-						$ts = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $ts );
-						$t = $r[0];
-						$k = $r[1];
-						$stripe = $stripe ? '' : ' class="stripe"';
-						$table .= "<tr$stripe><td class='col1'>(<a href='" . $t->getLocalURL() . "'>" . wfMsg( 'recordadmin-viewlink' ) . "</a>)";
-						$table .= "(<a href='" . $title->getLocalURL( "wpType=$type&wpRecord=$k" ) . "'>" . wfMsg( 'recordadmin-editlink' ) . "</a>)</td>\n";
-						$table .= "<td class='col2'>$ts</td>\n";
-						$i = 0;
-						foreach ( array_keys( $this->types ) as $k ) {
-							$v = isset( $r[$k] ) ? $r[$k] : '&nbsp;';
-							$table .= "<td class='col$k'>$v</td>";
-						}
-						$table .= "</tr>\n";
-					}
-					$table .= "</table>\n";
-					$wgOut->addHTML( $table );
-				} else $wgOut->addWikiText( wfMsg( 'recordadmin-nomatch' ) . "\n" );
 			}
 		}
 
@@ -250,8 +206,74 @@ class SpecialRecordAdmin extends SpecialPage {
 				if ( $match ) $records[$t->getPrefixedText()] = $r;
 			}
 		}
+		
+		# Scan the records to find the create date of each and sort by that
+		$sorted = array();
+		foreach ( $records as $k => $r ) {
+			$t = $r[0];
+			$id = $t->getArticleID();
+			$r[1] = $k;
+			$tbl = $dbr->tableName( 'revision' );
+			$row = $dbr->selectRow(
+				$tbl,
+				'rev_timestamp',
+				"rev_page = $id",
+				__METHOD__,
+				array( 'ORDER BY' => 'rev_timestamp' )
+			);
+			$sorted[$row->rev_timestamp] = $r;
+		}
+		krsort( $sorted );
+
 		$dbr->freeResult( $res );
-		return $records;
+		return $sorted;
+	}
+
+	/**
+	 * Render a set of records returned by getRecords() as an HTML table
+	 */
+	function renderRecords($records, $orderby = false, $cols = false) {
+		if (count($records) < 1) return wfMsg( 'recordadmin-nomatch' );
+
+		$special = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$type = $this->type;
+
+		# Table header
+		$table = "<table class='sortable recordadmin $type-record'>\n<tr>";
+		$th = array(
+			'title'   => "<th class='col0'>$type<br></th>",
+			'actions' => "<th class='col1'>" . wfMsg( 'recordadmin-actions' ) . "<br></th>",
+			'created' => "<th class='col2'>" . wfMsg( 'recordadmin-created' ) . "<br></th>"
+		);
+		foreach ( array_keys($this->types) as $col ) $th[$col] = "<th class='col$col'>$col<br></th>";
+		foreach ( $cols ? $cols : array_keys($th) as $col ) $table .= $th[$col]."\n";
+		$table .= "</tr>\n";
+
+		$stripe = '';
+		foreach ( $records as $ts => $r ) {
+			$ts = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $ts );
+			$t = $r[0];
+			$u = $t->getLocalURL();
+			$col = $r[1];
+			$stripe = $stripe ? '' : ' class="stripe"';
+			$table .= "<tr$stripe>";
+			$row = array(
+				'title'   => "<td class='col0'><a href='$u'>".$t->getText()."</a></td>",
+				'actions' => "<td class='col1'>(<a href='$u'>" . wfMsg( 'recordadmin-viewlink' ) . "</a>)".
+				             "(<a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$col" ) . "'>" . wfMsg( 'recordadmin-editlink' ) . "</a>)</td>",
+				'created' => "<td class='col2'>$ts</td>\n"
+			);
+			foreach ( array_keys( $this->types ) as $col ) {
+				$v = isset( $r[$col] ) ? $r[$col] : '&nbsp;';
+				$row[$col] = "<td class='col$col'>$v</td>";
+			}
+			foreach ($cols ? $cols : array_keys($th) as $col) $table .= $row[$col]."\n";
+			
+			$table .= "</tr>\n";
+		}
+		$table .= "</table>\n";
+
+		return $table;
 	}
 
 	/**
@@ -260,6 +282,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * - extract only the content from between the form tags and remove any submit inputs
 	 */
 	function preProcessForm( $type ) {
+		$this->type = $type;
 		$title = Title::newFromText( $type, NS_FORM );
 		if ( $title->exists() ) {
 			$form = new Article( $title );
@@ -369,7 +392,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$depths = array();
 		$depth = 1;
 		$index = 0;
-		while ( preg_match( '/\\{\\{\\s*([#a-z0-9_]*)|\\}\\}/is', $content, $match, PREG_OFFSET_CAPTURE, $index ) ) {
+		while ( preg_match( "/\\{\\{\\s*([#a-z0-9_]*)|\\}\\}/is", $content, $match, PREG_OFFSET_CAPTURE, $index ) ) {
 			$index = $match[0][1] + 2;
 			if ( $match[0][0] == '}}' ) {
 				$brace =& $braces[$depths[$depth - 1]];
@@ -420,7 +443,39 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 	}
 
-	# If a record was created by a public form, make last 5 digits of ID available via a tag
+	/**
+	 * Render a record search in a parser-function
+	 */
+	function expandMagic(&$parser, $type) {
+		$parser->mOutput->mCacheTime = -1;
+		$filter = array();
+		$title  = '';
+		$invert = false;
+		$orderby = false;
+		foreach (func_get_args() as $arg) if (!is_object($arg)) {
+			if (preg_match("/^(.+?)\\s*=\\s*(.+)$/", $arg, $match)) {
+				list(, $k, $v) = $match;
+				if ($k == 'title') $title = $v;
+				elseif ($k == 'invert') $invert = $v;
+				elseif ($k == 'orderby') $orderby = $v;
+				else $filter[$match[1]] = $match[2];
+			}
+		}
+		$this->preProcessForm($type);
+		$this->examineForm();
+		$records = $this->getRecords($type, $filter, $title, $invert);
+		$table = $this->renderRecords($records, $orderby, $cols = false);
+		return array(
+			$table,
+			'noparse' => true,
+			'isHTML' => true
+		);
+		
+	}
+
+	/**
+	 * If a record was created by a public form, make last 5 digits of ID available via a tag
+	 */
 	function expandTag( $text, $argv, &$parser ) {
 		$parser->mOutput->mCacheTime = -1;
 		return $this->guid ? substr( $this->guid, -5 ) : '';

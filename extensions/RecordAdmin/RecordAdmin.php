@@ -21,11 +21,14 @@ $wgExtensionAliasesFiles['RecordAdmin']  = $dir . 'RecordAdmin.alias.php';
 $wgAutoloadClasses['SpecialRecordAdmin'] = $dir . 'RecordAdmin_body.php';
 $wgSpecialPages['RecordAdmin']           = 'SpecialRecordAdmin';
 $wgSpecialPageGroups['RecordAdmin']      = 'wiki';
+$wgRecordAdminMagic                      = 'recordtable';
+$wgRecordAdminTag                        = 'recordid';
 
 $wgGroupPermissions['sysop']['recordadmin'] = true;
 $wgAvailableRights[] = 'recordadmin';
 
 $wgExtensionFunctions[] = 'wfSetupRecordAdmin';
+$wgHooks['LanguageGetMagic'][] = 'wfRecordAdminLanguageGetMagic';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Record administration',
@@ -40,16 +43,28 @@ $wgExtensionCredits['specialpage'][] = array(
  * Called from $wgExtensionFunctions array when initialising extensions
  */
 function wfSetupRecordAdmin() {
-	global $wgSpecialRecordAdmin, $wgParser, $wgRequest;
+	global $wgSpecialRecordAdmin, $wgParser, $wgRequest, $wgRecordAdminTag, $wgRecordAdminMagic;
 
 	# Make a global singleton so methods are accessible as callbacks etc
 	$wgSpecialRecordAdmin = new SpecialRecordAdmin();
 
 	# Make recordID's of articles created with public forms available via recordid tag
-	$wgParser->setHook( 'recordid', array( $wgSpecialRecordAdmin, 'expandTag' ) );
+	$wgParser->setHook( $wgRecordAdminTag, array( $wgSpecialRecordAdmin, 'expandTag' ) );
+
+	# Add the parser-function
+	$wgParser->setFunctionHook( $wgRecordAdminMagic, array( $wgSpecialRecordAdmin, 'expandMagic' ) );
 
 	# Check if posting a public creation form
 	$title = Title::newFromText( $wgRequest->getText( 'title' ) );
 	if ( is_object( $title ) && $title->getNamespace() != NS_SPECIAL && $wgRequest->getText( 'wpType' ) && $wgRequest->getText( 'wpCreate' ) )
 		$wgSpecialRecordAdmin->createRecord();
+}
+
+/**
+ * Setup parser-function magic
+ */
+function wfRecordAdminLanguageGetMagic(&$magicWords, $langCode = 0) {
+	global $wgRecordAdminMagic;
+	$magicWords[$wgRecordAdminMagic] = array($langCode, $wgRecordAdminMagic);
+	return true;
 }
