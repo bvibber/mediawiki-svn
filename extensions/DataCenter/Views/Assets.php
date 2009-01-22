@@ -20,7 +20,6 @@ class DataCenterViewAssets extends DataCenterView {
 					'manufacturer',
 					'model' => array( 'field' => 'name' ),
 					'units',
-					'note',
 				),
 			),
 		),
@@ -35,7 +34,6 @@ class DataCenterViewAssets extends DataCenterView {
 					'units',
 					'depth',
 					'power',
-					'note',
 				),
 			),
 		),
@@ -329,7 +327,10 @@ class DataCenterViewAssets extends DataCenterView {
 				),
 				'row' => $asset,
 				'fields' => array(
-					'tense' => array( 'type' => 'tense' ),
+					'tense' => array(
+						'type' => 'tense',
+						'disable' => !$path['id'] ? array( 'past' ) : array(),
+					),
 					'location' => array(
 						'type' => 'list',
 						'rows' => $locations,
