@@ -128,29 +128,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$wgOut->addWikiText( "<br>\n== " . wfMsg( 'recordadmin-searchresult' ) . " ==\n" );
 
 				# Select records which use the template and exhibit a matching title and other fields
-				$records = array();
-				$dbr  = &wfGetDB( DB_SLAVE );
-				$tbl  = $dbr->tableName( 'templatelinks' );
-				$ty   = $dbr->addQuotes( $type );
-				$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
-				while ( $row = $dbr->fetchRow( $res ) ) {
-					$t = Title::newFromID( $row[0] );
-					if ( empty( $wpTitle ) || eregi( $wpTitle, $t->getPrefixedText() ) ) {
-						$a = new Article( $t );
-						$text = $a->getContent();
-						$match = true;
-						$r = array( $t );
-						foreach ( array_keys( $this->types ) as $k ) {
-							$v = isset( $posted[$k] ) ? ( $this->types[$k] == 'bool' ? 'yes' : $posted[$k] ) : '';
-							$i = preg_match( "|\s*\|\s*$k\s*=\s*(.*?)\s*(?=[\|\}])|si", $text, $m );
-							if ( $v && !( $i && eregi( $v, $m[1] ) ) ) $match = false;
-							$r[$k] = isset( $m[1] ) ? $m[1] : '';
-						}
-						if ( $invert ) $match = !$match;
-						if ( $match ) $records[$t->getPrefixedText()] = $r;
-					}
-				}
-				$dbr->freeResult( $res );
+				$records = $this->getRecords($type, $posted, $wpTitle, $invert);
 
 				# Render search results
 				if ( count( $records ) ) {
@@ -243,6 +221,35 @@ class SpecialRecordAdmin extends SpecialPage {
 				. '</tr></table></form>'
 			);
 		}
+	}
+
+	/**
+	 * Return an array of records given type and other criteria
+	 */
+	function getRecords($type, $posted, $wpTitle = '', $invert = false) {
+		$records = array();
+		$dbr  = &wfGetDB( DB_SLAVE );
+		$tbl  = $dbr->tableName( 'templatelinks' );
+		$ty   = $dbr->addQuotes( $type );
+		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
+		while ( $row = $dbr->fetchRow( $res ) ) {
+			$t = Title::newFromID( $row[0] );
+			if ( empty( $wpTitle ) || eregi( $wpTitle, $t->getPrefixedText() ) ) {
+				$a = new Article( $t );
+				$text = $a->getContent();
+				$match = true;
+				$r = array( $t );
+				foreach ( array_keys( $this->types ) as $k ) {
+					$v = isset( $posted[$k] ) ? ( $this->types[$k] == 'bool' ? 'yes' : $posted[$k] ) : '';
+					$i = preg_match( "|\s*\|\s*$k\s*=\s*(.*?)\s*(?=[\|\}])|si", $text, $m );
+					if ( $v && !( $i && eregi( $v, $m[1] ) ) ) $match = false;
+					$r[$k] = isset( $m[1] ) ? $m[1] : '';
+				}
+				if ( $invert ) $match = !$match;
+				if ( $match ) $records[$t->getPrefixedText()] = $r;
+			}
+		}
+		$dbr->freeResult( $res );
 	}
 
 	/**
