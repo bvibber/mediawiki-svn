@@ -66,7 +66,7 @@ class SpecialOpenID extends SpecialPage {
 		return 'http://xri.net/' . OpenIDXriBase($xri);
 	}
 
-	function OpenIDToUrl($openid) {
+	static function OpenIDToUrl($openid) {
 		/* ID is either an URL already or an i-name */
         if (Auth_Yadis_identifierScheme($openid) == 'XRI') {
 			return OpenIDXriToUrl($openid);
@@ -87,7 +87,7 @@ class SpecialOpenID extends SpecialPage {
 		}
 	}
 
-	function getUserUrl($user) {
+	static function getUserUrl($user) {
 		$openid_url = null;
 
 		if (isset($user) && $user->getId() != 0) {
