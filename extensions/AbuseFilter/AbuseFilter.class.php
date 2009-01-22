@@ -53,7 +53,8 @@ class AbuseFilter {
 		$vars[$prefix."_NAMESPACE"] = $title->getNamespace();
 		$vars[$prefix."_TEXT"] = $title->getText();
 		$vars[$prefix."_PREFIXEDTEXT"] = $title->getPrefixedText();
-		
+
+		// Use restrictions.
 		if ($title->mRestrictionsLoaded) {
 			// Don't bother if they're unloaded
 			foreach( $title->mRestrictions as $action => $rights ) {
@@ -62,7 +63,7 @@ class AbuseFilter {
 			}
 		}
 		
-		// Find last 5 authors
+		// Find last 5 authors, for testing.
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'revision', 'distinct rev_user_text', array('rev_page' => $title->getArticleId() ), __METHOD__, array( 'order by' => 'rev_timestamp desc', 'limit' => 10 ) );
 		$users = array();
@@ -115,7 +116,7 @@ class AbuseFilter {
 		return self::evaluateExpression( $expr );
 	}
 
-	public static function checkConditions( $conds, $vars ) {
+	public static function checkConditions( $conds, $vars, $ignoreError = true ) {
 		global $wgAbuseFilterParserClass;
 		
 		wfProfileIn( __METHOD__ );
@@ -128,6 +129,10 @@ class AbuseFilter {
 		} catch (Exception $excep) {
 			// Sigh.
 			$result = false;
+
+			if (!$ignoreError) {
+				throw $excep;
+			}
 		}
 		
 		wfProfileOut( __METHOD__ );
@@ -159,6 +164,8 @@ class AbuseFilter {
 				$newLog = $log_template;
 				$newLog['afl_filter'] = $row->af_id;
 				$newLog['afl_action'] = $vars['ACTION'];
+
+				if ($
 				$log_entries[] = $newLog;
 				
 				$doneActionsByFilter[$row->af_id] = array();
@@ -179,7 +186,7 @@ class AbuseFilter {
 		
 		// Retrieve the consequences.
 		$res = $dbr->select( 'abuse_filter_action', '*', array( 'afa_filter' => array_keys( $blocking_filters ) ), __METHOD__, array( "ORDER BY" => " (afa_consequence in ('throttle','warn'))-(afa_consequence in ('disallow')) desc" ) );
-		// We want throttles, warnings first, as they have a bit of a special treatment. We want disallow last.
+		// We want throttles, warnings first, as they have a bit of a special treatment. We want disallow last, so that it can be "eaten" by other actions.
 		
 		$actions_done = array();
 		$throttled_filters = array();
@@ -244,10 +251,9 @@ class AbuseFilter {
 	}
 	
 	public static function takeConsequenceAction( $action, $parameters, $title, $vars, &$display, &$continue, $rule_desc ) {
+		wfLoadExtensionMessages( 'AbuseFilter' );
 		switch ($action) {
 			case 'warn':
-				wfLoadExtensionMessages( 'AbuseFilter' );
-				
 				if (!isset($_SESSION['abusefilter-warned']) || !$_SESSION['abusefilter-warned']) {
 					$_SESSION['abusefilter-warned'] = true;
 					
@@ -263,9 +269,6 @@ class AbuseFilter {
 				break;
 				
 			case 'disallow':
-				wfLoadExtensionMessages( 'AbuseFilter' );
-				
-				// Don't let them do it
 				if (strlen($parameters[0])) {
 					$display .= wfMsgNoTrans( $parameters[0], $rule_desc ) . "\n";
 				} else {
@@ -275,8 +278,6 @@ class AbuseFilter {
 				break;
 				
 			case 'block':
-				wfLoadExtensionMessages( 'AbuseFilter' );
-				
 				global $wgUser;
 				$filterUser = AbuseFilter::getFilterUser();
 
@@ -307,8 +308,6 @@ class AbuseFilter {
 				$display .= wfMsgNoTrans( 'abusefilter-blocked-display', $rule_desc ) ."<br />\n";
 				break;
 			case 'rangeblock':
-				wfLoadExtensionMessages( 'AbuseFilter' );
-				
 				global $wgUser;
 				$filterUser = AbuseFilter::getFilterUser();
 				
@@ -359,8 +358,6 @@ class AbuseFilter {
 				return $hitThrottle;
 				break;
 			case 'degroup':
-				wfLoadExtensionMessages( 'AbuseFilter' );
-
 				global $wgUser;
 				if (!$wgUser->isAnon()) {
 					// Remove all groups from the user. Ouch.
@@ -389,8 +386,6 @@ class AbuseFilter {
 			case 'blockautopromote':
 				global $wgUser, $wgMemc;
 				if (!$wgUser->isAnon()) {
-					wfLoadExtensionMessages( 'AbuseFilter' );
-
 					$blockPeriod = (int)mt_rand( 3*86400, 7*86400 ); // Block for 3-7 days.
 					$wgMemc->set( self::autoPromoteBlockKey( $wgUser ), true, $blockPeriod );
 
