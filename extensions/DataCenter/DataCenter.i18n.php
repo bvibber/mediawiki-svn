@@ -91,6 +91,7 @@ $messages['en'] = array(
 	'datacenter-ui-error-invalid-data' => 'You have provided invalid data',
 	'datacenter-ui-error-no-components' => 'No components were provided',
 	'datacenter-ui-error-no-fields' => 'No fields were provided',
+	'datacenter-ui-error-no-rows' => 'No records found',
 	'datacenter-ui-error-no-ui-widget' => 'The user-interface widget "$1" doesn\'t exist',
 	// Fields
 	'datacenter-ui-field-name' => 'Name',
@@ -142,6 +143,7 @@ $messages['en'] = array(
 	'datacenter-ui-field-tense' => 'Tense',
 	'datacenter-ui-field-change-summary' => 'Change Summary',
 	'datacenter-ui-field-uses' => 'Uses',
+	'datacenter-ui-field-confirm' => 'Enter "yes" to confirm',
 	// Label
 	'datacenter-ui-label-reset' => 'Reset',
 	'datacenter-ui-label-cancel' => 'Cancel',

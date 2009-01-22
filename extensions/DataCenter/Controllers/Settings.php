@@ -59,6 +59,13 @@ class DataCenterControllerSettings extends DataCenterController {
 		array $data,
 		$type
 	) {
+		// Checks for confirmation
+		if (
+			!isset( $data['row']['confirm'] ) ||
+			( $data['row']['confirm'] != 'yes' )
+		) {
+			return false;
+		}
 		switch ( $type ) {
 			case 'field':
 				$field = DataCenterDBMetaField::newFromValues( $data['row'] );

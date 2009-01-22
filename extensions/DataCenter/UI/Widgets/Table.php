@@ -101,6 +101,13 @@ class DataCenterWidgetTable extends DataCenterWidget {
 				DataCenterUI::message( 'field', $label )
 			);
 		}
+		if ( count( $parameters['rows'] ) == 0 ) {
+			$xmlOutput .= DataCenterXml::row(
+				DataCenterXml::cell(
+					DataCenterUI::message( 'error', 'no-rows' )
+				)
+			);
+		}
 		// Loops over each row
 		foreach ( $parameters['rows'] as $i => $row ) {
 			// Builds row attributes

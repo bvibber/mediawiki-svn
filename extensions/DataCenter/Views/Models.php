@@ -23,7 +23,6 @@ class DataCenterViewModels extends DataCenterView {
 					'manufacturer' => array( 'type' => 'string' ),
 					'name' => array( 'type' => 'string' ),
 					'kind' => array( 'type' => 'string' ),
-					'note' => array( 'type' => 'text' ),
 					'units' => array(
 						'type' => 'number',
 						'min' => 1,
@@ -34,7 +33,7 @@ class DataCenterViewModels extends DataCenterView {
 			'details' => array(
 				'heading' => array( 'field' => 'name' ),
 				'fields' => array(
-					'manufacturer', 'name', 'kind', 'units', 'note'
+					'manufacturer', 'name', 'kind', 'units'
 				)
 			),
 		),
@@ -51,7 +50,6 @@ class DataCenterViewModels extends DataCenterView {
 					'manufacturer' => array( 'type' => 'string' ),
 					'name' => array( 'type' => 'string' ),
 					'kind' => array( 'type' => 'string' ),
-					'note' => array( 'type' => 'text' ),
 					'form-factor' => array(
 						'field' => 'form_factor',
 						'type' => 'list',
@@ -87,7 +85,6 @@ class DataCenterViewModels extends DataCenterView {
 					'units',
 					'depth',
 					'power',
-					'note'
 				)
 			),
 		),
@@ -103,7 +100,6 @@ class DataCenterViewModels extends DataCenterView {
 				'fields' => array(
 					'name' => array( 'type' => 'string' ),
 					'kind' => array( 'type' => 'string' ),
-					'note' => array( 'type' => 'text' ),
 					'category' => array(
 						'type' => 'list',
 						'enum' => array(
@@ -125,7 +121,7 @@ class DataCenterViewModels extends DataCenterView {
 			'details' => array(
 				'heading' => array( 'field' => 'name' ),
 				'fields' => array(
-					'name', 'kind', 'category', 'format', 'note'
+					'name', 'kind', 'category', 'format'
 				)
 			),
 		),

@@ -308,9 +308,9 @@ class DataCenterViewPlansRack extends DataCenterView {
 						DataCenterUI::renderWidget(
 							'body',
 							array(
-								'message' => 'confirm-remove-type',
-								'subject' => $path['type'],
-								'type' => 'notice',
+								'message' => 'notice-removing-type',
+								'type' => $path['type'],
+								'style' => 'notice',
 							)
 						),
 						DataCenterUI::renderWidget(
@@ -350,7 +350,9 @@ class DataCenterViewPlansRack extends DataCenterView {
 									'page' => 'plans',
 									'type' => 'rack'
 								),
-								'fields' => array()
+								'fields' => array(
+									'confirm' => array( 'type' => 'string' )
+								)
 							)
 						),
 					)

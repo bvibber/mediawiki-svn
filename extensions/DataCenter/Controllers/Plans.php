@@ -92,6 +92,13 @@ class DataCenterControllerPlans extends DataCenterController {
 		array $data,
 		$type
 	) {
+		// Checks for confirmation
+		if (
+			!isset( $data['row']['confirm'] ) ||
+			( $data['row']['confirm'] != 'yes' )
+		) {
+			return false;
+		}
 		switch ( $type ) {
 			case 'plan':
 				$plan = DataCenterDBPlan::newFromValues( $data['row'] );

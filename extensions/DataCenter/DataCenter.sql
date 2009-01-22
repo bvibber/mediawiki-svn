@@ -98,8 +98,6 @@ CREATE TABLE /*$wgDBPrefix*/dc_rack_models (
     mdl_rak_name VARBINARY(255) NOT NULL default '',
     -- Kind of this rack model
     mdl_rak_kind VARBINARY(255) NOT NULL default '',
-    -- Note about this rack model
-    mdl_rak_note BLOB,
     -- Number of vertical rack units this rack model can hold
     mdl_rak_units INTEGER,
     -- 
@@ -117,8 +115,6 @@ CREATE TABLE /*$wgDBPrefix*/dc_object_models (
     mdl_obj_name VARBINARY(255) NOT NULL default '',
     -- Kind of this object model
     mdl_obj_kind VARBINARY(255) NOT NULL default '',
-    -- Note about this object model
-    mdl_obj_note BLOB,
     -- The form factor of this object model
     mdl_obj_form_factor ENUM(
         'rackunit',
@@ -507,7 +503,7 @@ INSERT INTO dc_meta_fields
     )
     VALUES
         ( 'WikiMedia Owned', 'boolean' ),
-        ( 'Extra Notes', 'text' ),
+        ( 'Notes', 'text' ),
         ( 'Weight (LBS)', 'number' ),
         ( 'Assigned User', 'string' );
 -- 
@@ -575,6 +571,9 @@ INSERT INTO dc_field_links
         ( 2, 'facility', 'space' ),
         ( 2, 'asset', 'rack' ),
         ( 2, 'asset', 'object' ),
+        ( 2, 'model', 'rack' ),
+        ( 2, 'model', 'object' ),
+        ( 2, 'model', 'port' ),
         ( 3, 'asset', 'object' ),
         ( 4, 'asset', 'object' );
 -- 

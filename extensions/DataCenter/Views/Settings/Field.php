@@ -170,7 +170,9 @@ class DataCenterViewSettingsField extends DataCenterView {
 									'page' => 'settings',
 									'type' => 'field'
 								),
-								'fields' => array()
+								'fields' => array(
+									'confirm' => array( 'type' => 'string' )
+								)
 							)
 						)
 					)

@@ -2233,7 +2233,7 @@ class DataCenterDBChange extends DataCenterDBRow  {
 	}
 }
 
-class DataCenterDBPlan extends DataCenterDBComponent  {
+class DataCenterDBPlan extends DataCenterDBRow  {
 
 	/* Protected Members */
 
