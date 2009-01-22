@@ -174,6 +174,7 @@ mvSequencer.prototype = {
 	//set up initial key states: 
 	key_shift_down:false, 
 	key_ctrl_down:false,
+	inputFocus:false,
 	
 	init:function( initObj ){	
 		//set up pointer to this_seq for current scope:		 
@@ -466,7 +467,7 @@ mvSequencer.prototype = {
 						this_seq.clipboardEditToken = data.query.pages[j]['edittoken'];
 				}
 			});
-			//also grab permisions for sending clipboard commands to the server
+			//also grab permissions for sending clipboard commands to the server
 			
 			//(calling the sequencer inline) try and get edit token via api call:			
 			//(somewhat fragile way to get at the api... should move to config 
@@ -528,8 +529,9 @@ mvSequencer.prototype = {
 		//render the timeline					
 		this.renderTimeLine();			
 		this.do_refresh_timeline();
+				
 		
-		var this_seq = this;
+		this.doFocusBindings();		
 		
 		//set up key bidnings
 		$j().keydown(function(e){
@@ -540,13 +542,14 @@ mvSequencer.prototype = {
 			if( e.which == 17)
 				this_seq.key_ctrl_down = true;
 				
-			if( e.which == 67 && this_seq.key_ctrl_down)
+			if( e.which == 67 && this_seq.key_ctrl_down && !this_seq.inputFocus)
 				this_seq.copySelectedClips();
 				
-			if( e.which == 88 && this_seq.key_ctrl_down)
+			if( e.which == 88 && this_seq.key_ctrl_down && !this_seq.inputFocus)
 				this_seq.cutSelectedClips();
 			
-			if( e.which == 86 && this_seq.key_ctrl_down)
+			//paste cips on v + ctrl while not focused on a text area: 
+			if( e.which == 86 && this_seq.key_ctrl_down && !this_seq.inputFocus)				
 				this_seq.pasteClipBoardClips();
 				
 		});
@@ -559,12 +562,24 @@ mvSequencer.prototype = {
 			if( e.which == 17)
 				this_seq.key_ctrl_down = false;							
 			
-			//backspace or delete key:   
-			if( e.which == 8 || e.which == 46 ){							
+			//backspace or delete key while not focused on a text area: 
+			if( e.which == 8 || e.which == 46 && !this_seq.inputFocus){							
 				this_seq.removeSelectedClips();	
 			}		
 		});
 	},
+	//check all nodes for focus 
+	//@@todo it would probably be faster to search a given subnode instead of all text
+	doFocusBindings:function(){
+		var _this = this;
+		//if an input or text area has focus disable delete key binding
+		$("input,textarea").focus(function () {
+	    	_this.inputFocus = true;	
+	    });
+	    $("input,textarea").blur( function () {
+	    	_this.inputFocus = false;
+	    })
+	}
 	update_tl_hook:function(jh_time_ms){			
 		//put into seconds scale: 
 		var jh_time_sec_float = jh_time_ms/1000;
@@ -682,7 +697,7 @@ mvSequencer.prototype = {
 		js_log('f:pasteClipBoardClips');
 		//@@todo query the server for updated clipboard		
 		//paste before the "current clip" 
-		this.addClips(this.clipboard, this.plObj.cur_clip.order );		
+		this.addClips( this.clipboard, this.plObj.cur_clip.order );		
 	},
 	copySelectedClips:function(){
 		var this_seq = this;
@@ -960,9 +975,7 @@ mvSequencer.prototype = {
 					$j(this).removeClass("clip_edit_base").addClass("clip_edit_over");
 				},function(){
 					$j(this).removeClass("clip_edit_over").addClass("clip_edit_base");
-				});
-				
-				
+				});								
 				
 				//apply onClick edit controls: 
 				$j('.mv_clip_thumb').click(function(){								
@@ -1016,10 +1029,8 @@ mvSequencer.prototype = {
 								$j('#track_' + track_id + '_clip_' + i + ' > .mv_clip_thumb' ).addClass('mv_selected_clip');	
 							}					
 						}
-					}
-									
-					this_seq.doEditSelectedClip();
-									
+					}									
+					this_seq.doEditSelectedClip();									
 				});												
 				//add in control for time based display 											
 				//debugger;			

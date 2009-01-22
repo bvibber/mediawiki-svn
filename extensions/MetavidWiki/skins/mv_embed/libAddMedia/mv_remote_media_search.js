@@ -209,8 +209,7 @@ remoteSearchDriver.prototype = {
 			}
 			out +=			'</td>'+
 						'</tr>'+
-					'</table>';			
-		js_log('out: ' + out);									
+					'</table>';							
 				
 		out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">';
 			//set up the content provider selection div (do this first to get the default cp)
@@ -311,7 +310,7 @@ remoteSearchDriver.prototype = {
 			if(typeof cp.sObj != 'undefined'){
 				if(cp.sObj.last_query == $j('#rsd_q').val() && cp.sObj.last_offset == cp.offset)
 					continue;					
-			}			
+			}					
 			//else we need to run the search: 
 			var iObj = {'cp':cp, 'rsd':this};			
 			eval('cp.sObj = new '+cp.lib+'Search(iObj);');
@@ -323,7 +322,7 @@ remoteSearchDriver.prototype = {
 			cp.offset = (cp.offset) ? cp.offset : cp.sObj.offset;
 			
 			//do search:
-			cp.sObj.getSearchResults();							
+			cp.sObj.getSearchResults();				
 		}	
 		this.checkResultsDone();
 	},	
@@ -337,6 +336,7 @@ remoteSearchDriver.prototype = {
 					loading_done=false; 
 			}
 		}
+		
 		if(loading_done){
 			this.drawOutputResults();
 		}else{			

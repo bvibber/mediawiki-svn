@@ -358,9 +358,13 @@
 					css[props] = val;
 					props = css;					
 				}
-				json = player._api().fp_css(name, props);
-				extend(self, json);
-				return self;
+				try{
+					json = player._api().fp_css(name, props);
+					extend(self, json);
+					return self;
+				}catch(e){
+					js_log('flow player could not set css: ' + json);
+				}
 			},
 			
 			show: function() {
@@ -693,8 +697,12 @@ function Player(wrapper, params, conf) {
 			
 			self[name] = function(arg) {
 				if (!api) { return self; }
-				var ret = (arg === undefined) ? api["fp_" + name]() : api["fp_" + name](arg);
-				return ret == 'undefined' ? self : ret;
+				try{
+					var ret = (arg === undefined) ? api["fp_" + name]() : api["fp_" + name](arg);
+					return ret == 'undefined' ? self : ret;
+				}catch (e){
+					js_log('flowplayer could not access fp_ '+ name);
+				}
 			};			 
 		}
 	); 		
@@ -1602,6 +1610,9 @@ var flashEmbed = {
 				opacity: 0.2
 			}    	
     	};
+    	//don't have low volume/opacity on seek: 
+    	if( this.didSeekJump )
+    		flowConfig.screen.opacity = 1.0;    	
     	
 		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf', flowConfig);    	    	  
 		//get the this.fla value: 		
@@ -1614,7 +1625,8 @@ var flashEmbed = {
     		_this.parent_play();	//update the interface    
     	});
     	//hide by default (untill its ready) 
-    	this.fla.setVolume(0);
+    	if( ! this.didSeekJump )	
+    		this.fla.setVolume(0);
     	
     	//start monitor: 
     	this.monitor();  
@@ -1693,8 +1705,7 @@ var flashEmbed = {
         	 };        	     
         	//we are not getting buffered data restore volume and opacity
         	this.fla.setVolume(90);
-        	$f().getPlugin('screen').css({'opacity':'1.0'});    	
-        	     	
+        	$f().getPlugin('screen').css({'opacity':'1.0'});    	        	     	
         }else{
 	        //simplification of buffer state ... should move to support returning time rages like:
 	        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	
@@ -1702,7 +1713,7 @@ var flashEmbed = {
         }               
         //set the current Time (based on timeFormat)
         if( this.media_element.selected_source.timeFormat =='anx' ){
-        	this.currentTime = flash_state.time;
+        	this.currentTime = flash_state.time;        	  
         	//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration()); 
         }else{
         	this.currentTime = flash_state.time + this.media_element.selected_source.start_offset;        	        	
@@ -1714,10 +1725,21 @@ var flashEmbed = {
         }                  
 		
         if(this.currentTime > ntp2seconds(start_ntp) && !this.startedTimedPlayback){
-        	this.startedTimedPlayback=true;        	
-        	js_log("time is "+ this.currentTime + " started playback");    
-        	this.fla.setVolume(90);
-        	$f().getPlugin('screen').css({'opacity':'1.0'});    	
+        	var fail = false;
+        	try
+			{
+				js_log("time is "+ this.currentTime + " started playback set opacity");				    				
+	        	this.fla.setVolume(90) 
+	        	$f().getPlugin('screen').css({'opacity':'1.0'} );  
+			}
+			catch(err)
+			{
+				js_log('failed to set values');
+				fail = true;
+			}
+        	if(!fail)
+        		this.startedTimedPlayback=true;     
+        		   	         	
         }
         /* to support local seeks */
 		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.supportsURLTimeEncoding() )
@@ -1749,7 +1771,7 @@ var flashEmbed = {
         		( this.currentTime > (ntp2seconds(end_ntp)-1) 
         			&& this.prevTime == this.currentTime) )
         	){        		        	
-        	js_log('probbaly reached end of stream: '+this.currentTime);
+        	js_log('probally reached end of stream: '+this.currentTime);
         	this.onClipDone();         	     
         }	    
 	    this.prevTime = this.currentTime;    

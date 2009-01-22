@@ -145,7 +145,11 @@ mvClipEdit.prototype = {
 					o+='</table>'; 
 					
 					$j('#sub_cliplib_ic').html ( o );
-					//add update bindings			
+					//add update bindings	
+							
+					//update doFocusBindings
+					if( _this.p_seqObj )
+						_this.p_seqObj.doFocusBindings();
 				}	
 				//if media type is template we have to query to get its URI to get its paramaters
 				if(_this.media_type == 'template' && !_this.rObj.tVars){		

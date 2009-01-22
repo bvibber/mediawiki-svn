@@ -614,7 +614,7 @@ var ctrlBuilder = {
         
         //build draggable hook here:        
 	    $j('#mv_seeker_slider_'+embedObj.id).draggable({
-        	containment:'#seeker_bar_'+embedObj.id,
+        	containment:$j('#seeker_bar_'+embedObj.id),
         	axis:'x',
         	opacity:.6,
         	start:function(e, ui){
@@ -638,7 +638,9 @@ var ctrlBuilder = {
 				//js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
 				embedObj.setStatus( getMsg('seek_to')+' '+embedObj.jump_time );    
 				//update the thumbnail / frame 
-				embedObj.updateThumbPerc( perc );					
+				if(embedObj.isPlaying==false){
+					embedObj.updateThumbPerc( perc );
+				}					
         	},
         	stop:function(e, ui){
         		embedObj.userSlide=false;
@@ -1930,7 +1932,7 @@ embedVideo.prototype = {
 	},	
 	getEmbedHTML : function(){
 		//return this.wrapEmebedContainer( this.getEmbedObj() );
-		return 'function getEmbedHTML should be overiten by embedLib ';
+		return 'function getEmbedHTML should be overitten by embedLib ';
 	},
 	//do seek function (should be overwritten by implementing embedLibs)
 	// first check if seek can be done on locally downloaded content. 
@@ -1938,9 +1940,12 @@ embedVideo.prototype = {
 		js_log('f:mv_embed:doSeek:'+perc);
 		if( this.supportsURLTimeEncoding() ){
 			js_log('Seeking to ' + this.seek_time_sec + ' (local copy of clip not loaded at' + perc + '%)');
-			this.stop();			
-			//this.seek_time_sec = 0; 
+			this.stop();					
+			this.didSeekJump=true;
+			//update the slider
+			this.setSliderValue( perc ); 
 		}
+		
 		//do play in 100ms (give things time to clear) 
 		setTimeout('$j(\'#' + this.id + '\').get(0).play()',100);
 	},	
@@ -2001,7 +2006,7 @@ embedVideo.prototype = {
 	    		'</div>'
 	   	);    	
     	
-    	//start animation (make thumb small in uper left add in div for "loading"    	    
+    	//start animation (make thumb small in upper left add in div for "loading"    	    
     	$j('#img_thumb_'+this.id).animate({    			
     			width:parseInt(parseInt(_this.width)/2),
     			height:parseInt(parseInt(_this.height)/2),
@@ -2292,7 +2297,7 @@ embedVideo.prototype = {
 		this.updateThumbTime( ntp2seconds(time) - parseInt(this.start_offset) );
 	},
 	updateThumbTime:function( float_sec ){
-		js_log('updateThumbTime:'+float_sec);
+		//js_log('updateThumbTime:'+float_sec);
 		var _this = this;									   				
 		if( typeof this.org_thum_src=='undefined' ){		
 			this.org_thum_src = this.media_element.getThumbnailURL();
