@@ -45,7 +45,7 @@ class RegexBlock {
 	/**
 	 * Get a database object
 	 */
-	public function getDB( $db ){
+	public static function getDB( $db ){
 		global $wgRegexBlockDatabase;
 		return wfGetDB( $db, array(), $wgRegexBlockDatabase );
 	}
