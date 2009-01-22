@@ -268,7 +268,7 @@ function mv_ex(mvd_id){
 			$j('#mv_close_clip_'+mvd_id).fadeIn('fast');
 		});
 
-		$j('#mvr_'+mvd_id).css('display', 'block').html(global_loading_txt);
+		$j('#mvr_'+mvd_id).css('display', 'block').html( getMsg('loading_txt') );
 		//grab search terms:
 		var terms='';
 		$j('.mv_hl_text').each(function(){

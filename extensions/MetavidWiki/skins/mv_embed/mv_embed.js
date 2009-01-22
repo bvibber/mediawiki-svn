@@ -620,7 +620,7 @@ var ctrlBuilder = {
         	start:function(e, ui){
         		var id = (embedObj.pc!=null)?embedObj.pc.pp.id:embedObj.id;
         		embedObj.userSlide=true;
-        		js_log("started dragging set userSlide"+embedObj.userSlide)
+        		js_log("started dragging set userSlide" + embedObj.userSlide)
         		var options = ui.options;      
         		//remove "play button"   	
         		$j('#big_play_link_'+id).fadeOut('fast');
@@ -634,7 +634,7 @@ var ctrlBuilder = {
 						/
 					($j('#mv_seeker_'+embedObj.id).width()-14));   															
 									 													
-				embedObj.jump_time = seconds2ntp(parseInt(embedObj.getDuration()*perc)+ embedObj.start_time_sec);	
+				embedObj.jump_time = seconds2ntp( parseInt( embedObj.getDuration() * perc ) + embedObj.start_time_sec);	
 				//js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
 				embedObj.setStatus( getMsg('seek_to')+' '+embedObj.jump_time );    
 				//update the thumbnail / frame 

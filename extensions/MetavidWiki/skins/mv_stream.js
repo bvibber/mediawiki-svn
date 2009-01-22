@@ -492,7 +492,7 @@ function mv_history_disp(titleKey, mvd_id){
 /*function mv_adjust_disp(titleKey, mvd_id){
 	sajax_request_type='GET';
 	sajax_do_call( "mv_adjust_disp", [titleKey, mvd_id], f );
-	$j('#mv_fcontent_'+mvd_id).html(global_loading_txt);
+	$j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
 	//hanndle the response:
 	function f( request ) {
 		result= request.responseText;

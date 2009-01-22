@@ -1,5 +1,4 @@
-/*@@TODO should be set by mediaWiki so it uses wfMsg */
-var global_loading_txt = 'loading<blink>...</blink>';
+/*@@TODO should be set by mediaWiki so it uses wfMsg */	
 
 /*
 * adds adjustment hooks
