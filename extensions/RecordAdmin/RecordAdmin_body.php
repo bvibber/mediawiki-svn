@@ -134,6 +134,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				if ( count( $records ) ) {
 
 					# Pass1, scan the records to find the create date of each and sort by that
+					$dbr  = &wfGetDB( DB_SLAVE );
 					$sorted = array();
 					foreach ( $records as $k => $r ) {
 						$t = $r[0];
