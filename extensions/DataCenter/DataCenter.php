@@ -61,7 +61,6 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, array(
 	// Controllers/*
 	'DataCenterControllerAssets' => $dir . 'Controllers/Assets.php',
 	'DataCenterControllerFacilities' => $dir . 'Controllers/Facilities.php',
-	'DataCenterControllerHistory' => $dir . 'Controllers/History.php',
 	'DataCenterControllerModels' => $dir . 'Controllers/Models.php',
 	'DataCenterControllerOverview' => $dir . 'Controllers/Overview.php',
 	'DataCenterControllerPlans' => $dir . 'Controllers/Plans.php',
