@@ -158,7 +158,11 @@ $messages['bn'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'editmessages' => 'Uređivanje poruka',
+	'editmsg-target' => 'Ciljna poruka:',
 	'editmsg-search' => 'Traži',
+	'editmsg-get-patch' => 'Generiraj patch',
+	'editmsg-new-search' => 'Nova pretraga',
 	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod {{PLURAL:$2|slijedećeg|slijedećih}} jezika: $1',
 );
 

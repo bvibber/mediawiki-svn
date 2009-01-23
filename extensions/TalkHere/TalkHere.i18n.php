@@ -329,6 +329,12 @@ $messages['gsw'] = array(
 	'talkhere-foottext' => 'D Kommentar dobe sin megligerwyys vu Bsuecher gschribe wore.
 
 D Betryyber vu däre Netzsyte chenne kei Verantwortig fir dr Inhalt vu däne Kommentar iberneh.',
+	'talkhere-talkpage' => 'Diskussionssyte',
+	'talkhere-notalk' => "''(No kei Kommentar)''",
+	'talkhere-addcomment' => 'Kommentar zuefiege',
+	'talkhere-beforeinput' => 'Kommentar bitte unte yygee',
+	'talkhere-loading' => 'Am Lade vum Editor …',
+	'talkhere-collapse' => 'Editor verstecke',
 );
 
 /** Hebrew (עברית)

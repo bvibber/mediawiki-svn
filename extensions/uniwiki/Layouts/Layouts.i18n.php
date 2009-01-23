@@ -299,6 +299,13 @@ $messages['ia'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Modificaretiquettasdepaginas',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'layouts_unknown' => '未知',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

@@ -391,6 +391,13 @@ $messages['sk'] = array(
 	'doublewiki-desc' => 'Zobrazí stránku a jej preklad z inej wiki v dvoch stĺpcoch na jednej stránke',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'doublewiki-desc' => 'Paraqet një faqe dhe përkthimin nga një wiki tjetër në dy kolona në faqen e njejtë',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Millosh
  */

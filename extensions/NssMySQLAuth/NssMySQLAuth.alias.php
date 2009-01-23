@@ -72,6 +72,11 @@ $aliases['sa'] = array(
 	'AccountManager' => array( 'उपयोजकसंज्ञाप्रबन्धक' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'AccountManager' => array( 'MenaxhuesLlogarie' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'AccountManager' => array( 'AkauntiKuu' ),

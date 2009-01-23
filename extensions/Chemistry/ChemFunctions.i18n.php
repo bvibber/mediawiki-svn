@@ -130,7 +130,14 @@ $messages['bn'] = array(
  */
 $messages['bs'] = array(
 	'chemicalsources' => 'Hemijski izvori',
+	'chemicalsource-desc' => 'Dodaje oznaku <nowiki><chemform></nowiki> za hemijske formule',
 	'chemFunctions_ListPage' => 'Hemijski izvori',
+	'chemFunctions_CAS' => 'CAS broj',
+	'chemFunctions_ATCCode' => 'ATC-kod',
+	'chemFunctions_ECNumber' => 'EC-Broj',
+	'chemFunctions_Formula' => 'Formula',
+	'chemFunctions_Name' => 'IUPAC ime',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Greška pri unosu!',
 );
 
 /** Catalan (Català)

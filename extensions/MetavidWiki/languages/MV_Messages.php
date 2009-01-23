@@ -3476,7 +3476,7 @@ $messages['nl'] = array(
 	'mv_ogg_high_quality' => 'Hoge kwaliteit - Ogg Theora 900kb/s',
 	'mv_flash_low_quality' => 'Via web te streamen - Flash video',
 	'mv_archive_org_mp4' => 'Archive.org in mp4 verpakte h.264-stream',
-	'mv_archive_org_link' => 'Links naar de originele mpeg2 op Archive.org',
+	'mv_archive_org_link' => 'Verwijzingen naar de originele mpeg2 op Archive.org',
 	'ao_file_MPEG2' => 'Archive.org - mpeg2 origineel',
 	'mv_error_stream_missing' => '<span class="error">Fout: Er is geen videobestand gekoppeld aan deze stream.</span><br />
 Rapporteer dit aan de sitebeheerder.',
@@ -3553,8 +3553,8 @@ Rapporteer dit aan de sitebeheerder.',
 	'mv_interest_group_matches' => 'Belangengroeperingenresultaten',
 	'mv_click_to_edit' => 'klik om te bewerken',
 	'ht_en' => 'Transcriptie',
-	'ht_en_desc' => 'Engelstalige transcripties. Dit type overlay is voor gesproken tekst in een videostream.
-U kunt links toevoegen, maar alle tekst moet gesproken worden in de videostream.',
+	'ht_en_desc' => 'Engelstalige transcripties.
+Dit type overlay is voor gesproken tekst in een videostream.',
 	'anno_en' => 'Annotaties en categorieën',
 	'anno_en_desc' => "Engelstalige categorisatie en annotatie. Deze overlay is te gebruiken voor het Categoriseren van delen van video's of om annotaties voor niet-gesproken tekst toe te voegen",
 	'thomas_en' => 'Officiële transcriptie',

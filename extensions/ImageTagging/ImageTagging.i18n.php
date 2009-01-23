@@ -185,6 +185,7 @@ $messages['arz'] = array(
 $messages['be-tarask'] = array(
 	'imagetagging-article' => 'Старонка:',
 	'imagetagging-imghistory' => 'Гісторыя',
+	'imagetagging-tagcancel-button' => 'Адмяніць',
 );
 
 /** Bulgarian (Български)

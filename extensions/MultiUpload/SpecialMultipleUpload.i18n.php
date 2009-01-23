@@ -118,6 +118,14 @@ $messages['bg'] = array(
 	'multiupload-toolbox' => 'Качване на няколко файла',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'multipleupload' => 'Postavljanje datoteka',
+	'multiupload-fileuploaded' => 'Datoteka postavljena.',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */

@@ -576,7 +576,36 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'povwatch_title' => 'タイトル:',
+	'povwatch' => '編集合戦の監視',
+	'povwatch_desc' => '[[Special:PovWatch|ページを他の利用者のウォッチリストに追加]]する拡張機能',
+	'povwatch_no_session' => 'エラー: セッション・データが失われたため、フォームを送信できませんでした。',
+	'povwatch_not_allowed_push' => 'あなたは編集合戦の監視ができる管理者ではなく、ウォッチリストにページを入れることはできません。',
+	'povwatch_already_subscribed' => 'あなたは編集合戦の監視を既に購読しています',
+	'povwatch_subscribed' => 'あなたは編集合戦の監視を現在購読しています',
+	'povwatch_not_subscribed' => 'あなたは編集合戦の監視を購読していないため、購読停止はできません。',
+	'povwatch_unsubscribed' => 'あなたは編集合戦の監視を購読停止しました',
+	'povwatch_invalid_title' => '指定したページ名は無効です',
+	'povwatch_pushed' => '[[$1]] を $2人の利用者のウォッチリストに追加しました',
+	'povwatch_intro' => '編集合戦の監視は、購読している管理者のウォッチリストに議論の起きやすいページをこっそりと入れることができるようにするサービスです。
+
+最近のウォッチリストへの追加記録は [[Special:PovWatch/log]] で閲覧可能です。',
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|購読者一覧]]の閲覧が可能です。',
+	'povwatch_subscriber_list_intro' => '<strong>購読者一覧</strong>',
+	'povwatch_not_allowed_subscribers' => 'あなたには編集合戦の監視の購読者一覧を閲覧することが許可されていません。',
+	'povwatch_unknown_subpage' => '不明なサブページ',
+	'povwatch_push' => '追加',
+	'povwatch_push_intro' => 'このフォームを使って購読利用者のウォッチリストにページを追加します。ページ名の入力には注意してください。存在しないページでも追加でき、一度追加されるとページを除去する方法はないためです。',
+	'povwatch_title' => 'ページ名:',
+	'povwatch_comment' => '要約:',
+	'povwatch_no_log' => '記録項目はありません。',
+	'povwatch_no_subscribers' => '購読者はいません。',
+	'povwatch_unsubscribe_intro' => 'あなたは編集合戦の監視を購読しています。購読を停止するには以下のボタンを押します。',
+	'povwatch_unsubscribe' => '購読停止',
+	'povwatch_subscribe_intro' => 'あなたは編集合戦の監視を購読していません。購読を開始するには以下のボタンを押してください。',
+	'povwatch_subscribe' => '購読',
+	'povwatch_added' => '追加完了',
+	'right-povwatch_admin' => '他の利用者のウォッチリストへのページ追加のための利用者権限を管理する',
+	'right-povwatch_user' => '他の利用者のウォッチリストにページを追加する',
 );
 
 /** Javanese (Basa Jawa)

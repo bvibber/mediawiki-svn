@@ -1622,22 +1622,44 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author MF-Warburg
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'grouppermissions' => 'Gerir permissões de grupo',
 	'sortpermissions' => 'Ordenar permissões',
 	'removeunusedgroups' => 'Remover grupos não usados',
+	'grouppermissions-desc' => 'Gira permissões de grupo através de uma [[Special:GroupPermissions|página especial]]',
+	'grouppermissions-desc2' => 'Sistema de permissões alargado',
+	'grouppermissions-desc3' => 'Permite que as ações de conteúdo (separadores) sejam personalizadas',
+	'grouppermissions-desc4' => 'Permite a adição de itens adicionais à caixa de ferramentas.',
+	'grouppermissions-desc-nsm' => 'Gira domínios através de uma página especial',
+	'grouppermissions-header' => 'Você pode usar esta página para alterar as permissões subjacentes dos vários grupos de utilizadores.',
 	'grouppermissions-search' => 'Grupo:',
 	'grouppermissions-dologin' => 'Autenticar-se',
 	'grouppermissions-dosearch' => 'Ir',
+	'grouppermissions-searchlabel' => 'Pesquise por um grupo',
+	'grouppermissions-deletelabel' => 'Apagar o grupo',
+	'grouppermissions-error' => 'Ocorreu um erro desconhecido; por favor aperte o botão de retornar no seu navegador e tente novamente',
+	'grouppermissions-change' => 'Alterar as permissões do grupo',
+	'grouppermissions-add' => 'Adicionar grupo',
+	'grouppermissions-delete' => 'Eliminar grupo',
 	'grouppermissions-comment' => 'Comentário:',
+	'grouppermissions-changesuccess' => 'Permissões para $1 foram alteradas com sucesso',
 	'grouppermissions-true' => 'Verdadeiro',
 	'grouppermissions-false' => 'Falso',
 	'grouppermissions-never' => 'Nunca',
+	'grouppermissions-nooldrev' => 'Erro encontrado ao tentar arquivar o ficheiro de configuração atual. Nenhum arquivo será gerado',
 	'grouppermissions-log-name' => 'Registo de permissões de grupo',
+	'grouppermissions-needjs' => 'Aviso: o JavaScript está desativado no seu navegador. Algumas funcionalidades poderão não funcionar!',
+	'grouppermissions-sp-sort' => 'Ordenar permissões',
 	'grouppermissions-sp-save' => 'Gravar',
 	'grouppermissions-sp-addtype' => 'Adicionar tipo de ordenação',
 	'grouppermissions-sp-addperm' => 'Adicionar permissão',
+	'grouppermissions-sp-deltype' => 'Eliminar tipo de ordenação',
+	'right-grouppermissions' => 'Gerir permissões de grupo',
 	'right-search' => 'Pesquisar no wiki',
+	'right-edittalk' => 'Editar páginas de discussão',
+	'right-edit-new' => 'Editar páginas (que não sejam páginas de discussão)',
 );
 
 /** Tarifit (Tarifit)

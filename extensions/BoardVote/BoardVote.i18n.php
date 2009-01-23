@@ -1507,9 +1507,9 @@ Kuždy kandidat jo cesćony wužywaŕ, kenž jo nałožył bejny cas a bejnu mó
 Móžoš někotarym kandidatam samku preferencu daś a teke kandidatow njezrědowane wóstajiś.
 Mysli se, až maš lubjej wšych zrědowanych kandidatow ako wšych njezrědowanych kandidatow a až sy neutralny mjazy wšymi njezrědowanymi kandidatami.</p>
 
-<p>Dobywaŕ wólby woblicyjo z pomocu metody Schulze. Za dalšne informacije, glěj oficielne wólbne boki.</p>
+<p>Dobywaŕ wólby woblicyjo z pomocu metody Schulze. Za dalšne informacije, glědaj oficielne wólbne boki.</p>
 
-<p>Za dalšne informacije glěj:</p>
+<p>Za dalšne informacije glědaj:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2009" class="external">Wólba kuratoriuma 2009</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2009/Candidates" class="external">Kandidaty</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metoda Schulze</a></li></ul>',

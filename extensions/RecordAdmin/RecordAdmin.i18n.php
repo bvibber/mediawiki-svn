@@ -136,6 +136,7 @@ $messages['bg'] = array(
  * @author Imre
  * @author Melancholie
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'recordadmin' => 'Aufzeichnungsadministrierung',
@@ -169,6 +170,7 @@ $messages['de'] = array(
 	'recordadmin-viewlink' => 'ansehen',
 	'recordadmin-editlink' => 'ändern',
 	'recordadmin-created' => 'Erstellt',
+	'recordadmin-actions' => 'Aktionen',
 	'right-recordadmin' => 'Finde und Editiere Aufzeichnungsseiten',
 );
 
@@ -241,6 +243,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'recordadmin' => 'Gestion des enregistrements',
@@ -274,6 +277,7 @@ $messages['fr'] = array(
 	'recordadmin-viewlink' => 'voir',
 	'recordadmin-editlink' => 'modifier',
 	'recordadmin-created' => 'Créé',
+	'recordadmin-actions' => 'Actions',
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 
@@ -312,6 +316,7 @@ $messages['gl'] = array(
 	'recordadmin-viewlink' => 'ver',
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Creado',
+	'recordadmin-actions' => 'Accións',
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
@@ -389,6 +394,7 @@ $messages['hsb'] = array(
 	'recordadmin-viewlink' => 'wobhladać sej',
 	'recordadmin-editlink' => 'wobdźěłać',
 	'recordadmin-created' => 'Wutworjeny',
+	'recordadmin-actions' => 'Akcije',
 	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
 );
 
@@ -431,14 +437,43 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'recordadmin' => '記録管理',
+	'recordadmin-desc' => 'フォームを用いて記録ページを検索および編集するための[[Special:RecordAdmin|特別ページ]]',
+	'recordadmin-category' => '記録',
+	'recordadmin-select' => '検索したい記録の種類を選んでください',
+	'recordadmin-newsearch' => '新規$1検索',
+	'recordadmin-newrecord' => '別の記録種類を選んでください',
 	'recordadmin-submit' => '送信',
+	'recordadmin-create' => '「$1」記録を検索または作成する',
+	'recordadmin-alreadyexist' => '「$1」は既に存在します。',
+	'recordadmin-createsuccess' => '$1 を作成',
+	'recordadmin-createerror' => '$1 の作成処理中にエラーが発生しました！',
+	'recordadmin-badtitle' => 'ページ名が不正です！',
+	'recordadmin-recordid' => '記録ID:',
+	'recordadmin-invert' => '選択を反転',
 	'recordadmin-buttonsearch' => '検索',
+	'recordadmin-buttoncreate' => '作成',
 	'recordadmin-buttonreset' => 'リセット',
+	'recordadmin-searchresult' => '検索結果',
+	'recordadmin-nomatch' => '一致する記録は見つかりませんでした！',
+	'recordadmin-edit' => '$1 を編集中',
+	'recordadmin-typeupdated' => '$1 のプロパティを更新',
+	'recordadmin-updatesuccess' => '$1 を更新',
+	'recordadmin-updateerror' => '更新中にエラーが発生',
 	'recordadmin-buttonsave' => '保存',
+	'recordadmin-noform' => '「$1」記録と関連付けられたフォームはありません。',
+	'recordadmin-createlink' => '<a href=$1>作成</a>',
+	'recordadmin-newcreated' => '新規$1が公開フォームから作成されました',
+	'recordadmin-summary-typecreated' => '新規$1が作成されました',
+	'recordadmin-viewlink' => '表示',
 	'recordadmin-editlink' => '編集',
+	'recordadmin-created' => '作成',
+	'recordadmin-actions' => '操作',
+	'right-recordadmin' => '記録ページを検索および編集する',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -508,6 +543,7 @@ $messages['ksh'] = array(
 	'recordadmin-viewlink' => 'aankike',
 	'recordadmin-editlink' => 'ändere',
 	'recordadmin-created' => 'Neu aanjelaat',
+	'recordadmin-actions' => 'Axjohne',
 	'right-recordadmin' => 'Datesätz fenge un ändere',
 );
 
@@ -548,6 +584,7 @@ $messages['nah'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'recordadmin' => 'Gegevensbeheer',
@@ -581,6 +618,7 @@ $messages['nl'] = array(
 	'recordadmin-viewlink' => 'bekijken',
 	'recordadmin-editlink' => 'bewerken',
 	'recordadmin-created' => 'Aangemaakt',
+	'recordadmin-actions' => 'Handelingen',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 );
 
@@ -714,6 +752,7 @@ $messages['pt'] = array(
 	'recordadmin-viewlink' => 'ver',
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Criado',
+	'recordadmin-actions' => 'Ações',
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 );
 
@@ -776,6 +815,7 @@ $messages['sk'] = array(
 	'recordadmin-viewlink' => 'zobraziť',
 	'recordadmin-editlink' => 'upraviť',
 	'recordadmin-created' => 'Vytvorené',
+	'recordadmin-actions' => 'Operácie',
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
 );
 

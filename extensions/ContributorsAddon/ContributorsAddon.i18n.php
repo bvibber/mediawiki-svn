@@ -89,6 +89,13 @@ $messages['gl'] = array(
 	'contributorsaddon-desc' => 'Engade emerxentes JS onMouseOver ás ligazóns das "Colaboradores principais"',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'contributorsaddon-desc' => 'Fiegt onMouseOver-Popups dur JavaScript zue dr Gleicher vu dr Hauptautore dezue',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -151,7 +158,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'contributorsaddon-desc' => 'Voegt "JavaScript-popups toe aan de link "Belangrijkste bijdragers"',
+	'contributorsaddon-desc' => 'Voegt "JavaScript-popups toe aan de verwijzing "Belangrijkste bijdragers"',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -215,6 +222,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'contributorsaddon-desc' => 'Pridáva vyskakovacie okná nad odkazy „Hlavní prispievatelia“',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'contributorsaddon-desc' => 'Vendosë dritare JavaScript në lidhjet "Kontribuuesit kryesorë"',
 );
 
 /** Swedish (Svenska)

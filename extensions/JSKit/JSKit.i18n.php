@@ -171,6 +171,13 @@ $messages['sk'] = array(
 	'jskit-desc' => 'Integruje na wiki stránku sadu nástrojov js-kit',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'jskit-desc' => 'Integron mjetet js-kit në një faqe wiki',
+);
+
 /** Tetum (Tetun)
  * @author MF-Warburg
  */

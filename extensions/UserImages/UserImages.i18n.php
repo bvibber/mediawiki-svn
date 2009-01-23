@@ -514,6 +514,14 @@ $messages['sk'] = array(
 	'userimages-noimages' => '$1 nenahral žiadne obrázky.',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'userimages-caption' => 'Figurat e ngarkuara nga $1',
+	'userimages-noimages' => '$1 nuk ka figura të ngarkuara.',
+);
+
 /** Serbian (Српски / Srpski) */
 $messages['sr'] = array(
 	'userimages-caption' => 'Слике које је послао корисник $1',

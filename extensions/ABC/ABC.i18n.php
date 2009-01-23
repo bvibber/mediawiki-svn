@@ -386,6 +386,13 @@ $messages['sk'] = array(
 	'abcdownload' => 'Stiahnuť:',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'abcdownload' => 'Shkarko:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -257,7 +257,7 @@ $messages['dsb'] = array(
 	'patrol-skipped-ok' => 'Změna se ignorěrujo.',
 	'patrol-reasons' => '* Jadnory wandalizm
 * Test nowacka
-* Glěj diskusijny bok',
+* Glědaj diskusijny bok',
 	'patrol-another' => 'Drugu změnu pokazaś, jolic k dispoziciji.',
 	'patrol-stopped' => 'Sy rozsuźił žednu dalšnu změnu doglědowaś. $1',
 	'patrol-resume' => 'Klikni sem, aby pokšacował.',

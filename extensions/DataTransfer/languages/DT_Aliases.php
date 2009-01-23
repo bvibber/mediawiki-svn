@@ -92,6 +92,11 @@ $aliases['sa'] = array(
 	'ViewXML' => array( 'XMLपश्यति' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'ViewXML' => array( 'ShihXML' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ViewXML' => array( 'Visa XML' ),

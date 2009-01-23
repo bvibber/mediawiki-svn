@@ -127,6 +127,13 @@ $messages['gl'] = array(
 	'breadcrumbs-desc' => 'Amosa aos usuarios a traxectoria a través do wiki.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'breadcrumbs-desc' => 'Zeigt dr Weg vum Benutzer dur s Wiki.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -300,6 +307,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'breadcrumbs-desc' => 'Zobrazí cestu používateľa vo wiki.',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'breadcrumbs-desc' => 'Tregon rrugën e përdoruesit nëpër wiki.',
 );
 
 /** Seeltersk (Seeltersk)

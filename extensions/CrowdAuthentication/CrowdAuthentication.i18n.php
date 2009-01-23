@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'crowdauthentication-desc' => 'إضافة تأكيد لحشد الأتلاسيان',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'crowdauthentication-desc' => 'Dodatak potvrde za Atlassian Crowd',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -94,6 +101,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'crowdauthentication-desc' => 'Complemento de autentificación para Atlassian Crowd',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'crowdauthentication-desc' => 'Authentisierig-Erwyterig fir Atlassian Crowd',
 );
 
 /** Hebrew (עברית)

@@ -260,6 +260,13 @@ $messages['sk'] = array(
 	'formatsearch-desc' => 'Vyčistí stránku s výsledkami vyhľadávania',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'formatsearch-desc' => 'Pastron faqen e rezultateve të kërkimit',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

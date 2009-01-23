@@ -107,6 +107,11 @@ $aliases['sa'] = array(
 	'ViewAPC' => array( 'एपीसिपश्यति' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'ViewAPC' => array( 'ShihAPC' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ViewAPC' => array( 'Visa APC' ),

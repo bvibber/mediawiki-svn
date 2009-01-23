@@ -23,11 +23,13 @@ Would you like to edit the existing page?',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'createpage-desc' => 'Short description of the extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
+	'createpage_submitbutton' => '{{Identical|Submit}}',
 );
 
 /** Arabic (العربية)
@@ -306,7 +308,14 @@ Vole tu modificar le pagina existente?',
  */
 $messages['ja'] = array(
 	'createpage' => 'ページ作成',
+	'createpage-desc' => '新しいページを作成するための[[Special:CreatePage|特別ページ]]を追加する',
 	'createpage_submitbutton' => '送信',
+	'createpage_instructions' => '作成したいページの名前を入力:',
+	'createpage_entertitle' => 'ページの名前を入力してください。',
+	'createpage_titleexists' => '[[$1]] という名前のページは既に存在します。既存のページを編集しますか？',
+	'createpage_tryagain' => 'いいえ。別の名前でページを新規作成します。',
+	'createpage_editexisting' => 'はい。既存のページへ投稿します。',
+	'createpage-badtitle' => '「$1」はページ名に使えません。',
 );
 
 /** Javanese (Basa Jawa)

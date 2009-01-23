@@ -259,6 +259,13 @@ $messages['sk'] = array(
 	'tooltip-desc' => 'Pridáva značky <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'tooltip-desc' => 'Vendosë kodet <tt><nowiki><tooltip></nowiki></tt> dhe <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

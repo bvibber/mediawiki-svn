@@ -102,3 +102,8 @@ $aliases['sa'] = array(
 	'Call' => array( 'आमन्त्र्' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'Call' => array( 'Thirr' ),
+);
+

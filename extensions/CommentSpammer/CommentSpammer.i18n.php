@@ -60,6 +60,13 @@ $messages['bg'] = array(
 	'commentspammer-log-msg' => 'редакция от [[Special:Contributions/$1|$1]] в [[:$2]].',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'commentspammer-desc' => 'Odbacuje izmjene od sumnjivih spamera sa komentarima sa DNS nepoželjnog spiska',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -458,7 +465,7 @@ $messages['te'] = array(
 	'commentspammer-log-msg' => '[[:$2]] లో [[Special:Contributions/$1|$1]] చేసిన దిద్దుబాటు',
 	'commentspammer-log-msg-info' => 'చివరగా స్పాము పంపినది $1 {{PLURAL:$1|రోజు|రోజుల}} కిందట, ప్రమాద స్థాయి $2, దుశ్చర్య కోడు $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 వివరాలు చూడండి], లేదా [[Special:Blockip/$4|నిరోధించండి]].',
 	'cspammerlogpagetext' => 'కారకులు, తెలిసిన స్పామరేనా కాదా అనేదాన్ని బట్టి గతంలో అనుమతించిన, తిరస్కరించిన దిద్దుబాట్ల నివేదిక',
-	'cspammer-log-page' => 'వ్యాఖ్యల స్పామింగు లాగ్',
+	'cspammer-log-page' => 'వ్యాఖ్యల స్పామర్ల చిట్టా',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

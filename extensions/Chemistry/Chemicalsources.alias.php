@@ -87,3 +87,8 @@ $aliases['sa'] = array(
 	'ChemicalSources' => array( 'रसायनस्रोत' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'ChemicalSources' => array( 'BurimeKimike' ),
+);
+

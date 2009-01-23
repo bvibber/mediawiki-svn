@@ -369,6 +369,13 @@ $messages['sk'] = array(
 	'usercontactlink-desc' => 'Poskytuje možnosť jednoducho a konzistentne pridávať mená ostatných používateľov pomocou syntaxe ^^^používateľ^^^',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'usercontactlink-baduser' => 'llogari jo korrekte',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

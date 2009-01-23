@@ -637,6 +637,66 @@ $messages['diq'] = array(
 	'whitelisttablemodifynone' => 'çino',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'whitelist-desc' => 'Pśistupne pšawa wobgranicowanych wužywarjow wobźěłaś',
+	'whitelistedit' => 'Editor zapśimka pśez běłu lisćinu',
+	'whitelist' => 'Boki běłeje lisćiny',
+	'mywhitelistpages' => 'Móje boki',
+	'whitelistfor' => '<center>Aktualne informacije za <b>$1</b></center>',
+	'whitelisttablemodify' => 'Změniś',
+	'whitelisttablemodifyall' => 'Wšykno',
+	'whitelisttablemodifynone' => 'Žeden',
+	'whitelisttablepage' => 'Wikijowy bok',
+	'whitelisttabletype' => 'Typ zapśimka',
+	'whitelisttableexpires' => 'Pśepadnjo',
+	'whitelisttablemodby' => 'Slědny raz změnjony wót',
+	'whitelisttablemodon' => 'Slědny raz změnjony',
+	'whitelisttableedit' => 'Wobźěłaś',
+	'whitelisttableview' => 'Woglědaś se',
+	'whitelisttablenewdate' => 'Nowy datum:',
+	'whitelisttablechangedate' => 'Datum pśepadnjenja změniś',
+	'whitelisttablesetedit' => 'Wobźěłaś',
+	'whitelisttablesetview' => 'Woglědaś se',
+	'whitelisttableremove' => 'Wótpóraś',
+	'whitelistnewpagesfor' => 'Pśidaj nowe boki běłej lisćinje <b>$1</b><br />
+Wuž pak * abo % ako zastupne znamuško',
+	'whitelistnewtabledate' => 'Datum pśepadnjenja:',
+	'whitelistnewtableedit' => 'Wobźěłaś',
+	'whitelistnewtableview' => 'Woglědaś se',
+	'whitelistnowhitelistedusers' => 'W kupce "{{MediaWiki:Group-restricted}}" wužywarje njejsu.
+Musyš [[Special:UserRights|kupce wužywarjow pśidaś]], pjerwjej až móžoš boki běłej lisćinje wužywarja pśidaś.',
+	'whitelistnewtableprocess' => 'Pśeźěłaś',
+	'whitelistnewtablereview' => 'Pśeglědaś',
+	'whitelistselectrestricted' => '== Mě wobgranicowanego wužywarja wubraś ==',
+	'whitelistpagelist' => 'Boki {{GRAMMAR:genitiw|{{SITENAME}}}} za $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Zda se, až [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], wuměnjenje za toś to rozšyrjenje, njejo se pórědnje instalěrowalo!</font>",
+	'whitelistoverview' => '== Pśeglěd změnow za $1 ==',
+	'whitelistoverviewcd' => "* Datum za [[:$2|$2]] změnja se do '''$1'''",
+	'whitelistoverviewsa' => "* Zapśimk za [[:$2|$2]] staja se do '''$1'''",
+	'whitelistoverviewrm' => '* Zapśimk wótwónoźujo se do [[:$1|$1]]',
+	'whitelistoverviewna' => "* [[:$1|$1]] pśidawa se běłej lisćinje ze zapśimkom '''$2''' a z datumom pśepadnjenja '''$3'''",
+	'whitelistrequest' => 'Póžedanje na dalšne boki stajiś',
+	'whitelistrequestmsg' => '$1 jo pšosył wó zapśimk na {{PLURAL:$3|slědujucy bok|slědujucej boka|slědujuce boki|slědujuce boki}}:
+
+$2',
+	'whitelistrequestconf' => 'Póžedanje na nowe boki jo se pósłało do $1',
+	'whitelistnonrestricted' => "Wužywaŕ '''$1''' njejo wobgranicowany wužywar.
+Toś ten bok dajo se jano na wobgranicowanych wužywarjow nałožyś.",
+	'whitelistnever' => 'nigda',
+	'whitelistnummatches' => '- {{PLURAL:$1|jaden wótpowědnik|$1 wótpowědnika|$1 wótpowědniki|$1 wótpowědnikow}}',
+	'right-editwhitelist' => 'Běłu lisćinu za eksistujucych wužywarjow změniś',
+	'right-restricttowhitelist' => 'Jano boki z běłeje lisćiny wobźěłaś a se woglědaś',
+	'action-editwhitelist' => 'Běłu liscínu za eksistujucych wužywarjow změniś',
+	'action-restricttowhitelist' => 'Jano boki z běłeje lisćiny wobźěłaś a se woglědaś',
+	'group-restricted' => 'Wobgranicowane wužywarje',
+	'group-restricted-member' => 'Wobgranicowany wužywaŕ',
+	'group-manager' => 'Zastojniki',
+	'group-manager-member' => 'Zastojnik',
+);
+
 /** Ewe (Eʋegbe)
  * @author Natsubee
  */
@@ -1310,6 +1370,8 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'whitelist' => 'ホワイトリストページ',
+	'mywhitelistpages' => '自分のページ',
 	'whitelisttablemodifyall' => 'すべて',
 	'whitelisttablemodifynone' => 'なし',
 	'whitelisttablepage' => 'ウィキページ',
@@ -1775,6 +1837,7 @@ Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
@@ -1815,7 +1878,7 @@ Du må [[Special:UserRights|legge brukarar til gruppa]] før du kan legge sider 
 	'whitelistoverviewrm' => '* Fjernar tilgang til [[:$1|$1]]',
 	'whitelistoverviewna' => "* Legg til [[:$1|$1]] til kviteliste med tilgang '''$2''' og utløpsdato '''$3'''.",
 	'whitelistrequest' => 'Spør etter tilgang til fleire sider',
-	'whitelistrequestmsg' => '$1 har etterspurt tilgang til følgjande sider:
+	'whitelistrequestmsg' => '$1 har etterspurt tilgang til følgjande {{PLURAL:$3|sida|sider}}:
 
 $2',
 	'whitelistrequestconf' => 'Etterspurnad om nye sider vart sendt til $1',

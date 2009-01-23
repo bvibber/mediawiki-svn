@@ -316,7 +316,7 @@ $messages['nah'] = array(
 $messages['nl'] = array(
 	'icon-badimage' => 'Onjuist bestand',
 	'icon-badwidth' => 'Onjuiste breedte',
-	'icon-desc' => 'Maakt het mogelijk om afbeeldingen als iconen en icoonlinks te gebruiken',
+	'icon-desc' => 'Maakt het mogelijk om afbeeldingen als iconen en icoonverwijzingen te gebruiken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

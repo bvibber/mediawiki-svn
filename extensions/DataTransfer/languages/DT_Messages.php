@@ -159,6 +159,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'dt-desc' => 'Omogućuje uvoz i izvoz struktuiranih podataka koje sadržane u pozivima šablona',
 	'viewxml' => 'Pregledaj XML',
 	'dt_viewxml_categories' => 'Kategorije',
 	'dt_viewxml_namespaces' => 'Imenski prostori',

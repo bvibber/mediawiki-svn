@@ -255,6 +255,17 @@ $messages['gl'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'filelist' => 'Dateilischt',
+	'filelist-desc' => '[[Special:Filelist|Spezialsyte]] zum di uffegladene Datei aazeige',
+	'filelist-show-list' => 'Zeig Lischt',
+	'filelist-show-gallery' => 'Zeig Galerii',
+	'filelist-image-desc' => 'nidsgi',
+);
+
 /** Hakka (Hak-kâ-fa) */
 $messages['hak'] = array(
 	'filelist-image-desc' => 'mèu-sut',

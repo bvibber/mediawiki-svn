@@ -220,6 +220,13 @@ $messages['sk'] = array(
 	'navigationpopups-desc' => 'Načíta Lupinove vyskakovacie navigačné skripty v MediaWiki',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'navigationpopups-desc' => 'Hapë skripte navigacioni, të Lupin-it, në MediaWiki',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

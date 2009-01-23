@@ -304,6 +304,13 @@ $messages['sk'] = array(
 	'trustedxff-desc' => 'Správa zoznamu dôveryhodných proxy adries ([http://meta.wikimedia.org/wiki/XFF_project Projekt XFF])',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'trustedxff-desc' => 'Mirëmbajtja e listës së adresave Proxy ([http://meta.wikimedia.org/wiki/XFF_project projekti XFF])',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -883,6 +883,21 @@ $messages['sk'] = array(
 	'right-edituser-exempt' => 'Jeho nastavenia nemôžu upravovať iní používatelia',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'edituser-desc' => 'Lejon që përdoruesit me privilegje të ndryshojnë parapëlqimet e përdoruesve tjerë',
+	'edituser' => 'Redakto përdoruesin',
+	'edituser-logout' => "Ç'kyç përdoruesin",
+	'edituser-username' => 'Emri',
+	'edituser-dosearch' => 'Kërko',
+	'edituser-nouser' => 'Përdoruesi i zgjedhur nuk ekziston',
+	'edituser-exempt' => 'Përdoruesi i zgjedhur nuk mund të redaktohet',
+	'right-edituser' => 'Ndrysho parapëlqimet e përdoruesve tjerë',
+	'right-edituser-exempt' => 'Të tjerët nuk mund të ndryshojnë parapëlqimet e këtij përdoruesi',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */

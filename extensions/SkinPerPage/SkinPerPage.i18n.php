@@ -346,6 +346,13 @@ $messages['sk'] = array(
 	'skinperpage-desc' => 'Pridáva značku <tt>&lt;skin&gt;</tt>, ktorá umožňuje na jednotlivej stránke použiť odlišnú tému vzhľadu',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'skinperpage-desc' => 'Vendosë kodin <tt>&lt;skin&gt;</tt> për të përdorur pamje të ndryshme për çdo faqe',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Millosh
  */

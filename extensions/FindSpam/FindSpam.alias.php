@@ -92,6 +92,11 @@ $aliases['sa'] = array(
 	'FindSpam' => array( 'समाप्नोतिअतिपत्राचार' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'FindSpam' => array( 'GjejGabime' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'FindSpam' => array( 'TafutaUharabu' ),

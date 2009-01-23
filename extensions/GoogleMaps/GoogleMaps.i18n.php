@@ -2855,7 +2855,7 @@ $wgGoogleMapsMessages['nl'] = array(
 	'gm-incompatible-browser-link' => 'Klik hier voor een lijst met compatibele browsers.',
 	'gm-no-editor' => 'Helaas ondersteunt uw browser het interactief maken van kaarten niet. Probeer het eens met de nieuwste versie van <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Mac, Linux en Windows) of <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
 	'gm-balloon-title' => 'Titel:',
-	'gm-balloon-link-article' => 'Link naar deze pagina (optioneel):',
+	'gm-balloon-link-article' => 'Verwijzing naar deze pagina (optioneel):',
 	'gm-make-marker' => 'Beschrijving (wikiopmaak toegestaan):',
 	'gm-remove' => 'verwijderen',
 	'gm-caption' => 'Omschrijving',
@@ -2922,9 +2922,11 @@ $wgGoogleMapsMessages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $wgGoogleMapsMessages['nn'] = array(
+	'gm-desc' => 'Enkelt oppretta kart med wikifiserte markørar',
 	'gm-incompatible-browser' => 'Du må bruke ein <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">kompatibel nettlesar</a> for å sjå kartet som skulle ha vore her.',
 	'gm-incompatible-browser-link' => 'Klikk her for å sjå ei liste over nettlesarar dette fungerer i.',
 	'gm-no-editor' => 'Diverre støttar ikkje nettlesaren din dei interaktive kartlagingstenestene. Prøv den nyaste versjonen av <a href="http://www.microsoft.com/norge/windows/ie/default.mspx">Internet Explorer</a> (Windows) eller <a href="http://www.mozilla-europe.org/no/products/firefox/">Firefox</a> (Windows, Mac og Linux).',

@@ -595,6 +595,8 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'showprocesslist-user' => 'کارونکی',
+	'showprocesslist-db' => 'توکبنسټ',
+	'showprocesslist-command' => 'بولۍ',
 	'showprocesslist-time' => 'وخت',
 	'showprocesslist-state' => 'ايالت',
 	'showprocesslist-info' => 'مالومات',

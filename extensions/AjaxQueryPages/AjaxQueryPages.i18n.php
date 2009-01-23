@@ -151,6 +151,13 @@ $messages['grc'] = array(
 	'ajax-qp-desc' => 'Προσθέτει προγραμματιστικὴ γραφὴ AJAX εἰς δέλτους πεύσεως ὅπως ἡ [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'ajax-qp-desc' => 'Fiegt AJAX-Funktione in Spezialsyten yy, wie [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

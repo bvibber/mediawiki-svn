@@ -245,6 +245,13 @@ $messages['sk'] = array(
 	'psinotocnum-desc' => 'Nové magické slovo „<nowiki>__NOTOCNUM__</nowiki>”',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'psinotocnum-desc' => 'Fjalë e re magjike "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

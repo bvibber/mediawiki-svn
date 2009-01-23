@@ -105,6 +105,13 @@ $messages['gl'] = array(
 	'tab0-desc' => 'Engade a lapela "0", ligando á páxina de edición da primeira sección da páxina',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'tab0-desc' => 'Fiegt e „0“-Tab zue, wu mer dr erscht Abschnitt vun ere Syte demit cha bearbeite',
+);
+
 /** Hebrew (עברית) */
 $messages['he'] = array(
 	'tab0-desc' => 'הוספת לשונית "0" המקשרת לעריכת הפסקה הראשונה בדף',

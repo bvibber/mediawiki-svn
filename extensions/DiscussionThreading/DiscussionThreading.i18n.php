@@ -68,6 +68,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'discussionthreading-desc' => 'Dodaje threading na stranicu za razgovor',
 	'discussionthreading-replysection' => 'odgovor',
 	'discussionthreading-replysectionhint' => 'Odgovori na ovaj post',
 	'discussionthreading-threadnewsection' => 'novo',

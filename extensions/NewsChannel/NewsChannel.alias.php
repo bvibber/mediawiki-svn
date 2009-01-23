@@ -102,6 +102,11 @@ $aliases['sa'] = array(
 	'NewsChannel' => array( 'वृत्तवाहिनी' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'NewsChannel' => array( 'KanalLajmesh' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'NewsChannel' => array( 'Nyhetskanal' ),

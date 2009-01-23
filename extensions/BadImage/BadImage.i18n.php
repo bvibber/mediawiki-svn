@@ -1892,11 +1892,19 @@ $messages['sv'] = array(
 
 /** Silesian (Ślůnski)
  * @author Herr Kriss
+ * @author Ozi64
  */
 $messages['szl'] = array(
+	'badimages' => 'Felerny wykoz uobrozkůw',
 	'badimages-add-btn' => 'Dodej',
 	'badimages-name' => 'Mjano:',
 	'badimages-reason' => 'Čymu:',
+	'badimages-remove' => '(wyćep)',
+	'badimages-remove-btn' => 'Wyćep',
+	'badimages-removed' => 'Wyćepńynto $1 ze wykozu',
+	'badimages-log-name' => 'Wykoz felernych uobrozkůw',
+	'badimages-log-header' => 'Wykoz půmjyńań we [[{{MediaWiki:Badimages-page}}|wykoźe felernych uobrozkůw]].',
+	'badimages-log-remove' => 'wyćepnył [[$1]] ze wykozu felernych uobrozkůw',
 );
 
 /** Tamil (தமிழ்)

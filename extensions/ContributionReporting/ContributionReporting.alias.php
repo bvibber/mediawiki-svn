@@ -126,6 +126,13 @@ $aliases['sa'] = array(
 	'ContributionTotal' => array( 'सकलयोगदान' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'ContributionHistory' => array( 'HistoriaeKontributit' ),
+	'ContributionStatistics' => array( 'StatistikateKontributi' ),
+	'ContributionTotal' => array( 'GjithsejKontributi' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'ContributionHistory' => array( 'HistoriayaWachangiaji' ),

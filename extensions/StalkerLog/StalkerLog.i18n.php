@@ -76,12 +76,13 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Revolus
  */
 $messages['de'] = array(
 	'stalkerlog-desc' => 'Fügt ein [[Special:Log/stalkerlog|Logbuch]] der An- und Abmeldungen hinzu',
-	'stalkerlog-log-login' => 'abgemeldet.',
-	'stalkerlog-log-logout' => 'angemeldet.',
+	'stalkerlog-log-login' => 'angemeldet.',
+	'stalkerlog-log-logout' => 'abgemeldet.',
 	'stalkerlog-log-type' => 'Authentifizierungslogbuch',
 	'stalkerlog-log-text' => 'Dies ist das Logbuch der An- und Abmeldungen.',
 );
@@ -151,6 +152,17 @@ $messages['gl'] = array(
 	'stalkerlog-log-text' => 'Este é un rexistro de accesos e saídas do sistema.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'stalkerlog-desc' => 'Fiegt e [[Special:Log/stalkerlog|Logbuech]] vu dr Aa- und Abmäldige zue',
+	'stalkerlog-log-login' => 'aagmäldet.',
+	'stalkerlog-log-logout' => 'abgmäldet.',
+	'stalkerlog-log-type' => 'Authentifizierigslogbuech',
+	'stalkerlog-log-text' => 'Des isch s Logbuech vu dr Aa- un Abmäldige.',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
@@ -200,9 +212,10 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'stalkerlog-desc' => '利用者のログインとログアウトの[[Special:Log/stalkerlog|ログ]]を追加する',
+	'stalkerlog-desc' => '利用者のログインとログアウトの[[Special:Log/stalkerlog|記録]]を追加する',
 	'stalkerlog-log-login' => 'ログインしました。',
 	'stalkerlog-log-logout' => 'ログアウトしました。',
 	'stalkerlog-log-type' => '利用者認証記録',

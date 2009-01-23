@@ -290,6 +290,24 @@ Per favor reporta isto como un error in le software.',
 	'smoothgallery-javascript-disabled' => 'JavaScript es requirite pro vider iste galeria correctemente.',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'smoothgallery' => 'スムースギャラリー',
+	'smoothgallery-desc' => 'アップロードされている画像を使ってギャラリーを作ることができるようにする。
+SmoothGallery のほとんどのオプションを利用可能とする',
+	'smoothgallery-title' => 'スムースギャラリー',
+	'smoothgallery-smoothgallerytitle' => 'スムースギャラリー: $1',
+	'smoothgallery-error' => '<b>スムースギャラリーのエラー:</b>',
+	'smoothgallery-gallery-not-found' => '要求したギャラリーは存在しません。',
+	'smoothgallery-not-found' => 'このギャラリーには画像がありません。最低でも1つは画像を指定してください。',
+	'smoothgallery-no-images' => 'このギャラリーには画像がありません。指定した{{PLURAL:$3|画像が|画像がすべて}}存在するか確認してください。次の画像は見つかりませんでした: $1',
+	'smoothgallery-invalid-images' => '要求された次の画像は不正な形式です: $1',
+	'smoothgallery-unexpected-error' => '予期せぬエラーが発生しました。バグ報告を提出してください。',
+	'smoothgallery-javascript-disabled' => 'このギャラリーを正しく閲覧するには JavaScript が必要です。',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

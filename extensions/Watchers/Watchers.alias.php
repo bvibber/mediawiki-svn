@@ -68,6 +68,11 @@ $aliases['hu'] = array(
 	'Watchers' => array( 'Figyelők' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Watchers' => array( 'ウォッチしている利用者' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Watchers' => array( 'អ្នកតាមដាន' ),

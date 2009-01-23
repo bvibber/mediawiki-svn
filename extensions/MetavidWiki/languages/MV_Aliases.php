@@ -109,6 +109,11 @@ $aliases['sa'] = array(
 	'MvVideoFeed' => array( 'मेविचलछायाप्रविष्टी' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'MediaSearch' => array( 'KërkimMediash' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'MediaSearch' => array( 'Mediasökning' ),

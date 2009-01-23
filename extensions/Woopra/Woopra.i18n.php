@@ -285,6 +285,13 @@ $messages['sk'] = array(
 	'woopra-desc' => 'Umožňuje fungovanie [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vašej MediaWiki',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'woopra-desc' => 'Lejon që [http://www.woopra.com/ Softueri Për Ndjekje Woopra] të punojë për MediaWiki instalimin tuaj',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -151,6 +151,13 @@ $messages['gl'] = array(
 	'fixedimage-desc' => 'Engade a etiqueta <tt><nowiki><fundraising></nowiki></tt> como unha imaxe',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'fixedimage-desc' => 'Ergänzt s <tt><nowiki><fundraising></nowiki></tt>-Tag',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -345,6 +352,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'fixedimage-desc' => 'Pridáva značku <tt><nowiki><fundraising></nowiki></tt> ako obrázok',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'fixedimage-desc' => 'Vendos shenjë <tt><nowiki><fundraising></nowiki></tt> në figurë',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

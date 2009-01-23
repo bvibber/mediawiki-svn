@@ -52,7 +52,7 @@ $aliases['hu'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'LogEntry' => array( 'ログ項目' ),
+	'LogEntry' => array( '記録項目' ),
 );
 
 /** Macedonian (Македонски) */

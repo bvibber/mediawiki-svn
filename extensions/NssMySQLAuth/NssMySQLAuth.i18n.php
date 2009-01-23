@@ -324,7 +324,11 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'accountmanager' => 'アカウントマネージャー',
+	'am-username' => 'ユーザー名',
 	'am-active' => '有効',
+	'nss-save-changes' => '変更を保存',
+	'nss-create-account-header' => '新しいアカウントを作成',
+	'nss-create-account' => 'アカウントの作成',
 );
 
 /** Khmer (ភាសាខ្មែរ)

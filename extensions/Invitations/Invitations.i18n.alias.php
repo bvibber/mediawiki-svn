@@ -160,6 +160,11 @@ $aliases['sa'] = array(
 	'Invitations' => array( 'आमन्त्रण' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'Invitations' => array( 'Ftesa' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Invitations' => array( 'Inbjudningar' ),

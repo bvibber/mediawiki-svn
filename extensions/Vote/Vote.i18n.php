@@ -1279,9 +1279,22 @@ riddler|Riddler',
 
 /** Albanian (Shqip)
  * @author Ergon
+ * @author Puntori
  */
 $messages['sq'] = array(
 	'vote' => 'Voto',
+	'vote-current' => "Vota juaj momentale është pë '''$1'''.",
+	'vote-caption' => 'Zgjedhja juaj:',
+	'vote-submit' => 'Votoni',
+	'vote-registered' => 'Vota juaj u regjistrua.',
+	'vote-view-results' => 'Shiko rezultatet',
+	'vote-results' => 'Rezultatet e votimit',
+	'vote-results-choice' => 'Zgjedhja',
+	'vote-results-count' => 'Numërimi',
+	'vote-results-none' => 'Asnjë votë nuk është regjistruar në këtë kohë.',
+	'vote-login' => '$1 për të votuar.',
+	'vote-login-link' => 'kyçu',
+	'vote-invalid-choice' => 'Duhet të zgjidhni një nga zgjedhjet e mundshme.',
 );
 
 /** Seeltersk (Seeltersk)

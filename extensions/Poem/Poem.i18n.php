@@ -403,6 +403,13 @@ $messages['sk'] = array(
 	'poem-desc' => 'Pridáva značku <tt>&lt;poem&gt;</tt> pre formátovanie básní',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'poem-desc' => 'Vendosë kodin <tt>&lt;poem&gt;</tt> për formatim të poezive',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Millosh
  */

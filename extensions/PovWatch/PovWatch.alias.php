@@ -39,6 +39,11 @@ $aliases['hr'] = array(
 	'PovWatch' => array( 'Predbilježeno_praćenje' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'PovWatch' => array( '編集合戦の監視' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'PovWatch' => array( 'Staandpuntsvolglieste' ),

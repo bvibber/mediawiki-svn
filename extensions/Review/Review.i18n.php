@@ -1332,6 +1332,11 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'review_sidebar_title' => 'Revisão',
 	'review-desc' => 'A ressuscitada funcionalidade de [[Special:Review|validação]]',
+	'review_topics' => "# O seguinte é uma lista de tópicos e intervalos para a extensão de revisão.
+# Cada tópico é definido por uma linha de cinco valores, separados por ':' (todas as outras linhas são ignoradas).
+# A ordem é: chave numérica (>0), nome, intervalo máximo (>1; 2=sim/não), significado do menor valor (p.ex. 'mau'), significado do maior valor (p.ex. 'bom').
+1:Qualidade:5:má:boa
+2:Pronto para 1.0:2:não:sim",
 	'review_topic_page' => 'Tópicos de revisão',
 	'review_sidebar_explanation' => "A caixa de seleção mais à esquerda significa sempre 'sem opinião'.",
 	'review_save' => 'Gravar revisão',
@@ -1355,6 +1360,7 @@ As suas outras classificações serão fundidas nesta onde selecionou 'sem opini
 	'review_user_reviews' => '<small>(revisões deste utilizador)</small>',
 	'review_user_page_list' => 'O utilizador reviu as seguintes páginas:',
 	'review_user_details_link' => '(detalhes)',
+	'review_do_merge' => 'Fundir as minhas revisões de outras versões desta página nesta',
 	'review_has_been_stored' => "<span id='review_has_been_stored'>A sua revisão analisada foi guardada!</span>",
 	'revision_review_this_page_version_link' => 'Rever esta versão da página.',
 	'review_page_review' => 'Revisão da página "$1"',

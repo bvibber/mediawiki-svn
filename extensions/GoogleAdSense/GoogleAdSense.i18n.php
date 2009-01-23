@@ -107,6 +107,13 @@ $messages['gl'] = array(
 	'googleadsense-desc' => 'Engade [http://www.google.com/adsense Google AdSense] á barra lateral',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'googleadsense-desc' => 'Fiegt [http://www.google.com/adsense Google AdSense] in d Syteleischte yy',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -268,6 +275,13 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'googleadsense-desc' => 'Pridá do postranného panela [http://www.google.com/adsense Google AdSense]',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'googleadsense-desc' => 'Vendosë [http://www.google.com/adsense Google AdSense] në kolonat anësore',
 );
 
 /** Sundanese (Basa Sunda)

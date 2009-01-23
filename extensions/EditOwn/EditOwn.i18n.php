@@ -112,6 +112,13 @@ $messages['gl'] = array(
 	'editown-desc' => 'Os usuarios sen o dereito de editar só poden editar as páxinas que crearon',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'editown-desc' => 'Benutzer ohni s editall-Rächt chenne nume sälber aagleiti Syte bearbeite',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */
@@ -271,6 +278,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'editown-desc' => 'Používatelia bez oprávnenia editall môžu upravovať iba stránky, ktoré vytvorili',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'editown-desc' => 'Përdoruesit pa të drejtë redaktimi mund të redaktojnë vetëm faqet që kanë krijuar vetë',
 );
 
 /** Swedish (Svenska)

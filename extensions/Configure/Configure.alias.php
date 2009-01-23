@@ -259,6 +259,12 @@ $aliases['sa'] = array(
 	'ViewConfig' => array( 'संकूटसङ्केतपश्यति' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'Configure' => array( 'Konfiguro' ),
+	'Extensions' => array( 'Zgjerime' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Configure' => array( 'Konfigurera' ),

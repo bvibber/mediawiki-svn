@@ -145,6 +145,15 @@ $messages['gl'] = array(
 	'spl3_nosubpages' => '$1 non ten subpáxinas para poñer nunha listaxe.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'spl3-desc' => 'E Lischt vu Untersyte zuen ere Syte mit em <tt><nowiki><splist /></nowiki></tt>-Tag automatisch aalege.',
+	'spl3_debug' => 'Nit bekannter Wärt fir Option $1.',
+	'spl3_nosubpages' => '$1 het kei Untersyte.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

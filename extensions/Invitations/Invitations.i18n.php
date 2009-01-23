@@ -161,6 +161,31 @@ $messages['de'] = array(
 	'invitations-invite-success' => 'Du hast erfolgreich $1 zu dieser Softwarefunktion eingeladen!',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'invite-logpage' => 'Protokol pśepšosenja',
+	'invite-logpagetext' => 'To jo protokol wužywarjow, kótarež jaden drugego pśepšosuju, aby wužywali wšake softwarowe funkcije  .',
+	'invite-logentry' => 'jo pśepšosył $1, aby wón wužywał funkciju <i>$2</i>.',
+	'invitations' => 'Pśepšosenja na softwarowe funkcije zastojaś',
+	'invitations-desc' => 'Zmóžnja [[Special:Invitations|zastojanje nowych funkcijow]] pśez jich wobgranicowanje na system, kótaryž pomina se pśepšosenje',
+	'invitations-invitedlist-description' => 'Maš pśistup na slědujuce softwarowe funkcije, kótarež pominaju se pśepšosenje. Aby zastojał pśepšosenja za jadnotliwu funkciju, klikni na jeje mě.',
+	'invitations-invitedlist-none' => 'Njamaš pśepšosenje za wužywanje softwarowych funkcijow, kótarež pominaju se pśepšosenje.',
+	'invitations-invitedlist-item-count' => '{{PLURAL:$1|Jadno pśepšosenje|$1 pśepšoseni|$1 pśepšosenja|$1 pśepšosenjow}} k dispoziciji',
+	'invitations-pagetitle' => 'Softwarowe funkcije na zakłaźe pśepšosenja',
+	'invitations-uninvitedlist-description' => 'Njamaš pśistup na toś te softwarowe funkcije, kótarež pominaju se na pśepšosenje.',
+	'invitations-feature-pagetitle' => 'Zastojanje pśepšosenjow - $1',
+	'invitations-feature-access' => 'Maš tuchylu pśistup, aby wužywał <i>$1</i>.',
+	'invitations-feature-notallowed' => 'Njamaš pśistup, aby wužywał <i>$1</i>.',
+	'invitations-inviteform-title' => 'Wužywarja pśepšosyś, aby wón wužywał $1',
+	'invitations-inviteform-username' => 'Wužywaŕ, kótaryž ma se pśepšosyś',
+	'invitations-inviteform-submit' => 'Pśepšosyś',
+	'invitations-error-baduser' => 'Zda se, až wužywaŕ, kótaregož sy pódał, njeeksistěrujo.',
+	'invitations-error-alreadyinvited' => 'Wužywaŕ, kótaregož sy pódał, ma južo pśistup k toś tej funkciji!',
+	'invitations-invite-success' => 'Sy wuspěšnje pśepšosył $1, aby wón wužywał toś tu funkciju!',
+);
+
 /** Greek (Ελληνικά)
  * @author Απεργός
  */

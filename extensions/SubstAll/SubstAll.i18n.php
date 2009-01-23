@@ -109,6 +109,13 @@ $messages['gl'] = array(
 	'substall-desc' => 'Crea unha etiqueta <nowiki><substall></nowiki> que expande todos os modelos en sintaxe wiki',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'substall-desc' => 'Legt e &lt;substall&gt;-Tag aa, wu alli Vorlage uf däre Syte expandiert',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -222,6 +229,13 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'substall-desc' => 'Vytvorí značku <nowiki><substall></nowiki>, ktorá rozbalí všetky šablóny na wiki syntax.',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'substall-desc' => 'Krijon kodin <nowiki><substall></nowiki> që zgjeron të gjitha stampat në wikisintaksë',
 );
 
 /** Sundanese (Basa Sunda)

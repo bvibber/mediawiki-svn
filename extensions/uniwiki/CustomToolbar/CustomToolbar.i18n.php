@@ -946,14 +946,41 @@ Per favor verifica que tu blocator de pop-up lo permitte.',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $wgCustomToolbarMessages['ja'] = array(
+	'ct-desc' => '拡張可能なツールバーを追加する',
 	'ct_bold_sample' => '太字テキスト',
+	'ct_bold_tip_ins' => '太字テキストを挿入する',
+	'ct_bold_tip_wrap' => 'このテキストを太字にする',
 	'ct_bold_caption' => '太字',
 	'ct_italic_sample' => '斜体テキスト',
+	'ct_italic_tip_ins' => '斜体テキストを挿入する',
+	'ct_italic_tip_wrap' => 'このテキストを斜体にする',
 	'ct_italic_caption' => '斜体',
+	'ct_internal_sample' => 'ページの名前',
+	'ct_internal_tip_ins' => '内部リンクを挿入する',
+	'ct_internal_tip_wrap' => 'このテキストを内部リンクにする',
+	'ct_internal_caption' => '内部リンク',
+	'ct_external_tip_ins' => '外部リンクを挿入する',
+	'ct_external_tip_wrap' => 'このテキストを外部リンクにする',
+	'ct_external_caption' => '外部リンク',
+	'ct_image_tip' => '画像を挿入する',
 	'ct_image_caption' => '画像の追加',
+	'ct_attachment_tip' => 'ファイルへのリンクを挿入する',
+	'ct_attachment_caption' => 'ファイルリンクの追加',
+	'ct_math_sample' => 'ここに LaTeX の数式を挿入',
+	'ct_math_tip_ins' => '数式 (LaTeX) を挿入する',
+	'ct_math_tip_wrap' => 'このテキストを数式 (LaTeX) にする',
+	'ct_math_caption' => '数式',
+	'ct_nowiki_sample' => 'ここに書式なしテキストを挿入',
+	'ct_nowiki_tip_ins' => 'ウィキ書式設定を無視する',
+	'ct_nowiki_tip_wrap' => 'このテキストのウィキ書式設定を無視する',
+	'ct_nowiki_caption' => 'ノーウィキ',
+	'ct_horizontal_tip' => '水平線を挿入する (使用は控えめに)',
+	'ct_horizontal_caption' => '水平線',
+	'ct_upload' => '$1をアップロードする',
 	'ct_user_user' => 'ユーザー',
 	'ct_user_sample' => 'ユーザー名',
 );
@@ -1417,16 +1444,25 @@ $wgCustomToolbarMessages['pt'] = array(
 	'ct_image_tip' => 'Inserir uma imagem',
 	'ct_image_caption' => 'Adicionar imagem',
 	'ct_attachment_tip' => 'Inserir um anexo',
-	'ct_attachment_caption' => 'Adicionar um anexo',
+	'ct_attachment_caption' => 'Adicionar anexo',
+	'ct_math_sample' => 'Insira fórmula LaTeX aqui',
+	'ct_math_tip_ins' => 'Inserir fórmula matemática (LaTeX)',
+	'ct_math_tip_wrap' => 'Tornar este texto uma fórmula matemática (LaTeX)',
 	'ct_math_caption' => 'Fórmula',
 	'ct_nowiki_sample' => 'Inserir texto não formatado aqui',
 	'ct_nowiki_tip_ins' => 'Ignorar formatação wiki',
 	'ct_nowiki_tip_wrap' => 'Ignorar formatação wiki neste texto',
+	'ct_nowiki_caption' => 'Sem wiki',
 	'ct_horizontal_tip' => 'Inserir uma linha horizontal (usar com moderação)',
 	'ct_horizontal_caption' => 'Linha horizontal',
 	'ct_upload' => 'Carregar $1',
+	'ct_select' => 'Selecionar $1 para carregar',
+	'ct_caption' => 'Adicionar legenda (opcional)',
+	'ct_link' => 'Adicionar nome de ligação (opcional)',
 	'ct_submit' => 'Ir!',
 	'ct_close' => 'Fechar janela',
+	'ct_success' => 'Carregamento do ficheiro com sucesso!',
+	'ct_popupblocked' => 'A janela popup do carregemento foi impedida de abrir. Por favor, verifique o seu bloqueador de janelas popup.',
 	'ct_user_user' => 'Utilizador',
 	'ct_user_tip' => 'Inserir uma ligação para uma página de utilizador',
 	'ct_user_caption' => 'Ligação de utilizador',
@@ -1708,6 +1744,13 @@ $wgCustomToolbarMessages['sv'] = array(
 	'ct_user_tip' => 'Sätt in en länk till en användarsida',
 	'ct_user_caption' => 'Användarlänk',
 	'ct_user_sample' => 'Användarnamn',
+);
+
+/** Silesian (Ślůnski)
+ * @author Ozi64
+ */
+$wgCustomToolbarMessages['szl'] = array(
+	'ct_internal_sample' => 'MjanoZajty',
 );
 
 /** Telugu (తెలుగు)

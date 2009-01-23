@@ -380,6 +380,13 @@ $messages['sk'] = array(
 	'charinsert-desc' => 'Umožňuje vytvoriť JavaScriptové pole na [[MediaWiki:Edittools|vkladanie neštandardných znakov]]',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'charinsert-desc' => 'Lejon krijimin e kutive JavaScript për [[MediaWiki:Edittools|inserting karaktere jo standarde]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

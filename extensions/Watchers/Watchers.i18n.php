@@ -422,6 +422,20 @@ $messages['it'] = array(
 	'watchers_less_than_x' => 'La pagina è osservata da meno di $1 {{PLURAL:$1|utente|utenti}}.',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'watchers' => 'ウォッチしている利用者',
+	'watchers-desc' => '[[Special:Watchers|どの利用者がページをウォッチリストに入れている]]のか表示する',
+	'watchers_link_title' => '誰がこのページをウォッチしているのか',
+	'watchers_error_article' => "'''エラー:''' ページが存在しません。",
+	'watchers_header' => '「$1」をウォッチしている利用者',
+	'watchers_noone_watches' => '誰もこのページをウォッチしていません。',
+	'watchers_x_or_more' => '$1人以上の利用者がこのページをウォッチリストに入れています。',
+	'watchers_less_than_x' => '$1人未満の利用者がこのページをウォッチリストに入れています。',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  * @author Pras

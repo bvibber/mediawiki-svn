@@ -240,6 +240,13 @@ $messages['sk'] = array(
 	'javascript-desc' => 'Pridáva uniwiki.js na každú stránku obsahujúci JavaScriptový kód spoločný pre rozšírenia Uniwiki',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'javascript-desc' => 'Vendosë uniwiki.js në çdo faqe që përmban kodin JavaScript të ndarë mes prapashtesave në Uniwiki',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

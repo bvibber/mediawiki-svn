@@ -253,6 +253,13 @@ $messages['sk'] = array(
 	'metakeywords-desc' => 'Umožňuje konfiguráciu značiek <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> v závislosti od menného priestoru',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'metakeywords-desc' => 'Lejon konfigurimin e kodeve <tt><nowiki><meta "keywords"></nowiki></tt> dhe <tt><nowiki><meta "description"></nowiki></tt> për çdo hapësirë',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

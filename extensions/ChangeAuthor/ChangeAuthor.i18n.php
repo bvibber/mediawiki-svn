@@ -405,10 +405,10 @@ $messages['dsb'] = array(
 	'changeauthor-comment' => 'Komentar:',
 	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Awtora|Awtorowu|Awtorow|Awtorow}} změniś',
 	'changeauthor-explanation-multi' => 'Z toś tym formularom móžoš awtorow wersijow změniś.
-Změń jadnorje jadne wužywarske mě abo někotare wužywarske mjenja ze slědujuceje lisćiny, pśidaj komentar (opcionalny) a klikni na tłocašk  "Awtorow změniś".',
+Změń jadnorje jadno wužywarske mě abo někotare wužywarske mjenja ze slědujuceje lisćiny, pśidaj komentar (opcionalny) a klikni na tłocašk  "Awtorow změniś".',
 	'changeauthor-changeauthors-single' => 'Awtora změniś',
 	'changeauthor-explanation-single' => 'Z toś tym formularom móžoš awtora wersije změniś.
-Změń jadnorje jadne wužywarske mě ze slědujuceje lisćiny, pśidaj komentar (opcionalny) a klikni na tłocašk "Awtora změniś".',
+Změń jadnorje jadno wužywarske mě ze slědujuceje lisćiny, pśidaj komentar (opcionalny) a klikni na tłocašk "Awtora změniś".',
 	'changeauthor-invalid-username' => 'Njepłaśiwe wužywarske mě "$1".',
 	'changeauthor-nosuchuser' => 'Njejo wužywaŕ "$1".',
 	'changeauthor-revview' => 'Wersija #$1 z $2',

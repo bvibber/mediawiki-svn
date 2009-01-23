@@ -730,13 +730,13 @@ $messages['nn'] = array(
 	'deletebatch-help' => 'Slett ein serie av sider. Du kan òg utføra ei enkel sletting, eller sletta sider lista opp i ei fil.
 Vel ein brukar som skal bli vist i sletteloggen.
 Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteårsak skilt frå tittelen med «|».',
-	'deletebatch-caption' => 'Sidelista',
+	'deletebatch-caption' => 'Sidelista:',
 	'deletebatch-title' => 'Slett serie',
 	'deletebatch-link-back' => 'Du kan gå attende til utvidinga',
-	'deletebatch-as' => 'Køyr skriptet som',
+	'deletebatch-as' => 'Køyr skriptet som:',
 	'deletebatch-both-modes' => 'Vel éi sida eller ei lista over sider.',
 	'deletebatch-or' => '<b>eller</b>',
-	'deletebatch-page' => 'Sider som skal bli sletta',
+	'deletebatch-page' => 'Sider som skal bli sletta:',
 	'deletebatch-reason' => 'Sletteårsak',
 	'deletebatch-processing' => 'slettar sidene $1',
 	'deletebatch-from-file' => 'frå fillista',
@@ -931,13 +931,13 @@ $messages['sk'] = array(
 	'deletebatch-help' => 'Zmazanie viacerých stránok. Môžete buď vykonať jedno zmazanie alebo zmazať stránky uvedené v súbore.
 Vyberte, ktorý používateľ sa zobrazí v záznamoch zmazania.
 Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne aj dôvod zmazania oddelený znakom „|”.',
-	'deletebatch-caption' => 'Zoznam stránok',
+	'deletebatch-caption' => 'Zoznam stránok:',
 	'deletebatch-title' => 'Zmazať dávku',
 	'deletebatch-link-back' => 'Môžete sa vrátiť späť na rozšírenie',
-	'deletebatch-as' => 'Spustiť skript ako',
+	'deletebatch-as' => 'Spustiť skript ako:',
 	'deletebatch-both-modes' => 'Prosím, vyberte buď zadanú stránku alebo zadaý zoznam stránok.',
 	'deletebatch-or' => '<b>ALEBO</b>',
-	'deletebatch-page' => 'Stránky, ktoré budú zmazané',
+	'deletebatch-page' => 'Stránky, ktoré budú zmazané:',
 	'deletebatch-reason' => 'Dôvod zmazania',
 	'deletebatch-processing' => 'mažú sa stránky $1',
 	'deletebatch-from-file' => 'zo zoznamu v súbore',

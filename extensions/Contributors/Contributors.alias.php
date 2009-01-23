@@ -147,6 +147,11 @@ $aliases['sa'] = array(
 	'Contributors' => array( 'योगदाता' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'Contributors' => array( 'Kontribues' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Contributors' => array( 'Wachangiaji' ),

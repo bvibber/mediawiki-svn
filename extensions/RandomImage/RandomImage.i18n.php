@@ -264,6 +264,13 @@ $messages['sk'] = array(
 	'randomimage-desc' => 'Poskytuje náhodný výber multimediálnych súborov pomocou značky <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'randomimage-desc' => 'Mundëson hapje të rastësishme të mediave duke përdorur <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

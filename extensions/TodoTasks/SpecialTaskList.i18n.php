@@ -119,6 +119,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'tasklist' => 'Сьпіс заданьняў',
@@ -137,7 +138,7 @@ $messages['be-tarask'] = array(
 	'tasklistchooseproj' => 'Выберыце праект:',
 	'tasklistprojdisp' => 'Паказаць',
 	'tasklistbyname' => '== Сьпіс заданьняў для %s ==',
-	'tasklistnoprojects' => "Памылка: верагодна Вы ўключылі '''\$wgUseProjects''', але яшчэ ня стварылі [[MediaWiki:TodoTasksValidProjects]]. Глядзіце падрабязнасьці на [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions].",
+	'tasklistnoprojects' => "Памылка: верагодна Вы ўключылі '''\$wgUseProjects''', але яшчэ не стварылі [[MediaWiki:TodoTasksValidProjects]]. Глядзіце падрабязнасьці ў [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 інструкцыях па ўсталёўцы].",
 	'tasklistemailbody' => ',
 
 Нехта прызначыў Вам новае заданьне ў %s.

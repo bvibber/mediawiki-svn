@@ -100,6 +100,11 @@ $aliases['sa'] = array(
 	'MultiUpload' => array( 'अनेकभारंन्यस्यति' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'MultiUpload' => array( 'MultiNgarkim' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'MultiUpload' => array( 'Multiuppladdning' ),

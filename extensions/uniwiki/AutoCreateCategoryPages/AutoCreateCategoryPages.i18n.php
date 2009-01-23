@@ -209,6 +209,16 @@ Hic es listate tote le paginas in le categoria "$1", e omne subcategoria existen
 	'autocreatecategorypages-editor' => 'Creator automatic de categorias',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'autocreatecategorypages-desc' => '保存時に未作成のカテゴリページを自動的に作成する',
+	'autocreatecategorypages-stub' => 'これはカテゴリページです。カテゴリ「$1」に入っているすべてのページと、存在する場合は、カテゴリ「$1」のすべてのサブカテゴリを一覧します。',
+	'autocreatecategorypages-createdby' => '拡張機能 AutoCreateCategoryPages によって自動的に作成',
+	'autocreatecategorypages-editor' => '自動カテゴリ作成係',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */

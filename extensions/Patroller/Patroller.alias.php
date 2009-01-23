@@ -62,6 +62,11 @@ $aliases['sa'] = array(
 	'Patroller' => array( 'पॅटरोलर' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'Patroller' => array( 'Patrullues' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Patroller' => array( 'Mwanadoria' ),

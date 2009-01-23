@@ -16,10 +16,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'authors-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'authors_authors' => '{{Identical|Author}}',
 );
 
 /** Arabic (العربية)
@@ -195,10 +197,11 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'authors-desc' => 'ページへの投稿者のリストを追加',
+	'authors-desc' => '各ページへ投稿者のリストを追加する',
 	'authors_authors' => '著作者',
 	'authors_anonymous' => '匿名',
 );

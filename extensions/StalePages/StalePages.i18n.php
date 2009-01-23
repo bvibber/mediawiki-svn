@@ -133,6 +133,15 @@ $messages['gl'] = array(
 	'stalepages-summary' => 'Esta é unha lista coas páxinas que non foron editadas {{PLURAL:$1|no último día|nos últimos $1 días}}.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'stalepages' => 'Alti Syte',
+	'stalepages-desc' => 'Legt e [[Special:Stalepages|Lischt vu Syte]] aa, wu schon e Rung nimi dra gschafft woren isch',
+	'stalepages-summary' => 'Des isch e Lischt vu dr Syte, wu {{PLURAL:$1|in dr letschte 24 Stunde|in dr letschte $1 Täg}} nimi dra gschafft woren isch.',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -182,7 +191,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'stalepages' => 'Paginas stagnate',
 	'stalepages-desc' => 'Genera un [[Special:Stalepages|lista de paginas]] que non ha essite modificate recentemente',
-	'stalepages-summary' => 'Isto es un lista de paginas que non ha essite modificate durante le ultime $1 dies.',
+	'stalepages-summary' => 'Isto es un lista de paginas que non ha essite modificate in le ultime $1 {{PLURAL:$1|die|dies}}.',
 );
 
 /** Italian (Italiano)
@@ -274,11 +283,12 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'stalepages' => 'Forelda sider',
 	'stalepages-desc' => 'Oppretter ei [[Special:Stalepages|liste over sider]] som ikkje er endra i det siste',
-	'stalepages-summary' => 'Dette er ei liste over sider som ikkje er endra dei siste $1 dagane.',
+	'stalepages-summary' => 'Dette er ei liste over sider som ikkje har vortne endra {{PLURAL:$1|den siste dagen|dei siste $1 dagane}}.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

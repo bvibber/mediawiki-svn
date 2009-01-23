@@ -112,6 +112,7 @@ $messages['am'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Ciphers
  * @author OsamaK
  * @author Ouda
  */
@@ -126,18 +127,23 @@ $messages['ar'] = array(
 	'tasks_create_header' => 'إنشاء مهمة جديدة',
 	'tasks_existing_header' => 'المهام الموجودة',
 	'tasks_noone' => 'لا أحد',
+	'tasks_assign_me' => 'مسندة لي',
+	'tasks_assign_to' => 'مسندة إلى',
+	'tasks_unassign_me' => 'أزل مهمتي',
 	'tasks_close' => 'أغلق المهمة',
 	'tasks_wontfix' => 'لن يصلح',
 	'tasks_delete' => 'أحذف',
 	'tasks_no_task_delete_title' => 'غير مسموح',
 	'tasks_action_delete' => 'المهمة قد حذفت',
 	'tasks_reopen' => 'إعادة فتح مهمة',
+	'tasks_assignedto' => 'أسندت إلى $1',
 	'tasks_created_by' => 'أنشئت بواسطة $1',
 	'tasks_discussion_page_link' => 'صفحة مناقشة المهمة',
 	'tasks_closedby' => 'أغلقت بواسطة $1',
 	'tasks_sidebar_title' => 'المهمات المفتوحة',
 	'tasks_here' => 'هنا',
 	'tasks_see_page_tasks' => '(مهام هذه الصفحة)',
+	'tasks_task_is_assigned' => '(مسندة)',
 	'tasks_help_page' => 'مهام',
 	'tasks_more_like_it' => 'أكثر',
 	'tasks_significance_order' => 'إعادة كتابة>حذف',
@@ -232,6 +238,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'tasks' => 'Заданьні',
@@ -277,7 +284,7 @@ $messages['be-tarask'] = array(
 	'tasks_event_on_creation_anon' => 'праверыць',
 	'tasks_on_creation_comment' => 'Заданьне створана аўтаматычна пад час стварэньня старонкі',
 	'tasks_link_your_assignments' => 'цяперашнія прызначэньні',
-	'tasks_see_your_assignments' => 'Зараз у Вас $1 {{PLURAL:$1|адкрытае заданьне|адкрытых заданьня|адкрытых заданьняў}}. Глядзіце Ваш $2.',
+	'tasks_see_your_assignments' => 'Цяпер у Вас $1 {{PLURAL:$1|адкрытае заданьне|адкрытыя заданьні|адкрытых заданьняў}}. Глядзіце Ваш $2.',
 	'tasks_my_assignments' => '{{PLURAL:$1|Вашае цяперашняе заданьне|Вашыя цяперашнія заданьні}}',
 	'tasks_table_header_page' => 'Старонка',
 	'tasks_you_have_no_assignments' => 'У Вас няма цяперашніх заданьняў',
@@ -579,7 +586,7 @@ $messages['dsb'] = array(
 	'tasks_event_on_creation_anon' => 'kontrolěrowaś',
 	'tasks_on_creation_comment' => 'Awtomatiski nadawk, załožony pśi napóranje boka',
 	'tasks_link_your_assignments' => 'pśipokazanja wócyniś',
-	'tasks_see_your_assignments' => 'Maš tuchylu $1 {{PLURAL:$1|wócynjone pśipokazanje|wócynjonej pśipokazani|wócynjone pśipokazanja|wócynjonych pśipokazanjow}}. Glěj swój $2.',
+	'tasks_see_your_assignments' => 'Maš tuchylu $1 {{PLURAL:$1|wócynjone pśipokazanje|wócynjonej pśipokazani|wócynjone pśipokazanja|wócynjonych pśipokazanjow}}. Glědaj swój $2.',
 	'tasks_my_assignments' => '{{PLURAL:$1|Twójo aktualne pśipokazanje|Twójej aktualnej pśipokazani|Twóje aktualne pśipokazanja|Twóje aktualne pśipokazanja}}',
 	'tasks_table_header_page' => 'Bok',
 	'tasks_you_have_no_assignments' => 'Njamaš wócynjone pśipokazanja',

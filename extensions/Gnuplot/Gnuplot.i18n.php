@@ -100,6 +100,13 @@ $messages['gl'] = array(
 	'gnuplot-desc' => 'Engade a etiqueta <code><nowiki><gnuplot></nowiki></code> para usar Gnuplot',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'gnuplot-desc' => 'Fiegt s <code><nowiki><gnuplot></nowiki></code>-Tag yy zum Gnuplot verwände',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -253,6 +260,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'gnuplot-desc' => 'Pridáva značku <code><nowiki><gnuplot></nowiki></code> pre použitie Gnuplot',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'gnuplot-desc' => 'E vendos kodin <code><nowiki><gnuplot></nowiki></code> për të përdorur Gnuplot',
 );
 
 /** Sundanese (Basa Sunda)

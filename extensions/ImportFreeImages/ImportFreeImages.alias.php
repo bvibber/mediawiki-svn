@@ -92,6 +92,11 @@ $aliases['sa'] = array(
 	'ImportFreeImages' => array( 'आयातमुक्तछायाचित्र' ),
 );
 
+/** Albanian (Shqip) */
+$aliases['sq'] = array(
+	'ImportFreeImages' => array( 'ImportoFiguraFalas' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ImportFreeImages' => array( 'Importera fria bilder' ),

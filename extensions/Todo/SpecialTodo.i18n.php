@@ -165,6 +165,7 @@ $4',
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'todo' => 'Сьпіс заданьняў',
@@ -172,7 +173,7 @@ $messages['be-tarask'] = array(
 	'todo-tab' => 'заданьні',
 	'todo-new-queue' => 'новае(ыя)',
 	'todo-mail-subject' => 'Выкананае заданьне са сьпісу заданьняў удзельніка $1',
-	'todo-mail-body' => 'Вы запатрабавалі пацьверджаньне пра выкананьне заданьня са сьпісе заданьняў удзельніка $1.
+	'todo-mail-body' => 'Вы запатрабавалі пацьверджаньне пра выкананьне заданьня са сьпісу заданьняў удзельніка $1.
 
 Заданьне: $2
 Выкананае: $3
@@ -183,7 +184,7 @@ $4',
 	'todo-update-else-item' => 'Спроба зьмены сьпісу заданьняў іншага ўдзельніка',
 	'todo-unrecognize-type' => 'Невядомы тып',
 	'todo-user-invalide' => 'Пададзенае няслушнае, неіснуючае альбо немагчымае да выкананьня заданьне.',
-	'todo-item-list' => 'Вашы заданьні',
+	'todo-item-list' => 'Вашыя заданьні',
 	'todo-no-item' => 'Няма заданьняў.',
 	'todo-invalid-owner' => 'Няслушны ўладальнік гэтага заданьня',
 	'todo-add-queue' => 'Дадаць чаргу…',
@@ -685,6 +686,7 @@ $messages['ja'] = array(
 	'todo-list-change' => '変更',
 	'todo-list-cancel' => '中止',
 	'todo-form-details' => '詳細:',
+	'todo-form-submit' => 'クエリ送信',
 );
 
 /** Javanese (Basa Jawa)

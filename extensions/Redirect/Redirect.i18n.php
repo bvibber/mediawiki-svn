@@ -142,6 +142,13 @@ $messages['sk'] = array(
 	'redirect-desc' => 'Umožňuje jednoduché nastavenie presmerovaní pri [[MediaWiki:Redirect-addnewaccount|tvorbe účtu]] a [[MediaWiki:Redirect-userlogoutcomplete|odhlásení]]',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'redirect-desc' => 'Lejon konfigurimin e lehtë të ridrejtimeve në [[MediaWiki:Redirect-addnewaccount|hapjen e llogarive]] dhe në [[MediaWiki:Redirect-userlogoutcomplete|dalje]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

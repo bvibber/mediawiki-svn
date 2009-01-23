@@ -107,6 +107,14 @@ $messages['gl'] = array(
 Crear versións dentro dunha páxina, útil especialmente nas Galinovas.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'catfeed-desc' => 'Nutzt Teil vu dr Letschte-Änderige-Newsfeeds.
+E yybetteti Version aalege; bsundersch fir Wikinews nitzli.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

@@ -198,6 +198,38 @@ Die ID, die du benötigst, sind die Zahlen und Buchstaben zwischen „$2“ und 
 	'imstatus_yahoo_style' => 'der Stil der Schaltfläche, von $1 (kleinste) bis $2 (größte), $3 und $4 sind für Voicemail.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'imstatus-desc' => 'Pśidawa toflcki, aby pokazali onlinestatus wšakich internetnych powěstnikow (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Syntaksa',
+	'imstatus_default' => 'Standard',
+	'imstatus_example' => 'Pśikład',
+	'imstatus_possible_val' => 'Móžne gódnoty',
+	'imstatus_max' => 'maks.',
+	'imstatus_min' => 'min.',
+	'imstatus_or' => 'abo',
+	'imstatus_style' => 'stil statusowego pokazanja',
+	'imstatus_action' => 'akcija pśi kliknjenju na tłocašk',
+	'imstatus_details_saa' => 'Za dalšne drobnostki wo wšych stilach a akcijach, glědaj $1.',
+	'imstatus_your_name' => 'twójo $1-mě',
+	'imstatus_aim_presence' => '$1 pokazujo status z wótkazom, kótaryž buźo AIM startowaś, aby śi ned pósłał powěsć, jolic wužywaŕ jo jen instalěrował.',
+	'imstatus_aim_api' => '$1 pokazujo twój status z wótkazom, kótaryž buźo <b>wobglědowak</b> startowaś, z javascriptoweju wersiju AIM, aby śi ned pósłał powěsć.',
+	'imstatus_gtalk_code' => 'twój kod Google Talk',
+	'imstatus_gtalk_get_code' => 'twój kod Google Talk: dostanjoš jen pla $1.',
+	'imstatus_gtalk_height' => 'wusokosć kašćika w pikselach.',
+	'imstatus_gtalk_width' => 'šyrokosć kašćika w pikselach.',
+	'imstatus_icq_id' => 'twój ICQ-ID',
+	'imstatus_icq_style' => 'licba mjazy 0 a 26 (jo, jo 27 k dispoziciji stojecych stilow...).',
+	'imstatus_live_code' => 'twój websedłowy ID Live Messenger',
+	'imstatus_live_get_code' => 'twój websedłowy ID Live Messenger: <strong>to njejo twója e-mailowa adresa</strong>, musyš jadnu w <a href="$1">twojich opcijach Live Messenger</a>.
+ID, kótaryž musyš pódaś, su licby a pismiki mjazy "$2 a "$3".',
+	'imstatus_skype_nbstyle' => 'Pokazka: Jolic wuběraš stil, kótaryž jo teke akcija, pśepišo se twój wuběrk akcijow pśez akciju, kótaryž wótpowědujo wubranemu stiloju.',
+	'imstatus_xfire_size' => 'wulkosć tłocaška, wót $1 (nejwětša) do $2 (nejmjeńša).',
+	'imstatus_yahoo_style' => 'stil tłocaška, wót $1 (nejmjeńšy) do $2 (nejwětšy), $3 a $4 stej za Voicemail.',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -359,6 +391,38 @@ $messages['he'] = array(
 	'imstatus_skype_nbstyle' => 'הערה: בחירה בסגנון שהוא גם פעולה תגרום לכך שהפעולה שבחרת תידרס על ידי הפעולה התואמת לסגנון שבחרת.',
 	'imstatus_xfire_size' => 'גדלי הכפתורים, מ־$1 (הגדול ביותר) עד $2 (הקטן ביותר).',
 	'imstatus_yahoo_style' => 'סגנון הכפתור, מ־$1 (הקטן ביותר) עד $2 (הגדול ביותר). $3 ו־$4 משמשים לתא קולי.',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'imstatus-desc' => 'Přidawa taflički, zo bychu onlinestatus wšelakich internetnych powěstnikow (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo) zwobraznili',
+	'imstatus_syntax' => 'Syntaksa',
+	'imstatus_default' => 'Standard',
+	'imstatus_example' => 'Přikład',
+	'imstatus_possible_val' => 'Móžne hódnoty',
+	'imstatus_max' => 'maks.',
+	'imstatus_min' => 'min.',
+	'imstatus_or' => 'abo',
+	'imstatus_style' => 'stil statusoweho wozjewjenja',
+	'imstatus_action' => 'akcija při kliknjenju na tłóčatko',
+	'imstatus_details_saa' => 'Za dalše podrobnosće wo wšěch stilach a akcijach, hlej $1.',
+	'imstatus_your_name' => 'twoje $1-mjeno',
+	'imstatus_aim_presence' => '$1 pokazuje twój status z wotkazom, kotryž startuje AIM (jeli wužiwar je jón instalował), zo by ći powěsć pósłał.',
+	'imstatus_aim_api' => '$1 pokazuje twój status z wotkazom, kotryž budźe <b>wobhladowak</b> startować, z javascriptowej wersiju AIM, zo by ći hnydomnu powěsć pósłał.',
+	'imstatus_gtalk_code' => 'twój kod googloweje diskusije',
+	'imstatus_gtalk_get_code' => 'twój kod googloweje diskusije: dóstanješ jón pola $1.',
+	'imstatus_gtalk_height' => 'wysokosć kašćika w pikselach',
+	'imstatus_gtalk_width' => 'šěrokosć kašćika w pikselach.',
+	'imstatus_icq_id' => 'twój ICQ-ID',
+	'imstatus_icq_style' => 'ličba we wobłuku wot 0 do 25 (haj, je 27 k dispoziciji stejacych stilow...).',
+	'imstatus_live_code' => 'twój websydłowy ID za Live Messenger',
+	'imstatus_live_get_code' => 'twój websydłowy ID za Live Messenger: <strong>to njeje twoja e-mejlowa adresa</strong>, dyrbiš jednu w <a href="$1">twojich opcijach za Live messenger</a> wutworić.
+ID, kotryž dyrbiš podać, su ličby a pismiki mjez "$2" a "$3".',
+	'imstatus_skype_nbstyle' => 'Pokiw: jeli wuběraš stil, kotryž je tež akcija, budźe so twój wuběr akcijow přez akciju, kotraž wubranemu stilej wotpowěduje, přepisować.',
+	'imstatus_xfire_size' => 'Wulkosć tłóčatka, wot $1 (najwjetša) do $2 (najmjeńša).',
+	'imstatus_yahoo_style' => 'stil tłóčatka, wot $1 (najmjeńši) do $2 (najwjetši), $3 a $4 stej za Voicemail.',
 );
 
 /** Interlingua (Interlingua)

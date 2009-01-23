@@ -103,6 +103,13 @@ $messages['gl'] = array(
 	'emailaddressimage-desc' => 'Engade <tt>&lt;email&gt;</tt> para amosar un enderezo de correo electrónico como unha imaxe',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'emailaddressimage-desc' => 'Ergänzt s <tt>&lt;email&gt;</tt>-Tag go ne E-Mail-Adräss as Bild aazzeige',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
@@ -278,6 +285,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'emailaddressimage-desc' => 'Pridáva značku <tt>&lt;email&gt;</tt> na zobrazenie emailu vo forme obrázka',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'emailaddressimage-desc' => 'Vendosë kodin <tt>&lt;email&gt;</tt> që të paraqesë adresën e postës elektronike si figurë',
 );
 
 /** Swedish (Svenska)

@@ -35,6 +35,11 @@ $aliases['he'] = array(
 	'SpamRegex' => array( 'ביטויי_ספאם' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'SpamRegex' => array( 'スパム正規表現フィルター' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'SpamRegex' => array( 'Spam_regeliere_expressie' ),

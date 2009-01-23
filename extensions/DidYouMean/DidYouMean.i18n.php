@@ -125,6 +125,13 @@ $messages['gl'] = array(
 	'didyoumean-desc' => 'Engade ligazóns cara a páxinas con títulos "similares"',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'didyoumean-desc' => 'Fiegt in Syte Gleicher yy mit ähnlige Titel',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -228,7 +235,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'didyoumean-desc' => 'Links toevoegen naar pagina\'s met "gelijksoortige" namen',
+	'didyoumean-desc' => 'Verwijzingen toevoegen naar pagina\'s met "gelijksoortige" namen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -292,6 +299,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'didyoumean-desc' => 'Pridať odkazy na stránky s „podobnými“ názvami',
+);
+
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'didyoumean-desc' => 'Vendosë lidhje në faqet me tituj "të ngjashëm"',
 );
 
 /** Sundanese (Basa Sunda)
