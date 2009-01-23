@@ -463,7 +463,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				elseif ($k == 'invert')   $invert   = $v;
 				elseif ($k == 'orderby')  $orderby  = $v;
 				elseif ($k == 'cols')     $cols     = preg_split('/\s*,\s*/', $v);
-				elseif ($k == 'sortable') $sortabke = $v;
+				elseif ($k == 'sortable') $sortable = eregi('1|yes|true|on', $v);
 				else $filter[$match[1]] = $match[2];
 			}
 		}
