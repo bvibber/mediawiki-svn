@@ -41,8 +41,9 @@ class ApiUpload extends ApiBase {
 		global $wgUser;
 		$this->getMain()->requestWriteMode();
 		$this->mParams = $this->extractRequestParams();
+		$request = $this->getMain()->getRequest();
 		// Add the uploaded file to the params array
-		$this->mParams['file'] = $this->getMain()->getRequest()->getFileName('file');
+		$this->mParams['file'] = $request->getFileName('file');
 		
 		// Check whether upload is enabled
 		if( !UploadFromBase::isEnabled() )
@@ -63,13 +64,9 @@ class ApiUpload extends ApiBase {
 			// Parameter filename is required
 			if( !isset( $this->mParams['filename'] ) )
 				$this->dieUsageMsg( array( 'missingparam', 'filename' ) );
-			// Parameter comment defaults to ''
-			if( !isset( $this->mParams['comment'] ) )
-				$this->mParams['comment'] = '';
 			
 			// Initialize $this->mUpload
 			if( isset( $this->mParams['file'] ) ) {
-				$request = $this->getMain()->getRequest();
 				$this->mUpload = new UploadFromUpload();
 				$this->mUpload->initialize(
 					$request->getFileTempName( 'file' ),
@@ -92,7 +89,7 @@ class ApiUpload extends ApiBase {
 		}
 		
 		// Perform the upload
-		$result = $this->performUpload();		
+		$result = $this->performUpload();
 		
 		// Cleanup any temporary mess
 		$this->mUpload->cleanupTempFile();
@@ -154,7 +151,7 @@ class ApiUpload extends ApiBase {
 					$result['error'] = 'unknown-error';
 					$result['code'] = $verification;
 					break;
-			}				
+			}
 			return $result;
 		}
 		
@@ -167,7 +164,7 @@ class ApiUpload extends ApiBase {
 				$result['warnings'] = $warnings;
 				if( isset( $result['filewasdeleted'] ) )
 					$result['filewasdeleted'] = $result['filewasdeleted']->getDBkey();
-					
+				
 				$sessionKey = $this->mUpload->stashSession();
 				if( $sessionKey )
 					$result['sessionkey'] = $sessionKey;
@@ -177,7 +174,7 @@ class ApiUpload extends ApiBase {
 		
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
 			$this->mParams['comment'], $this->mParams['watch'], $wgUser);
-			
+		
 		if( !$status->isGood() ) {
 			$result['result'] = 'Failure';
 			$result['error'] = 'internal-error';
@@ -191,8 +188,8 @@ class ApiUpload extends ApiBase {
 		$result['filename'] = $file->getName();
 		
 		// Append imageinfo to the result
-		$result['imageinfo'] = ApiQueryImageInfo::getInfo( $file, 
-			array_flip( ApiQueryImageInfo::allProps() ), 
+		$result['imageinfo'] = ApiQueryImageInfo::getInfo( $file,
+			array_flip( ApiQueryImageInfo::allProps() ),
 			$this->getResult() );
 		
 		return $result; 
@@ -205,7 +202,9 @@ class ApiUpload extends ApiBase {
 			'filename' => null,
 			'file' => null,
 			'url' => null,
-			'comment' => null,
+			'comment' => array(
+				ApiBase :: PARAM_DFLT => ''
+			),
 			'watch' => false,
 			'ignorewarnings' => false,
 			'sessionkey' => null,
@@ -237,7 +236,7 @@ class ApiUpload extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: APiUpload.php 35619 2008-05-30 19:59:47Z btongminh $';
+		return __CLASS__ . ': $Id: ApiUpload.php 35619 2008-05-30 19:59:47Z btongminh $';
 	}
 }
 
