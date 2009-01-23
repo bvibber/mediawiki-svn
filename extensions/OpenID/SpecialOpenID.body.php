@@ -90,27 +90,29 @@ class SpecialOpenID extends SpecialPage {
 	static function getUserUrl($user) {
 		$openid_url = null;
 
-		if (isset($user) && $user->getId() != 0) {
+		if ( isset( $user ) && $user->getId() != 0 ) {
 			global $wgSharedDB, $wgDBprefix;
-			if (isset($wgSharedDB)) {
+			if ( isset( $wgSharedDB ) ) {
 				$tableName = "`${wgSharedDB}`.${wgDBprefix}user_openid";
 			} else {
 				$tableName = 'user_openid';
 			}
 
-			$dbr =& wfGetDB( DB_SLAVE );
-			$res = $dbr->select(array($tableName),
-								array('uoi_openid'),
-								array('uoi_user' => $user->getId()),
-								'OpenIDGetUserUrl');
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				array( $tableName ),
+				array( 'uoi_openid' ),
+				array( 'uoi_user' => $user->getId() ),
+				__METHOD__
+			);
 
 			# This should return 0 or 1 result, since user is unique
 			# in the table.
 
-			while ($res && $row = $dbr->fetchObject($res)) {
+			while ( $row = $res->fetchObject() ) {
 				$openid_url = $row->uoi_openid;
 			}
-			$dbr->freeResult($res);
+			$res->free();
 		}
 		return $openid_url;
 	}
