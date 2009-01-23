@@ -4,7 +4,7 @@
 -- Facilities
 -- 
 -- Table of locations of physical datacenters
-DROP TABLE IF EXISTS dc_facility_locations;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_facility_locations;
 CREATE TABLE /*$wgDBprefix*/dc_facility_locations (
     -- Unique ID of dc_locations
     fcl_loc_id INTEGER AUTO_INCREMENT,
@@ -23,7 +23,7 @@ CREATE TABLE /*$wgDBprefix*/dc_facility_locations (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of spaces in locations
-DROP TABLE IF EXISTS dc_facility_spaces;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_facility_spaces;
 CREATE TABLE /*$wgDBprefix*/dc_facility_spaces (
     -- Unique ID of dc_spaces
     fcl_spc_id INTEGER AUTO_INCREMENT,
@@ -48,7 +48,7 @@ CREATE TABLE /*$wgDBprefix*/dc_facility_spaces (
 -- Assets
 -- 
 -- Table of racks
-DROP TABLE IF EXISTS dc_rack_assets;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_rack_assets;
 CREATE TABLE /*$wgDBprefix*/dc_rack_assets (
     -- Unique ID of dc_racks
     ast_rak_id INTEGER AUTO_INCREMENT,
@@ -67,7 +67,7 @@ CREATE TABLE /*$wgDBprefix*/dc_rack_assets (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of objects
-DROP TABLE IF EXISTS dc_object_assets;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_object_assets;
 CREATE TABLE /*$wgDBprefix*/dc_object_assets (
     -- Unique ID of dc_objects
     ast_obj_id INTEGER AUTO_INCREMENT,
@@ -88,7 +88,7 @@ CREATE TABLE /*$wgDBprefix*/dc_object_assets (
 -- Models
 -- 
 -- Table of model of racks
-DROP TABLE IF EXISTS dc_rack_models;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_rack_models;
 CREATE TABLE /*$wgDBprefix*/dc_rack_models (
     -- Unique ID of dc_rack_models
     mdl_rak_id INTEGER AUTO_INCREMENT,
@@ -105,7 +105,7 @@ CREATE TABLE /*$wgDBprefix*/dc_rack_models (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of model of objects
-DROP TABLE IF EXISTS dc_object_models;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_object_models;
 CREATE TABLE /*$wgDBprefix*/dc_object_models (
     -- Unique ID of dc_object_models
     mdl_obj_id INTEGER AUTO_INCREMENT,
@@ -133,7 +133,7 @@ CREATE TABLE /*$wgDBprefix*/dc_object_models (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of models of ports
-DROP TABLE IF EXISTS dc_port_models;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_port_models;
 CREATE TABLE /*$wgDBprefix*/dc_port_models (
     -- Unique ID of dc_port_models
     mdl_prt_id INTEGER AUTO_INCREMENT,
@@ -168,7 +168,7 @@ CREATE TABLE /*$wgDBprefix*/dc_port_models (
 -- Meta Information
 -- 
 -- Table of tags used to categorize repairs
-DROP TABLE IF EXISTS dc_meta_tags;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_meta_tags;
 CREATE TABLE /*$wgDBprefix*/dc_meta_tags (
     -- Unique ID of dc_tags
     mta_tag_id INTEGER AUTO_INCREMENT,
@@ -179,7 +179,7 @@ CREATE TABLE /*$wgDBprefix*/dc_meta_tags (
 ) /*$wgDBTableOptions*/;
 -- 
 -- 
-DROP TABLE IF EXISTS dc_meta_plans;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_meta_plans;
 CREATE TABLE /*$wgDBprefix*/dc_meta_plans (
     -- Unique ID of dc_meta_plans
     mta_pln_id INTEGER AUTO_INCREMENT,
@@ -196,7 +196,7 @@ CREATE TABLE /*$wgDBprefix*/dc_meta_plans (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of changes made to targets (facilities, assets and models)
-DROP TABLE IF EXISTS dc_meta_changes;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_meta_changes;
 CREATE TABLE /*$wgDBprefix*/dc_meta_changes (
     -- Unique ID of dc_meta_changes
     mta_cng_id INTEGER AUTO_INCREMENT,
@@ -232,7 +232,7 @@ CREATE TABLE /*$wgDBprefix*/dc_meta_changes (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of models used by other models
-DROP TABLE IF EXISTS dc_model_links;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_model_links;
 CREATE TABLE /*$wgDBprefix*/dc_model_links (
     -- Unique ID of dc_meta_model_links
     lnk_mdl_id INTEGER AUTO_INCREMENT,
@@ -258,7 +258,7 @@ CREATE TABLE /*$wgDBprefix*/dc_model_links (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of assets used by other assets
-DROP TABLE IF EXISTS dc_asset_links;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_asset_links;
 CREATE TABLE /*$wgDBprefix*/dc_asset_links (
     -- Unique ID of dc_meta_asset_links
     lnk_ast_id INTEGER AUTO_INCREMENT,
@@ -290,7 +290,7 @@ CREATE TABLE /*$wgDBprefix*/dc_asset_links (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of meta fields to attach to components
-DROP TABLE IF EXISTS dc_field_links;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_field_links;
 CREATE TABLE /*$wgDBprefix*/dc_field_links (
     -- Unique ID of dc_meta_field_links
     lnk_fld_id INTEGER AUTO_INCREMENT,
@@ -316,7 +316,7 @@ CREATE TABLE /*$wgDBprefix*/dc_field_links (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of meta fields to attach to models
-DROP TABLE IF EXISTS dc_meta_fields;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_meta_fields;
 CREATE TABLE /*$wgDBprefix*/dc_meta_fields (
     -- Unique ID of dc_meta_fields
     mta_fld_id INTEGER AUTO_INCREMENT,
@@ -335,7 +335,7 @@ CREATE TABLE /*$wgDBprefix*/dc_meta_fields (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of meta information to attach to assets
-DROP TABLE IF EXISTS dc_meta_values;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_meta_values;
 CREATE TABLE /*$wgDBprefix*/dc_meta_values (
     -- Unique ID of dc_meta_values
     mta_val_id INTEGER AUTO_INCREMENT,
@@ -365,7 +365,7 @@ CREATE TABLE /*$wgDBprefix*/dc_meta_values (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table of connections between ports
-DROP TABLE IF EXISTS dc_meta_connections;
+DROP TABLE IF EXISTS /*$wgDBprefix*/dc_meta_connections;
 CREATE TABLE /*$wgDBprefix*/dc_meta_connections (
     -- Unique ID of dc_connections
     mta_con_id INTEGER AUTO_INCREMENT,
