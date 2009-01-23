@@ -1073,12 +1073,15 @@ abstract class DataCenterDB {
 							'meta', 'change', 'username'
 						)
 					),
-					'conditions' => array(
-						self::getColumnName(
-							'meta', 'change', 'user'
-						) .
-						' = user_id'
-					),
+					'joins' => array(
+						'user' => array(
+							'LEFT JOIN',
+							'user_id = ' .
+							self::getColumnName(
+								'meta', 'change', 'user'
+							)
+						)
+					)
 				)
 			)
 		);
