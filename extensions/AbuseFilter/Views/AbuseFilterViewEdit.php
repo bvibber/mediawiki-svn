@@ -43,6 +43,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			$dbw->begin();
 
+			// Insert MAIN row.
 			if ($filter == 'new') {
 				$new_id = $dbw->nextSequenceValue( 'abuse_filter_af_id_seq' );
 				$is_new = true;
@@ -51,9 +52,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$is_new = false;
 			}
 
+			// Reset throttled marker, if we're re-enabling it.
 			$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
-
-			$newRow['af_id'] = $new_id;
+			$newRow['af_id'] = $new_id; // ID.
 
 			$dbw->replace( 'abuse_filter', array( 'af_id' ), $newRow, __METHOD__ );
 
@@ -109,7 +110,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Do the update
 			$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
 			$dbw->delete( 'abuse_filter_action', array( 'afa_filter' => $filter, 'afa_consequence' => $deadActions ), __METHOD__ );
-			$dbw->replace( 'abuse_filter_action', array( array( 'afa_filter', 'afa_consequence' ) ), $actionsRows, __METHOD__ );
+			$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
 
 			$dbw->commit();
 
@@ -138,14 +139,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		global $wgOut,$wgLang,$wgUser;
 		$sk = $this->mSkin;
 
+		// Load from request OR database.
 		list ($row, $actions) = $this->loadRequest($filter, $history_id);
 
 		if( !$row ) {
-			return false;
+			$wgOut->addWikiMsg( 'abusefilter-edit-badfilter' );
+			$wgOut->addHTML( $sk->link( $this->getTitle(), wfMsg( 'abusefilter-return' ) ) );
+			return;
 		}
 
 		$wgOut->setSubtitle( wfMsg( 'abusefilter-edit-subtitle', $filter, $history_id ) );
 
+		// Hide hidden filters.
 		if (isset($row->af_hidden) && $row->af_hidden && !$this->canEdit()) {
 			return wfMsg( 'abusefilter-edit-denied' );
 		}
@@ -247,7 +252,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			'op-arithmetic' => array('+' => 'addition', '-' => 'subtraction', '*' => 'multiplication', '/' => 'divide', '%' => 'modulo', '**' => 'pow'),
 			'op-comparison' => array('==' => 'equal', '!=' => 'notequal', '<' => 'lt', '>' => 'gt', '<=' => 'lte', '>=' => 'gte'),
 			'op-bool' => array( '!' => 'not', '&' => 'and', '|' => 'or', '^' => 'xor' ),
-			'misc' => array( 'val1 ? iftrue : iffalse' => 'ternary', 'in' => 'in', 'like' => 'like', '""' => 'stringlit', ),
+			'misc' => array( 'in' => 'in', 'like' => 'like', '""' => 'stringlit', ),
 			'funcs' => array( 'length(string)' => 'length', 'lcase(string)' => 'lcase', 'ccnorm(string)' => 'ccnorm', 'rmdoubles(string)' => 'rmdoubles', 'specialratio(string)' => 'specialratio', 'norm(string)' => 'norm', 'count(needle,haystack)' => 'count' ),
 			'vars' => array( 'ACCOUNTNAME' => 'accountname', 'ACTION' => 'action', 'ADDED_LINES' => 'addedlines', 'EDIT_DELTA' => 'delta', 'EDIT_DIFF' => 'diff', 'NEW_SIZE' => 'newsize', 'OLD_SIZE' => 'oldsize', 'REMOVED_LINES' => 'removedlines', 'SUMMARY' => 'summary', 'ARTICLE_ARTICLEID' => 'article-id', 'ARTICLE_NAMESPACE' => 'article-ns', 'ARTICLE_TEXT' => 'article-text', 'ARTICLE_PREFIXEDTEXT' => 'article-prefixedtext', 'MOVED_FROM_ARTICLEID' => 'movedfrom-id', 'MOVED_FROM_NAMESPACE' => 'movedfrom-ns', 'MOVED_FROM_TEXT' => 'movedfrom-text', 'MOVED_FROM_PREFIXEDTEXT' => 'movedfrom-prefixedtext', 'MOVED_TO_ARTICLEID' => 'movedto-id', 'MOVED_TO_NAMESPACE' => 'movedto-ns', 'MOVED_TO_TEXT' => 'movedto-text', 'MOVED_TO_PREFIXEDTEXT' => 'movedto-prefixedtext', 'USER_EDITCOUNT' =>  'user-editcount', 'USER_AGE' => 'user-age', 'USER_NAME' => 'user-name', 'USER_GROUPS' => 'user-groups', 'USER_EMAILCONFIRM' => 'user-emailconfirm'),
 		);
@@ -421,7 +426,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$parameters = array();
 
 				if ($action == 'throttle') {
-					// Grumble grumble.
 					// We need to load the parameters
 					$throttleCount = $wgRequest->getIntOrNull( 'wpFilterThrottleCount' );
 					$throttlePeriod = $wgRequest->getIntOrNull( 'wpFilterThrottlePeriod' );

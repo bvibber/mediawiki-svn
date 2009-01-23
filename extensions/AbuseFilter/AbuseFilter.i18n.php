@@ -96,6 +96,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-tools-modifiertest-submit' => 'Test',
 	'abusefilter-tools' => 'Abuse filter tools',
 	'abusefilter-loglink' => 'View the abuse log',
+	'abusefilter-return' => 'Return to filter management',
 	
 	// Options form
 	'abusefilter-list-options' => 'Options',
@@ -124,7 +125,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	// The edit screen
 	'abusefilter-edit-subtitle' => 'Editing filter $1',
 	'abusefilter-edit-oldwarning' => "<strong>You are editing an old version of this filter. The statistics quoted are for the most recent version of the filter. If you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull; [[Special:AbuseFilter/history/$2|Return to this filter's history]]",
-	'abusefilter-edit-status-label' => 'Statistics',
+	'abusefilter-edit-status-label' => 'Statistics:',
 	'abusefilter-edit-status' => 'Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).',
 	'abusefilter-edit-throttled' => "'''Warning''': This filter was automatically disabled as a safety measure. It reached the limit of matching more than $1% of actions.",
 	'abusefilter-edit-new' => 'New filter',
@@ -164,6 +165,7 @@ A brief description of the abuse rule which your action matched is: $1",
 	'abusefilter-edit-viewhistory' => "View this filter's history",
 	'abusefilter-edit-history' => 'History',
 	'abusefilter-edit-check' => 'Check syntax',
+	'abusefilter-edit-badfilter' => 'The filter you specified does not exist',
 	
 	// Filter editing helpers
 	'abusefilter-edit-builder-select' => 'Select an option to add it at the cursor',
