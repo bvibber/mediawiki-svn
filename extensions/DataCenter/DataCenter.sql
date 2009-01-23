@@ -379,7 +379,7 @@ CREATE TABLE /*$wgDBprefix*/dc_meta_connections (
 -- 
 --  Initial Facilities
 -- 
-INSERT INTO dc_facility_locations
+INSERT INTO /*$wgDBprefix*/dc_facility_locations
     (
         fcl_loc_tense, fcl_loc_name, fcl_loc_region, fcl_loc_latitude,
         fcl_loc_longitude
@@ -388,7 +388,7 @@ INSERT INTO dc_facility_locations
         ( 'present', 'PMTPA', 'Tampa, FL', 27.98141, -82.451141 ),
         ( 'present', 'SFO', 'San Francisco, CA', 37.775196, -122.419204 );
 -- 
-INSERT INTO dc_facility_spaces
+INSERT INTO /*$wgDBprefix*/dc_facility_spaces
     (
         fcl_spc_tense, fcl_spc_name, fcl_spc_location, fcl_spc_width,
         fcl_spc_height, fcl_spc_depth,  fcl_spc_power
@@ -399,7 +399,7 @@ INSERT INTO dc_facility_spaces
 -- 
 --  Initial Assets
 -- 
-INSERT INTO dc_rack_assets
+INSERT INTO /*$wgDBprefix*/dc_rack_assets
     (
         ast_rak_model, ast_rak_tense, ast_rak_location, ast_rak_asset,
         ast_rak_serial
@@ -412,7 +412,7 @@ INSERT INTO dc_rack_assets
         ( 2, 'present', 1, '5670556705', 'A1S2D3F4G5H6J7' ),
         ( 2, 'present', 2, '6780667806', 'Z1X2C3V4B5N6M7' );
 -- 
-INSERT INTO dc_object_assets
+INSERT INTO /*$wgDBprefix*/dc_object_assets
     (
         ast_obj_model, ast_obj_tense, ast_obj_location, ast_obj_asset,
         ast_obj_serial
@@ -427,7 +427,7 @@ INSERT INTO dc_object_assets
 -- 
 -- Initial Models
 -- 
-INSERT INTO dc_rack_models
+INSERT INTO /*$wgDBprefix*/dc_rack_models
     (
         mdl_rak_manufacturer, mdl_rak_name, mdl_rak_kind, mdl_rak_units
     )
@@ -436,7 +436,7 @@ INSERT INTO dc_rack_models
         ( 'Rittal', 'TS-44', 'Rack', 44 ),
         ( 'Rittal', 'TS-47', 'Rack', 47 );
 -- 
-INSERT INTO dc_object_models
+INSERT INTO /*$wgDBprefix*/dc_object_models
     (
         mdl_obj_manufacturer, mdl_obj_name, mdl_obj_kind, mdl_obj_form_factor,
         mdl_obj_units, mdl_obj_depth, mdl_obj_power
@@ -446,7 +446,7 @@ INSERT INTO dc_object_models
         ( 'Cisco', 'Catalyst 2950', 'Switch', 'rackunit', 1, 1, 100 ),
         ( 'APC', 'Smart-UPS 3000VA', 'UPS', 'rackunit', 5, 2, 20 );
 -- 
-INSERT INTO dc_port_models
+INSERT INTO /*$wgDBprefix*/dc_port_models
     (
         mdl_prt_name, mdl_prt_kind, mdl_prt_category, mdl_prt_format
     )
@@ -497,7 +497,7 @@ INSERT INTO dc_port_models
 -- 
 -- Initial Meta
 -- 
-INSERT INTO dc_meta_fields
+INSERT INTO /*$wgDBprefix*/dc_meta_fields
     (
         mta_fld_name, mta_fld_format
     )
@@ -507,7 +507,7 @@ INSERT INTO dc_meta_fields
         ( 'Weight (LBS)', 'number' ),
         ( 'Assigned User', 'string' );
 -- 
-INSERT INTO dc_meta_values
+INSERT INTO /*$wgDBprefix*/dc_meta_values
     (
         mta_val_component_category, mta_val_component_type,
         mta_val_component_id, mta_val_field, mta_val_value
@@ -516,7 +516,7 @@ INSERT INTO dc_meta_values
         ( 'facility', 'location', 2, 1, true ),
         ( 'facility', 'location', 2, 2, 'The best place to be!' );
 --
-INSERT INTO dc_meta_plans
+INSERT INTO /*$wgDBprefix*/dc_meta_plans
     (
         mta_pln_tense, mta_pln_space, mta_pln_name, mta_pln_note
     )
@@ -527,7 +527,7 @@ INSERT INTO dc_meta_plans
 -- 
 -- Initial Links
 -- 
-INSERT INTO dc_asset_links
+INSERT INTO /*$wgDBprefix*/dc_asset_links
     (
         lnk_ast_name, lnk_ast_plan, lnk_ast_tense, lnk_ast_parent_link,
         lnk_ast_asset_type, lnk_ast_asset_id, lnk_ast_x, lnk_ast_y, lnk_ast_z,
@@ -547,7 +547,7 @@ INSERT INTO dc_asset_links
         ( 'Switch', 2, 'present', 6, 'object', 5, null, null, 9, 0 ),
         ( 'UPS', 2, 'present', 6, 'object', 6, null, null, 10, 0 );
 -- 
-INSERT INTO dc_model_links
+INSERT INTO /*$wgDBprefix*/dc_model_links
     (
         lnk_mdl_name, lnk_mdl_quantity, lnk_mdl_parent_type,
         lnk_mdl_parent_id, lnk_mdl_child_type, lnk_mdl_child_id
@@ -558,7 +558,7 @@ INSERT INTO dc_model_links
         ( 'Power In', 1, 'object', 3, 'port', 27 ),
         ( 'Power Out', 8, 'object', 3, 'port', 24 );
 -- 
-INSERT INTO dc_field_links
+INSERT INTO /*$wgDBprefix*/dc_field_links
     (
         lnk_fld_field, lnk_fld_component_category, lnk_fld_component_type
     )
