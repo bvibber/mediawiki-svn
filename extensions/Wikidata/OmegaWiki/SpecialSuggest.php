@@ -321,6 +321,7 @@ function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attribu
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = 
+		'SELECT attribute_mid, MAX(spelling) as spelling FROM (' .
 		'SELECT attribute_mid, spelling' .
 		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression" .
 		" WHERE {$dc}_bootstrapped_defined_meanings.name = " . $dbr->addQuotes($attributesLevel) .
@@ -351,6 +352,8 @@ function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attribu
 				' )'.
 				$defaultClassRestriction .
 		')';
+
+	$sql .= ') AS filtered GROUP BY attribute_mid';
 
 	//if ($language="<ANY>") {
 	//	$sql .=
