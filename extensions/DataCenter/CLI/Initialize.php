@@ -13,8 +13,8 @@ if ( isset( $options['help'] ) ) {
 		// Get a connection
 		$dbw = wfGetDB( DB_MASTER );
 		// Runs initialization
-		$dbw->sourceFile( dirname( dirname( __FILE__  ) ) . '/DataCenter.sql' );
+		$dbw->sourceFile( dirname( dirname( __FILE__ ) ) . '/DataCenter.sql' );
 	} else {
-		echo "Nothing was changed. The --confirm=yes parameter is required.\n";
+		echo "Nothing was changed. Run with --help for usage information.\n";
 	}
 }
