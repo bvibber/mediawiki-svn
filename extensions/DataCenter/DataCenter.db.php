@@ -1715,6 +1715,21 @@ class DataCenterDBComponent extends DataCenterDBRow {
 			)
 		);
 	}
+
+	public function serialize() {
+		$metaFieldValues = $this->getMetaValues();
+		$meta = array();
+		foreach ( $metaFieldValues as $metaFieldValue ) {
+			$meta[$metaFieldValue->get( 'field' )] =
+				$metaFieldValue->get( 'value' );
+		}
+		return serialize(
+			array(
+				'row' => $this->get(),
+				'meta' => $meta
+			)
+		);
+	}
 }
 
 /* Asset Rows */
@@ -2227,7 +2242,7 @@ class DataCenterDBChange extends DataCenterDBRow  {
 					'component_category' => $component->getCategory(),
 					'component_type' => $component->getType(),
 					'component_id' => $component->getId(),
-					'state' => serialize( $component->get() ),
+					'state' => $component->serialize(),
 				)
 			)
 		);
