@@ -53,4 +53,12 @@ class DataCenterControllerAssets extends DataCenterController {
 		$asset->insertChange( $data['change'] );
 		return true;
 	}
+
+	public function compareChanges(
+		array $data,
+		$type
+	) {
+		DataCenterWidgetHistory::compareChanges( $data );
+		return null;
+	}
 }

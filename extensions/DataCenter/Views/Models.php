@@ -197,11 +197,28 @@ class DataCenterViewModels extends DataCenterView {
 	public function history(
 		$path
 	) {
-		$asset = DataCenterDB::getAsset( $path['type'], $path['id'] );
+		$model = DataCenterDB::getModel( $path['type'], $path['id'] );
 		return DataCenterUI::renderLayout(
 			'columns',
 			array(
-				DataCenterViewHistory::typeHistory( $path, $asset )
+				DataCenterUI::renderLayout(
+					'rows',
+					array(
+						DataCenterUI::renderWidget(
+							'heading',
+							array(
+								'message' => 'history-type',
+								'subject' => DataCenterUI::message(
+									'type', $path['type']
+								)
+							)
+						),
+						DataCenterUI::renderWidget(
+							'history',
+							array( 'component' => $model, 'path' => $path )
+						),
+					)
+				),
 			)
 		);
 	}

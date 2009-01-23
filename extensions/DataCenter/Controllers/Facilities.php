@@ -63,4 +63,12 @@ class DataCenterControllerFacilities extends DataCenterController {
 		}
 		return false;
 	}
+
+	public function compareChanges(
+		array $data,
+		$type
+	) {
+		DataCenterWidgetHistory::compareChanges( $data );
+		return null;
+	}
 }

@@ -133,6 +133,107 @@ div.datacenter-ui div.widget-fieldlinks tr td {
 .datacenter-ui div.widget-fieldlinks input.reset {
 	margin-right: 10px;
 }
+div.datacenter-ui div.widget-fieldlinks table {
+	background-color: white;
+	border: solid 1px #DDDDDD;
+	width: 100%;
+}
+div.datacenter-ui div.widget-fieldlinks th {
+	background-color: #DDDDDD;
+	color: #999999;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+div.datacenter-ui div.widget-fieldlinks tr td {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+/*
+ * History Widget
+ */
+.datacenter-ui div.widget-history form {
+	margin: 0px;
+	padding: 0px;
+}
+.datacenter-ui div.widget-history input.reset {
+	margin-right: 10px;
+}
+div.datacenter-ui div.widget-history tr td {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+div.datacenter-ui div.widget-history tr.odd {
+	background-color: #FFFFFF;
+}
+div.datacenter-ui div.widget-history tr.even {
+	background-color: #EEEEEE;
+}
+.datacenter-ui div.widget-history input.reset {
+	margin-right: 10px;
+}
+div.datacenter-ui div.widget-history table {
+	background-color: white;
+	border: solid 1px #DDDDDD;
+	width: 100%;
+}
+div.datacenter-ui div.widget-history th {
+	background-color: #DDDDDD;
+	color: #999999;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+div.datacenter-ui div.widget-history tr td {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+div.datacenter-ui div.widget-history table {
+	border: solid 1px silver;
+	width: 100%;
+}
+div.datacenter-ui div.widget-history td.label {
+	width: 20%;
+	padding-left: 8px;
+	padding-right: 8px;
+	color: gray;
+}
+div.datacenter-ui div.widget-history td.older-odd {
+	width: 40%;
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: #FFFFAA;
+}
+div.datacenter-ui div.widget-history td.older-even {
+	width: 40%;
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: #FFFFDD;
+}
+div.datacenter-ui div.widget-history td.newer-odd {
+	width: 40%;
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: #CCFFCC;
+}
+div.datacenter-ui div.widget-history td.newer-even {
+	width: 40%;
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: #EEFFEE;
+}
+div.datacenter-ui div.widget-history span.different {
+	color: red;
+}
 
 /**
  * Heading Widget
@@ -259,29 +360,6 @@ div.datacenter-ui div.widget-table tr td {
 div.datacenter-ui div.widget-actions div.action {
 	float: right;
 	padding-left: 15px;
-}
-
-/**
- * FieldLinks Widget
- */
-div.datacenter-ui div.widget-fieldlinks table {
-	background-color: white;
-	border: solid 1px #DDDDDD;
-	width: 100%;
-}
-div.datacenter-ui div.widget-fieldlinks th {
-	background-color: #DDDDDD;
-	color: #999999;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-left: 8px;
-	padding-right: 8px;
-}
-div.datacenter-ui div.widget-fieldlinks tr td {
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-left: 8px;
-	padding-right: 8px;
 }
 
 /**
@@ -481,37 +559,6 @@ div.datacenter-ui div.input-position img.navigator {
 	display: block;
 	float: left;
 	margin-left: 10px;
-}
-
-/**
- * Difference Widget
- */
-div.datacenter-ui div.widget-difference table {
-	border: solid 1px silver;
-	width: 100%;
-}
-div.datacenter-ui div.widget-difference td.label {
-	width: 20%;
-	padding-left: 8px;
-	padding-right: 8px;
-	color: gray;
-}
-div.datacenter-ui div.widget-difference td.previous {
-	width: 40%;
-	padding-left: 8px;
-	padding-right: 8px;
-	color: green;
-	background-color: #DDFFDD;
-}
-div.datacenter-ui div.widget-difference td.current {
-	width: 40%;
-	padding-left: 8px;
-	padding-right: 8px;
-	color: blue;
-	background-color: #DDDDFF;
-}
-div.datacenter-ui div.widget-difference span.different {
-	color: red;
 }
 
 /**

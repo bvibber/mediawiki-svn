@@ -20,7 +20,6 @@ $messages['en'] = array(
 	'datacenter-ui-page-plans' => 'Plans',
 	'datacenter-ui-page-assets' => 'Assets',
 	'datacenter-ui-page-models' => 'Models',
-	'datacenter-ui-page-history' => 'History',
 	'datacenter-ui-page-repairs' => 'Repairs',
 	'datacenter-ui-page-settings' => 'Settings',
 	// Types
@@ -145,6 +144,7 @@ $messages['en'] = array(
 	'datacenter-ui-field-uses' => 'Uses',
 	'datacenter-ui-field-confirm' => 'Enter "yes" to confirm',
 	// Label
+	'datacenter-ui-label-compare-changes' => 'Compare selected changes',
 	'datacenter-ui-label-reset' => 'Reset',
 	'datacenter-ui-label-cancel' => 'Cancel',
 	'datacenter-ui-label-remove' => 'Remove',
@@ -159,6 +159,9 @@ $messages['en'] = array(
 	'datacenter-ui-label-num-spaces' => '$1 {{PLURAL:$1|Spaces|Space}}',
 	'datacenter-ui-label-num-uses' => '$1 {{PLURAL:$1|uses|use}}',
 	'datacenter-ui-label-degrees-value' => '$1&deg;',
+	'datacenter-ui-label-change-state-row' => 'Core Fields',
+	'datacenter-ui-label-change-state-meta' => 'Meta Fields',
+	'datacenter-ui-label-change-blank-user' => 'System',
 	// Defaults
 	'datacenter-ui-default-new-type' => 'New $1',
 	// List Headings
@@ -173,7 +176,6 @@ $messages['en'] = array(
 	// Information Headings
 	'datacenter-ui-heading-details' => 'Details',
 	'datacenter-ui-heading-model-attachments' => 'Model Attachments',
-	'datacenter-ui-heading-difference' => 'Difference',
 	'datacenter-ui-heading-asset' => 'Asset',
 	'datacenter-ui-heading-model' => 'Model',
 	'datacenter-ui-heading-facility' => 'Facility',

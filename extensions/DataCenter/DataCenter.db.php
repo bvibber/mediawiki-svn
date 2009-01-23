@@ -1667,8 +1667,22 @@ class DataCenterDBComponent extends DataCenterDBRow {
 		if ( !is_array( $values ) ) {
 			return;
 		}
-		$change = DataCenterDBChange::newFromComponent( $this, $values );
-		$change->insert();
+		// Gets it'self from the database - as we need ALL DATA for the state
+		$component = DataCenterDB::getRow(
+			__CLASS__,
+			$this->category,
+			$this->type,
+			$this->getId()
+		);
+		// Checks if component existed
+		if ( $component ) {
+			// Creates a change from a component
+			$change = DataCenterDBChange::newFromComponent(
+				$component, $values
+			);
+			// Inserts change
+			$change->insert();
+		}
 	}
 
 	/**

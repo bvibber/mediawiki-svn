@@ -39,7 +39,7 @@ abstract class DataCenterView {
 
 class DataCenterPage extends SpecialPage {
 
-	/* Members */
+	/* Private Static Members */
 
 	/*
 	 * The path given to the special page is a string of text including any text
@@ -63,6 +63,7 @@ class DataCenterPage extends SpecialPage {
 		array( 'page', 'type', 'id' ),
 		array( 'action', 'parameter' ),
 	);
+
 	/*
 	 * Once the path is interpreted it is determined if the request specified a
 	 * page. If the request did not specify a page, the first page in this array
@@ -106,10 +107,6 @@ class DataCenterPage extends SpecialPage {
 			'view' => 'DataCenterViewModels',
 			'default' => 'object'
 		),
-		'history' => array(
-			'controller' => 'DataCenterControllerHistory',
-			'view' => 'DataCenterViewHistory',
-		),
 		'settings' => array(
 			'controller' => 'DataCenterControllerSettings',
 			'view' => 'DataCenterViewSettings',
@@ -124,6 +121,8 @@ class DataCenterPage extends SpecialPage {
 		'private' => array( 'last-page' => null ),
 		'public' => array()
 	);
+
+	private static $path;
 
 	/* Private Static Functions */
 
@@ -220,6 +219,15 @@ class DataCenterPage extends SpecialPage {
 		);
 	}
 
+	public static function getPath() {
+		if ( !self::$path ) {
+			self::$path = self::subToPath(
+				self::urlToSub( $_SERVER['PHP_SELF'] )
+			);
+		}
+		return self::$path;
+	}
+
 	/* Functions */
 
 	public function __construct() {
@@ -303,12 +311,15 @@ class DataCenterPage extends SpecialPage {
 								$status = $controller->$do(
 									$data, $path['type']
 								);
-								// Redirects to success or failure URL
-								$wgOut->redirect(
-									$wgRequest->getText(
-										$status ? 'success' : 'failure'
-									)
-								);
+								// Checks if status is not null
+								if ( $status !== null ) {
+									// Redirects to success or failure URL
+									$wgOut->redirect(
+										$wgRequest->getText(
+											$status ? 'success' : 'failure'
+										)
+									);
+								}
 							}
 						}
 					}

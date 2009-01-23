@@ -130,7 +130,24 @@ class DataCenterViewAssets extends DataCenterView {
 		return DataCenterUI::renderLayout(
 			'columns',
 			array(
-				DataCenterViewHistory::typeHistory( $path, $asset )
+				DataCenterUI::renderLayout(
+					'rows',
+					array(
+						DataCenterUI::renderWidget(
+							'heading',
+							array(
+								'message' => 'history-type',
+								'subject' => DataCenterUI::message(
+									'type', $path['type']
+								)
+							)
+						),
+						DataCenterUI::renderWidget(
+							'history',
+							array( 'component' => $asset, 'path' => $path )
+						),
+					)
+				),
 			)
 		);
 	}
