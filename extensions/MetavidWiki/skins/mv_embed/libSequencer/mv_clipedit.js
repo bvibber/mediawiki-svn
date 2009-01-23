@@ -44,7 +44,7 @@ var mvClipEdit = function(initObj) {
 	return this.init(initObj);
 };
 mvClipEdit.prototype = {
-
+	
 	selTool:null, //selected tool
 	crop: null, //the crop values
 	base_img_src:null,
@@ -216,9 +216,20 @@ mvClipEdit.prototype = {
 			'd':0,
 			'media':['video'],
 			'doEdit':function( _this ){
+				var cat = _this.rObj
+				//debugger;
 				//do clock mouse scroll duration editor
-				$j('#sub_cliplib_ic').html('cur start: ' + _this.rObj.embed.start_ntp + ' end: ' + _this.rObj.embed.end_ntp );
-			}	
+				var end_ntp = ( _this.rObj.embed.end_ntp) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
+				if(!end_ntp)
+					end_ntp = seconds2ntp( _this.rObj.dur );
+				$j('#sub_cliplib_ic').html(
+					_this.getSetInOut({
+						'start_ntp'	: _this.rObj.embed.start_ntp, 
+						'end_ntp'	: 	end_ntp
+					})		
+				);
+				_this.setInOutBindings();
+			}		
 		},
 		'panzoom':{
 			'd':0,
@@ -293,17 +304,42 @@ mvClipEdit.prototype = {
 	},
 	setUpVideoCtrl:function(){
 		js_log('setUpVideoCtrl:f');
+		var this_seq = this;
 		var eb = $j('#embed_vid').get(0);
 		//turn on preview to avoid onDone actions
 		eb.preview_mode = true;
 		$j('#'+this.control_ct).html('<h3>Edit Video Tools:</h3>');
-		if( eb.supportsURLTimeEncoding() ){
-			js_log("SUPPORTS supports_url_time_encoding do start end");
-			$j('#'+this.control_ct).append('<strong>Set in-out points</strong>'+
+		if( eb.supportsURLTimeEncoding() ){			
+			$j('#'+this.control_ct).append( 
+				this_seq.getSetInOut({
+					'start_ntp'	: eb.start_ntp, 
+					'end_ntp'	: eb.end_ntp		
+				}) 
+			);
+			this_seq.setInOutBindings();			
+		}
+		$j('#'+this.control_ct).append(	this.getInsertDesc() );
+		
+		$j('#'+this.control_ct).append(	'<b>Metavid clip inserts not yet supported</b>' +
+			'<a href="#" class="mv_cancel_img_edit" title="' + getMsg('mv_cancel_image_insert')+'">' + getMsg('mv_cancel_image_insert') + '</a> ');					
+		//$j('#'+this.control_ct).append( this.getInsertDesc() + this.getInsertAction()	);				
+		
+		//this.applyInsertControlBindings();
+	},
+	setInOutBindings:function(){
+		//setup bindings for adjust / preview:
+		add_adjust_hooks( 'rsd' );			 
+		$j('#mv_preview_clip').click(function(){			
+			$j('#embed_vid').get(0).stop();
+			$j('#embed_vid').get(0).play();
+		});		
+	},
+	getSetInOut:function( setInt ){
+		return '<strong>Set in-out points</strong>'+
 			'<table border="0" style="background: transparent; width:94%;height:50px;">'+
 				'<tr>' +
 					'<td style="width:50px">'+
-						'<span style="font-size: small;" id="track_time_start_rsd">' + eb.start_ntp +'</span>'+
+						'<span style="font-size: small;" id="track_time_start_rsd">' + setInt.start_ntp +'</span>'+
 					'</td>' +
 					'<td>' +
 						'<div style="border: 1px solid black; width: 100%; height: 5px; background-color: #888;" '+
@@ -320,39 +356,23 @@ mvClipEdit.prototype = {
 						'</div>'+
 					'</td>' +
 					'<td style="width:50px">'+
-						'<span style="font-size: small;" id="track_time_end_rsd">'+ eb.end_ntp +'</span>'+
+						'<span style="font-size: small;" id="track_time_end_rsd">'+ setInt.end_ntp +'</span>'+
 					'</td>' +
 				'</tr>' +
 			'</table>'+
 			'<span style="float: left;">'+
 				'<label class="mv_css_form" for="mv_start_hr_rsd"><i>Start time:</i></label>'+
-				'<input id="mv_start_hr_rsd" class="mv_adj_hr" name="mv_start_hr_rsd" value="' + eb.start_ntp + '" maxlength="8" size="8"/>'+
+				'<input id="mv_start_hr_rsd" class="mv_adj_hr" name="mv_start_hr_rsd" value="' + setInt.start_ntp + '" maxlength="8" size="8"/>'+
 			'</span>'+
 			'<span style="float: left;">'+
 				'<label for="mv_end_hr_rsd" class="mv_css_form"><i>End time:</i></label>'+
-				'<input name="mv_end_hr_rsd" id="mv_end_hr_rsd" value="' + eb.end_ntp + '" maxlength="8" size="8" class="mv_adj_hr"/>'+
+				'<input name="mv_end_hr_rsd" id="mv_end_hr_rsd" value="' + setInt.end_ntp + '" maxlength="8" size="8" class="mv_adj_hr"/>'+
 			'</span>'+
 			'<div style="clear: both;"/>'+		
-			'<input id="mv_preview_clip" type="button" value="Preview/Play In-out points">');
-			
-			//setup bindings for adjust / preview:
-			add_adjust_hooks('rsd');			 
-			$j('#mv_preview_clip').click(function(){			
-				$j('#embed_vid').get(0).stop();
-				$j('#embed_vid').get(0).play();
-			});		
-		}
-		$j('#'+this.control_ct).append(	this.getInsertDesc() );
-		
-		$j('#'+this.control_ct).append(	'<b>Metavid clip inserts not yet supported</b>' +
-			'<a href="#" class="mv_cancel_img_edit" title="' + getMsg('mv_cancel_image_insert')+'">' + getMsg('mv_cancel_image_insert') + '</a> ');					
-		//$j('#'+this.control_ct).append( this.getInsertDesc() + this.getInsertAction()	);				
-		
-		//this.applyInsertControlBindings();
+			'<input id="mv_preview_clip" type="button" value="Preview/Play In-out points">';
 	},
 	getInsertDesc:function(){
-		return '<h3>Inline Description</h3>' +
-				'(you can copy and paste from the transcript by clicking on the cc button below the video)<br>'+ 				
+		return '<h3>Inline Description</h3><br>'+ 				
 					'<textarea style="width:300px;" id="mv_inline_img_desc" rows="4" cols="30"></textarea><br>';
 	},
 	getInsertAction:function(){
@@ -679,10 +699,12 @@ function do_video_time_update(start_time, end_time, mvd_id)	{
 		//update the vid title:
 		$j('#mv_videoPlayerTime').html( start_time + ' to ' + end_time );
         var ebvid = $j('#embed_vid').get(0);
-        if(ebvid.isPaused())
-            ebvid.stop();
-		$j('#embed_vid').get(0).updateVideoTime(start_time, end_time);
-		js_log('update thumb: '+ start_time);		
-		ebvid.updateThumbTimeNTP( start_time );
+        if( ebvid ){
+	        if(ebvid.isPaused())
+	            ebvid.stop();
+			ebvid.updateVideoTime(start_time, end_time);
+			js_log('update thumb: '+ start_time);		
+			ebvid.updateThumbTimeNTP( start_time );
+		}
 	}
 }

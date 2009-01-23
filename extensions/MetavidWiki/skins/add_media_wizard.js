@@ -8,6 +8,7 @@ var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
 
 //if mv_embed is hosted somewhere other than near by the add_media_wizard you can define it here: 
 var mv_add_media_wizard_path = 'http://mvbox2.cse.ucsc.edu/w/extensions/MetavidWiki/skins/';
+var mv_add_media_wizard_path = 'http://localhost/wiki/extensions/MetavidWiki/skins/';
 
 
 //*code should not have to modify anything below*/
@@ -146,6 +147,8 @@ function getAddMediaPath( replace_str ){
 			return s.src.replace('add_media_wizard.js', replace_str);
 		}
 	}
+	js_log('return default path: ' + mv_add_media_wizard_path + replace_str);
 	return mv_add_media_wizard_path + replace_str;
 }
+
 

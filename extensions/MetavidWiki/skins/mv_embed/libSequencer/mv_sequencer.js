@@ -542,14 +542,14 @@ mvSequencer.prototype = {
 			if( e.which == 17)
 				this_seq.key_ctrl_down = true;
 				
-			if( e.which == 67 && this_seq.key_ctrl_down && !this_seq.inputFocus)
+			if( (e.which == 67 && this_seq.key_ctrl_down) && !this_seq.inputFocus)
 				this_seq.copySelectedClips();
 				
-			if( e.which == 88 && this_seq.key_ctrl_down && !this_seq.inputFocus)
+			if( (e.which == 88 && this_seq.key_ctrl_down) && !this_seq.inputFocus)
 				this_seq.cutSelectedClips();
 			
 			//paste cips on v + ctrl while not focused on a text area: 
-			if( e.which == 86 && this_seq.key_ctrl_down && !this_seq.inputFocus)				
+			if( (e.which == 86 && this_seq.key_ctrl_down) && !this_seq.inputFocus)				
 				this_seq.pasteClipBoardClips();
 				
 		});
@@ -563,7 +563,7 @@ mvSequencer.prototype = {
 				this_seq.key_ctrl_down = false;							
 			
 			//backspace or delete key while not focused on a text area: 
-			if( e.which == 8 || e.which == 46 && !this_seq.inputFocus){							
+			if( (e.which == 8 || e.which == 46) && !this_seq.inputFocus){								
 				this_seq.removeSelectedClips();	
 			}		
 		});
@@ -571,15 +571,17 @@ mvSequencer.prototype = {
 	//check all nodes for focus 
 	//@@todo it would probably be faster to search a given subnode instead of all text
 	doFocusBindings:function(){
-		var _this = this;
+		var this_seq = this;
 		//if an input or text area has focus disable delete key binding
-		$("input,textarea").focus(function () {
-	    	_this.inputFocus = true;	
+		$j("input,textarea").focus(function () {
+			js_log("inputFocus:true");
+	    	this_seq.inputFocus = true;	
 	    });
-	    $("input,textarea").blur( function () {
-	    	_this.inputFocus = false;
+	    $j("input,textarea").blur( function () {
+	    	js_log("inputFocus:blur");
+	    	this_seq.inputFocus = false;
 	    })
-	}
+	},
 	update_tl_hook:function(jh_time_ms){			
 		//put into seconds scale: 
 		var jh_time_sec_float = jh_time_ms/1000;
@@ -736,14 +738,17 @@ mvSequencer.prototype = {
 		this.removeSelectedClips();
 	},	
 	removeSelectedClips:function(){
-		var remove_clip_ary=new Array();
+		var remove_clip_ary=new Array();	
 		//remove selected clips from display
 		$j('.container_track .mv_selected_clip').each(function(){					
 			//grab the track index from the id (assumes track_#_clip_# 					
 			remove_clip_ary.push ( $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_') );																				
 		});		
 		if(remove_clip_ary.length !=0 )
-			this.removeClips(remove_clip_ary);		
+			this.removeClips(remove_clip_ary);
+			
+		//doEdit selected clips (updated selecte resource) 	
+		this.doEditSelectedClip();		
 	},
 	//add a single or set of clips
 	//to a given position and track_inx 

@@ -461,12 +461,13 @@ mvPlayList.prototype = {
 			this.getClipCount()+' clips, <i>'+
 			seconds2ntp( this.getDuration() ) + '</i>');
 			
-		//only show the inline edit button if mediaWiki write API is enabled:		
-		if(wgEnableWriteAPI)
+		//only show the inline edit button if mediaWiki write API is enabled:
+		if( typeof wgEnableWriteAPI != 'undefined'){		
 			$j('#ptitle_'+this.id).append(
 				'<a href="#" onclick="$j(\'#'+this.id+'\').get(0).doEditor();"'+ 
 				'style="position:absolute;top:0px;right:0px">edit</a>'
 			);
+		}
 		//render out the dividers on the timeline: 
 		this.colorPlayHead();		
 		//update status:

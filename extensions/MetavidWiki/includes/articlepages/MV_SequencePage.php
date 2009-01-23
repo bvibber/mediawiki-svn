@@ -28,8 +28,11 @@ class MV_SequencePage extends Article {
 	/*
 	 * returns the xml output of the sequence with all wiki-text templates/magic words swapped out
 	 * also resolves all image and media locations with absolute paths.
+	 *@param $partial_node_set  'full' (the full nodeset) 
+	 * 							'seq' (just seq elements)  
+	 * 							'transition' (just transition elements)
 	 */
-	function getSequenceSMIL(){
+	function getSequenceSMIL( $partial_node_set='full' ){
 		global $wgParser,$wgOut, $wgUser, $wgEnableParserCache;		
 		//temporally stop cache:  
 		$wgEnableParserCache=false;
@@ -48,7 +51,7 @@ class MV_SequencePage extends Article {
 	    $this->resolveHLRD_to_SMIL();
 	    	    	    	    	    
 	    //@@todo get parser Output Object (maybe cleaner way to do this? 
-	    //maybe parser cache is not the right place for this?) 
+	    //maybe parser cache is not the right place to cache the sequence xml? ) 
 	    $parserOutput = $wgParser->parse('', $this->mTitle, ParserOptions::newFromUser( $wgUser ));	    
 	    //output header: 	    
 	    $parserOutput->mText.=$this->smilDoc->saveXML();
@@ -136,10 +139,8 @@ class MV_SequencePage extends Article {
 		if(!is_null($nodeAttr)){ 
 			foreach($nodeAttr as $atrr){
 				if($atrr->nodeName=='uri'){
-					//pull in node content
 					$node_uri = $atrr->nodeValue;					
-				}				
-				//print "$attr = ".  $atrr->nodeValue . "\n";
+				}
 			}
 		}		
 		
@@ -156,7 +157,13 @@ class MV_SequencePage extends Article {
  				//top level ref includes of pages in the main namespace not supported
  			break;
  			case MV_NS_SEQUENCE:
- 				//type sequence ..@@todo transclude the sequence into present sequence (try to avoid id) 
+ 				//type sequence ..@@todo transclude the sequence into present sequence
+ 				//@@todo we should 
+ 				//change the node type to "par" to group the sequence under a single element (helpfull for editor representation)  
+				/*$parElm = $node->ownerDocument->createElement('par');
+ 				
+				$seqArticle = new MV_SequencePage( $uriTitle );
+ 				$seqArticle->getSequenceSMIL();*/
  			break;
  			case MV_NS_STREAM:
  				global $mvDefaultVideoQualityKey, $mvDefaultFlashQualityKey;
@@ -207,11 +214,11 @@ class MV_SequencePage extends Article {
  				$templateText = '{{'. $uriTitle->getText();
  				$addedParamFlag=false;
  				$paramVars = Array();
- 				while ($node->childNodes->length){
- 					if($node->firstChild->nodeName=='param'){
+ 				while ( $node->childNodes->length ){
+ 					if( $node->firstChild->nodeName=='param' ){
  						$param = & $node->firstChild;
  						//make sure we have a name:  
- 						if($param->hasAttribute('name')){ 					
+ 						if( $param->hasAttribute('name') ){ 					
  							//we have parameters:
  							$templateText.= "|\n";
  							$templateText .= $param->getAttribute('name') . '=';
