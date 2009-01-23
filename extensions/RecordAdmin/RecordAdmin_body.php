@@ -232,20 +232,22 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
-	function renderRecords($records, $orderby = false, $cols = false) {
+	function renderRecords($records, $orderby = false, $cols = false, $sortable = true) {
 		if (count($records) < 1) return wfMsg( 'recordadmin-nomatch' );
 
 		$special = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
 		$type = $this->type;
+		$sortable = $sortable ? ' sortable' : '';
+		$br = $sortable ? '<br />' : '';
 
 		# Table header
-		$table = "<table class='sortable recordadmin $type-record'>\n<tr>";
+		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
 		$th = array(
-			'title'   => "<th class='col0'>" . wfMsg( 'recordadmin-title', $type ) . "<br></th>",
-			'actions' => "<th class='col1'>" . wfMsg( 'recordadmin-actions' ) . "<br></th>",
-			'created' => "<th class='col2'>" . wfMsg( 'recordadmin-created' ) . "<br></th>"
+			'title'   => "<th class='col0'>" . wfMsg( 'recordadmin-title', $type ) . "$br</th>",
+			'actions' => "<th class='col1'>" . wfMsg( 'recordadmin-actions' ) . "$br</th>",
+			'created' => "<th class='col2'>" . wfMsg( 'recordadmin-created' ) . "$br</th>"
 		);
-		foreach ( array_keys($this->types) as $col ) $th[$col] = "<th class='col$col'>$col<br></th>";
+		foreach ( array_keys($this->types) as $col ) $th[$col] = "<th class='col$col'>$col$br</th>";
 		foreach ( $cols ? $cols : array_keys($th) as $col ) $table .= $th[$col]."\n";
 		$table .= "</tr>\n";
 
@@ -448,25 +450,27 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function expandMagic(&$parser, $type) {
 		$parser->mOutput->mCacheTime = -1;
-		$filter  = array();
-		$title   = '';
-		$invert  = false;
-		$orderby = false;
-		$cols    = false;
+		$filter   = array();
+		$title    = '';
+		$invert   = false;
+		$orderby  = false;
+		$cols     = false;
+		$sortable = true;
 		foreach (func_get_args() as $arg) if (!is_object($arg)) {
 			if (preg_match("/^(.+?)\\s*=\\s*(.+)$/", $arg, $match)) {
 				list(, $k, $v) = $match;
 				if ($k == 'title') $title = $v;
-				elseif ($k == 'invert')  $invert  = $v;
-				elseif ($k == 'orderby') $orderby = $v;
-				elseif ($k == 'cols')    $cols    = preg_split('/\s*,\s*/', $v);
+				elseif ($k == 'invert')   $invert   = $v;
+				elseif ($k == 'orderby')  $orderby  = $v;
+				elseif ($k == 'cols')     $cols     = preg_split('/\s*,\s*/', $v);
+				elseif ($k == 'sortable') $sortabke = $v;
 				else $filter[$match[1]] = $match[2];
 			}
 		}
 		$this->preProcessForm($type);
 		$this->examineForm();
 		$records = $this->getRecords($type, $filter, $title, $invert);
-		$table = $this->renderRecords($records, $orderby, $cols);
+		$table = $this->renderRecords($records, $orderby, $cols, $sortable);
 		return array(
 			$table,
 			'noparse' => true,
