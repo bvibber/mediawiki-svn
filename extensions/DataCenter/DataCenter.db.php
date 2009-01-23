@@ -1020,7 +1020,6 @@ abstract class DataCenterDB {
 	public static function getChanges(
 		array $options = array()
 	) {
-		$dbr = wfGetDB( DB_SLAVE );
 		return self::getRows(
 			'DataCenterDBChange',
 			'meta',
