@@ -1020,6 +1020,7 @@ abstract class DataCenterDB {
 	public static function getChanges(
 		array $options = array()
 	) {
+		$dbr = wfGetDB( DB_SLAVE );
 		return self::getRows(
 			'DataCenterDBChange',
 			'meta',
@@ -1027,19 +1028,22 @@ abstract class DataCenterDB {
 			array_merge_recursive(
 				$options,
 				array(
-					'tables' => array( 'user' ),
+					'tables' => array( $dbr->tablePrefix() . 'user' ),
 					'fields' => array(
-						'user_name as ' .
+						'user_name as' .
 						self::getColumnName(
 							'meta', 'change', 'username'
 						)
 					),
-					'conditions' => array(
-						self::getColumnName(
-							'meta', 'change', 'user'
-						) .
-						' = user_id'
-					),
+					'joins' => array(
+						'user' => array(
+							'LEFT JOIN',
+							'user_id = ' .
+							self::getColumnName(
+								'meta', 'change', 'user'
+							)
+						)
+					)
 				)
 			)
 		);
@@ -1655,14 +1659,14 @@ class DataCenterDBComponent extends DataCenterDBRow {
 		}
 	}
 
-	public function saveChange(
+	public function insertChange(
 		$values
 	) {
 		if ( !is_array( $values ) ) {
 			return;
 		}
 		$change = DataCenterDBChange::newFromComponent( $this, $values );
-		$change->save();
+		$change->insert();
 	}
 
 	/**

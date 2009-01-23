@@ -58,7 +58,7 @@ class DataCenterControllerFacilities extends DataCenterController {
 		if ( isset( $component ) ) {
 			$component->save();
 			$component->saveMetaValues( $data['meta'] );
-			$component->saveChange( $data['change'] );
+			$component->insertChange( $data['change'] );
 			return true;
 		}
 		return false;

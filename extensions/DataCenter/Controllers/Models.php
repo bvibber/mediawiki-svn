@@ -51,7 +51,7 @@ class DataCenterControllerModels extends DataCenterController {
 		$model = DataCenterDBModel::newFromType( $type, $data['row'] );
 		$model->save();
 		$model->saveMetaValues( $data['meta'] );
-		$model->saveChange( $data['change'] );
+		$model->insertChange( $data['change'] );
 		return true;
 	}
 
