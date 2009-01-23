@@ -1030,7 +1030,7 @@ abstract class DataCenterDB {
 				array(
 					'tables' => array( $dbr->tablePrefix() . 'user' ),
 					'fields' => array(
-						'user_name as' .
+						'user_name as ' .
 						self::getColumnName(
 							'meta', 'change', 'username'
 						)
