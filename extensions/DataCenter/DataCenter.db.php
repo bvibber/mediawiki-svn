@@ -1028,7 +1028,7 @@ abstract class DataCenterDB {
 			array_merge_recursive(
 				$options,
 				array(
-					'tables' => array( $dbr->tablePrefix() . 'user' ),
+					'tables' => array( 'user' ),
 					'fields' => array(
 						'user_name as ' .
 						self::getColumnName(
