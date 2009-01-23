@@ -73,7 +73,7 @@ class AbuseFilter {
 			}
 		}
 		
-		// Find last 5 authors, for testing.
+		// Find last 5 authors.
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'revision', 'distinct rev_user_text', array('rev_page' => $title->getArticleId() ), __METHOD__, array( 'order by' => 'rev_timestamp desc', 'limit' => 10 ) );
 		$users = array();

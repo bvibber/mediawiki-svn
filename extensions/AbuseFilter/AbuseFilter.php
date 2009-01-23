@@ -33,6 +33,12 @@ $wgAutoloadClasses['AbuseFilterHooks'] = "$dir/AbuseFilter.hooks.php";
 $wgAutoloadClasses['SpecialAbuseLog'] = "$dir/SpecialAbuseLog.php";
 $wgAutoloadClasses['SpecialAbuseFilter'] = "$dir/SpecialAbuseFilter.php";
 
+$wgAutoloadClasses['AbuseFilterViewList'] = "$dir/Views/AbuseFilterViewList.php";
+$wgAutoloadClasses['AbuseFilterView'] = "$dir/Views/AbuseFilterView.php";
+$wgAutoloadClasses['AbuseFilterViewEdit'] = "$dir/Views/AbuseFilterViewEdit.php";
+$wgAutoloadClasses['AbuseFilterViewTools'] = "$dir/Views/AbuseFilterViewTools.php";
+$wgAutoloadClasses['AbuseFilterViewHistory'] = "$dir/Views/AbuseFilterViewHistory.php";
+
 $wgSpecialPages['AbuseLog'] = 'SpecialAbuseLog';
 $wgSpecialPages['AbuseFilter'] = 'SpecialAbuseFilter';
 
