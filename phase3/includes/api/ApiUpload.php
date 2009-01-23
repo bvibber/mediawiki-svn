@@ -43,7 +43,7 @@ class ApiUpload extends ApiBase {
 		$this->mParams = $this->extractRequestParams();
 		$request = $this->getMain()->getRequest();
 		// Add the uploaded file to the params array
-		$this->mParams['file'] = $request->getFileName('file');
+		$this->mParams['file'] = $request->getFileName( 'file' );
 		
 		// Check whether upload is enabled
 		if( !UploadFromBase::isEnabled() )
@@ -94,7 +94,7 @@ class ApiUpload extends ApiBase {
 		// Cleanup any temporary mess
 		$this->mUpload->cleanupTempFile();
 		
-		$this->getResult()->addValue(null, $this->getModuleName(), $result);
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 	
 	private function performUpload() {
@@ -138,7 +138,7 @@ class ApiUpload extends ApiBase {
 				case UploadFromBase::VERIFICATION_ERROR:
 					$result['error'] = 'verification-error';
 					$args = $resultDetails['veri'];
-					$code = array_shift($args);
+					$code = array_shift( $args );
 					$result['verification-error'] = $code;
 					$result['args'] = $args;
 					$this->getResult()->setIndexedTagName( $result['args'], 'arg' );
@@ -173,7 +173,7 @@ class ApiUpload extends ApiBase {
 		}
 		
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
-			$this->mParams['comment'], $this->mParams['watch'], $wgUser);
+			$this->mParams['comment'], $this->mParams['watch'], $wgUser );
 		
 		if( !$status->isGood() ) {
 			$result['result'] = 'Failure';
