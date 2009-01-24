@@ -1155,6 +1155,44 @@ $messages['tet'] = array(
 	'imagetagging-tagcancel-button' => 'Para',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'taggedimages' => 'Mga larawang natatakan na',
+	'imagetagging-desc' => 'Nagpapahintulot sa isang tagagamit na makapili ng mga rehiyon ng isang nakabaong larawan at iugnay ang isang pahina sa ganyang rehiyon',
+	'imagetagging-addimagetag' => 'Tatakan ang larawang ito',
+	'imagetagging-article' => 'Pahina:',
+	'imagetagging-articletotag' => 'Pahinang tatatakan',
+	'imagetagging-canteditothermessage' => 'Hindi mo mababago ang pahinang ito, maaaring dahil wala kang mga karapatang gawin ito o sapagkat ikinandado ang pahina dahil sa iba pang mga kadahilanan.',
+	'imagetagging-imghistory' => 'Kasaysayan',
+	'imagetagging-images' => 'mga larawan',
+	'imagetagging-inthisimage' => 'Sa loob ng larawang ito: $1',
+	'imagetagging-logentry' => 'Tinangal ni $2 ang tatak na nasa pahinang [[$1]]',
+	'imagetagging-log-tagged' => 'Itinatak ni $4 ang larawang [[$1|$2]] sa pahinang [[$3]]',
+	'imagetagging-new' => '<sup><span style="color:red">Bago!</span></sup>',
+	'imagetagging-removetag' => 'tanggalin ang tatak',
+	'imagetagging-done-button' => 'Tapos na ang pagtatatak',
+	'imagetagging-tag-button' => 'Tatakan',
+	'imagetagging-tagcancel-button' => 'Huwag ituloy',
+	'imagetagging-tagging-instructions' => 'Pindutin ang mga tao o mga bagay na nasa loob ng larawan upang matatakan sila.',
+	'imagetagging-addingtag' => 'Idinadagdag ang tatak...',
+	'imagetagging-removingtag' => 'Tinatanggal ang tatak...',
+	'imagetagging-addtagsuccess' => 'Idinagdag ang tatak.',
+	'imagetagging-removetagsuccess' => 'Tinanggal ang tatak.',
+	'imagetagging-canteditneedloginmessage' => 'Hindi mo mababago ang pahinang ito.
+Maaaring kailangan mong lumagda muna upang makapagtatak ng mga larawan.
+Nais mo bang lumagda na ngayon?',
+	'imagetagging-oneactionatatimemessage' => 'Isang galaw ng pagtatatak lamang sa isang panahon ang pinapahintulutan.
+Pakihintay lamang na mabuo muna ang umiiral na kilos.',
+	'imagetagging-oneuniquetagmessage' => 'Ang larawang ito ay mayroon nang isang tatak na may ganitong pangalan.',
+	'imagetagging-imagetag-seemoreimages' => 'Tingnan ang mas marami pang mga larawan ng "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Mga larawan ng "$1"',
+	'imagetagging-taggedimages-displaying' => 'Ipinapakita ang $1 - $2 ng $3 mga larawan ng "$4"',
+	'tag-logpagename' => 'Tala ng pagtatatak',
+	'tag-logpagetext' => 'Isa itong talaan ng lahat ng mga pagdaragdag at mga pagtatanggal ng tatak ng larawan.',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis

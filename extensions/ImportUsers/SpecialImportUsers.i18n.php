@@ -1320,6 +1320,32 @@ $messages['th'] = array(
 	'importusers-log-summary-all' => 'ทั้งหมด',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'importusers' => 'Umangkat ng mga tagagamit',
+	'importusers-desc' => '[[Special:ImportUsers|Mga tagagamit ng pag-aangkat]] na bugsuan/bultuhan mula sa talaksang CSV; pagsasakodigo: UTF-8',
+	'importusers-uploadfile' => 'Ikarga ang talaksan',
+	'importusers-form-caption' => 'Ipasok ang talaksang CSV (UTF-8)',
+	'importusers-form-file' => 'Pormat/anyo ng talaksan ng tagagamit (csv):',
+	'importusers-form-replace-present' => 'Palitan ang umiiral na mga tagagamit',
+	'importusers-form-button' => 'Angkatin',
+	'importusers-user-added' => 'Idinagdag ang tagagamit na si <b>%s</b>.',
+	'importusers-user-present-update' => 'Umiiral na ang tagagamit na si <b>%s</b>. Isinapanahon.',
+	'importusers-user-present-not-update' => 'Umiiral na ang tagagamit na si <b>%s</b>. Hindi isinapanahon.',
+	'importusers-user-invalid-format' => 'Hindi tanggap ang anyo/pormat o walang laman ang dato ng tagagamit na nasa guhit na #%s. Nilaktawan.',
+	'importusers-log' => 'Tala ng pag-aangkat',
+	'importusers-log-summary' => 'Buod',
+	'importusers-log-summary-all' => 'Lahat',
+	'importusers-log-summary-added' => 'Idinagdag',
+	'importusers-log-summary-updated' => 'Naisapanahon',
+	'importusers-login-name' => 'Pangalang panglagda',
+	'importusers-password' => 'hudyat',
+	'importusers-email' => 'e-liham',
+	'importusers-realname' => 'totoong pangalan',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

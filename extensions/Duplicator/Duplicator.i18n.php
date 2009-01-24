@@ -56,6 +56,13 @@ $messages['af'] = array(
 	'duplicator-dest' => 'Bestemming:',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'duplicator-options' => 'ምርጫዎች',
+);
+
 /** Arabic (العربية)
  * @author Gharbeia
  * @author Meno25

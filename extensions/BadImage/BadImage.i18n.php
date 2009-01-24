@@ -1060,8 +1060,10 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author Malafaya
+ * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'badimages-add-btn' => 'დამატება',
 	'badimages-reason' => 'მიზეზი:',
 );
 
@@ -1411,13 +1413,30 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'badimages' => 'Lista over blokkerte bilete',
+	'badimages-desc' => 'Vidar ut funksjonaliteten til lista over blokkerte bilete i MediaWiki',
+	'badimages-add-btn' => 'Legg til',
+	'badimages-added' => '$1 vart lagt til i lista.',
+	'badimages-count' => "Det finst {{PLURAL:$1|'''eitt'''|'''$1'''}} bilete på lista over blokkerte bilete.",
 	'badimages-name' => 'Namn:',
+	'badimages-not-added' => 'Biletet kunne ikkje verta lagt til.',
+	'badimages-not-removed' => 'Biletet kunne ikkje verta fjerna.',
 	'badimages-reason' => 'Årsak:',
 	'badimages-remove' => '(fjern)',
 	'badimages-remove-btn' => 'Fjern',
+	'badimages-remove-confirm' => 'Stadfest at du ynskjer å fjerna $1 frå lista:',
+	'badimages-removed' => '$1 vart fjerna frå lista.',
+	'badimages-subheading' => 'Noverande objekt',
+	'badimages-unprivileged' => '(Du har ikkje rettane som trengst for å endra lista)',
+	'badimages-log-name' => 'Lista over blokkerte bilete',
+	'badimages-log-header' => 'Dette er ein logg over endringar i [[{{MediaWiki:Badimages-page}}|lista over blokkerte bilete]].',
+	'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilete',
+	'badimages-log-remove' => 'fjerna [[$1]] frå lista over blokkerte bilete',
+	'badimages-page' => '{{ns:help}}:Lista over blokkerte bilete',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

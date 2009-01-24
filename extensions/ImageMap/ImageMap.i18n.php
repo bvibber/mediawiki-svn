@@ -359,12 +359,14 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
 	'imagemap_no_image' => 'Error: hay que especificar un imagen en la línea primera',
 	'imagemap_invalid_image' => 'Error: la imagen no es válida o no existe',
+	'imagemap_bad_image' => 'Error: la imagen esta en la lista negra en esta página',
 	'imagemap_no_link' => 'Error: no se encontró ningún enlace válido al final de la línea $1',
 	'imagemap_invalid_title' => 'Error: título no válido en un enlace de la linea $1',
 	'imagemap_no_areas' => 'Error: se debe dar al menos una especificación de área',
@@ -1169,6 +1171,7 @@ $messages['sah'] = array(
 	'imagemap_invalid_coord' => 'Error: $1 строкаҕа сыыһа координата суруллубут, чыыһыла буолуохтаах',
 	'imagemap_invalid_desc' => 'Error: desc суолтата сыыһа турбут, мантан талыахха наада: <tt>$1</tt>',
 	'imagemap_description' => 'Ойуу туһунан',
+	'imagemap_poly_odd' => 'Алҕас: $1 строкааҕа наһаа элбэх координааталаах многоугольник туһунан булулунна',
 );
 
 /** Sicilian (Sicilianu)

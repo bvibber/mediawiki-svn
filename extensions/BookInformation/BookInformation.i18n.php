@@ -817,8 +817,10 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'bookinfo-header' => 'ინფორმაცია წიგნზე',
 	'bookinfo-result-title' => 'სათაური:',
 	'bookinfo-result-author' => 'ავტორი:',
 	'bookinfo-result-publisher' => 'გამომცემელი:',

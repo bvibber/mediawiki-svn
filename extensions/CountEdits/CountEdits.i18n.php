@@ -133,6 +133,7 @@ $messages['bcl'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'countedits-username' => 'Імя ўдзельніка:',
 	'countedits-ok' => 'Добра',
 );
 

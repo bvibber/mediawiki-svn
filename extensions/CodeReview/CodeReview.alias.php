@@ -84,6 +84,11 @@ $aliases['km'] = array(
 	'Code' => array( 'កូដ' ),
 );
 
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'RepoAdmin' => array( '저장소관리' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Code' => array( 'Quelltext' ),

@@ -6506,29 +6506,78 @@ $messages['tr'] = array(
 	'boardvote_entry' => '* [[Special:BoardVote/vote|Oy ver]]
 * [[Special:BoardVote/list|Bugüne kadarki oylar]]
 * [[Special:BoardVote/dump|Şifreli seçim kayıtlarını boşalt]]',
+	'boardvote_intro' => '<p>2008 Vikimedya Mütevelli Heyeti seçimlerine hoşgeldiniz.
+Kullanıcı topluluğunu çeşitli Vikimedya projelerinde temsil etmesi için bir kişiyi oyluyoruz.
+Vikimedya projelerinin, bireysel ve grup olarak alacağı gelecek yönleri belirlemeye yardım edecekler, ve <em>sizin</em> ilgi ve uyarılarınızı Mütevelli Heyetinde temsil edecekler.
+Gelir oluşturma yollarında ve yükseltilmiş paraların dağıtımına karar verecekler.</p>
+
+<p>Lütfen oy vermeden önce adayların ifadelerini ve sorgulara cevaplarını dikkatlice okuyun.
+Herbir aday itibarlı bir kullanıcıdır. Hatırı sayılır zaman katkıda bulunmuş, insanlık bilgisinin özgür dağıtımı ve takibi için adanmış bu projelere iyi karşılayan ortam yapmak için gayret göstermiştir.</p>
+
+<p>Lütfen tercihlerinize göre adayları oylayın, kutuların yanına bir rakam girin (1 = favori adayınız, 2 = ikinci favori, ...)
+Birden fazla adaya aynı tercihi verebilirsiniz ve adayları derecesiz bırakabilirsiniz.
+Tüm derecelendirilmiş adayları, derecelendirmediklerinize tercih ettiğiniz ve derecelendirilmemiş adaylar arasında tarafsız kaldığınız varsayılmıştır.</p>
+
+<p>Oylamanın kazananı Schulze metodu kullanılarak hesaplanacaktır. Daha fazla bilgi için, resmi oylama sayfalarına bakın.</p>
+
+<p>Daha fazla bilgi için:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">2008 Heyet seçimleri</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Adaylar</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze metodu</a></li></ul>',
 	'boardvote_intro_change' => '<p>Daha evvel oy kullanmıştınız. Ama oyunuzu değiştirebilirsiniz. Aşağıdaki formu kullanarak, uygun olduğunu düşündüğünüz aday ya da adayların yanına işart koyup, oyunuzu gönderiniz.</p>',
+	'boardvote_entered' => 'Teşekkürler, oyunuz kaydedildi.
+
+Eğer dilerseniz, aşağıdaki ayrıntıları kaydedebilirsiniz. Oy kaydınız:
+
+<pre>$1</pre>
+
+Seçim Yönetiminin genel anahtarı ile şifrelendi:
+
+<pre>$2</pre>
+
+Şifreli sonuç aşağıdaki gibidir. Bu [[Special:BoardVote/dump|alenen gösterilecektir]].
+
+<pre>$3</pre>
+
+[[Special:BoardVote/entry|Geri]]',
 	'boardvote_invalidentered' => '<p><strong>Hata</strong>: aday tercihi pozitif tam sayı olarak (1, 2, 3, ....) belirtilmeli, ya da boş bırakılmalıdır.</p>',
+	'boardvote_nosession' => "Vikimedya kullanıcı ID'niz belirlenemedi.
+Lütfen oy vermeye vasıflı olduğuz vikiye giriş yapın, ve <nowiki>[[Special:BoardVote]]</nowiki>'a gidin.
+$2 tarihinden önce en az $1 {{PLURAL:$1|katkı|katkı}}, ve $4 ile $5 tarihleri arasında en az $3 {{PLURAL:$3|katkıya|katkıya}} sahip bir hesap kullanmalısınız.",
 	'boardvote_notloggedin' => 'Oturum açmamışsınız.
 Oy kullanabilmek için, $2 tarihinden önce en az $1 {{PLURAL:$1|değişikliğe|değişikliğe}}, $4 ve $5 tarihleri arasında en az $3 {{PLURAL:$3|değişikliğe|değişikliğe}} sahip bir hesap kullanmanız gereklidir.',
+	'boardvote_notqualified' => 'Bu seçimde oy vermeye vasıflı değilsiniz.
+$2 tarihinden önce en az $1 {{PLURAL:$1|katkı|katkı}}, ve $4 ile $5 tarihleri arasında en az $3 {{PLURAL:$3|katkı|katkı}} yapmalısınız.',
 	'boardvote_novotes' => 'Henüz kimse oy kullanmadı.',
 	'boardvote_time' => 'Oy kullandığı tarih',
 	'boardvote_user' => 'Kullanıcı',
 	'boardvote_edits' => 'Değişiklik sayısı',
 	'boardvote_days' => 'Günleri',
 	'boardvote_ip' => 'IP',
+	'boardvote_ua' => 'Kullanıcı temsilcisi',
 	'boardvote_listintro' => '<p>Bugüne kadar kaydedilmiş oyların listesi. Şifrelendirilmiş olarak indirmek için $1.</p>',
 	'boardvote_dumplink' => 'Buraya tıklayın',
 	'boardvote_submit' => 'Oyunuzu kullanın',
 	'boardvote_needadmin' => 'Bu işlemi sadece seçim yöneticileri yapabilir.',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Vikimedya Heyet Seçimleri</a>:
+22 Haziran\'a kadar oylama açıktır',
 	'boardvote_notstarted' => 'Oylama henüz başlamadı',
 	'boardvote_closed' => 'Oylama bitmiştir, [http://meta.wikimedia.org/wiki/Board_elections/2008/Results sonuçlar için seçim sayfasına] bakın.',
 	'boardvote_edits_many' => 'çok',
+	'group-boardvote' => 'Heyet oylaması yöneticileri',
+	'group-boardvote-member' => 'heyet oylaması yöneticisi',
+	'grouppage-boardvote' => '{{ns:project}}:Heyet oylaması yöneticisi',
 	'boardvote_blocked' => 'Kayıtlı olduğunuz vikide engellenmişsiniz.
 Engellenmiş kullanıcıların oy kullanmasına izin verilmez.',
 	'boardvote_bot' => 'Kayıtlı olduğunuz vikide bot olarak işaretlenmişsiniz.
 Bot hesaplarının oy kullanmasına izin verilmez.',
 	'boardvote_welcome' => "Hoş geldiniz '''$1'''!",
 	'go_to_board_vote' => '2008 Wikimedia Yönetim Kurulu Seçimleri',
+	'boardvote_redirecting' => 'Güvenlik ve şeffaflık için, oylamayı dış, bağımsız yönetilen bir sunucuda yapıyoruz.
+
+Bu dış sunucuya 20 saniye içinde yönlendirileceksiniz. Hemen gitmek için [$1 buraya tıklayın].
+
+İmzalanmamış bir sertifika hakkında bir güvenlik uyarısı alabilirsiniz.',
 	'right-boardvote' => 'Seçimleri yönet',
 );
 

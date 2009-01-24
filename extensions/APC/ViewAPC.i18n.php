@@ -225,6 +225,7 @@ $messages['af'] = array(
 $messages['am'] = array(
 	'viewapc-display-filename' => 'የፋይል ስም',
 	'viewapc-display-info' => 'ስም',
+	'viewapc-ls-options-legend' => 'ምርጫዎች',
 	'viewapc-ls-header-name' => 'ስም',
 	'viewapc-ls-sort-name' => 'ስም',
 	'viewapc-ls-limit-none' => 'ሁሉ',

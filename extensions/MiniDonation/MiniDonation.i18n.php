@@ -393,6 +393,14 @@ $messages['tg-cyrl'] = array(
 	'donationform-submit' => 'Ҳадя тавассути PayPal',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'donationform-desc' => 'Nagdaragdag ng isang tatak na <tt>&lt;donateform&gt;</tt> upang masuportahan ang mga pag-aambag sa pamamagitan ng PayPal',
+	'donationform-submit' => 'Mag-ambag sa pamamagitan ng PayPal',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

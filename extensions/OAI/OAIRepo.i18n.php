@@ -315,6 +315,13 @@ $messages['ru'] = array(
 	'oai-desc' => 'Предоставляет к хранилищу интерфейс [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] ыскылаакка интерфейс эбэр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

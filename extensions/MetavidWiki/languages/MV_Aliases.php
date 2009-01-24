@@ -66,6 +66,11 @@ $aliases['gsw'] = array(
 	'MediaSearch' => array( 'Medie-Suech' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'MediaSearch' => array( 'メディア検索' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'MediaSearch' => array( 'Medie sichen' ),

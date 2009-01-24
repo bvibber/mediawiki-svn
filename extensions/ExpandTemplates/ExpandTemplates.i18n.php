@@ -1652,6 +1652,13 @@ $messages['to'] = array(
  */
 $messages['tr'] = array(
 	'expandtemplates' => 'Şablonları genişlet',
+	'expandtemplates-desc' => 'Genişletilmiş vikimetin göstermek ve işlenmiş sayfayı önizlemek için [[Special:ExpandTemplates|şablonları, derleyici fonksiyonlarını ve değişkenleri genişletir]]',
+	'expand_templates_intro' => 'Bu özel sayfa biraz metni alır ve içindeki tüm şablonları yinelemeli olarak genişletir.
+Ayrıca şu gibi derleyici fonksiyonlarını da genişletir
+<nowiki>{{</nowiki>#if:…}}, ve şu gibi değişkenleri
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;aslında çift-bağlı hemen herşey.
+Bunu, ilgili derleyici aşamasını MedyaVikinin kendisinden çağırarak yapar.',
+	'expand_templates_title' => 'Durum başlığı, ör {{PAGENAME}} için.:',
 	'expand_templates_input' => 'Giriş metni:',
 	'expand_templates_output' => 'Sonuç',
 	'expand_templates_xml_output' => 'XML üretim',

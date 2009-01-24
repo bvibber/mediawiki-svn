@@ -212,10 +212,14 @@ $messages['io'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'formatchanges-desc' => '[[Special:RecentChanges|最近更新したページ]]を再フォーマットする',
 	'formatchanges-anonymous' => '匿名',
+	'formatchanges-createdby' => '$1 - $2 による作成 ($3)',
+	'formatchanges-editedby' => '$1 - $2 による編集 ($3)',
 );
 
 /** Javanese (Basa Jawa)

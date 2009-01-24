@@ -65,6 +65,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'player-title' => 'ተጫዋች',
 	'player-file' => 'የፋይል ስም',
 	'player-not-found' => 'ፋይል አልተገኘም',
 );

@@ -114,11 +114,14 @@ $messages['eo'] = array(
 	'autocreatecategorypages-editor' => 'Aŭtomata kreilo de kategorioj',
 );
 
-/** Spanish (Español) */
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
 $messages['es'] = array(
 	'autocreatecategorypages-stub' => 'Esta es una página de categorías.
 Aqx se enumeran todas las páginas en la categoría "$1" asx como todas las subcategorías en la categoría "$1" si las hubiere.',
 	'autocreatecategorypages-createdby' => 'Creado automáticamente por la extensión AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Creador automático de categorías',
 );
 
 /** Basque (Euskara)

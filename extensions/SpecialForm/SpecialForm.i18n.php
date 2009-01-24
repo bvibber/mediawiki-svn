@@ -392,7 +392,7 @@ $messages['gl'] = array(
 	'formbadpagename' => 'Nome de Páxina incorrecto',
 	'formbadrecaptcha' => 'Valores incorrectos na reCaptcha. Inténteo de novo.',
 	'formbadpagenametext' => 'O formulario de datos que vostede introduciu fixo un nome de páxina incorrecto, "$1".',
-	'formrequiredfielderror' => 'O campo $1 é requerido para este formulario. Énchao.',
+	'formrequiredfielderror' => '{{PLURAL:$2|O campo $1 é requirido|Os campos $1 son requiridos}} para este formulario. Por favor, {{PLURAL:$2|énchao|énchaos}}.',
 	'formsavesummary' => 'Nova páxina usando [[Special:Form/$1|o formulario $1]]',
 	'formsaveerror' => 'Erro ao gardar o formulario',
 	'formsaveerrortext' => "Houbo un erro descoñecido ao gardar a páxina '$1'.",
@@ -1153,8 +1153,8 @@ $messages['tl'] = array(
 	'formbadpagename' => 'Masamang pangalan ng pahina',
 	'formbadrecaptcha' => "Hindi tamang mga halaga para sa muling pag-Captcha (''reCaptcha'').  Subuking muli.",
 	'formbadpagenametext' => 'Ang ipinasok mong dato sa pormularyo ay gumagawa ng isang masamang pangalan ng pahina, "$1".',
-	'formrequiredfielderror' => 'Kinakailangan ang kahanayang $1 para sa pormularyong ito.
-Pakipunuan ito.',
+	'formrequiredfielderror' => 'Ang {{PLURAL:$2|hanay na $1 ay|mga hanay na $1 ay}} kailangan para sa pormularyong ito.
+Pakipunuan {{PLURAL:$2|ito|sila}} ng laman.',
 	'formsavesummary' => 'Bagong pahinang gumagamit ng [[Special:Form/$1|pormularyong $1]]',
 	'formsaveerror' => 'Kamalian sa pagsagip ng pormularyo',
 	'formsaveerrortext' => "Nagkaroon ng isang hindi nalalamang kamalian habang sinasagip ang pahinang '$1'.",

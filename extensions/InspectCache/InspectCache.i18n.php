@@ -811,6 +811,22 @@ $messages['th'] = array(
 	'inspectcache-ok' => 'ตกลง',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'inspectcache' => 'Suriin ang taguan',
+	'inspectcache-desc' => 'Isang payak na kagamitang pangtanggal ng depekto upang masuri ang mga nilalaman ng pinagsasaluhang taguan',
+	'inspectcache-ok' => "Sige/Ayos 'yan",
+	'inspectcache-general' => 'Taguang panlahat',
+	'inspectcache-parser' => 'Taguan ng banghay',
+	'inspectcache-message' => 'Taguan ng mensahe',
+	'inspectcache-get' => 'Kuhanin',
+	'inspectcache-delete' => 'Burahin',
+	'inspectcache-deleted' => 'Burahin ang taguan',
+	'inspectcache-list' => 'Talaan',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

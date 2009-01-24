@@ -502,16 +502,28 @@ Adde alcunes con le instrumentos in le barra de menu.',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'gep-desc' => '編集ページをよりユーザーフレンドリーになるよう補完する',
+	'gep-emailsubject' => '[$1] カテゴリ提案: $2',
+	'gep-emailbody' => '利用者「$1」がサイト $3 にカテゴリ「$2」を提案しました。',
+	'gep-emailfailure' => 'すみません、あなたの提案は処理できませんでした。',
+	'gep-emailsuccess' => 'カテゴリ「$1」を提案いただきありがとうございます。',
 	'gep-categories' => 'カテゴリ',
 	'gep-addcategory' => 'カテゴリの追加',
 	'gep-addcategorybutton' => '追加',
+	'gep-suggestcategory' => 'カテゴリを提案',
 	'gep-suggestcategorybutton' => '送信',
 	'gep-sections' => 'セクション',
+	'gep-sectionnotdisabled' => 'このセクションは無効にできません',
 	'gep-addsection' => 'セクションの追加',
 	'gep-addsectionbutton' => '追加',
+	'gep-classicmode' => 'クラシック・モード',
+	'gep-genericmode' => 'ジェネリック・モード',
+	'gep-nosectioninstructions' => 'このページにはセクションがありません。メニューバーのツールを使って追加してください。',
+	'gep-nocategories' => '保存前に最低でも1つはカテゴリを選んでください',
 );
 
 /** Javanese (Basa Jawa)

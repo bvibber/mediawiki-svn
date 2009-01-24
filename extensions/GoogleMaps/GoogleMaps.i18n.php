@@ -157,6 +157,7 @@ $wgGoogleMapsMessages['am'] = array(
 	'gm-width' => 'ስፋት',
 	'gm-height' => 'ቁመት',
 	'gm-large' => 'ትልቅ',
+	'gm-small' => 'ትንሽ',
 	'gm-yes' => 'አዎ',
 	'gm-search' => 'ፍለጋ',
 	'gm-line-width' => 'ስፋት',

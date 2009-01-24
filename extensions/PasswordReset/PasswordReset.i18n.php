@@ -121,6 +121,13 @@ $messages['arz'] = array(
 	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'passwordreset-username' => 'Імя ўдзельніка:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -149,10 +149,11 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'formatsearch-desc' => '検索結果ページをクリーンアップする',
+	'formatsearch-desc' => '検索結果ページを整理する',
 );
 
 /** Javanese (Basa Jawa)

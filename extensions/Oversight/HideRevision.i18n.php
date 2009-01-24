@@ -2792,7 +2792,9 @@ $messages['sah'] = array(
 	'group-oversight' => 'Ревизия ыытааччылар/ревизордар',
 	'group-oversight-member' => 'Ревизор',
 	'grouppage-oversight' => '{{ns:project}}:Ревизордар',
-	'hiderevision-prompt' => 'Кистэниэхтээх торум нүөмэрэ:',
+	'right-oversight' => 'Урут кистэммит барылы көрүү',
+	'right-hiderevision' => 'Дьаһабыллартан кистэммит көннөрүүлэри көрүү уонна төннөрүү',
+	'hiderevision-prompt' => 'Кистэниэхтээх барыл нүөмэрэ:',
 	'hiderevision-continue' => 'Салгыы',
 	'hiderevision-text' => "Бу сирэй киһи ''дьиҥнээх аата, дьиэтин аадырыһа, төлөппүөнүн, пааспарын нүөмэрдэрэ уонна да атын сиһилии сибидиэнньэлэр'' бэриллэр '''буоллахтарына эрэ''' туттуллуон сөп.
 
@@ -2802,6 +2804,7 @@ $messages['sah'] = array(
 	'hiderevision-reason' => 'Төрүөтэ (сабыылаах сурунаалга суруллуо):',
 	'hiderevision-submit' => 'Сибидиэнньэлэри кистээ',
 	'hiderevision-tab' => 'Торуму көрдөрүмэ',
+	'hiderevision-link' => 'Кыттааччы суруйуутун кистэммитэ',
 	'hiderevision-norevisions' => 'Көрдөрүллүө суохтаах сирэйдэр ыйыллыбатахтар.',
 	'hiderevision-noreason' => 'Кистиир төрүөккүн суруйуохтааххын.',
 	'hiderevision-status' => '$1 нүөмэрдээх торум: $2',
@@ -2823,6 +2826,8 @@ $messages['sah'] = array(
 	'oversight-header' => 'Манна соторутааҕыта кистэммит торумнар көрдөрүлүннүлэр.
 Бу сибидиэнньэлэри тарҕатыы ырытааччы быраабын быһыыга тиэрдиэн сөп.',
 	'oversight-legend' => 'Уларытыыны кистиир сурунаалга көрдөөһүн',
+	'oversight-oversighter' => 'Ревизор:',
+	'oversight-offender' => 'Кэһээччи:',
 );
 
 /** Sicilian (Sicilianu)

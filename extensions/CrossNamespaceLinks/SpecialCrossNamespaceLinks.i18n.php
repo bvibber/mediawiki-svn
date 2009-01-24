@@ -890,9 +890,14 @@ $messages['to'] = array(
 	'crossnamespacelinkstext' => '$1: {{PLURAL:$2||ngaahi}} fehokotaki ʻe $2 ki he $3',
 );
 
-/** Turkish (Türkçe) */
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
 $messages['tr'] = array(
 	'crossnamespacelinks' => 'Alanlar arası bağlantısı olan sayfalar',
+	'crossnamespacelinks-desc' => '{{SITENAME}} sitesinde mevcut olmaması gereken [[Special:CrossNamespaceLinks|ad alanları boyunca bağlantıları listeler]]',
+	'crossnamespacelinks-summary' => 'Bu sayfa ana ad alanındaki bir sayfadan, kullanılması tavsiye edilmeyen diğer ad alanlarına ({{ns:special}}, {{ns:talk}}, {{ns:project}}, ve {{ns:template}} ad alanları dışında) bağlantıların bir listesini sağlar.',
+	'crossnamespacelinkstext' => '$1: $3 için $2 {{PLURAL:$2|bağlantı|bağlantı}}',
 );
 
 /** Ukrainian (Українська)

@@ -2057,6 +2057,20 @@ Buďte prosím trpezliví.',
 	'youtubeauthsub_jserror_nodesc' => 'Prosím, zadajte popis videa.',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'youtubeauthsub' => 'Ngarko YouTube video',
+	'youtubeauthsub_title' => 'Titulli',
+	'youtubeauthsub_password' => 'YouTube fjalëkalimi',
+	'youtubeauthsub_username' => 'YouTube identiteti',
+	'youtubeauthsub_keywords' => 'Fjalët kyçe',
+	'youtubeauthsub_category' => 'Kategoria',
+	'youtubeauthsub_submit' => 'Dërgo',
+	'youtubeauthsub_uploadbutton' => 'Ngarko',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  * @author Јованвб

@@ -93,12 +93,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Sanbec
  */
 $messages['es'] = array(
 	'stalepages' => 'Páginas abandonadas',
 	'stalepages-desc' => 'Genera una [[Special:Stalepages|lista de páginas]] que no han sido editadas recientemente',
-	'stalepages-summary' => 'Esta es una lista de páginas que no han sido editadas en los últimos $1 días',
+	'stalepages-summary' => 'Esta es una lista de páginas que no han sido editadas en los últimos $1 {{PLURAL:$1|día|días}}.',
 );
 
 /** Finnish (Suomi)
@@ -372,7 +373,7 @@ $messages['te'] = array(
 $messages['tl'] = array(
 	'stalepages' => 'Mga pahinang bilasa (hindi na sariwa)',
 	'stalepages-desc' => 'Gumagawa ng isang [[Special:Stalepages|talaan ng mga pahina]]ng walang kamakailang pagbabago',
-	'stalepages-summary' => 'Isa itong talaan ng mga pahinang hindi nabago/binago sa loob ng huling $1 mga araw.',
+	'stalepages-summary' => 'Isa itong talaan ng mga pahinang hindi nagkaroon ng pagbabago (pamamatnugot) sa loob ng huling $1 {{PLURAL:$1|araw|mga araw}}.',
 );
 
 /** Turkish (Türkçe)

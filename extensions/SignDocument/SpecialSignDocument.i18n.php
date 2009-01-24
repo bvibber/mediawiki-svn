@@ -166,6 +166,7 @@ $messages['am'] = array(
 	'sign-viewfield-country' => 'ሀገር',
 	'sign-viewfield-phone' => 'ስልክ',
 	'sign-viewfield-email' => 'ኢ-ሜል',
+	'sign-viewfield-options' => 'ምርጫዎች',
 	'sign-viewfield-reviewcomment' => 'ማጠቃለያ',
 	'sign-review-comment' => 'ማጠቃለያ',
 );
@@ -3187,6 +3188,7 @@ $1',
  * @author Joseph
  */
 $messages['tr'] = array(
+	'sign-viewfield-agent' => 'Kullanıcı temsilcisi',
 	'sign-submitreview' => 'Gözden geçirmeyi gönder',
 );
 

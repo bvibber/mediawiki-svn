@@ -655,6 +655,25 @@ $3',
 	'latexdoc-desc' => 'Вироиши ҳамдастии парвандаҳои LaTeX',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'latexdoc_no_text' => 'Walang lamang teksto ang pahina, hindi magawa ang DVI',
+	'latexdoc_cant_create_dir' => 'Hindi malikha ang pansamantalang direktoryong $1',
+	'latexdoc_cant_write' => 'Hindi maisulat sa talaksang $1',
+	'latexdoc_error' => 'Kamalian ng LaTeX
+
+Utos: $1
+
+Kinalabasan: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Kuhanin ang DVI',
+	'latexdoc_get_pdf' => 'Kuhanin ang PDF',
+	'latexdoc-desc' => 'Tulungang pamamatnugot ng mga kasulatang LaTeX',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

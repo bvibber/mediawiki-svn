@@ -905,6 +905,7 @@ $messages['tl'] = array(
 	'recordadmin-viewlink' => 'tingnan',
 	'recordadmin-editlink' => 'baguhin',
 	'recordadmin-created' => 'Nilikha na',
+	'recordadmin-actions' => 'Mga galaw',
 	'right-recordadmin' => 'Hanapin at baguhin ang mga pahina ng tala/rekord',
 );
 

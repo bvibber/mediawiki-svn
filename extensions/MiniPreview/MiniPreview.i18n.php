@@ -577,6 +577,25 @@ $messages['te'] = array(
 	'minipreview-no_category_gallery' => 'వర్గాలు లేదా కొలువులు లేవు!',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'minipreview-desc' => "Mga pagpapakita ng Maliit na Paunang-Tingin (''MiniPreview''), na katabi ng isang larawan, maliliit na mga unang pagtingin sa ibang midyang nasa loob ng katulad na mga kaurian o ipinapakita sa ibabaw ng katulad na mga pahina",
+	'minipreview-files_in_category' => "Naglalaman ang kauriang ito ng '''$1''' {{PLURAL:$1|talaksan|mga talaksan}}.",
+	'minipreview-files_in_gallery' => "Naglalaman ang tanghalan/galeryang ito ng '''$1''' {{PLURAL:$1|talaksan|mga talaksan}}.",
+	'minipreview-no_more_files_here' => 'Wala nang mga talaksan na papunta rito.',
+	'minipreview-no_category_gallery' => 'Walang mga kaurian o mga tanghalan/galerya!',
+	'minipreview-ignore_categories' => 'Ang sumusunod ay isang talaan ng mga pangalan ng kaurian o mga simula ng pangalan.
+Hindi ipapakita ng Maliit na Paunang-Tingin (\'\'MiniPreview\'\') ang mga kauriang ito. 
+Halimbawa na, hindi ipapakita ng "* PD-" ang lahat ng mga kauriang nagsisimula sa "PD-", katulad ng "PD-luma".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Sarili',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

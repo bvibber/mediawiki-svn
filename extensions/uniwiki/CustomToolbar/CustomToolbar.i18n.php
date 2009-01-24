@@ -62,6 +62,7 @@ $wgCustomToolbarMessages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
@@ -69,6 +70,9 @@ $wgCustomToolbarMessages['qqq'] = array(
 	'ct-desc' => 'Short description of the extension, shown in [[Special:Version]].',
 	'ct_upload' => '(information may be incorrect)
 * $1 can be "image" or "link"',
+	'ct_submit' => '{{Identical|Go}}',
+	'ct_user_user' => '{{Identical|User}}',
+	'ct_user_sample' => '{{Identical|Username}}',
 );
 
 /** Amharic (አማርኛ)
@@ -980,9 +984,18 @@ $wgCustomToolbarMessages['ja'] = array(
 	'ct_nowiki_caption' => 'ノーウィキ',
 	'ct_horizontal_tip' => '水平線を挿入する (使用は控えめに)',
 	'ct_horizontal_caption' => '水平線',
-	'ct_upload' => '$1をアップロードする',
-	'ct_user_user' => 'ユーザー',
-	'ct_user_sample' => 'ユーザー名',
+	'ct_upload' => '$1をアップロード',
+	'ct_select' => 'アップロードする$1を選択',
+	'ct_caption' => 'キャプションを追加 (任意)',
+	'ct_link' => 'リンク名を追加 (任意)',
+	'ct_submit' => '挿入',
+	'ct_close' => 'ウィンドウを閉じる',
+	'ct_success' => 'ファイルのアップロードに成功しました！',
+	'ct_popupblocked' => 'アップロード用ポップアップが阻止されました。あなたのポップアップ・ブロッカーを確認してください。',
+	'ct_user_user' => '利用者',
+	'ct_user_tip' => '利用者ページへのリンクを挿入する',
+	'ct_user_caption' => '利用者リンク',
+	'ct_user_sample' => '利用者の名前',
 );
 
 /** Javanese (Basa Jawa)
@@ -1147,6 +1160,7 @@ $wgCustomToolbarMessages['lb'] = array(
 	'ct_internal_tip_ins' => 'En interne Link derbäisetzen',
 	'ct_internal_tip_wrap' => 'Aus dësem Text en interne Link maachen',
 	'ct_internal_caption' => 'Interne Link',
+	'ct_external_sample' => 'http://beispill.com',
 	'ct_external_tip_ins' => 'En externe Link drasetzen',
 	'ct_external_tip_wrap' => 'Aus dësem Text en externe Link maachen',
 	'ct_external_caption' => 'Externe Link',

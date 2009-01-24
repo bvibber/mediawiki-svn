@@ -441,6 +441,18 @@ $messages['sv'] = array(
 	'interwikilist-prefix' => 'Interwikiprefix:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'interwikilist' => "Talaan ng ugnayang-wiki (''interwiki'')",
+	'interwikilist-desc' => "Nagdaragdag ng [[Special:Interwikilist|natatanging pahina]] upang matanaw ang makukuhang mga kawing ng ugnayang-wiki (''interwiki'')",
+	'interwikilist-linkname' => "Kawing ng ugnayang-wiki (''interwiki'')",
+	'interwikilist-target' => 'Pinupukol/Puntiryang URL',
+	'interwikilist-filter' => 'Talaan ng pansala',
+	'interwikilist-prefix' => "Unlapi ng ugnayang-wiki (''interwiki''):",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

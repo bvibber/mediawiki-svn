@@ -390,6 +390,7 @@ $messages['sk'] = array(
  * @author Puntori
  */
 $messages['sq'] = array(
+	'abcdesc' => 'Vendosë kodin <tt>&lt;abc&gt;</tt> të formatojë muzikë ABC',
 	'abcdownload' => 'Shkarko:',
 );
 

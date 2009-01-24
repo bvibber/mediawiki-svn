@@ -1024,6 +1024,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Ahonc
  */
 $messages['uk'] = array(
 	'deletebatch' => 'Вилучення сторінок групами',
@@ -1031,17 +1032,19 @@ $messages['uk'] = array(
 	'deletebatch-help' => 'Вилучення групи сторінок. Також ви можете зробити окреме вилучення, або вилучити сторінки, перераховані у файлі.
 Виберіть користувача, який згадуватиметься у журналі вилучень.
 Завантажений файл повинен містити у кожному рядку назву сторінки та необов\'язкову причину вилучення, відокремлену символом "|".',
-	'deletebatch-caption' => 'Перелік сторінок',
+	'deletebatch-caption' => 'Список сторінок:',
 	'deletebatch-title' => 'Вилучити групу',
 	'deletebatch-link-back' => 'Ви можете повернутися до розширення',
-	'deletebatch-as' => 'Запустити скрипт як',
+	'deletebatch-as' => 'Запустити скрипт як:',
 	'deletebatch-both-modes' => 'Виберіть або одну вказану сторінку, або наданий список сторінок.',
 	'deletebatch-or' => '<b>або</b>',
-	'deletebatch-page' => 'Сторінки до вилучення',
+	'deletebatch-page' => 'Сторінки до вилучення:',
 	'deletebatch-reason' => 'Причина вилучення',
-	'deletebatch-processing' => 'вилучення сторінок',
+	'deletebatch-processing' => 'вилучення сторінок $1',
 	'deletebatch-from-file' => 'із списку файлу',
+	'deletebatch-from-form' => 'з форми',
 	'deletebatch-success-subtitle' => 'для $1',
+	'deletebatch-omitting-nonexistant' => 'Пропускання неіснуючої сторінки $1.',
 	'deletebatch-file-missing' => 'Не в змозі прочитати наданий файл',
 	'deletebatch-select-yourself' => 'ви',
 );
@@ -1077,15 +1080,16 @@ Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tá
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
 	'deletebatch' => 'Moükön padamödoti',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Moükön padamödoti]]',
-	'deletebatch-caption' => 'Padalised',
+	'deletebatch-caption' => 'Padalised:',
 	'deletebatch-title' => 'Moükön padamödoti',
 	'deletebatch-or' => '<b>u</b>',
-	'deletebatch-page' => 'Pads moükabik',
+	'deletebatch-page' => 'Pads moükabik:',
 	'deletebatch-reason' => 'Kod moükama',
 	'deletebatch-processing' => 'pads $1 pamoükons',
 	'deletebatch-from-file' => 'se ragivalised',

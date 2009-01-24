@@ -502,6 +502,7 @@ $messages['bcc'] = array(
  */
 $messages['be-tarask'] = array(
 	'voctrain_collection' => 'калекцыя',
+	'voctrain_Language' => 'Мова',
 );
 
 /** Bulgarian (Български)
@@ -1276,9 +1277,11 @@ $messages['ka'] = array(
 	'voctrain_Languages' => 'ენები',
 	'voctrain_Questions' => 'კითხვები',
 	'voctrain_Answers' => 'პასუხები',
+	'voctrain_Word' => 'სიტყვა',
 	'voctrain_Question' => 'კითხვა',
 	'voctrain_Answer' => 'პასუხი',
 	'voctrain_Answer_s_' => 'პასუხ(ებ)ი',
+	'voctrain_User_name' => 'მომხმარებელი',
 	'voctrain_Password' => 'პაროლი',
 	'voctrain_Language' => 'ენა',
 	'voctrain_Translation' => 'თარგმანი',

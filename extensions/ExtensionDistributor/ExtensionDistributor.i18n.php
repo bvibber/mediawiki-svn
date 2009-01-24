@@ -474,12 +474,19 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Remember the dot
  */
 $messages['es'] = array(
 	'extensiondistributor' => 'Descargar extensión MediaWiki',
+	'extdist-no-such-version' => 'la extensión "$1" no existe en la versión "$2".',
+	'extdist-choose-extension' => 'Seleccione cual extensión desea descargar:',
+	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'Revisión actual (trunk)',
+	'extdist-no-versions' => 'La extensión seleccionada ($1) no esta disponible en ninguna versión!',
+	'extdist-submit-version' => 'Continuar',
+	'extdist-want-more' => 'Obtener otra extensión',
 );
 
 /** Finnish (Suomi)
@@ -939,7 +946,14 @@ $messages['ko'] = array(
 	'extdist-choose-extension' => '당신이 다운로드하기를 원하는 확장 기능을 선택하십시오:',
 	'extdist-submit-extension' => '계속',
 	'extdist-current-version' => '현재 버전 (trunk)',
+	'extdist-choose-version' => '
+<big>당신은 <b>$1</b> 확장 기능을 다운로드하고 있습니다.</big>
+
+당신의 미디어위키 버전을 선택하십시오.
+
+대부분의 확장 기능은 미디어위키의 여러 버전에서도 동작합니다, 당신의 미디어위키 확장 기능이 여기 없거나 최신 버전이 필요하다면, 현재 버전 다운로드를 선택하십시오.',
 	'extdist-submit-version' => '계속',
+	'extdist-remote-error' => '외부 서브버전 클라이언트에서 오류 발생: <pre>$1</pre>',
 	'extdist-created' => "미디어위키 확장 기능 <b>$1</b>의 <b>$2</b> 버전의 묶음 <b>$3</b> 이 생성되었습니다. 5초 후에 다운로드가 자동적으로 실행될 것입니다.
 
 묶음의 URL은 다음에 있습니다:
@@ -1638,6 +1652,55 @@ Dosyaları çıkardıktan sonra, eklentiyi LocalSettings.php'de kaydetmelisiniz.
 
 Eğer bu eklenti dağıtım sistemi ile herhangi bir sorunuz varsa, lütfen [[Extension talk:ExtensionDistributor]]'a gidin.",
 	'extdist-want-more' => 'Başka eklenti al',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'extensiondistributor' => 'Descarga na estension MediaWiki',
+	'extdist-desc' => 'Estension par distribuir archivi snapshot de le estension',
+	'extdist-not-configured' => 'Par piaser configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
+	'extdist-no-such-extension' => 'L\'estension "$1" no la esiste',
+	'extdist-no-such-version' => 'L\'estension "$1" no la esiste in te la version "$2".',
+	'extdist-choose-extension' => 'Siegli quala estension te voli descargar:',
+	'extdist-submit-extension' => 'Continua',
+	'extdist-current-version' => 'Version corente (trunk)',
+	'extdist-choose-version' => "<big>Te sì drio descargar l'estension <b>$1</b>.</big>
+
+Selessiona la to version de MediaWiki.
+
+Tante estension le va su più version de MediaWiki, quindi se la to version de MediaWiki no la xe qua o se te serve le ultime funsion de l'estension, próa a doparar la version corente.",
+	'extdist-no-versions' => "L'estension che ti gà sielto ($1) no la xe disponibile in nissuna version!",
+	'extdist-submit-version' => 'Continua',
+	'extdist-no-remote' => 'No se riesse a contatar el client subversion remoto.',
+	'extdist-remote-error' => 'Eròr dal client subversion remoto: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Risposta mia valida dal client subversion remoto.',
+	'extdist-svn-error' => 'Subversion el gà catà un eròr: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'No se riesse a elaborar l\'XML da "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'El Tar el gà ritornà el seguente còdese de uscita $1:',
+	'extdist-created' => "Na istantanea de la version <b>$2</b> de l'estension <b>$1</b> par MediaWiki <b>$3</b> la xe stà creà. El scaricamento el dovarìa partir da solo fra 5 secondi.
+
+L'URL par sta istantanea el xe:
+:$4
+El pode vegner doparà par descargar de boto dal server, ma no stà zontarlo ai Preferiti parché el contenuto no'l vegnarà mia ajornà e el colegamento el podarìa in futuro èssar cavà.
+
+L'archivio tar el dovarìa vegner estrato in te la to cartèla de le estension. Par esenpio, su de un sistema operativo de tipo unix:  
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Su Windows te podi doparar [http://www.7-zip.org/ 7-zip] par estrarre i file.
+
+Se la to wiki la se cata su de un server remoto, estrai i file in te na cartèla tenporanea sul to computer locale e in seguito carga '''tuti quanti''' i file estrati in te la cartèla de le estension sul server.
+
+Stà tento che serte estension le gà bisogno de un file ciamà ExtensionFunctions.php, che se cata in <tt>extensions/ExtensionFunctions.php</tt>, che xe la cartèla ''superior'' de sta particolare cartèla de l'estension. L'istantanea par ste estensioni la contien sto file come na tarbom, estrata in ./ExtensionFunctions.php. No stà desmentegarte de cargar sto file sul to server locale.
+
+Dopo che ti gà estrato i file, te gavarè bisogno de registrar l'estension in LocalSettings.php. El manual de l'estension el dovarìa contegner le istrussion su come far.
+
+Se ti gà qualche domanda riguardo el sistema de distribussion de sta estension, varda [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => "Toli n'antra estension",
 );
 
 /** Yue (粵語)

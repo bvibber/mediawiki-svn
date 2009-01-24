@@ -929,9 +929,26 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'patrol' => 'Patruljer endringar',
+	'patrol-desc' => 'Betra patruljeringsgrensesnitt med arbeidsfordeling.',
+	'patrol-endorse' => 'Godkjenn',
+	'patrol-revert' => 'Gjer om',
 	'patrol-revert-reason' => 'Årsak:',
 	'patrol-skip' => 'Hopp over',
+	'patrol-reverting' => 'Gjer om: $1',
+	'patrol-nonefound' => 'Fann ingen endringar som var passande for patruljering.',
+	'patrol-endorsed-ok' => 'Endringa vart merkt som patruljert.',
+	'patrol-endorsed-failed' => 'Endringa kunne ikkje verta merkt som patruljert.',
+	'patrol-reverted-ok' => 'Endringa vart gjort om.',
+	'patrol-reverted-failed' => 'Endringa kunne ikkje verta gjort om.',
 	'patrol-skipped-ok' => 'Ignorerer endring.',
+	'patrol-reasons' => '* Enkel vandalisme
+* Nybyrjartest
+* Sjå diskusjonssida',
+	'patrol-another' => 'Sjå ei anna endring, om tilgjengeleg.',
+	'patrol-stopped' => 'Du har valt å ikkje patruljera ei anna endring. $1',
+	'patrol-resume' => 'Trykk her for å halda fram.',
+	'right-patroller' => 'Patruljera sider',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

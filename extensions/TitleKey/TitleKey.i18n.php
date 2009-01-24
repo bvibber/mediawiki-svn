@@ -354,6 +354,13 @@ $messages['tl'] = array(
 	'titlekey-desc' => 'Mungkahing katapusang panghulihan pagkaraan ng paghahanap ng unlaping pampamagat',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'titlekey-desc' => 'Başlık öneki araması öneri sunucu uygulaması',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

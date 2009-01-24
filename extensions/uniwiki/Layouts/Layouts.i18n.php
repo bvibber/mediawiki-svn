@@ -22,11 +22,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'layouts-desc' => 'Short description of this extension, shown on [[Special:Version]].',
+	'layouts_continue' => '{{Identical|Continue}}',
+	'layouts_unknown' => '{{Identical|Unknown}}',
 );
 
 /** Arabic (العربية)
@@ -300,10 +303,18 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'layouts_unknown' => '未知',
+	'layouts-desc' => 'ページ構成の共通化をすすめるため、編集可能な「レイアウト」を利用してページを新規作成できるようにする',
+	'layouts_title' => 'ページを作成',
+	'layouts_chooselayout' => '$1 のレイアウトを選択:',
+	'layouts_nolayout' => 'レイアウトなし',
+	'layouts_continue' => '続行',
+	'layouts_choosecategory' => '$1 のカテゴリを選択:',
+	'layouts_unknown' => '不明',
+	'layouts_tagline' => "このページは '''$1''' レイアウトを利用して生成されました。",
 );
 
 /** Javanese (Basa Jawa)

@@ -44,7 +44,7 @@ $aliases['gl'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Player' => array( 'プレイヤー' ),
+	'Player' => array( 'プレイヤー', 'プレーヤー' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

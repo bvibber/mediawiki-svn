@@ -277,6 +277,18 @@ $messages['sv'] = array(
 	'logentry-invalidpage' => 'Ogiltig sida',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'logentry-append' => 'Idugtong',
+	'logentry-parserhook-desc' => 'Ang karugtong na tatak na ito ay nagbibigay ng isang pormularyo para sa pagdurugtong sa huli/harap ng mga pahina ng pagtatala',
+	'logentry-specialpage-desc' => 'Ang karugtong na tatak na ito ay nagbibigay ng pagpoproseso ng pagdurugtong sa mga pahina ng pagtatala',
+	'logentry' => 'Pagpapasok sa Tala',
+	'logentry-invalidpage' => 'Hindi tanggap na pahina',
+	'logentry-invalidtoken' => 'Hindi tanggap na pananda',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

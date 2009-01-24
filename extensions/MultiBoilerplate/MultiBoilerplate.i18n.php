@@ -316,6 +316,15 @@ $messages['th'] = array(
 	'multiboilerplate-submit' => 'โหลด',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'multiboilerplate-desc' => 'Nagpapahintulot na makapili ng isang "pakuluang-bakal" mula sa isang kahong bumabagsak pababa na nasa itaas ng pormularyong pampatnugot (pambago) kapag nagbabago ng mga pahina',
+	'multiboilerplate-legend' => 'Pumili ng pakuluang-bakal',
+	'multiboilerplate-submit' => 'Ikarga',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
