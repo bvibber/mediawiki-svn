@@ -183,19 +183,19 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Return an array of records given type and other criteria
 	 */
-	function getRecords($type, $posted, $wpTitle = '', $invert = false) {
+	function getRecords($type, $posted, $wpTitle = '', $invert = false, $orderby = 'created desc') {
 		$records = array();
 		$dbr  = &wfGetDB( DB_SLAVE );
 		$tbl  = $dbr->tableName( 'templatelinks' );
 		$ty   = $dbr->addQuotes( $type );
-		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
+		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__, array('ORDER BY' => 'tl_title') );
 		while ( $row = $dbr->fetchRow( $res ) ) {
 			$t = Title::newFromID( $row[0] );
 			if ( empty( $wpTitle ) || eregi( $wpTitle, $t->getPrefixedText() ) ) {
 				$a = new Article( $t );
 				$text = $a->getContent();
 				$match = true;
-				$r = array( $t );
+				$r = array( 0 => $t, 'title' => $t->getPrefixedText() );
 				foreach ( array_keys( $this->types ) as $k ) {
 					$v = isset( $posted[$k] ) ? ( $this->types[$k] == 'bool' ? 'yes' : $posted[$k] ) : '';
 					$i = preg_match( "|\s*\|\s*$k\s*=\s*(.*?)\s*(?=[\|\}])|si", $text, $m );
@@ -203,16 +203,15 @@ class SpecialRecordAdmin extends SpecialPage {
 					$r[$k] = isset( $m[1] ) ? $m[1] : '';
 				}
 				if ( $invert ) $match = !$match;
-				if ( $match ) $records[$t->getPrefixedText()] = $r;
+				if ( $match ) $records[] = $r;
 			}
 		}
+		$dbr->freeResult( $res );
 		
-		# Scan the records to find the create date of each and sort by that
-		$sorted = array();
-		foreach ( $records as $k => $r ) {
+		# Add the creation date column to the records
+		foreach ( $records as $i => $r ) {
 			$t = $r[0];
 			$id = $t->getArticleID();
-			$r[1] = $k;
 			$tbl = $dbr->tableName( 'revision' );
 			$row = $dbr->selectRow(
 				$tbl,
@@ -221,18 +220,32 @@ class SpecialRecordAdmin extends SpecialPage {
 				__METHOD__,
 				array( 'ORDER BY' => 'rev_timestamp' )
 			);
-			$sorted[$row->rev_timestamp] = $r;
+			$records[$i]['created'] = $row->rev_timestamp;
 		}
-		krsort( $sorted );
 
-		$dbr->freeResult( $res );
-		return $sorted;
+		# Sort the records according to "orderby" parameter
+		if ($desc = eregi(' +desc *$', $orderby)) $orderby = eregi_replace(' +desc *$', '', $orderby);
+		$this->orderby = $orderby;
+		$this->desc = $desc;
+		usort($records, array($this, 'sortCallback'));
+
+		return $records;
+	}
+	
+	/**
+	 * Compares to arrays by column
+	 */
+	function sortCallback($row1, $row2) {
+		if (!isset($row1[$this->orderby]) || !isset($row1[$this->orderby])) return 0;
+		if ($row1[$this->orderby] == $row2[$this->orderby]) return 0;
+		$cmp = $row1[$this->orderby] > $row2[$this->orderby] ? 1 : -1;
+		return $this->desc ? -$cmp : $cmp;
 	}
 
 	/**
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
-	function renderRecords($records, $orderby = false, $cols = false, $sortable = true) {
+	function renderRecords($records, $cols = false, $sortable = true) {
 		if (count($records) < 1) return wfMsg( 'recordadmin-nomatch' );
 
 		$special = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
@@ -252,15 +265,15 @@ class SpecialRecordAdmin extends SpecialPage {
 		$table .= "</tr>\n";
 
 		$stripe = '';
-		foreach ( $records as $ts => $r ) {
-			$ts = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $ts );
-			$t = $r[0];
-			$u = $t->getLocalURL();
-			$col = $r[1];
+		foreach ( $records as $r ) {
+			$ts  = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $r['created'] );
+			$t   = $r[0];
+			$u   = $t->getLocalURL();
+			$col = $r['title'];
 			$stripe = $stripe ? '' : ' class="stripe"';
 			$table .= "<tr$stripe>";
 			$row = array(
-				'title'   => "<td class='col0'><a href='$u'>".$t->getText()."</a></td>",
+				'title'   => "<td class='col0'><a href='$u'>$col</a></td>",
 				'actions' => "<td class='col1'>(<a href='$u'>" . wfMsg( 'recordadmin-viewlink' ) . "</a>)".
 				             "(<a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$col" ) . "'>" . wfMsg( 'recordadmin-editlink' ) . "</a>)</td>",
 				'created' => "<td class='col2'>$ts</td>\n"
@@ -453,7 +466,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$filter   = array();
 		$title    = '';
 		$invert   = false;
-		$orderby  = false;
+		$orderby  = 'created desc';
 		$cols     = false;
 		$sortable = true;
 		foreach (func_get_args() as $arg) if (!is_object($arg)) {
@@ -469,8 +482,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 		$this->preProcessForm($type);
 		$this->examineForm();
-		$records = $this->getRecords($type, $filter, $title, $invert);
-		$table = $this->renderRecords($records, $orderby, $cols, $sortable);
+		$records = $this->getRecords($type, $filter, $title, $invert, $orderby);
+		$table = $this->renderRecords($records, $cols, $sortable);
 		return array(
 			$table,
 			'noparse' => true,
