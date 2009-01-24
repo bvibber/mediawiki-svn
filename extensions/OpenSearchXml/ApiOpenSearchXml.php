@@ -89,9 +89,8 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	}
 	
 	protected function formatItem( $name ) {
-		$title = TItle::newFromText( $name );
+		$title = Title::newFromText( $name );
 		if( $title ) {
-			$title = $this->_checkRedirect( $title );
 			if( $this->_seen( $title ) ) {
 				return false;
 			}
@@ -114,16 +113,6 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 			$item = array( 'Text' => array( '*' => $name ) );
 		}
 		return $item;
-	}
-	
-	protected function _checkRedirect( $title ) {
-		$art = new Article( $title );
-		$target = $art->getRedirectTarget();
-		if( $target ) {
-			return $target;
-		} else {
-			return $title;
-		}
 	}
 	
 	protected function _seen( $title ) {
