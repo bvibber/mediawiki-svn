@@ -8,26 +8,26 @@
 $messages = array();
 
 $messages['en'] = array(
-	'makesysoptitle'       => 'Make a user into a sysop',
-	'makesysop-desc'       => 'Gives bureaucrats the ability to make users into sysops or bureaucrats',
+	'makesysoptitle'       => 'Make a user into an administrator',
+	'makesysop-desc'       => 'Gives bureaucrats the ability to make users into administrators or bureaucrats',
 	'makesysoptext'        => 'This form is used by bureaucrats to turn ordinary users into administrators. Type the name of the user in the box and press the button to make the user an administrator.',
 	'makesysopname'        => 'Name of the user:',
-	'makesysopsubmit'      => 'Make this user into a sysop',
-	'makesysopok'          => "<b>User \"$1\" is now a sysop</b>",
+	'makesysopsubmit'      => 'Make this user into an administrator',
+	'makesysopok'          => "<b>User \"$1\" is now an administrator</b>",
 	'makebureaucratok'     => "<b>User \"$1\" is now a bureaucrat</b>",
-	'makesysopfail'        => "<b>User \"$1\" could not be made into a sysop. (Did you enter the name correctly?)</b>",
+	'makesysopfail'        => "<b>User \"$1\" could not be made into an administrator. (Did you enter the name correctly?)</b>",
 	'makesysop-see-userrights' => 'See [[Special:Userrights]] for more options.',
 	'setbureaucratflag'    => 'Set bureaucrat flag',
 	'rights'               => 'Rights:',
 	'set_user_rights'      => 'Set user rights',
 	'set_rights_fail'      => "<b>User rights for \"$1\" could not be set. (Did you enter the name correctly?)</b>",
-	'makesysop'            => 'Make a user into a sysop',
+	'makesysop'            => 'Make a user into an administrator',
 	'already_sysop'        => 'This user is already an administrator',
 	'already_bureaucrat'   => 'This user is already a bureaucrat',
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-	'right-makesysop'      => 'Make users into sysops or bureaucrats',
+	'right-makesysop'      => 'Make users into administrators or bureaucrats',
 );
 
 $messages['af'] = array(

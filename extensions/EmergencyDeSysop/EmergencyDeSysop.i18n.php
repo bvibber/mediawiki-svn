@@ -11,15 +11,15 @@ $messages = array();
 $messages['en'] = array(
 	//About the Extension
 	'emergencydesysop' => 'Emergency DeSysop',
-	'emergencydesysop-desc' => 'Allows a sysop to sacrifice their own privileges, in order to desysop another',
+	'emergencydesysop-desc' => 'Allows an administrator to sacrifice own privileges in order to desysop another administrator',
 
 	//Extension Messages
-	'emergencydesysop-title' => 'Remove sysop access from both current user and another sysop',
-	'emergencydesysop-otheradmin' => 'Other sysop to degroup',
+	'emergencydesysop-title' => 'Remove administrator access from both current user and another administrator',
+	'emergencydesysop-otheradmin' => 'Other administrator to degroup',
 	'emergencydesysop-reason' => 'Reason for removal',
 	'emergencydesysop-submit' => 'Submit',
 	'emergencydesysop-incomplete' => 'All form fields are required, please try again.',
-	'emergencydesysop-notasysop' => 'The target user is not in the sysop group.',
+	'emergencydesysop-notasysop' => 'The target user is not in the administrator group.',
 	'emergencydesysop-nogroups' => 'None',
 	'emergencydesysop-done' => 'Action complete, both you and [[$1]] have been desysopped.',
 	'emergencydesysop-invalidtarget' => 'The target user does not exist.',

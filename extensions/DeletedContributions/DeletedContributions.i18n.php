@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'deletedcontributions'      => 'Deleted user contributions',
-	'deletedcontributions-desc' => 'Gives sysops the ability to [[Special:DeletedContributions|browse deleted edits]] of a user',
+	'deletedcontributions-desc' => 'Gives administrators the ability to [[Special:DeletedContributions|browse deleted edits]] of a user',
 );
 
 /** Message documentation (Message documentation)
