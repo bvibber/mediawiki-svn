@@ -9,7 +9,7 @@
 %use pcre = pcre.spec
 
 %define src_name	pcre
-%define src_version	7.7
+%define src_version	7.8
 %define pkg_release	1
 
 SUNW_BaseDir:	%{_basedir}
@@ -20,7 +20,6 @@ Version:      	%{src_version}
 Release:      	%{pkg_release}
 License:      	BSD
 Source:         %{sf_download}/pcre/%{src_name}-%{version}.tar.gz
-Patch1:         pcre-01-cve-2008-2371
 BuildRoot:		%{_tmppath}/%{src_name}-%{version}-build
 Conflicts:      SUNWpcre
 %include default-depend.inc

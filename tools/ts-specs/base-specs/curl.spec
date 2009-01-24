@@ -5,7 +5,7 @@
 #
 Name:                    TScurl
 Summary:                 curl - Get a file from FTP or HTTP server.
-Version:                 7.19.0
+Version:                 7.19.3
 URL:                     http://curl.haxx.se/
 Source:                  http://curl.haxx.se/download/curl-%{version}.tar.bz2
 SUNW_BaseDir:            %{_basedir}

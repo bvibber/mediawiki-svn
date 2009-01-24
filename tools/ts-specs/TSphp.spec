@@ -90,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/include/*
 
 %files root
+%defattr (-, root, bin)
 %dir %attr (0755, root, sys) /etc
 %dir %attr (0755, root, sys) /etc/opt
 %dir %attr (0755, root, sys) /etc/opt/php
