@@ -105,7 +105,7 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 	
 	return getOptionPanel(
 		array(
-			"From transaction" => 
+			"From transaction:" => 
 				getSuggest(
 					'from-transaction', 
 					'transaction',
@@ -114,16 +114,14 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 					getTransactionLabel($fromTransactionId), 
 					array(0, 2, 3)
 				),
-			"Count" => 
+			"Count:" => 
 				getSelect('transaction-count',
 					$countOptions,
 					$transactionCount 
 				),
-			"User name" => getTextBox('user-name', $userName),
-			"Show roll back controls" => getCheckBox('show-roll-back-options', $showRollBackOptions)
-		),
-		'',
-		array("show" => "Show")
+			"User name:" => getTextBox('user-name', $userName),
+			"Show roll back controls:" => getCheckBox('show-roll-back-options', $showRollBackOptions)
+		)
 	); 
 }
 

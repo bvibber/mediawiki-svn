@@ -39,7 +39,7 @@
 					$collectionName = $wgRequest->getText('collection');
 					startNewTransaction($wgUser->getID(), wfGetIP(), 'Add collection ' . $collectionName);
 					bootstrapCollection($collectionName,$wgRequest->getText('language'),$wgRequest->getText('type'), $dc);
-					$wgOut->addHTML('<strong>Collection ' . $collectionName . ' added.</strong><br />');	
+					$wgOut->addHTML(wfMsg('ow_collection_added', $collectionName));	
 				}
 				$datasets=wdGetDatasets();
 				$datasetarray['']=wfMsgSc("none_selected");
@@ -49,12 +49,12 @@
 
 				$wgOut->addHTML(getOptionPanel(
 					array(
-						'Collection name' => getTextBox('collection'),
-						'Language of name' => getSuggest('language','language'),
-						'Collection type' => getSelect('type',array('' => 'None','RELT' => 'RELT','LEVL' => 'LEVL','CLAS' => 'CLAS', 'MAPP' => 'MAPP')),
-						'Dataset' => getSelect('dataset',$datasetarray)
+						'Collection name:' => getTextBox('collection'),
+						'Language of name:' => getSuggest('language','language'),
+						'Collection type:' => getSelect('type',array('' => 'None','RELT' => 'RELT','LEVL' => 'LEVL','CLAS' => 'CLAS', 'MAPP' => 'MAPP')),
+						'Dataset:' => getSelect('dataset',$datasetarray)
 					),
-					'',array('create' => 'Create')
+					'',array('create' => wfMsg('ow_create'))
 				));
 			}
 		}

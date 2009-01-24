@@ -194,8 +194,8 @@
 					
 					$wgOut->addHTML(getOptionPanel(
 						array(
-							'Collection' => getSelect('collection', $collections, 'cid376322'),
-							'Languages' => getTextBox('languages', 'ita, eng, deu, fra, cat'),
+							wfMsg('ow_Collection_colon') => getSelect('collection', $collections, 'cid376322'),
+							'Languages:' => getTextBox('languages', 'ita, eng, deu, fra, cat'),
 						),
 						'',array('create' => 'Create')
 					));

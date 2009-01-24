@@ -130,22 +130,22 @@ function wfSpecialDatasearch() {
 
 			$languageName = languageIdAsText($languageId);
 			$options = array();
-			$options['Search text'] = getTextBox('search-text', $searchText);
+			$options['Search text:'] = getTextBox('search-text', $searchText);
 
 			if ($wgFilterLanguageId == 0)
-				$options['Language'] = getSuggest('language', "language", array(), $languageId, $languageName);
+				$options['Language:'] = getSuggest('language', "language", array(), $languageId, $languageName);
 			else
 				$languageId = $wgFilterLanguageId;
 
-			$options['Collection'] = getSuggest('collection', 'collection', array(), $collectionId, collectionIdAsText($collectionId));
+			$options[wfMsg('ow_Collection_colon')] = getSuggest('collection', 'collection', array(), $collectionId, collectionIdAsText($collectionId));
 
 			if ($wgShowSearchWithinWordsOption)
-				$options['Within words'] = getCheckBox('within-words', $withinWords);
+				$options['Within words:'] = getCheckBox('within-words', $withinWords);
 			else
 				$withinWords = $wgSearchWithinWordsDefaultValue;
 
 			if ($wgShowSearchWithinExternalIdentifiersOption)
-				$options['Within external identifiers'] = getCheckBox('within-external-identifiers', $withinExternalIdentifiers);
+				$options['Within external identifiers:'] = getCheckBox('within-external-identifiers', $withinExternalIdentifiers);
 			else
 				$withinExternalIdentifiers = $wgSearchWithinExternalIdentifiersDefaultValue;
 
