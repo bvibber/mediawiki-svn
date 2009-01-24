@@ -9,7 +9,7 @@ $aliases = array();
  * @author Charles Melbye
  */
 $aliases['en'] = array(
-	'SharedUserRights' => array( 'SharedUserRights' ),
+	'SharedUserRights' => array( 'SharedUserRights', 'GlobalUserRights' ),
 );
 
 /** Arabic (العربية) */
