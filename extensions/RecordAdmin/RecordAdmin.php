@@ -11,7 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'RECORDADMIN_VERSION', '0.5.0, 2009-01-22' );
+define( 'RECORDADMIN_VERSION', '0.5.1, 2009-01-24' );
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 

@@ -7,6 +7,8 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $form = '';
 	var $type = '';
 	var $types = array();
+	var $orderby = '';
+	var $desc = false;
 	var $guid = '';
 
 	function __construct() {
@@ -188,7 +190,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$dbr  = &wfGetDB( DB_SLAVE );
 		$tbl  = $dbr->tableName( 'templatelinks' );
 		$ty   = $dbr->addQuotes( $type );
-		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__, array('ORDER BY' => 'tl_title') );
+		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
 		while ( $row = $dbr->fetchRow( $res ) ) {
 			$t = Title::newFromID( $row[0] );
 			if ( empty( $wpTitle ) || eregi( $wpTitle, $t->getPrefixedText() ) ) {
@@ -224,9 +226,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 
 		# Sort the records according to "orderby" parameter
-		if ($desc = eregi(' +desc *$', $orderby)) $orderby = eregi_replace(' +desc *$', '', $orderby);
+		if ($this->desc = eregi(' +desc *$', $orderby)) $orderby = eregi_replace(' +desc *$', '', $orderby);
 		$this->orderby = $orderby;
-		$this->desc = $desc;
 		usort($records, array($this, 'sortCallback'));
 
 		return $records;
