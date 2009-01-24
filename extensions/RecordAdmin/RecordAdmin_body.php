@@ -261,7 +261,10 @@ class SpecialRecordAdmin extends SpecialPage {
 			'actions' => "<th class='col1'>" . wfMsg( 'recordadmin-actions' ) . "$br</th>",
 			'created' => "<th class='col2'>" . wfMsg( 'recordadmin-created' ) . "$br</th>"
 		);
-		foreach ( array_keys($this->types) as $col ) $th[$col] = "<th class='col$col'>$col$br</th>";
+		foreach ( array_keys($this->types) as $col ) {
+			$class = 'col'.preg_replace('|\W|', '-', $col);
+			$th[$col] = "<th class='$class'>$col$br</th>";
+		}
 		foreach ( $cols ? $cols : array_keys($th) as $col ) $table .= $th[$col]."\n";
 		$table .= "</tr>\n";
 
@@ -281,7 +284,8 @@ class SpecialRecordAdmin extends SpecialPage {
 			);
 			foreach ( array_keys( $this->types ) as $col ) {
 				$v = isset( $r[$col] ) ? $r[$col] : '&nbsp;';
-				$row[$col] = "<td class='col$col'>$v</td>";
+				$class = 'col'.preg_replace('|\W|', '-', $col);
+				$row[$col] = "<td class='$class'>$v</td>";
 			}
 			foreach ($cols ? $cols : array_keys($th) as $col) $table .= $row[$col]."\n";
 			
