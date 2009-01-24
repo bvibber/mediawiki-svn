@@ -383,7 +383,7 @@ function getDefinitionEditor(ViewInformation $viewInformation) {
 		
 	$editor->addEditor(new PopUpEditor(
 		createDefinitionObjectAttributesEditor($viewInformation, $o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $o->definedMeaningId, $definitionMeaningName, $viewInformation->getLeftOverAttributeFilter()),	
-		$wgPopupAnnotationName
+		wfMsgSc("PopupAnnotation")
 	));
 
 	return $editor;	
@@ -548,7 +548,7 @@ function getSynonymsAndTranslationsEditor(ViewInformation $viewInformation) {
 	
 	$tableEditor->addEditor(new PopUpEditor(
 		createObjectAttributesEditor($viewInformation, $o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $o->syntransId, $synTransMeaningName, $viewInformation->getLeftOverAttributeFilter()), 
-		$wgPopupAnnotationName
+		wfMsgSc("PopupAnnotation")
 	));
 
 	addTableMetadataEditors($tableEditor, $viewInformation);
@@ -588,7 +588,7 @@ function getDefinedMeaningReciprocalRelationsEditor(ViewInformation $viewInforma
 	
 	$editor->addEditor(new PopUpEditor(
 		createObjectAttributesEditor($viewInformation, $o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $o->relationId, $relationMeaningName, $viewInformation->getLeftOverAttributeFilter()), 
-		$wgPopupAnnotationName
+		wfMsgSc("PopupAnnotation")
 	));
 
 	addTableMetadataEditors($editor, $viewInformation);

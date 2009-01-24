@@ -102,7 +102,7 @@ function getSuggest($name, $query, $parameters = array(), $value=0, $label='', $
 			'<input type="hidden" id="'. $name .'-suggest-parameter-'. $parameter .'" name="'. $parameter .'" value="'. $parameterValue .'"/>';
 
 	$result .=		
-			'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection">' . $label . '</a>' .
+			'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="' . wfMsgSc("SuggestHint") . '">' . $label . '</a>' .
 		'</span>'.
         '<div class="suggest-drop-down" style="position: relative"><div id="'. $name .'-suggest-div" style="position: absolute; left: 0px; top: 0px; border: 1px solid #000000; display: none; background-color: white; padding: 4px">' .
         	'<div><table>' .
@@ -134,7 +134,7 @@ function getStaticSuggest($name, $suggestions, $idColumns = 1, $value=0, $label=
 		$result .= '<input type="hidden" id="'. $name .'-suggest-id-columns" value="' . $idColumns. '"/>';
 
 	$result .=
-			'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="Click to change selection">' . $label . '</a>' .
+			'<a id="'. $name .'-suggest-link" class="suggest-link" onclick="suggestLinkClicked(event, this);" title="' . wfMsgSc("SuggestHint") . '">' . $label . '</a>' .
 		'</span>'.
         '<div class="suggest-drop-down" style="position: relative"><div id="'. $name .'-suggest-div" style="position: absolute; left: 0px; top: 0px; border: 1px solid #000000; display: none; background-color: white; padding: 4px">' .
         	'<div><table><tr><td>' .

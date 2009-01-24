@@ -674,7 +674,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$headerRows = getStructureAsTableHeaderRows($visibleStructure, $columnOffset, $idPath);
 
 		if ($this->allowRemove)
-			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="'.$wgStylePath.'/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
+			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="'.$wgStylePath.'/amethyst/delete.png" title="' . wfMsgSc("RemoveHint") . '" alt="' . wfMsgSc("Remove") . '"/></th>' . $headerRows[0];
 
 		if ($this->repeatInput)
 			$headerRows[0] .= '<th class="add" rowspan="' . count($headerRows) . '">Input rows</th>';
@@ -775,7 +775,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		
 		# + is add new Fo o(but grep this file for Add.png for more)
 		if ($allowRemove)
-			$result .= '<td class="add"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>' . EOL;
+			$result .= '<td class="add"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="' . wfMsgSc("AddHint") . '" alt="Add"/></td>' . EOL;
 
 		$result .= $this->getStructureAsAddCells($idPath, $this);
 

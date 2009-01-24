@@ -68,7 +68,7 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 					" )" .
 					" LIMIT 100");
 					
-		$definitionAttribute = new Attribute("definition", "Definition", "definition");
+		$definitionAttribute = new Attribute("definition", wfMsgSc("Definition"), "definition");
 		$recordSet = new ArrayRecordSet(new Structure($o->definedMeaningId, $o->expressionId, $o->expression, $definitionAttribute), new Structure($o->definedMeaningId, $o->expressionId));
 		
 		while ($row = $dbr->fetchObject($queryResult)) {
