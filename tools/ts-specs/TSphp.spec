@@ -14,9 +14,11 @@ BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires: TSpcre-devel
 BuildRequires: TScurl-devel
+BuildRequires: TSlibmcrypt-devel
 
 Requires: TSpcre
 Requires: TScurl
+Requires: TSlibmcrypt
 
 %package root
 Summary:                 %{summary} - / filesystem
