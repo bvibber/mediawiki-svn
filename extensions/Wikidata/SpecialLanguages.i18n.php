@@ -120,6 +120,11 @@ Perhaps you came to this page directly? Normally you do not need to be here.",
 There is an issue with database consistency, wikidata cannot find valid data connected to this defined meaning ID.
 It might be lost.
 Please contact the server operator or administrator.",
+	'ow_needs_xlation_title'			=> 'Expressions needing translation',
+	'ow_needs_xlation_source_lang'		=> 'Source language',
+	'ow_needs_xlation_dest_lang'		=> 'Destination language',
+	'ow_needs_xlation_no_dest_lang'		=> 'Please specify a destination language.',
+	'ow_show'							=> 'Show',
 );
 
 /** Message documentation (Message documentation)

@@ -23,7 +23,7 @@
 				require_once("ViewInformation.php");
 
 				initializeOmegaWikiAttributes(new ViewInformation());
-				$wgOut->setPageTitle('Expressions needing translation');
+				$wgOut->setPageTitle(wfMsg('ow_needs_xlation_title'));
 
                                 $destinationLanguageId = array_key_exists('to-lang', $_GET)? $_GET['to-lang']:'';
 				$collectionId = array_key_exists('collection', $_GET) ? $_GET['collection'] : '';
@@ -31,14 +31,14 @@
                                                                 
 				$wgOut->addHTML(getOptionPanel(
 					array(
-						'Destination language' => getSuggest('to-lang', 'language', array(), $destinationLanguageId, languageIdAsText($destinationLanguageId)),
-						'Source language' => getSuggest('from-lang', 'language', array(), $sourceLanguageId, languageIdAsText($sourceLanguageId)),
-						'Collection' => getSuggest('collection', 'collection', array(), $collectionId, collectionIdAsText($collectionId))
+						wfMsg('ow_needs_xlation_dest_lang') => getSuggest('to-lang', 'language', array(), $destinationLanguageId, languageIdAsText($destinationLanguageId)),
+						wfMsg('ow_needs_xlation_source_lang') => getSuggest('from-lang', 'language', array(), $sourceLanguageId, languageIdAsText($sourceLanguageId)),
+						wfMsg('ow_Collection') => getSuggest('collection', 'collection', array(), $collectionId, collectionIdAsText($collectionId))
 					)
 				));
 
 				if ($destinationLanguageId == '')
-					$wgOut->addHTML('<p>Please specify a destination language.</p>');
+					$wgOut->addHTML('<p>' . wfMsg('ow_needs_xlation_no_dest_lang') . '</p>');
 				else
 					$this->showExpressionsNeedingTranslation($sourceLanguageId,$destinationLanguageId,$collectionId);
 			}
@@ -83,7 +83,7 @@
 					' LIMIT 100';
 
 				$queryResult = $dbr->query($sql);
-				$definitionAttribute = new Attribute("definition", wfMsgSc("Definition"), "definition");
+				$definitionAttribute = new Attribute("definition", wfMsg("ow_Definition"), "definition");
 				$recordSet = new ArrayRecordSet(new Structure($o->definedMeaningId, $o->expressionId, $o->expression, $definitionAttribute), new Structure($o->definedMeaningId, $o->expressionId));
 
 				while ($row = $dbr->fetchObject($queryResult)) {
