@@ -249,7 +249,7 @@ $messages['fi'] = array(
 );
 
 /** Võro (Võro) */
-$messages['fiu-vro'] = array(
+$messages['vro'] = array(
 	'sitenotice_close' => 'Käkiq ärq',
 );
 

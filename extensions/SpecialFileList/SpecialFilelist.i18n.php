@@ -212,7 +212,7 @@ $messages['fi'] = array(
 );
 
 /** Võro (Võro) */
-$messages['fiu-vro'] = array(
+$messages['vro'] = array(
 	'filelist-image-desc' => 'seletüs',
 );
 
