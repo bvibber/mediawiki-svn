@@ -8,8 +8,9 @@
 	$wgExtensionFunctions[] = 'wfSpecialImportLangNames';
 	function wfSpecialImportLangNames() {
 
-	global $wgMessageCache;
-	$wgMessageCache->addMessages(array('importlangnames'=>'Wikidata: Import language names'),'en');
+	# Moved to SpecialLanguages.i18n.php
+	#global $wgMessageCache;
+	#$wgMessageCache->addMessages(array('importlangnames'=>'Wikidata: Import language names'),'en');
 
 		class SpecialImportLangNames extends SpecialPage {
 			function SpecialImportLangNames() {
