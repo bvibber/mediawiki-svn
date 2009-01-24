@@ -351,8 +351,7 @@ function addTableMetadataEditors($editor, ViewInformation $viewInformation) {
 }
 
 function getDefinitionEditor(ViewInformation $viewInformation) {
-	global
-		$wgPopupAnnotationName, $definitionMeaningName;
+	global $definitionMeaningName;
 
 	$o=OmegaWikiAttributes::getInstance();
 
@@ -526,8 +525,7 @@ function getClassAttributesEditor(ViewInformation $viewInformation) {
 }
 
 function getSynonymsAndTranslationsEditor(ViewInformation $viewInformation) {
-	global
-		$wgPopupAnnotationName, $synTransMeaningName;
+	global $synTransMeaningName;
 
 	$o=OmegaWikiAttributes::getInstance();
 
@@ -576,7 +574,7 @@ function getDefinedMeaningAttributeValuesEditor(ViewInformation $viewInformation
 
 function getDefinedMeaningReciprocalRelationsEditor(ViewInformation $viewInformation) {
 	global
-		$relationsObjectAttributesEditor, $relationMeaningName, $wgPopupAnnotationName;
+		$relationsObjectAttributesEditor, $relationMeaningName;
 
 	$o=OmegaWikiAttributes::getInstance();
 

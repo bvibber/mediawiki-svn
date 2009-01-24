@@ -40,7 +40,6 @@ global
 	$wgOptionAttributeOptionsAttributeName,
 	$wgOptionAttributeValuesAttributeName,
 	$wgOtherDefinedMeaningAttributeName,
-	$wgPopupAnnotationName, 
 	$wgRelationsAttributeName, 
 	$wgRelationTypeAttributeName, 
 	$wgSourceAttributeName,
@@ -85,7 +84,6 @@ $wgOptionAttributeOptionAttributeName = "Option";
 $wgOptionAttributeOptionsAttributeName = "Options";
 $wgOptionAttributeValuesAttributeName = "Options";
 $wgOtherDefinedMeaningAttributeName = "Other defined meaning";
-$wgPopupAnnotationName = "Annotation";
 $wgRelationsAttributeName = "Relations";
 $wgRelationTypeAttributeName = "Relation type";
 $wgSpellingAttributeName = "Spelling";
