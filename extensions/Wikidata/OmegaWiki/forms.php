@@ -192,7 +192,7 @@ function getOptionPanel($fields, $action = '', $buttons = array("show" => null))
 		$result .= '<input type="hidden" name="action" value="' . $action . '"/>';
 
 	foreach($fields as $caption => $field) 
-		$result .= '<tr><th>' . $caption . ':</th><td class="option-field">' . $field . '</td></tr>';
+		$result .= '<tr><th>' . $caption . '</th><td class="option-field">' . $field . '</td></tr>';
 
 	$buttonHTML = "";
 	

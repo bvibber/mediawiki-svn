@@ -59,6 +59,7 @@ Please check the web address.',
 	'ow_ClassAttributeType'                 => 'Type',
 	'ow_ClassMembership'                    => 'Class membership',
 	'ow_Collection'                         => 'Collection',
+	'ow_Collection_colon'					=> 'Collection:',
 	'ow_CollectionMembership'               => 'Collection membership',
 	'ow_Definition'                         => 'Definition',
 	'ow_DefinedMeaningAttributes'           => 'Annotation',
@@ -123,8 +124,8 @@ There is an issue with database consistency, wikidata cannot find valid data con
 It might be lost.
 Please contact the server operator or administrator.",
 	'ow_needs_xlation_title'			=> 'Expressions needing translation',
-	'ow_needs_xlation_source_lang'		=> 'Source language',
-	'ow_needs_xlation_dest_lang'		=> 'Destination language',
+	'ow_needs_xlation_source_lang'		=> 'Source language:',
+	'ow_needs_xlation_dest_lang'		=> 'Destination language:',
 	'ow_needs_xlation_no_dest_lang'		=> 'Please specify a destination language.',
 	'ow_show'							=> 'Show',
 );
