@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.11.13 - 25 January 2009
+  Added support for ImportUsers extension.
+
 0.11.12 - 21 January 2009
   * Added support for all Uniwiki extensions
   * Fixed a bug on Special:Extensions, default settings values are now correctly
