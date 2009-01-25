@@ -133,7 +133,7 @@ Please contact the server operator or administrator.",
 	'ow_needs_xlation_no_dest_lang'		=> 'Please specify a destination language.',
 	'ow_show'							=> 'Show',
 	'ow_create'							=> 'Create',
-	'ow_collection_added'				=> '<strong>Collection $1 added.</strong><br />'
+	'ow_collection_added'				=> '<strong>Collection $1 added.</strong>'
 );
 
 /** Message documentation (Message documentation)

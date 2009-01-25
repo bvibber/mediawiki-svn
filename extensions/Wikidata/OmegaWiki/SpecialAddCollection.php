@@ -39,7 +39,7 @@
 					$collectionName = $wgRequest->getText('collection');
 					startNewTransaction($wgUser->getID(), wfGetIP(), 'Add collection ' . $collectionName);
 					bootstrapCollection($collectionName,$wgRequest->getText('language'),$wgRequest->getText('type'), $dc);
-					$wgOut->addHTML(wfMsg('ow_collection_added', $collectionName));	
+					$wgOut->addHTML(wfMsg('ow_collection_added', $collectionName) . "<br />" );	
 				}
 				$datasets=wdGetDatasets();
 				$datasetarray['']=wfMsgSc("none_selected");
