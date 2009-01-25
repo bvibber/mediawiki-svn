@@ -14,7 +14,7 @@ $messages['en'] = array(
 	'commentspammer-save-blocked' => 'Your IP address is a suspected comment spammer, so the page has not been saved.
 [[Special:UserLogin|Log in or create an account]] to avoid this.',
 	'commentspammer-desc'         => 'Rejects edits from suspected comment spammers on a DNS blacklist',
-	'commentspammer-log-msg'      => 'edit from [[Special:Contributions/$1|$1]] to [[:$2]]. ',
+	'commentspammer-log-msg'      => 'edit from [[Special:Contributions/$1|$1]] to [[:$2]].',
 	'commentspammer-log-msg-info' => 'Last spammed $1 {{PLURAL:$1|day|days}} ago, threat level is $2, and offence code is $3.
 [http://www.projecthoneypot.org/search_ip.php?ip=$4 View details], or [[Special:Blockip/$4|block]].',
 	'cspammerlogpagetext'         => 'Record of edits that have been allowed or denied based on whether the source was a known comment spammer.',

@@ -142,7 +142,8 @@ class HoneyPotCommentSpammer {
 		if( count( $params ) >= 4 ) {
 			list( $ip_addr, $last_spam, $threat_level, $offence_code) = $params;
 			$comment = wfMsgExt( 'commentspammer-log-msg'     , array( 'parseinline' ), $ip_addr, $page )
-					 . wfMsgExt( 'commentspammer-log-msg-info', array( 'parseinline' ), $last_spam, $threat_level, $offence_code, $ip_addr );
+				. wfMsg( 'word_separator' )
+				. wfMsgExt( 'commentspammer-log-msg-info', array( 'parseinline' ), $last_spam, $threat_level, $offence_code, $ip_addr );
 		} elseif( count( $params ) == 1 ) {
 			$ip_addr = $params[0];
 			$comment = wfMsgExt( 'commentspammer-log-msg',      array( 'parseinline' ), $ip_addr, $page );
