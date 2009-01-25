@@ -239,6 +239,7 @@ $messages['eo'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'lookupuser' => 'Ver información de usuario',
 	'lookupuser-intro' => 'Ingrese un nombre de usuario para ver las preferencias de ese usuario.',
 	'lookupuser-nonexistent' => 'Error: Usuario no existe',
 	'lookupuser-authenticated' => 'autenticado en $1',
@@ -251,6 +252,7 @@ $messages['es'] = array(
 	'lookupuser-no-registration' => 'no grabado',
 	'lookupuser-info-authenticated' => 'Autenticación de correo electrónico: $1',
 	'lookupuser-useroptions' => 'Opciones de usuario:',
+	'right-lookupuser' => 'Ver preferencias de usuario',
 );
 
 /** Persian (فارسی)

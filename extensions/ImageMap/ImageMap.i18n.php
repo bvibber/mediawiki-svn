@@ -1060,18 +1060,18 @@ $messages['os'] = array(
  */
 $messages['pl'] = array(
 	'imagemap_desc' => 'Umożliwia stworzenie po stronie klienta klikalnej mapy z użyciem znacznika <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image' => 'Error: należy wpisać grafikę w pierwszej linii',
-	'imagemap_invalid_image' => 'Error: grafika jest niepoprawna lub nie istnieje',
+	'imagemap_no_image' => 'Błąd – należy wpisać grafikę w pierwszej linii',
+	'imagemap_invalid_image' => 'Błąd – grafika jest niepoprawna lub nie istnieje',
 	'imagemap_bad_image' => 'Błąd – ta grafika jest zakazana w tym serwisie',
-	'imagemap_no_link' => 'Error: nie znaleziono poprawnego linku na końcu linii $1',
-	'imagemap_invalid_title' => 'Error: niepoprawny tytuł linku w linii $1',
-	'imagemap_missing_coord' => 'Error: niewystarczająca liczba współrzędnych dla kształtu zdefiniowanego w linii $1',
-	'imagemap_unrecognised_shape' => 'Error: nierozpoznany kształt w linii $1; każda linia musi zawierać tekst: default, rect, circle lub poly',
-	'imagemap_no_areas' => 'Error: należy podać przynajmniej jedną specyfikację pola',
-	'imagemap_invalid_coord' => 'Error: nieprawidłowa współrzędna w linii $1; należy podać liczbę',
-	'imagemap_invalid_desc' => 'Error: nieprawidłowa specyfikacja opisu; należy wpisać jeden z wariantów: <tt>$1</tt>',
+	'imagemap_no_link' => 'Błąd – nie znaleziono poprawnego linku na końcu linii $1',
+	'imagemap_invalid_title' => 'Błąd – niepoprawny tytuł linku w linii $1',
+	'imagemap_missing_coord' => 'Błąd – niewystarczająca liczba współrzędnych dla kształtu zdefiniowanego w linii $1',
+	'imagemap_unrecognised_shape' => 'Błąd – nierozpoznany kształt w linii $1; każda linia musi zawierać tekst: default, rect, circle lub poly',
+	'imagemap_no_areas' => 'Błąd – należy podać przynajmniej jedną specyfikację pola',
+	'imagemap_invalid_coord' => 'Błąd – nieprawidłowa współrzędna w linii $1; należy podać liczbę',
+	'imagemap_invalid_desc' => 'Błąd – nieprawidłowa specyfikacja opisu; należy wpisać jeden z wariantów: <tt>$1</tt>',
 	'imagemap_description' => 'Informacje o tej grafice',
-	'imagemap_poly_odd' => 'Błąd: w linii $1 znaleziono wielokąt z nieparzystą liczbą współrzędnych',
+	'imagemap_poly_odd' => 'Błąd – w linii $1 znaleziono wielokąt z nieparzystą liczbą współrzędnych',
 );
 
 /** Piedmontese (Piemontèis)

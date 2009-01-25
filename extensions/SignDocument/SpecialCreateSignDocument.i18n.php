@@ -513,6 +513,29 @@ $messages['grc'] = array(
 	'createsigndoc-error-alreadycreated' => 'Τὸ ἐγγράφον τὸ ὑπογράφον τὸ "$1" ἤδη ὑπάρχει.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'createsigndocument' => 'Dokumäntesigniere erlaube',
+	'createsigndoc-head' => "Verwänd des Formular go ne „Signaturdokumänt“ fir d Seite aalege, ass Benutzer in dr Lag sin, s z [[Special:SignDocument|signiere]].
+Bitte gib dr Name vu dr Syte aa, wu Du digital Signiere wit druf erlaube, weli Benutzergruppe in dr Lage solle syy, si z  signiere, weli Fälder sichtbar solle syy un weli optional, imfall e Mindeschtalter go s Dokumänt unterzeichne, un e churzi Yyfierig wu im Benutzer s Dokumänt bschrybt un em e churzi Aaleitig git.
+
+<b>Im Momänt isch s nit megli, Signature, wu emol yytrait sin z verändere oder usezneh</b> ohni diräkt d Datebank z bearbeite.
+Zuesätzli scih dr aazeigt Täxt bim Signiere vu dr Syte dr ''jetzig'' Täxt, egal weli Änderige derno no dra gmacht wäre.
+Bitte bii absolut sicher, ass es Dokumänt in eme Zuestand isch, wu längt zum Signiere.
+Bitte bii au no sicher, ass Du alli notwändige Fälder aagee hesch, ''voreb Du des Formular abschicksch''.",
+	'createsigndoc-pagename' => 'Syte:',
+	'createsigndoc-allowedgroup' => 'Erlaubti Gruppe:',
+	'createsigndoc-email' => 'E-Mail-Adräss:',
+	'createsigndoc-address' => 'Huusaaschrift:',
+	'createsigndoc-extaddress' => 'Stadt, Staat, Land:',
+	'createsigndoc-phone' => 'Telifonnummere:',
+	'createsigndoc-bday' => 'Geburtstag:',
+	'createsigndoc-minage' => 'Mindeschtalter:',
+	'createsigndoc-introtext' => 'Yyfierig:',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

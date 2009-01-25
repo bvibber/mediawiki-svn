@@ -974,15 +974,23 @@ $messages['pl'] = array(
  * @author 555
  * @author MF-Warburg
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'taggedimages' => 'Imagens etiquetadas',
 	'imagetagging-desc' => 'Permite que um utilizador selecione uma região de uma imagem incorporada e associe uma página a essa região',
+	'imagetagging-addimagetag' => 'Etiquetar esta imagem',
 	'imagetagging-article' => 'Página:',
+	'imagetagging-articletotag' => 'Página a etiquetar',
 	'imagetagging-canteditothermessage' => 'Você não pode editar esta página, porque não possui permissões para isso, ou porque a página está bloqueada por outros motivos.',
 	'imagetagging-imghistory' => 'Histórico',
 	'imagetagging-images' => 'imagens',
 	'imagetagging-inthisimage' => 'Nesta imagem: $1',
+	'imagetagging-logentry' => 'Removida etiqueta para a página [[$1]] por $2',
+	'imagetagging-log-tagged' => 'A etiqueta da imagem [[$1|$2]] para a página [[$3]] foi adicionada por $4',
 	'imagetagging-new' => '<sup><span style="color:red">Nova!</span></sup>',
+	'imagetagging-removetag' => 'Remover etiqueta',
+	'imagetagging-done-button' => 'A etiqueta foi adicionada',
 	'imagetagging-tagcancel-button' => 'Cancelar',
 	'imagetagging-imagetag-seemoreimages' => 'Ver mais imagens de "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Imagens de "$1"',

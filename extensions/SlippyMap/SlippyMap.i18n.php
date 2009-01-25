@@ -334,6 +334,39 @@ $messages['gl'] = array(
 	'slippymap_resetview' => 'Axustar a vista',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'slippymap_desc' => 'Macht s megli s <tt><nowiki>&lt;slippymap&gt;</nowiki></tt>-Tag z nutze fir zum Aazeige vun ere OpenLayer-SlippyMap. D Charte stamme vu [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'S isch kei Wärt fir di geografisch Breiti (lat) aagee wore.',
+	'slippymap_lonmissing' => 'S isch kei Wärt fir di geografisch Lengi (lon) aagee wore.',
+	'slippymap_zoommissing' => 'S isch kei Zoom-Wärt (z) aagee wore.',
+	'slippymap_longdepreciated' => 'Bitte bruuch „lon“ statt „long“ (Parameter isch umgnännt wore).',
+	'slippymap_widthnan' => 'Dr Wärt fir d Breiti (w) „%1“ isch kei giltigi Zahl',
+	'slippymap_heightnan' => 'Dr Wert fir d Hechi (h) „%1“ isch kei giltigi Zahl',
+	'slippymap_zoomnan' => 'Dr Wert fir dr Zoom (z) „%1“ isch kei giltigi Zahl',
+	'slippymap_latnan' => 'Dr Wärt fir di geografisch Breiti (lat) „%1“ isch kei giltigi Zahl',
+	'slippymap_lonnan' => 'Dr Wärt fir di geografisch Lengi (lon) „%1“ isch kei giltigi Zahl',
+	'slippymap_widthbig' => 'D Breiti (w) derf nit greßer syy wie 1000',
+	'slippymap_widthsmall' => 'D Breiti (w) derf nit greßer syy wie 100',
+	'slippymap_heightbig' => 'D Hechi (h) derf nit greßer syy wie 1000',
+	'slippymap_heightsmall' => 'D Hechi (h) derf nit greßer syy wie 100',
+	'slippymap_latbig' => 'Di geografisch Breiti derf nit greßer syy wie 90',
+	'slippymap_latsmall' => 'Di geografisch Breiti derf nit chleiner syy wie -90',
+	'slippymap_lonbig' => 'Di geografisch Lengi derf nit greßer syy wie 180',
+	'slippymap_lonsmall' => 'Di geografisch Lengi derf nit chleiner syy wie -180',
+	'slippymap_zoomsmall' => 'Dr Zoomwärt derf nit negativ syy',
+	'slippymap_zoom18' => 'Dr Zoomwärt (z) derf nit greßer syy wie 17. Gib acht, ass die MediaWiki-Erwyterig d OpenStreetMap „Osmarender“-Charte yybindet, wu nit hecher goht wie Zoom 17. D Mapnik-Charte isch uf openstreetmap.org verfiegbar un goht bis Zoom 18.',
+	'slippymap_zoombig' => 'Dr Zoomwärt (z) derf nit greßer syy wie 17.',
+	'slippymap_invalidlayer' => 'Uugiltige „layer“-Wärt „%1“',
+	'slippymap_maperror' => 'Chartefähler:',
+	'slippymap_osmtext' => 'Die Charte uf OpenStreetMap.org bschaue',
+	'slippymap_code' => 'Wikitäxt fir die Chartenaasicht:',
+	'slippymap_button_code' => 'Zeig Wikicode',
+	'slippymap_resetview' => 'Zruggsetze',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -575,10 +575,10 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'intersection-desc' => 'Zwraca listę wypunktowaną najnowszych elementów w kategorii lub grupie kilku kategorii',
-	'intersection_toomanycats' => 'Error: Zbyt wiele kategorii!',
-	'intersection_toofewcats' => 'Error: Zbyt mało kategorii!',
-	'intersection_noresults' => 'Error: Brak wyników!',
-	'intersection_noincludecats' => 'Error: Musisz załączyć co najmniej jedną kategorię lub określić przestrzeń nazw!',
+	'intersection_toomanycats' => 'Błąd – zbyt wiele kategorii!',
+	'intersection_toofewcats' => 'Błąd – zbyt mało kategorii!',
+	'intersection_noresults' => 'Błąd – brak wyników!',
+	'intersection_noincludecats' => 'Błąd – musisz załączyć co najmniej jedną kategorię lub określić przestrzeń nazw!',
 );
 
 /** Portuguese (Português)

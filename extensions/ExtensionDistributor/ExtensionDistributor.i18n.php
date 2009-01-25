@@ -499,6 +499,7 @@ $messages['fi'] = array(
 	'extdist-submit-extension' => 'Jatka',
 	'extdist-current-version' => 'Nykyinen versio (trunk)',
 	'extdist-submit-version' => 'Jatka',
+	'extdist-svn-error' => 'Subversion kohtasi virheen: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar-ohjelman suoritus päättyi paluuarvoon $1:',
 );
 
@@ -1299,7 +1300,7 @@ Większość rozszerzeń działa na wszystkich wersjach MediaWiki, więc jeśli 
 	'extdist-no-remote' => 'Nie można połączyć się ze zdalnym klientem Subversion.',
 	'extdist-remote-error' => 'Błąd zdalnego klienta Subversion: <pre>$1</pre>',
 	'extdist-remote-invalid-response' => 'Nieprawidłowa odpowiedź zdalnego klienta Subversion.',
-	'extdist-svn-error' => 'Subversion napotkał błąd: <pre>$1</pre>',
+	'extdist-svn-error' => 'Subversion napotkał błąd <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Nie można przetworzyć danych XML z „svn info”: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar zwrócił kod zakończenia $1:',
 	'extdist-created' => "Utworzono skompresowane archiwum z rozszerzeniem <b>$1</b> na podstawie wersji <b>$2</b> dla MediaWiki <b>$3</b>. Pobieranie powinno rozpocząć się w ciągu 5 sekund.
@@ -1437,6 +1438,16 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 Если у вас есть вопрос об этой системе распространения расширений, пожалуйста, обратитесь к странице [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Скачать другое расширение',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'extensiondistributor' => 'МедиаВики тупсарыыларын хачайдааһын',
+	'extdist-desc' => 'Тупсарыылары хачайдыыр тупсарыы',
+	'extdist-not-configured' => 'Бука диэн балары туруор: $wgExtDistTarDir уонна $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Туруорууга бэриллибит үлэлиир копиялаах паапка суох!',
 );
 
 /** Slovak (Slovenčina)

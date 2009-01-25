@@ -962,8 +962,10 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
  */
 $wgGoogleMapsMessages['es'] = array(
 	'gm-incompatible-browser' => 'Para ver el mapa que hay en esta p&aacute;gina, necesitas usar un navegador compatible.',
+	'gm-incompatible-browser-link' => 'Haga click aquí para ver una lista de navegadores compatibles.',
 	'gm-no-editor' => 'Desgraciadamente, tu navegador no soporta la funci&oacute;n interactiva de construcci&oacute;n de mapas. Prueba la &oucute;ltima versi&oacute;n de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac y Linux).',
 	'gm-balloon-title' => 'Título:',
+	'gm-balloon-link-article' => 'Enlazar a esta página (opcional):',
 	'gm-make-marker' => 'Leyenda (sintaxis wiki OK):',
 	'gm-remove' => 'eliminar',
 	'gm-caption' => 'Leyenda',

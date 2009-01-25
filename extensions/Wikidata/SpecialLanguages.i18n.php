@@ -152,13 +152,19 @@ Please contact the server operator or administrator.",
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Malafaya
  * @author Siebrand
  */
 $wdMessages['qqq'] = array(
-	'langman_header'			=> 'Translate the word "English"; don\'t change it to your own language!',
-	'langman_adding'			=> "$1 is the language name; $2 is the language's ISO 639-3 code.",
+	'languages' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
+	'langman_title' => 'Title in Language manager special page ([http://www.omegawiki.org/Special:Languages http://www.omegawiki.org/Special:Languages])',
+	'langman_header' => 'Translate the word "English"; don\'t change it to your own language!',
+	'langman_adding' => "$1 is the language name; $2 is the language's ISO 639-3 code.",
+	'importlangnames' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
+	'datasearch' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
+	'addcollection' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
 	'ow_save' => '{{Identical|Save}}',
 	'ow_history' => '{{Identical|History}}',
 	'ow_none_selected' => '{{Identical|None selected}}',
@@ -169,6 +175,7 @@ $wdMessages['qqq'] = array(
 	'ow_Annotation' => '{{Identical|Annotation}}',
 	'ow_ClassAttributeType' => '{{Identical|Type}}',
 	'ow_Collection' => '{{Identical|Collection}}',
+	'ow_Collection_colon' => '{{Identical|Collection}}',
 	'ow_DefinedMeaningAttributes' => '{{Identical|Annotation}}',
 	'ow_DefinedMeaning' => '{{Identical|Defined meaning}}',
 	'ow_DefinedMeaningReference' => '{{Identical|Defined meaning}}',
@@ -201,6 +208,7 @@ This is visible when a SynTrans is annotated, or while editing a page.
 	'ow_show' => 'Button text to show results.
 Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki page].
 {{Identical|Show}}',
+	'ow_create' => '{{Identical|Create}}',
 );
 
 /** Karelian (Karjala)
@@ -619,9 +627,11 @@ $wdMessages['bcl'] = array(
  * @author Red Winged Duck
  */
 $wdMessages['be-tarask'] = array(
-	'datasearch' => 'Вікізьвесткі: пошук зьвестак',
-	'langman_title' => 'Кіраваньне мовамі',
 	'languages' => 'Вікізьвесткі: кіраваньне мовамі',
+	'langman_title' => 'Кіраваньне мовамі',
+	'importlangnames' => 'ВікіЗьвесткі: Імпартаваць назвы моваў',
+	'datasearch' => 'Вікізьвесткі: пошук зьвестак',
+	'addcollection' => 'ВікіЗьвесткі: Дадаць калекцыю',
 	'ow_save' => 'Захаваць',
 	'ow_history' => 'Гісторыя',
 	'ow_datasets' => 'Выбар набору зьвестак',
@@ -654,6 +664,7 @@ $wdMessages['be-tarask'] = array(
 Калі ласка, праверце вэб-адрас.',
 	'ow_dm_missing' => 'Гэта старонка, верагодна, вядзе да неіснуючага пэўнага значэньня (канцэпцыі).
 Калі ласка, праверце вэб-адрас.',
+	'ow_AddHint' => 'Увядзіце новы радок, каб дадаць яго',
 	'ow_AlternativeDefinition' => 'Альтэрнатыўнае вызначэньне',
 	'ow_AlternativeDefinitions' => 'Альтэрнатыўныя вызначэньні',
 	'ow_Annotation' => 'Анатацыя',
@@ -664,6 +675,7 @@ $wdMessages['be-tarask'] = array(
 	'ow_ClassAttributeType' => 'Тып',
 	'ow_ClassMembership' => 'Удзел у клясах',
 	'ow_Collection' => 'Калекцыя',
+	'ow_Collection_colon' => 'Калекцыя:',
 	'ow_CollectionMembership' => 'Удзел у калекцыях',
 	'ow_Definition' => 'Вызначэньне',
 	'ow_DefinedMeaningAttributes' => 'Анатацыя',
@@ -686,7 +698,10 @@ $wdMessages['be-tarask'] = array(
 	'ow_PopupAnnotation' => 'Анатацыя',
 	'ow_Relations' => 'Залежнасьці',
 	'ow_RelationType' => 'Тып залежнасьці',
+	'ow_Remove' => 'Выдаліць',
+	'ow_RemoveHint' => 'Пазначце радок, каб выдаліць яго',
 	'ow_Spelling' => 'Артаграфія',
+	'ow_SuggestHint' => 'Націсьніце, каб зьмяніць выбар',
 	'ow_Synonyms' => 'Сынонімы',
 	'ow_SynonymsAndTranslations' => 'Сынонімы і пераклады',
 	'ow_Source' => 'Крыніца',
@@ -724,6 +739,13 @@ $wdMessages['be-tarask'] = array(
 У сувязі з парушэньнем цэльнасьці базы зьвестак, Вікізьвесткі ня могуць знайсьці слушных зьвестак злучаных з пазначаным ідэнтыфікатарам.
 Магчыма яны страчаны.
 Калі ласка, зьвяжыцеся з адміністратарам сэрвэра.',
+	'ow_needs_xlation_title' => 'Выразы, якія патрабуюць перакладу',
+	'ow_needs_xlation_source_lang' => 'Мова, зь якой ажыцьцяўляецца пераклад:',
+	'ow_needs_xlation_dest_lang' => 'Мова, на якую ажыцьцяўляецца пераклад:',
+	'ow_needs_xlation_no_dest_lang' => 'Калі ласка, пазначце на якую мову ажыцьцяўляецца пераклад.',
+	'ow_show' => 'Паказаць',
+	'ow_create' => 'Стварыць',
+	'ow_collection_added' => '<strong>Дададзеная калекцыя $1.</strong>',
 );
 
 /** Bulgarian (Български)
@@ -1118,9 +1140,25 @@ $wdMessages['da'] = array(
  * @author Umherirrender
  */
 $wdMessages['de'] = array(
-	'datasearch' => 'Wikidata: Datensuche',
-	'langman_title' => 'Sprachmanager',
 	'languages' => 'Wikidata: Sprachen-Manager',
+	'langman_title' => 'Sprachmanager',
+	'langman_not_allowed' => 'Du hast nicht die Berechtigung die Spracheneinstellungen zu ändern.',
+	'langman_header' => 'Gebe den Sprachencode ein und darunter seinen englischsprachigen Namen:',
+	'langman_req_fields' => 'Sowohl der Sprachennamen als auch der ISO-639-3-Code sind erforderlich!',
+	'langman_adding' => 'Sprache $1 mit Code $2 hinzugefügt.',
+	'langman_langname' => 'Sprachenname:',
+	'langman_iso639-3' => 'ISO-639-3-Code:',
+	'langman_iso639-2' => 'ISO-639-2-Code:',
+	'langman_wikimedia' => 'Wikimedia-Code:',
+	'langman_field_optional' => '(optional)',
+	'langman_addlang' => 'Sprache hinzufügen',
+	'importlangnames' => 'Wikidata: Sprachennamen importieren',
+	'importlangnames_title' => 'Sprachennamen importieren',
+	'importlangnames_not_allowed' => 'Du hast keine Berechtigung um Sprachennamen zu importieren.',
+	'importlangnames_added' => 'Sprachennamen für „$1“ wurde hinzugefügt.',
+	'importlangnames_not_found' => '<strong>Keinen Spracheneintrag für „$1“ gefunden!</strong>',
+	'datasearch' => 'Wikidata: Datensuche',
+	'addcollection' => 'Wikidata: Sammlung hinzufügen',
 	'ow_save' => 'Speichern',
 	'ow_history' => 'Versionen/Autoren',
 	'ow_datasets' => 'Auswahl des Datasets',
@@ -1151,6 +1189,7 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_concept_panel' => 'Konzeptschaltfläche',
 	'ow_dm_badtitle' => 'Diese Seite weist nicht zu einer DefinedMeaning (Konzept). Bitte überprüfe die Webadresse.',
 	'ow_dm_missing' => 'Diese Seite weist zu einer nicht existierenden DefinedMeaning (Konzept). Bitte überprüfe die Webadresse.',
+	'ow_AddHint' => 'Neue Zeilen einfügen',
 	'ow_AlternativeDefinition' => 'Alternative Definition',
 	'ow_AlternativeDefinitions' => 'Alternative Definitionen',
 	'ow_Annotation' => 'Annotation',
@@ -1161,6 +1200,7 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_ClassAttributeType' => 'Typ',
 	'ow_ClassMembership' => 'Klassenzugehörigkeit',
 	'ow_Collection' => 'Sammlung',
+	'ow_Collection_colon' => 'Sammlung:',
 	'ow_CollectionMembership' => 'Sammlungszugehörigkeit',
 	'ow_Definition' => 'Definition',
 	'ow_DefinedMeaningAttributes' => 'Annotation',
@@ -1183,7 +1223,10 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_PopupAnnotation' => 'Annotation',
 	'ow_Relations' => 'Relationen',
 	'ow_RelationType' => 'Relationstyp',
+	'ow_Remove' => 'Entfernen',
+	'ow_RemoveHint' => 'Markiere zu entfernende Zeilen',
 	'ow_Spelling' => 'Schreibweise',
+	'ow_SuggestHint' => 'Klicke um die Auswahl zu ändern',
 	'ow_Synonyms' => 'Synonyme',
 	'ow_SynonymsAndTranslations' => 'Synonyme und Übersetzungen',
 	'ow_Source' => 'Quelle',
@@ -1214,10 +1257,24 @@ Bitte kontaktiere den Serveradminstrator.',
 	'ow_copy_unsuccessful' => '<h3>Kopieren nicht erfolgreich</h3> Es hat keine Kopieraktion stattgefunden.',
 	'ow_no_action_specified' => '<h3>Es wurde keine Aktion angegeben</h3> Vielleicht kamst du direkt zu dieser Seite?',
 	'ow_db_consistency_not_found' => '<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidata kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.',
+	'ow_needs_xlation_title' => 'Ausdruck benötigt Übersetzung',
+	'ow_needs_xlation_source_lang' => 'Quellsprache:',
+	'ow_needs_xlation_dest_lang' => 'Zielsprache:',
+	'ow_needs_xlation_no_dest_lang' => 'Bitte eine Zielsprache angeben.',
+	'ow_show' => 'Einblenden',
+	'ow_create' => 'Erstellen',
+	'ow_collection_added' => '<strong>Sammlung $1 wurde hinzugefügt.</strong>',
+	'ow_suggest_previous' => 'Vorherige',
+	'ow_suggest_next' => 'Nächste',
+	'ow_suggest_clear' => 'Leeren',
 );
 
-/** German (formal address) (Deutsch (Sie-Form)) */
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
 $wdMessages['de-formal'] = array(
+	'langman_not_allowed' => 'Sie haben nicht die Berechtigung die Spracheneinstellungen zu ändern.',
+	'importlangnames_not_allowed' => 'Sie haben keine Berechtigung um Sprachennamen zu importieren.',
 	'ow_noedit' => 'Sie haben nicht die Erlaubnis, Seiten im Dataset „$1“ zu bearbeiten.
 Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_dm_badtitle' => 'Diese Seite weist nicht zu einer DefinedMeaning (Konzept).
@@ -1243,9 +1300,25 @@ Vielleicht kamen Sie direkt zu dieser Seite?',
  * @author Michawiki
  */
 $wdMessages['dsb'] = array(
-	'datasearch' => 'Wikidata: Pytanje datow',
-	'langman_title' => 'Zastojnik rěcow',
 	'languages' => 'Wikidata: Zastojnik rěcow',
+	'langman_title' => 'Zastojnik rěcow',
+	'langman_not_allowed' => 'Njamaš pšawo rěcne nastajenja změniś.',
+	'langman_header' => 'Zapódaj rěcny kod a jogo engelske mě:',
+	'langman_req_fields' => 'Ako rěcne mě tak teke kod ISO 639-3 stej trěbnej!',
+	'langman_adding' => 'Rěc $1 z kodom $2 se pśidawa.',
+	'langman_langname' => 'Mě rěcy:',
+	'langman_iso639-3' => 'Kod ISO 639-3:',
+	'langman_iso639-2' => 'Kod ISO 639-2:',
+	'langman_wikimedia' => 'Wikimedijowy kod:',
+	'langman_field_optional' => '(opcionalny)',
+	'langman_addlang' => 'Rěc pśidaś',
+	'importlangnames' => 'Wikidata: Rěcne mjenja importěrowaś',
+	'importlangnames_title' => 'Rěcne mjenja importěrowaś',
+	'importlangnames_not_allowed' => 'Njamaš pšawo rěcne mjenja importěrowaś.',
+	'importlangnames_added' => 'Rěcne mjenja za "$1" pśidane.',
+	'importlangnames_not_found' => '<strong>Žeden rěcny zapisk za "$1" namakany!</strong>',
+	'datasearch' => 'Wikidata: Pytanje datow',
+	'addcollection' => 'Wikidata: Zběrku pśidaś',
 	'ow_save' => 'Składowaś',
 	'ow_history' => 'Wersije/Awtory',
 	'ow_datasets' => 'Wuběrk datoweje sajźby',
@@ -1255,13 +1328,22 @@ Pšosym glědaj [[{{MediaWiki:Ow editing policy url}}|naše wobźěłowańske za
 	'ow_uipref_datasets' => 'Standardny naglěd',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'žedne wubrane',
+	'ow_conceptmapping_uitext' => '<p>Concept Mapping zmóžnja identificěrowaś, kótary definěrowany wóznam jo identiski z definěrowanym wóznamom w drugich datowych sajźbach.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" se njepódpěra.',
 	'ow_dm_OK' => 'W pórěźe',
 	'ow_dm_not_present' => 'njezapódany',
 	'ow_dm_not_found' => 'w datowej bance njenamakany abo njewuraźony',
+	'ow_mapping_successful' => 'Wše póla markěrowane z [W pórěźe] su se zwobraznili<br />',
+	'ow_mapping_unsuccessful' => 'Za wótkazowanje nanejmjenjej dwa definěrowanej wóznama stej trěbnej',
+	'ow_will_insert' => 'Slědujuce buźo se zasajźiś:',
+	'ow_contents_of_mapping' => 'Wopśimjeśe zwobraznjenja',
 	'ow_available_contexts' => 'K dispoziciji stojece konteksty',
 	'ow_add_concept_link' => 'Wótkaz k drugim zapśimjeśam pśidaś',
 	'ow_concept_panel' => 'Płonina zapśimjeśow',
+	'ow_dm_badtitle' => 'Toś ten bok njepokazujo na DefinedMeaning (zapśimjeśe).
+Pšosym pśekontrolěruj webadresu.',
+	'ow_dm_missing' => 'Toś ten bok zda se na njeeksistěrujucy DefinedMeaning (zapśimjeśe) pokazaś.
+Pšosym pśekontrolěruj webadresu.',
 	'ow_AddHint' => 'Zapódaj nowe smugi, kótarež maju se pśidaś',
 	'ow_AlternativeDefinition' => 'Alternatiwna definicija',
 	'ow_AlternativeDefinitions' => 'Alternatiwne definicije',
@@ -1273,6 +1355,7 @@ Pšosym glědaj [[{{MediaWiki:Ow editing policy url}}|naše wobźěłowańske za
 	'ow_ClassAttributeType' => 'Typ',
 	'ow_ClassMembership' => 'Klasowe cłonkojstwo',
 	'ow_Collection' => 'Zběrka',
+	'ow_Collection_colon' => 'Zběrka:',
 	'ow_CollectionMembership' => 'Cłonkojstwo w zběrce',
 	'ow_Definition' => 'Definicija',
 	'ow_DefinedMeaningAttributes' => 'Anotacija',
@@ -1319,11 +1402,18 @@ Pšosym glědaj [[{{MediaWiki:Ow editing policy url}}|naše wobźěłowańske za
 	'ow_Permission_denied' => '<h2>Dowólenje wótpokazane</h2>',
 	'ow_copy_no_action_specified' => 'Pšosym pódaj akciju',
 	'ow_copy_help' => 'Pomoc hyšći njejo implementěrowana.',
+	'ow_please_proved_dmid' => 'Zda se, až twójo zapódaśe njama "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
+Pšosym staj se ze serwerowym administratorom do zwiska.',
 	'ow_needs_xlation_title' => 'Wuraze, kótarež maju se pśełožowaś',
-	'ow_needs_xlation_source_lang' => 'Žrědłowa rěc',
-	'ow_needs_xlation_dest_lang' => 'Celowa rěc',
+	'ow_needs_xlation_source_lang' => 'Žrědłowa rěc:',
+	'ow_needs_xlation_dest_lang' => 'Celowa rěc:',
 	'ow_needs_xlation_no_dest_lang' => 'Pšosym pódaj celowu rěc.',
 	'ow_show' => 'Pokazaś',
+	'ow_create' => 'Napóraś',
+	'ow_collection_added' => '<strong>Zběrka $1 pśidana.</strong>',
+	'ow_suggest_previous' => 'Pjerwjejšny',
+	'ow_suggest_next' => 'Pśiducy',
+	'ow_suggest_clear' => 'Wuprozniś',
 );
 
 /** Greek (Ελληνικά)
@@ -1790,6 +1880,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Meithal
@@ -1797,9 +1888,25 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
  * @author Urhixidur
  */
 $wdMessages['fr'] = array(
-	'datasearch' => 'Wikidata: Recherche de données',
-	'langman_title' => 'Gestion des langues',
 	'languages' => 'Wikidata: Gestion des langues',
+	'langman_title' => 'Gestion des langues',
+	'langman_not_allowed' => "Vous n'avez pas la permission de modifier les paramètres des langues.",
+	'langman_header' => 'Entrez le code de langue ainsi que son nom anglais ci-dessous :',
+	'langman_req_fields' => 'Le nom de langue ainsi que son code ISO 639-3 sont requis !',
+	'langman_adding' => 'La langue $1 avec la clé $2 a été ajoutée.',
+	'langman_langname' => 'Nom de la langue :',
+	'langman_iso639-3' => 'Code ISO 639-3 :',
+	'langman_iso639-2' => 'Code ISO 639-2 :',
+	'langman_wikimedia' => 'Code de Wikimedia :',
+	'langman_field_optional' => '(optionnel)',
+	'langman_addlang' => 'Ajouter la langue',
+	'importlangnames' => 'Wikidata : Importer les noms des langues',
+	'importlangnames_title' => 'Importer le nom des langues',
+	'importlangnames_not_allowed' => "Vous n'avez pas la permission d'importer le nom des langues.",
+	'importlangnames_added' => 'Nom de langues pour « $1 » ajoutés.',
+	'importlangnames_not_found' => "<strong>Aucune entrée de langue n'a été trouvée pour « $1 » !</strong>",
+	'datasearch' => 'Wikidata: Recherche de données',
+	'addcollection' => 'Wikidata : Ajouter une collection',
 	'ow_save' => 'Sauvegarder',
 	'ow_history' => 'Historique',
 	'ow_datasets' => 'Sélection des données définies',
@@ -1841,6 +1948,7 @@ Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
 	'ow_ClassAttributeType' => 'Type',
 	'ow_ClassMembership' => 'Classes',
 	'ow_Collection' => 'Collection',
+	'ow_Collection_colon' => 'Collection :',
 	'ow_CollectionMembership' => 'Collections',
 	'ow_Definition' => 'Définition',
 	'ow_DefinedMeaningAttributes' => 'Annotation',
@@ -1895,10 +2003,15 @@ Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
 	'ow_no_action_specified' => "<h3>Aucune action n'a été spécifiée</h3> Peut-être êtes-vous venu sur cette page directement ? Vous n'avez pas, en principe, à être ici.",
 	'ow_db_consistency_not_found' => "<h2>Erreur</h2>La base de données semble corrompue, wikidata ne peut trouver des données valides liées à l'identificateur (ID) du sens défini. Il pourrait être détruit. Veuillez contacter l'opérateur ou l'administrateur du serveur.",
 	'ow_needs_xlation_title' => 'Des expressions nécessitent des traductions',
-	'ow_needs_xlation_source_lang' => 'Langue source',
-	'ow_needs_xlation_dest_lang' => 'Langue de destination',
+	'ow_needs_xlation_source_lang' => 'Langue source :',
+	'ow_needs_xlation_dest_lang' => 'Langue de destination :',
 	'ow_needs_xlation_no_dest_lang' => 'Vous devez spécifiez une langue de destination.',
 	'ow_show' => 'Afficher',
+	'ow_create' => 'Créer',
+	'ow_collection_added' => '<strong>Collection $1 ajoutée.</strong>',
+	'ow_suggest_previous' => 'Précédent',
+	'ow_suggest_next' => 'Suivant',
+	'ow_suggest_clear' => 'Effacer',
 );
 
 /** Western Frisian (Frysk)
@@ -1948,9 +2061,15 @@ $wdMessages['ga'] = array(
  * @author Xosé
  */
 $wdMessages['gl'] = array(
-	'datasearch' => 'Wikidata: Procura de datos',
-	'langman_title' => 'Xestor de linguas',
 	'languages' => 'Wikidata: Xestor de linguas',
+	'langman_title' => 'Xestor de linguas',
+	'importlangnames' => 'Wikidata: Importar nomes de linguas',
+	'importlangnames_title' => 'Importar nomes de linguas',
+	'importlangnames_not_allowed' => 'Non ten os permisos necesarios para importar nomes de linguas.',
+	'importlangnames_added' => 'Engadíronse os nomes de lingua de "$1".',
+	'importlangnames_not_found' => '<strong>Non se atopou ningunha entrada de lingua de "$1"!</strong>',
+	'datasearch' => 'Wikidata: Procura de datos',
+	'addcollection' => 'Wikidata: Engadir unha colección',
 	'ow_save' => 'Gardar',
 	'ow_history' => 'Historial',
 	'ow_datasets' => 'Selección de datos fixados',
@@ -1994,6 +2113,7 @@ Por favor, comprobe o enderezo da páxina web.',
 	'ow_ClassAttributeType' => 'Tipo',
 	'ow_ClassMembership' => 'Clase de membros',
 	'ow_Collection' => 'Recompilación',
+	'ow_Collection_colon' => 'Colección:',
 	'ow_CollectionMembership' => 'Recompilación dos membros',
 	'ow_Definition' => 'Definición',
 	'ow_DefinedMeaningAttributes' => 'Anotación',
@@ -2055,6 +2175,13 @@ Non esqueza volvelos comprobar para asegurarse!',
 Hai un erro coa constancia da base de datos e os datos wiki non poden atopar datos válidos conectados con esta definición ID.
 Pode que se perderan.
 Por favor, póñase en contacto cun operador ou administrador do servidor.',
+	'ow_needs_xlation_title' => 'Expresións que necesitan dunha tradución',
+	'ow_needs_xlation_source_lang' => 'Lingua de orixe:',
+	'ow_needs_xlation_dest_lang' => 'Lingua de destino:',
+	'ow_needs_xlation_no_dest_lang' => 'Por favor, especifique unha lingua de destino.',
+	'ow_show' => 'Mostrar',
+	'ow_create' => 'Crear',
+	'ow_collection_added' => '<strong>Engadiuse a colección $1.</strong>',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -2075,9 +2202,15 @@ $wdMessages['grc'] = array(
  * @author Als-Holder
  */
 $wdMessages['gsw'] = array(
-	'datasearch' => 'Wikidata: Datesuech',
-	'langman_title' => 'Sprochmanager',
 	'languages' => 'Wikidata: Sproche-Manager',
+	'langman_title' => 'Sprochmanager',
+	'importlangnames' => 'Wikidata: Importier Sprochnäme',
+	'importlangnames_title' => 'Importier Sprochnäme',
+	'importlangnames_not_allowed' => 'Du hesch kei Berächtigung Sprochnäme z importiere.',
+	'importlangnames_added' => 'Sprochnäme fir "$1" dezuegfiegt.',
+	'importlangnames_not_found' => '<strong>Kei Sprochyytrag fir "$1" gfunde!</strong>',
+	'datasearch' => 'Wikidata: Datesuech',
+	'addcollection' => 'Wikidata: Sammlig zuefiege',
 	'ow_save' => 'Spychere',
 	'ow_history' => 'Versione/Autore',
 	'ow_datasets' => 'Uswahl vum Dataset',
@@ -2108,6 +2241,7 @@ Lueg [[{{MediaWiki:Ow editing policy url}}|unseri Richtlinie]].',
 	'ow_concept_panel' => 'Konzäptschaltflächi',
 	'ow_dm_badtitle' => 'Die Syte wyst nit zuen ere DefinedMeaning (Konzäpt). Bitte iberprief d Netzadräss.',
 	'ow_dm_missing' => 'Die Syte wyst zuen ere DefinedMeaning (Konzäpt), wu s nit git. Bitte iberprief d Netzadräss.',
+	'ow_AddHint' => 'Gib neji Zyyle yy zum zuefiege',
 	'ow_AlternativeDefinition' => 'Alternativi Definition',
 	'ow_AlternativeDefinitions' => 'Alternativi Definitione',
 	'ow_Annotation' => 'Annotation',
@@ -2118,6 +2252,7 @@ Lueg [[{{MediaWiki:Ow editing policy url}}|unseri Richtlinie]].',
 	'ow_ClassAttributeType' => 'Typ',
 	'ow_ClassMembership' => 'Chlassezuegherigkeit',
 	'ow_Collection' => 'Sammlig',
+	'ow_Collection_colon' => 'Sammlig:',
 	'ow_CollectionMembership' => 'Sammligszuegherigkeit',
 	'ow_Definition' => 'Definition',
 	'ow_DefinedMeaningAttributes' => 'Annotation',
@@ -2140,7 +2275,10 @@ Lueg [[{{MediaWiki:Ow editing policy url}}|unseri Richtlinie]].',
 	'ow_PopupAnnotation' => 'Annotation',
 	'ow_Relations' => 'Relatione',
 	'ow_RelationType' => 'Relationstyp',
+	'ow_Remove' => 'Useneh',
+	'ow_RemoveHint' => 'Markier Zyyle zum si useneh',
 	'ow_Spelling' => 'Schryybwyys',
+	'ow_SuggestHint' => 'Klick go d Uuswahl ändere',
 	'ow_Synonyms' => 'Synonym',
 	'ow_SynonymsAndTranslations' => 'Synonym un Ibersetzige',
 	'ow_Source' => 'Quälle',
@@ -2171,6 +2309,13 @@ Bitte kontaktier dr Serveradminschtrator.',
 	'ow_copy_unsuccessful' => '<h3>Kopiere nit erfolgryych</h3> S het kei Kopieraktion gee.',
 	'ow_no_action_specified' => '<h3>S isch kei Aktion aagee wore</h3> Villicht bisch diräkt zue däre Syte chu?',
 	'ow_db_consistency_not_found' => '<h2>Fähler</h2>D Datebank isch nimi konsischtent. Wikidata cha keini giltige Date zue dr ID finde. Bitte kontaktier dr Server-Adminischtrator.',
+	'ow_needs_xlation_title' => 'Uusdrick wu no ibersetzt mien wäre',
+	'ow_needs_xlation_source_lang' => 'Ursprungssproch:',
+	'ow_needs_xlation_dest_lang' => 'Ziilsproch:',
+	'ow_needs_xlation_no_dest_lang' => 'Bitte gib e Ziilsproch aa',
+	'ow_show' => 'Zeige',
+	'ow_create' => 'Aalege',
+	'ow_collection_added' => '<strong>Sammlig $1 zuegfiegt.</strong>',
 );
 
 /** Manx (Gaelg)
@@ -2369,9 +2514,25 @@ $wdMessages['hr'] = array(
  * @author Michawiki
  */
 $wdMessages['hsb'] = array(
-	'datasearch' => 'Wikidata: Pytanje datow',
-	'langman_title' => 'Zrjadowak rěčow',
 	'languages' => 'Wikidata: Zrjadowak rěčow',
+	'langman_title' => 'Zrjadowak rěčow',
+	'langman_not_allowed' => 'Nimaš prawa rěčne nastajenja změnić.',
+	'langman_header' => 'Zapodaj rěčny kod a jeho jendźelske mjeno:',
+	'langman_req_fields' => 'Rěčne mjeno kaž tež kod ISO 639-3 stej trěbnej!',
+	'langman_adding' => 'Rěč $1 z klučom $2 so přidawa.',
+	'langman_langname' => 'Mjeno rěče:',
+	'langman_iso639-3' => 'Kod ISO 639-3:',
+	'langman_iso639-2' => 'Kod ISO 639-2:',
+	'langman_wikimedia' => 'Wikimedijowy kod:',
+	'langman_field_optional' => '(opcionalny)',
+	'langman_addlang' => 'Rěč přidać',
+	'importlangnames' => 'Wikidata: Rěčne mjena importować',
+	'importlangnames_title' => 'Rěčne mjena importować',
+	'importlangnames_not_allowed' => 'Nimaš prawo rěčne mjena importować.',
+	'importlangnames_added' => 'Rěčne mjena za "$1" přidate.',
+	'importlangnames_not_found' => '<strong>Žadyn rěčny zapisk za "$1" namakany!</strong>',
+	'datasearch' => 'Wikidata: Pytanje datow',
+	'addcollection' => 'Wikidata: Zběrku přidać',
 	'ow_save' => 'Składować',
 	'ow_history' => 'Stawizny',
 	'ow_datasets' => 'Mnóstwo datow wubrać',
@@ -2395,7 +2556,7 @@ $wdMessages['hsb'] = array(
 	'ow_mapping_successful' => 'Wšě pola markěrowane z [OK] přirjadowane<br />',
 	'ow_mapping_unsuccessful' => 'Stej znajmjeńša dwaj definowanej woznamaj za wotkazowanje trěbnej.',
 	'ow_will_insert' => 'Slědowace so zasunje:',
-	'ow_contents_of_mapping' => 'Wobsah zwjazanja',
+	'ow_contents_of_mapping' => 'Wobsah zwobraznjenja',
 	'ow_available_contexts' => 'K dispoziciji stejace konteksty',
 	'ow_add_concept_link' => 'Wotkazy k druhim konceptam přidać',
 	'ow_concept_panel' => 'Konceptowy panel',
@@ -2412,6 +2573,7 @@ $wdMessages['hsb'] = array(
 	'ow_ClassAttributeType' => 'Typ',
 	'ow_ClassMembership' => 'Klasowa přisłušnosć',
 	'ow_Collection' => 'Zběrka',
+	'ow_Collection_colon' => 'Zběrka:',
 	'ow_CollectionMembership' => 'Přisłušnosć zběrki',
 	'ow_Definition' => 'Definicija',
 	'ow_DefinedMeaningAttributes' => 'Anotacija',
@@ -2466,10 +2628,15 @@ $wdMessages['hsb'] = array(
 	'ow_no_action_specified' => '<h3>Žana akcija podata</h3> Sy ty snano direktnje k tutej stronje přišoł? W normalny padźe njetrjebaš tu być.',
 	'ow_db_consistency_not_found' => '<h2>Zmylk</h2>Je problem z konsistencu datoweje banki, wikidata njemóže płaćiwe daty namakać, kotrež su z tutym ID definedMeaning zwjazane. Snano su so zhubili. Prošu skontaktuj serweroweho operatora abo administratora.',
 	'ow_needs_xlation_title' => 'Wurazy, kotrež maja so přełožować',
-	'ow_needs_xlation_source_lang' => 'Žórłowa rěč',
-	'ow_needs_xlation_dest_lang' => 'Cilowa rěč',
+	'ow_needs_xlation_source_lang' => 'Žórłowa rěč:',
+	'ow_needs_xlation_dest_lang' => 'Cilowa rěč:',
 	'ow_needs_xlation_no_dest_lang' => 'Prošu podaj cilowu rěč.',
 	'ow_show' => 'Pokazać',
+	'ow_create' => 'Wutworić',
+	'ow_collection_added' => '<strong>Zběrka $1 přidata.</strong>',
+	'ow_suggest_previous' => 'Předchadny',
+	'ow_suggest_next' => 'Přichodny',
+	'ow_suggest_clear' => 'Wuprózdnić',
 );
 
 /** Hungarian (Magyar)
@@ -2748,9 +2915,9 @@ $wdMessages['it'] = array(
  * @author JtFuruhata
  */
 $wdMessages['ja'] = array(
-	'datasearch' => 'ウィキデータ: データ検索',
-	'langman_title' => '言語マネージャ',
 	'languages' => 'ウィキデータ: 言語マネージャ',
+	'langman_title' => '言語マネージャ',
+	'datasearch' => 'ウィキデータ: データ検索',
 	'ow_save' => '保存',
 	'ow_history' => '履歴',
 	'ow_datasets' => 'データセット',
@@ -2801,6 +2968,7 @@ $wdMessages['ja'] = array(
 	'ow_OptionAttributeOptions' => 'オプション',
 	'ow_Relations' => '関係',
 	'ow_RelationType' => '関係型',
+	'ow_Remove' => '除去',
 	'ow_Spelling' => 'スペル',
 	'ow_Synonyms' => '同義語',
 	'ow_SynonymsAndTranslations' => '同義語と翻訳語',
@@ -2826,6 +2994,8 @@ $wdMessages['ja'] = array(
 コピー処理は行われませんでした。',
 	'ow_no_action_specified' => '<h3>操作が指定されていません</h3>
 もしかすると、あなたは直接このページに来たのでしょうか？通常はあなたがここにいる必要はありません。',
+	'ow_show' => '表示',
+	'ow_create' => '作成',
 );
 
 /** Javanese (Basa Jawa)
@@ -2945,9 +3115,9 @@ Mangga hubungi operator server utawa pangurus.',
  * @author Sopho
  */
 $wdMessages['ka'] = array(
-	'datasearch' => 'ვიკიდატა: მონაცემთა ძიება',
-	'langman_title' => 'ენების მენეჯერი',
 	'languages' => 'ვიკიდატა: ენების მენეჯერი',
+	'langman_title' => 'ენების მენეჯერი',
+	'datasearch' => 'ვიკიდატა: მონაცემთა ძიება',
 	'ow_save' => 'შენახვა',
 	'ow_history' => 'ისტორია',
 	'ow_datasets' => 'მონაცემთა ნაკრების შერჩევა',
@@ -2977,6 +3147,7 @@ $wdMessages['ka'] = array(
 	'ow_ClassAttributeType' => 'ტიპი',
 	'ow_ClassMembership' => 'გაერთიანებული კლასებში',
 	'ow_Collection' => 'კოლექცია',
+	'ow_Collection_colon' => 'კოლექცია:',
 	'ow_CollectionMembership' => 'გაერთიანებული კოლექციებში',
 	'ow_Definition' => 'განსაზღვრება',
 	'ow_DefinedMeaningAttributes' => 'შენიშვნა',
@@ -3027,8 +3198,8 @@ $wdMessages['ka'] = array(
 	'ow_please_proved_dc2' => 'როგორც ჩანს, თქვენს მიერ შეტანილ მონაცემებს აკლია "?dc2=<რაღაცა>" (dc2=მონაცემთა ნაკრების კონტექსტი 2, მონაცემთა ნაკრები, სადაც უნდა მოხდეს კოპირება)<br />თუ შეიძლება დაუკავშირდით სერვერის ადმინისტრატორს.',
 	'ow_no_action_specified' => '<h3>მოქმედება არ იყო მითითებული</h3> იქნებ ამ გვერდზე პირდაპირ შემოხვედით? ნორმალური მუშაობის პირობებში აქ არ უნდა აღმოჩენილიყავით.',
 	'ow_needs_xlation_title' => 'სათარგმნი გამოთქმები',
-	'ow_needs_xlation_source_lang' => 'საწყისი ენა',
-	'ow_needs_xlation_dest_lang' => 'სამიზნე ენა',
+	'ow_needs_xlation_source_lang' => 'საწყისი ენა:',
+	'ow_needs_xlation_dest_lang' => 'სამიზნე ენა:',
 	'ow_needs_xlation_no_dest_lang' => 'თუ შეიძლება, მიუთითეთ სამიზნე ენა.',
 	'ow_show' => 'ჩვენება',
 );
@@ -3265,9 +3436,14 @@ $wdMessages['ku-latn'] = array(
  * @author Robby
  */
 $wdMessages['lb'] = array(
-	'datasearch' => 'Wikidata: Date sichen',
-	'langman_title' => 'Sproochmanager',
 	'languages' => 'Wikidata: Sproochmanager',
+	'langman_title' => 'Sproochmanager',
+	'importlangnames' => 'Wikidata: Nimm vun de Sproochen importéieren',
+	'importlangnames_title' => 'Nimm vu Sproochen importéieren',
+	'importlangnames_not_allowed' => "Dir hutt net déi néideg Rechter fir Nimm vu Sproochen z'importéieren",
+	'importlangnames_added' => 'Sproochenimm fir "$1" derbäigesat',
+	'datasearch' => 'Wikidata: Date sichen',
+	'addcollection' => 'Wikidata: Sammlung derbäisetzen',
 	'ow_save' => 'Späicheren',
 	'ow_history' => 'Versiounen',
 	'ow_datasets' => 'Auswiel vun den Donnéeën',
@@ -3278,6 +3454,7 @@ $wdMessages['lb'] = array(
 	'ow_conceptmapping_no_action_specified' => 'D\'Aktioun "$1" gëtt net ënnerstetzt.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'net aginn',
+	'ow_dm_not_found' => 'net an der Datebank fonnt oder net richteg',
 	'ow_will_insert' => 'Dëst drasetzen:',
 	'ow_available_contexts' => 'Disponibel Kontexter',
 	'ow_add_concept_link' => 'E Link op déi aner Konzepter derbäisetzen',
@@ -3291,6 +3468,7 @@ $wdMessages['lb'] = array(
 	'ow_ClassAttributeType' => 'Typ',
 	'ow_ClassMembership' => 'Member vun der Klass',
 	'ow_Collection' => 'Sammlung',
+	'ow_Collection_colon' => 'Sammlung:',
 	'ow_CollectionMembership' => 'Member vun der Sammlung',
 	'ow_Definition' => 'Definitioun',
 	'ow_DefinedMeaningAttributes' => 'Notiz',
@@ -3312,6 +3490,7 @@ $wdMessages['lb'] = array(
 	'ow_PopupAnnotation' => 'Notiz',
 	'ow_Relations' => 'Relatiounen',
 	'ow_RelationType' => 'Typ vu Relatioun',
+	'ow_Remove' => 'Ewechhuelen',
 	'ow_Spelling' => 'Schreifweis',
 	'ow_Synonyms' => 'Synonymen',
 	'ow_SynonymsAndTranslations' => 'Synonymer an Iwwersetzungen',
@@ -3332,6 +3511,10 @@ $wdMessages['lb'] = array(
 	'ow_Permission_denied' => '<h2>ERLAABNIS REFUSÉIERT</h2>',
 	'ow_copy_no_action_specified' => 'Gitt w.e.g. eng Aktioun un',
 	'ow_copy_help' => "D'Hellëf gouf nach net implementéiert.",
+	'ow_needs_xlation_title' => 'Ausdréck déi iwwersat musse ginn',
+	'ow_show' => 'Weisen',
+	'ow_create' => 'Uleeën',
+	'ow_collection_added' => '<strong>Sammlung $1 derbäigesat.</strong>',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
@@ -3701,10 +3884,24 @@ $wdMessages['nds'] = array(
  * @author Tvdm
  */
 $wdMessages['nl'] = array(
-	'datasearch' => 'Wikidata: Gegevens zoeken',
-	'langman_title' => 'Taalmanager',
 	'languages' => 'Wikidata: Taalmanager',
+	'langman_title' => 'Taalmanager',
+	'langman_not_allowed' => 'U hebt geen rechten om taalinstellingen te wijzigen.',
+	'langman_header' => 'Geef de taalcode in en voer hieronder de vertaling in het Engels in:',
+	'langman_req_fields' => 'Zowel de naam van de taal als de ISO 639-3-code zijn verplicht!',
+	'langman_adding' => 'Bezig met het toevoegen van de taal $1 met code $2.',
+	'langman_langname' => 'Naam taal:',
+	'langman_iso639-3' => 'ISO 639-3-code:',
+	'langman_iso639-2' => 'ISO 639-2-code:',
+	'langman_wikimedia' => 'Wikimedia-code:',
+	'langman_field_optional' => '(optioneel)',
+	'langman_addlang' => 'Taal toevoegen',
 	'importlangnames' => 'Wikidata: Taalnamen importeren',
+	'importlangnames_title' => 'Taalnamen importeren',
+	'importlangnames_not_allowed' => 'U hebt geen rechten om taalnamen te importeren.',
+	'importlangnames_added' => 'De taalnamen voor "$1" zijn toegevoegd.',
+	'importlangnames_not_found' => '<stong>De taal "$1" is niet aangetroffen!</strong>',
+	'datasearch' => 'Wikidata: Gegevens zoeken',
 	'addcollection' => 'Wikidata: Collectie toevoegen',
 	'ow_save' => 'Opslaan',
 	'ow_history' => 'Geschiedenis',
@@ -3808,6 +4005,11 @@ Vergeet niet om dit te controleren!',
 	'ow_needs_xlation_dest_lang' => 'Doeltaal:',
 	'ow_needs_xlation_no_dest_lang' => 'Geef een doeltaal op.',
 	'ow_show' => 'Weergeven',
+	'ow_create' => 'Aanmaken',
+	'ow_collection_added' => '<strong>De verzameling $1 is toegevoegd</strong>',
+	'ow_suggest_previous' => 'Vorige',
+	'ow_suggest_next' => 'Volgende',
+	'ow_suggest_clear' => 'Opschonen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -3815,9 +4017,16 @@ Vergeet niet om dit te controleren!',
  * @author Harald Khan
  */
 $wdMessages['nn'] = array(
-	'datasearch' => 'Wikidata: Datasøk',
-	'langman_title' => 'Språkhandsamar',
 	'languages' => 'Wikidata: Språkhandsamar',
+	'langman_title' => 'Språkhandsamar',
+	'langman_not_allowed' => 'Du har ikkje løyve til å endra språkinnstillingar.',
+	'importlangnames' => 'Wikidata: Importer språknamn',
+	'importlangnames_title' => 'Importer språknamn',
+	'importlangnames_not_allowed' => 'Du har ikkje løyve til å importera språknamn.',
+	'importlangnames_added' => 'Språknamn for «$1» lagt til.',
+	'importlangnames_not_found' => '<strong>Fann ikkje noko språkelement for «$1»!</strong>',
+	'datasearch' => 'Wikidata: Datasøk',
+	'addcollection' => 'Wikidata: Legg til samling',
 	'ow_save' => 'Lagre',
 	'ow_history' => 'Historikk',
 	'ow_datasets' => 'Val for vising av data',
@@ -3857,6 +4066,7 @@ $wdMessages['nn'] = array(
 	'ow_ClassAttributeType' => 'Type',
 	'ow_ClassMembership' => 'Medlemsskap i klasse',
 	'ow_Collection' => 'Samling',
+	'ow_Collection_colon' => 'Samling:',
 	'ow_CollectionMembership' => 'Medlemsskap i samling',
 	'ow_Definition' => 'Definisjon',
 	'ow_DefinedMeaningAttributes' => 'Merknad',
@@ -3879,7 +4089,10 @@ $wdMessages['nn'] = array(
 	'ow_PopupAnnotation' => 'Merknad',
 	'ow_Relations' => 'Slektskap',
 	'ow_RelationType' => 'Slektskapstype',
+	'ow_Remove' => 'Fjern',
+	'ow_RemoveHint' => 'Marker rekkjer som skal verte fjerna',
 	'ow_Spelling' => 'Staving',
+	'ow_SuggestHint' => 'Trykk for å endre val',
 	'ow_Synonyms' => 'Synonym',
 	'ow_SynonymsAndTranslations' => 'Synonym og omsetjingar',
 	'ow_Source' => 'Kjelde',
@@ -3907,6 +4120,11 @@ $wdMessages['nn'] = array(
 	'ow_copy_unsuccessful' => '<h3>Kopiering feila</h3> Inga kopiering har funne stad.',
 	'ow_no_action_specified' => '<h3>Inga handling vart oppgjeve</h3> Kanskje kom du direkte til denne sida? Normalt skal du ikkje kome hit.',
 	'ow_db_consistency_not_found' => '<h2>Feil</h2>Det er noko gale med oppbygginga av databasen, wikidata finn ikkje gyldige data som er knytte til dette nummeret på ei definert tyding. Ho kan vere tapt. Ver venleg og ta kontakt med ein administrator på tenaren.',
+	'ow_needs_xlation_title' => 'Uttrykk som treng omsetjing',
+	'ow_needs_xlation_source_lang' => 'Kjeldespråk:',
+	'ow_needs_xlation_dest_lang' => 'Målspråk:',
+	'ow_needs_xlation_no_dest_lang' => 'Oppgje eit målspråk.',
+	'ow_show' => 'Syna',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -4341,12 +4559,27 @@ $wdMessages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $wdMessages['pt'] = array(
-	'datasearch' => 'Wikidata: Pesquisa de dados',
-	'langman_title' => 'Gestor de línguas',
 	'languages' => 'Wikidata: Gestor de línguas',
+	'langman_title' => 'Gestor de línguas',
+	'langman_not_allowed' => 'Você não tem permissão para alterar a configuração das línguas.',
+	'langman_header' => 'Introduza abaixo o código da língua e o seu nome em inglês:',
+	'langman_req_fields' => 'Ambos o nome da língua e o código ISO 639-3 são obrigatórios!',
+	'langman_adding' => 'A adicionar língua $1 com chave $2.',
+	'langman_langname' => 'Nome da língua:',
+	'langman_iso639-3' => 'Código ISO 639-3:',
+	'langman_iso639-2' => 'Código ISO 639-2:',
+	'langman_wikimedia' => 'Código Wikimedia:',
+	'langman_field_optional' => '(opcional)',
+	'langman_addlang' => 'Adicionar língua',
 	'importlangnames' => 'Wikidata: Importar nomes de línguas',
+	'importlangnames_title' => 'Importar Nomes de Línguas',
+	'importlangnames_not_allowed' => 'Você não tem permissão para importar nomes de línguas.',
+	'importlangnames_added' => 'Nomes de língua para "$1" adicionados.',
+	'importlangnames_not_found' => '<strong>Nenhuma entrada de língua para "$1" encontrada!</strong>',
+	'datasearch' => 'Wikidata: Pesquisa de dados',
 	'addcollection' => 'Wikidata: Adicionar colecção',
 	'ow_save' => 'Gravar',
 	'ow_history' => 'História',
@@ -4390,6 +4623,7 @@ $wdMessages['pt'] = array(
 	'ow_ClassAttributeType' => 'Tipo',
 	'ow_ClassMembership' => 'Associação a classes',
 	'ow_Collection' => 'Colecção',
+	'ow_Collection_colon' => 'Colecção:',
 	'ow_CollectionMembership' => 'Associação a colecções',
 	'ow_Definition' => 'Definição',
 	'ow_DefinedMeaningAttributes' => 'Anotação',
@@ -4448,10 +4682,15 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
 	'ow_no_action_specified' => '<h3>Nenhuma acção foi especificada</h3> Talvez tenha vindo a esta página directamente? Em condições normais, não precisaria de estar aqui.',
 	'ow_db_consistency_not_found' => '<h2>Erro</h2>Há um problema com a consistência da base de dados, wikidata não consegue encontrar dados válidos relacionados com o ID deste significado definido, poderá ter-se perdido. Por favor, contacte o operador ou administrador do servidor.',
 	'ow_needs_xlation_title' => 'Expressões sem tradução',
-	'ow_needs_xlation_source_lang' => 'Língua origem',
-	'ow_needs_xlation_dest_lang' => 'Língua destino',
+	'ow_needs_xlation_source_lang' => 'Língua origem:',
+	'ow_needs_xlation_dest_lang' => 'Língua destino:',
 	'ow_needs_xlation_no_dest_lang' => 'Por favor, especifique uma língua destino.',
 	'ow_show' => 'Mostrar',
+	'ow_create' => 'Criar',
+	'ow_collection_added' => '<strong>Colecção $1 adicionada.</strong>',
+	'ow_suggest_previous' => 'Anterior',
+	'ow_suggest_next' => 'Posterior',
+	'ow_suggest_clear' => 'Limpar',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

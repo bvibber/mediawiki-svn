@@ -33,6 +33,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Kaustubh
  * @author Purodha
@@ -49,6 +50,8 @@ $messages['qqq'] = array(
 	'importusers-password' => '{{Identical|Password}}',
 	'importusers-email' => '{{Identical|E-mail}}',
 	'importusers-realname' => '{{Identical|Real name}}',
+	'right-import_users' => '{{doc-right}}',
+	'action-import_users' => '{{doc-action}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -296,6 +299,8 @@ $messages['dsb'] = array(
 	'importusers-password' => 'gronidło',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'napšawdne mě',
+	'right-import_users' => 'Wužywarjow z kopicami importěrowaś',
+	'action-import_users' => 'wužywarjow z kopicami importěrowaś',
 );
 
 /** Greek (Ελληνικά)
@@ -391,6 +396,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -414,6 +420,8 @@ $messages['fr'] = array(
 	'importusers-password' => 'mot de passe',
 	'importusers-email' => 'adresse courriel',
 	'importusers-realname' => 'nom réel',
+	'right-import_users' => 'Importer des utilisateurs en masse',
+	'action-import_users' => 'importer des utilisateurs en masse',
 );
 
 /** Western Frisian (Frysk)
@@ -603,6 +611,8 @@ $messages['hsb'] = array(
 	'importusers-password' => 'hesło',
 	'importusers-email' => 'e-mejl',
 	'importusers-realname' => 'woprawdźite mjeno',
+	'right-import_users' => 'Wužiwarjow z masami importować',
+	'action-import_users' => 'wužiwarjow z masami importować',
 );
 
 /** Interlingua (Interlingua)
@@ -677,6 +687,8 @@ $messages['ja'] = array(
 	'importusers-password' => 'パスワード',
 	'importusers-email' => 'メールアドレス',
 	'importusers-realname' => '実名',
+	'right-import_users' => '利用者を一括インポートする',
+	'action-import_users' => '利用者の一括インポート',
 );
 
 /** Javanese (Basa Jawa)
@@ -923,6 +935,8 @@ $messages['nl'] = array(
 	'importusers-password' => 'wachtwoord',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'echte naam',
+	'right-import_users' => 'Gebruikers in bulk importeren',
+	'action-import_users' => 'gebruikers in bulk te importeren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1096,6 +1110,8 @@ $messages['pt'] = array(
 	'importusers-password' => 'palavra-chave',
 	'importusers-email' => 'email',
 	'importusers-realname' => 'nome real',
+	'right-import_users' => 'Importar utilizadores em bloco',
+	'action-import_users' => 'importar utilizadores em bloco',
 );
 
 /** Tarifit (Tarifit)

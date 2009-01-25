@@ -675,6 +675,7 @@ $messages['oc'] = array(
 	'recordadmin-viewlink' => 'veire',
 	'recordadmin-editlink' => 'modificar',
 	'recordadmin-created' => 'Creat',
+	'recordadmin-actions' => 'Accions',
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 

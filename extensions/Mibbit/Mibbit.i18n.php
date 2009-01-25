@@ -320,9 +320,9 @@ $messages['lb'] = array(
 	'mibbit' => 'Mibbit Chat',
 	'mibbit-desc' => 'Setzt eng [[Special:Mibbit|Spezialsäit]] derbäi fir mat anere WikiBenotzer ze chatten',
 	'mibbit-header' => 'Dëst ass eng Spezialsäit déi Iech et erlaabt fir an Echtzäit mat anere Benotzer vun der Wiki zesummenzeschaffen.
-Fir iech ze verbannen klickt einfach op de "Verbannen" Knäppchen.
-Wann dir erageloggec sidd da gëtt äre Nickmae virausgefëllt.
-Déi anonyme Benotzer kréien automatesch e Nckname zougedeelt, den si awer änner kënnen.',
+Fir Iech ze verbannen klickt einfach op de "Verbannen" Knäppchen.
+Wann dir erageloggec sidd da gëtt äre Nickname virausgefëllt.
+Déi anonym Benotzer kréien automatesch e Nickname zougedeelt, den si awer ännere kënnen.',
 	'right-mibbit' => 'Däerf de Mibbit-Chat benotzen',
 );
 

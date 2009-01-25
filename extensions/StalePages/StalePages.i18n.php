@@ -312,12 +312,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
 	'stalepages' => 'Nieaktualne strony',
 	'stalepages-desc' => 'Generuje [[Special:Stalepages|listę stron]], które nie były w ostatnim czasie edytowane',
-	'stalepages-summary' => 'Poniżej znajduje się lista stron, które nie były edytowane od co najmniej $1 dni.',
+	'stalepages-summary' => 'Poniżej znajduje się lista stron, które nie były edytowane od co najmniej $1 {{PLURAL:$1|dzień|dni}}.',
 );
 
 /** Portuguese (Português)

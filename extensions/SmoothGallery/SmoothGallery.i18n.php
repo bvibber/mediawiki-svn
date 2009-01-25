@@ -228,6 +228,24 @@ Non se {{PLURAL:$2|atopou a seguinte imaxe|atoparon as seguintes imaxes}}: $1',
 	'smoothgallery-javascript-disabled' => 'Requírese o Javascript para ver correctamente esta galería.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Macht s Benutzer megli Galerie aazlege mit Bilder, wu uffeglade wore sin.
+Erlaubt di meischte Optione vu SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>SmoothGallery-Fähler:</b>',
+	'smoothgallery-gallery-not-found' => 'Di aagforderet Galerii git s nit.',
+	'smoothgallery-not-found' => 'In dr Galerii het s no kei Bilder. Bitte setz zmindescht ei Bild dryy.',
+	'smoothgallery-no-images' => 'In däre Galerii sin kei Bilder gfunde wore. Git s {{PLURAL:$3|des aagforderet Bild|die aagforderete Bilder}} iberhaupt? S {{PLURAL:$2|fählt|fähle}}: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Des Bild het|Die Bilder hän}} e uugiltige Typ: $1',
+	'smoothgallery-unexpected-error' => 'S isch e nit erwartete Fähler ufträtte. Bitte schryyb e Fählermäldig.',
+	'smoothgallery-javascript-disabled' => 'S bruucht JavaScript go die Gallerii bschaue.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -38,12 +38,15 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Skizzerz
  */
 $messages['qqq'] = array(
 	'amazonplus-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'amazonplus-nores' => 'Error message, automatically wrapped in a span tag with class="error."',
+	'amazonplus-nores' => 'Error message, automatically wrapped in a span tag with class="error."
+
+{{Identical|Sorry, no results}}',
 	'amazonplus-noidres' => 'Error message, automatically wrapped in a span tag with class="error."',
 	'amazonplus-fgcerr' => 'Error message, automatically wrapped in a span tag with class="error."',
 	'amazonplus-slserr' => 'Error message, automatically wrapped in a span tag with class="error."',
