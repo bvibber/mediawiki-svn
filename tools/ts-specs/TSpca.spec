@@ -2,7 +2,7 @@
 
 Name:			TSpca
 Summary:		Patch Check Advanced
-Version:		20080911-01
+Version:		20081218-01
 Source1:		pca
 
 SUNW_BaseDir:        %{_basedir}

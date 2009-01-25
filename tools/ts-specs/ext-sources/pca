@@ -8,7 +8,7 @@ eval 'exec perl -x -w $0 ${1+"$@"}'
 #
 # Author : Martin Paul <martin@par.univie.ac.at>
 # Home   : http://www.par.univie.ac.at/solaris/pca/
-my $version='20080911-01';
+my $version='20081218-01';
 
 use strict;
 use Config;
@@ -52,7 +52,7 @@ my @options=(
   "noreboot|n|||0|Install only patches which do not require a reboot",
   "minage||i|DAYS|0|List only patches which are at least DAYS old",
   "maxage||i|DAYS|0|List only patches which are at most DAYS old",
-  "syslog||s|TYPE||Log successful patch installs to syslog facility TYPE",
+  "syslog||s|TYPE|daemon.notice|Log patch installs to syslog priority TYPE",
   "nobackup|k|s@|ID||Do not back up files to be patched for patch ID",
   "backdir|B|s|DIR||Saves patch backout data to DIR",
   "safe|s|||0|Check locally modified files for safe patch installation",
@@ -94,7 +94,7 @@ use File::Basename;
 use File::Copy;
 
 # Variable declarations
-my (%o, %input, %p, %pkgs, %u, %c, %locks, %rloop);
+my (%o, %input, %p, %pkgs, %u, %c, %locks, %rloop, %x, %pkga);
 my (@plist, @slist, @rlist);
 my $conf_dbg=''; my %conf_read;
 my $dlfile='';
@@ -106,6 +106,8 @@ my %a;
 my $download_start;
 my $stopreached=0;
 my $wgetv='';
+my $agesum=0;
+my $xval=0;
 
 # Force flush to stdout right after every print command without "\n"
 $|= 1;
@@ -135,22 +137,23 @@ if ($o{readme} && ("@slist" =~ /^(\d{6}-\d{2} *)+$/)) {
     push (@plist, $id);
   }
   do_patch_list();
-  exit 0;
+  exit $xval;
 }
 
 get_current_xref();
-if (!$o{list} && !$o{download} && !$o{install} && !$o{readme}) { exit 0 }
+if (!$o{list} && !$o{download} && !$o{install} && !$o{readme}) { exit $xval }
 
 get_uname();
 get_installed_packages();
 get_installed_patches();
 get_current_patches();
+set_extra_req();
 create_patch_list();
 print_header();
 do_patch_list();
 print_footer();
 
-exit 0;
+exit $xval;
 
 # Functions
 
@@ -232,7 +235,7 @@ sub do_patch_list {
     ($p{$id}{irev} ne "00") && ($pp="$id-$p{$id}{irev}");
     ($p{$id}{crev} ne "00") && ($pp="$id-$p{$id}{crev}");
     ($p{$id}{prev} ne "00") && ($pp="$id-$p{$id}{prev}");
-    $pp || err ("Unknown patch-id $id");
+    $pp || errx ("Unknown patch-id $id");
     # Remember revised patch id for later use
     $p{$id}{pp} = $pp;
     if ($o{threads}) {
@@ -255,7 +258,7 @@ sub do_patch_list {
       print_patch ($id);
     }
     if ($o{download} || $o{install}) {
-      out ('info', "\nDownloading $pp ($c{current}/$c{total})");
+      out ('info', "\nLooking for $pp ($c{current}/$c{total})");
       if ($o{threads}) {
         {  # wait for the first download worker to tell us it's ready...
           lock $download_start;
@@ -287,6 +290,7 @@ sub do_patch_list {
       install_patch($pp);
       if (-x '/var/run/nopatch') {
         `/var/run/nopatch`;
+        $xval=3;
         last
       }
     }
@@ -310,10 +314,10 @@ sub do_patch_list {
     printf "Install Summary : %d total, %d successful, ", $c{total}, $c{inst};
     printf "%d skipped, %d failed\n", $c{skipinst}, $c{failinst};
 
-       if ($c{p_ci}) { out ('info', "\nReconfiguration reboot required (init 6)") }
-    elsif ($c{p_bi}) { out ('info', "\nReboot required (init 6)") }
-    elsif ($c{p_c }) { out ('info', "\nReconfiguration reboot recommended (init 6)") }
-    elsif ($c{p_b }) { out ('info', "\nReboot recommended (init 6)") }
+       if ($c{p_ci}) { out ('info', "\nReconfiguration reboot required (init 6)"); $xval || ($xval=4) }
+    elsif ($c{p_bi}) { out ('info', "\nReboot required (init 6)"); $xval || ($xval=4) }
+    elsif ($c{p_c }) { out ('info', "\nReconfiguration reboot recommended (init 6)"); $xval || ($xval=5) }
+    elsif ($c{p_b }) { out ('info', "\nReboot recommended (init 6)"); $xval || ($xval=5) }
   }
   if ($o{readme} && (@rlist)) {
     system ("$pager @rlist");
@@ -336,8 +340,8 @@ sub expand_operands {
       } elsif ($s =~ /(\d{6}-\d{2})\.(zip|jar|tar\.Z|tar)$/) {
         push (@slist, $1);
       } elsif (-f $s) {
-        if ($fc{$s}) { err ("Recursive file inclusion: $s") } else { $fc{$s}=1 }
-        open (LIST, "<$s") || err ("Can't open $s ($!)");
+        if ($fc{$s}) { errx ("Recursive file inclusion: $s") } else { $fc{$s}=1 }
+        open (LIST, "<$s") || errx ("Can't open $s ($!)");
         while (<LIST>) {
           chomp;
           next unless $_;
@@ -345,7 +349,7 @@ sub expand_operands {
           $again=1;
         }
       } else {
-        err ("Unknown operand: $s");
+        errx ("Unknown operand: $s");
       }
     }
     @tlist=@slist;
@@ -446,7 +450,7 @@ sub add_patch_list {
     }
   }
   $p{$id}{listed}=1;
-  push (@plist, $id);
+  push (@plist, $id); $agesum+=calculateage($id);
   return (1);
 }
 
@@ -505,7 +509,7 @@ sub match_patch_list {
       # Ignore patches for foreign architectures.
       $found=0;
       foreach my $j (split (/\;/, $p{$id}{archs})) {
-        if (($j eq $u{arch}) || ($j eq "all") || ($j eq "Solaris") || ($j eq "$u{arch}.$u{model}")) {
+        if (($j eq $u{arch}) || ($j eq "all") || ($j eq "$u{arch}.$u{model}")) {
           $found=1; last;
         }
       }
@@ -514,14 +518,18 @@ sub match_patch_list {
       # Ignore patches for packages that are not installed.
       $found=0;
       foreach my $j (split (/\;/, $p{$id}{pkgs})) {
-        my ($package, $version)= split (/:/, $j);
-        if ($pkgs{$package} && ($pkgs{$package} =~ /<$version>/)) {
+        my ($package, $version)= split (/:/, $j, 2);
+        next unless ($pkgs{$package});
+        my $iversion=$pkgs{$package};
+        $version =~ s/"/./g; $version =~ s/\(/./g; $version =~ s/\)/./g;
+        $iversion=~ s/"/./g; $iversion=~ s/\(/./g; $iversion=~ s/\)/./g;
+        if ($iversion =~ /<$version>/) {
           $found=1; last;
         }
       }
       if (!$found) { next; }
 
-      if (!patch_apply_check($id)) { next; }
+      if (!chk_extra_req($id)) { next; }
       if (!check_rs($s,$id) && ($type != 5)) { next; }
 
       return (5);
@@ -573,8 +581,8 @@ sub check_rs {
   if ($p{$id}{ignore} eq $p{$id}{crev}) { return 0 }
 
   # Check for minage, maxage and pattern
-  if (($o{minage}) && (calculateage($p{$id}{reldate}) < $o{minage})) { return(0); }
-  if (($o{maxage}) && (calculateage($p{$id}{reldate}) > $o{maxage})) { return(0); }
+  if (($o{minage}) && (calculateage($id) < $o{minage})) { return(0); }
+  if (($o{maxage}) && (calculateage($id) > $o{maxage})) { return(0); }
   if ($o{pattern}) {
     if ($o{pattern} =~ /^!/) {
       my $pattern= substr ($o{pattern}, 1);
@@ -591,27 +599,25 @@ sub download_patch {
   my $pp=$_[0];
   my ($id, $rev)= split (/-/, $pp);
 
-  lock_free($o{patchdir}, "download.$pp", 300) || err ("Another instance of pca is downloading $pp to $o{patchdir} right now");
+  lock_free($o{patchdir}, "download.$pp", 300) || errx ("Another instance of pca is downloading $pp to $o{patchdir} right now");
 
   # Check if patch exists
   if (-d "$o{patchdir}/$pp") {
-    buffer_worker_out ($id, 'info', "Skipped (directory exists)"); $c{skipdl}++; return;
+    buffer_worker_out ($id, 'info', "Found patch directory"); $c{skipdl}++; return;
   }
   foreach my $ext ('zip','jar','tar.Z','tar') {
+    (-z "$o{patchdir}/$pp.$ext") && unlink "$o{patchdir}/$pp.$ext";
     if (-f "$o{patchdir}/$pp.$ext") {
-      if (-s "$o{patchdir}/$pp.$ext") {
-        buffer_worker_out ($id, 'info', "Skipped (file exists)"); $c{skipdl}++; return;
-      }
-      unlink "$o{patchdir}/$pp.$ext";
+      buffer_worker_out ($id, 'info', "Found patch file"); $c{skipdl}++; return;
     }
   }
 
   # Remember if we downloaded the patch for install only
   $o{download} || ($p{$id}{dfori}=1);
 
-  (-w $o{patchdir}) || err ("Can't write to patch download directory $o{patchdir}");
+  (-w $o{patchdir}) || errx ("Can't write to patch download directory $o{patchdir}");
 
-  lock_create($o{patchdir}, "download.$pp", 1) || err ("Another instance of pca is downloading $pp to $o{patchdir} right now");
+  lock_create($o{patchdir}, "download.$pp", 1) || errx ("Another instance of pca is downloading $pp to $o{patchdir} right now");
 
   # Try to get patch from local patch server
   if ($o{patchurl} =~ /^file:/) {
@@ -734,10 +740,11 @@ sub download {
 sub filetype {
   my $fname=$_[0]; my $buffer;
 
-  open (F, "< $fname") || err ("Can't open $fname ($!)");
-  read F, $buffer, 1024;
+  open (F, "< $fname") || errx ("Can't open $fname ($!)");
+  my $size=read (F, $buffer, 512);
   close (F);
 
+  if ($size != 512) { dbg ("Short file: $fname"); return ('unknown') }
   if (substr($buffer, 257, 5) eq "ustar") { return ('tar') }
   if (substr($buffer, 0, 2) eq "\037\235") { return ('tar.Z') }
   if (substr($buffer, 0, 4) eq "PK\003\004") {
@@ -757,7 +764,7 @@ sub install_patch {
   my $opt='';
 
   $patchxdir= "$o{tmpdir}/pca." . time() . $$;
-  mkdir $patchxdir,0755 || err ("Can't create temporary directory $patchxdir ($!)");
+  mkdir $patchxdir,0755 || errx ("Can't create temporary directory $patchxdir ($!)");
 
   if (-d "$o{patchdir}/$pp") {
     $?= !symlink ("$o{patchdir}/$pp", "$patchxdir/$pp");
@@ -801,7 +808,7 @@ sub install_patch {
   # Do we need a reboot?
   my $p_b=0; my $p_bi=0; my $p_c=0; my $p_ci=0;
   if (-f $patchinfo) {
-    open(PATCHINFO,$patchinfo) || err ("Can't open $patchinfo ($!)");
+    open(PATCHINFO,$patchinfo) || errx ("Can't open $patchinfo ($!)");
     dbg ("Checking for reboot/reconfig in patchinfo");
     while (<PATCHINFO>) {
       if (/PATCH_PROPERTIES=.*reconfigimmediate/) { $p_ci=1; last }
@@ -811,7 +818,7 @@ sub install_patch {
     }
     close PATCHINFO;
   } elsif (-f $readme) {
-    open(README,$readme) || err ("Can't open $readme ($!)");
+    open(README,$readme) || errx ("Can't open $readme ($!)");
     dbg ("Checking for reboot/reconfig in README");
     while(<README>) {
       if (/Reconfig.*immediate.*after.*install/) { $p_ci=1; last }
@@ -825,7 +832,7 @@ sub install_patch {
   # If the patchadd command doesn't exist, try installpatch, which
   # comes with patches for Solaris <= 2.5.1.
   (-x $o{patchadd}) || ($o{patchadd}="$patchxdir/$pp/installpatch");
-  (-x $o{patchadd}) || err ("Can't execute patchadd/installpatch");
+  (-x $o{patchadd}) || errx ("Can't execute patchadd/installpatch");
 
   # Sun Studio 11 patches on Solaris 10 must be installed with -G
   # Patches 119254-34 and 119255-34 fix this in patchadd
@@ -844,7 +851,7 @@ sub install_patch {
   } elsif ($o{pretend}) {
     out ('info', "Skipping patchadd (pretend)"); $c{skipinst}++;
   } else {
-    lock_create($o{tmpdir}, "install", 1) || err ("Another instance of pca is installing patches right now");
+    lock_create($o{tmpdir}, "install", 1) || errx ("Another instance of pca is installing patches right now");
     $o{currentzone} && ($opt .= "-G ");
     if (($o{nobackup} =~ /all/) || ($p{$id}{nobackup} eq "00") || ($p{$id}{nobackup} eq $p{$id}{crev})) { $opt .= "-d " }
     $o{backdir} && ($opt .= "-B $o{backdir} ");
@@ -943,9 +950,9 @@ sub proxy {
     open (F, "<$odir/$f"); read (F, my $content, $size); close (F);
     print $content;
   } else {
-    err ("$f not found");
+    errx ("$f not found");
   }
-  exit 0;
+  exit $xval;
 }
 
 sub checksoa {
@@ -984,10 +991,10 @@ sub checksoa {
 sub check_prerequisites {
   # Must be root to install patches
   if ($o{install} && ($< != 0) && !$o{pretend}) {
-    err ("You must be root to install patches");
+    errx ("You must be root to install patches");
   }
   if ($o{install} && $o{safe} && !$o{proxy} && ($< != 0)) {
-    err ("You must be root to use safe mode");
+    errx ("You must be root to use safe mode");
   }
 
   # Set umask (esp. for patchxdir)
@@ -1011,7 +1018,7 @@ sub check_prerequisites {
   $input{xref}="$o{xrefdir}/patchdiag.xref";
 
   # Check patch download directory
-  (-d $o{patchdir}) || err ("Can't find patch directory $o{patchdir}");
+  (-d $o{patchdir}) || errx ("Can't find patch directory $o{patchdir}");
 
   # Check for pager
   $ENV{PAGER} && ($pager=$ENV{PAGER});
@@ -1031,7 +1038,7 @@ sub check_prerequisites {
       $input{showrev}= "<$o{fromfiles}/showrev.out";
       $input{uname}  = "<$o{fromfiles}/uname.out";
     } else {
-      err ("Can't find pkginfo/showrev/uname output with prefix $o{fromfiles}");
+      errx ("Can't find pkginfo/showrev/uname output with prefix $o{fromfiles}");
     }
     dbg ("Using $o{fromfiles} as prefix to read .out files");
   } else {
@@ -1139,6 +1146,7 @@ sub verify_files {
   $wl{120346}="/etc/hba.conf";
   $wl{120410}="/etc/gtk-2.0/gtk.immodules /etc/sparcv9/gtk-2.0/gtk.immodules";
   $wl{120460}="/etc/gtk-2.0/gtk.immodules /etc/sparcv9/gtk-2.0/gtk.immodules";
+  $wl{121308}="/usr/sadm/lib/smc/policy/smcconsole.policy";
   $wl{121430}="/etc/default/lu";
   $wl{122212}="/etc/gconf/gconf.xml.defaults/apps/panel/default_setup/general/%gconf.xml";
   $wl{124393}="/etc/security/auth_attr /etc/security/prof_attr";
@@ -1146,6 +1154,7 @@ sub verify_files {
   $wl{127127}="/etc/krb5/krb5.conf /etc/logadm.conf /etc/pam.conf /etc/security/audit_warn /etc/security/auth_attr /etc/security/prof_attr /etc/shadow /etc/user_attr /kernel/drv/mpt.conf";
   $wl{127755}="/etc/logadm.conf";
   $wl{137093}="/etc/logindevperm";
+  $wl{137137}="/etc/vfstab";
   $wl{137274}="/etc/mnttab";
   # 10/x86
   $wl{118855}="/etc/logindevperm /etc/security/prof_attr /etc/vold.conf /lib/libc.so.1 /etc/security/device_policy /etc/ipf/pfil.ap /boot/solaris/devicedb/master";
@@ -1161,6 +1170,7 @@ sub verify_files {
   $wl{120347}="/etc/hba.conf";
   $wl{120411}="/etc/gtk-2.0/gtk.immodules /etc/amd64/gtk-2.0/gtk.immodules";
   $wl{120461}="/etc/gtk-2.0/gtk.immodules /etc/amd64/gtk-2.0/gtk.immodules";
+  $wl{121309}="/usr/sadm/lib/smc/policy/smcconsole.policy";
   $wl{121431}="/etc/default/lu";
   $wl{122213}="/etc/gconf/gconf.xml.defaults/apps/panel/default_setup/general/%gconf.xml";
   $wl{124394}="/etc/security/auth_attr /etc/security/prof_attr";
@@ -1168,13 +1178,13 @@ sub verify_files {
   $wl{125216}="/etc/wgetrc";
   $wl{127128}="/etc/krb5/krb5.conf /etc/logadm.conf /etc/pam.conf /etc/security/audit_warn /etc/security/auth_attr /etc/security/prof_attr /etc/shadow /etc/user_attr /kernel/drv/mpt.conf";
   $wl{127756}="/etc/logadm.conf";
-  $wl{128307}="/etc/security/device_policy";
   $wl{137094}="/etc/logindevperm";
-  $wl{137112}="/lib/libc.so.1";
+  $wl{137138}="/etc/vfstab /lib/libc.so.1";
   $wl{137275}="/etc/mnttab";
+  $wl{138270}="/etc/security/device_policy";
 
   (-f $readme) || return (1);
-  open (README, "<$readme") || err ("Can't open $readme ($!)");
+  open (README, "<$readme") || errx ("Can't open $readme ($!)");
 
   FILE: while (<README>) {
     next if ($_ !~ /Files included with this patch:/);
@@ -1207,7 +1217,7 @@ sub verify_files {
     my $fc=$#tfiles;
     ($fc >= 1023) && ($fc=1023);
     my $pfile="$o{tmpdir}/pca.pkgchk." . time() . $$;
-    open (PFILE, ">$pfile") || err ("Can't open $pfile ($!)");
+    open (PFILE, ">$pfile") || errx ("Can't open $pfile ($!)");
     foreach my $f (@tfiles[0..$fc]) { print PFILE "$f\n" }
     close PFILE;
     $out .= `$pkgchk $o{root} -q -i $pfile 2>&1`;
@@ -1223,312 +1233,227 @@ sub verify_files {
   return (1);
 }
 
-sub patch_apply_check {
-  my $id=$_[0];
+sub set_extra_req {
+  $x{113039}=$x{113040}=$x{113041}=$x{113042}=$x{113043}=$x{111095}=$x{111096}=$x{111413}="rpkg=SUNWsan";
+  $x{114046}=$x{119209}="rosrel=5.8";
+  $x{114049}=$x{114050}=$x{119211}=$x{119212}="rosrel=5.9";
+  $x{117765}=$x{117766}="rosrel=5.8"; $x{117767}=$x{117768}="rosrel=5.9";
+  $x{114644}=$x{114645}=$x{114646}=$x{114647}=$x{114648}=$x{114649}="rosrel=5.8";
+  $x{114650}=$x{114651}=$x{114652}=$x{114653}="rosrel=5.8";
+  $x{114816}=$x{114817}=$x{115780}=$x{115781}=$x{117520}=$x{117521}="rosrel=5.8";
+  $x{114686}=$x{114687}=$x{114688}=$x{114689}="rosrel=5.9";
+  $x{114690}=$x{114691}=$x{114692}=$x{114693}=$x{114694}=$x{114695}="rosrel=5.9";
+  $x{114818}=$x{114819}=$x{115782}=$x{115783}=$x{117526}=$x{117527}="rosrel=5.9";
+  $x{114255}="rarch=sparc"; $x{114256}="rarch=i386";
+  $x{115328}="rosrel=5.8";
+  $x{115342}="rosrel=5.9";
+  $x{115343}="rosrel=5.9";
+  $x{119346}="rosrel=5.10";
+  $x{115766}=$x{120879}=$x{120954}="rarch=sparc";
+  $x{120091}=$x{120880}=$x{120955}="rarch=i386";
+  $x{119300}="rosrel=5.8"; $x{119301}="rosrel=5.9"; $x{119302}="rosrel=5.10";
+  $x{113434}="rpkg=SUNWwbsup";
+  $x{109700}=$x{111248}="rosrel=5.6"; $x{109701}=$x{111249}="rosrel=5.7";
+  $x{111250}="rosrel=5.8"; $x{115548}="rosrel=5.9";
+  $x{123200}="rosrel=5.8"; $x{123201}="rosrel=5.9"; $x{123202}="rosrel=5.10";
+  $x{119527}=$x{119530}=$x{119325}="rarch=sparc";
+  $x{119528}=$x{119531}=$x{119326}="rarch=i386";
+  $x{127498}=$x{127499}="rosrel=5.8";
+  $x{136986}=$x{136987}="rosrel=5.8";
+  $x{125950}=$x{125951}="rosrel=5.9";
+  $x{125952}=$x{125953}="rosrel=5.10";
+  $x{123827}="rosrel=5.8"; $x{123828}="rosrel=5.9"; $x{123829}="rosrel=5.10";
+  $x{125760}="rosrel=5.8"; $x{125761}="rosrel=5.9"; $x{125762}="rosrel=5.10";
+  $x{106514}=$x{108049}=$x{108879}=$x{109120}=$x{109413}="rarch=sparc";
+  $x{117784}=$x{118195}=$x{118263}=$x{118950}=$x{123254}="rarch=sparc";
+  $x{106515}=$x{108050}=$x{108881}=$x{109121}=$x{109414}="rarch=i386";
+  $x{117785}=$x{118196}=$x{118264}=$x{118951}=$x{124590}="rarch=i386";
+  $x{126356}="rarch=sparc"; $x{126357}="rarch=i386";
+  $x{117429}="rosrel=5.9";
+  $x{118386}="rosrel=5.6"; $x{118387}="rosrel=5.7"; $x{118388}="rosrel=5.8"; $x{118389}="rosrel=5.9";
+  $x{118828}="rosrel=5.8"; $x{118829}="rosrel=5.9";
+  $x{118836}="rosrel=5.6"; $x{118837}="rosrel=5.7"; $x{118838}="rosrel=5.8";
+  $x{118839}="rosrel=5.9"; $x{118840}="rosrel=5.9";
+  $x{120376}="rosrel=5.6"; $x{120377}="rosrel=5.7"; $x{120378}="rosrel=5.8"; $x{120379}="rosrel=5.9";
+  $x{124689}="rosrel=5.8"; $x{124690}="rosrel=5.9";
+  $x{111857}="rosrel=5.8"; $x{114176}="rosrel=5.9";
+  $x{125445}="rosrel=5.9"; $x{125446}="rosrel=5.10";
+  $x{127553}="rarch=sparc"; $x{127554}="rarch=i386";
+  $x{121708}="rosrel=5.8"; $x{121709}="rosrel=5.9"; $x{121710}="rosrel=5.10";
+  $x{125848}="rosrel=5.8"; $x{125849}="rosrel=5.9"; $x{125850}="rosrel=5.10";
+  $x{115835}=$x{115836}="rpkgs=SUNWgscr";
+  $x{108553}="rosrel=5.8";
+  $x{125276}="rarch=sparc";
+  $x{106533}="rplatform=SUNW,UltraSPARC-IIi-cEngine";
+  $x{106629}="rplatform=CYRS,Superserver-6400";
+  $x{116413}="rplatform=SUNW,Sun-Fire-15000";
+  $x{125277}="rosrel=5.9:rarch=i386";
+  $x{125278}="rosrel=5.10:rarch=i386";
+  $x{124480}="rosrel=5.9:rarch=sparc";
+  $x{124481}="rosrel=5.10:rarch=sparc";
+  $x{124482}="rosrel=5.10:rarch=i386";
+  $x{119380}="rosrel=5.8";
+  $x{110936}=$x{110971}="rosrel=5.6";
+  $x{110937}=$x{110972}="rosrel=5.7";
+  $x{118386}="rosrel=5.6"; $x{118387}="rosrel=5.7"; $x{118388}="rosrel=5.8"; $x{118389}="rosrel=5.9";
+  $x{118828}="rosrel=5.8"; $x{118829}="rosrel=5.9";
+  $x{118836}="rosrel=5.6"; $x{118837}="rosrel=5.7"; $x{118838}="rosrel=5.8"; $x{118839}="rosrel=5.9";
+  $x{127680}="rosrel=5.8"; $x{127681}=$x{127682}="rosrel=5.9"; $x{127683}=$x{127684}="rosrel=5.10";
+  $x{138550}="rosrel=5.8"; $x{138551}=$x{138552}="rosrel=5.9"; $x{138553}=$x{138554}="rosrel=5.10";
+}
 
-  if ($id =~ /113039|113040|113041|113042|113043/) {
-    if (!$pkgs{"SUNWsan"}) { return (0) }
+sub chk_extra_req {
+  my $id=$_[0];
+  my ($major, $minor) = split (/\./, $u{osrel});
+
+  if (exists $x{$id}) {
+    foreach my $i (split (/:/, $x{$id})) {
+      my ($opt, $val)=split(/=/, $i);
+      if (($opt eq "rarch") && ($val ne $u{arch})) { return 0 }
+      if (($opt eq "rosrel") && ($val ne $u{osrel})) { return 0 }
+      if (($opt eq "rplatform") && ($val ne $u{platform})) { return 0 }
+      if (($opt eq "rpkg") && !$pkgs{$val}) { return 0 }
+    }
+    return 1;
   }
 
   if ($id eq "114045") {
-    if ((exists $p{114049}) && ($p{114049}{irev} gt '03')) { return (0) }
+    if ((exists $p{114049}) && ($p{114049}{irev} gt '03')) { return 0 }
   }
-
-  if (($id =~ /114046|119209/) && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id =~ /114049|114050/) && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id =~ /119211|119212/) && ($u{osrel} ne "5.9")) { return (0) }
-
   if ($id eq "114790") {
-    if (!$pkgs{"SUNWdcar"}  || $pkgs{"SUNWdcar"}  !~ "<1.1.0,REV=2002.05.29.15.02>") { return (0) }
-    if (!$pkgs{"SUNWcrypr"} || $pkgs{"SUNWcrypr"} !~ "<1.1.0,REV=2002.05.29.15.00>") { return (0) }
+    if (!$pkgs{"SUNWdcar"}  || $pkgs{"SUNWdcar"}  !~ "<1.1.0,REV=2002.05.29.15.02>") { return 0 }
+    if (!$pkgs{"SUNWcrypr"} || $pkgs{"SUNWcrypr"} !~ "<1.1.0,REV=2002.05.29.15.00>") { return 0 }
   }
-
-  if (($id =~ /117765|117766/) && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id =~ /117767|117768/) && ($u{osrel} ne "5.9")) { return (0) }
-
   if ($id eq "113332") {
-    if (($pkgs{"SUNWhea"}) || ($pkgs{"SUNWmdb"})) { return (1) }
-    if (($u{model} eq 'sun4u') || ($u{model} eq 'sun4us')) { return (1) }
-    return (0);
+    if (($pkgs{"SUNWhea"}) || ($pkgs{"SUNWmdb"})) { return 1 }
+    if (($u{model} eq 'sun4u') || ($u{model} eq 'sun4us')) { return 1 }
+    return 0;
   }
-
   if ($id =~ /115010|116478/) {
-    if (($pkgs{"SUNWhea"}) || ($pkgs{"SUNWmdb"})) { return (1) }
-    if ($u{model} eq 'sun4u') { return (1) }
-    return (0);
+    if (($pkgs{"SUNWhea"}) || ($pkgs{"SUNWmdb"})) { return 1 }
+    if ($u{model} eq 'sun4u') { return 1 }
+    return 0;
   }
-
   if ($id =~ /109077|109078/) {
-    if ((!$pkgs{"SUNWdhcm"}) && (!$pkgs{"SUNWdhcsu"})) { return (0) }
-    if ($pkgs{"SUNWj3rt"}) { return (1) }
-    return (0);
+    if ((!$pkgs{"SUNWdhcm"}) && (!$pkgs{"SUNWdhcsu"})) { return 0 }
+    if ($pkgs{"SUNWj3rt"}) { return 1 }
+    return 0;
   }
-
   if ($id =~ /118739|116706/) {
-    if (!$pkgs{"SUNWtsr"} || $pkgs{"SUNWtsr"} !~ "<2.5.0,REV=2003.04.03.21.27>") { return (0) }
+    if (!$pkgs{"SUNWtsr"} || $pkgs{"SUNWtsr"} !~ "<2.5.0,REV=2003.04.03.21.27>") { return 0 }
   }
   if ($id =~ /118740|116707/) {
-    if (!$pkgs{"SUNWtsr"} || $pkgs{"SUNWtsr"} !~ "<2.5.0,REV=2003.04.03.19.26>") { return (0) }
+    if (!$pkgs{"SUNWtsr"} || $pkgs{"SUNWtsr"} !~ "<2.5.0,REV=2003.04.03.19.26>") { return 0 }
   }
   if ($id eq "118741") {
-    if (!$pkgs{"SUNWtsr"} || $pkgs{"SUNWtsr"} !~ "<2.5.0,REV=2003.11.11.23.55>") { return (0) }
+    if (!$pkgs{"SUNWtsr"} || $pkgs{"SUNWtsr"} !~ "<2.5.0,REV=2003.11.11.23.55>") { return 0 }
   }
   if ($id eq "118742") {
-    if (!$pkgs{"SUNWtsr"} || $pkgs{"SUNWtsr"} !~ "<2.5.0,REV=2003.11.11.20.36>") { return (0) }
+    if (!$pkgs{"SUNWtsr"} || $pkgs{"SUNWtsr"} !~ "<2.5.0,REV=2003.11.11.20.36>") { return 0 }
   }
-
   if ($id eq "110692") {
-    if ((exists $p{108806}) && ($p{108806}{irev} ge '01')) { return (0) }
-    if ((exists $p{108806}) && ($p{108806}{crev} ge '01')) { return (0) }
+    if ((exists $p{108806}) && ($p{108806}{irev} ge '01')) { return 0 }
+    if ((exists $p{108806}) && ($p{108806}{crev} ge '01')) { return 0 }
   }
-
   if ($id eq "111412") {
-    if (!$pkgs{"SUNWmdi"} || $pkgs{"SUNWmdi"} !~ "<11.8.0,REV=2001.01.19.01.02>") { return (0) }
-    if (!$pkgs{"SUNWsan"}) { return (0) }
-  }
-  if ($id =~ /111095|111096|111413/) {
-    if (!$pkgs{"SUNWsan"}) { return (0) }
+    if (!$pkgs{"SUNWmdi"} || $pkgs{"SUNWmdi"} !~ "<11.8.0,REV=2001.01.19.01.02>") { return 0 }
+    if (!$pkgs{"SUNWsan"}) { return 0 }
   }
   if ($id eq "111097") {
-    if (!$pkgs{"SUNWsan"}) { return (0) }
-    if (!$pkgs{"SUNWqlc"}) { return (0) }
+    if (!$pkgs{"SUNWsan"}) { return 0 }
+    if (!$pkgs{"SUNWqlc"}) { return 0 }
   }
-
   if ($id eq "111656") {
-    if (!((exists $p{109460}) && ($p{109460}{irev} eq '05'))) { return (0) }
+    if (!((exists $p{109460}) && ($p{109460}{irev} eq '05'))) { return 0 }
   }
   if ($id eq "111658") {
-    if (!((exists $p{107469}) && ($p{107469}{irev} eq '08'))) { return (0) }
+    if (!((exists $p{107469}) && ($p{107469}{irev} eq '08'))) { return 0 }
   }
   if ($id eq "111079") {
-    if (!((exists $p{105375}) && ($p{105375}{irev} eq '26'))) { return (0) }
+    if (!((exists $p{105375}) && ($p{105375}{irev} eq '26'))) { return 0 }
   }
-
   if ($id eq "107474") {
-    if ((exists $p{107292}) && ($p{107292}{irev} ge '02')) { return (1) }
-    return (0);
+    if ((exists $p{107292}) && ($p{107292}{irev} ge '02')) { return 1 }
+    return 0;
   }
-
-  if ($id eq "106533") {
-    if ($u{platform} ne 'SUNW,UltraSPARC-IIi-cEngine') { return (0) }
-  }
-  if ($id eq "106629") {
-    if ($u{platform} ne 'CYRS,Superserver-6400') { return (0) }
-  }
-  if ($id eq "112780") {
-    if (!($u{model} eq 'sun4u')) { return (0) }
-  }
+  if (($id eq "112780") && !($u{model} eq 'sun4u')) { return 0 }
   if ($id eq "112327") {
-    if (($u{osrel} ne "5.6") && ($u{osrel} ne "5.7")) { return (0) }
+    if (($u{osrel} ne "5.6") && ($u{osrel} ne "5.7")) { return 0 }
   }
-
-  if ($id =~ /11464[456789]|11465[0123]|11481[67]|11578[01]|11752[01]/) {
-    if ($u{osrel} ne "5.8") { return (0) }
-  }
-  if ($id =~ /11468[6789]|11469[012345]|11481[89]|11578[23]|11752[67]/) {
-    if ($u{osrel} ne "5.9") { return (0) }
-  }
-
   if ($id eq "111891") {
-    if (!$pkgs{"SUNWutr"} || $pkgs{"SUNWutr"} !~ "<1.3_12.c,REV=2001.07.16.20.52>") { return (0) }
+    if (!$pkgs{"SUNWutr"} || $pkgs{"SUNWutr"} !~ "<1.3_12.c,REV=2001.07.16.20.52>") { return 0 }
   }
-
-  if (($id eq "114255") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "114256") && ($u{arch} ne "i386")) { return (0) }
-
-  if (($id eq "115328") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "115342") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "115343") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "119346") && ($u{osrel} ne "5.10")) { return (0) }
-
-  if (($id eq "115766") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "120091") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "120879") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "120880") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "120954") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "120955") && ($u{arch} ne "i386")) { return (0) }
-
-  if (($id =~ /115835|115836/) && (!$pkgs{"SUNWgscr"})) { return (0) }
-
-  if (($id eq "119300") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "119301") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "119302") && ($u{osrel} ne "5.10")) { return (0) }
-
   if ($id =~ /109357/) {
-    if ((exists $p{109778}) && ($p{109778}{irev} ge '08')) { return (0) }
-    if ((exists $p{109778}) && ($p{109778}{crev} ge '08')) { return (0) }
+    if ((exists $p{109778}) && ($p{109778}{irev} ge '08')) { return 0 }
+    if ((exists $p{109778}) && ($p{109778}{crev} ge '08')) { return 0 }
   }
-  if (($id eq "113434") && (!$pkgs{"SUNWwbsup"})) { return (0) }
-
-  if (($id eq "109700") && ($u{osrel} ne "5.6")) { return (0) }
-  if (($id eq "109701") && ($u{osrel} ne "5.7")) { return (0) }
-  if (($id eq "111248") && ($u{osrel} ne "5.6")) { return (0) }
-  if (($id eq "111249") && ($u{osrel} ne "5.7")) { return (0) }
-  if (($id eq "111250") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "115548") && ($u{osrel} ne "5.9")) { return (0) }
-
-  if (($id eq "108553") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "108834") && (($u{osrel} ne "5.5.1") || ($u{osrel} ne "5.6") || ($u{osrel} ne "5.7"))) { return (0) }
-  if (($id eq "112125") && (($u{osrel} ne "5.6") || ($u{osrel} ne "5.7"))) { return (0) }
-  if (($id eq "112126") && (($u{osrel} ne "5.8") || ($u{osrel} ne "5.9"))) { return (0) }
-
-  if (($id eq "123200") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "123201") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "123202") && ($u{osrel} ne "5.10")) { return (0) }
-
-  if (($id eq "119527") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "119528") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "119530") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "119531") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "119325") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "119326") && ($u{arch} ne "i386")) { return (0) }
-
-  if (($id eq "127498") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "127499") && ($u{osrel} ne "5.8")) { return (0) }
-
-  if (($id eq "136986") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "136987") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "125950") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "125951") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "125952") && ($u{osrel} ne "5.10")) { return (0) }
-  if (($id eq "125953") && ($u{osrel} ne "5.10")) { return (0) }
-
-  if (($id eq "121430") && ($p{121430}{crev} ge '16') && (!$pkgs{"SUNWlucfg"})) { return (0) }
-  if (($id eq "121431") && ($p{121431}{crev} ge '17') && (!$pkgs{"SUNWlucfg"})) { return (0) }
+  if (($id eq "108834") && (($u{osrel} ne "5.5.1") || ($u{osrel} ne "5.6") || ($u{osrel} ne "5.7"))) { return 0 }
+  if (($id eq "112125") && (($u{osrel} ne "5.6") || ($u{osrel} ne "5.7"))) { return 0 }
+  if (($id eq "112126") && (($u{osrel} ne "5.8") || ($u{osrel} ne "5.9"))) { return 0 }
+  if (($id eq "121430") && ($p{121430}{crev} ge '16') && (!$pkgs{"SUNWlucfg"})) { return 0 }
+  if (($id eq "121431") && ($p{121431}{crev} ge '17') && (!$pkgs{"SUNWlucfg"})) { return 0 }
   if (($id eq "121428") && ($p{121428}{crev} ge '08')) {
-    if (!((exists $p{121430}) && ($p{121430}{irev} ge '16'))) { return (0) }
+    if (!((exists $p{121430}) && ($p{121430}{irev} ge '16'))) { return 0 }
   }
   if (($id eq "121429") && ($p{121429}{crev} ge '08')) {
-    if (!((exists $p{121431}) && ($p{121431}{irev} ge '16'))) { return (0) }
+    if (!((exists $p{121431}) && ($p{121431}{irev} ge '16'))) { return 0 }
   }
-
-  if (($id eq "125276") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "125277") && (($u{osrel} ne "5.9") || ($u{arch} ne "i386"))) { return (0) }
-  if (($id eq "125278") && (($u{osrel} ne "5.10") || ($u{arch} ne "i386"))) { return (0) }
-
-  if (($id eq "123827") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "123828") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "123829") && ($u{osrel} ne "5.10")) { return (0) }
-
-  if (($id eq "125760") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "125761") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "125762") && ($u{osrel} ne "5.10")) { return (0) }
-
   if ($id =~ /120971|120972|120973|122803|122804|122805|126507|126508|126506/) {
-    if (!($pkgs{"SUNWsamfsr"} || $pkgs{"SUNWsamfsu"})) { return (0) }
+    if (!($pkgs{"SUNWsamfsr"} || $pkgs{"SUNWsamfsu"})) { return 0 }
   }
   if ($id =~ /120974|120975|120976|122806|122807|122808|126511|126512|126510/) {
-    if (!($pkgs{"SUNWqfsr"} || $pkgs{"SUNWqfsu"})) { return (0) }
+    if (!($pkgs{"SUNWqfsr"} || $pkgs{"SUNWqfsu"})) { return 0 }
   }
+  if ($id =~ /116338|116339|118383|118384|125698|125699/) {
+    if (!$pkgs{"SUNWxwplt"} || $pkgs{"SUNWxwplt"} !~ "<3.8.1800,REV=0.99.03.23>") { return 0 }
+  }
+  if (($id eq "119381") && ($u{osrel} ne "5.9") && ($u{osrel} ne "5.10")) { return 0 }
+  if (($id eq "119775") && ($minor < 10)) { return 0 }
+  if ($id eq "116831") {
+    if (!($pkga{"SUNWebsc"} && ($pkga{"SUNWebsc"} eq "<sparc>"))) { return 0 }
+  }
+  if ($id eq "116832") { 
+    if (!($pkga{"SUNWebsc"} && ($pkga{"SUNWebsc"} eq "<sparcv9>"))) { return 0 }
+  }
+  if (($id eq "110938") && (($u{osrel} ne "5.8") || ($u{osrel} ne "5.9"))) { return 0 }
+  if (($id eq "110973") && (($u{osrel} ne "5.8") || ($u{osrel} ne "5.9"))) { return 0 }
 
-  if (($id eq "106514") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "106515") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "108049") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "108050") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "108879") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "108881") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "109120") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "109121") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "109413") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "109414") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "117784") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "117785") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "118195") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "118196") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "118263") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "118264") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "118950") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "118951") && ($u{arch} ne "i386")) { return (0) }
-  if (($id eq "123254") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "124590") && ($u{arch} ne "i386")) { return (0) }
-
-  if (($id eq "124480") && (($u{osrel} ne "5.9") || ($u{arch} ne "sparc"))) { return (0) }
-  if (($id eq "124481") && (($u{osrel} ne "5.10") || ($u{arch} ne "sparc"))) { return (0) }
-  if (($id eq "124482") && (($u{osrel} ne "5.10") || ($u{arch} ne "i386"))) { return (0) }
-
-  if (($id eq "126356") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "126357") && ($u{arch} ne "i386")) { return (0) }
-
-  if (($id eq "117429") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "118386") && ($u{osrel} ne "5.6")) { return (0) }
-  if (($id eq "118387") && ($u{osrel} ne "5.7")) { return (0) }
-  if (($id eq "118388") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "118389") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "118828") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "118829") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "118836") && ($u{osrel} ne "5.6")) { return (0) }
-  if (($id eq "118837") && ($u{osrel} ne "5.7")) { return (0) }
-  if (($id eq "118838") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "118839") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "118840") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "120376") && ($u{osrel} ne "5.6")) { return (0) }
-  if (($id eq "120377") && ($u{osrel} ne "5.7")) { return (0) }
-  if (($id eq "120378") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "120379") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "124689") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "124690") && ($u{osrel} ne "5.9")) { return (0) }
-
-  if (($id eq "116338") && (!$pkgs{"SUNWxwplt"} || $pkgs{"SUNWxwplt"} !~ "<3.8.1800,REV=0.99.03.23>")) { return (0) }
-  if (($id eq "116339") && (!$pkgs{"SUNWxwplt"} || $pkgs{"SUNWxwplt"} !~ "<3.8.1800,REV=0.99.03.23>")) { return (0) }
-  if (($id eq "118383") && (!$pkgs{"SUNWxwplt"} || $pkgs{"SUNWxwplt"} !~ "<3.8.1800,REV=0.99.03.23>")) { return (0) }
-  if (($id eq "118384") && (!$pkgs{"SUNWxwplt"} || $pkgs{"SUNWxwplt"} !~ "<3.8.1800,REV=0.99.03.23>")) { return (0) }
-  if (($id eq "125698") && (!$pkgs{"SUNWxwplt"} || $pkgs{"SUNWxwplt"} !~ "<3.8.1800,REV=0.99.03.23>")) { return (0) }
-  if (($id eq "125699") && (!$pkgs{"SUNWxwplt"} || $pkgs{"SUNWxwplt"} !~ "<3.8.1800,REV=0.99.03.23>")) { return (0) }
-
-  if (($id eq "111857") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "114176") && ($u{osrel} ne "5.9")) { return (0) }
-
-  if (($id eq "119380") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "119381") && ($u{osrel} ne "5.9") && ($u{osrel} ne "5.10")) { return (0) }
-
-  if (($id eq "125445") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "125446") && ($u{osrel} ne "5.10")) { return (0) }
-
-  if (($id eq "127553") && ($u{arch} ne "sparc")) { return (0) }
-  if (($id eq "127554") && ($u{arch} ne "i386")) { return (0) }
-
-  if (($id eq "121708") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "121709") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "121710") && ($u{osrel} ne "5.10")) { return (0) }
-
-  if (($id eq "125848") && ($u{osrel} ne "5.8")) { return (0) }
-  if (($id eq "125849") && ($u{osrel} ne "5.9")) { return (0) }
-  if (($id eq "125850") && ($u{osrel} ne "5.10")) { return (0) }
-
-  return (1);
+  return 1;
 }
 
 sub get_uname {
   # Get information about host
-  open(UNAME, $input{uname}) || err ("Can't open $input{uname} ($!)");
+  open(UNAME, $input{uname}) || errx ("Can't open $input{uname} ($!)");
   $_=<UNAME>;
-  $_ || err ("Empty uname output");
+  $_ || errx ("Empty uname output");
   chomp;
   close UNAME;
 
   ($u{osname}, $u{hostname}, $u{osrel}, $u{osversion}, $u{model}, $u{arch}, $u{platform})= split (/ /, $_);
-  ($u{osname} && $u{hostname} && $u{osrel} && $u{osversion} && $u{model} && $u{arch} && $u{platform}) || err ("Can't parse ouput from $input{uname}:\n  $_");
+  ($u{osname} && $u{hostname} && $u{osrel} && $u{osversion} && $u{model} && $u{arch} && $u{platform}) || errx ("Can't parse ouput from $input{uname}:\n  $_");
 }
 
 sub get_installed_packages {
   my $package;
 
   # Read pkginfo
-  open(PKGINFO, $input{pkginfo}) || err ("Can't open $input{pkginfo} ($!)");
+  open(PKGINFO, $input{pkginfo}) || errx ("Can't open $input{pkginfo} ($!)");
   if ($input{pkginfo} =~ /pkginfo-l.out/) {
     while(<PKGINFO>) {
       if (/\s+PKGINST:\s+(\S+)$/) { $package = $1; }
+      if (/\s+ARCH:\s+(\S+)$/) { $pkga{$package} .= "<$1>"; }
       if (/\s+VERSION:\s+(\S+)$/) { $pkgs{$package} .= "<$1>"; }
     }
   } else {
     while(<PKGINFO>) {
-      ($_ =~ /^(\S+) /) || err ("Can't parse output from $input{pkginfo}:\n  $_");
+      ($_ =~ /^(\S+) /) || errx ("Can't parse output from $input{pkginfo}:\n  $_");
       $package=$1;
       # Removing trailing .2/.3/... (multiple versions of same package)
       $package =~ s/\..*//;
       $_= <PKGINFO>;
-      ($_ =~ / (\S+)$/) || err ("Can't parse output from $input{pkginfo}:\n  $_");
-      $pkgs{$package} .= "<$1>";
+      ($_ =~ /\((\S+)\) (.+)$/) || errx ("Can't parse output from $input{pkginfo}:\n  $_");
+      $pkga{$package} .= "<$1>";
+      $pkgs{$package} .= "<$2>";
     }
   }
   close(PKGINFO);
@@ -1537,6 +1462,7 @@ sub get_installed_packages {
 sub get_installed_patches {
   my $list='';
   my $done=0;
+  my $nonsun=999999;
 
   my $showrev_cmd=$showrev; ( -x $showrev_cmd) || ($showrev_cmd='');
   my $patchadd_cmd=$o{patchadd}; ( -x $patchadd_cmd) || ($patchadd_cmd='');
@@ -1547,7 +1473,7 @@ sub get_installed_patches {
 
   if ($o{fromfiles}) {
     dbg ("Reading from $input{showrev}");
-    open(SHOWREV, $input{showrev}) || err ("Can't open $input{showrev} ($!)");
+    open(SHOWREV, $input{showrev}) || errx ("Can't open $input{showrev} ($!)");
     $/=""; $list= <SHOWREV>; $/="\n";
     close SHOWREV;
     $done=1;
@@ -1560,40 +1486,14 @@ sub get_installed_patches {
       if (!$?) { $done=1; last } else { dbg ("Failed: $list") }
     }
   }
-  $done || err ("Couldn't get list of installed patches");
+  $done || errx ("Couldn't get list of installed patches");
 
   $list || ($list= "No patches are installed\n");
   my @list= split(/\n/, $list);
 
   foreach my $i (sort @list) {
-    # Known formats of patch IDs:
-    #   123456-78      : Regular Sun
-    #   IDR123456-78   : Unsupported (pre-release) Sun
-    #   123-45         : EMC
-    #   CKPSP123456-78 : Checkpoint
-    #   CPFWSP410002-01: Checkpoint
-    #   KDE20060107-01 : KDE
-    #   IDCE32-02      : DCE
-    #   DP550001-05    : HP Data Protector
-    #   DP550011-1     : HP Data Protector
-    #   PSE400SOL023   : Citrix
-    #   ME113SB222     : Citrix
-    #   Q995801-01     : SUNWluxop
-    #   T000000-01     : Terix DST patch
-    if (
-      ($i =~ /^Patch:\s+(\d{3,6})-(\d{2}).*/) ||
-      ($i =~ /^Patch:\s+IDR(\d{6})-(\d{2}).*/) ||
-      ($i =~ /^Patch:\s+CKPSP(\d{6})-(\d{2}).*/) ||
-      ($i =~ /^Patch:\s+CPFWSP(\d{6})-(\d{2}).*/) ||
-      ($i =~ /^Patch:\s+KDE(\d{8})-(\d{2}).*/) ||
-      ($i =~ /^Patch:\s+IDCE(\d{2})-(\d{2}).*/) ||
-      ($i =~ /^Patch:\s+DP(\d{6})-(\d{2}).*/) ||
-      ($i =~ /^Patch:\s+DP(\d{6})-(\d{1}).*/) ||
-      ($i =~ /^Patch:\s+PSE(\d{3})SOL(\d{3}).*/) ||
-      ($i =~ /^Patch:\s+ME(\d{3})SB(\d{3}).*/) ||
-      ($i =~ /^Patch:\s+Q(\d{6})-(\d{2}).*/) ||
-      ($i =~ /^Patch:\s+T(\d{6})-(\d{2}).*/)
-    ) {
+    # Sun patches (123456-78, IDR123456-78)
+    if (($i =~ /^Patch:\s+(\d{6})-(\d{2}).*/) || ($i =~ /^Patch:\s+IDR(\d{6})-(\d{2}).*/)) {
       my ($id, $rev)=($1,$2);
       init_patch($id);
       $p{$id}{irev}= $rev;
@@ -1614,6 +1514,11 @@ sub get_installed_patches {
         }
       }
       next;
+    # Non-Sun patches
+    } elsif ($i =~ /^Patch:\s+(\S+)/) {
+      my $id=$nonsun--;
+      init_patch ($id); $p{$id}{irev}=$p{$id}{crev}="01"; $p{$id}{synopsis}=$1;
+      next;
     }
     next if ($i =~ "No patches are installed");
     next if ($i =~ "No patches installed");
@@ -1627,7 +1532,7 @@ sub get_current_xref {
 
   return if ($o{nocheckxref});
 
-  lock_free($o{xrefdir}, "xref", 60) || err ("Another instance of pca is downloading $input{xref} right now");
+  lock_free($o{xrefdir}, "xref", 60) || errx ("Another instance of pca is downloading $input{xref} right now");
 
   # Remove possibly left-over size zero file
   if (-z $input{xref}) { unlink ($input{xref}) }
@@ -1652,18 +1557,18 @@ sub get_current_xref {
   if (! -w $o{xrefdir}) {
     my $msg="Can't write to xref download directory $o{xrefdir}";
     if ($o{getxref} || (! -f $input{xref})) {
-      err ($msg)
+      errx ($msg)
     } else { out ('info', $msg); return }
   }
   # Check if we can write to xref file
   if ((-f $input{xref}) && (! -w $input{xref})) {
     my $msg="Can't write to $input{xref}";
     if ($o{getxref}) {
-      err ($msg)
+      errx ($msg)
     } else { out ('info', $msg); return }
   }
 
-  lock_create($o{xrefdir}, "xref", 1) || err ("Another instance of pca is downloading $input{xref} right now");
+  lock_create($o{xrefdir}, "xref", 1) || errx ("Another instance of pca is downloading $input{xref} right now");
   (-s $input{xref}) && rename ("$input{xref}", "$input{xref}.tmp");
 
   if ($o{xrefurl} =~ /^file:/) {
@@ -1702,14 +1607,14 @@ DONE:
     open (XREF, "<$input{xref}.tmp");
     while (<XREF>) {
       if ($_ =~ /PATCHDIAG TOOL CROSS-REFERENCE FILE AS OF (.*) /) {
-        $oage= calculateage ($odate=$1); dbg ("old xref age: $oage"); last;
+        $oage= date2days ($odate=$1); dbg ("old xref age: $oage"); last;
       }
     }
     close XREF;
     open (XREF, "<$input{xref}");
     while (<XREF>) {
       if ($_ =~ /PATCHDIAG TOOL CROSS-REFERENCE FILE AS OF (.*) /) {
-        $nage= calculateage ($ndate=$1); dbg ("new xref age: $nage"); last;
+        $nage= date2days ($ndate=$1); dbg ("new xref age: $nage"); last;
       }
     }
     close XREF;
@@ -1737,8 +1642,8 @@ DONE:
 sub get_current_patches {
   # Read patchdiag.xref
   #
-  (-z $input{xref}) && err ("Empty file $input{xref}");
-  open(XREF, "<$input{xref}") || err ("Can't open xref file $input{xref} ($!)");
+  (-z $input{xref}) && errx ("Empty file $input{xref}");
+  open(XREF, "<$input{xref}") || errx ("Can't open xref file $input{xref} ($!)");
   while (<XREF>) {
     if ($_ =~ /PATCHDIAG TOOL CROSS-REFERENCE FILE AS OF (.*) /) {
       out ('info', "Using $input{xref} from $1"); last;
@@ -1747,7 +1652,7 @@ sub get_current_patches {
   $/=""; my $xref= <XREF>; $/="\n";
   close XREF;
 
-  if (!$xref) { err ("Corrupt file $input{xref}") }
+  if (!$xref) { errx ("Corrupt file $input{xref}") }
 
   my @xref= split( /\n/, $xref );
 
@@ -1758,10 +1663,13 @@ sub get_current_patches {
   foreach my $i (sort @xref) {
     # Ignore comment lines and HTML tags
     next if (($i =~ /^##/) || ($i =~ /^</));
-    if ($i !~ /^\d{6}\|\d{2}\|.*\|.\|.\|.\|..\|.*\|.*\|.*\|.*$/) { err ("Can't parse input from $input{xref}:\n  $i") }
+    if ($i !~ /^\d{6}\|\d{2}\|.*\|.\|.\|.\|..\|.*\|.*\|.*\|.*$/) { errx ("Can't parse input from $input{xref}:\n  $i") }
 
     my ($id, $crev, $reldate, $rFlag, $sFlag, $oFlag, $byFlag, $os,
       $archs, $pkgs, $synopsis )= split( /\|/, $i);
+
+    # Fix missing BAD mark
+    ($id eq "114147") && ($byFlag=" B");
 
     init_patch($id);
 
@@ -1821,6 +1729,8 @@ sub get_current_patches {
     # Patch requires are coded into the archs field - separate them.
     $p{$id}{archs}='';
     $p{$id}{requires}='';
+    $archs =~ s/[ ,]/;/; $archs =~ s/sparcv9;/sparc;/; $archs =~ s/x64;/i386;/;
+    $archs =~ s/Solaris;/all;/; $archs =~ s/Sparc;/sparc;/; $archs =~ s/|i86pc;/|i386;/;
     foreach my $r (split /\;/, $archs) {
       if ($r =~ /^\d{6}-\d{2}/) {
         $p{$id}{requires} .= "$r;";
@@ -1867,6 +1777,7 @@ sub init_patch {
   $p{$id}{ignore}= '';
   $p{$id}{nobackup}= '';
   $p{$id}{reldate}= 'Jan/01/71';
+  $p{$id}{age}= 0;
   $p{$id}{obsoletedby}= '';
   $p{$id}{iobsoletedby}= '';
   $p{$id}{archs}= '';
@@ -1898,7 +1809,7 @@ sub print_patch {
 
   $synopsis= $p{$id}{synopsis};
 
-  $age=calculateage($p{$id}{reldate});
+  $age=calculateage($id);
   if ($age > 999) { $age=999; }
 
   if (!$o{listhtml}) {
@@ -1935,7 +1846,7 @@ sub print_header {
   if (!$o{listhtml} && !$o{noheader} && !$o{readme}) {
     print "Host: $u{hostname} ($u{osname} $u{osrel}/$u{osversion}/$u{arch}/$u{model})\n";
     if ($o{root}) { my $r=$o{root}; $r =~ s/-R //; print "Root: $r\n" }
-    print "List: @slist\n\n";
+    print "List: @slist (" . int(@plist) . "/$agesum)\n\n";
     (@plist) || return;
 
     my $hdr= my $sep=$o{format};
@@ -1959,7 +1870,7 @@ sub print_header {
     print "</head>\n<body>\n";
     print "<h2>Host: $u{hostname} ($u{osname} $u{osrel}/$u{osversion}/$u{arch}/$u{model})<br>\n";
     if ($o{root}) { my $r=$o{root}; $r =~ s/-R //; print "Root: $r<br>\n" }
-    print "List: @slist</h2>\n<table>\n";
+    print "List: @slist (" . int(@plist) . "/$agesum)</h2>\n<table>\n";
     (@plist) || return;
 
     print "<tr><th>Patch</th>";
@@ -2054,7 +1965,7 @@ sub update {
 
   # If we can't write to pca, update won't work.
   if (($o{update} eq 'now') || ($o{update} eq 'auto')) {
-    if (! -w $0) { err ("Update option unavailable: Can't write to $0") }
+    if (! -w $0) { errx ("Update option unavailable: Can't write to $0") }
   }
 
   if ($o{update} eq 'auto') {
@@ -2073,7 +1984,7 @@ sub update {
   }
 
   my $udir= "$o{tmpdir}/pca." . time() . $$;
-  mkdir $udir,0755 || err ("Can't create temporary directory $udir ($!)");
+  mkdir $udir,0755 || errx ("Can't create temporary directory $udir ($!)");
   my $ufile= "$udir/pca";
   dbg ("ufile: $ufile");
 
@@ -2088,7 +1999,7 @@ sub update {
   } else {
     $ret=download('pca', '', 'pcaurl', "", $udir);
   }
-  $ret || err ("Could not get pca from $o{pcaurl}");
+  $ret || errx ("Could not get pca from $o{pcaurl}");
 
   my $newv;
   open (F, "<$ufile");
@@ -2145,7 +2056,7 @@ sub update {
 
   if (($o{update} eq "auto") && !$updated) { return }
   if ($o{proxy}) { return }
-  exit 0;
+  exit $xval;
 }
 
 sub out {
@@ -2183,6 +2094,13 @@ sub dbg {
 }
 
 sub calculateage {
+  my $id=$_[0];
+
+  if (!$p{$id}{age}) { $p{$id}{age}=date2days($p{$id}{reldate}) }
+  return ($p{$id}{age});
+}
+
+sub date2days {
   my ($tmonth, $day, $year)=split(/\//, $_[0]);
   my %months=("Jan",0,"Feb",1,"Mar",2,"Apr",3,"May",4,"Jun",5,"Jul",6,"Aug",7,"Sep",8,"Oct",9,"Nov",10,"Dec",11);
   my $month=$months{$tmonth};
@@ -2197,7 +2115,7 @@ sub lock_create {
   lock_free ($lockd, $tag, $maxretry) || return (0);
 
   unlink "$lockf";
-  sysopen (LOCKF, $lockf, O_RDWR|O_CREAT|O_EXCL) || err ("Can't write $lockf ($!)");
+  sysopen (LOCKF, $lockf, O_RDWR|O_CREAT|O_EXCL) || errx ("Can't write $lockf ($!)");
   print LOCKF "$$\n";
   close LOCKF;
   chmod 0666, $lockf;
@@ -2236,17 +2154,21 @@ sub lock_remove {
 }
 
 sub log_msg {
-  ($o{syslog}) && system("$o{logger} -t pca -p $o{syslog}.info \"@_\"");
+  my $priority=$o{syslog};
+
+  if ($priority eq "none") { return }
+  if ($priority !~ /\./) { $priority .= ".notice" }
+  system("$o{logger} -t pca -p $priority \"@_\"");
 }
 
-sub err {
+sub errx {
   out ('error', @_);
   cleanup();
-  exit 1;
+  exit ($xval=1);
 }
 
 sub handler {
-  err ("Caught a SIG@_");
+  errx ("Caught a SIG@_");
 }
 
 sub cleanup {
@@ -2311,15 +2233,16 @@ sub parse_args {
 
   # Get defaults from optional configuration file(s)
   my @conf=();
-  push (@conf, dirname($0)."/pca.conf");
-  push (@conf, dirname($0)."/../etc/pca.conf");
-  push (@conf, "/etc/pca.conf");
-  $ENV{HOME} && push (@conf, $ENV{HOME}."/.pca");
-  push (@conf, "pca.conf");
   if ($o{proxy}) {
     push (@conf, dirname($0)."/../etc/pca-proxy.conf");
     push (@conf, "/etc/pca-proxy.conf");
     push (@conf, "pca-proxy.conf");
+  } else {
+    push (@conf, dirname($0)."/pca.conf");
+    push (@conf, dirname($0)."/../etc/pca.conf");
+    push (@conf, "/etc/pca.conf");
+    $ENV{HOME} && push (@conf, $ENV{HOME}."/.pca");
+    push (@conf, "pca.conf");
   }
   foreach my $i (@conf) { read_cffile ($i) }
 
@@ -2341,14 +2264,14 @@ sub parse_args {
 
   # Proxy mode ?
   if ($o{proxy}) {
-    if ($#ARGV != 0) { err ("Missing argument") }
+    if ($#ARGV != 0) { errx ("Missing argument") }
     if ($ARGV[0] =~ /:force/) { $ARGV[0] =~ s/:force//; $o{pforce}=1 }
     if ((($ARGV[0] !~ /^patchdiag.xref$/) &&
         ($ARGV[0] !~ /^\d{6}-\d{2}\.(zip|jar|tar|tar\.Z)$/) &&
         ($ARGV[0] !~ /^\d{6}-\d{2}$/) &&
         ($ARGV[0] !~ /^README\.\d{6}-\d{2}$/) &&
         ($ARGV[0] !~ /^pca$/))) {
-      err ("Illegal argument");
+      errx ("Illegal argument");
     }
     $o{proxy}=$ARGV[0];
   } else {
@@ -2363,12 +2286,12 @@ sub parse_args {
     }
     Getopt::Long::config ("bundling", "no_ignore_case");
     $o{cffile}=sub { read_cffile ($_[1]) };
-    GetOptions (\%o, @olist) || usage() && exit 1;
+    GetOptions (\%o, @olist) || usage() && exit ($xval=2);
     delete $o{cffile};
   }
-  if ($o{help}) { usage(); exit 0 }
-  if ($o{man}) { man(); exit 0 }
-  if ($o{version}) { version(); exit 0 }
+  if ($o{help}) { usage(); exit $xval }
+  if ($o{man}) { man(); exit $xval }
+  if ($o{version}) { version(); exit $xval }
 
   $o{listhtml} && ($o{list}=1);
   $o{pretend} && ($o{install}=1);
@@ -2403,9 +2326,10 @@ sub parse_args {
   dbg ("ARGV: @ARGV");
   dbg ("Version: $version");
   ($conf_dbg) && dbg ("Config files: $conf_dbg");
+  ($o{debug} && !$o{proxy}) && log_msg ("Running pca $version in debug mode");
 
   if ($o{update} !~ /^(never|check|now|auto)$/) {
-    err ("Invalid TYPE specified with --update: $o{update}");
+    errx ("Invalid TYPE specified with --update: $o{update}");
   }
 }
 
@@ -2416,7 +2340,7 @@ sub process_patch_exceptions {
       if ($j =~ /^all$/) { $o{$i}='all'; last }
       if ($j =~ /^(\d{6})$/) { init_patch($1); ($p{$1}{$i}= "00"); next }
       if ($j =~ /^(\d{6})-(\d{2})$/) { init_patch($1); ($p{$1}{$i}= $2); next }
-      err ("Invalid patch ID with --$i: $j")
+      errx ("Invalid patch ID with --$i: $j")
     }
   }
 }
@@ -2426,7 +2350,7 @@ sub process_patch_flags {
     foreach my $j (@{$o{$i}}) {
       #dbg ("$i: $j");
       if ($j =~ /^(\d{6})(-\d{2})*$/) { init_patch($1); ($p{$1}{"${i}f"}= 1); next }
-      err ("Invalid patch ID with --$i: $j")
+      errx ("Invalid patch ID with --$i: $j")
     }
   }
 }
@@ -2493,7 +2417,7 @@ EOT
 
 sub man {
   eval "use Pod::Usage";
-  if ($@) { err ('Required module Pod::Usage not found') }
+  if ($@) { errx ('Required module Pod::Usage not found') }
 
   # Change uid to something secure as pod2usage does not run as root.
   # This snippet is taken from perldoc. See the comments there.
@@ -2543,8 +2467,9 @@ exists and is not writable, pca uses it and won't try to update it.
 Here's some sample output from I<pca -l all>, which shows a list
 of all installed and missing patches:
 
+  Using /var/tmp/patchdiag.xref from Feb/29/04
   Host: myhost (SunOS 5.9/Generic_117171-09/sparc/sun4u)
-  List: all
+  List: all (7/2182)
 
   Patch  IR   CR RSB Age Synopsis
   ------ -- - -- --- --- --------------------------------------------------
@@ -2555,6 +2480,12 @@ of all installed and missing patches:
   113040 -- < 08 R--  77 SAN 4.4.1: fctl/fp/fcp driver patch
   113477 02 > -- --- 999 NOT FOUND IN CROSS REFERENCE FILE!
   117114 -- < 02 ---   4 CDE 1.5: sdtwebclient patch
+
+The header includes some general information about the patchdiag.xref
+file, the host (I<Host:>) and the listed patches (I<List:>). The numbers
+in parantheses are the number of listed patches and the sum of their ages
+in days; when listing missing patches, this is a rough indicator of the
+current patch state.
 
 The first column (I<Patch>) contains the patch number, followed by the
 installed revision (I<IR>) and the current revision 
@@ -2587,7 +2518,7 @@ on the list of missing R/S patches.
 
 =head1 OPTIONS
 
-=over 5
+=over
 
 =item -l, --list
 
@@ -2741,8 +2672,11 @@ List only patches which are at most DAYS old.
 
 =item --syslog=TYPE
 
-Syslog facility (eg. user or local0) to log successful patch
-installs to.
+Syslog priority to log patch installs to. The default is
+I<daemon.notice> which gets logged to I</var/adm/messages>. Specify
+facility and severity (e.g. I<local7.info>) or a facility only
+(e.g. I<local7>, the default severity is I<notice>). Use I<none> to
+disable logging to syslog.
 
 =item -k, --nobackup=ID
 
@@ -2944,7 +2878,7 @@ directory where it is installed, I</etc/pca.conf>, I<$HOME/.pca>
 and I<pca.conf> in the current
 directory, in this order. In proxy mode the files I<../etc/pca-proxy.conf>,
 I</etc/pca-proxy.conf> and
-I<pca-proxy.conf> in the current directory are read, too.
+I<pca-proxy.conf> in the current directory are read instead.
 Options are set by specifying 
 I<option=value> in the file. Example: To set the path of the wget command,
 use I<wget=/opt/bin/wget>. To enable debug output, use
@@ -3121,6 +3055,7 @@ file:
 If the apache2 server is not running yet, create I</etc/apache2/httpd.conf>
 and enable the server with I<svcadm>:
 
+  # cp /etc/apache2/httpd.conf-example /etc/apache2/httpd.conf
   # svcadm enable svc:/network/http:apache2
 
 Test the caching proxy on a client:
@@ -3345,16 +3280,12 @@ All environment variables with the I<PCA_> prefix are evaluated
 as options; see CONFIGURATION for details. Furthermore, these environment
 variables are used by pca:
 
-=over 5
+=over
 
 =item PAGER
 
 Path to the command which is used to display patch README
 files
-
-=back
-
-=over 5
 
 =item TMPDIR
 
@@ -3362,6 +3293,22 @@ During patch installation, patches are extracted under this
 directory
 
 =back
+
+=head1 EXIT STATUS
+
+The following exit values are returned:
+
+  0  No error
+
+  1  Unknown error
+
+  2  Usage error
+
+  3  Reboot required to continue patch installation
+
+  4  Reboot required
+
+  5  Reboot recommended
 
 =head1 AUTHORS
 
@@ -3420,22 +3367,19 @@ Eric Bourgi, Sergiusz Pawlowicz, Paul Van Bommel, Matt Banks, Ray Cromwell,
 Jan Holzhueter, Liam Carey, Alex Docauer, Christopher S. Chan, Philip Kime,
 Michael Schmarck, Kevin L. Bliss, Thomas Bleek, Albert White, Ron Helzer,
 Sergei Haramundanis, Steven M. Christensen, Felix Schattschneider,
-Rajiv G Gunja, Jeremy Simpson, Jesse Caldwell, Amy Rich.
+Rajiv G Gunja, Jeremy Simpson, Jesse Caldwell, Amy Rich, Jens Elkner,
+Stephen Matich, Justus J. Addiss, Fred Chagnon, David French, Don O'Malley.
 
 =head1 MAILING LISTS
 
 Two mailing lists are available:
 
-=over 5
+=over
 
 =item pca-news
 
 This is a one-way list for announcements of new versions and news.
 To join, send an empty message to E<lt>pca-news-join@lists.univie.ac.atE<gt>.
-
-=back
-
-=over 5
 
 =item pca
 
@@ -3449,7 +3393,7 @@ message to E<lt>pca@lists.univie.ac.atE<gt>.
 
 =head1 SEE ALSO
 
-=over 5
+=over
 
 =item pca web site:
 
@@ -3459,13 +3403,45 @@ http://www.par.univie.ac.at/solaris/pca/
 
 =head1 CHANGES
 
+=head2 Version 20081218-01
+
+ * Enable syslog messages to daemon.notice by default
+ * Enhance possible values for syslog option
+ * Log sample message to syslog in debug mode
+ * New generic handling of unknown, non-Sun patches
+ * Documentation: Add cp command in local server setup example
+ * Rename internal function err() to avoid keyword clash with recent perl
+ * Mark patch 114147 as BAD
+ * Whitelist: add 137137, 137138, 121308, 121309, 138270
+ * Whitelist: remove obsolete patch
+ * Apply check: add 110936, 110937, 110938, 110971, 110972, 110973
+ * Apply check: add 118386, 118387, 118388, 118389
+ * Apply check: add 118828, 118829
+ * Apply check: add 118836, 118837, 118838, 118839
+ * Apply check: add 127680, 127681, 127682, 127683, 127684
+ * Apply check: add 138550, 138551, 138552, 138553, 138554
+ * Update list of contributors
+
+=head2 Version 20081024-01
+
+ * Read only pca-proxy.conf (not pca.conf) in proxy mode
+ * Provide more detailed exit status
+ * Include patch count and sum of patch ages in header
+ * Fix handling of downloaded files that are too short
+ * Check whether patch already exists before announcing download
+ * Fix handling of PTF/ACSLS patches
+ * Read architecture information from pkginfo output
+ * Accept wrong entries in the arch column in patchdiag.xref
+ * Handle special characters in package version string
+ * Fix erroneous behaviour with checking for patch existance
+ * Simplify internal handling of extra patch requirements
+ * Calculate patch age only once
+ * Apply check: add 116413, 119775, 116831, 116832
+ * Update list of contributors
+
 =head2 Version 20080911-01
 
  * Remove check for patches which are only partly installed
-
-=head2 Version 20080909-02
-
- * False positive with partly installed patches: add 120011, 127127
 
 =head2 Version 20080909-01
 
