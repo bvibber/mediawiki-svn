@@ -10,7 +10,7 @@ export CFLAGS="%optflags"
 export CXXFLAGS="%cxx_optflags"
 export LDFLAGS="%_ldflags"
 
-./configure --prefix=%{_prefix} --libdir=%{_libdir} --bindir=%{_bindir}
+./configure --prefix=%{_prefix} --libdir=%{_libdir} --bindir=%{_bindir} --enable-utf8
 
 %build
 CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
