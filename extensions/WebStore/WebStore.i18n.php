@@ -57,11 +57,11 @@ This could be due to a PHP fatal error in the scaler.',
 
 	'webstore_invalid_response' => "Invalid response from server:
 
-$1\n",
+$1",
 	'webstore_no_response'      => 'No response from server',
 	'webstore_backend_error'    => "Error from storage server:
 
-$1\n",
+$1",
 	'webstore_php_error'        => 'PHP errors were encountered:',
 	'webstore_no_handler'       => 'No handler for transforming this MIME type',
 );
