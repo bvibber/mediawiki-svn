@@ -9,7 +9,6 @@
  */
 
 if (!defined('MEDIAWIKI')) die();
-require_once "$IP/includes/SpecialPage.php";
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Import Users',
@@ -23,9 +22,10 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $wgAvailableRights[] = 'import_users';
 $wgGroupPermissions['bureaucrat']['import_users'] = true;
+
 $dir = dirname(__FILE__) . '/';
-$wgSpecialPages['ImportUsers'] = 'SpecialImportUsers'; 
+$wgSpecialPages['ImportUsers'] = 'SpecialImportUsers';
+$wgSpecialPageGroups['ImportUsers'] = 'users';
 $wgAutoloadClasses['SpecialImportUsers'] = $dir . 'SpecialImportUsers_body.php';
 $wgExtensionMessagesFiles['ImportUsers'] = $dir . 'SpecialImportUsers.i18n.php';
 $wgExtensionAliasesFiles['ImportUsers'] = $dir . 'SpecialImportUsers.alias.php';
-$wgSpecialPageGroups['ImportUsers'] = 'users';

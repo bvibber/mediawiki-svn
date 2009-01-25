@@ -12,7 +12,7 @@ $messages['en'] = array(
 	'importusers-desc'                    => '[[Special:ImportUsers|Imports users]] in bulk from CSV-file; encoding: UTF-8',
 	'importusers-uploadfile'              => 'Upload file',
 	'importusers-form-caption'            => 'Input CSV-file (UTF-8)' ,
-	'importusers-form-file'               => 'User file format (csv): ',
+	'importusers-form-file'               => 'User file format (csv):',
 	'importusers-form-replace-present'    => 'Replace existing users' ,
 	'importusers-form-button'             => 'Import' ,
 	'importusers-user-added'              => 'User <b>%s</b> has been added.' ,
@@ -28,6 +28,8 @@ $messages['en'] = array(
 	'importusers-password'                => 'password',
 	'importusers-email'                   => 'e-mail',
 	'importusers-realname'                => 'real name',
+	'right-import_users' => 'Import users in bulk',
+	'action-import_users' => 'import users in bulk',
 );
 
 /** Message documentation (Message documentation)
