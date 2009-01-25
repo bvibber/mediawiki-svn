@@ -108,9 +108,9 @@ function getSuggest($name, $query, $parameters = array(), $value=0, $label='', $
         	'<div><table>' .
         		'<tr>' .
         			'<td><input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input></td>' .
-        			'<td><a id="'. $name .'-suggest-clear" href="javascript:void(0)" onclick="suggestClearClicked(event, this)">Clear</a></td>' .
-        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-previous" href="javascript:void(0)" class="suggest-previous" onclick="suggestPreviousClicked(event, this)"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowLeft.png" alt="Previous"/> Previous</a></td>'.
-        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-next" href="javascript:void(0)" class="suggest-next" onclick="suggestNextClicked(event, this)">Next <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowRight.png" alt="Next"/></a></td>'.
+        			'<td><a id="'. $name .'-suggest-clear" href="javascript:void(0)" onclick="suggestClearClicked(event, this)">' . wfMsg('ow_suggest_clear') . '</a></td>' .
+        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-previous" href="javascript:void(0)" class="suggest-previous" onclick="suggestPreviousClicked(event, this)"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowLeft.png" alt="' . wfMsg('ow_suggest_previous') . '"/> ' . wfMsg('ow_suggest_previous') . '</a></td>'.
+        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-next" href="javascript:void(0)" class="suggest-next" onclick="suggestNextClicked(event, this)">' . wfMsg('ow_suggest_next') . ' <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowRight.png" alt="' . wfMsg('ow_suggest_next') . '"/></a></td>'.
         			'<td><a id="'. $name .'-suggest-close" href="javascript:void(0)" onclick="suggestCloseClicked(event, this)">[X]</a></td>' .
         		'</tr>' .
         	'</table></div>' .

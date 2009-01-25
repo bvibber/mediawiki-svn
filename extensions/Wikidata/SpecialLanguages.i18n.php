@@ -145,7 +145,10 @@ Please contact the server operator or administrator.",
 	'ow_needs_xlation_no_dest_lang'		=> 'Please specify a destination language.',
 	'ow_show'							=> 'Show',
 	'ow_create'							=> 'Create',
-	'ow_collection_added'				=> '<strong>Collection $1 added.</strong>'
+	'ow_collection_added'				=> '<strong>Collection $1 added.</strong>',
+	'ow_suggest_previous'				=> 'Previous',
+	'ow_suggest_next'					=> 'Next',
+	'ow_suggest_clear'					=> 'Clear',
 );
 
 /** Message documentation (Message documentation)

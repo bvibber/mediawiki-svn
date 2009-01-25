@@ -567,12 +567,12 @@ function getDefinedMeaningAsRecordSet($queryResult) {
 	$o=OmegaWikiAttributes::getInstance();
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$spellingAttribute = new Attribute("spelling", "Spelling", "short-text");
-	$languageAttribute = new Attribute("language", "Language", "language");
+	$spellingAttribute = new Attribute("spelling", wfMsg('ow_Spelling'), "short-text");
+	$languageAttribute = new Attribute("language", wfMsg('ow_Language'), "language");
 	
 	$expressionStructure = new Structure("defined-meaning", $spellingAttribute, $languageAttribute);
-	$definedMeaningAttribute = new Attribute(null, "Defined meaning", $expressionStructure);
-	$definitionAttribute = new Attribute("definition", "Definition", "definition");
+	$definedMeaningAttribute = new Attribute(null, wfMsg('ow_DefinedMeaning'), $expressionStructure);
+	$definitionAttribute = new Attribute("definition", wfMsg('ow_Definition'), "definition");
 	
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $definedMeaningAttribute, $definitionAttribute), new Structure($o->id));
 	
@@ -601,7 +601,7 @@ function getClassAttributeLevelAsRecordSet($queryResult) {
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$classAttributeLevelAttribute = new Attribute("class-attribute-level", "Level", "short-text");
+	$classAttributeLevelAttribute = new Attribute("class-attribute-level", wfMsg('ow_ClassAttributeLevel'), "short-text");
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $classAttributeLevelAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
@@ -618,7 +618,7 @@ function getCollectionAsRecordSet($queryResult) {
 	$o=OmegaWikiAttributes::getInstance();
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	$collectionAttribute = new Attribute("collection", wfMsg('ow_Collection'), "short-text");
 	
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $collectionAttribute), new Structure($o->id));
 	
