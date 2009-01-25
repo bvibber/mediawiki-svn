@@ -16,7 +16,7 @@ $messages['en'] = array(
 		'extdist-choose-version' => '
 <big>You are downloading the <b>$1</b> extension.</big>
 
-Select your MediaWiki version. 
+Select your MediaWiki version.
 
 Most extensions work across multiple versions of MediaWiki, so if your MediaWiki version is not here, or if you have a need for the latest extension features, try using the current version.',
 		'extdist-no-versions' => 'The selected extension ($1) is not available in any version!',
@@ -27,7 +27,7 @@ Most extensions work across multiple versions of MediaWiki, so if your MediaWiki
 		'extdist-svn-error' => 'Subversion encountered an error: <pre>$1</pre>',
 		'extdist-svn-parse-error' => 'Unable to process the XML from "svn info": <pre>$1</pre>',
 		'extdist-tar-error' => 'Tar returned exit code $1:',
-		'extdist-created' => "A snapshot of version <b>$2</b> of the <b>$1</b> extension for MediaWiki <b>$3</b> has been created. Your download should start automatically in 5 seconds. 
+		'extdist-created' => "A snapshot of version <b>$2</b> of the <b>$1</b> extension for MediaWiki <b>$3</b> has been created. Your download should start automatically in 5 seconds.
 
 The URL for this snapshot is:
 :$4
@@ -47,8 +47,7 @@ Note that some extensions need a file called ExtensionFunctions.php, located at 
 
 After you have extracted the files, you will need to register the extension in LocalSettings.php. The extension documentation should have instructions on how to do this.
 
-If you have any questions about this extension distribution system, please go to [[Extension talk:ExtensionDistributor]].
-",
+If you have any questions about this extension distribution system, please go to [[Extension talk:ExtensionDistributor]].",
 		'extdist-want-more' => 'Get another extension',
 );
 
@@ -64,7 +63,7 @@ $messages['qqq'] = array(
 	'extdist-submit-extension' => '{{Identical|Continue}}',
 	'extdist-submit-version' => '{{Identical|Continue}}',
 	'extdist-created' => '* $1 - extension
-* $2 - revision number 
+* $2 - revision number
 * $3 - branch name
 * $4 - URL
 * $5 - filename',
@@ -98,7 +97,7 @@ $messages['ar'] = array(
 	'extdist-svn-error' => 'سب فيرجن صادف خطأ: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'غير قادر على معالجة XML من "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => 'تار أرجع كود خروج $1:',
-	'extdist-created' => "لقطة من النسخة <b>$2</b> من الامتداد <b>$1</b> لميدياويكي <b>$3</b> تم إنشاؤها. تحميلك ينبغي أن يبدأ تلقائيا خلال 5 ثوان.  
+	'extdist-created' => "لقطة من النسخة <b>$2</b> من الامتداد <b>$1</b> لميدياويكي <b>$3</b> تم إنشاؤها. تحميلك ينبغي أن يبدأ تلقائيا خلال 5 ثوان.
 
 المسار لهذه اللقطة هو:
 :$4
@@ -149,7 +148,7 @@ $messages['arz'] = array(
 	'extdist-svn-error' => 'سب فيرجن صادف خطأ: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'غير قادر على معالجة XML من "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => 'تار أرجع كود خروج $1:',
-	'extdist-created' => "لقطة من النسخة <b>$2</b> من الامتداد <b>$1</b> لميدياويكى <b>$3</b> تم إنشاؤها. تحميلك ينبغى أن يبدأ تلقائيا خلال 5 ثوان.  
+	'extdist-created' => "لقطة من النسخة <b>$2</b> من الامتداد <b>$1</b> لميدياويكى <b>$3</b> تم إنشاؤها. تحميلك ينبغى أن يبدأ تلقائيا خلال 5 ثوان.
 
 المسار لهذه اللقطة هو:
 :$4
@@ -239,7 +238,7 @@ $messages['bg'] = array(
 	'extdist-current-version' => 'Текуща версия (trunk)',
 	'extdist-choose-version' => '<big>На път сте да изтеглите разширението <b>$1</b>.</big>
 
-Изберете вашата версия на MediaWiki.  
+Изберете вашата версия на MediaWiki.
 
 Повечето разширения работят на много версии на MediaWiki, затова ако вашата версия на MediaWiki я няма или искате най-новите възможности на разширението, опитайте да използвате текущата версия.',
 	'extdist-no-versions' => 'Избраното разширение ($1) не е налично в никоя версия!',
@@ -277,7 +276,7 @@ Većina proširenja radi na mnogim verzijama MediaWikija, pa ako se Vaša verzij
 	'extdist-svn-error' => 'Desila se greška kod subverzije: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Ne mogu procesirati XML formu iz "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => "Program ''tar'' je vratio izlazni kod $1:",
-	'extdist-created' => "Napravljen je prikaz verzije <b>$2</b> od proširenja <b>$1</b> za MediaWiki <b>$3</b>. Vaše preuzimanje će otpočeti automatski za 5 sekundi.  
+	'extdist-created' => "Napravljen je prikaz verzije <b>$2</b> od proširenja <b>$1</b> za MediaWiki <b>$3</b>. Vaše preuzimanje će otpočeti automatski za 5 sekundi.
 
 URL za ovaj prikaz je:
 :$4
@@ -572,7 +571,7 @@ $messages['gl'] = array(
 	'extdist-current-version' => 'Versión actual (trunk)',
 	'extdist-choose-version' => '<big>Está descargando a extensión <b>$1</b>.</big>
 
-Seleccione a súa versión MediaWiki.  
+Seleccione a súa versión MediaWiki.
 
 A maioría das extensións traballan con múltiples versións de MediaWiki, polo que se a súa versión de MediaWiki non está aquí, ou se precisa características da última extensión, probe a usar a versión actual.',
 	'extdist-no-versions' => 'A extensión seleccionada ($1) non está dispoñible en ningunha versión!',
@@ -583,7 +582,7 @@ A maioría das extensións traballan con múltiples versións de MediaWiki, polo
 	'extdist-svn-error' => 'A subversión atopou un erro: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Non se pode procesar o XML de "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar devolveu o código de saída $1:',
-	'extdist-created' => "Unha fotografía da versión <b>$2</b> da extensión <b>$1</b> de MediaWiki <b>$3</b> foi creada. A súa descarga debería comezar automaticamente en 5 segundos.  
+	'extdist-created' => "Unha fotografía da versión <b>$2</b> da extensión <b>$1</b> de MediaWiki <b>$3</b> foi creada. A súa descarga debería comezar automaticamente en 5 segundos.
 
 O enderezo URL desta fotografía é:
 :$4
@@ -853,11 +852,11 @@ Molte estensioni funzionano su più versioni di MediaWiki, quindi se la tua vers
 	'extdist-tar-error' => 'Tar ha restituito il seguente exitcode $1:',
 	'extdist-created' => "Un'istantanea della versione <b>$2</b> dell'estensione <b>$1</b> per MediaWiki <b>$3</b> è stata creata. Il tuo download dovrebbe partire automaticamente fra 5 secondi.
 
-L'URL per questa istantanea è: 
+L'URL per questa istantanea è:
 :$4
 Può essere usato per scaricare immediatamente dal server, ma non aggiungerlo ai Preferiti poiché il contenuto non sarà aggiornato e il collegamento potrebbe essere rimosso successivamente.
 
-L'archivio tar dovrebbe essere estratto nella tua directory delle estensioni. Per esempio, su un sistema operativo di tipo unix: 
+L'archivio tar dovrebbe essere estratto nella tua directory delle estensioni. Per esempio, su un sistema operativo di tipo unix:
 
 <pre>
 tar -xzf $5 -C /var/www/mediawiki/extensions
@@ -994,7 +993,7 @@ $messages['ksh'] = array(
 	'extdist-current-version' => 'De aktoelle Version (<i lang="en">trunk</i>)',
 	'extdist-choose-version' => '<big>Do bes dä Zosatz <b>$1</b> am erunge lade.</big>
 
-Sök Ding Version fun MediaWiki us.  
+Sök Ding Version fun MediaWiki us.
 
 De miißte Zosätz fungxjeneere met diverse Versione fun MediaWiki, alsu falls Ding Version nit dobei es, udder wann de Bedarref häß aan de neuste Müjjeleschkeite un Eijeschaffte, dann versök de aktoelle Version.',
 	'extdist-no-versions' => 'Dä Zosatz „$1“ jitt et nit en alle Versione!',
@@ -1405,7 +1404,7 @@ $messages['ru'] = array(
 	'extdist-current-version' => 'Текущая версия (trunk)',
 	'extdist-choose-version' => '<big>Вы скачиваете расширение <b>«$1»</b>.</big>
 
-Выберите свою версию MediaWiki.  
+Выберите свою версию MediaWiki.
 
 Большинство расширений работают с несколькими версиями MediaWiki, поэтому если установленная у вас версия здесь не приведена, или вам требуются возможности последней версии расширения — попробуйте последнюю версию.',
 	'extdist-no-versions' => 'Выбранное расширение («$1») не доступно ни в одной версии!',
@@ -1568,7 +1567,7 @@ $messages['tl'] = array(
 	'extdist-current-version' => 'Kasulukyang bersyon (baul)',
 	'extdist-choose-version' => "<big>Ikinakarga mo pababa ang <b>$1</b> na karugtong.</big>
 
-Piliin ang iyong bersyon ng MediaWiki.  
+Piliin ang iyong bersyon ng MediaWiki.
 
 Gumagawa sa kahabaan ng maramihang mga bersyon ng MediaWiki ang karamihan sa mga karugtong, kaya't kung ang iyong bersyon ng MediaWiki ay hindi dito, o kung kailangan mo ng isang pinakabagong mga kasangkapang-katangian ng karugtong, subuking gamitin ang pangkasalukuyang bersyon.",
 	'extdist-no-versions' => 'Hindi makukuha mula sa loob ng anumang bersyon ang napiling karugtong na ($1)!',
@@ -1630,7 +1629,7 @@ Pekçok eklenti MedyaVikinin birçok sürümünde çalışır, eğer MedyaViki s
 	'extdist-svn-error' => 'Altsürüm bir hatayla karşılaştı: <pre>$1</pre>',
 	'extdist-svn-parse-error' => '"svn info"daki XML işlenemiyor: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar çıkış kodu $1 geri döndürdü:',
-	'extdist-created' => "<b>$1</b> eklentisinin <b>$2</b> versiyonunun anlık görüntüsü MediaWiki <b>$3</b> için oluşturuldu. İndirmeniz 5 saniye içinde otomatik olarak başlamalıdır.  
+	'extdist-created' => "<b>$1</b> eklentisinin <b>$2</b> versiyonunun anlık görüntüsü MediaWiki <b>$3</b> için oluşturuldu. İndirmeniz 5 saniye içinde otomatik olarak başlamalıdır.
 
 Anlık görüntünün URLsi:
 :$4
@@ -1685,7 +1684,7 @@ L'URL par sta istantanea el xe:
 :$4
 El pode vegner doparà par descargar de boto dal server, ma no stà zontarlo ai Preferiti parché el contenuto no'l vegnarà mia ajornà e el colegamento el podarìa in futuro èssar cavà.
 
-L'archivio tar el dovarìa vegner estrato in te la to cartèla de le estension. Par esenpio, su de un sistema operativo de tipo unix:  
+L'archivio tar el dovarìa vegner estrato in te la to cartèla de le estension. Par esenpio, su de un sistema operativo de tipo unix:
 
 <pre>
 tar -xzf $5 -C /var/www/mediawiki/extensions
@@ -1720,7 +1719,7 @@ $messages['yue'] = array(
 	'extdist-choose-version' => '
 <big>你而家下載緊 <b>$1</b> 擴展。</big>
 
-揀你要嘅 MediaWiki 版本。 
+揀你要嘅 MediaWiki 版本。
 
 多數嘅擴展都可以響多個 MediaWiki 嘅版本度行到，噉如果你嘅 MediaWiki 版本唔響度，又或者你需要最新嘅擴展功能嘅話，試吓用最新嘅版本。',
 	'extdist-no-versions' => '所揀嘅擴展 ($1) 不適用於任何嘅版本！',
@@ -1731,7 +1730,7 @@ $messages['yue'] = array(
 	'extdist-svn-error' => 'Subversion 遇到一個錯誤: <pre>$1</pre>',
 	'extdist-svn-parse-error' => '唔能夠處理 "svn info" 嘅 XML: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar 回應結束碼 $1:',
-	'extdist-created' => "一個可供 MediaWiki <b>$3</b> 用嘅 <b>$1</b> 擴展之 <b>$2</b> 版本嘅映像已經整好咗。你嘅下載將會響5秒鐘之後自動開始。 
+	'extdist-created' => "一個可供 MediaWiki <b>$3</b> 用嘅 <b>$1</b> 擴展之 <b>$2</b> 版本嘅映像已經整好咗。你嘅下載將會響5秒鐘之後自動開始。
 
 呢個映像嘅 URL 係:
 :$4
@@ -1772,7 +1771,7 @@ $messages['zh-hans'] = array(
 	'extdist-choose-version' => '
 <big>您现正下载 <b>$1</b> 扩展。</big>
 
-选择您要的 MediaWiki 版本。 
+选择您要的 MediaWiki 版本。
 
 多数的扩展都可以在多个 MediaWiki 版本上运行，如果您的 MediaWiki 版本不存在，又或者您需要最新的扩展功能的话，可尝试用最新的版本。',
 	'extdist-no-versions' => '所选择扩展 ($1) 不适用于任何的版本！',
@@ -1783,7 +1782,7 @@ $messages['zh-hans'] = array(
 	'extdist-svn-error' => 'Subversion 遇到一个错误: <pre>$1</pre>',
 	'extdist-svn-parse-error' => '不能够处理 "svn info" 之 XML: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar 反应结束码 $1:',
-	'extdist-created' => "一个可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 扩展之 <b>$2</b> 版本的映像已经建立。您的下载将会在5秒钟之后自动开始。 
+	'extdist-created' => "一个可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 扩展之 <b>$2</b> 版本的映像已经建立。您的下载将会在5秒钟之后自动开始。
 
 这个映像的 URL 是:
 :$4
@@ -1824,7 +1823,7 @@ $messages['zh-hant'] = array(
 	'extdist-choose-version' => '
 <big>您現正下載 <b>$1</b> 擴展。</big>
 
-選擇您要的 MediaWiki 版本。 
+選擇您要的 MediaWiki 版本。
 
 多數的擴展都可以在多個 MediaWiki 版本上運行，如果您的 MediaWiki 版本不存在，又或者您需要最新的擴展功能的話，可嘗試用最新的版本。',
 	'extdist-no-versions' => '所選擇擴展 ($1) 不適用於任何的版本！',
@@ -1835,7 +1834,7 @@ $messages['zh-hant'] = array(
 	'extdist-svn-error' => 'Subversion 遇到一個錯誤: <pre>$1</pre>',
 	'extdist-svn-parse-error' => '不能夠處理 "svn info" 之 XML: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar 回應結束碼 $1:',
-	'extdist-created' => "一個可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 擴展之 <b>$2</b> 版本的映像已經建立。您的下載將會在5秒鐘之後自動開始。 
+	'extdist-created' => "一個可供 MediaWiki <b>$3</b> 使用的 <b>$1</b> 擴展之 <b>$2</b> 版本的映像已經建立。您的下載將會在5秒鐘之後自動開始。
 
 這個映像的 URL 是:
 :$4
