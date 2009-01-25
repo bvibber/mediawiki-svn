@@ -437,7 +437,7 @@ class AmazonPlus {
 		foreach ( $extra as $val ) {
 			$msg = wfMsg( $val );
 			if ( $msg == '' ) continue;
-			if ( $i++ != 0 ) $params .= wfMsg( 'amazonplus-status-sep' );
+			if ( $i++ != 0 ) $params .= wfMsg( 'comma-separator' );
 			$params .= $msg;
 		}
 		if ( $params ) $app = ' ' . wfMsg( 'amazonplus-status', $params );
