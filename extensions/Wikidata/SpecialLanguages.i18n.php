@@ -10,14 +10,26 @@ $wdMessages = array();
 /** English
  */
 $wdMessages['en'] = array(
-	'datasearch'                            => 'Wikidata: Data search',
-	'langman_title'                         => 'Language manager',
 	'languages'                             => 'Wikidata: Language manager',
+	'langman_title'                         => 'Language manager',
+	'langman_not_allowed'					=> 'You do not have permission to change language settings.',
+	'langman_header'						=> 'Type the language code and its English name below:',
+	'langman_req_fields'					=> 'Both language name and ISO 639-3 code are required!',
+	'langman_adding'						=> 'Adding language $1 with key $2.',
+	'langman_langname'						=> 'Language name:',
+	'langman_iso639-3'						=> 'ISO 639-3 code:',
+	'langman_iso639-2'						=> 'ISO 639-2 code:',
+	'langman_wikimedia'						=> 'Wikimedia code:',
+	'langman_field_optional'				=> '(optional)',
+	'langman_addlang'						=> 'Add language',
+
 	'importlangnames'						=> 'Wikidata: Import language names',
 	'importlangnames_title'					=> 'Import Language Names',
 	'importlangnames_not_allowed'			=> 'You do not have permission to import language names.',
 	'importlangnames_added'					=> 'Language names for "$1" added.',
 	'importlangnames_not_found'				=> '<strong>No language entry for "$1" found!</strong>',
+
+	'datasearch'                            => 'Wikidata: Data search',
 	'addcollection'							=> 'Wikidata: Add collection',
 	'ow_save'                               => 'Save',
 	'ow_history'                            => 'History',
@@ -142,6 +154,8 @@ Please contact the server operator or administrator.",
  * @author Siebrand
  */
 $wdMessages['qqq'] = array(
+	'langman_header'			=> 'Translate the word "English"; don\'t change it to your own language!',
+	'langman_adding'			=> "$1 is the language name; $2 is the language's ISO 639-3 code.",
 	'ow_save' => '{{Identical|Save}}',
 	'ow_history' => '{{Identical|History}}',
 	'ow_none_selected' => '{{Identical|None selected}}',

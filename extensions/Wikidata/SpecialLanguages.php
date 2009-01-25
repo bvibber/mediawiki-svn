@@ -36,12 +36,12 @@ function wfSpecialManageLanguages() {
 			global $wgOut, $wgRequest, $wgTitle, $wgUser;
 			$wgOut->setPageTitle(wfMsg('langman_title'));
 			if(!$wgUser->isAllowed('addlanguage')) {
-				$wgOut->addHTML('You do not have permission to change language settings.');
+				$wgOut->addHTML(wfMsg('langman_not_allowed'));
 				return false;
 			}
 			$action=$wgRequest->getText('action');
 			if(!$action) {
-				$wgOut->addWikiText('Type the language code and the English name below:');
+				$wgOut->addWikiText(wfMsg('langman_header'));
 			} else {
 				$dbr=&wfGetDB(DB_MASTER);
 				$langname=$wgRequest->getText('langname');
@@ -49,9 +49,9 @@ function wfSpecialManageLanguages() {
 				$langiso6392=$wgRequest->getText('langiso6392');
 				$langwmf=$wgRequest->getText('langwmf');
 				if(!$langname || !$langiso6393) {
-					$wgOut->addHTML('Language name and ISO 639-3 code are required!');
+					$wgOut->addHTML("<strong>" . wfMsg('langman_req_fields') . "</strong>");
 				} else {
-					$wgOut->addHTML('Adding language '.$langname.' with key '.$langiso6393.'.');
+					$wgOut->addHTML("<strong>" . wfMsg('langman_adding', $langname, $langiso6393) . "</strong>");
 					$sql='INSERT INTO language(iso639_2,iso639_3,wikimedia_key) values('.$dbr->addQuotes($langiso6392).','.$dbr->addQuotes($langiso6393).','.$dbr->addQuotes($langwmf).')';
 
 					$dbr->query($sql);
@@ -77,7 +77,9 @@ function wfSpecialManageLanguages() {
 <table border="0">
 <tr>
 <td>
-Language name
+END
+. wfMsg('langman_langname') .
+<<<END
 </td>
 <td>
 <input type="text" size="40" name="langname">
@@ -85,7 +87,9 @@ Language name
 </tr>
 <tr>
 <td>
-ISO 639-3 code (required)
+END
+. wfMsg('langman_iso639-3') .
+<<<END
 </td>
 <td>
 <input type="text" size="8" name="langiso6393">
@@ -93,22 +97,36 @@ ISO 639-3 code (required)
 </tr>
 <tr>
 <td>
-ISO 639-2 code (optional)
+END
+. wfMsg('langman_iso639-2') .
+<<<END
 </td>
 <td>
-<input type="text" size="8" name="langiso6392">
+<input type="text" size="8" name="langiso6392"> 
+END
+. wfMsg('langman_field_optional') .
+<<<END
 </td>
 </tr>
 <tr>
 <td>
-Wikimedia code (optional)
+END
+. wfMsg('langman_wikimedia') .
+<<<END
 </td>
 <td>
-<input type="text" size="4" name="langwmf">
+<input type="text" size="4" name="langwmf"> 
+END
+. wfMsg('langman_field_optional') .
+<<<END
 </td>
 </tr>
 <tr><td>
-<input type="submit" value="Add language">
+<input type="submit" value="
+END
+. wfMsg('langman_addlang') .
+<<<END
+">
 </td></tr>
 </table>
 </form>
