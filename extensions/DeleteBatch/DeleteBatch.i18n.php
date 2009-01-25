@@ -29,7 +29,6 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 	'deletebatch-from-file' => 'from file list',
 	'deletebatch-from-form' => 'from form',
 	'deletebatch-success-subtitle' => 'for $1',
-	'deletebatch-link-back' => 'You can go back to the extension ',
 	'deletebatch-omitting-nonexistant' => 'Omitting non-existing page $1.',
 	'deletebatch-omitting-invalid' => 'Omitting invalid page $1.',
 	'deletebatch-file-bad-format' => 'The file should be plain text',
