@@ -32,7 +32,7 @@ $messages['en'] = array(
 	'openidlogin' => 'Login with OpenID',
 	'openidfinish' => 'Finish OpenID login',
 	'openidserver' => 'OpenID server',
-	'openidxrds' => 'Yadis file',						
+	'openidxrds' => 'Yadis file',
 	'openidconvert' => 'OpenID converter',
 	'openiderror' => 'Verification error',
 	'openiderrortext' => 'An error occured during verification of the OpenID URL.',
@@ -66,9 +66,9 @@ you can choose one from the options below.',
 	'openidchoosefull' => 'Your full name ($1)',
 	'openidchooseurl' => 'A name picked from your OpenID ($1)',
 	'openidchooseauto' => 'An auto-generated name ($1)',
-	'openidchoosemanual' => 'A name of your choice: ',
-	'openidchooseexisting' => 'An existing account on this wiki: ',
-	'openidchoosepassword' => 'password: ',
+	'openidchoosemanual' => 'A name of your choice:',
+	'openidchooseexisting' => 'An existing account on this wiki:',
+	'openidchoosepassword' => 'password:',
 	'openidconvertinstructions' => 'This form lets you change your user account to use an OpenID URL.',
 	'openidconvertsuccess' => 'Successfully converted to OpenID',
 	'openidconvertsuccesstext' => 'You have successfully converted your OpenID to $1.',
@@ -3059,7 +3059,7 @@ $messages['uk'] = array(
 	'openiderror' => 'Помилка перевірки повноважень',
 	'openiderrortext' => 'Під час перевірки адреси OpenID сталася помилка.',
 	'openidconfigerror' => 'Помилка налаштування OpenID',
-	'openidconfigerrortext' => 'Налаштування сховища OpenID для цієї вікі помилкова. 
+	'openidconfigerrortext' => 'Налаштування сховища OpenID для цієї вікі помилкова.
 Будь-ласка, зверніться до [[Special:ListUsers/sysop|адміністратору сайту]].',
 	'openidpermission' => 'Помилка прав доступу OpenID',
 	'openidpermissiontext' => 'Вказаний OpenID не дозволяє увійти на цей сервер.',
@@ -3083,7 +3083,7 @@ $messages['uk'] = array(
 	'openidlanguage' => 'Мова',
 	'openidnotavailable' => 'Зазначений вами псевдонім ($1) вже використовується іншим учасником.',
 	'openidnotprovided' => 'Ваш сервер OpenID не надав псевдонім (чи тому, що він не може, чи тому, що ви вказали не робити цього).',
-	'openidchooseinstructions' => 'Кожен користувач повинен мати псевдонім; 
+	'openidchooseinstructions' => 'Кожен користувач повинен мати псевдонім;
 ви можете вибрати один з представлених нижче.',
 	'openidchoosefull' => "Ваше повне ім'я ($1)",
 	'openidchooseurl' => 'Ім`я, отримане з вашого OpenID ($1)',
@@ -3102,7 +3102,7 @@ $messages['uk'] = array(
 	'tog-hideopenid' => 'Приховувати ваш <a href="http://openid.net/">OpenID</a> на вашій сторінці користувача, якщо ви ввійшли з допомогою OpenID.',
 	'openidnousername' => "Не вказано ім'я користувача.",
 	'openidbadusername' => "Зазначено невірне ім'я користувача.",
-	'openidautosubmit' => 'Ця сторінка містить форму, яка повинна бути автоматично відправлена, якщо у вас включений JavaScript. 
+	'openidautosubmit' => 'Ця сторінка містить форму, яка повинна бути автоматично відправлена, якщо у вас включений JavaScript.
 Якщо цього не сталося, спробуйте натиснути на кнопку «Продовжити».',
 	'openidclientonlytext' => 'Ви не можете використовувати акаунти з цієї вікі, як OpenID на іншому сайті.',
 	'openidloginlabel' => 'Адреса OpenID',
