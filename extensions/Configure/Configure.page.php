@@ -857,7 +857,7 @@ abstract class ConfigurationPage extends SpecialPage {
 
 	/** Show a hidden-by-default search form */
 	protected function buildSearchForm() {
-		$form = wfMsgExt( 'configure-js-search-prompt', 'parseinline' ) . '&nbsp;' . Xml::element( 'input', array( 'id' => 'configure-search-input', 'size' => 45 ) );
+		$form = wfMsgExt( 'configure-js-search-prompt', 'parseinline' ) . wfMsg( 'word-separator' ) . Xml::element( 'input', array( 'id' => 'configure-search-input', 'size' => 45 ) );
 		$form = Xml::tags( 'p', null, $form ) . "\n" . Xml::openElement( 'ul', array('id' => 'configure-search-results') ) . '</ul>';
 		$form = Xml::fieldset( wfMsg( 'configure-js-search-legend' ), $form, array( 'style' => 'display: none;', 'id' => 'configure-search-form' ) );
 		return $form;
