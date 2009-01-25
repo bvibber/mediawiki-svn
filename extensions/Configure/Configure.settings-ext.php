@@ -771,6 +771,11 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:ImageMap',
 	),
 	array(
+		'name' => 'ImportUsers',
+		'file' => 'SpecialImportUsers.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:ImportUsers',
+	),
+	array(
 		'name' => 'Inputbox',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Inputbox',
 	),
@@ -1128,7 +1133,7 @@ $extensions = array(
 			'wgUseCategoryPage' => 'bool',
 			'wgRequireCategory' => 'bool',
 			'wgAllowSimilarTitles' => 'bool',
-			'wgSuggestCategoryRecipient' => 'string',
+			'wgSuggestCategoryRecipient' => 'text',
 			'wgGenericEditPageWhiteList' => 'array',
 		),
 		'array' => array(
