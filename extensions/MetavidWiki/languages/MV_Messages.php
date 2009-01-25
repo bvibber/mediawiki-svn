@@ -191,8 +191,8 @@ Jump to stream view: $2',
 	'mv_basic_text_desc' => 'Text description (optional)',
 
 # search
-	'mv_viewnext' => 'View ($1) ',
-	'mv_viewprevnext' => 'View ($1) ($2) ',
+	'mv_viewnext' => 'View ($1)',
+	'mv_viewprevnext' => 'View ($1) ($2)',
 	'mediasearch' => 'Media search',
 	'mv_search_sel_t' => 'Select search type',
 	'mv_do_media_search' => 'Do Metavid media search for $1',
@@ -252,7 +252,7 @@ Jump to stream view: $2',
 	'mv_welcome_to_sequencer' => '<h3>Welcome to the sequencer demo</h3>
 very <b>limited</b> functionality right now. Click on a Clip to edit that resource',
 	'mv_resource_locator' => 'Resource Locator',
-	'mv_unknown_clipboard_action' => 'Unknown Clipboard Action', 
+	'mv_unknown_clipboard_action' => 'Unknown Clipboard Action',
 
 	'mv_media_search' => 'Media search',
 
@@ -275,7 +275,7 @@ very <b>limited</b> functionality right now. Click on a Clip to edit that resour
 	'mv_sequence_edit_text' => 'Switch to Text Editor',
 	'mv_sequence_edit_visual_editor' => 'Switch to Visual Editor',
 
-	'mv_other_options' => 'Other Options',	
+	'mv_other_options' => 'Other Options',
 	'mv_contextmenu_opt' => 'Enable Context Menus',
 
 
