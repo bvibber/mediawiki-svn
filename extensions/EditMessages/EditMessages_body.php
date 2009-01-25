@@ -29,7 +29,7 @@ class EditMessagesPage extends SpecialPage {
 		$encAction = $this->getTitle()->escapeFullUrl();
 
 		$wgOut->addHTML( "<form method=\"POST\" action=\"$encAction\">" );
-		$wgOut->addHTML( "<p><label>" . wfMsgHtml( 'editmsg-target' ) .
+		$wgOut->addHTML( "<p><label>" . wfMsgHtml( 'editmsg-target' ) . wfMsgHtml( 'word-separator' ) .
 			Xml::element( 'input', array( 'type' => 'text', 'name' => 'messageName',
 				'value' => $messageName, 'size' => 70 ) ) .
 			'</label></p>' );
