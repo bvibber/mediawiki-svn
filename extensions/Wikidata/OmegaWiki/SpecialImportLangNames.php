@@ -23,10 +23,10 @@
 				$dc="uw";
 				require_once('Transaction.php');
 
-				$wgOut->setPageTitle('Import Language Names');
+				$wgOut->setPageTitle(wfMsg('importlangnames_title'));
 
 				if (!$wgUser->isAllowed('languagenames')) {
-					$wgOut->addHTML('You do not have permission to import language names.');
+					$wgOut->addHTML(wfMsg('importlangnames_not_allowed'));
 					return false;
 				}
 
@@ -64,7 +64,7 @@
 							$wgOut->addHTML('<br />' . "\n");
 						else
 							$first = false;
-						$wgOut->addHTML('Language names for "' . $iso_code . '" added.');
+						$wgOut->addHTML(wfMsg('importlangnames_added', $iso_code));
 
 						/* Add current language to list of portals/DMs. */
 						$sql = "SELECT spelling FROM {$dc}_expression" .
@@ -82,7 +82,7 @@
 							$wgOut->addHTML('<br />' . "\n");
 						else
 							$first = false;
-						$wgOut->addHTML('<strong>No language entry for "' . $iso_code . '" found! </strong>');
+						$wgOut->addHTML(wfMsg('importlangnames_not_found', $iso_code));
 						continue;
 					}
 					$lang_id = $this->fetchResult($dbr->fetchRow($lang_id_res));
