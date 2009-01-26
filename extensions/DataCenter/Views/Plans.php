@@ -18,6 +18,7 @@ class DataCenterViewPlans extends DataCenterView {
 				'meta', 'plan', array( 'space', 'tense DESC' )
 			)
 		);
+		$numPlans = DataCenterDB::numPlans();
 		return DataCenterUI::renderLayout(
 			'columns',
 			array(
@@ -32,6 +33,7 @@ class DataCenterViewPlans extends DataCenterView {
 							'table',
 							array(
 								'rows' => $plans,
+								'num' => $numPlans,
 								'fields' => array(
 									'name',
 									'space' => array( 'field' => 'space_name' ),

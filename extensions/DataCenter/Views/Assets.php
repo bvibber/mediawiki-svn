@@ -64,9 +64,11 @@ class DataCenterViewAssets extends DataCenterView {
 					'facility', 'location', 'id',
 					'asset', $path['type'], 'location',
 					array( 'name' => 'location_name' )
-				)
+				),
+				DataCenterDB::buildRange( $path )
 			)
 		);
+		$numAssets = DataCenterDB::numAssets( $path['type'] );
 		// Returns single columm layout with a table
 		return DataCenterUI::renderLayout(
 			'columns',
@@ -87,6 +89,7 @@ class DataCenterViewAssets extends DataCenterView {
 							'table',
 							array(
 								'rows' => $assets,
+								'num' => $numAssets,
 								'fields' => array(
 									'manufacturer',
 									'model' => array( 'field' => 'name' ),
@@ -144,7 +147,7 @@ class DataCenterViewAssets extends DataCenterView {
 						),
 						DataCenterUI::renderWidget(
 							'history',
-							array( 'component' => $asset, 'path' => $path )
+							array( 'component' => $asset )
 						),
 					)
 				),

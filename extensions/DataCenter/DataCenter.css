@@ -84,6 +84,31 @@ div.datacenter-ui div.toolbar div.action-current {
 	padding-left: 6px;
 	padding-right: 6px;
 }
+div.datacenter-ui div.paging img.icon {
+	cursor: pointer;
+}
+div.datacenter-ui div.paging img.icon-disabled {
+	cursor: default;
+}
+div.datacenter-ui div.paging img.first {
+	float: left;
+}
+div.datacenter-ui div.paging img.previous {
+	float: left;
+}
+div.datacenter-ui div.paging img.next {
+	float: right;
+}
+div.datacenter-ui div.paging img.last {
+	float: right;
+}
+div.datacenter-ui div.paging div.label {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 24px;
+	line-height: 24px;
+	color: #999999;
+}
 
 /*
  * Form Widget
@@ -269,7 +294,7 @@ div.datacenter-ui div.widget-body div.important {
 }
 div.datacenter-ui div.widget-body div.important div {
 	min-height: 48px;
-	background-image: url( "Resources/Icons/Important.png" );
+	background-image: url( "Resources/Icons/Dialog/Important.png" );
 	background-position: left center;
 	background-repeat: no-repeat;
 	padding-left: 58px;
@@ -280,7 +305,7 @@ div.datacenter-ui div.widget-body div.error {
 }
 div.datacenter-ui div.widget-body div.error div {
 	min-height: 48px;
-	background-image: url( "Resources/Icons/Error.png" );
+	background-image: url( "Resources/Icons/Dialog/Error.png" );
 	background-position: left center;
 	background-repeat: no-repeat;
 	padding-left: 58px;
@@ -291,7 +316,7 @@ div.datacenter-ui div.widget-body div.notice {
 }
 div.datacenter-ui div.widget-body div.notice div {
 	min-height: 48px;
-	background-image: url( "Resources/Icons/Notice.png" );
+	background-image: url( "Resources/Icons/Dialog/Notice.png" );
 	background-position: left center;
 	background-repeat: no-repeat;
 	padding-left: 58px;
@@ -564,9 +589,7 @@ div.datacenter-ui div.input-position img.navigator {
 /**
  * Gallery Widget
  */
-div.datacenter-ui div.widget-gallery div.heading {
-	font-size: 20px;
-	padding-left: 8px;
+div.datacenter-ui div.widget-gallery div.paging {
 	padding-bottom: 8px;
 }
 div.datacenter-ui div.widget-gallery div.icons {

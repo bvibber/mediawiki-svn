@@ -1285,6 +1285,27 @@ abstract class DataCenterDB {
 		}
 	}
 
+	/**
+	 * Builds array of options which specify limit and offset
+	 * @param	path			Array of link parameters
+	 */
+	public static function buildRange(
+		$path
+	) {
+		if ( !isset( $path['limit'] ) || $path['limit'] == null ) {
+			$path['limit'] = 10;
+		}
+		if ( !isset( $path['offset'] ) || $path['offset'] == null ) {
+			$path['offset'] = 0;
+		}
+		return array(
+			'options' => array(
+				'LIMIT' => (integer)$path['limit'],
+				'OFFSET' => (integer)$path['offset'],
+			)
+		);
+	}
+
 	/* List Builders */
 
 	/**
@@ -1610,6 +1631,25 @@ class DataCenterDBComponent extends DataCenterDBRow {
 		array $options = array()
 	) {
 		return DataCenterDB::getChanges(
+			array_merge_recursive(
+				$options,
+				DataCenterDB::buildCondition(
+					'meta', 'change', 'component_category', $this->category
+				),
+				DataCenterDB::buildCondition(
+					'meta', 'change', 'component_type', $this->type
+				),
+				DataCenterDB::buildCondition(
+					'meta', 'change', 'component_id', $this->getId()
+				)
+			)
+		);
+	}
+
+	public function numChanges(
+		array $options = array()
+	) {
+		return DataCenterDB::numChanges(
 			array_merge_recursive(
 				$options,
 				DataCenterDB::buildCondition(

@@ -62,6 +62,7 @@ class DataCenterPage extends SpecialPage {
 	private static $steps = array(
 		array( 'page', 'type', 'id' ),
 		array( 'action', 'parameter' ),
+		array( 'limit', 'offset' ),
 	);
 
 	/*
@@ -154,7 +155,10 @@ class DataCenterPage extends SpecialPage {
 			if ( isset( $pathParts[$stepIndex] ) ) {
 				$pathSubParts = explode( ':', $pathParts[$stepIndex] );
 				foreach ( $stepParts as $stepPartIndex => $stepPartName ) {
-					if ( isset( $pathSubParts[$stepPartIndex] ) ) {
+					if (
+						isset( $pathSubParts[$stepPartIndex] ) &&
+						 $pathSubParts[$stepPartIndex] != ''
+					) {
 						$splitPos = strpos( $pathSubParts[$stepPartIndex], ',' );
 						if ( $splitPos !== false ) {
 							$path[$stepPartName] = explode(

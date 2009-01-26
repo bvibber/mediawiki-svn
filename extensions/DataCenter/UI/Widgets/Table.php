@@ -28,6 +28,11 @@ class DataCenterWidgetTable extends DataCenterWidget {
 		 */
 		'rows' => array(),
 		/**
+		 * Number of possible rows
+		 * @datatype	integer
+		 */
+		//'num' => null,
+		/**
 		 * Array of field labels and options using self::processFields
 		 * @datatype	array
 		 */
@@ -94,6 +99,21 @@ class DataCenterWidgetTable extends DataCenterWidget {
 		$xmlOutput .= DataCenterXml::open(
 			'table', array( 'border' => 0, 'cellspacing' => 0 )
 		);
+		// Gets current path
+		$path = DataCenterPage::getPath();
+		// Check if number of possible records was given
+		if ( isset( $parameters['num'] )) {
+			// Adds paging
+			$xmlOutput .= DataCenterXml::row(
+				DataCenterXml::cell(
+					array(
+						'colspan' => count( $parameters['fields'] ),
+						'align' => 'right'
+					),
+					parent::buildPaging( $path, $parameters['num'] )
+				)
+			);
+		}
 		// Adds headings
 		foreach( $fields as $label => $options ) {
 			$xmlOutput .= DataCenterXml::headingCell(

@@ -37,7 +37,7 @@ class DataCenterViewFacilities extends DataCenterView {
 						),
 						DataCenterUI::renderWidget(
 							'history',
-							array( 'component' => $facility, 'path' => $path )
+							array( 'component' => $facility )
 						),
 					)
 				),

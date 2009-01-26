@@ -525,6 +525,8 @@ class DataCenterXml {
 				'id' => null,
 				'action' => null,
 				'parameter' => null,
+				'limit' => null,
+				'offset' => null,
 			),
 			$parameters
 		);
@@ -555,10 +557,45 @@ class DataCenterXml {
 						$url .= ':' . $parameters['parameter'];
 					}
 				}
+			} else if ( $parameters['limit'] ) {
+				$url .= '/';
+			}
+			if ( $parameters['limit'] ) {
+				$url .= '/' . $parameters['limit'];
+				if ( $parameters['offset'] ) {
+					$url .= ':' . $parameters['offset'];
+				}
 			}
 		}
 		// Returns url
 		return $url;
+	}
+
+	/**
+	 * Builds an XML string for an icon
+	 * @param	name			Name of icon
+	 * @param	enabled			Boolean of enabled state
+	 * @param	contents		Array of Strings or String of XML or null to
+	 * 							make tag self-closing
+	 */
+	public static function icon(
+		$name,
+		$enabled = true,
+		array $options = array()
+	) {
+		global $wgScriptPath;
+		return Xml::element(
+			'img',
+			array_merge(
+				$options,
+				array(
+					'src' => $wgScriptPath .
+						'/extensions/DataCenter/Resources/Icons/' . $name .
+						( !$enabled ? '-disabled' : '' ) . '.png',
+					'border' => 0
+				)
+			)
+		);
 	}
 
 	/**
@@ -600,9 +637,11 @@ class DataCenterXml {
 	 */
 	public static function buildLink(
 		$options,
-		$row
+		$row = null
 	) {
+		// Checks if row was given
 		if ( isset( $options['page'] ) && $row instanceof DataCenterDBRow ) {
+			// Transforms options based on row
 			$fields = array_merge(
 				$row->get(),
 				array(
@@ -631,16 +670,13 @@ class DataCenterXml {
 					}
 				}
 			}
-			// Builds javascript for linking
-			$jsURL = DataCenterJs::escape(
-				DataCenterXml::url( $options )
-			);
-			// Returns XML attributes for link
-			return array( 'onclick' => "window.location='{$jsURL}'" );
-		} else {
-			// Returns empty array
-			return array();
 		}
+		// Builds javascript for linking
+		$jsURL = DataCenterJs::escape(
+			DataCenterXml::url( $options )
+		);
+		// Returns XML attributes for link
+		return array( 'onclick' => "window.location='{$jsURL}'" );
 	}
 
 	/**
@@ -736,7 +772,95 @@ abstract class DataCenterLayout extends DataCenterRenderable {
 }
 
 abstract class DataCenterWidget extends DataCenterRenderable {
-	// Widget-related functions to be defined...
+
+	/* Static Functions */
+
+	public static function buildPaging(
+		$page,
+		$num
+	) {
+		$range = array( 'limit' => 10, 'offset' => 0 );
+		if ( isset( $page['limit'] ) && $page['limit'] !== null ) {
+			$range['limit'] = $page['limit'];
+		}
+		if ( isset( $page['offset'] ) && $page['offset'] !== null ) {
+			$range['offset'] = $page['offset'];
+		}
+		$icons = array(
+			'first' => array(
+				'name' => 'Navigation/First',
+				'enabled' => true,
+ 			),
+			'previous' => array(
+				'name' => 'Navigation/Previous',
+				'enabled' => true,
+ 			),
+			'last' => array(
+				'name' => 'Navigation/Last',
+				'enabled' => true,
+ 			),
+			'next' => array(
+				'name' => 'Navigation/Next',
+				'enabled' => true,
+ 			),
+		);
+		if ( $num < $range['limit'] ) {
+			$range['offset'] = 0;
+		}
+		if ( $range['offset'] == 0 ) {
+			$icons['first']['enabled'] = false;
+			$icons['previous']['enabled'] = false;
+		}
+		if ( $range['offset'] + $range['limit'] >= $num ) {
+			$icons['next']['enabled'] = false;
+			$icons['last']['enabled'] = false;
+		}
+		$xmlOutput = DataCenterXml::open(
+			'div', array( 'class' => 'paging', 'align' => 'center' )
+		);
+		foreach ( $icons as $icon => $options ) {
+			$attributes = array(
+				'class' => 'icon' . ( !$options['enabled'] ? '-disabled' : '' )
+			);
+			$attributes['class'] .= ' ' . $icon;
+			$iconRange = array( 'limit' => $range['limit']  );
+			if ( $options['enabled'] ) {
+				switch ( $icon ) {
+					case 'first':
+						$iconRange['offset'] = 0;
+						break;
+					case 'previous':
+						$iconRange['offset'] = max(
+							$range['offset'] - $range['limit'], 0
+						);
+						break;
+					case 'next':
+						$iconRange['offset'] = min(
+							$range['offset'] + $range['limit'], $num - 1
+						);
+						break;
+					case 'last':
+						$iconRange['offset'] = $num - $range['limit'];
+						break;
+				}
+				$attributes = array_merge(
+					$attributes, DataCenterXml::buildLink(
+						array_merge( $page, $iconRange )
+					)
+				);
+			}
+			$xmlOutput .= DataCenterXml::icon(
+				$options['name'], $options['enabled'], $attributes
+			);
+		}
+		$xmlOutput .= DataCenterXml::div(
+			array( 'class' => 'label' ),
+			DataCenterUI::message( 'label', 'range', $num )
+		);
+		$xmlOutput .= DataCenterXml::close( 'div' );
+		return $xmlOutput;
+	}
+
 }
 
 class DataCenterUI {
@@ -809,7 +933,11 @@ class DataCenterUI {
 		$name,
 		$arguments = null
 	) {
-		return wfMsg( "datacenter-ui-{$type}-{$name}", $arguments );
+		return wfMsgExt(
+			"datacenter-ui-{$type}-{$name}",
+			array( 'parsemag' ),
+			$arguments
+		);
 	}
 
 	/**
@@ -899,7 +1027,7 @@ class DataCenterUI {
 	 */
 	public static function renderWidget(
 		$name,
-		$parameters = array()
+		array $parameters = array()
 	) {
 		if ( isset( self::$widgets[$name] ) ) {
 			$function = array( self::$widgets[$name], 'render' );
@@ -921,7 +1049,7 @@ class DataCenterUI {
 	 */
 	public static function renderInput(
 		$name,
-		$parameters = array()
+		array $parameters = array()
 	) {
 		if ( isset( self::$inputs[$name] ) ) {
 			$function = array( self::$inputs[$name], 'render' );
@@ -943,7 +1071,7 @@ class DataCenterUI {
 	 */
 	public static function renderLayout(
 		$name,
-		$contents
+		array $contents = array()
 	) {
 		if ( isset( self::$layouts[$name] ) ) {
 			$function = array( self::$layouts[$name], 'render' );

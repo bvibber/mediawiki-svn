@@ -28,10 +28,10 @@ class DataCenterWidgetHistory extends DataCenterWidget {
 		 */
 		'component' => null,
 		/**
-		 * Current Path
-		 * @datatype	array
+		 * Range of records to show
+		 * @datatype	integer
 		 */
-		'path' => null,
+		'paging' => array( 'limit' => 10, 'offset' => 0 ),
 	);
 
 	private static $defaultAttributes = array(
@@ -68,6 +68,14 @@ class DataCenterWidgetHistory extends DataCenterWidget {
 		 */
 		'buttons' => array(
 			'class' => 'buttons',
+			'align' => 'right',
+			'colspan' => 6
+		),
+		/**
+		 * Default XML attributes for paging cell
+		 */
+		'paging' => array(
+			'class' => 'paging',
 			'align' => 'right',
 			'colspan' => 6
 		),
@@ -210,12 +218,19 @@ class DataCenterWidgetHistory extends DataCenterWidget {
 			// Ends table
 			$xmlOutput .= DataCenterXml::close( 'table' );
 		} else {
+			// Gets current path
+			$path = DataCenterPage::getPath();
 			// Gets history of component from database
 			$changes = $parameters['component']->getChanges(
-				DataCenterDB::buildSort(
-					'meta', 'change', array( 'timestamp DESC' )
+				array_merge_recursive(
+					DataCenterDB::buildSort(
+						'meta', 'change', array( 'timestamp DESC' )
+					),
+					DataCenterDB::buildRange( $path )
 				)
 			);
+			// Gets number of changes fromd database
+			$numChanges = $parameters['component']->numChanges();
 			// Use blank user name if none is set
 			foreach ( $changes as $change ) {
 				if ( $change->get( 'user' ) == 0 ) {
@@ -230,13 +245,20 @@ class DataCenterWidgetHistory extends DataCenterWidget {
 				'id' => 'form_history',
 				'name' => 'form_history',
 				'method' => 'post',
-				'action' => DataCenterXml::url( $parameters['path'] ),
+				'action' => DataCenterXml::url( $path ),
 			);
 			// Begins form
 			$xmlOutput .= DataCenterXml::open( 'form', $formAttributes );
 			// Begins table
 			$xmlOutput .= DataCenterXml::open(
 				'table', self::$defaultAttributes['table']
+			);
+			// Adds paging
+			$xmlOutput .= DataCenterXml::row(
+				DataCenterXml::cell(
+					self::$defaultAttributes['paging'],
+					parent::buildPaging( $path, $numChanges )
+				)
 			);
 			// Adds headings
 			$xmlOutput .= DataCenterXml::row(

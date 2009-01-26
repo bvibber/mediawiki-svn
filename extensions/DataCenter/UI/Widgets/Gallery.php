@@ -63,6 +63,8 @@ class DataCenterWidgetGallery extends DataCenterWidget {
 		);
 		// Begins widget
 		$xmlOutput = parent::begin( $parameters['class'] );
+		// Gets current path
+		$path = DataCenterPage::getPath();
 		// Begins icons
 		$xmlOutput .= DataCenterXml::open( 'div', array( 'class' => 'icons' ) );
 		// Loops over each row

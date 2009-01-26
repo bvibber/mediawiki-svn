@@ -138,7 +138,7 @@ class DataCenterViewModels extends DataCenterView {
 		// Gets all components from database
 		$models = DataCenterDB::getModels(
 			$path['type'],
-			dataCenterDB::buildSort(
+			DataCenterDB::buildSort(
 				'model',
 				$path['type'],
 				self::$options[$path['type']]['sort']
@@ -215,7 +215,7 @@ class DataCenterViewModels extends DataCenterView {
 						),
 						DataCenterUI::renderWidget(
 							'history',
-							array( 'component' => $model, 'path' => $path )
+							array( 'component' => $model )
 						),
 					)
 				),

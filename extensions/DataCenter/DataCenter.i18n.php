@@ -156,12 +156,13 @@ $messages['en'] = array(
 	'datacenter-ui-label-add' => 'Add',
 	'datacenter-ui-label-add-type' => 'Add $1',
 	'datacenter-ui-label-browse-by' => 'Browse by:',
-	'datacenter-ui-label-num-spaces' => '$1 {{PLURAL:$1|Spaces|Space}}',
-	'datacenter-ui-label-num-uses' => '$1 {{PLURAL:$1|uses|use}}',
+	'datacenter-ui-label-num-spaces' => '$1 {{PLURAL:$1|space|spaces}}',
+	'datacenter-ui-label-num-uses' => '$1 {{PLURAL:$1|use|uses}}',
 	'datacenter-ui-label-degrees-value' => '$1&deg;',
 	'datacenter-ui-label-change-state-row' => 'Core Fields',
 	'datacenter-ui-label-change-state-meta' => 'Meta Fields',
 	'datacenter-ui-label-change-blank-user' => 'System',
+	'datacenter-ui-label-range' => '$1 {{PLURAL:$1|item|items}}',
 	// Defaults
 	'datacenter-ui-default-new-type' => 'New $1',
 	// List Headings
