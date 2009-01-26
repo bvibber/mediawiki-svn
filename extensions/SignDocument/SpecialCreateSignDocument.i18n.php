@@ -30,8 +30,9 @@ Please also be sure that you specify all fields exactly as they should be, ''bef
 	'createsigndoc-error-generic'=> 'Error: $1',
 	'createsigndoc-error-pagenoexist' => 'Error: The page [[$1]] does not exist.',
 	'createsigndoc-success'      => 'Document signing has been successfully enabled on [[$1]].
-To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
-	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.'
+You can [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} test it].',
+	'createsigndoc-error-alreadycreated' => 'Document signing "$1" already exist.
+This cannot be done a second time.'
 );
 
 /** Message documentation (Message documentation)
@@ -91,7 +92,7 @@ $messages['ar'] = array(
 
 <b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
 إنشائها</b> بدون دخول قاعدة البيانات مباشرة.
-إضافة إلى ذلك، نص الصفحة 
+إضافة إلى ذلك، نص الصفحة
 المعروض في صفحة التوقيع سيكون النص ''الحالي'' للصفحة، بغض النظر عن
 التغييرات بها بعد اليوم.
 من فضلك كن متأكدا تماما من أن الوثيقة وصلت لنقطة ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت كل الحقول تماما كما يجب أن تكون، ''قبل تنفيذ هذه الاستمارة''.",
@@ -132,7 +133,7 @@ $messages['arz'] = array(
 
 <b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
 إنشائها</b> بدون دخول قاعدة البيانات مباشرة.
-إضافة إلى ذلك، نص الصفحة 
+إضافة إلى ذلك، نص الصفحة
 المعروض فى صفحة التوقيع سيكون النص ''الحالي'' للصفحة، بغض النظر عن
 التغييرات بها بعد اليوم.
 من فضلك كن متأكدا تماما من أن الوثيقة وصلت لنقطة ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت كل الحقول تماما كما يجب أن تكون، ''قبل تنفيذ هذه الاستمارة''.",
@@ -767,7 +768,7 @@ $messages['ksh'] = array(
 Dodoför weed och ene Ungerschreffte-Mapp för die Sigg aanjelaat.
 Jiff dä Tittel fun dä Sigg aan, woh De et dijjitaale Ungerschriive zohlohße wells. Dozoh, de Metjleeder fun wat för ene Metmaacherjrupp ungerschriive dörrve sulle. Dann, wat för en Felder för de Metmaachere bejm Ungerschriive zom Ußfölle ze sin sin sulle, un wat dofun ußjeföllt wääde kann, un wat moß. Dann, wi alt Eine beim Ungerschriive winnischßdens sin moß. Wann De doh nix aanjiß, dann eß jedes Allder rääsch. Zoletz jiff ene koote Tex en, met Äklieronge dren övver dat Dokkemänt, un för de Metmaachere, wat se donn sulle, un wie.
 
-<b>För der Momang ham_mer kein Müjjeleshkeit, aan de Ungerschreffte jet ze änndere, wann se ens do sinn</b>, oohne ne tirekte Zohjang op de Dahtebangk. 
+<b>För der Momang ham_mer kein Müjjeleshkeit, aan de Ungerschreffte jet ze änndere, wann se ens do sinn</b>, oohne ne tirekte Zohjang op de Dahtebangk.
 Ußerdämm, dä Täx zom Ungerschriive, dä och met dä Ongerschreffte zosamme jezeish weedt, is immer dä Täx fun jätz, jans ejaal, wat donoh noch för Änderunge aan dä Sigg jemaat wäde odder woodte. Dröm beß jannz secher, dat dat Dokkemänt en dä Sigg en enem shtabiile Zohshtand, un werklesch parraat för et Ungeschriive eß.
 Beß och sescher, dat De all die Felder jenou esu aanjejovve häs, wi se sin sulle, ih dat De dat Fommulaa hee affschecks.',
 	'createsigndoc-pagename' => 'Sigg:',
@@ -965,7 +966,7 @@ $messages['nn'] = array(
 	'createsigndoc-create' => 'Opprett',
 	'createsigndoc-error-generic' => 'Feil: $1',
 	'createsigndoc-error-pagenoexist' => 'Feil: Sida [[$1]] finst ikkje.',
-	'createsigndoc-success' => 'Dokumentsignering har blitt slege på for [[$1]]. 
+	'createsigndoc-success' => 'Dokumentsignering har blitt slege på for [[$1]].
 For å testa det, vitj [{{fullurl:Special:SignDocument|doc=$2}} denne sida].',
 	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringa «$1» finst frå før.',
 );
@@ -1002,7 +1003,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'createsigndocument' => "Activar l'autentificacion dels documents",
 	'createsigndoc-head' => "Utilizatz aqueste formulari per crear una pagina d'autentificacion de documents per l'article en question, de biais que cada utilizaire serà capable d'autentificar via [[Special:SignDocument|Signit]].
-Mercés d'indicar lo nom de l'article pelquin desiratz activar la foncion, los membres del grop d'utilizaires, quins camps seràn accessibles als utilizaires (seràn opcionals), l'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d'instruccions als utilizaires. 
+Mercés d'indicar lo nom de l'article pelquin desiratz activar la foncion, los membres del grop d'utilizaires, quins camps seràn accessibles als utilizaires (seràn opcionals), l'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d'instruccions als utilizaires.
 
 <b>Presentadament, i a pas cap de mejan d'escafar los documents un còp creats</b>, al despart en editant la banca de donadas del wiki. E mai, lo tèxt de l'article afichat sus la pagina autentificada serà lo tèxt ''corrent'', pauc impòrta las modificacions fachas de per aprèp. Per aquesta rason, siatz segur que lo document es sufisentament estable per èsser autentificat e, ''abans de sometre lo formulari'', verificatz qu'avètz plan causit los camps tals coma desiratz que sián.",
 	'createsigndoc-pagename' => 'Pagina :',
@@ -1053,18 +1054,18 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'createsigndocument' => 'Visché la firma digital ëd na pàgina coma document',
-	'createsigndoc-head' => "Ch'a dòvra la domanda ambelessì sota për visché l'opsion ëd 'Firma Digital' ëd n'artìcol, ch'a lassa che j'utent a peulo firmé ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]]. 
+	'createsigndoc-head' => "Ch'a dòvra la domanda ambelessì sota për visché l'opsion ëd 'Firma Digital' ëd n'artìcol, ch'a lassa che j'utent a peulo firmé ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].
 
 Për piasì, ch'an buta:
-*ël nòm dl'artìcol andova ch'a veul visché la fonsion ëd firma digital, 
-*ij component ëd che partìa d'utent ch'a resto aotorisà a firmé, 
-*che camp ch'a debio smon-se a j'utent e coj ch'a debio resté opsionaj, 
-*n'eta mìnima përché n'utent a peula firmé (a peulo tuti s'a buta nen ël mìnim), 
-*un cit ëspiegon ch'a disa lòn ch'a l'é ës document e ch'a-j disa a j'utent coma fé. 
+*ël nòm dl'artìcol andova ch'a veul visché la fonsion ëd firma digital,
+*ij component ëd che partìa d'utent ch'a resto aotorisà a firmé,
+*che camp ch'a debio smon-se a j'utent e coj ch'a debio resté opsionaj,
+*n'eta mìnima përché n'utent a peula firmé (a peulo tuti s'a buta nen ël mìnim),
+*un cit ëspiegon ch'a disa lòn ch'a l'é ës document e ch'a-j disa a j'utent coma fé.
 
 Anans che dovré sossì ch'a ten-a present che:
-#<b>Për adess a-i é gnun-a manera dë scancelé ò modifiché ij document ch'as mando an firma, na vira ch'a sio stait creà</b> sensa dovej travajé ant sla base dat da fòra. 
-#Ël test smonù ant sla pàgina an firma a resta col ëd quand as anandio a cheuje le firme, donca la version ''corenta'' al moment ch'as fa sossì, e qualsëssìa modìfica ch'as fasa peuj '''an firma a la riva pì nen'''. 
+#<b>Për adess a-i é gnun-a manera dë scancelé ò modifiché ij document ch'as mando an firma, na vira ch'a sio stait creà</b> sensa dovej travajé ant sla base dat da fòra.
+#Ël test smonù ant sla pàgina an firma a resta col ëd quand as anandio a cheuje le firme, donca la version ''corenta'' al moment ch'as fa sossì, e qualsëssìa modìfica ch'as fasa peuj '''an firma a la riva pì nen'''.
 
 Për piasì, ch'a varda d'avej controlà sò test coma ch'as dev anans che mandelo an firma, e ch'a varda che tuti ij camp a sio coma ch'a-j ven-o bin a chiel, ''anans dë mandé la domanda''.",
 	'createsigndoc-pagename' => 'Pàgina:',
@@ -1214,7 +1215,7 @@ používateľom inštrukcie.
 
 <b>Momentálne neexistuje spôsob ako zmazať alebo zmeniť podpisované dokumenty potom, ako boli vytvorené</b> bez použitia priameho prístupu do databázy.
 Naviac text stránky zobrazený na stránke podpisov bude ''aktuálny'' text stránky, nezávisle na zmenách, ktoré v ňom od dnes nastanú.
-Prosím, buďte si absolútne istý, že dokument je stabilný, keď ho podpisujete. 
+Prosím, buďte si absolútne istý, že dokument je stabilný, keď ho podpisujete.
 Tiež si prosím buďte istý, že uvádzate všetky polia presne ako by mali byť ''predtým než odošlete formulár''.",
 	'createsigndoc-pagename' => 'Stránka:',
 	'createsigndoc-allowedgroup' => 'Povolená skupina:',
@@ -1340,8 +1341,8 @@ $messages['tg-cyrl'] = array(
 $messages['tl'] = array(
 	'createsigndocument' => 'Paganahin/paandarin ang paglalagda sa kasulatan (dokumento)',
 	'createsigndoc-head' => "Gamitin ang pormularyong ito upang makalikha ng isang pahinang 'Lagdaan ang pahina' (lumagda sa pahina) para sa ibinigay na pahina, upang magkaroon ng kakayahan ang mga tagagamit na [[Special:SignDocument|malagdaan ito]].
-Pakitukoy ang pangalan ng pahina kung saan mo ibig paganahin/paandarin ang paglagda sa paraang dihital, kung anong pangkat ng tagagamit ang dapat pahintulutang lagdaan ito, kung anong mga hanay ang nais mong matanaw ng mga tagagamit at kung alin ang maaaring wala o hindi talaga kailangang mayroon, isang pinakamababang gulang/edad na dapat mayroon ang mga tagagamit upang makalagda sa kasulatan/dokumento (walang pinakamababa kapag hindi isinali/nakaligtaan); 
-at isang maiksing teksto ng pagpapakilala/pambungad na naglalarawan sa kasulatan/dokumento at nagbibigay ng mga pagtuturo/panuto sa mga tagagamit. 
+Pakitukoy ang pangalan ng pahina kung saan mo ibig paganahin/paandarin ang paglagda sa paraang dihital, kung anong pangkat ng tagagamit ang dapat pahintulutang lagdaan ito, kung anong mga hanay ang nais mong matanaw ng mga tagagamit at kung alin ang maaaring wala o hindi talaga kailangang mayroon, isang pinakamababang gulang/edad na dapat mayroon ang mga tagagamit upang makalagda sa kasulatan/dokumento (walang pinakamababa kapag hindi isinali/nakaligtaan);
+at isang maiksing teksto ng pagpapakilala/pambungad na naglalarawan sa kasulatan/dokumento at nagbibigay ng mga pagtuturo/panuto sa mga tagagamit.
 
 <b>Sa pangkasalukuyan, walang kaparaanan upang mabura o mabago pa ang mga kasulatang may lagda na makaraang malikha/likhain sila</b> na hindi tuwirang pinupuntahan ang kalipunan ng dato.
 Bilang karagdagan, ang teksto ng pahinang nakalitaw/ipinapakita sa pahina ng lagda ay ang ''pangkasalukuyang'' teksto ng pahina, sa kabila ng lahat ng mga pagbabagong ginawa rito makalipas mula sa araw na ito.
