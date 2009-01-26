@@ -175,7 +175,7 @@ function do_stream_insert( $mode, $stream_name = '' ) {
 		// init the stream
 		$MVStreams[$stream->name] = new MV_Stream( $stream );
 		// check if the stream has already been added to the wiki (if not add it)
-		$mvTitle = new MV_Title( 'MvStream:' . $stream->name );
+		$mvTitle = new MV_Title( 'Stream:' . $stream->name );
 		if ( !$mvTitle->doesStreamExist() ) {
 			// print 'do stream desc'."\n";
 			do_add_stream( $mvTitle, $stream );
@@ -463,7 +463,7 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 	$res = $dbr->query($sql);
 	//echo "\n" . $sql . "\n";
 	$stream = $dbr->fetchObject($res);*/
-	$stream_id = $stream->id;
+	//$stream_id = $stream->id;
 	$out = '';	
 	//(if we have old version of stream copy over is properties) 
 	if( isset( $stream->org_start_time ) )
@@ -495,78 +495,80 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 	$dbw = wfGetDB( DB_WRITE );
 	
 	//clear out existing archive.org files for the current stream			
-	$sql = "DELETE FROM  `mv_stream_files` WHERE `stream_id`='{$stream->id}' AND `file_desc_msg` LIKE 'ao_file_%' LIMIT 10";
-	$dbw->query( $sql );
-	print "removed existing archive.org files for $stream->name \n";
-			
-	if ( $stream->archive_org != '' ) {
-		// grab file list from archive.org:
-		require_once( 'scrape_and_insert.inc.php' );
-		$aos = new MV_ArchiveOrgScrape();
-		
-		$file_list = $aos->getFileList( $stream->name );
-		if($file_list===false || count($file_list)==0) {
-			print 'no files on archive.org for'. $stream->name ."\n\n";
-			return '';
-		}
-		$out .= '==More Media Sources==' . "\n";
-		// all streams have congretional cronical:
-		$out .= '*[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type .
-		' CSPAN\'s Congressional Chronicle]' . "\n";
-		
-		if ( $file_list ) {					
-			$out .= '*[http://www.archive.org/details/mv_' . $stream->name . 
-			' Archive.org hosted version]' . "\n";
-			// also output 'direct' semantic links to alternate file qualities:
-			$out .= "\n===Full File Links===\n";		
-			$found_ogg=false;
-			foreach ( $file_list as $file ) {
-				$name = str_replace( ' ', '_', $file[2] );
-				$url = 'http://archive.org'.$file[1];
-				$size = $file[3];		
-										
-				// add these files into the mv_files table:
-				// @@todo in the future we should tie the mv_files table to the semantic properties.
-				// check if already present:
-				
-				$quality_msg = 'ao_file_' . $name;
-				
-				if($name=='Ogg_Video'){
-					$found_ogg=true;
-				}
-				$path_type = 'url_file';
-				if($found_ogg && $name=='512Kb_MPEG4'){
-					$quality_msg = 'mv_archive_org_mp4';
-					$path_type = 'mp4_stream';
-				}
-				//print "found ogg $found_ogg name: $name  qm:$quality_msg\n";
+	//$sql = "DELETE FROM  `mv_stream_files` WHERE `stream_id`='{$stream->id}' AND `file_desc_msg` LIKE 'ao_file_%' LIMIT 10";
+	//$dbw->query( $sql );
+	//print "removed existing archive.org files for $stream->name \n";
 
-				//output stream to wiki text: 
-				$out .= "*[{$url} $name] {$size}\n";	
-				
-				$dbr = wfGetDB( DB_SLAVE );
-				$res = $dbr->query( "SELECT * FROM `mv_stream_files`
-						WHERE `stream_id`={$mvTitle->getStreamId()}
-						AND `file_desc_msg`='{$quality_msg}'" );
-				if ( $dbr->numRows( $res ) == 0 ) {
-					$sql = "INSERT INTO `mv_stream_files` (`stream_id`,`duration`, `file_desc_msg`, `path_type`, `path`)" . 
-					" VALUES ('{$mvTitle->getStreamId()}','{$mvTitle->getDuration()}', '{$quality_msg}', '{$path_type}','{$url}' )";
-				} else {
-					$row = $dbr->fetchObject( $res );
-					// update that msg key *just in case*
-					$sql = "UPDATE  `mv_stream_files` SET `path_type`='{$path_type}', `path`='$url' WHERE `id`={$row->id}";
-				}
-				$dbw->query( $sql );
+	//just do a forced link to the archive.org details page
+	//if ( $stream->archive_org != '' ) {
+	// grab file list from archive.org:
+	//require_once( 'scrape_and_insert.inc.php' );
+	//$aos = new MV_ArchiveOrgScrape();
+	
+	//$file_list = $aos->getFileList( $stream->name );
+	//if($file_list===false || count($file_list)==0) {
+	//	print 'no files on archive.org for'. $stream->name ."\n\n";
+	//	return '';
+	//}
+	$out .= '==More Media Sources==' . "\n";
+	// all streams have congretional cronical:
+	$out .= '*[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type .
+	' CSPAN\'s Congressional Chronicle]' . "\n";
+	
+	//if ( $file_list ) {					
+		$out .= '*[http://www.archive.org/details/mv_' . $stream->name . 
+		' Archive.org hosted version]' . "\n";
+		// also output 'direct' semantic links to alternate file qualities:
+		/*$out .= "\n===Full File Links===\n";		
+		$found_ogg=false;
+		foreach ( $file_list as $file ) {
+			$name = str_replace( ' ', '_', $file[2] );
+			$url = 'http://archive.org'.$file[1];
+			$size = $file[3];		
+									
+			// add these files into the mv_files table:
+			// @@todo in the future we should tie the mv_files table to the semantic properties.
+			// check if already present:
+			
+			$quality_msg = 'ao_file_' . $name;
+			
+			if($name=='Ogg_Video'){
+				$found_ogg=true;
 			}
-			$dbw->commit();
-			// more semantic properties
-			$out .= "\n\n";
-			$out .= '[[stream_duration::' . ( $mvTitle->getDuration() ) . '| ]]' . "\n";
-			if ( $stream->date_start_time ) {
-				$out .= '[[original_date::' . $stream->date_start_time . '| ]]';
+			$path_type = 'url_file';
+			if($found_ogg && $name=='512Kb_MPEG4'){
+				$quality_msg = 'mv_archive_org_mp4';
+				$path_type = 'mp4_stream';
 			}
+			//print "found ogg $found_ogg name: $name  qm:$quality_msg\n";
+
+			//output stream to wiki text: 
+			$out .= "*[{$url} $name] {$size}\n";	
+			
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->query( "SELECT * FROM `mv_stream_files`
+					WHERE `stream_id`={$mvTitle->getStreamId()}
+					AND `file_desc_msg`='{$quality_msg}'" );
+			if ( $dbr->numRows( $res ) == 0 ) {
+				$sql = "INSERT INTO `mv_stream_files` (`stream_id`,`duration`, `file_desc_msg`, `path_type`, `path`)" . 
+				" VALUES ('{$mvTitle->getStreamId()}','{$mvTitle->getDuration()}', '{$quality_msg}', '{$path_type}','{$url}' )";
+			} else {
+				$row = $dbr->fetchObject( $res );
+				// update that msg key *just in case*
+				$sql = "UPDATE  `mv_stream_files` SET `path_type`='{$path_type}', `path`='$url' WHERE `id`={$row->id}";
+			}
+			$dbw->query( $sql );
 		}
-	}
+		$dbw->commit();
+		*/
+		// more semantic properties
+		$out .= "\n\n";
+		$out .= '[[stream_duration::' . ( $mvTitle->getDuration() ) . '| ]]' . "\n";
+		if ( $stream->date_start_time ) {
+			$out .= '[[original_date::' . $stream->date_start_time . '| ]]';
+		}
+		//}
+	//}
 	// add stream category (based on sync status)
 	//(only add if the wiki page does not exist)
 	$wStreamTitle = Title::newFromText($stream->name, MV_NS_STREAM);
@@ -583,11 +585,7 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 				// other options [stream high quality sync ];
 			break;
 		}
-	}
-	// add in semantic stream properties
-	//$out = mv_proccess_attr( 'stream_attr_varchar', $stream_id );
-	//$out .= mv_proccess_attr( 'stream_attr_int', $stream_id );
-	
+	}	
 	return $out;
 }
 function do_bill_insert( $bill_key ) {
