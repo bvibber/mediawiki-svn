@@ -27,6 +27,12 @@ $2",
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'userrightsnotifybody' => '* $1 is the recipient
+* $2 is the sitename
+* $3 is the user that made the change that is notified for
+* $4 is a timestamp in the content language
+* $5 are the groups that have been added
+* $6 are the groups that have been removed',
 	'userrightsnotif-desc' => 'Short description of the Userrightsnotif extension, shown in [[Special:Version]].',
 );
 
@@ -144,6 +150,7 @@ $2",
  * @author CERminator
  */
 $messages['bs'] = array(
+	'userrightsnotifysubject' => 'Članstvo grupe se promijenilo na $1',
 	'userrightsnotifybody' => 'Zdravo $1,
 
 Ovo je poruka koja Vas obavještava da je Vaše članstvo u grupi od $2 promijenjeno od strane korisnika $3 dana $4.

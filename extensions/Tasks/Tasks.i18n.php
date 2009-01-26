@@ -1689,7 +1689,7 @@ $messages['nn'] = array(
 	'tasks_close' => 'Lukk oppgåve',
 	'tasks_wontfix' => 'Kan ikkje ordne',
 	'tasks_delete' => 'Slett',
-	'tasks_no_task_delete_title' => 'Ikkje tillete',
+	'tasks_no_task_delete_title' => 'Ikkje tillate',
 	'tasks_no_task_delete_texe' => 'Du har ikkje løyve til å slette ei oppgåve. Berre administratorar kan gjere dette.',
 	'tasks_action_delete' => 'Ei oppgåve vart sletta.',
 	'tasks_task_was_deleted' => 'Oppgåva vart sletta.',
@@ -1736,11 +1736,12 @@ $messages['nn'] = array(
 	'tasks_action_open' => 'Oppgåve "$1" opna.',
 	'tasks_action_assigned' => 'Opggåva "$1" er tildelt.',
 	'tasks_action_closed' => 'Oppgåve "$1" lukka.',
-	'tasks_action_wontfix' => 'Vil ikkje retta oppgåva "$1".',
+	'tasks_action_wontfix' => 'Vil ikkje retta oppgåva «$1».',
 	'tasks_sign_delete' => '<b>Det har komme ein førespurnad om at denne sida blir sletta.</b>',
 	'tasks_logpage' => 'Oppgåvelogg',
 	'tasks_logpagetext' => 'Dette er ein logg over endringar i oppgåver.',
 	'tasks_logentry' => 'For "[[$1]]"',
+	'tog-show_task_comments' => 'Inkluder kommentarsida for oppgåver.',
 );
 
 /** Occitan (Occitan)

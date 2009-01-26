@@ -116,6 +116,8 @@ $messages['ar'] = array(
 	'importusers-password' => 'كلمة السر',
 	'importusers-email' => 'البريد الإلكتروني',
 	'importusers-realname' => 'الاسم الحقيقي',
+	'right-import_users' => 'استيراد المستخدمين بشكل كمي',
+	'action-import_users' => 'استيراد المستخدمين بشكل كمي',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -792,6 +794,8 @@ $messages['ksh'] = array(
 	'importusers-password' => 'Paßwoot',
 	'importusers-email' => '<i lang="en">e-mail</i>',
 	'importusers-realname' => 'Dinge richtije Name',
+	'right-import_users' => 'Date övver Metmaachere em  Knubbel empotteere',
+	'action-import_users' => 'Metmaacher ier Date em Knubbel ze empotteere',
 );
 
 /** Latin (Latina)
@@ -964,6 +968,8 @@ $messages['nn'] = array(
 	'importusers-password' => 'passord',
 	'importusers-email' => 'e-post',
 	'importusers-realname' => 'verkeleg namn',
+	'right-import_users' => 'Importera fleire brukarar samstundes',
+	'action-import_users' => 'importer fleire brukarar samstundes',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

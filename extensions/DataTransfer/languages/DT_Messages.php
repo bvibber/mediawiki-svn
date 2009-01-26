@@ -161,6 +161,7 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'dt-desc' => 'Omogućuje uvoz i izvoz struktuiranih podataka koje sadržane u pozivima šablona',
 	'viewxml' => 'Pregledaj XML',
+	'dt_viewxml_docu' => 'Molimo Vas odaberite unutar slijedećih kategorija i imenskih prostora za pregled u XML formatu.',
 	'dt_viewxml_categories' => 'Kategorije',
 	'dt_viewxml_namespaces' => 'Imenski prostori',
 	'dt_viewxml_simplifiedformat' => 'Pojednostavljeni format',
@@ -169,6 +170,7 @@ $messages['bs'] = array(
 	'dt_xml_field' => 'Polje',
 	'dt_xml_name' => 'Naziv',
 	'dt_xml_title' => 'Naslov',
+	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Slobodni tekst',
 );
 

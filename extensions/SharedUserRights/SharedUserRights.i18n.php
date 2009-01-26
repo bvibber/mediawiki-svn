@@ -133,6 +133,17 @@ $messages['gl'] = array(
 	'gblrights-rights-entry' => 'cambiou o grupo global ao que pertence "$1" de $2 a $3',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'shareduserrights' => 'Gmeinsami Benutzerrächtverwaltig',
+	'gblrights-desc' => 'Eifachi [[Special:SharedUserRights|wältwyti Benutzerrächtverwaltig]]',
+	'gblrights-logpage' => 'Wältwyt Rächt-Logbuech',
+	'gblrights-pagetext' => 'In däm Logbuech het s alli Änderige, wu an dr wältwyte Rächttabälle vu dr Wikifamilie gmacht wore sin.',
+	'gblrights-rights-entry' => 'het di wältwyt Gruppezuegherigkeit fir $1 vu $2 uf $3 gänderet',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

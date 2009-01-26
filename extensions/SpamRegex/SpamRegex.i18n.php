@@ -876,6 +876,7 @@ Zorg dat de uitdrukkingen niet te kort of veelvoorkomend zijn.',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
@@ -906,6 +907,7 @@ $messages['nn'] = array(
 	'spamregex-block-submit' => 'Blokker&nbsp;dette&nbsp;uttrykket',
 	'spamregex-text' => '(Tekst)',
 	'spamregex-summary-log' => '(Samandrag)',
+	'right-spamregex' => 'Blokkera spamfrasar gjennom [[Special:SpamRegex]]',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

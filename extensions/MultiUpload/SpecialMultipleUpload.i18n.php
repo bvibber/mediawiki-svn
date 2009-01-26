@@ -123,7 +123,12 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'multipleupload' => 'Postavljanje datoteka',
+	'multipleupload-desc' => 'Omogućuje korisnicima [[Special:MultipleUpload|postavljanje nekoliko datoteka odjednom]]',
+	'multipleupload-ignoreallwarnings' => "Zanemari '''sva upozorenja''' i spremi datoteke.",
+	'multipleupload-saveallfiles' => 'Spremi sve datoteke',
+	'multipleupload-page' => '{{ns:project}}:Politika brisanja datoteka',
 	'multiupload-fileuploaded' => 'Datoteka postavljena.',
+	'multiupload-toolbox' => 'Postavi više datoteka',
 );
 
 /** Chamorro (Chamoru)

@@ -493,6 +493,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Imre
  * @author Leithian
  * @author Melancholie
@@ -554,7 +555,7 @@ $1',
 	'sign-sigadmin-currentlyclosed' => 'Es ist derzeit nicht möglich, dieses Dokument zu signieren.',
 	'sign-sigadmin-open' => 'Signieren ermöglichen',
 	'sign-signatures' => 'Signaturen',
-	'sign-sigadmin-closesuccess' => 'Signieren erfolgreich aktiviert.',
+	'sign-sigadmin-closesuccess' => 'Signieren erfolgreich deaktiviert.',
 	'sign-sigadmin-opensuccess' => 'Signieren erfolgreich aktiviert.',
 	'sign-viewsignatures' => 'Signaturen anschauen',
 	'sign-closed' => 'geschlossen',
@@ -1017,6 +1018,98 @@ $messages['grc'] = array(
 	'sign-viewfield-reviewedby' => 'ἐπιθεωρητής',
 	'sign-viewfield-reviewcomment' => 'Σχόλιον',
 	'sign-review-comment' => 'Σχόλιον',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'signdocument' => 'Dokumänt signiere',
+	'sign-nodocselected' => 'Bitte wehl s Dokumänt uus, wu soll signiert wäre.',
+	'sign-selectdoc' => 'Dokumänt:',
+	'sign-docheader' => '<div class="noarticletext">Bitte verwänd des Formular go s Dokumänt „[[$1]]“  signiere, wu do unte aazeigt wird.
+Bitte liis s ganz Dokumänt un wänn Du Dyyni Zuestimmig gisch, fill bitte di notwändige Fälder uus go s signiere.</div>',
+	'sign-error-nosuchdoc' => 'S Dokumänt ($1), wu Du aagforderet hesch, git s nit.',
+	'sign-realname' => 'Name:',
+	'sign-address' => 'Stroß:',
+	'sign-city' => 'Stadt:',
+	'sign-state' => 'Bundesland/Kanton:',
+	'sign-zip' => 'Poschtleitzahl:',
+	'sign-country' => 'Land:',
+	'sign-phone' => 'Telifonnummere:',
+	'sign-bday' => 'Alter:',
+	'sign-email' => 'E-Mail-Adräss:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> zeigt s Fäld aa, wu s bruucht.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Obacht: Informatione, wu nit uflischtet sin,  sin einewäg fir Moderatore sichtbar.</i></small>',
+	'sign-list-anonymous' => 'Anonym uflischte',
+	'sign-list-hideaddress' => 'Adräss nit uflischte',
+	'sign-list-hideextaddress' => 'Stadt, Staat, PLZ oder Land nit uflischte',
+	'sign-list-hidephone' => 'Telifonnummere nit uflischte',
+	'sign-list-hidebday' => 'Alter nit uflischte',
+	'sign-list-hideemail' => 'E-Mail-Adräss nit uflischte',
+	'sign-submit' => 'Dokumänt unterzeichne',
+	'sign-information' => '<div class="noarticletext">Dankschen, ass Du Dir d Zyt gnuh hesch, des Dokumänt durzläse.
+Wänn Du ihm zuestimmsch, no zeig des bitte indäm Du di notwändige Fälder unten uusfillsch un deno uf „Dokumänt unterschryybe“ drucksch.
+Bitte stell sicher, ass Dyyni persenlige Informatione korrekt sin un ass mir d Megligkeit hän, Di z kontaktiere go Dyyni Identität feschtzstelle.
+Gib Acht, ass Dyyni IP-Adräss un anderi persenligi Informatione vu däm Formular ufzeichnet wäre un ass si vu Moderatore bruucht wäre go doppleti Unterschrifte usezneh un Dyyni Date z verifiziere.
+Wel mir dodebyy yygschränkt sin, wänn Du uffigi Proxy verwändsch, wäre Unterschrifte iber sonigi Proxy normalerwyys nit bearbeitet.
+Wänn Du grad iber eso ne Server verbunde bisch, no tränn bitte d Verbindig vun em un bruuch e Standardverbindig1.</div>
+
+$1',
+	'sig-success' => 'Du hesch s Dokumänt erfolgryych unterschribe.',
+	'sign-view-selectfields' => '<b>Fälder, wu aazeigt wäre:</b>',
+	'sign-viewfield-entryid' => 'Yytragskännig',
+	'sign-viewfield-timestamp' => 'Zytstämpfel',
+	'sign-viewfield-realname' => 'Name',
+	'sign-viewfield-address' => 'Adräss',
+	'sign-viewfield-city' => 'Stadt',
+	'sign-viewfield-state' => 'Bundesland/Kanton',
+	'sign-viewfield-country' => 'Land',
+	'sign-viewfield-zip' => 'Poschtleitzahl',
+	'sign-viewfield-ip' => 'IP-Adräss',
+	'sign-viewfield-agent' => 'Browser',
+	'sign-viewfield-phone' => 'Telifon',
+	'sign-viewfield-email' => 'E-Mail',
+	'sign-viewfield-age' => 'Alter',
+	'sign-viewfield-options' => 'Optione',
+	'sign-viewsigs-intro' => 'Do unte wäre d Signature ufglischtet, wu fir <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span> ufzeichnet wore sin.',
+	'sign-sigadmin-currentlyopen' => 'Im Momänt isch s nit megli, des Dokumänt z signiere.',
+	'sign-sigadmin-close' => 'Signiere deaktiviere',
+	'sign-sigadmin-currentlyclosed' => 'S isch im Momänt nit megli, des Dokumänt z signiere.',
+	'sign-sigadmin-open' => 'Signiere megli mache',
+	'sign-signatures' => 'Signature',
+	'sign-sigadmin-closesuccess' => 'Signiere erfolgryych deaktiviert.',
+	'sign-sigadmin-opensuccess' => 'Signiere erfolgryych aktiviert.',
+	'sign-viewsignatures' => 'Signature bschaue',
+	'sign-closed' => 'zue',
+	'sign-error-closed' => 'S isch im Momänt nit megli, des Dokumänt z signiere.',
+	'sig-anonymous' => '<i>Anonym</i>',
+	'sig-private' => '<i>Privat</i>',
+	'sign-sigdetails' => 'Signaturdetail',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|Diskussion]] • <!--
+-->[[Special:Contributions/$1|Byyträg]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|Benutzer sperre]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Sperr-Logbuech] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Checkuser])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Gstriche',
+	'sign-viewfield-reviewedby' => 'Priefer',
+	'sign-viewfield-reviewcomment' => 'Kommentar',
+	'sign-detail-uniquequery' => 'Ähnligi Yyträg',
+	'sign-detail-uniquequery-run' => 'Aafrog laufe loo',
+	'sign-detail-strike' => 'Signatur uusstryyche',
+	'sign-reviewsig' => 'Signatur iberpriefe',
+	'sign-review-comment' => 'Kommentar',
+	'sign-submitreview' => 'Bericht abschicke',
+	'sign-uniquequery-similarname' => 'Ähnlige Name',
+	'sign-uniquequery-similaraddress' => 'Ähnligi Adräss',
+	'sign-uniquequery-similarphone' => 'Ähnligi Telifonnummere',
+	'sign-uniquequery-similaremail' => 'Ähnligi E-Mail-Adräss',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] het [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] signiert.',
 );
 
 /** Gujarati (ગુજરાતી)

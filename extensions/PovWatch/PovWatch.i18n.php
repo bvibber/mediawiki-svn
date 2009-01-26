@@ -46,6 +46,7 @@ Click the button below to subscribe.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Meno25
  * @author Purodha
@@ -57,6 +58,8 @@ $messages['qqq'] = array(
 	'povwatch_added' => '{{Identical|Added}}',
 	'right-povwatch_admin' => '{{doc-right}}',
 	'right-povwatch_user' => '{{doc-right|povwatch user}}',
+	'action-povwatch_admin' => '{{doc-action}}',
+	'action-povwatch_user' => '{{doc-action}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -512,6 +515,8 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 	'povwatch_added' => 'přidaty',
 	'right-povwatch_admin' => 'Wužiwarske prawa za přidawanje stronow k wobkeďzbowankam druhich wužiwarjow administrować',
 	'right-povwatch_user' => 'Strony k wobkedźbowankam druhich wužiwarjow přidać',
+	'action-povwatch_admin' => 'wužiwarske prawa za PovWatch administrować',
+	'action-povwatch_user' => 'tutu stronu wobkedźbowankam druheho wužiwarja přidać',
 );
 
 /** Hungarian (Magyar)
@@ -608,6 +613,8 @@ $messages['ja'] = array(
 	'povwatch_added' => '追加完了',
 	'right-povwatch_admin' => '他の利用者のウォッチリストへのページ追加のための利用者権限を管理する',
 	'right-povwatch_user' => '他の利用者のウォッチリストにページを追加する',
+	'action-povwatch_admin' => '編集合戦の監視の利用者権限管理',
+	'action-povwatch_user' => 'このページの他利用者のウォッチリストへの追加',
 );
 
 /** Javanese (Basa Jawa)
@@ -879,6 +886,8 @@ Wees voorzichtig bij het invoeren van de pagina: zelfs niet-bestaande pagina's k
 	'povwatch_added' => 'toegevoegd',
 	'right-povwatch_admin' => 'Beheer gebruikersrechten voor het toevoegen van artikelen aan de volglijst van andere gebruikers',
 	'right-povwatch_user' => "Pagina's toevoegen aan de volglijst van andere gebruikers",
+	'action-povwatch_admin' => 'rechten te beheren voor PovWatch',
+	'action-povwatch_user' => 'deze pagina toe te voegen aan de volglijst van een andere gebruiker',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -918,7 +927,9 @@ Trykk på knappen nedanfor for å abonnera.',
 	'povwatch_subscribe' => 'Abonner',
 	'povwatch_added' => 'lagt til',
 	'right-povwatch_admin' => 'Handsama brukarrettar for kven som kan leggja til sider i overvakingslistene til andre brukarar.',
-	'right-povwatch_user' => 'Leggja til sider overvakingslistene til andre brukarar.',
+	'right-povwatch_user' => 'Leggja til sider i overvakingslistene til andre brukarar.',
+	'action-povwatch_admin' => 'handsam brukarrettar for PovWatch',
+	'action-povwatch_user' => 'legg til denne sida på overvakingslista til ein annan brukar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

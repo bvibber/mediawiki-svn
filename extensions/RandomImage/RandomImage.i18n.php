@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'randomimage-desc' => 'يوفر ميديا عشوائية باستخدام <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'randomimage-desc' => 'Omogućuje odabir slučajnih multimedijalnih datoteka koristeći <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -109,6 +109,7 @@ $messages['ar'] = array(
 	'inplace_scaler_no_handler' => 'لا وسيلة لتحويل نوع MIME هذا',
 	'inplace_scaler_no_output' => 'لا ملف تحويل خارج تم إنتاجه.',
 	'inplace_scaler_zero_size' => 'التحويل أنتج ملف خروج حجمه صفر.',
+	'webstore-desc' => 'وسيط تخزين للملفات على الويب فقط (ليس-NFS)',
 	'webstore_access' => 'هذه الخدمة مقيدة بواسطة أيبي عميل.',
 	'webstore_path_invalid' => 'اسم الملف كان غير صحيح.',
 	'webstore_dest_open' => 'غير قادر على فتح الملف الهدف "$1".',

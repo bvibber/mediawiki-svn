@@ -642,6 +642,7 @@ Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater valte' 
 	'refreshspecial-slave-lagged' => 'Forseinking i slavetenaren, ventar…',
 	'refreshspecial-reconnected' => 'Kopla til på nytt.',
 	'refreshspecial-reconnecting' => 'Tilkopling mislukkast, prøver om att om ti sekund…',
+	'refreshspecial-page-result' => 'fekk {{PLURAL:$1|éi rekkja|$1 rekkjer}} i',
 	'right-refreshspecial' => 'Oppdatera spesialsider',
 );
 

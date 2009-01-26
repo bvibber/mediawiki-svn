@@ -152,6 +152,7 @@ Please contact the server operator or administrator.",
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Malafaya
@@ -209,6 +210,7 @@ This is visible when a SynTrans is annotated, or while editing a page.
 Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki page].
 {{Identical|Show}}',
 	'ow_create' => '{{Identical|Create}}',
+	'ow_suggest_previous' => '{{Identical|Previous}}',
 );
 
 /** Karelian (Karjala)
@@ -288,9 +290,9 @@ $wdMessages['an'] = array(
  * @author Meno25
  */
 $wdMessages['ar'] = array(
-	'datasearch' => 'ويكي داتا: بحث البيانات',
-	'langman_title' => 'مدير اللغة',
 	'languages' => 'ويكي داتا: مدير اللغة',
+	'langman_title' => 'مدير اللغة',
+	'datasearch' => 'ويكي داتا: بحث البيانات',
 	'ow_save' => 'حفظ',
 	'ow_history' => 'تاريخ',
 	'ow_datasets' => 'اختيار مجموعة البيانات',
@@ -400,9 +402,9 @@ $wdMessages['ar'] = array(
  * @author Ramsis II
  */
 $wdMessages['arz'] = array(
-	'datasearch' => 'ويكى داتا: بحث البيانات',
-	'langman_title' => 'مدير اللغة',
 	'languages' => 'ويكى داتا: مدير اللغة',
+	'langman_title' => 'مدير اللغة',
+	'datasearch' => 'ويكى داتا: بحث البيانات',
 	'ow_save' => 'حفظ',
 	'ow_history' => 'تاريخ',
 	'ow_datasets' => 'اختيار مجموعة البيانات',
@@ -519,9 +521,9 @@ $wdMessages['ast'] = array(
  * @author Wikimistusik
  */
 $wdMessages['avk'] = array(
-	'datasearch' => 'Wikidata : Origaneyara',
-	'langman_title' => 'Avapofesiki',
 	'languages' => 'Wikidata : avapofesiki',
+	'langman_title' => 'Avapofesiki',
+	'datasearch' => 'Wikidata : Origaneyara',
 	'ow_save' => 'Giwara',
 	'ow_history' => 'Izvot',
 	'ow_datasets' => 'Rebara va origlospa',
@@ -629,7 +631,21 @@ $wdMessages['bcl'] = array(
 $wdMessages['be-tarask'] = array(
 	'languages' => 'Вікізьвесткі: кіраваньне мовамі',
 	'langman_title' => 'Кіраваньне мовамі',
+	'langman_not_allowed' => 'Вы ня маеце правоў на зьмену настроек моваў.',
+	'langman_header' => 'Увядзіце код мовы і яе ангельскую назву ніжэй:',
+	'langman_req_fields' => 'Патрабуюцца назва мовы і код ISO 639-3!',
+	'langman_adding' => 'Дададзеная мова $1 з ключом $2.',
+	'langman_langname' => 'Назва мовы:',
+	'langman_iso639-3' => 'Код ISO 639-3:',
+	'langman_iso639-2' => 'Код ISO 639-2:',
+	'langman_wikimedia' => 'Код Вікімэдыя:',
+	'langman_field_optional' => '(дадаткова)',
+	'langman_addlang' => 'Дадаць мову',
 	'importlangnames' => 'ВікіЗьвесткі: Імпартаваць назвы моваў',
+	'importlangnames_title' => 'Імпартаваць назвы моваў',
+	'importlangnames_not_allowed' => 'Вы ня маеце правоў на імпарт назваў моваў.',
+	'importlangnames_added' => 'Дададзеная назва мовы для «$1».',
+	'importlangnames_not_found' => '<strong>Ня знойдзены элемэнт для мовы «$1»!</strong>',
 	'datasearch' => 'Вікізьвесткі: пошук зьвестак',
 	'addcollection' => 'ВікіЗьвесткі: Дадаць калекцыю',
 	'ow_save' => 'Захаваць',
@@ -746,6 +762,9 @@ $wdMessages['be-tarask'] = array(
 	'ow_show' => 'Паказаць',
 	'ow_create' => 'Стварыць',
 	'ow_collection_added' => '<strong>Дададзеная калекцыя $1.</strong>',
+	'ow_suggest_previous' => 'Папярэдняя',
+	'ow_suggest_next' => 'Наступная',
+	'ow_suggest_clear' => 'Ачысьціць',
 );
 
 /** Bulgarian (Български)
@@ -809,9 +828,9 @@ $wdMessages['bn'] = array(
  * @author Fulup
  */
 $wdMessages['br'] = array(
-	'datasearch' => 'Wikidata: Klask roadennoù',
-	'langman_title' => 'Merer yezhoù',
 	'languages' => 'Wikidata: Merer yezhoù',
+	'langman_title' => 'Merer yezhoù',
+	'datasearch' => 'Wikidata: Klask roadennoù',
 	'ow_save' => 'Enrollañ',
 	'ow_history' => 'Istor',
 	'ow_datasets' => 'Dibab an diaz',
@@ -901,16 +920,16 @@ $wdMessages['br'] = array(
  * @author CERminator
  */
 $wdMessages['bs'] = array(
-	'datasearch' => 'Wikidata: Pretraga podataka',
-	'langman_title' => 'Upravitelj jezika',
 	'languages' => 'Wikidata: Upravljač jezika',
+	'langman_title' => 'Upravitelj jezika',
+	'datasearch' => 'Wikidata: Pretraga podataka',
 	'ow_save' => 'Spremi',
 	'ow_history' => 'Historija',
 	'ow_datasets' => 'Odabir seta podataka',
 	'ow_noedit_title' => 'Nema dopuštenja za uređivanje',
 	'ow_noedit' => 'Nije Vam dopušteno da uređujete stranice u setu podataka "$1".
 Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivanja]].',
-	'ow_uipref_datasets' => 'Pretpostavljeni pogled',
+	'ow_uipref_datasets' => 'Pretpostavljeni pogled:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ništa nije odabrano',
 	'ow_conceptmapping_help' => '<p>moguće akcije: <ul>
@@ -992,6 +1011,9 @@ Operacija kopiranja nije izvedena.',
 Desila se greška u samoj bazi podataka, wikidata ne može naći valjane podatke koji su povezani sa ovim naznačenim ID značenjem.
 Moguće je su izgubljeni.
 Molimo kontaktirajte operatora servera ili administratora.',
+	'ow_suggest_previous' => 'Prethodni',
+	'ow_suggest_next' => 'Slijedeći',
+	'ow_suggest_clear' => 'Očisti',
 );
 
 /** Catalan (Català)
@@ -1012,9 +1034,9 @@ $wdMessages['ca'] = array(
  * @author Matěj Grabovský
  */
 $wdMessages['cs'] = array(
-	'datasearch' => 'Wikidata: Hledání údajů',
-	'langman_title' => 'Správce jazyků',
 	'languages' => 'Wikidata: Správce jazyků',
+	'langman_title' => 'Správce jazyků',
+	'datasearch' => 'Wikidata: Hledání údajů',
 	'ow_save' => 'Uložit',
 	'ow_history' => 'Historie',
 	'ow_datasets' => 'Výběr množiny dat',
@@ -1135,6 +1157,7 @@ $wdMessages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Purodha
  * @author Revolus
  * @author Umherirrender
@@ -1143,7 +1166,7 @@ $wdMessages['de'] = array(
 	'languages' => 'Wikidata: Sprachen-Manager',
 	'langman_title' => 'Sprachmanager',
 	'langman_not_allowed' => 'Du hast nicht die Berechtigung die Spracheneinstellungen zu ändern.',
-	'langman_header' => 'Gebe den Sprachencode ein und darunter seinen englischsprachigen Namen:',
+	'langman_header' => 'Gib den Sprachencode ein und darunter seinen englischsprachigen Namen:',
 	'langman_req_fields' => 'Sowohl der Sprachennamen als auch der ISO-639-3-Code sind erforderlich!',
 	'langman_adding' => 'Sprache $1 mit Code $2 hinzugefügt.',
 	'langman_langname' => 'Sprachenname:',
@@ -1165,7 +1188,7 @@ $wdMessages['de'] = array(
 	'ow_noedit_title' => 'Keine Editiererlaubnis',
 	'ow_noedit' => 'Du hast nicht die Erlaubnis Seiten im Dataset „$1“ zu editieren.
 Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
-	'ow_uipref_datasets' => 'Standardansicht',
+	'ow_uipref_datasets' => 'Standardansicht:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'nichts ausgewählt',
 	'ow_conceptmapping_help' => '<p>Mögliche Aktionen: <ul>
@@ -1325,7 +1348,7 @@ $wdMessages['dsb'] = array(
 	'ow_noedit_title' => 'Žedne pšawo za wobźěłanje',
 	'ow_noedit' => 'Njamaš pšawo boki w datowej sajźbje "$1" wobźěłaś.
 Pšosym glědaj [[{{MediaWiki:Ow editing policy url}}|naše wobźěłowańske zasady]].',
-	'ow_uipref_datasets' => 'Standardny naglěd',
+	'ow_uipref_datasets' => 'Standardny naglěd:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'žedne wubrane',
 	'ow_conceptmapping_uitext' => '<p>Concept Mapping zmóžnja identificěrowaś, kótary definěrowany wóznam jo identiski z definěrowanym wóznamom w drugich datowych sajźbach.</p>',
@@ -1454,8 +1477,8 @@ $wdMessages['el'] = array(
  * @author Yekrats
  */
 $wdMessages['eo'] = array(
-	'langman_title' => 'Lingva administrilo',
 	'languages' => 'Vikidatenoj: Lingva administrilo',
+	'langman_title' => 'Lingva administrilo',
 	'ow_save' => 'Konservi',
 	'ow_history' => 'Historio',
 	'ow_datasets' => 'Datumara selekto',
@@ -1541,9 +1564,9 @@ Neniu kopia operacio okazis.',
  * @author Sanbec
  */
 $wdMessages['es'] = array(
-	'datasearch' => 'Wikidata: Búsqueda de datos',
-	'langman_title' => 'Gestor de lenguas',
 	'languages' => 'Wikidata: Gestor de lenguas',
+	'langman_title' => 'Gestor de lenguas',
+	'datasearch' => 'Wikidata: Búsqueda de datos',
 	'ow_save' => 'Guardar',
 	'ow_history' => 'Historial',
 	'ow_datasets' => 'Selección de la base',
@@ -1680,9 +1703,9 @@ $wdMessages['et'] = array(
  * @author Theklan
  */
 $wdMessages['eu'] = array(
-	'datasearch' => 'Wikidata:Datu bilaketa',
-	'langman_title' => 'Hizkuntza kudeatzailea',
 	'languages' => 'WIkidata: Hizkuntza administraria',
+	'langman_title' => 'Hizkuntza kudeatzailea',
+	'datasearch' => 'Wikidata:Datu bilaketa',
 	'ow_save' => 'Gorde',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Data bilduma',
@@ -1826,9 +1849,9 @@ $wdMessages['fa'] = array(
  * @author Str4nd
  */
 $wdMessages['fi'] = array(
-	'datasearch' => 'Wikidata: tiedon haku',
-	'langman_title' => 'Kielten hallinta',
 	'languages' => 'Wikidata: kielten hallinta',
+	'langman_title' => 'Kielten hallinta',
+	'datasearch' => 'Wikidata: tiedon haku',
 	'ow_save' => 'Tallenna',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Tietojoukon valinta',
@@ -1913,7 +1936,7 @@ $wdMessages['fr'] = array(
 	'ow_noedit_title' => "Aucune permission d'éditer.",
 	'ow_noedit' => "Vous n'êtes pas autorisé d'éditer les pages dans les données préétablies « $1 ».
 Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
-	'ow_uipref_datasets' => 'Vue par défaut',
+	'ow_uipref_datasets' => 'Vue par défaut :',
 	'ow_uiprefs' => 'Données wiki',
 	'ow_none_selected' => 'Aucune sélection',
 	'ow_conceptmapping_help' => '<p>actions possibles : <ul>
@@ -2204,6 +2227,16 @@ $wdMessages['grc'] = array(
 $wdMessages['gsw'] = array(
 	'languages' => 'Wikidata: Sproche-Manager',
 	'langman_title' => 'Sprochmanager',
+	'langman_not_allowed' => 'Du derfsch d Sprochenyystellige nit ändere.',
+	'langman_header' => 'Gib dr Sprochcode yy un drunter dr änglisch Name:',
+	'langman_req_fields' => 'S bruucht dr Sprochname un au dr ISO-639-3-Code!',
+	'langman_adding' => 'Sproch $1 mit Code $2 dezuegfiegt.',
+	'langman_langname' => 'Sprochname:',
+	'langman_iso639-3' => 'ISO-639-3-Code:',
+	'langman_iso639-2' => 'ISO-639-2-Code:',
+	'langman_wikimedia' => 'Wikimedia-Code:',
+	'langman_field_optional' => '(optional)',
+	'langman_addlang' => 'Sproch zuefiege',
 	'importlangnames' => 'Wikidata: Importier Sprochnäme',
 	'importlangnames_title' => 'Importier Sprochnäme',
 	'importlangnames_not_allowed' => 'Du hesch kei Berächtigung Sprochnäme z importiere.',
@@ -2217,7 +2250,7 @@ $wdMessages['gsw'] = array(
 	'ow_noedit_title' => 'Du derfsch die Syte nit bearbeite',
 	'ow_noedit' => 'Du derfsch Syte im Dataset „$1“ nit bearbeite.
 Lueg [[{{MediaWiki:Ow editing policy url}}|unseri Richtlinie]].',
-	'ow_uipref_datasets' => 'Standardaasicht',
+	'ow_uipref_datasets' => 'Standardaasicht:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nyt usgwehlt',
 	'ow_conceptmapping_help' => '<p>Megligi Aktione: <ul>
@@ -2316,6 +2349,9 @@ Bitte kontaktier dr Serveradminschtrator.',
 	'ow_show' => 'Zeige',
 	'ow_create' => 'Aalege',
 	'ow_collection_added' => '<strong>Sammlig $1 zuegfiegt.</strong>',
+	'ow_suggest_previous' => 'Vorigi',
+	'ow_suggest_next' => 'Negschti',
+	'ow_suggest_clear' => 'Lääre',
 );
 
 /** Manx (Gaelg)
@@ -2358,9 +2394,9 @@ $wdMessages['haw'] = array(
  * @author YaronSh
  */
 $wdMessages['he'] = array(
-	'datasearch' => 'ויקי־דאטא: חיפוש נתונים',
-	'langman_title' => 'מנהל השפות',
 	'languages' => 'ויקי־דאטא: מנהל השפות',
+	'langman_title' => 'מנהל השפות',
+	'datasearch' => 'ויקי־דאטא: חיפוש נתונים',
 	'ow_save' => 'שמירה',
 	'ow_history' => 'היסטוריה',
 	'ow_datasets' => 'בחירת ערכת נתונים',
@@ -2538,7 +2574,7 @@ $wdMessages['hsb'] = array(
 	'ow_datasets' => 'Mnóstwo datow wubrać',
 	'ow_noedit_title' => 'Žana dowolnosć za wobdźěłowanje',
 	'ow_noedit' => 'Njesměš strony w sadźbje datow "$1" wobdźěłować. Prošu hlej [[{{MediaWiki:Ow editing policy url}}|naše směrnicy za wobdźěłowanje]].',
-	'ow_uipref_datasets' => 'Standardny napohlad',
+	'ow_uipref_datasets' => 'Standardny napohlad:',
 	'ow_uiprefs' => 'Wikidaty',
 	'ow_none_selected' => 'Ničo wubrane',
 	'ow_conceptmapping_help' => '<p>Móžne akcije: <ul>
@@ -2711,9 +2747,9 @@ Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
  * @author McDutchie
  */
 $wdMessages['ia'] = array(
-	'datasearch' => 'Wikidatos: Recerca de datos',
-	'langman_title' => 'Gestion de linguas',
 	'languages' => 'Wikidatos: Gestion de linguas',
+	'langman_title' => 'Gestion de linguas',
+	'datasearch' => 'Wikidatos: Recerca de datos',
 	'ow_save' => 'Immagazinar',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Selection de collection de datos',
@@ -2823,9 +2859,9 @@ Per favor contacta le operator o administrator del servitor.',
  * @author Rex
  */
 $wdMessages['id'] = array(
-	'datasearch' => 'Wikidata: Pencarian data',
-	'langman_title' => 'Pengelola bahasa',
 	'languages' => 'Wikidata: Pengelola bahasa',
+	'langman_title' => 'Pengelola bahasa',
+	'datasearch' => 'Wikidata: Pencarian data',
 	'ow_save' => 'Simpan',
 	'ow_history' => 'Versi',
 	'ow_datasets' => 'Pemilihan set-data',
@@ -2923,7 +2959,7 @@ $wdMessages['ja'] = array(
 	'ow_datasets' => 'データセット',
 	'ow_noedit_title' => '編集権限がありません',
 	'ow_noedit' => 'データセット "$1" の編集権限がありません。[[{{MediaWiki:Ow editing policy url}}|編集方針]]をご覧ください。',
-	'ow_uipref_datasets' => 'デフォルト表示',
+	'ow_uipref_datasets' => 'デフォルト表示:',
 	'ow_uiprefs' => 'ウィキデータ',
 	'ow_none_selected' => '（選択なし）',
 	'ow_conceptmapping_help' => '<p>可能な操作: <ul>
@@ -3003,9 +3039,9 @@ $wdMessages['ja'] = array(
  * @author Pras
  */
 $wdMessages['jv'] = array(
-	'datasearch' => 'Wikidata: Panggolèkan data',
-	'langman_title' => 'Pangurus basa',
 	'languages' => 'Wikidata: Pangurus basa',
+	'langman_title' => 'Pangurus basa',
+	'datasearch' => 'Wikidata: Panggolèkan data',
 	'ow_save' => 'Simpen',
 	'ow_history' => 'Sajarah',
 	'ow_datasets' => 'Sèlèksi data-set',
@@ -3226,9 +3262,9 @@ $wdMessages['kk-tr'] = array(
  * @author គីមស៊្រុន
  */
 $wdMessages['km'] = array(
-	'datasearch' => 'Wikidata: ស្វែងរក​ទិន្នន័យ',
-	'langman_title' => 'អ្នកគ្រប់គ្រង​ភាសា',
 	'languages' => 'Wikidata: អ្នកគ្រប់គ្រង​ភាសា',
+	'langman_title' => 'អ្នកគ្រប់គ្រង​ភាសា',
+	'datasearch' => 'Wikidata: ស្វែងរក​ទិន្នន័យ',
 	'ow_save' => 'រក្សាទុក',
 	'ow_history' => 'ប្រវត្តិ',
 	'ow_noedit_title' => 'មិនអនុញ្ញាត​ឱ្យ​កែប្រែទេ',
@@ -3322,9 +3358,9 @@ $wdMessages['krj'] = array(
  * @author Purodha
  */
 $wdMessages['ksh'] = array(
-	'datasearch' => 'Wikidata: Date söke',
-	'langman_title' => 'Sproche-Verwaldung',
 	'languages' => 'Sproche verwallde för Wikidata.',
+	'langman_title' => 'Sproche-Verwaldung',
+	'datasearch' => 'Wikidata: Date söke',
 	'ow_save' => 'Afspeichere',
 	'ow_history' => 'Versione',
 	'ow_datasets' => 'Date-Knubbel ußsöke',
@@ -3674,9 +3710,9 @@ $wdMessages['ml'] = array(
  * @author Mahitgar
  */
 $wdMessages['mr'] = array(
-	'datasearch' => 'विकिविदा:विदा शोध',
-	'langman_title' => 'भाषा प्रबंधक',
 	'languages' => 'विकिविदा:भाषाप्रबंधक',
+	'langman_title' => 'भाषा प्रबंधक',
+	'datasearch' => 'विकिविदा:विदा शोध',
 	'ow_save' => 'जतन करा',
 	'ow_history' => 'इतिहास',
 	'ow_datasets' => 'विदा-संच निवड',
@@ -3909,7 +3945,7 @@ $wdMessages['nl'] = array(
 	'ow_noedit_title' => 'Geen toestemming om te bewerken',
 	'ow_noedit' => 'U hebt geen rechten om pagina\'s te bewerken in de dataset "$1".
 Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
-	'ow_uipref_datasets' => 'Standaard overzicht',
+	'ow_uipref_datasets' => 'Standaard overzicht:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Geen selectie',
 	'ow_conceptmapping_help' => '<p>mogelijke handelingen:<ul>
@@ -4020,6 +4056,14 @@ $wdMessages['nn'] = array(
 	'languages' => 'Wikidata: Språkhandsamar',
 	'langman_title' => 'Språkhandsamar',
 	'langman_not_allowed' => 'Du har ikkje løyve til å endra språkinnstillingar.',
+	'langman_header' => 'Skriv inn språkkoden og det engelske namnet under:',
+	'langman_req_fields' => 'Både språknamn og ISO 639-3-kode er påkravd.',
+	'langman_langname' => 'Språknamn:',
+	'langman_iso639-3' => 'ISO 639-3-kode:',
+	'langman_iso639-2' => 'ISO 639-2-kode:',
+	'langman_wikimedia' => 'Wikimedia-kode:',
+	'langman_field_optional' => '(valfritt)',
+	'langman_addlang' => 'Legg til språk',
 	'importlangnames' => 'Wikidata: Importer språknamn',
 	'importlangnames_title' => 'Importer språknamn',
 	'importlangnames_not_allowed' => 'Du har ikkje løyve til å importera språknamn.',
@@ -4032,7 +4076,7 @@ $wdMessages['nn'] = array(
 	'ow_datasets' => 'Val for vising av data',
 	'ow_noedit_title' => 'Du har ikkje tilgang til å endre',
 	'ow_noedit' => 'Du har ikkje tilgang til å endre sider i datavalet «$1». Ver venleg og sjå [[{{MediaWiki:Ow editing policy url}}|retningslinene våre for endring]].',
-	'ow_uipref_datasets' => 'Standardvising',
+	'ow_uipref_datasets' => 'Standardvising:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ingen er valde',
 	'ow_conceptmapping_help' => '<p>moglege handlingar: <ul>
@@ -4125,15 +4169,18 @@ $wdMessages['nn'] = array(
 	'ow_needs_xlation_dest_lang' => 'Målspråk:',
 	'ow_needs_xlation_no_dest_lang' => 'Oppgje eit målspråk.',
 	'ow_show' => 'Syna',
+	'ow_create' => 'Opprett',
+	'ow_suggest_previous' => 'Førre',
+	'ow_suggest_next' => 'Neste',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $wdMessages['no'] = array(
-	'datasearch' => 'Wikidata: Datasøk',
-	'langman_title' => 'Språkbehandler',
 	'languages' => 'Wikidata: Språkbehandler',
+	'langman_title' => 'Språkbehandler',
+	'datasearch' => 'Wikidata: Datasøk',
 	'ow_save' => 'Lagre',
 	'ow_history' => 'Historikk',
 	'ow_datasets' => 'Valg av datasett',
@@ -4248,9 +4295,9 @@ $wdMessages['nso'] = array(
  * @author Cedric31
  */
 $wdMessages['oc'] = array(
-	'datasearch' => 'Wikidata: Recèrca de donadas',
-	'langman_title' => 'Gestion de las lengas',
 	'languages' => 'Wikidata: Gestion de las lengas',
+	'langman_title' => 'Gestion de las lengas',
+	'datasearch' => 'Wikidata: Recèrca de donadas',
 	'ow_save' => 'Salvar',
 	'ow_history' => 'Istoric',
 	'ow_datasets' => 'Seleccion de las donadas definidas',
@@ -4373,9 +4420,9 @@ $wdMessages['os'] = array(
  * @author Wpedzich
  */
 $wdMessages['pl'] = array(
-	'datasearch' => 'Wikidata: Wyszukiwanie danych',
-	'langman_title' => 'Menadżer języków',
 	'languages' => 'Wikidata: Menadżer języków',
+	'langman_title' => 'Menadżer języków',
+	'datasearch' => 'Wikidata: Wyszukiwanie danych',
 	'ow_save' => 'Zapisz',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Wybór zbioru danych',
@@ -4586,7 +4633,7 @@ $wdMessages['pt'] = array(
 	'ow_datasets' => 'Selecção do conjunto de dados',
 	'ow_noedit_title' => 'Não tem permissões para editar',
 	'ow_noedit' => 'Não está autorizado a editar páginas no conjunto de dados "$1". Por favor, veja [[{{MediaWiki:Ow editing policy url}}|a nossa política de edição]].',
-	'ow_uipref_datasets' => 'Vista padrão',
+	'ow_uipref_datasets' => 'Vista padrão:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nenhum seleccionado',
 	'ow_conceptmapping_help' => '<p>acções possíveis:
@@ -4697,16 +4744,16 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
  * @author Heldergeovane
  */
 $wdMessages['pt-br'] = array(
-	'datasearch' => 'Wikidata: Pesquisa de dados',
-	'langman_title' => 'Gestor de línguas',
 	'languages' => 'Wikidata: Gestor de línguas',
+	'langman_title' => 'Gestor de línguas',
+	'datasearch' => 'Wikidata: Pesquisa de dados',
 	'ow_save' => 'Salvar',
 	'ow_history' => 'Histórico',
 	'ow_datasets' => 'Seleção de conjunto de dados',
 	'ow_noedit_title' => 'Não tem permissão para editar',
 	'ow_noedit' => 'Você não está autorizado a editar páginas no conjunto de dados "$1".
 Por favor, veja [[{{MediaWiki:Ow editing policy url}}|nossa política de edição]].',
-	'ow_uipref_datasets' => 'Exibição padrão',
+	'ow_uipref_datasets' => 'Exibição padrão:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nenhum selecionado',
 	'ow_conceptmapping_help' => '<p>ações possíveis: <ul>
@@ -4916,9 +4963,9 @@ $wdMessages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $wdMessages['ru'] = array(
-	'datasearch' => 'Викиданные: Поиск данных',
-	'langman_title' => 'Языковой менеджер',
 	'languages' => 'Викиданные: Языковой менеджер',
+	'langman_title' => 'Языковой менеджер',
+	'datasearch' => 'Викиданные: Поиск данных',
 	'ow_save' => 'Сохранить',
 	'ow_history' => 'История',
 	'ow_datasets' => 'Выбор набора данных',
@@ -5014,9 +5061,9 @@ $wdMessages['ru'] = array(
  * @author Helix84
  */
 $wdMessages['sk'] = array(
-	'datasearch' => 'Wikidata: Hľadanie údajov',
-	'langman_title' => 'Správca jazykov',
 	'languages' => 'Wikidata: Správca jazykov',
+	'langman_title' => 'Správca jazykov',
+	'datasearch' => 'Wikidata: Hľadanie údajov',
 	'ow_save' => 'Uložiť',
 	'ow_history' => 'História',
 	'ow_datasets' => 'Výber množiny dát',
@@ -5220,9 +5267,9 @@ $wdMessages['sr-ec'] = array(
  * @author Pyt
  */
 $wdMessages['stq'] = array(
-	'datasearch' => 'Wikidata: Doatensäike',
-	'langman_title' => 'Sproakmanager',
 	'languages' => 'Wikidata: Sproakmanager',
+	'langman_title' => 'Sproakmanager',
+	'datasearch' => 'Wikidata: Doatensäike',
 	'ow_save' => 'Spiekerje',
 	'ow_history' => 'Versione/Autore',
 	'ow_datasets' => 'Uutwoal fon dän Doataset',
@@ -5326,9 +5373,9 @@ $wdMessages['su'] = array(
  * @author Sannab
  */
 $wdMessages['sv'] = array(
-	'datasearch' => 'Wikidata: Datasökning',
-	'langman_title' => 'Språkhanterare',
 	'languages' => 'Wikidata: Språkhanterare',
+	'langman_title' => 'Språkhanterare',
+	'datasearch' => 'Wikidata: Datasökning',
 	'ow_save' => 'Spara',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Val av datauppsättning',
@@ -5437,9 +5484,9 @@ Var god kontakta serveroperatören eller systemadministratören.',
  * @author Lajsikonik
  */
 $wdMessages['szl'] = array(
-	'datasearch' => 'Wikidata:Sznupańy za danymi',
-	'langman_title' => 'Menadżyr godek',
 	'languages' => 'Wikidata:Menadżyr godek',
+	'langman_title' => 'Menadżyr godek',
+	'datasearch' => 'Wikidata:Sznupańy za danymi',
 	'ow_save' => 'Naszkryflej',
 	'ow_history' => 'Historjo',
 	'ow_datasets' => 'Wybjerańy zbjora danych',
@@ -5621,9 +5668,9 @@ $wdMessages['tet'] = array(
  * @author Ibrahim
  */
 $wdMessages['tg-cyrl'] = array(
-	'datasearch' => 'Викидода: Ҷустуҷӯи дода',
-	'langman_title' => 'Идоракуни забон',
 	'languages' => 'Викидода: Идоракуни забон',
+	'langman_title' => 'Идоракуни забон',
+	'datasearch' => 'Викидода: Ҷустуҷӯи дода',
 	'ow_save' => 'Захира кардан',
 	'ow_history' => 'Таърих',
 	'ow_noedit_title' => 'Барои вироиш иҷозат нест',
@@ -5722,9 +5769,9 @@ $wdMessages['tk'] = array(
  * @author AnakngAraw
  */
 $wdMessages['tl'] = array(
-	'datasearch' => 'Wikidata: Paghahanap ng dato',
-	'langman_title' => 'Tagapamahala ng wika',
 	'languages' => 'Wikidata: Tagapamahala ng wika',
+	'langman_title' => 'Tagapamahala ng wika',
+	'datasearch' => 'Wikidata: Paghahanap ng dato',
 	'ow_save' => 'Sagipin',
 	'ow_history' => 'Kasaysayan',
 	'ow_datasets' => 'Pampili ng pangkat ng dato',
@@ -5853,9 +5900,9 @@ $wdMessages['tr'] = array(
  * @author Aleksandrit
  */
 $wdMessages['uk'] = array(
-	'datasearch' => 'Вікідані: Пошук даних',
-	'langman_title' => 'Мовний менеджер',
 	'languages' => 'Вікідані: Мовний менеджер',
+	'langman_title' => 'Мовний менеджер',
+	'datasearch' => 'Вікідані: Пошук даних',
 	'ow_save' => 'Зберегти',
 	'ow_history' => 'Історія',
 	'ow_datasets' => 'Вибір набору даних',
@@ -6046,9 +6093,9 @@ $wdMessages['vo'] = array(
  * @author Wmr89502270
  */
 $wdMessages['zh-hans'] = array(
-	'datasearch' => 'Wikidata: 数据搜寻',
-	'langman_title' => '语言管理员',
 	'languages' => 'Wikidata: 语言管理员',
+	'langman_title' => '语言管理员',
+	'datasearch' => 'Wikidata: 数据搜寻',
 	'ow_save' => '保存',
 	'ow_history' => '历史',
 	'ow_datasets' => '选择数据集',

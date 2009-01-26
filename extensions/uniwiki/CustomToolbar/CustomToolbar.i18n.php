@@ -68,8 +68,7 @@ $wgCustomToolbarMessages['en'] = array(
  */
 $wgCustomToolbarMessages['qqq'] = array(
 	'ct-desc' => 'Short description of the extension, shown in [[Special:Version]].',
-	'ct_upload' => '(information may be incorrect)
-* $1 can be "image" or "link"',
+	'ct_upload' => '* $1 comes from the HTTP request parameter "type"',
 	'ct_submit' => '{{Identical|Go}}',
 	'ct_user_user' => '{{Identical|User}}',
 	'ct_user_sample' => '{{Identical|Username}}',

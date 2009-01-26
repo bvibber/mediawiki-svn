@@ -80,6 +80,13 @@ $messages['gl'] = array(
 	'regexfunctions-desc' => 'Funcións de análise de expresións regulares',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'regexfunctions-desc' => 'Parserfunktione fir reguläri Uusdrick',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

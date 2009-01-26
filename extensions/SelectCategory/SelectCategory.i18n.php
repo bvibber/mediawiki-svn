@@ -152,10 +152,12 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author Manuel Schneider <manuel.schneider@wikimedia.ch>
  */
 $messages['gsw'] = array(
 	'selectcategory-title' => 'Kategori ussueche',
+	'selectcategory-desc' => 'Macht s fir dr Benutzer megli, bim Bearbeite vun ere Syte us Kategorie, wu s het, uuszwehle',
 	'selectcategory-subtitle' => 'Gross-Muus go verschiedeni Iiträg hintrenander go uswähle, Strg-Muus go einzelni Iiträg go uswähle',
 );
 

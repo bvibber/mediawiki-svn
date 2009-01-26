@@ -57,6 +57,13 @@ $messages['gl'] = array(
 	'redirect-desc' => 'Permite a configuración sinxela das redireccións na [[MediaWiki:Redirect-addnewaccount|creación de contas]] e na [[MediaWiki:Redirect-userlogoutcomplete|saída ao anonimato]]',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'redirect-desc' => 'Erlaubt s eifach Konfiguriere vu Wyterleitige bim [[MediaWiki:Redirect-addnewaccount|Aalege vu Benutzerkonte]] un bim [[MediaWiki:Redirect-userlogoutcomplete|Abmälde]]',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

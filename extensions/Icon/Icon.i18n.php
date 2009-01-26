@@ -323,8 +323,9 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'icon-badimage' => 'Dårleg bilete',
 	'icon-badwidth' => 'Dårleg breidd',
-	'icon-desc' => 'Lèt det nytta bilete som ikon og ikonlekkjer.',
+	'icon-desc' => 'Lèt deg nytta bilete som ikon og ikonlekkjer.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

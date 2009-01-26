@@ -85,6 +85,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Korisnik',
 	'showprocesslist-time' => 'Vrijeme',
 );
@@ -257,6 +258,22 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'showprocesslist-user' => 'Χρώμενος',
 	'showprocesslist-time' => 'Χρόνος',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'showprocesslist' => 'Zeig Prozässlischt',
+	'showprocesslist-desc' => 'Zeig d Uusgab vu [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'ID',
+	'showprocesslist-user' => 'Benutzer',
+	'showprocesslist-host' => 'Host',
+	'showprocesslist-db' => 'db',
+	'showprocesslist-command' => 'Kommando',
+	'showprocesslist-time' => 'Zyt',
+	'showprocesslist-state' => 'Status',
+	'showprocesslist-info' => 'Info',
 );
 
 /** Gujarati (ગુજરાતી)

@@ -132,6 +132,10 @@ $messages['bs'] = array(
 	'chemicalsources' => 'Hemijski izvori',
 	'chemicalsource-desc' => 'Dodaje oznaku <nowiki><chemform></nowiki> za hemijske formule',
 	'chemFunctions_ListPage' => 'Hemijski izvori',
+	'chemFunctions_DataList' => 'Ispod je prikazan spisak linkova ka stranicama koje Vam mogu dati informacije o hemijskim supstancama koje ste tražili.
+<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Supstanca $MIXCASNameFormula na NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oxford univerzitetu (UK) (ne može se pretraživati)</a><br />',
 	'chemFunctions_CAS' => 'CAS broj',
 	'chemFunctions_ATCCode' => 'ATC-kod',
 	'chemFunctions_ECNumber' => 'EC-Broj',

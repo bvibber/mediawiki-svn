@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'jskit-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'jskit-desc' => 'Integreer "js-kit" met wikiblaaie',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -46,6 +46,13 @@ $messages['bg'] = array(
 	'didyoumean-desc' => 'Добавя препратки към страници със „подобни” заглавия',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'didyoumean-desc' => 'Dodaje linkove prema stranicama sa "sličnim" naslovima',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

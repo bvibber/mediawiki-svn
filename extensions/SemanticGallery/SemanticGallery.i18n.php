@@ -73,6 +73,13 @@ $messages['gl'] = array(
 	'semanticgallery-desc' => 'Engade unha galería de formato de saída ás dúbidas SMW en liña',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'semanticgallery-desc' => 'Setzt in SMW-Inline-Abfroge e Galerienuusgabformat dryy',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

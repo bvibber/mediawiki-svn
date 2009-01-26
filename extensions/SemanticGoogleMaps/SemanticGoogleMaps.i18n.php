@@ -104,6 +104,14 @@ $messages['gl'] = array(
 	'semanticgooglemaps-desc' => 'Permite aos usuarios editar e mostrar datos de coordenadas semánticas usando os mapas do Google (Google Maps)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Koordinate nooluege',
+	'semanticgooglemaps-desc' => 'Bietet d Megligkeit, semantischi Koordinate mit Hilf vu Google Maps z bearbeiten un aazzeige.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

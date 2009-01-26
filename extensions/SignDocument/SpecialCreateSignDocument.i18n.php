@@ -258,9 +258,10 @@ Bitte sei dir ebenfalls sicher, dass du alle nötigen Felder angegeben hast, ''b
 	'createsigndoc-create' => 'Erstelle',
 	'createsigndoc-error-generic' => 'Fehler: $1',
 	'createsigndoc-error-pagenoexist' => 'Fehler: Die Seite [[$1]] existiert nicht.',
-	'createsigndoc-success' => 'Das Signieren wurde erfolgreich auf [[$1]] aktiviert.
-Besuche bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Seite], um es auszuprobieren.',
-	'createsigndoc-error-alreadycreated' => 'Dokumentsignatur „$1“ exitiert bereits.',
+	'createsigndoc-success' => 'Das Signieren wurde auf [[$1]] erfolgreich aktiviert.
+Du kannst es [{{SERVER}}{{localurl:Special:SignDocument|doc=$2}} hier ausprobieren].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentsignatur „$1“ existiert bereits.
+Es kann nicht erneut signiert werden.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -305,8 +306,9 @@ Pšosym pśeznań se teke, až sy pódał wše póla tak, ako maju byś, ''pjerw
 	'createsigndoc-error-generic' => 'Zmólka: $1',
 	'createsigndoc-error-pagenoexist' => 'Zmólka: Bok [[$1]] njeeksistěrujo.',
 	'createsigndoc-success' => 'Signěrowanje dokumentow jo se wuspěšnje zmóžniło na [[$1]].
-Aby testował, woglědaj se [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} toś ten bok].',
-	'createsigndoc-error-alreadycreated' => 'Dokumentowa signatura "$1" južo eksistěrujo.',
+Móžoš jo [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testowaś].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentowa signatura "$1" južo eksistěrujo.
+To njedajo se drugi raz cyniś.',
 );
 
 /** Greek (Ελληνικά)
@@ -535,6 +537,15 @@ Bitte bii au no sicher, ass Du alli notwändige Fälder aagee hesch, ''voreb Du 
 	'createsigndoc-bday' => 'Geburtstag:',
 	'createsigndoc-minage' => 'Mindeschtalter:',
 	'createsigndoc-introtext' => 'Yyfierig:',
+	'createsigndoc-hidden' => 'Versteckt',
+	'createsigndoc-optional' => 'Optional',
+	'createsigndoc-create' => 'Leg aa',
+	'createsigndoc-error-generic' => 'Fähler: $1',
+	'createsigndoc-error-pagenoexist' => 'Fähler: D Syte [[$1]] git s nit.',
+	'createsigndoc-success' => 'S Signiere isch erfolgryych uf [[$1]] aktiviert wore.
+Bsuech bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} die Syte] go s uusprobiere.',
+	'createsigndoc-error-alreadycreated' => 'Dokumäntsignatur „$1“ git s scho. 
+Zweimol goht nit.',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -620,8 +631,9 @@ $messages['hsb'] = array(
 	'createsigndoc-create' => 'Wutworić',
 	'createsigndoc-error-generic' => 'Zmylk: $1',
 	'createsigndoc-error-pagenoexist' => 'Zmylk: Strona [[$1]] njeeksistuje.',
-	'createsigndoc-success' => 'Podpisanje dokumentow bu wuspěšnje na [[$1]]aktiwizowane. Zo by je testował, wopytaj prošu [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tutu stronu:].',
-	'createsigndoc-error-alreadycreated' => 'Podpis dokumenta "$1" hižo eksistuje.',
+	'createsigndoc-success' => 'Podpisanje dokumentow bu wuspěšnje na [[$1]] zmóžnjene. Móžeš jo [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testować].',
+	'createsigndoc-error-alreadycreated' => 'Podpis dokumenta "$1" hižo eksistuje
+To njeda so druhi raz činić.',
 );
 
 /** Interlingua (Interlingua)
@@ -691,8 +703,8 @@ $messages['ja'] = array(
 	'createsigndoc-create' => '作成',
 	'createsigndoc-error-generic' => 'エラー: $1',
 	'createsigndoc-error-pagenoexist' => 'エラー: ページ [[$1]] は存在しません。',
-	'createsigndoc-success' => '[[$1]] での文書署名の有効化に成功しました。試してみるには[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} このページ]を見てください。',
-	'createsigndoc-error-alreadycreated' => '「$1」の文書署名はすでに作成されています。',
+	'createsigndoc-success' => '[[$1]] での文書署名の有効化に成功しました。[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} 試してみる]ことができます。',
+	'createsigndoc-error-alreadycreated' => '「$1」の文書署名はすでに作成されています。二度は不可能です。',
 );
 
 /** Javanese (Basa Jawa)
@@ -913,6 +925,7 @@ $messages['nah'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'createsigndocument' => 'Documentondertekening inschakelen',
@@ -939,8 +952,9 @@ Zorg er ook voor dat alle velden de juiste waarden hebben ''voordat u het formul
 	'createsigndoc-error-generic' => 'Fout: $1',
 	'createsigndoc-error-pagenoexist' => 'Error: De pagina [[$1]] bestaat niet.',
 	'createsigndoc-success' => 'Documentondertekening is ingeschakeld op [[$1]].
-Ga naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
-	'createsigndoc-error-alreadycreated' => 'De documentondertekening "$1" bestaat al.',
+U kunt [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} dit testen].',
+	'createsigndoc-error-alreadycreated' => 'De documentondertekening "$1" bestaat al.
+Deze kan geen tweede keer aangemaakt worden.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -967,8 +981,8 @@ $messages['nn'] = array(
 	'createsigndoc-error-generic' => 'Feil: $1',
 	'createsigndoc-error-pagenoexist' => 'Feil: Sida [[$1]] finst ikkje.',
 	'createsigndoc-success' => 'Dokumentsignering har blitt slege på for [[$1]].
-For å testa det, vitj [{{fullurl:Special:SignDocument|doc=$2}} denne sida].',
-	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringa «$1» finst frå før.',
+Du kan [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testa det].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringa «$1» finst frå før. Dette kan ikkje bli gjort to gonger.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

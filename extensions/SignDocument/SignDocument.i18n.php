@@ -129,6 +129,16 @@ $messages['gl'] = array(
 	'signaturelogentry' => 'asinou o documento $1',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'signaturelogpage' => 'Signature-Logbuech',
+	'signature-desc' => 'Macht s megli Dokumänt z [[Special:SignDocument|unterzeichne]]',
+	'signaturelogpagetext' => 'Des isch s [[Special:SignDocument|Signature-Logbuech fir Dokumänt]].',
+	'signaturelogentry' => 'het s Dokumänt $1 unterschribe',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

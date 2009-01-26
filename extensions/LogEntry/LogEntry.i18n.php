@@ -222,6 +222,7 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'logentry-append' => 'Legg til',
+	'logentry' => 'Loggelement',
 	'logentry-invalidpage' => 'Ugyldig sida',
 );
 
