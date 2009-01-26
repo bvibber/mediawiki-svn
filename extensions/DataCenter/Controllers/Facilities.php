@@ -22,12 +22,14 @@ class DataCenterControllerFacilities extends DataCenterController {
 	) {
 		// Actions
 		if ( $path['id'] ) {
-			$this->actions['edit'] = array(
-				'page' => 'facilities',
-				'type' => $path['type'],
-				'action' => 'edit',
-				'id' => $path['id']
-			);
+			if ( DataCenterPage::userCan( 'change' ) ) {
+				$this->actions['edit'] = array(
+					'page' => 'facilities',
+					'type' => $path['type'],
+					'action' => 'edit',
+					'id' => $path['id']
+				);
+			}
 			$this->actions['history'] = array(
 				'page' => 'facilities',
 				'type' => $path['type'],
@@ -47,12 +49,19 @@ class DataCenterControllerFacilities extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'change' ) ) {
+			return false;
+		}
 		switch ( $type ) {
 			case 'location':
-				$component = DataCenterDBLocation::newFromValues( $data['row'] );
+				$component = DataCenterDBLocation::newFromValues(
+					$data['row']
+				);
 				break;
 			case 'space':
-				$component = DataCenterDBSpace::newFromValues( $data['row'] );
+				$component = DataCenterDBSpace::newFromValues(
+					$data['row']
+				);
 				break;
 		}
 		if ( isset( $component ) ) {

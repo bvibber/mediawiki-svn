@@ -163,6 +163,9 @@ class DataCenterWidgetFieldLinks extends DataCenterWidget {
 						);
 					}
 				}
+				if ( !DataCenterPage::userCan( 'change' ) ) {
+					$checkboxAttributes['disabled'] = 'true';
+				}
 				$xmlOutput .= DataCenterXml::row(
 					DataCenterXml::cell(
 						self::$defaultAttributes['checkbox'],
@@ -185,30 +188,36 @@ class DataCenterWidgetFieldLinks extends DataCenterWidget {
 				);
 			}
 		}
-		// Adds reset and submit button
-		$xmlOutput .= DataCenterXML::row(
-			DataCenterXml::cell(
-				self::$defaultAttributes['buttons'],
-				DataCenterXml::tag(
-					'input',
-					array(
-						'type' => 'reset',
-						'name' => 'reset',
-						'class' => 'reset',
-						'value' => DataCenterUI::message( 'label', 'reset' ),
-					)
-				) .
-				DataCenterXml::tag(
-					'input',
-					array(
-						'type' => 'submit',
-						'name' => 'submit',
-						'class' => 'submit',
-						'value' => DataCenterUI::message( 'label', 'save' ),
+		if ( DataCenterPage::userCan( 'change' ) ) {
+			// Adds reset and submit button
+			$xmlOutput .= DataCenterXML::row(
+				DataCenterXml::cell(
+					self::$defaultAttributes['buttons'],
+					DataCenterXml::tag(
+						'input',
+						array(
+							'type' => 'reset',
+							'name' => 'reset',
+							'class' => 'reset',
+							'value' => DataCenterUI::message(
+								'label', 'reset'
+							),
+						)
+					) .
+					DataCenterXml::tag(
+						'input',
+						array(
+							'type' => 'submit',
+							'name' => 'submit',
+							'class' => 'submit',
+							'value' => DataCenterUI::message(
+								'label', 'save'
+							),
+						)
 					)
 				)
-			)
-		);
+			);
+		}
 		$xmlOutput .= DataCenterXml::close( 'table' );
 		// Adds row fields
 		$xmlOutput .= DataCenterXml::tag(

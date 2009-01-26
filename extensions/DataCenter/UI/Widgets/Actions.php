@@ -31,6 +31,11 @@ class DataCenterWidgetActions extends DataCenterWidget {
 		 * @datatype	array
 		 */
 		'links' => array(),
+		/**
+		 * Rights required for display
+		 * @datatype	array
+		 */
+		'rights' => array(),
 	);
 
 	/* Functions */
@@ -40,6 +45,10 @@ class DataCenterWidgetActions extends DataCenterWidget {
 	) {
 		// Sets defaults
 		$parameters = array_merge( self::$defaultParameters, $parameters );
+		// Checks for permissions
+		if ( !DataCenterPage::userCan( $parameters['rights'] ) ) {
+			return null;
+		}
 		// Begins widget
 		$xmlOutput = parent::begin( $parameters['class'] );
 		// Checks if links is an array

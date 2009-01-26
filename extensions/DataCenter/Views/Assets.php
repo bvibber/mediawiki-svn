@@ -118,6 +118,7 @@ class DataCenterViewAssets extends DataCenterView {
 										'action' => 'design',
 									),
 								),
+								'rights' => array( 'change' ),
 							)
 						)
 					)

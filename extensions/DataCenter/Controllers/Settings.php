@@ -21,18 +21,22 @@ class DataCenterControllerSettings extends DataCenterController {
 	) {
 		// Actions
 		if ( $path['id'] && $path['type'] == 'field' ) {
-			$this->actions['remove'] = array(
-				'page' => 'settings',
-				'type' => $path['type'],
-				'action' => 'remove',
-				'id' => $path['id']
-			);
-			$this->actions['configure'] = array(
-				'page' => 'settings',
-				'type' => $path['type'],
-				'action' => 'configure',
-				'id' => $path['id']
-			);
+			if ( DataCenterPage::userCan( 'remove' ) ) {
+				$this->actions['remove'] = array(
+					'page' => 'settings',
+					'type' => $path['type'],
+					'action' => 'remove',
+					'id' => $path['id']
+				);
+			}
+			if ( DataCenterPage::userCan( 'change' ) ) {
+				$this->actions['configure'] = array(
+					'page' => 'settings',
+					'type' => $path['type'],
+					'action' => 'configure',
+					'id' => $path['id']
+				);
+			}
 			$this->actions['view'] = array(
 				'page' => 'settings',
 				'type' => $path['type'],
@@ -46,6 +50,9 @@ class DataCenterControllerSettings extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'change' ) ) {
+			return false;
+		}
 		switch ( $type ) {
 			case 'field':
 				$field = DataCenterDBMetaField::newFromValues( $data['row'] );
@@ -59,6 +66,9 @@ class DataCenterControllerSettings extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'remove' ) ) {
+			return false;
+		}
 		// Checks for confirmation
 		if (
 			!isset( $data['row']['confirm'] ) ||
@@ -83,6 +93,9 @@ class DataCenterControllerSettings extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'change' ) ) {
+			return false;
+		}
 		DataCenterWidgetFieldLinks::saveFieldLinks( $data );
 		return true;
 	}

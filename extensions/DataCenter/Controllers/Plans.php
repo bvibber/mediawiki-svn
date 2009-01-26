@@ -23,18 +23,22 @@ class DataCenterControllerPlans extends DataCenterController {
 	) {
 		// Actions
 		if ( $path['id'] ) {
-			$this->actions['remove'] = array(
-				'page' => 'plans',
-				'type' => $path['type'],
-				'action' => 'remove',
-				'id' => $path['id']
-			);
-			$this->actions['configure'] = array(
-				'page' => 'plans',
-				'type' => $path['type'],
-				'action' => 'configure',
-				'id' => $path['id']
-			);
+			if ( DataCenterPage::userCan( 'remove' ) ) {
+				$this->actions['remove'] = array(
+					'page' => 'plans',
+					'type' => $path['type'],
+					'action' => 'remove',
+					'id' => $path['id']
+				);
+			}
+			if ( DataCenterPage::userCan( 'change' ) ) {
+				$this->actions['configure'] = array(
+					'page' => 'plans',
+					'type' => $path['type'],
+					'action' => 'configure',
+					'id' => $path['id']
+				);
+			}
 			$this->actions['view'] = array(
 				'page' => 'plans',
 				'type' => $path['type'],
@@ -92,6 +96,9 @@ class DataCenterControllerPlans extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'remove' ) ) {
+			return false;
+		}
 		// Checks for confirmation
 		if (
 			!isset( $data['row']['confirm'] ) ||
@@ -123,6 +130,9 @@ class DataCenterControllerPlans extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'change' ) ) {
+			return false;
+		}
 		switch ( $type ) {
 			case 'plan':
 				$plan = DataCenterDBPlan::newFromValues( $data['row'] );

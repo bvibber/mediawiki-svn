@@ -63,6 +63,7 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 										'action' => 'add'
 									),
 								),
+								'rights' => array( 'change' ),
 							)
 						),
 					)
@@ -141,6 +142,7 @@ class DataCenterViewFacilitiesLocation extends DataCenterView {
 										),
 									)
 								),
+								'rights' => array( 'change' ),
 							)
 						),
 						DataCenterUI::renderWidget(

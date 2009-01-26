@@ -43,6 +43,14 @@ $wgExtensionCredits['other'][] = array(
 	'description-msg' => 'datacenter-desc',
 );
 
+// User permissions
+$wgGroupPermissions['dc-viewer']['datacenter-view'] = true;
+$wgGroupPermissions['dc-viewer']['datacenter-export'] = true;
+$wgGroupPermissions['dc-admin']['datacenter-view'] = true;
+$wgGroupPermissions['dc-admin']['datacenter-export'] = true;
+$wgGroupPermissions['dc-admin']['datacenter-change'] = true;
+$wgGroupPermissions['dc-admin']['datacenter-remove'] = true;
+
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
 
@@ -65,7 +73,6 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, array(
 	'DataCenterControllerOverview' => $dir . 'Controllers/Overview.php',
 	'DataCenterControllerPlans' => $dir . 'Controllers/Plans.php',
 	'DataCenterControllerSettings' => $dir . 'Controllers/Settings.php',
-	'DataCenterControllerTasks' => $dir . 'Controllers/Tasks.php',
 	// UI/Inputs/*
 	'DataCenterInputBoolean' => $dir . 'UI/Inputs/Boolean.php',
 	'DataCenterInputButton' => $dir . 'UI/Inputs/Button.php',

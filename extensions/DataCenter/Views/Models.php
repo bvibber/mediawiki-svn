@@ -186,6 +186,7 @@ class DataCenterViewModels extends DataCenterView {
 									),
 								),
 								'subject' => 'type',
+								'rights' => array( 'change' ),
 							)
 						),
 					)
@@ -270,7 +271,9 @@ class DataCenterViewModels extends DataCenterView {
 					DataCenterUI::renderWidget(
 						'actions',
 						array(
-							'links' => $actions, 'subject' => 'parameter'
+							'links' => $actions,
+							'subject' => 'parameter',
+							'rights' => array( 'change' ),
 						)
 					)
 				)

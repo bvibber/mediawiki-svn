@@ -22,12 +22,14 @@ class DataCenterControllerAssets extends DataCenterController {
 	) {
 		// Actions
 		if ( $path['id'] ) {
-			$this->actions['manage'] = array(
-				'page' => 'assets',
-				'type' => $path['type'],
-				'action' => 'manage',
-				'id' => $path['id'],
-			);
+			if ( DataCenterPage::userCan( 'change' ) ) {
+				$this->actions['manage'] = array(
+					'page' => 'assets',
+					'type' => $path['type'],
+					'action' => 'manage',
+					'id' => $path['id'],
+				);
+			}
 			$this->actions['history'] = array(
 				'page' => 'assets',
 				'type' => $path['type'],
@@ -47,6 +49,9 @@ class DataCenterControllerAssets extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'change' ) ) {
+			return false;
+		}
 		$asset = DataCenterDBAsset::newFromType( $type, $data['row'] );
 		$asset->save();
 		$asset->saveMetaValues( $data['meta'] );

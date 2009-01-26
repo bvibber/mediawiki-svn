@@ -49,6 +49,7 @@ class DataCenterViewSettingsField extends DataCenterView {
 										'action' => 'add'
 									)
 								),
+								'rights' => array( 'change' ),
 							)
 						),
 					)

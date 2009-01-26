@@ -130,7 +130,8 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 							'tabs', $tables
 						),
 						DataCenterUI::renderWidget(
-							'actions', array(
+							'actions',
+							array(
 								'links' => array(
 									array(
 										'page' => 'plans',
@@ -140,7 +141,8 @@ class DataCenterViewFacilitiesSpace extends DataCenterView {
 											'space', $space->getId()
 										)
 									)
-								)
+								),
+								'rights' => array( 'change' ),
 							)
 						),
 						DataCenterUI::renderWidget(

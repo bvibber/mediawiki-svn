@@ -123,6 +123,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 										),
 									),
 								),
+								'rights' => array( 'change' ),
 							)
 						),
 						DataCenterUI::renderWidget(

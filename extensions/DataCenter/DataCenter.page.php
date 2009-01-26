@@ -124,6 +124,7 @@ class DataCenterPage extends SpecialPage {
 	);
 
 	private static $path;
+	private static $rights;
 
 	/* Private Static Functions */
 
@@ -232,6 +233,23 @@ class DataCenterPage extends SpecialPage {
 		return self::$path;
 	}
 
+	public static function userCan(
+		$action
+	) {
+		if ( is_array( $action ) ) {
+			if ( count( $action ) > 0 ) {
+				foreach ( $action as $right ) {
+					if ( !in_array( 'datacenter-' . $right, self::$rights  ) ) {
+						return false;
+					}
+				}
+				return true;
+			}
+			return false;
+		}
+		return in_array( 'datacenter-' . $action, self::$rights );
+	}
+
 	/* Functions */
 
 	public function __construct() {
@@ -250,6 +268,12 @@ class DataCenterPage extends SpecialPage {
 			// Lets them know they need to
 			$wgOut->loginToUse();
 			// Returns true so MediaWiki can move on
+			return true;
+		}
+		// Gets user rights
+		self::$rights = $wgUser->getRights();
+		if ( !self::userCan( 'view' ) ) {
+			$wgOut->permissionRequired( 'datacenter-view' );
 			return true;
 		}
 		// Keeps some state between pages

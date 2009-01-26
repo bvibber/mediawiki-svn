@@ -90,15 +90,15 @@ class DataCenterWidgetModel extends DataCenterWidget {
 		$xmlOutput = '';
 		foreach ( $structure as $model ) {
 			$modelLink = DataCenterDB::getModelLink( $model->get( 'link' ) );
-			if ( $level == 0 && count( $parameters['link'] ) > 0) {
+			if ( !DataCenterPage::userCan( 'change' ) ) {
+				$rowAttributes = array();
+			} else if ( $level == 0 && count( $parameters['link'] ) > 0 ) {
 				$rowAttributes = array_merge(
 					array( 'class' => 'link' ),
 					DataCenterXml::buildLink( $parameters['link'], $model )
 				);
 			} else {
-				$rowAttributes = array(
-					'class' => 'mute'
-				);
+				$rowAttributes = array( 'class' => 'mute' );
 			}
 			$xmlOutput .= DataCenterXml::row(
 				$rowAttributes,

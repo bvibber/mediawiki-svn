@@ -23,12 +23,14 @@ class DataCenterControllerModels extends DataCenterController {
 	) {
 		// Actions
 		if ( $path['id'] && isset( $this->types[$path['type']] ) ) {
-			$this->actions['modify'] = array(
-				'page' => 'models',
-				'type' => $path['type'],
-				'action' => 'modify',
-				'id' => $path['id']
-			);
+			if ( DataCenterPage::userCan( 'change' ) ) {
+				$this->actions['modify'] = array(
+					'page' => 'models',
+					'type' => $path['type'],
+					'action' => 'modify',
+					'id' => $path['id']
+				);
+			}
 			$this->actions['history'] = array(
 				'page' => 'models',
 				'type' => $path['type'],
@@ -48,6 +50,9 @@ class DataCenterControllerModels extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'change' ) ) {
+			return false;
+		}
 		$model = DataCenterDBModel::newFromType( $type, $data['row'] );
 		$model->save();
 		$model->saveMetaValues( $data['meta'] );
@@ -59,6 +64,9 @@ class DataCenterControllerModels extends DataCenterController {
 		array $data,
 		$type
 	) {
+		if ( !DataCenterPage::userCan( 'change' ) ) {
+			return false;
+		}
 		$link = DataCenterDBModelLink::newFromValues( $data['row'] );
 		if ( $link->get( 'quantity' ) == 0 ) {
 			$link->delete();

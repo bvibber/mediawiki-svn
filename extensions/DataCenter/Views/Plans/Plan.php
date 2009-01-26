@@ -147,6 +147,7 @@ class DataCenterViewPlansPlan extends DataCenterView {
 										)
 									),
 								),
+								'rights' => array( 'change' ),
 							)
 						),
 						DataCenterUI::renderWidget(

@@ -935,7 +935,7 @@ class DataCenterUI {
 	) {
 		return wfMsgExt(
 			"datacenter-ui-{$type}-{$name}",
-			array( 'parsemag' ),
+			array( 'parsemag', 'parseinline' ),
 			$arguments
 		);
 	}

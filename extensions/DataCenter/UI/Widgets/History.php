@@ -87,18 +87,20 @@ class DataCenterWidgetHistory extends DataCenterWidget {
 		array $parameters
 	) {
 		global $wgUser;
+		// Gets current path
+		$path = DataCenterPage::getPath();
 		// Sets Defaults
 		$parameters = array_merge( self::$defaultParameters, $parameters );
 		// Begins widget
 		$xmlOutput = parent::begin( $parameters['class'] );
 		if (
-			isset( $parameters['path']['parameter'] ) &&
-			is_array( $parameters['path']['parameter'] ) &&
-			( count( $parameters['path']['parameter'] ) >= 2 )
+			isset( $path['parameter'] ) &&
+			is_array( $path['parameter'] ) &&
+			( count( $path['parameter'] ) >= 2 )
 		) {
 			$changes = array(
-				DataCenterDB::getChange( $parameters['path']['parameter'][0] ),
-				DataCenterDB::getChange( $parameters['path']['parameter'][1] ),
+				DataCenterDB::getChange( $path['parameter'][0] ),
+				DataCenterDB::getChange( $path['parameter'][1] ),
 			);
 			if (
 				$changes[0]->get( 'timestamp' ) >
@@ -218,8 +220,6 @@ class DataCenterWidgetHistory extends DataCenterWidget {
 			// Ends table
 			$xmlOutput .= DataCenterXml::close( 'table' );
 		} else {
-			// Gets current path
-			$path = DataCenterPage::getPath();
 			// Gets history of component from database
 			$changes = $parameters['component']->getChanges(
 				array_merge_recursive(
