@@ -12,8 +12,10 @@ $messages = array();
  * @author Trevor Parscal
  */
 $messages['en'] = array(
-	'group-dc-viewer' => 'DataCenter Viewer',
-	'group-dc-admin' => 'DataCenter Administrator',
+	'group-dc-viewer' => 'DataCenter Viewers',
+	'group-dc-admin' => 'DataCenter Administrators',
+	'group-dc-viewer-member' => 'DataCenter Viewer',
+	'group-dc-admin-member' => 'DataCenter Administrator',
 	'datacenter' => 'DataCenter',
 	'datacenter-desc' => 'DataCenter Planing and Asset Tracking System',
 	// Pages
