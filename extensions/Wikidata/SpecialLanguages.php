@@ -20,11 +20,14 @@ $wgExtensionCredits['specialpage'][] = array(
 require_once( 'SpecialLanguages.i18n.php' );
 
 function wfSpecialManageLanguages() {
-	# Add messages
-	global $wgMessageCache, $wdMessages, $IP;
-	foreach( $wdMessages as $language => $translations ) {
+	# Add messages (malafaya: moved to App.php)
+	//global $wgMessageCache, $wdMessages, $IP;
+	/*foreach( $wdMessages as $language => $translations ) {
 		$wgMessageCache->addMessages( $translations, $language );
-	}
+	}*/
+	
+	global $IP;
+	
 	require_once "$IP/includes/SpecialPage.php";
 
 	class SpecialLanguages extends SpecialPage {

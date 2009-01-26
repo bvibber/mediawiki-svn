@@ -175,7 +175,13 @@ function modifyTabs($skin, $content_actions) {
 
 function initializeWikidata() {
 	global $wgExtensionPreferences, $wdSiteContext, $wgPropertyToColumnFilters;
-		
+	
+	# Add extension messages to the cache (initialize it here because they will be needed below)
+	global $wgMessageCache, $wdMessages;
+	foreach( $wdMessages as $language => $translations ) {
+		$wgMessageCache->addMessages( $translations, $language );
+	}
+
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("SET NAMES utf8");
 	

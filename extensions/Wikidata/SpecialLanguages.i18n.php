@@ -38,7 +38,7 @@ $wdMessages['en'] = array(
 	'ow_noedit'                             => 'You are not permitted to edit pages in the dataset "$1".
 Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
 	'ow_editing_policy_url'                 => 'Project:Permission policy',
-	'ow_uipref_datasets'                    => 'Default view',
+	'ow_uipref_datasets'                    => 'Default view:',
 	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => 'None selected',
 	'ow_conceptmapping_help'                => '<p>possible actions: <ul>
