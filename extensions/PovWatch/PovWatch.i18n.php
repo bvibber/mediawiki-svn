@@ -250,6 +250,8 @@ Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werde und es gi
 	'povwatch_added' => 'hinzugefügt',
 	'right-povwatch_admin' => 'Das Benutzerrecht Zuteilen oder Entziehen, Seiten zur Beobachtungsliste anderer Benutzer hinzufügen zu dürfen',
 	'right-povwatch_user' => 'Hinzufügen von Seiten zur Beobachtungsliste anderer Benutzer',
+	'action-povwatch_admin' => 'Rechte für PovWatch zu verwalten',
+	'action-povwatch_user' => 'füge diese Seite zu der Beobachtungsliste eines anderen Benutzers hinzu',
 );
 
 /** Greek (Ελληνικά)
@@ -326,6 +328,8 @@ Inscrivez scrupuleusement le titre : une page inexistante peut être spécifiée
 	'povwatch_added' => 'ajouté',
 	'right-povwatch_admin' => "Administrer les droits d’utilisateur pour l'ajout des pages à la liste de suivi des autres utilisateurs.",
 	'right-povwatch_user' => 'Ajoute des pages à la liste de suivi des autres utilisateurs',
+	'action-povwatch_admin' => "administrer les droits d'utilisateur pour PovWatch",
+	'action-povwatch_user' => "ajouter cette page à la liste de suivi d'autres utilisateurs",
 );
 
 /** Galician (Galego)
@@ -366,6 +370,8 @@ Faga clic no botón de embaixo para subscribirse.',
 	'povwatch_added' => 'engadido',
 	'right-povwatch_admin' => 'Administrar os dereitos de usuario para engadir páxinas ás listaxes de vixilancia doutros usuarios',
 	'right-povwatch_user' => 'Engadir páxinas á listaxe de vixilancia doutros usuarios',
+	'action-povwatch_admin' => 'administrar os dereitos de usuario PovWatch',
+	'action-povwatch_user' => 'engadir esta páxina á lista de vixilancia doutro usuario',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -692,6 +698,8 @@ Onge övver der Knopp kanns de Desch endraare lohße.',
 	'povwatch_added' => 'dobei jedonn',
 	'right-povwatch_admin' => 'Dat Rääsch, Sigge en anderlüx Oppassleste erin donn ze dörfe, Jevve un Fottnämme',
 	'right-povwatch_user' => 'Sigge op Oppassleste vun ander Metmaacher drop donn',
+	'action-povwatch_admin' => 'Metmaacher-Rääschte för {{int:povwatch}} ze verjävve',
+	'action-povwatch_user' => 'die Sigg op Einem sing Oppassleß ze säze',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1161,6 +1169,8 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 	'povwatch_added' => 'pridaný',
 	'right-povwatch_admin' => 'Spravovať oprávnenie pridávať stránky do zoznamu sledovaných ostatných používateľov',
 	'right-povwatch_user' => 'Pridávať stránku do zoznamu sledovaných ostatných používateľov',
+	'action-povwatch_admin' => 'spravovať práva používateľov PovWatch',
+	'action-povwatch_user' => 'pridať túto stránku na zoznam sledovaných stránok iného používateľa',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

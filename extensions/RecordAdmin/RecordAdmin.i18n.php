@@ -234,6 +234,17 @@ $messages['et'] = array(
 	'recordadmin-editlink' => 'toimeta',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'recordadmin-badtitle' => 'Izenburu okerra!',
+	'recordadmin-buttonsearch' => 'Bilatu',
+	'recordadmin-buttoncreate' => 'Sortu',
+	'recordadmin-viewlink' => 'ikusi',
+	'recordadmin-editlink' => 'aldatu',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

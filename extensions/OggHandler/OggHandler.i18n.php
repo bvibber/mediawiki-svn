@@ -746,6 +746,7 @@ Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
@@ -754,6 +755,12 @@ $messages['eu'] = array(
 	'ogg-short-video' => 'Ogg $1 bideo fitxategia, $2',
 	'ogg-short-general' => 'Ogg $1 media fitxategia, $2',
 	'ogg-long-audio' => '(Ogg $1 soinu fitxategia, $2 iraupea, $3)',
+	'ogg-long-error' => '(ogg fitxategi okerra: $1)',
+	'ogg-play' => 'Hasi',
+	'ogg-pause' => 'Eten',
+	'ogg-stop' => 'Gelditu',
+	'ogg-play-video' => 'Bideoa hasi',
+	'ogg-play-sound' => 'Soinua hasi',
 	'ogg-more' => 'Gehiago...',
 	'ogg-dismiss' => 'Itxi',
 	'ogg-download' => 'Fitxategia jaitsi',

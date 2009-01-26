@@ -211,6 +211,16 @@ $messages['es'] = array(
 	'intersection_noincludecats' => 'Error: ¡Necesita incluir al menos una categoría, o especificar un espacio de nombres!',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'intersection_toomanycats' => 'Errorea: Kategoria gehiegi!',
+	'intersection_toofewcats' => 'Errorea: Kategoria gutxiegi!',
+	'intersection_noresults' => 'Errorea: Emaitzarik ez!',
+	'intersection_noincludecats' => 'Errorea: Gutxienez kategoria bat gehitu edo izen bat zehaztu behar duzu!',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

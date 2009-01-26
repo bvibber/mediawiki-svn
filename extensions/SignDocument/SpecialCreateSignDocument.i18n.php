@@ -266,6 +266,7 @@ Es kann nicht erneut signiert werden.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'createsigndoc-head' => "Benutzen Sie dieses Formular, um ein „Signaturdokument“ für die gegebene Seite zu erstellen, so dass Benutzer in der Lage sein werden, es zu [[Special:SignDocument|signieren]].
@@ -275,8 +276,8 @@ Bitte geben Sie den Namen der Seite an, auf welcher Sie digitales Signieren erla
 Zusätzlich wird der angezeigte Text beim Signieren der Seite der ''derzeitige'' Text sein, egal welche Änderungen danach noch vorgenommen wurden.
 Bitte seien Sie sich absolut sicher, dass das Dokument in einem ausreichend stabilen Zustand zum Signieren ist.
 Bitte seien Sie sich ebenfalls sicher, dass Sie alle nötigen Felder angegeben haben, ''bevor Sie dieses Formular übersenden''.",
-	'createsigndoc-success' => 'Das Signieren wurde erfolgreich auf [[$1]] aktiviert.
-Besuchen Sie bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Seite], um es auszuprobieren.',
+	'createsigndoc-success' => 'Das Signieren wurde auf [[$1]] erfolgreich aktiviert.
+Sie können es [{{SERVER}}{{localurl:Special:SignDocument|doc=$2}} hier ausprobieren].',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -445,8 +446,10 @@ Pour cette raison, soyez certain que le document soit suffisamment stable pour �
 	'createsigndoc-create' => 'Créer',
 	'createsigndoc-error-generic' => 'Erreur : $1',
 	'createsigndoc-error-pagenoexist' => "La page [[$1]] n'existe pas.",
-	'createsigndoc-success' => "L'authentification des documents est activée sur [[$1]]. Pour la tester, voir [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} cette page].",
-	'createsigndoc-error-alreadycreated' => 'Le document d’authentification pour « $1 » a déjà été créé.',
+	'createsigndoc-success' => "L'authentification des documents est activée sur [[$1]].
+Vous pouvez [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} le tester].",
+	'createsigndoc-error-alreadycreated' => "Le document d’authentification pour « $1 » a déjà été créé.
+Il ne peut l'être une seconde fois.",
 );
 
 /** Western Frisian (Frysk)
@@ -489,8 +492,10 @@ e un texto introdutorio breve que describa o documento e lles dea instrucións a
 	'createsigndoc-create' => 'Crear',
 	'createsigndoc-error-generic' => 'Erro: $1',
 	'createsigndoc-error-pagenoexist' => 'Erro: A páxina [[$1]] non existe.',
-	'createsigndoc-success' => 'O documento asinado foi habilitado con éxito en [[$1]]. Para comprobalo, visite [{{SERVER}}{{localurl: Special: SignDocument|doc=$2}} esta páxina].',
-	'createsigndoc-error-alreadycreated' => 'O documento asinado "$1" xa existe.',
+	'createsigndoc-success' => 'O documento asinado foi activado con éxito en [[$1]].
+Pode [{{SERVER}}{{localurl: Special: SignDocument|doc=$2}} probalo].',
+	'createsigndoc-error-alreadycreated' => 'O documento asinado "$1" xa existe.
+Isto non pode ser feito unha segunda vez.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -797,7 +802,7 @@ Beß och sescher, dat De all die Felder jenou esu aanjejovve häs, wi se sin sul
 	'createsigndoc-create' => 'Aanläje',
 	'createsigndoc-error-generic' => 'Fähler: $1',
 	'createsigndoc-error-pagenoexist' => 'Fähler: En Sigg „[[$1]]“ jidd_et nit.',
-	'createsigndoc-success' => 'Et Ungerschriive eß jetz för „[[$1]]“ enjeschalldt, en Ungerschreffte-Mapp es aanjelaat.
+	'createsigndoc-success' => 'Et Dokkemänt „[[$1]]“ ze ungerschriive eß jetz müjjelesch, en Ungerschreffte-Mapp es aanjelaat.
 Mer kann jetz dat [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} Ungerschriive och ußprobbiere].',
 	'createsigndoc-error-alreadycreated' => 'De Ongerschreffte-Mapp för de Sigg „$1“ es ald aanjelaat.',
 );
@@ -1141,8 +1146,9 @@ Assegure-se também de que especificou todos os campos exactamente como devem se
 	'createsigndoc-error-generic' => 'Erro: $1',
 	'createsigndoc-error-pagenoexist' => 'Erro: A página [[$1]] não existe.',
 	'createsigndoc-success' => 'A assinatura de documentos foi ativada com sucesso em [[$1]].
-Para testar a funcionalidade, por favor visite [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} esta página].',
-	'createsigndoc-error-alreadycreated' => 'A assinatura de documentos "$1" já existe.',
+Você pode agora [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testá-la].',
+	'createsigndoc-error-alreadycreated' => 'A assinatura de documentos "$1" já existe.
+Isto não pode ser feito segunda vez.',
 );
 
 /** Romanian (Română)
@@ -1245,8 +1251,10 @@ Tiež si prosím buďte istý, že uvádzate všetky polia presne ako by mali by
 	'createsigndoc-create' => 'Vytvoriť',
 	'createsigndoc-error-generic' => 'Chyba: $1',
 	'createsigndoc-error-pagenoexist' => 'Chyba: Stránka [[$1]] neexistuje.',
-	'createsigndoc-success' => 'Podpisovanie dokumentov bolo úspešne zapnuté pre stránku  [[$1]]. Otestovať ho môžete na [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tejto stránke].',
-	'createsigndoc-error-alreadycreated' => 'Podpis dokumentu „$1“ už existuje.',
+	'createsigndoc-success' => 'Podpisovanie dokumentov bolo úspešne zapnuté pre stránku [[$1]].
+Otestovať ho môžete na [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tejto stránke].',
+	'createsigndoc-error-alreadycreated' => 'Podpis dokumentu „$1“ už existuje.
+Túto operáciu nie je možné druhýkrát vrátiť.',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

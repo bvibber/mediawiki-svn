@@ -2062,12 +2062,25 @@ Buďte prosím trpezliví.',
  */
 $messages['sq'] = array(
 	'youtubeauthsub' => 'Ngarko YouTube video',
+	'youtubeauthsub-desc' => 'Lejon përdoruesit të ngarkojnë [[Special:YouTubeAuthSub|video copa]] direkt në YouTube',
+	'youtubeauthsub_info' => 'Për të ngarkuar video copa në YouTube e për të përfshirë në faqe, plotëso të dhënat në vijim:',
 	'youtubeauthsub_title' => 'Titulli',
+	'youtubeauthsub_description' => 'Përshkrimi',
 	'youtubeauthsub_password' => 'YouTube fjalëkalimi',
 	'youtubeauthsub_username' => 'YouTube identiteti',
 	'youtubeauthsub_keywords' => 'Fjalët kyçe',
 	'youtubeauthsub_category' => 'Kategoria',
 	'youtubeauthsub_submit' => 'Dërgo',
+	'youtubeauthsub_clickhere' => 'Kliko këtu për tu kyçur në YouTube',
+	'youtubeauthsub_tokenerror' => 'Gabim në gjenerimin e shenjës së autorizimit, rifresko.',
+	'youtubeauthsub_success' => "Urime!
+Video copa juaj është ngarkuar.
+<a href='http://www.youtube.com/watch?v=$1'>Shih video copën</a>.
+Ndoshta YouTube ka nevojë për ca kohë për të përpunuar videon tuaj, pra ndoshta nuk është gati që tani.
+
+Për të përfshirë video copën tuaj në një wiki faqe vendose kodin në vijim në faqe:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Për të ngarkuar video copë fillimisht duhet që të kyçeni në YouTube.',
 	'youtubeauthsub_uploadbutton' => 'Ngarko',
 );
 

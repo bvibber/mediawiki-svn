@@ -488,6 +488,14 @@ $messages['es'] = array(
 	'extdist-want-more' => 'Obtener otra extensión',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'extensiondistributor' => 'MediaWiki luzapena jaitsi',
+	'extdist-submit-extension' => 'Jarraitu',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

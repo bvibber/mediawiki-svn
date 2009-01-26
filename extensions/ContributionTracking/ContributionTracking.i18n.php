@@ -178,6 +178,14 @@ $messages['es'] = array(
 	'contrib-tracking-button' => 'Continuar',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'contrib-tracking-error' => 'Errorea',
+	'contrib-tracking-button' => 'Jarraitu',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Komeil 4life
@@ -529,6 +537,13 @@ $messages['ru'] = array(
 	'contrib-tracking-submitting' => 'Отправка обработчику платежей…',
 	'contrib-tracking-continue' => 'Если вы не были автоматически перенаправлены, нажмите на кнопку, чтобы завершить ваше пожертвование на сайте PayPal.',
 	'contrib-tracking-button' => 'Продолжить',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'contrib-tracking-error' => 'Алҕас',
 );
 
 /** Slovak (Slovenčina)

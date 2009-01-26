@@ -280,9 +280,12 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
+	'player-file' => 'Fitxategiaren izena',
+	'player-goto-page' => 'Orria',
 	'player-goto-file' => 'fitxategia',
 );
 

@@ -198,6 +198,15 @@ $messages['es'] = array(
 	'randomincategory-submit' => 'Ir',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'randomincategory-toolbox' => 'Ausazko orria',
+	'randomincategory-label' => 'Kategoria:',
+	'randomincategory-submit' => 'Joan',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Str4nd

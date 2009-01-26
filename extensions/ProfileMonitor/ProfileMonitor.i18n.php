@@ -189,6 +189,13 @@ $messages['es'] = array(
 	'profiling-data-process' => 'Proceso',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'profiling-ok' => 'Ados',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

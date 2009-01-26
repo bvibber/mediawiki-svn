@@ -2788,6 +2788,7 @@ $messages['ja'] = array(
 	'configure-section-block' => 'ブロック',
 	'configure-section-rates' => '速度制限',
 	'configure-section-proxy' => 'プロキシ',
+	'configure-section-squid' => 'Squid',
 	'configure-section-cookie' => 'クッキー',
 	'configure-section-performance' => 'パフォーマンス',
 	'configure-section-upload' => 'アップロード',

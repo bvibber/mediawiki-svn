@@ -207,6 +207,14 @@ $messages['es'] = array(
 	'inspectcache-delete' => 'Borrar',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'inspectcache-ok' => 'Ados',
+	'inspectcache-delete' => 'Ezabatu',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Silvonen

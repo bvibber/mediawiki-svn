@@ -471,12 +471,15 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
 	'review_total_statistics' => 'Guztira',
 	'review_user_details_link' => '(xehetasunak)',
 	'review_blocked' => 'Blokeatuta zaude, ospa hemendik.',
+	'review_topic' => 'Gaia',
+	'review_rating' => 'Balorazioa',
 );
 
 /** Persian (فارسی)

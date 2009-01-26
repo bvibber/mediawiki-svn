@@ -255,6 +255,14 @@ $messages['es'] = array(
 	'imstatus_example' => 'Ejemplo',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'imstatus_default' => 'Lehenetsia',
+	'imstatus_example' => 'Adibidea',
+);
+
 /** Persian (فارسی)
  * @author Mardetanha
  */

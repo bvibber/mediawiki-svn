@@ -148,6 +148,13 @@ $messages['es'] = array(
 	'piwik-browsers' => 'Navegadores',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'piwik-countries' => 'Herrialdeak',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

@@ -104,11 +104,13 @@ $messages['eo'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
 	'icon-badimage' => 'Okerreko irudia',
 	'icon-badwidth' => 'Okerreko zabalera',
+	'icon-desc' => 'Irudiak ikono eta ikono lotura bezala erabiltzea baimentzen dizu',
 );
 
 /** Finnish (Suomi)

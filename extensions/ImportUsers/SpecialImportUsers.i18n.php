@@ -275,6 +275,8 @@ $messages['de'] = array(
 	'importusers-password' => 'Passwort',
 	'importusers-email' => 'E-Mail',
 	'importusers-realname' => 'Echter Name',
+	'right-import_users' => 'Benutzerdaten im großen Umfang importieren',
+	'action-import_users' => 'Benutzerdaten im großen Umfang zu importieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -459,6 +461,8 @@ $messages['gl'] = array(
 	'importusers-password' => 'contrasinal',
 	'importusers-email' => 'correo electrónico',
 	'importusers-realname' => 'nome real',
+	'right-import_users' => 'Importar usuarios en masa',
+	'action-import_users' => 'importar usuarios en masa',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1221,6 +1225,8 @@ $messages['sk'] = array(
 	'importusers-password' => 'heslo',
 	'importusers-email' => 'email',
 	'importusers-realname' => 'skutočné meno',
+	'right-import_users' => 'Hromadne importovať používateľov',
+	'action-import_users' => 'hromadne importovať používateľov',
 );
 
 /** Seeltersk (Seeltersk)

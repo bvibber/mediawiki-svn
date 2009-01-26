@@ -1425,6 +1425,21 @@ $messages['es'] = array(
 	'mv_category' => 'categoría',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'mv_upload_file' => 'Fitxategia igo',
+	'mv_external_file' => 'Kanpo fitxategia',
+	'mv_tool_navigate' => 'Nabigatu',
+	'mv_tool_export' => 'Esportatu',
+	'mv_edit' => 'Aldatu',
+	'mv_remove' => 'kendu',
+	'mv_search_category' => 'Kategoria',
+	'mv_search_and' => 'eta',
+	'mv_search_or' => 'edo',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
@@ -2326,6 +2341,8 @@ $messages['hsb'] = array(
 	'specialpages-group-mv_group' => 'Specialne strony MetaVidWiki',
 	'mv_ogg_low_quality' => 'Streamujomny w syći - Ogg Theora 300 kb/s',
 	'mv_ogg_high_quality' => 'Wysoka kwalita - Ogg Theora 900 kbit/s',
+	'mv_flash_low_quality' => 'Webprud - flashwidejo',
+	'mv_archive_org_mp4' => 'W Archiwe.org mp4 zakapslowany prud h.264',
 	'mv_archive_org_link' => 'Wotkazy k originalam mpeg2 na Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Zmylk: Njeje wideodataja zwjazana z tutym streamom.</span><br />Prošu zdźěl to sydłowemu administratorej.',
 	'mv_stream_added' => 'Sy prud $1 přidał.',
@@ -2344,6 +2361,7 @@ $messages['hsb'] = array(
 	'mv_edit_stream_files' => 'Streamowe dataje wobdźěłać',
 	'mv_path_type_url_anx' => 'połny multimedijowy url',
 	'mv_path_type_wiki_title' => 'titul wiki medija',
+	'mv_path_type_url_file' => 'Za połny medijowy URL wužij lokalne pytanje',
 	'mv_path_type_mp4_stream' => 'Mp4 prudowy serwer',
 	'mv_path_type_label' => 'Pućowy typ',
 	'mv_base_offset_label' => 'Zakładne přesadźenje',

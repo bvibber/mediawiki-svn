@@ -472,6 +472,16 @@ $messages['es'] = array(
 	'regexblock-view-block-unblock' => 'desbloquear',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'regexblock-form-username' => 'IP helbidea edo lankide izena:',
+	'regexblock-form-reason' => 'Arrazoia:',
+	'regexblock-view-all' => 'Dena',
+	'regexblock-view-go' => 'Joan',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex

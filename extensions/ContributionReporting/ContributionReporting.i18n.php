@@ -679,6 +679,35 @@ $messages['es'] = array(
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'contrib-hist-name' => 'Izena',
+	'contrib-hist-date' => 'Ordua eta data',
+	'contrib-hist-amount' => 'Kopurua',
+	'contribstats-day' => 'Eguna',
+	'contribstats-month' => 'Hilabetea',
+	'contribstats-currency' => 'Moneta',
+	'contribstats-amount' => 'Kopurua (USD)',
+	'contribstats-contributions' => 'Ekarpenak',
+	'contribstats-total' => 'Guztira (USA)',
+	'contribstats-avg' => 'Bataz bestekoa (USD)',
+	'contribstats-max' => 'Gehienezkoa (USD)',
+	'contribstats-percentage-ytd' => 'Ehunekoa (YTD)',
+	'contribstats-total-ytd' => 'Guztira (YTD)',
+	'contribstats-value-exactly' => 'Zehazki $1',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-contributions' => 'Ekarpenak',
+	'fundraiserstats-total' => 'Guztira (USD)',
+	'fundraiserstats-avg' => 'Bataz bestekoa (USD)',
+	'fundraiserstats-max' => 'Gehienezkoa (USD)',
+	'fundraiserstats-tab-totals' => 'Guztira (USD)',
+	'fundraiserstats-tab-contributions' => 'Ekarpen kopurua',
+	'fundraiserstats-tab-averages' => 'Bataz bestekoa (USD)',
+	'fundraiserstats-tab-maximums' => 'Gehienezkoa (USD)',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Komeil 4life
@@ -2049,6 +2078,57 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-averages' => 'Средние (USD)',
 	'fundraiserstats-tab-maximums' => 'Максимумы (USD)',
 	'specialpages-group-contribution' => 'Пожертвования/Сбор средств',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'contributionreporting-desc' => 'Викимедиа пуондатыгар үп хомуйуутун хаамыыта',
+	'contributiontotal' => 'Сиэртибэлээһин барыта',
+	'contributionhistory' => 'Сиэртибэлээһин хайдах барбыта',
+	'contrib-hist-header' => 'Аан дойдуттан барытыттан сиэртибэлээччилэр суруктара тута көстөр сирэ',
+	'contrib-hist-name' => 'Аата',
+	'contrib-hist-date' => 'Кэмэ уонна күнэ-дьыла',
+	'contrib-hist-amount' => 'Сууммата',
+	'contrib-hist-next' => 'Иннинээҕи сиэртибэлэр',
+	'contrib-hist-previous' => 'Хойукку сиэртибэлэр',
+	'contrib-hist-anonymous' => 'Аатын эппэтэх киһи',
+	'contributionstatistics' => 'Сиэртибэлээһин хаамыыта',
+	'contribstats-desc' => 'Викимедиа Пуондатыгар үп киириитин хаамыытын көрдөрөр',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Бүгүҥҥү барыта|$1 күн иһигэр барыта}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Бу ыйга барыта|Бүтэһик $1 ыйга барыта}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|$1 ыйга барыта|Барыта $1 ыйга}}',
+	'contribstats-currency-range-totals' => 'Барыта (бу күннэргэ $1 - $2)',
+	'contribstats-contribution-range-breakdown' => 'Сиэртибэ кээмэйин тарҕаныыта (бу кэмҥэ $1 - $2)',
+	'contribstats-currency-totals' => '$1 отчуоттуур сылга барыта',
+	'contribstats-contribution-breakdown' => 'Отчуоттуур $1 сылга сиэртибэ кээмэйинэн тарҕаныыта',
+	'contribstats-day' => 'Күн',
+	'contribstats-month' => 'Ый',
+	'contribstats-currency' => 'Харчытын көрүҥэ',
+	'contribstats-amount' => 'Сууммата (USD)',
+	'contribstats-contributions' => 'Сиэртибэлээһиннэр',
+	'contribstats-total' => 'Барыта (USD)',
+	'contribstats-avg' => 'Ортотунан (USD)',
+	'contribstats-max' => 'Саамай үрдээбитэ (USD)',
+	'contribstats-percentage-ytd' => 'Бырыһыан (сыл саҕаланыытыттан)',
+	'contribstats-total-ytd' => 'Барыта (сыл саҕаланыытыттан)',
+	'contribstats-value-exactly' => 'Оруобуна $1',
+	'contribstats-value-under' => 'Мантан $1 кыра',
+	'contribstats-value-from' => 'Мантан $1 - $2',
+	'contribstats-value-over' => '(Мантан) $1 үрдүк',
+	'fundraiserstatistics' => 'Үп хомуйуутун хаамыыта',
+	'fundraiserstats-date' => 'Күнэ-дьыла',
+	'fundraiserstats-day' => '$1 күн $2',
+	'fundraiserstats-contributions' => 'Киирбит үп',
+	'fundraiserstats-total' => 'Барыта (USD)',
+	'fundraiserstats-avg' => 'Ортотунан (USD)',
+	'fundraiserstats-max' => 'Саамай улахана (USD)',
+	'fundraiserstats-tab-totals' => 'Барыта (USD)',
+	'fundraiserstats-tab-contributions' => 'Үп киллэриитин ахсаана',
+	'fundraiserstats-tab-averages' => 'Ортотунан (USD)',
+	'fundraiserstats-tab-maximums' => 'Саамай үрдээбитэ (USD)',
+	'specialpages-group-contribution' => 'Сиэртибэлээһин/Үп хомуйуу',
 );
 
 /** Slovak (Slovenčina)

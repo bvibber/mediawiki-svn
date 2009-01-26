@@ -374,8 +374,12 @@ $messages['es'] = array(
 	'imagemap_description' => 'Acerca de esta imagen',
 );
 
-/** Basque (Euskara) */
+/** Basque (Euskara)
+ * @author An13sa
+ */
 $messages['eu'] = array(
+	'imagemap_no_image' => 'Errorea: lehen lerroan irudia zehaztu behar da',
+	'imagemap_invalid_image' => 'Errorea: irudia baliogabea da edo ez da existitzen',
 	'imagemap_description' => 'Irudi honen inguruan',
 );
 
