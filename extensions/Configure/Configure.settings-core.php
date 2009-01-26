@@ -23,6 +23,7 @@ $settings = array(
 			'wgExtraSubtitle' => 'text',
 			'wgLegalTitleChars' => 'text',
 			'wgMaxArticleSize' => 'int',
+			'wgMaxRedirects' => 'int',
 			'wgMetadataWhitelist' => 'text',
 			'wgSiteNotice' => 'text',
 			'wgSiteSupportPage' => 'text',
@@ -35,6 +36,7 @@ $settings = array(
 			'wgDefaultRobotPolicy' => 'text',
 			'wgExemptFromUserRobotsControl' => 'array',
 			'wgNoFollowLinks' => 'bool',
+			'wgNoFollowDomainExceptions' => 'array',
 		),
 	),
 	'features' => array(
@@ -46,6 +48,7 @@ $settings = array(
 			'wgShowHostnames' => 'bool',
 			'wgUseDumbLinkUpdate' => 'bool',
 			'wgFixDoubleRedirects' => 'bool',
+			'wgInvalidRedirectTargets' => 'array',
 			'wgUsePathInfo' => 'bool',
 			'wgEnableAPI' => 'bool',
 			'wgEnableWriteAPI' => 'bool',
@@ -692,6 +695,7 @@ $settings = array(
 			'wgOpenSearchTemplate' => 'text',
 			'wgSearchForwardUrl' => 'text',
 			'wgSearchHighlightBoundaries' => 'text',
+			'wgUseTwoButtonsSearchForm' => 'bool',
 		),
 	),
 );
@@ -745,6 +749,7 @@ $arrayDefs = array(
 	'wgNamespacesToBeSearchedProject' => 'ns-bool',
 	'wgNamespacesWithSubpages' => 'ns-bool',
 	'wgNoFollowNsExceptions' => 'ns-simple',
+	'wgNoFollowDomainExceptions' => 'simple',
 	'wgNonincludableNamespaces' => 'ns-simple',
 	'wgSitemapNamespaces' => 'ns-simple',
 	'wgArticleRobotPolicies' => 'assoc',
@@ -781,6 +786,7 @@ $arrayDefs = array(
 	'wgHttpOnlyBlacklist' => 'simple',
 # Reduction
 	'wgDisableQueryPageUpdate' => 'simple',
+	'wgInvalidRedirectTargets' => 'simple',
 # Uploads
 	'wgFileBlacklist' => 'simple',
 	'wgFileExtensions' => 'simple',
@@ -1068,4 +1074,8 @@ $notEditableSettings = array(
  */
 $settingsVersion = array(
 	'wgNewPasswordExpiry' => array( array( '1.15alpha', '>=' ) ),
+	'wgMaxRedirects' => array( array( '1.15alpha', '>=' ) ),
+	'wgInvalidRedirectTargets' => array( array( '1.15alpha', '>=' ) ),
+	'wgNoFollowDomainExceptions' => array( array( '1.15alpha', '>=' ) ),
+	'wgUseTwoButtonsSearchForm' => array( array( '1.15alpha', '>=' ) ),
 );
