@@ -208,10 +208,12 @@ function initializeWikidata() {
 		
 	$wgRecordSetLanguage = 0;
 	
-	# malafaya: This is a hack to set page RTL according to user language prefs
-#	global $wgLang, $wgContLang, $wgIsUserRtl;
-#	$wgIsUserRtl = $wgLang->isRTL();
-#	$wgContLang = $wgLang;	// Set page contents language the same as user language (it will only affect RTL header)
+	# malafaya: Set RTL according to user language
+	global $wgLang, $wgOut;
+	if ($wgLang->isRTL())
+	{
+		$wgOut->addHTML('<style type="text/css">/*<![CDATA[*/ @import "/index.php?title=MediaWiki:Gadget-rtl.css&action=raw&ctype=text/css"; /*]]>*/</style>');
+	}
 
 	return true;
 }
