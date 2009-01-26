@@ -135,7 +135,7 @@ class OmegaWikiAttributes {
 		$t->collectionMembershipStructure = new Structure("collection-membership",$t->collectionId, $t->collectionMeaning, $t->sourceIdentifier);
 		$t->collectionMembership = new Attribute(null, wfMsgSc("CollectionMembership"), $t->collectionMembershipStructure);
 		$t->classMembershipId = new Attribute("class-membership-id", "Class membership id", "integer");	 
-		$t->class = new Attribute("class", "Class", $t->definedMeaningReferenceStructure);
+		$t->class = new Attribute("class", wfMsg('ow_Class'), $t->definedMeaningReferenceStructure);
 		$t->classMembershipStructure = new Structure("class-membership", $t->classMembershipId, $t->class);
 		$t->classMembership = new Attribute(null, wfMsgSc("ClassMembership"), $t->classMembershipStructure);
 		

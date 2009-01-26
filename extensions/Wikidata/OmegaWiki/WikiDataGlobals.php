@@ -153,10 +153,12 @@ $wgGotoSourceTemplates = array();	// Map of collection id => GotoSourceTemplate
 
 global
 	$wgDefinedMeaningPageTitlePrefix,
-	$wgExpressionPageTitlePrefix;
+	//$wgExpressionPageTitlePrefix;
+	$wgUseExpressionPageTitlePrefix;
 	
 $wgDefinedMeaningPageTitlePrefix = "";
-$wgExpressionPageTitlePrefix = "Multiple meanings";
+//$wgExpressionPageTitlePrefix = "Multiple meanings"; # Now it's localizable
+$wgUseExpressionPageTitlePrefix = true;	# malafaya: Use the expression prefix "Multiple meanings:" from message ow_Multiple_meanings
 
 // Search page
 

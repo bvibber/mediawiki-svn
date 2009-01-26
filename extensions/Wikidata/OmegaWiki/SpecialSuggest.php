@@ -458,8 +458,8 @@ function getClassAsRecordSet($queryResult) {
 	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
-	$classAttribute = new Attribute("class", "Class", "short-text");
-	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	$classAttribute = new Attribute("class", wfMsg('ow_Class'), "short-text");
+	$collectionAttribute = new Attribute("collection", wfMsg('ow_Collection'), "short-text");
 	
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $classAttribute, $collectionAttribute), new Structure($o->id));
 	
