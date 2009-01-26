@@ -208,6 +208,11 @@ function initializeWikidata() {
 		
 	$wgRecordSetLanguage = 0;
 	
+	# malafaya: This is a hack to set page RTL according to user language prefs
+	global $wgLang, $wgContLang, $wgIsUserRtl;
+	$wgIsUserRtl = $wgLang->isRTL();
+	$wgContLang = $wgLang;	// Set page contents language the same as user language (it will only affect RTL header)
+
 	return true;
 }
 
