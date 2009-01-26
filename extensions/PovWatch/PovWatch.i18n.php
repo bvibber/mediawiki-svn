@@ -41,6 +41,8 @@ Click the button below to subscribe.',
 	'povwatch_added'                   => 'added',
 	'right-povwatch_admin'             => 'Administer user rights for adding pages to watchlists of other users',
 	'right-povwatch_user'              => 'Add pages to watchlists of other users',
+	'action-povwatch_admin' => 'administer user rights for PovWatch',
+	'action-povwatch_user' => 'add this page to the watchlist of another user',
 );
 
 /** Message documentation (Message documentation)
