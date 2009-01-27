@@ -407,8 +407,9 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 	protected int buildBiLink() throws PersistenceException {
 		String sql = "insert ignore into "+relationTable.getSQLName()+" (concept1, concept2, bilink)" +
 		" select A.anchor, A.target, 1 from "+linkTable.getSQLName()+" as A " + 
+		" join "+linkTable.getSQLName()+" as B " + 
 		" force index (anchor_target) " + //NOTE: avoid table scan!
-		" join "+linkTable.getSQLName()+" as B on A.anchor = B.target AND B.anchor = A.target ";
+		" on A.anchor = B.target AND B.anchor = A.target ";
 		String suffix = " on duplicate key update bilink = bilink + values(bilink)"; 
 
 		return executeChunkedUpdate("finishGlobalConcepts", "similarities:bilink", sql, suffix, linkTable, "A.anchor", 5);
