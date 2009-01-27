@@ -2,7 +2,7 @@
 
 Name:                TSrsync
 Summary:             file transfer program
-Version:             3.0.2
+Version:             3.0.5
 Source:              http://samba.anu.edu.au/ftp/rsync/src/rsync-%{version}.tar.gz
 
 SUNW_BaseDir:        %{_basedir}
@@ -51,5 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man5/*
 
 %changelog
+* Tue Jan 27 2009 - river@loreley.flyingparchment.org.uk
+- 3.0.5
 * Thu Jun 19 2008 - river@wikimedia.org
 - initial spec

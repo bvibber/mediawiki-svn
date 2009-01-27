@@ -1135,5 +1135,5 @@ TMPDIR="/tmp"
 
 # End of EDITME for Exim 4.
 
-CC=cc
-#HAVE_IPV6=YES
+#CC=cc
+HAVE_IPV6=YES
