@@ -1,3 +1,11 @@
+squid (2.7.5-1wm1) hardy; urgency=low
+
+  * New upstream release
+  * Updated patches 23-vary-invalidation, 26-vary_options, 20-wikimedia-errors
+  * Updated the rules file to install logfile-daemon
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 27 Jan 2009 17:30:32 +0000
+
 squid (2.6.18-1wm2) gutsy; urgency=low
 
   * Added X-Vary-Options feature. Replaces 22-normalize-requestAE.dpatch .

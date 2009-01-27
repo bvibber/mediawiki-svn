@@ -267,6 +267,7 @@ binary-arch:	build checkroot
 	#
 	$(INSTALL_PROGRAM) src/squid $(tmp)/usr/sbin
 	$(INSTALL_PROGRAM) src/unlinkd src/fs/diskd-daemon $(tmp)/usr/lib/squid
+	$(INSTALL_PROGRAM) src/logfile-daemon $(tmp)/usr/lib/squid
 	$(INSTALL_FILE) debian/logrotate $(tmp)/etc/logrotate.d/squid
 	$(INSTALL_SCRIPT) debian/squid.resolvconf $(tmp)/etc/resolvconf/update-libc.d/squid
 	$(INSTALL_PROGRAM) helpers/basic_auth/SMB/smb_auth $(tmp)$(libexecdir)

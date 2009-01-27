@@ -5,15 +5,15 @@
 ## DP: Wikimedia specific error messages
 
 @DPATCH@
-diff -urNad squid-2.6.3~/errors/Makefile.am squid-2.6.3/errors/Makefile.am
---- squid-2.6.3~/errors/Makefile.am	2006-09-18 16:52:26.000000000 +0000
-+++ squid-2.6.3/errors/Makefile.am	2006-09-18 16:56:24.000000000 +0000
-@@ -41,7 +41,8 @@
- 		Spanish \
- 		Swedish \
- 		Traditional_Chinese \
--		Turkish
-+		Turkish \
+diff -urNad squid-2.7.5~/errors/Makefile.am squid-2.7.5/errors/Makefile.am
+--- squid-2.7.5~/errors/Makefile.am	2009-01-27 15:12:13.000000000 +0000
++++ squid-2.7.5/errors/Makefile.am	2009-01-27 15:15:11.000000000 +0000
+@@ -45,7 +45,8 @@
+ 		Turkish \
+ 		Ukrainian-1251 \
+ 		Ukrainian-koi8-u \
+-		Ukrainian-utf8
++		Ukrainian-utf8 \
 +		Wikimedia
  
  install-data-local:
