@@ -517,7 +517,7 @@ function getClassAttributesEditor(ViewInformation $viewInformation) {
 	$tableEditor->addEditor(new ClassAttributesLevelDefinedMeaningEditor($o->classAttributeLevel, new SimplePermissionController(false), true));
 	$tableEditor->addEditor(new DefinedMeaningReferenceEditor($o->classAttributeAttribute, new SimplePermissionController(false), true));
 	$tableEditor->addEditor(new ClassAttributesTypeEditor($o->classAttributeType, new SimplePermissionController(false), true));
-	$tableEditor->addEditor(new PopupEditor(getOptionAttributeOptionsEditor(), 'Options'));
+	$tableEditor->addEditor(new PopupEditor(getOptionAttributeOptionsEditor(), wfMsg('ow_OptionAttributeOptions')));
 
 	addTableMetadataEditors($tableEditor, $viewInformation);
 	

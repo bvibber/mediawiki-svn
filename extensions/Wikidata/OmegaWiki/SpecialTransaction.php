@@ -8,8 +8,8 @@ require_once("Utilities.php");
 
 
 function wfSpecialTransaction() {
-        global $wgMessageCache;
-                $wgMessageCache->addMessages(array('transaction'=>'Wikidata: Transaction log'),'en');
+        #global $wgMessageCache;
+        #        $wgMessageCache->addMessages(array('transaction'=>'Wikidata: Transaction log'),'en');
                 
 	class SpecialTransaction extends SpecialPage {
 		function SpecialTransaction() {
@@ -127,9 +127,10 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 
 function initializeAttributes() {
 
+	# malafaya: probably all these attributes need localization
 	$o=OmegaWikiAttributes::getInstance();
-	$o->operation = new Attribute('operation', 'Operation', 'text');
-	$o->isLatest = new Attribute('is-latest', 'Is latest', 'boolean');
+	$o->operation = new Attribute('operation', wfMsg('ow_transaction_operation'), 'text');
+	$o->isLatest = new Attribute('is-latest', wfMsg('ow_transaction_is_latest'), 'boolean');
 
 	$o->rollBackStructure = new Structure($o->isLatest, $o->operation);
 	$o->rollBack = new Attribute('roll-back', 'Roll back', $o->rollBackStructure);
@@ -155,7 +156,7 @@ function initializeAttributes() {
 		$o->isLatest
 	);		
 	
-	$o->updatedDefinition = new Attribute('updated-definition', 'Definition', $o->updatedDefinitionStructure);
+	$o->updatedDefinition = new Attribute('updated-definition', wfMsg('ow_Definition'), $o->updatedDefinitionStructure);
 
 	$o->updatedSyntransesStructure = new Structure(
 		$o->syntransId,
@@ -167,7 +168,7 @@ function initializeAttributes() {
 		$o->operation
 	); 
 	
-	$o->updatedSyntranses = new Attribute('updated-syntranses', 'Synonyms and translations', $o->updatedSyntransesStructure);
+	$o->updatedSyntranses = new Attribute('updated-syntranses', wfMsg('ow_SynonymsAndTranslations'), $o->updatedSyntransesStructure);
 	
 	$o->firstMeaning = new Attribute('first-meaning', "First defined meaning", $o->definedMeaningReferenceStructure);
 	$o->secondMeaning = new Attribute('second-meaning', "Second defined meaning", $o->definedMeaningReferenceStructure);
@@ -199,7 +200,7 @@ function initializeAttributes() {
 	
 
 		
-	$o->collectionMember = new Attribute('collection-member', 'Collection member', $o->definedMeaningReferenceStructure);
+	$o->collectionMember = new Attribute('collection-member', wfMsg('ow_CollectionMember'), $o->definedMeaningReferenceStructure);
 	$o->collectionMemberId = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
 	
 	$o->updatedCollectionMembershipStructure = new Structure(
@@ -295,7 +296,7 @@ function initializeAttributes() {
 	
 	$o->updatedClassAttributes = new Attribute('updated-class-attributes', 'Class attributes', $o->updatedClassAttributesStructure);
 
-	$o->alternativeDefinitionText = new Attribute('alternative-definition-text', 'Definition', $o->translatedTextStructure);
+	$o->alternativeDefinitionText = new Attribute('alternative-definition-text', wfMsg('ow_Definition'), $o->translatedTextStructure);
 	$o->source = new Attribute('source', 'Source', $o->definedMeaningReferenceStructure);
 
 	$o->updatedAlternativeDefinitionsStructure = new Structure(

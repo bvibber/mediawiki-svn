@@ -636,7 +636,7 @@ function getLanguageAsRecordSet($queryResult) {
 	$o=OmegaWikiAttributes::getInstance();
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$languageAttribute = new Attribute("language", "Language", "short-text");
+	$languageAttribute = new Attribute("language", wfMsg('ow_Language'), "short-text");
 	
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $languageAttribute), new Structure($o->id));
 	

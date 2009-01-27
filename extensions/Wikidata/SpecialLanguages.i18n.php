@@ -36,7 +36,7 @@ $wdMessages['en'] = array(
 	'ow_importtsv_header'					=> '<p>Import definitions and translations from a tab delimited text file that you may have exported from OpenOffice.org, Excel or other spreadsheet software.</p>
 <p>The format of the file must be the same as the files exported on the ExportTSV page. If you\'ve changed the column names, the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO-639_3 language code.</p>
 <p>If the \'test run\' box is checked, any actions that would be taken are reported, but no changes are actually made. You are encouraged to do a test run before you do an actual import.</p>',
-	'ow_importtsv_not_allowed'				=> 'You do not have permission to do a tsv import.',
+	'ow_importtsv_not_allowed'				=> 'You do not have permission to do a TSV import.',
 	'ow_importtsv_importing'				=> 'Importing TSV data',
 	'ow_importtsv_import_failed'			=> 'Import failed',
 	'ow_importtsv_file'						=> 'TSV File:',
@@ -57,6 +57,10 @@ Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
 	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => 'None selected',
 
+	'transaction'							=> 'Wikidata: Transaction log',
+	'ow_transaction_operation'				=> 'Operation',
+	'ow_transaction_is_latest'				=> 'Is latest',
+	
 	'conceptmapping'						=> 'Wikidata: Concept mapping',
 	'ow_conceptmapping_title'				=> 'Concept Mapping',
 	'ow_conceptmapping_help'                => '<p>possible actions: <ul>
@@ -82,6 +86,7 @@ Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
 Please check the web address.',
 	'ow_dm_missing'                         => 'This page seems to point to a non-existent DefinedMeaning (concept).
 Please check the web address.',
+
 	'ow_AddHint'   							=> 'Enter new rows to add',
 	'ow_AlternativeDefinition'              => 'Alternative definition',
 	'ow_AlternativeDefinitions'             => 'Alternative definitions',
@@ -95,6 +100,7 @@ Please check the web address.',
 	'ow_ClassMembership'                    => 'Class membership',
 	'ow_Collection'                         => 'Collection',
 	'ow_Collection_colon'					=> 'Collection:',
+	'ow_CollectionMember'					=> 'Collection member',
 	'ow_CollectionMembership'               => 'Collection membership',
 	'ow_Definition'                         => 'Definition',
 	'ow_DefinedMeaningAttributes'           => 'Annotation',
