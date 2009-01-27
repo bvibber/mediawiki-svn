@@ -27,11 +27,6 @@ class DataCenterWidgetFieldLinks extends DataCenterWidget {
 		 * @datatype	DataCenterField
 		 */
 		'field' => null,
-		/**
-		 * Current Path
-		 * @datatype	array
-		 */
-		'path' => null,
 	);
 
 	private static $targets = array(
@@ -102,6 +97,8 @@ class DataCenterWidgetFieldLinks extends DataCenterWidget {
 		array $parameters
 	) {
 		global $wgUser;
+		// Gets current path
+		$path = DataCenterPage::getPath();
 		// Sets Defaults
 		$parameters = array_merge( self::$defaultParameters, $parameters );
 		// Begins widget
@@ -123,7 +120,7 @@ class DataCenterWidgetFieldLinks extends DataCenterWidget {
 			'id' => 'form_fieldlinks',
 			'name' => 'form_fieldlinks',
 			'method' => 'post',
-			'action' => DataCenterXml::url( $parameters['path'] ),
+			'action' => DataCenterXml::url( $path ),
 		);
 		// Begins form
 		$xmlOutput .= DataCenterXml::open( 'form', $formAttributes );
@@ -249,7 +246,7 @@ class DataCenterWidgetFieldLinks extends DataCenterWidget {
 			array(
 				'type' => 'hidden',
 				'name' => 'success',
-				'value' => DataCenterXml::url( $parameters['path'] )
+				'value' => DataCenterXml::url( $path )
 			)
 		);
 		// Adds failure field
@@ -258,7 +255,7 @@ class DataCenterWidgetFieldLinks extends DataCenterWidget {
 			array(
 				'type' => 'hidden',
 				'name' => 'failure',
-				'value' => DataCenterXml::url( $parameters['path'] )
+				'value' => DataCenterXml::url( $path )
 			)
 		);
 		// Adds canellation field
@@ -267,7 +264,7 @@ class DataCenterWidgetFieldLinks extends DataCenterWidget {
 			array(
 				'type' => 'hidden',
 				'name' => 'cancellation',
-				'value' => DataCenterXml::url( $parameters['path'] )
+				'value' => DataCenterXml::url( $path )
 			)
 		);
 		$xmlOutput .= DataCenterXml::close( 'form' );

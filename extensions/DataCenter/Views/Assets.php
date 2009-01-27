@@ -156,6 +156,33 @@ class DataCenterViewAssets extends DataCenterView {
 		);
 	}
 
+	public function export(
+		$path
+	) {
+		// Returns single columm layout with a table
+		return DataCenterUI::renderLayout(
+			'columns',
+			array(
+				DataCenterUI::renderLayout(
+					'rows',
+					array(
+						DataCenterUI::renderWidget(
+							'heading', array( 'message' => 'export' )
+						),
+						DataCenterUI::renderWidget(
+							'export',
+							array(
+								'category' => 'asset',
+								'type' => $path['type']
+							)
+						),
+					)
+				),
+				' '
+			)
+		);
+	}
+
 	public function view(
 		$path
 	) {

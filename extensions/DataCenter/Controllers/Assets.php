@@ -42,6 +42,14 @@ class DataCenterControllerAssets extends DataCenterController {
 				'action' => 'view',
 				'id' => $path['id'],
 			);
+		} else {
+			if ( DataCenterPage::userCan( 'export' ) ) {
+				$this->actions['export'] = array(
+					'page' => 'assets',
+					'type' => $path['type'],
+					'action' => 'export',
+				);
+			}
 		}
 	}
 
@@ -57,6 +65,17 @@ class DataCenterControllerAssets extends DataCenterController {
 		$asset->saveMetaValues( $data['meta'] );
 		$asset->insertChange( $data['change'] );
 		return true;
+	}
+
+	public function export(
+		array $data,
+		$type
+	) {
+		if ( !DataCenterPage::userCan( 'export' ) ) {
+			return false;
+		}
+		DataCenterWidgetExport::export( $data );
+		return null;
 	}
 
 	public function compareChanges(

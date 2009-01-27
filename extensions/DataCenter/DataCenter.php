@@ -90,6 +90,7 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, array(
 	'DataCenterWidgetActions' => $dir . 'UI/Widgets/Actions.php',
 	'DataCenterWidgetBody' => $dir . 'UI/Widgets/Body.php',
 	'DataCenterWidgetDetails' => $dir . 'UI/Widgets/Details.php',
+	'DataCenterWidgetExport' => $dir . 'UI/Widgets/Export.php',
 	'DataCenterWidgetFieldLinks' => $dir . 'UI/Widgets/FieldLinks.php',
 	'DataCenterWidgetForm' => $dir . 'UI/Widgets/Form.php',
 	'DataCenterWidgetGallery' => $dir . 'UI/Widgets/Gallery.php',

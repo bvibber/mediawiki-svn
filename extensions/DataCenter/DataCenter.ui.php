@@ -877,6 +877,7 @@ class DataCenterUI {
 		'actions' => 'DataCenterWidgetActions',
 		'body' => 'DataCenterWidgetBody',
 		'details' => 'DataCenterWidgetDetails',
+		'export' => 'DataCenterWidgetExport',
 		'fieldlinks' => 'DataCenterWidgetFieldLinks',
 		'form' => 'DataCenterWidgetForm',
 		'gallery' => 'DataCenterWidgetGallery',
@@ -930,9 +931,12 @@ class DataCenterUI {
 	 */
 	public static function message(
 		$type,
-		$name,
+		$name = null,
 		$arguments = null
 	) {
+		if ( !$name ) {
+			return wfMsg( $type );
+		}
 		return wfMsgExt(
 			"datacenter-ui-{$type}-{$name}",
 			array( 'parsemag', 'parseinline' ),
