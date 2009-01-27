@@ -48,11 +48,11 @@ cp="$cp"`getconf /etc/wikiword/classpath ":"`
 cp="$cp"`getconf "$dir/local.classpath" ":"`
 
 if [ -z "$cp" ]; then
-	for j in `find "$dir" -path "$dir/lib/*.jar"`; do
+	for j in `find "$dir" -name "*.jar" | grep "^$dir/lib/"`; do
 	    cp="$cp:$j"
 	done
 	
-	for j in `find "$dir/.." -path "$dir/../WikiWord*/lib/*.jar"`; do
+	for j in `find "$dir/.." -name "*.jar" | grep "^$dir/\.\./WikiWord.*/lib/"`; do
 	    cp="$cp:$j"
 	done
 fi

@@ -11,8 +11,8 @@ if [ -f "$dir/ww.sh" ]; then
 	ww="$dir/ww.sh"
 elif [ -f "$dir/../WikiWord/ww.sh" ]; then
 	ww="$dir/../WikiWord/ww.sh"
-elif [ -f "$dir/../WikiWord-0.1/ww.sh" ]; then
-	ww="$dir/../WikiWord-0.1/ww.sh"
+elif [ -f "$dir"/../WikiWord-0.?/ww.sh ]; then
+	ww=`echo "$dir"/../WikiWord-0.?/ww.sh`
 else
 	echo "ww.sh not found!"
 	exit 5
