@@ -5,29 +5,27 @@
 ## DP: No description.
 
 @DPATCH@
-diff -urNad squid-2.6.12~/src/client_side.c squid-2.6.12/src/client_side.c
---- squid-2.6.12~/src/client_side.c	2007-03-20 21:26:34.000000000 +0000
-+++ squid-2.6.12/src/client_side.c	2007-03-25 17:04:08.000000000 +0000
-@@ -2169,6 +2169,18 @@
-     case VARY_CANCEL:
- 	/* varyEvaluateMatch found a object loop. Process as miss */
- 	debug(33, 1) ("clientProcessHit: Vary object loop!\n");
-+	storeClientUnregister(http->sc, e, http);
-+	http->sc = NULL;
-+	clientProcessMiss(http);
-+	return;
-+    case VARY_EXPIRED:
-+	/* Variant is expired. Delete it and process as a miss. */
-+	debug(33, 2) ("clientProcessHit: Variant expired, deleting\n");
-+	storeClientUnregister(http->sc, e, http);
-+	http->sc = NULL;
-+	storeRelease(e);
-+	storeUnlockObject(e);
-+	http->entry = NULL;
+diff -urNad squid-2.7.5~/src/client_side.c squid-2.7.5/src/client_side.c
+--- squid-2.7.5~/src/client_side.c	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/client_side.c	2009-01-27 16:13:27.000000000 +0000
+@@ -2331,6 +2331,16 @@
+ 	http->sc = NULL;
  	clientProcessMiss(http);
  	return;
++    case VARY_EXPIRED:
++        /* Variant is expired. Delete it and process as a miss. */
++        debug(33, 2) ("clientProcessHit: Variant expired, deleting\n");
++        storeClientUnregister(http->sc, e, http);
++        http->sc = NULL;
++        storeRelease(e);
++        storeUnlockObject(e);
++        http->entry = NULL;
++        clientProcessMiss(http);
++        return;
      }
-@@ -4951,6 +4963,8 @@
+     if (r->method == METHOD_PURGE) {
+ 	http->entry = NULL;
+@@ -5086,6 +5096,8 @@
  	 */
  	vary = httpMakeVaryMark(request, entry->mem_obj->reply);
  	if (vary) {
@@ -36,7 +34,7 @@ diff -urNad squid-2.6.12~/src/client_side.c squid-2.6.12/src/client_side.c
  	    return VARY_OTHER;
  	} else {
  	    /* Ouch.. we cannot handle this kind of variance */
-@@ -4968,6 +4982,13 @@
+@@ -5103,6 +5115,13 @@
  	    /* This request was merged before we knew the outcome. Don't trust the response */
  	    /* restart vary processing from the beginning */
  	    return VARY_RESTART;
@@ -50,9 +48,9 @@ diff -urNad squid-2.6.12~/src/client_side.c squid-2.6.12/src/client_side.c
  	} else {
  	    return VARY_MATCH;
  	}
-diff -urNad squid-2.6.12~/src/comm_generic.c squid-2.6.12/src/comm_generic.c
---- squid-2.6.12~/src/comm_generic.c	2006-10-31 18:25:15.000000000 +0000
-+++ squid-2.6.12/src/comm_generic.c	2007-03-25 17:04:08.000000000 +0000
+diff -urNad squid-2.7.5~/src/comm_generic.c squid-2.7.5/src/comm_generic.c
+--- squid-2.7.5~/src/comm_generic.c	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/comm_generic.c	2009-01-27 16:13:27.000000000 +0000
 @@ -360,7 +360,7 @@
      int rc;
      double start = current_dtime;
@@ -62,18 +60,18 @@ diff -urNad squid-2.6.12~/src/comm_generic.c squid-2.6.12/src/comm_generic.c
  
      if (msec > MAX_POLL_TIME)
  	msec = MAX_POLL_TIME;
-diff -urNad squid-2.6.12~/src/enums.h squid-2.6.12/src/enums.h
---- squid-2.6.12~/src/enums.h	2007-03-03 18:34:13.000000000 +0000
-+++ squid-2.6.12/src/enums.h	2007-03-25 17:04:08.000000000 +0000
-@@ -654,6 +654,7 @@
+diff -urNad squid-2.7.5~/src/enums.h squid-2.7.5/src/enums.h
+--- squid-2.7.5~/src/enums.h	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/enums.h	2009-01-27 16:13:27.000000000 +0000
+@@ -661,6 +661,7 @@
      STORE_META_VARY_HEADERS,	/* Stores Vary request headers */
      STORE_META_STD_LFS,		/* standard metadata in lfs format */
      STORE_META_OBJSIZE,		/* object size, if its known */
 +    STORE_META_VARY_ID,         /* Unique ID linking variants */
+     STORE_META_STOREURL,	/* the store url, if different to the normal URL */
      STORE_META_END
  };
- 
-@@ -747,7 +748,8 @@
+@@ -755,7 +756,8 @@
      VARY_MATCH,
      VARY_OTHER,
      VARY_RESTART,
@@ -83,10 +81,10 @@ diff -urNad squid-2.6.12~/src/enums.h squid-2.6.12/src/enums.h
  };
  
  /* Windows Port */
-diff -urNad squid-2.6.12~/src/http.c squid-2.6.12/src/http.c
---- squid-2.6.12~/src/http.c	2007-03-25 17:04:07.000000000 +0000
-+++ squid-2.6.12/src/http.c	2007-03-25 17:04:08.000000000 +0000
-@@ -227,7 +227,7 @@
+diff -urNad squid-2.7.5~/src/http.c squid-2.7.5/src/http.c
+--- squid-2.7.5~/src/http.c	2009-01-27 16:13:27.000000000 +0000
++++ squid-2.7.5/src/http.c	2009-01-27 16:13:27.000000000 +0000
+@@ -229,7 +229,7 @@
      const char *v;
  #if HTTP_VIOLATIONS
      const refresh_t *R = NULL;
@@ -95,20 +93,21 @@ diff -urNad squid-2.6.12~/src/http.c squid-2.6.12/src/http.c
       * and then checks if the specified flag is set. The main purpose
       * of this is to simplify the refresh pattern lookup
       */
-diff -urNad squid-2.6.12~/src/protos.h squid-2.6.12/src/protos.h
---- squid-2.6.12~/src/protos.h	2007-03-25 17:04:07.000000000 +0000
-+++ squid-2.6.12/src/protos.h	2007-03-25 17:04:08.000000000 +0000
-@@ -1416,6 +1416,6 @@
+diff -urNad squid-2.7.5~/src/protos.h squid-2.7.5/src/protos.h
+--- squid-2.7.5~/src/protos.h	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/protos.h	2009-01-27 16:13:27.000000000 +0000
+@@ -1468,7 +1468,7 @@
  /* ETag support */
  void storeLocateVaryDone(VaryData * data);
  void storeLocateVary(StoreEntry * e, int offset, const char *vary_data, String accept_encoding, STLVCB * callback, void *cbdata);
--void storeAddVary(const char *url, const char *log_url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
-+vary_id_t storeAddVary(const char *url, const char *log_url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
+-void storeAddVary(const char *url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
++vary_id_t storeAddVary(const char *url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding);
  
- #endif /* SQUID_PROTOS_H */
-diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
---- squid-2.6.12~/src/store.c	2007-02-07 00:39:49.000000000 +0000
-+++ squid-2.6.12/src/store.c	2007-03-25 17:04:08.000000000 +0000
+ /* New HTTP message parsing support */
+ extern void HttpMsgBufInit(HttpMsgBuf * hmsg, const char *buf, size_t size);
+diff -urNad squid-2.7.5~/src/store.c squid-2.7.5/src/store.c
+--- squid-2.7.5~/src/store.c	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/store.c	2009-01-27 16:14:16.000000000 +0000
 @@ -87,6 +87,7 @@
  static void storeEntryDereferenced(StoreEntry *);
  static int getKeyCounter(void);
@@ -117,7 +116,7 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
  static OBJH storeCheckCachableStats;
  static EVH storeLateRelease;
  
-@@ -323,8 +324,9 @@
+@@ -347,8 +348,9 @@
  StoreEntry *
  storeGet(const cache_key * key)
  {
@@ -129,7 +128,7 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
  }
  
  StoreEntry *
-@@ -428,6 +430,11 @@
+@@ -452,6 +454,11 @@
  		storeAppendPrintf(state->e, "ETag: %s\n", state->etag);
  	    storeAppendPrintf(state->e, "VaryData: %s\n", state->vary_headers);
  	}
@@ -141,7 +140,7 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
  	storeTimestampsSet(state->e);
  	storeComplete(state->e);
  	storeTimestampsSet(state->e);
-@@ -539,6 +546,7 @@
+@@ -563,6 +570,7 @@
      debug(11, 3) ("storeAddVaryReadOld: %p seen_offset=%" PRINTF_OFF_T " buf_offset=%d size=%d\n", data, state->seen_offset, (int) state->buf_offset, (int) size);
      if (size <= 0) {
  	debug(11, 2) ("storeAddVaryReadOld: DONE\n");
@@ -149,7 +148,7 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
  	cbdataFree(state);
  	return;
      }
-@@ -683,11 +691,13 @@
+@@ -707,11 +715,13 @@
  /*
   * Adds/updates a Vary record.
   * For updates only one of key or etag needs to be specified
@@ -159,48 +158,37 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
   */
 -void
 +vary_id_t
- storeAddVary(const char *url, const char *log_url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding)
+ storeAddVary(const char *url, const method_t method, const cache_key * key, const char *etag, const char *vary, const char *vary_headers, const char *accept_encoding)
  {
 +    vary_id_t vary_id = {0, 0};
      AddVaryState *state;
-     http_version_t version;
      request_flags flags = null_request_flags;
-@@ -704,14 +714,20 @@
-     state->oe = storeGetPublic(url, method);
-     debug(11, 2) ("storeAddVary: %s (%s) %s %s\n",
- 	state->url, state->key, state->vary_headers, state->etag);
--    if (state->oe)
-+    if (state->oe) {
- 	storeLockObject(state->oe);
-+    } 
-     flags.cachable = 1;
-     state->e = storeCreateEntry(url, log_url, flags, method);
-     httpBuildVersion(&version, 1, 0);
-     httpReplySetHeaders(state->e->mem_obj->reply, version, HTTP_OK, "Internal marker object", "x-squid-internal/vary", -1, -1, squid_curtime + 100000);
+     CBDATA_INIT_TYPE_FREECB(AddVaryState, free_AddVaryState);
+@@ -734,6 +744,11 @@
+     httpReplySetHeaders(state->e->mem_obj->reply, HTTP_OK, "Internal marker object", "x-squid-internal/vary", -1, -1, squid_curtime + 100000);
      httpHeaderPutStr(&state->e->mem_obj->reply->header, HDR_VARY, vary);
      storeSetPublicKey(state->e);
 +    if (!state->oe) {
-+	/* New entry, create new unique ID */
-+	initVaryId(&vary_id);
-+	state->e->mem_obj->vary_id = vary_id;
++        /* New entry, create new unique ID */
++        initVaryId(&vary_id);
++        state->e->mem_obj->vary_id = vary_id;
 +    }
      storeBuffer(state->e);
      httpReplySwapOut(state->e->mem_obj->reply, state->e);
      if (state->oe) {
-@@ -729,8 +745,10 @@
- 	 * - VaryData is added last in the Key record it corresponds to (after
+@@ -752,7 +767,10 @@
  	 *   modifications above)
  	 */
--	/* Swap in the dummy Vary object */
+ 	/* Swap in the dummy Vary object */
 -	if (!state->oe->mem_obj) {
 +	if (state->oe->mem_obj) {
-+	    vary_id = state->oe->mem_obj->vary_id;
-+	} else {
++            vary_id = state->oe->mem_obj->vary_id;
++        else {
 +	    /* Swap in the dummy Vary object. vary_id is unknown for now */
- 	    storeCreateMemObject(state->oe, state->url, log_url);
+ 	    storeCreateMemObject(state->oe, state->url);
  	    state->oe->mem_obj->method = method;
  	}
-@@ -742,10 +760,10 @@
+@@ -764,10 +782,10 @@
  	    state->buf,
  	    storeAddVaryReadOld,
  	    state);
@@ -212,7 +200,7 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
  }
  
  static MemPool *VaryData_pool = NULL;
-@@ -788,9 +806,10 @@
+@@ -810,9 +828,10 @@
  static void
  storeLocateVaryCallback(LocateVaryState * state)
  {
@@ -224,7 +212,7 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
  	    state->callback(data, state->callback_data);
  	    state->data = NULL;	/* now owned by the caller */
  	} else {
-@@ -967,6 +986,7 @@
+@@ -989,6 +1008,7 @@
      StoreEntry *e2 = NULL;
      const cache_key *newkey;
      MemObject *mem = e->mem_obj;
@@ -232,7 +220,7 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
      if (e->hash.key && !EBIT_TEST(e->flags, KEY_PRIVATE)) {
  	if (EBIT_TEST(e->flags, KEY_EARLY_PUBLIC)) {
  	    EBIT_CLR(e->flags, KEY_EARLY_PUBLIC);
-@@ -1020,6 +1040,7 @@
+@@ -1042,6 +1062,7 @@
  	newkey = storeKeyPublicByRequest(mem->request);
  	if (mem->vary_headers && !EBIT_TEST(e->flags, KEY_EARLY_PUBLIC)) {
  	    String vary = StringNull;
@@ -240,45 +228,47 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
  	    String varyhdr;
  	    varyhdr = httpHeaderGetList(&mem->reply->header, HDR_VARY);
  	    if (strBuf(varyhdr))
-@@ -1032,7 +1053,27 @@
+@@ -1054,8 +1075,28 @@
  		strListAdd(&vary, strBuf(varyhdr), ',');
  	    stringClean(&varyhdr);
  #endif
--	    storeAddVary(mem->url, mem->log_url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
-+	    /* Create or update the vary object */
-+	    vary_id = storeAddVary(mem->url, mem->log_url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
-+	    if (vary_id.create_time)  {
-+		mem->vary_id = vary_id;
-+	    } else {
-+		/* Base vary object is not swapped in, so the vary_id is unknown.
-+		 * Maybe we can cheat and use the vary_id from the request. If the 
-+		 * base object existed earlier in the request, it would have been
-+		 * swapped in and stored at that time.
-+		 */
-+		if (mem->request->vary_id.create_time) {
-+		    mem->vary_id = mem->request->vary_id;
-+		} else {
-+		    /* Nope, no luck. Store with zero vary_id, which will immediately 
-+		     * be treated as expired.
-+		     * FIXME: make this work properly.
-+		     */
-+		    debug(20, 1) ("storeSetPublicKey: unable to determine vary_id for '%s'\n", mem->url);
-+		}
-+	    }
-+	    
- 	    stringClean(&vary);
+-	    storeAddVary(mem->url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
+-	    stringClean(&vary);
++            /* Create or update the vary object */
++            vary_id = storeAddVary(mem->url, mem->log_url, mem->method, newkey, httpHeaderGetStr(&mem->reply->header, HDR_ETAG), strBuf(vary), mem->vary_headers, mem->vary_encoding);
++            if (vary_id.create_time)  {
++                mem->vary_id = vary_id;
++            } else {
++                /* Base vary object is not swapped in, so the vary_id is unknown.
++                 * Maybe we can cheat and use the vary_id from the request. If the 
++                 * base object existed earlier in the request, it would have been
++                 * swapped in and stored at that time.
++                 */
++                if (mem->request->vary_id.create_time) {
++                    mem->vary_id = mem->request->vary_id;
++                } else {
++                    /* Nope, no luck. Store with zero vary_id, which will immediately 
++                     * be treated as expired.
++                     * FIXME: make this work properly.
++                     */
++                    debug(20, 1) ("storeSetPublicKey: unable to determine vary_id for '%s'\n", mem->url);
++                }
++            }
++ 
++            stringClean(&vary);
  	}
      } else {
-@@ -1740,6 +1781,8 @@
-     debug(20, 1) ("MemObject->log_url: %p %s\n",
- 	mem->log_url,
- 	checkNullString(mem->log_url));
-+    debug(20, 1)( "MemObject->vary_id: %ld.%u\n",
-+	mem->vary_id.create_time, mem->vary_id.serial);
+ 	newkey = storeKeyPublic(storeLookupUrl(e), mem->method);
+@@ -1829,6 +1870,8 @@
+     debug(20, 1) ("MemObject->url: %p %s\n",
+ 	mem->url,
+ 	checkNullString(mem->url));
++    debug(20, 1) ("MemObject->vary_id: %ld.%u\n",
++        mem->vary_id.create_time, mem->vary_id.serial);
  }
  
  void
-@@ -2010,3 +2053,15 @@
+@@ -2112,3 +2155,15 @@
      if (e->mem_obj)
  	e->mem_obj->serverfd = -1;
  }
@@ -294,10 +284,10 @@ diff -urNad squid-2.6.12~/src/store.c squid-2.6.12/src/store.c
 +    vary_id->create_time = squid_curtime;
 +    vary_id->serial = serial++;
 +}
-diff -urNad squid-2.6.12~/src/store_client.c squid-2.6.12/src/store_client.c
---- squid-2.6.12~/src/store_client.c	2006-06-05 22:47:01.000000000 +0000
-+++ squid-2.6.12/src/store_client.c	2007-03-25 17:04:08.000000000 +0000
-@@ -446,6 +446,9 @@
+diff -urNad squid-2.7.5~/src/store_client.c squid-2.7.5/src/store_client.c
+--- squid-2.7.5~/src/store_client.c	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/store_client.c	2009-01-27 16:13:27.000000000 +0000
+@@ -441,6 +441,9 @@
  		mem->vary_headers = xstrdup(t->value);
  	    }
  	    break;
@@ -307,21 +297,21 @@ diff -urNad squid-2.6.12~/src/store_client.c squid-2.6.12/src/store_client.c
  	default:
  	    debug(20, 2) ("WARNING: got unused STORE_META type %d\n", t->type);
  	    break;
-diff -urNad squid-2.6.12~/src/store_swapmeta.c squid-2.6.12/src/store_swapmeta.c
---- squid-2.6.12~/src/store_swapmeta.c	2006-07-29 14:44:49.000000000 +0000
-+++ squid-2.6.12/src/store_swapmeta.c	2007-03-25 17:04:08.000000000 +0000
+diff -urNad squid-2.7.5~/src/store_swapmeta.c squid-2.7.5/src/store_swapmeta.c
+--- squid-2.7.5~/src/store_swapmeta.c	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/store_swapmeta.c	2009-01-27 16:13:27.000000000 +0000
 @@ -86,6 +86,7 @@
      vary = e->mem_obj->vary_headers;
      if (vary)
  	T = storeSwapTLVAdd(STORE_META_VARY_HEADERS, vary, strlen(vary) + 1, T);
 +    storeSwapTLVAdd(STORE_META_VARY_ID, &e->mem_obj->vary_id, sizeof(vary_id_t), T);
+     if (e->mem_obj->store_url)
+ 	T = storeSwapTLVAdd(STORE_META_STOREURL, e->mem_obj->store_url, strlen(e->mem_obj->store_url) + 1, T);
      return TLV;
- }
- 
-diff -urNad squid-2.6.12~/src/structs.h squid-2.6.12/src/structs.h
---- squid-2.6.12~/src/structs.h	2007-03-25 17:04:07.000000000 +0000
-+++ squid-2.6.12/src/structs.h	2007-03-25 17:04:08.000000000 +0000
-@@ -1686,6 +1686,11 @@
+diff -urNad squid-2.7.5~/src/structs.h squid-2.7.5/src/structs.h
+--- squid-2.7.5~/src/structs.h	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/structs.h	2009-01-27 16:13:27.000000000 +0000
+@@ -1732,6 +1732,11 @@
      void (*Done) (RemovalPurgeWalker * walker);
  };
  
@@ -333,15 +323,15 @@ diff -urNad squid-2.6.12~/src/structs.h squid-2.6.12/src/structs.h
  /* This structure can be freed while object is purged out from memory */
  struct _MemObject {
      method_t method;
-@@ -1724,6 +1729,7 @@
-     const char *vary_encoding;
-     StoreEntry *ims_entry;
+@@ -1772,6 +1777,7 @@
+     StoreEntry *old_entry;
      time_t refresh_timestamp;
+     time_t stale_while_revalidate;
 +    vary_id_t vary_id;
  };
  
  struct _StoreEntry {
-@@ -1901,6 +1907,7 @@
+@@ -1954,6 +1960,7 @@
      char *vary_headers;		/* Used when varying entities are detected. Changes how the store key is calculated */
      String vary_encoding;	/* Used when varying entities are detected. Changes how the store key is calculated. */
      VaryData *vary;
@@ -349,10 +339,10 @@ diff -urNad squid-2.6.12~/src/structs.h squid-2.6.12/src/structs.h
      Array *etags;		/* possible known entity tags (Vary MISS) */
      char *etag;			/* current entity tag, cache validation */
      unsigned int done_etag:1;	/* We have done clientProcessETag on this, don't attempt it again */
-diff -urNad squid-2.6.12~/src/typedefs.h squid-2.6.12/src/typedefs.h
---- squid-2.6.12~/src/typedefs.h	2006-09-02 14:08:42.000000000 +0000
-+++ squid-2.6.12/src/typedefs.h	2007-03-25 17:04:08.000000000 +0000
-@@ -224,6 +224,7 @@
+diff -urNad squid-2.7.5~/src/typedefs.h squid-2.7.5/src/typedefs.h
+--- squid-2.7.5~/src/typedefs.h	2009-01-27 15:24:25.000000000 +0000
++++ squid-2.7.5/src/typedefs.h	2009-01-27 16:13:27.000000000 +0000
+@@ -226,6 +226,7 @@
  typedef struct _RemovalPolicySettings RemovalPolicySettings;
  typedef struct _errormap errormap;
  typedef struct _PeerMonitor PeerMonitor;
