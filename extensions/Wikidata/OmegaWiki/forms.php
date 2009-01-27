@@ -229,7 +229,7 @@ function getOptionPanel($fields, $action = '', $buttons = array("show" => null))
 	return $result;
 }
 
-function getOptionPanelForFileUpload($fields, $action = '', $buttons = array("upload" => "Upload")) {
+function getOptionPanelForFileUpload($fields, $action = '', $buttons = array("upload" => null)) {
 	global 
 		$wgTitle;
 
@@ -243,12 +243,16 @@ function getOptionPanelForFileUpload($fields, $action = '', $buttons = array("up
 		$result .= '<input type="hidden" name="action" value="' . $action . '"/>';
 
 	foreach($fields as $caption => $field) 
-		$result .= '<tr><th>' . $caption . ':</th><td class="option-field">' . $field . '</td></tr>';
+		$result .= '<tr><th>' . $caption . '</th><td class="option-field">' . $field . '</td></tr>';
 
 	$buttonHTML = "";
 	
 	foreach ($buttons as $name => $caption)
+	{
+		if ($caption == null)	# Default parameter/value => Upload
+			$caption = wfMsg('ow_upload');
 		$buttonHTML .= getSubmitButton($name, $caption);
+	}
 	
 	$result .=
 					'<tr><th/><td>' . $buttonHTML . '</td></tr>' .

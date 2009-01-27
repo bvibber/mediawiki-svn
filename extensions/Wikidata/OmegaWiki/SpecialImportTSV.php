@@ -9,8 +9,8 @@
 	$wgExtensionFunctions[] = 'wfSpecialImportTSV';
 
 	function wfSpecialImportTSV() {
-	        global $wgMessageCache;
-                $wgMessageCache->addMessages(array('importtsv'=>'Wikidata: Import TSV'),'en');
+	        #global $wgMessageCache;
+            #    $wgMessageCache->addMessages(array('importtsv'=>'Wikidata: Import TSV'),'en');
                         
 		class SpecialImportTSV extends SpecialPage {
 			
@@ -22,15 +22,15 @@
 
 				global $wgOut, $wgUser, $wgRequest;
 
-				$wgOut->setPageTitle("Import TSV");
+				$wgOut->setPageTitle(wfMsg('ow_importtsv_title1'));
 				if (!$wgUser->isAllowed('importtsv')) {
-					$wgOut->addHTML('You do not have permission to do a tsv import.');
+					$wgOut->addHTML(wfMsg('ow_importtsv_not_allowed'));
 					return false;
 				}
 				
 				$dbr =& wfGetDB(DB_MASTER);
 				$dc = wdGetDataSetcontext();
-				$wgOut->setPageTitle('Importing TSV data');
+				$wgOut->setPageTitle(wfMsg('ow_importtsv_importing'));
 				setlocale(LC_ALL, 'en_US.UTF-8');				
 				if ($wgRequest->getFileName('tsvfile')) {
 					
@@ -52,7 +52,7 @@
 					$maxLineLength = 0;
 					while ($myLine = fgets($file)) {
 						if (!preg_match('/./u', $myLine)) {
-							$wgOut->setPageTitle('Import failed');
+							$wgOut->setPageTitle(wfMsg('ow_importtsv_import_failed'));
 							$wgOut->addHTML("<p>This doesn't appear to be a UTF-8 encoded file. The file <i>must</i> be UTF-8 encoded. ");
 							$wgOut->addHTML("Make sure your application has saved or exported the file correctly.</p>");
 							return false;
@@ -100,7 +100,7 @@
 						$wgOut->setPageTitle('Test run for importing TSV data');
 					}
 					else {	
-						$wgOut->setPageTitle('Importing TSV data');
+						$wgOut->setPageTitle(wfMsg('ow_importtsv_importing'));
 					}
 					
 					startNewTransaction($wgUser->getID(), wfGetIP(), "Bulk import via SpecialImportTSV", $dc);
@@ -223,21 +223,14 @@
 				}
 				else {
 					// render the page
-					$wgOut->setPageTitle('Import definitions and translations.');
-					$wgOut->addHTML('<p>Import translations and definitions from a a tab delimited text file that you may have exported from OpenOffice.org, ' .
-							'Excel or other spreadsheet software.</p> ' .
-							'<p>The format of the file must be the same as the files exported on the ExportTSV page. If you\'ve changed the column names, ' .
-							'the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. ' .
-							'If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO-639_3 language code.</p>');
-					$wgOut->addHTML('<p>If the \'test run\' box is checked, any actions that would be taken are reported, but no changes are actually made. You are encouraged' .
-							'to do a test run before you do an actual import.</p>');
+					$wgOut->setPageTitle('Import definitions and translations');
+					$wgOut->addHTML(wfMsg('ow_importtsv_header'));
 					
 					$wgOut->addHTML(getOptionPanelForFileUpload(
 						array(
-							'TSV File' => getFileField('tsvfile'),
-							'Test run' => getCheckBox('testrun', true)
-						),
-						'',array('upload' => 'Upload')
+							wfMsg('ow_importtsv_file') => getFileField('tsvfile'),
+							wfMsg('ow_importtsv_test_run') => getCheckBox('testrun', true)
+						)
 					));
 				}
 

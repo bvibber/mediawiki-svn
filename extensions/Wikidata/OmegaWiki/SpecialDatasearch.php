@@ -33,7 +33,7 @@ function wfSpecialDatasearch() {
 		protected $meaningAttribute;
 
 		function SpecialDatasearch() {
-			SpecialPage::SpecialPage('Datasearch');
+			SpecialPage::SpecialPage('DataSearch');
 		}
 
 		function execute($parameter) {

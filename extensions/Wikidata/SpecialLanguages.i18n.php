@@ -30,6 +30,21 @@ $wdMessages['en'] = array(
 	'importlangnames_not_found'				=> '<strong>No language entry for "$1" found!</strong>',
 
 	'datasearch'                            => 'Wikidata: Data search',
+	
+	'importtsv'								=> 'Wikidata: Import TSV',
+	'ow_importtsv_title1'					=> 'Import TSV',
+	'ow_importtsv_header'					=> '<p>Import definitions and translations from a tab delimited text file that you may have exported from OpenOffice.org, Excel or other spreadsheet software.</p>
+<p>The format of the file must be the same as the files exported on the ExportTSV page. If you\'ve changed the column names, the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO-639_3 language code.</p>
+<p>If the \'test run\' box is checked, any actions that would be taken are reported, but no changes are actually made. You are encouraged to do a test run before you do an actual import.</p>',
+	'ow_importtsv_not_allowed'				=> 'You do not have permission to do a tsv import.',
+	'ow_importtsv_importing'				=> 'Importing TSV data',
+	'ow_importtsv_import_failed'			=> 'Import failed',
+	'ow_importtsv_file'						=> 'TSV File:',
+	'ow_importtsv_test_run'					=> 'Test run:',
+
+	'exporttsv'								=> 'Wikidata: Export TSV',
+	'ow_exporttsv_languages'				=> 'Languages:',
+	
 	'addcollection'							=> 'Wikidata: Add collection',
 	'ow_save'                               => 'Save',
 	'ow_history'                            => 'History',
@@ -41,6 +56,9 @@ Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
 	'ow_uipref_datasets'                    => 'Default view:',
 	'ow_uiprefs'                            => 'Wikidata',
 	'ow_none_selected'                      => 'None selected',
+
+	'conceptmapping'						=> 'Wikidata: Concept mapping',
+	'ow_conceptmapping_title'				=> 'Concept Mapping',
 	'ow_conceptmapping_help'                => '<p>possible actions: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
 <li>&action=get&concept=<concept_id>  read a mapping back</li>
@@ -150,6 +168,7 @@ Please contact the server operator or administrator.",
 	'ow_needs_xlation_dest_lang'		=> 'Destination language:',
 	'ow_needs_xlation_no_dest_lang'		=> 'Please specify a destination language.',
 	'ow_show'							=> 'Show',
+	'ow_upload'							=> 'Upload',
 	'ow_create'							=> 'Create',
 	'ow_collection_added'				=> '<strong>Collection $1 added.</strong>',
 	'ow_suggest_previous'				=> 'Previous',
