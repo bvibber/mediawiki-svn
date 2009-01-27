@@ -19,6 +19,7 @@ import java.util.Set;
 import junit.framework.TestCase;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.NamespaceSet;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 
 /**
@@ -30,9 +31,11 @@ public abstract class WikiTextAnalyzerTestBase extends TestCase {
 	protected NamespaceSet namespaces;
 	protected Corpus corpus;
 	protected WikiTextAnalyzer analyzer;
+	protected TweakSet tweaks;
 	
 	public WikiTextAnalyzerTestBase(String wikiName) {
 		corpus = Corpus.forName("TEST", wikiName, (String[])null);
+		tweaks = new TweakSet();
 
 		//site.Base = "http://"+corpus.getDomain()+"/wiki/";
 		//site.Sitename = corpus.getFamily();
@@ -43,7 +46,7 @@ public abstract class WikiTextAnalyzerTestBase extends TestCase {
 
 	@Override
 	public void setUp() throws Exception {				
-		analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus);
+		analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus, tweaks);
 		analyzer.initialize(namespaces, titleCase);
 	}
 

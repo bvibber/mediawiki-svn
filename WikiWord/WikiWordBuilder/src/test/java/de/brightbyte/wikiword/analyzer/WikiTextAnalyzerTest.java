@@ -643,7 +643,7 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 
 		corpus = new Corpus("TEST", "generic", "generic", "generic", "generic", "xx", "generic", null);
 		PlainTextAnalyzer language = new PlainTextAnalyzer(corpus);
-		language.configure(lconfig);
+		language.configure(lconfig, tweaks);
 		language.initialize();
 
 		WikiConfiguration config = new WikiConfiguration();
@@ -662,7 +662,7 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 		
 		testAnalyzer = new TestWikiTextAnalyzer(language);
 		testAnalyzer.addExtraTemplateUser(Pattern.compile(".*"), true);
-		testAnalyzer.configure(config);
+		testAnalyzer.configure(config, tweaks);
 		testAnalyzer.initialize(namespaces, titleCase);
 		
 		analyzer = testAnalyzer;

@@ -84,7 +84,7 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 		
 		corpus = new Corpus("TEST", "generic", "generic", "generic", "generic", "xx", "generic", null);
 		testAnalyzer = new TestPlainTextAnalyzer(corpus);
-		testAnalyzer.configure(config);
+		testAnalyzer.configure(config, tweaks);
 		testAnalyzer.initialize();
 		
 		analyzer = testAnalyzer;

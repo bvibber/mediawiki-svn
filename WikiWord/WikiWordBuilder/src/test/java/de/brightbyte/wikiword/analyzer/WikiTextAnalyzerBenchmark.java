@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.NamespaceSet;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 
 public class WikiTextAnalyzerBenchmark {
@@ -11,6 +12,7 @@ public class WikiTextAnalyzerBenchmark {
 	protected NamespaceSet namespaces;
 	protected Corpus corpus;
 	protected WikiTextAnalyzer analyzer;
+	protected TweakSet tweaks;
 	
 	public WikiTextAnalyzerBenchmark(String wikiName) throws InstantiationException {
 		corpus = Corpus.forName("TEST", wikiName, (String[])null);
@@ -19,9 +21,10 @@ public class WikiTextAnalyzerBenchmark {
 		//site.Sitename = corpus.getFamily();
 		
 		titleCase = true;
-		namespaces = corpus.getNamespaces(); 
+		namespaces = corpus.getNamespaces();
+		tweaks = new TweakSet();
 
-		analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus);
+		analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus, tweaks);
 		analyzer.initialize(namespaces, titleCase);
 	}
 

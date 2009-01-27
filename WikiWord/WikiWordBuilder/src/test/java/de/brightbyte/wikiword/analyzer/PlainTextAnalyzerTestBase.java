@@ -7,6 +7,7 @@ import java.util.MissingResourceException;
 
 import junit.framework.TestCase;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.PlainTextAnalyzer;
 
 /**
@@ -15,15 +16,17 @@ import de.brightbyte.wikiword.analyzer.PlainTextAnalyzer;
 public abstract class PlainTextAnalyzerTestBase extends TestCase {
 	
 	protected Corpus corpus;
+	protected TweakSet tweaks;
 	protected PlainTextAnalyzer analyzer;
 	
 	public PlainTextAnalyzerTestBase(String wikiName) {
 		corpus = Corpus.forName("TEST", wikiName, (String[])null);
+		tweaks = new TweakSet();
 	}
 
 	@Override
 	public void setUp() throws Exception {				
-		analyzer = PlainTextAnalyzer.getPlainTextAnalyzer(corpus);
+		analyzer = PlainTextAnalyzer.getPlainTextAnalyzer(corpus, tweaks);
 		analyzer.initialize();
 	}
 

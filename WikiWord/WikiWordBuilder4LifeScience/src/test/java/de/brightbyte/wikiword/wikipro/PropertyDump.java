@@ -11,6 +11,7 @@ import de.brightbyte.io.IOUtil;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiLink;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
@@ -34,7 +35,8 @@ public class PropertyDump {
 		
 		String p = n;
 
-		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus);
+		TweakSet tweaks = new TweakSet();
+		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus, tweaks);
 		
 		System.out.println("loading "+u+"...");
 		String text = IOUtil.slurp(u, "UTF-8");

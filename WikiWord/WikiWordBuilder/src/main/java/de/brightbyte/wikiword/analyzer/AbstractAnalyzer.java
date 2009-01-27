@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.ArmorEntry;
 
 /**
@@ -21,6 +22,8 @@ import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.ArmorEntry;
  * @author daniel
  */
 public class AbstractAnalyzer {
+
+	protected TweakSet tweaks;
 
 	/**
 	 * A Mangler changes text in some way.

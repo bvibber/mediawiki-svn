@@ -38,6 +38,7 @@ import de.brightbyte.wikiword.Languages;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.TemplateExtractor.TemplateData;
 import de.brightbyte.xml.HtmlEntities;
 
@@ -1980,7 +1981,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	private Matcher relevantTemplateMatcher;
 	private List<TemplateUser> extraTemplateUsers = new ArrayList<TemplateUser>();
 	
-	private WikiTextSniffer sniffer = new WikiTextSniffer(); 
+	private WikiTextSniffer sniffer = new WikiTextSniffer();
+	private Map<String, String> languageNames;
 	
 	public WikiTextAnalyzer(PlainTextAnalyzer language) {
 		this.language = language;
@@ -2008,8 +2010,11 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		return initialized;
 	}
 	
-	public void configure(WikiConfiguration config) {
+	public void configure(WikiConfiguration config, TweakSet tweaks) {
 		if (isInitialized()) throw new IllegalStateException("already initialized");
+		if (tweaks==null) throw new NullPointerException();
+		
+		this.tweaks = tweaks;
 		this.config.merge(config);
 	}
 	
@@ -2504,7 +2509,15 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 
 	public boolean isInterlanguagePrefix(CharSequence pre) {
 		pre = trimAndLower(pre);
-		return Languages.names.containsKey(pre);
+		return getLanguageNames().containsKey(pre);
+	}
+	
+	protected Map<String, String> getLanguageNames() {
+		if (this.languageNames==null) {
+			this.languageNames = Languages.load(this.tweaks);
+		}
+		
+		return this.languageNames;
 	}
 
 	public boolean isInterwikiPrefix(CharSequence pre) {
@@ -2925,8 +2938,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		return new WikiLink(interwiki, namespace, page, section, text, impliedText, magic);
 	}
 
-	public static WikiTextAnalyzer getWikiTextAnalyzer(Corpus corpus) throws InstantiationException {
-		PlainTextAnalyzer language = PlainTextAnalyzer.getPlainTextAnalyzer(corpus);
+	public static WikiTextAnalyzer getWikiTextAnalyzer(Corpus corpus, TweakSet tweaks) throws InstantiationException {
+		PlainTextAnalyzer language = PlainTextAnalyzer.getPlainTextAnalyzer(corpus, tweaks);
 		language.initialize();
 		
 		return getWikiTextAnalyzer(language);
@@ -2951,7 +2964,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 				
 				ctor = ccc[i].getConstructor(new Class[] { });
 				WikiConfiguration conf = (WikiConfiguration)ctor.newInstance(new Object[] { } );
-				analyzer.configure(conf);
+				analyzer.configure(conf, language.tweaks);
 			}
 			
 			return analyzer;
@@ -2991,8 +3004,10 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		
 		String text = IOUtil.slurp(new File(file), "UTF-8");
 		
+		TweakSet tweaks = new TweakSet();
+		
 		Corpus corpus = Corpus.forName("TEST", lang, (String[])null);
-		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus);
+		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(corpus, tweaks);
 		
 		NamespaceSet namespaces = Namespace.getNamespaces(null);
 		analyzer.initialize(namespaces, true);

@@ -61,7 +61,7 @@ public abstract class ImportDump<S extends WikiWordStoreBuilder> extends ImportA
 		}
 		*/
 
-		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(getCorpus()); 
+		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(getCorpus(), tweaks); 
 		WikiWordImporter importer = newImporter(analyzer, store, tweaks);
 		importer.setLogOutput(getLogOutput());
 		importer.configure(args);

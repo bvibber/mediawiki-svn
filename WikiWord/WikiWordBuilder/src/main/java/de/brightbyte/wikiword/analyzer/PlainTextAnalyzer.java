@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.TweakSet;
 
 public class PlainTextAnalyzer extends AbstractAnalyzer {
 	private LanguageConfiguration config; 
@@ -25,7 +26,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 		config.defaults();
 	}
 	
-	public static PlainTextAnalyzer getPlainTextAnalyzer(Corpus corpus) throws InstantiationException {
+	public static PlainTextAnalyzer getPlainTextAnalyzer(Corpus corpus, TweakSet tweaks) throws InstantiationException {
 		Class[] acc = getSpecializedClasses(corpus, PlainTextAnalyzer.class, "PlainTextAnalyzer");
 		Class[] ccc = getSpecializedClasses(corpus, LanguageConfiguration.class, "LanguageConfiguration", corpus.getConfigPackages());
 		
@@ -36,7 +37,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 			for (int i = ccc.length-1; i >= 0; i--) { //NOTE: most specific last, because last write wins. 
 				ctor = ccc[i].getConstructor(new Class[] { });
 				LanguageConfiguration conf = (LanguageConfiguration)ctor.newInstance(new Object[] { } );
-				analyzer.configure(conf);
+				analyzer.configure(conf, tweaks);
 			}
 			
 			return analyzer;
@@ -53,7 +54,10 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 		}
 	}
 	
-	public void configure(LanguageConfiguration config) {
+	public void configure(LanguageConfiguration config, TweakSet tweaks) {
+		if (tweaks==null) throw new NullPointerException();
+		
+		this.tweaks = tweaks;
 		this.config.merge(config);
 	}
 	

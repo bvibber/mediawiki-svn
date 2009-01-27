@@ -16,9 +16,8 @@ import java.util.Properties;
  * It is loaded from the Languages.properties located in the de.brightbyte.wikiword package.
  */
 public class Languages {
-	public static final Map<String, String> names;
 	
-	static {
+	public static Map<String, String> load(TweakSet tweaks){
 		try {
 			InputStream in = Languages.class.getResourceAsStream("Languages.properties");
 			if (in == null) throw new ExceptionInInitializerError("missing resource Languages.properties");
@@ -34,10 +33,22 @@ public class Languages {
 				ln.put(k, v);
 			}
 			
-			names = Collections.unmodifiableMap(ln);
+			if (tweaks.getTweak("languages.commonsAsLanguage", false)) {
+				ln.put("commons", "Commons");
+			} else {
+				ln.remove("commons");
+			}
+			
+			if (tweaks.getTweak("languages.simpleAsLanguage", true)) {
+				ln.put("simple", "Simple English");
+			} else {
+				ln.remove("simple");
+			}
+			
+			return Collections.unmodifiableMap(ln);
 		}
 		catch (IOException ex) {
-			throw new ExceptionInInitializerError(ex);
+			throw new RuntimeException("failed to load Languages.properties via ClassLoader", ex);
 		}		
 	}
 	
