@@ -202,9 +202,9 @@ class OmegaWikiAttributes {
 		$t->textAttributeValuesStructure = new Structure("text-attribute-values", $t->textAttributeId, $t->textAttributeObject, $t->textAttribute, $t->text);	
 		$t->textAttributeValues = new Attribute(null, wfMsgSc("TextAttributeValues"), $t->textAttributeValuesStructure);
 		
-		$t->linkLabel = new Attribute("label", "Label", "short-text"); 
-		$t->linkURL = new Attribute("url", "URL", "url");
-		$t->link = new Attribute("link", "Link", new Structure($t->linkLabel, $t->linkURL));
+		$t->linkLabel = new Attribute("label", wfMsg('ow_Label'), "short-text"); 
+		$t->linkURL = new Attribute("url", wfMsg('ow_URL'), "url");
+		$t->link = new Attribute("link", wfMsg('ow_Link'), new Structure($t->linkLabel, $t->linkURL));
 		$t->linkAttributeId = new Attribute("link-attribute-id", "Attribute identifier", "object-id");
 		$t->linkAttributeObject = new Attribute("link-attribute-object-id", "Attribute object", "object-id");
 		$t->linkAttribute = new Attribute("link-attribute", wfMsgSc("LinkAttribute"), $t->definedMeaningReferenceStructure);
