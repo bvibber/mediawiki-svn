@@ -64,6 +64,12 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("^"+templatePatternString("wrapper", 0, true), "{|", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("^"+templatePatternString("end|col-end", 0, true), "|}", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE));
 
+		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("commons(-inline|[ _]left|show\\d)?", 1, true), "[[commons:$1]]"));
+		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("commons[ _+]?cat(-inline|[ _]left|show\\d)?", 1, true), "[[commons:Category:$1]]"));
+		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("wikimedia", 1, true), "[[commons:$1]]")); //FIXME: named params: commons=
+		//FIXME: Commonscat-N, Commons_cat_multi...
+		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("\\[\\[:commons:", "[[commons:", Pattern.CASE_INSENSITIVE));
+
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("Okina", 0, false), "\u02BB"));
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("\u00b7|moddot|dot", 0, false), "\u00b7"));
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("spaces", 1, true), " "));

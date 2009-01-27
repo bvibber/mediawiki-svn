@@ -1,5 +1,7 @@
 package de.brightbyte.wikiword.wikis;
 
+import java.util.regex.Pattern;
+
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
@@ -26,9 +28,13 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 				")\\s*\\|(?:\\s*rtl\\s*\\|)?.*?\\|\\s*(.*?)\\s*\\}\\}", "$1", Pattern.DOTALL | Pattern.CASE_INSENSITIVE));
 		*/
 		
+		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("commons", 1, true), "[[commons:$1]]"));
+		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("commonscat", 1, true), "[[commons:Category:$1]]"));
+		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler("\\[\\[:commons:", "[[commons:", Pattern.CASE_INSENSITIVE));
+		
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("Okina", 0, false), "\u02BB"));
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("IPA(?:-Text)|IAST|Unicode|Musik", 1, true), "$2"));
-		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("SWD|Commons|Wiktionary", 0, true), ""));
+		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("SWD|Wiktionary", 0, true), ""));
 
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("en|it|fr|ar|Polytonisch", 1, true), "$2"));
 		stripClutterManglers.add( new WikiTextAnalyzer.RegularExpressionMangler(templatePattern("lang", 2, true), "$3"));
