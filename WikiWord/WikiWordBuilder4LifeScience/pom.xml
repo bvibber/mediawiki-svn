@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 																				
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.brightbyte</groupId>
+	<groupId>de.wikimedia</groupId>
 	<artifactId>WikiWordBuilder4WikiPro</artifactId>
-	<version>0.2</version>
+	<version>0.3</version>
 	
     <dependencies>
       <dependency>
@@ -27,15 +27,15 @@
         <scope>compile</scope>
       </dependency>
       <dependency>
-        <groupId>de.brightbyte</groupId>
+        <groupId>de.wikimedia</groupId>
         <artifactId>WikiWord</artifactId>
-        <version>0.2</version>
+        <version>0.3</version>
         <scope>compile</scope>
       </dependency>
       <dependency>
-        <groupId>de.brightbyte</groupId>
+        <groupId>de.wikimedia</groupId>
         <artifactId>WikiWordBuilder</artifactId>
-        <version>0.2</version>
+        <version>0.3</version>
         <scope>compile</scope>
       </dependency>
      <dependency>
