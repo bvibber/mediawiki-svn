@@ -340,18 +340,20 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 						case 'speech_by':
 						case 'spoken_by':
 							$pTitle = Title::newFromText( $smw_attr_val );
-							$pimg = mv_get_person_img( $smw_attr_val );
-							$pre_text_html .= '<p class="mvd_page_image">';
-							
-							if ( $mvd_page != '' ) {
-								$pre_text_html .= $play_link_o;
-								$added_play_link = true;
+							if( $pTitle->exists() ){
+								$pimg = mv_get_person_img( $smw_attr_val );
+								$pre_text_html .= '<p class="mvd_page_image">';
+								
+								if ( $mvd_page != '' ) {
+									$pre_text_html .= $play_link_o;
+									$added_play_link = true;
+								}
+								$pre_text_html .= '<img width="44" alt="' . $pTitle->getText() . '" ' .
+													'src="' . htmlspecialchars( $pimg->getURL() ) . '">';
+								if ( $mvd_page != '' )
+									$pre_text_html .= $play_link_img_close;
+								$pre_text_html .= '</p>';
 							}
-							$pre_text_html .= '<img width="44" alt="' . $pTitle->getText() . '" ' .
-												'src="' . htmlspecialchars( $pimg->getURL() ) . '">';
-							if ( $mvd_page != '' )
-								$pre_text_html .= $play_link_img_close;
-							$pre_text_html .= '</p>';
 						break;
 					}
 					// @@todo we should just use semantic mediaWikis info box with some custom style .

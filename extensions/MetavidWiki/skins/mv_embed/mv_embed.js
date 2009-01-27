@@ -22,7 +22,7 @@ if( MV_EMBED_VERSION ){
 }
 
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0rc5';
+var MV_EMBED_VERSION = '1.0rc6';
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';

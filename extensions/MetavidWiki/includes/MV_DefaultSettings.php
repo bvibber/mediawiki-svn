@@ -97,7 +97,7 @@ $mvDefaultFlashQualityKey 	= 'mv_flash_low_quality';
 $mvDefaultVideoHighQualityKey = 'mv_ogg_high_quality';
 $mvDefaultMP4QualityKey 	= 'mv_archive_org_mp4';
 
-$mvVidQualityMsgKeyType['mv_ogg_low_quality']=$mvVidQualityMsgKeyType['mv_ogg_high_quality']='video/ogg';
+$mvVidQualityMsgKeyType['mv_ogg_low_quality'] = $mvVidQualityMsgKeyType['mv_ogg_high_quality']='video/ogg';
 $mvVidQualityMsgKeyType['mv_flash_low_quality']='video/x-flv';
 
 # local path to video archive (if hosted locally)

@@ -590,10 +590,10 @@ $mvTitle->getStreamNameText() . ' ' .  $time_desc )?></title>
 <?php echo $desc_xml?>
 </description>
 <?php
-global $mvDefaultVideoQualityKey;
+global $mvDefaultVideoQualityKey, $mvVidQualityMsgKeyType;
 //check a few different types:
 $stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoQualityKey);
-if($stream_url !== false && isset( $mvVidQualityMsgKeyType[ $vid_key ]) ) {
+if($stream_url !== false && isset( $mvVidQualityMsgKeyType[ $mvDefaultVideoQualityKey ]) ) {
 	echo '<enclosure name="'. wfMsg($vid_key) .'" type="video/ogg" url="'. mvRSSFeed::xmlEncode( $ogg_stream_url ) .'"/>';
 }
 ?>
