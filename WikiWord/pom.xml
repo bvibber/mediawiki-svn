@@ -11,8 +11,7 @@
 	<modules>
 		<module>WikiWord</module>
 		<module>WikiWordBuilder</module>
-		<module>WikiWordWeb</module>
-		<module>WikiWordEval</module>
+                <module>WikiWordBuilder4LifeScience</module>
 	</modules>
 	
 	<!--
