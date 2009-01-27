@@ -410,7 +410,7 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		" join "+linkTable.getSQLName()+" as B on A.anchor = B.target AND B.anchor = A.target ";
 		String suffix = " on duplicate key update bilink = bilink + values(bilink)"; 
 
-		return executeChunkedUpdate("finishGlobalConcepts", "similarities:bilink", sql, suffix, linkTable, "A.anchor");
+		return executeChunkedUpdate("finishGlobalConcepts", "similarities:bilink", sql, suffix, linkTable, "A.anchor", 5);
 	}
 
 	//----------------------------------------------------------------------------------
