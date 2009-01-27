@@ -1,0 +1,192 @@
+#
+# DB statusafter post-processing
+#
+
+Concepts
+
+select name, type 
+from /*prefix*/xx_concept 
+order by name;
+-------------------------------------------
+"Xaa_Yaa_Zaa",	0
+"Xar",	0
+"Xar_(Xiro)", 	90
+"Xiro",	0
+"Xofos",	0
+"Xoo", 			90
+"Xoo_too", 		90
+"Xotos",	0
+"Xulka",	0
+"Xyyzz_fyyzz",	0
+"Xyz_(x)",	0
+"Xyzzy",	0
+-------------------------------------------
+
+Link
+
+select anchor_name, target_name, term_text
+from /*prefix*/xx_link
+order by anchor_name, target_name, term_text;
+-------------------------------------------
+null,	"Xaa_Yaa_Zaa",	"XYZ"
+null,	"Xaa_Yaa_Zaa",	"Xaa Yaa Zaa"
+null,	"Xaa_Yaa_Zaa",	"Xaa Yaa Zaa"
+null,	"Xar",	"Xar"
+null,	"Xar_(Xiro)",	"Xar"
+null,	"Xar_(Xiro)",	"Xiro Xar"
+null,	"Xar_(Xiro)",	"Xiro, Xar"
+null,	"Xiro",	"Xiro"
+null,	"Xofos",	"Xofos"
+null,	"Xoo",	"Xo"
+null,	"Xoo",	"Xoo"
+null,	"Xoo",	"Xoo"
+null,	"Xoo",	"Xyyz"
+null,	"Xoo_too",	"Xoo too"
+null,	"Xoo_too",	"Xoo too"
+null,	"Xotos",	"Xotos"
+null,	"Xulka",	"Xulka"
+null,	"Xyyzz_fyyzz",	"Fyyzz"
+null,	"Xyyzz_fyyzz",	"Xyyzz fyyzz"
+null,	"Xyz_(x)",	"XYZ"
+null,	"Xyz_(x)",	"Xyz"
+null,	"Xyz_(x)",	"xyz"
+null,	"Xyzzy",	"Xyzzy"
+"Xar_(Xiro)",	"Xoo",	"xoo"
+"Xar_(Xiro)",	"Xyzzy",	"xy-zzy"
+"Xoo",	"Xar", "xar"
+"Xoo",	"Xoo_too", "too"
+"Xoo_too",	"Xar", "xar"
+"Xoo_too",	"Xoo", "Xo"
+-------------------------------------------
+
+Relation
+
+select A.name, B.name, langmatch, bilink
+from /*prefix*/xx_relation as R
+join /*prefix*/xx_concept as A on A.id = R.concept1
+join /*prefix*/xx_concept as B on B.id = R.concept2
+where langmatch > 0 or bilink > 0
+order by A.name, B.name;
+-------------------------------------------
+"Xoo",	"Xoo_too",		2,	1
+"Xoo_too",	"Xoo",		2,	1
+-------------------------------------------
+
+Meaning
+
+select concept_name, term_text, freq
+from /*prefix*/xx_meaning
+order by concept_name, term_text;
+-------------------------------------------
+"Xaa_Yaa_Zaa",  "XYZ", 1
+"Xaa_Yaa_Zaa",  "Xaa Yaa Zaa", 2
+"Xar",  "Xar", 1
+"Xar",  "xar", 2
+"Xar_(Xiro)",   "Xar", 1
+"Xar_(Xiro)",   "Xiro Xar", 1
+"Xar_(Xiro)",   "Xiro, Xar", 1
+"Xiro",	"Xiro", 1
+"Xofos",	"Xofos", 1
+"Xoo",  "Xo", 2
+"Xoo",  "Xoo", 2
+"Xoo",	"Xyyz",	1
+"Xoo",  "xoo", 1
+"Xoo_too",      "Xoo too", 2
+"Xoo_too",      "too", 1
+"Xotos",	"Xotos", 1
+"Xulka",	"Xulka", 1
+"Xyyzz_fyyzz",  "Fyyzz", 1
+"Xyyzz_fyyzz",  "Xyyzz fyyzz", 1
+"Xyz_(x)",      "XYZ", 1
+"Xyz_(x)",      "Xyz", 1
+"Xyz_(x)",      "xyz", 1
+"Xyzzy",        "Xyzzy", 1
+"Xyzzy",        "xy-zzy", 1
+-------------------------------------------
+
+Broader
+
+select narrow_name, broad_name
+from /*prefix*/xx_broader
+order by narrow_name, broad_name;
+-------------------------------------------
+"Xar_(Xiro)",	"Xofos"
+"Xofos",	"Xiro"
+"Xoo",	"Xofos"
+"Xoo",	"Xulka"
+"Xoo_too",	"Xofos"
+"Xoo_too",	"Xoo"
+"Xotos",	"Xofos" 
+-------------------------------------------
+
+Alias
+
+select source_name, target_name, scope
+from /*prefix*/xx_alias
+order by source_name, target_name;
+-------------------------------------------
+"Xo",	"Xoo",	0
+-------------------------------------------
+
+#########################################################################
+#########################################################################
+
+Link: anchor pair integrity
+
+select L.anchor_name, L.anchor, C.name
+from /*prefix*/xx_link as L
+join /*prefix*/xx_concept as C on L.anchor = C.id
+where L.anchor IS NOT NULL AND L.anchor_name != C.name
+order by anchor_name;
+-------------------------------------------
+-------------------------------------------
+
+Link: target pair integrity
+
+select L.target_name, L.target, C.name
+from /*prefix*/xx_link as L
+join /*prefix*/xx_concept as C on L.target = C.id
+where L.target IS NOT NULL AND L.target_name != C.name
+order by target_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias: source pair integrity
+
+select L.source_name, L.source, C.name
+from /*prefix*/xx_alias as L
+join /*prefix*/xx_concept as C on L.source = C.id
+where L.source IS NOT NULL AND L.source_name != C.name
+order by source_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias: target pair integrity
+
+select L.target_name, L.target, C.name
+from /*prefix*/xx_alias as L
+join /*prefix*/xx_concept as C on L.target = C.id
+where L.target IS NOT NULL AND L.target_name != C.name
+order by target_name;
+-------------------------------------------
+-------------------------------------------
+
+Broader: broad pair integrity
+
+select L.broad_name, L.broad, C.name
+from /*prefix*/xx_broader as L
+join /*prefix*/xx_concept as C on L.broad = C.id
+where L.broad IS NOT NULL AND L.broad_name != C.name
+order by broad_name;
+-------------------------------------------
+-------------------------------------------
+
+Broader: narrow pair integrity
+
+select L.narrow_name, L.narrow, C.name
+from /*prefix*/xx_broader as L
+join /*prefix*/xx_concept as C on L.narrow = C.id
+where L.narrow IS NOT NULL AND L.narrow_name != C.name
+order by narrow_name;
+-------------------------------------------
+-------------------------------------------

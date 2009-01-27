@@ -1,0 +1,14 @@
+REQUIREMENTS
+
+Build System
+* Java 5 (jdk 1.5)
+* Apache Maven 2.0
+
+Libraries
+* mwdumper (Wikimedia)
+* BrightByteUtil, BrightByteRDF, BrightByteDB, BrightByteWeb
+* Several libs managed automatically by Maven
+
+Documentation
+* See WikiWordThesis/BUILDING for the requirements of building
+  the thesis and documentation documents

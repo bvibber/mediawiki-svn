@@ -1,0 +1,100 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.3/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.3/ http://www.mediawiki.org/xml/export-0.3.xsd" version="0.3" xml:lang="en">
+  <siteinfo>
+    <sitename>WikiWird Test Suit</sitename>
+    <base>http://zz.wikipedia.org/wiki/Main_Page</base>
+    <generator>Daniel Kinzler</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2">Media</namespace>
+      <namespace key="-1">Special</namespace>
+      <namespace key="0" />
+      <namespace key="1">Talk</namespace>
+      <namespace key="2">User</namespace>
+      <namespace key="3">User talk</namespace>
+
+      <namespace key="4">Wikipedia</namespace>
+      <namespace key="5">Wikipedia talk</namespace>
+      <namespace key="6">Image</namespace>
+      <namespace key="7">Image talk</namespace>
+      <namespace key="8">MediaWiki</namespace>
+      <namespace key="9">MediaWiki talk</namespace>
+
+      <namespace key="10">Template</namespace>
+      <namespace key="11">Template talk</namespace>
+      <namespace key="12">Help</namespace>
+      <namespace key="13">Help talk</namespace>
+      <namespace key="14">Category</namespace>
+      <namespace key="15">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Zoo</title>
+    <id>111</id>
+
+    <revision>
+      <id>1111</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+
+      <comment>WikiWord test dummy</comment>
+      <text xml:space="preserve">
+      '''Zoo''' is zoo (too?).
+      
+      See [[Zar]].
+      
+      [[Category:Zooz]]
+      [[Category:Fooz]]
+      
+      [[xx:Xoo too]] <!-- sic! -->
+      [[yy:Yoo]]
+      </text>
+    </revision>
+  </page>
+  <page>
+    <title>Zar</title>
+    <id>122</id>
+
+    <revision>
+      <id>1221</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+
+      <comment>WikiWord test dummy</comment>
+      <text xml:space="preserve">
+      '''Zar''' is zar and [[zyzzy]].
+      
+      See also: [[Zürülü]]
+      
+      [[Category:Fooz]]
+      
+      [[yy:Yar]]
+      </text>
+    </revision>
+  </page>
+  <page>
+    <title>XYZ</title>
+    <id>133</id>
+
+    <revision>
+      <id>1331</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+
+      <comment>WikiWord test dummy</comment>
+      <text xml:space="preserve">
+      XYZ bla bla
+            
+      [[xx:XYZ]]
+      </text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,73 @@
+#
+# DB statusafter post-processing
+#
+
+Concepts
+
+select name, type 
+from /*prefix*/zz_concept 
+order by name;
+-------------------------------------------
+"Fooz",	0
+"XYZ",	90
+"Zar", 	90
+"Zoo", 	90
+"Zooz",	0
+"Zyzzy",	0
+"Zürülü",	0
+-------------------------------------------
+
+Link
+
+select anchor_name, target_name, term_text
+from /*prefix*/zz_link
+order by anchor_name, target_name, term_text;
+-------------------------------------------
+null,	"Fooz",	"Fooz"
+null,	"XYZ",	"XYZ"
+null,	"Zar",	"Zar"
+null,	"Zoo",	"Zoo"
+null,	"Zooz",	"Zooz"
+null,	"Zyzzy",	"Zyzzy"
+null,	"Zürülü",	"Zürülü"
+"Zar",	"Zyzzy",	"zyzzy"
+"Zar",	"Zürülü",	"Zürülü"
+"Zoo",	"Zar",	"Zar"
+-------------------------------------------
+
+Relation
+
+select A.name, B.name, langmatch, bilink
+from /*prefix*/zz_relation as R
+join /*prefix*/zz_concept as A on A.id = R.concept1
+join /*prefix*/zz_concept as B on B.id = R.concept2
+where langmatch > 0 or bilink > 0
+order by A.name, B.name;
+-------------------------------------------
+-------------------------------------------
+
+Meaning
+
+select concept_name, term_text, freq
+from /*prefix*/zz_meaning
+order by concept_name, term_text;
+-------------------------------------------
+"Fooz",         "Fooz",	1
+"XYZ",  "XYZ",	1
+"Zar",  "Zar",	2
+"Zoo",  "Zoo",	1
+"Zooz",         "Zooz",	1
+"Zyzzy",        "Zyzzy",	1
+"Zyzzy",        "zyzzy",	1
+"Zürülü",       "Zürülü",	2
+-------------------------------------------
+
+Broader
+
+select narrow_name, broad_name
+from /*prefix*/zz_broader
+order by narrow_name, broad_name;
+-------------------------------------------
+"Zar",	"Fooz"
+"Zoo",	"Fooz"
+"Zoo",	"Zooz"

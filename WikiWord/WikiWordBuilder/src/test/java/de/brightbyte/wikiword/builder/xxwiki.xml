@@ -1,0 +1,254 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.3/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.3/ http://www.mediawiki.org/xml/export-0.3.xsd" version="0.3" xml:lang="en">
+  <siteinfo>
+    <sitename>WikiWird Test Suit</sitename>
+    <base>http://xx.wikipedia.org/wiki/Main_Page</base>
+    <generator>Daniel Kinzler</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2">Media</namespace>
+      <namespace key="-1">Special</namespace>
+      <namespace key="0" />
+      <namespace key="1">Talk</namespace>
+      <namespace key="2">User</namespace>
+      <namespace key="3">User talk</namespace>
+
+      <namespace key="4">Wikipedia</namespace>
+      <namespace key="5">Wikipedia talk</namespace>
+      <namespace key="6">Image</namespace>
+      <namespace key="7">Image talk</namespace>
+      <namespace key="8">MediaWiki</namespace>
+      <namespace key="9">MediaWiki talk</namespace>
+
+      <namespace key="10">Template</namespace>
+      <namespace key="11">Template talk</namespace>
+      <namespace key="12">Help</namespace>
+      <namespace key="13">Help talk</namespace>
+      <namespace key="14">Category</namespace>
+      <namespace key="15">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Xoo</title>
+    <id>111</id>
+
+    <revision>
+      <id>1111</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+
+      <comment>WikiWord test dummy</comment>
+      <text xml:space="preserve">'''Xoo''' is xoo.
+
+Look at [[Xoo too|too]] too, and at [[xar]] maybe.
+
+[[This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. This is a very long link text. ]]
+
+[[Category:Xoo|*]]
+[[Category:Xofos]]
+[[Category:Xulka]]
+ 
+[[yy:Yoo]]
+[[zz:Zoo]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Xoo too</title>
+    <id>122</id>
+
+    <revision>
+      <id>1221</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+
+      <comment>WikiWord test dummy</comment>
+      <text xml:space="preserve">'''Xoo too''' is xoo, too.
+
+Look at [[Xo]], and also [[xar]].
+
+Say [[Xyz]]
+
+[[Category:Xoo]]
+[[Category:Xofos|{{PAGENAME}}]]
+
+[[ww:Woo]]
+[[yy:Yoo]]
+[[zz:Zoo]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Xar (Xiro)</title>
+    <id>133</id>
+
+    <revision>
+      <id>1331</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+
+      <comment>WikiWord test dummy</comment>
+      <text xml:space="preserve">'''Xar''' is xar on [[xoo]], [[xyzzy|xy-zzy]].
+  
+Say [[XYZ]]
+
+[[Category:Xofos|Xiro, Xar]]
+
+[[yy:Yar]]
+[[zz:Zar]]</text>
+    </revision>
+  </page>  
+  <page>
+    <title>XYZ</title>
+    <id>211</id>
+
+    <revision>
+      <id>2111</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+      <comment>WikiWord test dummy</comment>
+      
+      <text xml:space="preserve">'''XYZ''' may refer to
+
+* [[Xaa Yaa Zaa]] 
+* [[Xyyz]] by [[Xyyzz fyyzz|Fyyzz]]
+* [[xyz (x)|xyz]]
+
+== See also ==
+* [[Xoo]]
+* [[Xar (Xiro)|Xiro Xar]]
+ 
+{{Disambiguation}}
+
+[[yy:XYZ]]
+[[zz:XYZ]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Xyz</title>
+    <id>222</id>
+
+    <revision>
+      <id>2221</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+      <comment>WikiWord test dummy</comment>
+      
+      <text xml:space="preserve">#REDIRECT [[XYZ]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Xo</title>
+    <id>233</id>
+
+    <revision>
+      <id>2331</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+      <comment>WikiWord test dummy</comment>
+      
+      <text xml:space="preserve">#REDIRECT [[Xoo]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Xyyz</title>
+    <id>244</id>
+
+    <revision>
+      <id>2441</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+      <comment>WikiWord test dummy</comment>
+      
+      <text xml:space="preserve">#REDIRECT [[Xo]]</text>
+    </revision>
+  </page>
+  <page>
+    <title>Category:Xofos</title>
+    <id>311</id>
+
+    <revision>
+      <id>3111</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+      <comment>WikiWord test dummy</comment>
+      
+      <text xml:space="preserve">[[Category:Xiro]]
+[[Category:Xotos]]
+      </text>
+    </revision>
+  </page>
+  <page>
+    <title>Category:Xiro</title>
+    <id>322</id>
+
+    <revision>
+      <id>3221</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+      <comment>WikiWord test dummy</comment>
+      
+      <text xml:space="preserve">ROOT, see also [[:Category:Xotos]]
+      </text>
+    </revision>
+  </page>
+  <page>
+    <title>Category:Xotos</title>
+    <id>333</id>
+
+    <revision>
+      <id>3331</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+      <comment>WikiWord test dummy 2</comment>
+      
+      <text xml:space="preserve">[[Category:Xofos]]
+      </text>
+    </revision>
+  </page>
+  <page>
+    <title>Category:Xito</title>
+    <id>344</id>
+
+    <revision>
+      <id>3441</id>
+      <timestamp>2008-01-01T00:00:00Z</timestamp>
+      <contributor>
+        <username>WikiWord</username>
+        <id>1</id>
+      </contributor>
+      <comment>Lone</comment>
+      
+      <text xml:space="preserve">Lone Category
+      </text>
+    </revision>
+  </page>
+  
+</mediawiki>

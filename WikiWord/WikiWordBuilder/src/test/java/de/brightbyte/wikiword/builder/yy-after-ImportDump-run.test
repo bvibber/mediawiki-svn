@@ -1,0 +1,143 @@
+#
+# DB statusafter post-processing
+#
+
+Concepts
+
+select name, type 
+from /*prefix*/yy_concept 
+order by name;
+-------------------------------------------
+"Yar",	90
+"Yofos", 	0
+"Yoo", 	90
+"Yoo#yay", 	0
+"Yoo_yoo", 	90
+-------------------------------------------
+
+Link
+
+select anchor_name, target_name, term_text
+from /*prefix*/yy_link
+order by anchor_name, target_name, term_text;
+-------------------------------------------
+null,	"Yar",	"Yar"
+null,	"Yar",	"yar"
+null,	"Yofos",	"Yofos"
+null,	"Yoo", "YOO"
+null,	"Yoo", "Yoo"
+null,	"Yoo", "Yoos"
+null,	"Yoo#yay", "yay"
+null,	"Yoo_yoo", "Yoo yoo"
+"Yar",	"Yoo#yay",	"yoo yay"
+"Yoo",	"Yoo#yay",	"yay"
+"Yoo",	"Yoo_yoo",	"yoo^2"
+"Yoo_yoo",	"Yoo",	"Yoo"
+-------------------------------------------
+
+Relation
+
+select A.name, B.name, langmatch, bilink
+from /*prefix*/yy_relation as R
+join /*prefix*/yy_concept as A on A.id = R.concept1
+join /*prefix*/yy_concept as B on B.id = R.concept2
+where langmatch > 0 or bilink > 0
+order by A.name, B.name;
+-------------------------------------------
+"Yoo",	"Yoo_yoo",		0,	1
+"Yoo_yoo",	"Yoo",		0,	1
+-------------------------------------------
+
+Meaning
+
+select concept_name, term_text, freq
+from /*prefix*/yy_meaning
+order by concept_name, term_text;
+-------------------------------------------
+"Yar",  "Yar", 1
+"Yar",  "yar", 1
+"Yofos",        "Yofos", 1
+"Yoo",  "YOO", 1
+"Yoo",  "Yoo", 2
+"Yoo",  "Yoos", 1
+"Yoo#yay",      "yay", 2
+"Yoo#yay",      "yoo yay", 1
+"Yoo_yoo",  "Yoo yoo", 1
+"Yoo_yoo",  "yoo^2", 1
+-------------------------------------------
+
+Broader
+
+select narrow_name, broad_name
+from /*prefix*/yy_broader
+order by narrow_name, broad_name;
+-------------------------------------------
+"Yar",	"Yoo"
+"Yoo",	"Yofos"
+"Yoo#yay",	"Yoo"
+"Yoo#yay",	"Yoo"
+-------------------------------------------
+
+
+#########################################################################
+#########################################################################
+
+Link: anchor pair integrity
+
+select L.anchor_name, L.anchor, C.name
+from /*prefix*/yy_link as L
+join /*prefix*/yy_concept as C on L.anchor = C.id
+where L.anchor IS NOT NULL AND L.anchor_name != C.name
+order by anchor_name;
+-------------------------------------------
+-------------------------------------------
+
+Link: target pair integrity
+
+select L.target_name, L.target, C.name
+from /*prefix*/yy_link as L
+join /*prefix*/yy_concept as C on L.target = C.id
+where L.target IS NOT NULL AND L.target_name != C.name
+order by target_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias: source pair integrity
+
+select L.source_name, L.source, C.name
+from /*prefix*/yy_alias as L
+join /*prefix*/yy_concept as C on L.source = C.id
+where L.source IS NOT NULL AND L.source_name != C.name
+order by source_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias: target pair integrity
+
+select L.target_name, L.target, C.name
+from /*prefix*/yy_alias as L
+join /*prefix*/yy_concept as C on L.target = C.id
+where L.target IS NOT NULL AND L.target_name != C.name
+order by target_name;
+-------------------------------------------
+-------------------------------------------
+
+Broader: broad pair integrity
+
+select L.broad_name, L.broad, C.name
+from /*prefix*/yy_broader as L
+join /*prefix*/yy_concept as C on L.broad = C.id
+where L.broad IS NOT NULL AND L.broad_name != C.name
+order by broad_name;
+-------------------------------------------
+-------------------------------------------
+
+Broader: narrow pair integrity
+
+select L.narrow_name, L.narrow, C.name
+from /*prefix*/yy_broader as L
+join /*prefix*/yy_concept as C on L.narrow = C.id
+where L.narrow IS NOT NULL AND L.narrow_name != C.name
+order by narrow_name;
+-------------------------------------------
+-------------------------------------------

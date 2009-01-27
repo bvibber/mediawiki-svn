@@ -1,0 +1,33 @@
+WikiWord is a system for automatically extracting a thesaurus from 
+Wikipedia. It was developed by Daniel Kinzler in 2007-2009.
+
+Development started in 2007 as part of a master's thesis at the
+University of Leipzig, see <http://brightbyte.de/page/WikiWord>.
+
+Development was supported since 2009 by Wikimedia Deutschland e.V.
+
+	NOTE: This software is not released as a product. It was designed
+	for Wikimedia Deutschland's own use, and is made public as is, in
+	the hope it may be useful. Wikimedia Deutschland may at any time
+	discontinue developing or supporting this software. There is no
+	guarantee any new versions or even fixes for security issues will
+	be released.
+
+WikiWord was originally licensed under the GPL, with support of the
+University of Leipzig, and was released under the LGPL by its author in
+2009, in coordination with Wikimedia Deutschland. If you want to use it
+under some other license or condition, please contact the author at
+<http://brightbyte.de>.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.

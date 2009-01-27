@@ -1,0 +1,89 @@
+#
+# DB status just after reading the dump
+#
+Resource
+
+select name, type 
+from /*prefix*/zz_resource
+order by name;
+-------------------------------------------
+"XYZ",	10
+"Zar",	10
+"Zoo",	10
+-------------------------------------------
+
+Concepts
+
+select name, type 
+from /*prefix*/zz_concept 
+order by name;
+-------------------------------------------
+"XYZ",	90
+"Zar", 	90
+"Zoo", 	90
+-------------------------------------------
+
+Definition
+
+select name, definition
+from /*prefix*/zz_definition
+join /*prefix*/zz_concept on concept = id
+order by name;
+-------------------------------------------
+"XYZ",	"XYZ bla bla"
+"Zar",	"Zar is zar and zyzzy."
+"Zoo",	"Zoo is zoo."
+-------------------------------------------
+
+Link
+
+select anchor_name, target_name, term_text
+from /*prefix*/zz_link
+order by anchor_name, target_name, term_text;
+-------------------------------------------
+null,	"XYZ",	"XYZ"
+null,	"Zar",	"Zar"
+null,	"Zoo",	"Zoo"
+"Zar",	"Zyzzy",	"zyzzy"
+"Zar",	"Zürülü",	"Zürülü"
+"Zoo",	"Zar",	"Zar"
+-------------------------------------------
+
+Broader
+
+select narrow_name, broad_name
+from /*prefix*/zz_broader
+order by narrow_name, broad_name;
+-------------------------------------------
+"Zar",	"Fooz"
+"Zoo",	"Fooz"
+"Zoo",	"Zooz"
+-------------------------------------------
+
+Langlink
+
+select concept_name, language, target
+from /*prefix*/zz_langlink
+order by concept_name, language, target;
+-------------------------------------------
+"XYZ",	"xx", "XYZ"
+"Zar",	"yy", "Yar"
+"Zoo",	"xx", "Xoo_too"
+"Zoo",	"yy", "Yoo"
+-------------------------------------------
+
+Section
+
+select concept_name, section_name
+from /*prefix*/zz_section
+order by concept_name, section_name;
+-------------------------------------------
+-------------------------------------------
+
+Alias
+
+select source_name, target_name, scope
+from /*prefix*/zz_alias
+order by source_name, target_name;
+-------------------------------------------
+-------------------------------------------

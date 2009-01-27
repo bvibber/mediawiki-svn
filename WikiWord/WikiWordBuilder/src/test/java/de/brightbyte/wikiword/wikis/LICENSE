@@ -1,0 +1,27 @@
+Test files in this directory have been taken from Wikipedia. They are released
+under the GFDL and are copyrighted by their individual authors, as listed on
+the history page of the respective articles on the Wikipedia it came from.
+
+To find the Wikipedia page a test file came from (and thus, the authors),
+consider that the filenames are constructed after the following pattern:
+
+	test_<lang>wiki_<title>.text
+	
+<lang> is the language code (and thus, subdomain) of the wikipedia, for
+example "de" for the German Wikipedia, de.wikipedia.org, and <title> is the
+page on that wikipedia, for example "Berlin". So:
+
+	test_dewiki_Berlin.text
+	
+would have been taken from
+
+    http://de.wikipedia.org/wiki/Berlin
+    
+On that page, click the tab entiteled "versions" or "history" or "authors" 
+or "contributors", to find all copyright holders (the exact title of the tab
+is subject to the local community's fancy, as well as your language settings).
+
+The full text of the GFDL can be found here: 
+
+	http://www.gnu.org/licenses/fdl.txt
+	
