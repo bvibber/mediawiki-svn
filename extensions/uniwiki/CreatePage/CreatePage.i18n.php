@@ -198,8 +198,12 @@ $messages['es'] = array(
 $messages['eu'] = array(
 	'createpage' => 'Orri bat sortu',
 	'createpage_submitbutton' => 'Bidali',
+	'createpage_instructions' => 'Idatzi sortu nahi duzun orriaren izenburua:',
 	'createpage_entertitle' => 'Zure orrirako izenburu bat sartu mesedez.',
+	'createpage_titleexists' => '[[$1]] izenburua duen orria dagoeneko badago.
+Sortutako orria aldatu nahiko al zenuke?',
 	'createpage_tryagain' => 'Ez. Orrialde berri bat sortu nahi dut izenburu desberdinarekin.',
+	'createpage_editexisting' => 'Bai. Sortutako orrian lagundu nahi dut.',
 	'createpage-badtitle' => '"$1" ezin da orrialdearen izenburua bezala erabili.',
 );
 

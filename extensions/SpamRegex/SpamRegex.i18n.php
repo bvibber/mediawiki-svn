@@ -1026,6 +1026,7 @@ $messages['pt'] = array(
 	'spamregex-log-2' => '  em $1',
 	'spamregex-page-title-1' => 'Bloquear frase usando expressões regulares',
 	'spamregex-unblock-success' => 'Desbloqueio com sucesso',
+	'spamregex-unblock-message' => "A frase '''$1''' foi desbloqueada da edição.",
 	'spamregex-page-title-2' => 'Impedir páginas de serem gravadas usando expressões regulares',
 	'spamregex-block-success' => 'Bloqueio bem sucedido',
 	'spamregex-block-message' => "A frase '''$1''' foi bloqueada.",
@@ -1039,6 +1040,7 @@ $messages['pt'] = array(
 	'spamregex-block-submit' => 'Bloquear&nbsp;esta&nbsp;frase',
 	'spamregex-text' => '(Texto)',
 	'spamregex-summary-log' => '(Sumário)',
+	'right-spamregex' => 'Bloquear frases de spam através de [[Special:SpamRegex]]',
 );
 
 /** Tarifit (Tarifit)

@@ -1021,6 +1021,17 @@ Nevhodné súbory budú okamžite zmazané, pozri [[{{MediaWiki:Multipleupload-p
 	'multiupload-toolbox' => 'Nahrať viacero súborov',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'multipleupload' => 'Ngarko skeda',
+	'multipleupload-desc' => 'Lejon që përdoruesit të [[Special:MultipleUpload|ngarkojnë më shumë se një skedë përnjëherë]]',
+	'multipleupload-saveallfiles' => 'Ruaj të gjitha skedat',
+	'multiupload-fileuploaded' => 'Skedat e ngarkuara.',
+	'multiupload-toolbox' => 'Ngarko skeda të shumta',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -92,6 +92,24 @@ $messages['bg'] = array(
 	'tog-edit-similar' => 'Включване на предположенията за сходни страници',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'editsimilar-desc' => 'Ohrabruje korisnike za uređuju slične stranice nakon spremanja stranice',
+	'editsimilar-thanks' => 'Hvala Vam za Vaš doprinos.
+Pogledajte ove povezane stranice: $1.',
+	'editsimilar-thanks-singleresult' => 'Hvala Vam za Vaš doprinos.
+Pogledajte ovu sličnu stranicu: $1.',
+	'editsimilar-thanks-notsimilar' => 'Hvala Vam za Vaš doprinos.
+Ove stranice Vam također mogu pomoći: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Hvala Vam za Vaš doprinos.
+Ova stranica Vam također može pomoći: $1.',
+	'editsimilar-thankyou' => 'Korisniče $1, hvala Vam za Vaš doprinos!',
+	'editsimilar-link-disable' => 'postavi postavke',
+	'tog-edit-similar' => 'Omogući sugestije za slične stranice',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian

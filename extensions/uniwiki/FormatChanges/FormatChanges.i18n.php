@@ -127,7 +127,10 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'formatchanges-desc' => '[[Special:RecentChanges|Azken aldaketak]] formateatzen ditu',
 	'formatchanges-anonymous' => 'Anonimoa',
+	'formatchanges-createdby' => '$1 - $2-(e)k sortua ($3)',
+	'formatchanges-editedby' => '$1 - $2-(e)k aldatua ($3)',
 );
 
 /** Finnish (Suomi)

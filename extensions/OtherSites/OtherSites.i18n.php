@@ -274,6 +274,13 @@ $messages['sk'] = array(
 	'othersites-desc' => 'Presunie interwiki odkazy okrem odkazov na iné jazyky do ich vlastných portletov.',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'othersites' => 'Faqet tjera',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -454,6 +454,8 @@ $messages['bs'] = array(
 
 $2',
 	'whitelistrequestconf' => 'Zahtjev za nove stranice je poslan na $1',
+	'whitelistnonrestricted' => "Korisnik '''$1''' nije ograničeni korisnik.
+Ova stranica se može primijeniti samo na ograničene korisnike",
 	'whitelistnever' => 'nikad',
 	'whitelistnummatches' => '- {{PLURAL:$1|$1 pogodak|$1 pogotka|$1 pogodaka}}',
 	'right-editwhitelist' => 'Prilagođavanje dopuštenog spiska za postojeće korisnike',

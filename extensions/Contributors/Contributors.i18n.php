@@ -713,9 +713,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Kwj2772
  * @author ToePeu
  */
 $messages['ko'] = array(
+	'contributors-target' => '제목:',
 	'contributors-submit' => '보이기',
 );
 

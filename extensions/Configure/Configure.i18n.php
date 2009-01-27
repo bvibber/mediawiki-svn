@@ -688,6 +688,7 @@ $messages['as'] = array(
 $messages['be-tarask'] = array(
 	'configure-js-remove' => 'Выдаліць',
 	'configure-no-old' => 'Няма даступнай старай вэрсіі канфігурацыі.',
+	'configure-section-email' => 'Адрас электроннай пошты',
 	'configure-section-category' => 'Катэгорыі',
 );
 

@@ -2339,6 +2339,7 @@ $messages['hsb'] = array(
 	'metavid' => 'Strona Metavid',
 	'mv_missing_stream' => 'Falowacy stream: $1',
 	'specialpages-group-mv_group' => 'Specialne strony MetaVidWiki',
+	'mv_warning_wiki' => '<i>Kedźbu: Přepisy widejow metavid [[Help:FAQ#How_accurate_is_the_information.3F|móža njedokładnosće wobsahować]], pomhaj nam [[Help:Participation#Improving_Archive_Accuracy|perfektniši archiw]] wutworić</i>',
 	'mv_ogg_low_quality' => 'Streamujomny w syći - Ogg Theora 300 kb/s',
 	'mv_ogg_high_quality' => 'Wysoka kwalita - Ogg Theora 900 kbit/s',
 	'mv_flash_low_quality' => 'Webprud - flashwidejo',
@@ -2517,6 +2518,8 @@ $messages['hsb'] = array(
 	'mv_sequence_player_title' => 'Wothrawak sekwencow',
 	'mv_resource_not_found' => "Resursa '''$1''' njenamakana",
 	'mv_resource_not_supported' => "Typ resursy '''$1''' so njepodpěruje",
+	'mv_welcome_to_sequencer' => '<h3>Witaj k demo sekwencera</h3>
+tuchwilu jara <b>wobmjezowana</b> funkcionalnosć. Klikń na klip, zo by tu resursu wobdźěłał',
 	'mv_resource_locator' => 'Wozjewjenje resursow',
 	'mv_unknown_clipboard_action' => 'Njeznata akcija mjezyskłada',
 	'mv_media_search' => 'Pytanje medijow',

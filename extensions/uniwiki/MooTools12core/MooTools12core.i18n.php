@@ -79,6 +79,13 @@ $messages['es'] = array(
 	'mootools12core-desc' => 'Añade [http://mootools.net mootools-1.2-core-yc.js], un entorno JavaScript compacto, a cada página',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'mootools12core-desc' => 'Orri bakoitzari, JavaScript molde trinkoa, [http://mootools.net mootools-1.2-core-yc.js] gehitzen dio',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  */

@@ -2081,7 +2081,18 @@ Ndoshta YouTube ka nevojë për ca kohë për të përpunuar videon tuaj, pra nd
 Për të përfshirë video copën tuaj në një wiki faqe vendose kodin në vijim në faqe:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Për të ngarkuar video copë fillimisht duhet që të kyçeni në YouTube.',
+	'youtubeauthsub_uploadhere' => 'Ngarkoni video copën tuaj nga këtu:',
 	'youtubeauthsub_uploadbutton' => 'Ngarko',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Shiko këtë video]',
+	'youtubeauthsub_summary' => 'Duke ngarkuar YouTube video',
+	'youtubeauthsub_uploading' => 'Kjo video është duke u ngarkuar.
+Ju lutemi keni durim.',
+	'youtubeauthsub_viewpage' => 'Zgjedhore, mund të e [[$1|shikoni]] video copën tuaj.',
+	'youtubeauthsub_jserror_nokeywords' => 'Ju lutemi vendosni 1 ose më shumë fjalë kyçe.',
+	'youtubeauthsub_jserror_notitle' => 'Ju lutemi vendosni titull për video copën tuaj.',
+	'youtubeauthsub_jserror_nodesc' => 'Ju lutemi vendosni përshkrim për video copën tuaj.',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

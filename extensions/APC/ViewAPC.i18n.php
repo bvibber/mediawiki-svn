@@ -527,10 +527,14 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'viewapc' => 'APC informacije',
 	'viewapc-desc' => '[[Special:ViewAPC|Pregledaj i uredi APC keš]] sa MediaWiki',
+	'right-apc' => 'Korištenje svih mogućnosti u [[Special:ViewAPC]]',
+	'viewapc-apc-not-available' => 'Podaci o kešu nisu dostupni.
+Izgleda da APC ne radi.',
 	'viewapc-clear-confirm' => 'Da li želite očistiti keš?',
 	'viewapc-clear-user-cache' => 'Očisti korisnički keš',
 	'viewapc-mode-stats' => 'Vidi statistike domaćina',
 	'viewapc-mode-system-cache' => 'Stavke sistemskog keša',
+	'viewapc-mode-user-cache' => 'Stavke korisničkog keša',
 	'viewapc-mode-version-check' => 'Provjera verzije',
 	'viewapc-info-general' => 'Osnovne informacije',
 	'viewapc-apc-version' => 'APC verzija',
@@ -544,6 +548,8 @@ $messages['bs'] = array(
 	'viewapc-hits' => 'Pogotci',
 	'viewapc-misses' => 'Promašaji',
 	'viewapc-rps' => '$1 zahtjeva u sekundi',
+	'viewapc-memory-usage-detailed' => 'Iskorištenje memorije<br />
+(višestruki slojevi pokazuju fragmente)',
 	'viewapc-memory-usage' => 'Upotreba memorije',
 	'viewapc-cache-efficiency' => 'Pogodci i promašaji',
 	'viewapc-memory-free' => 'Slobodno: $1 ($2)',

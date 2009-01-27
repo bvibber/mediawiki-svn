@@ -1081,6 +1081,8 @@ Clique no botão abaixo para subscrever.',
 	'povwatch_added' => 'adicionado',
 	'right-povwatch_admin' => 'Administrar privilégios do utilizador para adicionar páginas nas listas de artigos vigiados de outros utilizadores',
 	'right-povwatch_user' => 'Adicionar páginas na lista de artigos vigiados de outros utilizadores',
+	'action-povwatch_admin' => 'administrar direitos de utilizador para o PovWatch',
+	'action-povwatch_user' => 'adicionar esta página à lista de vigiados de outro utilizador',
 );
 
 /** Romanian (Română)

@@ -271,6 +271,13 @@ $messages['sk'] = array(
 	'logentry-invalidtoken' => 'Neplatný token',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$messages['sq'] = array(
+	'logentry-invalidpage' => 'Faqe jovalide',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

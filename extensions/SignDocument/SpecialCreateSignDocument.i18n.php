@@ -1384,9 +1384,10 @@ Pakitiyak lamang din na tinukoy/tutukuyin mo ang lahat ng mga kahanayan ayon sa 
 	'createsigndoc-create' => 'Likhain',
 	'createsigndoc-error-generic' => 'Kamalian: $1',
 	'createsigndoc-error-pagenoexist' => 'Kamalian: Hindi umiiral ang pahinang [[$1]].',
-	'createsigndoc-success' => 'Matagumpay na napaandar/napagana ang paglalagda sa kasulatan (dokumento) sa [[$1]].
-Upang masubok muna ito, pakidalaw ang [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} pahinang ito].',
-	'createsigndoc-error-alreadycreated' => 'Umiiral na ang paglalagda sa kasulatan/dokumentong "$1".',
+	'createsigndoc-success' => 'Matagumpay na napagana ang paglalagda ng kasulatan sa ibabaw ng [[$1]].
+Maaari mong [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} subukan ito].',
+	'createsigndoc-error-alreadycreated' => 'Umiiral na ang paglalagda ng kasulatang "$1".
+Hindi na ito magagawa sa ikalawang pagkakataon.',
 );
 
 /** Turkish (Türkçe)

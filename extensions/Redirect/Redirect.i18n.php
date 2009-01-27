@@ -36,6 +36,13 @@ $messages['dsb'] = array(
 	'redirect-desc' => 'Zmóžnja lažku konfiguraciju dalejpósrědnjenjow pśi [[MediaWiki:Redirect-addnewaccount|załoženju konta]] a  [[MediaWiki:Redirect-userlogoutcomplete|wótzjawjenju]]',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'redirect-desc' => 'Birzuzenketen konfigurazio erraza ahalbidetzen du [[MediaWiki:Redirect-addnewaccount|kontua sortu]] eta [[MediaWiki:Redirect-userlogoutcomplete|saioa ixtean]]',
+);
+
 /** Persian (فارسی)
  * @author Vahid
  */

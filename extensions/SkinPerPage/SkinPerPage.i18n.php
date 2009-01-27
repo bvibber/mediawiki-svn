@@ -110,6 +110,13 @@ $messages['es'] = array(
 	'skinperpage-desc' => 'Añade elemento <tt>&lt;skin&gt;</tt> para usar una piel diferente por página',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'skinperpage-desc' => '<tt>&lt;skin&gt;</tt> erabiltzen du orriko skin ezberdinak erabiltzeko',
+);
+
 /** Persian (فارسی) */
 $messages['fa'] = array(
 	'skinperpage-desc' => 'برچسب <tt>&lt;skin&gt;</tt> را اضافه می‌کند تا بتوان در هر صفحه از پوسته‌ای متفاوت استفاده کرد',

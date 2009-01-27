@@ -442,6 +442,15 @@ $messages['lb'] = array(
 	'backforth-prev' => '($1) virdrun',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'backforth-next' => 'Volgende ($1)',
+	'backforth-desc' => 'Voog alfabetische links nao "Veurige" en "Volgende" pagina toe bovenaan pagina\'s',
+	'backforth-prev' => 'Veurige ($1)',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Matasg
  */

@@ -329,10 +329,11 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
-	'absenteelandlord-reason' => 'De database is automatisch aafgeslaote waenges inactiviteit vanne behieërders.',
-	'absenteelandlord-desc' => "Sluut de database automatisch wen de behieërders allemaol gedurendje 'ne bepaoldje tied inactief zeen",
+	'absenteelandlord-reason' => 'De database is automatisch aafgesjlote waeges inactiviteit van de systeemwèrkers.',
+	'absenteelandlord-desc' => "Sjleet de database automatisch es de systeemwèrkers allemaol 'ne bepaolde tied inactief zien",
 );
 
 /** Lumbaart (Lumbaart)
