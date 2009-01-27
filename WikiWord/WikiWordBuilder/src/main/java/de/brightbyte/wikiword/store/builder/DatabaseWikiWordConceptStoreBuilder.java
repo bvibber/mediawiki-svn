@@ -401,12 +401,13 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		
 		};
 
-		return executeChunkedUpdate(query, 1);
+		return executeChunkedUpdate(query, -5); 
 	}
 	
 	protected int buildBiLink() throws PersistenceException {
 		String sql = "insert ignore into "+relationTable.getSQLName()+" (concept1, concept2, bilink)" +
-		" select A.anchor, A.target, 1 from "+linkTable.getSQLName()+" as A " +
+		" select A.anchor, A.target, 1 from "+linkTable.getSQLName()+" as A " + 
+		" force index (anchor_target) " + //NOTE: avoid table scan!
 		" join "+linkTable.getSQLName()+" as B on A.anchor = B.target AND B.anchor = A.target ";
 		String suffix = " on duplicate key update bilink = bilink + values(bilink)"; 
 

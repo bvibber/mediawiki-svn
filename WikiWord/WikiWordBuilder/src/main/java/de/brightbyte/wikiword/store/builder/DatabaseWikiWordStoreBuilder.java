@@ -304,7 +304,7 @@ public class DatabaseWikiWordStoreBuilder
 	
 	protected int executeChunkedUpdate(DatabaseAccess.ChunkedQuery query, int factor) throws PersistenceException {
 		try {
-			int chunk = updateChunkSize / factor;
+			int chunk = factor < 0 ? updateChunkSize * -factor : updateChunkSize / factor;
 			return database.executeChunkedUpdate(query, chunk, getAgenda());
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
