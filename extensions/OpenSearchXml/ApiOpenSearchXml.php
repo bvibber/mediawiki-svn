@@ -66,6 +66,7 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 		$search = $params['search'];
 		$limit = $params['limit'];
 		$namespaces = $params['namespace'];
+		$this->redirects = $params['redirects'];
 		
 		// Open search results may be stored for a very long time
 		$this->getMain()->setCacheMaxAge(1200);
@@ -89,9 +90,11 @@ class ApiOpenSearchXml extends ApiOpenSearch {
 	}
 	
 	protected function formatItem( $name ) {
-		$title = TItle::newFromText( $name );
+		$title = Title::newFromText( $name );
 		if( $title ) {
-			$title = $this->_checkRedirect( $title );
+			if( $this->redirects ) {
+				$title = $this->_checkRedirect( $title );
+			}
 			if( $this->_seen( $title ) ) {
 				return false;
 			}
