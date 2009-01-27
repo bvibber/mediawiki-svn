@@ -1176,11 +1176,7 @@ class DataCenterUI {
 			self::$output['menu'] .= DataCenterXml::div(
 				array( 'class' => 'action-' . $state ),
 				DataCenterXml::link(
-					self::message(
-						'action',
-						$label,
-						self::message( 'type', $action['type'] )
-					),
+					self::message( 'action', $label ),
 					$action
 				)
 			);
