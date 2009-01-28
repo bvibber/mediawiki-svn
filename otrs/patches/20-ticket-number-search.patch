@@ -1,0 +1,26 @@
+Index: trunk/Kernel/Output/HTML/Standard/AgentNavigationBar.dtl
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/Standard/AgentNavigationBar.dtl	2009-01-27 14:51:08.000000000 +1100
++++ trunk/Kernel/Output/HTML/Standard/AgentNavigationBar.dtl	2009-01-27 14:54:35.000000000 +1100
+@@ -66,6 +66,21 @@
+             </div>
+           </td>
+ <!-- dtl:block:ItemPersonal -->
++
++<!-- Ticket number search patch start -->
++<td valign="bottom" align="center" class="nav">
++<a href="javascript:ticketNumberSearch();"><img src="$Env{"Images"}searchX.gif" border="0" width="22"><br>Ticket#</a>
++<script language="JavaScript" type="text/javascript"><!--
++function ticketNumberSearch() {
++        x=prompt("Ticket#");
++        if ( x!='' && x != null ) {
++                window.location="$Env{"CGIHandle"}?Action=AgentTicketSearch&Subaction=Search&TicketNumber="+x;
++        }
++}
++-->
++</script></td>
++<!-- Ticket number search patch end -->
++
+ <!-- dtl:block:Classic -->
+ <!-- dtl:block:Modern -->
+ <!-- dtl:block:ItemPre -->

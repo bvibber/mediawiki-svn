@@ -1,0 +1,961 @@
+Index: trunk/.fetchmailrc.dist
+===================================================================
+--- trunk.orig/.fetchmailrc.dist	2009-01-28 15:43:49.000000000 +1100
++++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+@@ -1,31 +0,0 @@
+-# --
+-# .fetchmailrc - fetchmailrc of the OTRS user
+-# Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
+-# --
+-# $Id: .fetchmailrc.dist,v 1.3 2008/03/07 17:00:14 martin Exp $
+-# --
+-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+-# the enclosed file COPYING for license information (GPL). If you
+-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+-# --
+-# Note: Continue lines with whitespace at the beginning of each newline
+-# --
+-
+-#-----------------#
+-# simple example:
+-#-----------------#
+-
+-#poll <MAIL_SERVER> protocol POP3 user <MAIL_USERNAME> pass <MAIL_PASSWORD> is <LOCAL_OTRS_USERNAME> here
+-
+-#-------------------------------------------------#
+-# example for polling from an IMAP-Server via SSL.
+-#-------------------------------------------------#
+-
+-#poll <MAIL_SERVER> protocol IMAP port 993 plugin "openssl s_client -connect %h:%p" user <MAIL_USERNAME> pass <MAIL_PASSWORD> is <LOCAL_OTRS_USERNAME> here
+-
+-#--------------------------------------------------------#
+-# The openssl command has to be installed and accessible
+-# for the otrs user.
+-# If the otrs user cannot find openssl, try:
+-#  plugin "/path/to/openssl s_client -connect %h:%p"
+-#--------------------------------------------------------#
+Index: trunk/.mailfilter.dist
+===================================================================
+--- trunk.orig/.mailfilter.dist	2009-01-28 15:46:53.000000000 +1100
++++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+@@ -1,79 +0,0 @@
+-# --
+-# .mailfilter - mailfilter of the OTRS user
+-# Copyright (C) 2003 Wiktor Wodecki <wiktor.wodecki@net-m.de>
+-# --
+-# $Id: .mailfilter.dist,v 1.3 2007/02/06 16:01:13 tr Exp $
+-# --
+-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+-# the enclosed file COPYING for license information (GPL). If you
+-# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
+-# --
+-
+-#SYS_HOME=/opt/otrs
+-SYS_HOME=$HOME
+-
+-import DEFAULT
+-LOCALDEFAULT=$DEFAULT
+-DEFAULT=${SYS_HOME}/var/spool/`date +%s`${FROM}${SIZE}
+-MONTHFOLDER=`date +%Y-%m`
+-YEARFOLDER=`date +%Y`
+-
+-
+-# Remove all X-OTRS Header (allow this only for trusted email)
+-# e. g. from *@example.com
+-
+-if (/^To:.*@example.com/)
+-{
+-    xfilter "grep -vi '^X-OTRS-'"
+-}
+-
+-# or just not emails with "X-OTRS-Ident: ahfiw2Fw32r230dddl2foeo3r" header!
+-#if (/^X-OTRS-Ident: ahfiw2Fw32r230dddl2foeo3r/)
+-#{
+-#    xfilter "grep -vi '^X-OTRS-'"
+-#}
+-
+-
+-
+-# Examples for queue presorting.
+-
+-if (/^To:.*@example.com/)
+-{
+-    xfilter "formail -I \"X-OTRS-Queue: example\""
+-}
+-
+-if (/^List-Id:.*OpenAntiVirus/)
+-{
+-    xfilter "formail -I \"X-OTRS-Queue: OpenAntiVirus\""
+-}
+-
+-
+-# Example for add free form key and value (max 3).
+-
+-if (/^To:.*@example.com/)
+-{
+-    xfilter "formail -I \"X-OTRS-ArticleKey1: Test\""
+-    xfilter "formail -I \"X-OTRS-ArticleValue1: True!\""
+-}
+-
+-
+-# Backup of all incoming emails.
+-# It's always better to have a backup of all incoming emails!
+-
+-cc ${SYS_HOME}/var/INBOX.Backup.${MONTHFOLDER}
+-
+-
+-# Pipe all email into the PostMaster process.
+-
+-xfilter "${SYS_HOME}/bin/PostMaster.pl"
+-
+-
+-# spool all the rest (which the PostMaster.pl can't process!)
+-# If the database is down or the PostMaster.pl exit was not '0'!
+-
+-to $DEFAULT
+-
+-
+-# end of .mailfilter
+-
+-
+Index: trunk/.procmailrc.dist
+===================================================================
+--- trunk.orig/.procmailrc.dist	2009-01-28 15:46:53.000000000 +1100
++++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+@@ -1,86 +0,0 @@
+-# --
+-# .procmailrc - procmailrc of the OTRS user
+-# Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
+-# --
+-# $Id: .procmailrc.dist,v 1.4 2008/10/15 17:19:21 martin Exp $
+-# --
+-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+-# the enclosed file COPYING for license information (GPL). If you
+-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+-# --
+-
+-#SYS_HOME=/opt/otrs/
+-SYS_HOME=$HOME
+-
+-SHELL=/bin/sh
+-PATH=/bin:/usr/bin:/usr/local/bin
+-MONTHFOLDER=`date +%Y-%m`
+-YEARFOLDER=`date +%Y`
+-LOGFILE=$SYS_HOME/var/log/procmail-$MONTHFOLDER.log
+-VERBOSE=on
+-
+-
+-# Remove all X-OTRS Header (allow this only for trusted email)
+-# e. g. from *@example.com
+-
+-:0 fhw :
+-* !^From.*@example.com
+-| grep -vi '^X-OTRS-'
+-
+-# or just not emails with "X-OTRS-Ident: ahfiw2Fw32r230dddl2foeo3r" header!
+-#:0 fhw :
+-#* !^X-OTRS-Ident: ahfiw2Fw32r230dddl2foeo3r
+-#| grep -vi '^X-OTRS-'
+-
+-
+-
+-# Examples for queue presorting.
+-
+-:0 fhw :
+-* TO:.*@example.com
+-| formail -I "X-OTRS-Queue: example"
+-
+-:0 fhw :
+-* ^List-Id:.*OpenAntiVirus
+-| formail -I "X-OTRS-Queue: OpenAntiVirus"
+-
+-
+-# Example for add free form key and value (max 3).
+-
+-:0 fhw :
+-* TO:.*@example.com
+-| formail -I "X-OTRS-ArticleKey1: Test" |  formail -I "X-OTRS-ArticleValue1: True!"
+-
+-
+-# Example for assigning the "email domain as customer ID" automaticaly.
+-
+-#:0hc
+-#CUSTOMERID=|formail -X "From:"|perl -e '$i=<STDIN>; $i=~s/^From: //;$i=~s/\(.*?\)//;$i=~s/<(.*?)>/$1/;$i=~s/ //g;$i=~s/.*@(.*)/$1/;print $i'
+-#
+-#:0 fhw :
+-#| formail -I "X-OTRS-CustomerNo: $CUSTOMERID"
+-
+-
+-# Backup of all incoming emails.
+-# It's always better to have a backup of all incoming emails!
+-
+-#:0 c :
+-#$SYS_HOME/var/INBOX.Backup.$MONTHFOLDER
+-
+-
+-# Pipe all email into the PostMaster process.
+-
+-:0 :
+-| $SYS_HOME/bin/PostMaster.pl
+-
+-
+-# spool all the rest (which the PostMaster.pl can't process!)
+-# If the database is down or the PostMaster.pl exit was not '0'!
+-
+-:0 :
+-$SYS_HOME/var/spool/.
+-
+-
+-# end of .procmailrc
+-
+-
+Index: trunk/INSTALL
+===================================================================
+--- trunk.orig/INSTALL	2009-01-28 15:44:01.000000000 +1100
++++ trunk/INSTALL	2009-01-28 15:52:50.000000000 +1100
+@@ -74,7 +74,7 @@
+    ------------
+     Add user:
+     ---------
+-    $shell: useradd -d /opt/otrs/ -c 'OTRS user' otrs
++    $shell: useradd -d /opt/otrs/home/ -c 'OTRS user' otrs
+ 
+     Add user to webserver group (if the webserver is not running with OTRS user):
+     -----------------------------------------------------------------------------
+@@ -115,12 +115,26 @@
+ 
+ 7. File Permissions:
+    -----------------
+-   Set the file permissions with
+-   "$HOME/bin/SetPermissions.sh <OTRS_HOME> <OTRS_USER> <WEBSERVER_USER> [OTRS_GROUP] [WEB_GROUP]"
+-   e. g.
+-     Webserver with OTRS user: "SetPermissions.sh /opt/otrs otrs otrs"
+-     Webserver with wwwrun user (e. g. SuSE): "SetPermissions.sh /opt/otrs otrs wwwrun"
+-     Webserver with apache user (e. g. Redhat): "SetPermissions.sh /opt/otrs otrs apache apache apache"
++   To set the file permissions with a functional package manager:
++   "$HOME/bin/SetPermissions.pl --otrs-user=<OTRS_USER> --web-user=<WEBSERVER_USER> [--otrs-group=<OTRS_GROUP>] [--web-group=<WEB_GROUP>] <OTRS_HOME>"
++   
++    e. g.
++     Webserver with OTRS user: 
++        "SetPermissions.pl --otrs-user=otrs --web-user=otrs /opt/otrs"
++     Webserver with wwwrun user (e. g. SuSE): 
++        "SetPermissions.pl --otrs-user=otrs --web-user=wwwrun /opt/otrs"
++     Webserver with apache user (e. g. Redhat):
++        "SetPermissions.pl --otrs-user=otrs --web-user=apache --otrs-group=apache --web-group=apache /opt/otrs"
++
++   To set the file permissions with package manager disabled:
++   "$HOME/bin/SetPermissions.pl --secure --otrs-user=<OTRS_USER> --web-user=<WEBSERVER_USER> --admin-user=<ADMIN_USER> [--otrs-group=<OTRS_GROUP>] [--web-group=<WEB_GROUP>] [--admin-group=<ADMIN_GROUP] <OTRS_HOME>"
++
++   e.g.
++        "SetPermissions.pl --secure --otrs-user=otrs --web-user=otrs --admin-user=root /opt/otrs"
++
++   You will also need to add the following to Kernel/Config.pm:
++
++        $Self->{SecureMode} = 1;
+ 
+ 8. Database setup:
+    ---------------
+Index: trunk/Kernel/Modules/AdminGenericAgent.pm
+===================================================================
+--- trunk.orig/Kernel/Modules/AdminGenericAgent.pm	2009-01-28 15:46:53.000000000 +1100
++++ trunk/Kernel/Modules/AdminGenericAgent.pm	2009-01-28 15:52:50.000000000 +1100
+@@ -533,6 +533,11 @@
+             }
+         }
+ 
++        # Secure mode
++        if ( !$Self->{ConfigObject}->Get( 'SecureMode' ) ) {
++            $Self->{LayoutObject}->Block( Name => 'InsecureOptions' );
++        }
++
+         # html search mask output
+         my $Output = $Self->{LayoutObject}->Header( Title => 'Affected Tickets' );
+         $Output .= $Self->{LayoutObject}->NavigationBar();
+@@ -1106,6 +1111,11 @@
+             }
+         }
+ 
++        # Secure mode
++        if ( !$Self->{ConfigObject}->Get( 'SecureMode' ) ) {
++            $Self->{LayoutObject}->Block( Name => 'InsecureOptions' );
++        }
++
+         # generate search mask
+         my $Output = $Self->{LayoutObject}->Header( Title => 'Edit' );
+         $Output .= $Self->{LayoutObject}->NavigationBar();
+Index: trunk/Kernel/Modules/AdminSelectBox.pm
+===================================================================
+--- trunk.orig/Kernel/Modules/AdminSelectBox.pm	2009-01-28 15:46:53.000000000 +1100
++++ trunk/Kernel/Modules/AdminSelectBox.pm	2009-01-28 15:52:50.000000000 +1100
+@@ -35,6 +35,11 @@
+ sub Run {
+     my ( $Self, %Param ) = @_;
+ 
++    if ( $Self->{ConfigObject}->Get( 'SecureMode' ) ) {
++        $Self->{LayoutObject}->FatalError( Message => "The SQL box is disabled in secure mode." );
++        return;
++    }
++
+     # ------------------------------------------------------------ #
+     # print form
+     # ------------------------------------------------------------ #
+Index: trunk/Kernel/Modules/AdminSysConfig.pm
+===================================================================
+--- trunk.orig/Kernel/Modules/AdminSysConfig.pm	2009-01-28 15:46:53.000000000 +1100
++++ trunk/Kernel/Modules/AdminSysConfig.pm	2009-01-28 15:52:50.000000000 +1100
+@@ -45,6 +45,11 @@
+     my $Group = '';
+     my $Anker = '';
+ 
++    if ( $Self->{ConfigObject}->Get( 'SecureMode' ) ) {
++        $Self->{LayoutObject}->FatalError( Message => "SysConfig is disabled in secure mode." );
++        return;
++    }
++
+     # write default file
+     if ( !$Self->{ParamObject}->GetParam( Param => 'DontWriteDefault' ) ) {
+         if ( !$Self->{SysConfigObject}->WriteDefault() ) {
+Index: trunk/Kernel/Output/HTML/NavBarModuleAdmin.pm
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/NavBarModuleAdmin.pm	2009-01-28 15:46:53.000000000 +1100
++++ trunk/Kernel/Output/HTML/NavBarModuleAdmin.pm	2009-01-28 15:52:50.000000000 +1100
+@@ -88,6 +88,17 @@
+                 }
+ 
+             }
++
++            # Disable modules disabled by SecureMode
++            if ( $Self->{ConfigObject}->Get( 'SecureMode' ) ) {
++				for my $BlacklistedModule ( qw'AdminPackageManager AdminSelectBox AdminSysConfig' ) {
++					if ( $Module eq $BlacklistedModule ) {
++						$Shown = 0;
++						last;
++					}
++				}
++            }
++
+             next if !$Shown;
+ 
+             my $Key = sprintf( "%07d", $Hash{NavBarModule}->{Prio} || 0 );
+Index: trunk/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl	2009-01-28 15:46:53.000000000 +1100
++++ trunk/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl	2009-01-28 15:52:50.000000000 +1100
+@@ -476,14 +476,14 @@
+             </td>
+           </tr>
+           <tr>
+-            <td class="mainhead" width="50%">$Text{"CMD"}</td>
++            <td class="mainhead" width="50%">$Text{"Send Notification"}</td>
+             <td class="mainhead" width="50%">$Text{"Delete"}</td>
+           </tr>
+-          <tr>
+             <td class="contentbody">
+-              <input type="text" name="NewCMD" value="$QData{"NewCMD"}" size="40"/>
++              $Text{"Send no notifications"}: $Data{"SendNoNotificationOption"}
+               <br/>
+-              ($Text{"This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id."})
++              $Text{"Yes means, send no agent and customer notifications on changes."}
++              $Text{"No means, send agent and customer notifications on changes."}
+             </td>
+             <td class="contentbody">
+               $Text{"Delete tickets"}: $Data{"DeleteOption"}
+@@ -492,13 +492,20 @@
+               <b>($Text{"Warning! This tickets will be removed from the database! This tickets are lost!"})</b>
+               </font>
+             </td>
++          <tr>
+           </tr>
++<!-- dtl:block:InsecureOptions -->
+           <tr>
++            <td class="mainhead" width="50%">$Text{"CMD"}</td>
+             <td class="mainhead" width="50%">$Text{"Module"}</td>
+-            <td class="mainhead" width="50%">$Text{"Send Notification"}</td>
+           </tr>
+           <tr>
+             <td class="contentbody">
++              <input type="text" name="NewCMD" value="$QData{"NewCMD"}" size="40"/>
++              <br/>
++              ($Text{"This command will be executed. ARG[0] will be the ticket number. ARG[1] the ticket id."})
++            </td>
++            <td class="contentbody">
+               <table>
+                 <tr>
+                   <td valign="top">$Text{"Module"}:</td>
+@@ -548,13 +555,8 @@
+                 </tr>
+               </table>
+             </td>
+-            <td class="contentbody">
+-              $Text{"Send no notifications"}: $Data{"SendNoNotificationOption"}
+-              <br/>
+-              $Text{"Yes means, send no agent and customer notifications on changes."}
+-              $Text{"No means, send agent and customer notifications on changes."}
+-            </td>
+           </tr>
++<!-- dtl:block:InsecureOptions -->
+           <tr>
+             <td colspan="2" class="contentfooter">
+               <input class="button" type="submit" value="$Text{"Save"}"/>
+Index: trunk/Kernel/System/GenericAgent.pm
+===================================================================
+--- trunk.orig/Kernel/System/GenericAgent.pm	2009-01-28 15:46:53.000000000 +1100
++++ trunk/Kernel/System/GenericAgent.pm	2009-01-28 15:52:50.000000000 +1100
+@@ -273,6 +273,18 @@
+         }
+     }
+ 
++    # Check security
++    if ( $Self->{ConfigObject}->Get( 'SecureMode' ) ) {
++        if ( $Job{New}->{Module} ) {
++            $Self->{LogObject}->Log( Priority => 'error', Message => "Cannot run modules in secure mode.\n" );
++            return;
++        }
++        if ( $Job{New}->{CMD} ) {
++            $Self->{LogObject}->Log( Priority => 'error', Message => "Cannot run commands in secure mode.\n" );
++            return;
++        }
++    }
++
+     my %Tickets = ();
+ 
+     # escalation tickets
+Index: trunk/Kernel/System/Package.pm
+===================================================================
+--- trunk.orig/Kernel/System/Package.pm	2009-01-28 15:46:53.000000000 +1100
++++ trunk/Kernel/System/Package.pm	2009-01-28 15:52:50.000000000 +1100
+@@ -125,9 +125,9 @@
+     $Self->{Home} = $Self->{ConfigObject}->Get('Home');
+ 
+     # permission check
+-    if ( !$Self->_FileSystemCheck() ) {
++    if ( !$Self->{ConfigObject}->Get( 'SecureMode' ) && !$Self->_FileSystemCheck() ) {
+         die "ERROR: Need write permission in OTRS home\n"
+-            . "Try: \$OTRS_HOME/bin/SetPermissions.sh !!!\n";
++            . "Try: \$OTRS_HOME/bin/SetPermissions.pl !!!\n";
+     }
+ 
+     return $Self;
+@@ -2310,21 +2310,7 @@
+ 
+     # create test files in following directories
+     for (qw(/bin/ /Kernel/ /Kernel/System/ /Kernel/Output/ /Kernel/Output/HTML/ /Kernel/Modules/)) {
+-        my $Location = "$Home/$_/check_permissons.$$";
+-        my $FH;
+-        my $Content = 'test';
+-
+-        # create test file
+-        my $Write = $Self->{MainObject}->FileWrite(
+-            Location => $Location,
+-            Content  => \$Content,
+-        );
+-
+-        # return false if not created
+-        return if !$Write;
+-
+-        # delete test file
+-        $Self->{MainObject}->FileDelete( Location => $Location );
++        return if ! -w "$Home/$_";
+     }
+     return 1;
+ }
+Index: trunk/Kernel/System/Ticket/ArticleStorageFS.pm
+===================================================================
+--- trunk.orig/Kernel/System/Ticket/ArticleStorageFS.pm	2009-01-28 15:46:53.000000000 +1100
++++ trunk/Kernel/System/Ticket/ArticleStorageFS.pm	2009-01-28 15:52:50.000000000 +1100
+@@ -55,10 +55,10 @@
+         $Self->{LogObject}->Log(
+             Priority => 'notice',
+             Message  => "Can't create $Self->{ArticleDataDir}/check_permissions_$$: $Error, "
+-                . "Try: \$OTRS_HOME/bin/SetPermissions.sh !",
++                . "Try: \$OTRS_HOME/bin/SetPermissions.pl !",
+         );
+         die "Error: Can't create $Self->{ArticleDataDir}/check_permissions_$$: $Error \n\n "
+-            . "Try: \$OTRS_HOME/bin/SetPermissions.sh !!!\n";
++            . "Try: \$OTRS_HOME/bin/SetPermissions.pl !!!\n";
+     }
+     return 1;
+ }
+Index: trunk/README.webserver
+===================================================================
+--- trunk.orig/README.webserver	2009-01-28 15:46:53.000000000 +1100
++++ trunk/README.webserver	2009-01-28 15:52:50.000000000 +1100
+@@ -48,11 +48,21 @@
+     because you have other applications running on this server, you can
+     also work with group permissions (more tricky).
+ 
+-    Use "$HOME/bin/SetPermissions.sh <OTRS_HOME> <OTRS_USER> <WEBSERVER_USER> [OTRS_GROUP] [WEB_GROUP]"
++    Use "$HOME/bin/SetPermissions.pl --otrs-user=<OTRS_USER> --web-user=<WEBSERVER_USER> [--otrs-group=<OTRS_GROUP>] [--web-group=<WEB_GROUP>] <OTRS_HOME>"
+     e. g.
+-     Webserver with otrs user: "SetPermissions.sh /opt/otrs otrs otrs"
+-     Webserver with wwwrun user (e. g. SuSE): "SetPermissions.sh /opt/otrs otrs wwwrun"
+-     Webserver with apache user (e. g. Redhat): "SetPermissions.sh /opt/otrs otrs apache"
++     Webserver with OTRS user: 
++        "SetPermissions.pl --otrs-user=otrs --web-user=otrs /opt/otrs"
++     Webserver with wwwrun user (e. g. SuSE): 
++        "SetPermissions.pl --otrs-user=otrs --web-user=wwwrun /opt/otrs"
++     Webserver with apache user (e. g. Redhat):
++        "SetPermissions.pl --otrs-user=otrs --web-user=apache --otrs-group=apache --web-group=apache /opt/otrs"
++
++   To set the file permissions with package manager disabled:
++   "$HOME/bin/SetPermissions.pl --secure --otrs-user=<OTRS_USER> --web-user=<WEBSERVER_USER> --admin-user=<ADMIN_USER> [--otrs-group=<OTRS_GROUP>] [--web-group=<WEB_GROUP>] [--admin-group=<ADMIN_GROUP] <OTRS_HOME>"
++
++   You will also need to add the following to Kernel/Config.pm:
++
++        $Self->{SecureMode} = 1;
+ 
+ b)
+  *)
+Index: trunk/UPGRADING
+===================================================================
+--- trunk.orig/UPGRADING	2009-01-28 15:51:30.000000000 +1100
++++ trunk/UPGRADING	2009-01-28 15:52:50.000000000 +1100
+@@ -48,7 +48,7 @@
+     PostgreSQL:
+       cat $OTRS_HOME/scripts/DBUpdate-to-2.3-post.postgresql.sql | psql otrs
+ 
+-*) If _no_ RPM is used, execute $OTRS_HOME/bin/SetPermissions.sh!
++*) If _no_ RPM is used, execute $OTRS_HOME/bin/SetPermissions.pl!
+ 
+ *) Restart your services (e. g. rcotrs restart-force or each service manually)
+ 
+Index: trunk/bin/SetPermissions.sh
+===================================================================
+--- trunk.orig/bin/SetPermissions.sh	2009-01-28 15:43:30.000000000 +1100
++++ trunk/bin/SetPermissions.sh	2009-01-28 15:52:50.000000000 +1100
+@@ -20,9 +20,6 @@
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ # --
+ 
+-echo "SetPermissions.sh <\$Revision: 1.32 $> - set OTRS file permissions"
+-echo "Copyright (C) 2001-2008 OTRS AG, http://otrs.org/"
+-
+ if ! test $1 || ! test $2 || ! test $3; then
+     # check required options
+     echo ""
+@@ -42,92 +39,12 @@
+     [ "$5" != "" ]&& WEBGROUP=$5
+ fi
+ 
+-# set permission
+-echo "Setting file permissions... "
+-# set all files writeabel for webserver user (needed for package manager)
+-echo "chown -R $WEBUSER:$OTRSGROUP $OTRSDEST"
+-chown $WEBUSER:$OTRSGROUP $OTRSDEST
+-chown -R $WEBUSER:$OTRSGROUP $OTRSDEST
+-echo "chmod -R og+rw $OTRSDEST"
+-chmod 755 $OTRSDEST
+-chmod -R ug+wr $OTRSDEST/*
+-
+-# set the $HOME to the OTRS user
+-echo "chown $OTRSUSER:$OTRSGROUP $OTRSDEST"
+-chown $OTRSUSER:$OTRSGROUP $OTRSDEST
+-
+-# set the fetchmail rc to OTRS user
+-if test -e $OTRSDEST/.fetchmailrc; then
+-    echo "chown $OTRSUSER:$OTRSGROUP $OTRSDEST/.fetchmailrc"
+-    chown $OTRSUSER:$OTRSGROUP $OTRSDEST/.fetchmailrc
+-    echo "chmod 0600 $OTRSDEST/.fetchmailrc"
+-    chmod 0600 $OTRSDEST/.fetchmailrc
+-fi
+-
+-# set procmailrc
+-if test -e $OTRSDEST/.procmailrc; then
+-    echo "chown $OTRSUSER:$OTRSGROUP $OTRSDEST/.procmailrc"
+-    chown $OTRSUSER:$OTRSGROUP $OTRSDEST/.procmailrc
+-    echo "chmod 0644 $OTRSDEST/.procmailrc"
+-    chmod 0644 $OTRSDEST/.procmailrc
+-fi
+-
+-# set mailfilter
+-if test -e $OTRSDEST/.mailfilter; then
+-    echo "chown $OTRSUSER:$OTRSGROUP $OTRSDEST/.mailfilter"
+-    chown $OTRSUSER:$OTRSGROUP $OTRSDEST/.mailfilter
+-    echo "chmod 0600 $OTRSDEST/.mailfilter"
+-    chmod 0600 $OTRSDEST/.mailfilter
+-fi
+-
+-# set forward (just for Exim)
+-if test -e $OTRSDEST/.forward; then
+-    echo "chown $OTRSUSER:$OTRSGROUP $OTRSDEST/.forward"
+-    chown $OTRSUSER:$OTRSGROUP $OTRSDEST/.forward
+-fi
+-
+-# var/*
+-
+-# set the var directory to OTRS and webserver user
+-echo "chown -R $OTRSUSER:$WEBGROUP $OTRSDEST/var/"
+-chown -R $OTRSUSER:$WEBGROUP $OTRSDEST/var/
+-chmod -R 2775 $OTRSDEST/var/article/
+-chmod -R 2775 $OTRSDEST/var/log/
+-chmod -R 2775 $OTRSDEST/var/tmp/
+-
+-# set the var/sessions directory to OTRS and webserver user
+-echo "chown -R $WEBUSER:$WEBGROUP $OTRSDEST/var/sessions/"
+-chown -R $WEBUSER:$WEBGROUP $OTRSDEST/var/sessions/
+-
+-# set the var/log/TicketCounter.log file to OTRS and webserver user
+-echo "touch && chown $OTRSUSER:$WEBGROUP $OTRSDEST/var/log/TicketCounter.log"
+-touch $OTRSDEST/var/log/TicketCounter.log
+-chown $OTRSUSER:$WEBGROUP $OTRSDEST/var/log/TicketCounter.log
+-chmod 664 $OTRSDEST/var/log/TicketCounter.log
+-
+-
+-# bin/*
+-
+-# set all bin/* as executable
+-echo "chmod -R 775 $OTRSDEST/bin/"
+-chmod -R 775 $OTRSDEST/bin/
+-
+-# set the DeleteSessionIDs.pl just to OTRS user
+-echo "(chown && chmod 700) $OTRSUSER:0 $OTRSDEST/bin/DeleteSessionIDs.pl"
+-chmod 700 $OTRSDEST/bin/DeleteSessionIDs.pl
+-chown $OTRSUSER:0 $OTRSDEST/bin/DeleteSessionIDs.pl
+-
+-# set the UnlockTickets.pl just to OTRS user
+-echo "(chown && chmod 700) $OTRSUSER:0 $OTRSDEST/bin/UnlockTickets.pl"
+-chmod 700 $OTRSDEST/bin/UnlockTickets.pl
+-chown $OTRSUSER:0 $OTRSDEST/bin/UnlockTickets.pl
+-
+-# set the bin/otrs.getConfig just to OTRS user
+-echo "(chown && chmod 700) $OTRSUSER:0 $OTRSDEST/bin/otrs.getConfig"
+-chmod 700 $OTRSDEST/bin/otrs.getConfig
+-chown $OTRSUSER:0 $OTRSDEST/bin/otrs.getConfig
+ 
+-# set write permission for web installer
+-chown $WEBUSER $OTRSDEST/Kernel/Config.pm
++`dirname "$0"`/SetPermissions.pl \
++	--web-user="$WEBUSER" \
++	--otrs-user="$OTRSUSER" \
++	--web-group="$WEBGROUP" \
++	--otrs-group="$OTRSGROUP" \
++	"$OTRSDEST"
+ 
+ exit;
+Index: trunk/home/.fetchmailrc.dist
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ trunk/home/.fetchmailrc.dist	2009-01-28 15:53:29.000000000 +1100
+@@ -0,0 +1,31 @@
++# --
++# .fetchmailrc - fetchmailrc of the OTRS user
++# Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
++# --
++# $Id: .fetchmailrc.dist,v 1.3 2008/03/07 17:00:14 martin Exp $
++# --
++# This software comes with ABSOLUTELY NO WARRANTY. For details, see
++# the enclosed file COPYING for license information (GPL). If you
++# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
++# --
++# Note: Continue lines with whitespace at the beginning of each newline
++# --
++
++#-----------------#
++# simple example:
++#-----------------#
++
++#poll <MAIL_SERVER> protocol POP3 user <MAIL_USERNAME> pass <MAIL_PASSWORD> is <LOCAL_OTRS_USERNAME> here
++
++#-------------------------------------------------#
++# example for polling from an IMAP-Server via SSL.
++#-------------------------------------------------#
++
++#poll <MAIL_SERVER> protocol IMAP port 993 plugin "openssl s_client -connect %h:%p" user <MAIL_USERNAME> pass <MAIL_PASSWORD> is <LOCAL_OTRS_USERNAME> here
++
++#--------------------------------------------------------#
++# The openssl command has to be installed and accessible
++# for the otrs user.
++# If the otrs user cannot find openssl, try:
++#  plugin "/path/to/openssl s_client -connect %h:%p"
++#--------------------------------------------------------#
+Index: trunk/home/.mailfilter.dist
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ trunk/home/.mailfilter.dist	2009-01-28 15:53:29.000000000 +1100
+@@ -0,0 +1,79 @@
++# --
++# .mailfilter - mailfilter of the OTRS user
++# Copyright (C) 2003 Wiktor Wodecki <wiktor.wodecki@net-m.de>
++# --
++# $Id: .mailfilter.dist,v 1.3 2007/02/06 16:01:13 tr Exp $
++# --
++# This software comes with ABSOLUTELY NO WARRANTY. For details, see
++# the enclosed file COPYING for license information (GPL). If you
++# did not receive this file, see http://www.gnu.org/licenses/gpl.txt.
++# --
++
++#SYS_HOME=/opt/otrs
++SYS_HOME="$HOME/.."
++
++import DEFAULT
++LOCALDEFAULT=$DEFAULT
++DEFAULT=${SYS_HOME}/var/spool/`date +%s`${FROM}${SIZE}
++MONTHFOLDER=`date +%Y-%m`
++YEARFOLDER=`date +%Y`
++
++
++# Remove all X-OTRS Header (allow this only for trusted email)
++# e. g. from *@example.com
++
++if (/^To:.*@example.com/)
++{
++    xfilter "grep -vi '^X-OTRS-'"
++}
++
++# or just not emails with "X-OTRS-Ident: ahfiw2Fw32r230dddl2foeo3r" header!
++#if (/^X-OTRS-Ident: ahfiw2Fw32r230dddl2foeo3r/)
++#{
++#    xfilter "grep -vi '^X-OTRS-'"
++#}
++
++
++
++# Examples for queue presorting.
++
++if (/^To:.*@example.com/)
++{
++    xfilter "formail -I \"X-OTRS-Queue: example\""
++}
++
++if (/^List-Id:.*OpenAntiVirus/)
++{
++    xfilter "formail -I \"X-OTRS-Queue: OpenAntiVirus\""
++}
++
++
++# Example for add free form key and value (max 3).
++
++if (/^To:.*@example.com/)
++{
++    xfilter "formail -I \"X-OTRS-ArticleKey1: Test\""
++    xfilter "formail -I \"X-OTRS-ArticleValue1: True!\""
++}
++
++
++# Backup of all incoming emails.
++# It's always better to have a backup of all incoming emails!
++
++cc ${SYS_HOME}/var/INBOX.Backup.${MONTHFOLDER}
++
++
++# Pipe all email into the PostMaster process.
++
++xfilter "${SYS_HOME}/bin/PostMaster.pl"
++
++
++# spool all the rest (which the PostMaster.pl can't process!)
++# If the database is down or the PostMaster.pl exit was not '0'!
++
++to $DEFAULT
++
++
++# end of .mailfilter
++
++
+Index: trunk/home/.procmailrc.dist
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ trunk/home/.procmailrc.dist	2009-01-28 15:53:29.000000000 +1100
+@@ -0,0 +1,86 @@
++# --
++# .procmailrc - procmailrc of the OTRS user
++# Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
++# --
++# $Id: .procmailrc.dist,v 1.4 2008/10/15 17:19:21 martin Exp $
++# --
++# This software comes with ABSOLUTELY NO WARRANTY. For details, see
++# the enclosed file COPYING for license information (GPL). If you
++# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
++# --
++
++#SYS_HOME=/opt/otrs/
++SYS_HOME="$HOME/.."
++
++SHELL=/bin/sh
++PATH=/bin:/usr/bin:/usr/local/bin
++MONTHFOLDER=`date +%Y-%m`
++YEARFOLDER=`date +%Y`
++LOGFILE=$SYS_HOME/var/log/procmail-$MONTHFOLDER.log
++VERBOSE=on
++
++
++# Remove all X-OTRS Header (allow this only for trusted email)
++# e. g. from *@example.com
++
++:0 fhw :
++* !^From.*@example.com
++| grep -vi '^X-OTRS-'
++
++# or just not emails with "X-OTRS-Ident: ahfiw2Fw32r230dddl2foeo3r" header!
++#:0 fhw :
++#* !^X-OTRS-Ident: ahfiw2Fw32r230dddl2foeo3r
++#| grep -vi '^X-OTRS-'
++
++
++
++# Examples for queue presorting.
++
++:0 fhw :
++* TO:.*@example.com
++| formail -I "X-OTRS-Queue: example"
++
++:0 fhw :
++* ^List-Id:.*OpenAntiVirus
++| formail -I "X-OTRS-Queue: OpenAntiVirus"
++
++
++# Example for add free form key and value (max 3).
++
++:0 fhw :
++* TO:.*@example.com
++| formail -I "X-OTRS-ArticleKey1: Test" |  formail -I "X-OTRS-ArticleValue1: True!"
++
++
++# Example for assigning the "email domain as customer ID" automaticaly.
++
++#:0hc
++#CUSTOMERID=|formail -X "From:"|perl -e '$i=<STDIN>; $i=~s/^From: //;$i=~s/\(.*?\)//;$i=~s/<(.*?)>/$1/;$i=~s/ //g;$i=~s/.*@(.*)/$1/;print $i'
++#
++#:0 fhw :
++#| formail -I "X-OTRS-CustomerNo: $CUSTOMERID"
++
++
++# Backup of all incoming emails.
++# It's always better to have a backup of all incoming emails!
++
++#:0 c :
++#$SYS_HOME/var/INBOX.Backup.$MONTHFOLDER
++
++
++# Pipe all email into the PostMaster process.
++
++:0 :
++| $SYS_HOME/bin/PostMaster.pl
++
++
++# spool all the rest (which the PostMaster.pl can't process!)
++# If the database is down or the PostMaster.pl exit was not '0'!
++
++:0 :
++$SYS_HOME/var/spool/.
++
++
++# end of .procmailrc
++
++
+Index: trunk/scripts/DBUpdate-to-2.3.pl
+===================================================================
+--- trunk.orig/scripts/DBUpdate-to-2.3.pl	2009-01-28 15:46:53.000000000 +1100
++++ trunk/scripts/DBUpdate-to-2.3.pl	2009-01-28 15:52:50.000000000 +1100
+@@ -82,7 +82,7 @@
+ 
+ # error handling
+ if ( !$Success ) {
+-    print STDOUT "Can't write config files! Please run the SetPermissions.sh and try it again.";
++    print STDOUT "Can't write config files! Please run the SetPermissions.pl and try it again.";
+     exit 0;
+ }
+ 
+Index: trunk/var/cron/aaa_base.dist
+===================================================================
+--- trunk.orig/var/cron/aaa_base.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/aaa_base.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -11,4 +11,5 @@
+ 
+ # Who gets the cron emails?
+ MAILTO="root@localhost"
++OTRS_HOME=/opt/otrs
+ 
+Index: trunk/var/cron/generic_agent-database.dist
+===================================================================
+--- trunk.orig/var/cron/generic_agent-database.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/generic_agent-database.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -10,5 +10,5 @@
+ # --
+ 
+ # start generic agent every 10 minutes
+-*/10 * * * *    $HOME/bin/GenericAgent.pl -c db >> /dev/null
++*/10 * * * *    $OTRS_HOME/bin/GenericAgent.pl -c db >> /dev/null
+ 
+Index: trunk/var/cron/generic_agent.dist
+===================================================================
+--- trunk.orig/var/cron/generic_agent.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/generic_agent.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -10,9 +10,9 @@
+ # --
+ 
+ # start generic agent every 20 minutes
+-*/20 * * * *    $HOME/bin/GenericAgent.pl >> /dev/null
++*/20 * * * *    $OTRS_HOME/bin/GenericAgent.pl >> /dev/null
+ 
+ # example to execute GenericAgent.pl on 23:00 with
+ # Kernel::Config::GenericAgentMove job file
+-#0 23 * * * $HOME/bin/GenericAgent.pl -c "Kernel::Config::GenericAgentMove" >> /dev/null
++#0 23 * * * $OTRS_HOME/bin/GenericAgent.pl -c "Kernel::Config::GenericAgentMove" >> /dev/null
+ 
+Index: trunk/var/cron/pending_jobs.dist
+===================================================================
+--- trunk.orig/var/cron/pending_jobs.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/pending_jobs.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -10,5 +10,5 @@
+ # --
+ 
+ # check every 120 min the pending jobs
+-45 */2 * * *    $HOME/bin/PendingJobs.pl >> /dev/null
++45 */2 * * *    $OTRS_HOME/bin/PendingJobs.pl >> /dev/null
+ 
+Index: trunk/var/cron/postmaster.dist
+===================================================================
+--- trunk.orig/var/cron/postmaster.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/postmaster.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -11,5 +11,5 @@
+ 
+ # check daily the spool directory of OTRS
+ #10 0 * * * * [ -e /etc/init.d/otrs ] && /etc/init.d/otrs cleanup >> /dev/null; [ -e /etc/rc.d/init.d/otrs ] && /etc/rc.d/init.d/otrs cleanup >> /dev/null
+-10 0 * * *  $HOME/bin/otrs.cleanup >> /dev/null
++10 0 * * *  $OTRS_HOME/bin/otrs.cleanup >> /dev/null
+ 
+Index: trunk/var/cron/postmaster_mailbox.dist
+===================================================================
+--- trunk.orig/var/cron/postmaster_mailbox.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/postmaster_mailbox.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -10,5 +10,5 @@
+ # --
+ 
+ # fetch emails every 10 minutes
+-*/10 * * * *    $HOME/bin/PostMasterMailbox.pl >> /dev/null
++*/10 * * * *    $OTRS_HOME/bin/PostMasterMailbox.pl >> /dev/null
+ 
+Index: trunk/var/cron/rebuild_ticket_index.dist
+===================================================================
+--- trunk.orig/var/cron/rebuild_ticket_index.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/rebuild_ticket_index.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -10,5 +10,5 @@
+ # --
+ 
+ # just every day
+-01 01 * * * $HOME/bin/RebuildTicketIndex.pl >> /dev/null
++01 01 * * * $OTRS_HOME/bin/RebuildTicketIndex.pl >> /dev/null
+ 
+Index: trunk/var/cron/session.dist
+===================================================================
+--- trunk.orig/var/cron/session.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/session.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -10,5 +10,5 @@
+ # --
+ 
+ # delete every 120 minutes old/idle session ids
+-55 */2 * * *    $HOME/bin/DeleteSessionIDs.pl --expired >> /dev/null
++55 */2 * * *    $OTRS_HOME/bin/DeleteSessionIDs.pl --expired >> /dev/null
+ 
+Index: trunk/var/cron/unlock.dist
+===================================================================
+--- trunk.orig/var/cron/unlock.dist	2009-01-28 15:51:30.000000000 +1100
++++ trunk/var/cron/unlock.dist	2009-01-28 15:52:50.000000000 +1100
+@@ -10,5 +10,5 @@
+ # --
+ 
+ # unlock every hour old locked tickets
+-35 * * * *  $HOME/bin/UnlockTickets.pl --timeout >> /dev/null
++35 * * * *  $OTRS_HOME/bin/UnlockTickets.pl --timeout >> /dev/null
+ 

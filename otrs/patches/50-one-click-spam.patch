@@ -1,0 +1,176 @@
+Index: trunk/var/httpd/htdocs/oneclick.js
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ trunk/var/httpd/htdocs/oneclick.js	2009-01-28 13:53:15.000000000 +1100
+@@ -0,0 +1,91 @@
++var TicketCount = 0;
++
++function createXMLHttpRequest() {
++	try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch(e) {}
++	try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch(e) {}
++	try { return new XMLHttpRequest(); } catch(e) {}
++	alert("XMLHttpRequest is not supported by your browser.");
++	return null;
++}
++
++function moveTicket( ticketdiv, DestQueueID ) {
++	function a( statusbar, xhReq, RevertURL ) {
++		var i=3;
++		return function() {
++			if ( xhReq.readyState != 4 ) {
++                statusbar.innerHTML+='<img src="' + ImagePath + 'notready.png" alt="."> ';
++                return;
++            } else {
++				statusbar.innerHTML = '<img src="' + ImagePath + 'ready.png" alt="OK">'+
++						' <a href="' + RevertURL + '">Undo</a>';
++				TicketCount --;
++				if ( TicketCount == 0 ) {
++					document.firstChild.innerHTML = xhReq.responseText;
++					makeOneclickVisible();
++				}
++			}
++		}
++	}
++	var FormDivs = ticketdiv.getElementsByTagName( 'form' );
++	var MoveForm;
++	for( var i=0; i<FormDivs.length; i++ ) {
++		if ( FormDivs[i].name == "ChangeQueue" ) {
++			MoveForm = FormDivs[i];
++			break;
++		}
++	}
++	// Read variables from the "ChangeQueue" form
++	var Action = MoveForm.elements["Action"].value;
++	var TicketID = MoveForm.elements["TicketID"].value;
++	var QueueID = MoveForm.elements["QueueID"].value;
++	var ActionURL = MoveForm.action +
++		'?Action=' + Action +
++		'&QueueID=' + QueueID +
++		'&TicketID=' + TicketID +
++		'&DestQueueID=' + DestQueueID;
++	var RevertURL = MoveForm.action +
++		'?Action=' + Action +
++		'&QueueID=' + DestQueueID +
++		'&TicketID=' + TicketID +
++		'&DestQueueID=' + QueueID;
++	// hide the ticket display, but keep the first, black, bar
++	p = ticketdiv.firstChild;
++	while ( p.className != 'ticketview2' ) {
++		p = p.nextSibling;
++	}
++	p.style.display='none';
++	while ( p.className != 'ticketview3' ) {
++		p = p.nextSibling;
++	}
++	var newnode = document.createElement("div");
++	newnode.setAttribute( "style", "-moz-border-radius:0 0 1em 1em; background-color:white;padding-left:1em;" );
++	newnode.innerHTML='<img src="' + ImagePath + 'notready.png" alt=".">'
++	ticketdiv.replaceChild( newnode, p );
++	// Do the async XML call
++	xhReq = createXMLHttpRequest();
++	xhReq.open( "GET", ActionURL, true);
++	xhReq.onreadystatechange = a( newnode, xhReq, RevertURL );
++	xhReq.send( null );
++}
++
++function makeOneclickVisible() {
++	var OneclickDivs = document.getElementsByName("oneclick");
++	function a(x) {
++		return function() {
++			p = x.parentNode;
++			while ( p.className != 'ticketoverview' ) {
++				p = p.parentNode;
++			}
++			moveTicket( p, SpamQueueID );
++		};
++	}
++	TicketCount = OneclickDivs.length;
++	for ( var i=0; i<TicketCount; i++ ) {
++		OneclickDivs[i].style.display='inline';
++		OneclickDivs[i].style.cursor='pointer';
++		OneclickDivs[i].onclick=a(OneclickDivs[i]);
++	}
++}
++
++window.onload = makeOneclickVisible;
++
+Index: trunk/Kernel/Output/HTML/Standard/AgentTicketOverviewPreview.dtl
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/Standard/AgentTicketOverviewPreview.dtl	2009-01-28 13:50:07.000000000 +1100
++++ trunk/Kernel/Output/HTML/Standard/AgentTicketOverviewPreview.dtl	2009-01-28 13:50:20.000000000 +1100
+@@ -9,7 +9,8 @@
+ # did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+ # --
+ <!-- start ticket -->
+-<table border="0" width="100%" cellspacing="0" cellpadding="3">
++<div class="ticketoverview">
++<table border="0" width="100%" cellspacing="0" cellpadding="3" class="ticketview">
+   <tr>
+     <td align="left" width="1%" class="mainhead">
+ <!-- dtl:block:Bulk -->
+@@ -27,7 +28,7 @@
+     </td>
+   </tr>
+ </table>
+-<table border="0" width="100%" cellspacing="0" cellpadding="3">
++<table border="0" width="100%" cellspacing="0" cellpadding="3" class="ticketview2">
+   <tr>
+     <td align="left" width="60%" class="menu">
+ <!-- dtl:block:Menu -->
+@@ -49,9 +50,26 @@
+     </td>
+   </tr>
+ </table>
+-<table border="0" width="100%" cellspacing="0" cellpadding="3">
++<table border="0" width="100%" cellspacing="0" cellpadding="3" class="ticketview3">
+   <tr>
+     <td width="75%" class="mainbody">
++      <div name="oneclick" style="display:none; float:right; padding: 0.5em; -moz-border-radius: 1em; background-color:#dddddd;">
++        <table border="0">
++          <tr>
++            <td valign="middle">
++              <img src="$Env{"Images"}edittrash.png" alt="" >
++            </td>
++            <td valign="middle">
++              1-click<br />$Text{"Spam"}
++            </td>
++          </tr>
++        </table>
++      </div>
++      <script type="text/javascript">
++         var SpamQueueID = "$Config{"SpamQueueID"}";
++         var ImagePath = "$Env{"Images"}";
++      </script>
++      <script type="text/javascript" src="$Env{"Images"}../../oneclick.js"></script>
+       <table border="0" width="100%" cellspacing="0" cellpadding="1">
+ # From:, To:, Cc:
+ <!-- dtl:block:Row -->
+@@ -304,7 +322,7 @@
+ <!-- dtl:block:Move -->
+               <b>$Text{"Change queue"}:</b>
+               <br/>
+-              <form action="$Env{"CGIHandle"}" method="get">
++              <form action="$Env{"CGIHandle"}" method="get" name="ChangeQueue">
+                 <input type="hidden" name="Action" value="AgentTicketMove"/>
+                 <input type="hidden" name="QueueID" value="$QData{"QueueID"}"/>
+                 <input type="hidden" name="TicketID" value="$QData{"TicketID"}"/>
+@@ -319,4 +337,5 @@
+     </td>
+   </tr>
+ </table>
++</div>
+ <!-- end ticket -->
+Index: trunk/Kernel/Output/HTML/TicketOverviewPreview.pm
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/TicketOverviewPreview.pm	2009-01-28 13:50:11.000000000 +1100
++++ trunk/Kernel/Output/HTML/TicketOverviewPreview.pm	2009-01-28 13:50:20.000000000 +1100
+@@ -142,6 +142,9 @@
+         TicketID => $Param{TicketID},
+     );
+ 
++    # Set QueueID (needed for one-click spam patch)
++    $Param{QueueID} = $Article{QueueID};
++
+     # run article modules
+     if ( ref $Self->{ConfigObject}->Get('Ticket::Frontend::ArticlePreViewModule') eq 'HASH' ) {
+         my %Jobs = %{ $Self->{ConfigObject}->Get('Ticket::Frontend::ArticlePreViewModule') };

@@ -1,0 +1,159 @@
+Index: trunk/Kernel/Output/HTML/Standard/AgentNavigationBar.dtl
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/Standard/AgentNavigationBar.dtl	2009-01-27 14:54:35.000000000 +1100
++++ trunk/Kernel/Output/HTML/Standard/AgentNavigationBar.dtl	2009-01-27 14:58:36.000000000 +1100
+@@ -67,6 +67,22 @@
+           </td>
+ <!-- dtl:block:ItemPersonal -->
+ 
++<!-- Wikimedia patch start -->
++<td valign="bottom" align="center" class="nav"><span onmouseover="this.T_OPACITY=95;
++                        this.T_SHADOWCOLOR='#aaaacc';
++                        this.T_TITLE='OTRS on meta.wikimedia.org';
++                        this.T_BORDERCOLOR='#222266';
++                        return escape('The OTRS page on meta has the public information about the OTRS system, including a list of queues and the people processing those queues.');">
++<a href="http://meta.wikimedia.org/wiki/OTRS"><img src="/otrs-web/22px-Wikimedia_Community_Logo.svg.png" border="0" width="22" height="22"><br>Meta</a></span></td>
++<td valign="bottom" align="center" class="nav">
++<span onmouseover="this.T_OPACITY=95;
++			this.T_SHADOWCOLOR='#aaaacc';
++			this.T_TITLE='OTRS wiki';
++			this.T_BORDERCOLOR='#222266';
++			return escape('The OTRS wiki is a private wiki. It contains informations and discussions that will help you to handle tickets.');">
++<a href="http://otrs-wiki.wikimedia.org/wiki/Main_Page"><img src="/otrs-web/22px-Wikimedia-logo.svg.png" border="0" width="22" height="22"><br>Wiki</a></span></td>
++<!-- Wikimedia patch end -->
++
+ <!-- Ticket number search patch start -->
+ <td valign="bottom" align="center" class="nav">
+ <a href="javascript:ticketNumberSearch();"><img src="$Env{"Images"}searchX.gif" border="0" width="22"><br>Ticket#</a>
+Index: trunk/Kernel/Output/HTML/Standard/Login.dtl
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/Standard/Login.dtl	2009-01-27 14:51:08.000000000 +1100
++++ trunk/Kernel/Output/HTML/Standard/Login.dtl	2009-01-27 14:58:36.000000000 +1100
+@@ -23,6 +23,14 @@
+   <title>$Config{"ProductName"} :: $Text{"$Data{"Title"}"}</title>
+ # include css.dtl file
+ $Include{"css"}
++<style>
++.singleboxhead {
++  -moz-border-radius-bottomleft:0;
++  -moz-border-radius-bottomright:0;
++  -moz-border-radius-topleft:1em;
++  -moz-border-radius-topright:1em;
++}
++</style>
+ </head>
+ <!-- end header -->
+ <body onLoad="document.login.User.focus();">
+@@ -49,6 +57,7 @@
+ </script>
+ 
+ <center>
++
+ <p>
+   <font color="red">$Text{"$Data{"Message"}"}</font>
+ </p>
+@@ -58,7 +67,7 @@
+     <input type="hidden" name="RequestedURL" value="$QData{"RequestedURL"}"/>
+     <input type="hidden" name="Lang" value="$Env{"UserLanguage"}"/>
+     <input type="hidden" name="TimeOffset" value=""/>
+-    <table border="0" cellspacing="0" cellpadding="3" width="280">
++    <table border="0" cellspacing="0" cellpadding="3" width="370" style="margin-right: 220px;">
+       <tr>
+         <td align="center" class="singleboxhead">$Text{"Welcome to %s", "$Config{"ProductName"}"}</td>
+       </tr>
+@@ -80,6 +89,11 @@
+     </table>
+   </form>
+ </p>
++
++<div style="position:absolute; top: 1em; right: 0.5em; width: 220px; float:right; border: solid 1px silver; padding:6px; height: 95%; background: #EEEEFF;-moz-border-radius:2em;">
++
++<img src="/otrs-web/120px-Wikimedia_logo_text_RGB.svg.png">
++
+ # --
+ # language
+ # --
+@@ -87,18 +101,14 @@
+   <form action="$Env{"CGIHandle"}" method="post" enctype="application/x-www-form-urlencoded">
+     <input type="hidden" name="Action" value=""/>
+     <input type="hidden" name="RequestedURL" value="$QData{"RequestedURL"}"/>
+-    <table border="0" cellspacing="0" cellpadding="3" width="280">
++    <table border="0" cellspacing="0" cellpadding="3" width="220">
+       <tr>
+         <td align="center" class="singleboxhead">$Text{"Language"}</td>
+       </tr>
+       <tr>
+         <td align="center" class="singleboxbody">
+-          <table cellspacing="8" cellpadding="2">
+-            <tr>
+-              <td class="singleboxkey">$Text{"Language"}:</td>
+-              <td class="singleboxvalue">$Data{"Language"}</td>
+-            </tr>
+-          </table>
++          $Text{"Language"}:<br/>
++          $Data{"Language"}<br/>
+           <input class="button" type="submit" value="$Text{"Submit"}"/>
+         </td>
+       </tr>
+@@ -107,8 +117,8 @@
+ </p>
+ <!-- dtl:block:LostPassword -->
+ <p>
+-  <center>
+-  <table border="0" cellspacing="0" cellpadding="3" width="280">
++  <!--<center>-->
++  <table border="0" cellspacing="0" cellpadding="3" width="220">
+     <tr>
+       <td align="center" class="singleboxhead">$Text{"Lost your password?"}</td>
+     </tr>
+@@ -129,12 +139,20 @@
+       </td>
+     </tr>
+   </table>
+-  </center>
++  <!--</center>-->
+ </p>
+ <!-- dtl:block:LostPassword -->
++</div>
++
+ # --
+ # Message of the day data!
+ # --
++<table border="0" cellspacing="0" cellpadding="3" width="370" style="margin-top: 5%; margin-right: 220px;">
++<tr><td align="center" class="singleboxhead">News</td></tr>
++<tr><td align="center" class="singleboxbody">
++$Include{"Motd"}
++</td></tr></table>
++
+ $Data{"Motd"}
+ </center>
+ <!-- start footer -->
+Index: trunk/Kernel/Output/HTML/Standard/Motd.dtl
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/Standard/Motd.dtl	2009-01-27 14:51:08.000000000 +1100
++++ trunk/Kernel/Output/HTML/Standard/Motd.dtl	2009-01-27 14:58:36.000000000 +1100
+@@ -9,4 +9,23 @@
+ # did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+ # --
+ 
+-<p>This is the message of the day. You can edit this in Kernel/Output/HTML/Standard/Motd.dtl.</p>
++<p style="border: none;">
++  September 23, 2008: Due to more pressing concerns, the scheduled maintenance outage of OTRS set for this past Monday did not occur.<p>
++  The downtime will now occur this coming Thursday, Sept. 25th, 2008 at approximately 18:00 GMT.<p>
++  We apologize for any issues this may cause.  The outage is necessary to setup database replication.
++</p><p>
++  September 18, 2008: OTRS will be shutdown for database replication on Monday, September 22nd at approx. 14:00 EST.  This downtime should be minimal.
++</p><p>
++  September 04, 2008: The databases has been moved from srv179 to db9.
++</p><p>
++  April 07, 2008: Due to an urgent security update, OTRS has been upgraded to the newest version. 
++  Wikimedia-specific patches have not yet been migrated completely ("undo" of one-click-spam requires
++  manual action).
++</p>
++<p>
++  December 22, 2007: Migrated to a new database server with more disk space
++</p>
++<p>
++  January 6, 2007: Upgraded to OTRS-2.1.3, and running on a new pair of DB servers.
++</p>
++

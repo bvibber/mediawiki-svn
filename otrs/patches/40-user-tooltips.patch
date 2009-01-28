@@ -1,0 +1,101 @@
+Index: trunk/Kernel/Output/HTML/NotificationAgentOnline.pm
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/NotificationAgentOnline.pm	2009-01-28 11:34:27.000000000 +1100
++++ trunk/Kernel/Output/HTML/NotificationAgentOnline.pm	2009-01-28 11:35:10.000000000 +1100
+@@ -15,6 +15,7 @@
+ use warnings;
+ 
+ use Kernel::System::AuthSession;
++use CGI;
+ 
+ use vars qw($VERSION);
+ $VERSION = qw($Revision: 1.7 $) [1];
+@@ -52,10 +53,33 @@
+             && $Data{UserLastname}
+             )
+         {
+-            $Online{ $Data{UserID} } = "$Data{UserFirstname} $Data{UserLastname}";
++            my $sleep = int( (time() - $Data{UserLastRequest}) / 60 );
++            my $images = $Self->{LayoutObject}->{Images};
++            my $encName = CGI::escapeHTML("$Data{UserFirstname} $Data{UserLastname}");
++            my $encLogin = CGI::escapeHTML($Data{UserLogin});
++            my $encEmail = CGI::escapeHTML($Data{UserEmail});
++            my $tooltip = <<EOF;
++                <div style=\'float:right;\'>
++                    <img src=\'$images/clock.gif\' align=\'top\'/> $sleep min
++                </div>
++                <img src=\'$images/user.gif\' align=\'top\'/>
++                <b>$encLogin</b>
++                <br/>
++                $encName
++EOF
+             if ( $Param{Config}->{ShowEmail} ) {
+-                $Online{ $Data{UserID} } .= " ($Data{UserEmail})";
++                $tooltip .= "<br/>\n$encEmail\n";
+             }
++            my $quoteTooltip = $Self->quoteJs($tooltip);
++            my $js = <<EOF;
++            this.T_OPACITY=95;
++            this.T_SHADOWCOLOR='#aaaacc';
++            this.T_TITLE='User info';
++            this.T_BORDERCOLOR='#222266';
++            return escape($quoteTooltip);
++EOF
++            my $encJs = CGI::escapeHTML($js);
++            $Online{ $Data{UserID} } = "<span onmouseover=\"$encJs\">$encName</span>";
+         }
+     }
+     for ( sort { $Online{$a} cmp $Online{$b} } keys %Online ) {
+@@ -65,11 +89,38 @@
+         $Param{Message} .= "$Online{$_}";
+     }
+     if ( $Param{Message} ) {
+-        return $Self->{LayoutObject}->Notify( Info => 'Online Agent: %s", "' . $Param{Message} );
++        return $Self->{LayoutObject}->Notify( Info => 'Online Agent: ' . $Param{Message} );
+     }
+     else {
+         return '';
+     }
+ }
+ 
++sub quoteJs {
++    # Based on MediaWiki's Xml::escapeJsString()
++    
++    # See ECMA 262 section 7.8.4 for string literal format
++    my ( $Self, $s ) = @_;
++    $_ = $s;
++    s/\\/\\\\/;
++    s/\"/\\"/;
++    s/\'/\\'/;
++    s/\n/\\n/;
++    s/\r/\\r/;
++
++    # To avoid closing the element or CDATA section
++    s/</\\x3c/;
++    s/>/\\x3e/;
++
++    # To avoid any complaints about bad entity refs
++    s/&/\\x26/;
++
++    # Work around https://bugzilla.mozilla.org/show_bug.cgi?id=274152
++    # Encode certain Unicode formatting chars so affected
++    # versions of Gecko don't misinterpret our strings;
++    # this is a common problem with Farsi text.
++    s/\xe2\x80\x8c/\\u200c/; # ZERO WIDTH NON-JOINER
++    s/\xe2\x80\x8d/\\u200d/; # ZERO WIDTH JOINER
++    return "\"$_\"";
++}
+ 1;
+Index: trunk/Kernel/Output/HTML/Standard/Notify.dtl
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/Standard/Notify.dtl	2009-01-28 11:34:27.000000000 +1100
++++ trunk/Kernel/Output/HTML/Standard/Notify.dtl	2009-01-28 11:35:10.000000000 +1100
+@@ -25,7 +25,7 @@
+       <a href="$Data{"LinkStart"}">
+ <!-- dtl:block:LinkStart -->
+ <!-- dtl:block:Text -->
+-      $Text{"$Data{"Info"}"}
++      $Data{"Info"}
+ <!-- dtl:block:Text -->
+ <!-- dtl:block:Data -->
+       $Data{"Data"}

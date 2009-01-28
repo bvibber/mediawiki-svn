@@ -1,0 +1,47 @@
+Patches against OTRS 2.4 CVS can be found in the patches directory, these can 
+be applied using quilt push -a. Since quilt does not support binary files, the
+images are distributed separately in the var directory. 
+
+10-tooltips.patch
+-----------------
+Adds Walter Zorn's tooltip library, which is required by 30-wm-brand and 
+40-user-tooltips.
+
+20-ticket-number-search.patch
+-----------------------------
+Adds a button which uses JavaScript to search for a given ticket number and 
+jump directly to the zoom page.
+
+Needs searchX.gif.
+
+30-wm-brand.patch
+-----------------
+Adds Wikimedia-specific logos, links and layout.
+
+Needs 120px-Wikimedia_logo_text_RGB.svg.png,
+22px-Wikimedia_Community_Logo.svg.png, 22px-Wikimedia-logo.svg.png
+
+40-user-tooltips.patch
+----------------------
+Adds tooltips in the online agent list, showing more information about each
+agent.
+
+Needs clock.gif, user.gif.
+
+Upstream may be interested. 
+
+50-one-click-spam.patch
+-----------------------
+Adds a button to the "large" queue view that, when clicked, moves the given
+ticket to the spam queue, using XHR.
+
+Needs edittrash.png, notready.png, ready.png.
+
+Upstream may be interested if the patch was improved a bit.
+
+60-really-secure-mode.patch
+---------------------------
+Modifies the definition of the SecureMode configuration variable, causing it to
+eliminate escalation from web admins to arbitrary shell execution. Has been
+submitted upstream.
+
