@@ -668,6 +668,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'amazonplus-nores' => 'Errore:Nisciune resultete acchijete',
 	'amazonplus-used' => 'ausete',
 	'amazonplus-german' => 'Tedesche',
 	'amazonplus-french' => 'Frangese',

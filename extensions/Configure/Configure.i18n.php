@@ -4552,7 +4552,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-condition-description-1' => 'Minimalna liczba edycji wynosi $1',
 	'configure-condition-description-2' => 'Minimalny wiek konta wynosi $1 {{PLURAL:$1|sekundę|sekundy|sekund}}',
 	'configure-condition-description-3' => 'Potwierdzony e-mail',
-	'configure-condition-description-4' => 'W {{PLURAL:$2|następującej grupie|następujących grupach}}: $1',
+	'configure-condition-description-4' => 'W {{PLURAL:$2|grupie|następujących grupach:}} $1',
 	'configure-condition-description-5' => 'Adres IP użytkownika to $1',
 	'configure-condition-description-6' => 'Adres IP użytkownika znajduje się w zakresie $1',
 	'configure-boolop-description-and' => 'Wszystkie warunki muszą zostać spełnione',

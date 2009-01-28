@@ -927,6 +927,22 @@ $messages['ro'] = array(
 	'player-goto-file' => 'fişier',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'player' => 'Sciucatore',
+	'player-title' => 'Sciucatore',
+	'player-playertitle' => 'Sciucatore: $1',
+	'player-file' => "Nome d'u file",
+	'player-play' => 'Sciueche',
+	'player-invalid-title' => 'titele invalide',
+	'player-clicktoplay' => 'Sciueche $1',
+	'player-goto-player' => 'sciucatore',
+	'player-goto-page' => 'Pàgene',
+	'player-goto-file' => 'file',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

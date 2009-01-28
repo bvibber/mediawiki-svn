@@ -1290,10 +1290,10 @@ Zmień jedną lub wiele nazw użytkowników na poniższej liście, dodaj komenta
 	'changeauthor-changeauthors-single' => 'Zmień autora',
 	'changeauthor-explanation-single' => "Tutaj możesz zmienić autora wersji artykułu.
 Zmień nazwę użytkownika na poniższej liście, dodaj komentarz (opcjonalny) i wciśnij przycisk 'Zmień autora'.",
-	'changeauthor-invalid-username' => 'Niepoprawna nazwa użytkownika "$1".',
-	'changeauthor-nosuchuser' => 'Brak użytkownika "$1".',
+	'changeauthor-invalid-username' => 'Niepoprawna nazwa użytkownika „$1”.',
+	'changeauthor-nosuchuser' => 'Brak użytkownika „$1”.',
 	'changeauthor-revview' => 'Wersja #$1 z $2',
-	'changeauthor-nosuchtitle' => 'Brak strony "$1".',
+	'changeauthor-nosuchtitle' => 'Brak strony „$1”.',
 	'changeauthor-weirderror' => 'Wystąpił nieznany błąd.
 Spróbuj powtórzyć polecenie.
 Jeśli błąd wystąpi ponownie, prawdopodobnie uszkodzona jest baza danych.',

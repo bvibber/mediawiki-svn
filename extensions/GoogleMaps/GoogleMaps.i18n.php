@@ -3724,6 +3724,27 @@ $wgGoogleMapsMessages['sk'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Albanian (Shqip)
+ * @author Puntori
+ */
+$wgGoogleMapsMessages['sq'] = array(
+	'gm-remove' => 'largo',
+	'gm-no-zoom-control' => "S'ka",
+	'gm-yes' => 'Po',
+	'gm-no' => 'Jo',
+	'gm-search' => 'Kërko',
+	'gm-meters' => 'metra',
+	'gm-miles' => 'milje',
+	'gm-save-path' => 'Ruaje',
+	'gm-line-width' => 'Gjerësia',
+	'gm-back' => 'prapa',
+	'gm-kml-include-link' => 'vendose në hartë',
+	'gm-kml-loading' => 'duke u hapur...',
+	'gm-earth' => 'Toka',
+	'gm-moon' => 'Hëna',
+	'gm-mars' => 'Marsi',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */

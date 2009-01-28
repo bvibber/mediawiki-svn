@@ -761,6 +761,7 @@ $messages['eu'] = array(
 	'ogg-stop' => 'Gelditu',
 	'ogg-play-video' => 'Bideoa hasi',
 	'ogg-play-sound' => 'Soinua hasi',
+	'ogg-player-selected' => '(aukeratua)',
 	'ogg-more' => 'Gehiago...',
 	'ogg-dismiss' => 'Itxi',
 	'ogg-download' => 'Fitxategia jaitsi',

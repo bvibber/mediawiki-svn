@@ -1076,6 +1076,7 @@ Kies alstublieft een andere naam.',
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'usernameblacklist-desc' => 'Legg til ei [[MediaWiki:Usernameblacklist|liste over svartelista brukarnamn]] for å hindre bruk av brukarnamn som inneheld eit eller fleire regulære uttrykk.',
@@ -1090,7 +1091,7 @@ $messages['nn'] = array(
 # * [Bb]jarne
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Denne lina|Desse linene}} i lista over svartelista brukarnamn er {{PLURAL:$1|ugyldig|ugyldige}}, ver venleg og rett {{PLURAL:$1|henne|dei}} før du lagrar:',
-	'right-uboverride' => 'Overkøyr svartelista over brukarnamn',
+	'right-uboverride' => 'Overkøyra svartelista over brukarnamn',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

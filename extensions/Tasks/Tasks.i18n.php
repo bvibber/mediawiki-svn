@@ -686,12 +686,26 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
 	'tasks' => 'Tareas',
+	'tasks_tab' => 'Tareas',
+	'tasks_title' => 'Tareas para "$1"',
+	'tasks_form_new' => 'Crear nueva tarea',
 	'tasks_form_comment' => 'Comentario',
+	'tasks_ok1' => 'Una nueva tarea ha sido creada!',
+	'tasks_create_header' => 'Crear una nueva tarea',
+	'tasks_noone' => 'ninguno',
+	'tasks_close' => 'Cerrar tarea',
 	'tasks_delete' => 'Borrar',
+	'tasks_no_task_delete_title' => 'No permitido',
+	'tasks_action_delete' => 'Una tarea fue borrada.',
+	'tasks_task_was_deleted' => 'La tarea fue borrada exitosamente.',
+	'tasks_reopen' => 'Reabrir tarea',
+	'tasks_discussion_page_link' => 'Página de discusión de tarea',
+	'tasks_sidebar_title' => 'Abrir tareas',
 	'tasks_here' => 'aquí',
 	'tasks_help_page' => 'Tareas',
 	'tasks_more_like_it' => 'más',
@@ -700,8 +714,11 @@ $messages['es'] = array(
 	'tasks_search_tasks' => 'Tareas',
 	'tasks_search_status' => 'Estatus',
 	'tasks_search_results' => 'Resultados de la búsqueda',
+	'tasks_previous' => 'Anterior',
+	'tasks_next' => 'Siguiente',
 	'tasks_sort' => 'Ordenar',
 	'tasks_status_closed' => 'Cerrado',
+	'tasks_logentry' => 'Para "[[$1]]"',
 );
 
 /** Basque (Euskara)

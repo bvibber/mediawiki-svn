@@ -603,6 +603,7 @@ $messages['es'] = array(
 	'webstore_invalid_response' => 'Respuesta no válida del servidor:
 
 $1',
+	'webstore_no_response' => 'Sin respuesta del servidor',
 );
 
 /** Basque (Euskara)

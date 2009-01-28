@@ -170,7 +170,7 @@ $messages['bcl'] = array(
  * @author לערי ריינהארט
  */
 $messages['be'] = array(
-	'sitematrix' => 'Сьпіс усіх праектаў фундацыі Wikimedia',
+	'sitematrix' => 'Усе праекты Фонду Вікімедыя',
 	'sitematrix-language' => 'Мова',
 	'sitematrix-project' => 'Назва праекту, спасылка між праектамі і спасылка інтэрвікі',
 	'sitematrix-others' => 'Іншыя праекты Фонду Вікімедыя',

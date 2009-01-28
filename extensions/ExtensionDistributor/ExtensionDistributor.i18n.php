@@ -494,6 +494,37 @@ $messages['es'] = array(
 $messages['eu'] = array(
 	'extensiondistributor' => 'MediaWiki luzapena jaitsi',
 	'extdist-submit-extension' => 'Jarraitu',
+	'extdist-submit-version' => 'Jarraitu',
+	'extdist-want-more' => 'Beste luzapen bat hartu',
+);
+
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'extensiondistributor' => 'بارگیری افزونهٔ مدیاویکی',
+	'extdist-desc' => 'افزونه‌ای برای انتشار بایگانی‌های لحظه‌ای از افزونه‌ها',
+	'extdist-not-configured' => 'لطفاً ‎$‎wgExtDistTarDir و ‎$wgExtDistWorkingCopy را تنظیم کنید',
+	'extdist-wc-missing' => 'شاخهٔ کپی کاری تنظیم شده وجود ندارد!',
+	'extdist-no-such-extension' => 'افزونه‌ای به نام «$1» وجود ندارد',
+	'extdist-no-such-version' => 'افزونهٔ «$1» در نسخهٔ «$2» وجود ندارد.',
+	'extdist-choose-extension' => 'افزونه‌ای را که می‌خواهید بارگیری کنید انتخاب کنید:',
+	'extdist-wc-empty' => 'کپی کاری تنظیم شده افزونهٔ قابل انتشاری ندارد!',
+	'extdist-submit-extension' => 'ادامه',
+	'extdist-current-version' => 'نسخهٔ فعلی (تنه)',
+	'extdist-choose-version' => '<big>شما در حال بارگیری افزونهٔ <b>$1</b> هستید.</big>
+
+نسخهٔ مدیاویکی خود را انتخاب کنید.
+
+بیشتر افزونه‌ها با نسخه‌های مختلف مدیاویکی کار می‌کنند، پس اگر نسخهٔ مدیاویکی شما این‌جا نیست، یا اگر می‌خواهید از آخرین امکانات افزونه استفاده کنید، نسخهٔ فعلی را استفاده کنید.',
+	'extdist-no-versions' => 'افزونهٔ انتخاب شده ($1) برای هیچ کدام از نسخه‌ها در دسترس نیست!',
+	'extdist-submit-version' => 'ادامه',
+	'extdist-no-remote' => 'امکان برقراری ارتباط با برنامه ساب‌ورژن خارجی وجود ندارد.',
+	'extdist-remote-error' => 'خطا از طرف برنامهٔ ساب‌ورژن خارجی: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'پاسخ غیر مجاز از طرف برنامهٔ ساب‌ورژن خارجی.',
+	'extdist-svn-error' => 'ساب‌ورژن دچار یک خطا شد: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'امکان پردازش اکس‌ام‌ال دریافتی از «svn info» وجود ندارد: <pre>$1</pre>',
+	'extdist-tar-error' => 'تار خطای خروج $1 برگرداند:',
 );
 
 /** Finnish (Suomi)

@@ -281,12 +281,15 @@ Por listo de validaj projektoj, vidu [[MediaWiki:TodoTasksValidProjects]].",
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'tasklistunknownproject' => 'Proyecto desconocido',
 	'tasklistincorrectuser' => 'Nombre de usuario incorrecto',
+	'tasklistmytasks' => 'Mis tareas',
+	'tasklistchooseproj' => 'Seleccionar proyecto:',
 );
 
 /** Basque (Euskara)

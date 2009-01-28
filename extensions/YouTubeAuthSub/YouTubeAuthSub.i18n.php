@@ -1662,7 +1662,7 @@ $messages['no'] = array(
 	'youtubeauthsub_tokenerror' => 'Feil i oppretting av godkjenningstegn; prøv å oppdatere.',
 	'youtubeauthsub_success' => 'Gratulerer!
 Videoen din er lastet opp.
-Gå <a href="http://youtube.com/watch?v=$1">hit</a> for å se videoen.
+<a href="http://youtube.com/watch?v=$1">Se videoen din</a>.
 Det kan ta litt tid før YouTube har behandlet videoen din, så det kan hende den ikke er klar ennå.
 
 Sett inn følgende kode på en side for å inkludere videoen på en side på wikien:
@@ -2192,6 +2192,7 @@ Var tålmodig.',
 
 /** Silesian (Ślůnski)
  * @author Lajsikonik
+ * @author Timpul
  */
 $messages['szl'] = array(
 	'youtubeauthsub' => 'Wkludź plik wideo s YouTube',
@@ -2203,7 +2204,7 @@ $messages['szl'] = array(
 	'youtubeauthsub_username' => 'Mjano użytkowńika we serwiśe YouTube',
 	'youtubeauthsub_keywords' => 'Słowa kluczowe',
 	'youtubeauthsub_category' => 'Katygoryja',
-	'youtubeauthsub_submit' => 'Wćepnij',
+	'youtubeauthsub_submit' => 'Wćepej',
 	'youtubeauthsub_clickhere' => 'Kliknij, coby zalogować śe do serwisa YouTube',
 	'youtubeauthsub_tokenerror' => 'Podczas generowańo tokena uwjerzitelńajůncygo zdorzył śe feler.
 Sprůbuj załadować zajta zaś.',

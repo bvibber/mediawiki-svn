@@ -1873,10 +1873,15 @@ $messages['eo'] = array(
  * @author Kobazulo
  */
 $messages['es'] = array(
+	'configure-setting-wgSitename' => 'Nombre de sitio',
 	'configure-setting-wgActionPaths-key' => 'Acción',
 	'configure-setting-wgActionPaths-value' => 'Modelo de URL',
+	'configure-setting-wgDisableLangConversion' => 'Deshabilitar conversión de lenguaje',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Título de página',
 	'configure-setting-wgExtraLanguageNames-key' => 'Código de lenguaje',
 	'configure-setting-wgExtraLanguageNames-value' => 'Nombre',
+	'configure-setting-wgSpecialPageGroups-key' => 'Grupo',
+	'configure-setting-wgAutopromote-value' => 'Condiciones',
 	'configure-setting-wgDebugLogGroups-value' => 'Archivo',
 );
 
@@ -2839,7 +2844,7 @@ $messages['gl'] = array(
 	'configure-setting-wgDebugLogGroups-value' => 'Ficheiro',
 	'configure-setting-wgDebugRawPage' => 'Deixe fóra do rexistro de erros as solicitudes de páxinas CSS/JS',
 	'configure-setting-wgDebugLogPrefix' => 'Prefixo das liñas do rexistro de erros',
-	'configure-setting-wgDebugRedirects' => 'Amosa a ubicación da redirección no canto de redirixir ao URL',
+	'configure-setting-wgDebugRedirects' => 'Amosa a localización da redirección no canto de redirixir cara ao enderezo URL',
 	'configure-setting-wgLogQueries' => 'Rexistrar as pesquisas feitas coa extensión AskSQL (se estivese instalada)',
 	'configure-setting-wgShowExceptionDetails' => 'Imprimir un seguimento completo das excepcións',
 	'configure-setting-wgShowSQLErrors' => 'Mostrar as páxinas de erro da base de datos',
@@ -3078,7 +3083,7 @@ $messages['gl'] = array(
 	'configure-setting-wgTidyOpts' => 'Opcións pasadas a "Tidy" na liña de comandos',
 	'configure-setting-wgUseTidy' => 'Usar o "Tidy" para asegurarse de que a saída HTML é correcta',
 	'configure-setting-wgValidateAllHtml' => 'Non amosar as páxinas inválidas',
-	'configure-setting-wgTexvc' => 'Ubicación do texvc binario',
+	'configure-setting-wgTexvc' => 'Localización do texvc binario',
 	'configure-setting-wgUseTeX' => 'Activar o TeX',
 	'configure-setting-wgRawHtml' => 'Permitir a inclusión de HTML non comprobado en seccións <nowiki><html>...</html></nowiki>.',
 	'configure-setting-wgXMLMimeTypes' => 'Tipos MIME detectables en XML',

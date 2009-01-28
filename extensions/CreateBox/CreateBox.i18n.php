@@ -139,6 +139,13 @@ $messages['es'] = array(
 	'createbox-create' => 'Crear',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'createbox-create' => 'Sortu',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Mobe

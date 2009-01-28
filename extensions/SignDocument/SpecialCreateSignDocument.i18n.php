@@ -595,8 +595,9 @@ $messages['he'] = array(
 	'createsigndoc-error-generic' => 'שגיאה: $1',
 	'createsigndoc-error-pagenoexist' => 'שגיאה: הדף [[$1]] אינו קיים.',
 	'createsigndoc-success' => 'חתימת המסמכים עבור [[$1]] הופעלה בהצלחה.
-על מנת לנסות אותה, אנא בקרו ב[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} דף זה].',
-	'createsigndoc-error-alreadycreated' => 'חתימת המסמך "$1" כבר קיימת.',
+תוכלו [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} לנסות אותה].',
+	'createsigndoc-error-alreadycreated' => 'חתימת המסמך "$1" כבר קיימת.
+לא ניתן לבצע פעולה זו פעמיים.',
 );
 
 /** Hindi (हिन्दी)

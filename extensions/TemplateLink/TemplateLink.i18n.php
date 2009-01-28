@@ -133,6 +133,13 @@ $messages['eo'] = array(
 	'templatelink_newtitle' => '$1 (transinkluzivita)',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'templatelink_empty' => 'Usted tiene que proveer un parámetro.',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

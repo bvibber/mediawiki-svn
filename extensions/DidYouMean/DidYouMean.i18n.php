@@ -267,10 +267,11 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'didyoumean-desc' => 'Dodaje linki do stron o "podobnych" tytułach',
+	'didyoumean-desc' => 'Dodaje linki do stron o „podobnych” tytułach',
 );
 
 /** Portuguese (Português)

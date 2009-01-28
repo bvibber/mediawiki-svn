@@ -409,7 +409,7 @@ $messages['he'] = array(
 הקובץ המועלה אמור לכלול שם של דף בכל שורה, ואפשר גם לכלול סיבה המופרדת בתו "|" משם הדף בכל אחת מהשורות.',
 	'deletebatch-caption' => 'רשימת דפים:',
 	'deletebatch-title' => 'מחיקת מקבץ',
-	'deletebatch-link-back' => 'באפשרותכם לחזור להרחבה',
+	'deletebatch-link-back' => 'חזרו לדף המיוחד',
 	'deletebatch-as' => 'הרצת הסקריפט בתור:',
 	'deletebatch-both-modes' => 'אנא בחרו בדף אחד מסוים או ברשימה נתונה של דפים.',
 	'deletebatch-or' => '<b>או</b>',
@@ -581,7 +581,7 @@ $messages['km'] = array(
 	'deletebatch-desc' => '[[Special:DeleteBatch|លុប​បាច់​ទំព័រ]]',
 	'deletebatch-caption' => 'បញ្ជី​ទំព័រ៖',
 	'deletebatch-title' => 'លុប​បាច់',
-	'deletebatch-link-back' => 'អ្នក​អាច​ត្រឡប់​ទៅកាន់​ផ្នែកបន្ថែម',
+	'deletebatch-link-back' => 'ត្រឡប់​ទៅកាន់​ទំព័រ​ពិសេស',
 	'deletebatch-as' => 'រត់​ស្គ្រីប​ជា៖',
 	'deletebatch-or' => '<b>ឬ</b>',
 	'deletebatch-page' => 'ទំព័រ​ដែល​ត្រូវ​លុប៖',
@@ -825,7 +825,7 @@ $messages['pl'] = array(
 	'deletebatch-desc' => '[[Special:DeleteBatch|Usuń grupę stron]]',
 	'deletebatch-help' => 'Usuwanie grupy stron. Strony możesz usuwać pojedynczo lub poprzez usunięcie grupy stron, wymienionych w pliku.
 Wybierz użytkownika, który będzie widoczny w logu stron usuniętych.
-Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej linii tekstu, przedzielone symbolem "|".',
+Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej linii tekstu, przedzielone symbolem „|”.',
 	'deletebatch-caption' => 'Lista stron:',
 	'deletebatch-title' => 'Usuń grupę stron',
 	'deletebatch-link-back' => 'Cofnij do usuwania grup stron',

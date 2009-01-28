@@ -800,6 +800,24 @@ $messages['mr'] = array(
 	'disabledusers-summary' => 'ही अशा सदस्यांची यादी आहे ज्यांची खाती PasswordReset वापरून बंद करण्यात आलेली आहेत.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'passwordreset' => 'Set semula kata laluan',
+	'passwordreset-desc' => "[[Special:PasswordReset|Set semula kata laluan Wiki]] - memerlukan admin 'set semula kata laluan'",
+	'passwordreset-invalidusername' => 'Nama pengguna tidak tepat',
+	'passwordreset-emptyusername' => 'Isikan nama pengguna',
+	'passwordreset-nopassmatch' => 'Kata laluan tidak tepat',
+	'passwordreset-badtoken' => 'Edit token tidak tepat',
+	'passwordreset-username' => 'Nama pengguna:',
+	'passwordreset-newpass' => 'Kata laluan baru:',
+	'passwordreset-confirmpass' => 'Setkan kata laluan:',
+	'passwordreset-submit' => 'Set semula kata laluan',
+	'passwordreset-success' => 'Kata laluan telah disetkan semula untuk penggua ID: $1',
+	'passwordreset-disableuser' => 'Sekat akaun pengguna?',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
