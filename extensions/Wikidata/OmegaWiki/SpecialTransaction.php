@@ -185,7 +185,7 @@ function initializeAttributes() {
 	
 	$o->updatedRelations = new Attribute('updated-relations', 'Relations', $o->updatedRelationsStructure);
 	
-	$o->classMember = new Attribute('class-member', 'Class member', $o->definedMeaningReferenceStructure);
+	$o->classMember = new Attribute('class-member', wfMsg('ow_transaction_class_member'), $o->definedMeaningReferenceStructure);
 	
 	$o->updatedClassMembershipStructure = new Structure(
 		$o->rollBack,
@@ -196,7 +196,7 @@ function initializeAttributes() {
 		$o->isLatest
 	);
 	
-	$o->updatedClassMembership = new Attribute('updated-class-membership', 'Class membership', $o->updatedClassMembershipStructure);
+	$o->updatedClassMembership = new Attribute('updated-class-membership', wfMsg('ow_ClassMembership'), $o->updatedClassMembershipStructure);
 	
 
 		
@@ -213,13 +213,13 @@ function initializeAttributes() {
 		$o->operation
 	);
 	
-	$o->updatedCollectionMembership = new Attribute('updated-collection-membership', 'Collection membership', $o->updatedCollectionMembershipStructure);
+	$o->updatedCollectionMembership = new Attribute('updated-collection-membership', wfMsg('ow_CollectionMembership'), $o->updatedCollectionMembershipStructure);
 	
 
 		
 	$o->objectId = new Attribute('object-id', 'Object', 'object-id');
 	$o->valueId = new Attribute('value-id', 'Value identifier', 'object-id');
-	$o->attribute = new Attribute('attribute', 'Attribute', $o->definedMeaningReferenceStructure);
+	$o->attribute = new Attribute('attribute', wfMsg('ow_ClassAttributeAttribute'), $o->definedMeaningReferenceStructure);
 		
 
 		
@@ -280,8 +280,8 @@ function initializeAttributes() {
 
 
 	$o->classId = new Attribute('class-attribute-id', 'Class attribute id', 'object-id');
-	$o->level = new Attribute('level', 'Level', $o->definedMeaningReferenceStructure);
-	$o->type = new Attribute('type', 'Type', 'text');
+	$o->level = new Attribute('level', wfMsg('ow_ClassAttributeLevel'), $o->definedMeaningReferenceStructure);
+	$o->type = new Attribute('type', wfMsg('ow_ClassAttributeType'), 'text');
 
 	$o->updatedClassAttributesStructure = new Structure(
 		$o->rollBack,

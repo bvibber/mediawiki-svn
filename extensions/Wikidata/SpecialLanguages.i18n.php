@@ -78,7 +78,8 @@ Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
 	'transaction'							=> 'Wikidata: Transaction log',
 	'ow_transaction_operation'				=> 'Operation',
 	'ow_transaction_is_latest'				=> 'Is latest',
-	
+	'ow_transaction_class_member'      		=> 'Class member',
+
 	'conceptmapping'						=> 'Wikidata: Concept mapping',
 	'ow_conceptmapping_title'				=> 'Concept Mapping',
 	'ow_conceptmapping_help'                => '<p>possible actions: <ul>
