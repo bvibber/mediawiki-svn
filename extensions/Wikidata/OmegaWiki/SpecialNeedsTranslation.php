@@ -6,8 +6,8 @@
 	require_once("Wikidata.php");
 
 	function wfSpecialNeedsTranslation() {
-	        global $wgMessageCache;
-                $wgMessageCache->addMessages(array('needstranslation'=>'Wikidata: Expressions needing translation'),'en');
+	        #global $wgMessageCache;
+            #    $wgMessageCache->addMessages(array('needstranslation'=>'Wikidata: Expressions needing translation'),'en');
                 
 		class SpecialNeedsTranslation extends SpecialPage {
 			function SpecialNeedsTranslation() {

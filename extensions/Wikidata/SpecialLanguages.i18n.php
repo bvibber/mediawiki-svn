@@ -33,18 +33,36 @@ $wdMessages['en'] = array(
 	
 	'importtsv'								=> 'Wikidata: Import TSV',
 	'ow_importtsv_title1'					=> 'Import TSV',
+	'ow_importtsv_title2'					=> 'Import definitions and translations',
 	'ow_importtsv_header'					=> '<p>Import definitions and translations from a tab delimited text file that you may have exported from OpenOffice.org, Excel or other spreadsheet software.</p>
-<p>The format of the file must be the same as the files exported on the ExportTSV page. If you\'ve changed the column names, the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO-639_3 language code.</p>
+<p>The format of the file must be the same as the files exported on the ExportTSV page. If you\'ve changed the column names, the import will fail. If you\'ve changed the id or the defining expression of any defined meaning, that line will be ignored. If you\'ve added columns, they must be in the form \'definitions_iso\' or \'translations_iso\', where iso is an ISO 639-3 language code.</p>
 <p>If the \'test run\' box is checked, any actions that would be taken are reported, but no changes are actually made. You are encouraged to do a test run before you do an actual import.</p>',
 	'ow_importtsv_not_allowed'				=> 'You do not have permission to do a TSV import.',
 	'ow_importtsv_importing'				=> 'Importing TSV data',
 	'ow_importtsv_import_failed'			=> 'Import failed',
 	'ow_importtsv_file'						=> 'TSV File:',
 	'ow_importtsv_test_run'					=> 'Test run:',
+	'ow_importtsv_not_utf8'					=> "<p>This doesn't appear to be a UTF-8 encoded file. The file <i>must</i> be UTF-8 encoded.
+Make sure your application has saved or exported the file correctly.</p>",
+	'ow_importtsv_not_tsv'					=> '<p>This does not appear to be a valid TSV file.</p>',
+	'ow_importtsv_bad_columns'				=> "<p>Incorrect column name '$1'.<br />
+Columns should be named 'definition_iso' or 'translations_iso', 
+where iso is the language code.</p>",
+	'ow_importtsv_test_run_title'			=> 'Test run for importing TSV data',
+	'ow_importtsv_nothing_added'			=> 'Nothing added.',
+	'ow_importtsv_nothing_added_test'		=> 'Nothing added (you did a test run).',
+	'ow_importtsv_results'					=> 'Added $1 {{PLURAL:$1|definition|definitions}} and $2 {{PLURAL:$2|translation|translations}}.',
+	'ow_impexptsv_unknown_lang'				=> '<p>Unknown or incorrect language: $1.<br />
+Languages must be ISO 639-3 language codes.</p>',
 
 	'exporttsv'								=> 'Wikidata: Export TSV',
+	'ow_exporttsv_title'					=> 'Export a collection to TSV',
+	'ow_exporttsv_header'					=> "<p>Export a collection to a tab separated text format that you can import in OpenOffice.org, Excel or other spreadsheet software.<br />
+	Select a collection to export. In the languages text box, enter a comma separated list of ISO 639-3 languages codes. Start with the languages that you will be translating from (pick as many as you like) and finish with the ones you'll be translating to. Then click 'Create' to create the file.</p>",
 	'ow_exporttsv_languages'				=> 'Languages:',
-	
+	'ow_exporttsv_not_allowed'				=> 'You do not have permission to do a TSV export.',
+	'ow_exporttsv_export_failed'			=> 'Export failed',
+		
 	'addcollection'							=> 'Wikidata: Add collection',
 	'ow_save'                               => 'Save',
 	'ow_history'                            => 'History',
@@ -169,10 +187,13 @@ Perhaps you came to this page directly? Normally you do not need to be here.",
 There is an issue with database consistency, wikidata cannot find valid data connected to this defined meaning ID.
 It might be lost.
 Please contact the server operator or administrator.",
+
+	'needstranslation'					=> 'Wikidata: Expressions needing translation',
 	'ow_needs_xlation_title'			=> 'Expressions needing translation',
 	'ow_needs_xlation_source_lang'		=> 'Source language:',
 	'ow_needs_xlation_dest_lang'		=> 'Destination language:',
 	'ow_needs_xlation_no_dest_lang'		=> 'Please specify a destination language.',
+
 	'ow_show'							=> 'Show',
 	'ow_upload'							=> 'Upload',
 	'ow_create'							=> 'Create',
