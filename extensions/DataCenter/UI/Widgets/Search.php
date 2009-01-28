@@ -115,16 +115,6 @@ class DataCenterWidgetSearch extends DataCenterWidget {
 				)
 			)
 		);
-		// Adds go button
-		$xmlOutput .= DataCenterXml::tag(
-			'input',
-			array(
-				'type' => 'submit',
-				'class' => 'go',
-				'name' => 'meta[go]',
-				'value' => DataCenterUI::message( 'label', 'go' )
-			)
-		);
 		// Adds search button
 		$xmlOutput .= DataCenterXml::tag(
 			'input',
@@ -166,22 +156,20 @@ class DataCenterWidgetSearch extends DataCenterWidget {
 	) {
 		global $wgOut;
 		$path = DataCenterPage::getPath();
-		if ( isset( $data['meta']['query'] ) && $data['meta']['query'] != '' ) {
-			if ( isset( $data['meta']['go'] ) ) {
-				// Look for exact match
-				// Need some solution here
-				// Checks if there was a match
-				if ( false ) {
-					// Goes right to it!
-					$wgOut->redirect( DataCenterXml::url( $path ) );
-					return;
-				}
-			}
-			// Shows search results
-			$path['action'] = 'results';
-			// Sanitize: allow alpha-numeric as well as
-			// spaces, underscores, dashes and periods
-			$path['parameter'] = urlencode(
+		if ( isset( $data['meta']['query'] ) ) {
+			// Sanitize: allow alpha-numeric
+			$queryContent = urlencode(
+				preg_replace(
+					'`\ +`',
+					' ',
+					preg_replace(
+						'`[^a-z0-9]`i', '', $data['meta']['query']
+					)
+				)
+			);
+			// Sanitize: allow alpha-numeric as well as spaces, underscores,
+			// dashes and periods
+			$query = urlencode(
 				preg_replace(
 					'`\ +`',
 					' ',
@@ -190,6 +178,11 @@ class DataCenterWidgetSearch extends DataCenterWidget {
 					)
 				)
 			);
+		}
+		if ( isset( $queryContent ) && $queryContent != '' ) {
+			// Shows search results
+			$path['action'] = 'results';
+			$path['parameter'] = $query;
 		}
 		$wgOut->redirect( DataCenterXml::url( $path ) );
 	}

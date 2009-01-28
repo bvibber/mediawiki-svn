@@ -445,78 +445,98 @@ abstract class DataCenterDB {
 	}
 
 	/**
-	 * Gets rows from list of targets that match query on specific columns
-	 * @param	targets			Array of Arrays with category, type and fields
-	 * 							keys where category and type are strings and
-	 * 							fields is an array of strings of field names
+	 * Gets rows from a target that match query on specific columns
+	 * @param	target			Array with category, type and fields keys where
+	 * 							category and type are strings and fields is a
+	 * 							string of a field name or an array of strings of
+	 * 							field names
 	 * @param	query			String of search terms
 	 * @param	options			Optional Associative array of tables, fields,
 	 * 							conditions and options each being the array
 	 * 							form of compatible arguments to MediaWiki's
 	 * 							Database select statement.
 	 */
-	public static function getSearchResults(
-		array $targets,
+	public static function getMatches(
+		$class,
+		$category,
+		$type,
+		$fields,
 		$query,
 		array $options = array()
 	) {
 		$dbr = wfGetDB( DB_SLAVE );
+		if ( !self::isType( $category, $type ) ) {
+			throw new MWException(
+				$category . '/' . $type . ' is not a valid type'
+			);
+		}
+		$options = array_merge_recursive(
+			self::$defaultOptions,
+			array(
+				'tables' => array( self::getTableName( $category, $type ) ),
+				'fields' => array( '*' ),
+			),
+			self::buildMatch( $category, $type, $fields, $query ),
+			$options
+		);
+		$res = $dbr->select(
+			array_unique( $options['tables'] ),
+			$options['fields'],
+			$options['conditions'],
+			__METHOD__,
+			$options['options'],
+			$options['joins']
+		);
 		$results = array();
-		foreach ( $targets as $target ) {
-			$targetOptions = self::buildSearchTargetOptions( $target, $query );
-			$targetOptions = array_merge_recursive(
-				$targetOptions, $options
-			);
-			$res = $dbr->select(
-				array_unique( $targetOptions['tables'] ),
-				$targetOptions['fields'],
-				$targetOptions['conditions'],
-				__METHOD__,
-				$targetOptions['options'],
-				$targetOptions['joins']
-			);
-			while ( $row = $dbr->fetchRow( $res ) ) {
-				$results[] = new DataCenterDBSearchResult(
-					$target['category'], $target['type'], $row
-				);
-			}
+		while ( $row = $dbr->fetchRow( $res ) ) {
+			$results[] = new $class( $category, $type, $row );
 		}
 		return $results;
 	}
+
 	/**
 	 * Gets number of rows of a category and type
-	 * @param	targets			Array of Arrays with category, type and fields
-	 * 							keys where category and type are strings and
-	 * 							fields is an array of strings of field names
+	 * @param	target			Array with category, type and fields keys where
+	 * 							category and type are strings and fields is a
+	 * 							string of a field name or an array of strings of
+	 * 							field names
 	 * @param	query			String of search terms
 	 * @param	options			Optional Associative array of tables, fields,
 	 * 							conditions and options each being the array
 	 * 							form of compatible arguments to MediaWiki's
 	 * 							Database select statement.
 	 */
-	public static function numSearchResults(
-		array $targets,
+	public static function numMatches(
+		$category,
+		$type,
+		$fields,
 		$query,
 		array $options = array()
 	) {
 		$dbr = wfGetDB( DB_SLAVE );
-		$count = 0;
-		foreach ( $targets as $target ) {
-			$targetOptions = self::buildSearchTargetOptions( $target, $query );
-			$targetOptions = array_merge_recursive(
-				$targetOptions, $options
+		if ( !self::isType( $category, $type ) ) {
+			throw new MWException(
+				$category . '/' . $type . ' is not a valid type'
 			);
-			$res = $dbr->select(
-				array_unique( $targetOptions['tables'] ),
-				$targetOptions['fields'],
-				$targetOptions['conditions'],
-				__METHOD__,
-				$targetOptions['options'],
-				$targetOptions['joins']
-			);
-			$count += $dbr->numRows( $res );
 		}
-		return $count;
+		$options = array_merge_recursive(
+			self::$defaultOptions,
+			array(
+				'tables' => array( self::getTableName( $category, $type ) ),
+				'fields' => array( '*' ),
+			),
+			self::buildMatch( $category, $type, $fields, $query ),
+			$options
+		);
+		$res = $dbr->select(
+			array_unique( $options['tables'] ),
+			$options['fields'],
+			$options['conditions'],
+			__METHOD__,
+			$options['options'],
+			$options['joins']
+		);
+		return $dbr->numRows( $res );
 	}
 
 	/**
@@ -1381,6 +1401,33 @@ abstract class DataCenterDB {
 		);
 	}
 
+	/**
+	 * Builds array of options which match a query against a number of fields
+	 * using case-insensitive partial matching
+	 * @param	category		String of category to lookup type in
+	 * @param	type			String of category to lookup fields in
+	 * @param	fields			String of field to match query with
+	 * @param	value			String of query to match to field value
+	 */
+	public static function buildMatch(
+		$category,
+		$type,
+		$fields,
+		$query
+	) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$conditions = array();
+		if ( !is_array( $fields ) ) {
+			$fields = array( $fields );
+		}
+		foreach ( $fields as $field ) {
+			$columnName = self::getColumnName( $category, $type, $field );
+			$conditions[] = 'UPPER(' . $columnName . ') LIKE UPPER(' .
+				$dbr->addQuotes( '%' . $query . '%' ) . ')';
+		}
+		return array( 'conditions' => array( implode( '||', $conditions ) ) );
+	}
+
 	/* List Builders */
 
 	/**
@@ -1413,56 +1460,6 @@ abstract class DataCenterDB {
 			}
 		}
 		return $table;
-	}
-
-	/* Privates Static Functions */
-
-	/**
-	 * Builds array of options for a search target
-	 * @param	target			Array of target parameters
-	 * @param	query			String of search terms
-	 */
-	private static function buildSearchTargetOptions(
-		$target,
-		$query
-	) {
-		$dbr = wfGetDB( DB_SLAVE );
-		if (
-			!isset( $target['category'] ) ||
-			!isset( $target['type'] ) ||
-			!isset( $target['fields'] ) ||
-			!is_array( $target['fields'] )
-		) {
-			throw new MWException(
-				'Target does not contain enough information'
-			);
-		}
-		if ( !self::isType( $target['category'], $target['type'] ) ) {
-			throw new MWException(
-				$target['category'] . '/' . $target['type'] .
-					' is not a valid type'
-			);
-		}
-		$conditions = array();
-		foreach ( $target['fields'] as $field ) {
-			$columnName = self::getColumnName(
-				$target['category'], $target['type'], $field
-			);
-			$conditions[] = $columnName . ' LIKE ' .
-				$dbr->addQuotes( $query );
-		}
-		return array_merge_recursive(
-			self::$defaultOptions,
-			array(
-				'tables' => array(
-					self::getTableName(
-						$target['category'], $target['type']
-					)
-				),
-				'fields' => array( '*' ),
-				'conditions' => implode( '||', $conditions )
-			)
-		);
 	}
 }
 
@@ -2432,10 +2429,6 @@ class DataCenterDBChange extends DataCenterDBRow  {
 			)
 		);
 	}
-}
-
-class DataCenterDBSearchResult extends DataCenterDBRow  {
-	//
 }
 
 class DataCenterDBPlan extends DataCenterDBRow  {

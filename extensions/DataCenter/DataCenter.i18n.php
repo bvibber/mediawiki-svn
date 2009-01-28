@@ -178,6 +178,9 @@ $messages['en'] = array(
 	'datacenter-ui-label-reset' => 'Reset',
 	'datacenter-ui-label-save' => 'Save',
 	'datacenter-ui-label-search' => 'Search',
+	// Results
+	'datacenter-ui-results-asset-rack' => 'Rack Assets ($1)',
+	'datacenter-ui-results-asset-object' => 'Object Assets ($1)',
 	// Defaults
 	'datacenter-ui-default-new-type' => 'New $1',
 	// List Headings

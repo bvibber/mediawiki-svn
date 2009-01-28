@@ -532,24 +532,24 @@ class DataCenterXml {
 		);
 		$url = self::$urlBase;
 		// Checks if the page is set now
-		if ( $parameters['page'] ) {
+		if ( $parameters['page'] !== null  ) {
 			// Adds page to url
 			$url .= '/' . $parameters['page'];
-			if ( $parameters['type'] ) {
+			if ( $parameters['type'] !== null  ) {
 				// Adds type to url
 				$url .= ':' . $parameters['type'];
 				// Checks if object id was given
-				if ( $parameters['id'] ) {
+				if ( $parameters['id'] !== null  ) {
 					// Adds id to url
 					$url .= ':' . $parameters['id'];
 				}
 			}
 			// Checks if action was given
-			if ( $parameters['action'] ) {
+			if ( $parameters['action'] !== null  ) {
 				// Adds action to url
 				$url .= '/' . $parameters['action'];
 				// Checks if parameter was given
-				if ( $parameters['parameter'] ) {
+				if ( $parameters['parameter'] !== null ) {
 					if ( is_array( $parameters['parameter'] ) ) {						// Adds parameter to url
 						$url .= ':' . implode( ',', $parameters['parameter'] );
 					} else {
@@ -557,12 +557,12 @@ class DataCenterXml {
 						$url .= ':' . $parameters['parameter'];
 					}
 				}
-			} else if ( $parameters['limit'] ) {
+			} else if ( $parameters['limit'] !== null  ) {
 				$url .= '/';
 			}
-			if ( $parameters['limit'] ) {
+			if ( $parameters['limit'] !== null  ) {
 				$url .= '/' . $parameters['limit'];
-				if ( $parameters['offset'] ) {
+				if ( $parameters['offset'] !== null  ) {
 					$url .= ':' . $parameters['offset'];
 				}
 			}

@@ -123,11 +123,6 @@ div.datacenter-ui div.widget-search {
 div.datacenter-ui div.widget-search input.query {
 	margin-top: -8px;
 }
-div.datacenter-ui div.widget-search input.go {
-	margin-top: -8px;
-	margin-left: 8px;
-	font-weight: bold;
-}
 div.datacenter-ui div.widget-search input.search {
 	margin-top: -8px;
 	margin-left: 8px;
@@ -136,10 +131,33 @@ div.datacenter-ui div.widget-search input.search {
 /*
  * Search Results Widget
  */
+div.datacenter-ui div.widget-searchresults div.types {
+	height: 22px;
+	border-bottom: solid 1px silver;
+	margin-bottom: 15px;
+}
+div.datacenter-ui div.widget-searchresults div.type-normal {
+	height: 21px;
+	float: left;
+	border-top: solid 1px white;
+	border-bottom: solid 1px silver;
+	padding-left: 7px;
+	padding-right: 7px;
+}
+div.datacenter-ui div.widget-searchresults div.type-current {
+	height: 21px;
+	float: left;
+	border: solid 1px silver;
+	border-bottom: solid 1px white;
+	padding-left: 6px;
+	padding-right: 6px;
+}
 div.datacenter-ui div.widget-searchresults div.results {
-	border-top: solid 1px silver;
-	margin-top: 8px;
-	padding-top: 8px;
+}
+div.datacenter-ui div.widget-searchresults div.result {
+	padding: 8px;
+	cursor: pointer;
+	margin-bottom: 15px;
 }
 
 /*
