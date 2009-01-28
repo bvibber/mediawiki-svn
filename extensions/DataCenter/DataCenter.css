@@ -7,6 +7,7 @@ div.datacenter-ui div.menu {
 	height: 22px;
 	border-bottom: solid 1px silver;
 	margin-bottom: 15px;
+	position: absolute;
 }
 div.datacenter-ui div.menu div.item-normal {
 	height: 21px;
@@ -108,6 +109,37 @@ div.datacenter-ui div.paging div.label {
 	height: 24px;
 	line-height: 24px;
 	color: #999999;
+}
+
+/*
+ * Search Widget
+ */
+div.datacenter-ui div.widget-search {
+	height: 22px;
+	border-bottom: solid 1px silver;
+	margin-bottom: 15px;
+	text-align: right;
+}
+div.datacenter-ui div.widget-search input.query {
+	margin-top: -8px;
+}
+div.datacenter-ui div.widget-search input.go {
+	margin-top: -8px;
+	margin-left: 8px;
+	font-weight: bold;
+}
+div.datacenter-ui div.widget-search input.search {
+	margin-top: -8px;
+	margin-left: 8px;
+}
+
+/*
+ * Search Results Widget
+ */
+div.datacenter-ui div.widget-searchresults div.results {
+	border-top: solid 1px silver;
+	margin-top: 8px;
+	padding-top: 8px;
 }
 
 /*

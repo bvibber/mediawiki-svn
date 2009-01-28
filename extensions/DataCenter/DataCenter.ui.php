@@ -886,6 +886,8 @@ class DataCenterUI {
 		'map' => 'DataCenterWidgetMap',
 		'model' => 'DataCenterWidgetModel',
 		'plan' => 'DataCenterWidgetPlan',
+		'search' => 'DataCenterWidgetSearch',
+		'searchresults' => 'DataCenterWidgetSearchResults',
 		'space' => 'DataCenterWidgetSpace',
 		'table' => 'DataCenterWidgetTable',
 	);
@@ -912,6 +914,7 @@ class DataCenterUI {
 	 * stored in output so that it can be composited later by render.
 	 */
 	private static $output = array(
+		'search' => '',
 		'menu' => '',
 		'content' => '',
 		'script' => null,
@@ -1124,22 +1127,28 @@ class DataCenterUI {
 		DataCenterController $controller,
 		array $path
 	) {
-		global $wgTitle;
+		global $wgTitle, $wgUser;
 		// Adds main menu
 		self::$output['menu'] .= DataCenterXml::open(
 			'div', array( 'class' => 'menu' )
 		);
 		foreach ( $pages as $page => $classes ) {
-			$state = ( $page == $path['page'] ? 'current' : 'normal' );
-			self::$output['menu'] .= DataCenterXml::div(
-				array( 'class' => 'item-' . $state ),
-				DataCenterXml::link(
-					self::message( 'page', $page ),
-					array( 'page' => $page )
-				)
-			);
+			if ( $classes['display'] ) {
+				$state = ( $page == $path['page'] ? 'current' : 'normal' );
+				self::$output['menu'] .= DataCenterXml::div(
+					array( 'class' => 'item-' . $state ),
+					DataCenterXml::link(
+						self::message( 'page', $page ),
+						array( 'page' => $page )
+					)
+				);
+			}
 		}
 		self::$output['menu'] .= DataCenterXml::close( 'div' );
+		// Adds search
+		self::$output['menu'] .= DataCenterUI::renderWidget(
+			'search', array()
+		);
 		// Adds sub menu
 		self::$output['menu'] .= DataCenterXml::open(
 			'div', array( 'class' => 'toolbar' )

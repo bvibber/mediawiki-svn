@@ -17,8 +17,11 @@ class DataCenterViewSettings extends DataCenterView {
 			'columns',
 			array(
 				DataCenterUI::renderLayout(
-					'columns',
+					'rows',
 					array(
+						DataCenterUI::renderWidget(
+							'heading', array( 'message' => 'settings' )
+						),
 						DataCenterUI::renderWidget(
 							'body',
 							array(

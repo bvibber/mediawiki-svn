@@ -17,8 +17,11 @@ class DataCenterViewOverview extends DataCenterView {
 			'columns',
 			array(
 				DataCenterUI::renderLayout(
-					'columns',
+					'rows',
 					array(
+						DataCenterUI::renderWidget(
+							'heading', array( 'message' => 'overview' )
+						),
 						DataCenterUI::renderWidget(
 							'body',
 							array(

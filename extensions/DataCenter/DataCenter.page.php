@@ -79,6 +79,7 @@ class DataCenterPage extends SpecialPage {
 		'overview' => array(
 			'controller' => 'DataCenterControllerOverview',
 			'view' => 'DataCenterViewOverview',
+			'display' => true,
 		),
 		'facilities' => array(
 			'controller' => 'DataCenterControllerFacilities',
@@ -87,7 +88,8 @@ class DataCenterPage extends SpecialPage {
 				'location' => 'DataCenterViewFacilitiesLocation',
 				'space' => 'DataCenterViewFacilitiesSpace',
 			),
-			'default' => 'location'
+			'default' => 'location',
+			'display' => true,
 		),
 		'plans' => array(
 			'controller' => 'DataCenterControllerPlans',
@@ -96,17 +98,20 @@ class DataCenterPage extends SpecialPage {
 				'plan' => 'DataCenterViewPlansPlan',
 				'rack' => 'DataCenterViewPlansRack',
 				'object' => 'DataCenterViewPlansObject',
-			)
+			),
+			'display' => true,
 		),
 		'assets' => array(
 			'controller' => 'DataCenterControllerAssets',
 			'view' => 'DataCenterViewAssets',
-			'default' => 'object'
+			'default' => 'object',
+			'display' => true,
 		),
 		'models' => array(
 			'controller' => 'DataCenterControllerModels',
 			'view' => 'DataCenterViewModels',
-			'default' => 'object'
+			'default' => 'object',
+			'display' => true,
 		),
 		'settings' => array(
 			'controller' => 'DataCenterControllerSettings',
@@ -114,7 +119,13 @@ class DataCenterPage extends SpecialPage {
 			'types' => array(
 				'field' => 'DataCenterViewSettingsField',
 			),
-			'default' => 'meta'
+			'default' => 'meta',
+			'display' => true,
+		),
+		'search' => array(
+			'controller' => 'DataCenterControllerSearch',
+			'view' => 'DataCenterViewSearch',
+			'display' => false,
 		)
 	);
 

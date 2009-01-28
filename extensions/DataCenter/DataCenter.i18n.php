@@ -28,6 +28,7 @@ $messages['en'] = array(
 	'datacenter-ui-page-overview' => 'Overview',
 	'datacenter-ui-page-plans' => 'Plans',
 	'datacenter-ui-page-repairs' => 'Repairs',
+	'datacenter-ui-page-search' => 'Search',
 	'datacenter-ui-page-settings' => 'Settings',
 	// Types
 	'datacenter-ui-type-attachment' => 'Attachment',
@@ -168,6 +169,7 @@ $messages['en'] = array(
 	'datacenter-ui-label-deploy' => 'Deploy',
 	'datacenter-ui-label-export' => 'Export',
 	'datacenter-ui-label-export-type' => '$1 Export',
+	'datacenter-ui-label-go' => 'Go',
 	'datacenter-ui-label-lookup' => 'LookUp',
 	'datacenter-ui-label-num-spaces' => '$1 {{PLURAL:$1|space|spaces}}',
 	'datacenter-ui-label-num-uses' => '$1 {{PLURAL:$1|use|uses}}',
@@ -175,6 +177,7 @@ $messages['en'] = array(
 	'datacenter-ui-label-remove' => 'Remove',
 	'datacenter-ui-label-reset' => 'Reset',
 	'datacenter-ui-label-save' => 'Save',
+	'datacenter-ui-label-search' => 'Search',
 	// Defaults
 	'datacenter-ui-default-new-type' => 'New $1',
 	// List Headings
@@ -183,8 +186,11 @@ $messages['en'] = array(
 	'datacenter-ui-heading-history' => 'History',
 	'datacenter-ui-heading-locations' => 'Locations',
 	'datacenter-ui-heading-objects' => 'Objects',
+	'datacenter-ui-heading-overview' => 'Overview',
 	'datacenter-ui-heading-plans' => 'Plans',
 	'datacenter-ui-heading-racks' => 'Racks',
+	'datacenter-ui-heading-search-results' => 'Search Results',
+	'datacenter-ui-heading-settings' => 'Settings',
 	'datacenter-ui-heading-spaces' => 'Spaces',
 	// Information Headings
 	'datacenter-ui-heading-asset' => 'Asset',
@@ -221,6 +227,7 @@ $messages['en'] = array(
 	'datacenter-ui-body-important-welcome' => 'Welcome to the beta-testing of DataCenter. Please poke around and give feedback to [http://www.mediawiki.org/wiki/User:Trevor_Parscal Trevor Parscal]. If want to help out, take a look at the MediaWiki extension page for [http://www.mediawiki.org/wiki/Extension:DataCenter DataCenter] which has a list of feature priorities.',
 	'datacenter-ui-body-notice-removing-field' => 'Removing this field will result in the removal of the following links and all data associated with them and cannot be recovered from. Do you want to continue with the removal?',
 	'datacenter-ui-body-notice-removing-type' => 'Removing this $1 will result in the removal of the following links and cannot be recovered from. Do you want to continue with the removal?',
+	'datacenter-ui-body-notice-no-results' => 'Nothing was found that matched your search terms.',
 	// Tabs
 	'datacenter-ui-tab-details' => 'Details',
 	'datacenter-ui-tab-future' => 'Future',

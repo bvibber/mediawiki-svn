@@ -72,6 +72,7 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, array(
 	'DataCenterControllerModels' => $dir . 'Controllers/Models.php',
 	'DataCenterControllerOverview' => $dir . 'Controllers/Overview.php',
 	'DataCenterControllerPlans' => $dir . 'Controllers/Plans.php',
+	'DataCenterControllerSearch' => $dir . 'Controllers/Search.php',
 	'DataCenterControllerSettings' => $dir . 'Controllers/Settings.php',
 	// UI/Inputs/*
 	'DataCenterInputBoolean' => $dir . 'UI/Inputs/Boolean.php',
@@ -99,6 +100,8 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, array(
 	'DataCenterWidgetMap' => $dir . 'UI/Widgets/Map.php',
 	'DataCenterWidgetModel' => $dir . 'UI/Widgets/Model.php',
 	'DataCenterWidgetPlan' => $dir . 'UI/Widgets/Plan.php',
+	'DataCenterWidgetSearch' => $dir . 'UI/Widgets/Search.php',
+	'DataCenterWidgetSearchResults' => $dir . 'UI/Widgets/SearchResults.php',
 	'DataCenterWidgetSpace' => $dir . 'UI/Widgets/Space.php',
 	'DataCenterWidgetTable' => $dir . 'UI/Widgets/Table.php',
 	// Views/Facilities/*
@@ -116,6 +119,7 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, array(
 	'DataCenterViewModels' => $dir . 'Views/Models.php',
 	'DataCenterViewOverview' => $dir . 'Views/Overview.php',
 	'DataCenterViewPlans' => $dir . 'Views/Plans.php',
+	'DataCenterViewSearch' => $dir . 'Views/Search.php',
 	'DataCenterViewSettings' => $dir . 'Views/Settings.php',
 	// DB
 	'DataCenterDB' => $dir . 'DataCenter.db.php',
