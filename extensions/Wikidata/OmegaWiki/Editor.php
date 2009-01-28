@@ -2067,14 +2067,14 @@ class RollBackEditor extends ScalarEditor {
 		$operation = $value->operation;
 		
 		if ($isLatest) {
-			$options = array('do-nothing' => 'Do nothing');
+			$options = array('do-nothing' => wfMsg('ow_transaction_no_action'));
 			
 			if ($this->hasValueFields) {
-				$previousVersionLabel = 'Previous version';
+				$previousVersionLabel = wfMsg('ow_transaction_previous_version');
 				$rollBackChangeHandler = 'rollBackOptionChanged(this);';
 			}
 			else {
-				$previousVersionLabel = 'Restore';
+				$previousVersionLabel = wfMsg('ow_transaction_restore');
 				$rollBackChangeHandler = '';
 			}
 				
@@ -2082,7 +2082,7 @@ class RollBackEditor extends ScalarEditor {
 				$options['previous-version'] = $previousVersionLabel;
 			
 			if ($operation != 'Removed')
-				$options['remove'] = 'Remove';
+				$options['remove'] = wfMsg('ow_transaction_remove');
 		
 			$result = getSelect($idPath->getId(), $options, 'do-nothing', $rollBackChangeHandler);
 		

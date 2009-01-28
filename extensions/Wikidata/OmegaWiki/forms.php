@@ -156,7 +156,7 @@ function getStaticSuggest($name, $suggestions, $idColumns = 1, $value=0, $label=
         '<div class="suggest-drop-down" style="position: relative"><div id="'. $name .'-suggest-div" style="position: absolute; left: 0px; top: 0px; border: 1px solid #000000; display: none; background-color: white; padding: 4px">' .
         	'<div><table><tr><td>' .
 //        	'<input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input>' .
-        	'</td><td><a id="'. $name .'-suggest-clear" href="javascript:void(0)" onclick="suggestClearClicked(event, this)">Clear</a></td><td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(event, this)">[X]</a></td></tr></table></div>' .
+        	'</td><td><a id="'. $name .'-suggest-clear" href="javascript:void(0)" onclick="suggestClearClicked(event, this)">' . wfMsg('ow_suggest_clear') . '</a></td><td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(event, this)">[X]</a></td></tr></table></div>' .
         	'<div>' . $suggestions .
         	//<table id="'. $name .'-suggest-table"><tr><td></td></tr></table>
         	'</div>'.

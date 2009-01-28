@@ -80,10 +80,10 @@ function wfSpecialTransaction() {
 					'<div class="option-panel">'.
 						'<table cellpadding="0" cellspacing="0">' .
 							'<tr>' .
-								'<th>' . wfMsgSc("summary") . ': </th>' .
+								'<th>' . wfMsg("summary") . ': </th>' .
 								'<td class="option-field">' . getTextBox("summary") .'</td>' .
 							'</tr>' .
-							'<tr><th/><td>'. getSubmitButton("roll-back", "Roll back") .'</td></tr>'.
+							'<tr><th/><td>'. getSubmitButton("roll-back", wfMsg('ow_transaction_rollback_button')) .'</td></tr>'.
 						'</table>' .
 					'</div>'.
 					'</form>'
@@ -105,7 +105,7 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 	
 	return getOptionPanel(
 		array(
-			"From transaction:" => 
+			wfMsg('ow_transaction_from_transaction') => 
 				getSuggest(
 					'from-transaction', 
 					'transaction',
@@ -114,13 +114,13 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 					getTransactionLabel($fromTransactionId), 
 					array(0, 2, 3)
 				),
-			"Count:" => 
+			wfMsg('ow_transaction_count') => 
 				getSelect('transaction-count',
 					$countOptions,
 					$transactionCount 
 				),
-			"User name:" => getTextBox('user-name', $userName),
-			"Show roll back controls:" => getCheckBox('show-roll-back-options', $showRollBackOptions)
+			wfMsg('ow_transaction_user') => getTextBox('user-name', $userName),
+			wfMsg('ow_transaction_show_rollback') => getCheckBox('show-roll-back-options', $showRollBackOptions)
 		)
 	); 
 }
@@ -133,7 +133,7 @@ function initializeAttributes() {
 	$o->isLatest = new Attribute('is-latest', wfMsg('ow_transaction_is_latest'), 'boolean');
 
 	$o->rollBackStructure = new Structure($o->isLatest, $o->operation);
-	$o->rollBack = new Attribute('roll-back', 'Roll back', $o->rollBackStructure);
+	$o->rollBack = new Attribute('roll-back', wfMsg('ow_transaction_rollback_header'), $o->rollBackStructure);
 	
 	$o->addTransactionId = new Attribute('add-transaction-id', 'Add transaction ID', 'identifier');
 		
@@ -143,7 +143,7 @@ function initializeAttributes() {
 	$o->translatedContentId = new Attribute('translated-content-id', 'Translated content ID', 'object-id');
 
 	$o->rollBackTranslatedContentStructure = new Structure($o->isLatest, $o->operation, $o->translatedContentHistory);
-	$o->rollBackTranslatedContent = new Attribute('roll-back', 'Roll back', $o->rollBackTranslatedContentStructure);
+	$o->rollBackTranslatedContent = new Attribute('roll-back', wfMsg('ow_transaction_rollback_header'), $o->rollBackTranslatedContentStructure);
 
 	$o->updatedDefinitionStructure = new Structure(
 		$o->rollBackTranslatedContent,
@@ -183,7 +183,7 @@ function initializeAttributes() {
 		$o->isLatest
 	);
 	
-	$o->updatedRelations = new Attribute('updated-relations', 'Relations', $o->updatedRelationsStructure);
+	$o->updatedRelations = new Attribute('updated-relations', wfMsg('ow_Relations'), $o->updatedRelationsStructure);
 	
 	$o->classMember = new Attribute('class-member', wfMsg('ow_transaction_class_member'), $o->definedMeaningReferenceStructure);
 	
@@ -217,7 +217,7 @@ function initializeAttributes() {
 	
 
 		
-	$o->objectId = new Attribute('object-id', 'Object', 'object-id');
+	$o->objectId = new Attribute('object-id', wfMsg('ow_transaction_object'), 'object-id');
 	$o->valueId = new Attribute('value-id', 'Value identifier', 'object-id');
 	$o->attribute = new Attribute('attribute', wfMsg('ow_ClassAttributeAttribute'), $o->definedMeaningReferenceStructure);
 		
@@ -294,10 +294,10 @@ function initializeAttributes() {
 		$o->isLatest
 	);
 	
-	$o->updatedClassAttributes = new Attribute('updated-class-attributes', 'Class attributes', $o->updatedClassAttributesStructure);
+	$o->updatedClassAttributes = new Attribute('updated-class-attributes', wfMsg('ow_ClassAttributes'), $o->updatedClassAttributesStructure);
 
 	$o->alternativeDefinitionText = new Attribute('alternative-definition-text', wfMsg('ow_Definition'), $o->translatedTextStructure);
-	$o->source = new Attribute('source', 'Source', $o->definedMeaningReferenceStructure);
+	$o->source = new Attribute('source', wfMsg('ow_Source'), $o->definedMeaningReferenceStructure);
 
 	$o->updatedAlternativeDefinitionsStructure = new Structure(
 		$o->rollBack,
@@ -310,7 +310,7 @@ function initializeAttributes() {
 		$o->isLatest
 	);	
 
-	$o->updatedAlternativeDefinitions = new Attribute('updated-alternative-definitions', 'Alternative definitions', $o->updatedAlternativeDefinitionsStructure);
+	$o->updatedAlternativeDefinitions = new Attribute('updated-alternative-definitions', wfMsg('ow_AlternativeDefinitions'), $o->updatedAlternativeDefinitionsStructure);
 
 		
 	$o->updatedAlternativeDefinitionTextStructure = new Structure(
