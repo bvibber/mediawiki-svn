@@ -7,7 +7,7 @@
 
 Name:                TSjoe
 Summary:             Full feature editor reminiscent of WordStar and Turbo-C
-Version:             3.5
+Version:             3.7
 Source:              %{sf_download}/joe-editor/joe-%{version}.tar.gz
 
 SUNW_BaseDir:        %{_basedir}
@@ -63,6 +63,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/*
 
 %changelog
+* Tue Jan 24 2009 - river@loreley.flyingparchment.org.uk
+- 3.7
 * Thu Jun 19 2008 - river@wikimedia.org
 - modified for toolserver 
 * Fri Sep 15 2006 - Eric Boutilier
