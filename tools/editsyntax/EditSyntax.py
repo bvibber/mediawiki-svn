@@ -1,4 +1,14 @@
 #-*- coding: utf-8 -*-
+
+## Originally written by Robert A. Rohde (rohde@robertrohde.com)
+##
+## The file provides a library of functions used to re-express
+## Mediawiki full history dump files into a much more compact "edit syntax"
+## or to make them grow large again.
+##
+## For practical implementations of use, see the companion files:
+## ConvertToEditSyntax.py and ConvertFromEditSyntax.py
+
 import string, re, copy, hashlib
 
 ## Global variables used by this script
@@ -107,7 +117,10 @@ def getXMLDifference(indent = 3, indentstr = "  "):
                     revert_id = c;
                     break;
         if revert_id > -1:
-            changes = [dict({'node':'revert','revision':revert_id})];
+            if revert_id != previous_revision:
+                changes = [dict({'node':'revert','revision':revert_id})];
+            else:
+                changes = [];
         else:
             changes = differenceGenerator(revision_buffer[previous_revision],
                                            revision_buffer[current_revision]);
@@ -201,7 +214,8 @@ def textBlocking(old_line, new_line, line_number = False):
         k2 = string.find(new_line,old_line[k1:k1+min_char_block],min_k2);
         if k2 >= 0:
             if k1 > 0 and k2 > 0 and old_line[k1-1] == new_line[k2-1]:
-                break;
+                k1 += 1;
+                continue;
             s = min_char_block;
             while k1 + s < len(old_line) \
                   and k2 + s < len(new_line) \
@@ -210,7 +224,7 @@ def textBlocking(old_line, new_line, line_number = False):
             matches.append([k1,k2,s]);
             k1 += s;
             min_k2 = k2 + s;
-            break;
+            continue;
         k1 += 1;
 
     old = [];
