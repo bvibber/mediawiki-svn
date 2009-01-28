@@ -510,7 +510,7 @@ JAVASCRIPT;
                     }
 
                     // need to create this icon, since we haven't already
-                    if( $icon && !$icons[$icon] ) {
+                    if( $icon && !isset($icons[$icon]) ) {
                         $exporter->addIcon($icon, $o);
                         $icons[$icon] = true;
                     }
@@ -681,7 +681,7 @@ JAVASCRIPT;
 
 		// our defaults, in	case $wgGoogleMapsDefaults isn't specified.
 		$o = array(
-			'api'         => 2.108,
+			'api'         => '2.140',
 			'color'       => '#758bc5',
 			'controls'    => 'medium',
 			'doubleclick' => 'recenter',

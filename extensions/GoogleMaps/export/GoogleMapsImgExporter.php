@@ -15,6 +15,7 @@ class GoogleMapsImgExporter extends GoogleMapsExporter {
         $width  = $o['width']  > 512 ? 512 : $o['width'];
         $height = $o['height'] > 512 ? 512 : $o['height'];
         $this->mOutput .= '<img ';
+        $this->mOutput .= "alt=\"Map\" ";
         $this->mOutput .= "height=\"{$height}\" width=\"{$width}\" ";
         $this->mOutput .= 'src="http://maps.google.com/staticmap';
         $this->mOutput .= "?center={$o['lat']}%2C{$o['lon']}";

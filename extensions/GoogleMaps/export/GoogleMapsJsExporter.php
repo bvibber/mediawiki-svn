@@ -15,8 +15,7 @@ class GoogleMapsJsExporter extends GoogleMapsExporter {
     function addXmlSource($url) {
         $url = addslashes($url);
         $this->mOutput .= <<<JAVASCRIPT
-      geoxml = new GGeoXml("{$url}");
-      map.addOverlay(geoxml);
+      map.addOverlay(new GGeoXml("{$url}".replace(/&amp;/g, "&".charAt(0)))); /* HACK HACK HACK */
 JAVASCRIPT;
     }
 
