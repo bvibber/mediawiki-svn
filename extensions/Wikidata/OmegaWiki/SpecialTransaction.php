@@ -170,8 +170,8 @@ function initializeAttributes() {
 	
 	$o->updatedSyntranses = new Attribute('updated-syntranses', wfMsg('ow_SynonymsAndTranslations'), $o->updatedSyntransesStructure);
 	
-	$o->firstMeaning = new Attribute('first-meaning', "First defined meaning", $o->definedMeaningReferenceStructure);
-	$o->secondMeaning = new Attribute('second-meaning', "Second defined meaning", $o->definedMeaningReferenceStructure);
+	$o->firstMeaning = new Attribute('first-meaning', wfMsg('ow_transaction_first_dm'), $o->definedMeaningReferenceStructure);
+	$o->secondMeaning = new Attribute('second-meaning', wfMsg('ow_transaction_second_dm'), $o->definedMeaningReferenceStructure);
 
 	$o->updatedRelationsStructure = new Structure(
 		$o->rollBack,

@@ -1277,11 +1277,11 @@ abstract class SelectEditor extends ScalarEditor {
 class ClassAttributesTypeEditor extends SelectEditor {
 	protected function getOptions() {
 		return array(
-			'DM' => 'Defined meaning', 
-			'TRNS' => 'Translatable text', 
-			'TEXT' => 'Plain text', 
-			'URL' => 'Link', 
-			'OPTN' => 'Option list'
+			'DM' => wfMsg('ow_class_attr_type_dm'), 
+			'TRNS' => wfMsg('ow_class_attr_type_xlate'), 
+			'TEXT' => wfMsg('ow_class_attr_type_plain'), 
+			'URL' => wfMsg('ow_class_attr_type_link'), 
+			'OPTN' => wfMsg('ow_class_attr_type_option')
 		);
 	}
 }

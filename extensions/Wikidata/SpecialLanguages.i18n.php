@@ -90,6 +90,8 @@ Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
 	'ow_transaction_is_latest'				=> 'Is latest',
 	'ow_transaction_class_member'      		=> 'Class member',
 	'ow_transaction_object'	      			=> 'Object',
+	'ow_transaction_first_dm'      			=> 'First defined meaning',
+	'ow_transaction_second_dm'      		=> 'Second defined meaning',
 
 	'conceptmapping'						=> 'Wikidata: Concept mapping',
 	'ow_conceptmapping_title'				=> 'Concept Mapping',
@@ -199,6 +201,12 @@ Perhaps you came to this page directly? Normally you do not need to be here.",
 There is an issue with database consistency, wikidata cannot find valid data connected to this defined meaning ID.
 It might be lost.
 Please contact the server operator or administrator.",
+
+	'ow_class_attr_type_dm'				=> 'Defined meaning',
+	'ow_class_attr_type_xlate'			=> 'Translatable text',
+	'ow_class_attr_type_plain'			=> 'Plain text',
+	'ow_class_attr_type_link'			=> 'Link',
+	'ow_class_attr_type_option'			=> 'Option list',
 
 	'needstranslation'					=> 'Wikidata: Expressions needing translation',
 	'ow_needs_xlation_title'			=> 'Expressions needing translation',

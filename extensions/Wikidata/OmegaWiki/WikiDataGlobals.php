@@ -23,7 +23,7 @@ global
 	$wgCollectionMembershipAttributeName,
 	$wgDefinedMeaningAttributesAttributeName,
 	$wgDefinedMeaningAttributeName,
-	$wgDefinedMeaningReferenceAttributeName,
+#	$wgDefinedMeaningReferenceAttributeName,
 	$wgDefinitionAttributeName,
 	$wgLanguageAttributeName,
 	$wgExactMeaningsAttributeName,
@@ -68,8 +68,8 @@ $wgCollectionAttributeName = "Collection";
 $wgCollectionMembershipAttributeName = "Collection membership";
 $wgDefinitionAttributeName = "Definition";
 $wgDefinedMeaningAttributesAttributeName = "Annotation";
-$wgDefinedMeaningAttributeName = "Defined meaning";
-$wgDefinedMeaningReferenceAttributeName = "Defined meaning";
+#$wgDefinedMeaningAttributeName = "Defined meaning";
+#$wgDefinedMeaningReferenceAttributeName = "Defined meaning";
 $wgExactMeaningsAttributeName = "Exact meanings";
 $wgExpressionAttributeName = "Expression";
 $wgExpressionMeaningsAttributeName = "Expression meanings";
