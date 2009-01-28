@@ -231,8 +231,8 @@ public class DumpImportDriver implements ImportDriver {
 		this.log = log;
 		
 		importQueueCapacity = tweaks.getTweak("dumpdriver.pageImportQueue", 8);
-		externalBunzip = tweaks.getTweak("dumpdriver.externalBunzip", "/bin/bunzip2");
-		externalGunzip = tweaks.getTweak("dumpdriver.externalGunzip", "/bin/gunzip");
+		externalBunzip = tweaks.getTweak("dumpdriver.externalBunzip", null);
+		externalGunzip = tweaks.getTweak("dumpdriver.externalGunzip", null);
 	}
 	
 	public void runImport(WikiWordImporter importer) throws IOException, SQLException, InterruptedException, PersistenceException {
