@@ -39,6 +39,11 @@ var default_remote_search_options = {
 					  
 	'enable_uploads':false // if we want to enable an uploads tab:  
 }
+/* licence_templateObj lists all the licence templates and their coresponding icon and short text description */
+var licence_templateObj = {
+	
+}
+
 var remoteSearchDriver = function(initObj){
 	return this.init( initObj );
 }
@@ -72,17 +77,18 @@ remoteSearchDriver.prototype = {
 			//domain insert: two modes: simple config or domain list: 
 			@local : if the content provider assets need to be imported or not.
 			@local_domains : sets of domains for which the content is local   
+			//@@todo should query wgForeignFileRepos setting maybe interwikimap from the api
 		*/ 		 		
 		'this_wiki':{
-			'enabled':0,
-			'checked':0,
-			'd'		:0,
-			'title'	:'This Wiki',
-			'desc'	: '(should be updated with the proper text) maybe import from some config value',
+			'enabled': 0,
+			'checked': 0,
+			'd'		 : 0,
+			'title'	 : 'This Wiki',
+			'desc'	 : '(should be updated with the proper text) maybe import from some config value',
 			'api_url': wgServer + wgScriptPath + '/api.php',
-			'lib'	:'mediaWiki',		
-			'local'	:true,
-			'tab_img':false
+			'lib'	 : 'mediaWiki',		
+			'local'	 : true,
+			'tab_img': false
 		},		
 		'wiki_commons':{
 			'enabled':1,
@@ -1300,7 +1306,11 @@ mediaWikiSearch.prototype = {
 				if(page.revisions[0]['*'].indexOf('#REDIRECT')===0){
 					//skip page is redirect 
 					continue;
-				}																
+				}								
+				//skip if its an empy or missing imageinfo: 
+				if(!page.imageinfo)
+					continue;
+										
 				this.resultsObj[page_id]={
 					'titleKey'	: page.title,
 					'link'		:page.imageinfo[0].descriptionurl,				

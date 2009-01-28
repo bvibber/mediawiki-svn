@@ -324,7 +324,7 @@ mvClipEdit.prototype = {
 			'<a href="#" class="mv_cancel_img_edit" title="' + getMsg('mv_cancel_image_insert')+'">' + getMsg('mv_cancel_image_insert') + '</a> ');					
 		//$j('#'+this.control_ct).append( this.getInsertDesc() + this.getInsertAction()	);				
 		
-		//this.applyInsertControlBindings();
+		this.applyInsertControlBindings();
 	},
 	setInOutBindings:function(){
 		//setup bindings for adjust / preview:
