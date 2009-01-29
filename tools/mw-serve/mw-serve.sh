@@ -5,11 +5,11 @@ start)
 
 echo "Starting mw-serve... "
 # defaults to FastCGI, port 8899 on localhost, no daemonization
-su -c "PYTHONPATH=/opt/mwlib/lib/python2.5/site-packages \
-PATH=/usr/bin:/bin:/opt/mwlib/bin \
-PYTHON_EGG_CACHE=/opt/mwlib/var/cache/python-eggs \
-/opt/mwlib/bin/mw-serve \
-  -i bindery.wikimedia.org \
+#su -c "PYTHONPATH=/opt/mwlib/lib/python2.5/site-packages \
+#PATH=/usr/bin:/bin:/opt/mwlib/bin \
+#PYTHON_EGG_CACHE=/opt/mwlib/var/cache/python-eggs \
+#/opt/mwlib/bin/mw-serve \
+su -c "/usr/bin/mw-serve \
   -p 8080 \
   -P http \
   -d \
