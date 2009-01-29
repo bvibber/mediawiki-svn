@@ -112,7 +112,7 @@ class LuceneSearch extends SearchEngine {
 				$rewritten .= $part;				
 			} else{
 				# replace namespaces
-				$r = preg_replace_callback('/('.$regexp.'):/i',array($this,'replaceNamespace'),$part);
+				$r = preg_replace_callback('/(^|[ :])('.$regexp.'):/i',array($this,'replaceNamespace'),$part);
 				# replace to backend all: notation
 				$rewritten .= str_replace($allkeyword.':', 'all:', $r);
 			}
@@ -124,11 +124,11 @@ class LuceneSearch extends SearchEngine {
 	/** callback to replace namespace names to internal notation, e.g. User: -> [2]: */ 
 	function replaceNamespace($matches){
 		global $wgContLang;
-		$inx = $wgContLang->getNsIndex(str_replace(' ', '_', $matches[1]));
+		$inx = $wgContLang->getNsIndex(str_replace(' ', '_', $matches[2]));
 		if ($inx === false)
 			return $matches[0];
 		else
-			return "[$inx]:";
+			return $matches[1]."[$inx]:";
 		
 	}
 	
