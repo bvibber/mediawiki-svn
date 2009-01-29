@@ -2,6 +2,7 @@
 # postinst script for wikimedia-task-dns-auth
 #
 # see: dh_installdeb(1)
+# vim: set sw=4 ts=4 noet :
 
 set -e
 
@@ -18,24 +19,24 @@ set -e
 #
 
 checkmount() {
-    dev=$1
-    mnt=$2
+	dev=$1
+	mnt=$2
 
-    [ -d $mnt ] || {
-        mkdir -p $mnt
-        echo "created $mnt" >&2
-    }
+	[ -d $mnt ] || {
+		mkdir -p $mnt
+		echo "created $mnt" >&2
+	}
 
-    grep -qs "^$dev" /etc/fstab || {
-        echo "Adding $mnt mount..." >&2
-        echo >>/etc/fstab \
-            "$dev  $mnt nfs     bg,soft,udp,rsize=8192,wsize=8192,timeo=14,intr,nfsvers=3  0 0"
-        mount $mnt || true
-    }
+	grep -qs "^$dev" /etc/fstab || {
+		echo "Adding $mnt mount..." >&2
+		echo >>/etc/fstab \
+			"$dev  $mnt nfs     bg,soft,udp,rsize=8192,wsize=8192,timeo=14,intr,nfsvers=3  0 0"
+		mount $mnt || true
+	}
 }
 
 case "$1" in
-    configure)
+	configure)
 	# Add a line to /etc/motd describing the task of this server
 	if [ -f /etc/motd.tail ]
 	then
@@ -50,17 +51,18 @@ case "$1" in
 
 		if [ -f /etc/motd.tail ]
 		then
-		        # Update motd
+			# Update motd
 	 		uname -snrvm > /var/run/motd
-        		cat /etc/motd.tail >> /var/run/motd
+			cat /etc/motd.tail >> /var/run/motd
 		fi
 	fi
 
-        chown -R pybal-check:pybal-check /var/lib/pybal-check/.ssh
+	chown -R pybal-check:pybal-check /var/lib/pybal-check/.ssh
 
-        checkmount amane:/export/upload /mnt/upload3
-        checkmount amane:/export/math /mnt/math
-		checkmount storage1.wikimedia.org:/export/upload /mnt/upload4
+	checkmount amane:/export/upload /mnt/upload3
+	checkmount amane:/export/math /mnt/math
+	checkmount storage1.wikimedia.org:/export/upload /mnt/upload4
+	checkmount ms1.wikimedia.org:/export/upload /mnt/upload5
 
 	CLUSTER=$(cat /etc/wikimedia-cluster)
 	if [ $CLUSTER="pmtpa" ]
@@ -73,16 +75,16 @@ case "$1" in
 	else
 		echo "remember to sync this server before you start it!"
 	fi
-    ;;
+	;;
 
-    abort-upgrade|abort-remove|abort-deconfigure)
+	abort-upgrade|abort-remove|abort-deconfigure)
 
-    ;;
+	;;
 
-    *)
-        echo "postinst called with unknown argument \`$1'" >&2
-        exit 1
-    ;;
+	*)
+		echo "postinst called with unknown argument \`$1'" >&2
+		exit 1
+	;;
 esac
 
 # dh_installdeb will replace this with shell code automatically

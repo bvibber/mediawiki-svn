@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.32) hardy; urgency=low
+
+  * Added /mnt/upload5 to postinst
+
+ -- Tim Starling <tstarling@wikimedia.org>  Thu, 29 Jan 2009 12:02:42 +1100
+
 wikimedia-task-appserver (1.31) hardy; urgency=low
 
   * Bumped post and upload limits to 100M, we're trying it out...
