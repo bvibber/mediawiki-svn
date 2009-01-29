@@ -123,8 +123,9 @@ class DataCenterWidgetForm extends DataCenterWidget {
 		 */
 		'field' => array(
 			'class' => 'field',
-			'width' => '200',
+			'width' => '210',
 			'align' => 'left',
+			'nowrap' => 'nowrap',
 		),
 		/**
 		 * Default XML attributes for submit button cell

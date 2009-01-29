@@ -179,6 +179,9 @@ div.datacenter-ui div.widget-form tr td {
 	padding-left: 8px;
 	padding-right: 8px;
 }
+div.datacenter-ui div.widget-form tr td.field {
+	padding-right: 4px;
+}
 div.datacenter-ui div.widget-form tr.row {
 	background-color: #FFFFFF;
 }
