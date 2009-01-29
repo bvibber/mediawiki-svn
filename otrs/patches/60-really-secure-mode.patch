@@ -959,3 +959,250 @@ Index: trunk/var/cron/unlock.dist
 -35 * * * *  $HOME/bin/UnlockTickets.pl --timeout >> /dev/null
 +35 * * * *  $OTRS_HOME/bin/UnlockTickets.pl --timeout >> /dev/null
  
+Index: trunk/bin/SetPermissions.pl
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ trunk/bin/SetPermissions.pl	2009-01-29 14:04:58.000000000 +1100
+@@ -0,0 +1,242 @@
++#!/usr/bin/perl -w
++# --
++# SetPermissions.pl - to set the otrs permissions
++# Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
++# --
++# $Id$
++# --
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++# --
++
++print 'SetPermissions.pl <$Revision$> - set OTRS file permissions'."\n";
++print "Copyright (C) 2001-2008 OTRS AG, http://otrs.org/\n";
++
++use File::Find;
++use Getopt::Long;
++my $secure = 0;
++my $version = 0;
++my $help = 0;
++my $notRoot = 0;
++my $adminGroupWritable = 0;
++my $otrsUser = 'otrs';    
++my $webUser = 'otrs'; 
++my $adminUser = 'root';
++my $otrsGroup = 'nogroup'; 
++my $webGroup = 'nogroup'; 
++my $adminGroup = 'adm';
++
++GetOptions(
++    'secure' => \$secure,
++    'not-root' => \$notRoot,
++    'version' => \$version,
++    'help' => \$help,
++    'admin-group-writable' => \$adminGroupWritable,
++    'otrs-user=s' => \$otrsUser,
++    'web-user=s' => \$webUser,
++    'admin-user=s' => \$adminUser,
++    'otrs-group=s' => \$otrsGroup,
++    'web-group=s' => \$webGroup,
++    'admin-group=s' => \$adminGroup
++);
++
++if ( $version ) {
++    exit( 0 );
++}
++if ( $help || $#ARGV < 0 ) {
++    print <<EOF;
++Usage: SetPermissions.pl 
++    [--otrs-user=<OTRS_USER>]
++    [--web-user=<WEBSERVER_USER>]
++    [--otrs-group=<OTRS_GROUP>]
++    [--web-group=<WEB_GROUP>]
++    [--admin-user=<ADMIN_USER>]
++    [--admin-group=<ADMIN_GROUP>]
++    [--admin-group-writable]
++    [--secure]
++    [--not-root]
++    <OTRS_HOME>
++
++Try: SetPermissions.pl --secure /opt/otrs
++EOF
++
++    if ( $#ARGV < 0 ) {
++        exit 1;
++    } else {
++        exit 0;
++    }
++}
++my $destDir = $ARGV[0];
++
++# Check that the users exist
++my ( $webUserId, $otrsUserId, $adminUserId );
++if ( !$notRoot ) {
++    ( $webUserId, $otrsUserId, $adminUserId ) = getUserIDs( $webUser, $otrsUser, $adminUser );
++}
++
++# Check that the groups exist
++my ( $webGroupId, $otrsGroupId, $adminGroupId );
++if ( !$notRoot ) {
++    ( $webGroupId, $otrsGroupId, $adminGroupId ) = getGroupIDs( $webGroup, $otrsGroup, $adminGroup );
++}
++
++# set permissions
++print "Setting permissions on $destDir\n";
++if ( $secure ) {
++    # In secure mode, make files read-only by default
++    find( \&makeReadOnly, $destDir );
++} else {
++    # set all files writeabel for webserver user (needed for package manager)
++    find( \&makeWritable, $destDir );
++    # set the $HOME to the OTRS user
++    if ( !$notRoot ) {
++        safeChown( $otrsUserId, $otrsGroupId, "$destDir/home" );
++    }
++}
++
++# var/*
++
++print "Setting permissions on $destDir/var\n";
++# set the var directory to OTRS and webserver user
++@dirs = ( 
++    "$destDir/var/article", 
++    "$destDir/var/log", 
++    "$destDir/var/tmp",
++    "$destDir/var/spool",
++    "$destDir/var/stats",
++    "$destDir/var/sessions"
++);
++for $dir ( @dirs ) {
++    if ( ! -e $dir ) {
++        mkdir( $dir );
++    }
++}
++
++find( \&makeWritableSetGid, @dirs );
++
++# bin/*
++
++# set all bin/* as executable
++print "Setting permissions on $destDir/bin\n";
++find( \&makeExecutable, "$destDir/bin" );
++
++# set write permission for web installer
++if ( !$secure ) {
++    print "Setting permissions on Config.pm\n";
++    $_ = "$destDir/Kernel/Config.pm";
++    makeWritable();
++}
++
++exit( 0 );
++
++# --------------------------------------------------------------------
++sub makeReadOnly {
++    my $file = $_;
++    if ( !$notRoot ) {
++        safeChown( $adminUserId, $adminGroupId, $file );
++    }
++    my $mode;
++    if ( -d $file ) {
++        $mode = 0755;
++    } else {
++        $mode = 0644;
++    }
++    safeChmod( $mode, $file );
++}
++
++sub makeWritable {
++    my $file = $_;
++    my $mode;
++
++    if ( -d $file ) {
++        $mode = 0775;
++    } else {
++        $mode = 0664;
++    }
++    if ( $notRoot ) {
++        $mode |= 2;
++        safeChmod( $mode, $file );
++    } else {
++        safeChown( $otrsUserId, $webGroupId, $file );
++        safeChmod( $mode, $file );
++    }
++}
++
++sub makeWritableSetGid {
++    my $file = $_;
++    if ( -d $file ) {
++        $mode = 02775;
++    } else {
++        $mode = 0664;
++    }
++    if ( $notRoot ) {
++        $mode |= 2;
++        safeChmod( $mode, $file );
++    } else {
++        safeChown( $otrsUserId, $webGroupId, $file );
++        safeChmod( $mode, $file );
++    }
++}
++
++sub makeExecutable {
++    my $file = $_;
++    my $mode = (lstat($file))[2];
++    if ( defined( $mode ) ) {
++        $mode |= 0111;
++        safeChmod( $mode, $file );
++    }
++}
++
++sub getUserIDs {
++    my @ids;
++    my $id;
++    my @args = @_;
++    for $user ( @args ) {
++        $id = getpwnam( $user );
++        if ( !defined( $id ) ) {
++            print "User \"$user\" does not exist!\n";
++            exit( 1 );
++        }
++        push( @ids, $id );
++    }
++    return @ids;
++}
++
++sub getGroupIDs {
++    my @ids;
++    my $id;
++    for $group ( @_ ) {
++        $id = getgrnam( $group );
++        if ( !defined( $id ) ) {
++            print "Group \"$group\" does not exist!\n";
++            exit( 1 );
++        }
++        push( @ids, $id );
++    }
++    return @ids;
++}
++
++sub safeChown {
++    my ( $user, $group, $file ) = @_;
++    if ( !chown( $user, $group, $file ) ) {
++        die( "Error in chown $user $group $file: $!\n" );
++    }
++}
++
++sub safeChmod {
++    my ( $mode, $file ) = @_;
++    if ( !chmod( $mode, $file ) ) {
++        die( "Error in chmod $mode $file: $!\n" );
++    }
++}
