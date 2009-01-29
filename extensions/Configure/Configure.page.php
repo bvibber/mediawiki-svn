@@ -311,18 +311,19 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		if ( $version = $wgRequest->getVal( 'version' ) ) {
 			if ( $version == 'default' || $wgConf->versionExists( $version ) ) {
-				$conf = $wgConf->getOldSettings( $version );
-
 				if ( $version == 'default' ) { ## Hacky special case.
-					$conf[$this->mWiki] = $conf['default'];
+					$this->conf = $wgConf->getDefaultsForWiki( $this->mWiki );
+				} else {
+					$conf = $wgConf->getOldSettings( $version );
+
+					if ( !isset( $conf[$this->mWiki] ) ) {
+						$wgOut->wrapWikiMsg( '<div class="errorbox">$1</div>',
+							array( 'configure-old-not-available', $version ) );
+						return false;
+					}
+					$this->conf = $conf[$this->mWiki];
 				}
 
-				if ( !isset( $conf[$this->mWiki] ) ) {
-					$wgOut->wrapWikiMsg( '<div class="errorbox">$1</div>',
-						array( 'configure-old-not-available', $version ) );
-					return false;
-				}
-				$this->conf = $conf[$this->mWiki];
 				$current = null;
 				foreach ( $this->conf as $name => $value ) {
 					if ( $this->canBeMerged( $name, $value ) ) {
@@ -405,8 +406,8 @@ abstract class ConfigurationPage extends SpecialPage {
 			$text .= "</li>\n</ul>\n";
 		}
 		$link = SpecialPage::getTitleFor( 'ViewConfig' );
-		$text .= Xml::tags( 'p', null, $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) ) );
-		$text .= Xml::tags( 'p', null, $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-default' ), 'version=default' ) );
+		$text .= Xml::tags( 'p', null, $skin->link( $link, wfMsgHtml( 'configure-view-all-versions' ), array(), array(), array( 'known' ) ) );
+		$text .= Xml::tags( 'p', null, $skin->link( $link, wfMsgHtml( 'configure-view-default' ), array(), array( 'version' => 'default' ), array( 'known' ) ) );
 
 		$text .= '</fieldset>';
 		return $text;
@@ -566,7 +567,7 @@ abstract class ConfigurationPage extends SpecialPage {
 								} else {
 									$val = $wgRequest->getCheck( $id );
 								}
-								if ($val)
+								if ( $val )
 									$settings[$name][$group][$right] = true;
 							} else if ( $wgRequest->getCheck( $id ) ) {
 								$settings[$name][$group][] = $right;
