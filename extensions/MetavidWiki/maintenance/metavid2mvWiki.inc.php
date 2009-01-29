@@ -34,6 +34,34 @@ function do_stream_attr_check( $old_stream ) {
 	// if($i==3)die;
 	// $i++;
 }
+function do_stream_date_check(){
+	$dbr = wfGetDB( DB_READ );
+	$result = $dbr->select( 'mv_streams',
+		'*',
+		'',
+		__METHOD__,
+		array('LIMIT'=> 9000));
+	if ( $dbr->numRows( $result ) == 0 )die("do_stream_file_check: no streams found");
+	
+	while ( $stream = $dbr->fetchObject( $result ) ) {
+		$sdate = split('_', $stream->name);						    		
+		$sd = split('-',$sdate[count($sdate)-1]);
+		if( count($sd) != 3 )
+			continue;                            
+		$sdate = mktime( 9, 0, 0, $sd[0], $sd[1], intval('20'.$sd[2]) );		
+		if( date('d-y', $stream->date_start_time) != date('d-y',$sdate) ) {
+			//print "should update date: " . $stream->date_start_time . ' to '.  $sdate . ' for ' . $stream->name . "\n";
+			$dbw = wfGetDB( DB_WRITE );
+			$sql = "UPDATE `mv_streams` SET `date_start_time`= '$sdate' " .
+					" WHERE `id`={$stream->id} LIMIT 1 ";
+			$dbw->query($sql);
+			print "$stream->name date updated\n";
+		}else{
+           	print "$stream->name date is ok\n";
+		}
+			
+	}
+}
 function do_stream_file_check( $old_stream=false ) {	
 	global $mvgIP, $mvVideoArchivePaths;
 	$stream_set = Array();
@@ -835,9 +863,13 @@ function do_proc_interest( $intrestKey, $intrestName ) {
 			$i++;
 		}
 	}
-	$raw_results =  $mvScrape->doRequest( 'http://maplight.org/map/us/interest/' . $intrestKey . '/bills' );
+	$intrest_bills_url =  'http://maplight.org/map/us/interest/' . $intrestKey . '/bills';
+	$raw_results =  $mvScrape->doRequest( $intrest_bills_url );
 	// get all bills supported or opposed
 	preg_match_all( '/\/map\/us\/bill\/([^"]*)".*\/map\/us\/legislator.*<td>([^<]*)</U', $raw_results, $matches );
+	print $intrest_bills_url . "\n";
+	print_r($matches);
+	die;
 	$sinx = $oinx = 1;
 	if ( isset( $matches[1][0] ) ) {
 		$support_count = $oppse_count = 0;
@@ -857,7 +889,8 @@ function do_proc_interest( $intrestKey, $intrestName ) {
 		}
 	}
 	$page_body .= '}}';
-	print "Interest Page: $intrestName\n";
+	print "Interest Page: $intrestName \n\n $page_body\n";
+	die;
 	$wTitle = Title::makeTitle( NS_MAIN, $intrestName );
 	do_update_wiki_page( $wTitle, $page_body );
 }

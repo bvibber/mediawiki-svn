@@ -608,26 +608,34 @@ class MV_BillScraper extends MV_BaseScraper {
 		}
 	}
 	function proccessBill( $govTrackBillId, $bill_key, $openCongBillId = false, $mapLightBillId = false, $forceUpdate = false ) {
-		// get the bill title & its sponser / cosponsers:
+		// get the bill title & its sponsor / co-sponsors:
 		$rawGovTrackPage = $this->doRequest( $this->govTrack_bill_url . $govTrackBillId );
 
 		/*****************************
-		 * Proccess Bill GovTrack info
+		 * Process Bill GovTrack info
 		 *****************************/
 		print "gov_track id: " . $govTrackBillId . " from: " . $this->govTrack_bill_url . $govTrackBillId . "\n";
 
-		// get title:
-		$patern = '/property="dc:title" datatype="xsd:string" style="margin-bottom: 1em">([^<]*)<\/div>(<p style="margin-top: 1.75em; margin-bottom: 1.75em">([^<]*))?/';
-		preg_match( $patern, $rawGovTrackPage, $title_match );
+		// get title:		
+		preg_match( '/<title>(.*)<\/title>/', $rawGovTrackPage, $title_match );		
 		if ( isset( $title_match[1] ) ) {
+			//strip govtrack.us
+			$title_match[1] = str_replace( '(GovTrack.us)', '', $title_match[1]);
 			if ( trim( $title_match[1] ) == '' ) {
 				print "empty title\n";
 				return false;
 			}
 			$title_short  = str_replace( array( '_', '...', ' [110th]', ' [109th]', ' [108th]', ' [107th]' ), array( ' ', '', '', '', '', '' ), $title_match[1] );
+			
 			$this->cur_bill_short_title = $title_short;
 			// set the desc if present:
-			$title_desc = ( isset( $title_match[3] ) ) ? $title_match[3]:'';
+			preg_match( '/<meta name="description" content="([^">]*)"/', $rawGovTrackPage, $desc_match );
+			if(isset($desc_match[1])){
+				$title_desc = $desc_match[1];
+			}else{
+				die('could not find title desc: ' . $title_desc);
+			}
+			
 			$this->bill_titles[$bill_key] = $title_short;
 		} else {
 			print $this->govTrack_bill_url . $govTrackBillId . "\n" . $patern . "\n" . $rawGovTrackPage;
@@ -635,8 +643,8 @@ class MV_BillScraper extends MV_BaseScraper {
 		}
 
 		// print "raw govtrack:\n $rawGovTrackPage";
-		// get the $thomas_match
-		preg_match( '/thomas\.loc\.gov\/cgi-bin\/bdquery\/z\?(.*):/', $rawGovTrackPage, $thomas_match );
+		// get the $thomas_match		
+		preg_match( '/thomas\.loc\.gov\/cgi-bin\/bdquery\/z\?([^\"]*)/', $rawGovTrackPage, $thomas_match );
 		// get introduced: //strange .* does not seem to work :(
 		preg_match( '/Introduced<\/nobr><\/td><td style="padding-left: 1em; font-size: 75%; color: #333333"><nobr>([^<]*)/m', $rawGovTrackPage, $date_intro_match );
 		// print_r($date_intro_match);
@@ -685,19 +693,26 @@ class MV_BillScraper extends MV_BaseScraper {
 				$this->procMapLightInterest( $interest );
 				$bp .= 'Supporting Interest ' . $i . '=' . $interest['name'] . "|\n";
 				$i++;
+				//process interest
+				$this->procMapLightInterest(	$interest );
 			}
 			$i = 1;
 			foreach ( $bill_interest['oppose'] as $interest ) {
 				$bp .= 'Opposing Interest ' . $i . '=' . $interest['name'] . "|\n";
 				$i++;
+				//process interest
+				$this->procMapLightInterest(	$interest );
 			}
 		}
 		$bp .= "}}\n";
+		
 		// print 'page : '.$title_short.' ' . $bp . "\n";
 		// incorporated into the template:
 		// $body.="\n\n".'Source: [[Data Source Name:=GovTrack]] [[Data Source URL:='.$this->govTrack_bill_url . $govTrackBillId.']]';
 		// set up the base bill page:
 		$wgBillTitle = Title::newFromText( $title_short );
+		//print $bp;
+		//die;
 		do_update_wiki_page( $wgBillTitle, $bp );
 
 		// set up a redirect for the bill key, and a link for the category page:
@@ -721,29 +736,29 @@ class MV_BillScraper extends MV_BaseScraper {
 		// print "map info: $this->mapLightBillInfo \n";
 		print str_replace( '$1', $mapLightBillId, $this->mapLightBillInfo ) . "\n\n";
 		$ret_ary = array( 'support' => array(), 'oppose' => array() );
-		$bill_page = $this->doRequest( str_replace( '$1', $mapLightBillId, $this->mapLightBillInfo ) );
+		$bill_url = str_replace( '$1', $mapLightBillId, $this->mapLightBillInfo );
+		$bill_page = $this->doRequest(  $bill_url);
 		// $bill_page = $this->doRequest('http://maplight.org/map/us/bill/10831/default');
 		// print $bill_page;
 		// ([^<]*)<\/a>)*
 		// a href="\/map\/us\/interest\/([^"]*) class="interest"
-
-		$pat_interest = '/<li><a\shref="\/map\/us\/interest\/([^"]*)".*>([^<]*)<\/a>&nbsp;.*<\/li>/U';
 		// class="organizations"\sid="for
 		// preg_match_all('/class="organizations"\sid="for.*<ul class="industries list-clear">()*/',$bill_page, $matches);
-		preg_match_all( $pat_interest, $bill_page, $matches, PREG_OFFSET_CAPTURE );
-		// print_r($matches);
-		$aginst_pos = strpos( $bill_page, 'class="organizations" id="against"' );
+		print "\n". $bill_url."\n";		
+		preg_match_all( '/href\=\"\/map\/us\/interest\/([^"]*)[^>]*>([^<]*)/', $bill_page, $matches, PREG_OFFSET_CAPTURE );		
+		
+		$aginst_pos = strpos( $bill_page, 'id="against"' );
 		// return empty arrays if we don't have info to give back:'
 		if ( $aginst_pos === false )return $ret_ary;
 		if ( !isset( $matches[1] ) )return $ret_ary;
 
 		foreach ( $matches[1] as $inx => $intrest ) {
 			if ( $intrest[1] < $aginst_pos ) {
-				$ret_ary['support'][] = array( 'key' => $intrest[0], 'name' => $matches[2][$inx][0] );
+				$ret_ary['support'][] = array( 'key' => $intrest[0], 'name' => htmlspecialchars_decode( $matches[2][$inx][0]) );
 			} else {
-				$ret_ary['oppose'][] = array( 'key' => $intrest[0], 'name' => $matches[2][$inx][0] );
+				$ret_ary['oppose'][] = array( 'key' => $intrest[0], 'name' => htmlspecialchars_decode( $matches[2][$inx][0] ) );
 			}
-		}
+		}		
 		return $ret_ary;
 	}
 	function get_bill_name_from_mapLight_id( $mapBillId, $doLookup = true ) {
@@ -760,7 +775,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		}
 		if ( !isset( $this->mapLight_bill_cache[$mapBillId] ) ) {
 			if ( $doLookup ) {
-				print "missing bill by mapId: $mapBillId retrive it: \n";
+				print "missing bill by mapId: $mapBillId retrieve it: \n";
 				$raw_bill_page = $this->doRequest( 'http://www.maplight.org/map/us/bill/' . $mapBillId . '/default' );
 				preg_match( '/title">([^-]*)-/', $raw_bill_page, $matches );
 				if ( isset( $matches[1] ) )$bill_key = trim( $matches[1] );

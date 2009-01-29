@@ -94,6 +94,7 @@ actions:
 		'interest' will insert interests (uses people as base so run people first)
 		'update_templates' will update templates & some semantic properties
 		'file_check' checks inserted streams file urls/pointers
+		'do_stream_date_check'
 
 EOT;
 	exit ();
@@ -133,6 +134,9 @@ switch ( $args[0] ) {
 	case 'file_check':
 		do_stream_file_check();
 	break;
+	case 'do_stream_date_check':
+		do_stream_date_check();
+	break;
 	case 'update_templates' :
 		$force = ( isset( $options['force'] ) ) ? true:false;
 		include_once( 'metavid_gov_templates.php' );
@@ -147,5 +151,5 @@ switch ( $args[0] ) {
 	break;
 	default :
 		do_stream_insert( 'stream', $args[0] );
-	break;
+	break;	
 }
