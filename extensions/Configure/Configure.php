@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.11.14',
+	'version' => '0.11.15',
 );
 
 # Configuration part
@@ -37,6 +37,16 @@ $wgConfigureFilesPath = "$IP/serialized";
  * Database used to store the configuration, if $wgConfigureHandler is 'db'
  */
 $wgConfigureDatabase = 'config';
+
+/**
+ * Whether to allow to defer a part of efConfigureSetup() until the cache
+ * objects are set by MediaWiki instead of doing it in efConfigureSetup().
+ * It is only used if $wgConfigureHandler is 'db'.
+ * If you want to use $wgConfigureExtensionsVar (see below), you may need to
+ * set it to false, otherwise the variables won't be set in efConfigureSetup()
+ * by later.
+ */
+$wgConfigureAllowDeferSetup = true;
 
 /**
  * Path for file-system cache, only works when $wgConfigureHandler is 'db'.
@@ -88,6 +98,10 @@ $wgConfigureAdditionalExtensions = array();
  * include the file.
  * You'll need to handle the variable and include yourself the extension's file.
  * Format is $wgConfigureExtensionsVar['ExtensionName'] = 'VarName';
+ *
+ * WARNING: If you use database handler, you may need to set
+ * $wgConfigureAllowDeferSetup = false;
+ * to use it correctly.
  */
 $wgConfigureExtensionsVar = array();
 
