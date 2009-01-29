@@ -14,7 +14,7 @@ $cur_path = $IP = dirname( __FILE__ );
 // include commandLine.inc from the mediaWiki maintance dir:
 require_once ( '../../../maintenance/commandLine.inc' );
 require_once ( 'metavid2mvWiki.inc.php' );
-
+	
 // include util functions:
 require_once( 'maintenance_util.inc.php' );
 
@@ -53,28 +53,28 @@ $workingdir = '/video/metavid/raw_mpeg2';
 $filename = $workingdir .'/'. $stream_name . '.mpeg'; 
 $duration = getDuration($filename);
 
+
+//read the timestamp from the .srt
+$srt_file = $workingdir . '/' . $stream_name . '.srt';
+$srt_ary = file( $srt_file );
+if($srt_ary === false)
+	die(' could not find srt file: ' . $srt_file); 
+			
+//time stamp: 
+$org_start_time = intval( trim( str_replace( 'starttime' , '', $srt_ary[2] )) );	 
+	
+class streamObject{	};	
+$stream = new streamObject();
+$stream->name = $stream_name;
+$stream->org_start_time =	$org_start_time; 
+$stream->sync_status 	= 	'in_sync';
+$stream->duration		=	$duration;
+	
+
 $mvTitle = new MV_Title( 'Stream:' . $stream_name );
 if ( !$mvTitle->doesStreamExist() ) {
 	print $stream_name . " does not exist ... creating\n";
-	// print 'do stream desc'."\n";
-	include_once('metavid2mvWiki.inc.php');
-	
-	//read the timestamp from the .srt (this should be unified)
-	$srt_file = $workingdir . '/' . $stream_name . '.srt';
-	$srt_ary = file( $srt_file );
-	if($srt_ary === false)
-		die(' could not find srt file: ' . $srt_file); 
-				
-	//time stamp: 
-	$org_start_time = intval( trim( str_replace( 'starttime' , '', $srt_ary[2] )) );	 
-	class streamObject{
-	
-	}
-	$stream = new streamObject();
-	$stream->name = $stream_name;
-	$stream->org_start_time =	$org_start_time; 
-	$stream->sync_status 	= 	'in_sync';
-	$stream->duration		=	$duration;
+	// print 'do stream desc'."\n";		
 		
 	if(!isset($MVStreams))
 		$MVStreams = array();
@@ -86,8 +86,16 @@ if ( !$mvTitle->doesStreamExist() ) {
 }
 $stream_id = $mvTitle->getStreamId();
 print 'got stream id: '. $stream_id . "\n";
-$filedir = '/video/metavid/mvprime_stream_images/' . MV_StreamImage::getRelativeImagePath( $stream_id );
 
+//check for & update stream files: 
+do_stream_file_check( $stream );
+
+
+$filedir = '/video/metavid/mvprime_stream_images/' . MV_StreamImage::getRelativeImagePath( $stream_id );
+if(!is_dir($filedir)){
+	shell_exec("mkdir {$filedir}");
+	shell_exec("chmod -R 777 {$filedir}");
+}
 echo "working on: $filename \n";
 $ocroutput = "";
 //@@TODO we should do sequential output and parse the OCR file if it already exists. 
@@ -110,8 +118,8 @@ for ( $i = 0; $i < $duration; $i += $interval ) {
 	
   	//get ocr:
   	shell_exec("convert {$filedir}/{$i}.jpg -crop 457x30+63+358  {$workingdir}/temp.{$stream_id}.ocr.tif && convert {$workingdir}/temp.{$stream_id}.ocr.tif -resize 300% -level 10%,1,20% -monochrome +compress {$workingdir}/temp.{$stream_id}.ocr.tif");
-    shell_exec("tesseract {$workingdir}/temp.{$stream_id}.ocr.tif {$workingdir}/ocrtemp{$i} nobatch lettersonly 2>&1");
-    $ocr = shell_exec("tail {$workingdir}/ocrtemp{$i}.txt") ." at " . seconds2ntp($i) ." \n";
+    shell_exec("tesseract {$workingdir}/temp.{$stream_id}.ocr.tif {$workingdir}/ocrtemp{$stream_id} nobatch lettersonly 2>&1");
+    $ocr = shell_exec("tail {$workingdir}/ocrtemp{$stream_id}.txt") ." at " . seconds2ntp($i) ." \n";
     echo 'got ocr:'.  $ocr;
     $ocroutput .= $ocr;	
     
@@ -120,7 +128,7 @@ for ( $i = 0; $i < $duration; $i += $interval ) {
   }
 }
 //remove temporary files: 
-shell_exec("rm {$workingdir}ocrtemp{$i}.txt");
+shell_exec("rm {$workingdir}/ocrtemp{$i}.txt");
 shell_exec("rm {$workingdir}/temp.{$stream_id}.ocr.tif");
 
 $ocrfileloc = "$workingdir/$stream_name.ocr";

@@ -8,6 +8,7 @@ if(typeof mvUploader =='undefined'){
 		init_firefogg();					
 	});
 }
+var min_firefogg_version = '0.9.2'; 
 function init_firefogg( iObj ){		
 	if(!iObj)
 		iObj = {};
@@ -21,8 +22,12 @@ function init_firefogg( iObj ){
 	}else{
 		e = document.getElementById('wgfogg_not_installed');
 		if(e) 
+			e.style.display='none';				
+		
+		e = document.getElementById('wgfogg_wrong_version');
+		if(e) 
 			e.style.display='none';
-			
+		
 		e = document.getElementById('wgfogg_installed');
 		if(e) 
 			e.style.display='inline';			
@@ -32,6 +37,18 @@ function init_firefogg( iObj ){
 			js_log('wgEnableFirefogg found:');
 			//get a new fogg object with default options
 			var fogg = new upFirefogg( iObj );
+						
+			//do the version check: 
+			var fv = fogg.ogg.version;
+			if(fv.replace(/[^0-9]/gi, '') < min_firefogg_version.replace(/[^0-9]/gi, '') ){
+				e = document.getElementById('wgfogg_wrong_version');
+				if(e) 
+					e.style.display='inline';
+				
+				e = document.getElementById('wgfogg_installed');
+				if(e) 
+					e.style.display='none';		
+			}
 			
 			//make sure the checkbox accurately reflects the current state: 
 			if(fogg.enabled == false)
@@ -68,6 +85,8 @@ upFirefogg.prototype = {
 				this[i] = default_firefogg_options[i];
 			}
 		}
+		//init the Firefogg obj
+		this.ogg = new Firefogg();	
 	},
 	enable_fogg:function(){	
 		var _this = this;
@@ -87,7 +106,7 @@ upFirefogg.prototype = {
 		sfe = document.getElementById('fogg-video-file');
 		if(sfe) sfe.style.display='inline';	
 		
-		_this.ogg = new Firefogg();	
+		
 		addHandler( sfe, 'click', function(){
 			//add binding: 
 			_this.select_fogg();

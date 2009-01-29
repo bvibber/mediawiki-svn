@@ -1410,7 +1410,7 @@ mediaSource.prototype =
     	var no_param_uri = uri.substr(0, end_inx);
         switch( no_param_uri.substr(no_param_uri.lastIndexOf('.'),4) ){
         	case '.flv':return 'video/x-flv';break;
-        	case '.ogg':return 'video/ogg';break;
+        	case '.ogg': case '.ogv': return 'video/ogg';break;
         	case '.anx':return 'video/ogg';break;
 	    }
     }
@@ -1903,13 +1903,21 @@ embedVideo.prototype = {
 			return default_time_req;		
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},	
-    getDuration:function(){
-    	//update some local pointers for the selected source:
-    	if( this.media_element.selected_source.duration != 0 )  	
+    getDuration:function(){   
+    	//update some local pointers for the selected source:    	
+    	if( this.media_element.selected_source.duration &&
+    		this.media_element.selected_source.duration != 0 ){    		  
         	this.duration = this.media_element.selected_source.duration;        	        	
-        this.start_offset = this.media_element.selected_source.start_offset;
-        this.start_ntp = this.media_element.selected_source.start_ntp;
-        this.end_ntp = this.media_element.selected_source.end_ntp;         
+        	this.start_offset = this.media_element.selected_source.start_offset;
+        	this.start_ntp = this.media_element.selected_source.start_ntp;
+	        this.end_ntp = this.media_element.selected_source.end_ntp;         
+        }else{        	
+        	//update start end_ntp if duration !=0 (set from plugin) 
+        	if(this.duration && this.duration !=0){
+        		this.start_ntp = '0:0:0';
+        		this.end_ntp = seconds2ntp( this.duration );
+        	}        	
+        }        
         //return the duration
         return this.duration;
     },

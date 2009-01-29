@@ -130,6 +130,9 @@ switch ( $args[0] ) {
 	case 'interest':
 		do_people_insert( $lookUpInterest = true );
 	break;
+	case 'file_check':
+		do_stream_file_check();
+	break;
 	case 'update_templates' :
 		$force = ( isset( $options['force'] ) ) ? true:false;
 		include_once( 'metavid_gov_templates.php' );

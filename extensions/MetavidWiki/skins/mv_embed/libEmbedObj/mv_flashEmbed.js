@@ -1692,13 +1692,19 @@ var flashEmbed = {
 	    if( ! this.monitorTimerId ){
 	    	if( $j('#'+this.id).length != 0 )	    
 	        	this.monitorTimerId = window.setInterval('$j(\'#'+_this.id+'\').get(0).monitor()', 250);	        
-	    }
-	    //set the start & end ntp
-		var end_ntp = (this.media_element.selected_source.end_ntp)?
-							this.media_element.selected_source.end_ntp : seconds2ntp(0);	
-		var start_ntp =  this.media_element.selected_source.start_ntp;
+	    }	  
 		              
         var flash_state = this.fla.getStatus();
+		//update the duration from the clip if its zero or not set: 
+		if( !this.duration || this.duration==0 ){
+			if( this.fla.getClip() ){
+				this.duration = this.fla.getClip().fullDuration;				
+				js_log('set duration via clip value: ' + this.getDuration() );
+			}
+		}
+		//update the duration ntp values: 
+		this.getDuration();		
+
         if( typeof flash_state == 'undefined' ){
         	 var flash_state = {
         	 	"time" : this.fla.getTime()
@@ -1724,7 +1730,7 @@ var flashEmbed = {
         	} 
         }                  
 		
-        if(this.currentTime > ntp2seconds(start_ntp) && !this.startedTimedPlayback){
+        if(this.currentTime > ntp2seconds(this.start_ntp) && !this.startedTimedPlayback){
         	var fail = false;
         	try
 			{
@@ -1747,35 +1753,30 @@ var flashEmbed = {
 			js_log('flashEmbed: _local_ Seeking to ' + this.seek_time_sec);
 			this.fla.seek( this.seek_time_sec );
 			this.seek_time_sec = 0;
-		}
-        
-        //flash is giving bogus duration get from "this" (if available)
-		/*if(!this.media_element.selected_source.end_ntp  && this.fla.getDuration()>0)
-				this.media_element.selected_source.setDuration(this.fla.getDuration());
-		*/       
+		}        
 		
         if(!this.userSlide){			   		       		
-	        if((this.currentTime - ntp2seconds(start_ntp)) < 0){
+	        if((this.currentTime - ntp2seconds(this.start_ntp)) < 0){
 	        	this.setStatus('buffering...');
 	        	this.fla.setVolume(0);
 	        }else{        			   		       		
-		       	this.setStatus( seconds2ntp(this.currentTime) + '/' + end_ntp);      		
-		        this.setSliderValue((this.currentTime - ntp2seconds(start_ntp)) / (ntp2seconds(end_ntp)-ntp2seconds(start_ntp)) );
+		       	this.setStatus( seconds2ntp(this.currentTime) + '/' + this.end_ntp);      		
+		        this.setSliderValue((this.currentTime - ntp2seconds(this.start_ntp)) / (ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)) );
 	        }
         }        
         
         //checks to see if we reached the end of playback:	    	    
-        if(this.startedTimedPlayback && 
-        	( 	this.currentTime > (ntp2seconds(end_ntp)+1) 
+        if(this.duration && this.startedTimedPlayback && 
+        	( 	this.currentTime > (ntp2seconds(this.end_ntp)+1) 
         		|| 
-        		( this.currentTime > (ntp2seconds(end_ntp)-1) 
+        		( this.currentTime > (ntp2seconds(this.end_ntp)-1) 
         			&& this.prevTime == this.currentTime) )
         	){        		        	
-        	js_log('probally reached end of stream: '+this.currentTime);
+        	js_log('prbally reached end of stream: '+this.currentTime);
         	this.onClipDone();         	     
         }	    
 	    this.prevTime = this.currentTime;    
-	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(start_ntp)) +' / ' +(ntp2seconds(end_ntp)-ntp2seconds(start_ntp)));
+	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(this.start_ntp)) +' / ' +(ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)));
     },
     // get the embed fla object 
     getFLA : function (){

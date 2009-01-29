@@ -11,6 +11,7 @@ gMsg['upload-in-progress']			= 'Doing Transcode & Upload (do not close this wind
 gMsg['upload-transcoded-status']	= 'Transcoded';
 gMsg['uploaded-status']				= 'Uploaded';
 gMsg['upload-select-file']			= 'Select File...';
+gMsg['wgfogg_wrong_version']		= 'You have firefogg installed but its outdated, <a href="http://firefogg.org">please upgrade</a> ';
 
 var default_upload_options = {
 	'target_div':'',
@@ -86,7 +87,7 @@ mvUploader.prototype = {
 		//if firefog is not taking over the submit we can here: 
 		if( ! init_firefogg( intFirefoggObj ) ){			
 			//firefogg handles the form submit (even on image uploads when called by gui)
-			if( !this.on_upload_page ){
+			if( ! this.on_upload_page ){
 				
 			}
 		}
@@ -101,6 +102,9 @@ mvUploader.prototype = {
 						'<span id="wgfogg_not_installed">' + 
 							getMsg('upload-fogg_not_installed') +
 						'</span>'+
+						'<span id="wgfogg_wrong_version">'+
+							getMsg('wgfogg_wrong_version')+
+						'</span>'+
 						'<span id="wgfogg_installed"  style="display:none" >'+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 								getMsg('upload-enable-converter') +
@@ -109,7 +113,7 @@ mvUploader.prototype = {
 		//hard code style (since not always easy to import style sheets)
 		$j('[@name=wpUpload]').eq(0).before('<div id="dlbox-centered" class="dlbox-centered" style="display:none;'+
 				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
-				'height:50%;padding: 10px;z-index:100;top:50%;left:15%;" >'+			
+				'height:50%;padding: 10px;z-index:100;top:30%;left:15%;" >'+			
 					'<h5>' + getMsg('upload-in-progress') + '</h5>' +
 					'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
 						'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			

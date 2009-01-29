@@ -34,105 +34,110 @@ function do_stream_attr_check( $old_stream ) {
 	// if($i==3)die;
 	// $i++;
 }
-function do_stream_file_check( & $old_stream ) {
+function do_stream_file_check( $old_stream=false ) {	
 	global $mvgIP, $mvVideoArchivePaths;
-	$mvStream = & mvGetMVStream( array (
-		'name' => $old_stream->name
-	) );
-	$file_list = $mvStream->getFileList();
-
-	// if ($old_stream->trascoded != 'none') {
-		// print "transcode is: " . $old_stream->trascoded;
-		/*if ($old_stream->trascoded == 'low')
-			$set = array (
-				'mv_ogg_low_quality'
-			);
-		if ($old_stream->trascoded == 'high')
-			$set = array (
-				'mv_ogg_high_quality'
-			);
-		if ($old_stream->trascoded == 'all')
-			$set = array (
-				'mv_ogg_high_quality',
-				'mv_ogg_low_quality'
-		);*/
-	// find the files and check for them on the servers:
-	// @@todo have multiple file locations for same file?
-	$set = array();
-	foreach ( $mvVideoArchivePaths as $path ) {
-		if ( url_exists( $path . $old_stream->name . '.ogg' ) ) {
-			$set['mv_ogg_low_quality'] = $path . $old_stream->name . '.ogg';
-			// force cap1 path @@todo remove!:
-			// $set['mv_ogg_low_quality']='http://128.114.20.64/media/' . $old_stream->name . '.ogg';
+	$stream_set = Array();
+	if($old_stream==false){
+		$dbr = wfGetDB( DB_READ );
+		$result = $dbr->select( 'mv_streams',
+			array('name','state','date_start_time','duration'),
+			'',
+			__METHOD__,
+			array('LIMIT'=> 9000));
+		if ( $dbr->numRows( $result ) == 0 )die("do_stream_file_check: no streams found");
+		while ( $row = $dbr->fetchObject( $result ) ) {
+			$stream_set[] = $row;
 		}
-		if ( url_exists( $path . $old_stream->name . '.HQ.ogg' ) ) {
-			$set['mv_ogg_high_quality'] = $path . $old_stream->name . '.HQ.ogg';
-			// force cap1 path @@todo remove!:
-			// $set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $old_stream->name . '.HQ.ogg';
-		}
+	}else{
+		$stream_set = Array( $old_stream );
 	}
-	if ( count( $set ) == 0 ) {
-		// no files present (remove stream)
-		print 'no files present should remove: ' . $old_stream->name . "\n";
-		// make a valid mv title (with requted time: )
-		/*$mvTitle = new MV_Title( $old_stream->name);
-
-		$streamTitle = Title::newFromText( $old_stream->name, MV_NS_STREAM);
-		//print " new title: " . $streamTitle . "\n";
-		$article = new MV_StreamPage($streamTitle, $mvTitle);
-		$article->doDelete('no files present for stream');*/
-	}
-	// print "set: " . print_r($set);
-	// remove old file pointers:
-	$dbw = wfGetDB( DB_WRITE );
-	$sql = "DELETE FROM `mv_stream_files` WHERE `stream_id`=" . $mvStream->id . " AND " .
-			"(`file_desc_msg`='mv_ogg_high_quality' OR `file_desc_msg`='mv_ogg_low_quality')";
-	$dbw->query( $sql );
-	// update files:
-	foreach ( $set as $qf => $path_url ) {
-		do_insert_stream_file( $mvStream, $path_url, $qf );
-	}
-	// }
-	// check for archive.org stuff too..
-	/*if($old_stream->archive_org!=''){
-		$found=false;
-		foreach($file_list as $file){
-			if($file->path_type =='ext_archive_org'){
-				$found=true;
+	foreach($stream_set as $stream){
+		$mvStream = & mvGetMVStream( array (
+			'name' => $stream->name,
+			'duration' => $stream->duration
+		) );
+		$file_list = $mvStream->getFileList();
+		//print 'f:do_stream_file_check:' . $stream->name . ' dur: ' . $mvStream->getDuration() . "\n";
+		
+		// @@todo have multiple file locations for same file?
+		$set = array();
+		foreach ( $mvVideoArchivePaths as $path ) {
+			if ( url_exists( $path . $stream->name . '.ogg' ) ) {
+				$set['mv_ogg_low_quality'] = $path . $stream->name . '.ogg';
+				// force cap1 path @@todo remove!:
+				// $set['mv_ogg_low_quality']='http://128.114.20.64/media/' . $stream->name . '.ogg';
+			}
+			if ( url_exists( $path . $stream->name . '.HQ.ogg' ) ) {
+				$set['mv_ogg_high_quality'] = $path . $stream->name . '.HQ.ogg';
+				// force cap1 path @@todo remove!:
+				// $set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $stream->name . '.HQ.ogg';
+			}
+			if ( url_exists( $path . $stream->name . '.flv' ) ) {
+				$path = str_replace('/media/','', $path);
+				$set['mv_flash_low_quality'] = $path . '/mvFlvServer.php/'. $stream->name . '.flv';
+				// force cap1 path @@todo remove!:
+				// $set['mv_ogg_high_quality']='http://128.114.20.64/media/' . $stream->name . '.HQ.ogg';
 			}
 		}
-		if(!$found)do_insert_stream_file($mvStream, $old_stream, 'mv_archive_org_link');
-	}*/
+		if ( count( $set ) == 0 ) {
+			// no files present (remove stream)
+			print 'no files present should remove: ' . $stream->name . "\n";
+			continue;
+		}
+		$dbw = wfGetDB( DB_WRITE );
+		$sql = "DELETE FROM `mv_stream_files` WHERE `stream_id`=" . $mvStream->id . " AND " .
+				"(`file_desc_msg`='mv_ogg_high_quality' " .  
+				" OR `file_desc_msg`='mv_ogg_low_quality' " . 
+				" OR `file_desc_msg`='mv_flash_low_quality')";
+		$dbw->query( $sql );
+		// update files:
+		if(!isset($set['mv_ogg_low_quality'])){
+			print "Missing lowQ ogg for: "	.$stream->name ."\n";	
+		}
+		if(!isset($set['mv_ogg_high_quality'])){
+			print "Missing highQ ogg for: "	.$stream->name ."\n";	
+		}
+		if(!isset($set['mv_flash_low_quality'])){
+			print "Missing flash for: "	.$stream->name ."\n";	
+		}
+		foreach ( $set as $qf => $path_url ) {
+			do_insert_stream_file( $mvStream, $path_url, $qf );
+		}
+	}	
 }
 
 function do_insert_stream_file( $mvStream, $path, $quality_msg ) {
 	global $mvVideoArchivePaths;
 	$dbw = wfGetDB( DB_WRITE );
-
-	// get file duration from nfo file (if avaliable ):
-	$nfo_url = $path . '.nfo';
-	$nfo_txt = @file( $nfo_url );
-	if ( $nfo_txt ) {
-		if ( isset( $nfo_txt[0] ) ) {
-			list( $na, $len ) = explode( 'n:', $nfo_txt[0] );
-			$len = trim( $len );
-			// trim leading zero
-			if ( $len[0] == '0' )$len = substr( $len, 1 );
-			// trim sub frame times:
-			if ( strpos( $len, '.' ) !== false ) {
-				$len = substr( $len, 0, strpos( $len, '.' ) );
+	$dur = $mvStream->getDuration();	
+	// get file duration from nfo file :
+	if($dur == 0){
+		$nfo_url = $path . '.nfo';
+		if( url_exists($nfo_url) ){
+			$nfo_txt = @file( $nfo_url );
+			if ( $nfo_txt !== false ) {
+				if ( isset( $nfo_txt[0] ) ) {
+					list( $na, $len ) = explode( 'n:', $nfo_txt[0] );
+					$len = trim( $len );
+					// trim leading zero
+					if ( $len[0] == '0' )$len = substr( $len, 1 );
+					// trim sub frame times:
+					if ( strpos( $len, '.' ) !== false ) {
+						$len = substr( $len, 0, strpos( $len, '.' ) );
+					}
+					$dur = ntp2seconds( $len );
+				} else {
+					echo "empty nfo file: $nfo_url \n";
+					$dur = 0;
+				}
+			} else {
+				echo "missing nfo file: $nfo_url \n";
+				$dur = 0;
 			}
-			$dur = ntp2seconds( $len );
-		} else {
-			echo "empty nfo file: $nfo_url \n";
-			$dur = 0;
 		}
-	} else {
-		echo "missing nfo file: $nfo_url \n";
-		$dur = 0;
 	}
 	$sql = "INSERT INTO `mv_stream_files` (`stream_id`, `file_desc_msg`, `path`, `duration`)" .
-		" VALUES ('{$mvStream->id}', '{$quality_msg}', " . " '{$path}', {$dur} )";
+		" VALUES ('{$mvStream->id}', '{$quality_msg}', '{$path}', {$dur} )";
 	$dbw->query( $sql );
 }
 // @@todo convert to MV_EditStream

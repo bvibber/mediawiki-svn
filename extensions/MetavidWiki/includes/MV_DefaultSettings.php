@@ -88,8 +88,8 @@ $mvImageGranularityRate = '600';
 $mvShellOggFrameGrab = '';
  
 # define the video media locations based on path/server names 
-$mvVideoArchivePaths['mvprime'] = 'http://metavid.org/media/';
-$mvVideoArchivePaths['cap1'] = 'http://128.114.20.64/media/';
+$mvVideoArchivePaths['cap1'] = 'http://metavidstorage01.ucsc.edu/media/';
+$mvVideoArchivePaths['mvbox2'] = 'http://mvbox2.cse.ucsc.edu/media/';
 
 // stream msgKeys that support ?t=start_time/end_time temporal url media serving: 
 $mvDefaultVideoQualityKey 	= 'mv_ogg_low_quality';

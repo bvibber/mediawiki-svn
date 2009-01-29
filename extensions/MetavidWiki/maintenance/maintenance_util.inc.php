@@ -193,7 +193,7 @@ function text_number( $n )
     return $new_n;
 }
  function url_exists( $url ) {
-        $url = str_replace( "http://", "", $url );
+    $url = str_replace( "http://", "", $url );
     if ( strstr( $url, "/" ) ) {
         $url = explode( "/", $url, 2 );
         $url[1] = "/" . $url[1];
