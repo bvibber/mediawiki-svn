@@ -1,3 +1,10 @@
+wikimedia-task-appserver (1.33) hardy; urgency=low
+
+  * Added /mnt/upload5 to the remove list, removed /mnt/upload4 from the 
+    install list since it's apparently dysfunctional.
+
+ -- Tim Starling <tstarling@wikimedia.org>  Thu, 29 Jan 2009 12:22:40 +1100
+
 wikimedia-task-appserver (1.32) hardy; urgency=low
 
   * Added /mnt/upload5 to postinst

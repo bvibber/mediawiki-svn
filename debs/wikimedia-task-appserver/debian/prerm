@@ -18,34 +18,37 @@ set -e
 
 
 case "$1" in
-    remove|deconfigure)
-        # Add a line to /etc/motd describing the task of this server
-        if [ -f /etc/motd.tail ]
-        then
-                MOTDFILE=/etc/motd.tail
-        else
-                MOTDFILE=/etc/motd
-        fi	
+	remove|deconfigure)
+		# Add a line to /etc/motd describing the task of this server
+		if [ -f /etc/motd.tail ]
+		then
+			MOTDFILE=/etc/motd.tail
+		else
+			MOTDFILE=/etc/motd
+		fi	
 
-	sed -i '/is a.*(wikimedia-task-appserver).$/d' $MOTDFILE
+		sed -i '/is a.*(wikimedia-task-appserver).$/d' $MOTDFILE
 
-	if [ -f /etc/motd.tail ]
-        then
-        	# Update motd
-                uname -snrvm > /var/run/motd
-                cat /etc/motd.tail >> /var/run/motd
-	fi
+		if [ -f /etc/motd.tail ]
+		then
+			# Update motd
+			uname -snrvm > /var/run/motd
+			cat /etc/motd.tail >> /var/run/motd
+		fi
 
-        [ -x /etc/init.d/apache2 ] && /etc/init.d/apache2 stop
-        ;;
-    upgrade)
-	;;
-    failed-upgrade)
-        ;;
-    *)
-        echo "prerm called with unknown argument \`$1'" >&2
-        exit 1
-    ;;
+		[ -x /etc/init.d/apache2 ] && /etc/init.d/apache2 stop
+		;;
+
+	upgrade)
+		;;
+
+	failed-upgrade)
+		;;
+
+	*)
+		echo "prerm called with unknown argument \`$1'" >&2
+		exit 1
+		;;
 esac
 
 # dh_installdeb will replace this with shell code automatically

@@ -16,34 +16,34 @@ set -e
 
 
 case "$1" in
-    install)
-	dpkg-divert --package wikimedia-task-appserver --add --rename \
-			--divert /etc/apache2/apache2.conf.default /etc/apache2/apache2.conf
-	dpkg-divert --package wikimedia-task-appserver --add --rename \
-			--divert /etc/php5/apache2/php.ini.default /etc/php5/apache2/php.ini
-	dpkg-divert --package wikimedia-task-appserver --add --rename \
-			--divert /usr/share/php5/php.ini-dist.default /usr/share/php5/php.ini-dist
-	dpkg-divert --package wikimedia-task-appserver --add --rename \
-			--divert /etc/sudoers.default /etc/sudoers
-	dpkg-divert --package wikimedia-task-appserver --add --rename \
-			--divert /etc/apache2/envvars.default /etc/apache2/envvars
+	install)
+		dpkg-divert --package wikimedia-task-appserver --add --rename \
+				--divert /etc/apache2/apache2.conf.default /etc/apache2/apache2.conf
+		dpkg-divert --package wikimedia-task-appserver --add --rename \
+				--divert /etc/php5/apache2/php.ini.default /etc/php5/apache2/php.ini
+		dpkg-divert --package wikimedia-task-appserver --add --rename \
+				--divert /usr/share/php5/php.ini-dist.default /usr/share/php5/php.ini-dist
+		dpkg-divert --package wikimedia-task-appserver --add --rename \
+				--divert /etc/sudoers.default /etc/sudoers
+		dpkg-divert --package wikimedia-task-appserver --add --rename \
+				--divert /etc/apache2/envvars.default /etc/apache2/envvars
 	
-	# Create user for the PyBal checks
-	adduser --system --home /var/lib/pybal-check --group --disabled-password --shell /bin/sh pybal-check
-    ;;
+		# Create user for the PyBal checks
+		adduser --system --home /var/lib/pybal-check --group --disabled-password --shell /bin/sh pybal-check
+	;;
 
-    upgrade)
-        # Create user for the PyBal checks
-        adduser --system --home /var/lib/pybal-check --group --disabled-password --shell /bin/sh pybal-check
-    ;;
+	upgrade)
+		# Create user for the PyBal checks
+		adduser --system --home /var/lib/pybal-check --group --disabled-password --shell /bin/sh pybal-check
+	;;
 
-    abort-upgrade)
-    ;;
+	abort-upgrade)
+	;;
 
-    *)
-        echo "preinst called with unknown argument \`$1'" >&2
-        exit 1
-    ;;
+	*)
+		echo "preinst called with unknown argument \`$1'" >&2
+		exit 1
+	;;
 esac
 
 # dh_installdeb will replace this with shell code automatically

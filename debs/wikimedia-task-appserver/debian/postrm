@@ -18,42 +18,44 @@ set -e
 # the debian-policy package
 
 removemount() {
-    mnt=$1
-    grep -qs "$mnt.*nfs" /etc/fstab && {
-        echo "Removing $mnt from fstab"
-        sed -i "\\,$mnt,d" /etc/fstab
-    }
+	mnt=$1
+	grep -qs "$mnt.*nfs" /etc/fstab && {
+		echo "Removing $mnt from fstab"
+		sed -i "\\,$mnt,d" /etc/fstab
+	}
 
-    umount $mnt || true
+	umount $mnt || true
 }
 
 case "$1" in
-    purge)
-        # Remove PyBal check user account
-        deluser pybal-check
+	purge)
+		# Remove PyBal check user account
+		deluser pybal-check
 	rm -rf /var/lib/pybal-check
 
-        dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/apache2.conf
-        dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/php5/apache2/php.ini
+	dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/apache2.conf
+	dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/php5/apache2/php.ini
 	dpkg-divert --package wikimedia-task-appserver --rename --remove /usr/share/php5/php.ini-dist
 	dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/sudoers
-        dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/envvars
+	dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/envvars
 	;;
-    remove)
-        removemount /mnt/upload3
-        removemount /mnt/upload4
-        removemount /mnt/math
-       	;;
+	remove)
+		removemount /mnt/upload3
+		removemount /mnt/upload4
+		removemount /mnt/upload5
+		removemount /mnt/math
+	   	;;
 
-    upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
-       removemount /mnt/upload3
-       removemount /mnt/upload4
-       removemount /mnt/math
-       ;;
+	upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+	   removemount /mnt/upload3
+	   removemount /mnt/upload4
+	   removemount /mnt/upload5
+	   removemount /mnt/math
+	   ;;
 
-    *)
-        echo "postrm called with unknown argument \`$1'" >&2
-        exit 1
+	*)
+		echo "postrm called with unknown argument \`$1'" >&2
+		exit 1
 
 esac
 
