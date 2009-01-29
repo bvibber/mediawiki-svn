@@ -1,0 +1,40 @@
+		Toolserver pkgbuild spec file repository
+		========================================
+
+Welcome to ts-specs.  This repository holds a number of spec files used to 
+build Solaris packages for the Wikimedia Toolserver.  (While some of the specs  
+might build on Linux using rpmbuild, this hasn't been tested.)
+
+All these specs install in /opt/ts, with the following exceptions:
+
+  * MySQL installs in /opt/TSmysql
+  * PHP installs in /opt/php
+  * GNU coreutils and GNU findutils install in /opt/gnu
+  * OpenLDAP installs in /opt/TSopenldap
+  * Exim installs in /opt/exim
+
+To build a package, use pkgtool:
+
+  $ pkgtool -v build --download TSscreen.spec
+
+This will automatically install the package after building it.  To build 
+without installing, use "build-only" instead of "build".
+
+All packages which contain libraries build both 32-bit and 64-bit versions of 
+the library.  The 64-bit versions are installed in /opt/ts/lib/amd64.  If the 
+package provides a 'foo-config' script, it will be installed in 
+/opt/ts/bin/amd64.  If the package provides a pkgconfig pc, it will be 
+installed in /opt/ts/lib/amd64/pkgconfig.  Set your $PATH and/or 
+$PKG_CONFIG_PATH appropriately to use these 64-bit libraries.
+
+Some packages include 64-bit binaries.  These will install the 64-bit binary in 
+/opt/ts/bin/amd64.  In most cases, this binary will be automatically invoked on 
+64-bit systems using isaexec; there is no need to set your $PATH manually.
+
+(Substitute 'sparcv9' for 'amd64' on SPARC systems.)
+
+Some packages include configuration files.  These are installed in 
+/etc/opt/<package>/.  If a default configuration file is provided, it will have 
+an extension of '.default' or similar.
+
+Report any problems to <river@loreley.flyingparchment.org.uk>.
