@@ -171,6 +171,10 @@ function DataCenterScene(
 	var module = null;
 	// Flag indicating the scene can be re-rendered
 	var live = false;
+	// Features
+	var features = {
+		radialGradient: true
+	};
 	
 	/* Configuration */
 	
@@ -188,6 +192,11 @@ function DataCenterScene(
 	canvas.setAttribute( 'height', element.offsetHeight );
 	// Adds canvas to element
 	element.appendChild( canvas );
+	// IE support ?
+	if ( typeof( G_vmlCanvasManager ) != 'undefined' ) {
+		canvas = G_vmlCanvasManager.initElement( canvas );
+		features.radialGradient = false;
+	}
 	// Gets canvas' 2D rendering context
 	var context = canvas.getContext( '2d' );
 	// Attaches click event
@@ -195,7 +204,7 @@ function DataCenterScene(
 	addHandler(
 		element,
 		'click',
-		new Function( target + ".getModule()" + ".click();" )
+		new Function( target + ".getModule().click();" )
 	);
 	
 	/* Public Functions */
@@ -224,6 +233,12 @@ function DataCenterScene(
 	this.getModule = function() {
 		// Returns module
 		return module;
+	}
+	/**
+	 * Gets list of features supported
+	 */
+	this.getFeatures = function() {
+		return features;
 	}
 	/**
 	 * Sets module to render
@@ -416,14 +431,12 @@ function DataCenterMap(
 /**
  * General object which encapsulates all systems
  */
-var dataCenter = {
-	renderer: new DataCenterRenderer(),
-	pool: new DataCenterPool(),
-	ui: {
-		layouts: {},
-		widgets: {},
-	}
-};
+var dataCenter = {};
+dataCenter.renderer = new DataCenterRenderer();
+dataCenter.pool = new DataCenterPool();
+dataCenter.ui = {};
+dataCenter.ui.layouts = {};
+dataCenter.ui.widgets = {};
 // Adds hooks that cause dataCenter systems to react to window events
 hookEvent( "load", dataCenter.renderer.setup );
 hookEvent( "resize", dataCenter.renderer.render );

@@ -919,7 +919,8 @@ class DataCenterUI {
 		'content' => '',
 		'script' => null,
 		'scripts' => array(
-			'/extensions/DataCenter/DataCenter.js'
+			'<!--[if IE]><script type="text/javascript" src="%s/extensions/DataCenter/Resources/Support/excanvas-compressed.js"></script><![endif]-->',
+			'/extensions/DataCenter/DataCenter.js',
 		)
 	);
 
@@ -1000,6 +1001,8 @@ class DataCenterUI {
 				$wgOut->addScript(
 					DataCenterXml::script( array( 'src' => $url ) )
 				);
+			} else if ( strpos( $url, '<' ) !== false ) {
+				$wgOut->addScript( sprintf( $url, $wgScriptPath ) );
 			} else {
 				$wgOut->addScriptFile( $wgScriptPath . $url );
 			}

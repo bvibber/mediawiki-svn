@@ -1,7 +1,7 @@
 /* Configuration */
 
-const DATACENTER_PLAN_U_HEIGHT = 0.05;
-const DATACENTER_PLAN_Z_SCALE = 1.5;
+var DATACENTER_PLAN_U_HEIGHT = 0.05;
+var DATACENTER_PLAN_Z_SCALE = 1.5;
 
 /**
  * Object for rendering a plan into a scene
@@ -18,7 +18,7 @@ function DataCenterScenePlan(
 
 	var self = this;
 	var scene = null;
-	var cache = { canvas: null, context: null };
+	var cache = { canvas: null, context: null, features: null };
 	var synced = false;
 	var virtual = {};
 	var colors = {
@@ -256,6 +256,7 @@ function DataCenterScenePlan(
 		}
 		cache.canvas = scene.getCanvas();
 		cache.context = scene.getContext();
+		cache.features = scene.getFeatures();
 		// Reset all virtual dimensions
 		virtual = {};
 		// Rebuild all virtual dimensions
@@ -298,7 +299,7 @@ function DataCenterScenePlan(
 		];
 		virtual.top = {
 			x: virtual.normal.x * virtual.height,
-			y: virtual.normal.y * virtual.height,
+			y: virtual.normal.y * virtual.height
 		};
 	}
 	/**
@@ -372,15 +373,17 @@ function DataCenterScenePlan(
 			offset.z * virtual.normal.x, offset.z * virtual.normal.y
 		);
 		// Shadows
-		var max = Math.max( virtual.width, virtual.depth );
-		var shadow = cache.context.createRadialGradient(
-			( virtual.width * 0.5 ), ( virtual.depth * 0.5 ), 0.1,
-			( virtual.width * 0.5 ), ( virtual.depth * 0.5 ), max * 0.75
-		);
-		shadow.addColorStop(0, colors.space.shadowInner );
-		shadow.addColorStop(1, colors.space.shadowOutter );
-		cache.context.fillStyle = shadow;
-		cache.context.fillRect( max * -2, max * -2, max * 4, max * 4 );
+		if ( cache.features.radialGradient ) {
+			var max = Math.max( virtual.width, virtual.depth );
+			var shadow = cache.context.createRadialGradient(
+				( virtual.width * 0.5 ), ( virtual.depth * 0.5 ), 0.1,
+				( virtual.width * 0.5 ), ( virtual.depth * 0.5 ), max * 0.75
+			);
+			shadow.addColorStop(0, colors.space.shadowInner );
+			shadow.addColorStop(1, colors.space.shadowOutter );
+			cache.context.fillStyle = shadow;
+			cache.context.fillRect( max * -2, max * -2, max * 4, max * 4 );
+		}
 		// Walls
 		cache.context.fillStyle = colors.space.walls;
 		cache.context.strokeStyle = colors.space.corners;
@@ -521,21 +524,23 @@ function DataCenterScenePlan(
 		var orientation = virtual.orientation;
 		// Checks what should be rendered
 		if ( pass == 'shadows' ) {
-			var max = Math.max( rack.virtual.width, rack.virtual.height )
-			var shadow = cache.context.createRadialGradient(
-				rack.virtual.x + ( rack.virtual.width * 0.5 ),
-				rack.virtual.y + ( rack.virtual.depth * 0.5 ),
-				0.1,
-				rack.virtual.x + ( rack.virtual.width * 0.5 ),
-				rack.virtual.y + ( rack.virtual.depth * 0.5 ),
-				max * 0.3 + ( rack.virtual.height * 0.3 )
-			);
-			shadow.addColorStop( 0, 'rgba( 0, 0, 0, 0.5 )' );
-			shadow.addColorStop( 1, 'rgba( 0, 0, 0, 0 )' );
-			cache.context.fillStyle = shadow;
-			cache.context.fillRect(
-				0, 0, virtual.width, virtual.depth
-			);
+			if ( cache.features.radialGradient ) {
+				var max = Math.max( rack.virtual.width, rack.virtual.height )
+				var shadow = cache.context.createRadialGradient(
+					rack.virtual.x + ( rack.virtual.width * 0.5 ),
+					rack.virtual.y + ( rack.virtual.depth * 0.5 ),
+					0.1,
+					rack.virtual.x + ( rack.virtual.width * 0.5 ),
+					rack.virtual.y + ( rack.virtual.depth * 0.5 ),
+					max * 0.3 + ( rack.virtual.height * 0.3 )
+				);
+				shadow.addColorStop( 0, 'rgba( 0, 0, 0, 0.5 )' );
+				shadow.addColorStop( 1, 'rgba( 0, 0, 0, 0 )' );
+				cache.context.fillStyle = shadow;
+				cache.context.fillRect(
+					0, 0, virtual.width, virtual.depth
+				);
+			}
 		} else if ( pass == 'geometry' ) {
 			// Saves current rack.state
 			cache.context.save();
