@@ -283,6 +283,15 @@ $messages['grc'] = array(
 	'backforth-prev' => 'Προηγουμέναι ($1)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'backforth-next' => 'Negschti ($1)',
+	'backforth-desc' => 'Ergänzt alfabetischi „Negschti“- un „Vorigi“-Navigations-Gleicher am Sytechopf.',
+	'backforth-prev' => 'Vorigi ($1)',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author דניאל ב.

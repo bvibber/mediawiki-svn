@@ -365,6 +365,19 @@ $messages['grc'] = array(
 	'ajax-se-userinvalid' => 'Σφάλμα: ἄκυρος χρώμενος',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'ajax-se-desc' => 'Zeigt Benutzer, wu grad di nämlig Syte bearbeite',
+	'ajax-se-title' => 'Wird zur Zyt bearbeitet vu:',
+	'ajax-se-pending' => 'wir bal nej glade … (druck uf s Chäschtli oder fang mit dr Bearbeitig aa)',
+	'ajax-se-idling' => '(vor em $1 syni)',
+	'ajax-se-pagedoesnotexist' => 'Syte git s nit',
+	'ajax-se-userinvalid' => 'Fä#hler: Benutzer nit giltig',
+	'ajax-se-usernotfound' => 'Fähler: Benutzer isch nit gfunde wore',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

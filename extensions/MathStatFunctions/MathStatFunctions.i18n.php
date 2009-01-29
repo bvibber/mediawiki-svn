@@ -493,6 +493,16 @@ $messages['th'] = array(
 	'msfunc_div_zero' => 'ตัวหารเป็นศูนย์',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'msfunc_desc' => 'Isang kalipunan ng mga tungkuling pangmatematika at pang-estadistika',
+	'msfunc_nan' => 'Hindi isang bilang ang kinalabasang halaga',
+	'msfunc_inf' => 'Walang hangganan ang kinalabasang halaga',
+	'msfunc_div_zero' => 'Hatiin sa pamamagitan ng wala',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

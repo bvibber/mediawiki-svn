@@ -428,6 +428,35 @@ $messages['grc'] = array(
 	'patrol-revert-reason' => 'Αἰτία:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'patrol' => 'Bearbeitige as Fäldhieter aaluege',
+	'patrol-desc' => 'Erwytereti Schnittstell fir s Kontrolliere vu Bearbeitige',
+	'patrol-endorse' => 'Bstätige',
+	'patrol-revert' => 'Zruggsetze',
+	'patrol-revert-reason' => 'Grund:',
+	'patrol-skip' => 'Ibergumpe',
+	'patrol-reverting' => 'Zruggsetze: $1',
+	'patrol-nonefound' => 'S sin kei Bearbeitige gfunde wore, wu no vum Fäldhieter sotte aagluegt wäre.',
+	'patrol-endorsed-ok' => 'Die Bearbeitig isch scho vum Fäldhieter aagluegt.',
+	'patrol-endorsed-failed' => 'Die Bearbeitig cha nit as vum Fäldhieter gsäh markiert wäre.',
+	'patrol-reverted-ok' => 'D Bearbeitig isch zrugggsetzt wore.',
+	'patrol-reverted-failed' => 'D Bearbeitig cha nit zrugggsetzt wäre.',
+	'patrol-skipped-ok' => 'Bearbeitig wird ignoriert.',
+	'patrol-reasons' => '* Eifache Vandalismus
+* Tescht vun eme neje Benutzer
+* Lueg Diskussionssyte',
+	'patrol-another' => 'Zeig no ne Bearbeitig, wänn s eini het.',
+	'patrol-stopped' => 'Du hesch entschide, keini Bearbeitige meh as Fäldhieter aazluege. $1',
+	'patrol-resume' => 'Druck doo zum Wytermache.',
+	'group-patroller' => 'Fäldhieter',
+	'group-patroller-member' => 'Fäldhieter',
+	'grouppage-patroller' => '{{ns:project}}:Fäldhieter',
+	'right-patroller' => 'Syte as Fäldhieter aaluege',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

@@ -386,6 +386,14 @@ $messages['tg-cyrl'] = array(
 	'minnamelength-error' => 'Номи корбарии шумо хеле кӯтоҳ аст. Дарозии он дасти кам $1 бошад.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'minnamelength-error' => 'Napakaikli ng iyong pangalan ng tagagamit. Ang pinakamababang haba ay $1.',
+	'minnamelength-desc' => 'Magpairal ng isang pinakamababang haba ng pangalan ng tagagamit',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

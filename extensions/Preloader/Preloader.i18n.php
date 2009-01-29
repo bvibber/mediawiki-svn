@@ -211,6 +211,13 @@ $messages['sv'] = array(
 	'preloader-desc' => 'Ger en egendefinierad förhandsladdad text för nya sidor',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'preloader-desc' => 'Nagbibigay na maipapasadyang pang-bawat espasyo ng pangalang teksto ng pakuluang-bakal para sa bagong mga pahina',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

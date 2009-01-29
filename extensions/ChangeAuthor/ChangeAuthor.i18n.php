@@ -364,6 +364,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -376,9 +377,9 @@ $messages['de'] = array(
 	'changeauthor-pagenameform-go' => 'Suche',
 	'changeauthor-comment' => 'Kommentar:',
 	'changeauthor-changeauthors-multi' => 'Ändere {{PLURAL:$1|Autor|Autoren}}',
-	'changeauthor-explanation-multi' => 'Mit diesem Formular kannst du die Autoren der Versionen ändern. Ändere einfach einen oder mehrerer Autorenname in der Liste, ergänze einen Kommentar (optional) und klicke auf die „Autor ändern“-Schaltfläche',
+	'changeauthor-explanation-multi' => 'Mit diesem Formular kannst du die Autoren der Versionen ändern. Ändere einfach einen oder mehrerer Autorenname in der Liste, ergänze einen Kommentar (optional) und klicke auf die „Autor ändern“-Schaltfläche.',
 	'changeauthor-changeauthors-single' => 'Autor ändern',
-	'changeauthor-explanation-single' => 'Mit diesem Formular kannst du den Autoren einer Version ändern. Ändere einfach den Autorenname in der Liste, ergänze einen Kommentar (optional) und klicke auf die „Autor ändern“-Schaltfläche',
+	'changeauthor-explanation-single' => 'Mit diesem Formular kannst du den Autoren einer Version ändern. Ändere einfach den Autorenname in der Liste, ergänze einen Kommentar (optional) und klicke auf die „Autor ändern“-Schaltfläche.',
 	'changeauthor-invalid-username' => 'Ungültiger Benutzername „$1“.',
 	'changeauthor-nosuchuser' => 'Es gibt keinen Benutzer „$1“.',
 	'changeauthor-revview' => 'Version #$1 von $2',
@@ -636,6 +637,33 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'changeauthor-pagenameform-go' => 'Ἱέναι',
 	'changeauthor-comment' => 'Σχόλιον:',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'changeauthor' => 'Autor vun ere Version ändere',
+	'changeauthor-desc' => 'Erlaubt s dr Autor vun ere Version z ändere',
+	'changeauthor-title' => 'Autor vun ere Version ändere',
+	'changeauthor-search-box' => 'Version sueche',
+	'changeauthor-pagename-or-revid' => 'Sytename oder Versionsnummere:',
+	'changeauthor-pagenameform-go' => 'Sueche',
+	'changeauthor-comment' => 'Kommentar:',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Autor|Autore}} ändere',
+	'changeauthor-explanation-multi' => 'Mit däm Formular chasch Du d Autore vu dr Versione ändere. Ändere eifach ein oder mehreri Autorenäme in dr Lischt, ergänz e Kommentar (optional) un druck uf d „Autor ändere“-Schaltflächi.',
+	'changeauthor-changeauthors-single' => 'Autor ändere',
+	'changeauthor-explanation-single' => 'Mit däm Formular chasch Du dr Autor vun ere Versione ändere. Ändere eifach dr Autorename in dr Lischt, ergänz e Kommentar (optional) un druck uf d „Autor ändere“-Schaltflächi.',
+	'changeauthor-invalid-username' => 'Nit giltige Benutzername „$1“.',
+	'changeauthor-nosuchuser' => 'S git kei Benutzer „$1“.',
+	'changeauthor-revview' => 'Version #$1 vu $2',
+	'changeauthor-nosuchtitle' => 'S git kei Syte „$1“.',
+	'changeauthor-weirderror' => 'E seli sältene Fähler isch ufträtte. Bitte widerhol Dyyni Änderig. Wänn dää Fähler nomol uftritt, isch wahrschyns d Datebank hii.',
+	'changeauthor-invalidform' => 'Bitte bruuch s Formular uf dr [[Special:ChangeAuthor|Spezialsyte]].',
+	'changeauthor-success' => 'Dyyni Änderig isch erfolgryych durgfiert wore.',
+	'changeauthor-logentry' => 'het dr Autorename vu dr $2 vu $1 vu $3 uf $4 gänderet',
+	'changeauthor-logpagename' => 'Autorename-Änderigslogbuech',
+	'right-changeauthor' => 'Dr Autor vun ere Version ändere',
 );
 
 /** Manx (Gaelg)

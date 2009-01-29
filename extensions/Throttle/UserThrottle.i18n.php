@@ -327,6 +327,17 @@ Var god vänta en liten stund och tryck på "uppdatera" i webbläsaren för att 
 	'acct_creation_global_soft_throttle_hit-desc' => 'Begränsar antal konton som kan skapas under en tidsperiod',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Kusang itinigil muna ng ilang mga sandali ang paglikha ng akawnt dahil sa isang hindi pangkaraniwang malaking bilang ng kamakailang mga pagsubok sa paglagda ng pagpasok.
+Maghintay lamang po ng ilang mga minuto at subuking muli.',
+	'acct_creation_global_hard_throttle_hit' => "Kusang itinigil muna ng ilang mga segundo ang paglikha ng akawnt upang mabawasan ang padagsang pagbugso ng mga pagpapatala.
+Maghintay lamang po ng isang sandali at pindutin ang 'muling ikarga' na nasa pantingin-tingin mo (''browser'') upang maipasang muli.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Paglikha ng pagsiil ng tagagamit',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

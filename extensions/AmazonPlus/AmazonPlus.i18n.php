@@ -321,6 +321,27 @@ $messages['gl'] = array(
 	'amazonplus-less' => 'menos',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'amazonplus-desc' => 'E Erwyterig, wu gut aapassbar isch, go Informatione vu Amazon aazeige',
+	'amazonplus-nores' => 'Fähler: Kei Ergebnis gfunde!',
+	'amazonplus-noidres' => 'Fähler: Produkt-ID het nit chenne gfunde wäre!',
+	'amazonplus-fgcerr' => 'Fähler: Date vu Amazon hän nit chenne gholt wäre!',
+	'amazonplus-slserr' => 'Fähler: D Date, wu vu Amazon empfange wore sin, hän nit chenne verarbeitet wäre!',
+	'amazonplus-used' => 'bruucht',
+	'amazonplus-german' => 'Dytsch',
+	'amazonplus-french' => 'Franzesisch',
+	'amazonplus-japanese' => 'Japanisch',
+	'amazonplus-amazon' => 'Pryys bi Amazon',
+	'amazonplus-new' => 'nej',
+	'amazonplus-none' => 'Vu däre Publikation wäre im Momänt kei Kopie verchauft.',
+	'amazonplus-cp-none' => 'Keini',
+	'amazonplus-more' => 'meh',
+	'amazonplus-less' => 'weniger',
+);
+
 /** Manx (Gaelg)
  * @author Wrightbus
  */

@@ -491,6 +491,19 @@ $messages['th'] = array(
 	'right-mibbit' => 'อนุญาตให้ผู้ใช้สามารถใช้มิบบิทแชต',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mibbit' => 'Talastasang Mibbit',
+	'mibbit-desc' => 'Nagdaragdag ng isang [[Special:Mibbit|natatanging pahina]]ng ginagamit sa pakikipagtalastasan sa iba pang mga tagagamit ng wiki habang nasa loob ng tunay na panahon',
+	'mibbit-header' => 'Nagpapahintulot ang natatanging pahinang ito na makapagtulungan ka sa iba pang mga tagagamit ng wiki habang nasa loob ng tunay na panahon.
+Upang umugnay pindutin lamang ang pindutang "Umugnay".
+Kung nakalagda ka na kusang nilagyan na ng laman ang bansag mo.
+Ang hindi nagpapakilalang mga tagagamit ay binibigyan ng isang kusang nilikha, ngunit maaari itong baguhin.',
+	'right-mibbit' => 'Pinayagan gumamit ng talastasang Mibbit',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

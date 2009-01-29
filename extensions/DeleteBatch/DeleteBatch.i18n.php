@@ -409,7 +409,7 @@ $messages['he'] = array(
 הקובץ המועלה אמור לכלול שם של דף בכל שורה, ואפשר גם לכלול סיבה המופרדת בתו "|" משם הדף בכל אחת מהשורות.',
 	'deletebatch-caption' => 'רשימת דפים:',
 	'deletebatch-title' => 'מחיקת מקבץ',
-	'deletebatch-link-back' => 'חזרו לדף המיוחד',
+	'deletebatch-link-back' => 'חזרה לדף המיוחד',
 	'deletebatch-as' => 'הרצת הסקריפט בתור:',
 	'deletebatch-both-modes' => 'אנא בחרו בדף אחד מסוים או ברשימה נתונה של דפים.',
 	'deletebatch-or' => '<b>או</b>',
@@ -828,7 +828,7 @@ Wybierz użytkownika, który będzie widoczny w logu stron usuniętych.
 Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej linii tekstu, przedzielone symbolem „|”.',
 	'deletebatch-caption' => 'Lista stron:',
 	'deletebatch-title' => 'Usuń grupę stron',
-	'deletebatch-link-back' => 'Cofnij do usuwania grup stron',
+	'deletebatch-link-back' => 'Cofnij do strony specjalnej',
 	'deletebatch-as' => 'Uruchom skrypt jako',
 	'deletebatch-both-modes' => 'Wybierz jedną stronę albo grupę stron.',
 	'deletebatch-or' => '<b>lub</b>',
@@ -1013,6 +1013,37 @@ $messages['tg-cyrl'] = array(
 	'deletebatch-from-file' => 'аз феҳристи парванда',
 	'deletebatch-success-subtitle' => 'барои $1',
 	'deletebatch-select-yourself' => 'шумо',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'deletebatch' => 'Burahin ang bungkos ng mga pahina',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Burahin ang isang bungkos ng mga pahina]]',
+	'deletebatch-help' => 'Burahin ang isang bungkos ng mga pahina. Maaari kang magsagawa ng isang pang-isahang pagbubura, o burahin ang mga pahinang nakatala sa loob ng isang talaksan.
+Pumili ng isang tagagamit na ipapakita sa mga talaan ng pagbubura.
+Dapat na naglalaman ang ikinargang talaksan ng pangalan ng pahina at maaaring hindi ilagay na paliwanag na inihihiwalay ng isang panitik na "|" sa bawat guhit.',
+	'deletebatch-caption' => 'Talaan ng pahina:',
+	'deletebatch-title' => 'Burahin ang bungkos',
+	'deletebatch-link-back' => 'Bumalik sa natatanging pahina',
+	'deletebatch-as' => 'Patakbuhin ang panitik bilang:',
+	'deletebatch-both-modes' => 'Pakipili ang isang tinukoy na pahina o isang ibinigay na talaan ng mga pahina.',
+	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-page' => 'Mga pahinang buburahin:',
+	'deletebatch-reason' => 'Dahilan ng pagbura',
+	'deletebatch-processing' => 'binubura ang mga pahinang $1',
+	'deletebatch-from-file' => 'mula sa talaan ng talaksan',
+	'deletebatch-from-form' => 'mula sa pormularyo',
+	'deletebatch-success-subtitle' => 'para sa $1',
+	'deletebatch-omitting-nonexistant' => 'Hindi isinasali ang hindi umiiral na pahinang $1.',
+	'deletebatch-omitting-invalid' => 'Hindi isinasali ang hindi tanggap na pahinang $1.',
+	'deletebatch-file-bad-format' => 'Dapat na teksto lamang ang talaksan',
+	'deletebatch-file-missing' => 'Hindi mabasa ang talaksang ibinigay',
+	'deletebatch-select-script' => 'burahin ang panitik ng pahina',
+	'deletebatch-select-yourself' => 'ikaw',
+	'deletebatch-no-page' => 'Pakitukoy ang kahit na isang pahinang buburahin O pumili ng isang talaksang naglalaman ng talaan ng pahina.',
+	'right-deletebatch' => 'Burahin ang bungkos ng mga pahina',
 );
 
 /** Turkish (Türkçe)

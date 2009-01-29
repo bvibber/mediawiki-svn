@@ -248,6 +248,13 @@ $messages['sv'] = array(
 	'newsextension-desc' => 'Visar skräddarsydda senaste ändringar på en wikisida, eller en RSS- eller Atom-matning',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'newsextension-desc' => 'Nagpapakita ng ipinasadyang kamakailang mga pagbabago sa isang pahina ng wiki o bilang pakaing RSS o Atom',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

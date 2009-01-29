@@ -445,6 +445,13 @@ $messages['tg-cyrl'] = array(
 	'poem-desc' => 'Барчасби <tt>&lt;poem&gt;</tt>-ро барои қолаббандиҳои шеърҳо илова мекунад',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'poem-desc' => 'Nagdaragdag ng tatak na <tt>&lt;poem&gt;</tt> para sa pagpopormat ng tula',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

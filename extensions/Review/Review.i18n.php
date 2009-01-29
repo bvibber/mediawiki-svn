@@ -477,7 +477,7 @@ $messages['es'] = array(
 $messages['eu'] = array(
 	'review_total_statistics' => 'Guztira',
 	'review_user_details_link' => '(xehetasunak)',
-	'review_blocked' => 'Blokeatuta zaude, ospa hemendik.',
+	'review_blocked' => 'Blokeatuta zaude eta ezin duzu berrikuspenetan parte hartu.',
 	'review_topic' => 'Gaia',
 	'review_rating' => 'Balorazioa',
 );

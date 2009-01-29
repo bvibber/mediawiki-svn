@@ -108,6 +108,13 @@ $messages['de'] = array(
 	'newuseredit-summary' => 'Begrüßt einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{int:newusermessage-template}}|Willkommensnachricht]]',
 );
 
+/** Swiss High German (Schweizer Hochdeutsch)
+ * @author MichaelFrey
+ */
+$messages['de-ch'] = array(
+	'newuseredit-summary' => 'Begrüsst einen neuen Benutzer auf seiner Diskussionsseite mit einer [[{{int:newusermessage-template}}|Willkommensnachricht]]',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

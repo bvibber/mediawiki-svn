@@ -110,9 +110,10 @@ $messages['ar'] = array(
 	'createsigndoc-create' => 'إنشاء',
 	'createsigndoc-error-generic' => 'خطأ: $1',
 	'createsigndoc-error-pagenoexist' => 'خطأ: الصفحة [[$1]] غير موجودة.',
-	'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]].
-لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
-	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.',
+	'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح في [[$1]].
+أنت يمكنك [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} اختباره].',
+	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.
+هذا لا يمكن عمله مرة ثانية.',
 );
 
 /** Araucanian (Mapudungun)
@@ -518,7 +519,8 @@ $messages['grc'] = array(
 	'createsigndoc-create' => 'Ποεῖν',
 	'createsigndoc-error-generic' => 'Σφάλμα: $1',
 	'createsigndoc-error-pagenoexist' => 'Σφάλμα: Ἡ δέλτος [[$1]]  οῦχ ὑπάρχει',
-	'createsigndoc-error-alreadycreated' => 'Τὸ ἐγγράφον τὸ ὑπογράφον τὸ "$1" ἤδη ὑπάρχει.',
+	'createsigndoc-error-alreadycreated' => 'Τὸ ἐγγράφον τὸ ὑπογράφον τὸ "$1" ἤδη ἐποιήθη.
+Μὴ δυνατὴ ἡ ποίησις τοῦδε δίς.',
 );
 
 /** Swiss German (Alemannisch)

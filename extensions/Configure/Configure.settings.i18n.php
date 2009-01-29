@@ -1886,6 +1886,7 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  * @author Theklan
  */
@@ -1895,6 +1896,7 @@ $messages['eu'] = array(
 	'configure-setting-wgDBpassword' => '$wgDBuser (datu-basearen erabiltzailearen) pasahitza',
 	'configure-setting-wgDBtype' => 'Erabiliko den datu-base mota',
 	'configure-setting-wgDBuser' => 'Erabiltzailearen izena datu-basean saioa hasteko',
+	'configure-setting-wgMediaHandlers-key' => 'MIME Mota',
 	'configure-setting-wgUseGzip' => 'GZIP kodeketa erabili',
 	'configure-setting-wgDisableLangConversion' => 'Hizkuntza-bihurketa ezgaitu',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Orrialdearen izenburua',
@@ -5223,15 +5225,19 @@ $messages['pt'] = array(
 	'configure-setting-wgShowEXIF' => 'Mostrar dados EXIF nas páginas de descrição de ficheiros',
 	'configure-setting-wgThumbLimits' => 'Tamanhos permitidos para miniaturas de imagens',
 	'configure-setting-wgMainCacheType' => 'Tipo do sistema principal de cache',
+	'configure-setting-wgCachePages' => 'Permitir efetuar cache de páginas no lado do cliente',
 	'configure-setting-wgFileCacheDirectory' => 'Directoria da cache de ficheiros',
 	'configure-setting-wgUseFileCache' => 'Usar a cache de ficheiros',
 	'configure-setting-wgUseGzip' => 'Usar codificação GZIP',
 	'configure-setting-wgAllowDisplayTitle' => 'Permitir o uso de <nowiki>{{DISPLAYTITLE}}</nowiki>',
 	'configure-setting-wgAllowExternalImagesFrom' => 'Exceções a $wgAllowExternalImages = false',
 	'configure-setting-wgEnableImageWhitelist' => 'Ativar o uso do "MediaWiki:External file whitelist"',
+	'configure-setting-wgCleanSignatures' => 'Substituir predefinições em assinaturas',
 	'configure-setting-wgGrammarForms' => 'Formas gramaticais para a função do "parser" GRAMMAR',
 	'configure-setting-wgParserConf' => 'Configuração do analisador "parser"',
+	'configure-setting-wgParserTestFiles' => 'Ficheiros a serem executados com parserTests.php',
 	'configure-setting-wgAmericanDates' => "Obrigar 'May 12' em vez de '12 May' em inglês",
+	'configure-setting-wgDisableLangConversion' => 'Desativar conversão de língua',
 	'configure-setting-wgInputEncoding' => 'Codificação do texto de entrada',
 	'configure-setting-wgLanguageCode' => 'Código da língua do sítio',
 	'configure-setting-wgOutputEncoding' => 'Codificação do texto de saída',
@@ -5246,10 +5252,12 @@ $messages['pt'] = array(
 	'configure-setting-wgExtraLanguageNames-key' => 'Código da língua',
 	'configure-setting-wgExtraLanguageNames-value' => 'Nome',
 	'configure-setting-wgExtraRandompageSQL' => 'Filtro para Special:Random (numa cláusula WHERE)',
+	'configure-setting-wgExtraSubtitle' => 'Subtítulo (aparece abaixo do título de todas as páginas)',
 	'configure-setting-wgMaxArticleSize' => 'Tamanho máximo de página (kB)',
 	'configure-setting-wgNoFollowLinks' => 'Adicionar rel="nofollow" às ligações',
 	'configure-setting-wgSiteNotice' => 'Aviso do Sítio',
 	'configure-setting-wgSiteSupportPage' => 'Página com informação de donativos',
+	'configure-setting-wgStyleVersion' => 'Versão dos ficheiros CSS/JS do MediaWiki',
 	'configure-setting-wgUseExternalEditor' => 'Permitir uso de editor externo',
 	'configure-setting-wgUseMetadataEdit' => 'Permitir edição de metadados',
 	'configure-setting-wgAjaxLicensePreview' => 'Usar AJAX para pré-visualizar licenciamento nos carregamentos',
@@ -5263,6 +5271,7 @@ $messages['pt'] = array(
 	'configure-setting-wgHTTPTimeout' => 'Limite de tempo para pedidos HTTP',
 	'configure-setting-wgHTTPProxy' => 'Proxy HTTP a usar',
 	'configure-setting-wgVersion' => 'Versão do MediaWiki',
+	'configure-setting-wgExportMaxHistory' => 'Número máximo de revisões para Special:Export',
 	'configure-setting-wgImportTargetNamespace' => 'Espaço nominal destino para importações de interwikis',
 	'configure-setting-wgLogNames' => 'Nomes do registo',
 	'configure-setting-wgLogRestrictions-value' => 'Requerida permissão para ler',
@@ -5293,14 +5302,21 @@ $messages['pt'] = array(
 	'configure-setting-wgShowSQLErrors' => 'Mostrar páginas de erros de base de dados',
 	'configure-setting-wgStatsMethod' => 'Destino para dados de wfIncrStats()',
 	'configure-setting-wgSessionName' => 'Nome de sessão',
+	'configure-setting-wgUseSquid' => 'Ativar Squid',
 	'configure-setting-wgDefaultSkin' => 'Nome do tema padrão',
 	'configure-setting-wgSkipSkin' => 'Nome de tema não permitido',
 	'configure-setting-wgSkipSkins' => 'Nomes de temas não permitidos',
 	'configure-setting-wgValidSkinNames' => 'Nomes de temas válidos',
 	'configure-setting-wgValidSkinNames-key' => 'Nome interno',
 	'configure-setting-wgValidSkinNames-value' => 'Nome apresentado',
+	'configure-setting-wgExtraNamespaces-value' => 'Nome do espaço nominal',
 	'configure-setting-wgEnableDublinCoreRdf' => 'Usar metadados RDF',
+	'configure-setting-wgAllowRealName' => 'Permitir nomes reais',
 	'configure-setting-wgStyleSheetPath' => 'URL da directoria que contém as folhas de estilos',
+	'configure-setting-wgUsePathInfo' => "Usar URL 'bonitas'",
+	'configure-setting-wgRCLinkLimits' => 'Limite de modificações nas modificações recentes',
+	'configure-setting-wgRCLinkDays' => 'Limite de dias nas modificações recentes',
+	'configure-setting-wgUDPProfilerHost' => 'Anfitrião para o perfilador UDP',
 	'configure-setting-wgUDPProfilerPort' => 'Porta para o perfilador UDP',
 );
 
@@ -5346,6 +5362,14 @@ $messages['ro'] = array(
 	'configure-setting-wgLocalTZoffset' => 'Diferenţă de fus orar',
 	'configure-setting-wgUseAjax' => 'Activează AJAX',
 	'configure-setting-wgMimeTypeBlacklist' => 'Tipuri MIME nepermise',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'configure-setting-wgSitename' => "Nome d'u site",
+	'configure-setting-wgExtraLanguageNames-value' => 'Nome',
 );
 
 /** Slovak (Slovenčina)

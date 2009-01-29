@@ -252,16 +252,21 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
 	'chemicalsources' => 'Kimikako iturriak',
 	'chemicalsource-desc' => '<nowiki><chemform></nowiki> formula kimikoentzatko etiketa gehitzen du',
 	'chemFunctions_ListPage' => 'Kimikako iturriak',
+	'chemFunctions_DataList' => 'Hemen azpiko webguneetan bilatzen ari zaren substantzia kimikoari buruzko informazioa aurkitu dezakezu.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/Mtu dSDS/">MSDS at the Oxford University (UK) (not searchable)</a><br />',
 	'chemFunctions_CAS' => 'CAS zenbakia',
 	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_ECNumber' => 'ECZenbakia',
 	'chemFunctions_Formula' => 'Formula',
-	'chemFunctions_Name' => 'IUPAC izena',
+	'chemFunctions_Name' => 'IUPAC Izena',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Sarrera akatsa!',
 );
 
@@ -338,6 +343,24 @@ $messages['grc'] = array(
 	'chemFunctions_ListPage' => 'Χημικαὶ πηγαί',
 	'chemFunctions_Formula' => 'Τύπος',
 	'chemFunctions_Name' => 'Ὄνομα IUPAC',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'chemicalsources' => 'Chemical Sources',
+	'chemicalsource-desc' => 'Stellt s <nowiki><chemform></nowiki>-Tag fir chemischi Formle z Verfiegig',
+	'chemFunctions_ListPage' => 'Chemical Sources',
+	'chemFunctions_DataList' => 'Unte isch e Lischt vu Gleicher zue syte, wu s villicht Informatione het iber chemischi Substanze, wu du suechsch:<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindig $MIXCASNameFormula uf NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an dr Universität Oxford (GB) (nit dursuechbar)</a><br />',
+	'chemFunctions_CAS' => 'CAS Nummere',
+	'chemFunctions_ATCCode' => 'ATC-Code',
+	'chemFunctions_ECNumber' => 'EC-Nummere',
+	'chemFunctions_Formula' => 'Formle',
+	'chemFunctions_Name' => 'IUPAC-Name',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Yygab-Fähler!',
 );
 
 /** Hebrew (עברית)

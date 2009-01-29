@@ -1245,6 +1245,34 @@ $messages['th'] = array(
 	'duplicator-source' => 'แหล่งที่มา:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'duplicator' => 'Gayahin ang isang pahina',
+	'duplicator-desc' => 'Lumikha ng nagsasariling [[Special:Duplicate|mga sipi ng mga pahina]] na mayroong buong mga kasaysayan ng mga pagbabago',
+	'duplicator-toolbox' => 'Gayahin ang pahinang ito',
+	'duplicator-header' => 'Nagpapahintulot ang pahinang ito ng buong paggaya ng isang pahina, na lumilikha ng nagsasariling mga sipi ng lahat ng mga kasaysayan. Magagamit ito para sa pagsasanga ng pahina, atbp.',
+	'duplicator-options' => 'Mga pagpipilian',
+	'duplicator-source' => 'Pinagmulan:',
+	'duplicator-dest' => 'Kapupuntahan:',
+	'duplicator-dotalk' => 'Kagayang pahina ng usapan (kung naaangkop)',
+	'duplicator-submit' => 'Gayahin',
+	'duplicator-summary' => 'Sinipi mula sa [[$1]]',
+	'duplicator-success' => "<big>'''Sinipi ang [[$1]] patungong [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}} ang nasipi na.',
+	'duplicator-success-talkcopied' => 'Nasipi rin ang pahina ng usapan.',
+	'duplicator-success-talknotcopied' => 'Hindi masipi ang pahina ng usapan.',
+	'duplicator-failed' => 'Hindi magagaya ang pahina.
+Naganap ang isang hindi mapag-alamang kamalian.',
+	'duplicator-source-invalid' => 'Pakibigay ang isang tanggap na pamagat ng pagmumulan.',
+	'duplicator-source-notexist' => 'Hindi umiiral ang [[$1]]. Pakibigay ang isang umiiral na pamagat ng isang pahina.',
+	'duplicator-dest-invalid' => 'Pakibigay ang isang tanggap na pamagat ng kapupuntahan.',
+	'duplicator-dest-exists' => 'Umiiral na ang [[$1]]. Pakibigay ang isang hindi pa umiiral na kapupuntahang pamagat.',
+	'duplicator-toomanyrevisions' => 'Ang [[$1]] ay may napakaraming ($2) mga pagbabago at hindi masisipi.
+Ang kasalukuyang hangganan ay $3.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

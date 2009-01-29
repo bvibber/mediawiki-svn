@@ -163,11 +163,12 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
 	'whatismyip' => 'Zein da nire IP',
-	'whatismyip-desc' => '[[Berezi:ZeinDaNireIP]] orrialdean lankidearen momentuko IP helbidea erakusten du',
+	'whatismyip-desc' => '[[Special:WhatIsMyIP]] orrialdean lankidearen momentuko IP helbidea erakusten du',
 	'whatismyip-out' => 'Zure IPa:',
 );
 

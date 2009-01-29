@@ -267,6 +267,13 @@ $messages['sv'] = array(
 	'metakeywords-desc' => 'Möjliggör konfigurering av <tt><nowiki><meta "keywords"></nowiki></tt> och <tt><nowiki><meta "description"></nowiki></tt>-taggar per namnrymd',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'metakeywords-desc' => 'Nagpapahintulot ng pagsasaayos ng mga tatak na <tt><nowiki><meta "keywords"></nowiki></tt> at <tt><nowiki><meta "description"></nowiki></tt> sa bawat espasyo ng pangalan',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

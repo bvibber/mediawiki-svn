@@ -195,6 +195,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'filelist' => 'Fitxategi zerrenda',
+	'filelist-desc' => '[[Special:Filelist|Orri berezia]] igotako fitxategiak zerrendatzeko',
 	'filelist-show-list' => 'Zerrenda erakutsi',
 	'filelist-show-gallery' => 'Galeria erakutsi',
 );
@@ -209,11 +210,6 @@ $messages['fi'] = array(
 	'filelist-show-list' => 'Näytä luettelo',
 	'filelist-show-gallery' => 'Näytä galleria',
 	'filelist-image-desc' => 'kuvaus',
-);
-
-/** Võro (Võro) */
-$messages['vro'] = array(
-	'filelist-image-desc' => 'seletüs',
 );
 
 /** Faroese (Føroyskt) */
@@ -744,6 +740,11 @@ $messages['vo'] = array(
 	'filelist-show-list' => 'Jonön lisedi',
 	'filelist-show-gallery' => 'Jonön magodemi',
 	'filelist-image-desc' => 'bep',
+);
+
+/** Võro (Võro) */
+$messages['vro'] = array(
+	'filelist-image-desc' => 'seletüs',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

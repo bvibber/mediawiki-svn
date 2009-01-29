@@ -452,6 +452,15 @@ $messages['th'] = array(
 	'icon-badimage' => 'ภาพเสีย',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'icon-badimage' => 'Masamang larawan',
+	'icon-badwidth' => 'Masamang lapad',
+	'icon-desc' => 'Nagpapahintulot na magamit mo ang mga larawan bilang mga sagisag o mga kawing ng sagisag',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

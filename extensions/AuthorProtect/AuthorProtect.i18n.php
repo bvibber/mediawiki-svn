@@ -365,6 +365,25 @@ $messages['grc'] = array(
 	'authorprotect-reason' => 'Αἰτία',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'authorprotect' => 'Sytebearbeitig uf Autore bschränke',
+	'authorprotect-desc' => 'Macht s megli d Sytebearbeitig uf dr Autor z bschränken',
+	'authorprotect-notauthor' => 'Du bisch nit dr Autor vu däre Syte',
+	'authorprotect-confirm' => 'Schutzebeni ändere',
+	'authorprotect-edit' => 'Bearbeitig uf Autore bschränke',
+	'authorprotect-move' => 'Verschiebig uf Autore bschränke',
+	'authorprotect-expiry' => 'Sperrduur',
+	'authorprotect-reason' => 'Grund',
+	'authorprotect-intro' => 'Mit däm Formular chasch d Sytebearbeitig uf Autore bschränke.',
+	'authorprotect-success' => 'Syte isch gschitzt wore!',
+	'authorprotect-failure' => 'Syte het nit chenne gschitzt wäre!',
+	'protect-level-author' => 'Sytebearbeitig uf Autore bschränke',
+	'restriction-level-author' => 'Autor-gschitzt',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -617,6 +636,13 @@ $messages['km'] = array(
 	'authorprotect-failure' => 'ការការពារបានបរាជ័យ',
 	'protect-level-author' => 'ការពារពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ',
 	'restriction-level-author' => 'ត្រូវបានការពារដោយអ្នកនិពន្ឋ',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'authorprotect-reason' => '이유',
 );
 
 /** Ripoarisch (Ripoarisch)

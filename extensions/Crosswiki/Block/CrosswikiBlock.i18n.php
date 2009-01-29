@@ -441,13 +441,14 @@ Reen:
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Dferg
  * @author Imre
  */
 $messages['es'] = array(
 	'crosswikiblock-desc' => 'Permite bloquear a usuarios en otras wikis usando una [[Special:Crosswikiblock|página especial]]',
 	'crosswikiblock' => 'Bloquear al usuario en otra wiki',
-	'crosswikiblock-header' => 'Esta página le permite bloquear a un usuario en otra wiki.<br/>
+	'crosswikiblock-header' => 'Esta página le permite bloquear a un usuario en otra wiki.
 Por favor, verifique si está autorizado a actuar en esa wiki y que sus acciones siguen las políticas.',
 	'crosswikiblock-target' => 'Dirección IP o nombre de usuario y wiki de destino:',
 	'crosswikiblock-expiry' => 'Duración:',

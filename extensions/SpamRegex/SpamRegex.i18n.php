@@ -1016,9 +1016,14 @@ $messages['pl'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'spamregex' => 'Expressão regular de spam',
 	'spamregex-desc' => '[[Special:SpamRegex|Filtrar]] frases indesejadas em páginas editadas, com base em expressões regulares',
 	'spamregex-error-unblocking' => 'Erro ao desbloquear "$1". Provavelmente, não existe tal padrão.',
 	'spamregex-summary' => 'O texto foi encontrado no sumário da página.',
+	'spamregex-intro' => 'Use este formulário para efetivamente bloquear expressões de serem gravadas no texto de uma página.
+Se o texto contém a dada expressão, as alterações não serão gravadas e uma explicação será apresentada ao utilizador que tentou gravar a página.
+Pede-se atenção: as expressões não deverão ser demasiado curtas ou demasiado comuns.',
+	'spamregex-page-title' => 'Bloco de expressões indesejadas da expressão regular de spam',
 	'spamregex-currently-blocked' => "'''Frases atualmente bloqueadas:'''",
 	'spamregex-move' => 'O motivo que você introduziu contém uma frase bloqueada.',
 	'spamregex-no-currently-blocked' => "'''Não há frases bloqueadas.'''",
@@ -1242,6 +1247,7 @@ Imimungkahi ang pagiingat, hindi dapat na napakaiksi o napakapangkaraniwan ang m
 	'spamregex-block-submit' => 'Hadlangan&nbsp;ang&nbsp;pariralang&nbsp;ito',
 	'spamregex-text' => '(Teksto)',
 	'spamregex-summary-log' => '(Buod)',
+	'right-spamregex' => 'Hadlangan ang mga pariralang manlulusob sa pamamagitan ng [[Special:SpamRegex]]',
 );
 
 /** Vietnamese (Tiếng Việt)

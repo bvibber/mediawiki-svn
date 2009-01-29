@@ -717,6 +717,32 @@ $messages['grc'] = array(
 	'badimages-remove-btn' => 'Άφαιρεῖν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'badimages' => 'Lischt vu nit gwinschte Bilder',
+	'badimages-desc' => 'Erwyteret d Yysatzmegligkeite vu dr Lischt vu nit gwinschte Bilder in MediaWiki',
+	'badimages-add-btn' => 'Fieg dezue',
+	'badimages-added' => '$1 isch in d Lischt dryygsetzt wore',
+	'badimages-count' => "In dr Lischt vu nit gwinschte Bilder het s '''$1''' {{PLURAL:$1|Yytrag|Yyträg}}",
+	'badimages-name' => 'Name:',
+	'badimages-not-added' => 'S Bild het nit chenne zuegfiegt wqäre.',
+	'badimages-not-removed' => 'S Bild het nit chenne usegnuh wäre.',
+	'badimages-reason' => 'Grund:',
+	'badimages-remove' => '(useneh)',
+	'badimages-remove-btn' => 'Nimm use',
+	'badimages-remove-confirm' => 'Bitte bstätig, ass Du $1 us dr Lischt witt useneh.',
+	'badimages-removed' => '$1 isch us dr Lischt usegnuh wore.',
+	'badimages-subheading' => 'Aktuälli Yyträg',
+	'badimages-unprivileged' => '(Du derfsch d Lischt nit ändere)',
+	'badimages-log-name' => 'Lischt vu nit gwinschte Bilder',
+	'badimages-log-header' => 'Des isch s Logbuech vu dr Änderige an dr Lischt vu nit gwinschte Bilder.',
+	'badimages-log-add' => 'het [[$1]] in d Lischt vu nit gwinschte Bilder dryygsetzt',
+	'badimages-log-remove' => 'het [[$1]] us dr Lischt vu nit gwinschte Bilder usegnuh',
+	'badimages-page' => '{{ns:help}}:Lischt vu nit gwinschte Bilder',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

@@ -197,6 +197,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'createpage' => 'Orri bat sortu',
+	'createpage-desc' => '[[Special:CreatePage|Orri berezi bat]] gehitzen du orri berriak sortzeko',
 	'createpage_submitbutton' => 'Bidali',
 	'createpage_instructions' => 'Idatzi sortu nahi duzun orriaren izenburua:',
 	'createpage_entertitle' => 'Zure orrirako izenburu bat sartu mesedez.',

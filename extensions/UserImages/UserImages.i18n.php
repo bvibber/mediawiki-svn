@@ -176,6 +176,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'userimages-caption' => 'Irudiak $1-(e)k igoak',
+	'userimages-noname' => 'Lankide izen okerra edo ez idatzia.',
 	'userimages-noimages' => '$1 erabiltzaileak ez du irudirik igo.',
 );
 

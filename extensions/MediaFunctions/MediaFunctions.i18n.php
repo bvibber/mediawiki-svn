@@ -114,6 +114,14 @@ $messages['es'] = array(
 	'mediafunctions-not-exist' => '«$1» no existe',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'mediafunctions-invalid-title' => '"$1" ez da izenburu zuzena',
+	'mediafunctions-not-exist' => '"$1" ez da existitzen',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku
@@ -409,6 +417,15 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'mediafunctions-invalid-title' => '"$1" అనేది సరైన శీర్షిక కాదు',
 	'mediafunctions-not-exist' => '"$1" అనేది లేదు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mediafunctions-desc' => 'Mga tungkulin ng banghay para sa pagkamit ng kabatiran hinggil sa mga talaksan ng midya',
+	'mediafunctions-invalid-title' => 'Hindi isang tanggap na pamagat ang "$1"',
+	'mediafunctions-not-exist' => 'Hindi umiiral ang "$1"',
 );
 
 /** Vèneto (Vèneto)

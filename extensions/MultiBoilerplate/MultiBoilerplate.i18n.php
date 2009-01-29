@@ -57,6 +57,13 @@ $messages['arz'] = array(
 	'multiboilerplate-submit' => 'تحميل',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'multiboilerplate-submit' => 'Загрузіць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -96,6 +103,13 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'multiboilerplate-legend' => 'Selekti norman tekston',
 	'multiboilerplate-submit' => 'Alŝuti',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'multiboilerplate-submit' => 'Kargatu',
 );
 
 /** French (Français)

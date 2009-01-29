@@ -883,6 +883,7 @@ $messages['roa-tara'] = array(
 	'tasklistunknownproject' => 'Pruggette scanusciute',
 	'tasklistemail' => '%s Belle mie',
 	'tasklistchooseproj' => "Scacchie 'u pruggette:",
+	'tasklistprojdisp' => 'Fa vedè',
 );
 
 /** Russian (Русский)

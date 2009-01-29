@@ -425,6 +425,18 @@ $messages['tg-cyrl'] = array(
 	'eval_code' => 'Рамз',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'eval' => 'Suri',
+	'eval-desc' => 'Nagdaragdag ng [[Special:Eval|isang ugnayang-hangganan]] sa tungkuling <code>eval()</code>',
+	'eval_submit' => 'Suriin',
+	'eval_escape' => 'Kinalabasan ng pagtakas',
+	'eval_out' => 'Kinalabasan',
+	'eval_code' => 'Kodigo',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

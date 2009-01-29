@@ -110,10 +110,11 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
-	'ajax-qp-desc' => '[[Berezi:Shortpages|{{int:shortpages}}]] bezalako orrialdeak bilatzeko AJAX pixka bat gehitzen du',
+	'ajax-qp-desc' => '[[Special:Shortpages|{{int:shortpages}}]] bezalako orrialdeak bilatzeko AJAX pixka bat gehitzen du',
 );
 
 /** Persian (فارسی)

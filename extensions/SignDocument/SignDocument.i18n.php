@@ -89,11 +89,12 @@ $messages['eo'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
 	'signaturelogpage' => 'Sinatze loga',
-	'signature-desc' => 'Dokumentuak [[Berezi:DokumentuaSinatu|sinatzea]] baimentzen du',
+	'signature-desc' => 'Dokumentuak [[Special:SignDocument|sinatzea]] baimentzen du',
 );
 
 /** Finnish (Suomi)

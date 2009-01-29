@@ -114,6 +114,8 @@ $messages['ar'] = array(
 	'povwatch_added' => 'تمت الإضافة',
 	'right-povwatch_admin' => 'إدارة صلاحيات المستخدم لإضافة الصفحات إلى قوائم مراقبة المستخدمين الآخرين',
 	'right-povwatch_user' => 'إضافة صفحات إلى قوائم مراقبة مستخدمين آخرين',
+	'action-povwatch_admin' => 'إدارة صلاحيات المستخدم لمراقبة بي أو في',
+	'action-povwatch_user' => 'إضافة هذه الصفحة إلى قائمة مراقبة مستخدم آخر',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1327,6 +1329,8 @@ Pindutin ang pindutan sa ibaba upang tumanggap ng sipi.",
 	'povwatch_added' => 'naidagdag na',
 	'right-povwatch_admin' => 'Pangasiwaan ang mga karapatan ng tagagamit para sa pagdaragdag ng mga pahina sa mga talaan ng binabantayan ng iba pang mga tagagamit',
 	'right-povwatch_user' => 'Magdagdag ng mga pahina sa mga talaan ng binabantayan ng iba pang mga tagagamit',
+	'action-povwatch_admin' => 'pangasiwaan ang mga karapatan ng tagagamit para sa PovWatch',
+	'action-povwatch_user' => 'idagdag ang pahinang ito sa talaan ng binabantayan ng iba pang tagagamit',
 );
 
 /** Turkish (Türkçe)

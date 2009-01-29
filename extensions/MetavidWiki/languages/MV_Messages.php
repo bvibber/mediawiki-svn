@@ -411,6 +411,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'mv_edit' => 'Editar',
 	'mv_search_date_range' => 'Rango de calendatas',
 	'mv_date_range' => 'Rango de calendatas',
 );
@@ -3801,6 +3802,7 @@ $messages['nn'] = array(
 	'mv_ogg_low_quality' => 'Direkteoverførd over nettet – Ogg Theora 300kbs',
 	'mv_ogg_high_quality' => 'Høg kvalitet – Ogg Theora 900kbs',
 	'mv_flash_low_quality' => 'Direkteoverførd over nettet - Flash-video',
+	'mv_error_stream_missing' => '<span class="error">Feil: Det finst inga videofil knytt til denne datastraumen.</span><br />Ver venleg og rapporter dette til sideoperatøren.',
 	'mv_stream_added' => 'Du har lagt til datastraumen $1',
 	'mv_stream_meta' => 'Datastraumsida',
 	'mv_add_stream' => 'Metavid legg til datastraum',
@@ -3881,6 +3883,7 @@ $messages['nn'] = array(
 For alle metadata i eit kategoriområde, søk etter $1',
 	'mv-category-media-count' => '$1 mediesegment i kategorien',
 	'mv_mvd_linkback' => 'Del av datastraumen $1 <br />Hopp til datastraumvising: $2<br />',
+	'mvMVDFormat' => 'MVD-tittel lyt vera på formatet: mvd:type:datastraumnamn/starttid/sluttid',
 	'mv_play' => 'Spel',
 	'mv_edit' => 'Endre',
 	'mv_history' => 'Historikk',

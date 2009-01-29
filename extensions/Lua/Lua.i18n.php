@@ -444,6 +444,20 @@ $messages['sk'] = array(
 	'lua_overflow_time' => 'Bol dosiahnutý limit času behu',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'lua_desc' => 'Nagpapalawig sa banghay na may suporta para sa nakabaong mga bloke ng kodigong [http://www.lua.org/ Lua]',
+	'lua_error' => 'Kamalian sa guhit na $1',
+	'lua_extension_notfound' => 'Hindi nakaayos ang karugtong na Lua',
+	'lua_interp_notfound' => 'Hindi natagpuan ang pampaunawa ng Lua',
+	'lua_error_internal' => 'Panloob na kamalian',
+	'lua_overflow_recursion' => 'Naabot na ang hangganan ng pagtawag sa sarili',
+	'lua_overflow_loc' => 'Naabot na ang pinakamataas na hangganan ng guhit ng kodigo',
+	'lua_overflow_time' => 'Naabot na ang pinakamataas na panahon ng pagsasakatuparan',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -386,6 +386,35 @@ $messages['grc'] = array(
 	'invitations-inviteform-submit' => 'Προσκαλεῖν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'invite-logpage' => 'Yyladigs-Logbuech',
+	'invite-logpagetext' => 'Des isch s Logbuch vu Benutzer, wu sich gegesytig dezue yylade verschideni Softwarefunktione z verwände.',
+	'invite-logentry' => 'het $1 yyglade go d Softwarefunktione <i>$2</i> z nutze.',
+	'invitations' => 'Yyladige/Ufforderige fir Software-Funktione verwalte',
+	'invitations-desc' => 'Macht d [[Special:Invitations|Verwaltig vu Softwarefunktione]] megli uf dr Grundlag vun eme Yyladigs-Syschtem',
+	'invitations-invitedlist-description' => 'Du hesch Zuegang zue däne yyladigsbasierte Softwarefunktione. Go Yyladige fir e bstimmti Softwarefunktion z verwalte, druck uf dr Name vun ere.',
+	'invitations-invitedlist-none' => 'Du hesch no kei Yyladig kriegt yyladigsbasierti Softwarefunktione z nutze.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Ei Yyladig|$1 Yyladige}} verfiegbar)',
+	'invitations-pagetitle' => 'Softwarefunktione uf dr Grundlag vu Yyladige',
+	'invitations-uninvitedlist-description' => 'Du hesch kei Zuegang zue andere yyladigsbasierte Softwarefunktione.',
+	'invitations-uninvitedlist-none' => 'Zur Zyt sin keini andere Softwarefunktione yyladigsbasiert.',
+	'invitations-feature-pagetitle' => 'Yyladigs-Verwaltig - $1',
+	'invitations-feature-access' => 'Du hesch Zuegang zue dr Nutzig vu <i>$1</i>.',
+	'invitations-feature-numleft' => '{{PLURAL:$2|Dir stoht no ne Yyladig|Dir stehn no <b>$1</b> vú insgsamt $2 Yyladige}} z Verfiegig.',
+	'invitations-feature-noneleft' => 'Du hesch alli Dir zuegwisene Yyladige fir die Softwarefunktion verbruucht',
+	'invitations-feature-noneyet' => 'Dir sin no kei Yyladige fir die Softwarefunktion zuegwise wore.',
+	'invitations-feature-notallowed' => 'Du hesch kei Berächtigung, <i>$1</i> z nutze.',
+	'invitations-inviteform-title' => 'Lad e Benutzer zue dr Funktion $1 yy',
+	'invitations-inviteform-username' => 'Benutzer, wu yyglade soll wäre',
+	'invitations-inviteform-submit' => 'Yylade',
+	'invitations-error-baduser' => 'Dr Benutzer, wu Du aagee hesch, git s schyns nit.',
+	'invitations-error-alreadyinvited' => 'Dr Benutzer, wu du aagee hesch, het scho Zuegang zue däre Softwarefunktion!',
+	'invitations-invite-success' => 'Du hesch $1 erfolgryych zue däre Softwarefunktion yyglade!',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -1005,6 +1034,36 @@ $messages['tg-cyrl'] = array(
 	'invitations-error-baduser' => 'Корбари шумо мушаххас карда ба назар мерасад, ки вуҷуд надорад',
 	'invitations-error-alreadyinvited' => 'Корбари шумо мушаххас карда аллакай ба ин хусусият дастрасӣ дорад!',
 	'invitations-invite-success' => 'Барои истифодаи ин хусусия шумо $1-ро бо муваффақият таклиф кардед',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'invite-logpage' => 'Tala ng paanyaya',
+	'invite-logpagetext' => 'Isa itong talaan ng mga tagagamit na nag-aanyaya sa bawat isa upang gamitin ang sari-saring mga kasangkapang-katangian ng sopwer.',
+	'invite-logentry' => 'inanyayahan si $1 na gamitin ang kasangkapang-katangiang <i>$2</i>.',
+	'invitations' => 'Pamahalaan ang mga paanyaya patungo sa mga kasangkapang-katangian ng sopwer',
+	'invitations-desc' => 'Nagpapahintulot ng [[Special:Invitations|pamamahala ng bagong mga kasangkapang-katangian]]  sa pamamagitan ng paghangga sa kanila patungo sa isang sistemang nakabatay sa paanyaya',
+	'invitations-invitedlist-description' => 'Maaari kang pumunta sa sumusunod na mga kasangkapang-katangiang ng sopwer na pang-inanyayahan  lamang.
+Para mapamahalaan ang mga paanyaya para sa isang partikular na kasangkapang-katangian, pindutin ang pangalan nito.',
+	'invitations-invitedlist-none' => 'Hindi ka inanyayahanang makagamit ng anumang mga kasangkapang-katangian ng sopwer na pang-inanyayahan lamang.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Isang paanyaya|$1 mga paanyaya}}ng makukuha)',
+	'invitations-pagetitle' => 'Mga kasangkapang-katangian ng sopwer na pang-inanyayahan lamang',
+	'invitations-uninvitedlist-description' => 'Hindi ka maaaring pumunta sa iba pang ganitong mga kasangkapang-katangian ng sopwer na pang-inanyayahan lamang.',
+	'invitations-uninvitedlist-none' => 'Sa kasalukuyang panahon, walang mga kasangkapang-katangiang itinalaga bilang mga pang-inanyayahan lamang.',
+	'invitations-feature-pagetitle' => 'Pamamahala ng paanyaya - $1',
+	'invitations-feature-access' => 'Kasalukuyang makakapunta ka para gamitin ang <i>$1</i>.',
+	'invitations-feature-numleft' => 'Mayroon ka pang {{PLURAL:$2|isang natitirang paanyaya|<b>$1</b> mula sa nalalabi mong $2 mga paanyaya}}',
+	'invitations-feature-noneleft' => 'Nagamit mo na ang lahat ng inilaan mong mga paanyaya para sa kasangkapang-katangiang ito',
+	'invitations-feature-noneyet' => 'Hindi mo pa natatanggap ang inilaang mga paanyaya mo na para sa ganitong kasangkapang-katangian.',
+	'invitations-feature-notallowed' => 'Hindi ka makakapunta para gamitin ang <i>$1</i>.',
+	'invitations-inviteform-title' => 'Anyayahan ang isang tagagamit na gamitin ang $1',
+	'invitations-inviteform-username' => 'Aanyayahang tagagamit',
+	'invitations-inviteform-submit' => 'Anyayahan',
+	'invitations-error-baduser' => 'Tila hindi pa umiiral ang tinukoy mong tagagamit.',
+	'invitations-error-alreadyinvited' => 'Ang tinukoy mong tagagamit ay nakakapunta na sa ganitong kasangkapang-katangian!',
+	'invitations-invite-success' => 'Matagumpay mong naanyayahan si $1 upang magamit ang kasangkapang-katangiang ito!',
 );
 
 /** Vietnamese (Tiếng Việt)

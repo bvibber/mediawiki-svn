@@ -1864,6 +1864,7 @@ Robotitel ei ole hääletusõigust.',
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Bengoa
  * @author Kobazulo
  */
@@ -1903,7 +1904,7 @@ Bozkatzeko, gutxienez, $2 baino lehenago {{PLURAL:$1|ekarpen bat duen|$1 ekarpen
 	'boardvote_unstrike' => 'Marratua kendu',
 	'boardvote_needadmin' => 'Hauteskundeko administratzaileek baino ezin dute eragiketa hori burutu.',
 	'boardvote_notstarted' => 'Oraindik ez da bozketa hasi',
-	'boardvote_closed' => 'Bozketa itxita dago orain, ikus [[meta:Board elections/2008/en|hauteskundeen orrialdea]] emaitzak jakiteko.',
+	'boardvote_closed' => 'Bozketa itxita dago orain, ikusi [http://meta.wikimedia.org/wiki/Board_elections/2008/Results hauteskundeen orrialdea emaitzak] jakiteko.',
 	'boardvote_edits_many' => 'hainbat',
 	'group-boardvote' => 'Hautaketaren administratzaileak',
 	'group-boardvote-member' => 'hautaketaren administratzailea',

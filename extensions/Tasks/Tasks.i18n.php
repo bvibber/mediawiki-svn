@@ -113,11 +113,13 @@ $messages['am'] = array(
 
 /** Arabic (العربية)
  * @author Ciphers
+ * @author Meno25
  * @author OsamaK
  * @author Ouda
  */
 $messages['ar'] = array(
 	'tasks' => 'المهام',
+	'tasks_desc' => 'امتداد لإدارة المهام',
 	'tasks_tab' => 'مهام',
 	'tasks_title' => 'مهام "$1"',
 	'tasks_form_new' => 'أنشئ مهمة جديدة',
@@ -134,6 +136,7 @@ $messages['ar'] = array(
 	'tasks_wontfix' => 'لن يصلح',
 	'tasks_delete' => 'أحذف',
 	'tasks_no_task_delete_title' => 'غير مسموح',
+	'tasks_no_task_delete_texe' => 'أنت غير مسموح لك بحذف مهمة. فقط الإداريون يمكنهم عمل هذا.',
 	'tasks_action_delete' => 'المهمة قد حذفت',
 	'tasks_reopen' => 'إعادة فتح مهمة',
 	'tasks_assignedto' => 'أسندت إلى $1',
@@ -1967,8 +1970,10 @@ $messages['pt'] = array(
 	'tasks_sidebar_title' => 'Tarefas em aberto',
 	'tasks_here' => 'aqui',
 	'tasks_see_page_tasks' => '(tarefas desta página)',
+	'tasks_plain_text_only' => '(texto pleno, 256 carateres apenas)',
 	'tasks_help_page' => 'Tarefas',
 	'tasks_more_like_it' => 'mais',
+	'tasks_significance_order' => 'reescrever<eliminar',
 	'tasks_on_creation_comment' => 'Tarefa automática, gerada na criação de página',
 	'tasks_table_header_page' => 'Página',
 	'tasks_search_form_title' => 'Busca',

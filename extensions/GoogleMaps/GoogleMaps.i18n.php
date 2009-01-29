@@ -4202,6 +4202,7 @@ $wgGoogleMapsMessages['th'] = array(
  * @author AnakngAraw
  */
 $wgGoogleMapsMessages['tl'] = array(
+	'gm-desc' => 'Maginhawang lumikha ng mga mapang may isinawiking mga pananda',
 	'gm-incompatible-browser' => "Upang makita ang mapang mapupunta sa puwang/espasyong ito, kinakailangan mong gumamit ng isang kabagay na pantingin-tingin (''browser'') na pangweb.",
 	'gm-incompatible-browser-link' => "Pindutin dito upang makita ang isang talaan ng mga magkakabagay na mga pantingin-tingin (''browser'').",
 	'gm-no-editor' => 'Sa kasawiang palad, hindi tinatangkilik/sinusuportahan ng pantingin-tingin (\'\'browser\'\') mo ang mga nakapagpapasiglang (interaktibo) kasangkapang-katangiang panggawa ng mapa.  Subukin ang pinakabagong bersyon ng <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, at Linux).',

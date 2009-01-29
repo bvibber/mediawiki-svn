@@ -597,7 +597,7 @@ Por favor, sé paciente.',
  */
 $messages['eu'] = array(
 	'youtubeauthsub' => 'YouTube bideoa igo',
-	'youtubeauthsub-desc' => 'Zuzenean YouTubera [[Berezi:YouTubeAuthSub|bideoak igotzea]] baimentzen du',
+	'youtubeauthsub-desc' => 'Zuzenean YouTubera [[Special:YouTubeAuthSub|bideoak igotzea]] baimentzen du',
 	'youtubeauthsub_info' => 'YouTubeko orri batera bideoa igotzeko, bete ondorengo informazioa:',
 	'youtubeauthsub_title' => 'Izenburua',
 	'youtubeauthsub_description' => 'Deskripzioa',

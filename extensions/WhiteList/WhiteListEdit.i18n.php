@@ -167,6 +167,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'whitelisttableedit' => 'Editar',
 	'whitelisttablenewdate' => 'Nueba calendata:',
 	'whitelisttablechangedate' => 'Cambiar a calendata de zircunduzión',
 	'whitelistnewtabledate' => 'Data de zircunduzión:',

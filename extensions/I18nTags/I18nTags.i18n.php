@@ -264,6 +264,13 @@ $messages['sv'] = array(
 	'i18ntags-desc' => 'Ger tillgång till internationaliseringsfunktioner för talformatering, grammatik och plural i alla tillgängliga språk',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'i18ntags-desc' => 'Puntahan ang mga tungkuling i18n para sa pagpopormat ng bilang, balarila, at pangmaramihan sa anumang makukuhang wika',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

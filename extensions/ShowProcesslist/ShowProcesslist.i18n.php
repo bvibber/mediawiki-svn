@@ -70,6 +70,13 @@ $messages['arz'] = array(
 	'showprocesslist-info' => 'معلومات',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'showprocesslist-time' => 'Час',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

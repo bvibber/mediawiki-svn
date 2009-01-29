@@ -252,3 +252,10 @@ $messages['sv'] = array(
 	'substall-desc' => 'Skapar en <nowiki><substall></nowiki>-tagg som expanderar alla mallar till wikisyntax',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'substall-desc' => 'Lumilikha ng isang tatak na <nowiki><substall></nowiki> na nagpapalawak sa lahat ng mga suleras hanggang palaugnayan ng wiki',
+);
+

@@ -119,6 +119,7 @@ $messages['bs'] = array(
 	'lookupuser-touched' => 'Korisnički zapis posljednji pogledan: $1',
 	'lookupuser-info-authenticated' => 'Potvrđen e-mailom: $1',
 	'lookupuser-useroptions' => 'Korisničke postavke:',
+	'right-lookupuser' => 'Pretraga korisničkih postavki',
 );
 
 /** Catalan (Català)
@@ -1056,6 +1057,7 @@ $messages['tl'] = array(
 	'lookupuser-touched' => 'Huling hinawakan/nagalaw ang talaang pangtagagamit noong: $1',
 	'lookupuser-info-authenticated' => 'Pagpapatunay ng e-liham: $1',
 	'lookupuser-useroptions' => 'Mga pagpipilian ng tagagamit:',
+	'right-lookupuser' => 'Hanapin ang mga kagustuhan ng tagagamit',
 );
 
 /** Turkish (Türkçe)

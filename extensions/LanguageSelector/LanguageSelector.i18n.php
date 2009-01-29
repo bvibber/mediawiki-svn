@@ -726,6 +726,15 @@ $messages['th'] = array(
 	'languageselector' => 'ภาษา',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'languageselector' => 'Wika',
+	'languageselector-desc' => 'Pampili ng wika na nasa ibabaw ng bawat pahina, para rin sa mga panauhin',
+	'languageselector-setlang' => 'itakda',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

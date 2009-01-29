@@ -536,6 +536,7 @@ $messages['fur'] = array(
  */
 $messages['ga'] = array(
 	'sitematrix' => 'Liosta na vicí Vicíméid',
+	'sitematrix-summary' => 'Tá na vicíonna go léir de chuid Wikimedia sa liosta seo.',
 	'sitematrix-language' => 'Teanga',
 	'sitematrix-project' => 'Ainm an tionscadail, nasc idirthionscadail agus nasc idirvicí',
 	'sitematrix-others' => 'Tionscadail eile ar Vicíméid',

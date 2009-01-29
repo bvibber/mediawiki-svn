@@ -265,6 +265,13 @@ $messages['sv'] = array(
 	'tab0-desc' => 'Lägger till fliken "0", för att redigera det första avsnittet av en sida',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'tab0-desc' => 'Nagdaragdag ng panglaylay na "0", na kumakawing sa pahina ng pagbabago ng unang seksyon ng pahina',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

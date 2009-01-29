@@ -100,6 +100,13 @@ $messages['es'] = array(
 	'othersites-desc' => 'Mueve los enlaces interwiki que no sean de idioma a una caja separada',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'othersites' => 'Bestelako tokiak',
+);
+
 /** Persian (فارسی)
  * @author Vahid
  */

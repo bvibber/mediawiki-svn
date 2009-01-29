@@ -138,11 +138,12 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
 	'interwikilist' => 'Interwiki zerrenda',
-	'interwikilist-desc' => 'Erabil daitezkeen interwiki loturen [[Berezi:Interwikilist|orrialde berezi]] bat gehitzen du',
+	'interwikilist-desc' => 'Erabil daitezkeen interwiki loturen [[Special:Interwikilist|orrialde berezi]] bat gehitzen du',
 	'interwikilist-linkname' => 'Interwiki lotura',
 	'interwikilist-target' => 'URL helburua',
 	'interwikilist-filter' => 'Iragazkien zerrenda',

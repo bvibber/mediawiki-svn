@@ -72,6 +72,11 @@ $aliases['ja'] = array(
 	'Call' => array( 'ページ呼び出し' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Call' => array( 'Oproof' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Call' => array( 'Opruff' ),

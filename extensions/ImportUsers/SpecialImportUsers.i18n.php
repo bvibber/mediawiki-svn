@@ -1374,6 +1374,8 @@ $messages['tl'] = array(
 	'importusers-password' => 'hudyat',
 	'importusers-email' => 'e-liham',
 	'importusers-realname' => 'totoong pangalan',
+	'right-import_users' => 'Umangkat ng bunton ng mga tagagamit',
+	'action-import_users' => 'umangkat ng bunton ng tagagamit',
 );
 
 /** Vietnamese (Tiếng Việt)

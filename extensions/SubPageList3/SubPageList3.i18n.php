@@ -81,6 +81,14 @@ $messages['bg'] = array(
 	'spl3_nosubpages' => '$1 не съдържа подстраници, които да бъдат показани.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'spl3_debug' => 'Nepoznata vrijednost za opciju $1.',
+	'spl3_nosubpages' => '$1 nema podstranica za prikaz.',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

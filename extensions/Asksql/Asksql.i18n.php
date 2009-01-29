@@ -599,6 +599,18 @@ $messages['km'] = array(
 	'querysuccessful' => 'សំណួរអង្កេត បានជោគជ័យ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'asksql' => 'SQL 쿼리',
+	'asksql-desc' => '[[Special:Asksql|특수 문서]]를 통해 SQL 쿼리를 제출',
+	'querybtn' => '쿼리 제출',
+	'selectonly' => '읽기 전용 쿼리만 허용됩니다.',
+	'querysuccessful' => '쿼리 성공',
+	'right-asksql' => 'SQL 쿼리를 제출',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

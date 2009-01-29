@@ -170,3 +170,10 @@ $messages['stq'] = array(
 	'redirect-desc' => 'Ferlööwet dät eenfach Konfigurierjen fon Fäärelaitengen bie dät [[MediaWiki:Redirect-addnewaccount|Moakjen fon Benutserkonten]] un bie dät [[MediaWiki:Redirect-userlogoutcomplete|Oumäldjen]]',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'redirect-desc' => 'Nagpapahintulot ng maginhawang pagsasaayos ng mga panturo sa [[MediaWiki:Redirect-addnewaccount|paglikha ng akawnt]] at [[MediaWiki:Redirect-userlogoutcomplete|pag-alis sa pagkakalagda]]',
+);
+

@@ -234,6 +234,13 @@ $messages['sv'] = array(
 	'navigationpopups-desc' => 'Laddar Lunins popupnavigationsskript i MediaWiki',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'navigationpopups-desc' => "Nagkakarga sa MediaWiki ng pangpaglilibot na mga panitik ng mga \"litaw-sulpot\" (''popup'') ni Lupin",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

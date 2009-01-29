@@ -74,6 +74,13 @@ $messages['bn'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> ট্যাগ চিত্র হিসেবে যোগ করো',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'fixedimage-desc' => 'Dodaje oznaku <tt><nowiki><fundraising></nowiki></tt> kao sliku',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

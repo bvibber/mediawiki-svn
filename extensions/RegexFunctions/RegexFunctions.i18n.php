@@ -221,6 +221,13 @@ $messages['sv'] = array(
 	'regexfunctions-desc' => 'Parserfunktioner för Reguljära uttryck',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'regexfunctions-desc' => 'Mga tungkuling pambanghay ng pangkaraniwang pagsasaad',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

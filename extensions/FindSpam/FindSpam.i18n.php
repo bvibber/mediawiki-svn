@@ -195,11 +195,12 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
 	'findspam' => 'Spama bilatu',
-	'findspam-desc' => '[[Berezi:SpamaBilatu|Orrialde berezi]] bat gehitzen du azken aldian gehitutako spama bilatu ahal izateko',
+	'findspam-desc' => '[[Special:FindSpam|Orrialde berezi]] bat gehitzen du azken aldian gehitutako spama bilatu ahal izateko',
 	'findspam-ip' => 'IP helbidea:',
 	'findspam-ok' => 'Ondo',
 	'findspam-notextfound' => 'Ez da ekarpenik aurkitu',

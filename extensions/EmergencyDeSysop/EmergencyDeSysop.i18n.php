@@ -473,6 +473,26 @@ $messages['te'] = array(
 	'emergencydesysop-submit' => 'దాఖలుచెయ్యి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'emergencydesysop' => 'Biglaang Pagtanggal Bilang Tagapagpaandar ng Sistema',
+	'emergencydesysop-desc' => 'Nagpapahintulot sa isang tagapangasiwa na maiwaksi ang sariling mga pribilehiyo upang matanggal sa pagiging tagapagpaandar ng sistema ang isa pang tagapangasiwa',
+	'emergencydesysop-title' => 'Tanggalin kapwa ang maka-tagapangasiwang pagpunta mula sa pangkasalukuyang tagagamit at isa pang tagapangasiwa',
+	'emergencydesysop-otheradmin' => 'Iba pang tagapangasiwang tatanggalin mula sa pangkat',
+	'emergencydesysop-reason' => 'Dahilan sa pagtanggal',
+	'emergencydesysop-submit' => 'Ipasa',
+	'emergencydesysop-incomplete' => 'Kailangan ang lahat ng mga kahanayan ng pormularyo, pakisubok uli.',
+	'emergencydesysop-notasysop' => 'Wala sa loob ng pangkat ng tagapangasiwa ang pinupukol na tagagamit.',
+	'emergencydesysop-nogroups' => 'Wala',
+	'emergencydesysop-done' => 'Tapos na ang ginagawa, ikaw at si [[$1]] ay kapwa natanggal na mula sa pagiging tagapagpaandar ng sistema.',
+	'emergencydesysop-invalidtarget' => 'Hindi umiiral ang pinupukol na tagagamit.',
+	'emergencydesysop-blocked' => 'Hindi mo mapupuntahan ang pahinang ito habang hinahadlangan',
+	'emergencydesysop-noright' => 'Wala kang sapat na mga kapahintulutan upang mapuntahan ang pahinang ito',
+	'right-emergencydesysop' => 'Nagawang tanggalin na mula sa pagiging tagapagpaandar ng sistema ang isa pang tagagamit, pareho',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */
