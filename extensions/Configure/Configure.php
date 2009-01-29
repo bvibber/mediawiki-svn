@@ -44,7 +44,7 @@ $wgConfigureDatabase = 'config';
  * It is only used if $wgConfigureHandler is 'db'.
  * If you want to use $wgConfigureExtensionsVar (see below), you may need to
  * set it to false, otherwise the variables won't be set in efConfigureSetup()
- * by later.
+ * but later.
  */
 $wgConfigureAllowDeferSetup = true;
 
