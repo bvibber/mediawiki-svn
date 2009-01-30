@@ -1,0 +1,11 @@
+--- Makefile.PL.old	Fri Jan 30 04:05:23 2009
++++ Makefile.PL	Fri Jan 30 04:05:31 2009
+@@ -67,7 +67,7 @@
+ 	'depend'	=> { 'Makefile'          => 'config.in',
+                              'version$(OBJ_EXT)' => 'version.c'},
+ 	'clean'		=> { FILES => 'constants.h constants.xs' },
+-	'macro'		=> { INSTALLDIRS => 'perl', my_files => "@files" },
++	'macro'		=> { INSTALLDIRS => 'vendor', my_files => "@files" },
+         'dist'          => { COMPRESS => 'gzip', SUFFIX => 'gz',
+ 			     DIST_DEFAULT => 'MyDoubleCheck tardist'},    
+ 	);
