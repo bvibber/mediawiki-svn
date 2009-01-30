@@ -424,8 +424,11 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				' ON ' .
 				'( ' . $dbr->tableName( 'mv_mvd_index' ) . '.stream_id = ' .
 					$dbr->tableName( 'mv_stream_files' ) . '.stream_id ' .
-					' AND ' . $dbr->tableName( 'mv_stream_files' ) . '.file_desc_msg = ' .
-					$dbr->addQuotes( $mvDefaultVideoQualityKey ) .
+					' AND (' . $dbr->tableName( 'mv_stream_files' ) . '.file_desc_msg = ' .
+						$dbr->addQuotes( $mvDefaultVideoQualityKey ) .
+					' OR '. $dbr->tableName( 'mv_stream_files' ) .'.file_desc_msg = ' . 
+						$dbr->addQuotes( $mvDefaultFlashQualityKey ) .
+					')'.
 				') ';
 
 		// date range join:

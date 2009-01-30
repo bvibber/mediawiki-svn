@@ -35,8 +35,8 @@ controls="true" embed_link="true" >
 $sample_embed[0]['desc'] = 'Sample Similar to metavid usage';
 
 
-//$sample_embed[1]['tag'] = '<video id="vflash" src="http://www.archive.org/download/mv_senate_proceeding_12-23-07/senate_proceeding_12-23-07.flv" autoplay="true"></video>';
-//$sample_embed[1]['desc'] = 'flash video usage with manual controls:<br />' .
+$sample_embed[0]['tag'] = '<video id="vogg" src="http://localhost/lucky.ogv"></video>';
+$sample_embed[0]['desc'] = 'flash video usage with manual controls:<br />';
 //					'<a href="javascript:document.getElementById(\'vflash\').play();">Play</a> | ' .
 //					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';
 
@@ -87,7 +87,7 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
   <table border="1" cellpadding="6" width="600">
   	<? foreach ( $sample_embed as $key => $aval ) {
   		// $key!=8 && $key!=3  $key != 0  && $key != 1 &&  && $key!=3
-  		if ( $key!=2 )continue;
+  		if ( $key!=0 )continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>

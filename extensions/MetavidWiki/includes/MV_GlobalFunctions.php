@@ -91,6 +91,7 @@ function mvSetupExtension() {
 	$wgAjaxExportList[] = 'mv_tool_disp';
 	$wgAjaxExportList[] = 'mv_date_obj';
 	
+	
 	// media serving 
 	$wgAjaxExportList[] = 'mv_frame_server';
 	
@@ -183,7 +184,7 @@ function mvSetupExtension() {
 	
 	$wgHooks['MakeGlobalVariablesScript'][]	= 'mvGlobalJSVariables';
 	
-	//our move function hanndles calling SMW hook
+	//our move function handles calling SMW hook
 	foreach($wgHooks['TitleMoveComplete'] as $k=>$f){
  		if($f=='smwfMoveHook'){
  			unset($wgHooks['TitleMoveComplete'][$k]);
@@ -263,7 +264,6 @@ function mvSetupExtension() {
 			'[http://metavid.org/wiki/MetaVidWiki_Software More about MetaVidWiki Software]'
 	);
 }
-
 # Define a setup function
 # Add a hook to initialise the magic word
 $wgHooks['LanguageGetMagic'][]       = 'mvMagicParserFunction_Magic';

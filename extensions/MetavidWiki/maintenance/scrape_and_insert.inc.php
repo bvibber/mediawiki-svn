@@ -579,8 +579,7 @@ class MV_BillScraper extends MV_BaseScraper {
 			$this->govTrackBillId = $govTrackBillId;
 			return 	$this->govTrackBillId;
 		} else {
-			print 'error in getting govTrack bill id on: ' . $bill_key . " (skiped)\n";
-			die;
+			print 'error in getting govTrack bill id on: ' . $bill_key . " (skipped)\n";
 			return null;
 		}
 	}
@@ -617,7 +616,8 @@ class MV_BillScraper extends MV_BaseScraper {
 		print "gov_track id: " . $govTrackBillId . " from: " . $this->govTrack_bill_url . $govTrackBillId . "\n";
 
 		// get title:		
-		preg_match( '/<title>(.*)<\/title>/', $rawGovTrackPage, $title_match );		
+		$patern= '/<title>(.*)<\/title>/';
+		preg_match($patern, $rawGovTrackPage, $title_match );		
 		if ( isset( $title_match[1] ) ) {
 			//strip govtrack.us
 			$title_match[1] = str_replace( '(GovTrack.us)', '', $title_match[1]);
@@ -867,7 +867,7 @@ class MV_ArchiveOrgScrape extends MV_BaseScraper {
 }
 
 class MV_BaseScraper {
-	var $number_of_tries = 3;
+	var $number_of_tries = 5;
 	/*
 	 * simple url cach using the mv_url_cache table
 	 *
@@ -887,9 +887,9 @@ class MV_BaseScraper {
 			$page = file_get_contents( $url );
 			if ( $page === false ) {
 				echo( "error getting url retrying (".$try_count." of $this->number_of_tries)" );
-				sleep( 2 );
+				sleep( 5 );
 				if($try_count >= $this->number_of_tries){
-					print "could not get url after $this->number_of_tries \n\n";
+					die( "could not get url after $this->number_of_tries \n\n");
 					return '';
 				}				
 				$try_count++;
