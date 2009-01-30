@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.wikipro;
+package de.brightbyte.wikiword.lifescience;
 
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ConceptTypeSet;
@@ -11,7 +11,7 @@ import de.brightbyte.wikiword.ConceptTypeSet;
  * Each type is associated with a code (for internal use) and a URI (for external use).
  * The URI is constructed based on {@link RdfEntities.conceptTypeBase}.
  */
-public class WikiProConceptType extends ConceptType {
+public class LifeScienceConceptType extends ConceptType {
 
 	public static final ConceptType DISEASE;
 	public static final ConceptType DRUG;
@@ -23,27 +23,27 @@ public class WikiProConceptType extends ConceptType {
 	 * NamespaceSet for the canonical concept types. Loaded from the ConceptTypes.properties 
 	 * file in this package.
 	 */
-	public static final ConceptTypeSet wikiProConceptTypes; 
+	public static final ConceptTypeSet lifeScienceConceptTypes; 
 	
 	static {
 		try {
-			wikiProConceptTypes = getConceptTypes(null, "de.brightbyte.wikiword.wikipro"); //FIXME: make unmodifiable!
+			lifeScienceConceptTypes = getConceptTypes(null, "de.brightbyte.wikiword.wikipro"); //FIXME: make unmodifiable!
 			
-			DISEASE =   wikiProConceptTypes.getType(1001);
+			DISEASE =   lifeScienceConceptTypes.getType(1001);
 			//SYMPTOM =   wikiProConceptTypes.getType(1002);
-			DRUG =      wikiProConceptTypes.getType(1003);
+			DRUG =      lifeScienceConceptTypes.getType(1003);
 			//TREATMENT = wikiProConceptTypes.getType(1004);
-			CHEMICAL =  wikiProConceptTypes.getType(1005);
-			PROTEIN =  wikiProConceptTypes.getType(1006);
+			CHEMICAL =  lifeScienceConceptTypes.getType(1005);
+			PROTEIN =  lifeScienceConceptTypes.getType(1006);
 			//GENE =      wikiProConceptTypes.getType(1007);
-			ORGAN =     wikiProConceptTypes.getType(1008);
+			ORGAN =     lifeScienceConceptTypes.getType(1008);
 		}
 		catch (NumberFormatException ex) {
 			throw new ExceptionInInitializerError(ex);
 		}		
 	}
 
-	public WikiProConceptType(int code, String name) {
+	public LifeScienceConceptType(int code, String name) {
 		super(code, name);
 	}
 	

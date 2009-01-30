@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.wikipro.wikis;
+package de.brightbyte.wikiword.lifescience.wikis;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,7 +12,7 @@ import de.brightbyte.wikiword.analyzer.TemplateExtractor;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.TemplateExtractor.Context;
-import de.brightbyte.wikiword.wikipro.WikiProConceptType;
+import de.brightbyte.wikiword.lifescience.LifeScienceConceptType;
 
 public class WikiConfiguration_enwiki extends WikiConfiguration {
 	
@@ -510,22 +510,22 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		supplementedConceptExtractors.add( new WikiTextAnalyzer.TitlePartExtractor(Namespace.TEMPLATE, "Infobox_(.*)", 0, "$1")
 				.addCondition( new WikiTextAnalyzer.HasCategorySensor<ResourceType>(ResourceType.SUPPLEMENT, "Periodic_table_infobox_templates") ) );
 		
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(WikiProConceptType.DRUG, "_(treatments|therapies)$", 0));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor<ConceptType>(WikiProConceptType.DRUG, "Drugbox", null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(WikiProConceptType.DRUG, "^Drugs_|^DrugsNav$", 0, null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor<ConceptType>(WikiProConceptType.DRUG, "Major_Drug_Groups", null));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "_(treatments|therapies)$", 0));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Drugbox", null));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DRUG, "^Drugs_|^DrugsNav$", 0, null));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor<ConceptType>(LifeScienceConceptType.DRUG, "Major_Drug_Groups", null));
 		
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(WikiProConceptType.PROTEIN, "EC_\\d+(\\.\\d+)*", 0)); //FIXME: too much meta-stuff!
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(WikiProConceptType.PROTEIN, "^(Enzyme_links|PBB|Protein|GNF_.*_box)$", 0, null) ); 
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "EC_\\d+(\\.\\d+)*", 0)); //FIXME: too much meta-stuff!
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.PROTEIN, "^(Enzyme_links|PBB|Protein|GNF_.*_box)$", 0, null) ); 
 		
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(WikiProConceptType.CHEMICAL, "^Chembox|^NatOrganicBox$|^ICSC$|^Elementbox$", 0, null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategorySensor<ConceptType>(WikiProConceptType.CHEMICAL, "Chemical_elements"));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "^Chembox|^NatOrganicBox$|^ICSC$|^Elementbox$", 0, null));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategorySensor<ConceptType>(LifeScienceConceptType.CHEMICAL, "Chemical_elements"));
 
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(WikiProConceptType.DISEASE, "^(Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox)$", 0, null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(WikiProConceptType.DISEASE, "(_diseases|_disorders)$", 0));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "^(Infobox_Disease|Infobox_Symptom|SignSymptom_infobox|DiseaseDisorder_infobox)$", 0, null));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ConceptType>(LifeScienceConceptType.DISEASE, "(_diseases|_disorders)$", 0));
 		
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(WikiProConceptType.ORGAN, "^Infobox_(Brain|Nerve|Muscle|Vein|Artery|Bone|Anatomy)$", 0, null));
-		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(WikiProConceptType.ORGAN, "_glands$|^SUNYAnatomy|^(BUHistology|AnatomyAtlasesMicroscopic|Gray's|Anatomy-stub)$", 0, null));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "^Infobox_(Brain|Nerve|Muscle|Vein|Artery|Bone|Anatomy)$", 0, null));
+		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor<ConceptType>(LifeScienceConceptType.ORGAN, "_glands$|^SUNYAnatomy|^(BUHistology|AnatomyAtlasesMicroscopic|Gray's|Anatomy-stub)$", 0, null));
 		
 		//TODO; LOTS of anatomy navigation boxes
 
