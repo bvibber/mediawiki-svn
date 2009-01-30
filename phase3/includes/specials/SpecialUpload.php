@@ -60,7 +60,6 @@ class UploadForm {
 		$this->uploadFormTextTop = "";
 		$this->uploadFormTextAfterSummary = "";
 
-		$this->mReUpload          = $request->getCheck( 'wpReUpload' );
 		$this->mUploadClicked     = $request->getCheck( 'wpUpload' );
 
 		$this->mLicense           = $request->getText( 'wpLicense' );
@@ -69,6 +68,9 @@ class UploadForm {
 		$this->mWatchthis         = $request->getBool( 'wpWatchthis' );
 		$this->mSourceType        = $request->getText( 'wpSourceType' );
 		$this->mDestWarningAck    = $request->getText( 'wpDestFileWarningAck' );
+
+		$this->mForReUpload       = $request->getBool( 'wpForReUpload' );
+		$this->mReUpload          = $request->getCheck( 'wpReUpload' );
 
 		$this->mAction            = $request->getVal( 'action' );
 
@@ -280,8 +282,10 @@ class UploadForm {
 		 * Try actually saving the thing...
 		 * It will show an error form on failure. No it will not.
 		 */
-		$pageText = self::getInitialPageText( $this->mComment, $this->mLicense,
-			$this->mCopyrightStatus, $this->mCopyrightSource );
+		if( !$this->mForReUpload ) {
+			$pageText = self::getInitialPageText( $this->mComment, $this->mLicense,
+				$this->mCopyrightStatus, $this->mCopyrightSource );
+		}
 
 		$status = $this->mUpload->performUpload( $this->mComment, $pageText, $this->mWatchthis, $wgUser );
 
@@ -420,7 +424,7 @@ class UploadForm {
 	/**
 	 * Construct the human readable warning message from an array of duplicate files 
 	 */
-	public static function getDupeWarning( $dupes, $archivedImage = null ) {		
+	public static function getDupeWarning( $dupes ) {		
 		if( $dupes ) {
 			global $wgOut;
 			$msg = "<gallery>";
@@ -456,7 +460,9 @@ class UploadForm {
 		}
 	}
 
-	/* -------------------------------------------------------------- */
+	/*              Interface code starts below this line             *
+	 * -------------------------------------------------------------- */
+	
 
 	/**
 	 * @param string $error as HTML
@@ -615,18 +621,8 @@ wgUploadAutoFill = {$autofill};
 			  "<span class='error'>{$msg}</span>\n" );
 		}
 
-		$uploadMsg = $wgRequest->getVal( 'uploadmsg' );
-		if( $uploadMsg ) {
-			$uploadMsgName = 'uploadtext-' . $uploadMsg;
-			// Fall back to normal message if the custom messages is empty
-			if( wfEmptyMsg( $uploadMsgName, wfMsg( $uploadMsgName ) ) )
-				$uploadMsgName = 'uploadtext';
-		} else {
-			$uploadMsgName = 'uploadtext';
-		}
-
 		$wgOut->addHTML( '<div id="uploadtext">' );
-		$wgOut->addWikiMsg( $uploadMsgName, $this->mDesiredDestName );
+		$wgOut->addWikiMsg( 'uploadtext', $this->mDesiredDestName );
 		$wgOut->addHTML( "</div>\n" );
 
 		# Print a list of allowed file extensions, if so configured.  We ignore
@@ -684,7 +680,8 @@ wgUploadAutoFill = {$autofill};
 		$sourcefilename = wfMsgExt( 'sourcefilename', array( 'parseinline', 'escapenoentities' ) );
         $destfilename = wfMsgExt( 'destfilename', array( 'parseinline', 'escapenoentities' ) ); 
 		
-		$summary = wfMsgExt( 'fileuploadsummary', 'parseinline' );
+		$msg = $this->mForReUpload ? 'filereuploadsummary' : 'fileuploadsummary';
+		$summary = wfMsgExt( $msg, 'parseinline' );
 
 		$licenses = new Licenses();
 		$license = wfMsgExt( 'license', array( 'parseinline' ) );
@@ -698,10 +695,9 @@ wgUploadAutoFill = {$autofill};
 
 		$encDestName = htmlspecialchars( $this->mDesiredDestName );
 
-		$watchChecked = $this->watchCheck()
-			? 'checked="checked"'
-			: '';
-		$warningChecked = $this->mIgnoreWarning ? 'checked' : '';
+		$watchChecked = $this->watchCheck() ? 'checked="checked"' : '';
+		# Re-uploads should not need "file exist already" warnings
+		$warningChecked = ($this->mIgnoreWarning || $this->mForReUpload) ? 'checked="checked"' : '';
 
 		// Prepare form for upload or upload/copy
 		if( UploadFromUrl::isEnabled() && $wgUser->isAllowed( 'upload_by_url' ) ) {
@@ -736,6 +732,8 @@ wgUploadAutoFill = {$autofill};
 			$warningRow = '';
 			$destOnkeyup = '';
 		}
+		# Uploading a new version? If so, the name is fixed.
+		$on = $this->mForReUpload ? "readonly='readonly'" : "";
 
 		$encComment = htmlspecialchars( $this->mComment );
 
@@ -783,7 +781,8 @@ wgUploadAutoFill = {$autofill};
 			<tr>"
 		);
 
-		if ( $licenseshtml != '' ) {
+		# Re-uploads should not need license info
+		if ( !$this->mForReUpload && $licenseshtml != '' ) {
 			global $wgStylePath;
 			$wgOut->addHTML( "
 					<td class='mw-label'>
@@ -809,7 +808,7 @@ wgUploadAutoFill = {$autofill};
 			}
 		}
 
-		if ( $wgUseCopyrightUpload ) {
+		if ( !$this->mForReUpload && $wgUseCopyrightUpload ) {
 			$filestatus = wfMsgExt( 'filestatus', 'escapenoentities' );
 			$copystatus =  htmlspecialchars( $this->mCopyrightStatus );
 			$filesource = wfMsgExt( 'filesource', 'escapenoentities' );
@@ -841,7 +840,7 @@ wgUploadAutoFill = {$autofill};
 				<td>
 					<input tabindex='7' type='checkbox' name='wpWatchthis' id='wpWatchthis' $watchChecked value='true' />
 					<label for='wpWatchthis'>" . wfMsgHtml( 'watchthisupload' ) . "</label>
-					<input tabindex='8' type='checkbox' name='wpIgnoreWarning' id='wpIgnoreWarning' value='true' $warningChecked/>
+					<input tabindex='8' type='checkbox' name='wpIgnoreWarning' id='wpIgnoreWarning' value='true' $warningChecked />
 					<label for='wpIgnoreWarning'>" . wfMsgHtml( 'ignorewarnings' ) . "</label>
 				</td>
 			</tr>
@@ -862,6 +861,7 @@ wgUploadAutoFill = {$autofill};
 			</tr>" .
 			Xml::closeElement( 'table' ) .
 			Xml::hidden( 'wpDestFileWarningAck', '', array( 'id' => 'wpDestFileWarningAck' ) ) .
+			Xml::hidden( 'wpForReUpload', $this->mForReUpload, array( 'id' => 'wpForReUpload' ) ) .
 			Xml::closeElement( 'fieldset' ) .
 			Xml::closeElement( 'form' )
 		);

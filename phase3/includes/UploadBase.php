@@ -283,6 +283,12 @@ class UploadBase {
 		// Check dupes against existing files
 		$hash = File::sha1Base36( $this->mTempPath );
 		$dupes = RepoGroup::singleton()->findBySha1( $hash );
+		$title = $this->getTitle();
+		// Remove all matches against self
+		foreach ( $dupes as $key => $dupe ) {
+			if( $title->equals( $dupe->getTitle() ) ) 
+				unset( $dupes[$key] );
+		}
 		if( $dupes )
 			$warning['duplicate'] = $dupes;
 			
@@ -461,7 +467,7 @@ class UploadBase {
 	 * @access private
 	 */
 	function cleanupTempFile() {
-		if ( $this->mRemoveTempFile && file_exists( $this->mTempPath ) ) {
+		if ( $this->mRemoveTempFile && $this->mTempPath && file_exists( $this->mTempPath ) ) {
 			wfDebug( __METHOD__.": Removing temporary file {$this->mTempPath}\n" );
 			unlink( $this->mTempPath );
 		}
