@@ -27,7 +27,7 @@ public class LifeScienceConceptType extends ConceptType {
 	
 	static {
 		try {
-			lifeScienceConceptTypes = getConceptTypes(null, "de.brightbyte.wikiword.wikipro"); //FIXME: make unmodifiable!
+			lifeScienceConceptTypes = getConceptTypes(null, "de.brightbyte.wikiword.lifescience"); //FIXME: make unmodifiable!
 			
 			DISEASE =   lifeScienceConceptTypes.getType(1001);
 			//SYMPTOM =   wikiProConceptTypes.getType(1002);
