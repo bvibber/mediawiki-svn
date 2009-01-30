@@ -867,9 +867,8 @@ function do_proc_interest( $intrestKey, $intrestName ) {
 	$raw_results =  $mvScrape->doRequest( $intrest_bills_url );
 	// get all bills supported or opposed
 	preg_match_all( '/\/map\/us\/bill\/([^"]*)".*\/map\/us\/legislator.*<td>([^<]*)</U', $raw_results, $matches );
-	print $intrest_bills_url . "\n";
-	print_r($matches);
-	die;
+	print 'bill:'.$intrest_bills_url . "\n";
+	//die;
 	$sinx = $oinx = 1;
 	if ( isset( $matches[1][0] ) ) {
 		$support_count = $oppse_count = 0;
@@ -888,11 +887,11 @@ function do_proc_interest( $intrestKey, $intrestName ) {
 			}
 		}
 	}
-	$page_body .= '}}';
-	print "Interest Page: $intrestName \n\n $page_body\n";
-	die;
+	$page_body .= '}}';				
 	$wTitle = Title::makeTitle( NS_MAIN, $intrestName );
+	print "Interest: ";
 	do_update_wiki_page( $wTitle, $page_body );
+	print "\n";
 }
 function do_rm_congress_persons() {
 	$dbr =& wfGetDB( DB_SLAVE );
