@@ -419,7 +419,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		// print "FROM TABLES:". $from_tables;
 
 		// restrict to streams with valid $mvDefaultVideoQualityKey files:
-		global $mvDefaultVideoQualityKey;
+		global $mvDefaultVideoQualityKey, $mvDefaultFlashQualityKey;
 		$from_tables .= 'JOIN ' . $dbr->tableName( 'mv_stream_files' ) .
 				' ON ' .
 				'( ' . $dbr->tableName( 'mv_mvd_index' ) . '.stream_id = ' .
@@ -488,7 +488,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		// $sql.="LIMIT {$this->offset}, {$this->limit} ";
 		$options['LIMIT'] = $this->limit;
 		$options['OFFSET'] = $this->offset;
-
+		$options['GROUP BY'] = 'mv_page_id';
 		$result = $dbr->select( $from_tables,
 			$vars,
 			$conds,
