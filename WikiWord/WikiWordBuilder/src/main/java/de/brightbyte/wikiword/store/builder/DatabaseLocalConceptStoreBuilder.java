@@ -514,7 +514,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 
 		if (beginTask("finishBadLinks", "deleteAmbiguousAliases")) {
 			//NOTE: drop category aliases if they are ambiguous
-			int n = deleteAmbiguousAliases(aliasTable, "source", "target", "scope = "+AliasScope.CATEGORY.ordinal());     
+			int n = deleteAmbiguousAliases(aliasTable, "source", "source_name", "target", "scope = "+AliasScope.CATEGORY.ordinal());     
 			endTask("finishBadLinks", "deleteAmbiguousAliases", n+" links");
 		}
 
@@ -560,22 +560,22 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		*/
 	}
 	
-	private int deleteAmbiguousAliases(RelationTable aliasTable, String sourceField, String targetField, String where) throws PersistenceException {
-		String sql = "CREATE TEMPORARY TABLE bad_alias ( id INT, PRIMARY KEY (id) )";
+	private int deleteAmbiguousAliases(RelationTable aliasTable, String sourceField, String sourceNameField, String targetField, String where) throws PersistenceException {
+		String sql = "CREATE TEMPORARY TABLE bad_alias ( id INT, name varbinary(255), PRIMARY KEY (id, name) )";
 		executeUpdate("deleteAmbiguousAliases:createTemp", sql);
 		
-		sql = "INSERT INTO bad_alias " +
-			" SELECT " + sourceField + " " +
+		sql = "INSERT IGNORE INTO bad_alias " +
+			" SELECT " + sourceField + ", " + sourceNameField + " " +
 			" FROM " + aliasTable.getSQLName() + " " +
 			(where==null ? "" : " WHERE " + where + " ") +
-			" GROUP BY " + sourceField +
+			" GROUP BY " + sourceField + ", " + sourceNameField + " " +
 			" HAVING count(DISTINCT " + targetField + ") > 1";
 		
 		executeUpdate("deleteAmbiguousAliases:fillTemp", sql);
 
 		sql = "DELETE FROM A " +
 			" USING " + aliasTable.getSQLName() + " AS A " +
-			" JOIN bad_alias AS T ON T.id = A." + sourceField + " " +
+			" JOIN bad_alias AS T ON T.id = A." + sourceField + " AND T.name = A." + sourceNameField + " " +
 			(where==null ? "" : " WHERE " + where + " ");
 		
 		int n = executeUpdate("deleteAmbiguousAliases:delete", sql);
