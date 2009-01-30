@@ -125,7 +125,7 @@ class UploadBase {
 		/**
 		 * In some cases we may forbid overwriting of existing files.
 		 */
-		$overwrite = $this->checkOverwrite( $this->mDestName );
+		$overwrite = $this->checkOverwrite();
 		if( $overwrite !== true )
 			return array( 'status' => self::OVERWRITE_EXISTING_FILE, 'overwrite' => $overwrite );
 		
