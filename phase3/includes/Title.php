@@ -294,11 +294,77 @@ class Title {
 	/**
 	 * Extract a redirect destination from a string and return the
 	 * Title, or null if the text doesn't contain a valid redirect
+	 * This will only return the very next target, useful for
+	 * the redirect table and other checks that don't need full recursion
 	 *
-	 * @param $text \type{String} Text with possible redirect
+	 * @param $text \type{\string} Text with possible redirect
 	 * @return \type{Title} The corresponding Title
 	 */
 	public static function newFromRedirect( $text ) {
+		return self::newFromRedirectInternal( $text );
+	}
+	
+	/**
+	 * Extract a redirect destination from a string and return the
+	 * Title, or null if the text doesn't contain a valid redirect
+	 * This will recurse down $wgMaxRedirects times or until a non-redirect target is hit
+	 * in order to provide (hopefully) the Title of the final destination instead of another redirect
+	 *
+	 * @param $text \type{\string} Text with possible redirect
+	 * @return \type{Title} The corresponding Title
+	 */
+	public static function newFromRedirectRecurse( $text ) {
+		$titles = self::newFromRedirectArray( $text );
+		return array_pop( $titles );
+	}
+	
+	/**
+	 * Extract a redirect destination from a string and return an
+	 * array of Titles, or null if the text doesn't contain a valid redirect
+	 * The last element in the array is the final destination after all redirects
+	 * have been resolved (up to $wgMaxRedirects times)
+	 *
+	 * @param $text \type{\string} Text with possible redirect
+	 * @return \type{\array} Array of Titles, with the destination last
+	 */
+	public static function newFromRedirectArray( $text ) {
+		global $wgMaxRedirects;
+		// are redirects disabled?
+		if( $wgMaxRedirects < 1 )
+			return null;
+		$title = self::newFromRedirectInternal( $text );
+		if( is_null( $title ) )
+			return null;
+		// recursive check to follow double redirects
+		$recurse = $wgMaxRedirects;
+		$titles = array( $title );
+		while( --$recurse >= 0 ) {
+			if( $title->isRedirect() ) {
+				$article = new Article( $title, 0 );
+				$newtitle = $article->getRedirectTarget();
+			} else {
+				break;
+			}
+			// Redirects to some special pages are not permitted
+			if( $newtitle instanceOf Title && $newtitle->isValidRedirectTarget() ) {
+				// the new title passes the checks, so make that our current title so that further recursion can be checked
+				$title = $newtitle;
+				$titles[] = $newtitle;
+			} else {
+				break;
+			}
+		}
+		return $titles;
+	}
+	
+	/**
+	 * Really extract the redirect destination
+	 * Do not call this function directly, use one of the newFromRedirect* functions above
+	 *
+	 * @param $text \type{\string} Text with possible redirect
+	 * @return \type{Title} The corresponding Title
+	 */
+	protected static function newFromRedirectInternal( $text ) {
 		$redir = MagicWord::get( 'redirect' );
 		$text = trim($text);
 		if( $redir->matchStartAndRemove( $text ) ) {
@@ -316,13 +382,11 @@ class Title {
 					$m[1] = urldecode( ltrim( $m[1], ':' ) );
 				}
 				$title = Title::newFromText( $m[1] );
-				// Redirects to some special pages are not permitted
-				if( $title instanceof Title 
-						&& !$title->isSpecial( 'Userlogout' )
-						&& !$title->isSpecial( 'Filepath' ) ) 
-				{
-					return $title;
+				// If the title is a redirect to bad special pages or is invalid, return null
+				if( !$title instanceof Title || !$title->isValidRedirectTarget() ) {
+					return null;
 				}
+				return $title;
 			}
 		}
 		return null;
@@ -452,8 +516,12 @@ class Title {
 	 */
 	static function escapeFragmentForURL( $fragment ) {
 		global $wgEnforceHtmlIds;
+		# Note that we don't urlencode the fragment.  urlencoded Unicode
+		# fragments appear not to work in IE (at least up to 7) or in at least
+		# one version of Opera 9.x.  The W3C validator, for one, doesn't seem
+		# to care if they aren't encoded.
 		return Sanitizer::escapeId( $fragment,
-			$wgEnforceHtmlIds ? array() : 'xml' );
+			$wgEnforceHtmlIds ? 'noninitial' : 'xml' );
 	}
 
 #----------------------------------------------------------------------------
@@ -988,7 +1056,7 @@ class Title {
  	 */
 	public function userCan( $action, $doExpensiveQueries = true ) {
 		global $wgUser;
-		return ( $this->getUserPermissionsErrorsInternal( $action, $wgUser, $doExpensiveQueries ) === array());
+		return ($this->getUserPermissionsErrorsInternal( $action, $wgUser, $doExpensiveQueries, true ) === array());
 	}
 
 	/**
@@ -1020,7 +1088,7 @@ class Title {
 		}
 
 		// Edit blocks should not affect reading. Account creation blocks handled at userlogin.
-		if ( $user->isBlockedFrom( $this ) && $action != 'read' && $action != 'createaccount' ) {
+		if ( $action != 'read' && $action != 'createaccount' && $user->isBlockedFrom( $this ) ) {
 			$block = $user->mBlock;
 
 			// This is from OutputPage::blockedPage
@@ -1090,9 +1158,10 @@ class Title {
 	 * @param $action \type{\string} action that permission needs to be checked for
 	 * @param $user \type{User} user to check
 	 * @param $doExpensiveQueries \type{\bool} Set this to false to avoid doing unnecessary queries.
+	 * @param $short \type{\bool} Set this to true to stop after the first permission error.
 	 * @return \type{\array} Array of arrays of the arguments to wfMsg to explain permissions problems.
 	 */
-	private function getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries = true ) {
+	private function getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries=true, $short=false ) {
 		wfProfileIn( __METHOD__ );
 
 		$errors = array();
@@ -1102,7 +1171,7 @@ class Title {
 			wfProfileOut( __METHOD__ );
 			return $result ? array() : array( array( 'badaccess-group0' ) );
 		}
-
+		// Check getUserPermissionsErrors hook
 		if( !wfRunHooks( 'getUserPermissionsErrors', array(&$this,&$user,$action,&$result) ) ) {
 			if( is_array($result) && count($result) && !is_array($result[0]) )
 				$errors[] = $result; # A single array representing an error
@@ -1113,9 +1182,13 @@ class Title {
 			else if( $result === false )
 				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
 		}
-		if( $doExpensiveQueries && !wfRunHooks( 'getUserPermissionsErrorsExpensive', 
-			array(&$this,&$user,$action,&$result) ) )
-		{
+		# Short-circuit point
+		if( $short && count($errors) > 0 ) {
+			wfProfileOut( __METHOD__ );
+			return $errors;
+		}
+		// Check getUserPermissionsErrorsExpensive hook
+		if( $doExpensiveQueries && !wfRunHooks( 'getUserPermissionsErrorsExpensive', array(&$this,&$user,$action,&$result) ) ) {
 			if( is_array($result) && count($result) && !is_array($result[0]) )
 				$errors[] = $result; # A single array representing an error
 			else if( is_array($result) && is_array($result[0]) )
@@ -1124,6 +1197,11 @@ class Title {
 				$errors[] = array($result); # A string representing a message-id
 			else if( $result === false )
 				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
+		}
+		# Short-circuit point
+		if( $short && count($errors) > 0 ) {
+			wfProfileOut( __METHOD__ );
+			return $errors;
 		}
 		
 		// TODO: document
@@ -1141,8 +1219,7 @@ class Title {
 
 		# protect css/js subpages of user pages
 		# XXX: this might be better using restrictions
-		# XXX: Find a way to work around the php bug that prevents using 
-		# $this->userCanEditCssJsSubpage() from working
+		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssJsSubpage() from working
 		if( $this->isCssJsSubpage() && !$user->isAllowed('editusercssjs')
 			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) )
 		{
@@ -1164,41 +1241,47 @@ class Title {
 					$right = ( $right == 'sysop' ) ? 'protect' : $right;
 					if( '' != $right && !$user->isAllowed( $right ) ) {
 						$pages = '';
-						foreach( $cascadingSources as $page ) {
+						foreach( $cascadingSources as $page )
 							$pages .= '* [[:' . $page->getPrefixedText() . "]]\n";
-						}
 						$errors[] = array( 'cascadeprotected', count( $cascadingSources ), $pages );
 					}
 				}
 			}
 		}
+		# Short-circuit point
+		if( $short && count($errors) > 0 ) {
+			wfProfileOut( __METHOD__ );
+			return $errors;
+		}
 
-		# Get restrictions on each action, 'create' handled below
-		if( $action != 'create' ) {
-			foreach( $this->getRestrictions($action) as $right ) {
-				// Backwards compatibility, rewrite sysop -> protect
-				if( $right == 'sysop' ) {
-					$right = 'protect';
-				}
-				if( '' != $right && !$user->isAllowed( $right ) ) {
-					// Users with 'editprotected' permission can edit protected pages
-					if( $action=='edit' && $user->isAllowed( 'editprotected' ) ) {
-						// Users with 'editprotected' permission cannot edit protected pages
-						// with cascading option turned on.
-						if( $this->mCascadeRestriction ) {
-							$errors[] = array( 'protectedpagetext', $right );
-						} else {
-							// Nothing, user can edit!
-						}
-					} else {
+		foreach( $this->getRestrictions($action) as $right ) {
+			// Backwards compatibility, rewrite sysop -> protect
+			if( $right == 'sysop' ) {
+				$right = 'protect';
+			}
+			if( '' != $right && !$user->isAllowed( $right ) ) {
+				// Users with 'editprotected' permission can edit protected pages
+				if( $action=='edit' && $user->isAllowed( 'editprotected' ) ) {
+					// Users with 'editprotected' permission cannot edit protected pages
+					// with cascading option turned on.
+					if( $this->mCascadeRestriction ) {
 						$errors[] = array( 'protectedpagetext', $right );
 					}
+				} else {
+					$errors[] = array( 'protectedpagetext', $right );
 				}
 			}
 		}
+		# Short-circuit point
+		if( $short && count($errors) > 0 ) {
+			wfProfileOut( __METHOD__ );
+			return $errors;
+		}
 
-		if( $action == 'protect' && $this->getUserPermissionsErrors('edit',$user) != array() ) {
-			$errors[] = array( 'protect-cantedit' ); // If they can't edit, they shouldn't protect.
+		if( $action == 'protect' ) {
+			if( $this->getUserPermissionsErrors('edit', $user) != array() ) {
+				$errors[] = array( 'protect-cantedit' ); // If they can't edit, they shouldn't protect.
+			}
 		}
 
 		if( $action == 'create' ) {
@@ -1319,7 +1402,7 @@ class Title {
 
 		$expiry_description = '';
 		if ( $encodedExpiry != 'infinity' ) {
-			$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry ) ).')';
+			$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry ) , $wgContLang->date( $expiry ) , $wgContLang->time( $expiry ) ).')';
 		}
 		else {
 			$expiry_description .= ' (' . wfMsgForContent( 'protect-expiry-indefinite' ).')';
@@ -2065,14 +2148,22 @@ class Title {
 
 		# Namespace or interwiki prefix
 		$firstPass = true;
+		$prefixRegexp = "/^(.+?)_*:_*(.*)$/S";
 		do {
 			$m = array();
-			if ( preg_match( "/^(.+?)_*:_*(.*)$/S", $dbkey, $m ) ) {
+			if ( preg_match( $prefixRegexp, $dbkey, $m ) ) {
 				$p = $m[1];
-				if ( $ns = $wgContLang->getNsIndex( $p )) {
+				if ( $ns = $wgContLang->getNsIndex( $p ) ) {
 					# Ordinary namespace
 					$dbkey = $m[2];
 					$this->mNamespace = $ns;
+					# For Talk:X pages, check if X has a "namespace" prefix
+					if( $ns == NS_TALK && preg_match( $prefixRegexp, $dbkey, $x ) ) {
+						if( $wgContLang->getNsIndex( $x[1] ) )
+							return false; # Disallow Talk:File:x type titles...
+						else if( Interwiki::isValidInterwiki( $x[1] ) )
+							return false; # Disallow Talk:Interwiki:x type titles...
+					}
 				} elseif( Interwiki::isValidInterwiki( $p ) ) {
 					if( !$firstPass ) {
 						# Can't make a local interwiki link to an interwiki link.
@@ -2560,8 +2651,8 @@ class Title {
 			);
 			# Update the protection log
 			$log = new LogPage( 'protect' );
-			$comment = wfMsgForContent('prot_1movedto2',$this->getPrefixedText(), $nt->getPrefixedText() );
-			if( $reason ) $comment .= ': ' . $reason;
+			$comment = wfMsgForContent( 'prot_1movedto2', $this->getPrefixedText(), $nt->getPrefixedText() );
+			if( $reason ) $comment .= wfMsgForContent( 'colon-separator' ) . $reason;
 			$log->addEntry( 'move_prot', $nt, $comment, array($this->getPrefixedText()) ); // FIXME: $params?
 		}
 
@@ -3035,6 +3126,28 @@ class Title {
 	}
 	
 	/**
+	 * Get the first revision of the page
+	 *
+	 * @param $flags \type{\int} GAID_FOR_UPDATE
+	 * @return Revision (or NULL if page doesn't exist)
+	 */
+	public function getFirstRevision( $flags=0 ) {
+		$db = ($flags & GAID_FOR_UPDATE) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
+		$pageId = $this->getArticleId($flags);
+		if( !$pageId ) return NULL;
+		$row = $db->selectRow( 'revision', '*',
+			array( 'rev_page' => $pageId ),
+			__METHOD__,
+			array( 'ORDER BY' => 'rev_timestamp ASC', 'LIMIT' => 1 )
+		);
+		if( !$row ) {
+			return NULL;
+		} else {
+			return new Revision( $row );
+		}
+	}
+	
+	/**
 	 * Check if this is a new page
 	 *
 	 * @return bool
@@ -3396,5 +3509,27 @@ class Title {
 			$redirs[] = self::newFromRow( $row );
 		}
 		return $redirs;
+	}
+	
+	/**
+	 * Check if this Title is a valid redirect target
+	 *
+	 * @return \type{\bool} TRUE or FALSE
+	 */
+	public function isValidRedirectTarget() {
+		global $wgInvalidRedirectTargets;
+		
+		// invalid redirect targets are stored in a global array, but explicity disallow Userlogout here
+		if( $this->isSpecial( 'Userlogout' ) ) {
+			return false;
+		}
+		
+		foreach( $wgInvalidRedirectTargets as $target ) {
+			if( $this->isSpecial( $target ) ) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

@@ -431,7 +431,7 @@ function wfGetLangObj( $langcode = false ){
 		return Language::factory( $langcode );
 
 	# $langcode is a string, but not a valid language code; use content language.
-	wfDebug( 'Invalid language code passed to wfGetLangObj, falling back to content language.' );
+	wfDebug( "Invalid language code passed to wfGetLangObj, falling back to content language.\n" );
 	return $wgContLang;
 }
 
@@ -771,7 +771,7 @@ function wfAbruptExit( $error = false ){
 			wfDebug("WARNING: Abrupt exit in $file at line $line\n");
 		}
 	} else {
-		wfDebug('WARNING: Abrupt exit\n');
+		wfDebug("WARNING: Abrupt exit\n");
 	}
 
 	wfLogProfilingData();
@@ -1693,6 +1693,11 @@ define('TS_ORACLE', 6);
 define('TS_POSTGRES', 7);
 
 /**
+ * DB2 format time
+ */
+define('TS_DB2', 8);
+
+/**
  * @param mixed $outputtype A timestamp in one of the supported formats, the
  *                          function will autodetect which format is supplied
  *                          and act accordingly.
@@ -1753,6 +1758,8 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 			return gmdate( 'd-M-y h.i.s A', $uts) . ' +00:00';
 		case TS_POSTGRES:
 			return gmdate( 'Y-m-d H:i:s', $uts) . ' GMT';
+		case TS_DB2:
+			return gmdate( 'Y-m-d H:i:s', $uts);
 		default:
 			throw new MWException( 'wfTimestamp() called with illegal output type.');
 	}
@@ -1837,7 +1844,7 @@ function wfGetCachedNotice( $name ) {
 			$parserMemc->set( $key, array( 'html' => $parsed, 'hash' => md5( $notice ) ), 600 );
 			$notice = $parsed;
 		} else {
-			wfDebug( 'wfGetCachedNotice called for ' . $name . ' with no $wgOut available' );
+			wfDebug( 'wfGetCachedNotice called for ' . $name . ' with no $wgOut available'."\n" );
 			$notice = '';
 		}
 	}
@@ -2101,11 +2108,26 @@ function wfIniGetBool( $setting ) {
 function wfShellExec( $cmd, &$retval=null ) {
 	global $IP, $wgMaxShellMemory, $wgMaxShellFileSize, $wgMaxShellTime;
 
-	if( wfIniGetBool( 'safe_mode' ) ) {
-		wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
+	static $disabled;
+	if ( is_null( $disabled ) ) {
+		$disabled = false;
+		if( wfIniGetBool( 'safe_mode' ) ) {
+			wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
+			$disabled = true;
+		}
+		$functions = explode( ',', ini_get( 'disable_functions' ) );
+		$functions = array_map( 'trim', $functions );
+		$functions = array_map( 'strtolower', $functions );
+		if ( in_array( 'passthru', $functions ) ) {
+			wfDebug( "passthru is in disabled_functions\n" );
+			$disabled = true;
+		}
+	}
+	if ( $disabled ) {
 		$retval = 1;
 		return "Unable to run external programs in safe mode.";
 	}
+
 	wfInitShellLocale();
 
 	if ( php_uname( 's' ) == 'Linux' ) {
@@ -2317,9 +2339,16 @@ function wfMergeErrorArrays(/*...*/) {
 }
 
 /**
- * Make a URL index, appropriate for the el_index field of externallinks.
+ * parse_url() work-alike, but non-broken.  Differences:
+ *
+ * 1) Does not raise warnings on bad URLs (just returns false)
+ * 2) Handles protocols that don't use :// (e.g., mailto: and news:) correctly
+ * 3) Adds a "delimiter" element to the array, either '://' or ':' (see (2))
+ *
+ * @param string $url A URL to parse
+ * @return array Bits of the URL in an associative array, per PHP docs
  */
-function wfMakeUrlIndex( $url ) {
+function wfParseUrl( $url ) {
 	global $wgUrlProtocols; // Allow all protocols defined in DefaultSettings/LocalSettings.php
 	wfSuppressWarnings();
 	$bits = parse_url( $url );
@@ -2327,12 +2356,12 @@ function wfMakeUrlIndex( $url ) {
 	if ( !$bits ) {
 		return false;
 	}
+
 	// most of the protocols are followed by ://, but mailto: and sometimes news: not, check for it
-	$delimiter = '';
-	if ( in_array( $bits['scheme'] . '://' , $wgUrlProtocols ) ) {
-		$delimiter = '://';
-	} elseif ( in_array( $bits['scheme'] .':' , $wgUrlProtocols ) ) {
-		$delimiter = ':';
+	if ( in_array( $bits['scheme'] . '://', $wgUrlProtocols ) ) {
+		$bits['delimiter'] = '://';
+	} elseif ( in_array( $bits['scheme'] . ':', $wgUrlProtocols ) ) {
+		$bits['delimiter'] = ':';
 		// parse_url detects for news: and mailto: the host part of an url as path
 		// We have to correct this wrong detection
 		if ( isset ( $bits['path'] ) ) {
@@ -2342,6 +2371,15 @@ function wfMakeUrlIndex( $url ) {
 	} else {
 		return false;
 	}
+
+	return $bits;
+}
+
+/**
+ * Make a URL index, appropriate for the el_index field of externallinks.
+ */
+function wfMakeUrlIndex( $url ) {
+	$bits = wfParseUrl( $url );
 
 	// Reverse the labels in the hostname, convert to lower case
 	// For emails reverse domainpart only
@@ -2364,7 +2402,7 @@ function wfMakeUrlIndex( $url ) {
 	}
 	// Reconstruct the pseudo-URL
 	$prot = $bits['scheme'];
-	$index = "$prot$delimiter$reversedHost";
+	$index = $prot . $bits['delimiter'] . $reversedHost;
 	// Leave out user and password. Add the port, path, query and fragment
 	if ( isset( $bits['port'] ) )      $index .= ':' . $bits['port'];
 	if ( isset( $bits['path'] ) ) {

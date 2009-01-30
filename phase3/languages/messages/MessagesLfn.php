@@ -225,6 +225,7 @@ $messages = array(
 'helppage'             => 'Help:Contenis',
 'mainpage'             => 'Paje Prima',
 'mainpage-description' => 'Paje Prima',
+'policy-url'           => 'Project:Politica',
 'portal'               => 'Porta comunial',
 'portal-url'           => 'Project:Porta comunial',
 'privacy'              => 'Promete de privadia',
@@ -238,11 +239,15 @@ $messages = array(
 'youhavenewmessagesmulti' => 'Tu ave mesajes nova en $1',
 'editsection'             => 'cambia',
 'editold'                 => 'edita',
+'viewsourceold'           => 'vide orijin',
+'editlink'                => 'cambia',
+'viewsourcelink'          => 'vide orijin',
 'editsectionhint'         => 'Edita sesion: $1',
 'toc'                     => 'Contenida',
 'showtoc'                 => 'mostra',
 'hidetoc'                 => 'asconde',
 'viewdeleted'             => 'Vide $1?',
+'feedlinks'               => 'Flue:',
 'site-rss-feed'           => '$1 RSS Flue',
 'site-atom-feed'          => '$1 Atom Flue',
 'page-rss-feed'           => '"$1" RSS Flue',
@@ -294,10 +299,12 @@ $messages = array(
 'yourrealname'            => 'Nom vera:',
 'yourlanguage'            => 'Lingua:',
 'yournick'                => 'Suscrive:',
+'email'                   => 'Eposta',
 'prefs-help-realname'     => 'Tu nom vera no es obligada, ma si tu vole dona tu nom vera, el va es usada per onora tu per tu labora.',
 'loginsuccesstitle'       => 'Entra susedente',
 'loginsuccess'            => "'''Tu ia entrada aora a {{SITENAME}} como \"\$1\".'''",
-'nosuchuser'              => 'Es no usor con la nom "$1". Esamina la spele, o crea un conta nova.',
+'nosuchuser'              => 'Es no usor con la nom "$1".
+Esamina la spele, o [[Special:UserLogin/signup|crea un conta nova]].',
 'nosuchusershort'         => 'Es no usor con esta nom "<nowiki>$1</nowiki>". Esamina la spele.',
 'nouserspecified'         => 'Tu debe indica un nom de usor.',
 'wrongpassword'           => 'La sinia de entra no es coreta. Per favore, atenta ancora.',
@@ -321,7 +328,9 @@ Ante alga otra eposta es enviada a la conta, tu va nesesa segue la instruis en l
 'loginlanguagelabel'      => 'Lingua: $1',
 
 # Password reset dialog
-'retypenew' => 'Re-entra tu sinia secreta nova:',
+'oldpassword' => 'Sinia secreta vea:',
+'newpassword' => 'Sinia secreta nova:',
+'retypenew'   => 'Re-entra tu sinia secreta nova:',
 
 # Edit page toolbar
 'bold_sample'     => 'Testo en leteras forte',
@@ -412,7 +421,7 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'histlegend'             => 'Diferente eleje: Marca la caxas de radio de esta varias per compare e clica entra o la boton a la funda.<br />
 (presente) = difere de la varia presente,
 (presedente) = difere con varia presedente, M = edita minor.',
-'history-fieldset-title' => 'Xerca en istoria',
+'history-fieldset-title' => 'Surfa istoria',
 'histfirst'              => 'Prima',
 'histlast'               => 'Ultima',
 'historysize'            => '({{PLURAL:$1|1 otuple|$1 otuples}})',
@@ -516,10 +525,10 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 
 'upload-file-error' => 'Era interna',
 
-# Special:FileList
+# Special:ListFiles
 'imgfile'        => 'fix',
-'imagelist'      => 'Lista de imajes',
-'imagelist_name' => 'Nom',
+'listfiles'      => 'Lista de imajes',
+'listfiles_name' => 'Nom',
 
 # File description page
 'filehist'                  => 'Istoria de fix',
@@ -598,6 +607,8 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 'movethispage'            => 'Move esta paje',
 'unusedimagestext'        => '<p>Nota ce otra locas de rede pote lia a un imaje con un URL direta, e donce el pote continua es listada asi contra ce el es usada ativa.</p>',
 'unusedcategoriestext'    => 'La categorias seguente esiste sin es usada par otra articles o categorias.',
+'pager-newer-n'           => '{{PLURAL:$1|1 plu resente|$1 plu resentes}}',
+'pager-older-n'           => '{{PLURAL:$1|1 plu vea|$1 plu veas}}',
 
 # Book sources
 'booksources'    => 'Orijines de libros',
@@ -703,7 +714,7 @@ Asi es la ajustas presente per la paje <strong>$1</strong>:',
 'protect-expiring'            => 'fini $1 (UTC)',
 'protect-cascade'             => 'Proteje pajes ce es incluida en esta paje (proteje cascadente)',
 'protect-cantedit'            => 'Tu no pote cambia la nivel de proteje de esta paje, per ce tu no ave la permite per edita el.',
-'protect-expiry-options'      => '2 oras:2 hours,1 dia:1 day,3 dias:3 days,1 semana:1 week,2 semanas:2 weeks,1 mensa:1 month,3 mensas:3 months,6 mensas:6 months,1 anio:1 year,nonlimitada:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 ora:1 hour,1 dia:1 day,1 semana:1 week,2 semanas:2 weeks,1 mensa:1 month,3 mensas:3 months,6 mensas:6 months,1 anio:1 year,nonlimitada:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'Permete:',
 'restriction-level'           => 'Nivel de restrinje:',
 
@@ -725,8 +736,10 @@ Asi es la ajustas presente per la paje <strong>$1</strong>:',
 'month'         => 'De mensa (e plu vea):',
 'year'          => 'De anio (e plu vea):',
 
+'sp-contributions-newbies'     => 'Sola mostra contribuis de contas nova',
 'sp-contributions-newbies-sub' => 'Per contas nova',
 'sp-contributions-blocklog'    => 'Impedi arcivo',
+'sp-contributions-search'      => 'Xerca per contribuis',
 'sp-contributions-username'    => 'Adirije de IP o nom de usor:',
 'sp-contributions-submit'      => 'Xerca',
 
@@ -855,8 +868,8 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 'others' => 'otras',
 
 # Browsing diffs
-'previousdiff' => '← Difere presedente',
-'nextdiff'     => 'Difere seguente →',
+'previousdiff' => '← Difere plu vea',
+'nextdiff'     => 'Difere plu nova →',
 
 # Media information
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|paje|pajes}}',
@@ -896,7 +909,7 @@ Si la fix ia es cambiada de se stato orijinal, alga detalias pote no es clara en
 
 # External editor support
 'edit-externally'      => 'Edita esta fix con un programa esterna',
-'edit-externally-help' => 'Vide la [http://www.mediawiki.org/wiki/Manual:External_editors instruis per comensa] per plu instruis.',
+'edit-externally-help' => '(Vide la [http://www.mediawiki.org/wiki/Manual:External_editors instruis per comensa] per plu instruis)',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'tota',
@@ -912,7 +925,11 @@ Si la fix ia es cambiada de se stato orijinal, alga detalias pote no es clara en
 'watchlisttools-raw'  => 'Edita la lista rua de pajes oservada',
 
 # Special:Version
-'version' => 'Varia', # Not used as normal message but as header for the special page itself
+'version'         => 'Varia', # Not used as normal message but as header for the special page itself
+'version-version' => 'Varia',
+
+# Special:FilePath
+'filepath-page' => 'Fix:',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch-submit' => 'Xerca',

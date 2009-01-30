@@ -36,7 +36,7 @@ class DeletedContribsPager extends IndexPager {
 				'ar_user', 'ar_user_text', 'ar_deleted'
 			),
 			'conds' => $conds,
-			'options' => array( 'FORCE INDEX' => $index )
+			'options' => array( 'USE INDEX' => $index )
 		);
 	}
 
@@ -203,6 +203,8 @@ class DeletedContributionsPage extends SpecialPage {
 		}
 
 		global $wgUser, $wgOut, $wgLang, $wgRequest;
+
+		$wgOut->setPageTitle( wfMsg( 'deletedcontributions-title' ) );
 
 		$options = array();
 

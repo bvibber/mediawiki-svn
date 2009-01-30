@@ -186,6 +186,22 @@ class ApiResult extends ApiBase {
 			ApiResult :: setElement($data, $name, $value);	// Add named element
 	}
 
+	/**
+	 * Ensure all values in this result are valid UTF-8.
+	 */
+	public function cleanUpUTF8()
+	{
+		$data = & $this->getData();
+		array_walk_recursive($data, array('ApiResult', 'cleanUp_helper'));
+	}
+	
+	private static function cleanUp_helper($s)
+	{
+		if(!is_string($s))
+			return $s;
+		return UtfNormal::cleanUp($s);
+	}
+
 	public function execute() {
 		ApiBase :: dieDebug(__METHOD__, 'execute() is not supported on Result object');
 	}

@@ -40,7 +40,7 @@ class MailAddress {
 		} else {
 			$this->address = strval( $address );
 			$this->name = strval( $name );
-			$this->reaName = strval( $realName );
+			$this->realName = strval( $realName );
 		}
 	}
 
@@ -101,7 +101,7 @@ class UserMailer {
 	 * @param $from MailAddress: sender's email
 	 * @param $subject String: email's subject.
 	 * @param $body String: email's text.
-	 * @param $replyto String: optional reply-to email (default: null).
+	 * @param $replyto MailAddress: optional reply-to email (default: null).
 	 * @param $contentType String: optional custom Content-Type
 	 * @return mixed True on success, a WikiError object on failure.
 	 */
@@ -316,7 +316,6 @@ class EmailNotification {
 	 * @param $oldid (default: false)
 	 */
 	function actuallyNotifyOnPageChange($editor, $title, $timestamp, $summary, $minorEdit, $oldid=false) {
-
 		# we use $wgPasswordSender as sender's address
 		global $wgEnotifWatchlist;
 		global $wgEnotifMinorEdits, $wgEnotifUserTalk, $wgShowUpdatedMarker;
@@ -372,7 +371,6 @@ class EmailNotification {
 				$dbr = wfGetDB( DB_SLAVE );
 
 				list( $user ) = $dbr->tableNamesN( 'user' );
-
 				$res = $dbr->select( array( 'watchlist', 'user' ),
 					array( "$user.*" ),
 					array(
@@ -381,7 +379,8 @@ class EmailNotification {
 						'wl_namespace' => $title->getNamespace(),
 						$userCondition,
 						'wl_notificationtimestamp IS NULL',
-					), __METHOD__ );
+					), __METHOD__
+				);
 				$userArray = UserArray::newFromResult( $res );
 
 				foreach ( $userArray as $watchingUser ) {
@@ -401,26 +400,28 @@ class EmailNotification {
 			$this->compose( $user );
 		}
 
-		$this->sendMails();
-
-		$latestTimestamp = Revision::getTimestampFromId( $title, $title->getLatestRevID() );
+		$latestTimestamp = Revision::getTimestampFromId( $title, $title->getLatestRevID(GAID_FOR_UPDATE) );
 		// Do not update watchlists if something else already did.
 		if ( $timestamp >= $latestTimestamp && ($wgShowUpdatedMarker || $wgEnotifWatchlist) ) {
 			# Mark the changed watch-listed page with a timestamp, so that the page is
 			# listed with an "updated since your last visit" icon in the watch list. Do
 			# not do this to users for their own edits.
 			$dbw = wfGetDB( DB_MASTER );
+			$dbw->begin();
 			$dbw->update( 'watchlist',
 				array( /* SET */
 					'wl_notificationtimestamp' => $dbw->timestamp($timestamp)
 				), array( /* WHERE */
 					'wl_title' => $title->getDBkey(),
 					'wl_namespace' => $title->getNamespace(),
-					'wl_notificationtimestamp IS NULL',
+					'wl_notificationtimestamp IS NULL', // store oldest unseen change time
 					'wl_user != ' . $editor->getID()
 				), __METHOD__
 			);
+			$dbw->commit();
 		}
+		
+		$this->sendMails();
 
 		wfProfileOut( __METHOD__ );
 	} # function NotifyOnChange
@@ -448,9 +449,6 @@ class EmailNotification {
 		$replyto = ''; /* fail safe */
 		$keys    = array();
 
-		# regarding the use of oldid as an indicator for the last visited version, see also
-		# http://bugzilla.wikipeda.org/show_bug.cgi?id=603 "Delete + undelete cycle doesn't preserve old_id"
-		# However, in the case of a new page which is already watched, we have no previous version to compare
 		if( $this->oldid ) {
 			$difflink = $this->title->getFullUrl( 'diff=0&oldid=' . $this->oldid );
 			$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_lastvisited', $difflink );

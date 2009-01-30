@@ -1132,19 +1132,15 @@ class UndeleteForm {
 		$comment = $sk->revComment( $rev );
 		$revdlink = '';
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
-			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
 			// If revision was hidden from sysops
-				$del = wfMsgHtml('rev-delundel');
+				$revdlink = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.wfMsgHtml('rev-delundel').')' );
 			} else {
-				$del = $sk->makeKnownLinkObj( $revdel,
-					wfMsgHtml('rev-delundel'),
-					'target=' . $this->mTargetObj->getPrefixedUrl() . "&artimestamp=$ts" );
-				// Bolden oversighted content
-				if( $rev->isDeleted( Revision::DELETED_RESTRICTED ) )
-					$del = "<strong>$del</strong>";
+				$query = array( 'target' => $this->mTargetObj->getPrefixedUrl(),
+					'artimestamp' => $ts
+				);
+				$revdlink = $sk->revDeleteLink( $query, $rev->isDeleted( Revision::DELETED_RESTRICTED ) );
 			}
-			$revdlink = "<tt>(<small>$del</small>)</tt>";
 		}
 
 		return "<li>$checkBox $revdlink ($last) $pageLink . . $userLink $stxt $comment</li>";
@@ -1178,20 +1174,15 @@ class UndeleteForm {
 		$comment = $this->getFileComment( $file, $sk );
 		$revdlink = '';
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
-			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			if( !$file->userCan(File::DELETED_RESTRICTED ) ) {
 			// If revision was hidden from sysops
-				$del = wfMsgHtml('rev-delundel');
+				$revdlink = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.wfMsgHtml('rev-delundel').')' );
 			} else {
-				$del = $sk->makeKnownLinkObj( $revdel,
-					wfMsgHtml('rev-delundel'),
-					'target=' . $this->mTargetObj->getPrefixedUrl() .
-					'&fileid=' . $row->fa_id );
-				// Bolden oversighted content
-				if( $file->isDeleted( File::DELETED_RESTRICTED ) )
-					$del = "<strong>$del</strong>";
+				$query = array( 'target' => $this->mTargetObj->getPrefixedUrl(),
+					'fileid' => $row->fa_id
+				);
+				$revdlink = $sk->revDeleteLink( $query, $file->isDeleted( File::DELETED_RESTRICTED ) );
 			}
-			$revdlink = "<tt>(<small>$del</small>)</tt>";
 		}
 		return "<li>$checkBox $revdlink $pageLink . . $userLink $data $comment</li>\n";
 	}

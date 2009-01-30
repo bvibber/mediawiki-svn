@@ -1291,18 +1291,18 @@ Si'l problema persiste, contauta con un [[Special:ListUsers/sysop|alministrador]
 'upload_source_url'  => ' (una URL válida y accesible públicamente)',
 'upload_source_file' => ' (un archivu del to ordenador)',
 
-# Special:FileList
-'imagelist-summary'     => "Esta páxina especial amuesa tolos archivos xubíos.
+# Special:ListFiles
+'listfiles-summary'     => "Esta páxina especial amuesa tolos archivos xubíos.
 Por defeutu los caberos archivos xubíos amuésense a lo cimero de la llista.
 Calcando na cabecera d'una columna camúdase l'orde acordies con ella.",
-'imagelist_search_for'  => "Buscar por nome d'archivu multimedia:",
+'listfiles_search_for'  => "Buscar por nome d'archivu multimedia:",
 'imgfile'               => 'archivu',
-'imagelist'             => "Llista d'imáxenes",
-'imagelist_date'        => 'Fecha',
-'imagelist_name'        => 'Nome',
-'imagelist_user'        => 'Usuariu',
-'imagelist_size'        => 'Tamañu',
-'imagelist_description' => 'Descripción',
+'listfiles'             => "Llista d'imáxenes",
+'listfiles_date'        => 'Fecha',
+'listfiles_name'        => 'Nome',
+'listfiles_user'        => 'Usuariu',
+'listfiles_size'        => 'Tamañu',
+'listfiles_description' => 'Descripción',
 
 # File description page
 'filehist'                       => 'Historial del archivu',
@@ -2030,9 +2030,7 @@ Nestos casos vas tener que treslladar o fusionar la páxina manualmente.",
 'move-watch'                => 'Vixilar esta páxina',
 'movepagebtn'               => 'Treslladar la páxina',
 'pagemovedsub'              => 'Treslláu correctu',
-'movepage-moved'            => '<big>\'\'\'"$1" treslladóse a "$2"\'\'\'</big>
-
-Creóse una redireición.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'            => '<big>\'\'\'"$1" treslladóse a "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'             => "Yá hai una páxina con esi nome, o'l nome qu'escoyisti nun ye válidu. Por favor, escueyi otru nome.",
 'cantmove-titleprotected'   => "Nun pues mover una páxina a esti llugar porque'l nuevu títulu foi protexíu de la so creación",
 'talkexists'                => "'''La páxina treslladóse correutamente, pero non la so páxina d'alderique porque yá esiste una col títulu nuevu. Por favor, fusiónala manualmente.'''",
@@ -2612,9 +2610,7 @@ tabla de metadatos tea recoyida. Los demás tarán escondíos por defeutu.
 funcionalidaes de mensaxes. Da-y al botón que tienes equí embaxo pa unviar un avisu de
 confirmación a la to direición. Esti avisu va incluyir un enllaz con un códigu; carga
 l'enllaz nel to navegador pa confirmar la to direición de corréu electrónicu.",
-'confirmemail_pending'     => '<div class="error">
-Yá s\'unvió un códigu de confirmación a la to direición de corréu; si creasti hai poco la to cuenta, pues esperar dellos minutos a que-y de tiempu a llegar enantes de pidir otru códigu nuevu.
-</div>',
+'confirmemail_pending'     => "Yá s'unvió un códigu de confirmación a la to direición de corréu; si creasti hai poco la to cuenta, pues esperar dellos minutos a que-y de tiempu a llegar enantes de pidir otru códigu nuevu.",
 'confirmemail_send'        => 'Unviar códigu de confirmación',
 'confirmemail_sent'        => 'Corréu de confirmación unviáu.',
 'confirmemail_oncreate'    => "Unvióse un códigu de confirmación a la to direición de corréu.

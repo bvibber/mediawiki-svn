@@ -47,11 +47,13 @@ require_once( "$IP/includes/Namespace.php" );
 require_once( "$IP/includes/ProfilerStub.php" );
 require_once( "$IP/includes/GlobalFunctions.php" );
 require_once( "$IP/includes/Hooks.php" );
+require_once( "$IP/includes/Exception.php" );
 
 # If we get an exception, the user needs to know
 # all the details
 $wgShowExceptionDetails = true;
-
+$wgShowSQLErrors = true;
+wfInstallExceptionHandler();
 ## Databases we support:
 
 $ourdb = array();
@@ -78,6 +80,12 @@ $ourdb['mssql']['havedriver']    = 0;
 $ourdb['mssql']['compile']       = 'mssql not ready'; # Change to 'mssql' after includes/DatabaseMssql.php added;
 $ourdb['mssql']['bgcolor']       = '#ffc0cb';
 $ourdb['mssql']['rootuser']      = 'administrator';
+
+$ourdb['ibm_db2']['fullname']   = 'DB2';
+$ourdb['ibm_db2']['havedriver'] = 0;
+$ourdb['ibm_db2']['compile']    = 'ibm_db2';
+$ourdb['ibm_db2']['bgcolor']    = '#ffeba1';
+$ourdb['ibm_db2']['rootuser']   = 'db2admin';
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -461,8 +469,8 @@ if( empty( $memlimit ) || $memlimit == -1 ) {
 		$n = intval( $m[1] * (1024*1024) );
 	}
 	if( $n < 20*1024*1024 ) {
-		print "Attempting to raise limit to 50M... ";
-		if( false === ini_set( "memory_limit", "50M" ) ) {
+		print "Attempting to raise limit to 20M... ";
+		if( false === ini_set( "memory_limit", "20M" ) ) {
 			print "failed.<br /><b>" . htmlspecialchars( $memlimit ) . " seems too low, installation may fail!</b>";
 		} else {
 			$conf->raiseMemory = true;
@@ -615,6 +623,12 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	## MSSQL specific
 	// We need a second field so it doesn't overwrite the MySQL one
 	$conf->DBprefix2 = importPost( "DBprefix2" );
+	
+	## DB2 specific:
+	// New variable in order to have a different default port number
+	$conf->DBport_db2   = importPost( "DBport_db2",      "50000" );
+	$conf->DBmwschema   = importPost( "DBmwschema",  "mediawiki" );
+	$conf->DBcataloged  = importPost( "DBcataloged",  "cataloged" );
 
 	$conf->ShellLocale = getShellLocale( $conf->LanguageCode );
 
@@ -786,6 +800,9 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$wgDBprefix = $conf->DBprefix2;
 		}
 
+		## DB2 specific:
+		$wgDBcataloged = $conf->DBcataloged;
+		
 		$wgCommandLineMode = true;
 		if (! defined ( 'STDERR' ) )
 			define( 'STDERR', fopen("php://stderr", "wb"));
@@ -861,12 +878,31 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			} #conn. att.
 
 			if( !$ok ) { continue; }
-
+		}
+		else if( $conf->DBtype == 'ibm_db2' ) {
+			if( $useRoot ) {
+				$db_user = $conf->RootUser;
+				$db_pass = $conf->RootPW;
+			} else {
+				$db_user = $wgDBuser;
+				$db_pass = $wgDBpassword;
+			}
+			
+			echo( "<li>Attempting to connect to database \"$wgDBname\" as \"$db_user\"..." );
+			$wgDatabase = $dbc->newFromParams($wgDBserver, $db_user, $db_pass, $wgDBname, 1);
+			if (!$wgDatabase->isOpen()) {
+				print " error: " . $wgDatabase->lastError() . "</li>\n";
+			} else {
+				$myver = $wgDatabase->getServerVersion();
+			}
+			if (is_callable(array($wgDatabase, 'initial_setup'))) $wgDatabase->initial_setup('', $wgDBname);
+			
 		} else { # not mysql
 			error_reporting( E_ALL );
 			$wgSuperUser = '';
 			## Possible connect as a superuser
-			if( $useRoot && $conf->DBtype != 'sqlite' ) {
+			// Changed !mysql to postgres check since it seems to only apply to postgres
+			if( $useRoot && $conf->DBtype == 'postgres' ) {
 				$wgDBsuperuser = $conf->RootUser;
 				echo( "<li>Attempting to connect to database \"postgres\" as superuser \"$wgDBsuperuser\"..." );
 				$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBsuperuser, $conf->RootPW, "postgres", 1);
@@ -894,7 +930,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			continue;
 		}
 
-		print "<li>Connected to $myver";
+		print "<li>Connected to {$conf->DBtype} $myver";
 		if ($conf->DBtype == 'mysql') {
 			if( version_compare( $myver, "4.0.14" ) < 0 ) {
 				print "</li>\n";
@@ -945,7 +981,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$wgDatabase->selectDB( $wgDBname );
 		}
 		else if ($conf->DBtype == 'postgres') {
-			if( version_compare( $myver, "PostgreSQL 8.0" ) < 0 ) {
+			if( version_compare( $myver, "8.0" ) < 0 ) {
 				dieout( "<b>Postgres 8.0 or later is required</b>. Aborting." );
 			}
 		}
@@ -1113,6 +1149,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$revid = $revision->insertOn( $wgDatabase );
 			$article->updateRevisionOn( $wgDatabase, $revision );
 		}
+		// Now that all database work is done, make sure everything is committed
+		$wgDatabase->commit();
 
 		/* Write out the config file now that all is well */
 		print "<li style=\"list-style: none\">\n";
@@ -1459,6 +1497,25 @@ if( count( $errs ) ) {
 		<p>Avoid exotic characters; something like <tt>mw_</tt> is good.</p>
 	</div>
 	</fieldset>
+	
+	<?php database_switcher('ibm_db2'); ?>
+	<div class="config-input"><?php
+		aField( $conf, "DBport_db2", "Database port:" );
+	?></div>
+	<div class="config-input"><?php
+		aField( $conf, "DBmwschema", "Schema for mediawiki:" );
+	?></div>
+	<div>Select one:</div>
+		<ul class="plain">
+		<li><?php aField( $conf, "DBcataloged", "Cataloged (DB2 installed locally)", "radio", "cataloged" ); ?></li>
+		<li><?php aField( $conf, "DBcataloged", "Uncataloged (remote DB2 through ODBC)", "radio", "uncataloged" ); ?></li>
+		</ul>
+	<div class="config-desc">
+		<p>If you need to share one database between multiple wikis, or
+		between MediaWiki and another web application, you may specify
+		a different schema to avoid conflicts.</p>
+	</div>
+	</fieldset>
 
 	<div class="config-input" style="padding:2em 0 3em">
 		<label class='column'>&nbsp;</label>
@@ -1629,6 +1686,12 @@ function writeLocalSettings( $conf ) {
 		$dbsettings =
 "# MSSQL specific settings
 \$wgDBprefix         = \"{$slconf['DBprefix2']}\";";
+	} elseif( $conf->DBtype == 'ibm_db2' ) {
+		$dbsettings =
+"# DB2 specific settings
+\$wgDBport_db2       = \"{$slconf['DBport_db2']}\";
+\$wgDBmwschema       = \"{$slconf['DBmwschema']}\";
+\$wgDBcataloged      = \"{$slconf['DBcataloged']}\";";
 	} else {
 		// ummm... :D
 		$dbsettings = '';
@@ -1661,7 +1724,7 @@ set_include_path( implode( PATH_SEPARATOR, \$path ) . PATH_SEPARATOR . get_inclu
 require_once( \"\$IP/includes/DefaultSettings.php\" );
 
 # If PHP's memory limit is very low, some operations may fail.
-" . ($conf->raiseMemory ? '' : '# ' ) . "ini_set( 'memory_limit', '50M' );" . "
+" . ($conf->raiseMemory ? '' : '# ' ) . "ini_set( 'memory_limit', '20M' );" . "
 
 if ( \$wgCommandLineMode ) {
 	if ( isset( \$_SERVER ) && array_key_exists( 'REQUEST_METHOD', \$_SERVER ) ) {
@@ -2063,7 +2126,7 @@ function getShellLocale( $wikiLang ) {
 			<li><a href="http://www.mediawiki.org/wiki/Manual:Contents">Administrator's Guide</a></li>
 			<li><a href="http://www.mediawiki.org/wiki/Manual:FAQ">FAQ</a></li>
 		</ul>
-		<p style="font-size:90%;margin-top:1em">MediaWiki is Copyright © 2001-2008 by Magnus Manske, Brion Vibber,
+		<p style="font-size:90%;margin-top:1em">MediaWiki is Copyright © 2001-2009 by Magnus Manske, Brion Vibber,
 		 Lee Daniel Crocker, Tim Starling, Erik Möller, Gabriel Wicke, Ævar Arnfjörð Bjarmason, Niklas Laxström,
 		 Domas Mituzas, Rob Church, Yuri Astrakhan, Aryeh Gregor, Aaron Schulz and others.</p>
 	</div></div>

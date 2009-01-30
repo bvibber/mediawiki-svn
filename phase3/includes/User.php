@@ -886,6 +886,8 @@ class User {
 		$dbr = wfGetDB( DB_MASTER );
 		$s = $dbr->selectRow( 'user', '*', array( 'user_id' => $this->mId ), __METHOD__ );
 
+		wfRunHooks( 'UserLoadFromDatabase', array( $this, &$s ) );
+
 		if ( $s !== false ) {
 			# Initialise user table data
 			$this->loadFromRow( $s );
@@ -1013,9 +1015,14 @@ class User {
 	 * @return \type{\arrayof{\string}} Array of user toggle names
 	 */
 	static function getToggles() {
-		global $wgContLang;
+		global $wgContLang, $wgUseRCPatrol;
 		$extraToggles = array();
 		wfRunHooks( 'UserToggles', array( &$extraToggles ) );
+		if( $wgUseRCPatrol ) {
+			$extraToggles[] = 'hidepatrolled';
+			$extraToggles[] = 'newpageshidepatrolled';
+			$extraToggles[] = 'watchlisthidepatrolled';
+		}
 		return array_merge( self::$mToggles, $extraToggles, $wgContLang->getExtraUserToggles() );
 	}
 
@@ -1909,6 +1916,13 @@ class User {
 		}
 		$this->mOptions[$oname] = $val;
 	}
+	
+	/**
+	 * Reset all options to the site defaults
+	 */	
+	function restoreOptions() {
+		$this->mOptions = User::getDefaultOptions();
+	}
 
 	/**
 	 * Get the user's preferred date format.
@@ -2073,11 +2087,15 @@ class User {
 	 * @param $action \string action to be checked
 	 * @return \bool True if action is allowed, else false
 	 */
-	function isAllowed($action='') {
+	function isAllowed( $action = '' ) {
 		if ( $action === '' )
-			// In the spirit of DWIM
-			return true;
-
+			return true; // In the spirit of DWIM
+		# Patrolling may not be enabled
+		if( $action === 'patrol' || $action === 'autopatrol' ) {
+			global $wgUseRCPatrol, $wgUseNPPatrol;
+			if( !$wgUseRCPatrol && !$wgUseNPPatrol )
+				return false;
+		}
 		# Use strict parameter to avoid matching numeric 0 accidentally inserted 
 		# by misconfiguration: 0 == 'foo'
 		return in_array( $action, $this->getRights(), true );
@@ -2321,7 +2339,7 @@ class User {
 		
 		wfRunHooks( 'UserSetCookies', array( $this, &$session, &$cookies ) );
 		#check for null, since the hook could cause a null value 
-		if ( !is_null( $session ) && !is_null( $_SESSION ) ){
+		if ( !is_null( $session ) && isset( $_SESSION ) ){
 			$_SESSION = $session + $_SESSION;
 		}
 		foreach ( $cookies as $name => $value ) {
@@ -2705,7 +2723,14 @@ class User {
 	 * @return \bool True if matches, false otherwise
 	 */
 	function checkTemporaryPassword( $plaintext ) {
-		return self::comparePasswords( $this->mNewpassword, $plaintext, $this->getId() );
+		global $wgNewPasswordExpiry;
+		if( self::comparePasswords( $this->mNewpassword, $plaintext, $this->getId() ) ) {
+			$this->load();
+			$expiry = wfTimestamp( TS_UNIX, $this->mNewpassTime ) + $wgNewPasswordExpiry;
+			return ( time() < $expiry );
+		} else {
+			return false;
+		}
 	}
 
 	/**

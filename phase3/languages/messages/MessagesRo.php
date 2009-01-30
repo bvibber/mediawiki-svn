@@ -67,7 +67,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Pagini urmărite' ),
 	'Recentchanges'             => array( 'Schimbări recente' ),
 	'Upload'                    => array( 'Încărcare' ),
-	'Imagelist'                 => array( 'Listă imagini' ),
+	'Listfiles'                 => array( 'Listă imagini' ),
 	'Newimages'                 => array( 'Imagini noi' ),
 	'Listusers'                 => array( 'Listă utilizatori' ),
 	'Listgrouprights'           => array( 'Listă drepturi grup' ),
@@ -1032,7 +1032,8 @@ Folosirea linkurilor de navigare va reseta această coloană.',
 'showingresults'                   => "Mai jos {{PLURAL:$1|apare '''1''' rezultat|apar '''$1''' rezultate}} începând cu #<b>$2</b>.",
 'showingresultsnum'                => "Mai jos {{PLURAL:$3|apare '''1''' rezultat|apar '''$3''' rezultate}} cu #<b>$2</b>.",
 'showingresultstotal'              => "Arată {{PLURAL:$4|rezultatul '''$1''' din '''$3'''|rezultatele '''$1 - $2''' din '''$3'''}}",
-'nonefound'                        => "'''Notă''': căutările nereuşite sunt în general datorate căutării unor cuvinte prea comune care nu sunt indexate, sau cautărilor a mai multe cuvinte (numai articolele care conţin ''toate'' cuvintele specificate apar ca rezultate).",
+'nonefound'                        => "'''Notă''': Numai unele spaţii de nume sunt căutate implicit.
+Încercaţi să puneţi ca şi prefix al căutării ''all:'' pentru a căuta în tot conţinutul (incluzând şi paginile de discuţii, formate, etc), sau folosiţi spaţiul de nume dorit ca şi prefix.",
 'search-nonefound'                 => 'Nu sunt rezultate conforme interogării.',
 'powersearch'                      => 'Căutare avansată',
 'powersearch-legend'               => 'Căutare avansată',
@@ -1100,6 +1101,7 @@ Folosirea linkurilor de navigare va reseta această coloană.',
 'localtime'                 => 'Timpul local:',
 'timezoneselect'            => 'Fus orar:',
 'timezoneuseserverdefault'  => 'Foloseşte ora server-ului',
+'timezoneuseoffset'         => 'Altul (specifică diferenţa)',
 'timezoneoffset'            => 'Diferenţa¹:',
 'servertime'                => 'Ora serverului:',
 'guesstimezone'             => 'Încearcă determinarea automată a diferenţei',
@@ -1396,18 +1398,18 @@ Poate doreşti să încerci la o oră mai puţin ocupată.',
 'upload_source_url'  => ' (un URL valid, accesibil public)',
 'upload_source_file' => ' (un fişier de pe computerul tău)',
 
-# Special:FileList
-'imagelist-summary'     => 'Această pagină specială arată toate fişierele încărcate.
+# Special:ListFiles
+'listfiles-summary'     => 'Această pagină specială arată toate fişierele încărcate.
 În mod normal ultimul fişier încărcat este aşezat în capul listei.
 O apăsare pe antetul coloanei schimbă sortarea.',
-'imagelist_search_for'  => 'Caută imagine după nume:',
+'listfiles_search_for'  => 'Caută imagine după nume:',
 'imgfile'               => 'fişier',
-'imagelist'             => 'Lista imaginilor',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Nume',
-'imagelist_user'        => 'Utilizator',
-'imagelist_size'        => 'Mărime (octeţi)',
-'imagelist_description' => 'Descriere',
+'listfiles'             => 'Lista imaginilor',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Nume',
+'listfiles_user'        => 'Utilizator',
+'listfiles_size'        => 'Mărime (octeţi)',
+'listfiles_description' => 'Descriere',
 
 # File description page
 'filehist'                       => 'Istoricul fişierului',
@@ -1636,6 +1638,7 @@ Puteţi limita vizualizarea selectând tipul jurnalului, numele de utilizator sa
 'nextpage'          => 'Pagina următoare ($1)',
 'prevpage'          => 'Pagina anterioară ($1)',
 'allpagesfrom'      => 'Afişează paginile pornind de la:',
+'allpagesto'        => 'Afişează paginile terminând cu:',
 'allarticles'       => 'Toate articolele',
 'allinnamespace'    => 'Toate paginile (spaţiu de nume $1)',
 'allnotinnamespace' => 'Toate paginile (în afara spaţiului de nume $1)',
@@ -1656,7 +1659,8 @@ Vedeţi şi [[Special:WantedCategories|categoriile dorite]].',
 'special-categories-sort-abc'   => 'sortează alfabetic',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Contribuţii şterse',
+'deletedcontributions'       => 'Contribuţii şterse',
+'deletedcontributions-title' => 'Contribuţii şterse',
 
 # Special:LinkSearch
 'linksearch'     => 'Caută legături web',
@@ -1700,7 +1704,7 @@ Adresa de e-mail introdusă de tine în [[Special:Preferences|preferinţele de u
 'usermailererror' => 'Obiectul de mail a dat eroare:',
 'defemailsubject' => 'E-mail {{SITENAME}}',
 'noemailtitle'    => 'Fără adresă de e-mail',
-'noemailtext'     => 'Utilizatorul nu a specificat o adresă validă de e-mail, sau a ales să nu primească e-mail de la alţi utilizatori.',
+'noemailtext'     => 'Utilizatorul nu a specificat o adresă validă de e-mail.',
 'email-legend'    => 'Trimite e-mail altui utilizator de la {{SITENAME}}',
 'emailfrom'       => 'De la:',
 'emailto'         => 'Către:',
@@ -2702,8 +2706,8 @@ Altele vor fi ascunse implicit.
 'confirmemail'             => 'Confirmă adresa de email',
 'confirmemail_noemail'     => 'Nu aveţi o adresă de email validă setată la [[Special:Preferences|preferinţe]].',
 'confirmemail_text'        => 'Acest wiki necesită validarea adresei de email înaintea folosirii funcţiilor email. Apăsaţi butonul de dedesupt pentru a trimite un email de confirmare către adresa dvs. Acesta va include o legătură care va conţine codul; încărcaţi legătura în browser pentru a valida adresa de email.',
-'confirmemail_pending'     => '<div class="error">Un cod de confirmare a fost trimis deja prin e-mail către tine;
-dacă ai creat recent contul, aşteaptă câteva minute să ajungă la tine înainte de a cere un nou cod.</div>',
+'confirmemail_pending'     => 'Un cod de confirmare a fost trimis deja prin e-mail către tine;
+dacă ai creat recent contul, aşteaptă câteva minute să ajungă la tine înainte de a cere un nou cod.',
 'confirmemail_send'        => 'Trimite un cod de confirmare',
 'confirmemail_sent'        => 'E-mailul de confirmare a fost trimis.',
 'confirmemail_oncreate'    => 'Un cod de confirmare a fost trimis la adresa de e-mail.
@@ -2755,9 +2759,6 @@ Vă rugăm să confirmaţi faptul că într-adevăr doriţi să recreaţi acest 
 # action=purge
 'confirm_purge_button' => 'OK',
 'confirm-purge-top'    => 'Doriţi să reîncărcaţi pagina?',
-
-# Separators for various lists, etc.
-'comma-separator' => ',&#32;',
 
 # Multipage image navigation
 'imgmultipageprev' => '← pagina anterioară',

@@ -26,13 +26,13 @@ class PreferencesForm {
 	var $mUserLanguage, $mUserVariant;
 	var $mSearch, $mRecent, $mRecentDays, $mTimeZone, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
 	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
-	var $mUnderline, $mWatchlistEdits;
+	var $mUnderline, $mWatchlistEdits, $mGender;
 
 	/**
 	 * Constructor
 	 * Load some values
 	 */
-	function PreferencesForm( &$request ) {
+	function __construct( &$request ) {
 		global $wgContLang, $wgUser, $wgAllowRealName;
 
 		$this->mQuickbar = $request->getVal( 'wpQuickbar' );
@@ -60,11 +60,13 @@ class PreferencesForm {
 		$this->mUnderline = $request->getInt( 'wpOpunderline' );
 		$this->mAction = $request->getVal( 'action' );
 		$this->mReset = $request->getCheck( 'wpReset' );
+		$this->mRestoreprefs = $request->getCheck( 'wpRestore' );
 		$this->mPosted = $request->wasPosted();
 		$this->mSuccess = $request->getCheck( 'success' );
 		$this->mWatchlistDays = $request->getVal( 'wpWatchlistDays' );
 		$this->mWatchlistEdits = $request->getVal( 'wpWatchlistEdits' );
 		$this->mDisableMWSuggest = $request->getCheck( 'wpDisableMWSuggest' );
+		$this->mGender = $request->getVal( 'wpGender' );
 
 		$this->mSaveprefs = $request->getCheck( 'wpSaveprefs' ) &&
 			$this->mPosted &&
@@ -117,6 +119,8 @@ class PreferencesForm {
 			$this->mainPrefsForm( 'reset', wfMsg( 'prefsreset' ) );
 		} else if ( $this->mSaveprefs ) {
 			$this->savePreferences();
+		} else if ( $this->mRestoreprefs ) {
+			$this->restorePreferences();
 		} else {
 			$this->resetPrefs();
 			$this->mainPrefsForm( '' );
@@ -204,6 +208,15 @@ class PreferencesForm {
 		}
 	}
 
+	function validateGender( $val ) {
+		$valid = array( 'male', 'female', 'unknown' );
+		if ( in_array($val, $valid) ) {
+			return $val;
+		} else {
+			return User::getDefaultOption( 'gender' );
+		}
+	}
+
 	/**
 	 * @access private
 	 */
@@ -269,6 +282,7 @@ class PreferencesForm {
 		$wgUser->setOption( 'underline', $this->validateInt($this->mUnderline, 0, 2) );
 		$wgUser->setOption( 'watchlistdays', $this->validateFloat( $this->mWatchlistDays, 0, 7 ) );
 		$wgUser->setOption( 'disablesuggest', $this->mDisableMWSuggest );
+		$wgUser->setOption( 'gender', $this->validateGender( $this->mGender ) );
 
 		# Set search namespace options
 		foreach( $this->mSearchNs as $i => $value ) {
@@ -420,6 +434,7 @@ class PreferencesForm {
 		$this->mUnderline = $wgUser->getOption( 'underline' );
 		$this->mWatchlistDays = $wgUser->getOption( 'watchlistdays' );
 		$this->mDisableMWSuggest = $wgUser->getBoolOption( 'disablesuggest' );
+		$this->mGender = $wgUser->getOption( 'gender' );
 
 		$togs = User::getToggles();
 		foreach ( $togs as $tname ) {
@@ -434,6 +449,18 @@ class PreferencesForm {
 		}
 
 		wfRunHooks( 'ResetPreferences', array( $this, $wgUser ) );
+	}
+	
+	/**
+	 * @access private
+	 */
+	function restorePreferences() {
+		global $wgUser, $wgOut;
+		$wgUser->restoreOptions();
+		$wgUser->setCookies();
+		$wgUser->saveSettings();
+		$title = SpecialPage::getTitleFor( 'Preferences' );
+		$wgOut->redirect( $title->getFullURL( 'success' ) );
 	}
 
 	/**
@@ -720,7 +747,19 @@ class PreferencesForm {
 			$this->tableRow( '&nbsp;', $this->getToggle( 'fancysig' ) )
 		);
 
-		list( $lsLabel, $lsSelect) = Xml::languageSelector( $this->mUserLanguage );
+		$gender = new XMLSelect( 'wpGender', 'wpGender', $this->mGender );
+		$gender->addOption( wfMsg( 'gender-unknown' ), 'unknown' );
+		$gender->addOption( wfMsg( 'gender-male' ), 'male' );
+		$gender->addOption( wfMsg( 'gender-female' ), 'female' );
+
+		$wgOut->addHTML(
+			$this->tableRow(
+				Xml::label( wfMsg( 'yourgender' ), 'wpGender' ),
+				$gender->getHTML()
+			)
+		);
+
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $this->mUserLanguage, false );
 		$wgOut->addHTML(
 			$this->tableRow( $lsLabel, $lsSelect )
 		);
@@ -849,13 +888,26 @@ class PreferencesForm {
 				}
 			}
 			asort($validSkinNames);
-			foreach ($validSkinNames as $skinkey => $sn ) {
+			foreach( $validSkinNames as $skinkey => $sn ) {
 				$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
 				$mplink = htmlspecialchars( $mptitle->getLocalURL( "useskin=$skinkey" ) );
 				$previewlink = "(<a target='_blank' href=\"$mplink\">$previewtext</a>)";
+				$extraLinks = '';
+				global $wgAllowUserCss, $wgAllowUserJs;
+				if( $wgAllowUserCss ) {
+					$cssPage = Title::makeTitleSafe( NS_USER, $wgUser->getName().'/'.$skinkey.'.css' );
+					$customCSS = $sk->makeLinkObj( $cssPage, wfMsgExt('prefs-custom-css', array() ) );
+					$extraLinks .= " ($customCSS)";
+				}
+				if( $wgAllowUserJs ) {
+					$jsPage = Title::makeTitleSafe( NS_USER, $wgUser->getName().'/'.$skinkey.'.js' );
+					$customJS = $sk->makeLinkObj( $jsPage, wfMsgHtml('prefs-custom-js') );
+					$extraLinks .= " ($customJS)";
+				}
 				if( $skinkey == $wgDefaultSkin )
 					$sn .= ' (' . wfMsg( 'default' ) . ')';
-				$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br />\n" );
+				$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> 
+					<label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink{$extraLinks}<br />\n" );
 			}
 			$wgOut->addHTML( "</fieldset>\n\n" );
 		}
@@ -1052,7 +1104,7 @@ class PreferencesForm {
 		$wgOut->addHTML( Xml::closeElement( 'fieldset' ) );
 
 		# Recent changes
-		global $wgRCMaxAge;
+		global $wgRCMaxAge, $wgUseRCPatrol;
 		$wgOut->addHTML(
 			Xml::fieldset( wfMsg( 'prefs-rc' ) ) .
  			Xml::openElement( 'table' ) .
@@ -1078,8 +1130,11 @@ class PreferencesForm {
 		);
 
 		$toggles[] = 'hideminor';
-		if( $wgRCShowWatchingUsers )
-			$toggles[] = 'shownumberswatching';
+		if( $wgUseRCPatrol ) {
+			$toggles[] = 'hidepatrolled';
+			$toggles[] = 'newpageshidepatrolled';
+		}
+		if( $wgRCShowWatchingUsers ) $toggles[] = 'shownumberswatching';
 		$toggles[] = 'usenewrc';
 
 		$wgOut->addHTML(
@@ -1088,6 +1143,10 @@ class PreferencesForm {
 		);
 
 		# Watchlist
+		$watchlistToggles = array( 'watchlisthideminor', 'watchlisthidebots', 'watchlisthideown',
+			'watchlisthideanons', 'watchlisthideliu' );
+		if( $wgUseRCPatrol ) $watchlistToggles[] = 'watchlisthidepatrolled';
+
 		$wgOut->addHTML( 
 			Xml::fieldset( wfMsg( 'prefs-watchlist' ) ) .
 			Xml::inputLabel( wfMsg( 'prefs-watchlist-days' ), 'wpWatchlistDays', 'wpWatchlistDays', 3, $this->mWatchlistDays ) . ' ' .
@@ -1097,7 +1156,7 @@ class PreferencesForm {
 			Xml::inputLabel( wfMsg( 'prefs-watchlist-edits' ), 'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) . ' ' .
 			wfMsgHTML( 'prefs-watchlist-edits-max' ) .
 			'<br /><br />' .
-			$this->getToggles( array( 'watchlisthideminor', 'watchlisthidebots', 'watchlisthideown', 'watchlisthideanons', 'watchlisthideliu' ) )
+			$this->getToggles( $watchlistToggles )
 		);
 
 		if( $wgUser->isAllowed( 'createpage' ) || $wgUser->isAllowed( 'createtalk' ) ) {
@@ -1190,14 +1249,14 @@ class PreferencesForm {
 
 		$token = htmlspecialchars( $wgUser->editToken() );
 		$skin = $wgUser->getSkin();
+		$rtl = $wgContLang->isRTL() ? 'left' : 'right';
 		$wgOut->addHTML( "
-	<div id='prefsubmit'>
-	<div>
-		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . '"'.$skin->tooltipAndAccesskey('save')." />
-		<input type='submit' name='wpReset' value=\"" . wfMsgHtml( 'resetprefs' ) . "\" />
-	</div>
-
-	</div>
+	<table id='prefsubmit' cellpadding='0' width='100%' style='background:none;'><tr>
+		<td><input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . 
+			'"'.$skin->tooltipAndAccesskey('save')." />
+		<input type='submit' name='wpReset' value=\"" . wfMsgHtml( 'resetprefs' ) . "\" /></td>
+		<td align='$rtl'><input type='submit' name='wpRestore' value=\"" . wfMsgHtml( 'restoreprefs' ) . "\" /></td>
+	</tr></table>
 
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 	</div></form>\n" );

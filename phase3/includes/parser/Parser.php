@@ -374,8 +374,8 @@ class Parser
 
 		$text = Sanitizer::normalizeCharReferences( $text );
 
-		if (($wgUseTidy and $this->mOptions->mTidy) or $wgAlwaysUseTidy) {
-			$text = self::tidy($text);
+		if ( ( $wgUseTidy && $this->mOptions->mTidy ) || $wgAlwaysUseTidy ) {
+			$text = MWTidy::tidy( $text );
 		} else {
 			# attempt to sanitize at least some nesting problems
 			# (bug #2702 and quite a few others)
@@ -648,126 +648,14 @@ class Parser
 		$this->mStripState->general->setPair( $rnd, $text );
 		return $rnd;
 	}
-
+	
 	/**
-	 * Interface with html tidy, used if $wgUseTidy = true.
-	 * If tidy isn't able to correct the markup, the original will be
-	 * returned in all its glory with a warning comment appended.
-	 *
-	 * Either the external tidy program or the in-process tidy extension
-	 * will be used depending on availability. Override the default
-	 * $wgTidyInternal setting to disable the internal if it's not working.
-	 *
-	 * @param string $text Hideous HTML input
-	 * @return string Corrected HTML output
-	 * @public
-	 * @static
+	 * Interface with html tidy
+	 * @deprecated Use MWTidy::tidy()
 	 */
-	function tidy( $text ) {
-		global $wgTidyInternal;
-
-		$wrappedtext = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"'.
-' "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html>'.
-'<head><title>test</title></head><body>'.$text.'</body></html>';
-
-		# Tidy is known to clobber tabs; convert 'em to entities
-		$wrappedtext = str_replace("\t", '&#9;', $wrappedtext);
-
-		if( $wgTidyInternal ) {
-			$correctedtext = self::internalTidy( $wrappedtext );
-		} else {
-			$correctedtext = self::externalTidy( $wrappedtext );
-		}
-		if( is_null( $correctedtext ) ) {
-			wfDebug( "Tidy error detected!\n" );
-			return $text . "\n<!-- Tidy found serious XHTML errors -->\n";
-		}
-
-		# Convert the tabs back from entities
-		$correctedtext = str_replace('&#9;', "\t", $correctedtext);
-
-		return $correctedtext;
-	}
-
-	/**
-	 * Spawn an external HTML tidy process and get corrected markup back from it.
-	 *
-	 * @private
-	 * @static
-	 */
-	function externalTidy( $text ) {
-		global $wgTidyConf, $wgTidyBin, $wgTidyOpts;
-		wfProfileIn( __METHOD__ );
-
-		$cleansource = '';
-		$opts = ' -utf8';
-
-		$descriptorspec = array(
-			0 => array('pipe', 'r'),
-			1 => array('pipe', 'w'),
-			2 => array('file', wfGetNull(), 'a')
-		);
-		$pipes = array();
-		if( function_exists('proc_open') ) {
-			$process = proc_open("$wgTidyBin -config $wgTidyConf $wgTidyOpts$opts", $descriptorspec, $pipes);
-			if (is_resource($process)) {
-				// Theoretically, this style of communication could cause a deadlock
-				// here. If the stdout buffer fills up, then writes to stdin could
-				// block. This doesn't appear to happen with tidy, because tidy only
-				// writes to stdout after it's finished reading from stdin. Search
-				// for tidyParseStdin and tidySaveStdout in console/tidy.c
-				fwrite($pipes[0], $text);
-				fclose($pipes[0]);
-				while (!feof($pipes[1])) {
-					$cleansource .= fgets($pipes[1], 1024);
-				}
-				fclose($pipes[1]);
-				proc_close($process);
-			}
-		}
-
-		wfProfileOut( __METHOD__ );
-
-		if( $cleansource == '' && $text != '') {
-			// Some kind of error happened, so we couldn't get the corrected text.
-			// Just give up; we'll use the source text and append a warning.
-			return null;
-		} else {
-			return $cleansource;
-		}
-	}
-
-	/**
-	 * Use the HTML tidy PECL extension to use the tidy library in-process,
-	 * saving the overhead of spawning a new process.
-	 *
-	 * 'pear install tidy' should be able to compile the extension module.
-	 *
-	 * @private
-	 * @static
-	 */
-	function internalTidy( $text ) {
-		global $wgTidyConf, $IP, $wgDebugTidy;
-		wfProfileIn( __METHOD__ );
-
-		$tidy = new tidy;
-		$tidy->parseString( $text, $wgTidyConf, 'utf8' );
-		$tidy->cleanRepair();
-		if( $tidy->getStatus() == 2 ) {
-			// 2 is magic number for fatal error
-			// http://www.php.net/manual/en/function.tidy-get-status.php
-			$cleansource = null;
-		} else {
-			$cleansource = tidy_get_output( $tidy );
-		}
-		if ( $wgDebugTidy && $tidy->getStatus() > 0 ) {
-			$cleansource .= "<!--\nTidy reports:\n" .
-				str_replace( '-->', '--&gt;', $tidy->errorBuffer ) .
-				"\n-->";
-		}
-
-		wfProfileOut( __METHOD__ );
-		return $cleansource;
+	public static function tidy( $text ) {
+		wfDeprecated( __METHOD__ );
+		return MWTidy::tidy( $text );	
 	}
 
 	/**
@@ -1130,7 +1018,7 @@ class Parser
 		if ( $text === false ) {
 			# Not an image, make a link
 			$text = $sk->makeExternalLink( $url, $wgContLang->markNoConversion($url), true, 'free', 
-				$this->getExternalLinkAttribs() );
+				$this->getExternalLinkAttribs( $url ) );
 			# Register it in the output object...
 			# Replace unnecessary URL escape codes with their equivalent characters
 			$pasteurized = self::replaceUnusualEscapes( $url );
@@ -1406,18 +1294,12 @@ class Parser
 
 			$url = Sanitizer::cleanUrl( $url );
 
-			if ( $this->mOptions->mExternalLinkTarget ) {
-				$attribs = array( 'target' => $this->mOptions->mExternalLinkTarget );
-			} else {
-				$attribs = array();
-			}
-
 			# Use the encoded URL
 			# This means that users can paste URLs directly into the text
 			# Funny characters like &ouml; aren't valid in URLs anyway
 			# This was changed in August 2004
-			$s .= $sk->makeExternalLink( $url, $text, false, $linktype, $this->getExternalLinkAttribs() ) 
-				. $dtrail . $trail;
+			$s .= $sk->makeExternalLink( $url, $text, false, $linktype,
+				$this->getExternalLinkAttribs( $url ) ) . $dtrail . $trail;
 
 			# Register link in the output object.
 			# Replace unnecessary URL escape codes with the referenced character
@@ -1430,12 +1312,36 @@ class Parser
 		return $s;
 	}
 
-	function getExternalLinkAttribs() {
+	/**
+	 * Get an associative array of additional HTML attributes appropriate for a
+	 * particular external link.  This currently may include rel => nofollow
+	 * (depending on configuration, namespace, and the URL's domain) and/or a
+	 * target attribute (depending on configuration).
+	 *
+	 * @param string $url Optional URL, to extract the domain from for rel =>
+	 *   nofollow if appropriate
+	 * @return array Associative array of HTML attributes
+	 */
+	function getExternalLinkAttribs( $url = false ) {
 		$attribs = array();
 		global $wgNoFollowLinks, $wgNoFollowNsExceptions;
 		$ns = $this->mTitle->getNamespace();
 		if( $wgNoFollowLinks && !in_array($ns, $wgNoFollowNsExceptions) ) {
 			$attribs['rel'] = 'nofollow';
+
+			global $wgNoFollowDomainExceptions;
+			if ( $wgNoFollowDomainExceptions ) {
+				$bits = wfParseUrl( $url );
+				if ( is_array( $bits ) && isset( $bits['host'] ) ) {
+					foreach ( $wgNoFollowDomainExceptions as $domain ) {
+						if( substr( $bits['host'], -strlen( $domain ) )
+						== $domain ) {
+							unset( $attribs['rel'] );
+							break;
+						}
+					}
+				}
+			}
 		}
 		if ( $this->mOptions->getExternalLinkTarget() ) {
 			$attribs['target'] = $this->mOptions->getExternalLinkTarget();
@@ -3304,6 +3210,7 @@ class Parser
 						throw new MWException( '<html> extension tag encountered unexpectedly' );
 					}
 				case 'nowiki':
+					$content = strtr($content, array('-{' => '-&#123;', '}-' => '&#125;-'));
 					$output = Xml::escapeTagsOnly( $content );
 					break;
 				case 'math':
@@ -3617,14 +3524,60 @@ class Parser
 
 			# Save headline for section edit hint before it's escaped
 			$headlineHint = $safeHeadline;
-			$safeHeadline = Sanitizer::escapeId( $safeHeadline,
-				$wgEnforceHtmlIds ? array() : 'xml' );
-			# HTML names must be case-insensitively unique (bug 10721)
+
+			if ( $wgEnforceHtmlIds ) {
+				$legacyHeadline = false;
+				$safeHeadline = Sanitizer::escapeId( $safeHeadline,
+					'noninitial' );
+			} else {
+				# For reverse compatibility, provide an id that's
+				# HTML4-compatible, like we used to.
+				#
+				# It may be worth noting, academically, that it's possible for
+				# the legacy anchor to conflict with a non-legacy headline
+				# anchor on the page.  In this case likely the "correct" thing
+				# would be to either drop the legacy anchors or make sure
+				# they're numbered first.  However, this would require people
+				# to type in section names like "abc_.D7.93.D7.90.D7.A4"
+				# manually, so let's not bother worrying about it.
+				$legacyHeadline = Sanitizer::escapeId( $safeHeadline,
+					'noninitial' );
+				$safeHeadline = Sanitizer::escapeId( $safeHeadline, 'xml' );
+
+				if ( $legacyHeadline == $safeHeadline ) {
+					# No reason to have both (in fact, we can't)
+					$legacyHeadline = false;
+				} elseif ( $legacyHeadline != Sanitizer::escapeId(
+				$legacyHeadline, 'xml' ) ) {
+					# The legacy id is invalid XML.  We used to allow this, but
+					# there's no reason to do so anymore.  Backward
+					# compatibility will fail slightly in this case, but it's
+					# no big deal.
+					$legacyHeadline = false;
+				}
+			}
+
+			# HTML names must be case-insensitively unique (bug 10721).  FIXME:
+			# Does this apply to Unicode characters?  Because we aren't
+			# handling those here.
 			$arrayKey = strtolower( $safeHeadline );
+			if ( $legacyHeadline === false ) {
+				$legacyArrayKey = false;
+			} else {
+				$legacyArrayKey = strtolower( $legacyHeadline );
+			}
 
 			# count how many in assoc. array so we can track dupes in anchors
-			isset( $refers[$arrayKey] ) ? $refers[$arrayKey]++ : $refers[$arrayKey] = 1;
-			$refcount[$headlineCount] = $refers[$arrayKey];
+			if ( isset( $refers[$arrayKey] ) ) {
+				$refers[$arrayKey]++;
+			} else {
+				$refers[$arrayKey] = 1;
+			}
+			if ( isset( $refers[$legacyArrayKey] ) ) {
+				$refers[$legacyArrayKey]++;
+			} else {
+				$refers[$legacyArrayKey] = 1;
+			}
 
 			# Don't number the heading if it is the only one (looks silly)
 			if( $doNumberHeadings && count( $matches[3] ) > 1) {
@@ -3634,8 +3587,12 @@ class Parser
 
 			# Create the anchor for linking from the TOC to the section
 			$anchor = $safeHeadline;
-			if($refcount[$headlineCount] > 1 ) {
-				$anchor .= '_' . $refcount[$headlineCount];
+			$legacyAnchor = $legacyHeadline;
+			if ( $refers[$arrayKey] > 1 ) {
+				$anchor .= '_' . $refers[$arrayKey];
+			}
+			if ( $legacyHeadline !== false && $refers[$legacyArrayKey] > 1 ) {
+				$legacyAnchor .= '_' . $refers[$legacyArrayKey];
 			}
 			if( $enoughToc && ( !isset($wgMaxTocLevel) || $toclevel<$wgMaxTocLevel ) ) {
 				$toc .= $sk->tocLine($anchor, $tocline, $numbering, $toclevel);
@@ -3653,7 +3610,9 @@ class Parser
 			} else {
 				$editlink = '';
 			}
-			$head[$headlineCount] = $sk->makeHeadline( $level, $matches['attrib'][$headlineCount], $anchor, $headline, $editlink );
+			$head[$headlineCount] = $sk->makeHeadline( $level,
+				$matches['attrib'][$headlineCount], $anchor, $headline,
+				$editlink, $legacyAnchor );
 
 			$headlineCount++;
 		}
@@ -4684,11 +4643,21 @@ class Parser
 	 * "== Header ==".
 	 */
 	public function guessSectionNameFromWikiText( $text ) {
-		global $wgEnforceHtmlIds;
 		# Strip out wikitext links(they break the anchor)
 		$text = $this->stripSectionName( $text );
-		return '#' . Sanitizer::escapeId( $text,
-			$wgEnforceHtmlIds ? array() : 'xml' );
+		$headline = Sanitizer::decodeCharReferences( $text );
+		# strip out HTML
+		$headline = StringUtils::delimiterReplace( '<', '>', '', $headline );
+		$headline = trim( $headline );
+		$sectionanchor = '#' . urlencode( str_replace( ' ', '_', $headline ) );
+		$replacearray = array(
+			'%3A' => ':',
+			'%' => '.'
+		);
+		return str_replace(
+			array_keys( $replacearray ),
+			array_values( $replacearray ),
+			$sectionanchor );
 	}
 
 	/**

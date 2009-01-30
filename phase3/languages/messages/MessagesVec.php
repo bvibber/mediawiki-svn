@@ -49,7 +49,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'TegnùiDeOcio' ),
 	'Recentchanges'             => array( 'ÙltimiCanbiamenti' ),
 	'Upload'                    => array( 'Carga' ),
-	'Imagelist'                 => array( 'Imagini' ),
+	'Listfiles'                 => array( 'Imagini' ),
 	'Newimages'                 => array( 'ImaginiReçenti' ),
 	'Listusers'                 => array( 'Utenti' ),
 	'Listgrouprights'           => array( 'ListaDiritiDeGrupo' ),
@@ -128,6 +128,8 @@ $messages = array(
 'tog-highlightbroken'         => "Evidensia i cołegamenti che i punta a voxe 'ncora da scrìvar",
 'tog-justify'                 => 'Paragrafo: giustificà',
 'tog-hideminor'               => 'Scondi łe modifighe picenine n\'te ła paxena "Ultime modifighe"',
+'tog-hidepatrolled'           => 'Scondi le modìfeghe verificà tra le ultime modìfeghe',
+'tog-newpageshidepatrolled'   => "Scondi le pàxene verificà da l'elenco de le pàxene piassè nove",
 'tog-extendwatchlist'         => 'Espandi ła funsion osservai speciałi mostrando tute łe modifighe aplicabili',
 'tog-usenewrc'                => 'Ultime modifiche avanzade (ghe vol JavaScript)',
 'tog-numberheadings'          => 'Auto-numerazion dei titoli de paragrafo',
@@ -162,6 +164,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Scondi le modifiche picenine nei osservati speciali',
 'tog-watchlisthideliu'        => "Scondi le modifiche dei utenti registrà tra le pàxene tegnùe d'ocio",
 'tog-watchlisthideanons'      => "Scondi le modifiche dei utenti anonimi tra le pàxene tegnùe d'ocio",
+'tog-watchlisthidepatrolled'  => 'Scondi le modìfeghe verificà ne i osservati speciali',
 'tog-ccmeonemails'            => 'Màndeme na copia dei messagi spedìi ai altri utenti',
 'tog-diffonly'                => 'No stà mostrar el contenuto de la pagina dopo el confronto tra version',
 'tog-showhiddencats'          => 'Mostra łe categorie sconte',
@@ -543,6 +546,7 @@ La gà da contegner almanco {{PLURAL:$1|$1 caràtere|$1 caràteri}} e la gà da 
 'passwordremindertext'       => 'Qualcheduni (probabilmente ti, da l\'indirizo IP $1) el gà domandà che ghe vegna mandà na nova password par {{SITENAME}} ($4).
 Na password tenporànea par l\'utente "$2" la xe stà creà e inpostà a "$3".
 Se xe questo che te voléi far, desso te podi entrar co\' sta password tenporanea e inpostar na password nova.
+La to password tenporànea la scade in {{PLURAL:$5|un zorno|$5 zorni}}.
 
 Se no te sì mìa stà ti a far la domanda, opure t\'è vegnù in mente la password e no te vol più canbiarla, te pol ignorar sto mesagio e continuar a doparar la vecia password.',
 'noemail'                    => 'Nissuna casela e-mail la risulta registrà par l\'Utente "$1".',
@@ -829,6 +833,9 @@ Consulta el [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} registro de scanc
 'revisiondelete'              => 'Scanceła o ripristina version',
 'revdelete-nooldid-title'     => 'Version mìa specificà',
 'revdelete-nooldid-text'      => 'No xe stà specificà alcuna version de la pagina su cui eseguir sta funzion.',
+'revdelete-nologtype-title'   => 'Nissun tipo de registro specificà',
+'revdelete-nologtype-text'    => "No ti gà indicà nissun tipo de registro su cui eseguir l'azion.",
+'revdelete-nologid-title'     => 'Eròr de indicazion dei registri',
 'revdelete-selected'          => "'''{{PLURAL:$2|Version selezionà|Versioni selezionà}} de [[:$1]]:'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Evento del registro selezionà|Eventi del registro selezionè}}:'''",
 'revdelete-text'              => "'''Le versioni scancelàe le resta visibili ne la cronologia de la pagina, mentre el testo contegnùo no'l xe acessibile al publico.'''
@@ -1058,6 +1065,7 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 'prefs-resetpass'           => 'Cànbia password',
 'saveprefs'                 => 'Salva le preferense',
 'resetprefs'                => 'Reinposta le preferense',
+'restoreprefs'              => 'Ripristina le inpostassion predefinìe',
 'textboxsize'               => 'Dimension de la casela de modifica',
 'prefs-edit-boxsize'        => 'Dimension de la finestra de modìfega.',
 'rows'                      => 'Righe:',
@@ -1086,6 +1094,8 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 'defaultns'                 => 'Çerca in sti namespace se non diversamente specificà:',
 'default'                   => 'predefinìo',
 'files'                     => 'Imagini',
+'prefs-custom-css'          => 'CSS personalixà',
+'prefs-custom-js'           => 'JS personalixà',
 
 # User rights
 'userrights'                  => 'Gestion dei parmessi relativi ai utenti', # Not used as normal message but as header for the special page itself
@@ -1142,6 +1152,7 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 'right-move'                 => 'Sposta pagine',
 'right-move-subpages'        => 'Sposta le pagine insieme co le so sotopagine',
 'right-move-rootuserpages'   => 'Sposta le pàxene prinsipài dei utenti',
+'right-movefile'             => 'Sposta file',
 'right-suppressredirect'     => 'Scancela un redirect co te sposti na pagina a quel titolo lì',
 'right-upload'               => 'Carga file',
 'right-reupload'             => 'Sorascrivi un file esistente',
@@ -1202,6 +1213,7 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 'action-move'                 => 'spostar sta pàxena',
 'action-move-subpages'        => 'spostar sta pàxena e le so sotopàxene',
 'action-move-rootuserpages'   => 'spostar le pàxene prinsipài dei utenti',
+'action-movefile'             => 'sposta sto file',
 'action-upload'               => 'cargar sto file',
 'action-reupload'             => 'sorascrìvar sto file zà esistente',
 'action-reupload-shared'      => 'sorascrìvar sto file su un archivio condiviso',
@@ -1294,6 +1306,7 @@ Varda la [[Special:NewFiles|galerìa dei file nóvi]] par na vision de insieme.'
 'filename'                    => 'Nome del file',
 'filedesc'                    => 'Somario',
 'fileuploadsummary'           => 'Somario:',
+'filereuploadsummary'         => 'Canbiamenti al file:',
 'filestatus'                  => 'Informazion sul copyright:',
 'filesource'                  => 'Fonte:',
 'uploadedfiles'               => 'Files caricà su {{SITENAME}}',
@@ -1334,6 +1347,7 @@ Se te vol cargar el file istesso, par piaser torna indrio e canbia el nome che t
 'overwroteimage'              => 'gà cargà na version nova de "[[$1]]"',
 'uploaddisabled'              => 'Semo spiacenti, ma el caricamento de file el xe tenporaneamente sospeso.',
 'uploaddisabledtext'          => "El caricamento dei file no'l xe mìa ativo.",
+'php-uploaddisabledtext'      => 'El caricamento de file tramite PHP el xe disabilità. Contròla la configurassion de file_uploads.',
 'uploadscripted'              => 'Sto file contegne codexe HTML o de script, che podaria essere interpretà eroneamente da un browser web.',
 'uploadcorrupt'               => 'El file el xe coróto o el gà na estension mìa giusta. Controla el file e dopo próa de novo a cargarlo.',
 'uploadvirus'                 => 'Sto file contegne un virus! Detagli: $1',
@@ -1370,18 +1384,19 @@ Se el problema el persiste, contatar un [[Special:ListUsers/sysop|aministrador]]
 'upload_source_url'  => ' (na URL coreta e acessibile)',
 'upload_source_file' => ' (un file sul to computer)',
 
-# Special:FileList
-'imagelist-summary'     => "Sta pagina speciale la fa védar tuti i file caricài.
+# Special:ListFiles
+'listfiles-summary'     => "Sta pagina speciale la fa védar tuti i file caricài.
 I file caricài piessè de reçente i vien mostrà a l'inizio de la lista.
 Par modificar l'ordinamento, struca su l'intestazion de la colona presièlta.",
-'imagelist_search_for'  => 'Çerca imagini par nome:',
+'listfiles_search_for'  => 'Çerca imagini par nome:',
 'imgfile'               => 'file',
-'imagelist'             => 'Imagini',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Nome',
-'imagelist_user'        => 'Utente',
-'imagelist_size'        => 'Dimension in byte',
-'imagelist_description' => 'Descrizion',
+'listfiles'             => 'Imagini',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Nome',
+'listfiles_user'        => 'Utente',
+'listfiles_size'        => 'Dimension in byte',
+'listfiles_description' => 'Descrizion',
+'listfiles_count'       => 'Versioni',
 
 # File description page
 'filehist'                       => 'Cronologia del file',
@@ -1557,7 +1572,9 @@ Vien considerà pagine de disanbiguazion tute quele che contien i template elenc
 'protectedtitlesempty'    => 'Al momento no ghe xe titoli proteti coi parametri specificà.',
 'listusers'               => 'Elenco dei utenti',
 'listusers-editsonly'     => 'Fà védar sol che i utenti che gà fato dei contributi',
+'listusers-creationsort'  => 'Òrdena par data de creassion',
 'usereditcount'           => '$1 {{PLURAL:$1|contributo|contributi}}',
+'usercreated'             => 'Creà el $1 a le $2',
 'newpages'                => 'Pàxene nove',
 'newpages-username'       => 'Nome utente:',
 'ancientpages'            => 'Pàxene pì vece',
@@ -1619,7 +1636,8 @@ Varda anca le [[Special:WantedCategories|categorie domandà]].',
 'special-categories-sort-abc'   => 'ordina alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Contributi utente scancelà',
+'deletedcontributions'       => 'Contributi utente scancelà',
+'deletedcontributions-title' => 'Contributi utente scancelà',
 
 # Special:LinkSearch
 'linksearch'       => 'Çerca colegamenti foresti',
@@ -1658,27 +1676,29 @@ Se pol consultar anca dele altre [[{{MediaWiki:Listgrouprights-helppage}}|inform
 'listgrouprights-removegroup-all' => 'Pode cavar tuti i grupi',
 
 # E-mail user
-'mailnologin'     => 'Nissun indirizo a cui mandarghe el messagio',
-'mailnologintext' => 'Par inviare messagi e-mail ad altri utenti xè neçessario [[Special:UserLogin|açedere al sito]] e aver registrà un indirisso vałido ne łe proprie [[Special:Preferences|preferense]].',
-'emailuser'       => "Scrivi a l'utente",
-'emailpage'       => "Scrivi na e-mail a l'utente",
-'emailpagetext'   => 'Te podi usar el modulo chi soto par mandare na e-mail a sto utente.
+'mailnologin'      => 'Nissun indirizo a cui mandarghe el messagio',
+'mailnologintext'  => 'Par inviare messagi e-mail ad altri utenti xè neçessario [[Special:UserLogin|açedere al sito]] e aver registrà un indirisso vałido ne łe proprie [[Special:Preferences|preferense]].',
+'emailuser'        => "Scrivi a l'utente",
+'emailpage'        => "Scrivi na e-mail a l'utente",
+'emailpagetext'    => 'Te podi usar el modulo chi soto par mandare na e-mail a sto utente.
 La e-mail che te ghè indicà ne le [[Special:Preferences|to preferense]] la vegnarà fora nel canpo "Da" de la mail, così che el destinatario el possa rispóndarte a ti diretamente.',
-'usermailererror' => "L'ogeto mail el gà restituìo l'eror:",
-'defemailsubject' => 'Messagio da {{SITENAME}}',
-'noemailtitle'    => 'Nissun indirisso e-mail',
-'noemailtext'     => "Sto utente no'l gà registrà nissuna casela e-mail, opure el gà sielto de no riçévar posta eletronica dai altri utenti.",
-'email-legend'    => "Màndeghe na e-mail a n'altro utente de {{SITENAME}}",
-'emailfrom'       => 'Da:',
-'emailto'         => 'A:',
-'emailsubject'    => 'Ogeto:',
-'emailmessage'    => 'Messajo:',
-'emailsend'       => 'Invia',
-'emailccme'       => 'Màndeme na copia al me indirizo.',
-'emailccsubject'  => 'Copia del messagio invià a $1: $2',
-'emailsent'       => 'E-mail invià',
-'emailsenttext'   => 'La to e-mail la xè stà invià.',
-'emailuserfooter' => 'Sta e-mail la xe stà mandà da $1 a $2 \'traverso la funsion "Manda na e-mail a l\'utente" su {{SITENAME}}.',
+'usermailererror'  => "L'ogeto mail el gà restituìo l'eror:",
+'defemailsubject'  => 'Messagio da {{SITENAME}}',
+'noemailtitle'     => 'Nissun indirisso e-mail',
+'noemailtext'      => "Sto utente no'l gà indicà nissuna casela e-mail valida.",
+'nowikiemailtitle' => 'Posta elétronega mia parmessa',
+'nowikiemailtext'  => 'Sto utente el ga sielto de no riçévar e-mail da i altri utenti.',
+'email-legend'     => "Màndeghe na e-mail a n'altro utente de {{SITENAME}}",
+'emailfrom'        => 'Da:',
+'emailto'          => 'A:',
+'emailsubject'     => 'Ogeto:',
+'emailmessage'     => 'Messajo:',
+'emailsend'        => 'Invia',
+'emailccme'        => 'Màndeme na copia al me indirizo.',
+'emailccsubject'   => 'Copia del messagio invià a $1: $2',
+'emailsent'        => 'E-mail invià',
+'emailsenttext'    => 'La to e-mail la xè stà invià.',
+'emailuserfooter'  => 'Sta e-mail la xe stà mandà da $1 a $2 \'traverso la funsion "Manda na e-mail a l\'utente" su {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => "Pagine tegnùe d'ocio",
@@ -1839,7 +1859,7 @@ Le impostazion atuali par la pagina le xe <strong>$1</strong>:',
 ** Pàxena doparà assè
 ** Vandalismi ripetùi',
 'protect-edit-reasonlist'     => 'Cànbia i motivi de la protesion',
-'protect-expiry-options'      => '2 ore:2 hours,1 giòrno:1 day,3 giòrni:3 days,1 setimana:1 week,2 setimane:2 weeks,1 mese:1 month,3 mesi:3 months,6 mesi:6 months,1 ano:1 year,infinito:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 ora:1 hour,1 zòrno:1 day,1 stimana:1 week,2 stimane:2 weeks,1 mese:1 month,3 mesi:3 months,6 mesi:6 months,1 ano:1 year,infinito:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'Parmesso:',
 'restriction-level'           => 'Livel de restrizion',
 'minimum-size'                => 'Dimension minima',
@@ -2086,13 +2106,16 @@ Acèrtete de ver ben valutà le conseguenze del spostamento, prima de procédar.
 'movenologin'                  => 'No te ghè efetuà el login',
 'movenologintext'              => 'Te ghè da èssar un utente registrà ed aver efetuà el [[Special:UserLogin|login]] par poder spostar na pàxena.',
 'movenotallowed'               => 'No te ghè i parmessi necessari al spostamento de le pagine.',
+'movenotallowedfile'           => 'No ti gà i parmessi necessari par spostar file.',
 'cant-move-user-page'          => 'No se dispone dei parmessi necessari par spostar le pàxene utente.',
 'cant-move-to-user-page'       => 'No se dispone dei parmessi necessari par spostar la pàxena su na pàxena utente (ad ecezion de na sotopàxena utente).',
 'newtitle'                     => 'Al novo titoło de:',
 'move-watch'                   => "Tien d'ocio",
 'movepagebtn'                  => 'Sposta sta pàxena',
 'pagemovedsub'                 => 'Spostamento efetuà con sucesso',
-'movepage-moved'               => '<big>\'\'\'"$1" la xe stà spostà al titolo "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>\'\'\'"$1" la xe stà spostà a "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'Un reindirissamento el xe stà creà.',
+'movepage-moved-noredirect'    => 'La creassion de un reindirissamento la xe stà sopressa.',
 'articleexists'                => "Na pàxena con sto nome la existe xà, opure el nome che te ghè sielto no'l xè vałido.<br />Siegli, par piaser, un titoło diverso par ła voçe.",
 'cantmove-titleprotected'      => 'No se pol mìa spostar la pagina, in quanto el novo titolo el xe stà proteto par inpedirghene la creazion',
 'talkexists'                   => "'''La pagina la xe stà spostà coretamente, ma no s'à mìa podesto spostar la pagina de discussion parché ghe ne xe xà n'altra col stesso nome. Par piaser meti insieme i contenuti de le do pagine a man.'''",
@@ -2106,6 +2129,7 @@ Acèrtete de ver ben valutà le conseguenze del spostamento, prima de procédar.
 'movepage-max-pages'           => "Xe stà ragiunto el nùmaro massimo consentìo de $1 {{PLURAL:$1|pagina|pagine}} spostà e nissun'altra la vegnarà spostà in automatico.",
 '1movedto2'                    => '[[$1]] spostà a [[$2]]',
 '1movedto2_redir'              => "$1 spostà a $2 co'n redirect",
+'move-redirect-suppressed'     => 'reindirissamento sopresso',
 'movelogpage'                  => 'Registro dei spostamenti',
 'movelogpagetext'              => 'Lista de pàxene spostàe.',
 'movereason'                   => 'Reason',
@@ -2676,10 +2700,8 @@ I colegamenti sucessivi, su la stessa riga, i xe considerà come ecezion (cioè 
 Struca el boton qua soto par mandar na richiesta de conferma al to indirizo.
 Nel messagio che te riva te catarè un colegamento che contien un codice.
 Visita el colegamento col to browser par confermar che el to indirizo el xe valido.",
-'confirmemail_pending'     => '<div class="error">
-El codice de conferma el xe zà stà spedìo par posta eletronica; se l\'account el xe stà
-creà de reçente, par piaser speta par qualche minuto che riva el codice prima de domandàrghene uno novo.
-</div>',
+'confirmemail_pending'     => "El codice de conferma el xe zà stà spedìo par posta eletronica; se l'account el xe stà
+creà de reçente, par piaser speta par qualche minuto che riva el codice prima de domandàrghene uno novo.",
 'confirmemail_send'        => 'Spedissi un codice de conferma par e-mail',
 'confirmemail_sent'        => 'Email de conferma invià.',
 'confirmemail_oncreate'    => "Un codice de conferma el xe stà spedìo a l'indirizo

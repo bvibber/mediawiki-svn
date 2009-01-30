@@ -135,7 +135,7 @@ class Article {
 	 * @return mixed false, Title of in-wiki target, or string with URL
 	 */
 	public function followRedirectText( $text ) {
-		$rt = Title::newFromRedirect( $text );
+		$rt = Title::newFromRedirectRecurse( $text ); // recurse through to only get the final target
 		# process if title object is valid and not special:userlogout
 		if( $rt ) {
 			if( $rt->getInterwiki() != '' ) {
@@ -218,7 +218,7 @@ class Article {
 				if( wfEmptyMsg( $message, $text ) )
 					$text = '';
 			} else {
-				$text = wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' );
+				$text = wfMsgExt( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon', 'parsemag' );
 			}
 			wfProfileOut( __METHOD__ );
 			return $text;
@@ -227,6 +227,21 @@ class Article {
 			wfProfileOut( __METHOD__ );
 			return $this->mContent;
 		}
+	}
+	
+	/**
+	 * Get the text of the current revision. No side-effects...
+	 *
+	 * @return Return the text of the current revision
+	*/
+	public function getRawText() {
+		// Check process cache for current revision
+		if( $this->mContentLoaded && $this->mOldId == 0 ) {
+			return $this->mContent;
+		}
+		$rev = Revision::newFromTitle( $this->mTitle );
+		$text = $rev ? $rev->getRawText() : false;
+		return $text;
 	}
 
 	/**
@@ -244,6 +259,28 @@ class Article {
 	public function getSection( $text, $section ) {
 		global $wgParser;
 		return $wgParser->getSection( $text, $section );
+	}
+	
+	/**
+	 * Get the text that needs to be saved in order to undo all revisions
+	 * between $undo and $undoafter. Revisions must belong to the same page,
+	 * must exist and must not be deleted
+	 * @param $undo Revision 
+	 * @param $undoafter Revision Must be an earlier revision than $undo
+	 * @return mixed string on success, false on failure
+	 */
+	public function getUndoText( Revision $undo, Revision $undoafter = null ) {
+		$undo_text = $undo->getText();
+		$undoafter_text = $undoafter->getText();
+		$cur_text = $this->getContent();
+		if ( $cur_text == $undo_text ) {
+			# No use doing a merge if it's just a straight revert.
+			return $undoafter_text;
+		}
+		$undone_text = '';
+		if ( !wfMerge( $undo_text, $undoafter_text, $cur_text, $undone_text ) )
+			return false;
+		return $undone_text;
 	}
 
 	/**
@@ -569,7 +606,7 @@ class Article {
 			}
 			// Apparently loadPageData was never called
 			$this->loadContent();
-			$titleObj = Title::newFromRedirect( $this->fetchContent() );
+			$titleObj = Title::newFromRedirectRe( $this->fetchContent() );
 		} else {
 			$titleObj = Title::newFromRedirect( $text );
 		}
@@ -765,6 +802,16 @@ class Article {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
+		
+		if( $ns == NS_USER || $ns == NS_USER_TALK ) {
+			# User/User_talk subpages are not modified. (bug 11443)
+			if( !$this->mTitle->isSubpage() ) {
+				$block = new Block();
+				if( $block->load( $this->mTitle->getBaseText() ) ) {
+					$wgOut->setRobotpolicy( 'noindex,nofollow' );
+				}
+			}
+		}
 
 		# Should the parser cache be used?
 		$pcache = $this->useParserCache( $oldid );
@@ -816,14 +863,18 @@ class Article {
 				$this->showDeletionLog();
 			}
 			$text = $this->getContent();
-			if( $text === false ) {
+			// For now, check also for ID until getContent actually returns
+			// false for pages that do not exists
+			if( $text === false || $this->getID() === 0 ) {
 				# Failed to load, replace text with error message
 				$t = $this->mTitle->getPrefixedText();
 				if( $oldid ) {
-					$d = wfMsgExt( 'missingarticle-rev', array( 'escape' ), $oldid );
-					$text = wfMsg( 'missing-article', $t, $d );
-				} else {
-					$text = wfMsg( 'noarticletext' );
+					$d = wfMsgExt( 'missingarticle-rev', 'escape', $oldid );
+					$text = wfMsgExt( 'missing-article', 'parsemag', $t, $d );
+				// Always use page content for pages in the MediaWiki namespace
+				// since it contains the default message
+				} elseif ( $this->mTitle->getNamespace() != NS_MEDIAWIKI ) {
+					$text = wfMsgExt( 'noarticletext', 'parsemag' );
 				}
 			}
 			
@@ -836,7 +887,7 @@ class Article {
 					// for better machine handling of broken links.
 					$return404 = true;
 				}
-			} 
+			}
 
 			if( $return404 ) {
 				$wgRequest->response()->header( "HTTP/1.x 404 Not Found" );
@@ -890,7 +941,7 @@ class Article {
 					$wgOut->addHTML( htmlspecialchars( $this->mContent ) );
 					$wgOut->addHTML( "\n</pre>\n" );
 				}
-			} else if( $rt = Title::newFromRedirect( $text ) ) {
+			} else if( $rt = Title::newFromRedirectArray( $text ) ) { # get an array of redirect targets
 				# Don't append the subtitle if this was an old revision
 				$wgOut->addHTML( $this->viewRedirect( $rt, !$wasRedirected && $this->isCurrent() ) );
 				$parseout = $wgParser->parse($text, $this->mTitle, ParserOptions::newFromUser($wgUser));
@@ -942,7 +993,7 @@ class Article {
 
 		# If we have been passed an &rcid= parameter, we want to give the user a
 		# chance to mark this new article as patrolled.
-		if( !empty($rcid) && $this->mTitle->exists() && $this->mTitle->userCan('patrol') ) {
+		if( !empty($rcid) && $this->mTitle->exists() && $this->mTitle->quickUserCan('patrol') ) {
 			$wgOut->addHTML(
 				"<div class='patrollink'>" .
 					wfMsgHtml( 'markaspatrolledlink',
@@ -1003,24 +1054,41 @@ class Article {
 
 	/**
 	 * View redirect
-	 * @param $target Title object of destination to redirect
+	 * @param $target Title object or Array of destination(s) to redirect
 	 * @param $appendSubtitle Boolean [optional]
 	 * @param $forceKnown Boolean: should the image be shown as a bluelink regardless of existence?
 	 */
 	public function viewRedirect( $target, $appendSubtitle = true, $forceKnown = false ) {
 		global $wgParser, $wgOut, $wgContLang, $wgStylePath, $wgUser;
 		# Display redirect
+		if( !is_array( $target ) ) {
+			$target = array( $target );
+		}
 		$imageDir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
-		$imageUrl = $wgStylePath.'/common/images/redirect' . $imageDir . '.png';
-
+		$imageUrl = $wgStylePath . '/common/images/redirect' . $imageDir . '.png';
+		$imageUrl2 = $wgStylePath . '/common/images/nextredirect' . $imageDir . '.png';
+		$alt2 = $wgContLang->isRTL() ? '&larr;' : '&rarr;'; // should -> and <- be used instead of entities?
+		
 		if( $appendSubtitle ) {
 			$wgOut->appendSubtitle( wfMsgHtml( 'redirectpagesub' ) );
 		}
 		$sk = $wgUser->getSkin();
+		// the loop prepends the arrow image before the link, so the first case needs to be outside
+		$title = array_shift( $target );
 		if( $forceKnown ) {
-			$link = $sk->makeKnownLinkObj( $target, htmlspecialchars( $target->getFullText() ) );
+			$link = $sk->makeKnownLinkObj( $title, htmlspecialchars( $title->getFullText() ) );
 		} else {
-			$link = $sk->makeLinkObj( $target, htmlspecialchars( $target->getFullText() ) );
+			$link = $sk->makeLinkObj( $title, htmlspecialchars( $title->getFullText() ) );
+		}
+		// automatically append redirect=no to each link, since most of them are redirect pages themselves
+		foreach( $target as $rt ) {
+			if( $forceKnown ) {
+				$link .= '<img src="'.$imageUrl2.'" alt="'.$alt2.' " />'
+					. $sk->makeKnownLinkObj( $rt, htmlspecialchars( $rt->getFullText() ) );
+			} else {
+				$link .= '<img src="'.$imageUrl2.'" alt="'.$alt2.' " />'
+					. $sk->makeLinkObj( $rt, htmlspecialchars( $rt->getFullText() ) );
+			}
 		}
 		return '<img src="'.$imageUrl.'" alt="#REDIRECT " />' .
 			'<span class="redirectText">'.$link.'</span>';
@@ -1128,7 +1196,7 @@ class Article {
 			if( $this->getID() == 0 ) {
 				$text = false;
 			} else {
-				$text = $this->getContent();
+				$text = $this->getRawText();
 			}
 			$wgMessageCache->replace( $this->mTitle->getDBkey(), $text );
 		}
@@ -1490,7 +1558,7 @@ class Article {
 		$isminor = ( $flags & EDIT_MINOR ) && $user->isAllowed('minoredit');
 		$bot = $flags & EDIT_FORCE_BOT;
 
-		$oldtext = $this->getContent();
+		$oldtext = $this->getRawText(); // current revision
 		$oldsize = strlen( $oldtext );
 
 		# Provide autosummaries if one is not provided and autosummaries are enabled.
@@ -1943,7 +2011,9 @@ class Article {
 						$protect_description .= "[$action=$restrictions] (";
 						if( $encodedExpiry[$action] != 'infinity' ) {
 							$protect_description .= wfMsgForContent( 'protect-expiring', 
-								$wgContLang->timeanddate( $expiry[$action], false, false ) ); 	 
+								$wgContLang->timeanddate( $expiry[$action], false, false ) ,
+								$wgContLang->date( $expiry[$action], false, false ) ,
+								$wgContLang->time( $expiry[$action], false, false ) ); 	 
 						} else {
 							$protect_description .= wfMsgForContent( 'protect-expiry-indefinite' );
 						}
@@ -2122,7 +2192,7 @@ class Article {
 
 		if( $reason != 'other' && $this->DeleteReason != '' ) {
 			// Entry from drop down menu + additional comment
-			$reason .= ': ' . $this->DeleteReason;
+			$reason .= wfMsgForContent( 'colon-separator' ) . $this->DeleteReason;
 		} elseif( $reason == 'other' ) {
 			$reason = $this->DeleteReason;
 		}
@@ -2396,7 +2466,7 @@ class Article {
 			return false;
 		}
 
-		$u = new SiteStatsUpdate( 0, 1, -(int)$this->isCountable( $this->getContent() ), -1 );
+		$u = new SiteStatsUpdate( 0, 1, -(int)$this->isCountable( $this->getRawText() ), -1 );
 		array_push( $wgDeferredUpdateList, $u );
 
 		// Bitfields to further suppress the content
@@ -2658,7 +2728,7 @@ class Article {
 			$revId = false;
 		}
 
-		wfRunHooks( 'ArticleRollbackComplete', array( $this, $wgUser, $target ) );
+		wfRunHooks( 'ArticleRollbackComplete', array( $this, $wgUser, $target, $current ) );
 
 		$resultDetails = array(
 			'summary' => $summary,

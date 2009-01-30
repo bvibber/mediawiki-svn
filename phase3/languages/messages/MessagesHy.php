@@ -199,7 +199,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Հսկողությանցանկը' ),
 	'Recentchanges'             => array( 'Վերջինփոփոխությունները' ),
 	'Upload'                    => array( 'Բեռնել' ),
-	'Imagelist'                 => array( 'Պատկերներիցանկը' ),
+	'Listfiles'                 => array( 'Պատկերներիցանկը' ),
 	'Newimages'                 => array( 'Նորպատկերներ' ),
 	'Listusers'                 => array( 'Մասնակիցներիցանկը' ),
 	'Statistics'                => array( 'Վիճակագրություն' ),
@@ -1142,15 +1142,15 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'upload_source_url'  => ' (գործուն, հանրամատչելի URL-հասցե)',
 'upload_source_file' => ' (ֆայլ ձեր համակարգչի վրա)',
 
-# Special:FileList
-'imagelist_search_for'  => 'Որոնել պատկերի անվանմամբ.',
+# Special:ListFiles
+'listfiles_search_for'  => 'Որոնել պատկերի անվանմամբ.',
 'imgfile'               => 'ֆայլ',
-'imagelist'             => 'Ֆայլերի ցանկ',
-'imagelist_date'        => 'Օր/Ժամ',
-'imagelist_name'        => 'Անվանում',
-'imagelist_user'        => 'Մասնակից',
-'imagelist_size'        => 'Չափ',
-'imagelist_description' => 'Նկարագրություն',
+'listfiles'             => 'Ֆայլերի ցանկ',
+'listfiles_date'        => 'Օր/Ժամ',
+'listfiles_name'        => 'Անվանում',
+'listfiles_user'        => 'Մասնակից',
+'listfiles_size'        => 'Չափ',
+'listfiles_description' => 'Նկարագրություն',
 
 # File description page
 'filehist'                  => 'Ֆայլի պատմություն',
@@ -1328,7 +1328,8 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'categoriespagetext' => 'Հետևյալ կատեգորիաները պարունակում են էջեր կամ մեդիա։',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Մասնակցի ջնջված ներդրում',
+'deletedcontributions'       => 'Մասնակցի ջնջված ներդրում',
+'deletedcontributions-title' => 'Մասնակցի ջնջված ներդրում',
 
 # Special:LinkSearch
 'linksearch-ok' => 'Որոնել',
@@ -2008,9 +2009,7 @@ $1',
 'confirmemail'            => 'Էլ-հասցեի վավերացում',
 'confirmemail_noemail'    => 'Դուք չեք նշել գործող էլ-հասցե ձեր [[Special:Preferences|նախընտրություններում]]։',
 'confirmemail_text'       => 'Այս վիքիում անհրաժեշտ է վավերացնել էլ-հասցեն մինչև էլ-փոստի վրա հիմնված հնարավորությունների օգտագործելը։ Մատնահարեք ստորև կոճակին՝ ձեր հասցեին վավերացման նամակ ուղարկելու համար։ Ուղերձում կգտնեք վավերացման կոդով հղում, որին հետևելով կվավերացնեք ձեր էլ-հասցեն։',
-'confirmemail_pending'    => '<div class="error">
-Վավերացման կոդով նամակն արդեն ուղարկվել է։ Եթե դուք նորերս եք ստեղծել մասնակցային հաշիվը, ապա, հավանաբար, արժե սպասել մի քանի րոպե մինչև նամակի ժամանելը՝ նոր կոդ հայցելուց առաջ։
-</div>',
+'confirmemail_pending'    => 'Վավերացման կոդով նամակն արդեն ուղարկվել է։ Եթե դուք նորերս եք ստեղծել մասնակցային հաշիվը, ապա, հավանաբար, արժե սպասել մի քանի րոպե մինչև նամակի ժամանելը՝ նոր կոդ հայցելուց առաջ։',
 'confirmemail_send'       => 'Ուղարկել վավերացման ուղերձ',
 'confirmemail_sent'       => 'Վավերացման ուղերձը ուղարկված է։',
 'confirmemail_oncreate'   => 'Վավերացման կոդով նամակը ուղարկվել է ձեր նշված էլ-հասցեով։

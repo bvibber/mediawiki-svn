@@ -1182,18 +1182,18 @@ PICT # misc.
 'upload_source_url'  => ' (एक वैध, सभी जगहोंसे उपलब्ध URL)',
 'upload_source_file' => ' (आपके कम्प्यूटरपर होनेवाली फ़ाईल)',
 
-# Special:FileList
-'imagelist-summary'     => 'यह विशेष पृष्ठ सभी अपलोड की हुई फ़ाईलें दर्शाता हैं।
+# Special:ListFiles
+'listfiles-summary'     => 'यह विशेष पृष्ठ सभी अपलोड की हुई फ़ाईलें दर्शाता हैं।
 सामान्यत: सबसे बादमें अपलोड हुई फ़ाईलें सबसे उपर दिखती हैं।
 कालम कें शीर्षकमें क्लिक करने से अनुक्रम बदला जा सकता हैं।',
-'imagelist_search_for'  => 'इस मीडिया नाम से खोजें:',
+'listfiles_search_for'  => 'इस मीडिया नाम से खोजें:',
 'imgfile'               => 'फ़ाईल',
-'imagelist'             => 'चित्र सूची',
-'imagelist_date'        => 'दिनांक',
-'imagelist_name'        => 'नाम',
-'imagelist_user'        => 'सदस्य',
-'imagelist_size'        => 'आकार',
-'imagelist_description' => 'ज़ानकारी',
+'listfiles'             => 'चित्र सूची',
+'listfiles_date'        => 'दिनांक',
+'listfiles_name'        => 'नाम',
+'listfiles_user'        => 'सदस्य',
+'listfiles_size'        => 'आकार',
+'listfiles_description' => 'ज़ानकारी',
 
 # File description page
 'filehist'                       => 'फ़ाईलका इतिहास',
@@ -1401,7 +1401,8 @@ PICT # misc.
 'special-categories-sort-abc'   => 'वर्णानुक्रम के अनुसार दर्शायें',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'हटाये गये सदस्य योगदान',
+'deletedcontributions'       => 'हटाये गये सदस्य योगदान',
+'deletedcontributions-title' => 'हटाये गये सदस्य योगदान',
 
 # Special:LinkSearch
 'linksearch'       => 'वेब कड़ीयाँ खोजें',
@@ -2412,8 +2413,8 @@ $1',
 आपके एड्रेस पर एक कन्फर्मेशन कोड भेजने के लिये नीचे दिये बटन पर क्लिक करें।
 उस मेल में एक कोड से लदी एक कड़ी होगी;
 आपके इ-मेल के प्रमाणिकरण के लिये इसे अपने ब्राउज़रमें खोलें।',
-'confirmemail_pending'     => '<div class="error">आपको पहलेसे ही एक कन्फर्मेशन कोड भेजा गया हैं;
-अगर आपने हालमें खाता खोला हैं, तो नये कोड की माँग करने से पहले कुछ पल उसका इंतज़ार करें।</div>',
+'confirmemail_pending'     => 'आपको पहलेसे ही एक कन्फर्मेशन कोड भेजा गया हैं;
+अगर आपने हालमें खाता खोला हैं, तो नये कोड की माँग करने से पहले कुछ पल उसका इंतज़ार करें।',
 'confirmemail_send'        => 'एक कन्फर्मेशन कोड भेजें',
 'confirmemail_sent'        => 'कन्फर्मेशन इ-मेल भेज दिया।',
 'confirmemail_oncreate'    => 'आपके इ-मेल पते पर एक कन्फर्मेशन कोड भेजा गया हैं।

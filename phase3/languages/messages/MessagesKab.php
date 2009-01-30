@@ -833,15 +833,15 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'upload_source_url'  => ' (URL saḥiḥ)',
 'upload_source_file' => ' (afaylu deg uselkim inek)',
 
-# Special:FileList
-'imagelist_search_for'  => 'Nadi ɣef yisem n tugna:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Nadi ɣef yisem n tugna:',
 'imgfile'               => 'afaylu',
-'imagelist'             => 'Umuɣ n tugniwin',
-'imagelist_date'        => 'Azemz',
-'imagelist_name'        => 'Isem',
-'imagelist_user'        => 'Amseqdac',
-'imagelist_size'        => 'Tiddi (bytes/octets)',
-'imagelist_description' => 'Aglam',
+'listfiles'             => 'Umuɣ n tugniwin',
+'listfiles_date'        => 'Azemz',
+'listfiles_name'        => 'Isem',
+'listfiles_user'        => 'Amseqdac',
+'listfiles_size'        => 'Tiddi (bytes/octets)',
+'listfiles_description' => 'Aglam',
 
 # File description page
 'filehist-current'          => 'Lux a',
@@ -1426,10 +1426,8 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'confirmemail_text'       => 'Deg wiki-yagi, yessefk ad tvalidiḍ tansa n email inek
 qbel ad tesseqdceḍ iḍaɣaren n email. Tella taqeffalt d akessar, wekki fell-as
 iwakken yettwazen ungal n usentem semail. Email-nni yesɛa azady, ldi-t.',
-'confirmemail_pending'    => '<div class="error">
-Yettwazen-ak yagi ungal n usentem; lukan txelqeḍ isem wemseqdac tura kan,
-ahat yessefk ad tegguniḍ cwiṭ qbel ad tɛreḍeḍ ad testeqsiḍ ɣef ungal amaynut.
-</div>',
+'confirmemail_pending'    => 'Yettwazen-ak yagi ungal n usentem; lukan txelqeḍ isem wemseqdac tura kan,
+ahat yessefk ad tegguniḍ cwiṭ qbel ad tɛreḍeḍ ad testeqsiḍ ɣef ungal amaynut.',
 'confirmemail_send'       => 'Azen-iyi-d angal n usentem s e-mail iwakken ad snetmeɣ.',
 'confirmemail_sent'       => 'E-mail yettwazen iwakken ad tsentmeḍ.',
 'confirmemail_oncreate'   => 'Angal n usentem yettwazen ar tansa n e-mail inek.

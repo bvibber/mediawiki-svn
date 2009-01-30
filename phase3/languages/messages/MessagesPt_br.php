@@ -13,6 +13,7 @@
  * @author Lijealso
  * @author Rodrigo Calanca Nishino
  * @author Urhixidur
+ * @author Waldir
  * @author Yves Marques Junqueira
  * @author לערי ריינהארט
  * @author 555
@@ -70,7 +71,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Páginas vigiadas', 'Artigos vigiados', 'Vigiados' ),
 	'Recentchanges'             => array( 'Mudanças recentes', 'Recentes' ),
 	'Upload'                    => array( 'Carregar imagem', 'Carregar ficheiro', 'Carregar arquivo', 'Enviar' ),
-	'Imagelist'                 => array( 'Lista de imagens', 'Lista de ficheiros', 'Lista de arquivos' ),
+	'Listfiles'                 => array( 'Lista de imagens', 'Lista de ficheiros', 'Lista de arquivos' ),
 	'Newimages'                 => array( 'Imagens novas', 'Ficheiros novos', 'Arquivos novos' ),
 	'Listusers'                 => array( 'Lista de usuários', 'Lista de utilizadores' ),
 	'Listgrouprights'           => array( 'Listar privilégios de grupos' ),
@@ -241,9 +242,9 @@ $messages = array(
 'thu'           => 'Qui',
 'fri'           => 'Sex',
 'sat'           => 'Sáb',
-'january'       => 'Janeiro',
-'february'      => 'Fevereiro',
-'march'         => 'Março',
+'january'       => 'janeiro',
+'february'      => 'fevereiro',
+'march'         => 'março',
 'april'         => 'Abril',
 'may_long'      => 'Maio',
 'june'          => 'Junho',
@@ -253,9 +254,9 @@ $messages = array(
 'october'       => 'Outubro',
 'november'      => 'Novembro',
 'december'      => 'Dezembro',
-'january-gen'   => 'Janeiro',
-'february-gen'  => 'Fevereiro',
-'march-gen'     => 'Março',
+'january-gen'   => 'janeiro',
+'february-gen'  => 'fevereiro',
+'march-gen'     => 'março',
 'april-gen'     => 'Abril',
 'may-gen'       => 'Maio',
 'june-gen'      => 'Junho',
@@ -596,8 +597,8 @@ Verifique se digitou corretamente, ou [[Special:UserLogin/signup|crie uma nova c
 Deve de ter no mínimo {{PLURAL:$1|1 caracter|$1 caracteres}} e ser diferente do seu nome de usuário.',
 'mailmypassword'             => "Enviar uma nova senha por ''e-mail''",
 'passwordremindertitle'      => 'Nova senha temporária em {{SITENAME}}',
-'passwordremindertext'       => 'Alguém (provavelmente você, a partir do endereço de IP $1) solicitou uma nova senha para {{SITENAME}} ($4).
-A senha temporária criada para o usuário "$2" é, a partir de agora, "$3". Se esta era sua intenção, você precisará se autenticar e escolher uma nova senha agora.
+'passwordremindertext'       => 'Alguém (provavelmente você, a partir do endereço de IP $1) solicitou uma nova senha para {{SITENAME}} ($4). Foi criada uma senha temporária para o usuário "$2", sendo ela "$3". Se esta era sua intenção, você precisará se autenticar e escolher uma nova senha agora.
+A sua senha temporária expirará em {{PLURAL:$5|um dia|$5 dias}}.
 
 Se foi outra pessoa quem fez este pedido, ou se você já lembrou a sua senha, e não quer mais alterá-la, você pode ignorar esta mensagem e continuar utilizando sua senha antiga.',
 'noemail'                    => 'Não há um endereço de e-mail associado ao usuário "$1".',
@@ -1447,18 +1448,18 @@ PICT # misc.
 'upload_source_url'  => ' (um URL válido, publicamente acessível)',
 'upload_source_file' => ' (um arquivo no seu computador)',
 
-# Special:FileList
-'imagelist-summary'     => 'Esta página especial mostra todos os arquivos carregados.
+# Special:ListFiles
+'listfiles-summary'     => 'Esta página especial mostra todos os arquivos carregados.
 Por padrão, os últimos arquivos carregados são mostrados no topo da lista.
 Um clique sobre um cabeçalho de coluna altera a ordenação.',
-'imagelist_search_for'  => 'Pesquisar por nome de imagem:',
+'listfiles_search_for'  => 'Pesquisar por nome de imagem:',
 'imgfile'               => 'arquivo',
-'imagelist'             => 'Lista de arquivo',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Nome',
-'imagelist_user'        => 'Usuário',
-'imagelist_size'        => 'Tamanho',
-'imagelist_description' => 'Descrição',
+'listfiles'             => 'Lista de arquivo',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Nome',
+'listfiles_user'        => 'Usuário',
+'listfiles_size'        => 'Tamanho',
+'listfiles_description' => 'Descrição',
 
 # File description page
 'filehist'                       => 'Histórico do arquivo',
@@ -1694,7 +1695,8 @@ Veja também as [[Special:WantedCategories|categorias em falta]].',
 'special-categories-sort-abc'   => 'ordenar alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Contribuições de usuário eliminadas',
+'deletedcontributions'       => 'Contribuições de usuário eliminadas',
+'deletedcontributions-title' => 'Contribuições de usuário eliminadas',
 
 # Special:LinkSearch
 'linksearch'       => 'Procurar por ligações da web',
@@ -2769,9 +2771,7 @@ Caso o arquivo tenha sido modificado a partir do seu estado original, alguns det
 'confirmemail'             => 'Confirmar endereço de E-mail',
 'confirmemail_noemail'     => 'Não possui um endereço de e-mail válido indicado nas suas [[Special:Preferences|preferências de usuário]].',
 'confirmemail_text'        => 'Esta wiki requer que valide o seu endereço de e-mail antes de utilizar as funcionalidades que requerem um endereço de e-mail. Ative o botão abaixo para enviar uma confirmação para o seu endereço de e-mail. A mensagem incluíra um endereço que contém um código; carregue o endereço no seu navegador para confirmar que o seu endereço de e-mail encontra-se válido.',
-'confirmemail_pending'     => '<div class="error">
-Um código de confirmação já foi enviado para você; caso tenha criado sua conta recentemente, é recomendável aguardar alguns minutos para o receber antes de tentar pedir um novo código.
-</div>',
+'confirmemail_pending'     => 'Um código de confirmação já foi enviado para você; caso tenha criado sua conta recentemente, é recomendável aguardar alguns minutos para o receber antes de tentar pedir um novo código.',
 'confirmemail_send'        => 'Enviar código de confirmação',
 'confirmemail_sent'        => 'E-mail de confirmação enviado.',
 'confirmemail_oncreate'    => 'Foi enviado um código de confirmação para o seu endereço de e-mail.

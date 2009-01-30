@@ -635,6 +635,7 @@ abstract class ApiBase {
 	 * Call main module's error handler
 	 */
 	public function dieUsage($description, $errorCode, $httpRespCode = 0) {
+		wfProfileClose();
 		throw new UsageException($description, $this->encodeParamName($errorCode), $httpRespCode);
 	}
 
@@ -693,16 +694,20 @@ abstract class ApiBase {
 		'ipb_cant_unblock' => array('code' => 'cantunblock', 'info' => "The block you specified was not found. It may have been unblocked already"),
 		'mailnologin' => array('code' => 'cantsend', 'info' => "You're not logged in or you don't have a confirmed e-mail address, so you can't send e-mail"),
 		'usermaildisabled' => array('code' => 'usermaildisabled', 'info' => "User email has been disabled"),
+		'usermailenabled' => array('code' => 'usermailenabled', 'info' => "User email is enabled"),
 		'blockedemailuser' => array('code' => 'blockedfrommail', 'info' => "You have been blocked from sending e-mail"),
 		'notarget' => array('code' => 'notarget', 'info' => "You have not specified a valid target for this action"),
 		'noemail' => array('code' => 'noemail', 'info' => "The user has not specified a valid e-mail address, or has chosen not to receive e-mail from other users"),
 		'rcpatroldisabled' => array('code' => 'patroldisabled', 'info' => "Patrolling is disabled on this wiki"),
 		'markedaspatrollederror-noautopatrol' => array('code' => 'noautopatrol', 'info' => "You don't have permission to patrol your own changes"),
+		'delete-toobig' => array('code' => 'bigdelete', 'info' => "You can't delete this page because it has more than \$1 revisions"),
+		'movenotallowedfile' => array('code' => 'cantmovefile', 'info' => "You don't have permission to move files"),
 
 		// API-specific messages
 		'missingparam' => array('code' => 'no$1', 'info' => "The \$1 parameter must be set"),
 		'invalidtitle' => array('code' => 'invalidtitle', 'info' => "Bad title ``\$1''"),
 		'nosuchpageid' => array('code' => 'nosuchpageid', 'info' => "There is no page with ID \$1"),
+		'nosuchrevid' => array('code' => 'nosuchrevid', 'info' => "There is no revision with ID \$1"),
 		'invaliduser' => array('code' => 'invaliduser', 'info' => "Invalid username ``\$1''"),
 		'invalidexpiry' => array('code' => 'invalidexpiry', 'info' => "Invalid expiry time ``\$1''"),
 		'pastexpiry' => array('code' => 'pastexpiry', 'info' => "Expiry time ``\$1'' is in the past"),
@@ -737,8 +742,10 @@ abstract class ApiBase {
 		'blankpage' => array('code' => 'emptypage', 'info' => "Creating new, empty pages is not allowed"),
 		'editconflict' => array('code' => 'editconflict', 'info' => "Edit conflict detected"),
 		'hashcheckfailed' => array('code' => 'badmd5', 'info' => "The supplied MD5 hash was incorrect"),
-		'missingtext' => array('code' => 'notext', 'info' => "One of the text, appendtext and prependtext parameters must be set"),
+		'missingtext' => array('code' => 'notext', 'info' => "One of the text, appendtext, prependtext and undo parameters must be set"),
 		'emptynewsection' => array('code' => 'emptynewsection', 'info' => 'Creating empty new sections is not possible.'),
+		'revwrongpage' => array('code' => 'revwrongpage', 'info' => "r\$1 is not a revision of ``\$2''"),
+		'undo-failure' => array('code' => 'undofailure', 'info' => 'Undo failed due to conflicting intermediate edits'),
 	);
 
 	/**

@@ -956,7 +956,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'recentchangestext'                 => "በዚሁ ገጽ ላይ በቅርብ ጊዜ የወጡ አዳዲስ ለውጦች ለመከታተል ይችላሉ። <br /> ('''ጥ'''፦ ጥቃቅን ለውጥ፤ '''አ'''፦ አዲስ ገጽ)",
 'recentchanges-feed-description'    => 'በዚህ ዊኪ ላይ በቅርብ ግዜ የተለወጠውን በዚሁ feed መከታተል ይችላሉ',
 'rcnote'                            => "ከ$5 $4 እ.ኤ.አ. {{PLURAL:$2|ባለፈው 1 ቀን|ባለፉት '''$2''' ቀኖች}} {{PLURAL:$1|የተደረገው '''1''' ለውጥ እታች ይገኛል|የተደረጉት '''$1''' መጨረሻ ለውጦች እታች ይገኛሉ}}።",
-'rcnotefrom'                        => "ከ'''$2''' ጀምሮ የተቀየሩትን ገጾች (እስከ '''$1''' ድረስ) ክዚህ በታች ይታያሉ።",
+'rcnotefrom'                        => "ከ'''$2''' ጀምሮ የተቀየሩት ገጾች (እስከ '''$1''' ድረስ) ክዚህ በታች ይታያሉ።",
 'rclistfrom'                        => '(ከ $1 ጀምሮ አዲስ ለውጦቹን ለማየት)',
 'rcshowhideminor'                   => 'ጥቃቅን ለውጦች $1',
 'rcshowhidebots'                    => 'bots $1',
@@ -1078,15 +1078,15 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'upload_source_url'  => ' (ትክክለኛ፣ በግልጽ የሚገኝ URL)',
 'upload_source_file' => ' (በኮምፒውተርዎ ላይ ያለበት ፋይል)',
 
-# Special:FileList
-'imagelist_search_for'  => 'ለMedia ፋይል ስም ፍለጋ፦',
+# Special:ListFiles
+'listfiles_search_for'  => 'ለMedia ፋይል ስም ፍለጋ፦',
 'imgfile'               => 'ፋይሉ',
-'imagelist'             => 'የፋይል / ሥዕሎች ዝርዝር',
-'imagelist_date'        => 'ቀን እ.ኤ.አ',
-'imagelist_name'        => 'የፋይል ስም',
-'imagelist_user'        => 'አቅራቢው',
-'imagelist_size'        => 'መጠን (byte)',
-'imagelist_description' => 'ማጠቃለያ',
+'listfiles'             => 'የፋይል / ሥዕሎች ዝርዝር',
+'listfiles_date'        => 'ቀን እ.ኤ.አ',
+'listfiles_name'        => 'የፋይል ስም',
+'listfiles_user'        => 'አቅራቢው',
+'listfiles_size'        => 'መጠን (byte)',
+'listfiles_description' => 'ማጠቃለያ',
 
 # File description page
 'filehist'                       => 'የፋይሉ ታሪክ',
@@ -1704,9 +1704,7 @@ $1 አሁን ገና ታግዷል። ዝርዝሩን ማስተካከል ፈለጉ
 'move-watch'                => 'ይህ ገጽ በተከታተሉት ገጾች ይጨመር',
 'movepagebtn'               => 'ገጹ ይዛወር',
 'pagemovedsub'              => 'መዛወሩ ተከናወነ',
-'movepage-moved'            => "<big>'''«$1» ወደ «$2» ተዛውሯል'''</big>
-
-መምሪያ መንገድም ተፈጥሯል።", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'            => "<big>'''«$1» ወደ «$2» ተዛውሯል'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'             => 'በዚያ አርዕሥት ሌላ ገጽ አሁን አለ። አለበለዚያ የመረጡት ስም ልክ አይደለም - ሌላ አርእስት ይምረጡ።',
 'cantmove-titleprotected'   => 'አዲሱ አርዕስት ከመፈጠር ስለተጠበቀ፣ ገጽ ወደዚያው ሥፍራ ለማዛወር አይችሉም።',
 'talkexists'                => "'''ገጹ ወደ አዲሱ አርዕስት ተዛወረ፤ እንጂ በአዲሱ አርዕስት የቆየ ውይይት ገጽ አስቀድሞ ስለ ኖረ የዚህ ውይይት ገጽ ሊዛወር አልተቻለም። እባክዎ፣ በእጅ ያጋጥሙአቸው።'''",
@@ -2164,7 +2162,7 @@ $1',
 'confirmemail'             => 'ኢ-ሜልዎን ለማረጋገጥ',
 'confirmemail_noemail'     => 'በ[[Special:Preferences|ምርጫዎችዎ]] ትክክለኛ ኢሜል አድራሻ አልሰጡም።',
 'confirmemail_text'        => 'አሁን በ{{SITENAME}} በኩል «ኢ-ሜል» ለመላክም ሆነ ለመቀበል አድራሻዎን ማረጋገጥ ግዴታ ሆኗል። እታች ያለውን በተጫኑ ጊዜ አንድ የማረጋገጫ መልእክት ቀድሞ ወደ ሰጡት ኢሜል አድራሻ በቀጥታ ይላካል። በዚህ መልእክት ልዩ ኮድ ያለበት መያያዣ ይገኝበታል፣ ይህንን መያያዣ ከዚያ ቢጎብኙ ኢ-ሜል አድራሻዎ የዛኔ ይረጋግጣል።',
-'confirmemail_pending'     => '<div class="error">ማረጋገጫ ኮድ ከዚህ በፊት ገና ተልኮልዎታል። ብዕር ስምዎን ያወጡ በቅርብ ጊዜ ከሆነ፣ አዲስ ኮድን ከመጠይቅ በፊት ምናልባት የተላከው እስከሚደርስ ድረስ ጥቂት ደቂቃ መቆየት ይሻላል።</div>',
+'confirmemail_pending'     => 'ማረጋገጫ ኮድ ከዚህ በፊት ገና ተልኮልዎታል። ብዕር ስምዎን ያወጡ በቅርብ ጊዜ ከሆነ፣ አዲስ ኮድን ከመጠይቅ በፊት ምናልባት የተላከው እስከሚደርስ ድረስ ጥቂት ደቂቃ መቆየት ይሻላል።',
 'confirmemail_send'        => 'የማረጋገጫ ኮድ ወደኔ ኢ-ሜል ይላክልኝ',
 'confirmemail_sent'        => 'የማረጋገጫ ኢ-ሜል ቅድም ወደ ሰጡት አድራሻ አሁን ተልኳል!',
 'confirmemail_oncreate'    => 'ማረጋገጫ ኮድ ወደ ኢ-ሜል አድራሻዎ ተልኳል። ይኸው ኮድ ለመግባት አያስፈልግም፤ ነገር ግን የዊኪው ኢ-ሜል ተግባር እንዲሠራ ለማድረግ ያስፈልጋል።',

@@ -10,6 +10,7 @@
  * @author Melancholie
  * @author Michawiki
  * @author MinuteElectron
+ * @author Smeira
  * @author Tlustulimu
  * @author Urhixidur
  * @author Yekrats
@@ -49,7 +50,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Atentaro' ),
 	'Recentchanges'             => array( 'Lastaj ŝanĝoj' ),
 	'Upload'                    => array( 'Alŝuti' ),
-	'Imagelist'                 => array( 'Bildolisto' ),
+	'Listfiles'                 => array( 'Bildolisto' ),
 	'Newimages'                 => array( 'Novaj bildoj' ),
 	'Listusers'                 => array( 'Listo de uzantoj' ),
 	'Listgrouprights'           => array( 'Gruprajtoj de uzantoj' ),
@@ -166,6 +167,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Ruĝigi ligilojn al neekzistantaj paĝoj',
 'tog-justify'                 => 'Alkadrigi liniojn',
 'tog-hideminor'               => 'Kaŝi malgrandajn redaktetojn ĉe <i>Lastaj ŝanĝoj</i>',
+'tog-hidepatrolled'           => 'Kaŝi patrolitajn redaktojn en lastaj ŝanĝoj',
+'tog-newpageshidepatrolled'   => 'Kaŝi patrolitajn paĝojn de listo de novaj paĝoj',
 'tog-extendwatchlist'         => 'Etendi la atentaron por montri ĉiujn aplikeblajn ŝanĝon',
 'tog-usenewrc'                => 'Novstila Lastaj Ŝanĝoj (bezonas JavaSkripton)',
 'tog-numberheadings'          => 'Aŭtomate numerigi sekciojn',
@@ -201,6 +204,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Kaŝu malgrandajn redaktojn de la atentaro',
 'tog-watchlisthideliu'        => 'Kaŝi redaktojn de ensalutitaj uzantoj de la atentaro',
 'tog-watchlisthideanons'      => 'Kaŝi redaktojn de anonimuloj de la atentaro',
+'tog-watchlisthidepatrolled'  => 'Kaŝi patrolitajn redaktojn de la atentaro',
 'tog-nolangconversion'        => 'Malŝalti konvertadon de variantoj',
 'tog-ccmeonemails'            => 'Sendi al mi kopiojn de retpoŝtaĵoj, kiujn mi sendis al aliaj uzuloj.',
 'tog-diffonly'                => 'Ne montri paĝan enhavon sub la ŝanĝoj',
@@ -563,6 +567,10 @@ Bonvolu elekti alian nomon.',
 'badsig'                     => 'Via kaŝnomo (por subskriboj) malvalidas. Bv. kontroli la HTML-etikedojn!',
 'badsiglength'               => 'La subskribo estas tro longa.
 Ĝi devas esti sub $1 {{PLURAL:$1|signo|signoj}}.',
+'yourgender'                 => 'Sekso:',
+'gender-unknown'             => 'Nespecifita',
+'gender-male'                => 'Vira',
+'gender-female'              => 'Ina',
 'email'                      => 'Retadreso',
 'prefs-help-realname'        => '* Vera nomo (opcia): se vi elektas sciigi ĝin, ĝi estos uzita por aŭtorigi vin pri viaj kontribuoj.',
 'loginerror'                 => 'Ensaluta eraro',
@@ -587,7 +595,7 @@ Kontrolu vian literumadon, aŭ [[Special:UserLogin/signup|kreu novan konton]].',
 'passwordremindertext'       => 'Iu (probable vi, el IP-adreso $1) petis novan
 pasvorton por {{SITENAME}} ($4). Provizora pasvorto por uzanto
 "$2" estis kreita kaj estis farita al "$3". Se ĉi tiu estis via
-intencio, vi devos ensaluti kaj elekti novan pasvorton nun.
+intencio, vi devos ensaluti kaj elekti novan pasvorton nun. Via provizora pasvorto malvalidiĝos post  {{PLURAL:$5|unu tago|$5 tagoj}}.
 
 Se iu alia faris ĉi tiun peton, aŭ se vi estas rememorita vian pasvorton,
 kaj ne plu volas ŝanĝi ĝin, vi povas ignori ĉi tiun mesaĝon kaj 
@@ -870,55 +878,57 @@ La kialo donata de $3 estas ''$2''.",
 Provu [[Special:Search|serĉi en la vikio]] por rilataj novaj paĝoj.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(komento forigita)',
-'rev-deleted-user'            => '(uzanto-nomo forigita)',
-'rev-deleted-event'           => '(protokola ago forigita)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+'rev-deleted-comment'            => '(komento forigita)',
+'rev-deleted-user'               => '(uzanto-nomo forigita)',
+'rev-deleted-event'              => '(protokola ago forigita)',
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks">
 Ĉi tiu versio de la paĝo estis forigita de publikaj arĥivoj.
 Eble estas detaloj en la [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} protokolo de forigoj].
 </div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
+'rev-deleted-text-view'          => '<div class="mw-warning plainlinks">
 Ĉi versio de la paĝo estis forigita de publikaj arĥivoj.
 Kiel administranto de {{SITENAME}} vi povas rigardi ĝin;
 povas esti detaloj en la [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} protokolo de forigoj].
 </div>',
-'rev-delundel'                => 'montri/kaŝi',
-'revisiondelete'              => 'Forigi/malforigi versiojn',
-'revdelete-nooldid-title'     => 'Nevalida cela versio',
-'revdelete-nooldid-text'      => 'Vi ne specifis celan version aŭ versiojn fari ĉi tiun 
+'rev-delundel'                   => 'montri/kaŝi',
+'revisiondelete'                 => 'Forigi/malforigi versiojn',
+'revdelete-nooldid-title'        => 'Nevalida cela versio',
+'revdelete-nooldid-text'         => 'Vi ne specifis celan version aŭ versiojn fari ĉi tiun 
 funkcion, la specifigita versio ne ekzistas, aŭ vi estas provanta kaŝi la nunan version.',
-'revdelete-selected'          => "'''{{PLURAL:$2|Selektata versio|Selektataj versioj}} de [[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|Selektata protokola evento|Selektataj protokolaj eventoj}}:'''",
-'revdelete-text'              => "'''Forigitaj versioj kaj eventoj plu aperos en la historipaĝoj, sed iliaj tekstoj ne estos alireblaj de la publiko.'''
+'revdelete-toomanytargets-title' => 'Tro multaj celoj',
+'revdelete-nologid-title'        => 'Nevalida protokol-linio',
+'revdelete-selected'             => "'''{{PLURAL:$2|Selektata versio|Selektataj versioj}} de [[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|Selektata protokola evento|Selektataj protokolaj eventoj}}:'''",
+'revdelete-text'                 => "'''Forigitaj versioj kaj eventoj plu aperos en la historipaĝoj, sed iliaj tekstoj ne estos alireblaj de la publiko.'''
 
 Aliaj administrantoj ĉe {{SITENAME}} plu povos aliri la kaŝitan entenon kaj restarigi ĝin per la sama interfaco, krom se plia limigo estas metita de la paĝaradministrantoj.",
-'revdelete-legend'            => 'Fari videblecajn limigojn',
-'revdelete-hide-text'         => 'Kaŝi tekston de versio',
-'revdelete-hide-name'         => 'Kaŝi agon kaj celon',
-'revdelete-hide-comment'      => 'Kaŝi komenton de redakto',
-'revdelete-hide-user'         => 'Kaŝi nomon aŭ IP-adreson de redaktinto',
-'revdelete-hide-restricted'   => 'Apliku ĉi tiujn limigojn al administrantoj kaj ŝlosu ĉi tiun interfacon',
-'revdelete-suppress'          => 'Subpremi datenojn de kaj administrantoj kaj aliaj',
-'revdelete-hide-image'        => 'Kaŝi enhavon de dosieroj',
-'revdelete-unsuppress'        => 'Forigi limigojn al restarigitaj versioj',
-'revdelete-log'               => 'Komento por protokolo:',
-'revdelete-submit'            => 'Apliki al la selektita versio',
-'revdelete-logentry'          => 'ŝanĝis videblecon de versio por [[$1]]',
-'logdelete-logentry'          => 'ŝanĝis eventan videblecon de [[$1]]',
-'revdelete-success'           => "'''Revizia videbleco estas sukcese farita.'''",
-'logdelete-success'           => "'''Videbleco de evento sukcese farita.'''",
-'revdel-restore'              => 'Ŝanĝi videblecon',
-'pagehist'                    => 'Paĝa historio',
-'deletedhist'                 => 'Forigita historio',
-'revdelete-content'           => 'enhavo',
-'revdelete-summary'           => 'redakti resumon',
-'revdelete-uname'             => 'salutnomo',
-'revdelete-restricted'        => 'aplikis limojn al administrantoj',
-'revdelete-unrestricted'      => 'forigis limojn por administrantoj',
-'revdelete-hid'               => 'kaŝis $1',
-'revdelete-unhid'             => 'malkaŝis $1',
-'revdelete-log-message'       => '$1 por $2 {{PLURAL:$2|versio|versioj}}',
-'logdelete-log-message'       => '$1 por $2 {{PLURAL:$2|evento|eventoj}}',
+'revdelete-legend'               => 'Fari videblecajn limigojn',
+'revdelete-hide-text'            => 'Kaŝi tekston de versio',
+'revdelete-hide-name'            => 'Kaŝi agon kaj celon',
+'revdelete-hide-comment'         => 'Kaŝi komenton de redakto',
+'revdelete-hide-user'            => 'Kaŝi nomon aŭ IP-adreson de redaktinto',
+'revdelete-hide-restricted'      => 'Apliku ĉi tiujn limigojn al administrantoj kaj ŝlosu ĉi tiun interfacon',
+'revdelete-suppress'             => 'Subpremi datenojn de kaj administrantoj kaj aliaj',
+'revdelete-hide-image'           => 'Kaŝi enhavon de dosieroj',
+'revdelete-unsuppress'           => 'Forigi limigojn al restarigitaj versioj',
+'revdelete-log'                  => 'Komento por protokolo:',
+'revdelete-submit'               => 'Apliki al la selektita versio',
+'revdelete-logentry'             => 'ŝanĝis videblecon de versio por [[$1]]',
+'logdelete-logentry'             => 'ŝanĝis eventan videblecon de [[$1]]',
+'revdelete-success'              => "'''Revizia videbleco estas sukcese farita.'''",
+'logdelete-success'              => "'''Videbleco de evento sukcese farita.'''",
+'revdel-restore'                 => 'Ŝanĝi videblecon',
+'pagehist'                       => 'Paĝa historio',
+'deletedhist'                    => 'Forigita historio',
+'revdelete-content'              => 'enhavo',
+'revdelete-summary'              => 'redakti resumon',
+'revdelete-uname'                => 'salutnomo',
+'revdelete-restricted'           => 'aplikis limojn al administrantoj',
+'revdelete-unrestricted'         => 'forigis limojn por administrantoj',
+'revdelete-hid'                  => 'kaŝis $1',
+'revdelete-unhid'                => 'malkaŝis $1',
+'revdelete-log-message'          => '$1 por $2 {{PLURAL:$2|versio|versioj}}',
+'logdelete-log-message'          => '$1 por $2 {{PLURAL:$2|evento|eventoj}}',
 
 # Suppression log
 'suppressionlog'     => 'Protokolo pri subigado',
@@ -1119,6 +1129,7 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'prefs-resetpass'           => 'Ŝanĝi pasvorton',
 'saveprefs'                 => 'Konservi preferojn',
 'resetprefs'                => 'Forviŝi nekonservitajn ŝanĝojn',
+'restoreprefs'              => 'Restarigi ĉiujn defaŭltajn preferojn',
 'textboxsize'               => 'Grandeco de redakta tekstujo',
 'prefs-edit-boxsize'        => 'Grandeco de la redakto-kesko.',
 'rows'                      => 'Linioj:',
@@ -1359,6 +1370,7 @@ Por inkluzivi la dosieron en paĝon, skribu ligilon laŭ la formoj
 'filename'                    => 'Dosiernomo',
 'filedesc'                    => 'Resumo',
 'fileuploadsummary'           => 'Resumo:',
+'filereuploadsummary'         => 'Dosieraj ŝanĝoj:',
 'filestatus'                  => 'Kopirajta statuso:',
 'filesource'                  => 'Fonto:',
 'uploadedfiles'               => 'Alŝutitaj dosieroj',
@@ -1436,18 +1448,19 @@ Se la problemo kontinuas, kontaku [[Special:ListUsers/sysop|sisteman administran
 'upload_source_url'  => ' (valida, publike atingebla URL-o)',
 'upload_source_file' => ' (dosiero en via komputilo)',
 
-# Special:FileList
-'imagelist-summary'     => 'Ĉi tiu speciala paĝo montras ĉiujn alŝutitajn dosierojn.
+# Special:ListFiles
+'listfiles-summary'     => 'Ĉi tiu speciala paĝo montras ĉiujn alŝutitajn dosierojn.
 Defaŭlte, la lasta alŝutitaj dosieroj estas montrataj supren.
 Klaku la kolumnan titolon por ŝanĝi la direkton de ordigo.',
-'imagelist_search_for'  => 'Serĉi dosieran nomon:',
+'listfiles_search_for'  => 'Serĉi dosieran nomon:',
 'imgfile'               => 'dosiero',
-'imagelist'             => 'Listo de alŝutitaj dosieroj',
-'imagelist_date'        => 'Dato',
-'imagelist_name'        => 'Nomo',
-'imagelist_user'        => 'Uzanto',
-'imagelist_size'        => 'Grandeco',
-'imagelist_description' => 'Priskribo',
+'listfiles'             => 'Listo de alŝutitaj dosieroj',
+'listfiles_date'        => 'Dato',
+'listfiles_name'        => 'Nomo',
+'listfiles_user'        => 'Uzanto',
+'listfiles_size'        => 'Grandeco',
+'listfiles_description' => 'Priskribo',
+'listfiles_count'       => 'Versioj',
 
 # File description page
 'filehist'                       => 'Historio de dosiero',
@@ -1626,7 +1639,9 @@ Paĝo estas traktata kiel apartigilo se ĝi uzas ŝablonon kiu estas ligita de [
 'protectedtitlesempty'    => 'Neniuj titoloj estas nune protektitaj kun ĉi parametroj.',
 'listusers'               => 'Uzantaro',
 'listusers-editsonly'     => 'Montri uzantojn kun redaktoj nur',
+'listusers-creationsort'  => 'Ordigi laŭ dato de kreado',
 'usereditcount'           => '$1 {{PLURAL:$1|redakto|redaktoj}}',
+'usercreated'             => 'Kreita je $1, $2',
 'newpages'                => 'Novaj paĝoj',
 'newpages-username'       => 'Salutnomo:',
 'ancientpages'            => 'Plej malnovaj artikoloj',
@@ -1691,7 +1706,8 @@ Vidu ankaŭ [[Special:WantedCategories|Dezirataj kategorioj]].',
 'special-categories-sort-abc'   => 'ordigi laŭ alfabeto',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Forigitaj kontribuoj de uzantoj',
+'deletedcontributions'       => 'Forigitaj kontribuoj de uzantoj',
+'deletedcontributions-title' => 'Forigitaj kontribuoj de uzantoj',
 
 # Special:LinkSearch
 'linksearch'       => 'Serĉi retajn ligilojn',
@@ -1729,27 +1745,29 @@ Estas [[{{MediaWiki:Listgrouprights-helppage}}|aldona informo]] pri individuaj r
 'listgrouprights-removegroup-all' => 'Povi forigi ĉiujn grupojn',
 
 # E-mail user
-'mailnologin'     => 'Neniu alsendota adreso',
-'mailnologintext' => 'Vi nepre estu [[Special:UserLogin|salutanta]] kaj havanta validan retpoŝtadreson en viaj [[Special:Preferences|preferoj]] por retpoŝti al aliaj uzantoj.',
-'emailuser'       => 'Retpoŝti ĉi tiun uzanton',
-'emailpage'       => 'Retpoŝti uzanton',
-'emailpagetext'   => 'Vi povas uzi la jenan paĝon por sendi retpoŝtan mesaĝon al ĉi tiu uzanto.
+'mailnologin'      => 'Neniu alsendota adreso',
+'mailnologintext'  => 'Vi nepre estu [[Special:UserLogin|salutanta]] kaj havanta validan retpoŝtadreson en viaj [[Special:Preferences|preferoj]] por retpoŝti al aliaj uzantoj.',
+'emailuser'        => 'Retpoŝti ĉi tiun uzanton',
+'emailpage'        => 'Retpoŝti uzanton',
+'emailpagetext'    => 'Vi povas uzi la jenan paĝon por sendi retpoŝtan mesaĝon al ĉi tiu uzanto.
 La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel la "De" adreso de la retpoŝto, do la ricevonto eblos respondi rekte al vi.',
-'usermailererror' => 'Resendita retmesaĝa erarsubjekto:',
-'defemailsubject' => '{{SITENAME}} ****-retmesaĝo',
-'noemailtitle'    => 'Neniu retpoŝtadreso',
-'noemailtext'     => 'Ĉi tiu uzanto aŭ ne donis validan retpoŝtadreson aŭ elektis ne ricevi retpoŝton de aliaj uzantoj.',
-'email-legend'    => 'Sendi retpoŝton al alia {{SITENAME}}-uzanto',
-'emailfrom'       => 'De:',
-'emailto'         => 'Al:',
-'emailsubject'    => 'Temo:',
-'emailmessage'    => 'Mesaĝo:',
-'emailsend'       => 'Sendi',
-'emailccme'       => 'Retpoŝti al mi kopion de mia mesaĝo.',
-'emailccsubject'  => 'Kopio de via mesaĝo al $1: $2',
-'emailsent'       => 'Retmesaĝo sendita',
-'emailsenttext'   => 'Via retmesaĝo estas sendita.',
-'emailuserfooter' => 'Ĉi tiun retpoŝton sendis $1 al $2 per funkcio "Email user" ĉe {{SITENAME}}.',
+'usermailererror'  => 'Resendita retmesaĝa erarsubjekto:',
+'defemailsubject'  => '{{SITENAME}} ****-retmesaĝo',
+'noemailtitle'     => 'Neniu retpoŝtadreso',
+'noemailtext'      => 'Ĉi tiu uzanto ne donis validan retadreson.',
+'nowikiemailtitle' => 'Retpoŝto ne permesita',
+'nowikiemailtext'  => 'Ĉi tiu uzanto elektis ne ricevi retpoŝton de aliaj uzantoj.',
+'email-legend'     => 'Sendi retpoŝton al alia {{SITENAME}}-uzanto',
+'emailfrom'        => 'De:',
+'emailto'          => 'Al:',
+'emailsubject'     => 'Temo:',
+'emailmessage'     => 'Mesaĝo:',
+'emailsend'        => 'Sendi',
+'emailccme'        => 'Retpoŝti al mi kopion de mia mesaĝo.',
+'emailccsubject'   => 'Kopio de via mesaĝo al $1: $2',
+'emailsent'        => 'Retmesaĝo sendita',
+'emailsenttext'    => 'Via retmesaĝo estas sendita.',
+'emailuserfooter'  => 'Ĉi tiun retpoŝton sendis $1 al $2 per funkcio "Email user" ĉe {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Atentaro',
@@ -2179,12 +2197,9 @@ Tiujokaze, vi nepre permane kunigu la diskuto-paĝojn se vi tion deziras.",
 'move-watch'                   => 'Atenti ĉi tiun paĝon',
 'movepagebtn'                  => 'Alinomigi paĝon',
 'pagemovedsub'                 => 'Sukcesis alinomigo',
-'movepage-moved'               => '<big>\'\'\'"$1" estis alinomigita al "$2"\'\'\'</big>
-
-Alidirektilo estis kreita.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'movepage-moved-noredirect'    => '<big>\'\'\'"$1" estis alinomigita al "$2"\'\'\'</big>
-
-La kreado de alidirektilo estis nuligita.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>\'\'\'"$1" estis alinomigita al "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'Alidirektilo estis kreita.',
+'movepage-moved-noredirect'    => 'La kreado de alidirektilo estis nuligita.',
 'articleexists'                => 'Paĝo kun tiu nomo jam ekzistas, aŭ la nomo kiun vi elektis ne validas.
 Bonvolu elekti alian nomon.',
 'cantmove-titleprotected'      => 'Vi ne povas movi paĝo al ĉi loko, ĉar la nova titolo estis protektita kontraŭ kreado',
@@ -2384,7 +2399,7 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 'spamprotectionmatch' => 'La jena teksto ekagigis la spam-filtrilon: $1',
 'spambot_username'    => 'Trudmesaĝa forigo de MediaWiki',
 'spam_reverting'      => 'Restarigo de lasta versio ne entenante ligilojn al $1',
-'spam_blanking'       => 'Forviŝo de ĉiuj versioj entenate ligilojn al $1',
+'spam_blanking'       => 'Forviŝo de ĉiuj versioj entenantaj ligilojn al $1',
 
 # Info page
 'infosubtitle'   => 'Informoj por paĝo',
@@ -2769,7 +2784,7 @@ Sekvaj ligilo en la sama linio estas konsiderata kiel esceptoj (paĝoj kiel la b
 'confirmemail'             => 'Konfirmi retadreson',
 'confirmemail_noemail'     => 'Vi ne havas validan retpoŝtan adreson notitan en viaj [[Special:Preferences|Preferoj]].',
 'confirmemail_text'        => 'Ĉi tiu vikio postulas ke vi validigu vian retadreson antaŭ ol uzadi la retmesaĝpreferojn. Bonvolu alklaki la suban butonon por sendi konfirmesaĝon al via adreso. La mesaĝo entenos ligilon kun kodo; bonvolu alŝuti la ligilon en vian foliumilon por konfirmi ke via retadreso validas.',
-'confirmemail_pending'     => '<div class="error">Konfirma kodo estis jam repoŝtis al vi; se vi lastatempe kreis vian konton, vi eble volus atenti kelkajn minutojn por ĝi aliĝi antaŭ vi petus novan kodon.</div>',
+'confirmemail_pending'     => 'Konfirma kodo estis jam repoŝtis al vi; se vi lastatempe kreis vian konton, vi eble volus atenti kelkajn minutojn por ĝi aliĝi antaŭ vi petus novan kodon.',
 'confirmemail_send'        => 'Retmesaĝi konfirmkodon',
 'confirmemail_sent'        => 'Konfirma retmesaĝo estas sendita.',
 'confirmemail_oncreate'    => 'Konfirma kodo estis sendita al via retpoŝta adreso.
@@ -2959,5 +2974,13 @@ Enigu la dosiernomon sen la "{{ns:file}}:" prefikso.',
 #Linioj komencantaj kun # estas traktata kiel komentoj.
 
 #Enmetu ĉiujn koderojn pri regulaj esprimoj super ĉi tiu linio. Lasu la linion senŝanĝe.</pre>',
+
+# Special:Tags
+'tag-filter'        => '[[Special:Tags|Etikeda]] filtrilo:',
+'tag-filter-submit' => 'Filtrilo',
+'tags-title'        => 'Etikedoj',
+'tags-tag'          => 'Interna etikeda nomo',
+'tags-edit'         => 'redakti',
+'tags-hitcount'     => '$1 {{PLURAL:$1|ŝanĝo|ŝanĝoj}}',
 
 );

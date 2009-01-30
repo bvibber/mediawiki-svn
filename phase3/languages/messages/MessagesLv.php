@@ -76,6 +76,8 @@ $messages = array(
 'tog-watchlisthideown'        => 'Paslēpt manus labojumus manā uzraugāmo sarakstā.',
 'tog-watchlisthidebots'       => 'Paslēpt botu labojumus manā uzraugāmo sarakstā.',
 'tog-watchlisthideminor'      => 'Paslēpt maznozīmīgos labojumus manā uzraugāmo sarakstā',
+'tog-watchlisthideliu'        => 'Uzraugāmo rakstu sarakstā paslēpt reģistrēto lietotāju izmaiņas',
+'tog-watchlisthideanons'      => 'Uzraugāmo rakstu sarakstā paslēpt anonīmo lietotāju izmaiņas',
 'tog-ccmeonemails'            => 'Sūtīt sev, citiem lietotājiem nosūtīto epastu, kopijas',
 'tog-diffonly'                => 'Nerādīt lapu saturu zem izmaiņām',
 'tog-showhiddencats'          => 'Rādīt slēptās kategorijas',
@@ -178,6 +180,9 @@ $messages = array(
 'navigation'     => 'Navigācija',
 'and'            => '&#32;un',
 
+# Metadata in edit box
+'metadata_help' => 'Metadati:',
+
 'errorpagetitle'    => 'Kļūda',
 'returnto'          => 'Atgriezties: $1.',
 'tagline'           => "No ''{{grammar:ģenitīvs|{{SITENAME}}}}''",
@@ -218,6 +223,7 @@ $messages = array(
 'userpage'          => 'Skatīt lietotāja lapu',
 'projectpage'       => 'Skatīt projekta lapu',
 'imagepage'         => 'Aplūkot attēla lapu',
+'viewhelppage'      => 'Atvērt palīdzību',
 'viewtalkpage'      => 'Skatīt diskusiju',
 'otherlanguages'    => 'Citās valodās',
 'redirectedfrom'    => '(Pāradresēts no $1)',
@@ -240,9 +246,12 @@ $messages = array(
 'disclaimers'          => 'Saistību atrunas',
 'edithelp'             => 'Palīdzība izmaiņām',
 'edithelppage'         => 'Help:Rediģēšana',
+'faq'                  => 'BUJ',
+'faqpage'              => 'Project:BUJ',
 'helppage'             => 'Help:Saturs',
 'mainpage'             => 'Sākumlapa',
 'mainpage-description' => 'Sākumlapa',
+'policy-url'           => 'Project:Politika',
 'portal'               => 'Kopienas portāls',
 'portal-url'           => 'Project:Kopienas portāls',
 'privacy'              => 'Privātuma politika',
@@ -263,6 +272,7 @@ $messages = array(
 'editold'             => 'rediģēt',
 'viewsourceold'       => 'aplūkot kodu',
 'editlink'            => 'labot',
+'viewsourcelink'      => 'Skatīt pirmkodu',
 'editsectionhint'     => 'Rediģēt sadaļu: $1',
 'toc'                 => 'Satura rādītājs',
 'showtoc'             => 'parādīt',
@@ -298,25 +308,34 @@ $messages = array(
 # General errors
 'error'                => 'Kļūda',
 'databaseerror'        => 'Datu bāzes kļūda',
+'dberrortextcl'        => 'Datubāzes vaicājumā pieļauta sintakses kļūda.
+Pēdējais priekšraksts:
+"$1"
+palaists funkcijā "$2".
+Izdotā MySQL kļūda: "$3: $4"',
 'noconnect'            => 'Šajā wiki ir radušās tehniskas grūtības un nav iespējams savienoties ar datubāžu serveri. <br />
 $1',
+'nodb'                 => 'Kļūda, pieslēdzoties datubāzei $1',
 'cachederror'          => 'Šī ir lapas saglabātā versija, iespējams, ka tā nav atjaunināta.',
 'laggedslavemode'      => 'Uzmanību: Iespējams, šajā lapā nav redzami nesen izdarītie papildinājumi.',
 'readonly'             => 'Datubāze bloķēta',
 'readonlytext'         => 'Datubāze šobrīd ir bloķēta pret jauniem ierakstiem un citām izmaiņām. Visdrīzāk iemesls ir parasts datubāzes uzturēšanas pasākums, pēc kura tā tiks atjaunota normālā stāvoklī. Administrators, kurš nobloķēja datubāzi, norādīja šādu iemeslu:
 <p>$1',
-'missing-article'      => 'Datubāze neatrada lapas, ar nosaukumu "$1" $2, tekstu.
+'missing-article'      => 'Teksts lapai ar nosaukumu "$1" $2 datubāzē nav atrodams.
 
-To parasti izraisa novecojusi izmaiņu vai hronoloģijas saite uz izdzēstu lapu.
+Tas parasti notiek novecojušu saišu gadījumā: pieprasot izmaiņas vai hronoloģiju lapai, kas ir izdzēsta.
 
-Ja tajai lapai tur bija jābūt, tā iespējams ir kļūda programmā.
-Par šo var paziņot [[Special:ListUsers/sysop|kādam administratoram]], norādot arī URL.',
+Ja lapai ir jābūt, tad, iespējams, ir kļūda programmā.
+Par to varat ziņot [[Special:ListUsers/sysop|kādam administratoram]], norādot arī URL.',
+'missingarticle-diff'  => '(Salīdz.: $1, $2)',
 'internalerror'        => 'Iekšēja kļūda',
 'internalerror_info'   => 'Iekšējā kļūda: $1',
 'filecopyerror'        => 'Nav iespējams nokopēt failu "$1" uz "$2"',
 'filerenameerror'      => 'Neizdevās pārdēvēt failu "$1" par "$2".',
 'filedeleteerror'      => 'Nevar izdzēst failu "$1".',
+'directorycreateerror' => 'Nevar izveidot mapi "$1".',
 'filenotfound'         => 'Neizdevās atrast failu "$1".',
+'fileexistserror'      => 'Nevar saglabāt failā "$1": fails jau pastāv',
 'formerror'            => 'Kļūda: neizdevās nosūtīt saturu',
 'badarticleerror'      => 'Šo darbību nevar veikt šajā lapā.',
 'cannotdelete'         => 'Nevar izdzēst norādīto lapu vai failu. (Iespējams, to jau ir izdzēsis kāds cits)',
@@ -400,6 +419,7 @@ Ja tu izvēlies to norādīt, šo lietos lai identificētu tavu darbu (ieguldīj
 ludza, lai nosutam Tev jaunu {{SITENAME}} ($4) paroli.
 Lietotajam $2 pagaidu parole tagad ir $3.
 Ludzu, nomaini paroli, kad esi veiksmigi iekluvis ieksa.
+Tavas pagaidu paroles deriiguma terminsh beigsies peec {{PLURAL:$5|vienas dienas|$5 dienaam}}.
 
 Ja paroles pieprasījumu bija nosūtījis kāds cits, vai arī tu atcerējies savu veco paroli, šo var ignorēt. Vecā parole joprojām darbojas.',
 'noemail'                    => 'Lietotājs "$1" nav reģistrējis e-pasta adresi.',
@@ -421,9 +441,11 @@ Lai novērstu šīs funkcijas ļaunprātīgu izmantošanu, iespējams nosūtīt 
 'loginlanguagelabel'         => 'Valoda: $1',
 
 # Password reset dialog
-'oldpassword' => 'Vecā parole',
-'newpassword' => 'Jaunā parole',
-'retypenew'   => 'Atkārto jauno paroli',
+'oldpassword'               => 'Vecā parole',
+'newpassword'               => 'Jaunā parole',
+'retypenew'                 => 'Atkārto jauno paroli',
+'resetpass-submit-loggedin' => 'Mainīt paroli',
+'resetpass-temp-password'   => 'Pagaidu parole:',
 
 # Edit page toolbar
 'bold_sample'     => 'Teksts boldā',
@@ -574,6 +596,7 @@ Tev vajadzētu pārliecināties, vai ir lietderīgi turpināt izmainīt šo lapu
 Te var apskatīties dzēšanas reģistru, kurā jābūt datiem par to kas, kad un kāpēc šo lapu izdzēsa.",
 'deleted-notice'            => 'Šī lapa ir tikusi izdzēsta.
 Te var apskatīties dzēšanas reģistra fragmentu, lai noskaidrotu kurš, kāpēc un kad to izdzēsa.',
+'deletelog-fulllog'         => 'Skatīt pilnu žurnālu',
 'edit-already-exists'       => 'Nevar izveidot jaunu lapu.
 Tā jau eksistē.',
 
@@ -620,11 +643,16 @@ m = maznozīmīgs labojums.',
 'history-feed-title'          => 'Versiju hronoloģija',
 'history-feed-description'    => 'Šīs wiki lapas versiju hronoloģija',
 'history-feed-item-nocomment' => '$1 : $2', # user at time
+'history-feed-empty'          => 'Pieprasītā lapa nepastāv.
+Iespējams, tā ir izdzēsta vai pārdēvēta.
+Mēģiniet [[Special:Search|meklēt]], lai atrastu saistītas lapas!',
 
 # Revision deletion
-'rev-deleted-comment' => '(komentārs nodzēsts)',
-'rev-deleted-user'    => '(lietotāja vārds nodzēsts)',
-'rev-delundel'        => 'rādīt/slēpt',
+'rev-deleted-comment'       => '(komentārs nodzēsts)',
+'rev-deleted-user'          => '(lietotāja vārds nodzēsts)',
+'rev-delundel'              => 'rādīt/slēpt',
+'revdelete-nologtype-title' => 'Nav dots žurnāla veids.',
+'revdelete-nologid-title'   => 'Nederīgs žurnāla ieraksts',
 
 # Diffs
 'history-title'           => '"$1" versiju hronoloģija',
@@ -740,6 +768,8 @@ Pagaidām vari meklēt, izmantojot Google vai Yahoo.
 'group-bot-member'        => 'Bots',
 'group-sysop-member'      => 'Administrators',
 'group-bureaucrat-member' => 'Birokrāts',
+
+'grouppage-sysop' => '{{ns:project}}:Administratori',
 
 # Rights
 'right-read'             => 'Lasīt lapas',
@@ -898,18 +928,18 @@ Lūdzu izvēlies aprakstošāku vārdu šim failam.',
 
 'license' => 'Licence:',
 
-# Special:FileList
-'imagelist-summary'     => 'Šajā lapā ir redzami visi augšuplādētie faili.
+# Special:ListFiles
+'listfiles-summary'     => 'Šajā lapā ir redzami visi augšuplādētie faili.
 Pēc noklusējuma, pēdējie ielādētie faili atrodas saraksta augšā.
 Uzklikšķinot uz kādas kolonnas virsraksta, var sakārtot pēc kāda cita parametra.',
-'imagelist_search_for'  => 'Meklēt failu pēc vārda:',
+'listfiles_search_for'  => 'Meklēt failu pēc vārda:',
 'imgfile'               => 'fails',
-'imagelist'             => 'Attēlu uzskaitījums',
-'imagelist_date'        => 'Datums',
-'imagelist_name'        => 'Nosaukums',
-'imagelist_user'        => 'Lietotājs',
-'imagelist_size'        => 'Izmērs',
-'imagelist_description' => 'Apraksts',
+'listfiles'             => 'Attēlu uzskaitījums',
+'listfiles_date'        => 'Datums',
+'listfiles_name'        => 'Nosaukums',
+'listfiles_user'        => 'Lietotājs',
+'listfiles_size'        => 'Izmērs',
+'listfiles_description' => 'Apraksts',
 
 # File description page
 'filehist'                  => 'Faila hronoloģija',
@@ -926,7 +956,7 @@ Uzklikšķinot uz kādas kolonnas virsraksta, var sakārtot pēc kāda cita para
 'imagelinks'                => 'Attēlu saites',
 'linkstoimage'              => '{{PLURAL:$1|Šajā lapā ir saite|Šajās $1 lapās ir saites}} uz šo failu:',
 'nolinkstoimage'            => 'Nevienā lapā nav norāžu uz šo attēlu.',
-'sharedupload'              => 'Šis fails ir no *** [[literal]] translation',
+'sharedupload'              => 'Šis fails ir augšupielādēts koplietojams citos projektos.',
 'noimage'                   => 'Ar šādu nosaukumu nav neviena faila, bet tu vari [$1].',
 'noimage-linktext'          => 'augšuplādēt to',
 'uploadnewversion-linktext' => 'Augšupielādēt jaunu šī faila versiju',
@@ -1073,7 +1103,8 @@ Skatīt arī [[Special:WantedCategories|''sarkanās'' kategorijas]].",
 'categoriesfrom'     => 'Parādīt kategorijas sākot ar:',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Izdzēstais lietotāju devums',
+'deletedcontributions'       => 'Izdzēstais lietotāju devums',
+'deletedcontributions-title' => 'Izdzēstais lietotāju devums',
 
 # Special:ListUsers
 'listusersfrom' => 'Parādīt lietotājus sākot ar:',
@@ -1099,7 +1130,7 @@ Papildu informāciju par katru individuālu piekļuves tiesību veidu, iespējam
 Tā e-pasta adrese, kuru tu esi norādījis [[Special:Preferences|savā izvēļu lapā]], parādīsies e-pasta "From" lauciņā, tādejādi saņēmējs varēs tev atbildēt.',
 'defemailsubject' => 'E-pasts par {{grammar:akuzatīvs|{{SITENAME}}}}',
 'noemailtitle'    => 'Nav e-pasta adreses',
-'noemailtext'     => 'Šis lietotājs nav norādījis derīgu e-pasta adresi vai arī ir izvēlējies nesaņemt e-pastu no citiem lietotājiem.',
+'noemailtext'     => 'Šis lietotājs nav norādījis derīgu e-pasta adresi.',
 'emailfrom'       => 'No:',
 'emailto'         => 'Kam:',
 'emailsubject'    => 'Temats:',
@@ -1227,6 +1258,10 @@ Lūdzu, spied \"''back''\" un atjaunini iepriekšējo lapu. Tad mēģini vēlrei
 'protect_expiry_invalid'      => 'Beigu termiņš ir nederīgs.',
 'protect_expiry_old'          => 'Beigu termiņs ir pagātnē.',
 'protect-text'                => 'Šeit var apskatīties un izmainīt lapas <strong><nowiki>$1</nowiki></strong> aizsardzības līmeni.',
+'protect-locked-access'       => 'Jūsu kontam nav tiesību mainīt lapas aizsardzības pakāpi.
+Pašreizējie lapas <strong>$1</strong> iestatījumi ir:',
+'protect-default'             => '(noklusējuma)',
+'protect-fallback'            => 'Nepieciešama atļauja "$1"',
 'protect-level-autoconfirmed' => 'Bloķēt nereģistētos lietotājus',
 'protect-level-sysop'         => 'Tikai adminiem',
 'protect-cascade'             => "Aizsargāt šajā lapā iekļautās lapas (veidnes) ''(cascading protection)''",
@@ -1459,8 +1494,9 @@ Pirmajā gadījumā var arī lietot šādu metodi, piem., [[{{ns:special}}:Expor
 'allmessagesmodified'       => 'Rādīt tikai izmainītos',
 
 # Thumbnails
-'thumbnail-more' => 'Palielināt',
-'filemissing'    => 'Trūkst faila',
+'thumbnail-more'  => 'Palielināt',
+'filemissing'     => 'Trūkst faila',
+'thumbnail_error' => 'Kļūda, veidojot sīktēlu: $1',
 
 # Special:Import
 'import'          => 'Importēt lapas',
@@ -1649,8 +1685,8 @@ Pārējie lauki, pēc noklusējuma, būs paslēpti.
 Spied uz zemāk esošās pogas, lai uz tavu e-pasta adresi nosūtītu apstiprināšanas e-pastu. 
 Tajā būs saite ar kodu; spied uz tās saites vai atver to savā interneta pārlūkā, 
 lai apstiprinātu tavas e-pasta adreses derīgumu.',
-'confirmemail_pending'     => '<div class="error">Apstiprināšanas kods jau tev tika nosūtīts pa e-pastu;
-ja tu nupat izveidoji savu kontu, varētu drusku pagaidīt, kamēr tas kods pienāk, pirms mēģināt dabūt jaunu.</div>',
+'confirmemail_pending'     => 'Apstiprināšanas kods jau tev tika nosūtīts pa e-pastu;
+ja tu nupat izveidoji savu kontu, varētu drusku pagaidīt, kamēr tas kods pienāk, pirms mēģināt dabūt jaunu.',
 'confirmemail_send'        => 'Nosūtīt apstiprināšanas kodu',
 'confirmemail_sent'        => 'Apstiprināšanas e-pasts nosūtīts.',
 'confirmemail_oncreate'    => 'Apstiprinājuma kods tika nosūtīts uz tavu e-pasta adresi.

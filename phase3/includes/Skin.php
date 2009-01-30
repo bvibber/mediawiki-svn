@@ -1005,7 +1005,7 @@ END;
 		if( $wgOut->isSyndicated() ) {
 			foreach( $wgFeedClasses as $format => $class ) {
 				$feedurl = $wgRequest->escapeAppendQuery( "feed=$format" );
-				$s .= " | <a href=\"$feedurl\">{$format}</a>";
+				$s .= " | <a href=\"$feedurl\" class=\"feedlink\">{$format}</a>";
 			}
 		}
 		return $s;
@@ -1140,16 +1140,22 @@ END;
 	}
 
 	function searchForm() {
-		global $wgRequest;
+		global $wgRequest, $wgUseTwoButtonsSearchForm;
 		$search = $wgRequest->getText( 'search' );
 
 		$s = '<form id="searchform'.$this->searchboxes.'" name="search" class="inline" method="post" action="'
 		  . $this->escapeSearchLink() . "\">\n"
 		  . '<input type="text" id="searchInput'.$this->searchboxes.'" name="search" size="19" value="'
 		  . htmlspecialchars(substr($search,0,256)) . "\" />\n"
-		  . '<input type="submit" name="go" value="' . wfMsg ('searcharticle') . '" />&nbsp;'
-		  . '<input type="submit" name="fulltext" value="' . wfMsg ('searchbutton') . "\" />\n</form>";
-
+		  . '<input type="submit" name="go" value="' . wfMsg ('searcharticle') . '" />';
+		
+		if ($wgUseTwoButtonsSearchForm)
+			$s .= '&nbsp;<input type="submit" name="fulltext" value="' . wfMsg ('searchbutton') . "\" />\n";
+		else
+			$s .= ' <a href="' . $this->escapeSearchLink() . '" rel="search">' . wfMsg ('powersearch-legend') . "</a>\n";
+		
+		$s .= '</form>';
+		
 		// Ensure unique id's for search boxes made after the first
 		$this->searchboxes = $this->searchboxes == '' ? 2 : $this->searchboxes + 1;
 		
@@ -1566,8 +1572,8 @@ END;
 	function historyLink() {
 		global $wgTitle;
 
-		return $this->makeKnownLinkObj( $wgTitle,
-		  wfMsg( 'history' ), 'action=history' );
+		return $this->link( $wgTitle, wfMsg( 'history' ),
+			array( 'rel' => 'archives' ), array( 'action' => 'history' ) );
 	}
 
 	function whatLinksHere() {
@@ -1632,7 +1638,7 @@ END;
 			return '';
 		}
 
-		$s = wfMsg( 'otherlanguages' ) . ': ';
+		$s = wfMsg( 'otherlanguages' ) . wfMsg( 'colon-separator' );
 		$first = true;
 		if($wgContLang->isRTL()) $s .= '<span dir="LTR">';
 		foreach( $a as $l ) {

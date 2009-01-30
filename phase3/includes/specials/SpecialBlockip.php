@@ -106,6 +106,19 @@ class IPBlockForm {
 				( $currentBlock->mAddress == $this->BlockAddress ) ) ) {
 					$wgOut->addWikiMsg( 'ipb-needreblock', $this->BlockAddress );
 					$alreadyBlocked = true;
+					# Set the block form settings to the existing block
+					$this->BlockAnonOnly = $currentBlock->mAnonOnly;
+					$this->BlockCreateAccount = $currentBlock->mCreateAccount;
+					$this->BlockEnableAutoblock = $currentBlock->mEnableAutoblock;
+					$this->BlockEmail = $currentBlock->mBlockEmail;
+					$this->BlockHideName = $currentBlock->mHideName;
+					$this->BlockAllowUsertalk = $currentBlock->mAllowUsertalk;
+					if( $currentBlock->mExpiry == 'infinity' ) {
+						$this->BlockOther = 'indefinite';
+					} else {
+						$this->BlockOther = wfTimestamp( TS_ISO_8601, $currentBlock->mExpiry );
+					}
+					$this->BlockReason = $currentBlock->mReason;
 			}
 		}
 
@@ -363,7 +376,7 @@ class IPBlockForm {
 		$reasonstr = $this->BlockReasonList;
 		if ( $reasonstr != 'other' && $this->BlockReason != '' ) {
 			// Entry from drop down menu + additional comment
-			$reasonstr .= ': ' . $this->BlockReason;
+			$reasonstr .= wfMsgForContent( 'colon-separator' ) . $this->BlockReason;
 		} elseif ( $reasonstr == 'other' ) {
 			$reasonstr = $this->BlockReason;
 		}
@@ -391,7 +404,8 @@ class IPBlockForm {
 		$block = new Block( $this->BlockAddress, $userId, $wgUser->getId(),
 			$reasonstr, wfTimestampNow(), 0, $expiry, $this->BlockAnonOnly,
 			$this->BlockCreateAccount, $this->BlockEnableAutoblock, $this->BlockHideName,
-			$this->BlockEmail, isset( $this->BlockAllowUsertalk ) ? $this->BlockAllowUsertalk : $wgBlockAllowsUTEdit );
+			$this->BlockEmail, isset( $this->BlockAllowUsertalk ) ? $this->BlockAllowUsertalk : $wgBlockAllowsUTEdit
+		);
 
 		if ( wfRunHooks('BlockIp', array(&$block, &$wgUser)) ) {
 
@@ -417,6 +431,10 @@ class IPBlockForm {
 			if ( $this->BlockWatchUser ) { 
 				$wgUser->addWatch ( Title::makeTitle( NS_USER, $this->BlockAddress ) );
 			}
+			
+			# Block constructor sanitizes certain block options on insert
+			$this->BlockEmail = $block->mBlockEmail;
+			$this->BlockEnableAutoblock = $block->mEnableAutoblock;
 
 			# Prepare log parameters
 			$logParams = array();
@@ -487,7 +505,7 @@ class IPBlockForm {
 		global $wgBlockAllowsUTEdit;
 		$flags = array();
 		if( $this->BlockAnonOnly && IP::isIPAddress( $this->BlockAddress ) )
-					// when blocking a user the option 'anononly' is not available/has no effect -> do not write this into log
+			// when blocking a user the option 'anononly' is not available/has no effect -> do not write this into log
 			$flags[] = 'anononly';
 		if( $this->BlockCreateAccount )
 			$flags[] = 'nocreate';

@@ -26,6 +26,8 @@
  * @author INkubusse
  * @author Jon Harald Søby
  * @author Kizito
+ * @author Klenje
+ * @author Klutzy
  * @author Kwj2772
  * @author Leinad
  * @author Lejonel
@@ -42,6 +44,7 @@
  * @author Nike
  * @author Node ue
  * @author Octahedron80
+ * @author Platonides
  * @author Purodha
  * @author Raymond
  * @author SPQRobin
@@ -57,6 +60,7 @@
  * @author UV
  * @author Urhixidur
  * @author Vinhtantran
+ * @author Waldir
  * @author Yyy
  * @author פוילישער
  */
@@ -67,6 +71,7 @@ $messages = array(
 'tog-highlightbroken'         => "[[Special:Preferences]], tab 'Misc'. Offers user a choice how format internal links to non-existing pages. As red links or with a trailing question mark.",
 'tog-justify'                 => "[[Special:Preferences]], tab 'Misc'. Offers user a choice to justify paragraphs or not.",
 'tog-hideminor'               => "[[Special:Preferences]], tab 'Recent changes'. Offers user to hide minor edits in recent changes or not.",
+'tog-hidepatrolled'           => 'Option in Recent changes tab of [[Special:Preferences]]',
 'tog-extendwatchlist'         => "[[Special:Preferences]], tab 'Watchlist'. Offers user to show all applicable changes in watchlist (by default only the last change to a page on the watchlist is shown).",
 'tog-usenewrc'                => "[[Special:Preferences]], tab 'Recent changes'. Offers user to use alternative reprsentation of [[Special:RecentChanges]].",
 'tog-numberheadings'          => "[[Special:Preferences]], tab 'Misc'. Offers numbered headings on content pages to user.",
@@ -105,6 +110,7 @@ This is the toolbar: [[Image:Toolbar.png]]",
 'tog-watchlisthideminor'      => "[[Special:Preferences]], tab 'Watchlist'. Offers user to hide minor edits from watchlist.",
 'tog-watchlisthideliu'        => "Option in tab 'Watchlist' of [[Special:Preferences]]",
 'tog-watchlisthideanons'      => "Option in tab 'Watchlist' of [[Special:Preferences]]",
+'tog-watchlisthidepatrolled'  => 'Option in Watchlist tab of [[Special:Preferences]]',
 'tog-nolangconversion'        => 'In user preferences.',
 'tog-ccmeonemails'            => 'In user preferences',
 'tog-diffonly'                => 'Toggle option used in [[Special:Preferences]].',
@@ -203,6 +209,7 @@ See http://test.wikipedia.org/wiki/Category:Test_ko?uselang={{SUBPAGENAME}}, for
 'mainpagedocfooter' => 'Along with {{msg|mainpagetext}}, the text you will see on the Main Page when your wiki is installed.',
 
 'about'          => '{{Identical|About}}',
+'article'        => '{{Identical|Content page}}',
 'newwindow'      => 'Below the edit form, next to "[[MediaWiki:Edithelp/{{SUBPAGENAME}}|Editing help]]".',
 'cancel'         => 'Message shown below the edit form, and if you click on it, you stop with editing the page and go back to the normal page view.
 
@@ -268,6 +275,7 @@ See also [[MediaWiki:Helppage/{{SUBPAGENAME}}|{{int:helppage}}]] and [[MediaWiki
 
 {{Identical|Talk}}',
 'personaltools'    => 'Heading for a group of links to your user page, talk page, preferences, watchlist, and contributions. This heading is visible in the sidebar in some skins. For an example, see [http://translatewiki.net/wiki/Main_Page?useskin=simple Main Page using simple skin].',
+'articlepage'      => '{{Identical|Content page}}',
 'talk'             => 'Used as display name for the tab to all talk pages. These pages accompany all content pages and can be used for discussing the content page. Example: [[Talk:Example]].
 
 {{Identical|Discussion}}',
@@ -374,8 +382,8 @@ The format is: "{{int:youhavenewmessages| [[MediaWiki:Newmessageslink/{{SUBPAGEN
 'hidetoc'                 => 'This is the link used to hide the table of contents
 
 {{Identical|Hide}}',
-'restorelink'             => "This text is always displayed in conjunction with the \"thisisdeleted\" message (View or restore \$1?).  The user will see
-View or restore <nowiki>{{PLURAL:\$1|one deleted edit|\$1 deleted edits}}</nowiki>?    i.e ''View or restore one deleted edit?''     or 
+'restorelink'             => "This text is always displayed in conjunction with the {{msg-mw|thisisdeleted}} message (View or restore $1?). The user will see
+View or restore <nowiki>{{PLURAL:$1|one deleted edit|$1 deleted edits}}</nowiki>?    i.e ''View or restore one deleted edit?''     or 
 ''View or restore n deleted edits?''",
 'feed-unavailable'        => 'This message is displayed when a user tries to use an RSS or Atom feed on a wiki where such feeds have been disabled.',
 'site-rss-feed'           => "Used in the HTML header of a wiki's RSS feed.
@@ -518,7 +526,8 @@ $1 is the minimum number of characters in the password.',
 * $1 is an IP addres. Example: 123.123.123.123
 * $2 is a username. Example: Joe
 * $3 is a password. Example: er##@fdas!
-* $4 is a URL. Example: http://wiki.example.com',
+* $4 is a URL. Example: http://wiki.example.com
+* $5 is a number of days in which the temporary password will expire',
 'noemail'                    => 'Shown as error message when trying to register a user sending password to e-mail adress and no e-mail address has been given. Registering users and sending a password to an e-mail address may require non-standard user rights. ([http://translatewiki.net/w/i.php?title=Special:UserLogin&action=submitlogin&type=signup Register user link])',
 'acct_creation_throttle_hit' => 'Errormessage at [[Special:CreateAccount]].',
 'emailauthenticated'         => 'In user preferences. ([[Special:Preferences]])
@@ -583,7 +592,9 @@ $1 is the minimum number of characters in the password.',
 
 {{Identical|Watch this page}}',
 'savearticle'                      => 'Text on the Save page button. See also {{msg|showpreview}} and {{msg|showdiff}} for the other buttons.',
-'preview'                          => '{{Identical|Preview}}',
+'preview'                          => 'The title of the Preview page shown after clicking the "Show preview" button in the edit page. Since this is a heading, it should probably be translated as a noun and not as a verb.
+
+{{Identical|Preview}}',
 'showpreview'                      => 'The text of the button to preview the page you are editing. See also {{msg|showdiff}} and {{msg|savearticle}} for the other buttons.',
 'showdiff'                         => 'Button below the edit page. See also {{msg|showpreview}} and {{msg|savearticle}} for the other buttons.',
 'anoneditwarning'                  => 'Shown when editing a page anonymously.',
@@ -675,7 +686,7 @@ first",
 'page_last'              => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in alphabetical order, e.g. the 'Categories' special page. It is followed by the message [[Mediawiki:viewprevnext]].
 
 {{Identical|Last}}",
-'histlegend'             => 'Text in history page',
+'histlegend'             => 'Text in history page. Refers to {{msg-mw|cur}}, {{msg-mw|last}}, and {{msg-mw|minoreditletter}}.',
 'history-fieldset-title' => 'Fieldset label in the edit history pages.',
 'deletedrev'             => 'When comparing deleted revisions for sysops
 
@@ -798,68 +809,71 @@ Used in the final position of a {{msg-mw|comma-separator}} separated list headed
 'diff-height'             => '{{Identical|Height}}',
 
 # Search results
-'searchresults-title'            => 'Appears as page title in the html header of the search result special page.',
-'noexactmatch'                   => 'This is the message that you get if you follow a link to a page or article that does not exist.',
-'notitlematches'                 => 'Header of results page after a search for a title for which no page exists',
-'textmatches'                    => 'When displaying search results',
-'notextmatches'                  => 'Error message when there are no results',
-'prevn'                          => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the 'Special:Categories' page), where it is used as the first argument of [[MediaWiki:Viewprevnext]].
+'searchresults-title'             => 'Appears as page title in the html header of the search result special page.',
+'noexactmatch'                    => 'This is the message that you get if you follow a link to a page or article that does not exist.',
+'notitlematches'                  => 'Header of results page after a search for a title for which no page exists',
+'textmatches'                     => 'When displaying search results',
+'notextmatches'                   => 'Error message when there are no results',
+'prevn'                           => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the 'Special:Categories' page), where it is used as the first argument of [[MediaWiki:Viewprevnext]].
 It is also used by Category pages (which do ''not'' use [[MediaWiki:Viewprevnext]]).
 $1 is the number of items shown per page. It is not used when $1 is zero; not sure what happens when $1 is one.
 Whatlinkshere pages use [[MediaWiki:Whatlinkshere-prev]] instead (still as an argument to [[MediaWiki:Viewprevnext]]).
 
 {{Identical|Previous}}",
-'nextn'                          => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the 'Special:Categories' page), where it is used as the second argument of [[MediaWiki:Viewprevnext]].
+'nextn'                           => "This is part of the navigation message on the top and bottom of Special pages (lists of things in alphabetical order, i.e. the 'Special:Categories' page), where it is used as the second argument of [[MediaWiki:Viewprevnext]].
 It is also used by Category pages (which do ''not'' use [[MediaWiki:Viewprevnext]]).
 $1 is the number of items shown per page. It is not used when $1 is zero; not sure what happens when $1 is one.
 Whatlinkshere pages use [[MediaWiki:Whatlinkshere-next]] instead (still as an argument to [[MediaWiki:Viewprevnext]]).
 
 {{Identical|Next $1}}",
-'viewprevnext'                   => 'This is part of the navigation message on the top and bottom of Special pages which are lists of things, e.g. the User\'s contributions page (in date order) or the list of all categories (in alphabetical order). ($1) and ($2) are either [[MediaWiki:Pager-older-n]] and [[MediaWiki:Pager-newer-n]] (for date order) or [[MediaWiki:Prevn]] and [[MediaWiki:Nextn]] (for alphabetical order).
+'viewprevnext'                    => 'This is part of the navigation message on the top and bottom of Special pages which are lists of things, e.g. the User\'s contributions page (in date order) or the list of all categories (in alphabetical order). ($1) and ($2) are either [[MediaWiki:Pager-older-n]] and [[MediaWiki:Pager-newer-n]] (for date order) or [[MediaWiki:Prevn]] and [[MediaWiki:Nextn]] (for alphabetical order).
 It is also used by Whatlinkshere pages, where ($1) and ($2) are [[MediaWiki:Whatlinkshere-prev]] and [[MediaWiki:Whatlinkshere-next]].
 ($3) is made up in all cases of the various proposed numbers of results per page, e.g. "(20 | 50 | 100 | 250 | 500)".
 For Special pages, the navigation bar is prefixed by "([[MediaWiki:Page_first]] | [[MediaWiki:Page_last]])" (alphabetical order) or "([[MediaWiki:Histfirst]] | [[MediaWiki:Histlast]])" (date order).
 Viewprevnext is sometimes preceded by the [[MediaWiki:Showingresults]] or [[MediaWiki:Showingresultsnum]] message (for Special pages) or by the [[MediaWiki:Linkshere]] message (for Whatlinkshere pages).',
-'searchmenu-exists'              => 'An option shown in a menu beside search form offering a link to the existing page having the specified title (when using the default MediaWiki search engine).',
-'searchmenu-new'                 => 'An option shown in a menu beside search form offering a red link to the not yet existing page having the specified title (when using the default MediaWiki search engine).',
-'searchhelp-url'                 => '{{Identical|HelpContent}}
+'searchmenu-exists'               => 'An option shown in a menu beside search form offering a link to the existing page having the specified title (when using the default MediaWiki search engine).',
+'searchmenu-new'                  => 'An option shown in a menu beside search form offering a red link to the not yet existing page having the specified title (when using the default MediaWiki search engine).',
+'searchhelp-url'                  => '{{Identical|HelpContent}}
 Description: The URL of the search help page.
 {{doc-important|Do not change "Help:" part.}}',
-'searchprofile-articles'         => 'A quick link in the advanced search box on [[Special:Search]]. Clicking on this link starts a search in the content pages of the wiki.',
-'searchprofile-articles-tooltip' => '{{Identical|Search in $1}}',
-'searchprofile-project-tooltip'  => '{{Identical|Search in $1}}',
-'search-result-size'             => 'Shown per line of a [[Special:Search|search result]]
+'searchprofile-articles'          => 'A quick link in the advanced search box on [[Special:Search]]. Clicking on this link starts a search in the content pages of the wiki.
+
+{{Identical|Content page}}',
+'searchprofile-articles-and-proj' => '{{Identical|Content page}}',
+'searchprofile-articles-tooltip'  => '{{Identical|Search in $1}}',
+'searchprofile-project-tooltip'   => '{{Identical|Search in $1}}',
+'search-result-size'              => 'Shown per line of a [[Special:Search|search result]]
 * $1 is the size of the page in bytes, but no need to add "byte" or similar as the unit is added by special function.
 * $2 is the sum of all words in this page.',
-'search-result-score'            => 'Shown per line of a [[Special:Search|search result]].
+'search-result-score'             => 'Shown per line of a [[Special:Search|search result]].
 
 $1 is the relevance of this result in per cent.
 
 {{Identical|Relevance: $1%}}',
-'search-interwiki-default'       => '* $1 is the hostname of the remote wiki from where the additional results listed below are returned',
-'search-relatedarticle'          => '{{Identical|Related}}',
-'searchrelated'                  => '{{Identical|Related}}',
-'searchall'                      => '{{Identical|All}}',
-'showingresults'                 => "This message is used on some special pages such as 'Wanted categories'. $1 is the total number of results in the batch shown and $2 is the number of the first item listed.",
-'showingresultsnum'              => '$3 is the number of results on the page and $2 is the first number in the batch of results.',
-'showingresultstotal'            => 'Text above list of search results on special page of search results. 
+'search-interwiki-default'        => '* $1 is the hostname of the remote wiki from where the additional results listed below are returned',
+'search-relatedarticle'           => '{{Identical|Related}}',
+'searchrelated'                   => '{{Identical|Related}}',
+'searchall'                       => '{{Identical|All}}',
+'showingresults'                  => "This message is used on some special pages such as 'Wanted categories'. $1 is the total number of results in the batch shown and $2 is the number of the first item listed.",
+'showingresultsnum'               => '$3 is the number of results on the page and $2 is the first number in the batch of results.',
+'showingresultstotal'             => 'Text above list of search results on special page of search results. 
 * $1–$2 is the range of results shown on the page
 * $3 is the total number of results from the search
 * $4 is the number of results shown on the page (equal to the size of the $1–$2 interval)',
-'nonefound'                      => 'This message appears on the search results page if no results are found.
+'nonefound'                       => 'This message appears on the search results page if no results are found.
 {{doc-important|Do not translate "all:".}}',
-'search-nonefound'               => 'Message shown when a search returned no results (when using the default MediaWiki search engine).',
-'powersearch'                    => 'Verb. Text of search button at the bottom of [[Special:Search]], for searching in selected namespaces.
+'search-nonefound'                => 'Message shown when a search returned no results (when using the default MediaWiki search engine).',
+'powersearch'                     => 'Verb. Text of search button at the bottom of [[Special:Search]], for searching in selected namespaces.
 
 {{Identical|Advanced search}}',
-'powersearch-legend'             => 'Advanced search
+'powersearch-legend'              => 'Advanced search
 
 {{Identical|Advanced search}}',
-'powersearch-ns'                 => 'Used in the extended search form at [[Special:Search]]',
-'powersearch-redir'              => 'Used in the extended search form at [[Special:Search]]',
-'powersearch-field'              => 'Used in the extended search form at [[Special:Search]]',
-'search-external'                => 'Legend of the fieldset for the input form when the internal search is disabled. Inside the fieldset [[MediaWiki:Searchdisabled]] and [[MediaWiki:Googlesearch]] is shown.',
-'searchdisabled'                 => 'Shown on [[Special:Search]] when the internal search is disabled.',
+'powersearch-ns'                  => 'Used in the extended search form at [[Special:Search]]',
+'powersearch-redir'               => 'Used in the extended search form at [[Special:Search]]',
+'powersearch-field'               => 'Used in the extended search form at [[Special:Search]]',
+'search-external'                 => 'Legend of the fieldset for the input form when the internal search is disabled. Inside the fieldset [[MediaWiki:Searchdisabled]] and [[MediaWiki:Googlesearch]] is shown.',
+'searchdisabled'                  => 'Shown on [[Special:Search]] when the internal search is disabled.',
 
 # Preferences page
 'preferences'               => '{{Identical|Preferences}}',
@@ -891,10 +905,12 @@ $1 is the relevance of this result in per cent.
 
 {{Identical|Save}}',
 'resetprefs'                => 'Button for resetting changes in the preferences page.',
+'restoreprefs'              => 'Used in [[Special:Preferences]]',
 'textboxsize'               => 'Title of a tab in [[Special:Preferences]].',
 'searchresultshead'         => 'This is the label of the tab in [[Special:Preferences|my preferences]] which contains options for searching the wiki.
 
 {{Identical|Search}}',
+'contextchars'              => 'Used in Preferences/Search tab',
 'stub-threshold'            => 'Used in [[Special:Preferences]], tab "Misc".',
 'recentchangesdays'         => 'Used in [[Special:Preferences]], tab "Recent changes".',
 'recentchangesdays-max'     => 'Shown as hint in [[Special:Preferences]], tab "Recent changes"',
@@ -909,6 +925,7 @@ Shown as legend of the second fieldset of the tab 'Search' in [[Special:Preferen
 'defaultns'                 => 'Used in [[Special:Preferences]], tab "Search".',
 'default'                   => '{{Identical|Default}}',
 'files'                     => 'Title of a tab in [[Special:Preferences]].',
+'prefs-custom-css'          => 'visible on [[Special:Preferences]] -[Skins].',
 
 # User rights
 'userrights'                  => 'Page title of [[Special:UserRights]].', # Not used as normal message but as header for the special page itself
@@ -937,7 +954,8 @@ Shown as legend of the second fieldset of the tab 'Search' in [[Special:Preferen
 'group-bureaucrat'    => 'Name of group',
 'group-suppress'      => 'This is an optional (disabled by default) user group, meant for the [[mw:RevisionDelete|RevisionDelete]] feature, to change the visibility of revisions through [[Special:RevisionDelete]].
 
-* See also: {{msg|Group-suppress-member|pl=yes}} for a member of this group.',
+* See also: {{msg-mw|Group-suppress-member|pl=yes}} for a member of this group.
+{{Identical|Oversight}}',
 'group-all'           => 'The name of the user group that contains all users, including anonymous users
 
 {{Identical|All}}',
@@ -949,7 +967,8 @@ Shown as legend of the second fieldset of the tab 'Search' in [[Special:Preferen
 'group-bureaucrat-member'    => 'Name of member of group',
 'group-suppress-member'      => 'This is a member of the optional (disabled by default) user group, meant for the [[mw:RevisionDelete|RevisionDelete]] feature, to change the visibility of revisions through [[Special:RevisionDelete]].
 
-* See also: {{msg|Group-suppress|pl=yes}} for the name of the group.',
+* See also: {{msg|Group-suppress|pl=yes}} for the name of the group.
+{{Identical|Oversight}}',
 
 'grouppage-user'          => 'Link to group page on wiki',
 'grouppage-autoconfirmed' => 'Link to group page on wiki.',
@@ -1033,8 +1052,8 @@ The rate limits have no effect on the groups that have this right. Rate limits i
 'rightslogtext'  => 'Text in [[Special:Log/rights]].',
 'rightslogentry' => 'This message is displayed in the [[Special:Log/rights|User Rights Log]] when a bureaucrat changes the user groups for a user.
 
-*Parameter $1 is the username
-*Parameters $2 and $3 are lists of user groups or [[MediaWiki:Rightsnone]]',
+* Parameter $1 is the username
+* Parameters $2 and $3 are lists of user groups or {{msg-mw|Rightsnone}}',
 'rightsnone'     => 'Default rights for registered users.
 
 {{Identical|None}}',
@@ -1049,6 +1068,7 @@ The rate limits have no effect on the groups that have this right. Rate limits i
 'action-move'                 => '{{Doc-action}}',
 'action-move-subpages'        => '{{Doc-action}}',
 'action-move-rootuserpages'   => '{{Doc-action}}',
+'action-movefile'             => '{{doc-action}}',
 'action-upload'               => '{{Doc-action}}',
 'action-reupload'             => '{{Doc-action}}',
 'action-reupload-shared'      => '{{Doc-action}}',
@@ -1161,6 +1181,7 @@ Parameter $2 is a date and time.',
 'overwroteimage'              => 'Log text when uploading a new version of a file',
 'uploaddisabled'              => 'Title of the Special:Upload page when upload is disabled.',
 'uploaddisabledtext'          => 'This message can have parameter $1, which contains the name of the target file. See r22243 and [https://bugzilla.wikimedia.org/show_bug.cgi?id=8818 bug 8818].',
+'php-uploaddisabledtext'      => 'This means that file uploading is disabled in PHP, not upload of PHP-files.',
 'uploadvirus'                 => 'Note displayed when uploaded file contains a virus',
 'sourcefilename'              => 'In [[Special:Upload]]',
 'destfilename'                => 'In [[Special:Upload]]',
@@ -1178,14 +1199,15 @@ Parameter $1 is a link to the deletion log, with the text in {{msg|deletionlog}}
 'nolicense'         => '{{Identical|None selected}}',
 'license-nopreview' => 'Error message when a certain license does not exist',
 
-# Special:FileList
-'imagelist-summary'     => 'This message is displayed at the top of [[Special:ImageList]] to explain how to use that special page.',
+# Special:ListFiles
+'listfiles-summary'     => 'This message is displayed at the top of [[Special:ImageList]] to explain how to use that special page.',
 'imgfile'               => '{{Identical|File}}',
-'imagelist'             => '{{Identical|File list}}',
-'imagelist_date'        => '{{Identical|Date}}',
-'imagelist_name'        => '{{Identical|Name}}',
-'imagelist_user'        => '{{Identical|User}}',
-'imagelist_description' => '{{Identical|Description}}',
+'listfiles'             => '{{Identical|File list}}',
+'listfiles_date'        => '{{Identical|Date}}',
+'listfiles_name'        => '{{Identical|Name}}',
+'listfiles_user'        => '{{Identical|User}}',
+'listfiles_description' => '{{Identical|Description}}',
+'listfiles_count'       => 'One of the table column headers in [[Special:Listfiles]] denoting the amount of saved versions of that file.',
 
 # File description page
 'filehist'                       => 'Text shown on a media description page. Heads the section where the different versions of the file are displayed.',
@@ -1325,7 +1347,9 @@ Example: [[:Image:Addon-icn.png]]',
 'statistics-header-edits'      => 'Used in [[Special:Statistics]]',
 'statistics-header-views'      => 'Used in [[Special:Statistics]]',
 'statistics-header-users'      => 'Used in [[Special:Statistics]]',
-'statistics-articles'          => 'Used in [[Special:Statistics]]',
+'statistics-articles'          => 'Used in [[Special:Statistics]]
+
+{{Identical|Content page}}',
 'statistics-pages'             => 'Used in [[Special:Statistics]]',
 'statistics-pages-desc'        => "Tooltip shown over ''Pages*'' in [[Special:Statistics]]",
 'statistics-files'             => 'Used in [[Special:Statistics]]',
@@ -1412,7 +1436,11 @@ Example: [[:Image:Addon-icn.png]]',
 'protectedtitlesempty'    => 'Used on [[Special:ProtectedTitles]]. This text appears if the list of protected titles is empty. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] for more information.',
 'listusers'               => 'Name of special page displayed in [[Special:SpecialPages]]',
 'listusers-editsonly'     => 'Option in [[Special:ListUsers]].',
+'listusers-creationsort'  => 'Option in [[Special:ListUsers]].',
 'usereditcount'           => 'Shown behind every username on [[Special:ListUsers]].',
+'usercreated'             => 'Used in [[Special:ListUsers]].
+* <code>$1</code> is a date
+* <code>$2</code> is a time',
 'newpages'                => 'Name of special page displayed in [[Special:SpecialPages]]',
 'newpages-username'       => '{{Identical|Username}}',
 'ancientpages'            => 'Name of special page displayed in [[Special:SpecialPages]]',
@@ -1420,6 +1448,7 @@ Example: [[:Image:Addon-icn.png]]',
 
 {{Identical|Move}}',
 'movethispage'            => '{{Identical|Move this page}}',
+'unusedimagestext'        => 'Header message of [[Special:UnusedFiles]]',
 'pager-newer-n'           => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in date order, e.g. the User's contributions page. It is passed as the second argument of [[MediaWiki:Viewprevnext]]. $1 is the number of items shown per page.",
 'pager-older-n'           => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in date order, e.g. the User's contributions page. It is passed as the first argument of [[MediaWiki:Viewprevnext]]. $1 is the number of items shown per page.",
 
@@ -1447,15 +1476,15 @@ Example: [[:Image:Addon-icn.png]]',
 
 {{Identical|All pages}}',
 'alphaindexline' => 'Used on [[Special:AllPages]] if the main namespace contains more than 960 pages. Indicates the page range displayed behind the link. "from page $1 to page $2". $1 is the source page name. $1 is the target page name.',
-'nextpage'       => 'Third part of the navigation bar for the special page [[Special:AllPages]]. $1 is a page title. The other parts are [[MediaWiki:Allarticles]] and [[MediaWiki:Prevpage]].
+'nextpage'       => 'Third part of the navigation bar for the special page [[Special:AllPages]]. $1 is a page title. The other parts are {{msg-mw|Allarticles}} and {{msg-mw|Prevpage}}.
 
 {{Identical|Next page}}',
-'prevpage'       => 'Second part of the navigation bar for the special page [[Special:AllPages]]. $1 is a page title. The other parts are [[MediaWiki:Allarticles]] and [[MediaWiki:Nextpage]].
+'prevpage'       => 'Second part of the navigation bar for the special page [[Special:AllPages]]. $1 is a page title. The other parts are {{msg-mw|Allarticles}} and {{msg-mw|Nextpage}}.
 
 {{Identical|Previous page}}',
 'allpagesfrom'   => 'Option in [[Special:AllPages]]. See also {{msg|allpagesto}}.',
 'allpagesto'     => 'Option in [[Special:AllPages]]. See also {{msg|allpagesfrom}}.',
-'allarticles'    => 'First part of the navigation bar for the special page [[Special:AllPages]]. The other parts are [[MediaWiki:Prevpage]] and [[MediaWiki:Nextpage]].
+'allarticles'    => 'First part of the navigation bar for the special page [[Special:AllPages]]. The other parts are {{msg-mw|Prevpage}} and {{msg-mw|Nextpage}}.
 {{Identical|All pages}}',
 'allpagesprev'   => "Allegedly used in [[Special:AllPages]], although I haven't seen it.
 
@@ -1473,7 +1502,8 @@ Example: [[:Image:Addon-icn.png]]',
 'special-categories-sort-count' => 'This message is used on [[Special:Categories]] to sort the list by the number of members in the categories.',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Title of [[Special:DeletedContributions]] (extension), a special page with a list of edits to pages which were deleted. Only viewable by sysops. The message is also shown as a link on [[Special:Contributions]] to the DeletedContributions special page.',
+'deletedcontributions'       => 'The message is shown as a link on [[Special:Contributions]] to the DeletedContributions special page.',
+'deletedcontributions-title' => 'Title of [[Special:DeletedContributions]] (extension), a special page with a list of edits to pages which were deleted. Only viewable by sysops.',
 
 # Special:LinkSearch
 'linksearch-ns' => '{{Identical|Namespace}}',
@@ -1545,6 +1575,7 @@ Special:EmailUser appears when you click on the link "E-mail this user" in the s
 'watch'                => 'Name of the Watch tab. Should be in the imperative mood.',
 'watchthispage'        => '{{Identical|Watch this page}}',
 'unwatch'              => 'Name of "Unwatch" tab.',
+'notanarticle'         => '{{Identical|Content page}}',
 'watchlist-details'    => 'Message on Special page: My watchlist. This is paired with the message [[Mediawiki:Nowatchlist]] which appears instead of Watchlist-details when $1 is 0.',
 'wlheader-showupdated' => 'This message shows up near top of users watchlist page.',
 'wlshowlast'           => "Appears on [[Special:Watchlist]]. Variable $1 gives a choice of different numbers of hours, $2 gives a choice of different numbers of days and $3 is 'all' ([[Mediawiki:watchlistall2]]). Clicking on your choice changes the list of changes you see (without changing the default in my preferences).",
@@ -1624,7 +1655,11 @@ Shown as subtitle of the protection form. $1 is the title of the page to be (un)
 'protect-default'           => '{{Identical|Default}}',
 'protect-fallback'          => 'This message is used as an option in the protection form on wikis were extra protection levels have been configured.',
 'protect-summary-cascade'   => 'Used in edit summary when cascade protecting a page.',
-'protect-expiring'          => 'Used in page history.
+'protect-expiring'          => 'Used in page history, and in [[Special:Protectedtitles]], [[Special:Protectedpages]].
+
+$1 = date and time,
+$2 = date,
+$3 = time.
 
 {{Identical|Expires $1 (UTC)}}',
 'protect-cascade'           => 'See [[meta:Protect]] for more information.',
@@ -1648,7 +1683,9 @@ Shown as subtitle of the protection form. $1 is the title of the page to be (un)
 'protect-edit-reasonlist'   => 'Shown beneath the page protection form on the right side. It is a link to [[MediaWiki:Protect-dropdown]]. See also {{msg|Delete-edit-reasonlist}} and {{msg|Ipb-edit-dropdown}}.',
 'protect-expiry-options'    => "* Description: Options for the duration of the block. 
 * <font color=\"red\">Be careful:</font> '''1 translation:1 english''', so the first part is the translation and the second part should stay in English. 
-* Example: See e.g. [[MediaWiki:Protect-expiry-options/nl]] if you still don't know how to do it.", # display1:time1,display2:time2,...
+* Example: See e.g. [[MediaWiki:Protect-expiry-options/nl]] if you still don't know how to do it.
+
+{{Identical|Infinite}}", # display1:time1,display2:time2,...
 'restriction-type'          => 'Used on [[Special:ProtectedPages]]. The text next to a drop-down box. See the help page on [http://meta.wikimedia.org/wiki/Protect Meta] for more information on protection.',
 'restriction-level'         => 'Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. The text next to a drop-down box. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.',
 'minimum-size'              => 'Used in [[Special:Protectedpages]] as a pair of radio buttons, with [[MediaWiki:Maximum-size]]. There is an input box to specify the minimum bites of the projected pages listed.',
@@ -1782,7 +1819,9 @@ Example line:
 'ipbother'                     => '{{Identical|Other time}}',
 'ipboptions'                   => "* Description: Options for the duration of the block. 
 * <font color=\"red\">Be careful:</font> '''1 translation:1 english''', so the first part is the translation and the second part should stay in English. 
-* Example: See e.g. [[MediaWiki:Ipboptions/nl]] if you still don't know how to do it.", # display1:time1,display2:time2,...
+* Example: See e.g. [[MediaWiki:Ipboptions/nl]] if you still don't know how to do it.
+
+{{Identical|Infinite}}", # display1:time1,display2:time2,...
 'ipbotheroption'               => '{{Identical|Other}}',
 'ipbotherreason'               => '{{Identical|Other/additional reason}}',
 'ipbhidename'                  => 'This is the label for a checkbox in the user block form on [[Special:BlockIP]].',
@@ -1801,28 +1840,31 @@ Example line:
 * $1 - word "{{msg|Hide}}" or "{{msg|Show}}"',
 'ipblocklist-submit'           => '{{Identical|Search}}',
 'blocklistline'                => 'This is the text of an entry in the Special:IPBlockList.
-*$1 is the hour and date of the block. 
-*$2 is the sysop. 
-*$3 is the blocked user or IP (with link to contributions and talk)
-*$4 contains "hour and date of expiry, details (\'\'reason\'\')"
+* $1 is the hour and date of the block. 
+* $2 is the sysop. 
+* $3 is the blocked user or IP (with link to contributions and talk)
+* $4 contains "hour and date of expiry, details (\'\'reason\'\')"
 
-See also [[MediaWiki:Blocklogentry]].',
+See also {{msg-mw|Blocklogentry}}.',
+'infiniteblock'                => '{{Identical|Infinite}}',
 'anononlyblock'                => '{{Identical|Anon only}}',
 'noautoblockblock'             => '{{Identical|Autoblock disabled}}',
 'emailblock'                   => '{{Identical|E-mail blocked}}',
 'blocklist-nousertalk'         => 'Used in [[Special:IPBlockList]] when "Allow this user to edit own talk page while blocked" option hasn\'t been flagged. See also {{msg-mw|Block-log-flags-nousertalk}}.',
 'blocklink'                    => "Display name for a link that, when selected, leads to a form where a user can be blocked. Used in page history and recent changes pages. Example: \"''UserName (Talk | contribs | '''block''')''\".",
+'change-blocklink'             => 'Used to name the link on Special:Log',
 'contribslink'                 => 'Short for "contributions". Used as display name for a link to user contributions on history pages, [[Special:RecentChanges]], [[Special:Watchlist]], etc.',
 'blocklogpage'                 => '{{Identical|Block log}}',
 'blocklog-fulllog'             => 'Shown at Special:BlockIP at the end of the block log if there are more than 10 entries for this user, see [[Special:BlockIP/Raymond]] as example (visible for sysops only).',
 'blocklogentry'                => 'This is the text of an entry in the Block log (and RC), after hour (and date, only in the Block log) and sysop name: 
-*$1 is the blocked user or IP (with link to contributions and talk)
-*$2 is the duration of the block (hours, days etc.) or the specified expiry date
-*$3 contains "(details) (\'\'reason\'\')"
-See also [[MediaWiki:Blocklistline]].',
+* $1 is the blocked user or IP (with link to contributions and talk)
+* $2 is the duration of the block (hours, days etc.) or the specified expiry date
+* $3 contains "(details) (\'\'reason\'\')"
+See also {{msg-mw|Blocklistline}}.',
 'reblock-logentry'             => '* $1 is the user being reblocked
 * $2 is the expiry time of the block
 * $3 is the reason of the block',
+'blocklogtext'                 => 'See {{msg-mw|ipblocklist}} for the special page name.',
 'block-log-flags-noautoblock'  => '{{Identical|Autoblock disabled}}',
 'block-log-flags-noemail'      => "Log message for [[Special:Log/block]] to note that a user cannot use the 'email another user' option.
 
@@ -1872,7 +1914,9 @@ Shown as subtitle of [[Special:MovePage/testpage]]. $1 is the title of the page 
 'pagemovedsub'            => 'Message displayed as aheader of the body, after succesfully moving a page from source to target name.',
 'movepage-moved'          => 'Message displayed after succesfully moving a page from source to target name.
 * $1 is the source page as a link with display name
-* $2 is the target page as a link with display name', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+* $2 is the target page as a link with display name
+* $3 (optional) is the source page name without a link
+* $4 (optional) is the target page name without a link', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movetalk'                => 'The text of the checkbox to watch the associated talk page to the page you are moving. This only appears when the talk page is not empty.',
 'move-subpages'           => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the main page to a new title.',
 'move-talk-subpages'      => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the talk page to a new title.',
@@ -1919,7 +1963,10 @@ Tooltip shown when hovering over a little sign of a thumb image, to go to the im
 :$2: line number
 :$3: columm number
 :$4: ?? $this->mByte . $this->mContext
-:$5: error description',
+:$5: error description
+----
+:Example
+Import failed: XML import parse failure at line 1, col 1 (byte 3; "- <mediawiki xml"): Empty document',
 'import-upload'           => 'Used on [[Special:Import]].
 
 Related messages: {{msg|right-importupload|pl=yes}} (the user right for this).',
@@ -1939,7 +1986,9 @@ Related messages: {{msg|right-importupload|pl=yes}} (the user right for this).',
 'tooltip-pt-logout'               => 'Tooltip shown when hovering over the "Log out" link in your personal toolbox (upper right side).
 
 {{Identical|Log out}}',
-'tooltip-ca-talk'                 => 'Tooltip shown when hovering over the "[[MediaWiki:Talk/{{SUBPAGENAME}}|{{int:talk}}]]" tab.',
+'tooltip-ca-talk'                 => 'Tooltip shown when hovering over the "[[MediaWiki:Talk/{{SUBPAGENAME}}|{{int:talk}}]]" tab.
+
+{{Identical|Content page}}',
 'tooltip-ca-edit'                 => 'The tooltip when hovering over the "[[MediaWiki:Edit/{{SUBPAGENAME}}|{{int:edit}}]]" tab.',
 'tooltip-ca-addsection'           => 'Tooltip shown when hovering over the "addsection" tab (shown on talk pages).',
 'tooltip-ca-viewsource'           => 'Tooltip displayed when hovering over the {{msg|viewsource}} tab.',
@@ -1967,6 +2016,7 @@ Related messages: {{msg|right-importupload|pl=yes}} (the user right for this).',
 
 {{Identical|Upload files}}',
 'tooltip-t-specialpages'          => 'The tooltip when hovering over the link "[[MediaWiki:Specialpages/{{SUBPAGENAME}}|{{int:specialpages}}]]" going to a list of all special pages available in the wiki.',
+'tooltip-ca-nstab-main'           => '{{Identical|Content page}}',
 'tooltip-ca-nstab-user'           => 'Tooltip shown when hovering over {{msg|nstab-user}} (User namespace tab).',
 'tooltip-ca-nstab-image'          => 'Tooltip shown when hovering over {{msg|nstab-image}} (Image namespace tab).',
 'tooltip-ca-nstab-template'       => 'Tooltip shown when hovering over the {{msg|nstab-template}} tab.',
@@ -2230,6 +2280,7 @@ Please leave the link http://www.mediawiki.org/wiki/Manual:External_editors exac
 'autosumm-new'     => 'The auto summary when creating a new page. $1 are the first X number of characters of the new page.',
 
 # Size units
+'size-bytes'     => 'Size (of a page, typically) in bytes.',
 'size-kilobytes' => 'Size (of a page, typically) in kibibytes (1 kibibyte = 1024 bytes).',
 'size-megabytes' => 'Size (of a file, typically) in mebibytes (1 mebibyte = 1024×1024 bytes).',
 'size-gigabytes' => 'Size (of a file, typically) in gibibytes (1 gibibyte = 1024×1024×1024 bytes).',
@@ -2387,5 +2438,12 @@ $1 is the name of the requested file.',
 
 # Special:BlankPage
 'intentionallyblankpage' => 'Text displayed in [[Special:BlankPage]].',
+
+# External image whitelist
+'external_image_whitelist' => "As usual please leave all the wiki markup, including the spaces, as they are. You can translate the text, including 'Leave this line exactly as it is'.",
+
+# Special:Tags
+'tag-filter-submit' => '{{Identical|Filter}}',
+'tags-edit'         => '{{Identical|Edit}}',
 
 );

@@ -59,7 +59,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Lista de seguimiento' ),
 	'Recentchanges'             => array( 'Zaguers cambeos', 'cambeos rezients' ),
 	'Upload'                    => array( 'Cargar', 'Puyar' ),
-	'Imagelist'                 => array( 'Lista d\'imáchens', 'Lista d\'imachens' ),
+	'Listfiles'                 => array( 'Lista d\'imáchens', 'Lista d\'imachens' ),
 	'Newimages'                 => array( 'Nuebas imáchens', 'Nuebas imachens' ),
 	'Listusers'                 => array( 'Lista d\'usuarios' ),
 	'Listgrouprights'           => array( 'Lis' ),
@@ -122,6 +122,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Formateyar os binclos trencatos <a href="" class="new"> d\'ista traza </a> (y si no, asinas <a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Achustar parrafos',
 'tog-hideminor'               => 'Amagar edizions menors en a pachina de "zaguers cambeos"',
+'tog-hidepatrolled'           => 'Amagar as edizions patrullatas en os zaguers cambeos',
+'tog-newpageshidepatrolled'   => "Amagar as pachinas patrulladas d'a lista de pachinas nuebas",
 'tog-extendwatchlist'         => 'Enamplar a lista de seguimiento ta amostrar toz os cambeos afeutatos.',
 'tog-usenewrc'                => 'Presentazión amillorada d\'os "zaguers cambeos" (cal JavaScript)',
 'tog-numberheadings'          => 'Numerar automaticament os encabezaus',
@@ -156,6 +158,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Amagar edizions menors en a lista de seguimiento',
 'tog-watchlisthideliu'        => 'Amagar en a lista de seguimiento as edizions feitas por usuarios rechistratos',
 'tog-watchlisthideanons'      => 'Amagar en a lista de seguimiento as edizions feitas por usuarios anonimos.',
+'tog-watchlisthidepatrolled'  => 'Amagar as edizions patrullatas en a lista de seguimiento',
 'tog-nolangconversion'        => 'Desautibar conversión de bariants',
 'tog-ccmeonemails'            => 'Rezibir copias de os correus que nimbío ta atros usuarios',
 'tog-diffonly'                => "No amostrar o conteniu d'a pachina debaxo d'as esferenzias",
@@ -505,6 +508,10 @@ No xublide presonalizar [[Special:Preferences|as suyas preferenzias en {{SITENAM
 'yournick'                   => 'Siñadura:',
 'badsig'                     => 'A suya siñadura no ye conforme; comprebe as etiquetas HTML.',
 'badsiglength'               => 'A siñadura ye masiau larga. No abría de tener más de $1 {{PLURAL:$1|caráuter|caráuters}}.',
+'yourgender'                 => 'Secso:',
+'gender-unknown'             => 'No espezificato',
+'gender-male'                => 'Ombre',
+'gender-female'              => 'Muller',
 'email'                      => 'Adreza de correu-e',
 'prefs-help-realname'        => "* Nombre reyal (opzional): si esliche escribir-lo, se ferá serbir ta l'atribuzión d'a suya faina.",
 'loginerror'                 => 'Error en enzetar a sesión',
@@ -524,11 +531,11 @@ Comprebe si ha escrito bien o nombre u [[Special:UserLogin/signup|creye una nueb
 'passwordtooshort'           => "A suya palabra de paso no ye conforme u ye masiau curta. Ha de tener como menimo {{PLURAL:$1|1 caráuter|$1 caráuters}} y no puede estar o suyo nombre d'usuario.",
 'mailmypassword'             => 'Nimbiar una nueba palabra de paso por correu eletronico',
 'passwordremindertitle'      => 'Nueba palabra de paso temporal de {{SITENAME}}',
-'passwordremindertext'       => 'Belún (probablement busté, dende l\'adreza IP $1) demandó una nueba palabra de paso ta la suya cuenta en {{SITENAME}} ($4).
-S\'ha creyato una nueba palabra de paso temporal ta l\'usuario "$2", que ye "$3".
-Si isto ye lo que quereba, abrá de enzetar una sesión y trigar una nueba palabra de paso.
+'passwordremindertext'       => 'Belún (probablement busté, dende l\'adreza IP $1) demandó una nueba palabra de paso ta la suya cuenta en {{SITENAME}} ($4). S\'ha creyato una nueba palabra de paso temporal ta l\'usuario "$2", que ye "$3".
+Si isto ye lo que quereba, ha d\'enzetar agora una sesión y trigar una nueba palabra de paso.
+A suya palabra de paso temporal zircunduzirá en {{PLURAL:$5|un día|$5 días}}
 
-Si estió atro qui fazió ista demanda, u ya se\'n ha alcordau d\'a suya palabra de paso, y ya no deseya cambiar-la, puede inorar iste mensache y contar fendo serbir l\'antiga palabra de paso.',
+Si estió belatro qui fazió ista demanda, u ya se\'n ha alcordau d\'a palabra de paso, y ya no deseya cambiar-la, puet innorar iste mensache y continar fendo serbir l\'antiga palabra de paso.',
 'noemail'                    => 'No bi ha garra adreza de correu electronico rechistrada ta "$1".',
 'passwordsent'               => 'Una nueba palabra de paso plega de nimbiar-se ta o correu electronico de "$1".
 Por fabor, identifique-se unatra bez malas que la reculla.',
@@ -696,7 +703,7 @@ Abrá d'encorporar os suyos cambeos en o testo esistent.
 <strong>NO COPIE SIN PREMISO ESCRITOS CON DREITOS D'AUTOR!</strong>",
 'longpagewarning'                  => '<strong>Pare cuenta: Ista pachina tiene ya $1 kilobytes; bels nabegadors pueden tener problemas en editar pachinas de 32 kB o más.
 Considere, por fabor, a posibilidat de troxar ista pachina en trestallos más chicoz.</strong>',
-'longpageerror'                    => '<strong>ERROR: O testo que ha escrito ye de $1 kilobytes, que ye mayor que a grandaria maisima de $2 kilobytes. No se puede alzar.</strong>',
+'longpageerror'                    => '<strong>ERROR: O testo que ha escrito ye de $1 kilobytes, que ye mayor que a grandaria masima de $2 kilobytes. No se puede alzar.</strong>',
 'readonlywarning'                  => "<strong>Pare cuenta: A base de datos ye bloqueyata por custions de mantenimiento. Por ixo, en iste inte ye imposible d'alzar as suyas edizions. Puede copiar y apegar o testo en un archibo y alzar-lo ta dimpués.</strong>
 
 A esplicazión ufierta por l'almenistrador que bloqueyó a base de datos ye ista: $1",
@@ -791,52 +798,58 @@ Puede que aiga estato borrata d'o wiki u renombrata.
 Prebe de [[Special:Search|mirar en o wiki]] atras pachinas relebants.",
 
 # Revision deletion
-'rev-deleted-comment'         => "(s'ha sacato iste comentario)",
-'rev-deleted-user'            => "(s'ha sacato iste nombre d'usuario)",
-'rev-deleted-event'           => "(Aizión borrata d'o rechistro)",
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+'rev-deleted-comment'            => "(s'ha sacato iste comentario)",
+'rev-deleted-user'               => "(s'ha sacato iste nombre d'usuario)",
+'rev-deleted-event'              => "(Aizión borrata d'o rechistro)",
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks">
 Ista bersión d\'a pachina ye estata sacata d\'os archibos publicos.
 Puede trobar más detalles en o [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} rechistro de borrau].</div>',
-'rev-deleted-text-view'       => "<div class=\"mw-warning plainlinks\">
+'rev-deleted-text-view'          => "<div class=\"mw-warning plainlinks\">
 Ista bersión d'a pachina ye sacata d'os archibos publicos.
 Puede beyer-la porque ye almenistrador/a d'iste wiki;
 puede trobar más detalles en o [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rechistro de borrau].</div>",
-'rev-delundel'                => 'amostrar/amagar',
-'revisiondelete'              => 'Borrar/esfer borrau de bersions',
-'revdelete-nooldid-title'     => 'A bersión de destino no ye conforme',
-'revdelete-nooldid-text'      => 'No ha espezificato garra bersión de destino ta aplicar-le ista funzión, a bersión espezificata no esiste u ye mirando de amagar a bersión autual.',
-'revdelete-selected'          => "'''{{PLURAL:$2|Bersión trigata|Bersions trigatas}} de [[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|Escaizimiento d'o rechistro trigato|Escaizimientos d'o rechistro trigatos}}:'''",
-'revdelete-text'              => "'''As bersions borratas encara aparixerán en o istorial y o rechistro d'a pachina, pero os suyos contenius no serán azesibles ta o publico.'''
+'rev-delundel'                   => 'amostrar/amagar',
+'revisiondelete'                 => 'Borrar/esfer borrau de bersions',
+'revdelete-nooldid-title'        => 'A bersión de destino no ye conforme',
+'revdelete-nooldid-text'         => 'No ha espezificato garra bersión de destino ta aplicar-le ista funzión, a bersión espezificata no esiste u ye mirando de amagar a bersión autual.',
+'revdelete-nologtype-title'      => "No s'ha endicau garra mena de rechistro",
+'revdelete-nologtype-text'       => 'No ha endicato sobre qué tipo de rechistro quiere fer ista azión.',
+'revdelete-toomanytargets-title' => 'Masiaus obchetibos',
+'revdelete-toomanytargets-text'  => "Ha endicato masiadas menas d'obchetibos sobre os que fer ista azión.",
+'revdelete-nologid-title'        => 'Dentrada de rechistro imbalida',
+'revdelete-nologid-text'         => 'No ha endicau sobre qué ebento rechistrau quiere fer serbir ista funzión u bien no esiste a dentrada de rechistro que ha endicau.',
+'revdelete-selected'             => "'''{{PLURAL:$2|Bersión trigata|Bersions trigatas}} de [[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|Escaizimiento d'o rechistro trigato|Escaizimientos d'o rechistro trigatos}}:'''",
+'revdelete-text'                 => "'''As bersions borratas encara aparixerán en o istorial y o rechistro d'a pachina, pero os suyos contenius no serán azesibles ta o publico.'''
 
 Atros almenistradors de {{SITENAME}} encara podrán azeder t'o contineiu amagato y podrán esfer o borrau á trabiés d'a mesma interfaz, fueras de si os operadors establen restrizions adizionals.",
-'revdelete-legend'            => 'Establir as restrizions de bisibilidat:',
-'revdelete-hide-text'         => "Amagar o testo d'a bersión",
-'revdelete-hide-name'         => 'Amagar aizión y obchetibo',
-'revdelete-hide-comment'      => "Amagar comentario d'edizión",
-'revdelete-hide-user'         => "Amagar o nombre/l'adreza IP d'o editor",
-'revdelete-hide-restricted'   => 'Aplicar istas restrizions á os almenistradors y bloqueyar ista interfaz',
-'revdelete-suppress'          => "Sacar os datos d'os almenistradors igual como os d'a resta d'usuarios",
-'revdelete-hide-image'        => "Amagar o conteniu de l'archibo",
-'revdelete-unsuppress'        => "Sacar restrizions d'as bersions restauradas",
-'revdelete-log'               => "Comentario d'o rechistro:",
-'revdelete-submit'            => 'Aplicar á la bersión trigata',
-'revdelete-logentry'          => "S'ha cambiato a bisibilidat d'a bersión de [[$1]]",
-'logdelete-logentry'          => "S'ha cambiato a bisibilidat d'escaizimientos de [[$1]]",
-'revdelete-success'           => "'''S'ha cambiato correutament a bisibilidat d'as bersions.'''",
-'logdelete-success'           => "'''S'ha cambiato correutament a bisibilidat d'os escaizimientos.'''",
-'revdel-restore'              => 'Cambiar a bisibilidat',
-'pagehist'                    => 'Istorial',
-'deletedhist'                 => 'Istorial de borrau',
-'revdelete-content'           => 'conteniu',
-'revdelete-summary'           => 'editar resumen',
-'revdelete-uname'             => "nombre d'usuario",
-'revdelete-restricted'        => "S'han aplicato as restrizions ta almenistradors",
-'revdelete-unrestricted'      => "S'han borrato as restrizions ta almenistradors",
-'revdelete-hid'               => 'amagar $1',
-'revdelete-unhid'             => 'amostrar $1',
-'revdelete-log-message'       => '$1 ta $2 {{PLURAL:$2|bersión|bersions}}',
-'logdelete-log-message'       => '$1 ta $2 {{PLURAL:$2|esdebenimiento|esdebenimientos}}',
+'revdelete-legend'               => 'Establir as restrizions de bisibilidat:',
+'revdelete-hide-text'            => "Amagar o testo d'a bersión",
+'revdelete-hide-name'            => 'Amagar aizión y obchetibo',
+'revdelete-hide-comment'         => "Amagar comentario d'edizión",
+'revdelete-hide-user'            => "Amagar o nombre/l'adreza IP d'o editor",
+'revdelete-hide-restricted'      => 'Aplicar istas restrizions á os almenistradors y bloqueyar ista interfaz',
+'revdelete-suppress'             => "Sacar os datos d'os almenistradors igual como os d'a resta d'usuarios",
+'revdelete-hide-image'           => "Amagar o conteniu de l'archibo",
+'revdelete-unsuppress'           => "Sacar restrizions d'as bersions restauradas",
+'revdelete-log'                  => "Comentario d'o rechistro:",
+'revdelete-submit'               => 'Aplicar á la bersión trigata',
+'revdelete-logentry'             => "S'ha cambiato a bisibilidat d'a bersión de [[$1]]",
+'logdelete-logentry'             => "S'ha cambiato a bisibilidat d'escaizimientos de [[$1]]",
+'revdelete-success'              => "'''S'ha cambiato correutament a bisibilidat d'as bersions.'''",
+'logdelete-success'              => "'''S'ha cambiato correutament a bisibilidat d'os escaizimientos.'''",
+'revdel-restore'                 => 'Cambiar a bisibilidat',
+'pagehist'                       => 'Istorial',
+'deletedhist'                    => 'Istorial de borrau',
+'revdelete-content'              => 'conteniu',
+'revdelete-summary'              => 'editar resumen',
+'revdelete-uname'                => "nombre d'usuario",
+'revdelete-restricted'           => "S'han aplicato as restrizions ta almenistradors",
+'revdelete-unrestricted'         => "S'han borrato as restrizions ta almenistradors",
+'revdelete-hid'                  => 'amagar $1',
+'revdelete-unhid'                => 'amostrar $1',
+'revdelete-log-message'          => '$1 ta $2 {{PLURAL:$2|bersión|bersions}}',
+'logdelete-log-message'          => '$1 ta $2 {{PLURAL:$2|esdebenimiento|esdebenimientos}}',
 
 # Suppression log
 'suppressionlog'     => 'Rechistro de supresions',
@@ -1034,6 +1047,7 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'prefs-resetpass'           => 'Cambear a palabra de paso',
 'saveprefs'                 => 'Alzar preferenzias',
 'resetprefs'                => "Tornar t'as preferenzias por defeuto",
+'restoreprefs'              => 'Restaure todas as confegurazions por defeuto',
 'textboxsize'               => 'Edizión',
 'prefs-edit-boxsize'        => "Grandaria d'a finestra d'edizión.",
 'rows'                      => 'Ringleras:',
@@ -1062,6 +1076,8 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'defaultns'                 => 'Mirar por defeuto en istos espazios de nombres:',
 'default'                   => 'por defeuto',
 'files'                     => 'Archibos',
+'prefs-custom-css'          => 'CSS presonalizato',
+'prefs-custom-js'           => 'JS presonalizato',
 
 # User rights
 'userrights'                  => "Confegurazión d'os dreitos d'os usuarios", # Not used as normal message but as header for the special page itself
@@ -1269,6 +1285,7 @@ Ta encluyir un archibo u imachen en una pachina, emplegue un binclo d'una d'ista
 'filename'                    => "Nombre de l'archibo",
 'filedesc'                    => 'Resumen',
 'fileuploadsummary'           => 'Resumen:',
+'filereuploadsummary'         => "Cambios de l'archibo:",
 'filestatus'                  => "Estau d'os dreitos d'autor (copyright):",
 'filesource'                  => 'Fuent:',
 'uploadedfiles'               => 'Archibos cargatos',
@@ -1308,6 +1325,7 @@ Si tiene ista imachen a toda resoluzión, cargue-la, si no, por fabor, cambee o 
 'overwroteimage'              => 's\'ha cargato una nueba bersión de "[[$1]]"',
 'uploaddisabled'              => "A carga d'archibos ye desautibata",
 'uploaddisabledtext'          => 'A carga de archibos ye desautibata.',
+'php-uploaddisabledtext'      => 'A carga de fichers PHP ye desautibata. Por fabor, berifique a confegurazión de file_uploads.',
 'uploadscripted'              => 'Iste archibo contiene codigo de script u HTML que puede estar interpretado incorreutament por un nabegador.',
 'uploadcorrupt'               => "Iste archibo ye corrompito u tiene una estensión incorreuta. Por fabor, comprebe l'archibo y cargue-lo una atra begada.",
 'uploadvirus'                 => 'Iste archibo tiene un birus! Detalles: $1',
@@ -1354,18 +1372,19 @@ PICT # misz.
 'upload_source_url'  => ' (una URL conforme y publicament aczesible)',
 'upload_source_file' => ' (un archibo en o suyo ordenador)',
 
-# Special:FileList
-'imagelist-summary'     => "Ista pachina espezial amuestra toz os archibos cargatos.
+# Special:ListFiles
+'listfiles-summary'     => "Ista pachina espezial amuestra toz os archibos cargatos.
 Por defeuto os zaguers archibos cargatos s'amuestran en o cobalto d'a lista.
 Fendo click en un encabezau de colunna se cambia o criterio d'ordenazión.",
-'imagelist_search_for'  => "Mirar por nombre de l'archibo:",
+'listfiles_search_for'  => "Mirar por nombre de l'archibo:",
 'imgfile'               => 'archibo',
-'imagelist'             => 'Lista de imachens',
-'imagelist_date'        => 'Calendata:',
-'imagelist_name'        => 'Nombre',
-'imagelist_user'        => 'Usuario',
-'imagelist_size'        => 'Grandaria (bytes)',
-'imagelist_description' => 'Descripzión',
+'listfiles'             => 'Lista de imachens',
+'listfiles_date'        => 'Calendata:',
+'listfiles_name'        => 'Nombre',
+'listfiles_user'        => 'Usuario',
+'listfiles_size'        => 'Grandaria (bytes)',
+'listfiles_description' => 'Descripzión',
+'listfiles_count'       => 'Bersions',
 
 # File description page
 'filehist'                       => "Istorial de l'archibo",
@@ -1543,7 +1562,9 @@ Una pachina se considera pachina de desambigazión si fa serbir una plantilla pr
 'protectedtitlesempty'    => 'En iste inte no bi ha garra títol protechito con ixos parametros.',
 'listusers'               => "Lista d'usuarios",
 'listusers-editsonly'     => 'Amostrar nomás usuarios con edizions',
+'listusers-creationsort'  => 'Ordenato por calendata de creyazión',
 'usereditcount'           => '$1 {{PLURAL:$1|edizión|edizions}}',
+'usercreated'             => 'Creyato o $1 á las $2',
 'newpages'                => 'Pachinas nuebas',
 'newpages-username'       => "Nombre d'usuario",
 'ancientpages'            => 'Pachinas más biellas',
@@ -1603,7 +1624,8 @@ Se beigan tamién as [[Special:WantedCategories|categorías requiestas]].",
 'special-categories-sort-abc'   => 'ordenar alfabeticament',
 
 # Special:DeletedContributions
-'deletedcontributions' => "Contrebuzions d'usuario borratas",
+'deletedcontributions'       => "Contrebuzions d'usuario borratas",
+'deletedcontributions-title' => "Contrebuzions d'usuario borradas",
 
 # Special:LinkSearch
 'linksearch'       => 'Mirar binclos ta pachinas web',
@@ -1641,27 +1663,29 @@ Protocolos suportados: <tt>$1</tt>',
 'listgrouprights-removegroup-all' => 'Puede borrar todas as collas',
 
 # E-mail user
-'mailnologin'     => "No nimbiar l'adreza",
-'mailnologintext' => "Ha d'aber [[Special:UserLogin|enzetato una sesión]] y tener una adreza de correu-e conforme en as suyas [[Special:Preferences|preferenzias]] ta nimbiar un correu eletronico ta atros usuarios.",
-'emailuser'       => 'Nimbiar un correu electronico ta iste usuario',
-'emailpage'       => "Nimbiar correu ta l'usuario",
-'emailpagetext'   => 'Puede fer serbir o formulario que bi ye contino ta nimbiar un correu eletronico á iste usuario.
+'mailnologin'      => "No nimbiar l'adreza",
+'mailnologintext'  => "Ha d'aber [[Special:UserLogin|enzetato una sesión]] y tener una adreza de correu-e conforme en as suyas [[Special:Preferences|preferenzias]] ta nimbiar un correu eletronico ta atros usuarios.",
+'emailuser'        => 'Nimbiar un correu electronico ta iste usuario',
+'emailpage'        => "Nimbiar correu ta l'usuario",
+'emailpagetext'    => 'Puede fer serbir o formulario que bi ye contino ta nimbiar un correu eletronico á iste usuario.
 L\'adreza de correu-e que endicó en as suyas [[Special:Preferences|preferenzias d\'usuario]] amaneixerá en o campo "Remitent" ta que o destinatario pueda responder-le.',
-'usermailererror' => "L'ocheto de correu retornó una error:",
-'defemailsubject' => 'Correu de {{SITENAME}}',
-'noemailtitle'    => 'No bi ha garra adreza de correu eletronico',
-'noemailtext'     => "Iste usuario no ha espezificato una adreza conforme de correu electronico, u s'ha estimato más no recullir correu electronico d'atros usuarios.",
-'email-legend'    => 'Nimbiar un correu eletronico ta atro usuario de {{SITENAME}}',
-'emailfrom'       => 'De:',
-'emailto'         => 'Ta:',
-'emailsubject'    => 'Afer:',
-'emailmessage'    => 'Mensache:',
-'emailsend'       => 'Nimbiar',
-'emailccme'       => "Nimbiar-me una copia d'o mío mensache.",
-'emailccsubject'  => "Copia d'o suyo mensache ta $1: $2",
-'emailsent'       => 'Mensache de correu nimbiato',
-'emailsenttext'   => "S'ha nimbiato o suyo correu.",
-'emailuserfooter' => 'Iste correu-e s\'ha nimbiato por $1 ta $2 fendo serbir a funzión "Email user" de {{SITENAME}}.',
+'usermailererror'  => "L'ocheto de correu retornó una error:",
+'defemailsubject'  => 'Correu de {{SITENAME}}',
+'noemailtitle'     => 'No bi ha garra adreza de correu eletronico',
+'noemailtext'      => 'Iste usuario no ha espezificato una adreza conforme de correu electronico.',
+'nowikiemailtitle' => 'no se premiten os correus eletronicos',
+'nowikiemailtext'  => "Iste usuario ha esleyiu de no rezibir correus eletronicos d'atros usuarios.",
+'email-legend'     => 'Nimbiar un correu eletronico ta atro usuario de {{SITENAME}}',
+'emailfrom'        => 'De:',
+'emailto'          => 'Ta:',
+'emailsubject'     => 'Afer:',
+'emailmessage'     => 'Mensache:',
+'emailsend'        => 'Nimbiar',
+'emailccme'        => "Nimbiar-me una copia d'o mío mensache.",
+'emailccsubject'   => "Copia d'o suyo mensache ta $1: $2",
+'emailsent'        => 'Mensache de correu nimbiato',
+'emailsenttext'    => "S'ha nimbiato o suyo correu.",
+'emailuserfooter'  => 'Iste correu-e s\'ha nimbiato por $1 ta $2 fendo serbir a funzión "Email user" de {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Lista de seguimiento',
@@ -1827,11 +1851,11 @@ Contino se i amuestran as opzions autuals d'a pachina <strong>$1</strong>:",
 'restriction-type'            => 'Premiso:',
 'restriction-level'           => 'Libel de restrizión:',
 'minimum-size'                => 'Grandaria menima',
-'maximum-size'                => 'Grandaria maisima:',
+'maximum-size'                => 'Grandaria masima:',
 'pagesize'                    => '(bytes)',
 
 # Restrictions (nouns)
-'restriction-edit'   => 'Editar',
+'restriction-edit'   => 'Edizión',
 'restriction-move'   => 'Tresladar',
 'restriction-create' => 'Creyar',
 'restriction-upload' => 'Carga',
@@ -2080,6 +2104,8 @@ En ixos casos, si lo deseya, abrá de tresladar u combinar manualment o conteniu
 'movepagebtn'                  => 'Tresladar pachina',
 'pagemovedsub'                 => 'Treslado feito correutament',
 'movepage-moved'               => "<big>S'ha tresladato '''\"\$1\"  ta \"\$2\"'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => "S'ha creyato una reendrezera.",
+'movepage-moved-noredirect'    => "S'ha canzelato a creyazión d'una reendrezera.",
 'articleexists'                => 'Ya bi ha una pachina con ixe nombre u o nombre que ha eslechito no ye conforme. Por fabor trigue un atro nombre.',
 'cantmove-titleprotected'      => 'No puede tresladar una pachina ta íste títol porque o nuebo títol ye protechito y no puede estar creyato',
 'talkexists'                   => "A pachina s'ha tresladato correutament, pero a descusión no s'ha puesto tresladar porque ya esiste una con o nuebo títol. Por fabor, encorpore manualment o suyo conteniu.",
@@ -2350,7 +2376,7 @@ $1",
 'file-info-size'       => "($1 × $2 píxels; grandaria de l'archibo: $3; tipo MIME: $4)",
 'file-nohires'         => '<small>No bi ha garra bersión con mayor resoluzión.</small>',
 'svg-long-desc'        => '(archibo SVG, nominalment $1 × $2 píxels, grandaria: $3)',
-'show-big-image'       => 'Imachen en a maisima resoluzión',
+'show-big-image'       => 'Imachen en a masima resoluzión',
 'show-big-image-thumb' => "<small>Grandaria d'ista ambiesta prebia: $1 × $2 píxels</small>",
 
 # Special:NewFiles
@@ -2440,7 +2466,7 @@ Se consideran nomás os elementos d'una lista (linias que escomienzan por *). O 
 'exif-aperturevalue'               => 'Obredura',
 'exif-brightnessvalue'             => 'Brilura',
 'exif-exposurebiasvalue'           => "Siesco d'esposizión",
-'exif-maxaperturevalue'            => 'Obredura maisima',
+'exif-maxaperturevalue'            => 'Obredura masima',
 'exif-subjectdistance'             => 'Distanzia á o sucheto',
 'exif-meteringmode'                => 'Modo de mesura',
 'exif-lightsource'                 => 'Fuent de luz',
@@ -2661,9 +2687,7 @@ Se consideran nomás os elementos d'una lista (linias que escomienzan por *). O 
 'confirmemail'             => 'Confirmar adreza de correu-e',
 'confirmemail_noemail'     => "No tiene una adreza de correu-e conforme en as suyas [[Special:Preferences|preferenzias d'usuario]].",
 'confirmemail_text'        => "{{SITENAME}} requiere que confirme a suya adreza de correu-e antis de poder usar as funzions de correu-e. Punche o botón de baxo ta nimbiar un mensache de confirmazión t'a suya adreza. O mensache encluirá un binclo con un codigo. Escriba-lo ta confirmar que a suya adreza ye conforme.",
-'confirmemail_pending'     => '<div class="error">
-Ya se le ha nimbiato un codigo de confirmazión; si creyó una cuenta fa poco tiempo, puede que s\'estime más asperar bels menutos á beyer si le plega antis de pedir un nuebo codigo.
-</div>',
+'confirmemail_pending'     => "Ya se le ha nimbiato un codigo de confirmazión; si creyó una cuenta fa poco tiempo, puede que s'estime más asperar bels menutos á beyer si le plega antis de pedir un nuebo codigo.",
 'confirmemail_send'        => 'Nimbiar un codigo de confirmazión.',
 'confirmemail_sent'        => "S'ha nimbiato un correu de confirmazión.",
 'confirmemail_oncreate'    => "S'ha nimbiato un codigo de confirmazión t'a suya adreza de correu-e.
@@ -2852,5 +2876,17 @@ Escriba o nombre de l\'archibo sin o prefixo "{{ns:file}}:".',
 #As ringleras que prenzipian por «#» se consideran comentarios
 
 #Meta toz os fragmentos de regex por denzima d'ista ringlera. No faiga cambeos en ista linia</pre>",
+
+# Special:Tags
+'tag-filter'              => 'Filtrar as [[Special:Tags|etiquetas]]:',
+'tag-filter-submit'       => 'Filtrar',
+'tags-title'              => 'Etiquetas',
+'tags-intro'              => 'Ista pachina amuestra as etiquetas con que o software puet siñalar una edizión, y o suyo sinnificau.',
+'tags-tag'                => "Nombre interno d'a etiqueta",
+'tags-display-header'     => 'Aparenzia en as listas de cambeos',
+'tags-description-header' => "Descripzión completa d'o sinnificau",
+'tags-hitcount-header'    => 'Edizions etiquetatas',
+'tags-edit'               => 'editar',
+'tags-hitcount'           => '$1 {{PLURAL:$1|cambeo|cambeos}}',
 
 );

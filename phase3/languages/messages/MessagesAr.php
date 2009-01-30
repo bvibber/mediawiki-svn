@@ -7,6 +7,7 @@
  * @author Agurzil
  * @author Alnokta
  * @author Chaos
+ * @author Ciphers
  * @author Gharbeia
  * @author Jak
  * @author Khaledhosny
@@ -286,7 +287,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'قائمة_المراقبة' ),
 	'Recentchanges'             => array( 'أحدث_التغييرات' ),
 	'Upload'                    => array( 'رفع' ),
-	'Imagelist'                 => array( 'قائمة_الصور' ),
+	'Listfiles'                 => array( 'قائمة_الصور' ),
 	'Newimages'                 => array( 'صور_جديدة' ),
 	'Listusers'                 => array( 'عرض_المستخدمين', 'قائمة_المستخدمين' ),
 	'Listgrouprights'           => array( 'عرض_صلاحيات_المجموعات' ),
@@ -375,9 +376,11 @@ $imageFiles = array(
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'ضع خطا تحت الوصلات:',
-'tog-highlightbroken'         => 'أأظهر الوصلات المعطوبة <a href="" class="new">هكذا</a> (البديل: كهذا<a href="" class="internal">؟</a>).',
+'tog-highlightbroken'         => 'أظهر الوصلات المعطوبة <a href="" class="new">هكذا</a> (البديل: هكذا<a href="" class="internal">؟</a>).',
 'tog-justify'                 => 'ساوِ الفقرات',
 'tog-hideminor'               => 'أخف التعديلات الطفيفة في أحدث التغييرات',
+'tog-hidepatrolled'           => 'أخف التعديلات المراجعة في أحدث التغييرات',
+'tog-newpageshidepatrolled'   => 'أخف الصفحات المراجعة من قائمة الصفحات الجديدة',
 'tog-extendwatchlist'         => 'مدد قائمة المراقبة لعرض كل التغييرات المطبقة',
 'tog-usenewrc'                => 'شكل متقدم من أحدث التغييرات (جافا سكريبت)',
 'tog-numberheadings'          => 'رقم العناوين تلقائيا',
@@ -412,6 +415,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'أخف التعديلات الطفيفة من قائمة المراقبة',
 'tog-watchlisthideliu'        => 'أخف تعديلات المستخدمين المسجلين من قائمة المراقبة',
 'tog-watchlisthideanons'      => 'أخف تعديلات المستخدمين المجهولين من قائمة المراقبة',
+'tog-watchlisthidepatrolled'  => 'أخف التعديلات المراجعة من قائمة المراقبة',
 'tog-nolangconversion'        => 'عطل تحويل اللهجات',
 'tog-ccmeonemails'            => 'أرسل لي نسخا من رسائل البريد الإلكتروني التي أرسلها للمستخدمين الآخرين',
 'tog-diffonly'                => 'لا تعرض محتوى الصفحة أسفل الفروقات',
@@ -542,7 +546,7 @@ $messages = array(
 'create-this-page'  => 'أنشىء هذه الصفحة',
 'delete'            => 'حذف',
 'deletethispage'    => 'احذف هذه الصفحة',
-'undelete_short'    => 'استرجاع {{PLURAL:$1|تعديل واحد|تعديلان|$1 تعديلات|$1 تعديل|$1 تعديلا}}',
+'undelete_short'    => 'استرجاع {{PLURAL:$1|تعديل واحد|تعديلين|$1 تعديلات|$1 تعديل|$1 تعديلا}}',
 'protect'           => 'حماية',
 'protect_change'    => 'تغيير',
 'protectthispage'   => 'احم هذه الصفحة',
@@ -777,6 +781,10 @@ $2',
 'badsig'                     => 'توقيع خام غير صحيح؛ تحقق من وسوم HTML.',
 'badsiglength'               => 'التوقيع طويل جدا.
 يجب أن يكون أقل من $1 {{PLURAL:$1|حرف|حروف}}.',
+'yourgender'                 => 'النوع:',
+'gender-unknown'             => 'غير محدد',
+'gender-male'                => 'ذكر',
+'gender-female'              => 'أنثى',
 'email'                      => 'البريد الإلكتروني',
 'prefs-help-realname'        => 'الاسم الحقيقي اختياري.
 لو اخترت أن توفره، فسيستخدم في الإشارة إلى عملك.',
@@ -810,6 +818,7 @@ $2',
 'passwordremindertext'       => 'لقد طلب شخص ما (غالبا أنت، من عنوان الأيبي $1) كلمة سر جديدة ل{{SITENAME}} ($4).
 كلمة سر مؤقتة للمستخدم "$2" تم إنشاؤها وضبطها إلى "$3".
 لو أن هذا هو ما تقصد، فعليك أن تقوم بتسجيل الدخول واختيار كلمة سر جديدة الآن.
+كلمة سرك المؤقتة ستنتهي صلاحيتها خلال {{PLURAL:$5|يوم واحد|$5 يوم}}.
 
 لو أن شخص آخر قام بهذا الطلب، أو أنك تذكرت كلمة السر الخاصة بك، ولا ترغب  في تغييرها، فبإمكانك أن تتجاهل هذه الرسالة وأن تستمر في استخدام كلمة السر القديمة الخاصة بك.',
 'noemail'                    => 'لا يوجد عنوان بريد إلكتروني مسجل للمستخدم "$1".',
@@ -1106,55 +1115,61 @@ $2',
 حاول [[Special:Search|البحث في الويكي]] عن صفحات جديدة ذات صلة.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(التعليق تمت إزالته)',
-'rev-deleted-user'            => '(اسم المستخدم تمت إزالته)',
-'rev-deleted-event'           => '(فعل السجل تمت إزالته)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+'rev-deleted-comment'            => '(التعليق تمت إزالته)',
+'rev-deleted-user'               => '(اسم المستخدم تمت إزالته)',
+'rev-deleted-event'              => '(فعل السجل تمت إزالته)',
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks">
 مراجعة الصفحة هذه أزيلت من الأرشيفات العامة.
 ربما تكون هناك تفاصيل في [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} سجل الحذف].
 </div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
+'rev-deleted-text-view'          => '<div class="mw-warning plainlinks">
 تمت إزالة هذه المراجعة من الأرشيف العام.
 بإمكانك رؤية هذه المراجعة لكونك إداريا على هذا الموقع.
 من الممكن أن يكون هناك تفاصيل حول هذا في [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} سجل الحذف].
 </div>',
-'rev-delundel'                => 'عرض/إخفاء',
-'revisiondelete'              => 'حذف/استرجاع المراجعات',
-'revdelete-nooldid-title'     => 'مراجعة هدف غير صحيحة',
-'revdelete-nooldid-text'      => 'أنت إما أنك لم تحدد مراجعة (مراجعات) معينة كهدف لأداء هذا الفعل، المراجعة المحددة غير موجودة، أو أنك تحاول إخفاء المراجعة الحالية.',
-'revdelete-selected'          => "'''{{PLURAL:$2|المراجعة المختارة|المراجعات المختارة}} ل[[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|حدث السجل المختار|أحداث السجل المختارة}}:'''",
-'revdelete-text'              => "'''المراجعات والأحداث المحذوفة ستظل تظهر في تاريخ الصفحة والسجلات،'''
+'rev-delundel'                   => 'عرض/إخفاء',
+'revisiondelete'                 => 'حذف/استرجاع المراجعات',
+'revdelete-nooldid-title'        => 'مراجعة هدف غير صحيحة',
+'revdelete-nooldid-text'         => 'أنت إما أنك لم تحدد مراجعة (مراجعات) معينة كهدف لأداء هذا الفعل، المراجعة المحددة غير موجودة، أو أنك تحاول إخفاء المراجعة الحالية.',
+'revdelete-nologtype-title'      => 'لا نوع سجل تم إعطاؤه',
+'revdelete-nologtype-text'       => 'أنت لم تحدد نوع سجل لعمل هذا الفعل عليه.',
+'revdelete-toomanytargets-title' => 'أهداف كثيرة',
+'revdelete-toomanytargets-text'  => 'أنت حددت عددا كبيرا من أنواع الأهداف لعمل هذا الفعل عليها.',
+'revdelete-nologid-title'        => 'مدخلة سجل غير صحيحة',
+'revdelete-nologid-text'         => 'أنت إما أنك لم تحدد حدث سجل مستهدف لعمل هذه الوظيفة أو أن المدخلة المحددة غير موجودة.',
+'revdelete-selected'             => "'''{{PLURAL:$2|المراجعة المختارة|المراجعات المختارة}} ل[[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|حدث السجل المختار|أحداث السجل المختارة}}:'''",
+'revdelete-text'                 => "'''المراجعات والأحداث المحذوفة ستظل تظهر في تاريخ الصفحة والسجلات،'''
 لكن أجزاء من محتواهم لن يكون مسموحا للعامة برؤيتها.
 
 الإداريون الآخرون في {{SITENAME}} سيظل بإمكانهم رؤية المحتوى المخفي ويمكنهم استرجاعه مجددا من خلال هذه الواجهة نفسها، مالم يتم وضع قيود إضافية.",
-'revdelete-legend'            => 'وضع ضوابط رؤية',
-'revdelete-hide-text'         => 'إخفاء نص المراجعة',
-'revdelete-hide-name'         => 'إخفاء الفعل والهدف',
-'revdelete-hide-comment'      => 'إخفاء تعليق التعديل',
-'revdelete-hide-user'         => 'إخفاء اسم/عنوان المستخدم',
-'revdelete-hide-restricted'   => 'طبق هذه الضوابط على مديري النظام وأغلق هذه الواجهة',
-'revdelete-suppress'          => 'إخفاء البيانات عن مديري النظام بجانب الآخرين',
-'revdelete-hide-image'        => 'إخفاء محتوى الملف',
-'revdelete-unsuppress'        => 'إزالة الضوابط من المراجعات المسترجعة',
-'revdelete-log'               => 'تعليق السجل:',
-'revdelete-submit'            => 'طبق على المراجعة المختارة',
-'revdelete-logentry'          => 'غير رؤية المراجعة ل[[$1]]',
-'logdelete-logentry'          => 'غير رؤية الحدث ل[[$1]]',
-'revdelete-success'           => "'''تم ضبط رؤية المراجعات بنجاح.'''",
-'logdelete-success'           => "'''تم ضبط رؤية السجلات بنجاح.'''",
-'revdel-restore'              => 'تغيير الرؤية',
-'pagehist'                    => 'تاريخ الصفحة',
-'deletedhist'                 => 'التاريخ المحذوف',
-'revdelete-content'           => 'محتوى',
-'revdelete-summary'           => 'ملخص التعديل',
-'revdelete-uname'             => 'اسم المستخدم',
-'revdelete-restricted'        => 'طبق الضوابط لمديري النظام',
-'revdelete-unrestricted'      => 'أزال الضوابط لمديري النظام',
-'revdelete-hid'               => 'أخفى $1',
-'revdelete-unhid'             => 'أظهر $1',
-'revdelete-log-message'       => '$1 ل$2 {{PLURAL:$2|مراجعة|مراجعة}}',
-'logdelete-log-message'       => '$1 ل$2 {{PLURAL:$2|حدث|حدث}}',
+'revdelete-legend'               => 'وضع ضوابط رؤية',
+'revdelete-hide-text'            => 'إخفاء نص المراجعة',
+'revdelete-hide-name'            => 'إخفاء الفعل والهدف',
+'revdelete-hide-comment'         => 'إخفاء تعليق التعديل',
+'revdelete-hide-user'            => 'إخفاء اسم/عنوان المستخدم',
+'revdelete-hide-restricted'      => 'طبق هذه الضوابط على مديري النظام وأغلق هذه الواجهة',
+'revdelete-suppress'             => 'إخفاء البيانات عن مديري النظام بجانب الآخرين',
+'revdelete-hide-image'           => 'إخفاء محتوى الملف',
+'revdelete-unsuppress'           => 'إزالة الضوابط من المراجعات المسترجعة',
+'revdelete-log'                  => 'تعليق السجل:',
+'revdelete-submit'               => 'طبق على المراجعة المختارة',
+'revdelete-logentry'             => 'غير رؤية المراجعة ل[[$1]]',
+'logdelete-logentry'             => 'غير رؤية الحدث ل[[$1]]',
+'revdelete-success'              => "'''تم ضبط رؤية المراجعات بنجاح.'''",
+'logdelete-success'              => "'''تم ضبط رؤية السجلات بنجاح.'''",
+'revdel-restore'                 => 'تغيير الرؤية',
+'pagehist'                       => 'تاريخ الصفحة',
+'deletedhist'                    => 'التاريخ المحذوف',
+'revdelete-content'              => 'محتوى',
+'revdelete-summary'              => 'ملخص التعديل',
+'revdelete-uname'                => 'اسم المستخدم',
+'revdelete-restricted'           => 'طبق الضوابط لمديري النظام',
+'revdelete-unrestricted'         => 'أزال الضوابط لمديري النظام',
+'revdelete-hid'                  => 'أخفى $1',
+'revdelete-unhid'                => 'أظهر $1',
+'revdelete-log-message'          => '$1 ل$2 {{PLURAL:$2|مراجعة|مراجعة}}',
+'logdelete-log-message'          => '$1 ل$2 {{PLURAL:$2|حدث|حدث}}',
 
 # Suppression log
 'suppressionlog'     => 'سجل الإخفاء',
@@ -1361,6 +1376,7 @@ $2',
 'prefs-resetpass'           => 'غير كلمة السر',
 'saveprefs'                 => 'حفظ',
 'resetprefs'                => 'إزالة التغييرات غير المحفوظة',
+'restoreprefs'              => 'استرجاع كل الإعدادات الافتراضية',
 'textboxsize'               => 'أبعاد صندوق النصوص',
 'prefs-edit-boxsize'        => 'حجم نافذة التحرير.',
 'rows'                      => 'صفوف:',
@@ -1389,6 +1405,8 @@ $2',
 'defaultns'                 => 'ابحث في هذه النطاقات افتراضيا:',
 'default'                   => 'افتراضي',
 'files'                     => 'ملفات',
+'prefs-custom-css'          => 'CSS مخصص',
+'prefs-custom-js'           => 'جافاسكريبت مخصص',
 
 # User rights
 'userrights'                  => 'إدارة صلاحيات المستخدم', # Not used as normal message but as header for the special page itself
@@ -1599,6 +1617,7 @@ $2',
 'filename'                    => 'اسم الملف',
 'filedesc'                    => 'ملخص',
 'fileuploadsummary'           => 'ملخص:',
+'filereuploadsummary'         => 'تغييرات الملف:',
 'filestatus'                  => 'حالة حقوق النسخ:',
 'filesource'                  => 'مصدر:',
 'uploadedfiles'               => 'الملفات المرفوعة',
@@ -1649,6 +1668,7 @@ $2',
 'overwroteimage'              => 'رفع نسخة جديدة من "[[$1]]"',
 'uploaddisabled'              => 'تم تعطيل الرفع',
 'uploaddisabledtext'          => 'رفع الملفات معطل.',
+'php-uploaddisabledtext'      => 'رفع ملفات PHP معطل. من فضلك تحقق من إعدادات رفع الملفات.',
 'uploadscripted'              => 'هذا الملف  يضم كود HTML أو كود آخر يمكن أن يؤول بطريقة خاطئة بواسطة متصفح ويب.',
 'uploadcorrupt'               => 'هذا الملف فاسد أو له امتداد خاطيء.
 من فضلك تأكد من الملف وأعد الرفع مرة أخرى.',
@@ -1705,18 +1725,19 @@ PICT # متنوع
 'upload_source_url'  => '  (مسار صحيح، يمكن الوصول إليه)',
 'upload_source_file' => ' (ملف على حاسوبك)',
 
-# Special:FileList
-'imagelist-summary'     => 'هذه الصفحة الخاصة تعرض كل الملفات المرفوعة.
+# Special:ListFiles
+'listfiles-summary'     => 'هذه الصفحة الخاصة تعرض كل الملفات المرفوعة.
 افتراضيا آخر الملفات المرفوعة تعرض أعلى القائمة.
 الضغط على رأس العامود يغير الترتيب.',
-'imagelist_search_for'  => 'ابحث عن اسم الميديا:',
+'listfiles_search_for'  => 'ابحث عن اسم الميديا:',
 'imgfile'               => 'ملف',
-'imagelist'             => 'قائمة الملفات',
-'imagelist_date'        => 'تاريخ',
-'imagelist_name'        => 'اسم',
-'imagelist_user'        => 'مستخدم',
-'imagelist_size'        => 'حجم',
-'imagelist_description' => 'وصف',
+'listfiles'             => 'قائمة الملفات',
+'listfiles_date'        => 'تاريخ',
+'listfiles_name'        => 'اسم',
+'listfiles_user'        => 'مستخدم',
+'listfiles_size'        => 'حجم',
+'listfiles_description' => 'وصف',
+'listfiles_count'       => 'نسخ',
 
 # File description page
 'filehist'                       => 'تاريخ الملف',
@@ -1897,7 +1918,9 @@ PICT # متنوع
 'protectedtitlesempty'    => 'لا توجد عناوين محمية حاليا بهذه المحددات.',
 'listusers'               => 'قائمة الأعضاء',
 'listusers-editsonly'     => 'عرض المستخدمين الذين قاموا بتعديلات فقط',
+'listusers-creationsort'  => 'رتب بواسطة تاريخ الإنشاء',
 'usereditcount'           => '$1 {{PLURAL:$1|تعديل|تعديل}}',
+'usercreated'             => 'تم إنشاؤه في $1 الساعة $2',
 'newpages'                => 'صفحات جديدة',
 'newpages-username'       => 'اسم المستخدم:',
 'ancientpages'            => 'أقدم الصفحات',
@@ -1959,7 +1982,8 @@ PICT # متنوع
 'special-categories-sort-abc'   => 'رتب هجائيا',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'مساهمات المستخدم المحذوفة',
+'deletedcontributions'       => 'مساهمات المستخدم المحذوفة',
+'deletedcontributions-title' => 'مساهمات المستخدم المحذوفة',
 
 # Special:LinkSearch
 'linksearch'       => 'بحث وصلات الويب',
@@ -1998,27 +2022,29 @@ PICT # متنوع
 'listgrouprights-removegroup-all' => 'يمكنه إزالة كل المجموعات',
 
 # E-mail user
-'mailnologin'     => 'لا يوجد عنوان للإرسال',
-'mailnologintext' => 'يجب أن تقوم [[Special:UserLogin|بتسجيل الدخول]] وإدخال بريد إلكتروني صالح في صفحة [[Special:Preferences|التفضيلات]] لتتمكن من إرسال الرسائل لمستخدمين آخرين.',
-'emailuser'       => 'إرسال رسالة لهذا المستخدم',
-'emailpage'       => 'إرسال رسالة للمستخدم',
-'emailpagetext'   => 'يمكنك استخدام الاستمارة بالأسفل لإرسال رسالة بريد إلكتروني إلى هذا المستخدم.
+'mailnologin'      => 'لا يوجد عنوان للإرسال',
+'mailnologintext'  => 'يجب أن تقوم [[Special:UserLogin|بتسجيل الدخول]] وإدخال بريد إلكتروني صالح في صفحة [[Special:Preferences|التفضيلات]] لتتمكن من إرسال الرسائل لمستخدمين آخرين.',
+'emailuser'        => 'إرسال رسالة لهذا المستخدم',
+'emailpage'        => 'إرسال رسالة للمستخدم',
+'emailpagetext'    => 'يمكنك استخدام الاستمارة بالأسفل لإرسال رسالة بريد إلكتروني إلى هذا المستخدم.
 عنوان البريد الإلكتروني الذي قمت أنت بإدخاله في [[Special:Preferences|تفضيلاتك]]، سيظهر كعنوان المرسل في البريد الإلكتروني، حتى يصبح المتلقي قادرا على الرد عليك مباشرة.',
-'usermailererror' => 'جسم البريد أرجع خطأ:',
-'defemailsubject' => 'رسالة من {{SITENAME}}',
-'noemailtitle'    => 'لا يوجد عنوان بريد إلكتروني',
-'noemailtext'     => 'لم يحدد هذا المستخدم عنوان بريد إلكتروني صحيح، أو طلب عدم استلام الرسائل من المستخدمين الآخرين.',
-'email-legend'    => 'إرسال بريد إلكتروني إلى مستخدم {{SITENAME}} آخر',
-'emailfrom'       => 'من:',
-'emailto'         => 'إلى:',
-'emailsubject'    => 'الموضوع:',
-'emailmessage'    => 'الرسالة:',
-'emailsend'       => 'إرسال',
-'emailccme'       => 'أرسل لي بنسخة من رسالتي.',
-'emailccsubject'  => 'نسخة من رسالتك إلى $1: $2',
-'emailsent'       => 'تم إرسال البريد الإلكتروني',
-'emailsenttext'   => 'تم إرسال رسالتك الإلكترونية.',
-'emailuserfooter' => 'هذا البريد الإلكتروني تم إرساله بواسطة $1 إلى $2 بواسطة وظيفة "مراسلة المستخدم" في {{SITENAME}}.',
+'usermailererror'  => 'جسم البريد أرجع خطأ:',
+'defemailsubject'  => 'رسالة من {{SITENAME}}',
+'noemailtitle'     => 'لا يوجد عنوان بريد إلكتروني',
+'noemailtext'      => 'لم يحدد هذا المستخدم عنوان بريد إلكتروني صحيح.',
+'nowikiemailtitle' => 'لا بريد إلكتروني مسموح به',
+'nowikiemailtext'  => 'هذا المستخدم اختار ألا يستقبل البريد الإلكتروني من المستخدمين الآخرين.',
+'email-legend'     => 'إرسال بريد إلكتروني إلى مستخدم {{SITENAME}} آخر',
+'emailfrom'        => 'من:',
+'emailto'          => 'إلى:',
+'emailsubject'     => 'الموضوع:',
+'emailmessage'     => 'الرسالة:',
+'emailsend'        => 'إرسال',
+'emailccme'        => 'أرسل لي بنسخة من رسالتي.',
+'emailccsubject'   => 'نسخة من رسالتك إلى $1: $2',
+'emailsent'        => 'تم إرسال البريد الإلكتروني',
+'emailsenttext'    => 'تم إرسال رسالتك الإلكترونية.',
+'emailuserfooter'  => 'هذا البريد الإلكتروني تم إرساله بواسطة $1 إلى $2 بواسطة وظيفة "مراسلة المستخدم" في {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'قائمة مراقبتي',
@@ -2234,7 +2260,7 @@ $NEWPAGE
 'undeleteinvert'               => 'اعكس الاختيار',
 'undeletecomment'              => 'تعليق:',
 'undeletedarticle'             => 'استرجع "[[$1]]"',
-'undeletedrevisions'           => 'تم استرجاع {{PLURAL:$1|تعديل واحد|تعديلان|$1 تعديلات|$1 تعديل|$1 تعديلا}}',
+'undeletedrevisions'           => 'تم استرجاع {{PLURAL:$1|تعديل واحد|تعديلين|$1 تعديلات|$1 تعديل|$1 تعديلا}}',
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 مراجعة|$1 مراجعة}} و {{PLURAL:$2|1 ملف|$2 ملف}} تم استرجاعها',
 'undeletedfiles'               => '{{PLURAL:$1|ملف|ملفات}} $1 تم استرجاع',
 'cannotundelete'               => 'فشل الاسترجاع؛
@@ -2461,12 +2487,9 @@ $1 ممنوع بالفعل. هل تريد تغيير الإعدادات؟',
 'move-watch'                   => 'راقب هذه الصفحة',
 'movepagebtn'                  => 'نقل الصفحة',
 'pagemovedsub'                 => 'تم النقل بنجاح',
-'movepage-moved'               => '<big>\'\'\'"$1" تم نقلها إلى "$2"\'\'\'</big>
-
-تم إنشاء تحويلة.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'movepage-moved-noredirect'    => '<big>\'\'\'"$1" تم نقلها إلى "$2"\'\'\'</big>
-
-إنشاء التحويلة تم التغاضي عنه.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>\'\'\'"$1" تم نقلها إلى "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'تم إنشاء تحويلة.',
+'movepage-moved-noredirect'    => 'إنشاء التحويلة تم التغاضي عنه.',
 'articleexists'                => 'توجد صفحة بهذا الاسم، أو أن الاسم الذي تم اختياره غير صالح.
 من فضلك اختر اسم آخر.',
 'cantmove-titleprotected'      => 'لا يمكنك نقل صفحة إلى هذا الموقع، لأن العنوان الجديد تمت حمايته ضد الإنشاء',
@@ -3122,8 +3145,8 @@ $1',
 اضغط على زر التفعيل بالأسفل ليتم إرسال رسالة تأكيد لعنوانك.
 ستتضمن الرسالة رمز تفعيل؛
 اضغط على الوصلة التي تحتوي الرمز لتأكيد أن عنوانك الإلكتروني صحيح.',
-'confirmemail_pending'     => '<div class="error">تم إرسال كود التأكيد بالفعل من قبل إلى بريدك الإلكتروني؛
-إذا كان حسابك قد تم عمله حالا، ربما يجب أن تنتظر بضع دقائق قبل طلبك لكود آخر.</div>',
+'confirmemail_pending'     => 'تم إرسال كود التأكيد بالفعل من قبل إلى بريدك الإلكتروني؛
+إذا كان حسابك قد تم عمله حالا، ربما يجب أن تنتظر بضع دقائق قبل طلبك لكود آخر.',
 'confirmemail_send'        => 'أرسل كود تأكيد',
 'confirmemail_sent'        => 'تم إرسال رسالة التأكيد، شكرا لك.',
 'confirmemail_oncreate'    => 'تم إرسال كود تأكيد لعنوان بريدك الإلكتروني.
@@ -3188,8 +3211,8 @@ $1
 'comma-separator'     => '،&#32;',
 
 # Multipage image navigation
-'imgmultipageprev' => '← الصفحة السابقة',
-'imgmultipagenext' => 'الصفحة التالية →',
+'imgmultipageprev' => '→ الصفحة السابقة',
+'imgmultipagenext' => 'الصفحة التالية ←',
 'imgmultigo'       => 'اذهب!',
 'imgmultigoto'     => 'اذهب إلى صفحة $1',
 
@@ -3391,5 +3414,17 @@ $1
 #السطور التي تبدأ ب# تتم معاملتها كتعليقات
 
 #ضع كل منثورات التعبيرات المنتظمة فوق هذا السطر. اترك هذا السطر تماما كما هو</pre>',
+
+# Special:Tags
+'tag-filter'              => 'فلتر [[Special:Tags|الوسم]]:',
+'tag-filter-submit'       => 'فلتر',
+'tags-title'              => 'وسوم',
+'tags-intro'              => 'هذه الصفحة تعرض الوسوم التي ربما يعلم البرنامج تعديلا بها، ومعانيها.',
+'tags-tag'                => 'اسم وسم داخلي',
+'tags-display-header'     => 'الظهور في قوائم التغييرات',
+'tags-description-header' => 'وصف كامل للمعنى',
+'tags-hitcount-header'    => 'تعديلات موسومة',
+'tags-edit'               => 'عدل',
+'tags-hitcount'           => '$1 {{PLURAL:$1|تغيير|تغيير}}',
 
 );

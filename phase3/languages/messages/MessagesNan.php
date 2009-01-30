@@ -468,13 +468,13 @@ $messages = array(
 'destfilename'      => 'Tóng-àn sin miâ:',
 'watchthisupload'   => 'Kàm-sī chit ia̍h',
 
-# Special:FileList
-'imagelist'             => 'Iáⁿ-siōng lia̍t-toaⁿ',
-'imagelist_date'        => 'Ji̍t-kî',
-'imagelist_name'        => 'Miâ',
-'imagelist_user'        => 'Iōng-chiá',
-'imagelist_size'        => 'Toā-sè',
-'imagelist_description' => 'Soat-bêng',
+# Special:ListFiles
+'listfiles'             => 'Iáⁿ-siōng lia̍t-toaⁿ',
+'listfiles_date'        => 'Ji̍t-kî',
+'listfiles_name'        => 'Miâ',
+'listfiles_user'        => 'Iōng-chiá',
+'listfiles_size'        => 'Toā-sè',
+'listfiles_description' => 'Soat-bêng',
 
 # File description page
 'imagelinks'       => 'Iáⁿ-siōng liân-kiat',
@@ -582,7 +582,8 @@ Template:Khu-pia̍t-ia̍h',
 'categoriespagetext' => 'Chit ê wiki ū ē-kha chia ê lūi-pia̍t.',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',
+'deletedcontributions'       => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',
+'deletedcontributions-title' => 'Hō͘ lâng thâi tiāu ê kòng-hiàn',
 
 # Special:LinkSearch
 'linksearch' => 'Chhiau-chhoē chām-goā liân-kiat',

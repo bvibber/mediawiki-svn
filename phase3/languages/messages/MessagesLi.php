@@ -54,7 +54,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Volglies' ),
 	'Recentchanges'             => array( 'Lètste verangeringe' ),
 	'Upload'                    => array( 'Uploade' ),
-	'Imagelist'                 => array( 'Plaetjes' ),
+	'Listfiles'                 => array( 'Plaetjes' ),
 	'Newimages'                 => array( 'Nuuj plaetjes' ),
 	'Listusers'                 => array( 'Gebroekers' ),
 	'Statistics'                => array( 'Sjtatistieke' ),
@@ -541,7 +541,7 @@ Controleer dien spelling, of gebroek ongersjtaond formuleer om \'n nuuj gebroeke
 'passwordtooshort'           => "Dien wachwaord is te kort. 't Mót minstes oet {{PLURAL:$1|1 teike|$1 teikes}} besjtaon.",
 'mailmypassword'             => "Sjik mich 'n nuuj wachwaord",
 'passwordremindertitle'      => 'Nuuj tiedelik wachwaord van {{SITENAME}}',
-'passwordremindertext'       => 'Emes (waorsjienlik dich zelf) haet vanaaf IP-adres $1 verzoch \'n nuuj wachwoord veur {{SITENAME}} ($4) verzoch. \'t Nuuj wachwoord veur gebroeker "$2" is "$3". Es dat dien bedoeling waor, mèl diech daan noe aan en kees \'n nuuj wachwoord.
+'passwordremindertext'       => 'Emes (waorsjienlik dich zelf) haet vanaaf IP-adres $1 \'n nuuj wachwoord veur {{SITENAME}} ($4) verzoch. \'t Nuuj wachwoord veur gebroeker "$2" is "$3". Es dat dien bedoeling waor, mèl diech daan noe aan en kees \'n nuuj wachwoord. \'t Tiedelik wachwoord verluip euver {{PLURAL:$5|$5 daag|$5 daag}}.
 
 Es emes anders dit verzeuk heet gedoon, of wens te diech dien wachwoord weer herinners en \'t neet mie wèls wiezige, negeer dan dit berich en blief dien aud wachwoord gebroeke.',
 'noemail'                    => 'D\'r is gein geregistreerd e-mailadres veur "$1".',
@@ -1342,18 +1342,18 @@ Lèver zeker te zeen detse gesjik bös om door te gaon met 't uploade van dit be
 'upload_source_url'  => " ('ne geldige, publiek toegankelike URL)",
 'upload_source_file' => " ('n bestand op diene computer)",
 
-# Special:FileList
-'imagelist-summary'     => "Op dees speciaal pazjena zeen alle toegevoogde bestenj te bekieke.
+# Special:ListFiles
+'listfiles-summary'     => "Op dees speciaal pazjena zeen alle toegevoogde bestenj te bekieke.
 Standerd waere de lets toegevoogde bestenj baovenaan de lies weergegaeve.
 Klikke op 'ne kolomkop verangert de sortering.",
-'imagelist_search_for'  => 'Zeuk nao bestandj:',
+'listfiles_search_for'  => 'Zeuk nao bestandj:',
 'imgfile'               => 'bestandj',
-'imagelist'             => 'Lies van aafbeildinge',
-'imagelist_date'        => 'Datum',
-'imagelist_name'        => 'Naom',
-'imagelist_user'        => 'Gebroeker',
-'imagelist_size'        => 'Gruutde (bytes)',
-'imagelist_description' => 'Besjrieving',
+'listfiles'             => 'Lies van aafbeildinge',
+'listfiles_date'        => 'Datum',
+'listfiles_name'        => 'Naom',
+'listfiles_user'        => 'Gebroeker',
+'listfiles_size'        => 'Gruutde (bytes)',
+'listfiles_description' => 'Besjrieving',
 
 # File description page
 'filehist'                       => 'Bestandsgesjiedenis',
@@ -1561,7 +1561,8 @@ Op eder raegel vings te de ierste redirectpazjena, de twiede redirectpazjena en 
 'special-categories-sort-abc'   => 'alfabetisch sortere',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Gewisde gebroekersbiedrage',
+'deletedcontributions'       => 'Gewisde gebroekersbiedrage',
+'deletedcontributions-title' => 'Gewisde gebroekersbiedrage',
 
 # Special:LinkSearch
 'linksearch'       => 'Extern links zeuke',
@@ -2530,7 +2531,7 @@ Alle volgende links die op dezelfde regel sjtaon, waere behanjeld es oetzunjerin
 gebroeks. Klik op de knop hieónger óm e bevèstegingsberich nao dien adres te
 sjikke. D'n e-mail zal 'ne link mèt 'n code bevatte; eupen de link in diene
 browser óm te bevestege dat dien e-mailadres werk.",
-'confirmemail_pending'     => "<div class=\"error\">Dao is al 'n bevestigingsberich aan dich versjik. Wens te zjus diene gebroeker aangemaak höbs, wach dan e paar minute pès 't aankump veurdets te opnuuj 'n e-mail leuts sjikke.</div>",
+'confirmemail_pending'     => "Dao is al 'n bevestigingsberich aan dich versjik. Wens te zjus diene gebroeker aangemaak höbs, wach dan e paar minute pès 't aankump veurdets te opnuuj 'n e-mail leuts sjikke.",
 'confirmemail_send'        => "Sjik 'n bevèstegingcode",
 'confirmemail_sent'        => 'Bevèstegingsberich versjik.',
 'confirmemail_oncreate'    => "D'r is 'n bevestigingscode nao dien e-mailadres versjik. Dees code is neet nudig óm aan te melje, meh doe mós dees waal bevestige veurdets te de e-mailmäögelikheite van deze wiki kèns nótse.",

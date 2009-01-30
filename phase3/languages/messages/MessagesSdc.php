@@ -36,7 +36,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'AbbaidaddiIppiziari' ),
 	'Recentchanges'             => array( 'UlthimiMudìfigghi' ),
 	'Upload'                    => array( 'Carrigga' ),
-	'Imagelist'                 => array( 'Immagini' ),
+	'Listfiles'                 => array( 'Immagini' ),
 	'Newimages'                 => array( 'ImmaginiRizzenti' ),
 	'Listusers'                 => array( 'Utenti', 'ErencuUtenti' ),
 	'Statistics'                => array( 'Sthatisthigghi' ),
@@ -1044,15 +1044,15 @@ Pa piazeri verifigga si vói carriggà avveru chisthu file; inogghi v'è lu rigi
 'upload_source_url'  => " (un'indirizzu vàriddu e pùbbriggu)",
 'upload_source_file' => " (un file i' lu propriu elaburaddori)",
 
-# Special:FileList
-'imagelist_search_for'  => 'Zercha immàgini pa innòmu:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Zercha immàgini pa innòmu:',
 'imgfile'               => 'file',
-'imagelist'             => 'Listha di li file',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Innòmu',
-'imagelist_user'        => 'Utenti',
-'imagelist_size'        => 'Misuri in byte',
-'imagelist_description' => 'Deschrizioni',
+'listfiles'             => 'Listha di li file',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Innòmu',
+'listfiles_user'        => 'Utenti',
+'listfiles_size'        => 'Misuri in byte',
+'listfiles_description' => 'Deschrizioni',
 
 # File description page
 'filehist'                  => 'Cronologia di lu file',
@@ -1923,9 +1923,7 @@ So cunsidaraddi soru l'erenchi puntaddi (righi ch'ischumenzani cu' lu caràtteri
 'confirmemail'            => 'Cunfèimma indirizzu di postha erettrònica',
 'confirmemail_noemail'    => "Nò è isthaddu indicaddu un'indirizzu postha erettrònica vàriddu i' li pròpri [[Special:Preferences|prifirenzi]].",
 'confirmemail_text'       => "{{SITENAME}} dumanda la verifigga di l'indirizzu di postha erettrònica primma di pudé l'usà. Incalchà lu buttoni in giossu pa invià una prigonta di cunfèimma a lu propriu indirizzu; i' l'imbasciadda è prisenti un cullegamentu chi cunteni un còdizi. Visità lu cullegamentu cu' lu proprio nabiggadori pa cunfèimmà chi l'indirizzu è vàriddu.",
-'confirmemail_pending'    => '<div class="error">
-Un còdizi di cunfèimma è già isthaddu inviaddu pa postha erettrònica; si la registhrazioni è isthadda cridda da poggu, è nezzessàriu aisittà l\'arribu di lu còdizi pa calchi minutu primma di dumandanni unu nobu.
-</div>',
+'confirmemail_pending'    => "Un còdizi di cunfèimma è già isthaddu inviaddu pa postha erettrònica; si la registhrazioni è isthadda cridda da poggu, è nezzessàriu aisittà l'arribu di lu còdizi pa calchi minutu primma di dumandanni unu nobu.",
 'confirmemail_send'       => 'Invia un còdizi di cunfèimma via postha erettrònica.',
 'confirmemail_sent'       => 'Imbasciadda di postha erettrònica di cunfèimma inviaddu.',
 'confirmemail_oncreate'   => "Un còdizi di cunfèimma è isthaddu inviaddu a l'indirizzu di postha erettrònica indicaddu. Lu còdizi nò è nezzessàriu pa intrà i' lu situ, ma pa abirità tutti li funzioni liaddi a la postha erettrònica.",

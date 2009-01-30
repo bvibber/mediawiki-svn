@@ -5,6 +5,7 @@
  * @file
  *
  * @author JJohnson
+ * @author Omnipaedista
  * @author Spacebirdy
  * @author Wōdenhelm
  */
@@ -132,6 +133,7 @@ $messages = array(
 'permalink'         => 'Fæst bend',
 'print'             => 'Gemǣlan',
 'edit'              => 'Ādihtan',
+'create'            => 'Scieppene',
 'editthispage'      => 'Ādihtan þisne tramet',
 'delete'            => 'āfeorsian',
 'deletethispage'    => 'Þisne tramet āfeorsian',
@@ -165,6 +167,7 @@ $messages = array(
 'mainpage-description' => 'Hēafodsīde',
 'portal'               => 'Gemǣnscipe Ingang',
 'portal-url'           => 'Project:Gemǣnscipe Ingang',
+'privacy'              => 'Ānlīepnesse þēaw',
 
 'versionrequired' => 'Fadunge $1 þæs MediaWicis nēodaþ',
 
@@ -186,6 +189,7 @@ $messages = array(
 'nstab-special'  => 'Syndrig',
 'nstab-image'    => 'Mētung',
 'nstab-template' => 'Bisen',
+'nstab-help'     => 'Helptramet',
 'nstab-category' => 'Flocc',
 
 # Main script and global functions
@@ -379,13 +383,13 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 
 'nolicense' => 'Nǣnne gecorenne',
 
-# Special:FileList
-'imagelist_search_for'  => 'Sēcan biliþnaman:',
-'imagelist'             => 'Biliþgetalu',
-'imagelist_date'        => 'Tælmearc',
-'imagelist_name'        => 'Nama',
-'imagelist_user'        => 'Brūcend',
-'imagelist_description' => 'Tōwritennes',
+# Special:ListFiles
+'listfiles_search_for'  => 'Sēcan biliþnaman:',
+'listfiles'             => 'Biliþgetalu',
+'listfiles_date'        => 'Tælmearc',
+'listfiles_name'        => 'Nama',
+'listfiles_user'        => 'Brūcend',
+'listfiles_description' => 'Tōwritennes',
 
 # File description page
 'filehist-user'  => 'Brūcend',
@@ -676,6 +680,7 @@ Bidde cēos ōðerne naman.',
 'imagelistall'     => 'eall',
 'watchlistall2'    => 'eall',
 'namespacesall'    => 'eall',
+'monthsall'        => 'eall',
 
 # E-mail address confirmation
 'confirmemail_body' => 'Hwilchwega, gewēne þu of IP stōwe $1, hæfþ in namanbēc gestt ǣnne hordcleofan

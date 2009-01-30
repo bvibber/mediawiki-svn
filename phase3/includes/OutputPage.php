@@ -409,6 +409,7 @@ class OutputPage {
 			$sk = $wgUser->getSkin();
 			foreach ( $categories as $category => $type ) {
 				$title = Title::makeTitleSafe( NS_CATEGORY, $category );
+				$wgContLang->findVariantLink( $category, $title );
 				$text = $wgContLang->convertHtml( $title->getText() );
 				$this->mCategoryLinks[$type][] = $sk->makeLinkObj( $title, $text );
 			}
@@ -538,9 +539,11 @@ class OutputPage {
 				$this->mTemplateIds[$ns] = $dbks;
 			}
 		}
-		// Display title
+		// Page title
 		if( ( $dt = $parserOutput->getDisplayTitle() ) !== false )
 			$this->setPageTitle( $dt );
+		else if ( ( $title = $parserOutput->getTitleText() ) != '' )
+			$this->setPageTitle( $title );
 
 		// Hooks registered in the object
 		global $wgParserOutputHooks;
@@ -1843,7 +1846,7 @@ class OutputPage {
 				$args = array();
 				$name = $spec;
 			}
-			$s = str_replace( '$' . ($n+1), wfMsgExt( $name, $options, $args ), $s );
+			$s = str_replace( '$' . ( $n + 1 ), wfMsgExt( $name, $options, $args ), $s );
 		}
 		$this->addHTML( $this->parse( $s, /*linestart*/true, /*uilang*/true ) );
 	}

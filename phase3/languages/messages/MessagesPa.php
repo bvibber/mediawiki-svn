@@ -9,11 +9,6 @@
  * @author Sukh
  * @author Ævar Arnfjörð Bjarmason
  * @author לערי ריינהארט
- *
- * @license http://www.gnu.org/copyleft/fdl.html GNU Free Documentation License
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
- * @see http://bugzilla.wikimedia.org/show_bug.cgi?id=1478
- * @see http://bugzilla.wikimedia.org/show_bug.cgi?id=11145
  */
 
 $namespaceNames = array(
@@ -464,6 +459,8 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'lineno'                  => 'ਲਾਈਨ $1:',
 'compareselectedversions' => 'ਚੁਣੇ ਵਰਜਨਾਂ ਦੀ ਤੁਲਨਾ',
 'editundo'                => 'ਵਾਪਸ(undo)',
+'diff-width'              => 'ਚੌੜਾਈ',
+'diff-height'             => 'ਉਚਾਈ',
 
 # Search results
 'searchresults'         => 'ਖੋਜ ਨਤੀਜੇ',
@@ -603,14 +600,14 @@ to upload files.',
 'license-nopreview'  => '(ਝਲਕ ਉਪਲੱਬਧ ਨਹੀਂ)',
 'upload_source_file' => ' (ਤੁਹਾਡੇ ਕੰਪਿਊਟਰ ਉੱਤੇ ਇੱਕ ਫਾਇਲ)',
 
-# Special:FileList
+# Special:ListFiles
 'imgfile'               => 'ਫਾਇਲ',
-'imagelist'             => 'ਫਾਇਲ ਲਿਸਟ',
-'imagelist_date'        => 'ਮਿਤੀ',
-'imagelist_name'        => 'ਨਾਂ',
-'imagelist_user'        => 'ਯੂਜ਼ਰ',
-'imagelist_size'        => 'ਆਕਾਰ',
-'imagelist_description' => 'ਵੇਰਵਾ',
+'listfiles'             => 'ਫਾਇਲ ਲਿਸਟ',
+'listfiles_date'        => 'ਮਿਤੀ',
+'listfiles_name'        => 'ਨਾਂ',
+'listfiles_user'        => 'ਯੂਜ਼ਰ',
+'listfiles_size'        => 'ਆਕਾਰ',
+'listfiles_description' => 'ਵੇਰਵਾ',
 
 # File description page
 'filehist'                  => 'ਫਾਇਲ ਅਤੀਤ',
@@ -762,9 +759,10 @@ to upload files.',
 'restriction-level-all'           => 'ਕੋਈ ਲੈਵਲ',
 
 # Undelete
-'undeletebtn'     => 'ਰੀਸਟੋਰ',
-'undeletereset'   => 'ਰੀ-ਸੈੱਟ',
-'undeletecomment' => 'ਟਿੱਪਣੀ:',
+'undeletebtn'               => 'ਰੀਸਟੋਰ',
+'undeletereset'             => 'ਰੀ-ਸੈੱਟ',
+'undeletecomment'           => 'ਟਿੱਪਣੀ:',
+'undelete-show-file-submit' => 'ਹਾਂ',
 
 # Namespace form on various pages
 'invert'         => 'ਉਲਟ ਚੋਣ',
@@ -980,7 +978,7 @@ to upload files.',
 'confirmemail_subject'  => '{{SITENAME}} ਈਮੇਲ ਐਡਰੈੱਸ ਪੁਸ਼ਟੀ',
 
 # Scary transclusion
-'scarytranscludetoolong' => '[URL ਬਹੁਤ ਲੰਮਾ ਹੈ; ਅਫਸੋਸ ਹੈ]',
+'scarytranscludetoolong' => '[ਅਫਸੋਸ ਹੈ ਕਿ URL ਬਹੁਤ ਲੰਮਾ ਹੈ]',
 
 # Trackbacks
 'trackbackremove' => ' ([$1 ਹਟਾਓ])',
@@ -1025,5 +1023,8 @@ to upload files.',
 # Special:SpecialPages
 'specialpages'             => 'ਖਾਸ ਪੇਜ',
 'specialpages-group-login' => 'ਲਾਗ ਇਨ / ਅਕਾਊਂਟ ਬਣਾਓ',
+
+# Special:BlankPage
+'blankpage' => 'ਖ਼ਾਲੀ ਪੇਜ',
 
 );

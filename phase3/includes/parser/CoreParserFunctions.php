@@ -27,6 +27,7 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'fullurle',         array( __CLASS__, 'fullurle'         ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'formatnum',        array( __CLASS__, 'formatnum'        ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'grammar',          array( __CLASS__, 'grammar'          ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'gender',           array( __CLASS__, 'gender'           ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'plural',           array( __CLASS__, 'plural'           ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofpages',    array( __CLASS__, 'numberofpages'    ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofusers',    array( __CLASS__, 'numberofusers'    ), SFH_NO_HASH );
@@ -45,6 +46,7 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'filepath',         array( __CLASS__, 'filepath'         ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'pagesincategory',  array( __CLASS__, 'pagesincategory'  ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'pagesize',         array( __CLASS__, 'pagesize'         ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'protectionlevel',  array( __CLASS__, 'protectionlevel'  ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'tag',              array( __CLASS__, 'tagObj'           ), SFH_OBJECT_ARGS );
 
 		if ( $wgAllowDisplayTitle ) {
@@ -154,6 +156,22 @@ class CoreParserFunctions {
 		return $parser->getFunctionLang()->convertGrammar( $word, $case );
 	}
 
+	static function gender( $parser, $user ) {
+		$forms = array_slice( func_get_args(), 2);
+
+		// default
+		$gender = User::getDefaultOption( 'gender' );
+
+		// check parameter, or use $wgUser if in interface message
+		$user = User::newFromName( $user );
+		if ( $user ) {
+			$gender = $user->getOption( 'gender' );
+		} elseif ( $parser->mOptions->getInterfaceMessage() ) {
+			global $wgUser;
+			$gender = $wgUser->getOption( 'gender' );
+		}
+		return $parser->getFunctionLang()->gender( $gender, $forms );
+	}
 	static function plural( $parser, $text = '') {
 		$forms = array_slice( func_get_args(), 2);
 		$text = $parser->getFunctionLang()->parseFormattedNumber( $text );
@@ -292,6 +310,16 @@ class CoreParserFunctions {
 		}	
 		return self::formatRaw( $length, $raw );
 	}
+	
+	/**
+	* Returns the requested protection level for the current page
+	*/
+	static function protectionlevel( $parser, $type = '' ) {
+		$restrictions = $parser->mTitle->getRestrictions( strtolower( $type ) );
+		# Title::getRestrictions returns an array, its possible it may have
+		# multiple values in the future
+		return implode( $restrictions, ',' );
+	}
 
 	static function language( $parser, $arg = '' ) {
 		global $wgContLang;
@@ -299,20 +327,38 @@ class CoreParserFunctions {
 		return $lang != '' ? $lang : $arg;
 	}
 
-	static function pad( $string = '', $length = 0, $char = 0, $direction = STR_PAD_RIGHT ) {
-		$length = min( max( $length, 0 ), 500 );
-		$char = substr( $char, 0, 1 );
-		return ( $string !== '' && (int)$length > 0 && strlen( trim( (string)$char ) ) > 0 )
-				? str_pad( $string, $length, (string)$char, $direction )
-				: $string;
+	/**
+	 * Unicode-safe str_pad with the restriction that $length is forced to be <= 500
+ 	 */
+	static function pad( $string, $length, $padding = '0', $direction = STR_PAD_RIGHT ) {
+		$lengthOfPadding = mb_strlen( $padding );		
+		if ( $lengthOfPadding == 0 ) return $string;
+		
+		# The remaining length to add counts down to 0 as padding is added
+		$length = min( $length, 500 ) - mb_strlen( $string );
+		# $finalPadding is just $padding repeated enough times so that 
+		# mb_strlen( $string ) + mb_strlen( $finalPadding ) == $length
+		$finalPadding = '';
+		while ( $length > 0 ) {
+			# If $length < $lengthofPadding, truncate $padding so we get the
+			# exact length desired.
+			$finalPadding .= mb_substr( $padding, 0, $length );
+			$length -= $lengthOfPadding;
+		}
+		
+		if ( $direction == STR_PAD_LEFT ) {
+			return $finalPadding . $string;
+		} else {
+			return $string . $finalPadding;
+		}
 	}
 
-	static function padleft( $parser, $string = '', $length = 0, $char = 0 ) {
-		return self::pad( $string, $length, $char, STR_PAD_LEFT );
+	static function padleft( $parser, $string = '', $length = 0, $padding = '0' ) {
+		return self::pad( $string, $length, $padding, STR_PAD_LEFT );
 	}
 
-	static function padright( $parser, $string = '', $length = 0, $char = 0 ) {
-		return self::pad( $string, $length, $char );
+	static function padright( $parser, $string = '', $length = 0, $padding = '0' ) {
+		return self::pad( $string, $length, $padding );
 	}
 
 	static function anchorencode( $parser, $text ) {

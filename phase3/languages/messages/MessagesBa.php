@@ -225,8 +225,8 @@ $messages = array(
 # Recent changes linked
 'recentchangeslinked' => 'Бәйле үҙгәртеүҙәр',
 
-# Special:FileList
-'imagelist_user' => 'Ҡатнашыусы',
+# Special:ListFiles
+'listfiles_user' => 'Ҡатнашыусы',
 
 # MIME search
 'mimesearch' => 'MIME буйынса эҙләү',
@@ -258,7 +258,8 @@ $messages = array(
 'allpagessubmit'    => 'Үтәргә',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Ҡулланыусыларҙың юйылған өлөшө',
+'deletedcontributions'       => 'Ҡулланыусыларҙың юйылған өлөшө',
+'deletedcontributions-title' => 'Ҡулланыусыларҙың юйылған өлөшө',
 
 # E-mail user
 'emailuser'    => 'Ҡатнашыусыға хат',

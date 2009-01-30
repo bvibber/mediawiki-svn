@@ -118,7 +118,7 @@ $messages = array(
 'dec'           => 'كا١',
 
 # Categories related messages
-'pagecategories'        => '$1 هاوپۆله‌كان',
+'pagecategories'        => '{{PLURAL:$1|ھاوپۆلەکان|ھاوپۆل}}',
 'category_header'       => 'په‌ڕه‌ی هاوپۆلی "$1" de',
 'subcategories'         => 'به‌شه‌هاوپۆله‌كان',
 'category-media-header' => 'میدیا له‌ هاوپۆلی "$1" دا',
@@ -149,6 +149,7 @@ $messages = array(
 'mytalk'         => 'په‌ڕه‌ی گفتوگۆی من',
 'anontalk'       => 'گفتوگۆ بۆ ئه‌م ئای‌پی‌ یه‌',
 'navigation'     => 'نمایشكردن',
+'and'            => '&#32;و',
 
 # Metadata in edit box
 'metadata_help' => 'دراوه‌ی مێتا:',
@@ -212,14 +213,19 @@ $messages = array(
 'aboutsite'            => 'دەربارەی {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:مافەکانی لەبەرگرتنەوە',
 'currentevents-url'    => 'Project:ڕووداوە بەردەوامەکان',
+'disclaimers'          => 'بەرپرس‌نەبوونییەکان',
 'edithelp'             => 'ڕێنمایی بۆ دەستکاری کردن',
 'edithelppage'         => 'Help:دەستکاری کردن',
-'faq'                  => 'پرسیاری هه‌میشه‌ دووباره‌(پهد(',
+'faq'                  => 'پرسیار و وەڵام (FAQ)',
+'faqpage'              => 'Project:پرسیار و وەڵام',
+'helppage'             => 'Help:رێنمایییەکان',
 'mainpage'             => 'ده‌ستپێک',
 'mainpage-description' => 'ده‌ستپێک',
 'portal'               => 'دەروازەی بەکارھێنەران',
 'portal-url'           => 'Project: دەروازەی بەکارھێنەران',
 'privacy'              => 'سیاسەتی پاراستنی داتاکان',
+
+'badaccess' => 'ھەڵە لە بە دەست ھێنان',
 
 'versionrequired'     => 'پێویستیت به‌ وه‌شانی $1 ـی‌ ویكیمیدیایه‌',
 'versionrequiredtext' => 'پێویستیت به‌ وه‌شانی $1 ـێ ویكیمیدیا هه‌یه‌ بۆ به‌كاربردنی ئه‌م په‌ڕه‌یه‌
@@ -227,10 +233,15 @@ $messages = array(
 
 'ok'                      => 'باشه‌',
 'retrievedfrom'           => 'له‌ لایه‌ن "$1" گه‌ڕاوه‌ته‌وه‌.',
+'youhavenewmessages'      => '$1ت ھەیە ($2).',
 'newmessageslink'         => 'په‌یامێكی نوێ',
 'newmessagesdifflink'     => 'دوا گۆڕانكارییه‌كان',
 'youhavenewmessagesmulti' => 'په‌یامێكی نوێت هه‌یه‌ له‌ $1.',
 'editsection'             => 'ده‌ستكاری',
+'editold'                 => 'دەستکاری',
+'viewsourceold'           => 'بینینی سەرچاوە',
+'editlink'                => 'دەستکاری',
+'viewsourcelink'          => 'بینینی سەرچاوە',
 'editsectionhint'         => 'ده‌ستكاریی به‌شی: $1',
 'toc'                     => 'ناوەڕۆک',
 'showtoc'                 => 'نیشاندان',
@@ -289,7 +300,7 @@ $messages = array(
 'logout'                  => 'ده‌رچوون',
 'userlogout'              => 'دەرچوون',
 'notloggedin'             => 'له‌ ژووره‌وه‌ نیت',
-'nologin'                 => 'ناتوانیت بچییه‌ ژووره‌وه‌؟ $1.',
+'nologin'                 => 'ھەژمارت نییە؟  $1.',
 'nologinlink'             => 'ببه‌ به‌ ئه‌ندام',
 'createaccount'           => 'هه‌ژماری نوێ',
 'gotaccount'              => 'خاوه‌نی هه‌ژماری خۆتی؟ $1.',
@@ -305,33 +316,57 @@ $messages = array(
 'yourvariant'             => 'ڕه‌گه‌ز',
 'yournick'                => 'نازناو',
 'badsig'                  => 'ئیمزاكه‌ هه‌ڵه‌یه‌، ته‌ماشای كۆدی HTML بكه‌‌',
+'gender-male'             => 'پیاو',
+'gender-female'           => 'ژن',
+'loginsuccesstitle'       => 'سرەکەوتی بۆ چوونە ژوورەوە!',
+'mailmypassword'          => 'تێپەڕوشەیەکی نوێ بنێرە بۆ E-mailەکەم',
+'passwordremindertitle'   => 'تێپەڕوشەیەکی نوێی کاتی بۆ  {{SITENAME}}',
+'noemail'                 => 'ھیچ ئەدرەسێکی e-mail تۆمار نەکراوە بۆ بەکارھێنەر  "$1" .',
 'emailauthenticated'      => 'پۆستی ئه‌لیكترۆنی ناسراو: $1.',
+'emailnotauthenticated'   => 'ئیمەیلەکەت ھێشتا نەناسراوە.
+ھیچ ئیمەیلێک بۆ ئەم بابەتانەی خوارەوە نانێردرێت.',
 'emailconfirmlink'        => 'پۆستی ئه‌لیكترۆنی خۆت بنووسه‌',
 'accountcreated'          => 'هه‌ژماره‌كه‌ سه‌ركه‌وتووانه‌ دروست كرا',
 'loginlanguagelabel'      => 'زمان: $1',
 
 # Password reset dialog
-'resetpass_text'   => '<!-- تێپه‌ڕه‌وشه‌ی هه‌ژماره‌كه‌ سفر بكه‌ره‌وه‌ -->',
-'resetpass_header' => 'تێپه‌ڕه‌وشه‌ سفر بكه‌ره‌وه‌',
+'resetpass_text'            => '<!-- تێپه‌ڕه‌وشه‌ی هه‌ژماره‌كه‌ سفر بكه‌ره‌وه‌ -->',
+'resetpass_header'          => 'تێپەڕوشەی ھەژمار بەتاڵ بکە',
+'oldpassword'               => 'تێپەڕوشەی پێشو:',
+'newpassword'               => 'تێپەڕوشەی نوێ:',
+'retypenew'                 => 'تێپەڕوشەی نوێ دوبارە بنووسەوە:',
+'resetpass_submit'          => 'تێپەڕوشە رێکخە و بچۆ ژوورەوە',
+'resetpass_success'         => 'تێپەروشەکەت بە سەرکەوتوویی گۆڕدرا. ئێستا چوونە ژوورەوەت...',
+'resetpass_bad_temporary'   => 'تێپەڕوشەی کاتی ھەڵەیە.
+وا دیارە تێپەڕوشەکەت بە سەرکەوتوویی گۆڕدراوە یان داوای تێپەڕوشەیەکی نوێت کردووە.',
+'resetpass_forbidden'       => 'تێپەڕوشەکە ناگۆڕدرێت',
+'resetpass-no-info'         => 'بۆ گەیشتنی راستەوخۆ بەم پەڕە ئەشێ بچیتە ژوورەوە.',
+'resetpass-submit-loggedin' => 'گۆڕینی تێپەڕوشە',
+'resetpass-wrong-oldpass'   => 'تێپەڕوشەی ھەنووکەیی یان تێپەڕوشەی کاتی ھەڵەیە.
+وا دیارە تێپەڕوشەکەت بە سەرکەوتوویی گۆڕدراوە یان داوای تێپەڕوشەیەکی نوێت کردووە.',
+'resetpass-temp-password'   => 'تێپەڕوشەی کاتی:',
 
 # Edit page toolbar
-'bold_sample'    => 'ده‌قی ئه‌ستوور',
-'bold_tip'       => 'ده‌قی ئه‌ستوور',
-'italic_sample'  => 'دەقی لار',
-'italic_tip'     => 'دەقی لار',
-'link_sample'    => 'نێوی بەستەر',
-'link_tip'       => 'به‌سته‌رێكی ناوخۆیی',
-'extlink_sample' => 'http://www.example.com سەردێڕی بەستەر',
-'extlink_tip'    => 'به‌سته‌ری ده‌ره‌كی ( ده‌ست پێ ده‌كاتhttp:// سه‌ره‌تاكه‌ی به‌ )',
-'headline_tip'   => 'سەردێڕی ئاست ۲',
-'math_sample'    => 'لەگرە فۆرموول بخەسەر',
-'math_tip'       => ' فۆرموولی بیرکاریی (LaTeX)',
-'nowiki_sample'  => 'لەگەرە دەقی نەڕازراو تێ‌بخە',
-'nowiki_tip'     => 'لەبەرچاو نەگرتنی دارشتنەکانی ویکی',
-'image_tip'      => 'وێنەی نێو دەق',
-'media_tip'      => 'لینکی پەڕگە',
-'sig_tip'        => 'ئیمزاكه‌ت به‌ مۆری ڕێكه‌وته‌وه‌',
-'hr_tip'         => 'هێڵی ئاسۆیی (ده‌گمه‌ن به‌كاری بهێنه‌)',
+'bold_sample'     => 'ده‌قی ئه‌ستوور',
+'bold_tip'        => 'ده‌قی ئه‌ستوور',
+'italic_sample'   => 'دەقی لار',
+'italic_tip'      => 'دەقی لار',
+'link_sample'     => 'نێوی بەستەر',
+'link_tip'        => 'به‌سته‌رێكی ناوخۆیی',
+'extlink_sample'  => 'http://www.example.com سەردێڕی بەستەر',
+'extlink_tip'     => 'به‌سته‌ری ده‌ره‌كی ( ده‌ست پێ ده‌كاتhttp:// سه‌ره‌تاكه‌ی به‌ )',
+'headline_sample' => 'دەقی سەردێڕ',
+'headline_tip'    => 'سەردێڕی ئاست ۲',
+'math_sample'     => 'لەگرە فۆرموول بخەسەر',
+'math_tip'        => ' فۆرموولی بیرکاریی (LaTeX)',
+'nowiki_sample'   => 'لەگەرە دەقی نەڕازراو تێ‌بخە',
+'nowiki_tip'      => 'لەبەرچاو نەگرتنی دارشتنەکانی ویکی',
+'image_sample'    => 'نموونە.jpg',
+'image_tip'       => 'وێنەی نێو دەق',
+'media_sample'    => 'نموونە.ogg',
+'media_tip'       => 'لینکی پەڕگە',
+'sig_tip'         => 'ئیمزاکەت بە مۆری ڕێکەوتەوە',
+'hr_tip'          => 'هێڵی ئاسۆیی (ده‌گمه‌ن به‌كاری بهێنه‌)',
 
 # Edit pages
 'summary'                => 'پوختە:',
@@ -343,22 +378,36 @@ $messages = array(
 'showpreview'            => 'پێشبینینی پەڕە',
 'showlivepreview'        => 'پێشبینینی ڕاسته‌وخۆ',
 'showdiff'               => 'گۆڕانكارییه‌كان نیشانبده‌',
+'anoneditwarning'        => "'''وشیار بە:''' نەچوویتەتە ژوورەوە.
+ئەدرەسی ئەکەت لە مێژووی ئەم پەڕە دا تۆمار دەکرێ.",
+'missingsummary'         => "'''وە بیر خستنەوە:''' پوختەیەکت نەنووسیوە بۆ چۆنیەتی گۆڕانکارییەکەت.
+ئەگەر جارێکی تر پاشکەوت کردن لێبدەی، بێ پوختە تۆمار دەکرێ.",
+'missingcommenttext'     => 'تکایە لە خوارەوە شرۆڤەیەک بنووسە.',
 'newarticletext'         => "بە دوای بەستەری پەڕەیەک کەوتووی کە ھێشتا دروست نەکراوە. <br /> بۆ دروست کردنی پەڕەکە، لە چوارچێوەکەی خوارەوە دەست کە بە تایپ کردن. (بۆ زانیاری زورتر[[یارمەتی|{{MediaWiki:Helppage}}]] ببینە). <br />  ئەگەر بە ھەڵەوە ھاتویتە ئەگرە، لە سەر دوگمەی '''back'''ی وێبگەڕەکەت کلیک کە.",
 'copyrightwarning'       => "تکایە ئاگادار بن کە ھەموو بەشدارییەک بۆ  {{SITENAME}} وا فەرز ئەکرێت کە لە ژێر «$2» بڵاو دەبنەوە(بۆ ئاگاداری زۆرتر $1 سەیر کە). ئەگەر ناتەوێ  نوسراوەکەت بێ‌ڕەحمانە دەستکاری بکرێت و  بە دڵخواز دیسان بڵاو ببێتەوە، لەگرە پێشکەشی مەکە. <br />\\n ھەروەھا بەڵین ئەدەی کە خۆت ئەمەت نووسیوە، یان لە سەرچاوەیەکی بە دەسەڵاتی گشتی ''(public domain)'' یان سەرچاوەیەکی ھاوتا لەبەرت‌گرتوەتەو.
 <strong>«بەرھەمێک کە مافی لەبەرگرتنەوەی پارێزراوە، بێ ئیجازە  بڵاو مەکەرەوە.»</strong>",
 'template-semiprotected' => '(نیوەپارێزراو)',
 
 # History pages
-'revisionasof' => 'وەک بینینەوەی $1',
-'cur'          => 'ئێستا',
-'last'         => 'پێشوو',
-'histlegend'   => 'وەشانەکان بۆ ھەڵسەنگاندن دیاری بکە و ئەم دوگمەی خوارەوە لێبدە. <br />
+'revisionasof'           => 'وەک بینینەوەی $1',
+'cur'                    => 'ئێستا',
+'last'                   => 'پێشوو',
+'histlegend'             => 'وەشانەکان بۆ ھەڵسەنگاندن دیاری بکە و ئەم دوگمەی خوارەوە لێبدە. <br />
 ڕێنمایی:
 (ئێستا) = جیاوازی لەگەڵ وەشانی ئێستا،
 (پێشوو) =جیاوازی لەگەڵ وەشانی پێشوو،
 ب = گۆڕانکاریی بچووک',
-'histfirst'    => 'کۆنترین',
-'histlast'     => 'نوێترین',
+'history-fieldset-title' => 'گەشتی مێژوو',
+'deletedrev'             => '[سڕاو]',
+'histfirst'              => 'کۆنترین',
+'histlast'               => 'نوێترین',
+'historysize'            => '({{PLURAL:$1|1 بایت|$1 بایت}})',
+'historyempty'           => '(پووچ)',
+
+# Revision feed
+'history-feed-title'          => 'مێژووی پیاچوونەوە',
+'history-feed-description'    => 'مێژووی پیاچوونەوە بۆ ئەم پەڕە لە ویکییەکە',
+'history-feed-item-nocomment' => '$1 لە $2', # user at time
 
 # Diffs
 'difference'              => '(جیاوازی نێوان پیاچوونەوەکان)',
@@ -366,13 +415,16 @@ $messages = array(
 'compareselectedversions' => 'ھەڵسەنگاندنی وەشانە ھەڵبژاردراوەکان',
 
 # Search results
-'noexactmatch' => "'''ھیچ پەڕەیەک ھەر بەم سەردێڕەوە نیە.''' 
-ئێستە دەتوانی ئەم پەڕە دروست بکەیت",
-'powersearch'  => 'بە ھێز بگەڕە',
+'noexactmatch'             => '\'\'\'پەڕەیەک بە ناوی  "$1"ەوە نیە.\'\'\'
+دەتوانی ئەم پەڕە [[:"$1"|دروست بکەیت]].',
+'search-interwiki-caption' => 'پرۆژە خوشکەکان',
+'powersearch'              => 'بە ھێز بگەڕە',
 
 # Preferences page
 'mypreferences' => 'ھەڵبژاردەکانی من',
 'skin-preview'  => 'پێش بینین',
+
+'group-user-member' => 'بەکارھێنەر',
 
 # Recent changes
 'recentchanges'   => 'دوایین گۆڕانکارییەکان',
@@ -381,7 +433,7 @@ $messages = array(
 'hist'            => 'مێژوو',
 'hide'            => 'شاردنەوە',
 'show'            => 'نیشان بە',
-'minoreditletter' => 'ور',
+'minoreditletter' => 'ب',
 'newpageletter'   => 'ن',
 'boteditletter'   => 'ڕ',
 
@@ -389,7 +441,8 @@ $messages = array(
 'recentchangeslinked' => 'گۆڕانکارییە پەیوەندی‌دارەکان',
 
 # Upload
-'upload' => 'وێنەیەک بار بکە',
+'upload'    => 'وێنەیەک بار بکە',
+'uploadbtn' => 'پەڕگە بار بکە',
 
 # File description page
 'filehist'   => 'مێژووی پەڕگە',
@@ -398,26 +451,80 @@ $messages = array(
 # Random page
 'randompage' => 'پەڕەیەک بە ھەرەمەکی',
 
+# Statistics
+'statistics' => 'ئامارەکان',
+
 # Miscellaneous special pages
-'nbytes'   => '$1 {{PLURAL:$1|بایت|بایت}}',
-'newpages' => 'پەڕە نوێکان',
-'move'     => 'ناوی ئەم پەڕە بگۆڕە',
+'nbytes'        => '$1 {{PLURAL:$1|بایت|بایت}}',
+'newpages'      => 'پەڕە نوێکان',
+'move'          => 'ناوی ئەم پەڕە بگۆڕە',
+'pager-newer-n' => '{{PLURAL:$1|نوێتر 1|نوێتر $1}}',
+'pager-older-n' => '{{PLURAL:$1|کۆنتر 1|کۆنتر $1}}',
 
 # Special:AllPages
-'allarticles' => 'ھەمووی وتارەکان',
+'alphaindexline' => '$1 تا $2',
+'nextpage'       => 'پەڕەی پاشەوە ($1)',
+'prevpage'       => 'پەڕەی پێشەوە ($1)',
+'allpagesfrom'   => 'بینینی پەڕەکان بە دەست پێ کردن لە:',
+'allarticles'    => 'ھەمووی وتارەکان',
 
 # Special:Categories
 'categories' => 'هاوپۆله‌كان',
 
+# Special:Log/newusers
+'newuserlog-create-entry' => 'بەکارھێنەری نوێ',
+
 # E-mail user
-'emailuser' => 'بۆ ئەم بەکارھێنەرە E-Mail بنێرە',
+'emailuser'       => 'بۆ ئەم بەکارھێنەرە E-Mail بنێرە',
+'emailfrom'       => 'لە:',
+'emailto'         => 'بۆ:',
+'emailsubject'    => 'بابەت:',
+'emailmessage'    => 'نامە:',
+'emailsend'       => 'بینێرە',
+'emailccme'       => 'کۆپییەک لە نامەکە بنێرە بۆ ئیمەیلەکەم.',
+'emailccsubject'  => 'کۆپیی نامەکەت بۆ $1: $2',
+'emailsent'       => 'نامەکەت ناردرا',
+'emailsenttext'   => 'نامەکەت ناردرا',
+'emailuserfooter' => 'ئەم ئیمەیلە لە $1ەوە ناردرا بۆ $2 بە "Email user" لە {{SITENAME}}ەوە.',
 
 # Watchlist
-'mywatchlist' => 'لیستی چاودێڕی‌یەکانم',
-'watch'       => 'چاودێڕی بکە',
+'watchlist'            => 'لیستی چاودێڕییەکانی من',
+'mywatchlist'          => 'لیستی چاودێڕی‌یەکانم',
+'watchlistfor'         => "(بۆ '''$1''')",
+'nowatchlist'          => 'لە لیستی چاودێڕییەکانتدا ھیچ نیە.',
+'watchnologin'         => 'لە ژوورەوە نیت.',
+'addedwatch'           => 'بە لیستی چاودێڕییەکانت زێدە کرا',
+'removedwatch'         => 'لە لیستی چاودێڕییەکانت لابرا',
+'watch'                => 'چاودێڕی بکە',
+'watchthispage'        => 'چاودێڕیی ئەم پەڕە بکە',
+'unwatch'              => 'لابردنی چاودێڕی',
+'unwatchthispage'      => 'ئیتر چاودێڕی مەکە',
+'notanarticle'         => 'پەڕەی بێ ناوەڕۆک',
+'notvisiblerev'        => 'پیاچوونەوە سڕاوەتەوە',
+'watchnochange'        => 'لە کاتی دیاری کراو دا، بابەتە چاودێڕی کراوەکانت، دەستکاری نەکراون',
+'watchlist-details'    => '* {{PLURAL:$1|پەڕە tê|$1 پەڕە}} لە چاودێڕیەکانت، پەڕەی وتووێژەکان حسێب ناکەن',
+'wlheader-enotif'      => '* ئەکرێ بە E-mail ئاگاداری بدەی',
+'wlheader-showupdated' => "* ew perrane wa le pash dwain serdant destkari krawn be '''estuur''' nishan drawn",
+'watchlistcontains'    => 'لیستی چاودێڕییەکانت $1 {{PLURAL:$1|پەڕە|پەڕە}}ی تێدایە.',
+'iteminvalidname'      => "ھەڵە لەگەڵ بابەتی '$1'، ناوی نادروست...",
+'wlnote'               => "خوارەوە {{PLURAL:$1|دوایین گۆڕانکاریە|دوایین '''$1''' گۆڕانکارییەکانن}} لە دواین  {{PLURAL:$2|کاتژمێر|'''$2''' کاتژمێر}} دا.",
+'wlshowlast'           => 'نیشان دانی دوایین $1 کاتژمێری، $2 ڕۆژ لە $3',
+'watchlist-options'    => 'ھەڵبژاردەکانی لیستی چاودێڕییەکان',
 
 # Displayed when you click the "watch" button and it is in the process of watching
-'watching' => 'چاودێڕی...',
+'watching'   => 'چاودێڕی...',
+'unwatching' => 'لابردنی چاودێڕی...',
+
+# Delete
+'deletepage'      => 'پەڕە بسڕەوەو',
+'confirm'         => 'پشتدار بکەرەوە',
+'excontent'       => "ناوەڕۆک ئەمە بو: '$1'",
+'excontentauthor' => "ناوەڕۆک ئەمە بو: '$1'(و تەنھا بەشداریکەر  '[[Special:Contributions/$2|$2]]' بوو)",
+'exbeforeblank'   => "ناوەڕۆک بەر لە بەتاڵ کردنەوە ئەمە بوو: '$1'",
+'exblank'         => 'پەڕە خاڵی بوو',
+'delete-confirm'  => 'سڕینەوەی "$1"',
+'delete-legend'   => 'سڕینەوە',
+'historywarning'  => 'ئاگاداری: ئەم پەڕە کە ئەتەوێ بیسڕیتەوە مێژووی ھەیە',
 
 # Rollback
 'rollbacklink' => 'گەڕاندنەوە',
@@ -428,20 +535,60 @@ $messages = array(
 
 # Contributions
 'mycontris' => 'بەشدارییەکانی من',
+'month'     => 'لە مانگی (و پێشترەوە):',
+'year'      => 'لە ساڵی (و پێشترەوە):',
+
+'sp-contributions-newbies'     => 'تەنھا بەشدارییەکانی بەکارھێنەرە تازەکان نیشان بدە',
+'sp-contributions-newbies-sub' => 'لە بەکارھێنەرە تازەکانەوە',
 
 # What links here
 'whatlinkshere'       => 'بەسراوەکان بە ئێرەوە',
 'whatlinkshere-links' => '← بەستەرەکان',
 
 # Block/unblock
-'blocklink' => 'بەربەستن',
+'blocklink'    => 'بەربەستن',
+'contribslink' => 'بەشداری',
+
+# Move page
+'movedto'            => 'بوو بە',
+'movetalk'           => 'پەڕەی گوفتوگۆکەشی بگۆزەرەوە',
+'move-subpages'      => 'ھەموو ژێرپەڕەکانیشی بگۆزەرەوە ئەگەر بیبێت',
+'move-talk-subpages' => 'ھەموو ژێرپەڕەکانی پەڕەری گوتوگۆکەشی بگۆزەرەوە ئەگەر بیبێت',
+'movereason'         => 'بە ھۆی:',
 
 # Thumbnails
 'thumbnail-more' => 'گەورە کردنەوە',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'په‌ڕه‌ی تایبه‌تی خۆم',
+'tooltip-n-mainpage'              => 'دیتنی دەستپێک',
+'tooltip-n-portal'                => 'زانیاری لە سەر {{SITENAME}}، ئێوە چی ئەتوانن بکەن، ھەر شتێک لە کوێ پەیدا دەبێ',
+'tooltip-n-recentchanges'         => 'لیستی دوایین گۆڕانکارییەکان لەم ویکییەدا',
+'tooltip-n-randompage'            => 'پەڕەیەک بە ھەڵکەوت نیشان بدە',
+'tooltip-n-help'                  => 'شوێنێک بۆ پرسیارەکان.',
+'tooltip-t-whatlinkshere'         => 'لیستی ھەموو پەڕەیەک کە بەگرەوە گرێ دراون.',
+'tooltip-t-recentchangeslinked'   => 'دوایین گۆڕانکارییەکان لەو پەڕانە کە بەگرەوە گرێ دراون',
+'tooltip-feed-rss'                => 'RSS بۆ ئەم گۆڕانکارییەکانی ئەم پەڕە',
+'tooltip-feed-atom'               => 'Atom feed بۆ ئەم گۆڕانکارییەکانی ئەم پەڕە',
+'tooltip-t-contributions'         => 'بینینی بەشدارییەکانی ئەم بەکارھێنەرە',
+'tooltip-t-emailuser'             => 'ئیمەیلێک بنێرە بۆ ئەم بەکارھێنەرە',
+'tooltip-t-upload'                => 'پەڕگەیەک (فایل) بار بکە',
+'tooltip-t-specialpages'          => 'لیستی ھەموو پەڕە تایبەتەکان',
+'tooltip-t-print'                 => 'وەشانی ئامادە بۆ چاپی ئەم پەڕە',
+'tooltip-t-permalink'             => 'گرێدەری ھەمیشەیی بۆ ئەم وەشنەی ئەم پەڕەیە',
+'tooltip-ca-nstab-main'           => 'بینینی پەڕەی ناوەڕۆک',
 'tooltip-ca-nstab-user'           => 'پەڕەی بەکارھێنەر تەماشا بکە',
+'tooltip-ca-nstab-media'          => 'پەڕەی میدیا چاو لێ بکە',
+'tooltip-ca-nstab-special'        => 'ئەمە پەڕەیەکی تایبەتە، ناتوانی ئەم پەڕە خۆی دەستکاری بکەیت',
+'tooltip-ca-nstab-project'        => 'بینینی پەڕەی پرۆژە',
+'tooltip-ca-nstab-image'          => 'بینینی پەڕەی پەڕگە',
+'tooltip-ca-nstab-mediawiki'      => 'بینینی پەیامی سیستەم',
+'tooltip-ca-nstab-template'       => 'بینینی شابلۆنەکە',
+'tooltip-ca-nstab-help'           => 'بینینی پەڕەی رێنمایی',
+'tooltip-ca-nstab-category'       => 'بینینی پەڕەی ھاوپۆلەکان',
+'tooltip-minoredit'               => 'ئەمە وەک گۆڕانکارییەکی بچووک دیاری بکە',
+'tooltip-save'                    => 'گۆڕانکارییەکانی خۆت پاشکەوت بکە',
+'tooltip-preview'                 => 'پێش بینینی گۆڕانکارییەکان، تکایە پێش پاشکەوت کردن ئەمە بەکار بھێنە',
 'tooltip-compareselectedversions' => 'جیاوازییەکانی دوو وەشانە دیاریکراوەی ئەم پەڕە ببینە.',
 
 # Skin names

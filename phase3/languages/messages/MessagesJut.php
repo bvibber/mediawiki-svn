@@ -507,8 +507,8 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'uploadlogpage' => 'Åplægnengslog',
 'uploadedimage' => 'Låĝde "[[$1]]" åp',
 
-# Special:FileList
-'imagelist' => 'Billetliste',
+# Special:ListFiles
+'listfiles' => 'Billetliste',
 
 # File description page
 'filehist'                  => 'Billetskigt',
@@ -608,7 +608,8 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'categories' => 'Klynger',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Slettede brugerbidråg',
+'deletedcontributions'       => 'Slettede brugerbidråg',
+'deletedcontributions-title' => 'Slettede brugerbidråg',
 
 # Special:LinkSearch
 'linksearch'       => 'Søĝ i weblinks',

@@ -570,7 +570,7 @@ class Database {
 		$ret = $this->doQuery( $commentedSql );
 
 		# Try reconnecting if the connection was lost
-		if ( false === $ret && ( $this->lastErrno() == 2013 || $this->lastErrno() == 2006 ) ) {
+		if ( false === $ret && $this->wasErrorReissuable() ) {
 			# Transaction is gone, like it or not
 			$this->mTrxLevel = 0;
 			wfDebug( "Connection lost, reconnecting...\n" );
@@ -922,7 +922,7 @@ class Database {
 		$row = $this->fetchRow( $res );
 		if ( $row !== false ) {
 			$this->freeResult( $res );
-			return $row[0];
+			return reset( $row );
 		} else {
 			return false;
 		}
@@ -1191,6 +1191,7 @@ class Database {
 		# SHOW INDEX should work for 3.x and up:
 		# http://dev.mysql.com/doc/mysql/en/SHOW_INDEX.html
 		$table = $this->tableName( $table );
+		$index = $this->indexName( $index );
 		$sql = 'SHOW INDEX FROM '.$table;
 		$res = $this->query( $sql, $fname );
 		if ( !$res ) {
@@ -1396,7 +1397,7 @@ class Database {
 				} else {
 					$list .= $field." IN (".$this->makeList($value).") ";
 				}
-			} elseif( is_null($value) ) {
+			} elseif( $value === null ) {
 				if ( $mode == LIST_AND || $mode == LIST_OR ) {
 					$list .= "$field IS ";
 				} elseif ( $mode == LIST_SET ) {
@@ -1574,6 +1575,23 @@ class Database {
 	}
 
 	/**
+	 * Get the name of an index in a given table
+	 */
+	function indexName( $index ) {
+		// Backwards-compatibility hack
+		$renamed = array(
+			'ar_usertext_timestamp'	=> 'usertext_timestamp',
+			'un_user_id'		=> 'user_id',
+			'un_user_ip'		=> 'user_ip',
+		);
+		if( isset( $renamed[$index] ) ) {
+			return $renamed[$index];
+		} else {
+			return $index;
+		}
+	}
+
+	/**
 	 * Wrapper for addslashes()
 	 * @param $s String: to be slashed.
 	 * @return String: slashed string.
@@ -1587,7 +1605,7 @@ class Database {
 	 * Otherwise returns as-is
 	 */
 	function addQuotes( $s ) {
-		if ( is_null( $s ) ) {
+		if ( $s === null ) {
 			return 'NULL';
 		} else {
 			# This will also quote numeric values. This should be harmless,
@@ -1602,6 +1620,7 @@ class Database {
 	 * Escape string for safe LIKE usage
 	 */
 	function escapeLike( $s ) {
+		$s=str_replace('\\','\\\\',$s);
 		$s=$this->strencode( $s );
 		$s=str_replace(array('%','_'),array('\%','\_'),$s);
 		return $s;
@@ -1621,7 +1640,7 @@ class Database {
 	 * PostgreSQL doesn't have them and returns ""
 	 */
 	function useIndexClause( $index ) {
-		return "FORCE INDEX ($index)";
+		return "FORCE INDEX (" . $this->indexName( $index ) . ")";
 	}
 
 	/**
@@ -1814,6 +1833,14 @@ class Database {
 	 */
 	function wasDeadlock() {
 		return $this->lastErrno() == 1213;
+	}
+
+	/**
+	 * Determines if the last query error was something that should be dealt 
+	 * with by pinging the connection and reissuing the query
+	 */
+	function wasErrorReissuable() {
+		return $this->lastErrno() == 2013 || $this->lastErrno() == 2006;
 	}
 
 	/**
@@ -2250,8 +2277,12 @@ class Database {
 		}
 
 		// Table prefixes
-		$ins = preg_replace_callback( '/\/\*(?:\$wgDBprefix|_)\*\/([a-zA-Z_0-9]*)/',
-			array( &$this, 'tableNameCallback' ), $ins );
+		$ins = preg_replace_callback( '!/\*(?:\$wgDBprefix|_)\*/([a-zA-Z_0-9]*)!',
+			array( $this, 'tableNameCallback' ), $ins );
+
+		// Index names
+		$ins = preg_replace_callback( '!/\*i\*/([a-zA-Z_0-9]*)!', 
+			array( $this, 'indexNameCallback' ), $ins );
 		return $ins;
 	}
 
@@ -2261,6 +2292,13 @@ class Database {
 	 */
 	protected function tableNameCallback( $matches ) {
 		return $this->tableName( $matches[1] );
+	}
+
+	/**
+	 * Index name callback
+	 */
+	protected function indexNameCallback( $matches ) {
+		return $this->indexName( $matches[1] );
 	}
 
 	/*

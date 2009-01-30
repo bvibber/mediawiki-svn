@@ -42,7 +42,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'ຕິດຕາມ' ),
 	'Recentchanges'             => array( 'ການດັດແກ້ຫຼ້າສຸດ' ),
 	'Upload'                    => array( 'ອັປໂຫຼດໄຟລ໌' ),
-	'Imagelist'                 => array( 'ລາຍຊື່ຮູບ' ),
+	'Listfiles'                 => array( 'ລາຍຊື່ຮູບ' ),
 	'Newimages'                 => array( 'ຮູບໃໝ່' ),
 	'Listusers'                 => array( 'ລາຍຊື່ຜູ້ໃຊ້' ),
 	'Statistics'                => array( 'ສະຖິຕິ' ),
@@ -539,8 +539,8 @@ $messages = array(
 'savefile'          => 'ບັນທຶກໄຟລ໌',
 'watchthisupload'   => 'ຕິດຕາມໜ້ານີ້',
 
-# Special:FileList
-'imagelist' => 'ລາຍຊື່ໄຟລ໌',
+# Special:ListFiles
+'listfiles' => 'ລາຍຊື່ໄຟລ໌',
 
 # File description page
 'filehist'            => 'ປະຫວັດໄຟລ໌',
@@ -900,11 +900,9 @@ $messages = array(
 
 # E-mail address confirmation
 'confirmemail'            => 'ຢືນຢັນ ທີ່ຢູ່ ອີເມລ',
-'confirmemail_pending'    => '<div class="error">
-ລະຫັດຢືນຢັນ ໄດ້ຖືກສົ່ງໄປ ທີ່ຢູ່ ອີເມລ ຂອງ ທ່ານ; ຖ້າ ທ່ານ ຫາກໍ່ສ້າງບັນຊີ
+'confirmemail_pending'    => 'ລະຫັດຢືນຢັນ ໄດ້ຖືກສົ່ງໄປ ທີ່ຢູ່ ອີເມລ ຂອງ ທ່ານ; ຖ້າ ທ່ານ ຫາກໍ່ສ້າງບັນຊີ
 , ທ່ານ ຄວນຈະລໍຖ້າໜ້ອຍໜຶ່ງ ກ່ອນຈະ ພະຍາຍາມ
-ຂໍລະຫັດຢືນຢັນໃໝ່.
-</div>',
+ຂໍລະຫັດຢືນຢັນໃໝ່.',
 'confirmemail_send'       => 'ສົ່ງ ລະຫັດ ຢືນຢັນ',
 'confirmemail_sent'       => 'ອີເມລຢືນຢັນ ໄດ້ຖືກສົ່ງໄປແລ້ວ.',
 'confirmemail_oncreate'   => 'ລະຫັດ ຢືນຢັນ ໄດ້ຖືກສົງໄປ ຫາ ທີ່ຢູ່ ອີເມລ ຂອງ ທ່ານແລ້ວ.

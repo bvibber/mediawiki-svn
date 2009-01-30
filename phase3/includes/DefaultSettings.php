@@ -33,7 +33,7 @@ if ( !defined( 'MW_PHP4' ) ) {
 }
 
 /** MediaWiki version number */
-$wgVersion			= '1.14alpha';
+$wgVersion			= '1.15alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -224,6 +224,10 @@ $wgFileStore['deleted']['hash'] = 3;         ///< 3-level subdirectory split
  *                      equivalent to the corresponding member of $wgDBservers
  *    tablePrefix       Table prefix, the foreign wiki's $wgDBprefix
  *    hasSharedCache    True if the wiki's shared cache is accessible via the local $wgMemc
+ * 
+ * ForeignAPIRepo:
+ *    apibase              Use for the foreign API's URL
+ *    apiThumbCacheExpiry  How long to locally cache thumbs for
  *
  * The default is to initialise these arrays from the MW<1.11 backwards compatible settings:
  * $wgUploadPath, $wgThumbnailScriptPath, $wgSharedUploadDirectory, etc.
@@ -519,6 +523,11 @@ $wgUserEmailUseReplyTo = false;
  * emails for a given account. This is to prevent abuse by mail flooding.
  */
 $wgPasswordReminderResendTime = 24;
+
+/**
+ * The time, in seconds, when an emailed temporary password expires.
+ */
+$wgNewPasswordExpiry  = 3600 * 24 * 7;
 
 /**
  * SMTP Mode
@@ -1446,7 +1455,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '194';
+$wgStyleVersion = '203';
 
 
 # Server-side caching:
@@ -2374,6 +2383,8 @@ $wgDefaultUserOptions = array(
 	'rclimit'                 => 50,
 	'wllimit'                 => 250,
 	'hideminor'               => 0,
+	'hidepatrolled'           => 0,
+	'newpageshidepatrolled'   => 0,
 	'highlightbroken'         => 1,
 	'stubthreshold'           => 0,
 	'previewontop'            => 1,
@@ -2389,6 +2400,10 @@ $wgDefaultUserOptions = array(
 	'imagesize'               => 2,
 	'thumbsize'               => 2,
 	'rememberpassword'        => 0,
+	'nocache'                 => 0,
+	'diffonly'                => 0,
+	'showhiddencats'          => 0,
+	'norollbackdiff'          => 0,
 	'enotifwatchlistpages'    => 0,
 	'enotifusertalkpages'     => 1,
 	'enotifminoredits'        => 0,
@@ -2397,7 +2412,9 @@ $wgDefaultUserOptions = array(
 	'fancysig'                => 0,
 	'externaleditor'          => 0,
 	'externaldiff'            => 0,
+	'forceeditsummary'        => 0,
 	'showjumplinks'           => 1,
+	'justify'                 => 0,
 	'numberheadings'          => 0,
 	'uselivepreview'          => 0,
 	'watchlistdays'           => 3.0,
@@ -2405,11 +2422,15 @@ $wgDefaultUserOptions = array(
 	'watchlisthideminor'      => 0,
 	'watchlisthidebots'       => 0,
 	'watchlisthideown'        => 0,
+	'watchlisthideanons'      => 0,
+	'watchlisthideliu'        => 0,
+	'watchlisthidepatrolled'  => 0,
 	'watchcreations'          => 0,
 	'watchdefault'            => 0,
 	'watchmoves'              => 0,
 	'watchdeletion'           => 0,
 	'noconvertlink'           => 0,
+	'gender'                  => 'unknown',
 );
 
 /** Whether or not to allow and use real name fields. Defaults to true. */
@@ -3065,6 +3086,19 @@ $wgNoFollowLinks = true;
 $wgNoFollowNsExceptions = array();
 
 /**
+ * If this is set to an array of domains, external links to these domain names
+ * (or any subdomains) will not be set to rel="nofollow" regardless of the
+ * value of $wgNoFollowLinks.  For instance:
+ *
+ * $wgNoFollowDomainExceptions = array( 'en.wikipedia.org', 'wiktionary.org' );
+ *
+ * This would add rel="nofollow" to links to de.wikipedia.org, but not
+ * en.wikipedia.org, wiktionary.org, en.wiktionary.org, us.en.wikipedia.org,
+ * etc.
+ */
+$wgNoFollowDomainExceptions = array();
+
+/**
  * Default robot policy.  The default policy is to encourage indexing and fol-
  * lowing of links.  It may be overridden on a per-namespace and/or per-page
  * basis.
@@ -3592,6 +3626,25 @@ $wgMaximumMovedPages = 100;
 $wgFixDoubleRedirects = false;
 
 /**
+ * Max number of redirects to follow when resolving redirects.
+ * 1 means only the first redirect is followed (default behavior).
+ * 0 or less means no redirects are followed.
+ */
+$wgMaxRedirects = 1;
+
+/**
+ * Array of invalid page redirect targets.
+ * Attempting to create a redirect to any of the pages in this array
+ * will make the redirect fail.
+ * Userlogout is hard-coded, so it does not need to be listed here.
+ * (bug 10569) Disallow Mypage and Mytalk as well.
+ *
+ * As of now, this only checks special pages. Redirects to pages in
+ * other namespaces cannot be invalidated by this variable.
+ */
+$wgInvalidRedirectTargets = array( 'Filepath', 'Mypage', 'Mytalk' );
+ 
+/**
  * Array of namespaces to generate a sitemap for when the
  * maintenance/generateSitemap.php script is run, or false if one is to be ge-
  * nerated for all namespaces.
@@ -3618,10 +3671,10 @@ $wgPasswordAttemptThrottle = array( 'count' => 5, 'seconds' => 300 );
 $wgEdititis = false;
 
 /**
-* Enable the UniversalEditButton for browsers that support it
-* (currently only Firefox with an extension)
-* See http://universaleditbutton.org for more background information
-*/
+ * Enable the UniversalEditButton for browsers that support it
+ * (currently only Firefox with an extension)
+ * See http://universaleditbutton.org for more background information
+ */
 $wgUniversalEditButton = true;
 
 /**
@@ -3630,3 +3683,10 @@ $wgUniversalEditButton = true;
  * and the functionality will be enabled universally.
  */
 $wgEnforceHtmlIds = true;
+
+/**
+ * Search form behavior
+ * true = use Go & Search buttons
+ * false = use Go button & Advanced search link
+ */
+$wgUseTwoButtonsSearchForm = true;

@@ -155,7 +155,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Vaktlistinn' ),
 	'Recentchanges'             => array( 'Nýlegar breytingar' ),
 	'Upload'                    => array( 'Hlaða inn' ),
-	'Imagelist'                 => array( 'Myndalisti' ),
+	'Listfiles'                 => array( 'Myndalisti' ),
 	'Newimages'                 => array( 'Nýjar myndir' ),
 	'Listusers'                 => array( 'Notendalisti' ),
 	'Listgrouprights'           => array( 'Réttindalisti' ),
@@ -798,7 +798,7 @@ Ef þú hefur óvart villst hingað geturðu notað '''til baka'''-hnappinn í v
 Þar af leiðandi þurfum við að nota vistfang til að bera kennsli á hann/hana.
 Nokkrir notendur geta deilt sama vistfangi.
 Ef þú ert óþekktur notandi og finnst að óviðkomandi athugasemdum hafa verið beint að þér, gjörðu svo vel og [[Special:UserLogin/signup|búðu til aðgang]] eða [[Special:UserLogin|skráðu þig inn]] til þess að koma í veg fyrir þennan rugling við aðra óþekkta notendur í framtíðinni.''",
-'noarticletext'                    => 'Það er enginn texti á þessari síðu en sem komið er, þú getur [[Special:Search/{{PAGENAME}}|leitað í öðrum síðum]] eða [{{fullurl:{{FULLPAGENAMEE}}|action=edit}} breytt henni sjálfur].',
+'noarticletext'                    => 'Enginn texti er á þessari síðu enn sem komið er. Þú getur [[Special:Search/{{PAGENAME}}|leitað í öðrum síðum]] eða [{{fullurl:{{FULLPAGENAMEE}}|action=edit}} breytt henni sjálfur].',
 'userpage-userdoesnotexist'        => 'Notandaaðgangurinn „$1“ er ekki skráður.
 Gjörðu svo vel og athugaðu hvort að þú viljir skapa/breyta þessari síðu.',
 'clearyourcache'                   => "'''Athugaðu - Eftir vistun, má vera að þú þurfir að komast hjá skyndiminni vafrans þíns til að sjá breytingarnar.'''
@@ -877,7 +877,7 @@ Hún er nú þegar til.',
 'undo-success' => 'Breytingin hefur verið tekin tilbaka. Vinsamlegast staðfestu og vistaðu svo.',
 'undo-failure' => 'Breytinguna var ekki hægt að taka tilbaka vegna breytinga í millitíðinni.',
 'undo-norev'   => 'Ekki var hægt að taka breytinguna aftr því að hún er ekki til eða henni var eytt.',
-'undo-summary' => 'Taka aftur breytingu $1 frá [[Special:Contributions/$2|$2]] ([[User talk:$2|Spjall]])',
+'undo-summary' => 'Tek aftur breytingu $1 frá [[Special:Contributions/$2|$2]] ([[User talk:$2|spjall]])',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Ekki hægt að búa til aðgang',
@@ -1339,15 +1339,15 @@ Gjörðu svo vel og endurnefndu skrána og hladdu henni inn aftur.',
 'license-nopreview'  => '(Forskoðun ekki fáanleg)',
 'upload_source_file' => '(skrá á tölvunni þinni)',
 
-# Special:FileList
-'imagelist_search_for'  => 'Leita að miðilsnafni:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Leita að miðilsnafni:',
 'imgfile'               => 'skrá',
-'imagelist'             => 'Skráalisti',
-'imagelist_date'        => 'Dagsetning',
-'imagelist_name'        => 'Nafn',
-'imagelist_user'        => 'Notandi',
-'imagelist_size'        => 'Stærð (bæti)',
-'imagelist_description' => 'Lýsing',
+'listfiles'             => 'Skráalisti',
+'listfiles_date'        => 'Dagsetning',
+'listfiles_name'        => 'Nafn',
+'listfiles_user'        => 'Notandi',
+'listfiles_size'        => 'Stærð (bæti)',
+'listfiles_description' => 'Lýsing',
 
 # File description page
 'filehist'                       => 'Breytingaskrá skjals',
@@ -1549,7 +1549,8 @@ Sjá einnig [[Special:WantedCategories|eftirsótta flokka]].',
 'special-categories-sort-abc'   => 'raða eftir stafrófinu',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Eyddar breytingar notenda',
+'deletedcontributions'       => 'Eyddar breytingar notenda',
+'deletedcontributions-title' => 'Eyddar breytingar notenda',
 
 # Special:LinkSearch
 'linksearch'    => 'Leita að vefföngum',
@@ -2253,11 +2254,9 @@ Ef skránni hefur verið breytt, kann að vera að einhverjar upplýsingar eigi 
 'confirmemail'             => 'Staðfesta netfang',
 'confirmemail_noemail'     => 'Þú hefur ekki gefið upp gilt netfang í [[Special:Preferences|notandastillingum]] þínum.',
 'confirmemail_text'        => '{{SITENAME}} krefst þess að þú staðfestir netfangið þitt áður en að þú getur notað eiginleika tengt því. Smelltu á hnappinn að neðan til að fá staðfestingarpóst sendan á netfangið. Pósturinn mun innihalda tengil með kóða í sér; opnaðu tengilinn í vafranum til að staðfesta að netfangið sé rétt.',
-'confirmemail_pending'     => '<div class="error">
-Þú hefur nú þegar fengið staðfestingarpóst sendann; ef það er stutt síðan
+'confirmemail_pending'     => 'Þú hefur nú þegar fengið staðfestingarpóst sendann; ef það er stutt síðan
 þú bjóst til aðganginn þinn, væri ráð að býða í nokkrar mínútur eftir póstinum
-áður en að þú byður um að fá nýjan kóða sendann.
-</div>',
+áður en að þú byður um að fá nýjan kóða sendann.',
 'confirmemail_send'        => 'Senda staðfestingarkóða með tölvupósti',
 'confirmemail_sent'        => 'Staðfestingartölvupóstur sendur.',
 'confirmemail_oncreate'    => 'Staðfestingarkóði hefur verði sendur á netfangið.

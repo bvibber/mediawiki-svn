@@ -50,7 +50,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'पहार्‍याची सूची' ),
 	'Recentchanges'             => array( 'अलीकडील बदल' ),
 	'Upload'                    => array( 'चढवा' ),
-	'Imagelist'                 => array( 'चित्रयादी' ),
+	'Listfiles'                 => array( 'चित्रयादी' ),
 	'Newimages'                 => array( 'नवीन चित्रे' ),
 	'Listusers'                 => array( 'सदस्यांची यादी' ),
 	'Listgrouprights'           => array( 'गट अधिकार यादी' ),
@@ -1245,18 +1245,18 @@ $3ने ''$2'' कारण दिले आहे.",
 'upload_source_url'  => '(एक सुयोग्य,सार्वजनिकरित्या उपलब्ध URL)',
 'upload_source_file' => '(तुमच्या संगणकावरील एक संचिका)',
 
-# Special:FileList
-'imagelist-summary'     => 'हे विशेष पान सर्व चढविलेल्या संचिका दर्शिविते.
+# Special:ListFiles
+'listfiles-summary'     => 'हे विशेष पान सर्व चढविलेल्या संचिका दर्शिविते.
 सर्वसाधारणपणे सगळ्यात शेवटी बदल झालेल्या संचिका सर्वात वर दिसतात.
 रकान्याच्या नावापुढे टिचकी देऊन संचिकांचा अनुक्रम बदलता येतो.',
-'imagelist_search_for'  => 'चित्र नावाने शोध:',
+'listfiles_search_for'  => 'चित्र नावाने शोध:',
 'imgfile'               => 'संचिका',
-'imagelist'             => 'चित्र यादी',
-'imagelist_date'        => 'दिनांक',
-'imagelist_name'        => 'नाव',
-'imagelist_user'        => 'सदस्य',
-'imagelist_size'        => 'आकार (बाईट्स)',
-'imagelist_description' => 'वर्णन',
+'listfiles'             => 'चित्र यादी',
+'listfiles_date'        => 'दिनांक',
+'listfiles_name'        => 'नाव',
+'listfiles_user'        => 'सदस्य',
+'listfiles_size'        => 'आकार (बाईट्स)',
+'listfiles_description' => 'वर्णन',
 
 # File description page
 'filehist'                       => 'संचिकेचा इतिहास',
@@ -1459,7 +1459,8 @@ Input:contenttype/subtype, e.g. <tt>image/jpeg</tt>.',
 'special-categories-sort-abc'   => 'अक्षरांप्रमाणे लावा',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'वगळलेली सदस्य संपादने',
+'deletedcontributions'       => 'वगळलेली सदस्य संपादने',
+'deletedcontributions-title' => 'वगळलेली सदस्य संपादने',
 
 # Special:LinkSearch
 'linksearch'       => 'आंतरजाल दुवे शोधा',
@@ -2443,7 +2444,7 @@ $1',
 'confirmemail'             => 'इमेल पत्ता पडताळून पहा',
 'confirmemail_noemail'     => '[[Special:Preferences|सदस्य पसंतीत]] तुम्ही शाबीत विपत्र पत्ता दिलेला नाही.',
 'confirmemail_text'        => 'विपत्र सुविधा वापरण्या पूर्वी {{SITENAME}}वर तुमचा विपत्र पत्ता  शाबीत करणे गरजेचे आहे.तुमच्या पत्त्यावर निश्चितीकरण विपत्र पाठवण्याकरिता खालील बटण सुरू करा.विपत्रात कुटसंकेत असलेला दुवा असेल;तुमचा विपत्र पत्ता शाबीत करण्या करिता तुमच्या विचरकात हा दिलेला दुवा चढवा.',
-'confirmemail_pending'     => '<div class="error">एक निश्चितीकरण कुटसंकेत आधीच तुम्हाला विपत्र केला आहे; जर तुम्ही खाते अशातच उघडले असेल तर,एक नवा कुट संकेत मागण्यापूर्वी,पाठवलेला मिळण्याकरिता थोडी मिनिटे वाट पहाणे तुम्हाला आवडू शकेल.</div>',
+'confirmemail_pending'     => 'एक निश्चितीकरण कुटसंकेत आधीच तुम्हाला विपत्र केला आहे; जर तुम्ही खाते अशातच उघडले असेल तर,एक नवा कुट संकेत मागण्यापूर्वी,पाठवलेला मिळण्याकरिता थोडी मिनिटे वाट पहाणे तुम्हाला आवडू शकेल.',
 'confirmemail_send'        => 'विपत्र निश्चितीकरण नियमावली',
 'confirmemail_sent'        => 'शाबितीकरण विपत्र पाठवले.',
 'confirmemail_oncreate'    => 'तुमच्या विपत्र पत्त्यावर निश्चितीकरण कुटसंकेत पाठवला होता .

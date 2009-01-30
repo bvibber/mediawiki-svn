@@ -449,7 +449,7 @@ class SkinTemplate extends Skin {
 
 		// original version by hansm
 		if( !wfRunHooks( 'SkinTemplateOutputPageBeforeExec', array( &$this, &$tpl ) ) ) {
-			wfDebug( __METHOD__ . ': Hook SkinTemplateOutputPageBeforeExec broke outputPage execution!' );
+			wfDebug( __METHOD__ . ": Hook SkinTemplateOutputPageBeforeExec broke outputPage execution!\n" );
 		}
 
 		// allow extensions adding stuff after the page content.
@@ -596,7 +596,7 @@ class SkinTemplate extends Skin {
 		}
 		if( $checkEdit && !$title->isKnown() ) {
 			$classes[] = 'new';
-			$query = 'action=edit';
+			$query = 'action=edit&redlink=1';
 		}
 
 		$text = wfMsg( $message );
@@ -710,7 +710,8 @@ class SkinTemplate extends Skin {
 				$content_actions['history'] = array(
 					'class' => ($action == 'history') ? 'selected' : false,
 					'text' => wfMsg('history_short'),
-					'href' => $this->mTitle->getLocalUrl( 'action=history')
+					'href' => $this->mTitle->getLocalUrl( 'action=history' ),
+					'rel' => 'archives',
 				);
 
 				if( $wgUser->isAllowed('delete') ) {
@@ -879,10 +880,9 @@ class SkinTemplate extends Skin {
 
 			// Also add a "permalink" while we're at it
 			if ( $this->mRevisionId ) {
-				global $wgScript;
 				$nav_urls['permalink'] = array(
 					'text' => wfMsg( 'permalink' ),
-					'href' => "{$wgScript}?oldid={$this->mRevisionId}"
+					'href' => $wgTitle->getLocalURL( "oldid=$this->mRevisionId" )
 				);
 			}
 

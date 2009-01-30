@@ -6,7 +6,7 @@
  *
  * Changes in this file will be lost during software upgrades.
  * You can make your customizations on the wiki.
- * While logged in as a sysop user, go to [[Special:Allmessages]]
+ * While logged in as administrator, go to [[Special:Allmessages]]
  * and edit the MediaWiki:* pages listed there.
  */
 
@@ -286,6 +286,7 @@ $magicWords = array(
 	'servername'             => array( 0,    'SERVERNAME'             ),
 	'scriptpath'             => array( 0,    'SCRIPTPATH'             ),
 	'grammar'                => array( 0,    'GRAMMAR:'               ),
+	'gender'                 => array( 0,    'GENDER:'                ),
 	'notitleconvert'         => array( 0,    '__NOTITLECONVERT__', '__NOTC__'),
 	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__', '__NOCC__'),
 	'currentweek'            => array( 1,    'CURRENTWEEK'            ),
@@ -333,6 +334,7 @@ $magicWords = array(
 	'noindex'                => array( 1,    '__NOINDEX__'            ),
 	'numberingroup'          => array( 1,    'NUMBERINGROUP', 'NUMINGROUP' ),
 	'staticredirect'         => array( 1,    '__STATICREDIRECT__'     ),
+	'protectionlevel'        => array( 1,    'PROTECTIONLEVEL'        ),
 );
 
 /**
@@ -430,6 +432,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'BlankPage' ),
 	'LinkSearch'                => array( 'LinkSearch' ),
 	'DeletedContributions'      => array( 'DeletedContributions' ),
+	'Tags'                      => array( 'Tags' ),
 );
 
 /**
@@ -489,6 +492,8 @@ XHTML id names.
 'tog-highlightbroken'         => 'Format broken links <a href="" class="new">like this</a> (alternative: like this<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Justify paragraphs',
 'tog-hideminor'               => 'Hide minor edits in recent changes',
+'tog-hidepatrolled'           => 'Hide patrolled edits in recent changes',
+'tog-newpageshidepatrolled'   => 'Hide patrolled pages from new page list',
 'tog-extendwatchlist'         => 'Expand watchlist to show all applicable changes',
 'tog-usenewrc'                => 'Enhanced recent changes (JavaScript)',
 'tog-numberheadings'          => 'Auto-number headings',
@@ -523,6 +528,7 @@ XHTML id names.
 'tog-watchlisthideminor'      => 'Hide minor edits from the watchlist',
 'tog-watchlisthideliu'        => 'Hide edits by logged in users from the watchlist',
 'tog-watchlisthideanons'      => 'Hide edits by anonymous users from the watchlist',
+'tog-watchlisthidepatrolled'  => 'Hide patrolled edits from the watchlist',
 'tog-nolangconversion'        => 'Disable variants conversion', # only translate this message to other languages if you have to change it
 'tog-ccmeonemails'            => 'Send me copies of e-mails I send to other users',
 'tog-diffonly'                => 'Do not show page content below diffs',
@@ -903,6 +909,10 @@ Please choose a different name.',
 Check HTML tags.',
 'badsiglength'               => 'The signature is too long.
 It must be under $1 {{PLURAL:$1|character|characters}}.',
+'yourgender'                 => 'Gender:',
+'gender-unknown'             => 'Unspecified',
+'gender-male'                => 'Male',
+'gender-female'              => 'Female',
 'email'                      => 'E-mail',
 'prefs-help-realname'        => 'Real name is optional.
 If you choose to provide it, this will be used for giving you attribution for your work.',
@@ -937,6 +947,7 @@ It must have at least {{PLURAL:$1|1 character|$1 characters}} and be different f
 password for {{SITENAME}} ($4). A temporary password for user
 "$2" has been created and was set to "$3". If this was your
 intent, you will need to log in and choose a new password now.
+Your temporary password will expire in {{PLURAL:$5|one day|$5 days}}.
 
 If someone else made this request, or if you have remembered your password,
 and you no longer wish to change it, you may ignore this message and
@@ -1162,9 +1173,9 @@ It cannot be saved.</strong>',
 You may wish to cut-n-paste the text into a text file and save it for later.</strong>
 
 The administrator who locked it offered this explanation: $1',
-'protectedpagewarning'             => '<strong>WARNING: This page has been locked so that only users with sysop privileges can edit it.</strong>',
+'protectedpagewarning'             => '<strong>WARNING: This page has been locked so that only users with administrator privileges can edit it.</strong>',
 'semiprotectedpagewarning'         => "'''Note:''' This page has been locked so that only registered users can edit it.",
-'cascadeprotectedwarning'          => "'''Warning:''' This page has been locked so that only users with sysop privileges can edit it, because it is included in the following cascade-protected {{PLURAL:$1|page|pages}}:",
+'cascadeprotectedwarning'          => "'''Warning:''' This page has been locked so that only users with administrator privileges can edit it, because it is included in the following cascade-protected {{PLURAL:$1|page|pages}}:",
 'titleprotectedwarning'            => '<strong>WARNING:  This page has been locked so that only some users can create it.</strong>',
 'templatesused'                    => 'Templates used on this page:',
 'templatesusedpreview'             => 'Templates used in this preview:',
@@ -1261,57 +1272,63 @@ It may have been deleted from the wiki, or renamed.
 Try [[Special:Search|searching on the wiki]] for relevant new pages.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(comment removed)',
-'rev-deleted-user'            => '(username removed)',
-'rev-deleted-event'           => '(log action removed)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+'rev-deleted-comment'            => '(comment removed)',
+'rev-deleted-user'               => '(username removed)',
+'rev-deleted-event'              => '(log action removed)',
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks">
 This page revision has been removed from the public archives.
 There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].</div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
+'rev-deleted-text-view'          => '<div class="mw-warning plainlinks">
 This page revision has been removed from the public archives.
 As an administrator on {{SITENAME}} you can view it;
 there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].</div>',
-'rev-delundel'                => 'show/hide',
-'revisiondelete'              => 'Delete/undelete revisions',
-'revdelete-nooldid-title'     => 'Invalid target revision',
-'revdelete-nooldid-text'      => 'You have either not specified a target revision(s) to perform this
+'rev-delundel'                   => 'show/hide',
+'revisiondelete'                 => 'Delete/undelete revisions',
+'revdelete-nooldid-title'        => 'Invalid target revision',
+'revdelete-nooldid-text'         => 'You have either not specified a target revision(s) to perform this
 function, the specified revision does not exist, or you are attempting to hide the current revision.',
-'revdelete-selected'          => "'''{{PLURAL:$2|Selected revision|Selected revisions}} of [[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|Selected log event|Selected log events}}:'''",
-'revdelete-text'              => "'''Deleted revisions and events will still appear in the page history and logs, but parts of their content will be inaccessible to the public.'''
+'revdelete-nologtype-title'      => 'No log type given',
+'revdelete-nologtype-text'       => 'You have not specified a log type to perform this action on.',
+'revdelete-toomanytargets-title' => 'Too many targets',
+'revdelete-toomanytargets-text'  => 'You have specified too many types of targets to perform this action on.',
+'revdelete-nologid-title'        => 'Invalid log entry',
+'revdelete-nologid-text'         => 'You have either not specified a target log event to perform this function or the specified entry does not exist.',
+'revdelete-selected'             => "'''{{PLURAL:$2|Selected revision|Selected revisions}} of [[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|Selected log event|Selected log events}}:'''",
+'revdelete-text'                 => "'''Deleted revisions and events will still appear in the page history and logs, but parts of their content will be inaccessible to the public.'''
 
 Other admins on {{SITENAME}} will still be able to access the hidden content and can undelete it again through this same interface, unless additional restrictions are set.",
-'revdelete-legend'            => 'Set visibility restrictions',
-'revdelete-hide-text'         => 'Hide revision text',
-'revdelete-hide-name'         => 'Hide action and target',
-'revdelete-hide-comment'      => 'Hide edit comment',
-'revdelete-hide-user'         => "Hide editor's username/IP",
-'revdelete-hide-restricted'   => 'Apply these restrictions to Sysops and lock this interface',
-'revdelete-suppress'          => 'Suppress data from Sysops as well as others',
-'revdelete-hide-image'        => 'Hide file content',
-'revdelete-unsuppress'        => 'Remove restrictions on restored revisions',
-'revdelete-log'               => 'Log comment:',
-'revdelete-submit'            => 'Apply to selected revision',
-'revdelete-logentry'          => 'changed revision visibility of [[$1]]',
-'logdelete-logentry'          => 'changed event visibility of [[$1]]',
-'revdelete-success'           => "'''Revision visibility successfully set.'''",
-'logdelete-success'           => "'''Log visibility successfully set.'''",
-'revdel-restore'              => 'Change visibility',
-'pagehist'                    => 'Page history',
-'deletedhist'                 => 'Deleted history',
-'revdelete-content'           => 'content',
-'revdelete-summary'           => 'edit summary',
-'revdelete-uname'             => 'username',
-'revdelete-restricted'        => 'applied restrictions to sysops',
-'revdelete-unrestricted'      => 'removed restrictions for sysops',
-'revdelete-hid'               => 'hid $1',
-'revdelete-unhid'             => 'unhid $1',
-'revdelete-log-message'       => '$1 for $2 {{PLURAL:$2|revision|revisions}}',
-'logdelete-log-message'       => '$1 for $2 {{PLURAL:$2|event|events}}',
+'revdelete-legend'               => 'Set visibility restrictions',
+'revdelete-hide-text'            => 'Hide revision text',
+'revdelete-hide-name'            => 'Hide action and target',
+'revdelete-hide-comment'         => 'Hide edit comment',
+'revdelete-hide-user'            => "Hide editor's username/IP",
+'revdelete-hide-restricted'      => 'Apply these restrictions to administrators and lock this interface',
+'revdelete-suppress'             => 'Suppress data from administrators as well as others',
+'revdelete-hide-image'           => 'Hide file content',
+'revdelete-unsuppress'           => 'Remove restrictions on restored revisions',
+'revdelete-log'                  => 'Log comment:',
+'revdelete-submit'               => 'Apply to selected revision',
+'revdelete-logentry'             => 'changed revision visibility of [[$1]]',
+'logdelete-logentry'             => 'changed event visibility of [[$1]]',
+'revdelete-success'              => "'''Revision visibility successfully set.'''",
+'logdelete-success'              => "'''Log visibility successfully set.'''",
+'revdel-restore'                 => 'Change visibility',
+'pagehist'                       => 'Page history',
+'deletedhist'                    => 'Deleted history',
+'revdelete-content'              => 'content',
+'revdelete-summary'              => 'edit summary',
+'revdelete-uname'                => 'username',
+'revdelete-restricted'           => 'applied restrictions to administrators',
+'revdelete-unrestricted'         => 'removed restrictions for administrators',
+'revdelete-hid'                  => 'hid $1',
+'revdelete-unhid'                => 'unhid $1',
+'revdelete-log-message'          => '$1 for $2 {{PLURAL:$2|revision|revisions}}',
+'logdelete-log-message'          => '$1 for $2 {{PLURAL:$2|event|events}}',
 
 # Suppression log
 'suppressionlog'     => 'Suppression log',
-'suppressionlogtext' => 'Below is a list of deletions and blocks involving content hidden from sysops.
+'suppressionlogtext' => 'Below is a list of deletions and blocks involving content hidden from administrators.
 See the [[Special:IPBlockList|IP block list]] for the list of currently operational bans and blocks.',
 
 # History merging
@@ -1534,6 +1551,7 @@ please see math/README to configure.',
 'prefs-resetpass'           => 'Change password',
 'saveprefs'                 => 'Save',
 'resetprefs'                => 'Clear unsaved changes',
+'restoreprefs'              => 'Restore all default settings',
 'textboxsize'               => 'Editing',
 'prefs-edit-boxsize'        => 'Size of the edit window.',
 'rows'                      => 'Rows:',
@@ -1562,6 +1580,8 @@ please see math/README to configure.',
 'defaultns'                 => 'Search in these namespaces by default:',
 'default'                   => 'default',
 'files'                     => 'Files',
+'prefs-custom-css'          => 'Custom CSS',
+'prefs-custom-js'           => 'Custom JS',
 
 # User rights
 'userrights'                     => 'User rights management', # Not used as normal message but as header for the special page itself
@@ -1591,7 +1611,7 @@ please see math/README to configure.',
 'group-user'          => 'Users',
 'group-autoconfirmed' => 'Autoconfirmed users',
 'group-bot'           => 'Bots',
-'group-sysop'         => 'Sysops',
+'group-sysop'         => 'Administrators',
 'group-bureaucrat'    => 'Bureaucrats',
 'group-suppress'      => 'Oversights',
 'group-all'           => '(all)',
@@ -1599,7 +1619,7 @@ please see math/README to configure.',
 'group-user-member'          => 'User',
 'group-autoconfirmed-member' => 'Autoconfirmed user',
 'group-bot-member'           => 'Bot',
-'group-sysop-member'         => 'Sysop',
+'group-sysop-member'         => 'Administrator',
 'group-bureaucrat-member'    => 'Bureaucrat',
 'group-suppress-member'      => 'Oversight',
 
@@ -1639,7 +1659,7 @@ please see math/README to configure.',
 'right-deletedhistory'       => 'View deleted history entries, without their associated text',
 'right-browsearchive'        => 'Search deleted pages',
 'right-undelete'             => 'Undelete a page',
-'right-suppressrevision'     => 'Review and restore revisions hidden from Sysops',
+'right-suppressrevision'     => 'Review and restore revisions hidden from administrators',
 'right-suppressionlog'       => 'View private logs',
 'right-block'                => 'Block other users from editing',
 'right-blockemail'           => 'Block a user from sending email',
@@ -1780,6 +1800,7 @@ See the [[Special:NewFiles|gallery of new files]] for a more visual overview.',
 'filename'                    => 'Filename',
 'filedesc'                    => 'Summary',
 'fileuploadsummary'           => 'Summary:',
+'filereuploadsummary'         => 'File changes:',
 'filestatus'                  => 'Copyright status:',
 'filesource'                  => 'Source:',
 'uploadedfiles'               => 'Uploaded files',
@@ -1830,6 +1851,7 @@ If you still want to upload your file, please go back and use a new name. [[File
 'overwroteimage'              => 'uploaded a new version of "[[$1]]"',
 'uploaddisabled'              => 'Uploads disabled',
 'uploaddisabledtext'          => 'File uploads are disabled.',
+'php-uploaddisabledtext'      => 'File uploads are disabled in PHP. Please check the file_uploads setting.',
 'uploadscripted'              => 'This file contains HTML or script code that may be erroneously interpreted by a web browser.',
 'uploadcorrupt'               => 'The file is corrupt or has an incorrect extension.
 Please check the file and upload again.',
@@ -2114,8 +2136,10 @@ Each row contains links to the first and second redirect, as well as the target 
 'protectedtitlesempty'            => 'No titles are currently protected with these parameters.',
 'listusers'                       => 'User list',
 'listusers-summary'               => '', # do not translate or duplicate this message to other languages
-'listusers-editsonly'             => 'Show users with edits only',
+'listusers-editsonly'             => 'Show only users with edits',
+'listusers-creationsort'          => 'Sort by creation date',
 'usereditcount'                   => '$1 {{PLURAL:$1|edit|edits}}',
+'usercreated'                     => 'Created on $1 at $2',
 'newpages'                        => 'New pages',
 'newpages-summary'                => '', # do not translate or duplicate this message to other languages
 'newpages-username'               => 'Username:',
@@ -2186,7 +2210,8 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'special-categories-sort-abc'   => 'sort alphabetically',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Deleted user contributions',
+'deletedcontributions'       => 'Deleted user contributions',
+'deletedcontributions-title' => 'Deleted user contributions',
 
 # Special:LinkSearch
 'linksearch'       => 'Search web links',
@@ -2405,7 +2430,7 @@ You can change this page's protection level, but it will not affect the cascadin
 'protect-default'             => '(default)',
 'protect-fallback'            => 'Require "$1" permission',
 'protect-level-autoconfirmed' => 'Block unregistered users',
-'protect-level-sysop'         => 'Sysops only',
+'protect-level-sysop'         => 'Administrators only',
 'protect-summary-cascade'     => 'cascading',
 'protect-expiring'            => 'expires $1 (UTC)',
 'protect-expiry-indefinite'   => 'indefinite',
@@ -2436,7 +2461,7 @@ You can change this page's protection level, but it will not affect the cascadin
 'restriction-upload' => 'Upload',
 
 # Restriction levels
-'restriction-level-sysop'         => 'full protected',
+'restriction-level-sysop'         => 'fully protected',
 'restriction-level-autoconfirmed' => 'semi protected',
 'restriction-level-all'           => 'any level',
 
@@ -2626,7 +2651,7 @@ See the [[Special:IPBlockList|IP block list]] for the list of currently operatio
 'block-log-flags-noemail'         => 'e-mail blocked',
 'block-log-flags-nousertalk'      => 'cannot edit own talk page',
 'block-log-flags-angry-autoblock' => 'enhanced autoblock enabled',
-'range_block_disabled'            => 'The sysop ability to create range blocks is disabled.',
+'range_block_disabled'            => 'The administrator ability to create range blocks is disabled.',
 'ipb_expiry_invalid'              => 'Expiry time invalid.',
 'ipb_expiry_temp'                 => 'Hidden username blocks must be permanent.',
 'ipb_already_blocked'             => '"$1" is already blocked',
@@ -2702,12 +2727,9 @@ In those cases, you will have to move or merge the page manually if desired.",
 'move-watch'                   => 'Watch this page',
 'movepagebtn'                  => 'Move page',
 'pagemovedsub'                 => 'Move succeeded',
-'movepage-moved'               => '<big>\'\'\'"$1" has been moved to "$2"\'\'\'</big>
-
-A redirect has been created.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'movepage-moved-noredirect'    => '<big>\'\'\'"$1" has been moved to "$2"\'\'\'</big>
-
-The creation of a redirect has been suppressed.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>\'\'\'"$1" has been moved to "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'A redirect has been created.',
+'movepage-moved-noredirect'    => 'The creation of a redirect has been suppressed.',
 'articleexists'                => 'A page of that name already exists, or the name you have chosen is not valid.
 Please choose another name.',
 'cantmove-titleprotected'      => 'You cannot move a page to this location, because the new title has been protected from creation',
@@ -2857,8 +2879,8 @@ A temporary folder is missing.',
 'accesskey-search'                  => 'f', # do not translate or duplicate this message to other languages
 'accesskey-search-go'               => '', # do not translate or duplicate this message to other languages
 'accesskey-search-fulltext'         => '', # do not translate or duplicate this message to other languages
-'accesskey-p-logo'                  => '', # do not translate or duplicate this message to other languages
-'accesskey-n-mainpage'              => 'z', # do not translate or duplicate this message to other languages
+'accesskey-p-logo'                  => 'z', # do not translate or duplicate this message to other languages
+'accesskey-n-mainpage'              => '', # do not translate or duplicate this message to other languages
 'accesskey-n-portal'                => '', # do not translate or duplicate this message to other languages
 'accesskey-n-currentevents'         => '', # do not translate or duplicate this message to other languages
 'accesskey-n-recentchanges'         => 'r', # do not translate or duplicate this message to other languages
@@ -2920,7 +2942,7 @@ You can view its source.',
 'tooltip-search'                  => 'Search {{SITENAME}}',
 'tooltip-search-go'               => 'Go to a page with this exact name if exists',
 'tooltip-search-fulltext'         => 'Search the pages for this text',
-'tooltip-p-logo'                  => 'Main Page',
+'tooltip-p-logo'                  => 'Visit the Main Page',
 'tooltip-n-mainpage'              => 'Visit the Main Page',
 'tooltip-n-portal'                => 'About the project, what you can do, where to find things',
 'tooltip-n-currentevents'         => 'Find background information on current events',
@@ -3474,8 +3496,8 @@ Others will be hidden by default.
 Activate the button below to send a confirmation mail to your address.
 The mail will include a link containing a code;
 load the link in your browser to confirm that your e-mail address is valid.',
-'confirmemail_pending'     => '<div class="error">A confirmation code has already been e-mailed to you;
-if you recently created your account, you may wish to wait a few minutes for it to arrive before trying to request a new code.</div>',
+'confirmemail_pending'     => 'A confirmation code has already been e-mailed to you;
+if you recently created your account, you may wish to wait a few minutes for it to arrive before trying to request a new code.',
 'confirmemail_send'        => 'Mail a confirmation code',
 'confirmemail_sent'        => 'Confirmation e-mail sent.',
 'confirmemail_oncreate'    => 'A confirmation code was sent to your e-mail address.
@@ -3779,5 +3801,18 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 #Lines beginning with # are treated as comments
 
 #Put all regex fragments above this line. Leave this line exactly as it is</pre>',
+
+# Special:Tags
+'tags'			  => 'Valid change tags',
+'tag-filter'              => '[[Special:Tags|Tag]] filter:',
+'tag-filter-submit'       => 'Filter',
+'tags-title'              => 'Tags',
+'tags-intro'              => 'This page lists the tags that the software may mark an edit with, and their meaning.',
+'tags-tag'                => 'Internal tag name',
+'tags-display-header'     => 'Appearance on change lists',
+'tags-description-header' => 'Full description of meaning',
+'tags-hitcount-header'    => 'Tagged edits',
+'tags-edit'               => 'edit',
+'tags-hitcount'           => '$1 {{PLURAL:$1|change|changes}}',
 
 );

@@ -304,9 +304,9 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 '''<nowiki>[[</nowiki>Media<nowiki>:Archivo.ogg]]</nowiki>''' ojoaju hag̃ua hekopete pe jehai'atýre.",
 'filename'   => "Téra jehai'aty",
 
-# Special:FileList
-'imagelist'      => "Ta'ãnga rysýi",
-'imagelist_user' => 'Puruhára',
+# Special:ListFiles
+'listfiles'      => "Ta'ãnga rysýi",
+'listfiles_user' => 'Puruhára',
 
 # File description page
 'filehist-revert'   => 'embojevy',
@@ -500,6 +500,7 @@ Reomĩsérõ ta'ãnga peteĩ kuatiaroguépe, eipuru peteĩ joaju:
 'tooltip-pt-mycontris'   => "Tysỹi che mba'emoĩmbyre",
 'tooltip-ca-move'        => 'Guerova kuatiarogue',
 'tooltip-p-logo'         => 'Ape',
+'tooltip-n-mainpage'     => 'Eho ijapépe',
 
 # Spam protection
 'spamprotectiontitle' => 'Filtro de protección contra spam',

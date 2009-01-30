@@ -5,6 +5,7 @@
  * @file
  *
  * @author Garas
+ * @author Homo
  * @author Hugo.arg
  * @author Matasg
  * @author Meno25
@@ -49,7 +50,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Stebimieji' ),
 	'Recentchanges'             => array( 'Naujausi keitimai' ),
 	'Upload'                    => array( 'Įkėlimas' ),
-	'Imagelist'                 => array( 'Paveikslėlių sąrašas' ),
+	'Listfiles'                 => array( 'Paveikslėlių sąrašas' ),
 	'Newimages'                 => array( 'Nauji paveikslėliai' ),
 	'Listusers'                 => array( 'Naudotojų sąrašas' ),
 	'Statistics'                => array( 'Statistika' ),
@@ -540,6 +541,10 @@ Prašome pasirinkti kitą vardą.',
 'badsig'                     => 'Neteisingas parašas; patikrinkite HTML žymes.',
 'badsiglength'               => 'Parašas per ilgas.
 Jį turi sudaryti ne daugiau kaip $1 {{PLURAL:$1|simbolis|simboliai|simbolių}}.',
+'yourgender'                 => 'Lytis:',
+'gender-unknown'             => 'Nenurodyta',
+'gender-male'                => 'Vyras',
+'gender-female'              => 'Moteris',
 'email'                      => 'El. paštas',
 'prefs-help-realname'        => 'Tikrasis vardas yra neprivalomas.
 Jei jūs jį įvesite, jis bus naudojamas pažymėti jūsų darbą.',
@@ -565,7 +570,7 @@ Naudotojo „$2“ slaptažodis dabar yra „$3“.
 Jūs turėtumėte prisijungti ir dabar pakeisti savo slaptažodį.
 
 Jei kažkas kitas atliko šį prašymą arba jūs prisiminėte savo slaptažodį ir
-nebenorite jo pakeisti, jūs galite tiesiog nekreipti dėmesio į šį laišką ir toliau
+nebenorite jo pakeisti, galite tiesiog nekreipti dėmesio į šį laišką ir toliau
 naudotis savo senuoju slaptažodžiu.',
 'noemail'                    => 'Nėra jokio el. pašto adreso įvesto naudotojui „$1“.',
 'passwordsent'               => 'Naujas slaptažodis buvo nusiųstas į el. pašto adresą,
@@ -661,10 +666,10 @@ Užblokavo $1. Nurodyta priežastis yra ''$2''.
 * Blokavimo pabaiga: $6
 * Numatytas blokuojamasis: $7
 
-Jūs galite susisiekti su $1 arba kitu [[{{MediaWiki:Grouppage-sysop}}|administratoriumi]], kad aptartumėte užblokavimą.
-Jūs negalite naudotis funkcija „Rašyti laišką šiam naudotojui“, jei nesate pateikę tikro savo el. pašto adreso savo [[Special:Preferences|paskyros nustatymuose]] ir nesate užblokuotas nuo jos naudojimo.
-Jūsų dabartinis IP adresas yra $3, o blokavimo ID yra #$5.
-Prašome nurodyti vieną ar abu juos, kai kreipiatės dėl blokavimo.",
+Jūs galite susisiekti su $1 arba kuriuo nors kitu [[{{MediaWiki:Grouppage-sysop}}|administratoriumi]] ir aptarti neaiškumus dėl blokavimo.
+Atkreipkite dėmesį, kad negalėsite naudotis funkcija „Rašyti laišką šiam naudotojui“, jei nesate užsiregistravę ir pateikę realaus savo el. pašto adreso naudotojo [[Special:Preferences|nustatymuose]], arba, jei jums užblokuotas šios funkcijos naudojimas.
+Jūsų IP adresas yra $3, o blokavimo ID yra #$5.
+Prašome nurodyti vieną iš jų ar abu, kai kreipiatės dėl blokavimo.",
 'autoblockedtext'                  => "Jūsų IP adresas buvo automatiškai užblokuotas, nes jį naudojo kitas naudotojas, kurį užblokavo $1.
 Nurodyta priežastis yra ši:
 
@@ -674,18 +679,18 @@ Nurodyta priežastis yra ši:
 * Blokavimo pabaiga: $6
 * Numatomas blokavimo laikas: $7
 
-Jūs galite susisiekti su $1 arba kitu [[{{MediaWiki:Grouppage-sysop}}|administratoriumi]], kad aptartumėte užblokavimą.
+Jūs galite susisiekti su $1 arba kitu [[{{MediaWiki:Grouppage-sysop}}|administratoriumi]], kad aptartumėte neaiškumus dėl blokavimo.
 
-Jūs negalite naudotis funkcija „Rašyti laišką šiam naudotojui“, jei nesate užregistravę tikro el. pašto adreso savo [[Special:Preferences|naudotojo nustatymuose]] ir nesate užblokuotas nuo jos naudojimo.
+Jūs negalite naudotis funkcija „Rašyti laišką šiam naudotojui“, jei nesate nurodę tikro el. pašto adreso savo [[Special:Preferences|naudotojo nustatymuose]]. Taip pat Jūs negalite naudotis šia funkcija, jei Jums užblokuotas jos naudojimas.
 
-Jūsų esamas IP adresas yra $3, blokavimo ID yra $5.
-Prašome nurodyti šiuos duomenis visuose prašymuose, kuriuos darote.",
+Jūsų IP adresas yra $3, blokavimo ID yra $5.
+Prašome nurodyti šiuos duomenis visais atvejais, kai kreipiatės dėl blokavimo.",
 'blockednoreason'                  => 'priežastis nenurodyta',
 'blockedoriginalsource'            => "Žemiau yra rodomas '''$1''' turinys:",
 'blockededitsource'                => "''Jūsų keitimų''' tekstas puslapiui '''$1''' yra rodomas žemiau:",
 'whitelistedittitle'               => 'Norint redaguoti reikia prisijungti',
 'whitelistedittext'                => 'Jūs turite $1, kad redaguotumėte puslapius.',
-'confirmedittitle'                 => 'Reikalingas el. pašto patvirtinimas, kad redaguotumėte',
+'confirmedittitle'                 => 'Kad galėtumėte redaguoti, reikalingas el. pašto patvirtinimas',
 'confirmedittext'                  => 'Jums reikia patvirtinti el. pašto adresą, prieš redaguojant puslapius.
 Prašome nurodyti ir patvirtinti jūsų el. pašto adresą per jūsų [[Special:Preferences|naudotojo nustatymus]].',
 'nosuchsectiontitle'               => 'Nėra tokio skyriaus',
@@ -1094,6 +1099,7 @@ Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį
 'prefs-resetpass'           => 'Keisti slaptažodį',
 'saveprefs'                 => 'Išsaugoti',
 'resetprefs'                => 'Išvalyti neišsaugotus pakeitimus',
+'restoreprefs'              => 'Atstatyti visus numatytuosius nustatymus',
 'textboxsize'               => 'Redagavimas',
 'prefs-edit-boxsize'        => 'Redagavimo lango dydis.',
 'rows'                      => 'Eilutės:',
@@ -1239,6 +1245,7 @@ teisės",
 'action-move'                 => 'pervadinti šį puslapį',
 'action-move-subpages'        => 'pervadinti šį puslapį ir jo subpuslapius',
 'action-move-rootuserpages'   => 'perkelti pagrindinius naudotojų puslapius',
+'action-movefile'             => 'perkelti šį failą',
 'action-upload'               => 'įkelti šį failą',
 'action-reupload'             => 'perrašyti šį esamą failą',
 'action-reupload-shared'      => 'perrašyti šį failą bendrojoje saugykloje',
@@ -1338,7 +1345,7 @@ Norėdami panaudoti įkeltą failą puslapyje, naudokite tokias nuorodas:
 'illegalfilename'             => 'Failo varde „$1“ yra simbolių, neleidžiamų puslapio pavadinimuose. Prašome pervadint failą ir mėginkite įkelti jį iš naujo.',
 'badfilename'                 => 'Failo pavadinimas pakeistas į „$1“.',
 'filetype-badmime'            => 'Neleidžiama įkelti „$1“ MIME tipo failų.',
-'filetype-bad-ie-mime'        => 'Negalima įkelti šio failo kadangi Internet Explorer ji pažymėtų kaip "$1". Tai yra neleistinas ir potencialiai pavojingas failo tipas.',
+'filetype-bad-ie-mime'        => 'Negalima įkelti šio failo, kadangi Internet Explorer jį pažymėtų kaip "$1". Tai yra neleistinas ir potencialiai pavojingas failo tipas.',
 'filetype-unwanted-type'      => "„.$1“''' yra nepageidautinas failo tipas. {{PLURAL:$3|Pageidautinas failų tipas|pageidautini failų tipai}} yra $2.",
 'filetype-banned-type'        => "„.$1“''' nėra leistinas failo tipas. {{PLURAL:$3|Leistinas failų tipas|Leistini failų tipai}} yra $2.",
 'filetype-missing'            => 'Failas neturi galūnės (pavyzdžiui „.jpg“).',
@@ -1403,18 +1410,18 @@ Jūs turėtumėte nuspręsti, ar verta toliau įkeldinėti šį failą.
 'upload_source_url'  => ' (tikras, viešai prieinamas URL)',
 'upload_source_file' => ' (failas jūsų kompiuteryje)',
 
-# Special:FileList
-'imagelist-summary'     => 'Šis specialus puslapis rodo visus įkeltus failus.
+# Special:ListFiles
+'listfiles-summary'     => 'Šis specialus puslapis rodo visus įkeltus failus.
 Pagal numatymą paskutiniai įkelti failai rodomi sąrašo viršuje.
 Paspaudę ant stulpelio antraštės pakeiste išrikiavimą.',
-'imagelist_search_for'  => 'Ieškoti failo pavadinimo:',
+'listfiles_search_for'  => 'Ieškoti failo pavadinimo:',
 'imgfile'               => 'failas',
-'imagelist'             => 'Failų sąrašas',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Pavadinimas',
-'imagelist_user'        => 'Naudotojas',
-'imagelist_size'        => 'Dydis',
-'imagelist_description' => 'Aprašymas',
+'listfiles'             => 'Failų sąrašas',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Pavadinimas',
+'listfiles_user'        => 'Naudotojas',
+'listfiles_size'        => 'Dydis',
+'listfiles_description' => 'Aprašymas',
 
 # File description page
 'filehist'                       => 'Paveikslėlio istorija',
@@ -1651,7 +1658,8 @@ Taip pat žiūrėkite [[Special:WantedCategories|trokštamas kategorijas]].',
 'special-categories-sort-abc'   => 'rikiuoti pagal abėcėlę',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Ištrintas naudotojo indėlis',
+'deletedcontributions'       => 'Ištrintas naudotojo indėlis',
+'deletedcontributions-title' => 'Ištrintas naudotojo indėlis',
 
 # Special:LinkSearch
 'linksearch'     => 'Ieškoti interneto nuorodose',
@@ -1895,8 +1903,8 @@ Dabar veikiančių puslapių apsaugų sąrašą rasite [[Special:ProtectedPages|
 'undeletepagetitle'            => "'''Tai sudaryta iš ištrintų [[:$1]] versijų'''.",
 'viewdeletedpage'              => 'Rodyti ištrintus puslapius',
 'undeletepagetext'             => 'Žemiau išvardinti puslapiai yra ištrinti, bet dar laikomi
-archyve, todėl jie gali būti atstatyti. Archyvas gali būti periodiškai valomas.',
-'undelete-fieldset-title'      => 'Atstatyti revizijas',
+archyve, todėl gali būti atstatyti. Archyvas gali būti periodiškai valomas.',
+'undelete-fieldset-title'      => 'Atstatyti versijas',
 'undeleteextrahelp'            => "Norėdami atkurti visą puslapį, palikite visas varneles nepažymėtas ir
 spauskite '''''Atkurti'''''. Norėdami atlikti pasirinktinį atstatymą, pažymėkite varneles tų versijų, kurias norėtumėte atstatyti, ir spauskite '''''Atkurti'''''. Paspaudus
 '''''Iš naujo''''' bus išvalytos visos varnelės bei komentaro laukas.",
@@ -2046,14 +2054,16 @@ ankščiau užblokuotam IP adresui ar naudotojui.',
 'ipblocklist-no-results'       => 'Prašomas IP adresas ar naudotojo vardas nėra užblokuotas.',
 'blocklink'                    => 'blokuoti',
 'unblocklink'                  => 'atblokuoti',
+'change-blocklink'             => 'keisti blokavimo nustatymus',
 'contribslink'                 => 'įnašas',
 'autoblocker'                  => 'Jūs buvote automatiškai užblokuotas, nes jūsų IP neseniai naudojo „[[User:$1|$1]]“. Duota priežastis naudotojo $1 užblokavimui: „$2“.',
 'blocklogpage'                 => 'Blokavimų istorija',
 'blocklog-fulllog'             => 'Pilnas blokavimų registras',
 'blocklogentry'                => 'blokavo [[$1]], blokavimo laikas - $2 $3',
+'reblock-logentry'             => 'pakeisti [[$1]] blokavimo nustatymai, naujas blokavimo laikas – $2 $3',
 'blocklogtext'                 => 'Čia yra naudotojų blokavimo ir atblokavimo sąrašas.
-Automatiškai blokuoti IP adresai nėra išvardinti.
-Jei norite pamatyti dabar blokuojamus adresus, žiūrėkite [[Special:IPBlockList|IP blokavimų istoriją]].',
+Automatiškai blokuoti IP adresai neišvardinti.
+Jei norite pamatyti dabar blokuojamus adresus, žiūrėkite [[Special:IPBlockList|IP blokavimų sąrašą]].',
 'unblocklogentry'              => 'atblokavo $1',
 'block-log-flags-anononly'     => 'tik anoniminiai naudotojai',
 'block-log-flags-nocreate'     => 'paskyrų kūrimas išjungtas',
@@ -2132,11 +2142,13 @@ kad suprantate visas pasekmes.",
 'movenologin'               => 'Neprisijungęs',
 'movenologintext'           => 'Norėdami pervadinti puslapį, turite būti užsiregistravęs naudotojas ir būti  [[Special:UserLogin|prisijungęs]].',
 'movenotallowed'            => 'Jūs neturite teisių pervadinti puslapių.',
+'movenotallowedfile'        => 'Jūs neturite teisės perkelti failus.',
 'newtitle'                  => 'Naujas pavadinimas:',
 'move-watch'                => 'Stebėti šį puslapį',
 'movepagebtn'               => 'Pervadinti puslapį',
 'pagemovedsub'              => 'Pervadinta sėkmingai',
 'movepage-moved'            => '<big>\'\'\'"$1" buvo pervadintas į "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'   => 'Nukreipimas sukurtas.',
 'articleexists'             => 'Puslapis tokiu pavadinimu jau egzistuoja
 arba pasirinktas vardas yra neteisingas.
 Pasirinkite kitą pavadinimą.',
@@ -2721,9 +2733,7 @@ Visos kitos nuorodos toje pačioje eilutėje yra laikomos išimtimis, t. y. pusl
 'confirmemail_text'        => 'Šiame projekte būtina patvirtinti el. pašto adresą prieš naudojant el. pašto funkcijas. Spustelkite žemiau esantį mygtuką,
 kad jūsų el. pašto adresu būtų išsiųstas patvirtinimo kodas.
 Laiške bus atsiųsta nuoroda su kodu, kuria nuėjus, el. pašto adresas bus patvirtintas.',
-'confirmemail_pending'     => '<div class="error">
-Patvirtinimo kodas jau nusiųstas jums; jei neseniai sukūrėte savo paskyrą, jūs turėtumėte palaukti jo dar kelias minutes prieš prašant naujo kodo.
-</div>',
+'confirmemail_pending'     => 'Patvirtinimo kodas jau nusiųstas jums; jei neseniai sukūrėte savo paskyrą, jūs turėtumėte palaukti jo dar kelias minutes prieš prašant naujo kodo.',
 'confirmemail_send'        => 'Išsiųsti patvirtinimo kodą',
 'confirmemail_sent'        => 'Patvirtinimo laiškas išsiųstas.',
 'confirmemail_oncreate'    => 'Patvirtinimo kodas buvo išsiųstas jūsų el. pašto adresu.

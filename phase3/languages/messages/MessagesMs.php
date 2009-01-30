@@ -69,7 +69,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Senarai pantau' ),
 	'Recentchanges'             => array( 'Perubahan terkini' ),
 	'Upload'                    => array( 'Muat naik' ),
-	'Imagelist'                 => array( 'Senarai imej' ),
+	'Listfiles'                 => array( 'Senarai imej' ),
 	'Newimages'                 => array( 'Imej baru' ),
 	'Listusers'                 => array( 'Senarai pengguna' ),
 	'Listgrouprights'           => array( 'Senarai hak kumpulan' ),
@@ -151,6 +151,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Formatkan pautan rosak <a href="" class="new">seperti ini</a> (ataupun seperti ini<a href="" class="internal">?</a>)',
 'tog-justify'                 => 'Laraskan perenggan',
 'tog-hideminor'               => 'Sembunyikan suntingan kecil dalam laman perubahan terkini',
+'tog-hidepatrolled'           => 'Sorokkan suntingan tersemak di perubahan terkini',
+'tog-newpageshidepatrolled'   => 'Sorokkan laman tersemak daripada senarai laman baru',
 'tog-extendwatchlist'         => 'Kembangkan senarai pantau untuk memaparkan semua perubahan yang berlaku',
 'tog-usenewrc'                => 'Pertingkatkan laman perubahan terkini (JavaScript)',
 'tog-numberheadings'          => 'Nomborkan tajuk secara automatik',
@@ -185,6 +187,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Sembunyikan suntingan kecil daripada senarai pantau',
 'tog-watchlisthideliu'        => 'Sembunyikan suntingan oleh pengguna log masuk daripada senarai pantau',
 'tog-watchlisthideanons'      => 'Sembunyikan suntingan oleh pengguna tanpa nama daripada senarai pantau',
+'tog-watchlisthidepatrolled'  => 'Sorokkan suntingan tersemak daripada senarai pantau',
 'tog-nolangconversion'        => 'Lumpuhkan penukaran kelainan',
 'tog-ccmeonemails'            => 'Kirimkan saya salinan e-mel yang saya hantar kepada pengguna lain',
 'tog-diffonly'                => 'Jangan tunjukkan kandungan laman di bawah perbezaan',
@@ -555,7 +558,7 @@ Akaun anda telah dibuka. Jangan lupa untuk mengubah [[Special:Preferences|keutam
 'passwordtooshort'           => 'Kata laluan anda tidak sah atau terlalu pendek. Panjangnya mestilah sekurang-kurangnya $1 aksara dan berbeza daripada nama pengguna anda.',
 'mailmypassword'             => 'E-melkan kata laluan baru',
 'passwordremindertitle'      => 'Pengingat kata laluan daripada {{SITENAME}}',
-'passwordremindertext'       => 'Seseorang (mungkin anda, dari alamat IP $1) meminta kami menghantar kata laluan baru untuk {{SITENAME}} ($4). Kata laluan sementara baru untuk pengguna "$2" ialah "$3". Untuk menamatkan prosedur ini, anda perlu log masuk dan tetapkan kata laluan yang baru dengan segera.
+'passwordremindertext'       => 'Seseorang (mungkin anda, dari alamat IP $1) telah meminta kata laluan baru untuk {{SITENAME}} ($4). Kata laluan sementara baru untuk pengguna "$2" ialah "$3". Untuk menamatkan prosedur ini, anda perlu log masuk dan tetapkan kata laluan yang baru dengan segera. Kata laluan sementara anda akan luput dalam $5 hari.
 
 Jika anda tidak membuat permintaan ini, atau anda telah pun mengingati semula kata laluan anda dan tidak mahu menukarnya, anda boleh mengabaikan pesanan ini dan terus menggunakan kata laluan yang sedia ada.',
 'noemail'                    => 'Tiada alamat e-mel direkodkan bagi pengguna "$1".',
@@ -841,56 +844,62 @@ Mungkin ia telah dihapuskan atau namanya telah ditukar.
 Cuba [[Special:Search|cari]] laman lain yang mungkin berkaitan.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(komen dibuang)',
-'rev-deleted-user'            => '(nama pengguna dibuang)',
-'rev-deleted-event'           => '(entri dibuang)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+'rev-deleted-comment'            => '(komen dibuang)',
+'rev-deleted-user'               => '(nama pengguna dibuang)',
+'rev-deleted-event'              => '(entri dibuang)',
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks">
 Semakan ini telah dibuang daripada arkib awam.
 Butiran lanjut boleh didapati dalam [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log penghapusan].
 </div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
+'rev-deleted-text-view'          => '<div class="mw-warning plainlinks">
 Semakan ini telah dibuang daripada arkib awam.
 Sebagai seorang pentadbir di {{SITENAME}}, anda boleh melihatnya.
 Butiran lanjut boleh didapati dalam [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log penghapusan].
 </div>',
-'rev-delundel'                => 'tunjuk/sembunyi',
-'revisiondelete'              => 'Hapus/nyahhapus semakan',
-'revdelete-nooldid-title'     => 'Tiada semakan sasaran',
-'revdelete-nooldid-text'      => 'Anda tidak menyatakan semakan sasaran.',
-'revdelete-selected'          => "'''{{PLURAL:$2|Versi|Versi-versi}} '''$1''' yang dipilih:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|Peristiwa|Peristiwa-peristiwa}} log yang dipilih:'''",
-'revdelete-text'              => "'''Semakan dan peristiwa yang dihapuskan masih muncul dalam sejarah laman dan log,
+'rev-delundel'                   => 'tunjuk/sembunyi',
+'revisiondelete'                 => 'Hapus/nyahhapus semakan',
+'revdelete-nooldid-title'        => 'Tiada semakan sasaran',
+'revdelete-nooldid-text'         => 'Anda tidak menyatakan semakan sasaran.',
+'revdelete-nologtype-title'      => 'Tiada jenis log diberi',
+'revdelete-nologtype-text'       => 'Anda tidak memberikan jenis log untuk melakukan tindakan ini.',
+'revdelete-toomanytargets-title' => 'Terlalu banyak sasaran',
+'revdelete-toomanytargets-text'  => 'Anda memberikan terlalu banyak jenis sasaran untuk lakukan tindakan ini.',
+'revdelete-nologid-title'        => 'Daftar masukan tidak sah',
+'revdelete-nologid-text'         => 'Anda tidak memberikan sasaran perkara daftar untuk melakukan fungsi ini atau masukan anda tidak wujud.',
+'revdelete-selected'             => "'''{{PLURAL:$2|Versi|Versi-versi}} '''$1''' yang dipilih:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|Peristiwa|Peristiwa-peristiwa}} log yang dipilih:'''",
+'revdelete-text'                 => "'''Semakan dan peristiwa yang dihapuskan masih muncul dalam sejarah laman dan log,
 akan tetapi kandungannya tidak boleh dilihat oleh orang awam.'''
 
 Pentadbir {{SITENAME}} boleh melihat kandungan tersebut dan menyahhapuskannya
 semula melalui laman ini melainkan mempunyai batasan.",
-'revdelete-legend'            => 'Tetapkan batasan:',
-'revdelete-hide-text'         => 'Sembunyikan teks semakan',
-'revdelete-hide-name'         => 'Sembunyikan tindakan dan sasaran',
-'revdelete-hide-comment'      => 'Sembunyikan komen suntingan',
-'revdelete-hide-user'         => 'Sembunyikan nama pengguna/IP penyunting',
-'revdelete-hide-restricted'   => 'Kenakan batasan ini ke atas semua pengguna, termasuk penyelia',
-'revdelete-suppress'          => 'Sekat data daripada semua pengguna, termasuk penyelia',
-'revdelete-hide-image'        => 'Sembunyikan kandungan fail',
-'revdelete-unsuppress'        => 'Buang batasan pada semakan yang dipulihkan',
-'revdelete-log'               => 'Komen log:',
-'revdelete-submit'            => 'Kenakan ke atas versi yang dipilih',
-'revdelete-logentry'          => 'menukar kebolehnampakan semakan [[$1]]',
-'logdelete-logentry'          => 'menukar kebolehnampakan peristiwa bagi [[$1]]',
-'revdelete-success'           => 'Kebolehnampakan semakan ditetapkan.',
-'logdelete-success'           => 'Kebolehnampakan peristiwa ditetapkan.',
-'revdel-restore'              => 'Tukar kebolehnampakan',
-'pagehist'                    => 'Sejarah laman',
-'deletedhist'                 => 'Sejarah yang dihapuskan',
-'revdelete-content'           => 'kandungan',
-'revdelete-summary'           => 'ringkasan',
-'revdelete-uname'             => 'nama pengguna',
-'revdelete-restricted'        => 'mengenakan sekatan pada penyelia',
-'revdelete-unrestricted'      => 'menarik sekatan daripada penyelia',
-'revdelete-hid'               => 'menyembunyikan $1',
-'revdelete-unhid'             => 'memunculkan $1',
-'revdelete-log-message'       => '$1 bagi {{PLURAL:$2|sebuah|$2 buah}} semakan',
-'logdelete-log-message'       => '$1 bagi $2 peristiwa',
+'revdelete-legend'               => 'Tetapkan batasan:',
+'revdelete-hide-text'            => 'Sembunyikan teks semakan',
+'revdelete-hide-name'            => 'Sembunyikan tindakan dan sasaran',
+'revdelete-hide-comment'         => 'Sembunyikan komen suntingan',
+'revdelete-hide-user'            => 'Sembunyikan nama pengguna/IP penyunting',
+'revdelete-hide-restricted'      => 'Kenakan batasan ini ke atas semua pengguna, termasuk penyelia',
+'revdelete-suppress'             => 'Sekat data daripada semua pengguna, termasuk penyelia',
+'revdelete-hide-image'           => 'Sembunyikan kandungan fail',
+'revdelete-unsuppress'           => 'Buang batasan pada semakan yang dipulihkan',
+'revdelete-log'                  => 'Komen log:',
+'revdelete-submit'               => 'Kenakan ke atas versi yang dipilih',
+'revdelete-logentry'             => 'menukar kebolehnampakan semakan [[$1]]',
+'logdelete-logentry'             => 'menukar kebolehnampakan peristiwa bagi [[$1]]',
+'revdelete-success'              => 'Kebolehnampakan semakan ditetapkan.',
+'logdelete-success'              => 'Kebolehnampakan peristiwa ditetapkan.',
+'revdel-restore'                 => 'Tukar kebolehnampakan',
+'pagehist'                       => 'Sejarah laman',
+'deletedhist'                    => 'Sejarah yang dihapuskan',
+'revdelete-content'              => 'kandungan',
+'revdelete-summary'              => 'ringkasan',
+'revdelete-uname'                => 'nama pengguna',
+'revdelete-restricted'           => 'mengenakan sekatan pada penyelia',
+'revdelete-unrestricted'         => 'menarik sekatan daripada penyelia',
+'revdelete-hid'                  => 'menyembunyikan $1',
+'revdelete-unhid'                => 'memunculkan $1',
+'revdelete-log-message'          => '$1 bagi {{PLURAL:$2|sebuah|$2 buah}} semakan',
+'logdelete-log-message'          => '$1 bagi $2 peristiwa',
 
 # Suppression log
 'suppressionlog'     => 'Log penahanan',
@@ -1092,6 +1101,7 @@ Cuba berikan awalan ''all:'' untuk menggelintar semua kandungan (termasuk laman 
 'prefs-resetpass'           => 'Tukar kata laluan',
 'saveprefs'                 => 'Simpan',
 'resetprefs'                => 'Set semula',
+'restoreprefs'              => 'Kembalikan semua tetapan lalai',
 'textboxsize'               => 'Menyunting',
 'prefs-edit-boxsize'        => 'Saiz kotak sunting.',
 'rows'                      => 'Baris:',
@@ -1120,6 +1130,8 @@ Cuba berikan awalan ''all:'' untuk menggelintar semua kandungan (termasuk laman 
 'defaultns'                 => 'Cari dalam ruang nama ini secara lalai:',
 'default'                   => 'lalai',
 'files'                     => 'Fail',
+'prefs-custom-css'          => 'CSS lazim',
+'prefs-custom-js'           => 'JS lazim',
 
 # User rights
 'userrights'                  => 'Pengurusan hak pengguna', # Not used as normal message but as header for the special page itself
@@ -1327,6 +1339,7 @@ Untuk menyertakan imej tersebut dalam sesebuah laman, sila masukkan teks
 'filename'                    => 'Nama fail',
 'filedesc'                    => 'Ringkasan',
 'fileuploadsummary'           => 'Ringkasan:',
+'filereuploadsummary'         => 'Perubahan fail:',
 'filestatus'                  => 'Status hak cipta:',
 'filesource'                  => 'Sumber:',
 'uploadedfiles'               => 'Fail yang telah dimuat naik',
@@ -1365,6 +1378,7 @@ Jika anda memiliki imej ini dalam leraian penuh, sila muat naik fail tersebut. S
 'overwroteimage'              => 'memuat naik versi baru bagi "[[$1]]"',
 'uploaddisabled'              => 'Ciri muat naik dimatikan',
 'uploaddisabledtext'          => 'Ciri muat naik fail dimatikan.',
+'php-uploaddisabledtext'      => 'Pemuatnaikan fail PHP dilumpuhkan. Sila semak tetapan file_uploads.',
 'uploadscripted'              => 'Fail ini mengandungi kod HTML atau skrip yang boleh disalahtafsirkan oleh pelayar web.',
 'uploadcorrupt'               => 'Fail tersebut rosak atau mempunyai sambungan yang salah. Sila periksa fail tersebut dan cuba lagi.',
 'uploadvirus'                 => 'Fail tersebut mengandungi virus! Butiran: $1',
@@ -1398,17 +1412,18 @@ Untuk rujukan, yang berikut ialah log penghapusan bagi fail ini:",
 'upload_source_url'  => ' (URL yang boleh diakses oleh orang awam)',
 'upload_source_file' => ' (fail dalam komputer anda)',
 
-# Special:FileList
-'imagelist-summary'     => 'Laman khas ini memaparkan senarai fail yang telah dimuat naik.
+# Special:ListFiles
+'listfiles-summary'     => 'Laman khas ini memaparkan senarai fail yang telah dimuat naik.
 Klik di atas mana-mana lajur yang berkenaan untuk menukar tertib susunan.',
-'imagelist_search_for'  => 'Cari nama imej:',
+'listfiles_search_for'  => 'Cari nama imej:',
 'imgfile'               => 'fail',
-'imagelist'             => 'Senarai fail',
-'imagelist_date'        => 'Tarikh',
-'imagelist_name'        => 'Nama',
-'imagelist_user'        => 'Pengguna',
-'imagelist_size'        => 'Saiz',
-'imagelist_description' => 'Huraian',
+'listfiles'             => 'Senarai fail',
+'listfiles_date'        => 'Tarikh',
+'listfiles_name'        => 'Nama',
+'listfiles_user'        => 'Pengguna',
+'listfiles_size'        => 'Saiz',
+'listfiles_description' => 'Huraian',
+'listfiles_count'       => 'Versi',
 
 # File description page
 'filehist'                       => 'Sejarah fail',
@@ -1646,7 +1661,8 @@ Lihat juga [[Special:WantedCategories|senarai kategori dikehendaki]].',
 'special-categories-sort-abc'   => 'susun mengikut tertib abjad',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Sumbangan dihapuskan',
+'deletedcontributions'       => 'Sumbangan dihapuskan',
+'deletedcontributions-title' => 'Sumbangan dihapuskan',
 
 # Special:LinkSearch
 'linksearch'       => 'Cari pautan web',
@@ -1685,31 +1701,32 @@ Anda boleh mengetahui [[{{MediaWiki:Listgrouprights-helppage}}|maklumat tambahan
 'listgrouprights-removegroup-all' => 'Boleh membuang semua kumpulan',
 
 # E-mail user
-'mailnologin'     => 'Tiada alamat e-mel',
-'mailnologintext' => 'Anda perlu [[Special:UserLogin|log masuk]]
+'mailnologin'      => 'Tiada alamat e-mel',
+'mailnologintext'  => 'Anda perlu [[Special:UserLogin|log masuk]]
 terlebih dahulu dan mempunyai alamat e-mel yang sah dalam
 [[Special:Preferences|laman keutamaan]] untuk mengirim e-mel kepada pengguna lain.',
-'emailuser'       => 'Kirim e-mel kepada pengguna ini',
-'emailpage'       => 'E-mel pengguna',
-'emailpagetext'   => 'Gunakan borang berikut untuk mengirim pesanan e-mel kepada pengguna ini.
+'emailuser'        => 'Kirim e-mel kepada pengguna ini',
+'emailpage'        => 'E-mel pengguna',
+'emailpagetext'    => 'Gunakan borang berikut untuk mengirim pesanan e-mel kepada pengguna ini.
 
 Alamat e-mel yang ditetapkan dalam [[Special:Preferences|keutamaan anda]] akan digunakan sebagai alamat "Daripada" dalam e-mel tersebut supaya si penerima boleh membalasnya.',
-'usermailererror' => 'Objek Mail memulangkan ralat:',
-'defemailsubject' => 'E-mel {{SITENAME}}',
-'noemailtitle'    => 'Tiada alamat e-mel',
-'noemailtext'     => 'Pengguna ini tidak menetapkan alamat e-mel yang sah,
-atau telah memilih untuk tidak menerima e-mel daripada pengguna lain.',
-'email-legend'    => 'Kirim e-mel kepada pengguna {{SITENAME}} lain',
-'emailfrom'       => 'Daripada:',
-'emailto'         => 'Kepada:',
-'emailsubject'    => 'Perkara:',
-'emailmessage'    => 'Pesanan:',
-'emailsend'       => 'Kirim',
-'emailccme'       => 'Kirim salinan mesej ini kepada saya.',
-'emailccsubject'  => 'Salinan bagi mesej anda kepada $1: $2',
-'emailsent'       => 'E-mel dikirim',
-'emailsenttext'   => 'E-mel anda telah dikirim.',
-'emailuserfooter' => 'E-mel ini telah dikirim oleh $1 kepada $2 menggunakan alat "E-mel pengguna" di {{SITENAME}}.',
+'usermailererror'  => 'Objek Mail memulangkan ralat:',
+'defemailsubject'  => 'E-mel {{SITENAME}}',
+'noemailtitle'     => 'Tiada alamat e-mel',
+'noemailtext'      => 'Pengguna ini tidak menetapkan alamat e-mel yang sah.',
+'nowikiemailtitle' => 'E-mel tidak dibenarkan',
+'nowikiemailtext'  => 'Pengguna ini tidak mahu menerima e-mel daripada pengguna lain.',
+'email-legend'     => 'Kirim e-mel kepada pengguna {{SITENAME}} lain',
+'emailfrom'        => 'Daripada:',
+'emailto'          => 'Kepada:',
+'emailsubject'     => 'Perkara:',
+'emailmessage'     => 'Pesanan:',
+'emailsend'        => 'Kirim',
+'emailccme'        => 'Kirim salinan mesej ini kepada saya.',
+'emailccsubject'   => 'Salinan bagi mesej anda kepada $1: $2',
+'emailsent'        => 'E-mel dikirim',
+'emailsenttext'    => 'E-mel anda telah dikirim.',
+'emailuserfooter'  => 'E-mel ini telah dikirim oleh $1 kepada $2 menggunakan alat "E-mel pengguna" di {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Senarai pantau',
@@ -2143,12 +2160,9 @@ Dalam kes tersebut, anda terpaksa melencongkan atau menggabungkan laman secara m
 'move-watch'                   => 'Pantau laman ini',
 'movepagebtn'                  => 'Pindah laman',
 'pagemovedsub'                 => 'Pemindahan berjaya',
-'movepage-moved'               => '<big>\'\'\'"$1" telah dipindahkan ke "$2"\'\'\'</big>
-
-Lencongan telah dicipta.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'movepage-moved-noredirect'    => '<big>\'\'\'"$1" telah dipindahkan ke "$2"\'\'\'</big>
-
-Penciptaan lencongan telah dihalang.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>\'\'\'"$1" telah dipindahkan ke "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'Sebuah lencongan telah dicipta.',
+'movepage-moved-noredirect'    => 'Penciptaan lencongan telah dihalang.',
 'articleexists'                => 'Laman dengan nama tersebut telah pun wujud,
 atau nama yang anda pilih tidak sah.
 Sila pilih nama lain.',
@@ -2741,11 +2755,9 @@ Ruangan lain akan disembunyikan.
 Aktifkan butang di bawah untuk mengirim e-mel pengesahan kepada alamat e-mel
 anda. E-mel tersebut akan mengandungi sebuah pautan yang mengandungi sebuah
 kod; buka pautan tersebut di pelayar anda untuk mengesahkan bahawa alamat e-mel anda.',
-'confirmemail_pending'     => '<div class="error">
-Sebuah kod pengesahan telah pun di-e-melkan kepada anda. Jika anda baru sahaja
+'confirmemail_pending'     => 'Sebuah kod pengesahan telah pun di-e-melkan kepada anda. Jika anda baru sahaja
 membuka akaun, sila tunggu kehadiran e-mel tersebut selama beberapa minit
-sebelum meminta kod baru.
-</div>',
+sebelum meminta kod baru.',
 'confirmemail_send'        => 'E-melkan kod pengesahan',
 'confirmemail_sent'        => 'E-mel pengesahan dikirim.',
 'confirmemail_oncreate'    => 'Sebuah kod pengesahan telah dikirim kepada alamat e-mel anda.

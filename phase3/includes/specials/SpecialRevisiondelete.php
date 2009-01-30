@@ -9,6 +9,12 @@
 
 function wfSpecialRevisiondelete( $par = null ) {
 	global $wgOut, $wgRequest, $wgUser;
+	
+	if ( wfReadOnly() ) {
+		$wgOut->readOnlyPage();
+		return;
+	}
+		
 	# Handle our many different possible input types
 	$target = $wgRequest->getText( 'target' );
 	$oldid = $wgRequest->getArray( 'oldid' );
@@ -27,12 +33,12 @@ function wfSpecialRevisiondelete( $par = null ) {
 	# Only one target set at a time please!
 	$i = (bool)$file + (bool)$oldid + (bool)$logid + (bool)$artimestamp + (bool)$fileid + (bool)$img;
 	if( $i !== 1 ) {
-		$wgOut->showErrorPage( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
+		$wgOut->showErrorPage( 'revdelete-toomanytargets-title', 'revdelete-toomanytargets-text' );
 		return;
 	}
 	# Logs must have a type given
 	if( $logid && !strpos($page->getDBKey(),'/') ) {
-		$wgOut->showErrorPage( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
+		$wgOut->showErrorPage( 'revdelete-nologtype-title', 'revdelete-nologtype-text' );
 		return;
 	}
 	# Either submit or create our form
@@ -183,10 +189,11 @@ class RevisionDeleteForm {
 			foreach( $this->revisions as $revid ) {
 				$where[] = intval($revid);
 			}
-			$whereClause = 'rev_id IN(' . implode(',',$where) . ')';
 			$result = $dbr->select( array('revision','page'), '*',
-				array( 'rev_page' => $this->page->getArticleID(),
-					$whereClause, 'rev_page = page_id' ),
+				array(
+					'rev_page' => $this->page->getArticleID(),
+					'rev_id' => $where,
+					'rev_page = page_id' ),
 				__METHOD__ );
 			while( $row = $dbr->fetchObject( $result ) ) {
 				$revObjs[$row->rev_id] = new Revision( $row );
@@ -213,11 +220,11 @@ class RevisionDeleteForm {
 			foreach( $this->archrevs as $timestamp ) {
 				$where[] = $dbr->addQuotes( $timestamp );
 			}
-			$whereClause = 'ar_timestamp IN(' . implode(',',$where) . ')';
 			$result = $dbr->select( 'archive', '*',
-				array( 'ar_namespace' => $this->page->getNamespace(),
+				array(
+					'ar_namespace' => $this->page->getNamespace(),
 					'ar_title' => $this->page->getDBKey(),
-						$whereClause ),
+					'ar_timestamp' => $where ),
 				__METHOD__ );
 			while( $row = $dbr->fetchObject( $result ) ) {
 				$revObjs[$row->ar_timestamp] = new Revision( array(
@@ -328,10 +335,10 @@ class RevisionDeleteForm {
 			foreach( $this->ofiles as $timestamp ) {
 				$where[] = $dbr->addQuotes( $timestamp.'!'.$this->page->getDBKey() );
 			}
-			$whereClause = 'oi_archive_name IN(' . implode(',',$where) . ')';
 			$result = $dbr->select( 'oldimage', '*',
-				array( 'oi_name' => $this->page->getDBKey(),
-					$whereClause ),
+				array(
+					'oi_name' => $this->page->getDBKey(),
+					'oi_archive_name' => $where ),
 				__METHOD__ );
 			while( $row = $dbr->fetchObject( $result ) ) {
 				$filesObjs[$row->oi_archive_name] = RepoGroup::singleton()->getLocalRepo()->newFileFromRow( $row );
@@ -362,10 +369,10 @@ class RevisionDeleteForm {
 			foreach( $this->afiles as $id ) {
 				$where[] = intval($id);
 			}
-			$whereClause = 'fa_id IN(' . implode(',',$where) . ')';
 			$result = $dbr->select( 'filearchive', '*',
-				array( 'fa_name' => $this->page->getDBKey(),
-					$whereClause ),
+				array(
+					'fa_name' => $this->page->getDBKey(),
+					'fa_id' => $where ),
 				__METHOD__ );
 			while( $row = $dbr->fetchObject( $result ) ) {
 				$filesObjs[$row->fa_id] = ArchivedFile::newFromRow( $row );
@@ -459,9 +466,10 @@ class RevisionDeleteForm {
 			$where[] = intval($logid);
 		}
 		list($log,$logtype) = explode( '/',$this->page->getDBKey(), 2 );
-		$whereClause = "log_type = '$logtype' AND log_id IN(" . implode(',',$where) . ")";
 		$result = $dbr->select( 'logging', '*',
-			array( $whereClause ),
+			array(
+				'log_type' => $logtype,
+				'log_id' => $where ),
 			__METHOD__ );
 		while( $row = $dbr->fetchObject( $result ) ) {
 			$logRows[$row->log_id] = $row;
@@ -484,7 +492,7 @@ class RevisionDeleteForm {
 			$bitfields |= $logRows[$logid]->log_deleted;
 		}
 		if( !$logItems ) {
-			$wgOut->showErrorPage( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
+			$wgOut->showErrorPage( 'revdelete-nologid-title', 'revdelete-nologid-text' );
 			return;
 		}
 		
@@ -812,10 +820,10 @@ class RevisionDeleter {
 		foreach( $items as $revid ) {
 			$where[] = intval($revid);
 		}
-		$whereClause = 'rev_id IN(' . implode(',',$where) . ')';
 		$result = $this->dbw->select( 'revision', '*',
-			array( 'rev_page' => $title->getArticleID(),
-				$whereClause ),
+			array(
+				'rev_page' => $title->getArticleID(),
+				'rev_id' => $where ),
 			__METHOD__ );
 		while( $row = $this->dbw->fetchObject( $result ) ) {
 			$revObjs[$row->rev_id] = new Revision( $row );
@@ -871,11 +879,11 @@ class RevisionDeleter {
 		foreach( $items as $timestamp ) {
 			$where[] = $this->dbw->addQuotes( $timestamp );
 		}
-		$whereClause = 'ar_timestamp IN(' . implode(',',$where) . ')';
 		$result = $this->dbw->select( 'archive', '*',
-			array( 'ar_namespace' => $title->getNamespace(),
+			array(
+				'ar_namespace' => $title->getNamespace(),
 				'ar_title' => $title->getDBKey(),
-					$whereClause ),
+				'ar_timestamp' => $where ),
 			__METHOD__ );
 		while( $row = $this->dbw->fetchObject( $result ) ) {
 			$revObjs[$row->ar_timestamp] = new Revision( array(
@@ -941,10 +949,10 @@ class RevisionDeleter {
 		foreach( $items as $timestamp ) {
 			$where[] = $this->dbw->addQuotes( $timestamp.'!'.$title->getDBKey() );
 		}
-		$whereClause = 'oi_archive_name IN(' . implode(',',$where) . ')';
 		$result = $this->dbw->select( 'oldimage', '*',
-			array( 'oi_name' => $title->getDBKey(),
-				$whereClause ),
+			array(
+				'oi_name' => $title->getDBKey(),
+				'oi_archive_name' => $where ),
 			__METHOD__ );
 		while( $row = $this->dbw->fetchObject( $result ) ) {
 			$filesObjs[$row->oi_archive_name] = RepoGroup::singleton()->getLocalRepo()->newFileFromRow( $row );
@@ -1034,10 +1042,9 @@ class RevisionDeleter {
 		foreach( $items as $id ) {
 			$where[] = intval($id);
 		}
-		$whereClause = 'fa_id IN(' . implode(',',$where) . ')';
 		$result = $this->dbw->select( 'filearchive', '*',
 			array( 'fa_name' => $title->getDBKey(),
-				$whereClause ),
+				'fa_id' => $where ),
 			__METHOD__ );
 		while( $row = $this->dbw->fetchObject( $result ) ) {
 			$filesObjs[$row->fa_id] = ArchivedFile::newFromRow( $row );
@@ -1091,9 +1098,10 @@ class RevisionDeleter {
 			$where[] = intval($logid);
 		}
 		list($log,$logtype) = explode( '/',$title->getDBKey(), 2 );
-		$whereClause = "log_type ='$logtype' AND log_id IN(" . implode(',',$where) . ")";
 		$result = $this->dbw->select( 'logging', '*',
-			array( $whereClause ),
+			array(
+				'log_type' => $logtype,
+				'log_id' => $where ),
 			__METHOD__ );
 		while( $row = $this->dbw->fetchObject( $result ) ) {
 			$logRows[$row->log_id] = $row;

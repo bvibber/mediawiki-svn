@@ -15,6 +15,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$opts = parent::getDefaultOptions();
 		$opts->add( 'target', '' );
 		$opts->add( 'showlinkedto', false );
+		$opts->add( 'tagfilter', '' );
 		return $opts;
 	}
 
@@ -22,9 +23,10 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 		$opts['target'] = $par;
 	}
 
-	public function feedSetup(){
+	public function feedSetup() {
 		global $wgRequest;
 		$opts = parent::feedSetup();
+		# Feed is cached on limit,hideminor,target; other params would randomly not work
 		$opts['target'] = $wgRequest->getVal( 'target' );
 		return $opts;
 	}
@@ -82,6 +84,8 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$join_conds['watchlist'] = array( 'LEFT JOIN', "wl_user={$uid} AND wl_title=rc_title AND wl_namespace=rc_namespace" );
 		}
 
+		ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds, $opts['tagfilter'] );
+
 		// XXX: parent class does this, should we too?
 		// wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
 
@@ -133,9 +137,14 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 				}
 			}
 
-			$subsql[] = $dbr->selectSQLText( array_merge( $tables, array( $link_table ) ), $select, $conds + $subconds,
-							 __METHOD__, array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit ),
-							 $join_conds + array( $link_table => array( 'INNER JOIN', $subjoin ) ) );
+			$subsql[] = $dbr->selectSQLText( 
+				array_merge( $tables, array( $link_table ) ), 
+				$select, 
+				$conds + $subconds,
+				__METHOD__, 
+				array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit ),
+				$join_conds + array( $link_table => array( 'INNER JOIN', $subjoin ) )
+			);
 		}
 
 		if( count($subsql) == 0 )
@@ -163,6 +172,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			Xml::input( 'target', 40, str_replace('_',' ',$opts['target']) ) .
 			Xml::check( 'showlinkedto', $opts['showlinkedto'], array('id' => 'showlinkedto') ) . ' ' .
 			Xml::label( wfMsg("recentchangeslinked-to"), 'showlinkedto' ) );
+		$extraOpts['tagfilter'] = ChangeTags::buildTagFilterSelector( $opts['tagfilter'] );
 		return $extraOpts;
 	}
 

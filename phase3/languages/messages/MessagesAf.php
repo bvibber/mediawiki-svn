@@ -48,7 +48,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Dophoulys' ),
 	'Recentchanges'             => array( 'Onlangse wysigings', 'Onlangsewysigings' ),
 	'Upload'                    => array( 'Laai', 'Oplaai' ),
-	'Imagelist'                 => array( 'Beeldelys', 'Prentelys', 'Lêerslys' ),
+	'Listfiles'                 => array( 'Beeldelys', 'Prentelys', 'Lêerslys' ),
 	'Newimages'                 => array( 'Nuwe beelde', 'Nuwebeelde', 'Nuwe lêers', 'Nuwelêers' ),
 	'Listusers'                 => array( 'Gebruikerslys', 'Lysgebruikers' ),
 	'Listgrouprights'           => array( 'LysGroepRegte' ),
@@ -503,6 +503,10 @@ Kies asseblief 'n ander naam.",
 'badsig'                     => 'Ongeldige handtekening; gaan HTML na.',
 'badsiglength'               => 'Die handtekening is te lank. 
 Dit moet minder as $1 {{PLURAL:$1|karakter|karakters}} wees.',
+'yourgender'                 => 'Geslag:',
+'gender-unknown'             => 'Nie gespesifiseer',
+'gender-male'                => 'Man',
+'gender-female'              => 'Vrou',
 'email'                      => 'E-pos',
 'prefs-help-realname'        => 'Regte naam (opsioneel): as u hierdie verskaf, kan dit gebruik word om erkenning vir u werk te gee.',
 'loginerror'                 => 'Intekenfout',
@@ -527,7 +531,7 @@ Maak seker dit is reg gespel of [[Special:UserLogin/signup|skep \'n nuwe rekenin
 Dit moet ten minste {{PLURAL:$1|1 karakter|$1 karakters}} hê en kan nie u gebruikersnaam insluit nie.',
 'mailmypassword'             => "E-pos my 'n nuwe wagwoord",
 'passwordremindertitle'      => 'Wagwoordwenk van {{SITENAME}}',
-'passwordremindertext'       => 'Iemand (waarskynlik u vanaf IP-adres $1) het \'n nuwe wagwoord vir {{SITENAME}} ($4) gevra. \'n Tydelike wagwoord is vir gebruiker "$2" geskep. Die nuwe wagwoord is "$3". U kan met die tydelike wagwoord aanteken en \'n nuwe wagwoord stel.
+'passwordremindertext'       => 'Iemand (waarskynlik u vanaf IP-adres $1) het \'n nuwe wagwoord vir {{SITENAME}} ($4) gevra. \'n Tydelike wagwoord is vir gebruiker "$2" geskep. Die nuwe wagwoord is "$3". U kan met die tydelike wagwoord aanteken en \'n nuwe wagwoord stel. Die tydelike wagwoord sal na {{PLURAL:$5|een dag|$5 dae}} verval.
 
 Indien iemand anders hierdie navraag gerig het, of u het die wagwoord intussen onthou en wil nie meer die wagwoord wysig nie, kan u die boodskap ignoreer en voortgaan om die ou wagwoord te gebruik.',
 'noemail'                    => 'Daar is geen e-posadres vir gebruiker "$1" nie.',
@@ -557,10 +561,10 @@ Indien hierdie rekening foutief geskep is, kan u hierdie boodskap ignoreer.',
 'loginlanguagelabel'         => 'Taal: $1',
 
 # Password reset dialog
-'resetpass'                 => 'Herstel rekening wagwoord',
+'resetpass'                 => 'Verander wagwoord',
 'resetpass_announce'        => "U het aangeteken met 'n tydelike e-poskode.
 Om voort te gaan moet u 'n nuwe wagwoord hier kies:",
-'resetpass_header'          => 'Herstel wagwoord',
+'resetpass_header'          => 'Verander wagwoord',
 'oldpassword'               => 'Ou wagwoord',
 'newpassword'               => 'Nuwe wagwoord',
 'retypenew'                 => 'Tik nuwe wagwoord weer in',
@@ -978,6 +982,7 @@ bevat, word gewys).",
 'prefs-watchlist-days'     => 'Aantal dae om in dophoulys te wys:',
 'prefs-watchlist-edits'    => 'Aantal wysigings om in uitgebreide dophoulys te wys:',
 'prefs-misc'               => 'Allerlei',
+'prefs-resetpass'          => 'Verander wagwoord',
 'saveprefs'                => 'Stoor voorkeure',
 'resetprefs'               => 'Herstel voorkeure',
 'textboxsize'              => 'Wysiging',
@@ -1224,18 +1229,18 @@ Die verwyderingsinligting van die lêer word vir u gemak hier herhaal:",
 'upload_source_url'  => " ('n geldige, publiek toeganklike URL)",
 'upload_source_file' => " ('n lêer op u rekenaar)",
 
-# Special:FileList
-'imagelist-summary'     => 'Die spesiale bladsy wys al die opgelaaide lêers.
+# Special:ListFiles
+'listfiles-summary'     => 'Die spesiale bladsy wys al die opgelaaide lêers.
 Die nuutste lêer word eerste vertoon.
 Klik op die opskrifte om die tabel anders te sorteer.',
-'imagelist_search_for'  => 'Soek vir medianaam:',
+'listfiles_search_for'  => 'Soek vir medianaam:',
 'imgfile'               => 'lêer',
-'imagelist'             => 'Prentelys',
-'imagelist_date'        => 'Datum',
-'imagelist_name'        => 'Naam',
-'imagelist_user'        => 'Gebruiker',
-'imagelist_size'        => 'Grootte',
-'imagelist_description' => 'Beskrywing',
+'listfiles'             => 'Prentelys',
+'listfiles_date'        => 'Datum',
+'listfiles_name'        => 'Naam',
+'listfiles_user'        => 'Gebruiker',
+'listfiles_size'        => 'Grootte',
+'listfiles_description' => 'Beskrywing',
 
 # File description page
 'filehist'                       => 'Lêergeskiedenis',
@@ -1450,7 +1455,8 @@ U kan die resultate vernou deur 'n boekstaaftipe, gebruikersnaam of spesifieke b
 'special-categories-sort-abc'   => 'sorteer alfabeties',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Geskrapte gebruikersbydraes',
+'deletedcontributions'       => 'Geskrapte gebruikersbydraes',
+'deletedcontributions-title' => 'Geskrapte gebruikersbydraes',
 
 # Special:LinkSearch
 'linksearch'       => 'Soek webskakels',
@@ -1660,7 +1666,7 @@ Hier is die huidige verstellings vir bladsy <strong>$1</strong>:",
 'undeletepage'             => 'Bekyk en herstel geskrapte bladsye',
 'undeletepagetitle'        => "'''Hier onder is die verwyderde bydraes van [[:$1]]'''.",
 'viewdeletedpage'          => 'Bekyk geskrapte bladsye',
-'undeletepagetext'         => 'Die volgende bladsye is geskrap, maar hulle is nog in die argief en kan herstel word. Die argief kan periodiek skoongemaak word.',
+'undeletepagetext'         => 'Die volgende {{PLURAL:$1|bladsy|$1 bladsye}} is geskrap, maar is nog in die argief en kan teruggeplaas word. Die argief van geskrapte blaaie kan periodiek skoongemaak word.',
 'undeleterevisions'        => '$1 {{PLURAL:$1|weergawe|weergawes}} in argief',
 'undeletehistory'          => "As u die bladsy herstel, sal alle weergawes herstel word.
 As 'n nuwe bladsy met dieselfde naam sedert die skrapping geskep is, sal die herstelde weergawes in die nuwe bladsy se voorgeskiedenis verskyn en die huidige weergawe van die lewendige bladsy sal nie outomaties vervang word nie.",

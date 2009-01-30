@@ -348,12 +348,12 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'sourcefilename'    => "Nomm da l'archivi surgeent:",
 'destfilename'      => "Nomm da l'archivi da destinazziun:",
 
-# Special:FileList
+# Special:ListFiles
 'imgfile'        => 'archivi',
-'imagelist'      => 'Listá i imàgin',
-'imagelist_date' => 'Dada',
-'imagelist_name' => 'Nomm',
-'imagelist_user' => 'Dovratt',
+'listfiles'      => 'Listá i imàgin',
+'listfiles_date' => 'Dada',
+'listfiles_name' => 'Nomm',
+'listfiles_user' => 'Dovratt',
 
 # File description page
 'filehist-revert' => "Butar torna 'me ch'al era",
@@ -425,7 +425,8 @@ Spiegazziún di símbui: (cur) = difərenza cun la versiún curénta, (ültima) 
 'categories' => 'Categurii',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Cuntribüziun scancelaa',
+'deletedcontributions'       => 'Cuntribüziun scancelaa',
+'deletedcontributions-title' => 'Cuntribüziun scancelaa',
 
 # E-mail user
 'emailuser' => 'Manda un email al duvrátt',

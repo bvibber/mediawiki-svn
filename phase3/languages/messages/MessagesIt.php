@@ -79,7 +79,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'OsservatiSpeciali' ),
 	'Recentchanges'             => array( 'UltimeModifiche' ),
 	'Upload'                    => array( 'Carica' ),
-	'Imagelist'                 => array( 'Immagini' ),
+	'Listfiles'                 => array( 'Immagini' ),
 	'Newimages'                 => array( 'ImmaginiRecenti' ),
 	'Listusers'                 => array( 'Utenti', 'ElencoUtenti' ),
 	'Listgrouprights'           => array( 'ElencoPermessiGruppi' ),
@@ -164,6 +164,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Evidenzia <a href="" class="new">così</a> i collegamenti a pagine inesistenti (se disattivato: così<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Allineamento dei paragrafi giustificato',
 'tog-hideminor'               => 'Nascondi le modifiche minori nelle ultime modifiche',
+'tog-hidepatrolled'           => 'Nascondi le modifiche verificate nelle ultime modifiche',
+'tog-newpageshidepatrolled'   => "Nascondi le pagine verificate dell'elenco delle pagine più recenti",
 'tog-extendwatchlist'         => "Mostra tutte le modifiche agli osservati speciali, non solo l'ultima",
 'tog-usenewrc'                => 'Ultime modifiche avanzate (richiede JavaScript)',
 'tog-numberheadings'          => 'Numerazione automatica dei titoli di sezione',
@@ -198,6 +200,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Nascondi le modifiche minori negli osservati speciali',
 'tog-watchlisthideliu'        => 'Nascondi le modifiche degli utenti registrati negli osservati speciali',
 'tog-watchlisthideanons'      => 'Nascondi le modifiche degli utenti anonimi negli osservati speciali',
+'tog-watchlisthidepatrolled'  => 'Nascondi le modifiche verificate negli osservati speciali',
 'tog-nolangconversion'        => 'Disattiva la conversione tra varianti linguistiche',
 'tog-ccmeonemails'            => 'Inviami una copia dei messaggi spediti agli altri utenti',
 'tog-diffonly'                => 'Non visualizzare il contenuto della pagina dopo il confronto tra versioni',
@@ -554,6 +557,10 @@ L'account è stato creato correttamente. Non dimenticare di personalizzare le pr
 'yournick'                   => 'Soprannome (nickname):',
 'badsig'                     => 'Errore nella firma non standard, verificare i tag HTML.',
 'badsiglength'               => 'Il soprannome scelto è troppo lungo, non deve superare $1 {{PLURAL:$1|carattere|caratteri}}.',
+'yourgender'                 => 'Genere:',
+'gender-unknown'             => 'Non specificato',
+'gender-male'                => 'Maschile',
+'gender-female'              => 'Femminile',
 'email'                      => 'Indirizzo e-mail',
 'prefs-help-realname'        => "L'indicazione del proprio nome vero è opzionale; se si sceglie di inserirlo, verrà utilizzato per attribuire la paternità dei contenuti inviati.",
 'loginerror'                 => "Errore nell'accesso",
@@ -575,7 +582,7 @@ Deve contenere almeno {{PLURAL:$1|1 carattere|$1 caratteri}} ed essere diversa d
 'passwordremindertitle'      => 'Servizio Password Reminder di {{SITENAME}}',
 'passwordremindertext'       => 'Qualcuno (probabilmente tu, con indirizzo IP $1) ha richiesto l\'invio di una nuova password di accesso a {{SITENAME}} ($4).
 Una password temporanea per l\'utente "$2" è stata impostata a "$3".
-È opportuno eseguire un accesso quanto prima e cambiare la password immediatamente.
+È opportuno eseguire un accesso quanto prima e cambiare la password immediatamente. La password temporanea scadrà dopo {{PLURAL:$5|un giorno|$5 giorni}}.
 
 Se non sei stato tu a fare la richiesta, oppure hai ritrovato la password e non desideri più cambiarla, puoi ignorare questo messaggio e continuare a usare la vecchia password.',
 'noemail'                    => 'Nessun indirizzo e-mail registrato per l\'utente "$1".',
@@ -840,54 +847,60 @@ Legenda: (corr) = differenze con la versione corrente, (prec) = differenze con l
 'history-feed-empty'          => 'La pagina richiesta non esiste; potrebbe essere stata cancellata dal sito o rinominata. Verificare con la [[Special:Search|pagina di ricerca]] se vi sono nuove pagine.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(commento rimosso)',
-'rev-deleted-user'            => '(nome utente rimosso)',
-'rev-deleted-event'           => '(azione del log rimossa)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+'rev-deleted-comment'            => '(commento rimosso)',
+'rev-deleted-user'               => '(nome utente rimosso)',
+'rev-deleted-event'              => '(azione del log rimossa)',
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks">
 Questa versione della pagina è stata rimossa dagli archivi visibili al pubblico.
 Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
 </div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
+'rev-deleted-text-view'          => '<div class="mw-warning plainlinks">
 Questa versione della pagina è stata rimossa dagli archivi visibili al pubblico.
 Il testo può essere visualizzato soltanto dagli amministratori del sito.
 Consultare il [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} log di cancellazione] per ulteriori dettagli.
 </div>',
-'rev-delundel'                => 'mostra/nascondi',
-'revisiondelete'              => 'Cancella o ripristina versioni',
-'revdelete-nooldid-title'     => 'Versione non specificata',
-'revdelete-nooldid-text'      => 'Non è stata specificata alcuna versione della pagina su cui eseguire questa funzione.',
-'revdelete-selected'          => "'''{{PLURAL:$2|Versione selezionata|Versioni selezionate}} di [[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|Evento del registro selezionato|Eventi del registro selezionati}}:'''",
-'revdelete-text'              => "'''Le versioni cancellate restano visibili nella cronologia della pagina, mentre il testo contenuto non è accessibile al pubblico.'''
+'rev-delundel'                   => 'mostra/nascondi',
+'revisiondelete'                 => 'Cancella o ripristina versioni',
+'revdelete-nooldid-title'        => 'Versione non specificata',
+'revdelete-nooldid-text'         => 'Non è stata specificata alcuna versione della pagina su cui eseguire questa funzione.',
+'revdelete-nologtype-title'      => 'Nessun tipo di registro specificato',
+'revdelete-nologtype-text'       => "Non è stato specificato alcun tipo di registro su cui eseguire l'azione.",
+'revdelete-toomanytargets-title' => 'Troppi target',
+'revdelete-toomanytargets-text'  => "Hai specificato troppi tipi di target per eseguire quest'operazione.",
+'revdelete-nologid-title'        => 'Errore di indicazione del log',
+'revdelete-nologid-text'         => 'Per eseguire questa funzione non hai specificato un target per il log oppure il log non esiste.',
+'revdelete-selected'             => "'''{{PLURAL:$2|Versione selezionata|Versioni selezionate}} di [[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|Evento del registro selezionato|Eventi del registro selezionati}}:'''",
+'revdelete-text'                 => "'''Le versioni cancellate restano visibili nella cronologia della pagina, mentre il testo contenuto non è accessibile al pubblico.'''
 
 Gli altri amministratori del sito potranno accedere comunque ai contenuti nascosti e ripristinarli attraverso questa stessa interfaccia, se non sono state impostate altre limitazioni in fase di installazione del sito.",
-'revdelete-legend'            => 'Imposta le seguenti limitazioni sulle versioni cancellate:',
-'revdelete-hide-text'         => 'Nascondi il testo della versione',
-'revdelete-hide-name'         => 'Nascondi azione e oggetto della stessa',
-'revdelete-hide-comment'      => "Nascondi l'oggetto della modifica",
-'revdelete-hide-user'         => "Nascondi il nome o l'indirizzo IP dell'autore",
-'revdelete-hide-restricted'   => 'Applica le limitazioni indicate anche agli amministratori',
-'revdelete-suppress'          => 'Nascondi le informazioni anche agli amministratori',
-'revdelete-hide-image'        => 'Nascondi i contenuti del file',
-'revdelete-unsuppress'        => 'Elimina le limitazioni sulle revisioni ripristinate',
-'revdelete-log'               => 'Commento per il log:',
-'revdelete-submit'            => 'Applica alla revisione selezionata',
-'revdelete-logentry'          => 'ha modificato la visibilità per una revisione di [[$1]]',
-'logdelete-logentry'          => "ha modificato la visibilità dell'evento [[$1]]",
-'revdelete-success'           => "'''Visibilità della revisione impostata correttamente.'''",
-'logdelete-success'           => "'''Visibilità dell'evento impostata correttamente.'''",
-'revdel-restore'              => 'Cambia la visibilità',
-'pagehist'                    => 'Cronologia della pagina',
-'deletedhist'                 => 'Cronologia cancellata',
-'revdelete-content'           => 'contenuto',
-'revdelete-summary'           => 'riassunto della modifica',
-'revdelete-uname'             => 'nome utente',
-'revdelete-restricted'        => 'limitazioni ai soli amministratori attivate',
-'revdelete-unrestricted'      => 'limitazioni ai soli amministratori rimosse',
-'revdelete-hid'               => 'nascondi $1',
-'revdelete-unhid'             => 'rendi visibile $1',
-'revdelete-log-message'       => '$1 per $2 {{PLURAL:$2|revisione|revisioni}}',
-'logdelete-log-message'       => '$1 per $2 {{PLURAL:$2|evento|eventi}}',
+'revdelete-legend'               => 'Imposta le seguenti limitazioni sulle versioni cancellate:',
+'revdelete-hide-text'            => 'Nascondi il testo della versione',
+'revdelete-hide-name'            => 'Nascondi azione e oggetto della stessa',
+'revdelete-hide-comment'         => "Nascondi l'oggetto della modifica",
+'revdelete-hide-user'            => "Nascondi il nome o l'indirizzo IP dell'autore",
+'revdelete-hide-restricted'      => 'Applica le limitazioni indicate anche agli amministratori',
+'revdelete-suppress'             => 'Nascondi le informazioni anche agli amministratori',
+'revdelete-hide-image'           => 'Nascondi i contenuti del file',
+'revdelete-unsuppress'           => 'Elimina le limitazioni sulle revisioni ripristinate',
+'revdelete-log'                  => 'Commento per il log:',
+'revdelete-submit'               => 'Applica alla revisione selezionata',
+'revdelete-logentry'             => 'ha modificato la visibilità per una revisione di [[$1]]',
+'logdelete-logentry'             => "ha modificato la visibilità dell'evento [[$1]]",
+'revdelete-success'              => "'''Visibilità della revisione impostata correttamente.'''",
+'logdelete-success'              => "'''Visibilità dell'evento impostata correttamente.'''",
+'revdel-restore'                 => 'Cambia la visibilità',
+'pagehist'                       => 'Cronologia della pagina',
+'deletedhist'                    => 'Cronologia cancellata',
+'revdelete-content'              => 'contenuto',
+'revdelete-summary'              => 'riassunto della modifica',
+'revdelete-uname'                => 'nome utente',
+'revdelete-restricted'           => 'limitazioni ai soli amministratori attivate',
+'revdelete-unrestricted'         => 'limitazioni ai soli amministratori rimosse',
+'revdelete-hid'                  => 'nascondi $1',
+'revdelete-unhid'                => 'rendi visibile $1',
+'revdelete-log-message'          => '$1 per $2 {{PLURAL:$2|revisione|revisioni}}',
+'logdelete-log-message'          => '$1 per $2 {{PLURAL:$2|evento|eventi}}',
 
 # Suppression log
 'suppressionlog'     => 'Log delle soppressioni',
@@ -1085,6 +1098,7 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'prefs-resetpass'           => 'Cambia password',
 'saveprefs'                 => 'Salva le preferenze',
 'resetprefs'                => 'Reimposta le preferenze',
+'restoreprefs'              => 'Ripristina le impostazioni di default',
 'textboxsize'               => 'Casella di modifica',
 'prefs-edit-boxsize'        => 'Dimensioni della finestra di modifica.',
 'rows'                      => 'Righe:',
@@ -1113,6 +1127,8 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'defaultns'                 => 'Cerca in questi namespace se non diversamente specificato:',
 'default'                   => 'predefinito',
 'files'                     => 'File',
+'prefs-custom-css'          => 'CSS personalizzato',
+'prefs-custom-js'           => 'JS personalizzato',
 
 # User rights
 'userrights'                  => 'Gestione dei permessi relativi agli utenti', # Not used as normal message but as header for the special page itself
@@ -1230,6 +1246,7 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'action-move'                 => 'spostare questa pagina',
 'action-move-subpages'        => 'spostare questa pagina e le relative sottopagine',
 'action-move-rootuserpages'   => 'spostare le pagine principali degli utenti',
+'action-movefile'             => 'spostare questo file',
 'action-upload'               => 'caricare questo file',
 'action-reupload'             => 'sovrascrivere questo file esistente',
 'action-reupload-shared'      => "sovrascrivere questo file presente nell'archivio condiviso",
@@ -1319,6 +1336,7 @@ Guarda la [[Special:NewFiles|galleria dei nuovi file]] per una visione d'insieme
 'filename'                    => 'Nome del file',
 'filedesc'                    => 'Dettagli',
 'fileuploadsummary'           => 'Dettagli del file:',
+'filereuploadsummary'         => 'Cambiamenti al file:',
 'filestatus'                  => 'Informazioni sul copyright:',
 'filesource'                  => 'Fonte:',
 'uploadedfiles'               => 'Elenco dei file caricati',
@@ -1357,6 +1375,7 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 'overwroteimage'              => 'ha caricato una nuova versione di "[[$1]]"',
 'uploaddisabled'              => 'Siamo spiacenti, ma il caricamento di file è temporaneamente sospeso.',
 'uploaddisabledtext'          => 'Il caricamento dei file non è attivo.',
+'php-uploaddisabledtext'      => 'Il caricamento di file tramite PHP è disabilitato. Controlla la configurazione di file_uploads.',
 'uploadscripted'              => 'Questo file contiene codice HTML o di script, che potrebbe essere interpretato erroneamente da un browser web.',
 'uploadcorrupt'               => "Il file è corrotto o ha un'estensione non corretta. Controllare il file e provare di nuovo il caricamento.",
 'uploadvirus'                 => 'Questo file contiene un virus! Dettagli: $1',
@@ -1404,18 +1423,19 @@ PICT # misc.
 'upload_source_url'  => ' (una URL corretta e accessibile)',
 'upload_source_file' => ' (un file sul proprio computer)',
 
-# Special:FileList
-'imagelist-summary'     => "Questa pagina speciale mostra tutti i file caricati.
+# Special:ListFiles
+'listfiles-summary'     => "Questa pagina speciale mostra tutti i file caricati.
 I file caricati più di recente vengono mostrati all'inizio della lista.
 Per modificare l'ordinamento, fare clic sull'intestazione della colonna prescelta.",
-'imagelist_search_for'  => 'Ricerca immagini per nome:',
+'listfiles_search_for'  => 'Ricerca immagini per nome:',
 'imgfile'               => 'file',
-'imagelist'             => 'Elenco dei file',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Nome',
-'imagelist_user'        => 'Utente',
-'imagelist_size'        => 'Dimensione in byte',
-'imagelist_description' => 'Descrizione',
+'listfiles'             => 'Elenco dei file',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Nome',
+'listfiles_user'        => 'Utente',
+'listfiles_size'        => 'Dimensione in byte',
+'listfiles_description' => 'Descrizione',
+'listfiles_count'       => 'Versioni',
 
 # File description page
 'filehist'                       => 'Cronologia del file',
@@ -1591,7 +1611,9 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 'protectedtitlesempty'    => 'Al momento non esistono titoli protetti con i parametri specificati.',
 'listusers'               => 'Elenco degli utenti',
 'listusers-editsonly'     => 'Mostra solo utenti con dei contributi',
+'listusers-creationsort'  => 'Ordina per data di creazione',
 'usereditcount'           => '$1 {{PLURAL:$1|contributo|contributi}}',
+'usercreated'             => 'Creato il $1 alle $2',
 'newpages'                => 'Pagine più recenti',
 'newpages-username'       => 'Nome utente:',
 'ancientpages'            => 'Pagine meno recenti',
@@ -1651,7 +1673,8 @@ Vedi anche le [[Special:WantedCategories|categorie richieste]].',
 'special-categories-sort-abc'   => 'ordina alfabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Contributi utente cancellati',
+'deletedcontributions'       => 'Contributi utente cancellati',
+'deletedcontributions-title' => 'Contributi utente cancellati',
 
 # Special:LinkSearch
 'linksearch'       => 'Ricerca collegamenti esterni',
@@ -1690,26 +1713,28 @@ Potrebbero esserci [[{{MediaWiki:Listgrouprights-helppage}}|ulteriori informazio
 'listgrouprights-removegroup-all' => 'Può rimuovere tutti i gruppi',
 
 # E-mail user
-'mailnologin'     => 'Nessun indirizzo cui inviare il messaggio',
-'mailnologintext' => 'Per inviare messaggi e-mail ad altri utenti è necessario [[Special:UserLogin|accedere al sito]] e aver registrato un indirizzo valido nelle proprie [[Special:Preferences|preferenze]].',
-'emailuser'       => "Scrivi all'utente",
-'emailpage'       => "Invia un messaggio e-mail all'utente",
-'emailpagetext'   => 'È possibile utilizzare il modulo seguente per inviare un\'email a questo utente. L\'indirizzo indicato nelle [[Special:Preferences|preferenze]] del mittente apparirà nel campo "Da:" del messaggio per consentire al destinatario di rispondere direttamente.',
-'usermailererror' => "L'oggetto mail ha restituito l'errore:",
-'defemailsubject' => 'Messaggio da {{SITENAME}}',
-'noemailtitle'    => 'Nessun indirizzo e-mail',
-'noemailtext'     => 'Questo utente non ha indicato un indirizzo e-mail valido, oppure ha scelto di non ricevere messaggi di posta elettronica dagli altri utenti.',
-'email-legend'    => 'Invia una e-mail a un altro utente di {{SITENAME}}',
-'emailfrom'       => 'Da:',
-'emailto'         => 'A:',
-'emailsubject'    => 'Oggetto:',
-'emailmessage'    => 'Messaggio:',
-'emailsend'       => 'Invia',
-'emailccme'       => 'Invia in copia al mio indirizzo.',
-'emailccsubject'  => 'Copia del messaggio inviato a $1: $2',
-'emailsent'       => 'Messaggio inviato',
-'emailsenttext'   => 'Il messaggio e-mail è stato inviato.',
-'emailuserfooter' => 'Questa e-mail è stata inviata da $1 a $2 attraverso la funzione "Invia un messaggio e-mail all\'utente" su {{SITENAME}}.',
+'mailnologin'      => 'Nessun indirizzo cui inviare il messaggio',
+'mailnologintext'  => 'Per inviare messaggi e-mail ad altri utenti è necessario [[Special:UserLogin|accedere al sito]] e aver registrato un indirizzo valido nelle proprie [[Special:Preferences|preferenze]].',
+'emailuser'        => "Scrivi all'utente",
+'emailpage'        => "Invia un messaggio e-mail all'utente",
+'emailpagetext'    => 'È possibile utilizzare il modulo seguente per inviare un\'email a questo utente. L\'indirizzo indicato nelle [[Special:Preferences|preferenze]] del mittente apparirà nel campo "Da:" del messaggio per consentire al destinatario di rispondere direttamente.',
+'usermailererror'  => "L'oggetto mail ha restituito l'errore:",
+'defemailsubject'  => 'Messaggio da {{SITENAME}}',
+'noemailtitle'     => 'Nessun indirizzo e-mail',
+'noemailtext'      => 'Questo utente non ha indicato un indirizzo e-mail valido.',
+'nowikiemailtitle' => 'E-mail non permessa',
+'nowikiemailtext'  => 'Questo utente ha scelto di non ricevere messaggi di posta elettronica dagli altri utenti.',
+'email-legend'     => 'Invia una e-mail a un altro utente di {{SITENAME}}',
+'emailfrom'        => 'Da:',
+'emailto'          => 'A:',
+'emailsubject'     => 'Oggetto:',
+'emailmessage'     => 'Messaggio:',
+'emailsend'        => 'Invia',
+'emailccme'        => 'Invia in copia al mio indirizzo.',
+'emailccsubject'   => 'Copia del messaggio inviato a $1: $2',
+'emailsent'        => 'Messaggio inviato',
+'emailsenttext'    => 'Il messaggio e-mail è stato inviato.',
+'emailuserfooter'  => 'Questa e-mail è stata inviata da $1 a $2 attraverso la funzione "Invia un messaggio e-mail all\'utente" su {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Osservati speciali',
@@ -2123,6 +2148,8 @@ In questi casi, se lo si ritiene opportuno, occorre spostare o aggiungere manual
 'movepagebtn'                  => 'Sposta la pagina',
 'pagemovedsub'                 => 'Spostamento effettuato con successo',
 'movepage-moved'               => '<big>\'\'\'"$1" è stata spostata a "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'È stato creato un redirect.',
+'movepage-moved-noredirect'    => 'La creazione di un reindirizzamento è stata soppressa.',
 'articleexists'                => 'Una pagina con questo nome esiste già, oppure il nome che hai scelto non è valido.<br /> Scegli, per cortesia, un titolo diverso per la pagina.',
 'cantmove-titleprotected'      => 'Lo spostamento della pagina non è possibile in quanto il nuovo titolo è stato protetto per impedirne la creazione',
 'talkexists'                   => "'''La pagina è stata spostata correttamente, ma non è stato possibile spostare la pagina di discussione perché ne esiste già un'altra con il nuovo titolo. Integrare manualmente i contenuti delle due pagine.'''",
@@ -2136,6 +2163,7 @@ In questi casi, se lo si ritiene opportuno, occorre spostare o aggiungere manual
 'movepage-max-pages'           => 'È stato spostato il numero massimo di $1 {{PLURAL:$1|pagina|pagine}} e non protranno essere spostate ulteriori pagine automaticamente.',
 '1movedto2'                    => 'ha spostato [[$1]] a [[$2]]',
 '1movedto2_redir'              => 'ha spostato [[$1]] a [[$2]] tramite redirect',
+'move-redirect-suppressed'     => 'reindirizzamento soppresso',
 'movelogpage'                  => 'Spostamenti',
 'movelogpagetext'              => 'Di seguito sono elencate le pagine spostate di recente.',
 'movereason'                   => 'Motivo:',
@@ -2149,7 +2177,7 @@ La pagina specificata come destinazione "[[:$1]]" esiste già. Vuoi cancellarla 
 'selfmove'                     => "Il titolo di destinazione inserito è uguale a quello di provenienza: '''attenzione''', leggi i titoli dei campi prima di confermare un comando! Il secondo campo contiene un commento che è necessario per giustificare lo spostamento della pagine e viene memorizzato nel log.",
 'immobile-source-namespace'    => 'Non puoi spostare pagine nel namespace "$1"',
 'immobile-target-namespace'    => 'Non puoi spostare pagine nel namespace "$1"',
-'immobile-target-namespace-iw' => 'Il link interwiki non è una valida motivazione per spostare una pagina.',
+'immobile-target-namespace-iw' => 'Il link interwiki non è una destinazione valida per spostare la pagina.',
 'immobile-source-page'         => 'Questa pagina non può essere spostata.',
 'immobile-target-page'         => 'Non puoi spostare a questo titolo.',
 'imagenocrossnamespace'        => "Non puoi spostare un'immagine fuori del namespace Immagine.",
@@ -2728,11 +2756,9 @@ I collegamenti successivi, sulla stessa riga, sono considerati come eccezioni (o
 'confirmemail'             => 'Conferma indirizzo e-mail',
 'confirmemail_noemail'     => 'Non è stato indicato un indirizzo e-mail valido nelle proprie [[Special:Preferences|preferenze]].',
 'confirmemail_text'        => "Questo sito richiede la verifica dell'indirizzo e-mail prima di poter usare le funzioni connesse all'email. Premere il pulsante qui sotto per inviare una richiesta di conferma al proprio indirizzo; nel messaggio è presente un collegamento che contiene un codice. Visitare il collegamento con il proprio browser per confermare che l'indirizzo e-mail è valido.",
-'confirmemail_pending'     => '<div class="error">
-Il codice di conferma è già stato spedito via posta elettronica; se l\'account è stato
-creato di recente, si prega di attendere l\'arrivo del codice per qualche minuto prima
-di tentare di richiederne uno nuovo.
-</div>',
+'confirmemail_pending'     => "Il codice di conferma è già stato spedito via posta elettronica; se l'account è stato
+creato di recente, si prega di attendere l'arrivo del codice per qualche minuto prima
+di tentare di richiederne uno nuovo.",
 'confirmemail_send'        => 'Invia un codice di conferma via e-mail.',
 'confirmemail_sent'        => 'Messaggio e-mail di conferma inviato.',
 'confirmemail_oncreate'    => "Un codice di conferma è stato spedito all'indirizzo

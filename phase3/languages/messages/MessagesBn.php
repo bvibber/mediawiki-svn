@@ -1042,15 +1042,15 @@ $3-এর দেয়া কারণ হল ''$2''",
 'upload_source_url'  => ' (একটি বৈধ, উন্মুক্ত URL)',
 'upload_source_file' => ' (আপনার কম্পিউটারের একটি ফাইল)',
 
-# Special:FileList
-'imagelist_search_for'  => 'ছবির নাম অনুসন্ধান:',
+# Special:ListFiles
+'listfiles_search_for'  => 'ছবির নাম অনুসন্ধান:',
 'imgfile'               => 'ফাইল',
-'imagelist'             => 'ছবির তালিকা',
-'imagelist_date'        => 'তারিখ',
-'imagelist_name'        => 'নাম',
-'imagelist_user'        => 'ব্যবহারকারী',
-'imagelist_size'        => 'আকার',
-'imagelist_description' => 'বিবরণ',
+'listfiles'             => 'ছবির তালিকা',
+'listfiles_date'        => 'তারিখ',
+'listfiles_name'        => 'নাম',
+'listfiles_user'        => 'ব্যবহারকারী',
+'listfiles_size'        => 'আকার',
+'listfiles_description' => 'বিবরণ',
 
 # File description page
 'filehist'                  => 'ফাইলের ইতিহাস',
@@ -1230,7 +1230,8 @@ $3-এর দেয়া কারণ হল ''$2''",
 'categoriespagetext' => 'এ উইকিতে বর্তমান বিষয়শ্রেণীসমূহ:',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'মুছে ফেলা ব্যবহারকারী অবদান',
+'deletedcontributions'       => 'মুছে ফেলা ব্যবহারকারী অবদান',
+'deletedcontributions-title' => 'মুছে ফেলা ব্যবহারকারী অবদান',
 
 # Special:LinkSearch
 'linksearch'      => 'ওয়েব লিঙ্কসমূহ অনুসন্ধান করো',
@@ -2160,9 +2161,7 @@ $1',
 'confirmemail'            => 'ই-মেইলের ঠিকানা নিশ্চিত করুন',
 'confirmemail_noemail'    => 'আপনার [[Special:Preferences|ব্যবহারকারী পছন্দগুলিতে]] কোন বৈধ ই-মেইল ঠিকানা দেয়া হয়নি।',
 'confirmemail_text'       => '{{SITENAME}}-এ ই-মেইল ফিচারগুলি ব্যবহার করার আগে আপনাকে আপনার ই-মেইল ঠিকানা নিশ্চিত করতে হবে। নিচের বোতামটি চেপে আপনার ই-মেইল ঠিকানায় একটি নিশ্চিতকরণ চিঠি পাঠান। এই চিঠিতে একটি কোড ধারণকারী সংযোগ থাকবে; আপনার ই-মেইল ঠিকানা যা বৈধ, তা নিশ্চিত করতে আপনার ব্রাউজারে এই সংযোগটি লোড করুন।',
-'confirmemail_pending'    => '<div class="error">
-আপনার কাছে ইতিমধ্যেই একটি নিশ্চিতকরণ কোড ই-মেইলে পাঠানো হয়েছে; যদি আপনি সম্প্রতি অ্যাকাউন্ট সৃষ্টি করে থাকেন, তবে নতুন একটি কোড অনুরোধ করার আগে কয়েক মিনিট অপেক্ষা করুন।
-</div>',
+'confirmemail_pending'    => 'আপনার কাছে ইতিমধ্যেই একটি নিশ্চিতকরণ কোড ই-মেইলে পাঠানো হয়েছে; যদি আপনি সম্প্রতি অ্যাকাউন্ট সৃষ্টি করে থাকেন, তবে নতুন একটি কোড অনুরোধ করার আগে কয়েক মিনিট অপেক্ষা করুন।',
 'confirmemail_send'       => 'নিশ্চিতকরণ ই-মেইল /কোড পাঠাও।',
 'confirmemail_sent'       => 'নিশ্চিতকরণ ই-মেইল পাঠানো হয়েছে।',
 'confirmemail_oncreate'   => 'আপনার ই-মেইল ঠিকানায় একটি নিশ্চিতকরণ কোড পাঠানো হয়েছে।

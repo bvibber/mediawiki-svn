@@ -618,7 +618,7 @@ class Linker {
 		$img = '';
 		$success = wfRunHooks('LinkerMakeExternalImage', array( &$url, &$alt, &$img ) );
 		if(!$success) {
-			wfDebug("Hook LinkerMakeExternalImage changed the output of external image with url {$url} and alt text {$alt} to {$img}", true);
+			wfDebug("Hook LinkerMakeExternalImage changed the output of external image with url {$url} and alt text {$alt} to {$img}\n", true);
 			return $img;
 		}
 		return Xml::element( 'img',
@@ -1020,7 +1020,7 @@ class Linker {
 		$link = '';
 		$success = wfRunHooks('LinkerMakeExternalLink', array( &$url, &$text, &$link ) );
 		if(!$success) {
-			wfDebug("Hook LinkerMakeExternalLink changed the output of link with url {$url} and text {$text} to {$link}", true);
+			wfDebug("Hook LinkerMakeExternalLink changed the output of link with url {$url} and text {$text} to {$link}\n", true);
 			return $link;
 		}
 		return '<a href="'.$url.'"'.$attribsText.'>'.$text.'</a>';
@@ -1515,11 +1515,21 @@ class Linker {
 	 * @param string $anchor  The anchor to give the headline (the bit after the #)
 	 * @param string $text    The text of the header
 	 * @param string $link    HTML to add for the section edit link
+	 * @param mixed  $legacyAnchor A second, optional anchor to give for
+	 *   backward compatibility (false to omit)
 	 *
 	 * @return string HTML headline
 	 */
-	public function makeHeadline( $level, $attribs, $anchor, $text, $link ) {
-		return "<a name=\"$anchor\" id=\"$anchor\"></a><h$level$attribs$link <span class=\"mw-headline\">$text</span></h$level>";
+	public function makeHeadline( $level, $attribs, $anchor, $text, $link, $legacyAnchor = false ) {
+		$ret = "<a name=\"$anchor\" id=\"$anchor\"></a>"
+			. "<h$level$attribs"
+			. $link
+			. " <span class=\"mw-headline\">$text</span>"
+			. "</h$level>";
+		if ( $legacyAnchor !== false ) {
+			$ret = "<a name=\"$legacyAnchor\" id=\"$legacyAnchor\"></a>$ret";
+		}
+		return $ret;
 	}
 
 	/**
@@ -1782,5 +1792,24 @@ class Linker {
 
 		wfProfileOut( __METHOD__ );
 		return false;
+	}
+	
+	/**
+	 * Creates a (show/hide) link for deleting revisions/log entries
+	 *
+	 * @param array $query  Query parameters to be passed to link()
+	 * @param bool $restricted  Set to true to use a <strong> instead of a <span>
+	 *
+	 * @return string HTML <a> link to Special:Revisiondelete, wrapped in a
+	 * span to allow for customization of appearance with CSS
+	 */
+	public function revDeleteLink( $query = array(), $restricted = false ) {
+		$sp = SpecialPage::getTitleFor( 'Revisiondelete' );
+		$text = wfMsgHtml( 'rev-delundel' );
+		$tag = 'span';
+		if( $restricted )
+			$tag = 'strong';
+		$link = $this->link( $sp, $text, array(), $query, array( 'known', 'noclasses' ) );
+		return Xml::tags( $tag, array( 'class' => 'mw-revdelundel-link' ), "($link)" );
 	}
 }

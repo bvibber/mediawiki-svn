@@ -28,6 +28,7 @@ $wgAutoloadLocalClasses = array(
 	'CategoryViewer' => 'includes/CategoryPage.php',
 	'ChangesList' => 'includes/ChangesList.php',
 	'ChangesFeed' => 'includes/ChangesFeed.php',
+	'ChangeTags' => 'includes/ChangeTags.php',
 	'ChannelFeed' => 'includes/Feed.php',
 	'ConcatenatedGzipHistoryBlob' => 'includes/HistoryBlob.php',
 	'ConstantDependency' => 'includes/CacheDependency.php',
@@ -321,6 +322,11 @@ $wgAutoloadLocalClasses = array(
 	'PostgresField' => 'includes/db/DatabasePostgres.php',
 	'ResultWrapper' => 'includes/db/Database.php',
 	'SQLiteField' => 'includes/db/DatabaseSqlite.php',
+	
+	'DatabaseIbm_db2' => 'includes/db/DatabaseIbm_db2.php',
+	'IBM_DB2Field' => 'includes/db/DatabaseIbm_db2.php',
+	'IBM_DB2SearchResultSet' => 'includes/SearchIBM_DB2.php',
+	'SearchIBM_DB2' => 'includes/SearchIBM_DB2.php',
 
 	# includes/diff
 	'AncestorComparator' => 'includes/diff/HTMLDiff.php',
@@ -432,6 +438,7 @@ $wgAutoloadLocalClasses = array(
 	'Preprocessor_DOM' => 'includes/parser/Preprocessor_DOM.php',
 	'Preprocessor_Hash' => 'includes/parser/Preprocessor_Hash.php',
 	'StripState' => 'includes/parser/Parser.php',
+	'MWTidy' => 'includes/parser/Tidy.php',
 
 	# includes/specials
 	'AncientPagesPage' => 'includes/specials/SpecialAncientpages.php',
@@ -490,6 +497,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialSearch' => 'includes/specials/SpecialSearch.php',
 	'SpecialSearchOld' => 'includes/specials/SpecialSearch.php',
 	'SpecialStatistics' => 'includes/specials/SpecialStatistics.php',
+	'SpecialTags' => 'includes/specials/SpecialTags.php',
 	'SpecialVersion' => 'includes/specials/SpecialVersion.php',
 	'UncategorizedCategoriesPage' => 'includes/specials/SpecialUncategorizedcategories.php',
 	'UncategorizedPagesPage' => 'includes/specials/SpecialUncategorizedpages.php',
@@ -557,7 +565,7 @@ class AutoLoader {
 			}
 			if ( !$filename ) {
 				if( function_exists( 'wfDebug' ) ) 	
-					wfDebug( "Class {$className} not found; skipped loading" );
+					wfDebug( "Class {$className} not found; skipped loading\n" );
 				# Give up
 				return false;
 			}
@@ -576,7 +584,7 @@ class AutoLoader {
 		global $wgAutoloadClasses;
 
 		foreach( $wgAutoloadClasses as $class => $file ) {
-			if( !( class_exists( $class ) || interface_exists( $class ) ) ) {
+			if( !( class_exists( $class, false ) || interface_exists( $class, false ) ) ) {
 				require( $file );
 			}
 		}

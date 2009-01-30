@@ -20,14 +20,10 @@ function wfSpecialWatchlist( $par ) {
 
 	# Anons don't get a watchlist
 	if( $wgUser->isAnon() ) {
+		$wgOut->setPageTitle( wfMsg( 'watchnologin' ) );
 		$llink = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Userlogin' ), 
 			wfMsgHtml( 'loginreqlink' ), 'returnto=' . $specialTitle->getPrefixedUrl() );
 		$wgOut->addHTML( wfMsgWikiHtml( 'watchlistanontext', $llink ) );
-		# Add login form for convenience
-		$form = new LoginForm( $wgRequest );
-		$form->execute();
-		# Set page title (also LoginForm sets it too, but we prefer this one)
-		$wgOut->setPageTitle( wfMsg( 'watchnologin' ) );
 		return;
 	}
 
@@ -58,7 +54,7 @@ function wfSpecialWatchlist( $par ) {
 	/* bool  */ 'hideBots'  => (int)$wgUser->getBoolOption( 'watchlisthidebots' ),
 	/* bool  */ 'hideAnons' => (int)$wgUser->getBoolOption( 'watchlisthideanons' ),
 	/* bool  */ 'hideLiu'   => (int)$wgUser->getBoolOption( 'watchlisthideliu' ),
-	/* bool  */ 'hidePatrolled' => (int)$wgUser->getBoolOption( 'watchlisthidepatrolled' ), // TODO
+	/* bool  */ 'hidePatrolled' => (int)$wgUser->getBoolOption( 'watchlisthidepatrolled' ),
 	/* bool  */ 'hideOwn'   => (int)$wgUser->getBoolOption( 'watchlisthideown' ),
 	/* ?     */ 'namespace' => 'all',
 	/* ?     */ 'invert'    => false,
@@ -100,7 +96,7 @@ function wfSpecialWatchlist( $par ) {
 	}
 
 	$dbr = wfGetDB( DB_SLAVE, 'watchlist' );
-	list( $page, $watchlist, $recentchanges ) = $dbr->tableNamesN( 'page', 'watchlist', 'recentchanges' );
+	$recentchanges = $dbr->tableName( 'recentchanges' );
 
 	$watchlistCount = $dbr->selectField( 'watchlist', 'COUNT(*)',
 		array( 'wl_user' => $uid ), __METHOD__ );
@@ -163,10 +159,12 @@ function wfSpecialWatchlist( $par ) {
 	if( $wgUser->getOption( 'extendwatchlist' )) {
 		$andLatest='';
  		$limitWatchlist = intval( $wgUser->getOption( 'wllimit' ) );
+		$usePage = false;
 	} else {
 	# Top log Ids for a page are not stored
 		$andLatest = 'rc_this_oldid=page_latest OR rc_type=' . RC_LOG;
 		$limitWatchlist = 0;
+		$usePage = true;
 	}
 
 	# Show a message about slave lag, if applicable
@@ -193,12 +191,11 @@ function wfSpecialWatchlist( $par ) {
 	}
 	$form .= '<hr />';
 	
-	$tables = array( 'recentchanges', 'watchlist', 'page' );
+	$tables = array( 'recentchanges', 'watchlist' );
 	$fields = array( "{$recentchanges}.*" );
 	$conds = array();
 	$join_conds = array(
 		'watchlist' => array('INNER JOIN',"wl_user='{$uid}' AND wl_namespace=rc_namespace AND wl_title=rc_title"),
-		'page'      => array('LEFT JOIN','rc_cur_id=page_id')
 	);
 	$options = array( 'ORDER BY' => 'rc_timestamp DESC' );
 	if( $wgShowUpdatedMarker ) {
@@ -216,7 +213,13 @@ function wfSpecialWatchlist( $par ) {
 	if( $andHideAnons ) $conds[] = $andHideAnons;
 	if( $andHidePatrolled ) $conds[] = $andHidePatrolled;
 	if( $nameSpaceClause ) $conds[] = $nameSpaceClause;
-	
+
+	if ( $usePage ) {
+		$tables[] = 'page';
+		$join_conds['page'] = array('LEFT JOIN','rc_cur_id=page_id');
+	}
+
+	ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, '' );
 	wfRunHooks('SpecialWatchlistQuery', array(&$conds,&$tables,&$join_conds,&$fields) );
 	
 	$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $options, $join_conds );
@@ -321,6 +324,8 @@ function wfSpecialWatchlist( $par ) {
 			$linkBatch->add( NS_USER, $userNameUnderscored );
 		}
 		$linkBatch->add( NS_USER_TALK, $userNameUnderscored );
+
+		$linkBatch->add( $row->rc_namespace, $row->rc_title );
 	}
 	$linkBatch->execute();
 	$dbr->dataSeek( $res, 0 );

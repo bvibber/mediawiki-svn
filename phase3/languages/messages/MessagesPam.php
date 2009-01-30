@@ -1108,18 +1108,18 @@ Mapaliaring mas masanting yang subukan nung mas ditak la reng gagamit.',
 'upload_source_url'  => ' (metung a URL a matatanggap at aluban ding malda)',
 'upload_source_file' => ' (metung a simpan king kekang computer)',
 
-# Special:FileList
-'imagelist-summary'     => 'Papakit no ngan niting bulung a makabukud/espesial deng simpan a milulan (uploaded files).
+# Special:ListFiles
+'listfiles-summary'     => 'Papakit no ngan niting bulung a makabukud/espesial deng simpan a milulan (uploaded files).
 Karaniwan, keta lang babo ning tala deng simpan a tauling milulan.
 Miyalilan ing pamanayus nung i-click ya ing pamagat ning kolum (column header).',
-'imagelist_search_for'  => 'Maintun kang lagyu ning media:',
+'listfiles_search_for'  => 'Maintun kang lagyu ning media:',
 'imgfile'               => 'simpan',
-'imagelist'             => 'Tala da reng simpan (file list)',
-'imagelist_date'        => 'Petsa',
-'imagelist_name'        => 'Lagyu',
-'imagelist_user'        => 'Talagamit',
-'imagelist_size'        => 'Dagul',
-'imagelist_description' => 'Pamilarawan (description)',
+'listfiles'             => 'Tala da reng simpan (file list)',
+'listfiles_date'        => 'Petsa',
+'listfiles_name'        => 'Lagyu',
+'listfiles_user'        => 'Talagamit',
+'listfiles_size'        => 'Dagul',
+'listfiles_description' => 'Pamilarawan (description)',
 
 # File description page
 'filehist'                       => 'Amlat ning simpan (File history)',
@@ -1319,7 +1319,8 @@ Malyari meng kitiran ing panimanman o akakit, kapamilatan ning pamamili ning nun
 'special-categories-sort-abc'   => 'surian lang tukituki agpang keng kulitan',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Deng ambag da reng talagamit a mebura',
+'deletedcontributions'       => 'Deng ambag da reng talagamit a mebura',
+'deletedcontributions-title' => 'Deng ambag da reng talagamit a mebura',
 
 # Special:ListUsers
 'listusersfrom'      => 'Ipakit la reng talagamit magumpisa king:',
@@ -2241,8 +2242,8 @@ mo aluban detang pamangamit a maki kaugnayan king e-mail. I-click me ing button
 king lalam ba yang magparlang e-mail kekang babye patune. Kayabe ya ketang e-mail
 ing metung a suglung a maki code; ibili me ketang kekang browser itang suglung
 ba mung patutwan a ustu ya ing kekang e-mail address.',
-'confirmemail_pending'     => '<div class="error">Atin nang miparalang confirmation code keka kapamilatan ning e-mail;
-nung kaibat-ibat mu pamung miglalang e-mail account, panayan me pamung datang kilub ning mapilan a minutu bayu ka maniad bayung code.</div>',
+'confirmemail_pending'     => 'Atin nang miparalang confirmation code keka kapamilatan ning e-mail;
+nung kaibat-ibat mu pamung miglalang e-mail account, panayan me pamung datang kilub ning mapilan a minutu bayu ka maniad bayung code.',
 'confirmemail_send'        => 'Magparla kang confirmation code',
 'confirmemail_sent'        => 'Patutuan ing e-mail miparla ya.',
 'confirmemail_oncreate'    => 'Ating miparalang confirmation code ketang kekang e-mail address.

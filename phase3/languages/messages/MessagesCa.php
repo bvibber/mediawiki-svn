@@ -95,7 +95,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Llista de seguiment' ),
 	'Recentchanges'             => array( 'Canvis recents' ),
 	'Upload'                    => array( 'Carrega' ),
-	'Imagelist'                 => array( 'Imatges' ),
+	'Listfiles'                 => array( 'Imatges' ),
 	'Newimages'                 => array( 'Imatges noves' ),
 	'Listusers'                 => array( 'Usuaris' ),
 	'Listgrouprights'           => array( 'Drets dels grups d\'usuaris' ),
@@ -588,7 +588,7 @@ Ha de tenir un mínim {{PLURAL:$1|d'un caràcter|de $1 caràcters}} i ésser dif
 'mailmypassword'             => "Envia'm una nova contrasenya per correu electrònic",
 'passwordremindertitle'      => 'Nova contrasenya temporal per al projecte {{SITENAME}}',
 'passwordremindertext'       => "Algú (vós mateix segurament, des de l'adreça l'IP $1) ha soŀlicitat que us enviéssim una nova contrasenya per a iniciar la sessió al projecte {{SITENAME}} ($4).
-La contrasenya per a l'usuari «$2» és ara «$3». Si aquesta fou la vostra intenció, ara hauríeu d'iniciar la sessió i canviar la vostra contrasenya.
+La nova contrasenya temporal per a l'usuari «$2» és ara «$3». Si aquesta fou la vostra intenció, ara hauríeu d'iniciar la sessió i canviar-la. Tingueu present que és temporal i caducarà d'aquí {{PLURAL:$5|un dia|$5 dies}}.
 
 Si algú altre hagués fet aquesta soŀlicitud o si ja haguéssiu recordat la vostra contrasenya i
 no volguéssiu canviar-la, ignoreu aquest missatge i continueu utilitzant
@@ -1110,6 +1110,7 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'prefs-resetpass'           => 'Canvia la contrasenya',
 'saveprefs'                 => 'Desa les preferències',
 'resetprefs'                => 'Esborra els canvis no guardats',
+'restoreprefs'              => 'Restaura les preferències per defecte',
 'textboxsize'               => 'Dimensions de la caixa de text',
 'prefs-edit-boxsize'        => "Mida de la finestra d'edició.",
 'rows'                      => 'Files',
@@ -1194,6 +1195,7 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'right-move'                 => 'Moure pàgines',
 'right-move-subpages'        => 'Moure pàgines amb les seves subpàgines',
 'right-move-rootuserpages'   => "Moure pàgines d'usuari root",
+'right-movefile'             => 'Moure fitxers',
 'right-suppressredirect'     => 'No crear redireccions quan es reanomena una pàgina',
 'right-upload'               => 'Carregar fitxers',
 'right-reupload'             => "Carregar al damunt d'un fitxer existent",
@@ -1254,6 +1256,7 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'action-move'                 => 'moure aquesta pàgina',
 'action-move-subpages'        => 'moure aquesta pàgina, i llurs subpàgines',
 'action-move-rootuserpages'   => "moure pàgines d'usuari root",
+'action-movefile'             => 'moure aquest fitxer',
 'action-upload'               => 'carregar aquest fitxer',
 'action-reupload'             => 'substituir aquest fitxer',
 'action-reupload-shared'      => 'substituir aquest fitxer en un dipòsit compartit',
@@ -1419,18 +1422,19 @@ A continuació teniu el registre d'eliminació per a que pugueu comprovar els mo
 'upload_source_url'  => ' (un URL vàlid i accessible públicament)',
 'upload_source_file' => ' (un fitxer en el vostre ordinador)',
 
-# Special:FileList
-'imagelist-summary'     => "Aquesta pàgina especial mostra tots els fitxers carregats.
+# Special:ListFiles
+'listfiles-summary'     => "Aquesta pàgina especial mostra tots els fitxers carregats.
 Per defecte, els darrers en ser carregats apareixen al principi de la llista.
 Clicant al capdamunt de les columnes podeu canviar-ne l'ordenació.",
-'imagelist_search_for'  => "Cerca el nom d'un fitxer de medis:",
+'listfiles_search_for'  => "Cerca el nom d'un fitxer de medis:",
 'imgfile'               => 'fitxer',
-'imagelist'             => 'Llista de fitxers',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Nom',
-'imagelist_user'        => 'Usuari',
-'imagelist_size'        => 'Mida (octets)',
-'imagelist_description' => 'Descripció',
+'listfiles'             => 'Llista de fitxers',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Nom',
+'listfiles_user'        => 'Usuari',
+'listfiles_size'        => 'Mida (octets)',
+'listfiles_description' => 'Descripció',
+'listfiles_count'       => 'Versions',
 
 # File description page
 'filehist'                       => 'Historial del fitxer',
@@ -1668,7 +1672,8 @@ Vegeu també [[Special:WantedCategories|les categories soŀlicitades]].",
 'special-categories-sort-abc'   => 'ordena alfabèticament',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Contribucions esborrades',
+'deletedcontributions'       => 'Contribucions esborrades',
+'deletedcontributions-title' => 'Contribucions esborrades',
 
 # Special:LinkSearch
 'linksearch'       => 'Cerca enllaços web',
@@ -1717,7 +1722,8 @@ L'adreça electrònica que heu entrat en [[Special:Preferences|les vostres prefe
 'usermailererror' => "L'objecte de correu ha retornat un error:",
 'defemailsubject' => 'Adreça correl de {{SITENAME}}',
 'noemailtitle'    => 'No hi ha cap adreça electrònica',
-'noemailtext'     => "Aquest usuari no ha especificat una adreça electrònica vàlida, o ha escollit no rebre correu electrònic d'altres usuaris.",
+'noemailtext'     => 'Aquest usuari no ha especificat una adreça electrònica vàlida.',
+'nowikiemailtext' => "Aquest usuari ha escollir no rebre missatges electrònics d'altres usuaris.",
 'email-legend'    => 'Enviar un correu electrònic a un altre usuari de {{SITENAME}}',
 'emailfrom'       => 'De:',
 'emailto'         => 'Per a:',
@@ -2162,6 +2168,7 @@ En aquests casos, haureu de traslladar o fusionar la pàgina manualment si ho de
 'movenologintext'              => "Heu de ser un usuari registrat i estar [[Special:UserLogin|dintre d'una sessió]]
 per reanomenar una pàgina.",
 'movenotallowed'               => 'No teniu permís per a moure pàgines.',
+'movenotallowedfile'           => 'No teniu el permís per a moure fitxers.',
 'cant-move-user-page'          => "No teniu permís per a moure pàgines d'usuari (independentment de les subpàgines).",
 'cant-move-to-user-page'       => "No teniu permís per a moure una pàgina a una pàgina d'usuari (independentment de poder fer-ho cap a una subpàgina d'usuari).",
 'newtitle'                     => 'A títol nou',
@@ -2169,6 +2176,7 @@ per reanomenar una pàgina.",
 'movepagebtn'                  => 'Reanomena la pàgina',
 'pagemovedsub'                 => 'Reanomenament amb èxit',
 'movepage-moved'               => "<big>'''«$1» s'ha mogut a «$2»'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => "S'ha creat una redirecció.",
 'articleexists'                => 'Ja existeix una pàgina amb aquest nom, o el nom que heu triat no és vàlid.
 Trieu-ne un altre, si us plau.',
 'cantmove-titleprotected'      => "No podeu moure una pàgina a aquesta ubicació, perquè s'ha protegit la creació del títol nou",
@@ -2185,6 +2193,7 @@ Incorporeu-les manualment, si us plau.",
 'movepage-max-pages'           => "{{PLURAL:$1|S'ha mogut una pàgina|S'han mogut $1 pàgines}} que és el nombre màxim, i per tant no se'n mourà automàticament cap més.",
 '1movedto2'                    => "[[$1]] s'ha reanomenat com [[$2]]",
 '1movedto2_redir'              => "[[$1]] s'ha reanomenat com [[$2]] amb una redirecció",
+'move-redirect-suppressed'     => 'redirecció suprimida',
 'movelogpage'                  => 'Registre de reanomenaments',
 'movelogpagetext'              => 'Vegeu la llista de les darreres pàgines reanomenades.',
 'movereason'                   => 'Motiu',
@@ -2567,7 +2576,7 @@ La resta d'enllaços de la línia són les excepcions, és a dir, les pàgines o
 'exif-focallengthin35mmfilm'       => 'Distància focal per a peŀlícula de 35 mm',
 'exif-scenecapturetype'            => "Tipus de captura d'escena",
 'exif-gaincontrol'                 => "Control d'escena",
-'exif-contrast'                    => 'Contrast',
+'exif-contrast'                    => 'Taädam',
 'exif-saturation'                  => 'Saturació',
 'exif-sharpness'                   => 'Nitidesa',
 'exif-devicesettingdescription'    => 'Descripció dels paràmetres del dispositiu',
@@ -2769,11 +2778,9 @@ La resta d'enllaços de la línia són les excepcions, és a dir, les pàgines o
 electrònic per a poder gaudir d'algunes facilitats. Cliqueu el botó inferior
 per a enviar un codi de confirmació a la vostra adreça. Seguiu l'enllaç que
 hi haurà al missatge enviat per a confirmar que el vostre correu és correcte.",
-'confirmemail_pending'     => "<div class=\"error\">
-Ja s'ha enviat el vostre codi de confirmació per correu electrònic; si
+'confirmemail_pending'     => "Ja s'ha enviat el vostre codi de confirmació per correu electrònic; si
 fa poc hi heu creat el vostre compte, abans de mirar de demanar un nou
-codi, primer hauríeu d'esperar alguns minuts per a rebre'l.
-</div>",
+codi, primer hauríeu d'esperar alguns minuts per a rebre'l.",
 'confirmemail_send'        => 'Envia per correu electrònic un codi de confirmació',
 'confirmemail_sent'        => "S'ha enviat un missatge de confirmació.",
 'confirmemail_oncreate'    => "S'ha enviat un codi de confirmació a la vostra adreça de correu electrònic.

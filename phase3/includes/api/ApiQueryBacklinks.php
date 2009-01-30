@@ -137,13 +137,12 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$this->addFields($this->bl_title);
 		if($this->hasNS)
 			$this->addFields($this->bl_ns);
-		$titleWhere = '';
+		// We can't use LinkBatch here because $this->hasNS may be false
+		$titleWhere = array();
 		foreach($this->redirTitles as $t)
-			$titleWhere .= ($titleWhere != '' ? " OR " : '') .
-					"({$this->bl_title} = ".$db->addQuotes($t->getDBKey()).
-					($this->hasNS ? " AND {$this->bl_ns} = '{$t->getNamespace()}'" : "") .
-					")";
-		$this->addWhere($titleWhere);
+			$titleWhere[] = "{$this->bl_title} = ".$db->addQuotes($t->getDBKey()).
+					($this->hasNS ? " AND {$this->bl_ns} = '{$t->getNamespace()}'" : "");
+		$this->addWhere($db->makeList($titleWhere, LIST_OR));
 		$this->addWhereFld('page_namespace', $this->params['namespace']);
 		if(!is_null($this->redirID))
 		{
@@ -169,6 +168,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 			$this->addWhereFld('page_is_redirect', 0);
 		$this->addOption('LIMIT', $this->params['limit'] + 1);
 		$this->addOption('ORDER BY', $this->bl_sort);
+		$this->addOption('USE INDEX', array('page' => 'PRIMARY'));
 	}
 
 	private function run($resultPageSet = null) {

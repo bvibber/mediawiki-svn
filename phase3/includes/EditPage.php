@@ -84,6 +84,7 @@ class EditPage {
 
 	/* $didSave should be set to true whenever an article was succesfully altered. */
 	public $didSave = false;
+	public $undidRev = 0;
 
 	public $suppressIntro = false;
 
@@ -164,35 +165,28 @@ class EditPage {
 					$undorev->getPage() == $this->mArticle->getID() &&
 					!$undorev->isDeleted( Revision::DELETED_TEXT ) &&
 					!$oldrev->isDeleted( Revision::DELETED_TEXT ) ) {
-					$undorev_text = $undorev->getText();
-					$oldrev_text = $oldrev->getText();
-					$currev_text = $text;
-
-					if ( $currev_text != $undorev_text ) {
-						$result = wfMerge( $undorev_text, $oldrev_text, $currev_text, $text );
+					
+					$undotext = $this->mArticle->getUndoText( $undorev, $oldrev );
+					if ( $undotext === false ) {
+						# Warn the user that something went wrong
+						$this->editFormPageTop .= $wgOut->parse( '<div class="error mw-undo-failure">' . wfMsgNoTrans( 'undo-failure' ) . '</div>' );
 					} else {
-						# No use doing a merge if it's just a straight revert.
-						$text = $oldrev_text;
-						$result = true;
-					}
-					if ( $result ) {
+						$text = $undotext;
 						# Inform the user of our success and set an automatic edit summary
-						$this->editFormPageTop .= $wgOut->parse( wfMsgNoTrans( 'undo-success' ) );
+						$this->editFormPageTop .= $wgOut->parse( '<div class="mw-undo-success">' . wfMsgNoTrans( 'undo-success' ) . '</div>' );
 						$firstrev = $oldrev->getNext();
 						# If we just undid one rev, use an autosummary
 						if ( $firstrev->mId == $undo ) {
-							$this->summary = wfMsgForContent('undo-summary', $undo, $undorev->getUserText());
+							$this->summary = wfMsgForContent( 'undo-summary', $undo, $undorev->getUserText() );
+							$this->undidRev = $undo;
 						}
 						$this->formtype = 'diff';
-					} else {
-						# Warn the user that something went wrong
-						$this->editFormPageTop .= $wgOut->parse( wfMsgNoTrans( 'undo-failure' ) );
 					}
 				} else {
 					// Failed basic sanity checks.
 					// Older revisions may have been removed since the link
 					// was created, or we may simply have got bogus input.
-					$this->editFormPageTop .= $wgOut->parse( wfMsgNoTrans( 'undo-norev' ) );
+					$this->editFormPageTop .= $wgOut->parse( '<div class="error mw-undo-norev">' . wfMsgNoTrans( 'undo-norev' ) . '</div>' );
 				}
 			} else if ( $section != '' ) {
 				if ( $section == 'new' ) {
@@ -574,7 +568,7 @@ class EditPage {
 				# If the form is incomplete, force to preview.
 				wfDebug( "$fname: Form data appears to be incomplete\n" );
 				wfDebug( "POST DATA: " . var_export( $_POST, true ) . "\n" );
-				$this->preview  = true;
+				$this->preview = true;
 			} else {
 				/* Fallback for live preview */
 				$this->preview = $request->getCheck( 'wpPreview' ) || $request->getCheck( 'wpLivePreview' );
@@ -643,6 +637,13 @@ class EditPage {
 
 			if ( $this->section == 'new' && $request->getVal( 'preloadtitle' ) ) {
 				$this->summary = $request->getVal( 'preloadtitle' );
+			}
+			elseif ( $this->section != 'new' && $request->getVal( 'summary' ) ) {
+				$this->summary = $request->getText( 'summary' );
+			}
+			
+			if ( $request->getVal( 'minor' ) ) {
+				$this->minoredit = true;
 			}
 		}
 
@@ -737,7 +738,7 @@ class EditPage {
 
 		if ( !wfRunHooks( 'EditPage::attemptSave', array( &$this ) ) )
 		{
-			wfDebug( "Hook 'EditPage::attemptSave' aborted article saving" );
+			wfDebug( "Hook 'EditPage::attemptSave' aborted article saving\n" );
 			return self::AS_HOOK_ERROR;
 		}
 
@@ -859,11 +860,20 @@ class EditPage {
 				wfProfileOut( $fname );
 				return self::AS_HOOK_ERROR;
 			}
+			
+			# Handle the user preference to force summaries here. Check if it's not a redirect.
+			if ( !$this->allowBlankSummary && !Title::newFromRedirect( $this->textbox1 ) ) {
+				if ( md5( $this->summary ) == $this->autoSumm ) {
+					$this->missingSummary = true;
+					wfProfileOut( $fname );
+					return self::AS_SUMMARY_NEEDED;
+				}
+			}
 
 			$isComment = ( $this->section == 'new' );
 
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
-				$this->minoredit, $this->watchthis, false, $isComment, $bot);
+				$this->minoredit, $this->watchthis, false, $isComment, $bot );
 
 			wfProfileOut( $fname );
 			return self::AS_SUCCESS_NEW_ARTICLE;
@@ -893,39 +903,35 @@ class EditPage {
 			}
 		}
 		$userid = $wgUser->getId();
+		
+		# Suppress edit conflict with self, except for section edits where merging is required.
+		if ( $this->isConflict && $this->section == '' && $this->userWasLastToEdit($userid,$this->edittime) ) {
+			wfDebug( "EditPage::editForm Suppressing edit conflict, same user.\n" );
+			$this->isConflict = false;
+		}
 
 		if ( $this->isConflict ) {
 			wfDebug( "EditPage::editForm conflict! getting section '$this->section' for time '$this->edittime' (article time '" .
 				$this->mArticle->getTimestamp() . "')\n" );
-			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary, $this->edittime);
-		}
-		else {
+			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary, $this->edittime );
+		} else {
 			wfDebug( "EditPage::editForm getting section '$this->section'\n" );
-			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary);
+			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary );
 		}
 		if ( is_null( $text ) ) {
 			wfDebug( "EditPage::editForm activating conflict; section replace failed.\n" );
 			$this->isConflict = true;
-			$text = $this->textbox1;
-		}
-
-		# Suppress edit conflict with self, except for section edits where merging is required.
-		if ( $this->section == '' && $userid && $this->userWasLastToEdit($userid,$this->edittime) ) {
-			wfDebug( "EditPage::editForm Suppressing edit conflict, same user.\n" );
-			$this->isConflict = false;
-		} else {
-			# switch from section editing to normal editing in edit conflict
-			if ( $this->isConflict ) {
-				# Attempt merge
-				if ( $this->mergeChangesInto( $text ) ) {
-					// Successful merge! Maybe we should tell the user the good news?
-					$this->isConflict = false;
-					wfDebug( "EditPage::editForm Suppressing edit conflict, successful merge.\n" );
-				} else {
-					$this->section = '';
-					$this->textbox1 = $text;
-					wfDebug( "EditPage::editForm Keeping edit conflict, failed merge.\n" );
-				}
+			$text = $this->textbox1; // do not try to merge here!
+		} else if ( $this->isConflict ) {
+			# Attempt merge
+			if ( $this->mergeChangesInto( $text ) ) {
+				// Successful merge! Maybe we should tell the user the good news?
+				$this->isConflict = false;
+				wfDebug( "EditPage::editForm Suppressing edit conflict, successful merge.\n" );
+			} else {
+				$this->section = '';
+				$this->textbox1 = $text;
+				wfDebug( "EditPage::editForm Keeping edit conflict, failed merge.\n" );
 			}
 		}
 
@@ -944,9 +950,9 @@ class EditPage {
 		}
 
 		# Handle the user preference to force summaries here, but not for null edits
-		if ( $this->section != 'new' && !$this->allowBlankSummary && 0 != strcmp($oldtext, $text) &&
-			!is_object( Title::newFromRedirect( $text ) ) # check if it's not a redirect
-		) {
+		if ( $this->section != 'new' && !$this->allowBlankSummary && 0 != strcmp($oldtext,$text) 
+			&& !Title::newFromRedirect( $text ) ) # check if it's not a redirect
+		{
 			if ( md5( $this->summary ) == $this->autoSumm ) {
 				$this->missingSummary = true;
 				wfProfileOut( $fname );
@@ -1008,7 +1014,8 @@ class EditPage {
 
 		# update the article here
 		if ( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
-			$this->watchthis, $bot, $sectionanchor ) ) {
+			$this->watchthis, $bot, $sectionanchor ) ) 
+		{
 			wfProfileOut( $fname );
 			return self::AS_SUCCESS_UPDATE;
 		} else {
@@ -1024,6 +1031,7 @@ class EditPage {
 	 * 50 revisions for the sake of performance.
 	 */
 	protected function userWasLastToEdit( $id, $edittime ) {
+		if( !$id ) return false;
 		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbw->select( 'revision',
 			'rev_user',
@@ -1142,9 +1150,7 @@ class EditPage {
 			if ( $this->section != '' && $this->section != 'new' ) {
 				$matches = array();
 				if ( !$this->summary && !$this->preview && !$this->diff ) {
-					preg_match( "/^(=+)(.+)\\1/mi",
-						$this->textbox1,
-						$matches );
+					preg_match( "/^(=+)(.+)\\1/mi", $this->textbox1, $matches );
 					if ( !empty( $matches[2] ) ) {
 						global $wgParser;
 						$this->summary = "/* " .
@@ -1228,17 +1234,19 @@ class EditPage {
 		if ( $this->mTitle->isCascadeProtected() ) {
 			# Is this page under cascading protection from some source pages?
 			list($cascadeSources, /* $restrictions */) = $this->mTitle->getCascadeProtectionSources();
-			$notice = "$1\n";
-			if ( count($cascadeSources) > 0 ) {
+			$notice = "<div class='mw-cascadeprotectedwarning'>$1\n";
+			$cascadeSourcesCount = count( $cascadeSources );
+			if ( $cascadeSourcesCount > 0 ) {
 				# Explain, and list the titles responsible
 				foreach( $cascadeSources as $page ) {
 					$notice .= '* [[:' . $page->getPrefixedText() . "]]\n";
 				}
 			}
-			$wgOut->wrapWikiMsg( $notice, array( 'cascadeprotectedwarning', count($cascadeSources) ) );
+			$notice .= '</div>';
+			$wgOut->wrapWikiMsg( $notice, array( 'cascadeprotectedwarning', $cascadeSourcesCount ) );
 		}
 		if ( !$this->mTitle->exists() && $this->mTitle->getRestrictions( 'create' ) ) {
-			$wgOut->addWikiMsg( 'titleprotectedwarning' );
+			$wgOut->wrapWikiMsg( '<div class="mw-titleprotectedwarning">$1</div>', 'titleprotectedwarning' );
 		}
 
 		if ( $this->kblength === false ) {
@@ -1373,15 +1381,16 @@ class EditPage {
 		$recreate = '';
 		if ( $this->wasDeletedSinceLastEdit() ) {
 			if ( 'save' != $this->formtype ) {
-				$wgOut->addWikiMsg('deletedwhileediting');
+				$wgOut->wrapWikiMsg( '<div class="error mw-deleted-while-editing">$1</div>', 'deletedwhileediting' );
 			} else {
-				// Hide the toolbar and edit area, use can click preview to get it back
+				// Hide the toolbar and edit area, user can click preview to get it back
 				// Add an confirmation checkbox and explanation.
 				$toolbar = '';
-				$recreate = $wgOut->parse( wfMsg( 'confirmrecreate',  $this->lastDelete->user_name , $this->lastDelete->log_comment ));
-				$recreate .=
-					"<br /><input tabindex='1' type='checkbox' value='1' name='wpRecreate' id='wpRecreate' />".
-					"<label for='wpRecreate' title='".wfMsg('tooltip-recreate')."'>". wfMsg('recreate')."</label>";
+				$recreate = '<div class="mw-confirm-recreate">' .
+						$wgOut->parse( wfMsg( 'confirmrecreate',  $this->lastDelete->user_name , $this->lastDelete->log_comment ) ) .
+						Xml::checkLabel( wfMsg( 'recreate' ), 'wpRecreate', 'wpRecreate', false,
+							array( 'title' => $sk->titleAttrib( 'recreate' ), 'tabindex' => 1, 'id' => 'wpRecreate' )
+						) . '</div>';
 			}
 		}
 
@@ -1651,6 +1660,8 @@ END
 
 		$parserOptions = ParserOptions::newFromUser( $wgUser );
 		$parserOptions->setEditSection( false );
+		$parserOptions->setIsPreview( true );
+		$parserOptions->setIsSectionPreview( !is_null($this->section) && $this->section !== '' );
 
 		global $wgRawHtml;
 		if ( $wgRawHtml && !$this->mTokenOk ) {
@@ -1672,7 +1683,7 @@ END
 			$parserOptions->setTidy(true);
 			$parserOutput = $wgParser->parse( $previewtext, $this->mTitle, $parserOptions );
 			$previewHTML = $parserOutput->mText;
-		} elseif ( $rt = Title::newFromRedirect( $this->textbox1 ) ) {
+		} elseif ( $rt = Title::newFromRedirectArray( $this->textbox1 ) ) {
 			$previewHTML = $this->mArticle->viewRedirect( $rt, false );
 		} else {
 			$toparse = $this->textbox1;
@@ -1834,8 +1845,7 @@ END
 		$baseText = $baseRevision->getText();
 
 		// The current state, we want to merge updates into it
-		$currentRevision =  Revision::loadFromTitle(
-			$db, $this->mTitle );
+		$currentRevision = Revision::loadFromTitle( $db, $this->mTitle );
 		if ( is_null( $currentRevision ) ) {
 			wfProfileOut( $fname );
 			return false;
@@ -2389,7 +2399,9 @@ END
 		global $wgUser, $wgOut, $wgTitle, $wgRequest;
 
 		$resultDetails = false;
-		$value = $this->internalAttemptSave( $resultDetails, $wgUser->isAllowed('bot') && $wgRequest->getBool('bot', true) );
+		# Allow bots to exempt some edits from bot flagging
+		$bot = $wgUser->isAllowed('bot') && $wgRequest->getBool('bot',true);
+		$value = $this->internalAttemptSave( $resultDetails, $bot );
 
 		if ( $value == self::AS_SUCCESS_UPDATE || $value == self::AS_SUCCESS_NEW_ARTICLE ) {
 			$this->didSave = true;

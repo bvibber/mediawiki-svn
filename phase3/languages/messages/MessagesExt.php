@@ -1014,18 +1014,18 @@ Velaquí el antigu rustrihu d´esborrau pa esti archivu:",
 'upload_source_url'  => ' (una URL vália i acesibri)',
 'upload_source_file' => ' (un archivu nel tu ordinaol)',
 
-# Special:FileList
-'imagelist-summary'     => 'Esta páhina especial muestra tolos archivus empuntaus.
+# Special:ListFiles
+'listfiles-summary'     => 'Esta páhina especial muestra tolos archivus empuntaus.
 Pol defetu los úrtimus archivus empuntaus se muestran ena parti arta la lista.
 Pursa nel entítulu la coluna pa chambal el ordin.',
-'imagelist_search_for'  => 'Landeal pol nombri la imahin:',
+'listfiles_search_for'  => 'Landeal pol nombri la imahin:',
 'imgfile'               => 'archivu',
-'imagelist'             => 'Lista d´archivus',
-'imagelist_date'        => 'Fecha',
-'imagelist_name'        => 'Nombri',
-'imagelist_user'        => 'Usuáriu',
-'imagelist_size'        => 'Grandol',
-'imagelist_description' => 'Descrición',
+'listfiles'             => 'Lista d´archivus',
+'listfiles_date'        => 'Fecha',
+'listfiles_name'        => 'Nombri',
+'listfiles_user'        => 'Usuáriu',
+'listfiles_size'        => 'Grandol',
+'listfiles_description' => 'Descrición',
 
 # File description page
 'filehist'                  => 'Estorial el archivu',
@@ -1211,7 +1211,8 @@ Pursa nel entítulu la coluna pa chambal el ordin.',
 'special-categories-sort-abc'   => 'ordenal alfabeticamenti',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Contribucionis el usuáriu esborrás',
+'deletedcontributions'       => 'Contribucionis el usuáriu esborrás',
+'deletedcontributions-title' => 'Contribucionis el usuáriu esborrás',
 
 # Special:LinkSearch
 'linksearch-ok' => 'Landeal',
@@ -2100,11 +2101,9 @@ Cualisquiel otru atihu ena mesma línia se consierará ececión, p.s. páhinas o
 'confirmemail'             => 'Confirmal email',
 'confirmemail_noemail'     => 'Nu as escrebiu una direción d´email correta enas tus [[Special:Preferences|preferéncias]].',
 'confirmemail_text'        => "{{SITENAME}} requieri que confirmis la tu direción d'email enantis de gastal las huncionis de correu. Ativa el botón d'embahu pa envial un correu e confirmación a la tu direción. El correu incluirá un atihu con un cóigu; sigui el atihu pa confirmal la tu direción d'email.",
-'confirmemail_pending'     => '<div class="error">
-Un coigu e confirmación s\'á enviau a la tu direción d\'email; si acabihas de
+'confirmemail_pending'     => "Un coigu e confirmación s'á enviau a la tu direción d'email; si acabihas de
 crial la tu cuenta, aspera duranti angunus minutus a que te chegui el
-correu enantis de solicital otru coigu.
-</div>',
+correu enantis de solicital otru coigu.",
 'confirmemail_send'        => 'Envial un coigu e confirmación pol email',
 'confirmemail_sent'        => 'Email de confirmación enviau.',
 'confirmemail_oncreate'    => "S'á enviau un cóigu e confirmación a la tu direción de correu eletrónicu.

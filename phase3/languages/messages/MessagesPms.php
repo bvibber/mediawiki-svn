@@ -1027,18 +1027,18 @@ PICT # vàire marche diferente
 'upload_source_url'  => "  (n'anliura bon-a e che as peula dovresse)",
 'upload_source_file' => " (n'archivi da sò calcolator)",
 
-# Special:FileList
-'imagelist-summary'     => "Sta pàgina special-sì a la smon tuti j'archivi ch'a ëstàit carià.
+# Special:ListFiles
+'listfiles-summary'     => "Sta pàgina special-sì a la smon tuti j'archivi ch'a ëstàit carià.
 Për sòlit j'ùltim carià a resto an sima.
 Ch'a-i bata 'n colp col rat ansima a j'antestassion dle colòne për cangé órdin.",
-'imagelist_search_for'  => "Arsërca për nòm d'archivi multimojen:",
+'listfiles_search_for'  => "Arsërca për nòm d'archivi multimojen:",
 'imgfile'               => 'archivi',
-'imagelist'             => 'Lista dle figure',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Nòm',
-'imagelist_user'        => 'Utent',
-'imagelist_size'        => 'Amzura an byte',
-'imagelist_description' => 'Descrission',
+'listfiles'             => 'Lista dle figure',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Nòm',
+'listfiles_user'        => 'Utent',
+'listfiles_size'        => 'Amzura an byte',
+'listfiles_description' => 'Descrission',
 
 # File description page
 'filehist'                  => "Stòria dl'archivi",
@@ -1230,7 +1230,8 @@ A peul sern-se n'arsultà pì strèit ën selessionand na sòrt ëd registr sola
 'special-categories-sort-abc'   => 'òrdiné për alfabétich',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Modìfiche faite da utent scancelà',
+'deletedcontributions'       => 'Modìfiche faite da utent scancelà',
+'deletedcontributions-title' => 'Modìfiche faite da utent scancelà',
 
 # Special:LinkSearch
 'linksearch'       => "Sërchè antra j'anliure dla Ragnà",
@@ -2216,9 +2217,8 @@ për fesse mandé un messa ëd conferma a soa adrëssa eletrònica.
 Andrinta al messagi a-i sara n'anliura (URL) con andrinta un còdes.
 Che a deurba st'anliura andrinta a sò programa ëd navigassion (browser)
 për confermé che soa adrëssa a l'é pròpe cola.",
-'confirmemail_pending'    => '<div class="error">
-I l\'oma già mandaje sò còdes ëd conferma;
-se a l\'ha pen-a creasse sò cont, miraco a venta che a speta dontre minute che a-j riva ant la pòsta, nopà che ciamene un neuv.</div>',
+'confirmemail_pending'    => "I l'oma già mandaje sò còdes ëd conferma;
+se a l'ha pen-a creasse sò cont, miraco a venta che a speta dontre minute che a-j riva ant la pòsta, nopà che ciamene un neuv.",
 'confirmemail_send'       => 'Manda un còdes ëd conferma për pòsta eletrònica',
 'confirmemail_sent'       => "Ël messagi ëd conferma a l'é stait mandà.",
 'confirmemail_oncreate'   => "Un còdes ëd conferma a l'é stait mandà a soa adrëssa ëd pòsta eletrònica.

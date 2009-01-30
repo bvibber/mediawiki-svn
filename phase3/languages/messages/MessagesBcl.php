@@ -958,15 +958,15 @@ An historial nin pagparâ kan ''file'' nakakaag digdi para sa konbenyensya:",
 'upload_source_url'  => ' (sarong tama, na bukas sa publikong URL)',
 'upload_source_file' => " (sarong ''file'' sa kompyuter mo)",
 
-# Special:FileList
-'imagelist_search_for'  => 'Hanápon an pangaran kan retrato:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Hanápon an pangaran kan retrato:',
 'imgfile'               => 'dokumento',
-'imagelist'             => 'Lista kan dokumento',
-'imagelist_date'        => 'Petsa',
-'imagelist_name'        => 'Pangaran',
-'imagelist_user'        => 'Parágamit',
-'imagelist_size'        => 'Sukol',
-'imagelist_description' => 'Deskripsión',
+'listfiles'             => 'Lista kan dokumento',
+'listfiles_date'        => 'Petsa',
+'listfiles_name'        => 'Pangaran',
+'listfiles_user'        => 'Parágamit',
+'listfiles_size'        => 'Sukol',
+'listfiles_description' => 'Deskripsión',
 
 # File description page
 'filehist'                  => 'Uusipón nin file',
@@ -1142,7 +1142,8 @@ An páhina pigkokonsiderar na páhina nin klaripikasyon kun naggagamit ini nin t
 'categoriespagetext' => 'Igwa nin laog ang mga minasunod na kategorya.',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Parâon an mga kontribusyon kan parágamit',
+'deletedcontributions'       => 'Parâon an mga kontribusyon kan parágamit',
+'deletedcontributions-title' => 'Parâon an mga kontribusyon kan parágamit',
 
 # Special:LinkSearch
 'linksearch-ok'   => 'Hanápon',
@@ -1858,9 +1859,7 @@ Ano man na takod sa parehong linyang ini pigkokonsiderar na eksepsyon, i.e. mga 
 'confirmemail'            => "Kompirmaron an ''e''-surat",
 'confirmemail_noemail'    => "Mayô kang pigkaag na marhay na ''e''-surat sa saimong [[Special:Preferences|mga kabôtan nin parágamit]].",
 'confirmemail_text'       => "Kaipuhan an pag-''validate'' kan saimong e-koreo bago ka makagamit nin ''features'' na e-koreo. Pindoton an butones sa babâ tangarig magpadara nin kompirmasyon sa saimong e-koreo. An surat igwang takod na may koda; ikarga an takod sa browser para makompirmar na valido an saimong e-koreo.",
-'confirmemail_pending'    => "<div class=\"error\">
-May pigpadara nang kompirmasyon sa ''e''-surat mo; kun kagigibo mo pa sana kan saimong ''account'', maghalat ka nin mga dikit na minutos bago ka maghagad giraray nin bâgong ''code''.
-</div>",
+'confirmemail_pending'    => "May pigpadara nang kompirmasyon sa ''e''-surat mo; kun kagigibo mo pa sana kan saimong ''account'', maghalat ka nin mga dikit na minutos bago ka maghagad giraray nin bâgong ''code''.",
 'confirmemail_send'       => 'Magpadará nin kompirmasyon',
 'confirmemail_sent'       => "Napadará na an kompirmasyon sa ''e''-surat.",
 'confirmemail_oncreate'   => "May pigpadara nang kompirmasyon sa saimong ''e''-surat.

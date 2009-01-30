@@ -4,6 +4,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Omnipaedista
  * @author Svetko
  * @author Wolliger Mensch
  * @author ОйЛ
@@ -18,7 +19,7 @@ $linkPrefixExtension = true;
 
 $namespaceNames = array(
 	NS_MEDIA            => 'Срѣ́дьства',
-	NS_SPECIAL          => 'Наро_чьна',
+	NS_SPECIAL          => 'Наро́чьна',
 	NS_TALK             => 'Бєсѣ́да',
 	NS_USER             => 'По́льꙃєватєл҄ь',
 	NS_USER_TALK        => 'По́льꙃєватєлꙗ_бєсѣ́да',
@@ -214,7 +215,8 @@ $messages = array(
 'nstab-category'  => 'катигорі́ꙗ',
 
 # General errors
-'viewsource' => 'страни́цѧ исто́чьнъ о́браꙁъ',
+'viewsource'    => 'страни́цѧ исто́чьнъ о́браꙁъ',
+'viewsourcefor' => 'бо $1',
 
 # Login and logout pages
 'logouttitle'             => 'ис̾хо́дъ',
@@ -245,7 +247,7 @@ $messages = array(
 'extlink_sample' => 'http://www.example.com съвѧ́ꙁи и́мѧ',
 
 # Edit pages
-'summary'            => 'опьса́ниѥ:',
+'summary'            => 'опьса́ниѥ :',
 'minoredit'          => 'ма́лаꙗ мѣ́на',
 'watchthis'          => 'си страни́цѧ блюдє́ниѥ',
 'savearticle'        => 'съхранѥ́ниѥ',
@@ -267,13 +269,19 @@ $messages = array(
 'historyempty' => '(поу́сто)',
 
 # Revision feed
-'history-feed-title' => 'мѣ́нъ їсторі́ꙗ',
+'history-feed-title'          => 'мѣ́нъ їсторі́ꙗ',
+'history-feed-item-nocomment' => '$1 при $2', # user at time
 
 # Revision deletion
 'revdelete-uname' => 'по́льꙃєватєлꙗ и́мѧ',
 
+# Diffs
+'diff-with'       => '&#32;съ $1 $2',
+'diff-with-final' => '&#32;и $1 $2',
+
 # Search results
 'searchresults'            => 'иска́ниꙗ ито́гъ',
+'searchprofile-images'     => 'дѣ́ла',
 'search-result-size'       => '$1 ({{PLURAL:$2|$2 сло́во|$2 сло́ва|$2 словє́съ}})',
 'search-interwiki-caption' => 'ро́дьствьна опꙑтьствова́ниꙗ',
 'searchall'                => 'вьсꙗ́',
@@ -327,20 +335,23 @@ $messages = array(
 'recentchangeslinked-page' => 'страни́цѧ и́мѧ :',
 
 # Upload
-'upload'           => 'положє́ниѥ дѣ́ла',
-'uploadbtn'        => 'положє́ниѥ дѣ́ла',
-'uploadlog'        => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
-'uploadlogpage'    => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
-'successfulupload' => 'дѣ́ло положєно ѥ́стъ',
-'uploadedimage'    => '⁖ [[$1]] ⁖ положє́нъ ѥ́стъ',
-'watchthisupload'  => 'си страни́цѧ блюдє́ниѥ',
+'upload'            => 'положє́ниѥ дѣ́ла',
+'uploadbtn'         => 'положє́ниѥ дѣ́ла',
+'uploadlog'         => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
+'uploadlogpage'     => 'дѣ́лъ положє́ниꙗ їсторі́ꙗ',
+'filename'          => 'дѣ́ла и́мѧ',
+'filedesc'          => 'опьса́ниѥ',
+'fileuploadsummary' => 'опьса́ниѥ:',
+'successfulupload'  => 'дѣ́ло положєно ѥ́стъ',
+'uploadedimage'     => '⁖ [[$1]] ⁖ положє́нъ ѥ́стъ',
+'watchthisupload'   => 'си страни́цѧ блюдє́ниѥ',
 
-# Special:FileList
+# Special:ListFiles
 'imgfile'        => 'дѣ́ло',
-'imagelist'      => 'дѣ́лъ ката́логъ',
-'imagelist_name' => 'и́мѧ',
-'imagelist_user' => 'по́льꙃєватєл҄ь',
-'imagelist_size' => 'мѣ́ра',
+'listfiles'      => 'дѣ́лъ ката́логъ',
+'listfiles_name' => 'и́мѧ',
+'listfiles_user' => 'по́льꙃєватєл҄ь',
+'listfiles_size' => 'мѣ́ра',
 
 # File description page
 'filehist-deleteone' => 'поничьжє́ниѥ',
@@ -404,7 +415,8 @@ $messages = array(
 'categories' => 'катигорі́ѩ',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'пони́чьжєнꙑ добродѣꙗ́ниꙗ',
+'deletedcontributions'       => 'пони́чьжєнꙑ добродѣꙗ́ниꙗ',
+'deletedcontributions-title' => 'пони́чьжєнꙑ добродѣꙗ́ниꙗ',
 
 # Special:LinkSearch
 'linksearch-ok' => 'ищи́',
@@ -418,7 +430,7 @@ $messages = array(
 'newuserlog-autocreate-entry' => 'по́льꙃєватєлꙗ мѣ́сто аѵтомати́чьно сътворєно́ ѥ́стъ',
 
 # E-mail user
-'emailuser' => 'Посъли епїстолѫ',
+'emailuser' => 'посъли єпїстолѫ',
 
 # Watchlist
 'watchlist'      => 'моꙗ́ блюдє́ниꙗ',

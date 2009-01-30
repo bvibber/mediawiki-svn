@@ -46,11 +46,8 @@ class DifferenceEngine {
 		if ( 'prev' === $new ) {
 			# Show diff between revision $old and the previous one.
 			# Get previous one from DB.
-			#
 			$this->mNewid = intval($old);
-
 			$this->mOldid = $this->mTitle->getPreviousRevisionID( $this->mNewid );
-
 		} elseif ( 'next' === $new ) {
 			# Show diff between revision $old and the previous one.
 			# Get previous one from DB.
@@ -62,10 +59,10 @@ class DifferenceEngine {
 				# revision is cur, which is "0".
 				$this->mNewid = 0;
 			}
-
 		} else {
 			$this->mOldid = intval($old);
 			$this->mNewid = intval($new);
+			wfRunHooks( 'NewDifferenceEngine', array(&$titleObj, &$this->mOldid, &$this->mNewid, $old, $new) ); 
 		}
 		$this->mRcidMarkPatrolled = intval($rcid);  # force it to be an integer
 		$this->mRefreshCache = $refreshCache;
@@ -111,7 +108,7 @@ CONTROL;
 		}
 
 		$wgOut->setArticleFlag( false );
-		if ( ! $this->loadRevisionData() ) {
+		if ( !$this->loadRevisionData() ) {
 			$t = $this->mTitle->getPrefixedText();
 			$d = wfMsgExt( 'missingarticle-diff', array( 'escape' ), $this->mOldid, $this->mNewid );
 			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
@@ -171,19 +168,22 @@ CONTROL;
 			// If we've been given an explicit change identifier, use it; saves time
 			if( $this->mRcidMarkPatrolled ) {
 				$rcid = $this->mRcidMarkPatrolled;
+				$rc = RecentChange::newFromId( $rcid );
+				// Already patrolled?
+				$rcid = is_object($rc) && !$rc->getAttribute('rc_patrolled') ? $rcid : 0;
 			} else {
 				// Look for an unpatrolled change corresponding to this diff
 				$db = wfGetDB( DB_SLAVE );
 				$change = RecentChange::newFromConds(
-				array(
-				// Add redundant user,timestamp condition so we can use the existing index
-						'rc_user_text'  => $this->mNewRev->getUserText( Revision::FOR_THIS_USER ),
-						'rc_timestamp'  => $db->timestamp( $this->mNewRev->getTimestamp() ),
-						'rc_this_oldid' => $this->mNewid,
-						'rc_last_oldid' => $this->mOldid,
-						'rc_patrolled'  => 0
-				),
-				__METHOD__
+					array(
+					// Add redundant user,timestamp condition so we can use the existing index
+							'rc_user_text'  => $this->mNewRev->getRawUserText(),
+							'rc_timestamp'  => $db->timestamp( $this->mNewRev->getTimestamp() ),
+							'rc_this_oldid' => $this->mNewid,
+							'rc_last_oldid' => $this->mOldid,
+							'rc_patrolled'  => 0
+					),
+					__METHOD__
 				);
 				if( $change instanceof RecentChange ) {
 					$rcid = $change->mAttribs['rc_id'];
@@ -229,37 +229,29 @@ CONTROL;
 
 		$rdel = ''; $ldel = '';
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
-			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			if( !$this->mOldRev->userCan( Revision::DELETED_RESTRICTED ) ) {
 				// If revision was hidden from sysops
-				$ldel = wfMsgHtml( 'rev-delundel' );
+				$ldel = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.wfMsgHtml( 'rev-delundel' ).')' );
 			} else {
-				$ldel = $sk->makeKnownLinkObj( $revdel,
-				wfMsgHtml( 'rev-delundel' ),
-					'target=' . urlencode( $this->mOldRev->mTitle->getPrefixedDbkey() ) .
-					'&oldid=' . urlencode( $this->mOldRev->getId() ) );
-				// Bolden oversighted content
-				if( $this->mOldRev->isDeleted( Revision::DELETED_RESTRICTED ) )
-				$ldel = "<strong>$ldel</strong>";
+				$query = array( 'target' => $this->mOldRev->mTitle->getPrefixedDbkey(),
+					'oldid' => $this->mOldRev->getId()
+				);
+				$ldel = $sk->revDeleteLink( $query, $this->mOldRev->isDeleted( Revision::DELETED_RESTRICTED ) );
 			}
-			$ldel = "&nbsp;&nbsp;&nbsp;<tt>(<small>$ldel</small>)</tt> ";
+			$ldel = "&nbsp;&nbsp;&nbsp;$ldel ";
 			// We don't currently handle well changing the top revision's settings
 			if( $this->mNewRev->isCurrent() ) {
-				// If revision was hidden from sysops
-				$rdel = wfMsgHtml( 'rev-delundel' );
+				$rdel = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.wfMsgHtml( 'rev-delundel' ).')' );
 			} else if( !$this->mNewRev->userCan( Revision::DELETED_RESTRICTED ) ) {
 				// If revision was hidden from sysops
-				$rdel = wfMsgHtml( 'rev-delundel' );
+				$rdel = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.wfMsgHtml( 'rev-delundel' ).')' );
 			} else {
-				$rdel = $sk->makeKnownLinkObj( $revdel,
-				wfMsgHtml( 'rev-delundel' ),
-					'target=' . urlencode( $this->mNewRev->mTitle->getPrefixedDbkey() ) .
-					'&oldid=' . urlencode( $this->mNewRev->getId() ) );
-				// Bolden oversighted content
-				if( $this->mNewRev->isDeleted( Revision::DELETED_RESTRICTED ) )
-				$rdel = "<strong>$rdel</strong>";
+				$query = array( 'target' =>  $this->mNewRev->mTitle->getPrefixedDbkey(),
+					'oldid' => $this->mNewRev->getId()
+				);
+				$rdel = $sk->revDeleteLink( $query, $this->mNewRev->isDeleted( Revision::DELETED_RESTRICTED ) );
 			}
-			$rdel = "&nbsp;&nbsp;&nbsp;<tt>(<small>$rdel</small>)</tt> ";
+			$rdel = "&nbsp;&nbsp;&nbsp;$rdel ";
 		}
 
 		$oldHeader = '<div id="mw-diff-otitle1"><strong>'.$this->mOldtitle.'</strong></div>' .
@@ -435,11 +427,15 @@ CONTROL;
 		#
 		$sk = $wgUser->getSkin();
 
-		$nextlink = $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'nextdiff' ), 'diff=next&oldid='.$this->mNewid.$this->htmlDiffArgument(), '', '', 'id="differences-nextlink"' );
-		$header = "<div class=\"firstrevisionheader\" style=\"text-align: center\"><strong>{$this->mOldtitle}</strong><br />" .
-		$sk->revUserTools( $this->mNewRev ) . "<br />" .
-		$sk->revComment( $this->mNewRev ) . "<br />" .
-		$nextlink . "</div>\n";
+		$next = $this->mTitle->getNextRevisionID( $this->mNewid );
+		if( !$next ) {
+			$nextlink = '';
+		} else {
+			$nextlink = '<br/>' . $sk->makeKnownLinkObj( $this->mTitle, wfMsgHtml( 'nextdiff' ), 
+				'diff=next&oldid=' . $this->mNewid.$this->htmlDiffArgument(), '', '', 'id="differences-nextlink"' );
+		}
+		$header = "<div class=\"firstrevisionheader\" style=\"text-align: center\">" .
+			$sk->revUserTools( $this->mNewRev ) . "<br/>" . $sk->revComment( $this->mNewRev ) . $nextlink . "</div>\n";
 
 		$wgOut->addHTML( $header );
 

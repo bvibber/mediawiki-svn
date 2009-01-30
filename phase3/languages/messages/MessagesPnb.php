@@ -5,6 +5,7 @@
  * @file
  *
  * @author Khalid Mahmood
+ * @author ZaDiak
  */
 
 $fallback8bitEncoding = 'windows-1256';
@@ -278,7 +279,7 @@ $messages = array(
 ایدے چ کم از کم {{PLURAL:$1|$1|اک ھندسہ}} تے کنجی تواڈے ورتن آلے ناں تو مختلف ہونی چائیدی اے۔',
 'mailmypassword'            => 'نئی کنجی ای میل کرو',
 'passwordremindertitle'     => '{{SITENAME}} لئی نوی عارضی کنجی',
-'passwordremindertext'      => 'کسے نے (غالبن تسی $1 آئی پی پتے توں) نوی کنجی ($4){{SITENAME}} واسطے منگی۔ اک عارضی کنجی ورتن والے "$2" دے لئی بنائی گئی سی تے "$3" تے سیٹ کر دتی گئی سی۔ اگر اے تواڈا کم اے تے توانوں اندر آکے اک نوی کنجی چننی پۓ گی۔
+'passwordremindertext'      => 'کسے نے (غالبن تسی $1 آئی پی پتے توں) نوی کنجی ($4){{SITENAME}} واسطے منگی۔ اک عارضی کنجی ورتن والے "$2" دے لئی بنائی گئی سی تے "$3" تے سیٹ کر دتی گئی سی۔ اگر اے تواڈا کم اے تے توانوں اندر آکے اک نوی $5 کنجی چننی پۓ گی۔
 
 اگر کسے ہور نے اے درخواست کیتی اے یا تسی اپنی پرانی کنجی لب لئی اے تے تسی اینوں بدلنا نئیں چاندے تے تسی اس سنعے نوں چھڈو تے پرانی کنجی استعمال کرو۔',
 'noemail'                   => 'اس ورتن والے "$1" دا کوئی ای میل پتہ نئیں ہے گا۔',
@@ -606,14 +607,14 @@ $messages = array(
 'license-nopreview'  => '(کچا کم نئیں ویکھ سکدے او)',
 'upload_source_file' => ' (تواڈے کمپیوٹر تے اک فائل)',
 
-# Special:FileList
+# Special:ListFiles
 'imgfile'               => 'فائل',
-'imagelist'             => 'فائل لسٹ',
-'imagelist_date'        => 'تاریخ',
-'imagelist_name'        => 'ناں',
-'imagelist_user'        => 'ورتن آلا',
-'imagelist_size'        => 'ناپ',
-'imagelist_description' => 'تفصیل',
+'listfiles'             => 'فائل لسٹ',
+'listfiles_date'        => 'تاریخ',
+'listfiles_name'        => 'ناں',
+'listfiles_user'        => 'ورتن آلا',
+'listfiles_size'        => 'ناپ',
+'listfiles_description' => 'تفصیل',
 
 # File description page
 'filehist'                       => 'پچھلی حالت',

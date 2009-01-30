@@ -41,7 +41,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Maangalizi' ),
 	'Recentchanges'             => array( 'MabadalikoyaKaribuni' ),
 	'Upload'                    => array( 'Pakia' ),
-	'Imagelist'                 => array( 'OrodhayaFali', 'OrodhayaPicha' ),
+	'Listfiles'                 => array( 'OrodhayaFali', 'OrodhayaPicha' ),
 	'Newimages'                 => array( 'FailiMpya', 'FailimpyazaPicha' ),
 	'Listusers'                 => array( 'OrodhayaWatumiaji', 'OrodhayaMtumiaji' ),
 	'Listgrouprights'           => array( 'OrodhayaWasimamizi' ),
@@ -113,10 +113,12 @@ $messages = array(
 'tog-highlightbroken'         => 'Muundo wa viungo vilivyovunjika <a href="" class="mpya">kama hii</a> (badala yake: kama hii<a href="" class="kwa ndani">?</a>).',
 'tog-justify'                 => 'Sawazisha ibara',
 'tog-hideminor'               => 'Ficha mabadilisho madogo ya hivi karibuni',
+'tog-hidepatrolled'           => 'Ficha kurasa zilizofanyiwa doria kwenye mabadiliko ya karibuni',
+'tog-newpageshidepatrolled'   => 'Ficha kurasa zilizofanyiwa doria kwenye orodha ya kurasa mpya',
 'tog-extendwatchlist'         => 'Tanua orodha ya maangalizi ili kuonyesha mabadiliko yote yaliyofanyika',
 'tog-usenewrc'                => 'Mabadiliko yaliyoongezeka hivi karibuni (JavaScript)',
 'tog-numberheadings'          => 'Vichwa vya habari vijipange namba-vyenyewe',
-'tog-showtoolbar'             => 'Onyesha ufito wa vifaa vya kuhariria (JavaScript)',
+'tog-showtoolbar'             => 'Onyesha mwambaa wa zana za kuhariria (JavaScript)',
 'tog-editondblclick'          => 'Hariri ukurasa kwa kubonyeza mara mbili',
 'tog-editsection'             => 'Wezesha sehemu ya kuandikia kwa kutumia viungo vya [hariri]',
 'tog-editsectiononrightclick' => 'Wezesha sehemu ya kuandikia kwa kubonyeza kitufe cha kulia cha puku yako juu ya sehemu ya majina husika (JavaScript)',
@@ -355,7 +357,7 @@ Usisahau kubadilisha mapendekezo yako ya [[Special:Preferences|{{SITENAME}}]].',
 'logout'                    => 'Toka',
 'userlogout'                => 'Toka',
 'notloggedin'               => 'Hujajiandikisha',
-'nologin'                   => 'Huna akaunti ya kuingilia? $1',
+'nologin'                   => 'Huna akaunti ya kuingilia? $1.',
 'nologinlink'               => 'Sajili akaunti',
 'createaccount'             => 'Sajili akaunti',
 'gotaccount'                => 'Unayo akaunti tayari? $1',
@@ -394,8 +396,8 @@ Tafadhali, ondoa kizuizi hicho, baadaye jaribu tena.',
 'nouserspecified'           => 'Lazima uandike jina la mtumiaji.',
 'wrongpassword'             => 'Umeingiza nywila ya makosa. Jaribu tena.',
 'wrongpasswordempty'        => 'Nywila ilikuwa tupu. Jaribu tena.',
-'passwordtooshort'          => 'Nywila yako haifai.  Ni lazima iwe na herufi $1 au zaidi, na inabidi nywila na jina la mtumiaji ziwe tofauti.',
-'mailmypassword'            => 'Nitume nywila kwa barua pepe',
+'passwordtooshort'          => 'Nywila yako haifai.  Ni lazima iwe na {{PLURAL:#1|herufi}} $1 au zaidi, na inabidi nywila na jina la mtumiaji ziwe tofauti.',
+'mailmypassword'            => 'Nitume nywila mpya kwa barua pepe',
 'passwordremindertitle'     => 'Nywila mpya ya muda kwa {{SITENAME}}',
 'passwordremindertext'      => 'Mtu mmoja (yamkini wewe, kutoka anwani ya IP $1)
 ambaye ameulizia nywila mpya kwa {{SITENAME}} ($4).
@@ -550,7 +552,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'nchanges'                       => '{{PLURAL:$1|badiliko|mabadiliko}} $1',
 'recentchanges'                  => 'Mabadiliko ya karibuni',
 'recentchanges-feed-description' => 'Tumia tawanyiko hili kufuatilia mabadiliko yote ya hivi karibuni katika Wiki.',
-'rcnote'                         => "Yanayofuata {{PLURAL:$1|ni badiliko '''1'''|ni mabadiliko '''$1''' ya mwisho}} kutoka katika {{PLURAL:$2|siku iliyopita|siku '''$2''' zilizopita}}, hadi $3.",
+'rcnote'                         => "Yanayofuata ni {{PLURAL:$1|badiliko '''1'''|mabadiliko '''$1''' ya mwisho}} kutoka katika {{PLURAL:$2|siku iliyopita|siku '''$2''' zilizopita}}, hadi $5, $4.",
 'rcnotefrom'                     => "Hapo chini yaonekana mabadiliko tangu '''$2''' (tunaonyesha hadi '''$1''').",
 'rclistfrom'                     => 'Onyesha mabadiliko mapya kuanzia $1',
 'rcshowhideminor'                => '$1 mabadiliko madogo',
@@ -567,6 +569,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'minoreditletter'                => 'd',
 'newpageletter'                  => 'P',
 'boteditletter'                  => 'r',
+'newsectionsummary'              => '/* $1 */ mjadala mpya',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Mabadiliko husika',
@@ -584,8 +587,8 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 
 'license' => 'Hatimiliki:',
 
-# Special:FileList
-'imagelist' => 'Orodha ya mafaili',
+# Special:ListFiles
+'listfiles' => 'Orodha ya mafaili',
 
 # File description page
 'filehist'                  => 'Historia ya faili',
@@ -597,11 +600,11 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'filehist-filesize'         => 'Ukubwa wa faili',
 'filehist-comment'          => 'Maoni',
 'imagelinks'                => 'Viungo',
-'linkstoimage'              => 'Kurasa hizi zimeunganishwa na faili hili:',
+'linkstoimage'              => '{{PLURAL:$1|Ukurasa huu|Kurasa hizi $1}} zimeunganishwa na faili hili:',
 'nolinkstoimage'            => 'Hakuna kurasa zozote zilizounganishwa na faili hii.',
 'sharedupload'              => 'Faili hii inaweza kushirikiwa na miradi mingine.',
 'noimage'                   => 'Hakuna faili yenye jina hili, $1 kama unayo.',
-'noimage-linktext'          => 'pakia picha',
+'noimage-linktext'          => 'pakia faili',
 'uploadnewversion-linktext' => 'Pakia toleo jipya la faili hii',
 
 # MIME search
@@ -640,7 +643,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'lonelypages'             => 'Kurasa ambazo haziungwi kutoka ukurasa mwingine wowote',
 'uncategorizedpages'      => 'Kurasa ambazo hazijawekwa katika jamii',
 'uncategorizedcategories' => 'Jamii ambazo hazijawekwa katika jamii',
-'uncategorizedimages'     => 'Picha ambazo hazijawekwa katika jamii',
+'uncategorizedimages'     => 'Mafaili ambazo hazijawekwa katika jamii',
 'uncategorizedtemplates'  => 'Vigezo ambavyo havijawekwa katika jamii',
 'unusedcategories'        => 'Jamii ambazo hazitumiwi',
 'unusedimages'            => 'Mafaili ambayo hayatumiwi',
@@ -880,7 +883,7 @@ Chagua jina lengine.',
 'tooltip-t-specialpages'          => 'Orodha ya kurasa maalum zote',
 'tooltip-ca-nstab-user'           => 'Tazama ukurasa wa mtumiaji',
 'tooltip-ca-nstab-project'        => 'Tazama ukurasa wa mradi',
-'tooltip-ca-nstab-image'          => 'Angalia ukurasa wa picha',
+'tooltip-ca-nstab-image'          => 'Angalia ukurasa wa faili',
 'tooltip-ca-nstab-template'       => 'Tazama kigezo',
 'tooltip-ca-nstab-help'           => 'Tazama ukurasa wa msaada',
 'tooltip-ca-nstab-category'       => 'Tazama ukurasa wa jamii',
@@ -931,7 +934,7 @@ likifupishwa. Nyuga zingine zitafichwa kama chaguo-msingi.
 
 # External editor support
 'edit-externally'      => 'Tumia programu ya nje kuhariri faili hii',
-'edit-externally-help' => 'Ona [http://www.mediawiki.org/wiki/Manual:External_editors maelezo (kwa Kiingereza)] kwa maarifa mengine.',
+'edit-externally-help' => '(Ona [http://www.mediawiki.org/wiki/Manual:External_editors maelezo (kwa Kiingereza)] kwa maarifa mengine.)',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'zote',

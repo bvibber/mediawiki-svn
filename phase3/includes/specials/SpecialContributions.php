@@ -63,6 +63,8 @@ class SpecialContributions extends SpecialPage {
 		} else {
 			$this->opts['namespace'] = '';
 		}
+
+		$this->opts['tagfilter'] = $wgRequest->getVal( 'tagfilter' );
 	
 		// Allows reverts to have the bot flag in recent changes. It is just here to
 		// be passed in the form at the top of the page 
@@ -256,6 +258,7 @@ class SpecialContributions extends SpecialPage {
 			Xml::label( wfMsg( 'namespace' ), 'namespace' ) . ' ' .
 			Xml::namespaceSelector( $this->opts['namespace'], '' ) .
 			'</span>' .
+			Xml::tags( 'p', null, implode( '&nbsp;', ChangeTags::buildTagFilterSelector( $this->opts['tagfilter'] ) ) ) .
 			Xml::openElement( 'p' ) .
 			'<span style="white-space: nowrap">' .
 			Xml::label( wfMsg( 'year' ), 'year' ) . ' '.
@@ -307,7 +310,7 @@ class SpecialContributions extends SpecialPage {
 		$target = $this->opts['target'] == 'newbies' ? 'newbies' : $nt->getText();
 			
 		$pager = new ContribsPager( $target, $this->opts['namespace'], 
-			$this->opts['year'], $this->opts['month'] );
+			$this->opts['year'], $this->opts['month'], $this->opts['tagfilter'] );
 
 		$pager->mLimit = min( $this->opts['limit'], $wgFeedLimit );
 
@@ -353,7 +356,7 @@ class SpecialContributions extends SpecialPage {
 
 	protected function feedItemDesc( $revision ) {
 		if( $revision ) {
-			return '<p>' . htmlspecialchars( $revision->getUserText() ) . ': ' .
+			return '<p>' . htmlspecialchars( $revision->getUserText() ) . wfMsgForContent( 'colon-separator' ) .
 				htmlspecialchars( FeedItem::stripComment( $revision->getComment() ) ) . 
 				"</p>\n<hr />\n<div>" .
 				nl2br( htmlspecialchars( $revision->getText() ) ) . "</div>";
@@ -371,13 +374,14 @@ class ContribsPager extends ReverseChronologicalPager {
 	var $messages, $target;
 	var $namespace = '', $mDb;
 
-	function __construct( $target, $namespace = false, $year = false, $month = false ) {
+	function __construct( $target, $namespace = false, $year = false, $month = false, $tagFilter = false ) {
 		parent::__construct();
 		foreach( explode( ' ', 'uctop diff newarticle rollbacklink diff hist newpageletter minoreditletter' ) as $msg ) {
 			$this->messages[$msg] = wfMsgExt( $msg, array( 'escape') );
 		}
 		$this->target = $target;
 		$this->namespace = $namespace;
+		$this->tagFilter = $tagFilter;
 
 		$this->getDateCond( $year, $month );
 
@@ -392,18 +396,24 @@ class ContribsPager extends ReverseChronologicalPager {
 
 	function getQueryInfo() {
 		list( $tables, $index, $userCond, $join_cond ) = $this->getUserCond();
-		$conds = array_merge( array('page_id=rev_page'), $userCond, $this->getNamespaceCond() );
+		
+		$conds = array_merge( $userCond, $this->getNamespaceCond() );
+		$join_cond['page'] = array( 'INNER JOIN', 'page_id=rev_page' );
+		
 		$queryInfo = array(
 			'tables' => $tables,
 			'fields' => array(
-				'page_namespace', 'page_title', 'page_is_new', 'page_latest', 'rev_id', 'rev_page',
-				'rev_text_id', 'rev_timestamp', 'rev_comment', 'rev_minor_edit', 'rev_user',
-				'rev_user_text', 'rev_parent_id', 'rev_deleted'
+				'page_namespace', 'page_title', 'page_is_new', 'page_latest', 'page_is_redirect',
+				'page_len','rev_id', 'rev_page', 'rev_text_id', 'rev_timestamp', 'rev_comment', 
+				'rev_minor_edit', 'rev_user', 'rev_user_text', 'rev_parent_id', 'rev_deleted'
 			),
 			'conds' => $conds,
 			'options' => array( 'USE INDEX' => array('revision' => $index) ),
 			'join_conds' => $join_cond
 		);
+		
+		ChangeTags::modifyDisplayQuery( $queryInfo['tables'], $queryInfo['fields'], $queryInfo['conds'], $queryInfo['join_conds'], $this->tagFilter );
+		
 		wfRunHooks( 'ContribsPager::getQueryInfo', array( &$this, &$queryInfo ) );
 		return $queryInfo;
 	}
@@ -458,36 +468,38 @@ class ContribsPager extends ReverseChronologicalPager {
 	 * @todo This would probably look a lot nicer in a table.
 	 */
 	function formatRow( $row ) {
-		wfProfileIn( __METHOD__ );
-
 		global $wgLang, $wgUser, $wgContLang;
+		wfProfileIn( __METHOD__ );
 
 		$sk = $this->getSkin();
 		$rev = new Revision( $row );
+		$classes = array();
 
-		$page = Title::makeTitle( $row->page_namespace, $row->page_title );
-		$link = $sk->makeKnownLinkObj( $page );
+		$page = Title::newFromRow( $row );
+		$page->resetArticleId( $row->rev_page ); // use process cache
+		$link = $sk->makeLinkObj( $page, $page->getPrefixedText(), $page->isRedirect() ? 'redirect=no' : '' );
+		# Mark current revisions
 		$difftext = $topmarktext = '';
 		if( $row->rev_id == $row->page_latest ) {
 			$topmarktext .= '<strong>' . $this->messages['uctop'] . '</strong>';
 			if( !$row->page_is_new ) {
 				$difftext .= '(' . $sk->makeKnownLinkObj( $page, $this->messages['diff'], 'diff=0' ) . ')';
+				# Add rollback link
+				if( $page->quickUserCan( 'rollback') && $page->quickUserCan( 'edit' ) ) {
+					$topmarktext .= ' '.$sk->generateRollback( $rev );
+				}
 			} else {
 				$difftext .= $this->messages['newarticle'];
 			}
-
-			if( $page->userCan( 'rollback') && $page->userCan( 'edit' ) ) {
-				$topmarktext .= ' '.$sk->generateRollback( $rev );
-			}
-
 		}
 		# Is there a visible previous revision?
 		if( $rev->userCan(Revision::DELETED_TEXT) ) {
-			$difftext = '(' . $sk->makeKnownLinkObj( $page, $this->messages['diff'], 'diff=prev&oldid='.$row->rev_id ) . ')';
+			$difftext = '(' . $sk->makeKnownLinkObj( $page, $this->messages['diff'],
+				'diff=prev&oldid='.$row->rev_id ) . ')';
 		} else {
 			$difftext = '(' . $this->messages['diff'] . ')';
 		}
-		$histlink='('.$sk->makeKnownLinkObj( $page, $this->messages['hist'], 'action=history' ) . ')';
+		$histlink = '('.$sk->makeKnownLinkObj( $page, $this->messages['hist'], 'action=history' ) . ')';
 
 		$comment = $wgContLang->getDirMark() . $sk->revComment( $rev, false, true );
 		$date = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->rev_timestamp ), true );
@@ -510,7 +522,7 @@ class ContribsPager extends ReverseChronologicalPager {
 			$nflag = '';
 		}
 
-		if( $row->rev_minor_edit ) {
+		if( $rev->isMinor() ) {
 			$mflag = '<span class="minor">' . $this->messages['minoreditletter'] . '</span> ';
 		} else {
 			$mflag = '';
@@ -520,10 +532,17 @@ class ContribsPager extends ReverseChronologicalPager {
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
+
+		# Tags, if any.
+		list($tagSummary, $newClasses) = ChangeTags::formatSummaryRow( $row->ts_tags, 'contributions' );
+		$classes = array_merge( $classes, $newClasses );
+		$ret .= " $tagSummary";
+
 		// Let extensions add data
 		wfRunHooks( 'ContributionsLineEnding', array( &$this, &$ret, $row ) );
-		
-		$ret = "<li>$ret</li>\n";
+
+		$classes = implode( ' ', $classes );
+		$ret = "<li class=\"$classes\">$ret</li>\n";
 		wfProfileOut( __METHOD__ );
 		return $ret;
 	}

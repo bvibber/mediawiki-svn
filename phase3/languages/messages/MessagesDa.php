@@ -16,6 +16,7 @@
  * @author Peter Andersen
  * @author Remember the dot
  * @author Sir48
+ * @author Slomox
  * @author Svip
  * @author Urhixidur
  */
@@ -72,7 +73,7 @@ $specialPageAliases = array(
 	'Preferences'               => array( 'Indstillinger' ),
 	'Watchlist'                 => array( 'Overvågningsliste' ),
 	'Recentchanges'             => array( 'Seneste ændringer' ),
-	'Imagelist'                 => array( 'Filer', 'Filliste' ),
+	'Listfiles'                 => array( 'Filer', 'Filliste' ),
 	'Newimages'                 => array( 'Nye filer' ),
 	'Listusers'                 => array( 'Brugerliste', 'Bruger' ),
 	'Listgrouprights'           => array( 'Grupperettighedsliste' ),
@@ -781,7 +782,7 @@ Der bør være færre end $2, lige nu er der $1.',
 
 # "Undo" feature
 'undo-success' => 'Ændringen er nu annulleret. Kontroller venligst bearbejdningen i sammenligningen og klik så på „Gem side“, for at gemme den.',
-'undo-failure' => '<span class="error">Ændringen kunne ikke annulleres, da det pågældende afsnit i mellemtiden er ændret.</span>',
+'undo-failure' => 'Ændringen kunne ikke annulleres, da det pågældende afsnit i mellemtiden er ændret.',
 'undo-norev'   => 'Ændringen kunne ikke annuleres fordi den ikke eksisterer eller er blevet slettet.',
 'undo-summary' => 'Fjerner version $1 af [[Special:Contributions/$2|$2]] ([[User talk:$2|diskussion]])',
 
@@ -1000,7 +1001,7 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'timezonelegend'           => 'Tidszone',
 'timezonetext'             => 'Indtast antal timer din lokale tid er forskellig fra serverens tid (UTC). Der bliver automatisk tilpasset til dansk tid, ellers skulle man for eksempel for dansk vintertid, indtaste "1" (og "2" når vi er på sommertid).',
 'localtime'                => 'Lokaltid',
-'timezoneoffset'           => 'Forskel',
+'timezoneoffset'           => 'Forskel¹:',
 'servertime'               => 'Serverens tid er nu',
 'guesstimezone'            => 'Hent tidszone fra browseren',
 'allowemail'               => 'Tillade E-mails fra andre brugere.',
@@ -1254,16 +1255,16 @@ Sletningsloggen for denne fil er gengivet herunder.",
 'upload_source_url'  => ' (gyldig, offentligt tillgængelig URL)',
 'upload_source_file' => ' (en fil på din computer)',
 
-# Special:FileList
-'imagelist-summary'     => 'Denne specialside viser alle uploadede filer. Standardmæssigt vises de sidst uploadede filer først. Med et klik på spalteoverskriften kan sorteringen vendes om eller der kan sorteres efter en anden spalte.',
-'imagelist_search_for'  => 'Søge efter fil:',
+# Special:ListFiles
+'listfiles-summary'     => 'Denne specialside viser alle uploadede filer. Standardmæssigt vises de sidst uploadede filer først. Med et klik på spalteoverskriften kan sorteringen vendes om eller der kan sorteres efter en anden spalte.',
+'listfiles_search_for'  => 'Søge efter fil:',
 'imgfile'               => 'Fil',
-'imagelist'             => 'Billedliste',
-'imagelist_date'        => 'Dato',
-'imagelist_name'        => 'Navn',
-'imagelist_user'        => 'Bruger',
-'imagelist_size'        => 'Størrelse (Byte)',
-'imagelist_description' => 'Beskrivelse',
+'listfiles'             => 'Billedliste',
+'listfiles_date'        => 'Dato',
+'listfiles_name'        => 'Navn',
+'listfiles_user'        => 'Bruger',
+'listfiles_size'        => 'Størrelse (Byte)',
+'listfiles_description' => 'Beskrivelse',
 
 # File description page
 'filehist'                       => 'Filhistorik',
@@ -1468,7 +1469,8 @@ Sletningsloggen for denne fil er gengivet herunder.",
 'special-categories-sort-abc'   => 'sorter alfabetisk',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Slettede brugerbidrag',
+'deletedcontributions'       => 'Slettede brugerbidrag',
+'deletedcontributions-title' => 'Slettede brugerbidrag',
 
 # Special:LinkSearch
 'linksearch'       => 'Søg i weblinks',
@@ -2456,7 +2458,7 @@ Kun indholdet af lister (linjer startende med *) bliver brugt. Den første henvi
 'confirmemail'             => 'Bekræft e-mail-adressen',
 'confirmemail_noemail'     => 'Du har ikke angivet en gyldig E-mail-adresse i din [[Special:Preferences|brugerprofil]].',
 'confirmemail_text'        => '{{SITENAME}} kræver, at du bekræfter en E-mail-adresse (autentificering), før du kan bruge de udvidede E-mail-funktioner. Med et klik på kontrolfeltet forneden sendes en E-mail til dig. Denne E-mail indeholder et link med en bekræftelseskode. Med et klik på dette link bekræftes, at E-mail-adressen er gyldig.',
-'confirmemail_pending'     => '<div class="error">En bekræftelsesmail er allerede sendt til dig. Hvis du først for nylig har oprettet brugerkontoen, vent da et par minutter på denne e-mail, før du bestiller en ny kode.</div>',
+'confirmemail_pending'     => 'En bekræftelsesmail er allerede sendt til dig. Hvis du først for nylig har oprettet brugerkontoen, vent da et par minutter på denne e-mail, før du bestiller en ny kode.',
 'confirmemail_send'        => 'Send bekræftelseskode',
 'confirmemail_sent'        => 'Bekræftelses-e-amil afsendt.',
 'confirmemail_oncreate'    => 'En bekræftelseskode er sendt til din E-mail-adresse. Denne kode skal ikke bruges til anmeldelsen, den kræves dog til aktiveringen af E-mail-funktionerne indenfor Wikien.',
@@ -2499,9 +2501,9 @@ $1
 'trackbackdeleteok' => 'Trackback blev slettet.',
 
 # Delete conflict
-'deletedwhileediting' => '<span class="error">Bemærk: Det blev forsøgt at slette denne side, efter at du var begyndt, at ændre den! 
+'deletedwhileediting' => 'Bemærk: Det blev forsøgt at slette denne side, efter at du var begyndt, at ændre den! 
 Kig i [{{fullurl:Special:Log|type=delete&page=}}{{FULLPAGENAMEE}} slette-loggen], 
-hvorfor siden blev slettet. Hvis du gemmer siden bliver den oprettet igen.</span>',
+hvorfor siden blev slettet. Hvis du gemmer siden bliver den oprettet igen.',
 'confirmrecreate'     => "Bruger [[User:$1|$1]] ([[User talk:$1|Diskussion]]) har slettet denne side, efter at du begyndte at ændre den. Begrundelsen lyder:
 : ''$2''
 Bekræft venligst, at du virkelig vil oprette denne side igen.",

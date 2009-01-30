@@ -183,7 +183,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Volglieste' ),
 	'Recentchanges'             => array( 'Leste_wiezigingen' ),
 	'Upload'                    => array( 'Bestanden_toevoegen' ),
-	'Imagelist'                 => array( 'Ofbeeldingenlieste' ),
+	'Listfiles'                 => array( 'Ofbeeldingenlieste' ),
 	'Newimages'                 => array( 'Nieje_ofbeeldingen' ),
 	'Listusers'                 => array( 'Gebrukerslieste' ),
 	'Listgrouprights'           => array( 'Groepsrechen bekieken' ),
@@ -679,8 +679,8 @@ Contreleer de spelling of [[Special:UserLogin/signup|maak een nieje gebruker an]
 'passwordremindertext'       => 'Iemand vanof \'t IP-adres $1 (werschienlijk jiezelf) hef evreugen 
 um een niej wachwoord veur {{SITENAME}} ($4) toe te sturen. 
 Der is een tiejelijk wachwoord an-emaak veur gebruker "$2":
-"$3". As \'t neet de bedoeling was, meld dan an en kies een niej
-wachwoord.
+"$3". As \'t neet de bedoeling was, meld dan an en kies een niej wachwoord.
+Joew tiejelijke wachwoord zal verlopen over {{PLURAL:$5|één dag|$5 dagen}}.
 
 A-j dit verzeuk neet zelf edaon hemmen of a-j \'t wachwoord weer weten 
 en \'t neet meer wiezigen willen, negeer dit berich dan 
@@ -864,7 +864,7 @@ Je kunnen de tekse 't beste op de computer opslaon en laoter opniej preberen de 
 
 As grund is angeven: $1",
 'protectedpagewarning'             => "<strong>Waorschuwing! Disse pagina is beveilig zodat allinnig beheerders 't kunnen wiezigen.</strong>",
-'semiprotectedpagewarning'         => "'''Let op:''' disse pagina is allinnig te bewarken deur gebrukers dee tenminsen 4 dagen in-eschreven bin.",
+'semiprotectedpagewarning'         => "'''Let op:''' disse pagina ku-j allinnig bewarken a-j tenminsen vier dagen in-eschreven bin.",
 'cascadeprotectedwarning'          => "'''Waorschuwing:''' disse pagina is beveilig zodat allinnig beheerders disse pagina kunnen bewarken, dit wonnen edaon umdat disse pagina veurkump in de volgende {{PLURAL:$1|cascade-beveilige pagina|cascade-beveiligen pagina's}}:",
 'titleprotectedwarning'            => "<strong>Waorschuwing: disse pagina is beveilig zodat allinnig bepaolde gebrukers 't an kunnen maken.</strong>",
 'templatesused'                    => 'Gebruken sjablonen op disse pagina:',
@@ -1145,7 +1145,7 @@ Aandere beheerders van {{SITENAME}} kunnen de verbörgen inhoud bekieken en 't w
 'showingresults'                   => "Hieronder {{PLURAL:$1|steet '''1''' risseltaot|staon '''$1''' risseltaoten}}  <b>$1</b> vanof nummer <b>$2</b>.",
 'showingresultsnum'                => "Hieronder {{PLURAL:$3|steet '''1''' risseltaot|staon '''$3''' risseltaoten}} vanof nummer '''$2'''.",
 'showingresultstotal'              => "Hieronder {{PLURAL:$4|wordt et risseltaot '''$1''' van '''$3''' weer-egeven|wonnen de risseltaoten '''$1 tot $2''' van '''$3''' weer-egeven}}",
-'nonefound'                        => '<strong>Let wel:</strong> as een zeukopdrachte mislok kump dat vake deur gebruuk van veulveurkoemmende woorden as "de" en "het", dee neet eïndexeerd bin.',
+'nonefound'                        => "<strong>Let wel:</strong> standard wonnen neet alle naamruumtes deurzoch. A-j in zeukopdrach as veurvoegsel \"''all:'' gebruken wonnen alle pagina's deurzoch (oek overlegpagina's, sjablonen en gao zo mar deur). Je kunnen oek een naamruumte as veurvoegsel gebruken.",
 'search-nonefound'                 => 'Der bin gien risseltaoten veur de zeukopdrach.',
 'powersearch'                      => 'Zeuk',
 'powersearch-legend'               => 'Uut-ebreid zeuken',
@@ -1509,18 +1509,18 @@ Bedenk eers of 't inderdaod de bedoeling is dat dit bestand toe-evoeg wonnen.
 'upload_source_url'  => ' (een geldig, pebliek toegankelijk webadres)',
 'upload_source_file' => ' (een bestand op joew computer)',
 
-# Special:FileList
-'imagelist-summary'     => 'Op disse speciale pagina ku-j alle toe-evoegen bestanden bekieken.
+# Special:ListFiles
+'listfiles-summary'     => 'Op disse speciale pagina ku-j alle toe-evoegen bestanden bekieken.
 Standard wonnen de les toe-evoegen bestanden bovenan de lieste ezet.
 Klikken op een kelomkop veraandert de sortering.',
-'imagelist_search_for'  => 'Zeuk op ofbeeldingnaam:',
+'listfiles_search_for'  => 'Zeuk op ofbeeldingnaam:',
 'imgfile'               => 'bestand',
-'imagelist'             => 'Ofbeeldingenlieste',
-'imagelist_date'        => 'Daotum',
-'imagelist_name'        => 'Naam',
-'imagelist_user'        => 'Gebruker',
-'imagelist_size'        => 'Grootte (bytes)',
-'imagelist_description' => 'Beschrieving',
+'listfiles'             => 'Ofbeeldingenlieste',
+'listfiles_date'        => 'Daotum',
+'listfiles_name'        => 'Naam',
+'listfiles_user'        => 'Gebruker',
+'listfiles_size'        => 'Grootte (bytes)',
+'listfiles_description' => 'Beschrieving',
 
 # File description page
 'filehist'                       => 'Bestansgeschiedenisse',
@@ -1768,7 +1768,7 @@ De ontvanger kan dus drek beantwoorden.",
 'usermailererror' => "Foutmelding bie 't versturen:",
 'defemailsubject' => 'Berich van {{SITENAME}}',
 'noemailtitle'    => 'Gebruker hef gien e-mailadres op-egeven',
-'noemailtext'     => 'Disse gebruker hef gien geldig e-mailadres in-evoerd, of wil gien berichen van aandere gebrukers ontvangen.',
+'noemailtext'     => 'Disse gebruker hef gien geldig e-mailadres in-evoerd.',
 'email-legend'    => 'Een berich sturen naor een aandere gebruker van {{SITENAME}}',
 'emailfrom'       => 'Van:',
 'emailto'         => 'An:',
@@ -1904,6 +1904,7 @@ De leste bewarking is edaon deur [[User:$3|$3]] ([[User talk:$3|Overleeg]]).",
 'protectedarticle'            => '[[$1]] is beveilig',
 'modifiedarticleprotection'   => 'beveiligingsnivo van "[[$1]]"  ewiezig',
 'unprotectedarticle'          => '[[$1]] vrie-egeven',
+'movedarticleprotection'      => 'hef de beveiligingsinstellingen over-ezet van "[[$2]]" naor "[[$1]]"',
 'protect-title'               => 'Instellen van beveiligingsnivo veur "$1"',
 'prot_1movedto2'              => '[[$1]] is ewiezig naor [[$2]]',
 'protect-legend'              => 'Beveiliging bevestigen',
@@ -2708,9 +2709,7 @@ Alle volgende verwiezingen dee op dezelfde regel staon, wonnen behaandeld as uut
 'confirmemail'             => 'Bevestig e-mailadres',
 'confirmemail_noemail'     => 'Je hemmen gien geldig e-mailadres in-evoerd in joew [[Special:Preferences|veurkeuren]].',
 'confirmemail_text'        => 'Bie disse wiki mu-j je e-mailadres bevestigen veurda-j de berichopties gebruken kunnen. Klik op de onderstaonde knoppe um een bevestigingsberich te ontvangen. Dit berich bevat een code mit een verwiezing; um je e-mailadres te bevestigen mu-j disse verwiezing los doon.',
-'confirmemail_pending'     => '<div class="error">
-Der is al een bevestigingscode op-estuurd; a-j net een gebrukersnaam an-emaak hemmen, wach dan eers een paor menuten tot da-j dit berich ontvungen hemmen veurda-j een nieje code anvragen.
-</div>',
+'confirmemail_pending'     => 'Der is al een bevestigingscode op-estuurd; a-j net een gebrukersnaam an-emaak hemmen, wach dan eers een paor menuten tot da-j dit berich ontvungen hemmen veurda-j een nieje code anvragen.',
 'confirmemail_send'        => 'Stuur een bevestigingscode',
 'confirmemail_sent'        => 'Bevestigingsberich verstuurd.',
 'confirmemail_oncreate'    => "Een bevestigingscode is naor joew e-mailadres verstuurd. Disse code is neet neudig um an te melden, mar je mutten 't wel bevestigen veurda-j de e-mailmeugelijkheen van disse wiki gebruken kunnen.",

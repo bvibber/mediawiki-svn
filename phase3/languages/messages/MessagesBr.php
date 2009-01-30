@@ -39,7 +39,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Roll evezhiañ' ),
 	'Recentchanges'             => array( 'KemmoùDiwezhañ' ),
 	'Upload'                    => array( 'Pellgargañ' ),
-	'Imagelist'                 => array( 'RollSkeudennoù' ),
+	'Listfiles'                 => array( 'RollSkeudennoù' ),
 	'Newimages'                 => array( 'SkeudennoùNevez' ),
 	'Statistics'                => array( 'Stadegoù' ),
 	'Newpages'                  => array( 'PajennoùNevez' ),
@@ -501,9 +501,9 @@ Gwiriit eo bet skrivet mat an anv ganeoc\'h pe [[Special:UserLogin/signup|krouit
 'mailmypassword'             => 'Kasit din ur ger-tremen nevez',
 'passwordremindertitle'      => 'Ho ker-tremen berrbad nevez evit {{SITENAME}}',
 'passwordremindertext'       => "Unan bennak (c'hwi moarvat gant ar chomlec'h IP \$1)
-en deus goulennet ma vo kaset dezhañ ur ger-tremen nevez evit mont war {{SITENAME}} (\$4).
+en deus goulennet ma vo kaset dezhañ ur ger-tremen nevez evit {{SITENAME}} (\$4).
 Savet ez eus bet ur ger-tremen da c'hortoz evit an implijer \"\$2\" hag a zo \"\$3\".
-Mard eo se a felle deoc'h ober e vo ret deoc'h en em lugañ ha kemmañ ho ker-tremen bremañ.
+Mard eo se a felle deoc'h ober e vo ret deoc'h en em lugañ ha kemmañ ho ker-tremen bremañ. Didalvez e vo ho ker ker-tremen da c'hortoz a-benn {{PLURAL:\$5|un devezh|\$5 devezh}}
 
 Mard eo bet graet ar goulenn gant unan bennak all, pe m'hoc'h eus soñj eus ho ker-tremen bremañ ha
 ma ne fell ket deoc'h cheñch anezhañ ken, e c'hallit leuskel ar postel-mañ a-gostez ha kenderc'hel d'ober gant ho ker-tremen kozh.",
@@ -1240,18 +1240,18 @@ Ma talc'h ar gudenn, kit e darempred gant [[Special:ListUsers/sysop|merourien ar
 'upload_source_url'  => " (Un URL reizh a c'hall bezañ tizhet gant an holl)",
 'upload_source_file' => " (ur restr war hoc'h urzhiataer)",
 
-# Special:FileList
-'imagelist-summary'     => 'Diskouez a ra ar bajenn zibar-mañ an holl restroù bet enporzhiet.
+# Special:ListFiles
+'listfiles-summary'     => 'Diskouez a ra ar bajenn zibar-mañ an holl restroù bet enporzhiet.
 Dre ziouer e teu ar restroù enporzhiet da ziwezhañ e laez ar roll.
 Klikañ war penn ar bann a cheñch an urzh kinnig.',
-'imagelist_search_for'  => 'Klask anv ar skeudenn :',
+'listfiles_search_for'  => 'Klask anv ar skeudenn :',
 'imgfile'               => 'restr',
-'imagelist'             => 'Roll ar skeudennoù',
-'imagelist_date'        => 'Deiziad',
-'imagelist_name'        => 'Anv',
-'imagelist_user'        => 'Implijer',
-'imagelist_size'        => 'Ment (e bitoù)',
-'imagelist_description' => 'Deskrivadur',
+'listfiles'             => 'Roll ar skeudennoù',
+'listfiles_date'        => 'Deiziad',
+'listfiles_name'        => 'Anv',
+'listfiles_user'        => 'Implijer',
+'listfiles_size'        => 'Ment (e bitoù)',
+'listfiles_description' => 'Deskrivadur',
 
 # File description page
 'filehist'                       => 'Istor ar restr',
@@ -1462,7 +1462,8 @@ Gwelet ivez ar [[Special:WantedCategories|rummadoù a vank]].',
 'special-categories-sort-abc'   => 'urzh al lizherenneg',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Degasadennoù diverket un implijer',
+'deletedcontributions'       => 'Degasadennoù diverket un implijer',
+'deletedcontributions-title' => 'Degasadennoù diverket un implijer',
 
 # Special:LinkSearch
 'linksearch'      => 'Klask liammoù Kenrouedad',
@@ -2462,9 +2463,8 @@ Kement liamm all war an hevelep linenn a seller outañ evel un nemedenn, da skou
 'confirmemail'             => "Kadarnaat ar chomlec'h postel",
 'confirmemail_noemail'     => "N'hoc'h eus ket spisaet chomlec'h postel mat ebet en ho [[Special:Preferences|penndibaboù implijer]].",
 'confirmemail_text'        => "Rankout a ra ar wiki-mañ bezañ gwiriet ho chomlec'h postel a-raok gallout implijout nep arc'hwel postel. Implijit ar bouton a-is evit kas ur postel kadarnaat d'ho chomlec'h. Ul liamm ennañ ur c'hod a vo er postel. Kargit al liamm-se en o merdeer evit kadarnaat ho chomlec'h.",
-'confirmemail_pending'     => "<div class=\"error\">
-Ur c'hod kadarnaat zo bet kaset deoc'h dre bostel c'hoazh;
-a-raok klask goulenn unan nevez, m'emaoc'h o paouez krouiñ ho kont, e vo fur eus ho perzh gortoz un nebeud munutoù ha leuskel amzer dezhañ d'en em gavout betek ennoc'h.</div>",
+'confirmemail_pending'     => "Ur c'hod kadarnaat zo bet kaset deoc'h dre bostel c'hoazh;
+a-raok klask goulenn unan nevez, m'emaoc'h o paouez krouiñ ho kont, e vo fur eus ho perzh gortoz un nebeud munutoù ha leuskel amzer dezhañ d'en em gavout betek ennoc'h.",
 'confirmemail_send'        => "Kas ur c'hod kadarnaat",
 'confirmemail_sent'        => 'Postel kadarnaat kaset',
 'confirmemail_oncreate'    => "Kaset ez eus bet ur c'hod kadarnaat d'ho chomlec'h postel.

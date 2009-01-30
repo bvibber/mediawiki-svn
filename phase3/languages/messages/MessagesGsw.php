@@ -4,6 +4,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Als-Chlämens
  * @author Als-Holder
  * @author Hendergassler
  * @author J. 'mach' wust
@@ -29,7 +30,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Beobachtigslischte' ),
 	'Recentchanges'             => array( 'Letschti Änderige' ),
 	'Upload'                    => array( 'Uffelade' ),
-	'Imagelist'                 => array( 'Dateie' ),
+	'Listfiles'                 => array( 'Dateie' ),
 	'Newimages'                 => array( 'Neji Dateie' ),
 	'Listusers'                 => array( 'Benutzerlischte' ),
 	'Listgrouprights'           => array( 'Grupperächt' ),
@@ -114,6 +115,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Links uf lääri Themene durestryche',
 'tog-justify'                 => 'Tekscht als Blocksatz',
 'tog-hideminor'               => 'Keini «chlyni Änderige» aazeige',
+'tog-hidepatrolled'           => 'Vum Fäldhieter aagluegti Änderige in dr „Letschte Änderige“ usblände',
+'tog-newpageshidepatrolled'   => 'Aagluegti Syten uf dr Lischt „Neiji Syte“ verstecke',
 'tog-extendwatchlist'         => 'Erwiterti Beobachtungslischte',
 'tog-usenewrc'                => 'Erwytereti «letschti Änderige» (geit nid uf allne Browser)',
 'tog-numberheadings'          => 'Überschrifte outomatisch numeriere',
@@ -148,10 +151,12 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Chlyni Änderige nit in de Beobachtigslischte aazeige',
 'tog-watchlisthideliu'        => 'Bearbeitige vu aagmäldete Benutzer usblände',
 'tog-watchlisthideanons'      => 'Bearbeitige vu anonyme Benutzer (IP-Adresse) usblände',
+'tog-watchlisthidepatrolled'  => 'vum Fäldhieter aagluegti Änderige in dr Beobachtigslischt usblände',
 'tog-nolangconversion'        => 'Konvertierig vu Sprachvariante abschalte',
 'tog-ccmeonemails'            => 'Schick mr Kopie vo de E-Mails, won i andere schick.',
-'tog-diffonly'                => "Numme Versionsunterschied aazeige, ohni d'Syte",
+'tog-diffonly'                => 'Numme Versionsunterschiid aazeige, ohni d Syte',
 'tog-showhiddencats'          => 'Zeig di versteckte Kategorie',
+'tog-noconvertlink'           => 'Konvertierig vum Titel deaktiviere',
 'tog-norollbackdiff'          => 'Unterschid noch em Zrucksetze unterdrucke',
 
 'underline-always'  => 'immer',
@@ -299,7 +304,7 @@ $messages = array(
 'redirectedfrom'    => '(Witergleitet vun $1)',
 'redirectpagesub'   => 'Umgleiteti Syte',
 'lastmodifiedat'    => 'Letschti Änderig vo dere Syte: $2, $1<br />', # $1 date, $2 time
-'viewcount'         => 'Selli Syte isch {{PLURAL:$1|eimol|$1 Mol}} bsuecht worde.',
+'viewcount'         => 'Die Syte isch {{PLURAL:$1|eimol|$1 Mol}} bsuecht wore.',
 'protectedpage'     => 'Gschützti Syte',
 'jumpto'            => 'Gump zue:',
 'jumptonavigation'  => 'Navigation',
@@ -461,26 +466,26 @@ Die Sperri isch dur [[User:$1|$1]] yygrichtet wore mit dr Begrindig ''„$2“''
 </div><br />
 We du jitz öppis uf der {{SITENAME}} änderisch, de wird dyni IP-Adrässen als Urhäber regischtriert u nid dy Benutzername. Du chasch di mit em glychen oder emnen andere Benutzername nöi aamälde.',
 'welcomecreation'            => '==Willcho, $1!==
-Dyy Benutzerchonto isch aaglait wore.
+Dyy Benutzerkonto isch aaglait wore.
 Vergiss nid, dyni Yystellige aazpasse.',
 'loginpagetitle'             => 'Benutzer-Aamelde',
 'yourname'                   => 'Dyy Benutzername',
-'yourpassword'               => 'Passwort',
-'yourpasswordagain'          => 'Passwort no mol yygee',
+'yourpassword'               => 'Passwort:',
+'yourpasswordagain'          => 'Passwort no mol yygee:',
 'remembermypassword'         => 'Passwort spychere',
 'yourdomainname'             => 'Dyyni Domäne',
-'externaldberror'            => 'Entwäder s lit e Fähler bi dr externe Authentifizierung vor, oder Du derfsch Dyy extern Benutzerchonto nid aktualisiere.',
+'externaldberror'            => 'Entwäder s lit e Fähler bi dr externe Authentifizierung vor, oder Du derfsch Dyy extern Benutzerkonto nid aktualisiere.',
 'login'                      => 'Aamälde',
-'nav-login-createaccount'    => 'Aamälde / Chonto aaleege',
+'nav-login-createaccount'    => 'Aamälde / Konto aaleege',
 'loginprompt'                => '<small>Für di bir {{SITENAME}} aazmälde, muesch Cookies erloube!</small>',
 'userlogin'                  => 'Aamälde',
 'logout'                     => 'Abmälde',
 'userlogout'                 => 'Abmälde',
 'notloggedin'                => 'Nit aagmäldet',
-'nologin'                    => 'No kei Benutzerchonto? $1.',
-'nologinlink'                => '»Chonto aaleege«',
+'nologin'                    => 'No kei Benutzerkonto? $1.',
+'nologinlink'                => '»Konto aaleege«',
 'createaccount'              => 'Nöis Benutzerkonto aalege',
-'gotaccount'                 => 'Du häsch scho a Chonto? $1',
+'gotaccount'                 => 'Du häsch scho a Konto? $1',
 'gotaccountlink'             => '»Login fir Benutzer, wu scho aagmäldet sin«',
 'createaccountmail'          => 'iber E-Mail',
 'badretype'                  => 'Di beidi Passwörter stimme nid zämme.',
@@ -490,12 +495,16 @@ Bitte nimm e andere.',
 'username'                   => 'Benutzername:',
 'uid'                        => 'Benutzer-ID:',
 'prefs-memberingroups'       => 'Mitglid vu dr {{PLURAL:$1|Benutzergruppe|Benutzergruppe}}:',
-'yourrealname'               => 'Ihre Name*',
+'yourrealname'               => 'Echte Name:',
 'yourlanguage'               => 'Sproch:',
 'yourvariant'                => 'Variante:',
 'yournick'                   => 'Unterschrift:',
 'badsig'                     => 'Dr Syntax vu dr Signatur isch nid giltig; bitte d HTML iberpriefe.',
 'badsiglength'               => 'D Unterschrift derf hegschtens $1 {{PLURAL:$1|Zeiche|Zeiche}} lang syy.',
+'yourgender'                 => 'Gschlächt:',
+'gender-unknown'             => 'Kei Aagab',
+'gender-male'                => 'männlig',
+'gender-female'              => 'wyyblig',
 'email'                      => 'E-Mail',
 'prefs-help-realname'        => '* <strong>Dyy ächte Name</strong> (optional): Wänn du wetsch, ass Dyyni Änderige uf Dii chenne zruckgfierd wäre.',
 'loginerror'                 => 'Fähler bir Aamäldig',
@@ -520,9 +529,11 @@ Es mues mindischtens {{PLURAL:$1|1 Zeiche|$1 Zeiche}} ha u sech vom Benutzername
 'passwordremindertitle'      => 'Nei Passwort fir {{SITENAME}}',
 'passwordremindertext'       => 'Ebber mit dr IP-Adress $1 het e nej Passwort fir d Aamäldig bi {{SITENAME}} ($4) aagfordert, wahrschyyns Du sälber.
 
-S automatisch generiert Passwort fir dr Benutzer $2 heisst jetz: $3
+S automatisch generiert Passwort fir dr Benutzer "$2" heisst jetz: "$3"
 
-Du sottsch dich jetzt aamälde un s Passwort ändere: {{fullurl:Special:UserLogin}}
+Du sottsch dich jetzt aamälde un s Passwort ändere.
+Des Passwort lauft ab in {{PLURAL:$5|eim Tag|$5 Täg}}.
+
 
 Bitte ignorier die E-Mail, wänn Du s nid sälber aagforderet hesch. S alt Passwort blybt wyter giltig.',
 'noemail'                    => 'Dr Benutzer "$1" het kei E-Mail-Adräss aagee.',
@@ -535,7 +546,7 @@ Zum Missbruuch z verhindere, isch au d Megligkeit gsperrt wore, e nej Passwort a
 Voreb ass no mee Mails iber d {{SITENAME}}-Mailfunktion an die Adräss gschickt wäre, muesch d Inschtruktione in däm Mail befolge, zum bstätige, ass es wirkli Dyys isch.',
 'throttled-mailpassword'     => 'In dr letschte {{PLURAL:$1|Stund|$1 Stunde}} isch scho ne nej Passwort aagforderet wore. Zum Missbruch vu däre Funktion z verhindere, cha nume {{PLURAL:$1|eimol in dr Stund|alli $1 Stunde}} e nej Passwort aageforderet wäre.',
 'mailerror'                  => 'Fähler bim Sende vun de Mail: $1',
-'acct_creation_throttle_hit' => 'Du hesch scho {{PLURAL:$1|1 Benutzerchonto|$1 Benutzerchonte}} aagleit.
+'acct_creation_throttle_hit' => 'Du hesch scho {{PLURAL:$1|1 Benutzerkonto|$1 Benutzerkonte}} aagleit.
 Du chasch keini meh aalege.',
 'emailauthenticated'         => 'Di E-Mail-Adräss isch am $2 um $3 Uhr bschtätigt worde.',
 'emailnotauthenticated'      => 'Dyni E-Mail-Adräss isch nonig bstätigt. Wäg däm gehn di erwyterete E-Mail-Funktione nonig.
@@ -544,18 +555,19 @@ Fir d Bstätigung muesch em Gleich nogoh, wu Dir gschickt woren isch. Du chasch 
 'emailconfirmlink'           => 'E-Poscht-Adräss bstätige',
 'invalidemailaddress'        => 'Diä E-Mail-Adress isch nit akzeptiert worre, wil s ä ugültigs Format ghet het.
 Bitte gib ä neiji Adress in nem gültige Format ii, odr tue s Feld leere.',
-'accountcreated'             => 'De Benutzer isch agleit worre.',
-'accountcreatedtext'         => 'De Benutzer $1 isch aagleit worre.',
-'createaccount-title'        => 'Aalege vum e Benutzerchonto fir {{SITENAME}}',
-'createaccount-text'         => 'Fir Dii isch e Benutzerchonto "$2" uf {{SITENAME}} ($4) aaglait wore. S Passwort fir "$2" , wu automatisch generiert woren isch, isch "$3". Du sottsch Di jetz aamälde un s Passwort ändere.
+'accountcreated'             => 'S Benutzerkonto isch aagleit wore.',
+'accountcreatedtext'         => 'S Benutzerkonto $1 isch aagleit wore.',
+'createaccount-title'        => 'Aalege vum e Benutzerkonto fir {{SITENAME}}',
+'createaccount-text'         => 'Fir Dii isch e Benutzerkonto "$2" uf {{SITENAME}} ($4) aaglait wore. S Passwort fir "$2" , wu automatisch generiert woren isch, isch "$3". Du sottsch Di jetz aamälde un s Passwort ändere.
 
-Wänn s Benutzerchonto us Versäh aaglait woren isch, chasch die Nochricht ignoriere.',
+Wänn s Benutzerkonto us Versäh aaglait woren isch, chasch die Nochricht ignoriere.',
 'login-throttled'            => 'Du hesch z vilmol vergebli versuecht, Di unter däm Benutzername aazmälde. Bitte wart, voreb Du s non emol versuechsch.',
 'loginlanguagelabel'         => 'Sproch: $1',
 
 # Password reset dialog
-'resetpass'                 => 'Passwort fir s Benutzerchonto ändere oder zrucksetze',
+'resetpass'                 => 'Passwort fir s Benutzerkonto ändere oder zrucksetze',
 'resetpass_announce'        => 'Aamäldig mit em Code, wu per Mail zuegschickt woren isch. Zum d Aamäldig abzschliesse, muesch jetz e nej Passwort wehle.',
+'resetpass_text'            => '<!-- Tue do dr Text ergänze -->',
 'resetpass_header'          => 'Passwort zrucksetze',
 'oldpassword'               => 'Alts Passwort',
 'newpassword'               => 'Nöis Passwort',
@@ -661,7 +673,7 @@ Zum die Syte aalege, chasch do in däm Chaschte unte aafange schrybe (lueg [[{{M
 Wänn do nid hesch welle aane goh, no druck in Dyynem Browser uf '''Zruck'''.",
 'anontalkpagetext'                 => "''Des isch e Diskussionssyte vo me anonyme Benutzer, wo kei Zuegang aaglait het oder wo ne nit bruucht. Sälleweg muen mir di numerischi IP-Adräss bruuche zum ihn oder si z identifiziere. Sone IP-Adräss cha au vo mehrere Benutzer deilt werde. Wenn Si en anonyme Benutzer sin un s Gfiehl hen, dass do irrelevanti Kommentar an Si grichtet wärde, derno [[Special:UserLogin|lege Si sich bitte en Zuegang aa odr mälde sich aa]] zum in Zuekunft Verwirrige mit andere anonyme Benutzer z vermide.''",
 'noarticletext'                    => "Uf dere Syte het's no kei Tekscht. Du chasch uf anderne Syte [[Special:Search/{{PAGENAME}}|dä Ytrag sueche]] oder [{{fullurl:{{FULLPAGENAME}}|action=edit}} die Syte bearbeite].",
-'userpage-userdoesnotexist'        => 'S Benutzerchonto „$1“ git s nid. Bitte prief, eb Du die Syte wirkli wit aalege/bearbeite.',
+'userpage-userdoesnotexist'        => 'S Benutzerkonto „$1“ git s nit. Bitte prief, eb Du die Syte wirkli wit aalege/bearbeite.',
 'clearyourcache'                   => "'''Hywys:''' Noch dynere Änderig muess no der Browser-Cache gläärt wäre!<br />'''Mozilla/Safari/Konqueror:''' ''Strg-Umschalttaschte-R'' (oder ''Umschalttasche'' druckt halte und uf s ''Nei-Lade''-Symbol klicke), '''IE:''' ''Strg-F5'', '''Opera/Firefox:''' ''F5''",
 'usercssjsyoucanpreview'           => '<strong>Tipp:</strong> Nimm dr Vorschau-Chnopf, zum Dyy nej CSS/JS vor em Spichere z teschte.',
 'usercsspreview'                   => "== Vorschau vu Dyynem Benutzer-CSS. ==
@@ -696,7 +708,7 @@ Im obere Tekschtfäld steit der jitzig Artikel.
 Im untere Tekschtfält stöh dyni Änderige.
 Bitte überträg dyni Änderigen i ds obere Tekschtfäld.
 We du «Syte spychere» drücksch, de wird '''nume''' der Inhalt vom obere Tekschtfäld gspycheret.",
-'yourtext'                         => 'Ihre Tekscht',
+'yourtext'                         => 'Dyy Täxt',
 'storedversion'                    => 'Gspychereti Version',
 'nonunicodebrowser'                => '<strong>Obacht:</strong> Dyy Browser cha Unicode-Zeiche nid richtig verschaffe. Bitte verwänd e andere Browser zum Syte bearbeite.',
 'editingold'                       => '<strong>Obacht: Du bisch en alti Version vo däm Artikel am Bearbeite.
@@ -724,7 +736,7 @@ Grund fir d Sperri: $1',
 'template-protected'               => '(schrybgschützt)',
 'template-semiprotected'           => '(schrybgschitzt fir Benutzer, wo nit aagmäldet oder nei sin)',
 'hiddencategories'                 => 'Die Syte ghert zue {{PLURAL:$1|einere versteckte Kategori|$1 versteckte Kategorie}}:',
-'edittools'                        => '<!-- Selle Text wird untr em "ändere"-Formular un bim "Uffelade"-Formular aagzeigt. -->',
+'edittools'                        => '<!-- Dää Text wird unter em "Ändere"-Formular un bim "Uffelade"-Formular aagzeigt. -->',
 'nocreatetitle'                    => 'S Aalege vu neje Syte isch yygschränkt.',
 'nocreatetext'                     => "Uf {{SITENAME}} isch d Erstellig vo nöue Syten ygschränkt.
 Du chasch nur Syten ändere, wo's scho git, oder muesch di [[Special:UserLogin|amälde]].",
@@ -760,13 +772,13 @@ S {{PLURAL:$2|derf nid meh wie ein Ufruef|derfe nid meh wie $1 Ufruef}} gee.',
 
 # "Undo" feature
 'undo-success' => 'Zum die Änderig ruckgängig z mache, kontrollier bitte d Bearbeitig in dr Verglichsaasicht un druck derno uf „Syte spichere“.',
-'undo-failure' => '<span class="error">D Änderig het nid chenne ruckgängig gmacht wäre, wel dää Abschnitt mittlerwyli gänderet woren isch.</span>',
+'undo-failure' => 'D Änderig het nid chenne ruckgängig gmacht wäre, wel dää Abschnitt mittlerwyli gänderet woren isch.',
 'undo-norev'   => 'D Bearbeitig het nid chenne ruckgängig gmacht wäre, wel si nid vorhande oder glescht isch.',
 'undo-summary' => 'D Änderig $1 vu [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskussion]]) isch ruckgängig gmacht wore.',
 
 # Account creation failure
-'cantcreateaccounttitle' => 'Benutzerchonto cha nid aaglait wäre.',
-'cantcreateaccount-text' => "S Aalege vu me Benutzerchonto vu dr IP-Adräss '''($1)''' isch dur [[User:$3|$3]] gsperrt wore.
+'cantcreateaccounttitle' => 'Benutzerkonto cha nid aagleit wäre.',
+'cantcreateaccount-text' => "S Aalege vu me Benutzerkonto vu dr IP-Adräss '''($1)''' isch dur [[User:$3|$3]] gsperrt wore.
 
 Grund vu dr Sperri: ''$2''",
 
@@ -802,49 +814,55 @@ Erklärig: (aktuell) = Underschid zu jetz,
 'history-feed-empty'          => 'Di aagforderet Syte git s nid. Villicht isch si glescht oder verschobe wore. [[Special:Search|Suech]] {{SITENAME}} fir neji Syte, wu passe.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(Bearbeitigskommentar uusegnuh)',
-'rev-deleted-user'            => '(Benutzername uusegnuh)',
-'rev-deleted-event'           => '(Logbuechaktion uusegnuh)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks"> Die Version isch glescht wore un chaa nimi aagluegt wäre.
+'rev-deleted-comment'            => '(Bearbeitigskommentar uusegnuh)',
+'rev-deleted-user'               => '(Benutzername uusegnuh)',
+'rev-deleted-event'              => '(Logbuechaktion uusegnuh)',
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks"> Die Version isch glescht wore un chaa nimi aagluegt wäre.
 Information zue dr Leschig un e Begrindig het s im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].</div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">Die Version isch glescht wore un cha nimi aagluegt wäre. As Amman chasch si aber alno aaluege uf {{SITENAME}}.
+'rev-deleted-text-view'          => '<div class="mw-warning plainlinks">Die Version isch glescht wore un cha nimi aagluegt wäre. As Amman chasch si aber alno aaluege uf {{SITENAME}}.
 Informatione zue dr Leschig un e Begrindig het s im [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].</div>',
-'rev-delundel'                => 'zeig/versteck',
-'revisiondelete'              => 'Versione lesche/widerherstelle',
-'revdelete-nooldid-title'     => 'Kei Version aagee',
-'revdelete-nooldid-text'      => 'Du hesch entwäder kei Version aagee, wu die Aktion soll usgfiert wäre, die usgwehlt Version git s nid oder Du versuechsch di aktuäll Version z verstecke.',
-'revdelete-selected'          => "'''{{PLURAL:$2|Usgwehlti Version|Usgwehlti Versione}} vu [[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|Usgwehlte Logbuechyytrag|Usgwehlti Logbuechyytreg}}:'''",
-'revdelete-text'              => "'''Dr Inhalt oder anderi Bstandteil vu gleschte Versione chenne nimi aagluegt wäre, si erschyyne aber alno as Yytreg in dr Versiongschicht.'''
+'rev-delundel'                   => 'zeig/versteck',
+'revisiondelete'                 => 'Versione lesche/widerherstelle',
+'revdelete-nooldid-title'        => 'Kei Version aagee',
+'revdelete-nooldid-text'         => 'Du hesch entwäder kei Version aagee, wu die Aktion soll usgfiert wäre, die usgwehlt Version git s nid oder Du versuechsch di aktuäll Version z verstecke.',
+'revdelete-nologtype-title'      => 'Kei Logtyp aagee',
+'revdelete-nologtype-text'       => 'S isch kei Logtyp fir die Aktion aagee wore.',
+'revdelete-toomanytargets-title' => 'Zvyyl Ziil',
+'revdelete-toomanytargets-text'  => 'S sin zvyyl Logtype fir die Aktion aagee wore.',
+'revdelete-nologid-title'        => 'Uugiltige Logyytrag',
+'revdelete-nologid-text'         => 'S isch kei Logtyp usgwählt wore oder dr gwählt Logtyp git s nit.',
+'revdelete-selected'             => "'''{{PLURAL:$2|Usgwehlti Version|Usgwehlti Versione}} vu [[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|Usgwehlte Logbuechyytrag|Usgwehlti Logbuechyytreg}}:'''",
+'revdelete-text'                 => "'''Dr Inhalt oder anderi Bstandteil vu gleschte Versione chenne nimi aagluegt wäre, si erschyyne aber alno as Yytreg in dr Versiongschicht.'''
 
 {{SITENAME}}-Ammanne chenne dr Inhalt, wu glescht isch, oder di andre gleschte Bstandteil alno aaluege un au widerherstelle, user s isch feschtgleit, ass d Zuegangsbschränkige au fir Ammanne gälte.",
-'revdelete-legend'            => 'Setze vu dr Sichtbarkeits-Yyschränkige',
-'revdelete-hide-text'         => 'Täxt vu dr Version versteckle',
-'revdelete-hide-name'         => 'Logbuech-Aktion versteckle',
-'revdelete-hide-comment'      => 'Bearbeitigskommentar versteckle',
-'revdelete-hide-user'         => 'Benutzername/d IP vum Bearbeiter versteckle',
-'revdelete-hide-restricted'   => 'Die Yyschränkige gälte au fir Ammanne un des Formular wird gsperrt',
-'revdelete-suppress'          => 'Grund vu dr Leschig au vor dr Ammanne versteckle',
-'revdelete-hide-image'        => 'Bildinhalt versteckle',
-'revdelete-unsuppress'        => 'Yyhscränkige fir di widerhergstellte Versione ufhebe',
-'revdelete-log'               => 'Kommentar/Begrindig (erschyynt im Logbuech):',
-'revdelete-submit'            => 'Uf usgwehlti Version aawände',
-'revdelete-logentry'          => 'het d Versionsaasicht fir „[[$1]]“ gänderet',
-'logdelete-logentry'          => 'het d Sichtbarkeit fir „[[$1]]“ gänderet',
-'revdelete-success'           => "'''Versionsaasicht erfolgryych gänderet.'''",
-'logdelete-success'           => "'''Logbuechaasicht erfolgryych gänderet.'''",
-'revdel-restore'              => 'Sichtbarkeit ändere',
-'pagehist'                    => 'Versionsgeschicht',
-'deletedhist'                 => 'Gleschti Versione',
-'revdelete-content'           => 'Syteinhalt',
-'revdelete-summary'           => 'Zämmefassig',
-'revdelete-uname'             => 'Benutzername',
-'revdelete-restricted'        => 'Yyschränkige gälte au fir Ammanne',
-'revdelete-unrestricted'      => 'Yyschränkige fir Ammanne ufghobe',
-'revdelete-hid'               => 'versteckleti $1',
-'revdelete-unhid'             => 'macht $1 wider effetlig',
-'revdelete-log-message'       => '$1 fir $2 {{PLURAL:$2|Version|Versione}}',
-'logdelete-log-message'       => '$1 fir $2 {{PLURAL:$2|Logbuechyytrag|Logbuechyytreg}}',
+'revdelete-legend'               => 'Setze vu dr Sichtbarkeits-Yyschränkige',
+'revdelete-hide-text'            => 'Täxt vu dr Version versteckle',
+'revdelete-hide-name'            => 'Logbuech-Aktion versteckle',
+'revdelete-hide-comment'         => 'Bearbeitigskommentar versteckle',
+'revdelete-hide-user'            => 'Benutzername/d IP vum Bearbeiter versteckle',
+'revdelete-hide-restricted'      => 'Die Yyschränkige gälte au fir Ammanne un des Formular wird gsperrt',
+'revdelete-suppress'             => 'Grund vu dr Leschig au vor dr Ammanne versteckle',
+'revdelete-hide-image'           => 'Bildinhalt versteckle',
+'revdelete-unsuppress'           => 'Yyhscränkige fir di widerhergstellte Versione ufhebe',
+'revdelete-log'                  => 'Kommentar/Begrindig (erschyynt im Logbuech):',
+'revdelete-submit'               => 'Uf usgwehlti Version aawände',
+'revdelete-logentry'             => 'het d Versionsaasicht fir „[[$1]]“ gänderet',
+'logdelete-logentry'             => 'het d Sichtbarkeit fir „[[$1]]“ gänderet',
+'revdelete-success'              => "'''Versionsaasicht erfolgryych gänderet.'''",
+'logdelete-success'              => "'''Logbuechaasicht erfolgryych gänderet.'''",
+'revdel-restore'                 => 'Sichtbarkeit ändere',
+'pagehist'                       => 'Versionsgeschicht',
+'deletedhist'                    => 'Gleschti Versione',
+'revdelete-content'              => 'Syteinhalt',
+'revdelete-summary'              => 'Zämmefassig',
+'revdelete-uname'                => 'Benutzername',
+'revdelete-restricted'           => 'Yyschränkige gälte au fir Ammanne',
+'revdelete-unrestricted'         => 'Yyschränkige fir Ammanne ufghobe',
+'revdelete-hid'                  => 'versteckleti $1',
+'revdelete-unhid'                => 'macht $1 wider effetlig',
+'revdelete-log-message'          => '$1 fir $2 {{PLURAL:$2|Version|Versione}}',
+'logdelete-log-message'          => '$1 fir $2 {{PLURAL:$2|Logbuechyytrag|Logbuechyytreg}}',
 
 # Suppression log
 'suppressionlog'     => 'Oversight-Logbuech',
@@ -1004,7 +1022,7 @@ Du chasch die [[:$1|Syte nöu schrybe]].",
 'searchdisabled'                   => 'D {{SITENAME}}-Suech isch deaktiviert. Du chasch mit Google sueche, s cha aber syy ass dr Suechindex vu Google fir {{SITENAME}} veraltet isch.',
 
 # Preferences page
-'preferences'               => 'Iistellige',
+'preferences'               => 'Yystellige',
 'mypreferences'             => 'Ystellige',
 'prefs-edits'               => 'Aazahl vu dr Bearbeitige:',
 'prefsnologin'              => 'Nid aagmäldet',
@@ -1022,7 +1040,7 @@ Du chasch die [[:$1|Syte nöu schrybe]].",
 'math'                      => 'TeX',
 'dateformat'                => 'Datumsformat',
 'datedefault'               => 'kei Aagab',
-'datetime'                  => 'Datum un Zit',
+'datetime'                  => 'Datum un Zyt',
 'math_failure'              => 'Parser-Fähler',
 'math_unknown_error'        => 'Nit bekannte Fähler',
 'math_unknown_function'     => 'Nit bekannti Funktion',
@@ -1044,6 +1062,7 @@ prief di korrekt Installation vu latex, dvips, gs un convert',
 'prefs-resetpass'           => 'Passwort ändere',
 'saveprefs'                 => 'Änderige spychere',
 'resetprefs'                => 'Änderige doch nid spychere',
+'restoreprefs'              => 'Alli Standardyystellige widerhärstelle',
 'textboxsize'               => 'Tekscht-Ygab',
 'prefs-edit-boxsize'        => 'Gressi vum Bearbeitigsfänschter.',
 'rows'                      => 'Zylene',
@@ -1072,6 +1091,8 @@ prief di korrekt Installation vu latex, dvips, gs un convert',
 'defaultns'                 => 'Namensrüüm wo standardmäässig söll gsuecht wärde:',
 'default'                   => 'Voryystellig',
 'files'                     => 'Bilder',
+'prefs-custom-css'          => 'Benutzerdefinierti CSS',
+'prefs-custom-js'           => 'Benutzerdefiniert JS',
 
 # User rights
 'userrights'                  => 'Benutzerrächtsverwaltig', # Not used as normal message but as header for the special page itself
@@ -1088,7 +1109,7 @@ prief di korrekt Installation vu latex, dvips, gs un convert',
 'userrights-reason'           => 'Grund:',
 'userrights-no-interwiki'     => 'Du hesch nit d Berächtigung, Benutzerrächt in andere Wiki z ändere.',
 'userrights-nodatabase'       => 'D Datebank $1 git s nit oder si isch nit lokal.',
-'userrights-nologin'          => 'Du muesch Di mit eme Ammanne-Benutzerchonto [[Special:UserLogin|aamälde]], zum Benutzerrächt z ändere.',
+'userrights-nologin'          => 'Du muesch Di mit eme Ammanne-Benutzerkonto [[Special:UserLogin|aamälde]], zum Benutzerrächt z ändere.',
 'userrights-notallowed'       => 'Du hesch nit d Berächtigung zum Benutzerrächt vergee.',
 'userrights-changeable-col'   => 'Gruppezuegherigkeit, wu Du chasch ändere',
 'userrights-unchangeable-col' => 'Gruppezuegherigkeit, wu Du nit chasch ändere',
@@ -1122,7 +1143,7 @@ prief di korrekt Installation vu latex, dvips, gs un convert',
 'right-edit'                 => 'Syte bearbeite',
 'right-createpage'           => 'Syten aalege (usser Diskussionssyte)',
 'right-createtalk'           => 'Diskussionssyte aalege',
-'right-createaccount'        => 'Benutzerchonto aalege',
+'right-createaccount'        => 'Benutzerkonto aalege',
 'right-minoredit'            => 'Bearbeitige as chly markiere',
 'right-move'                 => 'Syte verschiebe',
 'right-move-subpages'        => 'Syte verschiebe mitsamt dr Untersyte',
@@ -1183,11 +1204,12 @@ prief di korrekt Installation vu latex, dvips, gs un convert',
 'action-edit'                 => 'die Syte z bearbeite',
 'action-createpage'           => 'Syten aazlege',
 'action-createtalk'           => 'Diskussionssyten aazlege',
-'action-createaccount'        => 'e Benutzerchonto aazlege',
+'action-createaccount'        => 'e Benutzerkonto aazlege',
 'action-minoredit'            => 'die Bearbeitig as chlei z markiere',
 'action-move'                 => 'die Syte z verschiebe',
 'action-move-subpages'        => 'die Syte un di zuegherige Untersyte z verschiebe',
 'action-move-rootuserpages'   => 'Haupt-Benutzersyte z verschiebe',
+'action-movefile'             => 'Die Datei verschiebe',
 'action-upload'               => 'Dateie uffezlade',
 'action-reupload'             => 'die vorhandene Datei z iberschryybe',
 'action-reupload-shared'      => 'die Datei us em gmeinsam gnutzte Repositorium z iberschryybe',
@@ -1280,6 +1302,7 @@ Lueg au d [[Special:NewFiles|Galerii vu neije Dateie]] fir e visuälle Iberblick
 'filename'                    => 'Dateiname',
 'filedesc'                    => 'Bschryybig',
 'fileuploadsummary'           => 'Bschryybig/Quälle:',
+'filereuploadsummary'         => 'Dateiänderige:',
 'filestatus'                  => 'Urheberrächts-Status:',
 'filesource'                  => 'Quälle:',
 'uploadedfiles'               => 'Uffegladeni Dateie',
@@ -1320,6 +1343,7 @@ Wänn Du die Datei einewäg wit uffelade, gang bitte zruck un ändere dr Name.
 'overwroteimage'              => 'het e neiji Version vu „[[$1]]“ uffeglade',
 'uploaddisabled'              => 'Uffelade deaktiviert',
 'uploaddisabledtext'          => 'S Uffelade vu Dateie isch deaktiviert.',
+'php-uploaddisabledtext'      => 'S Uffelade vu PHP-Dateie isch deaktiviert wore. Bitte iberprief d file_uploads-Yystellig.',
 'uploadscripted'              => 'In däre Datei git s HTML- oder Scriptcode, wu fälschligerwyys vun eme Webbrowser usgfiert chennt were.',
 'uploadcorrupt'               => 'Die Datei isch bschädigt oder het e falschi Datei-Erwyterig. Bitte iberprief d Datei un lad si no mol uffe.',
 'uploadvirus'                 => 'In däre Datei het s e Virus! Detail: $1',
@@ -1357,16 +1381,17 @@ Wänn s Problem alno uftritt, informier e [[Special:ListUsers/sysop|Ammann]].',
 'upload_source_url'  => ' (giltige, effentli zuegänglig URL)',
 'upload_source_file' => ' (e Datei uf Dyynem Computer)',
 
-# Special:FileList
-'imagelist-summary'     => 'Die Spezialsyte lischtet alli uffegladene Dateie uf. Standardmässig were di zletscht uffegladene Dateie zerscht aazeigt. Dur e Klick uf d Spalte-Iberschrifte cha d Sortierig umdrillt were oder s cha noch ere andere Spalte sortiert were.',
-'imagelist_search_for'  => 'Suech noch Datei:',
+# Special:ListFiles
+'listfiles-summary'     => 'Die Spezialsyte lischtet alli uffegladene Dateie uf. Standardmässig were di zletscht uffegladene Dateie zerscht aazeigt. Dur e Klick uf d Spalte-Iberschrifte cha d Sortierig umdrillt were oder s cha noch ere andere Spalte sortiert were.',
+'listfiles_search_for'  => 'Suech noch Datei:',
 'imgfile'               => 'Datei',
-'imagelist'             => 'Lischte vo Bilder',
-'imagelist_date'        => 'Datum',
-'imagelist_name'        => 'Name',
-'imagelist_user'        => 'Benutzer',
-'imagelist_size'        => 'Gressi',
-'imagelist_description' => 'Bschryybig',
+'listfiles'             => 'Lischte vo Bilder',
+'listfiles_date'        => 'Datum',
+'listfiles_name'        => 'Name',
+'listfiles_user'        => 'Benutzer',
+'listfiles_size'        => 'Gressi',
+'listfiles_description' => 'Bschryybig',
+'listfiles_count'       => 'Versione',
 
 # File description page
 'filehist'                       => 'Dateiversione',
@@ -1543,7 +1568,9 @@ In jedere Zyylete het s Gleicher zue dr erschte un dr zwote Wyterleitig un s Zii
 'protectedtitlesempty'    => 'Im Momänt sin kei Syte fir s Nejaalege gsperrt mit däne Parameter.',
 'listusers'               => 'Lischte vo Benutzer',
 'listusers-editsonly'     => 'Zeig nume Benutzer mit Byytreg',
+'listusers-creationsort'  => 'Sortiert noch em Datum',
 'usereditcount'           => '$1 {{PLURAL:$1|Bearbeitig|Bearbeitige}}',
+'usercreated'             => 'Aagleit uf $1 am $2',
 'newpages'                => 'Nöji Artikel',
 'newpages-username'       => 'Benutzername:',
 'ancientpages'            => 'alti Sytene',
@@ -1603,7 +1630,8 @@ Lueg au d Lischt vu dr [[Special:WantedCategories|gwinschte Kategorie]].',
 'special-categories-sort-abc'   => 'Sortierig no Alfabet',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Gleschti Bytreg',
+'deletedcontributions'       => 'Gleschti Bytreg',
+'deletedcontributions-title' => 'Gleschti Bytreg',
 
 # Special:LinkSearch
 'linksearch'       => 'Suech Netzgleicher',
@@ -1624,8 +1652,8 @@ Lueg au d Lischt vu dr [[Special:WantedCategories|gwinschte Kategorie]].',
 'newuserlogpagetext'          => 'Des isch e Logbuech fir nej aagleiti Benutzerchonte.',
 'newuserlog-byemail'          => 's Passwort isch per E-Mail gschickt wore',
 'newuserlog-create-entry'     => 'Benutzer isch nej regischtriert wore',
-'newuserlog-create2-entry'    => 'het e Benutzerchonto aagleit fir $1',
-'newuserlog-autocreate-entry' => 'Benutzerchonto isch automatisch aagleit wore',
+'newuserlog-create2-entry'    => 'het e Benutzerkonto aagleit fir $1',
+'newuserlog-autocreate-entry' => 'Benutzerkonto isch automatisch aagleit wore',
 
 # Special:ListGroupRights
 'listgrouprights'                 => 'Benutzergruppe-Rächt',
@@ -1641,27 +1669,29 @@ Zuesätzligi Informatione iber einzelni Rächt git s [[{{MediaWiki:Listgrouprigh
 'listgrouprights-removegroup-all' => 'Cha Benutzer us allene Gruppe useneh',
 
 # E-mail user
-'mailnologin'     => 'Du bisch nid aagmäldet oder hesch keis Mail aaggä',
-'mailnologintext' => 'Du muesch [[Special:UserLogin|aagmäldet syy]] un e bstätigti E-Mail-Adräss in Dyyne [[Special:Preferences|Yystellige]] aagee ha, fir dass epper anderem es E-Mail chasch schicke.',
-'emailuser'       => 'Es Mail schrybe',
-'emailpage'       => 'E-Mail an Benutzer',
-'emailpagetext'   => 'Du chasch im Benutzer mit däm Formular e E-Mail schicke.
+'mailnologin'      => 'Du bisch nid aagmäldet oder hesch keis Mail aaggä',
+'mailnologintext'  => 'Du muesch [[Special:UserLogin|aagmäldet syy]] un e bstätigti E-Mail-Adräss in Dyyne [[Special:Preferences|Yystellige]] aagee ha, fir dass epper anderem es E-Mail chasch schicke.',
+'emailuser'        => 'Es Mail schrybe',
+'emailpage'        => 'E-Mail an Benutzer',
+'emailpagetext'    => 'Du chasch im Benutzer mit däm Formular e E-Mail schicke.
 As Absender wird d E-Mail-Adräss us Dyyne [[Special:Preferences|Yystellige]] yytrait, ass dr Benutzer Dir cha Antwort gee.',
-'usermailererror' => 'S Mail-Objekt het e Fähler zruckgee:',
-'defemailsubject' => '{{SITENAME}}-E-Mail',
-'noemailtitle'    => 'Kei e-Mail-Adrässe',
-'noemailtext'     => 'Dä Benutzer het kei bstätigti E-Mail-Adräss aagee oder wet kei E-Mails vo andere Benutzer.',
-'email-legend'    => 'E-Mail an e andere {{SITENAME}}-Benutzer schicke',
-'emailfrom'       => 'Vu:',
-'emailto'         => 'An:',
-'emailsubject'    => 'Betreff:',
-'emailmessage'    => 'Nochricht:',
-'emailsend'       => 'Abschicke',
-'emailccme'       => 'Schick e Kopii vu dr E-Mail a mii',
-'emailccsubject'  => 'Kopii vu Dyynere Nochricht an $1: $2',
-'emailsent'       => 'E-Mail furtgschickt',
-'emailsenttext'   => 'Dys E-Mail isch verschickt worde.',
-'emailuserfooter' => 'Die E-Mail isch vum {{SITENAME}}-Benutzer „$1“ an „$2“ gschickt wore.',
+'usermailererror'  => 'S Mail-Objekt het e Fähler zruckgee:',
+'defemailsubject'  => '{{SITENAME}}-E-Mail',
+'noemailtitle'     => 'Kei e-Mail-Adrässe',
+'noemailtext'      => 'Dää Benutzer het kei bstätigti E-Mail-Adräss aagee oder wet kei E-Mail vo andere Benutzer.',
+'nowikiemailtitle' => 'Kei E-Mail Versand mögli',
+'nowikiemailtext'  => 'De Benutzer möcht kei E-Mails vo andri Benutzer erhalte',
+'email-legend'     => 'E-Mail an e andere {{SITENAME}}-Benutzer schicke',
+'emailfrom'        => 'Vu:',
+'emailto'          => 'An:',
+'emailsubject'     => 'Betreff:',
+'emailmessage'     => 'Nochricht:',
+'emailsend'        => 'Abschicke',
+'emailccme'        => 'Schick e Kopii vu dr E-Mail a mii',
+'emailccsubject'   => 'Kopii vu Dyynere Nochricht an $1: $2',
+'emailsent'        => 'E-Mail furtgschickt',
+'emailsenttext'    => 'Dys E-Mail isch verschickt worde.',
+'emailuserfooter'  => 'Die E-Mail isch vum {{SITENAME}}-Benutzer „$1“ an „$2“ gschickt wore.',
 
 # Watchlist
 'watchlist'            => 'Beobachtigslischte',
@@ -1745,7 +1775,7 @@ Bitte bi Dir iber d Konsequänze bewusst, un bi sicher, dass Du Di an unsri [[{{
 'actioncomplete'         => 'Uftrag usgfiert.',
 'deletedtext'            => '«<nowiki>$1</nowiki>» isch glescht wore.
 Im $2 het s e Lischt vu dr letschte Leschige.',
-'deletedarticle'         => '„[[$1]]“ glescht',
+'deletedarticle'         => 'het „[[$1]]“ glescht',
 'suppressedarticle'      => 'het d Sichtbarkeit vu „[[$1]]“ gänderet',
 'dellogpage'             => 'Lösch-Logbuech',
 'dellogpagetext'         => 'Des isch s Logbuech vu dr gleschte Syte un Dateie.',
@@ -1794,7 +1824,7 @@ Bitte gang zruck, tue d Syte nej lade un versuech s nomol.',
 'protect_expiry_old'          => 'Di gwählti Duur isch scho vergange.',
 'protect-unchain'             => 'Verschiebschutz ändere',
 'protect-text'                => 'Hie chasch der Schutzstatus vor Syte <strong><nowiki>$1</nowiki></strong> azeigen und ändere.',
-'protect-locked-blocked'      => 'Du chasch dr Syteschutz nit ändere, wel Dyy benutzerchonto gsperrt isch. Do sin di aktuälle Syteschutz-Yystellige fir d Syte <strong>„$1“:</strong>',
+'protect-locked-blocked'      => 'Du chasch dr Syteschutz nit ändere, wel Dyy Benutzerkonto gsperrt isch. Do sin di aktuälle Syteschutz-Yystellige fir d Syte <strong>„$1“:</strong>',
 'protect-locked-dblock'       => 'D Datebank isch gsperrt, dr Syteschutz cha wäge däm nit gänderet wäre. Doo sin di aktuälle Syteschutz-Yystellige fir d Syte <strong>„$1“:</strong>',
 'protect-locked-access'       => 'Dys Konto het nid di nötige Rächt, für der Schutzstatus z ändere.
 Hie sy di aktuelle Schutzystellige vor Syte <strong>$1</strong>:',
@@ -1929,18 +1959,18 @@ $1',
 'whatlinkshere-filters'    => 'Filter',
 
 # Block/unblock
-'blockip'                      => 'Benutzer bzw. IP blockyre',
-'blockip-legend'               => 'IP-Adräss/Benutzer sperre',
-'blockiptext'                  => 'Bnutz des Formular, zum e Bnutzer oder e IP-Adress z\'blockiere.<sup class="plainlinks">[http://jodies.de/ipcalc?host=&mask1=&mask2= <span title="IP-Berych ermittle; bloss kurz sperre!">(B)</span>]</sup>
+'blockip'                         => 'Benutzer bzw. IP blockyre',
+'blockip-legend'                  => 'IP-Adräss/Benutzer sperre',
+'blockiptext'                     => 'Bnutz des Formular, zum e Bnutzer oder e IP-Adress z\'blockiere.<sup class="plainlinks">[http://jodies.de/ipcalc?host=&mask1=&mask2= <span title="IP-Berych ermittle; bloss kurz sperre!">(B)</span>]</sup>
 
 Des söt nummer erfolge um [[Wikipedia:Vandalismus|Vandalismus]] z\'verhindre in i Übereinstimmig mit üsre [[Wikipedia:Leitlinien|Leitlinie]] gschehe.
 Bitte gib au de Grund für d\'Blockad aa.',
-'ipaddress'                    => 'IP-Adräss oder Benutzername:',
-'ipadressorusername'           => 'IP-Adräss oder Benutzername:',
-'ipbexpiry'                    => 'Sperrduur:',
-'ipbreason'                    => 'Begrindig:',
-'ipbreasonotherlist'           => 'Anderi Begrindig',
-'ipbreason-dropdown'           => '* Allgmeini Sperrgrind
+'ipaddress'                       => 'IP-Adräss oder Benutzername:',
+'ipadressorusername'              => 'IP-Adräss oder Benutzername:',
+'ipbexpiry'                       => 'Sperrduur:',
+'ipbreason'                       => 'Begrindig:',
+'ipbreasonotherlist'              => 'Anderi Begrindig',
+'ipbreason-dropdown'              => '* Allgmeini Sperrgrind
 ** Lesche vu Syte
 ** Aalege vu bledsinnige Syte
 ** Vylfachi Verstess gege d Richtlinie fir Netzgleicher
@@ -1950,129 +1980,250 @@ Bitte gib au de Grund für d\'Blockad aa.',
 ** Neijaamäldig vun eme uubschränkt gsperrte Benutzer
 * IP-spezifischi Sperrgrind
 ** Proxy, wäge Vandalismus vu einzelne Benutzer lengerfrischtig gsperrt',
-'ipbanononly'                  => 'Nume anonymi Benutzer sperre',
-'ipbcreateaccount'             => 'Aalege vu Benutzerchonte verhindere',
-'ipbemailban'                  => 'E-Mail-Versand sperre',
-'ipbenableautoblock'           => 'Sperr di aktuäll vu däm Benutzer brucht IP-Adräss un automatisch alli wytere, wun er nimmt go Syte bearbeite oder Benutzerchonte aalege',
-'ipbsubmit'                    => 'Adräss blockiere',
-'ipbother'                     => 'Anderi Duur (englisch):',
-'ipboptions'                   => '1 Stund:1 hour,2 Stunde:2 hours,6 Stunde:6 hours,1 Tag:1 day,3 Täg:3 days,1 Wuche:1 week,2 Wuche:2 weeks,1 Monet:1 month,3 Monet:3 months,1 Johr:1 year,Fir immer:infinite', # display1:time1,display2:time2,...
-'ipbotheroption'               => 'Anderi Duur',
-'ipbotherreason'               => 'Anderi/zuesätzligi Begrindig:',
-'ipbhidename'                  => 'Benutzername im Sperr-Logbuech, in dr Lischt vu aktive Sperrine un im Benutzerverzeichnis verstecke.',
-'ipbwatchuser'                 => 'Benutzer(diskussions)syte beobachte',
-'ipballowusertalk'             => 'Benutzer derf di eige Diskussionssyte bearbeite derwylscht er gsperrt isch',
-'ipb-change-block'             => 'Nomol sperre mit däne Sperrparameter',
-'badipaddress'                 => 'D IP-Adräss het e falsch Format.',
-'blockipsuccesssub'            => 'Mit Erfolg gsperrt',
-'blockipsuccesstext'           => 'Dr Benutzer/d IP-Adräss [[Special:Contributions/$1|$1]] isch gsperrt wore.<br />
+'ipbanononly'                     => 'Nume anonymi Benutzer sperre',
+'ipbcreateaccount'                => 'Aalege vu Benutzerchonte verhindere',
+'ipbemailban'                     => 'E-Mail-Versand sperre',
+'ipbenableautoblock'              => 'Sperr di aktuäll vu däm Benutzer brucht IP-Adräss un automatisch alli wytere, wun er nimmt go Syte bearbeite oder Benutzerchonte aalege',
+'ipbsubmit'                       => 'Adräss blockiere',
+'ipbother'                        => 'Anderi Duur (englisch):',
+'ipboptions'                      => '1 Stund:1 hour,2 Stunde:2 hours,6 Stunde:6 hours,1 Tag:1 day,3 Täg:3 days,1 Wuche:1 week,2 Wuche:2 weeks,1 Monet:1 month,3 Monet:3 months,1 Johr:1 year,Fir immer:infinite', # display1:time1,display2:time2,...
+'ipbotheroption'                  => 'Anderi Duur',
+'ipbotherreason'                  => 'Anderi/zuesätzligi Begrindig:',
+'ipbhidename'                     => 'Benutzername im Sperr-Logbuech, in dr Lischt vu aktive Sperrine un im Benutzerverzeichnis verstecke.',
+'ipbwatchuser'                    => 'Benutzer(diskussions)syte beobachte',
+'ipballowusertalk'                => 'Benutzer derf di eige Diskussionssyte bearbeite derwylscht er gsperrt isch',
+'ipb-change-block'                => 'Nomol sperre mit däne Sperrparameter',
+'badipaddress'                    => 'D IP-Adräss het e falsch Format.',
+'blockipsuccesssub'               => 'Mit Erfolg gsperrt',
+'blockipsuccesstext'              => 'Dr Benutzer/d IP-Adräss [[Special:Contributions/$1|$1]] isch gsperrt wore.<br />
 Go d Sperri ufhebe lueg d [[Special:IPBlockList|Lisch vu allene aktive Sperrine]].',
-'ipb-edit-dropdown'            => 'Sperrgrind bearbeite',
-'ipb-unblock-addr'             => '„$1“ frejgee',
-'ipb-unblock'                  => 'IP-Adräss/Benutzer frejgee',
-'ipb-blocklist-addr'           => 'Aktuälli Sperri fir „$1“ aazeige',
-'ipb-blocklist'                => 'Alli aktuälle Sperrine aazeige',
-'ipb-blocklist-contribs'       => 'Benutzerbyytreg fir „$1“',
-'unblockip'                    => 'IP-Adräss frejgee',
-'unblockiptext'                => 'Mit däm Formular chasch e IP-Adräss oder e Benutzer frejgee.',
-'ipusubmit'                    => 'Frejgee',
-'unblocked'                    => '[[User:$1|$1]] isch frejgee wore',
-'unblocked-id'                 => 'Sperr-ID $1 isch freijgee wore',
-'ipblocklist'                  => 'Liste vo blockierten IP-Adrässen u Benutzernäme',
-'ipblocklist-legend'           => 'Suech no eme gsperrte Benutzer',
-'ipblocklist-username'         => 'Benutzername oder IP-Adräss:',
-'ipblocklist-sh-userblocks'    => 'Benutzersperrine $1',
-'ipblocklist-sh-tempblocks'    => 'Befrischteti Sperrine $1',
-'ipblocklist-sh-addressblocks' => 'IP-Sperrine $1',
-'ipblocklist-submit'           => 'Sueche',
-'blocklistline'                => '$1, $2 het $3 ($4) gsperrt',
-'infiniteblock'                => 'uubegränzt',
-'expiringblock'                => '$1',
-'anononlyblock'                => 'nume Anonymi',
-'noautoblockblock'             => 'Autoblock deaktiviert',
-'createaccountblock'           => 'Aalege vu Benutzerchonte gsperrt',
-'emailblock'                   => 'E-Mail-Versand gsperrt',
-'blocklist-nousertalk'         => 'derf eigeni Diskussionssyte nit bearbeite',
-'ipblocklist-empty'            => 'In dr Lischt het s kei Yytreg.',
-'ipblocklist-no-results'       => 'Di gsuecht IP-Adräss/dr Benutzername isch nit gsperrt.',
-'blocklink'                    => 'sperre',
-'unblocklink'                  => 'freigä',
-'change-blocklink'             => 'Sperri ändere',
-'contribslink'                 => 'Byträg',
-'autoblocker'                  => 'Automatischi Sperri, wel Du e gmeinsami IP-Adräss mit [[User:$1|Benutzer:$1]] bruchsch. Grund: „$2“.',
-'blocklogpage'                 => 'Sperrigs-Protokoll',
-'blocklog-fulllog'             => 'Vollständigs Benutzersperr-Logbuech',
-'blocklogentry'                => 'sperrt [[$1]] für d Ziit vo: $2 $3',
-'reblock-logentry'             => 'het d Sperri fir „[[$1]]“ gänderet fir dr Zytruum: $2 $3',
-'blocklogtext'                 => 'Des isch s Logbuech iber Sperrige un Entsperrige vu Benutzer. Automatisch blockierti IP-Adrässe wäre nit erfasst. Lueg au [[Special:IPBlockList|IP-Block Lischt]] fir e Lischt vu gsperrte Benutzer.',
-'unblocklogentry'              => 'Blockad vu $1 ufghobe',
-'block-log-flags-anononly'     => 'nume Anonymi',
-'block-log-flags-nocreate'     => 'Aalege vu Benutzerchonte gsperrt',
-'block-log-flags-noautoblock'  => 'Autoblock deaktiviert',
+'ipb-edit-dropdown'               => 'Sperrgrind bearbeite',
+'ipb-unblock-addr'                => '„$1“ frejgee',
+'ipb-unblock'                     => 'IP-Adräss/Benutzer frejgee',
+'ipb-blocklist-addr'              => 'Aktuälli Sperri fir „$1“ aazeige',
+'ipb-blocklist'                   => 'Alli aktuälle Sperrine aazeige',
+'ipb-blocklist-contribs'          => 'Benutzerbyytreg fir „$1“',
+'unblockip'                       => 'IP-Adräss frejgee',
+'unblockiptext'                   => 'Mit däm Formular chasch e IP-Adräss oder e Benutzer frejgee.',
+'ipusubmit'                       => 'Frejgee',
+'unblocked'                       => '[[User:$1|$1]] isch frejgee wore',
+'unblocked-id'                    => 'Sperr-ID $1 isch freijgee wore',
+'ipblocklist'                     => 'Liste vo blockierten IP-Adrässen u Benutzernäme',
+'ipblocklist-legend'              => 'Suech no eme gsperrte Benutzer',
+'ipblocklist-username'            => 'Benutzername oder IP-Adräss:',
+'ipblocklist-sh-userblocks'       => 'Benutzersperrine $1',
+'ipblocklist-sh-tempblocks'       => 'Befrischteti Sperrine $1',
+'ipblocklist-sh-addressblocks'    => 'IP-Sperrine $1',
+'ipblocklist-submit'              => 'Sueche',
+'blocklistline'                   => '$1, $2 het $3 ($4) gsperrt',
+'infiniteblock'                   => 'uubegränzt',
+'expiringblock'                   => '$1',
+'anononlyblock'                   => 'nume Anonymi',
+'noautoblockblock'                => 'Autoblock deaktiviert',
+'createaccountblock'              => 'Aalege vu Benutzerchonte gsperrt',
+'emailblock'                      => 'E-Mail-Versand gsperrt',
+'blocklist-nousertalk'            => 'derf eigeni Diskussionssyte nit bearbeite',
+'ipblocklist-empty'               => 'In dr Lischt het s kei Yytreg.',
+'ipblocklist-no-results'          => 'Di gsuecht IP-Adräss/dr Benutzername isch nit gsperrt.',
+'blocklink'                       => 'sperre',
+'unblocklink'                     => 'freigä',
+'change-blocklink'                => 'Sperri ändere',
+'contribslink'                    => 'Byträg',
+'autoblocker'                     => 'Automatischi Sperri, wel Du e gmeinsami IP-Adräss mit [[User:$1|Benutzer:$1]] bruchsch. Grund: „$2“.',
+'blocklogpage'                    => 'Sperrigs-Protokoll',
+'blocklog-fulllog'                => 'Vollständigs Benutzersperr-Logbuech',
+'blocklogentry'                   => 'sperrt [[$1]] für d Ziit vo: $2 $3',
+'reblock-logentry'                => 'het d Sperri fir „[[$1]]“ gänderet fir dr Zytruum: $2 $3',
+'blocklogtext'                    => 'Des isch s Logbuech iber Sperrige un Entsperrige vu Benutzer. Automatisch blockierti IP-Adrässe wäre nit erfasst. Lueg au [[Special:IPBlockList|IP-Block Lischt]] fir e Lischt vu gsperrte Benutzer.',
+'unblocklogentry'                 => 'Blockad vu $1 ufghobe',
+'block-log-flags-anononly'        => 'nume Anonymi',
+'block-log-flags-nocreate'        => 'Aalege vu Benutzerchonte gsperrt',
+'block-log-flags-noautoblock'     => 'Autoblock deaktiviert',
+'block-log-flags-noemail'         => 'E-Mail-Versand gsperrt',
+'block-log-flags-nousertalk'      => 'derf di eigene Diskussionssyte nit bearbeite',
+'block-log-flags-angry-autoblock' => 'erwyterete Autoblock aktiviert',
+'range_block_disabled'            => 'D Megligkeit, ganzi Adrässryym z sperre, isch nit aktiviert.',
+'ipb_expiry_invalid'              => 'D Duur, wu yygee woren isch, isch nit giltig.',
+'ipb_expiry_temp'                 => 'Versteckti Benutzername-Sperrine solle permanent syy.',
+'ipb_already_blocked'             => '„$1“ isch scho gsperrt wore.',
+'ipb-needreblock'                 => '== Sperri vorhande ==
+„$1“ isch scho gsperrt. Mechtsch d Sperrparameter ändere?',
+'ipb_cant_unblock'                => 'Fähler: Sperr-ID $1 nit gfunde. S cha syy, ass d Sperri scho ufghoben isch .',
+'ipb_blocked_as_range'            => 'Fähler: D IP-Adräss $1 isch as Teil vu dr Beryychssperri $2 indirekt gsperrt. S isch nit megli, nume $1 z entsperre.',
+'ip_range_invalid'                => 'Uugiltige IP-Adrässberyych.',
+'blockme'                         => 'Sperr mi',
+'proxyblocker'                    => 'Proxy blocker',
+'proxyblocker-disabled'           => 'Die Funktion isch deaktiviert.',
+'proxyblockreason'                => 'Dyni IP-Adrässe isch gsperrt wore, wel si ne ufige Proxy isch. Bitte kontaktier Dyyn Internet-Provider oder Dyni Systemadministratore un informier si iber des Sicherheitsproblem.',
+'proxyblocksuccess'               => 'Fertig.',
+'sorbsreason'                     => 'D IP-Adräss isch in dr DNSBL vu {{SITENAME}} as uffige PROXY glischtet.',
+'sorbs_create_account_reason'     => 'D IP-Adräss isch in dr DNSBL vu {{SITENAME}} as uffige PROXY glischtet. S Aalege vu neije Benutzer isch nit megli.',
+'cant-block-while-blocked'        => 'Du derfsch kei anderi Benutzer sperre, derwylscht Du sälber gsperrt bisch.',
+
+# Developer tools
+'lockdb'              => 'D Datebank sperre',
+'unlockdb'            => 'D Datebank freigää',
+'lockdbtext'          => 'Durch s Sperre vo dere Datebank werde alli Benutzer devo abghalte Syte z bearbeite, ihri Ystellige z ändre usw. Bitte bstätig dass du des würkli wottsch mache, un dass du d Datebank nooch dynrer Wartig wider freigisch.',
+'unlockdbtext'        => 'Durch s Entsperre vo dr Datebank chönne alli Benutzer wider Syte bearbeite, ihri Ystellige ändre usw. Bitte bstätig dass du des würkli wottsch mache.',
+'lockconfirm'         => 'Joo, ich wott d Datebank ächt sperre.',
+'unlockconfirm'       => 'Joo, ich wott d Datebank freigää.',
+'lockbtn'             => 'D Datebank sperre',
+'unlockbtn'           => 'D Datebank freigää',
+'locknoconfirm'       => 'Du hesch s Bstätigungsfäld nüt markiert.',
+'lockdbsuccesssub'    => 'D Datebank isch erfolgrych gsperrt worde',
+'unlockdbsuccesssub'  => 'D Datebank isch erfolgrych freigää worde',
+'lockdbsuccesstext'   => 'D {{SITENAME}}-Datebank isch gsperrt worde.<br />Bitte vergiss nüt d Datebank [[Special:UnlockDB|wider freizgää]], sobald d Wartung abgschlosse isch.',
+'unlockdbsuccesstext' => 'D {{SITENAME}}-Datebank isch freigää worde.',
+'lockfilenotwritable' => 'Die Datebank-Sperrdatei cha nüt beschrybe werde. Zume die Datebank chönne Sperre oder Freigää, muess si vum Webserver chönne bschrybe werde.',
+'databasenotlocked'   => 'D Datebank isch nüt gsperrt.',
 
 # Move page
-'move-page-legend' => 'Artikel verschiebe',
-'movepagetext'     => 'Mit däm Formular chasch du en Artikel verschiebe, u zwar mit syre komplette Versionsgschicht. Der alt Titel leitet zum nöie wyter, aber Links ufen alt Titel blyben unveränderet.',
-'movepagetalktext' => "D Diskussionssyte wird mitverschobe, '''ussert:'''
+'move-page'                    => '„$1“ verschiebe',
+'move-page-legend'             => 'Artikel verschiebe',
+'movepagetext'                 => 'Mit däm Formular chasch du en Artikel verschiebe, u zwar mit syre komplette Versionsgschicht. Der alt Titel leitet zum nöie wyter, aber Links ufen alt Titel blyben unveränderet.',
+'movepagetalktext'             => "D Diskussionssyte wird mitverschobe, '''ussert:'''
 *Du verschiebsch d Syten i nen andere Namensruum, oder
 *es git scho ne Diskussionssyte mit däm Namen oder
 *du wählsch unte d Option, se nid z verschiebe.
 
 I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde.",
-'movearticle'      => 'Artikel verschiebe',
-'movenologin'      => 'Du bisch nid aagmäldet',
-'movenologintext'  => 'Du muesch dich zersch [[Special:UserLogin|aamälde]] damit du die Syte chasch verschiebe.',
-'newtitle'         => 'Zum nöie Titel',
-'move-watch'       => 'Die Syte beobachte',
-'movepagebtn'      => 'Artikel verschiebe',
-'pagemovedsub'     => 'Verschiebig erfolgrych',
-'movepage-moved'   => "<big>'''«$1» isch verschobe worde nach «$2»'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'    => 'E Syte mit däm Name git s scho oder de Name isch nid giltig. Bitte nimm en andere.',
-'talkexists'       => 'D Syte sälber isch erfolgrych verschobe worde, nid aber d Diskussionssyte, wil s under em nöue Titel scho eini het gä. Bitte setz se vo Hand zäme.',
-'movedto'          => 'verschoben uf',
-'movetalk'         => 'Diskussionssyte nach Müglechkeit mitverschiebe',
-'1movedto2'        => '[[$1]] isch uf [[$2]] verschobe worde.',
-'1movedto2_redir'  => '[[$1]] isch uf [[$2]] verschobe worre un het drbii e Wiiterleitig übrschriebe.',
-'movelogpage'      => 'Verschiebigs-Logbuech',
-'movereason'       => 'Grund',
-'revertmove'       => 'Zrugg verschiebe',
-'selfmove'         => 'Der nöi Artikelname mues en andere sy als der alt!',
+'movearticle'                  => 'Artikel verschiebe',
+'movenologin'                  => 'Du bisch nid aagmäldet',
+'movenologintext'              => 'Du muesch dich zersch [[Special:UserLogin|aamälde]] damit du die Syte chasch verschiebe.',
+'movenotallowed'               => 'Du derfsch kei Syte verschiebe.',
+'movenotallowedfile'           => 'Du derfsch kei Dateie verschiebe.',
+'cant-move-user-page'          => 'Du derfsch kei Benutzersyte verschiebe (mit Usnaam vo Untersyte).',
+'cant-move-to-user-page'       => 'Du derfsch kei Syte uf e Benutzersyte verschiebe (mit Usnaam vo Untersyte).',
+'newtitle'                     => 'Zum nöie Titel',
+'move-watch'                   => 'Die Syte beobachte',
+'movepagebtn'                  => 'Artikel verschiebe',
+'pagemovedsub'                 => 'Verschiebig erfolgrych',
+'movepage-moved'               => '<big>\'\'\'"$1" isch verschobe wore uf "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'E Wyterleitig isch aagleit wore.',
+'movepage-moved-noredirect'    => 'D Erstellig vonere Wyterleitig isch unterdruggt worde.',
+'articleexists'                => 'E Syte mit däm Name git s scho oder de Name isch nid giltig. Bitte nimm en andere.',
+'cantmove-titleprotected'      => 'Die Syte het nüt chönne verschobe werde, wyl de nöie Titel gsperrt isch.',
+'talkexists'                   => 'D Syte sälber isch erfolgrych verschobe worde, nid aber d Diskussionssyte, wil s under em nöue Titel scho eini het gä. Bitte setz se vo Hand zäme.',
+'movedto'                      => 'verschoben uf',
+'movetalk'                     => 'Diskussionssyte nach Müglechkeit mitverschiebe',
+'move-subpages'                => 'Alli Untersyte wo vorhande sin mitschiebe',
+'move-talk-subpages'           => 'Alli Untersyte vo Diskussionssyte wo vorhande sin mitverschiebe',
+'movepage-page-exists'         => 'D Syte „$1“ gits scho un cha nüt automatisch überschribe werde.',
+'movepage-page-moved'          => 'D Syte „$1“ isch uf „$2“ verschobe worde.',
+'movepage-page-unmoved'        => 'D Syte „$1“ het nüt chönne uf „$2“ verschobe werde.',
+'movepage-max-pages'           => 'D Maximalaazaal vo $1 {{PLURAL:$1|Syte|Syte}} isch verschobe worde. Mee chönne automatisch nüt verschobe werde.',
+'1movedto2'                    => '[[$1]] isch uf [[$2]] verschobe worde.',
+'1movedto2_redir'              => '[[$1]] isch uf [[$2]] verschobe wore un het drbyy e Wyterleitig iberrschribe.',
+'move-redirect-suppressed'     => 'E Wyterleitig isch unterdruggt worde',
+'movelogpage'                  => 'Verschiebigs-Logbuech',
+'movelogpagetext'              => 'Des isch e Lischte mit allene Syte wo verschobe worde sin.',
+'movereason'                   => 'Grund',
+'revertmove'                   => 'Zrugg verschiebe',
+'delete_and_move'              => 'Lösche un Verschiebe',
+'delete_and_move_text'         => '== D Ziilsyte isch scho vorhande, lösche?==
+
+D Syte „[[:$1]]“ gits scho. Wottsch du si lösche, zume Platz zum verschiebe mache?',
+'delete_and_move_confirm'      => 'D Ziilsyte für d Verschiebig lösche',
+'delete_and_move_reason'       => 'glöscht, zume Platz für zum verschiebe mache',
+'selfmove'                     => 'Der nöi Artikelname mues en andere sy als der alt!',
+'immobile-source-namespace'    => 'Syte ussem „$1“-Namensruum chönne nüt verschobe werde',
+'immobile-target-namespace'    => 'Syte chönne nüt in de „$1“-Namensruum verschobe werde',
+'immobile-target-namespace-iw' => 'E Interwiki-Gleich (Link) isch kei gültigs Ziil für e Syteverschiebig.',
+'immobile-source-page'         => 'Die Syte cha nüt verschobe werde.',
+'immobile-target-page'         => 'Uf die Ziilsyte cha nüt verschobe werde.',
+'imagenocrossnamespace'        => 'Dateie chönne nüt ussem {{ns:file}}-Namensruum use verschobe werde',
+'imagetypemismatch'            => 'D nöii Dateierwiiterig passt nüt zu sym Typ',
+'imageinvalidfilename'         => 'De Name vo dr Ziildatei isch ungültig',
+'fix-double-redirects'         => 'Alli Wyterleitige, wo uf de alte Titel zeige, aktualisiere',
+'move-leave-redirect'          => 'E Wyterleitig hinterloo',
 
 # Export
-'export'     => 'Sytenen exportiere',
-'exporttext' => 'Du chasch dr Text un d Versionsgschicht vu einzelne Syte in ere XML-Datei exportiere. Die Datei cha derno in e ander MediaWiki-Wiki importiert wäre iber [[Special:Import|Importiere]].
+'export'            => 'Sytenen exportiere',
+'exporttext'        => 'Du chasch dr Text un d Versionsgschicht vu einzelne Syte in ere XML-Datei exportiere. Die Datei cha derno in e ander MediaWiki-Wiki importiert wäre iber [[Special:Import|Importiere]].
 Zum Exportiere trag dr Sytetitel in dr Täxtchaschte unter yy, ei Titel pro Zyyle, un wehl us, eb Du di aktuäll Version mitsamt dr eltere Versione (mit dr Versionsgschicht-Zyyle) oder nume di aktuäll Version mit dr Information iber di letscht Bearbeitig. In däm Fall chasch au e Gleich fir dr Export verwände, z. B. [[{{ns:special}}:Export/{{MediaWiki:Mainpage}}]] fir d Syte "[[{{MediaWiki:Mainpage}}]]".',
+'exportcuronly'     => 'Numme d aktuelli Version vo dr Syte exportiere, statt dr ganze Versionsgschicht',
+'exportnohistory'   => "----
+'''Hywys:''' S Exportiere vo ganzi Versionsgschichte durch des Formular isch us Gründ vo dr Leischtig vum Syschtem abgschaltet worde",
+'export-submit'     => 'Sytene exportiere',
+'export-addcattext' => 'Syte us dere Kategori dezuefüege',
+'export-addcat'     => 'Dezuefüege',
+'export-download'   => 'Als XML-Datei spychere',
+'export-templates'  => 'Vorlage mit ybinde',
 
 # Namespace 8 related
 'allmessages'               => 'Systemnochrichte',
 'allmessagesname'           => 'Name',
 'allmessagesdefault'        => 'Standard-Tekscht',
 'allmessagescurrent'        => 'jetzige Tekscht',
-'allmessagestext'           => 'Sell isch e Lischte vo alle mögliche Systemnochrichte ussem MediaWiki Namensruum.
-Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] and [http://translatewiki.net Betawiki] if you wish to contribute to the generic MediaWiki localisation.',
+'allmessagestext'           => 'Des isch e Lischt vu allene meglige Syschtemnochrichte us em MediaWiki Namensruum.
+Lueg au uf [http://www.mediawiki.org/wiki/Localisation MediaWiki Lokalisierig] un [http://translatewiki.net Betawiki], wänn Du zue dr MediaWiki-Lokalisierig wit byytrage.',
 'allmessagesnotsupportedDB' => "'''{{ns:special}}:Allmessages''' cha nit bruucht wärde will '''\$wgUseDatabaseMessages''' abgschalte isch.",
 'allmessagesfilter'         => 'Nochrichte nochem Name filtere:',
 'allmessagesmodified'       => 'numme gänderti aazeige',
 
 # Thumbnails
-'thumbnail-more'  => 'vergrösere',
-'thumbnail_error' => 'Fähler bir Härstellig vo re Vorschou: $1',
+'thumbnail-more'           => 'vergrösere',
+'filemissing'              => 'D Datei fäält',
+'thumbnail_error'          => 'Fähler bir Härstellig vo re Vorschou: $1',
+'djvu_page_error'          => 'DjVu-Syte isch uusserhalb vum Sytebereich',
+'djvu_no_xml'              => 'XML-Date chönne für d DjVu-Datei nüt abgruefe werde',
+'thumbnail_invalid_params' => 'Ungültigs Thumbnail-Parameter',
+'thumbnail_dest_directory' => 'S Ziilverzeichnis cha nüt erstellt werde',
 
 # Special:Import
-'importtext'            => 'Bitte speicher d’Syte vum Quellwiki met em Spezial:Export-Wärkzüg ab, un lad denn di XML-Datei do uffe. („Bild lokal“ sot im Folgénde eigentle „XML-Datei“ hoiße ;-)',
-'import-revision-count' => '– {{PLURAL:$1|1 Vérsion|$1 Vérsiona}}',
+'import'                     => 'Sytene importiere',
+'importinterwiki'            => 'Transwiki-Import',
+'import-interwiki-text'      => 'Wääl e Wiki un e Syte zum Importiere us.
+S Datum vo dr Bearbeitig un dr Benutzername blybe erhalte.
+Alli Transwiki-Import-Aktione werde im [[Special:Log/import|Import-Logbuech]] protokolliert.',
+'import-interwiki-source'    => 'Quell-Wiki/-Syte:',
+'import-interwiki-history'   => 'Alli früeneri Versione vo dere Syte importiere',
+'import-interwiki-submit'    => 'Import',
+'import-interwiki-namespace' => 'Ziilnamensruum:',
+'import-upload-filename'     => 'Dateiname:',
+'import-comment'             => 'Grund:',
+'importtext'                 => 'Bitte speicher d’Syte vum Quellwiki met em Spezial:Export-Wärkzüg ab, un lad denn di XML-Datei do uffe. („Bild lokal“ sot im Folgénde eigentle „XML-Datei“ hoiße ;-)',
+'importstart'                => 'Importiere Syte …',
+'import-revision-count'      => '– {{PLURAL:$1|1 Vérsion|$1 Vérsiona}}',
+'importnopages'              => 'Es isch kei Syte doo wo mer importiere chönnt.',
+'importfailed'               => 'Dr Import isch misslunge: $1',
+'importunknownsource'        => 'Importquell isch unbekannt',
+'importcantopen'             => 'D Importdatei het nüt chönne geöffnet werde',
+'importbadinterwiki'         => 'Falscher Interwiki-Link',
+'importnotext'               => 'Leer oder kei Teggscht',
+'importsuccess'              => 'Dr Import isch abgschlosse.',
+'importhistoryconflict'      => 'Es het scho ältri Versione wo mit dere kollidiere. Es isch mögli dass die Syte scho emool importiert worde isch.',
+'importnosources'            => 'Für de Transwiki-Import sin kei Quelle definiert worde. Wege dem isch s direkte Ufelade vo Gschichtsversione gsperrt.',
+'importnofile'               => 'Es isch kei Importdatei ufeglade worde.',
+'importuploaderrorsize'      => 'S Ufelade vo dr Importdatei isch misslunge. D Datei isch grösser als erlaubt isch.',
+'importuploaderrorpartial'   => 'S Ufelade vo dr Importdatei isch misslunge. D Datei het numme zum Deil chönne ufeglade werde.',
+'importuploaderrortemp'      => 'S Ufelade vo dr Importdatei isch misslunge. E temporärs Verzeichnis fäält.',
+'import-parse-failure'       => 'Fääler bim XML-Import:',
+'import-noarticle'           => 'Du hesch kei Syte zum importiere aagää!',
+'import-nonewrevisions'      => 'Es sin scho alli früeneri Versione importiert worde.',
+'xml-error-string'           => '$1 Zeile $2, Spalte $3, (Byte $4): $5',
+'import-upload'              => 'XML-Date ufelade',
+'import-token-mismatch'      => 'D Sitzigsdate sin verlore gange. Bitte versuech es noo emool.',
+'import-invalid-interwiki'   => 'Us däm Wiki wo du aagää hesch isch kei Import mögli.',
 
 # Import log
-'importlogpage'                 => 'Import-Logbuech',
-'import-logentry-upload-detail' => '$1 {{PLURAL:$1|Vérsion|Vérsiona}} [[Spezial:Importieren|importiert]]',
+'importlogpage'                    => 'Import-Logbuech',
+'importlogpagetext'                => 'Adminischtrativer Import vo Sytene mit Versionsgschichte us anderi Wikis.',
+'import-logentry-upload'           => '„[[$1]]“ isch vunere Datei importiert worde',
+'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|Vérsion|Vérsiona}} [[Spezial:Importieren|importiert]]',
+'import-logentry-interwiki'        => '„[[$1]]“ isch importiert worde (Transwiki)',
+'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|Version|Versione}} vo $2',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Myni Benutzersyte',
+'tooltip-pt-anonuserpage'         => 'D Benutzersyte vo der IP-Adress wo du mit schaffsch',
 'tooltip-pt-mytalk'               => 'Myni Diskussionssyte',
+'tooltip-pt-anontalk'             => 'Diskussione über Änderige vo dere IP-Adress',
 'tooltip-pt-preferences'          => 'Myni Ystellige',
 'tooltip-pt-watchlist'            => 'Lischte vo de beobachtete Syte.',
 'tooltip-pt-mycontris'            => 'Lischte vo myne Byträg',
 'tooltip-pt-login'                => 'Aamälde',
+'tooltip-pt-anonlogin'            => 'Mir ermuntre dich zwar dass du dich miteme Benutzerkonto aamääldsch, es isch aber kei Pflicht!',
 'tooltip-pt-logout'               => 'Abmälde',
 'tooltip-ca-talk'                 => 'Diskussion zum Artikelinhalt',
 'tooltip-ca-edit'                 => 'Syte bearbeite. Bitte vor em Spychere d Vorschou aaluege.',
@@ -2086,6 +2237,8 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-ca-watch'                => 'Tue die Syten uf dyni Beobachtigslischte.',
 'tooltip-ca-unwatch'              => 'Nim die Syte us dyre Beobachtungslischte furt.',
 'tooltip-search'                  => 'Dürchsuech {{SITENAME}}',
+'tooltip-search-go'               => 'Gang zunere Syte mit gnau däm Name, falls es eini git.',
+'tooltip-search-fulltext'         => 'Suech nooch Syte wo de Teggscht dinne hen',
 'tooltip-p-logo'                  => 'Houptsyte',
 'tooltip-n-mainpage'              => 'Gang uf d Houptsyte',
 'tooltip-n-portal'                => 'Über ds Projekt, was du chasch mache, wo du was findsch',
@@ -2101,6 +2254,8 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-t-emailuser'             => 'Schick däm Benutzer e E-Bost',
 'tooltip-t-upload'                => 'Dateien ufelade',
 'tooltip-t-specialpages'          => 'Lischte vo allne Spezialsyte',
+'tooltip-t-print'                 => 'E Version vo dere Syte zum Usdrugge.',
+'tooltip-t-permalink'             => 'E bständigs Gleich (Link) uf die Version vo dr Syte',
 'tooltip-ca-nstab-main'           => 'Artikelinhalt aaluege',
 'tooltip-ca-nstab-user'           => 'Benutzersyte aaluege',
 'tooltip-ca-nstab-media'          => 'Mediasyte aaluege',
@@ -2117,14 +2272,41 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'tooltip-diff'                    => 'Zeigt a, was du am Tekscht hesch veränderet.',
 'tooltip-compareselectedversions' => 'Underschide zwüsche zwo usgwählte Versione vo dere Syten azeige.',
 'tooltip-watch'                   => 'Tue die Syten uf dyni Beobachtigslischte.',
+'tooltip-recreate'                => 'Die Syte nöi erstelle, trotz dass si emool glöscht worren isch.',
+'tooltip-upload'                  => 'Aafange mit ufelade',
+'tooltip-rollback'                => 'Mach alli letschti Ändrige uf dere Syte, wo vo däm Benutzer gmacht worre sin, ruggängig.',
+'tooltip-undo'                    => 'Mach numme die eint Ändrig rugggängig, un zeig e Vorschau aa. Doodurch chasch in dr Zammefassig e Begründig aagää.',
+
+# Metadata
+'nodublincore'      => 'Dublin-Core-RDF-Metadate sin fir dää Server deaktiviert.',
+'nocreativecommons' => 'Creative-Commons-RDF-Metadate sin fir dää Server deaktiviert.',
+'notacceptable'     => 'Dr Wiki-Server cha d Date nit im e Format z Verfiegig stelle, wu Dyy Grät cha läse.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Anonyme Benutzer|Anonymi Benutzer}} uff {{SITENAME}}',
+'siteuser'         => '{{SITENAME}}-Benutzer $1',
 'lastmodifiedatby' => 'Diese Seite wurde zuletzt geändert um $2, $1 von $3.', # $1 date, $2 time, $3 user
 'othercontribs'    => 'Basiert auf der Arbeit von $1.',
+'others'           => 'anderi',
+'siteusers'        => '{{SITENAME}}-{{PLURAL:$2|Benutzer|Benutzer}} $1',
+'creditspage'      => 'Syteinformatione',
+'nocredits'        => 'Fir die Syte sin kein Informatione vorhande.',
 
 # Spam protection
 'spamprotectiontitle' => 'Spamschutz-Filter',
+'spamprotectiontext'  => 'D Syte, wu du wit spychere, isch vum Spamschutzfilter blockiert wore. Des lyt wahrschyyns am e Gleich uf e externi Syte.',
+'spamprotectionmatch' => "'''Dää Text isch vum Spamfilter gfunde wore: ''$1'''''",
+'spambot_username'    => 'MediaWiki Spam-Syyferig',
+'spam_reverting'      => 'Letschti Version ohni Gleicher zue $1 widerhärgstellt.',
+'spam_blanking'       => 'In allene Versione het s Gleicher zue $1 gha, sufer gmacht.',
+
+# Info page
+'infosubtitle'   => 'Syteinformation',
+'numedits'       => 'Aazaal vo Ändrige aa dr Syte: $1',
+'numtalkedits'   => 'Aazaal vo Ändrige aa de Diskussionssyte: $1',
+'numwatchers'    => 'Die Syte wird vo $1 Lüt beobachtet',
+'numauthors'     => 'Aazaal vo Autore: $1',
+'numtalkauthors' => 'Aazaal vo Diskussionsteilnäämer: $1',
 
 # Math options
 'mw_math_png'    => 'Immer als PNG aazeige',
@@ -2132,23 +2314,50 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'mw_math_html'   => 'Falls müglech als HTML aazeige, süsch als PNG',
 'mw_math_source' => 'Als TeX la sy (für Tekschtbrowser)',
 'mw_math_modern' => 'Empfolnigi Ystellig für modärni Browser',
+'mw_math_mathml' => 'MathML (experimentäll)',
 
 # Patrolling
-'markaspatrolleddiff'   => 'Als patrulyrt markyre',
-'markaspatrolledtext'   => 'Erschtversion patrulyre',
-'markedaspatrolledtext' => 'D’Änderig isch als patrulyrt markyrt.',
+'markaspatrolleddiff'                 => 'Als patrulyrt markyre',
+'markaspatrolledtext'                 => 'Erschtversion patrulyre',
+'markedaspatrolled'                   => 'As kontrolliert markiert',
+'markedaspatrolledtext'               => 'D’Änderig isch als patrulyrt markyrt.',
+'rcpatroldisabled'                    => 'Kontroll vu dr letschte Änderige gsperrt',
+'rcpatroldisabledtext'                => 'D Kontroll vu dr letschte Änderige isch im Momänt gsperrt.',
+'markedaspatrollederror'              => 'Markierig as „kontrolliert“ nit megli.',
+'markedaspatrollederrortext'          => 'Du muesch e Syteänderig uswehle.',
+'markedaspatrollederror-noautopatrol' => 'S isch nit erlaubt, eigeni Bearbeitige as kontrolliert z markiere.',
 
 # Patrol log
-'patrol-log-line' => 'het d’$1 vo $2 als patrulyrt markyrt $3',
+'patrol-log-page'      => 'Kontroll-Logbuech',
+'patrol-log-header'    => 'Des isch s Kontroll-Logbuech.',
+'patrol-log-line'      => 'het d’$1 vo $2 als patrulyrt markyrt $3',
+'patrol-log-auto'      => '(automatisch)',
+'log-show-hide-patrol' => 'Kontroll-Logbuech $1',
+
+# Image deletion
+'deletedrevision'                 => 'alti Version: $1',
+'filedeleteerror-short'           => 'Fähler bi dr Datei-Leschig: $1',
+'filedeleteerror-long'            => 'Bi dr Datei-Leschig sin Fähler feschtgstellt wore:
+
+$1',
+'filedelete-missing'              => 'D Datei „$1“ cha nit glescht wäre, wel si nit vorhande isch.',
+'filedelete-old-unregistered'     => 'D Datei-Version „$1“, wu aagee woren isch, isch nit in dr Datebank vorhande.',
+'filedelete-current-unregistered' => 'D Datei „$1“, wu aagee woren isch, isch nit in dr Datebank vorhande.',
+'filedelete-archive-read-only'    => 'S Archiv-Verzeichnis „$1“ cha nit dur dr Webserver bschribe wäre.',
 
 # Browsing diffs
 'previousdiff' => '← Vorderi Änderig',
 'nextdiff'     => 'Nächschti Änderig →',
 
+# Visual comparison
+'visual-comparison' => 'Visuälle Verglyych',
+
 # Media information
 'mediawarning'         => "'''Obacht:''' In däre Art Datei chend s e beswillige Programmcode din ha. Wänn du die Datei abeladsch oder effnesch, cha dr Computer bschädigt wäre.<hr />",
 'imagemaxsize'         => 'Maximali Gröössi vo de Bilder uf de Bildbeschrybigs-Sytene:',
 'thumbsize'            => 'Bildvorschou-Gröössi:',
+'widthheightpage'      => '$1×$2, {{PLURAL:$3|1 Syte|$3 Syte}}',
+'file-info'            => '(Dateigressi: $1, MIME-Typ: $2)',
 'file-info-size'       => '($1 × $2 Pixel, Dateigrößi: $3, MIME-Typ: $4)',
 'file-nohires'         => '<small>Kei höcheri Uflösig verfüegbar.</small>',
 'svg-long-desc'        => '(SVG-Datei, Basisgrößi: $1 × $2 Pixel, Dateigrößi: $3)',
@@ -2156,9 +2365,16 @@ Please visit [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation]
 'show-big-image-thumb' => '<small>Größi vo dere Vorschou: $1 × $2 Pixel</small>',
 
 # Special:NewFiles
-'newimages'     => 'Gallery vo noie Bilder',
-'imagelisttext' => "Hie isch e Lischte vo '''$1''' {{PLURAL:$1|Datei|Dateie}}, sortiert $2.",
-'ilsubmit'      => 'Suech',
+'newimages'             => 'Gallery vo noie Bilder',
+'imagelisttext'         => "Hie isch e Lischte vo '''$1''' {{PLURAL:$1|Datei|Dateie}}, sortiert $2.",
+'newimages-summary'     => 'Die Spezialsyte zeigt di zletscht uffegladene Dateie aa.',
+'newimages-legend'      => 'Filter',
+'newimages-label'       => 'Dateiname (oder e Teil devu):',
+'showhidebots'          => '(Bötli $1)',
+'noimages'              => 'Kei Dateie gfunde.',
+'ilsubmit'              => 'Suech',
+'bydate'                => 'noch Datum',
+'sp-newimages-showfrom' => 'Zeig neiji Dateie ab $1, $2 Uhr',
 
 # Bad image list
 'bad_image_list' => 'Format:
@@ -2183,63 +2399,484 @@ Anderi Metadate sy standardmäßig versteckt.
 * focallength', # Do not translate list items
 
 # EXIF tags
-'exif-orientation'     => 'Orientierung',
-'exif-pixelxdimension' => 'Valind image height',
-'exif-fnumber'         => 'F-Wert',
-'exif-isospeedratings' => 'Filmempfindlichkeit (ISO)',
+'exif-imagewidth'                  => 'Breiti',
+'exif-imagelength'                 => 'Längi',
+'exif-bitspersample'               => 'Bit pro Farbkomponente',
+'exif-compression'                 => 'Art vu dr Kompression',
+'exif-photometricinterpretation'   => 'Pixelzämmesetzig',
+'exif-orientation'                 => 'Orientierung',
+'exif-samplesperpixel'             => 'Aazahl vu dr Komponente',
+'exif-planarconfiguration'         => 'Dateusrichtig',
+'exif-ycbcrsubsampling'            => 'Subsampling Rate vu Y bis C',
+'exif-ycbcrpositioning'            => 'Y un C Positionierig',
+'exif-xresolution'                 => 'Horizontali Uflesig',
+'exif-yresolution'                 => 'Vertikali Uflesig',
+'exif-resolutionunit'              => 'Masseinheit vu dr Uflesig',
+'exif-stripoffsets'                => 'Bilddate-Versatz',
+'exif-rowsperstrip'                => 'Aazahl vu dr Zyylete pro Streife',
+'exif-stripbytecounts'             => 'Bytes pro komprimiertem Streife',
+'exif-jpeginterchangeformat'       => 'Offset zue JPEG SOI',
+'exif-jpeginterchangeformatlength' => 'JPEG-Date in Bytes',
+'exif-transferfunction'            => 'Ibertragigsfunktion',
+'exif-whitepoint'                  => 'Manuäll mit Mässig',
+'exif-primarychromaticities'       => 'Primäri Farbart',
+'exif-ycbcrcoefficients'           => 'YCbCr-Koeffiziente',
+'exif-referenceblackwhite'         => 'Schwarz/Wyss-Referenzpinkt',
+'exif-datetime'                    => 'Spycherzytpunkt',
+'exif-imagedescription'            => 'Bildtitel',
+'exif-make'                        => 'Hersteller',
+'exif-model'                       => 'Modell',
+'exif-software'                    => 'Software',
+'exif-artist'                      => 'Fotograf',
+'exif-copyright'                   => 'Urheberrächt',
+'exif-exifversion'                 => 'Exif-Version',
+'exif-flashpixversion'             => 'unterstitzti Flashpix-Version',
+'exif-colorspace'                  => 'Farbruum',
+'exif-componentsconfiguration'     => 'Bedytig vu einzelne Komponente',
+'exif-compressedbitsperpixel'      => 'Komprimierti Bit pro Pixel',
+'exif-pixelydimension'             => 'Giltigi Bildbreiti',
+'exif-pixelxdimension'             => 'Valind image height',
+'exif-makernote'                   => 'Herstellernotiz',
+'exif-usercomment'                 => 'Benutzerkommentar',
+'exif-relatedsoundfile'            => 'Zuegherigi Tondatei',
+'exif-datetimeoriginal'            => 'Erfassigszytpunkt',
+'exif-datetimedigitized'           => 'Digitalisierigszytpunkt',
+'exif-subsectime'                  => 'Spycherzytpunkt (1/100 s)',
+'exif-subsectimeoriginal'          => 'Erfassigszytpunkt (1/100 s)',
+'exif-subsectimedigitized'         => 'Digitalisierigszytpunkt (1/100 s)',
+'exif-exposuretime'                => 'Beliechtigsduur',
+'exif-exposuretime-format'         => '$1 Sekunde ($2)',
+'exif-fnumber'                     => 'F-Wert',
+'exif-exposureprogram'             => 'Beliechtigsprogramm',
+'exif-spectralsensitivity'         => 'Spektrali Empfindligkeit',
+'exif-isospeedratings'             => 'Filmempfindlichkeit (ISO)',
+'exif-oecf'                        => 'Optoelektronische Umrächnigsfaktor',
+'exif-shutterspeedvalue'           => 'Beliechtigszytwärt',
+'exif-aperturevalue'               => 'Bländewärt',
+'exif-brightnessvalue'             => 'Hälligkeitswärt',
+'exif-exposurebiasvalue'           => 'Beliechtigsvorgab',
+'exif-maxaperturevalue'            => 'Greschti Bländi',
+'exif-subjectdistance'             => 'Entfärnig',
+'exif-meteringmode'                => 'Mässverfahre',
+'exif-lightsource'                 => 'Liechtquäll',
+'exif-flash'                       => 'Blitz',
+'exif-focallength'                 => 'Brännwyti',
+'exif-subjectarea'                 => 'Beryych',
+'exif-flashenergy'                 => 'Blitzstärchi',
+'exif-spatialfrequencyresponse'    => 'Spatial-Frequenz',
+'exif-focalplanexresolution'       => 'Sensor-Uflesig horizontal',
+'exif-focalplaneyresolution'       => 'Sensor-Uflesig vertikal',
+'exif-focalplaneresolutionunit'    => 'Einheit vu dr Sensor-Uflesig',
+'exif-subjectlocation'             => 'Motivstandort',
+'exif-exposureindex'               => 'Beliechtigsindex',
+'exif-sensingmethod'               => 'Mässmethod',
+'exif-filesource'                  => 'Quäll vu dr Datei',
+'exif-scenetype'                   => 'Szenetyp',
+'exif-cfapattern'                  => 'CFA-Muschter',
+'exif-customrendered'              => 'Benutzerdefinierti Bildverarbeitig',
+'exif-exposuremode'                => 'Beliechtigsmodus',
+'exif-whitebalance'                => 'Wyssabglyych',
+'exif-digitalzoomratio'            => 'Digitalzoom',
+'exif-focallengthin35mmfilm'       => 'Brännwyti (Chleibildäquivalent)',
+'exif-scenecapturetype'            => 'Art vu dr Ufnahm',
+'exif-gaincontrol'                 => 'Verstärchig',
+'exif-contrast'                    => 'Kontrascht',
+'exif-saturation'                  => 'Sättigung',
+'exif-sharpness'                   => 'Schärfi',
+'exif-devicesettingdescription'    => 'Grät-Yystellig',
+'exif-subjectdistancerange'        => 'Motiventfärnig',
+'exif-imageuniqueid'               => 'Bild-ID',
+'exif-gpsversionid'                => 'GPS-Tag-Version',
+'exif-gpslatituderef'              => 'nerdl. oder sidl. Breiti',
+'exif-gpslatitude'                 => 'Geografischi Breiti',
+'exif-gpslongituderef'             => 'eschtl. oder weschtl. Längi',
+'exif-gpslongitude'                => 'Geografischi Längi',
+'exif-gpsaltituderef'              => 'Bezugshechi',
+'exif-gpsaltitude'                 => 'Hechi',
+'exif-gpstimestamp'                => 'GPS-Zyt',
+'exif-gpssatellites'               => 'Satellite, wu fir d Mässig brucht wore sin',
+'exif-gpsstatus'                   => 'Empfängerstatus',
+'exif-gpsmeasuremode'              => 'Mässverfahre',
+'exif-gpsdop'                      => 'Masspräzision',
+'exif-gpsspeedref'                 => 'Gschwindigkeitseinheit',
+'exif-gpsspeed'                    => 'Gschwindigkeit vum GPS-Empfänger',
+'exif-gpstrackref'                 => 'Referänz fir d Bewegigsrichtig',
+'exif-gpstrack'                    => 'Bewegigsrichtig',
+'exif-gpsimgdirectionref'          => 'Referänz fir d Usrichtig vum Bild',
+'exif-gpsimgdirection'             => 'Bildrichtig',
+'exif-gpsmapdatum'                 => 'Geodätisch Datum brucht',
+'exif-gpsdestlatituderef'          => 'Referänz fir d Breiti',
+'exif-gpsdestlatitude'             => 'Breiti',
+'exif-gpsdestlongituderef'         => 'Referänz fir d Längi',
+'exif-gpsdestlongitude'            => 'Längi',
+'exif-gpsdestbearingref'           => 'Referänz fir d Motivrichtig',
+'exif-gpsdestbearing'              => 'Motivrichtig',
+'exif-gpsdestdistanceref'          => 'Referänz fir d Motiventfärnig',
+'exif-gpsdestdistance'             => 'Motiventfärnig',
+'exif-gpsprocessingmethod'         => 'Name vum GPS-Verfahre',
+'exif-gpsareainformation'          => 'Name vum GPS-Biet',
+'exif-gpsdatestamp'                => 'GPS-Datum',
+'exif-gpsdifferential'             => 'GPS-Differentialkorrektur',
+
+# EXIF attributes
+'exif-compression-1' => 'Uukomprimiert',
+
+'exif-unknowndate' => 'Nit bekannt Datum',
+
+'exif-orientation-1' => 'Normal', # 0th row: top; 0th column: left
+'exif-orientation-2' => 'Horizontal gspieglet', # 0th row: top; 0th column: right
+'exif-orientation-3' => 'Um 180° drillt', # 0th row: bottom; 0th column: right
+'exif-orientation-4' => 'Vertikal gspieglet', # 0th row: bottom; 0th column: left
+'exif-orientation-5' => 'Gege dr Uhrzeigersinn um 90° drillt un derno vertikal gspieglet', # 0th row: left; 0th column: top
+'exif-orientation-6' => 'Um 90° im Uhrzeigersinn drillt', # 0th row: right; 0th column: top
+'exif-orientation-7' => 'Um 90° im Uhrzeigersinn drillt un derno vertikal gspieglet', # 0th row: right; 0th column: bottom
+'exif-orientation-8' => 'Um 90° gege dr Uhrzeigersinn drillt', # 0th row: left; 0th column: bottom
+
+'exif-planarconfiguration-1' => 'Grobformat',
+'exif-planarconfiguration-2' => 'Planarformat',
+
+'exif-componentsconfiguration-0' => 'Git s nit',
+
+'exif-exposureprogram-0' => 'Nit bekannt',
+'exif-exposureprogram-1' => 'Manuell',
+'exif-exposureprogram-2' => 'Standardprogramm',
+'exif-exposureprogram-3' => 'Zytautomatik',
+'exif-exposureprogram-4' => 'Bländeautomatik',
+'exif-exposureprogram-5' => 'Kreativprogramm (hochi Schärfetiefi bevorzugt)',
+'exif-exposureprogram-6' => 'Aktions-Programm (churzi Beliechtigszyt bevorzugt)',
+'exif-exposureprogram-7' => 'Porträ-Programm',
+'exif-exposureprogram-8' => 'Landschaftsufnahme',
+
+'exif-subjectdistance-value' => '$1 Meter',
+
+'exif-meteringmode-0'   => 'Nit bekannt',
+'exif-meteringmode-1'   => 'Durchschnittlig',
+'exif-meteringmode-2'   => 'Mittizentriert',
+'exif-meteringmode-3'   => 'Spot-Mässig',
+'exif-meteringmode-4'   => 'Mehfach-Spot-Mässig',
+'exif-meteringmode-5'   => 'Muschter',
+'exif-meteringmode-6'   => 'Bildteil',
+'exif-meteringmode-255' => 'Anderi',
+
+'exif-lightsource-0'   => 'Nit bekannt',
+'exif-lightsource-1'   => 'Tagliecht',
+'exif-lightsource-2'   => 'Fluoreszierig',
+'exif-lightsource-3'   => 'Glieilampe',
+'exif-lightsource-4'   => 'Blitz',
+'exif-lightsource-9'   => 'Schen Wätter',
+'exif-lightsource-10'  => 'Wulchig',
+'exif-lightsource-11'  => 'Schatte',
+'exif-lightsource-12'  => 'Tagliecht fluoreszierig (D 5700–7100 K)',
+'exif-lightsource-13'  => 'Tagwyss fluoreszierig (N 4600–5400 K)',
+'exif-lightsource-14'  => 'Chaltwyss fluoreszierig (W 3900–4500 K)',
+'exif-lightsource-15'  => 'Wyss fluoreszierig (WW 3200–3700 K)',
+'exif-lightsource-17'  => 'Standardliecht A',
+'exif-lightsource-18'  => 'Standardliecht B',
+'exif-lightsource-19'  => 'Standardliecht C',
+'exif-lightsource-24'  => 'ISO Studio Chunschtliecht',
+'exif-lightsource-255' => 'Anderi Liechtquäll',
+
+# Flash modes
+'exif-flash-fired-0'    => 'kei Blitz',
+'exif-flash-fired-1'    => 'Blitz usglest',
+'exif-flash-return-0'   => 'Blitz schickt kei Date',
+'exif-flash-return-2'   => 'kei Reflexion vum Blitz feschtgstellt',
+'exif-flash-return-3'   => 'Reflexion vum Blitz feschtgstellt',
+'exif-flash-mode-1'     => 'erzwunge Blitze',
+'exif-flash-mode-2'     => 'Blitz abgstellt',
+'exif-flash-mode-3'     => 'Automatik',
+'exif-flash-function-1' => 'Kei Blitzfunktion',
+'exif-flash-redeye-1'   => 'Roti-Auge-Reduktion',
+
+'exif-focalplaneresolutionunit-2' => 'Zoll',
+
+'exif-sensingmethod-1' => 'Nit definiert',
+'exif-sensingmethod-2' => 'Ei-Chip-Farbsensor',
+'exif-sensingmethod-3' => 'Zwee-Chip-Farbsensor',
+'exif-sensingmethod-4' => 'Drej-Chip-Farbsensor',
+'exif-sensingmethod-5' => 'Farbruum sequenziäll Sensor',
+'exif-sensingmethod-7' => 'Trilineare Sensor',
+'exif-sensingmethod-8' => 'Farbruum linear sequenziälle Sensor',
+
+'exif-scenetype-1' => 'E diräkt fotografiert Bild',
+
+'exif-customrendered-0' => 'Normal',
+'exif-customrendered-1' => 'Benutzerdefiniert',
+
+'exif-exposuremode-0' => 'Automatischi Beliechtig',
+'exif-exposuremode-1' => 'Manuälli Beliechtig',
+'exif-exposuremode-2' => 'Beliechtigzyylete',
+
+'exif-whitebalance-0' => 'Automatisch',
+'exif-whitebalance-1' => 'Manuäll',
+
+'exif-scenecapturetype-0' => 'Standard',
+'exif-scenecapturetype-1' => 'Landschaft',
+'exif-scenecapturetype-2' => 'Porträt',
+'exif-scenecapturetype-3' => 'Nachtszene',
+
+'exif-gaincontrol-0' => 'Keini',
+'exif-gaincontrol-1' => 'Low gain up',
+'exif-gaincontrol-2' => 'High gain up',
+'exif-gaincontrol-3' => 'Low gain down',
+'exif-gaincontrol-4' => 'High gain down',
+
+'exif-contrast-0' => 'Normal',
+'exif-contrast-1' => 'Schwach',
+'exif-contrast-2' => 'Starch',
+
+'exif-saturation-0' => 'Normal',
+'exif-saturation-1' => 'Niideri Sättigung',
+'exif-saturation-2' => 'Hochi Sättigung',
+
+'exif-sharpness-0' => 'Normal',
+'exif-sharpness-1' => 'Schwach',
+'exif-sharpness-2' => 'Starch',
+
+'exif-subjectdistancerange-0' => 'Nit bekannt',
+'exif-subjectdistancerange-1' => 'Makro',
+'exif-subjectdistancerange-2' => 'Noch',
+'exif-subjectdistancerange-3' => 'Wyt ewäg',
+
+# Pseudotags used for GPSLatitudeRef and GPSDestLatitudeRef
+'exif-gpslatitude-n' => 'nerdl. Breiti',
+'exif-gpslatitude-s' => 'sidl. Breiti',
+
+# Pseudotags used for GPSLongitudeRef and GPSDestLongitudeRef
+'exif-gpslongitude-e' => 'eschtl. Längi',
+'exif-gpslongitude-w' => 'weschtl. Längi',
+
+'exif-gpsstatus-a' => 'Mässig lauft',
+'exif-gpsstatus-v' => 'Interoperabilität vu Mässige',
+
+'exif-gpsmeasuremode-2' => '2-dimensionali Mässig',
+'exif-gpsmeasuremode-3' => '3-dimensionali Mässig',
+
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+'exif-gpsspeed-k' => 'km/h',
+'exif-gpsspeed-m' => 'mph',
+'exif-gpsspeed-n' => 'Chnote',
+
+# Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
+'exif-gpsdirection-t' => 'Tatsächligi Richtig',
+'exif-gpsdirection-m' => 'Magnetischi Richtig',
 
 # External editor support
 'edit-externally'      => 'Die Datei mit emnen externe Programm bearbeite',
 'edit-externally-help' => '(Lueg d [http://www.mediawiki.org/wiki/Manual:External_editors Installationsaawisige] fir witeri Informatione)',
 
 # 'all' in various places, this might be different for inflected languages
-'watchlistall2' => 'alli',
-'namespacesall' => 'alli',
-'monthsall'     => 'alli',
+'recentchangesall' => 'alli',
+'imagelistall'     => 'alli',
+'watchlistall2'    => 'alli',
+'namespacesall'    => 'alli',
+'monthsall'        => 'alli',
 
 # E-mail address confirmation
-'confirmemail'          => 'Bstätigung vo Ihre E-Poscht-Adräss',
-'confirmemail_text'     => 'Dermit du di erwyterete Mailfunktione chasch bruuche, muesch du die e-Mail-Adrässe, wo du hesch aaggä, la bestätige. Klick ufe Chnopf unte; das schickt dir es Mail. I däm Mail isch e Link; we du däm Link folgsch, de tuesch dadermit bestätige, das die e-Mail-Adrässe dyni isch.',
-'confirmemail_send'     => 'Bestätigungs-Mail verschicke',
-'confirmemail_sent'     => 'Es isch dir es Mail zur Adrässbestätigung gschickt worde.',
-'confirmemail_success'  => 'Dyni E-Mail-Adräss isch bstätiget worde. Du chasch di jitz aamälde.',
-'confirmemail_loggedin' => 'Dyni E-Mail-Adräss isch jitz bstätigt.',
-'confirmemail_subject'  => '{{SITENAME}} E-Mail-Adrässbstätigung',
-'confirmemail_body'     => "Hallo
+'confirmemail'             => 'Bstätigung vo Ihre E-Poscht-Adräss',
+'confirmemail_noemail'     => 'Du hesch in dyne [[Special:Preferences|persönliche Ystellige]] e kei E-Mail-Adress ygää.',
+'confirmemail_text'        => 'Dermit du di erwyterete Mailfunktione chasch bruuche, muesch du die e-Mail-Adrässe, wo du hesch aaggä, la bestätige. Klick ufe Chnopf unte; das schickt dir es Mail. I däm Mail isch e Link; we du däm Link folgsch, de tuesch dadermit bestätige, das die e-Mail-Adrässe dyni isch.',
+'confirmemail_pending'     => 'Es isch Dir scho en Code zum Bestätige zuegschiggt worde. Falls du Dyn Konto grad erscht aagleit hesch, muesch villicht noo e weng warte bis d E-Mail ytrifft, bevor du en nöie Code aafordresch.',
+'confirmemail_send'        => 'Bestätigungs-Mail verschicke',
+'confirmemail_sent'        => 'Es isch dir es Mail zur Adrässbestätigung gschickt worde.',
+'confirmemail_oncreate'    => 'En Code isch aa dyni E-Mail-Adress zum bestätige gschiggt worde. Du bruuch de Code zwar nüt zum dich aamälde, er wird aber zum aktiviere vo de E-Mail-Funktione in däm Wiki bruucht.',
+'confirmemail_sendfailed'  => '{{SITENAME}} het d E-Mail zum bestätige nüt chönne verschigge.
+Bitte überprüef d E-Mail-Adress uf ungültigi Zeiche.
 
-{{SITENAME}}-BenutzerIn «$2» — das bisch allwäg du — het sech vor IP-Adrässen $1 uus mit deren e-Mail-Adrässe bi {{SITENAME}} aagmäldet.
+Ruggmäldig vum Mailserver: $1',
+'confirmemail_invalid'     => 'De Bestätigscode isch ungültig. Es isch mögli das er abgloffe isch. In däm Fall chasch probiere d Bestätigung z widerhole.',
+'confirmemail_needlogin'   => 'Du muesch dich $1, zume dyni E-Mail-Adress bstätige.',
+'confirmemail_success'     => 'Dyni E-Mail-Adräss isch bstätiget worde. Du chasch di jitz aamälde.',
+'confirmemail_loggedin'    => 'Dyni E-Mail-Adräss isch jitz bstätigt.',
+'confirmemail_error'       => 'Öbis isch bim Bestätige vo dynrer E-Mail-Adress schief gloffe.',
+'confirmemail_subject'     => '{{SITENAME}} E-Mail-Adrässbstätigung',
+'confirmemail_body'        => 'Salü
 
-Für z bestätige, das die Adrässe würklech dir isch, u für dyni erwytereten e-Mail-Funktionen uf {{SITENAME}} yzschalte, tue bitte der folgend Link i dym Browser uuf:
+{{SITENAME}}-BenutzerIn «$2» — das bisch allwäg Du — het sech vor IP-Adrässen $1 uus mit deren e-Mail-Adrässe bi {{SITENAME}} aagmäldet.
+
+Für z bestätige, das die Adrässe würklech Dir isch, u für Dyni erwytereten e-Mail-Funktionen uf {{SITENAME}} yzschalte, tue bitte dää Gleich i dym Browser uuf:
 
 $3
 
-Falls du *nid* $2 sötsch sy, de tue bitte de  Link unte dra uf um d'e-Mail-Bestätigung abzbreche:
+Falls du *nid* $2 sötsch sy, de tue bitte de Gleich unte dra uf, um d e-Mail-Bstätigung abzbreche:
 
 $5
 
-De Bestätigung Code isch gültug bis $4.
+De Bstätigungs-Code isch gültig bis $4.
 
-Fründtlechi Grüess",
+Fründlechi Grüess',
+'confirmemail_invalidated' => 'D E-Mail-Adressbestätig isch abbroche worde',
+'invalidateemail'          => 'S Bestätige vo dr E-Mail-Adress abbreche',
+
+# Scary transclusion
+'scarytranscludedisabled' => '[Interwiki-Yybindig isch deaktiviert]',
+'scarytranscludefailed'   => '[Vorlage-Yybindig fir $1 isch gescheitert]',
+'scarytranscludetoolong'  => '[URL isch z lang]',
+
+# Trackbacks
+'trackbackbox'      => '<div id="mw_trackbacks">
+Trackback fir die Syte:<br />
+$1
+</div>',
+'trackbackremove'   => '([$1 lesche])',
+'trackbacklink'     => 'Trackback',
+'trackbackdeleteok' => 'Trackback isch mit Erfolg glescht wore.',
+
+# Delete conflict
+'deletedwhileediting' => "'''Obacht''': Die Syte isch glescht wore, nochdäm Du aagfange hesch si z bearbeite!",
+'confirmrecreate'     => "Benutzer [[User:$1|$1]] ([[User talk:$1|Diskussion]]) het die Syte glescht, nochdäm Du aagfange hesch si z bearbeite.
+D Begrindig isch gsi:
+:''$2''
+Bitte bstätig, ass Du die Syte wirkli wit nej aalege.",
+'recreate'            => 'Nomol aalege',
 
 # action=purge
-'confirm-purge-top' => 'D Zwischespycherig vu dr Syte lesche?',
+'confirm_purge_button' => 'In Ornig',
+'confirm-purge-top'    => 'D Zwischespycherig vu dr Syte lesche?',
+'confirm-purge-bottom' => 'Läärt dr Cache vun ere Syte un macht, ass di nejscht Version aazeigt wird.',
 
 # Multipage image navigation
 'imgmultipageprev' => '← vorderi Syte',
+'imgmultipagenext' => 'nächschti Syte →',
+'imgmultigo'       => 'Gang!',
+'imgmultigoto'     => 'Gang uf Syte $1',
 
 # Table pager
-'table_pager_prev' => 'Vorderi Syte',
+'ascending_abbrev'         => 'uf',
+'descending_abbrev'        => 'ab',
+'table_pager_next'         => 'Näggschti Syte',
+'table_pager_prev'         => 'Vorderi Syte',
+'table_pager_first'        => 'Erschti Syte',
+'table_pager_last'         => 'Letschti Syte',
+'table_pager_limit'        => 'Zeig $1 Yträg pro Syte aa',
+'table_pager_limit_submit' => 'Gang',
+'table_pager_empty'        => 'Kei Ergebniss',
+
+# Auto-summaries
+'autosumm-blank'   => 'Die Syte isch gleert worde.',
+'autosumm-replace' => "Dr Inhalt vo dr Syte isch ersetzt worde: '$1'",
+'autoredircomment' => 'E Wyterleitig uf [[$1]] isch erstellt worde',
+'autosumm-new'     => 'Die Syte isch nöi aaglait worde: $1',
+
+# Live preview
+'livepreview-loading' => 'Am Lade …',
+'livepreview-ready'   => 'Am Lade… Fertig!',
+'livepreview-failed'  => 'Live-Vorschau nit megli! Bitte di normal Vorschau verwände.',
+'livepreview-error'   => 'Verbindig nit megli: $1 „$2“. Bitte di normal Vorschau verwände.',
+
+# Friendlier slave lag warnings
+'lag-warn-normal' => 'Bearbeitige in dr letschte {{PLURAL:$1|Sekund|$1 Sekunde}} wäre in däre Lischt nonig aazeigt.',
+'lag-warn-high'   => 'Wäg ere hoche Datebank-Uslaschtig wäre d Bearbeitige in dr letschte {{PLURAL:$1|Sekund|$1 Sekunde}} in däre Lischt nonig aazeigt.',
+
+# Watchlist editor
+'watchlistedit-numitems'       => 'Uf dynrer Beobachtigslischt sin {{PLURAL:$1|ei Ytrag|$1 Yträg}}, Diskussionssyte werde nüt zäält.',
+'watchlistedit-noitems'        => 'Du hesch kei Syte uf dynrer Beobachtigslischt.',
+'watchlistedit-normal-title'   => 'D Beobachtigslischt bearbeite',
+'watchlistedit-normal-legend'  => 'Yträg vo dynrer Beobachtigslischt entferne',
+'watchlistedit-normal-explain' => 'Doo unte sihsch d Yträg uf dynrer Beobachtigslischt. Zume en Ytrag useznää muesch s Chäschtli dernäbe markiere un denoo ganz unte uf „Yträg usenää“ drugge. Du chasch syni Beobachtigslischt au als [[Special:Watchlist/raw|Lischte bearbeite]].',
+'watchlistedit-normal-submit'  => 'Yträg usenää',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|ei Ytrag isch|$1 Yträg sin}} vo dynrer Beobachtigslischt entfernt worde:',
+'watchlistedit-raw-title'      => 'D Beobachtigslischt als Lischte bearbeite',
+'watchlistedit-raw-legend'     => 'D Beobachtigslischt als Lischte bearbeite',
+'watchlistedit-raw-explain'    => 'Doo unte sihsch d Yträg uf dynrer Beobachtigslischt. Du chasch die Yträg jetz usenää oder hinzuefüge.
+Pro Zyle isch ei Ytrag erlaubt. Wenn fertig bisch, drugg uf „Beobachtigslischt aktualisiere“.
+Du chasch au d [[Special:Watchlist/edit|Standard-Bearbeitigssyte]] bruuche.',
+'watchlistedit-raw-titles'     => 'Yträg:',
+'watchlistedit-raw-submit'     => 'D Beobachtigslischt aktualisiere',
+'watchlistedit-raw-done'       => 'Dyni Beobachtigslischt isch aktualisiert worde.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|ei Ytrag isch|$1 Yträg sin}} dezuedüü worde:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|ei Ytrag isch|$1 Yträg sin}} usegnoo worde:',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Beobachtigsliste: Änderige',
 'watchlisttools-edit' => 'normal bearbeite',
 'watchlisttools-raw'  => 'imene große Textfäld bearbeite',
 
+# Core parser functions
+'unknown_extension_tag' => 'Nit bekannte Extension-Tag „$1“',
+'duplicate-defaultsort' => 'Obacht: Dr Sortierigsschlüssel „$2“ iberschrybt dr vorig brucht Schlüssel „$1“.',
+
 # Special:Version
-'version' => 'Version', # Not used as normal message but as header for the special page itself
+'version'                          => 'Version', # Not used as normal message but as header for the special page itself
+'version-extensions'               => 'Installierti Erwyterige',
+'version-specialpages'             => 'Spezialsyte',
+'version-parserhooks'              => 'Parser-Schnittstelle',
+'version-variables'                => 'Variable',
+'version-other'                    => 'Anders',
+'version-mediahandlers'            => 'Medie-Handler',
+'version-hooks'                    => "Schnittstelle ''(Hook)''",
+'version-extension-functions'      => 'Funktionsufruef',
+'version-parser-extensiontags'     => "Parser-Erwyterige ''(tags)''",
+'version-parser-function-hooks'    => 'Parser-Funktione',
+'version-skin-extension-functions' => 'Skin-Erwyterigs-Funktione',
+'version-hook-name'                => 'Schnittstellename',
+'version-hook-subscribedby'        => 'Ufruef vu',
+'version-version'                  => 'Version',
+'version-license'                  => 'Lizänz',
+'version-software'                 => 'Installierti Software',
+'version-software-product'         => 'Produkt',
+'version-software-version'         => 'Version',
+
+# Special:FilePath
+'filepath'         => 'Dateipfad',
+'filepath-page'    => 'Datei:',
+'filepath-submit'  => 'Pfad sueche',
+'filepath-summary' => 'Mit däre Spezialsyte losst sich dr komplett Pfad vu dr aktuälle Version vun ere Datei ohni Umwäg abfroge. Di aagfrogt Datei wird diräkt dargstellt bzw. mit dr verchnipfte Aawändig gstartet.
+
+D Yygab muess ohni dr Zuesatz „{{ns:file}}:“ erfolge.',
+
+# Special:FileDuplicateSearch
+'fileduplicatesearch'          => 'Datei-Duplikat sueche',
+'fileduplicatesearch-summary'  => 'Suech no Datei-Duplikat uf dr Grundlag vu ihrem Hash-Wärt.
+
+D Yygab muess ohni dr Zuesatz „{{ns:file}}:“ erfolge.',
+'fileduplicatesearch-legend'   => 'No Duplikat sueche',
+'fileduplicatesearch-filename' => 'Dateiname:',
+'fileduplicatesearch-submit'   => 'Sueche',
+'fileduplicatesearch-info'     => '$1 × $2 Pixel<br />Dateigressi: $3<br />MIME-Typ: $4',
+'fileduplicatesearch-result-1' => 'D Datei „$1“ het kei identischi Duplikat.',
+'fileduplicatesearch-result-n' => 'D Datei „$1“ het {{PLURAL:$2|1 identisch Duplikat|$2 identischi Duplikat}}.',
 
 # Special:SpecialPages
-'specialpages'             => 'Spezialsytene',
-'specialpages-group-login' => 'Aamälde',
+'specialpages'                   => 'Spezialsytene',
+'specialpages-note'              => '----
+* D Spezialsyte für alli
+* <span class="mw-specialpagerestricted">d Spezialsyte für d Benutzer mit bsundri Rächt</span>',
+'specialpages-group-maintenance' => 'Wartigslischte',
+'specialpages-group-other'       => 'Andri Spezialsyte',
+'specialpages-group-login'       => 'Aamälde',
+'specialpages-group-changes'     => 'D letschte Änderige un Logbüecher',
+'specialpages-group-media'       => 'Medie',
+'specialpages-group-users'       => 'Benutzer un Rächt',
+'specialpages-group-highuse'     => 'Syte wo oft bruucht werde',
+'specialpages-group-pages'       => 'Lischte vo Syte',
+'specialpages-group-pagetools'   => 'Sytewerchzüüg',
+'specialpages-group-wiki'        => 'Syschtemdate un Wärchzüüg',
+'specialpages-group-redirects'   => 'Spezialsyte wo wyterleite',
+'specialpages-group-spam'        => 'Spam-Wärchzüüg',
+
+# Special:BlankPage
+'blankpage'              => 'E leeri Syte',
+'intentionallyblankpage' => 'Die Syte isch absichtlich leer. Si wird für Benchmarks bruucht.',
+
+# External image whitelist
+'external_image_whitelist' => ' #Die Zyylete nit verändere<pre>
+#Unte chenne Fragmänt vu reguläre Usdrick (dr Teil zwische dr //) yygee wäre
+#Die wäre mit dr URL vu Bilder us externe Quälle vergliche
+#E positive Verglyych fiert zue dr Aazeig vum Bild, suscht wird s Bild nume as Gleich aazeigt
+#Zyylete, wu mit eme # aafange, wäre as Kommentar behandlet
+#Fragmänt vu reguläre Usdrick noch däre Zyylete yytrage. Die Zyylete nit verändere</pre>',
+
+# Special:Tags
+'tag-filter'              => '[[Special:Tag|Tag]]-Filter:',
+'tag-filter-submit'       => 'Filter',
+'tags-title'              => 'Tag',
+'tags-intro'              => 'Die Syte zeigt alli Tag, wu Bearbeitige mit markiert wäre un derzue d Bedytig vun ene.',
+'tags-tag'                => 'Interne Tagname',
+'tags-display-header'     => 'Benännig uf dr Änderigslischte',
+'tags-description-header' => 'Vollständigi Bschryybig',
+'tags-hitcount-header'    => 'taggti Bearbeitige',
+'tags-edit'               => 'bearbeite',
+'tags-hitcount'           => '$1 {{PLURAL:$1|Änderig|Änderige}}',
 
 );

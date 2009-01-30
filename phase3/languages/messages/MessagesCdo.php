@@ -465,13 +465,13 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'destfilename'      => 'Mŭk-biĕu ùng-giông-miàng:',
 'watchthisupload'   => 'Gáng-sê ciā hiĕk',
 
-# Special:FileList
+# Special:ListFiles
 'imgfile'        => 'ùng-giông',
-'imagelist'      => 'Ùng-giông dăng-dăng',
-'imagelist_date' => 'Nĭk-gĭ',
-'imagelist_name' => 'Miàng',
-'imagelist_user' => 'Ê̤ṳng-hô',
-'imagelist_size' => 'Chióh-cháung',
+'listfiles'      => 'Ùng-giông dăng-dăng',
+'listfiles_date' => 'Nĭk-gĭ',
+'listfiles_name' => 'Miàng',
+'listfiles_user' => 'Ê̤ṳng-hô',
+'listfiles_size' => 'Chióh-cháung',
 
 # File description page
 'imagelinks'                => 'Lièng-giék',
@@ -563,7 +563,8 @@ Siók-mìng: (dāng) = gâe̤ng dék sĭng bēng-buōng bī-piâng, (sèng) = g�
 'categories' => 'Lôi-biék',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Ké̤ṳk chēng lâi gì ê̤ṳng-hô góng-hióng',
+'deletedcontributions'       => 'Ké̤ṳk chēng lâi gì ê̤ṳng-hô góng-hióng',
+'deletedcontributions-title' => 'Ké̤ṳk chēng lâi gì ê̤ṳng-hô góng-hióng',
 
 # Special:LinkSearch
 'linksearch-ok' => 'Sìng-tō̤',

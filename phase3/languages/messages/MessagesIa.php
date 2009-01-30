@@ -48,7 +48,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Observatorio' ),
 	'Recentchanges'             => array( 'ModificationesRecente' ),
 	'Upload'                    => array( 'Cargar' ),
-	'Imagelist'                 => array( 'ListaDeImagines' ),
+	'Listfiles'                 => array( 'ListaDeImagines' ),
 	'Newimages'                 => array( 'NoveImagines' ),
 	'Listusers'                 => array( 'ListarUsatores', 'ListaDeUsatores' ),
 	'Listgrouprights'           => array( 'ListarDerectosDeGruppos' ),
@@ -131,6 +131,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Formatar ligamines rupte <a href="" class="new">assi</a> (alternativemente: assi<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Justificar paragraphos',
 'tog-hideminor'               => 'Celar modificationes recente minor',
+'tog-hidepatrolled'           => 'Celar le modificationes patruliate in le modificationes recente',
+'tog-newpageshidepatrolled'   => 'Celar le paginas patruliate del lista de nove paginas',
 'tog-extendwatchlist'         => 'Expander le observatorio a tote le modificationes applicabile',
 'tog-usenewrc'                => 'Modificationes recente meliorate (JavaScript)',
 'tog-numberheadings'          => 'Numerar titulos automaticamente',
@@ -165,6 +167,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Excluder le modificationes minor del observatorio',
 'tog-watchlisthideliu'        => 'Celar modificationes per usatores identificate del observatorio',
 'tog-watchlisthideanons'      => 'Celar modificationes per usatores anonyme del observatorio',
+'tog-watchlisthidepatrolled'  => 'Celar le modificationes patruliate del observatorio',
 'tog-nolangconversion'        => 'Disactivar conversion de variantes',
 'tog-ccmeonemails'            => 'Inviar me copias del messages de e-mail que io invia a altere usatores',
 'tog-diffonly'                => 'Non monstrar le contento del pagina sub le comparation de duo versiones',
@@ -529,6 +532,10 @@ Selige un altere nomine.',
 'badsig'                     => 'Signatura crude invalide; verificar le etiquettas HTML.',
 'badsiglength'               => 'Le signatura es troppo longe.
 Illo debe haber minus de $1 {{PLURAL:$1|character|characteres}}.',
+'yourgender'                 => 'Genere:',
+'gender-unknown'             => 'Non specificate',
+'gender-male'                => 'Masculin',
+'gender-female'              => 'Feminin',
 'email'                      => 'E-mail',
 'prefs-help-realname'        => 'Le nomine real es optional.
 Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contributiones.',
@@ -560,6 +567,7 @@ Illo debe haber al minus {{PLURAL:$1|1 character|$1 characteres}} e debe differe
 contrasigno pro {{SITENAME}} ($4). Un contrasigno temporari pro le usator
 "$2" ha essite create, le qual es "$3". Si isto esseva tu
 intention, tu debe ora aperir un session e seliger un nove contrasigno.
+Tu contrasigno temporari expirara in {{PLURAL:$5|un die|$5 dies}}.
 
 Si un altere persona ha facite iste requesta, o si tu te ha rememorate tu contrasigno,
 e tu non vole plus cambiar lo, tu pote ignorar iste message e
@@ -641,7 +649,7 @@ Es possibile que tu ha ja cambiate tu contrasigno o requestate un nove contrasig
 'minoredit'                        => 'Isto es un modification minor',
 'watchthis'                        => 'Observar iste pagina',
 'savearticle'                      => 'Publicar articulo',
-'preview'                          => 'Previsualisar',
+'preview'                          => 'Previsualisation',
 'showpreview'                      => 'Monstrar previsualisation',
 'showlivepreview'                  => 'Previsualisation directe',
 'showdiff'                         => 'Detaliar modificationes',
@@ -864,53 +872,59 @@ Es possibile que illo esseva delite del wiki, o renominate.
 Prova [[Special:Search|cercar nove paginas relevante]] in le wiki.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(commento eliminate)',
-'rev-deleted-user'            => '(nomine de usator eliminate)',
-'rev-deleted-event'           => '(entrata eliminate)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+'rev-deleted-comment'            => '(commento eliminate)',
+'rev-deleted-user'               => '(nomine de usator eliminate)',
+'rev-deleted-event'              => '(entrata eliminate)',
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks">
 Iste version del pagina ha essite eliminate del archivos public.
 Es possibile que se trova detalios in le [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de deletiones].</div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
+'rev-deleted-text-view'          => '<div class="mw-warning plainlinks">
 Iste version del pagina ha essite eliminate del archivos public.
 Como administrator in {{SITENAME}} tu pote vider lo;
 es possibile que se trova detalios in le [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} registro de deletiones].</div>',
-'rev-delundel'                => 'revelar/celar',
-'revisiondelete'              => 'Deler/restaurar versiones',
-'revdelete-nooldid-title'     => 'Le version de destination es invalide',
-'revdelete-nooldid-text'      => 'O tu non ha specificate alcun version(es) de destination pro executar iste 
+'rev-delundel'                   => 'revelar/celar',
+'revisiondelete'                 => 'Deler/restaurar versiones',
+'revdelete-nooldid-title'        => 'Le version de destination es invalide',
+'revdelete-nooldid-text'         => 'O tu non ha specificate alcun version(es) de destination pro executar iste 
 function, o le version specificate non existe, o tu essaya celar le version actual.',
-'revdelete-selected'          => "'''{{PLURAL:$2|Version seligite|Versiones seligite}} de [[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|Evento|Eventos}} de registro seligite:'''",
-'revdelete-text'              => "'''Le versiones e eventos delite continuara a apparer in le historia e registro del pagina, sed partes de lor contento essera inaccessibile al publico.'''
+'revdelete-nologtype-title'      => 'Typo de registro non specificate',
+'revdelete-nologtype-text'       => 'Tu non ha specificate un typo de registro super le qual iste action debe esser executate.',
+'revdelete-toomanytargets-title' => 'Troppo de destinationes',
+'revdelete-toomanytargets-text'  => 'Tu ha specificate troppo de typos de destinationes super le quales iste action debe esser executate.',
+'revdelete-nologid-title'        => 'Entrata de registro invalide',
+'revdelete-nologid-text'         => 'O tu non ha specificate un evento de registro de destination super le qual iste action debe esser executate, o le entrata specificate non existe.',
+'revdelete-selected'             => "'''{{PLURAL:$2|Version seligite|Versiones seligite}} de [[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|Evento|Eventos}} de registro seligite:'''",
+'revdelete-text'                 => "'''Le versiones e eventos delite continuara a apparer in le historia e registro del pagina, sed partes de lor contento essera inaccessibile al publico.'''
 
 Altere administratores in {{SITENAME}} continuara a poter acceder al contento celate e pote restaurar lo per medio de iste mesme interfacie, si non se ha definite restrictiones additional.",
-'revdelete-legend'            => 'Definir restrictiones de visibilitate',
-'revdelete-hide-text'         => 'Celar texto del version',
-'revdelete-hide-name'         => 'Celar action e objectivo',
-'revdelete-hide-comment'      => 'Celar commento de modification',
-'revdelete-hide-user'         => 'Celar nomine de usator o adresse IP del modificator',
-'revdelete-hide-restricted'   => 'Applicar iste restrictiones al administratores e blocar iste interfacie',
-'revdelete-suppress'          => 'Supprimer datos e de Administratores e de alteres',
-'revdelete-hide-image'        => 'Celar contento del file',
-'revdelete-unsuppress'        => 'Eliminar restrictiones super versiones restaurate',
-'revdelete-log'               => 'Commento pro registro:',
-'revdelete-submit'            => 'Applicar al version seligite',
-'revdelete-logentry'          => 'cambiava le visibilitate de versiones pro [[$1]]',
-'logdelete-logentry'          => 'cambiava le visibilitate de eventos pro [[$1]]',
-'revdelete-success'           => "'''Le visibilitate de versiones ha essite definite con successo.'''",
-'logdelete-success'           => "'''Le visibilitate del registro ha essite definite con successo.'''",
-'revdel-restore'              => 'Cambiar visibilitate',
-'pagehist'                    => 'Historia del pagina',
-'deletedhist'                 => 'Historia delite',
-'revdelete-content'           => 'contento',
-'revdelete-summary'           => 'summario del modification',
-'revdelete-uname'             => 'nomine de usator',
-'revdelete-restricted'        => 'restrictiones applicate al administratores',
-'revdelete-unrestricted'      => 'restrictiones eliminate pro administratores',
-'revdelete-hid'               => 'celava $1',
-'revdelete-unhid'             => 'revelava $1',
-'revdelete-log-message'       => '$1 pro $2 {{PLURAL:$2|version|versiones}}',
-'logdelete-log-message'       => '$1 pro $2 {{PLURAL:$2|evento|eventos}}',
+'revdelete-legend'               => 'Definir restrictiones de visibilitate',
+'revdelete-hide-text'            => 'Celar texto del version',
+'revdelete-hide-name'            => 'Celar action e objectivo',
+'revdelete-hide-comment'         => 'Celar commento de modification',
+'revdelete-hide-user'            => 'Celar nomine de usator o adresse IP del modificator',
+'revdelete-hide-restricted'      => 'Applicar iste restrictiones al administratores e blocar iste interfacie',
+'revdelete-suppress'             => 'Supprimer datos e de Administratores e de alteres',
+'revdelete-hide-image'           => 'Celar contento del file',
+'revdelete-unsuppress'           => 'Eliminar restrictiones super versiones restaurate',
+'revdelete-log'                  => 'Commento pro registro:',
+'revdelete-submit'               => 'Applicar al version seligite',
+'revdelete-logentry'             => 'cambiava le visibilitate de versiones pro [[$1]]',
+'logdelete-logentry'             => 'cambiava le visibilitate de eventos pro [[$1]]',
+'revdelete-success'              => "'''Le visibilitate de versiones ha essite definite con successo.'''",
+'logdelete-success'              => "'''Le visibilitate del registro ha essite definite con successo.'''",
+'revdel-restore'                 => 'Cambiar visibilitate',
+'pagehist'                       => 'Historia del pagina',
+'deletedhist'                    => 'Historia delite',
+'revdelete-content'              => 'contento',
+'revdelete-summary'              => 'summario del modification',
+'revdelete-uname'                => 'nomine de usator',
+'revdelete-restricted'           => 'restrictiones applicate al administratores',
+'revdelete-unrestricted'         => 'restrictiones eliminate pro administratores',
+'revdelete-hid'                  => 'celava $1',
+'revdelete-unhid'                => 'revelava $1',
+'revdelete-log-message'          => '$1 pro $2 {{PLURAL:$2|version|versiones}}',
+'logdelete-log-message'          => '$1 pro $2 {{PLURAL:$2|evento|eventos}}',
 
 # Suppression log
 'suppressionlog'     => 'Registro de suppressiones',
@@ -1116,6 +1130,7 @@ per favor vide math/README pro configurar lo.",
 'prefs-resetpass'           => 'Cambiar contrasigno',
 'saveprefs'                 => 'Confirmar',
 'resetprefs'                => 'Reverter cambios',
+'restoreprefs'              => 'Restaurar tote le configurationes predefinite',
 'textboxsize'               => 'Modification',
 'prefs-edit-boxsize'        => 'Dimensiones del fenestra de modification.',
 'rows'                      => 'Lineas:',
@@ -1144,6 +1159,8 @@ per favor vide math/README pro configurar lo.",
 'defaultns'                 => 'Cercar initialmente in iste spatios de nomines:',
 'default'                   => 'predefinition',
 'files'                     => 'Files',
+'prefs-custom-css'          => 'CSS personalisate',
+'prefs-custom-js'           => 'JS personalisate',
 
 # User rights
 'userrights'                  => 'Gestion de derectos de usator', # Not used as normal message but as header for the special page itself
@@ -1353,6 +1370,7 @@ Vide le [[Special:NewFiles|galeria de nove files]] pro un presentation plus visu
 'filename'                    => 'Nomine del file',
 'filedesc'                    => 'Summario',
 'fileuploadsummary'           => 'Summario:',
+'filereuploadsummary'         => 'Modificationes al file:',
 'filestatus'                  => 'Stato de copyright:',
 'filesource'                  => 'Origine:',
 'uploadedfiles'               => 'Files cargate',
@@ -1403,6 +1421,7 @@ Si tu vole totevia cargar iste file, per favor retorna e usa un nove nomine. [[F
 'overwroteimage'              => 'cargava un nove version de "[[$1]]"',
 'uploaddisabled'              => 'Cargamentos disactivate',
 'uploaddisabledtext'          => 'Le cargamento de files es disactivate.',
+'php-uploaddisabledtext'      => 'Le cargamento de files PHP es disactivate. Per favor verifica le configuration file_uploads.',
 'uploadscripted'              => 'Iste file contine codice de HTML o de script que pote esser interpretate erroneemente per un navigator del web.',
 'uploadcorrupt'               => 'Le file es corrupte o su nomine ha un extension incorrecte.
 Per favor verifica le file e recarga lo.',
@@ -1459,18 +1478,19 @@ Pote esser preferite reprovar quando le sito es minus occupate.',
 'upload_source_url'  => ' (un adresse URL valide e publicamente accessibile)',
 'upload_source_file' => ' (un file in tu computator)',
 
-# Special:FileList
-'imagelist-summary'     => 'Iste pagina special monstra tote le files cargate.
+# Special:ListFiles
+'listfiles-summary'     => 'Iste pagina special monstra tote le files cargate.
 Per predefinition le ultime files cargate se monstra al initio del lista.
 Tu pote reordinar le lista con un clic super le titulo de un columna.',
-'imagelist_search_for'  => 'Cercar un nomine de media:',
+'listfiles_search_for'  => 'Cercar un nomine de media:',
 'imgfile'               => 'file',
-'imagelist'             => 'Lista de files',
-'imagelist_date'        => 'Data',
-'imagelist_name'        => 'Nomine',
-'imagelist_user'        => 'Usator',
-'imagelist_size'        => 'Grandor',
-'imagelist_description' => 'Description',
+'listfiles'             => 'Lista de files',
+'listfiles_date'        => 'Data',
+'listfiles_name'        => 'Nomine',
+'listfiles_user'        => 'Usator',
+'listfiles_size'        => 'Grandor',
+'listfiles_description' => 'Description',
+'listfiles_count'       => 'Versiones',
 
 # File description page
 'filehist'                       => 'Historia del file',
@@ -1650,7 +1670,9 @@ Cata linea contine ligamines al prime e al secunde redirection, con le destinati
 'protectedtitlesempty'    => 'Nulle titulos es actualmente protegite con iste parametros.',
 'listusers'               => 'Lista de usatores',
 'listusers-editsonly'     => 'Monstrar solmente usatores con modificationes',
+'listusers-creationsort'  => 'Ordinar per data de creation',
 'usereditcount'           => '$1 {{PLURAL:$1|modification|modificationes}}',
+'usercreated'             => 'Create le $1 a $2',
 'newpages'                => 'Nove paginas',
 'newpages-username'       => 'Nomine de usator:',
 'ancientpages'            => 'Paginas le plus ancian',
@@ -1712,7 +1734,8 @@ Vide etiam le [[Special:WantedCategories|categorias desirate]].',
 'special-categories-sort-abc'   => 'ordinar alphabeticamente',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Contributiones delite de usatores',
+'deletedcontributions'       => 'Contributiones delite de usatores',
+'deletedcontributions-title' => 'Contributiones delite de usatores',
 
 # Special:LinkSearch
 'linksearch'       => 'Cercar per ligamines web',
@@ -1751,31 +1774,32 @@ Il pote haber [[{{MediaWiki:Listgrouprights-helppage}}|informationes additional]
 'listgrouprights-removegroup-all' => 'Pote eliminar tote le gruppos',
 
 # E-mail user
-'mailnologin'     => 'Necun adresse de invio',
-'mailnologintext' => 'Tu debe [[Special:UserLogin|aperir un session]]
+'mailnologin'      => 'Necun adresse de invio',
+'mailnologintext'  => 'Tu debe [[Special:UserLogin|aperir un session]]
 e haber un adresse de e-mail valide in tu [[Special:Preferences|preferentias]]
 pro inviar e-mail a altere usatores.',
-'emailuser'       => 'Inviar e-mail a iste usator',
-'emailpage'       => 'Inviar e-mail al usator',
-'emailpagetext'   => 'Le formulario infra es pro inviar un message de e-mail a iste usator.
+'emailuser'        => 'Inviar e-mail a iste usator',
+'emailpage'        => 'Inviar e-mail al usator',
+'emailpagetext'    => 'Le formulario infra es pro inviar un message de e-mail a iste usator.
 Le adresse de e-mail que tu indicava in [[Special:Preferences|tu preferentias de usator]] apparera
 como le adresse del expeditor del e-mail, de modo que le destinatario pote responder directemente a te.',
-'usermailererror' => 'Le objecto de e-mail retornava le error:',
-'defemailsubject' => 'E-mail de {{SITENAME}}',
-'noemailtitle'    => 'Nulle adresse de e-mail',
-'noemailtext'     => 'Iste usator non ha specificate un adresse de e-mail valide,
-o ha optate pro non reciper e-mail de altere usatores.',
-'email-legend'    => 'Inviar e-mail a un altere usator de {{SITENAME}}',
-'emailfrom'       => 'Expeditor:',
-'emailto'         => 'Destinatario:',
-'emailsubject'    => 'Subjecto:',
-'emailmessage'    => 'Message:',
-'emailsend'       => 'Inviar',
-'emailccme'       => 'Inviar me un copia de mi message.',
-'emailccsubject'  => 'Copia de tu message a $1: $2',
-'emailsent'       => 'E-mail inviate',
-'emailsenttext'   => 'Tu message de e-mail ha essite inviate.',
-'emailuserfooter' => 'Iste e-mail esseva inviate per $1 a $2 con le function "Inviar e-mail al usator" a {{SITENAME}}.',
+'usermailererror'  => 'Le objecto de e-mail retornava le error:',
+'defemailsubject'  => 'E-mail de {{SITENAME}}',
+'noemailtitle'     => 'Nulle adresse de e-mail',
+'noemailtext'      => 'Iste usator non ha specificate un adresse de e-mail valide.',
+'nowikiemailtitle' => 'E-mail non permittite',
+'nowikiemailtext'  => 'Iste usator ha optate pro non reciper e-mail de altere usatores.',
+'email-legend'     => 'Inviar e-mail a un altere usator de {{SITENAME}}',
+'emailfrom'        => 'Expeditor:',
+'emailto'          => 'Destinatario:',
+'emailsubject'     => 'Subjecto:',
+'emailmessage'     => 'Message:',
+'emailsend'        => 'Inviar',
+'emailccme'        => 'Inviar me un copia de mi message.',
+'emailccsubject'   => 'Copia de tu message a $1: $2',
+'emailsent'        => 'E-mail inviate',
+'emailsenttext'    => 'Tu message de e-mail ha essite inviate.',
+'emailuserfooter'  => 'Iste e-mail esseva inviate per $1 a $2 con le function "Inviar e-mail al usator" a {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Mi observatorio',
@@ -2232,6 +2256,8 @@ pro mover un pagina.',
 'movepagebtn'                  => 'Renominar pagina',
 'pagemovedsub'                 => 'Renomination succedite',
 'movepage-moved'               => '<big>\'\'\'"$1" ha essite renominate a "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'Un redirection ha essite create.',
+'movepage-moved-noredirect'    => 'Le creation de un redirection ha essite supprimite.',
 'articleexists'                => 'Un pagina con iste nomine ja existe, o le nomine seligite non es valide.
 Per favor selige un altere nomine.',
 'cantmove-titleprotected'      => 'Tu non pote renominar un pagina a iste titulo, proque le nove titulo ha essite protegite contra creation',
@@ -2851,8 +2877,8 @@ Le alteres essera initialmente celate.
 Activa le button infra pro inviar un message de confirmation a tu adresse.
 Le message includera un ligamine continente un codice;
 visita le ligamine in tu navigator pro confirmar que tu adresse de e-mail es valide.',
-'confirmemail_pending'     => '<div class="error">Un codice de confirmation ha ja essite inviate a te;
-si tu ha recentemente create tu conto, es recommendate attender le arrivata de illo durante alcun minutas ante de provar requestar un nove codice.</div>',
+'confirmemail_pending'     => 'Un codice de confirmation ha ja essite inviate a te;
+si tu ha recentemente create tu conto, es recommendate attender le arrivata de illo durante alcun minutas ante de provar requestar un nove codice.',
 'confirmemail_send'        => 'Inviar un codice de confirmation',
 'confirmemail_sent'        => 'Message de confirmation inviate.',
 'confirmemail_oncreate'    => 'Un codice de confirmation ha essite inviate a tu adresse de e-mail.

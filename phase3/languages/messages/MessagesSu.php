@@ -48,7 +48,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Awaskeuneun' ),
 	'Recentchanges'             => array( 'AnyarRobah' ),
 	'Upload'                    => array( 'Kunjal' ),
-	'Imagelist'                 => array( 'DaptarGambar' ),
+	'Listfiles'                 => array( 'DaptarGambar' ),
 	'Newimages'                 => array( 'GambarAnyar' ),
 	'Listusers'                 => array( 'DaptarPamake' ),
 	'Listgrouprights'           => array( 'DaptarHakPamake' ),
@@ -519,7 +519,7 @@ kudu kurang ti $1 {{PLURAL:$1|karaktér|karaktér}}.',
 'passwordtooshort'           => 'Sandi anjeun pondok teuing, sahanteuna kudu {{PLURAL:$1|1 karakter|$1 karakter}} jeung kudu beda jeung ngaran pamaké.',
 'mailmypassword'             => 'Kirim sandi anyar ngaliwatan surélék',
 'passwordremindertitle'      => 'Pangéling sandi ti {{SITENAME}}',
-'passwordremindertext'       => 'Aya (jigana anjeun ti alamat IP $1) nu ménta sangkan dikiriman sandi anyar asup log {{SITENAME}} ($4). Sandi anyar keur pamaké "$2" ayeuna diganti jadi "$3". Anjeun kudu asup log sarta ngarobah sandi anjeun ayeuna.
+'passwordremindertext'       => 'Aya (jigana anjeun ti alamat IP $1) nu ménta sangkan dikiriman sandi anyar asup log {{SITENAME}} ($4). Saheulaanan, sandi anyar keur pamaké "$2" ayeuna diganti jadi "$3". Anjeun kudu asup log sarta ngarobah sandi anjeun ayeuna. Ieu sandi bakal kadaluwarsa dina {{PLURAL:$5|sapoé|$5 poé}}.
 
 Mun pamundut ieu datang ti nu séjén, atawa mun anjeun geus inget sandi anu tadina poho, sarta teu hayang ngarobah sandina, anjeun teu kudu ngawaro kana ieu surat sarta bisa tetep maké sandi anu ti heula.',
 'noemail'                    => 'Teu aya alamat surélék karékam pikeun "$1".',
@@ -1155,15 +1155,15 @@ Catet yén salaku kaca wiki, nu séjén bisa ngarobah atawa ngahapus muatan anje
 'upload_source_url'  => '(URL nu sohéh sarta bisa dibuka ku umum)',
 'upload_source_file' => ' (koropak dina komputer salira)',
 
-# Special:FileList
-'imagelist_search_for'  => 'Sungsi ngaran média:',
+# Special:ListFiles
+'listfiles_search_for'  => 'Sungsi ngaran média:',
 'imgfile'               => 'koropak',
-'imagelist'             => 'Daptar gambar',
-'imagelist_date'        => 'Titimangsa',
-'imagelist_name'        => 'Ngaran',
-'imagelist_user'        => 'Pamaké',
-'imagelist_size'        => 'Badagna',
-'imagelist_description' => 'Pedaran',
+'listfiles'             => 'Daptar gambar',
+'listfiles_date'        => 'Titimangsa',
+'listfiles_name'        => 'Ngaran',
+'listfiles_user'        => 'Pamaké',
+'listfiles_size'        => 'Badagna',
+'listfiles_description' => 'Pedaran',
 
 # File description page
 'filehist'                       => 'Sajarah gambar',
@@ -1370,7 +1370,8 @@ Baca ogé [[Special:WantedCategories|kategori nu dipikabutuh]].',
 'special-categories-sort-count' => 'ngurut numutkeun jumlah',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Kontribusi nu dihapus',
+'deletedcontributions'       => 'Kontribusi nu dihapus',
+'deletedcontributions-title' => 'Kontribusi nu dihapus',
 
 # Special:LinkSearch
 'linksearch'       => 'Sungsi tumbu ramat',
@@ -1585,7 +1586,7 @@ Hal ieu teu diwenangkeun pikeun nyegah karuksakan {{SITENAME}} nu teu dihaja.',
 'undeletepage'                 => 'Témbongkeun atawa simpen deui kaca nu geus dihapus',
 'undeletepagetitle'            => "'''Béréndélan révisi [[:$1]]''' anu dihapus.",
 'viewdeletedpage'              => 'Témbongkeun kaca nu dihapus',
-'undeletepagetext'             => 'Kaca di handap ieu geus dihapus tapi masih kénéh aya na arsip sarta bisa disimpen deui. Arsip aya kalana dibersihan.',
+'undeletepagetext'             => '{{PLURAL:$1|Kaca di handap ieu|Aya $1 kaca}}  geus dihapus tapi masih kénéh aya na arsip sarta bisa disimpen deui. Arsip aya kalana dibersihan.',
 'undeleterevisions'            => '$1 {{PLURAL:$1|révisi|révisi}} diarsipkeun',
 'undeletehistory'              => 'Mun anjeun nyimpen deui kacana, sadaya révisi bakal disimpen deui dina jujutan.
 Mun aya kaca anyar nu ngaranna sarua dijieun deui satutasna dihapus, révisi nu disimpen tadi bakal némbongan salaku jujutan nu ti heula, sarta révisi kiwari kaca nu hirup moal otomatis kaganti.',
@@ -2227,7 +2228,7 @@ Ngan daptar butiran (jajar anu dimimitian ku tanda *) anu diitung. Tumbu kahiji 
 'confirmemail'             => 'Konfirmasi alamat surélék',
 'confirmemail_noemail'     => 'Alamat surélék anu didaptarkeun dina [[Special:Preferences|préferénsi pamaké]] anjeun teu sah.',
 'confirmemail_text'        => 'Wiki ieu merlukeun anjeun sangkan méré konfirmasi alamat surélék saméméh migunakeun fitur surélék. Aktifkeun tombol di handap pikeun ngirimkeun surat konfirmasi ka alamat anjeun. Suratna ngandung tumbu nu ngandung sandina; muatkeun tumbuna kana panyungsi anjeun pikeun ngonfirmasi yén alamat surélék anjeun sah.',
-'confirmemail_pending'     => '<div class="error">Sandi konfirmasi geus dikirimkeun ka alamat surélék anjeun; mun kakara nyieun rekening, mangga antos sababaraha menit saméméh mundut sandi anyar.</div>',
+'confirmemail_pending'     => 'Sandi konfirmasi geus dikirimkeun ka alamat surélék anjeun; mun kakara nyieun rekening, mangga antos sababaraha menit saméméh mundut sandi anyar.',
 'confirmemail_send'        => 'Kirimkeun surat konfirmasi sandi',
 'confirmemail_sent'        => 'Surélék konfirmasi geus dikirim.',
 'confirmemail_oncreate'    => 'Sandi konfirmasi geus dikirim ka alamat surélék anjeun. Éta sandi dipaké pikeun ngajalankeun fitur-fitur nu maké surélék di ieu wiki.',

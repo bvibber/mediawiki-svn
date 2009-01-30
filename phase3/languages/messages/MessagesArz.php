@@ -53,7 +53,6 @@ $namespaceAliases = array(
 	'نقاش_الصورة' => NS_FILE_TALK,
 );
 
-
 $magicWords = array(
 	'redirect'              => array( '0', '#تحويل', '#تحويل', '#REDIRECT' ),
 	'notoc'                 => array( '0', '__لافهرس__', '__لافهرس__', '__NOTOC__' ),
@@ -87,6 +86,7 @@ $magicWords = array(
 	'numberoffiles'         => array( '1', 'عدد_الملفات', 'عدد_ملفات', 'عدد_الملفات', 'عدد_ملفات', 'NUMBEROFFILES' ),
 	'numberofusers'         => array( '1', 'عدد_المستخدمين', 'عدد_مستخدمين', 'عدد_المستخدمين', 'عدد_مستخدمين', 'NUMBEROFUSERS' ),
 	'numberofedits'         => array( '1', 'عدد_التعديلات', 'عدد_تعديلات', 'عدد_التعديلات', 'عدد_تعديلات', 'NUMBEROFEDITS' ),
+	'numberofviews'         => array( '1', 'عدد_المشاهدات', 'عدد_مشاهدات', 'عدد_المشاهدات', 'عدد_مشاهدات', 'NUMBEROFVIEWS' ),
 	'pagename'              => array( '1', 'اسم_الصفحة', 'اسم_صفحة', 'اسم_الصفحة', 'اسم_صفحة', 'PAGENAME' ),
 	'pagenamee'             => array( '1', 'عنوان_الصفحة', 'عنوان_صفحة', 'عنوان_الصفحة', 'عنوان_صفحة', 'PAGENAMEE' ),
 	'namespace'             => array( '1', 'نطاق', 'نطاق', 'NAMESPACE' ),
@@ -128,8 +128,8 @@ $magicWords = array(
 	'img_middle'            => array( '1', 'وسط', 'وسط', 'middle' ),
 	'img_bottom'            => array( '1', 'أسفل', 'أسفل', 'bottom' ),
 	'img_text_bottom'       => array( '1', 'نص_أسفل', 'نص_أسفل', 'text-bottom' ),
-	'img_link'              => array( '1', 'وصلة=$1', 'رابط=$1', 'link=$1' ),
-	'img_alt'               => array( '1', 'بديل=$1', 'alt=$1' ),
+	'img_link'              => array( '1', 'وصلة=$1', 'رابط=$1', 'وصلة=$1', 'رابط=$1', 'link=$1' ),
+	'img_alt'               => array( '1', 'بديل=$1', 'بديل=$1', 'alt=$1' ),
 	'int'                   => array( '0', 'محتوى:', 'محتوى:', 'INT:' ),
 	'sitename'              => array( '1', 'اسم_الموقع', 'اسم_موقع', 'اسم_الموقع', 'اسم_موقع', 'SITENAME' ),
 	'ns'                    => array( '0', 'نط:', 'نط:', 'NS:' ),
@@ -199,7 +199,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'قايمة_المراقبة' ),
 	'Recentchanges'             => array( 'أحدث_التغييرات' ),
 	'Upload'                    => array( 'رفع' ),
-	'Imagelist'                 => array( 'قايمة_الصور' ),
+	'Listfiles'                 => array( 'قايمة_الصور' ),
 	'Newimages'                 => array( 'صور_جديدة' ),
 	'Listusers'                 => array( 'عرض_المستخدمين', 'قايمة_المستخدمين' ),
 	'Listgrouprights'           => array( 'عرض_صلاحيات_المجموعات' ),
@@ -219,8 +219,8 @@ $specialPageAliases = array(
 	'Mostlinked'                => array( 'الأكثر_وصلا' ),
 	'Mostlinkedcategories'      => array( 'أكثر_التصنيفات_وصلا', 'أكثر_التصنيفات_استخداما' ),
 	'Mostlinkedtemplates'       => array( 'أكثر_القوالب_وصلا', 'أكثر_القوالب_استخداما' ),
-	'Mostcategories'            => array( 'أكثر_التصنيفات' ),
 	'Mostimages'                => array( 'أكثر_الصور' ),
+	'Mostcategories'            => array( 'أكثر_التصنيفات' ),
 	'Mostrevisions'             => array( 'أكثر_المراجعات' ),
 	'Fewestrevisions'           => array( 'أقل_المراجعات' ),
 	'Shortpages'                => array( 'صفحات_قصيرة' ),
@@ -283,6 +283,7 @@ $messages = array(
 'tog-highlightbroken'         => 'أ بين اللينكات البايظة <a href="" class="new">كدا</a> (البديل: زى دا<a href="" class="internal">؟</a>).',
 'tog-justify'                 => 'ساوى البراجرافات',
 'tog-hideminor'               => 'خبى التعديلات الصغيرة فى اجدد التغييرات',
+'tog-hidepatrolled'           => 'خبى التعديلات المتراجعه من احدث التغييرات',
 'tog-extendwatchlist'         => 'وسع لستة المراقبة علشان تبين كل التغييرات اللى ممكن تتطبق',
 'tog-usenewrc'                => 'شكل قوى من أجدد التغييرات (جافا سكريبت)',
 'tog-numberheadings'          => 'رقم العناوين اوتوماتيك',
@@ -317,6 +318,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'خبى التعديلات البسيطة من لستة المراقبة',
 'tog-watchlisthideliu'        => 'خبى التعديلات بتاعة اليوزرز المتسجل دخولهم دلوقتى من لستة المراقبة',
 'tog-watchlisthideanons'      => 'خبى التعديلات بتاعة اليوزرز المجهولين من لستة المراقبة',
+'tog-watchlisthidepatrolled'  => 'خبى التعديلات المتراجعه من ليستة المراقبه',
 'tog-nolangconversion'        => 'عطل تحويل اللهجات',
 'tog-ccmeonemails'            => 'ابعتلى  نسخ من رسايل الايميل اللى بابعتها لليوزرز التانيين',
 'tog-diffonly'                => 'ما تبين ش محتوى الصفحة تحت الفروقات',
@@ -487,8 +489,8 @@ $messages = array(
 'copyright'            => 'المحتوى موجود تحت $1.',
 'copyrightpagename'    => 'حقوق النسخ فى {{SITENAME}}',
 'copyrightpage'        => '{{ns:project}}:حقوق النسخ',
-'currentevents'        => 'الاحداث دلوقتى',
-'currentevents-url'    => 'Project:الاحداث دلوقتى',
+'currentevents'        => 'الاخبار دلوقتى',
+'currentevents-url'    => 'Project:الاخبار دلوقتى',
 'disclaimers'          => 'اخلاء مسؤوليه',
 'disclaimerpage'       => 'Project:اخلاء مسؤوليه عمومى',
 'edithelp'             => 'مساعده فى التعديل',
@@ -705,12 +707,12 @@ $2',
 لازم مايقلش طول الكلمه عن {{PLURAL:$1|1 حرف|$1 حرف}} وتكون مختلفه عن اسم اليوزر بتاعك.',
 'mailmypassword'             => 'ابعتلى كلمة سر جديدة',
 'passwordremindertitle'      => 'كلمة سر مؤقته جديده ل {{SITENAME}}',
-'passwordremindertext'       => 'فيه شخص ما (غالبا انت، من عنوان الاى بى $1)
-طلب كلمة سر جديده لـ{{SITENAME}} ($4).
-كلمة سر مؤقتة لليوزر "$2" تم إنشاؤها و ضبطها إلى "$3".
-لو إن ده هوه اللى إنت عايزه، عليك انك تسجل الدخول و تختار كلمة سر جديدة دلوقتى.
-
-لو إن حد تانى هوه اللى عمل الطلب ده، أو انك افتكرت كلمة السر بتاعتك، ومش عايز تغيرها، ممكن تتجاهل الرساله دى وتستمر فى استخدام كلمة السر القديمة بتاعتك.',
+'passwordremindertext'       => 'فيه واحد(غالبا انت، من عنوان الاى بى $1)
+طلب باسورد جديده لـ{{SITENAME}} ($4).
+في باسورد مؤقتة لليوزر "$2" اتعملت و و اتظبطت لـ "$3".
+لو هوه دا اللى إنت عايزه، لازم تسجل دخولك و تختار باسورد جديده دلوقتي.
+الباسورد المؤقته بتاعتك ح تنتهي صلاحيتها في خلال {{PLURAL:$5|يوم واحد|$5 ايام}}.
+اما لو كان في حد تانى هوه اللى عمل الطلب ده، أو انك افتكرت الباسورد بتاعتك، وخلاص مش عايز تغيرها، ممكن تتجاهل الرساله دى وتستمر فى استخدام الباسورد القديمة بتاعتك.',
 'noemail'                    => 'مافيش ايميل متسجل  لليوزر  "$1".',
 'passwordsent'               => 'تم إرسال كلمة سر جديدة لعنوان الايميل المتسجل لليوزر "$1".
 من فضلك حاول تسجيل الدخول مره تانيه بعد استلامها.',
@@ -1248,6 +1250,7 @@ $2',
 'prefs-resetpass'           => 'غير الباسورد',
 'saveprefs'                 => 'حفظ',
 'resetprefs'                => 'امسح التغييرات اللى مش المحفوظة',
+'restoreprefs'              => 'استرجع التظبيطات الاصليه',
 'textboxsize'               => 'تعديل',
 'prefs-edit-boxsize'        => 'كُبر الويندو بتاعة التحرير',
 'rows'                      => 'صفوف:',
@@ -1412,7 +1415,7 @@ $2',
 'action-importupload'         => 'استيراد هذه الصفحة من ملف مرفوع',
 'action-patrol'               => 'التعليم على تعديلات الآخرين كمراجعة',
 'action-autopatrol'           => 'جعل تعديلك معلم عليه كمراجع',
-'action-unwatchedpages'       => 'رؤية قائمة الصفحات غير المراقبة',
+'action-unwatchedpages'       => 'رؤية لستة الصفحات اللى مش متراقبة',
 'action-trackback'            => 'تنفيذ تراكباك',
 'action-mergehistory'         => 'دمج تاريخ هذه الصفحة',
 'action-userrights'           => 'تعديل كل صلاحيات اليوزر',
@@ -1592,18 +1595,19 @@ PICT # misc.
 'upload_source_url'  => '  (اليوأرإل صحيح وممكن توصل ليه)',
 'upload_source_file' => ' (ملف على الكمبيوتر بتاعك)',
 
-# Special:FileList
-'imagelist-summary'     => 'الصفحة المخصوصة دى بتعرض كل الملفات المتحملة.
+# Special:ListFiles
+'listfiles-summary'     => 'الصفحة المخصوصة دى بتعرض كل الملفات المتحملة.
 اوتوماتيكى اخر الملفات اللى اتحملت ح تظهر فى اللستة من فوق.
 لو دوست على راس العمود الترتيب ح يتغير.',
-'imagelist_search_for'  => 'دور على اسم الميديا:',
+'listfiles_search_for'  => 'دور على اسم الميديا:',
 'imgfile'               => 'ملف',
-'imagelist'             => 'لستة الملفات',
-'imagelist_date'        => 'تاريخ',
-'imagelist_name'        => 'اسم',
-'imagelist_user'        => 'يوزر',
-'imagelist_size'        => 'حجم',
-'imagelist_description' => 'وصف',
+'listfiles'             => 'لستة الملفات',
+'listfiles_date'        => 'تاريخ',
+'listfiles_name'        => 'اسم',
+'listfiles_user'        => 'يوزر',
+'listfiles_size'        => 'حجم',
+'listfiles_description' => 'وصف',
+'listfiles_count'       => 'نسخ',
 
 # File description page
 'filehist'                       => 'تاريخ الملف',
@@ -1707,7 +1711,7 @@ PICT # misc.
 'statistics-articles'          => 'صفحات المحتوى',
 'statistics-pages'             => 'الصفحات',
 'statistics-pages-desc'        => 'كل الصفحات فى الويكى، بما فيها صفحات النقاش، التحويلات، إلى آخره.',
-'statistics-files'             => 'الملفات المرفوعة',
+'statistics-files'             => 'الملفات المتحملة',
 'statistics-edits'             => 'تعديلات الصفحات من بداية {{SITENAME}}',
 'statistics-edits-average'     => 'متوسط التعديلات لكل صفحة',
 'statistics-views-total'       => 'إجمالى المشاهدات',
@@ -1735,7 +1739,7 @@ PICT # misc.
 'brokenredirects-edit'   => '(تحرير)',
 'brokenredirects-delete' => '(مسح)',
 
-'withoutinterwiki'         => 'صفحات بدون وصلات للغات تانيه',
+'withoutinterwiki'         => 'صفحات من غير وصلات للغات تانيه',
 'withoutinterwiki-summary' => 'الصفحات دى  مالهاش لينكات لنسخ بلغات تانية:',
 'withoutinterwiki-legend'  => 'بريفيكس',
 'withoutinterwiki-submit'  => 'عرض',
@@ -1845,7 +1849,8 @@ PICT # misc.
 'special-categories-sort-abc'   => 'ترتيب ابجدي',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'تعديلات اليوزر الممسوحة',
+'deletedcontributions'       => 'تعديلات اليوزر الممسوحة',
+'deletedcontributions-title' => 'تعديلات اليوزر الممسوحة',
 
 # Special:LinkSearch
 'linksearch'       => 'دور فى لينكات الويب',
@@ -1884,27 +1889,29 @@ PICT # misc.
 'listgrouprights-removegroup-all' => 'ممكن تشيل كل المجموعات',
 
 # E-mail user
-'mailnologin'     => 'مافيش عنوان نبعت عليه',
-'mailnologintext' => 'لازم تعمل [[Special:UserLogin|تسجيل الدخول]] و تدخل ايميل صحيح فى صفحة [[Special:Preferences|التفضيلات]] علشان تقدر تبعت ايميلات لليوزرز التانيين.',
-'emailuser'       => 'ابعت ايميل لليوزر دا',
-'emailpage'       => 'ابعت ايميل لليوزر ده',
-'emailpagetext'   => 'ممكن تستعمل الاستمارة اللى تحت دى عشان تيعت ايميل لليوزر دا.
+'mailnologin'      => 'مافيش عنوان نبعت عليه',
+'mailnologintext'  => 'لازم تعمل [[Special:UserLogin|تسجيل الدخول]] و تدخل ايميل صحيح فى صفحة [[Special:Preferences|التفضيلات]] علشان تقدر تبعت ايميلات لليوزرز التانيين.',
+'emailuser'        => 'ابعت ايميل لليوزر دا',
+'emailpage'        => 'ابعت ايميل لليوزر ده',
+'emailpagetext'    => 'ممكن تستعمل الاستمارة اللى تحت دى عشان تيعت ايميل لليوزر دا.
 عنوان الايميل اللى كتبته فى [[Special:Preferences|التفضيلات بتاعتك]] ح يظهر على انه عنوان الاستمارة و بكدة اللى حيستقبله ح يقدر يرد على الايميل.',
-'usermailererror' => 'البريد رجع غلط:',
-'defemailsubject' => 'إيميل من {{SITENAME}}',
-'noemailtitle'    => 'مافيش  عنوان ايميل',
-'noemailtext'     => 'يا إما اليوزر دا ما كتبش االايميل بتاعه صح ، أو  انه طلب ما يستلمش ايميلات من اليوزرز التانيين.',
-'email-legend'    => 'ابعت إيميل ليوزر {{SITENAME}} تانى',
-'emailfrom'       => 'من:',
-'emailto'         => 'لـ:',
-'emailsubject'    => 'الموضوع:',
-'emailmessage'    => 'الرساله:',
-'emailsend'       => 'إبعت',
-'emailccme'       => 'ابعتلى نسخة من الايميل اللى بعته.',
-'emailccsubject'  => 'نسخة من رسالتك ل $1: $2',
-'emailsent'       => 'الإيميل اتبعت',
-'emailsenttext'   => 'الايميل بتاعك اتبعت خلاص.',
-'emailuserfooter' => 'الايميل دا بعته $1 لـ $2 عن طريق خاصية "مراسلة اليوزر" فى {{SITENAME}}.',
+'usermailererror'  => 'البريد رجع غلط:',
+'defemailsubject'  => 'إيميل من {{SITENAME}}',
+'noemailtitle'     => 'مافيش  عنوان ايميل',
+'noemailtext'      => 'اليوزر دا ما كتبش االايميل بتاعه صح .',
+'nowikiemailtitle' => 'الايميلات مش مسموح بيها',
+'nowikiemailtext'  => 'اليوزر دا اختار انه ما يستقبلش ايميلات من اليوزرز التانيين.',
+'email-legend'     => 'ابعت إيميل ليوزر {{SITENAME}} تانى',
+'emailfrom'        => 'من:',
+'emailto'          => 'لـ:',
+'emailsubject'     => 'الموضوع:',
+'emailmessage'     => 'الرساله:',
+'emailsend'        => 'إبعت',
+'emailccme'        => 'ابعتلى نسخة من الايميل اللى بعته.',
+'emailccsubject'   => 'نسخة من رسالتك ل $1: $2',
+'emailsent'        => 'الإيميل اتبعت',
+'emailsenttext'    => 'الايميل بتاعك اتبعت خلاص.',
+'emailuserfooter'  => 'الايميل دا بعته $1 لـ $2 عن طريق خاصية "مراسلة اليوزر" فى {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'لستة الصفحات اللى باراقبها',
@@ -1988,7 +1995,7 @@ $NEWPAGE
 من فضلك  اتأكد انك عايز المسح وبأنك فاهم نتايج  العمليه  دى. عمليات الحذف لازم تتم بناء على [[{{MediaWiki:Policy-url}}|القواعد المتفق عليها]].',
 'actioncomplete'         => 'العمليه خلصت',
 'deletedtext'            => '"<nowiki>$1</nowiki>" اتمسحت.
-بص على $2 لسجل آخر عمليات المسح.',
+بص على $2 علشان تشوف سجل آخر عمليات المسح.',
 'deletedarticle'         => 'اتمسحت "[[$1]]"',
 'suppressedarticle'      => 'خببى "[[$1]]"',
 'dellogpage'             => 'سجل المسح',
@@ -2065,11 +2072,11 @@ $NEWPAGE
 'protect-existing-expiry'     => 'تاريخ الانتهاء الموجود: $3، $2',
 'protect-otherreason'         => 'سبب آخر/إضافى:',
 'protect-otherreason-op'      => 'سبب آخر/إضافى',
-'protect-dropdown'            => '*أسباب الحماية الشائعة
+'protect-dropdown'            => '*أسباب الحماية الشايعة
 ** تخريب شديد
 ** سبام شديد
-** حرب تحرير معرقلة للعمل المنتج
-** صفحة زوارها كثيرون',
+** حرب تحرير بتعطل العمل المنتج
+** صفحة زوارها كتير',
 'protect-edit-reasonlist'     => 'عدل أسباب الحماية',
 'protect-expiry-options'      => '1 ساعة:1 hour,1 يوم:1 day,1 أسبوع:1 week,2 أسبوع:2 weeks,1 شهر:1 month,3 شهر:3 months,6 شهر:6 months,1 سنة:1 year,لا نهائى:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'سماح:',
@@ -2343,7 +2350,9 @@ $1 ممنوع فعلا. عايز تغير الإعدادات؟',
 'move-watch'                   => 'راقب الصفحه دى',
 'movepagebtn'                  => 'نقل الصفحه',
 'pagemovedsub'                 => 'تم  النقل بنجاح',
-'movepage-moved'               => '<big>\'\'\'"$1" اتنقلت ل"$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>\'\'\'"$1" خلاص اتنقلت لـ "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'في تحويله اتعملت.',
+'movepage-moved-noredirect'    => 'التحويله ما اتعملتش.',
 'articleexists'                => 'يا اما فيه صفحه  بالاسم ده، او ان الاسم اللى  تم اختياره مش صالح.
 لو سمحت اختار اسم تانى.',
 'cantmove-titleprotected'      => 'ما ينفعش تنقل صفحة للمكان دا،لأن العنوان الجديد محمى ضد الانشاء',
@@ -2497,7 +2506,7 @@ $1 ممنوع فعلا. عايز تغير الإعدادات؟',
 'tooltip-p-logo'                  => 'الصفحه الرئيسيه',
 'tooltip-n-mainpage'              => 'زور الصفحه الرئيسيه',
 'tooltip-n-portal'                => 'عن المشروع، ممكن تعمل ايه، و فين تلاقى اللى بتدور عليه',
-'tooltip-n-currentevents'         => 'مطالعه سريعه لاهم الاحداث دلوقتى',
+'tooltip-n-currentevents'         => 'مطالعه سريعه لاهم الاخبار دلوقتى',
 'tooltip-n-recentchanges'         => 'لسته بالتعديلات الجديده فى الويكى',
 'tooltip-n-randompage'            => 'حمل صفحة عشوائيه',
 'tooltip-n-help'                  => 'لو محتاج مساعده بص هنا',
@@ -2987,8 +2996,8 @@ $1',
 دوس على زرار التفعيل اللى تحت علشان يتبعتلك ايميل التأكيد.
 الايميل ح يكون فيه لينك فيها كود تفعيل؛
 دوس على اللينك  علشان نتأكد إن ايميلك صحيح.',
-'confirmemail_pending'     => '<div class="error">كود التأكيد خلاص اتبعت للأيميل بتاعك;
-لو كنت لسة فاتح حسابك من شوية صغيرة، لو سمحت تستنى دقيقتين تلاتة قبل ما تطلب كود تاني.</div>',
+'confirmemail_pending'     => 'كود التأكيد خلاص اتبعت للأيميل بتاعك;
+لو كنت لسة فاتح حسابك من شوية صغيرة، لو سمحت تستنى دقيقتين تلاتة قبل ما تطلب كود تاني.',
 'confirmemail_send'        => 'ابعت كود التأكيد',
 'confirmemail_sent'        => 'إيميل التأكيد خلاص اتبعت.',
 'confirmemail_oncreate'    => 'كود التأكيد اتبعت للأيميل بتاعك.

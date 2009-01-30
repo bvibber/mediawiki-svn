@@ -53,7 +53,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Praćene_stranice' ),
 	'Recentchanges'             => array( 'Nedavne_promjene' ),
 	'Upload'                    => array( 'Postavi_datoteku' ),
-	'Imagelist'                 => array( 'Slike' ),
+	'Listfiles'                 => array( 'Slike' ),
 	'Newimages'                 => array( 'Nove_slike' ),
 	'Listusers'                 => array( 'Suradnici', 'Popis_suradnika' ),
 	'Listgrouprights'           => array( 'Suradničke_skupine' ),
@@ -295,6 +295,7 @@ $messages = array(
 'tog-highlightbroken'         => 'Istakni prazne poveznice <a href="" class="new">ovako</a> (inače, ovako<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Poravnaj odlomke i zdesna',
 'tog-hideminor'               => 'Sakrij manje izmjene na stranici Nedavnih promjena',
+'tog-hidepatrolled'           => 'Sakrij pregledane izmjene u nedavnim promjenama',
 'tog-extendwatchlist'         => 'Proširi popis praćenih stranica tako da prikaže sve odgovarajuće promjene',
 'tog-usenewrc'                => 'Poboljšan izgled Nedavnih promjena (nije za sve preglednike)',
 'tog-numberheadings'          => 'Automatski označi naslove brojevima',
@@ -329,6 +330,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Sakrij manje promjene s popisa praćenja',
 'tog-watchlisthideliu'        => 'Sakrij uređivanja prijavljenih s popisa praćenja',
 'tog-watchlisthideanons'      => 'Sakrij uređivanja neprijavljenih s popisa praćenja',
+'tog-watchlisthidepatrolled'  => 'Sakrij pregledane izmjene u popisu praćenja',
 'tog-nolangconversion'        => 'Isključi pretvaranje pisma (latinica-ćirilica, kineske varijante itd.) ako to wiki podržava',
 'tog-ccmeonemails'            => 'Pošalji mi kopiju e-maila kojeg pošaljem drugim suradnicima',
 'tog-diffonly'                => 'Ne prikazuj sadržaj stranice prilikom usporedbe inačica',
@@ -701,10 +703,10 @@ Možete omogućiti drugima da vas kontaktiraju na suradničkoj stranici ili stra
 'passwordtooshort'           => 'Vaša je lozinka nevaljana ili prekratka. Lozinka mora sadržavati najmanje {{PLURAL:$1|1 znak|$1 znakova}} i mora biti različita od imena.',
 'mailmypassword'             => 'Pošalji mi novu lozinku',
 'passwordremindertitle'      => '{{SITENAME}}: nova lozinka.',
-'passwordremindertext'       => 'Netko je (vjerojatno vi, s IP adrese $1)
-zatražio da vam pošaljemo novu lozinku za projekt {{SITENAME}} ($4).
+'passwordremindertext'       => 'Netko je (vjerojatno vi, s IP adrese $1) zatražio novu lozinku za projekt {{SITENAME}} ($4).
 Privremena lozinka za suradnika "$2" je postavljena na "$3".
-Molimo vas da se odmah prijavite i promijenite lozinku.
+Ukoliko ste to vi učinili, molimo vas da se prijavite i promijenite lozinku.
+Privremena lozinka vrijedi još {{PLURAL:$5|$5 dan|$5 dana}}.
 
 Ukoliko niste zatražili novu lozinku, ili ste se sjetili stare lozinke i
 više ju ne želite promijeniti, slobodno zanemarite ovu poruku i nastavite
@@ -1227,6 +1229,7 @@ Primijetite da uporaba navigacijskih poveznica resetira vaše izbore u koloni.',
 'prefs-resetpass'           => 'Promijeni lozinku',
 'saveprefs'                 => 'Spremi',
 'resetprefs'                => 'Vrati na prvotne postavke',
+'restoreprefs'              => "Vrati sve postavke na pretpostavljeno stanje - ''default''",
 'textboxsize'               => 'Širina okvira za uređivanje',
 'prefs-edit-boxsize'        => 'Veličina prozora za uređivanje.',
 'rows'                      => 'Redova',
@@ -1349,7 +1352,7 @@ Primijetite da uporaba navigacijskih poveznica resetira vaše izbore u koloni.',
 'right-patrol'               => 'Označavanje izmjena pregledanim',
 'right-autopatrol'           => 'Izmjene su automatski označene kao pregledane',
 'right-patrolmarks'          => 'Vidljive oznake pregledavanja u nedavnim promjenama',
-'right-unwatchedpages'       => 'Vidljiv popis negledanih stranica',
+'right-unwatchedpages'       => 'Vidljiv popis nepraćenih stranica',
 'right-trackback'            => 'Podnijeti trackback',
 'right-mergehistory'         => 'Spajanje povijesti stranica',
 'right-userrights'           => 'Uređivanje svih suradničkih prava',
@@ -1538,18 +1541,19 @@ Ukoliko se problem ponovi, javite to [[Special:ListUsers/sysop|administratoru]].
 'upload_source_url'  => ' (valjani, javno dostupni URL)',
 'upload_source_file' => ' (datoteka na vašem računalu)',
 
-# Special:FileList
-'imagelist-summary'     => 'Ova posebna stranica pokazuje sve postavljene datoteke.
+# Special:ListFiles
+'listfiles-summary'     => 'Ova posebna stranica pokazuje sve postavljene datoteke.
 Na vrhu popisa se nalaze najnovije postavljene datoteke.
 Poredak datoteka mijenja se pritiskom na naslov stupca.',
-'imagelist_search_for'  => 'Traži ime slike:',
+'listfiles_search_for'  => 'Traži ime slike:',
 'imgfile'               => 'datoteka',
-'imagelist'             => 'Popis slika',
-'imagelist_date'        => 'Datum',
-'imagelist_name'        => 'Naziv slike',
-'imagelist_user'        => 'Suradnik',
-'imagelist_size'        => 'Veličina (u bajtovima)',
-'imagelist_description' => 'Opis',
+'listfiles'             => 'Popis slika',
+'listfiles_date'        => 'Datum',
+'listfiles_name'        => 'Naziv slike',
+'listfiles_user'        => 'Suradnik',
+'listfiles_size'        => 'Veličina (u bajtovima)',
+'listfiles_description' => 'Opis',
+'listfiles_count'       => 'Inačice',
 
 # File description page
 'filehist'                       => 'Povijest datoteke',
@@ -1624,7 +1628,7 @@ A [[Special:WhatLinksHere/$2|Ovdje se nalazi]] kompletan popis.',
 'download'           => 'skidanje',
 
 # Unwatched pages
-'unwatchedpages' => 'Nenadgledane stranice',
+'unwatchedpages' => 'Nepraćene stranice',
 
 # List redirects
 'listredirects' => 'Popis preusmjeravanja',
@@ -1789,7 +1793,8 @@ Možete suziti prikaz odabirući tip evidencije, suradničko ime ili stranicu u 
 'special-categories-sort-abc'   => 'abecedno razvrstavanje',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Obrisani suradnički doprinosi',
+'deletedcontributions'       => 'Obrisani suradnički doprinosi',
+'deletedcontributions-title' => 'Obrisani suradnički doprinosi',
 
 # Special:LinkSearch
 'linksearch'       => 'Pretraživanje vanjskih poveznica',
@@ -1827,29 +1832,31 @@ Dodatne informacije o pojedinim pravim se mogu pronaći [[{{MediaWiki:Listgroupr
 'listgrouprights-removegroup-all' => 'Moguće ukloniti sve skupine',
 
 # E-mail user
-'mailnologin'     => 'Nema adrese pošiljaoca',
-'mailnologintext' => 'Morate biti [[Special:UserLogin|prijavljeni]]
+'mailnologin'      => 'Nema adrese pošiljaoca',
+'mailnologintext'  => 'Morate biti [[Special:UserLogin|prijavljeni]]
 i imati valjanu adresu e-pošte u svojim [[Special:Preferences|postavkama]]
 da bi mogli slati poštu drugim suradnicima.',
-'emailuser'       => 'Pošalji e-poštu ovom suradniku',
-'emailpage'       => 'Pošalji e-poštu suradniku',
-'emailpagetext'   => 'Možete koristiti ovaj obrazac za poslati elektroničku poštu ovom suradniku.
+'emailuser'        => 'Pošalji e-poštu ovom suradniku',
+'emailpage'        => 'Pošalji e-poštu suradniku',
+'emailpagetext'    => 'Možete koristiti ovaj obrazac za poslati elektroničku poštu ovom suradniku.
 E-mail adresa iz vaših [[Special:Preferences|postavki]] nalazit će se u "From" polju poruke i primatelj će vam moći odgovoriti.',
-'usermailererror' => 'Sustav pošte javio je pogrešku:',
-'defemailsubject' => '{{SITENAME}} elektronička pošta (e-mail)',
-'noemailtitle'    => 'Nema adrese primaoca',
-'noemailtext'     => 'Ovaj suradnik nije unio valjanu e-mail adresu ili se odlučio na neće primati poštu od drugih suradnika.',
-'email-legend'    => 'Pošalji elektroničku poštu drugom {{SITENAME}} suradniku',
-'emailfrom'       => 'Od:',
-'emailto'         => 'Za:',
-'emailsubject'    => 'Tema:',
-'emailmessage'    => 'Poruka:',
-'emailsend'       => 'Pošalji',
-'emailccme'       => 'Pošalji mi e-mailom kopiju moje poruke.',
-'emailccsubject'  => 'Kopija vaše poruke suradniku $1: $2',
-'emailsent'       => 'E-mail poslan',
-'emailsenttext'   => 'Vaša poruka je poslana.',
-'emailuserfooter' => 'Ovaj e-mail je poslan od $1 za $2 korištenjem "elektroničke pošte" s projekta {{SITENAME}}.',
+'usermailererror'  => 'Sustav pošte javio je pogrešku:',
+'defemailsubject'  => '{{SITENAME}} elektronička pošta (e-mail)',
+'noemailtitle'     => 'Nema adrese primaoca',
+'noemailtext'      => 'Ovaj suradnik nije odredio valjanu e-mail adresu.',
+'nowikiemailtitle' => 'E-mail nije dozvoljen',
+'nowikiemailtext'  => 'Ovaj suradnik je odlučio ne primati e-mail od drugih suradnika.',
+'email-legend'     => 'Pošalji elektroničku poštu drugom {{SITENAME}} suradniku',
+'emailfrom'        => 'Od:',
+'emailto'          => 'Za:',
+'emailsubject'     => 'Tema:',
+'emailmessage'     => 'Poruka:',
+'emailsend'        => 'Pošalji',
+'emailccme'        => 'Pošalji mi e-mailom kopiju moje poruke.',
+'emailccsubject'   => 'Kopija vaše poruke suradniku $1: $2',
+'emailsent'        => 'E-mail poslan',
+'emailsenttext'    => 'Vaša poruka je poslana.',
+'emailuserfooter'  => 'Ovaj e-mail je poslan od $1 za $2 korištenjem "elektroničke pošte" s projekta {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Moj popis praćenja',
@@ -2195,7 +2202,7 @@ Pogledaj [[Special:IPBlockList|popis blokiranih IP adresa]] za pregled.',
 'ipblocklist-no-results'          => 'Tražena IP adresa ili suradničko ime nije blokirano.',
 'blocklink'                       => 'blokiraj',
 'unblocklink'                     => 'deblokiraj',
-'change-blocklink'                => 'promijeni blok',
+'change-blocklink'                => 'promijeni blokiranje',
 'contribslink'                    => 'doprinosi',
 'autoblocker'                     => 'Automatski ste blokirani jer je vašu IP adresu nedavno koristio "[[User:$1|$1]]" koji je blokiran zbog: "$2".',
 'blocklogpage'                    => 'Evidencija blokiranja',
@@ -2279,12 +2286,9 @@ ako to želite.",
 'move-watch'                   => 'Prati ovu stranicu',
 'movepagebtn'                  => 'Premjesti stranicu',
 'pagemovedsub'                 => 'Premještanje uspjelo',
-'movepage-moved'               => '<big>\'\'\'"$1" je premješteno na "$2"\'\'\'</big>
-
-Napravljeno je preusmjeravanje.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'movepage-moved-noredirect'    => '<big>\'\'\'"$1" je premješteno na "$2"\'\'\'</big>
-
-Stvaranje preusmjeravanja je izostavljeno.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>\'\'\'"$1" je premješteno na "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'Napravljeno je preusmjeravanje.',
+'movepage-moved-noredirect'    => 'Stvaranje preusmjeravanja je izostavljeno.',
 'articleexists'                => 'Stranica pod tim imenom već postoji ili ime koje ste odabrali nije u skladu s pravilima.
 Molimo odaberite drugo ime.',
 'cantmove-titleprotected'      => 'Ne možete premjestiti ovu stranicu na ovo mjesto, jer je novi naslov zaštićen od kreiranja',
@@ -2886,9 +2890,7 @@ Svaka sljedeća poveznica u istom retku je izuzetak, npr. kod stranica gdje se s
 'confirmemail_text'        => 'U ovom wikiju morate prije korištenja e-mail naredbi verificirati svoju e-mail adresu. Kliknite na dugme ispod kako biste
 poslali poruku s potvrdom na vašu adresu. U poruci će biti poveznica koju morate otvoriti u
 svom web pregledniku da biste verificirali adresu.',
-'confirmemail_pending'     => '<div class="error">
-Već vam je e-mailom poslan potvrdni kôd; ako ste upravo otvorili suradnički račun, molimo pričekajte još nekoliko minuta na e-mailu, prije nego što postavite zahtjev za novi kôd.
-</div>',
+'confirmemail_pending'     => 'Već vam je e-mailom poslan potvrdni kôd; ako ste upravo otvorili suradnički račun, molimo pričekajte još nekoliko minuta na e-mailu, prije nego što postavite zahtjev za novi kôd.',
 'confirmemail_send'        => 'Pošalji kôd za potvrdu e-mail adrese',
 'confirmemail_sent'        => 'Poruka s potvrdom je poslana.',
 'confirmemail_oncreate'    => 'Potvrdni kôd poslan je na vašu elektroničku adresu.

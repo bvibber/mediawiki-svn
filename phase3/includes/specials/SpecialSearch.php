@@ -41,7 +41,7 @@ function wfSpecialSearch( $par = '' ) {
 		|| !is_null( $wgRequest->getVal( 'offset' )) 
 		|| !is_null( $wgRequest->getVal( 'searchx' )) )
 	{
-		$searchPage->showResults( $search, 'search' );
+		$searchPage->showResults( $search );
 	} else {
 		$searchPage->goResult( $search );
 	}
@@ -113,8 +113,10 @@ class SpecialSearch {
 	 * @param string $term
 	 */
 	public function showResults( $term ) {
-		global $wgOut, $wgDisableTextSearch, $wgContLang;
+		global $wgOut, $wgUser, $wgDisableTextSearch, $wgContLang;
 		wfProfileIn( __METHOD__ );
+		
+		$sk = $wgUser->getSkin();
 		
 		$this->searchEngine = SearchEngine::create();
 		$search =& $this->searchEngine;
@@ -166,8 +168,9 @@ class SpecialSearch {
 				array( 'search' => $textMatches->getSuggestionQuery(), 'fulltext' 	=> wfMsg('search') ),
 				$this->powerSearchOptions()
 			);
-			$suggestLink = '<a href="'.$st->escapeLocalURL($stParams).'">'.
-				$textMatches->getSuggestionSnippet().'</a>';
+			$suggestLink = $sk->makeKnownLinkObj( $st,
+				$textMatches->getSuggestionSnippet(),
+				$stParams );
 
 			$this->didYouMeanHtml = '<div class="searchdidyoumean">'.wfMsg('search-suggest',$suggestLink).'</div>';
 		}
@@ -384,7 +387,7 @@ class SpecialSearch {
 	 * @param array $terms terms to highlight
 	 */
 	protected function showHit( $result, $terms ) {
-		global $wgContLang, $wgLang;
+		global $wgContLang, $wgLang, $wgUser;
 		wfProfileIn( __METHOD__ );
 
 		if( $result->isBrokenTitle() ) {
@@ -392,6 +395,7 @@ class SpecialSearch {
 			return "<!-- Broken link in search result -->\n";
 		}
 
+		$sk = $wgUser->getSkin();
 		$t = $result->getTitle();
 
 		$link = $this->sk->makeKnownLinkObj( $t, $result->getTitleSnippet($terms));
@@ -457,8 +461,8 @@ class SpecialSearch {
 				array('search'    => wfMsgForContent('searchrelated').':'.$t->getPrefixedText(),
 				      'fulltext'  => wfMsg('search') ));
 			
-			$related = ' -- <a href="'.$st->escapeLocalURL($stParams).'">'. 
-				wfMsg('search-relatedarticle').'</a>';
+			$related = ' -- ' . $sk->makeKnownLinkObj( $st,
+				wfMsg('search-relatedarticle'), $stParams );
 		}
 
 		// Include a thumbnail for media files...
@@ -902,21 +906,21 @@ class SpecialSearchOld {
 			}
 		}
 
-		$wgOut->wrapWikiMsg( "==$1==\n", 'notitlematches' );
+		$extra = $wgOut->parse( '=='.wfMsgNoTrans( 'notitlematches' )."==\n" );
 		if( $t->quickUserCan( 'create' ) && $t->quickUserCan( 'edit' ) ) {
-			$wgOut->addWikiMsg( 'noexactmatch', wfEscapeWikiText( $term ) );
+			$extra .= wfMsgExt( 'noexactmatch', 'parse', wfEscapeWikiText( $term ) );
 		} else {
-			$wgOut->addWikiMsg( 'noexactmatch-nocreate', wfEscapeWikiText( $term ) );
+			$extra .= wfMsgExt( 'noexactmatch-nocreate', 'parse', wfEscapeWikiText( $term ) );
 		}
 
-		return $this->showResults( $term );
+		$this->showResults( $term, $extra );
 	}
 
 	/**
 	 * @param string $term
-	 * @public
+	 * @param string $extra Extra HTML to add after "did you mean"
 	 */
-	function showResults( $term ) {
+	public function showResults( $term, $extra = '' ) {
 		wfProfileIn( __METHOD__ );
 		global $wgOut, $wgUser;
 		$sk = $wgUser->getSkin();
@@ -942,11 +946,14 @@ class SpecialSearchOld {
 					'fulltext' 	=> wfMsg('search')),
 					$this->powerSearchOptions());
 					
-			$suggestLink = '<a href="'.$st->escapeLocalURL($stParams).'">'.
-					$textMatches->getSuggestionSnippet().'</a>';
+			$suggestLink = $sk->makeKnownLinkObj( $st,
+				$textMatches->getSuggestionSnippet(),
+				$stParams );
 			 		
 			$wgOut->addHTML('<div class="searchdidyoumean">'.wfMsg('search-suggest',$suggestLink).'</div>');
 		}
+
+		$wgOut->addHTML( $extra );
 
 		$wgOut->addWikiMsg( 'searchresulttext' );
 
@@ -1233,8 +1240,8 @@ class SpecialSearchOld {
 				array('search'    => wfMsgForContent('searchrelated').':'.$t->getPrefixedText(),
 				      'fulltext'  => wfMsg('search') ));
 			
-			$related = ' -- <a href="'.$st->escapeLocalURL($stParams).'">'. 
-				wfMsg('search-relatedarticle').'</a>';
+			$related = ' -- ' . $sk->makeKnownLinkObj( $st,
+				wfMsg('search-relatedarticle'), $stParams );
 		}
 				
 		// Include a thumbnail for media files...

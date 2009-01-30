@@ -1252,18 +1252,18 @@ Mbok-menawa panjenengan bisa nyoba manèh ing wektu sing luwih longgar.',
 'upload_source_url'  => ' (sawijining URL absah sing bisa diaksès publik)',
 'upload_source_file' => ' (sawijining berkas ing komputeré panjenengan)',
 
-# Special:FileList
-'imagelist-summary'     => 'Kaca astaméwa utawa kusus iki nuduhaké kabèh berkas sing wis diunggahaké.
+# Special:ListFiles
+'listfiles-summary'     => 'Kaca astaméwa utawa kusus iki nuduhaké kabèh berkas sing wis diunggahaké.
 Sacara baku, berkas pungkasan sing diunggahaké dituduhaké ing urutan dhuwur dhéwé.
 Klik sirahé kolom kanggo ngowahi urutan.',
-'imagelist_search_for'  => 'Golèk jeneng gambar:',
+'listfiles_search_for'  => 'Golèk jeneng gambar:',
 'imgfile'               => 'gambar',
-'imagelist'             => 'Daftar gambar',
-'imagelist_date'        => 'Tanggal',
-'imagelist_name'        => 'Jeneng',
-'imagelist_user'        => 'Panganggo',
-'imagelist_size'        => 'Ukuran (bita)',
-'imagelist_description' => 'Dèskripsi',
+'listfiles'             => 'Daftar gambar',
+'listfiles_date'        => 'Tanggal',
+'listfiles_name'        => 'Jeneng',
+'listfiles_user'        => 'Panganggo',
+'listfiles_size'        => 'Ukuran (bita)',
+'listfiles_description' => 'Dèskripsi',
 
 # File description page
 'filehist'                       => 'Sajarah berkas',
@@ -1500,7 +1500,8 @@ Deleng uga [[Special:WantedCategories|kategori-kategori sing diperlokaké]].',
 'special-categories-sort-abc'   => 'urutna miturut abjad',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'Kontribusi panganggo sing dibusak',
+'deletedcontributions'       => 'Kontribusi panganggo sing dibusak',
+'deletedcontributions-title' => 'Kontribusi panganggo sing dibusak',
 
 # Special:LinkSearch
 'linksearch'       => 'Golèk pranala jaba',
@@ -2551,8 +2552,8 @@ Pranala-pranala sabanjuré ing baris sing padha dianggep minangka ''pengecualian
 'confirmemail_text'        => '{{SITENAME}} ngwajibaké panjenengan ndhedhes utawa konfirmasi alamat e-mail panjenengan sadurungé bisa nganggo fitur-fitur e-mail.
 Pencèten tombol ing ngisor iki kanggo ngirim sawijining kode konfirmasi arupa sawijining pranala;
 Tuladen pranala iki ing panjlajah wèb panjenengan kanggo ndhedhes yèn alamat e-mail panjenengan pancèn bener.',
-'confirmemail_pending'     => '<div class="error">Sawijining kode konfirmasi wis dikirim menyang alamat e-mail panjenengan;
-yèn panjenengan lagi waé nggawé akun utawa rékening panjenengan, mangga nunggu sawetara menit nganti layang iku tekan sadurungé nyuwun kode anyar manèh.</div>',
+'confirmemail_pending'     => 'Sawijining kode konfirmasi wis dikirim menyang alamat e-mail panjenengan;
+yèn panjenengan lagi waé nggawé akun utawa rékening panjenengan, mangga nunggu sawetara menit nganti layang iku tekan sadurungé nyuwun kode anyar manèh.',
 'confirmemail_send'        => 'Kirim kode konfirmasi',
 'confirmemail_sent'        => 'E-mail mawa kode konfirmasi wis dikirim.',
 'confirmemail_oncreate'    => 'Sawijining kode pandhedhesan (konfirmasi) wis dikirim menyang alamat e-mail panjenengan.

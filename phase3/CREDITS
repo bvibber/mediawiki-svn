@@ -1,4 +1,4 @@
-MediaWiki 1.14 is a collaborative project released under the
+MediaWiki 1.15 is a collaborative project released under the
 GNU General Public License v2. We would like to recognize the
 following names for their contribution to the product.
 
@@ -57,12 +57,14 @@ following names for their contribution to the product.
 == Patch Contributors ==
 * Agbad
 * Brad Jorsch
+* Brent G
 * Daniel Arnold
 * Danny B.
 * FunPika
 * Happy-melon
 * Jeremy Baron
 * Juliano F. Ravasi
+* Lucas Garczewski
 * Louperivois
 * Marooned
 * Max Semenik

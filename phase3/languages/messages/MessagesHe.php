@@ -144,6 +144,7 @@ $magicWords = array(
 	'servername'            => array( 0,    'שם השרת',                              'SERVERNAME'             ),
 	'scriptpath'            => array( 0,    'נתיב הקבצים',                          'SCRIPTPATH'             ),
 	'grammar'               => array( 0,    'דקדוק:',                               'GRAMMAR:'               ),
+	'gender'                => array( 0,    'מגדר:',                                  'GENDER:'                ),
 	'notitleconvert'        => array( 0,    '__ללא_המרת_כותרת__',                  '__NOTITLECONVERT__', '__NOTC__'),
 	'nocontentconvert'      => array( 0,    '__ללא_המרת_תוכן__',                   '__NOCONTENTCONVERT__', '__NOCC__'),
 	'currentweek'           => array( 1,    'שבוע נוכחי',                           'CURRENTWEEK'            ),
@@ -191,6 +192,7 @@ $magicWords = array(
 	'noindex'               => array( 1,    '__לא_לחיפוש__',                      '__NOINDEX__'            ),
 	'numberingroup'         => array( 1,    'מספר בקבוצה',                        'NUMBERINGROUP', 'NUMINGROUP' ),
 	'staticredirect'        => array( 1,    '__הפניה_קבועה__',                     '__STATICREDIRECT__'     ),
+	'protectionlevel'       => array( 1,    'רמת הגנה',                           'PROTECTIONLEVEL'        ),
 );
 
 $specialPageAliases = array(
@@ -280,6 +282,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'דף_ריק' ),
 	'LinkSearch'                => array( 'חיפוש_קישורים_חיצוניים' ),
 	'DeletedContributions'      => array( 'תרומות_מחוקות' ),
+	'Tags'                      => array( 'תגיות' ),
 );
 
 $namespaceNames = array(
@@ -313,6 +316,8 @@ $messages = array(
 'tog-highlightbroken'         => 'סימון קישורים לדפים שלא נכתבו <a href="" class="new">כך</a> (או: כך<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'יישור פסקאות',
 'tog-hideminor'               => 'הסתרת שינויים משניים ברשימת השינויים האחרונים',
+'tog-hidepatrolled'           => 'הסתרת שינויים בדוקים ברשימת השינויים האחרונים',
+'tog-newpageshidepatrolled'   => 'הסתרת דפים בדוקים ברשימת הדפים החדשים',
 'tog-extendwatchlist'         => 'הרחבת רשימת המעקב כך שתציג את כל השינויים המתאימים (אחרת: את השינוי האחרון בכל דף בלבד)',
 'tog-usenewrc'                => 'רשימת שינויים אחרונים משופרת (JavaScript)',
 'tog-numberheadings'          => 'מספור כותרות אוטומטי',
@@ -345,8 +350,9 @@ $messages = array(
 'tog-watchlisthideown'        => 'הסתרת עריכות שלי ברשימת המעקב',
 'tog-watchlisthidebots'       => 'הסתרת בוטים ברשימת המעקב',
 'tog-watchlisthideminor'      => 'הסתרת עריכות משניות ברשימת המעקב',
-'tog-watchlisthideliu'        => 'הסתרת עריכות של משתמשים רשומים מרשימת המעקב',
-'tog-watchlisthideanons'      => 'הסתרת עריכות של משתמשים אנונימיים מרשימת המעקב',
+'tog-watchlisthideliu'        => 'הסתרת עריכות של משתמשים רשומים ברשימת המעקב',
+'tog-watchlisthideanons'      => 'הסתרת עריכות של משתמשים אנונימיים ברשימת המעקב',
+'tog-watchlisthidepatrolled'  => 'הסתרת עריכות בדוקות ברשימת המעקב',
 'tog-nolangconversion'        => 'ביטול המרת גרסאות שפה',
 'tog-ccmeonemails'            => 'קבלת העתקים של הודעות דוא"ל הנשלחות ממני למשתמשים אחרים',
 'tog-diffonly'                => 'ביטול הצגת תוכן הדף מתחת להשוואות הגרסאות',
@@ -729,6 +735,10 @@ $2',
 אנא בדקו את תגיות ה־HTML.',
 'badsiglength'               => 'החתימה ארוכה מדי.
 היא חייבת להיות קצרה מ־{{PLURAL:$1|תו אחד|$1 תווים}}.',
+'yourgender'                 => 'מין:',
+'gender-unknown'             => 'לא צוין',
+'gender-male'                => 'זכר',
+'gender-female'              => 'נקבה',
 'email'                      => 'דוא"ל',
 'prefs-help-realname'        => 'השם האמיתי הוא אופציונאלי.
 אם תבחרו לספקו, הוא ישמש לייחוס עבודתכם אליכם.',
@@ -753,6 +763,7 @@ $2',
 'passwordremindertext'       => 'מישהו (ככל הנראה אתם, מכתובת ה־IP מספר $1) ביקש סיסמה
 חדשה לכניסה לחשבון ב{{grammar:תחילית|{{SITENAME}}}} ($4). נוצרה סיסמה זמנית למשתמש "$2",
 וסיסמה זו היא "$3". אם זו הייתה כוונתכם, תוכלו כעת להיכנס לחשבון ולבחור סיסמה חדשה.
+הסיסמה הזמנית שלכם תפקע תוך {{PLURAL:$5|יום אחד|$5 ימים|יומיים}}.
 
 עליכם להיכנס לאתר ולשנות את סיסמתכם בהקדם האפשרי. אם מישהו אחר ביקש סיסמה חדשה זו או אם נזכרתם בסיסמתכם
 ואינכם רוצים עוד לשנות אותה, באפשרותכם להתעלם מהודעה זו ולהמשיך להשתמש בסיסמתכם הישנה.',
@@ -1014,51 +1025,57 @@ $2',
 נסו [[Special:Search|לחפש]] אחר דפים רלוונטיים חדשים.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(תקציר העריכה הוסתר)',
-'rev-deleted-user'            => '(שם המשתמש הוסתר)',
-'rev-deleted-event'           => '(פעולת היומן הוסתרה)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
+'rev-deleted-comment'            => '(תקציר העריכה הוסתר)',
+'rev-deleted-user'               => '(שם המשתמש הוסתר)',
+'rev-deleted-event'              => '(פעולת היומן הוסתרה)',
+'rev-deleted-text-permission'    => '<div class="mw-warning plainlinks">
 גרסת הדף הזו הוסרה מהארכיונים הציבוריים. ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].
 </div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
+'rev-deleted-text-view'          => '<div class="mw-warning plainlinks">
 גרסת הדף הזו הוסרה מהארכיונים הציבוריים. כמפעיל מערכת, באפשרותך לצפות בגרסה; ייתכן שישנם פרטים נוספים על כך ב[{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} יומן המחיקות].
 </div>',
-'rev-delundel'                => 'הצגה/הסתרה',
-'revisiondelete'              => 'מחיקת ושחזור גרסאות',
-'revdelete-nooldid-title'     => 'גרסת מטרה בלתי תקינה',
-'revdelete-nooldid-text'      => 'הגרסה או הגרסאות עליהן תבוצע פעולה זו אינן תקינות. ייתכן שלא ציינתם אותן, ייתכן שהגרסה אינה קיימת, וייתכן שאתם מנסים להסתיר את הגרסה הנוכחית.',
-'revdelete-selected'          => "'''{{PLURAL:$2|הגרסה שנבחרה|הגרסאות שנבחרו}} של [[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|פעולת היומנים שנבחרה|פעולות היומנים שנבחרו}}:'''",
-'revdelete-text'              => "'''גרסאות ופעולות יומנים שנמחקו עדיין יופיעו בהיסטוריית הדף ובדפי היומנים, אך חלקים מתוכנם שלהם לא יהיה זמין לציבור.'''
+'rev-delundel'                   => 'הצגה/הסתרה',
+'revisiondelete'                 => 'מחיקת ושחזור גרסאות',
+'revdelete-nooldid-title'        => 'גרסת מטרה בלתי תקינה',
+'revdelete-nooldid-text'         => 'הגרסה או הגרסאות עליהן תבוצע פעולה זו אינן תקינות. ייתכן שלא ציינתם אותן, ייתכן שהגרסה אינה קיימת, וייתכן שאתם מנסים להסתיר את הגרסה הנוכחית.',
+'revdelete-nologtype-title'      => 'לא נבחר סוג יומן',
+'revdelete-nologtype-text'       => 'לא ציינתם את סוג היומן שעליו תבוצע הפעולה.',
+'revdelete-toomanytargets-title' => 'מטרות רבות מדי',
+'revdelete-toomanytargets-text'  => 'ציינתם יותר מדי סוגים של מטרות שעליהן תבוצע הפעולה.',
+'revdelete-nologid-title'        => 'רישום יומן בלתי תקין',
+'revdelete-nologid-text'         => 'או שלא ציינתם את האירוע או האירועים ביומן שעליהם תבוצע הפעולה, או שרישום היומן שציינתם אינו קיים.',
+'revdelete-selected'             => "'''{{PLURAL:$2|הגרסה שנבחרה|הגרסאות שנבחרו}} של [[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|פעולת היומנים שנבחרה|פעולות היומנים שנבחרו}}:'''",
+'revdelete-text'                 => "'''גרסאות ופעולות יומנים שנמחקו עדיין יופיעו בהיסטוריית הדף ובדפי היומנים, אך חלקים מתוכנם שלהם לא יהיה זמין לציבור.'''
 
 מפעילי מערכת אחרים באתר עדיין יוכלו לגשת לתוכן הנסתר ויוכלו לשחזר אותו שוב דרך הממשק הזה, אלא אם כן מוגדרות הגבלות נוספות.",
-'revdelete-legend'            => 'הגדרת הגבלות התצוגה',
-'revdelete-hide-text'         => 'הסתרת תוכן הגרסה',
-'revdelete-hide-name'         => 'הסתרת הפעולה ודף היעד',
-'revdelete-hide-comment'      => 'הסתרת תקציר העריכה',
-'revdelete-hide-user'         => 'הסתרת שם המשתמש או כתובת ה־IP של העורך',
-'revdelete-hide-restricted'   => 'החלת הגבלות אלו גם על מפעילי מערכת ונעילת ממשק זה',
-'revdelete-suppress'          => 'הסתרת המידע גם ממפעילי המערכת',
-'revdelete-hide-image'        => 'הסתרת תוכן הקובץ',
-'revdelete-unsuppress'        => 'הסרת הגבלות בגרסאות המשוחזרות',
-'revdelete-log'               => 'הערה ביומן:',
-'revdelete-submit'            => 'ביצוע על הגרסה שנבחרה',
-'revdelete-logentry'          => 'שינה את הסתרת הגרסה של [[$1]]',
-'logdelete-logentry'          => 'שינה את הסתרת פעולת היומן של [[$1]]',
-'revdelete-success'           => "'''הסתרת הגרסה הושלמה בהצלחה.'''",
-'logdelete-success'           => "'''הסתרת פעולת היומן הושלמה בהצלחה.'''",
-'revdel-restore'              => 'שינוי ההצגה',
-'pagehist'                    => 'היסטוריית הדף',
-'deletedhist'                 => 'הגרסאות המחוקות',
-'revdelete-content'           => 'התוכן',
-'revdelete-summary'           => 'תקציר העריכה',
-'revdelete-uname'             => 'שם המשתמש',
-'revdelete-restricted'        => 'נוספו הגבלות למפעילי מערכת',
-'revdelete-unrestricted'      => 'הוסרו הגבלות ממפעילי מערכת',
-'revdelete-hid'               => 'הסתיר את $1',
-'revdelete-unhid'             => 'ביטל את הסתרת $1',
-'revdelete-log-message'       => '$1 עבור {{PLURAL:$2|גרסה אחת|$2 גרסאות}}',
-'logdelete-log-message'       => '$1 עבור {{PLURAL:$2|אירוע אחד|$2 אירועים}}',
+'revdelete-legend'               => 'הגדרת הגבלות התצוגה',
+'revdelete-hide-text'            => 'הסתרת תוכן הגרסה',
+'revdelete-hide-name'            => 'הסתרת הפעולה ודף היעד',
+'revdelete-hide-comment'         => 'הסתרת תקציר העריכה',
+'revdelete-hide-user'            => 'הסתרת שם המשתמש או כתובת ה־IP של העורך',
+'revdelete-hide-restricted'      => 'החלת הגבלות אלו גם על מפעילי מערכת ונעילת ממשק זה',
+'revdelete-suppress'             => 'הסתרת המידע גם ממפעילי המערכת',
+'revdelete-hide-image'           => 'הסתרת תוכן הקובץ',
+'revdelete-unsuppress'           => 'הסרת הגבלות בגרסאות המשוחזרות',
+'revdelete-log'                  => 'הערה ביומן:',
+'revdelete-submit'               => 'ביצוע על הגרסה שנבחרה',
+'revdelete-logentry'             => 'שינה את הסתרת הגרסה של [[$1]]',
+'logdelete-logentry'             => 'שינה את הסתרת פעולת היומן של [[$1]]',
+'revdelete-success'              => "'''הסתרת הגרסה הושלמה בהצלחה.'''",
+'logdelete-success'              => "'''הסתרת פעולת היומן הושלמה בהצלחה.'''",
+'revdel-restore'                 => 'שינוי ההצגה',
+'pagehist'                       => 'היסטוריית הדף',
+'deletedhist'                    => 'הגרסאות המחוקות',
+'revdelete-content'              => 'התוכן',
+'revdelete-summary'              => 'תקציר העריכה',
+'revdelete-uname'                => 'שם המשתמש',
+'revdelete-restricted'           => 'נוספו הגבלות למפעילי מערכת',
+'revdelete-unrestricted'         => 'הוסרו הגבלות ממפעילי מערכת',
+'revdelete-hid'                  => 'הסתיר את $1',
+'revdelete-unhid'                => 'ביטל את הסתרת $1',
+'revdelete-log-message'          => '$1 עבור {{PLURAL:$2|גרסה אחת|$2 גרסאות}}',
+'logdelete-log-message'          => '$1 עבור {{PLURAL:$2|אירוע אחד|$2 אירועים}}',
 
 # Suppression log
 'suppressionlog'     => 'יומן הסתרות',
@@ -1259,6 +1276,7 @@ $2',
 'prefs-resetpass'           => 'שינוי סיסמה',
 'saveprefs'                 => 'שמירת העדפות',
 'resetprefs'                => 'מחיקת שינויים שלא נשמרו',
+'restoreprefs'              => 'חזרה להגדרות ברירת המחדל',
 'textboxsize'               => 'עריכה',
 'prefs-edit-boxsize'        => 'גודל חלון העריכה.',
 'rows'                      => 'שורות:',
@@ -1287,6 +1305,8 @@ $2',
 'defaultns'                 => 'מרחבי שם לחיפוש כברירת מחדל:',
 'default'                   => 'ברירת מחדל',
 'files'                     => 'קבצים',
+'prefs-custom-css'          => 'קובץ CSS מותאם אישית',
+'prefs-custom-js'           => 'קובץ JS מותאם אישית',
 
 # User rights
 'userrights'                  => 'ניהול הרשאות משתמש', # Not used as normal message but as header for the special page itself
@@ -1498,6 +1518,7 @@ $2',
 'filename'                    => 'שם הקובץ',
 'filedesc'                    => 'תקציר',
 'fileuploadsummary'           => 'תיאור:',
+'filereuploadsummary'         => 'השינויים בקובץ:',
 'filestatus'                  => 'מעמד זכויות יוצרים:',
 'filesource'                  => 'מקור:',
 'uploadedfiles'               => 'קבצים שהועלו',
@@ -1543,6 +1564,7 @@ $2',
 'overwroteimage'              => 'העלה גרסה חדשה של הקובץ [[$1]]',
 'uploaddisabled'              => 'העלאת קבצים מבוטלת',
 'uploaddisabledtext'          => 'אפשרות העלאת הקבצים מבוטלת.',
+'php-uploaddisabledtext'      => 'אפשרות העלאת הקבצים מבוטלת ברמת PHP. אנא בדקו את ההגדרה file_uploads.',
 'uploadscripted'              => 'הקובץ כולל קוד סקריפט או HTML שעשוי להתפרש או להתבצע בטעות על ידי הדפדפן.',
 'uploadcorrupt'               => 'קובץ זה אינו תקין או שהסיומת שלו איננה מתאימה. אנא בדקו את הקובץ והעלו אותו שוב.',
 'uploadvirus'                 => 'הקובץ מכיל וירוס! פרטים: <div style="direction: ltr;">$1</div>',
@@ -1783,7 +1805,9 @@ PICT # שונות
 'protectedtitlesempty'    => 'אין כרגע כותרות מוגנות עם הפרמטרים האלה.',
 'listusers'               => 'רשימת משתמשים',
 'listusers-editsonly'     => 'הצגת משתמשים עם עריכות בלבד',
+'listusers-creationsort'  => 'סידור לפי תאריך היצירה',
 'usereditcount'           => '{{PLURAL:$1|עריכה אחת|$1 עריכות}}',
+'usercreated'             => 'נוצר ב־$2, $1',
 'newpages'                => 'דפים חדשים',
 'newpages-username'       => 'שם משתמש:',
 'ancientpages'            => 'דפים מוזנחים',
@@ -1844,7 +1868,8 @@ PICT # שונות
 'special-categories-sort-abc'   => 'סידור לפי סדר האלף בית',
 
 # Special:DeletedContributions
-'deletedcontributions' => 'תרומות משתמש מחוקות',
+'deletedcontributions'       => 'תרומות משתמש מחוקות',
+'deletedcontributions-title' => 'תרומות משתמש מחוקות',
 
 # Special:LinkSearch
 'linksearch'       => 'חיפוש קישורים חיצוניים',
@@ -2335,12 +2360,9 @@ $1 כבר נחסם. האם ברצונכם לשנות את הגדרות החסי�
 'move-watch'                   => 'מעקב אחרי דף זה',
 'movepagebtn'                  => 'העברה',
 'pagemovedsub'                 => 'ההעברה הושלמה בהצלחה',
-'movepage-moved'               => '<big>הדף "$1" הועבר לשם "$2".</big>
-
-נוצרה הפניה.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'movepage-moved-noredirect'    => '<big>הדף "$1" הועבר לשם "$2".</big>
-
-יצירת ההפניה בוטלה.', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved'               => '<big>הדף "$1" הועבר לשם "$2".</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movepage-moved-redirect'      => 'נוצרה הפניה.',
+'movepage-moved-noredirect'    => 'יצירת ההפניה בוטלה.',
 'articleexists'                => 'קיים כבר דף עם אותו שם, או שהשם שבחרתם אינו חוקי.
 אנא בחרו שם אחר.',
 'cantmove-titleprotected'      => 'אינכם יכולים להעביר את הדף לשם זה, כיוון שהשם החדש הוגן מוגן העברה',
@@ -2484,7 +2506,7 @@ $1 כבר נחסם. האם ברצונכם לשנות את הגדרות החסי�
 'tooltip-search'                  => 'חיפוש ב{{grammar:תחילית|{{SITENAME}}}}',
 'tooltip-search-go'               => 'מעבר לדף בשם הזה בדיוק, אם הוא קיים',
 'tooltip-search-fulltext'         => 'חיפוש טקסט זה בדפים',
-'tooltip-p-logo'                  => 'עמוד ראשי',
+'tooltip-p-logo'                  => 'ביקור בעמוד הראשי',
 'tooltip-n-mainpage'              => 'ביקור בעמוד הראשי',
 'tooltip-n-portal'                => 'אודות המיזם, איך תוכלו לעזור, איפה למצוא דברים',
 'tooltip-n-currentevents'         => 'מציאת מידע רקע על האירועים האחרונים',
@@ -2610,7 +2632,7 @@ $1 כבר נחסם. האם ברצונכם לשנות את הגדרות החסי�
 # Patrol log
 'patrol-log-page'      => 'יומן שינויים בדוקים',
 'patrol-log-header'    => 'יומן זה מציג גרסאות שנבדקו.',
-'patrol-log-line'      => 'סימן את  $1 בדף $2 כבדוקה $3',
+'patrol-log-line'      => 'סימן את $1 בדף $2 כבדוקה $3',
 'patrol-log-auto'      => '(אוטומטית)',
 'patrol-log-diff'      => 'גרסה $1',
 'log-show-hide-patrol' => '$1 יומן שינויים בדוקים',
@@ -2956,7 +2978,7 @@ $1',
 'confirmemail'             => 'אימות כתובת דוא"ל',
 'confirmemail_noemail'     => 'אין לכם כתובת דוא"ל תקפה המוגדרת ב[[Special:Preferences|העדפות המשתמש]] שלכם.',
 'confirmemail_text'        => 'אתר זה דורש שתאמתו את כתובת הדוא"ל שלכם לפני שתשתמשו בשירותי הדוא"ל. לחצו על הכפתור למטה כדי לשלוח דוא"ל עם קוד אישור לכתובת הדוא"ל שהזנתם. טענו את הקישור בדפדפן שלכם כדי לאשר שכתובת הדוא"ל תקפה.',
-'confirmemail_pending'     => '<div class="error">קוד אישור דוא"ל כבר נשלח אליכם; אם יצרתם את החשבון לאחרונה, ייתכן שתרצו לחכות מספר דקות עד שיגיע לפני שתנסו לבקש קוד חדש.</div>',
+'confirmemail_pending'     => 'קוד אישור דוא"ל כבר נשלח אליכם; אם יצרתם את החשבון לאחרונה, ייתכן שתרצו לחכות מספר דקות עד שיגיע לפני שתנסו לבקש קוד חדש.',
 'confirmemail_send'        => 'שלח קוד אישור',
 'confirmemail_sent'        => 'הדוא"ל עם קוד האישור נשלח.',
 'confirmemail_oncreate'    => 'קוד אישור דוא"ל נשלח לכתובת הדוא"ל שלכם. הקוד הזה אינו נדרש לכניסה, אך תצטרכו לספקו כדי להשתמש בכל תכונה מבוססת דוא"ל באתר זה.',
@@ -3206,5 +3228,17 @@ $1
 #שורות המתחילות בסימן # הן הערות
 
 #נא לכתוב את כל הביטויים הרגולריים מעל שורה זו. נא להשאיר שורה זו בדיוק כפי שהיא</pre>',
+
+# Special:Tags
+'tag-filter'              => 'מסנן [[Special:Tags|תגיות]]:',
+'tag-filter-submit'       => 'סינון',
+'tags-title'              => 'תגיות',
+'tags-intro'              => 'דף זה מכיל רשימה של תגיות שהתוכנה יכולה לסמן איתן עריכה, ומשמעויותיהן.',
+'tags-tag'                => 'שם התגית הפנימי',
+'tags-display-header'     => 'הופעה ברשימות השינויים',
+'tags-description-header' => 'תיאור מלא של המשמעות',
+'tags-hitcount-header'    => 'עריכות עם תגיות',
+'tags-edit'               => 'עריכה',
+'tags-hitcount'           => '{{PLURAL:$1|שינוי אחד|$1 שינויים}}',
 
 );
