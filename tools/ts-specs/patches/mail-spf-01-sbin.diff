@@ -1,0 +1,11 @@
+--- Build.PL.old	Fri Jan 30 06:24:07 2009
++++ Build.PL	Fri Jan 30 06:24:25 2009
+@@ -69,7 +69,7 @@
+         'bin/spfquery'
+     ],
+     install_path    => {
+-        'sbin'          => '/usr/sbin'
++        'sbin'          => '/opt/TSperl/sbin'
+     },
+     create_makefile_pl
+                     => 'passthrough',

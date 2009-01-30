@@ -1,58 +1,45 @@
 %define _basedir /opt/TSperl
 %include Solaris.inc
 
-Name:		TSperl-Mail-SPF
-Summary:	Mail::SPF module for Perl
-Version:	2.006
-Source:		http://search.cpan.org/CPAN/authors/id/J/JM/JMEHNLE/mail-spf/Mail-SPF-v%{version}.tar.gz
-Patch1:		mail-spf-01-sbin.diff
+Name:		TSperl-NetAddr-IP
+Summary:	NetAddr::IP module for Perl
+Version:	4.024
+Source:		http://search.cpan.org/CPAN/authors/id/M/MI/MIKER/NetAddr-IP-%{version}.tar.gz
 
 SUNW_BaseDir:	%{_basedir}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
 
 Requires: TSperl
-Requires: TSperl-Net-DNS-Rslvr-Prgrmmbl
-Requires: TSperl-Error
-Requires: TSperl-NetAddr-IP
-Requires: TSperl-URI
 BuildRequires: TSperl
-BuildRequires: TSperl-Net-DNS-Rslvr-Prgrmmbl
-BuildRequires: TSperl-Error
-BuildRequires: TSperl-NetAddr-IP
-BuildRequires: TSperl-URI
 
 %prep
-%setup -q -n Mail-SPF-v%version
-%patch1 -p0
+%setup -q -n NetAddr-IP-%version
 
 %build
 
-/opt/TSperl/bin/perl Makefile.PL INSTALLDIRS=vendor
+/opt/TSperl/bin/perl Makefile.PL INSTALLDIRS=vendor --xs
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 make DESTDIR=$RPM_BUILD_ROOT install
+rm $RPM_BUILD_ROOT%{_libdir}/5.8/perllocal.pod
+rmdir $RPM_BUILD_ROOT%{_libdir}/5.8
+find $RPM_BUILD_ROOT%{_libdir} -name .packlist -exec rm {} +
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_bindir}
-%{_bindir}/*
-%dir %attr (0755, root, bin) %{_sbindir}
-%{_sbindir}/*
 %dir %attr (0755, root, bin) %{_libdir}
 %dir %attr (0755, root, bin) %{_libdir}/vendor_perl
 %dir %attr (0755, root, bin) %{_libdir}/vendor_perl/5.8
 %{_libdir}/vendor_perl/5.8/*
 %dir %attr (0755, root, sys) %{_datadir}
 %dir %attr (0755, root, bin) %{_mandir}
-%dir %attr (0755, root, bin) %{_mandir}/man1
-%{_mandir}/man1/*
 %dir %attr (0755, root, bin) %{_mandir}/man3
 %{_mandir}/man3/*
 
