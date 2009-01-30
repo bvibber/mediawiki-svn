@@ -2,16 +2,13 @@ package de.brightbyte.wikiword.store.builder;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.sql.DataSource;
 
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
-import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.PropertyStoreSchema;
@@ -127,6 +124,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseWikiWordStoreBuilder i
 		}
 	}
 
+	/*
 	public int storeConcept(int rcId, String name, ConceptType ctype) throws PersistenceException {
 		return conceptStore.storeConcept(rcId, name, ctype);
 	}
@@ -137,10 +135,16 @@ public class DatabasePropertyStoreBuilder extends DatabaseWikiWordStoreBuilder i
 
 	public void storeConceptAlias(int rcId, int source, String sourceName, int target, String targetName, AliasScope scope) throws PersistenceException {
 		conceptStore.storeConceptAlias(rcId, source, sourceName, target, targetName, scope);
-	}
+	}*/
 
 	public Corpus getCorpus() {
 		return (Corpus)database.getDataset();
 	}
 	
+	public void finishAliases() throws PersistenceException {
+		if (beginTask("finishAliases", "resolveRedirects:property")) {
+			int n = conceptStore.resolveRedirects(propertyTable, "concept_name", "concept", AliasScope.REDIRECT, 3);     
+			endTask("finishAliases", "resolveRedirects:property", n+" entries");
+		}
+	}
 }

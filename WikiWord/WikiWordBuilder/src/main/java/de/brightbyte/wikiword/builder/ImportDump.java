@@ -122,6 +122,6 @@ public abstract class ImportDump<S extends WikiWordStoreBuilder> extends ImportA
 		//noop
 	}
 
-	protected abstract WikiWordImporter newImporter(WikiTextAnalyzer analyzer, S store, TweakSet tweaks);
+	protected abstract WikiWordImporter newImporter(WikiTextAnalyzer analyzer, S store, TweakSet tweaks) throws PersistenceException;
 
 }

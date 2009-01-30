@@ -88,4 +88,8 @@ public class TsvPropertyOutput extends FauxStoreBuilder implements PropertyStore
 		return corpus;
 	}
 
+	public void finishAliases() throws PersistenceException {
+		// noop
+	}
+
 }

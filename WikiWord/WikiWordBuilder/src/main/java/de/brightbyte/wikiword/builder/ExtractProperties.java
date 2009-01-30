@@ -1,10 +1,5 @@
 package de.brightbyte.wikiword.builder;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
@@ -12,19 +7,18 @@ import javax.sql.DataSource;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.store.builder.DatabasePropertyStoreBuilder;
-import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
-import de.brightbyte.wikiword.store.builder.TsvPropertyOutput;
+import de.brightbyte.wikiword.store.builder.DatabaseLocalConceptStoreBuilder;
+import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 
-public class ExtractProperties extends ImportDump<PropertyStoreBuilder> {
+public class ExtractProperties extends ImportDump<LocalConceptStoreBuilder> {
 
 	public ExtractProperties() {
 		super("ExtractProperties");
 	}
 
 	@Override
-	protected PropertyImporter newImporter(WikiTextAnalyzer analyzer, PropertyStoreBuilder store, TweakSet tweaks) {
-		return new PropertyImporter(analyzer, (PropertyStoreBuilder)store, tweaks);
+	protected PropertyImporter newImporter(WikiTextAnalyzer analyzer, LocalConceptStoreBuilder store, TweakSet tweaks) throws PersistenceException {
+		return new PropertyImporter(analyzer, store, tweaks);
 	}
 	
 	@Override
@@ -38,6 +32,7 @@ public class ExtractProperties extends ImportDump<PropertyStoreBuilder> {
 			"guessed from, the <wiki-or-dump> parameter)");
 	}
 
+	/*
 	@Override
 	protected PropertyStoreBuilder createStore() throws IOException, PersistenceException {
 		if (args.isSet("stream")) {
@@ -60,11 +55,12 @@ public class ExtractProperties extends ImportDump<PropertyStoreBuilder> {
 			return super.createStore();
 		}
 	}
-
+	*/
+	
 	@Override
-	protected PropertyStoreBuilder createStore(DataSource db) throws PersistenceException {
+	protected LocalConceptStoreBuilder createStore(DataSource db) throws PersistenceException  {
 		try {
-			return new DatabasePropertyStoreBuilder(getCorpus(), db, tweaks);
+			return new DatabaseLocalConceptStoreBuilder(getCorpus(), db, tweaks);
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}

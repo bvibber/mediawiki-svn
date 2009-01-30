@@ -22,7 +22,7 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 	}
 
 	@Override
-	protected ConceptImporter newImporter(WikiTextAnalyzer analyzer, LocalConceptStoreBuilder store, TweakSet tweaks) {
+	protected ConceptImporter newImporter(WikiTextAnalyzer analyzer, LocalConceptStoreBuilder store, TweakSet tweaks) throws PersistenceException {
 		return new ConceptImporter(analyzer, store, tweaks);
 	}
 	
@@ -40,6 +40,7 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 		}
 	}
 	
+	@Override
 	protected boolean getDropWarnings() {
 		return true;
 	}

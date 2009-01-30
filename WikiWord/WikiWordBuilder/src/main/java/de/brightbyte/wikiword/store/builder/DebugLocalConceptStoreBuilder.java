@@ -29,6 +29,187 @@ import de.brightbyte.wikiword.store.WikiWordConceptStore;
  */
 public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
+	public class DebugTextStoreBuilder implements TextStoreBuilder {
+
+		public void storePlainText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
+			log("* storePlainText("+textId+", "+name+", "+ptype+", "+ptype+") *");
+		}
+
+		public void storeRawText(int textId, String name, ResourceType ptype, String text) throws PersistenceException {
+			log("* storeRawText("+textId+", "+name+", "+ptype+", "+ptype+") *");
+		}
+
+		public void checkConsistency() throws PersistenceException {
+			log("* checkConsistency *");
+		}
+
+		public void close(boolean flush) throws PersistenceException {
+			log("* close("+flush+") *");
+		}
+
+		public void deleteDataAfter(int lastId, boolean inclusive) throws PersistenceException {
+			log("* deleteDataAfter("+lastId+", "+inclusive+") *");
+		}
+
+		public void deleteDataFrom(int lastId) throws PersistenceException {
+			log("* deleteDataFrom *");
+		}
+
+		public void dumpTableStats(Output out) throws PersistenceException {
+			log("* dumpTableStats *");
+		}
+
+		public void flush() throws PersistenceException {
+			log("* flush *");
+		}
+
+		public Agenda getAgenda() throws PersistenceException {
+			return null;
+		}
+
+		public int getNumberOfWarnings() throws PersistenceException {
+			return 0;
+		}
+
+		public void open() throws PersistenceException {
+			log("* open *");
+		}
+
+		public void optimize() throws PersistenceException {
+			log("* optimize *");
+		}
+
+		public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+			log("* prepare("+purge+", "+dropAll+") *");
+		}
+
+		public void setLogLevel(int loglevel) {
+			//noop
+		}
+
+		public void storeWarning(int rcId, String problem, String details) throws PersistenceException {
+			log("* storeWarning("+rcId+", "+problem+", "+details+") *");
+		}
+
+		public Map<String, ? extends Number> getTableStats() throws PersistenceException {
+			log("* getTableStats *");
+			return null;
+		}
+
+		public boolean isComplete() throws PersistenceException {
+			return true;
+		}
+		
+	}
+
+	public class DebugPropertyStoreBuilder implements PropertyStoreBuilder {
+
+		public void finishAliases() throws PersistenceException {
+			log("* finishAliases *");
+		}
+
+		public int storeConcept(int rcId, String name, ConceptType ctype) throws PersistenceException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		public void storeConceptAlias(int rcId, int source, String sourceName, int target, String targetName, AliasScope scope) throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void storeProperty(int resourceId, int conceptId, String concept, String property, String value) throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public int storeResource(String name, ResourceType ptype, Date time) throws PersistenceException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		public void checkConsistency() throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void close(boolean flush) throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void deleteDataAfter(int lastId, boolean inclusive) throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void deleteDataFrom(int lastId) throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void dumpTableStats(Output out) throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void flush() throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public Agenda getAgenda() throws PersistenceException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public int getNumberOfWarnings() throws PersistenceException {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		public void open() throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void optimize() throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void setLogLevel(int loglevel) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void storeWarning(int rcId, String problem, String details) throws PersistenceException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public Map<String, ? extends Number> getTableStats() throws PersistenceException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public boolean isComplete() throws PersistenceException {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		public Corpus getCorpus() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	}
+	
 	public class DebugStatisticsStoreBuilder implements StatisticsStoreBuilder {
 
 		public void buildStatistics() throws PersistenceException {
@@ -393,7 +574,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	}
 
 	public boolean isComplete() throws PersistenceException {
-		return false;
+		return true;
 	}
 
 	public void finishAliases() throws PersistenceException {
@@ -442,6 +623,14 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 	public StatisticsStoreBuilder getStatisticsStoreBuilder() {
 		return new DebugStatisticsStoreBuilder();
+	}
+
+	public TextStoreBuilder getTextStoreBuilder() {
+		return new DebugTextStoreBuilder();
+	}
+
+	public PropertyStoreBuilder getPropertyStoreBuilder() {
+		return new DebugPropertyStoreBuilder();
 	}
 
 	public void storeWarning(int rcId, String problem, String details) throws PersistenceException {

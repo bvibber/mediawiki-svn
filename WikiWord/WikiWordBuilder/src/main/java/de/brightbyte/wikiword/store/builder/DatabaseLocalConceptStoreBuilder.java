@@ -35,7 +35,9 @@ import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalStatisticsStoreSchema;
+import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
+import de.brightbyte.wikiword.schema.TextStoreSchema;
 import de.brightbyte.wikiword.store.DatabaseLocalConceptStore;
 
 /**
@@ -1185,6 +1187,39 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
+	
+	private DatabaseTextStoreBuilder textStore;
+	private DatabasePropertyStoreBuilder propertyStore;
+
+	protected DatabaseTextStoreBuilder newTextStoreBuilder() throws SQLException, PersistenceException {
+		TextStoreSchema schema = new TextStoreSchema(getCorpus(), getDatabaseAccess().getConnection(), tweaks, false);
+		return new DatabaseTextStoreBuilder(schema, tweaks);
+	}
+	
+	protected DatabasePropertyStoreBuilder newPropertyStoreBuilder() throws SQLException, PersistenceException {
+		PropertyStoreSchema schema = new PropertyStoreSchema(getCorpus(), getDatabaseAccess().getConnection(), tweaks, false);
+		return new DatabasePropertyStoreBuilder(schema, tweaks);
+	}
+
+	public TextStoreBuilder getTextStoreBuilder() throws PersistenceException {
+		try { 
+			if (textStore==null) textStore = newTextStoreBuilder();
+			return textStore;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		} 
+	}	
+
+	public PropertyStoreBuilder getPropertyStoreBuilder() throws PersistenceException {
+		try { 
+			if (propertyStore==null) propertyStore = newPropertyStoreBuilder();
+			return propertyStore;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		} 
+	}
+	
+	
 	
 	@Override
 	protected DatabaseConceptInfoStoreBuilder<LocalConcept> newConceptInfoStoreBuilder() throws SQLException {

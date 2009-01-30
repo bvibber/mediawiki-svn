@@ -2,9 +2,11 @@ package de.brightbyte.wikiword.builder;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import de.brightbyte.application.Arguments;
+import de.brightbyte.data.MultiMap;
 import de.brightbyte.data.cursor.CursorProcessor;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.util.PersistenceException;
@@ -15,25 +17,33 @@ import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
 import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
+import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
+import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
 public class ConceptImporter extends AbstractImporter {
 	protected static final boolean useSuffixAsCategory = false; //NOTE: leads to inconsistencies if used...
 	
 	private boolean storeDefinitions = true;
+	private boolean storeProperties = true;
+	private boolean storeFlatText = true;
 	
 	private Tracker conceptTracker;
 	private Tracker linkTracker;
 	
-	private LocalConceptStoreBuilder store;
-
+	protected LocalConceptStoreBuilder store;
+	protected PropertyStoreBuilder propertyStore;
+	protected TextStoreBuilder textStore;
 	
-	public ConceptImporter(WikiTextAnalyzer analyzer, LocalConceptStoreBuilder store, TweakSet tweaks) {
+	public ConceptImporter(WikiTextAnalyzer analyzer, LocalConceptStoreBuilder store, TweakSet tweaks) throws PersistenceException {
 		super(analyzer, store, tweaks);
 		
 		this.store = store;
+		this.propertyStore = store.getPropertyStoreBuilder();
+		this.textStore = store.getTextStoreBuilder();
 	}
 	
 	@Override
@@ -74,6 +84,11 @@ public class ConceptImporter extends AbstractImporter {
 		if (beginTask("ConceptImporter.finish", "finishAliases")) {
 			store.finishAliases();
 			endTask("ConceptImporter.finish", "finishAliases");
+		}
+		
+		if (beginTask("ConceptImporter.finish", "propertyStore#finishAliases")) {
+			propertyStore.finishAliases();
+			endTask("ConceptImporter.finish", "propertyStore#finishAliases");
 		}
 		
 		if (beginTask("ConceptImporter.finish", "finishRelations")) {
@@ -160,6 +175,14 @@ public class ConceptImporter extends AbstractImporter {
 		out.info("- "+linkTracker);
 	}
 	
+	
+	protected void storeProperty(int rcId, int cid, String concept, String property, String value) throws PersistenceException {
+		if (checkTerm(rcId, value, "value - SKIPED", cid)) return; 
+		if (checkSmellsLikeWiki(rcId, value, "value - SKIPED", cid)) return;
+		
+		propertyStore.storeProperty(rcId, cid, concept, property, value);
+	}
+
 	protected void storeReferences(int rcId, List<WikiTextAnalyzer.WikiLink> links) throws PersistenceException {
 		for (WikiTextAnalyzer.WikiLink link : links) {
 			WikiTextAnalyzer.LinkMagic m = link.getMagic();
@@ -224,16 +247,14 @@ public class ConceptImporter extends AbstractImporter {
 		//TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
 		int rcId = storeResource(rcName, ptype, timestamp);
 				
-		/*
-		if (storeWikiText) { //TODO: separate access path... 
-			storeRawText(rcId, text);
+		if (storeFlatText) {  
+			textStore.storeRawText(rcId, rcName, ptype, text);
 		}
 		
-		if (storePlainText) { //TODO: separate access path... 
-			String plain = analyzerPage.getPlainText(false);
-			storePlainText(rcId, plain);
+		if (storeFlatText) {  
+			CharSequence plain = analyzerPage.getPlainText(false);
+			textStore.storePlainText(rcId, rcName, ptype, plain.toString());
 		}
-		*/
 		
 		if (ptype == ResourceType.CATEGORY) {
 			List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
@@ -283,6 +304,19 @@ public class ConceptImporter extends AbstractImporter {
 					storeDefinition(rcId, conceptId, definition);
 				}
 			}
+
+			if (storeProperties) {
+				MultiMap<String, CharSequence, Set<CharSequence>> properties = analyzerPage.getProperties();
+				for (Map.Entry<String, Set<CharSequence>> e: properties.entrySet()) {
+					String property = e.getKey();
+					
+					for (CharSequence v: e.getValue()) {
+						storeProperty(rcId, conceptId, name, property, v.toString());
+					}
+				}
+			}
+			
+			storeSupplements(rcId, conceptId, analyzerPage);
 			
 			List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
 			linkTracker.step(links.size());
@@ -413,6 +447,8 @@ public class ConceptImporter extends AbstractImporter {
 		AbstractImporter.declareOptions(args);
 		
 		args.declare("nodef", null, true, String.class, "do not extract and store definitions (improves speed)");
+		args.declare("noprop", null, true, String.class, "do not extract and store properties (improves speed)");
+		args.declare("dotext", null, true, String.class, "do strip and store flat text (degrades speed)");
 	}
 
 	@Override
@@ -420,6 +456,8 @@ public class ConceptImporter extends AbstractImporter {
 		super.configure(args);
 		
 		this.storeDefinitions = !args.isSet("nodef");
+		this.storeProperties = !args.isSet("noprop");
+		this.storeFlatText = args.isSet("dotext");
 	}
 
 	//-----------------------------------------------------------------------------
@@ -484,5 +522,20 @@ public class ConceptImporter extends AbstractImporter {
 		store.storeSection(rcId, name, page);
 	}
 
+	protected void storeSupplements(int rcId, int cid, WikiPage analyzerPage) throws PersistenceException {
+		CharSequence supplemented = analyzerPage.getSupplementedConcept();
+		
+		String name = analyzerPage.getConceptName();
+		
+		if (supplemented!=null) {
+			storeConceptAlias(rcId, cid, name, -1, supplemented.toString(), AliasScope.SUPPLEMENT);
+		}
+		
+		Set<CharSequence> supplementLinks = analyzerPage.getSupplementLinks();
+		for (CharSequence supp: supplementLinks) {
+			storeConceptAlias(rcId, -1, supp.toString(), cid, name, AliasScope.SUPPLEMENT);
+		}
+		
+	}
 	
 }
