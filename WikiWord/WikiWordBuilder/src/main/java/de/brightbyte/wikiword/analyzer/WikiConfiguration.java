@@ -253,6 +253,8 @@ public class WikiConfiguration {
 	
 	public TemplateExtractor.Factory templateExtractorFactory;
 
+	protected WikiTextAnalyzer analyzer;
+
 	public void defaults() {
 		String img =  StringUtils.join("|", Namespace.canonicalNamespaces.getNamespace(Namespace.IMAGE).getNames());
 		Pattern imagePattern = Pattern.compile("\\[\\[ *("+img+") *:(?>[^\\|\\]]+)(\\|((?>[^\\[\\]]+)|\\[\\[(?>[^\\]]+)\\]\\]|\\[(?>[^\\]]+)\\])*)?\\]\\]", Pattern.CASE_INSENSITIVE | Pattern.DOTALL );
@@ -360,6 +362,16 @@ public class WikiConfiguration {
 		mainArtikeMarkerPattern = Pattern.compile("^[- !_*$@#+~/%]?"); //use "category main articles" to resolve plural names
 		
 		this.templateExtractorFactory = FlatTemplateExtractor.factory;
+	}
+	
+	public void prepareFor(WikiTextAnalyzer analyzer) {
+		if (this.analyzer!=null) {
+			if (this.analyzer==analyzer) return;
+			else throw new IllegalStateException("WikiConfiguration already attached to a WikiTextAnalyzer");
+		}
+		
+		this.analyzer = analyzer;
+		//noop
 	}
 	
 	public void merge(WikiConfiguration with) {

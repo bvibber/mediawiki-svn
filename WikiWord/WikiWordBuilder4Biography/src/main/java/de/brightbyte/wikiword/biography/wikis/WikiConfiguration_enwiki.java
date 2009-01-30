@@ -1,18 +1,6 @@
 package de.brightbyte.wikiword.biography.wikis;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import de.brightbyte.wikiword.ConceptType;
-import de.brightbyte.wikiword.Namespace;
-import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.analyzer.AbstractAnalyzer;
-import de.brightbyte.wikiword.analyzer.DeepTemplateExtractor;
-import de.brightbyte.wikiword.analyzer.TemplateExtractor;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.analyzer.TemplateExtractor.Context;
-import de.brightbyte.wikiword.biography.BiographyConceptType;
 
 public class WikiConfiguration_enwiki extends WikiConfiguration {
 
@@ -33,13 +21,14 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("ICD9", 1, true), " $2 ") );
 		stripMarkupManglers.add(0, new WikiTextAnalyzer.RegularExpressionMangler( templatePattern("ICD10", 3, true), " $2$3.$4 ") ); //XXX: use all 5 params?
 		*/
+		
 		/*
 		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor( new WikiTextAnalyzer.ExactNameMatcher("Cite_journal"), 
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("journal", "journal")
 						.addNormalizer(punctuationStripPattern, "")
 						.setCondition(lifeScienceJournalPattern, 0, false) ) );
-		
-		
+		*/
+		/*
 		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Drugbox"),
 				makeNamePropertySpec("IUPAC_name", "IUPAC", false, false).addCleanup(iupacCleanupPattern, ""),
 				makeNamePropertySpec("synonyms", "Name", true, true),

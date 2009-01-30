@@ -483,6 +483,19 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 	}
 	
+	public static class StripMarkupMangler implements Mangler {
+		private WikiTextAnalyzer analyzer;
+
+		public StripMarkupMangler(WikiTextAnalyzer analyzer) {
+			if (analyzer==null) throw new NullPointerException();
+			this.analyzer = analyzer;
+		}
+		
+		public CharSequence mangle(CharSequence text) {
+			return this.analyzer.stripMarkup(text);
+		}
+	}
+	
 	public static class BoxStripMangler implements Mangler, SuccessiveMangler {
 		protected Matcher matcher;
 		protected String[] beginnings;
@@ -2015,6 +2028,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		if (tweaks==null) throw new NullPointerException();
 		
 		this.tweaks = tweaks;
+		
+		config.prepareFor(this);
 		this.config.merge(config);
 	}
 	
@@ -2226,6 +2241,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 
 	public CharSequence stripMarkup(CharSequence text) {
+		//NOTE: if one of the mangers is a StripMarkupMangler, we got regress.
 		return applyManglers(config.stripMarkupManglers, text);
 	}
 

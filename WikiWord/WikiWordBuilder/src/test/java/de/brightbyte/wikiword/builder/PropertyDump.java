@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.wikipro;
+package de.brightbyte.wikiword.builder;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
