@@ -172,7 +172,7 @@ function wfSpecialDatasearch() {
 		}
 
 		function getSpellingRestriction($spelling, $tableColumn) {
-			$dbr = &wfGetDB(DB_SLAVE);
+			$dbr = wfGetDB(DB_SLAVE);
 
 			if (trim($spelling) != '')
 				return " AND " . $tableColumn . " LIKE " . $dbr->addQuotes("%$spelling%");
@@ -188,7 +188,7 @@ function wfSpecialDatasearch() {
 		}
 
 		function getPositionSelectColumn($spelling, $tableColumn) {
-			$dbr = &wfGetDB(DB_SLAVE);
+			$dbr = wfGetDB(DB_SLAVE);
 
 			if (trim($spelling) != '')
 				return "INSTR(LCASE(" . $tableColumn . "), LCASE(". $dbr->addQuotes("$spelling") .")) as position, ";
@@ -198,7 +198,7 @@ function wfSpecialDatasearch() {
 
 		function searchWords($text, $collectionId, $languageId) {
 			$dc=wdGetDataSetContext();
-			$dbr = &wfGetDB(DB_SLAVE);
+			$dbr = wfGetDB(DB_SLAVE);
 
 			$sql =
 				"SELECT ". $this->getPositionSelectColumn($text, "{$dc}_expression.spelling") ." {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS spelling, {$dc}_expression.language_id AS language_id ".
@@ -274,7 +274,7 @@ function wfSpecialDatasearch() {
 
 		function searchExternalIdentifiers($text, $collectionId) {
 			$dc=wdGetDataSetContext();
-			$dbr = &wfGetDB(DB_SLAVE);
+			$dbr = wfGetDB(DB_SLAVE);
 
 			$sql =
 				"SELECT ". $this->getPositionSelectColumn($text, "{$dc}_collection_contents.internal_member_id") ." {$dc}_collection_contents.member_mid AS member_mid, {$dc}_collection_contents.internal_member_id AS external_identifier, {$dc}_collection.collection_mid AS collection_mid ".

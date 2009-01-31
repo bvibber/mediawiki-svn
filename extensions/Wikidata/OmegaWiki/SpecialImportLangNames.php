@@ -30,7 +30,7 @@
 					return false;
 				}
 
-				$dbr = &wfGetDB(DB_MASTER);
+				$dbr = wfGetDB(DB_MASTER);
 
 				/* Get collection ID for "ISO 639-3 codes" collection. */
 				$sql = "SELECT collection_id FROM {$dc}_collection" .
@@ -115,7 +115,7 @@
 
 			/* XXX: This is probably NOT the proper way to do this. It should be refactored. */
 			function addDMsListToPage($content,$page) {
-				$dbr = &wfGetDB(DB_MASTER);
+				$dbr = wfGetDB(DB_MASTER);
 
 				/* Get ID of the page we want to put the list on. */
 				$sql = 'SELECT page_id FROM page' .

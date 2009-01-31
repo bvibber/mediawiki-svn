@@ -165,7 +165,7 @@ class SpecialEmailPage extends SpecialPage {
 			return false;
 		}
 
-		$db    = &wfGetDB(DB_SLAVE);
+		$db    = wfGetDB(DB_SLAVE);
 		$title = Title::newFromText($this->title);
 		$opt   = new ParserOptions;
 

@@ -46,7 +46,7 @@ function wfSpecialManageLanguages() {
 			if(!$action) {
 				$wgOut->addWikiText(wfMsg('langman_header'));
 			} else {
-				$dbr=&wfGetDB(DB_MASTER);
+				$dbr=wfGetDB(DB_MASTER);
 				$langname=$wgRequest->getText('langname');
 				$langiso6393=$wgRequest->getText('langiso6393');
 				$langiso6392=$wgRequest->getText('langiso6392');

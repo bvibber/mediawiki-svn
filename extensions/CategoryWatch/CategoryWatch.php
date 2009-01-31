@@ -44,7 +44,7 @@ class CategoryWatch {
 	 */
 	function onArticleSave(&$article, &$user, &$text) {
 		$this->before = array();
-		$dbr  = &wfGetDB(DB_SLAVE);
+		$dbr  = wfGetDB(DB_SLAVE);
 		$cl   = $dbr->tableName('categorylinks');
 		$id   = $article->getID();
 		$res  = $dbr->select($cl, 'cl_to', "cl_from = $id", __METHOD__, array('ORDER BY' => 'cl_sortkey'));
@@ -60,7 +60,7 @@ class CategoryWatch {
 
 		# Get cats after update
 		$this->after = array();
-		$dbr  = &wfGetDB(DB_SLAVE);
+		$dbr  = wfGetDB(DB_SLAVE);
 		$cl   = $dbr->tableName('categorylinks');
 		$id   = $article->getID();
 		$res  = $dbr->select($cl, 'cl_to', "cl_from = $id", __METHOD__, array('ORDER BY' => 'cl_sortkey'));

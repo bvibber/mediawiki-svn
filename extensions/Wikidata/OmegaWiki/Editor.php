@@ -2262,7 +2262,7 @@ class ObjectPathEditor extends Viewer {
 	
 	protected function resolveRelation($objectId) {
 		$dc=wdGetDataSetContext();
-		$dbr = &wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT meaning1_mid, relationtype_mid, meaning2_mid" .
 			" FROM {$dc}_meaning_relations" .
@@ -2279,7 +2279,7 @@ class ObjectPathEditor extends Viewer {
 	}
 	
 	protected function resolveAttribute($objectId, $tableName) {
-		$dbr = &wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT object_id, attribute_mid" .
 			" FROM " . $tableName .
@@ -2296,7 +2296,7 @@ class ObjectPathEditor extends Viewer {
 
 	protected function resolveTranslatedContent($objectId) {
 		$dc=wdGetDataSetContext();
-		$dbr = &wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT defined_meaning_id" .
 			" FROM {$dc}_defined_meaning" .
@@ -2312,7 +2312,7 @@ class ObjectPathEditor extends Viewer {
 
 	protected function resolveSyntrans($objectId) {
 		$dc=wdGetDataSetContext();
-		$dbr = &wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT spelling, defined_meaning_id" .
 			" FROM {$dc}_syntrans, {$dc}_expression" .

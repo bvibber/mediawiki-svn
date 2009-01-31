@@ -346,7 +346,7 @@ class SimpleSecurity {
 
 					# If processing first category rule, build a list of cats this article belongs to
 					if (count($cats) == 0) {
-						$dbr = &wfGetDB(DB_SLAVE);
+						$dbr = wfGetDB(DB_SLAVE);
 						$cl  = $dbr->tableName('categorylinks');
 						$id  = $title->getArticleID();
 						$res = $dbr->select($cl, 'cl_to', "cl_from = '$id'", __METHOD__, array('ORDER BY' => 'cl_sortkey'));

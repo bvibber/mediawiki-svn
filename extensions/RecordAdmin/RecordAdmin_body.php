@@ -58,7 +58,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Get titles in 'recordadmin-category' (default: Category:Records) and build option list
 			$options = '';
-			$dbr  = &wfGetDB( DB_SLAVE );
+			$dbr  = wfGetDB( DB_SLAVE );
 			$cl   = $dbr->tableName( 'categorylinks' );
 			$cat  = $dbr->addQuotes( wfMsgForContent( 'recordadmin-category' ) );
 			$res  = $dbr->select( $cl, 'cl_from', "cl_to = $cat", __METHOD__, array( 'ORDER BY' => 'cl_sortkey' ) );
@@ -187,7 +187,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function getRecords($type, $posted, $wpTitle = '', $invert = false, $orderby = 'created desc') {
 		$records = array();
-		$dbr  = &wfGetDB( DB_SLAVE );
+		$dbr  = wfGetDB( DB_SLAVE );
 		$tbl  = $dbr->tableName( 'templatelinks' );
 		$ty   = $dbr->addQuotes( $type );
 		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );

@@ -29,7 +29,7 @@
 					return false;
 				}
 
-				$dbr = &wfGetDB(DB_MASTER);
+				$dbr = wfGetDB(DB_MASTER);
 
 				if ($wgRequest->getText('collection')) {
 					require_once('WikiDataAPI.php');
