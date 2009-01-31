@@ -76,14 +76,6 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		relationTable = (RelationTable)relationInserter.getTable();
 	}	
 	
-	@Override
-	protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
-		deleteDataFrom(rcId, op, linkTable, "resource");
-		deleteDataFrom(rcId, op, langlinkTable, "resource");
-		deleteDataFrom(rcId, op, broaderTable, "resource");
-		deleteDataFrom(rcId, op, conceptTable, "resource");
-	}
-	
 	protected int deleteConceptBroader(int narrow, int broad) throws SQLException {
 		String sql = "DELETE FROM "+broaderTable.getSQLName()+" " +
 				" WHERE narrow = "+narrow+" " +
@@ -482,12 +474,6 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 			degreeTable = (EntityTable)degreeInserter.getTable();
 		}	
 
-		
-		@Override
-		protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
-			throw new UnsupportedOperationException();
-		}
-		
 		protected int getNumberOfConcepts() throws PersistenceException {
 			String sql = "select count(*) from "+conceptTable.getSQLName();
 			try {
@@ -890,10 +876,5 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 			return executeChunkedUpdate(query, chunkFactor);
 		}
 
-		@Override
-		protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
-			//deleteDataFrom(rcId, op, conceptInfoTable, "concept", conceptTable, "resource");
-			throw new UnsupportedOperationException();
-		}
 	}
 }

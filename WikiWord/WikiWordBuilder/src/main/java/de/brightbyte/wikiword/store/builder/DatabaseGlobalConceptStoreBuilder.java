@@ -173,11 +173,6 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 
 	//---------------------------------
 	
-	@Override
-	protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
-		throw new UnsupportedOperationException();
-	}
-	
 	public void importConcepts() throws PersistenceException {
 		Corpus[] cc = getLanguages();
 		

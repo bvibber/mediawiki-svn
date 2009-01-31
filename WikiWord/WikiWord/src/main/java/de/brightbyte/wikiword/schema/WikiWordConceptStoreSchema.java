@@ -82,8 +82,6 @@ public class WikiWordConceptStoreSchema extends WikiWordStoreSchema {
 	public void checkConsistency() throws SQLException {
 		checkIdSanity(conceptTable, "id"); //FIXME: this barfs spuriously. something insconsistent about th db state?!
 		
-		checkReferentialIntegrity(conceptTable, "resource", true); //NOTE: red links generate concepts with no resource assigned  
-		
 		checkReferentialIntegrity(broaderTable, "narrow", false);
 		checkReferentialIntegrity(broaderTable, "broad", false);
 		

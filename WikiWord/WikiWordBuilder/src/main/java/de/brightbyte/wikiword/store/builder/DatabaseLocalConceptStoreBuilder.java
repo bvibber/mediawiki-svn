@@ -70,6 +70,9 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	protected Inserter aliasInserter;
 	protected Inserter meaningInserter;
 	
+	protected Inserter aboutInserter;
+	protected RelationTable aboutTable;
+	
 	protected Random random;
 	
 	protected TweakSet tweaks;
@@ -133,6 +136,9 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		aliasTable = (RelationTable)aliasInserter.getTable();
 		meaningTable = (RelationTable)meaningInserter.getTable();
 		
+		aboutInserter =  configureTable("about", 1024, 64);
+		aboutTable =    (RelationTable)aboutInserter.getTable();
+		
 		long seed = tweaks.getTweak("dbstore.randomSeed", -1); //TODO: doc
 		if (seed>0) random = new Random(seed);
 		else random = new Random();
@@ -187,12 +193,16 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 
-	@Override
 	protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
 		deleteDataFrom(rcId, op, definitionTable, "concept", conceptTable, "resource");
 		//deleteDataFrom(rcId, op, conceptDescriptionTable, "concept", conceptTable, "resource");
 		
-		super.deleteDataFrom(rcId, op);
+		deleteDataFrom(rcId, op, linkTable, "resource");
+		deleteDataFrom(rcId, op, langlinkTable, "resource");
+		deleteDataFrom(rcId, op, broaderTable, "resource");
+		
+		deleteDataFrom(rcId, op, aboutTable, "resource");
+		deleteOrphansFrom(rcId, op, conceptTable, aboutTable, "resource");
 		
 		deleteDataFrom(rcId, op, aliasTable, "resource");
 		deleteDataFrom(rcId, op, sectionTable, "resource");
@@ -245,6 +255,15 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	
 
 	/**
+	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeResourceAbout(java.lang.String, de.brightbyte.wikiword.ResourceType, java.util.Date, int conceptId, String conceptName)
+	 */
+	public int storeResourceAbout(String name, ResourceType ptype, Date time, int conceptId, String conceptName) throws PersistenceException {
+		int rcId = storeResource(name, ptype, time);
+		storeAbout(rcId, conceptId, conceptName);
+		return rcId;
+	}
+	
+	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeResource(java.lang.String, de.brightbyte.wikiword.ResourceType, java.util.Date)
 	 */
 	public int storeResource(String name, ResourceType ptype, Date time) throws PersistenceException {
@@ -256,7 +275,9 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			resourceInserter.updateString("timestamp", timestampFormatter.format(time));
 			resourceInserter.updateRow();
 			
-			return resourceInserter.getLastId();
+			int rcId = resourceInserter.getLastId();
+			
+			return rcId;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}
@@ -278,7 +299,6 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			}
 			
 			conceptInserter.updateDouble("random", random.nextDouble());
-			if (rcId>=0) conceptInserter.updateInt("resource", rcId);
 			conceptInserter.updateString("name", name);
 			conceptInserter.updateInt("type", ctype.getCode());
 			conceptInserter.updateRow();
@@ -286,6 +306,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			if (idManager==null) {
 				id = conceptInserter.getLastId();
 			}
+			
+			if (rcId>=0) storeAbout(rcId, id, name); 
 			
 			return id;
 		} catch (SQLException e) {
@@ -405,6 +427,33 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			aliasInserter.updateString("target_name", targetName);
 			
 			//aliasInserter.updateFloat("confidence", confidence);
+			aliasInserter.updateRow();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+	
+	/**
+	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeAbout(int, String)
+	 */
+	public void storeAbout(int rcId, String conceptName) throws PersistenceException {
+		storeAbout(rcId, -1, conceptName);
+	}
+	
+	/**
+	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeAbout(int, int, String)
+	 */
+	public void storeAbout(int rcId, int concept, String conceptName) throws PersistenceException {
+		try {
+			if (rcId<0) throw new IllegalArgumentException("bad resource id "+rcId);
+			conceptName = checkName(rcId, conceptName, "concept name (resource #{0})", rcId);
+			
+			aboutInserter.updateInt("resource", rcId);
+			aboutInserter.updateString("concept_name", conceptName);
+			
+			if (concept>0) aboutInserter.updateInt("concept", concept);
+			else if (idManager!=null) aboutInserter.updateInt("concept", idManager.aquireId(conceptName));
+			
 			aliasInserter.updateRow();
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
@@ -606,6 +655,11 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 
 	public void finishMissingConcepts() throws PersistenceException {
+			if (beginTask("finishMissingConcpets", "buildMissingConcepts:about")) {
+				int n = buildMissingConcepts(aboutTable, "concept", "concept_name");     
+				endTask("finishMissingConcpets", "buildMissingConcepts:about", n+" concepts");
+			}
+			
 			if (beginTask("finishMissingConcpets", "buildMissingConcepts:link")) {
 				int n = buildMissingConcepts(linkTable, "target", "target_name");     
 				endTask("finishMissingConcpets", "buildMissingConcepts:link", n+" concepts");
@@ -655,10 +709,16 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 	public void finishIdReferences() throws PersistenceException {
+			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:about")) {
+				int n = buildIdLinks(aboutTable, "concept_name", "concept", 1);     
+				endTask("finishIdReferences", "buildIdLinks:about", n+" references");
+			}
+
 			//XXX: if (beginTask("finish.buildIdLinks:link.term_text")) buildIdLinks(useTable, "term_text", "term");           
 			//NOTE: don't need this, anchor-id is only null if anchor_name is null too. //XXX: really?! if (beginTask("finish.buildIdLinks:link.anchor_name")) buildIdLinks(linkTable, "anchor_name", "anchor");     //Uses index _use.target (and unique key _concept.name)
+		
 			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:link.target")) {
-				int n = buildIdLinks(linkTable, "target_name", "target", 3);     
+				int n = buildIdLinks(linkTable, "target_name", "target", 5);     
 				endTask("finishIdReferences", "buildIdLinks:link.target", n+" references");
 			}
 			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:broader")) {
@@ -670,7 +730,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				endTask("finishIdReferences", "buildIdLinks:narrower", n+" references");
 			}
 			if (idManager==null && beginTask("finishIdReferences", "buildIdLinks:alias")) {
-				int n = buildIdLinks(aliasTable, "target_name", "target", 1);  
+				int n = buildIdLinks(aliasTable, "target_name", "target", -5);  
 				endTask("finishIdReferences", "buildIdLinks:alias", n+" references");
 			}
 			//if (beginTask("finishIdReferences", "buildIdLinks:reference")) buildIdLinks(referenceTable, "target_name", "target"); 
@@ -678,12 +738,19 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	
 	public void finishAliases() throws PersistenceException {
 			if (beginTask("finishAliases", "resolveRedirects:link")) {
-				int n = resolveRedirects(linkTable, "target_name", "target", AliasScope.REDIRECT, 3);     
+				//XXX: SLOW!
+				//TODO: smaller chunks? chunk on target table, not alias table? force index? 
+				int n = resolveRedirects(linkTable, "target_name", "target", AliasScope.REDIRECT, 8);     
 				endTask("finishAliases", "resolveRedirects:link", n+" entries");
 			}
 
 			//NOTE: broader.broad_name already done in finishMissingConcepts for AliasScope.BROADER
 			
+			if (beginTask("finishAliases", "resolveRedirects:about")) {
+				int n = resolveRedirects(aboutTable, null, "concept", null, 1);     
+				endTask("finishAliases", "resolveRedirects:about", n+" entries");
+			}
+
 			if (beginTask("finishAliases", "resolveRedirects:narrow")) {
 				int n = resolveRedirects(broaderTable, "narrow_name", "narrow", null, 1);     
 				endTask("finishAliases", "resolveRedirects:narrow", n+" entries");
@@ -1296,5 +1363,17 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 
 		c = executeUpdate("resetTermsForUnknownConcepts", sql); //XXX: chunk?!
 		log("deleted "+c+" entries for unknown concepts from broader table");
+	}
+
+	
+	public void deleteDataFrom(int rcId) throws PersistenceException {
+		log("deleting data from "+rcId);
+		deleteDataFrom(rcId, "=");
+	}
+
+	public void deleteDataAfter(int rcId, boolean inclusive) throws PersistenceException {
+		String op = inclusive ? ">=" : ">";
+		log("deleting data from with id "+op+" "+rcId);
+		deleteDataFrom(rcId, op);
 	}
 }

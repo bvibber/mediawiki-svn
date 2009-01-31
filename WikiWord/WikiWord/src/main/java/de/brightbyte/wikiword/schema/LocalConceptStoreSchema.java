@@ -23,6 +23,7 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 
 	protected RelationTable meaningTable;
 	protected RelationTable aliasTable;
+	protected RelationTable aboutTable;
 
 	//protected EntityTable conceptDescriptionTable;
 	
@@ -41,8 +42,6 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 	private void init(Corpus corpus, TweakSet tweaks) {
 		this.corpus = corpus;
 		
-		conceptTable.addField( new ReferenceField(this, "resource", "INT", null, false, KeyType.INDEX, "resource", "id", null ) );
-
 		broaderTable.addField( new ReferenceField(this, "resource", "INT", null, false, KeyType.INDEX, "resource", "id", null ) ); //NOTE: not required. see buildSectionBroader.
 		broaderTable.addField( new DatabaseField(this, "rule", "INT", null, true, KeyType.INDEX) );
 		broaderTable.addField( new ReferenceField(this, "narrow_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
@@ -69,6 +68,7 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		resourceTable.addField( new DatabaseField(this, "name", getTextType(255), null, true, KeyType.UNIQUE ) );
 		resourceTable.addField( new DatabaseField(this, "type", "INT", null, true, KeyType.INDEX ) ); //TODO: enum
 		resourceTable.addField( new DatabaseField(this, "timestamp", "CHAR(14)", null, true, null ) ); //TODO: which type in which db?
+		
 		resourceTable.setAutomaticField("id");
 		addTable(resourceTable);
 		
@@ -98,6 +98,14 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		//aliasTable.addField( new DatabaseField(this, "confidence", "DECIMAL(3,3)", null, true, null ) );
 		//aliasTable.addKey( new DatabaseKey(this, KeyType.INDEX, "usage", new String[] {"narrow", "broad"}) );
 		//aliasTable.addKey( new DatabaseKey(this, KeyType.UNIQUE, "ident", new String[] {"resource", "concept_name", "term_text"}) );
+		addTable(aliasTable);
+
+		aboutTable = new RelationTable(this, "about", defaultTableAttributes);
+		//aliasTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", false, KeyType.PRIMARY) );
+		aboutTable.addField( new ReferenceField(this, "resource", "INT", null, true, null, "resource", "id", null ) );
+		aboutTable.addField( new ReferenceField(this, "concept", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
+		aboutTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
+		aboutTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "about", new String[] {"resource", "concept"}) );
 		addTable(aliasTable);
 
 		meaningTable = new RelationTable(this, "meaning", defaultTableAttributes);
@@ -132,6 +140,8 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 	@Override
 	public void checkConsistency() throws SQLException {
 		super.checkConsistency();
+		
+		checkReferentialIntegrity(conceptTable, "resource", true); //NOTE: red links generate concepts with no resource assigned  
 		
 		checkReferentialIntegrity(meaningTable, "concept", false);
 

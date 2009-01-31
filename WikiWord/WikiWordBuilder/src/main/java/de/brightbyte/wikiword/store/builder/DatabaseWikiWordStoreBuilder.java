@@ -10,9 +10,11 @@ import de.brightbyte.application.Agenda;
 import de.brightbyte.db.BufferBasedInserter;
 import de.brightbyte.db.DatabaseAccess;
 import de.brightbyte.db.DatabaseAgendaPersistor;
+import de.brightbyte.db.DatabaseField;
 import de.brightbyte.db.DatabaseTable;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.InserterFactory;
+import de.brightbyte.db.ReferenceField;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.db.StatementBasedInserter;
 import de.brightbyte.util.PersistenceException;
@@ -260,6 +262,23 @@ public class DatabaseWikiWordStoreBuilder
 		trace("deleted "+c+" rows from "+rel.getName()+" where "+field+" "+op+" "+rcId+(via!=null?" via "+via.getName():"")+", took "+(System.currentTimeMillis()-t)/1000+" sec");
 	}
 	
+	protected void deleteOrphansFrom(int rcId, String op, DatabaseTable table, RelationTable ref, String refField) throws PersistenceException {
+		String sql;
+		
+		ReferenceField f = (ReferenceField)ref.getField(refField);
+		String field = f.getTargetField();
+		
+		sql = "DELETE FROM " + table.getSQLName() + " AS T ";
+		sql += " WHERE NOT EXISTS ( ";
+		sql += "   SELECT * FROM " + ref.getSQLName() + " AS R ";
+		sql += "       WHERE R." + refField + " = T." + field;
+		sql += " )";
+		
+		long t = System.currentTimeMillis();
+		int c = executeUpdate("deleteDataFrom", sql);
+		trace("deleted "+c+" orphan rows from "+table.getName()+" where no reference exists from "+ref.getSQLName()+"."+refField+", took "+(System.currentTimeMillis()-t)/1000+" sec");
+	}
+	
 	protected int executeUpdate(String name, String sql) throws PersistenceException {
 		try {
 			return database.executeUpdate(name, sql);
@@ -311,26 +330,10 @@ public class DatabaseWikiWordStoreBuilder
 		}
 	}
 
-	protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
-		throw new UnsupportedOperationException();
-	}
-
-
 	protected int deleteLoops(DatabaseTable t, String id1, String id2) throws SQLException {
 		String sql = "DELETE FROM "+t.getSQLName()+" WHERE "+id1+" = "+id2;
 		
 		return database.executeUpdate("deleteLoops", sql);
-	}
-	
-	public void deleteDataFrom(int rcId) throws PersistenceException {
-		log("deleting data from "+rcId);
-		deleteDataFrom(rcId, "=");
-	}
-
-	public void deleteDataAfter(int rcId, boolean inclusive) throws PersistenceException {
-		String op = inclusive ? ">=" : ">";
-		log("deleting data from with id "+op+" "+rcId);
-		deleteDataFrom(rcId, op);
 	}
 
 	/*

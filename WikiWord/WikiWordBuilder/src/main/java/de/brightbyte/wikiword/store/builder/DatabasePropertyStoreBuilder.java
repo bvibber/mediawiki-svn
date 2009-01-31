@@ -13,7 +13,7 @@ import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 
-public class DatabasePropertyStoreBuilder extends DatabaseWikiWordStoreBuilder implements PropertyStoreBuilder {
+public class DatabasePropertyStoreBuilder extends DatabaseLocalStoreBuilder implements PropertyStoreBuilder {
 
 	protected DatabaseLocalConceptStoreBuilder conceptStore;
 	

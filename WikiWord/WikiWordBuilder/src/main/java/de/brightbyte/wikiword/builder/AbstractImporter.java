@@ -19,6 +19,7 @@ import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextSniffer;
+import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
 public abstract class AbstractImporter implements WikiWordImporter {
@@ -168,12 +169,12 @@ public abstract class AbstractImporter implements WikiWordImporter {
 						doit = false;
 					}
 					else {
-						if (getAgenda().isTaskDirty()) {
+						if (getAgenda().isTaskDirty() && store instanceof IncrementalStoreBuilder) {
 							Agenda.Record rec = getAgenda().getCurrentRecord();
 
 							int delAfter = (Integer)rec.parameters.get("lastRcId_");
 							out.info("=== DIRTY BLOCK FOR SAFEPOINT#"+safepointNumber+", Deleting entries starting after id: #"+delAfter+" ===");
-							store.deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
+							((IncrementalStoreBuilder)store).deleteDataAfter(delAfter, false); //FIXME: make sure we are not off by one!
 						}
 						
 						out.info("=== BEGINNING BLOCK FOR SAFEPOINT#"+safepointNumber+": "+getAgenda().getCurrentRecord().parameters+" ===");

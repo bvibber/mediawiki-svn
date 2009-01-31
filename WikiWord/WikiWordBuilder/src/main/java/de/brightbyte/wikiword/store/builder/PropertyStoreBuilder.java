@@ -1,11 +1,6 @@
 package de.brightbyte.wikiword.store.builder;
 
-import java.util.Date;
-
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.ConceptType;
-import de.brightbyte.wikiword.ResourceType;
-import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.WikiWordLocalStore;
 
 public interface PropertyStoreBuilder extends WikiWordStoreBuilder, WikiWordLocalStore {

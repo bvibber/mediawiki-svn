@@ -18,13 +18,16 @@ import de.brightbyte.wikiword.schema.AliasScope;
  * (generally by a WikiTextAnalyzer) may be written to. It may be backed by
  * a RDBMS, or some other way of storing the data. 
  */
-public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<LocalConcept>  {
+public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<LocalConcept>, IncrementalStoreBuilder  {
 	
 	public abstract void storeDefinition(int rcId, int conceptId, String definition)
 			throws PersistenceException;
 
 	public abstract int storeResource(String name, ResourceType ptype,
 			Date time) throws PersistenceException;
+
+	public abstract int storeResourceAbout(String name, ResourceType ptype,
+			Date time, int concept, String conceptName) throws PersistenceException;
 
 	public abstract int storeConcept(int rcId, String name, ConceptType ctype)
 			throws PersistenceException;
@@ -49,6 +52,12 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 
 	public abstract void storeConceptAlias(int rcId, int source,
 			String sourceName, int target, String targetName, AliasScope scope)
+			throws PersistenceException;
+
+	public abstract void storeAbout(int resource, String conceptName)
+	throws PersistenceException;
+
+	public abstract void storeAbout(int resource, int concept, String conceptName)
 			throws PersistenceException;
 
 	//public abstract void storeConceptReference(int rcId, int source,

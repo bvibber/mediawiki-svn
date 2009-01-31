@@ -33,10 +33,6 @@ public interface WikiWordStoreBuilder extends WikiWordStore {
 
 	//public abstract void clearStatistics() throws PersistenceException;
 
-	public abstract void deleteDataAfter(int lastId, boolean inclusive) throws PersistenceException;
-
-	public abstract void deleteDataFrom(int lastId) throws PersistenceException;
-
 	public abstract void checkConsistency() throws PersistenceException;
 
 	public abstract void dumpTableStats(Output out) throws PersistenceException;

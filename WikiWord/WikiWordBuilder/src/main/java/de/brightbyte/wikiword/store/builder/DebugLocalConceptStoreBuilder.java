@@ -108,103 +108,71 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* finishAliases *");
 		}
 
-		public int storeConcept(int rcId, String name, ConceptType ctype) throws PersistenceException {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		public void storeConceptAlias(int rcId, int source, String sourceName, int target, String targetName, AliasScope scope) throws PersistenceException {
-			// TODO Auto-generated method stub
-			
-		}
-
 		public void storeProperty(int resourceId, int conceptId, String concept, String property, String value) throws PersistenceException {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public int storeResource(String name, ResourceType ptype, Date time) throws PersistenceException {
-			// TODO Auto-generated method stub
-			return 0;
+			log("* storeProperty("+resourceId+", "+conceptId+", "+concept+", "+property+", "+value+") *");
 		}
 
 		public void checkConsistency() throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* checkConsistency *");
 		}
 
 		public void close(boolean flush) throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* close *");
 		}
 
 		public void deleteDataAfter(int lastId, boolean inclusive) throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* deleteDataAfter("+lastId+", "+inclusive+") *");
 		}
 
 		public void deleteDataFrom(int lastId) throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* deleteDataFrom("+lastId+") *");
 		}
 
 		public void dumpTableStats(Output out) throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* dumpTableStats *");
 		}
 
 		public void flush() throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* flush *");
 		}
 
 		public Agenda getAgenda() throws PersistenceException {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		public int getNumberOfWarnings() throws PersistenceException {
-			// TODO Auto-generated method stub
 			return 0;
 		}
 
 		public void open() throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* open *");
 		}
 
 		public void optimize() throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* optimize *");
 		}
 
 		public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("* prepare *");
 		}
 
 		public void setLogLevel(int loglevel) {
-			// TODO Auto-generated method stub
-			
+			// noop
 		}
 
 		public void storeWarning(int rcId, String problem, String details) throws PersistenceException {
-			// TODO Auto-generated method stub
-			
+			log("+ warning: rcId = "+rcId+", problem = "+problem+", details = "+details);
 		}
 
 		public Map<String, ? extends Number> getTableStats() throws PersistenceException {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		public boolean isComplete() throws PersistenceException {
-			// TODO Auto-generated method stub
 			return false;
 		}
 
 		public Corpus getCorpus() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 		
@@ -459,6 +427,12 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		return resourceCounter;
 	}
 
+	public int storeResourceAbout(String name, ResourceType ptype, Date time, int conceptId, String conceptName)  {
+		int resourceId = storeResource(name, ptype, time);
+		storeAbout(resourceId, conceptId, conceptName);
+		return resourceId;
+	}
+
 
 	public void storeDefinition(int rcId, int conceptId, String definition)  {
 		definitionCounter++;
@@ -652,6 +626,14 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	public int processUnknownConcepts(CursorProcessor<LocalConceptReference> processor) throws PersistenceException {
 		//noop
 		return 0;
+	}
+
+	public void storeAbout(int resource, String conceptName)  {
+		trace("+ storeAbout: resource = "+resource+", conceptName =  "+conceptName);
+	}
+
+	public void storeAbout(int resource, int concept, String conceptName) {
+		trace("+ storeAbout: resource = "+resource+", concept =  "+concept+", conceptName =  "+conceptName);
 	}
 	
 }
