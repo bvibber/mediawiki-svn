@@ -41,8 +41,8 @@ Click the button below to subscribe.',
 	'povwatch_added'                   => 'added',
 	'right-povwatch_admin'             => 'Administer user rights for adding pages to watchlists of other users',
 	'right-povwatch_user'              => 'Add pages to watchlists of other users',
-	'action-povwatch_admin' => 'administer user rights for PovWatch',
-	'action-povwatch_user' => 'add this page to the watchlist of another user',
+	'action-povwatch_admin'            => 'administer user rights for PovWatch',
+	'action-povwatch_user'             => 'add this page to the watchlist of another user',
 );
 
 /** Message documentation (Message documentation)
@@ -395,7 +395,7 @@ $messages['gv'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'povwatch' => 'PovWatch',
+	'povwatch' => 'מערכת PovWatch',
 	'povwatch_desc' => '[[Special:PovWatch|דחיפת דפים לרשימת המעקב]] של משתמשים אחרים',
 	'povwatch_no_session' => 'שגיאה: לא ניתן לשלוח את הטופס עקב אובדן מידע הכניסה.',
 	'povwatch_not_allowed_push' => 'אינכם מנהלי PovWatch, לא תוכלו לדחוף דפים לרשימות מעקב.',
@@ -428,6 +428,8 @@ $messages['he'] = array(
 	'povwatch_added' => 'נוסף',
 	'right-povwatch_admin' => 'ניהול הרשאות המשתמש להוספת דפים לרשימות המעקב של משתמשים אחרים',
 	'right-povwatch_user' => 'הוספת דפים לרשימות המעקב של משתמשים אחרים',
+	'action-povwatch_admin' => 'לנהל את הרשאות המשתמש של PovWatch',
+	'action-povwatch_user' => 'להוסיף דף זה לרשימת המעקב של משתמש אחר',
 );
 
 /** Hindi (हिन्दी)
