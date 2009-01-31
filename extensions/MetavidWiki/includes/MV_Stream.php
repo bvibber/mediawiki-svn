@@ -99,6 +99,14 @@ class MV_Stream {
 			return $this->name;
 		}
 	}
+	function getStreamStartDate(){
+		if( $this->date_start_time == '' ){
+			$this->db_load_stream();
+			return $this->date_start_time;
+		}else{
+			return $this->date_start_time;
+		}
+	}
 	/*
 	 * @@todo cache this!: 
 	 */

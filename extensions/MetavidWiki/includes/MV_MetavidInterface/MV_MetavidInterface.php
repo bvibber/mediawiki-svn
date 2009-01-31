@@ -80,13 +80,14 @@
 		
 		// also add prev next paging
 		$this->page_header = '<h1 class="videoHeader">' .
-			$this->article->mvTitle->getStreamNameText() . ' :: ' .
+			$this->article->mvTitle->getStreamNameDate() . ' :: ' .
 			$this->components['MV_Tools']->stream_paging_links( 'prev' ) .
 				' <span title="' . htmlspecialchars( wfMsg( 'mv_click_to_edit' ) ) . '" id="mv_stream_time">' . $this->article->mvTitle->getTimeDesc( $span_separated = true ) . '</span>' .
 			$this->components['MV_Tools']->stream_paging_links( 'next' ) .
-			wfMsg( 'mv_of' ) . seconds2ntp( $this->article->mvTitle->getDuration() ) .
-		'</h1>';
-		
+			'<br><span style="font-size:80%">'.
+				wfMsg( 'mv_stream_length' ) . seconds2Description( $this->article->mvTitle->getDuration(), true ) .	
+			'</span></h1>';
+			
 		if($mvEnableStreamNotice){
 			$wgOut->addWikiText( wfMsg('mv_warning_wiki'));
 			$this->page_header.=$wgOut->getHTML();

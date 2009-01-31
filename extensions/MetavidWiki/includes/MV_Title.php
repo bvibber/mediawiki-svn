@@ -90,6 +90,18 @@
 		if ( $sn == '' )$sn =  $this->stream_name;
 		return ucfirst( str_replace( '_', ' ', $sn ) );
 	}
+	function getStreamNameDate(){
+		$d = $this->mvStream->getStreamStartDate();
+		if(!isset($d) || $d==0)
+			return $this->getStreamNameText();
+		$sn_parts = split('_',$this->stream_name);		
+		//remove the date part of the array: 
+		array_pop( $sn_parts);
+		foreach($sn_parts as & $sp)
+			$sp = ucfirst($sp);			
+		$sn = (count($sn_parts)>1)? implode(' ', $sn_parts): $sp[0];
+		return $sn .' on '. date('M jS, Y',$d);
+	}
 	/*
 	 * makes title like db key:
 	 */

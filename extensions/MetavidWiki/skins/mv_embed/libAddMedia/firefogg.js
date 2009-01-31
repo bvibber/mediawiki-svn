@@ -8,7 +8,7 @@ if(typeof mvUploader =='undefined'){
 		init_firefogg();					
 	});
 }
-var min_firefogg_version = '0.9.2'; 
+var min_firefogg_version = '0.9.3'; 
 function init_firefogg( iObj ){		
 	if(!iObj)
 		iObj = {};
@@ -39,7 +39,7 @@ function init_firefogg( iObj ){
 			var fogg = new upFirefogg( iObj );
 						
 			//do the version check: 
-			var fv = fogg.ogg.version;
+			var fv = fogg.fogg.version;
 			if(fv.replace(/[^0-9]/gi, '') < min_firefogg_version.replace(/[^0-9]/gi, '') ){
 				e = document.getElementById('wgfogg_wrong_version');
 				if(e) 
@@ -86,7 +86,7 @@ upFirefogg.prototype = {
 			}
 		}
 		//init the Firefogg obj
-		this.ogg = new Firefogg();	
+		this.fogg = new Firefogg();	
 	},
 	enable_fogg:function(){	
 		var _this = this;
@@ -114,30 +114,65 @@ upFirefogg.prototype = {
 	},
 	select_fogg:function(){			
 		var _this = this;
-		if(_this.ogg.selectVideo()) {
+		if(_this.fogg.selectVideo()) {			
 			var editForm = document.getElementById( 'mw-upload-form' );
 			_this.org_onsubmit = editForm.onsubmit;	
 			editForm.onsubmit = function return_false(){
 								return false;
-							};			
+							};		
+							
+			//update destination filename:
+			if( _this.fogg.sourceFilename ){
+				var destFileInput = document.getElementById( 'wpDestFile');
+				var sf = _this.fogg.sourceFilename;		
+				
+				var ext = '';
+				if(	sf.lastIndexOf('.') != -1){
+					ext = sf.substring( sf.lastIndexOf('.')+1 );
+				}
+				//set upload warning				
+				if( ext == 'ogg' || ext == 'ogv' ){		
+					e = document.getElementById('wgfogg_waring_ogg_upload');	
+					if(e) 
+						e.style.display='block';
+					return false;
+				}else if( ext == 'avi' || ext == 'mov' || ext == 'mp4' || 
+						  ext == 'mpeg' || ext == 'mpeg2' || ext == 'mpeg4' ||
+						  ext == 'dv' ){
+					//hide ogg warning
+					e = document.getElementById('wgfogg_waring_ogg_upload');
+					if(e) 
+						e.style.display='none';					
+					sf = sf.replace(ext, 'ogg');
+					destFileInput.value = sf;
+				}else{
+					//not ogg extension error	
+					e = document.getElementById('wgfogg_waring_bad_extension');
+					if(e) 
+						e.style.display='block';			
+				}								
+			} 
 			//set binding for "upload" button to call our transcode process
 			addHandler( editForm, 'submit', function() {			
 				//check if the title and or description are empty don't let the person submit
 				e = document.getElementById('wpDestFile')
-				if(typeof e.value == 'undefined' || e.value=='' || e.value.substr(-4) != '.ogg')
-					return alert('destination file is empty or does not end with .ogg');
+				//if(typeof e.value == 'undefined' || e.value=='' || e.value.substr(-4) != '.fogg')
+				//	return alert('destination file is empty or does not end with .fogg');
 					
-				e = document.getElementById('wpUploadDescription');
-				if(e){
-					if(typeof e.value == 'undefined' || e.value=='')
-						return alert('Description is empty');
-				}
+				//e = document.getElementById('wpUploadDescription');
+				//if(e){
+				//	if(typeof e.value == 'undefined' || e.value=='')
+				//		return alert('Description is empty');
+				//}
 				//for commons check wpDescText1
 				e = document.getElementById('wpDescText1');
 				if(e){
 					if(typeof e.value == 'undefined' || e.value=='')
 						return alert('Description is empty');
 				}
+				//get the input 
+				var formData = _this.getEditFormData( editForm );
+				debugger;
 						
 				//display the loader:
 				e = document.getElementById('dlbox-centered')
@@ -153,54 +188,51 @@ upFirefogg.prototype = {
 				
 				//@@todo read this from the config file rather than hard code it: 
 				var options = JSON.stringify({'maxSize': 400, 'videoBitrate': 500});
-			  	_this.ogg.encode(options);		  	
+			  	_this.fogg.encode(options);		  	
 			  	var encodingStatus = function() {
-			    	var status = _this.ogg.status();
+			    	var status = _this.fogg.status();
 			
 			    	//update progress bar
-			    	_this.fogg_update_progress( _this.ogg.progress() );
+			    	_this.fogg_update_progress( _this.fogg.progress() );
 			
 			    	//loop to get new status if still encoding
-			    	if( _this.ogg.state == 'encoding' ) {
+			    	if( _this.fogg.state == 'encoding' ) {
 			      		setTimeout(encodingStatus, 500);
 			    	}
 			    	//encoding done, state can also be 'encoding failed'
-			    	else if ( _this.ogg.state == 'encoding done' ) {
+			    	else if ( _this.fogg.state == 'encoding done' ) {
 			    		//hide the fogg-status-transcode
 			    		e = document.getElementById('fogg-status-transcode');
 			    		e.style.display='none';		    		
 			    		//show the fogg-status-upload
 			    		e = document.getElementById('fogg-status-upload');
-			    		e.style.display='inline';
-			    					    		
-						//get the input 
-						var data = _this.getEditFormData( editForm );
+			    		e.style.display='inline';			    					    								
 												
 						//hard code some values 
-						data['wpSourceType']='file';						 						
+						formData['wpSourceType']='file';						 						
 						
-						var data_str = JSON.stringify(data);					
+						var data_str = JSON.stringify( formData );
 						//alert('send data:'+ data_str);
 						//send to the post url: 
 						js_log('sending to:' + editForm.action);								
-						_this.ogg.upload(editForm.action, 'wpUploadFile', data_str);
+						_this.fogg.upload(editForm.action, 'wpUploadFile', data_str);
 						var uploadStatus = function() {							
-					        var status = _this.ogg.status();							        					      					        					
-							//js_log(' up stats: ' + status + ' p:' + _this.ogg.progress() + ' state: '+ _this.ogg.state + ' result page:' + result_page);
+					        var status = _this.fogg.status();							        					      					        					
+							//js_log(' up stats: ' + status + ' p:' + _this.fogg.progress() + ' state: '+ _this.fogg.state + ' result page:' + result_page);
 							
 					        //update progress bar
-					       	_this.fogg_update_progress( _this.ogg.progress() );
+					       	_this.fogg_update_progress( _this.fogg.progress() );
 					
 					        //loop to get new status if still uploading
-					        if(_this.ogg.state == 'uploading') {
+					        if(_this.fogg.state == 'uploading') {
 					        	setTimeout(uploadStatus, 500);
 					        }
 					        //upload sucsefull, state can also be 'upload failed'
-					        else if(_this.ogg.state == 'upload done') {	
-					        	//js_log('upload done: ' + JSON.parse(_this.ogg.uploadstatus()).responseText);							        			        
+					        else if(_this.fogg.state == 'upload done') {	
+					        	//js_log('upload done: ' + JSON.parse(_this.fogg.uploadstatus()).responseText);							        			        
 					        	//@@todo handle errors same problem as #695 in mv_remote_media_search.js
 					        	//we need to add image uploading to the api rather than parse the HTML output of the pages  
-								var result_page = JSON.parse(_this.ogg.uploadstatus()).responseText;
+								var result_page = JSON.parse(_this.fogg.uploadstatus()).responseText;
 								var sstring = 'var wgTitle = "' + data['wpDestFile'].replace('_',' ');
 								if( result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
 									js_log('upload done got redirect found: ' +sstring + ' r:' + _this.upload_done_action);										
@@ -233,11 +265,11 @@ upFirefogg.prototype = {
 					        }
 					        //upload error: 
 					        else{
-					        	alert('upload error: ' + _this.ogg.state);		
+					        	alert('upload error: ' + _this.fogg.state);		
 					        }
 				      	}
 				      	uploadStatus();
-				    }else if(_this.ogg.state == 'encoding fail'){
+				    }else if(_this.fogg.state == 'encoding fail'){
 				    	//@@todo error handling: 
 				    	alert('encoding failed');
 				    }
@@ -251,7 +283,7 @@ upFirefogg.prototype = {
 		}	 
 	},
 	getEditFormData:function( editForm ){
-		var data = {};				      	
+		var data = {};							      	
       	//get all the form fields: 
 		var inputs = editForm.getElementsByTagName('input');					
 		for(var i=0;i < inputs.length; i++){
@@ -277,6 +309,16 @@ upFirefogg.prototype = {
 		//show normal file upload
 		e = document.getElementById('wg-base-upload');
 		if(e) e.style.display='inline';	
+		
+		//hide ogg warning
+		e = document.getElementById('wgfogg_waring_ogg_upload');
+		if(e) 
+			e.style.display='none';		
+		
+		//hide not ogg extension error	
+		e = document.getElementById('wgfogg_waring_bad_extension');
+		if(e) 
+			e.style.display='block';		
 		
 		//hide fogg stuff
 		e = document.getElementById('fogg-video-file');

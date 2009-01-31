@@ -70,7 +70,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$do_cat_lookup = true;
 				} else {
 					if ( SMW_VERSION >= 1.2 ) {						
-						// the following is too slow to use but gennerally works:
+						// the following is too slow to use but generally works:
 						// has to be rewritten with sub-queries or something more elaborate
 						// for now just do lookup after the fact
 						$do_smw_lookup = true;

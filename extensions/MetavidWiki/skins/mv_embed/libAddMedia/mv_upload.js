@@ -12,6 +12,7 @@ gMsg['upload-transcoded-status']	= 'Transcoded';
 gMsg['uploaded-status']				= 'Uploaded';
 gMsg['upload-select-file']			= 'Select File...';
 gMsg['wgfogg_wrong_version']		= 'You have firefogg installed but its outdated, <a href="http://firefogg.org">please upgrade</a> ';
+gMsg['wgfogg_waring_ogg_upload']	= 'You have selected an ogg file for conversion to ogg (this is probably unessesary). Maybe disable the video converter?';
 
 var default_upload_options = {
 	'target_div':'',
@@ -98,14 +99,17 @@ mvUploader.prototype = {
 		$j('#mw-upload-table .mw-input').eq(0).html('<div id="wg-base-upload">' + itd_html + '</div>');
 		//add in firefogg control			
 		$j('#wg-base-upload').after('<p id="fogg-enable-item" >' + 
-						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="Select File..">' +
-						'<span id="wgfogg_not_installed">' + 
+						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="' + getMsg('upload-select-file') + '">' +
+						"<span class='error' id='wgfogg_not_installed'>" + 
 							getMsg('upload-fogg_not_installed') +
 						'</span>'+
-						'<span id="wgfogg_wrong_version">'+
+						"<span class='error' id='wgfogg_wrong_version'>"+
 							getMsg('wgfogg_wrong_version')+
 						'</span>'+
-						'<span id="wgfogg_installed"  style="display:none" >'+
+						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none' >"+
+								getMsg('wgfogg_waring_ogg_upload')+
+						'</span>'+
+						"<span id='wgfogg_installed' style='display:none' >"+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 								getMsg('upload-enable-converter') +
 						'<span><br></p>');		

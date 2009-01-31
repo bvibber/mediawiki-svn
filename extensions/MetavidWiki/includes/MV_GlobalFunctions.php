@@ -6,7 +6,7 @@
  * for more info visit http://metavid.org/wiki/Code
  * 
  */
-define( 'MV_VERSION', '1.0r46610' );
+define( 'MV_VERSION', '1.0r46611' );
 
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
@@ -605,6 +605,21 @@ function seconds2ntp( $seconds, $short = false ) {
 	} else {
 		return sprintf( "%d:%02d:%02d", $dur['hours'], $dur['minutes'], $dur['seconds'] );
 	}
+}
+function seconds2Description( $seconds, $short=false){
+	$dur = time_duration_2array( $seconds );
+	$o='';
+	if( $dur['hours'] )
+		$o.= wfMsg('mv_hours', intval( $dur['hours']) );
+	if( $dur['minutes'] ){
+		$o.=($o!='')?' ':'';
+		$o.= wfMsg('mv_minutes', intval( $dur['minutes']) );
+	}
+	if( $short==false && $dur['seconds'] ){
+		$o.=($o!='')?' ':'';
+		$o.= wfMsg('mv_seconds', intval( $dur['seconds']) );
+	}
+	return $o;
 }
 /*
  * converts seconds to time unit array

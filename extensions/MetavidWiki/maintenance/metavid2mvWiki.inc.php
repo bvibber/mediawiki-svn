@@ -631,12 +631,19 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 	include_once( 'scrape_and_insert.inc.php' );
 	$mvScrape = new MV_BaseScraper();
 
-	// do people query:
-	if ( $forcePerson != '' ) {
-		$res = $dbr->query( "SELECT * FROM `metavid`.`people` WHERE `name_clean` LIKE '$forcePerson'" );
-	} else {
-		$res = $dbr->query( "SELECT * FROM `metavid`.`people`" );
+	//get all people from the people category 
+	$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
+		'cl_to' => 'Person',
+		'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
+	) . '%\' COLLATE latin1_general_ci' ), __METHOD__, array (
+		'LIMIT' => $result_limit
+	) );
+	$out = '';
+	while ( $row = $dbr->fetchObject( $result ) ) {
+		$person_name = $row->cl_sortkey;
+		$person_ary[$person_name] = true;
 	}
+		
 	if ( $dbr->numRows( $res ) == 0 )
 		die( 'could not find people: ' . "\n" );
 	$person_ary = array ();

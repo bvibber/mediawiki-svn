@@ -55,9 +55,12 @@ class MV_MagicWords {
 			case 'POPULARCLIPS':
 				return $this->getTopClips();
 			break;
+			case 'RECENTSTREAMS':
+				return $this->getRecentStreams();
+			break;
 			case 'PERSONSPEECHES':
 				return $this->getPersonOut();
-			break;
+			break;			
 			case 'VIDEOBILL':
 				return $this->getBillOut();
 			break;

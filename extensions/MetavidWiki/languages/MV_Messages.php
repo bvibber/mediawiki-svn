@@ -277,7 +277,10 @@ very <b>limited</b> functionality right now. Click on a Clip to edit that resour
 
 	'mv_other_options' => 'Other Options',
 	'mv_contextmenu_opt' => 'Enable Context Menus',
-
+	'mv_hours'=>'$1 {{PLURAL:$1|hour|hours}} ',
+	'mv_minutes' => '$1 {{PLURAL:$1|minute|minutes}}', 
+	'mv_seconds' => '$1 {{PLURAL:$1|second|seconds}}', 
+	'mv_stream_length' => 'Total Video Length: ',
 
 	'mv_sequence_timeline' => 'Sequence timeline:',
 	'mv_edit_sequence_desc_help' => 'Sequence description',
