@@ -38,6 +38,7 @@ Cortado applet;
     applet.setParam ("keepaspect", "true");
     applet.setParam ("video", "true");
     applet.setParam ("audio", "true");
+    applet.setParam ("kateIndex", "0");
     //applet.setParam ("audio", "false");
     applet.setParam ("bufferSize", "200");
     applet.setParam ("userId", "wim");

@@ -30,6 +30,7 @@ interface OggPayload
   public boolean isType (Packet op);
   /**
    * Initialize the payload with a header packet.
+   * Returns < 0 for error, 0 if OK, 1 if OK and ready for decoding data.
    */
   public int takeHeader (Packet op);
   /**
@@ -52,5 +53,10 @@ interface OggPayload
    * Get mime type
    */
   public String getMime ();
+  /**
+   * Check if the stream is discontinuous (eg, no need to wait
+   * for data on this stream before playing)
+   */
+  public boolean isDiscontinuous ();
 }
 

@@ -464,4 +464,8 @@ public abstract class Element extends com.fluendo.jst.Object
   public boolean query (Query query) {
     return false;
   }
+
+  public Pad requestSinkPad(Pad peer) {
+    return null;
+  }
 }

@@ -175,11 +175,14 @@ class Configure
     <condition property="plugin.Vorbis.false">
       <contains string="${exclude}" substring="Vorbis" casesensitive="false" />
     </condition>
+    <condition property="plugin.Kate.false">
+      <contains string="${exclude}" substring="Kate" casesensitive="false" />
+    </condition>
    </target>
 
 <!-- generate includes and plugins.ini based on contents of exclude -->
   <target name="includes"
-          depends="plugins,includes-delete,include-JPEG,include-Mulaw,include-Multipart,include-Ogg,include-Smoke,include-Theora,include-Vorbis">
+          depends="plugins,includes-delete,include-JPEG,include-Mulaw,include-Multipart,include-Ogg,include-Smoke,include-Theora,include-Vorbis,include-Kate">
     <echo>Generating ${out.buildtyped}/includes</echo>
   </target>
 
@@ -192,8 +195,11 @@ com/fluendo/utils/*
 com/fluendo/jst/*
 com/fluendo/plugin/AudioSink*
 com/fluendo/plugin/VideoSink**
+com/fluendo/plugin/FakeSink*
+com/fluendo/plugin/Overlay*
 com/fluendo/plugin/HTTPSrc*
 com/fluendo/plugin/Queue*
+com/fluendo/plugin/Selector*
 plugins.ini
 </echo>
     <echo file="${out.buildtyped}/plugins.ini"
@@ -202,6 +208,9 @@ com.fluendo.plugin.VideoSink
 com.fluendo.plugin.AudioSinkJ2
 com.fluendo.plugin.AudioSinkSA
 com.fluendo.plugin.Queue
+com.fluendo.plugin.FakeSink
+com.fluendo.plugin.Overlay
+com.fluendo.plugin.Selector
 </echo>
  
   </target>
@@ -280,6 +289,19 @@ com/fluendo/plugin/Vorbis*
 </echo>
   </target>
 
+  <target name="include-Kate" unless="plugin.Kate.false">
+    <echo>Including Kate</echo>
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/fluendo/jkate/*
+com/fluendo/jtiger/*
+com/fluendo/plugin/Kate*
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini" append="true"
+>com.fluendo.plugin.KateDec
+com.fluendo.plugin.KateOverlay
+</echo>
+  </target>
+
 <!-- COMPILATION -->
 
   <!-- FIXME: not used currently -->
@@ -354,6 +376,36 @@ com/fluendo/plugin/Vorbis*
            debug="${build.isdebug}" debuglevel="${build.debuglevel}"
     >
       <include name="com/fluendo/jheora/**" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+  <target name="compile-jkate"
+          description="compile com.fluendo.jkate source"
+          depends="init,compile-utils,compile-jcraft"
+   >
+    <javac 
+	   srcdir="${src}"
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <include name="com/fluendo/jkate/**" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+  <target name="compile-jtiger"
+          description="compile com.fluendo.jtiger source"
+          depends="init,compile-utils,compile-jkate"
+   >
+    <javac 
+	   srcdir="${src}"
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <include name="com/fluendo/jtiger/**" />
       <compilerarg line="${build.flags}" />
     </javac>
   </target>
@@ -439,7 +491,7 @@ com/fluendo/plugin/Vorbis*
  
   <target name="compile"
           description="compile the source"
-          depends="init,compile-stubs,compile-jcraft,compile-jst,compile-jheora,compile-codecs,compile-plugin,compile-player,compile-examples" />
+          depends="init,compile-stubs,compile-jcraft,compile-jst,compile-jheora,compile-jkate,compile-jtiger,compile-codecs,compile-plugin,compile-player,compile-examples" />
 
 <!-- only here for reference -->
    <target name="oldcompile">
@@ -494,6 +546,16 @@ com/fluendo/plugin/Vorbis*
          includes="com/fluendo/jheora/*" />
   </target>
 
+  <target name="jar-jkate" depends="compile-jkate">
+    <jar jarfile="${out.dist}/${build.type}/jkate.jar" basedir="${out.buildtyped}"
+         includes="com/fluendo/jkate/*" />
+  </target>
+
+  <target name="jar-jtiger" depends="compile-jtiger">
+    <jar jarfile="${out.dist}/${build.type}/jtiger.jar" basedir="${out.buildtyped}"
+         includes="com/fluendo/jtiger/*" />
+  </target>
+
   <target name="jar-jst" depends="compile-jst">
     <jar jarfile="${out.dist}/${build.type}/jst.jar" basedir="${out.buildtyped}"
          includes="com/fluendo/jst/*" />
@@ -526,7 +588,7 @@ com/fluendo/plugin/Vorbis*
   <target name="applet-ov" depends="compile"
           description="generate the Ogg/Vorbis applet">
     <antcall target="includes">
-      <param name="exclude" value="Smoke,Jpeg,Multipart,Mulaw,Theora" />
+      <param name="exclude" value="Smoke,Jpeg,Multipart,Mulaw,Theora,Kate" />
     </antcall>
     <jar jarfile="${out.dist}/applet/cortado-ov-${build.type}-${real_version}.jar"
          includesfile="${out.buildtyped}/includes"
@@ -537,7 +599,7 @@ com/fluendo/plugin/Vorbis*
   <target name="applet-mmjs" depends="compile"
           description="generate the Multipart/Mulaw+Smoke+Jpeg applet">
     <antcall target="includes">
-      <param name="exclude" value="Ogg,Vorbis,Theora" />
+      <param name="exclude" value="Ogg,Vorbis,Theora,Kate" />
     </antcall>
     <jar jarfile="${out.dist}/applet/cortado-mmjs-${build.type}-${real_version}.jar"
          includesfile="${out.buildtyped}/includes"
@@ -549,7 +611,7 @@ com/fluendo/plugin/Vorbis*
   <target name="applet" depends="applet-ovt,applet-ov,applet-mmjs"
            description="generate all applets" />
 
-  <target name="jar" depends="jar-jcraft,jar-utils,jar-jheora,jar-jst,jar-codecs,jar-plugin,jar-player"
+  <target name="jar" depends="jar-jcraft,jar-utils,jar-jheora,jar-jkate,jar-jtiger,jar-jst,jar-codecs,jar-plugin,jar-player"
         description="generate all jar files" />
 
   <!-- instead of using depends, which doesn't necessarily preserve order,
@@ -641,6 +703,8 @@ com/fluendo/plugin/Vorbis*
         <include name="src/com/jcraft/jogg/*.java" />
         <include name="src/com/jcraft/jorbis/*.java" />
         <include name="src/com/fluendo/jheora/*.java" />
+        <include name="src/com/fluendo/jkate/*.java" />
+        <include name="src/com/fluendo/jtiger/*.java" />
         <include name="src/com/fluendo/player/*.java" />
         <include name="src/com/fluendo/utils/*.java" />
         <include name="src/com/fluendo/codecs/*.java" />

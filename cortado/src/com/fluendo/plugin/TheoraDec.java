@@ -66,6 +66,10 @@ public class TheoraDec extends Element implements OggPayload
   {
     return ts.isKeyframe(op);
   }
+  public boolean isDiscontinuous ()
+  {
+    return false;
+  }
   public long getFirstTs (Vector packets)
   {
     int len = packets.size();
