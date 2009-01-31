@@ -496,7 +496,7 @@ function getTextAttributeAsRecordSet($queryResult) {
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
+	$textAttributeAttribute = new Attribute("text-attribute", wfMsg('ow_TextAttributeHeader'), "short-text");
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $textAttributeAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
@@ -514,7 +514,7 @@ function getLinkAttributeAsRecordSet($queryResult) {
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$linkAttributeAttribute = new Attribute("link-attribute", "Link attribute", "short-text");
+	$linkAttributeAttribute = new Attribute("link-attribute", wfMsg('ow_LinkAttributeHeader'), "short-text");
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $linkAttributeAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
@@ -550,7 +550,7 @@ function getOptionAttributeAsRecordSet($queryResult) {
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$optionAttributeAttribute = new Attribute("option-attribute", "Option attribute", "short-text");
+	$optionAttributeAttribute = new Attribute("option-attribute", wfMsg('ow_OptionAttributeHeader'), "short-text");
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $optionAttributeAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
