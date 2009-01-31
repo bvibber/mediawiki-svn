@@ -959,6 +959,24 @@ $messages['tg-cyrl'] = array(
 	'chemFunctions_Formula' => 'Қоида',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'chemicalsources' => 'Mga pinagmulang pangkimika',
+	'chemicalsource-desc' => 'Nagdaragdag ng tatak na <nowiki><chemform></nowiki>, para sa mga pormulang pangkimika',
+	'chemFunctions_ListPage' => 'Mga pinagmulang pangkimika',
+	'chemFunctions_DataList' => 'Nasa ibaba ang isang talaan ng mga kawing na papunta sa mga sayt na maaaring makapagbigay ng mga kabatiran hinggil sa hinahanap mong sustansyang pangkimika.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Tambalang $MIXCASNameFormula na nasa NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na nasa Pamantasan ng Oxford (Nagkakaisang Kaharian) (hindi mahahanap)</a><br />',
+	'chemFunctions_CAS' => 'Bilang sa CAS',
+	'chemFunctions_ATCCode' => 'Kodigo sa ATC',
+	'chemFunctions_ECNumber' => 'Bilang sa EC',
+	'chemFunctions_Formula' => 'Pormula',
+	'chemFunctions_Name' => 'Pangalan sa IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Pormula sa kimika: Kamalian sa ipinasok!',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

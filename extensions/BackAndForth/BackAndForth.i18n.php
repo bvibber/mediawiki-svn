@@ -472,7 +472,7 @@ $messages['lt'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'backforth-next' => 'Следно ($1)',
+	'backforth-next' => 'Следна ($1)',
 	'backforth-desc' => 'Додава "Следна" и "Претходна" врски на врвот од азбучниот индекс',
 	'backforth-prev' => 'Претходна ($1)',
 );

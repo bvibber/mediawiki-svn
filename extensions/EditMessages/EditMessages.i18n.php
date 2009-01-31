@@ -667,9 +667,11 @@ $messages['lfn'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Tomasdd
  */
 $messages['lt'] = array(
+	'editmessages' => 'Redaguoti pranešimus',
 	'editmsg-search' => 'Ieškoti',
 );
 
@@ -1045,6 +1047,29 @@ $messages['th'] = array(
 	'editmsg-apply-patch' => 'เพิ่มเติมแพตช์',
 	'editmsg-no-patch' => 'ไม่สามารถดำเนินคำสั่ง "patch"',
 	'editmsg-patch-success' => 'ติดตั้งแพตช์สมบูรณ์',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Nakabatay sa web na pagbago]] ng malakihang mga bilang ng mga talaksang Messages*.php',
+	'editmessages' => 'Baguhin ang mga mensahe',
+	'editmsg-target' => 'Puntiryang mensahe:',
+	'editmsg-search' => 'Maghanap',
+	'editmsg-show-list' => 'Ipinapakita ang mga halaga para sa pangalan ng mensaheng "$1"',
+	'editmsg-get-patch' => 'Gumawa ng pantapal',
+	'editmsg-new-search' => 'Bagong paghahanap',
+	'editmsg-warning-parse1' => '* Hindi tugma ang pangkaraniwang pagsasaad ng pangalan ng mensahe: $1',
+	'editmsg-warning-parse2' => '* Inaasahan ang panandang pambanggit pagkaraan ng pana: $1',
+	'editmsg-warning-parse3' => '* Hindi natagpuan ang bagting ng wakas ng halaga: $1',
+	'editmsg-warning-file' => '* Nakaranas ng mga kamalian sa pagbasa ng talaksan para sa sumusunod na {{PLURAL:$2|wika|mga wika}}: $1',
+	'editmsg-warning-mismatch' => '* Wala sa orihinal na teksto ang inaasahang halaga para sa sumusunod na
+{{PLURAL:$2|wika|mga wika}}: $1',
+	'editmsg-apply-patch' => 'Ilagay ang pantapal',
+	'editmsg-no-patch' => 'Hindi naisagawa ang utos na maglagay ng "pantapal"',
+	'editmsg-patch-failed' => 'Nabigo ang pantapal sa kalagayang paglabas na $1',
+	'editmsg-patch-success' => 'Matagumpay na natapalan.',
 );
 
 /** Turkish (Türkçe)

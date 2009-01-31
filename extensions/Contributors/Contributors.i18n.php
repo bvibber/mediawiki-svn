@@ -1234,6 +1234,23 @@ $messages['th'] = array(
 	'contributors-toolbox' => 'ผู้เขียนหลัก',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'contributors' => 'Mga tagapag-ambag',
+	'contributors-desc' => 'Nagbubuod ng pangunahing mga tagapag-ambag sa isang pahina',
+	'contributors-toolbox' => 'Pangunahing mga tagapag-ambag',
+	'contributors-legend' => 'Itala ang pangunahing mga tagapag-ambag sa isang pahina',
+	'contributors-target' => 'Pamagat:',
+	'contributors-submit' => 'Ipakita',
+	'contributors-subtitle' => 'Pangunahing mga tagapag-ambag sa $1',
+	'contributors-others-long' => 'Mayroong {{PLURAL:$1|isang ibang tagapag-ambag|$1 iba pang mga tagapag-ambag}} sa pahinang ito.',
+	'contributors-others' => 'at {{PLURAL:$1|isa pa|$1 mga iba pa}}',
+	'contributors-badtitle' => 'Hindi tanggap na pamagat.',
+	'contributors-nosuchpage' => 'Hindi umiiral ang pahinang $1.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  * @author Suelnur

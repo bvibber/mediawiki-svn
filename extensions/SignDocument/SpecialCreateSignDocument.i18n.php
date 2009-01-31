@@ -836,9 +836,10 @@ $messages['lb'] = array(
 	'createsigndoc-create' => 'Uleeën',
 	'createsigndoc-error-generic' => 'Feeler: $1',
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
-	'createsigndoc-success' => "D'Ënnerschreiwe vu Dokumenter ass op [[$1]] aktivéiert.
-Fir et ze testen, gitt w.e.g. op [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} dës Säit].",
-	'createsigndoc-error-alreadycreated' => 'Dokument ënnerschreiwen "$1" gëtt et schonn',
+	'createsigndoc-success' => "D'Ënnerschreiwe vun Dokumenter ass op [[$1]] aktivéiert.
+Dir kënnt [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} et testen].",
+	'createsigndoc-error-alreadycreated' => 'Dokument ënnerschreiwen "$1" gëtt et schonn.
+Dir kënnt et keng zweete Kéier maachen.',
 );
 
 /** Limburgish (Limburgs)
@@ -1042,8 +1043,10 @@ Mercés d'indicar lo nom de l'article pelquin desiratz activar la foncion, los m
 	'createsigndoc-create' => 'Crear',
 	'createsigndoc-error-generic' => 'Error : $1',
 	'createsigndoc-error-pagenoexist' => 'La pagina [[$1]] existís pas.',
-	'createsigndoc-success' => "L'autentificacion dels documents es activada sus [[$1]]. Per la testar, vejatz [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} aquesta pagina].",
-	'createsigndoc-error-alreadycreated' => 'Lo document d’autentificacion per « $1 » ja es estat creat.',
+	'createsigndoc-success' => "L'autentificacion dels documents es activada sus [[$1]].
+La podètz [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testar].",
+	'createsigndoc-error-alreadycreated' => 'Lo document d’autentificacion per « $1 » ja es estat creat.
+O pòt pas èsser un segond còp.',
 );
 
 /** Ossetic (Иронау)

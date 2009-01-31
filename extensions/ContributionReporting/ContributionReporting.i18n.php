@@ -2030,6 +2030,14 @@ $messages['ro'] = array(
 	'fundraiserstats-tab-contributions' => 'Număr de contribuţii',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'contributiontotal' => 'Condrebbute totele',
+	'contributionhistory' => 'Storie de le condrebbute',
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Александр Сигачёв

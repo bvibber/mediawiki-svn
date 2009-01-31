@@ -987,6 +987,21 @@ $messages['th'] = array(
 	'edituser-dosearch' => 'ค้นหา',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'edituser-desc' => 'Nagpapahintulot sa may pribilehiyong mga tagagamit na makapagbago ng mga kagustuhan ng iba pang mga tagagamit',
+	'edituser' => 'Baguhin ang tagagamit',
+	'edituser-logout' => 'Alisin sa pagkakalagda ang tagagamit',
+	'edituser-username' => 'Pangalan',
+	'edituser-dosearch' => 'Maghanap',
+	'edituser-nouser' => 'Hindi umiiral ang tinukoy na tagagamit',
+	'edituser-exempt' => 'Hindi maaaring baguhin ang tinukoy na tagagamit',
+	'right-edituser' => 'Baguhin ang mga kagustuhan ng ibang mga tagagamit',
+	'right-edituser-exempt' => 'Hindi mababago ng iba ang mga kagustuhan ng tagagamit na ito',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

@@ -507,6 +507,14 @@ $messages['sv'] = array(
 	'absenteelandlord-desc' => 'Låser automatiskt wikins databas om alla administratörer är frånvarande under en viss tid',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'absenteelandlord-reason' => 'Kusang ikinandado ang kalipunan ng dato dahil sa kawalan ng kasiglahan mula sa mga tagapangasiwa.',
+	'absenteelandlord-desc' => 'Kusang nagkakandado ng kalipunan ng dato kapag hindi masigla ang lahat ng mga tagapagpaandar ng sistema sa loob ng ilang panahon',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

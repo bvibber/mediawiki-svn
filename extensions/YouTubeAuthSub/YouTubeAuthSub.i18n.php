@@ -59,10 +59,12 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Arnobarnard
  * @author Naudefj
  */
 $messages['af'] = array(
+	'youtubeauthsub' => 'Laai YouTube-video op',
 	'youtubeauthsub_title' => 'Titel',
 	'youtubeauthsub_description' => 'Beskrywing',
 	'youtubeauthsub_keywords' => 'Sleutelwoorde',

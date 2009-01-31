@@ -68,10 +68,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author SMP
  */
 $messages['ca'] = array(
 	'contributionseditcount' => 'Aquest usuari té $1 contribucions.',
-	'contributionseditcount-desc' => 'Mostra un recompte de contribucions a [[Special:Contributions]]',
+	'contributionseditcount-desc' => "Mostra un recompte d'edicions a [[Special:Contributions|la pàgina de contribucions d'usuari]]",
 );
 
 /** Czech (Česky)

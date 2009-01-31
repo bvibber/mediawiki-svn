@@ -453,6 +453,22 @@ $messages['sv'] = array(
    #</pre><!-- låt denna linje vara ifred -->',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'editsubpages-desc' => 'Nagpapahintulot sa mga tagapagpatakbo ng sistemang matanggal ang pagkakakandado ng isang pahina at lahat ng mga kabahaging pahina ng pahinang iyan para sa hindi nagpapakilalang pamamatnugot sa pamamagitan ng [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => '  #<!-- leave this line alone --><pre>
+# Ilagay sa ibaba ang mga pahinang nais mong huwag ikandado na ginagamit ang
+# * Pangalan ng pahina
+# Dapat na nagsisimula ang hindi ikinandadong mga pahina sa isang panandang "punglo" upang maibilang,
+# ituturing na isang puna ang lahat ng iba pa
+# Maaaring mga [[links]] at maselan kapag minamakinilya ang mga pangalan ng pahina 
+# Gayon din, kusang kasama sa hindi pagkakakandado ang mga pahina ng usapan
+# Tingnan ang http://www.mediawiki.org/wiki/Extension:EditSubpages para sa mas marami pang kabatiran
+  #</pre><!-- leave this line alone -->',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

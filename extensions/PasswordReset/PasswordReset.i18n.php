@@ -801,21 +801,22 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aviator
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
 	'passwordreset' => 'Set semula kata laluan',
-	'passwordreset-desc' => "[[Special:PasswordReset|Set semula kata laluan Wiki]] - memerlukan admin 'set semula kata laluan'",
-	'passwordreset-invalidusername' => 'Nama pengguna tidak tepat',
-	'passwordreset-emptyusername' => 'Isikan nama pengguna',
-	'passwordreset-nopassmatch' => 'Kata laluan tidak tepat',
-	'passwordreset-badtoken' => 'Edit token tidak tepat',
+	'passwordreset-desc' => "[[Special:PasswordReset|Set semula kata laluan pengguna]] - memerlukan keistimewaan 'passwordreset'",
+	'passwordreset-invalidusername' => 'Nama pengguna tidak sah',
+	'passwordreset-emptyusername' => 'Nama pengguna kosong',
+	'passwordreset-nopassmatch' => 'Kata laluan tidak sama',
+	'passwordreset-badtoken' => 'Token sunting tidak sah',
 	'passwordreset-username' => 'Nama pengguna:',
 	'passwordreset-newpass' => 'Kata laluan baru:',
-	'passwordreset-confirmpass' => 'Setkan kata laluan:',
+	'passwordreset-confirmpass' => 'Ulangi kata laluan:',
 	'passwordreset-submit' => 'Set semula kata laluan',
-	'passwordreset-success' => 'Kata laluan telah disetkan semula untuk penggua ID: $1',
-	'passwordreset-disableuser' => 'Sekat akaun pengguna?',
+	'passwordreset-success' => 'Kata laluan telah disetkan semula untuk ID pengguna: $1',
+	'passwordreset-disableuser' => 'Lumpuhkan akaun pengguna?',
 );
 
 /** Maltese (Malti)

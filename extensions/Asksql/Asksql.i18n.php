@@ -397,6 +397,23 @@ $messages['grc'] = array(
 	'asksql' => 'SQL πεῦσις',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'asksql' => 'SQL-Abfroge',
+	'asksql-desc' => 'SQL-Abfroge durfiere iber e [[Special:Asksql|Spezialsyte]]',
+	'asksqltext' => "Bruuch s Formular go diräkti Abfroge an d Datebank durfiere.
+Bruuch eifachi Aafierigszeiche ('wie die') go Zeichechette tränne.
+D Abfroge chenne d Server seli starch belaschte, bruuch d Funktion wäge däm sparsam.",
+	'sqlislogged' => 'Bitte gib Acht, ass alli Abfroge dokumentiert wäre.',
+	'sqlquery' => 'Abfrog yygee',
+	'querybtn' => 'Abfrog durfiere',
+	'selectonly' => 'S sin nume reini Läsezuegriff erlaubt.',
+	'querysuccessful' => 'Abfrog erfolgryych',
+	'right-asksql' => 'SQL-Abfroge uusfiere',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

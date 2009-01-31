@@ -687,18 +687,25 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'recordadmin' => 'Registreringshandsaming',
+	'recordadmin-newsearch' => 'Nytt søk etter $1',
+	'recordadmin-submit' => 'Send',
 	'recordadmin-alreadyexist' => '«$1» finst frå før.',
+	'recordadmin-createsuccess' => '$1 er oppretta',
 	'recordadmin-badtitle' => 'Ugyldig tittel!',
 	'recordadmin-buttonsearch' => 'Søk',
 	'recordadmin-buttoncreate' => 'Opprett',
 	'recordadmin-searchresult' => 'Søkjeresultat',
 	'recordadmin-edit' => 'Endrar $1',
 	'recordadmin-typeupdated' => 'Eigenskapane til $1 blei oppdaterte',
+	'recordadmin-updatesuccess' => '$1 er oppdatert',
+	'recordadmin-updateerror' => 'Ein feil oppstod under oppdatering',
 	'recordadmin-buttonsave' => 'Lagra',
 	'recordadmin-createlink' => '<a href=$1>opprett ein</a>',
 	'recordadmin-viewlink' => 'sjå',
 	'recordadmin-editlink' => 'endra',
 	'recordadmin-created' => 'Oppretta',
+	'recordadmin-actions' => 'Handlingar',
 );
 
 /** Occitan (Occitan)

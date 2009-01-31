@@ -165,10 +165,34 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Aleator
+ * @author SMP
  */
 $messages['ca'] = array(
+	'deletebatch' => 'Esborra un lot de pàgines',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Esborreu un lot de pàgines]]',
+	'deletebatch-help' => "Esborreu un lot de pàgines. Podeu fer esborraments senzills o esborrar les pàgines llistades en un fitxer.
+Escolliu l'usuari que es mostrarà en el registre d'esborrament.
+El fitxer indicat només pot contenir el títol de la pàgina i el motiu per a esborrar-la separats per una barra vertical | a cada línia.",
+	'deletebatch-caption' => 'Llista de pàgines:',
+	'deletebatch-title' => 'Esborra lot',
+	'deletebatch-link-back' => 'Torna a la pàgina especial',
+	'deletebatch-as' => 'Executa el script com a:',
+	'deletebatch-both-modes' => 'Escolliu una pàgina especificada o una llista de pàgines donada.',
 	'deletebatch-or' => '<b>o</b>',
-	'deletebatch-page' => 'Pàgines a esborrar',
+	'deletebatch-page' => 'Pàgines a esborrar:',
+	'deletebatch-reason' => 'Motiu per a ser esborrat',
+	'deletebatch-processing' => 'esborrant pàgines $1',
+	'deletebatch-from-file' => 'des de llista',
+	'deletebatch-from-form' => 'des de formulari',
+	'deletebatch-success-subtitle' => 'per $1',
+	'deletebatch-omitting-nonexistant' => "S'ha omès la pàgina inexistent $1.",
+	'deletebatch-omitting-invalid' => "S'ha omès la pàgina no vàlida $1.",
+	'deletebatch-file-bad-format' => 'El fitxer ha de ser de text pla',
+	'deletebatch-file-missing' => "No s'ha pogut llegir el fitxer",
+	'deletebatch-select-script' => "script d'eliminació de pàgines",
+	'deletebatch-select-yourself' => 'vós',
+	'deletebatch-no-page' => 'Especifiqueu com a mínim una pàgina per esborrar o escolliu un fitxer que contingui una llista de pàgines.',
+	'right-deletebatch' => 'Lot de pàgines a esborrar',
 );
 
 /** German (Deutsch)
@@ -647,7 +671,7 @@ $messages['lb'] = array(
 	'deletebatch-desc' => '[[Special:DeleteBatch|Läscht eng Rei Säiten]]',
 	'deletebatch-caption' => 'Lëscht vun der Säit:',
 	'deletebatch-title' => 'Zesumme läschen',
-	'deletebatch-link-back' => "Dir kënnt op d'Erweiderung zréckgoen",
+	'deletebatch-link-back' => "Gitt zréck op d'Spezialsäit",
 	'deletebatch-both-modes' => 'Wielt entweder eng spezifesch Säit oder eng spezifesch Lëscht vu Säiten.',
 	'deletebatch-or' => '<b>ODER</b>',
 	'deletebatch-page' => 'Säite fir ze läschen:',
@@ -794,7 +818,7 @@ Causissètz un utilizaire que serà afichat dins lo jornal de las supressions.
 Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu separat per un « | » dins cada linha.',
 	'deletebatch-caption' => 'Tièra de paginas :',
 	'deletebatch-title' => 'Suprimir en lòt',
-	'deletebatch-link-back' => 'Podètz tornar a l’extension',
+	'deletebatch-link-back' => 'Tornar a la pagina especiala',
 	'deletebatch-as' => "Aviar l'escript coma :",
 	'deletebatch-both-modes' => 'Causissètz, siá una de las paginas indicadas, siá una tièra donada de paginas.',
 	'deletebatch-or' => '<b>o</b>',

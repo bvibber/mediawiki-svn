@@ -494,10 +494,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'contributiontracking-desc' => 'Przekierowanie do systemu płatnościowego dla darczyńców Fundacji Wikimedia',
-	'contributiontracking' => 'Przekierowanie do systemu płatnościowego',
+	'contributiontracking-desc' => 'Przekierowanie do systemu obsługi wpłat dla darczyńców Fundacji Wikimedia',
+	'contributiontracking' => 'Przekierowanie do systemu obsługi wpłat',
 	'contrib-tracking-error' => 'Błąd',
 	'contrib-tracking-error-text' => 'Niewłaściwy format danych wejściowych',
 	'contrib-tracking-submitting' => 'Przesyłanie danych do systemu płatności...',

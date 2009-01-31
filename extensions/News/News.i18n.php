@@ -91,6 +91,13 @@ $messages['gl'] = array(
 	'newsextension-desc' => 'Amosa uns cambios recentes personalizados nas páxinas dun wiki ou como unha fonte de noticias RSS ou Atom',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'newsextension-desc' => 'Zeigt aapassti, individuälli „Letschti Änderige“ in ere Syte oder as RSS- oder Atom-Feed.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

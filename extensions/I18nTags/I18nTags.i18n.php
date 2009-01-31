@@ -102,6 +102,13 @@ $messages['gl'] = array(
 	'i18ntags-desc' => 'Accede ás funcións i18n para darlles formato aos números, á gramática e ao plural nas linguas dispoñibles',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'i18ntags-desc' => 'Zuegriff uf d i18n-Funktione zue dr Zahleformatierig, Plural- un Grammatikbildig in jedere verfiegbare Sproch',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

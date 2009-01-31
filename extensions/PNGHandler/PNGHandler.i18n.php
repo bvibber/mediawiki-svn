@@ -106,6 +106,13 @@ $messages['gl'] = array(
 	'pnghandler-desc' => 'Dálles outro tamaño aos ficheiros PNG usando pngds',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'pnghandler-desc' => 'Ändere d Greßi vu PNG mit Hilf vu „pngds“',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

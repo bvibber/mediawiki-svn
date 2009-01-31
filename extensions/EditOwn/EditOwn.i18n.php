@@ -309,6 +309,13 @@ $messages['tet'] = array(
 	'editown-desc' => "Uza-na'in sira-ne'ebé la iha priviléjiu 'editall' bele filak pájina sira-ne'ebé sira kria tiha de'it",
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'editown-desc' => 'Ang mga tagagamit na walang karapatang "baguhin lahat" ay makapagbabago lamang ng mga pahinang sila ang lumikha',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

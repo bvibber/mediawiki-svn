@@ -471,7 +471,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'inspectcache' => '<i lang="en">Cache</i> beloore',
-	'inspectcache-desc' => 'En eifach Werkzeuch för däm jemeinsamme <i lang="en">cache</i> singe Enhallt ußzelässe.',
+	'inspectcache-desc' => 'En eifach Werkzüch för däm jemeinsamme <i lang="en">cache</i> singe Enhallt enshpezeere.',
 	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Jemeinsame <i lang="en">cache</i>',
 	'inspectcache-parser' => 'Em <i lang="en">Parser</i> singe <i lang="en">cache</i>',

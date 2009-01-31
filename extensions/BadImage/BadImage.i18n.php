@@ -1235,6 +1235,7 @@ $messages['loz'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Hugo.arg
  */
 $messages['lt'] = array(
@@ -1246,6 +1247,7 @@ $messages['lt'] = array(
 	'badimages-remove' => '(pašalinti)',
 	'badimages-remove-btn' => 'Pašalinti',
 	'badimages-remove-confirm' => 'Patvirtinkite, jog norite pašalinti $1 iš sąrašo:',
+	'badimages-removed' => '$1 buvo pašalintas iš sąrašo.',
 );
 
 /** Eastern Mari (Олык Марий)

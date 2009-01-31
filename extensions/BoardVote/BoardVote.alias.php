@@ -128,6 +128,11 @@ $aliases['nl'] = array(
 	'BoardVote' => array( 'Bestuursverkiezing' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'BoardVote' => array( 'Styreval' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'BoardVote' => array( 'Styrevalg' ),

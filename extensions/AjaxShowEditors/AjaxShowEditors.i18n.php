@@ -995,6 +995,19 @@ $messages['th'] = array(
 	'ajax-se-usernotfound' => 'ผิดพลาด : ไม่พบผู้ใช้นี้',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'ajax-se-desc' => 'Nagpapakita ng namamatnugot na mga tagagamit na namamatnugot ng magkatulad na pahina',
+	'ajax-se-title' => 'Kasalukuyang pinapatnugutan:',
+	'ajax-se-pending' => 'naghihintay ng pagsasariwa... (pindutin ang kahong ito o magsimulang mamatnugot)',
+	'ajax-se-idling' => '($1s na ang nakalipas)',
+	'ajax-se-pagedoesnotexist' => 'hindi umiiral ang pahina',
+	'ajax-se-userinvalid' => 'Kamalian: hindi tanggap ang tagagamit',
+	'ajax-se-usernotfound' => 'Kamalian: hindi natagpuan ang tagagamit',
+);
+
 /** Turkish (Türkçe)
  * @author Srhat
  */

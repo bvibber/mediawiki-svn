@@ -1086,6 +1086,14 @@ $messages['ro'] = array(
 A apărut o eroare necunoscută.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'duplicator-source' => 'Sorgende:',
+	'duplicator-dest' => 'Destinazione:',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  * @author Александр Сигачёв

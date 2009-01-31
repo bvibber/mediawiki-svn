@@ -1146,6 +1146,31 @@ Zréck op:
 	'crosswikiunblock-local' => 'Op dëser Säit kënne lokal Spären net opgehuewe ginn. Benotzt w.e.g. [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Homo
+ */
+$messages['lt'] = array(
+	'crosswikiblock-reason' => 'Priežastis:',
+	'crosswikiblock-submit' => 'Blokuoti šį naudotoją',
+	'crosswikiblock-anononly' => 'Blokuoti tik anoniminius naudotojus',
+	'crosswikiblock-autoblock' => 'Automatiškai blokuoti paskutinį naudotojo naudotą IP adresą, ir visus kitus adresus, iš kurių mėgins redaguoti',
+	'crosswikiunblock-reason' => 'Priežastis:',
+	'crosswikiunblock-submit' => 'Atblokuoti šį naudotoją',
+	'crosswikiunblock-success' => "Naudotojas '''$1''' sėkmingai atblokuotas.
+
+Grįžti į:
+* [[Special:CrosswikiBlock|Blokavimo forma]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Nenurodytas joks naudotojo vardas',
+	'crosswikiblock-nouser' => 'Naudotojas "$3" nerastas.',
+	'crosswikiblock-noreason' => 'Nenurodyta priežastis.',
+	'crosswikiblock-success' => "Naudotojas '''$3''' sėkmingai užblokuotas.
+
+Grįžti į:
+* [[Special:CrosswikiBlock|Blokavimo forma]]
+* [[$4]]",
+);
+
 /** Moksha (Мокшень)
  * @author Khazar II
  */
@@ -1906,6 +1931,51 @@ $messages['tg-cyrl'] = array(
 Баргардед ба:
 * [[Special:CrosswikiBlock|Форми бастан]]
 * [[$4]]",
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'crosswikiblock-desc' => 'Nagpapahintulot na mahadlangan ang mga tagagamit sa ibang mga wiki na ginagamitan ng isang [[Special:Crosswikiblock|natatanging pahina]]',
+	'crosswikiblock' => 'Hadlangan ang tagagamit sa ibang wiki',
+	'crosswikiblock-header' => 'Nagpapahintulot ang pahinang ito na hadlangan ang tagagamit sa ibang wiki.
+Pakisuri kung may pahintulot kang kumilos sa wiking ito at kung tumutugma ang mga kilos mo sa lahat ng mga patakaran.',
+	'crosswikiblock-target' => 'Adres ng IP o pangalan ng tagagamit at kapupuntahang wiki:',
+	'crosswikiblock-expiry' => 'Katapusan:',
+	'crosswikiblock-reason' => 'Dahilan:',
+	'crosswikiblock-submit' => 'Hadlangan ang tagagamit na ito',
+	'crosswikiblock-anononly' => 'Hadlangan lamang ang hindi nakikilalang mga tagagamit',
+	'crosswikiblock-nocreate' => 'Pigilan ang paglikha ng akawnt',
+	'crosswikiblock-autoblock' => 'Kusang hadlangan ang huling adres ng IP na ginamit ng tagagamit na ito, at alin mang susunod na mga adres na IP na susubukin nilang panggalingan upang makapamatnugot',
+	'crosswikiblock-noemail' => 'Pigilang makapagpadala ng e-liham ang tagagamit',
+	'crosswikiunblock' => 'Huwag hadlangan ang tagagamit sa ibang wiki',
+	'crosswikiunblock-header' => 'Nagpapahintulot ang pahinang ito na tanggalin ang pagkakahadlang ng tagagamit sa ibang wiki.
+Pakisuri kung may pahintulot kang kumilos sa wiking ito at ang tumutugma ang kilos mo sa lahat ng mga patakaran.',
+	'crosswikiunblock-user' => 'Pangalan ng tagagamit, adres ng IP o ID ng paghadlang at kapupuntahang wiki:',
+	'crosswikiunblock-reason' => 'Dahilan:',
+	'crosswikiunblock-submit' => 'Huwag hadlangan ang tagagamit na ito',
+	'crosswikiunblock-success' => "Matagumpay na tinanggal ang hadlang ng tagagamit na si '''$1'''.
+
+Magbalik sa:
+* [[Special:CrosswikiBlock|Pormularyo ng paghadlang]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Walang ibinigay na pangalan ng tagagamit',
+	'crosswikiblock-local' => 'Hindi sinusuportahan ang pampook na mga paghahadlang sa pamamagitan ng ugnayang hangganang ito. Gamitin ang [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Hindi umiiral ang kalipunan ng datong $1',
+	'crosswikiblock-noname' => 'Ang "$1" ay isang hindi tanggap na pangalan ng tagagamit.',
+	'crosswikiblock-nouser' => 'Hindi natagpuan ang tagagamit na si "$3".',
+	'crosswikiblock-noexpiry' => 'Hindi tanggap na wakas ng bisa: $1.',
+	'crosswikiblock-noreason' => 'Walang tinukoy na dahilan.',
+	'crosswikiblock-notoken' => 'Hindi tanggap na tanda ng pagbago.',
+	'crosswikiblock-alreadyblocked' => 'Hinahadlangan na ang tagagamit na si $3.',
+	'crosswikiblock-noblock' => 'Hindi hinahadlangan ang tagagamit na ito.',
+	'crosswikiblock-success' => "Matagumpay na nahadlangan ang tagagamit na si '''$3'''.
+
+Magbalik sa:
+* [[Special:CrosswikiBlock|Pormularyo ng paghadlang]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Hindi tinatangkilik ang pampook na mga paghahadlang sa pamamagitan ng ugnayang-hangganang ito. Gamitin ang [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Turkish (Türkçe)

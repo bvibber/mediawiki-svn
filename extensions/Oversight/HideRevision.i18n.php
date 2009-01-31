@@ -1011,7 +1011,7 @@ $messages['fr'] = array(
 	'group-oversight-member' => 'Superviseur',
 	'grouppage-oversight' => '{{ns:project}}:Superviseur',
 	'right-oversight' => 'Voir les révisions cachées par supervision',
-	'right-hiderevision' => 'Examiner et restaurer les revisions masquées aux administrateurs',
+	'right-hiderevision' => 'Examiner et restaurer les révisions masquées aux administrateurs',
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue' => 'Continuer',
 	'hiderevision-text' => "Cette fonctionnalité doit être utilisée '''uniquement''' pour les cas suivants :
@@ -2573,7 +2573,7 @@ $messages['pl'] = array(
 	'grouppage-oversight' => '{{ns:project}}:Rewizorzy',
 	'right-oversight' => 'Podgląd ukrytych wersji',
 	'right-hiderevision' => 'Podgląd i odtwarzanie wersji ukrytych przed Administratorami',
-	'hiderevision-prompt' => 'Numer wersji do usunięcia:',
+	'hiderevision-prompt' => 'Numer wersji do ukrycia',
 	'hiderevision-continue' => 'Kontynuuj',
 	'hiderevision-text' => "Funkcja powinna być użyta '''jedynie''' w następujących przypadkach:
 * Zamieszczenie danych osobowych podlegających ochronie
@@ -2582,7 +2582,7 @@ $messages['pl'] = array(
 '''Nadużywanie tej funkcji będzie skutkowało utratą uprawnień.'''
 
 Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie usunięcia są rejestrowane, a usuwane dane mogą zostać ręcznie odtworzone przez administratorów bazy danych jeśli usunięcie było omyłkowe.",
-	'hiderevision-reason' => 'Powód (nie będzie widoczny publicznie):',
+	'hiderevision-reason' => 'Powód (nie będzie widoczny publicznie)',
 	'hiderevision-submit' => 'Trwale ukryj te dane',
 	'hiderevision-tab' => 'Ukryj tę wersję',
 	'hiderevision-link' => 'Ukryty wkład użytkownika',
@@ -2593,12 +2593,12 @@ Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie
 	'hiderevision-error-missing' => 'Nie znaleziono w bazie danych.',
 	'hiderevision-error-current' => 'Nie można usunąć ostatniej edycji strony.
 Najpierw wycofaj ostatnią edycję.',
-	'hiderevision-error-delete' => 'Nie można zarchiwizować. Czy wcześniej została usunięta?',
+	'hiderevision-error-delete' => 'Nie można zarchiwizować. Czy przypadkiem wcześniej nie została usunięta?',
 	'hiderevision-archive-status' => 'Usunięto wersję z $1: $2',
 	'oversight-nodiff' => 'Nie można śledzić zmian, ponieważ brak wcześniejszych wersji tej strony. Prawdopodobnie:
 *Strona została usunięta
 *Ta ukryta wersja była pierwszą wersją',
-	'oversight-log-hiderev' => 'usunął edycję z $1',
+	'oversight-log-hiderev' => 'ukrył edycję strony $1',
 	'oversight' => 'Rejestr ukrywania',
 	'oversight-view' => 'szczegóły',
 	'oversight-difference' => '(Różnica z poprzednią wersją, która pozostała)',
@@ -2607,8 +2607,8 @@ Najpierw wycofaj ostatnią edycję.',
 	'oversight-header' => 'Poniżej znajduje się lista ukrytych, w ostatnim czasie, trwale przed dostępem publicznym wersji.
 Ujawnianie tych informacji może skutkować stałą utratą uprawnień Rewizora.',
 	'oversight-legend' => 'Szukaj ukrytych wersji w rejestrze',
-	'oversight-oversighter' => 'Rewizor:',
-	'oversight-offender' => 'Autor usuniętej edycji:',
+	'oversight-oversighter' => 'Rewizor',
+	'oversight-offender' => 'Autor usuniętej edycji',
 );
 
 /** Piedmontese (Piemontèis)

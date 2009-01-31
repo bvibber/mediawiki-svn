@@ -801,6 +801,27 @@ $messages['tet'] = array(
 	'amazonplus-more' => 'barak liu',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'amazonplus-desc' => 'Isang napaka maipapasadyang karugtong upang maipakita ang kabatirang nasa Amazon',
+	'amazonplus-nores' => 'Kamalian: Walang natagpuang resulta!',
+	'amazonplus-noidres' => 'Kamalian: Hindi matagpuan ang ID ng isang produkto!',
+	'amazonplus-fgcerr' => 'Kamalian: Hindi makuha ang dato mula sa Amazon!',
+	'amazonplus-slserr' => 'Kamalian: Hindi mabanghay ang dato mula sa Amazon!',
+	'amazonplus-used' => 'nagamit na',
+	'amazonplus-german' => 'Aleman',
+	'amazonplus-french' => 'Pranses',
+	'amazonplus-japanese' => 'Hapones',
+	'amazonplus-amazon' => 'halaga sa amazon',
+	'amazonplus-new' => 'bago',
+	'amazonplus-none' => 'Walang ipinagbibiling mga sipi ng bagay na ito.',
+	'amazonplus-cp-none' => 'Wala',
+	'amazonplus-more' => 'mas marami',
+	'amazonplus-less' => 'mas kaunti',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

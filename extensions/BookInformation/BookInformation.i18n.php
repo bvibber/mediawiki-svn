@@ -553,10 +553,22 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author J. 'mach' wust
  */
 $messages['gsw'] = array(
+	'bookinfo-header' => 'Informatione iber Biecher',
+	'bookinfo-desc' => 'Ergänzt d [[Special:Booksources|Buechquälle-Spezialsyte]] mit Informatione vun eme Netzaagebot',
 	'bookinfo-result-title' => 'Titel:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Verlag:',
+	'bookinfo-result-year' => 'Johr:',
+	'bookinfo-error-invalidisbn' => 'ISBN nit giltig.',
+	'bookinfo-error-nosuchitem' => 'D Syte git s nit oder isch nit gfunde wore.',
+	'bookinfo-error-nodriver' => 'S isch nit megli gsi, d Buechinformations-Schnittstell z initialisiere.',
+	'bookinfo-error-noresponse' => 'Kei Antwort oder Zytiberschrytig.',
+	'bookinfo-purchase' => 'Des Buech cha bi $1 gchauft wäre.',
+	'bookinfo-provider' => 'Date-Lieferant: $1',
 );
 
 /** Manx (Gaelg)
@@ -1006,11 +1018,18 @@ $messages['lt'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'bookinfo-header' => 'Информации за книга',
+	'bookinfo-desc' => 'Проширување на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
 	'bookinfo-result-title' => 'Наслов:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издавач:',
 	'bookinfo-result-year' => 'Година:',
 	'bookinfo-error-invalidisbn' => 'Погрешно внесен ISBN код:',
+	'bookinfo-error-nosuchitem' => 'Податокот не постои или не може да се најде.',
+	'bookinfo-error-nodriver' => 'Не може да се иницијализира соодветниот Book Information Driver.',
+	'bookinfo-error-noresponse' => 'Нема одговор или премногу се чека на одговор.',
+	'bookinfo-purchase' => 'Нарачај ја оваа книга од $1',
+	'bookinfo-provider' => 'Податок од: $1',
 );
 
 /** Malayalam (മലയാളം)

@@ -111,6 +111,7 @@ $messages['bs'] = array(
 Da li želite uređivati postojeću stranicu?',
 	'createpage_tryagain' => 'Ne. Želim napraviti novu stranicu sa različitim naslovom.',
 	'createpage_editexisting' => 'Da. Želim doprinositi na postojećoj stranici.',
+	'createpage-badtitle' => '"$1" se ne može koristiti kao naslov stranice',
 );
 
 /** Czech (Česky)

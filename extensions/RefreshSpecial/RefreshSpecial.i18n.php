@@ -531,7 +531,7 @@ $messages['ksh'] = array(
 	'refreshspecial' => 'Söndersigge ier Date neu opfreshe',
 	'refreshspecial-desc' => 'Määt et müjjelesch, Söndersigge ier Date [[Special:RefreshSpecial|fun Hand neu opfreshe]] ze lohße.',
 	'refreshspecial-title' => 'Söndersigge neu aanzeije',
-	'refreshspecial-help' => 'Hee die Söndersigg jitt Der e Werkzeuch för de Söndersigge ier Daten
+	'refreshspecial-help' => 'Hee die Söndersigg jitt Der e Werkzüch för de Söndersigge ier Daten
 vun Hand neu ußrechne ze johße.
 Wann De all die Söndersigge doför ußjewählt häs, donn op dä Knopp
 „{{int:refreshspecial-button}}“ klekke, öm dat neu Opnämme aanzefange.

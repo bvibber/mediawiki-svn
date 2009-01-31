@@ -65,6 +65,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'commentspammer-desc' => 'Odbacuje izmjene od sumnjivih spamera sa komentarima sa DNS nepoželjnog spiska',
+	'commentspammer-log-msg' => 'izmjena od [[Special:Contributions/$1|$1]] za [[:$2]].',
 );
 
 /** Czech (Česky)

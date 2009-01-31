@@ -158,6 +158,13 @@ $messages['gl'] = array(
 	'poem-desc' => 'Engada a etiqueta <tt>&lt;poem&gt;</tt> para o formato poema',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'poem-desc' => 'Fiegt s <tt>&lt;poem&gt;</tt>-Tag zue zum Formatiere vu Gedicht',
+);
+
 /** Hebrew (עברית) */
 $messages['he'] = array(
 	'poem-desc' => 'הוספת התגית <tt>&lt;poem&gt;</tt> לעיצוב שירה',

@@ -297,6 +297,13 @@ $messages['th'] = array(
 	'gnuplot-desc' => 'ใส่แท็ก <code><nowiki><gnuplot></nowiki></code> เพื่อใช้งานนิวพลอต (Gnuplot)',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'gnuplot-desc' => 'Nagdaragdag ng tatak na <code><nowiki><gnuplot></nowiki></code> upang magamit ang Gnuplot',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

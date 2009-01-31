@@ -499,6 +499,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author ChrisiPK
  * @author Revolus
  * @author Umherirrender
@@ -529,7 +530,7 @@ Vielleicht magst du „$2“ stattdessen verwenden?',
 	'math_IllegalDelimiter' => 'Ungültiges Trennzeichen hinter „$1“',
 	'math_IllegalFinalBackslash' => 'Ungültiger Backslash „\\“ am Ende der Eingabe',
 	'math_IllegalNestedFontEncodings' => 'Zeichenkodierungsanweisungen können nicht geschachtelt werden',
-	'math_IllegalRedefinition' => 'Die Anweiung „$1“ wurde bereits definiert. Du kannst sie nicht überschreiben',
+	'math_IllegalRedefinition' => 'Die Anweisung „$1“ wurde bereits definiert. Du kannst sie nicht überschreiben',
 	'math_InvalidColour' => 'Die Farbe „$1“ ist ungültig',
 	'math_InvalidUtf8Input' => 'Die Eingabe ist keine gültige UTF-8-Zeichenkette',
 	'math_LatexFontNotSpecified' => 'Es wurde keine LaTeX-Schriftart für „$1” angegeben',
@@ -556,8 +557,8 @@ Versuche die problematischen Zeichen in „\\text{…}“ einzuschließen.',
 	'math_TooManyMathmlNodes' => 'Der MathML-Verarbeitungsbaum enthält zu viele Knoten',
 	'math_TooManyTokens' => 'Die Eingabe ist zu lang',
 	'math_UnavailableSymbolFontCombination' => 'Das Symbol „$1“ ist in der Schriftart „$2“ nicht vorhanden',
-	'math_UnexpectedNextCell' => 'Die Anweisung „&amp;“ kann nur zwischen in einem „\\begin … \\block“-Block stehen',
-	'math_UnexpectedNextRow' => 'Die Anweisung „\\\\“ kann nur zwischen in einem „\\begin … \\block“-Block stehen',
+	'math_UnexpectedNextCell' => 'Die Anweisung „&amp;“ kann nur in einem „\\begin … \\block“-Block stehen',
+	'math_UnexpectedNextRow' => 'Die Anweisung „\\\\“ kann nur in einem „\\begin … \\block“-Block stehen',
 	'math_UnmatchedBegin' => '„\\begin“ ohne zugehöriges „\\end“',
 	'math_UnmatchedCloseBrace' => 'Schließende Klammer „}” ohne zugehörige öffnende Klammer „{”',
 	'math_UnmatchedEnd' => '„\\end” ohne zugehöriges „\\begin”',
@@ -877,6 +878,77 @@ Debe ser un díxito único entre 1 e 9, ambos os dous inclusive.',
  */
 $messages['grc'] = array(
 	'math_LatexFontNotSpecified' => 'Οὐδεμία γραμματοσειρά LaTeX κεκαθωρισμένη ἐστὶν διὰ τὴν "$1"',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'math_noblahtex' => 'blahtex het nit chenne uusgfiert wäre in $1',
+	'math-desc' => 'MathML-Uusgab fir &lt;math&gt;-Tag',
+	'math_AmbiguousInfix' => 'An däre Stell isch „$1“ mehdytig.
+Versuech wyteri gschwungeni Chlammere „{ … }“ yyzfiege go d Yygab eidytig z mache.',
+	'math_CannotChangeDirectory' => 'Arbetsverzeichnis het nit chenne gwägslet wäre',
+	'math_CannotCreateTexFile' => 'tex-Datei het nit chenne aagleit wäre',
+	'math_CannotRunDvipng' => 'dvipng het nit chenne uusgfiert wäre',
+	'math_CannotRunLatex' => 'latex het nit chenne uusgfiert wäre',
+	'math_CannotWritePngDirectory' => 'S PNG-Verzeichnis isch nit bschryybbar',
+	'math_CannotWriteTexFile' => 'S isch nit megli gsi in d tex-Datei z schryybe',
+	'math_CasesRowTooBig' => 'Pro Zyylete vun eme „cases“-Block cha s nume zwee Yyträg gee',
+	'math_DoubleSubscript' => 'S sin zwee Indices an dr glyyche Basis vorchu.
+Nume ei Index isch erlaubt.',
+	'math_DoubleSuperscript' => 'S sin zwee Exponente an dr glyyche Basis vorchu.
+Nume ein Exponent isch erlaubt.',
+	'math_IllegalCharacter' => 'Nit giltig Zeiche in dr Yygab',
+	'math_IllegalCommandInMathMode' => 'm mathematische Modus isch d Aawyysig „$1“ nit erlaubt',
+	'math_IllegalCommandInMathModeWithHint' => 'Im mathematische Modus isch d Aawyysig „$1“ nit erlaubt.
+Villicht witt „$2“ defir bruuche?',
+	'math_IllegalCommandInTextMode' => 'Im Texmodus isch d Aawyysig „$1“ nit erlaubt',
+	'math_IllegalCommandInTextModeWithHint' => 'Im Textmodus isch d Aawyysig „$1“ nit erlaubt.
+Villicht witt „$2“ defir bruuche?',
+	'math_IllegalDelimiter' => 'Nit giltig Trännzeiche hinter „$1“',
+	'math_IllegalFinalBackslash' => 'Nit giltige Backslash „\\“ am Änd vu dr Yygab',
+	'math_IllegalNestedFontEncodings' => 'Zeichekodierisgaawyysige hän nit chenne gschachtlet wäre',
+	'math_IllegalRedefinition' => 'D Aawyysig „$1“ isch scho definiert wore. Du chasch si nit iberschryybe',
+	'math_InvalidColour' => 'D Farb „$1“ isch nit giltig',
+	'math_InvalidUtf8Input' => 'D Yygab isch kei giltigi UTF-8-Zeichechette',
+	'math_LatexFontNotSpecified' => 'S isch kei LaTeX-Schriftart fir „$1” aagee wore',
+	'math_LatexPackageUnavailable' => 'D PNG het nit chenne aagleit wäre, wel s LaTeX-Paket „$1“ nit verfiegbar isch',
+	'math_MismatchedBeginAndEnd' => 'D Aaweisig „$1“ passt nit zue „$2“',
+	'math_MisplacedLimits' => 'D Aawyysig „$1“ cha nume hinter eme mathematische Operator vorchu.
+Iberleg Dir s „\\mathop“ z neh.',
+	'math_MissingCommandAfterNewcommand' => 'Befählsname no „\\newcommand“ fählt oder isch nit giltig.
+S muess genau ei Befähl definiert wäre;
+är muess mit eme umgchehrte Schregstrich (Backslash) „\\“ aafange un s derf nume alfabetischi Zeichen din haa.',
+	'math_MissingDelimiter' => 'Trännzeiche hinter „$1“ fählt',
+	'math_MissingOpenBraceAfter' => 'Ufigi Chlammere „{“ hinter „$1“ fählt',
+	'math_MissingOpenBraceAtEnd' => 'Ufigi Chlammere „{“ am Änd vu dr Yygab fählt',
+	'math_MissingOpenBraceBefore' => 'Ufigi Chlammere „{“ vor „$1“ fählt',
+	'math_MissingOrIllegalParameterCount' => 'Parameterzahl in dr Definition vu „$1“ fählt oder isch nit giltig.
+S muess e einzelni Ziffer zwische 1 un 9 syy.',
+	'math_MissingOrIllegalParameterIndex' => 'Parameterindex in dr Definition vu „$1“ fählt oder isch nit giltig',
+	'math_NonAsciiInMathMode' => 'Sonderzeiche (Nit-ASCII-Zeiche) derfe nume im Textmodus bruucht wäre
+Versuech di problematische Zeiche in „\\text{…}“ yyzschliesse.',
+	'math_NotEnoughArguments' => 'S sin nit gnue Parameter fir „$1“ ibergee wore',
+	'math_PngIncompatibleCharacter' => 'PNG mit em Zeiche $1 chenne nit korräkt aagleit wäre',
+	'math_ReservedCommand' => 'D Aawyysig „$1“ isch fir di intärn Verwändig in blahtex reserviert',
+	'math_SubstackRowTooBig' => 'Pro Zyylete vun eme „substack“-Block derf s nume ei Yytrag gee',
+	'math_TooManyMathmlNodes' => 'Im MathML-Verarbeitigsbaum het s zvyyl Chnote',
+	'math_TooManyTokens' => 'D Yygab isch z lang',
+	'math_UnavailableSymbolFontCombination' => 'S Symbol „$1“ git s in dr Schriftart „$2“ nit',
+	'math_UnexpectedNextCell' => 'D Aawyysig „&amp;“ cha nume in eme „\\begin … \\block“-Block stoh',
+	'math_UnexpectedNextRow' => 'D Aawyysig „\\\\“ cha nume in eme „\\begin … \\block“-Block stoh',
+	'math_UnmatchedBegin' => '„\\begin“ ohni zuegherig „\\end“',
+	'math_UnmatchedCloseBrace' => 'Zuenigi Chlammere „}” ohni zuegherigi ufigi Chlammere „{”',
+	'math_UnmatchedEnd' => '„\\end” ohni zuegherig „\\begin”',
+	'math_UnmatchedLeft' => '„\\left” ohni zuegherig „\\right”',
+	'math_UnmatchedOpenBrace' => 'Ufigi Chlammere „{” ohni zuegherigi zuenigi Chlammere „}”',
+	'math_UnmatchedOpenBracket' => 'Ufigi Chlammere „[” ohni zuegherigi zuenigi Chlammere „]”',
+	'math_UnmatchedRight' => '„\\right” ohni zuegherig „\\left”',
+	'math_UnrecognisedCommand' => 'Nit bekannti Aawyysig „$1“',
+	'math_WrongFontEncoding' => 'S Symbol „$1“ derf in dr Zeichekodierig „$2“ nit vorchu',
+	'math_WrongFontEncodingWithHint' => 'S Symbol „$1“ derf in dr Zeichekodierig „$2“ nit vorchu
+Versuech d Aawyysig „$3{…}“.',
 );
 
 /** Hebrew (עברית)
@@ -2501,6 +2573,62 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'math_TooManyTokens' => 'สิ่งที่ใส่ลงไปยาวเกินกว่าที่ระบบจะรับได้',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'math_noblahtex' => 'Hindi maisakatuparan ang blahtex, na dapat na nasa $1',
+	'math-desc' => 'Kinalabasang MathML para sa mga tatak na &lt;math&gt;',
+	'math_AmbiguousInfix' => 'Alanganin ang pagkakalagay ng "$1".
+Subuking gumamit ng dagdag na mga brakete "{ ... }" upang maging malinaw.',
+	'math_CannotChangeDirectory' => 'Hindi mabago ang direktoryong panggawain',
+	'math_CannotCreateTexFile' => 'Hindi malikha ang talaksang tex',
+	'math_CannotRunDvipng' => 'Hindi mapaandar ang dvipng',
+	'math_CannotRunLatex' => 'Hindi mapaandar ang latex',
+	'math_CannotWritePngDirectory' => 'Hindi maisulat sa kinalabasang direktoryong PNG',
+	'math_CannotWriteTexFile' => 'Hindi maisulat sa talaksang tex',
+	'math_CasesRowTooBig' => 'Maaaring magkaroon lamang ng dalawang mga ipinasok sa loob ng bawat pahalang na hanay ng isang bloke ng "mga kaso"',
+	'math_DoubleSubscript' => 'Nakatagpo ng dalawang pang-ibabang mga panitik na nakakabit sa magkaparehong pamulaan.
+Isa lamang ang pinapahintulutan.',
+	'math_DoubleSuperscript' => 'Nakatagpo ng dalawang pang-itaas na mga panitik na nakakabit sa magkaparehong pamulaan.
+Isa lamang ang pinapahintulutan.',
+	'math_IllegalCharacter' => 'May labag na panitik sa ipinasok',
+	'math_IllegalCommandInMathMode' => 'Ang utos na "$1" ay labag sa modalidad na pangmatematika',
+	'math_IllegalCommandInMathModeWithHint' => 'Ang utos na "$1" ay labag sa modalidad na pangmatematika
+Marahil ang "$2" ang talagang binabalak mong gamitin?',
+	'math_IllegalCommandInTextMode' => 'Ang utos na "$1" ay labag sa modalidad na pangteksto',
+	'math_IllegalCommandInTextModeWithHint' => 'Ang utos na "$1" ay labag sa modalidad na pangteksto
+Marahil ang "$2" ang talagang binabalak mong gamitin?',
+	'math_IllegalDelimiter' => 'May labag na panghangga na sumusunod sa "$1"',
+	'math_IllegalFinalBackslash' => 'May labag na bantas na pabalik-pahilis "\\" sa hulihan ng ipinasok',
+	'math_IllegalNestedFontEncodings' => 'Ang mga kautusan sa pagsasakodigo ng uri ng titik ay maaaring hindi nakalangkay',
+	'math_IllegalRedefinition' => 'Nabigyang kahulugan na ang kautusang "$1"; hindi mo na ito maaaring pakahuluganan pang muli',
+	'math_InvalidColour' => 'Hindi tanggap ang kulay na "$1"',
+	'math_InvalidUtf8Input' => 'Ang bagting na ipinasok ay hindi isang tanggap na UTF-8',
+	'math_LatexFontNotSpecified' => 'Walang uri ng titik ng LaTeX na tinukoy para sa "$1"',
+	'math_LatexPackageUnavailable' => 'Hindi nagawang ihain ang PNG dahil hindi makuha ang paketeng "$1" ng LaTeX',
+	'math_MismatchedBeginAndEnd' => 'Hindi nagtutugma ang mga kautusang "$1" at "$2"',
+	'math_MissingDelimiter' => 'Kulang ng panghangga pagkaraan ng "$1"',
+	'math_MissingOpenBraceAfter' => 'Kulang ng pambukas na brakete "{" pagkaraan ng "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Kulang ng pambukas na brakete "{" sa hulihan ng ipinasok',
+	'math_MissingOpenBraceBefore' => 'Kulang ng pambukas na brakete "{" bago sumapit ang "$1"',
+	'math_TooManyTokens' => 'Napakahaba ng ipinasok',
+	'math_UnavailableSymbolFontCombination' => 'Ang sagisag na "$1" ay hindi makukuha mula sa uri ng titik na "$2"',
+	'math_UnexpectedNextCell' => 'Ang kautusang "&" ay maaaring lumitaw lamang sa loob ng isang tipak ng "\\begin ... \\end"',
+	'math_UnexpectedNextRow' => 'Ang kautusang "\\\\" ay maaaring lumitaw lamang sa loob ng isang tipak ng "\\begin ... \\end"',
+	'math_UnmatchedBegin' => 'Nakatagpo ng "\\begin" na wala ang katugmang "\\end"',
+	'math_UnmatchedCloseBrace' => 'Nakatagpo ng pansarang brakete "}" na wala ang katugmang pambukas na brakete "{"',
+	'math_UnmatchedEnd' => 'Nakatagpo ng "\\end" na wala ang katugmang "\\begin"',
+	'math_UnmatchedLeft' => 'Nakatagpo ng "\\left" na wala ang katugmang "\\right"',
+	'math_UnmatchedOpenBrace' => 'Nakatagpo ng pambukas na brakete "{" na wala ang katugmang pansarang brakete "}"',
+	'math_UnmatchedOpenBracket' => 'Nakatagpo ng pambukas na kasingay "[" na wala ang katugmang pansarang kasingay "]"',
+	'math_UnmatchedRight' => 'Nakatagpo ng "\\right" na wala ang katugmang pansarang "\\left"',
+	'math_UnrecognisedCommand' => 'Hindi nakikilalang utos ang "$1"',
+	'math_WrongFontEncoding' => 'Ang sagisag na "$1" ay hindi maaaring lumitaw sa pagsasakodigong "$2" ng uri ng titik',
+	'math_WrongFontEncodingWithHint' => 'Ang sagisag na "$1" ay hindi maaaring lumitaw sa pagsasakodigong "$2" ng uri ng titik.
+Subuking gamitin ang "$3{...}" na kautusan.',
 );
 
 /** Ukrainian (Українська)

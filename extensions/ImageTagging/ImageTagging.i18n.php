@@ -662,18 +662,39 @@ $messages['kri'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'taggedimages' => 'Belder met Links drop',
-	'imagetagging-desc' => 'Määt et müjjelesch, ene Link op en Sigg em Wiki op Aandeile fun enem Beld ze pussizjeneere.',
+	'taggedimages' => 'Belder met Makeerunge drop',
+	'imagetagging-desc' => 'Määt et müjjelesch, ene Link op en Sigg em Wiki op Aandeile ov Berette fun enem Beld ze pussizjeneere.',
+	'imagetagging-addimagetag' => 'Makeerunge op dat Beld donn',
 	'imagetagging-article' => 'Sigg:',
+	'imagetagging-articletotag' => 'De Sigg zom Makeere',
 	'imagetagging-canteditothermessage' => 'Do kanns di Sigg he nit ändere. Entweder häs De nit dat Rääsch dozoh, udder de Sigg es sönsworöm jesperrt.',
 	'imagetagging-imghistory' => 'Versione',
 	'imagetagging-images' => 'Belder',
 	'imagetagging-inthisimage' => 'En dämm Beld: $1',
+	'imagetagging-logentry' => '!!Fuzzy!!Dä Metmaacher $2 hät de Makeerung op de Sigg [[$1]] fott jenumme.',
+	'imagetagging-log-tagged' => '!!Fuzzy!!De Datei [[$1|$2]] woodt vum $4 met de Sigg [[$3]] makeet.',
 	'imagetagging-new' => '<sup><span style="color:red">Neu!</span></sup>',
+	'imagetagging-removetag' => 'Makeerung fottnämme',
+	'imagetagging-done-button' => 'Fädesch met Makeere!',
+	'imagetagging-tag-button' => 'Makeere!',
 	'imagetagging-tagcancel-button' => 'Draanjevve',
+	'imagetagging-tagging-instructions' => 'Kleck op Lück odder Saache op däm Beld, öm se ze makeere.',
+	'imagetagging-addingtag' => 'Makeerung dobei donn…',
+	'imagetagging-removingtag' => 'Makeerung fottnämme…',
+	'imagetagging-addtagsuccess' => 'Makeerung dobei jedonn.',
+	'imagetagging-removetagsuccess' => 'Makeerung fottjenumme.',
+	'imagetagging-canteditneedloginmessage' => 'Do kanns die Sigg hee nit ändere.
+Künnt sin, et es weil de enjelogg sin moß, öm Belder ze makeere.
+Wells de jez enlogge?',
+	'imagetagging-oneactionatatimemessage' => 'Nur ein Makeerung op eijmol es müjjelich.
+Donn drop wade, bes dä Vörjang fädesch es, dä jraad em Jang es.',
+	'imagetagging-oneuniquetagmessage' => 'Dat belld hät alld_en Makeerung met däm Name.',
 	'imagetagging-imagetag-seemoreimages' => 'Mieh Belder fun „$1“ beloore ($2)',
 	'imagetagging-taggedimages-title' => 'Belder fun „$1“',
 	'imagetagging-taggedimages-displaying' => 'Ben $1 am Zeije – $2 fun $3 Belder en „$4“',
+	'tag-logpagename' => 'Logboch övver de Makeerunge',
+	'tag-logpagetext' => 'Dat hee es dat Logboch met all dä Makeerungs-Vörjäng
+(dobeijedonn un fott jenumme) aan Belder.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

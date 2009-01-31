@@ -553,6 +553,24 @@ Den här sidan kan också behöva din hjälp: $1.',
 	'tog-edit-similar' => 'Slå på förslag för liknande sidor',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'editsimilar-desc' => 'Humihimok sa mga tagagamit na bumago ng isang katulad na pahina pagkaraan magsagip ng isang pahina',
+	'editsimilar-thanks' => 'Salamat sa iyong ambag.
+Suriin ang kaugnay na mga pahinang ito: $1.',
+	'editsimilar-thanks-singleresult' => 'Salamat sa iyong ambag. 
+Suriin ang kaugnay na pahinang ito: $1.',
+	'editsimilar-thanks-notsimilar' => 'Salamat sa iyong ambag. 
+Mapapakinabangan din ng mga pahinang ito ang tulong mo: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Salamat sa iyong ambag. 
+Mapapakinabangan din ng pahinang ito ang tulong mo: $1.',
+	'editsimilar-thankyou' => 'Salamat sa iyong ambag, $1!',
+	'editsimilar-link-disable' => 'itakda ang mga kagustuhan',
+	'tog-edit-similar' => 'Paganahin ang mga mungkahi para sa katulad na mga pahina',
+);
+
 /** Turkish (Türkçe)
  * @author Mach
  */

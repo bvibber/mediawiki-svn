@@ -351,6 +351,13 @@ $messages['tg-cyrl'] = array(
 	'didyoumean-desc' => 'Ба саҳифаҳои бо унвонҳои "монандӣ" пайвандҳо илова кунед',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'didyoumean-desc' => 'Nagdaragdag ng mga kawing sa mga pahinang may "kahawig" na mga pamagat',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

@@ -92,6 +92,11 @@ $aliases['nl'] = array(
 	'ViewAPC' => array( 'APCBekijken' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'ViewAPC' => array( 'Sjå APC' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ViewAPC' => array( 'Vis APC' ),

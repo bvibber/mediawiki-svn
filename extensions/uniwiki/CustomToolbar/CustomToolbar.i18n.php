@@ -1095,7 +1095,7 @@ $wgCustomToolbarMessages['km'] = array(
  * @author Purodha
  */
 $wgCustomToolbarMessages['ksh'] = array(
-	'ct-desc' => 'Deiht en ußboubare Werkzeuch-Reih dobei.',
+	'ct-desc' => 'Deiht en ußboubare Reih met Werkzüch dobei.',
 	'ct_bold_sample' => '{{int:bold sample}}',
 	'ct_bold_tip_ins' => '{{int:bold tip}} enfööje',
 	'ct_bold_tip_wrap' => '{{int:bold tip}} druß maache',

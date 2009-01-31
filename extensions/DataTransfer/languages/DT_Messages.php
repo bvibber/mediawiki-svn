@@ -1051,6 +1051,25 @@ $messages['th'] = array(
 	'dt_xml_namespace' => 'เนมสเปซ',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'dt-desc' => 'Nagpapahintulot sa pagaangkat at pagluluwas ng nakaayos nang mga datong nasa loob ng mga pagtawag sa suleras',
+	'viewxml' => 'Tingnan ang XML',
+	'dt_viewxml_docu' => 'Pumili po lamang mula sa sumusunod na mga kaurian at mga espasyo ng pangalan upang makita ang anyong XML.',
+	'dt_viewxml_categories' => 'Mga kaurian',
+	'dt_viewxml_namespaces' => 'Mga espasyo ng pangalan',
+	'dt_viewxml_simplifiedformat' => 'Pinapayak na anyo',
+	'dt_xml_namespace' => 'Espasyo ng pangalan',
+	'dt_xml_page' => 'Pahina',
+	'dt_xml_field' => 'Hanay',
+	'dt_xml_name' => 'Pangalan',
+	'dt_xml_title' => 'Pamagat',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Malayang Teksto',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  * @author Mach

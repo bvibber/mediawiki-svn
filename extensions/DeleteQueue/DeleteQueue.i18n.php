@@ -187,6 +187,7 @@ You can [{{fullurl:{{FULLPAGENAME}}|action=delvote}} register your own endorseme
  * @author Darth Kule
  * @author EugeneZelenko
  * @author Ferrer
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
@@ -196,6 +197,8 @@ $messages['qqq'] = array(
 	'deletequeue-generic-reasons' => 'Delete reasons in a dropdown menu. Lines prepended with "*" are a category separator. Lines prepended with "**" can be used as a reason. Please do not add additional reasons. This should be customised on wikis where the extension is actually being used.',
 	'deletequeue-delnom-otherreason' => '{{Identical|Other reason}}',
 	'deletequeue-delnom-extra' => '{{Identical|Extra information}}',
+	'deletequeue-log-nominate' => '* $1 is a page name
+* $2 is a queue name',
 	'right-speedy-nominate' => '{{doc-right}}',
 	'right-speedy-review' => '{{doc-right}}',
 	'right-prod-nominate' => '{{doc-right}}',
@@ -2558,6 +2561,7 @@ $messages['pt'] = array(
 	'right-deletediscuss-review' => 'Encerrar discussões de eliminação',
 	'right-deletequeue-vote' => 'Aprovar ou contestar eliminações',
 	'deletequeue-queue-speedy' => 'Eliminação rápida',
+	'deletequeue-queue-prod' => 'Propor eliminação',
 	'deletequeue-queue-deletediscuss' => 'Discussão da eliminação',
 	'deletequeue-notqueued' => 'A página que selecionou não está atualmente em nenhum fila para eliminação',
 	'deletequeue-review-action' => 'Acção a tomar:',
@@ -2569,8 +2573,11 @@ $messages['pt'] = array(
 	'deletequeue-review-newextra' => 'Informação extra:',
 	'deletequeue-review-original' => 'Motivo da nomeação',
 	'deletequeue-review-badaction' => 'Você especificou uma ação inválida',
+	'deletequeue-review-actiondenied' => 'Você especificou uma ação que está desativada para esta página',
 	'deletequeue-reviewdeletediscuss-tab' => 'Rever eliminação',
 	'deletequeue-discusscreate-summary' => 'A criar discussão para a eliminação de [[$1]].',
+	'deletequeue-discusscreate-text' => 'Eliminação proposta pelo seguinte motivo: $2',
+	'deletequeue-role-nominator' => 'nomeador original da eliminação',
 	'deletequeue-vote-tab' => 'Votar na eliminação',
 	'deletequeue-vote-action' => 'Recomendação:',
 	'deletequeue-vote-endorse' => 'Aprovar eliminação.',

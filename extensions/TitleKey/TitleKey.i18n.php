@@ -295,7 +295,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'titlekey-desc' => 'Wsparcie dla podpowiedzi początku tytułu przy wyszukiwaniu',
+	'titlekey-desc' => 'Obsługa podpowiedzi w wyszukiwarce na podstawie wpisanego początku tytułu',
 );
 
 /** Portuguese (Português)

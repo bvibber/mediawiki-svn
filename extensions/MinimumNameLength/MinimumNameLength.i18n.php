@@ -93,6 +93,13 @@ $messages['eo'] = array(
 	'minnamelength-desc' => 'Divigi minimuman longecon de salutnomo',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'minnamelength-error' => 'Su nombre de usuario es demasiado corto. El largo mínimo es $1.',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

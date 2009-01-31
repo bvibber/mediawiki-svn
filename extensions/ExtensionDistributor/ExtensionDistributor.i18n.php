@@ -1334,7 +1334,7 @@ $messages['pl'] = array(
 
 Wybierz z listy wersję MediaWiki.
 
-Większość rozszerzeń działa na wszystkich wersjach MediaWiki, więc jeśli nie ma na liście Twojej wersji MediaWiki lub potrzebujesz najnowszą wersję rozszerzenia, należy wybrać bieżącą wersję.',
+Większość rozszerzeń działa ze wszystkimi wersjami MediaWiki, więc jeśli nie ma na liście Twojej wersji MediaWiki lub potrzebujesz najnowszej wersji rozszerzenia, należy wybrać bieżącą wersję.',
 	'extdist-no-versions' => 'Wybrane rozszerzenie „$1” nie jest dostępne w żadnej wersji oprogramowania!',
 	'extdist-submit-version' => 'Kontynuuj',
 	'extdist-no-remote' => 'Nie można połączyć się ze zdalnym klientem Subversion.',
@@ -1347,9 +1347,9 @@ Większość rozszerzeń działa na wszystkich wersjach MediaWiki, więc jeśli 
 
 Archiwum znajduje się pod adresem URL:
 :$4
-Adresu można użyć do natychmiastowego pobrania archiwum na serwer, ale proszę nie zapisywać adresu, ponieważ jego zawartość nie będzie aktualizowana i w póżniejszym czasie może zostać usunięta.
+Adresu można użyć do natychmiastowego przesłania archiwum na serwer, ale nie należy zapisywać adresu, ponieważ zawartość archiwum nie będzie aktualizowana i w późniejszym czasie archiwum może zostać usunięte.
 
-Archiwum tar powinno zostać rozpakowane do katalogu z rozszerzeniami, na przykładzie systemów uniksowych wygląda to następująco:
+Archiwum tar należy rozpakować w katalogu z rozszerzeniami. W systemach uniksowych wygląda to następująco:
 
 <pre>
 tar -xzf $5 -C /var/www/mediawiki/extensions
@@ -1357,13 +1357,13 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 W systemach Windows do rozpakowania plików możesz użyć programu [http://www.7-zip.org/ 7-zip].
 
-Jeśli Twoja wiki znajduje się na zdalnym serwerze, wypakuj pliki do tymczasowego katalogu na lokalnym komputerze a następnie prześlij na serwer '''wszystkie''' pliki do katalogu przechowującego rozszerzenia.
+Jeśli Twoja wiki znajduje się na zdalnym serwerze, wypakuj pliki do tymczasowego katalogu na lokalnym komputerze a następnie prześlij na serwer '''wszystkie''' pliki do katalogu z rozszerzeniami.
 
-Miej na uwadze, że niektóre rozszerzenia potrzebują pliku o nazwie ExtensionFunctions.php, który znajduje się w <tt>extensions/ExtensionFunctions.php</tt>, tzn. w głównym katalogu danego rozszerzenia. Dla tego typu rozszerzeń skompresowane archiwum zawiera ten plik jako tarbomb, który jest rozpakowywany w ./ExtensionFunctions.php. Nie zapomnij, aby przesłać ten plik na zdalny serwer.
+Uwaga – niektóre rozszerzenia wymagają pliku o nazwie ExtensionFunctions.php, który znajduje się w <tt>extensions/ExtensionFunctions.php</tt>, tzn. w głównym katalogu danego rozszerzenia. Dla tego typu rozszerzeń skompresowane archiwum zawiera plik bez katalogu, który jest rozpakowywany w bieżącym katalogu ./ExtensionFunctions.php. Nie zapomnij przesłać ten plik na zdalny serwer.
 
-Po umieszczeniu plików w odpowiednim katalogu, należy włączyć rozszerzenie w pliku LocalSettings.php. Dokumentacja rozszerzenia powinna zawierać instrukcję jak to zrobić.
+Po umieszczeniu plików w odpowiednich katalogach, należy włączyć rozszerzenie w pliku LocalSettings.php. Dokumentacja rozszerzenia powinna zawierać instrukcję jak to zrobić.
 
-Jeśli masz jakieś pytania na temat systemu dystrybuującego rozszerzenia, proszę je zadać na stronie [[Extension talk:ExtensionDistributor]].",
+Jeśli masz jakieś pytania na temat systemu dystrybuującego rozszerzenia, zadaj je na stronie [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Pobierz inne rozszerzenie',
 );
 

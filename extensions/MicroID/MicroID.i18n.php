@@ -76,6 +76,14 @@ $messages['eo'] = array(
 	'tog-microid' => 'Publikigi <a href="http://microid.org/">MicroID</a>-on konfirmi konton kun eksteraj servoj',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'microid-desc' => 'Agregue un [http://www.microid.org/ MicroID] a páginas de usuario para confirmar cuenta con servicios externos',
+	'tog-microid' => 'Publique un <a href="http://microid.org/">MicroID</a> para confirmar cuenta con servicios externos',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

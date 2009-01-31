@@ -573,6 +573,8 @@ Clicca le button infra pro inscriber te.',
 	'povwatch_added' => 'addite',
 	'right-povwatch_admin' => 'Gerer le derectos del usatores a mitter paginas in le observatorios de altere usatores',
 	'right-povwatch_user' => 'Mitter paginas in le observatorios de altere usatores',
+	'action-povwatch_admin' => 'administrar le derectos de usator pro PovWatch',
+	'action-povwatch_user' => 'adder iste pagina al observatorio de un altere usator',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1021,6 +1023,8 @@ $messages['oc'] = array(
 	'povwatch_added' => 'apondut',
 	'right-povwatch_admin' => "Administrar los dreches d’utilizaire per l'ajust de paginas a la lista de seguit dels autres utilizaires.",
 	'right-povwatch_user' => 'Apond de paginas a la lista de seguit dels autres utilizaires',
+	'action-povwatch_admin' => "administrar los dreches d'utilizaire per PovWatch",
+	'action-povwatch_user' => "apondre aquesta pagina a la lista de seguit d'autres utilizaires",
 );
 
 /** Ossetic (Иронау)
@@ -1034,7 +1038,41 @@ $messages['os'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'povwatch' => 'Strażnik POV',
+	'povwatch_desc' => 'Rozszerzenie służące [[Special:PovWatch|do wstawiania stron na listę obserwowanych]] innych użytkowników',
+	'povwatch_no_session' => 'Błąd! Nie można zapisać formularza z powodu utraty danych sesji.',
+	'povwatch_not_allowed_push' => 'Nie jesteś administratorem „Strażnika POV”, dlatego nie możesz wstawiać stron na listę obserwowanych.',
+	'povwatch_already_subscribed' => 'Prenumerujesz już w obserwowanych „Strażnika POV”',
+	'povwatch_subscribed' => 'Zaprenumerowałeś w obserwowanych „Strażnika POV”',
+	'povwatch_not_subscribed' => 'Nie prenumerujesz w obserwowanych „Strażnika POV”, więc nie możesz zakończyć prenumeraty.',
+	'povwatch_unsubscribed' => 'Zaprzestałeś prenumeraty w obserwowanych „Strażnika POV”',
+	'povwatch_invalid_title' => 'Podany tytuł jest nieprawidłowy',
+	'povwatch_pushed' => '[[$1]] został dodany do obserwowanych u $2 {{PLURAL:$2|użytkownika|użytkowników}}',
+	'povwatch_intro' => '„Strażnik POV” jest mechanizmem, który umożliwia administratorom tej usługi w dyskretny sposób dodawać strony do listy obserwowanych innych użytkowników.
+
+Rejestr ostatnich operacji dodawania dostępny jest na stronie [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Dostępna jest [[Special:PovWatch/subscribers|lista prenumerujących]].',
+	'povwatch_subscriber_list_intro' => '<strong>Lista prenumerujących</strong>',
+	'povwatch_not_allowed_subscribers' => 'Nie masz uprawnień aby zobaczyć listę prenumerujących „Strażnika POV”.',
+	'povwatch_unknown_subpage' => 'Nieznana podstrona.',
+	'povwatch_push' => 'Dodaj',
+	'povwatch_push_intro' => 'Użyj formularza aby dodać stronę do listy obserwowanych użytkowników prenumerujących „Strażnika POV”.
+Uważnie wprowadź tytuł - możesz dodać nieistniejący artykuł, a nie będziesz miał później możliwości usunięcia raz dodanego tytułu.',
 	'povwatch_title' => 'Tytuł:',
+	'povwatch_comment' => 'Komentarz',
+	'povwatch_no_log' => 'Brak wpisów w rejestrze.',
+	'povwatch_no_subscribers' => 'Brak prenumeratorów.',
+	'povwatch_unsubscribe_intro' => 'Prenumerujesz „Strażnika POV”
+Kliknij guzik poniżej jeśli chcesz zaprzestać prenumeraty.',
+	'povwatch_unsubscribe' => 'Zakończ prenumeratę',
+	'povwatch_subscribe_intro' => 'Nie prenumerujesz „Strażnika POV”.
+Kliknij guzik poniżej aby zaprenumerować.',
+	'povwatch_subscribe' => 'Zaprenumeruj',
+	'povwatch_added' => 'dodano',
+	'right-povwatch_admin' => 'Uprawnienia administratora „Strażnika POV” umożliwiające dodawanie stron do listy obserwowanych innych użytkowników',
+	'right-povwatch_user' => 'Dodawanie stron do listy obserwowanych przez innych użytkowników',
+	'action-povwatch_admin' => 'administrowania uprawnieniami użytkowników „Strażnika POV”',
+	'action-povwatch_user' => 'dodania tej strony do listy obserwowanych innego użytkownika',
 );
 
 /** Pashto (پښتو)

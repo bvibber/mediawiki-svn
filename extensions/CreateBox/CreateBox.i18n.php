@@ -512,6 +512,19 @@ $messages['tg-cyrl'] = array(
 	'createbox-create' => 'Эҷод',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'createbox-desc' => 'Natatanging lalagyang-kahon para sa paglikha ng pahina',
+	'createbox-create' => 'Likhain',
+	'createbox-exists' => "Paumanhin, umiiral na ang \"'''{{FULLPAGENAME}}'''\".
+
+Hindi mo malilikha ang pahinang ito, subalit maaari mong [{{fullurl:{{FULLPAGENAME}}|action=edit}} baguhin ito], [{{fullurl:{{FULLPAGENAME}}}} basahin ito], o piliing lumikha ng isang naiibang pahina na ginagamit ang kahong nasa ibaba.
+ 
+<createbox>break=no</createbox>",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

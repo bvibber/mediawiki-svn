@@ -86,6 +86,13 @@ $messages['gl'] = array(
 	'gotocategory-desc' => 'Comproba os termos da procura contra o espazo de nomes Categoría: para "Ir" a partir da funcionalidade "saltar a unha páxina"',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'gotocategory-desc' => 'Prieft Suechbegriff gege dr Kategorie-Namensruum fir d „Gang diräkt zue dr Syte“-Funktionalität',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -203,6 +210,13 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'gotocategory-desc' => 'Checkar sökord upp mot kategorinamnrymden för "Gå"-funktionaliteten i sökboxen',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'gotocategory-desc' => "Nagsusuri ng mga salitang panghanap laban sa espasyo ng pangalang Kaurian: para sa sa katungkulang Gawin 'tumalon papunta sa pahina'",
 );
 
 /** Vietnamese (Tiếng Việt)

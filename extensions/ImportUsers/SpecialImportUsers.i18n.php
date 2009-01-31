@@ -1026,6 +1026,8 @@ $messages['oc'] = array(
 	'importusers-password' => 'Senhal',
 	'importusers-email' => 'adreça de corrièr electronic',
 	'importusers-realname' => 'nom vertadièr',
+	'right-import_users' => "Importar d'utilizaires en massa",
+	'action-import_users' => "importar d'utilizaires en massa",
 );
 
 /** Oriya (ଓଡ଼ିଆ)

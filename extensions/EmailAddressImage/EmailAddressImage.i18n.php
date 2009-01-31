@@ -322,6 +322,13 @@ $messages['tg-cyrl'] = array(
 	'emailaddressimage-desc' => 'Барои намои нишонаи почтаи электронӣ чун акс <tt>&lt;email&gt;</tt>-ро илова мекунад',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'emailaddressimage-desc' => 'Nagdaragdag ng <tt>&lt;email&gt;</tt> upang ipakita ang isang adres ng e-liham bilang isang larawan',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -323,6 +323,17 @@ $messages['lo'] = array(
 	'categoryintersection-doit' => 'ສະແດງລາຍຊື່ໜ້າທີ່ຢູ່ໃນໝວດເຫຼົ່ານີ້',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'categoryintersection' => 'Пресек на категории',
+	'categoryintersection-desc' => 'Одржување на табела со хеш вредности за [[Special:CategoryIntersection|пресек на категории]] во страница',
+	'categoryintersection-doit' => 'Листа на страници во сите овие категории',
+	'categoryintersection-maxcategories' => 'Максимално дозволен број на категории чиј пресек се бара е $1.',
+	'categoryintersection-results' => 'Пребарувањето врати $1 {{PLURAL:$1|резултат|резултати}}.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

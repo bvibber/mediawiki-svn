@@ -147,18 +147,19 @@ $messages['bg'] = array(
 
 /** Czech (Česky)
  * @author Danny B.
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'slippymap_desc' => 'Umožňuje použití tagu <code><nowiki>&lt;slippymap&gt;</nowiki></code> pro zobrazení posuvné mapy OpenLayers. Mapy pocházejí z [http://openstreetmap.org openstreetmap.org].',
 	'slippymap_latmissing' => 'Chybí hodnota lat (zeměpisná šířka)',
 	'slippymap_lonmissing' => 'Chybí hodnota lon (zeměpisná délka)',
 	'slippymap_zoommissing' => 'Chybí hodnota z (úroveň přiblížení)',
-	'slippymap_longdepreciated' => 'Prosím, použijte „lon” namísto „long” (parametr byl přejmenován).',
-	'slippymap_widthnan' => 'hodnota šířky (w) „%1” není platné celé číslo',
-	'slippymap_heightnan' => 'hodnota výšky (h) „%1” není platné celé číslo',
-	'slippymap_zoomnan' => 'hodnota úrovně přiblížení (z) „%1” není platné celé číslo',
-	'slippymap_latnan' => 'hodnota zeměpisné šířky (lat) „%1” není platné číslo',
-	'slippymap_lonnan' => 'hodnota zeměpisné délky (lon) „%1” není platné číslo',
+	'slippymap_longdepreciated' => 'Prosím, použijte „lon“ namísto „long“ (parametr byl přejmenován).',
+	'slippymap_widthnan' => 'hodnota šířky (w) „%1“ není platné celé číslo',
+	'slippymap_heightnan' => 'hodnota výšky (h) „%1“ není platné celé číslo',
+	'slippymap_zoomnan' => 'hodnota úrovně přiblížení (z) „%1“ není platné celé číslo',
+	'slippymap_latnan' => 'hodnota zeměpisné šířky (lat) „%1“ není platné číslo',
+	'slippymap_lonnan' => 'hodnota zeměpisné délky (lon) „%1“ není platné číslo',
 	'slippymap_widthbig' => 'hodnota šířky (w) nemůže být větší než 1000',
 	'slippymap_widthsmall' => 'hodnota šířky (w) nemůže být menší než 100',
 	'slippymap_heightbig' => 'hodnota výšky (h) nemůže být větší než 1000',
@@ -168,9 +169,9 @@ $messages['cs'] = array(
 	'slippymap_lonbig' => 'hodnota zeměpisné délky (lon) nemůže být větší než 180',
 	'slippymap_lonsmall' => 'hodnota zeměpisné délky (lon) nemůže být menší než -180',
 	'slippymap_zoomsmall' => 'hodnota úrovně přiblížení (z) nemůže být menší než nula',
-	'slippymap_zoom18' => 'Hodnota úrovně přiblížení (z) nemůže být větší než 17. Mějte na vědomí, že toto rozšíření MediaWiki používá vrstvu „osmarender” OpenStreetMap, která umožňuje úroveň priblížení až 17. Vrstva „Mapnik“ na openstreetmap.org umožňuje priblížení do úrovně 18.',
+	'slippymap_zoom18' => 'Hodnota úrovně přiblížení (z) nemůže být větší než 17. Uvědomte si, že toto rozšíření MediaWiki používá vrstvu „osmarender“ z OpenStreetMap, která neobsahuje podrobnější přiblížení než 17. Vrstva „Mapnik“ na openstreetmap.org umožňuje priblížení do úrovně 18.',
 	'slippymap_zoombig' => 'Hodnota úrovně přiblížení (z) nemůže být větší než 17.',
-	'slippymap_invalidlayer' => 'Neplatná hodnota „layer” „%1”',
+	'slippymap_invalidlayer' => 'Neplatná hodnota „layer“ „%1“',
 	'slippymap_maperror' => 'Chyba mapy:',
 	'slippymap_osmtext' => 'Zobrazit tuto mapu na OpenStreetMap.org',
 	'slippymap_code' => 'Wikikód tohoto pohledu na mapu:',

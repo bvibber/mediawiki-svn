@@ -403,6 +403,15 @@ $messages['tg-cyrl'] = array(
 	'forcepreview' => 'Захираи саҳифа (пешнамоишро аввал истифода баред)',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'forcepreview' => 'Sagipin ang pahina (gamitin muna ang paunang-tingin)',
+	'forcepreview-desc' => 'Ipilit ang paunang-tingin para sa walang pribilehiyong mga tagagamit',
+	'right-forcepreviewexempt' => 'Maaaring sagipin na hindi ginagamit ang Ipakita ang paunang-tingin',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

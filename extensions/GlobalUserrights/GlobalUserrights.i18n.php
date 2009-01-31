@@ -153,6 +153,18 @@ $messages['gl'] = array(
 	'right-userrights-global' => 'Xestionar os dereitos de usuario globais',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'globaluserrights' => 'Wältwyti Benutzerrächtverwaltig',
+	'gur-desc' => 'Eifachi Verwaltig vu [[Special:GlobalUserRights|wältwyte Benutzerrächt]]',
+	'gur-rightslog-name' => 'Wältwyt Rächt-Logbuech',
+	'gur-rightslog-header' => 'Des isch e Logbuech vu dr Änderige an wältwyte Benutzerrächt.',
+	'gur-rightslog-entry' => 'het di wältwyt Gruppezuegherigkeit fir $1 vu $2 uf $3 gänderet',
+	'right-userrights-global' => 'Wältwyti Benutzerrächt verwalte',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -178,14 +190,15 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fievarsty
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'globaluserrights' => 'グローバル利用者権限管理',
-	'gur-desc' => '簡単な[[Special:GlobalUserRights|グローバル利用者権限]]管理',
-	'gur-rightslog-name' => 'グローバル権限の記録',
-	'gur-rightslog-header' => 'これはグローバル権限の変更の記録です。',
-	'gur-rightslog-entry' => '$1 のグローバル利用者権限を $2 から $3 へと変更しました',
+	'gur-desc' => '簡単な[[Special:GlobalUserRights|グローバル利用者権限]]を管理する',
+	'gur-rightslog-name' => 'グローバル権限変更記録',
+	'gur-rightslog-header' => 'これはグローバル権限の変更記録です。',
+	'gur-rightslog-entry' => '$1 のグローバル利用者権限を $2 から $3 へ変更しました',
 	'right-userrights-global' => 'グローバル利用者権限を管理する',
 );
 

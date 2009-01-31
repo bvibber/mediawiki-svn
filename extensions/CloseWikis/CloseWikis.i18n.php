@@ -291,6 +291,40 @@ $messages['eo'] = array(
 	'right-closewikis' => 'Fermi vikiojn',
 );
 
+/** Spanish (Español)
+ * @author BicScope
+ */
+$messages['es'] = array(
+	'closewikis-desc' => 'Permitir cerrar sitios wiki en granjas wiki',
+	'closewikis-page' => 'Cerrar wiki',
+	'closewikis-page-close' => 'Cerrar wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Razón (especificada):',
+	'closewikis-page-close-reason' => 'Razón (inicial):',
+	'closewikis-page-close-submit' => 'Cerrar',
+	'closewikis-page-close-success' => 'La wiki ha sido cerrada satisfactoriamente',
+	'closewikis-page-reopen' => 'Reabrir  wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Razón:',
+	'closewikis-page-reopen-submit' => 'Reabrir',
+	'closewikis-page-reopen-success' => 'La wiki ha sido reabierta satisfactoriamente',
+	'closewikis-page-err-nowiki' => 'Ha entrado un nombre wiki inválido',
+	'closewikis-page-err-closed' => 'La wiki ya está cerrada',
+	'closewikis-page-err-opened' => 'La wiki no está cerrada',
+	'closewikis-list' => 'Lista de wikis cerradas:',
+	'closewikis-list-intro' => 'Ésta lista contiene wikis que fueron cerradas por administradores (stewards).',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Cerrada por',
+	'closewikis-list-header-timestamp' => 'Cerrada el',
+	'closewikis-list-header-dispreason' => 'Razón',
+	'closewikis-log' => 'Registro de wikis cerradas',
+	'closewikis-log-header' => 'He aquí un registro de todas las wikis cerradas y reabiertas hechas por administradores (stewards)',
+	'closewikis-log-close' => '$2 cerrada',
+	'closewikis-log-reopen' => '$2 reabierta',
+	'right-editclosedwikis' => 'Editar wikis cerradas',
+	'right-closewikis' => 'Cerrar wikis',
+);
+
 /** Estonian (Eesti)
  * @author Avjoska
  */

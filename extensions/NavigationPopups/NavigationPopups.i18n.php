@@ -87,6 +87,13 @@ $messages['gl'] = array(
 	'navigationpopups-desc' => 'Carga emerxentes de escritura de navegación Lupin en MediaWiki',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'navigationpopups-desc' => 'Ladet d Lupin-Navigationsskript-Popup (MediaWiki)',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */
@@ -238,7 +245,7 @@ $messages['sv'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'navigationpopups-desc' => "Nagkakarga sa MediaWiki ng pangpaglilibot na mga panitik ng mga \"litaw-sulpot\" (''popup'') ni Lupin",
+	'navigationpopups-desc' => "Nagkakarga sa MediaWiki ng pangpaglilibot na mga panitik ng mga \"sulpot-litaw\" (''popup'') ni Lupin",
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -78,6 +78,13 @@ $messages['gl'] = array(
 	'jskit-desc' => 'Integra ferramentas js-kit nunha páxina do wiki',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'jskit-desc' => 'Integriert JS-Kit-Wärchzyyg uf ere Wikisyte',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */
@@ -110,7 +117,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'jskit-desc' => 'Deiht de JS-Kit-Werkzeuje op en Sigg em Wiki intejriere.',
+	'jskit-desc' => 'Deiht de JS-Kit-Werkzüch op en Sigg em Wiki intejriere.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

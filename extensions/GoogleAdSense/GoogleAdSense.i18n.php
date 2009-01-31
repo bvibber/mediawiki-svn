@@ -305,6 +305,13 @@ $messages['th'] = array(
 	'googleadsense-desc' => 'เพิ่ม [http://www.google.com/adsense กูเกิลแอดเซนส์ (Google AdSense)] ไว้ที่แถบด้านข้าง',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'googleadsense-desc' => 'Nagdaragdag ng [http://www.google.com/adsense Google AdSense] sa panggilid na halang',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

@@ -1063,7 +1063,7 @@ $messages['os'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'imagemap_desc' => 'Umożliwia stworzenie po stronie klienta klikalnej mapy z użyciem znacznika <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_desc' => 'Umożliwia utworzenie obrazka zawierającego klikalną mapę, z użyciem znacznika <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Błąd – należy wpisać grafikę w pierwszej linii',
 	'imagemap_invalid_image' => 'Błąd – grafika jest niepoprawna lub nie istnieje',
 	'imagemap_bad_image' => 'Błąd – ta grafika jest zakazana w tym serwisie',

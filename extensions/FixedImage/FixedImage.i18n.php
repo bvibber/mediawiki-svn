@@ -397,6 +397,13 @@ $messages['te'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> అనే టాగుని బొమ్మగా చేరుస్తుంది',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'fixedimage-desc' => 'Nagdaragdag ng tatak na <tt><nowiki><fundraising></nowiki></tt> bilang isang larawan',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

@@ -275,6 +275,13 @@ $messages['lb'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Homo
+ */
+$messages['lt'] = array(
+	'categoryonupload-label' => 'Kategorija:',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

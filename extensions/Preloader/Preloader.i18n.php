@@ -85,6 +85,13 @@ $messages['gl'] = array(
 	'preloader-desc' => 'Proporciona, para as páxinas novas, ventás de texto personalizable para os nomes dos espazos',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'preloader-desc' => 'Macht s megli pro Namensruum aapassbarei Vorlage zuezfiege bim Aalege vu neje Syte',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

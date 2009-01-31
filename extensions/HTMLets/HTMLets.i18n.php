@@ -74,6 +74,13 @@ $messages['gl'] = array(
 	'htmlets-desc' => 'Déixalle introducir liñas de conversa HTML dende ficheiros usando a etiqueta <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'htmlets-desc' => 'Ergänzt s <tt><nowiki><htmlet></nowiki></tt>-Tag zum Yyfiege vu HTML-Schnipfel',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -192,6 +199,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'htmlets-desc' => 'Låter dig infoga HTML-kod från filer med hjälp av taggen <tt><nowiki><htmlet></nowiki></tt>',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'htmlets-desc' => 'Nagpapahintulot sa iyo na maihanay sa guhit ang maliliit na mga piraso ng HTML mula sa mga talaksan na ginagamit ang tatak na <tt><nowiki><htmlet></nowiki></tt>',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -105,6 +105,13 @@ $messages['gl'] = array(
 	'psinotocnum-desc' => 'Nova palabra máxica "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'psinotocnum-desc' => 'Ergänzt s magisch Wort „<nowiki>__NOTOCNUM__</nowiki>“',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

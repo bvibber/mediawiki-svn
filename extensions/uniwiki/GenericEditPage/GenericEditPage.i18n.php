@@ -306,6 +306,15 @@ $messages['eu'] = array(
 	'gep-nocategories' => 'Mesedez aukeratu kategoria bat gutxienez gorde baino lehen',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'gep-addcategory' => 'Lisää luokka',
+	'gep-addcategorybutton' => 'Lisää',
+	'gep-addsectionbutton' => 'Lisää',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

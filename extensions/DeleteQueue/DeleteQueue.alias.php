@@ -52,6 +52,11 @@ $aliases['ja'] = array(
 	'DeleteQueue' => array( '削除キュー' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'DeleteQueue' => array( 'Läschlëscht' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'DeleteQueue' => array( 'БришиРедица' ),
