@@ -260,12 +260,22 @@ public class ConceptImporter extends AbstractImporter {
 			List<WikiTextAnalyzer.WikiLink> links = analyzerPage.getLinks();
 			linkTracker.step(links.size());
 			
+			//XXX: after resolving all aliases, change type to OTHER!
+			//int conceptId = storeConcept(rcId, name, ConceptType.UNKNOWN); 
+			
+			int conceptId = store.storeAbout(rcId, name);
+			
 			for (WikiTextAnalyzer.WikiLink link : links) {
 				WikiTextAnalyzer.LinkMagic m = link.getMagic();
 				
 				if (m==WikiTextAnalyzer.LinkMagic.CATEGORY) {
 					//FIXME: store this also as a reference to the categorie's concept under it's original title!
 					storeConceptBroader(rcId, name, link.getPage().toString(), ExtractionRule.BROADER_FROM_CAT);
+				}
+				
+				if (m==WikiTextAnalyzer.LinkMagic.LANGUAGE) {
+					//FIXME: language links point to *resource* names. resolve accordingly.
+					storeLanguageLink(rcId, conceptId, name, link.getInterwiki().toString(), link.getTarget().toString());
 				}
 			}
 			

@@ -628,12 +628,14 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		return 0;
 	}
 
-	public void storeAbout(int resource, String conceptName)  {
+	public int storeAbout(int resource, String conceptName)  {
 		trace("+ storeAbout: resource = "+resource+", conceptName =  "+conceptName);
+		return -1;
 	}
 
-	public void storeAbout(int resource, int concept, String conceptName) {
+	public int storeAbout(int resource, int concept, String conceptName) {
 		trace("+ storeAbout: resource = "+resource+", concept =  "+concept+", conceptName =  "+conceptName);
+		return -1;
 	}
 	
 }

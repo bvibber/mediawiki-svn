@@ -54,10 +54,12 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 			String sourceName, int target, String targetName, AliasScope scope)
 			throws PersistenceException;
 
-	public abstract void storeAbout(int resource, String conceptName)
-	throws PersistenceException;
+	/* returns concept ID, of known; -1 otherwise */
+	public abstract int storeAbout(int resource, String conceptName)
+		throws PersistenceException;
 
-	public abstract void storeAbout(int resource, int concept, String conceptName)
+	/* returns concept ID, of known; -1 otherwise */
+	public abstract int storeAbout(int resource, int concept, String conceptName)
 			throws PersistenceException;
 
 	//public abstract void storeConceptReference(int rcId, int source,

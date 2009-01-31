@@ -194,8 +194,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	
 
 	protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
-		deleteDataFrom(rcId, op, definitionTable, "concept", conceptTable, "resource");
-		//deleteDataFrom(rcId, op, conceptDescriptionTable, "concept", conceptTable, "resource");
+		deleteDataFrom(rcId, op, definitionTable, "concept", aboutTable, "resource");
 		
 		deleteDataFrom(rcId, op, linkTable, "resource");
 		deleteDataFrom(rcId, op, langlinkTable, "resource");
@@ -436,14 +435,14 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeAbout(int, String)
 	 */
-	public void storeAbout(int rcId, String conceptName) throws PersistenceException {
-		storeAbout(rcId, -1, conceptName);
+	public int storeAbout(int rcId, String conceptName) throws PersistenceException {
+		return storeAbout(rcId, -1, conceptName);
 	}
 	
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeAbout(int, int, String)
 	 */
-	public void storeAbout(int rcId, int concept, String conceptName) throws PersistenceException {
+	public int storeAbout(int rcId, int concept, String conceptName) throws PersistenceException {
 		try {
 			if (rcId<0) throw new IllegalArgumentException("bad resource id "+rcId);
 			conceptName = checkName(rcId, conceptName, "concept name (resource #{0})", rcId);
@@ -452,9 +451,13 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			aboutInserter.updateString("concept_name", conceptName);
 			
 			if (concept>0) aboutInserter.updateInt("concept", concept);
-			else if (idManager!=null) aboutInserter.updateInt("concept", idManager.aquireId(conceptName));
+			else if (idManager!=null) {
+				concept = idManager.aquireId(conceptName);
+				aboutInserter.updateInt("concept", concept);
+			}
 			
 			aliasInserter.updateRow();
+			return concept;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}
@@ -1047,20 +1050,20 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 
 	protected int buildSectionConcepts() throws PersistenceException {
 		//NOTE: we shouldn't need the "ignore" bit. Let'S keep it for robustness
-		String sql = "INSERT ignore INTO "+conceptTable.getSQLName()+" ( id, name, type, resource, random ) "
-					+"SELECT S.section_concept, S.section_name, "+ConceptType.UNKNOWN.getCode()+", C.resource, RAND() "
-					+"FROM "+sectionTable.getSQLName()+" AS S "
-					+"LEFT JOIN "+conceptTable.getSQLName()+" AS C ";
+		String sql = "INSERT ignore INTO "+conceptTable.getSQLName()+" ( id, name, type, random ) "
+					+"SELECT S.section_concept, S.section_name, "+ConceptType.UNKNOWN.getCode()+", RAND() "
+					+"FROM "+sectionTable.getSQLName()+" AS S ";
 		
-		if (idManager!=null) sql += "ON S.concept = C.id ";
-		else sql += "ON S.concept_name = C.name ";
+		//XXX: no more need for joining...
+		//if (idManager!=null) sql += "ON S.concept = C.concept ";
+		//else sql += "ON S.concept_name = C.concept_name ";
 					
-		String where = "WHERE C.type IS NULL "
-					//+"OR C.type != "+ConceptType.NONE.getCode()+" " //XXX: really allow type ALIAS? //XXX: check for NONE/BAD?!
-					//+"GROUP BY S.section_name"
-					;
+		//String where = "WHERE C.type IS NULL " ; //WTF?! why do we need this?!
+		String where = "";
 		
 		return executeUpdate("buildSectionConcepts", sql+where); //TODO: chunk if ids available?!
+		
+		//TODO: inject about records, so section concepts are linked to resources? 
 	}
 	
 	protected int buildSectionBroader() throws PersistenceException {
@@ -1078,8 +1081,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	
 	protected int buildMissingConcepts(DatabaseTable table, String conceptIdField, String conceptNameField) throws PersistenceException {
 		//NOTE: we shouldn't need the "ignore" bit. Let'S keep it for robustness
-		String sql = "INSERT ignore INTO "+conceptTable.getSQLName()+" ( id, name, type, resource, random ) "
-					+"SELECT T."+conceptIdField+", T."+conceptNameField+", "+ConceptType.UNKNOWN.getCode()+", NULL, RAND() "
+		String sql = "INSERT ignore INTO "+conceptTable.getSQLName()+" ( id, name, type, random ) "
+					+"SELECT T."+conceptIdField+", T."+conceptNameField+", "+ConceptType.UNKNOWN.getCode()+", RAND() "
 					+"FROM "+table.getSQLName()+" as T "
 					+"LEFT JOIN "+conceptTable.getSQLName()+" as C ";
 		
