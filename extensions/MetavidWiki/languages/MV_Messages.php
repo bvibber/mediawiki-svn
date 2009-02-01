@@ -227,7 +227,6 @@ Jump to stream view: $2',
 	'mv_most_recent' => 'Most recent',
 	'mv_most_viewed' => 'Most viewed',
 
-	'mv_match' => 'match',
 	'mv_spoken_by' => 'spoken by',
 	'mv_speech_by' => 'speech by',
 	'mv_category' => 'category',
@@ -241,8 +240,6 @@ Jump to stream view: $2',
 	'mv_view_in_stream_interface' => 'View in stream interface',
 	'mv_view_wiki_page' => 'View wiki page',
 	'mv_error_mvd_not_found' => 'Error mvd not found',
-	'mv_match_text' => '~  $1 matches',
-	'mv_match_text_one' => '~ 1 match',
 
 # sequence text:
 	'mv_edit_sequence' => 'Editing sequence:$1',
