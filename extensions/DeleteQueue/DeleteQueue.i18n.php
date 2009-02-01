@@ -3149,15 +3149,29 @@ $messages['tl'] = array(
 	'deletequeue-action-queued' => 'Pagbubura',
 	'deletequeue-action' => 'Magmungkahi ng pagbura',
 	'deletequeue-action-title' => 'Imungkahi ang pagbura ng "$1"',
+	'deletequeue-action-text' => "Ang {{SITENAME}} ay may isang bilang ng mga pamamalakad sa pagbubura ng mga pahina:
+*Kung naniniwala kang ang pahinang ito ay nangangailangan ng ''mabilisang pagbura'', maaari mong imungkahi iyan [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} dito].
+*Kung hindi nangangailangan ng mabilisang pagbura ang pahinang ito, subalit ''ang pagbubura ay maaaring hindi naman pagtalunan'', dapat mong [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} imungkahi ang pagbuburang walang pagtutol].
+*Kung ang pagbubura ng pahinang ito ay ''maaaring magkaroon ng pagtutol'', dapat kang [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} magbukas ng isang usapan].",
+	'deletequeue-action-text-queued' => 'Maaari mong tingnan ang sumusunod na mga pahina para sa kasong ito ng pagbura:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Tingnan ang kasalukuyang mga pagsang-ayon at mga pagtutol].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Sumang-ayon o tumutol sa pagbura ng pahinang ito].',
 	'deletequeue-permissions-noedit' => 'Dapat na may kakayahan kang magbago ng pahina upang makayanan mong maapektuhan ang katayuan ng pagbura nito.',
 	'deletequeue-generic-reasons' => "* Pangkalahatang mga dahilan
-** Pambababoy/Bandalismo
-** Manlulusob (''spam'')
-** Pagpapanatili
-** Hindi sakop ng proyekto",
+  ** Pambababoy/Bandalismo
+  ** Manlulusob (''spam'')
+  ** Pagpapanatili
+  ** Hindi sakop ng proyekto",
 	'deletequeue-nom-alreadyqueued' => 'Ang pahinang ito ay nasa pila na ng pagbura.',
 	'deletequeue-speedy-title' => 'Tatakan ang "$1" para sa mabilisang pagbura',
+	'deletequeue-speedy-text' => "Maaari mong gamitin ang pormularyong ito upang tatakan ang pahinang \"'''\$1'''\" para sa mabilisang pagbura.
+
+Susuriin ng isang tagapangasiwa ang kahilingang ito, at, buburahin ang pahina kung talagang mapagtitibay ito.
+Dapat kang pumili ng isang dahilan sa pagbura mula sa nasa ibabang talaang naibabagsak pababa, magdagdag ng anumang iba pang mahalagang kabatiran.",
 	'deletequeue-prod-title' => 'Imungkahi ang pagbura ng "$1"',
+	'deletequeue-prod-text' => "Maaari mong gamitin ang pormularyong ito upang imungkahing burahin ang \"'''\$1'''\".
+
+Kung, pagkaraan ng limang mga araw, walang tumututol sa pagbura ng pahinang ito, buburahin ito pagkaraan ng huling pagsusuri ng isang tagapangasiwa.",
 	'deletequeue-delnom-reason' => 'Dahilan para sa nominasyon/paghaharap:',
 	'deletequeue-delnom-otherreason' => 'Iba pang dahilan',
 	'deletequeue-delnom-extra' => 'Dagdag na kabatiran:',
@@ -3176,6 +3190,16 @@ $messages['tl'] = array(
 	'deletequeue-queue-speedy' => 'Mabilisang pagbura',
 	'deletequeue-queue-prod' => 'Iminungkahing pagbura',
 	'deletequeue-queue-deletediscuss' => 'Usapan ng pagbura',
+	'deletequeue-page-speedy' => "Ang pahinang ito ay iniharap para sa mabilisang pagbura.
+Ang ibinigay na dahilan para sa pagburang ito ay ''$1''.",
+	'deletequeue-page-prod' => "Iminungkahing burahin ang pahinang ito.
+Ang ibinigay na dahilan ay ''$1''.
+Kapag hindi tinutulan ang mungkahing ito sa ''$2'', buburahin na ang pahinang ito.
+Maaari mong tutulan ang pagbura ng pahinang ito sa pamamagitan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} ng pagtutol sa pagbura].",
+	'deletequeue-page-deletediscuss' => "Iminungkahing burahin ang pahinang ito, at may tumututol sa mungkahing ito.
+Ang ibinigay na dahilan ay ''$1''.
+Kasalukuyang nagaganap ang isang usapan sa [[$3]], na magtatapos sa ''$2''.",
+	'deletequeue-notqueued' => 'Kasalukuyang hindi nakahanay para sa pagbura ang pahinang napili mo',
 	'deletequeue-review-action' => 'Kilos na gagawin:',
 	'deletequeue-review-delete' => 'Burahin ang pahina.',
 	'deletequeue-review-change' => 'Burahin ang pahina, ngunit may ibang batayang katwiran.',
@@ -3186,12 +3210,39 @@ $messages['tl'] = array(
 	'deletequeue-review-newextra' => 'Dagdag kabatiran:',
 	'deletequeue-review-submit' => 'Sagipin ang Muling Pagsuri',
 	'deletequeue-review-original' => 'Dahilan ng paghaharap',
+	'deletequeue-actiondisabled-involved' => 'Hindi pinapagana ang sumusunod na galaw dahil nakilahok ka sa kasong ito ng pagbura sa loob ng mga gampaning $1:',
+	'deletequeue-actiondisabled-notexpired' => 'Hindi pinapagana ang sumusunod na galaw sapagkat hindi pa lumilipas ang paghaharap ng pagbura:',
 	'deletequeue-review-badaction' => 'Tinukoy mo ang isang hindi tanggap na galaw',
 	'deletequeue-review-actiondenied' => 'Tinukoy mo ang isang galaw na hindi pinapagana para sa pahinang ito',
+	'deletequeue-review-objections' => "'''Babala''': May [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} mga pagtutol] sa pagbura ng pahinang ito.
+Pakitiyak na isinaalang-alang mo ang ganitong mga pagtutol bago burahin ang pahinang ito.",
+	'deletequeue-reviewspeedy-tab' => 'Suriin ang mabilisang pagbura',
+	'deletequeue-reviewspeedy-title' => 'Suriin ang paghaharap ng mabilisang pagbura ng "$1"',
+	'deletequeue-reviewspeedy-text' => "Magagamit mo ang pormularyong ito upang suriin ang paghaharap ng \"'''\$1'''\" para sa mabilisang pagbura.
+Pakitiyak na maaari ngang mabilisang burahin ang pahinang ito ayon sa patakaran.",
+	'deletequeue-reviewprod-tab' => 'Suriin ang iminungkahing pagbura',
+	'deletequeue-reviewprod-title' => 'Suriin ang iminungkahing pagbura ng "$1"',
+	'deletequeue-reviewprod-text' => "Magagamit mo ang pormularyong ito upang suriin ang hindi tinututulang mungkahi para sa pagbura ng \"'''\$1'''\".",
 	'deletequeue-reviewdeletediscuss-tab' => 'Muling suriin ang pagbura',
+	'deletequeue-reviewdeletediscuss-title' => 'Suriin ang usapan hinggil sa pagbubura ng "$1"',
+	'deletequeue-reviewdeletediscuss-text' => "Magagamit mo ang pormularyong ito upang suriin ang usapan hinggil sa pagbura ng \"'''\$1'''\".
+
+Makakakuha ng isang [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} talaan] ng mga pagsang-ayon at mga pagtutol sa pagburang ito, at ang mismong usapan ay matatagpuan sa [[\$2]].
+Pakitiyak na gagawa ka ng isang pasyang alinsunod sa napagkasunduan sa usapan.",
+	'deletequeue-deletediscuss-discussionpage' => 'Ito ang pahina ng usapan para sa pagbura ng [[$1]].
+Kasalukuyang may $2 {{PLURAL:$2|tagagamit|mga tagagamit}} na sumasang-ayon sa pagbura, at $3 {{PLURAL:$3|tagagamit|mga tagagamit}} na tumututol sa pagbura.
+Maaari kang [{{fullurl:$1|action=delvote}} sumang-ayon o tumutol] sa pagbura, o [{{fullurl:$1|action=delviewvotes}} tingnan ang lahat ng mga pagsang-ayon at mga pagtutol].',
+	'deletequeue-discusscreate-summary' => 'Nililikha ang usapan para sa pagbura ng [[$1]].',
+	'deletequeue-discusscreate-text' => 'Iminungkahi ang pagbura para sa sumusunod na dahilan: $2',
 	'deletequeue-role-nominator' => 'orihinal na tagapagharap ng pagbura',
 	'deletequeue-role-vote-endorse' => 'tagapagsang-ayon sa pagbura',
 	'deletequeue-role-vote-object' => 'tagapagtutol sa pagbura',
+	'deletequeue-vote-tab' => 'Bumoto hinggil sa pagbubura',
+	'deletequeue-vote-title' => 'Sumang-ayon o tumutol sa pagbura ng "$1"',
+	'deletequeue-vote-text' => "Magagamit mo ang pormularyong ito upang sumang-ayon o tumutol sa pagbura ng \"'''\$1'''\".
+Dadaigin ng galaw na ito ang anumang dati nang mga pagsang-ayon/pagtutol na ibinigay mo hinggil sa pagbura ng pahinang ito.
+Maaari mong [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} tingnan] ang umiiral na mga pagsang-ayon at mga pagtutol.
+Ang ibinigay na dahilan hinggil sa paghaharap para sa pagbura ay ''\$2''.",
 	'deletequeue-vote-legend' => 'Pagsang-ayon/Pagtutol sa pagbura',
 	'deletequeue-vote-action' => 'Rekomendasyon:',
 	'deletequeue-vote-endorse' => 'Sumang-ayon sa pagbura.',
@@ -3200,6 +3251,11 @@ $messages['tl'] = array(
 	'deletequeue-vote-submit' => 'Ipasa',
 	'deletequeue-vote-success-endorse' => 'Matagumpay mong nasang-ayunan ang pagbura ng pahinang ito.',
 	'deletequeue-vote-success-object' => 'Matagumpay kang nakatutol sa pagbura ng pahinang ito.',
+	'deletequeue-vote-requeued' => 'Matagumpay mong natutulan ang pagbura ng pahinang ito.
+Dahil sa iyong pagtutol, inilapat ang pahinang ito sa pila ng $1.',
+	'deletequeue-showvotes' => 'Mga pagsang-ayon at mga pagtutol sa pagbura ng "$1"',
+	'deletequeue-showvotes-text' => "Nasa ibaba ang mga pagsang-ayon at mga pagtutol na ginawa hinggil sa pagbura ng pahinang \"'''\$1'''\".
+Maaari mong [{{fullurl:{{FULLPAGENAME}}|action=delvote}} itala ang sarili mong pagsang-ayon dito, o pagtutol] sa pagburang ito.",
 	'deletequeue-showvotes-restrict-endorse' => 'Ipakita ang mga pagsang-ayon lamang',
 	'deletequeue-showvotes-restrict-object' => 'Ipakita ang mga pagtutol lamang',
 	'deletequeue-showvotes-restrict-none' => 'Ipakita ang lahat ng mga pagsang-ayon at mga pagtutol',
@@ -3211,6 +3267,7 @@ $messages['tl'] = array(
 	'deletequeue-showvotes-none-endorse' => 'Walang mga pagsang-ayon sa pagbura ng pahinang ito.',
 	'deletequeue-showvotes-none-object' => 'Walang mga pagtutol sa pagbura ng pahinang ito.',
 	'deletequeue' => 'Pila ng pagbura',
+	'deletequeue-list-text' => 'Ipinapakita ng pahinang ito ang lahat ng mga pahinang nasa loob ng sistema ng pagbubura.',
 	'deletequeue-list-search-legend' => 'Maghanap ng mga pahina',
 	'deletequeue-list-queue' => 'Pila:',
 	'deletequeue-list-status' => 'Kalagayan:',

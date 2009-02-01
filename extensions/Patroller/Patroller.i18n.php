@@ -977,6 +977,9 @@ $messages['nn'] = array(
 	'patrol-another' => 'Sjå ei anna endring, om tilgjengeleg.',
 	'patrol-stopped' => 'Du har valt å ikkje patruljera ei anna endring. $1',
 	'patrol-resume' => 'Trykk her for å halda fram.',
+	'group-patroller' => 'Endringsvaktarar',
+	'group-patroller-member' => 'endringsvaktar',
+	'grouppage-patroller' => '{{ns:project}}:Endringsvaktar',
 	'right-patroller' => 'Patruljera sider',
 );
 

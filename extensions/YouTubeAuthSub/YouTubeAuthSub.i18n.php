@@ -2536,7 +2536,7 @@ $messages['vi'] = array(
 	'youtubeauthsub_submit' => 'Đăng nhập',
 	'youtubeauthsub_clickhere' => 'Hãy nhấn chuột vào đây để đăng nhập vào YouTube',
 	'youtubeauthsub_tokenerror' => 'Có lỗi khi tạo số hiệu đăng nhập. Hãy thử làm tươi trang.',
-	'youtubeauthsub_success' => 'Chúc mừng bạn đã tải lên video thành công! Để coi video này, hãy nhấn chuột <a href="http://www.youtube.com/watch?v=$1">vào đây</a>. YouTube có thể cần một tí thì giờ để xử lý video của bạn, nên có thể nó chưa sẵn.
+	'youtubeauthsub_success' => 'Chúc mừng bạn đã tải lên video thành công! <a href="http://www.youtube.com/watch?v=$1">Coi video này</a>. YouTube có thể cần một tí thì giờ để xử lý video của bạn, nên có thể nó chưa sẵn.
 
 Để chèn video này vào một trang wiki, hãy dùng mã sau:
 <code>{{&#35;ev:youtube|$1}}</code>',
@@ -2545,10 +2545,10 @@ $messages['vi'] = array(
 	'youtubeauthsub_uploadbutton' => 'Tải lên',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Có thể coi video này [http://www.youtube.com/watch?v=$1 tại đây].',
+[http://www.youtube.com/watch?v=$1 Coi video này]',
 	'youtubeauthsub_summary' => 'Đang tải lên video YouTube',
 	'youtubeauthsub_uploading' => 'Đang tải lên video. Xin chờ đợi tí.',
-	'youtubeauthsub_viewpage' => 'Bạn cũng có thể coi video này [[$1|tại đây]].',
+	'youtubeauthsub_viewpage' => 'Bạn cũng có thể [[$1|coi video này]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Xin hãy chọn ít nhất một từ khóa.',
 	'youtubeauthsub_jserror_notitle' => 'Xin hãy chọn tên cho video.',
 	'youtubeauthsub_jserror_nodesc' => 'Xin hãy miêu tả video.',

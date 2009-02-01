@@ -722,6 +722,7 @@ $messages['ar'] = array(
 	'configure-setting-wgSitename' => 'اسم الموقع',
 	'configure-setting-wgActionPaths-key' => 'فعل',
 	'configure-setting-wgActionPaths-value' => 'قالب عنوان إنترنت',
+	'configure-setting-wgAllDBsAreLocalhost' => 'أعد كتابة كل وصلات قاعدة البيانات إلى المضيف المحلي بصمت',
 	'configure-setting-wgDBname' => 'اسم قاعدة البيانات للإستعمال',
 	'configure-setting-wgDBpassword' => 'كلمة السر ل$wgDBuser',
 	'configure-setting-wgDBtype' => 'نوع قاعدة البيانات للإستخدام',

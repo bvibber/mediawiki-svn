@@ -1345,6 +1345,7 @@ $1',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'inplace_access_disabled' => 'Tilgangen til denne tenesta er slått av for alle klientar.',
@@ -1356,6 +1357,7 @@ $messages['nn'] = array(
 	'inplace_scaler_no_handler' => 'Ingen handsamar for endring av denne MIME-typen',
 	'inplace_scaler_no_output' => 'Inga endringsresultatfil vart produsert.',
 	'inplace_scaler_zero_size' => 'Endringa skapte ei tom resultatfil.',
+	'webstore-desc' => 'Internettbasert  (ikkje-NFS) fillagringsmellomvara',
 	'webstore_access' => 'Tenesta er avgrensa av IP-adressa til klienten.',
 	'webstore_path_invalid' => 'Filnamnet var ugyldig.',
 	'webstore_dest_open' => 'Kunne ikkje opne målfil «$1».',

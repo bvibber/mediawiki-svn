@@ -159,8 +159,23 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'povwatch' => 'POV Нагляд',
+	'povwatch_desc' => 'Пашырэньне для [[Special:PovWatch|пераносу старонак у сьпісы назіраньняў]] іншых удзельнікаў',
+	'povwatch_no_session' => 'Памылка: Не магчыма запісаць форму з прычыны страты зьвестак сэсіі.',
+	'povwatch_not_allowed_push' => 'Вы не зьяўляецеся адміністратарам POV Нагляду, Вы ня можаце пераносіць старонкі ў сьпісы назіраньняў.',
+	'povwatch_already_subscribed' => 'Вы ўжо падпісаны на POV Нагляд',
+	'povwatch_subscribed' => 'Зараз Вы падпісаны на POV Нагляд',
+	'povwatch_not_subscribed' => 'Вы не падпісаны на POV Нагляд, таму і ня можаце адпісацца.',
+	'povwatch_unsubscribed' => 'Цяпер Вы адпісаліся ад POV Нагляду',
+	'povwatch_invalid_title' => 'Пазначаная назва няслушная',
+	'povwatch_pushed' => '[[$1]] была пасьпяхова перанесена ў сьпіс назіраньня {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} $2',
+	'povwatch_intro' => 'POV Нагляд гэта сэрвіс які дазваляе схавана пераносіць старонкі ў сьпісы назіраньня падпісаных адміністратараў.
+
+Журнал апошніх пераносаў у сьпіс назіраньня можна паглядзець на [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Даступны на [[Special:PovWatch/subscribers|сьпісе падпісчыкаў]].',
 	'povwatch_title' => 'Назва:',
 );
 
@@ -254,6 +269,42 @@ Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werde und es gi
 	'right-povwatch_user' => 'Hinzufügen von Seiten zur Beobachtungsliste anderer Benutzer',
 	'action-povwatch_admin' => 'Rechte für PovWatch zu verwalten',
 	'action-povwatch_user' => 'füge diese Seite zu der Beobachtungsliste eines anderen Benutzers hinzu',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Rozšyrjenje za [[Special:PovWatch|pśidanje bokow wobglědowańkam]] drugich wužywarjow',
+	'povwatch_no_session' => 'Zmólka: Formular njejo se dał wótpósłaś, dokulaž su se zgubili pósejźeńske daty.',
+	'povwatch_not_allowed_push' => 'Njejsy administrator PovWatch, njamóžoš boki wobglědowańkam pśidaś.',
+	'povwatch_already_subscribed' => 'Sy južo za PovWatch zregistrěrowany',
+	'povwatch_subscribed' => 'Sy něnto za PovWatch zregistrěrowany',
+	'povwatch_not_subscribed' => 'Njejsy za PovWatch zregistrěrowany, wótzjawjenje jo togodla njemóžno.',
+	'povwatch_unsubscribed' => 'Sy něnto z PovWatch wótzjawjony',
+	'povwatch_invalid_title' => 'Pódany titel jo był njepłaśiwy',
+	'povwatch_pushed' => '[[$1]] jo se pśidał $2 {{PLURAL:$2|wužywarskej wobglědowańce|wužywarskima wobglědowańkoma|wužywarskim wobglědowańkam|wužywarskim wobglědowańkam}}',
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|Lisćina zregistrěrowanych wužywarjow]] stoj k dispoziciji.',
+	'povwatch_subscriber_list_intro' => '<strong>Lisćina zregistrěrowanych wužywarjow</strong>',
+	'povwatch_not_allowed_subscribers' => 'Njamaš pšawo se lišćinu zregistrěrowanych wužywarjow PovWatch woglědaś.',
+	'povwatch_unknown_subpage' => 'Njeznaty pódbok.',
+	'povwatch_push' => 'Pśidaś',
+	'povwatch_title' => 'Titel:',
+	'povwatch_comment' => 'Protokolowy komentar:',
+	'povwatch_no_log' => 'W protokolu zapiski njejsu.',
+	'povwatch_no_subscribers' => 'Njejsu zregistrěrowane wužywarje.',
+	'povwatch_unsubscribe_intro' => 'Sy za PovWatch zregistrěrowany.
+Klikni na slědujucy tłocašk, aby se wótzjawił.',
+	'povwatch_unsubscribe' => 'Wótzjawiś se',
+	'povwatch_subscribe_intro' => 'Njejsy za PovWatch zregistrěrowany.
+Klikni na slědujucy tłocašk, aby se zregistrěrował.',
+	'povwatch_subscribe' => 'Registrěrowaś',
+	'povwatch_added' => 'pśidany',
+	'right-povwatch_admin' => 'Wužywarske pšawa za pśidanje bokow wobglědowańkam drugich wužiwarjow zastojaś',
+	'right-povwatch_user' => 'Boki wobglědowańkam drugich wužywarjow pśidaś',
+	'action-povwatch_admin' => 'wužywarske pšawa za PovWatch zastojaś',
+	'action-povwatch_user' => 'toś ten bok wobglědowańce drugego wužywarja pśidaś',
 );
 
 /** Greek (Ελληνικά)
@@ -1301,6 +1352,8 @@ Klicka på knappen nedan för att abonnera.',
 	'povwatch_added' => 'tillaggd',
 	'right-povwatch_admin' => 'Administrera användarrättigheter för tilläggande av sidor i andra användares bevakningslistor',
 	'right-povwatch_user' => 'Lägga till sidor i andra användares bevakningslistor',
+	'action-povwatch_admin' => 'hantera användarrättigheter för PovWatch',
+	'action-povwatch_user' => 'lägg till denna sida till bevakningslistan för en annan användare',
 );
 
 /** Telugu (తెలుగు)

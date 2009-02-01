@@ -1960,6 +1960,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'tasks' => 'Tarefas',
@@ -1972,6 +1973,7 @@ $messages['pt'] = array(
 	'tasks_ok1' => 'Uma nova tarefa foi criada!',
 	'tasks_create_header' => 'Criar nova tarefa',
 	'tasks_existing_header' => 'Tarefas existentes',
+	'tasks_existing_table_header' => 'Tarefa|Datas|Comentário inicial|Atribuição/Ações/Página',
 	'tasks_noone' => 'ninguém',
 	'tasks_assign_to' => 'Atribuir a',
 	'tasks_close' => 'Fechar tarefa',
