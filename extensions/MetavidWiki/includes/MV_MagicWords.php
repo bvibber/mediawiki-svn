@@ -58,6 +58,9 @@ class MV_MagicWords {
 			case 'RECENTSTREAMS':
 				return $this->getRecentStreams();
 			break;
+			case 'RECENTSPEACHES':
+				return $this->getRecentSpeaches();
+			break;			
 			case 'PERSONSPEECHES':
 				return $this->getPersonOut();
 			break;			
@@ -68,7 +71,7 @@ class MV_MagicWords {
 				return "error: unknown mvData function: <b>{$this->magicTypeKey}</b> <br>";
 			break;
 		}
-	}
+	}	
 	function getBillOut() {
 		// return 'bill results';
 		if ( $this->params['bill'] != '' ) {
@@ -103,7 +106,7 @@ class MV_MagicWords {
 		return $ms->getUnifiedResultsHTML( $show_sidebar = false );
 	}
 	function getStartTime() {
-	$start_time = 0;
+		$start_time = 0;
 		// be sure to define 'mv_date_last_week' in messeges  
 		switch( $this->params['time_range'] ) {
 			case 'last_week':$start_time = time() - ( 7 * 24 * 60 * 60 ); break;
@@ -115,6 +118,29 @@ class MV_MagicWords {
 		}
 		return $start_time;
 	}
+	function getRecentSpeaches(){
+		$dbr = & wfGetDB( DB_READ );
+		//do a query for speeches: 
+		$vars = array( 'query_key', 'stream_id', 'start_time', 'end_time');
+		$conds = array( 'view_date >=' . $dbr->addQuotes( $this->getStartTime() ) );
+		$options = 	array( 'GROUP BY' => 'stream_id', 'ORDER BY' => '`stream_id`  DESC ',
+				 		'LIMIT' => intval( $this->params['num_results'] ) );
+		$result = $dbr->select( 'mv_clipview_digest',
+					$vars,
+					$conds,
+					__METHOD__,
+			 		$options
+			);	
+		if ( $dbr->numRows( $result ) == 0 ) {
+ 			return '';
+ 		} else { 	 		 			
+ 			$outItems = Array(); 			
+ 			while ( $row = $dbr->fetchObject( $result ) ) {
+ 				$outItems[]= $this->getItemOutput($row); 	
+ 			}			 				 				 			 	
+ 			return $this->formatOutputItems($outItems); 			
+ 		}	
+	}
 	// gets the top few clip ranges
 	function getTopClips() {
 		$dbr = & wfGetDB( DB_READ );
@@ -122,7 +148,7 @@ class MV_MagicWords {
 		$vars = array( 'query_key', 'stream_id', 'start_time', 'end_time', 'COUNT(1) as hit_count' );
 		$conds = array( 'view_date >=' . $dbr->addQuotes( $this->getStartTime() ) );
 		$options = 	array( 'GROUP BY' => 'query_key', 'ORDER BY' => '`hit_count`  DESC ',
-				 		'LIMIT' => ( $this->params['num_results'] ) );
+				 		'LIMIT' => intval( $this->params['num_results'] ) );
 		$result = $dbr->select( 'mv_clipview_digest',
 					$vars,
 					$conds,
@@ -131,102 +157,133 @@ class MV_MagicWords {
 				);
 		if ( $dbr->numRows( $result ) == 0 ) {
  			return '';
- 		} else {
- 			if ( $this->params['format'] == 'ul_list' ) {
- 				$class_attr = ( $this->params['class'] != '' ) ? ' class="' . $this->params['class'] . '"':'';
- 				$o .= '<ul' . $class_attr . '>';
- 			}
- 			global $wgUser;
- 			$sk = $wgUser->getSkin();
+ 		} else { 	 		 			
+ 			$outItems = Array(); 			
  			while ( $row = $dbr->fetchObject( $result ) ) {
- 				$o .= '<li>';
- 				$person_ht = $bill_ht = $category_ht = '';
- 				// first make link and stream title:
- 				$mvStream = MV_Stream::newStreamByID( $row->stream_id );
- 				$nt = $mvStream->getStreamName() . '/' . seconds2ntp( $row->start_time )
- 							. '/' . seconds2ntp( $row->end_time );
- 				$mvTitle = new MV_Title( $nt, MV_NS_STREAM );
- 				
- 				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( $extra_range = '0' ) );
- 				
- 				
- 				// output the image: 
- 				$o .= $sk->makeKnownLinkObj( $mvStreamTitle,
-	 					'<img alt="image for ' . $mvTitle->getStreamNameText() . ' ' .
-	 						 $mvTitle->getTimeDesc() . '" src="' . $mvTitle->getStreamImageURL( 'small' ) .
-	 					'"/>',
- 					'tl=1' );
- 				$title_span = '';
- 				if ( isset( $mvStream->date_start_time ) ) {
- 					$parts = split( '_', $mvStream->getStreamName() );
- 					if ( count( $parts ) >= 3 ) {
- 						$title_span = ucfirst( $parts[0] . ' ' );
- 					} else {
- 						$title_span = $mvStream->getStreamName();
- 					}
- 					$title_span .= date( 'F jS, Y', $mvStream->date_start_time );
- 				} else {
- 					$title_span = $mvTitle->getStreamNameText() . $mvTitle->getTimeDesc();
- 				}
- 				$o .= '<span class="title">' .
- 						$sk->makeKnownLinkObj( $mvStreamTitle,
- 							  $title_span,
- 							  'tl=1' ) .
- 					'</span>';
- 				// try to get metadata from anno_en first.
- 				// @@todo maybe the following metadata grabbing could be abstracted to a single function in mv_index  			
- 				$mvd_rows = MV_Index::getMVDInRange(
- 								$row->stream_id,
- 								$row->start_time,
- 								$row->end_time,
- 								$mvd_type = 'anno_en',
- 								$getText = true,
- 								$smw_properties = array( 'Speech_by', 'Bill', 'category' ),
- 								$options = array( 'limit' => 1 )
- 							);
- 				if ( count( $mvd_rows ) != 0 ) {
- 					reset( $mvd_rows );
- 					$mvd_row = current( $mvd_rows );
- 					// print_r($mvd_rows);
- 					// print "type of: " . gettype($mvd_row);
- 					if ( isset( $mvd_row->Speech_by ) ) {
- 						if ( trim( $mvd_row->Speech_by ) != '' ) {
-	 						$ptitle = Title::MakeTitle( NS_MAIN, $mvd_row->Speech_by );
-	 						$o .= '<span class="keywords">' .
-	 								$sk->makeKnownLinkObj( $ptitle, $ptitle->getText() ) .
-	 							'</span>';
- 						}
- 					}
- 					if ( isset( $mvd_row->Bill ) ) {
- 						if ( trim( $mvd_row->Bill ) != '' ) {
-	 						$btitle = Title::MakeTitle( NS_MAIN, $mvd_row->Bill );
-	 						$o .= '<span class="keywords">Bill:' .
-	 								$sk->makeKnownLinkObj( $btitle ) . '
-	 							</span>';
- 						}
- 					}
- 					global $wgContLang;
- 					/*$mvdNStxt = $wgContLang->getNsText(MV_NS_MVD);
- 					//grab categories:  		
- 					 $cl_res = $dbr->select('categorylinks', 'cl_to', 
- 					 				array('cl_sortkey'=>$mvdNStxt.':'.str_replace('_',' ',$mvd_row->wiki_title)),
- 					 				'getTopClips::Categories',
- 					 				'LIMIT 0, 5'); 				
- 					 if($dbr->numRows($cl_res)!=0){
- 					 	$o.='<span class="keywords">Categories: ';
- 					 	$coma='';
- 					 	while($cl_row= $dbr->fetchObject($cl_res) ){
- 					 		$cTitle =  Title::MakeTitle(NS_CATEGORY, $cl_row->cl_to);
- 					 		$o.=$coma.$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
- 					 		$coma=', ';
- 					 	}
- 					 	$o.='</span>';
- 					 } */
- 				}
- 				$o .= '</li>';
- 			}
- 			$o .= '</ul><div style="clear:both"></div>';
+ 				$outItems[]= $this->getItemOutput($row); 	
+ 			}			 				 				 			 	
+ 			return $this->formatOutputItems($outItems); 			
  		}
+ 		
+	}
+	function getItemOutput( $row ){
+		global $wgUser;
+ 		$sk = $wgUser->getSkin();
+ 			
+		$person_ht = $bill_ht = $category_ht = $o= '';
+ 		// first make link and stream title:
+ 		$mvStream = MV_Stream::newStreamByID( $row->stream_id );
+ 		$nt = $mvStream->getStreamName() . '/' . seconds2ntp( $row->start_time )
+ 					. '/' . seconds2ntp( $row->end_time );
+ 		$mvTitle = new MV_Title( $nt, MV_NS_STREAM );
+ 		
+ 		$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( $extra_range = '0' ) );
+ 		
+ 		
+ 		// output the image: 
+ 		$o .= $sk->makeKnownLinkObj( $mvStreamTitle,
+ 				'<img alt="image for ' . $mvTitle->getStreamNameText() . ' ' .
+ 					 $mvTitle->getTimeDesc() . '" src="' . $mvTitle->getStreamImageURL( 'small' ) .
+ 				'"/>',
+ 			'tl=1' );
+ 					 	 			
+ 		$title_span = '';
+ 		if ( isset( $mvStream->date_start_time ) ) {
+ 			$parts = split( '_', $mvStream->getStreamName() );
+ 			if ( count( $parts ) >= 3 ) {
+ 				$title_span = ucfirst( $parts[0] . ' ' );
+ 			} else {
+ 				$title_span = $mvStream->getStreamName();
+ 			}
+ 			$title_span .= date( 'F jS, Y', $mvStream->date_start_time );
+ 		} else {
+ 			$title_span = $mvTitle->getStreamNameText() . $mvTitle->getTimeDesc();
+ 		}
+ 		$o .= '<span class="title">' .
+ 				$sk->makeKnownLinkObj( $mvStreamTitle,
+ 					  $title_span,
+ 					  'tl=1' ) .
+ 			'</span>';
+ 		// try to get metadata from anno_en first.
+ 		// @@todo maybe the following metadata grabbing could be abstracted to a single function in mv_index  			
+ 		$mvd_rows = MV_Index::getMVDInRange(
+ 						$row->stream_id,
+ 						$row->start_time,
+ 						$row->end_time,
+ 						$mvd_type = 'anno_en',
+ 						$getText = true,
+ 						$smw_properties = array( 'Speech_by', 'Bill', 'category' ),
+ 						$options = array( 'limit' => 1 )
+ 					);
+ 		if ( count( $mvd_rows ) != 0 ) {
+ 			reset( $mvd_rows );
+ 			$mvd_row = current( $mvd_rows );
+ 			// print_r($mvd_rows);
+ 			// print "type of: " . gettype($mvd_row);
+ 			if ( isset( $mvd_row->Speech_by ) ) {
+ 				if ( trim( $mvd_row->Speech_by ) != '' ) {
+ 					$ptitle = Title::MakeTitle( NS_MAIN, $mvd_row->Speech_by );
+ 					$o .= '<span class="keywords">' .
+ 							$sk->makeKnownLinkObj( $ptitle, $ptitle->getText() ) .
+ 						'</span>';
+ 				}
+ 			}
+ 			if ( isset( $mvd_row->Bill ) ) {
+ 				if ( trim( $mvd_row->Bill ) != '' ) {
+ 					$btitle = Title::MakeTitle( NS_MAIN, $mvd_row->Bill );
+ 					$o .= '<br><span class="keywords">Bill:' .
+ 							$sk->makeKnownLinkObj( $btitle ) . '
+ 						</span>';
+ 				}
+ 			}
+ 			global $wgContLang;
+ 			$mvdNStxt = $wgContLang->getNsText(MV_NS_MVD);
+ 			//grab categories:  		
+ 			/*$cl_res = $dbr->select('categorylinks', 'cl_to', 
+ 			 				array('cl_sortkey'=>$mvdNStxt.':'.str_replace('_',' ',$mvd_row->wiki_title)),
+ 			 				'getTopClips::Categories',
+ 			 				'LIMIT 0, 5'); 				
+ 			 if($dbr->numRows($cl_res)!=0){
+ 			 	$o.='<span class="keywords">Categories: ';
+ 			 	$coma='';
+ 			 	while($cl_row= $dbr->fetchObject($cl_res) ){
+ 			 		$cTitle =  Title::MakeTitle(NS_CATEGORY, $cl_row->cl_to);
+ 			 		$o.=$coma.$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
+ 			 		$coma=', ';
+ 			 	}
+ 			 	$o.='</span>';
+ 			 }*/
+ 		}
+ 		return $o;
+	}
+	function formatOutputItems($outItems){
+		$class_attr = ( $this->params['class'] != '' ) ? ' class="' . htmlspecialchars($this->params['class']) . '"':'';
+ 		if ( $this->params['format'] == 'ul_list' ) { 				
+ 			$o .= '<ul' . $class_attr . '>';
+ 			foreach($outItems as $item){
+ 				$o.='<li>'.$item.'</li>'; 				
+ 			}
+ 			$o .= '</ul>';
+ 		}
+ 		if( $this->params['format'] == 'table' ){
+ 			$width =  (isset($this->params['width']))?$this->params['width']:800;			
+ 			$o .= '<table '.$class_attr .'>'; 			
+ 			$col = (isset($this->params['columns']))?$this->params['columns']:4;
+ 			$j=0; 			
+ 			foreach($outItems as $item){ 				 				
+ 				if( $j == 0 )
+ 					$o.='<tr>'; 				
+ 				$o.='<td valign="top" style="text-align:center" width="'.intval( $width / $col ) . '">' . $item . '</td>'; 					
+ 				if($j == $col-1){
+ 					$o.= '</tr>';
+ 					$j = 0;
+ 				}else{ 				 		
+ 					$j++;
+ 				}		 			
+ 			}
+ 			$o.='</table>';
+ 		}
+ 		$o.='<div style="clear:both"></div>';
  		return $o;
 	}
 	// get the top few search results this is a ~slow~ query ... 
