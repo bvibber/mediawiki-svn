@@ -438,8 +438,8 @@ function getRelationTypeAsRecordSet($queryResult) {
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$relationTypeAttribute = new Attribute("relation-type", "Relation type", "short-text");
-	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	$relationTypeAttribute = new Attribute("relation-type", wfMsg('ow_RelationType'), "short-text");
+	$collectionAttribute = new Attribute("collection", wfMsg('ow_Collection'), "short-text");
 	
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $relationTypeAttribute, $collectionAttribute), new Structure($o->id));
 	
@@ -478,7 +478,7 @@ function getDefinedMeaningAttributeAsRecordSet($queryResult) {
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$definedMeaningAttributeAttribute = new Attribute("defined-meaning-attribute", "Relation type", "short-text");
+	$definedMeaningAttributeAttribute = new Attribute("defined-meaning-attribute", wfMsg('ow_RelationType'), "short-text");
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $definedMeaningAttributeAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
