@@ -45,3 +45,6 @@ Modifies the definition of the SecureMode configuration variable, causing it to
 eliminate escalation from web admins to arbitrary shell execution. Has been
 submitted upstream.
 
+70-fix-new-messages.patch
+-------------------------
+Minor bugfix for CVS HEAD: fix links to removed module AgentTicketMailbox.

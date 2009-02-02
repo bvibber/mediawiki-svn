@@ -1,0 +1,21 @@
+Index: trunk/Kernel/Output/HTML/NotificationAgentTicket.pm
+===================================================================
+--- trunk.orig/Kernel/Output/HTML/NotificationAgentTicket.pm	2009-02-02 17:23:23.000000000 +1100
++++ trunk/Kernel/Output/HTML/NotificationAgentTicket.pm	2009-02-02 17:24:15.000000000 +1100
+@@ -43,14 +43,14 @@
+     if ( $LockedData{New} ) {
+         $Output .= $Self->{LayoutObject}->Notify(
+             Priority => 'Notice',
+-            Link     => '$Env{"Baselink"}Action=AgentTicketMailbox&Subaction=New',
++            Link     => '$Env{"Baselink"}Action=AgentTicketLockedView&Filter=New',
+             Data     => '$Text{"You have %s new message(s)!", "' . $LockedData{New} . '"}',
+         );
+     }
+     if ( $LockedData{Reminder} ) {
+         $Output .= $Self->{LayoutObject}->Notify(
+             Priority => 'Notice',
+-            Link     => '$Env{"Baselink"}Action=AgentTicketMailbox&Subaction=Reminder',
++            Link     => '$Env{"Baselink"}Action=AgentTicketLockedView&Filter=New',
+             Data     => '$Text{"You have %s reminder ticket(s)!", "' . $LockedData{Reminder} . '"}',
+         );
+     }

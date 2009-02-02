@@ -1,6 +1,6 @@
 Index: trunk/.fetchmailrc.dist
 ===================================================================
---- trunk.orig/.fetchmailrc.dist	2009-01-28 15:43:49.000000000 +1100
+--- trunk.orig/.fetchmailrc.dist	2009-02-02 17:10:29.000000000 +1100
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,31 +0,0 @@
 -# --
@@ -36,7 +36,7 @@ Index: trunk/.fetchmailrc.dist
 -#--------------------------------------------------------#
 Index: trunk/.mailfilter.dist
 ===================================================================
---- trunk.orig/.mailfilter.dist	2009-01-28 15:46:53.000000000 +1100
+--- trunk.orig/.mailfilter.dist	2009-02-02 17:10:29.000000000 +1100
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,79 +0,0 @@
 -# --
@@ -120,7 +120,7 @@ Index: trunk/.mailfilter.dist
 -
 Index: trunk/.procmailrc.dist
 ===================================================================
---- trunk.orig/.procmailrc.dist	2009-01-28 15:46:53.000000000 +1100
+--- trunk.orig/.procmailrc.dist	2009-02-02 17:10:29.000000000 +1100
 +++ /dev/null	1970-01-01 00:00:00.000000000 +0000
 @@ -1,86 +0,0 @@
 -# --
@@ -211,8 +211,8 @@ Index: trunk/.procmailrc.dist
 -
 Index: trunk/INSTALL
 ===================================================================
---- trunk.orig/INSTALL	2009-01-28 15:44:01.000000000 +1100
-+++ trunk/INSTALL	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/INSTALL	2009-02-02 17:10:29.000000000 +1100
++++ trunk/INSTALL	2009-02-02 17:14:34.000000000 +1100
 @@ -74,7 +74,7 @@
     ------------
      Add user:
@@ -257,8 +257,8 @@ Index: trunk/INSTALL
     ---------------
 Index: trunk/Kernel/Modules/AdminGenericAgent.pm
 ===================================================================
---- trunk.orig/Kernel/Modules/AdminGenericAgent.pm	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/Kernel/Modules/AdminGenericAgent.pm	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/Kernel/Modules/AdminGenericAgent.pm	2009-02-02 17:13:02.000000000 +1100
++++ trunk/Kernel/Modules/AdminGenericAgent.pm	2009-02-02 17:14:34.000000000 +1100
 @@ -533,6 +533,11 @@
              }
          }
@@ -271,7 +271,7 @@ Index: trunk/Kernel/Modules/AdminGenericAgent.pm
          # html search mask output
          my $Output = $Self->{LayoutObject}->Header( Title => 'Affected Tickets' );
          $Output .= $Self->{LayoutObject}->NavigationBar();
-@@ -1106,6 +1111,11 @@
+@@ -1107,6 +1112,11 @@
              }
          }
  
@@ -285,8 +285,8 @@ Index: trunk/Kernel/Modules/AdminGenericAgent.pm
          $Output .= $Self->{LayoutObject}->NavigationBar();
 Index: trunk/Kernel/Modules/AdminSelectBox.pm
 ===================================================================
---- trunk.orig/Kernel/Modules/AdminSelectBox.pm	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/Kernel/Modules/AdminSelectBox.pm	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/Kernel/Modules/AdminSelectBox.pm	2009-02-02 17:10:29.000000000 +1100
++++ trunk/Kernel/Modules/AdminSelectBox.pm	2009-02-02 17:14:34.000000000 +1100
 @@ -35,6 +35,11 @@
  sub Run {
      my ( $Self, %Param ) = @_;
@@ -301,8 +301,8 @@ Index: trunk/Kernel/Modules/AdminSelectBox.pm
      # ------------------------------------------------------------ #
 Index: trunk/Kernel/Modules/AdminSysConfig.pm
 ===================================================================
---- trunk.orig/Kernel/Modules/AdminSysConfig.pm	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/Kernel/Modules/AdminSysConfig.pm	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/Kernel/Modules/AdminSysConfig.pm	2009-02-02 17:10:29.000000000 +1100
++++ trunk/Kernel/Modules/AdminSysConfig.pm	2009-02-02 17:14:34.000000000 +1100
 @@ -45,6 +45,11 @@
      my $Group = '';
      my $Anker = '';
@@ -317,8 +317,8 @@ Index: trunk/Kernel/Modules/AdminSysConfig.pm
          if ( !$Self->{SysConfigObject}->WriteDefault() ) {
 Index: trunk/Kernel/Output/HTML/NavBarModuleAdmin.pm
 ===================================================================
---- trunk.orig/Kernel/Output/HTML/NavBarModuleAdmin.pm	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/Kernel/Output/HTML/NavBarModuleAdmin.pm	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/Kernel/Output/HTML/NavBarModuleAdmin.pm	2009-02-02 17:10:29.000000000 +1100
++++ trunk/Kernel/Output/HTML/NavBarModuleAdmin.pm	2009-02-02 17:14:34.000000000 +1100
 @@ -88,6 +88,17 @@
                  }
  
@@ -339,8 +339,8 @@ Index: trunk/Kernel/Output/HTML/NavBarModuleAdmin.pm
              my $Key = sprintf( "%07d", $Hash{NavBarModule}->{Prio} || 0 );
 Index: trunk/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl
 ===================================================================
---- trunk.orig/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl	2009-02-02 17:10:29.000000000 +1100
++++ trunk/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl	2009-02-02 17:14:34.000000000 +1100
 @@ -476,14 +476,14 @@
              </td>
            </tr>
@@ -399,8 +399,8 @@ Index: trunk/Kernel/Output/HTML/Standard/AdminGenericAgent.dtl
                <input class="button" type="submit" value="$Text{"Save"}"/>
 Index: trunk/Kernel/System/GenericAgent.pm
 ===================================================================
---- trunk.orig/Kernel/System/GenericAgent.pm	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/Kernel/System/GenericAgent.pm	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/Kernel/System/GenericAgent.pm	2009-02-02 17:10:29.000000000 +1100
++++ trunk/Kernel/System/GenericAgent.pm	2009-02-02 17:14:34.000000000 +1100
 @@ -273,6 +273,18 @@
          }
      }
@@ -422,8 +422,8 @@ Index: trunk/Kernel/System/GenericAgent.pm
      # escalation tickets
 Index: trunk/Kernel/System/Package.pm
 ===================================================================
---- trunk.orig/Kernel/System/Package.pm	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/Kernel/System/Package.pm	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/Kernel/System/Package.pm	2009-02-02 17:10:29.000000000 +1100
++++ trunk/Kernel/System/Package.pm	2009-02-02 17:14:34.000000000 +1100
 @@ -125,9 +125,9 @@
      $Self->{Home} = $Self->{ConfigObject}->Get('Home');
  
@@ -461,8 +461,8 @@ Index: trunk/Kernel/System/Package.pm
  }
 Index: trunk/Kernel/System/Ticket/ArticleStorageFS.pm
 ===================================================================
---- trunk.orig/Kernel/System/Ticket/ArticleStorageFS.pm	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/Kernel/System/Ticket/ArticleStorageFS.pm	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/Kernel/System/Ticket/ArticleStorageFS.pm	2009-02-02 17:10:29.000000000 +1100
++++ trunk/Kernel/System/Ticket/ArticleStorageFS.pm	2009-02-02 17:14:34.000000000 +1100
 @@ -55,10 +55,10 @@
          $Self->{LogObject}->Log(
              Priority => 'notice',
@@ -478,8 +478,8 @@ Index: trunk/Kernel/System/Ticket/ArticleStorageFS.pm
  }
 Index: trunk/README.webserver
 ===================================================================
---- trunk.orig/README.webserver	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/README.webserver	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/README.webserver	2009-02-02 17:10:29.000000000 +1100
++++ trunk/README.webserver	2009-02-02 17:14:34.000000000 +1100
 @@ -48,11 +48,21 @@
      because you have other applications running on this server, you can
      also work with group permissions (more tricky).
@@ -508,8 +508,8 @@ Index: trunk/README.webserver
   *)
 Index: trunk/UPGRADING
 ===================================================================
---- trunk.orig/UPGRADING	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/UPGRADING	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/UPGRADING	2009-02-02 17:10:29.000000000 +1100
++++ trunk/UPGRADING	2009-02-02 17:14:34.000000000 +1100
 @@ -48,7 +48,7 @@
      PostgreSQL:
        cat $OTRS_HOME/scripts/DBUpdate-to-2.3-post.postgresql.sql | psql otrs
@@ -521,8 +521,8 @@ Index: trunk/UPGRADING
  
 Index: trunk/bin/SetPermissions.sh
 ===================================================================
---- trunk.orig/bin/SetPermissions.sh	2009-01-28 15:43:30.000000000 +1100
-+++ trunk/bin/SetPermissions.sh	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/bin/SetPermissions.sh	2009-02-02 17:10:29.000000000 +1100
++++ trunk/bin/SetPermissions.sh	2009-02-02 17:14:34.000000000 +1100
 @@ -20,9 +20,6 @@
  # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  # --
@@ -635,7 +635,7 @@ Index: trunk/bin/SetPermissions.sh
 Index: trunk/home/.fetchmailrc.dist
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ trunk/home/.fetchmailrc.dist	2009-01-28 15:53:29.000000000 +1100
++++ trunk/home/.fetchmailrc.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -0,0 +1,31 @@
 +# --
 +# .fetchmailrc - fetchmailrc of the OTRS user
@@ -671,7 +671,7 @@ Index: trunk/home/.fetchmailrc.dist
 Index: trunk/home/.mailfilter.dist
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ trunk/home/.mailfilter.dist	2009-01-28 15:53:29.000000000 +1100
++++ trunk/home/.mailfilter.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -0,0 +1,79 @@
 +# --
 +# .mailfilter - mailfilter of the OTRS user
@@ -755,7 +755,7 @@ Index: trunk/home/.mailfilter.dist
 Index: trunk/home/.procmailrc.dist
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ trunk/home/.procmailrc.dist	2009-01-28 15:53:29.000000000 +1100
++++ trunk/home/.procmailrc.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -0,0 +1,86 @@
 +# --
 +# .procmailrc - procmailrc of the OTRS user
@@ -845,8 +845,8 @@ Index: trunk/home/.procmailrc.dist
 +
 Index: trunk/scripts/DBUpdate-to-2.3.pl
 ===================================================================
---- trunk.orig/scripts/DBUpdate-to-2.3.pl	2009-01-28 15:46:53.000000000 +1100
-+++ trunk/scripts/DBUpdate-to-2.3.pl	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/scripts/DBUpdate-to-2.3.pl	2009-02-02 17:10:29.000000000 +1100
++++ trunk/scripts/DBUpdate-to-2.3.pl	2009-02-02 17:14:34.000000000 +1100
 @@ -82,7 +82,7 @@
  
  # error handling
@@ -858,8 +858,8 @@ Index: trunk/scripts/DBUpdate-to-2.3.pl
  
 Index: trunk/var/cron/aaa_base.dist
 ===================================================================
---- trunk.orig/var/cron/aaa_base.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/aaa_base.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/aaa_base.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/aaa_base.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -11,4 +11,5 @@
  
  # Who gets the cron emails?
@@ -868,8 +868,8 @@ Index: trunk/var/cron/aaa_base.dist
  
 Index: trunk/var/cron/generic_agent-database.dist
 ===================================================================
---- trunk.orig/var/cron/generic_agent-database.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/generic_agent-database.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/generic_agent-database.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/generic_agent-database.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -10,5 +10,5 @@
  # --
  
@@ -879,8 +879,8 @@ Index: trunk/var/cron/generic_agent-database.dist
  
 Index: trunk/var/cron/generic_agent.dist
 ===================================================================
---- trunk.orig/var/cron/generic_agent.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/generic_agent.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/generic_agent.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/generic_agent.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -10,9 +10,9 @@
  # --
  
@@ -895,8 +895,8 @@ Index: trunk/var/cron/generic_agent.dist
  
 Index: trunk/var/cron/pending_jobs.dist
 ===================================================================
---- trunk.orig/var/cron/pending_jobs.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/pending_jobs.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/pending_jobs.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/pending_jobs.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -10,5 +10,5 @@
  # --
  
@@ -906,8 +906,8 @@ Index: trunk/var/cron/pending_jobs.dist
  
 Index: trunk/var/cron/postmaster.dist
 ===================================================================
---- trunk.orig/var/cron/postmaster.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/postmaster.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/postmaster.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/postmaster.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -11,5 +11,5 @@
  
  # check daily the spool directory of OTRS
@@ -917,8 +917,8 @@ Index: trunk/var/cron/postmaster.dist
  
 Index: trunk/var/cron/postmaster_mailbox.dist
 ===================================================================
---- trunk.orig/var/cron/postmaster_mailbox.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/postmaster_mailbox.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/postmaster_mailbox.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/postmaster_mailbox.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -10,5 +10,5 @@
  # --
  
@@ -928,8 +928,8 @@ Index: trunk/var/cron/postmaster_mailbox.dist
  
 Index: trunk/var/cron/rebuild_ticket_index.dist
 ===================================================================
---- trunk.orig/var/cron/rebuild_ticket_index.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/rebuild_ticket_index.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/rebuild_ticket_index.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/rebuild_ticket_index.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -10,5 +10,5 @@
  # --
  
@@ -939,8 +939,8 @@ Index: trunk/var/cron/rebuild_ticket_index.dist
  
 Index: trunk/var/cron/session.dist
 ===================================================================
---- trunk.orig/var/cron/session.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/session.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/session.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/session.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -10,5 +10,5 @@
  # --
  
@@ -950,8 +950,8 @@ Index: trunk/var/cron/session.dist
  
 Index: trunk/var/cron/unlock.dist
 ===================================================================
---- trunk.orig/var/cron/unlock.dist	2009-01-28 15:51:30.000000000 +1100
-+++ trunk/var/cron/unlock.dist	2009-01-28 15:52:50.000000000 +1100
+--- trunk.orig/var/cron/unlock.dist	2009-02-02 17:10:29.000000000 +1100
++++ trunk/var/cron/unlock.dist	2009-02-02 17:14:34.000000000 +1100
 @@ -10,5 +10,5 @@
  # --
  
@@ -962,7 +962,7 @@ Index: trunk/var/cron/unlock.dist
 Index: trunk/bin/SetPermissions.pl
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ trunk/bin/SetPermissions.pl	2009-01-29 14:04:58.000000000 +1100
++++ trunk/bin/SetPermissions.pl	2009-02-02 17:14:34.000000000 +1100
 @@ -0,0 +1,242 @@
 +#!/usr/bin/perl -w
 +# --
@@ -1206,3 +1206,39 @@ Index: trunk/bin/SetPermissions.pl
 +        die( "Error in chmod $mode $file: $!\n" );
 +    }
 +}
+Index: trunk/Kernel/Config/Defaults.pm
+===================================================================
+--- trunk.orig/Kernel/Config/Defaults.pm	2009-02-02 17:18:06.000000000 +1100
++++ trunk/Kernel/Config/Defaults.pm	2009-02-02 17:18:20.000000000 +1100
+@@ -33,7 +33,14 @@
+     # system data                                         #
+     # --------------------------------------------------- #
+     # SecureMode
+-    # (Enable this so you can't use the installer.pl)
++    # Disables escalation from web user to arbitrary script/shell execution. 
++    # Affected modules:
++    #    Package manager
++    #    GenericAgent: CMD and module actions
++    #
++    # Also disables the SQL Box, since it's possible to use it for destructive 
++    # write queries such as DROP DATABASE, and also to steal user passwords.
++    #
+     $Self->{SecureMode} = 0;
+ 
+     # SystemID
+Index: trunk/Kernel/Modules/AdminPackageManager.pm
+===================================================================
+--- trunk.orig/Kernel/Modules/AdminPackageManager.pm	2009-02-02 17:18:06.000000000 +1100
++++ trunk/Kernel/Modules/AdminPackageManager.pm	2009-02-02 17:18:20.000000000 +1100
+@@ -45,6 +45,11 @@
+ 
+     my $Source = $Self->{UserRepository} || '';
+ 
++    if ( $Self->{ConfigObject}->Get( 'SecureMode' ) ) {
++        $Self->{LayoutObject}->FatalError( Message => "The package manager is disabled in secure mode." );
++        return;
++    }
++
+     # ------------------------------------------------------------ #
+     # check mod perl version and Apache::Reload
+     # ------------------------------------------------------------ #
