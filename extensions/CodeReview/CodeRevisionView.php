@@ -419,13 +419,13 @@ class CodeRevisionView extends CodeView {
 	}
 	
 	protected function commentReplyLink( $id ) {
+		global $wgUser;
+		if( !$wgUser->isAllowed('codereview-post-comment') ) return '';
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		$self = SpecialPage::getTitleFor( 'Code', "$repo/$rev/reply/$id" );
 		$self->setFragment( "#c$id" );
-		return '[' .
-			$this->mSkin->link( $self, wfMsg( 'codereview-reply-link' ) ) .
-			']';
+		return '[' . $this->mSkin->link( $self, wfMsg( 'codereview-reply-link' ) ) . ']';
 	}
 	
 	protected function postCommentForm( $parent=null ) {
