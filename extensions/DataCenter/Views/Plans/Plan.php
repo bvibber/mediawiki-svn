@@ -44,8 +44,10 @@ class DataCenterViewPlansPlan extends DataCenterView {
 				$model = $asset->getModel();
 				$tables['rack'][$key]->set(
 					array(
-						'model' => $model->get( 'name' ),
-						'manufacturer' => $model->get( 'manufacturer' )
+						'model' => implode(
+							' / ',
+							$model->get( array( 'manufacturer', 'name' ) )
+						),
 					)
 				);
 			}
@@ -81,8 +83,11 @@ class DataCenterViewPlansPlan extends DataCenterView {
 				'rows' => $tables['rack'],
 				'fields' => array(
 					'name',
-					'manufacturer',
 					'model',
+					'position' => array(
+						'fields' => array( 'x', 'y' ),
+						'glue' => ' x ',
+					),
 				),
 				'link' => array(
 					'page' => 'plans',

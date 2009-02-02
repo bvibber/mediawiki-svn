@@ -976,7 +976,7 @@ class DataCenterUI {
 				return self::message( 'category', $value );
 				break;
 			case 'side':
-				return self::message( 'option', $value ? 'front' : 'back' );
+				return self::message( 'option', $value ? 'back' : 'front' );
 				break;
 			case 'angle':
 				return self::message( 'label', 'degrees-value', $value * 90 );

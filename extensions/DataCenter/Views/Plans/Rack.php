@@ -45,9 +45,19 @@ class DataCenterViewPlansRack extends DataCenterView {
 			$objectLinks[$key]->set(
 				array(
 					'rack' => $object->getId(),
-					'model' => $objectModel->get( 'name' ),
-					'manufacturer' => $objectModel->get( 'manufacturer' ),
-					'position' => $objectLink->get( 'z' ),
+					'model' => implode(
+						' / ',
+						$objectModel->get( array( 'manufacturer', 'name' ) )
+					),
+					'position' => implode(
+						': ',
+						array(
+							DataCenterUI::format(
+								$objectLink->get( 'orientation' ), 'side'
+							),
+							$objectLink->get( 'z' ),
+						)
+					),
 				)
 			);
 		}
@@ -87,7 +97,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 							array(
 								'rows' => $objectLinks,
 								'fields' => array(
-									'name', 'manufacturer', 'model',
+									'name', 'model', 'position',
 								),
 								'link' => array(
 									'page' => 'plans',
