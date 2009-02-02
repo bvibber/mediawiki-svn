@@ -27,7 +27,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 		// Gets structure of plan
 		$structure = $plan->getStructure(
 			DataCenterDB::buildSort(
-				'link', 'asset', array( 'orientation DESC', 'z DESC' )
+				'link', 'asset', array( 'orientation', 'z DESC' )
 			)
 		);
 		// Gets objects from rack in structure
@@ -50,12 +50,12 @@ class DataCenterViewPlansRack extends DataCenterView {
 						$objectModel->get( array( 'manufacturer', 'name' ) )
 					),
 					'position' => implode(
-						': ',
+						' / ',
 						array(
+							$objectLink->get( 'z' ),
 							DataCenterUI::format(
 								$objectLink->get( 'orientation' ), 'side'
 							),
-							$objectLink->get( 'z' ),
 						)
 					),
 				)
