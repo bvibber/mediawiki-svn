@@ -16,27 +16,11 @@ $settings = array(
 		'site' => array(
 			'wgSitename' => 'text',
 			'wgLogo' => 'image-url',
-			'wgBreakFrames' => 'bool',
-			'wgCapitalLinks' => 'bool',
-			'wgDefaultLanguageVariant' => 'text',
-			'wgExtraRandompageSQL' => 'text',
-			'wgExtraSubtitle' => 'text',
-			'wgLegalTitleChars' => 'text',
-			'wgMaxArticleSize' => 'int',
-			'wgMaxRedirects' => 'int',
-			'wgMetadataWhitelist' => 'text',
 			'wgSiteNotice' => 'text',
+			'wgExtraSubtitle' => 'text',
+			'wgBreakFrames' => 'bool',
 			'wgSiteSupportPage' => 'text',
 			'wgStyleVersion' => 'int',
-			'wgUrlProtocols' => 'array',
-			'wgUseMetadataEdit' => 'bool',
-		),
-		'robots' => array(
-			'wgArticleRobotPolicies' => 'array',
-			'wgDefaultRobotPolicy' => 'text',
-			'wgExemptFromUserRobotsControl' => 'array',
-			'wgNoFollowLinks' => 'bool',
-			'wgNoFollowDomainExceptions' => 'array',
 		),
 	),
 	'features' => array(
@@ -46,16 +30,15 @@ $settings = array(
 			'wgPageShowWatchingUsers' => 'bool',
 			'wgEdititis' => 'bool',
 			'wgShowHostnames' => 'bool',
-			'wgUseDumbLinkUpdate' => 'bool',
 			'wgFixDoubleRedirects' => 'bool',
-			'wgInvalidRedirectTargets' => 'array',
-			'wgUsePathInfo' => 'bool',
 			'wgEnableAPI' => 'bool',
 			'wgEnableWriteAPI' => 'bool',
 			'wgUseTeX' => 'bool',
 			'wgEnableHtmlDiff' => 'bool',
 			'wgUseAutomaticEditSummaries' => 'bool',
 			'wgUseTrackbacks' => 'bool',
+			'wgUseMetadataEdit' => 'bool',
+			'wgMetadataWhitelist' => 'text',
 		),
 		'ajax' => array(
 			'wgUseAjax' => 'bool',
@@ -85,6 +68,22 @@ $settings = array(
 			'wgUpdateRowsPerQuery' => 'int',
 		),
 	),
+	'pages' => array(
+		'pages' => array(
+			'wgCapitalLinks' => 'bool',
+			'wgMaxArticleSize' => 'int',
+			'wgMaxRedirects' => 'int',
+			'wgInvalidRedirectTargets' => 'array',
+			'wgLegalTitleChars' => 'text',
+		),
+		'robots' => array(
+			'wgArticleRobotPolicies' => 'array',
+			'wgDefaultRobotPolicy' => 'text',
+			'wgExemptFromUserRobotsControl' => 'array',
+			'wgNoFollowLinks' => 'bool',
+			'wgNoFollowDomainExceptions' => 'array',
+		),
+	),
 	'namespaces' => array(
 		'namespaces' => array(
 			'wgContentNamespaces' => 'array',
@@ -105,6 +104,7 @@ $settings = array(
 	'groups' => array(
 		'groups' => array(
 			'wgAutopromote' => 'array',
+			'wgImplicitGroups' => 'array',
 			'wgGroupPermissions' => 'array',
 			'wgAddGroups' => 'array',
 			'wgRemoveGroups' => 'array',
@@ -135,6 +135,7 @@ $settings = array(
 			'wgUploadDirectory' => 'text',
 			'wgUploadNavigationUrl' => 'text',
 			'wgUploadPath' => 'text',
+			'wgUsePathInfo' => 'bool',
 			'wgVariantArticlePath' => 'text',
 		),
 		'external-tools' => array(
@@ -173,6 +174,7 @@ $settings = array(
 			'wgSharedPrefix' => 'text',
 			'wgSharedTables'  => 'array',
 			'wgAntiLockFlags' => 'int',
+			'wgUseDumbLinkUpdate' => 'bool',
 		),
 		'load-balancing' => array(
 			'wgDBClusterTimeout' => 'int',
@@ -226,20 +228,21 @@ $settings = array(
 	),
 	'localization' => array(
 		'localization' => array(
+			'wgLanguageCode' => 'lang',
+			'wgDefaultLanguageVariant' => 'text',
 			'wgExtraLanguageNames' => 'array',
-			'wgAmericanDates' => 'bool',
 			'wgDisableLangConversion' => 'bool',
 			'wgDisableTitleConversion' => 'bool',
-			'wgEditEncoding' => 'text',
+			'wgUseDatabaseMessages' => 'bool',
 			'wgForceUIMsgAsContentMsg' => 'array',
-			'wgInputEncoding' => 'text',
-			'wgLanguageCode' => 'lang',
-			'wgLegacyEncoding' => 'text',
 			'wgLoginLanguageSelector' => 'bool',
+			'wgInputEncoding' => 'text',
+			'wgLegacyEncoding' => 'text',
+			'wgEditEncoding' => 'text',
 			'wgOutputEncoding' => 'text',
 			'wgTranslateNumerals' => 'bool',
-			'wgUseDatabaseMessages' => 'bool',
 			'wgUseDynamicDates' => 'bool',
+			'wgAmericanDates' => 'bool',
 		),
 		'timezone' => array(
 			'wgLocaltimezone' => 'text',
@@ -318,7 +321,7 @@ $settings = array(
 			'wgMainCacheType' => array( -1 => 'Anything', 0 => 'None',
 	                            1 => 'DB', 2 => 'Memcached',
 	                            3 => 'Accel', 4 => 'DBA' ),
-	        	'wgCacheEpoch' => 'text',
+	        'wgCacheEpoch' => 'text',
 			'wgCachePages' => 'bool',
 			'wgClockSkewFudge' => 'int',
 			'wgFileCacheDirectory' => 'text',
@@ -360,17 +363,17 @@ $settings = array(
 	),
 	'interwiki' => array(
 		'interwiki' => array(
+			'wgImportSources' => 'array',
+			'wgLocalInterwiki' => 'text',
 			'wgHideInterlanguageLinks' => 'bool',
 			'wgInterwikiMagic' => 'bool',
-			'wgDisableHardRedirects' => 'bool',
 			'wgEnableScaryTranscluding' => 'bool',
-			'wgImportSources' => 'array',
+			'wgDisableHardRedirects' => 'bool',
+			'wgRedirectSources' => 'text',
 			'wgInterwikiCache' => 'text',
 			'wgInterwikiExpiry' => 'int',
 			'wgInterwikiFallbackSite' => 'text',
 			'wgInterwikiScopes' => 'int',
-			'wgLocalInterwiki' => 'text',
-			'wgRedirectSources' => 'text',
 		),
 	),
 	'access' => array(
@@ -380,7 +383,6 @@ $settings = array(
 			'wgDisabledActions' => 'array',
 			'wgNewPasswordExpiry' => 'int',
 			'wgEmailConfirmToEdit' => 'bool',
-			'wgImplicitGroups' => 'array',
 			'wgPasswordSalt' => 'bool',
 			'wgReadOnly' => 'text',
 			'wgReadOnlyFile' => 'text',
@@ -399,55 +401,12 @@ $settings = array(
 			'wgSpamRegex' => 'array',
 			'wgFilterCallback' => 'text',
 			'wgDeleteRevisionsLimit' => 'int',
+			'wgPasswordAttemptThrottle' => 'array',
+		),
+		'rates' => array(
 			'wgRateLimitLog' => 'text',
 			'wgRateLimits' => 'array',
 			'wgRateLimitsExcludedGroups' => 'array',
-			'wgPasswordAttemptThrottle' => 'array',
-		),
-	),
-	'proxy' => array(
-		'proxy' => array(
-			'wgBlockOpenProxies' => 'bool',
-			'wgEnableSorbs' => 'bool',
-#			'wgProxyKey' => 'text', # Deprecated
-			'wgProxyList' => 'array',
-			'wgProxyMemcExpiry' => 'int',
-			'wgProxyPorts' => 'array',
-			'wgProxyScriptPath' => 'text',
-			'wgProxyWhitelist' => 'array',
-			'wgSecretKey' => 'text',
-			'wgSorbsUrl' => 'text',
-		),
-	),
-	'squid' => array(
-		'squid' => array(
-			'wgUseSquid' => 'bool',
-			'wgInternalServer' => 'text',
-			'wgMaxSquidPurgeTitles' => 'int',
-			'wgSquidMaxage' => 'int',
-			'wgSquidServers' => 'array',
-			'wgSquidServersNoPurge' => 'array',
-			'wgUseESI' => 'bool',
-			'wgUsePrivateIPs' => 'bool',
-		),
-		'htcp' => array(
-			'wgHTCPMulticastAddress' => 'text',
-			'wgHTCPMulticastTTL' => 'int',
-			'wgHTCPPort' => 'int',
-		),
-	),
-	'cookie' => array(
-		'cookie' => array(
-			'wgCacheVaryCookies' => 'array',
-			'wgCookieDomain' => 'text',
-			'wgCookieExpiration' => 'int',
-			'wgCookieHttpOnly' => 'bool',
-			'wgCookiePath' => 'text',
-			'wgCookiePrefix' => 'text',
-			'wgCookieSecure' => 'bool',
-			'wgDisableCookieCheck' => 'bool',
-			'wgHttpOnlyBlacklist' => 'array',
-			'wgSessionName' => 'text',
 		),
 	),
 	'upload' => array(
@@ -467,7 +426,6 @@ $settings = array(
 			'wgMaxUploadSize' => 'int',
 			'wgHTTPTimeout' => 'int',
 			'wgHTTPProxy' => 'text',
-			'wgXMLMimeTypes' => 'array',
 		),
 		'sharedupload' => array(
 			'wgCacheSharedUploads' => 'bool',
@@ -483,14 +441,15 @@ $settings = array(
 			'wgUseSharedUploads' => 'bool',
 		),
 		'mime' => array(
-			'wgJsMimeType' => 'text',
+			'wgVerifyMimeType' => 'bool',
 			'wgLoadFileinfoExtension' => 'bool',
 			'wgMimeDetectorCommand' => 'text',
 			'wgMimeInfoFile' => 'text',
 			'wgMimeTypeFile' => 'text',
 			'wgTrivialMimeDetection' => 'bool',
-			'wgVerifyMimeType' => 'bool',
+			'wgJsMimeType' => 'text',
 			'wgMimeTypeBlacklist' => 'array',
+			'wgXMLMimeTypes' => 'array',
 		),
 	),
 	'images' => array(
@@ -542,6 +501,7 @@ $settings = array(
 	'parser' => array(
 		'parser' => array(
 			'wgAllowDisplayTitle' => 'bool',
+			'wgRestrictDisplayTitle' => 'bool',
 			'wgAllowExternalImages' => 'bool',
 			'wgAllowExternalImagesFrom' => 'text',
 			'wgEnableImageWhitelist' => 'bool',
@@ -557,7 +517,7 @@ $settings = array(
 			'wgParserConf' => 'array',
 			'wgParserCacheExpireTime' => 'int',
 			'wgParserTestFiles' => 'array',
-			'wgRestrictDisplayTitle' => 'bool',
+			'wgUrlProtocols' => 'array',
 		),
 		'html' => array(
 			'wgRawHtml' => 'bool',
@@ -579,6 +539,7 @@ $settings = array(
 			'wgExportAllowHistory' => 'bool',
 			'wgExportAllowListContributors' => 'bool',
 			'wgExportMaxHistory' => 'int',
+			'wgExtraRandompageSQL' => 'text',
 			'wgFilterLogTypes' => 'array',
 			'wgImportTargetNamespace' => 'text',
 			'wgLogActions' => 'array',
@@ -631,6 +592,20 @@ $settings = array(
 			'wgBrowserBlackList' => 'array',
 		),
 	),
+	'cookie' => array(
+		'cookie' => array(
+			'wgCacheVaryCookies' => 'array',
+			'wgCookieDomain' => 'text',
+			'wgCookieExpiration' => 'int',
+			'wgCookieHttpOnly' => 'bool',
+			'wgCookiePath' => 'text',
+			'wgCookiePrefix' => 'text',
+			'wgCookieSecure' => 'bool',
+			'wgDisableCookieCheck' => 'bool',
+			'wgHttpOnlyBlacklist' => 'array',
+			'wgSessionName' => 'text',
+		),
+	),
 	'feed' => array(
 		'feed' => array(
 			'wgFeed' => 'bool',
@@ -653,6 +628,49 @@ $settings = array(
 			'wgRightsUrl' => 'text',
 			'wgShowCreditsIfMax' => 'bool',
 			'wgUseCopyrightUpload' => 'bool',
+		),
+	),
+	'search' => array(
+		'search' => array(
+			'wgAdvancedSearchHighlighting' => 'bool',
+			'wgEnableMWSuggest' => 'bool',
+			'wgGoToEdit' => 'bool',
+			'wgMWSuggestTemplate' => 'text',
+			'wgOpenSearchTemplate' => 'text',
+			'wgSearchForwardUrl' => 'text',
+			'wgSearchHighlightBoundaries' => 'text',
+			'wgUseTwoButtonsSearchForm' => 'bool',
+		),
+	),
+	'proxy' => array(
+		'proxy' => array(
+			'wgBlockOpenProxies' => 'bool',
+			'wgEnableSorbs' => 'bool',
+#			'wgProxyKey' => 'text', # Deprecated
+			'wgProxyList' => 'array',
+			'wgProxyMemcExpiry' => 'int',
+			'wgProxyPorts' => 'array',
+			'wgProxyScriptPath' => 'text',
+			'wgProxyWhitelist' => 'array',
+			'wgSecretKey' => 'text',
+			'wgSorbsUrl' => 'text',
+		),
+	),
+	'squid' => array(
+		'squid' => array(
+			'wgUseSquid' => 'bool',
+			'wgInternalServer' => 'text',
+			'wgMaxSquidPurgeTitles' => 'int',
+			'wgSquidMaxage' => 'int',
+			'wgSquidServers' => 'array',
+			'wgSquidServersNoPurge' => 'array',
+			'wgUseESI' => 'bool',
+			'wgUsePrivateIPs' => 'bool',
+		),
+		'htcp' => array(
+			'wgHTCPMulticastAddress' => 'text',
+			'wgHTCPMulticastTTL' => 'int',
+			'wgHTCPPort' => 'int',
 		),
 	),
 	'job' => array(
@@ -686,18 +704,6 @@ $settings = array(
 			'wgSkinExtensionFunctions' => 'array',
 		),
 	),
-	'search' => array(
-		'search' => array(
-			'wgAdvancedSearchHighlighting' => 'bool',
-			'wgEnableMWSuggest' => 'bool',
-			'wgGoToEdit' => 'bool',
-			'wgMWSuggestTemplate' => 'text',
-			'wgOpenSearchTemplate' => 'text',
-			'wgSearchForwardUrl' => 'text',
-			'wgSearchHighlightBoundaries' => 'text',
-			'wgUseTwoButtonsSearchForm' => 'bool',
-		),
-	),
 );
 
 /**
@@ -717,30 +723,16 @@ $settings = array(
  * - array: other types of arrays not currenty supported
  */
 $arrayDefs = array(
-	'wgActionPaths' => 'assoc',
-# Db
-	'wgDBservers' => 'array',
-	'wgDefaultExternalStore' => 'simple',
-	'wgLocalDatabases' => 'simple',
-	'wgLBFactoryConf' => 'array',
-	'wgExternalServers' => 'array',
-	'wgSharedTables'  => 'simple',
-# Email
-	'wgSMTP' => 'assoc',
-	'wgUsersNotifiedOnAllChanges' => 'simple',
-# Localization
-	'wgForceUIMsgAsContentMsg' => 'simple',
-	'wgXMLMimeTypes' => 'assoc',
-	'wgXhtmlNamespaces' => 'assoc',
-	'wgDebugLogGroups' => 'assoc',
-# Site custom
+# Features
 	'wgAjaxExportList' => 'simple',
-	'wgDefaultUserOptions' => 'assoc',
-	'wgExtraLanguageNames' => 'assoc',
-	'wgRestrictionLevels' => 'simple',
-	'wgUrlProtocols' => 'simple',
-	'wgContentNamespaces' => 'ns-simple',
+	'wgDisableQueryPageUpdate' => 'simple',
+# Pages
+	'wgInvalidRedirectTargets' => 'simple',
+	'wgArticleRobotPolicies' => 'assoc',
 	'wgExemptFromUserRobotsControl' => 'ns-simple',
+	'wgNoFollowDomainExceptions' => 'simple',
+# Namespaces
+	'wgContentNamespaces' => 'ns-simple',
 	'wgExtraNamespaces' => 'assoc',
 	'wgNamespaceAliases' => 'assoc',
 	'wgNamespaceProtection' => 'ns-array',
@@ -749,10 +741,35 @@ $arrayDefs = array(
 	'wgNamespacesToBeSearchedProject' => 'ns-bool',
 	'wgNamespacesWithSubpages' => 'ns-bool',
 	'wgNoFollowNsExceptions' => 'ns-simple',
-	'wgNoFollowDomainExceptions' => 'simple',
 	'wgNonincludableNamespaces' => 'ns-simple',
 	'wgSitemapNamespaces' => 'ns-simple',
-	'wgArticleRobotPolicies' => 'assoc',
+# Groups
+	'wgAutopromote' => 'promotion-conds',
+	'wgImplicitGroups' => 'simple',
+	'wgGroupPermissions' => 'group-bool',
+	'wgAddGroups' => 'group-array',
+	'wgRemoveGroups' => 'group-array',
+	'wgGroupsAddToSelf' => 'group-array',
+	'wgGroupsRemoveFromSelf' => 'group-array',
+# Paths
+	'wgActionPaths' => 'assoc',
+# Db
+	'wgLocalDatabases' => 'simple',
+	'wgSharedTables'  => 'simple',
+	'wgDBservers' => 'array',
+	'wgDefaultExternalStore' => 'simple',
+	'wgLBFactoryConf' => 'array',
+	'wgExternalServers' => 'array',
+# Email
+	'wgSMTP' => 'assoc',
+	'wgUsersNotifiedOnAllChanges' => 'simple',
+# Localization
+	'wgExtraLanguageNames' => 'assoc',
+	'wgForceUIMsgAsContentMsg' => 'simple',
+# Output
+	'wgXhtmlNamespaces' => 'assoc',
+# Debug
+	'wgDebugLogGroups' => 'assoc',
 # Skins
 	'wgSkipSkins' => 'simple',
 # Cache
@@ -760,33 +777,14 @@ $arrayDefs = array(
 # Interwiki
 	'wgImportSources' => 'simple',
 # Access
-	'wgAutopromote' => 'promotion-conds',
-	'wgAddGroups' => 'group-array',
 	'wgDisabledActions' => 'simple',
-	'wgGroupPermissions' => 'group-bool',
-	'wgGroupsAddToSelf' => 'group-array',
-	'wgGroupsRemoveFromSelf' => 'group-array',
-	'wgImplicitGroups' => 'simple',
-	'wgPasswordAttemptThrottle' => 'assoc',
-	'wgRemoveGroups' => 'group-array',
+	'wgRestrictionLevels' => 'simple',
+	'wgRestrictionTypes' => 'simple',
 	'wgWhitelistRead' => 'simple',
 	'wgSpamRegex' => 'simple',
-# Rate limits
 	'wgRateLimits' => 'rate-limits',
 	'wgRateLimitsExcludedGroups' => 'simple',
-# Proxies
-	'wgProxyList' => 'simple',
-	'wgProxyPorts' => 'simple',
-	'wgProxyWhitelist' => 'simple',
-# Squid
-	'wgSquidServers' => 'simple',
-	'wgSquidServersNoPurge' => 'simple',
-# Cookie
-	'wgCacheVaryCookies' => 'simple',
-	'wgHttpOnlyBlacklist' => 'simple',
-# Reduction
-	'wgDisableQueryPageUpdate' => 'simple',
-	'wgInvalidRedirectTargets' => 'simple',
+	'wgPasswordAttemptThrottle' => 'assoc',
 # Uploads
 	'wgFileBlacklist' => 'simple',
 	'wgFileExtensions' => 'simple',
@@ -794,21 +792,19 @@ $arrayDefs = array(
 	'wgLocalFileRepo' => 'assoc',
 	'wgForeignFileRepos' => 'array',
 	'wgMimeTypeBlacklist' => 'simple',
+	'wgXMLMimeTypes' => 'assoc',
 # Images
 	'wgImageLimits' => 'simple-dual',
 	'wgMediaHandlers' => 'assoc',
-	'wgSVGConverters' => 'assoc',
-	'wgThumbLimits' => 'simple',
 	'wgTrustedMediaFormats' => 'simple',
+	'wgThumbLimits' => 'simple',
+	'wgSVGConverters' => 'assoc',
 	'wgAntivirusSetup' => 'array',
 # Parser
+	'wgGrammarForms' => 'array',
 	'wgParserConf' => 'assoc',
 	'wgParserTestFiles' => 'simple',
-# Users
-	'wgReservedUsernames' => 'simple',
-	'wgBrowserBlackList' => 'simple',
-# Feed
-	'wgOverrideSiteFeed' => 'assoc',
+	'wgUrlProtocols' => 'simple',
 # Special pages
 	'wgFilterLogTypes' => 'assoc',
 	'wgLogActions' => 'assoc',
@@ -820,6 +816,24 @@ $arrayDefs = array(
 	'wgSpecialPageGroups' => 'assoc',
 	'wgRCLinkLimits' => 'simple',
 	'wgRCLinkDays' => 'simple',
+# Users
+	'wgDefaultUserOptions' => 'assoc',
+	'wgReservedUsernames' => 'simple',
+	'wgBrowserBlackList' => 'simple',
+# Feed
+	'wgOverrideSiteFeed' => 'assoc',
+# Proxies
+	'wgProxyList' => 'simple',
+	'wgProxyPorts' => 'simple',
+	'wgProxyWhitelist' => 'simple',
+# Squid
+	'wgSquidServers' => 'simple',
+	'wgSquidServersNoPurge' => 'simple',
+# Cookie
+	'wgCacheVaryCookies' => 'simple',
+	'wgHttpOnlyBlacklist' => 'simple',
+# Job
+	'wgJobClasses' => 'assoc',
 # Extensions
 	'wgAPIListModules' => 'assoc',
 	'wgAPIMetaModules' => 'assoc',
@@ -834,9 +848,6 @@ $arrayDefs = array(
 	'wgExternalStores' => 'simple',
 	'wgSpecialPageCacheUpdates' => 'array',
 	'wgSpecialPages' => 'assoc',
-# Misc
-	'wgGrammarForms' => 'array',
-	'wgRestrictionTypes' => 'simple',
 );
 
 /**
