@@ -256,10 +256,11 @@ public abstract class ImportApp<S extends WikiWordStoreBuilder> extends CliApp<S
 
 			if (operation == Operation.FRESH) {
 				section("-- purge --------------------------------------------------");
-				store.prepare(true, getDropWarnings()); //FIXME: don't purge warning always... but when?!
+				store.initialize(true, getDropWarnings()); //FIXME: don't purge warning always... but when?!
+				...all stores...
 			}
 			else {
-				store.prepare(false, getDropWarnings()); 
+				store.initialize(false, getDropWarnings()); 
 			}
 
 			if (!useAgenda || agenda.beginTask("ImportApp.launch", agendaTask)) {

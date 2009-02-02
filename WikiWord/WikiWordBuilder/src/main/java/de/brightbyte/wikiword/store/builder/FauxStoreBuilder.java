@@ -41,7 +41,7 @@ public abstract class FauxStoreBuilder implements WikiWordStoreBuilder {
 		flush();
 	}
 
-	public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+	public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
 		//noop
 	}
 

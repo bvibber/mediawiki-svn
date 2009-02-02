@@ -49,12 +49,24 @@ public class ConceptImporter extends AbstractImporter {
 	@Override
 	public void prepare() throws PersistenceException {
 		store.prepare();
+		if (storeProperties) propertyStore.prepare();
+		if (storeFlatText) textStore.prepare();
 	}
 	
 	@Override
 	public void finish() throws PersistenceException {
 		if (beginTask("ConceptImporter.finish", "finishImport")) {
 			store.finishImport();
+			endTask("ConceptImporter.finish", "finishImport");
+		}
+		
+		if (beginTask("ConceptImporter.finish", "finishImport")) {
+			propertyStore.finishImport();
+			endTask("ConceptImporter.finish", "finishImport");
+		}
+		
+		if (beginTask("ConceptImporter.finish", "finishImport")) {
+			textStore.finishImport();
 			endTask("ConceptImporter.finish", "finishImport");
 		}
 		
@@ -86,10 +98,12 @@ public class ConceptImporter extends AbstractImporter {
 			endTask("ConceptImporter.finish", "finishAliases");
 		}
 		
-		if (beginTask("ConceptImporter.finish", "propertyStore#finishAliases")) {
+		if (propertyStore!=null && beginTask("ConceptImporter.finish", "propertyStore#finishAliases")) {
 			propertyStore.finishAliases();
 			endTask("ConceptImporter.finish", "propertyStore#finishAliases");
 		}
+		
+		//TODO: finish aliases for textStore!
 		
 		if (beginTask("ConceptImporter.finish", "finishRelations")) {
 			store.finishRelations();

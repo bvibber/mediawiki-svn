@@ -20,6 +20,7 @@ import de.brightbyte.db.StatementBasedInserter;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.WikiWordStoreSchema;
 import de.brightbyte.wikiword.store.DatabaseWikiWordStore;
 
@@ -343,7 +344,7 @@ public class DatabaseWikiWordStoreBuilder
 	}
 	*/
 	
-	public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+	public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
 		if (purge) {
 			dropTables(true, dropAll);
 			createTables(false);
@@ -448,6 +449,33 @@ public class DatabaseWikiWordStoreBuilder
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		} 
+	}
+
+	protected int resolveRedirects(RelationTable aliasTable, DatabaseTable table, String relNameField, String relIdField, AliasScope scope, int chunkFactor) throws PersistenceException {
+		if (relIdField==null && relNameField==null) throw new IllegalArgumentException("relNameFields and relIdField can't both be null");
+		
+		DatabaseField nmField = relNameField ==null ? null : table.getField(relNameField);
+		DatabaseField idField = relIdField == null ? null : table.getField(relIdField);
+		
+		if (nmField!=null && !(nmField instanceof ReferenceField)) throw new IllegalArgumentException(relNameField+" is not a reference field in table "+table.getName());
+		if (idField!=null && !(idField instanceof ReferenceField)) throw new IllegalArgumentException(relIdField+" is not a reference field in table "+table.getName());
+		
+		String nmTable = nmField == null ? null : ((ReferenceField)nmField).getTargetTable();
+		String idTable = idField == null ? null : ((ReferenceField)idField).getTargetTable();
+		
+		if (idTable!=null && nmTable!=null && !nmTable.equals(idTable)) throw new IllegalArgumentException(relNameField+" and "+relIdField+" in table "+table.getName()+" do not reference the same table: "+nmTable+" != "+idTable);
+	
+		String sql = "UPDATE "+table.getSQLName()+" as R JOIN "+aliasTable.getSQLName()+" as E "
+					+ ((idField!=null) ? " ON R."+relIdField+" = E.source " : " ON R."+relNameField+" = E.source_name ")
+					+ " SET ";
+		
+		if (nmField!=null) sql += " R."+relNameField+" = E.target_name";
+		if (nmField!=null && idField!=null) sql += ", ";
+		if (idField!=null) sql += " R."+relIdField+" = E.target"; 
+		
+		String where = scope == null ? null : " scope = "+scope.ordinal();
+		
+		return executeChunkedUpdate("resolveRedirects", table.getName()+"."+relNameField+"+"+relIdField, sql, where, aliasTable, "source", chunkFactor);
 	}
 	
 }

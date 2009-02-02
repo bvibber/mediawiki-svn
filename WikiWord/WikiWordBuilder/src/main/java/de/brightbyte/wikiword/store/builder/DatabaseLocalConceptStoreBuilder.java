@@ -35,9 +35,7 @@ import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalStatisticsStoreSchema;
-import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
-import de.brightbyte.wikiword.schema.TextStoreSchema;
 import de.brightbyte.wikiword.store.DatabaseLocalConceptStore;
 
 /**
@@ -160,7 +158,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 	@Override
-	public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+	public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
 		if (purge) {
 			if (idManager!=null) idManager.clear(); 
 		}
@@ -175,7 +173,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			}
 		}
 		
-		super.prepare(purge, dropAll);
+		super.initialize(purge, dropAll);
 	}	
 	
 	public ConceptType getConceptType(int type) {
@@ -671,7 +669,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			//NOTE: need to resolve category-aliases here, so no concepts are generated for aliased categories!
 			//NOTE: bad category redirs have been droped in finishBadLinks
 			if (beginTask("finishMissingConcpets", "resolveRedirects:broader")) {
-				int n = resolveRedirects(broaderTable, "broad_name", idManager==null ? null : "broad", AliasScope.CATEGORY, 1);     
+				int n = resolveRedirects(aliasTable, broaderTable, "broad_name", idManager==null ? null : "broad", AliasScope.CATEGORY, 1);     
 				endTask("finishMissingConcpets", "resolveRedirects:broader", n+" entries");
 			}
 
@@ -743,24 +741,24 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			if (beginTask("finishAliases", "resolveRedirects:link")) {
 				//XXX: SLOW!
 				//TODO: smaller chunks? chunk on target table, not alias table? force index? 
-				int n = resolveRedirects(linkTable, "target_name", "target", AliasScope.REDIRECT, 8);     
+				int n = resolveRedirects(aliasTable, linkTable, "target_name", "target", AliasScope.REDIRECT, 8);     
 				endTask("finishAliases", "resolveRedirects:link", n+" entries");
 			}
 
 			//NOTE: broader.broad_name already done in finishMissingConcepts for AliasScope.BROADER
 			
 			if (beginTask("finishAliases", "resolveRedirects:about")) {
-				int n = resolveRedirects(aboutTable, null, "concept", null, 1);     
+				int n = resolveRedirects(aliasTable, aboutTable, null, "concept", null, 1);     
 				endTask("finishAliases", "resolveRedirects:about", n+" entries");
 			}
 
 			if (beginTask("finishAliases", "resolveRedirects:narrow")) {
-				int n = resolveRedirects(broaderTable, "narrow_name", "narrow", null, 1);     
+				int n = resolveRedirects(aliasTable, broaderTable, "narrow_name", "narrow", null, 1);     
 				endTask("finishAliases", "resolveRedirects:narrow", n+" entries");
 			}
 
 			if (beginTask("finishAliases", "resolveRedirects:broad")) {
-				int n = resolveRedirects(broaderTable, "broad_name", "broad", null, 1);     
+				int n = resolveRedirects(aliasTable, broaderTable, "broad_name", "broad", null, 1);     
 				endTask("finishAliases", "resolveRedirects:broad", n+" entries");
 			}
 						
@@ -1148,29 +1146,6 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		return executeChunkedUpdate("buildIdLinks", table.getName()+"."+relNameField, sql, where, target, targetIdField, chunkFactor);
 	}
 	
-	protected int resolveRedirects(DatabaseTable table, String relNameField, String relIdField, AliasScope scope, int chunkFactor) throws PersistenceException {
-		DatabaseField nmField = table.getField(relNameField);
-		DatabaseField idField = relIdField == null ? null : table.getField(relIdField);
-		
-		if (!(nmField instanceof ReferenceField)) throw new IllegalArgumentException(relNameField+" is not a reference field in table "+table.getName());
-		if (idField!=null && !(idField instanceof ReferenceField)) throw new IllegalArgumentException(relIdField+" is not a reference field in table "+table.getName());
-		
-		String nmTable = ((ReferenceField)nmField).getTargetTable();
-		String idTable = idField == null ? null : ((ReferenceField)idField).getTargetTable();
-		
-		if (idTable!=null && !nmTable.equals(idTable)) throw new IllegalArgumentException(relNameField+" and "+relIdField+" in table "+table.getName()+" do not reference the same table: "+nmTable+" != "+idTable);
-
-		String sql = "UPDATE "+table.getSQLName()+" as R JOIN "+aliasTable.getSQLName()+" as E "
-					+ ((idField!=null) ? " ON R."+relIdField+" = E.source " : " ON R."+relNameField+" = E.source_name ") 
-					+ " SET R."+relNameField+" = E.target_name";
-		
-		if (idField!=null) sql += ", R."+relIdField+" = E.target"; 
-		
-		String where = scope == null ? null : " scope = "+scope.ordinal();
-		
-		return executeChunkedUpdate("resolveRedirects", table.getName()+"."+relNameField+"+"+relIdField, sql, where, aliasTable, "source", chunkFactor);
-	}
-
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	protected class DatabaseLocalStatisticsStoreBuilder extends DatabaseStatisticsStoreBuilder {
 		protected EntityTable termTable;
@@ -1262,13 +1237,11 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	private DatabasePropertyStoreBuilder propertyStore;
 
 	protected DatabaseTextStoreBuilder newTextStoreBuilder() throws SQLException, PersistenceException {
-		TextStoreSchema schema = new TextStoreSchema(getCorpus(), getDatabaseAccess().getConnection(), tweaks, false);
-		return new DatabaseTextStoreBuilder(schema, tweaks);
+		return new DatabaseTextStoreBuilder(this, tweaks);
 	}
 	
 	protected DatabasePropertyStoreBuilder newPropertyStoreBuilder() throws SQLException, PersistenceException {
-		PropertyStoreSchema schema = new PropertyStoreSchema(getCorpus(), getDatabaseAccess().getConnection(), tweaks, false);
-		return new DatabasePropertyStoreBuilder(schema, tweaks);
+		return new DatabasePropertyStoreBuilder(this, tweaks);
 	}
 
 	public TextStoreBuilder getTextStoreBuilder() throws PersistenceException {

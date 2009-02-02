@@ -31,6 +31,12 @@ public class DatabaseTextStoreBuilder extends DatabaseLocalStoreBuilder implemen
 
 	protected Inserter plainTextInserter;
 	protected Inserter rawTextInserter;
+	
+	public DatabaseTextStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException {
+		this(new TextStoreSchema(conceptStore.getCorpus(), 
+				conceptStore.getDatabaseAccess().getConnection(), tweaks, true), tweaks);
+	}
+
 
 	/**
 	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus

@@ -7,7 +7,7 @@ import de.brightbyte.wikiword.store.WikiWordStore;
 
 public interface WikiWordStoreBuilder extends WikiWordStore {
 	
-	public abstract void prepare(boolean purge, boolean dropAll) throws PersistenceException;
+	public abstract void initialize(boolean purge, boolean dropAll) throws PersistenceException;
 
 	public abstract void close(boolean flush) throws PersistenceException;
 

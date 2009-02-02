@@ -79,7 +79,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* optimize *");
 		}
 
-		public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+		public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
 			log("* prepare("+purge+", "+dropAll+") *");
 		}
 
@@ -152,7 +152,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* optimize *");
 		}
 
-		public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+		public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
 			log("* prepare *");
 		}
 
@@ -229,7 +229,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* optimize *");
 		}
 
-		public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+		public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
 			log("* prepare *");
 		}
 
@@ -299,7 +299,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* optimize *");
 		}
 
-		public void prepare(boolean purge, boolean dropAll) throws PersistenceException {
+		public void initialize(boolean purge, boolean dropAll) throws PersistenceException {
 			log("* prepare *");
 		}
 
@@ -387,7 +387,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		log("* close *");
 	}
 
-	public void prepare(boolean purge, boolean dropAll) {
+	public void initialize(boolean purge, boolean dropAll) {
 		log("* prepare *");
 	}
 
