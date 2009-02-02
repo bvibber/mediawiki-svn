@@ -401,6 +401,13 @@ $messages['tg-cyrl'] = array(
 	'ajax-qp-desc' => 'Илова кардани чанде аз АҶАКС ба СаҳифаҳоиПурсиш монанди [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'ajax-qp-desc' => 'Magdagdag ng ilang AJAX sa mga pahina ng pagtatanong na katulad ng [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

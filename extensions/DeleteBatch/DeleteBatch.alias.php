@@ -39,6 +39,11 @@ $aliases['de'] = array(
 	'DeleteBatch' => array( 'Stapel löschen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'DeleteBatch' => array( 'Skład lašowaś' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'DeleteBatch' => array( 'Supression en série', 'SuppressionEnSérie', 'SuppressionEnSerie' ),
@@ -59,6 +64,11 @@ $aliases['he'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'DeleteBatch' => array( 'Skupno_brisanje' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'DeleteBatch' => array( 'Stapl wušmórnyć' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */

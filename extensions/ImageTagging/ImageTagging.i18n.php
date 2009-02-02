@@ -1012,10 +1012,24 @@ $messages['pt'] = array(
 	'imagetagging-new' => '<sup><span style="color:red">Nova!</span></sup>',
 	'imagetagging-removetag' => 'Remover etiqueta',
 	'imagetagging-done-button' => 'A etiqueta foi adicionada',
+	'imagetagging-tag-button' => 'Etiquetar',
 	'imagetagging-tagcancel-button' => 'Cancelar',
+	'imagetagging-tagging-instructions' => 'Clique em pessoas ou objetos na imagem para os etiquetar.',
+	'imagetagging-addingtag' => 'A adicionar etiqueta…',
+	'imagetagging-removingtag' => 'A remover etiqueta…',
+	'imagetagging-addtagsuccess' => 'Etiqueta adicionada.',
+	'imagetagging-removetagsuccess' => 'Etiqueta removida.',
+	'imagetagging-canteditneedloginmessage' => 'Você não pode editar esta página.
+Poderá ser porque você precisa de se autenticar para etiquetar imagens.
+Deseja autenticar-se agora?',
+	'imagetagging-oneactionatatimemessage' => 'Apenas uma ação de etiquetagem é permitida de cada vez.
+Por favor, aguarde que a ação existente finalize.',
+	'imagetagging-oneuniquetagmessage' => 'Esta imagem já tem uma etiqueta com este nome.',
 	'imagetagging-imagetag-seemoreimages' => 'Ver mais imagens de "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Imagens de "$1"',
 	'imagetagging-taggedimages-displaying' => 'A mostrar $1 - $2 de $3 imagens de "$4"',
+	'tag-logpagename' => 'Registo de etiquetagens',
+	'tag-logpagetext' => 'Este é um registo de todas as adições e remoções de etiquetas de imagens.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

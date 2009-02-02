@@ -39,6 +39,11 @@ $aliases['hr'] = array(
 	'PovWatch' => array( 'Predbilježeno_praćenje' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'PovWatch' => array( 'PovWatch' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'PovWatch' => array( '編集合戦の監視' ),

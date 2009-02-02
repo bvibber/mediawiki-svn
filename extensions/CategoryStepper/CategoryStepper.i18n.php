@@ -135,6 +135,14 @@ $messages['eo'] = array(
 	'categorystepper-start' => '(Komenco de kategorio)',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'categorystepper-end' => '(fin de categoría)',
+	'categorystepper-start' => '(comienzo de categoría)',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

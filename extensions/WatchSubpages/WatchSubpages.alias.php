@@ -34,6 +34,11 @@ $aliases['de'] = array(
 	'WatchSubpages' => array( 'Unterseiten beobachten' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'WatchSubpages' => array( 'Pódboki wobglědowaś' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WatchSubpages' => array( 'پی‌گیری_زیرصفحه‌ها' ),

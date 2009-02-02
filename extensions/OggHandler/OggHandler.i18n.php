@@ -1338,6 +1338,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  * @author Kahusi
  */
@@ -1348,7 +1349,7 @@ $messages['ja'] = array(
 	'ogg-short-general' => 'Ogg $1 メディアファイル、$2',
 	'ogg-long-audio' => '(Ogg $1 音声ファイル、長さ $2、$3)',
 	'ogg-long-video' => '(Ogg $1 動画ファイル、長さ $2、$4×$5px、$3)',
-	'ogg-long-multiplexed' => '(Ogg 多重音声/動画ファイル、$1、長さ$2、$4×$5px, 凡そ$3)',
+	'ogg-long-multiplexed' => '(Ogg 多重音声/動画ファイル、$1、長さ $2、$4×$5 ピクセル、$3)',
 	'ogg-long-general' => '(Ogg メディアファイル、長さ $2、$3)',
 	'ogg-long-error' => '(無効なOggファイル: $1)',
 	'ogg-play' => '再生',

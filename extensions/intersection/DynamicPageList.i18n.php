@@ -434,6 +434,13 @@ $messages['km'] = array(
 	'intersection_noincludecats' => 'កំហុស​៖ អ្នក​ត្រូវតែ​មាន​ចំណាត់ថ្នាក់ក្រុម​មួយយ៉ាងតិច ឬ សំដៅ​មួយ​លំហឈ្មោះ​!',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'intersection_noresults' => '오류: 결과가 없습니다!',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -30,6 +30,11 @@ $aliases['de'] = array(
 	'WhoIsWatching' => array( 'Wer beobachtet' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'WhoIsWatching' => array( 'Chto wobglědujo' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WhoIsWatching' => array( 'چه_کسی_پی‌گیری_می‌کند' ),
@@ -103,6 +108,11 @@ $aliases['no'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'WhoIsWatching' => array( 'Kto obserwuje' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'WhoIsWatching' => array( 'څوک يې ګوري' ),
 );
 
 /** Sanskrit (संस्कृत) */

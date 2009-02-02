@@ -60,6 +60,13 @@ $messages['bcc'] = array(
 	'poem-desc' => 'هورکنت <tt>&lt;poem&gt;</tt> برچسپء په فرمت شئر',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'poem-desc' => 'Дадае тэг <tt>&lt;poem&gt;</tt> для фарматаваньня вершаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -72,6 +79,13 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'poem-desc' => 'কবিতার ফরমেটিং এর জন্য <tt>&lt;poem&gt;</tt> ট্যাগ যোগ করুন',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'poem-desc' => 'Dodaje oznaku <tt>&lt;poem&gt;</tt> za formatiranje stihova',
 );
 
 /** Catalan (Català)

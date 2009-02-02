@@ -34,6 +34,11 @@ $aliases['de'] = array(
 	'WhatIsMyIP' => array( 'Meine IP-Adresse' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'WhatIsMyIP' => array( 'Moja IP-adresa' ),
+);
+
 /** Divehi (ދިވެހިބަސް) */
 $aliases['dv'] = array(
 	'WhatIsMyIP' => array( 'އަހަރެންގެ އައި.ޕީ އަކީ' ),
@@ -117,6 +122,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'WhatIsMyIP' => array( 'Quina es mon IP', 'QuinaEsMonIP' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'WhatIsMyIP' => array( 'زما آی پي پته څه ده' ),
 );
 
 /** Sanskrit (संस्कृत) */

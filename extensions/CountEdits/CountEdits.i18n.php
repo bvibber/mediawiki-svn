@@ -1227,6 +1227,23 @@ $messages['th'] = array(
 	'countedits-ok' => 'ตกลง',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'countedits' => 'Bilangin ang pamamatnugot',
+	'countedits-desc' => '[[Special:CountEdits|Natatanging pahina]]ng bumibilang sa mga pamamatnugot ng tagagamit at nagbibigay ng isang talaan ng sampung pinakamataas na tagapag-ambag',
+	'countedits-warning' => "'''Babala:''' Huwag hatulan ang aklat ayon sa kanyang pabalat.
+Huwag hadulat ang mga tagapag-ambag ayon sa bilang ng kanilang pamamatnugot.",
+	'countedits-username' => 'Pangalan ng tagagamit:',
+	'countedits-ok' => "Ayos 'yan",
+	'countedits-nosuchuser' => 'Walang tagagamit na may pangalang $1.',
+	'countedits-resultheader' => 'Mga kinalabasan para sa $1',
+	'countedits-resulttext' => 'Nakagawa si $1 ng $2 {{PLURAL:$2|pagbabago|mga pagbabago}}',
+	'countedits-mostactive' => 'Pinakamasiglang mga tagapag-ambag',
+	'countedits-nocontribs' => 'Walang naging mga tagapag-ambag sa wiking ito.',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis

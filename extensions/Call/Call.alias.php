@@ -42,6 +42,11 @@ $aliases['de'] = array(
 	'Call' => array( 'Aufruf' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Call' => array( 'Zawołanje' ),
+);
+
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'Call' => array( 'Κλήση' ),
@@ -60,6 +65,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Call' => array( 'Lyt aa' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Call' => array( 'Zawołanje' ),
 );
 
 /** Hungarian (Magyar) */

@@ -38,6 +38,11 @@ $aliases['de'] = array(
 	'MultiUpload' => array( 'Mehrere Dateien hochladen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'MultiUpload' => array( 'Někotare dataje nagraś' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'MultiUpload' => array( 'Téléchargement multiple', 'TéléchargementMultiple' ),
@@ -51,6 +56,11 @@ $aliases['gsw'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'MultiUpload' => array( 'Višestruko_postavljanje' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'MultiUpload' => array( 'wjacore dataje nahrać' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

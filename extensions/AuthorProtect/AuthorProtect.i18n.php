@@ -265,6 +265,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Academo
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
@@ -273,7 +274,10 @@ $messages['es'] = array(
 	'authorprotect-notauthor' => 'No eres el autor de esta página',
 	'authorprotect-confirm' => 'Cambiar niveles de protección',
 	'authorprotect-edit' => 'Restringir edición a autores',
+	'authorprotect-expiry' => 'Tiempo de caducidad',
 	'authorprotect-reason' => 'Motivo',
+	'authorprotect-success' => 'Protección exitosa!',
+	'authorprotect-failure' => 'Protección no exitosa',
 );
 
 /** Estonian (Eesti)
@@ -1037,6 +1041,25 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'authorprotect-reason' => 'Motivu',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'authorprotect' => 'Isanggalang ang pahina mula sa hindi mga may-akda',
+	'authorprotect-desc' => 'Nagpapahintulot sa may-akda ng isang pahina na maisanggalang ang pahina mula sa ibang mga tagagamit',
+	'authorprotect-notauthor' => 'Hindi ikaw ang may-akda ng pahinang ito',
+	'authorprotect-confirm' => 'Baguhin ang mga antas ng pagsasanggalang',
+	'authorprotect-edit' => 'Ihangga ang pamamatnugot para sa mga may-akda lamang',
+	'authorprotect-move' => 'Ihangga ang paglilipat para sa mga may-akda lamang',
+	'authorprotect-expiry' => 'Oras ng pagtatapos',
+	'authorprotect-reason' => 'Dahilan',
+	'authorprotect-intro' => 'Gamitin ang pormularyong ito upang ikandado ang pahinang ito laban sa hindi mga may-akda',
+	'authorprotect-success' => 'Matagumpay ang pagsasanggalang!',
+	'authorprotect-failure' => 'Hindi nagtagumpay ang pagsasanggalang',
+	'protect-level-author' => 'Isanggalang mula sa hindi mga may-akda',
+	'restriction-level-author' => 'Nakasanggalang para sa may-akda',
 );
 
 /** Ukrainian (Українська)

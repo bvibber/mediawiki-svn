@@ -298,7 +298,7 @@ $messages['nn'] = array(
 $messages['no'] = array(
 	'stalepages' => 'Foreldede sider',
 	'stalepages-desc' => 'Skaper en [[Special:Stalepages|liste over sider]] som ikke har blitt redigert i det siste',
-	'stalepages-summary' => 'Dette er en liste over sider som ikke har blitt redigert på de siste $1 dagene.',
+	'stalepages-summary' => 'Dette er en liste over sider som ikke har blitt redigert {{PLURAL:$1|dette døgnet|de siste $1 dagene}}.',
 );
 
 /** Occitan (Occitan)

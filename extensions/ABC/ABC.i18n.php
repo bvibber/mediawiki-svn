@@ -22,10 +22,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Jon Harald Søby
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'abcdesc' => 'Short description of the ABC extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'abcdownload' => '{{Identical|Download}}',
 );
 
 /** Arabic (العربية)
@@ -307,6 +309,14 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'abcdesc' => 'Legg til <tt>&lt;abc&gt;</tt>-merket for å formatera ABC-musikk',
+	'abcdownload' => 'Last ned:',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'abcdesc' => 'Lager taggen <tt>&lt;abc&gt;</tt> for å formatere ABC-musikk',
 	'abcdownload' => 'Last ned:',
 );
 

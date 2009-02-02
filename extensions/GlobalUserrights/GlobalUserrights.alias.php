@@ -28,9 +28,19 @@ $aliases['de'] = array(
 	'GlobalUserrights' => array( 'Globale Benutzerrechte' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'GlobalUserrights' => array( 'Globalne wužywarske pšawa' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'GlobalUserrights' => array( 'Dereitos de usuario globais' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'GlobalUserrights' => array( 'Globalne wužwiarske prawa' ),
 );
 
 /** Japanese (日本語) */
@@ -46,6 +56,11 @@ $aliases['lb'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'GlobalUserrights' => array( 'GlobaleGebruikersrechten' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'GlobalUserrights' => array( 'Globale brukerrettigheter' ),
 );
 
 /** Sanskrit (संस्कृत) */

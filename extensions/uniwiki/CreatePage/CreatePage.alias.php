@@ -25,6 +25,11 @@ $aliases['de'] = array(
 	'CreatePage' => array( 'Seite erstellen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'CreatePage' => array( 'Bok napóraś' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'CreatePage' => array( 'Crear a páxina' ),
@@ -33,6 +38,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'CreatePage' => array( 'Syte aalege' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'CreatePage' => array( 'Stronu wutworić' ),
 );
 
 /** Hungarian (Magyar) */
@@ -78,6 +88,11 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'CreatePage' => array( 'PaginaAanmaken' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'CreatePage' => array( 'Opprett side' ),
 );
 
 /** Pashto (پښتو) */

@@ -40,6 +40,11 @@ $aliases['de'] = array(
 	'SiteMatrix' => array( 'Liste der Wikimedia-Wikis' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'SiteMatrix' => array( 'Lisćina projektow Wikimedije' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'SiteMatrix' => array( 'Todos_los_Wikis_de_Wikimedia' ),
@@ -75,6 +80,11 @@ $aliases['he'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'SiteMatrix' => array( 'Wikimedijini_projekti' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'SiteMatrix' => array( 'Lisćina projektow Wikimedije' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */

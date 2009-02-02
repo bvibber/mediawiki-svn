@@ -37,9 +37,19 @@ $aliases['de'] = array(
 	'DeleteQueue' => array( 'Löschliste' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'DeleteQueue' => array( 'Lisćina wulašowanjow' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'DeleteQueue' => array( 'Poistojono' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'DeleteQueue' => array( 'Lisćina wušmórnjenjow' ),
 );
 
 /** Hungarian (Magyar) */

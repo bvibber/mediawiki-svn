@@ -2610,10 +2610,25 @@ Marahil ang "$2" ang talagang binabalak mong gamitin?',
 	'math_LatexFontNotSpecified' => 'Walang uri ng titik ng LaTeX na tinukoy para sa "$1"',
 	'math_LatexPackageUnavailable' => 'Hindi nagawang ihain ang PNG dahil hindi makuha ang paketeng "$1" ng LaTeX',
 	'math_MismatchedBeginAndEnd' => 'Hindi nagtutugma ang mga kautusang "$1" at "$2"',
+	'math_MisplacedLimits' => 'Ang utos na "$1" ay maaaring lumitaw lamang pagkaraan ng tagapagpaandar (\'\'operator\'\') ng matematika.
+Isaalang-alang ang paggamit ng "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'Nawawala o labag na pangalan ng bagong kautusan pagkaraan ng "\\newcommand".
+Dapat na may tamang-tamang nag-iisang utos lamang na binibigyan ng kahulugan;
+dapat itong magsimula na mayroong isang bantas na pabalik-pahilis "\\" at naglalaman lamang ng alpabetikong mga panitik.',
 	'math_MissingDelimiter' => 'Kulang ng panghangga pagkaraan ng "$1"',
 	'math_MissingOpenBraceAfter' => 'Kulang ng pambukas na brakete "{" pagkaraan ng "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Kulang ng pambukas na brakete "{" sa hulihan ng ipinasok',
 	'math_MissingOpenBraceBefore' => 'Kulang ng pambukas na brakete "{" bago sumapit ang "$1"',
+	'math_MissingOrIllegalParameterCount' => "Nawawala o labag na bilang ng parametro sa kahulugan ng \"\$1\".
+Dapat na isahang tambilang (''digit'') sa pagitan ng 1 at 9 na kasama ang lahat at mga nabanggit.",
+	'math_MissingOrIllegalParameterIndex' => 'Nawawala o labag na talatuntunan ng parametro sa kahulugan ng "$1"',
+	'math_NonAsciiInMathMode' => 'Ang mga panitik na hindi ASCII ay maaaring gamitin lamang sa modalidad na pangteksto
+Subuking ilakip ang suliraning mga panitik sa loob ng "\\text{...}".',
+	'math_NotEnoughArguments' => 'Hindi sapat ang ibinigay na mga argumento o pangangatwiran para sa "$1"',
+	'math_PngIncompatibleCharacter' => 'Hindi naging tama ang pagkakagawa ng PNG na naglalaman ng panitik na $1',
+	'math_ReservedCommand' => 'Ang utos na "$1" ay nakalaan lamang para sa panloob na paggamit ng blahtex',
+	'math_SubstackRowTooBig' => "Maaaring magkaroon lamang ng isang ipapasok sa loob ng bawat pahalang na hanay ng isang tipak ng \"kabahaging salansan\" (''substack'')",
+	'math_TooManyMathmlNodes' => "Napakarami ng mga bugkol (''node'') sa loob ng puno ng MathML",
 	'math_TooManyTokens' => 'Napakahaba ng ipinasok',
 	'math_UnavailableSymbolFontCombination' => 'Ang sagisag na "$1" ay hindi makukuha mula sa uri ng titik na "$2"',
 	'math_UnexpectedNextCell' => 'Ang kautusang "&" ay maaaring lumitaw lamang sa loob ng isang tipak ng "\\begin ... \\end"',

@@ -42,6 +42,11 @@ $aliases['de'] = array(
 	'Badimages' => array( 'Unerwünschte Bilder' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Badimages' => array( 'Špatne wobraze' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'Badimages' => array( 'Arveluttavat kuvat' ),
@@ -55,6 +60,11 @@ $aliases['gsw'] = array(
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Badimages' => array( 'תמונות_אסורות' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Badimages' => array( 'Špatne wobrazy' ),
 );
 
 /** Hungarian (Magyar) */
@@ -110,6 +120,11 @@ $aliases['oc'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'Badimages' => array( 'Nieprawidłowe grafiki' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'Badimages' => array( 'بد انځورونه' ),
 );
 
 /** Sanskrit (संस्कृत) */

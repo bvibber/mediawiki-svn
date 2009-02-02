@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'CloseWiki' => array( 'Wiki schließen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'CloseWiki' => array( 'Wiki zacyniś' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'CloseWiki' => array( 'Pechar o wiki' ),
@@ -50,6 +55,11 @@ $aliases['gsw'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'CloseWiki' => array( 'Zatvori_wiki' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'CloseWiki' => array( 'Wiki začinić' ),
 );
 
 /** Hungarian (Magyar) */
@@ -90,6 +100,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'CloseWiki' => array( 'Steng wiki' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'CloseWiki' => array( 'ويکي تړل' ),
 );
 
 /** Sanskrit (संस्कृत) */

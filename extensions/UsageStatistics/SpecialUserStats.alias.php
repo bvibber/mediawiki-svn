@@ -42,6 +42,11 @@ $aliases['de'] = array(
 	'SpecialUserStats' => array( 'Benutzerstatistik' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'SpecialUserStats' => array( 'Wužywarska statistika' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'SpecialUserStats' => array( 'آمار_کاربر' ),
@@ -60,6 +65,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'SpecialUserStats' => array( 'Benutzerstatischtik' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'SpecialUserStats' => array( 'Wužiwarska statistika' ),
 );
 
 /** Hungarian (Magyar) */

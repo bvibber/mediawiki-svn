@@ -29,6 +29,11 @@ $aliases['bs'] = array(
 	'InspectCache' => array( 'ProvjeriKes' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'InspectCache' => array( 'Cache inspicěrowaś' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'InspectCache' => array( 'Tutki välimuistia' ),
@@ -47,6 +52,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'InspectCache' => array( 'Cache inschpiziere' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'InspectCache' => array( 'Pufrowak inspektować' ),
 );
 
 /** Hungarian (Magyar) */

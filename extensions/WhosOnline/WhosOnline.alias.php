@@ -34,6 +34,11 @@ $aliases['de'] = array(
 	'WhosOnline' => array( 'Wer ist online' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'WhosOnline' => array( 'Chto jo online' ),
+);
+
 /** Divehi (ދިވެހިބަސް) */
 $aliases['dv'] = array(
 	'WhosOnline' => array( 'މިވަގުތު އޮންލައިންގައި ތިބީ' ),
@@ -122,6 +127,11 @@ $aliases['oc'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'WhosOnline' => array( 'Kto jest online' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'WhosOnline' => array( 'څوک په ليکه دي' ),
 );
 
 /** Quechua (Runa Simi) */

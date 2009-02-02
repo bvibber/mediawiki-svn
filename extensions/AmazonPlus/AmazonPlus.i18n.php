@@ -221,6 +221,23 @@ $messages['eo'] = array(
 	'amazonplus-less' => 'malpli',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'amazonplus-nores' => 'Error: Sin resultados encontrados!',
+	'amazonplus-used' => 'usado',
+	'amazonplus-german' => 'Alemán',
+	'amazonplus-french' => 'Francés',
+	'amazonplus-japanese' => 'Japonés',
+	'amazonplus-amazon' => 'precio amazon',
+	'amazonplus-new' => 'nuevo',
+	'amazonplus-none' => 'No hay copias de este item para venta.',
+	'amazonplus-cp-none' => 'Ninguno',
+	'amazonplus-more' => 'más',
+	'amazonplus-less' => 'menos',
+);
+
 /** Estonian (Eesti)
  * @author Avjoska
  */
@@ -319,6 +336,15 @@ $messages['gl'] = array(
 	'amazonplus-cp-none' => 'Ningún',
 	'amazonplus-more' => 'máis',
 	'amazonplus-less' => 'menos',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'amazonplus-german' => 'Γερμανιστί',
+	'amazonplus-french' => 'Φραγκογαλλιστί',
+	'amazonplus-japanese' => 'Ἰαπωνιστί',
 );
 
 /** Swiss German (Alemannisch)

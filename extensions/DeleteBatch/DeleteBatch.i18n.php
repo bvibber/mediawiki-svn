@@ -1071,10 +1071,11 @@ Dapat na naglalaman ang ikinargang talaksan ng pangalan ng pahina at maaaring hi
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Mach
  */
 $messages['tr'] = array(
-	'deletebatch-caption' => 'Sayfa listesi',
+	'deletebatch-caption' => 'Sayfa listesi:',
 );
 
 /** Ukrainian (Українська)

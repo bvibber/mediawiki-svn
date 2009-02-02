@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'SharedUserRights' => array( 'Geteilte Benutzerrechte' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'SharedUserRights' => array( 'Zgromadne wužywarske pšawa' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'SharedUserRights' => array( 'Dereitos de usuario compartidos' ),
@@ -40,6 +45,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'SharedUserRights' => array( 'Teilti Benutzerrächt' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'SharedUserRights' => array( 'Zhromadne wužiwarske prawa' ),
 );
 
 /** Hungarian (Magyar) */

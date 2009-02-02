@@ -28,6 +28,11 @@ $aliases['bs'] = array(
 	'ContributionTracking' => array( 'DoprinosiPracenje' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ContributionTracking' => array( 'Slědowanje pśinoskow' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'ContributionTracking' => array( 'Seguimento das contribucións' ),
@@ -51,6 +56,11 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ContributionTracking' => array( 'DonatiesVolgen' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'ContributionTracking' => array( 'Bidragssporing' ),
 );
 
 /** Polish (Polski) */

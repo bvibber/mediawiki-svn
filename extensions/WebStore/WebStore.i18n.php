@@ -604,6 +604,9 @@ $messages['es'] = array(
 
 $1',
 	'webstore_no_response' => 'Sin respuesta del servidor',
+	'webstore_backend_error' => 'Error del servidor de almacenamiento:
+
+$1',
 );
 
 /** Basque (Euskara)

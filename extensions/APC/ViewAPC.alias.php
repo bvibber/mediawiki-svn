@@ -42,6 +42,11 @@ $aliases['de'] = array(
 	'ViewAPC' => array( 'APC-Informationen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ViewAPC' => array( 'APC' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ViewAPC' => array( 'APC-tiedot' ),
@@ -60,6 +65,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ViewAPC' => array( 'APC-Informatione' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ViewAPC' => array( 'APC' ),
 );
 
 /** Hungarian (Magyar) */

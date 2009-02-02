@@ -39,6 +39,11 @@ $aliases['de'] = array(
 	'Vote' => array( 'Abstimmen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Vote' => array( 'Wótgłosowaś' ),
+);
+
 /** Divehi (ދިވެހިބަސް) */
 $aliases['dv'] = array(
 	'Vote' => array( 'ވޯޓް' ),
@@ -72,6 +77,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Vote' => array( 'Abstimme' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Vote' => array( 'Wothłosować' ),
 );
 
 /** Hungarian (Magyar) */
@@ -131,7 +141,7 @@ $aliases['oc'] = array(
 
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
-	'Vote' => array( 'رايه ورکول', 'Vote' ),
+	'Vote' => array( 'رايه ورکول' ),
 );
 
 /** Romanian (Română) */

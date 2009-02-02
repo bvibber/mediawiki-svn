@@ -33,6 +33,12 @@ $aliases['de'] = array(
 	'TaskListByProject' => array( 'Aufgabenliste pro Projekt' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'TaskList' => array( 'Lisćina nadawkow' ),
+	'TaskListByProject' => array( 'Lisćina nadawkow na projekt' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'TaskList' => array( 'Tehtävälista' ),

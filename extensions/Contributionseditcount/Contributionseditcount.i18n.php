@@ -480,6 +480,14 @@ $messages['th'] = array(
 	'contributionseditcount' => 'ผู้ใช้คนนี้ได้แก้ไขทั้งหมด $1 ครั้ง',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'contributionseditcount' => 'Mayroong $1 mga pamamatnugot ang tagagamit na ito.',
+	'contributionseditcount-desc' => 'Nagpapakita ng bilang ng pamamatnugot sa ibabaw ng [[Special:Contributions|pahina ng mga ambag ng tagagamit]]',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

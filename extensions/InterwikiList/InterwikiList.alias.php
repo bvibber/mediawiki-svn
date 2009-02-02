@@ -38,6 +38,11 @@ $aliases['de'] = array(
 	'InterwikiList' => array( 'Interwiki-Liste' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'InterwikiList' => array( 'Lisćina interwikijow' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'InterwikiList' => array( 'ListaDeInterwikis', 'Lista de interwikis' ),

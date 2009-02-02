@@ -137,6 +137,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'templatelink' => 'Vínculo de plantilla',
 	'templatelink_empty' => 'Usted tiene que proveer un parámetro.',
 );
 

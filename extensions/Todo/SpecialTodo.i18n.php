@@ -393,12 +393,28 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'todo' => 'Lista de quehaceres',
+	'todo-tab' => 'quehaceres',
 	'todo-new-queue' => 'nuevo',
+	'todo-invalid-item' => 'Item perdido o inválido',
+	'todo-update-else-item' => 'Tratando de actualizar items de alguien más',
+	'todo-unrecognize-type' => 'Tipo no reconocido',
+	'todo-item-list' => 'Sus items',
+	'todo-no-item' => 'Sin items de quehaceres.',
+	'todo-add-queue' => 'Agregar cola...',
+	'todo-move-queue' => 'Mover a la cola...',
+	'todo-list-for' => 'Lista de quehaceres para',
+	'todo-list-change' => 'Cambiar',
 	'todo-list-cancel' => 'Cancelar',
+	'todo-new-item' => 'Nuevo item',
+	'todo-issue-summary' => 'Resumen de asuntos:',
 	'todo-form-details' => 'Detalles:',
+	'todo-form-email' => 'Para recibir notificación por correo electrónico cuando el item está cerrado, escriba su dirección aquí:',
+	'todo-form-submit' => 'enviar pregunta',
 );
 
 /** Basque (Euskara)

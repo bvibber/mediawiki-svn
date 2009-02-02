@@ -286,10 +286,19 @@ Por listo de validaj projektoj, vidu [[MediaWiki:TodoTasksValidProjects]].",
  * @author Sanbec
  */
 $messages['es'] = array(
+	'tasklist' => 'Lista de tareas',
+	'tasklistbyproject' => 'Lista de tareas por proyecto',
 	'tasklistunknownproject' => 'Proyecto desconocido',
+	'tasklistunspecuser' => 'Usuario no especificado',
 	'tasklistincorrectuser' => 'Nombre de usuario incorrecto',
+	'tasklistemail' => 'Querido %s',
+	'tasklistemailsubject' => '[%s] Cambio de lista de tareas',
 	'tasklistmytasks' => 'Mis tareas',
+	'tasklistbyprojectbad' => "Proyecto '''%s''' no es un proyecto válido.
+Para una lista de proyectos válido, vea [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Tareas asignadas para '''%s'''",
 	'tasklistchooseproj' => 'Seleccionar proyecto:',
+	'tasklistbyname' => '== Lista de quehaceres para %s ==',
 );
 
 /** Basque (Euskara)

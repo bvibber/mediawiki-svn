@@ -29,6 +29,11 @@ $aliases['de'] = array(
 	'PurgeCache' => array( 'Cache leeren' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'PurgeCache' => array( 'Cache wuprozniś' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),

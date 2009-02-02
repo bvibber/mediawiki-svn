@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'Asksql' => array( 'SQL-Abfrage' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Asksql' => array( 'SQL-wótpšašowanje' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'Asksql' => array( 'SQL-kysely' ),
@@ -50,6 +55,11 @@ $aliases['fr'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Asksql' => array( 'SQL-Abfrog' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Asksql' => array( 'SQL_wotprašenje' ),
 );
 
 /** Hungarian (Magyar) */

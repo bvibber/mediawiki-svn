@@ -38,6 +38,11 @@ $aliases['de'] = array(
 	'ImportUsers' => array( 'Benutzer importieren' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ImportUsers' => array( 'Wužywarjow importěrowaś' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ImportUsers' => array( 'Tuo käyttäjiä' ),

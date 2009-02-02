@@ -45,6 +45,11 @@ $aliases['de'] = array(
 	'ExpandTemplates' => array( 'Vorlagen expandieren' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ExpandTemplates' => array( 'Pśedłogi ekspanděrowaś' ),
+);
+
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'ExpandTemplates' => array( 'ΕπέκτασηΠροτύπων' ),
@@ -75,6 +80,11 @@ $aliases['he'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'ExpandTemplates' => array( 'Proširi_predložak' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ExpandTemplates' => array( 'Předłohi ekspandować' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */

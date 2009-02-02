@@ -51,6 +51,11 @@ $aliases['de'] = array(
 	'BoardVote' => array( 'Kuratoriumswahl' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'BoardVote' => array( 'Wólba kuratoriuma' ),
+);
+
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'BoardVote' => array( 'ΕκλογέςΣυμβουλίου' ),
@@ -76,6 +81,11 @@ $aliases['he'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'BoardVote' => array( 'Glasovanje_za_odbor' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'BoardVote' => array( 'Wolba kuratorija' ),
 );
 
 /** Hungarian (Magyar) */

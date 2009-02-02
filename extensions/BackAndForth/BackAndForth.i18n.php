@@ -754,6 +754,15 @@ $messages['th'] = array(
 	'backforth-next' => 'ต่อไป ($1)',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'backforth-next' => 'Susunod ($1)',
+	'backforth-desc' => 'Nagdaragdag ng alpabetikong pagpapahinang may mga kawing na "Susunod" at "Sinundan" sa ibabaw ng mga pahina',
+	'backforth-prev' => 'Sinundan ($1)',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Srhat

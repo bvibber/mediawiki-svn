@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'ImportFreeImages' => array( 'Freie Bilder importieren' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ImportFreeImages' => array( 'Liche wobraze importěrowaś' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ImportFreeImages' => array( 'Tuo vapaita kuvia' ),
@@ -50,6 +55,11 @@ $aliases['fr'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ImportFreeImages' => array( 'Freji Bilder importiere' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ImportFreeImages' => array( 'Swobodne wobrazy importować' ),
 );
 
 /** Hungarian (Magyar) */

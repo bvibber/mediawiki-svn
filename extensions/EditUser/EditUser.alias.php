@@ -38,6 +38,11 @@ $aliases['de'] = array(
 	'EditUser' => array( 'Benutzereinstellungen bearbeiten' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'EditUser' => array( 'Wužywarske nastajenja wobźěłaś' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'EditUser' => array( 'EditerUtilisateur', 'ÉditerUtilisateur', 'Éditer l’utilisateur' ),
@@ -63,6 +68,11 @@ $aliases['he'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'EditUser' => array( 'Uredi_suradnika' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'EditUser' => array( 'Wužiwarske nastajenja wobdźěłać' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */

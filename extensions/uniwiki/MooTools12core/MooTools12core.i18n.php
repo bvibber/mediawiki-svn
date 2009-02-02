@@ -198,7 +198,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'mootools12core-desc' => 'Legger til [http://mootools.net mootools-1.2-core-yc.js] på hver side',
+	'mootools12core-desc' => 'Legger til [http://mootools.net mootools-1.2-core-yc.js], et kompakt rammeverk i JavaScript, på hver side',
 );
 
 /** Occitan (Occitan)

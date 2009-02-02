@@ -85,6 +85,14 @@ $messages['eo'] = array(
 	'untidy' => 'Malordigi',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'tidy' => 'Organizado',
+	'untidy' => 'Desorganizado',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

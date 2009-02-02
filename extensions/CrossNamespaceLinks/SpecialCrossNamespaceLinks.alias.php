@@ -45,6 +45,11 @@ $aliases['de'] = array(
 	'CrossNamespaceLinks' => array( 'Seiten mit Links in andere Namensräume' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'CrossNamespaceLinks' => array( 'Wótkaze do drugich mjenjowych rumow' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'CrossNamespaceLinks' => array( 'Nimiavaruuksien väliset linkit' ),
@@ -65,6 +70,11 @@ $aliases['he'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'CrossNamespaceLinks' => array( 'Poveznice_među_prostorima' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'CrossNamespaceLinks' => array( 'Wotkazy do druhich mjenowych rumow' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */

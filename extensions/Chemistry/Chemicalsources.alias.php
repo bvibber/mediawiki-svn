@@ -37,9 +37,19 @@ $aliases['bs'] = array(
 	'ChemicalSources' => array( 'HemijskiIzvori' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ChemicalSources' => array( 'Chemiske žrědła' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ChemicalSources' => array( 'ChemicalSources' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ChemicalSources' => array( 'Chemiske žórła' ),
 );
 
 /** Hungarian (Magyar) */
@@ -80,6 +90,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ChemicalSources' => array( 'Kjemiske kilder' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'ChemicalSources' => array( 'کيميايي سرچينې' ),
 );
 
 /** Sanskrit (संस्कृत) */

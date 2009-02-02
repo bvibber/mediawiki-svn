@@ -35,6 +35,11 @@ $aliases['de'] = array(
 	'LogEntry' => array( 'Logbucheintrag' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'LogEntry' => array( 'Protokolowy zapisk' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'LogEntry' => array( 'Entrada no rexistro' ),
@@ -43,6 +48,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'LogEntry' => array( 'Logbuechyytrag' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'LogEntry' => array( 'Protokolowy zapisk' ),
 );
 
 /** Hungarian (Magyar) */

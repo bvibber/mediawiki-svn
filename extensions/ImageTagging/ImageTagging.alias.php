@@ -37,6 +37,16 @@ $aliases['de'] = array(
 	'ImageTagging' => array( 'Bildmarkierung' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ImageTagging' => array( 'Markěrowanje wobrazow' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ImageTagging' => array( 'Markěrowanje wobrazow' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ImageTagging' => array( 'Képcímkézés' ),

@@ -29,6 +29,11 @@ $aliases['de'] = array(
 	'TemplateLink' => array( 'Vorlagenlink' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'TemplateLink' => array( 'Pśedłogowy wótkaz' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'TemplateLink' => array( 'پیوند_الگو' ),
@@ -37,6 +42,11 @@ $aliases['fa'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'TemplateLink' => array( 'Vorlagegleich' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'TemplateLink' => array( 'Předłohowy wotkaz' ),
 );
 
 /** Japanese (日本語) */

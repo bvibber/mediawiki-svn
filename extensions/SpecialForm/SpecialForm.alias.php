@@ -29,6 +29,11 @@ $aliases['de'] = array(
 	'Form' => array( 'Eingabefeld' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Form' => array( 'Formular' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'Form' => array( 'فرم' ),

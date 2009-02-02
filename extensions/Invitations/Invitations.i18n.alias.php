@@ -43,6 +43,11 @@ $aliases['de'] = array(
 	'Invitations' => array( 'Einladungen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Invitations' => array( 'Pśepšosenja' ),
+);
+
 /** Basque (Euskara) */
 $aliases['eu'] = array(
 	'Invitations' => array( 'Gonbidapenak' ),

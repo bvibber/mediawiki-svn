@@ -33,10 +33,22 @@ $aliases['de'] = array(
 	'CreateSignDocument' => array( 'Signiertes Dokument erstellen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'SignDocument' => array( 'Dokument signěrowaś' ),
+	'CreateSignDocument' => array( 'Signěrowany dokument napóraś' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'SignDocument' => array( 'Dokumänt signiere' ),
 	'CreateSignDocument' => array( 'Signiert Dokumänt aalege' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'SignDocument' => array( 'Dokument signować' ),
+	'CreateSignDocument' => array( 'Signowany dokument wutworić' ),
 );
 
 /** Japanese (日本語) */
@@ -67,6 +79,11 @@ $aliases['nl'] = array(
 $aliases['no'] = array(
 	'SignDocument' => array( 'Signer dokument' ),
 	'CreateSignDocument' => array( 'Opprett signaturdokument' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'SignDocument' => array( 'لاسوند لاسليک کول' ),
 );
 
 /** Swedish (Svenska) */

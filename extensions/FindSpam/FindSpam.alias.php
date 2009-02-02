@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'FindSpam' => array( 'Spam finden' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'FindSpam' => array( 'Spam namakaś' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'FindSpam' => array( 'Atopar spam' ),
@@ -45,6 +50,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'FindSpam' => array( 'Spam finde' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'FindSpam' => array( 'Sapm namakać' ),
 );
 
 /** Hungarian (Magyar) */

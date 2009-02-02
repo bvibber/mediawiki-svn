@@ -26,6 +26,11 @@ $aliases['de'] = array(
 	'EmergencyDeSysop' => array( 'Notfall-Administratorrechtentzug' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'EmergencyDeSysop' => array( 'Zajmjeśe administratorowych pšawach w nuznem paźe' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'EmergencyDeSysop' => array( 'DesysopageUrgent', 'DésysopageUrgent', 'DéSysopageUrgent', 'DeSysopageUrgent' ),
@@ -34,6 +39,11 @@ $aliases['fr'] = array(
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'EmergencyDeSysop' => array( 'Emerxencia de administrador' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'EmergencyDeSysop' => array( 'Prawa administratora w nuzowym padźe preč wzać' ),
 );
 
 /** Hungarian (Magyar) */

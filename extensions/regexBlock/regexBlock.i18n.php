@@ -460,15 +460,26 @@ Verŝajne ne estas uzanto kun tiu nomo.',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Jatrobat
  * @author Piolinfax
  */
 $messages['es'] = array(
+	'regexblock-form-username' => 'Dirección IP o nombre de usuario:',
 	'regexblock-form-reason' => 'Motivo:',
+	'regexblock-form-account-block' => 'Bloquear creaación de nuevas cuentas',
+	'regexblock-form-submit' => 'Bloquear este usuario',
+	'regexblock-form-submit-empty' => 'De un nombre de usuario o una dirección IP a bloquear.',
+	'regexblock-form-submit-expiry' => 'Por favor especifique un periodo de expiración.',
+	'regexblock-nodata-found' => 'Sin datos encontrados',
 	'regexblock-view-all' => 'Todos',
 	'regexblock-view-go' => 'Ir',
 	'regexblock-view-reason' => 'Motivo: $1',
+	'regexblock-view-block-infinite' => 'bloqueo permanente',
+	'regexblock-view-block-temporary' => 'expira en',
+	'regexblock-view-block-expired' => 'EXPIRA en',
+	'regexblock-view-block-by' => 'bloqueado por',
 	'regexblock-view-block-unblock' => 'desbloquear',
 );
 
@@ -1086,6 +1097,7 @@ $messages['lb'] = array(
 	'regexblock-currently-blocked' => 'Aktuell gespaarten Adressen:',
 	'regexblock-expire-duration' => '1 Stonn,2 Stonnen, 4 Stonnen,6 Stonnen,1 Dag,3 Deeg,1 Woch,2 Wochen,1 Mount,3 Méint,6 Méint,1 Joer,onbegrenzt',
 	'regexblockstats' => 'Regex Spärstatistiken',
+	'regexblock-page-title-1' => 'Adress spären andem regulär Ausdréck (Regex) benotzt ginn',
 	'regexblock-reason-name' => 'Dëse Benotzer ass wéinst Vandalismus oder ähnlech Ursaache gespaart an däerf keng Ännerunge maachen. Wann Dir iwwerzeecht sidd datt et sech ëm ee Feeler handelt, $1',
 	'regexblock-form-username' => 'IP-Adress oder Benotzer:',
 	'regexblock-form-reason' => 'Grond:',

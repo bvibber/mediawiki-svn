@@ -32,9 +32,19 @@ $aliases['de'] = array(
 	'AccountManager' => array( 'Account-Manager' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'AccountManager' => array( 'Kontowy zastojnik' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'AccountManager' => array( 'Xestor de contas' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'AccountManager' => array( 'Kontowy zrjadowak' ),
 );
 
 /** Japanese (日本語) */

@@ -35,6 +35,11 @@ $aliases['he'] = array(
 	'SpamRegex' => array( 'ביטויי_ספאם' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'SpamRegex' => array( 'Spamowe regularne wurazy' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'SpamRegex' => array( 'スパム正規表現フィルター' ),

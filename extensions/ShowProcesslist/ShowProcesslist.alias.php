@@ -34,6 +34,11 @@ $aliases['de'] = array(
 	'ShowProcesslist' => array( 'Prozessliste anzeigen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ShowProcesslist' => array( 'Lisćinu procesow pokazaś' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ShowProcesslist' => array( 'Prosessilistaus' ),
@@ -47,6 +52,11 @@ $aliases['gsw'] = array(
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'ShowProcesslist' => array( 'הצגת_רשימת_תהליכים' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ShowProcesslist' => array( 'Lisćinu procesow pokazać' ),
 );
 
 /** Hungarian (Magyar) */

@@ -42,6 +42,11 @@ $aliases['de'] = array(
 	'ChangeAuthor' => array( 'Autor ändern' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'ChangeAuthor' => array( 'Awtora změniś' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'ChangeAuthor' => array( 'Changer auteur', 'ChangerAuteur' ),
@@ -65,6 +70,11 @@ $aliases['he'] = array(
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'ChangeAuthor' => array( 'Promjeni_Autora' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ChangeAuthor' => array( 'Awtora změnić' ),
 );
 
 /** Hungarian (Magyar) */

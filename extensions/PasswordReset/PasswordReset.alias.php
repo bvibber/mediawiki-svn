@@ -42,6 +42,12 @@ $aliases['de'] = array(
 	'Disabledusers' => array( 'Deaktivierte Benutzer' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'PasswordReset' => array( 'Gronidło slědk stajiś' ),
+	'Disabledusers' => array( 'Znjemóžnjone wužywarje' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'PasswordReset' => array( 'Passwort zrucksetze' ),
@@ -57,6 +63,12 @@ $aliases['he'] = array(
 $aliases['hr'] = array(
 	'PasswordReset' => array( 'Ponovno_postavi_lozinku' ),
 	'Disabledusers' => array( 'Onesposobljeni_suradnici' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'PasswordReset' => array( 'Hesło wróćo stajić' ),
+	'Disabledusers' => array( 'Znjemóžneni wužiwarjo' ),
 );
 
 /** Japanese (日本語) */

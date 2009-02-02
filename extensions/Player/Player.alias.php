@@ -37,9 +37,19 @@ $aliases['bs'] = array(
 	'Player' => array( 'Igrac' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Player' => array( 'Wótegrawak' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Player' => array( 'Xogador' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Player' => array( 'Wothrawak' ),
 );
 
 /** Japanese (日本語) */
@@ -60,6 +70,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'Player' => array( 'Medieavspiller' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'Player' => array( 'غږونکی' ),
 );
 
 /** Sanskrit (संस्कृत) */

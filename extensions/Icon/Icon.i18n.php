@@ -73,6 +73,7 @@ $messages['cs'] = array(
 $messages['cy'] = array(
 	'icon-badimage' => 'Delwedd wallus',
 	'icon-badwidth' => 'Lled gwallus',
+	'icon-desc' => 'Yn defnyddio delweddau fel eiconau a chysylltiadau ar ffurf eicon',
 );
 
 /** German (Deutsch)

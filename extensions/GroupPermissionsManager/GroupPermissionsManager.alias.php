@@ -47,6 +47,13 @@ $aliases['de'] = array(
 	'SortPermissions' => array( 'Rechte sortieren' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'GroupPermissions' => array( 'Kupkowe pšawa' ),
+	'RemoveUnusedGroups' => array( 'Njewužywane kupki wótpóraś' ),
+	'SortPermissions' => array( 'Pšawa sortěrowaś' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'GroupPermissions' => array( 'Permission des groupes' ),
@@ -64,6 +71,13 @@ $aliases['hr'] = array(
 	'GroupPermissions' => array( 'Prava_suradničkih_skupina' ),
 	'RemoveUnusedGroups' => array( 'Ukloni_nekorištene_skupine' ),
 	'SortPermissions' => array( 'Raspored_prava' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'GroupPermissions' => array( 'Skupinske prawa' ),
+	'RemoveUnusedGroups' => array( 'Njewužiwane skupiny wotstronić' ),
+	'SortPermissions' => array( 'Prawa sortěrować' ),
 );
 
 /** Hungarian (Magyar) */

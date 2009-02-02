@@ -23,10 +23,14 @@ $2",
 );
 
 /** Message documentation (Message documentation)
+ * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'userrightsnotifysubject' => 'Probably the heading on an e-mail sent to notify a user of changes in his group membership rights.
+
+$1 is probably the name of the wiki.',
 	'userrightsnotifybody' => '* $1 is the recipient
 * $2 is the sitename
 * $3 is the user that made the change that is notified for
@@ -196,6 +200,24 @@ S pozdravem,
 
 $2',
 	'userrightsnotif-desc' => 'Posílá upozornění na emaily uživatelům při změně oprávnění',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'userrightsnotifysubject' => 'Newid yn eich aelodaeth grŵp ar $1',
+	'userrightsnotifybody' => "Henffych $1.
+
+Fe'ch hysbysir bod eich aelodaeth o grwpiau ar $2 wedi ei newid gan $3 am $4.
+
+Ychwanegwyd: $5
+Tynnwyd: $6
+
+Yn ddiffuant,
+
+$2",
+	'userrightsnotif-desc' => 'Yn anfon e-bost i hysbysu defnyddiwr o newid yn ei alluoedd',
 );
 
 /** German (Deutsch)

@@ -257,6 +257,13 @@ $messages['sv'] = array(
 	'crowdauthentication-desc' => 'Verifieringsprogramtillägg för Atlassian Crowd',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'crowdauthentication-desc' => "Pampasak ng pagpapatunay para sa ''Atlassian Crowd''",
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

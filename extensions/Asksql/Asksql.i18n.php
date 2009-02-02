@@ -295,6 +295,13 @@ $messages['eo'] = array(
 	'querysuccessful' => 'Serĉomendo sukcesas',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'querybtn' => 'Enviar pregunta',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -1016,6 +1023,23 @@ $messages['tg-cyrl'] = array(
 	'querybtn' => 'Фиристодани дархост',
 	'selectonly' => 'Танҳо пурсишҳои фақат-хондан иҷозат дода шудаанд.',
 	'querysuccessful' => 'Дархост бо муваффақият',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'asksql' => 'Pagtatanong ng SQL',
+	'asksql-desc' => 'Gumawa ng mga pagtatanong ng SQL sa pamamagitan ng isang [[Special:Asksql|natatanging pahina]]',
+	'asksqltext' => "Gamitin ang pormularyo sa ibaba upang makagawa ng isang tuwirang pagtatanong ng kalipunan ng dato.
+Gumatin ng isahang bantas na pambanggit ('katulad nito') upang mahangganan ang mga literal na bagting.
+Kalimitang nakadaragdag ito ng malaki-laking karga sa serbidor, kaya't huwag masyadong gagamitin ang tungkuling ito.",
+	'sqlislogged' => 'Pakiunawang itinatala ang lahat ng mga pagtatanong.',
+	'sqlquery' => 'Ipasok ang tanong',
+	'querybtn' => 'Ipasa ang tanong',
+	'selectonly' => 'Mga katanungang mababasa lamang ang pinapayagan.',
+	'querysuccessful' => 'Matagumpay ang pagtatanong',
+	'right-asksql' => 'Gumawa ng mga katanungang SQL',
 );
 
 /** Ukrainian (Українська)

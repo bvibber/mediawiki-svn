@@ -47,6 +47,11 @@ $aliases['de'] = array(
 	'Code' => array( 'Quelltext' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Code' => array( 'Žrědłowy tekst' ),
+);
+
 /** Basque (Euskara) */
 $aliases['eu'] = array(
 	'Code' => array( 'Kodea' ),
@@ -66,6 +71,11 @@ $aliases['gsw'] = array(
 $aliases['hr'] = array(
 	'Code' => array( 'Kod' ),
 	'RepoAdmin' => array( 'Admin_repozitorija' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Code' => array( 'Žórłowy tekst' ),
 );
 
 /** Hungarian (Magyar) */

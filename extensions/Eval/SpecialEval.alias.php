@@ -38,6 +38,11 @@ $aliases['de'] = array(
 	'Eval' => array( 'Auswerten' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Eval' => array( 'Wugódnośiś' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'Eval' => array( 'Évaluer', 'Evaluer' ),
@@ -58,6 +63,11 @@ $aliases['gsw'] = array(
  */
 $aliases['he'] = array(
 	'Eval' => array( 'פירוש' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Eval' => array( 'Wuhódnoćić' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */

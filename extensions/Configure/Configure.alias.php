@@ -76,6 +76,7 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'Configure' => array( 'Konfigurěrowaś' ),
+	'Extensions' => array( 'Rozšyrjenja' ),
 	'ViewConfig' => array( 'Konfiguraciju pokazaś' ),
 );
 

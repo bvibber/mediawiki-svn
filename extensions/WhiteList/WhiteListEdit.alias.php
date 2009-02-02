@@ -39,6 +39,12 @@ $aliases['de'] = array(
 	'WhiteListEdit' => array( 'Weiße Liste bearbeiten' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'WhiteList' => array( 'Běła lisćina' ),
+	'WhiteListEdit' => array( 'Běłi lisćinu wobźěłaś' ),
+);
+
 /** Divehi (ދިވެހިބަސް) */
 $aliases['dv'] = array(
 	'WhiteList' => array( 'ވައިޓް ލިސްޓް' ),
@@ -71,12 +77,13 @@ $aliases['gsw'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'WhiteList' => array( 'Běła lisćina' ),
+	'WhiteListEdit' => array( 'Běłu lisćinu wobdźěłać' ),
 );
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WhiteList' => array( 'ホワイトリスト' ),
-	'WhiteListEdit' => array( 'ホワイトリスト編集', 'ホワイトリストの編集' ),
+	'WhiteListEdit' => array( 'ホワイトリストの編集' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
@@ -118,6 +125,11 @@ $aliases['nl'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'WhiteList' => array( 'Tièra blanca', 'Tièrablanca' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'WhiteList' => array( 'سپين لړليک' ),
 );
 
 /** Sanskrit (संस्कृत) */

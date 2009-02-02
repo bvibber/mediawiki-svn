@@ -238,6 +238,13 @@ $messages['sv'] = array(
 	'contributorsaddon-desc' => 'Lägger till popup-rutor för länken till "Huvudsakliga bidragsgivare", med hjälp av JavaScript',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'contributorsaddon-desc' => 'Nagdaragdag ng "sulpot-litaw" (\'\'popups\'\') sa mga kawingan ng "Pangunahing mga tagapag-ambag"',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

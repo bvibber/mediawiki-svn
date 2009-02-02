@@ -45,6 +45,12 @@ $aliases['de'] = array(
 	'Oversight' => array( 'Oversight-Logbuch' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'HideRevision' => array( 'Wersiju schowaś' ),
+	'Oversight' => array( 'Protokol doglědowanjow' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'HideRevision' => array( 'پنهان_کردن_نسخه' ),
@@ -81,6 +87,12 @@ $aliases['he'] = array(
 $aliases['hr'] = array(
 	'HideRevision' => array( 'Sakrij_izmjenu' ),
 	'Oversight' => array( 'Nadzor' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'HideRevision' => array( 'Wersiju schować' ),
+	'Oversight' => array( 'Protokol dohladowanjow' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

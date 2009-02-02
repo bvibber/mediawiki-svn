@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'CountEdits' => array( 'Beiträge zählen' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'CountEdits' => array( 'Pśinoski licyś' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'CountEdits' => array( 'Contador_de_Ediciones' ),

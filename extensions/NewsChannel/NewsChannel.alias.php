@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'NewsChannel' => array( 'Nachrichtenkanal' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'NewsChannel' => array( 'Kanal powěsćow' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'NewsChannel' => array( 'کانال_خبری' ),
@@ -50,6 +55,11 @@ $aliases['fi'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'NewsChannel' => array( 'Kanal fir Nejigkeite' ),
+);
+
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'NewsChannel' => array( 'Kanal powěsćow' ),
 );
 
 /** Hungarian (Magyar) */

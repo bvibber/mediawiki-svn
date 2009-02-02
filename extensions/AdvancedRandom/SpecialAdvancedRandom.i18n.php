@@ -458,6 +458,14 @@ $messages['tg-cyrl'] = array(
 	'advancedrandom-desc' => 'Гирифтани саҳифаи тасодуфӣ аз пайвандҳои баҳси киҳо ё саҳифаи мавзӯъ, ки ба саҳифа дода шудаанд, метавонанд монанди [[Special:AdvancedRandom/Template:Featured/Talk]] барои дастрас кардани мақолаи барҷастаи тасодуфии барҷаста ё монанди [[Special:AdvancedRandom/Template:GFDL/Image]] барои дастрас кардани парвандаи тасодуфии GFDL истифода шаванд',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'advancedrandom' => 'Mas masulong na pang-alinman',
+	'advancedrandom-desc' => 'Kumukuha ng isang alinmang pahina mula sa mga kawing ng pahina ng usapan ninuman o kabahaging pahina patungo sa isang ibinigay na pahina, magagamit na katulad ng [[Special:AdvancedRandom/Template:Featured/Talk]] upang makakuha ng isang alinmang napiling artikulo o katulad ng [[Special:AdvancedRandom/Template:GFDL/Image]] upang makakuha ng isang alinmang talaksang GFDL',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

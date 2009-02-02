@@ -145,6 +145,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'categoryintersection' => 'Categoría intersección',
+	'categoryintersection-doit' => 'Lista de páginas en todas estas categorías',
 );
 
 /** Basque (Euskara)

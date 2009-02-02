@@ -38,6 +38,11 @@ $aliases['de'] = array(
 	'Watchers' => array( 'Beobachter' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Watchers' => array( 'Wobglědowarje' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'Watchers' => array( 'پی‌گیری‌کنندگان' ),

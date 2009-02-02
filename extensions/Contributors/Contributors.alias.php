@@ -42,6 +42,11 @@ $aliases['de'] = array(
 	'Contributors' => array( 'Autoren' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
+$aliases['dsb'] = array(
+	'Contributors' => array( 'Awtory' ),
+);
+
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'Contributors' => array( 'Συνεισφέροντες' ),
@@ -130,6 +135,11 @@ $aliases['oc'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'Contributors' => array( 'Autorzy' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'Contributors' => array( 'ونډه وال' ),
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

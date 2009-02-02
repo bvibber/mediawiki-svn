@@ -485,15 +485,29 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Antur
+ * @author BicScope
  */
 $messages['es'] = array(
+	'badimages' => 'Lista de malas imágenes',
+	'badimages-desc' => 'Lista de imágenes malas de las capacibilodades de MediaWiki',
 	'badimages-add-btn' => 'Agregar',
+	'badimages-added' => '$1 fue agregada satisfactoriamente a la lista.',
+	'badimages-count' => "Ya {{Plural:$1|es|está}} '''$1''' {{PLURAL:$1|imágen|imágenes}} en la lista de malas imágenes.",
 	'badimages-name' => 'Nombre:',
+	'badimages-not-added' => 'La imágen no puede agregarse.',
+	'badimages-not-removed' => 'La imágen no puede ser removida.',
 	'badimages-reason' => 'Motivo:',
 	'badimages-remove' => '(borrar)',
 	'badimages-remove-btn' => 'Borrar',
 	'badimages-remove-confirm' => 'Por favor, confirme que desea quitar $1 de la lista:',
 	'badimages-removed' => '$1 ha sido borrado de la lista.',
+	'badimages-subheading' => '$1 actuales',
+	'badimages-unprivileged' => '(No tiene permiso para alterar la lista)',
+	'badimages-log-name' => 'Lista de malas imágenes',
+	'badimages-log-header' => 'Éste es un registro de cambios a la [[{{MediaWiki:Badimages-page}}|lista de malas imágenes]].',
+	'badimages-log-add' => '[[$1]] fue añadida satisfactoriamente a la lista de malas imágenes',
+	'badimages-log-remove' => '[[$1]] ha sido removida satisfactoriamente de la lista de malas imágenes',
+	'badimages-page' => '{{ns:help}}:Lista de malas imágenes',
 );
 
 /** Basque (Euskara)
@@ -2048,6 +2062,32 @@ $messages['th'] = array(
 	'badimages-remove-btn' => 'เอาออก',
 	'badimages-log-name' => 'รายการภาพที่เสีย',
 	'badimages-page' => '{{ns:help}}:รายการภาพที่เสีย',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'badimages' => 'Talaan ng masamang larawan',
+	'badimages-desc' => 'Dugtungan ang mga kakayanan ng talaan ng masamang larawan ng MediaWiki',
+	'badimages-add-btn' => 'Idagdag',
+	'badimages-added' => 'Idinagdag ang $1 sa talaan.',
+	'badimages-count' => "{{PLURAL:$1|May|Mayroong}} '''$1''' {{PLURAL:$1|larawan|mga larawan}} sa talaan ng masamang larawan.",
+	'badimages-name' => 'Pangalan:',
+	'badimages-not-added' => 'Hindi maidaragdag ang larawan.',
+	'badimages-not-removed' => 'Hindi matatanggal ang larawan.',
+	'badimages-reason' => 'Dahilan:',
+	'badimages-remove' => '(tanggalin)',
+	'badimages-remove-btn' => 'Tanggalin',
+	'badimages-remove-confirm' => 'Pakitiyak na nais mong tanggalin ang $1 mula sa talaan:',
+	'badimages-removed' => 'Tinanggal ang $1 mula sa talaan.',
+	'badimages-subheading' => 'Pangkasalukuyang mga bagay-bagay',
+	'badimages-unprivileged' => '(Wala kang sapat na kapahintulutan upang baguhin ang talaan)',
+	'badimages-log-name' => 'Talaan ng masamang larawan',
+	'badimages-log-header' => 'Isa itong talaan ng mga pagbabago sa [[{{MediaWiki:Badimages-page}}|talaan ng masamang larawan]].',
+	'badimages-log-add' => 'idinagdag ang [[$1]] sa talaan ng masamang larawan',
+	'badimages-log-remove' => 'tinanggal ang [[$1]] mula sa talaan ng masamang larawan',
+	'badimages-page' => '{{ns:help}}:Talaan ng masamang larawan',
 );
 
 /** Turkish (Türkçe)
