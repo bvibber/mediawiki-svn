@@ -27,7 +27,7 @@ class DataCenterViewPlansRack extends DataCenterView {
 		// Gets structure of plan
 		$structure = $plan->getStructure(
 			DataCenterDB::buildSort(
-				'link', 'asset', array( 'orientation', 'z DESC' )
+				'link', 'asset', array( 'orientation DESC', 'z DESC' )
 			)
 		);
 		// Gets objects from rack in structure
