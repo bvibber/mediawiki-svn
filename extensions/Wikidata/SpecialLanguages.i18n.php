@@ -205,10 +205,12 @@ Do not forget to doublecheck to make sure!",
 No copy operation has taken place.',
 	'ow_no_action_specified'                => "<h3>No action was specified</h3>
 Perhaps you came to this page directly? Normally you do not need to be here.",
-	'ow_db_consistency_not_found'          => "<h2>Error</h2>
+	'ow_db_consistency_not_found'           => "<h2>Error</h2>
 There is an issue with database consistency, wikidata cannot find valid data connected to this defined meaning ID.
 It might be lost.
 Please contact the server operator or administrator.",
+	'ow_history_transaction'                => 'Transaction:',
+	'ow_history_show_life_span'             => 'Show record life span:',
 
 	'ow_class_attr_type_dm'				=> 'Defined meaning',
 	'ow_class_attr_type_xlate'			=> 'Translatable text',
