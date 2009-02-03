@@ -146,6 +146,7 @@ $messages['en'] = array(
 	"voctrain_hide_definitions_in_question_language"=>"Hide definitions in question language",
 	"voctrain_hide_words_in_question_language"=>"Hide words in question language",
 	"voctrain_Separate_values_by_commas_to_use_multiple_languages_"=>"Separate values by commas to use multiple languages."
+	"voctrain_other"=>"other",
 );
 
 /** Message documentation (Message documentation)
