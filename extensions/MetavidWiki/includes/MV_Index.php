@@ -146,8 +146,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$conds,
 			__METHOD__,
 			$options );
-		// print $dbr->lastQuery();
-		// die;
+		//print $dbr->lastQuery();
+		//die;
 		if ( $dbr->numRows( $result ) == 0 )return array();
 		$ret_ary = array();
 		$from_tables = $vars = $options = array();

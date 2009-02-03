@@ -25,8 +25,8 @@
 				if ( $start_sec == 0 )
 					continue;
 				$qstart = 0;
-				$qend = $start_sec;
-				$orderby = 'end_time ASC';
+				$qend = $start_sec-1;
+				$orderby = 'end_time DESC';
 			} else if ( $pntype == 'next' ) {
 				$qstart = $end_sec + 1;
 				$qend = $duration_sec;
@@ -42,8 +42,8 @@
 	 								$smw_properties = array( 'Speech_by', 'Bill', 'category' ),
 	 								$options = array( 'LIMIT' => 1, 'ORDER BY' => $orderby )
 	 						);
-	 		// print $dbr->lastQuery();
-			// die;
+	 		//print $dbr->lastQuery();
+			//die;
 	 		// print "SHOULD GET $pntype for $stream_time_req";				
 	 		reset( $mvd_rows );
 	 		if ( count( $mvd_rows ) != 0 ) {
