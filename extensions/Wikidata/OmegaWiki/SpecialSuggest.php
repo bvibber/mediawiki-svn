@@ -148,7 +148,7 @@ function getSuggestions() {
 	//wfdebug("]]]".$sql."\n");
 	$queryResult = $dbr->query($sql);
 	
-	$o->id = new Attribute("id", "ID", "id");
+	$o->id = new Attribute("id", wfMsg('ow_ID'), "id");
 	
 	# == Process query
 	switch($query) {
@@ -655,9 +655,9 @@ function getTransactionAsRecordSet($queryResult) {
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$userAttribute = new Attribute("user", "User", "short-text");
-	$timestampAttribute = new Attribute("timestamp", "Time", "timestamp");
-	$summaryAttribute = new Attribute("summary", "Summary", "short-text");
+	$userAttribute = new Attribute("user", wfMsg('ow_User'), "short-text");
+	$timestampAttribute = new Attribute("timestamp", wfMsg('ow_Time'), "timestamp");
+	$summaryAttribute = new Attribute("summary", wfMsg('ow_transaction_summary'), "short-text");
 	
 	$recordSet = new ArrayRecordSet(new Structure($o->id, $userAttribute, $timestampAttribute, $summaryAttribute), new Structure($o->id));
 	
