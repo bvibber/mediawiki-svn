@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ResourceType;
 
 public class PlainTextOutput extends FauxStoreBuilder implements TextStoreBuilder {
@@ -11,7 +12,9 @@ public class PlainTextOutput extends FauxStoreBuilder implements TextStoreBuilde
 	protected OutputStream out;
 	protected String encoding;
 	
-	public PlainTextOutput(OutputStream out, String enc) {
+	public PlainTextOutput(DatasetIdentifier dataset, OutputStream out, String enc) {
+		super(dataset);
+		
 		if (out==null) throw new NullPointerException();
 		if (enc==null) throw new NullPointerException();
 		

@@ -22,7 +22,7 @@ import de.brightbyte.wikiword.schema.TextStoreSchema;
  * The TweakSet supplied to the constructur is used by 
  * {@link de.brightbyte.wikiword.store.DatabaseTextStore}, see there.
  */
-public class DatabaseTextStoreBuilder extends DatabaseLocalStoreBuilder implements TextStoreBuilder {
+public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder implements TextStoreBuilder {
 	
 	protected LocalConceptStoreSchema localConceptDatabase;
 	

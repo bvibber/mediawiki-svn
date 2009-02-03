@@ -30,7 +30,7 @@ import de.brightbyte.wikiword.store.LocalConceptStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
 import de.brightbyte.wikiword.store.WikiWordStore;
 
-public class QueryConsole extends ConsoleApp<WikiWordStore> {
+public class QueryConsole extends ConsoleApp<WikiWordConcept> {
 
 	public QueryConsole() {
 		super(true, true);
@@ -194,7 +194,7 @@ public class QueryConsole extends ConsoleApp<WikiWordStore> {
 						String n = r.getName();
 						
 						if (n==null && c < maxAutoResolve) {
-							WikiWordConcept x = ((WikiWordConceptStore)store).getConcept(id);
+							WikiWordConcept x = ((WikiWordConceptStore)conceptStore).getConcept(id);
 							r = x.getReference();
 							n = r.getName();
 							a = r;
@@ -244,7 +244,7 @@ public class QueryConsole extends ConsoleApp<WikiWordStore> {
 				 out = new ConceptDumper(wr);
 			}
 			else if (format.equals("rdf") || format.equals("turtle") || format.equals("n3")) {
-				 out = new RdfOutput(identifiers, "default", wr, "turtle", getDataset());
+				 out = new RdfOutput(identifiers, "default", wr, "turtle", getStoreDataset());
 				 ((RdfOutput)out).startDocument();
 			}
 			else {
@@ -321,15 +321,15 @@ public class QueryConsole extends ConsoleApp<WikiWordStore> {
 	}
 	
 	protected GlobalConceptStore getGlobalConceptStore() {
-		return (GlobalConceptStore)store;
+		return (GlobalConceptStore)conceptStore;
 	}
 
 	protected LocalConceptStore getLocalConceptStore() {
-		return (LocalConceptStore)store;
+		return (LocalConceptStore)conceptStore;
 	}
 
 	public void dumpStats() throws PersistenceException {
-		Map<String, ? extends Number> m = ((WikiWordConceptStore)store).getStatisticsStore().getStatistics();
+		Map<String, ? extends Number> m = ((WikiWordConceptStore)conceptStore).getStatisticsStore().getStatistics();
 		
 		List<String> nn = new ArrayList<String>(m.keySet());
 		Collections.sort(nn);
@@ -340,33 +340,28 @@ public class QueryConsole extends ConsoleApp<WikiWordStore> {
 		}
 	}
 	
-	@Override
-	protected WikiWordConceptStore<? extends WikiWordConcept, ? extends WikiWordConceptReference<? extends WikiWordConcept>> createStore(DataSource db) throws PersistenceException {
-		return createConceptStore(db);
-	}
-	
 	public void listConcepts(ConsoleOutput out) throws PersistenceException {
-		DataSet<LocalConcept> meanings = ((WikiWordConceptStore)store).getConceptInfoStore().getAllConcepts();
+		DataSet<LocalConcept> meanings = getLocalConceptStore().getConceptInfoStore().getAllConcepts();
 		out.writeConcepts(meanings);
 	}		
 	
 	public void listMeaningsLocal(String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<LocalConcept> meanings = ((LocalConceptStore)store).getMeanings(term);
+		DataSet<LocalConcept> meanings = getLocalConceptStore().getMeanings(term);
 		out.writeConcepts(meanings);
 	}		
 
 	public void listMeaningsGlobal(String lang, String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<GlobalConcept> meanings = ((GlobalConceptStore)store).getMeanings(lang, term);
+		DataSet<GlobalConcept> meanings = getGlobalConceptStore().getMeanings(lang, term);
 		out.writeConcepts(meanings);
 	}		
 
 	public void showConcept(int id, ConsoleOutput out) throws PersistenceException {
-		WikiWordConcept c = ((WikiWordConceptStore)store).getConcept(id);
+		WikiWordConcept c = conceptStore.getConcept(id);
 		out.writeConcept(c);
 	}		
 
 	public void showConcept(int id, String lang, ConsoleOutput out) throws PersistenceException {
-		GlobalConcept c = ((GlobalConceptStore)store).getConcept(id);
+		GlobalConcept c = getGlobalConceptStore().getConcept(id);
 		out.writeConcept(c);
 		
 		LocalConcept lc = c.getLocalConcept(lang);
@@ -381,7 +376,7 @@ public class QueryConsole extends ConsoleApp<WikiWordStore> {
 	}		
 
 	public void showConcept(String lang, int id, ConsoleOutput out) throws PersistenceException {
-		LocalConceptStore lstore = ((GlobalConceptStore)store).getLocalConceptStore(Corpus.forName(getDataset().getCollection(), lang, tweaks));
+		LocalConceptStore lstore = getGlobalConceptStore().getLocalConceptStore(Corpus.forName(getStoreDataset().getCollection(), lang, tweaks));
 		
 		LocalConcept lc = lstore.getConcept(id);
 		if (out.getOutput() instanceof ConceptDumper) {

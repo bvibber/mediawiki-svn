@@ -28,7 +28,7 @@ public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 	
 	@Override
 	protected void afterImport() throws PersistenceException {
-		store.getStatisticsStoreBuilder().clear();
+		conceptStore.getStatisticsStoreBuilder().clear();
 	}
 
 	@Override

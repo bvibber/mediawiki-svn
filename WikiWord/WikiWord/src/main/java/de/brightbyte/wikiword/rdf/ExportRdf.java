@@ -38,10 +38,9 @@ import de.brightbyte.wikiword.store.DatabaseGlobalConceptStore;
 import de.brightbyte.wikiword.store.DatabaseLocalConceptStore;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
-import de.brightbyte.wikiword.store.WikiWordStore;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseStatisticsStore;
 
-public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
+public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordConceptStore> {
 	
 	protected RdfPlatform<V, R, A, W> platform;
 	protected RdfOutput<V, R, A, W> output;
@@ -72,7 +71,7 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
 			warn(GENERIC_QUALIFIER_WARNING);
 		}
 		
-		if (!isDatasetLocal() && !identifiers.globalConceptBaseURI(getDataset()).matches(".*\\d.*")) {
+		if (!isDatasetLocal() && !identifiers.globalConceptBaseURI(getStoreDataset()).matches(".*\\d.*")) {
 			warn(GENERIC_COLLECTION_WARNING);
 		}
 		
@@ -214,7 +213,7 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
 		protected LocalConceptProvider aquireLocalConceptProvider(String lang) throws RdfException {
 			LocalConceptProvider p = providers.get(lang);
 			if (p==null) {
-				Corpus c = Corpus.forName(getCollectionName(), lang, tweaks);
+				Corpus c = Corpus.forName(getConfiguredCollectionName(), lang, tweaks);
 				p = new LocalConceptProvider(c, nameField);
 				providers.put(lang, p);
 			}
@@ -257,7 +256,7 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
 	protected Corpus aquireCorpus(String lang) {
 		Corpus c = corpora.get(lang);
 		if (c==null) {
-			c = Corpus.forName(getCollectionName(), lang, tweaks);
+			c = Corpus.forName(getConfiguredCollectionName(), lang, tweaks);
 			corpora.put(lang, c);
 		}
 		
@@ -411,7 +410,7 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
 				writeStringProperty(concept, ww.displayLabel, name, language);
 				
 				int t = DatabaseUtil.asInt(rs.getObject("type"));
-				ConceptType type = ((WikiWordConceptStore)store).getConceptType(((Number)t).intValue());
+				ConceptType type = conceptStore.getConceptType(((Number)t).intValue());
 	
 				R r = platform.newResource(WikiWordIdentifiers.conceptTypeBaseURI(), type.getName());
 				output.writeStatement(concept, ww.type, r);
@@ -654,10 +653,10 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
 			platform.addNamespace(c.getURL().toString(), c.getLanguage()+"wiki");    //documents
 		}
 		else {
-			DatasetIdentifier ds = getDataset();
+			DatasetIdentifier ds = getStoreDataset();
 			platform.setBaseURI(identifiers.globalConceptBaseURI(ds));
 			
-			DatabaseGlobalConceptStore st = (DatabaseGlobalConceptStore) store; //global concepts
+			DatabaseGlobalConceptStore st = (DatabaseGlobalConceptStore) conceptStore; //global concepts
 			Corpus[] cc = st.getLanguages();
 			for (Corpus c: cc) {
 				platform.addNamespace(identifiers.localConceptBaseURI(c), c.getLanguage()); //local concepts
@@ -665,12 +664,12 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
 			}
 		}
 		
-		output = new RdfOutput<V, R, A, W>(identifiers, platform, w, getDataset());
+		output = new RdfOutput<V, R, A, W>(identifiers, platform, w, getStoreDataset());
 		output.startDocument();
 		
 		
 		if (isDatasetLocal()) {
-			DatabaseLocalConceptStore st = (DatabaseLocalConceptStore) store;
+			DatabaseLocalConceptStore st = (DatabaseLocalConceptStore) conceptStore;
 			LocalConceptProvider provider = new LocalConceptProvider(st.getCorpus(), CONCEPT_IDENTITY_FIELD); 
 			LocalConceptProvider other = new LocalConceptProvider(st.getCorpus(), CONCEPT_OTHER_FIELD);
 			R scheme = platform.newResource(WikiWordIdentifiers.base.toString(), identifiers.datasetLName(st.getDatasetIdentifier()));
@@ -680,7 +679,7 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
 			dumpConceptsLocal(st, provider);
 		}
 		else {
-			DatabaseGlobalConceptStore st = (DatabaseGlobalConceptStore) store;
+			DatabaseGlobalConceptStore st = (DatabaseGlobalConceptStore) conceptStore;
 			GlobalConceptProvider provider = new GlobalConceptProvider(st.getDatasetIdentifier(), CONCEPT_IDENTITY_FIELD); 
 			GlobalConceptProvider other = new GlobalConceptProvider(st.getDatasetIdentifier(), CONCEPT_OTHER_FIELD); 
 			R scheme = platform.newResource(WikiWordIdentifiers.base.toString(), identifiers.datasetLName(st.getDatasetIdentifier()));
@@ -941,7 +940,7 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordStore> {
 	}
 		
 	protected void dumpRelation(String name, String sql, String where, String rest, WikiWordStoreSchema db, String chunkTable, String chunkField, int factor, Processor<ResultSet> processor) throws PersistenceException {
-		DatabaseWikiWordConceptStore dbstore = ((DatabaseWikiWordConceptStore)store);
+		DatabaseWikiWordConceptStore dbstore = ((DatabaseWikiWordConceptStore)conceptStore);
 		DatabaseTable t = db.getTable(chunkTable);
 		
 		info("dumping relation: "+name+"; chunking on "+chunkTable+"."+chunkField);

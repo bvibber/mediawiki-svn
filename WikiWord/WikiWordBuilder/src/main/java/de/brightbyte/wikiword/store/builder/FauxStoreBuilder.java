@@ -7,11 +7,17 @@ import java.util.Map;
 import de.brightbyte.application.Agenda;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.DatasetIdentifier;
 
 public abstract class FauxStoreBuilder implements WikiWordStoreBuilder {
 	
 	protected int logLevel = LOG_INFO;
 	private Agenda agenda;
+	private DatasetIdentifier dataset;
+	
+	public FauxStoreBuilder(DatasetIdentifier dataset) {
+		this.dataset = dataset;
+	}
 
 	public void deleteDataAfter(int rcId, boolean inclusive) throws PersistenceException {
 		throw new UnsupportedOperationException();
@@ -33,8 +39,12 @@ public abstract class FauxStoreBuilder implements WikiWordStoreBuilder {
 		//noop
 	}
 
-	public void prepare() throws PersistenceException {
+	public void prepareImport() throws PersistenceException {
 		//noop
+	}
+	
+	public void finalizeImport() throws PersistenceException {
+		flush();
 	}
 
 	public void finish() throws PersistenceException {
@@ -92,5 +102,9 @@ public abstract class FauxStoreBuilder implements WikiWordStoreBuilder {
 		// noop
 	}
 
+
+	public DatasetIdentifier getDatasetIdentifier() {
+		return dataset;
+	}
 	
 }

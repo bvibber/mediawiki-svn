@@ -48,25 +48,25 @@ public class ConceptImporter extends AbstractImporter {
 	
 	@Override
 	public void prepare() throws PersistenceException {
-		store.prepare();
-		if (storeProperties) propertyStore.prepare();
-		if (storeFlatText) textStore.prepare();
+		store.prepareImport();
+		if (storeProperties) propertyStore.prepareImport();
+		if (storeFlatText) textStore.prepareImport();
 	}
 	
 	@Override
 	public void finish() throws PersistenceException {
 		if (beginTask("ConceptImporter.finish", "finishImport")) {
-			store.finishImport();
+			store.finalizeImport();
 			endTask("ConceptImporter.finish", "finishImport");
 		}
 		
 		if (beginTask("ConceptImporter.finish", "finishImport")) {
-			propertyStore.finishImport();
+			propertyStore.finalizeImport();
 			endTask("ConceptImporter.finish", "finishImport");
 		}
 		
 		if (beginTask("ConceptImporter.finish", "finishImport")) {
-			textStore.finishImport();
+			textStore.finalizeImport();
 			endTask("ConceptImporter.finish", "finishImport");
 		}
 		

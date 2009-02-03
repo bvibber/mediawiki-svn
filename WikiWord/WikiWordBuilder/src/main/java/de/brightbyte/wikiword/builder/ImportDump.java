@@ -111,9 +111,9 @@ public abstract class ImportDump<S extends WikiWordStoreBuilder> extends ImportA
 		if (args.isSet("showstats")) args.setOption("buildstats", true);
 						
 		section("-- dbstats --------------------------------------------------");
-		store.dumpTableStats(getLogOutput()); 
+		dumpTableStats(); 
 		
-		int w = store.getNumberOfWarnings(); //XXX: warnings per root-task!
+		int w = getNumberOfWarnings(); //XXX: warnings per root-task!
 		if (w==0) info("no warnings");
 		else warn("******* NOTE: "+w+" warnings collected! *******");
 	}

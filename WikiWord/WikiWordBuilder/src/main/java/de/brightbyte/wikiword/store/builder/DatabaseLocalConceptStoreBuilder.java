@@ -502,9 +502,9 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 
 	/**
 	 * @throws PersistenceException 
-	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#prepare()
+	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#prepareImport()
 	 */
-	public void prepare() throws PersistenceException, PersistenceException {
+	public void prepareImport() throws PersistenceException, PersistenceException {
 		if (getAgenda().beginTask("DatabaseLocalConceptStore.prepare", "prepare")) {
 			try {
 				database.disableKeys();
@@ -515,7 +515,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		}
 	}
 	
-	public void finishImport() throws PersistenceException {
+	public void finalizeImport() throws PersistenceException {
 		try {
 			flush();
 			if (beginTask("DatabaseLocalConceptStore.finishImport", "enableKeys")) {

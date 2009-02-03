@@ -15,6 +15,7 @@ import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ExtractionRule;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.model.LocalConcept;
@@ -99,6 +100,18 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		public boolean isComplete() throws PersistenceException {
 			return true;
 		}
+
+		public void finalizeImport() throws PersistenceException {
+			log("* finalizeImport *");			
+		}
+
+		public void prepareImport() throws PersistenceException {
+			log("* prepareImport *");
+		}
+		
+		public DatasetIdentifier getDatasetIdentifier() {
+			return dataset;
+		}
 		
 	}
 
@@ -108,6 +121,15 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* finishAliases *");
 		}
 
+
+		public void finalizeImport() throws PersistenceException {
+			log("* finalizeImport *");			
+		}
+
+		public void prepareImport() throws PersistenceException {
+			log("* prepareImport *");
+		}
+		
 		public void storeProperty(int resourceId, int conceptId, String concept, String property, String value) throws PersistenceException {
 			log("* storeProperty("+resourceId+", "+conceptId+", "+concept+", "+property+", "+value+") *");
 		}
@@ -176,10 +198,23 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			return null;
 		}
 		
+		public DatasetIdentifier getDatasetIdentifier() {
+			return dataset;
+		}
+		
 	}
 	
 	public class DebugStatisticsStoreBuilder implements StatisticsStoreBuilder {
 
+
+		public void finalizeImport() throws PersistenceException {
+			log("* finalizeImport *");			
+		}
+
+		public void prepareImport() throws PersistenceException {
+			log("* prepareImport *");
+		}
+		
 		public void buildStatistics() throws PersistenceException {
 			log("* buildStatistics *");
 		}
@@ -249,11 +284,24 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		public boolean isComplete() throws PersistenceException {
 			return true;
 		}
+		public DatasetIdentifier getDatasetIdentifier() {
+			return dataset;
+		}
+		
 	}
 
 	public class DebugConceptInfoStoreBuilder implements
 			ConceptInfoStoreBuilder<LocalConcept> {
 
+
+		public void finalizeImport() throws PersistenceException {
+			log("* finalizeImport *");			
+		}
+
+		public void prepareImport() throws PersistenceException {
+			log("* prepareImport *");
+		}
+		
 		public void buildConceptInfo() throws PersistenceException {
 			log("* buildConceptInfo *");
 		}
@@ -319,6 +367,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			return true;
 		}
 
+		public DatasetIdentifier getDatasetIdentifier() {
+			return dataset;
+		}
+		
 	}
 
 	public class DebugAgendaPersistor extends Agenda.TransientPersistor {
@@ -357,6 +409,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	protected int sectionCounter = 0;
 	
 	private Agenda agenda;
+	private DatasetIdentifier dataset = DatasetIdentifier.forName("DEBUG", "dummy");
 	
 	public DebugLocalConceptStoreBuilder(Output out) {
 		super();
@@ -411,7 +464,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		log("* open *");
 	}
 
-	public void prepare()  {
+	public void prepareImport()  {
 		log("* prepare *");
 	}
 
@@ -563,7 +616,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		log("* finishIdReferences *");
 	}
 
-	public void finishImport() throws PersistenceException {
+	public void finalizeImport() throws PersistenceException {
 		log("* finishImport *");
 	}
 
@@ -636,6 +689,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 	public int storeAbout(int resource, int concept, String conceptName) {
 		trace("+ storeAbout: resource = "+resource+", concept =  "+concept+", conceptName =  "+conceptName);
 		return -1;
+	}
+
+	public DatasetIdentifier getDatasetIdentifier() {
+		return dataset;
 	}
 	
 }

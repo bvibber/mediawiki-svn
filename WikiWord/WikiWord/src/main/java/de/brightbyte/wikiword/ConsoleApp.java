@@ -7,9 +7,11 @@ import java.util.List;
 
 import de.brightbyte.io.Prompt;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.store.WikiWordStore;
+import de.brightbyte.wikiword.model.WikiWordConcept;
+import de.brightbyte.wikiword.model.WikiWordConceptReference;
+import de.brightbyte.wikiword.store.WikiWordConceptStore;
 
-public abstract class ConsoleApp<S extends WikiWordStore> extends CliApp<S> {
+public abstract class ConsoleApp<C extends WikiWordConcept> extends CliApp< WikiWordConceptStore<C, WikiWordConceptReference<C>> > {
 
 	protected Prompt prompt;
 	

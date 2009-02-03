@@ -36,7 +36,7 @@ public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
 	}
 	
 	@Override
-	protected GlobalConceptStoreBuilder createStore(DataSource db) throws PersistenceException {
+	protected GlobalConceptStoreBuilder createStore(DataSource db) throws PersistenceException {...
 		try {
 			String lang = args.getStringOption("languages", null); 
 			Connection connection = null;

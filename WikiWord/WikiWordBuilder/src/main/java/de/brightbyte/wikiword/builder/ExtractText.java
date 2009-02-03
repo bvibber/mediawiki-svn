@@ -39,7 +39,7 @@ public class ExtractText extends ImportDump<TextStoreBuilder> {
 	}
 
 	@Override
-	protected TextStoreBuilder createStore() throws IOException, PersistenceException {
+	protected TextStoreBuilder createStore() throws IOException, PersistenceException {...
 		if (args.isSet("stream")) {
 			String n = args.getOption("stream", null);
 			OutputStream out;

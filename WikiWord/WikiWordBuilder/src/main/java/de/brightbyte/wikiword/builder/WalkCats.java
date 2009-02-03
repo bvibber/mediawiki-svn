@@ -22,7 +22,7 @@ public class WalkCats extends ImportApp<WikiWordConceptStoreBuilder> {
 	
 	@Override
 	protected void run() throws Exception {
-		DatabaseWikiWordConceptStoreBuilder st = ((DatabaseWikiWordConceptStoreBuilder)this.store);
+		DatabaseWikiWordConceptStoreBuilder st = ((DatabaseWikiWordConceptStoreBuilder)this.conceptStore);
 		
 		section("-- deleting cycles --------------------------------------------------");
 		long t = System.currentTimeMillis();

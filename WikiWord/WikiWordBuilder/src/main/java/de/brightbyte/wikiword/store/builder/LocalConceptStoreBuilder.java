@@ -76,7 +76,6 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 
 	public abstract void deleteDataAfter(int rcId, boolean inclusive) throws PersistenceException;
 	
-	public abstract void prepare() throws PersistenceException;
 
 	//public abstract Agenda getAgenda() throws PersistenceException;
 
@@ -88,7 +87,6 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 	
 	//public LogPoint getLastLogPoint() throws SQLException;
 	
-	public void finishImport() throws PersistenceException;
 	public void finishSections() throws PersistenceException;
 	public void finishBadLinks() throws PersistenceException;
 	public void finishMissingConcepts() throws PersistenceException;

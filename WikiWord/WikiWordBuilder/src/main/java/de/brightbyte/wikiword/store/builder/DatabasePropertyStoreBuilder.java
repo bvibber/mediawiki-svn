@@ -12,7 +12,7 @@ import de.brightbyte.wikiword.schema.ConceptStoreSchemas;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 
-public class DatabasePropertyStoreBuilder extends DatabaseLocalStoreBuilder implements PropertyStoreBuilder {
+public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilder implements PropertyStoreBuilder {
 
 	protected RelationTable propertyTable;
 	protected Inserter propertyInserter;

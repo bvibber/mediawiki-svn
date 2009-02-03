@@ -4,6 +4,7 @@ import java.util.Map;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.DatasetIdentifier;
 
 public interface WikiWordStore {
 	public abstract Map<String, ? extends Number> getTableStats()
@@ -21,4 +22,6 @@ public interface WikiWordStore {
 	//public abstract boolean isComplete(String app) throws PersistenceException;
 
 	public abstract boolean isComplete() throws PersistenceException;
+	
+	public DatasetIdentifier getDatasetIdentifier();
 }

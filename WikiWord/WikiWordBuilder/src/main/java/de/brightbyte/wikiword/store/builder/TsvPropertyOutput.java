@@ -10,6 +10,7 @@ import java.util.Date;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.schema.AliasScope;
 
@@ -24,11 +25,12 @@ public class TsvPropertyOutput extends FauxStoreBuilder implements PropertyStore
 	
 	//FIXME: use multiple TsvWriters
 	
-	public TsvPropertyOutput(Corpus corpus, OutputStream out, String enc) throws UnsupportedEncodingException {
-		this(corpus, new OutputStreamWriter(out, enc));
+	public TsvPropertyOutput(DatasetIdentifier dataset, Corpus corpus, OutputStream out, String enc) throws UnsupportedEncodingException {
+		this(dataset, corpus, new OutputStreamWriter(out, enc));
 	}
 
-	public TsvPropertyOutput(Corpus corpus, Writer out) {
+	public TsvPropertyOutput(DatasetIdentifier dataset, Corpus corpus, Writer out) {
+		super(dataset);
 		this.corpus = corpus;
 		this.out = out;
 	}

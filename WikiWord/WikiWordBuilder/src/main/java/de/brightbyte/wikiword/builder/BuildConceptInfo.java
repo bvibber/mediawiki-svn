@@ -28,7 +28,7 @@ public class BuildConceptInfo extends ImportApp<ConceptInfoStoreBuilder<? extend
 	
 	@Override
 	protected ConceptInfoStoreBuilder<? extends WikiWordConcept> createStore(DataSource db) throws PersistenceException {
-		return createConceptStoreBuilder(db).getConceptInfoStoreBuilder(); 
+		return createConceptStoreBuilder(db).getConceptInfoStoreBuilder(); ...
 	}	
 
 	@Override

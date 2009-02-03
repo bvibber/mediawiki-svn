@@ -27,7 +27,7 @@ public class BuildStatistics extends ImportApp<StatisticsStoreBuilder> {
 	@Override
 	protected StatisticsStoreBuilder createStore(DataSource db) throws PersistenceException {
 		conceptStore = createConceptStoreBuilder(db);
-		return conceptStore.getStatisticsStoreBuilder();
+		return conceptStore.getStatisticsStoreBuilder();...
 	}
 
 	@Override

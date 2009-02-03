@@ -477,5 +477,13 @@ public class DatabaseWikiWordStoreBuilder
 		
 		return executeChunkedUpdate("resolveRedirects", table.getName()+"."+relNameField+"+"+relIdField, sql, where, aliasTable, "source", chunkFactor);
 	}
+
+	public void finalizeImport() throws PersistenceException {
+		flush();
+	}
+
+	public void prepareImport() throws PersistenceException {
+		//noop
+	}
 	
 }
