@@ -1,20 +1,32 @@
 package de.brightbyte.wikiword.builder;
 
-import javax.sql.DataSource;
+import java.io.IOException;
 
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
+import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.ConceptInfoStoreBuilder;
+import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
 /**
  * This is the primary entry point to the first phase of a WikiWord analysis.
  * ImportDump can be invoked as a standalone program, use --help as a
  * command line parameter for usage information.
  */
-public class BuildConceptInfo extends ImportApp<ConceptInfoStoreBuilder<? extends WikiWordConcept>> {
+public class BuildConceptInfo extends ImportApp<WikiWordConceptStoreBuilder<? extends WikiWordConcept>> {
 
+	protected ConceptInfoStoreBuilder infoStore;
+	
 	public BuildConceptInfo() {
 		super("BuildConceptInfo", true, true);
+	}
+	
+	@Override
+	protected void createStores(WikiWordStoreFactory<? extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> factory) throws IOException, PersistenceException {
+		super.createStores(factory);
+		
+		infoStore = conceptStore.getConceptInfoStoreBuilder();
+		registerStore(infoStore);
 	}
 
 	@Override
@@ -27,14 +39,9 @@ public class BuildConceptInfo extends ImportApp<ConceptInfoStoreBuilder<? extend
 	}
 	
 	@Override
-	protected ConceptInfoStoreBuilder<? extends WikiWordConcept> createStore(DataSource db) throws PersistenceException {
-		return createConceptStoreBuilder(db).getConceptInfoStoreBuilder(); ...
-	}	
-
-	@Override
 	protected void run() throws Exception {
 		section("-- build info --------------------------------------------------");
-		this.store.buildConceptInfo();
+		this.infoStore.buildConceptInfo();
 	}	
 	
 	public static void main(String[] argv) throws Exception {

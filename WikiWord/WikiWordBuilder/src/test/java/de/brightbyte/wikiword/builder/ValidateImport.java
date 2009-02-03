@@ -24,7 +24,8 @@ import de.brightbyte.io.Output;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.CliApp;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.store.WikiWordStore;
+import de.brightbyte.wikiword.model.WikiWordConcept;
+import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
 public class ValidateImport {
 	
@@ -69,7 +70,7 @@ public class ValidateImport {
 	protected String dbcheck = "--dummy-x"; //FIXME: set to "--dbcheck" to run consistency checks. but thes FAIL SPURIOUSLY! Something is wrong with db state. 
 	
 	protected String[] languages;
-	
+
 	protected URL getResource(String name) {
 		if (baseDir!=null) {
 			File f = new File(baseDir, name);
@@ -138,7 +139,7 @@ public class ValidateImport {
 		out.println(msg);
 	}
 
-	protected boolean launchApp(ImportApp<? extends WikiWordStore> app, ValidationMonitor monitor, String... argv) throws Exception {
+	protected boolean launchApp(ImportApp<? extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> app, ValidationMonitor monitor, String... argv) throws Exception {
 		echo("");
 		echo("============================================================");
 		echo("== TESTING "+app.getClass(), (Object[])argv);
@@ -148,7 +149,8 @@ public class ValidateImport {
 		app.setKeepAlive(true);
 		app.setAgendaMonitor(monitor);
 		app.setTweaks(tweaks);
-		app.setDataSource(dataSource);
+		//app.setConceptStoreFactory(conceptStoreFactory);
+		//FIXME: somehow tell it what DB to use!
 		app.setOperation(ImportApp.Operation.FRESH);
 		app.launch(argv);
 		
@@ -240,7 +242,7 @@ public class ValidateImport {
 		
 		//--------------------
 		tweaks.setTweak("dbstore.prefix", args.getOption("prefix", "TEST"));
-
+		
 		File dbf = CliApp.findConfigFile(args, "db");
 
 		if (dbf!=null) echo("Using database connection specified in "+dbf);

@@ -3,7 +3,7 @@ package de.brightbyte.wikiword.builder;
 import de.brightbyte.wikiword.store.builder.DatabaseWikiWordConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
-public class WalkCats extends ImportApp<WikiWordConceptStoreBuilder> {
+public class WalkCats extends ImportApp {
 
 	public WalkCats() {
 		super(null, true, true);

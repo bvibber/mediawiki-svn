@@ -1,15 +1,8 @@
 package de.brightbyte.wikiword.builder;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Arrays;
 
-import javax.sql.DataSource;
-
-import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
-import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
-import de.brightbyte.wikiword.store.builder.DatabaseGlobalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.GlobalConceptStoreBuilder;
 
 /**
@@ -17,7 +10,7 @@ import de.brightbyte.wikiword.store.builder.GlobalConceptStoreBuilder;
  * ImportDump can be invoked as a standalone program, use --help as a
  * command line parameter for usage information.
  */
-public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
+public class BuildThesaurus extends ImportApp {
 
 	private Corpus[] languages;
 
@@ -35,7 +28,7 @@ public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
 		args.declare("languages", null, true, String.class, "languages to combine into the thesaurus. If omitted, all available data-sets will be used.");
 	}
 	
-	@Override
+	/*@Override
 	protected GlobalConceptStoreBuilder createStore(DataSource db) throws PersistenceException {...
 		try {
 			String lang = args.getStringOption("languages", null); 
@@ -67,7 +60,7 @@ public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}
-	}
+	}*/
 	
 
 	@Override
@@ -76,13 +69,13 @@ public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
 		info("Using languages: "+Arrays.toString(languages));
 		
 		if (agenda.beginTask("BuildThesaurus.run", "importConcepts")) {
-			((GlobalConceptStoreBuilder)this.store).importConcepts();
+			((GlobalConceptStoreBuilder)this.conceptStore).importConcepts();
 			agenda.endTask("BuildThesaurus.run", "importConcepts");
 		}
 		
 		section("-- buildGlobalConcepts --------------------------------------------------");
 		if (agenda.beginTask("BuildThesaurus.run", "buildGlobalConcepts")) {
-			((GlobalConceptStoreBuilder)this.store).buildGlobalConcepts();
+			((GlobalConceptStoreBuilder)this.conceptStore).buildGlobalConcepts();
 			agenda.endTask("BuildThesaurus.run", "buildGlobalConcepts");
 		}
 
@@ -95,7 +88,7 @@ public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
 		*/
 
 		section("-- statistics --------------------------------------------------");
-		this.store.dumpTableStats(getLogOutput());
+		dumpTableStats();
 	}	
 	
 	public static void main(String[] argv) throws Exception {

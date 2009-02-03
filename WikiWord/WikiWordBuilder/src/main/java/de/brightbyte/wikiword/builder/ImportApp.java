@@ -5,14 +5,14 @@ import static de.brightbyte.util.LogLevels.LOG_INFO;
 
 import java.io.IOException;
 
-import javax.sql.DataSource;
-
 import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Agenda.Monitor;
 import de.brightbyte.io.Prompt;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.CliApp;
 import de.brightbyte.wikiword.model.WikiWordConcept;
+import de.brightbyte.wikiword.store.WikiWordStore;
+import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.DatabaseConceptStoreBuilders;
 import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
@@ -20,7 +20,7 @@ import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 /**
  * This is the base class for entry points to WikiWord.
  */
-public abstract class ImportApp<S extends WikiWordStoreBuilder> extends CliApp<S> {
+public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> extends CliApp<S> {
 	
 	protected static enum Operation {
 		FRESH,
@@ -41,8 +41,10 @@ public abstract class ImportApp<S extends WikiWordStoreBuilder> extends CliApp<S
 		this.useAgenda = agendaTask != null;
 	}
 		
-	protected WikiWordConceptStoreBuilder<? extends WikiWordConcept> createConceptStoreBuilder(DataSource db) throws PersistenceException {
-		return DatabaseConceptStoreBuilders.createConceptStoreBuilder(db, dataset, tweaks, allowLocalStore, allowGlobalStore);
+	@SuppressWarnings("unchecked")
+	@Override
+	protected WikiWordStoreFactory<S> createConceptStoreFactory() throws IOException, PersistenceException {
+		return new DatabaseConceptStoreBuilders.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, true, true);
 	}
 
 	@Override
@@ -65,19 +67,6 @@ public abstract class ImportApp<S extends WikiWordStoreBuilder> extends CliApp<S
 			args.declare("continue", null, false, Boolean.class, "continue aborted run");
 			args.declare("append", null, false, Boolean.class, "append more data to complete database");
 		}
-	}
-	
-	@Override
-	protected S createStore() throws IOException, PersistenceException {
-		S store = super.createStore();
-		store.setLogLevel(logLevel);
-		return store;
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	protected S createStore(DataSource db) throws PersistenceException {
-		return (S)createConceptStoreBuilder(db);
 	}
 	
 	public void setAgendaMonitor(Agenda.Monitor monitor) {
@@ -240,6 +229,24 @@ public abstract class ImportApp<S extends WikiWordStoreBuilder> extends CliApp<S
 		}
 		*/
 	}
+	
+	protected void initializeStores(boolean purge, boolean dropWarnings) throws PersistenceException {
+		for (WikiWordStore store: stores) {
+			((WikiWordStoreBuilder)store).initialize(purge, dropWarnings); //XXX: ugly cast!
+		}		
+	}
+
+	protected void optimizeStores() throws PersistenceException {
+		for (WikiWordStore store: stores) {
+			((WikiWordStoreBuilder)store).optimize(); //XXX: ugly cast!
+		}		
+	}
+
+	protected void checkStores() throws PersistenceException {
+		for (WikiWordStore store: stores) {
+			((WikiWordStoreBuilder)store).checkConsistency(); //XXX: ugly cast!
+		}		
+	}
 
 	@Override
 	protected void execute() throws Exception {
@@ -250,17 +257,16 @@ public abstract class ImportApp<S extends WikiWordStoreBuilder> extends CliApp<S
 		
 		if (!noimport) {
 			if (useAgenda) {
-				agenda = store.getAgenda();
+				agenda = conceptStore.getAgenda();
 				initAgenda(agenda);
 			}
 
 			if (operation == Operation.FRESH) {
 				section("-- purge --------------------------------------------------");
-				store.initialize(true, getDropWarnings()); //FIXME: don't purge warning always... but when?!
-				...all stores...
+				initializeStores(true, getDropWarnings()); //FIXME: don't purge warning always... but when?!
 			}
 			else {
-				store.initialize(false, getDropWarnings()); 
+				initializeStores(false, getDropWarnings()); 
 			}
 
 			if (!useAgenda || agenda.beginTask("ImportApp.launch", agendaTask)) {
@@ -271,35 +277,31 @@ public abstract class ImportApp<S extends WikiWordStoreBuilder> extends CliApp<S
 
         if (dbstats) {
             section("-- dbstats --------------------------------------------------");
-            store.dumpTableStats(out);
+            dumpTableStats();
 
-            int w = store.getNumberOfWarnings();
+            int w = conceptStore.getNumberOfWarnings();
             if (w==0) info("no warnings");
             else warn("WARNINGS: "+w);
         }
 
         if (dbcheck) {
             section("-- check --------------------------------------------------");
-            store.checkConsistency();
+            checkStores();
             info("OK.");
 
-            int w = store.getNumberOfWarnings();
+            int w = conceptStore.getNumberOfWarnings();
             if (w==0) info("no warnings");
             else warn("WARNINGS: "+w);
         }
 
         if (optimize) {
             section("-- optimize --------------------------------------------------");
-            store.optimize();
+            optimizeStores();
         }
 	}
 
 	protected boolean getDropWarnings() {
 		return false;
-	}
-
-	public void checkConsistency() throws PersistenceException {
-		store.checkConsistency();
 	}
 
 	public int getExitCode() {

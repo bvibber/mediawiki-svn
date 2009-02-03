@@ -11,8 +11,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import javax.sql.DataSource;
-
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.rdf.RdfException;
 import de.brightbyte.util.PersistenceException;
@@ -25,12 +23,13 @@ import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.rdf.RdfOutput;
+import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.GlobalConceptStore;
 import de.brightbyte.wikiword.store.LocalConceptStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
-import de.brightbyte.wikiword.store.WikiWordStore;
+import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 
-public class QueryConsole extends ConsoleApp<WikiWordConcept> {
+public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 
 	public QueryConsole() {
 		super(true, true);
@@ -321,11 +320,11 @@ public class QueryConsole extends ConsoleApp<WikiWordConcept> {
 	}
 	
 	protected GlobalConceptStore getGlobalConceptStore() {
-		return (GlobalConceptStore)conceptStore;
+		return (GlobalConceptStore)(Object)conceptStore; //XXX: FUGLY! generic my ass.
 	}
 
 	protected LocalConceptStore getLocalConceptStore() {
-		return (LocalConceptStore)conceptStore;
+		return (LocalConceptStore)(Object)conceptStore; //XXX: FUGLY! generic my ass.
 	}
 
 	public void dumpStats() throws PersistenceException {
@@ -391,4 +390,8 @@ public class QueryConsole extends ConsoleApp<WikiWordConcept> {
 		q.launch(argv);
 	}
 
+	@Override
+	protected WikiWordStoreFactory<WikiWordConceptStore> createConceptStoreFactory() throws IOException, PersistenceException {
+		return new DatabaseConceptStores.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, true, true);
+	}
 }

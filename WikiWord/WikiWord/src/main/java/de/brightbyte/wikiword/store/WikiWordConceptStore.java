@@ -7,7 +7,7 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
 
-public interface WikiWordConceptStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> extends WikiWordStore {
+public interface WikiWordConceptStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> extends WikiWordConceptStoreBase {
 
 	public DataSet<? extends R> listAllConcepts() throws PersistenceException;
 	

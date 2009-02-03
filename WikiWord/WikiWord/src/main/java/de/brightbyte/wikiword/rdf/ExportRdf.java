@@ -29,15 +29,19 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ExtractionRule;
+import de.brightbyte.wikiword.model.WikiWordConcept;
+import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordStoreSchema;
+import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.DatabaseGlobalConceptStore;
 import de.brightbyte.wikiword.store.DatabaseLocalConceptStore;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
+import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseStatisticsStore;
 
 public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordConceptStore> {
@@ -959,6 +963,12 @@ public class ExportRdf<V, R extends V, A, W> extends CliApp<WikiWordConceptStore
 
 	public void setPlainSkos(boolean plainSkos) {
 		this.plainSkos = plainSkos;
+	}
+	
+
+	@Override
+	protected WikiWordStoreFactory<WikiWordConceptStore> createConceptStoreFactory() throws IOException, PersistenceException {
+		return new DatabaseConceptStores.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, true, true);
 	}
 	
 	public static void main(String[] argv) throws Exception {

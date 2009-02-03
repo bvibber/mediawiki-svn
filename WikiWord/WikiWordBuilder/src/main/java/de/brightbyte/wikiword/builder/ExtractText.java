@@ -1,30 +1,33 @@
 package de.brightbyte.wikiword.builder;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.sql.SQLException;
-
-import javax.sql.DataSource;
 
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.store.builder.DatabaseTextStoreBuilder;
-import de.brightbyte.wikiword.store.builder.PlainTextOutput;
+import de.brightbyte.wikiword.store.WikiWordStoreFactory;
+import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
-public class ExtractText extends ImportDump<TextStoreBuilder> {
+public class ExtractText extends ImportDump<LocalConceptStoreBuilder> {
+
+	private TextStoreBuilder textStore;
 
 	public ExtractText() {
 		super("ExtractText");
 	}
 
+
 	@Override
-	protected TextImporter newImporter(WikiTextAnalyzer analyzer, TextStoreBuilder store, TweakSet tweaks) {
-		return new TextImporter(analyzer, (TextStoreBuilder)store, tweaks);
+	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
+		super.createStores(factory);
+		
+		textStore = conceptStore.getTextStoreBuilder();
+		registerStore(textStore);
+	}
+
+	@Override
+	protected TextImporter newImporter(WikiTextAnalyzer analyzer) {
+		return new TextImporter(analyzer, textStore, tweaks);
 	}
 	
 	@Override
@@ -38,7 +41,7 @@ public class ExtractText extends ImportDump<TextStoreBuilder> {
 			"guessed from, the <wiki-or-dump> parameter)");
 	}
 
-	@Override
+	/*@Override
 	protected TextStoreBuilder createStore() throws IOException, PersistenceException {...
 		if (args.isSet("stream")) {
 			String n = args.getOption("stream", null);
@@ -67,7 +70,7 @@ public class ExtractText extends ImportDump<TextStoreBuilder> {
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}
-	}
+	}*/
 	
 	public static void main(String[] argv) throws Exception {
 		ExtractText app = new ExtractText();

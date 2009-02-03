@@ -1,24 +1,32 @@
 package de.brightbyte.wikiword.builder;
 
-import java.sql.SQLException;
-
-import javax.sql.DataSource;
+import java.io.IOException;
 
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.store.builder.DatabaseLocalConceptStoreBuilder;
+import de.brightbyte.wikiword.store.WikiWordStoreFactory;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
+import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
 
 public class ExtractProperties extends ImportDump<LocalConceptStoreBuilder> {
+
+	private PropertyStoreBuilder propertyStore;
 
 	public ExtractProperties() {
 		super("ExtractProperties");
 	}
 
 	@Override
-	protected PropertyImporter newImporter(WikiTextAnalyzer analyzer, LocalConceptStoreBuilder store, TweakSet tweaks) throws PersistenceException {
-		return new PropertyImporter(analyzer, store, tweaks);
+	protected void createStores(WikiWordStoreFactory<? extends LocalConceptStoreBuilder> factory) throws IOException, PersistenceException {
+		super.createStores(factory);
+		
+		propertyStore = conceptStore.getPropertyStoreBuilder();
+		registerStore(propertyStore);
+	}
+	
+	@Override
+	protected PropertyImporter newImporter(WikiTextAnalyzer analyzer) throws PersistenceException {
+		return new PropertyImporter(analyzer, conceptStore, tweaks);
 	}
 	
 	@Override
@@ -56,15 +64,6 @@ public class ExtractProperties extends ImportDump<LocalConceptStoreBuilder> {
 		}
 	}
 	*/
-	
-	@Override
-	protected LocalConceptStoreBuilder createStore(DataSource db) throws PersistenceException  {
-		try {
-			return new DatabaseLocalConceptStoreBuilder(getCorpus(), db, tweaks);
-		} catch (SQLException e) {
-			throw new PersistenceException(e);
-		}
-	}
 	
 	public static void main(String[] argv) throws Exception {
 		ExtractProperties app = new ExtractProperties();

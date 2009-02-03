@@ -5,11 +5,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
+import de.brightbyte.wikiword.model.WikiWordConcept;
+import de.brightbyte.wikiword.store.builder.WikiWordConceptStoreBuilder;
 
-public abstract class ImportDump<S extends WikiWordStoreBuilder> extends ImportApp<S> {
+public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends WikiWordConcept>> extends ImportApp<S> {
 
 	public ImportDump(String agendaTask) {
 		super(agendaTask, false, true);
@@ -62,7 +62,7 @@ public abstract class ImportDump<S extends WikiWordStoreBuilder> extends ImportA
 		*/
 
 		WikiTextAnalyzer analyzer = WikiTextAnalyzer.getWikiTextAnalyzer(getCorpus(), tweaks); 
-		WikiWordImporter importer = newImporter(analyzer, store, tweaks);
+		WikiWordImporter importer = newImporter(analyzer);
 		importer.setLogOutput(getLogOutput());
 		importer.configure(args);
 		
@@ -113,7 +113,7 @@ public abstract class ImportDump<S extends WikiWordStoreBuilder> extends ImportA
 		section("-- dbstats --------------------------------------------------");
 		dumpTableStats(); 
 		
-		int w = getNumberOfWarnings(); //XXX: warnings per root-task!
+		int w = conceptStore.getNumberOfWarnings(); //XXX: warnings per root-task!
 		if (w==0) info("no warnings");
 		else warn("******* NOTE: "+w+" warnings collected! *******");
 	}
@@ -122,6 +122,6 @@ public abstract class ImportDump<S extends WikiWordStoreBuilder> extends ImportA
 		//noop
 	}
 
-	protected abstract WikiWordImporter newImporter(WikiTextAnalyzer analyzer, S store, TweakSet tweaks) throws PersistenceException;
+	protected abstract WikiWordImporter newImporter(WikiTextAnalyzer analyzer) throws PersistenceException;
 
 }
