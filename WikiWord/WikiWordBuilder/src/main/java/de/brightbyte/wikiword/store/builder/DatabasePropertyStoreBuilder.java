@@ -2,13 +2,15 @@ package de.brightbyte.wikiword.store.builder;
 
 import java.sql.SQLException;
 
+import com.mysql.jdbc.Connection;
+
+import de.brightbyte.application.Agenda;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.schema.AliasScope;
-import de.brightbyte.wikiword.schema.ConceptStoreSchemas;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 
@@ -18,59 +20,24 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 	protected Inserter propertyInserter;
 	private LocalConceptStoreSchema conceptStoreSchema;
 
-	/**
-	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus
-	 * into the database defined by the DatabaseConnectionInfo.
-	 * 
-	 * @param corpus the Corpus from which the data is extracted. 
-	 *        Used to determin the table names (from Corpus.getDbPrefix) and to generate URIs.
-	 * @param dbInfo database connection info, used to connect to the database
-	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
-	 * @throws PersistenceException 
-	 */
-	/*public DatabasePropertyStoreBuilder(Corpus corpus, DataSource dbInfo, TweakSet tweaks) throws SQLException, PersistenceException {
-		this(new PropertyStoreSchema(corpus, dbInfo, tweaks, true), tweaks);
-	}*/
-	
-	/**
-	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus
-	 * into the database accessed by the given database connection.
-	 * 
-	 * @param corpus the Corpus from which the data is extracted. 
-	 *        Used to determin the table names (from Corpus.getDbPrefix) and to generate URIs.
-	 * @param db a database connection
-	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
-	 * @throws PersistenceException 
-	 */
-	/*public DatabasePropertyStoreBuilder(Corpus corpus, Connection db, TweakSet tweaks) throws SQLException, PersistenceException {
-		this(new PropertyStoreSchema(corpus, db, tweaks, true), tweaks);
-	}*/
+	public DatabasePropertyStoreBuilder(Corpus corpus, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
+		this(new LocalConceptStoreSchema(corpus, connection, tweaks, true), 
+				new PropertyStoreSchema(corpus, connection, tweaks, true), 
+				tweaks, null);
+	}
 	
 	public DatabasePropertyStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException, PersistenceException {
-		this(conceptStore, 
+		this(new LocalConceptStoreSchema(conceptStore.getCorpus(), 
+						conceptStore.getDatabaseAccess().getConnection(), 
+						tweaks, true), 
 				new PropertyStoreSchema(conceptStore.getCorpus(), 
-								conceptStore.getDatabaseAccess().getConnection(), 
-								tweaks, true), 
-			tweaks);
+						conceptStore.getDatabaseAccess().getConnection(), 
+						tweaks, true), 
+				tweaks,
+				conceptStore.getAgenda());
 	}
-
-	/**
-	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus
-	 * into the database represented by the DatabaseSchema.
-	 * 
-	 * @param corpus the Corpus from which the data is extracted. 
-	 *        Used to determin the table names (from Corpus.getDbPrefix) and to generate URIs.
-	 * @param db empty DatabaseSchema, wrapping a database connection. Will be configured with the appropriate table defitions
-	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
-	 * @throws SQLException 
-	 * @throws PersistenceException 
-	 */
-	/*protected DatabasePropertyStoreBuilder(PropertyStoreSchema database, TweakSet tweaks) throws SQLException, PersistenceException {
-		this( new DatabaseLocalConceptStoreBuilder(database.getCorpus(), database.getConnection(), tweaks),
-				database, tweaks);
-	}*/
 	
-	protected DatabasePropertyStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, PropertyStoreSchema database, TweakSet tweaks) throws SQLException, PersistenceException {
+	protected DatabasePropertyStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, PropertyStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
 		super(database, tweaks);
 
 		//this.conceptStore = conceptStore;
@@ -78,11 +45,8 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		this.propertyInserter = configureTable("property", 128, 3*32);
 		this.propertyTable =  (RelationTable)propertyInserter.getTable();
 		
-		this.conceptStoreSchema = new LocalConceptStoreSchema(conceptStore.getCorpus(), 
-				conceptStore.getDatabaseAccess().getConnection(), 
-				tweaks, true);
-		
-		this.agenda = conceptStore.getAgenda();
+		this.conceptStoreSchema = conceptStoreSchema;
+		this.agenda = agenda;
 	}	
 
 	@Override

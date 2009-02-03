@@ -60,12 +60,12 @@ public class ConceptImporter extends AbstractImporter {
 			endTask("ConceptImporter.finish", "finishImport");
 		}
 		
-		if (beginTask("ConceptImporter.finish", "finishImport")) {
+		if (storeProperties && beginTask("ConceptImporter.finish", "finishImport")) {
 			propertyStore.finalizeImport();
 			endTask("ConceptImporter.finish", "finishImport");
 		}
 		
-		if (beginTask("ConceptImporter.finish", "finishImport")) {
+		if (storeFlatText && beginTask("ConceptImporter.finish", "finishImport")) {
 			textStore.finalizeImport();
 			endTask("ConceptImporter.finish", "finishImport");
 		}

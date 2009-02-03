@@ -3,8 +3,7 @@ package de.brightbyte.wikiword.store.builder;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import javax.sql.DataSource;
-
+import de.brightbyte.application.Agenda;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.util.PersistenceException;
@@ -32,52 +31,28 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 	protected Inserter plainTextInserter;
 	protected Inserter rawTextInserter;
 	
-	public DatabaseTextStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException {
-		this(new TextStoreSchema(conceptStore.getCorpus(), 
-				conceptStore.getDatabaseAccess().getConnection(), tweaks, true), tweaks);
-	}
-
-
-	/**
-	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus
-	 * into the database defined by the DatabaseConnectionInfo.
-	 * 
-	 * @param corpus the Corpus from which the data is extracted. 
-	 *        Used to determin the table names (from Corpus.getDbPrefix) and to generate URIs.
-	 * @param dbInfo database connection info, used to connect to the database
-	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
-	 */
-	public DatabaseTextStoreBuilder(Corpus corpus, DataSource dbInfo, TweakSet tweaks) throws SQLException {
-		this(new TextStoreSchema(corpus, dbInfo, tweaks, true), tweaks);
+	public DatabaseTextStoreBuilder(Corpus corpus, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
+		this(new LocalConceptStoreSchema(corpus, connection, tweaks, true), 
+				new TextStoreSchema(corpus, connection, tweaks, true), 
+				tweaks, null);
 	}
 	
-	/**
-	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus
-	 * into the database accessed by the given database connection.
-	 * 
-	 * @param corpus the Corpus from which the data is extracted. 
-	 *        Used to determin the table names (from Corpus.getDbPrefix) and to generate URIs.
-	 * @param db a database connection
-	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
-	 */
-	public DatabaseTextStoreBuilder(Corpus corpus, Connection db, TweakSet tweaks) throws SQLException {
-		this(new TextStoreSchema(corpus, db, tweaks, true), tweaks);
+	public DatabaseTextStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException, PersistenceException {
+		this(new LocalConceptStoreSchema(conceptStore.getCorpus(), 
+						conceptStore.getDatabaseAccess().getConnection(), 
+						tweaks, true), 
+				new TextStoreSchema(conceptStore.getCorpus(), 
+						conceptStore.getDatabaseAccess().getConnection(), 
+						tweaks, true), 
+				tweaks,
+				conceptStore.getAgenda());
 	}
 	
-	/**
-	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus
-	 * into the database represented by the DatabaseSchema.
-	 * 
-	 * @param corpus the Corpus from which the data is extracted. 
-	 *        Used to determin the table names (from Corpus.getDbPrefix) and to generate URIs.
-	 * @param db empty DatabaseSchema, wrapping a database connection. Will be configured with the appropriate table defitions
-	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
-	 * @throws SQLException 
-	 */
-	protected DatabaseTextStoreBuilder(TextStoreSchema database, TweakSet tweaks) throws SQLException {
+	protected DatabaseTextStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, TextStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
 		super(database, tweaks);
 		
 		localConceptDatabase = new LocalConceptStoreSchema(database.getCorpus(), database.getConnection(), tweaks, false);
+		this.agenda = agenda;
 		
 		//XXX: wen don't need inserters, really...
 		plainTextInserter = configureTable("plaintext", 32, 8*1024);
