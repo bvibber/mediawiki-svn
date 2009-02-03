@@ -21,10 +21,14 @@ require_once( 'maintenance_util.inc.php' );
 if ( count( $args ) == 0 || isset ( $options['help'] ) ) {
 	print '
 USAGE
- php video_thumb_insert.php stream_name interval
+ php video_thumb_insert.php stream_name interval [options]
 
-EXAMPLE we get a frame every 5 seconds from input file stream.mpeg: 
- video2image2mvwiki.php stream_name stream.mpeg2 [5]
+EXAMPLE" we get a frame every 5 seconds from input file stream.mpeg: 
+ video2image2mvwiki.php stream_name [options] 
+
+OPTIONS:
+	--interval 		 	@default 5 seconds
+	--overwrite_image  	@default no overwrite; if set will  force image output 
 
 DURATION is scraped from ffmpeg
 
@@ -35,17 +39,20 @@ exit();
 
 }
 
-
 if(isset($args[0])){
 	$stream_name = $args[0];
 }else{
 	die('no stream name provided'."\n");	
 }
+//default options:
+$interval = 5;
+$overwrite_image=false;
 
-if(isset($args[1])){
-	$interval = $args[1];
-}else{
-	$interval = 5;
+if(isset($options['interval'])){
+	$interval = $options['$interval'];
+}
+if(isset($options['overwrite_image'])){
+	$overwrite_image=true;
 }
 $workingdir = '/video/metavid/raw_mpeg2';
 
@@ -109,8 +116,13 @@ fclose($fh);
 $dbw = $dbr = wfGetDB( DB_MASTER );
 for ( $i = 0; $i < $duration; $i += $interval ) {
   //only run the ffmpeg cmd if we have to: 
-  if(!is_file("{$filedir}/{$i}.jpg"))
+  if(!is_file("{$filedir}/{$i}.jpg") || $overwrite_image){
+  	if( is_file("{$filedir}/{$i}.jpg") ){
+  		print "overwriting image: {$i}.jpg\n";
+  		shell_exec("rm {$filedir}/{$i}.jpg");
+  	}
   	shell_exec( "ffmpeg -ss $i -i {$filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -y {$filedir}/{$i}.jpg 2>&1" );
+  }
   
   if(is_file("{$filedir}/{$i}.jpg")){
 	//insert the image into the db:

@@ -44,10 +44,12 @@ function do_stream_date_check(){
 	if ( $dbr->numRows( $result ) == 0 )die("do_stream_file_check: no streams found");
 	
 	while ( $stream = $dbr->fetchObject( $result ) ) {
-		$sdate = split('_', $stream->name);						    		
-		$sd = split('-',$sdate[count($sdate)-1]);
-		if( count($sd) != 3 )
-			continue;                            
+		preg_match("/([0-9]+-[0-9]+-[0-9]+)/", $stream->name, $matches);						    			
+		if( ! isset( $matches[1] ) ){
+			print "no date found in {$stream->name}\n";
+			continue;             
+		}               
+		$sd = explode('-',$matches[1]);
 		$sdate = mktime( 9, 0, 0, $sd[0], $sd[1], intval('20'.$sd[2]) );		
 		if( date('d-y', $stream->date_start_time) != date('d-y',$sdate) ) {
 			//print "should update date: " . $stream->date_start_time . ' to '.  $sdate . ' for ' . $stream->name . "\n";
@@ -656,9 +658,9 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		$mapk = null;
 		
 		//do sunlight api query:
-		global  $mvSunlightAPIKey;
+		global  $edSunlightAPIKey;
 		$sulightData=array();
-		$req_url = 'http://services.sunlightlabs.com/api/legislators.getList.xml?govtrack_id='.$person->gov_track_id.'&apikey='.$mvSunlightAPIKey;
+		$req_url = 'http://services.sunlightlabs.com/api/legislators.getList.xml?govtrack_id='.$person->gov_track_id.'&apikey='.$edSunlightAPIKey;
 		$raw_sunlight_xml = $mvScrape->doRequest($req_url);
 		$xml_parser = xml_parser_create( 'UTF-8' ); // UTF-8 or ISO-8859-1
 		xml_parser_set_option( $xml_parser, XML_OPTION_CASE_FOLDING, 0 );
