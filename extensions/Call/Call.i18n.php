@@ -800,6 +800,31 @@ $messages['tg-cyrl'] = array(
 	'call-save-success' => 'Матни зерин ба саҳифа <big>[[$1]]</big> захира шуд.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'call' => 'Tawagin',
+	'call-desc' => "Lumikha ng isang sangguniang kawing (''hyperlink'') sa isang suleras (o sa isang karaniwang pahina ng wiki) na may pagpasa ng parametro.
+Magagamit sa guhit ng utos ng pangtingin (''browser'') o sa loob ng isang teksto ng wiki.",
+	'call-text' => "Ang karugtong ng Pagtawag ay may inaasahang isang pahina ng wiki at mga parametro (na hindi naman talaga kinakailangang mayroon) para sa pahinang iyon bilang isang pangangatwiran.
+
+Halimbawa 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Halimbawa 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+Halimbawa 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Halimbawa 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
+
+Tatawagin ng <i>karugtong ng Pagtawag</i> ang isang ibinigay na pahina at magpapasa ng mga parametro.<br />
+Makikita mo ang mga nilalaman ng tinawag na pahina at ang pamagat nito subalit ang 'uri' nito ay magiging para sa isang natatanging pahina, iyan ay ang katulad ng isang pahinang hindi maaaring baguhin.<br />Maaaring maging magkakaiba ang mga nilalaman na makikita mo ayon sa halaga ng mga parametrong ipinasa mo.
+
+Magagamit ang <i>karugtong ng Pagtawag</i> sa pagbubuo ng nakapagpapasigla sa pakikipag-ugnayan o inter-aktibong mga sopwer o aplikasyong kasama sa MediaWiki.<br />
+Bilang halimbawa, tingnan ang <a href='http://semeb.com/dpldemo/Template:Catlist'>ang GUI ng DPL </a> ..<br />
+Kung sakaling may mga suliranin, maaari mong subukan ang <b>Special:Call/DebuG</b>",
+	'call-save' => "Ang kinalabasan ng pagtawag na ito ay sasagipin sa isang pahinang tinatawag na ''$1''.",
+	'call-save-success' => 'Ang sumusunod na teksto ay sinagip na sa pahinang <big>[[$1]]</big>.',
+	'call-save-failed' => 'Ang sumusunod na teksto ay HINDI nasagip sa pahinang <big>[[$1]]</big> dahil umiiral na ang pahinang iyan.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

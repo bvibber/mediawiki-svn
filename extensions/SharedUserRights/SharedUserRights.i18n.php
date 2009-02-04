@@ -262,12 +262,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'shareduserrights' => 'Wspólne zarządzanie uprawnieniami użytkownika',
-	'gblrights-desc' => 'Łatwe zarządzanie [[Special:SharedUserRights|globalnymi uprawnieniami użytkownika]]',
+	'shareduserrights' => 'Zarządzanie wspólnymi między projektami uprawnieniami użytkownika',
+	'gblrights-desc' => 'Łatwe zarządzanie [[Special:SharedUserRights|globalnymi uprawnieniami użytkowników]]',
 	'gblrights-logpage' => 'Rejestr globalnych uprawnień',
-	'gblrights-pagetext' => 'To jest rejestr wszystkich zmian w globalnych uprawnieniach dokonanych dla grupy projektów wiki',
+	'gblrights-pagetext' => 'To jest rejestr wszystkich zmian w globalnych uprawnieniach wykonanych dla grupy projektów wiki',
 	'gblrights-rights-entry' => 'zmienił globalną przynależność $1 do grup ($2 → $3)',
 );
 

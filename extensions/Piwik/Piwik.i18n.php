@@ -184,6 +184,16 @@ $messages['gl'] = array(
 	'piwik-browsers' => 'Navegadores',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'piwik-desc' => 'Fiegt e Piwik-Skript yy zum Tracking in MediaWiki-Syten un ergänzt e [[Special:Piwik|Spezialsyte]] mit e paar Statischtike',
+	'piwik-lastvisits' => 'Letschti Bsuech',
+	'piwik-countries' => 'Länder',
+	'piwik-browsers' => 'Browser',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

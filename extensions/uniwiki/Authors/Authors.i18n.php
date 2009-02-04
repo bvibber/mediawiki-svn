@@ -34,9 +34,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'authors-desc' => 'يلحق قائمة بالمساهمين للصفحات',
 	'authors_authors' => 'المؤلفين',
 	'authors_anonymous' => 'مش معروف',
 );

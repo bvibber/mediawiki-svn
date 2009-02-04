@@ -233,15 +233,41 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Proširenje za [[Special:PovWatch|postavljanje stranica na spisak praćenja]] drugih korisnika',
 	'povwatch_no_session' => 'Greška: ne može se poslati obrazac zbog gubitka podataka sesije.',
 	'povwatch_not_allowed_push' => 'Vi niste administrator za PovWatch, ne možete postavljati stranice na spiskove praćenja.',
+	'povwatch_already_subscribed' => 'Već ste prijavljeni na PovWatch',
+	'povwatch_subscribed' => 'Sada ste prijavljeni na PovWatch',
+	'povwatch_not_subscribed' => 'Niste prijavljeni na PovWatch, tako da se ne možete odjaviti.',
+	'povwatch_unsubscribed' => 'Sada ste odjavljeni sa PovWatch',
 	'povwatch_invalid_title' => 'Navedeni naslov je bio nevaljan.',
+	'povwatch_pushed' => '[[$1]] je uspješno postavljen na {{PLURAL:$2|spisak praćenja|spiskove praćenja}} korisnika $2.',
+	'povwatch_intro' => 'PovWatch je servis koji omogućuje da se sporne stranice diskretno postave na spiskove praćenja prijavljenih administratora.
+
+Zapisnik nedavno postavljenih stranica je dostupan na [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Dostupan je [[Special:PovWatch/subscribers|spisak prijavljenih]].',
+	'povwatch_subscriber_list_intro' => '<strong>Spisak prijavljenih</strong>',
+	'povwatch_not_allowed_subscribers' => 'Nije Vam dopušteno da pregledate spisak prijavljenih na PovWatch.',
 	'povwatch_unknown_subpage' => 'Nepoznata podstanica.',
 	'povwatch_push' => 'Postavi',
+	'povwatch_push_intro' => 'Koristite obrazac ispod da postavite stranice na spiskove praćenja prijavljenih korisnika.
+Molimo da budete pažljivi pri unosu naslova: mogu biti dodani čak i naslovi koji nepostoje, a nema načina da se naslov ukloni ako se jednom postavi.',
 	'povwatch_title' => 'Naslov:',
 	'povwatch_comment' => 'Komentar zapisa:',
+	'povwatch_no_log' => 'Nema stavki zapisa.',
+	'povwatch_no_subscribers' => 'Nema prijavljenih.',
+	'povwatch_unsubscribe_intro' => 'Prijavljeni ste na PovWatch.
+Kliknite na dugme dole da bi ste se odjavili.',
+	'povwatch_unsubscribe' => 'Odjavi se',
+	'povwatch_subscribe_intro' => 'Niste prijavljeni na PovWatch.
+Kliknite na dugme ispod da se prijavite.',
+	'povwatch_subscribe' => 'Prijavi se',
 	'povwatch_added' => 'dodano',
+	'right-povwatch_admin' => 'Upravljanje sa korisničkim pravima za dodavanje stranica na spiskove praćenje drugih korisnika',
+	'right-povwatch_user' => 'Dodavanje stranica na spiskove praćenja drugih korisnika',
+	'action-povwatch_admin' => 'uređujete prava korisnika za PovWatch',
+	'action-povwatch_user' => 'dodajete ovu stranicu na spisak praćenja drugog korisnika',
 );
 
 /** Catalan (Català)
@@ -792,6 +818,14 @@ $messages['km'] = array(
 	'povwatch_unsubscribe' => 'ឈប់ជាវ',
 	'povwatch_subscribe' => 'ជាវប្រចាំ',
 	'povwatch_added' => 'បានបន្ថែម',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'povwatch_pushed' => '[[$1]] 문서가 $2명의 사용자 주시문서 목록에 성공적으로 추가되었습니다.',
+	'povwatch_title' => '제목:',
 );
 
 /** Ripoarisch (Ripoarisch)

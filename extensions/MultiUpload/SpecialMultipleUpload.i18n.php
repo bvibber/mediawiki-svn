@@ -126,6 +126,7 @@ $messages['bs'] = array(
 	'multipleupload-desc' => 'Omogućuje korisnicima [[Special:MultipleUpload|postavljanje nekoliko datoteka odjednom]]',
 	'multipleupload-ignoreallwarnings' => "Zanemari '''sva upozorenja''' i spremi datoteke.",
 	'multipleupload-saveallfiles' => 'Spremi sve datoteke',
+	'multipleupload-addresswarnings' => 'Molimo prije ponovnom postavljanju datoteka obradite i riješite svako upozorenje.',
 	'multipleupload-page' => '{{ns:project}}:Politika brisanja datoteka',
 	'multiupload-fileuploaded' => 'Datoteka postavljena.',
 	'multiupload-toolbox' => 'Postavi više datoteka',

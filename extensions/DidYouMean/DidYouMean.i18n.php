@@ -110,6 +110,13 @@ $messages['eu'] = array(
 	'didyoumean-desc' => '"antzeko" izenburua duten orrialdetara loturak gehitzen ditu',
 );
 
+/** Persian (فارسی)
+ * @author Momeni
+ */
+$messages['fa'] = array(
+	'didyoumean-desc' => 'به صفحه‌های با عنوان مشابه، پیوند می‌افزاید.',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike

@@ -359,6 +359,36 @@ Aviso: o refrescado pode levar uns intres nos wikis grandes.',
 	'right-refreshspecial' => 'Actualizar as páxinas especiais',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'refreshspecial' => 'Spezialsyten aktualisiere',
+	'refreshspecial-desc' => 'Erlaubt s [[Special:RefreshSpecial|manuäll Aktualisiere vu Spezialsyte]]',
+	'refreshspecial-title' => 'Spezialsyten aktualisiere',
+	'refreshspecial-help' => 'Uf däre Spezialsyte git s e Wärchzyyg zum manuälle Aktualisiere vu Spezialsyte.
+Wänn Du alli Spezialsyte zum Aktualisiere uusgwehlt hesch, druck d Aktualisiere-Schaltflächi go d Aktualisierig aafange.
+Obacht: S Aktualisiere cha uf große Wiki lenger goh.',
+	'refreshspecial-button' => 'Uusgwehlti aktualisiere',
+	'refreshspecial-fail' => 'Bitte chryz zmindescht ei Spezialsyte zum Aktualisieren aa.',
+	'refreshspecial-refreshing' => 'Spezialsyte wäre aktualisiert',
+	'refreshspecial-skipped' => 'wärtlos, ibersprunge',
+	'refreshspecial-success-subtitle' => 'am Spezialsyten aktualisiere',
+	'refreshspecial-choice' => 'am Spezialsyten aktualisiere',
+	'refreshspecial-js-disabled' => '(<i>Du chasch nit alli Syten uuswehle, wänn Du Javascript deaktiviert hesch</i>)',
+	'refreshspecial-select-all-pages' => 'Alli Syten uuswehle',
+	'refreshspecial-link-back' => 'Zrugg zue dr Spezialsyte',
+	'refreshspecial-none-selected' => 'Du hesch kei Spezialsyten ausgwehlt. Wird zrugggsetzt uf d Standarduuswahl.',
+	'refreshspecial-db-error' => 'Sterig: Datebankfähler',
+	'refreshspecial-no-page' => 'Kei sonigi Spezialsyte',
+	'refreshspecial-slave-lagged' => 'Slave-Server hangt, warte …',
+	'refreshspecial-reconnected' => 'Wider verbunde.',
+	'refreshspecial-reconnecting' => 'Verbindig fähl gschlaa, wider verbinde in 10 Sekunde …',
+	'refreshspecial-page-result' => 'het {{PLURAL:$1|ei Reihe|$1 Reihe}} in',
+	'refreshspecial-total-display' => 'Het $1 {{PLURAL:$1|Syten|Syten}} aktualisiert, insgsamt $2 {{PLURAL:$2|Zyylen|Zyylen}} in ere Zyt vu $3 (Gsamtlaufzyt vum Skript: $4)',
+	'right-refreshspecial' => 'Spezialsyten aktualisiere',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -710,6 +740,9 @@ $messages['pl'] = array(
 	'refreshspecial' => 'Odśwież strony specjalne',
 	'refreshspecial-desc' => 'Umożliwia [[Special:RefreshSpecial|za pomocą strony specjalnej ręcznie odświeżać]] zawartość innych stron specjalnych',
 	'refreshspecial-title' => 'Odśwież strony specjalne',
+	'refreshspecial-help' => 'Strona pozwala ręcznie odświeżać strony specjalne.
+Po wybraniu wszystkich stron do odświeżenia należy kliknąć znajdujący się poniżej przycisk „Odśwież wybrane” aby wymusić odświeżenie.
+Uwaga – odświeżenie może trwać długo na dużej wiki.',
 	'refreshspecial-button' => 'Odśwież wybrane',
 	'refreshspecial-fail' => 'Proszę zaznaczyć co najmniej jedną stronę specjalną do odświeżenia.',
 	'refreshspecial-refreshing' => 'odświeżanie stron specjalnych',
@@ -720,11 +753,14 @@ $messages['pl'] = array(
 	'refreshspecial-select-all-pages' => 'Zaznacz wszystkie strony',
 	'refreshspecial-link-back' => 'Powrót do strony specjalnej',
 	'refreshspecial-none-selected' => 'Nie wybrałeś żadnych stron specjalnych. Przywracanie domyślnego wyboru.',
-	'refreshspecial-db-error' => 'Niepowodzenie: błąd bazy danych',
+	'refreshspecial-db-error' => 'Niepowodzenie – błąd bazy danych',
 	'refreshspecial-no-page' => 'Nie ma takiej strony specjalnej',
+	'refreshspecial-slave-lagged' => 'Opóźnienia w komunikacji z systemem podrzędnym, trwa oczekiwanie...',
 	'refreshspecial-reconnected' => 'Ponownie połączono.',
 	'refreshspecial-reconnecting' => 'Połączenie nie powiodło się, ponowne połączenie nastąpi za 10 sekund...',
-	'right-refreshspecial' => 'Odśwież strony specjalne',
+	'refreshspecial-page-result' => 'otrzymała $1 {{PLURAL:$1|wiersz|wiersze|wierszy}} w',
+	'refreshspecial-total-display' => 'Odświeżono $1 {{PLURAL:$1|stronę|strony|stron}} łącznie $2 {{PLURAL:$2|wiersz|wiersze|wierszy}} w czasie $3 (pełny czas wykonania skryptu $4)',
+	'right-refreshspecial' => 'Odświeżanie stron specjalnych',
 );
 
 /** Portuguese (Português)

@@ -44,9 +44,11 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'formatchanges-desc' => 'يعيد تنسيق [[Special:RecentChanges|أحدث التغييرات]]',
 	'formatchanges-anonymous' => 'مش معروف',
 	'formatchanges-createdby' => '$1 - أنشأها $2 ($3)',
 	'formatchanges-editedby' => '$1 - عدلها $2 ($3)',

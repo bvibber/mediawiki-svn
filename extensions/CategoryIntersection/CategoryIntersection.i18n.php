@@ -525,6 +525,17 @@ $messages['th'] = array(
 	'categoryintersection-doit' => 'แสดงรายชื่อหน้าต่าง ๆ ในหมวดหมู่เหล่านี้',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categoryintersection' => 'Pinagsangahan ng kaurian',
+	'categoryintersection-desc' => 'Nagpapanatili ng isang tablang may magkakahalong mga halaga para sa [[Special:CategoryIntersection|mga pinagsangahan ng kaurian]] na nasa loob ng isang pahina',
+	'categoryintersection-doit' => 'Itala ang mga pahinang nasa loob ng mga kauriang ito',
+	'categoryintersection-maxcategories' => 'Ang pinakamataas na pinahihintulutang bilang ng pinagsasangahang mga kaurian ay $1.',
+	'categoryintersection-results' => 'Nagbalik ang paghahanap ng $1 {{PLURAL:$1|kinalabasan|mga kinalabasan}}.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

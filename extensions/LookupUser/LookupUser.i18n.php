@@ -81,6 +81,7 @@ $messages['arz'] = array(
 	'lookupuser-touched' => 'سجل المستخدم تم تعديله آخر مرة في: $1',
 	'lookupuser-info-authenticated' => 'تأكيد البريد الإلكتروني: $1',
 	'lookupuser-useroptions' => 'خيارات المستخدم:',
+	'right-lookupuser' => 'مطالعة تفضيلات المستخدم',
 );
 
 /** Bulgarian (Български)

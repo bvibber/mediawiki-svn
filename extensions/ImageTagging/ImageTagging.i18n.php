@@ -477,6 +477,44 @@ $messages['grc'] = array(
 	'imagetagging-tagcancel-button' => 'Ἀκυροῦν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'taggedimages' => 'Bilder mit Tag',
+	'imagetagging-desc' => 'Macht s Benutzer megli, Berych vu yybettete Bilder uuszwehlen un die mit ere Syte z verchnipfe',
+	'imagetagging-addimagetag' => 'Tag zue däm Bild zuefiege',
+	'imagetagging-article' => 'Syte:',
+	'imagetagging-articletotag' => 'Syte, wu taggt wird',
+	'imagetagging-canteditothermessage' => 'Du chasch die Syte nit bearbeite, wel Du kei Berächtigung dezu hesch oder wel d Syten us eme andre Grund gsperrt isch.',
+	'imagetagging-imghistory' => 'Versione',
+	'imagetagging-images' => 'Bilder',
+	'imagetagging-inthisimage' => 'In däm Bild: $1',
+	'imagetagging-logentry' => 'Tag uf dr Syte [[$1]] isch dur $2 usegnuh wore',
+	'imagetagging-log-tagged' => 'Bild [[$1|$2]] isch vu $4 mit [[$3]] taggt wore',
+	'imagetagging-new' => '<sup><span style="color:red">Nej!</span></sup>',
+	'imagetagging-removetag' => 'Tag useneh',
+	'imagetagging-done-button' => 'Tagging isch gmacht',
+	'imagetagging-tag-button' => 'Tagge',
+	'imagetagging-tagcancel-button' => 'Abbräche',
+	'imagetagging-tagging-instructions' => 'Druck uf Lyt oder Ding im Bild go si tagge.',
+	'imagetagging-addingtag' => 'Fiegt e Tag zue ...',
+	'imagetagging-removingtag' => 'Nimmt Tag use ...',
+	'imagetagging-addtagsuccess' => 'Zuegfiegti Tag.',
+	'imagetagging-removetagsuccess' => 'Tag, wu usegnuh wore sin.',
+	'imagetagging-canteditneedloginmessage' => 'Du chasch die Syte nit bearbeite.
+Villicht muesch Di aamälde go Bilder tagge.
+Mechtsch Di jetz aamälde?',
+	'imagetagging-oneactionatatimemessage' => 'Nume ei Tagging-Aktion isch ufeimol erlaubt.
+Bitte wart, bis di momentan Aktion abgschlossen isch.',
+	'imagetagging-oneuniquetagmessage' => 'Des Bild het scho ne Tag mit däm Name.',
+	'imagetagging-imagetag-seemoreimages' => 'Lueg meh Bilder vu „$1“ ($2)',
+	'imagetagging-taggedimages-title' => 'Bilder vu „$1“',
+	'imagetagging-taggedimages-displaying' => 'Aazeigt wäre $1 - $2 vu $3 Bilder us „$4“',
+	'tag-logpagename' => 'Tagging-Logbuech',
+	'tag-logpagetext' => 'Des isch e Logbuech vu allene Bildertag, wu zuegfiegt un usegnuh wore sin.',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity

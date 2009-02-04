@@ -144,6 +144,17 @@ $messages['gl'] = array(
 	'purgecache-button' => 'Depurar',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'purgecache' => 'Cache lesche',
+	'purgecache-desc' => '[[Special:PurgeCache|Spezialsyte]] zum d OBJECTCACHE-Tabälle z lesche',
+	'purgecache-warning' => 'Des lescht dr Cache.',
+	'purgecache-purged' => 'Dr Cache isch glescht wore.',
+	'purgecache-button' => 'Lesche',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

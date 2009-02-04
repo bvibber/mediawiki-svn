@@ -89,9 +89,9 @@ $aliases['hu'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'GroupPermissions' => array( 'グループパーミッション' ),
+	'GroupPermissions' => array( 'グループ権限' ),
 	'RemoveUnusedGroups' => array( '未使用グループ除去' ),
-	'SortPermissions' => array( 'ソートパーミッション' ),
+	'SortPermissions' => array( '権限の分類' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

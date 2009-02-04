@@ -2537,6 +2537,14 @@ $messages['pt'] = array(
 	'deletequeue-action-queued' => 'Eliminação',
 	'deletequeue-action' => 'Sugerir eliminação',
 	'deletequeue-action-title' => 'Sugerir eliminação de "$1"',
+	'deletequeue-action-text' => "{{SITENAME}} tem um número de processos para eliminar páginas:
+*Se crê que esta página aconselha a uma ''eliminação rápida'', poderá sugeri-la [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} aqui].
+*Se esta página não aconselha a uma eliminação rápida, mas ''a eliminação provavelmente será incontroversa'', deverá [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propôr uma eliminação incontestada].
+*Se a eliminação desta página será ''provavelmente contestada'', deverá [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} iniciar uma discussão].",
+	'deletequeue-action-text-queued' => 'Você pode ver as seguintes páginas para este caso de eliminação:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Ver suportes e objeções atuais].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Suportar ou objetar à eliminação desta página].',
+	'deletequeue-permissions-noedit' => 'Você deverá estar habilitado a editar uma página para poder afetar o seu estado de eliminação.',
 	'deletequeue-generic-reasons' => '* Motivos genéricos
   ** Vandalismo
   ** Spam
@@ -2544,7 +2552,14 @@ $messages['pt'] = array(
   ** Fora do âmbito do projeto',
 	'deletequeue-nom-alreadyqueued' => 'Esta página já se encontra numa fila de eliminação.',
 	'deletequeue-speedy-title' => 'Marcar "$1" para eliminação rápida',
+	'deletequeue-speedy-text' => "Você pode usar este formulário para marcar a página \"'''\$1'''\" para eliminação rápida.
+
+Um administrador irá rever este pedido e, se for bem fundamentado, eliminar a página.
+Deverá selecionar um motivo de eliminação da lista de opções abaixo, e adicionar qualquer outra informação relevante.",
 	'deletequeue-prod-title' => 'Propor eliminação de "$1"',
+	'deletequeue-prod-text' => "Você pode usar este formulário para propor que \"'''\$1'''\" seja apagada.
+
+Se, após cinco dias, ninguém tiver contestado a eliminação desta página, ela será eliminada após revisão final por um administrador.",
 	'deletequeue-delnom-reason' => 'Motivo da nomeação:',
 	'deletequeue-delnom-otherreason' => 'Outro motivo',
 	'deletequeue-delnom-extra' => 'Informação extra:',
@@ -2563,6 +2578,15 @@ $messages['pt'] = array(
 	'deletequeue-queue-speedy' => 'Eliminação rápida',
 	'deletequeue-queue-prod' => 'Propor eliminação',
 	'deletequeue-queue-deletediscuss' => 'Discussão da eliminação',
+	'deletequeue-page-speedy' => "Esta página foi nomeada para eliminação rápida.
+O motivo dado para esta eliminação foi ''$1''.",
+	'deletequeue-page-prod' => "Foi proposta a eliminação desta página.
+O motivo dado foi ''$1''.
+Se esta proposta não for contestada em ''$2'', esta página será eliminada.
+Você pode contestar a eliminação desta página [{{fullurl:{{FULLPAGENAME}}|action=delvote}} objetando à eliminação].",
+	'deletequeue-page-deletediscuss' => "Esta página foi proposta para eliminação, e essa proposta foi contestada.
+O motivo dado foi ''$1''.
+Uma discussão encontra-se em curso em [[$3]], e que será concluída em ''$2''.",
 	'deletequeue-notqueued' => 'A página que selecionou não está atualmente em nenhum fila para eliminação',
 	'deletequeue-review-action' => 'Acção a tomar:',
 	'deletequeue-review-delete' => 'Eliminar a página.',
@@ -2572,25 +2596,64 @@ $messages['pt'] = array(
 	'deletequeue-review-reason' => 'Comentários:',
 	'deletequeue-review-newreason' => 'Novo motivo:',
 	'deletequeue-review-newextra' => 'Informação extra:',
+	'deletequeue-review-submit' => 'Gravar Revisão',
 	'deletequeue-review-original' => 'Motivo da nomeação',
 	'deletequeue-actiondisabled-involved' => 'A seguinte ação está desativada porque você tomou parte neste caso de eliminação nos papéis $1:',
 	'deletequeue-actiondisabled-notexpired' => 'A seguinte ação está desativada porque a nomeação para eliminação ainda não expirou:',
 	'deletequeue-review-badaction' => 'Você especificou uma ação inválida',
 	'deletequeue-review-actiondenied' => 'Você especificou uma ação que está desativada para esta página',
+	'deletequeue-review-objections' => "'''Aviso''': A eliminação desta página tem [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} objeções].
+Por favor, assegure-se de que considerou estas objeções antes de eliminar esta página.",
+	'deletequeue-reviewspeedy-tab' => 'Rever eliminação rápida',
+	'deletequeue-reviewspeedy-title' => 'Rever a nomeação para eliminação rápida de "$1"',
+	'deletequeue-reviewspeedy-text' => "Você pode usar este formulário para rever a nomeação de \"'''\$1'''\" para eliminação rápida.
+Por favor, assegure-se de que esta página pode ser eliminada rapidamente de acordo com a política.",
+	'deletequeue-reviewprod-tab' => 'Rever eliminação proposta',
+	'deletequeue-reviewprod-title' => 'Rever eliminação proposta de "$1"',
+	'deletequeue-reviewprod-text' => "Você pode usar este formulário para rever a proposta incontestada de eliminação de \"'''\$1'''\".",
 	'deletequeue-reviewdeletediscuss-tab' => 'Rever eliminação',
+	'deletequeue-reviewdeletediscuss-title' => 'Rever discussão de eliminação de "$1"',
+	'deletequeue-reviewdeletediscuss-text' => "Você pode usar este formulário para rever a discussão de eliminação de \"'''\$1'''\".
+
+Está disponível uma [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] de suportes e objeções desta eliminação, e a discussão pode ser encontrada em [[\$2]].
+Por favor, assegure-se de que toma uma decisão de acordo com o consenso patente na discussão.",
+	'deletequeue-deletediscuss-discussionpage' => 'Esta é a página de discussão para a eliminação de [[$1]].
+Há atualmente $2 {{PLURAL:$2|utilizador|utilizadores}} a suportar a eliminação, e $3 {{PLURAL:$3|utilizador|utilizadores}} a objetar à eliminação.
+Você pode [{{fullurl:$1|action=delvote}} suportar ou objetar] à eliminação, ou [{{fullurl:$1|action=delviewvotes}} ver todos os suportes e objeções].',
 	'deletequeue-discusscreate-summary' => 'A criar discussão para a eliminação de [[$1]].',
 	'deletequeue-discusscreate-text' => 'Eliminação proposta pelo seguinte motivo: $2',
 	'deletequeue-role-nominator' => 'nomeador original da eliminação',
+	'deletequeue-role-vote-endorse' => 'suportador da eliminação',
+	'deletequeue-role-vote-object' => 'objetor à eliminação',
 	'deletequeue-vote-tab' => 'Votar na eliminação',
+	'deletequeue-vote-title' => 'Suportar ou objetar à eliminação de "$1"',
+	'deletequeue-vote-text' => "Você pode usar este formulário para suportar ou objetar à eliminação de \"'''\$1'''\".
+Esta ação sobrepor-se-á a quaisquer suportes/objeções que tenha prestado à eliminação desta página.
+Você pode [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} ver] os suportes e objeções existentes.
+O motivo dado na nomeação para eliminação foi ''\$2''.",
+	'deletequeue-vote-legend' => 'Suportar/Objetar à eliminação',
 	'deletequeue-vote-action' => 'Recomendação:',
 	'deletequeue-vote-endorse' => 'Aprovar eliminação.',
 	'deletequeue-vote-object' => 'Contestar a eliminação.',
 	'deletequeue-vote-reason' => 'Comentários:',
 	'deletequeue-vote-submit' => 'Submeter',
+	'deletequeue-vote-success-endorse' => 'Você suportou com sucesso a eliminação desta página.',
+	'deletequeue-vote-success-object' => 'Você objetou com sucesso à eliminação desta página.',
+	'deletequeue-vote-requeued' => 'Você suportou com sucesso a eliminação desta página.
+Devido à sua objeção, a página foi movida para a fila $1.',
+	'deletequeue-showvotes' => 'Suportes e objeções à eliminação de "$1"',
+	'deletequeue-showvotes-text' => "Abaixo estão os suportes e objeções feitas à eliminação da página  \"'''\$1'''\".
+Você pode [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registar o seu próprio suporte ou objeção] a esta eliminação.",
 	'deletequeue-showvotes-restrict-endorse' => 'Mostrar apenas aprovações',
 	'deletequeue-showvotes-restrict-object' => 'Mostrar apenas contestações',
+	'deletequeue-showvotes-restrict-none' => 'Mostrar todos os suportes e objeções',
+	'deletequeue-showvotes-vote-endorse' => "'''Suportou''' a eliminação em $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Objetou''' à eliminação em $1 $2",
 	'deletequeue-showvotes-showingonly-endorse' => 'Mostrando apenas aprovações',
 	'deletequeue-showvotes-showingonly-object' => 'Mostrando apenas contestações',
+	'deletequeue-showvotes-none' => 'Não há suportes ou objeções à eliminação desta página.',
+	'deletequeue-showvotes-none-endorse' => 'Não há suportes à eliminação desta página.',
+	'deletequeue-showvotes-none-object' => 'Não há objeções à eliminação desta página.',
 	'deletequeue' => 'Fila de eliminações',
 	'deletequeue-list-text' => 'Esta página mostra todas as páginas que estão no sistema de exclusão.',
 	'deletequeue-list-search-legend' => 'Pesquisar páginas',
@@ -2600,8 +2663,10 @@ $messages['pt'] = array(
 	'deletequeue-list-search' => 'Pesquisar',
 	'deletequeue-list-anyqueue' => '(qualquer)',
 	'deletequeue-list-votes' => 'Lista de votos',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|suporte|suportes}}, $2 {{PLURAL:$2|objeção|objeções}}',
 	'deletequeue-list-header-page' => 'Página',
 	'deletequeue-list-header-queue' => 'Fila',
+	'deletequeue-list-header-votes' => 'Suportes e objeções',
 	'deletequeue-list-header-expiry' => 'Validade',
 	'deletequeue-list-header-discusspage' => 'Página de discussão',
 );

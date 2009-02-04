@@ -198,6 +198,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Melancholie
  * @author Revolus
  */
@@ -210,7 +211,7 @@ $messages['de'] = array(
 	'player-play' => 'Abspielen',
 	'player-not-allowed' => 'Unerlaubtes Format',
 	'player-not-found' => 'Datei nicht gefunden',
-	'player-invalid-title' => 'ungültiger name',
+	'player-invalid-title' => 'ungültiger Name',
 	'player-clicktoplay' => '$1 abspielen',
 	'player-goto-player' => 'Player',
 	'player-goto-page' => 'Seite',
@@ -370,6 +371,25 @@ $messages['got'] = array(
 $messages['grc'] = array(
 	'player-invalid-title' => 'Ἄκυρος ἐπιγραφή',
 	'player-goto-file' => 'Ἀρχεῖον',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'player' => 'Spiler',
+	'player-desc' => 'Yybettet Multimedia-Playback iber Browser-Plugin, wu bruucht wäre, un e [[Special:Player|Spezialsyte]]',
+	'player-title' => 'Spiler',
+	'player-playertitle' => 'Spiler: $1',
+	'player-file' => 'Dateiname',
+	'player-play' => 'Abspile',
+	'player-not-allowed' => 'Nit erlaubt Format',
+	'player-not-found' => 'Datei nit gfunde',
+	'player-invalid-title' => 'Nit giltige Name',
+	'player-clicktoplay' => '$1 abspile',
+	'player-goto-player' => 'Spiler',
+	'player-goto-page' => 'Syte',
+	'player-goto-file' => 'Datei',
 );
 
 /** Manx (Gaelg)

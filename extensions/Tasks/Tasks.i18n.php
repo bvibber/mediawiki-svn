@@ -1371,6 +1371,7 @@ $messages['ja'] = array(
 	'tasks_search_form_title' => '検索',
 	'tasks_search_tasks' => 'タスク',
 	'tasks_search_status' => '状況',
+	'tasks_previous' => '前',
 	'tasks_logpage' => 'タスクログ',
 );
 

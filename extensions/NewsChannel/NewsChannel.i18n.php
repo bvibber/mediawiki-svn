@@ -178,6 +178,19 @@ $messages['gl'] = array(
 	'newschannel_submit_button' => 'Crear a fonte de novas',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'newschannel' => 'Nochrichte',
+	'newschannel-desc' => 'Ergänzt e Nochrichtekanal as dynamischi [[Special:NewsChannel|Spezialsyte]]',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Limit:',
+	'newschannel_include_category' => 'Zuesätzligi Kategorii:',
+	'newschannel_exclude_category' => 'Kategorii, wu uusgschlosse soll wäre:',
+	'newschannel_submit_button' => 'Feed aalege',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

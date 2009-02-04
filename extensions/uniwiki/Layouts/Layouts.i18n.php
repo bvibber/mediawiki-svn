@@ -462,8 +462,11 @@ $messages['pt'] = array(
 	'layouts_tagline' => "Esta página foi gerada pelo modelo '''$1'''.",
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
 $messages['pt-br'] = array(
+	'layouts-desc' => 'Preencher as páginas recém-criadas com modelos editáveis para fomentar uma estrutura comum para as páginas',
 	'layouts_title' => 'Criar uma página',
 	'layouts_chooselayout' => 'Escolher um Layout para o $1:',
 	'layouts_nolayout' => 'Sem layout',

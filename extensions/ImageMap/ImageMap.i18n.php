@@ -1425,19 +1425,20 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'imagemap_desc' => 'Thêm những bản đồ hình có liên kết dùng thẻ <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image' => 'Error: phải đưa tên hình vào dòng đầu tiên',
-	'imagemap_invalid_image' => 'Error: hình không hợp lệ hay không tồn tại',
+	'imagemap_no_image' => 'Lỗi: phải đưa tên hình vào dòng đầu tiên',
+	'imagemap_invalid_image' => 'Lỗi: hình không hợp lệ hay không tồn tại',
 	'imagemap_bad_image' => 'Lỗi: cấm nhúng hình đó vào trang này',
-	'imagemap_no_link' => 'Error: không có liên kết hợp lệ ở cuối dòng $1',
-	'imagemap_invalid_title' => 'Error: văn bản liên kết không hợp lệ ở dòng $1',
-	'imagemap_missing_coord' => 'Error: không có đủ tọa độ cho vùng ở dòng $1',
-	'imagemap_unrecognised_shape' => 'Error: không hiểu hình dạng ở dòng $1, mỗi dòng phải bắt đầu với một trong: default, rect, circle, hay poly',
-	'imagemap_no_areas' => 'Error: phải định rõ ít nhất một vùng',
-	'imagemap_invalid_coord' => 'Error: tọa độ không hợp lệ ở dòng $1, phải là số',
-	'imagemap_invalid_desc' => 'Error: chọn desc không hợp lệ, phải là một trong: $1',
+	'imagemap_no_link' => 'Lỗi: không có liên kết hợp lệ ở cuối dòng $1',
+	'imagemap_invalid_title' => 'Lỗi: văn bản liên kết không hợp lệ ở dòng $1',
+	'imagemap_missing_coord' => 'Lỗi: không có đủ tọa độ cho vùng ở dòng $1',
+	'imagemap_unrecognised_shape' => 'Lỗi: không hiểu hình dạng ở dòng $1, mỗi dòng phải bắt đầu với một trong: default, rect, circle, hay poly',
+	'imagemap_no_areas' => 'Lỗi: phải định rõ ít nhất một vùng',
+	'imagemap_invalid_coord' => 'Lỗi: tọa độ không hợp lệ ở dòng $1, phải là số',
+	'imagemap_invalid_desc' => 'Lỗi: chọn desc không hợp lệ, phải là một trong: $1',
 	'imagemap_description' => 'Thông tin về hình này',
 	'imagemap_poly_odd' => 'Lỗi: đa giác có tọa độ không đầy đủ ở dòng $1',
 );

@@ -674,6 +674,7 @@ L’identificant de provesir aicí es compausat de chifras e letras entre « $2 
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'imstatus-desc' => 'Dodaje znaczniki, by pokazać statusy w różnego rodzaju komunikatorach internetowych (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
@@ -687,6 +688,13 @@ $messages['pl'] = array(
 	'imstatus_style' => 'styl wskaźnika statusu',
 	'imstatus_action' => 'działanie, kiedy zostanie kliknięty przycisk',
 	'imstatus_details_saa' => 'Aby uzyskać więcej informacji na temat wszystkich stylów i działania, zobacz $1.',
+	'imstatus_your_name' => 'Twoja $1 nazwa',
+	'imstatus_gtalk_code' => 'kod komunikatora google',
+	'imstatus_gtalk_get_code' => 'kod komunikatora google – uzyskaj go z $1.',
+	'imstatus_gtalk_height' => 'wysokość okna w pikselach.',
+	'imstatus_gtalk_width' => 'szerokość okna w pikselach.',
+	'imstatus_icq_id' => 'identyfikator ICQ',
+	'imstatus_icq_style' => 'liczba z zakresu od 0 do 26 (tak, jest aż 27 dostępnych stylów...).',
 );
 
 /** Portuguese (Português)

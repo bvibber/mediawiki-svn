@@ -85,6 +85,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'spl3-desc' => 'Automatski napravljen spisak podstranica stranice koja koristi oznaku <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Nepoznata vrijednost za opciju $1.',
 	'spl3_nosubpages' => '$1 nema podstranica za prikaz.',
 );

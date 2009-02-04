@@ -104,15 +104,16 @@ Els usuaris anònims en tindran un d'automàtic, però els podeu canviar.",
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'mibbit' => 'Mibbit Chat',
-	'mibbit-desc' => 'Přidáva [[Special:Mibbit|speciální stránku]], pomocí které můžete komunikovat s ostatními uživateli wiki v reálném čase',
-	'mibbit-header' => 'Tato speciální stránka Vám umožňuje spolupracovat v reálném čase s ostatními uživateli wiki.
+	'mibbit-desc' => 'Přidává [[Special:Mibbit|speciální stránku]], pomocí které můžete komunikovat s ostatními uživateli wiki v reálném čase',
+	'mibbit-header' => 'Tato speciální stránka vám umožňuje spolupracovat v reálném čase s ostatními uživateli wiki.
 Připojíte se jednoduše stisknutím tlačítka „Připojit“.
 Pokud jste přihlášený, vaše uživatelské jméno se vyplní automaticky.
-Anonymním uživatelům se jméno vygeneruje automaticky, ale je možné ho změnit.',
-	'right-mibbit' => 'Používat Mibbit chat',
+Anonymním uživatelům se přidělí automaticky vygenerované jméno, ale je možné ho změnit.',
+	'right-mibbit' => 'Používání Mibbit chatu',
 );
 
 /** German (Deutsch)
@@ -184,6 +185,19 @@ Para conectarse simplemente prema no botón "Conectar".
 Se está rexistrado o seu nome de usuario será fixado por defecto.
 Aos usuarios anónimos concederáselles un nome automático, que pode ser cambiado.',
 	'right-mibbit' => 'Autorizado para usar a conversa Mibbit',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'mibbit' => 'Mibbit-Chat',
+	'mibbit-desc' => 'Ergänzt e [[Special:Mibbit|Spezialsyte]] zum in Ächtzyt mit andere Benutzer z chatte',
+	'mibbit-header' => 'Die Spezialsyte macht s Dir megli, mit andere Benutzer in Ächtzyt zämmezschaffe.
+Go d Verbindig härstelle, druck uf „Verbinde“-Schaltflächi.
+Wänn Du aagmäldet bisch, wird Dyy Nickname automatisch yytreit.
+Anonyme Benutzer wird e Nickname zuegwise, dää cha aber gänderet wäre.',
+	'right-mibbit' => 'Derf dr Mibbit-Chat bruuche',
 );
 
 /** Hebrew (עברית)

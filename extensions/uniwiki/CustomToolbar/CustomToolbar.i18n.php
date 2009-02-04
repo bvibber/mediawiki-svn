@@ -1482,8 +1482,11 @@ $wgCustomToolbarMessages['pt'] = array(
 	'ct_user_sample' => 'Nome de utilizador',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
 $wgCustomToolbarMessages['pt-br'] = array(
+	'ct-desc' => 'Adiciona uma barra de ferramentas extensível',
 	'ct_bold_sample' => 'Texto em negrito',
 	'ct_bold_tip_ins' => 'Digitar texto em negrito',
 	'ct_bold_tip_wrap' => 'Colocar este texto em negrito',
@@ -1522,6 +1525,10 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_close' => 'Fechar a janela',
 	'ct_success' => 'O arquivo foi carregado com sucesso!',
 	'ct_popupblocked' => 'O pop-up para carregar o arquivo foi bloqueado. Verifique o seu bloqueador de pop-ups.',
+	'ct_user_user' => 'Utilizador',
+	'ct_user_tip' => 'Inserir uma ligação para uma página de utilizador',
+	'ct_user_caption' => 'Ligação do utilizador',
+	'ct_user_sample' => 'Nome de utilizador',
 );
 
 /** Romanian (Română)

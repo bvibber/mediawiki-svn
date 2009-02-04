@@ -127,6 +127,14 @@ $messages['gl'] = array(
 	'minnamelength-desc' => 'Forzar unha lonxitude mínima para os nomes de usuario',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'minnamelength-error' => 'Dyy Benutzername isch z churz. D Mindeschtlängi isch $1 Zeiche.',
+	'minnamelength-desc' => 'E Mindeschtlängi vum Benutzernamen erzwinge',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author דניאל ב.

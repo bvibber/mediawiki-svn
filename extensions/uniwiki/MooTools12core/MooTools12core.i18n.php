@@ -29,6 +29,13 @@ $messages['ar'] = array(
 	'mootools12core-desc' => 'يضيف [http://mootools.net mootools-1.2-core-yc.js]، إطار جافاسكريبت مضغوط، لكل صفحة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'mootools12core-desc' => 'يضيف [http://mootools.net mootools-1.2-core-yc.js]، إطار جافاسكريبت مضغوط، لكل صفحة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

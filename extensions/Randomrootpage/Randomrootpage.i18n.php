@@ -102,6 +102,14 @@ $messages['gl'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Páxina especial]] que procura unha páxina raíz ao chou',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'randomrootpage' => 'Zuefelligi Stammsyte',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Spezialsyte]] zum e zuefelligi Stammsyte ufzruefe',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -35,7 +35,7 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'stalepages' => 'صفحات متجمدة',
 	'stalepages-desc' => 'يولد [[Special:Stalepages|قائمة بالصفحات]] التى لم يتم تعديلها مؤخرا',
-	'stalepages-summary' => 'هذه قائمة بالصفحات التى لم يتم تعديلها فى آخر $1 يوم.',
+	'stalepages-summary' => 'هذه قائمة بالصفحات التى لم يتم تعديلها فى آخر $1 {{PLURAL:$1|يوم|يوم}}.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

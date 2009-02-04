@@ -39,7 +39,7 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'createpage' => 'أنشئ صفحة',
-	'createpage-desc' => 'أضف [[خاص:أنشئ صفحة|صفحة خاصة]] لإنشاء صفحات جديدة',
+	'createpage-desc' => 'يضيف [[Special:CreatePage|صفحة خاصة]] لإنشاء صفحات جديدة',
 	'createpage_submitbutton' => 'إرسال',
 	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد أنشائها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
@@ -51,11 +51,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'createpage' => 'أنشئ صفحة',
+	'createpage-desc' => 'يضيف [[Special:CreatePage|صفحة خاصة]] لإنشاء صفحات جديدة',
 	'createpage_submitbutton' => 'تنفيذ',
 	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد أنشائها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',

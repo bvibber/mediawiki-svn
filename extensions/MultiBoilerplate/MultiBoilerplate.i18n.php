@@ -144,6 +144,15 @@ $messages['grc'] = array(
 	'multiboilerplate-submit' => 'φορτίζειν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'multiboilerplate-desc' => 'Macht s megli e Täxtvorlag us em Uuswahlchaschte iber em Bearbeitigsformular uuszwehle derwylscht d Syte bearbeitet wird',
+	'multiboilerplate-legend' => 'Täxtvorlag uuswehle',
+	'multiboilerplate-submit' => 'Lade',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

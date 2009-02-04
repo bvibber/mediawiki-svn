@@ -497,6 +497,14 @@ $messages['vo'] = array(
 	'abcdownload' => 'Donükön:',
 );
 
+/** Võro (Võro)
+ * @author Võrok
+ */
+$messages['vro'] = array(
+	'abcdesc' => 'Pand mano <tt>&lt;abc&gt;</tt>-elemendi ABC-muusiga kujondamisõs',
+	'abcdownload' => 'Laadiq alla',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

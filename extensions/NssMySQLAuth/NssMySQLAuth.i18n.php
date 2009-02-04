@@ -258,6 +258,26 @@ $messages['gl'] = array(
 	'nss-db-error' => 'Erro ao ler a base de datos de autenticación',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'accountmanager' => 'Benutzerkonte-Verwaltig',
+	'am-username' => 'Benutzername',
+	'am-email' => 'E-Mail',
+	'am-active' => 'aktiv',
+	'am-updated' => 'Dyyni Änderige sin erfolgrych gspycheret wore',
+	'nss-desc' => 'E Erwyterig zum authentifiziere iber e libnss-mysql-Datebank. S het au ne  [[Special:AccountManager|Benutzerkonte-Verwaltig]] din',
+	'nss-rights' => 'Rächt',
+	'nss-save-changes' => 'Änderige spychere',
+	'nss-create-account-header' => 'Nej Benutzerkonto aalege',
+	'nss-create-account' => 'Benutzerkonto aalege',
+	'nss-no-mail' => 'Kei E-Mail schicke',
+	'nss-welcome-mail' => 'E Benutzerkonto mit em Benutzername „$1“ un em Passwort „$2“ isch fir Di aagleit wore.',
+	'nss-welcome-mail-subject' => 'Benutzerkonto aalege',
+	'nss-db-error' => 'Fähler bim Läsen us dr Authentifizierigs-Datebank',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

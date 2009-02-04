@@ -629,6 +629,68 @@ $messages['grc'] = array(
 	'regexblock-view-go' => 'Ἱέναι',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'regexblock' => 'Regex-Sperri',
+	'regexblock-already-blocked' => '$1 isch scho gsperrt.',
+	'regexblock-block-log' => "Benutzername oder IP-Adräss '''$1''' isch gsperrt wore.",
+	'regexblock-block-success' => 'Sperrig erfolgryych',
+	'regexblock-currently-blocked' => 'Zur Zyt gsperrti Adrässe:',
+	'regexblock-desc' => 'Erwyterig zum Sperre vu Benutzernämen un IP-Adrässe mit regulären Uusdrick. S het e Sperrmechanismus din un e [[Special:Regexblock|Spezialsyte]] go Sperrine zuefiege un verwalte',
+	'regexblock-expire-duration' => '1 Stund,2 Stunde,4 Stunde,6 Stunde,1 Tag,3 Täg,1 Wuche,2 Wuche,1 Monet,3 Monet,6 Monet,1 Johr,fir immer',
+	'regexblock-page-title' => 'Namesperri mit regulären Uusdrick',
+	'regexblockstats' => 'Regex-Sperrstatischtike',
+	'regexblock-help' => "Bruuch des Formular go ne IP-Adräss oder e aagmäldete Benutzer z sperren.
+Die Funktion sott nume yygsetzt wäre go Vandalismus verhindere un alliwyl nume no dr Richtlinie.
+''Die Seite erlaubt s au Benuttzer z sperre, wu s gar nit git, un Benutzer, wu ähnligi Näme hän wie sonigi, wu s scho git, z. B. wird mit „Test” au „Test 2“ usw. gsperrt .
+Du chasch au gani IP-Adrässe sperre, ass nieme meh sich unter däne IP-Adrässe cha aamaälde, Syte bearbeite usw.
+Obacht: Teil vu IP-Adrässe wäre bim Sperre as Benutzernamen ufgfasst.
+Wänn kei Sperrgrund aagee wird, wird e Standard-Grund bruucht.''",
+	'regexblock-page-title-1' => 'Adrässe mit regulären Uusdrick sperre',
+	'regexblock-reason-ip' => 'Däre IP-Adräss isch s verbote Bearbeitige z mache, wel vu däre IP-Adräss – vu Dir oder eberem mit dr nämligen IP_Adräss -  Vandalismus oder schädlig Verhalten uusgangen isch.
+Wänn Du dänksch, ass es sich dodebyy um e Fähler handlet, no $1',
+	'regexblock-reason-name' => 'Däm Benutzername isch s verbote, Bearbeitige z mache, wäge Vandalismus oder anderem schändlige Verhalte.
+Wänn Du dänksch, ass es sich dodebyy um e Fähler handlet, no $1',
+	'regexblock-reason-regex' => 'Däm Benutzername isch s verbote, Bearbeitige z mache, wäge Vandalismus oder anderem schändlige Verhalte.
+Bitte mälde Di mit eme andere Benutzernamen aa oder $1 iber s Probläm.',
+	'regexblock-form-username' => 'IP-Adräss oder Benutzername:',
+	'regexblock-form-reason' => 'Grund:',
+	'regexblock-form-expiry' => 'Ablaufdatum:',
+	'regexblock-form-match' => 'Gnaue Träffer',
+	'regexblock-form-account-block' => 'S Aalege vu neje Benutzerkonte sperre',
+	'regexblock-form-submit' => 'Dää Benutzer sperre',
+	'regexblock-form-submit-empty' => 'E Benutzernamen oder e IP-Adräss fir d Sperrig aagee.',
+	'regexblock-form-submit-regex' => 'Nit giltige regulären Uusdruck.',
+	'regexblock-form-submit-expiry' => 'Bitte wehl e Verfallszytruum.',
+	'regexblock-match-stats-record' => '$1 het „$2“ uf „$3“ um „$4“ gsperrt, aagmäldet vu dr Adräss „$5“',
+	'regexblock-nodata-found' => 'Kei Date gfunde',
+	'regexblock-stats-title' => 'Regex-Sperrstatischtike',
+	'regexblock-unblock-success' => 'Entsperrig erfolgryych',
+	'regexblock-unblock-log' => "Benutzername oder IP-Adräss '''$1''' isch entsperrt wore.",
+	'regexblock-unblock-error' => 'Fähler bim Entsperre vu $1.
+Wahrschyns git s kei sonige Benutzer.',
+	'regexblock-regex-filter' => '   oder regulären Uusdruck:',
+	'regexblock-view-blocked' => 'Aasicht gsperrt vu:',
+	'regexblock-view-all' => 'Alli',
+	'regexblock-view-go' => 'Gang',
+	'regexblock-view-match' => '(gnaue Träffer)',
+	'regexblock-view-regex' => '(Regex-Träffer)',
+	'regexblock-view-account' => '(Benutzerkonteaalege gsperrt)',
+	'regexblock-view-reason' => 'Grund: $1',
+	'regexblock-view-reason-default' => 'allgmeine Grund',
+	'regexblock-view-block-infinite' => 'permanenti Sperrig',
+	'regexblock-view-block-temporary' => 'lauft ab am',
+	'regexblock-view-block-expired' => 'ABGLOFFEN am',
+	'regexblock-view-block-by' => 'gsperrt vu',
+	'regexblock-view-block-unblock' => 'entsperre',
+	'regexblock-view-stats' => 'Statischtike',
+	'regexblock-view-empty' => 'D Lischt vu dr gsperrte Nämen un Adrässen isch läär.',
+	'regexblock-view-time' => 'am $1',
+	'right-regexblock' => 'Nimmt Benutzer s Rächt uf allene Wiki vum Wiki-Hof Bearbeitige z mache',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

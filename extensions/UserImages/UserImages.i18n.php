@@ -107,6 +107,7 @@ $messages['bn'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'userimages-desc' => 'Generira galerije od slika koje je postavio korisnik putem oznake <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Slike je postavio $1',
 	'userimages-noname' => 'Pogrešno korisničko ime ili nije navedeno.',
 	'userimages-noimages' => '$1 nije postavljao slike.',

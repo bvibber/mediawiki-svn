@@ -358,6 +358,13 @@ $messages['tg-cyrl'] = array(
 	'breadcrumbs-desc' => 'Роҳи корбар тариқи викиро нишон медиҳад.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'breadcrumbs-desc' => 'Nagpapakita ng daanan ng mga tagagamit sa pamamagitan ng wiki.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

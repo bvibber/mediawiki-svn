@@ -119,8 +119,8 @@ $messages['arz'] = array(
 	'formbadpagename' => 'اسم صفحة سيء',
 	'formbadrecaptcha' => 'قيم غير صحيحة لreCaptcha. حاول مرة ثانية.',
 	'formbadpagenametext' => 'بيانات الاستمارة التى أدخلتها تصنع اسم صفحة سيئا، "$1".',
-	'formrequiredfielderror' => 'الحقل $1 مطلوب لهذه الاستمارة.
-من فضلك املأه.',
+	'formrequiredfielderror' => '{{PLURAL:$2|الحقل $1 مطلوب|الحقول $1 مطلوبة}} لهذه الإستمارة.
+من فضلك {{PLURAL:$2|املأه|املأها}}.',
 	'formsavesummary' => 'صفحة جديدة باستخدام [[Special:Form/$1|الاستمارة $1]]',
 	'formsaveerror' => 'خطأ فى حفظ الاستمارة',
 	'formsaveerrortext' => "حدث خطأ غير معروف أثناء حفظ الاستمارة '$1'.",

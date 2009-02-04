@@ -22,10 +22,18 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'csshooks-desc' => 'يضيف سي إس إس لمخرج إتش تي إم إل للصفحات لأسلوبٍ أفضل',
+	'csshooks-desc' => 'يضيف سي إس إس لمخرج إتش تي إم إل للصفحات لأسلوب أفضل',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'csshooks-desc' => 'يضيف سي إس إس لمخرج إتش تي إم إل للصفحات لأسلوب أفضل',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

@@ -209,6 +209,7 @@ $messages['arz'] = array(
 	'changeauthor-logentry' => 'غير مؤلف $2 ل$1 من $3 إلى $4',
 	'changeauthor-logpagename' => 'سجل تغيير المؤلفين',
 	'changeauthor-rev' => 'ن$1',
+	'right-changeauthor' => 'غير مؤلف مراجعة',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -1641,6 +1642,37 @@ $messages['tg-cyrl'] = array(
 	'changeauthor-success' => 'Дархости шумо бо муваффақият пардозиш шуд.',
 	'changeauthor-logentry' => 'Муаллифи $2 аз нусхаи $1 аз $3 ба $4 иваз шуд',
 	'changeauthor-logpagename' => 'Гузориши тағйири муаллиф',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'changeauthor' => 'May-akda ng pagbabago sa rebisyon',
+	'changeauthor-desc' => 'Nagpapahintulot sa pagbago ng may-akda ng isang rebisyon',
+	'changeauthor-title' => 'Baguhin ang may-akda ng isang rebisyon',
+	'changeauthor-search-box' => 'Maghanap ng mga rebisyon',
+	'changeauthor-pagename-or-revid' => 'Pangalan ng pahina o ID ng rebisyon:',
+	'changeauthor-pagenameform-go' => 'Gawin na',
+	'changeauthor-comment' => 'Puna:',
+	'changeauthor-changeauthors-multi' => 'Nabagong {{PLURAL:$1|may-akda|mga may-akda}}',
+	'changeauthor-explanation-multi' => "Sa pamamagitan ng pormularyong ito, mababago mo ang mga may-akda ng rebisyon.
+Payak na baguhin lamang ang isa o higit pang mga pangalan ng tagagamit na nasa loob ng talaang nasa ibaba, magdagdag ng isang puna (maaaring wala nito) at pindutin ang pindutang 'Baguhin ang (mga) may-akda'.",
+	'changeauthor-changeauthors-single' => 'Baguhin ang may-akda',
+	'changeauthor-explanation-single' => "Sa pamamagitan ng pormularyong ito, mababago mo ang mga may-akda ng rebisyon.
+Payak na baguhin lamang ang pangalan ng tagagamit na nasa ibaba, magdagdag ng isang puna (maaaring wala nito) at pindutin ang pindutang 'Baguhin ang may-akda'.",
+	'changeauthor-invalid-username' => 'Hindi tanggap ang pangalan ng tagagamit na "$1".',
+	'changeauthor-nosuchuser' => 'Walang ganyang tagagamit na "$1".',
+	'changeauthor-revview' => 'Pagbabagong #$1 ng $2',
+	'changeauthor-nosuchtitle' => 'Walang pahinang tinatawag na "$1".',
+	'changeauthor-weirderror' => 'Naganap ang isang napakapambihirang kamalian.
+Pakisubok muli ang iyong paghiling.
+Kapag nagpatuloy sa paglitaw ang ganitong kamalian, may sira marahil ang kalipunan ng dato.',
+	'changeauthor-invalidform' => 'Pakigamit ang pormularyong ibinigay ng [[Special:ChangeAuthor|natatanging pahina]] sa halip na ang isang pinasadyang pormularyo.',
+	'changeauthor-success' => 'Matagumpay na naisagawa ang kahilingan mo.',
+	'changeauthor-logentry' => 'Binago ang may-akda ng $2 na may $1 mula sa $3 na naging $4',
+	'changeauthor-logpagename' => 'Talaan ng pagbago sa may-akda',
+	'right-changeauthor' => 'Baguhin ang may-akda ng isang pagbabago',
 );
 
 /** Turkish (Türkçe)

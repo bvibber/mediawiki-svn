@@ -31,6 +31,13 @@ $messages['ar'] = array(
 	'semanticgallery-desc' => 'يضيف صيغة خرج معرض إلى استعلامات سيمانتيك ميدياويكي الداخلية',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'semanticgallery-desc' => 'يضيف صيغة خرج معرض إلى استعلامات سيمانتيك ميدياويكn الداخلية',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

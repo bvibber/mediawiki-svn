@@ -251,6 +251,23 @@ $messages['grc'] = array(
 	'profiling-ok' => 'εἶεν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'profiling' => 'Profildate',
+	'profiling-desc' => '[[Special:Profiling|Spezialsyte]] zum Profildate z dursuechen un aazluege',
+	'profiling-process' => 'Prozessufruef:',
+	'profiling-wildcard' => 'Bruuch Platzhalter',
+	'profiling-ok' => 'Guet',
+	'profiling-data' => 'Profildate fir „$1“',
+	'profiling-data-process' => 'Vorgang',
+	'profiling-data-count' => 'Aazahl',
+	'profiling-data-time' => 'Zyt (gsamt)',
+	'profiling-data-average' => 'Zyt (durschnittlig)',
+	'profiling-no-data' => 'Kei Date gfunde, wu zueträffe.',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

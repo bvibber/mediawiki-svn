@@ -505,6 +505,15 @@ $messages['th'] = array(
 	'categorystepper-start' => '(เริ่มหมวดหมู่)',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categorystepper-desc' => 'Nagpapakita ng isang kahong hakbangan ng kaurian na nagpapahintulot sa isa na alpabetikong makapaglibot pasulong at paurong sa pamamagitan ng isa o mas marami pang mga kauriang kinapapalooban ng isang pahina',
+	'categorystepper-end' => '(Wakas ng kaurian)',
+	'categorystepper-start' => '(Simula ng kaurian)',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

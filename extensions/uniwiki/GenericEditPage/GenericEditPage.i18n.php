@@ -82,9 +82,11 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'gep-desc' => 'يدعم نافذة التعديل لتكون أفضل للمستخدم',
 	'gep-emailsubject' => '[$1] اقتراح التصنيف: $2',
 	'gep-emailbody' => 'اليوزر "$1" اقترح التصنيف"$2" للموقع"$3".',
 	'gep-emailfailure' => 'متاسفين،الاقتراح بتاعك ماينفعش يتنفذ',
@@ -811,8 +813,11 @@ Adicione algumas utilizando as ferramentas na barra de menu.',
 	'gep-categorypage' => 'MediaWiki:MarcasPáginaEdição',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
 $messages['pt-br'] = array(
+	'gep-desc' => 'Suplementa a página de edição de forma a ser mais amigável',
 	'gep-emailsubject' => 'Sugestão de categoria de [$1] : $2',
 	'gep-emailbody' => 'O usuário "$1" sugeriu a categoria "$2" para o site "$3".',
 	'gep-emailfailure' => 'Não foi possível processar a sua sugestão.',
@@ -829,7 +834,7 @@ $messages['pt-br'] = array(
 	'gep-classicmode' => 'Modo Clássico',
 	'gep-genericmode' => 'Modo Genérico',
 	'gep-nosectioninstructions' => 'Não há seções nesta página.
-Use as ferramentas à direita para incluir algumas seções.',
+Adicione algumas utilizando as ferramentas na barra de menu.',
 	'gep-nocategories' => 'Selecione, no mínimo, uma categoria antes de salvar',
 );
 

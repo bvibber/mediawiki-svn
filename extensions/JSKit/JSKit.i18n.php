@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'jskit-desc' => 'يدمج مجموعة أدوات جافاسكريبت إلى صفحة ويكي',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'jskit-desc' => 'يدمج مجموعة أدوات جافاسكريبت إلى صفحة ويكى',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

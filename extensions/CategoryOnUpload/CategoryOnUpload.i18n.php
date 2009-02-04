@@ -435,6 +435,14 @@ $messages['tet'] = array(
 	'categoryonupload-label' => 'Kategoria:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categoryonupload-desc' => 'Nag-uudyok sa isang tagagamit na pumili ng isang kaurian kapag nagkakarga ng isang talaksan',
+	'categoryonupload-label' => 'Kaurian:',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

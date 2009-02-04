@@ -146,6 +146,22 @@ $messages['cs'] = array(
 	'tog-offlineOnLogout' => 'Změnit po odhlášení můj stav na „offline“',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'onlinestatus-js-anon' => "Gwall: rhaid mewngofnodi cyn gallu defnyddio'r nodwedd hon",
+	'onlinestatus-subtitle-offline' => "Nid yw'r defnyddiwr hwn ar-lein ar hyn o bryd",
+	'onlinestatus-subtitle-online' => "Mae'r defnyddiwr hwn ar-lein ar hyn o bryd",
+	'onlinestatus-tab' => 'Cyflwr',
+	'onlinestatus-toggles-desc' => 'Eich cyflwr:',
+	'onlinestatus-toggles-show' => 'Dangos fy nghylwr ar/all-lein ar fy nhudalen defnyddiwr',
+	'onlinestatus-toggle-offline' => 'All-lein',
+	'onlinestatus-toggle-online' => 'Ar-lein',
+	'tog-onlineOnLogin' => 'Newid nodyn fy nghyflwr i ar-lein wrth fewngofnodi',
+	'tog-offlineOnLogout' => 'Newid nodyn fy nghyflwr i all-lein wrth allgofnodi',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -301,6 +317,26 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'onlinestatus-tab' => 'Καθεστώς',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'onlinestatus-desc' => 'Ergänzt e Option zum Aazeige vum Online-Status in dr persenligen Yystelligen',
+	'onlinestatus-js-anon' => 'Fähler: Du muesch aagmäldet syy, ass Du die Funtion chasch verwände',
+	'onlinestatus-js-changed' => 'Dyy Status isch in „$1“ gänderet wore',
+	'onlinestatus-js-error' => 'Statusänderig nit megli, dr Wärt „$1“ isch nit giltig',
+	'onlinestatus-subtitle-offline' => 'Dää Benutzer isch zur Zyt offline',
+	'onlinestatus-subtitle-online' => 'Dää Benutzer isch zur Zyt online',
+	'onlinestatus-tab' => 'Status',
+	'onlinestatus-toggles-desc' => 'Dyy Status:',
+	'onlinestatus-toggles-explain' => 'Die Yystellig macht s Dir megli, andere Benutzer uf Dyynere Benutzersyte z zeige, eb Du online oder offline bisch.',
+	'onlinestatus-toggles-show' => 'Zeig Onlinestatus uf myynere Benutzersyte',
+	'onlinestatus-toggle-offline' => 'Offline',
+	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Status uf online ändere, wänn i mi aamäld',
+	'tog-offlineOnLogout' => 'Status uf offline ändere, wänn i mi abmäld',
 );
 
 /** Hebrew (עברית)

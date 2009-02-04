@@ -152,6 +152,16 @@ $messages['gl'] = array(
 	'protectsection_forbidden' => 'Prohibido',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'protectsection_desc' => 'Erlaubt berächtigte Benutzer, Teil vun ere Syte mit em <tt>&lt;protect&gt;</tt>-Tag z schitze.',
+	'protectsection_add_remove' => 'Du hesch versuecht, e gschitzte Abschnitt zuezfiegen oder usezneh.',
+	'protectsection_modify' => 'Du hesch versuecht, e gschitzte Täxt z bearbeite.',
+	'protectsection_forbidden' => 'Verbotte',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

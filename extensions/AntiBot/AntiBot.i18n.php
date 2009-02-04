@@ -388,6 +388,13 @@ $messages['vi'] = array(
 	'antibot-desc' => 'Bộ khung đơn giản để kiểm tra spambot và tải trang tự động',
 );
 
+/** Võro (Võro)
+ * @author Võrok
+ */
+$messages['vro'] = array(
+	'antibot-desc' => 'Lihtsä keskkund prahirobotidõ ja segäjide programmõ kontrollis',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

@@ -1208,6 +1208,40 @@ $messages['tet'] = array(
 	'closewikis-list-header-wiki' => 'Wiki',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'closewikis-desc' => 'Nagpapahintulot na maisara ang mga sityo ng wiking nasa loob ng mga linangan ng wiki',
+	'closewikis-page' => 'Isara ang wiki',
+	'closewikis-page-close' => 'Isara ang wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Dahilan (ipinapakita):',
+	'closewikis-page-close-reason' => 'Dahilan (nakatala):',
+	'closewikis-page-close-submit' => 'Isara',
+	'closewikis-page-close-success' => 'Matagumpay na naisara ang wiki',
+	'closewikis-page-reopen' => 'Buksang muli ang wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Dahilan:',
+	'closewikis-page-reopen-submit' => 'Buksang muli',
+	'closewikis-page-reopen-success' => 'Matagumpay na nabuksang muli ang wiki',
+	'closewikis-page-err-nowiki' => 'Hindi tanggap ang tinukoy na wiki',
+	'closewikis-page-err-closed' => 'Nakasarado na ang wiki',
+	'closewikis-page-err-opened' => 'Hindi pa nakasara ang wiki',
+	'closewikis-list' => 'Talaan ng isinarang mga wiki',
+	'closewikis-list-intro' => 'Naglalaman ang talaang ito ng mga wiking isinarado ng mga katiwala.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Isinara ni',
+	'closewikis-list-header-timestamp' => 'Isinara noong',
+	'closewikis-list-header-dispreason' => 'Ipinapakitang dahilan',
+	'closewikis-log' => 'Talaan ng pagsasara ng mga wiki',
+	'closewikis-log-header' => 'Narito ang isang talaan ng lahat ng mga pagsasara ng wiki at mga muling pagbubukas na ginawa ng mga katiwala',
+	'closewikis-log-close' => 'isinara ang $2',
+	'closewikis-log-reopen' => 'binuksang muli ang $2',
+	'right-editclosedwikis' => 'Baguhin ang nakasarang mga wiki',
+	'right-closewikis' => 'Isara ang mga wiki',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

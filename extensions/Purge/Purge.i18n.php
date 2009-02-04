@@ -109,6 +109,14 @@ $messages['gl'] = array(
 	'purge-desc' => 'Engade unha lapela "Purgar" en todas as páxinas normais e salta a comprobación de purgar para os usuarios anónimos, permitindo unha purga rápida da caché',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'purge' => 'Cache lääre',
+	'purge-desc' => 'Ergänzt e „Lääre“-Ryter fir alli normale Syten fir e schnälli Cache-Leschig und umgoht d Lääre-Priefig fir anonymi Benutzer',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

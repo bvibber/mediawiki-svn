@@ -137,6 +137,14 @@ $messages['gl'] = array(
 	'donationform-submit' => 'Doar mediante PayPal',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'donationform-desc' => 'Fiegt e Tag <tt>&lt;donateform&gt;</tt> yy go Spänden iber PayPal megli z mache',
+	'donationform-submit' => 'Spänden iber PayPal',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

@@ -1499,6 +1499,24 @@ $messages['tg-cyrl'] = array(
 	'bookinfo-provider' => 'Муҳаёкунандаи иттилоот: $1',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'bookinfo-header' => 'Kabatiran sa aklat',
+	'bookinfo-desc' => 'Nagpapalawak sa [[Special:Booksources|natatanging pahina ng mga pinagmulan ng mga aklat]] na may kabatiran mula sa isang palingkurang pang-web',
+	'bookinfo-result-title' => 'Pamagat:',
+	'bookinfo-result-author' => 'May-akda:',
+	'bookinfo-result-publisher' => 'Tagapaglathala:',
+	'bookinfo-result-year' => 'Taon:',
+	'bookinfo-error-invalidisbn' => 'Hindi tanggap ang ipinasok na ISBN.',
+	'bookinfo-error-nosuchitem' => 'Hindi umiiral ang bagay o hindi matagpuan.',
+	'bookinfo-error-nodriver' => 'Hindi masimulan ang isang naangkop na Tagagawa ng Kabatirang Pang-Aklat.',
+	'bookinfo-error-noresponse' => 'Walang tugon o namahinga ang hiling.',
+	'bookinfo-purchase' => 'Bilhin ang aklat na ito mula sa $1',
+	'bookinfo-provider' => 'Tagapagbigay ng dato: $1',
+);
+
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  * @author Karduelis

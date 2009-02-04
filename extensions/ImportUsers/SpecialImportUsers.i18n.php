@@ -529,6 +529,8 @@ $messages['he'] = array(
 	'importusers-password' => 'סיסמה',
 	'importusers-email' => 'דוא"ל',
 	'importusers-realname' => 'שם אמיתי',
+	'right-import_users' => 'ייבוא משתמשים מרובים',
+	'action-import_users' => 'לייבא משתמשים מרובים',
 );
 
 /** Hindi (हिन्दी)

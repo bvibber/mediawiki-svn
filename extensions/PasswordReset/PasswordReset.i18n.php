@@ -383,6 +383,30 @@ $messages['grc'] = array(
 	'passwordreset-username' => 'Ὄνομα χρωμένου:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'passwordreset' => 'Passwort zruggsetze',
+	'passwordreset-desc' => "[[Special:PasswordReset|Ztruggsetze vun eme Benuzuer-Passwort]] - ''passwordreset''-Rächt notwändig",
+	'passwordreset-invalidusername' => 'Nit giltige Benutzername',
+	'passwordreset-emptyusername' => 'Lääre Benutzername',
+	'passwordreset-nopassmatch' => 'Passwerter stimme nit zämme',
+	'passwordreset-badtoken' => 'Nit giltige „Edit Token“',
+	'passwordreset-username' => 'Benutzername:',
+	'passwordreset-newpass' => 'Nej Passwort:',
+	'passwordreset-confirmpass' => 'Passwort bstätige:',
+	'passwordreset-submit' => 'Passwort zruggsetze',
+	'passwordreset-success' => 'Passwort fir Benutzer-ID $1 isch zrugggsetzt wore.',
+	'passwordreset-disableuser' => 'Benutzerkonto deaktiviere?',
+	'passwordreset-disableuserexplain' => '(setze vun eme nit giltige Passwort-Hash - Aamälde nit megli)',
+	'passwordreset-disablesuccess' => 'Benutzerkonto fir Benutzer-ID $1 isch deaktiviert wore.',
+	'passwordreset-accountdisabled' => 'Benutzerkonto isch deaktiviert',
+	'disabledusers' => 'Deaktivierti Benutzerkonte',
+	'disabledusers-summary' => 'Des isch d Lischt vu dr deaktivierte Benutzerkonte (via PasswordReset).',
+	'right-passwordreset' => 'Passwort vun eme Benutzer zruggsetze ([[Special:PasswordReset|Spezialsyte]])',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

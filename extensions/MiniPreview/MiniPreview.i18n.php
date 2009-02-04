@@ -188,6 +188,23 @@ $messages['gl'] = array(
 * Self',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'minipreview-desc' => 'MiniVorschau zeigt näben eme Bild e chleini Vorschau aa vu andere Medie in drnämlige Kategorii oder uf drnämlige Syte',
+	'minipreview-files_in_category' => "In däre Kategorii het s '''$1''' {{PLURAL:$1|Datei|Dateie}}.",
+	'minipreview-files_in_gallery' => "In däre Galerii het s '''$1''' {{PLURAL:$1|Datei|Dateie}}.",
+	'minipreview-no_more_files_here' => 'Kei anderi Dateie in däre Richtig.',
+	'minipreview-no_category_gallery' => 'Kei Kategorie oder Galerie!',
+	'minipreview-ignore_categories' => 'Do chunnt e Lischt vu Kategoriinämen un Namensaafäng. Die Kategorie wäre nit in dr MiniVorschau aazeigt. Zum Byyspil zeigt „* PD-“ nit alli Kategorie aa, wu mit „PD-“ (wie „PD-old“) aafange.
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

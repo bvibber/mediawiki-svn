@@ -268,6 +268,18 @@ $messages['grc'] = array(
 	'randomincategory-submit' => 'Ἱέναι',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'randomincategory' => 'Zuefelligi Syte in ere Kategorii',
+	'randomincategory-desc' => '[[Special:Randomincategory|Spezialsyte]] zum e zuefelligi Syte in ere Kategorii z hole',
+	'randomincategory-toolbox' => 'Zuefelligi Syte',
+	'randomincategory-nocategory' => 'Kategorii $1 git s nit oder isch läär',
+	'randomincategory-label' => 'Kategorii:',
+	'randomincategory-submit' => 'Gang',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

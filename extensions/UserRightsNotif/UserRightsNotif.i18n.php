@@ -165,6 +165,7 @@ Uklonjeno: $6
 S poštovanjem,
 
 $2',
+	'userrightsnotif-desc' => 'Šalje obavještenje e-mailom korisnicima nakon promjena njihovih prava',
 );
 
 /** Catalan (Català)

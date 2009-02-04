@@ -372,6 +372,7 @@ $messages['ar'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'إخفاء التعريفات في لغة السؤال',
 	'voctrain_hide_words_in_question_language' => 'إخفاء الكلمات في لغة السؤال',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'افصل القيم بفواصل لاستخدام لغات متعددة.',
+	'voctrain_other' => 'آخر',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1039,6 +1040,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author McDutchie
  */
 $messages['fr'] = array(
@@ -1106,6 +1108,7 @@ $messages['fr'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Cache les définition dans les langues pour les questions',
 	'voctrain_hide_words_in_question_language' => 'Cacher les mots dans les langues pour les questions',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Séparer les valeurs par des virgules pour utiliser plusieurs langues.',
+	'voctrain_other' => 'autre',
 );
 
 /** Western Frisian (Frysk)
@@ -1200,6 +1203,7 @@ $messages['gl'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Agochar as definicións na lingua da pregunta',
 	'voctrain_hide_words_in_question_language' => 'Agochar as palabras na lingua da pregunta',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Separe os valores por comas para usar varias linguas.',
+	'voctrain_other' => 'outro',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1304,6 +1308,7 @@ $messages['he'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'הסתר הגדרות בשפת השאלה',
 	'voctrain_hide_words_in_question_language' => 'הסתר מילים בשפת השאלה',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'הפרד ערכים בפסיקים לשימוש במספר שפות.',
+	'voctrain_other' => 'אחר',
 );
 
 /** Interlingua (Interlingua)

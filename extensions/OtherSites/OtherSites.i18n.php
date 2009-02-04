@@ -138,6 +138,14 @@ $messages['gl'] = array(
 	'othersites-desc' => 'Move as ligazóns interwiki diferentes ás ligazóns á lingua no seu propio portal',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'othersites' => 'Anderi Syte',
+	'othersites-desc' => 'Verschiebt Interwikigleicher in e eigene Chaschte, wänn si kei Sprochgleicher sin',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -240,6 +248,14 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'othersites' => 'autres sits',
 	'othersites-desc' => "Deplaça los ligams interwiki autres que los ligams ligats a la lenga de lors compausants d'interfàcia pròpris.",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'othersites' => 'Inne witryny',
+	'othersites-desc' => 'Przesuwa linki interwiki inne niż łącza językowe do ich własnych portletów',
 );
 
 /** Portuguese (Português)

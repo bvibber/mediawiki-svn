@@ -318,9 +318,10 @@ $messages['oc'] = array(
  * @author Holek
  * @author Leinad
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'discussionthreading-desc' => 'Dodaje wątkowanie do stron dyskusji',
+	'discussionthreading-desc' => 'Dodaje obsługę wątków do stron dyskusji',
 	'discussionthreading-replysection' => 'odpowiedz',
 	'discussionthreading-replysectionhint' => 'Odpowiedz na tę wiadomość',
 	'discussionthreading-threadnewsection' => 'nowy',

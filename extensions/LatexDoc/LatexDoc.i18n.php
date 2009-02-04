@@ -409,6 +409,7 @@ $messages['lb'] = array(
 	'latexdoc_cant_write' => 'Et ass net méiglech na de Fichier $1 ze schreiwen',
 	'latexdoc_get_dvi' => 'DVI kréien',
 	'latexdoc_get_pdf' => 'PDF kréien',
+	'latexdoc-desc' => 'Kollektivt Ännere vu LaTeX Dokumenter',
 );
 
 /** Malayalam (മലയാളം)

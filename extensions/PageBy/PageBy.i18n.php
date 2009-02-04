@@ -164,6 +164,17 @@ $messages['gl'] = array(
 	'pageby-anon' => '<i>anónimo</i>',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'pageby-desc' => 'Zeigt d Autoren innerhalb vun ere Wikisyte. Syntax: <tt><nowiki><pageby></nowiki></tt>',
+	'pageby-first' => 'Syte aagleit vu $1, $2',
+	'pageby-last' => 'Zletscht <a href="$3">gänderet</a> von $1, $2',
+	'pageby-contributors' => 'Byyträg:',
+	'pageby-anon' => '<i>anonym</i>',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

@@ -94,6 +94,14 @@ $messages['gl'] = array(
 	'random-users-avatars-desc' => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'random-users-avatars-title' => 'Triff d Community',
+	'random-users-avatars-desc' => 'Ergänzt s <tt>&lt;randomuserswithavatars&gt;</tt>-Tag fir d Aazeig vum Avatar vun eme zuefellig uusgwehlte Benutzer',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

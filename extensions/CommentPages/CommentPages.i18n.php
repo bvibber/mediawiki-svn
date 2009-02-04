@@ -117,6 +117,14 @@ $messages['eu'] = array(
 	'nstab-comments' => 'Iruzkina',
 );
 
+/** Persian (فارسی)
+ * @author Momeni
+ */
+$messages['fa'] = array(
+	'commentpages-desc' => 'صفحه‌های توضیح برای فضای نام اصلی',
+	'nstab-comments' => 'تفسیر',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -390,6 +398,14 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'nstab-comments' => 'Тафсир',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'commentpages-desc' => 'Pahina ng mga puna para pangunang espasyo ng pangalan',
+	'nstab-comments' => 'Kumentaryo',
 );
 
 /** Ukrainian (Українська)

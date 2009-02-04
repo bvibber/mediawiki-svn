@@ -165,6 +165,17 @@ $messages['gl'] = array(
 Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'newusernotifsubj' => 'Benochrichtung vu $1 iber e nej Benutzerskonto',
+	'newusernotif-desc' => 'Verschickt E-Mail-Benochrichtigunge bim Aalege vu neje Benutzerkonte',
+	'newusernotifbody' => 'Sali $1,
+
+E nej Benutzerkonto, $2, isch am $4 uf $3 aagleit wore.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -244,6 +244,7 @@ $wgGoogleMapsMessages['ar'] = array(
  * @author Meno25
  */
 $wgGoogleMapsMessages['arz'] = array(
+	'gm-desc' => 'بسهولة أنشئ خرائط بمعالم ويكية',
 	'gm-incompatible-browser' => 'لكى تشاهد الخريطة المراد إدخالها فى هذا الفضاء، ستحتاج لاستخدام متصفح ويب متوافق.',
 	'gm-incompatible-browser-link' => 'اضغط هنا لرؤية قائمة المتصفحات المتوافقة.',
 	'gm-no-editor' => 'لسوء الحظ، متصفحك لا يدعم ميزات إنشاء الخريطة التفاعلية. جرب آخر نسخة <a href="http://www.microsoft.com/ie">لإنترنت إكسبلورر</a> (ويندوز) أو <a href="http://www.mozilla.org/products/firefox">فايرفوكس</a> (ويندوز، ماك، ولينكس).',

@@ -64,6 +64,8 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'commentspammer-save-blocked' => 'Vaša IP adresa je sumnjiva jer je koriste spameri komentara, tako da ova stranica nije sačuvana.
+Da bi ovo izbjegli [[Special:UserLogin|prijavite se ili napravite račun]].',
 	'commentspammer-desc' => 'Odbacuje izmjene od sumnjivih spamera sa komentarima sa DNS nepoželjnog spiska',
 	'commentspammer-log-msg' => 'izmjena od [[Special:Contributions/$1|$1]] za [[:$2]].',
 );
@@ -475,6 +477,20 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'commentspammer-log-msg' => 'вироиш аз [[Special:Contributions/$1|$1]] ба [[:$2]].',
 	'cspammer-log-page' => 'Гузориши Ҳаразнигорро тавзеҳ диҳед',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'commentspammer-save-blocked' => "Ang iyong adres ng IP ay isang pinaghihinalaang manlulusob na may dalang kumento, kaya't hindi sinagip ang pahina.
+[[Special:UserLogin|Lumagda o lumikha ng akawnt]] upang maiwasan ito.",
+	'commentspammer-desc' => 'Tinatanggihan ang mga pagbabago mula sa mga manlulusob na may dalang kumento na nasa isang talaan ng mga pinagbabawalan ng DNS',
+	'commentspammer-log-msg' => 'pamamatnugot mula [[Special:Contributions/$1|$1]] hanggang [[:$2]].',
+	'commentspammer-log-msg-info' => 'Huling nilusob ang $1 noong nakaraang huling {{PLURAL:$1|araw|mga araw}}, ang antas ng pagbabanta ay $2, at ang kodigo ng kasalanan ay $3. 
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Tingnan ang mga detalye], o [[Special:Blockip/$4|hadlangan]].',
+	'cspammerlogpagetext' => 'Tala ng mga pagbabagong pinahintulutan o tinanggihan batay sa kung ang pinagmulan ay isang kilalang manlulusob na may kumento.',
+	'cspammer-log-page' => 'Talaan ng manlulusob na may dalang kumento',
 );
 
 /** Ukrainian (Українська)

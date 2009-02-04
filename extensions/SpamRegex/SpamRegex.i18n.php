@@ -157,6 +157,7 @@ $messages['arz'] = array(
 	'spamregex-block-submit' => 'منع&nbsp;هذه&nbsp;العبارة',
 	'spamregex-text' => '(نص)',
 	'spamregex-summary-log' => '(ملخص)',
+	'right-spamregex' => 'منع عبارات السبام من خلال [[Special:SpamRegex]]',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
