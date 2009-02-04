@@ -30,6 +30,17 @@ $wdMessages['en'] = array(
 	'importlangnames_not_found'				=> '<strong>No language entry for "$1" found!</strong>',
 
 	'datasearch'                            => 'Wikidata: Data search',
+	'datasearch_language'					=> 'Language:',
+	'datasearch_found_word'					=> 'Found word',
+	'datasearch_meaning'					=> 'Meaning',
+	'datasearch_ext_identifier'				=> 'External identifier',
+	'datasearch_search_text'				=> 'Search text:',
+	'datasearch_within_words'				=> 'Within words:',
+	'datasearch_within_ext_ids'				=> 'Within external identifiers:',
+	'datasearch_showing_only'				=> 'Showing only a maximum of $1 {{PLURAL:$1|match|matches}}.',
+	'datasearch_match_ext_ids'				=> 'External identifiers matching <i>$1</i>',
+	'datasearch_match_words'				=> 'Words matching <i>$1</i> and associated meanings',
+	'datasearch_match_words_lang'			=> 'Words in <i>$1</i> matching <i>$2</i> and associated meanings',
 	
 	'importtsv'								=> 'Wikidata: Import TSV',
 	'ow_importtsv_title1'					=> 'Import TSV',
