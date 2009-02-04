@@ -63,7 +63,12 @@ class MV_Stream {
 	}
 	// removes the stream from the db:
 	function deleteDB() {
-		$dbw = & wfGetDB( DB_WRITE );
+		$dbw = & wfGetDB( DB_WRITE );		
+		//remove any MVD index items: 
+		MV_Index::remove_by_stream_id(  $this->id  );		
+		//remove any digest 
+		$dbw->delete('mv_clipview_digest', array('stream_id'=> $this->id ));
+		//remove mv_streams
 		$dbw->delete( 'mv_streams', array( 'id' => $this->id ) );
 	}
 	function db_load_stream() {

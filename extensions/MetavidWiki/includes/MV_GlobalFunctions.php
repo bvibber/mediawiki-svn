@@ -750,8 +750,8 @@ function mvGetMVStream( $stream_init ) {
 		$stream_name = $stream_init['name'];
 	} else if ( isset( $stream_init['id'] ) ) {
 		$stream_name = MV_Stream::getStreamNameFromId( $stream_init['id'] );
-	} else {
-		die( 'error no id or name in init' );
+	} else {		
+		die('missing stream id or name'. $stream_init);
 	}
 	// @@todo cache in memcache)	
 	if ( !isset( $MVStreams[$stream_name] ) ) {

@@ -136,7 +136,9 @@ class MV_MagicWords {
 		} else {
 			$outItems = Array();
 			while ( $row = $dbr->fetchObject( $result ) ) {
-				$outItems[]= $this->getItemOutput($row);
+				$o = $this->getItemOutput($row);
+				if($o)
+					$outItems[]=$o; 			
 			}
 			return $this->formatOutputItems($outItems);
 		}
@@ -150,17 +152,19 @@ class MV_MagicWords {
 		$options = 	array( 'GROUP BY' => 'query_key', 'ORDER BY' => '`hit_count`  DESC ',
 				 		'LIMIT' => intval( $this->params['num_results'] ) );
 		$result = $dbr->select( 'mv_clipview_digest',
-		$vars,
-		$conds,
-		__METHOD__,
-		$options
+			$vars,
+			$conds,
+			__METHOD__,
+			$options
 		);
 		if ( $dbr->numRows( $result ) == 0 ) {
 			return '';
 		} else {
 			$outItems = Array();
 			while ( $row = $dbr->fetchObject( $result ) ) {
-				$outItems[]= $this->getItemOutput($row);
+				$o = $this->getItemOutput($row);
+				if($o)
+					$outItems[]=$o; 
 			}
 			return $this->formatOutputItems($outItems);
 		}
@@ -168,11 +172,14 @@ class MV_MagicWords {
 	}
 	function getItemOutput( $row ){
 		global $wgUser;
-		$sk = $wgUser->getSkin();
-
+		$sk = $wgUser->getSkin();		
+		
 		$person_ht = $bill_ht = $category_ht = $o= '';
-		// first make link and stream title:
+		// first make link and stream title:		
 		$mvStream = MV_Stream::newStreamByID( $row->stream_id );
+		if( ! $mvStream->doesStreamExist() ){
+			return false;
+		}
 		$nt = $mvStream->getStreamName() . '/' . seconds2ntp( $row->start_time )
 		. '/' . seconds2ntp( $row->end_time );
 		$mvTitle = new MV_Title( $nt, MV_NS_STREAM );
