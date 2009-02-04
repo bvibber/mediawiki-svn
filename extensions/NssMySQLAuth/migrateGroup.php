@@ -4,7 +4,7 @@ require_once( 'commandLine.inc' );
 
 function migrateGroup( $group ) {
 	$groups = parseGroupFile();
-	
+
 	if ( !isset( $groups[$group] ) )
 		return false;
 	$group = $groups[$group];
@@ -21,11 +21,15 @@ function migrateGroup( $group ) {
 		$pwd = posix_getpwnam( $user );
 		if ( !$pwd )
 			return false;
+		print "Migrating {$pwd['name']}\n";
 		if ( false == $dbw->insert( 'group_membership', array(
 			'gm_group' => $group['name'],
 			'gm_user' => $pwd['uid']
-			), __METHOD__ ) )
+			), __METHOD__ ) ) {
+
+			$dbw->rollback();
 			return false;
+		}
 	}
 
 	$dbw->immediateCommit();
