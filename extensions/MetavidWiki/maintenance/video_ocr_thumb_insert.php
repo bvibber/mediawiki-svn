@@ -73,7 +73,7 @@ $org_start_time = intval( trim( str_replace( 'starttime' , '', $srt_ary[2] )) );
 class streamObject{	};	
 $stream = new streamObject();
 $stream->name = $stream_name;
-$stream->org_start_time =	$org_start_time; 
+$stream->date_start_time =	$org_start_time; 
 $stream->sync_status 	= 	'in_sync';
 $stream->duration		=	$duration;
 	

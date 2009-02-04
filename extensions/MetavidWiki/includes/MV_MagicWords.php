@@ -148,7 +148,7 @@ class MV_MagicWords {
 		$dbr = & wfGetDB( DB_READ );
 		$o = '';
 		$vars = array( 'query_key', 'stream_id', 'start_time', 'end_time', 'COUNT(1) as hit_count' );
-		$conds = array( 'view_date >=' . $dbr->addQuotes( $this->getStartTime() ) );
+		$conds = array( 'view_date >=' . $dbr->addQuotes( $this->getStartTime() ) );		
 		$options = 	array( 'GROUP BY' => 'query_key', 'ORDER BY' => '`hit_count`  DESC ',
 				 		'LIMIT' => intval( $this->params['num_results'] ) );
 		$result = $dbr->select( 'mv_clipview_digest',

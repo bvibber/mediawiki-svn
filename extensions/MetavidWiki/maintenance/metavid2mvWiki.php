@@ -95,6 +95,7 @@ actions:
 		'update_templates' will update templates & some semantic properties
 		'file_check' checks inserted streams file urls/pointers
 		'do_stream_date_check'
+		'do_remove_orphaned_streams' 
 
 EOT;
 	exit ();
@@ -136,6 +137,9 @@ switch ( $args[0] ) {
 	break;
 	case 'do_stream_date_check':
 		do_stream_date_check();
+	break;
+	case 'do_remove_orphaned_streams':
+		do_remove_orphaned_streams();
 	break;
 	case 'update_templates' :
 		$force = ( isset( $options['force'] ) ) ? true:false;

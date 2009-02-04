@@ -34,24 +34,106 @@ function do_stream_attr_check( $old_stream ) {
 	// if($i==3)die;
 	// $i++;
 }
-function do_stream_date_check(){
+function get_all_mv_streams(){
 	$dbr = wfGetDB( DB_READ );
+	$streams = array();
 	$result = $dbr->select( 'mv_streams',
 		'*',
 		'',
-		__METHOD__,
-		array('LIMIT'=> 9000));
-	if ( $dbr->numRows( $result ) == 0 )die("do_stream_file_check: no streams found");
-	
+		__METHOD__
+	);	
+	if ( $dbr->numRows( $result ) == 0 )die("do_stream_file_check: no streams found");	
 	while ( $stream = $dbr->fetchObject( $result ) ) {
+		$streams[$stream->id] = $stream;
+	}
+	return $streams;
+}
+function do_remove_orphaned_streams(){
+	//get all stream ids present in mv_stream_files and mv_stream_images
+	$dbr = wfGetDB( DB_READ );
+	$orphaned_streams = array();
+	$all_valid_streams = get_all_mv_streams();
+	//could be done with a join ..oh well
+	$result = $dbr->select( 'mv_stream_files',
+		'stream_id',
+		'',
+		__METHOD__,
+		array( 'GROUP BY' => 'stream_id')
+	);	
+	while ( $stream = $dbr->fetchObject( $result ) ) {	
+		if(!isset($all_valid_streams[$stream->stream_id ])){
+			$orphaned_streams[ $stream->stream_id ] = 1;
+		}
+	}
+	$result = $dbr->select( 'mv_stream_images',
+		'stream_id',
+		'',
+		__METHOD__,
+		array( 'GROUP BY' => 'stream_id')
+	);	
+	while ( $stream = $dbr->fetchObject( $result ) ) {	
+		if( !isset($all_valid_streams[ $stream->stream_id ] ) ){
+			$orphaned_streams[ $stream->stream_id ] = 1;
+		}
+	}
+	foreach($orphaned_streams as $stream_id => $na){
+		$mvStream = new MV_Stream( array('id'=> $stream_id) );
+		//double check stream does not exist:
+		if( ! $mvStream->doesStreamExist() ){					
+			print "stream id: {$stream_id} does not exist in stream table (remove)\n";
+			//remove files in the stream directory: 
+			$filedir = '/video/metavid/mvprime_stream_images/' .
+							 MV_StreamImage::getRelativeImagePath( $stream_id );	
+			//print "dir is: $filedir \n";
+			if( is_dir($filedir )){
+				$cmd = 'rm -rf ' . $filedir;
+				print "removing image run#: $cmd \n";
+				shell_exec($cmd);
+			}	
+			//print "removing DB entires for $stream_id\n";		
+			$mvStream->deleteDB();
+		}
+	}
+	/*$streams = get_all_mv_streams();
+	foreach( $streams as $stream){
+		//check if stream page exists:
+		$mvStreamTitle = Title::newFromText( $stream->name, MV_NS_STREAM );
+		if( !$mvStreamTitle->exists() ){
+			print "stream: {$stream->name} does not exist as a wiki page\n";
+			//should remove here
+			$mvStream = new MV_Stream( $stream );			
+		}
+	}*/
+}
+function do_stream_date_check(){
+	$streams = get_all_mv_streams();
+	foreach ( $streams as $stream ) {
 		preg_match("/([0-9]+-[0-9]+-[0-9]+)/", $stream->name, $matches);						    			
 		if( ! isset( $matches[1] ) ){
 			print "no date found in {$stream->name}\n";
 			continue;             
-		}               
-		$sd = explode('-',$matches[1]);
-		$sdate = mktime( 9, 0, 0, $sd[0], $sd[1], intval('20'.$sd[2]) );		
-		if( date('d-y', $stream->date_start_time) != date('d-y',$sdate) ) {
+		}
+		$sdate = $force_update = false;
+ 		//check for srt file: 
+ 		$srt_file = '/video/metavid/raw_mpeg2/' . $stream->name . '.srt';
+ 		if( is_file( $srt_file ) ){
+ 			$srt_ary = file( $srt_file );
+ 			$time = intval( trim( str_replace( 'starttime' , '', $srt_ary[2] )) );	 		
+ 			//ignore bad .srt values (before 08 	
+			if( intval( date('y', $time) > 8)) {	 			
+	 			if( $stream->date_start_time != $time){
+	 				$sdate=$time;
+	 				$force_update = true;
+	 				print "force srt update:: ";
+	 			}	 			 
+	 		}
+ 		}
+ 		//no date from srt make starting at 9am
+ 		if( !$sdate ){
+			$sd = explode('-',$matches[1]);
+			$sdate = mktime( 9, 0, 0, $sd[0], $sd[1], intval('20'.$sd[2]) );
+ 		}		
+		if( date('d-y', $stream->date_start_time) != date('d-y',$sdate) || $force_update ) {
 			//print "should update date: " . $stream->date_start_time . ' to '.  $sdate . ' for ' . $stream->name . "\n";
 			$dbw = wfGetDB( DB_WRITE );
 			$sql = "UPDATE `mv_streams` SET `date_start_time`= '$sdate' " .
@@ -60,24 +142,14 @@ function do_stream_date_check(){
 			print "$stream->name date updated\n";
 		}else{
            	print "$stream->name date is ok\n";
-		}
-			
+		}			
 	}
 }
 function do_stream_file_check( $old_stream=false ) {	
 	global $mvgIP, $mvVideoArchivePaths;
 	$stream_set = Array();
 	if($old_stream==false){
-		$dbr = wfGetDB( DB_READ );
-		$result = $dbr->select( 'mv_streams',
-			array('name','state','date_start_time','duration'),
-			'',
-			__METHOD__,
-			array('LIMIT'=> 9000));
-		if ( $dbr->numRows( $result ) == 0 )die("do_stream_file_check: no streams found");
-		while ( $row = $dbr->fetchObject( $result ) ) {
-			$stream_set[] = $row;
-		}
+		$stream_set = get_all_mv_streams();
 	}else{
 		$stream_set = Array( $old_stream );
 	}
