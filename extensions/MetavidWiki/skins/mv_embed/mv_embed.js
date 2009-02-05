@@ -2571,7 +2571,7 @@ embedVideo.prototype = {
         var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
         
         var _this=this;               
-        var out='<span style="color:white"><blockquote style="background-color:black">';
+        var out='<span style="color:#FFF;background-color:black;"><blockquote>';
         var _this=this;
         //js_log('selected src'+ _this.media_element.selected_source.url);
 		$j.each(this.media_element.getPlayableSources(), function(index, source)

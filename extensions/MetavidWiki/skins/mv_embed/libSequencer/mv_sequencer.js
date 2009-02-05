@@ -10,7 +10,7 @@
  *
  * 
  * mv_sequencer.js 
- * 	is a basic embedable sequencer. 
+ * 	is a basic embeddable sequencer. 
  *  extends the playlist with drag/drop/sortable/add/remove functionality
  *  editing of annotative content (mostly for wiki)
  *  enables more dynamic layouts
@@ -922,10 +922,10 @@ mvSequencer.prototype = {
 										'time':0
 									});			
 						//render out edit button
-						track_html+='<div onClick="'+this.instance_name+'.editClip('+track_id+','+j+')" class="clip_edit_button clip_edit_base"/>';
+						track_html+='<div class="clip_edit_button clip_edit_base"/>';
 													
 						//render out transition edit box 
-						track_html+='<div style="" id="tb_' + base_id + '" class="clip_trans_box"/>';
+						track_html+='<div id="tb_' + base_id + '"  style="" class="clip_trans_box"/>';
 						
 						//render out adjustment text
 						track_html+='<div id="' + base_id + '_adj' + '" class="mv_adj_text" style="top:'+ (this.track_clipThumb_height+10 )+'px;">'+
@@ -936,7 +936,7 @@ mvSequencer.prototype = {
 						track_html+='</span>';						
 													
 					}														
-					//do per display type rendering: 
+					//do timeline_mode rendering:
 					if(this.timeline_mode == 'time'){		
 						clip.left_px = Math.round( cur_clip_time/this.timeline_scale);															
 						clip.width_px = Math.round( Math.round( clip.getDuration() )/this.timeline_scale);
@@ -980,6 +980,16 @@ mvSequencer.prototype = {
 					$j(this).removeClass("clip_edit_base").addClass("clip_edit_over");
 				},function(){
 					$j(this).removeClass("clip_edit_over").addClass("clip_edit_base");
+				}).click(function(){					
+					//get the clip (siblings with mv_clip_thumb class) 
+					var cur_clip_elm =  $j(this).siblings('.mv_clip_thumb');
+					//select the clip (add mv_selected_clip if not already selected) 
+					if( ! $j( cur_clip_elm ).hasClass("mv_selected_clip") ){																					
+						$j( cur_clip_elm ).addClass('mv_selected_clip');						
+						$j('#' + $j( cur_clip_elm ).parent().attr("id") + '_adj').fadeIn("fast");												
+					}	
+					//invoke the edit resource selected resource tab:  	
+					this_seq.doEditSelectedClip();	
 				});								
 				
 				//apply onClick edit controls: 

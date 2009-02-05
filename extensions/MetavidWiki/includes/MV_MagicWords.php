@@ -121,11 +121,11 @@ class MV_MagicWords {
 	function getRecentSpeeches(){
 		$dbr = & wfGetDB( DB_READ );
 		//do a query for speeches:
-		$vars = array( 'query_key', 'stream_id', 'start_time', 'end_time');
-		$conds = array( 'view_date >=' . $dbr->addQuotes( $this->getStartTime() ) );
-		$options = 	array( 'GROUP BY' => 'stream_id', 'ORDER BY' => '`stream_id`  DESC ',
+		$vars = array( '*' );
+		$conds = array();
+		$options = 	array( 'ORDER BY' => '`date_start_time`  DESC ',
 				 		'LIMIT' => intval( $this->params['num_results'] ) );
-		$result = $dbr->select( 'mv_clipview_digest',
+		$result = $dbr->select( 'mv_streams',
 			$vars,
 			$conds,
 			__METHOD__,
@@ -136,7 +136,10 @@ class MV_MagicWords {
 		} else {
 			$outItems = Array();
 			while ( $row = $dbr->fetchObject( $result ) ) {
-				$o = $this->getItemOutput($row);
+				$row->stream_id = $row->id;
+				$row->end_time =   $row->duration;				
+				//get the first speech in that day:				 
+				$o = $this->getItemOutput($row, array('use_mvd_time'=>true));				
 				if($o)
 					$outItems[]=$o; 			
 			}
@@ -170,16 +173,82 @@ class MV_MagicWords {
 		}
 			
 	}
-	function getItemOutput( $row ){
+	function getItemOutput( $row, $opt=array() ){
 		global $wgUser;
 		$sk = $wgUser->getSkin();		
-		
+		//set defaults:
 		$person_ht = $bill_ht = $category_ht = $o= '';
+		
+		if(!isset($row->start_time)){
+			$row->start_time=0;
+		}
+		if(!isset($row->end_time)){
+			$row->end_time=60*20;
+		}
+		$mvd_out_html ='';
+		$mvd_rows = MV_Index::getMVDInRange(
+			$row->stream_id,
+			$row->start_time,
+			$row->end_time,
+			$mvd_type = 'anno_en',
+			$getText = true,
+			$smw_properties = array( 'Speech_by', 'Bill', 'category' ),
+			$options = array( 'limit' => 1 )
+		);
+		if ( count( $mvd_rows ) != 0 ) {
+			reset( $mvd_rows );		
+			$mvd_row = current( $mvd_rows );
+			if( isset($opt['use_mvd_time']) && $opt['use_mvd_time'] ){
+				$row->start_time = $mvd_row->start_time;
+				$row->end_time = $mvd_row->end_time;
+			}
+			// print_r($mvd_rows);
+			// print "type of: " . gettype($mvd_row);
+			if ( isset( $mvd_row->Speech_by ) ) {
+				if ( trim( $mvd_row->Speech_by ) != '' ) {
+					$ptitle = Title::MakeTitle( NS_MAIN, $mvd_row->Speech_by );
+					$mvd_out_html .= '<span class="keywords">' .
+							$sk->makeKnownLinkObj( $ptitle, $ptitle->getText() ) .
+ 						'</span>';
+				}
+			}
+			if ( isset( $mvd_row->Bill ) ) {
+				if ( trim( $mvd_row->Bill ) != '' ) {
+					$btitle = Title::MakeTitle( NS_MAIN, $mvd_row->Bill );
+					$mvd_out_html .= '<br><span class="keywords">Bill:' .
+							$sk->makeKnownLinkObj( $btitle ) . '
+ 						</span>';
+				}
+			}
+			global $wgContLang;
+			$mvdNStxt = $wgContLang->getNsText(MV_NS_MVD);
+			//grab categories:
+			/*$cl_res = $dbr->select('categorylinks', 'cl_to',
+			 array('cl_sortkey'=>$mvdNStxt.':'.str_replace('_',' ',$mvd_row->wiki_title)),
+			 'getTopClips::Categories',
+			 'LIMIT 0, 5');
+			 if($dbr->numRows($cl_res)!=0){
+			 $o.='<span class="keywords">Categories: ';
+			 $coma='';
+			 while($cl_row= $dbr->fetchObject($cl_res) ){
+			 $cTitle =  Title::MakeTitle(NS_CATEGORY, $cl_row->cl_to);
+			 $mvd_out_html.=$coma.$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
+			 $coma=', ';
+			 }
+			 $mvd_out_html.='</span>';
+			 }*/
+		}
+		
+		
 		// first make link and stream title:		
 		$mvStream = MV_Stream::newStreamByID( $row->stream_id );
 		if( ! $mvStream->doesStreamExist() ){
 			return false;
 		}
+		//limit our output range to < 20 min
+		if( ($row->end_time - $row->start_time) > 20*60)
+			$row->end_time = $row->start_time + 20*60;			
+		
 		$nt = $mvStream->getStreamName() . '/' . seconds2ntp( $row->start_time )
 		. '/' . seconds2ntp( $row->end_time );
 		$mvTitle = new MV_Title( $nt, MV_NS_STREAM );
@@ -207,60 +276,12 @@ class MV_MagicWords {
 			$title_span = $mvTitle->getStreamNameText() . $mvTitle->getTimeDesc();
 		}
 		$o .= '<span class="title">' .
-		$sk->makeKnownLinkObj( $mvStreamTitle,
-		$title_span,
- 					  'tl=1' ) .
- 			'</span>';
-		// try to get metadata from anno_en first.
-		// @@todo maybe the following metadata grabbing could be abstracted to a single function in mv_index
-		$mvd_rows = MV_Index::getMVDInRange(
-		$row->stream_id,
-		$row->start_time,
-		$row->end_time,
-		$mvd_type = 'anno_en',
-		$getText = true,
-		$smw_properties = array( 'Speech_by', 'Bill', 'category' ),
-		$options = array( 'limit' => 1 )
-		);
-		if ( count( $mvd_rows ) != 0 ) {
-			reset( $mvd_rows );
-			$mvd_row = current( $mvd_rows );
-			// print_r($mvd_rows);
-			// print "type of: " . gettype($mvd_row);
-			if ( isset( $mvd_row->Speech_by ) ) {
-				if ( trim( $mvd_row->Speech_by ) != '' ) {
-					$ptitle = Title::MakeTitle( NS_MAIN, $mvd_row->Speech_by );
-					$o .= '<span class="keywords">' .
-					$sk->makeKnownLinkObj( $ptitle, $ptitle->getText() ) .
- 						'</span>';
-				}
-			}
-			if ( isset( $mvd_row->Bill ) ) {
-				if ( trim( $mvd_row->Bill ) != '' ) {
-					$btitle = Title::MakeTitle( NS_MAIN, $mvd_row->Bill );
-					$o .= '<br><span class="keywords">Bill:' .
-					$sk->makeKnownLinkObj( $btitle ) . '
- 						</span>';
-				}
-			}
-			global $wgContLang;
-			$mvdNStxt = $wgContLang->getNsText(MV_NS_MVD);
-			//grab categories:
-			/*$cl_res = $dbr->select('categorylinks', 'cl_to',
-			 array('cl_sortkey'=>$mvdNStxt.':'.str_replace('_',' ',$mvd_row->wiki_title)),
-			 'getTopClips::Categories',
-			 'LIMIT 0, 5');
-			 if($dbr->numRows($cl_res)!=0){
-			 $o.='<span class="keywords">Categories: ';
-			 $coma='';
-			 while($cl_row= $dbr->fetchObject($cl_res) ){
-			 $cTitle =  Title::MakeTitle(NS_CATEGORY, $cl_row->cl_to);
-			 $o.=$coma.$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
-			 $coma=', ';
-			 }
-			 $o.='</span>';
-			 }*/
-		}
+				$sk->makeKnownLinkObj( $mvStreamTitle,
+					$title_span,
+	 				'tl=1' ) .
+ 			'</span>';		
+		//add mvd_annotative output: 
+		$o.=$mvd_out_html;
 		return $o;
 	}
 	function formatOutputItems($outItems){

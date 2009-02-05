@@ -705,11 +705,11 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 	include_once( 'scrape_and_insert.inc.php' );
 	$mvScrape = new MV_BaseScraper();
 
-	//get all people from the people category 
+	//get all people from the congress people category 
 	$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
 		'cl_to' => 'Person',
-		'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
-	) . '%\' COLLATE latin1_general_ci' ), __METHOD__, array (
+		/*'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
+	) . '%\' COLLATE latin1_general_ci' ), __METHOD__, array (*/
 		'LIMIT' => $result_limit
 	) );
 	$out = '';

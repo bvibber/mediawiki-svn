@@ -234,9 +234,7 @@ class MV_Stream {
 		$dbw->delete('mv_clipview_digest', array('stream_id'=> $this->id ));
 		//remove any images
 		$dbw->delete('mv_stream_images', array('stream_id'	=> $this->id));
-		//remove pointers to any files:
-		$dbw->delete('mv_stream_images', array('stream_id'	=> $this->id));				
-		//remove mv_streams
+		//remove pointers to any files:				
 		$dbw->delete( 'mv_stream_files', array( 'stream_id' => $this->id ));
 	}
 	function updateStreamDB() {
