@@ -362,9 +362,6 @@ class DeleteQueueItem {
 	 */
 	public function setQueue( $queue, $reason, $timestamp = null ) {
 	
-		if (!$this->getCaseID())
-			return; // Case doesn't exist anymore.
-	
 		$dbw = wfGetDB( DB_MASTER );
 
 		if ($timestamp == null) {

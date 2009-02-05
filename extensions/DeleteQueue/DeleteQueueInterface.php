@@ -35,7 +35,7 @@ class DeleteQueueInterface {
 
 		if ($form) {
 			$wgOut->addHTML( $form );
-			$article->showLogExtract( $wgOut );
+// 			$article->showLogExtract( $wgOut );
 		}
 	}
 
@@ -67,7 +67,7 @@ class DeleteQueueInterface {
 		$form = Xml::tags( 'form', array( 'action' => $article->mTitle->getLocalUrl(), 'method' => 'POST' ), $form );
 
 		$wgOut->addHTML( $form );
-		$article->showLogExtract( $wgOut );
+// 		$article->showDeletionLog();
 	}
 
 	/**

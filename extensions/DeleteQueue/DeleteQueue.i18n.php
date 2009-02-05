@@ -119,6 +119,8 @@ Please ensure that this page can be speedily deleted in accordance with policy."
 
 A [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} list] of endorsements and objections of this deletion is available, and the discussion itself can be found at [[$2]].
 Please ensure that you make a decision in accordance with the consensus on the discussion.",
+	'deletequeue-review-success' => 'You have successfully reviewed the deletion of this page',
+	'deletequeue-review-success-title' => 'Review complete',
 
 	// Deletion discussions
 	'deletequeue-deletediscuss-discussionpage' => "This is the discussion page for the deletion of [[$1]].

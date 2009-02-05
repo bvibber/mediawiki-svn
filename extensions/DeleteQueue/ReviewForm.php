@@ -27,13 +27,14 @@ class DeleteQueueReviewForm {
 		$action = $wgRequest->getVal( 'wpSpeedyAction' );
 		$processed = true;
 		$dqi = DeleteQueueItem::newFromArticle( $article );
+		$newQueue = $wgRequest->getVal( 'wpSpeedyRequeue' );
 
 		$lp = new LogPage( 'delete' );
 		$reason = $wgRequest->getText( 'wpReason' );
 
 		// Check the action against the list
 		list($enabledActions) = $this->availableActions();
-		if (!in_array($action,$enabledActions)) {
+		if ( !in_array( $action,$enabledActions ) && ( $action != 'requeue' || !in_array( "requeue-$newQueue", $enabledActions ) ) ) {
 			return wfMsg( 'deletequeue-review-actiondenied' );
 		}
 
@@ -59,8 +60,6 @@ class DeleteQueueReviewForm {
 				$processed = true;
 				break;
 			case 'requeue':
-				$newQueue = $wgRequest->getVal( 'wpSpeedyRequeue' );
-
 				$lp->addEntry( 'requeue', $article->mTitle, $reason, array(wfMsgForContent("deletequeue-queue-$queue"), wfMsgForContent( "deletequeue-queue-{$newQueue}" )) );
 
 				list($reason1,$reason2) = array($wgRequest->getText( 'wpSpeedyNewReason' ), $wgRequest->getText( 'wpSpeedyNewExtra' ) );
@@ -138,6 +137,8 @@ class DeleteQueueReviewForm {
 		}
 
 		if (($error = $this->submit( $article )) === true) {
+			$wgOut->setPageTitle( wfMsg( "deletequeue-review-success-title" ) );
+			$wgOut->addWikiMsg( "deletequeue-review-success" );
 			return;
 		}
 
@@ -224,7 +225,7 @@ class DeleteQueueReviewForm {
 
 		$wgOut->addHTML( $output );
 
-		$article->showLogExtract( $wgOut );
+// 		$article->showLogExtract( $wgOut );
 	}
 
 	/** Returns the action given in enabledText, a 'disabled' message, or nothing, depending on the status of the action. */
@@ -299,7 +300,7 @@ class DeleteQueueReviewForm {
 				// Tell them they're involved.
 				$disabled['delete'] = wfMsgExt( 'deletequeue-actiondisabled-involved', array( 'parseinline' ), array( $descriptiveRolesText ) );
 			} else {
-				// An uninvolved admin wants to delete an expired proposed deletion. Kill it.
+				// Allow uninvolved admins to delete expired prods
 				$enabled[] = 'delete';
 			}
 		} elseif ($queue == 'deletediscuss') {
