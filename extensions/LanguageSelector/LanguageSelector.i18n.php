@@ -110,6 +110,8 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'languageselector' => 'Jezik',
+	'languageselector-desc' => 'Odabir jezika na svakoj stranici, također i za posjetioce',
+	'languageselector-setlang' => 'postavi',
 );
 
 /** Catalan (Català)

@@ -39,6 +39,15 @@ $messages['avk'] = array(
 	'whosonline-desc' => 'Nedira va [[Special:WhosOnline|vexala]] dem dogluyayan favesik yo isu yoltiskik',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'whosonline' => 'Хто анлайн',
+	'whosonline-desc' => 'Паказвае [[Special:WhosOnline|сьпіс]] увайшоўшых і ананімных удзельнікаў, якія знаходзяцца анлайн',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -71,6 +80,14 @@ $messages['de'] = array(
 	'whosonline-desc' => 'Zeigt [[Special:WhosOnline|eine Liste]] der eingeloggten und anonymen Benutzer, die im Moment online sind',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'whosonline' => 'Chto jo online',
+	'whosonline-desc' => 'Pokazujo [[Special:WhosOnline|lisćinu]] pśizjawjonych a anonymnych wužywarjow, kótarež su tuchylu online',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -101,6 +118,14 @@ $messages['gl'] = array(
 	'whosonline' => 'Quen está conectado',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'whosonline' => 'Wär isch online',
+	'whosonline-desc' => 'Zeigt [[Special:WhosOnline|e Lischt]] vu dr aagmäldete un anonyme Benutzer, wu grad online sin',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -124,6 +149,14 @@ $messages['is'] = array(
 	'whosonline-desc' => 'Sýna [[Special:WhosOnline|lista]] yfir innskráða og óþekkta notendur sem eru tengdir',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'whosonline' => 'オンラインの利用者',
+	'whosonline-desc' => '現在オンライン状態にある登録利用者および匿名利用者の[[Special:WhosOnline|一覧]]を表示する',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -136,6 +169,14 @@ $messages['jv'] = array(
  */
 $messages['ko'] = array(
 	'whosonline-desc' => '로그인 하거나 하지 않은 지금 접속해 있는 사용자의 [[Special:WhosOnline|목록]]을 보여줍니다.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'whosonline' => 'Wä es online?',
+	'whosonline-desc' => 'Deijt en [[Special:WhosOnline|Leß]] met enjelogkte un namelose Metmaacher aanzeije, die jraad online sen.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -168,6 +209,14 @@ $messages['mr'] = array(
 $messages['nl'] = array(
 	'whosonline'      => 'Wie is er online',
 	'whosonline-desc' => '[[Special:WhosOnline|Een lijst]] van actieve aangemelde en anonieme gebruikers',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'whosonline' => 'Kven er pålogga',
+	'whosonline-desc' => 'Viser [[Special:WhosOnline|ei lista]] over registrerte og anonyme brukarar som er tilkopla',
 );
 
 /** Norwegian (‪Norsk (bokmål)‬)
@@ -255,10 +304,11 @@ $messages['te'] = array(
 	'whosonline' => 'ఆన్&zwnj;లైన్లో ఎవరున్నారు',
 );
 
-/** Vietnamese (Tiếng Việt)
- * @author Vinhtantran
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
  */
-$messages['vi'] = array(
-	'whosonline'      => 'Thành viên trực tuyến',
-	'whosonline-desc' => 'Hiển thị [[Special:WhosOnline|danh sách]] các thành viên đã đăng nhập lẫn vô danh hiện đang trực tuyến',
+$messages['tl'] = array(
+	'whosonline' => 'Sino ba ang nasa internet',
+	'whosonline-desc' => 'Nagpapakita ng [[Special:WhosOnline|isang talaan]] ng nakatala at hindi nagpapakilalang mga tagagamit na kasalukuyang nasa internet',
 );
+

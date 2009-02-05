@@ -68,6 +68,13 @@ $messages['bg'] = array(
 	'editsubpages-desc' => 'Позволява на администраторите чрез [[MediaWiki:Unlockedpages]] да свалят защитата на страница и всички нейни подстраници за анонимно редактиране',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'editsubpages-desc' => 'Omogućuje administratorima da otključaju stranicu i sve podstranice za anonimno uređivanje preko [[MediaWiki:Unlockedpages]]',
+);
+
 /** German (Deutsch)
  * @author Flominator
  */

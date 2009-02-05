@@ -120,6 +120,7 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'povwatch' => 'مراقبة بى أو في',
@@ -155,6 +156,8 @@ $messages['arz'] = array(
 	'povwatch_added' => 'تمت الإضافة',
 	'right-povwatch_admin' => 'إدارة صلاحيات المستخدم لإضافة الصفحات إلى قوائم مراقبة المستخدمين الآخرين',
 	'right-povwatch_user' => 'إضافة صفحات إلى قوائم مراقبة مستخدمين آخرين',
+	'action-povwatch_admin' => 'ادارة حقوق اليوزر فى الـ PovWatch',
+	'action-povwatch_user' => 'ضيف الصفحه دى لـ ليستة المراقبه بتاعة يوزر تانى',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -1114,8 +1117,8 @@ Trykk på knappen nedanfor for å abonnera.',
 	'povwatch_added' => 'lagt til',
 	'right-povwatch_admin' => 'Handsama brukarrettar for kven som kan leggja til sider i overvakingslistene til andre brukarar.',
 	'right-povwatch_user' => 'Leggja til sider i overvakingslistene til andre brukarar.',
-	'action-povwatch_admin' => 'handsam brukarrettar for PovWatch',
-	'action-povwatch_user' => 'legg til denne sida på overvakingslista til ein annan brukar',
+	'action-povwatch_admin' => 'handsama brukarrettar for PovWatch',
+	'action-povwatch_user' => 'leggja til denne sida på overvakingslista til ein annan brukar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -84,6 +84,11 @@ $aliases['hu'] = array(
 	'WhosOnline' => array( 'Ki van online' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'WhosOnline' => array( 'オンラインの利用者' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhosOnline' => array( 'អ្នកកំពុងនៅលើបណ្ដាញ' ),

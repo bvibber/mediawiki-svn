@@ -537,6 +537,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Dereckson
  * @author Grondin
  * @author IAlex
@@ -589,7 +590,7 @@ $messages['fr'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Votre révision a été enregistrée.</span>",
 	'revision_review_this_page_version_link' => 'Réviser cette version de la page',
 	'review_page_review' => 'Révision de la page « $1 »',
-	'review_blocked' => 'Vous êtes bloqué et ne pouvez pas participer aux relectures.',
+	'review_blocked' => 'Vous êtes bloqué{{GENDER:||e|(e)}} et ne pouvez pas participer aux relectures.',
 	'review_wrong_namespace' => 'Les pages dans cet espace de nom ne peuvent être révisées.',
 	'review_topic' => 'Sujet',
 	'review_no_opinion' => 'Sans opinion',

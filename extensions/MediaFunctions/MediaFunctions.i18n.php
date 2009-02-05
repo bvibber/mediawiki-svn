@@ -72,10 +72,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'mediafunctions-desc' => 'Parserfunktionen zur Ermittlung von Informatioen über Mediendateien',
+	'mediafunctions-desc' => 'Parserfunktionen zur Ermittlung von Informationen über Mediendateien',
 	'mediafunctions-invalid-title' => '„$1“ ist kein gültiger Name',
 	'mediafunctions-not-exist' => '„$1“ ist nicht vorhanden',
 );
@@ -150,6 +151,15 @@ $messages['gl'] = array(
 	'mediafunctions-desc' => 'Funcións de análise para obter información sobre ficheiros multimedia',
 	'mediafunctions-invalid-title' => '"$1" non é un título válido',
 	'mediafunctions-not-exist' => '"$1" non existe',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'mediafunctions-desc' => 'Parserfunktione go Informatione iber Mediedateien usefinde',
+	'mediafunctions-invalid-title' => '„$1“ isch kei giltige Name',
+	'mediafunctions-not-exist' => '„$1“ git s nit',
 );
 
 /** Hebrew (עברית)

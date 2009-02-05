@@ -117,6 +117,14 @@ $messages['eo'] = array(
 	'right-userrights-global' => 'Administri ĝeneralajn uzulajn rajtojn',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'globaluserrights' => 'Administración global de derechos de usuario',
+	'right-userrights-global' => 'Administrar derechos de usuario global',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

@@ -325,10 +325,20 @@ Klaku <a href='$1'>ĉi tie</a> por reveni.",
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'spamdifftool_cantedit' => 'Disculpe - usted no tiene permiso para editar la lista negra de spam.',
+	'spamdifftool_notext' => "No hay texto para agregar en la lista negra de spam.
+Click <a href='$1'>aquí</a> para continuar.",
+	'spamdifftool_summary' => 'Agregando a la lista negra de spam',
+	'spamdifftool_no_urls_detected' => "Ningún urls fue borrado.
+Click <a href='$1'>aquí</a> para regresar.",
+	'spamdifftool_spam_link_text' => 'agregar a spam',
+	'spamdifftool_option_domain' => 'Todo de este dominio',
+	'spamdifftool_option_subdomain' => 'Todo de este subdominio',
 	'spamdifftool_option_none' => 'nada',
 	'spamdifftool_block' => 'Bloqueo:',
 	'spamdifftool_submit_buttom' => 'Enviar',

@@ -272,6 +272,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author IAlex
  * @author Zetud
  */
@@ -284,7 +285,7 @@ $messages['fr'] = array(
 	'onlinestatus-subtitle-online' => 'Cet utilisateur est actuellement en ligne',
 	'onlinestatus-tab' => 'Statut',
 	'onlinestatus-toggles-desc' => 'Votre statut&nbsp;:',
-	'onlinestatus-toggles-explain' => 'Ceci permet aux autres utilisateurs de savoir si vous êtes actuellement présent en regardant votre page utilisateur.',
+	'onlinestatus-toggles-explain' => 'Ceci permet aux autres utilisateurs de savoir si vous êtes actuellement présent{{GENDER:||e|(e)}} en regardant votre page utilisateur.',
 	'onlinestatus-toggles-show' => 'Montrer mon statut sur ma page utilisateur',
 	'onlinestatus-toggle-offline' => 'Absent',
 	'onlinestatus-toggle-online' => 'Présent',

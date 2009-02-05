@@ -466,6 +466,7 @@ Verŝajne ne estas uzanto kun tiu nomo.',
  * @author Piolinfax
  */
 $messages['es'] = array(
+	'regexblock-already-blocked' => '"$1" ya está bloqueado.',
 	'regexblock-form-username' => 'Dirección IP o nombre de usuario:',
 	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-account-block' => 'Bloquear creaación de nuevas cuentas',
@@ -510,8 +511,9 @@ $messages['fr'] = array(
 	'regexblockstats' => 'Statistiques sur les blocages par expressions régulières',
 	'regexblock-help' => "Utilisez le formulaire ci-dessous pour bloquer l’accès en écriture d’une adresse IP ou d’un nom d’utilisateur. Ceci doit être fait uniquement pour éviter tout vandalisme et conformément aux règles prescrites sur le projet. ''Cette page vous autorise même à bloquer des utilisateurs non enregistrés et permet aussi de bloquer des utilisateur présentant des noms similaires. Par exemple, « Test » sera bloqué en même temps que « Test 2 » etc. Vous pouvez aussi bloquer des adresses IP entières, ce qui signifie que personne travaillant depuis celles-ci ne pourra éditer des pages. Note : des adresses IP partielles seront considérées comme des noms d’utilisateur lors du blocage. Si aucun motif n’est indiqué en commentaire, un motif par défaut sera indiqué.''",
 	'regexblock-page-title-1' => 'Blocage d’une adresse utilisant une expression régulière',
-	'regexblock-reason-ip' => 'Cette adresse IP est écartée de toute édition pour cause de vandalisme ou autres faits analogues par vous ou quelqu’un d’autre partageant votre adresse IP. Si vous êtes persuadé qu’il s’agit d’une erreur, $1',
-	'regexblock-reason-name' => 'Cet utilisateur est écarté de toute édition pour cause de vandalisme ou autres faits analogues. Si vous êtes persuadé qu’il s’agit d’une erreur, $1.',
+	'regexblock-reason-ip' => 'Cette adresse IP est écartée de toute édition pour cause de vandalisme ou autres faits analogues par vous ou quelqu’un d’autre partageant votre adresse IP. Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, $1',
+	'regexblock-reason-name' => 'Cet utilisateur est écarté de toute édition pour cause de vandalisme ou autres faits analogues.
+Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, $1.',
 	'regexblock-reason-regex' => 'Cet utilisateur est écarté de toute édition pour cause de vandalisme ou autres faits analogues par un utilisateur ayant un nom similaire. Veuillez créer un autre compte ou $1 pour signaler le problème.',
 	'regexblock-form-username' => 'Adresse IP ou Utilisateur :',
 	'regexblock-form-reason' => 'Motif :',

@@ -224,6 +224,20 @@ $messages['grc'] = array(
 	'lua_error_internal' => 'Ἐσώτερον σφάλμα',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'lua_desc' => 'Erwyteret dr Parser mit ere Unterstitzig fir yybetteti Bleck vum [http://www.lua.org/ Lua]-Code',
+	'lua_error' => 'Fähler in dr Zyyle $1',
+	'lua_extension_notfound' => 'Lua-Erwyterig nit konfiguriert',
+	'lua_interp_notfound' => 'Lua-Interpreter nit gfunde',
+	'lua_error_internal' => 'Intärne Fähler',
+	'lua_overflow_recursion' => 'An di maximal Aazahl vu Rekursione chu',
+	'lua_overflow_loc' => 'An di maximal Zyylenaazahl vum Code chu',
+	'lua_overflow_time' => 'An di maximal Uusfierigsduur chu',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

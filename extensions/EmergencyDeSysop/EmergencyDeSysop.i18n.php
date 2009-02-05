@@ -153,6 +153,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  */
 $messages['fr'] = array(
@@ -167,7 +168,7 @@ $messages['fr'] = array(
 	'emergencydesysop-nogroups' => 'Néant',
 	'emergencydesysop-done' => 'Action terminée, vous et [[$1]] avez eu ensemble vos droits d’administrateur de retirés.',
 	'emergencydesysop-invalidtarget' => 'L’utilisateur visé n’existe pas.',
-	'emergencydesysop-blocked' => 'Vous ne pouvez pas accéder à cette page tant que vous êtes bloqué',
+	'emergencydesysop-blocked' => 'Vous ne pouvez pas accéder à cette page tant que vous êtes bloqué{{GENDER:||e|(e)}}',
 	'emergencydesysop-noright' => 'Vous n’avez pas les permissions suffisantes pour accéder à cette page',
 	'right-emergencydesysop' => 'Possible de désysoper mutuellement un autre utilisateur.',
 );

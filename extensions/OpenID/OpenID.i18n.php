@@ -859,6 +859,7 @@ Muussa tapauksessa valitse <code>Jatka</code>.',
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author McDutchie
@@ -910,7 +911,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidconvertsuccesstext' => 'Vous avez converti avec succès votre OpenID vers $1.',
 	'openidconvertyourstext' => 'C’est déjà votre OpenID.',
 	'openidconvertothertext' => "Ceci est l'OpenID de quelqu'un d'autre.",
-	'openidalreadyloggedin' => "'''Vous êtes déjà connecté, $1 !'''
+	'openidalreadyloggedin' => "'''Vous êtes déjà connecté{{GENDER:||e|(e)}}, $1 !'''
 
 Vous vous désirez utiliser votre OpenID pour vous connecter ultérieurement, vous pouvez [[Special:OpenIDConvert|convertir votre compte pour utiliser OpenID]].",
 	'tog-hideopenid' => 'Cache votre <a href="http://openid.net/">OpenID</a> sur votre page utilisateur, si vous vous connectez avec OpenID.',

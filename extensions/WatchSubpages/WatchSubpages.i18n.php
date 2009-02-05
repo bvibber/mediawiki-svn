@@ -179,6 +179,7 @@ $messages['es'] = array(
 	'watchsubpages-addedtowatchlist' => 'Lo siguiente ha sido agregado a su lista de vigilancia.',
 	'watchsubpages-addtitles' => 'Agregar páginas',
 	'watchsubpages-addtitlestowatchlist' => 'Agregar páginas a la lista de seguimiento',
+	'watchsubpages-desc' => 'Rápidamente [[Special:WatchSubpages|agregue todas las subpáginas]] de una página en la lista de vigilancia',
 );
 
 /** Basque (Euskara)

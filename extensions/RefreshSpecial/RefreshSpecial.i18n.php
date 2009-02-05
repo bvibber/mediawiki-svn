@@ -661,6 +661,7 @@ Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater valte' 
 	'refreshspecial-button' => 'Oppdater valte',
 	'refreshspecial-fail' => 'Merk av minst éi spesialsida som skal oppdaterast',
 	'refreshspecial-refreshing' => 'oppdaterer spesialsider',
+	'refreshspecial-skipped' => 'billig, hoppa over',
 	'refreshspecial-success-subtitle' => 'oppdaterer spesialsider',
 	'refreshspecial-choice' => 'oppdaterer spesialsider',
 	'refreshspecial-js-disabled' => '(<i>Du kan ikkje merkja alle sider om JavaScript er slege av</i>)',
@@ -673,6 +674,7 @@ Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater valte' 
 	'refreshspecial-reconnected' => 'Kopla til på nytt.',
 	'refreshspecial-reconnecting' => 'Tilkopling mislukkast, prøver om att om ti sekund…',
 	'refreshspecial-page-result' => 'fekk {{PLURAL:$1|éi rekkja|$1 rekkjer}} i',
+	'refreshspecial-total-display' => 'Oppdaterte {{PLURAL:$1|éi sida|$1 sider}} med totalt {{PLURAL:$2|éi rekkja|$2 rekkjer}} med tida $3 (total skriptkøyretid er $4)',
 	'right-refreshspecial' => 'Oppdatera spesialsider',
 );
 

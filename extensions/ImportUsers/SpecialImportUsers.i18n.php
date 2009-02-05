@@ -29,7 +29,6 @@ $messages['en'] = array(
 	'importusers-email'                   => 'e-mail',
 	'importusers-realname'                => 'real name',
 	'right-import_users' => 'Import users in bulk',
-	'action-import_users' => 'import users in bulk',
 );
 
 /** Message documentation (Message documentation)
@@ -835,6 +834,8 @@ $messages['lb'] = array(
 	'importusers-password' => 'Passwuert',
 	'importusers-email' => 'E-Mailadress',
 	'importusers-realname' => 'richtege Numm',
+	'right-import_users' => 'Benotzer a grousser Zuel importéieren',
+	'action-import_users' => "Benotzer a grousser Zuel z'importéieren",
 );
 
 /** Eastern Mari (Олык Марий)

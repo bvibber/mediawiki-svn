@@ -360,9 +360,9 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'whoiswatching' => '誰がページをウォッチしているのか',
+	'whoiswatching' => 'ページをウォッチしている利用者',
 	'whoiswatching-desc' => 'ページをウォッチしている利用者の一覧を提供する',
-	'specialwhoiswatchingthepage' => '誰が %s をウォッチしているのか',
+	'specialwhoiswatchingthepage' => '%s をウォッチしている利用者',
 	'specialwhoiswatchingusage' => 'この特別ページは単独では利用できません。この特別ページへのエントリーポイントを定義するためには [[MediaWiki:Number_of_watching_users_pageview]] を使用してください。',
 	'specialwhoiswatchingaddusers' => '利用者のウォッチリストにページを追加',
 	'specialwhoiswatchingaddbtn' => '選択した利用者を追加',

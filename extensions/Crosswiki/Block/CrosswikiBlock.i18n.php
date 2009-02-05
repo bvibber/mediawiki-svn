@@ -460,6 +460,7 @@ Por favor, verifique si está autorizado a actuar en esa wiki y que sus acciones
 	'crosswikiblock-noemail' => 'Prevenir el envío de correo electrónico',
 	'crosswikiunblock' => 'Desbloquear usuario en otra wiki',
 	'crosswikiunblock-reason' => 'Motivo:',
+	'crosswikiblock-alreadyblocked' => 'Usuario "$3" ya está bloqueado.',
 );
 
 /** Estonian (Eesti)
@@ -533,6 +534,7 @@ Palaa:
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Meithal
@@ -542,8 +544,7 @@ $messages['fr'] = array(
 	'crosswikiblock-desc' => "Permet de bloquer des utilisateurs sur d'autres wikis en utilisant [[Special:Crosswikiblock|une page spéciale]]",
 	'crosswikiblock' => 'Bloquer un utilisateur sur un autre wiki',
 	'crosswikiblock-header' => 'Cette page permet de bloquer un utilisateur sur un autre wiki.
-
-Vérifiez si vous êtes habilité pour agir sur ce wiki et que vos actions respectent toutes les règles.',
+Vérifiez si vous êtes habilité{{GENDER:||e|(e)}} pour agir sur ce wiki et que vos actions respectent toutes les règles.',
 	'crosswikiblock-target' => "Adresse IP ou nom d'utilisateur et wiki de destination :",
 	'crosswikiblock-expiry' => 'Expiration :',
 	'crosswikiblock-reason' => 'Motif :',

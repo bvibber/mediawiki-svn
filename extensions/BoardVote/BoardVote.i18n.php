@@ -2108,6 +2108,7 @@ $messages['fo'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Guérin Nicolas
  * @author IAlex
@@ -2156,9 +2157,9 @@ Suit la version cryptée ci-dessous, qui sera affichée publiquement sur [[Speci
 [[Special:BoardVote/entry|Retour]]',
 	'boardvote_invalidentered' => '<p><strong>Erreur :</strong> la préférence pour un candidat doit être exprimée uniquement par un nombre entier positif (1, 2, 3, etc.) ou bien être laissée vide.</p>',
 	'boardvote_nosession' => 'Votre identifiant Wikimedia ne peut être déterminé.<br />
-Veuillez vous rendre sur votre wiki d’origine où vous êtes habilité pour voter, puis rendez-vous sur la page <nowiki>[[Special:BoardVote]]</nowiki>.<br />
+Veuillez vous rendre sur votre wiki d’origine où vous êtes habilité{{GENDER:||e|(e)}} pour voter, puis rendez-vous sur la page <nowiki>[[Special:BoardVote]]</nowiki>.<br />
 Vous devez posséder un compte avec au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 {{PLURAL:$3|contribution effectuée|contributions effectuées}} entre le $4 et le $5.',
-	'boardvote_notloggedin' => 'Vous n’êtes pas actuellement connecté.
+	'boardvote_notloggedin' => 'Vous n’êtes pas actuellement connecté{{GENDER:||e|(e)}}.
 Pour voter, vous devez utiliser un compte avec au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 contribution{{PLURAL:$3||s}} entre le $4 et le $5.',
 	'boardvote_notqualified' => 'Vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin.
 Il vous est nécessaire d’avoir au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 {{PLURAL:$3|contribution effectuée|contributions effectuées}} entre le $4 et le $5.',
@@ -2184,7 +2185,7 @@ $1 pour les données cryptées.</p>',
 	'group-boardvote-member' => 'Membre votant du conseil d’administration',
 	'grouppage-boardvote' => '{{ns:project}}:Administrateurs des élections du board',
 	'boardvote_blocked' => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
-	'boardvote_bot' => "Désolé, vous avez le statut de ''Bot'' sur le wiki où vous êtes enregistré.
+	'boardvote_bot' => "Désolé, vous avez le statut de ''Bot'' sur le wiki où vous êtes enregistré{{GENDER:||e|(e)}}.
 Les comptes de ''Bot'' ne sont pas autorisés à voter.",
 	'boardvote_welcome' => "Bienvenue '''$1'''!",
 	'go_to_board_vote' => 'Élection 2008 au conseil d’administration de la Wikimedia Foundation',

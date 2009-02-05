@@ -610,8 +610,10 @@ $messages['es'] = array(
 	'webstore_move_uploaded' => 'Error moviendo archivo cargado "$1" a ubicación temporal "$2".',
 	'webstore_invalid_zone' => 'Zona no válida «$1».',
 	'webstore_no_deleted' => 'Ningún directorio de archivo para archivos borrados está definido.',
+	'webstore_curl' => 'Error de cURL: $1',
 	'webstore_404' => 'Archivo no encontrado.',
 	'webstore_metadata_not_found' => 'Archivo no encontrado: $1',
+	'webstore_postfile_not_found' => 'Archivo para remitir no encontrado.',
 	'webstore_invalid_response' => 'Respuesta no válida del servidor:
 
 $1',
@@ -619,6 +621,7 @@ $1',
 	'webstore_backend_error' => 'Error del servidor de almacenamiento:
 
 $1',
+	'webstore_php_error' => 'Errores PHP fueron encontrados:',
 );
 
 /** Basque (Euskara)

@@ -321,6 +321,31 @@ $messages['grc'] = array(
 	'call' => 'Καλεῖν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'call' => 'Parameterufruef',
+	'call-desc' => 'Leit e Hypergleich aa zuen ere Vorlag (oder zuen ere normale Syte) mit Parameteribergab.
+Cha in dr Yygabufforderig vum Browser oder im Wiki-Täxt bruucht wäre.',
+	'call-text' => "D Parameterufruef-Erwyterig bruucht e Wiki-Syte un optionali Parameter fir die Syte as Argumänt.
+
+Byyspil 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Byyspil 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+Byyspil 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Byyspil 4:(Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
+
+D <i>Parameterufruef-Erwyterig</i> rieft die Syte uf, wu aagee isch, un ibergit d Parameter.<br />
+Dr Inhalt un dr Titel vu dr ufgruefene Syte wäre aazeigt, aber dr Sytetyp isch dää vun ere Spezialsyte, wäge däm cha eso ne Syte z. B. bearbeitet wäre.<br />Dr aazeigt Inhalt cha unterschidlig syy, abhängig vu dr Parameterwärt, wu ibergee wäre.
+
+D <i>Parameterufruef-Erwyterig</i> isch praktisch go interaktivi Aawändige mit MediaWiki aazlege.<br />
+E Byyspil dodefir isch d <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
+Fir Probläm git s <b>{{ns:special}}:Call/DebuG</b>",
+	'call-save' => "D Uusgab vu däm Ufruef tet as Syte ''$1'' gspycheret wäre.",
+	'call-save-success' => 'Dää Täxt isch uf dr Syte <big>[[$1]]</big> gspycheret wore.',
+	'call-save-failed' => 'Dää Täxt ischt NIT uf dr Syte <big>[[$1]]</big> gspycheret wore, wel s die Syte scho git.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

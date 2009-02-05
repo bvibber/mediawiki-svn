@@ -29,6 +29,7 @@ $fallback=array(
 	'ga'  => 'en',
 	'gl'  => 'en',
 	'grc' => 'en',
+	'gsw' => 'en',
 	'hak'  => 'en',
 	'he'  => 'en',
 	'ia'  => 'en',
@@ -896,6 +897,7 @@ $messages['es'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Ocultar definiciones en lenguaje de pregunta',
 	'voctrain_hide_words_in_question_language' => 'Ocultar palabras en lenguaje de pregunta',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Separar valores con comas para usar múltiples lenguajes.',
+	'voctrain_other' => 'Otro',
 );
 
 /** Basque (Euskara)
@@ -1231,6 +1233,13 @@ $messages['grc'] = array(
 	'voctrain_Log_in' => 'Συνδεῖσθαι',
 	'voctrain_Definitions' => 'Ὁρισμοί',
 	'voctrain_hiding' => 'Κρύπτειν',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'voctrain_Hello_World' => 'SALI WIKI!',
 );
 
 /** Hakka (Hak-kâ-fa)

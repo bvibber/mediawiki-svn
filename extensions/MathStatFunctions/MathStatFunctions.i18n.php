@@ -180,6 +180,16 @@ $messages['gl'] = array(
 	'msfunc_div_zero' => 'División por cero',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'msfunc_desc' => 'E Sammlig vu mathematischen un statischtische Funktione',
+	'msfunc_nan' => 'Ergebniswärt isch kei Zahl',
+	'msfunc_inf' => 'Ergebniswärt isch uuändlig',
+	'msfunc_div_zero' => 'Division dur Null',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

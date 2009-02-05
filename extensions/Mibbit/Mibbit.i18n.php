@@ -161,6 +161,7 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Urhixidur
  */
@@ -169,7 +170,7 @@ $messages['fr'] = array(
 	'mibbit-desc' => 'Ajoute une [[Special:Mibbit|page spéciale]] permettant le clavardage en temps réel avec les autres utilisateurs du wiki',
 	'mibbit-header' => 'Cette page spéciale vous autorise à collaborer en temps réel avec les autres utilisateurs du wiki.
 Pour commencer, il suffit de cliquer le bouton « Connect ».
-Si vous êtes connecté, votre pseudo sera déjà instruit.
+Si vous êtes connecté{{GENDER:||e|(e)}}, votre pseudo sera déjà instruit.
 Les utilisateurs anonymes se verront attribuer un pseudo créé automatiquement, mais qui peut être modifié.',
 	'right-mibbit' => "Autorise l'utilisation du Chat Mibbit",
 );

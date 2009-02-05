@@ -330,9 +330,18 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'spamregex-block-success' => 'Bloqueo exitoso',
+	'spamregex-block-message' => "Frase '''$1''' ha sido bloqueada",
+	'spamregex-warning-1' => 'De una frase a bloquear.',
+	'spamregex-warning-2' => 'Por favor chequee al menos un modo de bloqueo.',
+	'spamregex-already-blocked' => '"$1" ya está bloqueado',
+	'spamregex-phrase-block' => 'Frase a bloquear:',
+	'spamregex-phrase-block-text' => 'bloquear frase en texto de página',
+	'spamregex-phrase-block-summary' => 'bloquear frase en resumen',
 	'spamregex-text' => '(Texto)',
 	'spamregex-summary-log' => '(Resumen)',
 );
@@ -1253,9 +1262,11 @@ Imimungkahi ang pagiingat, hindi dapat na napakaiksi o napakapangkaraniwan ang m
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'spamregex-already-blocked' => '“$1” đã bị cấm rồi',
+	'spamregex-summary-log' => '(Tóm lược)',
 );
 
 /** Volapük (Volapük)

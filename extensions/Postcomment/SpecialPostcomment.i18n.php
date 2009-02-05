@@ -207,6 +207,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Dereckson
  * @author Grondin
  * @author McDutchie
@@ -215,8 +216,8 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'postcomment_desc' => 'Permet aux utilisateurs d’envoyer des commentaires directement dans les pages de discussion',
 	'postcomment_discussionprotected' => 'La page de discussion a été protégée en écriture.',
-	'postcomment_notloggedin' => "Vous n'êtes pas identifié.",
-	'postcomment_youareloggedinas' => "Vous n'êtes pas identifié en tant que $1.",
+	'postcomment_notloggedin' => "Vous n'êtes pas identifié{{GENDER:||e|(e)}}.",
+	'postcomment_youareloggedinas' => 'Vous êtes identifié{{GENDER:||e|(e)}} en tant que $1.',
 	'postcomment_addcommentdiscussionpage' => 'Ajoutez un commentaire sur cette page de discussion',
 	'postcomment_leavemessagefor' => 'Laissez un message pour $1',
 	'postcomment_post' => 'Publier',

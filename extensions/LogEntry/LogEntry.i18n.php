@@ -125,6 +125,18 @@ $messages['gl'] = array(
 	'logentry-invalidtoken' => 'Ficha inválida',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'logentry-append' => 'Aafiege',
+	'logentry-parserhook-desc' => 'Die Tag-Erwyterig bietet e Formular zum Aahänge/Voraastelle in Logbuechsyte',
+	'logentry-specialpage-desc' => 'Die Tag-Erwyterig bietet d Ufbereitig fir s Aahänge an Logbuechsyte',
+	'logentry' => 'Logbuechyytrag',
+	'logentry-invalidpage' => 'Nit giltigi Syte',
+	'logentry-invalidtoken' => 'Nit giltig Token',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -224,6 +236,7 @@ $messages['nn'] = array(
 	'logentry-append' => 'Legg til',
 	'logentry' => 'Loggelement',
 	'logentry-invalidpage' => 'Ugyldig sida',
+	'logentry-invalidtoken' => 'Ugyldig token',
 );
 
 /** Occitan (Occitan)

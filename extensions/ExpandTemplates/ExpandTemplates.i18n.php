@@ -1179,6 +1179,14 @@ $messages['nds'] = array(
 	'expand_templates_preview' => 'Vörschau',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'expandtemplates' => 'Mallen substitueren',
+	'expand_templates_intro' => 'Op disse speciale pagina kan tekse in-evoerd wonnen en alle mallen derin wonnen recursief esubstitueerd. Oek parserfuncties zoas <nowiki>{{</nowiki>#if:...}} en variabelen zoas <nowiki>{{</nowiki>CURRENTDAY}} wonnen esubstitueerd - eigenlijks alles wat tussen dubbele krulhaken steet. Dit wonnen edaon deur de betreffende parserfuncties op te reupen vanuut de MediaWiki-pregrammetuur.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

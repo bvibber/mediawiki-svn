@@ -67,7 +67,7 @@ $aliases['hu'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'WhoIsWatching' => array( '誰がページをウォッチしているのか', 'ページをウォッチしている利用者' ),
+	'WhoIsWatching' => array( 'ページをウォッチしている利用者' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
