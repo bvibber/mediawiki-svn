@@ -13,8 +13,8 @@ class PostgresInstaller extends InstallerDBType {
 	);
 
 	var $internalDefaults = array(
-		'_PostgresInstallUser' => 'postgres',
-		'_PostgresInstallPassword' => '',
+		'_InstallUser' => 'postgres',
+		'_InstallPassword' => '',
 	);
 
 	var $minimumVersion = '8.1';
@@ -72,6 +72,14 @@ class PostgresInstaller extends InstallerDBType {
 			$status->fatal( 'config-invalid-ts2schema', $newValues['wgDBts2schema'] );
 		}
 
+		// Submit user box
+		if ( $status->isOK() ) {
+			$status->merge( $this->submitInstallUserBox() );
+		}
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
 		// Try to connect
 		if ( $status->isOK() ) {
 			$status->merge( $this->attemptConnection() );
@@ -94,9 +102,10 @@ class PostgresInstaller extends InstallerDBType {
 		try {
 			$this->conn = new DatabasePostgres( 
 				$this->getVar( 'wgDBserver' ),
-				$this->getVar( '_PostgresInstallUser' ),
-				$this->getVar( '_PostgresInstallPassword' ),
+				$this->getVar( '_InstallUser' ),
+				$this->getVar( '_InstallPassword' ),
 				'postgres' );
+			$status->value = $this->conn;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-connection-error', $e->getMessage() );
 		}
@@ -104,12 +113,7 @@ class PostgresInstaller extends InstallerDBType {
 	}
 
 	function getConnection() {
-		$status = $this->attemptConnection();
-		if ( $status->isOK() ) {
-			return $this->conn;
-		} else {
-			return $status;
-		}
+		return $this->attemptConnection();
 	}
 
 	function getSettingsForm() {
