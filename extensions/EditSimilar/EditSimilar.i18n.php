@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for the EditSimilar extension
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -12,18 +13,18 @@ $messages = array();
  * @author Łukasz 'TOR' Garczewski
  */
 $messages['en'] = array(
-	'editsimilar-desc'                           => 'Encourages users to edit a similar page after saving a page',
-	'editsimilar-thanks'                         => 'Thank you for your contribution.
+	'editsimilar-desc' => 'Encourages users to edit a similar page after saving a page',
+	'editsimilar-thanks' => 'Thank you for your contribution.
 Check out these related pages: $1.',
-	'editsimilar-thanks-singleresult'            => 'Thank you for your contribution.
+	'editsimilar-thanks-singleresult' => 'Thank you for your contribution.
 Check out this related page: $1.',
-	'editsimilar-thanks-notsimilar'              => 'Thank you for your contribution.
+	'editsimilar-thanks-notsimilar' => 'Thank you for your contribution.
 These pages could also use your help: $1.',
 	'editsimilar-thanks-notsimilar-singleresult' => 'Thank you for your contribution.
 This page could also use your help: $1.',
-	'editsimilar-thankyou'                       => 'Thank you for your contribution, $1!',
-	'editsimilar-link-disable'                   => 'set preferences',
-	'tog-edit-similar'                           => 'Enable similar pages suggestions',
+	'editsimilar-thankyou' => 'Thank you for your contribution, $1!',
+	'editsimilar-link-disable' => 'set preferences',
+	'tog-edit-similar' => 'Enable similar pages suggestions',
 );
 
 /** Message documentation (Message documentation)
