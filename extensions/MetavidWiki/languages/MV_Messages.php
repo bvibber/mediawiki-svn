@@ -221,7 +221,7 @@ Jump to stream view: $2',
 	'mv_category_results' => 'Category results',
 	'mv_people_results' => 'People results',
 	'mv_bill_results' => 'Bill results',
-	'mv_intrest_group_results' => 'Interst groups',
+	'mv_intrest_group_results' => 'Interest groups',
 
 	'mv_most_relevant' => 'Most relevant',
 	'mv_most_recent' => 'Most recent',
