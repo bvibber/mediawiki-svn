@@ -140,11 +140,11 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * @return array
 	 */
 	public function getOldSettings( $ts ) {
-		$db = $this->getSlaveDB();
-		$ret = $db->select(
+		$dbr = $this->getSlaveDB();
+		$ret = $dbr->select(
 			array( 'config_setting', 'config_version' ),
 			array( 'cs_name', 'cv_wiki', 'cs_value' ),
-			array( 'cv_timestamp' => $ts ),
+			array( 'cv_timestamp' => $dbr->timestamp( $ts ) ),
 			__METHOD__,
 			array(),
 			array( 'config_version' => array( 'LEFT JOIN', 'cs_id = cv_id' ) )
@@ -164,7 +164,8 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * @return array
 	 */
 	public function getWikisInVersion( $ts ) {
-		$wiki = $this->getSlaveDB()->selectField( 'config_version', 'cv_wiki', array( 'cv_timestamp' => $ts ), __METHOD__ );
+		$dbr = $this->getSlaveDB();
+		$wiki = $dbr->selectField( 'config_version', 'cv_wiki', array( 'cv_timestamp' => $dbr->timestamp( $ts ) ), __METHOD__ );
 		if ( $wiki === false )
 			return array();
 		return array( $wiki );
@@ -217,10 +218,12 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			$this->saveSettingsForWiki( $settings, $wiki, $ts+1, $reason );
 
 		$dbw->begin();
+		$newId = $dbw->nextSequenceValue( 'config_version_cv_id_seq' );
 		$dbw->insert( 'config_version',
 			array(
+				'cv_id' => $newId,
 				'cv_wiki' => $wiki,
-				'cv_timestamp' => $dbw->timestamp($ts),
+				'cv_timestamp' => $dbw->timestamp( $ts ),
 				'cv_is_latest' => 1,
 				'cv_user_text' => $wgUser->getName(),
 				'cv_user_wiki' => wfWikiId(),
@@ -295,7 +298,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 */
 	public function versionExists( $ts ) {
 		$dbr = $this->getSlaveDB();
-		return (bool)$dbr->selectField( 'config_version', '1', array( 'cv_timestamp' => $ts ), __METHOD__ );
+		return (bool)$dbr->selectField( 'config_version', '1', array( 'cv_timestamp' => $dbr->timestamp( $ts ) ), __METHOD__ );
 	}
 
 	/**
