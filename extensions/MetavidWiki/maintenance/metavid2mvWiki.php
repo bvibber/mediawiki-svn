@@ -96,6 +96,7 @@ actions:
 		'file_check' checks inserted streams file urls/pointers
 		'do_stream_date_check'
 		'do_remove_orphaned_streams' 
+		'mvd_consistancy_check' makes sure all mvd text layers are consistent  
 
 EOT;
 	exit ();
@@ -147,8 +148,8 @@ switch ( $args[0] ) {
 		upTemplates( $force );
 	break;
 	// by default treat the argument as a stream name:
-	case 'mvd_error_check':
-
+	case 'mvd_consistancy_check':
+		mvd_consistancy_check();
 	break;
 	case 'rm_congress_persons':
 		do_rm_congress_persons();

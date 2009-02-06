@@ -695,6 +695,54 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 	}	
 	return $out;
 }
+function mvd_consistancy_check(){
+	//get all 2009 streams:
+	$dbr = wfGetDB( DB_READ );
+	$streams = array();
+	$result = $dbr->select( 'mv_streams',
+		'*',
+		'date_start_time >= '.  mktime(0, 0, 0, 1, 1, 2009),
+		__METHOD__
+	);	
+	if ( $dbr->numRows( $result ) == 0 )die("no streams found"."\n". $dbr->lastQuery() ."\n");	
+	while ( $stream = $dbr->fetchObject( $result ) ) {
+		//get all the mvds for this stream
+		$mvd_res = $dbr->select( 'mv_mvd_index', '*', array('stream_id'=>$stream->id));
+		while ( $mvd = $dbr->fetchObject( $mvd_res ) ) {
+			//make sure the article exists: 
+			$mvdTitle = Title::newFromText($mvd->wiki_title, MV_NS_MVD);
+			if($mvdTitle->exists()){
+				//update the text:
+				$mvdArticle = new Article ($mvdTitle);
+				$text = $mvdArticle->getRawText();			
+				//find the spoken by or speech by text:
+				$sb_pat =  '/\[\[Spoken By(\:.)([^\]]*)]]/i';
+				preg_match($sb_pat, $text, $matches );	
+				if(isset($matches[2])){			
+					$replacement = ($matches[2] == 'Unknown')?'': 
+								'[[Spoken By::'. str_replace('_', ' ', $matches[2]).']]';
+					$text = preg_replace($sb_pat, $replacement, $text);
+				}
+				//do the same for speech by
+				$sb_pat =  '/\[\[Speech by(\:.)([^\]]*)]]/i';
+				preg_match($sb_pat, $text, $matches );
+				if(isset($matches[2])){				
+					$replacement = ($matches[2] == 'Unknown')?'': 
+								'[[Speech by::'. str_replace('_', ' ', $matches[2]).']]';
+					$text = preg_replace($sb_pat, $replacement, $text);
+				}							
+				//trim all double spaces
+				$text = preg_replace('/[\s]+/', ' ', $text);			
+				//uc upper words:
+				//$text = preg_replace("/[^A-Z]\.(\s)(\\w)/e", '".$1".strtoupper("$2")', $text);				
+				do_update_wiki_page( $mvdTitle, trim($text),'',true);						
+			}else{
+				print "orphaned mvd: {$mvd->wiki_title} (should remove) \n"; 
+			}			
+		}	
+		//die('only update one stream at a time');	
+	}		
+}
 function do_bill_insert( $bill_key ) {
 	//grab bill list with categories from govtrack
 }

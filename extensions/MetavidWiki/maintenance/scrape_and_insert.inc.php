@@ -537,8 +537,8 @@ class MV_BillScraper extends MV_BaseScraper {
 		 	return "[[Mentions Bill:={$matches[0]}]]";
 		 }
 	}
-	/* converts c-span bill_id to gov_track bill id */
-	function get_and_proccess_billid( $bill_key, $stream_date = '', $session = '' ) {
+	/* converts c-span bill_id to gov_track bill id */ 
+	function get_and_process_billid( $bill_key, $stream_date = '', $session = '' ) {
 		global $MvBillTypes;
 		// add a space to bill key after $bill_type key
 		foreach ( $this->bill_types as $bk => $na ) {
@@ -548,7 +548,7 @@ class MV_BillScraper extends MV_BaseScraper {
 				}
 			}
 		}
-		// first get the year to detrim the house session:
+		// first get the year to determine the house session:
 		if ( $session == '' ) {
 			$year = date( 'y', $stream_date );
 			if ( $year == '01' || $year == '02' ) { $session = '107';
@@ -568,7 +568,7 @@ class MV_BillScraper extends MV_BaseScraper {
 			}
 		}
 		if ( trim( $bill_key ) == '' )return false;
-		// attempt to asertain maplight bill id:
+		// attempt to ascertain maplight bill id:
 		$mapLightBillId = $this->getMAPLightBillId( $bill_key, $session );
 
 		print "GOT bill id: $govTrackBillId from $bill_key\n";
@@ -684,24 +684,26 @@ class MV_BillScraper extends MV_BaseScraper {
 			}
 		}
 		/*****************************
-		 * Proccess MapLight Info
+		 * Process MapLight Info
 		 *****************************/
 		if ( $mapLightBillId ) {
 			$bill_interest = $this->proccMapLightBillIntrests( $mapLightBillId );
-			$i = 1;
-			foreach ( $bill_interest['support'] as $interest ) {
-				$this->procMapLightInterest( $interest );
-				$bp .= 'Supporting Interest ' . $i . '=' . $interest['name'] . "|\n";
-				$i++;
-				//process interest
-				$this->procMapLightInterest(	$interest );
-			}
-			$i = 1;
-			foreach ( $bill_interest['oppose'] as $interest ) {
-				$bp .= 'Opposing Interest ' . $i . '=' . $interest['name'] . "|\n";
-				$i++;
-				//process interest
-				$this->procMapLightInterest(	$interest );
+			if( $bill_interest ) {
+				$i = 1;
+				foreach ( $bill_interest['support'] as $interest ) {
+					$this->procMapLightInterest( $interest );
+					$bp .= 'Supporting Interest ' . $i . '=' . $interest['name'] . "|\n";
+					$i++;
+					//process interest
+					$this->procMapLightInterest(	$interest );
+				}
+				$i = 1;
+				foreach ( $bill_interest['oppose'] as $interest ) {
+					$bp .= 'Opposing Interest ' . $i . '=' . $interest['name'] . "|\n";
+					$i++;
+					//process interest
+					$this->procMapLightInterest(	$interest );
+				}
 			}
 		}
 		$bp .= "}}\n";
@@ -880,7 +882,7 @@ class MV_BaseScraper {
 		// $sql = "SELECT * FROM `metavid`.`cache_time_url_text` WHERE `url` LIKE '$url'";
 		// select( $table, $vars, $conds='', $fname = 'Database::select', $options = array() )
 		$res = $dbr->select( 'mv_url_cache', '*', array( 'url' => $url ), 'MV_BaseScraper::doRequest' );
-		// @@todo check date for experation
+		// @@todo check date for expiration
 		if ( $res->numRows() == 0 || $get_fresh) {
 			echo "do web request: " . $url . "\n";			
 			// get the content:

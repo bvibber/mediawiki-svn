@@ -29,6 +29,7 @@ EXAMPLE" we get a frame every 5 seconds from input file stream.mpeg:
 OPTIONS:
 	--interval 		 	@default 5 seconds
 	--overwrite_image  	@default no overwrite; if set will  force image output 
+	--use_file $file	//the full path to the file you want to use to generate thumbnails 
 
 DURATION is scraped from ffmpeg
 
@@ -55,9 +56,11 @@ if(isset($options['overwrite_image'])){
 	$overwrite_image=true;
 }
 $workingdir = '/video/metavid/raw_mpeg2';
-
-
-$filename = $workingdir .'/'. $stream_name . '.mpeg'; 
+if(isset( $options['use_file'] )){
+	$filename = $options['use_file'];
+}else{
+	$filename = $workingdir .'/'. $stream_name . '.mpeg';
+} 
 $duration = getDuration($filename);
 
 
