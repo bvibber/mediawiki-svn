@@ -7,17 +7,16 @@
 	metavid 
 	and archive.org
 */
-
-gMsg['mv_media_search']	= 'Media Search';
-gMsg['rsd_box_layout'] 	= 'Box layout';
-gMsg['rsd_list_layout'] = 'List Layout';
-gMsg['rsd_results_desc']= 'Results ';
-gMsg['rsd_results_next'] = ' next ';
-gMsg['rsd_results_prev'] = ' previous ';
-gMsg['upload'] 			= 'Upload';
-
-gMsg['rsd_layout'] = 	  'Layout:';
-gMsg['rsd_resource_edit']='Edit Resource:';
+loadGM( {  'mv_media_search' : 'Media Search',
+	'rsd_box_layout' : 'Box layout',
+	'rsd_list_layout' : 'List Layout',
+	'rsd_results_desc' : 'Results ',
+	'rsd_results_next' : 'next ',
+	'rsd_results_prev' : 'previous ',
+	'upload' : 'Upload',
+	'rsd_layout' : 'Layout:',
+	'rsd_resource_edit' : 'Edit Resource:'
+});
 
 var default_remote_search_options = {
 	'profile':'mediawiki_edit',	
@@ -203,7 +202,7 @@ remoteSearchDriver.prototype = {
 									'size="20" autocomplete="off"/>'+
 							'</td>'+
 							'<td style="width:115px">'+
-								'<input type="submit" value="' + getMsg('mv_media_search') + '" tabindex="2" '+
+								'<input type="submit" value="' + gM('mv_media_search') + '" tabindex="2" '+
 									' id="rms_search_button"/>'+
 							'</td>'+
 							'<td>';
@@ -230,7 +229,7 @@ remoteSearchDriver.prototype = {
 				out+= '<img alt="'+cp.title+'" src="' + mv_embed_path + 'skins/' + mv_skin_name + '/images/remote_cp/' + cp_id + '_tab.png">'; 				
 				out+='</div>';
 			}		 		
-			out+='<div style="clear:both"/><a id="mso_selprovider_close" href="#">'+getMsg('close')+'</a></div>';
+			out+='<div style="clear:both"/><a id="mso_selprovider_close" href="#">'+gM('close')+'</a></div>';
 		out+='</div>';				
 		//close up the control container: 
 		out+='</div>';
@@ -372,7 +371,7 @@ remoteSearchDriver.prototype = {
 		//do an upload tab if enabled: 
 		if( this.enable_uploads ){
 			var class_attr = ( this.disp_item =='upload' ) ? 'class="rsd_selected"':'';	
-			o+='<li id="rsd_tab_upload" ' + class_attr + ' >'+getMsg('upload');+'</li>';
+			o+='<li id="rsd_tab_upload" ' + class_attr + ' >'+gM('upload');+'</li>';
 		}
 		o+='</ul>';		
 		o+='</div>';
@@ -434,7 +433,7 @@ remoteSearchDriver.prototype = {
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
 							//add a linkback to resource page in lower left:
 							if(rItem.link) 
-							o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + getMsg('Resource Description Page') + '" href="' + rItem.link + '"><img src="' + wgScriptPath + '/skins/common/images/magnify-clip.png"></a>';
+							o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + gM('Resource Description Page') + '" href="' + rItem.link + '"><img src="' + wgScriptPath + '/skins/common/images/magnify-clip.png"></a>';
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
@@ -486,7 +485,7 @@ remoteSearchDriver.prototype = {
 		//append to the top level of model window: 
 		$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
 			'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
-				'<h3 id="rsd_resource_title" style="margin:4px;">' + getMsg('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
+				'<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
 				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:30px;left:0px;bottom:0px;'+
 					'width:' + (maxWidth + 30) + 'px;" >' +
 						mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
@@ -586,7 +585,7 @@ remoteSearchDriver.prototype = {
 				'media_type': mediaType,
 				'p_rsdObj': _this						
 		};
-		var loadLibs =  {'mvClipEdit':'libSequencer/mv_clipedit.js'};		
+		var loadLibs =  {'mvClipEdit':'libClipEdit/mv_clipedit.js'};		
 		if( mediaType == 'image'){
 			//load the crop library:
 			//loadLibs['$j.Jcrop']='jquery/plugins/Jcrop/js/jquery.Jcrop.js';
@@ -901,14 +900,14 @@ remoteSearchDriver.prototype = {
 		
 		$j('#rsd_results').append('<div id="rds_results_bar">'+
 			'<span style="position:relative;top:-5px;font-style:italic;">'+
-				getMsg('rsd_layout')+' '+
+				gM('rsd_layout')+' '+
 			'</span>'+
 				'<img id="msc_box_layout" ' +
-					'title = "' + getMsg('rsd_box_layout') + '" '+ 
+					'title = "' + gM('rsd_box_layout') + '" '+ 
 					'src = "' +  ( (_this.result_display_mode=='box')?box_dark_url:box_light_url ) + '" ' +			
 					'style="width:20px;height:20px;cursor:pointer;"> ' + 
 				'<img id="msc_list_layout" '+
-					'title = "' + getMsg('rsd_list_layout') + '" '+
+					'title = "' + gM('rsd_list_layout') + '" '+
 					'src = "' +  ( (_this.result_display_mode=='list')?list_dark_url:list_light_url ) + '" '+			
 					'style="width:20px;height:20px;cursor:pointer;">'+			
 			'<span id="rsd_paging_ctrl" style="position:absolute;right:5px;"></span>'+
@@ -951,12 +950,12 @@ remoteSearchDriver.prototype = {
 				var to_num = ( cp.limit > cp.sObj.num_results )?
 								(cp.offset + cp.sObj.num_results):
 								(cp.offset + cp.limit);  
-				var out = getMsg('rsd_results_desc') +  (cp.offset+1) + ' to ' + to_num;
+				var out = gM('rsd_results_desc') +  (cp.offset+1) + ' to ' + to_num;
 				//check if we have more results (next prev link)
 				if(  cp.offset >=  cp.limit )
-					out+=' <a href="#" id="rsd_pprev">' + getMsg('rsd_results_prev') + cp.limit + '</a>';
+					out+=' <a href="#" id="rsd_pprev">' + gM('rsd_results_prev') + cp.limit + '</a>';
 				if( cp.sObj.more_results )					
-					out+=' <a href="#" id="rsd_pnext">' + getMsg('rsd_results_next') + cp.limit + '</a>';
+					out+=' <a href="#" id="rsd_pnext">' + gM('rsd_results_next') + cp.limit + '</a>';
 				$j(target).html(out);
 				//set bindings 
 				$j('#rsd_pnext').click(function(){

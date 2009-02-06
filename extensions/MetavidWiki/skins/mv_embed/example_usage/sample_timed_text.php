@@ -1,3 +1,8 @@
+<?
+do_sample_page();
+
+function do_sample_page(){
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -49,3 +54,5 @@ $examples[] = array(  'tag'  => $srt_tag,
  </table>
 </body>
 </html>
+<?
+} ?>

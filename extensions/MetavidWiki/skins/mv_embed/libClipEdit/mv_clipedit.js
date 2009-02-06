@@ -5,26 +5,28 @@
 	'overlays':0, 		//should allow setting "locked to clip" overlay tracks 
 	'audio':0			//should allow controlling the audio volume (with keyframes) 
 */
-
-gMsg['mv_crop']='Crop Image';
-gMsg['mv_apply_crop']='Apply Crop to Image';
-gMsg['mv_reset_crop']='Rest Crop';
-gMsg['mv_insert_image_page']='Insert Into page';
-gMsg['mv_preview_insert']= 'Preview Insert';
-gMsg['mv_cancel_image_insert']='Cancel Image Insert';
-
-gMsg['sc_fileopts']		='Clip Detail Edit';
-gMsg['sc_inoutpoints']	='Set In-Out points';
-gMsg['sc_panzoom']		='Pan Zoom Crop';
-gMsg['sc_overlays']		='Overlays';
-gMsg['sc_audio']		='Audio Control';
-gMsg['sc_duration']		='Duration';
+//set gMsg object:
+loadGM( { 
+	'mv_crop':'Crop Image',
+	'mv_apply_crop':'Apply Crop to Image',
+	'mv_reset_crop':'Rest Crop',
+	'mv_insert_image_page':'Insert Into page',
+	'mv_preview_insert':'Preview Insert',
+	'mv_cancel_image_insert':'Cancel Image Insert',
 	
-gMsg['mv_template_properties'] = 'Template Properties';
-gMsg['mv_custom_title']	=	'Custom Title';
-gMsg['mv_edit_properties'] = 'Edit Properties';
-gMsg['mv_other_properties'] = 'Other Properties';
-gMsg['mv_resource_page']	= 'Resource Page';
+	'sc_fileopts':'Clip Detail Edit',
+	'sc_inoutpoints':'Set In-Out points',
+	'sc_panzoom':'Pan Zoom Crop',
+	'sc_overlays':'Overlays',
+	'sc_audio':'Audio Control',
+	'sc_duration':'Duration',
+		
+	'mv_template_properties':'Template Properties',
+	'mv_custom_title':'Custom Title',
+	'mv_edit_properties':'Edit Properties',
+	'mv_other_properties':'Other Properties',
+	'mv_resource_page':'Resource Page'
+});
 
 var default_clipedit_values = {
 	'rObj':	null, 		// the resource object
@@ -97,11 +99,11 @@ mvClipEdit.prototype = {
 					//add html for rObj resource:
 					var o=	'<table>' +
 							'<tr>' +
-								'<td colspan="2"><b>'+getMsg('mv_edit_properties')+'</b></td>'+
+								'<td colspan="2"><b>'+gM('mv_edit_properties')+'</b></td>'+
 							'</tr>'+
 							'<tr>'+
 								'<td>' + 
-									getMsg('mv_custom_title') + 
+									gM('mv_custom_title') + 
 								'</td>'+
 								'<td><input type="text" size="15" maxwidth="255" value="';
 									if(_this.rObj.title != null)
@@ -114,7 +116,7 @@ mvClipEdit.prototype = {
 						var testing_a = _this.rObj.tVars;
 						//debugger;
 						o+= '<tr>'+
-								'<td colspan="2"><b>'+getMsg('mv_template_properties')+'</b></td>'+
+								'<td colspan="2"><b>'+gM('mv_template_properties')+'</b></td>'+
 							'</tr>';
 						for(var i =0; i < _this.rObj.tVars.length ; i++){
 							o+='<tr>'+
@@ -131,11 +133,11 @@ mvClipEdit.prototype = {
 						}
 					}		
 					o+=		'<tr>'+
-								'<td colspan="2"><b>'+getMsg('mv_other_properties')+'</b></td>'+
+								'<td colspan="2"><b>'+gM('mv_other_properties')+'</b></td>'+
 							'</tr>'+
 							'<tr>'+
 								'<td>' + 
-									getMsg('mv_resource_page') + 
+									gM('mv_resource_page') + 
 								'</td>' +
 								'<td><a href="' + wgArticlePath.replace(/\$1/, _this.rObj.uri ) +
 									' target="new">'+
@@ -272,7 +274,7 @@ mvClipEdit.prototype = {
 			if(include){
 				var sub_sel_class = (editType.d == 1)?'class="mv_sub_selected"':'';							 
 				o+= '<li ' + sub_sel_class + ' id="mv_smi_' + sInx + '">' + 
-					getMsg('sc_' + sInx ) + '</li>';
+					gM('sc_' + sInx ) + '</li>';
 			} 	
 		});
 		o+= '</ul>';
@@ -321,7 +323,7 @@ mvClipEdit.prototype = {
 		$j('#'+this.control_ct).append(	this.getInsertDesc() );
 		
 		$j('#'+this.control_ct).append(	'<b>Metavid clip inserts not yet supported</b>' +
-			'<a href="#" class="mv_cancel_img_edit" title="' + getMsg('mv_cancel_image_insert')+'">' + getMsg('mv_cancel_image_insert') + '</a> ');					
+			'<a href="#" class="mv_cancel_img_edit" title="' + gM('mv_cancel_image_insert')+'">' + gM('mv_cancel_image_insert') + '</a> ');					
 		//$j('#'+this.control_ct).append( this.getInsertDesc() + this.getInsertAction()	);				
 		
 		this.applyInsertControlBindings();
@@ -377,9 +379,9 @@ mvClipEdit.prototype = {
 	},
 	getInsertAction:function(){
 		return '<h3>Actions</h3>'+
-				'<input type="button" class="mv_insert_image_page" value="' + getMsg('mv_insert_image_page') + '"> '+				
-				'<input type="button" style="font-weight:bold" class="mv_preview_insert" value="' + getMsg('mv_preview_insert')+ '"> '+		
-				'<a href="#" class="mv_cancel_img_edit" title="' + getMsg('mv_cancel_image_insert')+'">' + getMsg('mv_cancel_image_insert') + '</a> ';
+				'<input type="button" class="mv_insert_image_page" value="' + gM('mv_insert_image_page') + '"> '+				
+				'<input type="button" style="font-weight:bold" class="mv_preview_insert" value="' + gM('mv_preview_insert')+ '"> '+		
+				'<a href="#" class="mv_cancel_img_edit" title="' + gM('mv_cancel_image_insert')+'">' + gM('mv_cancel_image_insert') + '</a> ';
 	},
 	applyEdit:function(){
 		if(this.media_type == 'image'){
@@ -411,16 +413,16 @@ mvClipEdit.prototype = {
 		//by default apply Crop tool 
 		$j('#'+this.control_ct).html(
 			'<h3>Edit tools</h3>' + 				
-					'<div class="mv_edit_button mv_crop_button_base" id="mv_crop_button" alt="crop" title="'+getMsg('mv_crop')+'"/>'+
-					'<a href="#" class="mv_crop_msg">' + getMsg('mv_crop') + '</a> '+
-					'<span style="display:none" class="mv_crop_msg_load">' + getMsg('loading_txt') + '</span> '+
-					'<a href="#" style="display:none" class="mv_apply_crop">' + getMsg('mv_apply_crop') + '</a> '+
-					'<a href="#" style="display:none" class="mv_rest_crop">' + getMsg('mv_reset_crop') + '</a> '+
+					'<div class="mv_edit_button mv_crop_button_base" id="mv_crop_button" alt="crop" title="'+gM('mv_crop')+'"/>'+
+					'<a href="#" class="mv_crop_msg">' + gM('mv_crop') + '</a> '+
+					'<span style="display:none" class="mv_crop_msg_load">' + gM('loading_txt') + '</span> '+
+					'<a href="#" style="display:none" class="mv_apply_crop">' + gM('mv_apply_crop') + '</a> '+
+					'<a href="#" style="display:none" class="mv_rest_crop">' + gM('mv_reset_crop') + '</a> '+
 				'<br style="clear:both"><br>'+				
-				/*'<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+getMsg('mv_scale')+'"></div>'+				
-				'<a href="#" class="mv_scale_msg">' + getMsg('mv_scale') + '</a><br>'+
-				'<a href="#" style="display:none" class="mv_apply_scale">' + getMsg('mv_apply_scale') + '</a> '+
-				'<a href="#" style="display:none" class="mv_rest_scale">' + getMsg('mv_reset_scale') + '</a><br> '+
+				/*'<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+gM('mv_scale')+'"></div>'+				
+				'<a href="#" class="mv_scale_msg">' + gM('mv_scale') + '</a><br>'+
+				'<a href="#" style="display:none" class="mv_apply_scale">' + gM('mv_apply_scale') + '</a> '+
+				'<a href="#" style="display:none" class="mv_rest_scale">' + gM('mv_reset_scale') + '</a><br> '+
 				*/
 				_this.getInsertDesc() + 
 				_this.getInsertAction()					
@@ -438,7 +440,7 @@ mvClipEdit.prototype = {
 		$j('.mv_rest_crop').click(function(){
 			$j('.mv_apply_crop,.mv_rest_crop').hide();
 			$j('.mv_crop_msg').show();
-			$j('#mv_crop_button').removeClass('mv_crop_button_selected').addClass('mv_crop_button_base').attr('title',getMsg('mv_crop'));
+			$j('#mv_crop_button').removeClass('mv_crop_button_selected').addClass('mv_crop_button_base').attr('title',gM('mv_crop'));
 			_this.rObj.crop=null;
 			$j('#' + _this.clip_disp_ct ).empty().html(
 				'<img src="' + _this.rObj.url + '" id="rsd_edit_img">'
@@ -463,7 +465,7 @@ mvClipEdit.prototype = {
 		var _this = this;
 		$j('.mv_apply_crop').hide();
 		$j('.mv_crop_msg').show();
-		$j('#mv_crop_button').removeClass('mv_crop_button_selected').addClass('mv_crop_button_base').attr('title',getMsg('mv_crop'));
+		$j('#mv_crop_button').removeClass('mv_crop_button_selected').addClass('mv_crop_button_base').attr('title',gM('mv_crop'));
 		js_log('click:turn off');
 		if(_this.rObj.crop){
 			//empty out and display croped:
@@ -489,7 +491,7 @@ mvClipEdit.prototype = {
 		var doEnableCrop = function(){	
 			$j('.mv_crop_msg_load').hide();
 			$j('.mv_rest_crop,.mv_apply_crop').show();				
-			$j('#mv_crop_button').removeClass('mv_crop_button_base').addClass('mv_crop_button_selected').attr('title',getMsg('mv_crop_done'));				
+			$j('#mv_crop_button').removeClass('mv_crop_button_base').addClass('mv_crop_button_selected').attr('title',gM('mv_crop_done'));				
 			$j('#' + _this.clip_disp_ct + ' img').Jcrop({
 			 		onSelect: function(c){
 			 			js_log('on select:' + c.x +','+ c.y+','+ c.x2+','+ c.y2+','+ c.w+','+ c.h);

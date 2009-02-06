@@ -86,7 +86,7 @@ textInterface.prototype = {
 		
 		//if nothing found anywhere update the loading icon to say no tracks found
 		if(!default_found)
-			$j('#mv_txt_load_'+_this.pe.id).html( getMsg('no_text_tracks_found') );
+			$j('#mv_txt_load_'+_this.pe.id).html( gM('no_text_tracks_found') );
 		
 		
 	},
@@ -196,14 +196,14 @@ textInterface.prototype = {
 				'right:0px;bottom:0px;' +
 				'height:'+(this.pe.height-20)+
 				'px;overflow:auto;"><span style="display:none;" id="mv_txt_load_' + this.pe.id + '">'+
-					getMsg('loading_txt')+'</span>' +
+					gM('loading_txt')+'</span>' +
 				'</div>';
 	},
 	getTsSelect:function(){
 		var _this = this;
 		js_log('getTsSelect');		
 		var selHTML = '<div id="mvtsel_' + this.pe.id + '" style="position:absolute;background:#FFF;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;">';
-		selHTML+='<b>' + getMsg('select_transcript_set') + '</b><ul>';
+		selHTML+='<b>' + gM('select_transcript_set') + '</b><ul>';
 		//debugger;
 		for(var i in _this.availableTracks){ //for in loop ok on object			
 			var checked = ( _this.availableTracks[i].display ) ? 'checked' : '';
@@ -211,7 +211,7 @@ textInterface.prototype = {
 				_this.availableTracks[i].getTitle() + '</li>';
 		}
 		selHTML+='</ul>' +
-					'<a href="#" onClick="document.getElementById(\'' + this.pe.id + '\').textInterface.applyTsSelect();return false;">'+getMsg('close')+'</a>'+
+					'<a href="#" onClick="document.getElementById(\'' + this.pe.id + '\').textInterface.applyTsSelect();return false;">'+gM('close')+'</a>'+
 				'</div>';		
 		$j('#metaBox_'+_this.pe.id).append( selHTML );
 	},
@@ -287,15 +287,15 @@ textInterface.prototype = {
 		//add in loading icon:
 		var as_checked = (this.autoscroll)?'checked':'';
 		out+= '<div id="tt_mmenu_'+this.pe.id+'" style="background:#AAF;font-size:small;position:absolute;top:0;height:20px;left:0px;right:0px;">' +
-				'<a style="font-color:#000;" title="'+getMsg('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
+				'<a style="font-color:#000;" title="'+gM('close')+'" href="#" onClick="document.getElementById(\''+this.pe.id+'\').closeTextInterface();return false;">'+
 					'<img border="0" width="16" height="16" src="'+mv_embed_path + 'images/cancel.png"></a> ' +
-				'<a style="font-color:#000;" title="'+getMsg('select_transcript_set')+'" href="#"  onClick="document.getElementById(\''+this.pe.id+'\').textInterface.getTsSelect();return false;">'+
-					getMsg('select_transcript_set')+'</a> | ' +
+				'<a style="font-color:#000;" title="'+gM('select_transcript_set')+'" href="#"  onClick="document.getElementById(\''+this.pe.id+'\').textInterface.getTsSelect();return false;">'+
+					gM('select_transcript_set')+'</a> | ' +
 				'<input onClick="document.getElementById(\''+this.pe.id+'\').textInterface.setAutoScroll(this.checked);return false;" ' +
-				'type="checkbox" '+as_checked +'>'+getMsg('auto_scroll');
+				'type="checkbox" '+as_checked +'>'+gM('auto_scroll');
 		if(this.pe.media_element.linkback){
-			out+=' | <a style="font-color:#000;" title="'+getMsg('improve_transcript')+'" href="'+this.pe.media_element.linkback+'" target="_new">'+
-				getMsg('improve_transcript')+'</a> ';
+			out+=' | <a style="font-color:#000;" title="'+gM('improve_transcript')+'" href="'+this.pe.media_element.linkback+'" target="_new">'+
+				gM('improve_transcript')+'</a> ';
 		}
 		out+='</div>';
 		return out;

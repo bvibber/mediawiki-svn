@@ -3,16 +3,19 @@ presently does hackery to work with Special:Upload page...
 will be replaced with upload API once that is ready
 */
 
-gMsg['upload-enable-converter']		= 'Enable video converter (to upload source video not yet converted to theora format)'+
-										' <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>';
-gMsg['upload-fogg_not_installed']	= 'If you want to upload video consider installing <a href="http://firefogg.org">firefogg.org</a>, '+ 
-										'<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>';
-gMsg['upload-in-progress']			= 'Doing Transcode & Upload (do not close this window)';
-gMsg['upload-transcoded-status']	= 'Transcoded';
-gMsg['uploaded-status']				= 'Uploaded';
-gMsg['upload-select-file']			= 'Select File...';
-gMsg['wgfogg_wrong_version']		= 'You have firefogg installed but its outdated, <a href="http://firefogg.org">please upgrade</a> ';
-gMsg['wgfogg_waring_ogg_upload']	= 'You have selected an ogg file for conversion to ogg (this is probably unessesary). Maybe disable the video converter?';
+loadGM( { 
+	'upload-enable-converter' : 'Enable video converter (to upload source video not yet converted to theora format)',
+								' <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>',
+	'upload-fogg_not_installed': 'If you want to upload video consider installing <a href="http://firefogg.org">firefogg.org</a>, '+ 
+											'<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>',
+	'upload-in-progress':'Doing Transcode & Upload (do not close this window)',
+	'upload-transcoded-status': 'Transcoded',
+	'uploaded-status':'Uploaded',
+	'upload-select-file': 'Select File...',
+	'wgfogg_wrong_version': 'You have firefogg installed but its outdated, <a href="http://firefogg.org">please upgrade</a> ',
+	'wgfogg_waring_ogg_upload': 'You have selected an ogg file for conversion to ogg (this is probably unessesary). Maybe disable the video converter?'
+	}
+);
 
 var default_upload_options = {
 	'target_div':'',
@@ -99,32 +102,32 @@ mvUploader.prototype = {
 		$j('#mw-upload-table .mw-input').eq(0).html('<div id="wg-base-upload">' + itd_html + '</div>');
 		//add in firefogg control			
 		$j('#wg-base-upload').after('<p id="fogg-enable-item" >' + 
-						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="' + getMsg('upload-select-file') + '">' +
+						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="' + gM('upload-select-file') + '">' +
 						"<span class='error' id='wgfogg_not_installed'>" + 
-							getMsg('upload-fogg_not_installed') +
+							gM('upload-fogg_not_installed') +
 						'</span>'+
 						"<span class='error' id='wgfogg_wrong_version'>"+
-							getMsg('wgfogg_wrong_version')+
+							gM('wgfogg_wrong_version')+
 						'</span>'+
 						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none' >"+
-								getMsg('wgfogg_waring_ogg_upload')+
+								gM('wgfogg_waring_ogg_upload')+
 						'</span>'+
 						"<span id='wgfogg_installed' style='display:none' >"+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
-								getMsg('upload-enable-converter') +
+								gM('upload-enable-converter') +
 						'<span><br></p>');		
 		//add in loader dl box: 	
 		//hard code style (since not always easy to import style sheets)
 		$j('[@name=wpUpload]').eq(0).before('<div id="dlbox-centered" class="dlbox-centered" style="display:none;'+
 				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
 				'height:50%;padding: 10px;z-index:100;top:30%;left:15%;" >'+			
-					'<h5>' + getMsg('upload-in-progress') + '</h5>' +
+					'<h5>' + gM('upload-in-progress') + '</h5>' +
 					'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
 						'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
 					'</div>' +
 					'<span id="fogg-pstatus">0%</span>' +
-					'<span id="fogg-status-transcode">' + getMsg('upload-transcoded-status') + '</span>'+  
-					'<span style="display:none" id="fogg-status-upload">' + getMsg('uploaded-status') + '</span>' +
+					'<span id="fogg-status-transcode">' + gM('upload-transcoded-status') + '</span>'+  
+					'<span style="display:none" id="fogg-status-upload">' + gM('uploaded-status') + '</span>' +
 			'</div>'+					
 			'<div id="dlbox-overlay" class="dlbox-overlay" style="display:none;background:#000;cursor:wait;height:100%;'+
 						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+

@@ -1,4 +1,7 @@
 <?php
+do_sample_page();
+
+function do_sample_page(){
 // sample embed page (this could be plain html its a php script so that we can grab its location)
 $mv_path = 'http://' . $_SERVER['SERVER_NAME'] . substr( $_SERVER['REQUEST_URI'], 0, strrpos( $_SERVER['REQUEST_URI'], '/' ) ) . '/';
 $mv_path = str_replace( 'example_usage/', '', $mv_path );
@@ -79,3 +82,6 @@ $sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />&nbsp;
   </body>
 </html>
+<?
+}
+?>
