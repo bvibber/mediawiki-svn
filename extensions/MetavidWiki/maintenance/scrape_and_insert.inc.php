@@ -46,7 +46,7 @@ class MV_BillScraper extends MV_BaseScraper {
 				if ( !$this->streams[$stream_name]->doesStreamExist() ) {
 					die( 'error: stream ' . $stream_name . ' does not exist' );
 				}
-				print "Proccessing Stream: $stream_name \n";
+				print "processing Stream: $stream_name \n";
 			}
 		}
 	}
@@ -350,7 +350,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		   				$bill_key = trim( $debate_matches[1] );
 		   				print "found debate: tag " . $bill_key . "\n";
 		   				// build gov-track-congress-session friendly debate url:
-						if ( $this->get_and_proccess_billid( $bill_key, $stream->date_start_time ) != null ) {
+						if ( $this->get_and_process_billid( $bill_key, $stream->date_start_time ) != null ) {
 							$bill_categories[$bill_key] = $bill_key;
 						}
 		   			}
@@ -404,7 +404,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		   						// conform white space and case:
 		   						$bill_name = str_replace( array( 'S. ', 'Con. ', 'Res. ' ), array( 'S.', 'CON.', 'RES. ' ), $bill_name );
 		   						// make sure its not a false possitave and load bill data from govTrack:
-		   						if ( $this->get_and_proccess_billid( $bill_name, $stream->date_start_time ) ) {
+		   						if ( $this->get_and_process_billid( $bill_name, $stream->date_start_time ) ) {
 		   							$bill_categories[$bill_name] = $bill_name;
 		   						}
 		   					}
@@ -454,7 +454,7 @@ class MV_BillScraper extends MV_BaseScraper {
 						print "failed to update restrictions :(\n";
 					}
 
-		   			// proccess each bill to the annotation body;
+		   			// process each bill to the annotation body;
 		   			$bcat = '';
 		   			$bill_lead_in = "\n\nBill ";
 		   			// print_r($bill_categories);
@@ -575,7 +575,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		print "GOT openCon id: $openCongBillId from $bill_key\n";
 		print "GOT mapLight id: $mapLightBillId from $bill_key\n";
 		if ( $govTrackBillId ) {
-			$this->proccessBill( $govTrackBillId, $bill_key, $openCongBillId, $mapLightBillId );
+			$this->processBill( $govTrackBillId, $bill_key, $openCongBillId, $mapLightBillId );
 			$this->govTrackBillId = $govTrackBillId;
 			return 	$this->govTrackBillId;
 		} else {
@@ -606,7 +606,7 @@ class MV_BillScraper extends MV_BaseScraper {
 			return false;
 		}
 	}
-	function proccessBill( $govTrackBillId, $bill_key, $openCongBillId = false, $mapLightBillId = false, $forceUpdate = false ) {
+	function processBill( $govTrackBillId, $bill_key, $openCongBillId = false, $mapLightBillId = false, $forceUpdate = false ) {
 		// get the bill title & its sponsor / co-sponsors:
 		$rawGovTrackPage = $this->doRequest( $this->govTrack_bill_url . $govTrackBillId );
 
@@ -786,7 +786,7 @@ class MV_BillScraper extends MV_BaseScraper {
 				print " found bill key:$session_num $bill_key \n";
 				// set a flag as to not get caught in infintate loop:
 				$this->bill_name_maplight_lookup = false;
-				$this->get_and_proccess_billid( $bill_key, '', $session_num );
+				$this->get_and_process_billid( $bill_key, '', $session_num );
 				print " found bill title: " . $this->cur_bill_short_title . "\n";
 				// should now have the bill name update the cache and return
 				$this->mapLight_bill_cache[$mapBillId] = $this->cur_bill_short_title;

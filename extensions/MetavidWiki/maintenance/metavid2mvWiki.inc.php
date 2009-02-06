@@ -297,7 +297,7 @@ function do_stream_insert( $mode, $stream_name = '' ) {
 		}
 		// do insert/copy all media images
 		if ( !isset( $options['skipimage'] ) ) {
-			do_proccess_images( $stream, $force );
+			do_process_images( $stream, $force );
 			print "done with images\n";
 		}
 		if ( !isset( $options['skipfiles'] ) ) {
@@ -305,8 +305,8 @@ function do_stream_insert( $mode, $stream_name = '' ) {
 			do_stream_file_check( $stream );
 		}
 		if ( !isset( $options['skiptext'] ) ) {
-			// proccess all stream text:
-			do_proccess_text( $stream, $force );
+			// process all stream text:
+			do_process_text( $stream, $force );
 		}
 		if ( !isset( $options['skipSpeechMeta'] ) ) {
 			// do annoative track for continus speches
@@ -389,7 +389,7 @@ function do_annotate_speeches( $stream, $force ) {
 		}
 	}
 }
-function do_proccess_text( $stream, $force ) {
+function do_process_text( $stream, $force ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		if ( $force ) {
 			global $botUserName;
@@ -481,7 +481,7 @@ function do_proccess_text( $stream, $force ) {
 /*
  * for each image add it to the image directory
  */
-function do_proccess_images( $stream, $force = false ) {
+function do_process_images( $stream, $force = false ) {
 	global $mvLocalImgLoc, $MVStreams, $wgDBname;
 	$dbr =& wfGetDB( DB_SLAVE );
 	$dbw =& wfGetDB( DB_MASTER );
@@ -755,22 +755,16 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 
 	//get all people from the congress people category 
 	$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
-		'cl_to' => 'Person',
-		/*'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
-	) . '%\' COLLATE latin1_general_ci' ), __METHOD__, array (*/
-		'LIMIT' => $result_limit
-	) );
+		'cl_to' => 'Person'
+		) 
+	);
+	
+	if ( $dbr->numRows( $result ) == 0 )
+		die( 'could not find people: ' . "\n" );
 	$out = '';
 	while ( $row = $dbr->fetchObject( $result ) ) {
 		$person_name = $row->cl_sortkey;
 		$person_ary[$person_name] = true;
-	}
-		
-	if ( $dbr->numRows( $res ) == 0 )
-		die( 'could not find people: ' . "\n" );
-	$person_ary = array ();
-	while ( $person = $dbr->fetchObject( $res ) ) {
-		$person_ary[] = $person;
 	}
 	foreach ( $person_ary as $person ) {
 		$person_title = Title :: newFromUrl( $person->name_clean );
@@ -819,7 +813,7 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 				}
 			} else if ( $dbKey == 'contribution_date_range' ) {
 				if ( !$mapk ) {
-					print 'out of order attr proccess missing mapk' . "\n";
+					print 'out of order attr process missing mapk' . "\n";
 				} else {
 					$raw_results = $mvScrape->doRequest( 'http://www.maplight.org/map/us/legislator/' . $mapk );
 					preg_match( '/Showing\scontributions<\/dt><dd>([^<]*)</', $raw_results, $matches );
@@ -891,7 +885,7 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 					$page_body .= "Funding Interest $hr_inx=" . html_entity_decode( $matches[2][$k] ) . "|\n";
 					$page_body .= "Funding Amount $hr_inx=\$" . $matches[3][$k] . "|\n";
 					if ( $doInterestLookup ) {
-						// make sure the intrest has been proccessed:
+						// make sure the intrest has been processed:
 						do_proc_interest( $matches[1][$k], html_entity_decode( $matches[2][$k] ) );
 					}
 					// do_proc_interest('G1100','Chambers of commerce');
@@ -1034,7 +1028,7 @@ function do_rm_congress_persons() {
 		print "removed title: " . $pTitle->getText() . "\n";
 	}
 }
-function mv_proccess_attr( $table, $stream_id ) {
+function mv_process_attr( $table, $stream_id ) {
 	global $start_time, $end_time;
 	$dbr = wfGetDB( DB_SLAVE );
 	$sql = "SELECT * FROM `metavid`.`$table` WHERE `stream_fk`=$stream_id";
