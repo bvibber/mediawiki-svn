@@ -156,6 +156,7 @@ upFirefogg.prototype = {
 			addHandler( editForm, 'submit', function() {			
 				//check if the title and or description are empty don't let the person submit
 				e = document.getElementById('wpDestFile')
+				
 				//if(typeof e.value == 'undefined' || e.value=='' || e.value.substr(-4) != '.fogg')
 				//	return alert('destination file is empty or does not end with .fogg');
 					
@@ -164,6 +165,7 @@ upFirefogg.prototype = {
 				//	if(typeof e.value == 'undefined' || e.value=='')
 				//		return alert('Description is empty');
 				//}
+				
 				//for commons check wpDescText1
 				e = document.getElementById('wpDescText1');
 				if(e){
@@ -171,8 +173,7 @@ upFirefogg.prototype = {
 						return alert('Description is empty');
 				}
 				//get the input 
-				var formData = _this.getEditFormData( editForm );
-				debugger;
+				var formData = _this.getEditFormData( editForm );				
 						
 				//display the loader:
 				e = document.getElementById('dlbox-centered')
@@ -187,7 +188,7 @@ upFirefogg.prototype = {
 				
 				
 				//@@todo read this from the config file rather than hard code it: 
-				var options = JSON.stringify({'maxSize': 400, 'videoBitrate': 500});
+				var options = JSON.stringify({'maxSize': 400, 'videoBitrate': 400});
 			  	_this.fogg.encode(options);		  	
 			  	var encodingStatus = function() {
 			    	var status = _this.fogg.status();
@@ -211,11 +212,11 @@ upFirefogg.prototype = {
 						//hard code some values 
 						formData['wpSourceType']='file';						 						
 						
-						var data_str = JSON.stringify( formData );
-						//alert('send data:'+ data_str);
+						var data = JSON.stringify( formData );
+						alert('send data:'+ data);
 						//send to the post url: 
 						js_log('sending to:' + editForm.action);								
-						_this.fogg.upload(editForm.action, 'wpUploadFile', data_str);
+						_this.fogg.post( editForm.action, 'wpUploadFile', data);
 						var uploadStatus = function() {							
 					        var status = _this.fogg.status();							        					      					        					
 							//js_log(' up stats: ' + status + ' p:' + _this.fogg.progress() + ' state: '+ _this.fogg.state + ' result page:' + result_page);
@@ -229,7 +230,7 @@ upFirefogg.prototype = {
 					        }
 					        //upload sucsefull, state can also be 'upload failed'
 					        else if(_this.fogg.state == 'upload done') {	
-					        	//js_log('upload done: ' + JSON.parse(_this.fogg.uploadstatus()).responseText);							        			        
+					        	js_log( 'firefogg:upload done: ');							        			        
 					        	//@@todo handle errors same problem as #695 in mv_remote_media_search.js
 					        	//we need to add image uploading to the api rather than parse the HTML output of the pages  
 								var result_page = JSON.parse(_this.fogg.uploadstatus()).responseText;

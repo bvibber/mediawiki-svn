@@ -1008,7 +1008,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		MV_MVD::onEdit( $this->mvd_pages, $mvd_id );
 		// run the delete function: 
 		$article->doDelete( $_REQUEST['wpReason'] );
-		// check if delete happend
+		// check if delete
 		if ( $article->exists() ) {
 			return  php2jsObj( array( 'status' => 'error',
 									'error_txt' => $wgOut->getHTML() ) );

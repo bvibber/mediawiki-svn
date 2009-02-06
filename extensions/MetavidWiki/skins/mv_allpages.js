@@ -205,7 +205,7 @@ function mv_toggle_advs(){
 		$j('.advs_basic').fadeOut('fast',function(){
 			if(!_fadecalled){
 				if($j('#tmp_loading_txt').length==0){
-					$j('.advanced_search_tag').before('<span id="tmp_loading_txt">'+getMsg('loading_txt')+'</span>');
+					$j('.advanced_search_tag').before('<span id="tmp_loading_txt">'+gM('loading_txt')+'</span>');
 				}					
 				if(typeof(mv_setup_search)=='undefined'){
 					$j.getScript(mv_embed_path +'../mv_search.js', function(){

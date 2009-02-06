@@ -1016,7 +1016,7 @@ class MV_SpecialMediaSearch {
 		$query_string='';
 		$or='';
 		foreach($nick_parts as $pname){
-			$query_string.= $or .' [[Nickname::~*'.ucfirst($pname).'*]] OR [[Nickname::'.ucfirst($pname).']] ';
+			$query_string.= $or . ' [[Nickname::~*'.ucfirst($pname).'*]] OR [[Nickname::'.ucfirst($pname).']] ';
 			$or=' OR ';
 		}
 		$params=array('format' => 'broadtable',
@@ -1030,7 +1030,7 @@ class MV_SpecialMediaSearch {
 		for($i=0;$i< $res->getCount();$i++){
 			$v =  $res->getNext();
 			$v = current(current($v)->getContent());
-			array_push( $results,$v->getXSDValue());
+			array_push( $results, $v->getXSDValue());
 		}
 		return $results;
 	}
@@ -1040,7 +1040,6 @@ class MV_SpecialMediaSearch {
 		if ( !$imgTitle->exists() ) {
 			$imgTitle = Title :: makeTitle( NS_IMAGE, MV_MISSING_PERSON_IMG );
 		}
-
 		$img = wfFindFile( $imgTitle );
 		if ( !$img ) {
 			$img = wfLocalFile( $imgTitle );

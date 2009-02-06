@@ -816,16 +816,26 @@ class MV_BillScraper extends MV_BaseScraper {
 	}
 	function get_wiki_name_from_maplightid( $mapID ) {
 		if ( !isset( $this->mapLight_cache ) ) {
-			$sql = 'SELECT * FROM `smw_attributes` WHERE `attribute_title` = \'MAPLight_Person_ID\'';
-			$dbr = wfGetDB( DB_SLAVE );
-			$res = $dbr->query( $sql );
-			while ( $row = $dbr->fetchObject( $res ) ) {
-				$this->mapLight_cache[$row->value_xsd] = $row->subject_title;
-			}
+			//$sql = 'SELECT * FROM `smw_attributes` WHERE `attribute_title` = \'MAPLight_Person_ID\'';
+			
+			$query_string= "[[MAPLight Person ID::{$mapID}]]";
+			$params=array('format' => 'broadtable',
+	    				  'offset' => 0,
+						  'limit'	=>1);
+			$results = array();
+			$queryobj = SMWQueryProcessor::createQuery($query_string, $params, false, '', array());
+			$queryobj->querymode = SMWQuery::MODE_INSTANCES;
+			$res = smwfGetStore()->getQueryResult($queryobj);
+			
+			for($i=0;$i< $res->getCount();$i++){
+				$v =  $res->getNext();
+				$v = current(current($v)->getContent());				
+				$this->mapLight_cache[$mapID] = $v->getXSDValue();
+			}						
 		}
 		if ( !isset( $this->mapLight_cache[$mapID] ) ) {
 			$wgTitle = Title::newFromText( 'CongressVid:Missing_People' );
-			print "Missing MAPLight key for $mapID (have you insertd maplight ID for everyone yet?)\n";
+			print "No person for MAPLight key $mapID (have you inserted maplight ID for everyone ?)\n";
 			// append_to_wiki_page($wgTitle, "Missing MapLight person: [http://maplight.org/map/us/legislator/$mapID $mapID]");
 			return false;
 		}

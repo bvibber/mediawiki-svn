@@ -81,7 +81,7 @@ function mv_do_setup_search(req_mode){
 					'size="9"  type="text" name="f['+inx+'][v]" value="" >');
 			break;	
 			case 'date_range':
-				$j('#mvs_'+inx+'_tc').html( getMsg('loading_txt') );
+				$j('#mvs_'+inx+'_tc').html( gM('loading_txt') );
 				var load_js_set = { 'Date.fromString':'jquery/plugins/date.js',
 									'$j.fn.datePicker':'jquery/plugins/jquery.datePicker.js'};
 				if(embedTypes.msie6){
@@ -161,7 +161,7 @@ function mv_do_ajax_search_request(url){
 	//(don't) annimate the transition:
 	//$j('#mv_search_results_container').fadeOut(function(){
 	//});
-	$j('#mv_search_results_container').html(getMsg('loading_txt'));
+	$j('#mv_search_results_container').html(gM('loading_txt'));
 	$j.get(url, function(data){
 		//populate results
 		$j('#mv_search_results_container').html(data);
@@ -268,7 +268,7 @@ function mv_ex(mvd_id){
 			$j('#mv_close_clip_'+mvd_id).fadeIn('fast');
 		});
 
-		$j('#mvr_'+mvd_id).css('display', 'block').html( getMsg('loading_txt') );
+		$j('#mvr_'+mvd_id).css('display', 'block').html( gM('loading_txt') );
 		//grab search terms:
 		var terms='';
 		$j('.mv_hl_text').each(function(){

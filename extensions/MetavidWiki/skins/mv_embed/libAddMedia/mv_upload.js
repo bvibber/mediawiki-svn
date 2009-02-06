@@ -4,7 +4,7 @@ will be replaced with upload API once that is ready
 */
 
 loadGM( { 
-	'upload-enable-converter' : 'Enable video converter (to upload source video not yet converted to theora format)',
+	'upload-enable-converter' : 'Enable video converter (to upload source video not yet converted to theora format)'+
 								' <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>',
 	'upload-fogg_not_installed': 'If you want to upload video consider installing <a href="http://firefogg.org">firefogg.org</a>, '+ 
 											'<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>',
@@ -13,7 +13,7 @@ loadGM( {
 	'uploaded-status':'Uploaded',
 	'upload-select-file': 'Select File...',
 	'wgfogg_wrong_version': 'You have firefogg installed but its outdated, <a href="http://firefogg.org">please upgrade</a> ',
-	'wgfogg_waring_ogg_upload': 'You have selected an ogg file for conversion to ogg (this is probably unessesary). Maybe disable the video converter?'
+	'wgfogg_waring_ogg_upload': 'You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?'
 	}
 );
 
@@ -70,7 +70,7 @@ mvUploader.prototype = {
 	},
 	setupFirefogg:function(){
 		var _this = this;
-		//add firebug html if not already there: ( same as $wgEnableFirebug added in SpecialUpload.php )  
+		//add firefogg html if not already there: ( same as $wgEnableFirebug added in SpecialUpload.php )  
 		if( $j('#fogg-video-file').length==0 ){
 			js_log('add addFirefoggHtml');
 			_this.addFirefoggHtml();
@@ -103,14 +103,14 @@ mvUploader.prototype = {
 		//add in firefogg control			
 		$j('#wg-base-upload').after('<p id="fogg-enable-item" >' + 
 						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="' + gM('upload-select-file') + '">' +
-						"<span class='error' id='wgfogg_not_installed'>" + 
+						"<span id='wgfogg_not_installed'>" + 
 							gM('upload-fogg_not_installed') +
 						'</span>'+
-						"<span class='error' id='wgfogg_wrong_version'>"+
-							gM('wgfogg_wrong_version')+
+						"<span class='error' id='wgfogg_wrong_version'  style='display:none'>" +
+							gM('wgfogg_wrong_version') +
 						'</span>'+
 						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none' >"+
-								gM('wgfogg_waring_ogg_upload')+
+								gM('wgfogg_waring_ogg_upload') +
 						'</span>'+
 						"<span id='wgfogg_installed' style='display:none' >"+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
@@ -118,9 +118,9 @@ mvUploader.prototype = {
 						'<span><br></p>');		
 		//add in loader dl box: 	
 		//hard code style (since not always easy to import style sheets)
-		$j('[@name=wpUpload]').eq(0).before('<div id="dlbox-centered" class="dlbox-centered" style="display:none;'+
+		$j('body').append('<div id="dlbox-centered" class="dlbox-centered" style="display:none;'+
 				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
-				'height:50%;padding: 10px;z-index:100;top:30%;left:15%;" >'+			
+				'height:50%;padding: 10px;z-index:100;top:65%;left:20%;" >'+			
 					'<h5>' + gM('upload-in-progress') + '</h5>' +
 					'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
 						'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
@@ -128,7 +128,7 @@ mvUploader.prototype = {
 					'<span id="fogg-pstatus">0%</span>' +
 					'<span id="fogg-status-transcode">' + gM('upload-transcoded-status') + '</span>'+  
 					'<span style="display:none" id="fogg-status-upload">' + gM('uploaded-status') + '</span>' +
-			'</div>'+					
+			'</div>' +					
 			'<div id="dlbox-overlay" class="dlbox-overlay" style="display:none;background:#000;cursor:wait;height:100%;'+
 						'left:0;top:0;position:fixed;width:100%;z-index:99;filter:alpha(opacity=60);'+
 						'-moz-opacity: 0.6;	opacity: 0.6;" ></div>');				

@@ -12,7 +12,7 @@ var mv_add_media_wizard_path = 'http://mvbox2.cse.ucsc.edu/w/extensions/MetavidW
 
 //*code should not have to modify anything below*/
 //check if we are on a edit page:
-if(wgAction=='edit'){
+if( wgAction=='edit' ){
 	//add onPage ready request:
 	addOnloadHook( function(){						
 		var imE = document.createElement('img');

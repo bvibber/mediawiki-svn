@@ -43,8 +43,8 @@ var golobal_org_ptext=false;
 var mvTextScrollMonitorTimer = null;
 
 var mv_open_edit_mvd=null;
-if(!gMsg){var gMsg={};}
 
+if(!gMsg){var gMsg={};}
 gMsg['mv_open_edit'] ='you can only edit one at a time, please save or cancel other open edits first';
 
 //@@todo context sensitive init scripts
@@ -63,7 +63,7 @@ function mv_load_interface_libs(){
 			'$j.autocomplete'	: 'jquery/plugins/jquery.autocomplete.js',
 			'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
 			'$j.ui.resizable'	: 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
-			'mvClipEdit'		: 'libSequencer/mv_clipedit.js'
+			'mvClipEdit'		: 'libClipEdit/mv_clipedit.js'
 	  	},function(){
 	  		//now extend draggable
 	  		mvJsLoader.doLoad({
@@ -288,18 +288,23 @@ function mv_doTextScrollMonitor(){
 	if(!mvTextScrollMonitorTimer)
 		mvTextScrollMonitorTimer=setInterval('mv_doTextScrollMonitor()',1000);
 		
-	if(!mv_open_edit_mvd){
+	if( ! mv_open_edit_mvd ){
 		var evid = $j('#embed_vid').get(0);
 		if( evid.isPlaying() ){
 			if(evid.currentTime!=0)
 				mv_scroll2Time(evid.currentTime);
 		}
 		if( evid.userSlide ){		
-			var mvd_id = mv_scroll2Time( ntp2seconds(evid.jump_time) );
-			//also update the image:
-			var img_url = $j('#mv_fd_mvd_'+mvd_id).attr('image_url');
-			//js_log('set imag via mv_doTextScrollMonitor:'+img_url);
-			$j('#embed_vid').get(0).updateThumbnail(img_url);
+			var mvd_id = mv_scroll2Time( ntp2seconds( evid.jump_time ) );
+			if( mvd_id ){
+				//also update the image:
+				var img_url = $j('#mv_fd_mvd_'+mvd_id).attr('image_url');
+				//js_log('set imag via mv_doTextScrollMonitor:'+img_url);
+				$j('#embed_vid').get(0).updateThumbnail( img_url );
+			}else{
+				//update the image based on the time: 
+				$j('#embed_vid').get(0).updateThumbTime( evid.jump_time );
+			}
 		}
 		 		
 		
@@ -372,7 +377,7 @@ function mv_disp_add_mvd(mvd_type){
 	sajax_do_call( "mv_add_disp",[wgTitle, mvd_type, org_vid_time_req], f );
 	//insert before the first mvd:	
 	$j('#mv_add_new_mvd').css({display:'inline'});
-	$j('#mv_add_new_mvd').html( getMsg('loading_txt') );
+	$j('#mv_add_new_mvd').html( gM('loading_txt') );
 	var mvd_id='new';
 	//scroll to the new (loading) (top of mvd_cont)
 	$j('#selectionsBox').animate({scrollTop: 0}, 'slow');
@@ -422,7 +427,7 @@ function mv_edit_disp(titleKey, mvd_id){
 	 sajax_request_type='GET';
 
 	 sajax_do_call( "mv_edit_disp", [titleKey, mvd_id], f );
-	 $j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
+	 $j('#mv_fcontent_'+mvd_id).html( gM('loading_txt') );
 	 //handle the response:
 	 function f( request ) {
 		result= request.responseText;
@@ -461,7 +466,7 @@ function mv_disp_mvd(titleKey, mvd_id){
 		//set sajax to do a GET request
 		sajax_request_type='GET';
 		sajax_do_call( "mv_disp_mvd", [titleKey, mvd_id], f );
-		$j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
+		$j('#mv_fcontent_'+mvd_id).html( gM('loading_txt') );
 	}
 	//free the editor slot:
 	js_log('mv_disp_mvd: nset mv_open_edit_mvd');
@@ -481,7 +486,7 @@ function mv_disp_mvd(titleKey, mvd_id){
 function mv_history_disp(titleKey, mvd_id){
 	 sajax_request_type='GET';
 	 sajax_do_call( "mv_history_disp", [titleKey, mvd_id], f );
-	 $j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
+	 $j('#mv_fcontent_'+mvd_id).html( gM('loading_txt') );
 	 function f( request ) {
 		result= request.responseText;
 		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";
@@ -492,7 +497,7 @@ function mv_history_disp(titleKey, mvd_id){
 /*function mv_adjust_disp(titleKey, mvd_id){
 	sajax_request_type='GET';
 	sajax_do_call( "mv_adjust_disp", [titleKey, mvd_id], f );
-	$j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
+	$j('#mv_fcontent_'+mvd_id).html( gM('loading_txt') );
 	//hanndle the response:
 	function f( request ) {
 		result= request.responseText;
@@ -648,7 +653,7 @@ function get_titleObject(titleKey){
 function mv_disp_remove_mvd(titleKey, mvd_id){
 	 sajax_request_type='GET';
 	 sajax_do_call( "mv_disp_remove_mvd", [titleKey, mvd_id], f );
-	 $j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
+	 $j('#mv_fcontent_'+mvd_id).html( gM('loading_txt') );
 	 function f( request ) {
 		result= request.responseText;
 		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";
@@ -769,7 +774,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 		}
 	}
 
-	$j(setHtmlId).html( getMsg('loading_txt') );
+	$j(setHtmlId).html( gM('loading_txt') );
 	//@@todo switch over to jquery ajax
 	mv_sajax_do_call('mv_edit_submit',args, f, post_vars);
 	//js_log('mv_sajax_do_call ' + fajax +' ' +  args);
@@ -874,17 +879,18 @@ function mv_do_play(mvd_id){
 	$j('#embed_vid').get(0).
 	//disable interface actions (mouse in out etc)
 	mv_lock_vid_updates=true;
-	//update the src if nesesary and no mvd provided:
+	//update the src if neasesary and no mvd provided:
 	if(!mvd_id){
 		if(mv_stream_interface.cur_mvd_id!=mv_stream_interface.delay_cur_mvd_id){
 			mv_stream_interface.cur_mvd_id =mv_stream_interface.delay_cur_mvd_id;
-			do_video_mvd_update(mv_stream_interface.cur_mvd_id);
+			do_video_mvd_update( mv_stream_interface.cur_mvd_id );
 		}
 	}
 	//update the embed video actual play time
 	//time_chunk = $j('#embed_vid').get(0).src.split('t=');
 	//$j('#mv_videoPlayerTime').html( time_chunk[1] );
 	//stop the video if playing and play:
+	$j('#embed_vid').get(0).didSeekJump=true;
 	//@@todo extend mv_embed to support src switching
 	$j('#embed_vid').get(0).play();
 
@@ -985,7 +991,7 @@ function do_video_mvd_update(mvd_id){
 }
 function mv_tool_disp(tool_id){
 	//set content to loading
-	$j('#mv_tool_cont').html( getMsg('loading_txt') );
+	$j('#mv_tool_cont').html( gM('loading_txt') );
 	//populate post vars with any necessary tool specific items:
 	var post_vars=new Object();
 	if(tool_id=='navigate'||tool_id=='export'){

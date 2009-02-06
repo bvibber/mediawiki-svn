@@ -36,14 +36,15 @@ class MV_Stream {
 		// convert the object to an array
 		if ( is_object( $initVal ) )
 			$initVal = get_object_vars( $initVal );
+			
 		if ( is_array( $initVal ) ) {
 			foreach ( $initVal as $key => $val ) {
-				// make sure the key exisit and is not private
+				// make sure the key is present and is not private
 				if ( isset ( $this-> $key ) && $key[0] != '_' ) {
 					$this-> $key = $val;
 				}
 			}
-		}
+		}		
 		// normalize stream title: 		
 	}
 	function newStreamByName( $name ) {

@@ -137,9 +137,9 @@ class MV_MagicWords {
 			$outItems = Array();
 			while ( $row = $dbr->fetchObject( $result ) ) {
 				$row->stream_id = $row->id;
-				$row->end_time =   $row->duration;				
+				//$row->end_time =   $row->duration;				
 				//get the first speech in that day:				 
-				$o = $this->getItemOutput($row, array('use_mvd_time'=>true));				
+				$o = $this->getItemOutput($row, array('use_mvd_time'=>true, 'remove_no_meta'=>true));				
 				if($o)
 					$outItems[]=$o; 			
 			}
@@ -237,6 +237,10 @@ class MV_MagicWords {
 			 }
 			 $mvd_out_html.='</span>';
 			 }*/
+		}else{		
+			//return false if we have not meta
+			if( isset($opt['remove_no_meta']) && $opt['remove_no_meta'])
+				return false;
 		}
 		
 		

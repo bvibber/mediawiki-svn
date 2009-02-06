@@ -213,6 +213,7 @@ function do_insert_stream_file( $mvStream, $path, $quality_msg ) {
 	$dbw = wfGetDB( DB_WRITE );
 	$dur = $mvStream->getDuration();	
 	// get file duration from nfo file :
+	$dur = $mvStream->getDuration();
 	if($dur == 0){
 		$nfo_url = $path . '.nfo';
 		if( url_exists($nfo_url) ){
@@ -237,9 +238,9 @@ function do_insert_stream_file( $mvStream, $path, $quality_msg ) {
 				$dur = 0;
 			}
 		}
-	}
+	}	
 	$sql = "INSERT INTO `mv_stream_files` (`stream_id`, `file_desc_msg`, `path`, `duration`)" .
-		" VALUES ('{$mvStream->id}', '{$quality_msg}', '{$path}', {$dur} )";
+		" VALUES ('{$mvStream->id}', '{$quality_msg}', '{$path}', {$dur} )";	
 	$dbw->query( $sql );
 }
 // @@todo convert to MV_EditStream
@@ -747,33 +748,61 @@ function do_bill_insert( $bill_key ) {
 	//grab bill list with categories from govtrack
 }
 function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force = false ) {
-	global $valid_attributes, $states_ary;
-	$dbr = wfGetDB( DB_SLAVE );
-
+	global $valid_attributes, $states_ary;		
+	
+	$dbr = wfGetDB( DB_SLAVE );	
+	
 	include_once( 'scrape_and_insert.inc.php' );
 	$mvScrape = new MV_BaseScraper();
 
 	//get all people from the congress people category 
 	$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
 		'cl_to' => 'Person'
-		) 
-	);
-	
+		)
+	);	
 	if ( $dbr->numRows( $result ) == 0 )
 		die( 'could not find people: ' . "\n" );
 	$out = '';
-	while ( $row = $dbr->fetchObject( $result ) ) {
-		$person_name = $row->cl_sortkey;
-		$person_ary[$person_name] = true;
-	}
-	foreach ( $person_ary as $person ) {
-		$person_title = Title :: newFromUrl( $person->name_clean );
-		// semantic data via template:
-		$mapk = null;
+	while ( $person = $dbr->fetchObject( $result ) ) {		
+		$person_name = $person->cl_sortkey;
+		//get person data from  wiki: 
+		$person_title = Title::newFromText( $person_name );
 		
+		$smwStore =& smwfGetStore();
+		
+		//check for govtrack key: 
+		$propTitle = Title::newFromText( 'GovTrack Person ID', SMW_NS_PROPERTY );
+		$smwProps = $smwStore->getPropertyValues( $person_title, $propTitle );
+		if ( count( $smwProps ) == 0 ) {
+			print "person: $person_name has no GovTrack Person ID make sure to include this on their page\n";
+			continue;
+		}	
+		
+		//set the maplight key: 
+		$propTitle = Title::newFromText( 'MAPLight Person ID', SMW_NS_PROPERTY );
+		$smwProps = $smwStore->getPropertyValues( $person_title, $propTitle );
+		if ( count( $smwProps ) != 0 ) {
+			$v = current( $smwProps );
+			$mapk = $v->getXSDValue();
+			$person->maplight_id = $v->getXSDValue();
+		}else{
+			print "person: $person_name has no MAPLight Person ID could not lookup with sunlight api?\n";	
+		}
+		
+		//set $person->osid
+		$propTitle = Title::newFromText( 'CRP ID', SMW_NS_PROPERTY );
+		$smwProps = $smwStore->getPropertyValues( $person_title, $propTitle );
+		if ( count( $smwProps ) != 0 ) {
+			$v = current( $smwProps );
+			$person->osid = $v->getXSDValue();
+		}	
+		
+		// all sunlight data is stored in the template now:
+											
 		//do sunlight api query:
-		global  $edSunlightAPIKey;
-		$sulightData=array();
+		//global  $edSunlightAPIKey;
+		//$sulightData=array();		
+		/*	  
 		$req_url = 'http://services.sunlightlabs.com/api/legislators.getList.xml?govtrack_id='.$person->gov_track_id.'&apikey='.$edSunlightAPIKey;
 		$raw_sunlight_xml = $mvScrape->doRequest($req_url);
 		$xml_parser = xml_parser_create( 'UTF-8' ); // UTF-8 or ISO-8859-1
@@ -789,19 +818,13 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 			}
 		}else{
 			print 'error: '.xml_error_string(xml_get_error_code($xml_parser)).' at line '.xml_get_current_line_number($xml_parser);
-		}		
+		}
+		*/		
 		
 		$page_body = '{{Congress Person|' . "\n";
 		foreach ( $valid_attributes as $dbKey => $attr ) {
 			list ( $name, $desc ) = $attr;
-			if ( $dbKey == 'district' ) {
-				// special case for district:
-				if ( $person->district ) {
-					if ( $person->district != 0 ) {
-						$page_body .= "{$name}=" . text_number( $person->district ) . ' District' . "|\n";
-					}
-				}
-			} else if ( $dbKey == 'total_received' ) {
+			if ( $dbKey == 'total_received' ) {
 				if ( !$mapk ) {
 					print 'no mapkey for total_received' . "\n";
 				} else {
@@ -873,7 +896,7 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 				}
 			}
 		}
-		// if we have the maplight key add in all contributions and procces contributers
+		// if we have the maplight key add in all contributions and process contributers
 		if ( !$mapk ) {
 			print 'missing mapkey' . "\n";
 		} else {
@@ -1098,7 +1121,7 @@ $valid_attributes = array (
 		'string'
 	),
 	'osid' => array (
-		'Open Secrets ID',
+		'CRP ID',
 		'Congress Person\'s <a href="http://www.opensecrets.org/">Open Secrets</a> Id',
 		'string'
 	),
@@ -1108,7 +1131,7 @@ $valid_attributes = array (
 		'string'
 	),
 	'bioguide' => array (
-		'Bio Guide ID',
+		'Bioguide ID',
 		'Congressional Biographical Directory id',
 		'string'
 	),
@@ -1203,12 +1226,12 @@ $valid_attributes = array (
 		'string'
 	),
 	'fec_id'=>array(
-		'Fec ID',
+		'FEC ID',
 		'Federal Election Commission ID',
 		'string'
 	),
 	'congresspedia_url'=>array(
-		'Congresspedia url',
+		'Congresspedia URL',
 		'URL of Legislator\'s entry on Congresspedia',
 		'URL'
 	),
@@ -1217,6 +1240,11 @@ $valid_attributes = array (
 		'URL of web contact form',
 		'URL'
 	),	
+	'eventful_id'=>array(
+		'Eventful ID',
+		'Eventfull id',
+		'string'
+	),
 	'twitter_id'=>array(
 		'Twitter ID',
 		'Congressperson\'s official Twitter account',
