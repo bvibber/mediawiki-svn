@@ -25,6 +25,7 @@ class MV_BillScraper extends MV_BaseScraper {
 	var $bill_types = array( 'H.J.RES.' => 'hj', 'H.R.' => 'h', 'H.RES.' => 'hr',
 							'S.CON.RES.' => 'sc', 'S.J.RES' => 'sj', 'S.RES.1' => 'sr', 'S.' => 's' );
 	var $bill_titles = array();
+	var $mapLight_cache = array();
 
 	function procArguments() {
 		global $options, $args;
@@ -646,8 +647,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		// get the $thomas_match		
 		preg_match( '/thomas\.loc\.gov\/cgi-bin\/bdquery\/z\?([^\"]*)/', $rawGovTrackPage, $thomas_match );
 		// get introduced: //strange .* does not seem to work :(
-		preg_match( '/Introduced<\/nobr><\/td><td style="padding-left: 1em; font-size: 75%; color: #333333"><nobr>([^<]*)/m', $rawGovTrackPage, $date_intro_match );
-		// print_r($date_intro_match);
+		preg_match( '/Introduced<\/nobr>[^>]*>[^>]*>[^>]*([^<]*)/', $rawGovTrackPage, $date_intro_match );	
 		// get sponsor govtrack_id:
 		preg_match( '/usbill:sponsor[^<]*<a href="person.xpd\?id=([^"]*)/i', $rawGovTrackPage, $sponsor_match );
 		// lookup govtrack_id
@@ -815,7 +815,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		return str_replace( '_', ' ', $this->govTrack_cache[$govID] );
 	}
 	function get_wiki_name_from_maplightid( $mapID ) {
-		if ( !isset( $this->mapLight_cache ) ) {
+		if ( !isset( $this->mapLight_cache[$mapID] ) ) {
 			//$sql = 'SELECT * FROM `smw_attributes` WHERE `attribute_title` = \'MAPLight_Person_ID\'';
 			
 			$query_string= "[[MAPLight Person ID::{$mapID}]]";
@@ -835,7 +835,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		}
 		if ( !isset( $this->mapLight_cache[$mapID] ) ) {
 			$wgTitle = Title::newFromText( 'CongressVid:Missing_People' );
-			print "No person for MAPLight key $mapID (have you inserted maplight ID for everyone ?)\n";
+			print "{$query_string} No $mapID found\n";			
 			// append_to_wiki_page($wgTitle, "Missing MapLight person: [http://maplight.org/map/us/legislator/$mapID $mapID]");
 			return false;
 		}
