@@ -78,17 +78,17 @@ def main():
 				version = args[0],
 				branch = decomposed['branch'],
 				dir = decomposed['major'])
-
-	if not ask("Was %s the previous release?" % (decomposed['prevVersion'])):
-		print 'Please specify the correct previous release on the command line'
-		sys.exit(1)
-	
-	makeRelease(
-		version = args[0],
-		prevVersion = decomposed['prevVersion'],
-		prevBranch = decomposed['prevBranch'],
-		branch = decomposed['branch'],
-		dir = decomposed['major'] )
+	else:
+		if not ask("Was %s the previous release?" % (decomposed['prevVersion'])):
+			print 'Please specify the correct previous release on the command line'
+			sys.exit(1)
+		
+		makeRelease(
+			version = args[0],
+			prevVersion = decomposed['prevVersion'],
+			prevBranch = decomposed['prevBranch'],
+			branch = decomposed['branch'],
+			dir = decomposed['major'] )
 
 def ask(question):
 	while True:
