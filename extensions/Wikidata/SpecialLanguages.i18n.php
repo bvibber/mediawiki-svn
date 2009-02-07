@@ -244,6 +244,9 @@ Please contact the server operator or administrator.",
 	'ow_suggest_previous'				=> 'Previous',
 	'ow_suggest_next'					=> 'Next',
 	'ow_suggest_clear'					=> 'Clear',
+	
+	'ow_nstab_definedmeaning'			=> 'defined meaning',
+	'ow_nstab_edit_copy'				=> 'edit copy',
 );
 
 /** Message documentation (Message documentation)

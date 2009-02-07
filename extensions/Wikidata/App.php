@@ -12,8 +12,8 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgDefaultGoPrefix='Expression:';
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
-$wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail'; #TODO merge with modifyTabs
-$wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail'; #TODO merge with modifyTabs
+#$wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail'; # non-standard hook; merged with modifyTabs
+#$wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail'; # non-standard hook; merged with modifyTabs
 $wgHooks['SkinTemplateTabs'][]='modifyTabs';
 $wgExtensionFunctions[]='initializeWikidata';
 
@@ -156,6 +156,7 @@ function modifyTabs($skin, $content_actions) {
 	global $wgUser, $wgTitle, $wdTesting, $wgCommunity_dc, $wdShowEditCopy;
 	$dc=wdGetDataSetContext();
 	$ns=Namespace::get($wgTitle->getNamespace());
+	$editChanged = false;
 	if($ns->getHandlerClass()=='DefinedMeaning') {
 	
 		# Hackishly determine which DMID we're on by looking at the page title component
@@ -167,19 +168,29 @@ function modifyTabs($skin, $content_actions) {
 			$copyTitle=SpecialPage::getTitleFor('Copy');
 			#if(wdIsWikidataNs() && (!$wgUser->isAllowed('editwikidata-'.$dc) || $wdTesting)) {
 			if(wdIsWikidataNs() && $dc!=$wgCommunity_dc && $wdShowEditCopy) {
+				$editChanged = true;
 				$content_actions['edit']=array(
 				'class'=>false, 
-				'text'=>'edit copy', 
+				'text'=>wfMsg('ow_nstab_edit_copy'), 
 				'href'=>$copyTitle->getLocalUrl("action=copy&dmid=$dmid&dc1=$dc&dc2=$wgCommunity_dc")
 			);
 			}
 		 $content_actions['nstab-definedmeaning']=array(
 				 'class'=>'selected',
-				 'text'=>'defined meaning',
+				 'text'=>wfMsg('ow_nstab_definedmeaning'),
 				 'href'=>$wgTitle->getLocalUrl("dataset=$dc"));
 
 		}
 	}
+
+	// Add context dataset (old hooks 'GetEditLinkTrail' and 'GetHistoryLinkTrail')
+	if (!$editChanged) {
+		addWikidataEditLinkTrail($linkTrail);
+		$content_actions['edit']['href'] = ($content_actions['edit']['href'] . $linkTrail);
+	}
+	addHistoryLinkTrail($linkTrail);
+	$content_actions['history']['href'] = ($content_actions['history']['href'] . $linkTrail);
+
 	return true;
 }
 
