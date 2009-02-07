@@ -31,9 +31,11 @@ $extensions = array(
 			'wgAbuseFilterNativeParser' => 'text',
 			'wgAbuseFilterNativeSyntaxCheck' => 'text',
 			'wgAbuseFilterNativeExpressionEvaluator' => 'text',
+			'wgAbuseFilterRestrictedActions' => 'array',
 		),
 		'array' => array(
 			'wgAbuseFilterAvailableActions' => 'simple',
+			'wgAbuseFilterRestrictedActions' => 'simple',
 		),
 		'schema' => true,
 		'url' => 'http://www.mediawiki.org/wiki/Extension:AbuseFilter',
@@ -562,10 +564,6 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:DeleteBatch',
 	),
 	array(
-		'name' => 'DeletedContributions',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:DeletedContributions',
-	),
-	array(
 		'name' => 'DeleteQueue',
 		'settings' => array(
 			'wgDeleteQueueExpiry' => 'array',
@@ -701,7 +699,7 @@ $extensions = array(
 			'wgFlaggedRevsPatrolNamespaces' => 'ns-simple',
 			'wgFlaggedRevsWhitelist' => 'simple',
 			'wgFlaggedRevsExceptions' => 'simple',
-			'wgFlaggedRevTags' => 'assoc',
+			'wgFlaggedRevTags' => 'array',
 			'wgFlagRestrictions' => 'array',
 			'wgReviewCodes' => 'simple',
 			'wgFlaggedRevsAutopromote' => 'assoc',
@@ -802,12 +800,6 @@ $extensions = array(
 		'url' => 'http://mediawiki.org/wiki/Extension:InterwikiList',
 	),
 
-	// L
-	array(
-		'name' => 'LinkSearch',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
-	),
-
 	// M
 	array(
 		'name' => 'Maintenance',
@@ -827,10 +819,6 @@ $extensions = array(
 	),
 
 	// N
-	array(
-		'name' => 'Newuserlog',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Newuserlog',
-	),
 	array(
 		'name' => 'NewUserMessage',
 		'settings' => array(

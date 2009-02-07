@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.12.1 - 7 February 2009
+  * Updated AbuseFilter and FlaggedRevs extensions
+  * Removed obsolete extensions DeletedContributions, LinkSearch and Newuserlog
+
 0.12.0 - 6 February 2009
   Added support for PostgreSQL when using database handler.
 
