@@ -219,6 +219,14 @@ $messages['pt'] = array(
 	'semanticgooglemaps-desc' => 'Permite aos utilizadores editarem e apresentarem dados semânticos coordenados usando Google Maps',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Pesquisar coordenadas',
+	'semanticgooglemaps-desc' => 'Permite aos utilizadores editarem e apresentarem dados semânticos de coordenadas usando Google Maps',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -1090,6 +1090,8 @@ Veuillez vous assurer que cette page peut être supprimée de la sorte en confor
 
 Une [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} liste] des « pour » et des « contre » est disponible, la discussion par elle-même disponible sur [[$2]].
 Veuillez vous assurer que vous ayez pris une décision en conformité du consensus issus de la discussion.",
+	'deletequeue-review-success' => 'Vous avez revu avec succès la suppression de cette page',
+	'deletequeue-review-success-title' => 'Révision complète',
 	'deletequeue-deletediscuss-discussionpage' => 'Ceci est la page de discussion concernant la suppression de [[$1]].
 Il y a actuellement $2 {{PLURAL:$2|utilisateur|utilisateurs}} en faveur, et $3 {{PLURAL:$3|utilisateur|utilisateurs}} qui y sont opposés.
 Vous pouvez [{{FULLURL:$1|action=delvote}} appuyez ou refuser] la suppression, ou [{{FULLURL:$1|action=delviewvotes}} voir tous les « pour » et les « contre »].',
@@ -1240,6 +1242,8 @@ Por favor, asegúrese que esta páxina pode ser borrada rapidamente de acordo co
 
 Está dispoñible, unha [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] cos apoios e obxeccións desta eliminación, e a conversa pode ser atopada en "[[$2]]".
 Por favor, asegúrese de que toma a decisión de acordo co consenso.',
+	'deletequeue-review-success' => 'Revisou con éxito o borrado desta páxina',
+	'deletequeue-review-success-title' => 'Revisión completada',
 	'deletequeue-deletediscuss-discussionpage' => 'Esta é a páxina de conversa para a eliminación de "[[$1]]".
 Actualmente hai $2 {{PLURAL:$2|usuario|usuarios}} que {{PLURAL:$2|apoia|apoian}} a eliminación, e $3 que {{PLURAL:$2|pon obxeccións|poñen obxeccións}}.
 Pode [{{fullurl:$1|action=delvote}} apoiar ou obxectar] ou [{{fullurl:$1|action=delviewvotes}} ver todos os apoios e obxeccións].',
@@ -1686,6 +1690,8 @@ $messages['ja'] = array(
 	'deletequeue-reviewdeletediscuss-text' => "このフォームを使って「'''$1'''」の削除議論を審査することができます。
 
 この削除への賛成と反対の[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} 一覧]が確認でき、議論そのものは[[$2]]で見ることができます。議論での合意に則って決断を下してください。",
+	'deletequeue-review-success' => 'このページの削除審査に成功しました',
+	'deletequeue-review-success-title' => '審査完了',
 	'deletequeue-deletediscuss-discussionpage' => 'これは [[$1]] の削除について議論するページです。現時点で、$2人の利用者が削除に賛成し、$3人の利用者が削除に反対しています。あなたは削除に[{{fullurl:$1|action=delvote}} 賛成または反対]をするか、[{{fullurl:$1|action=delviewvotes}} すべての賛成と反対を見る]ことができます。',
 	'deletequeue-discusscreate-summary' => '[[$1]] の削除議論を作成中',
 	'deletequeue-discusscreate-text' => '次の理由で提案された削除: $2',
@@ -2055,6 +2061,8 @@ Zorg er voor dat u in lijn met het geldende beleid handelt.",
 
 Een [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} lijst] met ondersteuningen en bezwaren voor deze verwijdering is beschikbaar, en de discussie zelf kunt u terugvinden op [[$2]].
 Wees zeker dat u een beslissing maakt in overeenstemming met de consensus van de discussie.',
+	'deletequeue-review-success' => 'U hebt de controle voor de verwijdering van deze pagina afgerond',
+	'deletequeue-review-success-title' => 'Controle afgerond',
 	'deletequeue-deletediscuss-discussionpage' => 'Dit is het verwijderoverleg voor [[$1]].
 Er {{PLURAL:$2|is|zijn}} op dit moment {{PLURAL:$2|één gebruiker|$2 gebruikers}} die de verwijdernominatie steunen en {{PLURAL:$3|één gebruiker|$3 gebruikers}} die bezwaart {{PLURAL:$3|heeft|hebben}} tegen de verwijdernominatie.
 U kunt [{{FULLURL:$1|action=delvote}} steun of bezwaar] bij de verwijdernominatie aangeven of [{{FULLURL:$1|action=delviewvotes}} alle steun en bezwaar bekijken].',
@@ -2197,6 +2205,8 @@ Gjer deg viss om at sida kan verta snøggsletta i høve til retningslinene.",
 
 Ei [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] over støtta til og motstand mot denne slettinga er tilgjengeleg; og sjølve diskusjonen finst på [[$2]].
 Gjer deg viss om at avgjersla di samsvarer med utkoma av diskusjonen.",
+	'deletequeue-review-success' => 'Du har handsama slettinga av denne sida',
+	'deletequeue-review-success-title' => 'Handsaming fullførd',
 	'deletequeue-deletediscuss-discussionpage' => 'Dette er diskusjonssida for slettinga av [[$1]].
 Det er no {{PLURAL:$2|éin brukar|$2 brukarar}} som er for sletting, og {{PLURAL:$3|éin brukar|$3 brukarar}} som er imot.
 Du ynskjer kanskje [{{fullurl:$1|action=delvote}} å støtta eller gå imot] ei sletting, eller [{{fullurl:$1|action=delviewvotes}} å sjå all støtta og motstand].',
@@ -2431,6 +2441,8 @@ Asseguratz-vos qu'aquesta pagina pòt èsser suprimida atal en conformitat amb l
 
 Una [{{FULLURL:{{FULLPAGENAME}}|action=delviewvotes}} lista] dels « per » e dels « contra » es disponibla, la discussion es ela-meteissa disponibla sus [[$2]].
 Asseguratz-vos qu'avètz prés una decision en conformitat amb lo consensús eissit de la discussion.",
+	'deletequeue-review-success' => "Avètz revist amb succès la supression d'aquesta pagina",
+	'deletequeue-review-success-title' => 'Revision completa',
 	'deletequeue-deletediscuss-discussionpage' => "Aquò es la pagina de discussion concernent la supression de [[$1]].
 I a actualament $2 {{PLURAL:$2|utilizaire|utilizaires}} en favor, e $3 {{PLURAL:$3|utilizaire|utilizaires}} qu'i son opausats.
 Podètz [{{FULLURL:$1|action=delvote}} sosténer o refusar] la supression, o [{{FULLURL:$1|action=delviewvotes}} veire totes los « per » e los « contra »].",
@@ -2619,6 +2631,8 @@ Por favor, assegure-se de que esta página pode ser eliminada rapidamente de aco
 
 Está disponível uma [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] de suportes e objeções desta eliminação, e a discussão pode ser encontrada em [[\$2]].
 Por favor, assegure-se de que toma uma decisão de acordo com o consenso patente na discussão.",
+	'deletequeue-review-success' => 'Você analisou com sucesso a eliminação desta página',
+	'deletequeue-review-success-title' => 'Revisão completa',
 	'deletequeue-deletediscuss-discussionpage' => 'Esta é a página de discussão para a eliminação de [[$1]].
 Há atualmente $2 {{PLURAL:$2|utilizador|utilizadores}} a suportar a eliminação, e $3 {{PLURAL:$3|utilizador|utilizadores}} a objetar à eliminação.
 Você pode [{{fullurl:$1|action=delvote}} suportar ou objetar] à eliminação, ou [{{fullurl:$1|action=delviewvotes}} ver todos os suportes e objeções].',
@@ -2674,6 +2688,7 @@ Você pode [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registar o seu próprio 
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -2763,6 +2778,8 @@ Por favor, certifique-se de que as políticas permitem que seja feita a elimina�
 
 Uma [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] de apoios e objeções a esta eliminação está disponível, e a discussão propriamente dita pode ser encontrada em [[\$2]].
 Por favor, certifique-se de ter tomado uma decisão de acordo com o consenso presente na discussão.",
+	'deletequeue-review-success' => 'Você analisou com sucesso a eliminação desta página',
+	'deletequeue-review-success-title' => 'Revisão completa',
 	'deletequeue-deletediscuss-discussionpage' => 'Esta é a página de discussão para a eliminação de [[$1]].
 No momento há $2 {{PLURAL:$2|usuário|usuários}} que apóiam a eliminação, e $3 {{PLURAL:$3|usuário|usuários}} que se opõe a mesma.
 Você pode [{{fullurl:$1|action=delvote}} apoiar ou se opor] a eliminação, ou [{{fullurl:$1|action=delviewvotes}} ver todas as opiniões contra e a favor].',
@@ -2999,6 +3016,8 @@ Prosím, uistite sa, že je možné túto stránku rýchlo zmazať v súlade s p
 
 Existuje [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} zoznam] podporení zmazania a námietok proti zmazaniu tejto stránky a samotnú diskusiu nájdete na [[$2]].
 Prosím, uistite sa, že sa rozhodnete v súlade s konsenzom v diskusii.",
+	'deletequeue-review-success' => 'Úspešne ste skontrolovali zmazanie tejto stránky',
+	'deletequeue-review-success-title' => 'Kontrola dokončená',
 	'deletequeue-deletediscuss-discussionpage' => 'Toto je diskusná stránka o zmazaní stránky [[$1]].
 Momentálne {{PLURAL:$2|existuje $2 používateľ|existujú $2 používatelia|existuje $2 používateľov}} podporujúcich zmazanie a {{PLURAL:$3|$3 používateľ|$3 používatelia|$3 používateľov}} namietajúcich proti zmazaniu.
 Môžete [{{fullurl:$1|action=delvote}} podporiť alebo namietať proti] zmazaniu alebo [{{fullurl:$1|action=delviewvotes}} si pozrieť všetky podporujúce a namietajúce príspevky].',
@@ -3299,6 +3318,8 @@ Pakitiyak na maaari ngang mabilisang burahin ang pahinang ito ayon sa patakaran.
 
 Makakakuha ng isang [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} talaan] ng mga pagsang-ayon at mga pagtutol sa pagburang ito, at ang mismong usapan ay matatagpuan sa [[\$2]].
 Pakitiyak na gagawa ka ng isang pasyang alinsunod sa napagkasunduan sa usapan.",
+	'deletequeue-review-success' => 'Matagumpay mong nasuri ang pagkakabura ng pahinang ito',
+	'deletequeue-review-success-title' => 'Nabuo na ang pagsusuri',
 	'deletequeue-deletediscuss-discussionpage' => 'Ito ang pahina ng usapan para sa pagbura ng [[$1]].
 Kasalukuyang may $2 {{PLURAL:$2|tagagamit|mga tagagamit}} na sumasang-ayon sa pagbura, at $3 {{PLURAL:$3|tagagamit|mga tagagamit}} na tumututol sa pagbura.
 Maaari kang [{{fullurl:$1|action=delvote}} sumang-ayon o tumutol] sa pagbura, o [{{fullurl:$1|action=delviewvotes}} tingnan ang lahat ng mga pagsang-ayon at mga pagtutol].',

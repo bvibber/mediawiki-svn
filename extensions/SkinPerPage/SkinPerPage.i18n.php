@@ -325,6 +325,13 @@ $messages['pt'] = array(
 	'skinperpage-desc' => 'Adiciona a tag <tt>&lt;skin&gt;</tt> para usar temas diferentes por página',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'skinperpage-desc' => 'Adiciona a marca <tt>&lt;skin&gt;</tt> para usar temas diferentes por página',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

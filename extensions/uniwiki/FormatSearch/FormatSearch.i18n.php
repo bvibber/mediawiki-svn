@@ -233,6 +233,13 @@ $messages['pt'] = array(
 	'formatsearch-desc' => 'Limpa a página de resultados de pesquisa',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'formatsearch-desc' => 'Limpa a página de resultados de pesquisa',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

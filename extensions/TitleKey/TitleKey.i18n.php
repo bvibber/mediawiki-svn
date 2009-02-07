@@ -305,6 +305,13 @@ $messages['pt'] = array(
 	'titlekey-desc' => 'Motor de sugestão de pesquisa por prefixo de título',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'titlekey-desc' => 'Motor de sugestão de pesquisa por prefixo de título',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

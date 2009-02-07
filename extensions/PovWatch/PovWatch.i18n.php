@@ -1276,7 +1276,7 @@ $messages['pt'] = array(
 	'povwatch_not_subscribed' => 'Você não está inscrito no PovWatch, por isso não pode remover sua inscrição.',
 	'povwatch_unsubscribed' => 'Você não está mais inscrito na lista do PovWatch',
 	'povwatch_invalid_title' => 'O título especificado é inválido',
-	'povwatch_pushed' => '[[$1]] foi adicionada com sucesso à lista de páginas vigiadas de {{PLURAL:$2|$2 usuário|$2 usuários}}',
+	'povwatch_pushed' => '[[$1]] foi adicionada com sucesso à lista de páginas vigiadas de {{PLURAL:$2|$2 utilizador|$2 utilizadores}}',
 	'povwatch_intro' => 'PovWatch é um serviço que permite que páginas sejam discretamente adicionadas para a lista de artigos vigiados de administradores subscritos.
 
 Um registro das recentes páginas adicionadas na lista de artigos vigiados está disponível na página [[Special:PovWatch/log]].',
@@ -1567,6 +1567,13 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'povwatch_title' => 'Назва:',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'povwatch_title' => 'Titolo:',
 );
 
 /** Vietnamese (Tiếng Việt)

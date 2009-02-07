@@ -1737,6 +1737,7 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -1756,7 +1757,7 @@ $messages['lt'] = array(
 	'ogg-no-player' => 'Atsiprašome, neatrodo, kad jūsų sistema turi palaikomą grotuvą. Prašome <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">jį atsisiųsti</a>.',
 	'ogg-no-xiphqt' => 'Neatrodo, kad jūs turite XiphQT komponentą QuickTime grotuvui. QuickTime negali groti Ogg bylų be šio komponento. Prašome <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">atsisiųsti XiphQT</a> arba pasirinkti kitą grotuvą.',
 	'ogg-player-videoElement' => '<video> elementas',
-	'ogg-player-oggPlugin' => 'Ogg priedas',
+	'ogg-player-oggPlugin' => 'Naršyklės priedas',
 	'ogg-player-thumbnail' => 'Tik paveikslėlis',
 	'ogg-player-soundthumb' => 'Nėra grotuvo',
 	'ogg-player-selected' => '(pasirinkta)',
@@ -1963,6 +1964,19 @@ $messages['nds'] = array(
 	'ogg-dismiss' => 'Dichtmaken',
 	'ogg-download' => 'Datei dalladen',
 	'ogg-desc-link' => 'Över disse Datei',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'ogg-play' => 'Ofspeulen',
+	'ogg-pause' => 'Pauze',
+	'ogg-stop' => 'Stop',
+	'ogg-play-video' => 'Video ofspeulen',
+	'ogg-play-sound' => 'Geluud ofspeulen',
+	'ogg-more' => 'Meer...',
+	'ogg-dismiss' => 'Sluten',
 );
 
 /** Dutch (Nederlands)

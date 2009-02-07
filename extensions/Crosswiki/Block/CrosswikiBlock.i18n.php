@@ -1583,7 +1583,7 @@ Por favor, verifique se tem permissão para agir neste wiki e as suas acções r
 	'crosswikiunblock-user' => 'Nome de utilizador, endereço IP ou ID de bloqueio e wiki destino:',
 	'crosswikiunblock-reason' => 'Motivo:',
 	'crosswikiunblock-submit' => 'Desbloquear este utilizador',
-	'crosswikiunblock-success' => "Usuário '''$1''' desbloqueado com sucesso.
+	'crosswikiunblock-success' => "Utilizador '''$1''' desbloqueado com sucesso.
 
 Regressar a:
 * [[Special:CrosswikiBlock|Formulário de bloqueio]]

@@ -186,6 +186,14 @@ $messages['grc'] = array(
 	'advancedrandom-desc' => 'Ἐπικτῆσαι τυχαίαν δέλτον τινὰ ἐκκινούμενος ἐκ μίας διαλέξεως ἢ συνδέσμῶν τινῶν δέλτου ἐγχειρήματός τινος πρὸς μίαν δεδομένην δέλτον. Ἔξεστί σοι χρῆσαι ταύτην ὡς [[Special:AdvancedRandom/Template:Featured/Talk]] ἵνα λάβῃς ἐξαἰρετον δέλτον τινὰ ἢ ὡς [[Special:AdvancedRandom/Template:GFDL/Image]] ἵνα λάβῃς τυχαῖον ἀρχεῖον GFDL (ἔχον Ἄδειαν Ἐλευθέρας Τεκμηριώσεως GNU) τί.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'advancedrandom' => 'Zuefälligi Syte',
+	'advancedrandom-desc' => 'Hol e zuefälligi Syte, z. B. mit [[Special:AdvancedRandom/Template:Featured/Talk]], zum e zuefälligi Diskussionssyte zue me exzellänten Artikel oder mit [[Special:AdvancedRandom/Template:GFDL/Image]], zum e zuefälligi Datei aazzeige, wu as GFDL lizänziert isch.',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -377,6 +385,14 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'advancedrandom' => 'Acesso aleatório avançado',
 	'advancedrandom-desc' => 'Obtém uma página aleatória a partir de uma página de discussão ou de ligações de uma página de assunto para uma dada página. Pode ser usado como [[Special:AdvancedRandom/Template:Featured/Talk]] para obter um artigo em destaque aleatório ou como [[Special:AdvancedRandom/Template:GFDL/Image]] para obter um ficheiro GFDL aleatório',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'advancedrandom' => 'Acesso aleatório avançado',
+	'advancedrandom-desc' => 'Obtém uma página aleatória a partir de uma página de discussão ou de ligações de uma página de assunto para uma dada página. Pode ser usado como [[Special:AdvancedRandom/Template:Featured/Talk]] para obter um artigo em destaque aleatório ou como [[Special:AdvancedRandom/Template:GFDL/Image]] para obter um arquivo GFDL aleatório',
 );
 
 /** Romanian (Română)

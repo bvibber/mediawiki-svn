@@ -261,6 +261,15 @@ $messages['pt'] = array(
 	'untidy' => 'Desarrumado',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'tidy-desc' => 'Adiciona uma aba arrumada ou não (dependendo de $wgUseTidy) em páginas normais, permitindo sobrepor a configuração de arrumação de HTML global para uma vista única',
+	'tidy' => 'Arrumado',
+	'untidy' => 'Desarrumado',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  */

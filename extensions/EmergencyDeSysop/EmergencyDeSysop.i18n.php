@@ -200,6 +200,26 @@ $messages['grc'] = array(
 	'emergencydesysop-nogroups' => 'Οὐδέν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'emergencydesysop' => 'Not-Ammannestatusentzug',
+	'emergencydesysop-desc' => 'Macht s eme Ammann megli, syyni Priviliegie ufzgee go eme andere Ammann dr Ammannestatus ewägneh',
+	'emergencydesysop-title' => 'Nimmt dr Ammanne-Status vum aktuälle un vun eme andere Benutzer ewäg',
+	'emergencydesysop-otheradmin' => 'Andere Ammann zum Deklassiere',
+	'emergencydesysop-reason' => 'Grund fir s Useneh',
+	'emergencydesysop-submit' => 'Ibertrage',
+	'emergencydesysop-incomplete' => 'S bruucht Yygabe in allene Fälder, bitte nomol versueche.',
+	'emergencydesysop-notasysop' => 'Dr gwehlt Benutzer ghert nit zue dr Ammanne.',
+	'emergencydesysop-nogroups' => 'Keini',
+	'emergencydesysop-done' => 'Aktion erfolgryych. Di un [[$1]] isch dr Ammannestatus ewägnuu wore.',
+	'emergencydesysop-invalidtarget' => 'Dr Benutzer, wu Du gwehlt hesch, git s nit.',
+	'emergencydesysop-blocked' => 'Derwylscht Du gsperrt bisch, chasch nit uf die Syte zuegryfe',
+	'emergencydesysop-noright' => 'Du hesch d Rächt nit, wu s bruucht fir die Syte',
+	'right-emergencydesysop' => 'S Rächt eme andre Ammann dr Status ewägzneh (gegesytig)',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

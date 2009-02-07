@@ -307,6 +307,15 @@ $messages['pt'] = array(
 	'spl3_nosubpages' => '$1 não tem subpáginas para listar.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'spl3-desc' => 'Cria automaticamente uma lista das subpáginas de uma página usando a marca <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Valor desconhecido para a opção $1.',
+	'spl3_nosubpages' => '$1 não tem subpáginas para listar.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

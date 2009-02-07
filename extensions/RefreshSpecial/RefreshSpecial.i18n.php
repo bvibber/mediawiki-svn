@@ -265,6 +265,24 @@ $messages['eo'] = array(
 	'right-refreshspecial' => 'Refreŝigi specialajn paĝojn',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'refreshspecial' => 'Refrescar páginas especiales',
+	'refreshspecial-title' => 'Refrescar páginas especiales',
+	'refreshspecial-button' => 'Refrescar seleccionados',
+	'refreshspecial-fail' => 'Por favor chequee al menos una página especial a refrescar.',
+	'refreshspecial-refreshing' => 'refrescando páginas especiales',
+	'refreshspecial-success-subtitle' => 'refrescando páginas especiales',
+	'refreshspecial-choice' => 'refrescando páginas especiales',
+	'refreshspecial-js-disabled' => '(<i>Usted no puede seleccionar todas las páginas donde JavaScript está deshabiltada</i>)',
+	'refreshspecial-select-all-pages' => 'Seleccione todas las páginas',
+	'refreshspecial-link-back' => 'Regresar a página especial',
+	'refreshspecial-reconnected' => 'Reconectado.',
+	'right-refreshspecial' => 'Refrescar páginas especiales',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix

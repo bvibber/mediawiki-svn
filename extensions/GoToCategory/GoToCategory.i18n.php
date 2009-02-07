@@ -177,6 +177,13 @@ $messages['pt'] = array(
 	'gotocategory-desc' => "Verifica termos de pesquisa no espaço nominal Categoria: para a funcionalidade Ir 'saltar para página'",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'gotocategory-desc' => "Verifica termos de pesquisa no espaço nominal Categoria: para a funcionalidade Ir 'saltar para página'",
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

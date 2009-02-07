@@ -251,13 +251,14 @@ $messages['cy'] = array(
  * @author ChrisiPK
  * @author DaSch
  * @author Melancholie
+ * @author Purodha
  * @author Revolus
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'taggedimages' => 'Bilder mit Tags',
 	'imagetagging-desc' => 'Ermöglicht es Benutzern, Bereiche von eingebetteten Bildern auszuwählen und diese mit einer Seite zu verknüpfen',
-	'imagetagging-addimagetag' => 'Tags hinzufügen',
+	'imagetagging-addimagetag' => 'Markierungen auf diesem Bild zufügen',
 	'imagetagging-article' => 'Seite:',
 	'imagetagging-articletotag' => 'Seite, die getaggt wird',
 	'imagetagging-canteditothermessage' => 'Du kannst diese Seite nicht bearbeiten, weil du entweder keine Berechtigung dazu hast oder weil die Seite aus einem anderen Grund gesperrt ist.',
@@ -265,7 +266,7 @@ $messages['de'] = array(
 	'imagetagging-images' => 'Bild',
 	'imagetagging-inthisimage' => 'In diesem Bild: $1',
 	'imagetagging-logentry' => 'Tag auf Seite [[$1]] wurde durch $2 entfernt',
-	'imagetagging-log-tagged' => 'Bild [[$1|$2]] wurde von $4 mit [[$3]] getagged',
+	'imagetagging-log-tagged' => 'Bild [[$1|$2]] wurde von $4 markiert und mit [[$3]] verlinkt',
 	'imagetagging-new' => '<sup><span style="color:red">Neu!</span></sup>',
 	'imagetagging-removetag' => 'Tag entfernen',
 	'imagetagging-done-button' => 'Tagging erledigt',
@@ -299,6 +300,44 @@ Möglicherweise müssen Sie sich anmelden, um Bilder zu taggen.
 Möchten Sie sich jetzt anmelden?',
 	'imagetagging-oneactionatatimemessage' => 'Es ist nur eine gleichzeitige Tagging-Aktion erlaubt.
 Bitte warten Sie, bis die momentane Aktion abgeschlossen ist.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'taggedimages' => 'Wobznamjenjone wobraze',
+	'imagetagging-desc' => 'Zmóžnja wužywarjeju regiony ze zasajźonego wobraza wubraś a bok z toś tym regionom zwězaś',
+	'imagetagging-addimagetag' => 'Toś ten wobraz wobznamjeniś',
+	'imagetagging-article' => 'Bok:',
+	'imagetagging-articletotag' => 'Bok, kótaryž ma se wobznamjeniś',
+	'imagetagging-canteditothermessage' => 'Njamóžoš toś ten bok wobźěłaś, pak, dokulaž njamaš pšawa, aby to cynił, pak, dokulaž bok jo zastajony z drugich pśicynow.',
+	'imagetagging-imghistory' => 'Stawizny',
+	'imagetagging-images' => 'wobraze',
+	'imagetagging-inthisimage' => 'W toś tom wobrazu: $1',
+	'imagetagging-logentry' => 'Wobznamjenje k bokoju [[$1]] wót $2 wótpórane',
+	'imagetagging-log-tagged' => 'Wobraz [[$1|$2]] jo se wobznamjenił k bokoju [[$3]] wót $4',
+	'imagetagging-new' => '<sup><span style="color:red">Nowy!</span></sup>',
+	'imagetagging-removetag' => 'Wobznamjenje wótpóraś',
+	'imagetagging-done-button' => 'Wobznamjenjowanje wótbyte',
+	'imagetagging-tag-button' => 'Wobznamjeniś',
+	'imagetagging-tagcancel-button' => 'Pśetergnuś',
+	'imagetagging-tagging-instructions' => 'Klikni na luźi abo wěcy we wobrazu, aby je wobznamjenił.',
+	'imagetagging-addingtag' => 'Wobznamjenje se pśidawa...',
+	'imagetagging-removingtag' => 'Wobznamjenje se wótwónoźujo...',
+	'imagetagging-addtagsuccess' => 'Pśidane wobznamjenje.',
+	'imagetagging-removetagsuccess' => 'Wótpórane wobznamjenje.',
+	'imagetagging-canteditneedloginmessage' => 'Njamóžoš toś ten bok wobźěłaś.
+Snaź musyš se pśizjawiś, aby wobznamjenił wobraze.
+Coš se něnto pśizjawiś?',
+	'imagetagging-oneactionatatimemessage' => 'Jano jadna wobznamjenjowańska akcija jo naraz dowólona.
+Pšosym cakaj, až eksistěrujuca akcija jo se skóńcyła.',
+	'imagetagging-oneuniquetagmessage' => 'Toś ten wobraz ma južo wobznamjenje z toś tym mjenim.',
+	'imagetagging-imagetag-seemoreimages' => 'Glědaj dalšne wobraze wót "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Wobraze wót "$1"',
+	'imagetagging-taggedimages-displaying' => '{{PLURAL:$1|Zwobraznjujo|Zwobraznjujotej|Zwobraznjuju|Zwobraznjujo}} se $1 -  $2 z $3 wobrazow wót "$4"',
+	'tag-logpagename' => 'Protokol wobznamjenjowanja',
+	'tag-logpagetext' => 'To jo protokol wšych pśidanjow a wótpóranjow wobrazowych wobznamjenjow.',
 );
 
 /** Esperanto (Esperanto)
@@ -570,6 +609,44 @@ $messages['hr'] = array(
 	'imagetagging-article' => 'Stranica',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'taggedimages' => 'Woznamjenjene wobrazy',
+	'imagetagging-desc' => 'Zmóžnja wužiwarjej regiony zasadźeneho wobraza wubrać a stronu z tym regionom zwjazać',
+	'imagetagging-addimagetag' => 'Tutón wobraz woznamjenić',
+	'imagetagging-article' => 'Strona:',
+	'imagetagging-articletotag' => 'Strona, kotraž ma so woznamjenić',
+	'imagetagging-canteditothermessage' => 'Njemóžeš tutu stronu wobdźěłać, pak, dokelž nimaš prawa, zo by to činił, pak, dokelž strona je z druhich přičinow zawrjena.',
+	'imagetagging-imghistory' => 'Stawizny',
+	'imagetagging-images' => 'Wobrazy',
+	'imagetagging-inthisimage' => 'W tutej wobrazu: $1',
+	'imagetagging-logentry' => 'Woznamjenjenje na stronje [[$1]] wot $2 wotstronjene',
+	'imagetagging-log-tagged' => 'Wobraz [[$1|$2]] bu na stronje [[$3]] wot $4 woznamjenjeny',
+	'imagetagging-new' => '<sup><span style="color:red">Nowy!</span></sup>',
+	'imagetagging-removetag' => 'Woznamjenjenje wotstronić',
+	'imagetagging-done-button' => 'Woznamjenjowanje sčinjene',
+	'imagetagging-tag-button' => 'Woznamjenjenje',
+	'imagetagging-tagcancel-button' => 'Přetorhnyć',
+	'imagetagging-tagging-instructions' => 'Klikń na ludźi abo wěcy we wobrazu, zo by je woznamjenił.',
+	'imagetagging-addingtag' => 'Woznamjenjenje so přidawa...',
+	'imagetagging-removingtag' => 'Woznamjenjenje so wotstronja...',
+	'imagetagging-addtagsuccess' => 'Woznamjenjenje přidate.',
+	'imagetagging-removetagsuccess' => 'Woznamjenjenje wotstronjene.',
+	'imagetagging-canteditneedloginmessage' => 'Njemóžeš tutu stronu wobdźěłać.
+Snano dyrbiš so přizjewić, zo by wobrazy woznamjenił.
+Chceš so nětko přizjewić?',
+	'imagetagging-oneactionatatimemessage' => 'Jenož akcija woznamjenjowanja naraz je dowolena.
+Prošu čakaj, doniž eksistowaca akcija njeje so skónčena.',
+	'imagetagging-oneuniquetagmessage' => 'Tutón wobraz je hižo woznamjenjenje z tutym mjenom.',
+	'imagetagging-imagetag-seemoreimages' => 'Hlej dalše wobrazy wot "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Wobrazy wot "$1"',
+	'imagetagging-taggedimages-displaying' => '{{PLURAL:$1|Zwobraznja|Zwobraznjetej|Zowbraznjeja|Zwobraznja}} so $1 - $2 z $3 wobrazow wot "$4"',
+	'tag-logpagename' => 'Protokol woznamjenjowanja',
+	'tag-logpagetext' => 'To je protokol wšěch přidatych a wotstronjenych wobrazowych woznamjenjenjow.',
+);
+
 /** Hungarian (Magyar)
  * @author Bdamokos
  */
@@ -710,7 +787,7 @@ $messages['ksh'] = array(
 	'imagetagging-images' => 'Belder',
 	'imagetagging-inthisimage' => 'En dämm Beld: $1',
 	'imagetagging-logentry' => '!!Fuzzy!!Dä Metmaacher $2 hät de Makeerung op de Sigg [[$1]] fott jenumme.',
-	'imagetagging-log-tagged' => '!!Fuzzy!!De Datei [[$1|$2]] woodt vum $4 met de Sigg [[$3]] makeet.',
+	'imagetagging-log-tagged' => 'Dat Beld [[$1|$2]] es vum $4 makeet, un ene Berett met dä Sigg [[$3]] verlengk woode.',
 	'imagetagging-new' => '<sup><span style="color:red">Neu!</span></sup>',
 	'imagetagging-removetag' => 'Makeerung fottnämme',
 	'imagetagging-done-button' => 'Fädesch met Makeere!',

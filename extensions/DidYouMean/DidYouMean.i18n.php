@@ -288,6 +288,13 @@ $messages['pt'] = array(
 	'didyoumean-desc' => 'Adiciona ligações a páginas com títulos "semelhantes"',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'didyoumean-desc' => 'Adiciona ligações a páginas com títulos "semelhantes"',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

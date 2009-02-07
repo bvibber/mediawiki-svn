@@ -341,6 +341,14 @@ $messages['pt'] = array(
 	'minnamelength-desc' => 'Obrigar a um comprimento mínimo do nome de utilizador',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'minnamelength-error' => 'O seu nome de utilizador é muito curto. O tamanho mínimo é $1.',
+	'minnamelength-desc' => 'Obrigar a um comprimento mínimo do nome de utilizador',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

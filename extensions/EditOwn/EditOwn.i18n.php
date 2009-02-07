@@ -259,6 +259,13 @@ $messages['pt'] = array(
 	'editown-desc' => "Utilizadores sem o privilégio 'editall' só podem editar as páginas que os próprios criaram",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'editown-desc' => "Utilizadores sem o privilégio 'editall' só podem editar as páginas que os próprios criaram",
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

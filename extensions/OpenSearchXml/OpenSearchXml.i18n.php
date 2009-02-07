@@ -87,6 +87,13 @@ $messages['es'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] interface XML proveído para extractos de texto',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML interfazea ezartzen du testu aipamenentzat',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -253,6 +260,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'opensearchxml-desc' => 'Interface [http://www.opensearch.org OpenSearch] XML que providencia extracções de texto',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'opensearchxml-desc' => 'Interface XML [http://www.opensearch.org OpenSearch] que provê excertos de texto',
 );
 
 /** Tarandíne (Tarandíne)

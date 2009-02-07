@@ -619,6 +619,15 @@ $messages['pt'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'backforth-next' => 'Próximo ($1)',
+	'backforth-desc' => 'Adiciona as ligações de paginação alfabética "Seguinte" e "Anterior" ao topo das páginas',
+	'backforth-prev' => 'Anterior ($1)',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

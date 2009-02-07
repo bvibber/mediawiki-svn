@@ -158,6 +158,13 @@ $messages['pt'] = array(
 	'semanticgallery-desc' => 'Adiciona uma formato de saída tipo galeria a comandos embebidos SMW',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'semanticgallery-desc' => 'Adiciona uma formato de saída tipo galeria a comandos SMW embebidos',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

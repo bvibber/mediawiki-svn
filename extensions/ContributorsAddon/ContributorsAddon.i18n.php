@@ -33,6 +33,13 @@ $messages['arz'] = array(
 	'contributorsaddon-desc' => 'يضيف منبثقات JS onMouseOver إلى وصلات "المساهمون الأساسيون"',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'contributorsaddon-desc' => "Dodaje JavaScript popupove na linkove ''Glavnih urednika''",
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -201,6 +208,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'contributorsaddon-desc' => 'Adiciona janelas "popup" JS do tipo onMouseOver às ligações de "Principais Contribuidores"',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'contributorsaddon-desc' => 'Adiciona janelas "popup" via JavaScript às ligações de "Principais Contribuidores"',
 );
 
 /** Tarandíne (Tarandíne)

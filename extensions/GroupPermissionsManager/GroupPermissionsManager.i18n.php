@@ -1341,6 +1341,14 @@ $messages['lb'] = array(
 	'right-readold' => 'Den Inhalt vun ale Versiounen a Versiounsënnerscheeder weisen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Homo
+ */
+$messages['lt'] = array(
+	'grouppermissions-never' => 'Niekada',
+	'right-recentchanges' => 'Žiūrėti naujausius keitimus',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
@@ -1739,13 +1747,20 @@ $messages['pt'] = array(
 	'grouppermissions-nooldrev' => 'Erro encontrado ao tentar arquivar o ficheiro de configuração atual. Nenhum arquivo será gerado',
 	'grouppermissions-sort-manage' => 'Gestão',
 	'grouppermissions-sort-admin' => 'Administração',
+	'grouppermissions-log-add' => 'adicionou grupo "$2"',
+	'grouppermissions-log-change' => 'modificou permissões para o grupo "$2"',
+	'grouppermissions-log-delete' => 'eliminou grupo "$2"',
 	'grouppermissions-log-name' => 'Registo de permissões de grupo',
+	'grouppermissions-log-header' => 'Esta página rastreia modificações às permissões subjacentes de grupos de utilizadores.',
 	'grouppermissions-needjs' => 'Aviso: o JavaScript está desativado no seu navegador. Algumas funcionalidades poderão não funcionar!',
 	'grouppermissions-sp-sort' => 'Ordenar permissões',
 	'grouppermissions-sp-save' => 'Gravar',
 	'grouppermissions-sp-addtype' => 'Adicionar tipo de ordenação',
 	'grouppermissions-sp-addperm' => 'Adicionar permissão',
+	'grouppermissions-sp-remove' => 'remover',
 	'grouppermissions-sp-deltype' => 'Eliminar tipo de ordenação',
+	'grouppermissions-rug-header' => 'Você pode usar esta página para remover utilizadores de grupos não usados (eliminados).',
+	'grouppermissions-rug-success' => 'Utilizadores removidos de grupos não usados com sucesso!',
 	'right-grouppermissions' => 'Gerir permissões de grupo',
 	'right-search' => 'Pesquisar no wiki',
 	'right-edittalk' => 'Editar páginas de discussão',

@@ -220,6 +220,14 @@ $messages['pt'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Página especial]] que busca uma página raiz aleatória',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'randomrootpage' => 'Página raiz aleatória',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Página especial]] que busca uma página raiz aleatória',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

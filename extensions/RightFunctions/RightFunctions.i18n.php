@@ -88,6 +88,13 @@ $messages['eo'] = array(
 	'rightfunctions-ns' => '(de nomspaca protektado)',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'rightfunctions-local' => '(de página local)',
+);
+
 /** French (Français)
  * @author Grondin
  * @author McDutchie

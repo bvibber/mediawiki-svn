@@ -370,6 +370,15 @@ $messages['pt'] = array(
 	'mediafunctions-not-exist' => '"$1" não existe',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'mediafunctions-desc' => 'Funções do analisador (parser) para obter informação sobre arquivos de mídia.',
+	'mediafunctions-invalid-title' => '"$1" não é um título válido',
+	'mediafunctions-not-exist' => '"$1" não existe',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

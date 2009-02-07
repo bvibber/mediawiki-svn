@@ -159,7 +159,7 @@ $aliases['pl'] = array(
 
 /** Portuguese (Português) */
 $aliases['pt'] = array(
-	'CategoryIntersection' => array( 'Intersecção de categorias' ),
+	'CategoryIntersection' => array( 'Intersecção de categorias', 'Interseção de categorias' ),
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

@@ -433,6 +433,14 @@ $messages['pt'] = array(
 	'absenteelandlord-desc' => 'Bloqueia a base dados do wiki automaticamente se todos os sysops estiverem inactivos por algum tempo',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'absenteelandlord-reason' => 'A base de dados foi automaticamente bloqueada devido à inatividade dos sysops.',
+	'absenteelandlord-desc' => 'Bloqueia a base dados do wiki automaticamente se todos os sysops estiverem inativos por algum tempo',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

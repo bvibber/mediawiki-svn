@@ -146,6 +146,15 @@ $messages['grc'] = array(
 	'right-forcepreviewexempt' => 'Γράψειν δέλτον ἐνδεχομένως ἄνευ χρήσεως τοῦ Δεικνύναι τῆς προθεώρήσεως',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'forcepreview' => 'Syte spychere (zerscht Vorschau aazeige)',
+	'forcepreview-desc' => 'Vorschau fir nit privilegierti Benutzer erzwinge',
+	'right-forcepreviewexempt' => 'Spychere ohni Erzwingig vu dr Vorschau',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -356,6 +365,15 @@ $messages['pl'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'forcepreview' => 'Gravar página (use a previsão primeiro)',
+	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
+	'right-forcepreviewexempt' => 'Pode salvar páginas sem mostrar a previsão antes',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'forcepreview' => 'Gravar página (use a previsão primeiro)',
 	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
 	'right-forcepreviewexempt' => 'Pode salvar páginas sem mostrar a previsão antes',

@@ -467,6 +467,16 @@ $messages['pt'] = array(
 	'simpleantispam-desc' => 'Adiciona em formulários um verificador de spam simples',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'simpleantispam' => 'A sua edição ativou o mecanismo anti-spam',
+	'simpleantispam-label' => "Verificação de spam
+'''NÃO''' preencha isto!",
+	'simpleantispam-desc' => 'Adiciona um verificador simples de spam/robôs em formulários',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

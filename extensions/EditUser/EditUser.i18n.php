@@ -611,16 +611,19 @@ $messages['lfn'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Tomasdd
  */
 $messages['lt'] = array(
 	'edituser-desc' => 'Privilegijuotiems naudotojams leidžiama redaguoti kitų naudotojų nustatymus',
-	'edituser' => 'Redaguoti Naudotoją',
+	'edituser' => 'Redaguoti naudotoją',
 	'edituser-logout' => 'Naudotojo išregistravimas',
 	'edituser-username' => 'Vardas',
 	'edituser-dosearch' => 'Ieškoti',
-	'edituser-nouser' => 'Tokio Naudotojo nėra',
-	'edituser-exempt' => 'Šio Naudotojo redaguoti negalima',
+	'edituser-nouser' => 'Tokio naudotojo nėra',
+	'edituser-exempt' => 'Šio naudotojo redaguoti negalima',
+	'right-edituser' => 'Redaguoti kitų naudotojų nustatymus',
+	'right-edituser-exempt' => 'Kiti negali redaguoti šio naudotojo nustatymų',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -803,8 +806,8 @@ $messages['pt'] = array(
 	'edituser-logout' => 'Terminar sessão do utilizador',
 	'edituser-username' => 'Nome',
 	'edituser-dosearch' => 'Pesquisar',
-	'edituser-nouser' => 'O usuário especificado não existe',
-	'edituser-exempt' => 'O usuário especificado não pode ser editado',
+	'edituser-nouser' => 'O utilizador especificado não existe',
+	'edituser-exempt' => 'O utilizador especificado não pode ser editado',
 	'right-edituser' => 'Editar as preferências de outros utilizadores',
 	'right-edituser-exempt' => 'Não podem ter as suas preferências editadas por outros',
 );

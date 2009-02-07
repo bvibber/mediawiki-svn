@@ -311,11 +311,15 @@ Lista todas as páginas na categoria "$1" bem como todas as subcategorias da cat
 	'autocreatecategorypages-editor' => 'Gerador automático de categorias',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
 $messages['pt-br'] = array(
+	'autocreatecategorypages-desc' => 'Criar automaticamente páginas de categorias inexistentes ao gravar',
 	'autocreatecategorypages-stub' => 'Esta Ã© uma página de categoria.
 Ela lista todas as páginas da categoria "$1", bem como todas as subcategorias da categoria "$1", se existirem.',
 	'autocreatecategorypages-createdby' => 'Gerada automaticamente pela extensxo AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Gerador automático de categorias',
 );
 
 /** Romanian (Română)

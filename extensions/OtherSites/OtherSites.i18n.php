@@ -267,6 +267,14 @@ $messages['pt'] = array(
 	'othersites-desc' => 'Move ligações interwiki que não sejam ligações de linguagem para o seu próprio "portlet"',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'othersites' => 'Outros sítios',
+	'othersites-desc' => 'Move ligações interwiki que não sejam ligações de linguagem para o seu próprio "portlet"',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

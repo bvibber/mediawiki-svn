@@ -224,6 +224,13 @@ $messages['pt'] = array(
 	'psinotocnum-desc' => 'Nova palavra mágica "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'psinotocnum-desc' => 'Nova palavra mágica "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

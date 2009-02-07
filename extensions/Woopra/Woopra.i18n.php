@@ -264,6 +264,13 @@ $messages['pt'] = array(
 	'woopra-desc' => 'Permite que o [http://www.woopra.com/ Woopra Live Tracking Software] funcione com a sua instalação MediaWiki',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'woopra-desc' => 'Permite que o [http://www.woopra.com/ Woopra Live Tracking Software] funcione com a sua instalação MediaWiki',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

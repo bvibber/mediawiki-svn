@@ -298,6 +298,17 @@ Por favor, aguarde um momento e carregue em 'refrescar' no seu navegador para re
 	'acct_creation_global_soft_throttle_hit-desc' => 'Restringir a criação de utilizadores',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'A criação de contas foi automaticamente suspensa por alguns momentos devido a um número anormalmente grande de tentativas recentes de autenticação.
+Por favor, aguarde alguns minutos e tente novamente.',
+	'acct_creation_global_hard_throttle_hit' => "A criação de contas foi automaticamente suspensa por alguns segundos para reduzir os ataques de registro em massa.
+Por favor, aguarde um momento e clique em 'atualizar' no seu navegador para reenviar os dados.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Restringir a criação de utilizadores',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

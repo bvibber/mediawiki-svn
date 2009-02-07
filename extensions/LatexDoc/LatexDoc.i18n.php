@@ -209,6 +209,25 @@ $3',
 	'latexdoc-desc' => 'Edición colaborativa de documentos LaTeX',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'latexdoc_no_text' => 'In dr Syte het s kei Täxt, DVI cha nit generiert wäre',
+	'latexdoc_cant_create_dir' => 'Temporär Verzeichnis $1 cha nit aagleit wäre',
+	'latexdoc_cant_write' => 'Datei $1 cha nit gschribe wäre',
+	'latexdoc_error' => 'LaTeX-Fähler
+
+Ufruef: $1
+
+Uusgab: $2
+
+$3',
+	'latexdoc_get_dvi' => 'DVI abelade',
+	'latexdoc_get_pdf' => 'PDF abelade',
+	'latexdoc-desc' => 'Gmeinschaftligs Bearbeite vu LaTeX-Dokumänt',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -407,6 +426,13 @@ $messages['lb'] = array(
 	'latexdoc_no_text' => 'Et ass keen Text op der Säit, den DVI kann net gemaach ginn',
 	'latexdoc_cant_create_dir' => 'Den temporäre Repertoire $1 kann net ugeluecht ginn',
 	'latexdoc_cant_write' => 'Et ass net méiglech na de Fichier $1 ze schreiwen',
+	'latexdoc_error' => 'LaTeX-Feeler
+
+Opruf: $1
+
+Resultat: $2
+
+$3',
 	'latexdoc_get_dvi' => 'DVI kréien',
 	'latexdoc_get_pdf' => 'PDF kréien',
 	'latexdoc-desc' => 'Kollektivt Ännere vu LaTeX Dokumenter',

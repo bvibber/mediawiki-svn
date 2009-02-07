@@ -294,6 +294,31 @@ Seien Sie aber vorsichtig, Phrasen sollten nicht zu kurz oder zu allgemein sein.
 	'spamregex-warning-2' => 'Bitte wählen Sie mindestens eine Sperrmethode aus.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'spamregex' => 'SpamRegex',
+	'spamregex-desc' => 'Njewitane fraze na wobźěłanych bokach z pomocu regularnych wurazow [[Special:SpamRegex|wufiltrowaś]]',
+	'spamregex-error-unblocking' => 'Zmólka pśi pśipušćanju "$1". Nejskerjej taki muster njeeksistěrujo.',
+	'spamregex-summary' => 'Tekst jo se namakał w zespominanju boka.',
+	'spamregex-intro' => 'Wuž toś ten formular, aby zajźował, až by se składowali wuraze do teksta boka.
+Jolic tekst wopśimujo pódany wuraz, změna njeby se składowała a wujasnjenje pokažo se wužiwarjeju, kótaryž jo wopytał bok składowaś.
+Buź pak wobglědniwy, wuraze njeby pśekrotke abo pśepowšykne byś.',
+	'spamregex-page-title' => 'Njewitane wuraze z pomocu regularnych wurazow blokěrowaś',
+	'spamregex-currently-blocked' => "'''Tuchylu blokěrowane fraze:'''",
+	'spamregex-move' => 'Pśicyna, kótaruž sy zapódał, wopśimujo blokěrowanu frazu.',
+	'spamregex-no-currently-blocked' => "'''Njejsu blokěrowane fraze.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 wótpóraś]), pśidany wót",
+	'spamregex-log-2' => 'na $1',
+	'spamregex-page-title-1' => 'Frazu z pomocu regularnych wurazow blokěrowaś',
+	'spamregex-unblock-success' => 'Pśipušćenje wuspěšne',
+	'spamregex-unblock-message' => "Fraza '''$1''' jo se pśipušćiła za wobźěłanje.",
+	'spamregex-page-title-2' => 'Fraze pśeśiwo składowanjeju z pomocu regularnych wurazow blokěrowaś',
+	'spamregex-block-success' => 'Blokěrowanje wuspěšne',
+	'spamregex-block-message' => "Fraza '''$1''' jo se blokěrowała.",
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -1004,7 +1029,14 @@ $messages['or'] = array(
 $messages['pl'] = array(
 	'spamregex' => 'Spam regex',
 	'spamregex-desc' => '[[Special:SpamRegex|Filtrowanie]] niepożądanych zwrotów na edytowanych stronach z użyciem wyrażeń regularnych',
+	'spamregex-error-unblocking' => 'Błąd odblokowania „$1”. Prawdopodobnie nie ma takiego wzorca.',
+	'spamregex-summary' => 'Tekst został odnaleziony w opisie zmian.',
+	'spamregex-intro' => 'Formularz służy do skutecznego blokowania zapisu stron zawierających określone wyrażenie.
+Jeżeli tekst zawiera zadane wyrażenie, zmiany nie zostaną zapisane, a użytkownikowi, który chciał zapisać stronę zostanie wyświetlone wyjaśnienie.
+Należy zwrócić uwagę, by wyrażania nie były zbyt krótkie lub zbyt często występujące.',
+	'spamregex-page-title' => 'Spam regex – blokada niepożądanych wyrażeń',
 	'spamregex-currently-blocked' => "'''Aktualnie zablokowane wyrażenia:'''",
+	'spamregex-move' => 'Powód który wpisałeś zawiera zabroniony zwrot.',
 	'spamregex-no-currently-blocked' => "'''Nie ma zablokowanych wyrażeń.'''",
 	'spamregex-page-title-1' => 'Blokuj frazę za pomocą wyrażenia regularnego',
 	'spamregex-unblock-success' => 'Odblokowano',

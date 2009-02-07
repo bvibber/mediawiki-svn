@@ -154,6 +154,19 @@ Isto permitiralle usar a súa páxina de usuario tamén como un OpenID.',
 	'linkopenid-prefstext-v2url' => 'URL do servidor para a versión 2 do OpenID:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'linkopenid-desc' => 'Erlaubt Benutzer Ihr Benutzerkonto uf en externi OpenID z vergleiche',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Wänn Du ne OpenID bi me extärnen Aabieter hesch, no chasch die do aagee.
+Des macht Dir di alternativ Nutzig vu Dyyere Benutzersyte as OpenID megli.',
+	'linkopenid-prefstext-openid' => 'Dyy OpenID:',
+	'linkopenid-prefstext-v1url' => 'Server-URL fir OpenID Version 1.1:',
+	'linkopenid-prefstext-v2url' => 'Server-URL fir OpenID Version 2:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

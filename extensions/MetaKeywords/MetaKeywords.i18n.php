@@ -239,6 +239,13 @@ $messages['pt'] = array(
 	'metakeywords-desc' => 'Permite a configuração de tags <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> por domínio',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'metakeywords-desc' => 'Permite a configuração de tags <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> por domínio',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

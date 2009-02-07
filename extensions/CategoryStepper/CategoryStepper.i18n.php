@@ -403,6 +403,15 @@ $messages['pt'] = array(
 	'categorystepper-start' => '(Início da categoria)',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'categorystepper-desc' => 'Apresenta uma caixa de passo de categorias que permite a uma pessoa navegar alfabeticamente para a frente e para trás através de uma ou mais categorias a que pertence uma página',
+	'categorystepper-end' => '(Fim da categoria)',
+	'categorystepper-start' => '(Início da categoria)',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

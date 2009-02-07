@@ -193,6 +193,13 @@ $messages['pt'] = array(
 	'regexfunctions-desc' => 'funções do analisador (parser) para expressões regulares',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'regexfunctions-desc' => 'Funções de análise (parser) para expressões regulares',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

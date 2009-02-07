@@ -484,6 +484,15 @@ $messages['pt'] = array(
 	'assert_edit_message' => 'A asserção especificada ($1) falhou.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'assert_edit_title' => 'A asserção falhou',
+	'assert_edit_desc' => 'Adiciona asserções de edição para o uso por bots',
+	'assert_edit_message' => 'A asserção especificada ($1) falhou.',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */

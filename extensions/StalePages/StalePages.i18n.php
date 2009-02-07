@@ -331,6 +331,15 @@ $messages['pt'] = array(
 	'stalepages-summary' => 'Esta é uma lista das páginas que não foram editadas {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'stalepages' => 'Páginas estagnadas',
+	'stalepages-desc' => 'Gera uma [[Special:Stalepages|lista de páginas]] que não foram editadas recentemente',
+	'stalepages-summary' => 'Esta é uma lista das páginas que não foram editadas {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

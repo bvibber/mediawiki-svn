@@ -325,6 +325,16 @@ $messages['pt'] = array(
 	'formatchanges-editedby' => '$1 - editado por $2 ($3)',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'formatchanges-desc' => 'Reestrutura as [[Special:RecentChanges|mudanças recentes]]',
+	'formatchanges-anonymous' => 'Anônimo',
+	'formatchanges-createdby' => '$1 - criado por $2 ($3)',
+	'formatchanges-editedby' => '$1 - editado por $2 ($3)',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

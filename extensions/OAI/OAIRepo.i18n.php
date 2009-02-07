@@ -301,6 +301,13 @@ $messages['pt'] = array(
 	'oai-desc' => 'Providencia interface de repositório [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'oai-desc' => 'Provê interface para repositório [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

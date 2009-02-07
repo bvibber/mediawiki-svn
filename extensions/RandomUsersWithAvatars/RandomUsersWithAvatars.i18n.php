@@ -201,6 +201,14 @@ $messages['pt'] = array(
 	'random-users-avatars-desc' => 'Adiciona a marca <tt>&lt;randomuserswithavatars&gt;</tt> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'random-users-avatars-title' => 'Conheça a comunidade',
+	'random-users-avatars-desc' => 'Adiciona a marca <tt>&lt;randomuserswithavatars&gt;</tt> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

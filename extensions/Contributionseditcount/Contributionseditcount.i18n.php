@@ -158,6 +158,14 @@ $messages['gl'] = array(
 	'contributionseditcount-desc' => 'Mostra a conta de edicións na [[Special:Contributions|páxina de contribucións dun usuario]]',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'contributionseditcount' => 'Dää Benutzer het $1 Bearbeitieg.',
+	'contributionseditcount-desc' => 'Zeigt e Byytragszeller uf dr [[Special:Contributions|Byytragssyte vum Benutzer]] aa',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
@@ -391,6 +399,14 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'contributionseditcount' => 'Este utilizador tem $1 edições.',
+	'contributionseditcount-desc' => 'Mostra uma contagem de edições na [[Special:Contributions|página de contribuições do utilizador]]',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'contributionseditcount' => 'Este utilizador tem $1 edições.',
 	'contributionseditcount-desc' => 'Mostra uma contagem de edições na [[Special:Contributions|página de contribuições do utilizador]]',
 );

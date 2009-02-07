@@ -190,6 +190,17 @@ $messages['gl'] = array(
 	'categoryintersection-results' => 'A procura deu $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'categoryintersection' => 'Kategorie-Schnittmängi',
+	'categoryintersection-desc' => 'E Tabälle pfläge mit Hashwärt fir d [[Special:CategoryIntersection|Kategorie-Schnittmängisuechi]]',
+	'categoryintersection-doit' => 'Alli Syten in däre Schnittmängi aazeige',
+	'categoryintersection-maxcategories' => 'Di maximal Aazahl vu Kategorie fir Schnittmängine isch $1.',
+	'categoryintersection-results' => 'D Suechi het $1 {{PLURAL:$1|Träffer|Träffer}} gee.',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -394,7 +405,7 @@ $messages['oc'] = array(
 	'categoryintersection' => 'Recopatge de categorias',
 	'categoryintersection-desc' => "Manten una taula amb de valors a la volada pels [[Special:CategoryIntersection|recopatges de categorias]] al mejan d'una pagina",
 	'categoryintersection-doit' => 'Lista las paginas dins totas aquestas categorias',
-	'categoryintersection-maxcategories' => 'Lo nombre maximom de las categorias s’entrecopant es de $1.',
+	'categoryintersection-maxcategories' => 'Lo nombre maximum de las categorias que s’entrecopan es de $1.',
 	'categoryintersection-results' => 'La recèrca a tornat $1 {{PLURAL:$1|títol|títols}}.',
 );
 
@@ -437,6 +448,13 @@ $messages['ro'] = array(
 	'categoryintersection-doit' => 'Afişează paginile în toate aceste categorii',
 	'categoryintersection-maxcategories' => 'Numărul maxim permis de categorii intersectante este $1.',
 	'categoryintersection-results' => 'Căutarea a returnat $1 {{PLURAL:$1|rezultat|rezultate}}.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'categoryintersection' => "Intersezione 'mbrà categorije",
 );
 
 /** Russian (Русский)

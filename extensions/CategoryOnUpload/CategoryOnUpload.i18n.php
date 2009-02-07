@@ -176,6 +176,14 @@ $messages['grc'] = array(
 	'categoryonupload-label' => 'Κατηγορία:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'categoryonupload-desc' => 'Frogt e Benutzer bim Uffelade vu Dateie noch ere Kategorii',
+	'categoryonupload-label' => 'Kategorii:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -361,6 +369,14 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'categoryonupload-desc' => 'Pede a um utilizador que seleccione uma categoria quando este carrega um ficheiro',
+	'categoryonupload-label' => 'Categoria:',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'categoryonupload-desc' => 'Pede a um utilizador que selecione uma categoria ao carregar um arquivo',
 	'categoryonupload-label' => 'Categoria:',
 );
 

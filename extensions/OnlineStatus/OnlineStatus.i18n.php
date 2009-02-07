@@ -150,11 +150,15 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'onlinestatus-desc' => "Yn gosod dewisiad i arddangos a yw defnyddiwr wedi mewngofnodi i'r wici ar hyn o bryd ai pheidio",
 	'onlinestatus-js-anon' => "Gwall: rhaid mewngofnodi cyn gallu defnyddio'r nodwedd hon",
+	'onlinestatus-js-changed' => 'Mae\'ch cyflwr wedi ei newid i "$1"',
+	'onlinestatus-js-error' => 'Nid yw\'n bosib newid cyflwr, mae\'r gwerth "$1" yn annilys',
 	'onlinestatus-subtitle-offline' => "Nid yw'r defnyddiwr hwn ar-lein ar hyn o bryd",
 	'onlinestatus-subtitle-online' => "Mae'r defnyddiwr hwn ar-lein ar hyn o bryd",
 	'onlinestatus-tab' => 'Cyflwr',
 	'onlinestatus-toggles-desc' => 'Eich cyflwr:',
+	'onlinestatus-toggles-explain' => "Mae hwn yn rhoi'r gallu i chi i arddangos ar eich tudalen defnyddiwr eich cyflwr arlein/all-lein.",
 	'onlinestatus-toggles-show' => 'Dangos fy nghylwr ar/all-lein ar fy nhudalen defnyddiwr',
 	'onlinestatus-toggle-offline' => 'All-lein',
 	'onlinestatus-toggle-online' => 'Ar-lein',
@@ -689,8 +693,8 @@ $messages['pt'] = array(
 	'onlinestatus-subtitle-online' => 'Este utilizador encontra-se online',
 	'onlinestatus-tab' => 'Estado',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
-	'onlinestatus-toggles-explain' => 'Permite que seja exibido a outros utilizadores, através de sua página de usuário, se você se encontra online ou não.',
-	'onlinestatus-toggles-show' => 'Exibir meu status de conexão em minha página de usuário',
+	'onlinestatus-toggles-explain' => 'Permite que seja exibido a outros utilizadores, através de sua página de utilizador, se você se encontra online ou não.',
+	'onlinestatus-toggles-show' => 'Exibir o estado da minha ligação na minha página de utilizador',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
 	'tog-onlineOnLogin' => 'Alterar o meu estado para online quando me autenticar',

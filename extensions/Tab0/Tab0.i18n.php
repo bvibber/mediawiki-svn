@@ -244,6 +244,13 @@ $messages['pt'] = array(
 	'tab0-desc' => 'Adiciona uma pestana "0", que liga à página de edição da primeira secção da página',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'tab0-desc' => 'Adiciona uma aba "0", que liga à página de edição da primeira seção da página',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

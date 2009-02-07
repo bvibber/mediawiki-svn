@@ -236,6 +236,13 @@ $messages['pt'] = array(
 	'catfeed-desc' => 'Usa pedaços de "feeds" de alterações recentes. Cria uma versão dentro de uma página, especialmente útil para Wikinotícias.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'catfeed-desc' => 'Usa partes do "feed" das alterações recentes. Cria uma versão dentro de uma página, especialmente útil para o Wikinotícias.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -271,6 +278,14 @@ Moakjen fon ne ienbäädede Version; besunners foar Wikinews nutselk.',
  */
 $messages['sv'] = array(
 	'catfeed-desc' => 'Använder information från senaste ändringarna. Man kan skapa versioner för användning till innehållssidor, något som är speciellt användbart för Wikinews.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'catfeed-desc' => "Gumagamit ng maliliit na mga piraso mula sa isinubong kamakailang mga pagbabago.
+Lumikha ng bersyong nasa loob ng pahina, partikular na magagamit para sa Wikibalita (''Wikinews'').",
 );
 
 /** Ukrainian (Українська)

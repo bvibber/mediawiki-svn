@@ -442,6 +442,15 @@ $messages['pt'] = array(
 	'whatismyip-out' => 'O seu IP:',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'whatismyip' => 'Qual é o meu IP',
+	'whatismyip-desc' => 'Mostra o endereço IP do utilizador atual em [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'O seu IP:',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

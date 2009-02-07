@@ -248,11 +248,6 @@ $messages['fi'] = array(
 	'sitenotice-desc' => 'Mahdollistaa käyttäjille sivutiedotteen piilottamisen.',
 );
 
-/** Võro (Võro) */
-$messages['vro'] = array(
-	'sitenotice_close' => 'Käkiq ärq',
-);
-
 /** Faroese (Føroyskt)
  * @author Spacebirdy
  */
@@ -512,6 +507,11 @@ $messages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );
 
+/** Classical Chinese (文言) */
+$messages['lzh'] = array(
+	'sitenotice_close' => '關',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */
@@ -623,6 +623,14 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'sitenotice_close' => 'ignorar',
+	'sitenotice-desc' => 'Permite aos utilizadores fecharem a notificação do sítio',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'sitenotice_close' => 'ignorar',
 	'sitenotice-desc' => 'Permite aos utilizadores fecharem a notificação do sítio',
 );
@@ -823,15 +831,15 @@ $messages['vo'] = array(
 	'sitenotice-desc' => 'Dälon gebanes ad nemogükön jonami topädanunama',
 );
 
+/** Võro (Võro) */
+$messages['vro'] = array(
+	'sitenotice_close' => 'Käkiq ärq',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',
 	'sitenotice-desc' => '容許用戶去閂個網站公告',
-);
-
-/** Classical Chinese (文言) */
-$messages['lzh'] = array(
-	'sitenotice_close' => '關',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

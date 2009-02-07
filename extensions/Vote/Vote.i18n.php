@@ -873,6 +873,7 @@ Laachsack|Dä Laachsack',
  */
 $messages['lb'] = array(
 	'vote' => 'Ofstëmmen',
+	'vote-desc' => 'Erméiglecht einfach Ënfroen',
 	'vote-header' => "Dir kënnt hei iwwer den '''Supreme Overlord of the World''' ofstëmmen!",
 	'vote-current' => "Är aktuell Stëmm ass fir '''$1'''.",
 	'vote-legend' => 'Stëmm ofginn oder änneren',

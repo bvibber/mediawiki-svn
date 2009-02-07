@@ -1110,6 +1110,7 @@ $messages['vec'] = array(
 	'lookupuser-touched' => "Ultima visita registrà de l'utente: $1",
 	'lookupuser-info-authenticated' => 'Autenticassion de posta eletronica: $1',
 	'lookupuser-useroptions' => 'Preferense utente:',
+	'right-lookupuser' => "Varda le preferense de l'utente",
 );
 
 /** Vietnamese (Tiếng Việt)

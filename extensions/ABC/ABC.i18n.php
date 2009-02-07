@@ -356,6 +356,14 @@ $messages['pt'] = array(
 	'abcdownload' => 'Descarregar:',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'abcdesc' => 'Adiciona a marca <tt>&lt;abc&gt;</tt> para formatar música em notação ABC',
+	'abcdownload' => 'Descarregar:',
+);
+
 /** Romanian (Română)
  * @author Silviubogan
  */

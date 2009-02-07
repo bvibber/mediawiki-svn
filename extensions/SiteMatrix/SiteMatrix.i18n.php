@@ -1309,6 +1309,13 @@ $messages['ro'] = array(
 	'sitematrix-fishbowl' => 'modificare restricţionată',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'sitematrix-sitetotal' => 'Totele',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

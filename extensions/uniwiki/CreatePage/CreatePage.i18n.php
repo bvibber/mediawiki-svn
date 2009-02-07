@@ -508,15 +508,19 @@ Deseja editar a página existente?',
 	'createpage-badtitle' => '"$1" não pode ser usado como título de página',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
 $messages['pt-br'] = array(
 	'createpage' => 'Criar uma página',
+	'createpage-desc' => 'Adiciona uma [[Special:CreatePage|página especial]] para criar novas páginas',
 	'createpage_submitbutton' => 'Criar',
 	'createpage_instructions' => 'Digite o título da página que você gostaria de criar:',
 	'createpage_entertitle' => 'Digite um título para sua página.',
 	'createpage_titleexists' => 'Uma página com o título, [[$1]], já existe. Você gostaria de editar a página existente?',
 	'createpage_tryagain' => 'Não - Eu quero criar uma nova página com outro título.',
 	'createpage_editexisting' => 'Sim - Eu quero editar a página existente.',
+	'createpage-badtitle' => '"$1" não pode ser usado como título de página',
 );
 
 /** Romanian (Română)

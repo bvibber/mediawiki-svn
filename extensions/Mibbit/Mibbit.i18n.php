@@ -162,16 +162,17 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Delhovlyn
  * @author Grondin
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'mibbit' => 'Clavardage Mibbit',
 	'mibbit-desc' => 'Ajoute une [[Special:Mibbit|page spéciale]] permettant le clavardage en temps réel avec les autres utilisateurs du wiki',
-	'mibbit-header' => 'Cette page spéciale vous autorise à collaborer en temps réel avec les autres utilisateurs du wiki.
-Pour commencer, il suffit de cliquer le bouton « Connect ».
-Si vous êtes connecté{{GENDER:||e|(e)}}, votre pseudo sera déjà instruit.
-Les utilisateurs anonymes se verront attribuer un pseudo créé automatiquement, mais qui peut être modifié.',
+	'mibbit-header' => "Cette page spéciale vous permet de collaborer en temps réel avec d'autres utilisateurs du wiki.
+Pour vous connecter, cliquer simplement sur le bouton « ''Connect'' ».
+Si vous êtes connecté{{GENDER:||e|(e)}}, votre pseudonyme sera déjà écrit.
+Les utilisateurs anonymes se verront attribuer un pseudonyme créé automatiquement, mais qui peut être modifié.",
 	'right-mibbit' => "Autorise l'utilisation du Chat Mibbit",
 );
 
@@ -416,6 +417,7 @@ Los utilizaires anonims se veràn atribuir un escais creat automaticament, mas p
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author ToSter
  */
 $messages['pl'] = array(
 	'mibbit' => 'Czat Mibbit',
@@ -435,7 +437,7 @@ $messages['pt'] = array(
 	'mibbit-desc' => 'Adiciona uma [[Special:Mibbit|página especial]] usada para falar em tempo real com outros utilizadores do wiki',
 	'mibbit-header' => 'Esta página especial permite a colaboração em tempo real com outros utilizadores da wiki.
 Para ligar-se basta carregar no botão "Connect".
-Se estiver logado, o seu nome de usuário será preenchido automaticamente.
+Se estiver logado, o seu nome de utilizador será preenchido automaticamente.
 Utilizadores anónimos recebem um nick gerado aleatoriamente, mas este pode ser alterado.',
 	'right-mibbit' => 'Autorizado a usar o chat Mibbit',
 );

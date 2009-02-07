@@ -222,6 +222,13 @@ $messages['pt'] = array(
 	'crowdauthentication-desc' => 'Plugin de autenticação para Atlassian Crowd',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'crowdauthentication-desc' => 'Plugin de autenticação para Atlassian Crowd',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

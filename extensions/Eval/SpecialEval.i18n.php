@@ -143,6 +143,18 @@ $messages['grc'] = array(
 	'eval_code' => 'Κῶδιξ',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'eval' => 'Rächne',
+	'eval-desc' => 'Füiet e [[Special:Eval|Benutzerschnittstell]] fir d <code>eval()</code>-Funktion zue',
+	'eval_submit' => 'Berächne',
+	'eval_escape' => 'Uusgab maschkiere',
+	'eval_out' => 'Uusgab',
+	'eval_code' => 'Code',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

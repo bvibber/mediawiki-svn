@@ -333,6 +333,13 @@ $messages['pt'] = array(
 	'fixedimage-desc' => 'Adiciona a marca <tt><nowiki><fundraising></nowiki></tt> como uma imagem',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'fixedimage-desc' => 'Adiciona a marca <tt><nowiki><fundraising></nowiki></tt> como uma imagem',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

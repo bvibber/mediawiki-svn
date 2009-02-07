@@ -245,6 +245,13 @@ $messages['pt'] = array(
 	'tooltip-desc' => 'Acrescenta as tags <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'tooltip-desc' => 'Acrescenta as marcas <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

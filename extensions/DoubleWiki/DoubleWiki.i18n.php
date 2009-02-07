@@ -356,6 +356,13 @@ $messages['pt'] = array(
 	'doublewiki-desc' => 'Apresenta uma página e a sua tradução de outro wiki em duas colunas da mesma página',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'doublewiki-desc' => 'Apresenta uma página e a sua tradução de outro wiki em duas colunas da mesma página',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

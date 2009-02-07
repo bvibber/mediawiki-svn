@@ -2664,6 +2664,8 @@ $messages['pt'] = array(
 	'signdocument' => 'Assinar documento',
 	'sign-nodocselected' => 'Por favor, selecione o documento que pretende assinar.',
 	'sign-selectdoc' => 'Documento:',
+	'sign-docheader' => '<div class="noarticletext">Por favor, use este formulário para assinar o documento "[[$1]]", mostrado abaixo.
+Leia o documento completo, e se desejar indicar o seu suporte, preencha o campos necessários para o assinar.</div>',
 	'sign-error-nosuchdoc' => 'O documento que requisitou ($1) não existe.',
 	'sign-realname' => 'Nome:',
 	'sign-address' => 'Endereço da morada:',
@@ -2674,6 +2676,8 @@ $messages['pt'] = array(
 	'sign-phone' => 'Número de telefone:',
 	'sign-bday' => 'Idade:',
 	'sign-email' => 'Endereço de e-mail:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> indica um campo obrigatório.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Nota: Informação não listada continuará visível a moderadores.</i></small>',
 	'sign-list-anonymous' => 'Listar como anónimo',
 	'sign-list-hideaddress' => 'Não listar endereço',
 	'sign-list-hideextaddress' => 'Não listar cidade, estado, código postal ou país',
@@ -2681,7 +2685,18 @@ $messages['pt'] = array(
 	'sign-list-hidebday' => 'Não listar idade',
 	'sign-list-hideemail' => 'Não listar email',
 	'sign-submit' => 'Assinar documento',
+	'sign-information' => '<div class="noarticletext">Obrigado por tomar o seu tempo a ler todo o documento.
+Se concordar, por favor, indique o seu suporte preenchendo os campos necessários abaixo e clicando em "Assinar documento".
+Por favor, certifique-se que a sua informação pessoal está correta, e que teremos alguma forma de o contactar para verificar a sua identidade.
+Note que o seu endereço IP e outra informação identificativa serão registados por este formulário e usados por moderadores para eliminar assinaturas duplicadas e confirmar a exatidão da sua informação pessoal.
+Como a utilização de proxies abertos e anónimos previne a nossa possibilidade de realizar esta tarefa, assinatura provenientes de tais proxies provavelmente não serão contabilizadas.
+Se está atualmente ligado através de um servidor proxy, por favor, desligue-se deste e use uma ligação convencional durante a assinatura.</div>
+
+$1',
 	'sig-success' => 'O documento foi assinado com sucesso.',
+	'sign-view-selectfields' => '<b>Campos a apresentar:</b>',
+	'sign-viewfield-entryid' => 'ID da entrada',
+	'sign-viewfield-timestamp' => 'Tempo',
 	'sign-viewfield-realname' => 'Nome',
 	'sign-viewfield-address' => 'Endereço',
 	'sign-viewfield-city' => 'Cidade',
@@ -2694,7 +2709,10 @@ $messages['pt'] = array(
 	'sign-viewfield-email' => 'E-mail',
 	'sign-viewfield-age' => 'Idade',
 	'sign-viewfield-options' => 'Opções',
+	'sign-viewsigs-intro' => 'Mostradas abaixo estão as assinaturas registadas para <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Assinatura está atualmente ativada para este documento.',
 	'sign-sigadmin-close' => 'Desactivar assinaturas',
+	'sign-sigadmin-currentlyclosed' => 'Assinatura está atualmente desativada para este documento.',
 	'sign-sigadmin-open' => 'Ativar assinaturas',
 	'sign-signatures' => 'Assinaturas',
 	'sign-sigadmin-closesuccess' => 'Assinaturas desativadas com sucesso.',
@@ -2705,6 +2723,16 @@ $messages['pt'] = array(
 	'sig-anonymous' => '<i>Anónimo</i>',
 	'sig-private' => '<i>Privado</i>',
 	'sign-sigdetails' => 'Detalhes da assinatura',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|discussão]] • <!--
+-->[[Special:Contributions/$1|contribuições]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|bloquear utilizador]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} registo de bloqueios] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} verificar IP])<!--
+--></span>',
 	'sign-viewfield-stricken' => 'Cortada',
 	'sign-viewfield-reviewedby' => 'Revisor',
 	'sign-viewfield-reviewcomment' => 'Comentário',
@@ -2718,6 +2746,7 @@ $messages['pt'] = array(
 	'sign-uniquequery-similaraddress' => 'Endereço semelhante',
 	'sign-uniquequery-similarphone' => 'Telefone semelhante',
 	'sign-uniquequery-similaremail' => 'Email similar',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] assinou [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Rhaeto-Romance (Rumantsch) */

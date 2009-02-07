@@ -233,6 +233,13 @@ $messages['pt'] = array(
 	'wikitextloggedinout-desc' => 'Dois "hooks" do analisador "parser", <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, para mostrar diferentes textos dependendo do estado de autenticação do utilizador',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'wikitextloggedinout-desc' => 'Dois "hooks" do analisador (parser), <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, para mostrar diferentes textos dependendo do estado de autenticação do utilizador',
+);
+
 /** Sicilian (Sicilianu)
  * @author Santu
  */

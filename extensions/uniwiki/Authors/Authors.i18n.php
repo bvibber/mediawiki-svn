@@ -326,6 +326,15 @@ $messages['pt'] = array(
 	'authors_anonymous' => 'Anónimo(s)',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'authors-desc' => 'Acrescenta uma lista de contribuidores às páginas',
+	'authors_authors' => 'Autores',
+	'authors_anonymous' => 'Anônimo(s)',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

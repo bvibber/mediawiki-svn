@@ -303,6 +303,14 @@ $messages['pt'] = array(
 	'catboxattop-categories' => 'Categorias',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'catboxattop-desc' => 'Acrescenta uma caixa de categorias na zona superior direita das páginas',
+	'catboxattop-categories' => 'Categorias',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

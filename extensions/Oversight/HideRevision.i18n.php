@@ -2342,6 +2342,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'group-oversight' => 'toezichhouwers',
 	'right-hiderevision' => 'Verbörgen versies bekieken en weerummeplaosen',
 	'hiderevision-reason' => 'Rejen:',
 	'hiderevision-noreason' => 'Beschrief eers de rejen waorumme disse pagina vort mut.',
@@ -2518,7 +2519,7 @@ $messages['oc'] = array(
 	'right-hiderevision' => 'Examinar e restablir las revisions amagadas als administrators',
 	'hiderevision-prompt' => 'Numèro d’edicion de suprimir :',
 	'hiderevision-continue' => 'Contunhar',
-	'hiderevision-text' => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Entresenha personala inapropriada, *: ''Adreça personala e numèro de telèfon, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz facha una error.",
+	'hiderevision-text' => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Entresenha personala inapropriada, *: ''Adreça personala e numèro de telefòn, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz facha una error.",
 	'hiderevision-reason' => 'Motiu (serà enregistrat separadament) :',
 	'hiderevision-submit' => "Amagar aquesta donada d'un biais permanent",
 	'hiderevision-tab' => 'Amagar la modificacion',

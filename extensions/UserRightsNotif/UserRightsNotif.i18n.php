@@ -725,12 +725,31 @@ $2',
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'userrightsnotifysubject' => 'Mudança de estatuto de utilizador em $1',
+	'userrightsnotifybody' => 'Olá $1
+
+Serve esta mensagem para informar que os seu estatuto de utilizador foi modificado em $2, de $3 para $4.
+
+Adicionado: $5
+Removido: $6
+
+Os melhores cumprimentos,
+
+$2',
+	'userrightsnotif-desc' => 'Enviar notificação por email a usuários que sofreram alteração de privilégios',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'userrightsnotifysubject' => 'Mudança de estatuto de usuário em $1',
 	'userrightsnotifybody' => 'Olá $1
 
-Serve esta mensagem para informar que os seu estatuto de usuário foi modificado em $2, de $3 para $4.
+Esta mensagem lhe foi enviada para informar que os seu estatuto de usuário foi modificado em $2, de $3 para $4.
 
 Adicionado: $5
 Removido: $6

@@ -345,6 +345,14 @@ $messages['pt'] = array(
 	'seealso-desc' => "Títulos de secção 'Ver também' localizados usando a tag <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'seealso' => 'Ver também',
+	'seealso-desc' => "Títulos de seção 'Ver também' localizados usando a marca <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

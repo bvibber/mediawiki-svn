@@ -328,6 +328,8 @@ Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki pag
 	'ow_create' => '{{Identical|Create}}',
 	'ow_suggest_previous' => '{{Identical|Previous}}',
 	'ow_suggest_next' => '{{Identical|Next}}',
+	'ow_nstab_definedmeaning' => 'Tab title when displaying a Defined Meaning',
+	'ow_nstab_edit_copy' => 'Tab title when copying across datasets',
 );
 
 /** Karelian (Karjala)
@@ -875,6 +877,7 @@ $wdMessages['be-tarask'] = array(
 	'datasearch_search_text' => 'Пошук тэксту:',
 	'datasearch_within_words' => 'У словах:',
 	'datasearch_within_ext_ids' => 'У вонкавых ідэнтыфікатарах:',
+	'datasearch_showing_only' => 'Паказаныя ня больш за $1 {{PLURAL:$1|супадзеньне|супадзеньні|супадзеньняў}}.',
 	'datasearch_match_ext_ids' => 'Вонкавыя ідэнтыфікатары, якія супадаюць з <i>$1</i>',
 	'datasearch_match_words' => 'Словы, якія супадаюць з <i>$1</i>, і іх зьвязаныя значэньні',
 	'datasearch_match_words_lang' => 'Словы ў <i>$1</i>, якія супадаюць з <i>$2</i>, і іх зьвязаныя значэньні',
@@ -1076,12 +1079,14 @@ $wdMessages['be-tarask'] = array(
  */
 $wdMessages['bg'] = array(
 	'datasearch' => 'Уикиданни: Търсене на данни',
+	'ow_exporttsv_languages' => 'Езици:',
 	'ow_save' => 'Съхранение',
 	'ow_history' => 'История',
 	'ow_noedit_title' => 'Необходими са права за редактиране',
 	'ow_uiprefs' => 'Уикиданни',
 	'ow_none_selected' => 'Нищо не е избрано',
 	'ow_transaction_user' => 'Потребителско име:',
+	'ow_transaction_summary' => 'Резюме',
 	'ow_conceptmapping_no_action_specified' => 'Действието „$1“ не се поддържа от системата.',
 	'ow_dm_OK' => 'Добре',
 	'ow_will_insert' => 'Ще бъде вмъкнато следното:',
@@ -1103,6 +1108,7 @@ $wdMessages['bg'] = array(
 	'ow_PopupAnnotation' => 'Анотация',
 	'ow_Relations' => 'Релации',
 	'ow_RelationType' => 'Тип релация',
+	'ow_Remove' => 'Премахване',
 	'ow_Synonyms' => 'Синоними',
 	'ow_SynonymsAndTranslations' => 'Синоними и преводи',
 	'ow_Source' => 'Източник',
@@ -1231,7 +1237,27 @@ $wdMessages['br'] = array(
 $wdMessages['bs'] = array(
 	'languages' => 'Wikidata: Upravljač jezika',
 	'langman_title' => 'Upravitelj jezika',
+	'langman_not_allowed' => 'Nemate dopuštenja da mijenjate jezične postavke.',
+	'langman_header' => 'Upišite kod jezika i njegovo englesko ime ispod:',
+	'langman_req_fields' => 'Potrebno je i ime jezika i ISO 639-3 kod!',
+	'langman_adding' => 'Dodajem jezik $1 sa ključem $2.',
+	'langman_langname' => 'Ime jezika:',
+	'langman_iso639-3' => 'ISO 639-3 kod:',
+	'langman_iso639-2' => 'ISO 639-2 kod:',
+	'langman_wikimedia' => 'Wikimedia kod:',
+	'langman_field_optional' => '(opcionalno)',
+	'langman_addlang' => 'Dodaj jezik',
+	'importlangnames' => 'Wikidata: Uvoz imena jezika',
+	'importlangnames_title' => 'Uvoz imena jezika',
 	'datasearch' => 'Wikidata: Pretraga podataka',
+	'datasearch_language' => 'Jezik:',
+	'datasearch_search_text' => 'Traži tekst:',
+	'datasearch_within_words' => 'Unutar riječi:',
+	'ow_importtsv_title1' => 'Uvoz TSV',
+	'ow_importtsv_importing' => 'Uvozim TSV podatke',
+	'ow_importtsv_import_failed' => 'Uvoz nije uspjeo.',
+	'ow_importtsv_file' => 'TSV datoteka:',
+	'ow_exporttsv_languages' => 'Jezici:',
 	'ow_save' => 'Spremi',
 	'ow_history' => 'Historija',
 	'ow_datasets' => 'Odabir seta podataka',
@@ -1241,6 +1267,7 @@ Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivan
 	'ow_uipref_datasets' => 'Pretpostavljeni pogled:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ništa nije odabrano',
+	'ow_transaction_user' => 'Ime korisnika:',
 	'ow_conceptmapping_help' => '<p>moguće akcije: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  ubacivanje mappinga</li>
 <li>&action=get&concept=<concept_id>  ponovno čitanje mappinga</li>
@@ -1293,8 +1320,8 @@ Molimo provjerite web adresu.',
 	'ow_Synonyms' => 'Sinonomi',
 	'ow_SynonymsAndTranslations' => 'Sinonimi i prijevodi',
 	'ow_Source' => 'Izvor',
-	'ow_TextAttribute' => 'Svojstvo',
 	'ow_Text' => 'Tekst',
+	'ow_TextAttribute' => 'Svojstvo',
 	'ow_TextAttributeValues' => 'Obični tekstovi',
 	'ow_TranslatedTextAttribute' => 'Svojstvo',
 	'ow_TranslatedText' => 'Prevedeni tekst',
@@ -1675,10 +1702,10 @@ $wdMessages['de-formal'] = array(
 	'ow_importtsv_header' => '<p>Definitionen und Übersetzungen aus einer Textdatei, die Tabulatoren als Trenner verwendet, importieren. Diese Datei kann aus OpenOffice.org, Excel oder einem anderen Tabellenkalkulationsprogramm exportiert sein.</p>
 <p>Das Format der Datei muss mit dem Format der Dateien übereinstimmen, die auf der ExportTSV-Seite exportiert werden können. Wenn Sie die Spaltennamen geändert haben, wird der Import fehlschlagen. Wenn Sie die ID oder den bestimmenden Ausdruck einer festgelegten Bedeutung geändert haben, wird diese Zeile ignoriert werden. Wenn Sie Spalten hinzugefügt haben, müssen diese „definitions_iso“ oder „translations_iso“ heißen, wobei „iso“ ein ISO 693-3-Sprachcode ist.</p>
 <p>Wenn das „Testlauf“-Häkchen gesetzt ist, werden alle Änderungen, die vorgenommen werden würden, gemeldet, aber keine Änderungen wirklich durchgeführt. Es wird empfohlen, vor dem eigentlichen Import einen Testlauf durchzuführen.</p>',
-	'ow_importtsv_not_allowed' => 'Sie haben nicht die Berechtigung, um eine TSV zu importieren.',
+	'ow_importtsv_not_allowed' => 'Sie haben nicht die Berechtigung, einen TSV-Import durchzuführen.',
 	'ow_exporttsv_header' => '<p>Eine Sammlung in eine Textdatei exportieren, die Tabulatoren als Trenner verwendet. Diese kann in OpenOffice.org, Excel oder andere Tabellenkalkulationsprogramme importiert werden.<br />
 Wählen Sie eine Sammlung aus, die Sie exportieren wollen. Geben Sie im Sprachen-Textfeld eine durch Kommata getrennte Liste von ISO 639-3-Sprachcodes an. Geben Sie zuerst die Sprachen an, aus denen Sie übersetzen werden (geben Sie so viele an, wie Sie wollen) und dann diejenigen, in die Sie übersetzen werden. Klicken Sie danach auf „Erstellen“, um die Datei zu erstellen.</p>',
-	'ow_exporttsv_not_allowed' => 'Sie haben nicht die Berechtigung, um eine TSV zu exportieren.',
+	'ow_exporttsv_not_allowed' => 'Sie haben nicht die Berechtigung, einen TSV-Export durchzuführen.',
 	'ow_noedit' => 'Sie haben nicht die Erlaubnis, Seiten im Dataset „$1“ zu bearbeiten.
 Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_dm_badtitle' => 'Diese Seite weist nicht zu einer DefinedMeaning (Konzept).
@@ -1736,6 +1763,9 @@ $wdMessages['dsb'] = array(
 	'importtsv' => 'Wikidaty: TSV importěrowaś',
 	'ow_importtsv_title1' => 'TSV importěrowaś',
 	'ow_importtsv_title2' => 'Definicije a pśełožki importěrowaś',
+	'ow_importtsv_header' => "<p>Definicije a pśełožki z tekstoweje dataje ze smužkami wótźělonymi pśez tabulator importěrowaś, kótarež sy eksportěrował z OpenOffice.org, Excel abo drugeje tabeloweje softwary.</p>
+<p>Format dataje musy samki byś ako ten datajow, kótarež su se eskportěrowali na boku ExporTSV. Jolic sy změnił mjenja słupa, import se njeraźijo. Jolic sy změnił ID abo definiciski wuraz definěrowanego wóznama, buźo se ta smužka ignorowaś. Jolic sy pśidał słupy, muse w formje 'definitions_iso' abo 'translations_iso' byś, źož iso je rěcny kod ISO 639-3.</p>
+<p>Jolic kašćik 'testowy běg' jo markěrowany, budu se akcije, kótarež by se wuwjadli, rozpšawjaś, ale změny se njepśewjedu. Pśiraźijo se testowy běg pśewjasć, pjerwjej až pśewjeźoš import .</p>",
 	'ow_importtsv_not_allowed' => 'Njamaš pšawo TSV importěrowaś.',
 	'ow_importtsv_importing' => 'TSV-daty se importěruju',
 	'ow_importtsv_import_failed' => 'Import jo se njeraził',
@@ -1754,6 +1784,8 @@ Słupy by měli mě 'definition_iso' abo 'translations_iso' měś,
 Rěcy muse kody ISO 639-3 byś.</p>',
 	'exporttsv' => 'Wikidaty: TSV eksportěrowaś',
 	'ow_exporttsv_title' => 'Zběrku do TSV eksportěrowaś',
+	'ow_exporttsv_header' => "<p>Zběrku do tekstowego formata, kótaryž tabulatory za wótźělenje smužkow wužywa, eksportěrowaś a kótaryž móžoš do OpenOffice.org, Excel abo drugeje tabeloweje softwary importěrowaś.<br />
+Wubjeŕ zběrku za eksport. W tekstowem kašćiku za rěce, zapódaj lisćinu rěcnych kodow ISO 639-3, źož se koma za wótźělenje smužkow wužywa. Zachop z rěcami, z kótarychž coš pśełožowaś (wubjeŕ tak wjele ako coš) a skóńc z tymi, do kótarychž coš pśełožowaś. Klikni na 'Napóraś', aby napórał dataju.</p>",
 	'ow_exporttsv_languages' => 'Rěcy:',
 	'ow_exporttsv_not_allowed' => 'Njamaš pšawo TSV eksportěrowaś.',
 	'ow_exporttsv_export_failed' => 'Eksport jo se njeraźił.',
@@ -1787,6 +1819,13 @@ Pšosym glědaj [[{{MediaWiki:Ow editing policy url}}|naše wobźěłowańske za
 	'ow_transaction_summary' => 'Zespominanje',
 	'conceptmapping' => 'Wikidaty: Zwězanje zapśimjeśow',
 	'ow_conceptmapping_title' => 'Zwězanje zapśimjeśow',
+	'ow_conceptmapping_help' => '<p>móžne akcije: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  zwězanje zasajźiś</li>
+<li>&action=get&concept=<concept_id>  zwězanje pśecytaś</li>
+<li>&action=list_sets  lisćinu móžnych prefiksow datowego konteksta a na což se póśěguju wrośiś.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> za jaden definěrowany wóznam w zapśimjeśu, wroś wše druge</li>
+<li>&action=help  Wužytnu pomoc pokazaś.</li>
+</ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Concept Mapping zmóžnja identificěrowaś, kótary definěrowany wóznam jo identiski z definěrowanym wóznamom w drugich datowych sajźbach.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" se njepódpěra.',
 	'ow_dm_OK' => 'W pórěźe',
@@ -1877,6 +1916,10 @@ Pšosym pśekontrolěruj webadresu.',
 	'ow_copy_help' => 'Pomoc hyšći njejo implementěrowana.',
 	'ow_please_proved_dmid' => 'Zda se, až twójo zapódaśe njama "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Pšosym staj se ze serwerowym administratorom do zwiska.',
+	'ow_please_proved_dc1' => 'Zda se, až "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM) twójomu zapódaśeju felujo<br />
+Pšosym staj se ze serwerowym administratorom do zwiska.',
+	'ow_please_proved_dc2' => 'Zda se, až "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO) twójomu zapódaśeju felujo<br />
+Pšosym staj se ze serwerowym administratorom do zwiska.',
 	'ow_copy_successful' => '<h2>Kopěrownje wuspěšne</h2>
 Zda se, až twóje daty su se kopěrowali wuspěšnje.
 Njezabydni to hyšći raz pśekontrolěrowaś!',
@@ -1907,6 +1950,8 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
 	'ow_suggest_previous' => 'Pjerwjejšny',
 	'ow_suggest_next' => 'Pśiducy',
 	'ow_suggest_clear' => 'Wuprozniś',
+	'ow_nstab_definedmeaning' => 'definěrowany wóznam',
+	'ow_nstab_edit_copy' => 'kopiju wobźěłaś',
 );
 
 /** Greek (Ελληνικά)
@@ -2060,6 +2105,9 @@ $wdMessages['es'] = array(
 	'datasearch_meaning' => 'Significado',
 	'datasearch_ext_identifier' => 'Identificador externo',
 	'datasearch_search_text' => 'Buscar texto:',
+	'datasearch_within_words' => 'Con las palabras:',
+	'datasearch_within_ext_ids' => 'Con identificadores externos:',
+	'datasearch_showing_only' => 'Mostrando sólo un máximo de $1 {{PLURAL:$1|resultado|resultados}}.',
 	'importtsv' => 'Wikidata: Importar TSV',
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar definiciones y traducciones',
@@ -2229,6 +2277,7 @@ Contacta por favor el operador o el administrador del servicio.',
 	'ow_suggest_previous' => 'Anterior',
 	'ow_suggest_next' => 'Próximo',
 	'ow_suggest_clear' => 'Borrar',
+	'ow_nstab_edit_copy' => 'editar copia',
 );
 
 /** Estonian (Eesti)
@@ -2283,6 +2332,7 @@ $wdMessages['eu'] = array(
 	'langman_addlang' => 'Hizkuntza gehitu',
 	'importlangnames_title' => 'Inportatu Hizkuntza Izenak',
 	'datasearch' => 'Wikidata:Datu bilaketa',
+	'datasearch_meaning' => 'Esanahia',
 	'ow_save' => 'Gorde',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Data bilduma',
@@ -2344,8 +2394,8 @@ Ziurtatu ezazu berriro web helbidea, mesedez.',
 	'ow_SynonymsAndTranslations' => 'Sinonimoak eta itzulpenak',
 	'ow_Source' => 'Jatorria',
 	'ow_SourceIdentifier' => 'Jatorriaren identifikazioa',
-	'ow_TextAttribute' => 'Ezaugarria',
 	'ow_Text' => 'Testua',
+	'ow_TextAttribute' => 'Ezaugarria',
 	'ow_TextAttributeValues' => 'Testu lauak',
 	'ow_TranslatedTextAttribute' => 'Ezaugarria',
 	'ow_TranslatedText' => 'Itzulitako testua',
@@ -2528,11 +2578,11 @@ $wdMessages['fr'] = array(
 	'datasearch_showing_only' => "Affichage d'au maximum $1 {{PLURAL:$1|correspondance|correspondances}}.",
 	'datasearch_match_ext_ids' => 'Identificateurs externes correspondant à <i>$1</i>',
 	'datasearch_match_words' => 'Mots correspondant à <i>$1</i> et leur signification associée',
-	'datasearch_match_words_lang' => 'Les mots en <i>$1</i> correspodant à <i>$2</i> et leur signification',
+	'datasearch_match_words_lang' => 'Les mots en <i>$1</i> correspondant à <i>$2</i> et leur signification',
 	'importtsv' => 'Wikidata : Importer TSV',
 	'ow_importtsv_title1' => 'Importer TSV',
 	'ow_importtsv_title2' => 'Importer les définitions et les traductions',
-	'ow_importtsv_header' => "<p>Importer des définitions et des traductions depuis un fichier délimité par des tabulation qui peut être exporté depuis OpenOffice.org, Excel ou un autre logiciel.</p>
+	'ow_importtsv_header' => "<p>Importer des définitions et des traductions depuis un fichier, délimité par des tabulations, qui peut être exporté depuis OpenOffice.org, Excel ou un autre logiciel.</p>
 <p>Le format du fichier doit être le même que les fichiers exportés depuis la page ExportTSV. Si vous avez changé le nom des colonnes, l'import va échouer. Si vous avez modifié l'ID ou l'expression de définition ou un sens définit, la ligne sera ignorée. Si vous avez ajouté des colonnes, elles doivent être dans le format « definitions_iso » ou « translations_iso », où iso est un code de langue ISO-639_3.</p>
 <p>Si la case « Test d'importation » est cochée, les actions seront rapportées, mais aucune modification ne sera effectuée. Vous êtes encouragé{{GENDER:||e|(e)}} à faire un test avant l'import réel.</p>",
 	'ow_importtsv_not_allowed' => "Vous n'avez pas la permission d'effectuer un import TSV.",
@@ -2554,8 +2604,8 @@ où iso est code de langue.</p>',
 Les langues doivent être un code ISO 639-3.</p>',
 	'exporttsv' => 'Wikidata : Exporter en TSV',
 	'ow_exporttsv_title' => 'Exporter une collection en TSV',
-	'ow_exporttsv_header' => '<p>Exporter des définitions et des traductions dans un fichier délimité par des tabulation qui peut être importé dans OpenOffice.org, Excel ou un autre logiciel.<br />
-Sélectionnez une collection à exporter. Dans la boit de texte de langues, entrez une liste de codes de langues ISO 639-3 séparées par des virgules. Commencez par les langues que vous allez utiliser pour les traductions (mettez-en autant que vous voulez) et finissez par celles qui seront traduites. Cliquez sur le bouton « Créer » pour créer le fichier.</p>',
+	'ow_exporttsv_header' => '<p>Exporter des définitions et des traductions dans un fichier, délimité par des tabulations, qui peut être importé dans OpenOffice.org, Excel ou un autre logiciel.<br />
+Sélectionnez une collection à exporter. Dans la boite de texte de langues, entrez une liste de codes de langues ISO 639-3 séparées par des virgules. Commencez par les langues que vous allez utiliser pour les traductions (mettez-en autant que vous voulez) et finissez par celles qui seront traduites. Cliquez sur le bouton « Créer » pour créer le fichier.</p>',
 	'ow_exporttsv_languages' => 'Langues :',
 	'ow_exporttsv_not_allowed' => 'Vous n’avez pas la permission d’effectuer une exportation au format TSV.',
 	'ow_exporttsv_export_failed' => "L'export a échoué",
@@ -2679,13 +2729,15 @@ Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
 	'ow_removed' => 'Supprimé',
 	'ow_meaningsoftitle' => 'Sens de « $1 »',
 	'ow_meaningsofsubtitle' => '<em>lien wiki :</em> [[$1]]',
-	'ow_Permission_denied' => '<h2>PERMISSION REFUSÉE</h2>',
+	'ow_Permission_denied' => '<h2>Permission refusée</h2>',
 	'ow_copy_no_action_specified' => 'Merci de spécifier une action',
 	'ow_copy_help' => "L'aide n'a pas encore été implémentée.",
 	'ow_please_proved_dmid' => 'Il manque un ?dmid=<...> (dmid=SensDéfini ID)<br />Contactez l’administrateur.',
 	'ow_please_proved_dc1' => 'Il manque un ?dc1=<...> (dc1=contexte de la base 1, base DEPUIS laquelle on copie)<br />Contactez l’administrateur.',
 	'ow_please_proved_dc2' => 'Il manque un ?dc2=<...> (dc1=contexte de la base 2, base VERS laquelle on copie)<br />Contactez l’administrateur.',
-	'ow_copy_successful' => "<h2>Succès de la copie</h2>Vos données ont été copiées avec succès. Veuillez vérifiez que c'est bien le cas.",
+	'ow_copy_successful' => "<h2>Succès de la copie</h2>
+Vos données ont été copiées avec succès.
+Veuillez vérifier que c'est bien le cas !",
 	'ow_copy_unsuccessful' => "<h3>Copie infructueuse</h3> Aucune opération de copie n'a pris place.",
 	'ow_no_action_specified' => "<h3>Aucune action n'a été spécifiée</h3>
 Peut-être êtes-vous venu{{GENDER:||e|(e)}} sur cette page directement ? Vous n'avez pas, en principe, à être ici.",
@@ -2709,6 +2761,8 @@ Peut-être êtes-vous venu{{GENDER:||e|(e)}} sur cette page directement ? Vous n
 	'ow_suggest_previous' => 'Précédent',
 	'ow_suggest_next' => 'Suivant',
 	'ow_suggest_clear' => 'Effacer',
+	'ow_nstab_definedmeaning' => 'signification définie',
+	'ow_nstab_edit_copy' => 'modifier la copie',
 );
 
 /** Western Frisian (Frysk)
@@ -3207,6 +3261,8 @@ Bitte kontaktier dr Serveradminschtrator.',
 	'ow_suggest_previous' => 'Vorigi',
 	'ow_suggest_next' => 'Negschti',
 	'ow_suggest_clear' => 'Lääre',
+	'ow_nstab_definedmeaning' => 'Definierti Bedytig',
+	'ow_nstab_edit_copy' => 'Kopii bearbeite',
 );
 
 /** Manx (Gaelg)
@@ -3625,6 +3681,8 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 	'ow_suggest_previous' => 'Předchadny',
 	'ow_suggest_next' => 'Přichodny',
 	'ow_suggest_clear' => 'Wuprózdnić',
+	'ow_nstab_definedmeaning' => 'definowany woznam',
+	'ow_nstab_edit_copy' => 'kopiju wobdźěłać',
 );
 
 /** Hungarian (Magyar)
@@ -4110,6 +4168,7 @@ $wdMessages['ja'] = array(
 	'ow_suggest_previous' => '前',
 	'ow_suggest_next' => '次',
 	'ow_suggest_clear' => '消去',
+	'ow_nstab_definedmeaning' => '意味定義',
 );
 
 /** Javanese (Basa Jawa)
@@ -4649,6 +4708,10 @@ $wdMessages['lb'] = array(
 	'importlangnames_added' => 'Sproochenimm fir "$1" derbäigesat',
 	'importlangnames_not_found' => '<strong>Kee Sproochcode fir "$1" fonnt!</strong>',
 	'datasearch' => 'Wikidata: Date sichen',
+	'datasearch_language' => 'Sprooch:',
+	'datasearch_found_word' => 'Wuert fonnt',
+	'datasearch_meaning' => 'Bedeitung',
+	'datasearch_search_text' => 'Sichtext:',
 	'importtsv' => 'Wikidata: TSV importéieren',
 	'ow_importtsv_title1' => 'TSV importéieren',
 	'ow_importtsv_title2' => 'Definitiounen an Iwwersetzungen importéieren',
@@ -4658,6 +4721,8 @@ $wdMessages['lb'] = array(
 	'ow_importtsv_file' => 'TSV Fichier:',
 	'ow_importtsv_test_run' => 'Testlaf:',
 	'ow_importtsv_nothing_added' => 'Näischt derbäigesat.',
+	'ow_importtsv_nothing_added_test' => 'Näischt derbäigesat (Dir hutt en Test gemaach)',
+	'ow_importtsv_results' => '$1 {{PLURAL:$1|Definitioun|Definitiounen}} a(n) $2 {{PLURAL:$2|Iwwersetzung|Iwwersetzungen}} derbäigesat.',
 	'exporttsv' => 'Wikidata: TSV exportéieren',
 	'ow_exporttsv_title' => 'Eng Sammlung op TSV exportéieren',
 	'ow_exporttsv_languages' => 'Sproochen:',
@@ -4671,6 +4736,8 @@ $wdMessages['lb'] = array(
 	'ow_uipref_datasets' => 'Standard Astellung:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Näischt ausgewielt',
+	'transaction' => 'Wikidata: Logbuch vun den Transaktiounen',
+	'ow_transaction_from_transaction' => 'Vun Transaktioun:',
 	'ow_transaction_user' => 'Bentzernumm:',
 	'ow_transaction_no_action' => 'Näischt maachen',
 	'ow_transaction_previous_version' => 'Vireg Versioun',
@@ -4679,6 +4746,7 @@ $wdMessages['lb'] = array(
 	'ow_transaction_operation' => 'Operatioun',
 	'ow_transaction_is_latest' => 'ass dat lescht',
 	'ow_transaction_object' => 'Objet',
+	'ow_transaction_summary' => 'Resumé',
 	'ow_conceptmapping_no_action_specified' => 'D\'Aktioun "$1" gëtt net ënnerstetzt.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'net aginn',
@@ -4710,6 +4778,7 @@ $wdMessages['lb'] = array(
 	'ow_GotoSource' => "Zréck op d'Quell",
 	'ow_Language' => 'Sprooch',
 	'ow_LevelAnnotation' => 'Notiz',
+	'ow_NewExactMeaning' => 'Nei genee Bedeitung',
 	'ow_OptionAttribute' => 'Eegeschaft',
 	'ow_OptionAttributeOption' => 'Optioun',
 	'ow_OptionAttributeOptions' => 'Optiounen',
@@ -4728,6 +4797,7 @@ $wdMessages['lb'] = array(
 	'ow_Text' => 'Text',
 	'ow_TextAttribute' => 'Eegeschaft',
 	'ow_TextAttributeValues' => 'Fräi Texter',
+	'ow_Time' => 'Zäit',
 	'ow_TranslatedTextAttribute' => 'Eegeschaft',
 	'ow_TranslatedText' => 'Iwwersatenen Text',
 	'ow_TranslatedTextAttributeValue' => 'Text',
@@ -4736,19 +4806,25 @@ $wdMessages['lb'] = array(
 	'ow_Link' => 'Link',
 	'ow_LinkAttribute' => 'Eegeschaft',
 	'ow_LinkAttributeValues' => 'Linken',
+	'ow_User' => 'Benotzer',
 	'ow_Property' => 'Eegeschaft',
 	'ow_Value' => 'Wert',
+	'ow_added' => 'Derbäigesat',
+	'ow_removed' => 'Ewechgeholl',
 	'ow_meaningsoftitle' => 'Bedeitung vun "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wiki-Link:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>ERLAABNIS REFUSÉIERT</h2>',
 	'ow_copy_no_action_specified' => 'Gitt w.e.g. eng Aktioun un',
 	'ow_copy_help' => "D'Hellëf gouf nach net implementéiert.",
+	'ow_history_transaction' => 'Transaktioun:',
 	'ow_class_attr_type_xlate' => 'Text den iwwersat gëtt',
 	'ow_class_attr_type_link' => 'Link',
 	'ow_class_attr_type_option' => 'Lëscht vun den Optiounen',
+	'needstranslation' => 'Wikidata: Ausdréck déi iwwersat musse ginn',
 	'ow_needs_xlation_title' => 'Ausdréck déi iwwersat musse ginn',
 	'ow_needs_xlation_source_lang' => 'Quellsprooch:',
 	'ow_needs_xlation_dest_lang' => 'Zilsprooch:',
+	'ow_needs_xlation_no_dest_lang' => 'Gitt w.e.g. eng Zilsprooch un.',
 	'ow_show' => 'Weisen',
 	'ow_upload' => 'Eroplueden',
 	'ow_create' => 'Uleeën',
@@ -4756,6 +4832,7 @@ $wdMessages['lb'] = array(
 	'ow_suggest_previous' => 'Vireg',
 	'ow_suggest_next' => 'Nächst',
 	'ow_suggest_clear' => 'Eidel maachen',
+	'ow_nstab_edit_copy' => 'Kopie änneren',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
@@ -5343,6 +5420,8 @@ Vergeet niet om dit te controleren!',
 	'ow_suggest_previous' => 'Vorige',
 	'ow_suggest_next' => 'Volgende',
 	'ow_suggest_clear' => 'Opschonen',
+	'ow_nstab_definedmeaning' => 'gedefinieerde betekenis',
+	'ow_nstab_edit_copy' => 'kopie bewerken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -5867,6 +5946,17 @@ $wdMessages['pl'] = array(
 	'importlangnames_added' => 'Nazwy języków dla „$1” zostały dodane.',
 	'importlangnames_not_found' => '<strong>Nie odnaleziono języka „$1”!</strong>',
 	'datasearch' => 'Wikidata: Wyszukiwanie danych',
+	'datasearch_language' => 'Język',
+	'datasearch_found_word' => 'Odnalezione słowo',
+	'datasearch_meaning' => 'Znaczenie',
+	'datasearch_ext_identifier' => 'Zewnętrzny identyfikator',
+	'datasearch_search_text' => 'Szukany tekst',
+	'datasearch_within_words' => 'W ciągu słów:',
+	'datasearch_within_ext_ids' => 'W zewnętrznych identyfikatorach:',
+	'datasearch_showing_only' => 'Wyświetlono nie więcej niż $1 {{PLURAL:$1|trafienie|trafienia|trafień}}.',
+	'datasearch_match_ext_ids' => 'Zewnętrzne identyfikatory pasujące do <i>$1</i>',
+	'datasearch_match_words' => 'Słowa pasujące do <i>$1</i> i związane z nimi znaczenia',
+	'datasearch_match_words_lang' => 'Słowa w <i>$1</i> pasujące do <i>$2</i> i związane z nimi znaczenia',
 	'importtsv' => 'Wikidata: Importowanie TSV',
 	'ow_importtsv_title1' => 'Importowanie TSV',
 	'ow_importtsv_title2' => 'Importowanie definicji i tłumaczeń',
@@ -5923,6 +6013,7 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
 	'ow_transaction_object' => 'Obiekt',
 	'ow_transaction_first_dm' => 'Pierwsze zdefiniowane znaczenie',
 	'ow_transaction_second_dm' => 'Drugie zdefiniowane znaczenie',
+	'ow_transaction_summary' => 'Podsumowanie',
 	'conceptmapping' => 'Wikidata: Mapowanie pojęć',
 	'ow_conceptmapping_title' => 'Mapowanie pojęć',
 	'ow_conceptmapping_help' => '<p>możliwe działania: <ul>
@@ -6025,6 +6116,8 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
 	'ow_copy_unsuccessful' => '<h3>Kopiowanie nie powiodło się</h3>Nie przeprowadzono operacji kopiowania.',
 	'ow_no_action_specified' => '<h3>Nie podano działania</h3>Może przeszedłeś do tej strony bezpośrednio? Zazwyczaj użytkownicy nie muszą tu zaglądać.',
 	'ow_db_consistency_not_found' => '<h2>Błąd</h2>Wystąpił błąd spójności bazy danych. Dane wiki nie są w stanie odnaleźć odpowiednich danych skojarzonych z określonym identyfikatorem. Dane mogły zostać utracone. Skontaktuj sie z operatorem serwera, lub jego administratorem.',
+	'ow_history_transaction' => 'Transakcja:',
+	'ow_history_show_life_span' => 'Pokaż żywotność rekordu',
 	'ow_class_attr_type_dm' => 'Zdefiniowane znaczenie',
 	'ow_class_attr_type_xlate' => 'Przetłumaczalny tekst',
 	'ow_class_attr_type_plain' => 'Zwyczajny tekst',
@@ -6352,6 +6445,8 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
 	'ow_suggest_previous' => 'Anterior',
 	'ow_suggest_next' => 'Posterior',
 	'ow_suggest_clear' => 'Limpar',
+	'ow_nstab_definedmeaning' => 'significado definido',
+	'ow_nstab_edit_copy' => 'editar cópia',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -6693,6 +6788,17 @@ $wdMessages['sk'] = array(
 	'importlangnames_added' => 'Názvy jazykov pre „$1“ boli pridané.',
 	'importlangnames_not_found' => '<strong>Pre „$1“ nebol nájdený záznam jazyka.</strong>',
 	'datasearch' => 'Wikidata: Hľadanie údajov',
+	'datasearch_language' => 'Jazyk:',
+	'datasearch_found_word' => 'Našlo sa slovo',
+	'datasearch_meaning' => 'Význam',
+	'datasearch_ext_identifier' => 'Externý identifikátor',
+	'datasearch_search_text' => 'Hľadať text:',
+	'datasearch_within_words' => 'V rámci slov:',
+	'datasearch_within_ext_ids' => 'V rámci externých identifikátorov:',
+	'datasearch_showing_only' => 'Zobrazuje sa iba $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}} (maximálny počet).',
+	'datasearch_match_ext_ids' => 'Externé identifikátory vyhovujúce <i>$1</i>',
+	'datasearch_match_words' => 'Slová vyhovujúce <i>$1</i> a príslušné významy',
+	'datasearch_match_words_lang' => 'Slová v <i>$1</i> vyhovujúce <i>$2</i> a príslušné významy',
 	'importtsv' => 'Wikidata: Importovať TSV',
 	'ow_importtsv_title1' => 'Importovať TSV',
 	'ow_importtsv_title2' => 'Importovať definície a preklady',
@@ -7974,6 +8080,7 @@ $wdMessages['vi'] = array(
  */
 $wdMessages['vo'] = array(
 	'datasearch' => 'Wikidata: Nünodisuk',
+	'datasearch_language' => 'Pük:',
 	'ow_save' => 'Dakipolöd',
 	'ow_history' => 'Jenotem',
 	'ow_noedit_title' => 'Däl nonik ad redakön',
@@ -8006,8 +8113,8 @@ $wdMessages['vo'] = array(
 	'ow_PopupAnnotation' => 'Penet',
 	'ow_Spelling' => 'Tonatam',
 	'ow_Source' => 'Fonät',
-	'ow_TextAttribute' => 'Patöf',
 	'ow_Text' => 'Vödem',
+	'ow_TextAttribute' => 'Patöf',
 	'ow_TranslatedTextAttribute' => 'Patöf',
 	'ow_TranslatedText' => 'Vödem petradutöl',
 	'ow_TranslatedTextAttributeValue' => 'Vödem',

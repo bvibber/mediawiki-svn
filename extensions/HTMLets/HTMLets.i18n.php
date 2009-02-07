@@ -172,6 +172,13 @@ $messages['pt'] = array(
 	'htmlets-desc' => 'Permite-lhe incluir "inline" blocos de HTML a partir de ficheiros usando a marca <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'htmlets-desc' => 'Permite-lhe inserir blocos de HTML a partir de arquivos usando a marca <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

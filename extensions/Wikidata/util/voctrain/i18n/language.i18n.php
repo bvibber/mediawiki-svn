@@ -19,6 +19,7 @@ $fallback=array(
 	'bs'  => 'en',
 	'cs'  => 'en',
 	'de'  => 'en',
+	'dsb' => 'en',
 	'el'  => 'en',
 	'eo'  => 'en',
 	'es'  => 'en',
@@ -32,6 +33,7 @@ $fallback=array(
 	'gsw' => 'en',
 	'hak'  => 'en',
 	'he'  => 'en',
+	'hsb' => 'en',
 	'ia'  => 'en',
 	'id'  => 'en',
 	'it'  => 'en',
@@ -156,6 +158,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Aotake
+ * @author Fryed-peach
  * @author Malafaya
  */
 $messages['qqq'] = array(
@@ -222,7 +225,9 @@ i.e.:
 * 25
 * 50
 * 75
-* '''other'''",
+* '''other'''
+
+{{Identical|Other}}",
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -734,6 +739,76 @@ $messages['de'] = array(
 	'voctrain_hide_words_in_question_language' => 'Wörter in der gefragten Sprache verdecken',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Trenne Werte durch Kommas, wenn Du mehrere Sprachen verwenden möchtest',
 	'voctrain_other' => 'andere Anzahl',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'voctrain_Hello_World' => 'HALO WIKI!',
+	'voctrain_Permission_Denied' => 'Dowólnosć zapowěźona',
+	'voctrain_try_again_' => 'hyšći raz wopytaś?',
+	'voctrain_Action_unknown' => 'Akcija njeznata',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Njewěm, což mam se z '%action' cyniś.",
+	'voctrain_User_added' => 'Wužywaŕ pśidany',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Halo, %username, witaj w trenaku rěcow Omega',
+	'voctrain_continue' => 'pókšacowaś',
+	'voctrain_hello_place' => 'Halo, %place',
+	'voctrain_bye' => 'bóžemje',
+	'voctrain_Set_up_your_exercise' => 'Twójo zwucowanje konfigurěrowaś',
+	'voctrain_Number_of_questions' => 'Licba pšašanjow',
+	'voctrain_Languages' => 'Rěcy',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Pšosym pódaj rěcy, kótarež coš zwucowaś',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(na pś. eng za engelšćinu, deu za nimčinu).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'We wótwisnosći twójogo testa, někotare kombinacije by mógli lěpjej funkcioněrowaś ako druge.',
+	'voctrain_Questions' => 'Pšašanja',
+	'voctrain_Answers' => 'Wótegrona',
+	'voctrain_start_exercise' => 'zwucowanje zachopiś',
+	'voctrain_collection' => 'zběrka',
+	'voctrain_ISO_639_3_format' => 'Format ISO 639-3',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => '{{PLURAL:%questions_remaining|Zbywa %questions_remaining pšašanje|Zbywatej %questions_remaining pšašani|Zbywaju %questions_remaining pšašanja|Zbywa %questions_remaining pšašanjow}} z dogromady %questions_total.',
+	'voctrain_Definition' => 'Definicija',
+	'voctrain_Dictionary_definition_to_help_you' => 'Słownikowa definicija, aby śi pomagała',
+	'voctrain_Word' => 'Słowo',
+	'voctrain_Please_type_your_answer_here' => 'Pšosym zapódaj how swójo wótegrono',
+	'voctrain_submit_answer' => 'Wótegrono wótpósłaś',
+	'voctrain_peek' => 'póglědaś',
+	'voctrain_skip' => 'pśeskócyś',
+	'voctrain_I_know_it_do_not_ask_again' => 'Wěm to/njepšašaj se hyšći raz',
+	'voctrain_abort_exercise' => 'zwucowanje pśetergnuś',
+	'voctrain_list_answers' => 'Wótegrona pokazaś',
+	'voctrain_Question' => 'Pšašanje',
+	'voctrain_The_word_to_translate' => 'Słowo, kótarež ma se pśełožiś',
+	'voctrain_Answer' => 'Wótegrono',
+	'voctrain_one_of' => 'jadne z',
+	'voctrain_list_of_questions_and_answers' => 'Lisćina pšašanjow a wótegronow',
+	'voctrain_Answer_s_' => 'Wótegrono (wótegrona)',
+	'voctrain_logout' => 'wótzjawiś se',
+	'voctrain_Powered_by' => 'Spěchowany wót',
+	'voctrain_Exercise_complete' => 'Zwucowanje dokóńcone',
+	'voctrain_Exercise_terminated' => 'Zwucowanje skóńcone',
+	'voctrain_Start_a_new_exercise' => 'Nowe zwucowanje zachopiś',
+	'voctrain_User_name' => 'Wužywarske mě',
+	'voctrain_Password' => 'Gronidło',
+	'voctrain_Login' => 'Pśizjawiś se',
+	'voctrain_Create_new_user' => 'Nowego wužywarja napóraś',
+	'voctrain_Switch_language' => 'Rěc změniś',
+	'voctrain_Language' => 'Rěc',
+	'voctrain_Log_in' => 'Pśizjawiś se',
+	'voctrain_Omegawiki_vocabulary_trainer' => 'Trenak wokablow OmegaWiki',
+	'voctrain_Definitions' => 'Definicije',
+	'voctrain_Could_not_create_new_user' => 'Njejo było móžno nowego wužywarja napóraś',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Zapódaj wužywarske mě a opcionelne gronidło (abo wopytaj druge wužywarske mě)',
+	'voctrain_Vocview' => 'Wobglědowak wokablow',
+	'voctrain_Dictionary_definitions' => 'dictionary_definitions',
+	'voctrain_Translation' => 'Pśełožk',
+	'voctrain_unhide_definition' => 'Definiciju wótekšyś',
+	'voctrain_unhide_words' => 'Słowa wótekšyś',
+	'voctrain_hiding' => 'Chowanje',
+	'voctrain_hide_definitions_in_question_language' => 'Definicije we wótpowědnej rěcy schowaś',
+	'voctrain_hide_words_in_question_language' => 'Słowa we wótpowědnej rěcy schowaś',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Gódnoty pśez komy wótźěliś, aby wužywał někotare rěcy',
+	'voctrain_other' => 'druga licba',
 );
 
 /** Greek (Ελληνικά)
@@ -1320,6 +1395,76 @@ $messages['he'] = array(
 	'voctrain_other' => 'אחר',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'voctrain_Hello_World' => 'HALO WIKI!',
+	'voctrain_Permission_Denied' => 'Dowolnosć zapowědźena',
+	'voctrain_try_again_' => 'hišće raz spytać?',
+	'voctrain_Action_unknown' => 'Akcija njeznata',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Njewěm, štož mam z '%action' činić.",
+	'voctrain_User_added' => 'Wužiwar přidaty',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Halo, %username, witaj k rěčnemu trenowakej Omega',
+	'voctrain_continue' => 'pokročować',
+	'voctrain_hello_place' => 'halo, %place',
+	'voctrain_bye' => 'božemje',
+	'voctrain_Set_up_your_exercise' => 'Zwučowanje nastajić',
+	'voctrain_Number_of_questions' => 'Ličba prašenjow',
+	'voctrain_Languages' => 'Rěče',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Prošu podaj rěče, w kotrychž chceš zwučować',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(na př. eng za jendźelšćinu, deu za němčinu).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'We wotwisnosći wot nastajenjow za zwučowanje móža někotre kombinacije lěpje hač druhe fungować.',
+	'voctrain_Questions' => 'Prašenja',
+	'voctrain_Answers' => 'Wotmołwy',
+	'voctrain_start_exercise' => 'zwučowanje započeć',
+	'voctrain_collection' => 'zběrka',
+	'voctrain_ISO_639_3_format' => 'format ISO-639-3',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => '{{PLURAL:%questions_remaining|Zwostawa %questions_remaining prašenje|Zwostawatej %questions_remaining prašeni|Zwostawaja %questions_remaining prašenja|Zwostawa %questions_remaining prašenjow}} z dohromady  %questions_total.',
+	'voctrain_Definition' => 'Definicija',
+	'voctrain_Dictionary_definition_to_help_you' => 'Słownikowa definicija, zo by ći pomhała',
+	'voctrain_Word' => 'Słowo',
+	'voctrain_Please_type_your_answer_here' => 'Prošu zapodaj tu swoju wotmołwu',
+	'voctrain_submit_answer' => 'Wotmołwu wotpósłać',
+	'voctrain_peek' => 'špikować',
+	'voctrain_skip' => 'přeskočić',
+	'voctrain_I_know_it_do_not_ask_again' => 'Wěm to/hižo so njeprašeć',
+	'voctrain_abort_exercise' => 'zwučowanje přetorhnyć',
+	'voctrain_list_answers' => 'Wotmołwy pokazać',
+	'voctrain_Question' => 'Prašenje',
+	'voctrain_The_word_to_translate' => 'Słowo, kotrež ma so přełožić',
+	'voctrain_Answer' => 'Wotmołwa',
+	'voctrain_one_of' => 'jedne z',
+	'voctrain_list_of_questions_and_answers' => 'Lisćina prašenjow a wotmołwow',
+	'voctrain_Answer_s_' => 'Wotmołwa (wotmołwy)',
+	'voctrain_logout' => 'wotzjewić so',
+	'voctrain_Powered_by' => 'Spěchowany wot',
+	'voctrain_Exercise_complete' => 'Zwučowanje dokónčene',
+	'voctrain_Exercise_terminated' => 'Zwučowanje skónčene',
+	'voctrain_Start_a_new_exercise' => 'Nowe zwučowanje započeć',
+	'voctrain_User_name' => 'Wužiwarske mjeno',
+	'voctrain_Password' => 'Hesło',
+	'voctrain_Login' => 'Přizjewić so',
+	'voctrain_Create_new_user' => 'Noweho wužiwarja wutworić',
+	'voctrain_Switch_language' => 'Rěč změnić',
+	'voctrain_Language' => 'Rěč',
+	'voctrain_Log_in' => 'Přizjewjenje',
+	'voctrain_Omegawiki_vocabulary_trainer' => 'Wokablowy trenowak OmegaWiki',
+	'voctrain_Definitions' => 'Definicije',
+	'voctrain_Could_not_create_new_user' => 'Njeje móžno było noweho wužiwarja wutworić',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Zapodaj wužiwarske mjeno a opcionelne hesło (abo spytaj druhe wužiwarske mjeno)',
+	'voctrain_Vocview' => 'Wobhladowak wokablow',
+	'voctrain_Dictionary_definitions' => 'dictionary_definitions',
+	'voctrain_Translation' => 'Přełožk',
+	'voctrain_unhide_definition' => 'Definiciju wotkryć',
+	'voctrain_unhide_words' => 'Słowa wotkryć',
+	'voctrain_hiding' => 'Schowanje',
+	'voctrain_hide_definitions_in_question_language' => 'Definiciju w rěči prašenjow schować',
+	'voctrain_hide_words_in_question_language' => 'Słowa w rěči prašenjow schować',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Hódnoty přez komy wotdźělić, jeli so wjacore rěče wužiwali',
+	'voctrain_other' => 'druha ličba',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -1421,6 +1566,7 @@ $messages['ja'] = array(
 	'voctrain_Dictionary_definitions' => '辞書定義',
 	'voctrain_Translation' => '翻訳',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => '複数の言語を使うには値をコンマで区切ってください。',
+	'voctrain_other' => 'その他',
 );
 
 /** Georgian (ქართული)
@@ -2122,6 +2268,7 @@ $messages['oc'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Amaga las definicions dins las lengas per las questions',
 	'voctrain_hide_words_in_question_language' => 'Amagar los mots dins las lengas per las questions',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Separar las valors per de virgulas per utilizar mantuna lenga.',
+	'voctrain_other' => 'autre',
 );
 
 /** Ossetic (Иронау)
@@ -2637,6 +2784,7 @@ $messages['sv'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Dölj definitioner i frågespråket',
 	'voctrain_hide_words_in_question_language' => 'Dölj ord i frågespråket',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'För att kunna använda flera språk så sätt ett komma mellan värdena',
+	'voctrain_other' => 'annat',
 );
 
 /** Telugu (తెలుగు)

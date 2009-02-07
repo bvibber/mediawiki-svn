@@ -65,6 +65,13 @@ $messages['es'] = array(
 	'navigationpopups-desc' => "Carga las ventanas emergentes de navegación de ''Lupin'' en MediaWiki",
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'navigationpopups-desc' => 'Lupinen nabigazio script popup-ak kargatzen ditu MediaWikin',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Nike
@@ -203,6 +210,13 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'navigationpopups-desc' => 'Carrega janelas de pop-up dos scripts de navegação de Lupin no MediaWiki',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'navigationpopups-desc' => 'Carrega janelas de pop-up dos scripts de navegação de Lupin no MediaWiki',
 );
 

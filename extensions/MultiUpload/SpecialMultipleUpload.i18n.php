@@ -128,6 +128,14 @@ $messages['bs'] = array(
 	'multipleupload-saveallfiles' => 'Spremi sve datoteke',
 	'multipleupload-addresswarnings' => 'Molimo prije ponovnom postavljanju datoteka obradite i riješite svako upozorenje.',
 	'multipleupload-page' => '{{ns:project}}:Politika brisanja datoteka',
+	'multipleupload-text' => "Ovdje možete postaviti veći broj datoteka odjednom.
+
+Izaberite 'Browse' ('pregledaj') i odaberite sve datoteke koje želite postaviti.
+Možete postaviti od 1 do $1 datoteka odjednom.
+
+Moguće je odrediti '''Naziv odredišne datoteke''' i navesti '''Sažetak''' opisujući Vašu datoteku.
+
+Neodgovarajuće datoteke će biti obrisane odmah, pogledajte [[{{MediaWiki:Multipleupload-page}}|politiku brisanja datoteka]].",
 	'multiupload-fileuploaded' => 'Datoteka postavljena.',
 	'multiupload-toolbox' => 'Postavi više datoteka',
 );

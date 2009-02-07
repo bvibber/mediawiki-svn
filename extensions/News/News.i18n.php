@@ -220,6 +220,13 @@ $messages['pt'] = array(
 	'newsextension-desc' => 'Mostra mudanças recentes personalizadas numa página wiki ou como uma fonte RSS ou Atom',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'newsextension-desc' => 'Mostra mudanças recentes personalizadas numa página wiki ou como uma fonte RSS ou Atom',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

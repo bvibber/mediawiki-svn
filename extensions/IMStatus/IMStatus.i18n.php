@@ -368,6 +368,39 @@ $messages['grc'] = array(
 	'imstatus_or' => 'ἢ',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'imstatus-desc' => 'Fiegt Tag zue go dr Online-Status vu verschidene Instant-Messenger aazeige (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Syntax',
+	'imstatus_default' => 'Standard',
+	'imstatus_example' => 'Byyschpil',
+	'imstatus_possible_val' => 'Megligi Wärt',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'oder',
+	'imstatus_style' => 'Stil vu dr Status-Aazeig',
+	'imstatus_action' => 'Aktion bim Drucke vu dr Schaltflächi',
+	'imstatus_details_saa' => 'Wyteri Detail zue dr Stil un Aktione findsch uf: $1.',
+	'imstatus_your_name' => 'Dyy $1-Name',
+	'imstatus_aim_presence' => '$1 zeigt Dyy Status mit eme Gleich, wu AIM startet (wänn s inschtalliert isch) go Dir e Nochricht schicke.',
+	'imstatus_aim_api' => '$1 zeigt Dyy Status mit eme Gleich, wu ne <b>Browser</b>, JavaScript-Version vu AIM, startet go Dir e Nochricht schicke.',
+	'imstatus_gtalk_code' => 'Dyy Google-Talk-Code',
+	'imstatus_gtalk_get_code' => 'Dyy Google-Talk-Code kriegsch bi $1.',
+	'imstatus_gtalk_height' => 'Hechi vum Chaschte Pixel.',
+	'imstatus_gtalk_width' => 'Breiti vum Chaschte in Pixel.',
+	'imstatus_icq_id' => 'Dyy ICQ-UIN',
+	'imstatus_icq_style' => 'e Zahl zwische 0 un 26 (jo, s git 27 verschideni Stil …).',
+	'imstatus_live_code' => 'Dyy Live Messenger Website-ID',
+	'imstatus_live_get_code' => 'Dyy Live Messenger Website-ID: <strong>Des isch nit Dyy E-Mail-Adräss</strong>.
+Du muesch Di eini in dr <a href="$1">Live Messenger Optione</a> aalege.
+D ID, wu Du bruuchsch, sin d Zahlen un Buechstabe zwische „$2“ un „$3“.',
+	'imstatus_skype_nbstyle' => 'Hiiwyys: wänn Du ne Stil uussuechsch, wu s au ne Aktion din het, wird Dyy Aktionsuuswahl dur d Aktion vum Stil ersetzt.',
+	'imstatus_xfire_size' => 'd Greßi vu dr Schaltflächi, vu $1 (greschti) bis $2 (chleischti).',
+	'imstatus_yahoo_style' => 'dr Stil vu dr Schaltflächi, vu $1 (chleischte) bis $2 (greschte), $3 un $4 sin fir Voicemail.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -235,6 +235,13 @@ $messages['pt'] = array(
 	'i18ntags-desc' => 'Acede às funções de i18n para formatação de números, gramática e plural em qualquer língua disponível',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'i18ntags-desc' => 'Acessa as funções de i18n para formatação de números, gramática e plural em qualquer língua disponível',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

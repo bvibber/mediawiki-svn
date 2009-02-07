@@ -347,6 +347,14 @@ $messages['pt'] = array(
 	'usercontactlink-desc' => 'Fornece a possibilidade de addicionar de forma simples e consistente outros nomes de utilizador, usando a sintaxe ^^^user^^^',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'usercontactlink-baduser' => 'nome de utilizador incorreto',
+	'usercontactlink-desc' => 'Fornece a possibilidade de adicionar de forma simples e consistente outros nomes de utilizador, usando a sintaxe ^^^user^^^',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

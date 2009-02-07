@@ -483,6 +483,18 @@ $messages['lb'] = array(
 	'randomincategory-submit' => 'Lass',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Homo
+ */
+$messages['lt'] = array(
+	'randomincategory' => 'Atsitiktinis kategorijos puslapis',
+	'randomincategory-desc' => '[[Special:Randomincategory|Specialusis puslapis]], skirtas gauti atsitiktinį kategorijos puslapį',
+	'randomincategory-toolbox' => 'Atsitiktinis puslapis',
+	'randomincategory-nocategory' => 'Kategorija $1 neegzistuoja ar yra tuščia',
+	'randomincategory-label' => 'Kategorija:',
+	'randomincategory-submit' => 'Eiti',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

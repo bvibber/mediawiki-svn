@@ -288,6 +288,13 @@ $messages['pt'] = array(
 	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através do wiki.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através do wiki.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

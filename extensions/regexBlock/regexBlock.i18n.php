@@ -1661,29 +1661,46 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'regexblock' => 'Bloqueio de expressões regulares',
 	'regexblock-already-blocked' => '$1 já está bloqueada.',
-	'regexblock-block-log' => "Nome de usuário ou endereço IP '''$1''' foi bloqueado.",
+	'regexblock-block-log' => "Nome de utilizador ou endereço IP '''$1''' foi bloqueado.",
 	'regexblock-block-success' => 'Bloqueio com sucesso',
 	'regexblock-currently-blocked' => 'Endereços actualmente bloqueados:',
-	'regexblock-desc' => 'Extensão usada para bloquear nomes de usuário ou endereços IP através de expressões regulares. Contém o mecanismo e uma [[Special:Regexblock|página especial]] para adicionar/gerir os bloqueios',
+	'regexblock-desc' => 'Extensão usada para bloquear nomes de utilizador ou endereços IP através de expressões regulares. Contém o mecanismo e uma [[Special:Regexblock|página especial]] para adicionar/gerir os bloqueios',
 	'regexblock-expire-duration' => '1 hora,2 horas,4 horas,6 horas,1 dia,3 dias,1 semana,2 semanas,1 mês,3 meses,6 meses,1 ano,infinito',
+	'regexblock-page-title' => 'Bloqueio de nomes de expressões regulares',
+	'regexblockstats' => 'Estatísticas de bloqueio de expressões regulares',
+	'regexblock-help' => 'Use o formulário abaixo para bloquear o acesso de escrita a um endereço IP ou nome de utilizador específicos.
+Isto deverá ser feito apenas para prevenir vandalismo, e de acordo com as políticas.
+\'\'Esta página permitir-lhe-á bloquear até mesmo utilizadores não existentes, e também bloqueará utilizadores com nomes semelhantes ao dado, p. ex. "Teste" será bloqueado juntamente com "Teste 2", etc.
+Você pode também bloquear endereços IP completos, significando isto que ninguém deles proveniente poderá editar páginas.
+Nota: endereços IP parciais serão tratados como nomes de utilizadores na determinação do bloqueio.
+Se nenhum motivo for especificado, um motivo genérico por defeito será usado.\'\'',
 	'regexblock-page-title-1' => 'Bloquear endereço utilizando expressões regulares',
-	'regexblock-reason-name' => 'Este nome de usuário está impedido de editar devido a vandalismo ou outro tipo de disrupção. Se julgar tratar-se de um erro, por favor $1',
+	'regexblock-reason-ip' => 'Este endereço IP está impedido de editar devido a vandalismo ou outra perturbação por si ou outra pessoa que partilha o seu endereço IP.
+Se crê que se trata de um erro, por favor, $1',
+	'regexblock-reason-name' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outro tipo de disrupção. Se julgar tratar-se de um erro, por favor $1',
+	'regexblock-reason-regex' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outra perturbação por um utilizador com um nome semelhante.
+Por favor, crie um nome de utilizador alternativo ou $1 sobre o problema',
 	'regexblock-form-username' => 'Endereço IP ou nome de utilizador:',
 	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-expiry' => 'Validade:',
 	'regexblock-form-match' => 'Correspondência exata',
 	'regexblock-form-account-block' => 'Bloquear criação de novas contas',
 	'regexblock-form-submit' => 'Bloquear este Utilizador',
-	'regexblock-form-submit-empty' => 'Forneça um nome de usuário ou um endereço IP para bloquear.',
+	'regexblock-form-submit-empty' => 'Forneça um nome de utilizador ou um endereço IP para bloquear.',
 	'regexblock-form-submit-regex' => 'Expressão regular inválida.',
 	'regexblock-form-submit-expiry' => 'Por favor, seleccione um período de expiração.',
+	'regexblock-match-stats-record' => "$1 bloqueou '$2' em '$3' em '$4', proveniente do endereço '$5'",
 	'regexblock-nodata-found' => 'Nenhuns dados encontrados',
+	'regexblock-stats-title' => 'Estatísticas de bloqueio de expressões regulares',
 	'regexblock-unblock-success' => 'Desbloqueio bem sucedido',
 	'regexblock-unblock-log' => "O nome de utilizador ou endereço IP '''$1''' foi desbloqueado.",
-	'regexblock-unblock-error' => 'Erro ao desbloquear $1. Provavelmente não existe esse usuário.',
+	'regexblock-unblock-error' => 'Erro ao desbloquear $1. Provavelmente não existe esse utilizador.',
+	'regexblock-regex-filter' => '  ou valor de regex:',
 	'regexblock-view-blocked' => 'Ver bloqueios por:',
 	'regexblock-view-all' => 'Todos',
 	'regexblock-view-go' => 'Ir',
@@ -1700,6 +1717,7 @@ $messages['pt'] = array(
 	'regexblock-view-stats' => 'estatísticas',
 	'regexblock-view-empty' => 'Esta lista de nomes e endereços bloqueados está vazia.',
 	'regexblock-view-time' => 'em $1',
+	'right-regexblock' => 'Bloquear a edição a utilizadores em todos os wikis da farm de wikis',
 );
 
 /** Tarifit (Tarifit)

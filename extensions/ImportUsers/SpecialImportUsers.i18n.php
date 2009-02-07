@@ -251,6 +251,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author MF-Warburg
  */
 $messages['de'] = array(
@@ -274,8 +275,7 @@ $messages['de'] = array(
 	'importusers-password' => 'Passwort',
 	'importusers-email' => 'E-Mail',
 	'importusers-realname' => 'Echter Name',
-	'right-import_users' => 'Benutzerdaten im großen Umfang importieren',
-	'action-import_users' => 'Benutzerdaten im großen Umfang zu importieren',
+	'right-import_users' => 'Benutzerdaten in großem Umfang importieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -476,6 +476,33 @@ $messages['grc'] = array(
 	'importusers-password' => 'σύνθημα',
 	'importusers-email' => 'ἠλ-ταχυδρομεῖον',
 	'importusers-realname' => 'ἀληθὲς ὄνομα',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'importusers' => 'Benutzer importiere',
+	'importusers-desc' => '[[Special:ImportUsers|Importiert Benutzer]] us ere CSV-Datei; Codierig: UTF-8',
+	'importusers-uploadfile' => 'Datei uffelade',
+	'importusers-form-caption' => 'CSV-Datei (UTF-8)',
+	'importusers-form-file' => 'Benutzerdateiformat (csv):',
+	'importusers-form-replace-present' => 'Benutzer, wu s git, ersetze',
+	'importusers-form-button' => 'Importiere',
+	'importusers-user-added' => 'Dr Benutzer <b>%s</b> isch importiert wore.',
+	'importusers-user-present-update' => 'E Benutzer <b>%s</b> git s scho. Aktualisiert.',
+	'importusers-user-present-not-update' => 'E Benutzer <b>%s</b> git s scho. Nit aktualisiert.',
+	'importusers-user-invalid-format' => 'D Benutzerdate in dr Zyyle #%s hän e nit giltig Format oder sin läär. Ibergumpe.',
+	'importusers-log' => 'Benutzerimport-Logbuech',
+	'importusers-log-summary' => 'Zämmefassig',
+	'importusers-log-summary-all' => 'Alli',
+	'importusers-log-summary-added' => 'Zuegfiegt',
+	'importusers-log-summary-updated' => 'Aktualisiert',
+	'importusers-login-name' => 'Benutzername',
+	'importusers-password' => 'Passwort',
+	'importusers-email' => 'E-Mail',
+	'importusers-realname' => 'Ächte Name',
+	'right-import_users' => 'Benutzerdate im große Umfang importiere',
 );
 
 /** Manx (Gaelg)

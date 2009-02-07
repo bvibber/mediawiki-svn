@@ -228,6 +228,13 @@ $messages['pt'] = array(
 	'csshooks-desc' => 'Adiciona CSS ao resultado HTML das páginas para uma melhor estilização',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'csshooks-desc' => 'Adiciona CSS ao resultado HTML das páginas para uma melhor estilização',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

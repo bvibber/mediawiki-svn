@@ -99,6 +99,14 @@ $messages['eo'] = array(
 	'purgecache-button' => 'Ĝisdatigu',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'purgecache' => 'Purgar caché',
+	'purgecache-button' => 'Purgar',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

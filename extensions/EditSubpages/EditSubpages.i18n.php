@@ -409,6 +409,22 @@ $messages['pt'] = array(
   #</pre><!-- deixe esta linha como está -->",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'editsubpages-desc' => 'Permite a administradores desbloquearem uma página e todas as suas subpáginas para edição anônima através de [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => " #<!-- deixe esta linha como está --><pre>
+# Coloque páginas que pretende desbloquear abaixo, usando
+# * Nome da página
+# Páginas desbloqueadas devem começar com um 'asterisco' (*) para serem consideradas,
+# tudo o resto é considerado um comentário
+# Os nomes de páginas podem ser [[ligações]] e são sensíveis à capitalização
+# As páginas de discussão serão também automaticamente desbloqueadas com a página
+# Veja http://www.mediawiki.org/wiki/Extension:EditSubpages para mais informação
+   #</pre><!-- deixe esta linha como está -->",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

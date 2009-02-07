@@ -178,6 +178,13 @@ $messages['eo'] = array(
 	'postcomment_nopostingtoadd' => 'Neniu afiŝaĵo aldonebla.',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'postcomment_invalidrequest' => 'Solicitud inválida.',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -590,6 +597,7 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Maire
+ * @author ToSter
  */
 $messages['pl'] = array(
 	'postcomment_discussionprotected' => 'Ta strona dyskusji została zabezpieczona. Nie można już dodawać wpisów.',

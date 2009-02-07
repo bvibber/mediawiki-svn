@@ -238,12 +238,17 @@ La operaciistoj de la retejo ne estas respondeca pri la enhavo de tiaj komentoj.
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Lin linao
  */
 $messages['es'] = array(
+	'talkhere-desc' => 'Poner la página de discusión dentro de la página',
 	'talkhere-talkpage' => 'página de discusión',
+	'talkhere-notalk' => "''(aún sin comentarios)''",
 	'talkhere-addcomment' => 'agregar comentario',
+	'talkhere-beforeinput' => 'Usted puede agregar un comentario debajo',
+	'talkhere-loading' => 'Cargando editor...',
 	'talkhere-collapse' => 'ocultar editor',
 );
 

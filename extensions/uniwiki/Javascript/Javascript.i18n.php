@@ -25,7 +25,7 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'javascript-desc' => 'يضيف uniwiki.js لكل صفحة تحتوي شيفرة جافاسكربت مشاركة بين امتدادات يونيويكي.',
+	'javascript-desc' => 'يضيف uniwiki.js لكل صفحة تحتوي كود جافاسكربت مشاركة بين امتدادات يونيويكي.',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -217,6 +217,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'javascript-desc' => 'Adiciona uniwiki.js a cada página que contém código JavaScript partilhado entre extensões Uniwiki',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'javascript-desc' => 'Adiciona uniwiki.js a cada página que contém código JavaScript compartilhado entre extensões Uniwiki',
 );
 
 /** Tarandíne (Tarandíne)

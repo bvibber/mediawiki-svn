@@ -149,6 +149,13 @@ $messages['pt'] = array(
 	'redirect-desc' => 'Permite a fácil configuração de redireccionamentos na [[MediaWiki:Redirect-addnewaccount|criação de contas]] e [[MediaWiki:Redirect-userlogoutcomplete|desautenticação]]',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'redirect-desc' => 'Permite a fácil configuração de redirecionamentos na [[MediaWiki:Redirect-addnewaccount|criação de contas]] e [[MediaWiki:Redirect-userlogoutcomplete|desautenticação]]',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

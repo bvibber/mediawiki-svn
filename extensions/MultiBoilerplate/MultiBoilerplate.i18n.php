@@ -305,6 +305,15 @@ $messages['pt'] = array(
 	'multiboilerplate-submit' => 'Carregar',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'multiboilerplate-desc' => 'Permite que um texto-modelo seja selecionado de uma lista suspensa localizada acima do formulário de edição, quando se edita páginas',
+	'multiboilerplate-legend' => 'Selecione o texto-modelo',
+	'multiboilerplate-submit' => 'Carregar',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

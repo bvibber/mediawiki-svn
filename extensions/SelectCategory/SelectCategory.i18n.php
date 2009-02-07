@@ -105,6 +105,13 @@ $messages['eo'] = array(
 	'selectcategory-desc' => 'Permesas al la uzanto selekti de ekzistantaj kategorioj kiam redaktante paĝojn',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'selectcategory-title' => 'Seleccionar categorías',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
@@ -344,6 +351,15 @@ $messages['pt'] = array(
 	'selectcategory-title' => 'Seleccionar categorias',
 	'selectcategory-desc' => 'Permitir ao utilizador seleccionar a partir das categorias existentes quando editar uma página',
 	'selectcategory-subtitle' => 'Shift-clique para seleccionar múltiplas entradas contíguas, Ctrl-clique para seleccionar entradas não-contíguas.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'selectcategory-title' => 'Selecionar categorias',
+	'selectcategory-desc' => 'Permitir ao utilizador selecionar a partir das categorias existentes quando editar uma página',
+	'selectcategory-subtitle' => 'Shift-clique para selecionar múltiplas entradas contíguas, Ctrl-clique para selecionar entradas não-contíguas.',
 );
 
 /** Russian (Русский)

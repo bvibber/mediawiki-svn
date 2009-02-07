@@ -183,6 +183,13 @@ $messages['pt'] = array(
 	'preloader-desc' => 'Fornece textos-modelo para novas páginas, persnonalizáveis por domínio',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'preloader-desc' => 'Fornece textos-modelo para novas páginas, personalizáveis por domínio',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

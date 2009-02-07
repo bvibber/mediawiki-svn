@@ -153,6 +153,15 @@ $messages['grc'] = array(
 	'icon-desc' => 'Ἐπιτρέπει σοι χρῆσθαι εἰκόνας ὡς εἴδωλα καὶ ὡς σύνδεσμους εἰς εἴδωλα',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'icon-badimage' => 'Kaputt Bild',
+	'icon-badwidth' => 'Falschi Breiti',
+	'icon-desc' => 'Macht s megli Bilder as Icon un Icon-Gleicher z bruuche',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -371,6 +380,15 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'icon-badimage' => 'Imagem Inválida',
+	'icon-badwidth' => 'Largura Inválida',
+	'icon-desc' => 'Permite-lhe usar imagens como ícones e ligações de ícones',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'icon-badimage' => 'Imagem Inválida',
 	'icon-badwidth' => 'Largura Inválida',
 	'icon-desc' => 'Permite-lhe usar imagens como ícones e ligações de ícones',

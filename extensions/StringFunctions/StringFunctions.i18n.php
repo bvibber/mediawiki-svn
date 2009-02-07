@@ -241,6 +241,13 @@ $messages['pt'] = array(
 	'stringfunctions-desc' => 'Acrescenta funções de strings ao analisador (parser)',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'stringfunctions-desc' => 'Acrescenta funções de strings ao analisador (parser)',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

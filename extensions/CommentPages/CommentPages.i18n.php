@@ -149,6 +149,14 @@ $messages['grc'] = array(
 	'nstab-comments' => 'Σχολιασμός',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'commentpages-desc' => 'Syten im Haupt-Namensruum kommentiere',
+	'nstab-comments' => 'Kommentar',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -325,6 +333,14 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'commentpages-desc' => 'Páginas de comentários para o espaço nominal principal',
+	'nstab-comments' => 'Comentário',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'commentpages-desc' => 'Páginas de comentários para o espaço nominal principal',
 	'nstab-comments' => 'Comentário',
 );

@@ -458,6 +458,17 @@ Este email foi enviado pelo sistema de email de {{SITENAME}} por $1.
 $2',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'email-desc' => 'Permite que sejam adicionados cabeçalhos/rodapés personalizados aos emails dos utilizadores.',
+	'email_footer' => '----------------------------------------------------------------------------
+Este email foi enviado pelo sistema de email de {{SITENAME}} por $1.
+
+$2',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

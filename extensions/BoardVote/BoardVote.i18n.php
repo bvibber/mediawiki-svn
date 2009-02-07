@@ -5214,6 +5214,7 @@ It is presumed that you prefer all ranked candidates to all not ranked candidate
  * @author 555
  * @author Brunoy Anastasiya Seryozhenko
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'boardvote' => 'Eleições para o Board of Trustees da Wikimedia Foundation',
@@ -5222,10 +5223,10 @@ $messages['pt'] = array(
 * [[Special:BoardVote/list|Listar votos por data]]
 * [[Special:BoardVote/dump|Dados encriptados da eleição]]',
 	'boardvote_intro' => '<p>Bem-vindo às eleições de 2008 para o Comitê da Wikimedia Foundation.
-Estaremos votando em uma pessoa que irá representar a comunidade de usuários nos vários projetos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a ser seguida pelos projetos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comitê.
+Estaremos votando em uma pessoa que irá representar a comunidade de utilizadores nos vários projetos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a ser seguida pelos projetos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comitê.
 Irão, também, tomar as decisões relativas a formas de obtenção e alocação de fundos.</p>
 
-<p>Por favor, leia cuidadosamente as declarações dos candidatos e suas respostas a perguntas antes de votar. Cada um dos candidatos é um usuário respeitado, tendo contribuído com tempo e dedicação para tornar estes projetos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
+<p>Por favor, leia cuidadosamente as declarações dos candidatos e suas respostas a perguntas antes de votar. Cada um dos candidatos é um utilizador respeitado, tendo contribuído com tempo e dedicação para tornar estes projetos um ambiente acolhedor empenhado na procura e livre distribuição do conhecimento humano.</p>
 
 <p>Pontue os candidatos de acordo com a sua preferência inserindo um número junto ao box fornecido (1 = candidato favorito, 2 = segunda preferência de candidato, ...).
 Você poderá demonstrar o mesmo nível de preferência para mais de um candidato, bem como manter candidatos sem pontuação alguma.

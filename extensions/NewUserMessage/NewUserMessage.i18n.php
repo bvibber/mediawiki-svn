@@ -100,6 +100,14 @@ $messages['cs'] = array(
 	'newuseredit-summary' => 'Přidání [[{{int:newusermessage-template}}|uvítací zprávy]] na diskusní stránku nového uživatele',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'newusermessage-desc' => 'Yn ychwanegu neges at dudalen sgwrs cyfrif defnyddiwr newydd sbon',
+	'newuseredit-summary' => 'Yn ychwanegu [[{{int:newusermessage-template}}|neges o groeso]] at dudalen sgwrs defnyddiwr newydd sbon',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -305,10 +313,12 @@ $messages['lb'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Homo
  * @author Hugo.arg
  */
 $messages['lt'] = array(
 	'newusermessage-desc' => 'Prideda pranešimą į naujai sukurtų naudotojų aptarimų puslapius.',
+	'newuseredit-summary' => 'Prideda [[{{int:newusermessage-template}}|pasveikinimo pranešimą]] į naujo naudotojo aptarimo puslapį',
 );
 
 /** Malayalam (മലയാളം)

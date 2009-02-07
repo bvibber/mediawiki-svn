@@ -295,6 +295,14 @@ $messages['pt'] = array(
 	'purge-desc' => 'Adiciona uma pestana para purgar em todas as páginas normais, e ultrapassa a verificação de purga para utilizadores anónimos, permitindo um purga rápida da cache',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'purge' => 'purgar',
+	'purge-desc' => 'Adiciona uma aba para purgar em todas as páginas normais, e ultrapassa a verificação de purga para utilizadores anônimos, permitindo um purga rápida da cache',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

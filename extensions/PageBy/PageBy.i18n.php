@@ -121,6 +121,15 @@ $messages['eo'] = array(
 	'pageby-anon' => '<i>anonima</i>',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'pageby-first' => 'Página creada por $1, $2',
+	'pageby-contributors' => 'Contribuyentes:',
+	'pageby-anon' => '<i>anónimo</i>',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

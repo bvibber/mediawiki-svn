@@ -71,6 +71,13 @@ $messages['es'] = array(
 	'jskit-desc' => 'Integra herramientas js-kit en una página wiki',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'jskit-desc' => 'js-kit tresnak sartzen ditu wiki orrian',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -175,6 +182,13 @@ $messages['pl'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'jskit-desc' => 'Integra as ferramentas js-kit numa página wiki',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'jskit-desc' => 'Integra as ferramentas js-kit numa página wiki',
 );
 

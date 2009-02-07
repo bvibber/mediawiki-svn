@@ -88,6 +88,17 @@ $messages['bg'] = array(
 В $3 беше регистрирана нова потребителска сметка, $2, на $4.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'newusernotifsubj' => 'Hysbysiad am ddefnyddiwr newydd ar $1',
+	'newusernotif-desc' => 'Yn anfon e-bost yn hysbysu bod cyfrif defnyddiwr newydd wedi ei sefydlu',
+	'newusernotifbody' => "Cyfarchion $1,
+
+Mae cyfrif newydd o'r enw $2 wedi cael ei sefydlu ar $3 am $4.",
+);
+
 /** German (Deutsch)
  * @author Purodha
  * @author Raimond Spekking
@@ -424,9 +435,14 @@ Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Carla404
+ * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
 	'newusernotifsubj' => 'Notificação de novo usuário para $1',
+	'newusernotif-desc' => 'Envia uma notificação por e-mail quando uma conta de utilizador é criada',
+	'newusernotifbody' => 'Olá, $1,
+
+Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
 );
 
 /** Russian (Русский)

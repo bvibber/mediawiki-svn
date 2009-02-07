@@ -149,6 +149,15 @@ $messages['cu'] = array(
 	'languageselector' => 'ѩꙁꙑ́къ',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'languageselector' => 'Iaith',
+	'languageselector-desc' => 'Yn gosod botwm dewis iaith ar bob tudalen, sydd ar gael i ymwelwyr hefyd',
+	'languageselector-setlang' => 'gosod',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -157,11 +166,12 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'languageselector' => 'Sprache',
-	'languageselector-desc' => 'Sprachenauswahl auf jeder Seiten, auch für Besucher',
+	'languageselector-desc' => 'Sprachenauswahl auf jeder Seite, auch für Besucher',
 	'languageselector-setlang' => 'setzen',
 );
 
@@ -268,6 +278,15 @@ $messages['grc'] = array(
 	'languageselector' => 'Γλῶττα',
 	'languageselector-desc' => 'Ἐπιλογεὺς γλῶττας ἐν πἀσαις δέλτοις, τῶν ἐπισκεπτῶν συμπεριλαμβανομένων',
 	'languageselector-setlang' => 'τιθέναι',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'languageselector' => 'Sproch',
+	'languageselector-desc' => 'Sprochenuuswahl uf jedere Syte, au fir Bsuecher',
+	'languageselector-setlang' => 'setze',
 );
 
 /** Manx (Gaelg)
@@ -598,10 +617,12 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author MF-Warburg
  */
 $messages['pt-br'] = array(
 	'languageselector' => 'Idioma',
+	'languageselector-desc' => 'Seletor de língua em todas as páginas, também para visitantes',
 	'languageselector-setlang' => 'selecionar',
 );
 

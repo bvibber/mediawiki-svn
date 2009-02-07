@@ -212,6 +212,18 @@ $messages['grc'] = array(
 	'interwikilist-prefix' => 'Πρόθεμα διαϝίκι:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'interwikilist' => 'Interwiki-Lischt',
+	'interwikilist-desc' => 'Ergänzt e [[Special:Interwikilist|Spezialsyte]] zum verfiegbari Interwiki-Gleicher aazeige',
+	'interwikilist-linkname' => 'Interwiki-Gleich',
+	'interwikilist-target' => 'Ziil-URL',
+	'interwikilist-filter' => 'Lischt filtere',
+	'interwikilist-prefix' => 'Interwiki-Präfix:',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

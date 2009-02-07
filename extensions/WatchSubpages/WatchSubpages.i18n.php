@@ -228,7 +228,7 @@ $messages['gl'] = array(
 	'watchsubpages' => 'Vixiar as subpáxinas',
 	'watchsubpages-addedtowatchlist' => 'O seguinte foi engadido á súa listaxe de vixilancia.',
 	'watchsubpages-addtitles' => 'Engadir as páxinas',
-	'watchsubpages-addtitlestowatchlist' => 'Engadir páxinas á listaxe de vixilancia',
+	'watchsubpages-addtitlestowatchlist' => 'Engadir as páxinas á lista de vixilancia',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Engadir rapidamente todas as subpáxinas]] dunha páxina á listaxe de vixilancia',
 	'watchsubpages-form' => 'Seleccione embaixo as páxinas que queira engadir á súa listaxe de vixilancia.
 Para engadir unha páxina, marque o casilla que está ao seu carón e prema en "Engadir as páxinas".

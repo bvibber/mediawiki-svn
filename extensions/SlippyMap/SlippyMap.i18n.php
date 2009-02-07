@@ -213,6 +213,39 @@ $messages['de'] = array(
 	'slippymap_resetview' => 'Zurücksetzen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'slippymap_desc' => 'Zmóžnja wužywanje toflicki <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> za zwobraznjenje pśesuwajobneje kórty OpenLayer. Kórty su z [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'Gódnota za šyrinu (lat) felujo.',
+	'slippymap_lonmissing' => 'Gódnota za dlininu (lon) felujo.',
+	'slippymap_zoommissing' => 'Gódnota za skalěrowanje (z) felujo.',
+	'slippymap_longdepreciated' => "Wužywaj pšosym 'lon' město 'long' (parameter jo se pśemjenił)",
+	'slippymap_widthnan' => "Gódnota šyrokosći (w) '%1' njejo płaśiwa ceła licba",
+	'slippymap_heightnan' => "Gódnota wusokosći (h) '%1' njejo płaśiwa ceła licba",
+	'slippymap_zoomnan' => "Gódnota skalowanja (z) '%1' njejo płaśiwa ceła licba",
+	'slippymap_latnan' => "Gódnota šyriny (lat) '%1' njejo płaśiwa licba",
+	'slippymap_lonnan' => "Gódnota dlininy (lon) '%1' njejo płaśiwa licba",
+	'slippymap_widthbig' => 'Gódnota šyrokosći (w) njesmějo wětša ako 1000 byś',
+	'slippymap_widthsmall' => 'Gódnota šyrokosći njesmějo mjeńša ako 100 byś',
+	'slippymap_heightbig' => 'Gódnota wusokosći (h) njesmějo wětša ako 1000 byś',
+	'slippymap_heightsmall' => 'Gódnota wusokosći (h) njesmějo mjeńša ako 100 byś',
+	'slippymap_latbig' => 'Gódnota dlininy (lat) njesmějo wětša ako 90 byś',
+	'slippymap_latsmall' => 'Gódnota šyriny (lat) njesmějo mjeńša ako -90 byś',
+	'slippymap_lonbig' => 'Gódnota dlininy (lon) njesmějo wětša ako 180 byś',
+	'slippymap_lonsmall' => 'Gódnota dlininy (lon) njesmějo mjeńša ako -180 byś',
+	'slippymap_zoomsmall' => 'Gódnota skalowanja (z) njesmějo mjeńša ako nul byś',
+	'slippymap_zoom18' => "Gódnota skalowanja (z) njesmějo wětša ako 17 byś. Glědaj, až toś to rozšyrjenje MediaWiki zapśěgujo warstu OpenStreetMap 'Osmarender', kótaraž njepśesegujo skalowańsku rowninu 17. Warsta Mapnik, kótaraž stoj na openstreetmap.org k dispoziciji, dosega až k rowninje 18.",
+	'slippymap_zoombig' => 'Gódnota skalowanja (z) njesmějo wětša ako 17 byś.',
+	'slippymap_invalidlayer' => "Njepłaśiwa gódnota 'warsty' '%1'",
+	'slippymap_maperror' => 'Kórtowa zmólka:',
+	'slippymap_osmtext' => 'Glědaj toś tu kórtu na OpenStreetMap.org',
+	'slippymap_code' => 'Wikikod za toś ten kórtowy naglěd:',
+	'slippymap_button_code' => 'Wikikod pokazaś',
+	'slippymap_resetview' => 'Naglěd slědk stajiś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

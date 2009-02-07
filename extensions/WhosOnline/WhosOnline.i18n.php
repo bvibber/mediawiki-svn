@@ -187,6 +187,14 @@ $messages['lb'] = array(
 	'whosonline-desc' => 'Weist [[Special:WhosOnline|eng Lëscht]] vun den ageloggten an anonyme Benotzer déi elo online sinn',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Homo
+ */
+$messages['lt'] = array(
+	'whosonline' => 'Dabar naršo',
+	'whosonline-desc' => 'Rodo [[Special:WhosOnline|sąrašą]] prisijungusių ir anoniminių naudotojų, kurie dabar naršo',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  */
@@ -256,6 +264,14 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'whosonline'      => 'Quem está ligado',
 	'whosonline-desc' => 'Apresenta [[{{ns:special}}:WhosOnline|uma lista]] de utilizadores autenticados e anónimos que se encontram ligados neste momento',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'whosonline' => 'Quem está ligado',
+	'whosonline-desc' => 'Apresenta [[{{ns:special}}:WhosOnline|uma lista]] de utilizadores autenticados e anônimos que se encontram ligados neste momento',
 );
 
 /** Sinhalese (සිංහල)

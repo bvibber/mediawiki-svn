@@ -243,6 +243,13 @@ $messages['pt'] = array(
 	'randomimage-desc' => 'Providencia um selector de media aleatória usando <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'randomimage-desc' => 'Provê um seletor de media aleatória usando <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

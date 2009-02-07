@@ -332,6 +332,14 @@ $messages['pt'] = array(
 	'donationform-submit' => 'Doe pelo PayPal',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'donationform-desc' => 'Adiciona uma marca <tt>&lt;donateform&gt;</tt> para suportar doações via PayPal',
+	'donationform-submit' => 'Doe pelo PayPal',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

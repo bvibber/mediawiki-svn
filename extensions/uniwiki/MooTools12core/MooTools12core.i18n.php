@@ -231,6 +231,13 @@ $messages['pt'] = array(
 	'mootools12core-desc' => 'Adiciona [http://mootools.net mootools-1.2-core-yc.js], uma infra-estrutura JavaScript compacta, a todas as páginas',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'mootools12core-desc' => 'Adiciona o [http://mootools.net mootools-1.2-core-yc.js], uma infra-estrutura JavaScript compacta, a todas as páginas',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
