@@ -11,7 +11,7 @@ $messages['en'] = array(
 	'sign-nodocselected'   => 'Please select the document you wish to sign.',
 	'sign-selectdoc'       => 'Document:',
 	'sign-docheader'       => '<div class="noarticletext">Please use this form to sign the document "[[$1]]," shown below.
-Please read through the entire document, and if you wish to indicate your support for it, please fill in the required fields to sign it.</div>',
+Read through the entire document, and if you wish to indicate your support for it, fill in the required fields to sign it.</div>',
 	'sign-error-nosuchdoc' => 'The document you requested ($1) does not exist.',
 	'sign-realname'        => 'Name:',
 	'sign-address'         => 'Street address:',
