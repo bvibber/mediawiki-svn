@@ -22,7 +22,7 @@
 *											*
 *****************************************************************************************/
 
-class RenderVideo {
+class FramedVideo {
 
 	function renderFramedVideo( $input, $args, $parser ) {
 		global $wgLanguageCode, $wgFramedVideoLightMode, $wgFramedVideoConfigLoaded;
