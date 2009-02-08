@@ -15,7 +15,7 @@ class BadImageManipulator extends SpecialPage {
 		parent::__construct( 'Badimages' );
 	}
 	
-	function execute() {
+	function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest;
 		$this->setHeaders();
 		

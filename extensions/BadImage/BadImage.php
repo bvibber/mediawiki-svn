@@ -27,6 +27,7 @@ $wgExtensionMessagesFiles['BadImages'] = $dir . 'BadImage.i18n.php';
 $wgExtensionAliasesFiles['BadImages'] = $dir . 'BadImage.alias.php';
 
 $wgSpecialPages['Badimages'] = 'BadImageManipulator';
+$wgSpecialPageGroups['Badimages'] = 'media';
 $wgExtensionFunctions[] = 'efBadImageSetup';
 
 $wgAvailableRights[] = 'badimages';
