@@ -421,6 +421,16 @@ $messages['pt'] = array(
 	'msfunc_div_zero' => 'Divisão por zero',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'msfunc_desc' => 'Uma coleção de funções matemáticas e estatísticas',
+	'msfunc_nan' => 'Valor resultante não é um número',
+	'msfunc_inf' => 'Valor resultante é infinito',
+	'msfunc_div_zero' => 'Divisão por zero',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

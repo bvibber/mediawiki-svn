@@ -727,6 +727,16 @@ $messages['pt'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|linca|lincam}} para $3',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'crossnamespacelinks' => 'Saltos de Espaços Nominais',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lista ligações através de espaços nominais]] que não deveriam existir em {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Esta página proporciona uma lista de ligações provenientes a partir de uma página no espaço nominal principal para outra alocada em outro espaço nominal (exceção feita para os espaços nominais {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), os quais costuma-se não ser aconselhável de existirem.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|liga|ligam}} para $3',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */

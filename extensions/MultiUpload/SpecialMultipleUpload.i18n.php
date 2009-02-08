@@ -693,6 +693,14 @@ $messages['lb'] = array(
 	'multipleupload-saveallfiles' => "All d'Fichiere späicheren",
 	'multipleupload-addresswarnings' => "W. e. g. all Warnungen uweisen ier d'Fichieren nach emol eropgluede ginn.",
 	'multipleupload-page' => "{{ns:project}}:Richtlinne fir d'Läsche vu Säiten a Fichieren",
+	'multipleupload-text' => "Hei kënnt dir méi Fichieren mateneen eroplueden.
+
+Wielt 'Browse' a wielt déi Fichieren eraus déi Dir eropluede wëllt.
+Dir kënnt vun 1 bis $2 Fichiere mateneen eroplueden.
+
+Dir kënnt en optionellen '''Zil-Fichiersnumm''' uginn an e '''Resumé''' aginn deen Äre Fichier beschreiwt.
+
+Net ubruechte Fichieren ginn direkt geläscht, kuckt d'[[{{MediaWiki:Multipleupload-page}}|Läsch-Richtlinnen fir Fichieren]].",
 	'multiupload-fileuploaded' => 'Fichier eropgelueden',
 	'multiupload-toolbox' => 'Méi Fichiere mateneen eroplueden',
 );

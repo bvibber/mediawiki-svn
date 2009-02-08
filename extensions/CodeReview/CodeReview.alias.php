@@ -120,6 +120,11 @@ $aliases['nl'] = array(
 	'RepoAdmin' => array( 'Repobeheer' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'Code' => array( 'Kode' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'Code' => array( 'Kode' ),

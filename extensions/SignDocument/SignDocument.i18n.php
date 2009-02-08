@@ -307,6 +307,16 @@ $messages['pt'] = array(
 	'signaturelogentry' => 'assinou o documento $1',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'signaturelogpage' => 'Registro de assinaturas',
+	'signature-desc' => 'Permite a [[Special:SignDocument|assinatura]] de documentos',
+	'signaturelogpagetext' => 'Este é um registro de [[Special:SignDocument|todas as assinaturas adicionadas a documentos]].',
+	'signaturelogentry' => 'assinou o documento $1',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  * @author Александр Сигачёв

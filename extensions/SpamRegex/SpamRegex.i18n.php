@@ -317,6 +317,17 @@ Buź pak wobglědniwy, wuraze njeby pśekrotke abo pśepowšykne byś.',
 	'spamregex-page-title-2' => 'Fraze pśeśiwo składowanjeju z pomocu regularnych wurazow blokěrowaś',
 	'spamregex-block-success' => 'Blokěrowanje wuspěšne',
 	'spamregex-block-message' => "Fraza '''$1''' jo se blokěrowała.",
+	'spamregex-warning-1' => 'Pódaj frazu za blokěrowanje.',
+	'spamregex-error-1' => 'Njepłaśiwy regularny wuraz.',
+	'spamregex-warning-2' => 'Pšosym wubjeŕ nanejmjenjej jaden blokěrowański modus.',
+	'spamregex-already-blocked' => '"$1" jo južo blokěrowany.',
+	'spamregex-phrase-block' => 'Fraza, kótaraž ma se blokěrowaś:',
+	'spamregex-phrase-block-text' => 'Frazu w bokowem teksće blokěrowaś',
+	'spamregex-phrase-block-summary' => 'frazu w zespominanju blokěrowaś',
+	'spamregex-block-submit' => 'Toś&nbsp;tu&nbsp;frazu&nbsp;blokěrowaś',
+	'spamregex-text' => '(Tekst)',
+	'spamregex-summary-log' => '(Zespominanje)',
+	'right-spamregex' => 'Njewitane fraze pśez [[Special:SpamRegex]] blokěrowaś',
 );
 
 /** Greek (Ελληνικά)

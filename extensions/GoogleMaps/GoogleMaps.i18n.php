@@ -968,6 +968,7 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
  * @author Imre
  */
 $wgGoogleMapsMessages['es'] = array(
+	'gm-desc' => 'Crear fácilmente mapas con marcadores wiki-fiados',
 	'gm-incompatible-browser' => 'Para ver el mapa que hay en esta p&aacute;gina, necesitas usar un navegador compatible.',
 	'gm-incompatible-browser-link' => 'Haga click aquí para ver una lista de navegadores compatibles.',
 	'gm-no-editor' => 'Desgraciadamente, tu navegador no soporta la funci&oacute;n interactiva de construcci&oacute;n de mapas. Prueba la &oucute;ltima versi&oacute;n de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac y Linux).',
@@ -1018,6 +1019,7 @@ $wgGoogleMapsMessages['es'] = array(
 	'gm-edit-path' => 'a&#241;adir puntos',
 	'gm-show-path' => 'Mostrar puntos',
 	'gm-color-path' => 'cambiar el color',
+	'gm-color-fill' => 'cambiar color de relleno',
 	'gm-add-fill' => 'Llenar en área',
 	'gm-fill-color' => 'Llenar color',
 	'gm-line-color' => 'color de línea',
@@ -2518,6 +2520,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-make-marker' => 'Beschreiwung (Wiki-Syntax ass OK):',
 	'gm-remove' => 'ewechhuelen',
 	'gm-caption' => 'Beschreiwung',
+	'gm-tab-title' => 'Titel vum Onglet',
 	'gm-tab' => 'Onglet',
 	'gm-save-point' => 'Späicheren and zoumaachen',
 	'gm-load-map-from-article' => 'Eng Kaart vun der Säit lueden:',

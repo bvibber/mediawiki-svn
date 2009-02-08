@@ -355,6 +355,16 @@ $messages['pt'] = array(
 	'piwik-browsers' => 'Browsers',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'piwik-desc' => 'Insere o script Piwik em páginas MediaWiki para rastreio e adiciona [[Special:Piwik|algumas estatísticas]]',
+	'piwik-lastvisits' => 'Últimas visitas',
+	'piwik-countries' => 'Países',
+	'piwik-browsers' => 'Navegadores',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

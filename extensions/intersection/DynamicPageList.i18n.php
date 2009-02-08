@@ -610,6 +610,17 @@ $messages['pt'] = array(
 	'intersection_noincludecats' => 'Error: É necessário incluir no mínimo uma categoria ou especificar um espaço nominal!',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'intersection-desc' => 'Exibe uma lista pontuada dos itens mais recentes presentes numa categoria, ou uma intersecção de várias categorias',
+	'intersection_toomanycats' => 'Erro: Categorias demais!',
+	'intersection_toofewcats' => 'Erro: Poucas categorias!',
+	'intersection_noresults' => 'Erro: Sem resultados!',
+	'intersection_noincludecats' => 'Erro: É necessário incluir no mínimo uma categoria ou especificar um espaço nominal!',
+);
+
 /** Romanian (Română)
  * @author Mihai
  */

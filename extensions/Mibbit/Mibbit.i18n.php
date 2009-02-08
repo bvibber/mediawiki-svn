@@ -170,7 +170,7 @@ $messages['fr'] = array(
 	'mibbit' => 'Clavardage Mibbit',
 	'mibbit-desc' => 'Ajoute une [[Special:Mibbit|page spéciale]] permettant le clavardage en temps réel avec les autres utilisateurs du wiki',
 	'mibbit-header' => "Cette page spéciale vous permet de collaborer en temps réel avec d'autres utilisateurs du wiki.
-Pour vous connecter, cliquer simplement sur le bouton « ''Connect'' ».
+Pour vous connecter, cliquez simplement sur le bouton « ''Connect'' ».
 Si vous êtes connecté{{GENDER:||e|(e)}}, votre pseudonyme sera déjà écrit.
 Les utilisateurs anonymes se verront attribuer un pseudonyme créé automatiquement, mais qui peut être modifié.",
 	'right-mibbit' => "Autorise l'utilisation du Chat Mibbit",
@@ -440,6 +440,19 @@ Para ligar-se basta carregar no botão "Connect".
 Se estiver logado, o seu nome de utilizador será preenchido automaticamente.
 Utilizadores anónimos recebem um nick gerado aleatoriamente, mas este pode ser alterado.',
 	'right-mibbit' => 'Autorizado a usar o chat Mibbit',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'mibbit' => 'Bate-papo Mibbit',
+	'mibbit-desc' => 'Adiciona uma [[Special:Mibbit|página especial]] usada para falar em tempo real com outros utilizadores do wiki',
+	'mibbit-header' => 'Esta página especial permite a colaboração em tempo real com outros utilizadores da wiki.
+Para ligar-se basta clicar no botão "Connect".
+Se estiver autenticado, o seu nome de utilizador será preenchido automaticamente.
+Utilizadores anônimos recebem um apelido gerado aleatoriamente, mas este pode ser alterado.',
+	'right-mibbit' => 'Autorizado a usar o Bate-papo Mibbit',
 );
 
 /** Russian (Русский)

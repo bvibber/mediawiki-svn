@@ -214,6 +214,11 @@ $aliases['nl'] = array(
 	'ViewConfig' => array( 'InstellingenBekijken' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'Extensions' => array( 'Utvidingar' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'Configure' => array( 'Konfigurer' ),

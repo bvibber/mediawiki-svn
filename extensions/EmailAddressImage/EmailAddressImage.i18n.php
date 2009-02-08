@@ -42,6 +42,13 @@ $messages['bg'] = array(
 	'emailaddressimage-desc' => 'Добавя <tt>&lt;email&gt;</tt> за показване на адреси за е-поща като картинки',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'emailaddressimage-desc' => 'Dodaje oznaku <tt>&lt;email&gt;</tt> za prikaz e-mail adrese u vidu slike',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

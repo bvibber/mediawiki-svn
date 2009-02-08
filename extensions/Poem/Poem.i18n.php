@@ -480,6 +480,13 @@ $messages['tl'] = array(
 	'poem-desc' => 'Nagdaragdag ng tatak na <tt>&lt;poem&gt;</tt> para sa pagpopormat ng tula',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'poem-desc' => 'Şiir biçimlendirmesi için <tt>&lt;poem&gt;</tt> etiketini ekler',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

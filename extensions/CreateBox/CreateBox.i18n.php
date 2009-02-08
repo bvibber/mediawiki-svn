@@ -195,6 +195,19 @@ $messages['grc'] = array(
 	'createbox-create' => 'Ποεῖν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'createbox-desc' => 'Speziäll Yygabfäld zum Aalege vu Syte',
+	'createbox-create' => 'Aalege',
+	'createbox-exists' => "Excusez, „'''{{FULLPAGENAME}}'''“ git s scho.
+
+Du chasch die Syte nit aalege, aber Du chasch si [{{fullurl:{{FULLPAGENAME}}|action=edit}} bearbeite], [{{fullurl:{{FULLPAGENAME}}}} läse] oder e anderi Syte aalege mit em Yygabfäld, wu do unte stoht.
+
+<createbox>break=no</createbox>",
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

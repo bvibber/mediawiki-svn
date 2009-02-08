@@ -1696,7 +1696,18 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'badimages' => 'Liste de le immaggine no bbuene',
+	'badimages-add-btn' => 'Aggiunge',
+	'badimages-added' => "$1 ha state aggiunde a 'a liste.",
 	'badimages-name' => 'Nome:',
+	'badimages-not-added' => "L'immaggine non ge pò essere aggiunde.",
+	'badimages-not-removed' => "L'immaggine non ge pò essere luete.",
+	'badimages-reason' => 'Mutive:',
+	'badimages-remove' => '(live)',
+	'badimages-remove-btn' => 'Live',
+	'badimages-removed' => "$1 ha state luete da 'a liste.",
+	'badimages-unprivileged' => '(Tu non ge tìne le permesse sufficiende pe cangià sta liste)',
+	'badimages-page' => '{{ns:help}}:Liste de le immaggine no bbuene',
 );
 
 /** Russian (Русский)

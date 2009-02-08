@@ -39,6 +39,13 @@ $messages['bg'] = array(
 	'gnuplot-desc' => 'Добавя етикет <code><nowiki><gnuplot></nowiki></code> за използване на Gnuplot',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'gnuplot-desc' => 'Dodaje oznaku <code><nowiki><gnuplot></nowiki></code> za upotrebu Gnuplot',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

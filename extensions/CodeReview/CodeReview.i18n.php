@@ -2892,6 +2892,7 @@ $messages['ko'] = array(
 	'code-no-repo' => '저장소가 설정되지 않았습니다!',
 	'code-load-diff' => '차이를 불러오는 중…',
 	'code-notes' => '최근 의견',
+	'code-authors' => '만든이',
 	'code-status' => '상태',
 	'code-tags' => '태그',
 	'code-author-name' => '사용자 이름을 입력하십시오:',

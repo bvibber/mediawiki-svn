@@ -477,6 +477,16 @@ $messages['pt'] = array(
 	'userimages-noimages' => '$1 não carregou quaisquer imagens.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'userimages-desc' => 'Gera galerias de imagens carregadas por utilizadores com <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'Imagens carregadas por $1',
+	'userimages-noname' => 'Nome de utilizador inválido ou não fornecido.',
+	'userimages-noimages' => '$1 não carregou quaisquer imagens.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

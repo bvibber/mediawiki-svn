@@ -214,6 +214,7 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'random-users-avatars-title' => "Ingontre 'a comunitate",
+	'random-users-avatars-desc' => "Aggiunge 'u tag <tt>&lt;randomuserswithavatars&gt;</tt> pe fà vedè le avatar scacchiete a uecchije da l'utinde",
 );
 
 /** Slovak (Slovenčina)

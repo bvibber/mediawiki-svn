@@ -612,7 +612,7 @@ en dä Zick fun $3, wobei dä janze Vörjang $4 jedooht hät.',
  */
 $messages['lb'] = array(
 	'refreshspecial' => 'Spezialsäiten aktualiséieren',
-	'refreshspecial-desc' => 'Erlaabt et [[Special:RefreshSpecial|manuell Aktualiséierung]] vu Spezialsäiten',
+	'refreshspecial-desc' => "Erlaabt et Spezialsäite [[Special:RefreshSpecial|manuell z'aktualiséieren]]",
 	'refreshspecial-title' => 'Spezialsäiten aktualiséieren',
 	'refreshspecial-help' => "Dës Spezialsäit erlaabt et fir Spezialsäite manuell z'aktualiséieren. 
 Wann Dir all Säiten ugewielt hutt déi dir wëllt aktualiséiert kréien, da klickt op den ''Aktulisatiouns-Knäppchen'' hei ënnendrënner fir déi gewielte Spezialsäiten z'aktualiséieren. 
@@ -632,7 +632,9 @@ Opgepasst: op méi grousse Wikien kann d'Aktualisatioun eng Zäit daueren.",
 	'refreshspecial-slave-lagged' => 'Aarbecht déi nach usteet, an der Maach ...',
 	'refreshspecial-reconnected' => 'Nees verbonn',
 	'refreshspecial-reconnecting' => "D'Verbindung koum net zustan, nei Verbindung an 10 Sekonnen ...",
+	'refreshspecial-page-result' => ' {{PLURAL:$1|eng Rei|$1 Reie}} kritt an',
 	'refreshspecial-total-display' => "$1 {{PLURAL:$1|Säit|Säiten}} aktuliséiert mat am Ganzen $2 {{PLURAL:$2|Rei|Reien}} an $3 (Dauer) (d'Gesamtzäit déi de Script gebraucht huet ass $4)",
+	'right-refreshspecial' => 'Spezialsäiten aktualiséieren',
 );
 
 /** Dutch (Nederlands)

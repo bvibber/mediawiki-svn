@@ -192,6 +192,45 @@ $messages['de-formal'] = array(
 	'recordadmin-select' => 'Ihre Prüfung dieser Seite/Version:',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'recordadmin' => 'Administracija zapisow',
+	'recordadmin-desc' => '[[Special:RecordAdmin|Specialny bok]] za pytanje a wobźěłowanje zapisowych bokow z pomocu formulara',
+	'recordadmin-category' => 'Zapise',
+	'recordadmin-select' => 'Wubjeŕ typ zapisa, kótaryž ma se pytaś',
+	'recordadmin-newsearch' => 'Nowe pytanje $1',
+	'recordadmin-newrecord' => 'Wubjeŕ drugi zapisowy typ',
+	'recordadmin-submit' => 'Wótpósłaś',
+	'recordadmin-create' => 'Zapis "$1" namakaś abo napóraś',
+	'recordadmin-alreadyexist' => 'Wódaj, "$1" južo eksistěrujo!',
+	'recordadmin-createsuccess' => '$1 napórany',
+	'recordadmin-createerror' => 'Pśi wopyśe $1 napóraś jo zmólka nastała!',
+	'recordadmin-badtitle' => 'Njepłaśiwy titel!',
+	'recordadmin-recordid' => 'ID zapisa:',
+	'recordadmin-invert' => 'Wuběrk pśewobrośiś',
+	'recordadmin-buttonsearch' => 'Pytaś',
+	'recordadmin-buttoncreate' => 'Napóraś',
+	'recordadmin-buttonreset' => 'Anulěrowaś',
+	'recordadmin-searchresult' => 'Pytańske wuslědki',
+	'recordadmin-nomatch' => 'Žedne wótpowědne zapise namakane!',
+	'recordadmin-edit' => '$1 se wobźěłujo',
+	'recordadmin-typeupdated' => 'Kakosći $1 zaktualizěrowane',
+	'recordadmin-updatesuccess' => '$1 zaktualizěrowany',
+	'recordadmin-updateerror' => 'Zmólka jo nastała wob aktualizaciju',
+	'recordadmin-buttonsave' => 'Składowaś',
+	'recordadmin-noform' => 'Njejo formular za zapisy "$1"!',
+	'recordadmin-createlink' => '<a href=$1>jaden napóraś</a>',
+	'recordadmin-newcreated' => 'Nowy $1 ze zjawnego formulara napórany',
+	'recordadmin-summary-typecreated' => 'Nowy $1 napórany',
+	'recordadmin-viewlink' => 'woglědaś se',
+	'recordadmin-editlink' => 'wobźěłaś',
+	'recordadmin-created' => 'Napórany',
+	'recordadmin-actions' => 'Akcije',
+	'right-recordadmin' => 'Zapisowe boki namakaś a wobźěłaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

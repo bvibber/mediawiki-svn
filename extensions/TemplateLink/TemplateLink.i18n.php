@@ -375,6 +375,16 @@ $messages['pt'] = array(
 	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'templatelink' => 'Ligação de predefinição',
+	'templatelink_desc' => 'Esta extensão pode mostrar uma predefinição como uma nova página',
+	'templatelink_empty' => 'Você deverá fornecer um parâmetro',
+	'templatelink_newtitle' => '$1 (transcluído)',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

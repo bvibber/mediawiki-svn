@@ -1079,7 +1079,7 @@ sphinx|Esfinx',
 	'vote-results-choice' => 'Causida',
 	'vote-results-count' => 'Compte',
 	'vote-results-none' => 'Cap de vòte es pas estat efectuat a aqueste moment.',
-	'vote-login' => 'Devètz $1 per votar.',
+	'vote-login' => 'Vos cal vos $1 per votar.',
 	'vote-login-link' => 'vos connectar',
 	'vote-invalid-choice' => 'Vos cal causir una de las opcions disponiblas.',
 );

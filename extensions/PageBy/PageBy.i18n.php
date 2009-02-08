@@ -444,6 +444,17 @@ $messages['pt'] = array(
 	'pageby-anon' => '<i>anónimo</i>',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'pageby-desc' => 'Mostra contribuidores dentro de uma página wiki usando a marca <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Página criada por $1, $2',
+	'pageby-last' => '<a href="$3">Modificado</a> pela última vez por $1, $2',
+	'pageby-contributors' => 'Contribuidores:',
+	'pageby-anon' => '<i>anônimo</i>',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

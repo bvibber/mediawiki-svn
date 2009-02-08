@@ -363,6 +363,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'layouts-desc' => 'Verännerbar "Layouten" op nei-ugeluechte Säiten setzen fir eng gemeinsam Struktur fir Säiten z\'ënnerstetzen',
 	'layouts_title' => 'Eng Säit uleeën',
 	'layouts_chooselayout' => 'E Layout fir $1 eraussichen:',
 	'layouts_nolayout' => 'Kee Layout',

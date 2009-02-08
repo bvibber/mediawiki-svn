@@ -461,6 +461,32 @@ $messages['grc'] = array(
 	'duplicator-dest' => 'Προορισμός:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'duplicator' => 'E Syte dupliziere',
+	'duplicator-desc' => 'Leit uuabhängigi [[Special:Duplicate|Kopie vu Syten]] aa mit ihre Versionsgschicht',
+	'duplicator-toolbox' => 'Die Syte dupliziere',
+	'duplicator-header' => 'Mit däre Spezialsyte chenne Syte komplett dupliziert wäre. Dodebyy wird di gsamt Versionsgschicht ibernuu. Des cha z. B. nitzlig syy go ne Syte in Untersyten ufzteile.',
+	'duplicator-options' => 'Optione',
+	'duplicator-source' => 'Quälle:',
+	'duplicator-dest' => 'Ziil:',
+	'duplicator-dotalk' => 'Diskussionssyte mitkopiere (wänn s goht)',
+	'duplicator-submit' => 'Syte dupliziere',
+	'duplicator-summary' => 'Vu [[$1]] kopiert',
+	'duplicator-success' => "<big>'''[[$1]] isch no [[$2]] kopiert wore.'''</big>",
+	'duplicator-success-revisions' => '{{PLURAL:$1|1 Version isch|$1 Versione sin}} kopiert wore.',
+	'duplicator-success-talkcopied' => 'D Diskussionssyten isch au dupliziert wore.',
+	'duplicator-success-talknotcopied' => 'D Diskussionssyte het nit chenne dupliziert wäre.',
+	'duplicator-failed' => 'D Syte het nit chenne dupliziert wäre, wel e nit bekannte Fähler ufträtten isch.',
+	'duplicator-source-invalid' => 'Bitte gib e giltigi Quäll-Syten aa.',
+	'duplicator-source-notexist' => 'D Syte [[$1]] git s nit. Bitte gib e Syten aa, wu s git.',
+	'duplicator-dest-invalid' => 'Bitte gib e giltigi Ziil-Syten aa.',
+	'duplicator-dest-exists' => 'D Syte [[$1]] git s scho. Bitte gib e Ziilsyten aa, wu nonig git.',
+	'duplicator-toomanyrevisions' => 'D Syte [[$1]] het {{PLURAL:$2|e Version|$2 Versione}}, wäge däm cha si nit dupliziert wäre. S chenne nume Syte mit  {{PLURAL:$3|eire Version|hegschtens $3 Versione}} dupliziert wäre.',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

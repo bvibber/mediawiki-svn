@@ -230,6 +230,24 @@ $messages['grc'] = array(
 	'editsimilar-link-disable' => 'τιθέναι τὰς προαιρέσεις',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'editsimilar-desc' => 'Schlat Benutzer noch em Spychere vun ere Syte vor, e ähnligi Syte z bearbeite',
+	'editsimilar-thanks' => 'Dankschen fir Dyy Byytrag.
+Lueg au die ähnlige Syte aa: $1.',
+	'editsimilar-thanks-singleresult' => 'Dankschen fir Dyy Byytrag.
+Lueg au die Syten aa: $1.',
+	'editsimilar-thanks-notsimilar' => 'Dankschen fir Dyy Byytrag.
+Die Syte chennte au ne Hilf syy: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Dankschen fir Dyy Byytrag.
+Die Syte chennte au ne Hilf syy: $1.',
+	'editsimilar-thankyou' => 'Dankschen fir Dyy Byytrag, $1!',
+	'editsimilar-link-disable' => 'Yystellige setze',
+	'tog-edit-similar' => 'Vorschleg fir ähnligi Syten aazeige',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

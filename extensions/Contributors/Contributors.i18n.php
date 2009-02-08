@@ -427,10 +427,21 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author J. 'mach' wust
  */
 $messages['gsw'] = array(
+	'contributors' => 'Hauptautore',
+	'contributors-desc' => 'Zeigt d Hauptautore vun ere Syte',
+	'contributors-toolbox' => 'Hauptautore',
+	'contributors-legend' => 'Zeig d Hauptautore vun ere Syte',
 	'contributors-target' => 'Syte:',
+	'contributors-submit' => 'Zeig',
+	'contributors-subtitle' => 'Hauptautore vu $1',
+	'contributors-others-long' => 'S git au no {{PLURAL:$1|1 wytere Autor|$1 wyteri Autore}} zue däre Syte.',
+	'contributors-others' => 'un {{PLURAL:$1|1 wytere|$1 wyteri}}',
+	'contributors-badtitle' => 'Nit giltigi Syte',
+	'contributors-nosuchpage' => 'D Syte $1 git nit.',
 );
 
 /** Manx (Gaelg)

@@ -158,6 +158,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'dplforum-by' => 'por $1',
 	'dplforum-edited' => '- ültimo editado',
 	'dplforum-never' => 'Nunca',
 	'dplforum-toofew' => 'Foro DPL: muy pocas categorías!',

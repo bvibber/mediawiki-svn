@@ -587,6 +587,17 @@ $messages['pt'] = array(
 	'findspam-notextfound' => 'Não foram encontradas contribuições',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'findspam' => 'Encontrar "spam"',
+	'findspam-desc' => 'Adiciona uma [[Special:FindSpam|página especial]] que permite encontrar "spam" adicionado recentemente',
+	'findspam-ip' => 'Endereço IP:',
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Não foram encontradas contribuições',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

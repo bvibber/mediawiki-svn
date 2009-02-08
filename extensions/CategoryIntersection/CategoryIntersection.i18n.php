@@ -439,6 +439,17 @@ $messages['pt'] = array(
 	'categoryintersection-results' => 'A pesquisa deu  $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'categoryintersection' => 'Intersecção de categorias',
+	'categoryintersection-desc' => "Mantém uma tabela com valores 'hash' para [[Special:CategoryIntersection|intersecções de categorias]] numa página",
+	'categoryintersection-doit' => 'Listar páginas em todas estas categorias',
+	'categoryintersection-maxcategories' => 'O limite máximo de categorias que se interseccionam é $1.',
+	'categoryintersection-results' => 'A pesquisa retornou $1 {{PLURAL:$1|resultado|resultados}}.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

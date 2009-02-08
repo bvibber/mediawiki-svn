@@ -415,6 +415,17 @@ $messages['pt'] = array(
 	'unicodeconverter-newtext' => 'Texto convertido:',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'unicodeconverter' => 'Conversor Unicode',
+	'unicodeconverter-desc' => 'Um exemplo simples de um módulo de página especial. [[Special:UnicodeConverter|Dada uma cadeia de caracteres em UTF-8]], converte-a em entidades HTML, apropriadas para uma página web ISO 8859-1',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Texto original:',
+	'unicodeconverter-newtext' => 'Texto convertido:',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

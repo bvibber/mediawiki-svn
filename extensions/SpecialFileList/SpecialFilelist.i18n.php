@@ -554,8 +554,14 @@ $messages['pt'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
 $messages['pt-br'] = array(
+	'filelist' => 'Lista de arquivos',
+	'filelist-desc' => '[[Special:Filelist|Página Especial]] para listar arquivos carregados',
+	'filelist-show-list' => 'Mostrar lista',
+	'filelist-show-gallery' => 'Mostrar galeria',
 	'filelist-image-desc' => 'desc',
 );
 

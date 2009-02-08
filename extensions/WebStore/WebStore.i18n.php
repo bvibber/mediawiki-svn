@@ -409,12 +409,13 @@ $messages['bs'] = array(
 );
 
 /** Czech (Česky)
+ * @author Fryed-peach
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'inplace_access_disabled' => 'Přístup k této službě bylv vypnut pro všechny klienty.',
 	'inplace_access_denied' => 'Tato služba je omezena na určené klientské IP adresy.',
-	'inplace_scaler_no_temp' => 'Dočasný adresář není platný, nastavte $wgLocalTmppDirectory na zapisovatelný adresář.',
+	'inplace_scaler_no_temp' => 'Dočasný adresář není platný, nastavte $wgLocalTmpDirectory na zapisovatelný adresář.',
 	'inplace_scaler_not_enough_params' => 'Nedostatek parametrů.',
 	'inplace_scaler_invalid_image' => 'Neplatný obrázek, nebylo možné určit velikost.',
 	'inplace_scaler_failed' => 'Během změny velikosti obrázku se vyskytla chyba: $1',
@@ -1020,13 +1021,58 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'inplace_access_disabled' => 'このサービスへのアクセスは、すべてのクライアントに関して無効になっています。',
+	'inplace_access_denied' => 'このサービスはクライアントのIPアドレスによって制限されています。',
+	'inplace_scaler_no_temp' => '有効な一時ディレクトリがありません。$wgLocalTmpDirectory に書き込み可能なディレクトリを設定してください。',
+	'inplace_scaler_not_enough_params' => '引数が不足しています。',
+	'inplace_scaler_invalid_image' => '画像が不正なため、サイズを決定できませんでした。',
+	'inplace_scaler_failed' => '画像の拡大縮小中にエラーが発生しました: $1',
+	'inplace_scaler_no_handler' => 'このMIME型を変換するためのハンドラーはありません',
+	'inplace_scaler_no_output' => '変換出力ファイルは作成されませんでした。',
+	'inplace_scaler_zero_size' => '変換処理によって、サイズがゼロの出力ファイルが作成されました。',
+	'webstore-desc' => 'ウェブ限定（非NFS）のファイルストレージ用ミドルウェア',
+	'webstore_access' => 'このサービスはクライアントのIPアドレスによって制限されています。',
+	'webstore_path_invalid' => 'ファイル名が無効です。',
+	'webstore_dest_open' => '目的ファイル「$1」を開けません。',
+	'webstore_dest_lock' => '目的ファイル「$1」のロック取得に失敗しました。',
+	'webstore_dest_mkdir' => '目的ディレクトリ「$1」を作成できません。',
+	'webstore_archive_lock' => 'アーカイブファイル「$1」のロック取得に失敗しました。',
+	'webstore_archive_mkdir' => 'アーカイブディレクトリ「$1」を作成できません。',
+	'webstore_src_open' => '起点ファイル「$1」を開けません。',
+	'webstore_src_close' => '起点ファイル「$1」のクローズ中にエラーが発生しました。',
+	'webstore_src_delete' => '起点ファイル「$1」の削除中にエラーが発生しました。',
+	'webstore_rename' => 'ファイル「$1」から「$2」への改名中にエラーが発生しました。',
+	'webstore_lock_open' => 'ロックファイル「$1」のオープン中にエラーが発生しました。',
+	'webstore_lock_close' => 'ロックファイル「$1」のクローズ中にエラーが発生しました。',
+	'webstore_dest_exists' => 'エラーです、目的ファイル「$1」は存在します。',
+	'webstore_temp_open' => '一時ファイル「$1」のオープン中にエラーが発生しました。',
+	'webstore_temp_copy' => '一時ファイル「$1」の目的ファイル「$2」への複製中にエラーが発生しました。',
+	'webstore_temp_close' => '一時ファイル「$1」のクローズ中にエラーが発生しました。',
+	'webstore_temp_lock' => '一時ファイル「$1」のロック中にエラーが発生しました。',
+	'webstore_no_archive' => '目的ファイルは存在し、アーカイブは指定されていません。',
+	'webstore_no_file' => 'ファイルはアップロードされませんでした。',
+	'webstore_move_uploaded' => 'アップロードされたファイル「$1」を一時保管場所「$2」に移動している最中にエラーが発生しました。',
+	'webstore_invalid_zone' => 'ゾーン「$1」が不正です。',
+	'webstore_no_deleted' => '削除されたファイル用のアーカイブディレクトリが定義されていません。',
+	'webstore_curl' => 'cURL のエラー: $1',
 	'webstore_404' => 'ファイルが見つかりませんでした。',
-	'webstore_php_warning' => 'PHP警告:$1',
-	'webstore_metadata_not_found' => 'ファイルが見つかりません:$1',
+	'webstore_php_warning' => 'PHP警告: $1',
+	'webstore_metadata_not_found' => 'ファイルが見つかりません: $1',
+	'webstore_postfile_not_found' => '投稿すべきファイルは見つかりませんでした。',
+	'webstore_scaler_empty_response' => '画像の拡大縮小器が応答コード200で空の応答を返しました。これは拡大縮小器におけるPHPの致命的エラーによるものの可能性があります。',
+	'webstore_invalid_response' => 'サーバーからの不正な応答:
+
+$1',
 	'webstore_no_response' => 'サーバーからの応答がありません',
+	'webstore_backend_error' => 'ストレージサーバーからのエラー:
+
+$1',
+	'webstore_php_error' => 'PHPエラーが発生しました:',
+	'webstore_no_handler' => 'このMIME型を変換するためのハンドラーはありません',
 );
 
 /** Javanese (Basa Jawa)

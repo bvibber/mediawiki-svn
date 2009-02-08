@@ -1556,10 +1556,15 @@ Pindutin ang pindutan sa ibaba upang tumanggap ng sipi.",
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'povwatch_invalid_title' => 'Belirtilen başlık geçersizdi',
 	'povwatch_title' => 'Başlık:',
+	'povwatch_comment' => 'Günlük yorumu:',
+	'povwatch_no_log' => 'Hiç günlük girdisi yok.',
+	'povwatch_added' => 'eklendi',
 );
 
 /** Ukrainian (Українська)

@@ -122,6 +122,11 @@ $aliases['nl'] = array(
 	'Contributors' => array( 'Bijdragers' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'Contributors' => array( 'Bidragsytarar' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'Contributors' => array( 'Bidragsytere' ),

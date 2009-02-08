@@ -1034,7 +1034,7 @@ Mercés d'indicar lo nom de l'article pelquin desiratz activar la foncion, los m
 	'createsigndoc-email' => 'Adreça de corrièr electronic :',
 	'createsigndoc-address' => 'Adreça residenciala :',
 	'createsigndoc-extaddress' => 'Vila, estat (departament o província), país :',
-	'createsigndoc-phone' => 'Numèro de telèfon :',
+	'createsigndoc-phone' => 'Numèro de telefòn :',
 	'createsigndoc-bday' => 'Data de naissença :',
 	'createsigndoc-minage' => 'Edat minimoma :',
 	'createsigndoc-introtext' => 'Introduccion :',

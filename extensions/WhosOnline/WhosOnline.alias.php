@@ -119,6 +119,11 @@ $aliases['nl'] = array(
 	'WhosOnline' => array( 'WieIsErOnline' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'WhosOnline' => array( 'Kven er pålogga' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'WhosOnline' => array( 'Hvem er pålogget' ),

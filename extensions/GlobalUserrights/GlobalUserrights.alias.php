@@ -58,6 +58,11 @@ $aliases['nl'] = array(
 	'GlobalUserrights' => array( 'GlobaleGebruikersrechten' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'GlobalUserrights' => array( 'Globale brukarrettar' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'GlobalUserrights' => array( 'Globale brukerrettigheter' ),

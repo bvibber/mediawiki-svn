@@ -1168,7 +1168,7 @@ $messages['nn'] = array(
 
 Oppgje kva MediaWiki-versjon du nyttar.
 
-Dei fleste utvidingane fungerer på fleire versjonar av MediaWiki, so om versjonen du nyttar ikkje er lista opp her, eller om du har bruk for dei sist utvidingseigenskapa, kan du prøva å velja den nyaste versjonen.',
+Dei fleste utvidingane fungerer på fleire versjonar av MediaWiki, so om versjonen du nyttar ikkje er lista opp her, eller om du har bruk for dei siste utvidingseigenskapane, kan du prøva å nytta den noverande versjonen.',
 	'extdist-no-versions' => 'Den valte utvidinga ($1) er ikkje tilgjengeleg i nokon versjon!',
 	'extdist-submit-version' => 'Hald fram',
 	'extdist-no-remote' => 'Kunne ikkje kontakta ekstern SVN-klient.',
@@ -1177,7 +1177,7 @@ Dei fleste utvidingane fungerer på fleire versjonar av MediaWiki, so om versjon
 	'extdist-svn-error' => 'SVN fann ein feil: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Kunne ikkje handsama XML frå "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar returnerte utgangskoden $1:',
-	'extdist-created' => "Eit snøggskot av versjon <b>$2</b> av utvidinga <b>$1</b> for MediaWiki <b>$3</b> har blitt oppretta. Nedlastinga vil starta automatisk om fem&nbsp;sekund.
+	'extdist-created' => "Eit snøggskot av versjon <b>$2</b> av utvidinga <b>$1</b> for MediaWiki <b>$3</b> er blitt oppretta. Nedlastinga vil starta automatisk om fem&nbsp;sekund.
 
 Adressa til snøggskotet er:
 :$4

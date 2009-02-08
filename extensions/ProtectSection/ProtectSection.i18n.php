@@ -355,6 +355,16 @@ $messages['pt'] = array(
 	'protectsection_forbidden' => 'Proibido',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'protectsection_desc' => 'Permite que utilizadores autorizados protejam partes de uma página usando a marca <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Você tentou adicionar ou remover uma seção protegida',
+	'protectsection_modify' => 'Você tentou modificar texto protegido',
+	'protectsection_forbidden' => 'Proibido',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

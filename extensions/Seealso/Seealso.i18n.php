@@ -358,6 +358,7 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'seealso' => 'Vide pure',
+	'seealso-desc' => "Localizze le testete 'Vide pure' ausanne 'u tag <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Russian (Русский)

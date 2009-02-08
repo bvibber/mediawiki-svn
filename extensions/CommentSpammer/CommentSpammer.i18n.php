@@ -183,6 +183,20 @@ $messages['gl'] = array(
 	'cspammer-log-page' => 'Rexistro dos comentarios Spam',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'commentspammer-save-blocked' => 'Dyy IP-Adräss stammt wahrschyns vun eme Kommentar-Spammer.
+D Syten isch nit gspycheret wore.
+[[Special:UserLogin|Mäld Diaa oder leg e Benutzerkonto aa]] go die Warnig z vermyyde.',
+	'commentspammer-desc' => 'Verhinderet Bearbeitige dur vermueteti Kommentarspammer uf ere DNS-Blacklist',
+	'commentspammer-log-msg' => 'Bearbeitig vu [[Special:Contributions/$1|$1]] fir [[:$2]].',
+	'commentspammer-log-msg-info' => 'S letscht Spamming vor $1 {{PLURAL:$1|Tag|Täg}}, dr „threat level“ isch $2 un dr „offence code“ isch $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Detail aaluege] oder [[Special:Blockip/$4|sperre]].',
+	'cspammerlogpagetext' => 'Lischt vu dr Bearbeitige, wu gnähmigt oder abglähnt wore sin uf dr Grundlag, eb d Quälle ne bekannte Kommentar-Spammer gsi isch.',
+	'cspammer-log-page' => 'Kommentar-Spammer-Logbuech',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

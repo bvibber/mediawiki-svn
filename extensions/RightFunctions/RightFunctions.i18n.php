@@ -274,6 +274,16 @@ $messages['pt'] = array(
 	'rightfunctions-ns' => '(de protecção de espaços nominais)',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'rightfunctions-desc' => 'Funções do analisador (parser) baseadas em permissões',
+	'rightfunctions-casc' => '(de fontes em cascata)',
+	'rightfunctions-local' => '(de página local)',
+	'rightfunctions-ns' => '(de proteção de espaços nominais)',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -164,6 +164,22 @@ $messages['gl'] = array(
   #</pre><!-- deixe esta liña como está -->',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'editsubpages-desc' => 'Git dr Ammanne d Megligkeit, e Syte un d Untersyte vun ere iber [[MediaWiki:Unlockedpages]] frejzschalten, ass Benutzer, wu nit aagmäldet sin, si chenne bearbeite',
+	'unlockedpages' => '  #<!-- Die Zyyle nit verändere --><pre>
+# Syte wu frej gee sin noch em
+# * Sytename
+# uflischte
+# Syte, wu d Sperri soll ufghobe wäre, mien mit eme * glischtet wäre.
+# Alli anderen Yyträg wäre as Kommentar gwärtet.
+# Bi Diskussionssyte wird au d Sperri ufghobe.
+# Meh Informatione: http://www.mediawiki.org/wiki/Extension:EditSubpages  
+  #</pre><!-- Die Zyyle nit verändere -->',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

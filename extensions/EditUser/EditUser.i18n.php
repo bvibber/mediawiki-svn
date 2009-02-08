@@ -350,6 +350,21 @@ $messages['grc'] = array(
 	'edituser-dosearch' => 'Ζητεῖν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'edituser-desc' => 'Erlaubt berächtigte Benutzer, d Yystellige vu andere Benutzer z verändere',
+	'edituser' => 'Benutzeryystelligen ändere',
+	'edituser-logout' => 'Benutzer abmälde',
+	'edituser-username' => 'Name',
+	'edituser-dosearch' => 'Sueche',
+	'edituser-nouser' => 'Dr Benutzer, wu aagee woren isch, git s nit',
+	'edituser-exempt' => 'Dr Benutzer, wu aagee woren isch, cha nit bearbeitet wäre',
+	'right-edituser' => 'D Yystellige vu andere Benutzer bearbeite',
+	'right-edituser-exempt' => 'D Yystellige vu däm Benutzer chenne nit dur anderi gänderet wäre',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

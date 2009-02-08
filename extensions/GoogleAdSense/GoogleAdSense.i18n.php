@@ -44,6 +44,13 @@ $messages['bg'] = array(
 	'googleadsense-desc' => 'Добавя [http://www.google.com/adsense Google AdSense] в страничната лента',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'googleadsense-desc' => 'Dodaje [http://www.google.com/adsense Google AdSense] u alatnu traku',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

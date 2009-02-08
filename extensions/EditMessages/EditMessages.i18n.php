@@ -384,6 +384,28 @@ $messages['grc'] = array(
 	'editmsg-patch-success' => 'Ἐπιτυχῶς συνερραμένη.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Webbasiert Bearbeite]] vun ere große Aazahl vu Messages*.php-Dateie',
+	'editmessages' => 'Syschtemnochricht bearbeite',
+	'editmsg-target' => 'Syschtemnochricht, wu soll bearbeitet wäre:',
+	'editmsg-search' => 'Sueche',
+	'editmsg-show-list' => 'Inhalt vu dr Syschtemnochricht „$1“',
+	'editmsg-get-patch' => 'Leg Patch aa',
+	'editmsg-new-search' => 'Neji Suechi',
+	'editmsg-warning-parse1' => '* Regex trifft uf kei Syschtemnochricht zue: $1',
+	'editmsg-warning-parse2' => '* Aafierigszeiche noch Pfyyl erwartet: $1',
+	'editmsg-warning-parse3' => '* Änd vu dr Zeichechette nit gfunde: $1',
+	'editmsg-warning-file' => '* S het e Dateiläsefähler fir die {{PLURAL:$2|Sproch|Sproche}} gee: $1',
+	'editmsg-warning-mismatch' => '* Dr Originaltäxt het nit dr erwartet Wärt fir die {{PLURAL:$2|Sproch|Sproche}}: $1',
+	'editmsg-apply-patch' => 'Patch aawände',
+	'editmsg-no-patch' => 'Patch-Kommando cha nit aagwändet wäre',
+	'editmsg-patch-failed' => 'Patch isch fählgschlaa mit em exit-Status $1.',
+	'editmsg-patch-success' => 'Erfolgryych patcht.',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

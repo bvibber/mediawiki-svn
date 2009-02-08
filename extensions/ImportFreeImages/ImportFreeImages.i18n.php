@@ -227,11 +227,16 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'importfreeimages' => 'Importar imágenes libres',
+	'importfreeimages-desc' => 'Provea una manera de [[Special:ImportFreeImages|importar adecuadamente fotografías licensiadas]] de [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Esta página le permite buscar correctamente fotografías licensiadas de flickr e importarlas dentro de su wiki.',
 	'importfreeimages_nophotosfound' => "Ninguna fotografía fue encontrada para sus criterios de búsqueda '$1', por favor intente nuevamente",
 	'importfreeimages_invalidurl' => 'El URL "$1" no es una imagen Flickr válida.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'Importe esto',
 	'importfreeimages_next' => 'Próximo $1',
+	'importfreeimages_filefromflickr' => '$1 por usuario <b>[$2]</b> de flickr. URL original',
+	'importfreeimages_promptuserforfilename' => 'Por favor ingresar un nombre de archivo de destino',
+	'importfreeimages_returntoform' => "O, haga click <a href='$1'>aquí</a> para retornar a sus resultados de búsqueda",
 );
 
 /** Persian (فارسی)

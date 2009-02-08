@@ -283,6 +283,17 @@ $messages['pt'] = array(
 	'gblrights-rights-entry' => 'alterou grupo global de $1, de $2 para $3',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'shareduserrights' => 'Gestão de Permissões de Utilizadores Compartilhadas',
+	'gblrights-desc' => '[[Special:SharedUserRights|Administração global de permissões de utilizadores]] fácil',
+	'gblrights-logpage' => 'Registo de Permissões Globais',
+	'gblrights-pagetext' => 'Este é um registro de todas as alterações feitas à tabela de permissões globais da família de wikis',
+	'gblrights-rights-entry' => 'alterou grupo global de $1, de $2 para $3',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

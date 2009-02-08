@@ -427,6 +427,56 @@ Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, $1',
 Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, $1',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'regexblock' => 'Blokěrowanje pśez regularne wuraze',
+	'regexblock-already-blocked' => '$1 jo južo blokěrowany.',
+	'regexblock-block-log' => "Wužywarske mě abo IP-adresa '''$1''' jo se blokěrowało.",
+	'regexblock-block-success' => 'Blokěrowanje wuspěšne',
+	'regexblock-currently-blocked' => 'Tuchylu blokěrowane adrese:',
+	'regexblock-desc' => 'Rozšyrjenje za blokěrowanje wužywarskich mjenjow a IP-adresow pśez regularne wuraze. Wopśimujo ako blokěrowański mechanizm tak teke [[Special:Regexblock|specialny bok]] za pśidanje/zastojanje blokěrowanjow',
+	'regexblock-expire-duration' => '1 góźina,2 góźinje,4 góźiny,6 góźinow,1 źeń,3 dny,1 tyźeń,2 tyźenja,1 mjasec,3 mjasece,6 mjasecow,1 lěto,njewěsty',
+	'regexblock-page-title' => 'Blokěrowanje mjenjow pśez regularne wuraze',
+	'regexblockstats' => 'Statistika blokěrowanjow pśez regularne wuraze',
+	'regexblock-page-title-1' => 'Adresu z pomocu regularnych wurazow blokěrowaś',
+	'regexblock-form-username' => 'IP-adresa abo wužywarske mě:',
+	'regexblock-form-reason' => 'Pśicyna:',
+	'regexblock-form-expiry' => 'Wótběgnjo:',
+	'regexblock-form-match' => 'Eksaktne makanje',
+	'regexblock-form-account-block' => 'Załoženje nowych kontow blokěrowaś',
+	'regexblock-form-submit' => 'Toś togo wužywarja blokěrowaś',
+	'regexblock-form-submit-empty' => 'Pódaj wužywarske mě abo IP-adresu za blokěrowanje.',
+	'regexblock-form-submit-regex' => 'Njepłaśiwy regularny wuraz.',
+	'regexblock-form-submit-expiry' => 'Pšosym pódaj cas pśepadnjenja.',
+	'regexblock-match-stats-record' => "$1 jo blokěrował '$2' na '$3' '$4', pśizjawjony wót adrese '$5'",
+	'regexblock-nodata-found' => 'Žedne daty namakane',
+	'regexblock-stats-title' => 'Statistika blokěrowanjow pśez regularne wuraze',
+	'regexblock-unblock-success' => 'Pśipušćenje wuspěšnje',
+	'regexblock-unblock-log' => "Wužywarske mě abo IP-adrese '''$1''' jo se pśipušćiło.",
+	'regexblock-unblock-error' => 'Zm´plka pśi pśipušćanju $1.
+Nejskerjej taki wužywaŕ njejo.',
+	'regexblock-regex-filter' => 'abo gódnota regularnego wuraza:',
+	'regexblock-view-blocked' => 'Naglěd blokěrowany wót:',
+	'regexblock-view-all' => 'Wšykne',
+	'regexblock-view-go' => 'Źi',
+	'regexblock-view-match' => '(eksaktne makanje)',
+	'regexblock-view-regex' => '(wótpowědujo regularnemu wurazoju)',
+	'regexblock-view-account' => '(Blokěrowanje załoženja kontow)',
+	'regexblock-view-reason' => 'Pśicyna: $1',
+	'regexblock-view-reason-default' => 'powšykna pśicyna',
+	'regexblock-view-block-infinite' => 'wobstawne blokěrowanje',
+	'regexblock-view-block-temporary' => 'pśepadnjo',
+	'regexblock-view-block-expired' => 'PŚEPADNJONY',
+	'regexblock-view-block-by' => 'blokěrowany wót',
+	'regexblock-view-block-unblock' => 'pśipušćiś',
+	'regexblock-view-stats' => 'statistiske pódaśa',
+	'regexblock-view-empty' => 'Lisćina blokěrowanych mjenjow a adresow jo prozna.',
+	'regexblock-view-time' => 'na $1',
+	'right-regexblock' => 'Zawoborujo wužywarjam wobźěłowanje na wšych wikijach na wikijowej farmje',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -880,7 +930,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'regexblock' => 'Regularne wurazy blokować',
+	'regexblock' => 'Blokowanje přez regularne wurazy',
 	'regexblock-already-blocked' => '$1 je hižo zablokowany.',
 	'regexblock-block-log' => "Wužiwarske mjeno abo IP-adresa '''$1''' je so blokowało/blokowała.",
 	'regexblock-block-success' => 'Blokowanje wuspěšne',
@@ -914,7 +964,7 @@ $messages['hsb'] = array(
 	'regexblock-view-all' => 'Wšě',
 	'regexblock-view-go' => 'Dźi',
 	'regexblock-view-match' => '(eksaktny wotpowědnik)',
-	'regexblock-view-regex' => '(regularny wuraz wotpowědnik)',
+	'regexblock-view-regex' => '(wotpowěduje regularnemu wurazej)',
 	'regexblock-view-account' => '(wutworjenje konta blokować)',
 	'regexblock-view-reason' => 'přičina: $1',
 	'regexblock-view-reason-default' => 'powšitkowna přičina',
@@ -1045,6 +1095,7 @@ $messages['ja'] = array(
 	'regexblock-unblock-log' => "利用者名またはIPアドレス '''$1''' のブロックを解除しました。",
 	'regexblock-unblock-error' => '$1 のブロック解除エラー。おそらく、その利用者は存在しません。',
 	'regexblock-regex-filter' => ' あるいは正規表現:',
+	'regexblock-view-blocked' => '指定した利用者によるブロックを表示:',
 	'regexblock-view-all' => 'すべて',
 	'regexblock-view-go' => '表示',
 	'regexblock-view-match' => '(完全一致)',
@@ -1053,9 +1104,13 @@ $messages['ja'] = array(
 	'regexblock-view-reason' => '理由: $1',
 	'regexblock-view-reason-default' => '一般の理由',
 	'regexblock-view-block-infinite' => '無期限ブロック',
+	'regexblock-view-block-temporary' => '予定期限',
+	'regexblock-view-block-expired' => '期限',
+	'regexblock-view-block-by' => 'ブロック実行者',
 	'regexblock-view-block-unblock' => 'ブロック解除',
 	'regexblock-view-stats' => '統計',
 	'regexblock-view-empty' => 'ブロックされた利用者名とアドレスの一覧には項目がありません。',
+	'regexblock-view-time' => '$1',
 	'right-regexblock' => '利用者をウィキファーム上のすべてのウィキで投稿ブロックする',
 );
 

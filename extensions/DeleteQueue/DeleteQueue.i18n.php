@@ -330,6 +330,8 @@ $messages['ar'] = array(
 
 [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} قائمة] بالتاييدات والاعتراضات على هذا الحذف متوفرة، والنقاش نفسه يمكن العثور عليه في [[\$2]].
 من فضلك تأكد من أنك تتخذ قرارا مع الأخذ في الاعتبار التوافق في النقاش.",
+	'deletequeue-review-success' => 'أنت راجعت بنجاح حذف هذه الصفحة',
+	'deletequeue-review-success-title' => 'المراجعة اكتملت',
 	'deletequeue-deletediscuss-discussionpage' => 'هذه هي صفحة النقاش لحذف [[$1]].
 يوجد حاليا $2 {{PLURAL:$2|مستخدم يؤيد|مستخدم يؤيد}} الحذف، و $3 {{PLURAL:$3|مستخدم يعارض|مستخدم يعارض}} الحذف.
 يمكنك [{{fullurl:$1|action=delvote}} تأييد أو معارضة] الحذف، أو [{{fullurl:$1|action=delviewvotes}} رؤية كل التأييدات والاعتراضات].',
@@ -688,6 +690,8 @@ Bitte stelle sicher, dass diese Seite in Übereinstimmung mit den Richtlinien sc
 
 Es gibt eine [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Liste] mit Stimmen für und gegen die Löschung; die eigentliche Diskussion ist unter [[$2]] zu finden.
 Bitte achte darauf, dass deine Entscheidung mit dem Konsens der Diskussion vereinbar ist.",
+	'deletequeue-review-success' => 'Du hast erfolgreich die Löschung dieser Seite geprüft',
+	'deletequeue-review-success-title' => 'Prüfung abgeschlossen',
 	'deletequeue-deletediscuss-discussionpage' => 'Dies ist die Diskussionsseite für die Löschung von [[$1]].
 Momentan {{PLURAL:$2|unterstützt ein|unterstützen $2}} Benutzer die Löschung, während $3 Benutzer sie ablehnen.
 Du kannst die Löschung [{{fullurl:$1|action=delvote}} befürworten oder ablehnen] oder [{{fullurl:$1|action=delviewvotes}} alle Stimmen ansehen].',
@@ -740,6 +744,13 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
 	'deletequeue-list-header-votes' => 'Befürwortungen und Ablehnungen',
 	'deletequeue-list-header-expiry' => 'Ablaufdatum',
 	'deletequeue-list-header-discusspage' => 'Diskussionsseite',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
+$messages['de-formal'] = array(
+	'deletequeue-review-success' => 'Sie haben erfolgreich die Löschung dieser Seite geprüft',
 );
 
 /** Esperanto (Esperanto)
@@ -1316,6 +1327,83 @@ $messages['grc'] = array(
 	'deletequeue-list-anyqueue' => '(οἱαδήποτε)',
 	'deletequeue-list-header-page' => 'Δέλτος',
 	'deletequeue-list-header-queue' => 'Οὐρά',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'deletequeue-desc' => 'Legt e [[Special:DeleteQueue|Syschtem fir d Verwaltig vu Leschige aa uf dr Grundlag vun ere Warteschlang]]',
+	'deletequeue-action-queued' => 'Leschig',
+	'deletequeue-action' => 'Leschig vorschlaa',
+	'deletequeue-action-title' => 'Vorschlaaa, ass „$1“ glescht wird',
+	'deletequeue-action-text' => "Uf {{SITENAME}} git s mehreri unterschidligi Arte, wie bi dr LEschig vu Syte vorgange wird:
+*Wänn Du glaubsch, ass die Syte d ''Schnällleschkriterie'' erfillt, no chasch si [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} doo ] vorschlaa.
+*Wänn die Syte nit fir d Schnällleschig geignet isch, d Leschig aber ''wahrschyns nit umstritten'' isch, sottsch si fir e  [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} nit umstritteni Leschig] vorschlaa.
+*Wänn d Leschig vu däre Syte ''wahrschyns umstritten'' isch, sottsch [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} e Diskussion aafange].",
+	'deletequeue-action-text-queued' => 'Du chasch die Syte fir dr Leschaatrag ufruefe:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Pro un Contra].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Stimm zue däm Leschaatrag abgee].',
+	'deletequeue-permissions-noedit' => 'Du muesch e Syte bearbeite chenne go dr Leschstatus vun ere verändere chenne.',
+	'deletequeue-generic-reasons' => '* Grind, wu vyylmol vorchemme
+   ** Vandalismus
+   ** Wärbig
+   ** Wartig
+   ** Nit mit em Projäktziil vereinbar',
+	'deletequeue-nom-alreadyqueued' => 'Die Syte isch scho in dr Lesch-Warteschlang.',
+	'deletequeue-speedy-title' => '„$1“ fir e Schnällleschig vorschlaa',
+	'deletequeue-speedy-text' => "Uf däre Syte chasch „'''$1'''“ fir e Schnällleschig vorschlaa.
+
+E Ammann wird dr Aatrag bschaue un d Syte lesche, wänn er guet begrindet isch.
+Du muesch e Leschgrund us em Dropdown-Menü do unten uuswehlen un alli wytere relevante Informatione dezuegee.",
+	'deletequeue-prod-title' => '„$1“ zum Lesche vorschlaa',
+	'deletequeue-prod-text' => "Uf däre Syte chasch „'''$1'''“ zum Lesche vorschlaa.
+
+Wänn no fimf Täg nieme Yyspruch gege d Leschig yygleit het, wird d Syte glescht noch ere letschte Priefig dur e Ammann.",
+	'deletequeue-delnom-reason' => 'Grund fir dr Leschaatrag:',
+	'deletequeue-delnom-otherreason' => 'Andere Grund',
+	'deletequeue-delnom-extra' => 'Wyteri Informatione:',
+	'deletequeue-delnom-submit' => 'Leschig yytrage',
+	'deletequeue-log-nominate' => 'het [[$1]] fir d Leschig in dr Lesch-Warteschlang „$2“ vorgschlaa.',
+	'deletequeue-log-rmspeedy' => 'het dr Schnällleschaatrag fir [[$1]] abglähnt.',
+	'deletequeue-log-requeue' => 'het [[$1]] in e andere Lesch-Warteschlang verschobe: vu „$2“ in „$3“.',
+	'deletequeue-log-dequeue' => 'het [[$1]] us dr Lesch-Warteschlang „$2“ usegnuu.',
+	'right-speedy-nominate' => 'Syte fir e Schnällleschig vorschlaa',
+	'right-speedy-review' => 'Schnällleschaaträg priefe',
+	'right-prod-nominate' => 'Syte zum Lesche vorschlaa',
+	'right-prod-review' => 'Nit umstritteni Leschaaträg priefe',
+	'right-deletediscuss-nominate' => 'Leschdiskussionen aafange',
+	'right-deletediscuss-review' => 'Leschdiskussione zuemache',
+	'right-deletequeue-vote' => 'Fir oder gege d Leschig stimme',
+	'deletequeue-queue-speedy' => 'Schnällleschig',
+	'deletequeue-queue-prod' => 'Leschaatrag',
+	'deletequeue-queue-deletediscuss' => 'Leschdiskussion',
+	'deletequeue-page-speedy' => "Die Syte isch fir e Schnällleschig vorgschlaa wore.
+Dr Grund, wu aagee woren isch derfir, isch ''$1''.",
+	'deletequeue-page-prod' => "Die Syten isch zum Lesche vorgschlaa wore.
+Dr Grund, wu aagee woren isch derfir, isch ''$1''.
+Wänn dodergege bis zum ''$2'' kei Yyspruch yygleit wird, no wird die Syte glescht.
+Du chasch gege dää Leschaatrag [{{fullurl:{{FULLPAGENAME}}|action=delvote}} en Yyspruch yylege].",
+	'deletequeue-page-deletediscuss' => "Die Syte isch zum Lesche vorgschlaa wore un dodergege isch Yyspruch yygleit wore.
+Dr Grund, wu aagee woren isch, isch ''$1''.
+D [[$3|Leschdiskussion]] lauft no bis am ''$2''.",
+	'deletequeue-notqueued' => 'D Syte, wu Du uusgwehlt hesch, isch zur Zyt in keinere Lesch-Warteschlang',
+	'deletequeue-review-action' => 'Aktion, wu uusgfiert soll wäre:',
+	'deletequeue-review-delete' => 'Syte lesche.',
+	'deletequeue-review-change' => 'Syte lesche, aber mit eme andere Grund.',
+	'deletequeue-review-requeue' => 'Syte in die Lesch-Warteschlang verschiebe:',
+	'deletequeue-review-dequeue' => 'Kei Aktion uusfieren un d Syte us dr Lesch-Warteschlang useneh',
+	'deletequeue-review-reason' => 'Kommentar:',
+	'deletequeue-review-newreason' => 'Neje Grund:',
+	'deletequeue-review-newextra' => 'Wyteri Informatione:',
+	'deletequeue-review-submit' => 'Iberpriefig spychere',
+	'deletequeue-review-original' => 'Grund fir dr Aatrag',
+	'deletequeue-actiondisabled-involved' => 'Die Aktion isch deaktiviert, wel Du in däm Leschfall scho as $1 teilgnuu hesch:',
+	'deletequeue-actiondisabled-notexpired' => 'Die Aktion isch deaktiviert, wel dr Leschaatrag nonig uusglofen isch:',
+	'deletequeue-review-badaction' => 'Du hesch e nit giltigi Aktion aagee',
+	'deletequeue-review-actiondenied' => 'Du hesch en Aktion aagee, wu fir die Syte deaktiviert isch',
+	'deletequeue-review-objections' => "'''Warnig''': Gege d Leschig vu däre Syte isch [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} Yyspruch yygleit] wore.
+Bitte prief d Yyspruchs-Argumänt, voreb Du die syte leschesch.",
 );
 
 /** Hebrew (עברית)

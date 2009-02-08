@@ -1149,6 +1149,7 @@ $messages['roa-tara'] = array(
 	'todo-list-for' => 'Liste de le cose da fà pe',
 	'todo-list-change' => 'Cange',
 	'todo-list-cancel' => 'Scangille',
+	'todo-form-submit' => 'Conferme inderrogazione',
 );
 
 /** Russian (Русский)

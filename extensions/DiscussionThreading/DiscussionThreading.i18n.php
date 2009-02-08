@@ -180,6 +180,17 @@ $messages['grc'] = array(
 	'discussionthreading-threadnewsection' => 'νέα',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'discussionthreading-desc' => 'Strang-Verwaltig fir Diskussionssyte',
+	'discussionthreading-replysection' => 'Antwort gee',
+	'discussionthreading-replysectionhint' => 'Zue däm Yytrag e Antwort gee',
+	'discussionthreading-threadnewsection' => 'nej',
+	'discussionthreading-threadnewsectionhint' => 'E neje Diskussionsstrang aalege',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -333,6 +344,17 @@ $messages['pl'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'discussionthreading-desc' => 'Adiciona a funcionalidade de tópicos às páginas de discussão',
+	'discussionthreading-replysection' => 'responder',
+	'discussionthreading-replysectionhint' => 'Responder a este comentário',
+	'discussionthreading-threadnewsection' => 'novo',
+	'discussionthreading-threadnewsectionhint' => 'Iniciar um novo tópico',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'discussionthreading-desc' => 'Adiciona a funcionalidade de tópicos às páginas de discussão',
 	'discussionthreading-replysection' => 'responder',
 	'discussionthreading-replysectionhint' => 'Responder a este comentário',

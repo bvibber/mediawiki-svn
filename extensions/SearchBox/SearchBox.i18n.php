@@ -408,6 +408,16 @@ $messages['pt'] = array(
 	'searchbox-namespaces' => 'Domínios:',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'searchbox-desc' => 'Permite a inclusão de formulários de pesquisa',
+	'searchbox-search' => 'Pesquisar',
+	'searchbox-go' => 'Ir',
+	'searchbox-namespaces' => 'Espaços Nominais:',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

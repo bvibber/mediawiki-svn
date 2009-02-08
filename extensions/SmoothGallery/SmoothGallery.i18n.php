@@ -92,6 +92,28 @@ $messages['arz'] = array(
 	'smoothgallery-javascript-disabled' => 'الجافاسكريبت مطلوب لرؤية هذا المعرض جيدا.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'smoothgallery' => 'Плыўная галерэя',
+	'smoothgallery-desc' => 'Дазваляе ўдзельнікам ствараць галерэі з выявамі, якія яны загрузілі.
+Падтрымлівае большасьць установак плыўнай галерэі',
+	'smoothgallery-title' => 'Плыўная галерэя',
+	'smoothgallery-smoothgallerytitle' => 'Плыўная галерэя: $1',
+	'smoothgallery-error' => '<b>Памылка плыўнай галерэі:</b>',
+	'smoothgallery-gallery-not-found' => 'Запатрабаваная галерэя не існуе.',
+	'smoothgallery-not-found' => 'Выявы не былі дададзеныя ў галерэю.
+Калі ласка, дадайце хаця б адну.',
+	'smoothgallery-no-images' => 'У гэтай галерэі не было знойдзена выяваў.
+Упэўніцеся, што {{PLURAL:$3|запытаная выява існуе|запытаныя выявы існуюць}}.
+{{PLURAL:$2|Наступная выява ня знойдзеная|Наступныя выявы ня знойдзеныя}}: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Наступная запытаная выява мае|Наступныя запытаныя выявы маюць}} няслушны тып: $1',
+	'smoothgallery-unexpected-error' => 'Адбылася нечаканая памылка.
+Калі ласка, дашліце паведамленьне пра памылку.',
+	'smoothgallery-javascript-disabled' => 'Для прагляду гэтай галерэі неабходны JavaScript.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

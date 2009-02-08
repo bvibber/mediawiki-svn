@@ -244,6 +244,16 @@ $messages['eo'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Eraro de enigo!',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'chemicalsources' => 'Fuentes químicas',
+	'chemFunctions_ListPage' => 'Fuentes químicas',
+	'chemFunctions_Formula' => 'Fórmula',
+	'chemFunctions_Name' => 'Nombre IUPAC',
+);
+
 /** Estonian (Eesti)
  * @author Avjoska
  */

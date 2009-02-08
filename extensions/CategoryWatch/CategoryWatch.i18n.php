@@ -236,6 +236,20 @@ Esta mensaxe serve para notificarlle que o $3 o usuario $4 $5.',
 	'categorywatch-catsub' => 'eliminou $1 da categoría $2',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'categorywatch-desc' => 'Erwyteret d Beobachtigslischt, ass mer Hiiwyys iberchunnt, wänn Syten in beobachtete Kategorien yytragen oder au ene usegnuu wäre.',
+	'categorywatch-emailbody' => 'Sali $1, Du chunnsch die Nochricht iber, wel Du d Kategorii „$2“ beobachte tuesch.
+Die Nochricht mäldet Dir, ass Benutzer $4 am $3 $5.',
+	'categorywatch-emailsubject' => 'Bearbeitig, wu di beobachtet Kategorii „$1“ betrifft',
+	'categorywatch-catmovein' => '$1 in Kategorii $2 vu $3 verschobe het',
+	'categorywatch-catmoveout' => '$1 vu Kategorii $2 in $3 verschobe het',
+	'categorywatch-catadd' => '$1 zue dr Kategorii $2 zuegfiegt het',
+	'categorywatch-catsub' => '$1 us dr Kategorii $2 usegnuu het',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
