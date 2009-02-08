@@ -30,7 +30,7 @@ $messages['en'] = array(
 	'framedvideo_helppage' => 'Help:Video',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|More about syntax]].',
 	'framedvideo_error_height_and_width_required' => 'Video type "$1" requires "height" and "width2" or "width" parameters.',
-	'framedvideo-desc' => 'Allows embedding videos from various websites',
+	'framedvideo-desc' => 'Allows embedding videos from various websites using the tag <tt><nowiki><video></nowiki></tt>',
 );
 
 
