@@ -699,7 +699,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			}
 
 			if ( array_key_exists( $name, $settings ) ) {
-				$settings[$name] = $this->cleanupSetting( $name, $settings[$name] );
+				$settings[$name] = $this->cleanupSetting( $name, $settings[$name], $type );
 				if ( $settings[$name] === null )
 					unset( $settings[$name] );
 			}
@@ -715,10 +715,10 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @param $val Mixed: setting value
 	 * @return Mixed
 	 */
-	protected function cleanupSetting( $name, $val ) {
+	protected function cleanupSetting( $name, $val, $type ) {
 		global $wgConf;
 
-		if (!empty($val) || $val) {
+		if ( !empty( $val ) || $val || $type == 'bool' ) {
 			return $val;
 		}
 
@@ -727,7 +727,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			$list = $this->mConfSettings->getEmptyValues();
 
 		static $defaults = null;
-		if ($defaults === null)
+		if ( $defaults === null )
 			$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
 
 		if ( array_key_exists( $name, $list ) ) {
