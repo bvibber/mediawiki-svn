@@ -12,7 +12,7 @@ CREATE TABLE config_version (
 	-- wiki concerned by this version
 	cv_wiki TEXT NOT NULL,
 
-	-- TS_MV timestamp of the version
+	-- TS_POSTGRES timestamp of the version
 	cv_timestamp TIMESTAMPTZ NOT NULL,
 
 	-- Whether this is the latest version for cv_wiki, will be used to get
@@ -41,5 +41,5 @@ CREATE TABLE config_setting (
 	-- setting's value, in php serialized format
 	cs_value TEXT
 );
-CREATE UNIQUE INDEX cs_id_name ON config_setting( cs_id, cs_name );
+ALTER TABLE config_setting ADD CONSTRAINT cs_id_name PRIMARY KEY ( cs_id, cs_name );
 CREATE INDEX cs_id ON config_setting( cs_id );
