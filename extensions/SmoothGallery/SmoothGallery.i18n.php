@@ -25,7 +25,7 @@ The following {{PLURAL:$2|image|images}} were not found: $1',
 	'smoothgallery-invalid-images'      => 'The following requested {{PLURAL:$2|image was|images were}} of an invalid type: $1',
 	'smoothgallery-unexpected-error'    => 'There was an unexpected error.
 Please file a bug report.',
-	'smoothgallery-javascript-disabled' => 'Javascript is required to view this gallery properly.',
+	'smoothgallery-javascript-disabled' => 'JavaScript is required to view this gallery properly.',
 );
 
 /** Message documentation (Message documentation)
