@@ -113,6 +113,8 @@ class CodeRevisionView extends CodeView {
 	}
 	
 	protected function navigationLinks() {
+		global $wgLang;
+
 		$rev = $this->mRev->getId();
 		$prev = $this->mRev->getPrevious();
 		$next = $this->mRev->getNext();
@@ -139,7 +141,7 @@ class CodeRevisionView extends CodeView {
 			$links[] = $this->mSkin->link( $nextTarget, "r$next" ) . '&nbsp;&gt;';
 		}
 
-		return implode( ' | ', $links );
+		return $wgLang->pipeList( $links );
 	}
 
 	protected function checkPostings() {

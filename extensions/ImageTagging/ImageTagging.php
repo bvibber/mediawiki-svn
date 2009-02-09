@@ -318,7 +318,7 @@ function wfPurgeTitle($title) {
 }
 
 function wfGetImageTags($img, $imgName) {
-	global $wgDBname, $wgUser, $wgOut;
+	global $wgDBname, $wgUser, $wgOut, $wgLang;
 
 	wfProfileIn( __METHOD__ );
 
@@ -353,7 +353,7 @@ function wfGetImageTags($img, $imgName) {
 
 		$removeLink = '<a href="#" onclick="removeTag(' . $o->unique_id . ', this, \'' . addslashes( $o->article_tag ) . '\'); return false;">' . wfMsgHtml('imagetagging-removetag') . '</a>';
 
-		$html .= $span . $articleLink . ' (' . $imagesLink . ' | ' . $removeLink . ')</span>';
+		$html .= $span . $articleLink . ' (' . $wgLang->pipeList( array( $imagesLink, $removeLink ) ) . ')</span>';
 	}
 	$db->freeResult($res);
 

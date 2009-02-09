@@ -19,13 +19,15 @@ class CodeRepoListView {
 	}
 	
 	public static function getNavItem( $name ) {
+		global $wgLang;
+
 		$text = "'''[[Special:Code/$name|$name]]''' (";
-		$text .= "[[Special:Code/$name/comments|".wfMsgHtml( 'code-notes' )."]]";
-		$text .= " | [[Special:Code/$name/status|".wfMsgHtml( 'code-status' )."]]";
-		$text .= " | [[Special:Code/$name/tag|".wfMsgHtml( 'code-tags' )."]]";
-		$text .= " | [[Special:Code/$name/author|".wfMsgHtml( 'code-authors' )."]]";
+		$links[] = "[[Special:Code/$name/comments|" . wfMsgHtml( 'code-notes' ) . "]]";
+		$links[] = "[[Special:Code/$name/status|" . wfMsgHtml( 'code-status' ) . "]]";
+		$links[] = "[[Special:Code/$name/tag|" . wfMsgHtml( 'code-tags' ) . "]]";
+		$links[] = "[[Special:Code/$name/author|" . wfMsgHtml( 'code-authors' ) . "]]";
+		$text .= $wgLang->pipeList( $links );
 		$text .= ")";
 		return $text;
 	}
 }
-

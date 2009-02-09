@@ -723,6 +723,7 @@ END
 
 		// $wgOut->addWikiText( $copywarn );
 		$wgOut->addHTML( $this->editFormTextAfterWarn );
+		$separator = wfMsgExt( 'pipe-separator' , 'escapenoentities' );
 		$wgOut->addHTML( "
 {$metadata}
 {$editsummary}
@@ -734,7 +735,7 @@ END
 		$wgOut->addHTML(
 "<div class='editButtons'>
 {$buttonshtml}
-	<span class='editHelp'>{$cancel} | {$edithelp}</span>
+	<span class='editHelp'>{$cancel}{$separator}{$edithelp}</span>
 </div><!-- editButtons -->
 </div><!-- editOptions -->" );
 

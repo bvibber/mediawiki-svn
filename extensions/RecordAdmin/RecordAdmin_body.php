@@ -23,7 +23,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Override SpecialPage::execute()
 	 */
 	function execute( $param ) {
-		global $wgOut, $wgRequest, $wgRecordAdminUseNamespaces;
+		global $wgOut, $wgRequest, $wgRecordAdminUseNamespaces, $wgLang;
 		$this->setHeaders();
 		$type     = $wgRequest->getText( 'wpType' ) or $type = $param;
 		$record   = $wgRequest->getText( 'wpRecord' );
@@ -35,9 +35,10 @@ class SpecialRecordAdmin extends SpecialPage {
 			if ( $wpTitle && !ereg( "^$type:.+$", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
 		}
 
-		$wgOut->addHTML( "<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a> | "
-			. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br>\n"
-		);
+		$wgOut->addHTML( $wgLang->pipeList( array(
+			"<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>",
+			"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br>\n"
+		) ) );
 
 		# Get posted form values if any
 		$posted = array();

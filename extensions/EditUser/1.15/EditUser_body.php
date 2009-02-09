@@ -695,7 +695,7 @@ class EditUser extends SpecialPage {
 			$this->tableRow(
 				wfMsgExt( 'prefs-memberingroups', array( 'parseinline' ), count( $userEffectiveGroupsArray ) ),
 				$wgLang->commaList( $userEffectiveGroupsArray ) .
-				'<br />(' . implode( ' | ', $toolLinks ) . ')'
+				'<br />(' . $wgLang->pipeList( $toolLinks ) . ')'
 			) .
 
 			$this->tableRow(

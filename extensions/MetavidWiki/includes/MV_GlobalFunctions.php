@@ -816,6 +816,7 @@ function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 	} else {
 		$nlink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" class=\"mw-nextlink\">{$next}</a>";
 	}
+	// If ever re-enabled, remember to use pipe-separator / Language::pipeList
 	/*$nums = wfNumLink( $offset, 20, $title, $query ) . ' | ' .
 	  wfNumLink( $offset, 50, $title, $query ) . ' | ' .
 	  wfNumLink( $offset, 100, $title, $query ) ;
