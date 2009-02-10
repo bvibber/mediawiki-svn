@@ -81,40 +81,42 @@
 		<hr noshade="noshade" size="1" />
 		<pre><?php
 
-	$dbr = new Database();
-	$dateRange = array(
-		sprintf(
-			'rev_timestamp > %s',
-			$dbr->addQuotes( date( 'Ymd', strtotime( $parameters['from'] ) )
-			)
-		),
-		sprintf(
-			'rev_timestamp < %s',
-			$dbr->addQuotes( date( 'Ymd', strtotime( $parameters['to'] ) )
-			)
-		),
-	);
-	switch ( $parameters['type'] ) {
-		case 'edits':
-			$result = $dbr->select(
-				'revision',
-				'COUNT( rev_id )',
-				$dateRange,
-				array( 'LIMIT' => 1 )
-			);
-			break;
-		case 'editors':
-			$result = $dbr->select(
-				'revision',
-				'DISTINCT COUNT( rev_user )',
-				$dateRange,
-				array( 'LIMIT' => 1 )
-			);
-			break;
-	}
-	if ( isset( $result ) ) {
-		while( $row = $result->fetchRow() ) {
-			echo $row[0];
+	if ( isset( $_POST['submit'] ) ) {
+		$dbr = new Database();
+		$dateRange = array(
+			sprintf(
+				'rev_timestamp > %s',
+				$dbr->addQuotes( date( 'Ymd', strtotime( $parameters['from'] ) )
+				)
+			),
+			sprintf(
+				'rev_timestamp < %s',
+				$dbr->addQuotes( date( 'Ymd', strtotime( $parameters['to'] ) )
+				)
+			),
+		);
+		switch ( $parameters['type'] ) {
+			case 'edits':
+				$result = $dbr->select(
+					'revision',
+					'COUNT( rev_id )',
+					$dateRange,
+					array( 'LIMIT' => 1 )
+				);
+				break;
+			case 'editors':
+				$result = $dbr->select(
+					'revision',
+					'DISTINCT COUNT( rev_user )',
+					$dateRange,
+					array( 'LIMIT' => 1 )
+				);
+				break;
+		}
+		if ( isset( $result ) ) {
+			while( $row = $result->fetchRow() ) {
+				echo $row[0];
+			}
 		}
 	}
 
