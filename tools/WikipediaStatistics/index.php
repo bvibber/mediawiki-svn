@@ -107,7 +107,7 @@
 			case 'editors':
 				$result = $dbr->select(
 					'revision',
-					'DISTINCT COUNT( rev_user )',
+					'DISTINCT COUNT( rev_user_text )',
 					$dateRange,
 					array( 'LIMIT' => 1 )
 				);
