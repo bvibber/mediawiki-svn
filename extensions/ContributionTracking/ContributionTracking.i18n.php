@@ -46,6 +46,7 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
@@ -54,12 +55,13 @@ $messages['ar'] = array(
 	'contrib-tracking-error' => 'خطأ',
 	'contrib-tracking-error-text' => 'نموذج تسليم غير صحيح',
 	'contrib-tracking-submitting' => 'تسليم إلى معالج الدفع...',
-	'contrib-tracking-continue' => 'إذا لم تُحوّل تلقائيا، انقر على الزر لإكمال التبرع على باي&#8204;بال.',
+	'contrib-tracking-continue' => 'إذا لم تحول تلقائيا، انقر على الزر لإكمال التبرع على باي بال.',
 	'contrib-tracking-button' => 'استمر',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
@@ -68,7 +70,7 @@ $messages['arz'] = array(
 	'contrib-tracking-error' => 'غلط',
 	'contrib-tracking-error-text' => 'استمارة التقديم مش صحيحة',
 	'contrib-tracking-submitting' => 'تقديم لمعالج الدفع ...',
-	'contrib-tracking-continue' => 'لو ما اتحولتش اوتوماتيكي، دوس على الزرار علشان تكمل التبرع بتاعك على الباي بال',
+	'contrib-tracking-continue' => 'لو ما اتحولتش اوتوماتيكى، دوس على الزرار علشان تكمل التبرع بتاعك على الباى بال',
 	'contrib-tracking-button' => 'استمر',
 );
 

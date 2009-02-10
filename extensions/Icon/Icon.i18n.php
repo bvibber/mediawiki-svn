@@ -104,6 +104,15 @@ $messages['eo'] = array(
 	'icon-desc' => 'Permesas al vi utiligi bildojn kiel ikonojn kaj ikonligilojn',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'icon-badimage' => 'Mala imagen',
+	'icon-badwidth' => 'Mal ancho',
+	'icon-desc' => 'Permite a usted usar imágenes como íconos y vínculos de íconos',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

@@ -312,6 +312,7 @@ $messages['ast'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'openidemail' => 'Адрас электроннай пошты',
 	'openidlanguage' => 'Мова',
 	'openidchoosepassword' => 'пароль:',
 );

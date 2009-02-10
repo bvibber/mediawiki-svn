@@ -394,9 +394,20 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'signdocument' => 'Падпісаньне дакумэнту',
+	'sign-nodocselected' => 'Калі ласка, выберыце дакумэнт, які Вы жадаеце падпісаць.',
+	'sign-selectdoc' => 'Дакумэнт:',
+	'sign-docheader' => '<div class="noarticletext">Калі ласка, карыстайцеся гэтай формай для падпісаньня дакумэнту «[[$1]]», які знаходзіцца ніжэй.
+Прачытайце ўвесь тэкст дакумэнту, і, калі Вы жадаеце выказаць яму падтрымку, запоўніце неабходныя палі і падпішыце яго.</div>',
+	'sign-error-nosuchdoc' => 'Запытаны дакумэнт ($1) не існуе.',
+	'sign-realname' => 'Імя:',
+	'sign-address' => 'Вуліца:',
 	'sign-country' => 'Краіна:',
+	'sign-email' => 'Адрас электроннай пошты:',
+	'sign-submit' => 'Падпісаць дакумэнт',
 	'sign-viewfield-realname' => 'Імя',
 	'sign-viewfield-country' => 'Краіна',
 	'sign-viewfield-reviewcomment' => 'Камэнтар',

@@ -137,6 +137,16 @@ $messages['eo'] = array(
 	'msfunc_div_zero' => 'Divido per nulo',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'msfunc_desc' => 'Una colección de funciones matemáticas y estadísticas',
+	'msfunc_nan' => 'Valor de resultado no es un número',
+	'msfunc_inf' => 'Valor de resultado es infinito',
+	'msfunc_div_zero' => 'División por cero',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

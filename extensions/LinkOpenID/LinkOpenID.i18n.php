@@ -58,7 +58,7 @@ $messages['arz'] = array(
 	'linkopenid-prefs' => 'ID مفتوحه',
 	'linkopenid-prefstext-pre' => 'لو أنك تمتلك هوية مفتوحة من مزود خارجى يمكنك تحديدها هنا.
 هذا يسمح لك باستخدام صفحة المستخدم الخاصة بك كهوية مفتوحة أيضا.',
-	'linkopenid-prefstext-openid' => 'الاي دي المفتوحه بتاعتك:',
+	'linkopenid-prefstext-openid' => 'الاى دى المفتوحه بتاعتك:',
 	'linkopenid-prefstext-v1url' => 'مسار الخادم للهوية المفتوحة النسخة 1.1:',
 	'linkopenid-prefstext-v2url' => 'مسار الخادم للهوية المفتوحة النسخة 2:',
 );

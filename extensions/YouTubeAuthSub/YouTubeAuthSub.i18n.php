@@ -698,6 +698,7 @@ Ole kärsivällinen.',
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Louperivois
@@ -732,8 +733,8 @@ Pour incorporer votre vidéo dans une page du wiki, insérez le code suivant dan
 	'youtubeauthsub_uploading' => 'Votre vidéo est en cours d’importation.
 Soyez patient.',
 	'youtubeauthsub_viewpage' => 'Sinon, vous pouvez [[$1|visionner votre vidéo]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Vous être prié d’entrer un ou plusieurs mots clefs.',
-	'youtubeauthsub_jserror_notitle' => 'Vous être prié d’entrer un titre pour la vidéo.',
+	'youtubeauthsub_jserror_nokeywords' => 'Vous êtes prié d’entrer un ou plusieurs mots clefs.',
+	'youtubeauthsub_jserror_notitle' => 'Vous êtes prié d’entrer un titre pour la vidéo.',
 	'youtubeauthsub_jserror_nodesc' => 'Veuillez entrer une description pour la vidéo.',
 );
 

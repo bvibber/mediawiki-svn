@@ -137,6 +137,7 @@ $wgCustomToolbarMessages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ouda
  * @author Ramsis II
  */
@@ -167,13 +168,13 @@ $wgCustomToolbarMessages['arz'] = array(
 	'ct_math_caption' => 'صيغة',
 	'ct_nowiki_sample' => 'أدرج نصا غير منسق هنا',
 	'ct_nowiki_tip_ins' => 'أهمل تهيئه الويكي',
-	'ct_nowiki_tip_wrap' => 'أهمل تهيئه الويكي لهذا النص',
+	'ct_nowiki_tip_wrap' => 'أهمل تهيئه الويكى لهذا النص',
 	'ct_nowiki_caption' => 'مافيش ويكي',
-	'ct_horizontal_tip' => 'أدخل خط أفقي (أستعمل فاصل)',
+	'ct_horizontal_tip' => 'أدخل خط أفقى (أستعمل فاصل)',
 	'ct_horizontal_caption' => 'خط افقي',
 	'ct_upload' => 'رفع $1',
 	'ct_select' => 'انتقاء $1 للرفع',
-	'ct_caption' => 'أضف عنوان فرعي (أختياري)',
+	'ct_caption' => 'أضف عنوان فرعى (أختيارى)',
 	'ct_link' => 'أضف اسم الرابط (إختياري)',
 	'ct_submit' => 'روح!',
 	'ct_close' => 'أغلق النافذة',
@@ -699,6 +700,14 @@ Por favor, comprobe o seu bloqueador de ventás emerxentes.',
 	'ct_user_tip' => 'Insira unha ligazón cara a unha páxina de usuario',
 	'ct_user_caption' => 'Ligazón cara a un usuario',
 	'ct_user_sample' => 'Nome de usuario',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$wgCustomToolbarMessages['grc'] = array(
+	'ct_user_user' => 'Χρώμενος',
+	'ct_user_sample' => 'Ὄνομα χρωμένου',
 );
 
 /** Swiss German (Alemannisch)

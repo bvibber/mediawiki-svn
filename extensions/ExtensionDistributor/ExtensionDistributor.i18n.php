@@ -1381,8 +1381,7 @@ $messages['pt'] = array(
 	'extdist-wc-empty' => 'A directoria de cópia de trabalho não possui extensões distribuíveis!',
 	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'Versão atual (tronco)',
-	'extdist-choose-version' => '
-<big>Você esteá a descarregar a extensão <b>$1</b>.</big>
+	'extdist-choose-version' => '<big>Você está a descarregar a extensão <b>$1</b>.</big>
 
 Selecione a versão do seu MediaWiki.
 

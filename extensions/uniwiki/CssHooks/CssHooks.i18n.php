@@ -33,7 +33,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'csshooks-desc' => 'يضيف سي إس إس لمخرج إتش تي إم إل للصفحات لأسلوب أفضل',
+	'csshooks-desc' => 'يضيف سى إس إس لمخرج إتش تى إم إل للصفحات لأسلوب أفضل',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

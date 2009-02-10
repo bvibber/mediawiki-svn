@@ -863,7 +863,6 @@ $messages['lb'] = array(
 	'importusers-email' => 'E-Mailadress',
 	'importusers-realname' => 'richtege Numm',
 	'right-import_users' => 'Benotzer a grousser Zuel importéieren',
-	'action-import_users' => "Benotzer a grousser Zuel z'importéieren",
 );
 
 /** Eastern Mari (Олык Марий)

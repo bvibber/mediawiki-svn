@@ -41,8 +41,8 @@ $messages['ar'] = array(
 
 <br />',
 	'securepasswords-minlength' => 'تكون على الأقل $1 {{PLURAL:$1|حرف|حرف}} طولا',
-	'securepasswords-lowercase' => 'lowercase تحتوى على الأقل على حرف في حالة',
-	'securepasswords-uppercase' => 'uppercase تحتوى على الأقل على حرف في حالة',
+	'securepasswords-lowercase' => 'تحتوي على الأقل على حرف واحد صغير',
+	'securepasswords-uppercase' => 'تحتوي على الأقل على حرف واحد كبير',
 	'securepasswords-digit' => 'يحتوى على رقم واحد على الأقل',
 	'securepasswords-special' => 'تحتوى على الأقل على رمز خاص (الرموز الخاصة مثل : $1)',
 	'securepasswords-username' => 'تكون مختلفة عن اسم المستخدم',
@@ -59,8 +59,8 @@ $messages['arz'] = array(
 	'securepasswords-valid' => 'الباسورد بتاعتك ماتنفعش او قصيره خالص.
 الباسورد لازم:',
 	'securepasswords-minlength' => 'لازم طولها يكون ع الاقل $1 {{PLURAL:$1|حرف|حرف}}',
-	'securepasswords-lowercase' => 'lowercase تحتوى على الأقل على حرف في حالة',
-	'securepasswords-uppercase' => 'uppercase تحتوى على الأقل على حرف في حالة',
+	'securepasswords-lowercase' => 'تحتوى على الأقل على حرف واحد صغير',
+	'securepasswords-uppercase' => 'تحتوى على الأقل على حرف واحد كبير',
 	'securepasswords-digit' => 'يحتوى على رقم واحد على الأقل',
 	'securepasswords-special' => 'بتحتوى على رمز خاص واحد ع الاقل (الرموز الخاصه هما:$1)',
 	'securepasswords-username' => 'تكون مختلفة عن اسم المستخدم',
@@ -72,6 +72,14 @@ $messages['arz'] = array(
  */
 $messages['bs'] = array(
 	'securepasswords-desc' => 'Pravljenje mnogo sigurnijih haševa za šifre i dodaje provjeru jačine šifre',
+	'securepasswords-valid' => 'Vaša šifra je nevaljana ili je prekratka.
+Mora:',
+	'securepasswords-minlength' => 'biti duga najmanje $1 {{PLURAL:$1|znak|znaka|znakova}}',
+	'securepasswords-lowercase' => 'sadržavati najmanje 1 malo slovo',
+	'securepasswords-uppercase' => 'sadržavati najmanje 1 veliko slovo',
+	'securepasswords-digit' => 'sadržavati najmanje 1 cifru',
+	'securepasswords-special' => 'sadržavati najmanje 1 specijalni znak (specijalni znakovi su: $1)',
+	'securepasswords-username' => 'biti različita od Vašeg korisničkog imena',
 	'securepasswords-word' => 'ne bude riječ',
 );
 

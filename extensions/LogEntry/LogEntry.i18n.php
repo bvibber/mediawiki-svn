@@ -90,6 +90,13 @@ $messages['eo'] = array(
 	'logentry-invalidtoken' => 'Malvalida ĵetono',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'logentry-invalidpage' => 'Página inválida',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  * @author Vililikku

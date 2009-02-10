@@ -55,7 +55,6 @@ $messages['qqq'] = array(
 	'amazonplus-german' => 'Name of the German language, or an empty string if translating to German.',
 	'amazonplus-french' => 'Name of the French language, or an empty string if translating to French.',
 	'amazonplus-japanese' => 'Name of the Japanese language, or an empty string if translating to Japanese.',
-	'amazonplus-english' => 'Name of the English language, or an empty string if translating to English.',
 	'amazonplus-status' => ';$1:A combination of status messages seperated with [[MediaWiki:Amazonplus-status-sep/en|amazonplus-status-sep]]',
 	'amazonplus-currency' => ';$1:Formatted price without symbol (e.g. 16.41)
 ;$2:Currency code (e.g. USD)
@@ -96,11 +95,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'amazonplus-desc' => 'امتداد عالي القابله للتخصيص لعرض معلومات امازون',
+	'amazonplus-desc' => 'امتداد عالى القابليه للتخصيص لعرض معلومات امازون',
 	'amazonplus-nores' => '! خطأ: لم يتم العثور على نتائج',
 	'amazonplus-noidres' => 'غلط:مالقيناش بطاقة تعريف المنتج!',
 	'amazonplus-fgcerr' => 'غلط:مانفعش نرجع البيانات من امازون!',

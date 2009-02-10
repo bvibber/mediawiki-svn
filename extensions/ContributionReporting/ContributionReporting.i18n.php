@@ -219,13 +219,14 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'contributionreporting-desc' => 'تقرير حي على جامع تبرعات ويكيميديا',
-	'contributiontotal' => 'اجمالي المساهمة',
+	'contributionreporting-desc' => 'تقرير حى على جامع تبرعات ويكيميديا',
+	'contributiontotal' => 'اجمالى المساهمة',
 	'contributionhistory' => 'تاريخ المساهمة',
-	'contrib-hist-header' => 'التعليقات بتاعة متبرعين الريل-تايم من كل حتة في العالم',
+	'contrib-hist-header' => 'التعليقات بتاعة متبرعين الريل-تايم من كل حتة فى العالم',
 	'contrib-hist-name' => 'الاسم',
 	'contrib-hist-date' => 'الوقت والتاريخ',
 	'contrib-hist-amount' => 'الكمية',
@@ -233,10 +234,10 @@ $messages['arz'] = array(
 	'contrib-hist-previous' => 'التبرعات الجديده',
 	'contrib-hist-anonymous' => 'مش معروف',
 	'contributionstatistics' => 'احصائيات المساهمه',
-	'contribstats-desc' => 'بيعرض الاحصائيات بتاعة المساهمات اللي اتعملت لمؤسسة ويكيميديا',
-	'contribstats-daily-totals' => '{{PLURAL:$1|الاجمالي بتاع انهارده|الاجمالي بتاع الـ$1 يوم اللي فاتو}}',
-	'contribstats-monthly-totals' => '{{PLURAL:$1|الاجمالي بتاع الشهر دا|الاجمالي بتاع الـ$1 شهر اللي فاتو}}',
-	'contribstats-month-range-totals' => '{{PLURAL:$1|الاجمالي بتاع$1 شهر|الاجمالي بتاع$1 شهور}}',
+	'contribstats-desc' => 'بيعرض الاحصائيات بتاعة المساهمات اللى اتعملت لمؤسسة ويكيميديا',
+	'contribstats-daily-totals' => '{{PLURAL:$1|الاجمالى بتاع انهارده|الاجمالى بتاع الـ$1 يوم اللى فاتو}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|الاجمالى بتاع الشهر دا|الاجمالى بتاع الـ$1 شهر اللى فاتو}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|الاجمالى بتاع$1 شهر|الاجمالى بتاع$1 شهور}}',
 	'contribstats-currency-range-totals' => 'مجموع العملات (من $1 ل $2)',
 	'contribstats-contribution-range-breakdown' => 'تفصيل المساهمات على حسب القيمة(من $1 لـ $2)',
 	'contribstats-currency-totals' => 'مجموع العملات للسنة المالية ل$1',
@@ -262,7 +263,7 @@ $messages['arz'] = array(
 	'fundraiserstats-total' => 'الاجمالي(بالدولار الامريكاني)',
 	'fundraiserstats-avg' => 'المتوسط (بالدولار الامريكاني)',
 	'fundraiserstats-max' => 'الحد الاقصى(بالدولار الامريكاني)',
-	'fundraiserstats-tab-totals' => 'الاجمالي (بالدولار الامريكاني)',
+	'fundraiserstats-tab-totals' => 'الاجمالى (بالدولار الامريكانى)',
 	'fundraiserstats-tab-contributions' => 'عدد المساهمات',
 	'fundraiserstats-tab-averages' => 'متوسطات',
 	'fundraiserstats-tab-maximums' => 'الحدود القصوى (بالدولار الامريكاني)',

@@ -134,6 +134,17 @@ $messages['eo'] = array(
 	'newschannel_exclude_category' => 'Ekskludi kategorion:',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'newschannel' => 'Canal de noticias',
+	'newschannel_format' => 'Formato:',
+	'newschannel_limit' => 'Límite:',
+	'newschannel_include_category' => 'Categoría adicional:',
+	'newschannel_exclude_category' => 'Excluir categoría:',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

@@ -148,6 +148,18 @@ $3',
 	'latexdoc_get_pdf' => 'Akiri PDF-on',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'latexdoc_no_text' => 'La página no contiene texto, no se puede generar DVI',
+	'latexdoc_cant_create_dir' => 'No se puede crear directorio temporal $1',
+	'latexdoc_cant_write' => 'No se puede escribir al archivo $1',
+	'latexdoc_get_dvi' => 'Obtener DVI',
+	'latexdoc_get_pdf' => 'Obtener PDF',
+	'latexdoc-desc' => 'Edición colaborativa de documentos LaTeX',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

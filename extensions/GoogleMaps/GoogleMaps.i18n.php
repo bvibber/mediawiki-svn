@@ -2090,6 +2090,13 @@ $wgGoogleMapsMessages['id'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$wgGoogleMapsMessages['io'] = array(
+	'gm-yes' => 'Yes',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

@@ -110,6 +110,11 @@ $aliases['lb'] = array(
 	'ImportUsers' => array( 'Benotzer importéieren' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'ImportUsers' => array( 'УвизНаКорисници' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'ImportUsers' => array( 'Import pengguna' ),

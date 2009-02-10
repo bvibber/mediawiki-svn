@@ -107,6 +107,15 @@ $messages['eo'] = array(
 	'right-forcepreviewexempt' => 'Povas konservi neuzinte Antaŭvidon',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'forcepreview' => 'Grabar página (use prevista primero)',
+	'forcepreview-desc' => 'Forzar prevista para usuarios no privilegiados',
+	'right-forcepreviewexempt' => 'Puede grabar sin usar Mostrar prevista',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

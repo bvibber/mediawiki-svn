@@ -182,7 +182,7 @@ $messages['arz'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>مراجعتك تم تخزينها!</span>",
 	'revision_review_this_page_version_link' => 'مراجعة هذه النسخة من الصفحة.',
 	'review_page_review' => 'مراجعة صفحة "$1"',
-	'review_blocked' => 'انت ممنوع و ما تقدرش تشارك في المراجعات.',
+	'review_blocked' => 'انت ممنوع و ما تقدرش تشارك فى المراجعات.',
 	'review_wrong_namespace' => 'الصفحات فى هذا النطاق لا يمكن مراجعتها!',
 	'review_topic' => 'الموضوع',
 	'review_no_opinion' => 'لا رأي',

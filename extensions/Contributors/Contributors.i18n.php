@@ -305,6 +305,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Baiji
  * @author Imre
  * @author Kobazulo
  * @author Sanbec
@@ -313,6 +314,7 @@ $messages['es'] = array(
 	'contributors' => 'Colaboradores',
 	'contributors-toolbox' => 'Colaboradores principales',
 	'contributors-target' => 'Título:',
+	'contributors-submit' => 'Mostrar',
 );
 
 /** Estonian (Eesti)

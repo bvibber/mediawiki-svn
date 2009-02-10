@@ -105,6 +105,13 @@ $messages['eo'] = array(
 	'multiboilerplate-submit' => 'Alŝuti',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'multiboilerplate-submit' => 'Cargar',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

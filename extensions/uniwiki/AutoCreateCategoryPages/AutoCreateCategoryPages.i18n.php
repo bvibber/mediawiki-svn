@@ -37,14 +37,15 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'autocreatecategorypages-desc' => 'بيعمل صفحات تصانيف مش موجوده بشكل اوتوماتيكي لما تسيف الصفحه',
-	'autocreatecategorypages-stub' => 'دي صفحة تصنيف.
-فيها ليسته بكل الصفحات في التصنيف "$1" و كمان التصنيفات الفرعيه اللي في التصنيف "$1" لو كانت موجوده',
-	'autocreatecategorypages-createdby' => 'اتعملت اوتوماتيكي عن طريق الامتداد AutoCreateCategoryPages',
+	'autocreatecategorypages-desc' => 'بيعمل صفحات تصانيف مش موجوده بشكل اوتوماتيكى لما تسيف الصفحه',
+	'autocreatecategorypages-stub' => 'دى صفحة تصنيف.
+فيها ليسته بكل الصفحات فى التصنيف "$1" و كمان التصنيفات الفرعيه اللى فى التصنيف "$1" لو كانت موجوده',
+	'autocreatecategorypages-createdby' => 'اتعملت اوتوماتيكى عن طريق الامتداد AutoCreateCategoryPages',
 	'autocreatecategorypages-editor' => 'منشئ تصنيف تلقائي',
 );
 

@@ -139,6 +139,16 @@ $messages['eo'] = array(
 	'minipreview-no_category_gallery' => 'Neniuj kategorioj aŭ galerioj!',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'minipreview-files_in_category' => "Esta categoría contiene '''$1''' {{PLURAL:$1|archivo|archivos}}.",
+	'minipreview-files_in_gallery' => "Esta galería contiene '''$1''' {{PLURAL:$1|archivo|archivos}}.",
+	'minipreview-no_more_files_here' => 'No más archivos en esta diracción.',
+	'minipreview-no_category_gallery' => 'Sin categorías ni galerías!',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

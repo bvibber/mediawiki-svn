@@ -164,6 +164,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'edituser' => 'Uređivanje korisnika',
 	'edituser-username' => 'Ime',
 	'edituser-dosearch' => 'Traži',
 );
@@ -266,10 +267,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Baiji
  * @author Imre
  * @author Jatrobat
  */
 $messages['es'] = array(
+	'edituser' => 'Editar usuario',
 	'edituser-username' => 'Nombre',
 	'edituser-dosearch' => 'Buscar',
 );

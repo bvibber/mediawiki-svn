@@ -50,10 +50,11 @@ $messages['avk'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'whosonline' => 'Хто анлайн',
-	'whosonline-desc' => 'Паказвае [[Special:WhosOnline|сьпіс]] увайшоўшых і ананімных удзельнікаў, якія знаходзяцца анлайн',
+	'whosonline' => 'Хто он-лайн',
+	'whosonline-desc' => 'Паказвае [[Special:WhosOnline|сьпіс]] увайшоўшых і ананімных удзельнікаў, якія знаходзяцца он-лайн',
 );
 
 /** Bulgarian (Български)
@@ -104,6 +105,13 @@ $messages['eo'] = array(
 	'whosonline-desc' => 'Montras [[Special:WhosOnline|listo]] de ensalutitaj kaj anonimaj uzantoj nune konektitaj',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'whosonline' => 'Quien está en línea',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -121,9 +129,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'whosonline' => 'Quen está conectado',
+	'whosonline-desc' => 'Amosa [[Special:WhosOnline|unha lista]] dos usuarios rexistrados e anónimos que están actualmente en liña',
 );
 
 /** Swiss German (Alemannisch)

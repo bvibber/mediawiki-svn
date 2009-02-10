@@ -163,18 +163,19 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'povwatch' => 'Нагляд за нэўтральнасьцю пункту гледжаньня',
 	'povwatch_desc' => 'Пашырэньне для [[Special:PovWatch|даданьня старонак да сьпісаў назіраньня]] іншых удзельнікаў',
-	'povwatch_no_session' => 'Памылка: Не магчыма даслаць форму з прычыны страты зьвестак сэсіі.',
+	'povwatch_no_session' => 'Памылка: немагчыма даслаць форму з прычыны страты зьвестак сэсіі.',
 	'povwatch_not_allowed_push' => 'Вы ня можаце дадаваць старонкі да сьпісаў назіраньня, таму што Вы не зьяўляецеся адміністратарам нагляду за нэўтральнасьцю пункту гледжаньня.',
 	'povwatch_already_subscribed' => 'Вы ўжо падпісаны на нагляд за нэўтральнасьцю пункту гледжаньня',
 	'povwatch_subscribed' => 'Цяпер Вы падпісаны на нагляд за нэўтральнасьцю пункту гледжаньня',
 	'povwatch_not_subscribed' => 'Вы не падпісаны на нагляд за нэўтральнасьцю пункту гледжаньня, таму і ня можаце адпісацца.',
 	'povwatch_unsubscribed' => 'Цяпер Вы адпісаліся ад нагляду за нэўтральнасьцю пункту гледжаньня',
 	'povwatch_invalid_title' => 'Пазначаная назва — няслушная',
-	'povwatch_pushed' => '[[$1]] была пасьпяхова дададзеная $2 {{PLURAL:$2|сьпісу назіраньня|сьпісаў назіраньня|сьпісаў назіраньня}}',
+	'povwatch_pushed' => '[[$1]] была пасьпяхова дададзеная да $2 {{PLURAL:$2|сьпісу назіраньня|сьпісаў назіраньня|сьпісаў назіраньня}}',
 	'povwatch_intro' => 'Нагляд за нэўтральнасьцю пункту гледжаньня — сэрвіс, які дазваляе схавана дадаваць старонкі да сьпісаў назіраньня падпісаных адміністратараў.
 
 Журнал апошніх даданьняў да сьпісаў назіраньня можна праглядзець на [[Special:PovWatch/log]].',
@@ -182,9 +183,9 @@ $messages['be-tarask'] = array(
 	'povwatch_subscriber_list_intro' => '<strong>Сьпіс падпісчыкаў</strong>',
 	'povwatch_not_allowed_subscribers' => 'Вам не дазволена праглядаць сьпіс падпісчыкаў нагляду за нэўтральнасьцю пункту гледжаньня.',
 	'povwatch_unknown_subpage' => 'Невядомая падстаронка.',
-	'povwatch_push' => 'Дадаць',
-	'povwatch_push_intro' => 'Карыстайцеся формай паданай ніжэй, каб дадаць старонкі ў сьпісы назіраньняў падпісаных удзельнікаў.
-Калі ласка, будзьце ўважлівы набіраючы назву: могуць быць даданы нават неіснуючыя старонкі, і няма ніякай мажлівасьці выдаліць назву калі яна была ўжо дадана.',
+	'povwatch_push' => 'Распаўсюдзіць',
+	'povwatch_push_intro' => 'Карыстайцеся формай пададзенай ніжэй, каб дадаць старонкі ў сьпісы назіраньняў падпісаных удзельнікаў.
+Калі ласка, будзьце ўважлівы набіраючы назву: могуць быць даданы нават неіснуючыя старонкі, і няма ніякай магчымасьці выдаліць назву, калі яна была ўжо дададзеная.',
 	'povwatch_title' => 'Назва:',
 	'povwatch_comment' => 'Камэнтар журнала:',
 	'povwatch_no_log' => 'У журнале няма запісаў.',
@@ -195,10 +196,10 @@ $messages['be-tarask'] = array(
 	'povwatch_subscribe_intro' => 'Вы не падпісаны на нагляд за нэўтральнасьцю пункту гледжаньня.
 Націсьніце кнопку ніжэй, каб падпісацца.',
 	'povwatch_subscribe' => 'Падпісацца',
-	'povwatch_added' => 'даданы',
-	'right-povwatch_admin' => 'Адміністратарскія правы для даданьня старонак у сьпісы назіраньняў іншых удзельнікаў',
-	'right-povwatch_user' => 'Дадаваць старонкі ў сьпісы назіраньняў іншых удзельнікаў',
-	'action-povwatch_admin' => 'адміністраваньне правамі ўдзельнікаў для нагляду за нэўтральнасьцю пункту гледжаньня',
+	'povwatch_added' => 'дададзены',
+	'right-povwatch_admin' => 'адміністраваньне правоў удзельнікаў дадаваць старонкі ў сьпісы назіраньняў іншых удзельнікаў',
+	'right-povwatch_user' => 'даданьне старонак у сьпісы назіраньняў іншых удзельнікаў',
+	'action-povwatch_admin' => 'адміністраваньне правоў удзельнікаў для нагляду за нэўтральнасьцю пункту гледжаньня',
 	'action-povwatch_user' => 'дадаць гэтую старонку ў сьпіс назіраньня іншага ўдзельніка',
 );
 
@@ -1577,10 +1578,20 @@ Pindutin ang pindutan sa ibaba upang tumanggap ng sipi.",
  */
 $messages['tr'] = array(
 	'povwatch_invalid_title' => 'Belirtilen başlık geçersizdi',
+	'povwatch_subscriber_list_intro' => '<strong>Abone listesi</strong>',
+	'povwatch_unknown_subpage' => 'Bilinmeyen altsayfa.',
 	'povwatch_title' => 'Başlık:',
 	'povwatch_comment' => 'Günlük yorumu:',
 	'povwatch_no_log' => 'Hiç günlük girdisi yok.',
+	'povwatch_unsubscribe' => 'Abonelikten çık',
+	'povwatch_subscribe_intro' => "PovWatch'a abone değilsiniz.
+Abone olmak için aşağıdaki düğmeye tıklayın.",
+	'povwatch_subscribe' => 'Abone ol',
 	'povwatch_added' => 'eklendi',
+	'right-povwatch_admin' => 'Diğer kullanıcıların izleme listesine sayfa eklemek için kullanıcı haklarını yönet',
+	'right-povwatch_user' => 'Diğer kullanıcıların izleme listelerine sayfa ekle',
+	'action-povwatch_admin' => 'PovWatch için kullanıcı haklarını yönetmeye',
+	'action-povwatch_user' => 'bu sayfayı başka bir kullanıcının izleme listesine eklemeye',
 );
 
 /** Ukrainian (Українська)

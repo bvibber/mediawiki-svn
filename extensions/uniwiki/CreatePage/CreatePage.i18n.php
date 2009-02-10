@@ -41,7 +41,7 @@ $messages['ar'] = array(
 	'createpage' => 'أنشئ صفحة',
 	'createpage-desc' => 'يضيف [[Special:CreatePage|صفحة خاصة]] لإنشاء صفحات جديدة',
 	'createpage_submitbutton' => 'إرسال',
-	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد أنشائها',
+	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد إنشاءها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
 	'createpage_titleexists' => 'صفحة بالعنوان [[$1]] موجودة بالفعل.
 هل تريد تعديل الصفحة الموجودة؟',
@@ -59,9 +59,9 @@ $messages['arz'] = array(
 	'createpage' => 'أنشئ صفحة',
 	'createpage-desc' => 'يضيف [[Special:CreatePage|صفحة خاصة]] لإنشاء صفحات جديدة',
 	'createpage_submitbutton' => 'تنفيذ',
-	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد أنشائها',
+	'createpage_instructions' => 'أدخل عنوان الصفحة التى تريد إنشاءها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
-	'createpage_titleexists' => 'في صفحه موجوده بالفعل بالعنوان[[$1]] .
+	'createpage_titleexists' => 'فى صفحه موجوده بالفعل بالعنوان[[$1]] .
 عايز تعدل الصفحه الموجوده؟',
 	'createpage_tryagain' => 'لا. أريد إنشاء صفحة جديدة بعنوان مميز.',
 	'createpage_editexisting' => 'نعم. أريد المساهمة للصفحة الموجودة',
@@ -243,6 +243,13 @@ Quere editar esta páxina?',
 	'createpage_tryagain' => 'Non. Quero crear unha páxina nova cun título distinto.',
 	'createpage_editexisting' => 'Si. Quero contribuír á páxina existente.',
 	'createpage-badtitle' => '"$1" non pode ser usado como o título dunha páxina',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'createpage_submitbutton' => 'Ὑποβάλλειν',
 );
 
 /** Swiss German (Alemannisch)

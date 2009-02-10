@@ -118,10 +118,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Baiji
  * @author Crazymadlover
  */
 $messages['es'] = array(
 	'globaluserrights' => 'Administración global de derechos de usuario',
+	'gur-rightslog-name' => 'Registro de permisos globales',
 	'right-userrights-global' => 'Administrar derechos de usuario global',
 );
 

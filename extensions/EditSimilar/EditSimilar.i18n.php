@@ -165,6 +165,19 @@ Jen paĝoj kiuj ankaŭ bezonas vian helpon: $1.',
 	'editsimilar-link-disable' => 'fari preferojn',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'editsimilar-desc' => 'Animaa usuarios a editar una página similar después de grabar una página',
+	'editsimilar-thanks-notsimilar' => 'Gracias por tu contribución.
+Estas páginas podrían también usar tu ayuda: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Gracias por tu contribución.
+Esta página podría también usar tu ayuda: $1.',
+	'editsimilar-thankyou' => 'Gracias por tu contribución, $1!',
+	'tog-edit-similar' => 'Habilitar sugerencias de páginas similares',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Mobe

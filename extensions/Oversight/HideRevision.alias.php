@@ -117,6 +117,11 @@ $aliases['lb'] = array(
 	'HideRevision' => array( 'Versioun verstoppen' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'HideRevision' => array( 'СокријРевизија' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'HideRevision' => array( 'Versie_verbargen' ),

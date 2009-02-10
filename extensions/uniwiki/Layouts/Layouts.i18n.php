@@ -54,7 +54,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'layouts-desc' => 'يضيف للصفحات المنشأة حديثا "هيئات" يمكن تعديلها لتشجيع هيكل متشابه للصفحات',
-	'layouts_title' => 'ابتدي صفحه',
+	'layouts_title' => 'ابتدى صفحه',
 	'layouts_chooselayout' => 'أختار تنسيق ل$1',
 	'layouts_nolayout' => 'لا يوجد تصميم',
 	'layouts_continue' => 'استمر',

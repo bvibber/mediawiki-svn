@@ -87,6 +87,11 @@ $aliases['lb'] = array(
 	'CloseWiki' => array( 'Wiki zoumaachen' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'CloseWiki' => array( 'ЗатвореноВики' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'CloseWiki' => array( 'AgħlaqWiki' ),

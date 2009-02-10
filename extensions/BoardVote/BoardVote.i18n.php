@@ -5222,7 +5222,7 @@ $messages['pt'] = array(
 	'boardvote_entry' => '* [[Special:BoardVote/vote|Votar]]
 * [[Special:BoardVote/list|Listar votos por data]]
 * [[Special:BoardVote/dump|Dados encriptados da eleição]]',
-	'boardvote_intro' => '<p>Bem-vindo às eleições de 2008 para o Comitê da Wikimedia Foundation.
+	'boardvote_intro' => '<p>Bem-vindo às eleições de 2008 para a Comissão da Wikimedia Foundation.
 Estaremos votando em uma pessoa que irá representar a comunidade de utilizadores nos vários projetos Wikimedia. Essas duas pessoas irão ajudar a determinar a orientação futura a ser seguida pelos projetos Wikimedia, individualmente ou como um todo, e representar os <em>seus</em> interesses e preocupações em relação ao Comitê.
 Irão, também, tomar as decisões relativas a formas de obtenção e alocação de fundos.</p>
 

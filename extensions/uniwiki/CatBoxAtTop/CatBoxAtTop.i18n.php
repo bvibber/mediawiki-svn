@@ -41,10 +41,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'catboxattop-desc' => 'بيضيف صندوء التصنيف في يمين الصفحه من فوق',
+	'catboxattop-desc' => 'بيضيف صندوء التصنيف فى يمين الصفحه من فوق',
 	'catboxattop-categories' => 'تصانيف',
 );
 

@@ -373,6 +373,18 @@ $messages['grc'] = array(
 	'player-goto-file' => 'Ἀρχεῖον',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'player' => 'Παίχτης',
+	'player-title' => 'Παίχτης',
+	'player-invalid-title' => 'Ἄκυρος ἐπιγραφή',
+	'player-goto-player' => 'Παίχτης',
+	'player-goto-page' => 'Δέλτος',
+	'player-goto-file' => 'Ἀρχεῖον',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

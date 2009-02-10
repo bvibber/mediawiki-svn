@@ -124,7 +124,7 @@ $aliases['lb'] = array(
 
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'CategoryIntersection' => array( 'ПресекНаКатегории' ),
+	'CategoryIntersection' => array( 'ПресекНаКатегории', 'Пресен на категории' ),
 );
 
 /** Marathi (मराठी) */

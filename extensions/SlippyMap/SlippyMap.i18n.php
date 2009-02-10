@@ -157,12 +157,12 @@ $messages['be-tarask'] = array(
 	'slippymap_zoomsmall' => 'значэньне маштабу (z) ня можа быць менш за нуль',
 	'slippymap_zoom18' => "значэньне маштабу (z) ня можа быць больш за 17. Заўважце, што  гэта пашырэньне MediaWiki выкарыстоўвае слой OpenStreetMap 'osmarender', які не падтрымлівае маштабы больш за 17. Слой Mapnik, які знаходзіцца на openstreetmap.org, падтрымлівае маштаб 18",
 	'slippymap_zoombig' => 'значэньне маштабу (z) ня можа быць больш за 17',
-	'slippymap_invalidlayer' => "Нслушнае значэньне 'узроўня' '%1'",
+	'slippymap_invalidlayer' => "Няслушнае значэньне '%1' парамэтру 'layer'",
 	'slippymap_maperror' => 'Памылка мапы:',
 	'slippymap_osmtext' => 'Глядзіце гэту мапу на OpenStreetMap.org',
 	'slippymap_code' => 'ВікіКод для прагляду гэтай мапы:',
 	'slippymap_button_code' => 'Атрымаць ВікіКод',
-	'slippymap_resetview' => 'Першапачатковы прагляд',
+	'slippymap_resetview' => 'Першапачатковы выгляд',
 );
 
 /** Bulgarian (Български)
@@ -467,6 +467,39 @@ $messages['he'] = array(
 	'slippymap_code' => 'קוד הוויקי להצגת מפה זו:',
 	'slippymap_button_code' => 'איחזור קוד הוויקי',
 	'slippymap_resetview' => 'איפוס התצוגה',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'slippymap_desc' => 'Zmóžnja wužiwanje taflički <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> za zwobraznjenje posuwneje karty OpenLayer. Karty su z [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'Hódnota za šěrinu (lat) pobrachuje',
+	'slippymap_lonmissing' => 'Hódnota za geografisku dołhosć (lon) pobrachuje.',
+	'slippymap_zoommissing' => 'Hódnota za skalowanje (z) pobrachuje.',
+	'slippymap_longdepreciated' => "Prošu wužiwaj 'lon' město 'lon' (parameter je so přemjenował)",
+	'slippymap_widthnan' => "Hódnota šěrokosće (w) '%1' njeje płaćiwa cyła ličba",
+	'slippymap_heightnan' => "Hódnota wysokosće (h) '%1' njeje płaćiwa cyła ličba",
+	'slippymap_zoomnan' => "Hódnota za skalowanje (z) '%1' njeje płaćiwa cyła ličba",
+	'slippymap_latnan' => "Hódnota za šěrinu (lat) '%1' njeje płaćiwa ličba",
+	'slippymap_lonnan' => "Hódnota za geografisku dołhosć (lon) '%1' njeje płaćiwa ličba",
+	'slippymap_widthbig' => 'Hódnota šěrokosće (w) njesmě wjetša hač 1000 być',
+	'slippymap_widthsmall' => 'Hódnota šěrokosće (w) njesmě mjeńša hač 100 być',
+	'slippymap_heightbig' => 'Hódnota wysokosće (h) njesmě wjetša hač 1000 być',
+	'slippymap_heightsmall' => 'Hódnota wysokosće (h) njesmě mjeńša hač 100 być',
+	'slippymap_latbig' => 'Hódnota šěriny (lat) njesmě wjetša hač 90 być',
+	'slippymap_latsmall' => 'Hódnota šěriny (lat) njesmě mjeńša hač -90 być',
+	'slippymap_lonbig' => 'Hódnota geografiskeje dołhosće (lon) njesmě wjetša hač 180 być',
+	'slippymap_lonsmall' => 'Hódnota geografiskeje dołhosće (lon) njesmě mjeńša hač -180 być',
+	'slippymap_zoomsmall' => 'Hódnota skalowanja (z) njesmě mjeńša hač nul być',
+	'slippymap_zoom18' => "Hódnota skalowanja (z) njesmě wjetša hač 17 być. Wobkedźbuj, zo tute rozšěrjenje MediaWiki wórštu OpenStreetMap 'Osmarender' zapřijima, kotraž skalowansku runinu 17 njepřesaha. Wóršta Mapnik, kotraž na openstreetmap.org k dispoziciji steji, saha hač k skalowanskej runinje 18.",
+	'slippymap_zoombig' => 'Hódnota skalowanja (z) njesmě wjetša hač 17 być.',
+	'slippymap_invalidlayer' => "Njepłaćiwa hódnota 'wóršty' '%1'",
+	'slippymap_maperror' => 'Kartowy zmylk:',
+	'slippymap_osmtext' => 'Hlej tutu kartu na OpenStreetMap.org',
+	'slippymap_code' => 'Wikikod za tutón kartowy napohlad:',
+	'slippymap_button_code' => 'Wikikod pokazać',
+	'slippymap_resetview' => 'Napohlad wróćo stajić',
 );
 
 /** Interlingua (Interlingua)

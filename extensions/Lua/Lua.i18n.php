@@ -160,6 +160,14 @@ $messages['eo'] = array(
 	'lua_overflow_time' => 'Atingis maksimuma tempo de operaciado',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'lua_error' => 'Error en línea $1',
+	'lua_error_internal' => 'Error interno',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Nike

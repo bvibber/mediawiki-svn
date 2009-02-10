@@ -258,6 +258,14 @@ $messages['gl'] = array(
 	'nss-db-error' => 'Erro ao ler a base de datos de autenticación',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'am-username' => 'Ὄνομα χρωμένου',
+	'am-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

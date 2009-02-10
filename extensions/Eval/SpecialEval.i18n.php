@@ -102,6 +102,15 @@ $messages['eo'] = array(
 	'eval_code' => 'Kodo',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'eval_submit' => 'Evaluar',
+	'eval_out' => 'Salida',
+	'eval_code' => 'Código',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

@@ -110,8 +110,8 @@ $messages['arz'] = array(
 	'editmsg-warning-parse1' => '* تعبير اسم الرسالة المنتظم لم يطابق: $1',
 	'editmsg-warning-parse2' => '* حرف اقتباس متوقع بعد السهم: $1',
 	'editmsg-warning-parse3' => '* نهاية خيط القيمة لم يتم العثور عليه: $1',
-	'editmsg-warning-file' => '* غلطات في قراية الفايل اتقابلت كمان في {{PLURAL:$2|اللغه دي|اللغات دي}}: $1',
-	'editmsg-warning-mismatch' => '* النص الاصلاني ماكانش عنده القيمه المتوقعه {{PLURAL:$2|للغه دي|للغات دي}}: $1',
+	'editmsg-warning-file' => '* غلطات فى قراية الفايل اتقابلت كمان فى {{PLURAL:$2|اللغه دى|اللغات دى}}: $1',
+	'editmsg-warning-mismatch' => '* النص الاصلانى ماكانش عنده القيمه المتوقعه {{PLURAL:$2|للغه دى|للغات دى}}: $1',
 	'editmsg-apply-patch' => 'تنفيذ الباتش',
 	'editmsg-no-patch' => 'غير قادر على تنفيذ أمر "patch"',
 	'editmsg-patch-failed' => 'الباتش فشلت مع حالة خروج $1',
@@ -158,9 +158,11 @@ $messages['bn'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Uređivanje zasnovano na webu]] velikog broja datoteka tipa Messages*.php',
 	'editmessages' => 'Uređivanje poruka',
 	'editmsg-target' => 'Ciljna poruka:',
 	'editmsg-search' => 'Traži',
+	'editmsg-show-list' => 'Prikazuje vrijednosti za poruku s naslovom "$1"',
 	'editmsg-get-patch' => 'Generiraj patch',
 	'editmsg-new-search' => 'Nova pretraga',
 	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod {{PLURAL:$2|slijedećeg|slijedećih}} jezika: $1',
