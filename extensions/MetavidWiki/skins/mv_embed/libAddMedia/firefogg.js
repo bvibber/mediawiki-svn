@@ -13,13 +13,15 @@ function init_firefogg( iObj ){
 	if(!iObj)
 		iObj = {};
 	//init based on if Firefogg is available 
-	if(typeof(Firefogg) == 'undefined') {				
+	if(typeof(Firefogg) == 'undefined') {
+		//alert('Firefogg ISS null');				
 		e = document.getElementById('wgfogg_not_installed');
 		if(e) 
-			e.style.display='inline';
+			e.style.display = 'inline';
+	
 		//no support for firefogg
 		return false;
-	}else{
+	}else{		
 		e = document.getElementById('wgfogg_not_installed');
 		if(e) 
 			e.style.display='none';				
@@ -117,7 +119,13 @@ upFirefogg.prototype = {
 		if(_this.fogg.selectVideo()) {			
 			var editForm = document.getElementById( 'mw-upload-form' );
 			_this.org_onsubmit = editForm.onsubmit;	
+			_this.org_onsubmit_ran = false;
 			editForm.onsubmit = function return_false(){
+								//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
+								if( ! _this.org_onsubmit_ran && _this.org_onsubmit == 'function' ){
+									_this.org_onsubmit_ran=true; 
+									_this.org_onsubmit();									
+								}
 								return false;
 							};		
 							
@@ -154,24 +162,8 @@ upFirefogg.prototype = {
 			} 
 			//set binding for "upload" button to call our transcode process
 			addHandler( editForm, 'submit', function() {			
-				//check if the title and or description are empty don't let the person submit
-				e = document.getElementById('wpDestFile')
-				
-				//if(typeof e.value == 'undefined' || e.value=='' || e.value.substr(-4) != '.fogg')
-				//	return alert('destination file is empty or does not end with .fogg');
-					
-				//e = document.getElementById('wpUploadDescription');
-				//if(e){
-				//	if(typeof e.value == 'undefined' || e.value=='')
-				//		return alert('Description is empty');
-				//}
-				
-				//for commons check wpDescText1
-				e = document.getElementById('wpDescText1');
-				if(e){
-					if(typeof e.value == 'undefined' || e.value=='')
-						return alert('Description is empty');
-				}
+				//call the onsubmit to run any script form value checks:  
+				editForm.onsubmit();							
 				//get the input 
 				var formData = _this.getEditFormData( editForm );				
 						
@@ -212,10 +204,8 @@ upFirefogg.prototype = {
 						//hard code some values 
 						formData['wpSourceType']='file';						 						
 						
-						var data = JSON.stringify( formData );
-						alert('send data:'+ data);
-						//send to the post url: 
-						js_log('sending to:' + editForm.action);								
+						var data = JSON.stringify( formData );						
+						//send to the post url: 							
 						_this.fogg.post( editForm.action, 'wpUploadFile', data);
 						var uploadStatus = function() {							
 					        var status = _this.fogg.status();							        					      					        					
@@ -228,45 +218,53 @@ upFirefogg.prototype = {
 					        if(_this.fogg.state == 'uploading') {
 					        	setTimeout(uploadStatus, 500);
 					        }
-					        //upload sucsefull, state can also be 'upload failed'
+					        //upload sucesfull, state can also be 'upload failed'
 					        else if(_this.fogg.state == 'upload done') {	
-					        	js_log( 'firefogg:upload done: ');							        			        
+					        	//js_log( 'firefogg:upload done: ');							        			        
 					        	//@@todo handle errors same problem as #695 in mv_remote_media_search.js
 					        	//we need to add image uploading to the api rather than parse the HTML output of the pages  
-								var result_page = JSON.parse(_this.fogg.uploadstatus()).responseText;
-								var sstring = 'var wgTitle = "' + data['wpDestFile'].replace('_',' ');
-								if( result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
+								var result_page = _this.fogg.responseText;
+								var sstring = 'var wgTitle = "' + formData['wpDestFile'].replace('_',' ');								
+								if( result_page && result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
 									js_log('upload done got redirect found: ' +sstring + ' r:' + _this.upload_done_action);										
-									if(_this.upload_done_action == 'redirect'){
-										window.location = wgArticlePath.replace(/\$1/, 'File:' + data['wpDestFile'] );
+									if( _this.upload_done_action == 'redirect'){
+										window.location = wgArticlePath.replace(/\$1/, 'File:' + formData['wpDestFile'] );
 									}else{
 										//check if the add_done_action is a callback:
-										if(typeof _this.upload_done_action == 'function')
+										if( typeof _this.upload_done_action == 'function' )
 											_this.upload_done_action();
 									}									
 								}else{								
 									js_log('upload page error: did not find: ' +sstring);	
 									var error_txt = 'Unkown error';
-									sp = result_page.indexOf('<span class="error">');
-									if(sp!=-1){
-										se = result_page.indexOf('</span>', sp);
-										error_txt = result_page.substr(sp, (sp-se));
+									if(!result_page){
+										//@@todo fix this: 
+										//the mediaWiki upload system does not have an API so we can\'t accuratly read errors 
+										error_txt = 'Your upload should be accessible <a href="' + 
+													wgArticlePath.replace(/\$1/, 'File:' + formData['wpDestFile'] ) + '">'+
+													'here</a> \n';
 									}else{
-										//look for warning: 
-										sp = result_page.indexOf('<ul class="warning">')
+										sp = result_page.indexOf('<span class="error">');
 										if(sp!=-1){
-											se = result_page.indexOf('</ul>', sp);
+											se = result_page.indexOf('</span>', sp);
 											error_txt = result_page.substr(sp, (sp-se));
-										}
-									}									
+										}else{
+											//look for warning: 
+											sp = result_page.indexOf('<ul class="warning">')
+											if(sp!=-1){
+												se = result_page.indexOf('</ul>', sp);
+												error_txt = result_page.substr(sp, (sp-se));
+											}
+										}			
+									}						
 									e = document.getElementById('dlbox-centered');
 									if(e) 
-										e.innerHTML = '<h3>Error:</h3>' + error_txt;
+										e.innerHTML = '<h3>Upload Completed:</h3>' + error_txt;
 								}							
 					        }
 					        //upload error: 
 					        else{
-					        	alert('upload error: ' + _this.fogg.state);		
+					        	alert('firefogg upload error: ' + _this.fogg.state);		
 					        }
 				      	}
 				      	uploadStatus();

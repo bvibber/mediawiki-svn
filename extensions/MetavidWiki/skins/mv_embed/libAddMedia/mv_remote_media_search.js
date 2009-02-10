@@ -39,10 +39,15 @@ var default_remote_search_options = {
 					  
 	'enable_uploads':false // if we want to enable an uploads tab:  
 }
-/* licence_templateObj lists all the licence templates and their coresponding icon and short text description */
-var licence_templateObj = {
-	
-}
+
+if(typeof wgServer == 'undefined')
+	wgServer = '';
+
+if(typeof wgScriptPath == 'undefined')
+	wgScriptPath = '';
+
+if(typeof stylepath == 'undefined')
+	stylepath = '';
 
 var remoteSearchDriver = function(initObj){
 	return this.init( initObj );
@@ -85,7 +90,7 @@ remoteSearchDriver.prototype = {
 			'd'		 : 0,
 			'title'	 : 'This Wiki',
 			'desc'	 : '(should be updated with the proper text) maybe import from some config value',
-			'api_url': wgServer + wgScriptPath + '/api.php',
+			'api_url':  wgServer + wgScriptPath + '/api.php',
 			'lib'	 : 'mediaWiki',		
 			'local'	 : true,
 			'tab_img': false
@@ -434,7 +439,7 @@ remoteSearchDriver.prototype = {
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
 							//add a linkback to resource page in lower left:
 							if(rItem.link) 
-							o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + gM('Resource Description Page') + '" href="' + rItem.link + '"><img src="' + wgScriptPath + '/skins/common/images/magnify-clip.png"></a>';
+							o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + gM('Resource Description Page') + '" href="' + rItem.link + '"><img src="' + stylepath + '/common/images/magnify-clip.png"></a>';
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					

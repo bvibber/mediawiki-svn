@@ -12,7 +12,7 @@ var mv_add_media_wizard_path = 'http://mvbox2.cse.ucsc.edu/w/extensions/MetavidW
 
 //*code should not have to modify anything below*/
 //check if we are on a edit page:
-if( wgAction=='edit' ){
+if( wgAction == 'edit' || wgAction == 'submit' ){
 	//add onPage ready request:
 	addOnloadHook( function(){						
 		var imE = document.createElement('img');
@@ -32,6 +32,13 @@ if( wgAction=='edit' ){
 //add firefog support to Special Upload page:
 if(wgPageName== "Special:Upload"){	
 	addOnloadHook( function(){		
+		//(for commons force the &uploadformstyle=plain form
+		/*var loc =  window.location.toString();
+		if( loc.indexOf('commons.wikimedia.org')!==-1 ){
+			if( loc.indexOf( '&uploadformstyle=plain') == -1){				
+				window.location = loc + '&uploadformstyle=plain';
+			}		
+		}*/
 		//alert("!!upload hook");
 		load_mv_embed( function(){			
 			//load jQuery and what not (we need to refactor the loading system for mv_embed)
@@ -118,6 +125,11 @@ function load_mv_embed( callback ){
 	if( typeof mvEmbed == 'undefined'){		
 		//get mv_embed path from _this_ file location: 	
 		var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );
+		//if debug on; ensure a time stamp fresh copy: 
+		//if(mv_embed_url.indexOf('debug')!==-1){
+		//	var d = new Date(); // Generic JS date object
+		//	mv_embed_url+='&dtime=' + d.getTime();
+		//}
 		var e = document.createElement("script");
 	    e.setAttribute('src', mv_embed_url);	    
 	    e.setAttribute('type',"text/javascript");

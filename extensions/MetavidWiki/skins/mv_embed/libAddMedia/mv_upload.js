@@ -75,7 +75,7 @@ mvUploader.prototype = {
 			js_log('add addFirefoggHtml');
 			_this.addFirefoggHtml();
 		}else{
-			js_log('firefogg already there init:');					
+			js_log('firefogg already init:');					
 		}	
 		//set up the upload_done action 
 		//redirect if we are on the upload page  
@@ -90,10 +90,7 @@ mvUploader.prototype = {
 				};
 		//if firefog is not taking over the submit we can here: 
 		if( ! init_firefogg( intFirefoggObj ) ){			
-			//firefogg handles the form submit (even on image uploads when called by gui)
-			if( ! this.on_upload_page ){
-				
-			}
+			//no firefogg installed
 		}
 	},
 	//same add code as specialUpload if($wgEnableFirefogg){
@@ -105,22 +102,22 @@ mvUploader.prototype = {
 						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="' + gM('upload-select-file') + '">' +
 						"<span id='wgfogg_not_installed'>" + 
 							gM('upload-fogg_not_installed') +
-						'</span>'+
+						'</span>' +
 						"<span class='error' id='wgfogg_wrong_version'  style='display:none'>" +
 							gM('wgfogg_wrong_version') +
-						'</span>'+
+						'</span>' +
 						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none' >"+
 								gM('wgfogg_waring_ogg_upload') +
 						'</span>'+
 						"<span id='wgfogg_installed' style='display:none' >"+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 								gM('upload-enable-converter') +
-						'<span><br></p>');		
+						'</span><br></p>');		
 		//add in loader dl box: 	
 		//hard code style (since not always easy to import style sheets)
 		$j('body').append('<div id="dlbox-centered" class="dlbox-centered" style="display:none;'+
 				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
-				'height:50%;padding: 10px;z-index:100;top:65%;left:20%;" >'+			
+				'height:300px;padding: 10px;z-index:100;bottom:40%;left:20%;" >'+		
 					'<h5>' + gM('upload-in-progress') + '</h5>' +
 					'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
 						'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			
