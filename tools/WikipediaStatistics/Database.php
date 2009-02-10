@@ -29,7 +29,8 @@ class Database {
 	public function select(
 		$tables,
 		$fields,
-		$conditions = null
+		$conditions = null,
+		$options = null
 	) {
 		$query = sprintf(
 			'SELECT %s FROM %s',
@@ -42,11 +43,30 @@ class Database {
 				if ( is_int( $key ) ) {
 					$conditionList[] = $value;
 				} else {
-					$conditionList[] = "{$key}=" . $this->addQuotes( $value );
+					$conditionList[] = "{$key}=" . (
+						is_numeric( $value ) ?
+						$value : $this->addQuotes( $value )
+					);
 				}
 			}
 			if ( count( $conditionList > 0 ) ) {
 				$query .= ' WHERE ' . implode( ' AND ', $conditionList );
+			}
+		}
+		if ( $options != null ) {
+			$optionList = array();
+			foreach ( $options as $key => $value ) {
+				if ( is_int( $key ) ) {
+					$optionList[] = $value;
+				} else {
+					$optionList[] = "{$key} " . (
+						is_numeric( $value ) ?
+						$value : $this->addQuotes( $value )
+					);
+				}
+			}
+			if ( count( $optionList > 0 ) ) {
+				$query .= implode( ' ', $optionList );
 			}
 		}
 		$result = mysql_query( $query )
