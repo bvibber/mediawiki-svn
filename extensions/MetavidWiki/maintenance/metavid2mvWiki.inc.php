@@ -750,14 +750,19 @@ function do_bill_insert( $bill_key ) {
 function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force = false ) {
 	global $valid_attributes, $states_ary;		
 	
-	$dbr = wfGetDB( DB_SLAVE );	
+	$dbr = wfGetDB( DB_SLAVE );			
 	
 	include_once( 'scrape_and_insert.inc.php' );
 	$mvScrape = new MV_BaseScraper();
-
+	
+	//get all people from govtrack db ( should not have to do this all the time)
+	$govtrackDB = array(); 
+	//avoid duplicating the $govtrackDB array: 
+	getGovTrackPeopleDB( $govtrackDB );
+	
 	//get all people from the congress people category 
 	$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
-		'cl_to' => 'Person'
+		'cl_to' => 'Congress_Person'
 		)
 	);	
 	if ( $dbr->numRows( $result ) == 0 )
@@ -770,61 +775,77 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		
 		$smwStore =& smwfGetStore();
 		
-		//check for govtrack key: 
-		$propTitle = Title::newFromText( 'GovTrack Person ID', SMW_NS_PROPERTY );
+		//check for govtrack key in page 
+		$propTitle = Title::newFromText('GovTrack Person ID', SMW_NS_PROPERTY );
 		$smwProps = $smwStore->getPropertyValues( $person_title, $propTitle );
-		if ( count( $smwProps ) == 0 ) {
-			print "person: $person_name has no GovTrack Person ID make sure to include this on their page\n";
-			continue;
-		}	
-		
-		//set the maplight key: 
+		if ( count( $smwProps ) != 0 ) {			
+			$v = current( $smwProps );	
+			$person->gov_track_id = $v->getXSDValue();		
+		}else{
+			print "person: $person_name has no GovTrack Person ID make sure to include this on their page\n";						
+		}
+		if( isset($person->gov_track_id) ){			
+			setGovTrackSpecifcAttr($person, $govtrackDB[ $person->gov_track_id ]);
+		}else{
+			//check for govtrack key in $govtrackDB: 
+			foreach( $govtrackDB as $gov_track_person){
+				if( isset($gov_track_person['metavidid']) && $gov_track_person['metavidid'] == str_replace(' ', '_',$person_name) ){					
+					setGovTrackSpecifcAttr($person, $gov_track_person);		
+				}			
+			}
+			reset($govtrackDB);
+			//did not find metavid id try name test:
+			if( !isset($person->govtrack_id )){
+				foreach( $govtrackDB as $gov_track_person){							
+					if(isset($gov_track_person['middlename'])){					
+						$gov_name = $gov_track_person['firstname'] .' '. 
+										substr($gov_track_person['middlename'],0,1) . '. ' . 
+										$gov_track_person['lastname']; 
+						//first check for exact match: 
+						if( strtolower($gov_name) == strtolower($person_name) ){						
+							setGovTrackSpecifcAttr($person, $gov_track_person);							
+							break;
+						}
+					}
+					//else first last check:  
+					$nparts = split(' ', $person_name);
+					if( strtolower( $gov_track_person['firstname']) == strtolower($nparts[0]) &&
+						strtolower( $gov_track_person['lastname']) == strtolower( $nparts[count($nparts)-1] ) ){							
+						setGovTrackSpecifcAttr($person, $gov_track_person);	
+						break;					
+					}													 
+				}
+			}						
+			if(!isset($person->gov_track_id)){			
+				die("\n could not find gov track id for $person_name please add manually or remove from Congress_Person category\n ");
+			}
+		}
+		//set the maplight key (not in sunlight api)  
 		$propTitle = Title::newFromText( 'MAPLight Person ID', SMW_NS_PROPERTY );
 		$smwProps = $smwStore->getPropertyValues( $person_title, $propTitle );
 		if ( count( $smwProps ) != 0 ) {
 			$v = current( $smwProps );
 			$mapk = $v->getXSDValue();
-			$person->maplight_id = $v->getXSDValue();
+			$person->maplight_id = $v->getXSDValue();			
 		}else{
 			print "person: $person_name has no MAPLight Person ID could not lookup with sunlight api?\n";	
 		}
 		
-		//set $person->osid
-		$propTitle = Title::newFromText( 'CRP ID', SMW_NS_PROPERTY );
+		//set $person->name_ocr
+		$propTitle = Title::newFromText( 'Name OCR', SMW_NS_PROPERTY );
 		$smwProps = $smwStore->getPropertyValues( $person_title, $propTitle );
 		if ( count( $smwProps ) != 0 ) {
 			$v = current( $smwProps );
-			$person->osid = $v->getXSDValue();
-		}	
-		
-		// all sunlight data is stored in the template now:
-											
-		//do sunlight api query:
-		//global  $edSunlightAPIKey;
-		//$sulightData=array();		
-		/*	  
-		$req_url = 'http://services.sunlightlabs.com/api/legislators.getList.xml?govtrack_id='.$person->gov_track_id.'&apikey='.$edSunlightAPIKey;
-		$raw_sunlight_xml = $mvScrape->doRequest($req_url);
-		$xml_parser = xml_parser_create( 'UTF-8' ); // UTF-8 or ISO-8859-1
-		xml_parser_set_option( $xml_parser, XML_OPTION_CASE_FOLDING, 0 );
-		xml_parser_set_option( $xml_parser, XML_OPTION_SKIP_WHITE, 1 );
-		if(xml_parse_into_struct( $xml_parser, $raw_sunlight_xml, $slightAry )){
-			foreach($slightAry as $tag){
-				if($tag['type']=='complete'){
-					if(isset($tag['value'])){
-						$sulightData[ $tag['tag'] ]=$tag['value'];
-					}
-				}				
-			}
-		}else{
-			print 'error: '.xml_error_string(xml_get_error_code($xml_parser)).' at line '.xml_get_current_line_number($xml_parser);
-		}
-		*/		
-		
+			$person->name_ocr = $v->getXSDValue();			
+		}			
+				
 		$page_body = '{{Congress Person|' . "\n";
 		foreach ( $valid_attributes as $dbKey => $attr ) {
 			list ( $name, $desc ) = $attr;
-			if ( $dbKey == 'total_received' ) {
+			if( $dbKey == 'gov_track_id'){
+				//we key all to govtrack id make sure its there: 
+				$page_body.="GovTrack Person ID=".$person->gov_track_id . "|\n";
+			}else if ( $dbKey == 'total_received' ) {
 				if ( !$mapk ) {
 					print 'no mapkey for total_received' . "\n";
 				} else {
@@ -832,6 +853,31 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 					preg_match( '/Contributions\sReceived\:\s\$([^<]*)/', $raw_results, $matches );
 					if ( isset( $matches[1] ) ) {
 						$page_body .= "{$name}=\$" . $matches[1] . "|\n";
+					}
+				}		
+			} else if($dbKey == 'roles'){
+				if ( $person->$dbKey ) {
+					$i=1;
+					foreach($person->$dbKey as $role){
+						$page_body.="Role $i Type=" . ucfirst($role['type'])."|\n"; 
+						$page_body.="Role $i Party=" .  $role['party']. "|\n";
+						$page_body.="Role $i State=" .  $role['state']. "|\n";
+						$page_body.="Role $i Start Date=" . $role['startdate']."|\n";
+						$page_body.="Role $i End Date=" . $role['enddate'] . "|\n";
+						$i++;
+					}						
+				}	
+			} else if($dbKey == 'committee'){
+				if ( isset($person->$dbKey) ) {
+					$i = 1;
+					foreach($person->$dbKey as $committee){
+						if(isset($committee ['committee']))
+							$page_body.="Committee $i= ".$committee ['committee'] ."|\n"; 
+						if(isset($committee['subcommittee']))
+							$page_body.="Subcommittee $i= ".$committee ['subcommittee'] ."|\n";	
+						if(isset($committee['role']))
+							$page_body.="Committee Role $i= ".$committee ['role'] ."|\n";												
+						$i++;
 					}
 				}
 			} else if ( $dbKey == 'contribution_date_range' ) {
@@ -916,23 +962,22 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 			}
 		}
 		// add in the full name attribute:
-		$page_body .= "Full Name=" . $person->title . ' ' . $person->first .
-			' ' . $person->middle . ' ' . $person->last . "|  \n";
+		/*$page_body .= "Full Name=" . $person->title . ' ' . $person->first .
+			' ' . $person->middle . ' ' . $person->last . "|  \n";*/
 
-
-
+		//close: 
 		$page_body .= '}}';
-		// add in basic info to be overwitten by tranclude (from
-		$full_name = $person->title . ' ' . $person->first .
+		// add in basic info to be overwitten by transclude (from
+		/*$full_name = $person->title . ' ' . $person->first .
 		' ' . $person->middle . ' ' . $person->last;
 		if ( trim( $full_name ) == '' )
 			$full_name = $person->name_clean;
 
-		$page_body .= "\n" . 'Person page For <b>' . $full_name . "</b><br />\n";
+		$page_body .= "\n" . 'Person page For <b>' . $full_name . "</b><br />\n";*/
 			//	 			"Text Spoken By [[Special:MediaSearch/person/{$person->name_clean}|$full_name]] ";
-				;
+				
 		do_update_wiki_page( $person_title, $page_body, '', $force );
-		// die('only run on first person'."\n");
+		//die('only run on first person'."\n");
 	}
 	foreach ( $person_ary as $person ) {
 		// download/upload all the photos:
@@ -984,6 +1029,84 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		// }
 	}
 }
+function setGovTrackSpecifcAttr(&$person, &$gov_track_person){	
+	
+	
+	$person->gov_track_id = $gov_track_person['id'];
+
+	//also set govtrack only properties: 
+	if(isset($gov_track_person['birthday']))
+		$person->birthday = $gov_track_person['birthday'];
+		
+	if(isset($gov_track_person['religion']))
+		$person->religion = $gov_track_person['religion'];
+	
+	if(isset($gov_track_person['youtubeid']))
+		$person->youtubeid = $gov_track_person['youtubeid'];
+		
+	if(isset($gov_track_person['roles']))
+		$person->roles = $gov_track_person['roles'];
+	
+	if(isset($gov_track_person['committee']))
+		$person->committee = $gov_track_person['committee'];			
+}
+//loads a big xml file
+function getGovTrackPeopleDB( &$govTrackDb){
+	include_once( 'scrape_and_insert.inc.php' );
+	$mvScrape = new MV_BaseScraper();
+	//get the last few people.xml databases (starting with most recent)	
+	$raw_govtrack_data = $mvScrape->doRequest('http://www.govtrack.us/data/us/111/repstats/people.xml');		
+
+	govtrackXMLtoARRAY($govTrackDb, $raw_govtrack_data);	
+	$oneElevenCount  = count($govTrackDb);
+	print "govTrackDb: populated " . count($govTrackDb) . " from govTrack people.xml \n";
+	//should have a well populated $govTrackDb 
+}
+function govtrackXMLtoARRAY(&$govTrackDb, & $xmlstring) {  
+   //normal XML parsing is too slow: use preg match:
+	preg_match_all("/<person([^>]*)>(.*)<\/person>/sU",$xmlstring,$nodes);
+	print "found " . count($nodes[1]) . " person nodes \n";
+	$poKeys = array();	
+	foreach($nodes[1] as $pokey => $persons_attr){
+   		preg_match_all("/([a-z]*)=\'([^\']*)\'/",$persons_attr, $attr);
+		$cur_person = array();
+		foreach($attr[1] as $key=>$key_name){
+	   		$cur_person[$key_name] = $attr[2][$key];
+		}
+		if(!isset( $govTrackDb[ $cur_person['id'] ])){
+			$govTrackDb[ $cur_person['id'] ] =$cur_person; 
+		}	
+		//committee and roles:	
+		if(isset($nodes[2][$pokey])){	
+			$persons_child_xml = $nodes[2][$pokey];
+			preg_match_all("/<role([^>]*)>/", $persons_child_xml, $roles);   	
+			if( count($roles[1] != 0)){
+				$govTrackDb[ $cur_person['id'] ]['roles']=array();
+				foreach($roles[1] as $role_attr){
+					preg_match_all("/([a-z]*)=\'([^\']*)\'/",$role_attr, $rattr);
+					$cur_role = array();
+				   	foreach($rattr[1] as $key=>$key_name){
+						$cur_role[$key_name] = $rattr[2][$key];
+				   	}
+					$govTrackDb[ $cur_person['id'] ]['roles'][]=$cur_role;
+			   	}	    	  			
+			}
+			preg_match_all("/<current-committee-assignment([^>]*)>/",  $persons_child_xml, $committee);
+			if(count($committee[1])!=0){
+				$govTrackDb[ $cur_person['id'] ]['committee']=array();
+				foreach($committee[1] as $cur_committee){
+					preg_match_all("/([a-z]*)=\'([^\']*)\'/", $cur_committee, $cattr);
+					$cur_com=array();
+					foreach($cattr[1] as $key=>$key_name){
+						$cur_com[ $key_name ] = $cattr[2][$key];
+					}									
+					$govTrackDb[  $cur_person['id'] ]['committee'][] = $cur_com;
+				}
+			}
+		}
+   }
+}
+
 function do_proc_interest( $intrestKey, $intrestName ) {
 	global $mvMaxContribPerInterest, $mvMaxForAgainstBills;
 	include_once( 'scrape_and_insert.inc.php' );
@@ -1124,10 +1247,35 @@ $valid_attributes = array (
 		'CRP ID',
 		'Congress Person\'s <a href="http://www.opensecrets.org/">Open Secrets</a> Id',
 		'string'
-	),
+	),	
 	'gov_track_id' => array (
 		'GovTrack Person ID',
 		'Congress Person\' <a href="www.govtrack.us">govtrack.us</a> person ID',
+		'string'
+	),	
+	'birthday'=>array(
+		'Birthday',
+		'Birthday',
+		'date'
+	),
+	'religion'=>array(
+		'Religion',
+		'Religion',
+		'page'
+	),	
+	'roles'=>array(
+		'Roles',
+		'Roles date ranges of congress activity',
+		'string'
+	),
+	'committee'=>array(
+		'Committee',
+		'committees and sub commities with roles',
+		'string'
+	),
+	'youtubeid'=>array(
+		'YouTube ID',
+		'YouTube ID',
 		'string'
 	),
 	'bioguide' => array (

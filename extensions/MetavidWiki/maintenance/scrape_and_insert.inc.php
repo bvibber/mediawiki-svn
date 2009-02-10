@@ -647,7 +647,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		// get the $thomas_match		
 		preg_match( '/thomas\.loc\.gov\/cgi-bin\/bdquery\/z\?([^\"]*)/', $rawGovTrackPage, $thomas_match );
 		// get introduced: //strange .* does not seem to work :(
-		preg_match( '/Introduced<\/nobr>[^>]*>[^>]*>[^>]*([^<]*)/', $rawGovTrackPage, $date_intro_match );	
+		preg_match( '/Introduced<\/nobr>[^>]*>[^>]*>[^>]*>([^<]*)/', $rawGovTrackPage, $date_intro_match );	
 		// get sponsor govtrack_id:
 		preg_match( '/usbill:sponsor[^<]*<a href="person.xpd\?id=([^"]*)/i', $rawGovTrackPage, $sponsor_match );
 		// lookup govtrack_id
