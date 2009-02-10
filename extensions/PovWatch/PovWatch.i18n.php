@@ -394,6 +394,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Remember the dot
  */
 $messages['es'] = array(
 	'povwatch' => 'PovWatch',
@@ -405,9 +406,16 @@ $messages['es'] = array(
 	'povwatch_push' => 'Presionar',
 	'povwatch_title' => 'Título:',
 	'povwatch_no_subscribers' => 'No hay suscriptores.',
+	'povwatch_unsubscribe_intro' => 'Usted está subscribido a PovWatch.
+Haga clic en el botón abajo para desubscribirse.',
 	'povwatch_unsubscribe' => 'desuscribir',
+	'povwatch_subscribe_intro' => 'Usted no está subscribido a PovWatch.
+Haga clic en el botón abajo para subscribirse.',
 	'povwatch_subscribe' => 'Suscribir',
 	'povwatch_added' => 'agregado',
+	'right-povwatch_user' => 'Agregar páginas a las listas de seguimiento de otros usuarios',
+	'action-povwatch_admin' => 'Administrar derechos de usuario de PovWatch',
+	'action-povwatch_user' => 'agregar esta página a la lista de seguimiento de otro usuario',
 );
 
 /** Finnish (Suomi)
@@ -1357,6 +1365,14 @@ $messages['ru'] = array(
 	'right-povwatch_user' => 'Добавлять страницы в список наблюдения других участников',
 	'action-povwatch_admin' => 'управлять правами участников для НтзНадзора',
 	'action-povwatch_user' => 'добавить эту страницу в список наблюдения другого участника',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'povwatch_desc' => 'Сирэйдэри атын киһи [[Special:PovWatch|кэтээн көрүүтүн тиһигэр киллэрэргэ]] туһаныллар тупсарыы',
+	'povwatch_no_session' => 'Алҕас: Ситим быстан форма кыайан ыытыллыбата.',
 );
 
 /** Slovak (Slovenčina)

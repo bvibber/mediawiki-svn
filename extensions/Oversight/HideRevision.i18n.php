@@ -3356,9 +3356,11 @@ Silinmiş öğeler web sitesi boyunca kimseye görünür olmayacaktır, fakat si
 	'hiderevision-error-current' => 'Bir sayfaya son değişiklik silinemez.
 Önce bu değişikliği geri döndürün.',
 	'hiderevision-error-delete' => 'Arşivlenilemedi; daha önce silindi mi?',
+	'hiderevision-archive-status' => '$1 tarihinden revizyon silindi: $2',
 	'oversight-nodiff' => 'Sayfa için hiç önceki revizyon olmadığı için değişiklikler izlenemiyor. Ya:
 *Sayfa silinmiş
 *Bu gizli revizyon ilk revizyon',
+	'oversight-log-hiderev' => '$1 tarihinden bir değişiklik çıkarıldı',
 	'oversight' => 'Gözetmen',
 	'oversight-view' => 'detaylar',
 	'oversight-difference' => '(Önceki kalan revizyondan fark)',

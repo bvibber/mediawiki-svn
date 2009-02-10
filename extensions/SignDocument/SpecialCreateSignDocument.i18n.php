@@ -152,9 +152,10 @@ $messages['arz'] = array(
 	'createsigndoc-create' => 'إنشاء',
 	'createsigndoc-error-generic' => 'خطأ: $1',
 	'createsigndoc-error-pagenoexist' => 'خطأ: الصفحة [[$1]] غير موجودة.',
-	'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]].
-لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
-	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.',
+	'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح فى [[$1]].
+أنت يمكنك [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} اختباره].',
+	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.
+هذا لا يمكن عمله مرة ثانية.',
 );
 
 /** Bikol Central (Bikol Central)
@@ -169,8 +170,10 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'createsigndocument' => 'Уключыць падпісаньне дакумэнта',
 	'createsigndoc-pagename' => 'Старонка:',
 );
 

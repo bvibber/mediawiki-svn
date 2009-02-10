@@ -51,6 +51,13 @@ $messages['bg'] = array(
 	'tooltip-desc' => 'Добавя етикетите <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'tooltip-desc' => 'Afegeix les etiquetes de sintaxi <tt><nowiki><tooltip></nowiki></tt> i <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

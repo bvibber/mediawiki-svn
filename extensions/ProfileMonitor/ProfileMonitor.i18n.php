@@ -638,6 +638,23 @@ $messages['pt'] = array(
 	'profiling-no-data' => 'Dados correspondentes não encontrados.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'profiling' => 'Dados de perfilagem',
+	'profiling-desc' => '[[Special:Profiling|Página especial]] para pesquisar e inspecionar dados de perfilagem',
+	'profiling-process' => 'Comando do processo:',
+	'profiling-wildcard' => 'Usar caracter curinga',
+	'profiling-ok' => 'OK',
+	'profiling-data' => 'Perfilando dados para `$1`',
+	'profiling-data-process' => 'Processo',
+	'profiling-data-count' => 'Contagem',
+	'profiling-data-time' => 'Tempo (todos)',
+	'profiling-data-average' => 'Tempo (média)',
+	'profiling-no-data' => 'Dados correspondentes não encontrados.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

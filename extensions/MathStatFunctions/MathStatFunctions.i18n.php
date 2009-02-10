@@ -87,6 +87,7 @@ $messages['bn'] = array(
  * @author SMP
  */
 $messages['ca'] = array(
+	'msfunc_desc' => 'Una coŀlecció de funcions matemàtiques i estadístiques',
 	'msfunc_nan' => 'El resultat no és un nombre',
 	'msfunc_inf' => 'El resultat té valor infinit',
 	'msfunc_div_zero' => 'Divisió entre zero',

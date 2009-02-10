@@ -4555,6 +4555,7 @@ Próa l\'ultima version de <a href="http://www.microsoft.com/ie">Internet Explor
  * @author Vinhtantran
  */
 $wgGoogleMapsMessages['vi'] = array(
+	'gm-desc' => 'Tạo bản đồ dễ dàng với các đánh dấu wiki hóa',
 	'gm-incompatible-browser' => 'Để xem bản đồ ở đây, bạn sẽ cần phải có một <a href="http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499">trình duyệt tương thích</a>.',
 	'gm-incompatible-browser-link' => 'Nhấn vào đây để xem danh sách các trình duyệt tương thích.',
 	'gm-no-editor' => 'Thật không may, trình duyệt của bạn không hỗ trợ tính năng tạo ra bản đồ tương tác. Xin vui lòng thử phiên bản mới nhất của <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) hoặc <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, và Linux).',

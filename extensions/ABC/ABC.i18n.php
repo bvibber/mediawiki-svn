@@ -23,11 +23,16 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Meno25
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'abcdesc' => 'Short description of the ABC extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'abcdownload' => '{{Identical|Download}}',
+	'abcabc' => '{{optional}}',
+	'abcpdf' => '{{optional}}',
+	'abcmidi' => '{{optional}}',
+	'abcvorbis' => '{{optional}}',
 );
 
 /** Arabic (العربية)

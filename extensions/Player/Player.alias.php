@@ -47,6 +47,11 @@ $aliases['gl'] = array(
 	'Player' => array( 'Xogador' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'Player' => array( 'Igrač' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'Player' => array( 'Wothrawak' ),

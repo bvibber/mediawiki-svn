@@ -481,6 +481,8 @@ $messages['arz'] = array(
 
 [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} قائمة] بالتاييدات والاعتراضات على هذا الحذف متوفرة، والنقاش نفسه يمكن العثور عليه فى [[\$2]].
 من فضلك تأكد من أنك تتخذ قرارا مع الأخذ فى الاعتبار التوافق فى النقاش.",
+	'deletequeue-review-success' => 'أنت راجعت بنجاح حذف هذه الصفحة',
+	'deletequeue-review-success-title' => 'المراجعة اكتملت',
 	'deletequeue-deletediscuss-discussionpage' => 'هذه هى صفحة النقاش لحذف [[$1]].
 يوجد حاليا $2 {{PLURAL:$2|مستخدم يؤيد|مستخدم يؤيد}} الحذف، و $3 {{PLURAL:$3|مستخدم يعارض|مستخدم يعارض}} الحذف.
 يمكنك [{{fullurl:$1|action=delvote}} تأييد أو معارضة] الحذف، أو [{{fullurl:$1|action=delviewvotes}} رؤية كل التأييدات والاعتراضات].',
@@ -602,6 +604,7 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author ChrisiPK
  * @author Umherirrender
  */
@@ -734,7 +737,7 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
 	'deletequeue-list-search-legend' => 'Suche nach Seiten',
 	'deletequeue-list-queue' => 'Warteschlange:',
 	'deletequeue-list-status' => 'Status:',
-	'deletequeue-list-expired' => 'Zeige nur zu schließende Löschanträge',
+	'deletequeue-list-expired' => 'Zeige nur zu schließende Löschanträge.',
 	'deletequeue-list-search' => 'Suche',
 	'deletequeue-list-anyqueue' => '(irgendeine)',
 	'deletequeue-list-votes' => 'Stimmenliste',
@@ -1404,6 +1407,73 @@ D [[$3|Leschdiskussion]] lauft no bis am ''$2''.",
 	'deletequeue-review-actiondenied' => 'Du hesch en Aktion aagee, wu fir die Syte deaktiviert isch',
 	'deletequeue-review-objections' => "'''Warnig''': Gege d Leschig vu däre Syte isch [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} Yyspruch yygleit] wore.
 Bitte prief d Yyspruchs-Argumänt, voreb Du die syte leschesch.",
+	'deletequeue-reviewspeedy-tab' => 'Schnällleschig priefe',
+	'deletequeue-reviewspeedy-title' => 'Schnällleschaatrag fir „$1“ priefe',
+	'deletequeue-reviewspeedy-text' => "Uf däre Syte chasch dr Schnällleschaatrag fir „'''$1'''“ iberpriefe.
+Bitte stell sicher, ass die Syte schnällglescht cha wäre in Ibereinstimmig mit dr Richtlinie.",
+	'deletequeue-reviewprod-tab' => 'Leschaatrag priefe',
+	'deletequeue-reviewprod-title' => 'Leschaatrag fir „$1“ priefe',
+	'deletequeue-reviewprod-text' => "Uf däre Syte chasch dr nit umstritte Leschaatrag fir „'''$1'''“ priefe.",
+	'deletequeue-reviewdeletediscuss-tab' => 'Leschig priefe',
+	'deletequeue-reviewdeletediscuss-title' => 'Leschdiskussion fir „$1“ priefe',
+	'deletequeue-reviewdeletediscuss-text' => "Uf däre Syte chasch d Leschdiskussion vu „'''$1'''“ priefe.
+
+S git e [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Lischt] mit Stimme fir un gege d Leschig; di eigetlig Diskussion findsch unter [[$2]].
+Bitte gib Achtig, ass Dyy Entscheidig mit em Konsens vu dr Diskussion vereinbar isch.",
+	'deletequeue-review-success' => 'Du hesch erfolgryych d Leschig vu däre Syte prieft',
+	'deletequeue-review-success-title' => 'Priefig abgschlosse',
+	'deletequeue-deletediscuss-discussionpage' => 'Des isch d Diskussionssyte fir d Leschig vu [[$1]].
+Zur Zyt {{PLURAL:$2|unterstitzt ei|unterstitze $2}} Benutzer d Leschig, derwylscht $3 Benutzer gege si sin.
+Du chasch [{{fullurl:$1|action=delvote}} fir oder gege d Leschig stimme] oder [{{fullurl:$1|action=delviewvotes}} alli Stimme go aaluege].',
+	'deletequeue-discusscreate-summary' => 'Leschdiskussion fir [[$1]] wird aagleit.',
+	'deletequeue-discusscreate-text' => 'D Leschig isch us däm Grund vorgschlaa wore: $2',
+	'deletequeue-role-nominator' => 'urspringlige Leschaatragsteller',
+	'deletequeue-role-vote-endorse' => 'Lyt, wu fir d Leschig gstimmt hän',
+	'deletequeue-role-vote-object' => 'Lyt, wu gege d Leschig gstimmt hän',
+	'deletequeue-vote-tab' => 'Iber d Leschung abstimme',
+	'deletequeue-vote-title' => 'Fir oder gege d Leschig vu „$1“ stimme',
+	'deletequeue-vote-text' => "Uf däre Syte chasch fir oder gege d LEschig vu „'''$1'''“ stimme.
+Die Aktion iberschrybt alli Stimme, wu Du devor abgee hesch zue dr Leschig vu däre Syte.
+Du chasch d Stimme, wu scho abgee wore sin, [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} go aaluege].
+Dr Grund fir dr Leschaatrag isch ''$2'' gsi.",
+	'deletequeue-vote-legend' => 'Fir oder gege d Leschig stimme',
+	'deletequeue-vote-action' => 'Empfählig:',
+	'deletequeue-vote-endorse' => 'Fir d Leschig stimme.',
+	'deletequeue-vote-object' => 'Gege d Leschig stimme.',
+	'deletequeue-vote-reason' => 'Kommentar:',
+	'deletequeue-vote-submit' => 'Abschicke',
+	'deletequeue-vote-success-endorse' => 'Die hesch erfolgryych fir d Leschig vu däre Syte gstimmt.',
+	'deletequeue-vote-success-object' => 'Die hesch erfolgryych gege d Leschig vu däre Syte gstimmt.',
+	'deletequeue-vote-requeued' => 'Du hesch erfolgryych gege d Leschig vu däre Syte gstimmt.
+Dur Dyy Yyspruch isch d Syte in d Lesch-Warteschlang $1 verschobe wore.',
+	'deletequeue-showvotes' => 'Fir- un Gege-Stimme zue dr Leschig vu „$1“',
+	'deletequeue-showvotes-text' => "Unte si d Fir- un d Gege-Stimme zue dr Leschig vu „'''$1'''“.
+Du chasch Dyy eige Stimm zue dr Leschig [{{fullurl:{{FULLPAGENAME}}|action=delvote}} doo] yytrage.",
+	'deletequeue-showvotes-restrict-endorse' => 'Nume Fir-Stimme aazeige',
+	'deletequeue-showvotes-restrict-object' => 'Nume Gege-Stimme aazeige',
+	'deletequeue-showvotes-restrict-none' => 'Alli Fir- un Gege-Stimme aazeige',
+	'deletequeue-showvotes-vote-endorse' => "'''Fir''' d Leschig gstimmt am $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Gege''' d Leschig gstimmt am $1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'Nume Fir-Stimme wäre aazeigt',
+	'deletequeue-showvotes-showingonly-object' => 'Nume Gege-Stimme wäre aazeigt',
+	'deletequeue-showvotes-none' => 'S git kei Fir- oder Gege-Stimme zue dr Leschig vu däre Syte.',
+	'deletequeue-showvotes-none-endorse' => 'S git kei Fir-Stimme zue dr Leschig vu däre Syte.',
+	'deletequeue-showvotes-none-object' => 'S git kei Gege-Stimme zue dr Leschig vu däre Syte.',
+	'deletequeue' => 'Lesch-Warteschlang',
+	'deletequeue-list-text' => 'Die Syte zeigt alli Syten aa, wu im Leschsyschtem din sin.',
+	'deletequeue-list-search-legend' => 'No Syte sueche',
+	'deletequeue-list-queue' => 'Warteschlang:',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-expired' => 'Zeig nume Leschaaträg, wu solle zuegmacht wäre.',
+	'deletequeue-list-search' => 'Sueche',
+	'deletequeue-list-anyqueue' => '(irgedeini)',
+	'deletequeue-list-votes' => 'Stimmelischt',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|Fir-Stimme|Fir-Stimme}}, $2 {{PLURAL:$2|Gege-Stimme|Gege-Stimme}}',
+	'deletequeue-list-header-page' => 'Syte',
+	'deletequeue-list-header-queue' => 'Warteschlang',
+	'deletequeue-list-header-votes' => 'Fir- un Gege-Stimme',
+	'deletequeue-list-header-expiry' => 'Ablaufdatum',
+	'deletequeue-list-header-discusspage' => 'Diskussionssyte',
 );
 
 /** Hebrew (עברית)

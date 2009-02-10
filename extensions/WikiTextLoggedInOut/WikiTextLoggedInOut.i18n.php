@@ -58,6 +58,13 @@ $messages['bs'] = array(
 	'wikitextloggedinout-desc' => 'Dvije parserske kuke, <tt>&lt;loggedin&gt;</tt> i <tt>&lt;loggedout&gt;</tt> koje prikazuju različite tekstove u zavisnosti od korisničkog statusa prijave',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'wikitextloggedinout-desc' => "Dues etiquetes de sintaxi <tt>&lt;loggedin&gt;</tt> i <tt>&lt;loggedout&gt;</tt> que mostren un text diferent en funció de l'estat de connexió de l'usuari.",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

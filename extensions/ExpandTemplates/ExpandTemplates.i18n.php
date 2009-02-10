@@ -317,6 +317,7 @@ $messages['ca'] = array(
 	'expand_templates_xml_output' => 'Sortida XML',
 	'expand_templates_ok' => "D'acord",
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
+	'expand_templates_generate_xml' => "Mostra l'arbre XML",
 	'expand_templates_preview' => 'Previsualitza',
 );
 
@@ -1345,6 +1346,23 @@ $messages['pt'] = array(
 	'expandtemplates' => 'Expandir pré-definições',
 	'expandtemplates-desc' => 'Expande predefinições, funções do analisador "parser" e variáveis para mostrar texto wiki expandido e prever o aspecto da página',
 	'expand_templates_intro' => 'Esta página especial pega em algum texto e expande todas as pré-definições nele existentes recursivamente. Também expande funções do analisador (parser) como <nowiki>{{</nowiki>#if:...}}, e variáveis como <nowiki>{{</nowiki>CURRENTDAY}}&mdash;de facto, tudo entre chavetas duplas. Isto é feito através da chamada ao estágio do analisador (parser) relevante do próprio MediaWiki.',
+	'expand_templates_title' => 'Título de contexto para {{PAGENAME}} etc.:',
+	'expand_templates_input' => 'Texto de entrada:',
+	'expand_templates_output' => 'Resultado',
+	'expand_templates_xml_output' => 'Resultado XML',
+	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'Remover comentários',
+	'expand_templates_generate_xml' => 'Mostrar árvore de análise (parse) do XML',
+	'expand_templates_preview' => 'Previsão',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'expandtemplates' => 'Expandir predefinições',
+	'expandtemplates-desc' => 'Expande predefinições, funções do analisador (parser) e variáveis para mostrar texto wiki expandido e prever o aspecto da página',
+	'expand_templates_intro' => 'Esta página especial pega algum texto e expande todas as predefinições nele existentes recursivamente. Também expande funções do analisador (parser) como <nowiki>{{</nowiki>#if:...}}, e variáveis como <nowiki>{{</nowiki>CURRENTDAY}}&mdash;de fato, tudo entre chaves duplas. Isto é feito através da chamada ao estágio relevante do analisador (parser) do próprio MediaWiki.',
 	'expand_templates_title' => 'Título de contexto para {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto de entrada:',
 	'expand_templates_output' => 'Resultado',

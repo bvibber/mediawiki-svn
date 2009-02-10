@@ -143,6 +143,7 @@ $messages['arz'] = array(
 	'importusers-password' => 'كلمة السر',
 	'importusers-email' => 'البريد الإلكتروني',
 	'importusers-realname' => 'الاسم الحقيقي',
+	'right-import_users' => 'استيراد المستخدمين بشكل كمى',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

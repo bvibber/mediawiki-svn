@@ -42,6 +42,11 @@ $aliases['gsw'] = array(
 	'Patroller' => array( 'Fäldhieter' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'Patroller' => array( 'Patroler' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'Patroller' => array( 'Dohladowar' ),

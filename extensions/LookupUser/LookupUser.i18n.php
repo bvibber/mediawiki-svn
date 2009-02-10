@@ -1133,6 +1133,7 @@ $messages['vi'] = array(
 	'lookupuser-touched' => 'Bản ghi lại lần cuối truy cập: $1',
 	'lookupuser-info-authenticated' => 'Xác nhận thư điện tử: $1',
 	'lookupuser-useroptions' => 'Lựa chọn của thành viên:',
+	'right-lookupuser' => 'Tra tùy chọn người dùng',
 );
 
 /** Volapük (Volapük)

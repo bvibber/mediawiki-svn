@@ -57,23 +57,32 @@ $messages['ar'] = array(
 	'emergencydesysop-notasysop' => 'المستخدم المستهدف ليس في مجموعة الإداريين',
 	'emergencydesysop-nogroups' => 'لا يوجد',
 	'emergencydesysop-done' => 'الفعل اكتمل، كلا منك و [[$1]] تم عزله.',
-	'emergencydesysop-invalidtarget' => 'المستخدم المراد لا يوجد',
+	'emergencydesysop-invalidtarget' => 'المستخدم المراد غير موجود.',
 	'emergencydesysop-blocked' => 'لا يمكن الدخول على هذه الصفحة أثناء المنع',
 	'emergencydesysop-noright' => 'لا تملك الصلاحيات الكافية للدخول على هذه الصفحة',
 	'right-emergencydesysop' => 'القدرة على عزل مستخدم آخر، بشكل متبادل',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'emergencydesysop' => 'سحب الإدارة الطارئ',
+	'emergencydesysop-desc' => 'يسمح لإدارى بالتضحية بصلاحياته، في سبيل عزل آخر',
+	'emergencydesysop-title' => 'إزالة صلاحيات الإدارة من المستخدم الحالى ومدير نظام آخر معا',
+	'emergencydesysop-otheradmin' => 'مدير النظام الآخر لإزالته من المجموعة',
 	'emergencydesysop-reason' => 'سبب الحذف',
 	'emergencydesysop-submit' => 'تنفيذ',
 	'emergencydesysop-incomplete' => 'كل الفراغات اللى في الاستماره لازم تتملى. لو سمحت تحاول تانى',
 	'emergencydesysop-notasysop' => 'اليوزر المستهدف مش عضو في مجموعة السيسوبات',
 	'emergencydesysop-nogroups' => 'لا يوجد',
+	'emergencydesysop-done' => 'الفعل اكتمل، كلا منك و [[$1]] تم عزله.',
+	'emergencydesysop-invalidtarget' => 'المستخدم المراد لا يوجد',
+	'emergencydesysop-blocked' => 'لا يمكن الدخول على هذه الصفحة أثناء المنع',
 	'emergencydesysop-noright' => 'انت ما عندكش التصاريح اللازمه عشان تدخل الصفحه دى',
+	'right-emergencydesysop' => 'القدرة على عزل مستخدم آخر، بشكل متبادل',
 );
 
 /** Bosnian (Bosanski)

@@ -694,6 +694,22 @@ $messages['pt'] = array(
 	'inspectcache-list' => 'Listar',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'inspectcache' => 'Inspecionar cache',
+	'inspectcache-desc' => 'Uma ferramenta simples de depuração para inspecionar o conteúdo da cache compartilhada',
+	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => 'Cache geral',
+	'inspectcache-parser' => 'Cache do analisador (parser)',
+	'inspectcache-message' => 'Cache de mensagens',
+	'inspectcache-get' => 'Buscar',
+	'inspectcache-delete' => 'Apagar',
+	'inspectcache-deleted' => 'Cache Apagada',
+	'inspectcache-list' => 'Listar',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

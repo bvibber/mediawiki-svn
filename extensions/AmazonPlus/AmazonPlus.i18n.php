@@ -39,6 +39,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Meno25
  * @author Purodha
  * @author Skizzerz
  */
@@ -60,6 +61,11 @@ $messages['qqq'] = array(
 ;$2:Currency code (e.g. USD)
 ;$3:Currency symbol (e.g. $)
 ;$4:Status message',
+	'amazonplus-cp-usd' => '{{optional}}',
+	'amazonplus-cp-cad' => '{{optional}}',
+	'amazonplus-cp-gbp' => '{{optional}}',
+	'amazonplus-cp-eur' => '{{optional}}',
+	'amazonplus-cp-jpy' => '{{optional}}',
 );
 
 /** Arabic (العربية)
@@ -81,6 +87,10 @@ $messages['ar'] = array(
 	'amazonplus-new' => 'جديد',
 	'amazonplus-none' => 'لا نُسخ من هذا العنصر معروضة للبيع.',
 	'amazonplus-cp-none' => 'لا شيء',
+	'amazonplus-cp-usd' => 'دولار أمريكي',
+	'amazonplus-cp-gbp' => 'جنيه إسترليني',
+	'amazonplus-cp-eur' => 'يورو',
+	'amazonplus-cp-jpy' => 'ين ياباني',
 	'amazonplus-more' => 'أكثر',
 	'amazonplus-less' => 'أقل',
 );

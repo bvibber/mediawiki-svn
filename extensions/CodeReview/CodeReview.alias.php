@@ -27,7 +27,7 @@ $aliases['ar'] = array(
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'Code' => array( 'كود' ),
+	'Code' => array( 'كود', 'مراجعة_الكود' ),
 	'RepoAdmin' => array( 'إدارة_المستودع' ),
 );
 

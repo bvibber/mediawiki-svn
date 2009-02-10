@@ -529,6 +529,24 @@ Por exemplo, "* PD-" não mostrará todas as categorias que começam com "PD-", 
 * Self',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'minipreview-desc' => 'MiniPreview apresenta, junto a uma imagem, pequenas previsões de outros arquivos multimídia nas mesmas categorias ou apresentadas nas mesmas páginas',
+	'minipreview-files_in_category' => "Esta categoria contém '''$1''' {{PLURAL:$1|arquivo|arquivos}}.",
+	'minipreview-files_in_gallery' => "Esta galeria contém '''$1''' {{PLURAL:$1|arquivo|arquivos}}.",
+	'minipreview-no_more_files_here' => 'Não há mais arquivos nesta direção.',
+	'minipreview-no_category_gallery' => 'Não existem categorias ou galerias!',
+	'minipreview-ignore_categories' => 'A seguinte lista contém nomes de categorias ou prefixos de nomes. Estas categorias não serão mostradas pelo MiniPreview.
+Por exemplo, "* PD-" não mostrará todas as categorias que começam com "PD-", tal como "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  * @author Александр Сигачёв

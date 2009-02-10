@@ -183,6 +183,7 @@ Ja no formeu part de: $6
 Atentament,
 
 $2",
+	'userrightsnotif-desc' => 'Envia una notificació als usuaris per correu electrònic quan es canvien els seus drets',
 );
 
 /** Czech (Česky)

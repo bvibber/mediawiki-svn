@@ -203,6 +203,7 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'contributors' => 'Contribuïdors',
+	'contributors-desc' => 'Resumeix les principals contribucions en una pàgina',
 	'contributors-toolbox' => 'Principals contribuïdors',
 	'contributors-legend' => 'Llista dels principals contribuïdors en una pàgina',
 	'contributors-target' => 'Títol:',
@@ -1028,6 +1029,23 @@ $messages['pt'] = array(
 	'contributors-submit' => 'Exibir',
 	'contributors-subtitle' => 'Principais contribuidores de $1',
 	'contributors-others-long' => '{{PLURAL:$1|Ainda há outro contribuidor|Existem ainda outros $1 contribuidores}} para esta página.',
+	'contributors-others' => 'e {{PLURAL:$1|um outro|$1 outros}}',
+	'contributors-badtitle' => 'Título inválido.',
+	'contributors-nosuchpage' => 'O artigo $1 não existe.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'contributors' => 'Contribuidores',
+	'contributors-desc' => 'Sumariza os principais contribuidores de uma página',
+	'contributors-toolbox' => 'Principais contribuidores',
+	'contributors-legend' => 'Listagem dos principais contribuidores de um artigo',
+	'contributors-target' => 'Título:',
+	'contributors-submit' => 'Exibir',
+	'contributors-subtitle' => 'Principais contribuidores de $1',
+	'contributors-others-long' => 'Ainda há {{PLURAL:$1|outro contribuidor|outros $1 contribuidores}} para esta página.',
 	'contributors-others' => 'e {{PLURAL:$1|um outro|$1 outros}}',
 	'contributors-badtitle' => 'Título inválido.',
 	'contributors-nosuchpage' => 'O artigo $1 não existe.',

@@ -56,6 +56,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
  * @author Aotake
  * @author BrokenArrow
  * @author Jon Harald Søby
+ * @author Meno25
  * @author Mormegil
  * @author Purodha
  * @author Siebrand
@@ -73,6 +74,11 @@ Parameters are:
 * $3 file sampling rate, f.e. 97kbps',
 	'ogg-play' => '{{Identical|Play}}',
 	'ogg-player-videoElement' => 'Message used in JavaScript.',
+	'ogg-player-vlc-mozilla' => '{{optional}}',
+	'ogg-player-quicktime-mozilla' => '{{optional}}',
+	'ogg-player-totem' => '{{optional}}',
+	'ogg-player-kmplayer' => '{{optional}}',
+	'ogg-player-kaffeine' => '{{optional}}',
 	'ogg-more' => '{{Identical|More...}}',
 	'ogg-download' => '{{Identical|Download}}',
 );
@@ -1101,6 +1107,7 @@ QuickTime बिना इस घटक के Ogg files चलने में 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'ogg-desc' => 'Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom',
@@ -1119,7 +1126,7 @@ $messages['hr'] = array(
 	'ogg-play-sound' => 'Sviraj zvuk',
 	'ogg-no-player' => "Oprostite, izgleda da Vaš operacijski sustav nema instalirane medijske preglednike. Molimo <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">instalirajte medijski preglednik (''player'')</a>.",
 	'ogg-no-xiphqt' => "Nemate instaliranu XiphQT komponentu za QuickTime (ili je neispravno instalirana). QuickTime ne može pokretati Ogg datoteke bez ove komponente. Molimo <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">instalirajte XiphQT</a> ili izaberite drugi preglednik (''player'').",
-	'ogg-player-videoElement' => 'Ugrađena podrška za browser',
+	'ogg-player-videoElement' => 'Ugrađena podrška za preglednik',
 	'ogg-player-oggPlugin' => 'Plugin preglednika',
 	'ogg-player-vlc-activex' => 'VLC (ActiveX kontrola)',
 	'ogg-player-thumbnail' => 'Samo (nepokretne) slike',

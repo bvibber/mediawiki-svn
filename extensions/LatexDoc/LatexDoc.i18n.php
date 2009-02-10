@@ -562,6 +562,25 @@ $3',
 	'latexdoc-desc' => 'Documento Latex',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'latexdoc_no_text' => 'A página não contém qualquer texto, não é possível gerar DVI',
+	'latexdoc_cant_create_dir' => 'Não foi possível criar o diretório temporário $1',
+	'latexdoc_cant_write' => 'Não foi possível escrever no arquivo $1',
+	'latexdoc_error' => 'Erro LaTeX
+
+Comando: $1
+
+Resultado: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Obter DVI',
+	'latexdoc_get_pdf' => 'Obter PDF',
+	'latexdoc-desc' => 'Edição colaborativa de documentos LaTeX',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

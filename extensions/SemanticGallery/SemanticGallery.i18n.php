@@ -165,6 +165,13 @@ $messages['pt-br'] = array(
 	'semanticgallery-desc' => 'Adiciona uma formato de saída tipo galeria a comandos SMW embebidos',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'semanticgallery-desc' => "Aggiunge 'nu formete de resultete p'a gallerie  ausanne le inderrogaziune SMW inline",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

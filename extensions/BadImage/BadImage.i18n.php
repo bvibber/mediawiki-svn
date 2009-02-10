@@ -486,6 +486,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author BicScope
+ * @author Crazymadlover
  */
 $messages['es'] = array(
 	'badimages' => 'Lista de malas imágenes',
@@ -501,7 +502,7 @@ $messages['es'] = array(
 	'badimages-remove-btn' => 'Borrar',
 	'badimages-remove-confirm' => 'Por favor, confirme que desea quitar $1 de la lista:',
 	'badimages-removed' => '$1 ha sido borrado de la lista.',
-	'badimages-subheading' => '$1 actuales',
+	'badimages-subheading' => 'Items actuales',
 	'badimages-unprivileged' => '(No tiene permiso para alterar la lista)',
 	'badimages-log-name' => 'Lista de malas imágenes',
 	'badimages-log-header' => 'Éste es un registro de cambios a la [[{{MediaWiki:Badimages-page}}|lista de malas imágenes]].',

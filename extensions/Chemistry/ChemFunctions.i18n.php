@@ -792,6 +792,24 @@ $messages['pt'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Erro nos dados introduzidos!',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'chemicalsources' => 'Fontes de química',
+	'chemicalsource-desc' => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
+	'chemFunctions_ListPage' => 'Fontes de química',
+	'chemFunctions_DataList' => 'Abaixo está uma lista de ligações para sítios que oferecem informação sobre a substância química que procura.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula no NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (Reino Unido) (não pesquisável)</a><br />',
+	'chemFunctions_CAS' => 'Número CAS',
+	'chemFunctions_ATCCode' => 'Código ATC',
+	'chemFunctions_ECNumber' => 'Número EC',
+	'chemFunctions_Formula' => 'Fórmula',
+	'chemFunctions_Name' => 'Nome IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Erro nos dados introduzidos!',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

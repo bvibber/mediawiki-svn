@@ -313,9 +313,11 @@ Només cal que canvieu el nom de l'usuari, afegiu un comentari (opcional) i pitg
 	'changeauthor-weirderror' => "Ha ocorregut un error poc comú. 
 Si us plau, intenteu-ho de nou. 
 Si l'error persisteix, és probable que la base de dades estigui avariada.",
+	'changeauthor-invalidform' => 'Useu el formulari de la [[Special:ChangeAuthor|pàgina especial]] adient.',
 	'changeauthor-success' => 'La vostra petició ha estat processada satisfactòriament.',
 	'changeauthor-logentry' => "S'ha canviat l'autor, de $3 a $4, per a $2 de $1",
 	'changeauthor-logpagename' => "Registre de canvis d'autor",
+	'right-changeauthor' => "Canviar l'autoria d'una edició",
 );
 
 /** Chamorro (Chamoru)
@@ -1750,6 +1752,7 @@ Nếu lỗi này tiếp tục hiện ra, có lẽ cơ sở dữ liệu đã bị
 	'changeauthor-success' => 'Yêu cầu của bạn đã được thực hiện xong.',
 	'changeauthor-logentry' => 'Đã đổi tác giả của phiên bản $2 của trang $1 từ $3 thành $4',
 	'changeauthor-logpagename' => 'Nhật trình thay đổi tác giả',
+	'right-changeauthor' => 'Đổi tác giả của phiên bản',
 );
 
 /** Volapük (Volapük)

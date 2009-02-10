@@ -6561,6 +6561,8 @@ $2 tarihinden önce en az $1 {{PLURAL:$1|katkı|katkı}}, ve $4 ile $5 tarihleri
 	'boardvote_listintro' => '<p>Bugüne kadar kaydedilmiş oyların listesi. Şifrelendirilmiş olarak indirmek için $1.</p>',
 	'boardvote_dumplink' => 'Buraya tıklayın',
 	'boardvote_submit' => 'Oyunuzu kullanın',
+	'boardvote_strike' => 'Geçersiz kıl',
+	'boardvote_unstrike' => 'Tekrar geçerli kıl',
 	'boardvote_needadmin' => 'Bu işlemi sadece seçim yöneticileri yapabilir.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Vikimedya Heyet Seçimleri</a>:
 22 Haziran\'a kadar oylama açıktır',

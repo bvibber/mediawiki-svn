@@ -137,6 +137,13 @@ $messages['gsw'] = array(
 	'logentry-invalidtoken' => 'Nit giltig Token',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'logentry-append' => 'הוספה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -259,6 +266,18 @@ $messages['pt'] = array(
 	'logentry-parserhook-desc' => 'Esta extensão de marca fornece uma forma de acrescentar ao início/fim de páginas de registo',
 	'logentry-specialpage-desc' => 'Esta extensão de marca fornece processamento para acrescentar a páginas de registo',
 	'logentry' => 'Entrada de Registo',
+	'logentry-invalidpage' => 'Página inválida',
+	'logentry-invalidtoken' => 'Token inválido',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'logentry-append' => 'Acrescentar',
+	'logentry-parserhook-desc' => 'Esta extensão de marca fornece uma forma de acrescentar dados ao início/fim de páginas de registro',
+	'logentry-specialpage-desc' => 'Esta extensão de marca fornece processamento para acrescentar dados a páginas de registro',
+	'logentry' => 'Entrada de Registro',
 	'logentry-invalidpage' => 'Página inválida',
 	'logentry-invalidtoken' => 'Token inválido',
 );

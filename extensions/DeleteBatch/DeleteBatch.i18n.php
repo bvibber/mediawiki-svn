@@ -108,13 +108,13 @@ $messages['arz'] = array(
 	'deletebatch-help' => 'حذف باتش من الصفحات. يمكنك إما عمل عملية حذف واحدة، أو حذف الصفحات المرتبة فى ملف.
 اختر مستخدما ليتم عرضه فى سجلات الحذف.
 الملف المرفوع ينبغى أن يحتوى على اسم الصفحة وسبب اختيارى مفصولين بواسطة حرف "|" فى كل سطر.',
-	'deletebatch-caption' => 'قائمة الصفحات',
+	'deletebatch-caption' => 'قائمة الصفحات:',
 	'deletebatch-title' => 'حذف الباتش',
-	'deletebatch-link-back' => 'يمكنك العودة إلى الامتداد',
-	'deletebatch-as' => 'تشغيل السكريبت ك',
+	'deletebatch-link-back' => 'ارجع إلى الصفحة الخاصة',
+	'deletebatch-as' => 'تشغيل السكريبت ك:',
 	'deletebatch-both-modes' => 'من فضلك اختر إما صفحة واحدة أو قائمة معطاة من الصفحات.',
 	'deletebatch-or' => '<b>أو</b>',
-	'deletebatch-page' => 'الصفحات للحذف',
+	'deletebatch-page' => 'الصفحات للحذف:',
 	'deletebatch-reason' => 'سبب الحذف',
 	'deletebatch-processing' => 'مسح الصفحات $1 شغال',
 	'deletebatch-from-file' => 'من قائمة ملف',
@@ -196,6 +196,7 @@ El fitxer indicat només pot contenir el títol de la pàgina i el motiu per a e
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author ChrisiPK
  * @author Leithian
  * @author MF-Warburg
@@ -207,7 +208,7 @@ $messages['de'] = array(
 	'deletebatch-desc' => '[[Special:DeleteBatch|Lösche eine Reihe von Seiten]]',
 	'deletebatch-help' => 'Lösche eine Reihe von Seiten. Du kannst einerseits eine einzelne Seite löschen, aber auch mehrere Seiten, die du in einer Datei aufzählst.
 Wähle einen Benutzer, der im Löschlogbuch angezeigt werden soll.
-Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional einen mit einem senkrechten Stich („|“) abgetrennten Löschgrund enthalten.',
+Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional einen mit einem senkrechten Strich („|“) abgetrennten Löschgrund enthalten.',
 	'deletebatch-caption' => 'Seitenliste:',
 	'deletebatch-title' => 'Mehrere Seiten löschen',
 	'deletebatch-link-back' => 'Zurück zur Spezialseite',
@@ -419,6 +420,37 @@ $messages['grc'] = array(
 	'deletebatch-or' => '<b>ἢ</b>',
 	'deletebatch-success-subtitle' => 'διὰ τὸ $1',
 	'deletebatch-select-yourself' => 'σύ',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'deletebatch' => 'E ganzi Zyylete vu Syte lesche',
+	'deletebatch-desc' => '[[Special:DeleteBatch|E Zyylete vu Syte lesche]]',
+	'deletebatch-help' => 'Lesch e Zyylete vu Syte. Du chasch uf eire Syte ei einzelni Syte lesche, aber au mehreri Syte, wu Du in ere Datei ufzellsch.
+Wehl e Benutzer, wu im Leschlogbuech soll aazeigt wäre.
+D Datei, wu soll uffeglade wäre, sott pro Zyyle ei Sytetitel haa un s cha optional e Leschgrund din haa, wu mit eme sänkrächte Strich („|“) abtrännt isch.',
+	'deletebatch-caption' => 'Sytelischt:',
+	'deletebatch-title' => 'Mehreri Syte lesche',
+	'deletebatch-link-back' => 'Zrugg zue dr Spezialsyte',
+	'deletebatch-as' => 'Skript uusfieren as:',
+	'deletebatch-both-modes' => 'Bitte wehl äntwäder e spezifischi Seite oder e Lischt vu Syte.',
+	'deletebatch-or' => '<b>oder</b>',
+	'deletebatch-page' => 'Syte, wu solle glescht wäre:',
+	'deletebatch-reason' => 'Leschgrund',
+	'deletebatch-processing' => 'Am Lesche vu dr Syte $1',
+	'deletebatch-from-file' => 'vu Dateilischt',
+	'deletebatch-from-form' => 'vu Yygab',
+	'deletebatch-success-subtitle' => 'fir $1',
+	'deletebatch-omitting-nonexistant' => 'Ibergump Syte $1, wu s nit git.',
+	'deletebatch-omitting-invalid' => 'Ibergump nit giltigi Syte $1.',
+	'deletebatch-file-bad-format' => 'In dr Datei sott s Klartäxt haa.',
+	'deletebatch-file-missing' => 'Datei, wu ibergee woren isch, het nit chenne gläse wäre',
+	'deletebatch-select-script' => 'Syteleschskript',
+	'deletebatch-select-yourself' => 'Du',
+	'deletebatch-no-page' => 'Bitte gib äntwäder zmindescht ei Syten aa, wu glescht soll wäre, oder wehl e Datei, wu s e Lischt din het vu Syte, wu glescht solle wäre.',
+	'right-deletebatch' => 'E Zyylete vu Syte lesche',
 );
 
 /** Hebrew (עברית)

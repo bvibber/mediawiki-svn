@@ -54,6 +54,7 @@ Link to the help page for the extension Framed Video.',
  * @author Meno25
  */
 $messages['ar'] = array(
+	'framedvideo_position' => 'left',
 	'framedvideo_errors' => 'حدثت أخطاء متعددة!',
 	'framedvideo_error' => 'حدث خطأ!',
 	'framedvideo_error_unknown_type' => 'رقم خدمة فيديو غير معروف ("$1"): تحقق من المحدد "type".',
@@ -69,6 +70,48 @@ $messages['ar'] = array(
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|المزيد حول الصياغة]].',
 	'framedvideo_error_height_and_width_required' => 'نوع الفيديو "$1" يتطلب المحددين "height" و "width2" أو "width".',
 	'framedvideo-desc' => 'يسمح بتضمين الفيديو من مواقع ويب متعددة باستخدام الوسم <tt><nowiki><video></nowiki></tt>',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'framedvideo_errors' => 'حدثت أخطاء متعددة!',
+	'framedvideo_error' => 'حدث خطأ!',
+	'framedvideo_error_unknown_type' => 'رقم خدمة فيديو غير معروف ("$1"): تحقق من المحدد "type".',
+	'framedvideo_error_no_id_given' => 'محدد "id" ناقص.',
+	'framedvideo_error_height_required' => 'نوع الفيديو "$1" يتطلب المحدد "height".',
+	'framedvideo_error_height_required_not_only_width' => 'نوع الفيديو "$1" يتطلب المحدد "height"، وليس فقط المحدد "width".',
+	'framedvideo_error_width_too_big' => 'القيمة المعطاة لمحدد "width" كبيرة جدا.',
+	'framedvideo_error_height_too_big' => 'القيمة المعطاة لمحدد "height" كبيرة جدا.',
+	'framedvideo_error_no_integer' => 'القيمة المعطاة ل"$1" ليست رقما موجبا.',
+	'framedvideo_error_limit' => 'أعلى قيمة مسموح بها هى $1.',
+	'framedvideo_error_full_size_not_allowed' => 'القيمة "full" للمحدد "size" غير مسموح بها لرقم خدمة الفيديو "$1".',
+	'framedvideo_helppage' => 'Help:فيديو',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|المزيد حول الصياغة]].',
+	'framedvideo_error_height_and_width_required' => 'نوع الفيديو "$1" يتطلب المحددين "height" و "width2" أو "width".',
+	'framedvideo-desc' => 'نوع الفيديو "$1" يتطلب المحددين "height" و "width2" أو "width".',
+);
+
+/** German (Deutsch)
+ * @author Umherirrender
+ */
+$messages['de'] = array(
+	'framedvideo_errors' => 'Mehrere Fehler sind aufgetreten!',
+	'framedvideo_error' => 'Ein Fehler ist aufgetreten!',
+	'framedvideo_error_unknown_type' => 'Unbekannte Video-Service-ID („$1“): prüfe den Parameter „type“.',
+	'framedvideo_error_no_id_given' => 'Der Parameter „id“ fehlt.',
+	'framedvideo_error_height_required' => 'Der Videotyp „$1“ erfordert den Parameter „height“.',
+	'framedvideo_error_height_required_not_only_width' => 'Der Videotyp „$1“ erfordert den Parameter „height“, nicht nur den Parameter „width“.',
+	'framedvideo_error_width_too_big' => 'Der Wert für „width“ ist zu groß.',
+	'framedvideo_error_height_too_big' => 'Der Wert für „height“ ist zu groß.',
+	'framedvideo_error_no_integer' => 'Der Wert für „$1“ ist keine positive Zahl.',
+	'framedvideo_error_limit' => 'Der größe erlaubte Wert ist $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Wert „full“ von dem Parameter „size“ ist nicht erlaubt für die Video-Service-ID „$1“.',
+	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mehr über die Syntax]].',
+	'framedvideo_error_height_and_width_required' => 'Der Videotyp „$1“ erfordert den Parameter „height“ und einen Parameter „width2“ oder „width“.',
+	'framedvideo-desc' => 'Ermöglicht das Einbinden von Videos von verschiedensten Webseiten mithilfe des <tt><nowiki><video></nowiki></tt>-Tags.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -166,6 +209,15 @@ $messages['he'] = array(
 	'framedvideo_error_no_id_given' => 'הפרמטר "id" חסר.',
 	'framedvideo_error_height_required' => 'לסוג הווידאו "$1" נדרש הפרמטר "height".',
 	'framedvideo_error_height_required_not_only_width' => 'לסוג הווידאו "$1" נדרש גם הפרמטר "height" ולא רק הפרמטר "width".',
+	'framedvideo_error_width_too_big' => 'הערך שניתן לפרמטר "width" גדול מדי.',
+	'framedvideo_error_height_too_big' => 'הערך שניתן לפרמטר "height" גדול מדי.',
+	'framedvideo_error_no_integer' => 'הערך שניתן לפרמטר "$1" אינו מספר חיובי.',
+	'framedvideo_error_limit' => 'הערך המורשה הגבוה ביותר הוא $1.',
+	'framedvideo_error_full_size_not_allowed' => 'הערך "full" עבור הפרמטר "size" אינו מורשה עבור מספר שירות הווידאו "$1".',
+	'framedvideo_helppage' => 'Help:וידאו',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|עוד אודות התחביר]].',
+	'framedvideo_error_height_and_width_required' => 'סוג הווידאו "$1" דורש את הפרמטרים"height" ו־"width2" או "width".',
+	'framedvideo-desc' => 'מתן האפשרות להטמעת וידאו מאתרים שונים באמצעות התגית <tt><nowiki><video></nowiki></tt>',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -342,10 +394,16 @@ $messages['pt'] = array(
 	'framedvideo_error' => 'Ocorreu um erro!',
 	'framedvideo_error_unknown_type' => 'Identificador de serviço vídeo desconhecido ("$1"): verifique o parâmetro "type".',
 	'framedvideo_error_no_id_given' => 'Parâmetro "id" em falta.',
+	'framedvideo_error_height_required' => 'Vídeo tipo "$1" requer o parâmetro "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Vídeo tipo "$1" requer o parâmetro "height", e não apenas o parâmetro "width".',
+	'framedvideo_error_width_too_big' => 'O valor dado do parâmetro "width" é demasiado grande.',
+	'framedvideo_error_height_too_big' => 'O valor dado do parâmetro "height" é demasiado grande.',
+	'framedvideo_error_no_integer' => 'O valor dado de "$1" não é um número positivo.',
 	'framedvideo_error_limit' => 'O máximo valor permitido é $1.',
 	'framedvideo_error_full_size_not_allowed' => 'Valor "full" no parâmetro "size" não permitido para o serviço de vídeo id "$1".',
 	'framedvideo_helppage' => 'Help:Vídeo',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mais sobre a sintaxe]].',
+	'framedvideo_error_height_and_width_required' => 'Vídeo tipo "$1" requer os parâmetros "height" e "width2" ou "width".',
 	'framedvideo-desc' => 'Permite incorporar vídeos de vários sítios web, usando a marca <tt><nowiki><video></nowiki></tt>',
 );
 
@@ -368,6 +426,13 @@ $messages['sk'] = array(
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Viac o syntaxi]].',
 	'framedvideo_error_height_and_width_required' => 'Video typu „$1“ vyžaduje parametre „height“ a „width2“ alebo „width“.',
 	'framedvideo-desc' => 'Umožňuje vkladanie videa z rozličných webstránok pomocou značky <tt><nowiki><video></nowiki></tt>',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'framedvideo_helppage' => 'Help:వీడియో',
 );
 
 /** Tagalog (Tagalog)

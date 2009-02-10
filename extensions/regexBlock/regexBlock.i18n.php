@@ -213,6 +213,7 @@ $messages['arz'] = array(
 	'regexblock-block-success' => 'المنع نجح',
 	'regexblock-currently-blocked' => 'العناوين الممنوعة حاليا:',
 	'regexblock-desc' => 'امتداد يستخدم لمنع أسماء المستخدمين وعناوين الأيبى باستخدام تعبيرات منتظمة. يحتوى على ميكانيكية المنع و [[Special:Regexblock|صفحة خاصة]] لإضافة/التحكم بعمليات المنع',
+	'regexblock-expire-duration' => '1 ساعة,2 ساعة,4 ساعة,6 ساعة,1 يوم,3 يوم,1 أسبوع,2 أسبوع,1 شهر,3 شهر,6 شهر,1 سنة,لا نهائى',
 	'regexblock-page-title' => 'منع الاسم بواسطة تعبير منتظم',
 	'regexblockstats' => 'إحصاءات تعبيرات المنع المنتظمة',
 	'regexblock-help' => 'استخدم الاستمارة بالأسفل لمنع التحرير من عنوان أيبى أو اسم مستخدم محدد.
@@ -237,12 +238,14 @@ $messages['arz'] = array(
 	'regexblock-form-submit-empty' => 'أعط اسم مستخدم أو عنوان أيبى للمنع.',
 	'regexblock-form-submit-regex' => 'تعبير منتظم غير صحيح.',
 	'regexblock-form-submit-expiry' => 'من فضلك حدد تاريخ انتهاء.',
+	'regexblock-match-stats-record' => "$1 منع '$2' فى '$3' فى '$4'، تسجيل من العنوان '$5'",
 	'regexblock-nodata-found' => 'مافيش بيانات اتلقت',
 	'regexblock-stats-title' => 'إحصاءات تعبيرات المنع المنتظمة',
 	'regexblock-unblock-success' => 'رفع المنع نجح',
 	'regexblock-unblock-log' => "اسم المستخدم أو عنوان الأيبى '''$1''' تم رفع المنع عنه.",
 	'regexblock-unblock-error' => 'خطأ أثناء رفع المنع عن $1.
 على الأرجح لا يوجد مستخدم بهذا الاسم.',
+	'regexblock-regex-filter' => '   أو قيمة الريجيكس:',
 	'regexblock-view-blocked' => 'عرض الممنوع بواسطة:',
 	'regexblock-view-all' => 'الكل',
 	'regexblock-view-go' => 'اذهب',
@@ -259,6 +262,7 @@ $messages['arz'] = array(
 	'regexblock-view-stats' => 'ستاتس',
 	'regexblock-view-empty' => 'قائمة الأسماء والعناوين الممنوعة فارغة.',
 	'regexblock-view-time' => 'فى $1',
+	'right-regexblock' => 'منع المستخدمين من التعديل فى كل الويكيات فى مزرعة الويكى',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -440,7 +444,16 @@ $messages['dsb'] = array(
 	'regexblock-expire-duration' => '1 góźina,2 góźinje,4 góźiny,6 góźinow,1 źeń,3 dny,1 tyźeń,2 tyźenja,1 mjasec,3 mjasece,6 mjasecow,1 lěto,njewěsty',
 	'regexblock-page-title' => 'Blokěrowanje mjenjow pśez regularne wuraze',
 	'regexblockstats' => 'Statistika blokěrowanjow pśez regularne wuraze',
+	'regexblock-help' => 'Wuž slědujucy formular, aby blokěrował pisański pśistup za IP-adresu abo wužywarske mě.
+To by měło se jano cyniś. aby zajźowało wandalizm a w makanju z zasadach.
+\'\'Toś ten bok buźo śi zmóžnjaś, samo njeeksistujucych wužywarjow blokěrowaś a buźo teke wužywarjow z pódobnym mjenim blokěrowaś, t.j. "Test" buźo se gromaźe "Test 2" atd. blokěrowaś. Móžoš teke dopołne IP-adrese blokěrowaś, to groni, až nichto, kótaryž se z nimi pśizjawja, njamóžo boki wobźěłaś. Pśispomnjeśe: źělne IP-adrese wobchadaju se ako wužywarske mjenja, aby rozsuźił wo blokěrowanju. Jolic pśicyna njejo pódana, buźo se powšykna pśicyna wužiwaś.\'\'',
 	'regexblock-page-title-1' => 'Adresu z pomocu regularnych wurazow blokěrowaś',
+	'regexblock-reason-ip' => 'Toś tej IP-adresy se zawoborujo wobźěłowanje dla wandalizma abo drugego mólenja wót tebje abo někogo, kótaryž ma samsku IP-adresu.
+Jolic wěriš, až to jo zmólenje, pšosym $1',
+	'regexblock-reason-name' => 'Toś tomu wužywarskemu mjenjeju se zawoborujo wobźěłowanje, dla wandalizma abo drugego mólenja.
+Jolic wěriš, až to jo zamólenje, pšosym $1',
+	'regexblock-reason-regex' => 'Toś tomu wužywarskemu mjenjeju se zawoborujo wobźěłowanje, dla wandalizma abo drugego mólenja wót wužywarja z pódobnym mjenim.
+Pšosym napóraj druge wužywarske mě abo $1 wó toś tom problemje.',
 	'regexblock-form-username' => 'IP-adresa abo wužywarske mě:',
 	'regexblock-form-reason' => 'Pśicyna:',
 	'regexblock-form-expiry' => 'Wótběgnjo:',

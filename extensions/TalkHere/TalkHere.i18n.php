@@ -144,8 +144,10 @@ $messages['bg'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author SMP
  */
 $messages['ca'] = array(
+	'talkhere-desc' => 'Posa la pàgina de discussió dins la pàgina',
 	'talkhere-foottext' => "Els comentaris anteriors poden haver estat escrits per visitants.
 
 Els operadors d'aquest lloc no poden responsabilitzar-se dels continguts d'aquests comentaris.",
@@ -704,6 +706,22 @@ Os responsáveis por este site não podem ser responsabilizados pelo conteúdo d
 	'talkhere-notalk' => "''(sem comentários de momento)''",
 	'talkhere-addcomment' => 'adicionar comentário',
 	'talkhere-beforeinput' => 'Pode adicionar uma comentário abaixo',
+	'talkhere-loading' => 'carregando editor...',
+	'talkhere-collapse' => 'esconder editor',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'talkhere-desc' => 'Coloca a página de discussão dentro da página',
+	'talkhere-foottext' => 'Os comentários acima podem ter sido deixados por visitantes.
+
+Os responsáveis por este site não podem ser responsabilizados pelo conteúdo desses comentários.',
+	'talkhere-talkpage' => 'discussão',
+	'talkhere-notalk' => "''(sem comentários até o momento)''",
+	'talkhere-addcomment' => 'adicionar comentário',
+	'talkhere-beforeinput' => 'Você pode adicionar uma comentário abaixo',
 	'talkhere-loading' => 'carregando editor...',
 	'talkhere-collapse' => 'esconder editor',
 );

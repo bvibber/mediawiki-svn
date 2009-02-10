@@ -339,7 +339,7 @@ Zurück zu:
 Zurück zu:
 * [[Special:CrosswikiBlock|Sperrformular]]
 * [[$4]]",
-	'crosswikiunblock-local' => 'Lokale Sperren werden über dieses Interfache nicht unterstützt. Bitte benutze [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'crosswikiunblock-local' => 'Lokale Sperren werden über dieses Formular nicht unterstützt. Bitte benutze [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -653,6 +653,51 @@ $messages['got'] = array(
 $messages['grc'] = array(
 	'crosswikiblock-reason' => 'Αἰτία:',
 	'crosswikiunblock-reason' => 'Αἰτία:',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'crosswikiblock-desc' => 'Erlaubt d Sperri vu Benutzer in andere Wiki iber e [[Special:Crosswikiblock|Spezialsyte]]',
+	'crosswikiblock' => 'Benutzer in eme andere Wiki sperre',
+	'crosswikiblock-header' => 'Die Spezialsyte erlaubt d Sperri vun eme Benutzer in eme andere Wiki.
+Bitte prief, eb Du s Rächt hesch, in däm andere Wiki z sperre un eb Dyy Aktion dr Richtlinie vu sälem Wiki entspricht.',
+	'crosswikiblock-target' => 'IP-Adräss oder Benutzername un Ziilwiki:',
+	'crosswikiblock-expiry' => 'Sperrduur:',
+	'crosswikiblock-reason' => 'Grund:',
+	'crosswikiblock-submit' => 'IP-Adräss/Benutzer sperre',
+	'crosswikiblock-anononly' => 'Nume anonyme Benutzer sperre',
+	'crosswikiblock-nocreate' => 'Aalege vu Benutzerkonte verhindere',
+	'crosswikiblock-autoblock' => 'Di aktuäll vu däm Benutzer bruucht IP-Adräss sperre, dezue automatisch  alli wytere, wun er dervu uus versuecht Bearbeitige z mache oder e Benutzerkonto aazlege.',
+	'crosswikiblock-noemail' => 'Eme Benutzer s Verschicke vu E-Mail sperre',
+	'crosswikiunblock' => 'D Sperri vun eme Benutzer in eme andere Wiki ufhebe',
+	'crosswikiunblock-header' => 'Die Spezialsyte erlaubt s Ufhebe vun ere Benutzersperri in eme andere Wiki.
+Bitte prief, eb Du s Rächt hesch, in däm andere Wiki z sperren un eb Dyy Aktion dr Richtlinie vu sälem Wiki entspricht.',
+	'crosswikiunblock-user' => 'IP-Adräss, Benutzername oder Sperr-ID und Ziilwiki:',
+	'crosswikiunblock-reason' => 'Grund:',
+	'crosswikiunblock-submit' => 'Sperri fir IP-Adräss/Benutzer ufhebe',
+	'crosswikiunblock-success' => "D Sperri vum Benutzer '''„$1“''' erfolgryych ufghobe.
+
+Zrugg zue:
+* [[Special:CrosswikiBlock|Sperrformular]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'S isch kei Benutzername aagee wore',
+	'crosswikiblock-local' => 'Lokali Sperrine wäre dur des Interface nit unterstitzt. Verwänd [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Datebank $1 git s nit',
+	'crosswikiblock-noname' => '„$1“ isch kei giltige Benutzername.',
+	'crosswikiblock-nouser' => 'Benutzer „$3“ nit gfunde.',
+	'crosswikiblock-noexpiry' => 'Nit giltigi Sperrduur: $1.',
+	'crosswikiblock-noreason' => 'Kei Grund aagee.',
+	'crosswikiblock-notoken' => 'Nit giltig Bearbeitigs-Token.',
+	'crosswikiblock-alreadyblocked' => 'Benutzer „$3“ ish scho gsperrt.',
+	'crosswikiblock-noblock' => 'Dää Benutzer isch nit gsperrt.',
+	'crosswikiblock-success' => "Benutzer '''„$3“''' erfolgryych gsperrt.
+
+Zrugg zue:
+* [[Special:CrosswikiBlock|Sperrformular]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Lokali Sperrine wäre iber des Interface nit unterstitzt. Bitte verwänd [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Manx (Gaelg)

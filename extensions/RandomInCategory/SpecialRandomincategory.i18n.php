@@ -631,6 +631,18 @@ $messages['pt'] = array(
 	'randomincategory-submit' => 'Ir',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'randomincategory' => 'Página aleatória na categoria',
+	'randomincategory-desc' => '[[Special:Randomincategory|Página especial]] para obter uma página aleatória na categoria',
+	'randomincategory-toolbox' => 'Página aleatória',
+	'randomincategory-nocategory' => 'A categoria $1 não existe ou está vazia',
+	'randomincategory-label' => 'Categoria:',
+	'randomincategory-submit' => 'Ir',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

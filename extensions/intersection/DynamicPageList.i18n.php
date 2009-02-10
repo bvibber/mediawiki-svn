@@ -144,8 +144,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  */
 $messages['ca'] = array(
+	'intersection-desc' => "Genera una llista d'elements recents en una categoria o en la intersecció de diverses.",
 	'intersection_toomanycats' => 'Error: Massa categories!',
 	'intersection_toofewcats' => 'Error: Massa poques categories!',
 	'intersection_noresults' => 'Error: Cap resultat!',

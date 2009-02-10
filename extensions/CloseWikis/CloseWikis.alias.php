@@ -42,6 +42,11 @@ $aliases['dsb'] = array(
 	'CloseWiki' => array( 'Wiki zacyniś' ),
 );
 
+/** Basque (Euskara) */
+$aliases['eu'] = array(
+	'CloseWiki' => array( 'WikiaItxi' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'CloseWiki' => array( 'Pechar o wiki' ),

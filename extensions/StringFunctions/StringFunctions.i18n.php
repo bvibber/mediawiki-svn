@@ -58,6 +58,13 @@ $messages['bs'] = array(
 	'stringfunctions-desc' => 'Proširuje parser sa string funkcijama',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'stringfunctions-desc' => 'Millora el parser amb funcions de cadenes de text',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -253,6 +260,13 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'stringfunctions-desc' => 'Îmbunătăţeşte parserul cu funcţii pe şiruri',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'stringfunctions-desc' => "Migliore 'u ''parser'' cu le funzione pe le stringhe",
 );
 
 /** Russian (Русский)

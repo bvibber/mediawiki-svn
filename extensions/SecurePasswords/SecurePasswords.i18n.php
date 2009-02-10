@@ -50,10 +50,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'securepasswords-desc' => 'ينشئ هاشات كلمة سر أكثر أمنا ويضيف متحقق من قوة كلمة السر',
 	'securepasswords-valid' => 'الباسورد بتاعتك ماتنفعش او قصيره خالص.
 الباسورد لازم:',
 	'securepasswords-minlength' => 'لازم طولها يكون ع الاقل $1 {{PLURAL:$1|حرف|حرف}}',
@@ -61,6 +63,7 @@ $messages['arz'] = array(
 	'securepasswords-uppercase' => 'uppercase تحتوى على الأقل على حرف في حالة',
 	'securepasswords-digit' => 'يحتوى على رقم واحد على الأقل',
 	'securepasswords-special' => 'بتحتوى على رمز خاص واحد ع الاقل (الرموز الخاصه هما:$1)',
+	'securepasswords-username' => 'تكون مختلفة عن اسم المستخدم',
 	'securepasswords-word' => 'لا تكون كلمة',
 );
 
@@ -374,6 +377,22 @@ Musi:',
 $messages['pt'] = array(
 	'securepasswords-desc' => 'Cria hashes de palavras-chaves mais seguros e adiciona um verificador da força da palavra-chave',
 	'securepasswords-valid' => 'A sua palavra-chave é inválida ou demasiado curta.
+Tem de:',
+	'securepasswords-minlength' => 'ter pelo menos $1 {{PLURAL:$1|caracter|caracteres}} de comprimento',
+	'securepasswords-lowercase' => 'conter pelo menos 1 letra minúscula',
+	'securepasswords-uppercase' => 'conter pelo menos 1 letra maiúscula',
+	'securepasswords-digit' => 'conter pelo menos 1 dígito',
+	'securepasswords-special' => 'conter pelo menos 1 caracter especial (caracteres especiais são: $1)',
+	'securepasswords-username' => 'ser diferente do seu nome de utilizador',
+	'securepasswords-word' => 'não ser uma palavra',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'securepasswords-desc' => 'Cria "hashes" de palavras-chaves mais seguros e adiciona um verificador da força da palavra-chave',
+	'securepasswords-valid' => 'A sua palavra-chave é inválida ou muito curta.
 Tem de:',
 	'securepasswords-minlength' => 'ter pelo menos $1 {{PLURAL:$1|caracter|caracteres}} de comprimento',
 	'securepasswords-lowercase' => 'conter pelo menos 1 letra minúscula',

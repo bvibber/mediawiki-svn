@@ -951,6 +951,28 @@ Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Mult
 	'multiupload-toolbox' => 'Carregar múltiplos ficheiros',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'multipleupload' => 'Carregar arquivos',
+	'multipleupload-desc' => 'Permite aos utilizadores [[Special:MultipleUpload|carregar vários arquivos de uma vez]]',
+	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e gravar os arquivos.",
+	'multipleupload-saveallfiles' => 'Gravar todos os arquivos',
+	'multipleupload-addresswarnings' => 'Por favor, trate quaisquer avisos antes de carregar novamente os arquivos.',
+	'multipleupload-page' => '{{ns:project}}:Política de eliminação de arquivos',
+	'multipleupload-text' => "Carregue múltiplos arquivos aqui.
+
+Escolha 'Procurar' e selecione cada arquivo que pretenda carregar.
+Pode carregar entre 1 e $1 arquivos de cada vez.
+
+Pode opcionalmente introduzir um '''Nome de arquivo destino''' e fornecer um '''Sumário''' que descreva o seu arquivo.
+
+Arquivos impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Multipleupload-page}}|política de eliminação de arquivos]].",
+	'multiupload-fileuploaded' => 'Arquivo carregado.',
+	'multiupload-toolbox' => 'Carregar múltiplos arquivos',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

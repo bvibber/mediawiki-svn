@@ -46,6 +46,13 @@ $messages['bg'] = array(
 	'tab0-desc' => 'Добавя етикет „0“, който позволява редактирането на първия раздел на страницата',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'tab0-desc' => "Afegeix una pestanya '0' que enllaça a la pàgina d'edició de la primera secció de la pàgina",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -249,6 +256,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'tab0-desc' => 'Adiciona uma aba "0", que liga à página de edição da primeira seção da página',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'tab0-desc' => "Aggiunge 'u tab \"0\", pe collegà a 'a pàgene de le cangiaminde 'a prima sezione d'a pàgene",
 );
 
 /** Slovak (Slovenčina)

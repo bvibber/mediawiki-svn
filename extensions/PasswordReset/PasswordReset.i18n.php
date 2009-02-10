@@ -421,6 +421,13 @@ $messages['hak'] = array(
 	'passwordreset-username' => 'Yung-fu-miàng',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'passwordreset-newpass' => 'ʻŌlelo hūnā hou:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

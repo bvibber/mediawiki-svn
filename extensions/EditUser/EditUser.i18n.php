@@ -427,6 +427,7 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'edituser-desc' => 'Omogućava suradnicima s pripadajućim pravom uređivanje postavki drugih suradnika',
@@ -436,6 +437,8 @@ $messages['hr'] = array(
 	'edituser-dosearch' => 'Traži',
 	'edituser-nouser' => 'Traži suradnik ne postoji',
 	'edituser-exempt' => 'Traženi suradnik se ne može uređivati',
+	'right-edituser' => 'Uredi postavke drugih suradnika',
+	'right-edituser-exempt' => 'Drugi ne mogu uređivati postavke ovog suradnika',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -825,6 +828,21 @@ $messages['pt'] = array(
 	'edituser-exempt' => 'O utilizador especificado não pode ser editado',
 	'right-edituser' => 'Editar as preferências de outros utilizadores',
 	'right-edituser-exempt' => 'Não podem ter as suas preferências editadas por outros',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'edituser-desc' => 'Permite que utilizadores com privilégios editem as preferências de outros utilizadores',
+	'edituser' => 'Editar Utilizador',
+	'edituser-logout' => 'Terminar sessão do utilizador',
+	'edituser-username' => 'Nome',
+	'edituser-dosearch' => 'Pesquisar',
+	'edituser-nouser' => 'O utilizador especificado não existe',
+	'edituser-exempt' => 'O utilizador especificado não pode ser editado',
+	'right-edituser' => 'Editar as preferências de outros utilizadores',
+	'right-edituser-exempt' => 'Outros não podem editar as preferências deste usuário',
 );
 
 /** Tarifit (Tarifit)

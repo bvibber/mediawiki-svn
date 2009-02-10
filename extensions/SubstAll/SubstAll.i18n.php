@@ -16,10 +16,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Meno25
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'substall-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'substall-hook' => '{{optional}}',
 );
 
 /** Arabic (العربية)
@@ -50,6 +52,13 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'substall-desc' => 'Създава етикет <nowiki><substall></nowiki> за преобразуване на всички шаблони в уикисинтаксис',
+);
+
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'substall-desc' => "Crea l'etiqueta de sintaxi <nowiki><substall></nowiki> que expandeix totes les plantilles",
 );
 
 /** Czech (Česky)
@@ -229,6 +238,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'substall-desc' => 'Cria uma marca <nowiki><substall></nowiki> que expande todas as predefinições para sintaxe wiki',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'substall-desc' => "Ccreje 'nu tag <nowiki><substall></nowiki> ca spanne tutte le template ausanne '''wikisyntax'''",
 );
 
 /** Slovak (Slovenčina)

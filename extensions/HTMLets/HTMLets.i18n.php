@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'htmlets-desc' => 'يسمح لك باستخدام صيغ HTML من الملفات باستخدام وسم <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'htmlets-desc' => 'Dopunjava oznaku <tt><nowiki><htmlet></nowiki></tt> za ubacivanje HTML snippeta',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

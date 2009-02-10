@@ -643,6 +643,22 @@ $messages['pt'] = array(
 	'showprocesslist-info' => 'Informação',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'showprocesslist' => 'Mostrar Lista de Processos',
+	'showprocesslist-desc' => 'Apresenta o resultado de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'Id',
+	'showprocesslist-user' => 'Utilizador',
+	'showprocesslist-host' => 'Servidor',
+	'showprocesslist-db' => 'Base de dados',
+	'showprocesslist-command' => 'Comando',
+	'showprocesslist-time' => 'Tempo',
+	'showprocesslist-state' => 'Estado',
+	'showprocesslist-info' => 'Informação',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

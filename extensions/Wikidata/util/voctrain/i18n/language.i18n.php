@@ -449,6 +449,7 @@ $messages['arz'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'إخفاء التعريفات فى لغة السؤال',
 	'voctrain_hide_words_in_question_language' => 'إخفاء الكلمات فى لغة السؤال',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'افصل القيم بفواصل لاستخدام لغات متعددة.',
+	'voctrain_other' => 'آخر',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -1541,6 +1542,7 @@ $messages['ja'] = array(
 	'voctrain_Word' => '語',
 	'voctrain_Please_type_your_answer_here' => 'あなたの回答をここに入力してください',
 	'voctrain_submit_answer' => '回答を提出',
+	'voctrain_skip' => 'とばす',
 	'voctrain_I_know_it_do_not_ask_again' => '私は知っています/再び尋ねないでください',
 	'voctrain_abort_exercise' => '課題を中止',
 	'voctrain_list_answers' => '回答を一覧',

@@ -68,11 +68,11 @@ $messages['ar'] = array(
 	'recordadmin' => 'إدارة السجل',
 	'recordadmin-desc' => '[[Special:RecordAdmin|صفحة خاصة]] لإيجاد وتعديل صفحات السجلات باستخدام استمارة',
 	'recordadmin-category' => 'تسجيلات',
-	'recordadmin-select' => 'أختار نوع السجل للبحث عنه',
+	'recordadmin-select' => 'اختر نوع السجل للبحث عنه',
 	'recordadmin-newsearch' => 'بحث $1 جديد',
 	'recordadmin-newrecord' => 'أختار نوع سجل أخر',
 	'recordadmin-submit' => 'نفذ',
-	'recordadmin-create' => 'أبحث أو أنشئ ملف $1',
+	'recordadmin-create' => 'ابحث عن أو أنشئ سجل "$1"',
 	'recordadmin-alreadyexist' => '! للأسف، "$1" موجود فعلا',
 	'recordadmin-createsuccess' => '$1 أنشئت',
 	'recordadmin-createerror' => 'حدث خطأ أثناء محاولة إنشاء $1!',
@@ -102,17 +102,24 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Meno25
  * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'recordadmin' => 'إدارة السجل',
+	'recordadmin-desc' => '[[Special:RecordAdmin|صفحة خاصة]] لإيجاد وتعديل صفحات السجلات باستخدام استمارة',
 	'recordadmin-category' => 'سجلات',
+	'recordadmin-select' => 'اختر نوع السجل للبحث عنه',
 	'recordadmin-newsearch' => 'بحث $1 جديد',
 	'recordadmin-newrecord' => 'أختار نوع سجل تانى',
 	'recordadmin-submit' => 'نفذ',
+	'recordadmin-create' => 'ابحث عن أو أنشئ سجل "$1"',
 	'recordadmin-alreadyexist' => 'متأسفين، "$1"  موجوده بالفعل',
 	'recordadmin-createsuccess' => '$1 أنشئت',
+	'recordadmin-createerror' => 'حدث خطأ أثناء محاولة إنشاء $1!',
 	'recordadmin-badtitle' => '! عنوان سئ',
+	'recordadmin-recordid' => 'رقم السجل:',
 	'recordadmin-invert' => 'أعكس الأختيار',
 	'recordadmin-buttonsearch' => 'بحث',
 	'recordadmin-buttoncreate' => 'أنشئ',
@@ -120,11 +127,18 @@ $messages['arz'] = array(
 	'recordadmin-searchresult' => 'نتائج البحث',
 	'recordadmin-nomatch' => 'لا يوجد سجلات متطابقة',
 	'recordadmin-edit' => 'تعديل',
+	'recordadmin-typeupdated' => '$1 تم تحديث خصائص',
 	'recordadmin-updatesuccess' => 'محدث $1',
+	'recordadmin-updateerror' => 'حدث خطأ أثناء التحديث',
 	'recordadmin-buttonsave' => 'حفظ',
+	'recordadmin-noform' => 'لا توجد استمارة ملحقة بسجلات "$1"!',
+	'recordadmin-createlink' => '<a href=$1>إنشاء واحدة</a>',
+	'recordadmin-newcreated' => '$1 جديد تم إنشاؤه من الاستمارة العامة',
+	'recordadmin-summary-typecreated' => '$1 جديد تم إنشاؤه',
 	'recordadmin-viewlink' => 'عرض',
 	'recordadmin-editlink' => 'عدل',
 	'recordadmin-created' => 'أنشئت',
+	'recordadmin-actions' => 'أفعال',
 	'right-recordadmin' => 'أبحث و عدل صفحات السجل',
 );
 
@@ -456,6 +470,7 @@ $messages['he'] = array(
 	'recordadmin-viewlink' => 'הצגה',
 	'recordadmin-editlink' => 'עריכה',
 	'recordadmin-created' => 'נוצרה',
+	'recordadmin-actions' => 'פעולות',
 	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
 );
 

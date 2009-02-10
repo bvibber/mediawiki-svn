@@ -48,16 +48,19 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'layouts-desc' => 'يضيف للصفحات المنشأة حديثا "هيئات" يمكن تعديلها لتشجيع هيكل متشابه للصفحات',
 	'layouts_title' => 'ابتدي صفحه',
 	'layouts_chooselayout' => 'أختار تنسيق ل$1',
 	'layouts_nolayout' => 'لا يوجد تصميم',
 	'layouts_continue' => 'استمر',
 	'layouts_choosecategory' => 'اختار تصنيف لـ $1:',
 	'layouts_unknown' => 'مش معروف',
+	'layouts_tagline' => "هذه الصفحة تم توليدها بواسطة هيئة '''$1'''.",
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

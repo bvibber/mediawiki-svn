@@ -228,12 +228,14 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Toniher
  */
 $messages['ca'] = array(
 	'imagemap_desc' => "Permet mapes d'imatges clicables des del costat del client fent servir l'etiqueta <tt><nowiki><imagemap></nowiki></tt>",
 	'imagemap_no_image' => 'Error: cal especificar una imatge en la primera línia',
 	'imagemap_invalid_image' => 'Error: la imatge no es vàlida o no existeix',
+	'imagemap_bad_image' => 'Error: la imatge està en la llista negra',
 	'imagemap_no_link' => "Error: no s'ha trobat cap enllaç vàlid al final de la línia $1",
 	'imagemap_invalid_title' => "Error: el títol no és vàlid a l'enllaç de la línia $1",
 	'imagemap_missing_coord' => 'Error: no hi ha coordenades suficients per a la forma de la línia $1',
@@ -242,6 +244,7 @@ $messages['ca'] = array(
 	'imagemap_invalid_coord' => 'Error: la coordenada a la línia $1 no és vàlida, ha de ser un nombre',
 	'imagemap_invalid_desc' => "Error: l'especificació de descripció no és vàlida, ha de ser una de: <tt>$1</tt>",
 	'imagemap_description' => 'Quant a la imatge',
+	'imagemap_poly_odd' => 'Error: poly amb un nombre senar de coordenades a la línia $1',
 );
 
 /** Corsican (Corsu) */
@@ -369,9 +372,13 @@ $messages['es'] = array(
 	'imagemap_bad_image' => 'Error: la imagen esta en la lista negra en esta página',
 	'imagemap_no_link' => 'Error: no se encontró ningún enlace válido al final de la línea $1',
 	'imagemap_invalid_title' => 'Error: título no válido en un enlace de la linea $1',
+	'imagemap_missing_coord' => 'Error: no hay bastante coordinates para la figura a la linea $1',
+	'imagemap_unrecognised_shape' => 'Error: figura no reconocida a la linea $1, cada linea debe comenzar con uno de default, rect, circle o poly',
 	'imagemap_no_areas' => 'Error: se debe dar al menos una especificación de área',
 	'imagemap_invalid_coord' => 'Error: hay una coordenada no válida en la línea $1, debe ser un número',
+	'imagemap_invalid_desc' => 'Error: especificación de desc no válido, debe ser uno de: <tt>$1</tt>',
 	'imagemap_description' => 'Acerca de esta imagen',
+	'imagemap_poly_odd' => 'Error: se encontró un polígono con un número de coordinates impar en la linea $1',
 );
 
 /** Basque (Euskara)

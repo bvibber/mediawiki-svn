@@ -331,12 +331,14 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author SMP
  */
 $messages['ca'] = array(
 	'specialuserstats' => "Estadístiques d'ús",
 	'usagestatistics' => "Estadístiques d'ús",
 	'usagestatistics-desc' => "Mostrar estadístiques d'ús d'usuaris individuals i globals del wiki",
 	'usagestatisticsfor' => "<h2>Estadístiques d'ús de [[User:$1|$1]]</h2>",
+	'usagestatisticsforallusers' => "<h2>Estadístiques d'ús per tots els usuaris</h2>",
 	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticstype' => 'Tipus',
 	'usagestatisticsstart' => "Data d'inici",

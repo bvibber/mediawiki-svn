@@ -46,15 +46,21 @@ $messages['ar'] = array(
 	'linkopenid-prefstext-openid' => 'هويتك المفتوحة:',
 	'linkopenid-prefstext-v1url' => 'مسار الخادم للهوية المفتوحة النسخة 1.1:',
 	'linkopenid-prefstext-v2url' => 'مسار الخادم للهوية المفتوحة النسخة 2:',
+	'linkopenid-prefstext-xrdsurl' => 'مسار XRDS:',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'linkopenid-desc' => 'السماح لليوزرز انهم يوصول الحساب بتاعهم ب ID مفتوحه خارجيه',
 	'linkopenid-prefs' => 'ID مفتوحه',
+	'linkopenid-prefstext-pre' => 'لو أنك تمتلك هوية مفتوحة من مزود خارجى يمكنك تحديدها هنا.
+هذا يسمح لك باستخدام صفحة المستخدم الخاصة بك كهوية مفتوحة أيضا.',
 	'linkopenid-prefstext-openid' => 'الاي دي المفتوحه بتاعتك:',
+	'linkopenid-prefstext-v1url' => 'مسار الخادم للهوية المفتوحة النسخة 1.1:',
+	'linkopenid-prefstext-v2url' => 'مسار الخادم للهوية المفتوحة النسخة 2:',
 );
 
 /** Bosnian (Bosanski)
@@ -297,6 +303,19 @@ Aquò vos permet tanben d'utilizar vòstra page d'utilizaire coma OpenID.",
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'linkopenid-desc' => 'Permite aos utilizadores associarem a sua conta a um OpenID externo',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Se possui um OpenID de um fornecedor externo, pode especificá-lo aqui.
+Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
+	'linkopenid-prefstext-openid' => 'O seu OpenID:',
+	'linkopenid-prefstext-v1url' => 'URL do servidor para OpenID versão 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL do servidor para OpenID versão 2:',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
 	'linkopenid-desc' => 'Permite aos utilizadores associarem a sua conta a um OpenID externo',
 	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Se possui um OpenID de um fornecedor externo, pode especificá-lo aqui.

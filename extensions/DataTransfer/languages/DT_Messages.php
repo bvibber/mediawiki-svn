@@ -203,13 +203,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Krabina
  * @author Revolus
  */
 $messages['de'] = array(
 	'dt-desc' => 'Ermöglicht den Import und Export von strukturierten Daten, die in Aufrufen von Vorlagen verwendet werden.',
 	'viewxml' => 'XML ansehen',
-	'dt_viewxml_docu' => 'Bitte wähle aus, welche Kategorien und Namensräme im XML-Format angezeigt werden sollen.',
+	'dt_viewxml_docu' => 'Bitte wähle aus, welche Kategorien und Namensräume im XML-Format angezeigt werden sollen.',
 	'dt_viewxml_categories' => 'Kategorien',
 	'dt_viewxml_namespaces' => 'Namensräume',
 	'dt_viewxml_simplifiedformat' => 'Vereinfachtes Format',
@@ -380,10 +381,23 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author J. 'mach' wust
  */
 $messages['gsw'] = array(
+	'dt-desc' => 'Macht dr Import un dr Export vu strukturierte Date megli, wu in Ufrief vu Vorlage bruucht wäre.',
+	'viewxml' => 'XML aaluege',
+	'dt_viewxml_docu' => 'Bitte wehl uus, weli Kategorien un Namensryym im XML-Format solle aazeigt wäre.',
+	'dt_viewxml_categories' => 'Kategorie',
+	'dt_viewxml_namespaces' => 'Namensryym',
+	'dt_viewxml_simplifiedformat' => 'Vereifacht Format',
+	'dt_xml_namespace' => 'Namensruum',
+	'dt_xml_page' => 'Syte',
+	'dt_xml_field' => 'Fäld',
+	'dt_xml_name' => 'Name',
 	'dt_xml_title' => 'Titel',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Freje Täxt',
 );
 
 /** Manx (Gaelg)

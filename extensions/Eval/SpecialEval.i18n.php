@@ -364,6 +364,18 @@ $messages['pt'] = array(
 	'eval_code' => 'Código',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Adiciona [[Special:Eval|uma interface]] à função <code>eval()</code>',
+	'eval_submit' => 'Resolver',
+	'eval_escape' => 'Resultado em "escape"',
+	'eval_out' => 'Resultado',
+	'eval_code' => 'Código',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

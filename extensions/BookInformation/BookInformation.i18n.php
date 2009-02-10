@@ -1569,10 +1569,11 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'bookinfo-header' => 'Thông tin về sách',
-	'bookinfo-desc' => 'Mở rộng [[Special:Booksources]] để cung cấp thông tin từ một dịch vụ Web',
+	'bookinfo-desc' => 'Mở rộng [[Special:Booksources|trang đặc biệt về tìm kiếm sách]] để cung cấp thông tin từ một dịch vụ trên web',
 	'bookinfo-result-title' => 'Tên:',
 	'bookinfo-result-author' => 'Tác giả:',
 	'bookinfo-result-publisher' => 'Nhà xuất bản:',

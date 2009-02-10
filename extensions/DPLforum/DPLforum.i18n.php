@@ -515,6 +515,18 @@ $messages['pt'] = array(
 	'dplforum-toomany' => 'DPL Forum: Demasiadas categorias!',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'dplforum-desc' => 'Extensão de fórum baseada em DPL',
+	'dplforum-by' => 'por $1',
+	'dplforum-edited' => '- Última edição',
+	'dplforum-never' => 'Nunca',
+	'dplforum-toofew' => 'DPL Forum: Categorias em número insuficiente!',
+	'dplforum-toomany' => 'DPL Forum: Categorias em excesso!',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

@@ -508,6 +508,24 @@ Esta página também poderia beneficiar da sua ajuda: $1.',
 	'tog-edit-similar' => 'Activar sugestões de páginas semelhantes',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'editsimilar-desc' => 'Encoraja os utilizadores a editarem uma página semelhante depois de gravar uma página',
+	'editsimilar-thanks' => 'Obrigado pela sua contribuição.
+Veja estas páginas relacionadas: $1.',
+	'editsimilar-thanks-singleresult' => 'Obrigado pela sua contribuição.
+Veja esta página relacionada: $1.',
+	'editsimilar-thanks-notsimilar' => 'Obrigado pela sua contribuição.
+Estas páginas também poderiam ser beneficiadas por sua ajuda: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Obrigado pela sua contribuição.
+Esta página também poderia ser beneficiada por sua ajuda: $1.',
+	'editsimilar-thankyou' => 'Obrigado pela sua contribuição, $1!',
+	'editsimilar-link-disable' => 'configurar preferências',
+	'tog-edit-similar' => 'Ativar sugestões de páginas semelhantes',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

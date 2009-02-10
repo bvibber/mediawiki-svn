@@ -538,6 +538,21 @@ Para adicionar uma página, marque a caixa junto a esta, e clique em "Adicionar 
 Quando marca ou desmarca múltiplas páginas, premindo a tecla "Shift" pode seleccionar caixas de marcação consecutivas, clicando em cada extremo do intervalo a seleccionar.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'watchsubpages' => 'Vigiar subpáginas',
+	'watchsubpages-addedtowatchlist' => 'As seguintes foram adicionadas à sua lista de páginas vigiadas.',
+	'watchsubpages-addtitles' => 'Adicionar páginas',
+	'watchsubpages-addtitlestowatchlist' => 'Adicionar páginas à lista de páginas vigiadas',
+	'watchsubpages-desc' => 'Rapidamente [[Special:WatchSubpages|adicione todas as subpáginas]] de uma página à sua lista de páginas vigiadas',
+	'watchsubpages-form' => 'Selecione as páginas a adicionar à sua lista de páginas vigiadas abaixo.
+Para adicionar uma página, marque a caixa junto a esta, e clique em "Adicionar páginas".
+
+Ao marcar ou desmarcar múltiplas páginas, pressionando a tecla "Shift" você pode selecionar caixas de marcação consecutivas, clicando em cada extremo do intervalo a selecionar.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

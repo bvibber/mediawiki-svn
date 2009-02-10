@@ -576,6 +576,28 @@ Por favor, reporte o problema.',
 	'smoothgallery-javascript-disabled' => 'Javascript é requerido para visualizar esta galeria adequadamente.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Permite aos utilizadores criarem galerias com imagens que foram carregadas.
+Permite a maioria das opções do SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>Erro no SmoothGallery:</b>',
+	'smoothgallery-gallery-not-found' => 'A galeria requisitada não existe.',
+	'smoothgallery-not-found' => 'Nenhuma imagem foi adicionada à galeria.
+Por favor, adicione pelo menos uma imagem.',
+	'smoothgallery-no-images' => 'Nenhuma imagem foi encontrada nesta galeria.
+Cerifique-se que {{PLURAL:$3|a imagem requisitada existe|todas as imagens requisitadas existem}}.
+{{PLURAL:$2|A seguinte imagem não foi encontrada|As seguintes imagens não foram encontradas}}: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|A seguinte imagem requisitada era|As seguintes imagens requisitadas eram}} de um tipo inválido: $1',
+	'smoothgallery-unexpected-error' => 'Houve um erro inesperado.
+Por favor, reporte o problema.',
+	'smoothgallery-javascript-disabled' => 'Javascript é requerido para visualizar esta galeria adequadamente.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

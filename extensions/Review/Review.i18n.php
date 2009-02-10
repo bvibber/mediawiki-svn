@@ -51,14 +51,26 @@ Your other ratings will be merged into this one where you selected 'no opinion'.
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'review_sidebar_title' => '{{Identical|Review}}',
 	'review-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'review_sidebar_final' => '$1 will be replaced with {{msg-mw|Review page link}} with a link.',
 	'review_total_statistics' => '{{Identical|Total}}',
+	'review_statistics_left_corner' => '{{Identical|Revision}}',
+	'review_statistic_cell' => '* $1 is the average of review data
+* $2 is the max value that review data can be
+* $3 is the number of total reviewers
+* $4 = $3 - $5
+* $5 is the number of anonymous reviewers',
+	'review_version_statistic_cell' => '* $1 is the average of review data
+* $2 is the max value that review data can be',
 	'review_user_details_link' => '{{Identical|Details}}',
+	'review_has_been_stored' => "{{doc-important}}
+Don't translate <code>id='review_has_been_stored'</code>.",
 	'review_comment' => '{{Identical|Comment}}',
 );
 
@@ -226,6 +238,7 @@ $messages['ast'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'review_statistics_left_corner' => 'Вэрсія',
 	'review_user_details_link' => '(падрабязнасьці)',
 	'review_comment' => 'Камэнтар',
 );
@@ -871,11 +884,44 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'review_sidebar_title' => 'レビュー',
-	'review_total_statistics' => 'トータル',
-	'review_statistics_left_corner' => 'リビジョン',
+	'review_sidebar_title' => '批評',
+	'review-desc' => '[[Special:Review|批評]]機能',
+	'review_topics' => '# 以下は批評機能で使用する、題目と値の範囲のリストです。
+# 各題目は、5つの値をもつ行で定義されます。値は「:」で区切ります。その他の行は無視されます。
+# 順序は次のようにします: 数値キー (>0)、名前、値の数 (>1。2 = 真/偽)、最低値の意味 (例: 不良)、最高値の意味 (例: 良)
+1:品質:5:不良:良
+2:1.0への準備ができている:2:いいえ:はい',
+	'review_topic_page' => '批評題目',
+	'review_sidebar_explanation' => '最も左のチェックボックスは常に「意見なし」を意味します。',
+	'review_save' => '批評を保存',
+	'review_your_review' => 'このページあるいは特定版に対するあなたの批評:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'あなたは既にこのページの別の版を批評しています。「意見なし」を選んだ箇所には、別の版に対するあなたの評価が統合されることになります。',
+	'review_page_link' => '批評状況',
+	'review_sidebar_final' => 'このページの批評データに関しては、その$1を参照してください',
+	'review_for_page' => 'ページ「$1」の批評',
+	'review_for_user' => '利用者「$1」の批評',
+	'review_error' => '何かが間違っています！',
+	'review_no_reviews_for_page' => '現時点では「$1」に関する批評はありません。',
+	'review_total_statistics' => '合計',
+	'review_statistics_left_corner' => '特定版',
+	'review_version_link' => '第$1版',
+	'review_statistic_cell' => '平均: $2中 $1<br />(登録利用者 $4人、匿名利用者 $5人)',
+	'review_version_statistic_cell' => '$2中 $1',
+	'review_version_reviews_link' => '<small>(特定版への批評)</small>',
+	'review_concerns_page' => 'この批評はページ「$1」についてのものです。',
+	'review_concerns_user' => 'これは利用者「$1」による批評についてのものです。',
+	'review_user_reviews' => '<small>(この利用者による批評)</small>',
+	'review_user_page_list' => '利用者は次のページについて批評しました:',
 	'review_user_details_link' => '(詳細)',
-	'review_topic' => 'トピック',
+	'review_do_merge' => 'このページの他の版に対する自分の批評を、これに統合する',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>あなたの批評を保存しました。</span>",
+	'revision_review_this_page_version_link' => 'ページのこの版を批評',
+	'review_page_review' => 'ページ「$1」の批評',
+	'review_blocked' => 'あなたはブロックされており、批評に関与できません。',
+	'review_wrong_namespace' => 'この名前空間のページは批評できません。',
+	'review_topic' => '題目',
+	'review_no_opinion' => '意見なし',
+	'review_rating' => '評価',
 	'review_comment' => 'コメント',
 );
 

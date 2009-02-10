@@ -652,6 +652,20 @@ $messages['pt'] = array(
 	'watchers_less_than_x' => 'Menos de $1 {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'watchers' => 'Vigiadores',
+	'watchers-desc' => 'Mostra [[Special:Watchers|quais utilizadores têm uma dada página na sua lista de vigiados]]',
+	'watchers_link_title' => 'Quem está vigiando esta página?',
+	'watchers_error_article' => '<b>Erro:</b> Página inexistente.',
+	'watchers_header' => '{{PLURAL:$2|Utilizador que está|Utilizadores que estão}} vigiando "$1"',
+	'watchers_noone_watches' => 'Ninguém está vigiando esta página.',
+	'watchers_x_or_more' => '$1 ou mais {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
+	'watchers_less_than_x' => 'Menos de $1 {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

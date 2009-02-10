@@ -366,6 +366,19 @@ $messages['pt'] = array(
 	'newschannel_submit_button' => 'Criar feed',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'newschannel' => 'Canal de notícias',
+	'newschannel-desc' => 'Implementa um canal de notícias como uma [[Special:NewsChannel|página especial]] dinâmica',
+	'newschannel_format' => 'Formato:',
+	'newschannel_limit' => 'Limite:',
+	'newschannel_include_category' => 'Categoria adicional:',
+	'newschannel_exclude_category' => 'Excluir categoria:',
+	'newschannel_submit_button' => 'Criar "feed"',
+);
+
 /** Russian (Русский)
  * @author Iaroslav Vassiliev
  */

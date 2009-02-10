@@ -173,7 +173,9 @@ $messages['eo'] = array(
  * @author Remember the dot
  */
 $messages['es'] = array(
+	'contributiontracking' => 'Seguimiento contribucional',
 	'contrib-tracking-error' => 'Error',
+	'contrib-tracking-submitting' => 'Entregando al procesador de pagos...',
 	'contrib-tracking-continue' => 'Si usted no es automáticamente redirigido, haga click en el botón para completar su donación en Paypal.',
 	'contrib-tracking-button' => 'Continuar',
 );
@@ -517,6 +519,19 @@ $messages['pt'] = array(
 	'contrib-tracking-error-text' => 'Submissão de formulário inválido',
 	'contrib-tracking-submitting' => 'Em submissão ao processador de pagamentos...',
 	'contrib-tracking-continue' => 'Se você não for redireccionado automaticamente, clique no botão para completar a sua doação no PayPal.',
+	'contrib-tracking-button' => 'Continuar',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'contributiontracking-desc' => 'Seguimento de doações para a coleta de fundos da Wikimedia',
+	'contributiontracking' => 'Seguimento de doações',
+	'contrib-tracking-error' => 'Erro',
+	'contrib-tracking-error-text' => 'Submissão de formulário inválida',
+	'contrib-tracking-submitting' => 'Submetendo ao processador de pagamentos...',
+	'contrib-tracking-continue' => 'Se você não for redirecionado automaticamente, clique no botão para completar a sua doação no PayPal.',
 	'contrib-tracking-button' => 'Continuar',
 );
 

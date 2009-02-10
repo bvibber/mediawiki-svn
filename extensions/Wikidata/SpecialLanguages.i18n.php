@@ -254,6 +254,7 @@ Please contact the server operator or administrator.",
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Malafaya
+ * @author Meno25
  * @author Siebrand
  */
 $wdMessages['qqq'] = array(
@@ -293,6 +294,7 @@ $wdMessages['qqq'] = array(
 	'ow_DefinedMeaningAttributes' => '{{Identical|Annotation}}',
 	'ow_DefinedMeaning' => '{{Identical|Defined meaning}}',
 	'ow_DefinedMeaningReference' => '{{Identical|Defined meaning}}',
+	'ow_ID' => '{{optional}}',
 	'ow_Language' => '{{Identical|Language}}',
 	'ow_LevelAnnotation' => '{{Identical|Annotation}}',
 	'ow_OptionAttribute' => '{{Identical|Property}}',
@@ -300,6 +302,7 @@ $wdMessages['qqq'] = array(
 	'ow_PopupAnnotation' => 'The small link next to elements which can be annotated, such as Synonyms and Translations.
 This is visible when a SynTrans is annotated, or while editing a page.
 {{Identical|Annotation}}',
+	'ow_RecordLifeSpan' => '"Record" is a noun, i.e.: "Life span of the database record". See also {{msg-mw|Ow_history_show_life_span}}',
 	'ow_Remove' => 'Header caption for the selection boxes used to remove a row from a table (such as in Synonyms and Translations)
 {{Identical|Remove}}',
 	'ow_RemoveHint' => 'Hint that shows up when the mouse hovers the Remove column header while editing',
@@ -311,6 +314,7 @@ This is visible when a SynTrans is annotated, or while editing a page.
 	'ow_TranslatedTextAttributeValue' => '{{Identical|Text}}',
 	'ow_LinkAttribute' => '{{Identical|Property}}',
 	'ow_LinkAttributeValues' => '{{Identical|Links}}',
+	'ow_URL' => '{{optional}}',
 	'ow_User' => '{{Identical|User}}',
 	'ow_Property' => '{{Identical|Property}}',
 	'ow_Value' => '{{Identical|Value}}',
@@ -547,6 +551,7 @@ $wdMessages['ar'] = array(
 	'ow_IdenticalMeaning' => 'معنى مطابق؟',
 	'ow_IncomingRelations' => 'علاقات داخلة',
 	'ow_GotoSource' => 'اذهب إلى المصدر',
+	'ow_ID' => 'رقم',
 	'ow_Language' => 'اللغة',
 	'ow_LevelAnnotation' => 'هامش',
 	'ow_LinkAttributeHeader' => 'صفة الوصلة',
@@ -583,6 +588,7 @@ $wdMessages['ar'] = array(
 	'ow_Link' => 'وصلة',
 	'ow_LinkAttribute' => 'خاصية',
 	'ow_LinkAttributeValues' => 'وصلات',
+	'ow_URL' => 'مسار',
 	'ow_User' => 'مستخدم',
 	'ow_Property' => 'خاصية',
 	'ow_Value' => 'قيمة',
@@ -634,22 +640,100 @@ $wdMessages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  * @author Ramsis II
  */
 $wdMessages['arz'] = array(
 	'languages' => 'ويكى داتا: مدير اللغة',
 	'langman_title' => 'مدير اللغة',
+	'langman_not_allowed' => 'أنت لا تمتلك السماح لتغيير إعدادات اللغة.',
+	'langman_header' => 'اكتب كود اللغة واسمها الإنجليزى بالأسفل:',
+	'langman_req_fields' => 'اسم اللغة وكود ISO 639-3 كلاهما مطلوبان!',
+	'langman_adding' => 'جارى إضافة اللغة $1 بالمفتاح $2.',
+	'langman_langname' => 'اسم اللغه:',
+	'langman_iso639-3' => 'كود ISO 639-3:',
+	'langman_iso639-2' => 'كود ISO 639-2:',
+	'langman_wikimedia' => 'كود ويكيميديا:',
+	'langman_field_optional' => '(اختيارى)',
+	'langman_addlang' => 'ضيف اللغه:',
+	'importlangnames' => 'ويكى داتا: استيراد أسماء اللغات',
+	'importlangnames_title' => 'استيراد أسماء اللغات',
+	'importlangnames_not_allowed' => 'أنت لا تمتلك السماح لاستيراد أسماء اللغات.',
+	'importlangnames_added' => 'أسماء اللغات ل"$1" تمت إضافتها.',
+	'importlangnames_not_found' => '<strong>لا مدخلة لغة ل"$1" تم العثور عليها!</strong>',
 	'datasearch' => 'ويكى داتا: بحث البيانات',
+	'datasearch_language' => 'اللغة:',
+	'datasearch_found_word' => 'وجد الكلمة',
+	'datasearch_meaning' => 'المعنى',
+	'datasearch_ext_identifier' => 'معرف خارجى',
+	'datasearch_search_text' => 'ابحث في النص:',
+	'datasearch_within_words' => 'فى الكلمات:',
+	'datasearch_within_ext_ids' => 'فى المعرفات الخارجية:',
+	'datasearch_showing_only' => 'عرض فقط كحد أقصى $1 {{PLURAL:$1|مطابقة|مطابقة}}.',
+	'datasearch_match_ext_ids' => 'المعرفات الخارجية تطابق <i>$1</i>',
+	'datasearch_match_words' => 'الكلمات التي تطابق <i>$1</i> والمعانى المصاحبة',
+	'datasearch_match_words_lang' => 'الكلمات باللغة <i>$1</i> التى تطابق <i>$2</i> والمعانى المصاحبة',
+	'importtsv' => 'ويكى داتا: استيراد تي إس فى',
+	'ow_importtsv_title1' => 'استيراد تى إس فى',
+	'ow_importtsv_title2' => 'استيراد التعريفات والترجمات',
+	'ow_importtsv_header' => "<p>استورد التعريفات والترجمات من ملف نص محدد بألسنة ربما تكون صدرته من OpenOffice.org، إكسل أو برنامج صحائف آخر.</p>
+<p>صيغة الملف يجب أن تكون مثل الملفات المصدرة في صفحة ExportTSV. لو أنك غيرت أسماء العواميد، فالاستيراد سيفشل. لو أنك غيرت الرقم أو التعبير المعرف  لأي معنى معرف، فهذا السطر سيتم تجاهله. لو انك أضفت أعمدة، فيجب أن يكونوا بالصيغة 'definitions_iso' أو 'translations_iso'، حيث iso هو كود لغة ISO 639-3.</p>
+<p>لو أن صندوق 'تشغيل تجربة' معلم، فأي أفعال ستتخذ سيتم إبلاغها، لكن لا تغييرات سيتم عملها فعلا. أنت مشجع على عمل تشغيل تجربة قبل عمل استيراد فعلى.</p>",
+	'ow_importtsv_not_allowed' => 'أنت لا تمتلك السماح لعمل استيراد TSV.',
+	'ow_importtsv_importing' => 'استيراد بيانات TSV',
+	'ow_importtsv_import_failed' => 'الاستيراد فشل',
+	'ow_importtsv_file' => 'ملف TSV:',
+	'ow_importtsv_test_run' => 'تشغيل تجربة:',
+	'ow_importtsv_not_utf8' => '<p>هذا لا يبدو ملف مكود ب UTF-8. الملف <i>يجب</i> أن يكون مكود ب UTF-8.
+تأكد من أن تطبيقك حفظ أو صدر الملف بطريقة صحيحة.</p>',
+	'ow_importtsv_not_tsv' => '<p>هذا لا يبدو ملف TSV صحيح.</p>',
+	'ow_importtsv_bad_columns' => "<p>اسم عامود غير صحيح '$1'.<br />
+العواميد ينبغى أن تسمى 'definition_iso' أو 'translations_iso'،   
+حيث iso هو كود اللغة.</p>",
+	'ow_importtsv_test_run_title' => 'تشغيل تجربة لاستيراد بيانات TSV',
+	'ow_importtsv_nothing_added' => 'ا شىء تمت إضافته.',
+	'ow_importtsv_nothing_added_test' => 'لا شىء تمت إضافته (أنت قمت بتشغيل تجريبى).',
+	'ow_importtsv_results' => 'أضاف $1 {{PLURAL:$1|تعريف|تعريف}} و $2 {{PLURAL:$2|ترجمة|ترجمة}}.',
+	'ow_impexptsv_unknown_lang' => '<p>لغة غير معروفة أو غير صحيحة: $1.<br />
+اللغات يجب أن تكون أكواد لغات ISO 639-3.</p>',
+	'exporttsv' => 'ويكي داتا: تصدير تى إس فى',
+	'ow_exporttsv_title' => 'تصدير مجموعة إلى TSV',
+	'ow_exporttsv_header' => "<p>صدر مجموعة إلى صيغة نص مفصول بألسنة الذي يمكنك استيراده في OpenOffice.org، إكسل أو برنامج صحائف آخر.<br />
+اختر مجموعة للتصدير. في صندوق نص اللغات، أدخل قائمة مفصولة بفاصلات لأكواد لغات ISO 639-3. ابدأ باللغة التي ستترجم منها (اختر كما تحب) وانه بالتي ستترجم إليها. ثم اضغط 'إنشاء' لإنشاء الملف.</p>",
+	'ow_exporttsv_languages' => 'اللغات:',
+	'ow_exporttsv_not_allowed' => 'أنت لا تمتلك السماح لعمل تصدير TSV.',
+	'ow_exporttsv_export_failed' => 'التصدير فشل',
+	'addcollection' => 'ويكى داتا: إضافة مجموعة',
 	'ow_save' => 'حفظ',
 	'ow_history' => 'تاريخ',
 	'ow_datasets' => 'اختيار مجموعة البيانات',
 	'ow_noedit_title' => 'لا سماح للتعديل',
 	'ow_noedit' => 'أنت غير مسموح لك بتعديل الصفحات فى مجموعة البيانات "$1".
 من فضلك انظر [[{{MediaWiki:Ow editing policy url}}|سياسة التحرير الخاصة بنا]].',
-	'ow_uipref_datasets' => 'عرض افتراضي',
+	'ow_uipref_datasets' => 'عرض افتراضى:',
 	'ow_uiprefs' => 'ويكى داتا',
 	'ow_none_selected' => 'لا شيء تم اختياره',
+	'transaction' => 'ويكى داتا: سجل الانتقال',
+	'ow_transaction_from_transaction' => 'من الانتقال:',
+	'ow_transaction_count' => 'العدد:',
+	'ow_transaction_user' => 'اسم المستخدم:',
+	'ow_transaction_show_rollback' => 'اعرض متحكمات الاسترجاع:',
+	'ow_transaction_rollback_button' => 'استرجاع',
+	'ow_transaction_rollback_header' => 'استرجاع',
+	'ow_transaction_no_action' => 'لا تفعل شيئا',
+	'ow_transaction_previous_version' => 'النسخة السابقة',
+	'ow_transaction_restore' => 'استرجاع',
+	'ow_transaction_remove' => 'إزالة',
+	'ow_transaction_operation' => 'عملية',
+	'ow_transaction_is_latest' => 'هى الأحدث',
+	'ow_transaction_class_member' => 'عضو الرتبة',
+	'ow_transaction_object' => 'جسم',
+	'ow_transaction_first_dm' => 'المعنى المعرف الأول',
+	'ow_transaction_second_dm' => 'المعنى المعرف الثانى',
+	'ow_transaction_summary' => 'ملخص',
+	'conceptmapping' => 'ويكى داتا: تخطيط المبدأ',
+	'ow_conceptmapping_title' => 'تخطيط المبدأ',
 	'ow_conceptmapping_help' => '<p>الأفعال الممكنة: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  إدراج رابطة</li>
 <li>&action=get&concept=<concept_id>  قراءة رابطة</li>
@@ -673,16 +757,20 @@ $wdMessages['arz'] = array(
 من فضلك تحقق من عنوان الويب.',
 	'ow_dm_missing' => 'هذه الصفحة على ما يبدو تشير إلى معنى معرف غير موجود (مبدأ).
 من فضلك تحقق من عنوان الويب.',
+	'ow_AddHint' => 'أدخل الصفوف للإضافة',
 	'ow_AlternativeDefinition' => 'تعريف بديل',
 	'ow_AlternativeDefinitions' => 'تعريفات بديلة',
 	'ow_Annotation' => 'هامش',
 	'ow_ApproximateMeanings' => 'معانى تقريبية',
+	'ow_Class' => 'رتبة',
 	'ow_ClassAttributeAttribute' => 'نسب',
 	'ow_ClassAttributes' => 'نسب الرتبة',
 	'ow_ClassAttributeLevel' => 'مستوى',
 	'ow_ClassAttributeType' => 'نوع',
 	'ow_ClassMembership' => 'عضوية الرتبة',
 	'ow_Collection' => 'مجموعة',
+	'ow_Collection_colon' => 'مجموعة:',
+	'ow_CollectionMember' => 'عضو المجموعة',
 	'ow_CollectionMembership' => 'عضوية المجموعة',
 	'ow_Definition' => 'تعريف',
 	'ow_DefinedMeaningAttributes' => 'هامش',
@@ -697,30 +785,45 @@ $wdMessages['arz'] = array(
 	'ow_GotoSource' => 'اذهب إلى المصدر',
 	'ow_Language' => 'اللغة',
 	'ow_LevelAnnotation' => 'هامش',
+	'ow_LinkAttributeHeader' => 'صفة الوصلة',
+	'ow_Multiple_meanings' => 'معانى متعددة:',
+	'ow_NewExactMeaning' => 'معنى دقيق جديد',
 	'ow_OptionAttribute' => 'خاصية',
+	'ow_OptionAttributeHeader' => 'صفة الخيار',
 	'ow_OptionAttributeOption' => 'خيار',
 	'ow_OptionAttributeOptions' => 'خيارات',
 	'ow_OptionAttributeValues' => 'قيم الخيار',
 	'ow_OtherDefinedMeaning' => 'معنى معرف آخر',
 	'ow_PopupAnnotation' => 'هامش',
+	'ow_RecordLifeSpan' => 'سجل مدة الحياة',
 	'ow_Relations' => 'علاقات',
 	'ow_RelationType' => 'نوع العلاقة',
+	'ow_Remove' => 'إزالة',
+	'ow_RemoveHint' => 'علم على الصفوف للإزالة',
 	'ow_Spelling' => 'إملاء',
+	'ow_SuggestHint' => 'اضغط لتغيير الاختيار',
 	'ow_Synonyms' => 'متقاربات',
 	'ow_SynonymsAndTranslations' => 'متقاربات وترجمات',
 	'ow_Source' => 'مصدر',
 	'ow_SourceIdentifier' => 'معرف المصدر',
-	'ow_TextAttribute' => 'خاصية',
 	'ow_Text' => 'نص',
+	'ow_TextAttribute' => 'خاصية',
+	'ow_TextAttributeHeader' => 'صفة النص',
 	'ow_TextAttributeValues' => 'نصوص صريحة',
+	'ow_Time' => 'زمن',
 	'ow_TranslatedTextAttribute' => 'خاصية',
 	'ow_TranslatedText' => 'نص مترجم',
 	'ow_TranslatedTextAttributeValue' => 'نص',
 	'ow_TranslatedTextAttributeValues' => 'نصوص قابلة للترجمة',
+	'ow_Label' => 'علامة',
+	'ow_Link' => 'وصلة',
 	'ow_LinkAttribute' => 'خاصية',
 	'ow_LinkAttributeValues' => 'وصلات',
+	'ow_User' => 'مستخدم',
 	'ow_Property' => 'خاصية',
 	'ow_Value' => 'قيمة',
+	'ow_added' => 'أضاف',
+	'ow_removed' => 'أزال',
 	'ow_meaningsoftitle' => 'معانى "$1"',
 	'ow_meaningsofsubtitle' => '<em>وصلة ويكي:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>السماح مرفوض</h2>',
@@ -743,6 +846,27 @@ $wdMessages['arz'] = array(
 توجد مشكلة فى ثبات قاعدة البيانات، ويكى داتا لا يمكنها العثور على بيانات صحيحة تتصل برقم المعنى المعرف هذا.
 ربما يكون قد ضاع.
 من فضلك اتصل بمشغل أو إدارى الخادم.',
+	'ow_history_transaction' => 'الانتقال:',
+	'ow_history_show_life_span' => 'اعرض مدة الحياة المسجلة:',
+	'ow_class_attr_type_dm' => 'معنى معرف',
+	'ow_class_attr_type_xlate' => 'النص القابل للترجمة',
+	'ow_class_attr_type_plain' => 'نص بحت',
+	'ow_class_attr_type_link' => 'وصلة',
+	'ow_class_attr_type_option' => 'قائمة الخيارات',
+	'needstranslation' => 'ويكى داتا: التعبيرات المحتاجة للترجمة',
+	'ow_needs_xlation_title' => 'التعبيرات المحتاجة لترجمة',
+	'ow_needs_xlation_source_lang' => 'اللغة المصدر:',
+	'ow_needs_xlation_dest_lang' => 'اللغة الهدف:',
+	'ow_needs_xlation_no_dest_lang' => 'من فضلك حدد لغة هدف.',
+	'ow_show' => 'عرض',
+	'ow_upload' => 'رفع',
+	'ow_create' => 'إنشاء',
+	'ow_collection_added' => '<strong>المجموعة $1 تمت إضافتها.</strong>',
+	'ow_suggest_previous' => 'سابق',
+	'ow_suggest_next' => 'تالى',
+	'ow_suggest_clear' => 'إفراغ',
+	'ow_nstab_definedmeaning' => 'معنى معرف',
+	'ow_nstab_edit_copy' => 'عدل النسخة',
 );
 
 /** Asturian (Asturianu)
@@ -1536,8 +1660,14 @@ $wdMessages['de'] = array(
 	'datasearch_language' => 'Sprache:',
 	'datasearch_found_word' => 'Wort gefunden',
 	'datasearch_meaning' => 'Bedeutung',
+	'datasearch_ext_identifier' => 'Externer Identifikator',
 	'datasearch_search_text' => 'Suchtext:',
+	'datasearch_within_words' => 'Innerhalb der Wörter:',
+	'datasearch_within_ext_ids' => 'Innerhalb des externen Identifikators:',
 	'datasearch_showing_only' => 'Es wird nur ein Maximum von {{PLURAL:$1|einer Übereinstimmung|$1 Übereinstimmungen}} gezeigt.',
+	'datasearch_match_ext_ids' => 'Externer Identifikator passt zu <i>$1</i>',
+	'datasearch_match_words' => 'Wörter passen zu <i>$1</i> und dazugehörender Bedeutung',
+	'datasearch_match_words_lang' => 'Wörter in <i>$1</i> passen zu <i>$2</i> und dazugehörender Bedeutung',
 	'importtsv' => 'Wikidata: TSV importieren',
 	'ow_importtsv_title1' => 'TSV importieren',
 	'ow_importtsv_title2' => 'Definitionen und Übersetzungen importieren',
@@ -1596,6 +1726,8 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_transaction_first_dm' => 'Erste festgelegte Bedeutung',
 	'ow_transaction_second_dm' => 'Zweite festgelegte Bedeutung',
 	'ow_transaction_summary' => 'Zusammenfassung',
+	'conceptmapping' => 'Wikidata: Concept-Mapping',
+	'ow_conceptmapping_title' => 'Concept-Mapping',
 	'ow_conceptmapping_help' => '<p>Mögliche Aktionen: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&… Eine Verknüpfung hinzufügen</li>
 <li>&action=get&concept=<concept_id> Eine Verknüpfung abrufen</li>
@@ -2106,6 +2238,7 @@ Neniu kopia operacio okazis.',
 
 /** Spanish (Español)
  * @author Ascánder
+ * @author Baiji
  * @author BicScope
  * @author Crazymadlover
  * @author Kobazulo
@@ -2152,6 +2285,8 @@ $wdMessages['es'] = array(
 	'ow_importtsv_nothing_added' => 'Nada se ha añadido.',
 	'ow_importtsv_nothing_added_test' => 'Nada se ha añadido (hiciste correr examen).',
 	'ow_importtsv_results' => 'Se ha añadido $1 {{PLURAL:$1|definicion|definiciones}} y {{PLURAL:$2|traducción|traducciones}}.',
+	'ow_impexptsv_unknown_lang' => '<p>Lenguaje incorrecto o desconocido: $1.<br />
+El lenguaje debe utilizar código ISO 639-3.</p>',
 	'exporttsv' => 'Wikidata: Exportar TSV',
 	'ow_exporttsv_title' => 'Exportar una colección a TSV',
 	'ow_exporttsv_languages' => 'Lenguajes:',
@@ -4305,6 +4440,7 @@ $wdMessages['ja'] = array(
 	'ow_suggest_next' => '次',
 	'ow_suggest_clear' => '消去',
 	'ow_nstab_definedmeaning' => '意味定義',
+	'ow_nstab_edit_copy' => '複製を編集',
 );
 
 /** Javanese (Basa Jawa)
@@ -5567,6 +5703,7 @@ Vergeet niet om dit te controleren!',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Gunnernett
  * @author Harald Khan
  */
 $wdMessages['nn'] = array(
@@ -5587,6 +5724,8 @@ $wdMessages['nn'] = array(
 	'importlangnames_added' => 'Språknamn for «$1» lagt til.',
 	'importlangnames_not_found' => '<strong>Fann ikkje noko språkelement for «$1»!</strong>',
 	'datasearch' => 'Wikidata: Datasøk',
+	'datasearch_language' => 'Språk:',
+	'datasearch_found_word' => 'Funne ord',
 	'datasearch_meaning' => 'Meining',
 	'importtsv' => 'Wikidata: Importer TSV',
 	'ow_importtsv_title1' => 'Importer TSV',
@@ -5730,6 +5869,7 @@ Språk lyt vera ISO 639-3-språkkodar.</p>',
 	'ow_suggest_previous' => 'Førre',
 	'ow_suggest_next' => 'Neste',
 	'ow_suggest_clear' => 'Tøm',
+	'ow_nstab_edit_copy' => 'endra kopi',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -6797,6 +6937,9 @@ Poate aţi ajuns la această pagină direct? În mod normal nu ar trebui să fi�
  * @author Joetaras
  */
 $wdMessages['roa-tara'] = array(
+	'langman_langname' => "Nome d'a lènghe:",
+	'langman_iso639-3' => 'Codece ISO 639-3:',
+	'langman_iso639-2' => 'Codece ISO 639-2:',
 	'ow_save' => 'Reggìstre',
 	'ow_history' => 'Storie',
 	'ow_noedit_title' => 'Non ge tine le permesse pe fà cangiaminde',
@@ -6816,14 +6959,15 @@ $wdMessages['roa-tara'] = array(
 	'ow_OptionAttribute' => 'Proprietà',
 	'ow_OptionAttributeOption' => 'Opzione',
 	'ow_OptionAttributeOptions' => 'Opzione',
-	'ow_TextAttribute' => 'Proprietà',
 	'ow_Text' => 'Teste',
+	'ow_TextAttribute' => 'Proprietà',
 	'ow_TranslatedTextAttribute' => 'Proprietà',
 	'ow_TranslatedText' => 'Teste tradotte',
 	'ow_TranslatedTextAttributeValue' => 'Teste',
 	'ow_TranslatedTextAttributeValues' => 'Teste ca ponne essere tradotte',
 	'ow_LinkAttribute' => 'Proprietà',
 	'ow_LinkAttributeValues' => 'Collegaminde',
+	'ow_User' => 'Utende',
 	'ow_Property' => 'Proprietà',
 	'ow_Value' => 'Valore',
 	'ow_meaningsoftitle' => 'Significhete de "$1"',
@@ -6831,6 +6975,15 @@ $wdMessages['roa-tara'] = array(
 	'ow_Permission_denied' => '<h2>Permesse neghete</h2>',
 	'ow_copy_help' => "L'aiute angore non g'è presende.
 <!-- Quacche giurne, pò essere ca v'aiuteme. -->",
+	'ow_show' => 'Fa vedè',
+	'ow_upload' => 'Careche',
+	'ow_create' => 'Ccreje',
+	'ow_collection_added' => '<strong>Collezione $1 aggiunde.</strong>',
+	'ow_suggest_previous' => 'Apprime',
+	'ow_suggest_next' => 'Apprisse',
+	'ow_suggest_clear' => 'Pulizze',
+	'ow_nstab_definedmeaning' => 'significhete definite',
+	'ow_nstab_edit_copy' => "cange 'na copie",
 );
 
 /** Russian (Русский)

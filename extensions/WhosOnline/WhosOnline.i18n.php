@@ -23,6 +23,14 @@ $messages['ar'] = array(
 	'whosonline-desc' => 'يعرض [[Special:WhosOnline|قائمة]] للمستخدمين المسجلين والمجهولين الموجودين حاليا على الشبكة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'whosonline' => 'من موجود',
+	'whosonline-desc' => 'يعرض [[Special:WhosOnline|قائمة]] للمستخدمين المسجلين والمجهولين الموجودين حاليا على الشبكة',
+);
+
 /** Asturian (Asturianu)
  * @author Esbardu
  */
@@ -124,6 +132,14 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'whosonline' => 'Wär isch online',
 	'whosonline-desc' => 'Zeigt [[Special:WhosOnline|e Lischt]] vu dr aagmäldete un anonyme Benutzer, wu grad online sin',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'whosonline' => 'מי מחובר',
+	'whosonline-desc' => 'הצגת [[Special:WhosOnline|רשימה]] של משתמשים רשומים ואנונימיים המקוונים כעת',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

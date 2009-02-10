@@ -14,12 +14,12 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة' ),
+	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة', 'صلاحيات_المستخدم_العامة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة' ),
+	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة', 'صلاحيات_المستخدم_العامة' ),
 );
 
 /** Bosnian (Bosanski) */

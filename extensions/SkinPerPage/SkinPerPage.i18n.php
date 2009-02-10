@@ -75,6 +75,13 @@ $messages['bs'] = array(
 	'skinperpage-desc' => 'Dodaje oznaku <tt>&lt;skin&gt;</tt> za upotrebu različitih koža na stranici',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'skinperpage-desc' => "Afegeix l'etiqueta de sintaxi <tt>&lt;skin&gt;</tt> que permet usar diferents aparences per pàgina",
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

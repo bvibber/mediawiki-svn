@@ -199,6 +199,7 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'duplicator' => 'Duplica una pàgina',
+	'duplicator-desc' => "Crea [[Special:Duplicate|còpies de pàgines]] mantenint l'historial d'edicions",
 	'duplicator-toolbox' => 'Duplica aquesta pàgina',
 	'duplicator-header' => "Aquesta pàgina permet la duplicació completa d'una pàgina, creant còpies independents de tots els historials. Això és útil per a l'edició de nous articles a partir d'altres, etc.",
 	'duplicator-options' => 'Opcions',

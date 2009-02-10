@@ -1271,12 +1271,20 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'sitematrix' => 'Lista de wikis da Wikimedia',
+	'sitematrix-summary' => 'Esta página especial lista todos os wikis Wikimedia.',
+	'sitematrix-desc' => 'Apresenta uma [[Special:SiteMatrix|lista de wikis Wikimedia]]',
+	'sitematrix-language' => 'Idioma',
 	'sitematrix-project' => 'Nome do projeto, ligação interprojeto e ligação interwiki',
 	'sitematrix-others' => 'Outros projetos da Wikimedia',
+	'sitematrix-total' => "'''Contagem total: $1'''",
+	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private' => 'privado',
+	'sitematrix-fishbowl' => 'edição restrita',
 );
 
 /** Quechua (Runa Simi)

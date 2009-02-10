@@ -410,6 +410,18 @@ $messages['pt'] = array(
 	'interwikilist-prefix' => 'Prefixo interwiki:',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'interwikilist' => 'Lista de interwikis',
+	'interwikilist-desc' => 'Adiciona uma [[Special:Interwikilist|página especial]] para ver as ligações interwiki disponíveis',
+	'interwikilist-linkname' => 'Ligação interwiki',
+	'interwikilist-target' => 'URL alvo',
+	'interwikilist-filter' => 'Lista de filtros',
+	'interwikilist-prefix' => 'Prefixo interwiki:',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

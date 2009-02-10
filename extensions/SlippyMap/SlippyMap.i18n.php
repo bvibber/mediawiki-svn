@@ -131,6 +131,40 @@ $messages['arz'] = array(
 	'slippymap_resetview' => 'إعادة ضبط الرؤية',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'slippymap_desc' => 'Дазваляе карыстацца тэгам <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> для адлюстраваньня хуткай мапы OpenLayer. Выкарыстоўваюцца мапы [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'Няма значэньня парамэтру lat (для шыраты).',
+	'slippymap_lonmissing' => 'Няма значэньня парамэтру lon (для даўгаты).',
+	'slippymap_zoommissing' => 'Няма значэньня парамэтру z (для маштабу).',
+	'slippymap_longdepreciated' => "Калі ласка, выкарыстоўвайце 'lon' замест 'long' (парамэтар быў перайменаваны).",
+	'slippymap_widthnan' => "значэньне шырыні (w) '%1' ня ёсьць цэлы лік",
+	'slippymap_heightnan' => "значэньне вышыні (h) '%1' ня ёсьць цэлы лік",
+	'slippymap_zoomnan' => "значэньне маштабу (z) '%1' ня ёсьць цэлы лік",
+	'slippymap_latnan' => "значэньне шыраты (lat) '%1' ня ёсьць лік",
+	'slippymap_lonnan' => "значэньне даўгаты (lon) '%1' ня ёсьць лік",
+	'slippymap_widthbig' => 'значэньне шырыні (w) ня можа быць больш за 1000',
+	'slippymap_widthsmall' => 'значэньне шырыні (w) ня можа быць менш за 100',
+	'slippymap_heightbig' => 'значэньне вышыні (h) ня можа быць больш за 1000',
+	'slippymap_heightsmall' => 'значэньне вышыні (h) ня можа быць менш за 100',
+	'slippymap_latbig' => 'значэньне шыраты (lat) ня можа быць больш за 90',
+	'slippymap_latsmall' => 'значэньне шыраты (lat) ня можа быць менш за -90',
+	'slippymap_lonbig' => 'значэньне даўгаты (lon) ня можа быць больш за 180',
+	'slippymap_lonsmall' => 'значэньне даўгаты (lon) ня можа быць менш за -180',
+	'slippymap_zoomsmall' => 'значэньне маштабу (z) ня можа быць менш за нуль',
+	'slippymap_zoom18' => "значэньне маштабу (z) ня можа быць больш за 17. Заўважце, што  гэта пашырэньне MediaWiki выкарыстоўвае слой OpenStreetMap 'osmarender', які не падтрымлівае маштабы больш за 17. Слой Mapnik, які знаходзіцца на openstreetmap.org, падтрымлівае маштаб 18",
+	'slippymap_zoombig' => 'значэньне маштабу (z) ня можа быць больш за 17',
+	'slippymap_invalidlayer' => "Нслушнае значэньне 'узроўня' '%1'",
+	'slippymap_maperror' => 'Памылка мапы:',
+	'slippymap_osmtext' => 'Глядзіце гэту мапу на OpenStreetMap.org',
+	'slippymap_code' => 'ВікіКод для прагляду гэтай мапы:',
+	'slippymap_button_code' => 'Атрымаць ВікіКод',
+	'slippymap_resetview' => 'Першапачатковы прагляд',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

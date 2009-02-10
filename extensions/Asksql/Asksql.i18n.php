@@ -829,6 +829,23 @@ Esta função frequentemente adiciona uma carga considerável ao servidor, por i
 	'right-asksql' => 'Fazer pesquisas SQL',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'asksql' => 'Consulta SQL',
+	'asksql-desc' => 'Faça consultas SQL através da [[Special:Asksql|página especial]]',
+	'asksqltext' => "Utilize o formulário abaixo para realizar consultas diretas à base de dados.
+Use aspas simples ('como estas') para delimitar cadeias de caracteres literais.
+Esta função frequentemente adiciona uma carga considerável ao servidor, por isso utilize-a com moderação.",
+	'sqlislogged' => 'Por favor, note que todas as consultas são registradas.',
+	'sqlquery' => 'Introduza a consulta',
+	'querybtn' => 'Submeter consulta',
+	'selectonly' => 'Apenas consultas somente de leitura são permitidas.',
+	'querysuccessful' => 'Consulta com sucesso',
+	'right-asksql' => 'Fazer consultas SQL',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai

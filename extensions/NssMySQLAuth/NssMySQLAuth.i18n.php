@@ -351,6 +351,7 @@ $messages['ja'] = array(
 	'nss-save-changes' => '変更を保存',
 	'nss-create-account-header' => '新しいアカウントを作成',
 	'nss-create-account' => 'アカウントの作成',
+	'nss-welcome-mail-subject' => 'アカウント作成',
 );
 
 /** Khmer (ភាសាខ្មែរ)

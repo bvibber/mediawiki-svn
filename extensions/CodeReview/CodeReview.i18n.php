@@ -3880,7 +3880,7 @@ $messages['pl'] = array(
 	'code-rev-repo' => 'Repozytorium:',
 	'code-rev-rev' => 'Wersja:',
 	'code-rev-rev-viewvc' => 'na ViewVC',
-	'code-rev-paths' => 'Zmodyfikowane pliki:',
+	'code-rev-paths' => 'Zmodyfikowane ścieżki:',
 	'code-rev-modified-a' => 'dodany',
 	'code-rev-modified-r' => 'przeniesiony',
 	'code-rev-modified-d' => 'usunięty',
@@ -3906,7 +3906,7 @@ $messages['pl'] = array(
 	'code-pathsearch-path' => 'Ścieżka',
 	'code-rev-submit' => 'Zapisz zmiany',
 	'code-rev-submit-next' => 'Zapisz i pokaż kolejny nierozwiązany',
-	'codereview-subtitle' => 'Do $1',
+	'codereview-subtitle' => 'Dla $1',
 	'codereview-reply-link' => 'odpowiedz',
 	'codereview-email-subj' => '[$1] [r$2]: Dodano nowy komentarz',
 	'codereview-email-body' => 'Użytkownik „$1” dodał komentarz w r$3.
@@ -4116,6 +4116,7 @@ $messages['roa-tara'] = array(
 	'code-change-removed' => 'luete:',
 	'code-change-added' => 'aggiunde:',
 	'code-authors' => 'le autore',
+	'code-status' => 'state',
 	'code-tags' => 'le tag',
 	'code-author-link' => 'colleghete?',
 	'code-author-unlink' => 'scolleghete?',
@@ -4146,6 +4147,7 @@ $messages['roa-tara'] = array(
 	'code-status-fixme' => 'aggiusteme',
 	'code-status-ok' => 'ok',
 	'code-pathsearch-path' => 'Percorse:',
+	'codereview-subtitle' => 'Pe $1',
 	'codereview-reply-link' => 'respunne',
 	'codereview-email-body' => 'Utende "$1" ha postete \'nu commende sus a r$3.
 
@@ -4157,6 +4159,7 @@ $4',
 	'repoadmin-new-button' => 'Ccreje',
 	'repoadmin-edit-bug' => 'Percorse de Bugzilla:',
 	'repoadmin-edit-button' => 'OK',
+	'specialpages-group-developer' => 'Struminde pe le sviluppature',
 );
 
 /** Russian (Русский)
@@ -4325,6 +4328,8 @@ $messages['sah'] = array(
 	'code-status-resolved' => 'быһаарыллыбыт',
 	'code-status-ok' => 'сөп',
 	'code-status-deferred' => 'кэлиҥҥигэ көһөрүлүннэ',
+	'code-pathsearch-path' => 'Суола:',
+	'code-rev-submit' => 'Уларытыылары бигэргэтии',
 	'repoadmin' => 'Бырагыраамма куодун харайыыны салайыы',
 	'repoadmin-new-legend' => 'Саҥа харайар сири оҥоруу',
 	'repoadmin-edit-button' => 'Сөп',

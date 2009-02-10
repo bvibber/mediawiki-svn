@@ -180,6 +180,17 @@ $messages['eo'] = array(
 	'categorywatch-catsub' => 'eligis $1 de kategorio $2',
 );
 
+/** Spanish (Español)
+ * @author Baiji
+ */
+$messages['es'] = array(
+	'categorywatch-emailbody' => 'Hola $1, estás recibiendo este mensaje debido a que estás revisando la categoría "$2".
+Este mensaje es para notificarte que el $3 el usuario $4 $5.',
+	'categorywatch-catmovein' => '$1 trasladado a la categoría $2 desde $3',
+	'categorywatch-catmoveout' => '$1 retirado de la categoría $2 a $3',
+	'categorywatch-catsub' => '$1 retirado de la categoría $2',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -485,6 +496,21 @@ Esta mensagem serve para o notificar de que, em $3, o utilizador $4 $5.',
 	'categorywatch-catsub' => 'removeu $1 da categoria $2',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'categorywatch-desc' => 'Estende a funcionalidade da lista de vigiados para incluir notificações sobre alterações nos membros de categorias vigiadas',
+	'categorywatch-emailbody' => 'Olá, $1.
+Você recebeu esta mensagem porque está vigiando a categoria "$2".
+Esta mensagem serve para notificá-lo de que, em $3, o utilizador $4 $5.',
+	'categorywatch-emailsubject' => 'Atividade envolvendo a categoria vigiada "$1"',
+	'categorywatch-catmovein' => 'moveu $1 para a categoria $2 a partir de $3',
+	'categorywatch-catmoveout' => 'moveu $1 da categoria $2 para $3',
+	'categorywatch-catadd' => 'adicionou $1 à categoria $2',
+	'categorywatch-catsub' => 'removeu $1 da categoria $2',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
@@ -590,7 +616,7 @@ Ang mensaheng ito ay para ipagbigay-alam sa iyo na noong $3 si tagagamit $4 ang 
  */
 $messages['vi'] = array(
 	'categorywatch-desc' => 'Mở rộng chức năng của danh sách theo dõi để thêm thông báo về sự thay đổi trang thành viên của thể loại được theo dõi',
-	'categorywatch-emailbody' => 'Xin chào $1, bạn nhận được thư này vì bạn đang theo dõi thể loại    	 	 	 	“$2”.
+	'categorywatch-emailbody' => 'Xin chào $1, bạn nhận được thư này vì bạn đang theo dõi thể loại “$2”.
 Chúng tôi muốn báo cho bạn biết là vào lúc $3, thành viên $4 $5.',
 	'categorywatch-emailsubject' => 'Hoạt động liên quan đến thể loại đang được theo dõi “$1”',
 	'categorywatch-catmovein' => 'đã di chuyển $1 vào thể loại $2 từ $3',

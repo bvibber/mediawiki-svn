@@ -822,6 +822,19 @@ $messages['pt'] = array(
 	'ajax-se-usernotfound' => 'ERR: utilizador não encontrado',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'ajax-se-desc' => 'Mostra utilizadores que estão editando a mesma página',
+	'ajax-se-title' => 'Editando no momento:',
+	'ajax-se-pending' => 'atualização pendente... (clique neste box ou inicie a edição)',
+	'ajax-se-idling' => '($1 segundos atrás)',
+	'ajax-se-pagedoesnotexist' => 'página não existe',
+	'ajax-se-userinvalid' => 'Erro: utilizador inválido',
+	'ajax-se-usernotfound' => 'Erro: utilizador não encontrado',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

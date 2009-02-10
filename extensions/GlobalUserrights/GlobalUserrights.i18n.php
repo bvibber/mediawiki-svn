@@ -325,6 +325,18 @@ $messages['pt'] = array(
 	'right-userrights-global' => 'Gerir permissões de utilizadores globais',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'globaluserrights' => 'Gerenciamento de Permissões de Utilizadores Globais',
+	'gur-desc' => 'Administração fácil das [[Special:GlobalUserRights|permissões de utilizadores globais]]',
+	'gur-rightslog-name' => 'Registro de permissões globais',
+	'gur-rightslog-header' => 'Este é um registro das alterações às permissões globais.',
+	'gur-rightslog-entry' => 'alterou o grupo global de $1, de $2 para $3',
+	'right-userrights-global' => 'Gerenciar permissões de utilizadores globais',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

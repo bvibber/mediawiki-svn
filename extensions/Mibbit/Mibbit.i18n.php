@@ -160,6 +160,19 @@ $messages['eo'] = array(
 	'right-mibbit' => 'Rajtigita por uzi babilejon Mibbit',
 );
 
+/** Spanish (Español)
+ * @author Meno25
+ */
+$messages['es'] = array(
+	'mibbit' => 'Chat Mibbit',
+	'mibbit-desc' => 'Añade una [[Special:Mibbit|página especial]] para chatear en tiempo real con otros usuarios del wiki',
+	'mibbit-header' => 'Esta página especial te permite colaborar o charlar en tiempo real con otros usuarios del wiki.
+Para conectar presiona simplemente el botón "Connect".
+Si estás identificado, tu nick habrá sido preescrito.
+Los usuarios anónimos tienen un nick generado automáticamente, pero puede cambiarse.',
+	'right-mibbit' => 'Con permiso para usar el chat Mibbit',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Delhovlyn

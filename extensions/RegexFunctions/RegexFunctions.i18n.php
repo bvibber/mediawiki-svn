@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'regexfunctions-desc' => 'دوال محلل تعبيرات منتظمة',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'regexfunctions-desc' => 'Funcions parser amb expressions regulars (regexp)',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'regexfunctions-desc' => 'Parserfunktionen für reguläre Ausdrücke',

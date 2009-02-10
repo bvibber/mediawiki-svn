@@ -58,6 +58,7 @@ $messages['bg'] = array(
  * @author SMP
  */
 $messages['ca'] = array(
+	'mediafunctions-desc' => 'Funcions parser per obtenir informació dels fitxers multimèdia',
 	'mediafunctions-invalid-title' => '«$1» no és un títol vàlid',
 	'mediafunctions-not-exist' => '«$1» no existeix',
 );
