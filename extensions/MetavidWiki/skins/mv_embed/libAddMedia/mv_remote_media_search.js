@@ -98,7 +98,7 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,
+			'd'		:0,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -120,7 +120,7 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,			
+			'd'		:1,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
@@ -129,14 +129,14 @@ remoteSearchDriver.prototype = {
 			'local'	:false,			//if local set to true we can use local 
 			'resource_prefix': 'MV_', //what prefix to use on imported resources
 			
-			'local_domains': ['metavid'], // if the domain name contains metavid 
+			'local_domains': ['metavid', 'localhost'], // if the domain name contains metavid 
 									   // no need to import metavid content to metavid sites
 									   
 			'stream_import_key': 'mv_ogg_low_quality', // which stream to import, could be mv_ogg_high_quality 
 													  //or flash stream, see ROE xml for keys
 													  
 			'remote_embed_ext': false, //if running the remoteEmbed extension no need to copy local 
-									  //syntax will be [remoteEmbed:roe_url link title]		
+									   //syntax will be [remoteEmbed:roe_url link title]		
 			'tab_img':true					   		 
 		},
 		'archive_org':{
@@ -1163,7 +1163,7 @@ metavidSearch.prototype = {
 		}
 		//do basic query:
 		this.last_query = $j('#rsd_q').val();
-		this.last_offset = cp.offset;
+		this.last_offset = this.cp.offset;
 		url += '&f[0][t]=match&f[0][v]=' + $j('#rsd_q').val();
 		//add offset limit: 
 		url+='&limit=' + this.cp.limit;

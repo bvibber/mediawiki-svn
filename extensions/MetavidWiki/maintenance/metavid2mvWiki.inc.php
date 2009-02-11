@@ -768,7 +768,11 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 	if ( $dbr->numRows( $result ) == 0 )
 		die( 'could not find people: ' . "\n" );
 	$out = '';
-	while ( $person = $dbr->fetchObject( $result ) ) {		
+	$person_ary = array();
+	while ( $person = $dbr->fetchObject( $result ) ) {	
+		$person_ary[] = $person;
+	}
+	foreach ( $person_ary as $person) {		
 		$person_name = $person->cl_sortkey;
 		//get person data from  wiki: 
 		$person_title = Title::newFromText( $person_name );
@@ -894,7 +898,8 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 				if ( !$person->$dbKey ) {
 					// print 'do_maplight_id'."\n";
 					// try to grab the maplight id
-					$raw_results = $mvScrape->doRequest( 'http://maplight.org/map/us/legislator/search/' . $person->last . '+' . $person->first );
+					$person_lookup = $govtrackDB[ $person->gov_track_id ]; 
+					$raw_results = $mvScrape->doRequest( 'http://maplight.org/map/us/legislator/search/' . $person_lookup->lastname . '+' . $person->firstname );
 					preg_match_all( '/map\/us\/legislator\/([^"]*)">(.*)<\/a>.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)<.*<td>([^<]*)</U', $raw_results, $matches );
 
 					// do point system for match
@@ -906,11 +911,13 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 							list( $lname, $fname ) = explode( ',', trim( strip_tags( $name_html ) ) );
 							if ( strtolower( $person->first ) == strtolower( $fname ) )$point[$k] += 2;
 							if ( strtolower( $person->last ) == strtolower( $lname ) )$point[$k] += 2;
-							if ( $person->state == $matches['3'][$k] )$point[$k]++;
-							if ( $person->district == $matches['4'][$k] )$point[$k]++;
-							if ( $person->party == $matches['5'][$k] )$point[$k]++;
-							if ( isset( $title_lookup[$person->title] ) ) {
-								if ( $title_lookup[$person->title] == $matches['6'] )$point[$k]++;
+							if ( $person_lookup['state'] == $matches['3'][$k] )$point[$k]++;
+							if ( $person_lookup['district'] == $matches['4'][$k] )$point[$k]++;
+							if ( $person_lookup['party'] == $matches['5'][$k] )$point[$k]++;
+							if(isset($person_lookup['title'])){
+								if ( isset( $title_lookup[ $person['title'] ]) ) {
+									if ( $title_lookup[ $person['title'] ] == $matches['6'] )$point[$k]++;
+								}
 							}
 						}
 						$max = 0;
@@ -979,12 +986,20 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		do_update_wiki_page( $person_title, $page_body, '', $force );
 		//die('only run on first person'."\n");
 	}
+	 
 	foreach ( $person_ary as $person ) {
+		$person_lookup = $govtrackDB[ $person->gov_track_id ]; 
 		// download/upload all the photos:
-		$imgTitle = Title :: makeTitle( NS_IMAGE, $person->name_clean . '.jpg' );
+		$imgTitle = Title :: makeTitle( NS_IMAGE, $person->cl_sortkey . '.jpg' );
 		// if(!$imgTitle->exists()){
 		global $wgTmpDirectory;
-		$url = 'http://www.opensecrets.org/img/politicians/img/pix/' . $person->osid . '.jpg';
+		$url = 'http://www.govtrack.us/data/photos/' . $person->gov_track_id . '-100px.jpeg';
+		//check if url exists: 
+		if( !url_exists($url)){
+			print " no image found for: {$person->cl_sortkey}\n";
+			continue; 
+		}
+		
 		// print $wgTmpDirectory . "\n";
 		$local_file = tempnam( $wgTmpDirectory, 'WEBUPLOAD' );
 		// copy file:
@@ -1026,14 +1041,11 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		} else {
 			echo ( "failed.\n" );
 		}
-		// }
 	}
 }
-function setGovTrackSpecifcAttr(&$person, &$gov_track_person){	
-	
-	
+function setGovTrackSpecifcAttr(&$person, &$gov_track_person){			
 	$person->gov_track_id = $gov_track_person['id'];
-
+	
 	//also set govtrack only properties: 
 	if(isset($gov_track_person['birthday']))
 		$person->birthday = $gov_track_person['birthday'];

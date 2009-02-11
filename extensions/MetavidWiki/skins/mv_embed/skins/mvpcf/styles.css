@@ -537,8 +537,7 @@ ul.rsd_cp_tabs li {
 	background:#FFF;	
 	left:2px;
 	right:2px;
-	bottom:2px;
-	z-index:-1;
+	bottom:2px;	
 	overflow:auto;
 	position:absolute;
 	top:75px;
