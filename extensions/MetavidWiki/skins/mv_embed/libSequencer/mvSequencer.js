@@ -1,5 +1,5 @@
 /*
- * mv_sequencer.js Created on Oct 17, 2007
+ * mvSequencer.js Created on Oct 17, 2007
  *
  * All Metavid Wiki code is Released under the GPL2
  * for more info visit http://metavid.org/wiki/Code
@@ -127,14 +127,16 @@ mvSequencer.prototype = {
 			'html': gM('loading_txt'),			
 			'js':function( this_seq ){				
 				//load the search interface with sequence tool targets 		
-				mvJsLoader.doLoad({'remoteSearchDriver':'libAddMedia/mv_remote_media_search.js'}, function(){					
-					this_seq.mySearch = new remoteSearchDriver({
-						'profile':'sequence',
-						'p_seq':this_seq,
-						'target_id':'cliplib_ic',										
-						'instance_name': this_seq.instance_name + '.mySearch'						
-					 });
-				});
+				mvJsLoader.doLoad(	{	'remoteSearchDriver':'libAddMedia/remoteSearchDriver.js',
+										'seqRemoteSearchDriver':'libAddMedia/seqRemoteSearchDriver.js'
+									}, function(){					
+										this_seq.mySearch = new seqRemoteSearchDriver({
+											'p_seq':this_seq,
+											'target_id':'cliplib_ic',										
+											'instance_name': this_seq.instance_name + '.mySearch'						
+										 });
+										 this_seq.mySearch.doInitDisplay();
+									});
 			}
 		},
 		'transition':{

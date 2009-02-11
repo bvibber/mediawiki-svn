@@ -1,8 +1,8 @@
 // text interface object (for inline display captions) 
-var textInterface = function( parentEmbed ){
+var mvTextInterface = function( parentEmbed ){
 	return this.init( parentEmbed );
 }
-textInterface.prototype = {
+mvTextInterface.prototype = {
 	text_lookahead_time:0,
 	body_ready:false,
 	default_time_range: "source", //by default just use the source don't get a time-range

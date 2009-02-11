@@ -1029,7 +1029,7 @@ embedVideo.prototype = {
 			$j('#mv_embedded_player_'+_this.id).html(embed_code);	
 		});
     },
-    /* todo abstract out onClipDone chain of functions and merge with textInterface */
+    /* todo abstract out onClipDone chain of functions and merge with mvTextInterface */
     onClipDone:function(){
     	//stop the clip (load the thumbnail etc) 
     	this.stop();
@@ -1532,11 +1532,11 @@ embedVideo.prototype = {
 		if(typeof this.textInterface == 'undefined' ){
 			//load the default text interface:
 			mvJsLoader.doLoad({
-					'textInterface':'libTimedText/mv_timed_text.js',
+					'mvTextInterface':'libTimedText/mvTextInterface.js',
 					'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'
 				}, function(){
 					
-					_this.textInterface = new textInterface( _this );							
+					_this.textInterface = new mvTextInterface( _this );							
 					//show interface
 					_this.textInterface.show();
 					js_log("NEW TEXT INTERFACE");

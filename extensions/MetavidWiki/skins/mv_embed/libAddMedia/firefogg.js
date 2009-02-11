@@ -221,7 +221,7 @@ upFirefogg.prototype = {
 					        //upload sucesfull, state can also be 'upload failed'
 					        else if(_this.fogg.state == 'upload done') {	
 					        	//js_log( 'firefogg:upload done: ');							        			        
-					        	//@@todo handle errors same problem as #695 in mv_remote_media_search.js
+					        	//@@todo handle errors same problem as #695 in remoteSearchDriver.js
 					        	//we need to add image uploading to the api rather than parse the HTML output of the pages  
 								var result_page = _this.fogg.responseText;
 								var sstring = 'var wgTitle = "' + formData['wpDestFile'].replace('_',' ');								

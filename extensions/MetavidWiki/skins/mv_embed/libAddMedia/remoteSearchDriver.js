@@ -49,6 +49,10 @@ if(typeof wgScriptPath == 'undefined')
 if(typeof stylepath == 'undefined')
 	stylepath = '';
 
+
+/*
+*	base remoteSearch Driver interface
+*/
 var remoteSearchDriver = function(initObj){
 	return this.init( initObj );
 }
@@ -162,7 +166,7 @@ remoteSearchDriver.prototype = {
 	cUpLoader			: null,
 	cEdit				: null,
 	
-	init:function( initObj ){
+	init : function( initObj ){
 		js_log('remoteSearchDriver:init');
 		for( var i in default_remote_search_options ) {
 			if( initObj[i]){
@@ -179,12 +183,12 @@ remoteSearchDriver.prototype = {
 						this.content_providers[ cpc ][ cinx ] = this.cpconfig[cpc][ cinx];					
 				}
 			}
-		}
-		
+		}		
 		//overwrite the default query if a text selection was made: 
 		if(this.target_textbox)
-			this.getTexboxSelection();
-		
+			this.getTexboxSelection();			
+	},
+	doInitDisplay:function(){
 		this.init_interface_html();
 		this.add_interface_bindings();
 	},
@@ -196,8 +200,10 @@ remoteSearchDriver.prototype = {
 	},
 	//sets up the initial html interface 
 	init_interface_html:function(){
+		var _this = this;
 		var dq = (this.default_query)? this.default_query : '';
 		var out = '<div class="rsd_control_container" style="width:100%">' + 
+					'<form id="rsd_form" action="" method="GET">'+
 					'<table style="width:100%;background-color:transparent;">' +
 						'<tr>'+
 							'<td style="width:110px">'+
@@ -220,7 +226,8 @@ remoteSearchDriver.prototype = {
 			}
 			out +=			'</td>'+
 						'</tr>'+
-					'</table>';							
+					'</table>'+
+					'</form>';							
 				
 		out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">';
 			//set up the content provider selection div (do this first to get the default cp)
@@ -243,10 +250,16 @@ remoteSearchDriver.prototype = {
 		out+='<div id="rsd_results_container"></div>';
 		
 		$j('#'+ this.target_id ).html( out );
+		//set up bindings
+		$j('#rsd_form').submit(function(){
+			_this.runSearch();
+			//don't submit the form
+			return false;
+		});			
 		//draw the tabs: 
 		this.drawTabs();
 		//run the default search: 
-		if(this.default_query)
+		if( this.default_query )
 			this.runSearch();
 	}, 
 	add_interface_bindings:function(){
@@ -285,7 +298,7 @@ remoteSearchDriver.prototype = {
 		//load the (firefog enhanced) upload manager:
 		
 		//load the upload.js from mediaWiki:		
-		mvJsLoader.doLoad( {'mvUploader': 'libAddMedia/mv_upload.js'},function(){				
+		mvJsLoader.doLoad( {'mvUploader': 'libAddMedia/mvClipEdit.js'},function(){				
 			_this.cUpLoader = new mvUploader({
 					'target_div': 'rsd_results',
 					'upload_done_action:': function( rTitle){

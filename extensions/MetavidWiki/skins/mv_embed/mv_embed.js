@@ -834,14 +834,14 @@ function mv_embed( force_id ){
 	});	
 	if(loadPlaylistLib){
 		js_log('f:load Playlist Lib:');
-		mvJsLoader.doLoad({'mvPlayList':'libSequencer/mv_playlist.js'},function(){
+		mvJsLoader.doLoad({'mvPlayList':'libSequencer/mvPlayList.js'},function(){
 			$j('playlist').each(function(){		
 				//check if we are in sequence mode load sequence libs (if not already loaded)				 				
 				if( $j(this).attr('sequencer')=="true" ){
 					var pl_element = this;
 					//load the mv_sequencer and the json util lib:
 					mvJsLoader.doLoad({
-							'mvSeqPlayList':'libSequencer/mv_sequencer.js'							
+							'mvSeqPlayList':'libSequencer/mvSequencer.js'							
 						},function(){
 							var seqObj = new mvSeqPlayList( pl_element );
 							swapEmbedVideoElement( pl_element, seqObj );								
@@ -867,10 +867,11 @@ function mv_do_remote_search(initObj){
 	mvEmbed.load_libs(function(){
 		//load search specifc extra stuff 
 		mvJsLoader.doLoad({
-			'mvBaseRemoteSearch':'libAddMedia/mv_remote_media_search.js'
+			'mvBaseRemoteSearch':'libAddMedia/remoteSearchDriver.js'
 		}, function(){
 			initObj['instance_name']= 'rsdMVRS';
 			rsdMVRS = new remoteSearchDriver( initObj );
+			rsdMVRS.doInitDisplay();
 		});
 	});
 }
@@ -885,7 +886,7 @@ function mv_do_sequence(initObj){
 	mvEmbed.load_libs(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
-				'mvPlayList':'libSequencer/mv_playlist.js',
+				'mvPlayList':'libSequencer/mvPlayList.js',
 				'$j.ui.sortable':'jquery/jquery.ui-1.5.2/ui/minified/ui.sortable.min.js',
 				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
 				'$j.contextMenu':'jquery/plugins/jquery.contextMenu.js'
@@ -898,7 +899,7 @@ function mv_do_sequence(initObj){
 				//debugger;
 				//load the sequencer
 				mvJsLoader.doLoad({
-						'mvSequencer':'libSequencer/mv_sequencer.js'						
+						'mvSequencer':'libSequencer/mvSequencer.js'						
 					},function(){					
 						js_log('calling new mvSequencer');						
 						//init the sequence object (it will take over from there) no more than one mvSeq obj: 

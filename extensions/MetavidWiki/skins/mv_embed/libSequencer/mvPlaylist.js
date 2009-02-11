@@ -1,5 +1,5 @@
 /* 
- * the playlist object code 
+ * the mvPlayList object code 
  * only included if playlist object found
  * 
  * part of mv_embed: 
