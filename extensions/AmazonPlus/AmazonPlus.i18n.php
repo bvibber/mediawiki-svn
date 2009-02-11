@@ -726,6 +726,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'amazonplus-nores' => 'Errore:Nisciune resultete acchijete',
+	'amazonplus-noidres' => "Errore: Non ge riesche ad acchià 'u codece d'u prodotte!",
 	'amazonplus-used' => 'ausete',
 	'amazonplus-german' => 'Tedesche',
 	'amazonplus-french' => 'Frangese',

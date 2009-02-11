@@ -144,6 +144,13 @@ $messages['nl'] = array(
 	'semanticgallery-desc' => 'Voegt een galerijuitvoerformaat toe aan zoekopdrachten via Semantic MediaWiki',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'semanticgallery-desc' => 'Legg til ei galleriutdataformatering på SMW-spørjingar',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

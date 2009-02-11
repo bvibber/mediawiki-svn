@@ -138,7 +138,9 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'templatelink' => 'Vínculo de plantilla',
+	'templatelink_desc' => 'Esta extensión puede mostrar una plantilla como una nueva página',
 	'templatelink_empty' => 'Usted tiene que proveer un parámetro.',
+	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
 /** Basque (Euskara)

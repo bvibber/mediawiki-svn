@@ -947,6 +947,7 @@ $messages['es'] = array(
 	'viewapc-display-creation_time' => 'Creado',
 	'viewapc-display-deletion_time' => 'Borrado',
 	'viewapc-display-mem_size' => 'Tamaño',
+	'viewapc-ls-options-legend' => 'Opciones',
 	'viewapc-ls-header-name' => 'Nombre',
 	'viewapc-ls-header-size' => 'Tamaño',
 	'viewapc-ls-header-created' => 'Creado',

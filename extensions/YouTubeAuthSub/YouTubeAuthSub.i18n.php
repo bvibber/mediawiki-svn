@@ -1522,16 +1522,17 @@ Jekk jogħġbok kun pazjenti.",
 
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
+ * @author Sura
  */
 $messages['myv'] = array(
-	'youtubeauthsub' => 'Йовкстамс YouTube видеот',
+	'youtubeauthsub' => 'Ёвкстамс YouTube видеот',
 	'youtubeauthsub_title' => 'Конякс',
 	'youtubeauthsub_description' => 'Чарькодевтемгакс',
 	'youtubeauthsub_password' => 'YouTube совамо вал',
 	'youtubeauthsub_username' => 'YouTube теицянь лем',
 	'youtubeauthsub_category' => 'Явовкс',
 	'youtubeauthsub_submit' => 'Максомс',
-	'youtubeauthsub_uploadbutton' => 'Йовкстамс',
+	'youtubeauthsub_uploadbutton' => 'Ёвкстамс',
 );
 
 /** Nahuatl (Nāhuatl)

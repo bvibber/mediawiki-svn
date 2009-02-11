@@ -41,12 +41,17 @@ $4",
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'todo-desc' => 'Short description of the Todo extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'todo-new-queue' => '{{Identical|New}}',
+	'todo-mail-body' => '* $1 is a user name
+* $2 is a timestamp
+* $3 is a page name
+* $4 is some text',
 	'todo-list-for' => '{{Identical|Todo list for}}',
 	'todo-list-cancel' => '{{Identical|Cancel}}',
 	'todo-form-details' => '{{Identical|Details}}',
@@ -698,11 +703,34 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'todo' => 'やることリスト',
+	'todo-desc' => '個人用の[[Special:Todo|やることリスト]]を実現する実験的な拡張機能',
+	'todo-tab' => 'やること',
 	'todo-new-queue' => '新規',
+	'todo-mail-subject' => '$1 のやることリスト上の項目が完了しました',
+	'todo-mail-body' => 'あなたは、$1 のやることリストに提出した項目の完了について、確認メールを希望されました。
+
+項目: $2
+提出: $3
+
+この項目は完了済みとマークされました。以下コメント:
+$4',
+	'todo-invalid-item' => '項目が見当たらないか、不正です',
+	'todo-update-else-item' => '他の誰かの項目を更新しようとしています',
+	'todo-unrecognize-type' => '認識されない種類',
+	'todo-user-invalide' => '指定された利用者は、不正、見つけれない、またはこの機能を利用できません。',
+	'todo-item-list' => 'あなたの項目',
+	'todo-no-item' => 'やるべき課題はありません。',
+	'todo-invalid-owner' => 'この項目の担当者が無効です',
+	'todo-add-queue' => 'キューに追加…',
+	'todo-move-queue' => 'キューに移動…',
 	'todo-list-change' => '変更',
 	'todo-list-cancel' => '中止',
+	'todo-new-item' => '新規項目',
+	'todo-issue-summary' => '課題要約:',
 	'todo-form-details' => '詳細:',
-	'todo-form-submit' => 'クエリ送信',
+	'todo-form-email' => '項目が完了した際に電子メールで通知を希望するなら、あなたのアドレスをここに入力してください:',
+	'todo-form-submit' => '送信',
 );
 
 /** Javanese (Basa Jawa)

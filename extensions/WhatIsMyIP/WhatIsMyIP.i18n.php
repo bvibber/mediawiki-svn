@@ -540,6 +540,13 @@ $messages['tl'] = array(
 	'whatismyip-out' => 'Ang IP mo:',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'whatismyip-out' => "Sizin IP'niz:",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

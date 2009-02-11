@@ -171,6 +171,7 @@ $messages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'createsigndocument' => 'Уключыць падпісаньне дакумэнта',
@@ -198,7 +199,7 @@ $messages['be-tarask'] = array(
 	'createsigndoc-error-pagenoexist' => 'Памылка: Старонка [[$1]] не існуе.',
 	'createsigndoc-success' => 'Падпісаньне дакумэнта было пасьпяхова ўключана на старонцы [[$1]].
 Вы можаце [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} гэта праверыць].',
-	'createsigndoc-error-alreadycreated' => 'Падпісаньне дакумэнту «$1» ўжо існуе.
+	'createsigndoc-error-alreadycreated' => 'Падпісаньне дакумэнту «$1» ужо існуе.
 Немагчыма зрабіць гэта двойчы.',
 );
 

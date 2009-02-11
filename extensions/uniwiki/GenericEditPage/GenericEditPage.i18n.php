@@ -1025,6 +1025,15 @@ Magdagdag ng ilan sa pamamagitan ng mga pilian ng mga kagamitang nasa kanan.',
 	'gep-categorypage' => 'MediaWiki:Pagbabagopahinamgatatak',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'gep-categories' => 'Kategoriler',
+	'gep-addcategorybutton' => 'Ekle',
+	'gep-addsectionbutton' => 'Ekle',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

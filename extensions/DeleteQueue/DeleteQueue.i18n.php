@@ -839,6 +839,7 @@ Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
 
 /** Spanish (Español)
  * @author Antur
+ * @author Crazymadlover
  * @author Imre
  * @author Remember the dot
  * @author Sanbec
@@ -855,12 +856,61 @@ $messages['es'] = array(
 	'deletequeue-action-text-queued' => 'Ud. debe leer las siguientes páginas para este caso de borrado:
 * [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Opiniones a favor y en contra].
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Opine sobre el borrado de esta página].',
+	'deletequeue-generic-reasons' => '* Razones genéricas
+  ** Vandalismo
+  ** Spam
+  ** Mantenimiento
+  ** Fuera del enfoque del proyecto',
+	'deletequeue-nom-alreadyqueued' => 'Esta página ya está en una cola de borrado',
+	'deletequeue-prod-title' => 'Proponer borrado de "$1"',
+	'deletequeue-delnom-reason' => 'Razón para nominación:',
+	'deletequeue-delnom-otherreason' => 'Otra razón',
+	'deletequeue-delnom-extra' => 'Información extra:',
+	'deletequeue-delnom-submit' => 'Enviar nominación',
+	'deletequeue-log-nominate' => "nominado [[$1]] para borrado en la cola '$2'.",
+	'deletequeue-log-requeue' => "transferido [[$1]] a una cola de borrado diferente: de '$2' a '$3'.",
+	'deletequeue-log-dequeue' => "removido [[$1]] de la cola de borrado '$2'.",
+	'right-speedy-nominate' => 'Nominar páginas para borrado rápido',
+	'right-speedy-review' => 'Revisar nominaciones para borrado rápido',
+	'right-prod-nominate' => 'Proponer borrado de página',
+	'right-deletediscuss-nominate' => 'Comenzar discusiones de borrado',
+	'right-deletediscuss-review' => 'Cerrar discusiones de borrado',
+	'deletequeue-queue-speedy' => 'Borrado rápido',
+	'deletequeue-queue-prod' => 'Borrado propuesto',
+	'deletequeue-queue-deletediscuss' => 'Discusión de borrado',
+	'deletequeue-page-speedy' => "Esta página ha sido nominada para borrado rápido.
+La razón dada para este borrado es ''$1''.",
+	'deletequeue-review-action' => 'Acción a tomar:',
+	'deletequeue-review-delete' => 'Borrar la página.',
+	'deletequeue-review-requeue' => 'Transferir esta página a la siguiente cola:',
+	'deletequeue-review-dequeue' => 'No tomar acción, y remover la página de la cola de borrado.',
 	'deletequeue-review-reason' => 'Comentarios:',
+	'deletequeue-review-newreason' => 'Nueva razón:',
+	'deletequeue-review-newextra' => 'Información extra:',
+	'deletequeue-review-submit' => 'Grabar Revisión',
+	'deletequeue-review-original' => 'Razón para nominación',
+	'deletequeue-review-badaction' => 'Usted especificó una acción inválida',
+	'deletequeue-review-actiondenied' => 'Usted ha especificado una acción la cual está dehabilitada para esta página',
+	'deletequeue-reviewprod-tab' => 'revisar borrado propuesto',
+	'deletequeue-reviewdeletediscuss-tab' => 'Revisar borrado',
+	'deletequeue-review-success-title' => 'Revisión completa',
+	'deletequeue-discusscreate-summary' => 'creando discusión para el borrado de [[$1]].',
+	'deletequeue-vote-action' => 'Recomendación:',
 	'deletequeue-vote-reason' => 'Comentarios:',
 	'deletequeue-vote-submit' => 'Enviar',
+	'deletequeue-showvotes-restrict-object' => 'Mostrar objeciones solamente',
+	'deletequeue-showvotes-showingonly-object' => 'Mostrando sólo objeciones',
+	'deletequeue-showvotes-none-object' => 'No hay objeciones al borrado de esta página.',
+	'deletequeue' => 'Cola de borrado',
+	'deletequeue-list-queue' => 'Cola:',
 	'deletequeue-list-status' => 'Estatus:',
 	'deletequeue-list-search' => 'Buscar',
+	'deletequeue-list-anyqueue' => '(cualquiera)',
+	'deletequeue-list-votes' => 'Lista de votos',
 	'deletequeue-list-header-page' => 'Página',
+	'deletequeue-list-header-queue' => 'Cola',
+	'deletequeue-list-header-expiry' => 'Expirar',
+	'deletequeue-list-header-discusspage' => 'Página de discusión',
 );
 
 /** Basque (Euskara)

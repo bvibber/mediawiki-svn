@@ -183,7 +183,7 @@ $messages['fr'] = array(
 	'mibbit' => 'Clavardage Mibbit',
 	'mibbit-desc' => 'Ajoute une [[Special:Mibbit|page spéciale]] permettant le clavardage en temps réel avec les autres utilisateurs du wiki',
 	'mibbit-header' => "Cette page spéciale vous permet de collaborer en temps réel avec d'autres utilisateurs du wiki.
-Pour vous connecter, cliquez simplement sur le bouton « ''Connect'' ».
+Pour vous connecter, cliquez simplement sur le bouton « Connect ».
 Si vous êtes connecté{{GENDER:||e|(e)}}, votre pseudonyme sera déjà écrit.
 Les utilisateurs anonymes se verront attribuer un pseudonyme créé automatiquement, mais qui peut être modifié.",
 	'right-mibbit' => "Autorise l'utilisation du Chat Mibbit",

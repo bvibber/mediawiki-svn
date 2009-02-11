@@ -738,6 +738,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -750,12 +751,14 @@ $messages['nn'] = array(
 	'recordadmin-buttonsearch' => 'Søk',
 	'recordadmin-buttoncreate' => 'Opprett',
 	'recordadmin-searchresult' => 'Søkjeresultat',
+	'recordadmin-nomatch' => 'Ingen høvelege resultat funnne!',
 	'recordadmin-edit' => 'Endrar $1',
 	'recordadmin-typeupdated' => 'Eigenskapane til $1 blei oppdaterte',
 	'recordadmin-updatesuccess' => '$1 er oppdatert',
 	'recordadmin-updateerror' => 'Ein feil oppstod under oppdatering',
 	'recordadmin-buttonsave' => 'Lagra',
 	'recordadmin-createlink' => '<a href=$1>opprett ein</a>',
+	'recordadmin-summary-typecreated' => 'Ny $1 laga til',
 	'recordadmin-viewlink' => 'sjå',
 	'recordadmin-editlink' => 'endra',
 	'recordadmin-created' => 'Oppretta',

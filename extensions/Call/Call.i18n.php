@@ -240,6 +240,13 @@ $messages['eo'] = array(
 	'call-save-failed' => 'La jena teksto NE estis konservita al paĝo <big>[[$1]]</big> ĉar tiu paĝo jam ekzistas.',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'call' => 'Llamar',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

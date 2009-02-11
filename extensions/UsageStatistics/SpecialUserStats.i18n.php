@@ -506,6 +506,9 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'specialuserstats' => 'Estadísticas de uso',
 	'usagestatistics' => 'Estadísticas de uso',
+	'usagestatistics-desc' => 'Mostrar usuario individual y vista general de estadísticas de uso del wiki',
+	'usagestatisticsfor' => '<h2>Estadísticas de uso para [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Estadísticas de uso para todos los usuarios</h2>',
 	'usagestatisticsinterval' => 'Intervalo',
 	'usagestatisticstype' => 'Tipo',
 	'usagestatisticsstart' => 'Fecha de inicio',
@@ -522,6 +525,8 @@ $messages['es'] = array(
 	'usagestatisticscumulative' => 'Acumulativo',
 	'usagestatisticscumulative-text' => 'Acumulativo',
 	'usagestatisticscalselect' => 'Seleccionar',
+	'usagestatistics-editindividual' => 'Estadísticas de ediciones de usuario individual $1',
+	'usagestatistics-editpages' => 'Estadísticas de páginas de usuario individual $1',
 );
 
 /** Estonian (Eesti)

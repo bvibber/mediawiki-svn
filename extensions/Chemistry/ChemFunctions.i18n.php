@@ -250,6 +250,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'chemicalsources' => 'Fuentes químicas',
 	'chemFunctions_ListPage' => 'Fuentes químicas',
+	'chemFunctions_CAS' => 'Número CAS',
 	'chemFunctions_Formula' => 'Fórmula',
 	'chemFunctions_Name' => 'Nombre IUPAC',
 );

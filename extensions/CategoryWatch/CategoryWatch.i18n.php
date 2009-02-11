@@ -182,12 +182,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Baiji
+ * @author Crazymadlover
  */
 $messages['es'] = array(
 	'categorywatch-emailbody' => 'Hola $1, estás recibiendo este mensaje debido a que estás revisando la categoría "$2".
 Este mensaje es para notificarte que el $3 el usuario $4 $5.',
 	'categorywatch-catmovein' => '$1 trasladado a la categoría $2 desde $3',
 	'categorywatch-catmoveout' => '$1 retirado de la categoría $2 a $3',
+	'categorywatch-catadd' => 'agregado $1 a categoría $2',
 	'categorywatch-catsub' => '$1 retirado de la categoría $2',
 );
 

@@ -134,6 +134,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'slippymap_desc' => 'Дазваляе карыстацца тэгам <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> для адлюстраваньня хуткай мапы OpenLayer. Выкарыстоўваюцца мапы [http://openstreetmap.org openstreetmap.org]',
@@ -160,8 +161,8 @@ $messages['be-tarask'] = array(
 	'slippymap_invalidlayer' => "Няслушнае значэньне '%1' парамэтру 'layer'",
 	'slippymap_maperror' => 'Памылка мапы:',
 	'slippymap_osmtext' => 'Глядзіце гэту мапу на OpenStreetMap.org',
-	'slippymap_code' => 'ВікіКод для прагляду гэтай мапы:',
-	'slippymap_button_code' => 'Атрымаць ВікіКод',
+	'slippymap_code' => 'Вікікод для прагляду гэтай мапы:',
+	'slippymap_button_code' => 'Атрымаць вікікод',
 	'slippymap_resetview' => 'Першапачатковы выгляд',
 );
 

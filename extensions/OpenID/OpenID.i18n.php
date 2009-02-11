@@ -386,6 +386,7 @@ OpenID позволява влизането в много различни са
  * @author CERminator
  */
 $messages['bs'] = array(
+	'openid-desc' => 'Prijava na wiki sa [http://openid.net/ OpenID] i prijava na druge stranice koje podržavaju OpenID sa wiki korisničkim računom',
 	'openidlogin' => 'Prijava sa OpenID',
 	'openidfinish' => 'Završi OpenID prijavu',
 	'openidserver' => 'OpenID server',
@@ -394,15 +395,22 @@ $messages['bs'] = array(
 	'openiderror' => 'Greška pri provjeri',
 	'openiderrortext' => 'Desila se greška pri provjeri OpenID URL adrese.',
 	'openidconfigerror' => 'Greška OpenID postavki',
+	'openidconfigerrortext' => 'OpenID konfiguracija spremanja za ovaj wiki je nevaljana. 
+Molimo konsultujte se sa [[Special:Listusers/sysop|administratorom]].',
 	'openidpermission' => 'Greška kod OpenID dopuštenja',
+	'openidpermissiontext' => 'OpenID koji ste naveli nije dopušteno da se prijavi na ovaj server.',
 	'openidcancel' => 'Provjera poništena',
 	'openidcanceltext' => 'Provjera OpenID URL-a je otkazana.',
 	'openidfailure' => 'Potvrda nije uspjela',
+	'openidfailuretext' => 'Provjera URL-a za OpenID nije uspjela. Poruka greške: "$1"',
 	'openidsuccess' => 'Provjera uspješna',
+	'openidsuccesstext' => 'Provjera URL-a za OpenID je uspjela.',
+	'openidusernameprefix' => 'OpenIDKorisnik',
 	'openidserverlogininstructions' => 'Unesite ispod Vašu šifru da biste se prijavili na $3 kao korisnik $2 (korisnička stranica $1).',
 	'openidtrustinstructions' => 'Provjerite da li želite dijeliti podatke sa $1.',
 	'openidallowtrust' => 'Omogući $1 da vjeruje ovom korisničkom računu.',
 	'openidnopolicy' => 'Sajt nema napisana pravila privatnosti.',
+	'openidpolicy' => 'Provjerite <a target="_new" href="$1">politiku privatnosti</a> za više informacija.',
 	'openidoptional' => 'opcionalno',
 	'openidrequired' => 'obavezno',
 	'openidnickname' => 'Nadimak',
@@ -410,6 +418,7 @@ $messages['bs'] = array(
 	'openidemail' => 'E-mail adresa',
 	'openidlanguage' => 'Jezik',
 	'openidnotavailable' => 'Vaš odabrani nadimak ($1) je već upotrijebio drugi korisnik.',
+	'openidnotprovided' => 'Vaš OpenID server nije poslao nadimak (bilo da ne može ili da ste ga Vi spriječili).',
 	'openidchooseinstructions' => 'Svi korisnici trebaju imati nadimak;
 možete odabrati jedan sa opcijama ispod.',
 	'openidchoosefull' => 'Vaše puno ime ($1)',
@@ -429,6 +438,7 @@ Ako želite da koristite OpenID za buduće prijave, možete [[Special:OpenIDConv
 	'tog-hideopenid' => 'Sakrij Vaš <a href="http://openid.net/">OpenID</a> na Vašoj korisničkoj stranici, ako ste prijavljeni sa OpenID.',
 	'openidnousername' => 'Nije navedeno korisničko ime.',
 	'openidbadusername' => 'Navedeno loše korisničko ime.',
+	'openidautosubmit' => 'Ova stranica uključuje obrazac koji bi se trebao automatski poslati ako je kod Vas omogućena JavaScript. Ako nije, pokušajte nastaviti dalje putem dugmeta \\"Continue\\".',
 	'openidclientonlytext' => 'Ne možete koristiti račune sa ove wiki kao OpenID na drugom sajtu.',
 	'openidloginlabel' => 'OpenID URL adresa',
 );

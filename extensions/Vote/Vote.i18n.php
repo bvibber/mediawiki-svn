@@ -425,7 +425,11 @@ $messages['es'] = array(
 	'vote-desc' => 'Provea capacidades de encuesta simple',
 	'vote-header' => "Usted puede votar por '''Supremo Señor Feudal del Mundo''' aquí!",
 	'vote-current' => "Tu voto actual es para '''$1'''.",
+	'vote-legend' => 'Reemplazar o enmendar voto',
 	'vote-caption' => 'Su selección:',
+	'vote-choices' => 'bufón|El Bufón
+pingüino|El Pingüino
+adivinador|Adivinador',
 	'vote-submit' => 'Votar',
 	'vote-registered' => 'Su voto ha sido registrado.',
 	'vote-view-results' => 'Ver resultados',

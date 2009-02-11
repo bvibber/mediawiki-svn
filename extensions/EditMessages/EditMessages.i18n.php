@@ -165,6 +165,7 @@ $messages['bs'] = array(
 	'editmsg-show-list' => 'Prikazuje vrijednosti za poruku s naslovom "$1"',
 	'editmsg-get-patch' => 'Generiraj patch',
 	'editmsg-new-search' => 'Nova pretraga',
+	'editmsg-warning-parse3' => '* Nije pronađen znak završetka linije: $1',
 	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod {{PLURAL:$2|slijedećeg|slijedećih}} jezika: $1',
 );
 
@@ -1134,6 +1135,13 @@ $messages['vi'] = array(
 	'editmsg-no-patch' => 'Không thể thực hiện lệnh "vá"',
 	'editmsg-patch-failed' => 'Vá thất bại, lỗi trả về $1',
 	'editmsg-patch-success' => 'Vá thành công.',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'editmsg-new-search' => 'Suk nulik',
 );
 
 /** Yiddish (ייִדיש)

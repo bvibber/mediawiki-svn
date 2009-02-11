@@ -93,6 +93,19 @@ $messages['arz'] = array(
 	'framedvideo-desc' => 'نوع الفيديو "$1" يتطلب المحددين "height" و "width2" أو "width".',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'framedvideo_errors' => 'Desilo se više poruke!',
+	'framedvideo_error' => 'Nastala je greška!',
+	'framedvideo_error_no_id_given' => 'Nedostaje parametar "id".',
+	'framedvideo_error_width_too_big' => 'Navedena vrijednost parametra "width" je prevelika.',
+	'framedvideo_error_height_too_big' => 'Navedena vrijednost parametra "height" je prevelika.',
+	'framedvideo_error_limit' => 'Najveća dopuštena vrijednost je $1.',
+	'framedvideo_helppage' => 'Help:Video',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */

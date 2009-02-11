@@ -290,13 +290,16 @@ Bonvolu plenumi ĝin.',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'form' => 'Formulario',
 	'formpattern' => 'Formulario de $1',
+	'formtitlepattern' => 'Agregar nuevo $1',
 	'formsave' => 'Guardar',
+	'formarticleexists' => 'La página existe',
 );
 
 /** Basque (Euskara)

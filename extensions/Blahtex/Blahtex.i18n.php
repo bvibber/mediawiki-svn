@@ -417,6 +417,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'math_noblahtex' => 'Ne može se izvršiti blahtex, koji bi trebao biti na $1',
 	'math_IllegalCharacter' => 'Nevaljan znak u unosu',
 	'math_IllegalFinalBackslash' => 'Nevaljana kosa crta "\\" na kraju unosa',
 	'math_MissingOpenBraceAfter' => 'Nedostaje otvorena zagrada "{" poslije "$1"',

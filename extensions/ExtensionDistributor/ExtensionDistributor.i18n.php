@@ -1427,6 +1427,13 @@ $messages['ro'] = array(
 	'extdist-submit-version' => 'Continuă',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'extdist-submit-extension' => 'Condinue',
+);
+
 /** Russian (Русский)
  * @author MaxSem
  * @author Александр Сигачёв

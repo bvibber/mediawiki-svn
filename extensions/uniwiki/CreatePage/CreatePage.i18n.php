@@ -185,6 +185,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'createpage' => 'Crear una página',
+	'createpage-desc' => 'Agregar una [[Special:CreatePage|página especial]] para crear nuevas páginas',
 	'createpage_submitbutton' => 'Enviar',
 	'createpage_instructions' => 'Ingresa el título de la página que deseas crear:',
 	'createpage_entertitle' => 'Ingresa un título para tu página.',

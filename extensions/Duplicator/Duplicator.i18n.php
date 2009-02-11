@@ -322,10 +322,15 @@ Estus utila por disigo de artikoloj, ktp.',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'duplicator' => 'Duplicar una página',
+	'duplicator-toolbox' => 'Duplicar ésta página',
+	'duplicator-options' => 'Opciones',
+	'duplicator-source' => 'Fuente:',
 	'duplicator-dest' => 'Destino:',
 	'duplicator-submit' => 'Duplicado',
 );

@@ -31,6 +31,7 @@ Your friendly %s notification system",
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
@@ -39,6 +40,9 @@ $messages['qqq'] = array(
 	'tasklist-special-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'tasklistincorrectuser' => '{{Identical|Incorrect username}}',
 	'tasklistbyname' => '{{Identical|Todo list for}}',
+	'tasklistemailbody' => "* 1st %s is the URL of some page (?)
+* 2nd %s is the URL of the user's task list page
+* 3rd %s is the site name",
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -287,6 +291,8 @@ Por listo de validaj projektoj, vidu [[MediaWiki:TodoTasksValidProjects]].",
  */
 $messages['es'] = array(
 	'tasklist' => 'Lista de tareas',
+	'tasklist-parser-desc' => 'Agrega <nowiki>{{#todo:}}</nowiki> funciones de analizador para tareas asignadas',
+	'tasklist-special-desc' => 'Agrega una página especial para revisar [[Special:TaskList|asignamientos de tareas]]',
 	'tasklistbyproject' => 'Lista de tareas por proyecto',
 	'tasklistunknownproject' => 'Proyecto desconocido',
 	'tasklistunspecuser' => 'Usuario no especificado',
@@ -298,7 +304,15 @@ $messages['es'] = array(
 Para una lista de proyectos válido, vea [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Tareas asignadas para '''%s'''",
 	'tasklistchooseproj' => 'Seleccionar proyecto:',
+	'tasklistprojdisp' => 'Exhibir',
 	'tasklistbyname' => '== Lista de quehaceres para %s ==',
+	'tasklistemailbody' => ',
+
+Alguien ha asignado una nueva Tarea para usted en %s.
+
+Para ver su lista completa de Tareas vaya a %s.
+
+Su sistema de notificación amigable %s',
 );
 
 /** Basque (Euskara)
@@ -511,11 +525,33 @@ Le systema de notification de %s',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'tasklist' => 'タスクリスト',
-	'tasklistprojdisp' => 'ディスプレイ',
+	'tasklist' => '課題リスト',
+	'tasklist-parser-desc' => '課題割り当てのための <nowiki>{{#todo:}}</nowiki> パーサー関数を加える',
+	'tasklist-special-desc' => '[[Special:TaskList|課題割り当て]]を見直すための特別ページを追加する',
+	'tasklistbyproject' => 'プロジェクト別課題リスト',
+	'tasklistunknownproject' => '不明なプロジェクト',
+	'tasklistunspecuser' => '利用者未指定',
+	'tasklistincorrectuser' => '不正確な利用者名',
+	'tasklistemail' => '%s さんへ',
+	'tasklistemailsubject' => '[%s] 課題リストの変更',
+	'tasklistmytasks' => '自分の課題',
+	'tasklistbyprojectbad' => "プロジェクト「'''%s'''」は有効なプロジェクトではありません。有効なプロジェクトのリストは、[[MediaWiki:TodoTasksValidProjects]]をご覧ください。",
+	'tasklistbyprojname' => "'''%s''' の割り当て済み課題",
+	'tasklistchooseproj' => 'プロジェクトを選択:',
+	'tasklistprojdisp' => '表示',
+	'tasklistbyname' => '== %s がすべきことのリスト ==',
+	'tasklistnoprojects' => "エラー: あなたは '''\$wgUseProjects''' を有効にしているようですが、[[MediaWiki:TodoTasksValidProjects]] を作成していません。詳細は[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 インストール手順]をご覧ください。",
+	'tasklistemailbody' => '、
+
+どなたかが、%s であなたに新しい課題を割り当てられました。
+
+%s で、あなたに割り当てられている課題の完全なリストを確認できます。
+
+%s 通知システムより',
 );
 
 /** Javanese (Basa Jawa)

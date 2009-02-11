@@ -119,6 +119,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'autocreatecategorypages-desc' => 'Crear categoría de páginas perdidas automáticamente al grabar',
 	'autocreatecategorypages-stub' => 'Esta es una página de categorías.
 Aqx se enumeran todas las páginas en la categoría "$1" asx como todas las subcategorías en la categoría "$1" si las hubiere.',
 	'autocreatecategorypages-createdby' => 'Creado automáticamente por la extensión AutoCreateCategoryPages.',

@@ -2898,6 +2898,7 @@ $messages['tl'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Itago ang mga kahulugang nasa wika ng katanungan',
 	'voctrain_hide_words_in_question_language' => 'Itago ang mga salitang nasa wika ng katanungan',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Paghiwalay-hiwalayin ang mga halaga sa pamamagitan ng kuwit para makagamit ng maramihang mga wika.',
+	'voctrain_other' => 'iba pa',
 );
 
 /** Turkish (Türkçe)

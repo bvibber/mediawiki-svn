@@ -442,6 +442,13 @@ $messages['lfn'] = array(
 	'findspam-ok' => 'Oce',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Homo
+ */
+$messages['lt'] = array(
+	'findspam-ip' => 'IP adresas:',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  * @author Shijualex

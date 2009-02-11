@@ -330,6 +330,7 @@ Klaku <a href='$1'>ĉi tie</a> por reveni.",
  * @author Sanbec
  */
 $messages['es'] = array(
+	'spamdifftool' => 'Administrar lista negra de spam',
 	'spamdifftool_cantedit' => 'Disculpe - usted no tiene permiso para editar la lista negra de spam.',
 	'spamdifftool_notext' => "No hay texto para agregar en la lista negra de spam.
 Click <a href='$1'>aquí</a> para continuar.",

@@ -45,11 +45,13 @@ The id you need to provide is the numbers and letters between "$2" and "$3".',
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'imstatus-desc' => 'Short description of the IMStatus extension, shown on [[Special:Version]].',
+	'imstatus_default' => '{{Identical|Default}}',
 	'imstatus_live_get_code' => 'The parameters are pieces of static text to help a user find what he needs.
 * $1 is "http://settings.messenger.live.com/applications/CreateHtml.aspx"
 * $2 is "invitee="
@@ -120,6 +122,13 @@ $messages['arz'] = array(
 	'imstatus_skype_nbstyle' => 'ملاحظة: إذا اخترت أسلوبا هو أيضا فعل، اختيارك للفعل سيطغى عليه بواسطة الفعل المطابق لأسلوبك المختار.',
 	'imstatus_xfire_size' => 'حجم الزر، من $1 (أكبر) إلى $2 (أصغر).',
 	'imstatus_yahoo_style' => 'أسلوب الزر، من $1 (أصغر) إلى $2 (أكبر)، $3 و $4 هما للبريد الصوتي.',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'imstatus_default' => 'Па змоўчваньні',
 );
 
 /** Bulgarian (Български)
@@ -497,6 +506,17 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
 	'imstatus_skype_nbstyle' => 'Nota: Si tu selige un stilo que es tamben un action, tu selection de action essera ultrapassate per le action correspondente a tu stilo seligite.',
 	'imstatus_xfire_size' => 'le grandor del button, de $1 (le plus grande) a $2 (le plus parve).',
 	'imstatus_yahoo_style' => 'le stilo del button, de $1 (le plus parve) a $2 (le plus grande), $3 e $4 es pro le messages vocal.',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'imstatus-desc' => '各種インスタントメッセンジャーのオンライン状態を示すためのタグを追加する (AIM、Google トーク、ICQ、MSN/Live メッセンジャー、Skype、Xfire、Yahoo)',
+	'imstatus_default' => 'デフォルト',
+	'imstatus_example' => '例',
+	'imstatus_icq_id' => 'あなたのICQ ID',
 );
 
 /** Khmer (ភាសាខ្មែរ)

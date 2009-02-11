@@ -191,11 +191,17 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'showprocesslist' => 'Mostrar lista de procesos',
 	'showprocesslist-user' => 'Usuario',
+	'showprocesslist-db' => 'Base de datos',
+	'showprocesslist-command' => 'Comando',
+	'showprocesslist-time' => 'Tiempo',
 	'showprocesslist-state' => 'Estado',
+	'showprocesslist-info' => 'Información',
 );
 
 /** Basque (Euskara)

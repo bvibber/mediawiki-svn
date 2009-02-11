@@ -405,8 +405,21 @@ $messages['be-tarask'] = array(
 	'sign-error-nosuchdoc' => 'Запытаны дакумэнт ($1) не існуе.',
 	'sign-realname' => 'Імя:',
 	'sign-address' => 'Вуліца:',
+	'sign-city' => 'Горад:',
+	'sign-state' => 'Штат:',
+	'sign-zip' => 'Паштовы індэкс:',
 	'sign-country' => 'Краіна:',
+	'sign-phone' => 'Нумар тэлефону:',
+	'sign-bday' => 'Узрост:',
 	'sign-email' => 'Адрас электроннай пошты:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> пазначае абавязковы палі.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Заўвага: схаваная інфармацыя будзе бачная для мадэратараў.</i></small>',
+	'sign-list-anonymous' => 'Сьпіс ананімных',
+	'sign-list-hideaddress' => 'Не паказваць адрас',
+	'sign-list-hideextaddress' => 'Не паказваць горад, штат, паштовы індэкс ці краіну',
+	'sign-list-hidephone' => 'Не паказваць нумар тэлефону',
+	'sign-list-hidebday' => 'Не паказваць узрост',
+	'sign-list-hideemail' => 'Не паказваць адрас электроннай пошты',
 	'sign-submit' => 'Падпісаць дакумэнт',
 	'sign-viewfield-realname' => 'Імя',
 	'sign-viewfield-country' => 'Краіна',
@@ -701,6 +714,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
@@ -718,6 +732,7 @@ $messages['es'] = array(
 	'sign-viewfield-country' => 'País',
 	'sign-viewfield-ip' => 'Dirección IP',
 	'sign-viewfield-email' => 'Correo electrónico',
+	'sign-viewfield-options' => 'Opciones',
 	'sig-anonymous' => '<i>Anónimo</i>',
 	'sig-private' => '<i>Privado</i>',
 	'sign-viewfield-reviewcomment' => 'Comentario',

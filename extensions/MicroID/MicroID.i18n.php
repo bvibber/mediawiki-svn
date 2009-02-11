@@ -43,6 +43,14 @@ $messages['bg'] = array(
 	'tog-microid' => 'Публикува <a href="http://microid.org/">MicroID</a> за потвърждаване на сметката с външни услуги',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'microid-desc' => 'Dodaje [http://www.microid.org/ MicroID] na korisničke stranica za potvrdu računa putem vanjskih usluga',
+	'tog-microid' => 'Objavite <a href="http://microid.org/">MicroID</a> da bi ste potvrdili račun sa vanjskim uslugama',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

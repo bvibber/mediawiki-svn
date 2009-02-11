@@ -473,9 +473,20 @@ Se ĉi tiu eraro daŭras okazi, tiel la datumbazo verŝajne estas rompita.',
  * @author Jatrobat
  */
 $messages['es'] = array(
+	'changeauthor' => 'Cambiar autor de revisión',
+	'changeauthor-desc' => 'Permite el cambio del autor de una revisión',
+	'changeauthor-title' => 'Cambiar el autor de una revisión',
+	'changeauthor-search-box' => 'Buscar revisiones',
 	'changeauthor-pagenameform-go' => 'Ir',
 	'changeauthor-comment' => 'Comentario:',
 	'changeauthor-changeauthors-multi' => 'Cambie {{PLURAL:$1|autor|autores}}',
+	'changeauthor-changeauthors-single' => 'Cambiar autor',
+	'changeauthor-invalid-username' => 'Nombre de usuario inválido "$1".',
+	'changeauthor-revview' => 'Revisión #$1 de $2',
+	'changeauthor-nosuchtitle' => 'No hay página llamada "$1".',
+	'changeauthor-success' => 'Su solicitud ha sido procesada exitosamente.',
+	'changeauthor-logentry' => 'Cambiado autor de $2 de $1 de $3 a $4',
+	'right-changeauthor' => 'Cambiar el autor de una revisión',
 );
 
 /** Estonian (Eesti)

@@ -711,6 +711,7 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'filelist' => 'Dosya listesi',
+	'filelist-show-list' => 'Listeyi gör',
 );
 
 /** Ukrainian (Українська)

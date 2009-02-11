@@ -370,6 +370,13 @@ $messages['eo'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'spamregex-summary' => 'El texto fue encontrado en el resumen de página.',
+	'spamregex-currently-blocked' => "'''Frases actualmente bloqueadas:'''",
+	'spamregex-move' => 'La razón que ha ingresado contiene una frase bloqueada.',
+	'spamregex-no-currently-blocked' => "'''No hay frases bloqueadas.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 remover]) lo agregado por",
+	'spamregex-log-2' => '  en $1',
+	'spamregex-unblock-success' => 'Desbloque fue un éxito',
 	'spamregex-block-success' => 'Bloqueo exitoso',
 	'spamregex-block-message' => "Frase '''$1''' ha sido bloqueada",
 	'spamregex-warning-1' => 'De una frase a bloquear.',
@@ -380,6 +387,7 @@ $messages['es'] = array(
 	'spamregex-phrase-block-summary' => 'bloquear frase en resumen',
 	'spamregex-text' => '(Texto)',
 	'spamregex-summary-log' => '(Resumen)',
+	'right-spamregex' => 'Bloquear frases spam a traves de [[Special:SpamRegex]]',
 );
 
 /** Basque (Euskara)

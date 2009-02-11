@@ -135,6 +135,13 @@ $messages['eo'] = array(
 	'spl3_nosubpages' => '$1 havas neniujn subpaĝojn por listigi.',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'spl3_debug' => 'Valor desconocido para opción $1.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur

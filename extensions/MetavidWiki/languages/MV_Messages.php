@@ -1414,13 +1414,30 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Feten7
  * @author Imre
  * @author Jatrobat
  * @author Sanbec
  */
 $messages['es'] = array(
+	'mv_add_stream_submit' => 'Agregar stream',
+	'mv_no_stream_files' => 'archivos stream inexistentes',
+	'mv_edit_stream_files' => 'Editar archivos stream',
+	'mv_path_type_url_anx' => 'media url completo',
+	'mv_path_type_wiki_title' => 'wiki media título',
+	'mv_path_type_mp4_stream' => 'servidor stream de Mp4',
+	'mv_path_type_label' => 'tipo de ruta',
 	'mv_duration_label' => 'Duración',
+	'mv_delete_stream_file' => 'borrar referencia de archivo stream',
+	'mv_save_changes' => 'Grabar cambios',
+	'mv_removed_file_stream' => 'Archivo stream removido: $1',
+	'mv_add_stream_file' => 'Agregar archivo stream',
+	'mv_file_list' => 'Archivos stream',
+	'mv_label_stream_name' => 'Nombre de stream',
+	'mv_label_stream_desc' => 'Descripción de stream',
+	'add_stream_permission' => 'usted carece de permiso para agregar un nuevo stream',
+	'mv_stream_already_exists' => 'El stream <a href="$2">$1</a> ya existe',
 	'mv_upload_file' => 'Subir archivo',
 	'mv_tool_search' => 'Buscar',
 	'mv_tool_export' => 'Exportar',
@@ -1433,7 +1450,9 @@ $messages['es'] = array(
 	'mv_search_and' => 'y',
 	'mv_search_or' => 'o',
 	'mv_search_not' => 'no',
+	'mv_search_stream_name' => 'Nombre de stream',
 	'mv_search_date_range' => 'Rango de fechas',
+	'mv_stream_name' => 'nombre de stream',
 	'mv_date_range' => 'rango de fechas',
 	'mv_spoken_by' => 'hablado por',
 	'mv_category' => 'categoría',
@@ -4867,6 +4886,9 @@ $messages['pt'] = array(
 	'mv_file_with_same_desc' => 'Erro: ficheiro de stream com mesma chave de descrição <i>$1</i> já presente',
 	'mv_updated_stream_files' => 'Registo de ficheiros de stream atualizados',
 	'mv_removed_file_stream' => 'Foi removido o ficheiro de stream: $1',
+	'mv_missing_stream_text' => 'A stream que você requisitou, <b>$1</b>, não está disponível.<br />
+Você pode consultar a <a href="$2">Lista de streams</a><br />
+Ou você pode <a href="$3">Adicionar a stream</a>.',
 	'mv_user_cant_edit' => 'Poderá ter que $1 para editar, $2',
 	'mv_add_stream_file' => 'Adicionar ficheiro de stream',
 	'mv_media_path' => 'caminho da media',
