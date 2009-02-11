@@ -672,7 +672,7 @@ mvSequencer.prototype = {
 		
 		mv_get_loading_img( '#clipedit_ic' );
 		//load the clipEdit library if not already loaded:
-		mvJsLoader.doLoad( {'mvClipEdit' : 'libClipEdit/mv_clipedit.js' }, function(){
+		mvJsLoader.doLoad( {'mvClipEdit' : 'libClipEdit/mvClipEdit.js' }, function(){
 			//setup the cliploader
 			this_seq.myClipEditor = new mvClipEdit({
 				'rObj' : cObj,

@@ -604,7 +604,7 @@ remoteSearchDriver.prototype = {
 				'media_type': mediaType,
 				'p_rsdObj': _this						
 		};
-		var loadLibs =  {'mvClipEdit':'libClipEdit/mv_clipedit.js'};		
+		var loadLibs =  {'mvClipEdit':'libClipEdit/mvClipEdit.js'};		
 		if( mediaType == 'image'){
 			//load the crop library:
 			//loadLibs['$j.Jcrop']='jquery/plugins/Jcrop/js/jquery.Jcrop.js';
