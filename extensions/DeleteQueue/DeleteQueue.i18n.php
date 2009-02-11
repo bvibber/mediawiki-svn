@@ -183,6 +183,18 @@ You can [{{fullurl:{{FULLPAGENAME}}|action=delvote}} register your own endorseme
 	'deletequeue-list-header-votes' => 'Endorsements and objections',
 	'deletequeue-list-header-expiry' => 'Expiry',
 	'deletequeue-list-header-discusspage' => 'Discussion page',
+	
+	// Case view.
+	'deletequeue-case-intro' => "This page lists information on a specific deletion case.",
+	'deletequeue-list-header-reason' => 'Reason for deletion',
+	'deletequeue-case-votes' => 'List of votes',
+	'deletequeue-case-title' => "Deletion case details",
+	'deletequeue-case-details' => 'Basic details',
+	'deletequeue-case-page' => 'Page:',
+	'deletequeue-case-reason' => 'Reason:',
+	'deletequeue-case-expiry' => 'Expiry:',
+	'deletequeue-case-votes' => 'Endorsements/objections:',
+	'deletequeue-case-needs-review' => 'This case requires [[$1|review]].',
 );
 
 /** Message documentation (Message documentation)
@@ -217,7 +229,7 @@ $messages['qqq'] = array(
 	'deletequeue-list-search' => '{{Identical|Search}}',
 	'deletequeue-list-header-page' => '{{Identical|Page}}',
 	'deletequeue-list-header-queue' => '{{Identical|Queue}}',
-	'deletequeue-list-header-expiry' => '{{Identical|Expiry}}',
+	'deletequeue-list-header-expiry' => '{{Identical|Expiry}}',	
 );
 
 /** Afrikaans (Afrikaans)
