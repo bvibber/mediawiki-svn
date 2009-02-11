@@ -68,7 +68,7 @@ Please report this to the site administrator.',
 	'mv_removed_file_stream' => 'Removed stream file: $1',
 	'mv_missing_stream_text' => 'The stream you requested <b>$1</b> is not available.<br />
 You may want to check the <a href="$2">Stream list</a><br />
-Or you many want to <a href="$3">Add the stream</a>.',
+Or you may want to <a href="$3">Add the stream</a>.',
 	'mv_user_cant_edit' => 'You may have to $1 to edit, $2', // $1 is login link and $2 is cancel link
 
 	'mv_add_stream_file' => 'Add stream file',
