@@ -21,11 +21,11 @@ seqRemoteSearchDriver.prototype = {
 		//setup the default bindings
 		this.parent_addResultBindings();
 		//add an additional drag binding
-		$j('.rsd_res_item').draggable({
+		/*$j('.rsd_res_item').draggable({
 			
-		}); 
+		});*/ 
 	},
-	resourceEdit:function(rObj, this){
+	resourceEdit:function(rObj, rsdElement){
 	
 	}
 }
