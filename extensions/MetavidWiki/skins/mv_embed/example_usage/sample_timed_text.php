@@ -14,8 +14,6 @@ function do_sample_page(){
 <h3> Mv_Embed Timed Text Examples:</h3>
 Click on the little lower right "CC" icon to expose the timed text
 <?php
-run_examples();
-function run_examples(){
 $examples = Array();
 //set up tags for easy display:
 $roe_url = 'http://metavid.org/w/index.php?title=Special:MvExportStream&stream_name=House_proceeding_07-18-06_00&t=1:23:16/1:23:44&feed_format=roe';
@@ -50,9 +48,10 @@ $examples[] = array(  'tag'  => $srt_tag,
  		</td>
  	</tr>
 <?php }
-} ?>
+?>
  </table>
 </body>
 </html>
 <?
-} ?>
+}
+?>

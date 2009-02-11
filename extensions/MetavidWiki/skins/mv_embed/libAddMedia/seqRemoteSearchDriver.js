@@ -10,7 +10,22 @@ seqRemoteSearchDriver.prototype = {
 		//inherit the remoteSearchDriver properties: 
 		var tmpRSD = new remoteSearchDriver( initObj );
 		for(var i in tmpRSD){
-			this[i] = tmpRSD[i];
+			if(this[i]){
+				this['parent_'+i] = tmpRSD[i];
+			}else{
+				this[i] = tmpRSD[i];
+			}
 		}
+	},	
+	addResultBindings:function(){
+		//setup the default bindings
+		this.parent_addResultBindings();
+		//add an additional drag binding
+		$j('.rsd_res_item').draggable({
+			
+		}); 
+	},
+	resourceEdit:function(rObj, this){
+	
 	}
 }

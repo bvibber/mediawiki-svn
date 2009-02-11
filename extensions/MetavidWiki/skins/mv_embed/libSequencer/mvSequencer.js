@@ -136,7 +136,7 @@ mvSequencer.prototype = {
 											'instance_name': this_seq.instance_name + '.mySearch'						
 										 });
 										 this_seq.mySearch.doInitDisplay();
-									});
+				});
 			}
 		},
 		'transition':{

@@ -175,7 +175,7 @@ var ctrlBuilder = {
 		'mv_embedded_options':{
 			'w':0,
 			'o':function(){
-				return '<div id="mv_embedded_options_'+ctrlBuilder.id+'" class="videoOptions">'
+				var o= '<div id="mv_embedded_options_'+ctrlBuilder.id+'" class="videoOptions">'
 +'				<div class="videoOptionsTop"></div>'
 +'				<div class="videoOptionsBox">'
 +'					<div class="block">'
@@ -184,11 +184,18 @@ var ctrlBuilder = {
 +'					<div class="block">'
 +'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).selectPlaybackMethod();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();"><span><strong>Stream Selection</strong></span></a></p>'
 +'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showVideoDownload();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();" ><span><strong>Download</strong></span></a></p>'
-+'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showEmbedCode();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();" ><span><strong>Share or Embed</strong></span></a></p>'
-+'					</div>'
-+'				</div><!--videoOptionsInner-->'
-+'				<div class="videoOptionsBot"></div>'
++'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showEmbedCode();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();" ><span><strong>Share or Embed</strong></span></a></p>';
+					
+					//link to the stream page if we are not already there: 
+					if( ctrlBuilder.embedObj.roe )
+						o+='<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).doLinkBack()"><span><strong>Source Page</strong></span></a></p>';
+											
+					o+=''
++'					</div>'  
++'				</div><!--videoOptionsInner-->'  
++'				<div class="videoOptionsBot"></div>'  
 +'			</div><!--videoOptions-->';
+				return o;
 			}
 		},
 		'pause':{
@@ -1483,6 +1490,23 @@ embedVideo.prototype = {
 		return '<div id="big_play_link_'+id+'" class="large_play_button" '+
 			'style="left:'+((this.playerPixelWidth()-130)/2)+'px;'+
 			'top:'+((this.playerPixelHeight()-96)/2)+'px;"></div>';
+	},
+	doLinkBack:function(){
+		if(this.roe && this.media_element.addedROEData==false){
+			var _this = this;
+			this.displayHTML(gM('loading_txt'));
+			do_request(this.roe, function(data)
+	           {
+	              _this.media_element.addROE(data);                             
+	              _this.doLinkBack();
+	           });	           
+		}else{
+			if(this.media_element.linkback){			
+				window.location = this.media_element.linkback;
+			}else{
+				this.displayHTML(gM('could_not_find_linkback'));
+			}
+		}       
 	},
 	//display the code to remotely embed this video:
 	showEmbedCode : function(embed_code){
