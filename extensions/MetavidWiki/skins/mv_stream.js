@@ -63,7 +63,7 @@ function mv_load_interface_libs(){
 			'$j.autocomplete'	: 'jquery/plugins/jquery.autocomplete.js',
 			'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
 			'$j.ui.resizable'	: 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
-			'mvClipEdit'		: 'libClipEdit/mv_clipedit.js'
+			'mvClipEdit'		: 'libClipEdit/mvClipEdit.js'
 	  	},function(){
 	  		//now extend draggable
 	  		mvJsLoader.doLoad({
