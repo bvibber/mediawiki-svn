@@ -1555,6 +1555,7 @@ var flashEmbed = {
 	old_pid:0,
 	didSeekJump:false,
 	startedTimedPlayback:false,		
+	didDateStartTimeRestore:false,
     supports: {
     	'play_head':true, 
 	    'pause':true,
@@ -1624,9 +1625,10 @@ var flashEmbed = {
     	this.fla.onResume( function(){
     		_this.parent_play();	//update the interface    
     	});
-    	//hide by default (untill its ready) 
+
+		//hide by default (utill its ready) 
     	if( ! this.didSeekJump )	
-    		this.fla.setVolume(0);
+    		this.fla.setVolume(0);    	
     	
     	//start monitor: 
     	this.monitor();  
@@ -1641,8 +1643,7 @@ var flashEmbed = {
             this.fla.play();			
             
             //on a resume make sure volume and opacity are correct 
-            this.fla.setVolume(90);
-        	$f().getPlugin('screen').css({'opacity':'1.0'}); 
+            this.restorePlayer(); 
         				
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()', 250);
     	}
@@ -1688,6 +1689,22 @@ var flashEmbed = {
     monitor : function()
     {        	
     	var _this = this;
+    	//date time
+    	if( !this.dateStartTime ){
+    		var d = new Date();
+    		this.dateStartTime = d.getTime();
+    		
+    	}else{
+    		var d = new Date(); 	
+    		if(!this.didDateStartTimeRestore )
+    			this.fla.setVolume(0);
+    		if( (d.getTime() - this.dateStartTime) > 4000  && !this.didDateStartTimeRestore){
+    			js_log('more than 4 seconds have passed since first monitor call issue restore');    			
+    			this.restorePlayer(); 
+    		}
+    	}  
+    	
+    	
     	//do monitor update: 
 	    if( ! this.monitorTimerId ){
 	    	if( $j('#'+this.id).length != 0 )	    
@@ -1710,8 +1727,7 @@ var flashEmbed = {
         	 	"time" : this.fla.getTime()
         	 };        	     
         	//we are not getting buffered data restore volume and opacity
-        	this.fla.setVolume(90);
-        	$f().getPlugin('screen').css({'opacity':'1.0'});    	        	     	
+        	this.restorePlayer();  	        	     	
         }else{
 	        //simplification of buffer state ... should move to support returning time rages like:
 	        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	
@@ -1735,8 +1751,7 @@ var flashEmbed = {
         	try
 			{
 				js_log("time is "+ this.currentTime + " started playback set opacity");				    				
-	        	this.fla.setVolume(90) 
-	        	$f().getPlugin('screen').css({'opacity':'1.0'} );  
+	        	
 			}
 			catch(err)
 			{
@@ -1755,10 +1770,9 @@ var flashEmbed = {
 			this.seek_time_sec = 0;
 		}        
 		
-        if(!this.userSlide){			   		       		
+        if( !this.userSlide ){			   		       		
 	        if((this.currentTime - ntp2seconds(this.start_ntp)) < 0){
-	        	this.setStatus('buffering...');
-	        	this.fla.setVolume(0);
+	        	this.setStatus('buffering...');	        	
 	        }else{        			   		       		
 		       	this.setStatus( seconds2ntp(this.currentTime) + '/' + this.end_ntp);      		
 		        this.setSliderValue((this.currentTime - ntp2seconds(this.start_ntp)) / (ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)) );
@@ -1777,6 +1791,16 @@ var flashEmbed = {
         }	    
 	    this.prevTime = this.currentTime;    
 	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(this.start_ntp)) +' / ' +(ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)));
+    },
+    restorePlayer:function(){
+    	if(!this.fla)
+    		this.getFLA();
+    		
+    	this.fla.setVolume(90); 
+	    $f().getPlugin('screen').css({'opacity':'1.0'} );  
+	    
+	    //set the fallback date restore flag to true:
+	    this.didDateStartTimeRestore=true;
     },
     // get the embed fla object 
     getFLA : function (){
