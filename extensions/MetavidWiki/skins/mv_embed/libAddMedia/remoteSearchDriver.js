@@ -102,7 +102,7 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,
+			'd'		:1,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -124,7 +124,7 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,			
+			'd'		:0,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
@@ -370,16 +370,19 @@ remoteSearchDriver.prototype = {
 	drawTabs: function(){
 		var _this = this;
 		//add the tabs to the rsd_results container: 
-		var o='<div class="rsd_tabs_container" style="position:absolute;top:49px;width:100%;left:12px;height:25px;">';
-		o+= '<ul class="rsd_cp_tabs" style="margin: 0 0 0 0;position:absolute;top:0px;padding:0;">'; //no idea why margin does not overwrite from the css
-			o+='<li id="rsd_tab_combined" ><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/images/remote_cp/combined_tab.png"></li>';		 			 	
+		var o='<div class="rsd_tabs_container" style="position:absolute;top:41px;width:100%;left:12px;height:25px;">';
+		//o+= '<ul class="rsd_cp_tabs" style="margin: 0 0 0 0;position:absolute;top:0px;padding:0;">'; //no idea why margin does not overwrite from the css		
+			//output combined tab:			
+			o+='<div id="rsd_tab_combined" class="rsd_cp_tab"><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/images/remote_cp/combined_tab.png"></div>';		 			 	
 			for(var cp_id in  this.content_providers){
 				var cp = this.content_providers[cp_id];
 				if( cp.enabled && cp.checked){
-					var class_attr = (cp.d)?'class="rsd_selected"':'';
-					o+='<li id="rsd_tab_'+cp_id+'" ' + class_attr + '>';
+					var class_attr = 'class="rsd_cp_tab';
+					//add selected if so:
+					class_attr+= (cp.d)?' rsd_selected"':'"';
+					o+='<div id="rsd_tab_'+cp_id+'" ' + class_attr + '>';
 					if(cp.tab_img === true){
-						o+='<img alt="' + cp.title +'" src="' + mv_embed_path + 'skins/' + mv_skin_name + '/images/remote_cp/' + cp_id + '_tab.png"></li>';
+						o+='<img alt="' + cp.title +'" src="' + mv_embed_path + 'skins/' + mv_skin_name + '/images/remote_cp/' + cp_id + '_tab.png"></div>';
 					}else if(typeof cp.tab_img=='string'){
 						o+='<img alt="' + cp.title +'" src="' + cp.tab_img + '"></li>';
 					}else if(cp.tab_img === false){
@@ -390,16 +393,16 @@ remoteSearchDriver.prototype = {
 		//do an upload tab if enabled: 
 		if( this.enable_uploads ){
 			var class_attr = ( this.disp_item =='upload' ) ? 'class="rsd_selected"':'';	
-			o+='<li id="rsd_tab_upload" ' + class_attr + ' >'+gM('upload');+'</li>';
+			o+='<div id="rsd_tab_upload" ' + class_attr + ' >'+gM('upload');+'</li>';
 		}
-		o+='</ul>';		
+		//o+='</ul>';		
 		o+='</div>';
 		//outout the resource results holder	
 		o+='<div id="rsd_results" />';				
 		$j('#rsd_results_container').html(o);
 		
 		//setup bindings for tabs: 
-		$j('.rsd_cp_tabs li').click(function(){
+		$j('.rsd_cp_tab').click(function(){
 			_this.selectTab( $j(this).attr('id').replace(/rsd_tab_/, '') );
 		});
 	},
@@ -450,9 +453,10 @@ remoteSearchDriver.prototype = {
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_box_result" style="' + disp + 'width:' +
 								_this.thumb_width + 'px;height:'+ (_this.thumb_width-20) +'px;position:relative;">';
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
-							//add a linkback to resource page in lower left:
+							//add a linkback to resource page in upper right:
 							if(rItem.link) 
-							o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + gM('Resource Description Page') + '" href="' + rItem.link + '"><img src="' + stylepath + '/common/images/magnify-clip.png"></a>';
+								o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + gM('Resource Description Page') + 
+									'" href="' + rItem.link + '"><img src="' + stylepath + '/common/images/magnify-clip.png"></a>';
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					

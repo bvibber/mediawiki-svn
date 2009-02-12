@@ -59,7 +59,7 @@ mvClipEdit.prototype = {
 			}
 		}
 
-		//if media type was not supplied detect for resoure if possible:
+		//if media type was not supplied detect for resource if possible:
 		//@@todo more advanced detection. 
 		if(!this.media_type){
 			if( this.rObj.type.indexOf("image/") === 0){
@@ -90,9 +90,36 @@ mvClipEdit.prototype = {
 	//master edit types object:
 	//maybe we should refactor these into their own classes  
 	//more refactor each media type should be its own class inheriting the shared baseEditType object
-	edit_types:{
-		'fileopts':{
+	edit_types:{		
+		'duration':{
+			d:1,
+			'media':['image','template'],
+			'doEdit':function( _this ){
+				//do clock mouse scroll duration editor
+				$j('#sub_cliplib_ic').html('cur dur: ' + _this.rObj.dur );
+			}			
+		},
+		'inoutpoints':{
 			'd':1,
+			'media':['video'],
+			'doEdit':function( _this ){
+				var cat = _this.rObj
+				//debugger;
+				//do clock mouse scroll duration editor
+				var end_ntp = ( _this.rObj.embed.end_ntp) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
+				if(!end_ntp)
+					end_ntp = seconds2ntp( _this.rObj.dur );
+				$j('#sub_cliplib_ic').html(
+					_this.getSetInOut({
+						'start_ntp'	: _this.rObj.embed.start_ntp, 
+						'end_ntp'	: 	end_ntp
+					})		
+				);
+				_this.setInOutBindings();
+			}		
+		},
+		'fileopts':{
+			'd':0,
 			'media':['image','video','template'],
 			'doEdit':function( _this ){		
 				var doEditHtml = function(){
@@ -204,33 +231,6 @@ mvClipEdit.prototype = {
 				}
 				
 				
-			}		
-		},
-		'duration':{
-			d:0,
-			'media':['image','template'],
-			'doEdit':function( _this ){
-				//do clock mouse scroll duration editor
-				$j('#sub_cliplib_ic').html('cur dur: ' + _this.rObj.dur );
-			}			
-		},
-		'inoutpoints':{
-			'd':0,
-			'media':['video'],
-			'doEdit':function( _this ){
-				var cat = _this.rObj
-				//debugger;
-				//do clock mouse scroll duration editor
-				var end_ntp = ( _this.rObj.embed.end_ntp) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
-				if(!end_ntp)
-					end_ntp = seconds2ntp( _this.rObj.dur );
-				$j('#sub_cliplib_ic').html(
-					_this.getSetInOut({
-						'start_ntp'	: _this.rObj.embed.start_ntp, 
-						'end_ntp'	: 	end_ntp
-					})		
-				);
-				_this.setInOutBindings();
 			}		
 		},
 		'panzoom':{

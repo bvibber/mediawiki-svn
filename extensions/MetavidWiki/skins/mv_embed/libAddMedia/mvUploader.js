@@ -117,7 +117,7 @@ mvUploader.prototype = {
 		//hard code style (since not always easy to import style sheets)
 		$j('body').append('<div id="dlbox-centered" class="dlbox-centered" style="display:none;'+
 				'position:fixed;background:#DDD;border:3px solid #AAA;font-size:115%;width:40%;'+
-				'height:300px;padding: 10px;z-index:100;bottom:40%;left:20%;" >'+		
+				'height:300px;padding: 10px;z-index:100;top:100px;bottom:40%;left:20%;" >'+		
 					'<h5>' + gM('upload-in-progress') + '</h5>' +
 					'<div id="fogg-pbar-container" style="border:solid thin gray;width:90%;height:15px;" >' +
 						'<div id="fogg-progressbar" style="background:#AAC;width:0%;height:15px;"></div>' +			

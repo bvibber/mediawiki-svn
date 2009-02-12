@@ -924,7 +924,7 @@ mvSequencer.prototype = {
 										'time':0
 									});			
 						//render out edit button
-						track_html+='<div class="clip_edit_button clip_edit_base"/>';
+						track_html+='<div class="clip_edit_button clip_edit_base clip_control"/>';
 													
 						//render out transition edit box 
 						track_html+='<div id="tb_' + base_id + '"  style="" class="clip_trans_box"/>';
@@ -1076,43 +1076,7 @@ mvSequencer.prototype = {
 						handle: ":not(.clip_control)",
 						scroll:true,
 						drag:function(e, ui){
-							//animate re-arrange by left position: 
-							//js_log('left: '+ui.position.left);
-							//locate clip (based on clip duration not animate) 	
-							var id_parts = this.id.split('_');						
-							var track_inx = id_parts[1];
-							var clip_inx = id_parts[3];
-							var clips = this_seq.plObj.tracks[track_inx].clips;
-							var cur_drag_clip = clips[clip_inx];		
-							var return_org = true;
-							$j(this).css('zindex',10);
-							//find out where we are inserting and set left border to solid red thick
-							for(var k in clips){
-								if(	ui.position.left > clips[k].left_px &&
-									ui.position.left < (clips[k].left_px + clips[k].width_px)){
-									if(clip_inx!=k){
-										//also make sure we are not where we started
-										if(k-1!=clip_inx){
-											$j('#track_'+track_inx+'_clip_'+k).css('border-left', 'solid thick red');									
-											insert_key=k;
-										}else{
-											insert_key='na';
-										}
-									}else{
-										insert_key='na';
-									}
-								}else{
-									$j('#track_'+track_inx+'_clip_'+k).css('border-left', 'solid thin white');
-								}
-							}	
-							//if greater than the last k insert after	
-							if(ui.position.left > (clips[k].left_px + clips[k].width_px) &&
-								k!=clip_inx ){
-									$j('#track_'+track_inx+'_clip_'+k).css('border-right', 'solid thick red');
-									insert_key='end';
-							}else{
-								$j('#track_'+track_inx+'_clip_'+k).css('border-right', 'solid thin white');
-							}
+							insert_key = this_seq.clipDragUpdate(ui, this);							
 						},
 						start:function(e,ui){
 							js_log('start drag:' + this.id);
@@ -1186,6 +1150,49 @@ mvSequencer.prototype = {
 			}
 			//debugger;
 		}
+	},
+	clipDragUpdate:function( ui, clipElm){
+		var this_seq = this; 
+		
+		var insert_key='na';
+		//animate re-arrange by left position: 
+		//js_log('left: '+ui.position.left);
+		//locate clip (based on clip duration not animate) 	
+		var id_parts = clipElm.id.split('_');						
+		var track_inx = id_parts[1];
+		var clip_inx = id_parts[3];
+		var clips = this_seq.plObj.tracks[track_inx].clips;
+		var cur_drag_clip = clips[clip_inx];		
+		var return_org = true;
+		$j(clipElm).css('zindex',10);
+		//find out where we are inserting and set left border to solid red thick
+		for(var k in clips){
+			if(	ui.position.left > clips[k].left_px &&
+				ui.position.left < (clips[k].left_px + clips[k].width_px)){
+				if(clip_inx!=k){
+					//also make sure we are not where we started
+					if(k-1!=clip_inx){
+						$j('#track_'+track_inx+'_clip_'+k).css('border-left', 'solid thick red');									
+						insert_key=k;
+					}else{
+						insert_key='na';
+					}
+				}else{
+					insert_key='na';
+				}
+			}else{
+				$j('#track_'+track_inx+'_clip_'+k).css('border-left', 'solid thin white');
+			}
+		}	
+		//if greater than the last k insert after	
+		if(ui.position.left > (clips[k].left_px + clips[k].width_px) &&
+			k!=clip_inx ){
+				$j('#track_'+track_inx+'_clip_'+k).css('border-right', 'solid thick red');
+				insert_key='end';
+		}else{
+			$j('#track_'+track_inx+'_clip_'+k).css('border-right', 'solid thin white');
+		}
+		return insert_key;
 	},
 	deselectClip:function( clipElm ){
 		$j(clipElm).removeClass("mv_selected_clip");
