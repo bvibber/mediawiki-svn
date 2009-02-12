@@ -107,13 +107,14 @@ class SGMResultPrinter extends SMWResultPrinter {
 		} else {
 			$control_class = 'GLargeMapControl';
 		}
-                global $wgJsMimeType, $wgGoogleMapsKey, $wgGoogleMapsOnThisPage;
+		global $wgJsMimeType, $wgGoogleMapsKey, $wgGoogleMapsOnThisPage;
+		global $wgLang;
 
-                if (!$wgGoogleMapsOnThisPage) {$wgGoogleMapsOnThisPage = 0;}
-                $wgGoogleMapsOnThisPage++;
+		if (!$wgGoogleMapsOnThisPage) {$wgGoogleMapsOnThisPage = 0;}
+		$wgGoogleMapsOnThisPage++;
 
-                $map_text = <<<END
-<script src="http://maps.google.com/maps?file=api&v=2&key=$wgGoogleMapsKey" type="$wgJsMimeType"></script>
+		$map_text = <<<END
+<script src="http://maps.google.com/maps?file=api&v=2&key=$wgGoogleMapsKey&hl={$wgLang->getCode()}" type="$wgJsMimeType"></script>
 <script type="text/javascript">
 function createMarker(point, title, label, icon) {
 	if (icon!='') {
