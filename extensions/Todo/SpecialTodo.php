@@ -137,7 +137,7 @@ class TodoForm {
 			return $item->setTitle( $request->getText( 'wpTitle' ) );
 			break;
 		default:
-			return new WikiError( "Unrecognized type" );
+			return new WikiError( wfMsgHtml( 'todo-unrecognize-type' ) );
 		}
 	}
 
