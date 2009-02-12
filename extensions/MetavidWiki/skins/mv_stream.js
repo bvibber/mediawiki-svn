@@ -162,6 +162,15 @@ var mv_stream_interface = {
 
 		//unlock the interface updates once everything is setup:
 		mv_lock_vid_updates=false;
+		
+		//check for #autoplay ancor
+		var hash = window.location.hash.toString();
+		js_log(" hash is: " + hash);
+		if( hash =='#autoplay'){
+			window.location.hash = '';	
+			$j('#embed_vid').get(0).play();					
+		}
+		
 		js_log('done with mv_init_inerface');
 		//$j('#embed_vid').get(0).stop();		
 	},
@@ -191,10 +200,10 @@ var mv_stream_interface = {
 					scroll_to_pos(mvd_id);
 					 	//also add onclick to mv_timeline_mvd_jumper
 					$j(this).click(function(){
-						mv_do_play(mvd_id);
+						mv_do_play( mvd_id );
 					});
 				}
-				this_stream.mvdOver(mvd_id);
+				this_stream.mvdOver( mvd_id );
 			},
 			out:function(){
 				//get the mvd_id (the last part of the this.id)
@@ -864,11 +873,11 @@ function mv_pause(){
 	 	mv_do_play();	 	
 	 }
 }
-function mv_do_play(mvd_id){
-	js_log('mv_do_play:'+mvd_id);
+function mv_do_play( mvd_id ){
+	js_log('mv_do_play:' + mvd_id);
 	//stop the current
 	$j('#embed_vid').get(0).stop();
-	//stop any defered updates:
+	//stop any deferred updates:
 	
 	//force a given mvd if set
 	if(mvd_id){		
@@ -879,20 +888,26 @@ function mv_do_play(mvd_id){
 	$j('#embed_vid').get(0).
 	//disable interface actions (mouse in out etc)
 	mv_lock_vid_updates=true;
-	//update the src if neasesary and no mvd provided:
+	//update the src if nesesary and no mvd provided:
 	if(!mvd_id){
 		if(mv_stream_interface.cur_mvd_id!=mv_stream_interface.delay_cur_mvd_id){
 			mv_stream_interface.cur_mvd_id =mv_stream_interface.delay_cur_mvd_id;
 			do_video_mvd_update( mv_stream_interface.cur_mvd_id );
 		}
 	}
-	//update the embed video actual play time
-	//time_chunk = $j('#embed_vid').get(0).src.split('t=');
-	//$j('#mv_videoPlayerTime').html( time_chunk[1] );
-	//stop the video if playing and play:
-	$j('#embed_vid').get(0).didSeekJump=true;
-	//@@todo extend mv_embed to support src switching
-	$j('#embed_vid').get(0).play();
+	//check if we are out of range: 
+	var time_ary = $j('#mv_fd_mvd_'+mvd_id).attr('name').split('/');
+	if( ntp2seconds( time_ary[1] ) <  ntp2seconds( $j('#embed_vid').get(0).start_ntp ) ){		
+		window.location =  wgArticlePath.replace( '$1', wgPageName +'/'+ time_ary[1] + '/' + time_ary[2]) + '#autoplay';
+	}else{	
+		//update the embed video actual play time
+		//time_chunk = $j('#embed_vid').get(0).src.split('t=');
+		//$j('#mv_videoPlayerTime').html( time_chunk[1] );
+		//stop the video if playing and play:
+		$j('#embed_vid').get(0).didSeekJump=true;
+		//@@todo extend mv_embed to support src switching
+		$j('#embed_vid').get(0).play();
+	}
 
 }
 

@@ -1,7 +1,7 @@
 /*
 	hanndles clip edit controls 
 	'inoutpoints':0,	//should let you set the in and out points of clip
-	'panzoom':0, 		//should allow setting keyframes and tweening modes			
+	'panzoom':0, 		//should allow setting keyframes and tweenning modes			
 	'overlays':0, 		//should allow setting "locked to clip" overlay tracks 
 	'audio':0			//should allow controlling the audio volume (with keyframes) 
 */
@@ -191,41 +191,45 @@ mvClipEdit.prototype = {
 					//get the interface uri from the plObject
 					var api_url = _this.p_seqObj.plObj.interface_url.replace(/index\.php/, 'api.php'); 
 					//first check 					
-					do_api_req( reqObj, api_url,function(data){
-						if(typeof data.query.pages == 'undefined')
-							return doEditHtml();
-						for(var i in data.query.pages){
-							var page = data.query.pages[i];
-							var template_rev = page['revisions'][0]['*'];
-						}						
-						
-						//do a regular ex to get the ~likely~ template values 
-						//(ofcourse this sucks)
-						//but maybe this will make its way into the api sometime soon to support wysiwyg type editors
-						//idealy it would expose a good deal of info about the template params
-						js_log('matching against: ' + template_rev);
-						var tempVars = template_rev.match(/\{\{\{([^\}]*)\}\}\}/gi);
-						//clean up results:
-						_this.rObj.tVars = new Array();
-						for(var i=0; i < tempVars.length; i++){
-							var tvar = tempVars[i].replace('{{{','').replace('}}}','');
-							//strip anything after a | 
-							if(tvar.indexOf('|') != -1){
-								tvar = tvar.substr(0, tvar.indexOf('|'));
-							}														
-							//check for duplicates: 
-							var do_add=true;
-							for(var j=0; j < _this.rObj.tVars.length; j++){
-								js_log('checking: ' + _this.rObj.tVars[j] + ' against:' + tvar);
-								if( _this.rObj.tVars[j] == tvar)
-									do_add=false;
-							}
-							//add the template vars to the output obj
-							if(do_add)
-								_this.rObj.tVars.push( tvar );
-						}					
-						doEditHtml();
-					});
+					do_api_req( {
+						'data':reqObj,
+						'url':api_url
+						}, function(data){
+							if(typeof data.query.pages == 'undefined')
+								return doEditHtml();
+							for(var i in data.query.pages){
+								var page = data.query.pages[i];
+								var template_rev = page['revisions'][0]['*'];
+							}						
+							
+							//do a regular ex to get the ~likely~ template values 
+							//(ofcourse this sucks)
+							//but maybe this will make its way into the api sometime soon to support wysiwyg type editors
+							//idealy it would expose a good deal of info about the template params
+							js_log('matching against: ' + template_rev);
+							var tempVars = template_rev.match(/\{\{\{([^\}]*)\}\}\}/gi);
+							//clean up results:
+							_this.rObj.tVars = new Array();
+							for(var i=0; i < tempVars.length; i++){
+								var tvar = tempVars[i].replace('{{{','').replace('}}}','');
+								//strip anything after a | 
+								if(tvar.indexOf('|') != -1){
+									tvar = tvar.substr(0, tvar.indexOf('|'));
+								}														
+								//check for duplicates: 
+								var do_add=true;
+								for(var j=0; j < _this.rObj.tVars.length; j++){
+									js_log('checking: ' + _this.rObj.tVars[j] + ' against:' + tvar);
+									if( _this.rObj.tVars[j] == tvar)
+										do_add=false;
+								}
+								//add the template vars to the output obj
+								if(do_add)
+									_this.rObj.tVars.push( tvar );
+							}					
+							doEditHtml();
+						}
+					);
 				}else{
 					doEditHtml();
 				}

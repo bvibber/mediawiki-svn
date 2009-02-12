@@ -455,20 +455,28 @@ mvSequencer.prototype = {
 		if(typeof this.sequenceEditToken == 'undefined'){			
 			var reqObj = {'action':'query','prop':'info','intoken':'edit','titles': this_seq.plObj.mTitle};
 			var api_url = this.plObj.interface_url.replace(/index\.php/, 'api.php'); 
-			do_api_req( reqObj, api_url,function(data){
-				for(var i in data.query.pages){ 
-					if(data.query.pages[i]['edittoken'])
-						this_seq.sequenceEditToken = data.query.pages[i]['edittoken'];
+			do_api_req( {
+				'data':reqObj,
+				'url':api_url
+				},function(data){
+					for(var i in data.query.pages){ 
+						if(data.query.pages[i]['edittoken'])
+							this_seq.sequenceEditToken = data.query.pages[i]['edittoken'];
+					}
+					this_seq.updateSeqSaveButtons();
 				}
-				this_seq.updateSeqSaveButtons();
-			});
+			);
 			reqObj['titles']=this_seq.plObj.mTalk;
-			do_api_req(reqObj, api_url, function( data ){
-				for(var j in data.query.pages){
-					if(data.query.pages[j]['edittoken'])
-						this_seq.clipboardEditToken = data.query.pages[j]['edittoken'];
+			do_api_req( {
+				'data':reqObj,
+				'url':api_url
+				}, function( data ){
+					for(var j in data.query.pages){
+						if(data.query.pages[j]['edittoken'])
+							this_seq.clipboardEditToken = data.query.pages[j]['edittoken'];
+					}
 				}
-			});
+			);
 			//also grab permissions for sending clipboard commands to the server
 			
 			//(calling the sequencer inline) try and get edit token via api call:			

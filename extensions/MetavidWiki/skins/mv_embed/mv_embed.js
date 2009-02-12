@@ -1022,43 +1022,46 @@ function mv_addLoadEvent(func) {
 }
 
 //does a remote or local api request based on request url 
-function do_api_req(req_param, api_url, callback){
-	if(typeof req_param != 'object'){
+//@param : url, data, cbParam, callback
+function do_api_req( options, callback ){
+	if(typeof options.data != 'object'){
 		js_log('Error: request paramaters must be an object');
 		return false;
 	}
-	if( !api_url){
+	if( typeof options.url == 'undefined' ){
 		if(!wgServer || ! wgScriptPath){
 			js_log('Error: no api url');
 			return false;
-		}
-		
-		api_url =  wgServer +((wgServer == null) ? parseUri(document.URL).host + (wgScriptPath + "/api.php") : parseUri(document.URL).host + wgScript);
+		}		
+		options.url =  wgServer +((wgServer == null) ? parseUri(document.URL).host + (wgScriptPath + "/api.php") : parseUri(document.URL).host + wgScript);
 		//update to api.php (if index.php was in the wgScript path): 
-		api_url = api_url.replace('index.php', 'api.php');		
-	}					
-	//build request string: (force the format to json):	
-	var req_url = api_url + '?format=json';		
-	if( parseUri(document.URL).host == parseUri(api_url).host ){
+	 	options.url =  options.url.replace('index.php', 'api.php');		
+	}			
+	if(typeof options.data == 'undefined')
+		options.data = {};		
+	//build request string: (force the format to json):				
+	if( parseUri(document.URL).host == parseUri( options['api_url'] ).host ){
 		//local request do api request directly		
 		$j.ajax({
 			type: "POST",
-			url:req_url,
-			data: req_param,
+			url: options.url,
+			data: options.data,
             async: false,
-			success:function(data){
-				eval('var result_data=' + data );		
-				callback(  result_data );
+			success:function(data){					
+				callback(  data );
 			}
 		});
 	}else{	
+		if( typeof options.cbParam == 'undefiend')
+			options.cbParam = 'callback';
+		
 		//put all the values into the GET req: 	
 		for(var i in req_param){
 			req_url += '&' + encodeURIComponent( i ) + '=' + encodeURIComponent( req_param[i] );		
 		}
 		var fname = 'mycpfn_' + ( global_cb_count++ );
-		_global[ fname ]  =  callback ;				
-		req_url += '&callback=' + fname;								
+		_global[ fname ]  =  callback;				
+		req_url += '&' + options.cbParam + '=' + fname;								
 		loadExternalJs( req_url );				
 	}	
 }
@@ -1078,7 +1081,7 @@ function do_request(req_url, callback){
 					callback( data );
 				}
 			});
-		}else{			
+		}else{						
 			//get data via DOM injection with callback
 			global_req_cb.push(callback);
 			//prepend json_ to feed_format if not already requesting json format

@@ -187,7 +187,7 @@ var ctrlBuilder = {
 +'						<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).showEmbedCode();" onClick="$j(\'#mv_embedded_options_'+ctrlBuilder.id+'\').hide();" ><span><strong>Share or Embed</strong></span></a></p>';
 					
 					//link to the stream page if we are not already there: 
-					if( ctrlBuilder.embedObj.roe )
+					if( ctrlBuilder.embedObj.roe && typeof mv_stream_interface == 'undefined' )
 						o+='<p class="short_match"><a href="javascript:$j(\'#'+ctrlBuilder.id+'\').get(0).doLinkBack()"><span><strong>Source Page</strong></span></a></p>';
 											
 					o+=''

@@ -43,7 +43,7 @@ if(wgPageName== "Special:Upload"){
 		load_mv_embed( function(){			
 			//load jQuery and what not (we need to refactor the loading system for mv_embed)
 			mvEmbed.load_libs(function(){
-				mvJsLoader.doLoad({'mvUploader' : 'libAddMedia/mv_upload.js'},function(){					
+				mvJsLoader.doLoad({'mvUploader' : 'libAddMedia/mvUploader.js'},function(){					
 					mvUp = new mvUploader();		
 				});
 			});
