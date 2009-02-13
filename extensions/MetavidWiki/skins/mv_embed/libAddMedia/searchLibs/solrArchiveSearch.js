@@ -1,6 +1,9 @@
 //archive.org uses solr engine: 
 //more about solr here: 
 //http://lucene.apache.org/solr/
+
+//if we ever have another remote repository using solr we could abstract thouse pieces into a seperate lib
+
 var solrArchiveSearch = function ( initObj){
 	return this.init( initObj );
 }
@@ -25,13 +28,14 @@ solrArchiveSearch.prototype = {
 		var reqObj = {
 			'q':$j('#rsd_q').val() + ' format:(Ogg video)', //just search for video atm
 			'fl':"description,identifier,licenseurl,format,license,thumbnail",			
-			'wt':'json',
+			'wt':'json',			
 			'rows':'30',
 			'indent':'yes'			
 		}									
 		do_api_req( {
 			'data':reqObj, 
-			'url':this.cp.api_url
+			'url':this.cp.api_url,
+			'jsonCB':'json.wrf'
 			}, function(data){
 				js_log('got data: ' + data);
 			}

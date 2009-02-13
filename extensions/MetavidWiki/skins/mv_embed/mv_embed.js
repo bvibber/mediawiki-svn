@@ -924,7 +924,10 @@ function swapEmbedVideoElement(video_element, videoInterface){
 	embed_video = document.createElement('div');
 	//make sure our div has a hight/width set:
 		
-	$j(embed_video).css({'width':videoInterface.width,'height':videoInterface.height});
+	$j(embed_video).css({
+		'width':videoInterface.width,
+		'height':videoInterface.height
+	});
 	//inherit the video interface
 	for(var method in videoInterface){ //for in loop oky in Element context	
 		if(method!='readyState'){ //readyState crashes IE
@@ -1052,16 +1055,18 @@ function do_api_req( options, callback ){
 			}
 		});
 	}else{	
-		if( typeof options.cbParam == 'undefiend')
-			options.cbParam = 'callback';
-		
+		if( typeof options.jsonCB == 'undefiend')
+			options.jsonCB = 'callback';
+		var req_url = options.url;		
+		var paramAnd = (req_url.indexOf('?')==-1)?'?':'&';		
 		//put all the values into the GET req: 	
-		for(var i in req_param){
-			req_url += '&' + encodeURIComponent( i ) + '=' + encodeURIComponent( req_param[i] );		
+		for(var i in options.data){
+			req_url += paramAnd + encodeURIComponent( i ) + '=' + encodeURIComponent( options.data[i] );		
+			paramAnd ='&';
 		}
 		var fname = 'mycpfn_' + ( global_cb_count++ );
 		_global[ fname ]  =  callback;				
-		req_url += '&' + options.cbParam + '=' + fname;								
+		req_url += '&' + options.jsonCB + '=' + fname;								
 		loadExternalJs( req_url );				
 	}	
 }

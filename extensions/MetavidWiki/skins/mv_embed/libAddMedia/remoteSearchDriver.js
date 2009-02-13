@@ -420,7 +420,8 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		reqObj={
 			'action':'query', 
-			'titles': _this.cFileNS + ':' + rTitle
+			'titles': _this.cFileNS + ':' + rTitle,
+			'format':'json'
 		};								
 		do_api_req( {
 			'data':reqObj,
@@ -914,11 +915,10 @@ remoteSearchDriver.prototype = {
 							   _this.caret_pos.text.substring( _this.caret_pos.s );
 	},
 	getParsedWikiText:function( wikitext, title,  callback ){
-		do_api_req(
-			'data':{
-					'action':'parse', 
+		do_api_req( {
+			'data':{'action':'parse', 
 					'text':wikitext
-				},
+				   },
 			'url':this.local_wiki_api_url
 			},function(data){				
 				callback( data.parse.text['*'] );

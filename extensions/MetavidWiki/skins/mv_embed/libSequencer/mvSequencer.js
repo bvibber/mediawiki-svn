@@ -453,7 +453,13 @@ mvSequencer.prototype = {
 		//if on an edit page just grab from the form:		
 		this.sequenceEditToken = $j('input[@wpEditToken]').val();
 		if(typeof this.sequenceEditToken == 'undefined'){			
-			var reqObj = {'action':'query','prop':'info','intoken':'edit','titles': this_seq.plObj.mTitle};
+			var reqObj = {
+				'action':'query',
+				'format':'json',
+				'prop':'info',
+				'intoken':'edit',
+				'titles': this_seq.plObj.mTitle
+			};
 			var api_url = this.plObj.interface_url.replace(/index\.php/, 'api.php'); 
 			do_api_req( {
 				'data':reqObj,

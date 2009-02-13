@@ -184,6 +184,7 @@ mvClipEdit.prototype = {
 				if(_this.media_type == 'template' && !_this.rObj.tVars){		
 					mv_set_loading('#sub_cliplib_ic');
 					var reqObj ={	'action':'query',
+									'format':'json',
 									'prop':'revisions',
 									'titles': _this.rObj.uri,
 									'rvprop':'content' 
