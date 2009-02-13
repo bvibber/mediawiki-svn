@@ -151,7 +151,7 @@ class SvnRevTablePager extends TablePager {
 			return intval( $value );
 		case 'cr_path':
 			return Xml::element('div', array( 'title' => (string)$value ),
-				$wgLang->truncate( (string)$value, 30, '...' ) );
+				$wgLang->truncate( (string)$value, 30 ) );
 		}
 	}
 	

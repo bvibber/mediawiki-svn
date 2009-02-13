@@ -211,7 +211,7 @@ class TaggedImages extends SpecialPage {
 
 			$nb = '';
 			$textlink = $this->mShowFilename ?
-			$sk->makeKnownLinkObj( $nt, htmlspecialchars( $wgLang->truncate( $nt->getText(), 20, '...' ) ) ) . "<br />\n" :
+			$sk->makeKnownLinkObj( $nt, htmlspecialchars( $wgLang->truncate( $nt->getText(), 20 ) ) ) . "<br />\n" :
 			'';
 
 			$s .= ($i%4==0) ? '<tr>' : '';

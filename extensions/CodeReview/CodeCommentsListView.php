@@ -86,7 +86,7 @@ class CodeCommentsTablePager extends TablePager {
 			return $this->mView->messageFragment( $value );
 		case 'cc_text':
 			# Truncate this, blah blah...
-			return htmlspecialchars( $wgLang->truncate( $value, 300, '...' ) );
+			return htmlspecialchars( $wgLang->truncate( $value, 300 ) );
 		case 'cc_timestamp':
 			global $wgLang;
 			return $wgLang->timeanddate( $value, true );

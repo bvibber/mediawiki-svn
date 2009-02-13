@@ -276,12 +276,12 @@ function wfTagSearchHitXML( $result, $terms ) {
 			continue;
 		}
 		$contextlines--;
-		$pre = $wgContLang->truncate( $m[1], -$contextchars, '...' );
+		$pre = $wgContLang->truncate( $m[1], -$contextchars );
 
 		if ( count( $m ) < 3 ) {
 			$post = '';
 		} else {
-			$post = $wgContLang->truncate( $m[3], $contextchars, '...' );
+			$post = $wgContLang->truncate( $m[3], $contextchars );
 		}
 
 		$found = $m[2];

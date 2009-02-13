@@ -144,7 +144,7 @@ function setupCatRSSExtension() {
 			$text = preg_replace( array_keys($rules), array_values($rules), $text); 
 			
 			# only return the first few chars for now
-			$shorttext = $wgContLang->truncate( trim( $text ), 145, '...' );
+			$shorttext = $wgContLang->truncate( trim( $text ), 145 );
 			return htmlspecialchars( $shorttext );
 		}
 		
