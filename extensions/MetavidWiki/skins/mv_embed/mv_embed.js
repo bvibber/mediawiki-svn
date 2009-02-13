@@ -22,7 +22,7 @@ if( MV_EMBED_VERSION ){
 }
 
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0r9';
+var MV_EMBED_VERSION = '1.0r10';
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -801,7 +801,7 @@ function mv_embed( force_id ){
 	
 	var loadPlaylistLib=false;
 	//set up the jQuery selector: 
-	var j_selector = 'video,playlist';
+	var j_selector = 'video,audio,playlist';
 	if( force_id !=null )
 		var j_selector = '#'+force_id;
 	
@@ -822,15 +822,20 @@ function mv_embed( force_id ){
         */ 
         
         //if video doSwap
-        if( this.tagName.toLowerCase() == 'video'){
-        	var videoInterface = new embedVideo(this);	 
-			swapEmbedVideoElement( this, videoInterface );
-        }else{
-        	js_log( this.tagName.toLowerCase()+ ' != video' );
-        }        
-        //if playlist set do load playlist
-        if( this.tagName.toLowerCase() == 'playlist' )
-        	loadPlaylistLib=true; 
+        switch( this.tagName.toLowerCase()){
+        	case 'video':
+        		var videoInterface = new embedVideo(this);	 
+				swapEmbedVideoElement( this, videoInterface );
+        	break;
+        	case 'audio':
+        		var videoInterface = new embedVideo(this);	 
+        		videoInterface.type ='audio';
+				swapEmbedVideoElement( this, videoInterface );
+        	break;
+        	case 'playlist':
+        		loadPlaylistLib=true;
+        	break;
+        }
 	});	
 	if(loadPlaylistLib){
 		js_log('f:load Playlist Lib:');
@@ -1055,7 +1060,7 @@ function do_api_req( options, callback ){
 			}
 		});
 	}else{	
-		if( typeof options.jsonCB == 'undefiend')
+		if( typeof options.jsonCB == 'undefined')
 			options.jsonCB = 'callback';
 		var req_url = options.url;		
 		var paramAnd = (req_url.indexOf('?')==-1)?'?':'&';		

@@ -129,7 +129,7 @@ remoteSearchDriver.prototype = {
 			'desc'	: 'The Internet Archive, a digital library of cultural artifacts',
 			'homepage':'http://archive.org',
 			
-			'api_url':'http://metavid.org/w/index.php?title=Special:MvExportSearch',
+			'api_url':'http://homeserver7.us.archive.org:8983/solr/select',
 			'lib'	: 'solrArchive',
 			'local'	: false,
 			'resource_prefix': 'AO_',
@@ -328,14 +328,14 @@ remoteSearchDriver.prototype = {
 				continue;			
 			
 			//set display if unset
-			if(!this.disp_item)
+			if( !this.disp_item )
 				this.disp_item = cp_id;
 				
 			//check if we need to update: 
-			if(typeof cp.sObj != 'undefined'){
+			if( typeof cp.sObj != 'undefined' ){
 				if(cp.sObj.last_query == $j('#rsd_q').val() && cp.sObj.last_offset == cp.offset)
 					continue;					
-			}					
+			}
 			//make sure the search library is loaded and do the search: 
 			this.getLibSearchResults( cp );			
 		}			
@@ -370,10 +370,10 @@ remoteSearchDriver.prototype = {
 			}
 		}
 		
-		if(loading_done){
+		if( loading_done ){
 			this.drawOutputResults();
 		}else{			
-			setTimeout( _this.instance_name + '.checkResultsDone()', 250);
+			setTimeout( _this.instance_name + '.checkResultsDone()', 30);
 		}		 
 	},
 	drawTabs: function(){
@@ -457,7 +457,7 @@ remoteSearchDriver.prototype = {
 		_this.setResultBarControl();				 
 		
 		//output all the results (hide based on tab selection) 
-		for(var cp_id in  this.content_providers){
+		for( var cp_id in  this.content_providers ){
 			cp = this.content_providers[ cp_id ];
 			//output results based on display mode & input: 
 			if(typeof cp['sObj'] != 'undefined'){
@@ -466,15 +466,20 @@ remoteSearchDriver.prototype = {
 					if( _this.result_display_mode == 'box' ){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_box_result" style="' + disp + 'width:' +
 								_this.thumb_width + 'px;height:'+ (_this.thumb_width-20) +'px;position:relative;">';
+							//check for missing poster types for audio
+							if( rItem.mime=='audio/ogg' && !rItem.poster ){
+								rItem.poster = mv_embed_path + 'skins/' + mv_skin_name + '/images/sound_music_icon-80.png';									
+							}
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
 							//add a linkback to resource page in upper right:
-							if(rItem.link) 
+							if( rItem.link ) 
 								o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + gM('Resource Description Page') + 
 									'" href="' + rItem.link + '"><img src="' + stylepath + '/common/images/magnify-clip.png"></a>';
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
-							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="float:left;width:' + _this.thumb_width + 'px; padding:5px;" src="' + rItem.poster + '">';			
+							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="float:left;width:' +
+									 _this.thumb_width + 'px; padding:5px;" src="' + rItem.poster + '">';			
 							o+= rItem.desc ;					
 						o+='<div style="clear:both" />';			
 						o+='</div>';						
@@ -512,6 +517,9 @@ remoteSearchDriver.prototype = {
 			//set width to default image_edit_width
 			var maxWidth = _this.image_edit_width;		
 			var mediaType = 'image';										
+		}else if(rObj.mime.indexOf('audio')!=-1){
+			var maxWidth = _this.video_edit_width;
+			var mediaType = 'audio';
 		}else{
 			//set to default video size: 
 			var maxWidth = _this.video_edit_width;
@@ -545,7 +553,8 @@ remoteSearchDriver.prototype = {
 			'top':'40%',
 			'left':'20%',
 			'opacity':0	
-		});															
+		});							
+								
 		
 		//assume we keep aspect ratio for the thumbnail that we clicked:			
 		var tRatio = $j(rsdElement).height() / $j(rsdElement).width();
@@ -634,10 +643,10 @@ remoteSearchDriver.prototype = {
 				_this.cEdit = new mvClipEdit( mvClipInit );
 			});				
 		}
-		if( mediaType == 'video'){
+		if( mediaType == 'video' || mediaType == 'audio'){
 			js_log('append html: ' + rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'}) );
 			$j('#clip_edit_disp').append(
-				rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})				
+				rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})
 			);	
 			//rewrite by id handldes getting any libs we are missing: 		
 			rewrite_by_id('embed_vid',function(){

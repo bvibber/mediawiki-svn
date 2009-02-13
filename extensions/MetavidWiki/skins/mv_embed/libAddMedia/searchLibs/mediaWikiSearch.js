@@ -76,26 +76,33 @@ mediaWikiSearch.prototype = {
 					//skip page is redirect 
 					continue;
 				}								
-				//skip if its an empy or missing imageinfo: 
-				if(!page.imageinfo)
+				//skip if its an empty or missing imageinfo: 
+				if( !page.imageinfo )
 					continue;
 										
 				this.resultsObj[page_id]={
-					'titleKey'	: page.title,
-					'link'		:page.imageinfo[0].descriptionurl,				
-					'title'		:page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv/ig, ''),
-					'poster'	:page.imageinfo[0].thumburl,
-					'thumbwidth':page.imageinfo[0].thumbwidth,
+					'titleKey'	 : page.title,
+					'link'		 :page.imageinfo[0].descriptionurl,				
+					'title'		 :page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv|.oga/ig, ''),
+					'poster'	 :page.imageinfo[0].thumburl,
+					'thumbwidth' :page.imageinfo[0].thumbwidth,
 					'thumbheight':page.imageinfo[0].thumbheight,
-					'mime'		:page.imageinfo[0].mime,
-					'src'		:page.imageinfo[0].url,
-					'desc'		:page.revisions[0]['*'],		
+					'mime'		 :page.imageinfo[0].mime,
+					'src'		 :page.imageinfo[0].url,
+					'desc'		 :page.revisions[0]['*'],		
 					//add pointer to parent search obj:
-					'pSobj'		:_this,			
+					'pSobj'		 :_this,			
 					'meta':{
 						'categories':page.categories
 					}
 				}
+				
+				//likely a audio clip if no poster and type application/ogg 
+				//@@todo we should return audio/ogg for the mime type or some other way to specify its "audio" 
+				if( ! this.resultsObj[page_id].poster && this.resultsObj[page_id].mime == 'application/ogg' ){					
+					this.resultsObj[page_id].mime = 'audio/ogg';
+				}
+				
 				this.num_results++;	
 				//for(var i in this.resultsObj[page_id]){
 				//	js_log('added: '+ i +' '+ this.resultsObj[page_id][i]);
@@ -165,7 +172,7 @@ mediaWikiSearch.prototype = {
 		if( options['max_height'] ){			
 			outOpt.height = (options.max_height > rObj.height) ? rObj.height : options.max_height;	
 			outOpt.width = (rObj.width / rObj.height) *outOpt.height;			
-		}				
+		}						
 		var style_attr = 'style="width:' + outOpt.width + 'px;height:' + outOpt.height +'px"';
 		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
 		
@@ -173,12 +180,19 @@ mediaWikiSearch.prototype = {
 		if(rObj.mime.indexOf('image')!=-1){
 			return '<img ' + id_attr + ' src="' + rObj.url  + '"' + style_attr + ' >';
 		}
-		if(rObj.mime.indexOf('application/ogg')!=-1){
-			return '<video ' + id_attr + 
+		var ahtml='';
+		if(rObj.mime == 'application/ogg' || rObj.mime == 'audio/ogg'){
+			ahtml = id_attr + 
 						' src="' + rObj.src + '" ' +
 						style_attr +
-						' poster="'+  rObj.poster + '" '+
-						' ></video>'; 
+						' poster="'+  rObj.poster + '" '										
+			if(rObj.mime.indexOf('application/ogg')!=-1){
+				return '<video ' + ahtml + '></video>'; 
+			}
+					
+			if(rObj.mime.indexOf('audio/ogg')!=-1){
+				return '<audio ' + ahtml + '></audio>';
+			}
 		}		
 		js_log('ERROR:unsupored mime type: ' + rObj.mime);
 	},
