@@ -26,7 +26,7 @@ configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
 	phpize
-	./configure
+	./configure --disable-apc-pthreadmutex
 
 	touch configure-stamp
 
@@ -88,7 +88,7 @@ binary-arch: build install
 #	dh_installinfo
 	dh_installman
 	dh_link
-	dh_strip
+#	dh_strip
 	dh_compress
 	dh_fixperms
 #	dh_perl
