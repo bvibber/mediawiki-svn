@@ -97,6 +97,11 @@ $aliases['no'] = array(
 	'FindSpam' => array( 'Finn spam' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'FindSpam' => array( 'Szukanie spamu' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'FindSpam' => array( 'समाप्नोतिअतिपत्राचार' ),

@@ -383,15 +383,22 @@ Por testi ĝin, bonvolu eniri [{{SERVER}}{{localurl: Special:SignDocument|doc=$2
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'createsigndocument' => 'Habilitar firma de documentos',
 	'createsigndoc-pagename' => 'Página:',
+	'createsigndoc-allowedgroup' => 'Grupo permitido:',
 	'createsigndoc-email' => 'Dirección de correo electrónico:',
+	'createsigndoc-address' => 'Dirección domiciliaria:',
 	'createsigndoc-phone' => 'Número de teléfono:',
+	'createsigndoc-bday' => 'Fecha de nacimiento:',
 	'createsigndoc-minage' => 'Edad mínima:',
 	'createsigndoc-optional' => 'Opcional',
 	'createsigndoc-create' => 'Crear',
+	'createsigndoc-error-generic' => 'Error: $1',
+	'createsigndoc-error-pagenoexist' => 'Error: La página [[$1]] no existe.',
 );
 
 /** Basque (Euskara)

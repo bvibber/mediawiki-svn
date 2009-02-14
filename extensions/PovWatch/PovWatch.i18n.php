@@ -372,9 +372,43 @@ Klikni na slědujucy tłocašk, aby se zregistrěrował.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dead3y3
  */
 $messages['el'] = array(
+	'povwatch_desc' => 'Επέκταση για την [[Special:PovWatch|προώθηση σελίδων στις λίστες παρακολούθησης]] άλλων χρηστών',
+	'povwatch_no_session' => 'Σφάλμα: Η φόρμα δεν υποβλήθηκε λόγω απώλειας δεδομένων συνεδρίας.',
+	'povwatch_not_allowed_push' => 'Δεν είσαστε ένας διαχειριστής PovWatch, δεν μπορείτε να προωθήσετε σελίδες σε λίστες παρακολούθησης.',
+	'povwatch_already_subscribed' => 'Είσαστε ήδη εγγεγραμμένος στο PovWatch',
+	'povwatch_subscribed' => 'Τώρα είσαστε εγγεγραμμένος στο PovWatch',
+	'povwatch_not_subscribed' => 'Δεν είσαστε εγγεγραμμένος στο PovWatch, οπότε δεν μπορείτε να αποχωρήσετε από αυτό.',
+	'povwatch_unsubscribed' => 'Τώρα αποχωρήσατε από το PovWatch',
+	'povwatch_invalid_title' => 'O καθορισμένος τίτλος ήταν άκυρος',
+	'povwatch_pushed' => 'Η σελίδα [[$1]] προωθήθηκε επιτυχώς {{PLURAL:$2|στην $2 λίστα|στις $2 λίστες}} παρακολούθησης χρήστη/χρήστριας',
+	'povwatch_intro' => 'Η επέκταση PovWatch είναι μια υπηρεσία η οποία επιτρέπει σε επίμαχες σελίδες να προωθηθούν διακριτικά στις λίστες παρακολούθησης των εγγεγραμμένων στην επέκταση διαχειριστών.
+
+Ένα αρχείο καταγραφής των πρόσφατων προωθήσεων σε λίστες παρακολούθησης είναι διαθέσιμο στη σελίδα [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Ένας [[Special:PovWatch/subscribers|κατάλογος των συνδρομητών]] είναι διαθέσιμος.',
+	'povwatch_subscriber_list_intro' => '<strong>Κατάλογος συνδρομητών</strong>',
+	'povwatch_not_allowed_subscribers' => 'Δεν επιτρέπεται να δείτε τον κατάλογο συνδρομητών της επέκτασης PovWatch',
+	'povwatch_unknown_subpage' => 'Άγνωστη υποσελίδα.',
+	'povwatch_push' => 'Προώθηση',
+	'povwatch_push_intro' => 'Χρησιμοποιήστε την φόρμα παρακάτω για να προωθήσετε σελίδες στις λίστες παρακολούθησης των εγγεγραμμένων χρηστών.<br/>
+Παρακαλώ να είστε προσεκτικοί καθώς πληκτρολογείτε τον τίτλο: ακόμη και ανύπαρκτοι τίτλοι μπορούν να προστεθούν, και δεν υπάρχει κανένας τρόπος να αφαιρέσετε ένα τίτλος αφότου αυτός έχει προωθηθεί.',
 	'povwatch_title' => 'Τίτλος:',
+	'povwatch_comment' => 'Σχόλιο αρχείου καταγραφής:',
+	'povwatch_no_log' => 'Δεν υπάρχουν εγγραφές στο αρχείο καταγραφής.',
+	'povwatch_no_subscribers' => 'Δεν υπάρχουν συνδρομητές.',
+	'povwatch_unsubscribe_intro' => 'Είσαστε εγγεγραμμένοι στην επέκταση PovWatch.<br/>
+Κάντε κλιψκ στο κουμπί παρακάτω για να διαγραφείτε.',
+	'povwatch_unsubscribe' => 'Διαγραφή',
+	'povwatch_subscribe_intro' => 'Δεν είσαστε εγγεγραμμένοι στην επέκταση PovWatch.<br>
+Κάντε κλικ στο κουμπί παρακάτω για να εγγραφείτε.',
+	'povwatch_subscribe' => 'Εγγραφή',
+	'povwatch_added' => 'προστέθηκε',
+	'right-povwatch_admin' => 'Διαχείριση δικαιωμάτων χρηστών για την προσθήκη σελίδων στις λίστες παρακολούθησης άλλων χρηστών',
+	'right-povwatch_user' => 'Προσθήκη σελίδων στις λίστες παρακολούθησης άλλων χρηστών',
+	'action-povwatch_admin' => 'να διαχειριστείτε δικαιώματα χρηστών για την επέκταση PovWatch',
+	'action-povwatch_user' => 'να προσθέσετε αυτή τη σελίδα στην λίστα παρακολούθησης ενός άλλου χρήστη',
 );
 
 /** Esperanto (Esperanto)
@@ -627,6 +661,7 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'povwatch' => 'Predbilježeno praćenje',
@@ -662,6 +697,8 @@ Kliknite na tipku ispod za upisivanje u sustav.',
 	'povwatch_added' => 'dodano',
 	'right-povwatch_admin' => 'Upravljanje suradničkim pravima za dodavanje stranica u popis praćenja drugih suradnika',
 	'right-povwatch_user' => 'Dodavanje stranica u popis praćenja drugih suradnika',
+	'action-povwatch_admin' => 'uredi suradnička prava za PovWatch ekstenziju',
+	'action-povwatch_user' => 'dodaj stranicu na listu praćenih stranica drugog suradnika',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1030,6 +1067,39 @@ $messages['mr'] = array(
 	'povwatch_added' => 'वाढविले',
 	'right-povwatch_admin' => 'इतर सदस्यांच्या पहार्‍याच्या सूची मध्ये पाने वाढविण्यासाठी आवश्यक अशा सदस्य अधिकारांचे प्रबंधन करा',
 	'right-povwatch_user' => 'इतर सदस्यांच्या पहार्‍याच्या सूचीत पाने वाढवा',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'povwatch_desc' => 'Penyambung untuk [[Special:PovWatch|menerbitkan laman ke dalam senarai pantau]] pengguna lain',
+	'povwatch_no_session' => 'Ralat: Borang tidak dapat diserahkan kerana kehilangan data sesi.',
+	'povwatch_not_allowed_push' => 'Anda bukan pentadbir PovWatch. Anda tidak boleh menerbitkan laman ke dalam senarai pantau pengguna.',
+	'povwatch_already_subscribed' => 'Anda telah pun menyertai PovWatch',
+	'povwatch_subscribed' => 'Anda telah menyertai PovWatch',
+	'povwatch_not_subscribed' => 'Anda tidak menyertai PovWatch. Oleh itu, anda tidak boleh berhenti daripada menyertainya.',
+	'povwatch_unsubscribed' => 'Anda telah berhenti daripada menyertai PovWatch',
+	'povwatch_invalid_title' => 'Tajuk yang dinyatakan tidak sah',
+	'povwatch_pushed' => '[[$1]] telah diterbitkan ke dalam $2 senarai pantau pengguna',
+	'povwatch_subscriber_list' => 'Anda boleh melihat [[Special:PovWatch/subscribers|senarai peserta]].',
+	'povwatch_subscriber_list_intro' => '<strong>Senarai peserta</strong>',
+	'povwatch_not_allowed_subscribers' => 'Anda tidak dibenarkan melihat senarai peserta PovWatch.',
+	'povwatch_unknown_subpage' => 'Sublaman tidak dikenali.',
+	'povwatch_push' => 'Terbit',
+	'povwatch_push_intro' => 'Gunakan borang berikut untuk menerbitkan laman-laman yang dikehendaki ke dalam senarai pantau peserta. Tajuk bagi laman yang tidak wujud boleh ditambah, namun tidak boleh dibuang balik selepas diterbitkan. Oleh itu, sila taip setiap tajuk laman dengan cermat.',
+	'povwatch_title' => 'Tajuk:',
+	'povwatch_comment' => 'Ulasan log:',
+	'povwatch_no_log' => 'Tiada entri log.',
+	'povwatch_no_subscribers' => 'Tiada peserta.',
+	'povwatch_unsubscribe_intro' => 'Anda sedang menyertai PovWatch. Klik butang di bawah untuk berhenti menjadi peserta.',
+	'povwatch_unsubscribe' => 'Berhenti menyertai',
+	'povwatch_subscribe_intro' => 'Anda tidak menyertai PovWatch. Klik butang di bawah untuk mendaftar sebagai peserta.',
+	'povwatch_subscribe' => 'Sertai',
+	'povwatch_added' => 'ditambah',
+	'right-povwatch_admin' => 'Mentadbir hak pengguna untuk menambah laman ke dalam senarai pantau pengguna lain',
+	'right-povwatch_user' => 'Menambah laman ke dalam senarai pantau pengguna lain',
+	'action-povwatch_user' => 'menambah laman ini ke dalam senarai pantau pengguna lain',
 );
 
 /** Erzya (Эрзянь)

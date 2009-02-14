@@ -341,11 +341,12 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Badseed
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'bookinfo-header' => 'Βιβλίο πληροφοριών',
-	'bookinfo-desc' => 'Επεκτείνει την ειδική σελίδα [[Special:Booksources]] με πληροφορίες από μια διαδικτυακή υπηρεσία',
+	'bookinfo-desc' => 'Επεκτείνει [[Special:Booksources|την ειδική σελίδα πηγών για βιβλία]] με πληροφορίες από μια διαδικτυακή υπηρεσία',
 	'bookinfo-result-title' => 'Τίτλος:',
 	'bookinfo-result-author' => 'Συντάκτης:',
 	'bookinfo-result-publisher' => 'Εκδότης:',
@@ -1277,6 +1278,24 @@ $messages['pt'] = array(
 	'bookinfo-error-nodriver' => 'Não foi possível inicializar um Book Information Driver (Dispositivo de Informação de Livro) apropriado.',
 	'bookinfo-error-noresponse' => 'Sem resposta ou tempo de pedido expirado.',
 	'bookinfo-purchase' => 'Comprar este livro a $1',
+	'bookinfo-provider' => 'Provedor de dados: $1',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'bookinfo-header' => 'Informações do livro',
+	'bookinfo-desc' => 'Expande a [[Special:Booksources|página especial de fontes de livros]] com informação proveniente de um serviço web',
+	'bookinfo-result-title' => 'Título:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Editora:',
+	'bookinfo-result-year' => 'Ano:',
+	'bookinfo-error-invalidisbn' => 'O código ISBN introduzido é inválido.',
+	'bookinfo-error-nosuchitem' => 'O item não existe ou não foi encontrado.',
+	'bookinfo-error-nodriver' => 'Não foi possível inicializar um Book Information Driver (Dispositivo de Informação de Livro) apropriado.',
+	'bookinfo-error-noresponse' => 'Sem resposta ou tempo de pedido expirado.',
+	'bookinfo-purchase' => 'Comprar este livro em $1',
 	'bookinfo-provider' => 'Provedor de dados: $1',
 );
 

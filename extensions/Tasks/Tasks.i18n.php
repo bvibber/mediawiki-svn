@@ -90,14 +90,22 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Darth Kule
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Malafaya
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'tasks_desc' => 'Short description of the Tasks extension, shown on [[Special:Version]].',
 	'tasks_form_comment' => '{{Identical|Comment}}',
+	'tasks_existing_table_header' => "{{doc-important}}
+Don't change '|' character.",
+	'tasks_noone' => '{{Identical|None}}',
 	'tasks_delete' => '{{Identical|Delete}}',
+	'tasks_discussion_page_for' => '* $1 is a link
+* $2 is a link',
 	'tasks_here' => 'Used as a parameter in {{msg-mw|Tasks returnto}}',
 	'tasks_returnto' => '$1 is {{msg-mw|tasks_here}}',
+	'tasks_task_types' => 'This is a list to select from. Do not alter numbers and interpunctuation. Do not translate the lowercase markers between <code>:</code> and <code>:</code> and do translate the words between <code>:</code> and <code>|</code> only.',
 	'tasks_link_your_assignments' => 'Used as a parameter in {{msg-mw|Tasks see your assignments}}',
 	'tasks_see_your_assignments' => "*'''$1''': number of open assignments
 *'''$2''': replaced with {{msg-mw|Tasks link your assignments}}",
@@ -652,6 +660,22 @@ $messages['dsb'] = array(
 	'tog-show_task_comments' => 'Bok za nadawkowe komentary zapśěgnuś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'tasks' => 'Καθήκοντα',
+	'tasks_tab' => 'Καθήκοντα',
+	'tasks_title' => 'Καθήκοντα για τον "$1"',
+	'tasks_here' => 'εδώ',
+	'tasks_help_page' => 'Καθήκοντα',
+	'tasks_more_like_it' => 'περισσότερα',
+	'tasks_event_on_creation' => 'έλεγχος',
+	'tasks_event_on_creation_anon' => 'έλεγχος',
+	'tasks_table_header_page' => 'Σελίδα',
+	'tasks_search_status' => 'Κατάσταση',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -729,6 +753,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'tasks' => 'Tareas',
+	'tasks_desc' => 'Una extensión para administrar tareas',
 	'tasks_tab' => 'Tareas',
 	'tasks_title' => 'Tareas para "$1"',
 	'tasks_form_new' => 'Crear nueva tarea',
@@ -990,9 +1015,13 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'tasks_form_comment' => 'Σχόλιον',
+	'tasks_noone' => 'οὐδεμία',
+	'tasks_delete' => 'Διαγράφειν',
+	'tasks_more_like_it' => 'πλείω',
 	'tasks_table_header_page' => 'Δέλτος',
 	'tasks_search_status' => 'Καθεστώς',
 	'tasks_previous' => 'Προηγουμέναι',
@@ -1382,21 +1411,74 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'tasks' => 'タスク',
-	'tasks_tab' => 'タスク',
+	'tasks' => '課題',
+	'tasks_desc' => '課題を管理するための拡張機能',
+	'tasks_tab' => '課題',
+	'tasks_title' => '「$1」の課題',
+	'tasks_form_new' => '新規課題の作成',
 	'tasks_form_comment' => 'コメント',
+	'tasks_error1' => '課題が作成されましたが、そのような課題は既に存在します。',
+	'tasks_ok1' => '新規課題を作成されました。',
+	'tasks_create_header' => '新規課題の作成',
+	'tasks_existing_header' => '既存の課題',
+	'tasks_existing_table_header' => '課題|日付|初期コメント|割り当て/行動/ページ',
+	'tasks_noone' => 'なし',
+	'tasks_assign_me' => '自分に割り当て',
+	'tasks_assign_to' => '割り当てる利用者',
+	'tasks_unassign_me' => '自分の割り当てを除去',
+	'tasks_close' => '課題を終了する',
+	'tasks_wontfix' => '解決しない',
 	'tasks_delete' => '削除',
-	'tasks_help_page' => 'タスク',
-	'tasks_event_on_creation' => 'チェック',
-	'tasks_event_on_creation_anon' => 'チェック',
-	'tasks_see_your_assignments' => 'あなたは現在 $1 個の未確定な割り当てがあります。あなたの$2を参照してください。',
-	'tasks_my_assignments' => '現在のあなたの割り当て',
+	'tasks_no_task_delete_title' => '不許可',
+	'tasks_no_task_delete_texe' => 'あなたは課題の削除を許可されていません。管理者のみが可能です。',
+	'tasks_action_delete' => '課題は削除されました。',
+	'tasks_task_was_deleted' => '課題の削除に成功しました。',
+	'tasks_reopen' => '課題を再び有効にする',
+	'tasks_assignedto' => '$1 に割り当て',
+	'tasks_created_by' => '$1 によって作成',
+	'tasks_discussion_page_link' => '課題の議論ページ',
+	'tasks_closedby' => '$1 によって終了',
+	'tasks_assigned_myself_log' => '課題「$1」の自己割り当て',
+	'tasks_discussion_page_for' => 'この課題はページ「$1」に関連付けられています。このページに関連づけられたすべての課題は $2 で一覧します。',
+	'tasks_sidebar_title' => '有効な課題',
+	'tasks_here' => 'ここ',
+	'tasks_returnto' => 'あなたは直ちに転送されます。転送が数秒以内に行われない場合は、$1をクリックしてください。',
+	'tasks_see_page_tasks' => '(このページの課題)',
+	'tasks_task_is_assigned' => '(割り当て済み)',
+	'tasks_plain_text_only' => '(プレーンテキスト、256文字まで)',
+	'tasks_help_page' => '課題',
+	'tasks_more_like_it' => 'もっと',
+	'tasks_task_types' => '1:cleanup:整理|2:wikify:ウィキファイ|3:rewrite:書き直し|4:delete:削除|5:create:作成|6:write:加筆|7:check:検査',
+	'tasks_event_on_creation' => '検査',
+	'tasks_event_on_creation_anon' => '検査',
+	'tasks_on_creation_comment' => 'ページ作成時に生成された、自動課題',
+	'tasks_link_your_assignments' => '有効割り当てリスト',
+	'tasks_see_your_assignments' => '現在あなたには有効な割り当てが $1件あります。$2を参照してください。',
+	'tasks_my_assignments' => '現在のあなたへの割り当て',
 	'tasks_table_header_page' => 'ページ',
+	'tasks_you_have_no_assignments' => 'あなたへの有効な割り当てはありません',
 	'tasks_search_form_title' => '検索',
-	'tasks_search_tasks' => 'タスク',
-	'tasks_search_status' => '状況',
+	'tasks_search_tasks' => '課題',
+	'tasks_search_status' => '状態',
+	'tasks_search_no_tasks_chosen_note' => '(ここで何も選択しない場合、すべての種類の課題を検索します)',
+	'tasks_search_results' => '検索結果',
 	'tasks_previous' => '前',
-	'tasks_logpage' => 'タスクログ',
+	'tasks_next' => '次',
+	'tasks_sort' => '整列',
+	'tasks_ascending' => '古いものを先に',
+	'tasks_status_open' => '現在有効',
+	'tasks_status_assigned' => '割り当て済み',
+	'tasks_status_closed' => '終了',
+	'tasks_status_wontfix' => '解決しない',
+	'tasks_action_open' => '課題「$1」が有効化されました。',
+	'tasks_action_assigned' => '課題「$1」が割り当てられました。',
+	'tasks_action_closed' => '課題「$1」が終了されました。',
+	'tasks_action_wontfix' => '課題「$1」を解決しません。',
+	'tasks_sign_delete' => '<b>このページの削除が依頼されました！</b>',
+	'tasks_logpage' => '課題記録',
+	'tasks_logpagetext' => 'これは各課題に対する変更の記録です',
+	'tasks_logentry' => '「[[$1]]」関連',
+	'tog-show_task_comments' => '課題へのコメント用ページをトランスクルードする。',
 );
 
 /** Javanese (Basa Jawa)
@@ -1570,7 +1652,7 @@ Wann dat nit flupp, dann jang noh $1.',
 	'tasks_help_page_link' => 'Hölp',
 	'tasks_more_like_it' => 'wigger',
 	'tasks_task_types' => '1:cleanup:Oprühme|2:wikify:Wikitex druß maache|3:rewrite:Neu Schriive|4:delete:Fottschmiiße|5:create:Aanlääje|6:write:Schriive|7:check:Pröve',
-	'tasks_significance_order' => 'rewrite<delete',
+	'tasks_significance_order' => 'Övverschrieve<Fottschmieße',
 	'tasks_event_on_creation' => 'pröve',
 	'tasks_event_on_creation_anon' => 'pröve',
 	'tasks_on_creation_comment' => 'Di Aufjab kohm automatesch övver de neu aanjelaate Sigg',
@@ -2505,6 +2587,13 @@ $messages['tl'] = array(
 	'tasks_logpagetext' => 'Isa itong talaan ng mga pagbabago sa mga gawain',
 	'tasks_logentry' => 'Para kay "[[$1]]"',
 	'tog-show_task_comments' => 'Ilipat-sama ang pahina ng mga puna/kumentong panggawain.',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'tasks_delete' => 'Sil',
 );
 
 /** Ukrainian (Українська)

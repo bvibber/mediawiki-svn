@@ -375,12 +375,13 @@ $messages['grc'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'player' => 'Παίχτης',
-	'player-title' => 'Παίχτης',
+	'player' => 'Παίκτης',
+	'player-title' => 'Παίκτης',
 	'player-invalid-title' => 'Ἄκυρος ἐπιγραφή',
-	'player-goto-player' => 'Παίχτης',
+	'player-goto-player' => 'παίκτης',
 	'player-goto-page' => 'Δέλτος',
 	'player-goto-file' => 'Ἀρχεῖον',
 );

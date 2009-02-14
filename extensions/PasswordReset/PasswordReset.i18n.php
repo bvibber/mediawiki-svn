@@ -236,15 +236,16 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'passwordreset' => 'Κωδικός επαναφοράς',
 	'passwordreset-invalidusername' => 'Άκυρο όνομα χρήστη',
 	'passwordreset-emptyusername' => 'Κενό όνομα χρήστη',
 	'passwordreset-nopassmatch' => 'Οι Κωδικοί δεν αντιστοιχούν',
-	'passwordreset-username' => 'Όνομα χρήστη',
-	'passwordreset-newpass' => 'Νέος Κωδικός',
-	'passwordreset-confirmpass' => 'Επιβεβαιώστε τον κωδικό πρόσβασης',
+	'passwordreset-username' => 'Όνομα χρήστη:',
+	'passwordreset-newpass' => 'Νέος Κωδικός:',
+	'passwordreset-confirmpass' => 'Επιβεβαιώστε τον κωδικό πρόσβασης:',
 	'passwordreset-submit' => 'Επαναφορά κωδικού',
 	'passwordreset-success' => 'Ο κωδικός έχει επαναφερθεί για τον user_id: $1',
 );
@@ -274,8 +275,16 @@ $messages['eo'] = array(
  * @author Kobazulo
  */
 $messages['es'] = array(
+	'passwordreset-invalidusername' => 'Nombre de usuario inválido',
+	'passwordreset-emptyusername' => 'Nombre de usuario vacío',
 	'passwordreset-username' => 'Nombre de usuario:',
+	'passwordreset-newpass' => 'Nueva contraseña:',
+	'passwordreset-confirmpass' => 'Confirmar contraseña:',
 	'passwordreset-submit' => 'Reestablecer contraseña',
+	'passwordreset-disableuser' => 'Deshabilitar cuenta de usuario?',
+	'passwordreset-accountdisabled' => 'Cuenta ha sido deshabilitada',
+	'disabledusers' => 'Usuarios deshabilitados',
+	'disabledusers-summary' => 'Esta es una lista de usuarios que han sido deshabilitados con PasswordReset.',
 );
 
 /** Basque (Euskara)

@@ -151,6 +151,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'importusers-password' => 'пароль',
+	'importusers-email' => 'Адрас электроннай пошты',
 );
 
 /** Bulgarian (Български)
@@ -337,17 +338,24 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Piolinfax
  */
 $messages['es'] = array(
+	'importusers' => 'Importar usuarios',
 	'importusers-uploadfile' => 'Subir archivo',
+	'importusers-form-replace-present' => 'Reemplazar usuarios existentes',
 	'importusers-form-button' => 'Importar',
+	'importusers-user-added' => 'Usuario <b>%s</b> ha sido agregado.',
 	'importusers-log-summary' => 'Sumario',
 	'importusers-log-summary-all' => 'Todos',
+	'importusers-log-summary-added' => 'Agregado',
+	'importusers-log-summary-updated' => 'Actualizado',
 	'importusers-password' => 'contraseña',
 	'importusers-email' => 'correo electrónico',
 	'importusers-realname' => 'nombre real',
+	'right-import_users' => 'Importar usuarios en borrador',
 );
 
 /** Basque (Euskara)
@@ -598,6 +606,7 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'importusers' => 'Uvezi suradnike',
@@ -620,6 +629,7 @@ $messages['hr'] = array(
 	'importusers-password' => 'lozinka',
 	'importusers-email' => 'elektronička pošta',
 	'importusers-realname' => 'pravo ime',
+	'right-import_users' => 'Uvezi suradnike u grupu',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

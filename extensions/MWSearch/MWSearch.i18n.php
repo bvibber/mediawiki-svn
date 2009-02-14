@@ -117,6 +117,13 @@ $messages['dsb'] = array(
 	'mwsearch-desc' => 'Tykac MWSearch',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'mwsearch-desc' => 'Πρόσθετο MWSearch',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

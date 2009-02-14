@@ -148,6 +148,13 @@ $messages['dsb'] = array(
 	'layouts_tagline' => "Toś ten bok jo se napórał z wugótowanim '''$1'''.",
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'layouts_unknown' => 'Άγνωστο',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

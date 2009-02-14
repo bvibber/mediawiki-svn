@@ -631,6 +631,13 @@ $messages['eo'] = array(
 	'math_WrongFontEncodingWithHint' => 'La simbolo "$1" eble ne aperos en tiparo kodprezento "$2" (provu uzi la komandon "$3{...}" anstataŭe)',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'math_UnrecognisedCommand' => 'Comando irreconocible "$1"',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

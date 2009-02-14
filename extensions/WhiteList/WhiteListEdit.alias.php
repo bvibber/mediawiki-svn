@@ -127,6 +127,12 @@ $aliases['oc'] = array(
 	'WhiteList' => array( 'Tièra blanca', 'Tièrablanca' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'WhiteList' => array( 'Biała lista' ),
+	'WhiteListEdit' => array( 'Edycja białej listy' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'WhiteList' => array( 'سپين لړليک' ),

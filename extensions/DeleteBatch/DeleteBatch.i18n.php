@@ -300,10 +300,18 @@ Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Sanbec
  */
 $messages['es'] = array(
-	'deletebatch-button' => 'Borrar',
+	'deletebatch-caption' => 'Lista de páginas:',
+	'deletebatch-page' => 'Páginas a ser borradas:',
+	'deletebatch-reason' => 'Razón para borrado',
+	'deletebatch-processing' => 'borrando páginas $1',
+	'deletebatch-success-subtitle' => 'Para $1',
+	'deletebatch-omitting-nonexistant' => 'Omitiendo página no existente $1.',
+	'deletebatch-omitting-invalid' => 'Omitiendo página inválida $1.',
+	'deletebatch-select-yourself' => 'usted',
 );
 
 /** Finnish (Suomi)

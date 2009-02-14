@@ -291,6 +291,24 @@ $messages['dsb'] = array(
 	'scanset_prev' => '&lt; Slědny',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'scanset-desc' => 'Δείτε εικόνες σαρωμένων σελίδων από τις συλλογές CD/DVD του Andreas Grosz',
+	'scanset_no_name' => 'Σφάλμα: Πρέπει να ορίσετε ένα όνομα συλλογής σάρωσης, π.χ. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Σφάλμα: Άκυρη ή ανύπαρκτη συλλογή σάρωσης.',
+	'scanset_unrecognised_index_format' => 'Σφάλμα: Άγνωστη μορφή ευρετηρίου',
+	'scanset_opendir_error' => 'Σφάλμα: Δεν μπορεί να ανοικτεί ο κατάλογος $1',
+	'scanset_no_files' => 'Σφάλμα: Δεν υπάρχουν αρχεία στον καθορισμένο κατάλογο.',
+	'scanset_no_volumes' => 'Σφάλμα: Δεν βρέθηκαν κατάλογοι τόμων',
+	'scanset_missing_index_file' => 'Σφάλμα: Το αρχείο ευρετηρίου $1 δεν βρέθηκε',
+	'scanset_index_file_error' => 'Σφάλμα: Σφάλμα στη μορφή αρχείου ευρετηρίου στη γραμμή $1',
+	'scanset_invalid_volume' => 'Σφάλμα: Άκυρος τόμος',
+	'scanset_next' => 'Επόμενο &gt;',
+	'scanset_prev' => '&lt; Προηγούμενο',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -919,6 +937,24 @@ $messages['pt'] = array(
 	'scanset_missing_index_file' => 'Error: o ficheiro de índice $1 não foi encontrado',
 	'scanset_index_file_error' => 'Error: erro no formato de ficheiro-índice na linha $1',
 	'scanset_invalid_volume' => 'Error: livro inválido',
+	'scanset_next' => 'Próximo &gt;',
+	'scanset_prev' => '&lt; Anterior',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'scanset-desc' => 'Ver imagens de páginas digitalizadas do conjunto de CD/DVD de Andreas Grosz',
+	'scanset_no_name' => 'Erro: É necessário especificar um nome de conjunto de digitalizações (por exemplo, &lt;scanset name="EB1911" /&gt;).',
+	'scanset_invalid_name' => 'Erro: conjunto de digitalizações inválido ou não encontrado.',
+	'scanset_unrecognised_index_format' => 'Erro: formato de índice desconhecido',
+	'scanset_opendir_error' => 'Erro: não é possível abrir o diretório $1',
+	'scanset_no_files' => 'Erro: não há arquivos no diretório especificado.',
+	'scanset_no_volumes' => 'Erro: não foram encontrados diretórios',
+	'scanset_missing_index_file' => 'Erro: o arquivo de índice $1 não foi encontrado',
+	'scanset_index_file_error' => 'Erro: erro no formato de arquivo índice na linha $1',
+	'scanset_invalid_volume' => 'Erro: volume inválido',
 	'scanset_next' => 'Próximo &gt;',
 	'scanset_prev' => '&lt; Anterior',
 );

@@ -815,6 +815,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'voctrain_Number_of_questions' => 'Αριθμός ερωτήσεων',
@@ -828,10 +829,10 @@ $messages['el'] = array(
 	'voctrain_one_of' => 'ένα από',
 	'voctrain_logout' => 'αποσύνδεση',
 	'voctrain_Start_a_new_exercise' => 'Ξεκινήστε μια νέα άσκηση',
-	'voctrain_User_name' => 'Ὄνομα χρωμένου',
+	'voctrain_User_name' => 'Όνομα χρήστη',
 	'voctrain_Password' => 'Κωδικός',
 	'voctrain_Login' => 'Σύνδεση',
-	'voctrain_Language' => 'Γλῶττα',
+	'voctrain_Language' => 'Γλώσσα',
 	'voctrain_Log_in' => 'Συνδεθείτε',
 	'voctrain_Translation' => 'Μετάφραση',
 );

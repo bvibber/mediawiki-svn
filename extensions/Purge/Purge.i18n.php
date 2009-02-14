@@ -131,6 +131,13 @@ $messages['hi'] = array(
 	'purge' => 'साफ करें (purge)',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'purge' => 'očisti',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

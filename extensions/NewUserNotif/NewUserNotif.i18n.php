@@ -132,6 +132,17 @@ $messages['eo'] = array(
 Nova konto por uzanto, $2, estis kreita je $3 $4.',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'newusernotifsubj' => 'Notificación de un nuevo usuario en $1',
+	'newusernotif-desc' => 'Envía un aviso por correo electrónico cuando se crean cuentas de usuario',
+	'newusernotifbody' => 'Hola $1:
+
+Ha sido creada una nueva cuenta de usuario, $2, en $3 a las $4',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike

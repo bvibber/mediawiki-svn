@@ -457,6 +457,37 @@ Jolic maš pšašanja wo toś tom systemje rozdźělowanja rozšyrjenjow, źi p�
 	'extdist-want-more' => 'Druge rozšyrjenje wobstaraś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'extensiondistributor' => 'Κατέβασμα επέκτασης Mediawiki',
+	'extdist-desc' => 'Επέκταση για τη διανομή στιγμιοτύπων επεκτάσεων',
+	'extdist-not-configured' => 'Παρακαλώ ρυθμίστε τα $wgExtDistTarDir και $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Ο καθορισμένος πηγαίος κατάλογος εργασίας δεν υπάρχει!',
+	'extdist-no-such-extension' => 'Δεν υπάρχει επέκταση "$1"',
+	'extdist-no-such-version' => 'Η επέκταση "$1" δεν υπάρχει στην έκδοση "$2".',
+	'extdist-choose-extension' => 'Επιλέξτε ποια επέκταση θέλετε να κατεβάσετε:',
+	'extdist-wc-empty' => 'Ο καθορισμένος πηγαίος κατάλογος εργασίας δεν έχει διανεμήσιμες επεκτάσεις!',
+	'extdist-submit-extension' => 'Συνέχεια',
+	'extdist-current-version' => 'Τρέχουσα έκδοση (κορμός)',
+	'extdist-choose-version' => '<big>Κατεβάζετε την επέκταση <b>$1</b>.</big>
+
+Επιλέξτε την έκδοση του MediaWiki σας.
+
+Οι περισσότερες επεκτάσεις λειτουργούν μεταξύ πολλαπλών εκδόσεων του MediaWiki, οπότε αν η έκδοση του MediaWiki σας δεν είναι εδώ ή αν έχετε ανάγκη τα τελευταία χαρακτηριστικά της επέκτασης, δοκιμάστε την τρέχουσα έκδοση.',
+	'extdist-no-versions' => 'Η επιλεγμένη επέκταση ($1) δεν είναι διαθέσιμη σε καμία έκδοση!',
+	'extdist-submit-version' => 'Συνέχεια',
+	'extdist-no-remote' => 'Αδύνατη η επικοινωνία με τον απομακρυσμένο πελάτη subversion.',
+	'extdist-remote-error' => 'Σφάλμα από τον απομακρυσμένο πελάτη subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Άκυρη απόκριση από τον απομακρυσμένο πελάτη subversion.',
+	'extdist-svn-error' => 'Το σύστημα Subversion αντιμετώπισε ένα σφάλμα: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Αδύνατη η επεξεργασία της XML από το "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'To Tar επέστρεψε κωδικό εξόδου $1:',
+	'extdist-want-more' => 'Άλλη επέκταση',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -756,6 +787,15 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 אם יש לכם שאלות כלשהן על מערכת הפצת ההרחבות הזו, אנא עברו לדף [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'הורדת הרחבה נוספת',
+);
+
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'extdist-submit-extension' => 'Nastavi',
+	'extdist-current-version' => 'Tekuća inačica (stablo)',
+	'extdist-submit-version' => 'Nastavi',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1088,6 +1128,57 @@ Déi meescht Erweiderungen fonctionnéieren mat verschiddene Versioune vu MediaW
 	'extdist-no-versions' => 'Déi gewielten Erweiderung ($1) ass a kenger Versioun disponibel!',
 	'extdist-submit-version' => 'Viru fueren',
 	'extdist-want-more' => 'Eng aner Erweiderung benotzen',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'extensiondistributor' => 'Muat turun penyambung MediaWiki',
+	'extdist-desc' => 'Penyambung khas untuk pengedaran arkib petikan penyambung',
+	'extdist-not-configured' => 'Sila tetapkan konfigurasi $wgExtDistTarDir dan $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Direktori salinan kerja yang ditetapkan tidak wujud!',
+	'extdist-no-such-extension' => 'Penyambung "$1" tidak wujud',
+	'extdist-no-such-version' => 'Penyambung "$1" tidak mempunyai versi "$2".',
+	'extdist-choose-extension' => 'Sila pilih penyambung yang ingin dimuat turun:',
+	'extdist-wc-empty' => 'Direktori salinan kerja yang ditetapkan tidak mengandungi sebarang penyambung boleh edar!',
+	'extdist-submit-extension' => 'Teruskan',
+	'extdist-current-version' => 'Versi semasa (trunk)',
+	'extdist-choose-version' => '<big>Anda sedang memuat turun penyambung <b>$1</b>.</big>
+
+Sila pilih versi MediaWiki anda.
+
+Kebanyakan penyambung boleh digunakan dalam pelbagai versi MediaWiki. Oleh itu, jika versi MediaWiki anda tiada di sini, atau anda memerlukan penyambung dengan ciri-ciri terkini, anda boleh memilih untuk menggunakan versi semasa.',
+	'extdist-no-versions' => 'Penyambung yang dipilih ($1) tiada dalam sebarang versi!',
+	'extdist-submit-version' => 'Teruskan',
+	'extdist-no-remote' => 'Pelanggan subversion jauh tidak dapat dihubungi.',
+	'extdist-remote-error' => 'Ralat daripada pelanggan subversion jauh: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Jawapan tidak sah daripada pelanggan subversion jauh.',
+	'extdist-svn-error' => 'Subversion mendapati ralat: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Tidak dapat memproses XML daripada "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar memulangkan kod keluar $1:',
+	'extdist-created' => "Sebuah petikan bagi penyambung <b>$1</b> versi <b>$2</b> untuk MediaWiki <b>$3</b> telah dicipta. Proses muat turun akan dimulakan secara automatik dalam masa 5 saat.
+
+URL untuk petikan ini ialah:
+:$4
+Alamat ini boleh digunakan untuk memuat turun ke dalam pelayan anda dengan segera. Akan tetapi, jangan tanda alamat ini kerana kandungannya tidak akan dikemaskinikan, dan kelak mungkin akan dihapuskan balik.
+
+Arkib tar yang dimuat turun perlu dikeluarkan ke dalam direktori extensions anda. Sebagai contoh, untuk sistem pengendalian ala UNIX:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Untuk Windows pula, anda boleh menggunakan perisian [http://www.7-zip.org/ 7-zip] untuk mengeluarkan fail-fail yang berkenaan.
+
+Sekiranya wiki anda terdapat dalam pelayan jauh, sila keluarkan fail-fail yang berkenaan ke dalam direktori sementara dalam komputer tempatan anda, kemudian muat naik '''semua''' fail yang telah dikeluarkan ke dalam direktori extensions dalam komputer pelayan.
+
+Sesetengah penyambung memerlukan sebuah fail bernama ExtensionFunctions.php yang terletak di <tt>extensions/ExtensionFunctions.php</tt>, iaitu dalam direktori ''induk'' bagi direktori penyambung ini. Petikan bagi penyambung-penyambung ini mengandugi fail ini sebagai arkib tar, yang telah dikeluarkan ke dalam ./ExtensionFunctions.php. Jangan lupa untuk memuat naik fail ini ke dalam komputer jauh anda.
+
+Selepas anda mengeluarkan fail-fail yang berkenaan, anda perlu mendaftarkan penyambung tersebut dalam LocalSettings.php. Anda boleh mendapatkan arahan untuk melakukan pendaftaran ini dengan merujuk dokumentasi yang disertakan dengan penyambung tersebut.
+
+Sekiranya anda mempunyai sebarang soalan mengenai sistem pengedaran penyambung ini, sila kunjungi [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Dapatkan penyambung lagi',
 );
 
 /** Erzya (Эрзянь)

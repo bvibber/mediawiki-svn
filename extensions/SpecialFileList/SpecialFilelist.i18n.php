@@ -169,6 +169,13 @@ $messages['dsb'] = array(
 	'filelist-image-desc' => 'Zespominanje',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'filelist-image-desc' => 'ανεβ',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

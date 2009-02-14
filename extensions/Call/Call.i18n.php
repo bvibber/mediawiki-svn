@@ -745,6 +745,13 @@ $messages['ro'] = array(
 	'call-save-success' => 'Următorul text a fost salvat la pagina <big>[[$1]]</big> .',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'call' => 'Chiame',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

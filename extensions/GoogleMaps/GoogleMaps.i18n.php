@@ -853,6 +853,7 @@ $wgGoogleMapsMessages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $wgGoogleMapsMessages['el'] = array(
 	'gm-balloon-title' => 'Τίτλος:',
@@ -878,6 +879,7 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-edit-path' => 'προσθήκη σημείων',
 	'gm-show-path' => 'εμφάνιση σημείων',
 	'gm-color-path' => 'αλλάξτε χρώμα',
+	'gm-opacity' => 'Αδιαφάνεια',
 	'gm-line-width' => 'Πλάτος',
 	'gm-back' => 'πίσω',
 	'gm-kml-include-link' => 'προσθέστε στο χάρτη',
@@ -1779,12 +1781,17 @@ $wgGoogleMapsMessages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $wgGoogleMapsMessages['hr'] = array(
 	'gm-remove' => 'ukloni',
 	'gm-yes' => 'Da',
 	'gm-no' => 'Ne',
 	'gm-save-path' => 'Spremi',
+	'gm-kml-loading' => 'učitavam...',
+	'gm-earth' => 'Zemlja',
+	'gm-moon' => 'Mjesec',
+	'gm-mars' => 'Mars',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -4082,6 +4089,13 @@ $wgGoogleMapsMessages['sv'] = array(
 	'gm-earth' => 'Jorden',
 	'gm-moon' => 'Månen',
 	'gm-mars' => 'Mars',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$wgGoogleMapsMessages['sw'] = array(
+	'gm-save-path' => 'Hifadhi',
 );
 
 /** Silesian (Ślůnski)

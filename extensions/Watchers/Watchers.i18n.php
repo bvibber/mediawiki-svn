@@ -175,9 +175,14 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'watchers' => 'Posmatrači',
+	'watchers-desc' => 'Prikazuje [[Special:Watchers|koji korisnici imaju stranicu na svom spisku za praćenje]]',
 	'watchers_link_title' => 'Ko prati ovu stranicu?',
 	'watchers_error_article' => "'''Greška:''' Stranica ne postoji.",
 	'watchers_header' => '{{PLURAL:$2|Korisnik koji prati|Korisnici koji prate}} "$1"',
+	'watchers_noone_watches' => 'Niko ne posmatra ovu stranicu.',
+	'watchers_x_or_more' => '$1 ili više {{PLURAL:$1|korisnika ima|korisnika imaju}} ovu stranicu na svom spisku praćenja.',
+	'watchers_less_than_x' => 'Manje od $1 {{PLURAL:$1|korisnika ima|korisnika imaju}} ovu stranicu na svom spisku praćenja.',
 );
 
 /** Czech (Česky)
@@ -239,14 +244,15 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'watchers' => 'Παρατηρητές',
 	'watchers_link_title' => 'Ποιος παρατηρεί αυτήν τη σελίδα;',
 	'watchers_error_article' => '<b>Σφάλμα:</b> Η σελίδα δεν υπάρχει.',
 	'watchers_noone_watches' => 'Κανείς δεν παρατηρεί αυτήν την σελίδα.',
-	'watchers_x_or_more' => '$1 ή περισσότεροι άνθρωποι παρατηρούν αυτήν τη σελίδα.',
-	'watchers_less_than_x' => 'Λιγότεροι από $1 άνθρωποι παρακολουθούν αυτήν την σελίδα.',
+	'watchers_x_or_more' => '$1 ή περισσότεροι {{PLURAL:$1|χρήστης παρακολουθεί|χρήστες παρακολουθούν}} αυτήν τη σελίδα.',
+	'watchers_less_than_x' => '$1 ή λιγότεροι {{PLURAL:$1|χρήστης παρακολουθεί|χρήστες παρακολουθούν}} αυτήν τη σελίδα.',
 );
 
 /** Esperanto (Esperanto)

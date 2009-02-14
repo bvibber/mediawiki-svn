@@ -12,3 +12,4 @@ $aliases = array();
 $aliases['en'] = array(
 	'CommunityVoice' => array( 'CommunityVoice' ),
 );
+

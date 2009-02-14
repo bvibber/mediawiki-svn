@@ -73,6 +73,13 @@ $messages['dsb'] = array(
 	'trustedxff-desc' => 'Wobchadanje z lisćinu dowěrliwych proksyowych adresow ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'trustedxff-desc' => 'Χειρισμός μιας λίστας διευθύνσεων εμπιστεύσιμων διαμεσολαβητών ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

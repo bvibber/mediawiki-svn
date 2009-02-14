@@ -412,6 +412,13 @@ Pšosym pśekontrolěruj swój blokěrowak wuskokowańskich woknow.',
 	'ct_user_sample' => 'Wužywarske mě',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$wgCustomToolbarMessages['el'] = array(
+	'ct_user_user' => 'Χρήστης',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -1370,6 +1377,7 @@ $wgCustomToolbarMessages['os'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
+ * @author Sp5uhe
  */
 $wgCustomToolbarMessages['pl'] = array(
 	'ct-desc' => 'Dodaje rozszerzony pasek narzędzi',
@@ -1385,7 +1393,7 @@ $wgCustomToolbarMessages['pl'] = array(
 	'ct_internal_tip_ins' => 'Wstaw link wewnętrzny',
 	'ct_internal_tip_wrap' => 'Zrób z tego tekstu link wewnętrzny',
 	'ct_internal_caption' => 'Link wewnętrzny',
-	'ct_external_sample' => 'http://example.com',
+	'ct_external_sample' => 'http://strona.pl',
 	'ct_external_tip_ins' => 'Wstaw link zewnętrzny',
 	'ct_external_tip_wrap' => 'Zrób z tego tekstu link zewnętrzny',
 	'ct_external_caption' => 'Link zewnętrzny',
@@ -1878,6 +1886,13 @@ Pakisuri ang iyong panghadlang ng sulpot-litaw.",
 	'ct_user_tip' => 'Magsingit ng isang kawing na patungo sa isang pahina ng tagagamit',
 	'ct_user_caption' => 'Kawing sa tagagamit',
 	'ct_user_sample' => 'Pangalan ng tagagamit',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$wgCustomToolbarMessages['tr'] = array(
+	'ct_italic_caption' => 'İtalik',
 );
 
 /** Ukrainian (Українська)

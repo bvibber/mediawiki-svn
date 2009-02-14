@@ -1582,6 +1582,7 @@ $messages['ee'] = array(
  * @author Consta
  * @author Geraki
  * @author MF-Warburg
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -1631,9 +1632,9 @@ $messages['el'] = array(
 Παρακαλούμε συνδεθείτε στο wiki όπου ικανοποιείτε τα κριτήρια για να ψηφίσετε, και πηγαίνετε στο <nowiki>[[Special:BoardVote]]</nowiki>.
 Πρέπει να χρησιμοποιήσετε ένα λογαριασμό με τουλάχιστον $1 επεξεργασίες πριν τις $2, και να έχετε κάνει τουλάχιστον $3 επεξεργασίες μεταξύ $4 και $5.',
 	'boardvote_notloggedin' => 'Δεν είστε συνδεδεμένος.
-Για να ψηφίσετε, πρέπει να χρησιμοποιήσετε ένα λογαριασμό με τουλάχιστον $1 επεξεργασίες πριν τις $2, και να έχετε κάνει τουλάχιστον $3 επεξεργασίες μεταξύ $4 και $5.',
+Για να ψηφίσετε, πρέπει να χρησιμοποιήσετε ένα λογαριασμό με τουλάχιστον $1 {{PLURAL:$1|επεξεργασία|επεξεργασίες}} πριν τις $2, και να έχετε κάνει τουλάχιστον $3 {{PLURAL:$3|επεξεργασία|επεξεργασίες}} μεταξύ $4 και $5.',
 	'boardvote_notqualified' => 'Δεν επιτρέπεται να ψηφίσετε σε αυτές τις εκλογές.
-Χρειάζεται να έχετε κάνει τουλάχιστον $1 επεξεργασίες πριν τις $2, και να έχετε κάνει τουλάχιστον $3 επεξεργασίες μεταξύ $4 και $5.',
+Χρειάζεται να έχετε κάνει τουλάχιστον $1 {{PLURAL:$1|επεξεργασία|επεξεργασίες}} πριν τις $2, και να έχετε κάνει τουλάχιστον $3 {{PLURAL:$3|επεξεργασία|επεξεργασίες}} μεταξύ $4 και $5.',
 	'boardvote_novotes' => 'Κανείς δεν έχει ψηφίσει ακόμη.',
 	'boardvote_time' => 'Ώρα',
 	'boardvote_user' => 'Χρήστης',
@@ -1813,7 +1814,7 @@ Necesitas tener {{PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber he
 $1 para los datos codificados.</p>',
 	'boardvote_dumplink' => 'Haz click aquí',
 	'boardvote_submit' => 'Aceptar',
-	'boardvote_strike' => 'Strike',
+	'boardvote_strike' => 'Tachar',
 	'boardvote_unstrike' => 'Quitar tachado',
 	'boardvote_needadmin' => 'Sólo los administradores de la elección pueden realizar esta operación.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Elecciones del Consejo de Administración de Wikimedia</a>:

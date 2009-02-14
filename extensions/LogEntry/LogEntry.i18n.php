@@ -222,6 +222,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'logentry-append' => 'Derbäisetzen',
+	'logentry-invalidpage' => 'Net valabel Säit',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -248,6 +249,8 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'logentry-append' => 'Legg til',
+	'logentry-parserhook-desc' => 'Denne merkeutvidinga gjev eit skjema for å leggja til element etter/føre på loggsider',
+	'logentry-specialpage-desc' => 'Denne merkeutvidinga gjev handsaming for leggja til element på loggsider',
 	'logentry' => 'Loggelement',
 	'logentry-invalidpage' => 'Ugyldig sida',
 	'logentry-invalidtoken' => 'Ugyldig token',

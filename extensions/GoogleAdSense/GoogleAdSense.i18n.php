@@ -129,6 +129,13 @@ $messages['he'] = array(
 	'googleadsense-desc' => 'הוספת [http://www.google.com/adsense Google AdSense] לסרגל הצד',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'googleadsense-desc' => 'Dodaje [http://www.google.com/adsense Google AdSense] u izbornik',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

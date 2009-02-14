@@ -116,6 +116,13 @@ $messages['dsb'] = array(
 	'poem-desc' => 'Pśidawa toflicku <tt>&lt;poem&gt;</tt> za formatěrowanje basnjow',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'poem-desc' => 'Προσθέτει την ετικέτα <tt>&lt;poem&gt;</tt> για την μορφοποίηση ποιημάτων',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

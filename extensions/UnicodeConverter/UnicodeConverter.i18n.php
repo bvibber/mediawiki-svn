@@ -115,6 +115,13 @@ $messages['dsb'] = array(
 	'unicodeconverter-newtext' => 'Konwertěrowany tekst:',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'unicodeconverter-ok' => 'Εντάξει',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

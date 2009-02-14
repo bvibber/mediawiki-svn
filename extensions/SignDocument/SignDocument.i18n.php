@@ -39,6 +39,16 @@ $messages['arz'] = array(
 	'signaturelogentry' => 'وقع الوثيقة $1',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'signaturelogpage' => 'Журнал подпісаў',
+	'signature-desc' => 'Уключае [[Special:SignDocument|падпісаньне]] дакумэнта',
+	'signaturelogpagetext' => 'Гэта журнал [[Special:SignDocument|усіх подпісаў, даданых да дакумэнтаў]].',
+	'signaturelogentry' => 'падпісаў дакумэнт $1',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -86,6 +96,14 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'signaturelogpage' => 'Protokolo pri subskriboj',
 	'signaturelogentry' => 'subskribas la dokumenton $1',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'signature-desc' => 'Habilita [[Special:SignDocument|firma]] de documentos',
+	'signaturelogentry' => 'firmado el documento $1',
 );
 
 /** Basque (Euskara)

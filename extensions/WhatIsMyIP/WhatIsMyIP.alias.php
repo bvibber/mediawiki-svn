@@ -124,6 +124,11 @@ $aliases['oc'] = array(
 	'WhatIsMyIP' => array( 'Quina es mon IP', 'QuinaEsMonIP' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'WhatIsMyIP' => array( 'Moje IP' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'WhatIsMyIP' => array( 'زما آی پي پته څه ده' ),

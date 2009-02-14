@@ -78,9 +78,12 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
-	'stalepages-summary' => 'Αυτός είναι ένας κατάλογος από σελίδες που δεν έχουν υποστεί επεξεργασίες τις τελευταίες $1 ημέρες.',
+	'stalepages' => 'Έωλες σελίδες',
+	'stalepages-desc' => 'Παράγει έναν [[Special:Stalepages|κατάλογο σελίδων]] οι οποίες υπέστησαν επεξεργασίες πρόσφατα',
+	'stalepages-summary' => 'Αυτός είναι ένας κατάλογος από σελίδες που δεν έχουν υποστεί επεξεργασίες {{PLURAL:$1|την τελευταία|τις τελευταίες}} $1 {{PLURAL:$1|ημέρα|ημέρες}}.',
 );
 
 /** Esperanto (Esperanto)

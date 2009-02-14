@@ -191,10 +191,12 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'icon-badimage' => 'Loša slika',
 	'icon-badwidth' => 'Loša širina',
+	'icon-desc' => 'Omogućava rabiti slike kao ikonice i poveznice s ikonicama',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

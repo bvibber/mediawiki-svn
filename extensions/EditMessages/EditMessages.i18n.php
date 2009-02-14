@@ -268,12 +268,14 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author David0811
  * @author Jatrobat
  */
 $messages['es'] = array(
 	'editmessages' => 'Editando mensajes',
 	'editmsg-search' => 'Buscar',
+	'editmsg-new-search' => 'Nueva búsqueda',
 );
 
 /** Estonian (Eesti)

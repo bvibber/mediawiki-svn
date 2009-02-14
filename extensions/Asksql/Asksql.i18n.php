@@ -299,6 +299,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'sqlquery' => 'Ingresar pregunta',
 	'querybtn' => 'Enviar pregunta',
 );
 

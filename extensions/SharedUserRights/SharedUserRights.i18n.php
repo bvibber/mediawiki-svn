@@ -51,6 +51,18 @@ $messages['arz'] = array(
 	'gblrights-rights-entry' => 'غير عضوية المجموعة العامة ل$1 من $2 إلى $3',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'shareduserrights' => 'Кіраваньне агульнымі паміж праектамі правамі ўдзельніка',
+	'gblrights-desc' => 'Простае [[Special:SharedUserRights|кіраваньне глябальнымі правамі ўдзельнікаў]]',
+	'gblrights-logpage' => 'Журнал глябальных правоў',
+	'gblrights-pagetext' => 'Гэта журнал усіх зьменаў, зробленых у глябальных правах у групе праектаў вікі',
+	'gblrights-rights-entry' => 'зьменены ўдзел ў глябальных групах для $1 з $2 на $3',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -82,6 +82,7 @@ $messages['ast'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'findspam-ip' => 'IP-адрас:',
 	'findspam-ok' => 'Добра',
 );
 

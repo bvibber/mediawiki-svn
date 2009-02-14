@@ -276,12 +276,19 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'countedits' => 'Contar ediciones',
 	'countedits-username' => 'Nombre de usuario:',
 	'countedits-ok' => 'Aceptar',
+	'countedits-nosuchuser' => 'No hay usuario con el nombre $1.',
+	'countedits-resultheader' => 'Resultados para $1',
+	'countedits-resulttext' => '$1 ha hecho $2 {{PLURAL:$2|edición|ediciones}}',
+	'countedits-mostactive' => 'Los contribuyentes más activos',
+	'countedits-nocontribs' => 'No ha habido contribuciones a este wiki.',
 );
 
 /** Basque (Euskara)

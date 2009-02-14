@@ -149,9 +149,15 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'emergencydesysop-title' => 'Remover acceso de administrador tanto de usuario actual y otro administrador',
+	'emergencydesysop-reason' => 'Razones para remoción',
+	'emergencydesysop-submit' => 'Enviar',
 	'emergencydesysop-nogroups' => 'Ninguno',
+	'emergencydesysop-blocked' => 'No puede acceder a esta página mientras esté bloqueado',
+	'emergencydesysop-noright' => 'No tienes suficientes permisos para acceder a esta página',
 );
 
 /** Finnish (Suomi)

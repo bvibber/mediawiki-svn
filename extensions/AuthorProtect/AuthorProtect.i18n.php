@@ -270,6 +270,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'authorprotect' => 'Proteger página de quienes no sean autores',
 	'authorprotect-desc' => 'Permite al autor de una página protegerla de otros usuarios',
 	'authorprotect-notauthor' => 'No eres el autor de esta página',
 	'authorprotect-confirm' => 'Cambiar niveles de protección',
@@ -912,6 +913,25 @@ $messages['pt'] = array(
 	'authorprotect-intro' => 'Use este formulário para bloquear a página a não-autores',
 	'authorprotect-success' => 'Protecção com sucesso!',
 	'authorprotect-failure' => 'Protecção sem sucesso',
+	'protect-level-author' => 'Proteger de não-autores',
+	'restriction-level-author' => 'Protegida pelo autor',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'authorprotect' => 'Proteger página contra não-autores',
+	'authorprotect-desc' => 'Permite ao autor de uma página protegê-la de outros utilizadores',
+	'authorprotect-notauthor' => 'Você não é o autor desta página',
+	'authorprotect-confirm' => 'Alterar níveis de proteção',
+	'authorprotect-edit' => 'Restringir edição a autores',
+	'authorprotect-move' => 'Restringir a movimentação da página a autores',
+	'authorprotect-expiry' => 'Tempo de expiração',
+	'authorprotect-reason' => 'Motivo',
+	'authorprotect-intro' => 'Use este formulário para bloquear a página contra não-autores',
+	'authorprotect-success' => 'Proteção com sucesso!',
+	'authorprotect-failure' => 'Proteção sem sucesso',
 	'protect-level-author' => 'Proteger de não-autores',
 	'restriction-level-author' => 'Protegida pelo autor',
 );

@@ -576,9 +576,13 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'contrib-hist-name' => 'Όνομα',
 	'contrib-hist-amount' => 'Ποσόν',
 	'contrib-hist-anonymous' => 'Ανώνυμος',
+	'contribstats-day' => 'Ημέρα',
+	'contribstats-month' => 'Μήνας',
 	'contribstats-amount' => 'Ποσόν (USD)',
+	'fundraiserstats-date' => 'Ημερομηνία',
 );
 
 /** Esperanto (Esperanto)

@@ -92,6 +92,13 @@ $messages['dsb'] = array(
 	'titlekey-desc' => 'Proces w slězynje za naraźenje pytanja za titlami',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'titlekey-desc' => 'Backend για την πρόταση αναζήτησης προθέματος τίτλου',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

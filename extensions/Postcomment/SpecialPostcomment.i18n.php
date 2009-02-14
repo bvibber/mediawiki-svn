@@ -637,6 +637,24 @@ $messages['pt'] = array(
 	'postcomment_nopostingtoadd' => 'Nenhum comentário a adicionar.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'postcomment_desc' => 'Permite que utilizadores coloquem comentários diretamente em páginas de discussão.',
+	'postcomment_discussionprotected' => 'Esta página de discussão foi protegida contra mais comentários.',
+	'postcomment_notloggedin' => 'Você não se encontra autenticado.',
+	'postcomment_youareloggedinas' => 'Você está autenticado como $1',
+	'postcomment_addcommentdiscussionpage' => 'Acrescente o seu comentário a esta página de discussão',
+	'postcomment_leavemessagefor' => 'Deixe uma mensagem para $1',
+	'postcomment_post' => 'Colocar',
+	'postcomment_on' => 'Em',
+	'postcomment_said' => 'disse',
+	'postcomment_invalidrequest' => 'Pedido inválido.',
+	'postcomment_replyto' => 'Resposta a $1',
+	'postcomment_nopostingtoadd' => 'Nenhum comentário a adicionar.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

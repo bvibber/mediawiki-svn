@@ -487,13 +487,14 @@ $messages['eo'] = array(
  * @author Antur
  * @author BicScope
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'badimages' => 'Lista de malas imágenes',
 	'badimages-desc' => 'Lista de imágenes malas de las capacibilodades de MediaWiki',
 	'badimages-add-btn' => 'Agregar',
 	'badimages-added' => '$1 fue agregada satisfactoriamente a la lista.',
-	'badimages-count' => "Ya {{Plural:$1|es|está}} '''$1''' {{PLURAL:$1|imágen|imágenes}} en la lista de malas imágenes.",
+	'badimages-count' => "Ya hay '''$1''' {{PLURAL:$1|imagen|imágenes}} en la lista de imágenes malas.",
 	'badimages-name' => 'Nombre:',
 	'badimages-not-added' => 'La imágen no puede agregarse.',
 	'badimages-not-removed' => 'La imágen no puede ser removida.',

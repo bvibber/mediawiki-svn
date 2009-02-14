@@ -115,6 +115,13 @@ $messages['dsb'] = array(
 	'usercontactlink-desc' => 'Dawa móžnosć jadnorje a konsistentnje druge wužywarske mjenja z pomocu syntakse ^^^wužywaŕ^^^ pśidaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'usercontactlink-baduser' => 'λανθασμένο όνομα χρήστη',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

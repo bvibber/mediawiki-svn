@@ -103,9 +103,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'protectsection_desc' => 'Permite a usuarios autorizados proteger partes de una página usando la etiqueta <tt>&lt;proteger&gt;</tt>',
+	'protectsection_add_remove' => 'usted trató de agregar o remover una sección de protección',
+	'protectsection_modify' => 'usted trató de modificar un texto protegido',
 	'protectsection_forbidden' => 'Prohibido',
 );
 

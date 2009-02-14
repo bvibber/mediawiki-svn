@@ -408,12 +408,16 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
+	'ajax-se-desc' => 'Prikazuje suradnike koji uređuju istu stranicu',
 	'ajax-se-title' => 'Trenutno uređujete:',
 	'ajax-se-pending' => 'osvježavanje slijedi ... (kliknite na ovaj okvir ili počnite s uređivanjem)',
 	'ajax-se-idling' => '(prije $1s)',
 	'ajax-se-pagedoesnotexist' => 'stranica ne postoji',
+	'ajax-se-userinvalid' => 'Greška: suradnik nevaljan',
+	'ajax-se-usernotfound' => 'Greška: suradnik nije pronađen',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

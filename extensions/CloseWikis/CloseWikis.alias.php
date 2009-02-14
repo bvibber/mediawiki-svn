@@ -112,6 +112,11 @@ $aliases['no'] = array(
 	'CloseWiki' => array( 'Steng wiki' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'CloseWiki' => array( 'Zamknij wiki' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'CloseWiki' => array( 'ويکي تړل' ),

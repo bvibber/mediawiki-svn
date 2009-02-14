@@ -331,6 +331,7 @@ Klaku <a href='$1'>ĉi tie</a> por reveni.",
  */
 $messages['es'] = array(
 	'spamdifftool' => 'Administrar lista negra de spam',
+	'spamdifftool-desc' => 'Provee una manera básica de agregar entradas a la lista negra de spam desde diferentes páginas',
 	'spamdifftool_cantedit' => 'Disculpe - usted no tiene permiso para editar la lista negra de spam.',
 	'spamdifftool_notext' => "No hay texto para agregar en la lista negra de spam.
 Click <a href='$1'>aquí</a> para continuar.",
@@ -340,6 +341,7 @@ Click <a href='$1'>aquí</a> para regresar.",
 	'spamdifftool_spam_link_text' => 'agregar a spam',
 	'spamdifftool_option_domain' => 'Todo de este dominio',
 	'spamdifftool_option_subdomain' => 'Todo de este subdominio',
+	'spamdifftool_option_directory' => 'Este subdominio y directorio',
 	'spamdifftool_option_none' => 'nada',
 	'spamdifftool_block' => 'Bloqueo:',
 	'spamdifftool_submit_buttom' => 'Enviar',
@@ -864,13 +866,19 @@ Asseguratz-vos de blocar pas de domenis entièrs que detenon d'unes comptadors d
  */
 $messages['pl'] = array(
 	'spamdifftool' => 'Zarządzaj czarną listą dla spamu',
+	'spamdifftool-desc' => 'Umożliwia na stronie porównania wersji dodawanie nowych wpisów do czarnej listy spamu',
 	'spamdifftool_cantedit' => 'Nie masz uprawnień do edytowania tej strony.',
+	'spamdifftool_notext' => "Brak tekstu do dodania do czarnej listy spamu.
+Kliknij <a href='$1'>tutaj,</a> aby kontynuować.",
+	'spamdifftool_confirm' => "Potwierdź, że chcesz dodać wpisy do czarnej listy spam.
+(Kliknij <a href='$1' target='new'>tutaj,</a> aby zgłosić problem.)",
 	'spamdifftool_summary' => 'Dodawanie do czarnej listy spamu',
 	'spamdifftool_no_urls_detected' => "Nie wykryto żadnych adresów URL.
 Kliknij <a href='$1'>tutaj</a>, żeby wrócić do poprzedniej strony.",
 	'spamdifftool_spam_link_text' => 'dodaj do spamu',
 	'spamdifftool_option_domain' => 'wszystkie z tej domeny',
 	'spamdifftool_option_subdomain' => 'wszystkie z tej domeny',
+	'spamdifftool_option_directory' => 'ta poddomena i katalog',
 	'spamdifftool_option_none' => 'nic',
 	'spamdifftool_block' => 'Blokuj:',
 	'spamdifftool_submit_buttom' => 'Wyślij',

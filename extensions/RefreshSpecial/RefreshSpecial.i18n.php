@@ -762,7 +762,7 @@ Atencion : l’actualizacion pòt préne un cèrt temps sus de wikis que dispaus
  */
 $messages['pl'] = array(
 	'refreshspecial' => 'Odśwież strony specjalne',
-	'refreshspecial-desc' => 'Umożliwia [[Special:RefreshSpecial|za pomocą strony specjalnej ręcznie odświeżać]] zawartość innych stron specjalnych',
+	'refreshspecial-desc' => 'Umożliwia [[Special:RefreshSpecial|za pomocą strony specjalnej wymusić odświeżenie]] zawartości innych stron specjalnych',
 	'refreshspecial-title' => 'Odśwież strony specjalne',
 	'refreshspecial-help' => 'Strona pozwala ręcznie odświeżać strony specjalne.
 Po wybraniu wszystkich stron do odświeżenia należy kliknąć znajdujący się poniżej przycisk „Odśwież wybrane” aby wymusić odświeżenie.

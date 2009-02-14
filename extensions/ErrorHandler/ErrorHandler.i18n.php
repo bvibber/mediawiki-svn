@@ -735,6 +735,16 @@ $messages['ro'] = array(
 	'errorhandler-trace-line' => '$1 (linia $2): $3',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'errorhandler-errors' => 'Errore:',
+	'errorhandler-error-fatal' => 'Errore putende',
+	'errorhandler-msg-text' => "$1 : $2 jndr'à $3 (linèe $4)",
+	'errorhandler-msg-html' => "<b>$1</b> : <i>$2</i> jndr'à <b>$3</b> (linèe <b>$4</b>)",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv

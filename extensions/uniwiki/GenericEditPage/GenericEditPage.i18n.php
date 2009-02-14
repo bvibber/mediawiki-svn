@@ -1032,6 +1032,7 @@ $messages['tr'] = array(
 	'gep-categories' => 'Kategoriler',
 	'gep-addcategorybutton' => 'Ekle',
 	'gep-addsectionbutton' => 'Ekle',
+	'gep-classicmode' => 'Klasik kip',
 );
 
 /** Ukrainian (Українська)

@@ -1082,6 +1082,14 @@ $messages['ro'] = array(
 	'contributors-nosuchpage' => 'Pagina $1 nu există.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'contributors-target' => 'Titele:',
+	'contributors-submit' => 'Fà vedè',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

@@ -268,13 +268,19 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Baiji
+ * @author Crazymadlover
  * @author Imre
  * @author Jatrobat
  */
 $messages['es'] = array(
+	'edituser-desc' => 'Permite a usuarios privilegiados editar las preferencias de otro usuario',
 	'edituser' => 'Editar usuario',
 	'edituser-username' => 'Nombre',
 	'edituser-dosearch' => 'Buscar',
+	'edituser-nouser' => 'El usuario especificado no existe',
+	'edituser-exempt' => 'El usuario especificado no puede ser editado',
+	'right-edituser' => 'Editar las preferencias de otro usuario',
+	'right-edituser-exempt' => 'Otros no pueden editar estas preferencias de usuario',
 );
 
 /** Basque (Euskara)

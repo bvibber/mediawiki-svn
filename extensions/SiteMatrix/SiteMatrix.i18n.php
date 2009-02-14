@@ -372,16 +372,21 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Badseed
  * @author Consta
+ * @author Dead3y3
  * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'sitematrix' => 'Κατάλογος wiki του Wikimedia',
+	'sitematrix-summary' => 'Αυτή η ειδική σελίδα περιέχει σε λίστα όλα τα wikis του Wikimedia.',
+	'sitematrix-desc' => 'Εμφανίζει μία [[Special:SiteMatrix|λίστα με wikis του Wikimedia]]',
 	'sitematrix-language' => 'Γλώσσα',
 	'sitematrix-project' => 'Όνομα εγχειρήματος, διαεγχειρηματικός (interproject) σύνδεσμος και διαγλωσσικός (interwiki) σύνδεσμος',
 	'sitematrix-others' => 'Άλλα εγχειρήματα του Wikimedia',
+	'sitematrix-total' => "'''Συνολικός αριθμός: $1'''",
 	'sitematrix-sitetotal' => 'Συνολικά',
 	'sitematrix-private' => 'ιδιωτικό',
+	'sitematrix-fishbowl' => 'η επεξεργασία απαγορεύεται',
 );
 
 /** Esperanto (Esperanto)

@@ -185,6 +185,15 @@ $messages['hi'] = array(
 	'purgecache-button' => 'साफ़ करें (purge)',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'purgecache' => 'Očisti cache',
+	'purgecache-purged' => 'Cache je očišćen.',
+	'purgecache-button' => 'Očisti',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

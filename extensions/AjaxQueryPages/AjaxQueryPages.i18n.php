@@ -102,6 +102,13 @@ $messages['dsb'] = array(
 	'ajax-qp-desc' => 'AJAX pśidaś, aby se boki kaž [[Special:Shortpages|{{int:shortpages}}]] wótpšašali',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'ajax-qp-desc' => 'Προσθήκη AJAX σε σελίδες query όπως οι [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Spanish (Español)
  * @author Ascánder
  */
@@ -172,6 +179,13 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'ajax-qp-desc' => 'पृच्छापन्नोंमें [[Special:Shortpages|{{int:shortpages}}]] जैसे AJAX बढायें',
+);
+
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'ajax-qp-desc' => 'Dodaj AJAX za upite stranica poput [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

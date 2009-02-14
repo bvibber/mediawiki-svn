@@ -709,9 +709,19 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'mywhitelistpages' => 'Οι Σελίδες μου',
+	'whitelisttablemodify' => 'Τροποποίηση',
+	'whitelisttablemodifyall' => 'Ὀλα',
+	'whitelisttablemodifynone' => 'Κανένα',
+	'whitelisttableedit' => 'Επεξεργασία',
+	'whitelisttableview' => 'Προβολή',
+	'whitelisttablenewdate' => 'Νέα ημερομηνία:',
+	'whitelistnewtabledate' => 'Ημερομηνία λήξης:',
+	'group-manager' => 'Διαχειριστές',
+	'group-manager-member' => 'Διαχειριστής',
 );
 
 /** Esperanto (Esperanto)

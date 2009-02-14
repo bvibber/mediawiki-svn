@@ -337,9 +337,22 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dead3y3
  */
 $messages['el'] = array(
+	'imagemap_desc' => 'Επιτρέπει από την πλευρά-του-πελάτη επιλέξιμους εικονοχάρτες χρησιμοποιώντας την ετικέτα <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image' => 'Σφάλμα: πρέπει να ορίσετε μια εικόνα στην πρώτη γραμμή',
+	'imagemap_invalid_image' => 'Σφάλμα: η εικόνα είναι άκυρη ή ανύπαρκτη',
+	'imagemap_bad_image' => 'Σφάλμα: η εικόνα βρίσκεται στη μαύρη λίστα σε αυτή τη σελίδα',
+	'imagemap_no_link' => 'Σφάλμα: δεν βρέθηκε κανένας έγκυρος σύνδεσμος στο τέλος της γραμμής $1',
+	'imagemap_invalid_title' => 'Σφάλμα: άκυρος τίτλος σε σύνδεσμο στη γραμμή $1',
+	'imagemap_missing_coord' => 'Σφάλμα: όχι αρκετές συντεταγμένες για σχήμα στη γραμμή $1',
+	'imagemap_unrecognised_shape' => 'Σφάλμα: μη αναγνωρίσιμο σχήμα στη γραμμή $1, κάθε γραμμή πρέπει να αρχίζει με μία από τις λέξεις: default, rect, circle ή poly',
+	'imagemap_no_areas' => 'Σφάλμα: τουλάχιστον ένας ορισμός περιοχής πρέπει να δίνεται',
+	'imagemap_invalid_coord' => 'Σφάλμα: άκυρη συντεταγμένη στη γραμμή $1, πρέπει να είναι αριθμός',
+	'imagemap_invalid_desc' => 'Σφάλμα: άκυρος ορισμός desc, πρέπει να είναι ένας από τους: <tt>$1</tt>',
 	'imagemap_description' => 'Σχετικά με αυτήν την εικόνα',
+	'imagemap_poly_odd' => 'Σφάλμα: βρέθηκε πολύγωνο με περιττό αριθμό συντεταγμένων στη γραμμή $1',
 );
 
 /** Esperanto (Esperanto)
@@ -1123,6 +1136,25 @@ $messages['pt'] = array(
 	'imagemap_no_areas' => '&lt;imagemap&gt;: é necessário fornecer ao menos uma especificação de área',
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;: coordenada inválida na linha $1. 0 necessário que seja um número',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: especificação desc inválida. 0 necessário que seja uma dentre: <tt>$1</tt>',
+	'imagemap_description' => 'Sobre esta imagem',
+	'imagemap_poly_odd' => 'Erro: encontrado polígono com número ímpar de coordenadas na linha $1',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'imagemap_desc' => 'Permite mapas de imagem clicáveis no lado do cliente usando a marca <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image' => 'Erro: deve ser especificada uma imagem na primeira linha',
+	'imagemap_invalid_image' => 'Erro: imagem inválida ou inexistente',
+	'imagemap_bad_image' => 'Erro: a imagem está na lista negra para esta página',
+	'imagemap_no_link' => 'Erro: não foi encontrada uma ligação válida ao final da linha $1',
+	'imagemap_invalid_title' => 'Erro: título inválido na ligação da linha $1',
+	'imagemap_missing_coord' => 'Erro: coordenadas insuficientes para formar uma figura na linha $1',
+	'imagemap_unrecognised_shape' => 'Erro: figura não reconhecida na linha $1. Cada linha precisa iniciar com: default, rect, circle ou poly',
+	'imagemap_no_areas' => 'Erro: é necessário fornecer ao menos uma especificação de área',
+	'imagemap_invalid_coord' => 'Erro: coordenada inválida na linha $1, é necessário que seja um número',
+	'imagemap_invalid_desc' => 'Erro: especificação desc inválida, é necessário que seja uma dentre: <tt>$1</tt>',
 	'imagemap_description' => 'Sobre esta imagem',
 	'imagemap_poly_odd' => 'Erro: encontrado polígono com número ímpar de coordenadas na linha $1',
 );

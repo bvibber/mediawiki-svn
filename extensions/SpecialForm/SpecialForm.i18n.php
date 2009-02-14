@@ -300,6 +300,10 @@ $messages['es'] = array(
 	'formtitlepattern' => 'Agregar nuevo $1',
 	'formsave' => 'Guardar',
 	'formarticleexists' => 'La página existe',
+	'formarticleexiststext' => 'La página [[$1]] ya existe.',
+	'formbadpagename' => 'Mal nombre de página',
+	'formbadrecaptcha' => 'Valores incorrectos para reCaptcha. Intente nuevamente.',
+	'formsaveerrortext' => "Hubo un error desconocido grabando la página '$1'.",
 );
 
 /** Basque (Euskara)
@@ -1092,6 +1096,13 @@ Var god fyll i det.',
 	'formsavesummary' => 'Ny sida använder [[Special:Form/$1|formuläret $1]]',
 	'formsaveerror' => 'Fel under sparning av formuläret',
 	'formsaveerrortext' => 'Det uppstod ett okänt fel under sparning av sidan "$1".',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'formsave' => 'Hifadhi',
 );
 
 /** Telugu (తెలుగు)

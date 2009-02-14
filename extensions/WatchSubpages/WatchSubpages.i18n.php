@@ -271,6 +271,13 @@ $messages['he'] = array(
 בעת סימון או ביטול סימון של דפים מרובים, החזקת מקש ה־Shift מאפשרת לכם לבחור מספר תיבות סימון עוקבות באמצעות לחיצה על כל התיבות האחרונות של הטווחים לסימון.',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'watchsubpages' => 'Prati podstranice',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

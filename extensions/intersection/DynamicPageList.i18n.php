@@ -189,6 +189,17 @@ $messages['dsb'] = array(
 	'intersection_noincludecats' => 'Zmólka: Musyš nanejmjenjej jadnu kategoriju zapśěgnuś abo mjenjowy rum pódaś!',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'intersection-desc' => 'Έχει ως έξοδο μια μη αριθμημένη λίστα των πιο πρόσφατων στοιχείων σε μια κατηγορία, ή μια τομή μερικών κατηγοριών',
+	'intersection_toomanycats' => 'Σφάλμα: Πάρα πολλές κατηγορίες!',
+	'intersection_toofewcats' => 'Σφάλμα: Πολύ λίγες κατηγορίες!',
+	'intersection_noresults' => 'Σφάλμα: Δεν υπάρχουν αποτελέσματα!',
+	'intersection_noincludecats' => 'Σφάλμα: Πρέπει να περιλάβετε τουλάχιστον μία κατηγορία, ή να ορίσετε μια περιοχή ονομάτων!',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

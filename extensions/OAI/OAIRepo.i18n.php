@@ -93,6 +93,13 @@ $messages['dsb'] = array(
 	'oai-desc' => 'Stajijo skłaźišćowy interfejs [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] k dispoziciji',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'oai-desc' => 'Παρέχει διεπαφή πηγής πληροφοριών [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -164,6 +164,16 @@ How '''NIC''' zapisaś!",
 	'simpleantispam-desc' => 'Pśidawa formularam jadnoru antispamowu kontrolu pśez bośik',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'simpleantispam' => 'Η επεξεργασία σας ενεργοποίησε τον μηχανισμό anti-spam',
+	'simpleantispam-label' => "Έλεγχος anti-spam.
+'''ΜΗΝ''' το συμπληρώσετε αυτό!",
+	'simpleantispam-desc' => 'Προσθέτει έναν απλό έλεγχο spam/bot σε φόρμες',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

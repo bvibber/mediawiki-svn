@@ -131,6 +131,14 @@ $messages['dsb'] = array(
 	'newuseredit-summary' => 'Pśidawa [[{{int:newusermessage-template}}|pówitańsku powěsć]] diskusijnemu bokoju nowego wužywarja',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'newusermessage-desc' => 'Προσθέτει ένα μήνυμα σε σελίδες συζήτησης πρόσφατα δημιουργημένων χρηστ-ών/ριών',
+	'newuseredit-summary' => 'Ένα [[{{int:newusermessage-template}}|μήνυμα καλωσορίσματος]] προστίθεται στη σελίδα συζήτησης του νέου χρήστ-η/ριας',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

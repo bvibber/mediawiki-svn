@@ -878,6 +878,25 @@ $messages['pt'] = array(
 	'dt_xml_freetext' => 'Texto Livre',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'dt-desc' => 'Permite a importação e exportação de dados estruturados contidos em chamadas de predefinições',
+	'viewxml' => 'Ver XML',
+	'dt_viewxml_docu' => 'Por favor, selecione dentre as categorias e espaços nominais seguintes para ver em formato XML.',
+	'dt_viewxml_categories' => 'Categorias',
+	'dt_viewxml_namespaces' => 'Espaços nominais',
+	'dt_viewxml_simplifiedformat' => 'Formato simplificado',
+	'dt_xml_namespace' => 'Espaço nominal',
+	'dt_xml_page' => 'Página',
+	'dt_xml_field' => 'Campo',
+	'dt_xml_name' => 'Nome',
+	'dt_xml_title' => 'Título',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Texto Livre',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

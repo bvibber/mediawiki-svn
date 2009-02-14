@@ -164,6 +164,11 @@ $aliases['no'] = array(
 	'ExpandTemplates' => array( 'Utvid maler' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'ExpandTemplates' => array( 'Rozwijanie szablonów' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'ExpandTemplates' => array( 'کينډۍ غځول' ),

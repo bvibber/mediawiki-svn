@@ -395,6 +395,7 @@ $messages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'signdocument' => 'Падпісаньне дакумэнту',
@@ -412,7 +413,7 @@ $messages['be-tarask'] = array(
 	'sign-phone' => 'Нумар тэлефону:',
 	'sign-bday' => 'Узрост:',
 	'sign-email' => 'Адрас электроннай пошты:',
-	'sign-indicates-req' => '<small><i><font color="red">*</font> пазначае абавязковы палі.</i></small>',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> пазначае абавязковыя палі.</i></small>',
 	'sign-hide-note' => '<small><i><font color="red">**</font> Заўвага: схаваная інфармацыя будзе бачная для мадэратараў.</i></small>',
 	'sign-list-anonymous' => 'Сьпіс ананімных',
 	'sign-list-hideaddress' => 'Не паказваць адрас',
@@ -421,10 +422,68 @@ $messages['be-tarask'] = array(
 	'sign-list-hidebday' => 'Не паказваць узрост',
 	'sign-list-hideemail' => 'Не паказваць адрас электроннай пошты',
 	'sign-submit' => 'Падпісаць дакумэнт',
+	'sign-information' => '<div class="noarticletext">Дзякуй, што Вы патрацілі свой час на чытаньне гэтага дакумэнта.
+Калі Вы згодныя зь ім, калі ласка, выкажыце яму падтрымку, запоўніўшы ніжэй неабходныя палі і націснуўшы кнопку «Падпісаць дакумэнт».
+Калі ласка, упэўніцеся, што Вашая асабістая інфармацыя зьяўляецца дакладнай і мы будзем мець магчымасьць з Вамі скантактавацца для праверкі сапраўднасьці подпісу.
+Заўважце, што Ваш ІР-адрас і іншая ідэнтыфікацыйная інфармацыя будзе запісаная ў гэтай форме і выкарыстаная мадэратарамі, каб выключыць магчымасьць падвойных подпісаў і пацьверджаньня Вашай асабістай інфармацыі.
+У выніку таго, што адкрытыя і ананімныя проксі-сэрвэра перашкаджаюць падобным праверкам, подпісы пададзеныя зь іх, хутчэй за ўсё, улічвацца ня будуць.
+Калі Вы цяпер далучаныя праз проксі-сэрвэр, калі ласка, адлучыцеся ад яго і выкарыстайце стандартнае далучэньне пад час подпісу.</div>
+
+$1',
+	'sig-success' => 'Вы пасьпяхова падпісалі дакумэнт.',
+	'sign-view-selectfields' => '<b>Палі для паказу:</b>',
+	'sign-viewfield-entryid' => 'Ідэнтыфікатар запісу',
+	'sign-viewfield-timestamp' => 'Дата/час',
 	'sign-viewfield-realname' => 'Імя',
+	'sign-viewfield-address' => 'Адрас',
+	'sign-viewfield-city' => 'Горад',
+	'sign-viewfield-state' => 'Штат',
 	'sign-viewfield-country' => 'Краіна',
+	'sign-viewfield-zip' => 'Паштовы індэкс',
+	'sign-viewfield-ip' => 'ІР-адрас',
+	'sign-viewfield-agent' => 'Браўзэр',
+	'sign-viewfield-phone' => 'Тэлефон',
+	'sign-viewfield-email' => 'Электронная пошта',
+	'sign-viewfield-age' => 'Узрост',
+	'sign-viewfield-options' => 'Устаноўкі',
+	'sign-viewsigs-intro' => 'Ніжэй паказаны подпісы сабраныя за <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Цяпер падпісаньне ўключанае для гэтага дакумэнта.',
+	'sign-sigadmin-close' => 'Адключыць падпісаньне',
+	'sign-sigadmin-currentlyclosed' => 'Цяпер падпісаньне адключанае для гэтага дакумэнту.',
+	'sign-sigadmin-open' => 'Уключыць падпісаньне',
+	'sign-signatures' => 'Подпісы',
+	'sign-sigadmin-closesuccess' => 'Падпісаньне пасьпяхова адключанае.',
+	'sign-sigadmin-opensuccess' => 'Падпісаньне пасьпяхова ўключана.',
+	'sign-viewsignatures' => 'паказаць подпісы',
+	'sign-closed' => 'закрыта',
+	'sign-error-closed' => 'Падпісаньне для гэтага дакумэнту цяпер адключанае.',
+	'sig-anonymous' => '<i>Ананімны</i>',
+	'sig-private' => '<i>Прыватны</i>',
+	'sign-sigdetails' => 'Падрабязнасьці пра подпіс',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|гутаркі]] • <!--
+-->[[Special:Contributions/$1|унёсак]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|блякаваньне ўдзельніка]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} журнал блякаваньняў] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} праверыць ІР-адрас])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Выдаленыя',
+	'sign-viewfield-reviewedby' => 'Правяраючы',
 	'sign-viewfield-reviewcomment' => 'Камэнтар',
+	'sign-detail-uniquequery' => 'Падобныя запісы',
+	'sign-detail-uniquequery-run' => 'Выканаць запыт',
+	'sign-detail-strike' => 'Выдаліць подпіс',
+	'sign-reviewsig' => 'Праверыць подпіс',
 	'sign-review-comment' => 'Камэнтар',
+	'sign-submitreview' => 'Правесьці праверку',
+	'sign-uniquequery-similarname' => 'Падобнае імя',
+	'sign-uniquequery-similaraddress' => 'Падобны адрас',
+	'sign-uniquequery-similarphone' => 'Падобны тэлефон',
+	'sign-uniquequery-similaremail' => 'Падобны адрас электроннай пошты',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] падпісаў [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Bulgarian (Български)
@@ -623,6 +682,96 @@ $messages['de-formal'] = array(
 Bitte lesen Sie das gesammte Dokument und wenn Sie ihm Ihre Zustimmung geben, füllen Sie bitte die nötigen Felder aus, um es zu signieren.</div>',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'signdocument' => 'Dokument signěrowaś',
+	'sign-nodocselected' => 'Pšosym wubjeŕ dokument, kótaryž coš signěrowaś.',
+	'sign-selectdoc' => 'Dokument:',
+	'sign-docheader' => '<div class="noarticletext">Pšosym wuž toś ten formular, aby signěrował slědujucy dokument "[[$1]]". Pśecytaj ceły dokument, a jolic coš swóju pódpěru za njen daś, wupołń trěbne póla, aby jen signěrował.</div>',
+	'sign-error-nosuchdoc' => 'Dokument, kótaryž sy se pominał ($1), njeeksistěrujo.',
+	'sign-realname' => 'Mě:',
+	'sign-address' => 'Droga:',
+	'sign-city' => 'Město:',
+	'sign-state' => 'Zwězkowy kraj:',
+	'sign-zip' => 'Postowa licba:',
+	'sign-country' => 'Kraj:',
+	'sign-phone' => 'Telefonowy numer:',
+	'sign-bday' => 'Starstwo:',
+	'sign-email' => 'E-mailowa adresa:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> wobznamjenjujo trěbne pólo.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Pśispomnjeśe: Njepódane informacije su weto za moderatorow widobne.</i></small>',
+	'sign-list-anonymous' => 'Anonymnje nalicyś',
+	'sign-list-hideaddress' => 'Adresu njepomjeniś',
+	'sign-list-hideextaddress' => 'Město, zwězkowy kraj, postowu licbu abo kraj njenalicyś',
+	'sign-list-hidephone' => 'Telefonowy numer njepomjeniś',
+	'sign-list-hidebday' => 'Starstwo njepomjeniś',
+	'sign-list-hideemail' => 'E-mailowu adresu njepomjeniś',
+	'sign-submit' => 'Dokument signěrowaś',
+	'sign-information' => '<div class="noarticletext">Źěkujomy se za to, až sy se cas wzeł, toś ten dokument pśecytaś. Jolic sy z tym wobjadny, pokaž pšosym swój pódpěru a wupołń trěbne póla  dołojce a klikni na "Dokument signěrowaś".
+Pšosym pśeznań se, až twóje wósobinske informacije su korektne a až mamy móžnosć se z tobu do zwiska stajiś, aby my pśekontrolěrowali twóju identitu.
+Glědaj, až twója IP-adresa a druge identificěrujuce informacije budu se pśez toś ten formular registrěrowaś a budu se wót moderatorow wužywaś, aby eliminěrowali dwójne signatury a wobkšuśowali pšawosć twójich wósobinskich informacijow.
+Dokulaž wužywanje wócynjonych a anonymnych proksy wobgranicujo našu móžnosć toś ten nadawk dopołniś, signatury ze takich proksy njebudu se nejskerje licyś.
+Jolic sy tuchylu pśez serwer proksy zwězany, pśetergni pšosym zwisk a wuž standardny zwisk pśi signěrowanju.</div>
+
+$1',
+	'sig-success' => 'Sy wuspěšnje signěrował dokument.',
+	'sign-view-selectfields' => '<b>Póla, kótarež maju se zwobrazniś:</b>',
+	'sign-viewfield-entryid' => 'ID zapiska',
+	'sign-viewfield-timestamp' => 'Casowy kołk',
+	'sign-viewfield-realname' => 'Mě',
+	'sign-viewfield-address' => 'Adresa',
+	'sign-viewfield-city' => 'Město',
+	'sign-viewfield-state' => 'Zwězkowy kraj',
+	'sign-viewfield-country' => 'Kraj',
+	'sign-viewfield-zip' => 'Postowa licba',
+	'sign-viewfield-ip' => 'IP-adresa',
+	'sign-viewfield-agent' => 'Identifikacija wobglědowaka',
+	'sign-viewfield-phone' => 'Telefon',
+	'sign-viewfield-email' => 'E-mail',
+	'sign-viewfield-age' => 'Starstwo',
+	'sign-viewfield-options' => 'Opcije',
+	'sign-viewsigs-intro' => 'Dołojce slěduju signatury zregistrěrowane za <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Signěrowanje jo tuchylu zmóžnjone za toś ten dokument.',
+	'sign-sigadmin-close' => 'Signěrowanje znjemóžniś',
+	'sign-sigadmin-currentlyclosed' => 'Signěrowanje jo tuchylu znjemóžnjone za toś ten dokument.',
+	'sign-sigadmin-open' => 'Signěrowanje zmóžniś',
+	'sign-signatures' => 'Signatury',
+	'sign-sigadmin-closesuccess' => 'Signěrowanje wuspěšnje znjemóžnjone.',
+	'sign-sigadmin-opensuccess' => 'Signěrowanje wuspěšnje zmóžnjone.',
+	'sign-viewsignatures' => 'signatury se woglědaś',
+	'sign-closed' => 'zacynjony',
+	'sign-error-closed' => 'Signěrowanje toś togo dokumenta jo tuchylu znjemóžnjone.',
+	'sig-anonymous' => '<i>Anonymny</i>',
+	'sig-private' => '<i>Priwatny</i>',
+	'sign-sigdetails' => 'Drobnostki signatury',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|diskusija]] • <!--
+-->[[Special:Contributions/$1|pśinoski]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|wužywarja blokerowaś]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} protokol blokěrowanjow] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} kontrolowy wužywaŕ])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Wušmarnjony',
+	'sign-viewfield-reviewedby' => 'Pséglědowaŕ',
+	'sign-viewfield-reviewcomment' => 'Komentar',
+	'sign-detail-uniquequery' => 'Pódobne entity',
+	'sign-detail-uniquequery-run' => 'Napšašowanje startowaś',
+	'sign-detail-strike' => 'Signaturu wušmarnuś',
+	'sign-reviewsig' => 'Signaturu pśeglědaś',
+	'sign-review-comment' => 'Komentar',
+	'sign-submitreview' => 'Pśeglědanje wótpósłaś',
+	'sign-uniquequery-similarname' => 'Pódobne mě',
+	'sign-uniquequery-similaraddress' => 'Pódobna adresa',
+	'sign-uniquequery-similarphone' => 'Pódobny telefonowy numer',
+	'sign-uniquequery-similaremail' => 'Pódobna e-mailowa adresa',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] jo signěrował [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -718,20 +867,29 @@ $messages['eo'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'signdocument' => 'Firmar documento',
+	'sign-nodocselected' => 'Por favor seleccione el documento que desea firmar.',
 	'sign-selectdoc' => 'Documento:',
 	'sign-realname' => 'Nombre:',
+	'sign-address' => 'Dirección domiciliaria:',
 	'sign-city' => 'Ciudad:',
 	'sign-state' => 'Estado:',
+	'sign-zip' => 'Código postal:',
 	'sign-country' => 'País:',
 	'sign-phone' => 'Número de teléfono:',
 	'sign-bday' => 'Edad:',
 	'sign-email' => 'Dirección de correo electrónico:',
+	'sign-submit' => 'Firmar documento',
+	'sig-success' => 'Ha firmado exitosamente el documento.',
 	'sign-viewfield-realname' => 'Nombre',
+	'sign-viewfield-address' => 'Dirección',
 	'sign-viewfield-city' => 'Ciudad',
 	'sign-viewfield-state' => 'Estado',
 	'sign-viewfield-country' => 'País',
 	'sign-viewfield-ip' => 'Dirección IP',
+	'sign-viewfield-phone' => 'Teléfono',
 	'sign-viewfield-email' => 'Correo electrónico',
+	'sign-viewfield-age' => 'Edad',
 	'sign-viewfield-options' => 'Opciones',
 	'sig-anonymous' => '<i>Anónimo</i>',
 	'sig-private' => '<i>Privado</i>',

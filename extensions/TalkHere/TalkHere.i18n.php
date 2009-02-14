@@ -246,6 +246,9 @@ La operaciistoj de la retejo ne estas respondeca pri la enhavo de tiaj komentoj.
  */
 $messages['es'] = array(
 	'talkhere-desc' => 'Poner la página de discusión dentro de la página',
+	'talkhere-foottext' => 'Los comentarios de arriba pueden haber sido dejados por visitantes.
+
+El operador de este sitio no puede tener responsabilidad por el contenido de tales comentarios.',
 	'talkhere-talkpage' => 'página de discusión',
 	'talkhere-notalk' => "''(aún sin comentarios)''",
 	'talkhere-addcomment' => 'agregar comentario',

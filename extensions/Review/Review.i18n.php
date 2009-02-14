@@ -981,12 +981,12 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'review_sidebar_title' => 'Nohloore',
-	'review-desc' => 'Dat widder operstandene [[Special:Review|Nohlesse]].',
+	'review-desc' => 'Dat widder-op-ershtande Werrekzüsh för et [[Special:Review|Nohkikke]].',
 	'review_sidebar_explanation' => 'Dat lenkeste Käßje bedügk emmer „kein Meinung“.',
-	'review_page_link' => 'Shtatistike vum Nohloore',
+	'review_page_link' => 'Shtatistike vum Nohkikke',
 	'review_error' => 'Öhnzjät es verkiehrt!',
 	'review_total_statistics' => 'Zosamme',
-	'review_statistics_left_corner' => 'Nohloore',
+	'review_statistics_left_corner' => 'Nohkikke un Pröfe',
 	'review_version_link' => 'De Version $1 nohloore',
 	'review_statistic_cell' => 'Dä Dorschnett: $1 vun $2<br />($4 Metmaacher, $5 Namloose)',
 	'review_version_statistic_cell' => '$1 vun $2',

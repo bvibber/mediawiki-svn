@@ -60,6 +60,13 @@ $messages['eo'] = array(
 	'htmlets-desc' => 'Permesas al vi enigi HTML-kodpecojn de dosieroj uzante la etikedon <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'htmlets-desc' => 'Permite incorporar fragmentos de HTML desde archivos por medio de la etiqueta <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -176,7 +183,7 @@ $messages['oc'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'htmlets-desc' => 'Permite-lhe incluir "inline" blocos de HTML a partir de ficheiros usando a marca <tt><nowiki><htmlet></nowiki></tt>',
+	'htmlets-desc' => 'Permite-lhe incluir em linha fragmentos de HTML a partir de ficheiros usando a marca <tt><nowiki><htmlet></nowiki></tt>',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

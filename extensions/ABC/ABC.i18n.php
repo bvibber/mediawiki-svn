@@ -217,6 +217,14 @@ $messages['hsb'] = array(
 	'abcdownload' => 'Sćahnyć',
 );
 
+/** Italian (Italiano)
+ * @author Melos
+ */
+$messages['it'] = array(
+	'abcdesc' => 'Aggiunge il tag <tt>&lt;abc&gt;</tt> per la musica in formato ABC',
+	'abcdownload' => 'Download:',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

@@ -1217,7 +1217,14 @@ $wdMessages['be-tarask'] = array(
  * @author DCLXVI
  */
 $wdMessages['bg'] = array(
+	'langman_not_allowed' => 'Нямате право да променяте езиковите настройки.',
+	'langman_adding' => 'Добавяне на езика $1 с ключ $2.',
+	'langman_langname' => 'Име на езика:',
+	'langman_field_optional' => '(незадължително)',
+	'langman_addlang' => 'Добавяне на език',
 	'datasearch' => 'Уикиданни: Търсене на данни',
+	'datasearch_language' => 'Език:',
+	'ow_importtsv_nothing_added' => 'Нищо не беше добавено.',
 	'ow_exporttsv_languages' => 'Езици:',
 	'ow_save' => 'Съхранение',
 	'ow_history' => 'История',
@@ -1225,6 +1232,9 @@ $wdMessages['bg'] = array(
 	'ow_uiprefs' => 'Уикиданни',
 	'ow_none_selected' => 'Нищо не е избрано',
 	'ow_transaction_user' => 'Потребителско име:',
+	'ow_transaction_previous_version' => 'Предишна версия',
+	'ow_transaction_restore' => 'Възстановяване',
+	'ow_transaction_remove' => 'Премахване',
 	'ow_transaction_summary' => 'Резюме',
 	'ow_conceptmapping_no_action_specified' => 'Действието „$1“ не се поддържа от системата.',
 	'ow_dm_OK' => 'Добре',
@@ -2118,18 +2128,38 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $wdMessages['el'] = array(
-	'datasearch' => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
-	'langman_title' => 'Διαχειριστής γλώσσας',
 	'languages' => 'Wikidata: Διαχειριστής γλώσσας',
+	'langman_title' => 'Διαχειριστής γλώσσας',
+	'langman_langname' => 'Όνομα γλώσσας:',
+	'langman_iso639-3' => 'Κωδικός ISO 639-3:',
+	'langman_iso639-2' => 'Κωδικός ISO 639-2:',
+	'langman_field_optional' => '(προαιρετικό)',
+	'langman_addlang' => 'Προσθἠκη γλώσσας',
+	'datasearch' => 'Βικιδεδομένα: Αναζήτηση δεδομένων',
+	'datasearch_language' => 'Γλώσσα:',
+	'datasearch_meaning' => 'Νόημα',
+	'datasearch_search_text' => 'Αναζήτηση κειμένου:',
+	'ow_exporttsv_languages' => 'Γλώσσες:',
 	'ow_save' => 'Αποθηκεύστε',
+	'ow_history' => 'Ιστορικό',
 	'ow_uiprefs' => 'Βικιδεδομένα',
+	'ow_transaction_summary' => 'Περίληψη',
+	'ow_dm_OK' => 'Εντάξει',
+	'ow_dm_not_present' => 'δεν εισήχθη',
 	'ow_Annotation' => 'Σχολιασμός',
 	'ow_ClassAttributeLevel' => 'Επίπεδο',
 	'ow_ClassAttributeType' => 'Τύπος',
 	'ow_Collection' => 'Συλλογή',
+	'ow_Collection_colon' => 'Συλλογή:',
+	'ow_CollectionMember' => 'Μέλος της συλλογής',
+	'ow_CollectionMembership' => 'Σώμα μελών της συλλογής',
+	'ow_Definition' => 'Ορισμός',
 	'ow_DefinedMeaningAttributes' => 'Σχολιασμός',
+	'ow_Expression' => 'Έκφραση',
+	'ow_GotoSource' => 'Μετάβαση στην πηγή',
 	'ow_Language' => 'Γλώσσα',
 	'ow_LevelAnnotation' => 'Σχολιασμός',
 	'ow_OptionAttribute' => 'Ιδιότητα',
@@ -2140,14 +2170,21 @@ $wdMessages['el'] = array(
 	'ow_Synonyms' => 'Συνώνυμα',
 	'ow_SynonymsAndTranslations' => 'Συνώνυμα και μεταφράσεις',
 	'ow_Source' => 'Πηγή',
-	'ow_TextAttribute' => 'Ιδιότητα',
 	'ow_Text' => 'Κείμενο',
+	'ow_TextAttribute' => 'Ιδιότητα',
+	'ow_Time' => 'Χρόνος',
 	'ow_TranslatedTextAttribute' => 'Ιδιότητα',
 	'ow_TranslatedText' => 'Μεταφρασμένο κείμενο',
 	'ow_TranslatedTextAttributeValue' => 'Κείμενο',
 	'ow_LinkAttribute' => 'Ιδιότητα',
 	'ow_LinkAttributeValues' => 'Σύνδεσμοι',
+	'ow_User' => 'Χρήστης',
 	'ow_Property' => 'Ιδιότητα',
+	'ow_Value' => 'Τιμή',
+	'ow_class_attr_type_link' => 'Σύνδεσμος',
+	'ow_show' => 'Προβολή',
+	'ow_create' => 'Δημιουργία',
+	'ow_suggest_next' => 'Επόμενη',
 );
 
 /** Esperanto (Esperanto)
@@ -5005,6 +5042,7 @@ $wdMessages['lb'] = array(
 	'ow_importtsv_file' => 'TSV Fichier:',
 	'ow_importtsv_test_run' => 'Testlaf:',
 	'ow_importtsv_not_tsv' => '<p>Dëst schéngt kee valabelen TSV-Fichier ze sinn.</p>',
+	'ow_importtsv_test_run_title' => 'Import vun TSV-Daten testen',
 	'ow_importtsv_nothing_added' => 'Näischt derbäigesat.',
 	'ow_importtsv_nothing_added_test' => 'Näischt derbäigesat (Dir hutt en Test gemaach)',
 	'ow_importtsv_results' => '$1 {{PLURAL:$1|Definitioun|Definitiounen}} a(n) $2 {{PLURAL:$2|Iwwersetzung|Iwwersetzungen}} derbäigesat.',
@@ -5047,6 +5085,7 @@ $wdMessages['lb'] = array(
 	'ow_AlternativeDefinitions' => 'Alternativ Definitiounen',
 	'ow_Annotation' => 'Notiz',
 	'ow_ApproximateMeanings' => 'Ongeféier Bedeitungen',
+	'ow_Class' => 'Klass',
 	'ow_ClassAttributeAttribute' => 'Attribut',
 	'ow_ClassAttributes' => 'Klassenattributer',
 	'ow_ClassAttributeLevel' => 'Niveau',
@@ -5067,6 +5106,8 @@ $wdMessages['lb'] = array(
 	'ow_GotoSource' => "Zréck op d'Quell",
 	'ow_Language' => 'Sprooch',
 	'ow_LevelAnnotation' => 'Notiz',
+	'ow_LinkAttributeHeader' => 'Link-Attribut',
+	'ow_Multiple_meanings' => 'Méi Bedeitungen:',
 	'ow_NewExactMeaning' => 'Nei genee Bedeitung',
 	'ow_OptionAttribute' => 'Eegeschaft',
 	'ow_OptionAttributeOption' => 'Optioun',
@@ -5085,6 +5126,7 @@ $wdMessages['lb'] = array(
 	'ow_Source' => 'Quell',
 	'ow_Text' => 'Text',
 	'ow_TextAttribute' => 'Eegeschaft',
+	'ow_TextAttributeHeader' => 'Text-Attribut',
 	'ow_TextAttributeValues' => 'Fräi Texter',
 	'ow_Time' => 'Zäit',
 	'ow_TranslatedTextAttribute' => 'Eegeschaft',
@@ -5754,8 +5796,8 @@ $wdMessages['nn'] = array(
 	'ow_importtsv_title1' => 'Importer TSV',
 	'ow_importtsv_title2' => 'Importér definisjonar og omsetjingar',
 	'ow_importtsv_header' => "<p>Importer definisjonar og omsetjingar frå ei tabulatordelt tekstfil som du kan til dømes ha eksportert frå OpenOffice.org, Excel eller andre rekneark.</p>
-<p>Filformatet på fila må vera det same som filer eksportert frå sida ExportTSV. Om du har endra kolonnenamna vil importen slå feil. Om du har endra id eller det definerande uttrykket for ei definert setning, vil denne linja verta ignorert. Om du har lagt til kolonner, må dei vera på forma 'definitions_iso' eller 'translations_iso', der iso er ei ISO 639-3 språkkode.</p>
-<p>Om boksen 'test run' er kryssa av, vil alle handlingar verta rapportert og testa, men ingen endringar vert gjort i røynda. Du vert oppmoda til å gjera ein slik test før du gjer ein endeleg import.</p>",
+<p>Filformatet på fila må vera det same som filer eksportert frå sida ExportTSV. Om du har endra kolonnenamna vil importen slå feil. Om du har endra id eller det definerande uttrykket for ei definert setning, vil denne linja verta ignorert. Om du har lagt til kolonner, må dei vera på forma 'definitions_iso' eller 'translations_iso', der iso er ein ISO 639-3 språkkode.</p>
+<p>Om boksen 'test run' er kryssa av, vil alle handlingar verta rapportert og testa, men ingen endringar vert gjort i røynda. Du vert oppmoda til å gjera ein slik test før du gjer ein endeleg importering.</p>",
 	'ow_importtsv_not_allowed' => 'Du har ikkje løyve til å gjera ei TSV-importering.',
 	'ow_importtsv_importing' => 'Importerer TSV-data',
 	'ow_importtsv_import_failed' => 'Importeringa mislukkast',
@@ -6502,6 +6544,8 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
 	'ow_suggest_previous' => 'Poprzedni',
 	'ow_suggest_next' => 'Następny',
 	'ow_suggest_clear' => 'Wyczyść',
+	'ow_nstab_definedmeaning' => 'znaczenie zdefiniowane',
+	'ow_nstab_edit_copy' => 'edytuj kopię',
 );
 
 /** Piedmontese (Piemontèis)
@@ -7082,12 +7126,41 @@ $wdMessages['ru'] = array(
 	'datasearch_match_words' => 'Слова, соответствующие «$1», и связанные значения',
 	'datasearch_match_words_lang' => 'Слова на <i>$1</i>, соответствующие «$2», и связанные значения',
 	'importtsv' => 'Викиданные: Импорт TSV',
+	'ow_importtsv_title1' => 'Импорт TSV',
+	'ow_importtsv_title2' => 'Импорт определений и переводов',
+	'ow_importtsv_header' => '<p>Импорт определений и переводов из файла, содержащего значения разделёнными запятыми, который может быть получен из OpenOffice.org, Excel или иной программы работы с электронными таблицами.</p>
+<p>Формат файла должен совпадать с форматом экспорта страницы ExportTSV. Импорт не пройдёт, если вы измените название колонок. Если вы измените идентификатор или определяющее выражение любого определяющего значения, то строка с изменением будет проигнорирована. Если вы добавляете колонки, то они должны быть в виде «definitions_iso» или «translations_iso», где вместо «iso» должен быть код языкаISO 639-3.</p>
+<p>Если стоит отметка «пробный запуск», то несмотря на сообщения, никаких действий в действительности произведено не будет. Рекомендует сделать пробный запуск перед настоящим импортированием.</p>',
+	'ow_importtsv_not_allowed' => 'У вас нет разрешения производить TSV-импорт.',
+	'ow_importtsv_importing' => 'Импортирование TSV-данных',
+	'ow_importtsv_import_failed' => 'Ошибка импортирования',
+	'ow_importtsv_file' => 'TSV-файл:',
+	'ow_importtsv_test_run' => 'Пробный запуск:',
+	'ow_importtsv_not_utf8' => '<p>По всей видимости, кодировка данного файла отличается от UTF-8. Импортируемый файл должен <i>обязательно</i> использовать UTF-8.
+Убедитесь, что ваше приложение правильно сохраняет или экспортирует файл.</p>',
+	'ow_importtsv_not_tsv' => '<p>По всей видимости, формат файла отличается от TSV.</p>',
+	'ow_importtsv_bad_columns' => '<p>Ошибочное имя столбца «$1».<br />
+Столбцы должны называться «definition_iso» или «translations_iso»,  
+где вместо «iso» должен быть код языка.</p>',
+	'ow_importtsv_test_run_title' => 'Пробный запуск импорта TSV-данных',
+	'ow_importtsv_nothing_added' => 'Ничего не добавлено.',
+	'ow_importtsv_nothing_added_test' => 'Ничего не добавлено (был произведён пробный запуск).',
+	'ow_importtsv_results' => '{{PLURAL:$1|Добавлено $1 определение|Добавлено $1 определения|Добавлено $1 определений}} и $2 {{PLURAL:$2|перевод|перевода|переводов}}.',
+	'ow_impexptsv_unknown_lang' => '<p>Неизвестный или ошибочный язык: $1.<br />
+Языки должны быть записаны в виде кодов ISO 639-3.</p>',
+	'exporttsv' => 'Викиданные: Экспорт TSV',
+	'ow_exporttsv_title' => 'Экспорт коллекции в TSV',
+	'ow_exporttsv_header' => '<p>Экспорт коллекции в текстовый файл, содержащий значения разделённые запятыми. Данный файл можно будет импортировать в OpenOffice.org, Excel или другую программу работы с электронными таблицами.<br />
+Выберите коллекцию для экспорта. В поле языков введите через запятую ISO 639-3 коды языков. Начните с тех языков, с которых вы собираетесь переводить (выберите столько, сколько вам нужно), и закончите теми, на которые вы собираетесь делать переводы. Нажмите «Создать», чтобы создать файл.</p>',
+	'ow_exporttsv_languages' => 'Языки:',
+	'ow_exporttsv_not_allowed' => 'У вас нет разрешения делать экспорт TSV.',
+	'ow_exporttsv_export_failed' => 'Ошибка экспорта',
 	'ow_save' => 'Сохранить',
 	'ow_history' => 'История',
 	'ow_datasets' => 'Выбор набора данных',
 	'ow_noedit_title' => 'Нет прав для редактирования',
 	'ow_noedit' => 'Вам не разрешено редактировать страницы в наборе данных «$1». Обратите внимание на [[{{MediaWiki:Ow editing policy url}}|наши правила редактирования]].',
-	'ow_uipref_datasets' => 'Вид по умолчанию',
+	'ow_uipref_datasets' => 'Вид по умолчанию:',
 	'ow_uiprefs' => 'Викиданные',
 	'ow_none_selected' => 'Ничего не выбрано',
 	'ow_conceptmapping_help' => '<p>возможные действия: <ul>
@@ -8332,8 +8405,10 @@ Makipagugnayan sa isang tagapamalakad/tagapagpatakbo ng serbidor o tagapangasiwa
  * @author Karduelis
  */
 $wdMessages['tr'] = array(
-	'langman_title' => 'Lisan idarecisi',
 	'languages' => 'Wikidata: Lisan idarecisi',
+	'langman_title' => 'Lisan idarecisi',
+	'langman_addlang' => 'Dil ekle',
+	'datasearch_language' => 'Dil:',
 	'ow_save' => 'Kaydet',
 	'ow_history' => 'Geçmiş',
 	'ow_dm_OK' => 'Tamam',

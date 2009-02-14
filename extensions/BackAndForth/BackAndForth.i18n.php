@@ -316,6 +316,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'backforth-next' => 'Slijedeći ($1)',
+	'backforth-desc' => 'Dodaje poveznice "Sljedeća" i "Prethodna" na vrh stranica',
 	'backforth-prev' => 'Prethodni ($1)',
 );
 

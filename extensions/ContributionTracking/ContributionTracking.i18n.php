@@ -154,6 +154,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'contrib-tracking-error' => 'Σφάλμα',
 	'contrib-tracking-button' => 'Συνέχεια',
 );
 

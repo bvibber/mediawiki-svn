@@ -122,6 +122,13 @@ $messages['dsb'] = array(
 	'advancedrandom-desc' => 'Wotwołaj pśipadny bok, na kótaremž (abo na jogo diskusijnem boku) jo wótkaz na dany bok. Dajo se wužywaś kaž [[Special:AdvancedRandom/Template:Featured/Talk]], aby se pśipadny wuběrny nastawk zwobraznił abo kaž [[Special:AdvancedRandom/Template:GFDL/Image]], aby se pśipadna dataja GDFL zwobrazniła.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'advancedrandom' => 'Προχωρημένη τυχαία πρόσβαση',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -215,6 +222,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'advancedrandom' => 'Napredne slučajne stranice',
+	'advancedrandom-desc' => 'Nađi slučajnu stranicu s čije stranice za razgovor ili s nje same postoje poveznice koje mogu biti uporabljene poput ove: [[Special:AdvancedRandom/Template:Featured/Talk]] da bi se dobio slučajni izabrani članak ili npr. [[Special:AdvancedRandom/Template:GFDL/Image]] da bi se dobila slučajna GFDL datoteka',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

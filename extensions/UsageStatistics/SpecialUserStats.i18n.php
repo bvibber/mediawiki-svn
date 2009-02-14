@@ -460,8 +460,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'specialuserstats' => 'Στατιστικά χρήσης',
+	'usagestatistics' => 'Στατιστικά χρήσης',
 	'usagestatisticstype' => 'Τύπος',
 	'usagestatisticsintervalday' => 'Ημέρα',
 	'usagestatisticsintervalweek' => 'Εβδομάδα',
@@ -1556,6 +1559,9 @@ $messages['tr'] = array(
 	'usagestatisticsinterval' => 'Zaman',
 	'usagestatisticsstart' => 'Başlangıç tarihi',
 	'usagestatisticsend' => 'Bitiş tarihi',
+	'usagestatisticsintervalday' => 'Gün',
+	'usagestatisticsintervalweek' => 'Hafta',
+	'usagestatisticsintervalmonth' => 'Ay',
 );
 
 /** Vietnamese (Tiếng Việt)

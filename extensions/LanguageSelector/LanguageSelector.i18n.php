@@ -324,6 +324,15 @@ $messages['hi'] = array(
 	'languageselector-setlang' => 'सैट करें',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'languageselector' => 'Jezik',
+	'languageselector-desc' => 'Jezični izbornik na svakoj stranici, također i za posjetitelje',
+	'languageselector-setlang' => 'postavi',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

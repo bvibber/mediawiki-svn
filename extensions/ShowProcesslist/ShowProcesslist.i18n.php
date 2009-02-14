@@ -72,9 +72,19 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'showprocesslist' => 'Паказаць сьпіс працэсаў',
+	'showprocesslist-desc' => 'Паказвае вынік каманды MySQL «[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]»',
+	'showprocesslist-id' => 'Ідэнтыфікатар',
+	'showprocesslist-user' => 'Карыстальнік',
+	'showprocesslist-host' => 'Кампутар',
+	'showprocesslist-db' => 'База зьвестак',
+	'showprocesslist-command' => 'Каманда',
 	'showprocesslist-time' => 'Час',
+	'showprocesslist-state' => 'Стан',
+	'showprocesslist-info' => 'Інфармацыя',
 );
 
 /** Bulgarian (Български)

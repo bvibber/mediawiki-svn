@@ -110,6 +110,11 @@ $aliases['no'] = array(
 	'Watchers' => array( 'Overvåkere' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'Watchers' => array( 'Obserwujący' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'Watchers' => array( 'کتونکي' ),

@@ -103,6 +103,13 @@ $messages['dsb'] = array(
 	'skinperpage-desc' => 'Pśidawa toflicku <tt>&lt;skin&gt;</tt> za wužywanje rozdźělnych skinow na bok',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'skinperpage-desc' => 'Προσθέτει την ετικέτα <tt>&lt;skin&gt;</tt> για την χρήση διαφορετικών skins ανά σελίδα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

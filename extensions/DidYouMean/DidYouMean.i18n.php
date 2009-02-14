@@ -160,6 +160,13 @@ $messages['hi'] = array(
 	'didyoumean-desc' => '"समान" शीर्षक होने वाले पन्नोंमें कड़ीयाँ देता हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'didyoumean-desc' => 'Dodaj poveznice na stranice sa "sličnim" naslovima',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

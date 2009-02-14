@@ -139,6 +139,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'spl3-desc' => 'Crea automáticamente una lista de las subpáginas de una página usando la etiqueta <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Valor desconocido para opción $1.',
 );
 

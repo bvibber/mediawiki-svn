@@ -1099,7 +1099,7 @@ $messages['el'] = array(
 	'code-change-removed' => 'αφαιρέθηκε:',
 	'code-change-added' => 'προστέθηκε:',
 	'code-no-repo' => 'Κανένα αποθηκευτήριο δεν έχει διαμορφωθεί!',
-	'code-notes' => 'σημειώσεις επιθεώρησης',
+	'code-notes' => 'πρόσφατα σχόλια',
 	'code-authors' => 'συγγραφείς',
 	'code-author-dolink' => 'Σύνδεση αυτού του χρήστη με έναν χρήστη wiki:',
 	'code-author-orunlink' => 'Ἠ αποδιασύνδεση αυτού του χρήστη',
@@ -3215,6 +3215,7 @@ $messages['ms'] = array(
 	'code-load-diff' => 'Memuat perbezaan…',
 	'code-notes' => 'catatan semak',
 	'code-authors' => 'pengarang',
+	'code-status' => 'status',
 	'code-tags' => 'label',
 	'code-authors-text' => 'Yang berikut ialah senarai pengarang gedung mengikut tertib lakuan terkini.',
 	'code-author-haslink' => 'Pengarang ini dihubungkan dengan pengguna wiki $1',
@@ -3935,6 +3936,13 @@ $4',
 	'specialpages-group-developer' => 'Narzędzia dewelopera',
 );
 
+/** Pontic (Ποντιακά)
+ * @author Omnipaedista
+ */
+$messages['pnt'] = array(
+	'repoadmin-edit-button' => 'Εγέντον',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -4328,11 +4336,37 @@ $messages['sah'] = array(
 	'code-status-resolved' => 'быһаарыллыбыт',
 	'code-status-ok' => 'сөп',
 	'code-status-deferred' => 'кэлиҥҥигэ көһөрүлүннэ',
+	'code-pathsearch-legend' => 'Биирдиилээн барыллары чопчу аадырыһынан көрдөөһүн',
 	'code-pathsearch-path' => 'Суола:',
 	'code-rev-submit' => 'Уларытыылары бигэргэтии',
+	'code-rev-submit-next' => 'Бигэргэт уонна аныгыскы быһаарылла илиги көрдөр',
+	'codereview-subtitle' => 'Манна $1',
+	'codereview-reply-link' => 'хоруй',
+	'codereview-email-subj' => '[$1] [r$2]: Саҥа ырытыы киирбит',
+	'codereview-email-body' => '"$1" кыттааччы бу барылга r$3 саҥа ырытыы суруйбут.
+
+Толору URL: $2
+
+Ырытыы:
+
+$4',
 	'repoadmin' => 'Бырагыраамма куодун харайыыны салайыы',
 	'repoadmin-new-legend' => 'Саҥа харайар сири оҥоруу',
+	'repoadmin-new-label' => 'Харалта аата:',
+	'repoadmin-new-button' => 'Оҥоруу',
+	'repoadmin-edit-legend' => 'Харалтаны уларытыы "$1"',
+	'repoadmin-edit-path' => 'Харалтаҕа суол:',
+	'repoadmin-edit-bug' => 'Bugzilla суола:',
+	'repoadmin-edit-view' => 'ViewVC суола:',
 	'repoadmin-edit-button' => 'Сөп',
+	'repoadmin-edit-sucess' => 'Харалта "[[Special:Code/$1|$1]]" уларытылынна.',
+	'right-repoadmin' => 'Куодтар харалталарын салайыы',
+	'right-codereview-add-tag' => 'Барылларга саҥа бэлиэни эбэн биэрии',
+	'right-codereview-remove-tag' => 'Бэлиэлэри торумнартан сотуу',
+	'right-codereview-post-comment' => 'Барылларга ырытыы суруйуу',
+	'right-codereview-set-status' => 'Барыллар стаатустарын уларытыы',
+	'right-codereview-link-user' => 'Ааптардары биикигэ бэлиэтэммит ааттары кытта сигээһин',
+	'specialpages-group-developer' => 'Оҥорооччу тэриллэрэ (үнүстүрүмүөннэрэ)',
 );
 
 /** Sicilian (Sicilianu)

@@ -118,6 +118,14 @@ $messages['eo'] = array(
 	'linkopenid-prefstext-openid' => 'Via OpenID:',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-openid' => 'Su OpenID:',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

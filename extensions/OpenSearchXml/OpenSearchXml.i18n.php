@@ -73,6 +73,13 @@ $messages['dsb'] = array(
 	'opensearchxml-desc' => 'Interfejs [http://www.opensearch.org OpenSearch] XML za tekstowe wupise',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'opensearchxml-desc' => 'Η διεπαφή XML [http://www.opensearch.org OpenSearch] παρέχει εξαγωγές κειμένου',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

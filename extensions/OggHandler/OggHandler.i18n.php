@@ -657,22 +657,39 @@ Pšosym <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Cient_downlo
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dead3y3
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'ogg-desc' => 'Χειριστής για αρχεία Ogg Theora και Vorbis, με αναπαραγωγέα JavaScript',
+	'ogg-short-audio' => 'Αρχείο ήχου Ogg $1, $2',
+	'ogg-short-video' => 'Αρχείο βίντεο Ogg $1, $2',
+	'ogg-short-general' => 'Αρχείο μέσων Ogg $1, $2',
+	'ogg-long-audio' => '(Αρχείο ήχου Ogg $1, διάρκεια $2, $3)',
+	'ogg-long-video' => '(Αρχείο βίντεο Ogg $1, διάρκεια $2, $4×$5 pixels, $3)',
+	'ogg-long-multiplexed' => '(Αρχείο πολυπλεκτικού ήχου/βίντεο Ogg, $1, διάρκεια $2, $4×$5 pixels, $3 ολικά)',
+	'ogg-long-general' => '(Αρχείο μέσων Ogg, διάρκεια $2, $3)',
+	'ogg-long-error' => '(Άκυρο αρχείο ogg: $1)',
 	'ogg-play' => 'Αναπαραγωγή',
 	'ogg-pause' => 'Παύση',
 	'ogg-stop' => 'Διακοπή',
 	'ogg-play-video' => 'Αναπαραγωγή βίντεο',
 	'ogg-play-sound' => 'Αναπαραγωγή ήχου',
-	'ogg-player-thumbnail' => 'Ακόμα μόνο εικόνα',
+	'ogg-no-player' => 'Συγγνώμη, το σύστημά σας δεν φαίνεται να έχει κάποιο υποστηριζόμενο λογισμικό αναπαραγωγής.<br/>
+Παρακαλώ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">κατεβάστε ένα πρόγραμμα αναπαραγωγής</a>.',
+	'ogg-no-xiphqt' => 'Δεν φαίνεται να έχετε το στοιχείο XiphQT για το πρόγραμμα QuickTime.<br/>
+Το πρόγραμμα QuickTime δεν μπορεί να αναπαράγει αρχεία Ogg χωρίς αυτό το στοιχείο.<br/>
+Παρακαλώ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">κατεβάστε το XiphQT</a> ή επιλέξτε ένα άλλο πρόγραμμα αναπαραγωγής.',
+	'ogg-player-videoElement' => 'Τοπική υποστήριξη φυλλομετρητή',
+	'ogg-player-oggPlugin' => 'Πρόσθετο φυλλομετρητή',
+	'ogg-player-thumbnail' => 'Ακίνητη εικόνα μόνο',
 	'ogg-player-soundthumb' => 'Κανένας αναπαραγωγέας',
 	'ogg-player-selected' => '(επιλέχθηκε)',
 	'ogg-use-player' => 'Χρησιμοποίησε αναπαραγωγέα:',
 	'ogg-more' => 'Περισσότερα...',
 	'ogg-dismiss' => 'Κλείσιμο',
 	'ogg-download' => 'Κατεβάστε το αρχείο',
-	'ogg-desc-link' => 'Σχετικά με αυτό τα αρχείο',
+	'ogg-desc-link' => 'Σχετικά με αυτό το αρχείο',
 );
 
 /** Esperanto (Esperanto)

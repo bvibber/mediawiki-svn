@@ -229,7 +229,10 @@ $messages['qqq'] = array(
 	'deletequeue-list-search' => '{{Identical|Search}}',
 	'deletequeue-list-header-page' => '{{Identical|Page}}',
 	'deletequeue-list-header-queue' => '{{Identical|Queue}}',
-	'deletequeue-list-header-expiry' => '{{Identical|Expiry}}',	
+	'deletequeue-list-header-expiry' => '{{Identical|Expiry}}',
+	'deletequeue-case-page' => '{{Identical|Page}}',
+	'deletequeue-case-reason' => '{{Identical|Reason}}',
+	'deletequeue-case-expiry' => '{{Identical|Expiry}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -396,6 +399,15 @@ $messages['ar'] = array(
 	'deletequeue-list-header-votes' => 'التأييد والاعتراضات',
 	'deletequeue-list-header-expiry' => 'تاريخ الانتهاء',
 	'deletequeue-list-header-discusspage' => 'صفحة نقاش',
+	'deletequeue-case-intro' => 'هذه الصفحة تعرض المعلومات حول حالة حذف معينة.',
+	'deletequeue-list-header-reason' => 'السبب للحذف',
+	'deletequeue-case-votes' => 'التأييد/المعارضة:',
+	'deletequeue-case-title' => 'تفاصيل حالة الحذف',
+	'deletequeue-case-details' => 'التفاصيل الأساسية',
+	'deletequeue-case-page' => 'الصفحة:',
+	'deletequeue-case-reason' => 'السبب:',
+	'deletequeue-case-expiry' => 'الانتهاء:',
+	'deletequeue-case-needs-review' => 'هذه الحالة تتطلب [[$1|المراجعة]].',
 );
 
 /** Araucanian (Mapudungun)
@@ -547,6 +559,15 @@ $messages['arz'] = array(
 	'deletequeue-list-header-votes' => 'التأييد والاعتراضات',
 	'deletequeue-list-header-expiry' => 'تاريخ الانتهاء',
 	'deletequeue-list-header-discusspage' => 'صفحة نقاش',
+	'deletequeue-case-intro' => 'هذه الصفحة تعرض المعلومات حول حالة حذف معينة.',
+	'deletequeue-list-header-reason' => 'السبب للحذف',
+	'deletequeue-case-votes' => 'التأييد/المعارضة:',
+	'deletequeue-case-title' => 'تفاصيل حالة الحذف',
+	'deletequeue-case-details' => 'التفاصيل الأساسية',
+	'deletequeue-case-page' => 'الصفحة:',
+	'deletequeue-case-reason' => 'السبب:',
+	'deletequeue-case-expiry' => 'الانتهاء:',
+	'deletequeue-case-needs-review' => 'هذه الحالة تتطلب [[$1|المراجعة]].',
 );
 
 /** Assamese (অসমীয়া)
@@ -562,6 +583,7 @@ $messages['as'] = array(
 $messages['be-tarask'] = array(
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-header-page' => 'Старонка',
+	'deletequeue-case-reason' => 'Прычына:',
 );
 
 /** Bulgarian (Български)
@@ -759,6 +781,15 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
 	'deletequeue-list-header-votes' => 'Befürwortungen und Ablehnungen',
 	'deletequeue-list-header-expiry' => 'Ablaufdatum',
 	'deletequeue-list-header-discusspage' => 'Diskussionsseite',
+	'deletequeue-case-intro' => 'Diese Seite listet Informationen über einen Löschantrag auf.',
+	'deletequeue-list-header-reason' => 'Löschbegründung',
+	'deletequeue-case-votes' => 'Befürwortungen/Einwände:',
+	'deletequeue-case-title' => 'Weiterführende Details',
+	'deletequeue-case-details' => 'Basisdetails',
+	'deletequeue-case-page' => 'Seite:',
+	'deletequeue-case-reason' => 'Begründung:',
+	'deletequeue-case-expiry' => 'Ablaufdatum:',
+	'deletequeue-case-needs-review' => 'Dieser Fall braucht eine [[$1|Überprüfung]].',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -923,6 +954,11 @@ La razón dada para este borrado es ''$1''.",
 	'deletequeue-list-header-queue' => 'Cola',
 	'deletequeue-list-header-expiry' => 'Expirar',
 	'deletequeue-list-header-discusspage' => 'Página de discusión',
+	'deletequeue-list-header-reason' => 'Razón para borrado',
+	'deletequeue-case-details' => 'Detalles básicos',
+	'deletequeue-case-page' => 'Página:',
+	'deletequeue-case-reason' => 'Razón:',
+	'deletequeue-case-needs-review' => 'Este caso requiere [[$1|revisión]].',
 );
 
 /** Basque (Euskara)
@@ -1077,6 +1113,7 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author McDutchie
@@ -1220,6 +1257,15 @@ Vous pouvez enregistrer [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} ici] votre 
 	'deletequeue-list-header-votes' => 'Accords et refus',
 	'deletequeue-list-header-expiry' => 'Expiration',
 	'deletequeue-list-header-discusspage' => 'Page de discussion',
+	'deletequeue-case-intro' => 'Cette page liste des informations sur un cas spécifique de suppression.',
+	'deletequeue-list-header-reason' => 'Motif de la suppression',
+	'deletequeue-case-votes' => 'Pour / contre :',
+	'deletequeue-case-title' => 'Détails du cas de suppression',
+	'deletequeue-case-details' => 'Informations de base',
+	'deletequeue-case-page' => 'Page :',
+	'deletequeue-case-reason' => 'Raison :',
+	'deletequeue-case-expiry' => 'Expiration :',
+	'deletequeue-case-needs-review' => 'Ce cas requiert une [[$1|revue]].',
 );
 
 /** Irish (Gaeilge)
@@ -1372,6 +1418,15 @@ Pode rexistrar o seu propio apoio ou obxección na páxina da eliminación: [{{f
 	'deletequeue-list-header-votes' => 'Apoios e obxeccións',
 	'deletequeue-list-header-expiry' => 'Caducidade',
 	'deletequeue-list-header-discusspage' => 'Páxina de conversa',
+	'deletequeue-case-intro' => 'Esta páxina lista información sobre un caso específico de borrado.',
+	'deletequeue-list-header-reason' => 'Motivo do borrado',
+	'deletequeue-case-votes' => 'Apoios/obxeccións:',
+	'deletequeue-case-title' => 'Detalles do caso de borrado',
+	'deletequeue-case-details' => 'Detalles básicos',
+	'deletequeue-case-page' => 'Páxina:',
+	'deletequeue-case-reason' => 'Motivo:',
+	'deletequeue-case-expiry' => 'Caducidade:',
+	'deletequeue-case-needs-review' => 'Este caso precisa dunha [[$1|revisión]].',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1536,6 +1591,15 @@ Du chasch Dyy eige Stimm zue dr Leschig [{{fullurl:{{FULLPAGENAME}}|action=delvo
 	'deletequeue-list-header-votes' => 'Fir- un Gege-Stimme',
 	'deletequeue-list-header-expiry' => 'Ablaufdatum',
 	'deletequeue-list-header-discusspage' => 'Diskussionssyte',
+	'deletequeue-case-intro' => 'Die Syte lischtet Informatione uf iber e bstimmte Leschfall.',
+	'deletequeue-list-header-reason' => 'Leschgrund',
+	'deletequeue-case-votes' => 'Fir-/Gege-Stimme:',
+	'deletequeue-case-title' => 'Leschfalldetail',
+	'deletequeue-case-details' => 'Grunddetail',
+	'deletequeue-case-page' => 'Syte:',
+	'deletequeue-case-reason' => 'Grund:',
+	'deletequeue-case-expiry' => 'Ablaufdatum:',
+	'deletequeue-case-needs-review' => 'Dää Fall bruucht e [[$1|Priefig]].',
 );
 
 /** Hebrew (עברית)
@@ -1957,6 +2021,15 @@ $messages['ja'] = array(
 	'deletequeue-list-header-votes' => '賛成と反対',
 	'deletequeue-list-header-expiry' => '期限',
 	'deletequeue-list-header-discusspage' => '議論ページ',
+	'deletequeue-case-intro' => 'このページでは特定の削除事例の情報を一覧しています。',
+	'deletequeue-list-header-reason' => '削除理由',
+	'deletequeue-case-votes' => '賛成/反対:',
+	'deletequeue-case-title' => '削除事例詳細',
+	'deletequeue-case-details' => '概要',
+	'deletequeue-case-page' => 'ページ:',
+	'deletequeue-case-reason' => '理由:',
+	'deletequeue-case-expiry' => '期限:',
+	'deletequeue-case-needs-review' => 'この事例には[[$1|審査]]が必要です。',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -2196,6 +2269,7 @@ $messages['nah'] = array(
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'deletequeue-desc' => "Voegt een [[Special:DeleteQueue|wachtrij voor het beheren van te verwijderen pagina's]] toe",
@@ -2335,6 +2409,15 @@ U kunt ook [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} steun of bezwaar] aangeg
 	'deletequeue-list-header-votes' => 'Steun en bezwaar',
 	'deletequeue-list-header-expiry' => 'Verloopdatum',
 	'deletequeue-list-header-discusspage' => 'Overlegpagina',
+	'deletequeue-case-intro' => 'Deze pagina geeft informatie weer over een verwijdering.',
+	'deletequeue-list-header-reason' => 'Reden voor de verwijdering',
+	'deletequeue-case-votes' => 'Steun/bezwaren:',
+	'deletequeue-case-title' => 'Verwijderingsdetails',
+	'deletequeue-case-details' => 'Basisdetails',
+	'deletequeue-case-page' => 'Pagina:',
+	'deletequeue-case-reason' => 'Reden:',
+	'deletequeue-case-expiry' => 'Verloop:',
+	'deletequeue-case-needs-review' => 'Deze zaak heeft verder [[$1|onderzoek]] nodig.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2479,6 +2562,15 @@ Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} leggja inn di eiga støtta f
 	'deletequeue-list-header-votes' => 'Støtta og motstand',
 	'deletequeue-list-header-expiry' => 'Går ut',
 	'deletequeue-list-header-discusspage' => 'Diskusjonssida',
+	'deletequeue-case-intro' => 'Denne sida listar opp informasjon for ei einskild slettesak.',
+	'deletequeue-list-header-reason' => 'Grunngjeving for sletting',
+	'deletequeue-case-votes' => 'Støtta/motstand:',
+	'deletequeue-case-title' => 'Slettesakdetaljar',
+	'deletequeue-case-details' => 'Grunnleggjande detaljar',
+	'deletequeue-case-page' => 'Sida:',
+	'deletequeue-case-reason' => 'Grunngjeving:',
+	'deletequeue-case-expiry' => 'Går ut:',
+	'deletequeue-case-needs-review' => 'Denne saka krev [[$1|vurdering]].',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -2715,6 +2807,15 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 	'deletequeue-list-header-votes' => 'Acòrdis e refuses',
 	'deletequeue-list-header-expiry' => 'Expiracion',
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
+	'deletequeue-case-intro' => "Aquesta pagina lista d'informacions sus un cas especific de supression.",
+	'deletequeue-list-header-reason' => 'Motiu de la supression',
+	'deletequeue-case-votes' => 'Per / contra :',
+	'deletequeue-case-title' => 'Detalhs del cas de supression',
+	'deletequeue-case-details' => 'Entresenhas de basa',
+	'deletequeue-case-page' => 'Pagina :',
+	'deletequeue-case-reason' => 'Motiu :',
+	'deletequeue-case-expiry' => 'Expiracion :',
+	'deletequeue-case-needs-review' => 'Aqueste cas requerís una [[$1|revista]].',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -2905,6 +3006,15 @@ Você pode [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registar o seu próprio 
 	'deletequeue-list-header-votes' => 'Suportes e objeções',
 	'deletequeue-list-header-expiry' => 'Validade',
 	'deletequeue-list-header-discusspage' => 'Página de discussão',
+	'deletequeue-case-intro' => 'Esta página lista informação sobre um caso de eliminação específico.',
+	'deletequeue-list-header-reason' => 'Motivo de eliminação',
+	'deletequeue-case-votes' => 'Suportes/objeções:',
+	'deletequeue-case-title' => 'Detalhes do caso de eliminação',
+	'deletequeue-case-details' => 'Detalhes básicos',
+	'deletequeue-case-page' => 'Página:',
+	'deletequeue-case-reason' => 'Motivo:',
+	'deletequeue-case-expiry' => 'Validade:',
+	'deletequeue-case-needs-review' => 'Este caso requer [[$1|revisão]].',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -3052,6 +3162,15 @@ Você pode registrar que também apóia, ou oferecer objeção a essa eliminaç�
 	'deletequeue-list-header-votes' => 'Apoio e objeções',
 	'deletequeue-list-header-expiry' => 'Expira',
 	'deletequeue-list-header-discusspage' => 'Página de discussão',
+	'deletequeue-case-intro' => 'Esta página lista informações sobre um caso de eliminação específico.',
+	'deletequeue-list-header-reason' => 'Motivo da eliminação',
+	'deletequeue-case-votes' => 'Suportes/objeções:',
+	'deletequeue-case-title' => 'Detalhes do caso de eliminação',
+	'deletequeue-case-details' => 'Detalhes básicos',
+	'deletequeue-case-page' => 'Página:',
+	'deletequeue-case-reason' => 'Motivo:',
+	'deletequeue-case-expiry' => 'Validade:',
+	'deletequeue-case-needs-review' => 'Este caso requer [[$1|revisão]].',
 );
 
 /** Romanian (Română)
@@ -3291,6 +3410,15 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
 	'deletequeue-list-header-votes' => 'Podpora a námietky',
 	'deletequeue-list-header-expiry' => 'Vyprší',
 	'deletequeue-list-header-discusspage' => 'Diskusná stránka',
+	'deletequeue-case-intro' => 'Táto stránka uvádza informácie o konkrétnom prípade zmazania.',
+	'deletequeue-list-header-reason' => 'Dôvod zmazania',
+	'deletequeue-case-votes' => 'Podpora/námietky:',
+	'deletequeue-case-title' => 'Podrobnosti prípadu zmazania:',
+	'deletequeue-case-details' => 'Základné podrobnosti',
+	'deletequeue-case-page' => 'Stránka:',
+	'deletequeue-case-reason' => 'Dôvod:',
+	'deletequeue-case-expiry' => 'Uzatvorenie:',
+	'deletequeue-case-needs-review' => 'Tento prípad vyžaduje [[$1|kontrolu]].',
 );
 
 /** Seeltersk (Seeltersk)
@@ -3592,6 +3720,15 @@ Maaari mong [{{fullurl:{{FULLPAGENAME}}|action=delvote}} itala ang sarili mong p
 	'deletequeue-list-header-votes' => 'Mga pagsang-ayon at mga pagtutol',
 	'deletequeue-list-header-expiry' => 'Pagwawakas',
 	'deletequeue-list-header-discusspage' => 'Pahina ng usapan',
+	'deletequeue-case-intro' => 'Nagtatala ang pahinang ito ng kabatiran hinggil sa isang partikular na kaso ng pagbura.',
+	'deletequeue-list-header-reason' => 'Dahilan ng pagbura',
+	'deletequeue-case-votes' => 'Mga pagsang-ayon/mga pagtutol:',
+	'deletequeue-case-title' => 'Mga detalye ng kaso ng pagbura',
+	'deletequeue-case-details' => 'Payak na mga detalye',
+	'deletequeue-case-page' => 'Pahina:',
+	'deletequeue-case-reason' => 'Dahilan:',
+	'deletequeue-case-expiry' => 'Katapusan:',
+	'deletequeue-case-needs-review' => 'Nangangailangan ng [[$1|pagsusuri]] ang kasong ito.',
 );
 
 /** Turkish (Türkçe)

@@ -38,6 +38,7 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticgooglemaps-desc' => 'يسمح للمستخدمين بتعديل وعرض بيانات سيمانتيك الإحداثية باستخدام خرائط جوجل',
+	'semanticgooglemaps-enteraddresshere' => 'أدخل العنوان هنا',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -47,6 +48,7 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticgooglemaps-desc' => 'مسموح لليوزرز إضافة خرايط جوجول لصفحات الويكى بالاعتماد على بيانات هيكلية',
+	'semanticgooglemaps-enteraddresshere' => 'أدخل العنوان هنا',
 );
 
 /** Breton (Brezhoneg)
@@ -59,10 +61,12 @@ $messages['br'] = array(
 
 /** German (Deutsch)
  * @author DaSch
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Koordinaten nachschlagen',
 	'semanticgooglemaps-desc' => 'Bietet die Möglichkeit, semantische Koordinaten mit Hilfe von Google Maps zu bearbeiten und anzuzeigen.',
+	'semanticgooglemaps-enteraddresshere' => 'Adresse hier eingeben',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -71,6 +75,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Za koordinatami póglědaś',
 	'semanticgooglemaps-desc' => 'Dowólujo wužywarjam semantiske koordinatowe daty z pomocu Google Maps wobúěłaś a zwobrazniś',
+	'semanticgooglemaps-enteraddresshere' => 'Zapódaj how adresu',
 );
 
 /** Esperanto (Esperanto)
@@ -95,6 +100,7 @@ $messages['eu'] = array(
 $messages['fr'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticgooglemaps-desc' => "Permet aux utilisateurs d'éditer et d'afficher les données sémantiques de coordonnées utilisant Google Maps",
+	'semanticgooglemaps-enteraddresshere' => 'Entrez ici l’adresse',
 );
 
 /** Galician (Galego)
@@ -103,6 +109,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Ver as coordenadas',
 	'semanticgooglemaps-desc' => 'Permite aos usuarios editar e mostrar datos de coordenadas semánticas usando os mapas do Google (Google Maps)',
+	'semanticgooglemaps-enteraddresshere' => 'Introduza o enderezo aquí',
 );
 
 /** Swiss German (Alemannisch)
@@ -111,6 +118,7 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Koordinate nooluege',
 	'semanticgooglemaps-desc' => 'Bietet d Megligkeit, semantischi Koordinate mit Hilf vu Google Maps z bearbeiten un aazzeige.',
+	'semanticgooglemaps-enteraddresshere' => 'Doo Adräss yygee',
 );
 
 /** Hebrew (עברית)
@@ -128,6 +136,7 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Za koordinatami hladać',
 	'semanticgooglemaps-desc' => 'Dowola wužiwarjam semantiske koordinatowe daty z pomocu Google Maps wobdźěłać a zwobraznić',
+	'semanticgooglemaps-enteraddresshere' => 'Zapodaj tu adresu',
 );
 
 /** Interlingua (Interlingua)
@@ -144,7 +153,8 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'semanticgooglemaps_lookupcoordinates' => '座標を調べる',
-	'semanticgooglemaps-desc' => '利用者が Google マップを使ってセマンティックな座標データを編集・表示できるようにする',
+	'semanticgooglemaps-desc' => '利用者が Google マップを使って意味的な座標データを編集・表示できるようにする',
+	'semanticgooglemaps-enteraddresshere' => 'アドレスをここに入力します',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -160,6 +170,7 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Koordinate nohkike',
 	'semanticgooglemaps-desc' => 'Määt et müjjelesch, op semantesche Ko\'odinaate-Date opjeboute <i lang="en">Google Maps</i> (Landkaate) en et Wiki ennzeboue, un esu en Date ze beärbeide.',
+	'semanticgooglemaps-enteraddresshere' => 'Donn hee de Address enjäve',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -176,6 +187,7 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Coördinaten opzoeken',
 	'semanticgooglemaps-desc' => 'Staat gebruikers toe semantische gegevens te bewerken en weer te geven met behulp van Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Voer hier het adres in',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -184,6 +196,7 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Sjekk koordinatar',
 	'semanticgooglemaps-desc' => 'Lèt brukarar endra og syna semantiske koordinatar ved å nytta Google Maps.',
+	'semanticgooglemaps-enteraddresshere' => 'Skriv inn adressa her',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -200,6 +213,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Estimar las coordenadas',
 	'semanticgooglemaps-desc' => "Permet als utilizaires d'editar e d'afichar las donadas semanticas de coordenadas qu'utilizan Google Maps",
+	'semanticgooglemaps-enteraddresshere' => 'Picatz aicí l’adreça',
 );
 
 /** Polish (Polski)
@@ -218,6 +232,7 @@ $messages['pl'] = array(
 $messages['pt'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticgooglemaps-desc' => 'Permite aos utilizadores editarem e apresentarem dados semânticos coordenados usando Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Introduza um endereço aqui',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -226,6 +241,7 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticgooglemaps-desc' => 'Permite aos utilizadores editarem e apresentarem dados semânticos de coordenadas usando Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Introduza um endereço aqui',
 );
 
 /** Slovak (Slovenčina)
@@ -234,6 +250,7 @@ $messages['pt-br'] = array(
 $messages['sk'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Vyhľadať súradnice',
 	'semanticgooglemaps-desc' => 'Umožňuje používateľom upravovať a zobrazovať sémantické súradnicové údaje pomocou Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Sem zadajte emailovú adresu',
 );
 
 /** Swedish (Svenska)
@@ -251,6 +268,7 @@ $messages['sv'] = array(
 $messages['tl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => "Hanapin ang mga tugmaang-pampook (''coordinate'')",
 	'semanticgooglemaps-desc' => 'Nagpapahintulot sa mga tagagamit na makapagbago at makapagpakita/mapagpalitaw ng dato na pangtugmaang pampook na patungkol/umaayon sa kahulugan o ibig sabihin ng salita na ginagamitan ng mga Mapa ng Google',
+	'semanticgooglemaps-enteraddresshere' => 'Ipasok ang adres dito',
 );
 
 /** Volapük (Volapük)

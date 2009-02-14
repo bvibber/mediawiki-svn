@@ -2563,6 +2563,17 @@ $messages['ro'] = array(
 	'openidchoosepassword' => 'parolă:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'openidxrds' => 'File Yadis',
+	'openidoptional' => 'Opzionele',
+	'openidrequired' => 'Richieste',
+	'openidemail' => 'Indirizze e-mail',
+	'openidlanguage' => 'Lènghe',
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Ferrer
@@ -3083,6 +3094,17 @@ $messages['tr'] = array(
 	'openidconvert' => 'OpenID çeviricisi',
 	'openiderror' => 'Doğrulama hatası',
 	'openiderrortext' => 'OpenID adresi doğrulanırken bir hata oluştu.',
+	'openidconfigerror' => 'OpenID yapılandırma hatası',
+	'openidconfigerrortext' => 'Bu viki için OpenID depolama yapılandırması geçersiz.
+Lütfen bir [[Special:ListUsers/sysop|yöneticiye]] danışın.',
+	'openidpermission' => 'OpenID izinleri hatası',
+	'openidpermissiontext' => "Sağladığınız OpenID'nin bu sunucuya oturum açmasına izin verilmiyor.",
+	'openidcancel' => 'Doğrulama iptal edildi',
+	'openidcanceltext' => 'OpenID URL doğrulaması iptal edildi.',
+	'openidfailure' => 'Doğrulama başarısız',
+	'openidfailuretext' => 'OpenID URL doğrulaması başarısız oldu. Hata iletisi: "$1"',
+	'openidsuccess' => 'Doğrulama başarılı',
+	'openidsuccesstext' => 'OpenID URL doğrulaması başarılı.',
 );
 
 /** Ukrainian (Українська)

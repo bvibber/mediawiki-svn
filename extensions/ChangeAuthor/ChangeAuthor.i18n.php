@@ -762,6 +762,7 @@ $messages['hil'] = array(
  * @author Dalibor Bosits
  * @author Dnik
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'changeauthor' => 'Promijenite autora inačice',
@@ -784,6 +785,7 @@ $messages['hr'] = array(
 	'changeauthor-success' => 'Vaš zahtjev je uspješno obrađen.',
 	'changeauthor-logentry' => 'Promijenjen autor $2 stranice $1 iz $3 u $4',
 	'changeauthor-logpagename' => 'Evidencija promijena autora',
+	'right-changeauthor' => 'Izmjeni autora inačice',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
