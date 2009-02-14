@@ -74,7 +74,7 @@ class SvnRevTablePager extends TablePager {
 	}
 
 	function getDefaultSort() {
-		return strlen( $this->getSVNPath() ) ? 'cp_rev_id' : 'cr_id';
+		return strlen( $this->mView->mPath ) ? 'cp_rev_id' : 'cr_id';
 	}
 
 	function getQueryInfo() {
@@ -126,8 +126,10 @@ class SvnRevTablePager extends TablePager {
 			'cr_timestamp' => wfMsg( 'code-field-timestamp' ),
 		);
 	}
-
-	function formatValue( $name, $value ) {
+	
+	function formatValue( $name, $value ) {} // unused
+	
+	function formatRevValue( $name, $value, $row ) {
 		global $wgUser, $wgLang;
 		switch( $name ) {
 		case 'cp_rev_id':
@@ -137,9 +139,9 @@ class SvnRevTablePager extends TablePager {
 				htmlspecialchars( $value ) );
 		case 'cr_status':
 			return $this->mView->mSkin->link(
-				SpecialPage::getTitleFor( 'Code',
-					$this->mRepo->getName() . '/status/' . $value ),
-				htmlspecialchars( $this->mView->statusDesc( $value ) ) );
+				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/status/' . $value ),
+				htmlspecialchars( $this->mView->statusDesc( $value ) )
+			);
 		case 'cr_author':
 			return $this->mView->authorLink( $value );
 		case 'cr_message':
@@ -148,7 +150,13 @@ class SvnRevTablePager extends TablePager {
 			global $wgLang;
 			return $wgLang->timeanddate( $value, true );
 		case 'comments':
-			return intval( $value );
+			if( $value ) {
+				$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$row->{$this->getDefaultSort()} );
+				$special->setFragment( '#code-comments' );
+				return $this->mView->mSkin->link( $special, htmlspecialchars( $value ) );
+			} else {
+				return intval( $value );
+			}
 		case 'cr_path':
 			return Xml::element('div', array( 'title' => (string)$value ),
 				$wgLang->truncate( (string)$value, 30 ) );
@@ -158,14 +166,28 @@ class SvnRevTablePager extends TablePager {
 	// Note: this function is poorly factored in the parent class
 	function formatRow( $row ) {
 		global $wgWikiSVN;
+		$rowClass = $this->getRowClass( $row );
 		$css = "mw-codereview-status-{$row->cr_status}";
 		if( $this->mRepo->mName == $wgWikiSVN ) {
 			$css .= " mw-codereview-" . ( $row->{$this->getDefaultSort()} <= $this->mCurSVN ? 'live' : 'notlive' );
 		}
-		return str_replace( '<tr>', Xml::openElement( 'tr', array( 'class' => $css ) ),
-			parent::formatRow( $row ) );
+		$s = "<tr class=\"$css\">\n";
+		// Some of this stolen from Pager.php...sigh
+		$fieldNames = $this->getFieldNames();
+		$this->mCurrentRow = $row;  # In case formatValue needs to know
+		foreach( $fieldNames as $field => $name ) {
+			$value = isset( $row->$field ) ? $row->$field : null;
+			$formatted = strval( $this->formatRevValue( $field, $value, $row ) );
+			if( $formatted == '' ) {
+				$formatted = '&nbsp;';
+			}
+			$class = 'TablePager_col_' . htmlspecialchars( $field );
+			$s .= "<td class=\"$class\">$formatted</td>\n";
+		}
+		$s .= "</tr>\n";
+		return $s;
 	}
-
+	
 	function getTitle() {
 		return SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
 	}
