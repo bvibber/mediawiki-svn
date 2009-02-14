@@ -56,6 +56,9 @@ class SpecialCode extends SpecialPage {
 				} elseif( $params[1] === 'status' ) {
 					$view = new CodeRevisionStatusView( $params[0], $params[2] );
 					break;
+				} elseif( $params[1] === 'comments' ) {
+					$view = new CodeCommentsListView( $params[0] );
+					break;
 				} else {
 					# Nonsense parameters, back out
 					if( empty($params[1]) )
