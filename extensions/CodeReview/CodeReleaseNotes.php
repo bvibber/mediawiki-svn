@@ -36,9 +36,9 @@ class CodeReleaseNotes extends CodeView {
 		$wgOut->addHTML( 
 			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get' ) ) .
 			"<fieldset><legend>".wfMsgHtml('code-release-legend')."</legend>" .
-				Xml::hidden( 'title', $special->getPrefixedDBKey() ) .
+				Xml::hidden( 'title', $special->getPrefixedDBKey() ) . '<b>' .
 				Xml::inputlabel( wfMsg("code-release-startrev"), 'startrev', 'startrev', 10, $this->mStartRev ) .
-				'&nbsp;' .
+				'</b>&nbsp;' .
 				Xml::inputlabel( wfMsg("code-release-endrev"), 'endrev', 'endrev', 10, $this->mEndRev ) .
 				'&nbsp;' .
 				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 45, $this->mPath ) .
