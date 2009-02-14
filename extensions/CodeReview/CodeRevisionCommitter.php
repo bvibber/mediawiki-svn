@@ -15,6 +15,10 @@ class CodeRevisionCommitter extends CodeRevisionView {
 			parent::execute();
 			return;
 		}
+		if( !$this->mRev ) {
+			parent::execute();
+			return;
+		}
 		
 		$redirTarget = null;
 		$dbw = wfGetDB( DB_MASTER );
