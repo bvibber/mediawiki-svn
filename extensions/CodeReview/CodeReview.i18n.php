@@ -76,6 +76,11 @@ $messages['en'] = array(
 	'code-rev-submit' => 'Save changes',
 	'code-rev-submit-next' => 'Save & next unresolved',
 	
+	'code-releasenotes'     => 'release notes',
+	'code-release-legend'   => 'Generate release notes',
+	'code-release-startrev' => 'Start rev:',
+	'code-release-endrev'   => 'Last rev:',
+	
 	'codereview-subtitle' => 'For $1',
 	
 	'codereview-reply-link' => 'reply',

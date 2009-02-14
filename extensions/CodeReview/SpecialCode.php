@@ -25,12 +25,7 @@ class SpecialCode extends SpecialPage {
 				$view = new CodeRevisionListView( $params[0] );
 				break;
 			case 2:
-				if( $wgRequest->wasPosted() && !$wgRequest->getCheck('wpPreview') ) {
-					# Add any tags, Set status, Adds comments 
-					$submit = new CodeRevisionCommitter( $params[0], $params[1] );
-					$submit->execute();
-					return;
-				} else if( $params[1] === 'tag' ) {
+				if( $params[1] === 'tag' ) {
 					$view = new CodeTagListView( $params[0] );
 					break;
 				} elseif( $params[1] === 'author' ) {
@@ -42,6 +37,14 @@ class SpecialCode extends SpecialPage {
 				} elseif( $params[1] === 'comments' ) {
 					$view = new CodeCommentsListView( $params[0] );
 					break;
+				} elseif( $params[1] === 'releasenotes' ) {
+					$view = new CodeReleaseNotes( $params[0] );
+					break;
+				} else if( $wgRequest->wasPosted() && !$wgRequest->getCheck('wpPreview') ) {
+					# Add any tags, Set status, Adds comments 
+					$submit = new CodeRevisionCommitter( $params[0], $params[1] );
+					$submit->execute();
+					return;
 				} else { // revision details
 					$view = new CodeRevisionView( $params[0], $params[1] );
 					break;
@@ -86,11 +89,8 @@ class SpecialCode extends SpecialPage {
 		
 		// Add subtitle for easy navigation
 		global $wgOut;
-		if ( $view instanceof CodeView ) {
-			$repo = $view->getRepo();
-			if ( $repo )
-				$wgOut->setSubtitle( wfMsgExt( 'codereview-subtitle', 'parse', 
-					CodeRepoListView::getNavItem( $repo->getName() ) ) );
+		if( $view instanceof CodeView && ($repo = $view->getRepo()) ) {
+			$wgOut->setSubtitle( wfMsgExt( 'codereview-subtitle', 'parse', CodeRepoListView::getNavItem( $repo->getName() ) ) );
 		}
 	}
 }

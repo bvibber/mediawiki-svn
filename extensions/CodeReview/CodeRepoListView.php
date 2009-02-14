@@ -20,12 +20,12 @@ class CodeRepoListView {
 	
 	public static function getNavItem( $name ) {
 		global $wgLang;
-
 		$text = "'''[[Special:Code/$name|$name]]''' (";
 		$links[] = "[[Special:Code/$name/comments|" . wfMsgHtml( 'code-notes' ) . "]]";
 		$links[] = "[[Special:Code/$name/status|" . wfMsgHtml( 'code-status' ) . "]]";
 		$links[] = "[[Special:Code/$name/tag|" . wfMsgHtml( 'code-tags' ) . "]]";
 		$links[] = "[[Special:Code/$name/author|" . wfMsgHtml( 'code-authors' ) . "]]";
+		$links[] = "[[Special:Code/$name/releasenotes|" . wfMsgHtml( 'code-releasenotes' ) . "]]";
 		$text .= $wgLang->pipeList( $links );
 		$text .= ")";
 		return $text;
