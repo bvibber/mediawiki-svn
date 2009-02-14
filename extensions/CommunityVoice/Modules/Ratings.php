@@ -4,10 +4,7 @@ abstract class CommunityVoiceRatings {
 
 	/* Private Static Functions */
 
-	private static function getScaleFraction(
-		$rating,
-		$star
-	) {
+	private static function getScaleFraction( $rating, $star ) {
 		if ( floor( $rating ) > $star ) {
 			return 6;
 		} else if ( floor( $rating ) < $star ) {
@@ -17,10 +14,7 @@ abstract class CommunityVoiceRatings {
 		}
 	}
 
-	private static function getArticlesUsing(
-		$category,
-		$title
-	) {
+	private static function getArticlesUsing( $category, $title ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select(
 			'cv_ratings_usage',
@@ -50,9 +44,7 @@ abstract class CommunityVoiceRatings {
 		return $categories;
 	}
 
-	private static function getTitles(
-		$category
-	) {
+	private static function getTitles( $category ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select(
 			'cv_ratings_votes',
@@ -66,10 +58,7 @@ abstract class CommunityVoiceRatings {
 		return $titles;
 	}
 
-	private static function getTotalVotes(
-		$category,
-		$title
-	) {
+	private static function getTotalVotes( $category, $title ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		return (integer)$dbr->selectField(
 			'cv_ratings_votes',
@@ -81,10 +70,7 @@ abstract class CommunityVoiceRatings {
 		);
 	}
 
-	private static function getUserVoted(
-		$category,
-		$title
-	) {
+	private static function getUserVoted( $category, $title ) {
 		global $wgUser;
 		$dbr = wfGetDB( DB_SLAVE );
 		return (bool)$dbr->selectField(
@@ -98,10 +84,7 @@ abstract class CommunityVoiceRatings {
 		);
 	}
 
-	private static function getAverageRating(
-		$category,
-		$title
-	) {
+	private static function getAverageRating( $category, $title ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		return (float)$dbr->selectField(
 			'cv_ratings_votes',
@@ -113,11 +96,7 @@ abstract class CommunityVoiceRatings {
 		);
 	}
 
-	private static function addVote(
-		$category,
-		$title,
-		$rating
-	) {
+	private static function addVote( $category, $title, $rating ) {
 		global $wgUser;
 		// Checks if...
 		if (
@@ -157,23 +136,14 @@ abstract class CommunityVoiceRatings {
 
 	}
 
-	public static function updateArticleUsage(
-		$article,
-		$user,
-		$text,
-		$summary,
-		$minor,
-		$watch,
-		$sectionanchor,
-		$flags
-	) {
+	public static function updateArticleUsage( $article, $user, $text, $summary, $minor, $watch, $sectionanchor, $flags ) {
 		$usedRatings = array();
 		// Extract all ratings:scale tags
 		preg_match_all(
 			"/<ratings:scale[^>]*[\\/]*>/i", $text, $matches, PREG_PATTERN_ORDER
 		);
 		// Loop over each match
-		foreach( $matches[0] as $match ) {
+		foreach ( $matches[0] as $match ) {
 			$rating = array();
 			foreach ( array( 'category', 'title' ) as $attribute ) {
 				// Extract value of attribute
@@ -214,11 +184,7 @@ abstract class CommunityVoiceRatings {
 		return true;
 	}
 
-	public static function renderScale(
-		$input,
-		$args,
-		$parser
-	) {
+	public static function renderScale( $input, $args, $parser ) {
 		global $wgUser, $wgTitle;
 		global $egCommunityVoiceResourcesPath;
 		// Validate and sanitize incoming arguments
@@ -400,12 +366,7 @@ abstract class CommunityVoiceRatings {
 	/**
 	 * Hanlder for ratings scale vote via ajax call
 	 */
-	public static function handleScaleVoteCall(
-		$category,
-		$title,
-		$rating,
-		$article
-	) {
+	public static function handleScaleVoteCall( $category, $title, $rating, $article ) {
 		global $wgUser;
 		// Adds vote and checks for success
 		if ( self::addVote( $category, $title, $rating ) ) {
@@ -426,7 +387,7 @@ abstract class CommunityVoiceRatings {
 			// Gets articles that use this rating
 			$articles = self::getArticlesUsing( $category, $title );
 			// Loops over each article
-			foreach($articles  as $article ) {
+			foreach ( $articles  as $article ) {
 				// Invalidates the cache of the article
 				CommunityVoice::touchArticle( $article );
 			}
@@ -437,7 +398,7 @@ abstract class CommunityVoiceRatings {
 			return Js::toObject(  $result );
 		}
 		// Returns error information
-		return Js::toObject( array( 'rating' => -1, 'stats' => null ) );
+		return Js::toObject( array( 'rating' => - 1, 'stats' => null ) );
 	}
 
 	/**
@@ -481,7 +442,7 @@ abstract class CommunityVoiceRatings {
 						$scale['category'], $scale['title']
 					);
 					// Loops over each article
-					foreach($articles  as $article ) {
+					foreach ( $articles  as $article ) {
 						// Invalidates the cache of the article
 						CommunityVoice::touchArticle( $article );
 					}
@@ -510,7 +471,7 @@ abstract class CommunityVoiceRatings {
 		//
 		$wgOut->addWikiText( '==== Categories ====' );
 		$xmlCategories = Html::open( 'ul' );
-		foreach( self::getCategories() as $category ) {
+		foreach ( self::getCategories() as $category ) {
 			$xmlCategories .= Html::tag( 'li', $category );
 		}
 		$xmlCategories .= Html::close( 'ul' );
@@ -520,9 +481,7 @@ abstract class CommunityVoiceRatings {
 	/**
 	 * Outputs main UI for module
 	 */
-	public static function showMain(
-		$path
-	) {
+	public static function showMain( $path ) {
 		global $wgOut;
 		//
 		$wgOut->addWikiText( '==== Detailed Information ====' );

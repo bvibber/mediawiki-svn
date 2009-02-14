@@ -2,6 +2,8 @@
 -- SQL for CommunityVoice Extension
 -- 
 -- Table for ratings
+
+-- FIXME: is it a good idea to drop exisiting tables? Other scripts for MediaWiki extensions do not contain this.
 DROP TABLE IF EXISTS /*$wgDBprefix*/cv_ratings_votes;
 CREATE TABLE /*$wgDBPrefix*/cv_ratings_votes (
     -- Category of item being rated
@@ -19,6 +21,7 @@ CREATE TABLE /*$wgDBPrefix*/cv_ratings_votes (
 ) /*$wgDBTableOptions*/;
 -- 
 -- Table for articles which include ratings
+-- FIXME: is it a good idea to drop exisiting tables? Other scripts for MediaWiki extensions do not contain this.
 DROP TABLE IF EXISTS /*$wgDBprefix*/cv_ratings_usage;
 CREATE TABLE /*$wgDBPrefix*/cv_ratings_usage (
     -- Category of item being rated

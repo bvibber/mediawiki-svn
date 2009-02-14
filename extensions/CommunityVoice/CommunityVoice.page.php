@@ -16,14 +16,12 @@ class CommunityVoicePage extends SpecialPage {
 
 		// Initializes special page
 		parent::__construct( 'CommunityVoice' );
-		// Loads extension messages
-		wfLoadExtensionMessages( 'CommunityVoice' );
 	}
 
-	public function execute(
-		$sub
-	) {
+	public function execute( $sub ) {
 		global $wgOut, $wgRequest, $wgUser;
+
+		wfLoadExtensionMessages( 'CommunityVoice' );
 
 		/* Control */
 
@@ -72,7 +70,7 @@ class CommunityVoicePage extends SpecialPage {
 			return true;
 		}
 		// Modules summary view
-		foreach( CommunityVoice::getModules() as $module ) {
+		foreach ( CommunityVoice::getModules() as $module ) {
 			// Adds heading
 			$wgOut->addWikiText(
 				'== ' . wfMsg( 'communityvoice-' . $module ) . ' =='

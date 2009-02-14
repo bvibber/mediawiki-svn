@@ -37,25 +37,48 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'CommunityVoice',
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CommunityVoice',
-	'description-msg' => 'communityvoice-desc',
+	'descriptionmsg' => 'communityvoice-desc',
+	'version' => '0.1.0',
 );
+
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
+
 // Internationalization
 $wgExtensionMessagesFiles['CommunityVoice'] = $dir . 'CommunityVoice.i18n.php';
+$wgExtensionAliasesFiles['CommunityVoice'] = $dir . 'CommunityVoice.alias.php';
+
 // Class Autoloading
 $wgAutoloadClasses['CommunityVoice'] = $dir . 'CommunityVoice.php';
 $wgAutoloadClasses['CommunityVoicePage'] = $dir . 'CommunityVoice.page.php';
 $wgAutoloadClasses['CommunityVoiceRatings'] = $dir . 'Modules/Ratings.php';
-// Spacial Pages
+
+// Special Pages
 $wgSpecialPages['CommunityVoice'] = 'CommunityVoicePage';
+$wgSpecialPageGroups['CommunityVoice'] = 'wiki';
+
 // Setup Hooks
 $wgExtensionFunctions[] = 'CommunityVoice::registerModules';
 $wgHooks['AjaxAddScript'][] = 'CommunityVoice::addScripts';
 $wgHooks['BeforePageDisplay'][] = 'CommunityVoice::addStyles';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCheckSchema';
+
+function efCheckSchema() {
+	// Get a connection
+	$db = wfGetDB( DB_MASTER );
+	// Create table if it doesn't exist
+	if ( !$db->tableExists( 'cv_ratings_votes' ) ) {
+		$db->sourceFile( dirname( __FILE__  ) . '/CommunityVoice.sql' );
+	}
+	if ( !$db->tableExists( 'cv_ratings_usage' ) ) {
+		$db->sourceFile( dirname( __FILE__  ) . '/CommunityVoice.sql' );
+	}
+	// Continue
+	return true;
+}
 
 /* Classes */
-
+// FIXME: classes should be put in their own files
 abstract class CommunityVoice {
 
 	/* Static Members */
@@ -71,11 +94,7 @@ abstract class CommunityVoice {
 		return array_keys( self::$modules );
 	}
 
-	public static function callModuleAction(
-		$module,
-		$type,
-		$action = ''
-	) {
+	public static function callModuleAction( $module, $type, $action = '' ) {
 		// Checks for class
 		if ( isset( self::$modules[$module] ) ) {
 			if ( class_exists( self::$modules[$module]['class'] ) ) {
@@ -111,17 +130,13 @@ abstract class CommunityVoice {
 	 */
 	public static function registerModules() {
 		// Loops over each module
-		foreach( self::getModules() as $module ) {
+		foreach ( self::getModules() as $module ) {
 			self::callModuleAction( $module, 'register' );
 		}
 		return true;
 	}
 
-	public static function getMessage(
-		$module,
-		$message,
-		$parameter = null
-	) {
+	public static function getMessage( $module, $message, $parameter = null	) {
 		// Checks if extension messages have been loaded already
 		if ( !self::$messagesLoaded ) {
 			// Loads extension messages
@@ -132,9 +147,7 @@ abstract class CommunityVoice {
 		return wfMsg( 'communityvoice-' . $module . '-' . $message, $parameter );
 	}
 
-	public static function touchArticle(
-		$article
-	) {
+	public static function touchArticle( $article ) {
 		// Gets the title of the article which included the scale
 		$articleTitle = Title::newFromText( $article );
 		// Invalidates the cache of the article
@@ -144,11 +157,10 @@ abstract class CommunityVoice {
 	/**
 	 * Adds scripts to document
 	 */
-	public static function addScripts(
-		$out
-	) {
+	public static function addScripts( $out ) {
 		global $wgJsMimeType;
 		global $egCommunityVoiceResourcesPath;
+
 		$out->addInlineScript(
 			sprintf(
 				"var egCommunityVoiceResourcesPath = '%s';\n" ,

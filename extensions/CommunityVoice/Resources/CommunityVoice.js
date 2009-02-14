@@ -6,14 +6,14 @@
  * Generic global access system
  */
 function CommunityVoicePool() {
-	
+
 	/* Private Members */
 
 	var self = this;
 	var objects = {};
-	
+
 	/* Public Functions */
-	
+
 	/**
 	 * Adds an object to pool, and returns it's unique ID
 	 * @param	object	Object reference to add
@@ -66,7 +66,7 @@ function CommunityVoiceRatingsScale(
 	article
 ) {
 	/* Members */
-	
+
 	var self = this;
 	// Gets object references
 	var element = document.getElementById( id );
@@ -75,13 +75,13 @@ function CommunityVoiceRatingsScale(
 	// Sets state
 	var status = null;
 	var locked = true;
-	
+
 	/* Functions */
-	
+
 	this.getId = function() {
 		return id;
 	}
-	
+
 	this.rate = function(
 		newRating
 	) {
@@ -150,21 +150,21 @@ function CommunityVoiceRatingsScale(
 		// Updates UI
 		self.update();
 	}
-	
+
 	this.lock = function() {
 		locked = true;
 		for ( star in stars ) {
 			stars[star].style.cursor = 'default';
 		}
 	}
-	
+
 	this.unlock = function() {
 		locked = false;
 		for ( star in stars ) {
 			stars[star].style.cursor = 'pointer';
 		}
 	}
-	
+
 	this.update = function(
 		hoveredStar
 	) {
@@ -192,7 +192,7 @@ function CommunityVoiceRatingsScale(
 		labels.status.innerHTML = messages.status[status];
 		labels.status.className = status;
 	}
-	
+
 	// Loops 5 times (once per star)
 	for ( var i = 0; i < 5; i++ ) {
 		// Creates a new image
