@@ -23,7 +23,8 @@ class CodeReleaseNotes extends CodeView {
 		$this->showForm();
 		# Sanity/performance check...
 		$lastRev = $this->mRepo->getLastStoredRev();
-		if( $this->mStartRev < ($lastRev - 5000) ) $this->mStartRev = NULL;
+		if( $this->mStartRev < ($lastRev - 3000) )
+			$this->mStartRev = NULL;
 		# Show notes if we have at least a starting revision
 		if( $this->mStartRev ) {
 			$this->showReleaseNotes();
@@ -79,9 +80,11 @@ class CodeReleaseNotes extends CodeView {
 			# Add this commit summary if needed
 			if( $this->isRelevant( $summary ) ) {
 				# Asterixs often used as point-by-point bullets
-				$summary = strtr( $summary, '*', "\n" );
-				# Keep it short if possible...
+				$summary = str_replace('*','',$summary);
 				$blurbs = explode("\n",$summary);
+				$blurbs = array_map( 'trim', $blurbs ); # Clean up items
+				$blurbs = array_filter( $blurbs ); # Filter out any garbage
+				# Keep it short if possible...
 				if( count($blurbs) > 2 ) {
 					$summary = "";
 					foreach( $blurbs as $blurb ) {
@@ -89,6 +92,9 @@ class CodeReleaseNotes extends CodeView {
 							$summary .= trim($blurb) . "\n";
 						}
 					}
+				# Small enough as is...
+				} else {
+					$summary = implode("\n",$blurbs);
 				}
 				# Anything left? (this can happen with some heuristics)
 				if( $summary ) {
