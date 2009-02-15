@@ -62,7 +62,7 @@ class CodeReleaseNotes extends CodeView {
 			$where .= ' OR cr_path = '.$dbr->addQuotes($this->mPath).')';
 		}
 		# Select commits within this range...
-		$res = $dbr->select( 'code_rev', array('cr_message','cr_author'),
+		$res = $dbr->select( 'code_rev', array('cr_message','cr_author','cr_id'),
 			array( 
 				'cr_repo_id' => $this->mRepo->getId(), // this repo
 				"cr_status NOT IN('reverted','deferred','fixme')", // not reverted/deferred/fixme
@@ -82,17 +82,21 @@ class CodeReleaseNotes extends CodeView {
 				$summary = strtr( $summary, '*', "\n" );
 				# Keep it short if possible...
 				$blurbs = explode("\n",$summary);
-				$summary = "";
-				foreach( $blurbs as $blurb ) {
-					if( $this->isRelevant( $blurb ) ) {
-						$summary .= trim($blurb) . "\n";
+				if( count($blurbs) > 2 ) {
+					$summary = "";
+					foreach( $blurbs as $blurb ) {
+						if( $this->isRelevant( $blurb ) ) {
+							$summary .= trim($blurb) . "\n";
+						}
 					}
 				}
 				# Anything left? (this can happen with some heuristics)
 				if( $summary ) {
 					$summary = nl2br( trim($summary) ); // Newlines -> <br/>
 					$wgOut->addHTML( "<li>" );
-					$wgOut->addWikiText( $linker->link($summary)." ''(".htmlspecialchars($row->cr_author).")''" );
+					$wikiText = $linker->link($summary) . " ''(".htmlspecialchars($row->cr_author) .
+						', ' . $linker->link("r{$row->cr_id}") . ")''";
+					$wgOut->addWikiText( $wikiText );
 					$wgOut->addHTML( "</li>\n" );
 				}
 			}
@@ -106,7 +110,8 @@ class CodeReleaseNotes extends CodeView {
 		if( preg_match( '/\b(bug #?(\d+)|$wg[0-9a-z]{3,50})\b/i', $summary ) )
 			return true;
 		# Sanity check: summary cannot be *too* short to be useful
-		if( mb_strlen($summary) < 40 || str_word_count($summary) <= 5 )
+		$words = str_word_count($summary);
+		if( mb_strlen($summary) < 40 || $words <= 5 )
 			return false;
 		# All caps words (like "BREAKING CHANGE"/magic words)? 
 		# Literals like "'autoconfirmed'"/'"user contributions"'?
@@ -114,10 +119,10 @@ class CodeReleaseNotes extends CodeView {
 		if( preg_match( '/\b([A-Z]{8,20}|[\'"]\w+[\'"]|$[0-9a-zA-Z]{3,50})\b/', $summary ) )
 			return true;
 		# Random keywords
-		if( preg_match( '/\b(HTML\d|CSS\d|wiki|[Aa]pache ?\d?\.?\d?|PHP ?\d?\.?\d?)\b/', $summary ) )
+		if( preg_match( '/\b(wiki|HTML\d|CSS\d|UTF-?8|(Apache|PHP|CGI|Java|Perl|Python|\w+SQL) ?\d?\.?\d?)\b/i', $summary ) )
 			return true;
 		# Longish summary :)
-		if( str_word_count($summary) > 35 )
+		if( $words > 35 )
 			return true;
 		# Otherwise false
 		return false;
