@@ -87,6 +87,13 @@ $aliases['hu'] = array(
 	'SortPermissions' => array( 'Engedélyek rendezése' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'GroupPermissions' => array( 'PermissionesDeGruppos' ),
+	'RemoveUnusedGroups' => array( 'EliminarGrupposNonUsate' ),
+	'SortPermissions' => array( 'OrdinarPermissiones' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'GroupPermissions' => array( 'グループ権限' ),
@@ -133,6 +140,11 @@ $aliases['no'] = array(
 	'SortPermissions' => array( 'Sorter tillatelser' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'GroupPermissions' => array( 'Permission dels gropes' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'GroupPermissions' => array( 'गटसंमती' ),
@@ -143,5 +155,12 @@ $aliases['sa'] = array(
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'GroupPermissions' => array( 'Gruppbehörigheter' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'GroupPermissions' => array( 'Mga kapahintulutan ng pangkat' ),
+	'RemoveUnusedGroups' => array( 'Tanggalin ang mga pangkat na hindi ginagamit' ),
+	'SortPermissions' => array( 'Mga pahintulot sa pagsasama-sama' ),
 );
 

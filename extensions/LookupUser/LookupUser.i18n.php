@@ -442,6 +442,7 @@ $messages['hr'] = array(
 	'lookupuser-touched' => 'Suradnički račun zadnji put korišten: $1',
 	'lookupuser-info-authenticated' => 'E-mail potvrda: $1',
 	'lookupuser-useroptions' => 'Suradničke postavke:',
+	'right-lookupuser' => 'Pogledaj suradničke postavke',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

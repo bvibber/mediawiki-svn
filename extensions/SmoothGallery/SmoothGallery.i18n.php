@@ -84,9 +84,9 @@ $messages['arz'] = array(
 	'smoothgallery-not-found' => 'لا صور تمت إضافتها للمعرض.
 من فضلك أضف صورة واحدة على الأقل.',
 	'smoothgallery-no-images' => 'مافيش  صور فى  المعرض ده.
-اتأكد من ان كل الصور المطلوبة موجودة.
-الصور التالية مالقينهاش: $1',
-	'smoothgallery-invalid-images' => 'الصور المطلوبة دى كانت من نوع مش صحيح: $1',
+اتأكد من ان {{PLURAL:$3|الصوره|كل الصور}} المطلوبة موجودة.
+{{PLURAL:$2|الصوره|الصور}} التالية مالقينهاش: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|الصوره|الصور}} المطلوبة دى كانت من نوع مش صحيح: $1',
 	'smoothgallery-unexpected-error' => 'حدث خطأ غير متوقع.
 من فضلك أبلغ عن هذا الخطأ.',
 	'smoothgallery-javascript-disabled' => 'الجافاسكريبت مطلوب لرؤية هذا المعرض جيدا.',
@@ -197,6 +197,28 @@ $messages['eo'] = array(
 	'smoothgallery-unexpected-error' => 'Okazis neatendita eraro.
 Bonvolu fari ciman raporton.',
 	'smoothgallery-javascript-disabled' => 'Javascript estas deviga pro vidi ĉi tiun galerion ĝuste.',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Permite usuarios crear galerías con imágenes que han sido cargadas.
+Permite más opciones de SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>error SmoothGallery:</b>',
+	'smoothgallery-gallery-not-found' => 'La galería solicitada no existe.',
+	'smoothgallery-not-found' => 'Ninguna imágen fue agregada dentro de la galería.
+Por favor agregue al menos una imagen.',
+	'smoothgallery-no-images' => 'Ninguna imagen fue encontrada en esta galería.
+Asegúrese que {{PLURAL:$3|la imagen|todas las imágenes}} solicitadas existen.
+las siguientes {{PLURAL:$2|imagen|imágenes}} no fueron encontradas: $1',
+	'smoothgallery-invalid-images' => 'La siguiente {{PLURAL:$2|imagen solicitada fue|imágenes solicitadas fueron}} de un tipo inválido: $1',
+	'smoothgallery-unexpected-error' => 'Hubo un error error inesperado.
+Por favor archive un reporte de errores.',
+	'smoothgallery-javascript-disabled' => 'JavaScript es requerido para ver esta galería apropiadamente.',
 );
 
 /** Finnish (Suomi)

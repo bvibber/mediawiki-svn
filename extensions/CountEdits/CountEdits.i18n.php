@@ -464,6 +464,7 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'countedits' => 'Broj uređivanja',
@@ -473,7 +474,7 @@ $messages['hr'] = array(
 	'countedits-ok' => 'Prikaži',
 	'countedits-nosuchuser' => 'Ne postoji suradnik s imenom/nadimkom $1.',
 	'countedits-resultheader' => 'Rezultati za $1',
-	'countedits-resulttext' => 'Broj uređivanja suradnika $1: $2',
+	'countedits-resulttext' => '$1 je učinio $2 {{PLURAL:$2|izmjenu|izmjena}}',
 	'countedits-mostactive' => 'Najaktivniji suradnici',
 	'countedits-nocontribs' => 'Nema suradnika na ovom wikiju.',
 );

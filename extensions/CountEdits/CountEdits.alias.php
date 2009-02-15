@@ -67,6 +67,11 @@ $aliases['hu'] = array(
 	'CountEdits' => array( 'Szerkesztések számolása' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'CountEdits' => array( 'ContarModificationes' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CountEdits' => array( '編集回数の集計' ),
@@ -115,5 +120,10 @@ $aliases['sa'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'CountEdits' => array( 'HesabuUhariri' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'CountEdits' => array( 'Bilangin ang pamamatnugot' ),
 );
 

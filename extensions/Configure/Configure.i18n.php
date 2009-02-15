@@ -562,7 +562,7 @@ $messages['arz'] = array(
 	'configure-db-table-error' => 'قاعدة البيانات اللى انت حددتها مافيهاش الجداول المطلويه. لو سمحت طبق configure.sql  على قاعدة البيانت دى.',
 	'configure-directory-not-writable' => 'المجلد المستخدم لتخزين الإعدادات، <tt>$1</tt>، لا يمكن الكتابة فيه.
 من فضلك اجعل من الممكن الكتابة فيه بواسطة PHP لاستخدام هذا الامتداد.',
-	'configure-edit-old' => 'تحذير: أنت بتعدل نسخة <strong>قديمة</strong> من الإعدادات.',
+	'configure-edit-old' => 'تحذير: أنت بتعدل نسخة <strong>قديمة</strong> من الإعدادات (من $1).',
 	'configure-error' => 'الإعدادات لم يمكن حفظها',
 	'configure-js-add' => 'إضافة مدخلة جديدة',
 	'configure-js-group-exists' => 'خطأ: المجموعة موجودة حاليا.',
@@ -588,7 +588,7 @@ $messages['arz'] = array(
 	'configure-old-versions' => 'قائمة النسخ القديمة من الإعدادات:',
 	'configure-old-not-available' => 'النسخة القديمة من الإعدادات التى طلبتها، $1، غير متوفرة',
 	'configure-old-changes' => 'تغييرات',
-	'configure-old-summary' => '$1 $2 بواسطة $3 $5: $4',
+	'configure-old-summary' => '$1 بواسطة $2 $4 $3',
 	'configure-saved' => 'الإعدادت تم حفظها',
 	'configure-backlink' => 'الرجوع إلى النموذج',
 	'configure-image-url-explanation' => 'دخل ال URL بتاع الصوره، او اسم الصوره ع الويكى دا (من غير نطاق).

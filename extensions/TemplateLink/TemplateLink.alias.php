@@ -79,3 +79,13 @@ $aliases['no'] = array(
 	'TemplateLink' => array( 'Mallenke' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'TemplateLink' => array( 'बिंबधरसम्बद्धम्' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'TemplateLink' => array( 'Kawing sa suleras' ),
+);
+

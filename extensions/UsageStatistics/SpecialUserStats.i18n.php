@@ -567,6 +567,13 @@ $messages['eu'] = array(
 	'usagestatisticscalselect' => 'Aukeratu',
 );
 
+/** Persian (فارسی)
+ * @author BlueDevil
+ */
+$messages['fa'] = array(
+	'usagestatisticsstart' => 'تاریخ شروع',
+);
+
 /** Finnish (Suomi)
  * @author Japsu
  * @author Mobe

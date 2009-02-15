@@ -60,6 +60,11 @@ $aliases['hu'] = array(
 	'LogEntry' => array( 'Naplóbejegyzés' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'LogEntry' => array( 'EntrataDeRegistro' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'LogEntry' => array( '記録項目' ),
@@ -78,5 +83,10 @@ $aliases['nl'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'LogEntry' => array( 'अंकनप्रविष्टि' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'LogEntry' => array( 'Pagpasok sa tala' ),
 );
 

@@ -90,7 +90,7 @@ $messages['arz'] = array(
 	'framedvideo_helppage' => 'Help:فيديو',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|المزيد حول الصياغة]].',
 	'framedvideo_error_height_and_width_required' => 'نوع الفيديو "$1" يتطلب المحددين "height" و "width2" أو "width".',
-	'framedvideo-desc' => 'نوع الفيديو "$1" يتطلب المحددين "height" و "width2" أو "width".',
+	'framedvideo-desc' => 'يسمح بتضمين الفيديو من مواقع ويب متعددة باستخدام الوسم <tt><nowiki><video></nowiki></tt>',
 );
 
 /** Bosnian (Bosanski)
@@ -146,6 +146,15 @@ $messages['dsb'] = array(
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Wěcej wó syntaksy]].',
 	'framedvideo_error_height_and_width_required' => 'Wideotyp "$1" pomina se parametry "height" a "width2" abo "width".',
 	'framedvideo-desc' => 'Zmóžnja zasajźowanje wideo z wšakich websedłow z pomocu toflicki <tt><nowiki><video></nowiki></tt>',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'framedvideo_errors' => 'Múltiples errores han ocurrido!',
+	'framedvideo_error' => 'Un error ha ocurrido!',
+	'framedvideo_helppage' => 'Help:Video',
 );
 
 /** French (Français)

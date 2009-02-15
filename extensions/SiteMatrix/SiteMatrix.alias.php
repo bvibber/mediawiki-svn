@@ -164,3 +164,8 @@ $aliases['sv'] = array(
 	'SiteMatrix' => array( 'Lista över Wikimedias wikier' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'SiteMatrix' => array( 'Matris ng sayt', 'Mga wiki ng Wikimedia' ),
+);
+

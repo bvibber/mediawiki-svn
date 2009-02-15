@@ -103,3 +103,9 @@ $aliases['th'] = array(
 	'SignDocument' => array( 'เซ็นเอกสาร' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'SignDocument' => array( 'Lagdaan ang kasulatan' ),
+	'CreateSignDocument' => array( 'Likhain ang paglagda sa kasulatan' ),
+);
+

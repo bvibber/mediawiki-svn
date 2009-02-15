@@ -58,7 +58,7 @@ $messages['arz'] = array(
 $messages['be-tarask'] = array(
 	'shareduserrights' => 'Кіраваньне агульнымі паміж праектамі правамі ўдзельніка',
 	'gblrights-desc' => 'Простае [[Special:SharedUserRights|кіраваньне глябальнымі правамі ўдзельнікаў]]',
-	'gblrights-logpage' => 'Журнал глябальных правоў',
+	'gblrights-logpage' => 'Журнал глябальных правоў удзельнікаў',
 	'gblrights-pagetext' => 'Гэта журнал усіх зьменаў, зробленых у глябальных правах у групе праектаў вікі',
 	'gblrights-rights-entry' => 'зьменены ўдзел ў глябальных групах для $1 з $2 на $3',
 );
@@ -114,6 +114,15 @@ $messages['eo'] = array(
 	'gblrights-desc' => 'Facila [[Special:SharedUserRights|administrado de ĝeneralaj uzulaj rajtoj]]',
 	'gblrights-logpage' => 'Protokolo pri Ĝeneralaj Rajtoj',
 	'gblrights-pagetext' => 'Jen protokolo por ĉiu de la ŝanĝoj faritaj al la vikiara tabelo de ĝeneralaj rajtoj',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'shareduserrights' => 'Administración de derechos de usuario compartido',
+	'gblrights-desc' => '[[Special:SharedUserRights|Administración de derechos de usuario global]] fácil',
+	'gblrights-rights-entry' => 'cambiado membresía de grupo global para $1 de $2 a $3',
 );
 
 /** French (Français)

@@ -520,6 +520,7 @@ $messages['hil'] = array(
 $messages['hr'] = array(
 	'group-patroller' => 'Patroleri',
 	'group-patroller-member' => 'Patroler',
+	'grouppage-patroller' => '((ns: project)): Patroler',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1010,6 +1011,13 @@ $messages['no'] = array(
 	'group-patroller-member' => 'Patruljør',
 	'grouppage-patroller' => '{{ns:project}}:Patruljør',
 	'right-patroller' => 'Patruljere sider',
+);
+
+/** Novial (Novial)
+ * @author Malafaya
+ */
+$messages['nov'] = array(
+	'patrol-revert-reason' => 'Resone:',
 );
 
 /** Occitan (Occitan)

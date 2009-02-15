@@ -87,6 +87,11 @@ $aliases['hu'] = array(
 	'CrossNamespaceLinks' => array( 'Névtérközi linkek' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'CrossNamespaceLinks' => array( 'LigaminesTransSpatiosDeNomines' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CrossNamespaceLinks' => array( '名前空間をまたぐリンク' ),
@@ -157,5 +162,10 @@ $aliases['pt-br'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'CrossNamespaceLinks' => array( 'आन्तरनामविश्वसम्बद्ध:' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'CrossNamespaceLinks' => array( 'Mga kawing ng pagtawid ng espasyo ng pangalan' ),
 );
 

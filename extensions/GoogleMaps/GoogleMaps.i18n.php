@@ -4501,6 +4501,7 @@ $wgGoogleMapsMessages['uk'] = array(
  * @author Candalua
  */
 $wgGoogleMapsMessages['vec'] = array(
+	'gm-desc' => 'Crea façilmente dele mappe con marcadori wikificài',
 	'gm-incompatible-browser' => 'Par védar la mappa che vegnarà fora drento sto spassio, te gavarè bisogno de un browser conpatibile.',
 	'gm-incompatible-browser-link' => 'Struca qua par védar na lista de browser conpatibili.',
 	'gm-no-editor' => 'Purtropo, el to browser no\'l suporta mìa le funsionalità de creazion interativa de mappe.

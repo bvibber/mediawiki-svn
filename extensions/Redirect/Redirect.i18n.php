@@ -43,6 +43,13 @@ $messages['dsb'] = array(
 	'redirect-desc' => 'Zmóžnja lažku konfiguraciju dalejpósrědnjenjow pśi [[MediaWiki:Redirect-addnewaccount|załoženju konta]] a  [[MediaWiki:Redirect-userlogoutcomplete|wótzjawjenju]]',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'redirect-desc' => 'Permite configuración fácil de redireccionamientos en [[MediaWiki:Redirect-addnewaccount|creación de cuenta]] y [[MediaWiki:Redirect-userlogoutcomplete|desconectado]]',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

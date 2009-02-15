@@ -98,3 +98,15 @@ $aliases['no'] = array(
 	'TaskListByProject' => array( 'Oppgaveliste per prosjekt' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'TaskList' => array( 'कार्यसूची' ),
+	'TaskListByProject' => array( 'प्रकल्पकार्यसूची' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'TaskList' => array( 'Talaan ng gawain' ),
+	'TaskListByProject' => array( 'Talaan ng gawain ayon sa proyekto' ),
+);
+

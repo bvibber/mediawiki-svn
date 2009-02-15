@@ -45,6 +45,11 @@ $aliases['hsb'] = array(
 	'RandomInCategory' => array( 'Připadna strona w kategoriji' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'RandomInCategory' => array( 'AleatoriInCategoria' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RandomInCategory' => array( 'カテゴリ中のランダムなページ' ),
@@ -73,5 +78,10 @@ $aliases['no'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'RandomInCategory' => array( 'अविशिष्टवर्ग' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'RandomInCategory' => array( 'Alin mang kaurian' ),
 );
 

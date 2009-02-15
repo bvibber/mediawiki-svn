@@ -832,6 +832,13 @@ $messages['no'] = array(
 	'restriction-level-author' => 'Beskyttet for forfattere',
 );
 
+/** Novial (Novial)
+ * @author Malafaya
+ */
+$messages['nov'] = array(
+	'authorprotect-reason' => 'Resone',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

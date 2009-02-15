@@ -71,6 +71,14 @@ $messages['eo'] = array(
 	'random-users-avatars-desc' => 'Aldonas etikedon <tt>&lt;randomuserswithavatars&gt;</tt> por montri la avatarojn de hazarde selektitaj uzantoj',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'random-users-avatars-title' => 'Conocer la comunidad',
+	'random-users-avatars-desc' => 'Agrega <tt>&lt;randomuserswithavatars&gt;</tt> etiqueta para mostrar los avatares de usuarios escogidos al azar',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

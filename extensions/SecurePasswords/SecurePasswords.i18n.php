@@ -36,10 +36,8 @@ Do not translate or change tag names, or link anchors.',
  */
 $messages['ar'] = array(
 	'securepasswords-desc' => 'ينشئ هاشات كلمة سر أكثر أمنا ويضيف متحقق من قوة كلمة السر',
-	'securepasswords-valid' => 'كلمة السر غير صحيحة أو قصيرة جدا
-<br>يجب:
-
-<br />',
+	'securepasswords-valid' => 'كلمة السر غير صحيحة أو قصيرة جدا.
+يجب:',
 	'securepasswords-minlength' => 'تكون على الأقل $1 {{PLURAL:$1|حرف|حرف}} طولا',
 	'securepasswords-lowercase' => 'تحتوي على الأقل على حرف واحد صغير',
 	'securepasswords-uppercase' => 'تحتوي على الأقل على حرف واحد كبير',
@@ -113,6 +111,21 @@ $messages['dsb'] = array(
 	'securepasswords-special' => 'nanejmjenjej 1 specialne znamuško wopśimjeś (Specialne znamuška su: $1)',
 	'securepasswords-username' => 'se wót twójogo wužywarske mjenja rozeznawaś',
 	'securepasswords-word' => 'něco druge byś ako słowo',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'securepasswords-valid' => 'Tu contraseña es inválida o demasiado corta.
+Debe ser:',
+	'securepasswords-minlength' => 'ser al menos $1 {{PLURAL:$1|caracter|caracteres}} de largo',
+	'securepasswords-lowercase' => 'Contener al menos 1 letra minúscula',
+	'securepasswords-uppercase' => 'Contener al menos 1 letra mayúscula',
+	'securepasswords-digit' => 'Contener al menos 1 dígito',
+	'securepasswords-special' => 'Contener al menos 1 carácter especial (carácteres especiales son: $1)',
+	'securepasswords-username' => 'ser diferente de su nombre de usuario',
+	'securepasswords-word' => 'no ser una palabra',
 );
 
 /** Basque (Euskara)

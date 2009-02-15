@@ -109,6 +109,14 @@ $messages['eo'] = array(
 	'stalkerlog-log-text' => 'Jen protokolo pri ensalutoj kaj elsaltuoj de uzantoj.',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'stalkerlog-log-login' => 'Conectado',
+	'stalkerlog-log-logout' => 'Desconectado',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

@@ -860,6 +860,7 @@ $messages['hil'] = array(
  */
 $messages['hr'] = array(
 	'badimages' => 'Popis loših slika',
+	'badimages-desc' => 'Proširi popis mogućnosti MedijaWikija u svezi loših slika',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => '$1 je dodana na popis.',
 	'badimages-count' => "Na popisu loših slika {{PLURAL:$1|je|su}} '''$1''' {{PLURAL:$1|slika|slike}}.",
@@ -1507,6 +1508,13 @@ $messages['no'] = array(
 	'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilder',
 	'badimages-log-remove' => 'fjernet [[$1]] fra lista over blokkerte bilder',
 	'badimages-page' => 'Help:Liste over dårlige bilder',
+);
+
+/** Novial (Novial)
+ * @author Malafaya
+ */
+$messages['nov'] = array(
+	'badimages-reason' => 'Resone:',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

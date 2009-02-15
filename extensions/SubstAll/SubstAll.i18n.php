@@ -169,6 +169,13 @@ $messages['ja'] = array(
 	'substall-desc' => '全てのテンプレートをwiki構文に展開する<nowiki><substall></nowiki>タグを作る',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'substall-desc' => '모든 틀을 위키문법으로 전개하는 <nowiki><substall></nowiki> 태그를 추가',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

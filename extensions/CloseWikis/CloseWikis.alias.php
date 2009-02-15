@@ -72,6 +72,11 @@ $aliases['hu'] = array(
 	'CloseWiki' => array( 'Wiki bezárása' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'CloseWiki' => array( 'ClauderWiki' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CloseWiki' => array( 'ウィキ閉鎖', 'ウィキを閉鎖する' ),
@@ -130,5 +135,10 @@ $aliases['sa'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'CloseWiki' => array( 'FungaWiki' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'CloseWiki' => array( 'Isara ang wiki' ),
 );
 

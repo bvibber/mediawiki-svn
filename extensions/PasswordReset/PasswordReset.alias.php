@@ -71,6 +71,12 @@ $aliases['hsb'] = array(
 	'Disabledusers' => array( 'Znjemóžneni wužiwarjo' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'PasswordReset' => array( 'RedefinirContrasigno' ),
+	'Disabledusers' => array( 'UsatoresDisactivate' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'PasswordReset' => array( 'パスワードの再設定', 'パスワード再設定', 'パスワードのリセット', 'パスワードリセット' ),
@@ -132,5 +138,11 @@ $aliases['sw'] = array(
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'PasswordReset' => array( 'เปลี่ยนรหัสผ่าน' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'PasswordReset' => array( 'Muling pagtatakda ng hudyat' ),
+	'Disabledusers' => array( 'Hindi pinaganang mga tagagamit', 'Hindi pinagaganang mga tagagamit' ),
 );
 

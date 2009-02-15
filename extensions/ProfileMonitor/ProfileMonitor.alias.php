@@ -44,3 +44,8 @@ $aliases['sa'] = array(
 	'ProfileMonitor' => array( 'व्यक्तिविवरणावेक्षते' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ProfileMonitor' => array( 'Tagapagmatyag ng talaan ng katangian' ),
+);
+

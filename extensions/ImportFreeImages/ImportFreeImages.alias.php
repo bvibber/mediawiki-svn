@@ -67,6 +67,11 @@ $aliases['hu'] = array(
 	'ImportFreeImages' => array( 'Szabad képek importálása' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ImportFreeImages' => array( 'ImportarImaginesLibere' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ImportFreeImages' => array( 'フリー画像のインポート', 'フリーの画像をインポート' ),
@@ -97,6 +102,11 @@ $aliases['no'] = array(
 	'ImportFreeImages' => array( 'Importer frie bilder' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ImportFreeImages' => array( 'ImportarImatgesLiures' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'ImportFreeImages' => array( 'आयातमुक्तछायाचित्र' ),
@@ -115,5 +125,10 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'ImportFreeImages' => array( 'IngizaPichaHuria' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ImportFreeImages' => array( 'Mag-angkat ng malayang mga larawan' ),
 );
 

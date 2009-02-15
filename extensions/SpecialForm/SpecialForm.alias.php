@@ -64,6 +64,11 @@ $aliases['hu'] = array(
 	'Form' => array( 'Űrlap' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Form' => array( 'Formulario' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Form' => array( 'Formulir' ),
@@ -127,5 +132,10 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Form' => array( 'Fomu' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Form' => array( 'Pormularyo' ),
 );
 

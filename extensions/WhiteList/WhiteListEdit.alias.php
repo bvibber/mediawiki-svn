@@ -124,7 +124,8 @@ $aliases['nl'] = array(
 
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'WhiteList' => array( 'Tièra blanca', 'Tièrablanca' ),
+	'WhiteList' => array( 'Tièra blanca', 'Tièrablanca', 'Lista blanca', 'Listablanca' ),
+	'WhiteListEdit' => array( 'ModificarListaBlanca', 'ModificarTièraBlanca' ),
 );
 
 /** Polish (Polski) */
@@ -142,5 +143,11 @@ $aliases['ps'] = array(
 $aliases['sa'] = array(
 	'WhiteList' => array( 'धवलसूची' ),
 	'WhiteListEdit' => array( 'धवलसूचीसम्पादनम्‌' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'WhiteList' => array( 'Puting talaan' ),
+	'WhiteListEdit' => array( 'Baguhin ang puting talaan' ),
 );
 

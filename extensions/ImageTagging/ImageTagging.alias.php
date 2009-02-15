@@ -52,6 +52,11 @@ $aliases['hu'] = array(
 	'ImageTagging' => array( 'Képcímkézés' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ImageTagging' => array( 'EtiquettageDeImagines' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ImageTagging' => array( '画像のラベル付け', 'ラベル付画像' ),
@@ -80,5 +85,10 @@ $aliases['sa'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'ImageTagging' => array( 'MabanoyaPicha' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ImageTagging' => array( 'Pagtatatak ng larawan' ),
 );
 

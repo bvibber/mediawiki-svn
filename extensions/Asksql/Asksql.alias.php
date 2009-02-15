@@ -67,6 +67,11 @@ $aliases['hu'] = array(
 	'Asksql' => array( 'SQL-lekérdezés' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Asksql' => array( 'ConsultarSQL' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Asksql' => array( 'SQLクエリの実行' ),
@@ -110,5 +115,10 @@ $aliases['pl'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Asksql' => array( 'एस्‌क्यूएल्‌पृच्छा' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Asksql' => array( 'Tanungin ang SQL' ),
 );
 

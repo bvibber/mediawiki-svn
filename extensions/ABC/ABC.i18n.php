@@ -248,6 +248,13 @@ $messages['km'] = array(
 	'abcdownload' => 'ទាញយក៖',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'abcdownload' => '다운로드:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

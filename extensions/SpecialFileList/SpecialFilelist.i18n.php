@@ -74,6 +74,17 @@ $messages['avk'] = array(
 	'filelist-show-gallery' => 'Nedira va ginsa',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'filelist' => 'Dateilistn',
+	'filelist-desc' => "d'[[Special:Filelist|Spezialseitn]] zum Ãnzoang vu aufeglådne Datein",
+	'filelist-show-list' => "d'Listn ãnzoang",
+	'filelist-show-gallery' => "d'Galerie ãnzoang",
+	'filelist-image-desc' => 'åbsteignd',
+);
+
 /** Belarusian (Беларуская) */
 $messages['be'] = array(
 	'filelist-image-desc' => 'апісанне',

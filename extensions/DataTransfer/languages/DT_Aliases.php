@@ -57,6 +57,11 @@ $aliases['hu'] = array(
 	'ViewXML' => array( 'XML megtekintése' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ViewXML' => array( 'VisualisarXML' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ViewXML' => array( 'XML表示' ),
@@ -87,6 +92,11 @@ $aliases['no'] = array(
 	'ViewXML' => array( 'Vis XML' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ViewXML' => array( 'Veire XML', 'VeireXML' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'ViewXML' => array( 'XMLपश्यति' ),
@@ -105,5 +115,15 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'ViewXML' => array( 'OnyeshaXML' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ViewXML' => array( 'Tingnan ang XML' ),
+);
+
+/** Vèneto (Vèneto) */
+$aliases['vec'] = array(
+	'ViewXML' => array( 'VardaXML' ),
 );
 

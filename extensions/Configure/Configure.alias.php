@@ -147,6 +147,13 @@ $aliases['hu'] = array(
 	'ViewConfig' => array( 'Beállítások megtekintése', 'Beállítás nézőke' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Configure' => array( 'Configurar' ),
+	'Extensions' => array( 'Extensiones' ),
+	'ViewConfig' => array( 'ViderConfig' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Configure' => array( 'Konfigurasi' ),
@@ -283,5 +290,18 @@ $aliases['sw'] = array(
 	'Configure' => array( 'Ingiza' ),
 	'Extensions' => array( 'Panua' ),
 	'ViewConfig' => array( 'OnyeshaIngizo' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Configure' => array( 'Isaayos' ),
+	'Extensions' => array( 'Mga karugtong' ),
+	'ViewConfig' => array( 'Tingnan ang pagkakaayos' ),
+);
+
+/** Vèneto (Vèneto) */
+$aliases['vec'] = array(
+	'Configure' => array( 'Configura' ),
+	'Extensions' => array( 'Estensioni' ),
 );
 

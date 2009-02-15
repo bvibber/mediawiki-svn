@@ -104,6 +104,11 @@ $aliases['no'] = array(
 	'WatchSubpages' => array( 'Overvåk undersider' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'WatchSubpages' => array( 'VeireSosPaginas' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'WatchSubpages' => array( 'उपपृष्ठनिरीक्षा' ),
@@ -112,5 +117,10 @@ $aliases['sa'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'WatchSubpages' => array( 'AngaliaKurasandogo' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'WatchSubpages' => array( 'Bantayan ang kabahaging mga pahina' ),
 );
 

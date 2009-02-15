@@ -115,3 +115,8 @@ $aliases['sa'] = array(
 	'Eval' => array( 'ईवाल्‌' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Eval' => array( 'Pagsusuri' ),
+);
+

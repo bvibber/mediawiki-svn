@@ -3186,6 +3186,13 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'metavid' => 'Metavid ページ',
+	'specialpages-group-mv_group' => 'MetaVidWiki 特別ページ',
+	'mv_ogg_low_quality' => 'ウェブ・ストリーミング用 - Ogg Theora 300kbps',
+	'mv_ogg_high_quality' => '高品質 - Ogg Theora 900kbps',
+	'mv_flash_low_quality' => 'ウェブ・ストリーミング用 - Flash Video',
+	'mv_archive_org_mp4' => 'Archive.org の　MP4 に格納された H.264 ストリーム',
+	'mv_archive_org_link' => 'Archive.org 内のオリジナルの MPEG2 へのリンク',
 	'mv_remove_reason' => '削除理由:',
 	'mv_upload_file' => 'アップロード',
 	'mv_tool_search' => '検索',

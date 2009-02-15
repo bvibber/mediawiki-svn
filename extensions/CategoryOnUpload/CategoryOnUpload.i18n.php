@@ -250,6 +250,13 @@ $messages['ja'] = array(
 	'categoryonupload-label' => 'カテゴリ:',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'categoryonupload-label' => 'კატეგორია:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith

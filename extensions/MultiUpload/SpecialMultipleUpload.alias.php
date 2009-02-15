@@ -100,6 +100,11 @@ $aliases['no'] = array(
 	'MultiUpload' => array( 'Last opp mange filer' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'MultiUpload' => array( 'Telecargament multiple', 'TelecargamentMultiple' ),
+);
+
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
 	'MultiUpload' => array( 'Carregamentos em massa' ),
@@ -118,5 +123,10 @@ $aliases['sq'] = array(
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'MultiUpload' => array( 'Multiuppladdning' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'MultiUpload' => array( 'Maramihang pagkarga' ),
 );
 

@@ -72,6 +72,11 @@ $aliases['hu'] = array(
 	'Badimages' => array( 'Tiltott képek', 'Rossz képek' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Badimages' => array( 'MalImagines' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Badimages' => array( 'Berkas dilarang' ),
@@ -130,5 +135,10 @@ $aliases['ps'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'Badimages' => array( 'कुचित्र:' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Badimages' => array( 'Masamang mga larawan', 'Masasamang mga larawan' ),
 );
 

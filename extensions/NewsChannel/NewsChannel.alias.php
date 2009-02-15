@@ -67,6 +67,11 @@ $aliases['hu'] = array(
 	'NewsChannel' => array( 'Hírcsatorna' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'NewsChannel' => array( 'CanalDeNovas' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'NewsChannel' => array( 'Saluran berita' ),
@@ -125,5 +130,10 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'NewsChannel' => array( 'ChaneliMpya' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'NewsChannel' => array( 'Estasyon ng balita' ),
 );
 

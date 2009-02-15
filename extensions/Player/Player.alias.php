@@ -92,3 +92,8 @@ $aliases['sv'] = array(
 	'Player' => array( 'Spelare' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Player' => array( 'Manlalaro' ),
+);
+

@@ -3228,6 +3228,19 @@ Se ti vol doparar OpenID par entrar in futuro, te pol [[Special:OpenIDConvert|co
 	'openidautosubmit' => 'Sta pàxena la include un modulo che\'l dovarìa èssar invià automaticamente se ti gà JavaScript ativà. Se no, próa a strucar el boton \\"Continua\\".',
 	'openidclientonlytext' => 'No te podi doparar le utense de sta wiki come OpenID su de un altro sito.',
 	'openidloginlabel' => 'URL OpenID',
+	'openidlogininstructions' => "{{SITENAME}} el suporta el standard [http://openid.net/ OpenID] par el login unico sui siti web.
+OpenID el te permete de registrarte in molti siti web sensa doparar na password difarente par ognuno.
+(Lèzi la [http://en.wikipedia.org/wiki/OpenID voce de Wikipedia su l'OpenID] par savérghene piassè.)
+
+Se te ghè zà un account su {{SITENAME}}, te podi far el [[Special:UserLogin|login]] col to nome utente e la to password come al solito.
+Par doparar OpenID in futuro, te podi [[Special:OpenIDConvert|convertir el to account a OpenID]] dopo che te ghè fato normalmente el login.
+
+Ghe xe molti [http://wiki.openid.net/Public_OpenID_providers Provider OpenID pubblici], e te podaressi verghe zà un account abilità a l'OpenID su un altro servissio.
+
+; Altre wiki : Se te ghè un account su na wiki abilità a l'OpenID, come [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] o [http://kei.ki/ Keiki], te podi far el login a {{SITENAME}} inserendo l<nowiki>'</nowiki>'''URL conpleto''' de la to pagina utente in quel'altra wiki nel box qua de sora. Par esenpio, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Se te ghè un account con Yahoo!, te podi far el login a sto sito inserendo el to OpenID Yahoo! nel box qua de sora. I URL OpenID Yahoo! i gà la forma ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Se te ghè un account con [http://www.aol.com/ AOL], come un account [http://www.aim.com/ AIM], te podi far el login a {{SITENAME}} inserendo el to OpenID AOL nel box qua de sora. I URL OpenID AOL i gà la forma ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. El to nome utente el dovarìa èssar tuto in caratere minuscolo, sensa spazi.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Se te ghè un blog su uno de sti siti, inserissi l'URL del blog nel box qua de sora. Par esenpio, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', o ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Vietnamese (Tiếng Việt)

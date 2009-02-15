@@ -43,6 +43,11 @@ $aliases['hu'] = array(
 	'ContributionTracking' => array( 'Adományok követése' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ContributionTracking' => array( 'TraciamentoDeContributiones' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ContributionTracking' => array( '寄付追跡' ),
@@ -71,5 +76,10 @@ $aliases['pl'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'ContributionTracking' => array( 'योगदानउन्नयति' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ContributionTracking' => array( 'Pagbakas ng ambag' ),
 );
 

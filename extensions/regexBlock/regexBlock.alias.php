@@ -50,3 +50,8 @@ $aliases['lb'] = array(
 	'RegexBlock' => array( 'Regex Spär' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'RegexBlock' => array( 'Paghadlang sa karaniwang pagsasaad' ),
+);
+

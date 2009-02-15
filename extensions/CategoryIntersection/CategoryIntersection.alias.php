@@ -212,6 +212,11 @@ $aliases['te'] = array(
 	'CategoryIntersection' => array( 'వర్గం ఖండన' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'CategoryIntersection' => array( 'Pinagsangahan ng kaurian', 'Sangahan ng kaurian' ),
+);
+
 /** Ukrainian (Українська) */
 $aliases['uk'] = array(
 	'CategoryIntersection' => array( 'Перетин категорій' ),

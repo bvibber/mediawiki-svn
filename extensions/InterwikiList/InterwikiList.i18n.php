@@ -128,6 +128,17 @@ $messages['eo'] = array(
 	'interwikilist-prefix' => 'Intervikia prefikso:',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'interwikilist' => 'Lista interwiki',
+	'interwikilist-desc' => 'Agrega una [[Special:Interwikilist|página especial]] para ver vínculos interwiki disponibles',
+	'interwikilist-linkname' => 'Vínculo interwiki',
+	'interwikilist-filter' => 'Lista de filtros',
+	'interwikilist-prefix' => 'Prefijo interwiki:',
+);
+
 /** Estonian (Eesti)
  * @author Avjoska
  */

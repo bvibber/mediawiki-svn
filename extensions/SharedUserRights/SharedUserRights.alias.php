@@ -82,3 +82,8 @@ $aliases['no'] = array(
 	'SharedUserRights' => array( 'Delte brukerrettigheter' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'SharedUserRights' => array( 'Pinagsasaluhang mga karapatan ng tagagamit', 'Mga karapatan ng pandaigdigang tagagamit' ),
+);
+

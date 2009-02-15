@@ -119,6 +119,11 @@ $aliases['no'] = array(
 	'SpecialUserStats' => array( 'Brukerstatistikk' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'SpecialUserStats' => array( 'EstatisticasUtilizaire' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'SpecialUserStats' => array( 'सदस्यसांख्यिकी' ),
@@ -132,5 +137,10 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'SpecialUserStats' => array( 'TakwimuzaMtumiaji', 'TakwimumaalumzaMtumiaji' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'SpecialUserStats' => array( 'Mga estadistika ng tagagamit', 'Mga estadistika ng natatanging tagagamit' ),
 );
 

@@ -184,6 +184,13 @@ NE ENIGU ion ajn!',
 	'simpleantispam-desc' => 'Aldonas simplan kontraŭspamilon/kontraŭrobotilon al paĝoj',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'simpleantispam' => 'Su edición encendió el mecanismo anti-spam',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */

@@ -82,6 +82,11 @@ $aliases['hsb'] = array(
 	'Contributors' => array( 'Awtorojo' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Contributors' => array( 'Contributores' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Contributors' => array( 'Kontributor' ),
@@ -170,5 +175,15 @@ $aliases['sq'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Contributors' => array( 'Wachangiaji' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Contributors' => array( 'Mga tagapag-ambag' ),
+);
+
+/** Vèneto (Vèneto) */
+$aliases['vec'] = array(
+	'Contributors' => array( 'Contribudori' ),
 );
 

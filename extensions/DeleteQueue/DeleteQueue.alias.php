@@ -57,6 +57,11 @@ $aliases['hu'] = array(
 	'DeleteQueue' => array( 'Törlési várólista' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'DeleteQueue' => array( 'DelerCauda' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'DeleteQueue' => array( '削除キュー' ),
@@ -100,5 +105,10 @@ $aliases['sa'] = array(
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'DeleteQueue' => array( 'Radera kö' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'DeleteQueue' => array( 'Burahin ang pila' ),
 );
 

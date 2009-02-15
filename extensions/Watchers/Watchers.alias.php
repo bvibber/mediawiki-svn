@@ -130,3 +130,13 @@ $aliases['sw'] = array(
 	'Watchers' => array( 'Waangalizi' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Watchers' => array( 'Mga tagapagbantay' ),
+);
+
+/** Vèneto (Vèneto) */
+$aliases['vec'] = array(
+	'Watchers' => array( 'Osservadori' ),
+);
+

@@ -77,3 +77,8 @@ $aliases['no'] = array(
 	'RefreshSpecial' => array( 'Oppdater spesialsider' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'RefreshSpecial' => array( 'Natatanging pagsasariwa' ),
+);
+

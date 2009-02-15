@@ -635,6 +635,8 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'math_IllegalRedefinition' => 'El comando "$1" ya ha sido definido; usted no puede redefinirlo',
+	'math_InvalidColour' => 'El color "$1" es inválido',
 	'math_UnrecognisedCommand' => 'Comando irreconocible "$1"',
 );
 

@@ -97,6 +97,11 @@ $aliases['hu'] = array(
 	'ExpandTemplates' => array( 'Sablonok kibontása' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ExpandTemplates' => array( 'ExpanderPatronos' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'ExpandTemplates' => array( 'Kembangkan templat' ),
@@ -187,5 +192,10 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'ExpandTemplates' => array( 'PanuaVigezo' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ExpandTemplates' => array( 'Palawakin ang mga suleras' ),
 );
 

@@ -47,6 +47,11 @@ $aliases['hsb'] = array(
 	'AccountManager' => array( 'Kontowy zrjadowak' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'AccountManager' => array( 'GerentiaDeContos' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'AccountManager' => array( 'アカウントマネージャー' ),
@@ -90,5 +95,10 @@ $aliases['sq'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'AccountManager' => array( 'AkauntiKuu' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'AccountManager' => array( 'Tagapamahala ng akawnt' ),
 );
 

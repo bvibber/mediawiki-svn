@@ -99,3 +99,8 @@ $aliases['no'] = array(
 	'ShowProcesslist' => array( 'Vis prosessliste' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ShowProcesslist' => array( 'Ipakita ang talaan ng proseso' ),
+);
+

@@ -49,3 +49,8 @@ $aliases['nl'] = array(
 	'StalePages' => array( 'VerouderdePaginas', "VerouderdePagina's" ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'StalePages' => array( 'Mga pahina hindi na sariwa' ),
+);
+

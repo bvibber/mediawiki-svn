@@ -77,6 +77,11 @@ $aliases['hu'] = array(
 	'ViewAPC' => array( 'APC megtekintése' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ViewAPC' => array( 'InfoAPC' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ViewAPC' => array( 'APC情報', 'APC表示' ),
@@ -112,6 +117,11 @@ $aliases['no'] = array(
 	'ViewAPC' => array( 'Vis APC' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ViewAPC' => array( 'Veire APC', 'VeireAPC' ),
+);
+
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ViewAPC' => array( 'Podgląd APC' ),
@@ -130,5 +140,10 @@ $aliases['sq'] = array(
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ViewAPC' => array( 'Visa APC' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ViewAPC' => array( 'Tingnan ang APC' ),
 );
 

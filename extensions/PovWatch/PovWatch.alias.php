@@ -69,3 +69,8 @@ $aliases['sv'] = array(
 	'PovWatch' => array( 'Povövervakning' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'PovWatch' => array( 'Pagbantay sa POV' ),
+);
+

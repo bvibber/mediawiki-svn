@@ -88,6 +88,11 @@ $aliases['hu'] = array(
 	'InterwikiList' => array( 'Wikiközi hivatkozások listája', 'Interwikik listája' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'InterwikiList' => array( 'ListaInterwiki' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'InterwikiList' => array( 'Daftar interwiki' ),
@@ -140,6 +145,11 @@ $aliases['no'] = array(
 	'InterwikiList' => array( 'Interwikiliste' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'InterwikiList' => array( 'Lista interwiki' ),
+);
+
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
 	'InterwikiList' => array( 'Lista de interwikis' ),
@@ -158,5 +168,10 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'InterwikiList' => array( 'OrodhayaInterwiki' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'InterwikiList' => array( 'Talaan ng ugnayang-wiki' ),
 );
 

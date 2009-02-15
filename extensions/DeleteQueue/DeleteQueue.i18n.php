@@ -2665,6 +2665,13 @@ Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
 	'deletequeue-list-header-discusspage' => 'Diskusjonsside',
 );
 
+/** Novial (Novial)
+ * @author Malafaya
+ */
+$messages['nov'] = array(
+	'deletequeue-case-reason' => 'Resone:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  * @author Meno25

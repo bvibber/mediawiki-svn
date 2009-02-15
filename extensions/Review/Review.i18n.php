@@ -338,6 +338,7 @@ $messages['da'] = array(
  * @author Leithian
  * @author MF-Warburg
  * @author Melancholie
+ * @author Purodha
  * @author Revolus
  * @author Umherirrender
  */
@@ -349,7 +350,7 @@ $messages['de'] = array(
 # Reihenfolge: Nummerischer Schlüssel (> 0), Name, maximaler Bereich (> 1; 2=ja/nein), Bedeutung des niedrigsten Wertes (z. B. „schlecht“), Bedeutung des höchsten Wertes (z. B. „gut“).
 1:Qualität:5:schlecht:gut
 2:Fertig für 1.0:2:nein:ja',
-	'review_topic_page' => 'Themen prüfen',
+	'review_topic_page' => 'Themen der Prüfung',
 	'review_sidebar_explanation' => 'Das ganz linke Auswahlkästchen bedeutet immer „keine Meinung“.',
 	'review_save' => 'Prüfung speichern',
 	'review_your_review' => 'Deine Prüfung dieser Seite/Version:',
@@ -980,21 +981,52 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'review_sidebar_title' => 'Nohloore',
-	'review-desc' => 'Dat widder-op-ershtande Werrekzüsh för et [[Special:Review|Nohkikke]].',
+	'review_sidebar_title' => 'Enschätze',
+	'review-desc' => 'Dat widder-op-ershtande Werrekzüsh för et [[Special:Review|Sigge-Enschätze]].',
+	'review_topics' => '# Hee kütt en Leß met Pungkte un Berette för Sigge enzeschätze.
+# Jede Pungk weet övver en Reih met fönef Wääte beshtemmp, die
+# zwesche „:“ (alsu Dubbelpüngkscher) shtonn. All ander Reihe donn nix,
+# me kann se jenou esu joot fott lohße. De Reijefollsch es:
+# De Nummer (af 1), Dubbelpungk, der Name, Dubbelpungk, en Zahl övver 1
+# för der Berett dä donoh kütt, Dubbelpungk, de Bedücknis för de Zahl 1,
+# Dubbelpungk, de Bedücknis för de jröößte Zahl em Berett.
+# För e Beijshpell:
+1:Qualität:5:schlääsch:joot
+2:Kammer bruche:2:nä:jo',
+	'review_topic_page' => 'De Pungkte för enzeschätze',
 	'review_sidebar_explanation' => 'Dat lenkeste Käßje bedügk emmer „kein Meinung“.',
-	'review_page_link' => 'Shtatistike vum Nohkikke',
+	'review_save' => 'Enschäzong afshpeishere',
+	'review_your_review' => 'Ding Enschätzong för die Version fun dä Sigg:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => 'Do häs ald ander Versione fun hee dä Sigg nohjeprööf.
+Ding Enschäzonge wääde met heh dä zosamme jedonn,
+woh de „{{int:review_no_opinion}}“ ußjesooht häs.',
+	'review_page_link' => 'Shtatistike vum Enschätze',
+	'review_sidebar_final' => 'De zusammejezallte Enschätzunge för hee die Sigg fingks De op dä ier $1.',
+	'review_for_page' => 'Dä Sigg „$1“ ier Enschätzunge',
+	'review_for_user' => '{{GENDER:$1|Däm|Däm|Däm Metmaacher|Dä|-}} „$1“ {{GENDER:$1|sing|sing|sing|ier|-}} Enschätzunge.',
 	'review_error' => 'Öhnzjät es verkiehrt!',
+	'review_no_reviews_for_page' => 'Mer han em Momang kein Enschätzunge för „$1“.',
 	'review_total_statistics' => 'Zosamme',
-	'review_statistics_left_corner' => 'Nohkikke un Pröfe',
-	'review_version_link' => 'De Version $1 nohloore',
+	'review_statistics_left_corner' => 'Enschätze',
+	'review_version_link' => 'De Version #$1 enschätze',
 	'review_statistic_cell' => 'Dä Dorschnett: $1 vun $2<br />($4 Metmaacher, $5 Namloose)',
 	'review_version_statistic_cell' => '$1 vun $2',
+	'review_version_reviews_link' => '<small>(Enschätzunge vun Versione)</small>',
+	'review_concerns_page' => 'Die Enschätzunge hee es för de Sigg „$1“.',
+	'review_concerns_user' => 'Dat es övver de Enschätzunge vun {{GENDER:$1|däm Metmaacher|dä Metmaacheren|däm Metmaacher|dä Metmaacheren|-}} „$1“.',
+	'review_user_reviews' => '<small>(Enschätzunge vun dämm Metmaacher)</small>',
+	'review_user_page_list' => 'Dä Metmaacher hät ald hee die Sigge enjeschätz:',
 	'review_user_details_link' => '(Einzelheite)',
-	'revision_review_this_page_version_link' => 'Donn hee die Version vun dä Sigg nohloore.',
-	'review_blocked' => 'Do bes jesperrt un kanns dröm nix nohloore.',
-	'review_wrong_namespace' => 'Sigge en dämm Appachtemang kam_mer nit nohloore!',
+	'review_do_merge' => 'Donn ming Enschätzunge vun ander Versione vun heh dä Sigg en heh die met opnämme.',
+	'review_has_been_stored' => '<span id="review_has_been_stored">Ding Enschätzong es jeshpeishert.</span>',
+	'revision_review_this_page_version_link' => 'Donn hee die Version vun dä Sigg enschätze.',
+	'review_page_review' => 'De Sigg „$1“ enschätze',
+	'review_blocked' => 'Do bes jesperrt un kanns dröm nix enschätze.',
+	'review_wrong_namespace' => 'Sigge en dämm Appachtemang kam_mer nit enschätze!',
+	'review_topic' => 'Pungk',
 	'review_no_opinion' => 'Kein Meinung',
+	'review_rating' => 'Enschätzung',
+	'review_comment' => 'Kommäntaa',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

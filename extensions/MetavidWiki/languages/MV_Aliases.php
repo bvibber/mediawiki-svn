@@ -129,3 +129,17 @@ $aliases['sw'] = array(
 	'MediaSearch' => array( 'TafutaPicha' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'MediaSearch' => array( 'Paghahanap ng midya' ),
+	'Mv_Add_Stream' => array( 'Daloy ng pagdaragdag ng MV' ),
+	'MVAdmin' => array( 'Tagapangasiwa ng MV' ),
+	'MvExportAsk' => array( 'Pagtatanong ng pagluluwas ng MV' ),
+	'MvExportSearch' => array( 'Paghanap ng pagluluwas ng MV' ),
+	'MvExportSequence' => array( 'Pagkakasunud-sunod ng pagluluwas ng MV' ),
+	'MvExportStream' => array( 'Daloy ng pagluluwas ng MV' ),
+	'Mv_List_Streams' => array( 'Talaan ng mga daloy ng MV' ),
+	'MV_SpecialSearch' => array( 'Natatanging paghahanap ng MV' ),
+	'MvVideoFeed' => array( 'Pasubo ng palabas na MV' ),
+);
+

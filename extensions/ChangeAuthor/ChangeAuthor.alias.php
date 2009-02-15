@@ -82,6 +82,11 @@ $aliases['hu'] = array(
 	'ChangeAuthor' => array( 'Szerző megváltoztatása' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ChangeAuthor' => array( 'CambiarAutor' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ChangeAuthor' => array( '著者変更' ),
@@ -145,5 +150,15 @@ $aliases['sa'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ChangeAuthor' => array( 'NdërroAutor' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ChangeAuthor' => array( 'Baguhin ang may-akda' ),
+);
+
+/** Vèneto (Vèneto) */
+$aliases['vec'] = array(
+	'ChangeAuthor' => array( 'CanbiaAutor' ),
 );
 

@@ -85,6 +85,11 @@ $aliases['hu'] = array(
 	'EditUser' => array( 'Szerkesztő szerkesztése' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'EditUser' => array( 'ModificarUsator' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'EditUser' => array( '利用者情報の編集' ),
@@ -145,5 +150,10 @@ $aliases['sw'] = array(
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'EditUser' => array( 'แก้ไขผู้ใช้' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'EditUser' => array( 'Baguhin ang tagagamit' ),
 );
 

@@ -71,6 +71,13 @@ $aliases['hu'] = array(
 	'ContributionTotal' => array( 'Adományok összesen' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ContributionHistory' => array( 'HistoriaDeContributiones' ),
+	'ContributionStatistics' => array( 'StatisticasDeContributiones' ),
+	'ContributionTotal' => array( 'TotalDeContributiones' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ContributionHistory' => array( '寄付履歴' ),
@@ -166,5 +173,12 @@ $aliases['sw'] = array(
 	'ContributionHistory' => array( 'HistoriayaWachangiaji' ),
 	'ContributionStatistics' => array( 'TakwimuyaMichango' ),
 	'ContributionTotal' => array( 'JumlayaMichango' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ContributionHistory' => array( 'Kasaysayan ng ambag' ),
+	'ContributionStatistics' => array( 'Mga estadistika ng ambag' ),
+	'ContributionTotal' => array( 'Kabuoang ambag' ),
 );
 

@@ -52,6 +52,11 @@ $aliases['hsb'] = array(
 	'Patroller' => array( 'Dohladowar' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Patroller' => array( 'Patruliator' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Patroller' => array( 'パトローラー' ),
@@ -80,5 +85,10 @@ $aliases['sq'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Patroller' => array( 'Mwanadoria' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Patroller' => array( 'Tagapatrolya' ),
 );
 

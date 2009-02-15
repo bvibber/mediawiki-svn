@@ -62,6 +62,11 @@ $aliases['hu'] = array(
 	'FindSpam' => array( 'Spam keresése' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'FindSpam' => array( 'CercarSpam' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'FindSpam' => array( 'スパムを探す' ),
@@ -115,5 +120,10 @@ $aliases['sq'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'FindSpam' => array( 'TafutaUharabu' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'FindSpam' => array( 'Maghanap ng manlulusob' ),
 );
 

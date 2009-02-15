@@ -914,10 +914,11 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'deletebatch' => 'Apagar páginas em bloco',
-	'deletebatch-desc' => '[[Special:DeleteBatch|Elimine um bloco de páginas]]',
+	'deletebatch-desc' => 'Permite [[Special:DeleteBatch|eliminar páginas em bloco]]',
 	'deletebatch-help' => 'Elimine um bloco de páginas. Você pode realizar uma única eliminação, ou eliminar páginas listadas num ficheiro.
 Escolha um utilizador que será mostrado nos registos de eliminação.
 O ficheiro carregado deverá conter o nome da página e um motivo opcional, separados por um carácter "|" em cada linha.',

@@ -57,6 +57,11 @@ $aliases['hu'] = array(
 	'ChemicalSources' => array( 'Vegyszer források' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ChemicalSources' => array( 'FontesChimic' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ChemicalSources' => array( '化学関連の検索' ),
@@ -105,5 +110,10 @@ $aliases['sa'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ChemicalSources' => array( 'BurimeKimike' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ChemicalSources' => array( 'Mga pinagmulang makakimika' ),
 );
 

@@ -60,3 +60,8 @@ $aliases['no'] = array(
 	'SpamRegex' => array( 'Regulære uttrykk mot spam' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'SpamRegex' => array( 'Karaniwang pagsasaad ng manlulusob' ),
+);
+

@@ -93,6 +93,11 @@ $aliases['hu'] = array(
 	'BoardVote' => array( 'Kuratóriumválasztás' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'BoardVote' => array( 'VotoConsilio' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'BoardVote' => array( 'Pemilihan dewan' ),
@@ -161,5 +166,10 @@ $aliases['pl'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'BoardVote' => array( 'मण्डलमतदान' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'BoardVote' => array( 'Halalan ng lupon' ),
 );
 

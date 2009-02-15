@@ -129,7 +129,7 @@ $messages['arz'] = array(
 	'refreshspecial-reconnected' => 'تمت إعادة التوصيل.',
 	'refreshspecial-reconnecting' => 'التوصيل فشل، إعادة التوصيل خلال 10 ثواني...',
 	'refreshspecial-page-result' => 'حصل على $1 {{PLURAL:$1|صف|صف}} فى',
-	'refreshspecial-total-display' => 'تحديث $1 صفحة بإجمالى $2 صف فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
+	'refreshspecial-total-display' => 'تحديث $1 {{PLURAL:$1|صفحة|صفحة}} بإجمالى $2 {{PLURAL:$2|صف|صف}} فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
 	'right-refreshspecial' => 'إنعاش الصفحات الخاصة',
 );
 

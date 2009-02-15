@@ -643,10 +643,12 @@ Izan pazientzia, arren.',
 );
 
 /** Persian (فارسی)
+ * @author BlueDevil
  * @author Huji
  * @author Mardetanha
  */
 $messages['fa'] = array(
+	'youtubeauthsub' => 'بارگذاری کردن ویدیوی یوتوب',
 	'youtubeauthsub_title' => 'عنوان',
 	'youtubeauthsub_description' => 'توضیحات',
 	'youtubeauthsub_password' => 'گذرواژهٔ یوتیوب',
@@ -1197,6 +1199,14 @@ Tulung sabar dhisik.',
 	'youtubeauthsub_jserror_nokeywords' => 'Mangga lebokna 1 utawa luwih tembung kunci.',
 	'youtubeauthsub_jserror_notitle' => 'Mangga lebokna irah-irahan (judhul) kanggo vidéo iki.',
 	'youtubeauthsub_jserror_nodesc' => 'Mangga lebokna dèskripsi kanggo vidéo iki.',
+);
+
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'youtubeauthsub_category' => 'კატეგორია',
+	'youtubeauthsub_uploadbutton' => 'ატვირთვა',
 );
 
 /** Khmer (ភាសាខ្មែរ)

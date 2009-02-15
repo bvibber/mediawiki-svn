@@ -4347,6 +4347,8 @@ $wdMessages['ja'] = array(
 	'ow_uipref_datasets' => 'デフォルト表示:',
 	'ow_uiprefs' => 'ウィキデータ',
 	'ow_none_selected' => '（選択なし）',
+	'transaction' => 'ウィキデータ: トランザクションログ',
+	'ow_transaction_from_transaction' => '元のトランザクション:',
 	'ow_transaction_count' => '件数:',
 	'ow_transaction_user' => '利用者名:',
 	'ow_transaction_show_rollback' => '差し戻しボタンを表示:',
@@ -4359,6 +4361,7 @@ $wdMessages['ja'] = array(
 	'ow_transaction_operation' => '操作',
 	'ow_transaction_is_latest' => '最新か',
 	'ow_transaction_class_member' => 'クラス要素',
+	'ow_transaction_object' => '対象',
 	'ow_transaction_first_dm' => '第一意味定義',
 	'ow_transaction_second_dm' => '第二意味定義',
 	'ow_transaction_summary' => '要約',
@@ -4410,6 +4413,7 @@ $wdMessages['ja'] = array(
 	'ow_Expressions' => '表現',
 	'ow_IdenticalMeaning' => '同一の意味ですか？',
 	'ow_IncomingRelations' => '内向き関係',
+	'ow_GotoSource' => '起点を表示',
 	'ow_Language' => '言語',
 	'ow_LevelAnnotation' => '注釈',
 	'ow_LinkAttributeHeader' => 'リンク属性',
@@ -4431,7 +4435,8 @@ $wdMessages['ja'] = array(
 	'ow_SuggestHint' => '選択を変更するためにクリックする',
 	'ow_Synonyms' => '同義語',
 	'ow_SynonymsAndTranslations' => '同義語と翻訳語',
-	'ow_Source' => 'ソース',
+	'ow_Source' => '起点',
+	'ow_SourceIdentifier' => '起点識別子',
 	'ow_Text' => 'テキスト',
 	'ow_TextAttribute' => '特性',
 	'ow_TextAttributeHeader' => 'テキスト属性',
@@ -4441,6 +4446,7 @@ $wdMessages['ja'] = array(
 	'ow_TranslatedText' => '翻訳文',
 	'ow_TranslatedTextAttributeValue' => 'テキスト',
 	'ow_TranslatedTextAttributeValues' => '翻訳可能なテキスト',
+	'ow_Label' => 'ラベル',
 	'ow_Link' => 'リンク',
 	'ow_LinkAttribute' => '特性',
 	'ow_LinkAttributeValues' => 'リンク',
@@ -4470,6 +4476,7 @@ $wdMessages['ja'] = array(
 データベースの一貫性に問題があり、ウィキデータはこの意味定義IDに関連付けられた有効なデータを見つけられませんでした。
 それは失われた可能性もあります。
 サーバーの運用者か管理者に連絡してください。',
+	'ow_history_transaction' => 'トランザクション:',
 	'ow_history_show_life_span' => '記録寿命を表示:',
 	'ow_class_attr_type_dm' => '意味定義',
 	'ow_class_attr_type_xlate' => '翻訳可能なテキスト',
@@ -4607,10 +4614,12 @@ Mangga hubungi operator server utawa pangurus.',
 /** Georgian (ქართული)
  * @author Malafaya
  * @author Sopho
+ * @author Temuri rajavi
  */
 $wdMessages['ka'] = array(
 	'languages' => 'ვიკიდატა: ენების მენეჯერი',
 	'langman_title' => 'ენების მენეჯერი',
+	'langman_addlang' => 'ენის დამატება',
 	'datasearch' => 'ვიკიდატა: მონაცემთა ძიება',
 	'datasearch_language' => 'ენა:',
 	'ow_exporttsv_languages' => 'ენები:',

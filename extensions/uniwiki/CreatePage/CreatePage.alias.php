@@ -115,3 +115,13 @@ $aliases['sw'] = array(
 	'CreatePage' => array( 'AnzishaUkurasa' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'CreatePage' => array( 'Likhain ang pahina' ),
+);
+
+/** Vèneto (Vèneto) */
+$aliases['vec'] = array(
+	'CreatePage' => array( 'CreaPàxena' ),
+);
+

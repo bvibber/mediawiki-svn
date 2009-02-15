@@ -83,6 +83,12 @@ $aliases['hu'] = array(
 	'Code' => array( 'Kód' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Code' => array( 'Codice', 'RecensionDeCodice' ),
+	'RepoAdmin' => array( 'AdminRepo' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Code' => array( 'コード', 'コードレビュー' ),
@@ -146,5 +152,11 @@ $aliases['sa'] = array(
 $aliases['sw'] = array(
 	'Code' => array( 'Kodi', 'Onyesha kodi' ),
 	'RepoAdmin' => array( 'TaarifuMkabidhi' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Code' => array( 'Kodigo', 'Pagsusuri ng kodigo' ),
+	'RepoAdmin' => array( 'Tagapangasiwa ng repositoryo' ),
 );
 

@@ -109,3 +109,8 @@ $aliases['th'] = array(
 	'PurgeCache' => array( 'ล้างแคช' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'PurgeCache' => array( 'Dalisayin ang talaksan' ),
+);
+

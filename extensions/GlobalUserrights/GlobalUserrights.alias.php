@@ -43,6 +43,11 @@ $aliases['hsb'] = array(
 	'GlobalUserrights' => array( 'Globalne wužwiarske prawa' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'GlobalUserrights' => array( 'DerectosGlobalDeUsatores' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'GlobalUserrights' => array( 'グローバル利用者権限' ),
@@ -71,5 +76,10 @@ $aliases['no'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'GlobalUserrights' => array( 'वैश्विकयोजकाधिकार' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'GlobalUserrights' => array( 'Mga karapatan ng pandaigdigang tagagamit' ),
 );
 

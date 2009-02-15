@@ -109,7 +109,7 @@ $aliases['nl'] = array(
 
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'Call' => array( 'Ampèl', 'Ampèls' ),
+	'Call' => array( 'Ampèl', 'Ampèls', 'Apelar' ),
 );
 
 /** Sanskrit (संस्कृत) */
@@ -120,5 +120,10 @@ $aliases['sa'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Call' => array( 'Thirr' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Call' => array( 'Tawagin' ),
 );
 

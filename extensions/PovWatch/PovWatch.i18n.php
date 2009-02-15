@@ -1117,6 +1117,17 @@ $messages['nah'] = array(
 	'povwatch_added' => 'ōmocēntili',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'povwatch_title' => 'Titel:',
+	'povwatch_comment' => 'Logbook-Kommentar:',
+	'povwatch_unsubscribe' => 'Abo afmellen',
+	'povwatch_subscribe' => 'Abonneren',
+	'povwatch_added' => 'toföögt',
+);
+
 /** Dutch (Nederlands)
  * @author GerardM
  * @author SPQRobin
@@ -1675,6 +1686,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'povwatch_unknown_subpage' => 'Sotopàxena sconossiùa.',
 	'povwatch_title' => 'Titolo:',
 );
 

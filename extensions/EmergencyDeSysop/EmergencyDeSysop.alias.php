@@ -51,6 +51,11 @@ $aliases['hu'] = array(
 	'EmergencyDeSysop' => array( 'Vészhelyzeti adminisztrátori jog elvonás' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'EmergencyDeSysop' => array( 'DisadminDeUrgentia' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'EmergencyDeSysop' => array( '緊急管理者解任' ),
@@ -71,8 +76,18 @@ $aliases['nl'] = array(
 	'EmergencyDeSysop' => array( 'NoodgreepBeheerdersrechtenVerwijderen' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'EmergencyDeSysop' => array( 'DesysopatgeUrgent', 'DesisopatgeUrgent', 'DeSysopatgeUrgent', 'DeSisopatgeUrgent' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'EmergencyDeSysop' => array( 'आपत्कालप्रचालकनिष्कासन' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'EmergencyDeSysop' => array( 'Biglaang pagtanggal bilang tagapagpatakbo ng sistema' ),
 );
 

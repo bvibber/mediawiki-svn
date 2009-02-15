@@ -64,6 +64,11 @@ $aliases['hu'] = array(
 	'InspectCache' => array( 'Gyorsítótár vizsgálat' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'InspectCache' => array( 'InspectarCache' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'InspectCache' => array( 'Inspeksi tembolok' ),
@@ -102,5 +107,10 @@ $aliases['sa'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'InspectCache' => array( 'ChunguzaMabaki' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'InspectCache' => array( 'Suriin ang nakakubling taguan' ),
 );
 

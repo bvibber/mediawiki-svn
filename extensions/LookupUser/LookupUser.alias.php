@@ -37,6 +37,11 @@ $aliases['hr'] = array(
 	'LookupUser' => array( 'Pogledaj_suradnika' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'LookupUser' => array( 'CercarUsator' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'LookupUser' => array( '利用者情報調査', '利用者情報を調査' ),
@@ -70,5 +75,10 @@ $aliases['sa'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'LookupUser' => array( 'TafutaMtumiaji' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'LookupUser' => array( 'Hanapin ang tagagamit' ),
 );
 

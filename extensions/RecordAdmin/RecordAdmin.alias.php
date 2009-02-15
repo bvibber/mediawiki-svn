@@ -40,6 +40,11 @@ $aliases['nl'] = array(
 	'RecordAdmin' => array( 'Gegevensbeheer' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'RecordAdmin' => array( 'GerirEnregistrament', 'Gerir Enregistrament' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'RecordAdmin' => array( 'प्रचालकअङ्कन' ),
@@ -48,5 +53,10 @@ $aliases['sa'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'RecordAdmin' => array( 'RekodizaMkabidhi' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'RecordAdmin' => array( 'Tagapangasiwa ng talaan' ),
 );
 

@@ -149,3 +149,8 @@ $aliases['th'] = array(
 	'WhatIsMyIP' => array( 'ไอพีของฉัน' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'WhatIsMyIP' => array( 'Ano ang IP ko' ),
+);
+

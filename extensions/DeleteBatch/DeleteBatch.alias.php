@@ -81,6 +81,11 @@ $aliases['hu'] = array(
 	'DeleteBatch' => array( 'Tömeges törlés' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'DeleteBatch' => array( 'DelerInMassa' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'DeleteBatch' => array( '一括削除' ),
@@ -131,5 +136,10 @@ $aliases['sa'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'DeleteBatch' => array( 'FutaFungu' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'DeleteBatch' => array( 'Burahin ang bungkos' ),
 );
 

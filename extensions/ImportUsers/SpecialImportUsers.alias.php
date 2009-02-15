@@ -90,6 +90,11 @@ $aliases['hu'] = array(
 	'ImportUsers' => array( 'Szerkesztők importálása' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ImportUsers' => array( 'ImportarUsatores' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'ImportUsers' => array( 'Impor pengguna' ),
@@ -182,5 +187,10 @@ $aliases['sw'] = array(
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'ImportUsers' => array( 'นำเข้าผู้ใช้' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'ImportUsers' => array( 'Mag-angkat ng mga tagagamit' ),
 );
 

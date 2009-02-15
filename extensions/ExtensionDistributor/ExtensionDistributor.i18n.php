@@ -791,11 +791,55 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
+	'extensiondistributor' => 'Snimi MediaWiki ekstenziju',
+	'extdist-desc' => 'Ekstenzija za distribuciju inačica arhiva ekstenzija',
+	'extdist-not-configured' => 'Molimo konfigurirajte $wgExtDistTarDir i $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Konfigurirani radni direktorij za kopiranje ne postoji!',
+	'extdist-no-such-extension' => 'Nema takve ekstenziju "$1"',
+	'extdist-no-such-version' => 'Ekstenzija "$1" ne postoji u verziji "$2".',
+	'extdist-choose-extension' => 'Odaberite koju ekstenziju želite preuzeti:',
+	'extdist-wc-empty' => 'U konfiguriranom radnom direktoriju za kopiranje nema ekstenzija za distribuciju!',
 	'extdist-submit-extension' => 'Nastavi',
 	'extdist-current-version' => 'Tekuća inačica (stablo)',
+	'extdist-choose-version' => '<big>Preuzimate ekstenziju <b>$1</b>.</big> 
+
+Izaberite vašu inačicu MedijaWikija.
+
+Većina ekstenzija će raditi na više (ili svim) inačicama MedijaWikija, pa ako vaša inačica MedijaWikija nije ovdje, ili ako imate potrebu za najnovijim značajkama, pokušajte koristiti trenutnu inačicu.',
+	'extdist-no-versions' => 'Odabrana ekstenzija ($1) nije dostupna u nijednoj inačici!',
 	'extdist-submit-version' => 'Nastavi',
+	'extdist-no-remote' => 'Ne mogu uspostaviti vezu s udaljenim SVN (subversion) klijentom.',
+	'extdist-remote-error' => 'Pogrješka udaljenog SVN klijenta: <pre> $1 </pre>',
+	'extdist-remote-invalid-response' => 'Neispravan odgovor od udaljenog SVN klijenta.',
+	'extdist-svn-error' => 'SVN je naišao na pogrešku: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Nije moguće obraditi XML iz "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar je vratio izlazni kod $1:',
+	'extdist-created' => 'Kreirana je snimka inačice <b>$2</b> ekstenzije <b>$1</b> MedijaWikija inačice <b>$3</b>. Vaše preuzimanje počinje za 5 sekundi.
+
+URL snimke je:
+:$4
+Taj URL može biti rabljen za preuzimanje s poslužitelja, no molimo nemojte ga čuvati jer se sadržaj ne osvježava i moguće je njegovo brisanje s vremenom.
+
+Tar arhivu trebalo bi raspakirati u vaš direktorij za ekstenzije. Na primjer, na unixoidnim operacijskim sustavima:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Na Windowsima možete rabiti [http://www.7-zip.org/ 7-zip] za raspakiravanje arhive.
+
+Ukoliko je vaš wiki na udaljenom poslužitelju, raspakirajte datoteke u privremeni direktorij lokalno i potom ih sve snimite u direktorij za ekstenzije na poslužitelju.
+
+Primijetite da neke ekstenzije trebaju datoteku ExtensionFunctions.php, koja se nalazi u direktoriju <tt>extensions/ExtensionFunctions.php</tt>, to jest u direktoriju iznad direktorija dotične ekstenzije.
+Nemojte zaboraviti snimiti tu datoteku na poslužitelj.
+
+Nakon što se raspakirali arhivu, potrebno je uključiti ekstenziju u LocalSettings.php datoteci. Dokumentacije ekstenzije opisuje taj postupak.
+
+Ukoliko imate pitanja u svezi sustava distribucije ekstenzija, pogledajte ovu stranicu: [[Extension talk:ExtensionDistributor]].',
+	'extdist-want-more' => 'Dohvati drugu ekstenziju',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1187,6 +1231,13 @@ Sekiranya anda mempunyai sebarang soalan mengenai sistem pengedaran penyambung i
 $messages['myv'] = array(
 	'extdist-submit-extension' => 'Поладомс',
 	'extdist-submit-version' => 'Поладомс',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'extdist-submit-extension' => 'Wiedermaken',
 );
 
 /** Dutch (Nederlands)
@@ -1849,9 +1900,11 @@ $messages['vec'] = array(
 	'extensiondistributor' => 'Descarga na estension MediaWiki',
 	'extdist-desc' => 'Estension par distribuir archivi snapshot de le estension',
 	'extdist-not-configured' => 'Par piaser configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'La cartèla par copie de laoro configurà no la esiste!',
 	'extdist-no-such-extension' => 'L\'estension "$1" no la esiste',
 	'extdist-no-such-version' => 'L\'estension "$1" no la esiste in te la version "$2".',
 	'extdist-choose-extension' => 'Siegli quala estension te voli descargar:',
+	'extdist-wc-empty' => 'La cartèla par copie de laoro configurà no la contien estension distribuibili!',
 	'extdist-submit-extension' => 'Continua',
 	'extdist-current-version' => 'Version corente (trunk)',
 	'extdist-choose-version' => "<big>Te sì drio descargar l'estension <b>$1</b>.</big>

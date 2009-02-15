@@ -1160,6 +1160,10 @@ Struca <a href='$1'>qua</a> par continuar.",
 	'spamdifftool_confirm' => "Conferma che te voli zontar sti valori a la lista nera del spam.
 (Struca <a href='$1' target='new'>qua</a> par segnalar un problema.)",
 	'spamdifftool_summary' => 'Zonto a la lista nera del spam',
+	'spamdifftool_urls_detected' => "In tele modifiche xe stà catà i seguenti URL, quale vuto zontar a la lista nera del spam?
+Ste opzioni le xe ordinà da la pi restritiva a la manco restritiva: blocar l'intero dominio blocarà tuti i colegamenti direti a calcossa che vien da quel dominio.
+
+Stà tento a no blocar quei domini che ospita altri account utente come blogpost.com, geocities.com, ecc.",
 	'spamdifftool_no_urls_detected' => "No xe stà rilevà nissun URL.
 Struca <a href='$1'>qua</a> par tornar indrìo.",
 	'spamdifftool_spam_link_text' => 'zonta al spam',

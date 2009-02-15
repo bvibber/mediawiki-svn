@@ -111,6 +111,16 @@ $messages['eo'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limigu kreadon de uzantoj',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Creación de cuentas ha sido automáticamente suspendiso por unos momentos en razón de una inusual gran número de recientes intentos de accesar.
+Por favor espere unos pocos minutos y trate nuevamente.',
+	'acct_creation_global_hard_throttle_hit' => "Creación de cuentas ha sido automáticamente suspendiso por unos segundos para reducir un desbordamiento de registros.
+Por favor espere un momento y presione 'Recargar' en su navegador para reenviar.",
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Nike

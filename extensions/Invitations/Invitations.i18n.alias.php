@@ -95,6 +95,11 @@ $aliases['hu'] = array(
 	'Invitations' => array( 'Meghívók' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Invitations' => array( 'Invitationes' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Invitations' => array( 'Undangan' ),
@@ -145,6 +150,11 @@ $aliases['no'] = array(
 	'Invitations' => array( 'Invitasjoner' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Invitations' => array( 'Convits' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'Invitations' => array( 'بلنې' ),
@@ -183,5 +193,10 @@ $aliases['sw'] = array(
 /** Telugu (తెలుగు) */
 $aliases['te'] = array(
 	'Invitations' => array( 'ఆహ్వానాలు' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Invitations' => array( 'Mga paanyaya' ),
 );
 

@@ -1569,6 +1569,13 @@ $messages['no'] = array(
 	'regexblock-view-time' => '$1',
 );
 
+/** Novial (Novial)
+ * @author Malafaya
+ */
+$messages['nov'] = array(
+	'regexblock-form-reason' => 'Resone:',
+);
+
 /** Northern Sotho (Sesotho sa Leboa)
  * @author Mohau
  */

@@ -95,6 +95,12 @@ $aliases['hsb'] = array(
 	'Oversight' => array( 'Protokol dohladowanjow' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'HideRevision' => array( 'CelarRevision' ),
+	'Oversight' => array( 'Supervisor' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'HideRevision' => array( 'Sembunyikan revisi' ),
@@ -165,5 +171,11 @@ $aliases['sv'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'HideRevision' => array( 'FichaMatoleo' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'HideRevision' => array( 'Itago ang pagbabago' ),
+	'Oversight' => array( 'Maingat na pamamahala' ),
 );
 

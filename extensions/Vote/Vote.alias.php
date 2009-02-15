@@ -179,3 +179,13 @@ $aliases['th'] = array(
 	'Vote' => array( 'โหวต' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'Vote' => array( 'Bumoto' ),
+);
+
+/** Vèneto (Vèneto) */
+$aliases['vec'] = array(
+	'Vote' => array( 'Vota' ),
+);
+

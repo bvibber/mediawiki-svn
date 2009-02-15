@@ -292,6 +292,15 @@ $messages['eo'] = array(
 	'slippymap_resetview' => 'Restarigi vidon',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'slippymap_maperror' => 'Error en mapa:',
+	'slippymap_code' => 'Wikicode para esta vista de mapa:',
+	'slippymap_button_code' => 'Obtener wikicode',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

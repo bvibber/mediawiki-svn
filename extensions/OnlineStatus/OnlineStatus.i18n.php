@@ -384,6 +384,7 @@ $messages['hr'] = array(
 	'onlinestatus-desc' => 'Omogućuje postavku prikazivanja suradnikove prisutnosti na wiki',
 	'onlinestatus-subtitle-offline' => 'Ovaj suradnik trenutačno nije spojen',
 	'onlinestatus-subtitle-online' => 'Ovaj je suradnik trenutačno spojen',
+	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'Tvoj status:',
 	'onlinestatus-toggles-explain' => 'Ovo omogućava da drugi suradnici uoče tvoju prisutnost kada gledaju tvoju suradničku stranicu.',
 	'onlinestatus-toggles-show' => 'Prikaži da sam spojen na mojoj suradničkoj stranici',

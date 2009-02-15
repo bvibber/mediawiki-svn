@@ -1492,6 +1492,14 @@ Tilbake til:
 	'crosswikiunblock-local' => 'Lokale blokkeringer støttes ikke via dette grensesnittet. Bruk [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
+/** Novial (Novial)
+ * @author Malafaya
+ */
+$messages['nov'] = array(
+	'crosswikiblock-reason' => 'Resone:',
+	'crosswikiunblock-reason' => 'Resone:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -299,10 +299,11 @@ $messages['li'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Hugo.arg
  */
 $messages['lt'] = array(
-	'poem-desc' => 'Prideda <tt>&lt;poema&gt;</tt> tagus poemų formatavimui',
+	'poem-desc' => 'Prideda <tt>&lt;poem&gt;</tt> gaires poemų formatavimui',
 );
 
 /** Latvian (Latviešu)

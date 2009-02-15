@@ -54,3 +54,12 @@ $aliases['sa'] = array(
 	'OpenIDXRDS' => array( 'उद्घटपरिचयपत्रXRDS' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'OpenIDLogin' => array( 'Paglagda sa OpenID' ),
+	'OpenIDFinish' => array( 'Pagtatapos ng OpenID' ),
+	'OpenIDConvert' => array( 'Pagpapalit ng OpenID' ),
+	'OpenIDServer' => array( 'Serbidor ng OpenID' ),
+	'OpenIDXRDS' => array( 'XRDS ng OpenID' ),
+);
+

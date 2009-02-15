@@ -120,3 +120,8 @@ $aliases['sa'] = array(
 	'WhoIsWatching' => array( 'अन्यकतम्‌पश्यति' ),
 );
 
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'WhoIsWatching' => array( 'Sino ang nagbabantay' ),
+);
+

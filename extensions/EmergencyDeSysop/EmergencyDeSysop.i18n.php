@@ -275,6 +275,26 @@ $messages['hsb'] = array(
 	'right-emergencydesysop' => 'Móžnosć druhemu wužiwarjej mjez sobu status administratora preč wzać',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'emergencydesysop' => 'Disadmin de urgentia',
+	'emergencydesysop-desc' => 'Permitte que un administrator sacrifica su proprie privilegios pro "disadministratorar" un altere administrator',
+	'emergencydesysop-title' => 'Remotion del accesso de administrator, e del usator actual, e de un altere administrator',
+	'emergencydesysop-otheradmin' => 'Altere administrator a retirar del gruppo',
+	'emergencydesysop-reason' => 'Motivo pro le remotion',
+	'emergencydesysop-submit' => 'Submitter',
+	'emergencydesysop-incomplete' => 'Tote le campos de iste formulario es obligatori. Per favor reprova.',
+	'emergencydesysop-notasysop' => 'Le usator visate non es in le gruppo de administratores.',
+	'emergencydesysop-nogroups' => 'Necun',
+	'emergencydesysop-done' => 'Action complete. Tu e [[$1]] non es plus administratores.',
+	'emergencydesysop-invalidtarget' => 'Le usator visate non existe.',
+	'emergencydesysop-blocked' => 'Tu non pote acceder a iste pagina durante que tu es blocate.',
+	'emergencydesysop-noright' => 'Tu non ha sufficiente permissiones pro acceder a iste pagina.',
+	'right-emergencydesysop' => 'Pote "disadministratorar" mutualmente un altere usator',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

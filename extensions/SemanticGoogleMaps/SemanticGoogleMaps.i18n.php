@@ -86,6 +86,13 @@ $messages['eo'] = array(
 	'semanticgooglemaps-desc' => 'Permesas al uzantoj por aldoni Guglo-Mapojn al vikipaĝojn laŭ strukturaj datenoj.',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'semanticgooglemaps-enteraddresshere' => 'Ingresar dirección aquí',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -179,6 +186,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Koordinaten nokucken',
 	'semanticgooglemaps-desc' => "Erlaabt et de Benotzer fir Google Maps op Wiki-Säiten op Basis vu srukturéierten Donnéeën ze weisen an z'änneren.",
+	'semanticgooglemaps-enteraddresshere' => 'Adress hei aginn',
 );
 
 /** Dutch (Nederlands)

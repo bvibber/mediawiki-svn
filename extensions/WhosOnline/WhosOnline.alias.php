@@ -131,7 +131,7 @@ $aliases['no'] = array(
 
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'WhosOnline' => array( 'Qui es en linha', 'QuiEsEnLinha' ),
+	'WhosOnline' => array( 'Qui es en linha', 'QuiEsEnLinha', 'Qual es en linha', 'QualEsEnLinha' ),
 );
 
 /** Polish (Polski) */
@@ -149,6 +149,11 @@ $aliases['qu'] = array(
 	'WhosOnline' => array( 'PitaqYaykusqa' ),
 );
 
+/** Sanskrit (संस्कृत) */
+$aliases['sa'] = array(
+	'WhosOnline' => array( 'अन्यकतम्‌सद्यस्क' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'WhosOnline' => array( 'NaniyukoMkondoni' ),
@@ -157,5 +162,10 @@ $aliases['sw'] = array(
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'WhosOnline' => array( 'ใครออนไลน์อยู่' ),
+);
+
+/** Tagalog (Tagalog) */
+$aliases['tl'] = array(
+	'WhosOnline' => array( 'Sino ang nasa internet' ),
 );
 
