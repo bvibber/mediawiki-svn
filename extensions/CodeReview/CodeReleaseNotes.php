@@ -100,6 +100,7 @@ class CodeReleaseNotes extends CodeView {
 		$wgOut->addHTML( '</ul>' );
 	}
 	
+	// Quick relevance tests (these *should* be over-inclusive a little if anything)
 	private function isRelevant( $summary ) {
 		# Fixed a bug?
 		if( preg_match( '/\bbug #?(\d+)\b/i', $summary, $m ) )
@@ -108,13 +109,13 @@ class CodeReleaseNotes extends CodeView {
 		if( preg_match( '/\b\$wg[a-bA-Z]{3,100}\b/', $summary, $m ) )
 			return true;
 		# Sanity check: summary cannot be *too* short to be useful
-		if( mb_strlen($summary) < 40 )
+		if( mb_strlen($summary) < 40 || str_word_count($summary) <= 5 )
 			return false;
 		# All caps words? like "BREAKING CHANGE"
 		if( preg_match( '/\b[A-Z]{8,20}\b/', $summary, $m ) )
 			return true;
 		# Longish summary :)
-		if( mb_strlen($summary) > 250 )
+		if( str_word_count($summary) > 35 )
 			return true;
 		# Otherwise false
 		return false;
