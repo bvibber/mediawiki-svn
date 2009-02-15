@@ -102,17 +102,19 @@ class CodeReleaseNotes extends CodeView {
 	
 	// Quick relevance tests (these *should* be over-inclusive a little if anything)
 	private function isRelevant( $summary ) {
-		# Fixed a bug?
-		if( preg_match( '/\bbug #?(\d+)\b/i', $summary, $m ) )
-			return true;
-		# Config var?
-		if( preg_match( '/\b\$wg[a-bA-Z]{3,100}\b/', $summary, $m ) )
+		# Fixed a bug? Mentioned a config var?
+		if( preg_match( '/\b(bug #?(\d+)|$wg[0-9a-z]{3,50})\b/i', $summary ) )
 			return true;
 		# Sanity check: summary cannot be *too* short to be useful
 		if( mb_strlen($summary) < 40 || str_word_count($summary) <= 5 )
 			return false;
-		# All caps words? like "BREAKING CHANGE"
-		if( preg_match( '/\b[A-Z]{8,20}\b/', $summary, $m ) )
+		# All caps words (like "BREAKING CHANGE"/magic words)? 
+		# Literals like "'autoconfirmed'"/'"user contributions"'?
+		# PHP vars like "$conf" mentioned?
+		if( preg_match( '/\b([A-Z]{8,20}|[\'"]\w+[\'"]|$[0-9a-zA-Z]{3,50})\b/', $summary ) )
+			return true;
+		# Random keywords
+		if( preg_match( '/\b(HTML\d|CSS\d|wiki|[Aa]pache ?\d?\.?\d?|PHP ?\d?\.?\d?)\b/', $summary ) )
 			return true;
 		# Longish summary :)
 		if( str_word_count($summary) > 35 )
