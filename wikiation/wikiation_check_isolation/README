@@ -1,0 +1,47 @@
+# This software, copyright (C) 2008-2009 by Wikiation.
+# This software is developed by Kim Bruning.
+#
+# Distributed under the terms of the MIT license.
+
+
+dl_and_check.sh	
+create_and_ul.sh
+
+settings
+
+Quick hack/ Test suite to check Mediawiki, sees which changes have been made to
+mediawiki code, or to the database. Written by Kim Bruning
+
+Currently handles 1 changeset only, this changeset is stored at the
+remote location specified in the settings file.
+
+==create_and_ul.sh==
+<Depreciated gwicke 08/2008: only pull supported>
+
+Creates a new changeset for the specified revision
+will be run from the installer (so you never need to use this!)
+
+
+==dl_and_check.sh [--detail|-d] [exclude]==
+Checks changeset against current mediawiki and database for your revision
+Will report any differences.
+
+If the detail flag is set, will give more detail on mediawiki code comparison
+	to wit: 
+		diff -q (show only whether files differ) is turned off,
+		diff -N (assume missing files are empty) is turned on.
+
+Files and directories matching the optional exclude pattern will be ignored.
+
+== settings ==
+Deprecated
+
+== Use on 83.149.110.226 or other wikitestservers ==
+
+dl_and_check.sh can be called via CheckMWandDBdiff
+
+Should assumptions change, please contact the author.
+
+== Example ==
+
+Check
