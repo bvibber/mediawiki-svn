@@ -1,3 +1,7 @@
+# This software is developed by Kim Bruning.
+#
+# Distributed under the terms of the MIT license.
+
 import settings
 import os, os.path, shutil
 import subprocess
@@ -7,7 +11,8 @@ from installation_system import Installation_System
 from installer_util import *
 from isolation import *
 
-#this still uses some legacy structured code, wrapped in a class so it can't do too much harm outside this file. Will refactor later when I have more time.
+# this still uses some legacy structured code, wrapped in a class so it can't do
+#too much harm outside this file. Will refactor later when I have more time.
 
 # already partially refactored while creating class.
 
@@ -19,6 +24,7 @@ filter_available=['extensions/']
 
 
 class Mediawiki_Installer(Installation_System):
+	"""installer for mediawiki revisions"""
 	system_name='mediawiki_installer'
 	# TODO: destination_dir isn't quite changable until we have finished refactoring everything (not today)
 	destination_dir=settings.revisionsdir
@@ -74,12 +80,12 @@ class Mediawiki_Installer(Installation_System):
 
 
 
-#duplicate of get_installed()
+#duplicate of get_installed() TODO: Refactor
 def installed():
 	"""list installed items"""
 	return os.listdir(settings.revisionsdir)
 
-#duplicate of get_installers()
+#duplicate of get_installers() TODO: Refactor
 def available():
 	"""list available items"""
 

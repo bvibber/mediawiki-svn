@@ -1,3 +1,8 @@
+# This software, copyright (C) 2008-2009 by Wikiation. 
+# This software is developed by Kim Bruning.
+#
+# Distributed under the terms of the MIT license.
+`
 import settings
 import os, os.path, shutil
 import subprocess
