@@ -74,10 +74,10 @@ function addMatchedText ( &$parserOutput , &$text ) {
 				#add prefixes to internal links, in order to prevent duplicates
 				$translation = preg_replace("/<a href=\"#(.*?)\"/i","<a href=\"#l_\\1\"",
 							    $translation );
-				$translation = preg_replace("/<font id=\"(.*?)\"/i","<font id=\"l_\\1\"",
+				$translation = preg_replace("/<li id=\"(.*?)\"/i","<li id=\"l_\\1\"",
 							    $translation );
 				$text = preg_replace("/<a href=\"#(.*?)\"/i","<a href=\"#r_\\1\"", $text );
-				$text = preg_replace("/<font id=\"(.*?)\"/i","<font id=\"r_\\1\"", $text );
+				$text = preg_replace("/<li id=\"(.*?)\"/i","<li id=\"r_\\1\"", $text );
 
 				#add tags before h2 and h3 sections
 				$translation = preg_replace("/<h2>/i","<div title=\"@@h2\"></div>\n<h2>", 
