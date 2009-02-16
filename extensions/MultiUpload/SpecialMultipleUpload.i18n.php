@@ -96,6 +96,18 @@ $messages['arz'] = array(
 	'multiupload-toolbox' => 'رفع ملفات متعددة',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'multipleupload' => 'Datein aufelådn',
+	'multipleupload-ignoreallwarnings' => "'''Ålle Wårnungen''' ignorian und de Datein so speichan.",
+	'multipleupload-saveallfiles' => 'Ålle Datein speichan',
+	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
+	'multiupload-fileuploaded' => 'Datei is aufeglådn',
+	'multiupload-toolbox' => 'Mehrare Datein aufelådn',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

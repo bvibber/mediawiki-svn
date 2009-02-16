@@ -625,6 +625,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'bookinfo-header' => 'Informacije o knjizi',
+	'bookinfo-desc' => 'Proširuje [[Special:Booksources|posebnu stranicu izvora knjiga]] s podacima dobivenim putem web usluge (servisa)',
 	'bookinfo-result-title' => 'Naslov:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Izdavač:',

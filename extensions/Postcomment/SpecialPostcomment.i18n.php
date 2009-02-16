@@ -182,7 +182,13 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'postcomment_desc' => 'Permite a los usuarios enviar comentarios directamente en las páginas de discusión.',
+	'postcomment_discussionprotected' => 'Esta página de discusión ha sido protegido de envíos adicionales.',
+	'postcomment_addcommentdiscussionpage' => 'Agregar tu comentario en esta página de discusión',
+	'postcomment_leavemessagefor' => 'Dejar un mensaje para $1',
+	'postcomment_said' => 'dijo',
 	'postcomment_invalidrequest' => 'Solicitud inválida.',
+	'postcomment_replyto' => 'Responder a $1',
 );
 
 /** Basque (Euskara)

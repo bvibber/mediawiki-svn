@@ -395,6 +395,7 @@ $messages['es'] = array(
 	'createsigndoc-phone' => 'Número de teléfono:',
 	'createsigndoc-bday' => 'Fecha de nacimiento:',
 	'createsigndoc-minage' => 'Edad mínima:',
+	'createsigndoc-hidden' => 'Oculto',
 	'createsigndoc-optional' => 'Opcional',
 	'createsigndoc-create' => 'Crear',
 	'createsigndoc-error-generic' => 'Error: $1',
@@ -1321,6 +1322,7 @@ $messages['ss'] = array(
  * @author Jon Harald Søby
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'createsigndocument' => 'Möjliggör dokument signering',
@@ -1344,8 +1346,10 @@ Var hundra procent säker på att dokumentet är stabilt när det signeras, och 
 	'createsigndoc-create' => 'Skapa',
 	'createsigndoc-error-generic' => 'Fel: $1',
 	'createsigndoc-error-pagenoexist' => 'Fel: Sidan [[$1]] finns inte.',
-	'createsigndoc-success' => 'Dokumentsignering har stängts av för [[$1]]. För att signera det, besök [{{fullurl:Special:SignDocument|doc=$2}} den här sidan].',
-	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringen "$1" finns redan.',
+	'createsigndoc-success' => 'Dokumentsignering har möjliggjorts för [[$1]].
+Du kan [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testa det].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringen "$1" finns redan.
+Det här kan inte göras en andra gång.',
 );
 
 /** Silesian (Ślůnski)

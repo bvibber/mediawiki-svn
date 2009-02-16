@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'googleadsense-desc' => 'يضيف [http://www.google.com/adsense جوجل أدسنس] إلى الشريط الجانبي',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'googleadsense-desc' => 'Fügt [http://www.google.com/adsense Google AdSense] zu da Sidebar dazua',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

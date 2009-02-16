@@ -1441,6 +1441,7 @@ $messages['es'] = array(
 	'mv_upload_file' => 'Subir archivo',
 	'mv_tool_search' => 'Buscar',
 	'mv_tool_export' => 'Exportar',
+	'mv_play' => 'Reproducir',
 	'mv_edit' => 'Editar',
 	'mv_history' => 'Historial',
 	'mv_remove' => 'eliminar',
@@ -3187,12 +3188,16 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'metavid' => 'Metavid ページ',
+	'mv_missing_stream' => '欠落したストリーム: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki 特別ページ',
 	'mv_ogg_low_quality' => 'ウェブ・ストリーミング用 - Ogg Theora 300kbps',
 	'mv_ogg_high_quality' => '高品質 - Ogg Theora 900kbps',
 	'mv_flash_low_quality' => 'ウェブ・ストリーミング用 - Flash Video',
-	'mv_archive_org_mp4' => 'Archive.org の　MP4 に格納された H.264 ストリーム',
+	'mv_archive_org_mp4' => 'Archive.org の MP4 に格納された H.264 ストリーム',
 	'mv_archive_org_link' => 'Archive.org 内のオリジナルの MPEG2 へのリンク',
+	'mv_error_stream_missing' => '<span class="error">エラー: このストリームには動画ファイルが関連づけられていません。</span><br />
+これをサイト管理者に報告してください。',
+	'mv_stream_meta' => 'ストリームページ',
 	'mv_remove_reason' => '削除理由:',
 	'mv_upload_file' => 'アップロード',
 	'mv_tool_search' => '検索',
@@ -4114,6 +4119,7 @@ Klik op een clip om deze te bewerken',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
  */
@@ -4142,6 +4148,7 @@ $messages['nn'] = array(
 	'mv_edit_stream_files' => 'Endra datastraumfiler',
 	'mv_path_type_url_anx' => 'full medieadressa',
 	'mv_path_type_wiki_title' => 'medietittel på wiki',
+	'mv_path_type_url_file' => 'Full url for media ved bruk av lokalt søk',
 	'mv_path_type_label' => 'stigtype',
 	'mv_duration_label' => 'Lengd',
 	'mv_file_desc_label' => 'skildringsmelding for datastraum',
@@ -4190,6 +4197,7 @@ $messages['nn'] = array(
 	'mv_improve_transcript' => 'Betra transkripsjon',
 	'mv_people_matches' => 'Treff på folk',
 	'mv_category_matches' => 'Kategoritreff',
+	'mv_interest_group_matches' => 'Treff i interessegrupper',
 	'mv_click_to_edit' => 'klikk for å endra',
 	'ht_en' => 'Transkripsjon',
 	'anno_en' => 'Merknader og kategoriar',

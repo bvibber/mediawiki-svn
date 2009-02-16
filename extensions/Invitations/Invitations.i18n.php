@@ -102,6 +102,13 @@ $messages['arz'] = array(
 	'invitations-invite-success' => 'لقد دعوت $1 ليستخدم هذه الميزة بنجاح!',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'invitations-inviteform-submit' => 'eilådn',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

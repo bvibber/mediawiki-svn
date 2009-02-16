@@ -374,6 +374,15 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'sign-zip' => 'Postleitzåih:',
+	'sign-country' => 'Lãnd:',
+	'sign-phone' => 'Telefonnumma:',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -891,8 +900,12 @@ $messages['es'] = array(
 	'sign-viewfield-email' => 'Correo electrónico',
 	'sign-viewfield-age' => 'Edad',
 	'sign-viewfield-options' => 'Opciones',
+	'sign-signatures' => 'Firmas',
+	'sign-viewsignatures' => 'ver firmas',
+	'sign-closed' => 'cerrado',
 	'sig-anonymous' => '<i>Anónimo</i>',
 	'sig-private' => '<i>Privado</i>',
+	'sign-sigdetails' => 'detalles de firma',
 	'sign-viewfield-reviewcomment' => 'Comentario',
 	'sign-review-comment' => 'Comentario',
 );

@@ -657,6 +657,7 @@ $messages['lb'] = array(
 	'form-desc' => 'E [[Special:Form|Formulaire]] fir nei Säiten unzefänken',
 	'form' => 'Formulaire',
 	'formnoname' => 'Keen Numm vum Formulaire',
+	'formnonametext' => 'Dir musst en Numm vum Formulaire uginn, zum Beispill "Special:Form/NummvumFormulaire".',
 	'formbadname' => 'Falsche Numm vum Formulaire',
 	'formbadnametext' => 'Et gëtt kee Formaulaire mat dem Numm.',
 	'formpattern' => '$1-Formulaire',
@@ -1073,6 +1074,7 @@ $messages['su'] = array(
  * @author Boivie
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'form-desc' => 'Ett [[Special:Form|formulär]] för att börja på nya sidor',
@@ -1091,8 +1093,8 @@ $messages['sv'] = array(
 	'formbadpagename' => 'Dåligt sidnamn',
 	'formbadrecaptcha' => 'Ogiltiga värden från reCaptcha. Pröva igen.',
 	'formbadpagenametext' => 'Formulärdatan du skrev in utgör ett ogiltigt sidnamn, "$1".',
-	'formrequiredfielderror' => 'Fältet $1 behövs för det här formuläret.
-Var god fyll i det.',
+	'formrequiredfielderror' => '{{PLURAL:$2|Fältet $1|Fälten $1}} behövs för det här formuläret.
+Var god fyll i {{PLURAL:$1|det|dem}}.',
 	'formsavesummary' => 'Ny sida använder [[Special:Form/$1|formuläret $1]]',
 	'formsaveerror' => 'Fel under sparning av formuläret',
 	'formsaveerrortext' => 'Det uppstod ett okänt fel under sparning av sidan "$1".',

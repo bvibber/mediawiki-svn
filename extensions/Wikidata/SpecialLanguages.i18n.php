@@ -2526,6 +2526,7 @@ $wdMessages['et'] = array(
 $wdMessages['eu'] = array(
 	'languages' => 'WIkidata: Hizkuntza administraria',
 	'langman_title' => 'Hizkuntza kudeatzailea',
+	'langman_not_allowed' => 'Ez duzu hizkuntza ezarpenak aldatzeko baimenik',
 	'langman_header' => 'Idatzi hizkuntzaren kodea eta bere ingelesezko izena behean:',
 	'langman_req_fields' => 'Hizkuntzaren izena eta ISO-639-3 kodea beharrezkoa dira!',
 	'langman_langname' => 'Hizkuntzaren izena:',
@@ -2535,6 +2536,7 @@ $wdMessages['eu'] = array(
 	'langman_field_optional' => '(hautazkoa)',
 	'langman_addlang' => 'Hizkuntza gehitu',
 	'importlangnames_title' => 'Inportatu Hizkuntza Izenak',
+	'importlangnames_not_allowed' => 'Ez duzu hizkuntza izenak inportatzeko baimenik.',
 	'datasearch' => 'Wikidata:Datu bilaketa',
 	'datasearch_meaning' => 'Esanahia',
 	'ow_save' => 'Gorde',
@@ -2621,8 +2623,14 @@ Berriz egiaztatzea ez ahaztu ziurtatzeko!',
 Errore bat dago datu-base koherentziarekin, wikidata ez da zehazturiko esanahi IDarekin konektaturiko baliozko daturik aurkitzeko gai.
 Galdu egingo ziren.
 Mesedez harremanetan ipini zerbitzari operadore edo administratzailearekin.',
+	'ow_class_attr_type_plain' => 'Testu laua',
+	'ow_class_attr_type_link' => 'Lotura',
+	'ow_class_attr_type_option' => 'Aukera zerrenda',
+	'needstranslation' => 'Wikidata: Itzulpena behar duten espresioak',
+	'ow_needs_xlation_title' => 'Itzulpena behar duten espresioak',
 	'ow_needs_xlation_source_lang' => 'Jatorriko hizkuntza:',
 	'ow_needs_xlation_dest_lang' => 'Helbururako hizkuntza:',
+	'ow_needs_xlation_no_dest_lang' => 'Mesedez zehaztu helbururako hizkuntza.',
 	'ow_show' => 'Erakutsi',
 	'ow_create' => 'Sortu',
 	'ow_suggest_previous' => 'Aurrekoa',
@@ -7685,6 +7693,7 @@ $wdMessages['su'] = array(
 /** Swedish (Svenska)
  * @author Lokal Profil
  * @author M.M.S.
+ * @author Najami
  * @author Sannab
  */
 $wdMessages['sv'] = array(
@@ -7706,6 +7715,17 @@ $wdMessages['sv'] = array(
 	'importlangnames_added' => 'Språknamn för "$1" tillagda.',
 	'importlangnames_not_found' => '<strong>Kunde inte hitta några språkposter för "$1"!</strong>',
 	'datasearch' => 'Wikidata: Datasökning',
+	'datasearch_language' => 'Språk:',
+	'datasearch_found_word' => 'Hittade ord',
+	'datasearch_meaning' => 'Betydelse',
+	'datasearch_ext_identifier' => 'Extern identifikator',
+	'datasearch_search_text' => 'Söktext:',
+	'datasearch_within_words' => 'Innan ord:',
+	'datasearch_within_ext_ids' => 'Innan externa identifikatorer:',
+	'datasearch_showing_only' => 'Visar endast en maximum av $1 {{PLURAL:$1|träff|träffar}}.',
+	'datasearch_match_ext_ids' => 'Externa identifierare som svarar mot <i>$1</i>',
+	'datasearch_match_words' => 'Ord som passar in på <i>$1</i> och betydelser som hör ihop med dessa.',
+	'datasearch_match_words_lang' => 'Ord på <i>$1</i> som passar in på <i>$2</i> och betydelser som hör ihop med dessa',
 	'importtsv' => 'Wikidata: Importera TSV',
 	'ow_importtsv_title1' => 'Importera TSV',
 	'ow_importtsv_title2' => 'Importera definitioner och översättningar',
@@ -7762,6 +7782,7 @@ Välj en samling att exportera. Skriv i språktextrutan in en kommaseparerad lis
 	'ow_transaction_object' => 'Objekt',
 	'ow_transaction_first_dm' => 'Första definierade betydelse',
 	'ow_transaction_second_dm' => 'Andra definierade betydelse',
+	'ow_transaction_summary' => 'Sammanfattning',
 	'conceptmapping' => 'Wikidata: Begreppskartläggning',
 	'ow_conceptmapping_title' => 'Begreppskartläggning',
 	'ow_conceptmapping_help' => '<p>möjliga handlingar: <ul>
@@ -7790,7 +7811,7 @@ Var god kolla webbadressen.',
 	'ow_AddHint' => 'Skriv in nya rader att lägga till',
 	'ow_AlternativeDefinition' => 'Alternativ definition',
 	'ow_AlternativeDefinitions' => 'Alternativa definitioner',
-	'ow_Annotation' => 'Notering',
+	'ow_Annotation' => 'Anmärkning',
 	'ow_ApproximateMeanings' => 'Ungefärliga betydelser',
 	'ow_Class' => 'Klass',
 	'ow_ClassAttributeAttribute' => 'Attribut',
@@ -7803,7 +7824,7 @@ Var god kolla webbadressen.',
 	'ow_CollectionMember' => 'Medlem i samling',
 	'ow_CollectionMembership' => 'Samlingsmedlemskap',
 	'ow_Definition' => 'Definition',
-	'ow_DefinedMeaningAttributes' => 'Notering',
+	'ow_DefinedMeaningAttributes' => 'Anmärkning',
 	'ow_DefinedMeaning' => 'Definierad betydelse',
 	'ow_DefinedMeaningReference' => 'Definierad betydelse',
 	'ow_ExactMeanings' => 'Exakt betydelse',
@@ -7814,7 +7835,7 @@ Var god kolla webbadressen.',
 	'ow_IncomingRelations' => 'Inkommande släktskap',
 	'ow_GotoSource' => 'Gå till källa',
 	'ow_Language' => 'Språk',
-	'ow_LevelAnnotation' => 'Notering',
+	'ow_LevelAnnotation' => 'Anmärkning',
 	'ow_LinkAttributeHeader' => 'Länkattribut',
 	'ow_Multiple_meanings' => 'Flera betydelser:',
 	'ow_NewExactMeaning' => 'Ny exakt betydelse',
@@ -7824,8 +7845,8 @@ Var god kolla webbadressen.',
 	'ow_OptionAttributeOptions' => 'Alternativ',
 	'ow_OptionAttributeValues' => 'Alternativvärden',
 	'ow_OtherDefinedMeaning' => 'Annan definierad betydelse',
-	'ow_PopupAnnotation' => 'Notering',
-	'ow_RecordLifeSpan' => 'Postens livslängd',
+	'ow_PopupAnnotation' => 'Anmärkning',
+	'ow_RecordLifeSpan' => 'Postens historik',
 	'ow_Relations' => 'Släktskap',
 	'ow_RelationType' => 'Släktskapstyp',
 	'ow_Remove' => 'Ta bort',
@@ -7855,15 +7876,15 @@ Var god kolla webbadressen.',
 	'ow_added' => 'Tillagd',
 	'ow_removed' => 'Borttagen',
 	'ow_meaningsoftitle' => 'Betydelser av "$1"',
-	'ow_meaningsofsubtitle' => '<em>Wiki länk:</em> [[$1]]',
-	'ow_Permission_denied' => '<h2>TILLTRÄDE NEKAS</h2>',
+	'ow_meaningsofsubtitle' => '<em>Wikilänk:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>Tillträde nekas</h2>',
 	'ow_copy_no_action_specified' => 'Var god ange en handling',
 	'ow_copy_help' => 'Hjälp är ännu inte implementerat.',
-	'ow_please_proved_dmid' => 'Det verkar som att din text har missat en "?dmid=<ID>" (dmid=ID för definierad betydelse)<br />
+	'ow_please_proved_dmid' => 'Det verkar som att din text saknar en "?dmid=<ID>" (dmid=ID för definierad betydelse)<br />
 Var god kontakta en serveradministratör.',
 	'ow_please_proved_dc1' => 'Det verkar som att din text har missat en "?dc1=<något>" (dc1=datauppsättningskontext 1, datauppsättningen ska kopieras FRÅN)<br />
 Var god kontakta en serveradministratör.',
-	'ow_please_proved_dc2' => 'Det verkar som att din text har missat en "?dc2=<något>" (dc2=datauppsättningskontext 2, datauppsättning att kopiera TILL)<br />
+	'ow_please_proved_dc2' => 'Det verkar som att din text saknar en "?dc2=<något>" (dc2=datauppsättningskontext 2, datauppsättning att kopiera TILL)<br />
 Var god kontakta en systemadministratör.',
 	'ow_copy_successful' => '<h2>Kopiering genomförd</h2>
 Det verkar som dina data kopierats utan problem.
@@ -7876,6 +7897,8 @@ Kanske kom du direkt till den här sidan? Vanligtvis ska du inte vara här.',
 Det är något fel med databasintegriteten, wikidata hittar inte giltig data som är knuten till detta ID för en definierad betydelse.
 Datan kan ha gått förlorad.
 Var god kontakta serveroperatören eller systemadministratören.',
+	'ow_history_transaction' => 'Transaktion:',
+	'ow_history_show_life_span' => 'Visa postens historik:',
 	'ow_class_attr_type_dm' => 'Definierad betydelse',
 	'ow_class_attr_type_xlate' => 'Översättningsbar text',
 	'ow_class_attr_type_plain' => 'Ren text',
@@ -7893,6 +7916,8 @@ Var god kontakta serveroperatören eller systemadministratören.',
 	'ow_suggest_previous' => 'Föregående',
 	'ow_suggest_next' => 'Nästa',
 	'ow_suggest_clear' => 'Rensa',
+	'ow_nstab_definedmeaning' => 'definierad betydelse',
+	'ow_nstab_edit_copy' => 'redigera kopia',
 );
 
 /** Silesian (Ślůnski)

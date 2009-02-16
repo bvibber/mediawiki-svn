@@ -268,6 +268,7 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Kolla upp koordinater',
 	'semanticgooglemaps-desc' => 'Tillåter användare att redigera och visa semantiska koordinater för att använda Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Skriv in adress här',
 );
 
 /** Tagalog (Tagalog)

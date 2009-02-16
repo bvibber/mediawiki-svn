@@ -1577,6 +1577,7 @@ Mun tetep éror, meureun pangkalan datana ruksak.',
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'changeauthor' => 'Ändra upphovsman för sidversion',
@@ -1599,6 +1600,7 @@ $messages['sv'] = array(
 	'changeauthor-success' => 'Upphovsmansändringen är genomförd.',
 	'changeauthor-logentry' => 'ändrade upphovsman för $2 av $1 från $3 till $4',
 	'changeauthor-logpagename' => 'Upphovsmansändringslogg',
+	'right-changeauthor' => 'Ändra författaren för en version',
 );
 
 /** Telugu (తెలుగు)

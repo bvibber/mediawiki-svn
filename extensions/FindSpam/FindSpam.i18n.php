@@ -78,6 +78,15 @@ $messages['ast'] = array(
 	'findspam-notextfound' => "Nun s'atoparon contribuciones",
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'findspam' => 'Spam findn',
+	'findspam-ip' => 'IP-Adress:',
+	'findspam-notextfound' => 'Es han kane Beiträge gfundn woan',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

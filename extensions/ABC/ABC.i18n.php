@@ -384,6 +384,14 @@ $messages['pt-br'] = array(
 	'abcdownload' => 'Descarregar:',
 );
 
+/** Rhaeto-Romance (Rumantsch)
+ * @author Gion
+ */
+$messages['rm'] = array(
+	'abcdesc' => 'Agiunta il tag <tt>&lt;abc&gt;</tt> per formatar musica ABC',
+	'abcdownload' => 'Download:',
+);
+
 /** Romanian (Română)
  * @author Silviubogan
  */

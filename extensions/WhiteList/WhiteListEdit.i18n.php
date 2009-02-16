@@ -1418,6 +1418,7 @@ $messages['ja'] = array(
 	'whitelistoverviewcd' => "* [[:$2|$2]] の日付を'''$1'''に変更",
 	'whitelistoverviewsa' => "* [[:$2|$2]] に '''$1''' へのアクセスを設定",
 	'whitelistoverviewrm' => '* [[:$1|$1]] へのアクセスを除去',
+	'whitelistoverviewna' => "* アクセス '''$2''' および期限切れ日時 '''$3''' で、[[:$1|$1]]をホワイトリストに追加",
 	'whitelistrequest' => 'ページへのアクセス追加を要望',
 	'whitelistrequestmsg' => '$1 は次のページへのアクセスを求めました:
 

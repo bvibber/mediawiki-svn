@@ -291,9 +291,22 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Pi
  */
 $messages['eu'] = array(
+	'authorprotect' => 'Babestu orria ez-egileetatik',
+	'authorprotect-desc' => 'Egileari orrialdea beste erabiltzaileez babesteko aukera ematen dio',
+	'authorprotect-notauthor' => 'Ez zara orrialde honen egilea',
+	'authorprotect-confirm' => 'Aldatu babeste mailak',
+	'authorprotect-edit' => 'Mugatu editatzea egileei',
+	'authorprotect-move' => 'Mugatu mugitzea egileei',
+	'authorprotect-expiry' => 'Iraungitze epea',
 	'authorprotect-reason' => 'Arrazoia',
+	'authorprotect-intro' => 'Erabili inprimaki hau orrialde hau ez-egileei blokeatzeko',
+	'authorprotect-success' => 'Behar bezala babestu da!',
+	'authorprotect-failure' => 'Babestea ez da behar bezala egin',
+	'protect-level-author' => 'Babestu ez-egileetatik',
+	'restriction-level-author' => 'Auto-babesturik',
 );
 
 /** Persian (فارسی)

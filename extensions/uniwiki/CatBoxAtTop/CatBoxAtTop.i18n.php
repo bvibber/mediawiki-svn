@@ -347,6 +347,7 @@ $messages['stq'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
+	'catboxattop-desc' => 'Lägger till en kategoribox uppe till höger på sidor',
 	'catboxattop-categories' => 'Kategorier',
 );
 

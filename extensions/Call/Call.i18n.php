@@ -245,6 +245,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'call' => 'Llamar',
+	'call-save-success' => 'El siguiente texto ha sido grabado a la página <big>[[$1]]</big> .',
+	'call-save-failed' => 'El siguiente texto NO ha sido grabado a la página <big>[[$1]]</big> porque esa página ya existe.',
 );
 
 /** Finnish (Suomi)
@@ -419,7 +421,7 @@ Probléma esetén megpróbálhatod a <b>Special:Call/DebuG</b> használatát",
  */
 $messages['ia'] = array(
 	'call' => 'Appello',
-	'call-desc' => 'Crea un ligamine verso un patrono (o verso un pagina wiki normal) con passage de parametros.
+	'call-desc' => 'Crea un ligamine verso un patrono (o verso un pagina wiki normal) con parametros a passar.
 Pote esser usate in le linea de commandos del navigator o in texto wiki.',
 	'call-text' => "Le extension Appello expecta un pagina wiki al qual pote eser passate parametros.
 

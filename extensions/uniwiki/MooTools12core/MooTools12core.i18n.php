@@ -277,7 +277,7 @@ $messages['stq'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
-	'mootools12core-desc' => 'Lägger till [http://mootools.net mootools-1.2-core-yc.js] på varje sida',
+	'mootools12core-desc' => 'Lägger till [http://mootools.net mootools-1.2-core-yc.js], ett kompakt ramverk i JavaScript, på varje sida',
 );
 
 /** Tagalog (Tagalog)

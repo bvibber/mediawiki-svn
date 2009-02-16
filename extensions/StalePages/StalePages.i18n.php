@@ -363,12 +363,13 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
+ * @author Najami
  * @author Sannab
  */
 $messages['sv'] = array(
 	'stalepages' => 'Föråldrade sidor',
 	'stalepages-desc' => 'Skapar [[Special:Stalepages|lista med sidor]] som inte har redigerats nyligen',
-	'stalepages-summary' => 'Detta är en lista över sidor som inte har blivit redigerade under de sista $1 dagarna.',
+	'stalepages-summary' => 'Detta är en lista över sidor som inte har blivit redigerade under {{PLURAL:$1|den sista dagen|de sista $1 dagarna}}.',
 );
 
 /** Telugu (తెలుగు)

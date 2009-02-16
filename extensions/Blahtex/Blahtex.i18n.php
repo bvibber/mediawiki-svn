@@ -1106,9 +1106,11 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'math_noblahtex' => 'Ne mogu izvršiti blahtex, koji bi trebao biti na $1',
+	'math-desc' => "MathML izlaz za &lt;math&gt; ''tagove''",
 	'math_AmbiguousInfix' => 'Dvosmisleno smješten "$1" (probajte koristiti dodatne zagrade "{ ... }" da pojasnite)',
 	'math_CannotChangeDirectory' => 'Ne mogu promijeniti direktorij (folder)',
 	'math_CannotCreateTexFile' => 'Ne mogu kreirati tex-datoteku',
@@ -1120,11 +1122,11 @@ $messages['hr'] = array(
 	'math_DoubleSubscript' => 'Nađena dva supskripta spojena na istu bazu (samo jedan je dozvoljen)',
 	'math_DoubleSuperscript' => 'Nađena dva superskripta spojena na istu bazu (samo jedan je dozvoljen)',
 	'math_IllegalCharacter' => 'Nedozvoljeni znak u ulazu',
-	'math_IllegalCommandInMathMode' => 'Nedozvoljena naredba u matematičkom načinu',
+	'math_IllegalCommandInMathMode' => 'Naredba "$1" nije dozvoljena u matematičkom načinu',
 	'math_IllegalCommandInMathModeWithHint' => 'Naredba "$1" je nedozvoljena u matematičkom načinu (možda ste namjeravali koristiti "$2"?)',
 	'math_IllegalCommandInTextMode' => 'Naredba "$1" nije dozvoljena u tekstualnom načinu',
 	'math_IllegalCommandInTextModeWithHint' => 'Naredba "$1" je nedozvoljena u tekstualnom načinu (možda ste namjeravali koristiti "$2"?)',
-	'math_IllegalDelimiter' => 'Nedozvoljeni graničnik (delimiter)',
+	'math_IllegalDelimiter' => 'Nedozvoljeni graničnik (delimiter) poslije "$1"',
 	'math_IllegalFinalBackslash' => 'Nedozvoljena obrnuta kosa crta "\\" na kraju ulaza',
 	'math_IllegalNestedFontEncodings' => 'Naredbe za kodiranje fontova ne mogu biti ugnježđene',
 	'math_IllegalRedefinition' => 'Naredba "$1" je već definirana, ne možete je redefinirati',
@@ -1158,7 +1160,7 @@ $messages['hr'] = array(
 	'math_UnmatchedOpenBrace' => 'Nađena otvorena vitičasta zagrada "{" bez pripadne zatvorene zagrade "}"',
 	'math_UnmatchedOpenBracket' => 'Nađena otvorena uglata zagrada "[" bez pripadne zatvorene zagrade "]"',
 	'math_UnmatchedRight' => 'Nađen \\right bez pripadnog \\left',
-	'math_UnrecognisedCommand' => 'Neprepoznata naredba',
+	'math_UnrecognisedCommand' => 'Neprepoznata naredba "$1"',
 	'math_WrongFontEncoding' => 'Znak "$1" se ne može pojaviti u kodiranju fonta "$2"',
 	'math_WrongFontEncodingWithHint' => 'Znak "$1" se ne može pojaviti u kodiranju fonta "$2" (probajte koristiti naredbu "$3{...}")',
 );

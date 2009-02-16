@@ -395,6 +395,7 @@ $messages['sk'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
+	'discussionthreading-desc' => 'Lägg till trådning på diskussionssidor',
 	'discussionthreading-replysection' => 'svar',
 	'discussionthreading-replysectionhint' => 'Svar på den här posten',
 	'discussionthreading-threadnewsection' => 'ny',

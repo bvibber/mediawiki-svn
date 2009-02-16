@@ -1308,6 +1308,7 @@ $messages['su'] = array(
  * @author Jon Harald Søby
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'importusers' => 'Importera användare',
@@ -1330,6 +1331,7 @@ $messages['sv'] = array(
 	'importusers-password' => 'lösenord',
 	'importusers-email' => 'e-post',
 	'importusers-realname' => 'riktigt namn',
+	'right-import_users' => 'Importera flera användare samtidigt',
 );
 
 /** Tamil (தமிழ்)

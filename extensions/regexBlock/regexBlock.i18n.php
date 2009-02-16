@@ -1960,6 +1960,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'regexblock' => 'Regex-blockering',
@@ -2010,7 +2011,7 @@ Troligen så finns det ingen användare med det namnet.',
 	'regexblock-view-block-expired' => 'GICK UT på',
 	'regexblock-view-block-by' => 'blockerad av',
 	'regexblock-view-block-unblock' => 'avblockera',
-	'regexblock-view-stats' => '(statistik)',
+	'regexblock-view-stats' => 'statistik',
 	'regexblock-view-empty' => 'Listan över blockerade namn och adresser är tom.',
 	'regexblock-view-time' => 'på $1',
 );

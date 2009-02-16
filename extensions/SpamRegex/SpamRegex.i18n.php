@@ -1209,6 +1209,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'spamregex' => 'SpamRegex',
@@ -1240,6 +1241,7 @@ Var observant på att uttryck inte bör vara för korta eller för vanliga.',
 	'spamregex-block-submit' => 'Blockera&nbsp;den&nbsp;här&nbsp;frasen',
 	'spamregex-text' => '(Text)',
 	'spamregex-summary-log' => '(Sammanfattning)',
+	'right-spamregex' => 'Blockera spamfraser genom [[Special:SpamRegex]]',
 );
 
 /** Tamil (தமிழ்)

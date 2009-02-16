@@ -1951,6 +1951,7 @@ $1',
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'inplace_access_disabled' => 'Tillgången till den här tjänsten har stängts av för alla klienter.',
@@ -1963,6 +1964,7 @@ Ange $wgLocalTmpDirectory till en skrivbar mapp.',
 	'inplace_scaler_no_handler' => 'Ingen behandlare för ändring av den här MIME-typen',
 	'inplace_scaler_no_output' => 'Ingen ändringsresultatsfil producerades.',
 	'inplace_scaler_zero_size' => 'Ändringen producerade en tom resultatsfil.',
+	'webstore-desc' => 'Internetbaserad (ej NFS) fillagringsmellanvara',
 	'webstore_access' => 'Tjänsten begränsas av klientens IP.',
 	'webstore_path_invalid' => 'Filnamnet var ogiltigt.',
 	'webstore_dest_open' => 'Kunde inte öppna målfil "$1".',

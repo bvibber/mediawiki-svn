@@ -258,10 +258,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'imstatus_default' => 'Por defecto',
 	'imstatus_example' => 'Ejemplo',
+	'imstatus_possible_val' => 'Valores posibles',
 );
 
 /** Basque (Euskara)

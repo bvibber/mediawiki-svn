@@ -82,6 +82,15 @@ $messages['arz'] = array(
 	'importfreeimages_returntoform' => "أو، اضغط <a href='$1'>هنا</a> للعودة إلى نتائج بحثك",
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'importfreeimages' => 'Importian vu freie Büidln',
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'importian',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

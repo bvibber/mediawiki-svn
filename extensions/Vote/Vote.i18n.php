@@ -1343,9 +1343,11 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Najami
  */
 $messages['sv'] = array(
 	'vote' => 'Rösta',
+	'vote-desc' => 'Ger enkla omröstningsmöjligheter',
 	'vote-header' => "Här kan du rösta fram '''Världens Enväldige Härskare'''!",
 	'vote-current' => "Ditt nuvarande val är '''$1'''.",
 	'vote-legend' => 'Rösta eller ändra din röst',

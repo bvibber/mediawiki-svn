@@ -167,6 +167,23 @@ $messages['br'] = array(
 	'countedits-nocontribs' => 'Degasadenn ebet evit ar wiki-mañ.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'countedits' => 'Brojač izmjena',
+	'countedits-desc' => '[[Special:CountEdits|Posebna stranica]] koja broji korisničke izmjene i omogućuje pravljenje spiska urednika sa najviše izmjena',
+	'countedits-warning' => "'''Upozorenje:''' Ne sudite knjizi po njenim koricama.
+Ne sudite o korisnicima po njihovom broju izmjena.",
+	'countedits-username' => 'Korisničko ime:',
+	'countedits-ok' => 'U redu',
+	'countedits-nosuchuser' => 'Ne postoji korisnik s imenom $1.',
+	'countedits-resultheader' => 'Rezultati za $1',
+	'countedits-resulttext' => '$1 je {{GENDER:$2|napravio|napravila}} $2 {{PLURAL:$2|izmjenu|izmjene|izmjena}}',
+	'countedits-mostactive' => 'Najaktivniji urednici',
+	'countedits-nocontribs' => 'Nema doprinosa na ovoj wiki.',
+);
+
 /** Catalan (Català)
  * @author SMP
  * @author Toniher

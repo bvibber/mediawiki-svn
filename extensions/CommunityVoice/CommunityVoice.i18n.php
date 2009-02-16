@@ -123,9 +123,15 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'communityvoice' => 'Gmeinschaftsstimm',
+	'communityvoice-desc' => 'Wärchzyyg fir d Teilnahm an dr Gmeinschaft',
+	'communityvoice-ratings' => 'Rangfolge',
 	'communityvoice-ratings-scale-status-sending' => 'Am Schicke ...',
 	'communityvoice-ratings-scale-status-error' => 'Fähler bim Schicke!',
 	'communityvoice-ratings-scale-status-thanks' => 'Dankschen fir s Abstimme!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|Stimm|Stimme}} verteilt)',
+	'communityvoice-ratings-error-no-category' => 'Kategorii-Eigeschaft fählt im Rangfolg-Tag.',
+	'communityvoice-ratings-error-no-title' => 'Titel-Eigeschaft fählt im Rangfolg-Tag.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -194,6 +200,16 @@ $messages['nl'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|stem|stemmen}} uitgebracht)',
 	'communityvoice-ratings-error-no-category' => 'Categorieattribuut ontbreekt in waarderingslabel.',
 	'communityvoice-ratings-error-no-title' => 'Paginanaamattribuut ontbreekt in waarderingslabel.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Sendar...',
+	'communityvoice-ratings-scale-status-error' => 'Feil i samband med sending!',
+	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du var med på røystinga!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vote|røyster}} avgjevne)',
 );
 
 /** Occitan (Occitan)

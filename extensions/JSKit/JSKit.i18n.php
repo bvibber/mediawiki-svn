@@ -213,6 +213,13 @@ $messages['sq'] = array(
 	'jskit-desc' => 'Integron mjetet js-kit në një faqe wiki',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'jskit-desc' => 'Integrerar js-kit-verktyg på en wikisida',
+);
+
 /** Tetum (Tetun)
  * @author MF-Warburg
  */

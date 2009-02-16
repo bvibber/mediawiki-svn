@@ -346,6 +346,19 @@ To vám umožní používať svoju používateľskú stránku tiež ako OpenID.'
 	'linkopenid-prefstext-v2url' => 'URL servera OpenID verzie 2:',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'linkopenid-desc' => 'Gör det möjligt för användare att länka sina konton till en extern OpenID',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Om du har en OpenID från en extern leverantör kan du uppge det här.
+Detta låter dig använda din användarsida som en OpenID.',
+	'linkopenid-prefstext-openid' => 'Din OpenID:',
+	'linkopenid-prefstext-v1url' => 'Server-URL för OpenID-version 1.1:',
+	'linkopenid-prefstext-v2url' => 'Server-URL för OpenID-version 2:',
+);
+
 /** Tetum (Tetun)
  * @author MF-Warburg
  */

@@ -148,6 +148,13 @@ $messages['hi'] = array(
 	'breadcrumbs-desc' => 'विकिमें सदस्यका पाथ दर्शाता हैं।',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'breadcrumbs-desc' => 'Pokazuje put suradnika kroz wiki.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

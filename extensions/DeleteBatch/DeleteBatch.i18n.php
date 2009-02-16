@@ -1020,6 +1020,7 @@ Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne 
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'deletebatch' => 'Radera serier av sidor',
@@ -1027,15 +1028,15 @@ $messages['sv'] = array(
 	'deletebatch-help' => 'Radera en serie av sidor. Du kan också utföra en ensam radering, eller radera sidor listade i en fil.
 Välj en användare som kommer att visas i raderingsloggen.
 En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med ett "|"-tecken på varje rad.',
-	'deletebatch-caption' => 'Sidlista',
+	'deletebatch-caption' => 'Sidlista:',
 	'deletebatch-title' => 'Radera serie',
-	'deletebatch-link-back' => 'Du kan gå tillbaka till tillägget',
-	'deletebatch-as' => 'Kör skriptet som',
+	'deletebatch-link-back' => 'Gå tillbaka till specialsidan',
+	'deletebatch-as' => 'Kör skriptet som:',
 	'deletebatch-both-modes' => 'Var god välj antingen en specifierad sida eller en lista över sidor.',
 	'deletebatch-or' => '<b>ELLER</b>',
-	'deletebatch-page' => 'Sidor som ska raderas',
+	'deletebatch-page' => 'Sidor som ska raderas:',
 	'deletebatch-reason' => 'Anledning för radering',
-	'deletebatch-processing' => 'raderar sidor',
+	'deletebatch-processing' => 'raderar sidor $1',
 	'deletebatch-from-file' => 'från fillistan',
 	'deletebatch-from-form' => 'från formulär',
 	'deletebatch-success-subtitle' => 'för $1',
@@ -1046,6 +1047,7 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
 	'deletebatch-select-script' => 'radera sidskript',
 	'deletebatch-select-yourself' => 'du',
 	'deletebatch-no-page' => 'Var god specifiera minst en sida för att radera ELLER välj en fil innehållande en sidlista.',
+	'right-deletebatch' => 'Massradera sidor',
 );
 
 /** Telugu (తెలుగు)

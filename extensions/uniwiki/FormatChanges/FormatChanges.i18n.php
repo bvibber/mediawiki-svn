@@ -382,8 +382,8 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'formatchanges-desc' => 'Omformaterar [[Special:RecentChanges|senaste ändringar]]',
 	'formatchanges-anonymous' => 'Anonym',
-	'formatchanges-createdby' => 'skapad av',
-	'formatchanges-editedby' => 'redigerad av',
+	'formatchanges-createdby' => '$1 - skapad av $2 ($3)',
+	'formatchanges-editedby' => '$1 - redigerad av $2 ($3)',
 );
 
 /** Telugu (తెలుగు)

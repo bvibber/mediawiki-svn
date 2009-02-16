@@ -272,12 +272,23 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'player' => 'Reproductor',
+	'player-title' => 'Reproductor',
+	'player-playertitle' => 'Reproductor: $1',
+	'player-file' => 'Nombre de archivo',
+	'player-play' => 'Reproducir',
+	'player-not-allowed' => 'formato no permitido',
 	'player-not-found' => 'archivo no encontrado',
+	'player-invalid-title' => 'título inválido',
+	'player-clicktoplay' => 'Reproducir $1',
+	'player-goto-player' => 'reproductor',
 	'player-goto-page' => 'Página',
+	'player-goto-file' => 'archivo',
 );
 
 /** Basque (Euskara)

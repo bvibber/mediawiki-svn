@@ -743,13 +743,20 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'recordadmin' => 'Registreringshandsaming',
+	'recordadmin-desc' => 'Ei [[Special:RecordAdmin|spesiell side]] for å finna og redigera oppføringar ved å bruka eit skjema',
+	'recordadmin-select' => 'Vel type oppføring å søkja etter',
 	'recordadmin-newsearch' => 'Nytt søk etter $1',
+	'recordadmin-newrecord' => 'Vel ei anna type oppføring',
 	'recordadmin-submit' => 'Send',
+	'recordadmin-create' => 'Finn eller lag ei "$1" oppføring',
 	'recordadmin-alreadyexist' => '«$1» finst frå før.',
 	'recordadmin-createsuccess' => '$1 er oppretta',
+	'recordadmin-createerror' => 'Ein feil oppstod under opprettinga av $1!',
 	'recordadmin-badtitle' => 'Ugyldig tittel!',
+	'recordadmin-invert' => 'Omvendt utval',
 	'recordadmin-buttonsearch' => 'Søk',
 	'recordadmin-buttoncreate' => 'Opprett',
+	'recordadmin-buttonreset' => 'Still attende',
 	'recordadmin-searchresult' => 'Søkjeresultat',
 	'recordadmin-nomatch' => 'Ingen høvelege resultat funnne!',
 	'recordadmin-edit' => 'Endrar $1',
@@ -757,12 +764,15 @@ $messages['nn'] = array(
 	'recordadmin-updatesuccess' => '$1 er oppdatert',
 	'recordadmin-updateerror' => 'Ein feil oppstod under oppdatering',
 	'recordadmin-buttonsave' => 'Lagra',
+	'recordadmin-noform' => 'Det er ikkje knytt eit skjema til oppføringa "$1"!',
 	'recordadmin-createlink' => '<a href=$1>opprett ein</a>',
+	'recordadmin-newcreated' => 'Ny $1 laga frå eit offentleg skjema',
 	'recordadmin-summary-typecreated' => 'Ny $1 laga til',
 	'recordadmin-viewlink' => 'sjå',
 	'recordadmin-editlink' => 'endra',
 	'recordadmin-created' => 'Oppretta',
 	'recordadmin-actions' => 'Handlingar',
+	'right-recordadmin' => 'Finn og gjer endringar på oppføringssider',
 );
 
 /** Occitan (Occitan)
