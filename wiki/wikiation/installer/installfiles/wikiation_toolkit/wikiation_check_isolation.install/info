@@ -1,7 +1,0 @@
-Required by the wikiation installer
-stores information about database and mediawiki files before installation or testing
-later diffs this information against the installed system to see if anything
-has changed. If something changes, you (might) have some interesting issues.
-
-
-
