@@ -1,0 +1,94 @@
+--------------------------
+Help for wikiation-exttest
+
+This software, copyright (C) 2008-2009 by Wikiation.
+This software is developed by Kim Bruning.
+
+Distributed under the terms of the MIT license
+
+Purpose:
+Regression testing of mediawiki and mediawiki extension modules.
+Currently checks whether certain wikisyntax generates the expected (X)HTML.
+In future, generic web requests might also be checked.
+
+The test is performed by logging on to the configured wiki and creating a
+new page with the specified wikisyntax, surrounded by (long) unique marker
+strings.
+
+
+Syntax:
+
+(unix)
+./wikiation_webtest.py [options]
+
+(all os)
+python wikiation_webtest.py [options]
+
+Options are all GNU long form:
+
+base operations (pick 1):
+
+--pyfile <filename>
+	Execute tests from a python file of the appropriate format (a
+	list of Test objects)
+	(see examples/example.py, test.py).
+	Writes a brief report to stdout while testing.
+
+--xmlfile <filename>
+	Execute tests from an xml file (see examples/example.xml for format)
+	Writes a brief report to stdout while testing.
+
+--category
+	Execute tests from a category on the configured wiki
+	(default: [[Category:Automated tests]]).
+	Will check each page in the category for <exttest></exttest> 
+	tags, assemble a test-set, and execute it.
+
+--category-and-write
+	similar to --category above, however, if the <exttest> element is 
+	followed by a <result>...</result> element ( note: <result/> 
+	currently doesn't work), the contents of the result element will
+	be replaced by a wikiformatted report on the test result.
+	This is helpful on-wiki for people who like to have their
+	tests and results on the same page. A separate element is used
+	to reduce the odds of wikiation-webtest accidentally mangeling 
+	the page.
+
+--test
+	A quick simple built-in test to check if everything is working ok
+	(checks the {{SERVER}} flag). It should report a failure and a diff.
+	Useful for checking if your configuration is ok.
+
+--help
+	Display this help
+
+Other flags:
+
+--dump-xml <filename>
+--dump-py <filename>
+	After concluding the test, save respectively xml or python to the 
+	specified filename, in a format suitable for reading by --pyfile or
+	--xmlfile respectively.
+	
+	Both filetypes also include the outcome of the test 
+	(HTML), and an ascii diff of the outcome with the expected outcome. 
+
+	In the case of --category or --category-and-write, the .py
+	file also includes PageReference information (see:
+	test.PageReference). Be aware that PageReference information
+	is only accurate at the time it was generated. If anyone alters 
+	the contents of the test category it may no longer be valid. 
+	This might be a problem in your own programs.
+
+	To prevent the above problems in wikiation_webtest,
+	--pyfile and --xmlfile only use test information.
+	PageReference information, (X)HTML results, and diffs are ignored.
+
+--category-name <category name>
+	Specify a different category to operate on. Just state the category name itself
+	(To use [[Category:Foobar]], you just say  --category-name Foobar ). If the category
+	name uses spaces or other strange characters, you may need to escape or
+	quote it. If you want to use unicode strings, ensure your shell and term pass
+	unicode correctly.
+	By default, wikiation webtest operates on the category Automated tests
+	(that is to say: [[Category:Automated tests]]). 
