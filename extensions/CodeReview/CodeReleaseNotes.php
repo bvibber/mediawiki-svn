@@ -83,24 +83,8 @@ class CodeReleaseNotes extends CodeView {
 			$summary = htmlspecialchars($row->cr_message);
 			# Add this commit summary if needed
 			if( $this->isRelevant( $summary ) ) {
-				# Asterixs often used as point-by-point bullets
-				$summary = str_replace('*','',$summary);
-				$blurbs = explode("\n",$summary);
-				$blurbs = array_map( 'trim', $blurbs ); # Clean up items
-				$blurbs = array_filter( $blurbs ); # Filter out any garbage
 				# Keep it short if possible...
-				if( count($blurbs) > 2 ) {
-					$summary = "";
-					foreach( $blurbs as $blurb ) {
-						if( $this->isRelevant( $blurb ) ) {
-							$summary .= trim($blurb) . "\n";
-						}
-					}
-				# Small enough as is...
-				} else {
-					$summary = implode("\n",$blurbs);
-				}
-				$summary = trim($summary);
+				$summary = $this->shortenSummary( $summary );
 				# Anything left? (this can happen with some heuristics)
 				if( $summary ) {
 					$summary = str_replace( "\n", "<br/>", $summary ); // Newlines -> <br/>
@@ -115,10 +99,42 @@ class CodeReleaseNotes extends CodeView {
 		$wgOut->addHTML( '</ul>' );
 	}
 	
+	private function shortenSummary( $summary, $first = true ) {
+		# Asterixs often used as point-by-point bullets
+		if( strpos($summary,'*') !== false ) {
+			$blurbs = explode('*',$summary);
+		# Double newlines separate importance generally
+		} else if( strpos($summary,"\n\n") !== false ) {
+			$blurbs = explode("\n\n",$summary);
+		} else {
+			return trim( $summary );
+		}
+		$blurbs = array_map( 'trim', $blurbs ); # Clean up items
+		$blurbs = array_filter( $blurbs ); # Filter out any garbage
+		# Keep it short if possible...
+		if( count($blurbs) > 1 ) {
+			$summary = array();
+			foreach( $blurbs as $blurb ) {
+				# Always show the first bit
+				if( $first && count($summary) == 0 ) {
+					$summary[] = $this->shortenSummary($blurb,true);
+				# Is this bit important? Does it mention a revision?
+				} else if( $this->isRelevant( $blurb ) || preg_match('/\br(\d+)\b/',$blurb) ) {
+					$bit = $this->shortenSummary($blurb,false);
+					if( $bit ) $summary[] = $bit;
+				}
+			}
+			$summary = implode("\n",$summary);
+		} else {
+			$summary = implode("\n",$blurbs);
+		}
+		return $summary;
+	}
+	
 	// Quick relevance tests (these *should* be over-inclusive a little if anything)
 	private function isRelevant( $summary ) {
-		# Fixed a bug? Mentioned a config var?
-		if( preg_match( '/\b(bug #?(\d+)|$wg[0-9a-z]{3,50})\b/i', $summary ) )
+		# Fixed a bug? Mentioned a config var? Mentioned a rev?
+		if( preg_match( '/\b(bug #?(\d+)|\$[we]g[0-9a-z]{3,50})\b/i', $summary ) )
 			return true;
 		# Sanity check: summary cannot be *too* short to be useful
 		$words = str_word_count($summary);
@@ -126,8 +142,7 @@ class CodeReleaseNotes extends CodeView {
 			return false;
 		# All caps words (like "BREAKING CHANGE"/magic words)? 
 		# Literals like "'autoconfirmed'"/'"user contributions"'?
-		# PHP vars like "$conf" mentioned?
-		if( preg_match( '/\b([A-Z]{8,20}|[\'"]\w+[\'"]|$[0-9a-zA-Z]{3,50})\b/', $summary ) )
+		if( preg_match( '/\b([A-Z]{8,30}|[\'"]\w+[\'"])\b/', $summary ) )
 			return true;
 		# Random keywords
 		if( preg_match( '/\b(wiki|HTML\d|CSS\d|UTF-?8|(Apache|PHP|CGI|Java|Perl|Python|\w+SQL) ?\d?\.?\d?)\b/i', $summary ) )
