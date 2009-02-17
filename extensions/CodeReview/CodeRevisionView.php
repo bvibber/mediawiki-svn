@@ -205,7 +205,7 @@ class CodeRevisionView extends CodeView {
 			) . '&nbsp;';
 		}
 		if( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
-			$list .= $this->addTagForm();
+			$list .= $this->addTagForm( $this->mAddTags, $this->mRemoveTags );
 		}
 		return $list;
 	}
@@ -223,7 +223,7 @@ class CodeRevisionView extends CodeView {
 		return $tags;
 	}
 	
-	protected function listTags( $tags ) {
+	static function listTags( $tags ) {
 		if( empty($tags) )
 			return "";
 		return implode(",",$tags);
@@ -235,30 +235,31 @@ class CodeRevisionView extends CodeView {
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
 			return Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
-				$this->buildStatusList() . xml::closeElement('select');
+				self::buildStatusList( $this->mRev->getStatus(), $this ) .
+				xml::closeElement('select');
 		} else {
 			return htmlspecialchars( $this->statusDesc( $this->mRev->getStatus() ) );
 		}
 	}
 	
-	protected function buildStatusList() {
+	static function buildStatusList( $status, $view ) {
 		$states = CodeRevision::getPossibleStates();
 		$out = '';
 		foreach( $states as $state ) {
-			$out .= Xml::option( $this->statusDesc( $state ), $state, $this->mStatus === $state );
+			$out .= Xml::option( $view->statusDesc( $state ), $state,
+						$status === $state );
 		}
 		return $out;
 	}
 	
-	protected function addTagForm() {
+	/** Parameters are the tags to be added/removed sent with the request */
+	static function addTagForm( $addTags, $removeTags ) {
 		global $wgUser;
-		$repo = $this->mRepo->getName();
-		$rev = $this->mRev->getId();
 		return '<div><table><tr><td>' .
 			Xml::inputLabel( wfMsg('code-rev-tag-add'), 'wpTag', 'wpTag', 20,
-				$this->listTags($this->mAddTags) ) . '</td><td>&nbsp;</td><td>' .
+				self::listTags( $addTags ) ) . '</td><td>&nbsp;</td><td>' .
 			Xml::inputLabel( wfMsg('code-rev-tag-remove'), 'wpRemoveTag', 'wpRemoveTag', 20,
-				$this->listTags($this->mRemoveTags) ) . '</td></tr></table></div>';
+				self::listTags( $removeTags ) ) . '</td></tr></table></div>';
 	}
 	
 	protected function formatTag( $tag ) {

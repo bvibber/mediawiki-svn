@@ -15,20 +15,115 @@ class CodeRevisionListView extends CodeView {
 	}
 
 	function execute() {
-		global $wgOut;
+		global $wgOut, $wgUser, $wgRequest;
 		if( !$this->mRepo ) {
 			$view = new CodeRepoListView();
 			$view->execute();
 			return;
 		}
+		
+		// Check for batch change requests.
+		$editToken = $wgRequest->getVal( 'wpBatchChangeEditToken' );
+		if ( $wgUser->matchEditToken( $editToken ) ) {
+			$this->doBatchChange();
+			return;
+		}
+		
 		$this->showForm();
 		$pager = $this->getPager();
+		
+		// Batch change interface.
+		$changeInterface = $this->buildBatchInterface( $pager );
+		
 		$wgOut->addHTML( 
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() . 
+			Xml::openElement( 'form', 
+							array(
+									'action' => $pager->getTitle()->getLocalURL(),
+									'method' => 'POST'
+								) ) .
 			$pager->getBody() . 
-			$pager->getNavigationBar()
+			$pager->getNavigationBar() .
+			$changeInterface .
+			Xml::closeElement( 'form' )
 		);
+	}
+	
+	function doBatchChange() {
+		global $wgRequest;
+		
+		$revisions = $wgRequest->getArray( 'wpRevisionSelected' );
+		$removeTags = $wgRequest->getVal( 'wpRemoveTag' );
+		$addTags = $wgRequest->getVal( 'wpTag' );
+		$status = $wgRequest->getVal( 'wpStatus' );
+		
+		// Grab data from the DB
+		$dbr = wfGetDB( DB_SLAVE );
+		$revObjects = array();
+		$res = $dbr->select( 'code_rev', '*', array( 'cr_id' => $revisions ), __METHOD__ );
+		while( $row = $dbr->fetchObject( $res ) ) {
+			$revObjects[] = CodeRevision::newFromRow( $this->mRepo, $row );
+		}
+		
+		global $wgUser;
+		if ( $wgUser->isAllowed( 'codereview-add-tag' ) &&
+				$addTags || $removeTags ) {
+			$addTags = array_map( 'trim', explode( ",", $addTags ) );
+			$removeTags = array_map( 'trim', explode( ",", $removeTags ) );
+			
+			foreach( $revObjects as $id => $rev ) {
+				$rev->changeTags( $addTags, $removeTags, $wgUser );
+			}
+		}
+		
+		if( $wgUser->isAllowed( 'codereview-set-status' ) &&
+				$revObjects[0]->isValidStatus( $status ) ) {
+			foreach( $revObjects as $id => $rev ) {
+				$rev->setStatus( $status, $wgUser );
+			}
+		}
+		
+		// Automatically refresh
+		// This way of getting GET parameters is horrible, but effective.
+		$fields = array_merge( $_GET, $_POST );
+		foreach( array_keys( $fields ) as $key ) {
+			if ( substr( $key, 0, 2 ) == 'wp' || $key == 'title' )
+				unset( $fields[$key] );
+		}
+		
+		global $wgOut;
+		$wgOut->redirect( $this->getPager()->getTitle()->getFullURL( $fields ) );
+	}
+	
+	function buildBatchInterface( $pager ) {
+		global $wgUser;
+		
+		$changeInterface = '';
+		$changeFields = array();
+		
+		if( $wgUser->isAllowed( 'codereview-set-status' ) ) {
+			$changeFields['code-batch-status'] =
+				Xml::tags( 'select', array( 'name' => 'wpStatus' ), 
+					Xml::tags( 'option',
+						array( 'value' => '', 'selected' => 'selected' ), ' '
+					) .
+					CodeRevisionView::buildStatusList( null, $this )
+				);
+		}
+		
+		if ($wgUser->isAllowed( 'codereview-add-tag' ) ) {
+			$changeFields['code-batch-tags'] =
+				CodeRevisionView::addTagForm( '', '' );
+		}
+		
+		$changeInterface = Xml::fieldset( wfMsg('codereview-batch-title'),
+				Xml::buildForm( $changeFields, 'codereview-batch-submit' ) );
+				
+		$changeInterface .= $pager->getHiddenFields();
+		$changeInterface .= Xml::hidden( 'wpBatchChangeEditToken', $wgUser->editToken() );
+				
+		return $changeInterface;
 	}
 	
 	function showForm( $path = '' ) {
@@ -117,6 +212,7 @@ class SvnRevTablePager extends TablePager {
 
 	function getFieldNames() {
 		return array(
+			'selectforchange' => wfMsg( 'code-field-select' ),
 			$this->getDefaultSort() => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
 			'comments' => wfMsg( 'code-field-comments' ),
@@ -132,6 +228,10 @@ class SvnRevTablePager extends TablePager {
 	function formatRevValue( $name, $value, $row ) {
 		global $wgUser, $wgLang;
 		switch( $name ) {
+		case 'selectforchange':
+			$sort = $this->getDefaultSort();
+			return Xml::check( "wpRevisionSelected[]", false,
+							array( 'value' => $row->$sort ) );
 		case 'cp_rev_id':
 		case 'cr_id':
 			return $this->mView->mSkin->link(

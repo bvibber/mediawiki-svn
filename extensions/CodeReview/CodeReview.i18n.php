@@ -43,6 +43,7 @@ $messages['en'] = array(
 	'code-field-comments' => 'Notes',
 	'code-field-path' => 'Path',
 	'code-field-text' => 'Note',
+	'code-field-select' => 'Select',
 	'code-rev-author' => 'Author:',
 	'code-rev-date' => 'Date:',
 	'code-rev-message' => 'Comment:',
@@ -75,6 +76,11 @@ $messages['en'] = array(
 	'code-pathsearch-path' => 'Path:',
 	'code-rev-submit' => 'Save changes',
 	'code-rev-submit-next' => 'Save & next unresolved',
+	
+	'code-batch-status' => 'Change status:',
+	'code-batch-tags' => 'Change tags:',
+	'codereview-batch-title' => 'Change all selected revisions',
+	'codereview-batch-submit' => 'Submit',
 	
 	'code-releasenotes'     => 'release notes',
 	'code-release-legend'   => 'Generate release notes',
