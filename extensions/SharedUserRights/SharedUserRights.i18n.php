@@ -54,13 +54,14 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'shareduserrights' => 'Кіраваньне агульнымі паміж праектамі правамі ўдзельніка',
 	'gblrights-desc' => 'Простае [[Special:SharedUserRights|кіраваньне глябальнымі правамі ўдзельнікаў]]',
 	'gblrights-logpage' => 'Журнал глябальных правоў удзельнікаў',
 	'gblrights-pagetext' => 'Гэта журнал усіх зьменаў, зробленых у глябальных правах у групе праектаў вікі',
-	'gblrights-rights-entry' => 'зьменены ўдзел ў глябальных групах для $1 з $2 на $3',
+	'gblrights-rights-entry' => 'зьменены ўдзел у глябальных групах для $1 з $2 на $3',
 );
 
 /** Bulgarian (Български)
@@ -127,13 +128,14 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'shareduserrights' => "Gestion des droits d'utilisateur partagés",
-	'gblrights-desc' => "[[Special:SharedUserRights|gestion simple des droits d'utilisateur partagés]]",
-	'gblrights-logpage' => 'Historique des droits globaux',
-	'gblrights-pagetext' => "Ceci est l'historique de toutes les modification effectuées dans la table globale des droits d'utilisateur",
-	'gblrights-rights-entry' => "a modifié l'appartenance globale aux groupes pour $1 de $2 à $3",
+	'shareduserrights' => 'Gestion des droits d’utilisateur partagés',
+	'gblrights-desc' => '[[Special:SharedUserRights|Gestion simple des droits d’utilisateur partagés]]',
+	'gblrights-logpage' => 'Journal des droits partagés',
+	'gblrights-pagetext' => 'Voici l’historique de toutes les modifications apportées à la table des droits partagés d’utilisateur pour la famille wiki',
+	'gblrights-rights-entry' => 'a modifié l’appartenance aux groupes globaux pour $1 de $2 à $3',
 );
 
 /** Irish (Gaeilge)

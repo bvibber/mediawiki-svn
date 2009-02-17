@@ -873,6 +873,10 @@ Kliknij <a href='$1'>tutaj,</a> aby kontynuować.",
 	'spamdifftool_confirm' => "Potwierdź, że chcesz dodać wpisy do czarnej listy spam.
 (Kliknij <a href='$1' target='new'>tutaj,</a> aby zgłosić problem.)",
 	'spamdifftool_summary' => 'Dodawanie do czarnej listy spamu',
+	'spamdifftool_urls_detected' => 'Poniższe adresy URL zostały wykryte w edycji (edycjach). Określ które z nich chcesz dodać do czarnej listy filtru antyspamowego.
+Opcje posortowane są w kolejności od bardziej do mniej restrykcyjnych. Zablokowanie całej domeny spowoduje blokadę wszystkich linków prowadzących gdziekolwiek do tej domeny.
+
+Pamiętaj, aby nie blokować całych domen obsługujących wiele stron użytkowników jak home.pl, prv.pl itp.',
 	'spamdifftool_no_urls_detected' => "Nie wykryto żadnych adresów URL.
 Kliknij <a href='$1'>tutaj</a>, żeby wrócić do poprzedniej strony.",
 	'spamdifftool_spam_link_text' => 'dodaj do spamu',

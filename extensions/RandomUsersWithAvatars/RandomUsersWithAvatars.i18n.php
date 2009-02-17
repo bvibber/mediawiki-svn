@@ -46,6 +46,14 @@ $messages['bg'] = array(
 	'random-users-avatars-desc' => 'Добавя етикета <tt>&lt;randomuserswithavatars&gt;</tt> за показване на аватарите на случани потребители',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'random-users-avatars-title' => 'Susret sa zajednicom',
+	'random-users-avatars-desc' => 'Dodaje oznaku <tt>&lt;randomuserswithavatars&gt;</tt> za prikaz slikica slučajno odabranih korisnika',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

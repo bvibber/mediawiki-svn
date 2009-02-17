@@ -142,13 +142,14 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'discussionthreading-desc' => 'Ajoute un fil de discussion dans les pages de discussion',
+	'discussionthreading-desc' => 'Ajoute la liaison par fil des messages postés dans les pages de discussion',
 	'discussionthreading-replysection' => 'répondre',
-	'discussionthreading-replysectionhint' => 'Répondre �e commentaire',
+	'discussionthreading-replysectionhint' => 'Répondre à ce message',
 	'discussionthreading-threadnewsection' => 'nouveau',
-	'discussionthreading-threadnewsectionhint' => 'Commencer une nouvelle discussion',
+	'discussionthreading-threadnewsectionhint' => 'Commencer un nouveau fil de discussion',
 );
 
 /** Irish (Gaeilge)

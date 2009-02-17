@@ -233,3 +233,10 @@ $messages['vi'] = array(
 	'gotocategory-desc' => "Kiểm tra cụm từ tìm kiếm trong không gian tên Thể loại: để dùng cho chức năng Xem 'nhảy ngay tới trang'",
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'gotocategory-desc' => "检查的搜索字词的种类：名字空间的到'跳转到页'的功能",
+);
+

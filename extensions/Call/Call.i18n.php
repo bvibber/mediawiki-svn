@@ -249,6 +249,14 @@ $messages['es'] = array(
 	'call-save-failed' => 'El siguiente texto NO ha sido grabado a la página <big>[[$1]]</big> porque esa página ya existe.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'call' => 'Deia',
+	'call-save-success' => 'Ondorengo testua gorde egin da <big>[[$1]]</big> orrialdera.',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

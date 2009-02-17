@@ -709,8 +709,9 @@ In ultra, sia secur que tu specifica tote le campos exactemente como illos debe 
 	'createsigndoc-error-generic' => 'Error: $1',
 	'createsigndoc-error-pagenoexist' => 'Error: Le pagina [[$1]] non existe.',
 	'createsigndoc-success' => 'Le signatura del documento [[$1]] ha essite activate con successo.
-Pro testar lo, visita [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} iste pagina].',
-	'createsigndoc-error-alreadycreated' => 'Le signatura del documento "$1" es ja active.',
+Tu pote [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testar lo].',
+	'createsigndoc-error-alreadycreated' => 'Le signatura del documento "$1" es ja active.
+Isto non pote esser facite un secunde vice.',
 );
 
 /** Icelandic (Íslenska) */

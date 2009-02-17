@@ -538,6 +538,7 @@ $messages['tl'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'msfunc_desc' => 'Tập hợp các hàm toàn học và thống kê',
 	'msfunc_nan' => 'Kết quả trả về không phải là số',
 	'msfunc_inf' => 'Kết quả trả về là vô hạn',
 	'msfunc_div_zero' => 'Chia cho zero',

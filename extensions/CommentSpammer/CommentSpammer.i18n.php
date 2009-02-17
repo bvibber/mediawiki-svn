@@ -68,6 +68,9 @@ $messages['bs'] = array(
 Da bi ovo izbjegli [[Special:UserLogin|prijavite se ili napravite račun]].',
 	'commentspammer-desc' => 'Odbacuje izmjene od sumnjivih spamera sa komentarima sa DNS nepoželjnog spiska',
 	'commentspammer-log-msg' => 'izmjena od [[Special:Contributions/$1|$1]] za [[:$2]].',
+	'commentspammer-log-msg-info' => 'Zadnji put spamiran $1 prije {{PLURAL:$1|dan|dana}}, nivo opasnosti je $2 a kod napadnosti je $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vidi detalje] ili [[Special:Blockip/$4|blokiraj]].',
+	'cspammerlogpagetext' => 'Prati izmjene koje su dopuštene ili onemogućene na osnovu izvora koji je označen kao spamer komentara.',
+	'cspammer-log-page' => 'Zapisnik spamerskih komentara',
 );
 
 /** Czech (Česky)

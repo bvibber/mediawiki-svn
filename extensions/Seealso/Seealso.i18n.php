@@ -70,6 +70,14 @@ $messages['br'] = array(
 	'seealso-desc' => "Talbenn 'Gwelet ivez' lec'helaet dre implijout ar valizenn <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'seealso' => 'Također pogledajte',
+	'seealso-desc' => "Lokalizirani 'Također pogledajte' naslovi koristeći oznaku <code><nowiki><seealso></nowiki></code>",
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Raimond Spekking

@@ -55,6 +55,14 @@ $messages['bg'] = array(
 	'minnamelength-desc' => 'Налагане на ограничение за минимална дължина на потребителското име',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'minnamelength-error' => 'Vaše korisničko ime je prekratko. Najmanja dužina je $1.',
+	'minnamelength-desc' => 'Onemogućava unos prekratkih korisničkih imena',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -95,9 +103,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'minnamelength-error' => 'Su nombre de usuario es demasiado corto. El largo mínimo es $1.',
+	'minnamelength-desc' => 'Exige una longitud mínima para el nombre de usuario',
 );
 
 /** Finnish (Suomi)

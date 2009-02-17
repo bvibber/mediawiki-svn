@@ -49,6 +49,13 @@ $messages['bg'] = array(
 	'javascript-desc' => 'Добавя uniwiki.js към всяка страница, съдържаща Джаваскрипт код, използван от разширенията Uniwiki',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'javascript-desc' => 'Dodaje uniwiki.js na svaku stranicu koja sadrži JavaScript kod koji se dijeli između Uniwiki proširenja',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -280,5 +287,12 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'javascript-desc' => 'Nagdaragdag ng uniwiki.js sa bawat pahinang naglalaman ng kodigong JavaScript na pinagsasaluhan sa pagitan ng mga karugtong na pang-Uniwiki',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'javascript-desc' => 'Thêm uniwiki.js vào mỗi trang có chứa mã JavaScript để chia sẻ chúng với các bộ mở rộng Uniwiki',
 );
 

@@ -49,6 +49,13 @@ $messages['bg'] = array(
 	'formatsearch-desc' => 'Почиства страницата с резултати от търсенето',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'formatsearch-desc' => 'Čisti stranicu pretrage',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -308,6 +315,13 @@ $messages['tl'] = array(
  */
 $messages['uk'] = array(
 	'formatsearch-desc' => 'Упорядковує сторінку видачі результатів пошуку',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'formatsearch-desc' => 'Dọn dẹp trang kết quả tìm kiếm',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

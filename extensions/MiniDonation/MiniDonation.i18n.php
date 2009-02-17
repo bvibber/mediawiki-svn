@@ -58,6 +58,14 @@ $messages['bg'] = array(
 	'donationform-submit' => 'Направете дарение чрез PayPal',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'donationform-desc' => 'Dodaje oznaku <tt>&lt;donateform&gt;</tt> za podršku donacijama putem PayPal',
+	'donationform-submit' => 'Donirajte putem PayPal',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -427,8 +435,10 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'donationform-desc' => 'Thêm một thẻ <tt>&lt;donateform&gt;</tt> để hỗ trợ đóng góp qua PayPal',
 	'donationform-submit' => 'Quyên góp dùng PayPal',
 );
 

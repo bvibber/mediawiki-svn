@@ -283,8 +283,17 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'changeauthor-desc' => 'Omogućuje promjenu autora revizije',
+	'changeauthor-title' => 'Promjena autora revizije',
+	'changeauthor-search-box' => 'Traži revizije',
 	'changeauthor-pagenameform-go' => 'Idi',
 	'changeauthor-comment' => 'Komentar:',
+	'changeauthor-changeauthors-multi' => 'Promijeni {{PLURAL:$1|autora|autore}}',
+	'changeauthor-changeauthors-single' => 'Promijeni autora',
+	'changeauthor-invalid-username' => 'Nevaljano korisničko ime "$1".',
+	'changeauthor-nosuchuser' => 'Nema takvog korisnika "$1".',
+	'changeauthor-revview' => 'Revizija #$1 od $2',
+	'changeauthor-nosuchtitle' => 'Nema stranice s nazivom "$1".',
+	'right-changeauthor' => 'Promjena autora revizije',
 );
 
 /** Catalan (Català)

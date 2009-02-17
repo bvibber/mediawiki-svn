@@ -439,9 +439,11 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'usercontactlink-baduser' => 'tên hiệu không đúng',
+	'usercontactlink-desc' => 'Cung cấp khả năng thêm tên thành viên khác một cách đơn giản và nhất quán sử dụng cú pháp ^^^user^^^',
 );
 
 /** Volapük (Volapük)

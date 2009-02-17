@@ -341,6 +341,13 @@ $messages['uk'] = array(
 	'woopra-desc' => 'Дозволяє [http://www.woopra.com/ Woopra Live Tracking Software] працювати з вашою MediaWiki-інсталяцією',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'woopra-desc' => 'Cho phép [http://www.woopra.com/ Woopra Live Tracking Software] làm việc với bộ cài đặt MediaWiki của bạn',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Wmr89502270
  */

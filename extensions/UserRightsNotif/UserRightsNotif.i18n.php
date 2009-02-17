@@ -961,6 +961,7 @@ Bớt: $6
 Trân trọng,
 
 $2',
+	'userrightsnotif-desc' => 'Gửi thông báo thư điện tử cho thành viên về các thay đổi về quyền truy cập',
 );
 
 /** Volapük (Volapük)

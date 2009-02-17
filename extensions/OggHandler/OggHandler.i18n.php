@@ -675,10 +675,10 @@ $messages['el'] = array(
 	'ogg-stop' => 'Διακοπή',
 	'ogg-play-video' => 'Αναπαραγωγή βίντεο',
 	'ogg-play-sound' => 'Αναπαραγωγή ήχου',
-	'ogg-no-player' => 'Συγγνώμη, το σύστημά σας δεν φαίνεται να έχει κάποιο υποστηριζόμενο λογισμικό αναπαραγωγής.<br/>
+	'ogg-no-player' => 'Συγγνώμη, το σύστημά σας δεν φαίνεται να έχει κάποιο υποστηριζόμενο λογισμικό αναπαραγωγής.<br />
 Παρακαλώ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">κατεβάστε ένα πρόγραμμα αναπαραγωγής</a>.',
-	'ogg-no-xiphqt' => 'Δεν φαίνεται να έχετε το στοιχείο XiphQT για το πρόγραμμα QuickTime.<br/>
-Το πρόγραμμα QuickTime δεν μπορεί να αναπαράγει αρχεία Ogg χωρίς αυτό το στοιχείο.<br/>
+	'ogg-no-xiphqt' => 'Δεν φαίνεται να έχετε το στοιχείο XiphQT για το πρόγραμμα QuickTime.<br />
+Το πρόγραμμα QuickTime δεν μπορεί να αναπαράγει αρχεία Ogg χωρίς αυτό το στοιχείο.<br />
 Παρακαλώ <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">κατεβάστε το XiphQT</a> ή επιλέξτε ένα άλλο πρόγραμμα αναπαραγωγής.',
 	'ogg-player-videoElement' => 'Τοπική υποστήριξη φυλλομετρητή',
 	'ogg-player-oggPlugin' => 'Πρόσθετο φυλλομετρητή',
@@ -869,6 +869,7 @@ $messages['fo'] = array(
  * @author Seb35
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'ogg-desc' => 'Support pour les fichiers Ogg Theora et Vorbis, avec un lecteur Javascript',
@@ -888,7 +889,7 @@ $messages['fr'] = array(
 	'ogg-no-player' => 'Désolé, votre système ne possède apparemment aucun des lecteurs supportés. Veuillez installer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">un des lecteurs supportés</a>.',
 	'ogg-no-xiphqt' => 'Vous n\'avez apparemment pas le composant XiphQT pour Quicktime. Quicktime ne peut pas lire les fichiers Ogg sans ce composant. Veuillez <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">télécharger XiphQT</a> ou choisir un autre lecteur.',
 	'ogg-player-videoElement' => 'Support du navigateur natif',
-	'ogg-player-oggPlugin' => 'Plugiciel du navigateur',
+	'ogg-player-oggPlugin' => 'Module complémentaire du navigateur',
 	'ogg-player-thumbnail' => 'Image statique seulement',
 	'ogg-player-soundthumb' => 'Aucun lecteur',
 	'ogg-player-selected' => '(sélectionné)',
@@ -1304,8 +1305,11 @@ Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
  * @author Malafaya
  */
 $messages['io'] = array(
+	'ogg-long-error' => '(Ne-valida ogg-arkivo: $1)',
+	'ogg-player-selected' => '(selektita)',
 	'ogg-more' => 'Plus…',
 	'ogg-dismiss' => 'Klozar',
+	'ogg-desc-link' => 'Pri ca arkivo',
 );
 
 /** Icelandic (Íslenska)
@@ -2663,6 +2667,14 @@ $messages['tg-cyrl'] = array(
 	'ogg-dismiss' => 'Бастан',
 	'ogg-download' => 'Боргирии парванда',
 	'ogg-desc-link' => 'Дар бораи ин парванда',
+);
+
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'ogg-play-video' => 'เล่นวิดีโอ',
+	'ogg-play-sound' => 'เล่นเสียง',
 );
 
 /** Tagalog (Tagalog)

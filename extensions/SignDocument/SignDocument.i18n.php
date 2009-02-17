@@ -401,7 +401,7 @@ $messages['tl'] = array(
 $messages['vi'] = array(
 	'signaturelogpage' => 'Nhật trình chữ ký',
 	'signature-desc' => 'Cho phép tài liệu [[Special:SignDocument|được ký]]',
-	'signaturelogpagetext' => 'Đây là nhật trình tất cả các chữ ký được thêm vào văn bản thông qua [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Đây là nhật trình [[Special:SignDocument|tất cả các chữ ký được thêm vào văn bản]].',
 	'signaturelogentry' => 'đã ký tài liệu $1',
 );
 

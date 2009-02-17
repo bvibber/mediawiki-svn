@@ -58,6 +58,15 @@ $messages['bg'] = array(
 	'icon-desc' => 'Позволява да се използват картинките като икони и като иконни препратки',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'icon-badimage' => 'Loša slika',
+	'icon-badwidth' => 'Loša širina',
+	'icon-desc' => 'Omogućuje upotrebu slika kao ikona i linkova ikona',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

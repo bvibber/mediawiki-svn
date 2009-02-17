@@ -1427,6 +1427,7 @@ $messages['vi'] = array(
 	'group-patroller' => 'Tuần tra viên',
 	'group-patroller-member' => 'Tuần tra viên',
 	'grouppage-patroller' => '{{ns:project}}:Tuần tra viên',
+	'right-patroller' => 'Tuần tra trang',
 );
 
 /** Volapük (Volapük)

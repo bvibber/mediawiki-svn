@@ -137,9 +137,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author McDutchie
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'titlekey-desc' => 'Méchanisme pour faire des suggestions de recherche par préfixe de titre',
+	'titlekey-desc' => 'Mécanisme de suggestion de recherche par préfixe de titre',
 );
 
 /** Galician (Galego)

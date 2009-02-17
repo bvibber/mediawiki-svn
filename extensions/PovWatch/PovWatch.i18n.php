@@ -392,16 +392,16 @@ $messages['el'] = array(
 	'povwatch_not_allowed_subscribers' => 'Δεν επιτρέπεται να δείτε τον κατάλογο συνδρομητών της επέκτασης PovWatch',
 	'povwatch_unknown_subpage' => 'Άγνωστη υποσελίδα.',
 	'povwatch_push' => 'Προώθηση',
-	'povwatch_push_intro' => 'Χρησιμοποιήστε την φόρμα παρακάτω για να προωθήσετε σελίδες στις λίστες παρακολούθησης των εγγεγραμμένων χρηστών.<br/>
+	'povwatch_push_intro' => 'Χρησιμοποιήστε την φόρμα παρακάτω για να προωθήσετε σελίδες στις λίστες παρακολούθησης των εγγεγραμμένων χρηστών.<br />
 Παρακαλώ να είστε προσεκτικοί καθώς πληκτρολογείτε τον τίτλο: ακόμη και ανύπαρκτοι τίτλοι μπορούν να προστεθούν, και δεν υπάρχει κανένας τρόπος να αφαιρέσετε ένα τίτλος αφότου αυτός έχει προωθηθεί.',
 	'povwatch_title' => 'Τίτλος:',
 	'povwatch_comment' => 'Σχόλιο αρχείου καταγραφής:',
 	'povwatch_no_log' => 'Δεν υπάρχουν εγγραφές στο αρχείο καταγραφής.',
 	'povwatch_no_subscribers' => 'Δεν υπάρχουν συνδρομητές.',
-	'povwatch_unsubscribe_intro' => 'Είσαστε εγγεγραμμένοι στην επέκταση PovWatch.<br/>
+	'povwatch_unsubscribe_intro' => 'Είσαστε εγγεγραμμένοι στην επέκταση PovWatch.<br />
 Κάντε κλιψκ στο κουμπί παρακάτω για να διαγραφείτε.',
 	'povwatch_unsubscribe' => 'Διαγραφή',
-	'povwatch_subscribe_intro' => 'Δεν είσαστε εγγεγραμμένοι στην επέκταση PovWatch.<br>
+	'povwatch_subscribe_intro' => 'Δεν είσαστε εγγεγραμμένοι στην επέκταση PovWatch.<br />
 Κάντε κλικ στο κουμπί παρακάτω για να εγγραφείτε.',
 	'povwatch_subscribe' => 'Εγγραφή',
 	'povwatch_added' => 'προστέθηκε',
@@ -465,11 +465,12 @@ $messages['fi'] = array(
  * @author IAlex
  * @author McDutchie
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'povwatch' => 'Surveillance des guerres d’éditions',
 	'povwatch_desc' => 'Extension permettant d’[[Special:PovWatch|ajouter des pages à la liste de suivi]] d’autres utilisateurs',
-	'povwatch_no_session' => 'Erreur : Impossible de soumettre le formulaire à la suite de la perte des données de la session.',
+	'povwatch_no_session' => 'Erreur : impossible de soumettre le formulaire par suite d’une perte des données de session.',
 	'povwatch_not_allowed_push' => 'Vous n’êtes pas un administrateur pour la surveillance des guerres d’édition. Vous ne pouvez pas ajouter les pages dans la liste correspondante.',
 	'povwatch_already_subscribed' => 'Vous êtes déjà inscrit pour la surveillance des guerres d’édition.',
 	'povwatch_subscribed' => 'Vous êtes maintenant inscrit pour la surveillance des guerres d’édition.',
@@ -477,9 +478,9 @@ $messages['fr'] = array(
 	'povwatch_unsubscribed' => 'Votre inscription pour la surveillance des guerres d’édition est maintenant résiliée.',
 	'povwatch_invalid_title' => 'Le titre indiqué est invalide.',
 	'povwatch_pushed' => '[[$1]] a été inscrite avec succès dans {{PLURAL:$2|la liste|les listes}} de surveillance de $2 {{PLURAL:$2|utilisateur|utilisateurs}}',
-	'povwatch_intro' => 'La surveillance des guerres d’édition est un service qui autorise la surveillance discrète des pages conflictuelles. Ceux-ci peuvent être inscrits dans la liste de surveillance des administrateurs enregistrés.
+	'povwatch_intro' => 'La surveillance des guerres d’édition est un service qui autorise la surveillance discrète des pages conflictuelles. Celles-ci peuvent être inscrites dans la liste de surveillance des administrateurs enregistrés.
 
-Un journal de surveillance des pages inscrites est disponible sur [[Special:PovWatch/log]].',
+Un journal de surveillance des pages récemment inscrites est disponible sur [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Une [[Special:PovWatch/subscribers|liste des abonnés]] est disponible.',
 	'povwatch_subscriber_list_intro' => '<strong>Liste des abonnés</strong>',
 	'povwatch_not_allowed_subscribers' => 'Vous n’avez pas la permission de visionner la liste des personnes inscrites pour la surveillance des guerres d’édition.',
@@ -491,15 +492,15 @@ Inscrivez scrupuleusement le titre : une page inexistante peut être spécifiée
 	'povwatch_comment' => 'Commentaire du journal :',
 	'povwatch_no_log' => 'Il n’existe aucune entrée dans le journal.',
 	'povwatch_no_subscribers' => 'Il n’existe aucune personne abonnée.',
-	'povwatch_unsubscribe_intro' => 'Vous êtes inscrit à la liste de surveillance des guerres d’édition. Cliquez sur le bouton ci-dessous pour vous désinscrire.',
+	'povwatch_unsubscribe_intro' => 'Vous êtes abonné à la liste de surveillance des guerres d’édition. Cliquez sur le bouton ci-dessous pour résilier cet abonnement.',
 	'povwatch_unsubscribe' => 'Résilier',
-	'povwatch_subscribe_intro' => 'Vous n’êtes pas inscrit sur la liste de surveillance des guerres d’édition. Cliquez sur le bouton ci-dessous pour vous inscrire.',
+	'povwatch_subscribe_intro' => 'Vous n’êtes pas abonné à la liste de surveillance des guerres d’édition. Cliquez sur le bouton ci-dessous pour y souscrire un abonnement.',
 	'povwatch_subscribe' => 'Souscrire',
 	'povwatch_added' => 'ajouté',
-	'right-povwatch_admin' => "Administrer les droits d’utilisateur pour l'ajout des pages à la liste de suivi des autres utilisateurs.",
-	'right-povwatch_user' => 'Ajoute des pages à la liste de suivi des autres utilisateurs',
-	'action-povwatch_admin' => "administrer les droits d'utilisateur pour PovWatch",
-	'action-povwatch_user' => "ajouter cette page à la liste de suivi d'autres utilisateurs",
+	'right-povwatch_admin' => 'Administrer les droits d’utilisateur permettant l’ajout de pages aux listes de suivi d’autres utilisateurs.',
+	'right-povwatch_user' => 'Ajoute des pages aux listes de suivi d’autres utilisateurs',
+	'action-povwatch_admin' => 'administrer les droits d’utilisateur pour la surveillance des guerres d’éditions',
+	'action-povwatch_user' => 'ajouter cette page à la liste de suivi d’un autre utilisateur',
 );
 
 /** Galician (Galego)
@@ -792,6 +793,14 @@ Clicca le button infra pro inscriber te.',
  */
 $messages['id'] = array(
 	'povwatch_title' => 'Judul:',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'povwatch_title' => 'Titulo:',
+	'povwatch_added' => 'adjuntita',
 );
 
 /** Italian (Italiano)
@@ -1728,6 +1737,8 @@ Nhấn vào nút phía dưới để đăng ký.',
 	'povwatch_added' => 'được thêm vào',
 	'right-povwatch_admin' => 'Quản lý quyền thành viên để đưa trang vào danh sách thành viên của người khác',
 	'right-povwatch_user' => 'Thêm trang vào danh sách theo dõi của thành viên khác',
+	'action-povwatch_admin' => 'quản trị quyền thành viên cho PovWatch',
+	'action-povwatch_user' => 'thêm trang này vào danh sách theo dõi của người khác',
 );
 
 /** Volapük (Volapük)

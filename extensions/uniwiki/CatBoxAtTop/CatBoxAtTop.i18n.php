@@ -383,8 +383,10 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'catboxattop-desc' => 'Thêm một hộp thể loại vào góc trên bên trái trang',
 	'catboxattop-categories' => 'Thể loại',
 );
 

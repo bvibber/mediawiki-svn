@@ -45,6 +45,13 @@ $messages['avk'] = array(
 	'nstab-comments' => 'Sebuks',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'nstab-comments' => 'Kommentar',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

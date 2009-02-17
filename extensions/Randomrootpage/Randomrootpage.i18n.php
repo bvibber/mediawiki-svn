@@ -46,6 +46,14 @@ $messages['bg'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Специална страница]], която извлича случайна начална страница',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'randomrootpage' => 'Slučajna root stranica',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Posebna stranica]] koja poziva slučajnu root stranicu',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

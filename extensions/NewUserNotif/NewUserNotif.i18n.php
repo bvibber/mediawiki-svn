@@ -88,6 +88,17 @@ $messages['bg'] = array(
 В $3 беше регистрирана нова потребителска сметка, $2, на $4.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'newusernotifsubj' => 'Obavještenje o novom korisniku na $1',
+	'newusernotif-desc' => 'Šalje obavještenje putem e-maila kada pri pravljenju novog korisničkog računa',
+	'newusernotifbody' => 'Zdravo $1,
+
+Novi korisnički račun, $2, je napravljen na $3 u $4.',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

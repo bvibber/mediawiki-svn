@@ -1002,6 +1002,7 @@ $messages['ia'] = array(
 	'regexblock-block-success' => 'Blocada succedite',
 	'regexblock-currently-blocked' => 'Adresses actualmente blocate:',
 	'regexblock-desc' => 'Extension usate pro blocar le nomines e adresses IP de usatores per medio de expressiones regular. Contine e le mechanismo de blocar e un [[Special:Regexblock|pagina special]] pro adder/gerer blocadas',
+	'regexblock-expire-duration' => '1 hora,2 horas,4 horas,6 horas,1 die,3 dies,1 septimana,2 septimanas,1 mense,3 menses,6 menses,1 anno,infinite',
 	'regexblock-page-title' => 'Blocada de un nomine per expression regular',
 	'regexblockstats' => 'Statisticas super blocadas per expressiones regular',
 	'regexblock-help' => 'Usa le formulario in basso pro blocar le accesso a scriber ab un adresse IP o nomine de usator specific.
@@ -1025,11 +1026,14 @@ Per favor crea un nomine de usator alternative o $1 a proposito de iste problema
 	'regexblock-form-submit-empty' => 'Specifica un nomine de usator o adresse IP a blocar.',
 	'regexblock-form-submit-regex' => 'Expression regular invalide.',
 	'regexblock-form-submit-expiry' => 'Per favor specifica un periodo de expiration.',
+	'regexblock-match-stats-record' => "$1 blocava '$2' in '$3' al '$4', connectite ab le adresse '$5'",
+	'regexblock-nodata-found' => 'Nulle datos trovate',
 	'regexblock-stats-title' => 'Statisticas de blocadas per expressiones regular',
 	'regexblock-unblock-success' => 'Disblocada succedite',
 	'regexblock-unblock-log' => "Le nomine de usator o adresse IP '''$1''' ha essite disblocate.",
 	'regexblock-unblock-error' => 'Error durante le disblocada de $1.
 Probabilemente non existe tal usator.',
+	'regexblock-regex-filter' => ' o valor regex:',
 	'regexblock-view-blocked' => 'Vider blocadas per:',
 	'regexblock-view-all' => 'Totes',
 	'regexblock-view-go' => 'Ir',
@@ -1046,6 +1050,7 @@ Probabilemente non existe tal usator.',
 	'regexblock-view-stats' => 'statisticas',
 	'regexblock-view-empty' => 'Le lista de nomines e adresses blocate es vacue.',
 	'regexblock-view-time' => 'le $1',
+	'right-regexblock' => 'Blocar usatores de modificar in tote le wikis del ferma de wikis',
 );
 
 /** Indonesian (Bahasa Indonesia)

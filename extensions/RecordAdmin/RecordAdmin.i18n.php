@@ -548,6 +548,7 @@ $messages['ia'] = array(
 	'recordadmin-viewlink' => 'vider',
 	'recordadmin-editlink' => 'modificar',
 	'recordadmin-created' => 'Create',
+	'recordadmin-actions' => 'Actiones',
 	'right-recordadmin' => 'Cercar e modificar paginas de datos',
 );
 
@@ -669,6 +670,7 @@ $messages['lb'] = array(
 	'recordadmin-newsearch' => 'Nei $1 sichen',
 	'recordadmin-alreadyexist' => 'Pardon, "$1" gëtt et schonn!',
 	'recordadmin-badtitle' => 'Schlechten Titel!',
+	'recordadmin-invert' => 'Auswiel ëmdréinen',
 	'recordadmin-buttonsearch' => 'Sichen',
 	'recordadmin-buttonreset' => 'Zrécksetzen',
 	'recordadmin-searchresult' => 'Resultater vun der Sich',
@@ -679,6 +681,7 @@ $messages['lb'] = array(
 	'recordadmin-viewlink' => 'weisen',
 	'recordadmin-editlink' => 'änneren',
 	'recordadmin-created' => 'Ugeluecht',
+	'recordadmin-actions' => 'Aktiounen',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -742,29 +745,31 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
-	'recordadmin' => 'Registreringshandsaming',
-	'recordadmin-desc' => 'Ei [[Special:RecordAdmin|spesiell side]] for å finna og redigera oppføringar ved å bruka eit skjema',
+	'recordadmin' => 'Oppføringshandsaming',
+	'recordadmin-desc' => 'Ei [[Special:RecordAdmin|spesialside]] for å finna og redigera oppføringar ved å bruka eit skjema',
+	'recordadmin-category' => 'Oppføringar',
 	'recordadmin-select' => 'Vel type oppføring å søkja etter',
 	'recordadmin-newsearch' => 'Nytt søk etter $1',
-	'recordadmin-newrecord' => 'Vel ei anna type oppføring',
+	'recordadmin-newrecord' => 'Vel ein annan type oppføring',
 	'recordadmin-submit' => 'Send',
 	'recordadmin-create' => 'Finn eller lag ei "$1" oppføring',
 	'recordadmin-alreadyexist' => '«$1» finst frå før.',
 	'recordadmin-createsuccess' => '$1 er oppretta',
 	'recordadmin-createerror' => 'Ein feil oppstod under opprettinga av $1!',
 	'recordadmin-badtitle' => 'Ugyldig tittel!',
-	'recordadmin-invert' => 'Omvendt utval',
+	'recordadmin-recordid' => 'Oppførings-ID:',
+	'recordadmin-invert' => 'Vend om utval',
 	'recordadmin-buttonsearch' => 'Søk',
 	'recordadmin-buttoncreate' => 'Opprett',
 	'recordadmin-buttonreset' => 'Still attende',
 	'recordadmin-searchresult' => 'Søkjeresultat',
-	'recordadmin-nomatch' => 'Ingen høvelege resultat funnne!',
+	'recordadmin-nomatch' => 'Ingen høvelege resultat funne!',
 	'recordadmin-edit' => 'Endrar $1',
 	'recordadmin-typeupdated' => 'Eigenskapane til $1 blei oppdaterte',
 	'recordadmin-updatesuccess' => '$1 er oppdatert',
 	'recordadmin-updateerror' => 'Ein feil oppstod under oppdatering',
 	'recordadmin-buttonsave' => 'Lagra',
-	'recordadmin-noform' => 'Det er ikkje knytt eit skjema til oppføringa "$1"!',
+	'recordadmin-noform' => 'Det er ikkje knytt eit skjema til oppføringa «$1»!',
 	'recordadmin-createlink' => '<a href=$1>opprett ein</a>',
 	'recordadmin-newcreated' => 'Ny $1 laga frå eit offentleg skjema',
 	'recordadmin-summary-typecreated' => 'Ny $1 laga til',

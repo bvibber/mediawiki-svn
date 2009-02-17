@@ -295,7 +295,12 @@ Bonvolu plenumi ĝin.',
  * @author Sanbec
  */
 $messages['es'] = array(
+	'form-desc' => 'Una [[Special:Form|interface de formulario]] para comenzar nuevas páginas',
 	'form' => 'Formulario',
+	'formnoname' => 'Formulario sin nombre',
+	'formnonametext' => 'Debes proveer un nombre de formulario, como "Special:Form/Nameofform".',
+	'formbadname' => 'Mal nombre de formulario',
+	'formbadnametext' => 'No har formulario para ese nombre',
 	'formpattern' => 'Formulario de $1',
 	'formtitlepattern' => 'Agregar nuevo $1',
 	'formsave' => 'Guardar',
@@ -303,6 +308,10 @@ $messages['es'] = array(
 	'formarticleexiststext' => 'La página [[$1]] ya existe.',
 	'formbadpagename' => 'Mal nombre de página',
 	'formbadrecaptcha' => 'Valores incorrectos para reCaptcha. Intente nuevamente.',
+	'formrequiredfielderror' => 'Los {{PLURAL:$2|campo $1 es|campos $1 son}} requeridos para este formulario.
+Por favor {{PLURAL:$2|rellénelo|rellénelos}}.',
+	'formsavesummary' => 'Nueva página usando [[Special:Form/$1|formulario $1]]',
+	'formsaveerror' => 'Error grabando formulario',
 	'formsaveerrortext' => "Hubo un error desconocido grabando la página '$1'.",
 );
 

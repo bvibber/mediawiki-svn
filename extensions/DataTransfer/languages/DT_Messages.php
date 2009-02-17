@@ -534,6 +534,13 @@ $messages['id'] = array(
 	'dt_xml_title' => 'Judul',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'dt_xml_title' => 'Titulo',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

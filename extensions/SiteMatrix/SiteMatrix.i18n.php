@@ -490,6 +490,7 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Seb35
  * @author Sherbrooke
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'sitematrix' => 'Liste des wikis de Wikimedia Foundation',
@@ -501,7 +502,7 @@ $messages['fr'] = array(
 	'sitematrix-total' => "'''Total du compte : $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privé',
-	'sitematrix-fishbowl' => 'modifications limitées',
+	'sitematrix-fishbowl' => 'modifications restreintes',
 );
 
 /** Cajun French (Français cadien)
@@ -761,6 +762,7 @@ $messages['id'] = array(
 $messages['io'] = array(
 	'sitematrix' => 'Listo di wiki-i Wikimedia',
 	'sitematrix-language' => 'Linguo',
+	'sitematrix-sitetotal' => 'Sumo',
 	'sitematrix-private' => 'privata',
 );
 

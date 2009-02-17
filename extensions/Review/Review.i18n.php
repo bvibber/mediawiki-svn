@@ -474,9 +474,15 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'review_sidebar_title' => 'Revisar',
+	'review_topic_page' => 'Revisar tópicos',
+	'review_save' => 'Almacenar revisión',
+	'review_page_link' => 'revisar estadísticas',
+	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Revisión',
 	'review_version_link' => 'Revisión #$1',
 	'review_version_statistic_cell' => '$1 de $2',
@@ -1742,7 +1748,7 @@ $messages['vi'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Lần duyệt của bạn đã được lưu!</span>",
 	'revision_review_this_page_version_link' => 'Duyệt phiên bản này của trang.',
 	'review_page_review' => 'Duyệt trang "$1"',
-	'review_blocked' => 'Bạn đã bị cấm, hãy rời khỏi đây.',
+	'review_blocked' => 'Bạn đã bị cấm và không thể tham gia vào buổi xem xét.',
 	'review_wrong_namespace' => 'Những trang trong không gian tên này không thể duyệt được!',
 	'review_topic' => 'Chủ đề',
 	'review_no_opinion' => 'Không có ý kiến',

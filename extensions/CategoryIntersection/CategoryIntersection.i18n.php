@@ -146,6 +146,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'categoryintersection' => 'Categoría intersección',
 	'categoryintersection-doit' => 'Lista de páginas en todas estas categorías',
+	'categoryintersection-results' => 'La búsqueda retornó $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
 /** Basque (Euskara)

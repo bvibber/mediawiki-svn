@@ -35,6 +35,13 @@ $messages['arz'] = array(
 	'preloader-desc' => 'يوفر نص بويلربلات مخصص لكل نطاق للصفحات الجديدة',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'preloader-desc' => 'Omogućuje unos po imenskom prostoru prilagodljivih šablona za nove stranice',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

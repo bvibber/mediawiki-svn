@@ -1087,6 +1087,7 @@ $messages['vi'] = array(
 	'invitations-desc' => 'Cho phép [[Special:Invitations|quản lý các tính năng mới]] bằng cách hạn chế họ dựa vào hệ thống thư mời',
 	'invitations-invitedlist-description' => 'Bạn đã truy cập vào các tính năng phần mềm chỉ cho phép thư mời sau đây. Để quản lú các thư mời cho một tính năng riêng lẻ, hãy nhấn vào tên của nó.',
 	'invitations-invitedlist-none' => 'Bạn chưa được mời sử dụng tính năng phần mềm chỉ dành cho thư mời nào.',
+	'invitations-invitedlist-item-count' => '(Hiện có {{PLURAL:$1|một lời mời|$1 lời mời}})',
 	'invitations-pagetitle' => 'Các tính năng phần mềm chỉ cho phép thư mời',
 	'invitations-uninvitedlist-description' => 'Bạn không có quyền truy cập vào những tính năng phần mềm chỉ cho phép thư mời sau.',
 	'invitations-uninvitedlist-none' => 'Vào lúc này, không có tính năng phần mềm nào khác được chỉ định chỉ cho phép thư mời.',

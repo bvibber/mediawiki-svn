@@ -50,6 +50,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'othersites' => 'Ostale stranice',
+	'othersites-desc' => 'Premješta interwiki linkove pored linkova jezika u njihov vlastiti portlet',
 );
 
 /** Catalan (Català)

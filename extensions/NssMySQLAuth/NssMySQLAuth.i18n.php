@@ -647,6 +647,7 @@ $messages['vi'] = array(
 	'nss-save-changes' => 'Lưu các thay đổi',
 	'nss-create-account-header' => 'Mở tài khoản mới',
 	'nss-create-account' => 'Mở tài khoản',
+	'nss-no-mail' => 'Không gửi thư điện tử',
 	'nss-welcome-mail' => 'Bạn đã mở tài khoản với tên $1 và mật khẩu $2.',
 	'nss-welcome-mail-subject' => 'Tài khoản mới',
 	'nss-db-error' => 'Lỗi truy cập cơ sở dữ liệu tài khoản',

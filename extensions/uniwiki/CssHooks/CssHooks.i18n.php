@@ -50,6 +50,13 @@ $messages['bg'] = array(
 	'csshooks-desc' => 'Добавя CSS към HTML-изходния код на страниците са по-добро оформление',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'csshooks-desc' => 'Dodaje CSS u HTML izlaz stranice za bolje stiliziranje',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -282,5 +289,12 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'csshooks-desc' => 'Nagdaragdag ng CSS sa inilalabas na produktong HTML ng mga pahina para sa mas mainam na pag-iistilo.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'csshooks-desc' => 'Thêm CSS vào đầu xuất HTMK của trang để trình bày đẹp hơn',
 );
 

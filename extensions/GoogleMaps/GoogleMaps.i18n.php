@@ -2101,6 +2101,7 @@ $wgGoogleMapsMessages['id'] = array(
  * @author Malafaya
  */
 $wgGoogleMapsMessages['io'] = array(
+	'gm-balloon-title' => 'Titulo:',
 	'gm-yes' => 'Yes',
 );
 
@@ -4344,22 +4345,78 @@ $wgGoogleMapsMessages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  * @author Mach
  * @author Runningfridgesrule
  * @author Suelnur
  */
 $wgGoogleMapsMessages['tr'] = array(
+	'gm-desc' => 'Viki-lenmiş işaretçilerle kolayca haritalar oluşturun',
+	'gm-incompatible-browser' => 'Bu boşluğa sığan haritayı görmek için, uyumlu bir web tarayıcısına ihtiyacınız var.',
+	'gm-incompatible-browser-link' => 'Uyumlu tarayıcıların bir listesini görmek için buraya tıklayın.',
+	'gm-no-editor' => 'Ne yazıkki, tarayıcınız interaktif harita-yap özelliklerini desteklemiyor. <a href="http://www.microsoft.com/ie">Internet Explorer</a>\'ın (Windows) veya <a href="http://www.mozilla.org/products/firefox">Firefox</a>\'un (Windows, Mac ve Linux) en son sürümünü deneyin.',
 	'gm-balloon-title' => 'Başlık:',
+	'gm-balloon-link-article' => 'Bu sayfaya bağlantı (isteğe bağlı):',
+	'gm-make-marker' => 'Başlık (viki mark-up uygundur):',
 	'gm-remove' => 'kaldır',
+	'gm-caption' => 'Başlık',
+	'gm-tab-title' => 'Sekme başlığı',
+	'gm-tab' => 'Sekme',
+	'gm-start-path' => 'bir yol başlat',
+	'gm-trace-area' => 'bir alan çiz',
+	'gm-save-point' => 'kaydet &amp; kapat',
+	'gm-load-map-from-article' => 'Sayfadan bir harita yükle:',
+	'gm-no-maps' => 'Bu sayfada yüklenecek harita yok.',
+	'gm-refresh-list' => 'Listeyi yenile',
+	'gm-load-map' => 'Haritayı yükle',
+	'gm-clip-result' => 'Haritaya ekle',
+	'gm-no-results' => 'Üzgünüz, sonuç yok',
 	'gm-searching' => 'arıyor...',
 	'gm-map' => 'Harita',
+	'gm-note' => 'Not: "Haritayı yükle", "Kaydet" ya da "Önizle"ye basmadan önce sayfaya kaydetmek istediklerinizi (aşağıda) kopyaladığınızdan emin olun!',
+	'gm-instructions' => "Aşağıdaki, yukarıdaki haritayı oluşturan Viki mark-up'ıdır.",
 	'gm-are-you-sure' => 'Emin misiniz?',
+	'gm-clear-all-points' => 'Bütün noktaları temizle',
+	'gm-refresh-points' => 'Noktaları yenile',
+	'gm-width' => 'Genişlik',
+	'gm-height' => 'Yükseklik',
+	'gm-scale-control' => 'Ölçek',
+	'gm-overview-control' => 'Genel bakış',
+	'gm-selector-control' => 'Harita/Uydu seçici',
+	'gm-zoom-control' => 'Dolaşım',
+	'gm-large' => 'Büyük',
+	'gm-medium' => 'Orta',
+	'gm-small' => 'Küçük',
 	'gm-no-zoom-control' => 'Hiçbiri',
 	'gm-yes' => 'Evet',
 	'gm-no' => 'Hayır',
+	'gm-search-preface' => 'Bir nokta eklemek, ya da bir şehre, ülkeye, adrese yada iş yerine zıplamak için haritaya tıklayın:',
+	'gm-geocode-preface' => 'Bir nokta eklemek, ya da bir şehre, ülkeye ya da adrese zıplamak için haritaya tıklayın:',
+	'gm-no-search-preface' => 'Bir nokta eklemek için haritaya tıklayın.',
 	'gm-search' => 'Ara',
+	'gm-clear-search' => 'arama sonuçlarını temizle',
+	'gm-meters' => 'metre',
+	'gm-miles' => 'mil',
+	'gm-editing-path' => 'Bu yola daha fazla nokta eklemek için haritaya tıklayın.',
 	'gm-save-path' => 'Kaydet',
+	'gm-edit-path' => 'nokta ekle',
+	'gm-show-path' => 'noktaları göster',
+	'gm-color-path' => 'rengi değiştir',
+	'gm-color-fill' => 'dolgu rengini değiştir',
+	'gm-add-fill' => 'alanı doldur',
+	'gm-remove-fill' => 'doldurmayı-kaldır',
+	'gm-fill-color' => 'Dolgu rengi',
+	'gm-line-color' => 'Çizgi rengi',
+	'gm-opacity' => 'Opaklık',
+	'gm-line-width' => 'Genişlik',
+	'gm-make-map' => 'bir harita yap',
+	'gm-hide-map' => 'haritayı gizle',
+	'gm-back' => 'geri',
+	'gm-kml-include' => 'Harici KML/GeoRSS:',
+	'gm-kml-include-link' => 'haritaya ekle',
+	'gm-kml-loading' => 'yükleniyor…',
+	'gm-kml-export' => 'Bu haritayı KML olarak dışa aktar',
 	'gm-earth' => 'Dünya',
 	'gm-moon' => 'Ay',
 	'gm-mars' => 'Mars',

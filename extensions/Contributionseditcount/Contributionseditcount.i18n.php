@@ -517,7 +517,7 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'contributionseditcount' => 'Thành viên này có $1 lần sửa đổi.',
-	'contributionseditcount-desc' => 'Hiển thị số lần sửa đổi tại [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Hiển thị số lần sửa đổi tại [[Special:Contributions|trang đóng góp của tôi]]',
 );
 
 /** Volapük (Volapük)

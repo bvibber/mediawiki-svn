@@ -510,6 +510,13 @@ $messages['id'] = array(
 	'edituser-dosearch' => 'Cari',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'edituser-username' => 'Nomo',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'edituser-username' => 'Nafn',

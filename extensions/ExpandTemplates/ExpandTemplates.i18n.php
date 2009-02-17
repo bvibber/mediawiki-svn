@@ -397,13 +397,24 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dead3y3
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'expandtemplates' => 'Επέκτεινε τα πρότυπα',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Αναπτύσσει πρότυπα, συναρτήσεις συντακτικού αναλυτή και μεταβλητές]] για την εμφάνιση του αναπτυγμένου κειμένου wiki και της προεπισκόπησης της ερμηνευμένης σελίδας',
+	'expand_templates_intro' => 'Αυτή η ειδική σελίδα παίρνει κάποιο κείμενο και αναπτύσσει όλα τα πρότυπα σε αυτό αναδρομικά.<br />
+Επίσης αναπτύσσει συναρτήσεις συντακτικού αναλυτή όπως η<br />
+<nowiki>{{</nowiki>#if:…}}, και μεταβλητές όπως η<br />
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;Ουσιαστικά τα πάντα σε διπλές αγκύλες.<br />
+Αυτό το κάνει καλώντας το σχετικό στάδιο του συντακτικού αναλυτή από το MediaWiki αυτό καθαυτό.',
+	'expand_templates_title' => 'Τίτλων συμφραζόμενων, για την {{PAGENAME}} κ.τ.λ.:',
+	'expand_templates_input' => 'Κείμενο εισόδου:',
 	'expand_templates_output' => 'Αποτέλεσμα',
+	'expand_templates_xml_output' => 'Έξοδος XML',
 	'expand_templates_ok' => 'ΟΚ',
-	'expand_templates_remove_comments' => 'Αφαίρεσε τα σχόλια',
+	'expand_templates_remove_comments' => 'Αφαίρεση σχολίων',
+	'expand_templates_generate_xml' => 'Εμφάνιση δέντρου συντακτικής ανάλυσης XML',
 	'expand_templates_preview' => 'Προεπισκόπηση',
 );
 
@@ -525,22 +536,25 @@ $messages['fo'] = array(
  * @author Grondin
  * @author IAlex
  * @author Sherbrooke
+ * @author Verdy p
  * @author Zetud
  */
 $messages['fr'] = array(
 	'expandtemplates' => 'Expansion des modèles',
-	'expandtemplates-desc' => 'Augmente les modèles, les fonctions parseurs et les variables pour visionner les textes wikis étendus et prévisualise les pages ainsi rendues.',
-	'expand_templates_intro' => 'Cette page permet de tester l’expansion de modèles,
-qui sont développés récursivement. Les fonctions et les variables prédéfinies,
-telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont aussi développées.',
-	'expand_templates_title' => 'Titre de la page, utile par exemple si le modèle utilise {{PAGENAME}} :',
-	'expand_templates_input' => 'Entrez votre texte ici :',
-	'expand_templates_output' => 'Résultat',
-	'expand_templates_xml_output' => 'Sortie XML',
-	'expand_templates_ok' => 'Accepter',
-	'expand_templates_remove_comments' => 'Supprimer les commentaires.',
-	'expand_templates_generate_xml' => "Voir l'arborescence XML",
-	'expand_templates_preview' => 'Prévisualisation',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Réalise l’expansion des modèles, fonctions parseurs et variables]] afin de visionner le texte wiki obtenu après expansion et prévisualiser le rendu effectif de la page.',
+	'expand_templates_intro' => 'Cette page spéciale accepte un texte wiki source et permet de réaliser récursivement l’expansion des modèles qu’il contient.
+Elle réalise aussi l’expansion des fonctions du parseur telles que
+<tt><nowiki>{{</nowiki>#if:...<nowiki>}}</nowiki></tt>  et des variables prédéfinies telles que
+<tt><nowiki>{{</nowiki>CURRENTDAY<nowiki>}}</nowiki></tt> — en fait pratiquement tout ce qui est encadré par des doubles accolades.
+Elle réalise ceci en appelant les étages successifs appropriés du parseur de MediaWiki lui-même.',
+	'expand_templates_title' => 'Titre de la page, si le code utilise {{PAGENAME}}, etc. :',
+	'expand_templates_input' => 'Texte wiki source :',
+	'expand_templates_output' => 'Texte wiki obtenu après expansion',
+	'expand_templates_xml_output' => 'Résultat intermédiaire de l’analyse, au format XML',
+	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'Supprimer les commentaires',
+	'expand_templates_generate_xml' => "Afficher l’arbre d'analyse au format XML",
+	'expand_templates_preview' => 'Aperçu du rendu',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -800,6 +814,14 @@ $messages['id'] = array(
 	'expand_templates_remove_comments' => 'Buang komentar',
 	'expand_templates_generate_xml' => 'Tampilkan pohon parser XML',
 	'expand_templates_preview' => 'Pratayang',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'expand_templates_output' => 'Rezulto',
+	'expand_templates_ok' => 'O.K.',
 );
 
 /** Icelandic (Íslenska)

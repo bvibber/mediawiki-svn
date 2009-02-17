@@ -508,9 +508,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Sergey kudryavtsev
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'userimages-desc' => 'Генерирует галлерею изображений, загруженных пользователем, при помощи <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Изображения, загруженные участником $1',
 	'userimages-noname' => 'Ошибочное имя участника',
 	'userimages-noimages' => 'Участник $1 не загружал изображений.',
@@ -634,6 +636,7 @@ $messages['tr'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'userimages-desc' => 'Tạo ra những thư viện hình từ hình ảnh do thành viên tải lên bằng <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Các hình do $1 tải lên',
 	'userimages-noname' => 'Tên thành viên sai hoặc trống.',
 	'userimages-noimages' => '$1 chưa tải lên hình nào.',

@@ -73,6 +73,15 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'editsubpages-desc' => 'Omogućuje administratorima da otključaju stranicu i sve podstranice za anonimno uređivanje preko [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => ' #<!-- ne mijenjajte ovaj red --><pre>
+# Stavite stranice koje želite da otključate koristeći
+# * Imestranice
+# Otključane stranice moraju počinjati sa zvjezdicom da bi se računale,
+# sve ostalo se smatra komentarom
+# Imena stranica mogu biti [[links]] i razlikuju mala i velika slova
+# Također, stranice za razgovor će biti automatski otključane zajedno sa stranicom
+# Pogledajte http://www.mediawiki.org/wiki/Extension:EditSubpages za više informacija
+  #</pre><!-- ne mijenjajte ovaj red -->',
 );
 
 /** German (Deutsch)

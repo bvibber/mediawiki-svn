@@ -299,15 +299,16 @@ $messages['fi'] = array(
  * @author Grondin
  * @author Louperivois
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'ajax-se-desc' => 'Visualise les utilisateurs qui sont en train de modifier la même page',
-	'ajax-se-title' => 'En train d’être modifié par :',
-	'ajax-se-pending' => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
+	'ajax-se-title' => 'En cours de modification par :',
+	'ajax-se-pending' => 'Actualisation en attente... (cliquez sur ce message ou modifiez la page)',
 	'ajax-se-idling' => '(il y a $1 s)',
 	'ajax-se-pagedoesnotexist' => 'la page n’existe pas',
-	'ajax-se-userinvalid' => 'ERREUR : Utilisateur incorrect',
-	'ajax-se-usernotfound' => 'ERREUR : Utilisateur introuvable',
+	'ajax-se-userinvalid' => 'Erreur : utilisateur incorrect',
+	'ajax-se-usernotfound' => 'Erreur : utilisateur introuvable',
 );
 
 /** Cajun French (Français cadien)

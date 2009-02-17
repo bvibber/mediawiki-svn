@@ -116,13 +116,14 @@ $messages['be-tarask'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
 	'smoothgallery-desc' => 'Позволява на потребителите да създават галерии с качените от тях файлове.',
 	'smoothgallery-gallery-not-found' => 'Поисканата галерия не съществува',
 	'smoothgallery-not-found' => 'Не бяха добавени картинки в галерията. Необходимо е да се добави поне една картинка.',
 	'smoothgallery-no-images' => 'Не бяха открити картинки в галерията. Необходимо е всички картинки да съществуват. Следните картинки не бяха намерени: $1',
-	'smoothgallery-invalid-images' => 'Следните заявени файлове са са с невалиден тип: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Следният заявен файл е|Следните заявени файлове са}} от невалиден тип: $1',
 	'smoothgallery-unexpected-error' => 'Възникна неочаквана грешка.
 Моля, съобщете за нея на администратор.',
 	'smoothgallery-javascript-disabled' => 'За правилно показване на галерията е необходим Javascript.',

@@ -322,7 +322,7 @@ $messages['fr'] = array(
 	'imstatus_action' => 'action quand le bouton est cliqué',
 	'imstatus_details_saa' => 'Pour plus de détails au sujet des styles et actions, consultez $1.',
 	'imstatus_your_name' => 'votre nom $1',
-	'imstatus_aim_presence' => '$1 affiche votre état avec un lien qui lancera AIM pour vous envoyer un message instantané, pourvu que l’utilisateur l’ait installé.',
+	'imstatus_aim_presence' => '$1 affiche votre état avec un lien qui lancera AIM pour permettre à un utilisateur de vous envoyer un message instantané, pourvu qu’il l’ait installé.',
 	'imstatus_aim_api' => '$1 affiche votre état avec un lien qui lancera dans un <b>navigateur</b> une version javascript de AIM pour vous envoyer un message instantané.',
 	'imstatus_gtalk_code' => 'votre code Google Talk',
 	'imstatus_gtalk_get_code' => 'votre code Google Talk : obtenez-le sur $1.',
@@ -512,13 +512,20 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
 );
 
 /** Japanese (日本語)
+ * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'imstatus-desc' => '各種インスタントメッセンジャーのオンライン状態を示すためのタグを追加する (AIM、Google トーク、ICQ、MSN/Live メッセンジャー、Skype、Xfire、Yahoo)',
+	'imstatus_syntax' => '構文',
 	'imstatus_default' => 'デフォルト',
 	'imstatus_example' => '例',
+	'imstatus_possible_val' => '可能な値',
+	'imstatus_max' => '最大',
+	'imstatus_min' => '最小',
+	'imstatus_or' => 'または',
+	'imstatus_your_name' => 'あなたの$1の名前',
 	'imstatus_icq_id' => 'あなたのICQ ID',
 );
 

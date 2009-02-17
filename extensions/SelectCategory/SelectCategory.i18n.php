@@ -71,6 +71,15 @@ $messages['bg'] = array(
 	'selectcategory-subtitle' => 'Shift + ляв бутон на мишката за избор на множество последователни записи, Ctrl + ляв бутон на мишката за избор на непоследователни записи.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'selectcategory-title' => 'Odaberi kategorije',
+	'selectcategory-desc' => 'Omogućuje korisniku da odabere neku od postojećih kategorija pri uređivanju stranice',
+	'selectcategory-subtitle' => 'Pritisnite Shift i mišem odaberite više poredanih stavki, pritisnite Ctrl i mišem odaberite stavke koje nisu poredane.',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Manuel Schneider <manuel.schneider@wikimedia.ch>

@@ -222,13 +222,14 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author Verdy p
  * @author Zetud
  */
 $messages['fr'] = array(
 	'categorywatch-desc' => 'Étend la fonctionnalité de la liste de suivi pour inclure la notification des modifications des membres des catégories suivies.',
 	'categorywatch-emailbody' => 'Bonjour $1, vous avez reçu ce message parce que vous êtes en train de suivre la catégorie « $2 ».
 Ce message est destiné à vous informer que le $3 l’utilisateur $4 $5.',
-	'categorywatch-emailsubject' => 'Activité comprenant la catégorie suivie « $1 »',
+	'categorywatch-emailsubject' => 'Activité concernant la catégorie suivie « $1 »',
 	'categorywatch-catmovein' => 'a déplacé $1 dans la catégorie $2 depuis $3',
 	'categorywatch-catmoveout' => 'a déplacé $1 de la catégorie $2 vers $3',
 	'categorywatch-catadd' => 'a ajouté $1 dans la catégorie $2',

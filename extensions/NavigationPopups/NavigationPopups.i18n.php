@@ -30,6 +30,13 @@ $messages['arz'] = array(
 	'navigationpopups-desc' => 'يحمل منبثقات سكريبتات إبحار لوبين فى ميدياويكي',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'navigationpopups-desc' => 'Učitava Lupinove navigacijske skripne popupove u MedijaViki',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

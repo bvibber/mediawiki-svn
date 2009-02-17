@@ -47,6 +47,13 @@ $messages['bg'] = array(
 	'i18ntags-desc' => 'Достъп до функциите за i18n за форматиране на числа, граматика и множествено число на всички налични езици',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'i18ntags-desc' => 'Pristupa i18n funkcijama za formatiranje brojeva, gramatike i množine na svim dostupnim jezicima',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

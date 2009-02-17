@@ -1046,6 +1046,7 @@ $messages['eu'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Galdetzen ari den hizkuntzako definizioak ezkutatu',
 	'voctrain_hide_words_in_question_language' => 'Galdetzen ari den hizkuntzako hitzak ezkutatu',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Balioak komak erabiliz bereizi, hizkuntza anitz erabiltzeko.',
+	'voctrain_other' => 'bestelakoa',
 );
 
 /** Finnish (Suomi)
@@ -1509,6 +1510,17 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'voctrain_Language' => 'Bahasa',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'voctrain_Languages' => 'Lingui',
+	'voctrain_Questions' => 'Questioni',
+	'voctrain_Word' => 'Vorto',
+	'voctrain_Language' => 'Linguo',
+	'voctrain_other' => 'altra',
 );
 
 /** Italian (Italiano)

@@ -50,6 +50,13 @@ $messages['bg'] = array(
 	'mootools12core-desc' => '!Добавя [http://mootools.net mootools-1.2-core-yc.js], компактна Джаваскрипт платформа, към всяка страница',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'mootools12core-desc' => 'Dodaje [http://mootools.net mootools-1.2-core-yc.js], kompaktni JavaScript framework, za svaku stranicu',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -285,5 +292,12 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'mootools12core-desc' => 'Nagdaragdag ng [http://mootools.net mootools-1.2-core-yc.js], isang siksik na kaayusan ng balangkas ng JavaScript, sa bawat pahina',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'mootools12core-desc' => 'Thêm [http://mootools.net mootools-1.2-core-yc.js], một nền tảng JavaScript nhỏ gọn, vào mỗi trang',
 );
 

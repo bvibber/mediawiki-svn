@@ -377,14 +377,19 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Dmcdevit
  */
 $messages['es'] = array(
+	'bookinfo-header' => 'Información de libro',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editorial:',
 	'bookinfo-result-year' => 'Año:',
 	'bookinfo-error-invalidisbn' => 'Se introduce el ISBN inválido.',
+	'bookinfo-error-nosuchitem' => 'Item no existe o no pudo ser encontrado.',
+	'bookinfo-purchase' => 'Comprar este libro de $1',
+	'bookinfo-provider' => 'Proveedor de datos: $1',
 );
 
 /** Estonian (Eesti)
@@ -401,12 +406,13 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Bengoa
  * @author Theklan
  */
 $messages['eu'] = array(
 	'bookinfo-header' => 'Liburuaren informazioa',
-	'bookinfo-desc' => '[[Berezi:Booksources|Liburuen jatorriaren orrialde berezia]] hedatzen du web serbitzu bateko informazioarekin',
+	'bookinfo-desc' => '[[Special:Booksources|Liburuen jatorriaren orrialde berezia]] hedatzen du web serbitzu bateko informazioarekin',
 	'bookinfo-result-title' => 'Izenburua:',
 	'bookinfo-result-author' => 'Egilea:',
 	'bookinfo-result-publisher' => 'Argitaletxea:',

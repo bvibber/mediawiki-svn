@@ -635,8 +635,11 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'math_IllegalCharacter' => 'Caracter ilegal en la entrada',
 	'math_IllegalRedefinition' => 'El comando "$1" ya ha sido definido; usted no puede redefinirlo',
 	'math_InvalidColour' => 'El color "$1" es inválido',
+	'math_TooManyMathmlNodes' => 'Hay demasiados nodos en el árbol MathML',
+	'math_TooManyTokens' => 'La entrada es demasiado larga',
 	'math_UnrecognisedCommand' => 'Comando irreconocible "$1"',
 );
 

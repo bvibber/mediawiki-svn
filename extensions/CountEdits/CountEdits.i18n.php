@@ -147,7 +147,7 @@ $messages['bg'] = array(
 	'countedits-ok' => 'ОК',
 	'countedits-nosuchuser' => 'Няма потребител на име $1.',
 	'countedits-resultheader' => 'Резултати за $1',
-	'countedits-resulttext' => '$1 е направил(а) $2 редакции',
+	'countedits-resulttext' => '$1 е направил(а) $2 {{PLURAL:$2|редакция|редакции}}',
 	'countedits-mostactive' => 'Най-активни редактори',
 	'countedits-nocontribs' => 'Няма приноси към това уики.',
 );
@@ -1331,7 +1331,7 @@ $messages['vi'] = array(
 	'countedits-ok' => 'Đếm',
 	'countedits-nosuchuser' => 'Không có thành viên với tên $1.',
 	'countedits-resultheader' => 'Kết quả của $1',
-	'countedits-resulttext' => '$1 đã sửa đổi $2 lần',
+	'countedits-resulttext' => '$1 đã sửa đổi $2 {{PLURAL:$2|lần|lần}}',
 	'countedits-mostactive' => 'Thành viên tích cực nhất',
 	'countedits-nocontribs' => 'Chưa ai đóng góp vào wiki này.',
 );

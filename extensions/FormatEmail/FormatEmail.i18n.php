@@ -66,6 +66,17 @@ $messages['bg'] = array(
 $2',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'email-desc' => 'Omogućuje prilagođena zaglavlja/fusnote za dodavanje na korisničke e-mailove',
+	'email_footer' => '----------------------------------------------------------------------------
+Ovaj e-mail Vam je poslan putem e-mail sistema sa stranice {{SITENAME}} od strane $1.
+
+$2',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

@@ -51,6 +51,13 @@ $messages['bg'] = array(
 	'tooltip-desc' => 'Добавя етикетите <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'tooltip-desc' => 'Dodaje oznake <tt><nowiki><tooltip></nowiki></tt> i <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -320,6 +327,13 @@ $messages['tl'] = array(
  */
 $messages['vec'] = array(
 	'tooltip-desc' => 'Zonta i tag <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'tooltip-desc' => 'Thêm thẻ <tt><nowiki><tooltip></nowiki></tt> và <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

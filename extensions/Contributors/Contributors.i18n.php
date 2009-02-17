@@ -278,12 +278,13 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dead3y3
  */
 $messages['el'] = array(
 	'contributors' => 'Συνεισφέροντες',
 	'contributors-target' => 'Τίτλος:',
-	'contributors-others-long' => "Υπάρχουν $1 άλλοι συνεισφέροντες σ' αυτήν τη σελίδα.",
-	'contributors-others' => 'και $1 άλλοι',
+	'contributors-others-long' => '{{PLURAL:$1|Υπάρχει ένας άλλος συνεισφέροντας|Υπάρχουν $1 άλλοι συνεισφέροντες}} σε αυτή τη σελίδα.',
+	'contributors-others' => 'και {{PLURAL:$1|ένας άλλος|$1 άλλοι}}',
 	'contributors-badtitle' => 'Άκυρος τίτλος.',
 	'contributors-nosuchpage' => 'Η σελίδα $1 δεν υπάρχει.',
 );
@@ -582,6 +583,13 @@ $messages['id'] = array(
 	'contributors-others' => 'and {{PLURAL:$1|satu|$1}} lainnya',
 	'contributors-badtitle' => 'Judul tidak sah.',
 	'contributors-nosuchpage' => 'Artikel $1 tidak ditemukan.',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'contributors-target' => 'Titulo:',
 );
 
 /** Icelandic (Íslenska)

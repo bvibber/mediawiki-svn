@@ -774,7 +774,7 @@ $messages['el'] = array(
 	'hiderevision-status' => 'Αναθεώρηση $1: $2',
 	'hiderevision-success' => 'Αρχειοθετήθηκε και διαγράφηκε επιτυχώς.',
 	'hiderevision-error-missing' => 'Δεν βρέθηκε στην βάση δεδομένων.',
-	'hiderevision-error-current' => 'Η τελευταία επεξεργασία σε μια σελίδα δεν μπορεί να διαγραφεί.<br>
+	'hiderevision-error-current' => 'Η τελευταία επεξεργασία σε μια σελίδα δεν μπορεί να διαγραφεί.<br />
 Αντιστρέψτε αυτή την αλλαγή πρώτα.',
 	'hiderevision-error-delete' => 'Δεν μπορεί να αρχειοθετηθεί· μήπως ήταν διαγραμμένη προηγουμένως;',
 	'hiderevision-archive-status' => 'Διαγράφηκε η αναθεώρηση από τις $1: $2',
@@ -787,7 +787,7 @@ $messages['el'] = array(
 	'oversight-difference' => '(Διαφορά από την προηγούμενη παραμένουσα αναθεώρηση)',
 	'oversight-prev' => 'Τελευταία προηγούμενη αναθεώρηση',
 	'oversight-hidden' => 'Κρυφή αναθεώρηση',
-	'oversight-header' => 'Παρακάτω είναι ένας κατάλογος αναθεωρήσεων μόνιμα κρυμμένων από την κοινή θέα.<br/>
+	'oversight-header' => 'Παρακάτω είναι ένας κατάλογος αναθεωρήσεων μόνιμα κρυμμένων από την κοινή θέα.<br />
 Η απελευθέρωση αυτών των πληροφοριών μπορεί να έχει ως αποτέλεσμα την μόνιμη απώλεια των προνομίων Επιτήρησης.',
 	'oversight-legend' => 'Αναζήτηση αρχείου καταγραφής απόκρυψης αναθεωρήσεων',
 	'oversight-oversighter' => 'Επιτηρητής:',
@@ -1037,6 +1037,7 @@ $messages['fo'] = array(
  * @author Meithal
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
@@ -1049,12 +1050,12 @@ $messages['fr'] = array(
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue' => 'Continuer',
 	'hiderevision-text' => "Cette fonctionnalité doit être utilisée '''uniquement''' pour les cas suivants :
-* Information personnelle inappropriée,
-*: ''Adresse personnelle et numéro de téléphone, numéro de sécurité sociale, etc...''
+* Informations personnelles inappropriées,
+*: ''Adresses de domicile et numéros de téléphone, numéros de sécurité sociale, etc.''
 
-''' L'abus de cette fonctionnalité impliquera la perte de ces privilèges.'''
+''' L’abus de cette fonctionnalité impliquera la perte de ces privilèges.'''
 
-Les articles effacés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur ayant l'accès direct sur la base de données si vous avez fait une erreur.",
+Les articles supprimés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur de la base de données si vous avez fait une erreur.",
 	'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
 	'hiderevision-submit' => 'Cacher cette révision de manière permanente',
 	'hiderevision-tab' => 'Cacher la modification',

@@ -253,6 +253,7 @@ Please contact the server operator or administrator.",
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Malafaya
  * @author Meno25
  * @author Siebrand
@@ -277,6 +278,7 @@ $wdMessages['qqq'] = array(
 	'ow_save' => '{{Identical|Save}}',
 	'ow_history' => '{{Identical|History}}',
 	'ow_none_selected' => '{{Identical|None selected}}',
+	'transaction' => "A 'transaction' is a database transaction: a set of database operations considered as a whole.",
 	'ow_transaction_count' => '{{Identical|Count}}',
 	'ow_transaction_user' => '{{Identical|Username}}',
 	'ow_transaction_rollback_button' => '{{Identical|Rollback}}',
@@ -4190,6 +4192,20 @@ Per favor contacta le operator o administrator del servitor.',
 	'ow_class_attr_type_plain' => 'Texto simple',
 	'ow_class_attr_type_link' => 'Ligamine',
 	'ow_class_attr_type_option' => 'Lista de optiones',
+	'needstranslation' => 'Wikidatos: Expressiones in necessitate de traduction',
+	'ow_needs_xlation_title' => 'Expressiones in necessitate de traduction',
+	'ow_needs_xlation_source_lang' => 'Lingua de origine:',
+	'ow_needs_xlation_dest_lang' => 'Lingua de destination:',
+	'ow_needs_xlation_no_dest_lang' => 'Per favor specifica un lingua de destination.',
+	'ow_show' => 'Monstrar',
+	'ow_upload' => 'Cargar',
+	'ow_create' => 'Crear',
+	'ow_collection_added' => '<strong>Collection $1 addite.</strong>',
+	'ow_suggest_previous' => 'Precedente',
+	'ow_suggest_next' => 'Sequente',
+	'ow_suggest_clear' => 'Vacuar',
+	'ow_nstab_definedmeaning' => 'significato definite',
+	'ow_nstab_edit_copy' => 'modificar copia',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -4220,10 +4236,19 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
  * @author Malafaya
  */
 $wdMessages['io'] = array(
+	'langman_addlang' => 'Adjuntar linguo',
+	'datasearch_language' => 'Linguo:',
+	'datasearch_found_word' => 'Vorto trovita',
+	'ow_importtsv_nothing_added' => 'Nulo adjuntesas.',
+	'ow_exporttsv_languages' => 'Linguo:',
 	'ow_save' => 'Registragar',
 	'ow_history' => 'Versionaro',
 	'ow_uiprefs' => 'Wikidata',
+	'ow_transaction_user' => 'Uzantonomo:',
+	'ow_transaction_object' => 'Objekto',
+	'ow_transaction_summary' => 'Rezumo',
 	'ow_conceptmapping_no_action_specified' => 'Pardonez! Me ne savas quale "$1".',
+	'ow_dm_OK' => 'O.K.',
 	'ow_Annotation' => 'Noto',
 	'ow_ClassAttributeAttribute' => 'Atributo',
 	'ow_ClassAttributes' => 'Atributi di klaso',
@@ -4231,6 +4256,7 @@ $wdMessages['io'] = array(
 	'ow_ClassAttributeType' => 'Tipo',
 	'ow_ClassMembership' => 'Klaso-membrari',
 	'ow_Collection' => 'Kolektajo',
+	'ow_Collection_colon' => 'Kolektajo:',
 	'ow_CollectionMembership' => 'Kolektajo-membrari',
 	'ow_Definition' => 'Defino',
 	'ow_DefinedMeaningAttributes' => 'Noto',
@@ -4247,15 +4273,25 @@ $wdMessages['io'] = array(
 	'ow_Synonyms' => 'Sinonimi',
 	'ow_SynonymsAndTranslations' => 'Sinonimi e tradukuri',
 	'ow_Source' => 'Fonto',
-	'ow_TextAttribute' => 'Proprajo',
 	'ow_Text' => 'Texto',
+	'ow_TextAttribute' => 'Proprajo',
+	'ow_Time' => 'Tempo',
 	'ow_TranslatedTextAttribute' => 'Proprajo',
 	'ow_TranslatedTextAttributeValue' => 'Texto',
+	'ow_Link' => 'Ligilo',
 	'ow_LinkAttribute' => 'Proprajo',
 	'ow_LinkAttributeValues' => 'Ligili',
+	'ow_User' => 'Uzanto',
 	'ow_Property' => 'Proprajo',
 	'ow_Value' => 'Valoro',
+	'ow_added' => 'Adjuntita',
+	'ow_removed' => 'Forigita',
 	'ow_meaningsoftitle' => 'Senci di "$1"',
+	'ow_class_attr_type_link' => 'Ligilo',
+	'ow_show' => 'Montrez',
+	'ow_suggest_previous' => 'Antea',
+	'ow_suggest_next' => 'Sequanta',
+	'ow_suggest_clear' => 'Vakuigar',
 );
 
 /** Icelandic (Íslenska)

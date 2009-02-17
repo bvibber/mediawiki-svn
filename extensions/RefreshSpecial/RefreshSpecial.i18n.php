@@ -320,12 +320,13 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Verdy p
  * @author Zetud
  */
 $messages['fr'] = array(
-	'refreshspecial' => 'Rafraichir les pages spéciales',
+	'refreshspecial' => 'Actualiser les pages spéciales',
 	'refreshspecial-desc' => 'Permet [[Special:RefreshSpecial|l’actualisation manuelle]] des pages spéciales',
-	'refreshspecial-title' => 'Rafraichir les pages spéciales',
+	'refreshspecial-title' => 'Actualiser les pages spéciales',
 	'refreshspecial-help' => 'Cette page spéciale fournit les moyens de rafraichir manuellement les pages spéciales.
 Quand vous avez choisi toutes les pages que vous voulez actualiser, cliquer sur le bouton « Actualiser » ci-dessous pour actualiser les pages sélectionnées.
 Attention : l’actualisation peut prendre un certain temps sur des wikis disposant d’une grande taille.',
@@ -333,19 +334,19 @@ Attention : l’actualisation peut prendre un certain temps sur des wikis dispos
 	'refreshspecial-fail' => 'Veuillez cocher au moins une page spéciale à rafraichir.',
 	'refreshspecial-refreshing' => 'Actualisation des pages spéciales',
 	'refreshspecial-skipped' => 'superficiel, sauté',
-	'refreshspecial-success-subtitle' => 'actualisation des pages spéciales',
+	'refreshspecial-success-subtitle' => 'actualisation en cours des pages spéciales',
 	'refreshspecial-choice' => 'actualisation des pages spéciales',
-	'refreshspecial-js-disabled' => '(<i>Vous ne pouvez sélectionnez toutes les pages quand JavaScript est désactivé</i>)',
+	'refreshspecial-js-disabled' => '(<i>Vous ne pouvez pas sélectionner toutes les pages si JavaScript est désactivé</i>)',
 	'refreshspecial-select-all-pages' => 'Sélectionner toutes les pages',
 	'refreshspecial-link-back' => 'Revenir à l’extension',
 	'refreshspecial-none-selected' => 'Vous n’avez pas sélectionné de pages spéciales. Retour vers la sélection par défaut.',
 	'refreshspecial-db-error' => 'Échec : erreur de la base de données',
 	'refreshspecial-no-page' => 'Aucune page spéciale',
-	'refreshspecial-slave-lagged' => 'Travail retardé, en cours…',
+	'refreshspecial-slave-lagged' => 'Retard sur le serveur esclave, attente en cours...',
 	'refreshspecial-reconnected' => 'Reconnecté.',
-	'refreshspecial-reconnecting' => 'Échec de la connection, reconnection dans 10 secondes…',
+	'refreshspecial-reconnecting' => 'Échec de la connexion, reconnexion dans 10 secondes...',
 	'refreshspecial-page-result' => '$1 {{PLURAL:$1|ligne obtenue|lignes obtenues}} en',
-	'refreshspecial-total-display' => '$1 {{PLURAL:$1|page actualisée|pages actualisées}} totalisant $2 {{PLURAL:$2|ligne|lignes}} sur une durée de $3 (la durée complète de l’action du script est de $4)',
+	'refreshspecial-total-display' => '$1 {{PLURAL:$1|page actualisée|pages actualisées}} pour un total de $2 ligne{{PLURAL:$2||s}} durant $3 (l’exécution complète du script a duré $4)',
 	'right-refreshspecial' => 'Actualiser les pages spéciales',
 );
 

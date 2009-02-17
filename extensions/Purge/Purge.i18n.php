@@ -45,6 +45,14 @@ $messages['bg'] = array(
 	'purge' => 'изчистване',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'purge' => 'očisti',
+	'purge-desc' => 'Dodaje jezičak za čišćenje na svim običnim stranicama i zaobilazi provjeru čišćanja za anonimne korisnike omogućujući brzo pražnjenje keša',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

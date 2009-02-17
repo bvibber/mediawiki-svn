@@ -54,6 +54,15 @@ $messages['bg'] = array(
 	'mediafunctions-not-exist' => '"$1" не съществува',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'mediafunctions-desc' => 'Parserske funkcije za dobivanje informacija o medijskim datotekama',
+	'mediafunctions-invalid-title' => '"$1" nije valjan naslov',
+	'mediafunctions-not-exist' => '"$1" ne postoji',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -459,8 +468,10 @@ $messages['vec'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'mediafunctions-desc' => 'Hàm phân tích để lấy thông tin về tập tin phương tiện',
 	'mediafunctions-invalid-title' => 'Tên “$1” không hợp lệ',
 	'mediafunctions-not-exist' => '“$1” không tồn tại',
 );

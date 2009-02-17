@@ -31,6 +31,13 @@ $messages['arz'] = array(
 	'redirect-desc' => 'يسمح بضبط سهل للتحويلات عند [[MediaWiki:Redirect-addnewaccount|إنشاء الحساب]] و [[MediaWiki:Redirect-userlogoutcomplete|تسجيل الخروج]]',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'redirect-desc' => 'Omogućuje jednostavnu konfiguraciju preusmjerenja na [[MediaWiki:Redirect-addnewaccount|pravljenje računa]] i [[MediaWiki:Redirect-userlogoutcomplete|odjavu]]',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'redirect-desc' => 'Erlaubt das einfache Konfigurieren von Weiterleitungen beim [[MediaWiki:Redirect-addnewaccount|Erstellen von Benutzerkonten]] und beim [[MediaWiki:Redirect-userlogoutcomplete|Abmelden]]',
@@ -97,6 +104,13 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'redirect-desc' => 'Zmóžnja lochku konfiguraciju daleposrědkowanjow při [[MediaWiki:Redirect-addnewaccount|załoženju kontow]] a [[MediaWiki:Redirect-userlogoutcomplete|wotzjewjenju]]',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'redirect-desc' => 'Permitte le configuration facile del redirectiones al puncto del [[MediaWiki:Redirect-addnewaccount|creation de un conto]] e del [[MediaWiki:Redirect-userlogoutcomplete|clausura del session]]',
 );
 
 /** Japanese (日本語)
@@ -203,5 +217,12 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'redirect-desc' => 'Nagpapahintulot ng maginhawang pagsasaayos ng mga panturo sa [[MediaWiki:Redirect-addnewaccount|paglikha ng akawnt]] at [[MediaWiki:Redirect-userlogoutcomplete|pag-alis sa pagkakalagda]]',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'redirect-desc' => 'Cho phép cấu hình các trang đổi hướng dễ dàng khi [[MediaWiki:Redirect-addnewaccount|tạo tài khoản]] và [[MediaWiki:Redirect-userlogoutcomplete|đăng xuất]]',
 );
 

@@ -317,6 +317,13 @@ $messages['vec'] = array(
 	'wikitextloggedinout-desc' => "Dó hook del parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> par far védar testi difarenti a seconda del stato de login de l'utente",
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'wikitextloggedinout-desc' => 'Hai hàm hook phân tích, <tt>&lt;loggedin&gt;</tt> và <tt>&lt;loggedout&gt;</tt> để hiển thị văn bản khác nhau tùy thuộc vào trạng thái đăng nhập của người dùng',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */

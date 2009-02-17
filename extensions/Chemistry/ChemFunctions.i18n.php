@@ -249,6 +249,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'chemicalsources' => 'Fuentes químicas',
+	'chemicalsource-desc' => 'Agrega la etiqueta <nowiki><chemform></nowiki>, para fórmulas químicas',
 	'chemFunctions_ListPage' => 'Fuentes químicas',
 	'chemFunctions_CAS' => 'Número CAS',
 	'chemFunctions_Formula' => 'Fórmula',

@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'regexfunctions-desc' => 'دوال محلل تعبيرات منتظمة',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'regexfunctions-desc' => 'Regularni izraz parserskih funkcija',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -247,5 +254,12 @@ $messages['tl'] = array(
  */
 $messages['uk'] = array(
 	'regexfunctions-desc' => 'Парсерні функції регулярних виразів',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'regexfunctions-desc' => 'Hàm phân tích biểu thức chính quy',
 );
 

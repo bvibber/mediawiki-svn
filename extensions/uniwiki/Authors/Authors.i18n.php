@@ -400,8 +400,10 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'authors-desc' => 'Nối một danh sách những người đóng góp vào trang',
 	'authors_authors' => 'Tác giả',
 	'authors_anonymous' => 'Vô danh',
 );

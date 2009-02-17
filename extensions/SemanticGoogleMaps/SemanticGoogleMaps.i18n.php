@@ -59,6 +59,15 @@ $messages['br'] = array(
 	'semanticgooglemaps-desc' => 'Aotren a ra an implijerien da ouzhpennañ Google Maps war pajennoù diazezet war roadennoù frammet',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Nađi koordinate',
+	'semanticgooglemaps-desc' => 'Omogućuje korisnicima uređivanje i prikaz semantičkih podataka koordinata koristeći Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Unesite adresu ovdje',
+);
+
 /** German (Deutsch)
  * @author DaSch
  * @author Umherirrender
@@ -135,6 +144,7 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'חיפוש קואורדינטות',
 	'semanticgooglemaps-desc' => 'מתן האפשרות למשתמשים לערוך ולהציג נתוני קואורדינטות סמנטיים באמצעות מפות Google.',
+	'semanticgooglemaps-enteraddresshere' => 'הזינו כתובת כאן',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -152,6 +162,7 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Cercar coordinatas',
 	'semanticgooglemaps-desc' => 'Permitte que usatores modifica e monstra datos semantic de coordinatas per medio de Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Entra adresse hic',
 );
 
 /** Japanese (日本語)

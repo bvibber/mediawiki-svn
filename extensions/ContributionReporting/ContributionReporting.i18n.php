@@ -826,27 +826,28 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author Korrigan
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'contributionreporting-desc' => 'Rapport en direct concernant la collecte de fonds de Wikimedia',
-	'contributiontotal' => 'Contributions totales',
+	'contributionreporting-desc' => 'Rapport de suivi en direct sur la collecte de fonds de Wikimedia',
+	'contributiontotal' => 'Total des contributions',
 	'contributionhistory' => 'Historique des contributions',
 	'contrib-hist-header' => 'Commentaires en direct des donateurs à travers le monde',
 	'contrib-hist-name' => 'Nom',
 	'contrib-hist-date' => 'Date et heure',
-	'contrib-hist-amount' => 'Quantité',
+	'contrib-hist-amount' => 'Montant',
 	'contrib-hist-next' => 'Dons plus anciens',
 	'contrib-hist-previous' => 'Dons plus récents',
 	'contrib-hist-anonymous' => 'Anonyme',
-	'contributionstatistics' => 'Statistiques de contributions',
+	'contributionstatistics' => 'Statistiques des contributions',
 	'contribstats-desc' => 'Afficher les statistiques des contributions faites à la Wikimedia Foundation',
-	'contribstats-daily-totals' => "{{PLURAL:$1|Total pour aujourd'hui|Totaux journaliers pour les derniers $1 jours}}",
-	'contribstats-monthly-totals' => '{{PLURAL:$1|Total pour ce mois|Totaux mensuels pour les derniers $1 mois}}',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Total pour aujourd’hui|Totaux journaliers pour les $1 derniers jours}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Total pour ce mois|Totaux mensuels pour les $1 derniers mois}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total pour $1 mois|Totaux mensuels pour $1 mois}}',
-	'contribstats-currency-range-totals' => 'Total (de $1 à $2)',
-	'contribstats-contribution-range-breakdown' => 'Détail des contributions par montant (de $1 à $2)',
-	'contribstats-currency-totals' => "Total pour l'année fiscale $1",
-	'contribstats-contribution-breakdown' => "Détail des contributions par montant pour l'année fiscale $1",
+	'contribstats-currency-range-totals' => 'Totaux en devises (de $1 à $2)',
+	'contribstats-contribution-range-breakdown' => 'Distribution des contributions par montant (de $1 à $2)',
+	'contribstats-currency-totals' => 'Totaux en devises pour l’année fiscale $1',
+	'contribstats-contribution-breakdown' => 'Distribution des contributions par montant pour l’année fiscale $1',
 	'contribstats-day' => 'Jour',
 	'contribstats-month' => 'Mois',
 	'contribstats-currency' => 'Devise',
@@ -859,20 +860,20 @@ $messages['fr'] = array(
 	'contribstats-total-ytd' => 'Total (cette année)',
 	'contribstats-value-exactly' => 'Exactement $1',
 	'contribstats-value-under' => 'En dessous de $1',
-	'contribstats-value-from' => 'De $1 - $2',
+	'contribstats-value-from' => 'De $1 à $2',
 	'contribstats-value-over' => 'Plus de $1',
 	'fundraiserstatistics' => 'Statistiques de la levée de fonds',
 	'fundraiserstats-date' => 'Date',
-	'fundraiserstats-day' => 'Jour $1 de $2',
+	'fundraiserstats-day' => '$1<sup>{{PLURAL:$1|er|e}}</sup> jour $1 de $2',
 	'fundraiserstats-contributions' => 'Contributions',
-	'fundraiserstats-total' => 'Total (USD)',
-	'fundraiserstats-avg' => 'Moyenne (USD)',
-	'fundraiserstats-max' => 'Maximum (USD)',
-	'fundraiserstats-tab-totals' => 'Totaux (USD)',
+	'fundraiserstats-total' => 'Total (dollars US)',
+	'fundraiserstats-avg' => 'Moyenne (dollars US)',
+	'fundraiserstats-max' => 'Maximum (dollars US)',
+	'fundraiserstats-tab-totals' => 'Totaux (dollars US)',
 	'fundraiserstats-tab-contributions' => 'Nombre de contributions',
-	'fundraiserstats-tab-averages' => 'Moyennes (USD)',
-	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
-	'specialpages-group-contribution' => 'Contributions / Levée de fonds',
+	'fundraiserstats-tab-averages' => 'Moyennes (dollars US)',
+	'fundraiserstats-tab-maximums' => 'Maximums (dollars US)',
+	'specialpages-group-contribution' => 'Contributions / levée de fonds',
 );
 
 /** Friulian (Furlan)
@@ -1250,6 +1251,18 @@ $messages['ia'] = array(
 	'fundraiserstats-tab-averages' => 'Medias (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximos (USD)',
 	'specialpages-group-contribution' => 'Contributiones/Collecta de fundos',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'contrib-hist-name' => 'Nomo',
+	'contribstats-day' => 'Dio',
+	'contribstats-month' => 'Monato',
+	'contribstats-total-ytd' => 'Sumo (YTD)',
+	'fundraiserstats-date' => 'Dato',
+	'fundraiserstats-day' => 'Dio $1 di $2',
 );
 
 /** Italian (Italiano)

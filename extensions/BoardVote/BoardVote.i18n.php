@@ -1580,6 +1580,7 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dead3y3
  * @author Geraki
  * @author MF-Warburg
  * @author Omnipaedista
@@ -1628,9 +1629,9 @@ $messages['el'] = array(
 
 [[Special:BoardVote/entry|Πίσω]]',
 	'boardvote_invalidentered' => '<p><strong>Σφάλμα</strong>: η προτίμηση υποψηφίου πρέπει να εκφραστεί μόνο με ακέραιο αριθμό (1, 2, 3, ....), ή να μείνει κενή.</p>',
-	'boardvote_nosession' => 'Η ταυτότητά σας ως χρήστη του Wikimedia δεν ήταν δυνατό να διευκρινηστεί.
-Παρακαλούμε συνδεθείτε στο wiki όπου ικανοποιείτε τα κριτήρια για να ψηφίσετε, και πηγαίνετε στο <nowiki>[[Special:BoardVote]]</nowiki>.
-Πρέπει να χρησιμοποιήσετε ένα λογαριασμό με τουλάχιστον $1 επεξεργασίες πριν τις $2, και να έχετε κάνει τουλάχιστον $3 επεξεργασίες μεταξύ $4 και $5.',
+	'boardvote_nosession' => 'Η ταυτότητά σας ως χρήστη του Wikimedia δεν ήταν δυνατό να διευκρινιστεί.<br />
+Παρακαλούμε συνδεθείτε στο wiki όπου ικανοποιείτε τα κριτήρια για να ψηφίσετε, και πηγαίνετε στη σελίδα <nowiki>[[Special:BoardVote]]</nowiki>.<br />
+Πρέπει να χρησιμοποιήσετε ένα λογαριασμό με τουλάχιστον $1 {{PLURAL:$1|επεξεργασία|επεξεργασίες}} πριν τις $2, και να έχετε κάνει τουλάχιστον $3 {{PLURAL:$3|επεξεργασία|επεξεργασίες}} μεταξύ $4 και $5.',
 	'boardvote_notloggedin' => 'Δεν είστε συνδεδεμένος.
 Για να ψηφίσετε, πρέπει να χρησιμοποιήσετε ένα λογαριασμό με τουλάχιστον $1 {{PLURAL:$1|επεξεργασία|επεξεργασίες}} πριν τις $2, και να έχετε κάνει τουλάχιστον $3 {{PLURAL:$3|επεξεργασία|επεξεργασίες}} μεταξύ $4 και $5.',
 	'boardvote_notqualified' => 'Δεν επιτρέπεται να ψηφίσετε σε αυτές τις εκλογές.
@@ -3221,7 +3222,10 @@ Suatu peringatan keamanan mengenai sertifikat tak bertanda mungkin akan muncul.'
 $messages['io'] = array(
 	'boardvote_time' => 'Tempo',
 	'boardvote_user' => 'Uzanto',
+	'boardvote_edits' => 'Redaktaji',
 	'boardvote_days' => 'Dii',
+	'boardvote_submit' => 'O.K.',
+	'boardvote_edits_many' => 'multa',
 	'boardvote_welcome' => "Bonveno, '''$1'''!",
 );
 
@@ -6394,6 +6398,7 @@ $messages['tg-cyrl'] = array(
  * @author Passawuth
  */
 $messages['th'] = array(
+	'boardvote' => 'การเลือกตั้งทีมผู้บริหารวิกิมีเดีย',
 	'boardvote_time' => 'เวลา',
 	'boardvote_user' => 'ผู้ใช้',
 	'boardvote_edits' => 'การแก้ไข',

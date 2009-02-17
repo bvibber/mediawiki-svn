@@ -148,6 +148,27 @@ $messages['dsb'] = array(
 	'framedvideo-desc' => 'Zmóžnja zasajźowanje wideo z wšakich websedłow z pomocu toflicki <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'framedvideo_errors' => 'Εμφανίστηκαν πολλαπλά σφάλματα!',
+	'framedvideo_error' => 'Εμφανίστηκε ένα σφάλμα!',
+	'framedvideo_error_unknown_type' => 'Άγνωστη ταυτότητα υπηρεσίας βίντεο ("$1"): ελέγξτε την παράμετρο "type".',
+	'framedvideo_error_no_id_given' => 'Η παράμετρος "id" λείπει.',
+	'framedvideo_error_height_required' => 'Ο τύπος βίντεο "$1" απαιτεί την παράμετρο "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Ο τύπος βίντεο "$1" απαιτεί την παράμετρο "height", όχι μόνο την παράμετρο "width".',
+	'framedvideo_error_width_too_big' => 'Η δοθείσα τιμή της παραμέτρου "width" είναι πολύ μεγάλη.',
+	'framedvideo_error_height_too_big' => 'Η δοθείσα τιμή της παραμέτρου "height" είναι πολύ μεγάλη.',
+	'framedvideo_error_no_integer' => 'Η δοθείσα τιμή της "$1" δεν είναι θετικός αριθμός.',
+	'framedvideo_error_limit' => 'Η μέγιστη επιτρεπόμενη τιμή είναι $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Η τιμή "full" για την παράμετρο "size" δεν επιτρέπεται για την ταυτότητα υπηρεσίας βίντεο "$1".',
+	'framedvideo_helppage' => 'Help:Βίντεο',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Περισσότερα για το συντακτικό]].',
+	'framedvideo_error_height_and_width_required' => 'Ο τύπος βίντεο "$1" απαιτεί τις παραμέτρους "height" και "width2" ή την παράμετρο "width".',
+	'framedvideo-desc' => 'Επιτρέπει την ενσωμάτωση βίντεο από διάφορους ιστοτόπους χρησιμοποιώντας την ετικέτα <tt><nowiki><video></nowiki></tt>',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

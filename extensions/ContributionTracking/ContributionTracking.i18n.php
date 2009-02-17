@@ -222,14 +222,15 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Korrigan
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'contributiontracking-desc' => 'Suivi des contributions pour la levée de fonds de Wikimedia',
 	'contributiontracking' => 'Suivi des contributions',
 	'contrib-tracking-error' => 'Erreur',
-	'contrib-tracking-error-text' => 'Erreur dans le formulaire',
-	'contrib-tracking-submitting' => 'Envoi au système de paiement...',
-	'contrib-tracking-continue' => 'Cliquez sur le bouton pour terminer votre don avec Paypal.',
+	'contrib-tracking-error-text' => 'Soumission de formulaire invalide',
+	'contrib-tracking-submitting' => 'Envoi au système de traitement des paiements...',
+	'contrib-tracking-continue' => 'Si vous n’êtes pas redirigé automatiquement, cliquez ce bouton pour compléter votre don avec Paypal.',
 	'contrib-tracking-button' => 'Continuer',
 );
 
@@ -318,6 +319,13 @@ $messages['ia'] = array(
 	'contrib-tracking-submitting' => 'In submission al processator de pagamentos...',
 	'contrib-tracking-continue' => 'Si tu non es automaticamente redirigite, clicca super le button pro completar tu donation con PayPal.',
 	'contrib-tracking-button' => 'Continuar',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'contrib-tracking-error' => 'Eroro',
 );
 
 /** Italian (Italiano)

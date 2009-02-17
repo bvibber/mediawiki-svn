@@ -73,6 +73,14 @@ $messages['br'] = array(
 	'whosonline-desc' => 'Diskouez a ra [[Special:WhosOnline|ur roll]] eus an dud enskrivet hag eus an dud dianav zo enlinenn bremañ.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'whosonline' => 'Ko je na mreži',
+	'whosonline-desc' => 'Prikazuje [[Special:WhosOnline|spisak]] prijavljenih korisnika i anonomnih korisnika koji su trenutno na mreži',
+);
+
 /** Danish (Dansk)
  * @author Tomas Jensen
  */
@@ -107,9 +115,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'whosonline' => 'Quien está en línea',
+	'whosonline-desc' => 'Muestra [[Special:WhosOnline|una lista]] de usuarios identificados y anónimos que están conectados actualmente.',
 );
 
 /** Finnish (Suomi)
@@ -165,6 +175,14 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'whosonline' => 'Online felhasználók',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'whosonline' => 'Qui es in linea',
+	'whosonline-desc' => 'Monstra [[Special:WhosOnline|un lista]] de usatores identificate e anonyme actualmente in linea',
 );
 
 /** Icelandic (Íslenska)

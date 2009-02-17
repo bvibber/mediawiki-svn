@@ -384,18 +384,19 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Dereckson
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'scanset-desc' => 'Affiche les images numérisées à partir des paramétrages CD/DVD d’Andréas Grosz',
-	'scanset_no_name' => 'Error : Vous devez spécifier un nom pour le scanset, par exemple &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Error : set invalide ou manquant',
-	'scanset_unrecognised_index_format' => "Error : Format d'index inconnu",
-	'scanset_opendir_error' => "Error : Erreur, impossible d'ouvrir le répertoire $1",
-	'scanset_no_files' => 'Error : Le répertoire spécifié est vide.',
-	'scanset_no_volumes' => 'Error : Aucun répertoire trouvé sur ce disque',
-	'scanset_missing_index_file' => "Error : Fichier d'index $1 manquant",
-	'scanset_index_file_error' => "Error : Erreur à la ligne $1 du fichier d'index",
-	'scanset_invalid_volume' => 'Error : Volume non valide',
+	'scanset_no_name' => 'Erreur : vous devez spécifier un nom pour l’ensemble de documents numérisés, par exemple &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Erreur : ensemble de documents numérisés invalide ou manquant.',
+	'scanset_unrecognised_index_format' => 'Erreur : format d’index inconnu',
+	'scanset_opendir_error' => 'Erreur : impossible d’ouvrir le répertoire $1',
+	'scanset_no_files' => 'Erreur : le répertoire spécifié ne contient aucun fichier.',
+	'scanset_no_volumes' => 'Erreur : répertoires de volume introuvables',
+	'scanset_missing_index_file' => 'Erreur : fichier d’index $1 introuvable',
+	'scanset_index_file_error' => 'Erreur : format de fichier d’index erroné à la ligne $1',
+	'scanset_invalid_volume' => 'Erreur : volume invalide',
 	'scanset_next' => 'Suivant &gt;',
 	'scanset_prev' => '&lt; Précédent',
 );

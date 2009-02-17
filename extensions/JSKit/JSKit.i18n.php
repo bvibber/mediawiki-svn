@@ -234,3 +234,10 @@ $messages['tl'] = array(
 	'jskit-desc' => "Nagsasama ng mga kagamitang pang-''js-kit'' sa ibabaw ng isang pahina ng wiki",
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'jskit-desc' => 'Tích hợp công cụ js-kit vào một trang wiki',
+);
+

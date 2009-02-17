@@ -53,6 +53,13 @@ $messages['arz'] = array(
 	'logentry-invalidtoken' => 'نص غير صحيح',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'logentry-invalidpage' => 'Ungültige Seitn',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

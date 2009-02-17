@@ -71,6 +71,15 @@ $messages['bg'] = array(
 	'multiboilerplate-submit' => 'Зареждане',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'multiboilerplate-desc' => 'Omogućuje da se odabere tekstualni šablon sa opadajućeg spisak smještenog iznad obrasca za uređivanje pri uređivanju stranica',
+	'multiboilerplate-legend' => 'Odaberi tekstualni šablon',
+	'multiboilerplate-submit' => 'Učitaj',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Revolus

@@ -42,6 +42,13 @@ $messages['bg'] = array(
 	'pnghandler-desc' => 'Преоразмеряване на PNG с помощта на pngds',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'pnghandler-desc' => 'Mijenja veličinu PNGova koristeći pngds',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

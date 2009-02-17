@@ -26,6 +26,17 @@ $messages['en'] = array(
 	'communityvoice-ratings-error-no-title' => 'Title attribute missing in rating tag.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Dead3y3
+ */
+$messages['qqq'] = array(
+	'communityvoice-desc' => 'Description for the Community Voice extension',
+	'communityvoice-ratings-scale-stats' => 'Guessing:
+
+* $1 / 5: rating
+* $2: number of votes',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -76,6 +87,21 @@ $messages['dsb'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|głos wótedany|głosa wótedanej|głose wótedane|głosow wótedane}})',
 	'communityvoice-ratings-error-no-category' => 'Atribut "category" felujo w toflicce "rating".',
 	'communityvoice-ratings-error-no-title' => 'Atribut "title" felujo w toflicce "rating".',
+);
+
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'communityvoice' => 'Community Voice',
+	'communityvoice-desc' => 'Εργαλεία συμμετοχής κοινότητας',
+	'communityvoice-ratings' => 'Αξιολογήσεις',
+	'communityvoice-ratings-scale-status-sending' => 'Στέλνεται...',
+	'communityvoice-ratings-scale-status-error' => 'Σφάλμα αποστολής!',
+	'communityvoice-ratings-scale-status-thanks' => 'Ευχαριστούμε για την ψήφο σας!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|ψήφος|ψήφοι}} δόθηκαν)',
+	'communityvoice-ratings-error-no-category' => 'Ιδιότητα κατηγορίας λείπει από την ετικέτα αξιολόγησης.',
+	'communityvoice-ratings-error-no-title' => 'Ιδιότητα τίτλου λείπει από την ετικέτα αξιολόγησης.',
 );
 
 /** Spanish (Español)

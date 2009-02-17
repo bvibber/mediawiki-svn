@@ -795,6 +795,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'profiling' => 'Dữ liệu hồ sơ',
+	'profiling-desc' => '[[Special:Profiling|Trang đặc biệt]] để tìm kiếm và điều tra dữ liệu hồ sơ',
 	'profiling-process' => 'Chuỗi xử lý:',
 	'profiling-wildcard' => 'Dùng ký tự đại diện',
 	'profiling-ok' => 'OK',

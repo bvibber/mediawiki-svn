@@ -193,3 +193,10 @@ $messages['tl'] = array(
 	'semanticgallery-desc' => 'Nagdaragdag ng mga inilalabas ng mga produktong na nasa anyong pangtanghalan (galerya) sa mga nasa loob ng hanay na mga katanunang pang-SMW',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'semanticgallery-desc' => 'Thêm một định dạng xuất thư viện hình ảnh vào truy vấn ngay trong SMW',
+);
+

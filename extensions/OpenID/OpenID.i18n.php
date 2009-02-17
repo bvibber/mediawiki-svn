@@ -1800,6 +1800,9 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'openidlogin' => 'OpenID로 로그인',
 	'openidserver' => 'OpenID 서버',
+	'openidconvert' => 'OpenID 변환기',
+	'openidconfigerror' => 'OpenID 설정 오류',
+	'openidpermission' => 'OpenID 권한 오류',
 	'openidemail' => '이메일 주소',
 	'openidlanguage' => '언어',
 	'openidchoosepassword' => '비밀번호:',
@@ -2076,6 +2079,7 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
 	'openidlogin' => 'Log masuk dengan OpenID',
@@ -2100,6 +2104,15 @@ Sila hubungi [[Special:ListUsers/sysop|pentadbir]].',
 	'openidchooseurl' => 'Nama yang dipilih daripada OpenID anda ($1)',
 	'openidchooseauto' => 'Nama janaan automatik ($1)',
 	'openidchoosemanual' => 'Nama pilihan anda:',
+	'openidchoosepassword' => 'kata laluan:',
+	'openidconvertinstructions' => 'Gunakan borang ini untuk menukar akaun anda untuk menggunakan OpenID URL.',
+	'openidconvertsuccess' => 'Berjaya ditukar ke OpenID',
+	'openidconvertsuccesstext' => 'Anda telah berjaya menukar OpenID ke $1.',
+	'openidconvertyourstext' => 'OpenID anda seperti yang tertera.',
+	'openidconvertothertext' => 'OpenID tersebut merupakan milik orang lain.',
+	'openidalreadyloggedin' => "'''Anda telah log masuk, $1!'''
+
+Sekiranya anda inign menggunakan OpenID untuk log masuk pada masa hadapan, sila [[Special:OpenIDConvert|tukar akaun anda untuk menggunakan OpenID]].",
 	'openidnousername' => 'Nama pengguna tidak dinyatakan.',
 	'openidbadusername' => 'Nama pengguna yang dinyatakan tidak sah.',
 	'openidloginlabel' => 'URL OpenID',

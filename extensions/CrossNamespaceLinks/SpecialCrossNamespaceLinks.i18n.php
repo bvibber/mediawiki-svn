@@ -254,12 +254,13 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'crossnamespacelinks' => 'Pages contenant des liens vers un autre espace de nom',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Énumère les liens à travers les espaces de nommages]] qui ne devraient pas exister sur {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est pas recommandé.',
-	'crossnamespacelinkstext' => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »',
+	'crossnamespacelinks' => 'Liens vers d’autres espaces de nommage',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Énumère les liens vers des espaces de nommage différents]] qui ne devraient pas exister sur {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Cette page fournit une liste des liens depuis une page de l’espace de nommage principal vers d’autres espaces de nommage (exceptés {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}) et dont l’utilisation est déconseillée.',
+	'crossnamespacelinkstext' => '$1 : contient $2 lien{{PLURAL:$2||s}} vers l’espace $3',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -882,6 +883,13 @@ $messages['tg-cyrl'] = array(
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Пайвандҳои байнивикиро феҳрист мекунад]], ки набояд дар {{SITENAME}} вуҷуд дошта бошанд',
 	'crossnamespacelinks-summary' => 'Ин саҳифа феҳристе аз пайвандҳое, ки аз як саҳифа дар фазои номи аслӣ ба як саҳифа дар дигар фазои ном (ба ғайр аз {{ns:special}}, {{ns:talk}}, {{ns:project}} ва {{ns:template}} namespaces), вуҷуд дорад ироаъ мекунад, ки истифода аз онҳо тавзеҳ намешавад.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|пайванд|пайвандҳо}} ба $3',
+);
+
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'crossnamespacelinks' => 'ลิงก์ข้ามกลุ่มชื่อ',
 );
 
 /** Tagalog (Tagalog)

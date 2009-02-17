@@ -13,6 +13,16 @@ $aliases['en'] = array(
 	'CommunityVoice' => array( 'CommunityVoice' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'CommunityVoice' => array( 'صوت_المجتمع' ),
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'CommunityVoice' => array( 'صوت_المجتمع' ),
+);
+
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'CommunityVoice' => array( 'Głos zgromaźeństwa' ),

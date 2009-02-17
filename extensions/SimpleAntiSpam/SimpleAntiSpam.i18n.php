@@ -186,9 +186,13 @@ NE ENIGU ion ajn!',
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'simpleantispam' => 'Su edición encendió el mecanismo anti-spam',
+	'simpleantispam-label' => 'Comprobación anti-spam
+¡NO rellenes esto!',
+	'simpleantispam-desc' => 'Añade un control simple de spam y bots a los formularios',
 );
 
 /** Basque (Euskara)

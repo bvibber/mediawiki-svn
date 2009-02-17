@@ -34,6 +34,7 @@ Add some using the tools in the menu bar.',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
  */
@@ -42,6 +43,7 @@ $messages['qqq'] = array(
 	'gep-categories' => '{{Identical|Categories}}',
 	'gep-addcategorybutton' => '{{Identical|Add}}',
 	'gep-addsectionbutton' => '{{Identical|Add}}',
+	'gep-categorypage' => '{{optional}}',
 );
 
 /** Amharic (አማርኛ)

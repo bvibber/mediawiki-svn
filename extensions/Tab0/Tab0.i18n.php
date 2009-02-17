@@ -46,6 +46,13 @@ $messages['bg'] = array(
 	'tab0-desc' => 'Добавя етикет „0“, който позволява редактирането на първия раздел на страницата',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'tab0-desc' => 'Dodaje jezičak "0", koji spaja stranicu za uređivanje i vodi na prvu sekciju stranice',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

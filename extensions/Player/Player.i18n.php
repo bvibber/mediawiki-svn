@@ -1130,11 +1130,22 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  * @author Suelnur
  */
 $messages['tr'] = array(
+	'player' => 'Oynatıcı',
+	'player-desc' => 'Ortak tarayıcı eklentileri, ve bir [[Special:Player|özel sayfa]] kullanarak gömülü çokluortam oynatımı',
+	'player-title' => 'Oynatıcı',
+	'player-playertitle' => 'Oynatıcı: $1',
 	'player-file' => 'Dosya adı',
+	'player-play' => 'Oynat',
+	'player-not-allowed' => 'izin verilmeyen format',
+	'player-not-found' => 'dosya bulunamadı',
+	'player-invalid-title' => 'geçersiz başlık',
+	'player-clicktoplay' => '$1 oynat',
+	'player-goto-player' => 'oynatıcı',
 	'player-goto-page' => 'Sayfa',
 	'player-goto-file' => 'Dosya',
 );

@@ -54,6 +54,13 @@ $messages['bg'] = array(
 	'substall-desc' => 'Създава етикет <nowiki><substall></nowiki> за преобразуване на всички шаблони в уикисинтаксис',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'substall-desc' => 'Pravi oznaku <nowiki><substall></nowiki> koja proširuje sve šablona u wikisintaksu',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -287,5 +294,12 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'substall-desc' => 'Lumilikha ng isang tatak na <nowiki><substall></nowiki> na nagpapalawak sa lahat ng mga suleras hanggang palaugnayan ng wiki',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'substall-desc' => 'Tạo một thẻ <nowiki><substall></nowiki> để mở rộng tất cả tiêu bản thành cú pháp wiki',
 );
 
