@@ -116,19 +116,7 @@ upFirefogg.prototype = {
 	},
 	select_fogg:function(){			
 		var _this = this;
-		if(_this.fogg.selectVideo()) {			
-			var editForm = document.getElementById( 'mw-upload-form' );
-			_this.org_onsubmit = editForm.onsubmit;	
-			_this.org_onsubmit_ran = false;
-			editForm.onsubmit = function return_false(){
-								//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
-								if( ! _this.org_onsubmit_ran && _this.org_onsubmit == 'function' ){
-									_this.org_onsubmit_ran=true; 
-									_this.org_onsubmit();									
-								}
-								return false;
-							};		
-							
+		if(_this.fogg.selectVideo()) {											
 			//update destination filename:
 			if( _this.fogg.sourceFilename ){
 				var destFileInput = document.getElementById( 'wpDestFile');
@@ -159,11 +147,21 @@ upFirefogg.prototype = {
 					if(e) 
 						e.style.display='block';			
 				}								
-			} 
-			//set binding for "upload" button to call our transcode process
-			addHandler( editForm, 'submit', function() {			
-				//call the onsubmit to run any script form value checks:  
-				editForm.onsubmit();							
+			} 				
+			//setup the form handling 
+			var editForm = document.getElementById( 'mw-upload-form' );
+			//set up the org_onsubmit if not set: 
+			if( typeof( _this.org_onsubmit ) == 'undefined' )
+				_this.org_onsubmit = editForm.onsubmit;
+					
+			editForm.onsubmit = function() {	
+				//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
+				if( typeof( _this.org_onsubmit ) == 'function' ){					
+					//error in org submit return false;   
+					if( ! _this.org_onsubmit()){
+						return false;					
+					}			
+				}												
 				//get the input 
 				var formData = _this.getEditFormData( editForm );				
 						
@@ -276,7 +274,7 @@ upFirefogg.prototype = {
 			  encodingStatus();
 			  //don't submit the form (let firefogg handle it)	
 			  return false;			
-			});	//addHandler mapping
+			};	//addHandler mapping
 		}else{
 			//remove upload binding if no file was selected
 		}	 
