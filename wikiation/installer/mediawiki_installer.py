@@ -217,7 +217,7 @@ def make_admin(target):
 def do_sql(target, infile):
 	"""execute an sql file, using mysql"""
 
-	command="< "+infile+" "+settings.mysql_command+"" +target
+	command="< "+infile+" "+settings.mysql_command+" "+target
 	os.system(command)
 
 def createdb(target):
