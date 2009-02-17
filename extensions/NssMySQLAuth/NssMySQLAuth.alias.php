@@ -49,7 +49,7 @@ $aliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'AccountManager' => array( 'GerentiaDeContos' ),
+	'AccountManager' => array( 'Gestion de contos' ),
 );
 
 /** Japanese (日本語) */

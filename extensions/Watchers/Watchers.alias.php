@@ -73,6 +73,11 @@ $aliases['hu'] = array(
 	'Watchers' => array( 'Figyelők' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Watchers' => array( 'Observatores' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Watchers' => array( 'ウォッチしている利用者' ),

@@ -74,7 +74,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Badimages' => array( 'MalImagines' ),
+	'Badimages' => array( 'Mal imagines' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

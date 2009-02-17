@@ -89,7 +89,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CrossNamespaceLinks' => array( 'LigaminesTransSpatiosDeNomines' ),
+	'CrossNamespaceLinks' => array( 'Ligamines trans spatios de nomines' ),
 );
 
 /** Japanese (日本語) */

@@ -85,8 +85,8 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Code' => array( 'Codice', 'RecensionDeCodice' ),
-	'RepoAdmin' => array( 'AdminRepo' ),
+	'Code' => array( 'Codice', 'Recension de codice' ),
+	'RepoAdmin' => array( 'Admin repo' ),
 );
 
 /** Japanese (日本語) */

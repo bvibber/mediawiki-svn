@@ -47,7 +47,7 @@ $aliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'RandomInCategory' => array( 'AleatoriInCategoria' ),
+	'RandomInCategory' => array( 'Aleatori in categoria' ),
 );
 
 /** Japanese (日本語) */

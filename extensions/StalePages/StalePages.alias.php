@@ -34,6 +34,11 @@ $aliases['gsw'] = array(
 	'StalePages' => array( 'Abglofeni Syte' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'StalePages' => array( 'Paginas stagnate' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'StalePages' => array( '古くなったページ' ),

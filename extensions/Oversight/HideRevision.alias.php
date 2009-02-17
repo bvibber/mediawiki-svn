@@ -97,8 +97,8 @@ $aliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'HideRevision' => array( 'CelarRevision' ),
-	'Oversight' => array( 'Supervisor' ),
+	'HideRevision' => array( 'Celar revision' ),
+	'Oversight' => array( 'Supervision' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

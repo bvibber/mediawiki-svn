@@ -77,6 +77,11 @@ $aliases['hu'] = array(
 	'SpecialUserStats' => array( 'Felhasználói statisztika', 'Felhasználóstatisztika' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'SpecialUserStats' => array( 'Statisticas de usatores', 'Statisticas special de usatores' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'SpecialUserStats' => array( 'Statistik pengguna' ),

@@ -57,6 +57,11 @@ $aliases['hsb'] = array(
 	'Player' => array( 'Wothrawak' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Player' => array( 'Reproductor' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Player' => array( 'プレイヤー', 'プレーヤー' ),

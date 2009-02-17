@@ -55,6 +55,11 @@ $aliases['el'] = array(
 	'ExpandTemplates' => array( 'ΕπέκτασηΠροτύπων' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'ExpandTemplates' => array( 'Sustituir_plantillas', 'Sustituidor_de_plantillas', 'Expandir_plantillas' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ExpandTemplates' => array( 'Mallineiden laajennus' ),
@@ -99,7 +104,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ExpandTemplates' => array( 'ExpanderPatronos' ),
+	'ExpandTemplates' => array( 'Expander patronos' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

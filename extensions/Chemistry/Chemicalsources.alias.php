@@ -59,7 +59,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ChemicalSources' => array( 'FontesChimic' ),
+	'ChemicalSources' => array( 'Fontes chimic' ),
 );
 
 /** Japanese (日本語) */

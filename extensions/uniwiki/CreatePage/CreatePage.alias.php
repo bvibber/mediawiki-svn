@@ -30,6 +30,11 @@ $aliases['dsb'] = array(
 	'CreatePage' => array( 'Bok napóraś' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'CreatePage' => array( 'Crear_página' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'CreatePage' => array( 'Crear a páxina' ),
@@ -48,6 +53,11 @@ $aliases['hsb'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'CreatePage' => array( 'Oldalkészítés', 'Oldal készítése' ),
+);
+
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'CreatePage' => array( 'Crear pagina' ),
 );
 
 /** Japanese (日本語) */
@@ -103,6 +113,11 @@ $aliases['ps'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'CreatePage' => array( 'पृष्ठस्यसृजन' ),
+);
+
+/** Sundanese (Basa Sunda) */
+$aliases['su'] = array(
+	'CreatePage' => array( 'JieunKaca' ),
 );
 
 /** Swedish (Svenska) */

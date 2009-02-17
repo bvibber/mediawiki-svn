@@ -59,7 +59,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'DeleteQueue' => array( 'DelerCauda' ),
+	'DeleteQueue' => array( 'Deler cauda' ),
 );
 
 /** Japanese (日本語) */

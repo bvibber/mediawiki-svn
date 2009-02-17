@@ -52,6 +52,11 @@ $aliases['hu'] = array(
 	'RefreshSpecial' => array( 'Különleges frissítés' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'RefreshSpecial' => array( 'Refrescar special' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RefreshSpecial' => array( '特別ページの更新' ),

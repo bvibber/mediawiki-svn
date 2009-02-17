@@ -66,7 +66,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'InspectCache' => array( 'InspectarCache' ),
+	'InspectCache' => array( 'Inspectar cache' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

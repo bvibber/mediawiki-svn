@@ -84,7 +84,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ChangeAuthor' => array( 'CambiarAutor' ),
+	'ChangeAuthor' => array( 'Cambiar autor' ),
 );
 
 /** Japanese (日本語) */
@@ -150,6 +150,11 @@ $aliases['sa'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ChangeAuthor' => array( 'NdërroAutor' ),
+);
+
+/** Sundanese (Basa Sunda) */
+$aliases['su'] = array(
+	'ChangeAuthor' => array( 'GantiPanulis' ),
 );
 
 /** Tagalog (Tagalog) */

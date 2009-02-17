@@ -87,7 +87,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'EditUser' => array( 'ModificarUsator' ),
+	'EditUser' => array( 'Modificar usator' ),
 );
 
 /** Japanese (日本語) */

@@ -79,7 +79,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ViewAPC' => array( 'InfoAPC' ),
+	'ViewAPC' => array( 'Info APC' ),
 );
 
 /** Japanese (日本語) */

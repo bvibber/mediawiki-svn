@@ -89,6 +89,11 @@ $aliases['hu'] = array(
 	'Vote' => array( 'Szavazás' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Vote' => array( 'Votar', 'Voto' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Vote' => array( 'Beri suara' ),
@@ -162,6 +167,11 @@ $aliases['sa'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Vote' => array( 'Voto' ),
+);
+
+/** Sundanese (Basa Sunda) */
+$aliases['su'] = array(
+	'Vote' => array( 'Milih' ),
 );
 
 /** Swedish (Svenska) */

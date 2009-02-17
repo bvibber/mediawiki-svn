@@ -80,6 +80,12 @@ $aliases['hsb'] = array(
 	'WhiteListEdit' => array( 'Běłu lisćinu wobdźěłać' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'WhiteList' => array( 'Lista blanc' ),
+	'WhiteListEdit' => array( 'Modificar lista blanc' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WhiteList' => array( 'ホワイトリスト' ),

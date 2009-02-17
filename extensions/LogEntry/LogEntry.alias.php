@@ -62,7 +62,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'LogEntry' => array( 'EntrataDeRegistro' ),
+	'LogEntry' => array( 'Entrata de registro' ),
 );
 
 /** Japanese (日本語) */

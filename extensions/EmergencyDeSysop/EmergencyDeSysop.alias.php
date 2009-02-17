@@ -53,7 +53,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'EmergencyDeSysop' => array( 'DisadminDeUrgentia' ),
+	'EmergencyDeSysop' => array( 'Disadmin de urgentia' ),
 );
 
 /** Japanese (日本語) */

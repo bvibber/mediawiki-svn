@@ -44,6 +44,11 @@ $aliases['dv'] = array(
 	'WhatIsMyIP' => array( 'އަހަރެންގެ އައި.ޕީ އަކީ' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'WhatIsMyIP' => array( 'Mi_IP', 'Cuál_es_mi_IP' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WhatIsMyIP' => array( 'نشانی_اینترنتی_من_چیست' ),
@@ -82,6 +87,11 @@ $aliases['hsb'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'WhatIsMyIP' => array( 'Mi az IP-címem' ),
+);
+
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'WhatIsMyIP' => array( 'Que es mi IP' ),
 );
 
 /** Japanese (日本語) */
@@ -142,6 +152,11 @@ $aliases['sa'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'WhatIsMyIP' => array( 'IPjaIme' ),
+);
+
+/** Sundanese (Basa Sunda) */
+$aliases['su'] = array(
+	'WhatIsMyIP' => array( 'NaonIPKuring' ),
 );
 
 /** Thai (ไทย) */

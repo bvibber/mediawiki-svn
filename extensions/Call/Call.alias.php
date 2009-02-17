@@ -77,6 +77,11 @@ $aliases['hu'] = array(
 	'Call' => array( 'Hívás' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'Call' => array( 'Appello' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Call' => array( 'ページ呼び出し' ),
@@ -120,6 +125,11 @@ $aliases['sa'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Call' => array( 'Thirr' ),
+);
+
+/** Sundanese (Basa Sunda) */
+$aliases['su'] = array(
+	'Call' => array( 'Gero' ),
 );
 
 /** Tagalog (Tagalog) */

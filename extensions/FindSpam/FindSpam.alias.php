@@ -64,7 +64,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'FindSpam' => array( 'CercarSpam' ),
+	'FindSpam' => array( 'Cercar spam' ),
 );
 
 /** Japanese (日本語) */

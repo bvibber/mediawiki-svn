@@ -66,6 +66,20 @@ $aliases['gsw'] = array(
 	'MediaSearch' => array( 'Medie-Suech' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'MediaSearch' => array( 'Recerca de multimedia' ),
+	'Mv_Add_Stream' => array( 'Metavid Adder fluxo' ),
+	'MVAdmin' => array( 'Metavid Administration' ),
+	'MvExportAsk' => array( 'Metavid Exportar consulta' ),
+	'MvExportSearch' => array( 'Metavid Exportar recerca' ),
+	'MvExportSequence' => array( 'Metavid Exportar sequentia' ),
+	'MvExportStream' => array( 'Metavid Exportar fluxo' ),
+	'Mv_List_Streams' => array( 'Metavid Lista de fluxos' ),
+	'MV_SpecialSearch' => array( 'Metavid Recerca special' ),
+	'MvVideoFeed' => array( 'Metavid Syndication video' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'MediaSearch' => array( 'メディア検索' ),

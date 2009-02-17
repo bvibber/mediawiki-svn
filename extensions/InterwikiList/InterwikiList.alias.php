@@ -90,7 +90,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'InterwikiList' => array( 'ListaInterwiki' ),
+	'InterwikiList' => array( 'Lista interwiki' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

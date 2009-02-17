@@ -89,9 +89,9 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'GroupPermissions' => array( 'PermissionesDeGruppos' ),
-	'RemoveUnusedGroups' => array( 'EliminarGrupposNonUsate' ),
-	'SortPermissions' => array( 'OrdinarPermissiones' ),
+	'GroupPermissions' => array( 'Permissiones de gruppos' ),
+	'RemoveUnusedGroups' => array( 'Eliminar gruppos non usate' ),
+	'SortPermissions' => array( 'Ordinar permissiones' ),
 );
 
 /** Japanese (日本語) */

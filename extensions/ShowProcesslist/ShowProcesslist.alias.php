@@ -64,6 +64,11 @@ $aliases['hu'] = array(
 	'ShowProcesslist' => array( 'Folyamatlista mutatása' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ShowProcesslist' => array( 'Monstrar lista de processos' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'ShowProcesslist' => array( 'Daftar proses' ),

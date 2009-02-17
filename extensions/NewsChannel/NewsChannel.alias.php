@@ -69,7 +69,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'NewsChannel' => array( 'CanalDeNovas' ),
+	'NewsChannel' => array( 'Canal de novas' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

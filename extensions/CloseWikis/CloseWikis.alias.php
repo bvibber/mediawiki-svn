@@ -74,7 +74,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CloseWiki' => array( 'ClauderWiki' ),
+	'CloseWiki' => array( 'Clauder wiki' ),
 );
 
 /** Japanese (日本語) */

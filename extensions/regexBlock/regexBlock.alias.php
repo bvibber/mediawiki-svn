@@ -40,6 +40,11 @@ $aliases['hsb'] = array(
 	'RegexBlock' => array( 'Blokowanje regularnych wurazow' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'RegexBlock' => array( 'Blocar con regex' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RegexBlock' => array( '正規表現ブロック' ),

@@ -67,7 +67,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'AdvancedRandom' => array( 'AleatoriAvantiate' ),
+	'AdvancedRandom' => array( 'Aleatori avantiate' ),
 );
 
 /** Japanese (日本語) */

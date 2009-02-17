@@ -69,7 +69,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Asksql' => array( 'ConsultarSQL' ),
+	'Asksql' => array( 'Consulta SQL' ),
 );
 
 /** Japanese (日本語) */

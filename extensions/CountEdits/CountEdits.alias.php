@@ -69,7 +69,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CountEdits' => array( 'ContarModificationes' ),
+	'CountEdits' => array( 'Contar modificationes' ),
 );
 
 /** Japanese (日本語) */

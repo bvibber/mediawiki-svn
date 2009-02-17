@@ -57,6 +57,11 @@ $aliases['hu'] = array(
 	'SharedUserRights' => array( 'Megosztott felhasználói jogok' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'SharedUserRights' => array( 'Derectos commun de usatores', 'Derectos global de usatores' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'SharedUserRights' => array( '共有利用者権限', '共有利用者権限管理' ),

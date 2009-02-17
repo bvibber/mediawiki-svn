@@ -92,7 +92,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ImportUsers' => array( 'ImportarUsatores' ),
+	'ImportUsers' => array( 'Importar usatores' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

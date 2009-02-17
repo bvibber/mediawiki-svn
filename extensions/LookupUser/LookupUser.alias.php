@@ -39,7 +39,7 @@ $aliases['hr'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'LookupUser' => array( 'CercarUsator' ),
+	'LookupUser' => array( 'Cercar usator' ),
 );
 
 /** Japanese (日本語) */

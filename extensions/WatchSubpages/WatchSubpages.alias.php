@@ -39,6 +39,11 @@ $aliases['dsb'] = array(
 	'WatchSubpages' => array( 'Pódboki wobglědowaś' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'WatchSubpages' => array( 'Vigilar_subpáginas' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WatchSubpages' => array( 'پی‌گیری_زیرصفحه‌ها' ),
@@ -72,6 +77,11 @@ $aliases['hsb'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'WatchSubpages' => array( 'Aloldalak figyelése' ),
+);
+
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'WatchSubpages' => array( 'Observar subpaginas' ),
 );
 
 /** Japanese (日本語) */

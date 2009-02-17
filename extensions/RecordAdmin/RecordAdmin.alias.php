@@ -30,6 +30,11 @@ $aliases['gsw'] = array(
 	'RecordAdmin' => array( 'Ammann yytrage' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'RecordAdmin' => array( 'Gestion de datos' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RecordAdmin' => array( '記録管理' ),

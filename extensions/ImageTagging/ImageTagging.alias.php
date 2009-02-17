@@ -54,7 +54,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ImageTagging' => array( 'EtiquettageDeImagines' ),
+	'ImageTagging' => array( 'Etiquettage de imagines' ),
 );
 
 /** Japanese (日本語) */

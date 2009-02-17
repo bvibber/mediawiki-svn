@@ -95,7 +95,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'BoardVote' => array( 'VotoConsilio' ),
+	'BoardVote' => array( 'Voto consilio' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

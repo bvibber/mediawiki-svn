@@ -44,6 +44,11 @@ $aliases['hsb'] = array(
 	'PovWatch' => array( 'PovWatch' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'PovWatch' => array( 'Observa PdV' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'PovWatch' => array( '編集合戦の監視' ),

@@ -73,9 +73,9 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ContributionHistory' => array( 'HistoriaDeContributiones' ),
-	'ContributionStatistics' => array( 'StatisticasDeContributiones' ),
-	'ContributionTotal' => array( 'TotalDeContributiones' ),
+	'ContributionHistory' => array( 'Historia de contributiones' ),
+	'ContributionStatistics' => array( 'Statisticas de contributiones' ),
+	'ContributionTotal' => array( 'Total de contributiones' ),
 );
 
 /** Japanese (日本語) */

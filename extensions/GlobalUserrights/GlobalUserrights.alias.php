@@ -33,6 +33,11 @@ $aliases['dsb'] = array(
 	'GlobalUserrights' => array( 'Globalne wužywarske pšawa' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'GlobalUserrights' => array( 'Permisos_de_usuarios_globales', 'Permisos_usuarios_globales', 'Derechos_usuarios_globales' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'GlobalUserrights' => array( 'Dereitos de usuario globais' ),
@@ -45,7 +50,7 @@ $aliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'GlobalUserrights' => array( 'DerectosGlobalDeUsatores' ),
+	'GlobalUserrights' => array( 'Derectos global de usatores' ),
 );
 
 /** Japanese (日本語) */

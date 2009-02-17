@@ -37,6 +37,15 @@ $aliases['arz'] = array(
 	'OpenIDXRDS' => array( 'إكسردس_الهوية_المفتوحة' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'OpenIDLogin' => array( 'Aperir session OpenID' ),
+	'OpenIDFinish' => array( 'Completar session OpenID' ),
+	'OpenIDConvert' => array( 'Converter a OpenID' ),
+	'OpenIDServer' => array( 'Servitor OpenID' ),
+	'OpenIDXRDS' => array( 'XRDS OpenID' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'OpenIDLogin' => array( 'OpenIDログイン' ),

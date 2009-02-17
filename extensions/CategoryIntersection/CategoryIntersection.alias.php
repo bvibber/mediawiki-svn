@@ -99,7 +99,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CategoryIntersection' => array( 'Intersection de categorias', 'IntersectionDeCategorias' ),
+	'CategoryIntersection' => array( 'Intersection de categorias' ),
 );
 
 /** Japanese (日本語) */

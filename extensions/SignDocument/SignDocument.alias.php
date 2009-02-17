@@ -51,6 +51,12 @@ $aliases['hsb'] = array(
 	'CreateSignDocument' => array( 'Signowany dokument wutworić' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'SignDocument' => array( 'Signar documento' ),
+	'CreateSignDocument' => array( 'Crear signar documento' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'SignDocument' => array( '文書の署名' ),

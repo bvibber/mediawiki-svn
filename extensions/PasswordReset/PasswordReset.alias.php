@@ -73,8 +73,8 @@ $aliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'PasswordReset' => array( 'RedefinirContrasigno' ),
-	'Disabledusers' => array( 'UsatoresDisactivate' ),
+	'PasswordReset' => array( 'Redefinir contrasigno' ),
+	'Disabledusers' => array( 'Usatores disactivate' ),
 );
 
 /** Japanese (日本語) */

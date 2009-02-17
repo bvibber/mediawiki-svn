@@ -69,7 +69,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ImportFreeImages' => array( 'ImportarImaginesLibere' ),
+	'ImportFreeImages' => array( 'Importar imagines libere' ),
 );
 
 /** Japanese (日本語) */

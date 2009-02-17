@@ -40,6 +40,11 @@ $aliases['hsb'] = array(
 	'SpamRegex' => array( 'Spamowe regularne wurazy' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'SpamRegex' => array( 'Regex antispam', 'Regex anti-spam' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'SpamRegex' => array( 'スパム正規表現フィルター' ),

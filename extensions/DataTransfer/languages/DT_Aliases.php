@@ -59,7 +59,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ViewXML' => array( 'VisualisarXML' ),
+	'ViewXML' => array( 'Visualisar XML' ),
 );
 
 /** Japanese (日本語) */

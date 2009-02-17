@@ -45,7 +45,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ContributionTracking' => array( 'TraciamentoDeContributiones' ),
+	'ContributionTracking' => array( 'Traciamento de contributiones' ),
 );
 
 /** Japanese (日本語) */

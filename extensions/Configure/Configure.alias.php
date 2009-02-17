@@ -80,6 +80,12 @@ $aliases['dsb'] = array(
 	'ViewConfig' => array( 'Konfiguraciju pokazaś' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'Configure' => array( 'Configurar' ),
+	'Extensions' => array( 'Extensiones' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'Configure' => array( 'Wikin asetukset' ),
@@ -151,7 +157,7 @@ $aliases['hu'] = array(
 $aliases['ia'] = array(
 	'Configure' => array( 'Configurar' ),
 	'Extensions' => array( 'Extensiones' ),
-	'ViewConfig' => array( 'ViderConfig' ),
+	'ViewConfig' => array( 'Vider config' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

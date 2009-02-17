@@ -47,7 +47,7 @@ $aliases['dsb'] = array(
 
 /** Spanish (Español) */
 $aliases['es'] = array(
-	'SiteMatrix' => array( 'Todos_los_Wikis_de_Wikimedia' ),
+	'SiteMatrix' => array( 'Todos_los_Wikis_de_Wikimedia', 'Todos_los_wikis_de_Wikimedia' ),
 );
 
 /** Persian (فارسی) */
@@ -95,6 +95,11 @@ $aliases['ht'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'SiteMatrix' => array( 'Honlaptáblázat' ),
+);
+
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'SiteMatrix' => array( 'Matrice de sitos', 'Wikis Mediawiki' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

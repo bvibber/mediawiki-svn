@@ -25,7 +25,7 @@ $aliases['hsb'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CommunityVoice' => array( 'VoceDelCommunitate' ),
+	'CommunityVoice' => array( 'Voce del communitate' ),
 );
 
 /** Japanese (日本語) */

@@ -83,7 +83,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'DeleteBatch' => array( 'DelerInMassa' ),
+	'DeleteBatch' => array( 'Deler in massa' ),
 );
 
 /** Japanese (日本語) */

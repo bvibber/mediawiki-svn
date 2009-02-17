@@ -84,6 +84,11 @@ $aliases['hu'] = array(
 	'WhosOnline' => array( 'Ki van online' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'WhosOnline' => array( 'Qui es in linea' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WhosOnline' => array( 'オンラインの利用者' ),
@@ -152,6 +157,11 @@ $aliases['qu'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'WhosOnline' => array( 'अन्यकतम्‌सद्यस्क' ),
+);
+
+/** Sundanese (Basa Sunda) */
+$aliases['su'] = array(
+	'WhosOnline' => array( 'SahaNuManco' ),
 );
 
 /** Swahili (Kiswahili) */

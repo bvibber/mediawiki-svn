@@ -34,6 +34,11 @@ $aliases['dsb'] = array(
 	'PurgeCache' => array( 'Cache wuprozniś' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'PurgeCache' => array( 'Purgar_caché' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
@@ -52,6 +57,11 @@ $aliases['gsw'] = array(
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'PurgeCache' => array( 'Pufrowak wuprózdnić' ),
+);
+
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'PurgeCache' => array( 'Vacuar cache' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

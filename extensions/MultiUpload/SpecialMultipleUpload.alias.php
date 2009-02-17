@@ -63,6 +63,11 @@ $aliases['hsb'] = array(
 	'MultiUpload' => array( 'wjacore dataje nahrać' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'MultiUpload' => array( 'Cargar plures' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'MultiUpload' => array( 'Multi unggah' ),

@@ -49,6 +49,11 @@ $aliases['hsb'] = array(
 	'TemplateLink' => array( 'Předłohowy wotkaz' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'TemplateLink' => array( 'Ligamine verso patrono' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'TemplateLink' => array( 'テンプレートリンク' ),

@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'ProfileMonitor' => array( 'مراقب_الملف' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'ProfileMonitor' => array( 'Analyse de rendimento' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ProfileMonitor' => array( 'プロファイリングデータ', 'プロファイルモニター' ),

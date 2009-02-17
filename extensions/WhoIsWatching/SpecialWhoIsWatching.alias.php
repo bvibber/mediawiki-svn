@@ -35,6 +35,11 @@ $aliases['dsb'] = array(
 	'WhoIsWatching' => array( 'Chto wobglědujo' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'WhoIsWatching' => array( 'Quién_esta_vigilando' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WhoIsWatching' => array( 'چه_کسی_پی‌گیری_می‌کند' ),
@@ -63,6 +68,11 @@ $aliases['hsb'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'WhoIsWatching' => array( 'Ki figyel' ),
+);
+
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'WhoIsWatching' => array( 'Qui observa' ),
 );
 
 /** Japanese (日本語) */
@@ -118,6 +128,11 @@ $aliases['ps'] = array(
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'WhoIsWatching' => array( 'अन्यकतम्‌पश्यति' ),
+);
+
+/** Sundanese (Basa Sunda) */
+$aliases['su'] = array(
+	'WhoIsWatching' => array( 'SahaNuMoncorong' ),
 );
 
 /** Tagalog (Tagalog) */
