@@ -37,7 +37,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'CommunityVoice',
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CommunityVoice',
-	'description-msg' => 'communityvoice-desc',
+	'descriptionmsg' => 'communityvoice-desc',
 	'version' => '0.1.0',
 );
 // Shortcut to this extension directory
