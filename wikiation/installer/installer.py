@@ -77,6 +77,12 @@ def do_command(all_args):
 
 def ls(args):
 	"""implement local ls command, lists things we can install"""
+	if len(args)<=1:
+		print \
+"""available.mediawiki:		installed.mediawiki:
+available.wikiation_toolkit:	installed.wikiation_toolkit:
+available.extension:		installed.extension: """
+		return
 	installers.ls(args)
 
 def info(args):
