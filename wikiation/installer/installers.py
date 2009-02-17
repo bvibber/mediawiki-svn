@@ -273,14 +273,11 @@ def get_system(system_name):
 		print "Cannot find '"+system_name+"' in the list of supported installation systems."
 		return None
 	else:
-		system=systems[system_name]
+		sYstem=systems[system_name]
 
-		return systems[system_name]
+		return sYstem()
 
-		
-
-systems={'wikiation_toolkit':Toolkit_Installer(),'extension': Extension_Installer(), 'mediawiki':Mediawiki_Installer()}
-
+systems={'wikiation_toolkit':Toolkit_Installer,'extension': Extension_Installer, 'mediawiki':Mediawiki_Installer}
 
 if __name__=="__main__":
 	print "testing installers.py module"
