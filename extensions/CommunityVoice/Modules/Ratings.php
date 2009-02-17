@@ -4,7 +4,10 @@ abstract class CommunityVoiceRatings {
 
 	/* Private Static Functions */
 
-	private static function getScaleFraction( $rating, $star ) {
+	private static function getScaleFraction(
+		$rating,
+		$star
+	) {
 		if ( floor( $rating ) > $star ) {
 			return 6;
 		} else if ( floor( $rating ) < $star ) {
@@ -12,23 +15,6 @@ abstract class CommunityVoiceRatings {
 		} else {
 			return round( ( 6 / 10 ) * ( ( $rating - floor( $rating ) ) * 10 ) );
 		}
-	}
-
-	private static function getArticlesUsing( $category, $title ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->select(
-			'cv_ratings_usage',
-			'usg_article',
-			array(
-				'usg_category' => $category,
-				'usg_title' => $title,
-			)
-		);
-		$articles = array();
-		while ( $row = $result->fetchRow() ) {
-			$articles[] = (string)$row['usg_article'];
-		}
-		return $articles;
 	}
 
 	private static function getCategories() {
@@ -44,7 +30,9 @@ abstract class CommunityVoiceRatings {
 		return $categories;
 	}
 
-	private static function getTitles( $category ) {
+	private static function getTitles(
+		$category
+	) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select(
 			'cv_ratings_votes',
@@ -58,7 +46,10 @@ abstract class CommunityVoiceRatings {
 		return $titles;
 	}
 
-	private static function getTotalVotes( $category, $title ) {
+	private static function getTotalVotes(
+		$category,
+		$title
+	) {
 		$dbr = wfGetDB( DB_SLAVE );
 		return (integer)$dbr->selectField(
 			'cv_ratings_votes',
@@ -70,7 +61,10 @@ abstract class CommunityVoiceRatings {
 		);
 	}
 
-	private static function getUserVoted( $category, $title ) {
+	private static function getUserVoted(
+		$category,
+		$title
+	) {
 		global $wgUser;
 		$dbr = wfGetDB( DB_SLAVE );
 		return (bool)$dbr->selectField(
@@ -84,7 +78,10 @@ abstract class CommunityVoiceRatings {
 		);
 	}
 
-	private static function getAverageRating( $category, $title ) {
+	private static function getAverageRating(
+		$category,
+		$title
+	) {
 		$dbr = wfGetDB( DB_SLAVE );
 		return (float)$dbr->selectField(
 			'cv_ratings_votes',
@@ -96,7 +93,11 @@ abstract class CommunityVoiceRatings {
 		);
 	}
 
-	private static function addVote( $category, $title, $rating ) {
+	private static function addVote(
+		$category,
+		$title,
+		$rating
+	) {
 		global $wgUser;
 		// Checks if...
 		if (
@@ -131,62 +132,18 @@ abstract class CommunityVoiceRatings {
 		$wgParser->setHook( 'ratings:scale', array( __CLASS__, 'renderScale' ) );
 		// Register ajax response hook
 		$wgAjaxExportList[] = __CLASS__ . '::handleScaleVoteCall';
-		// Register article save hook
-		$wgHooks['ArticleSave'][] = __CLASS__ . '::updateArticleUsage';
 
 	}
 
-	public static function updateArticleUsage( $article, $user, $text, $summary, $minor, $watch, $sectionanchor, $flags ) {
-		$usedRatings = array();
-		// Extract all ratings:scale tags
-		preg_match_all(
-			"/<ratings:scale[^>]*[\\/]*>/i", $text, $matches, PREG_PATTERN_ORDER
-		);
-		// Loop over each match
-		foreach ( $matches[0] as $match ) {
-			$rating = array();
-			foreach ( array( 'category', 'title' ) as $attribute ) {
-				// Extract value of attribute
-				preg_match(
-					"/{$attribute}=['\"]*(?<value>[^'\"]*)['\"]*/i",
-					$match,
-					$values
-				);
-				if ( isset( $values['value'] ) ) {
-					$rating[$attribute] = $values['value'];
-				}
-			}
-			if ( isset( $rating['category'], $rating['title'] ) ) {
-				$usedRatings[] = $rating;
-			}
-		}
-		// Gets name of article
-		$articleDbKey = $article->getTitle()->getPrefixedDBkey();
-		// Get database connection
-		$dbw = wfGetDB( DB_MASTER );
-		// Remove all usage for this article
-		$dbw->delete(
-			'cv_ratings_usage',
-			array( 'usg_article' => $articleDbKey )
-		);
-		// Loop over each rating
-		foreach ( $usedRatings as $rating ) {
-			// Add usage for rating for this article
-			$dbw->insert(
-				'cv_ratings_usage',
-				array(
-					'usg_category' => $rating['category'],
-					'usg_title' => $rating['title'],
-					'usg_article' => $articleDbKey,
-				)
-			);
-		}
-		return true;
-	}
-
-	public static function renderScale( $input, $args, $parser ) {
+	public static function renderScale(
+		$input,
+		$args,
+		$parser
+	) {
 		global $wgUser, $wgTitle;
 		global $egCommunityVoiceResourcesPath;
+		// Disable caching
+		$parser->disableCache();
 		// Validate and sanitize incoming arguments
 		$errors = array();
 		$error = false;
@@ -195,11 +152,9 @@ abstract class CommunityVoiceRatings {
 				$args[$argument] = htmlspecialchars( $args[$argument] );
 			} else {
 				$error = true;
-				if ( $parser->getOptions()->getIsPreview() ) {
-					$errors[] = CommunityVoice::getMessage(
-						'ratings', 'error-missing-argument', $argument
-					);
-				}
+				$errors[] = CommunityVoice::getMessage(
+					'ratings', 'error-missing-argument', $argument
+				);
 			}
 		}
 		// Checks if an error ocurred
@@ -235,8 +190,13 @@ abstract class CommunityVoiceRatings {
 			// Adds content of tag as parsed wiki-text
 			$htmlOut .= $parser->recursiveTagParse( $input );
 		}
-		// Checks if the user has not voted yet and is logged in
-		if ( !$userVoted && $wgUser->isLoggedIn() ) {
+		// Checks if...
+		if (
+			// User has not voted yet
+			!$userVoted &&
+			// User is logged in
+			$wgUser->isLoggedIn()
+		) {
 
 			/* Ajax Interaction */
 
@@ -311,7 +271,7 @@ abstract class CommunityVoiceRatings {
 				$htmlOut .= Html::input(
 					array(
 						'type' => 'image',
-						'name' => 'scale[rating_' . $i . ']',
+						'name' => 'scale[rating_' . ( $i + 1 ) . ']',
 						'src' => sprintf(
 							'%s/Icons/star-%d.png',
 							$egCommunityVoiceResourcesPath,
@@ -366,7 +326,12 @@ abstract class CommunityVoiceRatings {
 	/**
 	 * Hanlder for ratings scale vote via ajax call
 	 */
-	public static function handleScaleVoteCall( $category, $title, $rating, $article ) {
+	public static function handleScaleVoteCall(
+		$category,
+		$title,
+		$rating,
+		$article
+	) {
 		global $wgUser;
 		// Adds vote and checks for success
 		if ( self::addVote( $category, $title, $rating ) ) {
@@ -384,13 +349,6 @@ abstract class CommunityVoiceRatings {
 					)
 				),
 			);
-			// Gets articles that use this rating
-			$articles = self::getArticlesUsing( $category, $title );
-			// Loops over each article
-			foreach ( $articles  as $article ) {
-				// Invalidates the cache of the article
-				CommunityVoice::touchArticle( $article );
-			}
 			// Ensure database commits take place (since this is an ajax call)
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->commit();
@@ -437,15 +395,6 @@ abstract class CommunityVoiceRatings {
 						$scale['category'], $scale['title'], $rating
 					)
 				) {
-					// Gets articles that use this rating
-					$articles = self::getArticlesUsing(
-						$scale['category'], $scale['title']
-					);
-					// Loops over each article
-					foreach ( $articles  as $article ) {
-						// Invalidates the cache of the article
-						CommunityVoice::touchArticle( $article );
-					}
 					// Redirects user back to article
 					$wgOut->redirect(
 						Title::newFromText( $scale['article'] )->getFullUrl()
@@ -466,13 +415,15 @@ abstract class CommunityVoiceRatings {
 	/**
 	 * Outputs a summary UI for the module
 	 */
-	public static function showSummary() {
+	public static function showSummary(
+		$path
+	) {
 		global $wgOut;
 		//
 		$wgOut->addWikiText( '==== Categories ====' );
 		$xmlCategories = Html::open( 'ul' );
 		foreach ( self::getCategories() as $category ) {
-			$xmlCategories .= Html::tag( 'li', $category );
+			$xmlCategories .= Html::tag( 'li', array(), $category );
 		}
 		$xmlCategories .= Html::close( 'ul' );
 		$wgOut->addHtml( $xmlCategories );
@@ -481,7 +432,9 @@ abstract class CommunityVoiceRatings {
 	/**
 	 * Outputs main UI for module
 	 */
-	public static function showMain( $path ) {
+	public static function showMain(
+		$path
+	) {
 		global $wgOut;
 		//
 		$wgOut->addWikiText( '==== Detailed Information ====' );

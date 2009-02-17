@@ -61,10 +61,10 @@ class CommunityVoicePage extends SpecialPage {
 		// Breaks sub into path steps
 		$path = explode( '/', $sub );
 		// Checks if a specific module was given
-		if ( count( $path ) > 0 ) {
+		if ( count( $path ) >= 1 && $path[0] != '' ) {
 			// Calls specific action on module
 			CommunityVoice::callModuleAction(
-				$path[0], 'show', count( $path ) >= 2 ? $path[1] : 'Main'
+				$path[0], 'show', count( $path ) >= 2 ? $path[1] : 'Main', $path
 			);
 			// Finishes page
 			return true;
@@ -73,10 +73,10 @@ class CommunityVoicePage extends SpecialPage {
 		foreach ( CommunityVoice::getModules() as $module ) {
 			// Adds heading
 			$wgOut->addWikiText(
-				'== ' . wfMsg( 'communityvoice-' . $module ) . ' =='
+				'== ' . wfMsg( 'communityvoice-' . strtolower( $module ) ) . ' =='
 			);
 			// Calls summary action on module
-			self::callModuleAction( $module, 'show', 'Summary' );
+			CommunityVoice::callModuleAction( $module, 'show', 'Summary', $path );
 		}
 		// Finishes page
 		return true;
