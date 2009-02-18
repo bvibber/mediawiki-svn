@@ -39,10 +39,8 @@ class CodeRevisionListView extends CodeView {
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() . 
 			Xml::openElement( 'form', 
-							array(
-									'action' => $pager->getTitle()->getLocalURL(),
-									'method' => 'POST'
-								) ) .
+				array( 'action' => $pager->getTitle()->getLocalURL(), 'method' => 'post' )
+			) .
 			$pager->getBody() . 
 			$pager->getNavigationBar() .
 			$changeInterface .
