@@ -266,7 +266,6 @@ class SvnRevTablePager extends TablePager {
 	// Note: this function is poorly factored in the parent class
 	function formatRow( $row ) {
 		global $wgWikiSVN;
-		$rowClass = $this->getRowClass( $row );
 		$css = "mw-codereview-status-{$row->cr_status}";
 		if( $this->mRepo->mName == $wgWikiSVN ) {
 			$css .= " mw-codereview-" . ( $row->{$this->getDefaultSort()} <= $this->mCurSVN ? 'live' : 'notlive' );
