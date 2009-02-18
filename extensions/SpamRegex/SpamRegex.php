@@ -26,7 +26,7 @@ define('SPAMREGEX_SUMMARY', 1);
 // Extension credits
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regular Expression Spam Block',
-	'version' => '1.2',
+	'version' => '1.2.1',
 	'author' => 'Bartek Łapiński',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SpamRegex',
 	'description' => 'Filters out unwanted phrases in edited pages, based on regular expressions',

@@ -121,7 +121,8 @@ class spamRegexList {
 
 			$res = $dbr->select( 'spam_regex', '*', array(), __METHOD__, array( 'LIMIT' => $limit, 'OFFSET' => $offset ) );
 			while ( $row = $res->fetchObject() ) {
-				$time = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->spam_timestamp ), true );
+				$date = $wgLang->date( wfTimestamp( TS_MW, $row->spam_timestamp ), true );
+				$time = $wgLang->time( wfTimestamp( TS_MW, $row->spam_timestamp ), true );
 				$ublock_ip = urlencode($row->spam_text);
 				$desc = '';
 				if ( $row->spam_textbox == 1 ) {
@@ -134,7 +135,7 @@ class spamRegexList {
 					$desc .= wfMsg( 'spamregex-summary-log' );
 				}
 				$wgOut->addHTML( "<ul>" );
-				$wgOut->addWikiText( wfMsg( 'spamregex-log-1', $row->spam_text, $desc, $action_unblock, $ublock_ip ) . $row->spam_user . wfMsg( 'spamregex-log-2', $time ) );
+				$wgOut->addWikiText( wfMsg( 'spamregex-log', $row->spam_text, $desc, $action_unblock, $ublock_ip, $row->spam_user, $date, $time ) );
 				$wgOut->addHTML( "</ul>" );
 			}
 			$res->free();
