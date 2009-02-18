@@ -1090,6 +1090,7 @@ mvSequencer.prototype = {
 						handle: ":not(.clip_control)",
 						scroll:true,
 						drag:function(e, ui){
+							//debugger;
 							insert_key = this_seq.clipDragUpdate(ui, this);							
 						},
 						start:function(e,ui){

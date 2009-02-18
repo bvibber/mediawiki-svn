@@ -11,7 +11,7 @@
 loadGM( {  'mv_media_search' : 'Media Search',
 	'rsd_box_layout' : 'Box layout',
 	'rsd_list_layout' : 'List Layout',
-	'rsd_results_desc' : 'Results ',
+	'rsd_results_desc' : 'Results some ',
 	'rsd_results_next' : 'next ',
 	'rsd_results_prev' : 'previous ',
 	'upload' : 'Upload',

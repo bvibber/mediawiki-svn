@@ -132,7 +132,7 @@ upFirefogg.prototype = {
 					if(e) 
 						e.style.display='block';
 					return false;
-				}else if( ext == 'avi' || ext == 'mov' || ext == 'mp4' || 
+				}else if( ext == 'avi' || ext == 'mov' || ext == 'mp4' || ext=='mp2' ||
 						  ext == 'mpeg' || ext == 'mpeg2' || ext == 'mpeg4' ||
 						  ext == 'dv' ){
 					//hide ogg warning
@@ -142,10 +142,11 @@ upFirefogg.prototype = {
 					sf = sf.replace(ext, 'ogg');
 					destFileInput.value = sf;
 				}else{
-					//not ogg extension error	
+					//not video extension error:	
 					e = document.getElementById('wgfogg_waring_bad_extension');
 					if(e) 
-						e.style.display='block';			
+						e.style.display='block';
+					return false;			
 				}								
 			} 				
 			//setup the form handling 
@@ -160,7 +161,7 @@ upFirefogg.prototype = {
 					//error in org submit return false;   
 					if( ! _this.org_onsubmit()){
 						return false;					
-					}			
+					}
 				}												
 				//get the input 
 				var formData = _this.getEditFormData( editForm );				

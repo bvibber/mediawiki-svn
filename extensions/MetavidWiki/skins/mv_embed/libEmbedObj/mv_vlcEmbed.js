@@ -48,7 +48,7 @@ var vlcEmbed = {
     /*
     * some java script to start vlc playback after the embed:
     */
-    postEmbedJS: function(){
+    postEmbedJS: function(){   
         //load a pointer to the vlc into the object (this.vlc)
     	this.getVLC();
     	if( this.vlc.log ){
@@ -57,8 +57,8 @@ var vlcEmbed = {
 	    	this.vlc.style.height=this.height;       
 	    	this.vlc.playlist.items.clear();
 	    	//@@todo if client supports seeking no need to send seek_offset to URI
-	    	js_log('vlc play::' + this.media_element.selected_source.getURI( this.seek_time_sec ));   
-	    	var itemId = this.vlc.playlist.add( this.media_element.selected_source.getURI(this.seek_time_sec) );
+	    	js_log('vlc play::' + this.media_element.selected_source.getURI( this.seek_time_sec ));	    	  
+	    	var itemId = this.vlc.playlist.add( this.media_element.selected_source.getURI( this.seek_time_sec ) );
 	    	if( itemId != -1 ){
 	    		//play
 	    		this.vlc.playlist.playItem(itemId);
@@ -201,10 +201,10 @@ var vlcEmbed = {
 			}
 		}
     	//for now trust the duration from url over vlc input.length
-		if(!this.media_element.selected_source.end_ntp && this.vlc.input.length>0)
+		if( ! this.media_element.selected_source.end_ntp && this.vlc.input.length>0)
 		{
 			js_log('setting duration to ' + this.vlc.input.length /1000);
-			this.media_element.selected_source.setDuration(this.vlc.input.length /1000);
+			this.media_element.selected_source.setDuration( this.vlc.input.length /1000);
 		}
 
     	this.duration = (this.getDuration())?this.getDuration():this.vlc.input.length /1000;
@@ -214,7 +214,12 @@ var vlcEmbed = {
        	//update the currentTime attribute 
        	 if( this.media_element.selected_source.timeFormat =='anx' ){
         	this.currentTime = this.vlc.input.time/1000;
-        	//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration()); 
+        	//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration());
+        	
+        	//if we are way out of range... add offset (hack)
+        	if(  ( this.currentTime + 10 ) < ntp2seconds( this.start_ntp) ){
+        		this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;
+        	}
         }else{
         	this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;       
         }       	      
