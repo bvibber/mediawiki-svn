@@ -20,6 +20,13 @@ define( 'SEQUENCE_TAG', 'sequence_hlrd' );
 include_once( 'MV_GlobalFunctions.php' );
 
 
+
+//script loader settings: 
+$wgEnableScriptLoader = true; //if the script loader is on at all
+$wgEnableScriptLoaderJsFile = true; //if you can use the script loader with js files (rather than only js classes) 
+
+
+
 // if the search portlet should autoComplete
 // (causes the inclution of jquery into every page.. can slow things down a bit)   
 $mvEnableAutoComplete = true;

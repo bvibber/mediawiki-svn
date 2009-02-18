@@ -9,7 +9,7 @@
  * @url http://metavid.org
  *
  *
- * Metavid.js handles all interface js functions for Metavid: namespace
+ * handles all interface js functions for Metavid: namespace
  * [DEPENDENT ON mv_embed]
  * http://metavid.org/wiki/index.php/Mv_embed
  *

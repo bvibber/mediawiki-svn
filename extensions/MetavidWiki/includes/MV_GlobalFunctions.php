@@ -46,7 +46,7 @@ function mvSetupExtension() {
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore,
 	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
 	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSMVDrewrite, 
-	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers,
+	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers, $wgJsAutoloadLocalClasses,
 	$wgAPIModules;
 	
 
@@ -94,6 +94,41 @@ function mvSetupExtension() {
 	
 	// media serving 
 	$wgAjaxExportList[] = 'mv_frame_server';
+	
+	/**********************************************/
+	/***** register autoLoad javascript Classes:  */
+	/**********************************************/
+	$mv_jspath =  $mvgIP . '/skins/';
+	$mvjsp = $mv_jspath . 'mv_embed/';
+	
+	//libAddMedia:
+	$wgJsAutoloadLocalClasses['upFirefogg'] 		= $mvjsp . 'libAddMedia/firefogg.js';
+	$wgJsAutoloadLocalClasses['mvUploader'] 		= $mvjsp . 'libAddMedia/mvUploader.js';
+	$wgJsAutoloadLocalClasses['remoteSearchDriver'] = $mvjsp . 'libAddMedia/remoteSearchDriver.js';
+	$wgJsAutoloadLocalClasses['mediaWikiSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/mediaWikiSearch.js';
+	$wgJsAutoloadLocalClasses['metavidSearch'] 		= $mvjsp . 'libAddMedia/searchLibs/metavidSearch.js';
+	$wgJsAutoloadLocalClasses['solrArchiveSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/solrArchiveSearch.js';	
+	
+	//libClipEdit:
+	$wgJsAutoloadLocalClasses['mvClipEdit'] 		= $mvjsp . 'libClipEdit/mvClipEdit.js';
+	
+	//libEmbedObj:
+	$wgJsAutoloadLocalClasses['mv_baseEmbed'] 		= $mvjsp . 'libEmbedObj/mv_baseEmbed.js';
+	$wgJsAutoloadLocalClasses['mv_flashEmbed'] 		= $mvjsp . 'libEmbedObj/mv_flashEmbed.js';
+	$wgJsAutoloadLocalClasses['mv_genericEmbed'] 	= $mvjsp . 'libEmbedObj/mv_genericEmbed.js';
+	$wgJsAutoloadLocalClasses['mv_htmlEmbed'] 		= $mvjsp . 'libEmbedObj/mv_htmlEmbed.js';
+	$wgJsAutoloadLocalClasses['mv_javaEmbed'] 		= $mvjsp . 'libEmbedObj/mv_javaEmbed.js';
+	$wgJsAutoloadLocalClasses['mv_nativeEmbed'] 	= $mvjsp . 'libEmbedObj/mv_nativeEmbed.js';
+	$wgJsAutoloadLocalClasses['mv_quicktimeEmbed'] 	= $mvjsp . 'libEmbedObj/mv_quicktimeEmbed.js';	
+	$wgJsAutoloadLocalClasses['mv_vlcEmbed'] 		= $mvjsp . 'libEmbedObj/mv_vlcEmbed.js';	
+
+	//libSequencer:
+	$wgJsAutoloadLocalClasses['mvPlayList'] 		= $mvjsp . 'libSequencer/mvPlayList.js';	
+	$wgJsAutoloadLocalClasses['mvSequencer']		= $mvjsp . 'libSequencer/mvSequencer.js';	
+	
+	//libTimedText:
+	$wgJsAutoloadLocalClasses['mvTextInterface']	= $mvjsp . 'libTimedText/mvTextInterface.js';
+			
 	
 	/**********************************************/
 	/***** register autoLoad Classes:		  *****/
