@@ -57,6 +57,7 @@ $settings = array(
 		),
 		'performance' => array(
 			'wgAPIMaxDBRows' => 'int',
+			'wgAPIMaxResultSize' => 'int',
 			'wgDisableQueryPages' => 'bool',
 			'wgDisableQueryPageUpdate' => 'array',
 			'wgDisableSearchContext' => 'bool',
@@ -275,6 +276,7 @@ $settings = array(
 			'wgDebugLogPrefix' => 'text',
 			'wgDebugRedirects' => 'bool',
 			'wgLogQueries' => 'bool',
+			'wgShowDebug' => 'bool',
 			'wgShowExceptionDetails' => 'bool',
 			'wgShowSQLErrors' => 'bool',
 			'wgStatsMethod' => array( 'cache' => 'Cache', 'udp' => 'UDP', 0 => 'None' ),
@@ -517,6 +519,7 @@ $settings = array(
 			'wgParserConf' => 'array',
 			'wgParserCacheExpireTime' => 'int',
 			'wgParserTestFiles' => 'array',
+			'wgPreprocessorCacheThreshold' => 'int',
 			'wgUrlProtocols' => 'array',
 		),
 		'html' => array(
@@ -539,6 +542,7 @@ $settings = array(
 			'wgExportAllowHistory' => 'bool',
 			'wgExportAllowListContributors' => 'bool',
 			'wgExportMaxHistory' => 'int',
+			'wgExportMaxLinkDepth' => 'int',
 			'wgExtraRandompageSQL' => 'text',
 			'wgFilterLogTypes' => 'array',
 			'wgImportTargetNamespace' => 'text',
@@ -1089,4 +1093,8 @@ $settingsVersion = array(
 	'wgInvalidRedirectTargets' => array( array( '1.15alpha', '>=' ) ),
 	'wgNoFollowDomainExceptions' => array( array( '1.15alpha', '>=' ) ),
 	'wgUseTwoButtonsSearchForm' => array( array( '1.15alpha', '>=' ) ),
+	'wgAPIMaxResultSize' => array( array( '1.15alpha', '>=' ) ),
+	'wgShowDebug' => array( array( '1.15alpha', '>=' ) ),
+	'wgPreprocessorCacheThreshold' => array( array( '1.15alpha', '>=' ) ),
+	'wgExportMaxLinkDepth' => array( array( '1.15alpha', '>=' ) ),
 );
