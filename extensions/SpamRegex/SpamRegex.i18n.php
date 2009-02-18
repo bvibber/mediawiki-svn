@@ -524,6 +524,7 @@ $messages['he'] = array(
 	'spamregex-currently-blocked' => "'''מונחים הנחסמים נכון לעכשיו:'''",
 	'spamregex-move' => 'הסיבה שכתבתם מכילה מונח שנחסם.',
 	'spamregex-no-currently-blocked' => "'''אין מונחים חסומים.'''",
+	'spamregex-log'   => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 הסרה]) נוספה על ידי $5 ב־$7, $6",
 	'spamregex-page-title-1' => 'חסימת ביטוי באמצעות ביטויים רגולריים',
 	'spamregex-unblock-success' => 'הסרת החסימה הושלמה בהצלחה',
 	'spamregex-unblock-message' => "הוסרה חסימת המונח '''$1''' מעריכה.",

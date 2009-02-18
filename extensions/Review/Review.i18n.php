@@ -703,7 +703,7 @@ $messages['he'] = array(
 1:איכות:5:bad:good
 2:מוכן עבור 1.0:2:no:yes",
 	'review_topic_page' => 'נושאי הסקירה',
-	'review_sidebar_explanation' => "תיבת הסימון הימנית ביותר משמעותה תמיד 'אין דעה'.",
+	'review_sidebar_explanation' => "משמעות תיבת הסימון הראשונה היא תמיד 'אין דעה'.",
 	'review_save' => 'איחסון הסקירה',
 	'review_your_review' => 'סקירתכם לדף/גרסה אלה:',
 	'review_sidebar_you_have_other_reviews_for_this_article' => "כבר סקרתם גרסאות אחרות של דף זה. הדירוגים האחרים שלכם יתמזגו לתוך סקירה זה במקומות שבחרתם ב'אין דעה'.",
