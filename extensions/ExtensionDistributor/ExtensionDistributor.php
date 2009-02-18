@@ -19,7 +19,11 @@ $wgExtDistTarUrl = false;
 /** Subversion /mediawiki working copy */
 $wgExtDistWorkingCopy = false;
 
-/** Supported branches, the first one is the default */
+/** 
+ * Supported branches, the first one is the default.
+ * To add a branch, first check out the new branch in $wgExtDistWorkingCopy, and 
+ * then add it here. Do not add a branch here without first checking it out.
+ */
 $wgExtDistBranches = array(
 	'trunk' => array(
 		'tarLabel' => 'trunk',
