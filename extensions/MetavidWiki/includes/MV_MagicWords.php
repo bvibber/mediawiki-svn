@@ -338,7 +338,7 @@ class MV_MagicWords {
 					  'COUNT(1) as `hit_count`',
 		$dbr->tableName( 'mv_query_key_lookup' ) . '.filters' );
 		$from_tables = $dbr->tableName( 'mv_search_digest' ) .
-						' LEFT JOIN' . $dbr->tableName( 'mv_query_key_lookup' ) .
+						' JOIN' . $dbr->tableName( 'mv_query_key_lookup' ) .
 							' ON ( ' .
 		$dbr->tableName( 'mv_search_digest' ) . '.query_key = ' .
 		$dbr->tableName( 'mv_query_key_lookup' ) . '.query_key ' .
