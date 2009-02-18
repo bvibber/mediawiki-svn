@@ -16,7 +16,7 @@ $messages['en'] = array(
 1:Quality:5:bad:good
 2:Ready for 1.0:2:no:yes",
 	'review_topic_page' => "Review topics",
-	'review_sidebar_explanation' => "The leftmost checkbox always means 'no opinion'.",
+	'review_sidebar_explanation' => "The first checkbox always means 'no opinion'.",
 	'review_save' => "Store review",
 	'review_your_review' => "Your review of this page/revision:",
 	'review_sidebar_you_have_other_reviews_for_this_article' => "You have already reviewed other versions of this page.
