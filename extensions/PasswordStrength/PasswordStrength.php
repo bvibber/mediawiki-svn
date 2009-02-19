@@ -24,29 +24,63 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+$wgExtensionMessagesFiles['PasswordStrength'] = dirname(__FILE__) . '/PasswordStrength.i18n.php';
+$wgHooks['isValidPassword'][] = 'PrefsPasswordAudit';
 $wgExtensionCredits['other'][] = array(
 	'name'           	=> 'PasswordStrength',
 	'author'         	=> 'Chad Horohoe',
 	'url'				=> 'http://www.mediawiki.org/wiki/Extension:PasswordStrength',
-	'description'		=> 'Perform additional security checks on passwords.',
-	'version'			=> '0.3',
+	'description'		=> 'Perform additional security checks on passwords with regular expressions.',
+	'description-msg'   => 'passwordstr-desc',
+	'version'			=> '0.5',
 );
 
-$wgPasswordStrengthCheck = array ();
-$wgPasswordStrengthCheck[] = '/^\d+$/';
+// Config 
+$wgMustHaveInts = 0;
+$wgMustHaveUpperCase = 0;
+$wgMustHaveLowerCase = 0;
+$wgPasswordStrengthRegexes = array();
+$wgPasswordStrengthRegexes[] = '/^\d+$/'; // No passwords made of all digits
 
-$wgHooks['isValidPassword'][] = 'psCheckRegex';
-
-function psCheckRegex( $password, &$result, $userObj ) {
+/**
+ * Hook function for PrefsPasswordAudit. Loop through the regex's and the other
+ * strength tests
+ */
+function psCheckRegex( $user, $newpass, $status ) {
 	global $wgPasswordStrengthCheck;
+	if ( $status != 'success' ) { // skip earlier checks
+		return true;
+	}
+	wfLoadExtensionMessages( 'PasswordStrength' );
+	
+	if ( $wgMustHaveInts > 0 ) {
+		preg_match_all( "/[0-9]/", $newpass, $matches );
+		if ( (count($matches) - 1)  < $wgMustHaveInts ) {
+			$result = wfMsgExt( 'passwordstr-needmore-ints', array( 'parsemag'), $wgMustHaveInts );
+			throw new PasswordError( $result );
+		}
+	}
+	if ( $wgMustHaveUpperCase > 0 ) {
+		preg_match_all( "/[A-Z]/", $newpass, $matches );
+		if ( (count($matches) - 1)  < $wgMustHaveUpperCase ) {
+			$result = wfMsgExt( 'passwordstr-needmore-upper', array( 'parsemag'), $wgMustHaveUpperCase );
+			throw new PasswordError( $result );
+		}
+	}
+	if ( $wgMustHaveLowerCase > 0 ) {
+		preg_match_all( "/[a-z]/", $newpass, $matches );
+		if ( (count($matches) - 1)  < $wgMustHaveLowerCase ) {
+			$result = wfMsgExt( 'passwordstr-needmore-lower', array( 'parsemag'), $wgMustHaveLowerCase );
+			throw new PasswordError( $result );	
+		}
+	}
+	
 	if ( is_array( $wgPasswordStrengthCheck ) ) {
 		foreach ( $wgPasswordStrengthCheck as $regex ) {
 			if ( preg_match( $regex, $password ) ) {
-				$result = false;
-				return false;
+				$result = wfMsg( 'passwordstr-regex-hit' );
+				throw new PasswordError( $result );
 			}
 		}
 	}
-	$result = true;
-	return true;
 }
