@@ -31,7 +31,7 @@ $wgExtensionCredits['other'][] = array(
 	'author'         	=> 'Chad Horohoe',
 	'url'				=> 'http://www.mediawiki.org/wiki/Extension:PasswordStrength',
 	'description'		=> 'Perform additional security checks on passwords with regular expressions.',
-	'description-msg'   => 'passwordstr-desc',
+	'descriptionmsg'   => 'passwordstr-desc',
 	'version'			=> '0.5',
 );
 
