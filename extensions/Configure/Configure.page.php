@@ -1270,6 +1270,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				}
 				$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
 			}
+			sort($all);
 			$groupdesc = wfMsgHtml( 'configure-desc-group' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
 
