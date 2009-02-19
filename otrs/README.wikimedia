@@ -48,3 +48,8 @@ submitted upstream.
 70-fix-new-messages.patch
 -------------------------
 Minor bugfix for CVS HEAD: fix links to removed module AgentTicketMailbox.
+
+80-fix-AgentCustomerSearch.patch
+--------------------------------
+Temporary fix for http://bugs.otrs.org/show_bug.cgi?id=3641 , probably doesn't 
+work if customer logins are allowed.

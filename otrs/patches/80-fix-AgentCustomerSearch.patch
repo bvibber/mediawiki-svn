@@ -1,0 +1,15 @@
+Index: trunk/Kernel/Modules/AgentCustomerSearch.pm
+===================================================================
+--- trunk.orig/Kernel/Modules/AgentCustomerSearch.pm	2009-02-19 14:43:09.000000000 +1100
++++ trunk/Kernel/Modules/AgentCustomerSearch.pm	2009-02-19 14:43:14.000000000 +1100
+@@ -154,8 +154,8 @@
+             );
+ 
+             # get own customer id
+-            if ($CustomerID) {
+-                push @CustomerIDs, $CustomerID;
++            if ($CustomerUserID) {
++                push @CustomerIDs, $CustomerUserID;
+             }
+ 
+             my $View    = $Self->{ParamObject}->GetParam( Param => 'View' )    || '';
