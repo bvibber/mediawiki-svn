@@ -38,11 +38,13 @@ class CodeRevisionListView extends CodeView {
 		$wgOut->addHTML( 
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() . 
-			"<form action='" . $pager->getTitle()->getLocalURL() . "' method ='post'>" .
+			Xml::openElement( 'form', 
+				array( 'action' => $pager->getTitle()->getLocalURL(), 'method' => 'post' )
+			) .
 			$pager->getBody() . 
 			$pager->getNavigationBar() .
 			$changeInterface .
-			'</form>'
+			Xml::closeElement( 'form' )
 		);
 	}
 	
@@ -123,18 +125,19 @@ class CodeRevisionListView extends CodeView {
 	}
 	
 	function showForm( $path = '' ) {
-		global $wgOut;
+		global $wgOut, $wgScript;
 		if( $this->mAuthor ) {
 			$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/author/'.$this->mAuthor );
 		} else {
 			$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/path' );
 		}
 		$wgOut->addHTML( 
-			"<form action='" . $special->getLocalURL() . "' method ='get'>" .
+			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get' ) ) .
 			"<fieldset><legend>".wfMsgHtml('code-pathsearch-legend')."</legend>" .
+				Xml::hidden( 'title', $special->getPrefixedDBKey() ) .
 				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 55, $this->mPath ) .
 				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
-			"</fieldset></form>"
+			"</fieldset>" . Xml::closeElement( 'form' )
 		);
 	}
 	
