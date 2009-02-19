@@ -143,7 +143,7 @@ class TodoForm {
 
 	function show() {
 		global $wgOut, $IP, $wgUser, $wgScriptPath;
-		$wgOut->setPageTitle( wfmsgHtml('todo-list-for') ." ". $this->target->getName() );
+		$wgOut->setPageTitle( wfMsgHtml('todo-list-for', $this->target->getName() ) );
 
 
 		$wgOut->addWikiText( "== ".wfMsg('todo-new-item')." ==\n" );
