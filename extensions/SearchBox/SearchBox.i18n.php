@@ -87,6 +87,16 @@ $messages['br'] = array(
 	'searchbox-namespaces' => 'Esaouennoù anv :',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'searchbox-desc' => 'Omogućuje uključenja u obrasce za traženje',
+	'searchbox-search' => 'Traži',
+	'searchbox-go' => 'Idi',
+	'searchbox-namespaces' => 'Imenski prostori:',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -151,6 +161,13 @@ $messages['es'] = array(
 $messages['eu'] = array(
 	'searchbox-search' => 'Bilatu',
 	'searchbox-go' => 'Joan',
+);
+
+/** Fulah (Fulfulde)
+ * @author Amkoullel
+ */
+$messages['ff'] = array(
+	'searchbox-search' => 'Ɗaɓɓitude',
 );
 
 /** Finnish (Suomi)

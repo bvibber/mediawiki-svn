@@ -959,6 +959,25 @@ $messages['pt'] = array(
 	'player-goto-file' => 'ficheiro',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'player' => 'Reprodutor',
+	'player-desc' => 'Reprodução multimídia incorporada usando plugins comuns de navegadores e uma [[Special:Player|página especial]]',
+	'player-title' => 'Reprodutor',
+	'player-playertitle' => 'Reprodutor: $1',
+	'player-file' => 'Nome do arquivo',
+	'player-play' => 'Reproduzir',
+	'player-not-allowed' => 'formato não permitido',
+	'player-not-found' => 'arquivo não encontrado',
+	'player-invalid-title' => 'título inválido',
+	'player-clicktoplay' => 'Reproduzir $1',
+	'player-goto-player' => 'reprodutor',
+	'player-goto-page' => 'Página',
+	'player-goto-file' => 'arquivo',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

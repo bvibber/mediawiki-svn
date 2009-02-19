@@ -80,6 +80,17 @@ $messages['bg'] = array(
 	'pageby-contributors' => 'Редактори:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'pageby-desc' => 'Prikazuje urednike wiki stranice koristeći oznaku <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Stranicu je napravio $1, dana $2',
+	'pageby-last' => 'Zadnji put <a href="$3">izmijenio</a> {{GENDER:$1|korisnik|korisnica}} $1, dana $2',
+	'pageby-contributors' => 'Urednici:',
+	'pageby-anon' => '<i>anonimni</i>',
+);
+
 /** German (Deutsch)
  * @author Daniel Kinzler
  * @author Raimond Spekking

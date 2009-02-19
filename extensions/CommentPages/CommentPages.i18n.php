@@ -212,6 +212,14 @@ $messages['ia'] = array(
 	'nstab-comments' => 'Commentario',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'commentpages-desc' => 'Komentez pagini en chefa nomaro',
+	'nstab-comments' => 'Komento',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

@@ -77,6 +77,16 @@ $messages['bg'] = array(
 	'piwik-browsers' => 'Браузъри',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'piwik-desc' => 'Ubacuje Piwik skriptu na MedijaViki stranice za praćenje i dodavanje [[Special:Piwik|nekih statističkih podataka]]',
+	'piwik-lastvisits' => 'Zadnje posjete',
+	'piwik-countries' => 'Države',
+	'piwik-browsers' => 'Preglednici',
+);
+
 /** Catalan (Català)
  * @author Isb1009
  */

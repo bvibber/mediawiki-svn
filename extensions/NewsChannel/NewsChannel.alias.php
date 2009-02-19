@@ -79,7 +79,7 @@ $aliases['id'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'NewsChannel' => array( 'ニュース・チャンネル' ),
+	'NewsChannel' => array( 'ニュース・チャンネル', 'ニュースチャンネル' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

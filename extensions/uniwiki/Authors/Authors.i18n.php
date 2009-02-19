@@ -62,6 +62,15 @@ $messages['bg'] = array(
 	'authors_anonymous' => 'Анонимни',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'authors-desc' => 'Dodaje spisak urednika na stranice',
+	'authors_authors' => 'Autori',
+	'authors_anonymous' => 'Anonimni',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

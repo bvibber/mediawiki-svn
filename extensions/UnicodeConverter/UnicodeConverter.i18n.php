@@ -280,6 +280,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'unicodeconverter' => '유니코드 변환기',
+	'unicodeconverter-ok' => '확인',
 	'unicodeconverter-oldtext' => '원본 문자열:',
 	'unicodeconverter-newtext' => '변환된 문자열:',
 );

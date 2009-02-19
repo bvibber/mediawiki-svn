@@ -45,6 +45,11 @@ $aliases['dsb'] = array(
 	'SiteMatrix' => array( 'Lisćina projektow Wikimedije' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'SiteMatrix' => array( 'ΠίνακαςΤόπων' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'SiteMatrix' => array( 'Todos_los_Wikis_de_Wikimedia', 'Todos_los_wikis_de_Wikimedia' ),

@@ -80,6 +80,13 @@ $aliases['dsb'] = array(
 	'ViewConfig' => array( 'Konfiguraciju pokazaś' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'Configure' => array( 'Ρύθμιση' ),
+	'Extensions' => array( 'Επεκτάσεις' ),
+	'ViewConfig' => array( 'ΕπισκόπησηΡυθμίσεων' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'Configure' => array( 'Configurar' ),

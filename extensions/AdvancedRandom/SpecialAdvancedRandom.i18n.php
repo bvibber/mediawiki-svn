@@ -490,6 +490,13 @@ $messages['tl'] = array(
 	'advancedrandom-desc' => 'Kumukuha ng isang alinmang pahina mula sa mga kawing ng pahina ng usapan ninuman o kabahaging pahina patungo sa isang ibinigay na pahina, magagamit na katulad ng [[Special:AdvancedRandom/Template:Featured/Talk]] upang makakuha ng isang alinmang napiling artikulo o katulad ng [[Special:AdvancedRandom/Template:GFDL/Image]] upang makakuha ng isang alinmang talaksang GFDL',
 );
 
+/** Turkish (Türkçe)
+ * @author Nyasar
+ */
+$messages['tr'] = array(
+	'advancedrandom' => 'Gelişmiş rassal',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

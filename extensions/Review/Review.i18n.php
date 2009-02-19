@@ -487,6 +487,11 @@ $messages['es'] = array(
 	'review_version_link' => 'Revisión #$1',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_user_details_link' => '(detalles)',
+	'revision_review_this_page_version_link' => 'Revisar esta versión de la página.',
+	'review_page_review' => 'Revisión de la página "$1"',
+	'review_blocked' => 'Estás bloqueado y no puedes participar en revisiones.',
+	'review_topic' => 'Tópico',
+	'review_no_opinion' => 'Sin opinión',
 	'review_comment' => 'Comentario',
 );
 

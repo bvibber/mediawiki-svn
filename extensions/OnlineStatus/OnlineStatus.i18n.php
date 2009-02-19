@@ -33,7 +33,6 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'onlinestatus-desc' => 'Short description of the Onlinestatus extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'onlinestatus-tab' => '{{Identical|Status}}',
-	'onlinestatus-toggles-desc' => 'Short description of the Onlinestatus extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -455,9 +454,20 @@ $messages['ia'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'onlinestatus-tab' => '状況',
+	'onlinestatus-desc' => '利用者が現在そのウィキ上にいるかどうかを表示できるように、{{int:preferences}}に設定項目を追加する',
+	'onlinestatus-js-anon' => 'エラー: この機能を利用するにはログインしている必要があります',
+	'onlinestatus-js-changed' => 'あなたの状態が「$1」に変更されました',
+	'onlinestatus-js-error' => '状態を変更できません。値「$1」は不正です',
+	'onlinestatus-subtitle-offline' => '現在、この利用者はオフラインです',
+	'onlinestatus-subtitle-online' => '現在、この利用者はオンラインです',
+	'onlinestatus-tab' => '状態',
+	'onlinestatus-toggles-desc' => 'あなたの状態:',
+	'onlinestatus-toggles-explain' => 'これによって、他の利用者があなたの利用者ページを見た際に、あなたがオンラインであるかどうか伝えることができます。',
+	'onlinestatus-toggles-show' => '自分の利用者ページでオンライン状態を表示する',
 	'onlinestatus-toggle-offline' => 'オフライン',
 	'onlinestatus-toggle-online' => 'オンライン',
+	'tog-onlineOnLogin' => 'ログイン時に、自分の状態をオンラインに変更する',
+	'tog-offlineOnLogout' => 'ログアウト時に、自分の状態をオフラインに変更する',
 );
 
 /** Javanese (Basa Jawa)
@@ -695,6 +705,26 @@ $messages['pt'] = array(
 	'onlinestatus-tab' => 'Estado',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
 	'onlinestatus-toggles-explain' => 'Permite que seja exibido a outros utilizadores, através de sua página de utilizador, se você se encontra online ou não.',
+	'onlinestatus-toggles-show' => 'Exibir o estado da minha ligação na minha página de utilizador',
+	'onlinestatus-toggle-offline' => 'Offline',
+	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Alterar o meu estado para online quando me autenticar',
+	'tog-offlineOnLogout' => 'Alterar o meu estado para offline quando me desautenticar',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'onlinestatus-desc' => 'Adiciona uma preferência para mostrar se o utilizador está atualmente presente no wiki ou não',
+	'onlinestatus-js-anon' => 'Erro: você tem que estar autenticado para usar esta funcionalidade',
+	'onlinestatus-js-changed' => 'O seu estado foi alterado para "$1"',
+	'onlinestatus-js-error' => 'Impossível alterar estado, o valor "$1" é inválido',
+	'onlinestatus-subtitle-offline' => 'Este utilizador não encontra-se autenticado',
+	'onlinestatus-subtitle-online' => 'Este utilizador encontra-se autenticado',
+	'onlinestatus-tab' => 'Estado',
+	'onlinestatus-toggles-desc' => 'O seu estado:',
+	'onlinestatus-toggles-explain' => 'Permite que seja exibido a outros utilizadores, através de sua página de utilizador, se você se encontra autenticado ou não.',
 	'onlinestatus-toggles-show' => 'Exibir o estado da minha ligação na minha página de utilizador',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',

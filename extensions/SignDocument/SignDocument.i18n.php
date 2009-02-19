@@ -59,6 +59,16 @@ $messages['bg'] = array(
 	'signaturelogentry' => 'подписа документа $1',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'signaturelogpage' => 'Zapisnik potpisivanja',
+	'signature-desc' => 'Omogućuje [[Special:SignDocument|potpisivanje]] dokumenata',
+	'signaturelogpagetext' => 'Ovo je zapisnik [[Special:SignDocument|svih potpisa dodanih u dokumente]].',
+	'signaturelogentry' => 'potpisan dokument $1',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Revolus

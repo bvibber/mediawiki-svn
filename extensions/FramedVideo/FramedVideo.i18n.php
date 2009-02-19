@@ -322,6 +322,7 @@ Parrammeeter, nit nuur dä „<code>width=</code>“ Parrammeeter.',
 	'framedvideo_error_no_integer' => 'Dä Wäät för dä „<code>$1=</code>“ Parrammeeter eß jedreße, un keij possitiive janze Zahl.',
 	'framedvideo_error_limit' => 'Dä jrüüßte müjjeleshe Wäät eß $1.',
 	'framedvideo_error_full_size_not_allowed' => 'Dä Wäät „full“ för dä „<code>eize=</code>“ Parrammeeter eß fö dä Viddejo-Deenß met dä Kännong „$1“ nit zohjelohße .',
+	'framedvideo_helppage' => 'Help:Viddejo',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mieh övver de <code>&lt;video&gt;</code> Syntax]].',
 	'framedvideo_error_height_and_width_required' => 'De Viddejo Zoot „$1“ bruch dä „<code>height=</code>“ Parrmeeter, un dä „<code>width2=</code>“ udder dä „<code>width=</code>“ Parrammeeter.',
 	'framedvideo-desc' => 'Määt et müjjlesh, Viddejos uß ungerscheidleshe Websigge em Wiki
@@ -443,6 +444,27 @@ $messages['pt'] = array(
 	'framedvideo_error_height_too_big' => 'O valor dado do parâmetro "height" é demasiado grande.',
 	'framedvideo_error_no_integer' => 'O valor dado de "$1" não é um número positivo.',
 	'framedvideo_error_limit' => 'O máximo valor permitido é $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Valor "full" no parâmetro "size" não permitido para o serviço de vídeo id "$1".',
+	'framedvideo_helppage' => 'Help:Vídeo',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mais sobre a sintaxe]].',
+	'framedvideo_error_height_and_width_required' => 'Vídeo tipo "$1" requer os parâmetros "height" e "width2" ou "width".',
+	'framedvideo-desc' => 'Permite incorporar vídeos de vários sítios web, usando a marca <tt><nowiki><video></nowiki></tt>',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'framedvideo_errors' => 'Ocorreram múltiplos erros!',
+	'framedvideo_error' => 'Ocorreu um erro!',
+	'framedvideo_error_unknown_type' => 'Identificador de serviço de vídeo desconhecido ("$1"): verifique o parâmetro "type".',
+	'framedvideo_error_no_id_given' => 'Parâmetro "id" em falta.',
+	'framedvideo_error_height_required' => 'Vídeo tipo "$1" requer o parâmetro "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Vídeo tipo "$1" requer o parâmetro "height", e não apenas o parâmetro "width".',
+	'framedvideo_error_width_too_big' => 'O valor dado do parâmetro "width" é muito grande.',
+	'framedvideo_error_height_too_big' => 'O valor dado do parâmetro "height" é muito grande.',
+	'framedvideo_error_no_integer' => 'O valor dado de "$1" não é um número positivo.',
+	'framedvideo_error_limit' => 'O valor máximo permitido é $1.',
 	'framedvideo_error_full_size_not_allowed' => 'Valor "full" no parâmetro "size" não permitido para o serviço de vídeo id "$1".',
 	'framedvideo_helppage' => 'Help:Vídeo',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mais sobre a sintaxe]].',

@@ -263,8 +263,25 @@ sfinks|Sfinks',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'vote' => 'Glasanje',
+	'vote-desc' => 'Omogućuje jednostavne mogućnosti glasanja',
+	'vote-header' => "Ovdje možete glasati za '''Vrhovnog vladara nad vladarima Svijeta'''!",
+	'vote-current' => "Vaš trenutni glas je za '''$1'''.",
+	'vote-legend' => 'Postavite ili dopunite glas',
+	'vote-caption' => 'Vaš odabir:',
+	'vote-choices' => 'joker|Džoker
+penguin|Pingvin
+riddler|Zagonetka',
+	'vote-submit' => 'Glasaj',
+	'vote-registered' => 'Vaš glas je registrovan.',
+	'vote-view-results' => 'Pogledaj rezultate',
+	'vote-results' => 'Rezultati glasanja',
+	'vote-results-choice' => 'Izbor',
 	'vote-results-count' => 'Brojanje',
+	'vote-results-none' => 'Do sada nisu dati glasovi.',
+	'vote-login' => 'Morate se $1 za glasanje.',
 	'vote-login-link' => 'prijavi se',
+	'vote-invalid-choice' => 'Morate odabrati jednu od ponuđenih opcija.',
 );
 
 /** Czech (Česky)
@@ -1195,11 +1212,29 @@ riddler|Enigmático',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author GKnedo
  */
 $messages['pt-br'] = array(
 	'vote' => 'Votar',
+	'vote-desc' => 'Fornece funcionalidades simples de enquetes',
+	'vote-header' => "Pode votar no '''Senhor Supremo do Mundo''' aqui!",
+	'vote-current' => "O seu voto atual é a favor de '''$1'''.",
+	'vote-legend' => 'Colocar ou corrigir voto',
+	'vote-caption' => 'Sua seleção:',
+	'vote-choices' => 'joker|O Curinga
+penguin|O Pinguim
+riddler|O Charada',
+	'vote-submit' => 'Votar',
+	'vote-registered' => 'O seu voto foi registrado.',
 	'vote-view-results' => 'Ver resultados',
+	'vote-results' => 'Resultado da votação',
+	'vote-results-choice' => 'Escolha',
+	'vote-results-count' => 'Contagem',
+	'vote-results-none' => 'De momento ainda não foram submetidos votos.',
+	'vote-login' => 'Terá de $1 para votar.',
+	'vote-login-link' => 'autenticar-se',
+	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
 );
 
 /** Romanian (Română)

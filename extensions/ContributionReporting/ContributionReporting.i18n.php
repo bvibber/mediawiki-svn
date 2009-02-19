@@ -2625,3 +2625,11 @@ $messages['vo'] = array(
 	'fundraiserstats-tab-maximums' => 'Maxums (USD)',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'contrib-hist-name' => '名称',
+	'fundraiserstats-date' => '日期',
+);
+

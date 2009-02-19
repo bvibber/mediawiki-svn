@@ -89,6 +89,19 @@ Evit kevreañ, klikit war ar bouton \"Kevreañ\" zo bet rakleuniet.
 Ul lesanv a vo lakaet d'an implijerien dianv dre ziouer met gallout a ra bezañ cheñchet.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'mibbit' => 'Mibbit dopisivanje',
+	'mibbit-desc' => 'Dodaje [[Special:Mibbit|posebnu stranicu]] koja se koristi za dopisivanje u stvarnom vremenu sa drugim wiki korisnicima',
+	'mibbit-header' => 'Ova posebna stranica Vam omogućuje da sarađujete u stvarnom vremenu sa drugim korisnicima na wiki.
+Da bi se konektovali, jednostavno kliknite na dugme "Konektuj".
+Ako ste već prijavljeni, bit će uneseno Vaše korisničko ime kao nadimak.
+Anonimni korisnicima će biti dodijeljeno automatski generisano ime, ali se ono može promijeniti.',
+	'right-mibbit' => 'Omogućeno korištenje Mibbit dopisivanja',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

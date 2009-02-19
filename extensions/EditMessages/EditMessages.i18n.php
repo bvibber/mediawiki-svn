@@ -915,6 +915,28 @@ $messages['pt'] = array(
 	'editmsg-patch-success' => 'Correcção aplicada com sucesso.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Edição baseada em web]] de um grande número de arquivos Messages*.php',
+	'editmessages' => 'Editar mensagens',
+	'editmsg-target' => 'Mensagem alvo:',
+	'editmsg-search' => 'Pesquisar',
+	'editmsg-show-list' => 'Mostrando valores para o nome de mensagem "$1"',
+	'editmsg-get-patch' => 'Gerar correção',
+	'editmsg-new-search' => 'Nova pesquisa',
+	'editmsg-warning-parse1' => '* Expressão regular de nome de mensagem sem qualquer correspondência: $1',
+	'editmsg-warning-parse2' => '* Caractere de aspa esperado após seta: $1',
+	'editmsg-warning-parse3' => '* Fim de cadeia de caracteres de valor não encontrado: $1',
+	'editmsg-warning-file' => 'Erros de leitura de arquivo foram encontrados para {{PLURAL:$2|a seguinte língua|as seguintes línguas}}: $1',
+	'editmsg-warning-mismatch' => '* O texto original não tinha o valor esperado para {{PLURAL:$2|a seguinte língua|as seguintes línguas}}: $1',
+	'editmsg-apply-patch' => 'Aplicar correção',
+	'editmsg-no-patch' => 'Não foi possível executar comando de correção "patch"',
+	'editmsg-patch-failed' => 'Aplicação de correção falhou com estado de saída $1',
+	'editmsg-patch-success' => 'Correção aplicada com sucesso.',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

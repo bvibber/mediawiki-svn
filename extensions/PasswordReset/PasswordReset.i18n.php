@@ -1282,6 +1282,13 @@ $messages['tl'] = array(
 	'right-passwordreset' => 'Muling itinakdang hudyat para sa isang tagagamit ([[Special:PasswordReset|natatanging pahina]])',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'passwordreset-username' => 'ئىشلەتكۇچى ئىسمى:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

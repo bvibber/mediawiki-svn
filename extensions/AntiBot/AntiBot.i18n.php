@@ -132,7 +132,7 @@ $messages['fi'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les soumissions de contenus à déclenchement conditionnel automatisé',
+	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les contenus à déclenchement conditionnel automatique',
 );
 
 /** Galician (Galego)

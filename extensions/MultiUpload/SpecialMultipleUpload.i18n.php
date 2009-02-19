@@ -573,6 +573,14 @@ Berkas-berkas yang tidak layak akan segera dihapuskan, lihat [[{{MediaWiki:Multi
 	'multiupload-toolbox' => 'Memuat banyak berkas sekaligus',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'multipleupload' => 'Adkargar arkivi',
+	'multipleupload-saveallfiles' => 'Registragar omna arkivi',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

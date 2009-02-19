@@ -230,9 +230,11 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
+ * @author Harald Khan
  */
 $messages['nn'] = array(
-	'communityvoice-ratings-scale-status-sending' => 'Sendar...',
+	'communityvoice-desc' => 'Reiskap for å delta i fellesskapet',
+	'communityvoice-ratings-scale-status-sending' => 'Sender...',
 	'communityvoice-ratings-scale-status-error' => 'Feil i samband med sending!',
 	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du var med på røystinga!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vote|røyster}} avgjevne)',
@@ -262,6 +264,21 @@ $messages['pt'] = array(
 	'communityvoice-desc' => 'Ferramentas de participação da comunidade',
 	'communityvoice-ratings' => 'Classificações',
 	'communityvoice-ratings-scale-status-sending' => 'A enviar...',
+	'communityvoice-ratings-scale-status-error' => 'Erro ao enviar!',
+	'communityvoice-ratings-scale-status-thanks' => 'Obrigado por votar!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voto|votos}} lançados)',
+	'communityvoice-ratings-error-no-category' => 'Atributo categoria em falta na etiqueta de classificação.',
+	'communityvoice-ratings-error-no-title' => 'Atributo título em falta na etiqueta de classificação.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'communityvoice' => 'Voz da Comunidade',
+	'communityvoice-desc' => 'Ferramentas de participação da comunidade',
+	'communityvoice-ratings' => 'Classificações',
+	'communityvoice-ratings-scale-status-sending' => 'Enviando...',
 	'communityvoice-ratings-scale-status-error' => 'Erro ao enviar!',
 	'communityvoice-ratings-scale-status-thanks' => 'Obrigado por votar!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voto|votos}} lançados)',

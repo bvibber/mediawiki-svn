@@ -3652,6 +3652,7 @@ $messages['yue'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Alex S.H. Lin
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'hiderevision' => '永久隐藏修订版本',
@@ -3687,12 +3688,14 @@ $messages['zh-hans'] = array(
 *这个页面已经被删除。
 *隐藏的页面为最先建立的版本。',
 	'oversight-log-hiderev' => '隐藏 $1 中的一个修订版本',
+	'oversight' => '监督',
 	'oversight-view' => '内容',
 	'oversight-difference' => '(与之前存在之修订版本的差异)',
 	'oversight-prev' => '最后一个之前的修订版本',
 	'oversight-hidden' => '隐藏修订',
 	'oversight-header' => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
 	'oversight-legend' => '搜寻修订隐藏日志',
+	'oversight-oversighter' => '监督者：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

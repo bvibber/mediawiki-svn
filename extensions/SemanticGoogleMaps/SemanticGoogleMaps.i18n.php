@@ -144,7 +144,7 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'חיפוש קואורדינטות',
 	'semanticgooglemaps-desc' => 'מתן האפשרות למשתמשים לערוך ולהציג נתוני קואורדינטות סמנטיים באמצעות מפות Google.',
-	'semanticgooglemaps-enteraddresshere' => 'הזינו כתובת כאן',
+	'semanticgooglemaps-enteraddresshere' => 'כתבו כתובת כאן',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -194,7 +194,23 @@ $messages['bn'] = array(
  */
 $messages['bs'] = array(
 	'spamdifftool' => 'Upravljaj s nepoželjnim spiskom spama',
+	'spamdifftool-desc' => 'Omogućuje osnovni način dodavanja novih stavki na zabranjeni spisak spama sa diff stranica',
 	'spamdifftool_cantedit' => 'Žao nam je - nemate dopuštenja za uređivanje nedopuštenog spiska spama.',
+	'spamdifftool_notext' => "Nema teksta za dodavanje na zabranjeni spisak spama.
+Kliknite <a href='$1'>ovdje</a> za nastavak.",
+	'spamdifftool_confirm' => "Potvrdite da stvarno želite dodati ove stavke na spisak nepoželjnog spama.
+(Kliknite <a href='$1' target='new'>ovdje</a> za prijavu problema.)",
+	'spamdifftool_summary' => 'Dodavanje na zabranjeni spisak spama',
+	'spamdifftool_urls_detected' => 'Slijedeći URLovi su otkriveni u izmjeni(izmjenama), koji od njih bi željeli dodati na spisak nepoželjnog spama?
+Te opcije su poredane od više ograničavajućih ka manje ograničavajućim, blokiranje cijele domene će blokirati sve linkove te sve drugo što dolazi s te domene.
+
+Budite pažljivi da ne blokirate cijele domene koje pružaju korisničke račune, poput blogpost.com, geocities.com i sl.',
+	'spamdifftool_no_urls_detected' => "Nisu pronađeni urlovi.
+Kliknite <a href='$1'>ovdje</a> za povratak.",
+	'spamdifftool_spam_link_text' => 'dodaj u spam',
+	'spamdifftool_option_domain' => 'sve iz ove domene',
+	'spamdifftool_option_subdomain' => 'sve iz ove subdomene',
+	'spamdifftool_option_directory' => 'ovu subdomenu i direktorijum',
 	'spamdifftool_option_none' => 'ništa',
 	'spamdifftool_block' => 'Blokada:',
 	'spamdifftool_submit_buttom' => 'Pošalji',
@@ -921,6 +937,33 @@ Carregue <a href='$1'>aqui</a> para voltar.",
 	'spamdifftool_option_none' => 'nada',
 	'spamdifftool_block' => 'Bloquear:',
 	'spamdifftool_submit_buttom' => 'Submeter',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'spamdifftool' => 'Gerenciar a lista negra de spam',
+	'spamdifftool-desc' => 'Fornece uma forma básica de adicionar novas entradas à lista negra de spam a partir de páginas de diferenças',
+	'spamdifftool_cantedit' => 'As nossas desculpas - você não tem permissão para editar a lista negra de spam.',
+	'spamdifftool_notext' => "Não há qualquer texto para adicionar à lista negra de spam.
+Clique <a href='$1'>aqui</a> para continuar.",
+	'spamdifftool_confirm' => "Confirme que pretende adicionar estas entradas à lista negra de spam.
+(Clique <a href='$1' target='new'>aqui</a> para reportar um problema.)",
+	'spamdifftool_summary' => 'Adicionando a lista negra de spam',
+	'spamdifftool_urls_detected' => 'As seguintes URLs foram detectadas na(s) edição(ões). Quais pretende que sejam adicionadas à lista negra de spam?
+Estas opções estão ordenadas da mais restritiva para a menos restritiva. O bloqueio de um domínio inteiro irá bloquear todas a ligações provenientes daquele domínio.
+
+Certifique-se de que não bloqueia domínios inteiros que sejam servidores de contas de utilizadores, tais como blogspot.com, geocities.com, etc.',
+	'spamdifftool_no_urls_detected' => "Nenhuma URL foi detectada.
+Clique <a href='$1'>aqui</a> para voltar.",
+	'spamdifftool_spam_link_text' => 'adicionar como spam',
+	'spamdifftool_option_domain' => 'todos deste domínio',
+	'spamdifftool_option_subdomain' => 'todos deste subdomínio',
+	'spamdifftool_option_directory' => 'este subdomínio e diretório',
+	'spamdifftool_option_none' => 'nada',
+	'spamdifftool_block' => 'Bloquear:',
+	'spamdifftool_submit_buttom' => 'Enviar',
 );
 
 /** Tarandíne (Tarandíne)

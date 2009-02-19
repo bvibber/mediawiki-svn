@@ -541,6 +541,26 @@ $messages['pt'] = array(
 	'nss-db-error' => 'Erro na leitura da base de dados de autenticação',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'accountmanager' => 'Gerenciador de contas',
+	'am-username' => 'nome de utilizador',
+	'am-email' => 'e-mail',
+	'am-active' => 'ativo',
+	'am-updated' => 'As suas alterações foram gravadas com sucesso',
+	'nss-desc' => 'Um "plugin" para autenticar numa base de dados libnss-mysql. Contém um [[Special:AccountManager|gerenciador de contas]]',
+	'nss-rights' => 'permissões',
+	'nss-save-changes' => 'Gravar alterações',
+	'nss-create-account-header' => 'Criar nova conta',
+	'nss-create-account' => 'Criar conta',
+	'nss-no-mail' => 'Não enviar email',
+	'nss-welcome-mail' => 'Uma conta com nome de utilizador $1 e palavra-chave $2 foi criada para você.',
+	'nss-welcome-mail-subject' => 'Criação de conta',
+	'nss-db-error' => 'Erro na leitura da base de dados de autenticação',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Silviubogan

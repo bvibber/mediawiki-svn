@@ -119,6 +119,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'selectcategory-title' => 'Seleccionar categorías',
+	'selectcategory-desc' => 'Permite a los usuarios seleccionar de categorías existentes cuando editen una página',
 );
 
 /** Basque (Euskara)

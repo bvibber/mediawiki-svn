@@ -204,11 +204,12 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'assert_edit_title' => "Échec de l'insertion",
-	'assert_edit_desc' => 'Ajoute des éditions d’insertion pour l’utilisation par des bots',
-	'assert_edit_message' => "L'insertion indiquée ($1) a échoué.",
+	'assert_edit_title' => 'Échec de l’assertion',
+	'assert_edit_desc' => 'Ajoute des assertions de modification pour l’utilisation par des bots',
+	'assert_edit_message' => 'L’assertion indiquée ($1) a échoué.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -428,6 +429,15 @@ $messages['ms'] = array(
 	'assert_edit_title' => 'Penegasan gagal',
 	'assert_edit_desc' => 'Menambahkan penegasan suntingan untuk digunakan oleh bot',
 	'assert_edit_message' => 'Penegasan yang dinyatakan ($1) gagal.',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'assert_edit_title' => 'Bevestiging mislok',
+	'assert_edit_desc' => 'Maak rolbevestigingen meugelijk veur gebruuk deur bots.',
+	'assert_edit_message' => 'De evreugen bevestiging ($1) is mislok.',
 );
 
 /** Dutch (Nederlands)

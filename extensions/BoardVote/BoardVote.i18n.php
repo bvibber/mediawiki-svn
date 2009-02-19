@@ -2130,18 +2130,20 @@ Nous votons pour une personne qui représentera la communauté des utilisateurs 
 Cette personne et le conseil d’administration contribueront à orienter la direction de ces projets et représenteront <em>vos</em> intérêts et <em>vos</em> préoccupations auprès du conseil d’administration.
 Ils décideront des moyens de financement et de l’affectation des fonds.</p>
 
-<p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter.
+<p>Veuillez lire attentivement les déclarations des candidats et leurs réponses aux questions avant de voter.
 Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d’effort pour faire de ces projets un endroit accueillant dédié au développement et à la libre diffusion du savoir humain.</p>
 
-<p>Veuillez classer les candidats par ordre de préférence en mettant un nombre à côté de la boîte (1 = candidat favori, 2 = deuxième candidat favori, etc.). Vous pouvez donner la même préférence à plusieurs candidats ou bien ne pas en classer certains. Il sera présumé que vous préférez tous les candidats classés à ceux qui ne le sont pas, et que vous êtes indifférent entre tous les candidats non classés.</p>
+<p>Veuillez classer les candidats par ordre de préférence en mettant un nombre à côté de la boîte (1 = candidat favori, 2 = deuxième candidat favori, etc.).
+Vous pouvez donner la même préférence à plusieurs candidats ou bien ne pas en classer certains.
+Il sera présumé que vous préférez tous les candidats classés à ceux qui ne le sont pas, et que vous êtes indifférent entre tous les candidats non classés.</p>
 
 <p>Le vainqueur de l’élection sera désigné selon le calcul utilisant la méthode Schulze.</p>
 
-<p> Pour plus d’informations, veuillez consulter les pages suivantes :</p>
+<p>Pour plus d’informations, consultez les pages suivantes :</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/fr" class="external">Élection 2008 au Conseil d’administration</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/fr" class="external">Candidats</a></li>
 <li><a href="http://fr.wikipedia.org/wiki/M%C3%A9thode_Schulze" class="external">Méthode Schulze</a></li></ul>',
-	'boardvote_intro_change' => "<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Veuillez classer les candidats par ordre de préférence : plus petit sera le nombre associé, plus grande sera votre préférence envers un candidat particulier. Vous avez le droit de donner la même préférence à plus d'un candidat et aussi de garder des candidats hors classement.</p>",
+	'boardvote_intro_change' => '<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Veuillez classer les candidats par ordre de préférence : plus petit sera le nombre associé, plus grande sera votre préférence envers un candidat particulier. Vous avez le droit de donner la même préférence à plus d’un candidat et aussi de garder des candidats hors classement.</p>',
 	'boardvote_entered' => 'Merci, votre vote a été enregistré.
 
 Si vous le souhaitez, vous pouvez enregistrer les détails suivants. Votre enregistrement de vote est :
@@ -2176,8 +2178,8 @@ Il vous est nécessaire d’avoir au moins $1 {{PLURAL:$1|contribution effectué
 $1 pour les données cryptées.</p>',
 	'boardvote_dumplink' => 'Cliquez ici',
 	'boardvote_submit' => 'Valider',
-	'boardvote_strike' => 'Biffer',
-	'boardvote_unstrike' => 'Débiffer',
+	'boardvote_strike' => 'Barrer',
+	'boardvote_unstrike' => 'Débarrer',
 	'boardvote_needadmin' => 'Seuls les administrateurs de l’élection peuvent effectuer cette opération.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Élection au conseil d’administration de la Wikimedia Foundation</a> : le vote est ouvert jusqu’au 22 juin.',
 	'boardvote_notstarted' => 'Le vote n’est pas encore commencé.',
@@ -2185,8 +2187,9 @@ $1 pour les données cryptées.</p>',
 	'boardvote_edits_many' => 'plusieurs',
 	'group-boardvote' => 'Administrateurs des élections du conseil d’administration',
 	'group-boardvote-member' => 'Membre votant du conseil d’administration',
-	'grouppage-boardvote' => '{{ns:project}}:Administrateurs des élections du board',
-	'boardvote_blocked' => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
+	'grouppage-boardvote' => '{{ns:project}}:Administrateur des élections du conseil',
+	'boardvote_blocked' => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine.
+Les utilisateurs bloqués ne peuvent pas voter.',
 	'boardvote_bot' => "Désolé, vous avez le statut de ''Bot'' sur le wiki où vous êtes enregistré{{GENDER:||e|(e)}}.
 Les comptes de ''Bot'' ne sont pas autorisés à voter.",
 	'boardvote_welcome' => "Bienvenue '''$1'''!",
@@ -3798,6 +3801,25 @@ $messages['ko'] = array(
 	'boardvote_entry' => '* [[Special:BoardVote/vote|투표]]
 * [[Special:BoardVote/list|투표한 날짜의 목록]]
 * [[Special:BoardVote/dump|암호화된 선거 기록의 덤프]]',
+	'boardvote_intro' => '<p>2008년 위키미디어 이사회 선거에 참여하시는 것을 환영합니다!
+우리는 다양한 위키미디어 프로젝트의 공동체를 대표할 한 사람에게 투표할 것입니다.
+그들은 위키미디어 프로젝트가 향후에 나아갈 방향을 정하고, 개인적으로, 그리고 조직적으로 <em>당신의</em> 입장을 대표하고, 이사회에 참여하게 될 것입니다.
+그들은 위키미디어 재단의 모금 운동과 수익을 창출할 방법을 결정할 것입니다.</p>
+
+<p>투표하기 전에 후보자의 연설을 잘 읽고, 신중하게 투표해 주시기 바랍니다.
+각 후보들은 인간 지식의 자유로운 공유를 추구하는 위키미디어 프로젝트에 상당한 시간과 노력을 들인 존경받는 사용자들입니다.</p>
+
+
+<p>당신의 선호도에 따라 상자에 순위를 정해 주시기 바랍니다. (1 = 가장 선호, 2 = 2번째로 선호, ...)
+당신은 한 후보자 이상에게 같은 순위를 정할 수도 있고, 순위를 정하지 않은 채로 내버려 둘 수도 있습니다.
+순위가 정해진 후보자를 순위가 정해지지 않은 후보자보다 더 선호하고, 당신은 순위가 정해지지 않은 후보자들에 대해 무관심하다는 것으로 간주됩니다.</p>
+
+<p>이 선거의 당선자는 Schulze method에 따라 결정됩니다. 자세한 정보는 공식 선거 문서를 참고하십시오.</p>
+
+<p>자세한 정보는 다음을 참고하십시오:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">2008년 이사회 선거</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">후보자</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze method</a></li></ul>',
 	'boardvote_intro_change' => '<p>당신은 이전에 투표하셨습니다. 하지만 아래의 양식을 이용하여 당신의 투표를 바꿀 수 있습니다. 후보들을 당신이 선호하는 순서대로 선택해 주세요. 이 때 작은 숫자가 특정 후보를 더욱 선호한다는 것을 의미합니다. 당신은 한 후보 이상에게 같은 선호도를 나타낼 수도 있고, 후보들의 순서를 정하지 않을 수도 있습니다.</p>',
 	'boardvote_entered' => '감사합니다, 당신의 투표가 기록되었습니다.
 

@@ -1668,6 +1668,7 @@ $messages['km'] = array(
 	'voctrain_unhide_definition' => 'បើកបង្ហាញនិយមន័យ',
 	'voctrain_unhide_words' => 'បើកបង្ហាញពាក្យ',
 	'voctrain_hiding' => 'លាក់',
+	'voctrain_other' => 'ផ្សេងទៀត',
 );
 
 /** Krio (Krio)
@@ -2591,6 +2592,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Osd
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -2658,6 +2660,7 @@ $messages['ru'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Скрывать определения на языке вопросов',
 	'voctrain_hide_words_in_question_language' => 'Скрывать слова на языке вопросов',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Разделите значения запятыми, что бы использовать несколько языков.',
+	'voctrain_other' => 'Другой',
 );
 
 /** Slovak (Slovenčina)

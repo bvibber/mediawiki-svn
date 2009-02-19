@@ -34,13 +34,14 @@ Your friendly %s notification system",
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'tasklist-parser-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'tasklist-special-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'tasklistincorrectuser' => '{{Identical|Incorrect username}}',
 	'tasklistbyname' => '{{Identical|Todo list for}}',
-	'tasklistemailbody' => "* 1st %s is the URL of some page (?)
+	'tasklistemailbody' => "* 1st %s is the URL of the page a task is created for
 * 2nd %s is the URL of the user's task list page
 * 3rd %s is the site name",
 );
@@ -909,6 +910,36 @@ Alguém atribuiu-lhe uma nova Tarefa em %s.
 Para ver a sua Lista de Tarefas completa, vá a %s.
 
 O seu sistema de notificação amigável',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'tasklist' => 'Lista de Tarefas',
+	'tasklist-parser-desc' => 'Adiciona a função do analisador (parser) <nowiki>{{#todo:}}</nowiki> para a atribuição de tarefas',
+	'tasklist-special-desc' => 'Adiciona uma página especial para a revisão de [[Special:TaskList|atribuições de tarefas]]',
+	'tasklistbyproject' => 'Lista de Tarefas por Projeto',
+	'tasklistunknownproject' => 'Projeto deconhecido',
+	'tasklistunspecuser' => 'Utilizador não especificado',
+	'tasklistincorrectuser' => 'Nome de utilizador incorreto',
+	'tasklistemail' => 'Caro %s',
+	'tasklistemailsubject' => '[%s] Mudança na lista de tarefas',
+	'tasklistmytasks' => 'Minhas tarefas',
+	'tasklistbyprojectbad' => "Projeto '''%s''' não é um projeto válido.
+Para uma lista de projetos válidos, ver [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Tarefas atribuídas a '''%s'''",
+	'tasklistchooseproj' => 'Selecione Projeto:',
+	'tasklistprojdisp' => 'Mostrar',
+	'tasklistbyname' => '== Lista de tarefas de %s ==',
+	'tasklistnoprojects' => "Erro: Aparentemente você ativou '''\$wgUseProjects''', mas não criou [[MediaWiki:TodoTasksValidProjects]]. Veja as [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instruções de Instalação] para mais detalhes.",
+	'tasklistemailbody' => ',
+
+Alguém atribuiu-lhe uma nova Tarefa em %s.
+
+Para ver a sua Lista de Tarefas completa, vá a %s.
+
+O seu sistema de notificação amigável de %s',
 );
 
 /** Romanian (Română)

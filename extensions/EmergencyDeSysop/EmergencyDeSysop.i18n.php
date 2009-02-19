@@ -89,7 +89,20 @@ $messages['arz'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'emergencydesysop' => 'Uklanjanje sysop prava u nuždi',
+	'emergencydesysop-desc' => 'Omogućuje administratoru da žrtvuje vlastite privilegije da bi uklonio administratorske privilegije drugom administratoru',
+	'emergencydesysop-title' => 'Uklanjanje administratorskog pristupa za trenutnog korisnika i drugog administratora',
+	'emergencydesysop-otheradmin' => 'Drugi administrator za degrupiranje',
+	'emergencydesysop-reason' => 'Razlog za uklanjanje',
+	'emergencydesysop-submit' => 'Pošalji',
+	'emergencydesysop-incomplete' => 'Sva polja u obrascu su obavezna, molimo pokušajte ponovno.',
+	'emergencydesysop-notasysop' => 'Ciljni korisnik nije u grupi administratora.',
 	'emergencydesysop-nogroups' => 'Ništa',
+	'emergencydesysop-done' => 'Akcija završena, Vi i [[$1]] više niste administratori.',
+	'emergencydesysop-invalidtarget' => 'Ciljni korisnik ne postoji.',
+	'emergencydesysop-blocked' => 'Ne možete pristupiti ovoj stranici dok ste blokirani',
+	'emergencydesysop-noright' => 'Nemate dovoljno privilegija da pristupite ovoj stranici',
+	'right-emergencydesysop' => 'mogućnost da administratori međusobno uklone svoja administratorska prava',
 );
 
 /** German (Deutsch)
@@ -463,6 +476,26 @@ $messages['pt'] = array(
 	'emergencydesysop-invalidtarget' => 'O utilizador alvo não existe.',
 	'emergencydesysop-blocked' => 'Você não pode aceder a esta página enquanto estiver bloqueado',
 	'emergencydesysop-noright' => 'Você não possui permissões suficientes para aceder a esta página',
+	'right-emergencydesysop' => 'Remover privilégios de sysop a outro utilizador, mutuamente',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'emergencydesysop' => 'Remoção de Emergência do Acesso de Sysop',
+	'emergencydesysop-desc' => 'Permite que um sysop sacrifique os seus próprios privilégios para retirar privilégios de sysop a outro',
+	'emergencydesysop-title' => 'Remover acesso de sysop de ambos o utilizador atual e outro sysop',
+	'emergencydesysop-otheradmin' => 'Outro sysop a retirar do grupo',
+	'emergencydesysop-reason' => 'Razão para a remoção',
+	'emergencydesysop-submit' => 'Enviar',
+	'emergencydesysop-incomplete' => 'Todos os campos do formulário são obrigatórios. Por favor, tente novamente.',
+	'emergencydesysop-notasysop' => 'O utilizador alvo não está no grupo de sysops.',
+	'emergencydesysop-nogroups' => 'Nenhum',
+	'emergencydesysop-done' => 'Ação completa, tanto a você como a [[$1]] foi removido o acesso de sysop.',
+	'emergencydesysop-invalidtarget' => 'O utilizador alvo não existe.',
+	'emergencydesysop-blocked' => 'Você não pode acessar esta página enquanto estiver bloqueado',
+	'emergencydesysop-noright' => 'Você não possui permissões suficientes para acessar esta página',
 	'right-emergencydesysop' => 'Remover privilégios de sysop a outro utilizador, mutuamente',
 );
 

@@ -706,6 +706,27 @@ $messages['pt'] = array(
 	'amazonplus-less' => 'menos',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'amazonplus-desc' => 'Uma extensão altamente personalizável para apresentar informações da Amazon',
+	'amazonplus-nores' => 'Erro: Nenhum resultado encontrado!',
+	'amazonplus-noidres' => 'Erro: Não foi encontrado um ID de produto!',
+	'amazonplus-fgcerr' => 'Erro: Não foi possível retornar dados da Amazon!',
+	'amazonplus-slserr' => 'Erro: Não foi possível interpretar dados da Amazon!',
+	'amazonplus-used' => 'usado',
+	'amazonplus-german' => 'Alemão',
+	'amazonplus-french' => 'Francês',
+	'amazonplus-japanese' => 'Japonês',
+	'amazonplus-amazon' => 'preço Amazon',
+	'amazonplus-new' => 'novo',
+	'amazonplus-none' => 'Nenhuma cópia deste item está disponível para venda.',
+	'amazonplus-cp-none' => 'Nenhum',
+	'amazonplus-more' => 'mais',
+	'amazonplus-less' => 'menos',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Silviubogan

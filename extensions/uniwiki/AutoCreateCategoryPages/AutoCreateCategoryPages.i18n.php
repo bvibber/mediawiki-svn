@@ -70,6 +70,17 @@ $messages['bg'] = array(
 Тя съдържа всички страници в категория „$1“ както и всички подкатегории на категорията „$1“, ако такива са налични.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'autocreatecategorypages-desc' => 'Pravi nedostajuću stranicu kategorije automatski pri spremanju',
+	'autocreatecategorypages-stub' => 'Ovo je stranica kategorije.
+Ona prikazuje sve stranice u kategoriji "$1" kao i sve podkategorije unutar kategorije "$1" ukoliko postoje.',
+	'autocreatecategorypages-createdby' => 'Napravljeno automatski putem AutoCreateCategoryPages ekstenzije.',
+	'autocreatecategorypages-editor' => 'Automatski kreator kategorija',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

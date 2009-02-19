@@ -428,6 +428,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Imre
  * @author Remember the dot
  */
@@ -440,6 +441,8 @@ $messages['es'] = array(
 	'povwatch_unknown_subpage' => 'Subpágina desconocida.',
 	'povwatch_push' => 'Presionar',
 	'povwatch_title' => 'Título:',
+	'povwatch_comment' => 'Comentario del registro:',
+	'povwatch_no_log' => 'No existen elementos.',
 	'povwatch_no_subscribers' => 'No hay suscriptores.',
 	'povwatch_unsubscribe_intro' => 'Usted está subscribido a PovWatch.
 Haga clic en el botón abajo para desubscribirse.',
@@ -883,7 +886,9 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'povwatch_pushed' => '[[$1]] 문서가 $2명의 사용자 주시문서 목록에 성공적으로 추가되었습니다.',
+	'povwatch_subscriber_list_intro' => '<strong>수신자 목록</strong>',
 	'povwatch_title' => '제목:',
+	'povwatch_subscribe' => '수신',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -42,6 +42,11 @@ $aliases['dsb'] = array(
 	'FindSpam' => array( 'Spam namakaś' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'FindSpam' => array( 'ΑναζήτησηSpam' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'FindSpam' => array( 'Atopar spam' ),

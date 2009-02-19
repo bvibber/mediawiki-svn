@@ -311,6 +311,15 @@ $messages['cu'] = array(
  */
 $messages['cy'] = array(
 	'sitematrix' => 'Rhestr holl brosiectau Wikimedia',
+	'sitematrix-summary' => 'Rhestr holl wicïau Wikimedia sydd ar y dudalen arbennig hon.',
+	'sitematrix-desc' => 'Yn dangos [[Special:SiteMatrix|rhestr wicïau Wikimedia]]',
+	'sitematrix-language' => 'Iaith',
+	'sitematrix-project' => "Enw'r prosiect, rhagddodiad cysylltu rhyngprosiect a rhagddodiad cysylltu rhyngwici",
+	'sitematrix-others' => 'Prosiectau eraill Wikimedia',
+	'sitematrix-total' => "'''Nifer y cwbl i gyd: $1'''",
+	'sitematrix-sitetotal' => 'Cyfanswm',
+	'sitematrix-private' => 'preifat',
+	'sitematrix-fishbowl' => 'cyfyngiadau ar olygu',
 );
 
 /** Danish (Dansk)

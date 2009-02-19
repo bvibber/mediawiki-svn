@@ -499,6 +499,13 @@ Untuk melakukannya, Anda harus mendapatkan sebuah kunci API dari [http://www.fli
 	'importfreeimages_returntoform' => "Atau, klik <a href='$1'>di sini</a> untuk kembali ke hasil pencarian Anda",
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'importfreeimages_owner' => 'Autoro',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

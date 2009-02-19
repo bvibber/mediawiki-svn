@@ -86,6 +86,16 @@ $messages['bg'] = array(
 	'templatelink_empty' => 'Необходимо е да се въведе параметър.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'templatelink' => 'Link šablona',
+	'templatelink_desc' => 'Ovo proširenje pokazuje šablon kao novu stranicu',
+	'templatelink_empty' => 'Morate navesti parametar.',
+	'templatelink_newtitle' => '$1 (zamijenjeno)',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

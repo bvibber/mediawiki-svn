@@ -83,6 +83,16 @@ $messages['bn'] = array(
 	'msfunc_div_zero' => 'শূন্য দিয়ে বিভাজন',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'msfunc_desc' => 'Kolekcija matematičkih i statističkih funkcija',
+	'msfunc_nan' => 'Vrijednost rezultata nije broj',
+	'msfunc_inf' => 'Vrijednost rezultata je beskonačnost',
+	'msfunc_div_zero' => 'Dijeljenje s nulom',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

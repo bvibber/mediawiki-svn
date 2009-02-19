@@ -35,6 +35,11 @@ $aliases['es'] = array(
 	'CreatePage' => array( 'Crear_página' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'CreatePage' => array( 'CréerPage', 'Créer page' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'CreatePage' => array( 'Crear a páxina' ),

@@ -119,6 +119,9 @@ Used as a column header for a table',
 	'whitelistnewtableview' => '{{Identical|Set to view}}',
 	'whitelistnewtableprocess' => '{{Identical|Process}}',
 	'whitelistnewtablereview' => '{{Identical|Review}}',
+	'whitelistoverviewna' => '* $1 is a page name
+* $2 is {{msg-mw|whitelisttablesetedit}} (when set edit) or {{msg-mw|whitelisttablesetview}} (other cases)
+* $3 is {{msg-mw|whitelistnever}} (when never expires) or a time stamp (when expires)',
 	'whitelistnever' => '{{Identical|Never}}',
 	'right-editwhitelist' => '{{Doc-right|editwhitelist}}',
 	'right-restricttowhitelist' => '{{Doc-right|restricttowhitelist}}',
@@ -1418,7 +1421,7 @@ $messages['ja'] = array(
 	'whitelistoverviewcd' => "* [[:$2|$2]] の日付を'''$1'''に変更",
 	'whitelistoverviewsa' => "* [[:$2|$2]] に '''$1''' へのアクセスを設定",
 	'whitelistoverviewrm' => '* [[:$1|$1]] へのアクセスを除去',
-	'whitelistoverviewna' => "* アクセス '''$2''' および期限切れ日時 '''$3''' で、[[:$1|$1]]をホワイトリストに追加",
+	'whitelistoverviewna' => "* アクセス権限を'''$2'''し、期限切れを '''$3''' として、[[:$1|$1]]をホワイトリストに追加",
 	'whitelistrequest' => 'ページへのアクセス追加を要望',
 	'whitelistrequestmsg' => '$1 は次のページへのアクセスを求めました:
 

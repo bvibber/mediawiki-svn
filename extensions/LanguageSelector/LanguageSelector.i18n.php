@@ -376,6 +376,7 @@ $messages['id'] = array(
  */
 $messages['io'] = array(
 	'languageselector' => 'Linguo',
+	'languageselector-setlang' => 'establisar',
 );
 
 /** Icelandic (Íslenska) */

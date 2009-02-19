@@ -65,6 +65,17 @@ $messages['bg'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Създаването на сметки беше автоматично спряно за малко заради необичайно големия брой опити за влизане. Изчакайте няколко минути и опитайте отново.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Pravljenje računa je automatski onemogućeno na nekoliko trenutaka zbog neuobičajeno velikog broja nedavno pokušanih prijava. 
+Molimo sačekajte nekoliko minuta i pokušajte ponovno.',
+	'acct_creation_global_hard_throttle_hit' => "Pravljenje računa je automatski onemogućeno na nekoliko sekundi kako bi se smanjili napadi na registraciju. 
+Molimo sačekajte trenutak i kliknite 'Reload' u pregledniku kako bi poslali ponovno.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Ograničavanje pravljenja korisničkog računa',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

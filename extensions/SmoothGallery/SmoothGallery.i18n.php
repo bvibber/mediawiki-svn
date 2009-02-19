@@ -133,6 +133,11 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Omogućuje korisnicima da naprave galerije sa slikama koje su postavili.
+Omogućuje većinu opcija iz SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
 	'smoothgallery-error' => '<b>Greška u SmoothGallery:</b>',
 	'smoothgallery-gallery-not-found' => 'Zahtijevana galerija ne postoji.',
 	'smoothgallery-not-found' => 'Nijedna slika nije dodana u galeriju.
@@ -141,6 +146,8 @@ Molimo dodajte barem jednu sliku.',
 Provjerite da {{PLURAL:$3|zahtjevana slika postoji|sve zahtijevane slike postoje}}.
 {{PLURAL:$2|Slijedeća slika nije pronađena|Slijedeće slike nisu pronađene}}: $1',
 	'smoothgallery-invalid-images' => '{{PLURAL:$2|Slijedeća zatražena slika je|Slijedeće zatražene slike su}} nevaljanog tipa: $1',
+	'smoothgallery-unexpected-error' => 'Desila se nepredviđena greška.
+Molimo ispunite izvještaj o grešci.',
 	'smoothgallery-javascript-disabled' => 'Da bi ste pravilno pregledali ovu galeriju neophodna Vam je Javascript.',
 );
 

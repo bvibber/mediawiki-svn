@@ -229,6 +229,13 @@ $messages['jv'] = array(
 	'titlekey-desc' => 'Backend prosès panggolèkan irah-irahan préfiks',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'titlekey-desc' => '문서 제목의 접두어로 검색어를 제안',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

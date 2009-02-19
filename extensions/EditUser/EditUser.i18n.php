@@ -514,7 +514,10 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'edituser' => 'Redaktar uzanto',
 	'edituser-username' => 'Nomo',
+	'edituser-dosearch' => 'Serchez',
+	'right-edituser' => 'Editar la preferaji di altra uzanti',
 );
 
 /** Icelandic (Íslenska) */

@@ -183,7 +183,7 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'oai-desc' => 'Forni un interfacie pro repositorios [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oai-desc' => 'Forni un interfacie pro depositos [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
 /** Indonesian (Bahasa Indonesia)

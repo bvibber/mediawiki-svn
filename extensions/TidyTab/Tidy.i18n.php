@@ -48,6 +48,15 @@ $messages['be-tarask'] = array(
 	'untidy' => 'Неакуратны HTML',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'tidy-desc' => 'Dodaje jezičak za redanje ili uklanjanje redanja (zavisno od $wgUseTidy) na obične stranice dajući mogućnost za zaobilaženje općih HTML postavki redanja za pojedinačni pregled',
+	'tidy' => 'Poredaj',
+	'untidy' => 'Ukloni redanje',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

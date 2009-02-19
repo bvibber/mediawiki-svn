@@ -140,9 +140,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Meithal
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’[[MediaWiki:Edittools|insertion de caractères non-standards]]',
+	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’[[MediaWiki:Edittools|insertion de caractères absents des claviers usuels]]',
 );
 
 /** Galician (Galego)

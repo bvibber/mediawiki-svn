@@ -73,6 +73,16 @@ $messages['bg'] = array(
 	'formatchanges-desc' => 'Преформатира [[Special:RecentChanges|списъка с последните промени]]',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'formatchanges-desc' => 'Mijenja format [[Special:RecentChanges|nedavnih izmjena]]',
+	'formatchanges-anonymous' => 'Anonimni',
+	'formatchanges-createdby' => '$1 - napravljen od strane $2 ($3)',
+	'formatchanges-editedby' => '$1 - {{GENDER:$2|uredio korisnik|uredila korisnica}} $2 ($3)',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

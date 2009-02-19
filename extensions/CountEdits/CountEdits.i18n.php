@@ -1294,6 +1294,14 @@ $messages['tr'] = array(
 	'countedits-ok' => 'Tamam',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'countedits-username' => 'ئىشلەتكۇچى ئىسمى:',
+	'countedits-ok' => 'ماقۇل',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

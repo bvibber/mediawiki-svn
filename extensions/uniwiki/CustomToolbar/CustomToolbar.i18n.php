@@ -1895,6 +1895,14 @@ $wgCustomToolbarMessages['tr'] = array(
 	'ct_italic_caption' => 'İtalik',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$wgCustomToolbarMessages['ug-arab'] = array(
+	'ct_submit' => 'كۆچۈش!',
+	'ct_user_sample' => 'ئىشلەتكۇچى ئىسمى',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

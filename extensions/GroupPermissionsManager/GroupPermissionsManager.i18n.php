@@ -544,17 +544,53 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'grouppermissions' => 'Administrar permisos de grupo',
+	'sortpermissions' => 'Ordenar permisos',
+	'removeunusedgroups' => 'Remover grupos no usados',
+	'grouppermissions-desc' => 'Administrar permisos de grupo a traves de una [[Special:GroupPermissions|pagina especial]]',
+	'grouppermissions-desc2' => 'Sistema de permisos extendido',
+	'grouppermissions-search' => 'Grupo:',
 	'grouppermissions-dologin' => 'Entrar',
+	'grouppermissions-dosearch' => 'Ir',
+	'grouppermissions-deletelabel' => 'Borrar grupo',
+	'grouppermissions-change' => 'Cambiar permisos de grupo',
+	'grouppermissions-add' => 'Agregar grupo',
+	'grouppermissions-delete' => 'Borrar grupo',
 	'grouppermissions-comment' => 'Comentario:',
+	'grouppermissions-addsuccess' => '$1 ha sido agregado exitosamente',
+	'grouppermissions-deletesuccess' => '$1 ha sido borrado exitosamente',
+	'grouppermissions-changesuccess' => 'Permisos para $1 han sido exitosamente cambiados',
+	'grouppermissions-true' => 'Verdadero',
+	'grouppermissions-false' => 'Falso',
+	'grouppermissions-never' => 'Nunca',
+	'grouppermissions-sort-read' => 'Leyendo',
+	'grouppermissions-sort-edit' => 'Editando',
 	'grouppermissions-sort-manage' => 'Gerencia',
 	'grouppermissions-sort-admin' => 'Administración',
 	'grouppermissions-sort-tech' => 'Técnico',
 	'grouppermissions-sort-misc' => 'Miscelánea',
+	'grouppermissions-log-add' => 'Agregado grupo "$2"',
+	'grouppermissions-log-change' => 'Permisos cambiados para grupo "$2"',
+	'grouppermissions-log-delete' => 'borrado grupo "$2"',
+	'grouppermissions-sp-sort' => 'Ordenar permisos',
 	'grouppermissions-sp-save' => 'Guardar',
+	'grouppermissions-sp-addperm' => 'Agregar permiso',
+	'grouppermissions-sp-remove' => 'remover',
+	'grouppermissions-rug-header' => 'Puedes usar esta página para remover usuarios de grupos no usados (borrados)',
+	'grouppermissions-rug-success' => 'usuarios removidos exitosamente de grupos no usados!',
+	'grouppermissions-rug-confirm' => 'Remover usurios de grupos no usados',
+	'right-grouppermissions' => 'Administrar permisos de grupo',
+	'right-viewsource' => 'Ver fuente wiki de páginas protegidas',
+	'right-info' => 'Ver información de página',
+	'right-search' => 'Buscar el wiki',
+	'right-contributions' => 'Ver páginas de contribuciones',
+	'right-recentchanges' => 'Ver cambios recientes',
+	'right-edittalk' => 'Editar páginas de discusión',
 );
 
 /** Finnish (Suomi)
@@ -2113,6 +2149,17 @@ $messages['tl'] = array(
 	'right-edittalk' => 'Baguhin ang mga pahina ng usapan',
 	'right-edit-new' => 'Baguhin ang mga pahina (na hindi mga pahina ng usapan)',
 	'right-readold' => 'Tingnan ang nilalaman ng lumang mga pagbabago at mga pagkakaiba',
+);
+
+/** Turkish (Türkçe)
+ * @author Nyasar
+ */
+$messages['tr'] = array(
+	'grouppermissions' => 'Grup izinlerini yönetin',
+	'sortpermissions' => 'İzinleri sırala',
+	'removeunusedgroups' => 'Kullanılmayan grupları sil',
+	'grouppermissions-desc' => 'Grup izinlerini [[Special:GroupPermissions|special page]] üzerinden yönetin',
+	'grouppermissions-desc4' => 'Araçlara yeni kalemler eklemeye izin verir',
 );
 
 /** Volapük (Volapük)

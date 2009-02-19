@@ -235,6 +235,14 @@ $messages['ia'] = array(
 	'icon-desc' => 'Permitte usar imagines como icones e ligamines in forma de icone',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'icon-badimage' => 'Mala imajo',
+	'icon-badwidth' => 'Mala larjeso',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

@@ -63,6 +63,16 @@ $messages['bg'] = array(
 	'protectsection_forbidden' => 'Забранен достъп',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'protectsection_desc' => 'Omogućuje potvrđenim korisnicima da zaštite dijelove stranice koristeći oznaku <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Pokušavate da dodate ili uklonite zaštićenu sekciju',
+	'protectsection_modify' => 'Pokušavate da mijenjate zaštićeni tekst',
+	'protectsection_forbidden' => 'Zabranjeno',
+);
+
 /** Catalan (Català)
  * @author Aleator
  */

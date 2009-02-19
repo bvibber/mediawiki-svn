@@ -94,7 +94,14 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'postcomment_notloggedin' => 'Niste prijavljeni.',
+	'postcomment_youareloggedinas' => 'Prijavljeni ste kao $1',
+	'postcomment_addcommentdiscussionpage' => 'Dodajte Vaš komentar na stranicu za razgovor',
 	'postcomment_leavemessagefor' => 'Ostavi poruku za $1',
+	'postcomment_on' => 'Dana',
+	'postcomment_said' => 'je napisao',
+	'postcomment_invalidrequest' => 'Nevaljan upit.',
+	'postcomment_replyto' => 'Odgovor za $1',
 );
 
 /** Czech (Česky)

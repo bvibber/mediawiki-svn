@@ -97,10 +97,14 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'layouts-desc' => 'Puni novonapravljene stranice za "izgledima" koji se mogu uređivati da bi ohrabrili pravljenje stranica standardizovane strukture',
 	'layouts_title' => 'Napravi stranicu',
+	'layouts_chooselayout' => 'Izaberi izgled za $1:',
+	'layouts_nolayout' => 'Bez izgleda',
 	'layouts_continue' => 'Nastavi',
 	'layouts_choosecategory' => 'Izaberi kategoriju za $1:',
 	'layouts_unknown' => 'Nepoznato',
+	'layouts_tagline' => "Ova stranica je generisana putem '''$1''' izgleda.",
 );
 
 /** Czech (Česky)

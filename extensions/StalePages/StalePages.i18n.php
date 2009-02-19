@@ -58,6 +58,15 @@ $messages['bg'] = array(
 	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през последните $1 дни.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'stalepages' => 'Neuređivane stranice',
+	'stalepages-desc' => 'Generiše [[Special:Stalepages|spisak stranica]] koje nisu dugo uređivane',
+	'stalepages-summary' => 'Ovo je spisak stranica koje nisu uređivane {{PLURAL:$1|prethodni $1 dan|prethodna $1 dana|prethodnih $1 dana}}.',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
