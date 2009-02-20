@@ -140,7 +140,7 @@ abstract class CommunityVoiceRatings {
 		$args,
 		$parser
 	) {
-		global $wgUser, $wgTitle;
+		global $wgUser, $wgTitle, $wgLang;
 		global $egCommunityVoiceResourcesPath;
 		// Disable caching
 		$parser->disableCache();
@@ -177,7 +177,7 @@ abstract class CommunityVoiceRatings {
 			'cv_ratings_scale_' . $args['category'] . '_' . $args['title']
 		);
 		// Gets stats message
-		$stats = wfMsgExt( 'communityvoice-ratings-scale-stats', array( 'parsemag' ), round( $rating, 1 ), $totalVotes );
+		$stats = wfMsgExt( 'communityvoice-ratings-scale-stats', array( 'parsemag' ),  $wgLang->formatnum( round( $rating, 1 ) ), $wgLang->formatnum( $totalVotes ) );
 
 		// Begins rating scale
 		$htmlOut = Html::open(
