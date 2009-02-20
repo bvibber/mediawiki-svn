@@ -74,6 +74,7 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 		resourceTypeSensors.add( new WikiTextAnalyzer.HasTemplateSensor<ResourceType>(ResourceType.DISAMBIG, "Begriffskl\u00e4rung", null) );
 		resourceTypeSensors.add( new WikiTextAnalyzer.HasCategoryLikeSensor<ResourceType>(ResourceType.LIST, "^(Teill|L)iste$|^(Teill|L)iste_\\(.+\\)$", 0));
 
+		redirectPattern = Pattern.compile("^#(?:REDIRECT(?:ION)?|WEITERLEITUNG)"+REDIRECT_LINK, Pattern.CASE_INSENSITIVE);
 		disambigStripSectionPattern = sectionPattern("Siehe auch", 0);  
 	}
 
