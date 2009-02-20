@@ -177,9 +177,8 @@ abstract class CommunityVoiceRatings {
 			'cv_ratings_scale_' . $args['category'] . '_' . $args['title']
 		);
 		// Gets stats message
-		$stats = CommunityVoice::getMessage(
-			'ratings', 'scale-stats', array( round( $rating, 1 ), $totalVotes )
-		);
+		$stats = wfMsgExt( 'communityvoice-ratings-scale-stats', array( 'parsemag' ), round( $rating, 1 ), $totalVotes );
+
 		// Begins rating scale
 		$htmlOut = Html::open(
 			'div',
