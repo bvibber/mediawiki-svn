@@ -42,7 +42,7 @@ var mv_media_iframe_path = '/mv_embed/';
 var mv_default_video_size = '400x300'; 
 
 var global_player_list = new Array();
-var global_req_cb = new Array();//the global request callback array
+var global_req_cb = new Array(); //the global request callback array
 var _global = this;
 var mv_init_done=false;
 var global_cb_count =0;
@@ -59,6 +59,7 @@ if( !mv_embed_urid ){
 	var mv_embed_urid = getMvUniqueReqId();
 }
 
+var mvLoadEvent = new Array() //the onReady global event.. @@todo should be depricated for jquery style document.ready stuff 
 //the default thumbnail for missing images:
 var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
 
@@ -144,6 +145,66 @@ function mv_set_loading(target, load_id){
 		'</div>');	
 }
 
+var mvBaseLoader = {
+	calledloadBaseLibs:false,	
+	callbacks:new Array(),
+	done:false,
+	load:function( callback){
+		//if we are done loading the libs just jump directly to the callback
+		if(this.done==true){
+			callback();
+			return ;
+		}
+		//queue the callback: 
+	 	if(callback)
+	 		mvBaseLoader.addLoadEvent(callback);
+	 	//run if not already running: 
+	 	if( ! mvBaseLoader.calledloadBaseLibs ){	 		
+		 	js_log("called loadBaseLibs");  	
+		 	//only call load base libs once
+		 	mvBaseLoader.calledloadBaseLibs=true;    	
+		 	//issue a style sheet request can come in whenever:
+		 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/styles.css'))
+				loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/styles.css');
+			  	  	  
+			//two loading stages, first get jQuery
+			var _this = this;
+		 	mvJsLoader.doLoad({
+		 		'window.jQuery'		:'jquery/jquery-1.2.6.js',
+		 		'embedVideo'		:'libEmbedObj/mv_baseEmbed.js'
+		 	},function(){  				 		
+		 		//once jQuery is loaded set up no conflict & load plugins:
+				_global['$j'] = jQuery.noConflict();
+				//set up ajax to not send dynamic urls for loading scripts
+				$j.ajaxSetup({		  
+			  		cache: true
+				});
+				js_log('jquery loaded');
+				//load the jQuery dependent plugins:  		 		
+				mvJsLoader.doLoad({
+					'$j.ui.mouse'	 	:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
+					'$j.ui.droppable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
+					'$j.ui.draggable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'
+					},function(){			
+						js_log('plugins loaded: ');			
+						mvBaseLoader.done = true;						
+						// run queued functions from (addLoadEvent)
+						mvBaseLoader.runQuededFunctions();									
+					});
+			 	});
+	 	}
+	},
+	runQuededFunctions:function(){	 	
+	 	js_log('runQuededFunctions::');
+		 while( mvBaseLoader.callbacks.length ){
+			mvBaseLoader.callbacks.shift()();
+		}	
+	 },
+	 addLoadEvent:function(fn){
+	 	mvBaseLoader.callbacks.push(fn);
+	 }	
+}
+
 /**
   * mvJsLoader class handles initialization and js file loads 
   */
@@ -154,59 +215,11 @@ var mvJsLoader = {
 	 ptime:0,
 	 ctime:0,	 
 	 load_error:false,//load error flag (false by default)
-	 calledloadBaseLibs:false,//flag for base load lib
-	 load_time:0,
-	 callbacks:new Array(),
-	 
-	 flist:new Array(),
-	 loadBaseLibs : function( callback ){	
-	 	//queue the callback: 
-	 	if(callback)
-	 		mvJsLoader.addLoadEvent(callback);
-	 	//run if not already running: 
-	 	if( ! mvJsLoader.calledloadBaseLibs ){	 		
-		 	js_log("called loadBaseLibs");  	
-		 	//only call load base libs once
-		 	mvJsLoader.calledloadBaseLibs=true;    	
-		 	//issue a style sheet request can come in whenever:
-		 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/styles.css'))
-				loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/styles.css');
-			  	  	  
-			//two loading stages, first get jQuery
-			var _this = this;
-		 	mvJsLoader.doLoad({
-		 		'window.jQuery'		:'jquery/jquery-1.2.6.js',
-		 		'embedVideo'		:'libEmbedObj/mv_baseEmbed.js'
-		 	},function(){  		
-		 		//once jQuery is loaded set up no conflict & load plugins:
-				_global['$j'] = jQuery.noConflict();
-				//set up ajax to not send dynamic urls for loading scripts
-				$j.ajaxSetup({		  
-			  cache: true
-			});
-			js_log('jquery loaded');
-			//load the jQuery dependent plugins:  		 		
-			mvJsLoader.doLoad({
-				'$j.ui.mouse'	 	:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
-				'$j.ui.droppable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
-				'$j.ui.draggable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'
-				},function(){			
-					js_log('plugins loaded');									
-					// run queued functions 
-					while (mvJsLoader.flist.length){
-						mvJsLoader.flist.shift()();
-					}											
-				});
-		 	});
-	 	}
-	 },  
-	 addLoadEvent:function(fn){
-	 	this.flist.push(fn);
-	 },	 	 
+	 load_time:0,	 
+	 callbacks:new Array(),	 	  	 
 	 doLoad:function(libs, callback){
 	 	this.ctime++;
-	 	if(libs){ //setup this.libs: 	 	
-	 		 	
+	 	if(libs){ //setup this.libs: 	 		 		 	
 	 		//first check if we already have this lib loaded
 	 		var all_libs_loaded=true;
 	 		for(var i in libs){
@@ -216,11 +229,11 @@ var mvJsLoader = {
 				}		
 	 		}
 	 		if( all_libs_loaded ){
-	 			//jump directly to the call back; do not pass go do not issue load request
+	 			js_log('all libs already loaded skiping...' + libs);
 				callback();
 				return ;
-			}				
-	 		
+			}					 	
+			debug_attr = (getMvEmbedURL().indexOf('debug=') !== false)?'&debug=true':'';	
 	 		//check if we should use the script loader to combine all the requests into one:
 		 	if( MV_USE_SCRIPT_LOADER ){		
 		 		var class_set = '';
@@ -233,14 +246,16 @@ var mvJsLoader = {
 			 	 		last_class=i;
 			 	 		coma=',';
 		 	 		}
-		 	 	}	 	 			 	 	
+		 	 	}	 	 					 	 	 	
 		 	 	this.libs[ last_class ] = 'mvwScriptLoader.php?class=' + class_set +
-		 	 						'&urid='+ mv_embed_urid;	 		 	 	
+		 	 						'&urid='+ getMvUniqueReqId()+
+		 	 						debug_attr; 			
 		 	}else{			 	 		 	 			 		 	 
 				//do many requests:
 			 	for(var i in libs){ //for in loop oky on object
-			 		//js_log('add lib: '+i + ' = ' + libs[i]);
-			 		this.libs[i]=libs[i];
+			 		// do a direct load of the file (pass along unique id from request or mv_embed Version ) 
+			 		var qmark = (libs[i].indexOf('?')!==true)?'?':'&';
+			 		this.libs[i]=libs[i] + qmark + 'urid='+ getMvUniqueReqId(); 
 			 	}	 				
 			}
 		}
@@ -255,6 +270,7 @@ var mvJsLoader = {
 				setTimeout( 'mvJsLoader.doLoad()', 25 );
 			 }
 		 }else{
+		 	js_log('checkLoading passed for:  do run callbacks');
 		 	//only do callback if we are in the same instance (weird concurency issue) 		 	
 		 	var cb_count=0;
 		 	for(var i=0; i < this.callbacks.length; i++)
@@ -271,7 +287,7 @@ var mvJsLoader = {
 					//func();		
 		 		}else{
 		 			//re-issue doLoad ( ptime will be set to ctime so we should catch up) 
-		 			setTimeout('mvJsLoader.doLoad()',25);
+		 			setTimeout( 'mvJsLoader.doLoad()', 25 );
 		 			break;
 		 		}
 		 	}		 	
@@ -302,7 +318,11 @@ var mvJsLoader = {
 	 	 }
 		 this.cur_path = cur_path;
 		 return true;
+	},
+	loadBaseLibs:function( callback ){
+		mvBaseLoader.load( callback);
 	}
+	
 }
 
 
@@ -726,13 +746,17 @@ function init_mv_embed(force){
 		js_log('we have vids to process');		
 		//load libs and proccess: 		    		
 		mvJsLoader.loadBaseLibs(function(){
-			mv_embed();
+			//run any queded global events:
+			mv_embed( function(){
+				while(mvLoadEvent.length){
+					mvLoadEvent.pop()();		
+				}
+			});					
 		});		
 	}else{
-		js_log('no video or playlist on the page... (done)');
-		//run any queued functions:
-		while (mvJsLoader.flist.length){
-			mvJsLoader.flist.shift()();
+		//run any queded global events: 
+		while(mvLoadEvent.length){
+			mvLoadEvent.pop()();		
 		}
 	}
 }
@@ -1038,7 +1062,7 @@ function ntp2seconds(ntp){
 
 //addLoadEvent for adding functions to be run when the page DOM is done loading
 function mv_addLoadEvent(func) {
-	mvJsLoader.addLoadEvent(func);
+	mvLoadEvent.push(func);
 }
 
 //does a remote or local api request based on request url 
@@ -1157,14 +1181,8 @@ function mv_jsdata_cb(response){
 //load external js via dom injection
 //@@todo swich over to jQuery injection
 function loadExternalJs(url, callback){
-	//add a unique request id to ensure fresh copies where appropriate 
-	if( url.indexOf('?')==-1 ){
-		url+='?'+mv_embed_urid;
-	}
    	js_log('load js: '+ url);
-    //if(window['$j'])
-    	//have to use direct ajax call instead of $j.getScript()
-    	//since you can't send "cache" option to $j.getScript()
+    //if(window['$j']) //use jquery call:    
        /*$j.ajax({
 			type: "GET",
 			url: url,

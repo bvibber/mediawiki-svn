@@ -348,17 +348,16 @@ function mvfAutoAllPageHeader() {
 	if( $mvgJSDebug ){		
 		$unique_req_param = time();
 	}else{
-		//@@could just read from the svn version file info
+		//@@todo should read form svn version file info
 		$unique_req_param = MV_VERSION;
 	}
 	
 	/* (moved to on_dom ready)  but here as well*/
 	if( $wgEnableScriptLoader ){
-		$debug_param = ($mvgJSDebug)?'&debug=true':false;	
+		$debug_param = ($mvgJSDebug) ? '&debug=true' : '';	
 		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mvwScriptLoader.php?" . 
 								"class=window.jQuery,j.fn.autocomplete,j.fn.hoverIntent,mv_embed,mv_allpages,mv_search" .
-								'&urid=' .$unique_req_param . 
-								$debug_param . "\"></script>"
+								'&urid=' .$unique_req_param . $debug_param . "\"></script>"
 						 );
 	}else{
 		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.6.min.js?{$unique_req_param}\"></script>" );

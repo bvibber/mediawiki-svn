@@ -29,7 +29,6 @@ loadGM( {
 	
 	"no_edit_permissions" : "You don\'t have permissions to save changes to this sequence", 
 	
-	
 	"edit_clip" : "Edit Clip",
 	"edit_save" : "Save Changes",
 	"edit_cancel" : "Cancel Edit",
@@ -46,7 +45,6 @@ loadGM( {
 	"clip_in" : "clip in",
 	"clip_out" : "clip out",
 	
-	//menu items display helper: 
 	"mv_welcome_to_sequencer" : "<h3>Welcome to the sequencer demo</h3>"+
 	"very <b>limited</b> functionality right now. Not much documentation yet either",
 	

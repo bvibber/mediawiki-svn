@@ -53,7 +53,7 @@ mv_addLoadEvent(mv_load_interface_libs);
 
 function mv_load_interface_libs(){
 	js_log('f:mv_load_interface_libs');
-	//we will need mv_embed stuff:
+	//make sure the mv_embed stuff is loaded 
 	mvJsLoader.loadBaseLibs(function(){
 		js_log('load stream js');
 		//load some additional plugins/components:

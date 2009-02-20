@@ -25,7 +25,7 @@ function mv_setup_allpage(){
  			'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'
  		}, function(){
 			//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
-			if( !mv_setup_allpage_flag ){
+			if( ! mv_setup_allpage_flag ){
 				mv_setup_search_ac();
 				mv_do_mvd_link_rewrite();
 				mv_page_specific_rewrites();

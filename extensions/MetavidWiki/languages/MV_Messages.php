@@ -11,6 +11,138 @@ $messages = array();
  * @author Michael Dale
  */
 $messages['en'] = array(
+
+#javascript mappings per file: 
+
+#mv_embed.js
+	"loading_txt"=>"loading <blink>...</blink>",
+	"loading_plugin" => "loading plugin<blink>...</blink>",
+	"select_playback" => "Set Playback Preference",
+	"link_back" => "Link Back",
+	"error_load_lib" => "mv_embed=> Unable to load required javascript libraries\n insert script via DOM has failed, try reloading?  ",
+				 	
+	"error_swap_vid" => "Error=>mv_embed was unable to swap the video tag for the mv_embed interface",
+	
+	"download_segment" => "Download Selection:",
+	"download_full" => "Download Full Video File:",
+	"download_clip" => "Download the Clip",
+	"download_text" => "Download Text (<a style=\"color=>white\" title=\"cmml\" href=\"http=>//wiki.xiph.org/index.php/CMML\">cmml</a> xml:",
+	
+	"clip_linkback" => "Clip Source Page",
+	
+	"ogg-player-vlc-mozilla" => "VLC Plugin",
+	"ogg-player-videoElement" => "Native Ogg Video Support",
+	"ogg-player-vlc-activex" => "VLC ActiveX",
+	"ogg-player-oggPlay" => "Annodex OggPlay Plugin",
+	"ogg-player-oggPlugin" => "Generic Ogg Plugin",
+	"ogg-player-quicktime-mozilla" => "Quicktime Plugin",
+	"ogg-player-quicktime-activex" => "Quicktime ActiveX",
+	"ogg-player-cortado" => "Java Cortado",
+	"ogg-player-flowplayer" => "Flowplayer",
+	"ogg-player-selected" => " (selected)",
+	"generic_missing_plugin" => "You browser does not appear to support playback type=> <b>$1</b><br> visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
+			
+	"add_to_end_of_sequence" => "Add to End of Sequence",
+	
+	"missing_video_stream" => "The video file for this stream is missing",
+	
+	"select_transcript_set" => "Select Text Layers",
+	"auto_scroll" => "auto scroll",
+	"close" => "close",
+	"improve_transcript" => "Improve Transcript",
+	
+	"next_clip_msg" => "Play Next Clip",
+	"prev_clip_msg" => "Play Previous Clip",
+	"current_clip_msg" => "Continue Playing this Clip",	
+	"seek_to" => "Seek to",
+
+#mvUploader.js
+	"upload-enable-converter"=>"Enable video converter (to upload source video not yet converted to theora format) <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>",
+	"upload-fogg_not_installed"=>"If you want to upload video consider installing <a href=\"http://firefogg.org\">firefogg.org</a>, <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>",
+	"upload-in-progress"=>"Doing Transcode & Upload (do not close this window)",
+	"upload-transcoded-status"=>"Transcoded",
+	"uploaded-status"=>"Uploaded",
+	"upload-select-file"=>"Select File...",
+	"wgfogg_wrong_version"=>"You have firefogg installed but its outdated, <a href=\"http://firefogg.org\">please upgrade</a> ",
+	"wgfogg_waring_ogg_upload"=>"You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?",
+
+#remoteSearchDriver.js
+	"mv_media_search"=>"Media Search why test test",
+	"rsd_box_layout"=>"Box layout",
+	"rsd_list_layout"=>"List Layout",
+	"rsd_results_desc"=>"Results some ",
+	"rsd_results_next"=>"next ",
+	"rsd_results_prev"=>"previous ",
+	"upload"=>"Upload",
+	"rsd_layout"=>"Layout:",
+	"rsd_resource_edit"=>"Edit Resource:",
+	
+#mvClipEdit.js
+	"mv_crop"=>"Crop Image",
+	"mv_apply_crop"=>"Apply Crop to Image",
+	"mv_reset_crop"=>"Rest Crop",
+	"mv_insert_image_page"=>"Insert Into page",
+	"mv_preview_insert"=>"Preview Insert",
+	"mv_cancel_image_insert"=>"Cancel Image Insert",
+	
+	"sc_fileopts"=>"Clip Detail Edit",
+	"sc_inoutpoints"=>"Set In-Out points",
+	"sc_panzoom"=>"Pan Zoom Crop",
+	"sc_overlays"=>"Overlays",
+	"sc_audio"=>"Audio Control",
+	"sc_duration"=>"Duration",
+		
+	"mv_template_properties"=>"Template Properties",
+	"mv_custom_title"=>"Custom Title",
+	"mv_edit_properties"=>"Edit Properties",
+	"mv_other_properties"=>"Other Properties",
+	"mv_resource_page"=>"Resource Page",
+
+#mvSequencer.js
+	"menu_clipedit"=>"Edit Selected Resource",	
+	"menu_cliplib"=>"Add Resource",
+	"menu_transition"=>"Transitions Effects",
+	"menu_resource_overview"=>"Resource Overview",
+	"menu_options"=>"Options",
+	
+	"loading_timeline"=>"Loading TimeLine <blink>...</blink>",
+	"loading_user_rights"=>"Loading user rights <blink>...</blink>",
+	
+	"no_edit_permissions"=>"You don\'t have permissions to save changes to this sequence", 
+	
+	
+	"edit_clip"=>"Edit Clip",
+	"edit_save"=>"Save Changes",
+	"edit_cancel"=>"Cancel Edit",
+	"edit_cancel_confirm"=>"Are you sure you want to cancel your edit, changes will be lost",
+			
+	"zoom_in"=>"Zoom In",
+	"zoom_out"=>"Zoom Out",
+	"cut_clip"=>"Cut Clips",
+	"expand_track"=>"Expand Track",
+	"colapse_track"=>"Collapse Track",
+	"play_clip"=>"Play From Playline Position",
+	"pixle2sec"=>"pixles to seconds",
+	"rmclip"=>"Remove Clip",
+	"clip_in"=>"clip in",
+	"clip_out"=>"clip out",
+	
+	"mv_welcome_to_sequencer"=>"<h3>Welcome to the sequencer demo</h3>"+
+	"very <b>limited</b> functionality right now. Not much documentation yet either",
+	
+	"no_selected_resource"=>"<h3>No Resource selected</h3> Select a Clip to enable resource editing",
+	"error_edit_multiple"=>"<h3>Multiple Resources Selected</h3> Select a single clip to edit it", 
+	
+	"mv_editor_options"=>"Editor options",
+	"mv_editor_mode"=>"Editor mode",
+	"mv_simple_editor_desc"=>"simple editor (iMovie style)",
+	"mv_advanced_editor_desc"=>"advanced editor (Final Cut style)",
+	"mv_other_options"=>"Other Options",	
+	"mv_contextmenu_opt"=>"Enable Context Menus",
+
+
+#normal php based msg keys: 
+
 	'metavid' => 'Metavid page',
 	'mv_missing_stream' => 'Missing stream: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki special pages',
