@@ -47,34 +47,34 @@ $wgPasswordStrengthRegexes[] = '/^\d+$/'; // No passwords made of all digits
  * strength tests
  */
 function psCheckRegex( $user, $newpass, $status ) {
-	global $wgPasswordStrengthCheck;
+	global $wgPasswordStrengthCheck, $wgLang;
 	if ( $status != 'success' ) { // skip earlier checks
 		return true;
 	}
 	wfLoadExtensionMessages( 'PasswordStrength' );
-	
+
 	if ( $wgMustHaveInts > 0 ) {
 		preg_match_all( "/[0-9]/", $newpass, $matches );
 		if ( (count($matches) - 1)  < $wgMustHaveInts ) {
-			$result = wfMsgExt( 'passwordstr-needmore-ints', array( 'parsemag'), $wgMustHaveInts );
+			$result = wfMsgExt( 'passwordstr-needmore-ints', array( 'parsemag' ), $wgLang->formatNum( $wgMustHaveInts ) );
 			throw new PasswordError( $result );
 		}
 	}
 	if ( $wgMustHaveUpperCase > 0 ) {
 		preg_match_all( "/[A-Z]/", $newpass, $matches );
 		if ( (count($matches) - 1)  < $wgMustHaveUpperCase ) {
-			$result = wfMsgExt( 'passwordstr-needmore-upper', array( 'parsemag'), $wgMustHaveUpperCase );
+			$result = wfMsgExt( 'passwordstr-needmore-upper', array( 'parsemag' ), $wgLang->formatNum( $wgMustHaveUpperCase ) );
 			throw new PasswordError( $result );
 		}
 	}
 	if ( $wgMustHaveLowerCase > 0 ) {
 		preg_match_all( "/[a-z]/", $newpass, $matches );
 		if ( (count($matches) - 1)  < $wgMustHaveLowerCase ) {
-			$result = wfMsgExt( 'passwordstr-needmore-lower', array( 'parsemag'), $wgMustHaveLowerCase );
+			$result = wfMsgExt( 'passwordstr-needmore-lower', array( 'parsemag' ), $wgLang->formatNum( $wgMustHaveLowerCase ) );
 			throw new PasswordError( $result );	
 		}
 	}
-	
+
 	if ( is_array( $wgPasswordStrengthCheck ) ) {
 		foreach ( $wgPasswordStrengthCheck as $regex ) {
 			if ( preg_match( $regex, $password ) ) {
