@@ -35,10 +35,9 @@ class SpecialRecordAdmin extends SpecialPage {
 			if ( $wpTitle && !ereg( "^$type:.+$", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
 		}
 
-		$wgOut->addHTML( $wgLang->pipeList( array(
-			"<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>",
-			"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br>\n"
-		) ) );
+		$wgOut->addHTML( "<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a> | "
+			. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br>\n"
+		);
 
 		# Get posted form values if any
 		$posted = array();
