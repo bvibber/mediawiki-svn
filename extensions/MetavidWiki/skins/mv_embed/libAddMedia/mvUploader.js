@@ -4,18 +4,15 @@ will be replaced with upload API once that is ready
 */
 
 loadGM( { 
-	'upload-enable-converter' : 'Enable video converter (to upload source video not yet converted to theora format)'+
-								' <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>',
-	'upload-fogg_not_installed': 'If you want to upload video consider installing <a href="http://firefogg.org">firefogg.org</a>, '+ 
-											'<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">more info</a>',
-	'upload-in-progress':'Doing Transcode & Upload (do not close this window)',
-	'upload-transcoded-status': 'Transcoded',
-	'uploaded-status':'Uploaded',
-	'upload-select-file': 'Select File...',
-	'wgfogg_wrong_version': 'You have firefogg installed but its outdated, <a href="http://firefogg.org">please upgrade</a> ',
-	'wgfogg_waring_ogg_upload': 'You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?'
-	}
-);
+	"upload-enable-converter" : "Enable video converter (to upload source video not yet converted to theora format) <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>",
+	"upload-fogg_not_installed": "If you want to upload video consider installing <a href=\"http://firefogg.org\">firefogg.org</a>, <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more info</a>",
+	"upload-in-progress":"Doing Transcode & Upload (do not close this window)",
+	"upload-transcoded-status": "Transcoded",
+	"uploaded-status": "Uploaded",
+	"upload-select-file": "Select File...",
+	"wgfogg_wrong_version": "You have firefogg installed but its outdated, <a href=\"http://firefogg.org\">please upgrade</a> ",
+	"wgfogg_waring_ogg_upload": "You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?"
+});
 
 var default_upload_options = {
 	'target_div':'',

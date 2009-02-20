@@ -16,26 +16,23 @@ if(typeof wgScriptPath=='undefined')
 		
 var gMvd={};
 function mv_setup_allpage(){
-	js_log("mv embed done loading now setup 'all page'");	
-	
+	js_log("mv embed done loading now setup 'all page'");		
 	//make sure we have jQuery and any base required libs:
-	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){
- 		_global['$j'] = jQuery.noConflict();
- 		js_log('allpage_ did jquery check'); 		 		
- 		
- 		var reqLibs = {'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
- 					   '$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'};
- 		mvJsLoader.doLoad(
- 			reqLibs, function(){
-	 				//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
-					if(!mv_setup_allpage_flag){
-						mv_setup_search_ac();
-						mv_do_mvd_link_rewrite();
-						mv_page_specific_rewrites();
-						//set the flag:
-						mv_setup_allpage_flag=true;
-					}
-				});
+	mvJsLoader.loadBaseLibs(function(){ 		
+ 		js_log('allpage_ did jquery check'); 		
+ 		mvJsLoader.doLoad( {
+ 			'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
+ 			'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'
+ 		}, function(){
+			//js_log('allpage_ auto and hover check'+mv_setup_allpage_flag);
+			if( !mv_setup_allpage_flag ){
+				mv_setup_search_ac();
+				mv_do_mvd_link_rewrite();
+				mv_page_specific_rewrites();
+				//set the flag:
+				mv_setup_allpage_flag=true;
+			}
+		});
 	});
 }
 function mv_do_sequence_edit_swap(mode){

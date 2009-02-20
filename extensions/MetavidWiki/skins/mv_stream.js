@@ -54,13 +54,13 @@ mv_addLoadEvent(mv_load_interface_libs);
 function mv_load_interface_libs(){
 	js_log('f:mv_load_interface_libs');
 	//we will need mv_embed stuff:
-	mvEmbed.load_libs(function(){
+	mvJsLoader.loadBaseLibs(function(){
 		js_log('load stream js');
 		//load some additional plugins/components:
 		//:hoverIntent
 		//http://cherne.net/brian/resources/jquery.hoverIntent.html
 		mvJsLoader.doLoad({
-			'$j.autocomplete'	: 'jquery/plugins/jquery.autocomplete.js',
+			'$j.fn.autocomplete'	: 'jquery/plugins/jquery.autocomplete.js',
 			'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
 			'$j.ui.resizable'	: 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
 			'mvClipEdit'		: 'libClipEdit/mvClipEdit.js'
@@ -68,8 +68,12 @@ function mv_load_interface_libs(){
 	  		//now extend draggable
 	  		mvJsLoader.doLoad({
 				'$j.ui.draggable.prototype.plugins.drag':'jquery/plugins/ui.draggable.ext.js'
-		  	},function(){
-	  			mv_stream_interface.init();
+		  	},function(){		  	
+		  		//make sure mv_embed has done video re-write: 			  		
+		  		mv_embed( function(){
+	  				mv_stream_interface.init();
+	  			});
+	  				
 		  	});
 	  	});
 	});
@@ -95,7 +99,7 @@ var mv_stream_interface = {
 		//add_custom_effects();
 		//set up the init values for mouse over restore:
 		org_vid_title = $j('#mv_stream_time').html();
-		if( $j('#embed_vid').length==0 || !$j('#embed_vid').get(0).ready_to_play){
+		if( $j('#embed_vid').length==0 || !$j('#embed_vid').get(0).ready_to_play ){
 			//no embed video present stop init
 			js_log('no clip ready to play');
 			return false;

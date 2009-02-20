@@ -19,7 +19,7 @@ class MV_MagicWords {
 	// list of valid arguments and their default value:
 	var $params = array ( 'format' => 'ul_list', 'num_results' => 5,
 						 'time_range' => 'last_week', 'class' => '',
-						 'person' => '', 'bill' => '' );
+						 'person' => '', 'bill' => '', 'display_cat'=>'' );
 
 	function __construct( $arg_list ) {
 		// print_r($arg_list);
@@ -209,38 +209,42 @@ class MV_MagicWords {
 					$ptitle = Title::MakeTitle( NS_MAIN, $mvd_row->Speech_by );
 					$mvd_out_html .= '<span class="keywords">' .
 							$sk->makeKnownLinkObj( $ptitle, $ptitle->getText() ) .
- 						'</span>';
+ 						'</span><br>';
 				}
 			}
 			if ( isset( $mvd_row->Bill ) ) {
 				if ( trim( $mvd_row->Bill ) != '' ) {
 					$btitle = Title::MakeTitle( NS_MAIN, $mvd_row->Bill );
-					$mvd_out_html .= '<br><span class="keywords">Bill:' .
+					$mvd_out_html .= '<span class="keywords">Bill: ' .
 							$sk->makeKnownLinkObj( $btitle ) . '
- 						</span>';
+ 						</span><br>';
 				}
 			}
 			global $wgContLang;
 			$mvdNStxt = $wgContLang->getNsText(MV_NS_MVD);
-			//grab categories:
-			/*$cl_res = $dbr->select('categorylinks', 'cl_to',
-			 array('cl_sortkey'=>$mvdNStxt.':'.str_replace('_',' ',$mvd_row->wiki_title)),
-			 'getTopClips::Categories',
-			 'LIMIT 0, 5');
-			 if($dbr->numRows($cl_res)!=0){
-			 $o.='<span class="keywords">Categories: ';
-			 $coma='';
-			 while($cl_row= $dbr->fetchObject($cl_res) ){
-			 $cTitle =  Title::MakeTitle(NS_CATEGORY, $cl_row->cl_to);
-			 $mvd_out_html.=$coma.$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
-			 $coma=', ';
-			 }
-			 $mvd_out_html.='</span>';
-			 }*/
+			
+			//grab categories if no bill or speech
+			if( $this->params['display_cat'] || $mvd_out_html=='' ){
+				$dbr = wfGetDB( DB_READ );
+				 $cl_res = $dbr->select('categorylinks', 'cl_to',
+				 array('cl_sortkey'=>$mvdNStxt.':'.str_replace('_',' ',$mvd_row->wiki_title)),
+					 'getTopClips::Categories',
+					 'LIMIT 0, 5');
+				 if($dbr->numRows($cl_res)!=0){
+					$mvd_out_html .='<span class="keywords">Categories: ';
+					$coma='';
+					while($cl_row= $dbr->fetchObject($cl_res) ){
+						 $cTitle =  Title::MakeTitle(NS_CATEGORY, $cl_row->cl_to);
+						 $mvd_out_html.=$coma.$sk->makeKnownLinkObj($cTitle, $cTitle->getText());
+						 $coma=', ';
+				 	}
+					$mvd_out_html.='</span><br>';
+				 }
+			}
 		}else{		
-			//return false if we have not meta
-			if( isset($opt['remove_no_meta']) && $opt['remove_no_meta'])
-				return false;
+			//we have not meta
+			//if( isset($opt['remove_no_meta']) && $opt['remove_no_meta'])
+			//return false;
 		}
 		
 		

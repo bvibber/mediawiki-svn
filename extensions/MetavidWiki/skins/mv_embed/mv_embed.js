@@ -22,7 +22,11 @@ if( MV_EMBED_VERSION ){
 }
 
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0r10';
+var MV_EMBED_VERSION = '1.0r11';
+
+//if we should use the scriptLoader 
+//( lets you group requests, minimize javascript, and use mediaWiki localization infastructure) 
+var MV_USE_SCRIPT_LOADER = true;
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -68,52 +72,48 @@ function loadGM( msgSet ){
 }
 
 //all default msg in [English] should be overwritten by the CMS language msg system.
-loadGM( { 
-	'loading_txt':'loading <blink>...</blink>',
-	'loading_plugin' : 'loading plugin<blink>...</blink>',
-	'select_playback' : 'Set Playback Preference',
-	'link_back' : 'Link Back',
-	'error_load_lib' : 'mv_embed: Unable to load required javascript libraries\n'+
-				 	'insert script via DOM has failed, try reloading?  ',
+loadGM({ 
+	"loading_txt":"loading <blink>...</blink>",
+	"loading_plugin" : "loading plugin<blink>...</blink>",
+	"select_playback" : "Set Playback Preference",
+	"link_back" : "Link Back",
+	"error_load_lib" : "mv_embed: Unable to load required javascript libraries\n insert script via DOM has failed, try reloading?  ",
 				 	
-	'error_swap_vid' : 'Error:mv_embed was unable to swap the video tag for the mv_embed interface',
+	"error_swap_vid" : "Error:mv_embed was unable to swap the video tag for the mv_embed interface",
 	
-	'download_segment' : 'Download Selection:',
-	'download_full' : 'Download Full Video File:',
-	'download_clip' : 'Download the Clip',
-	'download_text' : 'Download Text (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">cmml</a> xml):',
+	"download_segment" : "Download Selection:",
+	"download_full" : "Download Full Video File:",
+	"download_clip" : "Download the Clip",
+	"download_text" : "Download Text (<a style=\"color:white\" title=\"cmml\" href=\"http://wiki.xiph.org/index.php/CMML\">cmml</a> xml):",
 	
-	'clip_linkback' : 'Clip Source Page',
-	//plugin names:
-	'ogg-player-vlc-mozilla' : 'VLC Plugin',
-	'ogg-player-videoElement' : 'Native Ogg Video Support',
-	'ogg-player-vlc-activex' : 'VLC ActiveX',
-	'ogg-player-oggPlay' : 'Annodex OggPlay Plugin',
-	'ogg-player-oggPlugin' : 'Generic Ogg Plugin',
-	'ogg-player-quicktime-mozilla' : 'Quicktime Plugin',
-	'ogg-player-quicktime-activex' : 'Quicktime ActiveX',
-	'ogg-player-cortado' : 'Java Cortado',
-	'ogg-player-flowplayer' : 'Flowplayer',
-	'ogg-player-selected' : ' (selected)',
-	'generic_missing_plugin' : 'You browser does not appear to support playback type: <b>$1</b><br>' +
-			'visit the <a href="http://metavid.org/wiki/Client_Playback">Playback Methods</a> page to download a player<br>',
+	"clip_linkback" : "Clip Source Page",
+	
+	"ogg-player-vlc-mozilla" : "VLC Plugin",
+	"ogg-player-videoElement" : "Native Ogg Video Support",
+	"ogg-player-vlc-activex" : "VLC ActiveX",
+	"ogg-player-oggPlay" : "Annodex OggPlay Plugin",
+	"ogg-player-oggPlugin" : "Generic Ogg Plugin",
+	"ogg-player-quicktime-mozilla" : "Quicktime Plugin",
+	"ogg-player-quicktime-activex" : "Quicktime ActiveX",
+	"ogg-player-cortado" : "Java Cortado",
+	"ogg-player-flowplayer" : "Flowplayer",
+	"ogg-player-selected" : " (selected)",
+	"generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
 			
-	'add_to_end_of_sequence' : 'Add to End of Sequence',
+	"add_to_end_of_sequence" : "Add to End of Sequence",
 	
-	'missing_video_stream' : 'The video file for this stream is missing',
+	"missing_video_stream" : "The video file for this stream is missing",
 	
-	'select_transcript_set' : 'Select Text Layers',
-	'auto_scroll' : 'auto scroll',
-	'close' : 'close',
-	'improve_transcript' : 'Improve Transcript',
+	"select_transcript_set" : "Select Text Layers",
+	"auto_scroll" : "auto scroll",
+	"close" : "close",
+	"improve_transcript" : "Improve Transcript",
 	
-	'next_clip_msg' : 'Play Next Clip',
-	'prev_clip_msg' : 'Play Previous Clip',
-	'current_clip_msg' : 'Continue Playing this Clip',
-	
-	'seek_to' : 'Seek to'
-	}
-);
+	"next_clip_msg" : "Play Next Clip",
+	"prev_clip_msg" : "Play Previous Clip",
+	"current_clip_msg" : "Continue Playing this Clip",	
+	"seek_to" : "Seek to"
+});
 
 //get a language message 
 function gM( key , args ) {
@@ -144,113 +144,169 @@ function mv_set_loading(target, load_id){
 		'</div>');	
 }
 
-/*********** INITIALIZATION CODE *************
- * the mvEmbed object drives basic loading of libs
- * its load_libs function will be called if mv_embed is to be used on a given page
- *********************************************/
-var mvEmbed = {
-  Version: MV_EMBED_VERSION,
-  loaded:false,
-  load_time:0,
-  flist:Array(),
-  load_callback:false,
-  loading:false,
-  libs_loaded:false,
-  //plugin libs var names and paths:
-  lib_base:{
-  	'window.jQuery'		:'jquery/jquery-1.2.6.js',
-  	'embedVideo'		:'libEmbedObj/mv_baseEmbed.js'
-  },
-  lib_plugins:{  	
-	'$j.ui.mouse'	 	:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js' //load the core ui		
-  },
-  // not used: 
-  //'$j.timer.global':'jquery/plugins/jquery.timers.js',
-  lib_controlui:{
-  	'$j.ui.droppable':'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
-	'$j.ui.draggable':'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'		
-  },
-  /* @@todo move to single packaged jquery ui library:   
-	, //include draggable
-	'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'
-	'$j.ui.progressbar':'jquery/jquery-ui-personalized-1.6rc1.debug.js'	
-   */
-  pc:null, //used to store pointer to parent clip (when in playlist mode)
-  load_libs:function( callback , target_id){
-  	//js_log('f:load_libs: '+callback);
-  	if( callback )this.load_callback = callback;
-  	
-  	//if libs are already loaded jump directly to the callback
-  	if(this.libs_loaded){
-  		mvEmbed.init( target_id );
-  		return true;
-  	}  
- 	//two loading stages, first get jQuery
-	var _this = this;
-  	mvJsLoader.doLoad(this.lib_base,function(){
-  		js_log("type of " + typeof window.jQuery);
-  		//once jQuery is loaded set up no conflict & load plugins:
- 		_global['$j'] = jQuery.noConflict();
- 		//set up ajax to not send dynamic urls for loading scripts
- 		$j.ajaxSetup({		  
-		  cache: true
-		});
- 		js_log('jquery loaded'); 		 		
-		mvJsLoader.doLoad(_this.lib_plugins, function(){
-			//load control ui after ui.core loaded
-			mvJsLoader.doLoad(_this.lib_controlui, function(){
-				js_log('plugins loaded');
-				mvEmbed.libs_loaded=true;
-				mvEmbed.init();
+/**
+  * mvJsLoader class handles initialization and js file loads 
+  */
+var mvJsLoader = {
+	 libreq:{},
+	 libs:{},
+	 //to keep consistency across threads: 
+	 ptime:0,
+	 ctime:0,	 
+	 load_error:false,//load error flag (false by default)
+	 calledloadBaseLibs:false,//flag for base load lib
+	 load_time:0,
+	 callbacks:new Array(),
+	 
+	 flist:new Array(),
+	 loadBaseLibs : function( callback ){	
+	 	//queue the callback: 
+	 	if(callback)
+	 		mvJsLoader.addLoadEvent(callback);
+	 	//run if not already running: 
+	 	if( ! mvJsLoader.calledloadBaseLibs ){	 		
+		 	js_log("called loadBaseLibs");  	
+		 	//only call load base libs once
+		 	mvJsLoader.calledloadBaseLibs=true;    	
+		 	//issue a style sheet request can come in whenever:
+		 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/styles.css'))
+				loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/styles.css');
+			  	  	  
+			//two loading stages, first get jQuery
+			var _this = this;
+		 	mvJsLoader.doLoad({
+		 		'window.jQuery'		:'jquery/jquery-1.2.6.js',
+		 		'embedVideo'		:'libEmbedObj/mv_baseEmbed.js'
+		 	},function(){  		
+		 		//once jQuery is loaded set up no conflict & load plugins:
+				_global['$j'] = jQuery.noConflict();
+				//set up ajax to not send dynamic urls for loading scripts
+				$j.ajaxSetup({		  
+			  cache: true
 			});
-		});
-  	});
-  },  
-  addLoadEvent:function(fn){
-  	this.flist.push(fn);
-  },
-  init: function( target_id ){
-    //load mv_embed skin stylesheet: 
-  	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/styles.css'))
-		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/styles.css');
-  	
-	mv_embed( target_id );	
-	
-	this.check_init_done();	
-  },
-  /*
-   * should be cleaned up ... the embedType loading should be part of load_libs above:
-   */
-  check_init_done:function(){  	  	
-  	//check if all videos are "ready to play"
-  	var is_ready=true;
-  	
-  	for(var i=0; i < global_player_list.length; i++){
-  		if( $j('#'+global_player_list[i]).length !=0){
-	  		var cur_vid =  $j('#'+global_player_list[i]).get(0);  		
-	    	is_ready = ( cur_vid.ready_to_play ) ? is_ready : false;
-	    	if( !is_ready && cur_vid.load_error ){ 
-	    		is_ready=true;
-	    		$j(cur_vid).html( cur_vid.load_error );
-	    	}
-    	}
-    }
-    //js_log('f:check_init_done '+ is_ready + ' ' + cur_vid.load_error + ' rtp: '+ cur_vid.ready_to_play);
-  	if( !is_ready ){
-  		//js_log('some ' + global_player_list + ' not ready');
-  		setTimeout( 'mvEmbed.check_init_done()', 50 );
-  	}else{
-		//call the callback:
-		if(typeof this.load_callback == 'function')
-			if(this.load_callback)this.load_callback();		
-		
-		//js_log('run queue functions:' + mvEmbed.flist);
-		while (mvEmbed.flist.length){
-			mvEmbed.flist.shift()();
-		}  	
-  	}
-  }
+			js_log('jquery loaded');
+			//load the jQuery dependent plugins:  		 		
+			mvJsLoader.doLoad({
+				'$j.ui.mouse'	 	:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
+				'$j.ui.droppable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
+				'$j.ui.draggable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'
+				},function(){			
+					js_log('plugins loaded');									
+					// run queued functions 
+					while (mvJsLoader.flist.length){
+						mvJsLoader.flist.shift()();
+					}											
+				});
+		 	});
+	 	}
+	 },  
+	 addLoadEvent:function(fn){
+	 	this.flist.push(fn);
+	 },	 	 
+	 doLoad:function(libs, callback){
+	 	this.ctime++;
+	 	if(libs){ //setup this.libs: 	 	
+	 		 	
+	 		//first check if we already have this lib loaded
+	 		var all_libs_loaded=true;
+	 		for(var i in libs){
+	 			//check if the lib is already loaded: 
+				if( ! this.checkObjPath( i ) ){
+					all_libs_loaded=false;							
+				}		
+	 		}
+	 		if( all_libs_loaded ){
+	 			//jump directly to the call back; do not pass go do not issue load request
+				callback();
+				return ;
+			}				
+	 		
+	 		//check if we should use the script loader to combine all the requests into one:
+		 	if( MV_USE_SCRIPT_LOADER ){		
+		 		var class_set = '';
+		 	 	var last_class = '';	
+		 	 	var coma = ''; 
+		 	 	for( var i in libs ){
+		 	 		//only add if not included yet: 
+		 	 		if( ! this.checkObjPath( i ) ){
+			 	 		class_set+=coma + i ;	 	 		
+			 	 		last_class=i;
+			 	 		coma=',';
+		 	 		}
+		 	 	}	 	 			 	 	
+		 	 	this.libs[ last_class ] = 'mvwScriptLoader.php?class=' + class_set +
+		 	 						'&urid='+ mv_embed_urid;	 		 	 	
+		 	}else{			 	 		 	 			 		 	 
+				//do many requests:
+			 	for(var i in libs){ //for in loop oky on object
+			 		//js_log('add lib: '+i + ' = ' + libs[i]);
+			 		this.libs[i]=libs[i];
+			 	}	 				
+			}
+		}
+		if( callback ){ 
+		 	 	this.callbacks.push(callback);
+		}		
+		if( mvJsLoader.checkLoading() ){
+			 if( this.load_time++ > 2000){ //time out after ~50seconds
+			 	js_error( gM('error_load_lib') +  this.cur_path );
+			 	this.load_error=true;			 	
+			 }else{
+				setTimeout( 'mvJsLoader.doLoad()', 25 );
+			 }
+		 }else{
+		 	//only do callback if we are in the same instance (weird concurency issue) 		 	
+		 	var cb_count=0;
+		 	for(var i=0; i < this.callbacks.length; i++)
+		 		cb_count++;		 		
+		 	//js_log('REST LIBS: loading is: '+ loading + ' run callbacks: '+cb_count +' p:'+ this.ptime +' c:'+ this.ctime);
+		 	//reset the libs
+		 	this.libs={};		 			 			 			
+		 	//js_log('done loading do call: ' + this.callbacks[0] );		 
+		 	while( this.callbacks.length !=0 ){
+		 		if( this.ptime== ( this.ctime-1) ){ //enforce thread consistency
+		 			this.callbacks.pop()();
+		 			//func = this.callbacks.pop();
+		 			//js_log(' run: '+this.ctime+ ' p: ' + this.ptime + ' ' +loading+ ' :'+ func);
+					//func();		
+		 		}else{
+		 			//re-issue doLoad ( ptime will be set to ctime so we should catch up) 
+		 			setTimeout('mvJsLoader.doLoad()',25);
+		 			break;
+		 		}
+		 	}		 	
+		 }
+		 this.ptime=this.ctime;		
+	 },
+	 checkLoading:function(){
+	 	 var loading=0;
+		 var i=null;
+		 for(var i in this.libs){ //for in loop oky on object			 		 
+			 if( ! this.checkObjPath( i ) ){				 
+				 if(!this.libreq[i]) loadExternalJs( mv_embed_path + this.libs[i] );
+				 this.libreq[i]=1;
+				 loading=1;
+			 }
+		 }		 
+		 return loading;
+	},
+	checkObjPath:function( libVar ){
+	 	 var objPath = libVar.split('.')
+		 var cur_path ='';		 
+		 for(var p=0; p < objPath.length; p++){
+			 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
+			 eval( 'var ptest = typeof ( '+ cur_path + ' ); ');				 
+			 if( ptest == 'undefined'){				 			
+				 return false;
+			 }			 
+	 	 }
+		 this.cur_path = cur_path;
+		 return true;
+	}
 }
+
+
+
 
 /**
   * mediaPlayer represents a media player plugin.
@@ -649,87 +705,6 @@ embedTypes.init();
 
 //load an external JS (similar to jquery .require plugin)
 //but checks for object availability rather than load state
-var mvJsLoader = {
-	 libreq:{},
-	 libs:{},
-	 //to keep consistency across threads: 
-	 ptime:0,
-	 ctime:0,	 
-	 load_error:false,//load error flag (false by default)
-	 
-	 load_time:0,
-	 callbacks:new Array(),
-	 doLoad:function(libs,callback){	
-	 	 this.ctime++;
-	 	 //js_log('doLoad: '+this.ctime);
-	 	 //stack callbacks	
-	 	 if(callback){ 
-	 	 	this.callbacks.push(callback);
-	 	 }				 	 		
-		 //merge any new requested libs
-		 if(libs){
-		 	for(var i in libs){ //for in loop oky on object
-		 		//js_log('add lib: '+i + ' = ' + libs[i]);
-		 		this.libs[i]=libs[i];
-		 	}
-		 }		 		 
-		 var loading=0;
-		 var i=null;
-		 for(var i in this.libs){ //for in loop oky on object
-		 	 //if(i=='vlcEmbed')alert('got called with '+i+' ' + typeof(vlcEmbed));
-			 //itor the objPath (to avoid 'has no properties' errors)
-			 var objPath = i.split('.');
-			 var cur_path ='';
-			 var cur_load=0;
-			 for(var p=0; p < objPath.length; p++){
-				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];				 
-				 if(eval('typeof '+cur_path)=='undefined'){
-					 cur_load = loading=1;
-					 //js_log("cur_load = loading=1");
-					 break;
-				 }
-				 //if we have made the full comparison break out:
-				 if(cur_path==i){
-				 	break;
-				 }
-		 	 }
-			 if(cur_load==1){				 
-				 if(!this.libreq[i])loadExternalJs(mv_embed_path + this.libs[i]);
-				 this.libreq[i]=1;
-			 }
-		 }
-		 if(loading){
-			 if( this.load_time++ > 2000){ //time out after ~50seconds
-			 	js_error( gM('error_load_lib') +  cur_path);
-			 	this.load_error=true;			 	
-			 }else{
-				setTimeout('mvJsLoader.doLoad()',25);
-			 }
-		 }else{
-		 	//only do callback if we are in the same range: 		 	
-		 	var cb_count=0;
-		 	for(var i=0; i < this.callbacks.length; i++)
-		 		cb_count++;		 		
-		 	//js_log('REST LIBS: loading is: '+ loading + ' run callbacks: '+cb_count +' p:'+ this.ptime +' c:'+ this.ctime);
-		 	//reset the libs
-		 	this.libs={};		 			 			 			
-		 	//js_log('done loading do call: ' + this.callbacks[0] );		 
-		 	while( this.callbacks.length !=0 ){
-		 		if( this.ptime== ( this.ctime-1) ){ //enforce thread consistency
-		 			this.callbacks.pop()();
-		 			//func = this.callbacks.pop();
-		 			//js_log(' run: '+this.ctime+ ' p: ' + this.ptime + ' ' +loading+ ' :'+ func);
-					//func();		
-		 		}else{
-		 			//re-issue doLoad ( ptime will be set to ctime so we should catch up) 
-		 			setTimeout('mvJsLoader.doLoad()',25);
-		 			break;
-		 		}
-		 	}		 	
-		 }
-		 this.ptime=this.ctime;
-	 }
-}
 
 /*********** INITIALIZATION CODE *************
  * this will get called when DOM is ready
@@ -740,7 +715,7 @@ var mvJsLoader = {
  * $j(document).ready( function(){ */
 function init_mv_embed(force){
 	js_log('f:init_mv_embed');
-	if(!force && mv_init_done  ){
+	if( !force && mv_init_done  ){
 		js_log("mv_init_done do nothing...");
 		return false;
 	}
@@ -749,13 +724,15 @@ function init_mv_embed(force){
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
 		js_log('we have vids to process');		
-		//load libs		    		
-		mvEmbed.load_libs();		
+		//load libs and proccess: 		    		
+		mvJsLoader.loadBaseLibs(function(){
+			mv_embed();
+		});		
 	}else{
 		js_log('no video or playlist on the page... (done)');
 		//run any queued functions:
-		while (mvEmbed.flist.length){
-			mvEmbed.flist.shift()();
+		while (mvJsLoader.flist.length){
+			mvJsLoader.flist.shift()();
 		}
 	}
 }
@@ -765,7 +742,9 @@ function init_mv_embed(force){
 function rewrite_by_id( vid_id, ready_callback ){
 	js_log('f:rewrite_by_id: ' + vid_id);	
 	//force a recheck of the dom for playlist or video element: 	
-	mvEmbed.load_libs( ready_callback, vid_id );
+	mvJsLoader.loadBaseLibs(function(){
+	 	mv_embed(ready_callback, vid_id ); 
+	});
 }
 
 
@@ -795,81 +774,165 @@ if (document.addEventListener && !embedTypes.safari ) {
 /*
 * Converts all occurrences of <video> tag into video object
 */
-function mv_embed( force_id ){
-	//get mv_embed location if it has not been set
-	js_log('mv_embed ' + mvEmbed.Version);
-	
-	var loadPlaylistLib=false;
-	//set up the jQuery selector: 
-	var j_selector = 'video,audio,playlist';
-	if( force_id !=null )
-		var j_selector = '#'+force_id;
-	
-	js_log('SELECTOR: '+ j_selector);
-	
-	//process selected elements: 
-	$j(j_selector).each(function(){
-		js_log( "Do SWAP: " + $j(this).attr("id") + ' tag: '+ this.tagName.toLowerCase() );
-				
-		if( $j(this).attr("id") == '' ){
-			$j(this).attr("id", 'v'+ global_player_list.length);
-		}			
-		//stre a global reference to the id    
-    	global_player_list.push( $j(this).attr("id") );
-		//add loading: (pre-loading div) 		
-		/*$j(this).after('<div id="pre_loading_div_'+elm_id + '">'+
-            	gM('loading_txt')+'</div>' );
-        */ 
-        
-        //if video doSwap
-        switch( this.tagName.toLowerCase()){
-        	case 'video':
-        		var videoInterface = new embedVideo(this);	 
-				swapEmbedVideoElement( this, videoInterface );
-        	break;
-        	case 'audio':
-        		var videoInterface = new embedVideo(this);	 
-        		videoInterface.type ='audio';
-				swapEmbedVideoElement( this, videoInterface );
-        	break;
-        	case 'playlist':
-        		loadPlaylistLib=true;
-        	break;
-        }
-	});	
-	if(loadPlaylistLib){
-		js_log('f:load Playlist Lib:');
-		mvJsLoader.doLoad({'mvPlayList':'libSequencer/mvPlayList.js'},function(){
-			$j('playlist').each(function(){		
-				//check if we are in sequence mode load sequence libs (if not already loaded)				 				
-				if( $j(this).attr('sequencer')=="true" ){
-					var pl_element = this;
-					//load the mv_sequencer and the json util lib:
-					mvJsLoader.doLoad({
-							'mvSeqPlayList':'libSequencer/mvSequencer.js'							
-						},function(){
-							var seqObj = new mvSeqPlayList( pl_element );
-							swapEmbedVideoElement( pl_element, seqObj );								
-						}
-					); 
-				}else{					
-					//create new playlist interface:
-					var plObj = new mvPlayList( this );		
-					swapEmbedVideoElement(this, plObj);
-					var added_height = plObj.pl_layout.title_bar_height + plObj.pl_layout.control_height;		
-					//move into a blocking display container with height + controls + title height: 
-					$j('#'+plObj.id).wrap('<div style="display:block;height:' + (plObj.height + added_height) + 'px;"></div>');	
-				}											
-			});
-		});
-	}		
+function mv_embed(swap_done_callback, force_id){
+	mvEmbed.init( swap_done_callback, force_id );
 }
-
+mvEmbed = {	
+	flist:new Array(),
+	init:function( swap_done_callback, force_id ){
+		if(swap_done_callback)
+			mvEmbed.flist.push( swap_done_callback );
+		//get mv_embed location if it has not been set
+		js_log('mv_embed ' + MV_EMBED_VERSION);
+		
+		this.swap_done_callback = swap_done_callback;
+		
+		var loadPlaylistLib=false;
+		//set up the jQuery selector: 				
+		if( force_id == null && force_id != '' ){
+			var j_selector = 'video,audio,playlist';
+		}else{
+			var j_selector = '#'+force_id;
+		}
+		
+		js_log('SELECTOR: '+ j_selector);
+		
+		//process selected elements: 
+		$j(j_selector).each(function(){
+			js_log( "Do SWAP: " + $j(this).attr("id") + ' tag: '+ this.tagName.toLowerCase() );
+					
+			if( $j(this).attr("id") == '' ){
+				$j(this).attr("id", 'v'+ global_player_list.length);
+			}			
+			//stre a global reference to the id    
+		   	global_player_list.push( $j(this).attr("id") );
+			//add loading: (pre-loading div) 		
+			/*$j(this).after('<div id="pre_loading_div_'+elm_id + '">'+
+		           	gM('loading_txt')+'</div>' );
+		       */ 
+		       
+		       //if video doSwap
+		       switch( this.tagName.toLowerCase()){
+		       	case 'video':
+		       		var videoInterface = new embedVideo(this);	 
+					mvEmbed.swapEmbedVideoElement( this, videoInterface );
+		       	break;
+		       	case 'audio':
+		       		var videoInterface = new embedVideo(this);	 
+		       		videoInterface.type ='audio';
+					mvEmbed.swapEmbedVideoElement( this, videoInterface );
+		       	break;
+		       	case 'playlist':
+		       		loadPlaylistLib=true;
+		       	break;
+		       }        
+		});	
+		if(loadPlaylistLib){		
+			mvJsLoader.doLoad({ 'mvPlayList' : 'libSequencer/mvPlayList.js' },function(){
+				$j('playlist').each(function(){		
+					//check if we are in sequence mode load sequence libs (if not already loaded)				 				
+					if( $j(this).attr('sequencer')=="true" ){
+						var pl_element = this;
+						//load the mv_sequencer and the json util lib:
+						mvJsLoader.doLoad({
+								'mvSeqPlayList':'libSequencer/mvSequencer.js'							
+							},function(){
+								var seqObj = new mvSeqPlayList( pl_element );
+								mvEmbed.swapEmbedVideoElement( pl_element, seqObj );																					
+							}
+						); 
+					}else{					
+						//create new playlist interface:
+						var plObj = new mvPlayList( this );		
+						mvEmbed.swapEmbedVideoElement(this, plObj);
+						var added_height = plObj.pl_layout.title_bar_height + plObj.pl_layout.control_height;		
+						//move into a blocking display container with height + controls + title height: 
+						$j('#'+plObj.id).wrap('<div style="display:block;height:' + (plObj.height + added_height) + 'px;"></div>');					
+					}											
+				});
+			});
+		}
+		this.checkClipsReady();
+	},
+	/*
+	* swapEmbedVideoElement
+	* takes a video element as input and swaps it out with
+	* an embed video interface based on the video_elements attributes
+	*/
+	swapEmbedVideoElement:function(video_element, videoInterface){
+		js_log('do swap ' + videoInterface.id + ' for ' + video_element);
+		embed_video = document.createElement('div');
+		//make sure our div has a hight/width set:
+			
+		$j(embed_video).css({
+			'width':videoInterface.width,
+			'height':videoInterface.height
+		});
+		//inherit the video interface
+		for(var method in videoInterface){ //for in loop oky in Element context	
+			if(method!='readyState'){ //readyState crashes IE
+				if(method=='style'){
+						embed_video.setAttribute('style', videoInterface[method]);
+				}else if(method=='class'){
+					if(embedTypes.msie)
+						embed_video.setAttribute("className", videoInterface['class']);
+					else
+						embed_video.setAttribute("class", videoInterface['class']);
+				}else{
+					//normal inherit:
+					embed_video[method]=videoInterface[method];
+				}
+			}
+			//string -> boolean:
+			if(embed_video[method]=="false")embed_video[method]=false;
+			if(embed_video[method]=="true")embed_video[method]=true;
+		}	
+		///js_log('did vI style');  
+		//now swap out the video element for the embed_video obj:  	
+	  	$j(video_element).after(embed_video).remove();	
+	  	//js_log('did swap');    	  
+	  	$j('#'+embed_video.id).get(0).on_dom_swap();
+	  	//remove loading: 
+	  	$j('#pre_loading_div_'+embed_video.id).remove();
+		// now that "embed_video" is stable, do more initialization (if we are ready)
+		if($j('#'+embed_video.id).get(0).loading_external_data==false && 
+		   	$j('#'+embed_video.id).get(0).init_with_sources_loadedDone==false){
+			//load and set ready state since source are available: 
+			$j('#'+embed_video.id).get(0).init_with_sources_loaded();
+		}   
+	    js_log('done with child: ' + embed_video.id + ' len:' + global_player_list.length);
+	 	return true;
+	},
+	//this should not be needed.
+	checkClipsReady : function(){
+		var is_ready=true;  	
+	  	for(var i=0; i < global_player_list.length; i++){
+	  		if( $j('#'+global_player_list[i]).length !=0){
+		  		var cur_vid =  $j('#'+global_player_list[i]).get(0);  		
+		    	is_ready = ( cur_vid.ready_to_play ) ? is_ready : false;
+		    	if( !is_ready && cur_vid.load_error ){ 
+		    		is_ready=true;
+		    		$j(cur_vid).html( cur_vid.load_error );
+		    	}
+	    	}
+	    }
+		if( is_ready ){
+			mvEmbed.allClipsReady = true;
+			// run queued functions 
+			js_log('run queded functions:');
+			while (mvEmbed.flist.length){
+				mvEmbed.flist.shift()();
+			}
+		}else{			 	
+	 		setTimeout( 'mvEmbed.checkClipsReady()', 25 );
+	 	}	  		
+	}
+}
 /* init remote search */
 function mv_do_remote_search(initObj){
 	js_log(':::::mv_do_remote_search::::');
 	//insure we have the basic libs (jquery etc) : 
-	mvEmbed.load_libs(function(){
+	mvJsLoader.loadBaseLibs(function(){
 		//load search specifc extra stuff 
 		mvJsLoader.doLoad({
 			'mvBaseRemoteSearch':'libAddMedia/remoteSearchDriver.js'
@@ -888,7 +951,7 @@ function mv_do_sequence(initObj){
 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css'))
 		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
 	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
-	mvEmbed.load_libs(function(){		
+	mvJsLoader.loadBaseLibs(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
 				'mvPlayList':'libSequencer/mvPlayList.js',
@@ -916,57 +979,6 @@ function mv_do_sequence(initObj){
 					});
 		});
 	});
-}
-
-
-/*
-* swapEmbedVideoElement
-* takes a video element as input and swaps it out with
-* an embed video interface based on the video_elements attributes
-*/
-function swapEmbedVideoElement(video_element, videoInterface){
-	js_log('do swap ' + videoInterface.id + ' for ' + video_element);
-	embed_video = document.createElement('div');
-	//make sure our div has a hight/width set:
-		
-	$j(embed_video).css({
-		'width':videoInterface.width,
-		'height':videoInterface.height
-	});
-	//inherit the video interface
-	for(var method in videoInterface){ //for in loop oky in Element context	
-		if(method!='readyState'){ //readyState crashes IE
-			if(method=='style'){
-					embed_video.setAttribute('style', videoInterface[method]);
-			}else if(method=='class'){
-				if(embedTypes.msie)
-					embed_video.setAttribute("className", videoInterface['class']);
-				else
-					embed_video.setAttribute("class", videoInterface['class']);
-			}else{
-				//normal inherit:
-				embed_video[method]=videoInterface[method];
-			}
-		}
-		//string -> boolean:
-		if(embed_video[method]=="false")embed_video[method]=false;
-		if(embed_video[method]=="true")embed_video[method]=true;
-	}	
-	///js_log('did vI style');  
-	//now swap out the video element for the embed_video obj:  	
-  	$j(video_element).after(embed_video).remove();	
-  	//js_log('did swap');    	  
-  	$j('#'+embed_video.id).get(0).on_dom_swap();
-  	//remove loading: 
-  	$j('#pre_loading_div_'+embed_video.id).remove();
-	// now that "embed_video" is stable, do more initialization (if we are ready)
-	if($j('#'+embed_video.id).get(0).loading_external_data==false && 
-	   	$j('#'+embed_video.id).get(0).init_with_sources_loadedDone==false){
-		//load and set ready state since source are available: 
-		$j('#'+embed_video.id).get(0).init_with_sources_loaded();
-	}   
-    js_log('done with child: ' + embed_video.id + ' len:' + global_player_list.length);
- 	return true;
 }
 /*
 * utility functions:
@@ -1026,7 +1038,7 @@ function ntp2seconds(ntp){
 
 //addLoadEvent for adding functions to be run when the page DOM is done loading
 function mv_addLoadEvent(func) {
-	mvEmbed.addLoadEvent(func);
+	mvJsLoader.addLoadEvent(func);
 }
 
 //does a remote or local api request based on request url 
@@ -1193,18 +1205,19 @@ function loadExternalCss(url){
 function getMvEmbedURL(){
 	js_elements = document.getElementsByTagName("script");
 	for(var i=0;i<js_elements.length; i++){		
-		if( js_elements[i].src.indexOf('mv_embed.js') !=-1){
+		if( js_elements[i].src.indexOf('mv_embed') !=-1){
 			return  js_elements[i].src;			
 		}
 	}
 	return false;
 }
-//gets a unique id from the mv_embed url else returns the version number
+//gets a unique request id to ensure fresh javascript 
 function getMvUniqueReqId(){
 	var mv_embed_url = getMvEmbedURL();
-	if( mv_embed_url.indexOf('?')!=-1 ){
-		return mv_embed_url.substr( mv_embed_url.indexOf('?')+1 );
-	}
+	var urid = parseUri( mv_embed_url).queryKey['urid']
+	if( urid )
+		return urid;
+	//else just return the mv_embed version;
 	return MV_EMBED_VERSION;
 }
 /*
@@ -1212,7 +1225,11 @@ function getMvUniqueReqId(){
  */
 function getMvEmbedPath(){	
 	var mv_embed_url = getMvEmbedURL();
-	mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
+	if(mv_embed_url.indexOf('mv_embed.js') !== -1){
+		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
+	}else{
+		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mvwScriptLoader.php'));
+	}
 	//absolute the url (if relative) (if we don't have mv_embed path)
 	if(mv_embed_path.indexOf('://')==-1){	
 		var pURL = parseUri( document.URL );		
@@ -1258,7 +1275,7 @@ function js_log(string){
       */
      /*var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
-     	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:50px;"><textarea id="mv_js_log" cols="80" rows="2"></textarea></div>');
+     	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:50px;"><textarea id="mv_js_log" cols="120" rows="10"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){

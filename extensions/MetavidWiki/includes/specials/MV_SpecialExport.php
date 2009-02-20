@@ -558,7 +558,7 @@ class mvRSSFeed extends ChannelFeed {
 		if ( !$mvTitle->doesStreamExist() )return ;
 
 		// @@todo this should be cached
-		$thumb_ref = $mvTitle->getStreamImageURL( '320x240', null, '', true );
+		$thumb_ref = $mvTitle->getFullStreamImageURL( '320x240', null, '', true );
 		if ( $desc_html == '' ) {
 			$article = new Article( $wikiTitle );
 			$wgOut->clearHTML();
@@ -590,13 +590,21 @@ $mvTitle->getStreamNameText() . ' ' .  $time_desc )?></title>
 <?php echo $desc_xml?>
 </description>
 <?php
-global $mvDefaultVideoQualityKey, $mvVidQualityMsgKeyType;
-//check a few different types:
-$stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoQualityKey);
-if($stream_url !== false && isset( $mvVidQualityMsgKeyType[ $mvDefaultVideoQualityKey ]) ) {
-	echo '<enclosure name="'. wfMsg($mvDefaultVideoQualityKey) .'" type="video/ogg" url="'. mvRSSFeed::xmlEncode( $ogg_stream_url ) .'"/>';
+global $mvDefaultVideoQualityKey, $mvVidQualityMsgKeyType, $mvDefaultVideoHighQualityKey;
+//check a few different types in order of prefrence: 
+if( $stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoHighQualityKey) ){
+	$mk = $mvDefaultVideoHighQualityKey;
+}else if( $stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoQualityKey) ) {
+	$mk = $mvDefaultVideoQualityKey;	
+}else if( $stream_url = $mvTitle->getWebStreamURL($mvDefaultFlashQualityKey) ) {
+	$mk = $mvDefaultFlashQualityKey;
+}
+if($stream_url) {
+	echo '<enclosure name="'. wfMsg($mk) .'" type="video/ogg" '. 
+		'url="'. mvRSSFeed::xmlEncode( $stream_url ).'"/>';
 }
 ?>
+
 <comments>
 <?php echo mvRSSFeed::xmlEncode( $talkpage->getFullUrl() )?>
 </comments>

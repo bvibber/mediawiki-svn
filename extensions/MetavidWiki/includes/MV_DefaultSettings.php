@@ -22,8 +22,10 @@ include_once( 'MV_GlobalFunctions.php' );
 
 
 //script loader settings: 
+$mvgJSDebug=false;
 $wgEnableScriptLoader = true; //if the script loader is on at all
 $wgEnableScriptLoaderJsFile = true; //if you can use the script loader with js files (rather than only js classes) 
+$wgEnableScriptMinify = true;
 
 
 
@@ -31,7 +33,7 @@ $wgEnableScriptLoaderJsFile = true; //if you can use the script loader with js f
 // (causes the inclution of jquery into every page.. can slow things down a bit)   
 $mvEnableAutoComplete = true;
 
-$mvgJSDebug=false;
+
 
 // if you want mvd links to be rewritten client side as inline movie clips and link to the stream page
 $mvEnableJSMVDrewrite = true;

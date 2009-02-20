@@ -8,15 +8,15 @@
 	and archive.org
 */
 
-loadGM( {  'mv_media_search' : 'Media Search',
-	'rsd_box_layout' : 'Box layout',
-	'rsd_list_layout' : 'List Layout',
-	'rsd_results_desc' : 'Results some ',
-	'rsd_results_next' : 'next ',
-	'rsd_results_prev' : 'previous ',
-	'upload' : 'Upload',
-	'rsd_layout' : 'Layout:',
-	'rsd_resource_edit' : 'Edit Resource:'
+loadGM( { "mv_media_search" : "Media Search why test test",
+		"rsd_box_layout" : "Box layout",
+		"rsd_list_layout" : "List Layout",
+		"rsd_results_desc" : "Results some ",
+		"rsd_results_next" : "next ",
+		"rsd_results_prev" : "previous ",
+		"upload" : "Upload",
+		"rsd_layout" : "Layout:",
+		"rsd_resource_edit" : "Edit Resource:"
 });
 
 var default_remote_search_options = {
@@ -35,7 +35,7 @@ var default_remote_search_options = {
 	//specific to sequence profile
 	'p_seq':null,	
 	'cFileNS':'Image', //what is the cannonical namespace for images 
-					  //@@todo (should be able to get that from the api in the future)
+					  //@@todo (should get that from the api or inpage vars)
 					  
 	'enable_uploads':false // if we want to enable an uploads tab:  
 }

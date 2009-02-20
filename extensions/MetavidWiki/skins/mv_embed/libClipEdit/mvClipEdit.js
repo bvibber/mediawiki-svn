@@ -7,25 +7,25 @@
 */
 //set gMsg object:
 loadGM( { 
-	'mv_crop':'Crop Image',
-	'mv_apply_crop':'Apply Crop to Image',
-	'mv_reset_crop':'Rest Crop',
-	'mv_insert_image_page':'Insert Into page',
-	'mv_preview_insert':'Preview Insert',
-	'mv_cancel_image_insert':'Cancel Image Insert',
+	"mv_crop":"Crop Image",
+	"mv_apply_crop":"Apply Crop to Image",
+	"mv_reset_crop":"Rest Crop",
+	"mv_insert_image_page":"Insert Into page",
+	"mv_preview_insert":"Preview Insert",
+	"mv_cancel_image_insert":"Cancel Image Insert",
 	
-	'sc_fileopts':'Clip Detail Edit',
-	'sc_inoutpoints':'Set In-Out points',
-	'sc_panzoom':'Pan Zoom Crop',
-	'sc_overlays':'Overlays',
-	'sc_audio':'Audio Control',
-	'sc_duration':'Duration',
+	"sc_fileopts":"Clip Detail Edit",
+	"sc_inoutpoints":"Set In-Out points",
+	"sc_panzoom":"Pan Zoom Crop",
+	"sc_overlays":"Overlays",
+	"sc_audio":"Audio Control",
+	"sc_duration":"Duration",
 		
-	'mv_template_properties':'Template Properties',
-	'mv_custom_title':'Custom Title',
-	'mv_edit_properties':'Edit Properties',
-	'mv_other_properties':'Other Properties',
-	'mv_resource_page':'Resource Page'
+	"mv_template_properties":"Template Properties",
+	"mv_custom_title":"Custom Title",
+	"mv_edit_properties":"Edit Properties",
+	"mv_other_properties":"Other Properties",
+	"mv_resource_page":"Resource Page"
 });
 
 var default_clipedit_values = {

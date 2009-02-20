@@ -843,7 +843,7 @@ embedVideo.prototype = {
             do_request(this.roe, function(data)
             {            	            
             	//continue      	         	
-            	_this.media_element.addROE(data);                                      
+            	_this.media_element.addROE( data );                                      
                 js_log('added_roe::' + _this.media_element.sources.length);                               
                                                        
                 js_log('set loading_external_data=false');     
@@ -1698,20 +1698,20 @@ embedVideo.prototype = {
         out+='</blockquote></span>';
         this.displayHTML(out);
     },
-	/*download list is exessivly complicated ... rewrite for clarity: */
+	/*download list is too complicated ... rewrite for clarity: */
 	showVideoDownload:function(){		
-		//load the roe if avaliable (to populate out download options:
-		js_log('f:showVideoDownload '+ this.roe + ' ' + this.media_element.addedROEData);
+		//load the roe if available (to populate out download options:
+		//js_log('f:showVideoDownload '+ this.roe + ' ' + this.media_element.addedROEData);
 		if(this.roe && this.media_element.addedROEData==false){
 			var _this = this;
 			this.displayHTML(gM('loading_txt'));
 			do_request(this.roe, function(data)
             {
                _this.media_element.addROE(data);                             
-               $j('#mv_disp_inner_'+_this.id).html(_this.getShowVideoDownload());
+               $j('#mv_disp_inner_'+_this.id).html( _this.getShowVideoDownload() );
             });	           
 		}else{
-			this.displayHTML(this.getShowVideoDownload());
+			this.displayHTML( this.getShowVideoDownload() );
 		}       
 	},
 	getShowVideoDownload:function(){ 

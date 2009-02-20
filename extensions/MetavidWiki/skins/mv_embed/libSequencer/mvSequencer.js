@@ -18,47 +18,47 @@
  */
 
 loadGM( { 
-	'menu_clipedit' : 'Edit Selected Resource',	
-	'menu_cliplib' : 'Add Resource',
-	'menu_transition' : 'Transitions Effects',
-	'menu_resource_overview' : 'Resource Overview',
-	'menu_options' : 'Options',
+	"menu_clipedit" : "Edit Selected Resource",	
+	"menu_cliplib" : "Add Resource",
+	"menu_transition" : "Transitions Effects",
+	"menu_resource_overview" : "Resource Overview",
+	"menu_options" : "Options",
 	
-	'loading_timeline' : 'Loading TimeLine <blink>...</blink>',
-	'loading_user_rights' : 'Loading user rights <blink>...</blink>',
+	"loading_timeline" : "Loading TimeLine <blink>...</blink>",
+	"loading_user_rights" : "Loading user rights <blink>...</blink>",
 	
-	'no_edit_permissions' : 'You don\'t have permissions to save changes to this sequence', 
+	"no_edit_permissions" : "You don\'t have permissions to save changes to this sequence", 
 	
 	
-	'edit_clip' : 'Edit Clip',
-	'edit_save' : 'Save Changes',
-	'edit_cancel' : 'Cancel Edit',
-	'edit_cancel_confirm' : 'Are you sure you want to cancel your edit, changes will be lost',
+	"edit_clip" : "Edit Clip",
+	"edit_save" : "Save Changes",
+	"edit_cancel" : "Cancel Edit",
+	"edit_cancel_confirm" : "Are you sure you want to cancel your edit, changes will be lost",
 			
-	'zoom_in' : 'Zoom In',
-	'zoom_out' : 'Zoom Out',
-	'cut_clip' : 'Cut Clips',
-	'expand_track' : 'Expand Track',
-	'colapse_track' : 'Collapse Track',
-	'play_clip' : 'Play From Playline Position',
-	'pixle2sec' : 'pixles to seconds',
-	'rmclip' : 'Remove Clip',
-	'clip_in' : 'clip in',
-	'clip_out' : 'clip out',
+	"zoom_in" : "Zoom In",
+	"zoom_out" : "Zoom Out",
+	"cut_clip" : "Cut Clips",
+	"expand_track" : "Expand Track",
+	"colapse_track" : "Collapse Track",
+	"play_clip" : "Play From Playline Position",
+	"pixle2sec" : "pixles to seconds",
+	"rmclip" : "Remove Clip",
+	"clip_in" : "clip in",
+	"clip_out" : "clip out",
 	
 	//menu items display helper: 
-	'mv_welcome_to_sequencer' : '<h3>Welcome to the sequencer demo</h3>'+
-	'very <b>limited</b> functionality right now. Not much documentation yet either',
+	"mv_welcome_to_sequencer" : "<h3>Welcome to the sequencer demo</h3>"+
+	"very <b>limited</b> functionality right now. Not much documentation yet either",
 	
-	'no_selected_resource' : '<h3>No Resource selected</h3> Select a Clip to enable resource editing',
-	'error_edit_multiple' : '<h3>Multiple Resources Selected</h3> Select a single clip to edit it', 
+	"no_selected_resource" : "<h3>No Resource selected</h3> Select a Clip to enable resource editing",
+	"error_edit_multiple" : "<h3>Multiple Resources Selected</h3> Select a single clip to edit it", 
 	
-	'mv_editor_options' : 'Editor options',
-	'mv_editor_mode' : 'Editor mode',
-	'mv_simple_editor_desc' : 'simple editor (iMovie style)',
-	'mv_advanced_editor_desc' : 'advanced editor (Final Cut style)',
-	'mv_other_options' : 'Other Options',	
-	'mv_contextmenu_opt' : 'Enable Context Menus'
+	"mv_editor_options" : "Editor options",
+	"mv_editor_mode" : "Editor mode",
+	"mv_simple_editor_desc" : "simple editor (iMovie style)",
+	"mv_advanced_editor_desc" : "advanced editor (Final Cut style)",
+	"mv_other_options" : "Other Options",	
+	"mv_contextmenu_opt" : "Enable Context Menus"
 });
 
  //used to set default values and validate the passed init object
