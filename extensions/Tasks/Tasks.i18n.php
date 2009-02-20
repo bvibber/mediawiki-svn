@@ -403,7 +403,16 @@ $messages['bs'] = array(
 	'tasks' => 'Zadaci',
 	'tasks_desc' => 'Proširenje za uređivanje zadataka',
 	'tasks_tab' => 'zadaci',
+	'tasks_title' => 'Zadaci za "$1"',
+	'tasks_form_new' => 'Napravi novi zadatak',
+	'tasks_form_comment' => 'Komentar',
+	'tasks_existing_header' => 'Postojeći zadaci',
+	'tasks_close' => 'Zatvori zadatak',
+	'tasks_delete' => 'Obriši',
 	'tasks_no_task_delete_title' => 'nije dopušteno',
+	'tasks_here' => 'ovdje',
+	'tasks_returnto' => 'Bit će te preusmjereni sada. Ako niste preusmjereni za nekoliko sekundi, kliknite $1.',
+	'tasks_help_page' => 'Zadaci',
 	'tasks_more_like_it' => 'više',
 	'tasks_my_assignments' => '{{PLURAL:$1|Vaš trenutni zadatak|Vaša trenutna $1 zadatka|Vaših trenutnih $1 zadataka}}',
 	'tasks_search_form_title' => 'Pretraga',
@@ -867,6 +876,7 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author Korrigan
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'tasks' => 'Tâches',
@@ -916,7 +926,7 @@ $messages['fr'] = array(
 	'tasks_my_assignments' => '{{PLURAL:$1|Votre assignement|Vos assignements}} en cours',
 	'tasks_table_header_page' => 'Page',
 	'tasks_you_have_no_assignments' => 'Vous n’avez aucune tâche',
-	'tasks_search_form_title' => 'Chercher',
+	'tasks_search_form_title' => 'Rechercher',
 	'tasks_search_tasks' => 'Tâches',
 	'tasks_search_status' => 'Statut',
 	'tasks_search_no_tasks_chosen_note' => '(Aucune sélection, recherche de tous types de tâches.)',
@@ -1414,7 +1424,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'tasks' => '課題',
-	'tasks_desc' => '課題を管理するための拡張機能',
+	'tasks_desc' => '課題管理のための拡張機能',
 	'tasks_tab' => '課題',
 	'tasks_title' => '「$1」の課題',
 	'tasks_form_new' => '新規課題の作成',

@@ -206,6 +206,13 @@ $messages['lb'] = array(
 	'googleadsense-desc' => 'Setzt [http://www.google.com/adsense Google AdSense] an déi säitlech Navigatiounslëscht derbäi',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'googleadsense-desc' => 'Prideda [http://www.google.com/adsense Google AdSense] į šoninę juostą',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */

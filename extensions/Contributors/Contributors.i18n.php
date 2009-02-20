@@ -333,9 +333,11 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
 	'contributors' => 'Lankideak',
+	'contributors-desc' => 'Orrialde baten ekarpen guztiak laburbiltzen ditu',
 	'contributors-toolbox' => 'Lankide nagusiak',
 	'contributors-legend' => 'Orrialde baten lankide nagusiak zerrendatu',
 	'contributors-target' => 'Izenburua:',

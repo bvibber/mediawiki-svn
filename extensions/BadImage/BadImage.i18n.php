@@ -1673,9 +1673,29 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Brunoy Anastasiya Seryozhenko
+ * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
 	'badimages' => 'Listagem de imagens ruins',
+	'badimages-desc' => 'Estenda as capacidades de listagem de imagens problemáticas do MediaWiki',
+	'badimages-add-btn' => 'Adicionar',
+	'badimages-added' => '$1 foi adicionado à lista.',
+	'badimages-count' => "Atualmente {{PLURAL:$1|existe|existem}} '''$1''' {{PLURAL:$1|imagem|imagens}} na lista de imagens problemáticas.",
+	'badimages-name' => 'Nome:',
+	'badimages-not-added' => 'Não foi possível adicionar a imagem.',
+	'badimages-not-removed' => 'Não foi possível remover a imagem.',
+	'badimages-reason' => 'Motivo:',
+	'badimages-remove' => '(remover)',
+	'badimages-remove-btn' => 'Remover',
+	'badimages-remove-confirm' => 'Confirme a remoção de $1 da listagem:',
+	'badimages-removed' => '$1 foi removido da lista.',
+	'badimages-subheading' => 'Itens atuais',
+	'badimages-unprivileged' => '(Você não possui permissões suficientes para alterar a listagem)',
+	'badimages-log-name' => 'Lista de imagens problemáticas',
+	'badimages-log-header' => 'Este é um registro das alterações feitas na [[{{MediaWiki:Badimages-page}}|lista de imagens problemáticas]].',
+	'badimages-log-add' => 'adicionada [[$1]] na lista de imagens problemáticas',
+	'badimages-log-remove' => 'removida [[$1]] da lista de imagens problemáticas',
+	'badimages-page' => '{{ns:help}}:Lista de imagens problemáticas',
 );
 
 /** Rhaeto-Romance (Rumantsch) */

@@ -119,8 +119,10 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'commentpages-desc' => 'Izentarte nagusirako iruzkin orrialdeak',
 	'nstab-comments' => 'Iruzkina',
 );
 

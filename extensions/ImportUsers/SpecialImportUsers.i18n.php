@@ -1166,6 +1166,33 @@ $messages['pt'] = array(
 	'action-import_users' => 'importar utilizadores em bloco',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'importusers' => 'Importar Utilizadores',
+	'importusers-desc' => '[[Special:ImportUsers|Importa utilizadores]] em bloco de um arquivo CSV; codificação: UTF-8',
+	'importusers-uploadfile' => 'Carregar arquivo',
+	'importusers-form-caption' => 'Arquivo CSV de entrada (UTF-8)',
+	'importusers-form-file' => 'Formato do arquivo de utilizadores (csv):',
+	'importusers-form-replace-present' => 'Substituir utilizadores existentes',
+	'importusers-form-button' => 'Importar',
+	'importusers-user-added' => 'Utilizador <b>%s</b> foi adicionado.',
+	'importusers-user-present-update' => 'Utilizador <b>%s</b> já existe. Atualizado.',
+	'importusers-user-present-not-update' => 'Utilizador <b>%s</b> já existe. Não foi atualizado.',
+	'importusers-user-invalid-format' => 'Dados de utilizador na linha #%s têm um formato inválido ou estão vazios. Passado à frente.',
+	'importusers-log' => 'Registro de importação',
+	'importusers-log-summary' => 'Sumário',
+	'importusers-log-summary-all' => 'Todos',
+	'importusers-log-summary-added' => 'Adicionado',
+	'importusers-log-summary-updated' => 'Atualizado',
+	'importusers-login-name' => 'Nome de conta',
+	'importusers-password' => 'palavra-chave',
+	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'nome real',
+	'right-import_users' => 'Importar utilizadores em bloco',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

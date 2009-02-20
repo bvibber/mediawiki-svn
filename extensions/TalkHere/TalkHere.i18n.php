@@ -260,8 +260,13 @@ El operador de este sitio no puede tener responsabilidad por el contenido de tal
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
+	'talkhere-desc' => 'Eztabaida orrialdea orrialdean bertan jartzen du',
+	'talkhere-foottext' => 'Goiko iruzkinak bisitariek utzi dituzte.
+
+Gune honetako arudradunek ezin dute mezu horien gaineko ardurarik hartu.',
 	'talkhere-talkpage' => 'eztabaida orria',
 	'talkhere-notalk' => "''(oraindik iruzkinik gabe)''",
 	'talkhere-addcomment' => 'iruzkina erantsi',

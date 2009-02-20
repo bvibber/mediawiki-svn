@@ -1394,6 +1394,35 @@ $messages['pt'] = array(
 	'right-changeauthor' => 'Alterar o autor de uma revisão',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'changeauthor' => 'Alterar autor de revisão',
+	'changeauthor-desc' => 'Permite alterar o autor de uma revisão',
+	'changeauthor-title' => 'Alterar o autor de uma revisão',
+	'changeauthor-search-box' => 'Pesquisar revisões',
+	'changeauthor-pagename-or-revid' => 'Nome da página ou ID da revisão:',
+	'changeauthor-pagenameform-go' => 'Ir',
+	'changeauthor-comment' => 'Comentário:',
+	'changeauthor-changeauthors-multi' => 'Alterar {{PLURAL:$1|autor|autores}}',
+	'changeauthor-explanation-multi' => "Através deste formulário, pode alterar os autores de revisões. Simplesmente mude um ou mais nomes de utilizador na lista abaixo, adicione um comentário (opcional) e clique no botão 'Alterar autor(es)'.",
+	'changeauthor-changeauthors-single' => 'Alterar autor',
+	'changeauthor-explanation-single' => "Através deste formulário, pode alterar o autor de uma revisão. Simplesmente mude o nome de utilizador abaixo, adicione um comentário (opcional) e clique no botão 'Alterar autor'.",
+	'changeauthor-invalid-username' => 'Nome de utilizador "$1" inválido.',
+	'changeauthor-nosuchuser' => 'Utilizador "$1" não existe.',
+	'changeauthor-revview' => 'Revisão #$1 de $2',
+	'changeauthor-nosuchtitle' => 'Não existe nenhuma página chamada "$1".',
+	'changeauthor-weirderror' => 'Ocorreu um erro muito estranho. 
+Por favor, tente o seu pedido de novo. 
+Se este erro persistir, provavelmente a base de dados não está em boas condições.',
+	'changeauthor-invalidform' => 'Por favor, utilize o formulário fornecido pela [[Special:ChangeAuthor|página especial]] em vez de um formulário personalizado.',
+	'changeauthor-success' => 'O seu pedido foi processado com sucesso.',
+	'changeauthor-logentry' => 'Alterado autor de $2 de $1, de $3 para $4',
+	'changeauthor-logpagename' => 'Registro de alterações de autor',
+	'right-changeauthor' => 'Alterar o autor de uma revisão',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */

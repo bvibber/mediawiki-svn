@@ -431,9 +431,11 @@ $messages['eo'] = array(
  * @author Dferg
  * @author Imre
  * @author Remember the dot
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Extensión para [[Special:PovWatch|meter páginas en las listas de seguimiento]] de otros usuarios',
 	'povwatch_invalid_title' => 'El título especificado fue inválido',
 	'povwatch_subscriber_list' => 'Una [[Special:PovWatch/subscribers|lista de suscriptores]] está disponible.',
 	'povwatch_subscriber_list_intro' => '<strong>Lista de suscriptores</strong>',

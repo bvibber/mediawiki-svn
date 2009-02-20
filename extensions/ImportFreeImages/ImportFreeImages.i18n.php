@@ -89,6 +89,8 @@ $messages['bar'] = array(
 	'importfreeimages' => 'Importian vu freie Büidln',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importian',
+	'importfreeimages_promptuserforfilename' => 'Gib bittschee an Zieldateinãmen ei:',
+	'importfreeimages_returntoform' => "Oda klick <a href='$1'>då hea</a>, damid'st auf'd Seitn mid de Suachergebnisse zruck kimmst.",
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -120,7 +122,16 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'importfreeimages' => 'Uvoz slobodnih slika',
+	'importfreeimages_description' => 'Ova stranica omogućava pretragu pravilno licenciranih slika sa flickr i njihov uvoz u Vaš wiki.',
+	'importfreeimages_nophotosfound' => "Nije pronađena nijedna slika po Vašem upitu pretrage '$1', pokušajte ponovno.",
+	'importfreeimages_invalidurl' => 'URL "$1" nije valjana Flickr slika.',
 	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'uvezi ovo',
+	'importfreeimages_next' => 'slijedeća $1',
+	'importfreeimages_filefromflickr' => '$ od {{GENDER:$2|korisnika|korisnice}} <b>[$2]</b> sa flickr. Prvobitni URL',
+	'importfreeimages_promptuserforfilename' => 'Molimo unesite ime odredišne datoteke:',
+	'importfreeimages_returntoform' => "ili kliknite <a href='$1'>ovdje</a> za povratak na Vaše rezultate pretrage",
 );
 
 /** Catalan (Català)

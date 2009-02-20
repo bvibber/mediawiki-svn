@@ -44,14 +44,15 @@ $4",
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'todo-desc' => 'Short description of the Todo extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'todo-new-queue' => '{{Identical|New}}',
 	'todo-mail-body' => '* $1 is a user name
-* $2 is a timestamp
-* $3 is a page name
-* $4 is some text',
+* $2 is a page name
+* $3 is a timestamp
+* $4 is a reason (free text)',
 	'todo-list-for' => '{{Identical|Todo list for}}',
 	'todo-list-cancel' => '{{Identical|Cancel}}',
 	'todo-form-details' => '{{Identical|Details}}',
@@ -1128,7 +1129,7 @@ $messages['pt'] = array(
 	'todo-mail-body' => 'Você pediu um e-mail de confirmação sobre a finalização de um item que você submeteu para a lista de tarefas online de $1.
 
 Item: $2
-Submetido: $3
+Submetido em: $3
 
 Este item foi marcado como completo, com este comentário:
 $4',

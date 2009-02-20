@@ -238,9 +238,10 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'filelist' => 'Liste des fichiers',
+	'filelist' => 'Liste de fichiers',
 	'filelist-desc' => 'Page spéciale pour énumérer les fichiers téléchargés.',
 	'filelist-show-list' => 'Voir la liste',
 	'filelist-show-gallery' => 'Voir la galerie',

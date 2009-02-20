@@ -1821,13 +1821,20 @@ $1",
  * @author Aleksandrit
  * @author Ferrer
  * @author Rubin
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'inplace_access_disabled' => 'Доступ у сервису был отключён для всех клиентов',
+	'inplace_access_denied' => 'Доступ к данной службе ограничен по IP-адресу',
+	'inplace_scaler_no_temp' => 'Нет корректной временной директории.
+Параметр $wgLocalTmpDirectory должен указывать на директорию, доступную для записи.',
 	'inplace_scaler_not_enough_params' => 'Недостаточно параметров.',
 	'inplace_scaler_invalid_image' => 'Проблемное изображение, невозможно определить размер.',
 	'inplace_scaler_failed' => 'Произошла ошибка во время масштабирования изображения: $1',
 	'inplace_scaler_no_handler' => 'Нет обработчика для преобразования этого MIME-типа',
+	'inplace_scaler_no_output' => 'Не был создан выходной файл преобразования.',
+	'inplace_scaler_zero_size' => 'В результате преобразования получился выходной файл нулевого размера.',
+	'webstore_access' => 'Доступ к этой службе ограничен по IP-адресу.',
 	'webstore_path_invalid' => 'Неверное имя файла.',
 	'webstore_dest_open' => 'Не удаётся открыть файл «$1».',
 	'webstore_dest_mkdir' => 'Не удаётся создать целевой каталог «$1».',

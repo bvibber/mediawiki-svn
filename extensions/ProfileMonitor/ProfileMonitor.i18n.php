@@ -121,6 +121,7 @@ $messages['bs'] = array(
 	'profiling-data-count' => 'Brojanje',
 	'profiling-data-time' => 'Vrijeme (sve)',
 	'profiling-data-average' => 'Vrijeme (prosj)',
+	'profiling-no-data' => 'Nisu pronađeni odgovarajući podaci.',
 );
 
 /** Danish (Dansk)

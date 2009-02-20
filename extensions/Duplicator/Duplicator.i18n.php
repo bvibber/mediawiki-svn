@@ -1101,6 +1101,32 @@ $messages['pt'] = array(
 	'duplicator-toomanyrevisions' => '[[$1]] possui demasiadas ($2) revisões e não pode ser copiada. O limite actual é $3.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'duplicator' => 'Duplicar uma página',
+	'duplicator-desc' => 'Criar [[Special:Duplicate|cópias independentes de páginas]] com histórico completo de edições',
+	'duplicator-toolbox' => 'Duplicar esta página',
+	'duplicator-header' => 'Esta página permite a duplicação completa de uma página de conteúdo, criando cópias independentes de todo o seu histórico. Isto é útil para separar versões de páginas, etc.',
+	'duplicator-options' => 'Opções',
+	'duplicator-source' => 'Fonte:',
+	'duplicator-dest' => 'Destino:',
+	'duplicator-dotalk' => 'Duplicar página de discussão (se aplicável)',
+	'duplicator-submit' => 'Duplicar',
+	'duplicator-summary' => 'Copiado de [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] foi copiada para [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revisão foi copiada|revisões foram copiadas}}.',
+	'duplicator-success-talkcopied' => 'A página de discussão também foi copiada.',
+	'duplicator-success-talknotcopied' => 'A página de discussão não pôde ser copiada.',
+	'duplicator-failed' => 'A página não pôde ser duplicada. Ocorreu um erro desconhecido.',
+	'duplicator-source-invalid' => 'Por favor, forneça um título fonte válido.',
+	'duplicator-source-notexist' => '[[$1]] não existe. Por favor, forneça o título de uma página que exista.',
+	'duplicator-dest-invalid' => 'Por favor, forneça um título de destino válido.',
+	'duplicator-dest-exists' => '[[$1]] já existe. Por favor, forneça um título de destino que ainda não exista.',
+	'duplicator-toomanyrevisions' => '[[$1]] possui muitas ($2) revisões e não pode ser copiada. O limite atual é $3.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

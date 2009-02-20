@@ -314,6 +314,7 @@ $messages['ay'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Александр Сигачёв
  */
 $messages['be-tarask'] = array(
 	'whitelist-desc' => 'Рэдагаваць правы доступу ўдзельнікаў з абмежаваньнямі',
@@ -366,7 +367,7 @@ $2',
 	'right-restricttowhitelist' => 'Рэдагаваць і праглядаць толькі старонкі зь белага сьпісу',
 	'action-editwhitelist' => 'зьмяненьне белага сьпісу для існуючых удзельнікаў',
 	'action-restricttowhitelist' => 'рэдагаваньне і прагляд толькі старонак зь белага сьпісу',
-	'group-restricted' => 'Удзельнікі абмежаваныя ў правах',
+	'group-restricted' => 'Удзельнікі, абмежаваныя ў правах',
 	'group-restricted-member' => 'удзельнік, абмежаваны ў правах',
 	'group-manager' => 'Кіраўнікі',
 	'group-manager-member' => 'кіраўнік',
@@ -2327,6 +2328,7 @@ $messages['ru'] = array(
 	'whitelisttabletype' => 'Тип доступа',
 	'whitelisttableexpires' => 'Истекает',
 	'whitelisttablemodby' => 'Последний раз изменено',
+	'whitelisttablemodon' => 'Последнее изменение',
 	'whitelisttableedit' => 'Править',
 	'whitelisttableview' => 'Просмотр',
 	'whitelisttablenewdate' => 'Новая дата:',
@@ -2334,6 +2336,8 @@ $messages['ru'] = array(
 	'whitelisttablesetedit' => 'Установить для правки',
 	'whitelisttablesetview' => 'Установить для просмотра',
 	'whitelisttableremove' => 'Удалить',
+	'whitelistnewpagesfor' => 'Добавление новых страниц в белый список <b>$1</b><br />
+Возможно использовать подстановочные символы * и %',
 	'whitelistnewtabledate' => 'Дата окончания:',
 	'whitelistnewtableedit' => 'Установить для редактирования',
 	'whitelistnewtableview' => 'Установить для просмотра',
@@ -2343,6 +2347,7 @@ $messages['ru'] = array(
 	'whitelistnewtablereview' => 'Обзор',
 	'whitelistselectrestricted' => '== Выберите имя участника ==',
 	'whitelistpagelist' => 'Страницы {{SITENAME}} для $1',
+	'whitelistnocalendar' => "<font color='red' size=3>По всей видимости, не было установлено расширение [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], от которого зависит данное расширение.</font>",
 	'whitelistoverview' => '== Обзор изменений для $1 ==',
 	'whitelistoverviewcd' => "* Изменение даты на '''$1''' для [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Установить доступ '''$1''' для [[:$2|$2]]",
@@ -2353,12 +2358,16 @@ $messages['ru'] = array(
 
 $2',
 	'whitelistrequestconf' => 'Запрос по новым страницам был отправлен $1',
+	'whitelistnonrestricted' => "У участника '''$1''' нет ограничений.
+Данная страницы предназначена только для участников, ограниченных в правах.",
 	'whitelistnever' => 'никогда',
 	'whitelistnummatches' => '  - $1 {{PLURAL:$1|совпадение|совпадения|совпадений}}',
 	'right-editwhitelist' => 'Изменить белый список для существующих участников',
 	'right-restricttowhitelist' => 'Редактировать и просматривать только страницы из белого списка',
 	'action-editwhitelist' => 'изменить белый список для существующих участников',
 	'action-restricttowhitelist' => 'редактировать и просматривать страницы только из белого списка',
+	'group-restricted' => 'Участники, ограниченные в правах',
+	'group-restricted-member' => 'Участник, ограниченный в правах',
 	'group-manager' => 'Управляющие',
 	'group-manager-member' => 'управляющий',
 );

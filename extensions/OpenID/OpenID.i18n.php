@@ -441,6 +441,19 @@ Ako želite da koristite OpenID za buduće prijave, možete [[Special:OpenIDConv
 	'openidautosubmit' => 'Ova stranica uključuje obrazac koji bi se trebao automatski poslati ako je kod Vas omogućena JavaScript. Ako nije, pokušajte nastaviti dalje putem dugmeta \\"Continue\\".',
 	'openidclientonlytext' => 'Ne možete koristiti račune sa ove wiki kao OpenID na drugom sajtu.',
 	'openidloginlabel' => 'OpenID URL adresa',
+	'openidlogininstructions' => "{{SITENAME}} podržava [http://openid.net/ OpenID] standard za jedinstvenu prijavu između web sajtova.
+OpenID omogućuje da se prijavite na mnoge web stranice bez korištenja različitih šifri za svaku od njih.
+(Pogledajte [http://en.wikipedia.org/wiki/OpenID članak na Wikipediji o OpenID-u] za više informacija.)
+
+Ako već imate račun na {{SITENAME}}, možete se [[Special:UserLogin|prijaviti]] sa vašim korisničkim imenom i šifrom kao i uvijek.
+Da bi koristili OpenID u buduće, možete [[Special:OpenIDConvert|pretvoriti vaš račun u OpenID]] nakon što se normalno prijavite.
+
+Postoji mnogo [http://wiki.openid.net/Public_OpenID_providers javnih provajdera za OpenID], i možda već imate neki račun na drugom servisu koji podržava OpenID.
+
+; Drugi wikiji : Ako imate račun na wikiju koja podržava OpenID, poput [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] ili [http://kei.ki/ Keiki], možete se prijaviti na {{SITENAME}} unoseći  '''puni URL''' Vaše korisničke stranice na drugi wiki u kutiju iznad. Na primjer, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Ako imate račun na Yahoo!, možete se prijaviti na tu stranicu unoseći Vaš Yahoo!-OpenID koji ste dobili od Yahoo! u kutiju iznad. Yahoo! OpenID URLovi imaju oblik ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Ako imate račun sa [http://www.aol.com/ AOL], poput [http://www.aim.com/ AIM] računa, možete se prijaviti na {{SITENAME}} unoseći OpenID koji ste dobili od AOL u kutiju iznad. AOL OpenID URLovi imaju slijedeći oblik ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Vaše korisničko ime treba pisati malim slovima, bez razmaka.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Ako imate blog na bilo kojem od ovih servisa, unesite URL vašeg bloga u kutiju iznad. Na primjer, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'' ili ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Czech (Česky)

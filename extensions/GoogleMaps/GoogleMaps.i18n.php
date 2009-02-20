@@ -491,15 +491,29 @@ $wgGoogleMapsMessages['br'] = array(
  * @author CERminator
  */
 $wgGoogleMapsMessages['bs'] = array(
+	'gm-desc' => 'Jednostavno pravljenje mapa sa wikificiranim oznakama',
 	'gm-balloon-title' => 'Naslov:',
 	'gm-balloon-link-article' => 'Link ka ovoj stranici (opcija):',
 	'gm-remove' => 'ukloni',
+	'gm-caption' => 'Opis',
+	'gm-tab' => 'Jezičak',
+	'gm-start-path' => 'započni putanju',
 	'gm-save-point' => 'spremi &amp; zatvori',
+	'gm-load-map-from-article' => 'Učitaj mapu sa stranice:',
+	'gm-load-map' => 'Učitaj mapu',
 	'gm-no-results' => 'Nažalost, nema rezultata',
+	'gm-searching' => 'tražim...',
+	'gm-map' => 'Mapa',
 	'gm-are-you-sure' => 'Da li ste sigurni?',
+	'gm-clear-all-points' => 'Očisti sve tačke',
+	'gm-refresh-points' => 'Osvježi tačke',
 	'gm-width' => 'Širina',
 	'gm-height' => 'Visina',
+	'gm-overview-control' => 'Pregled',
 	'gm-zoom-control' => 'Navigacija',
+	'gm-large' => 'Velika',
+	'gm-medium' => 'Srednja',
+	'gm-small' => 'Mala',
 	'gm-no-zoom-control' => 'ništa',
 	'gm-yes' => 'Da',
 	'gm-no' => 'Ne',
@@ -508,6 +522,9 @@ $wgGoogleMapsMessages['bs'] = array(
 	'gm-miles' => 'milje',
 	'gm-save-path' => 'Sačuvaj',
 	'gm-edit-path' => 'dodaj bodove',
+	'gm-show-path' => 'pokaži tačke',
+	'gm-color-path' => 'promjeni boju',
+	'gm-opacity' => 'Providnost',
 	'gm-line-width' => 'Širina',
 	'gm-make-map' => 'napravi mapu',
 	'gm-hide-map' => 'sakrij kartu',
@@ -968,6 +985,7 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
  * @author Acrida
  * @author Crazymadlover
  * @author Imre
+ * @author Sanbec
  */
 $wgGoogleMapsMessages['es'] = array(
 	'gm-desc' => 'Crear fácilmente mapas con marcadores wiki-fiados',
@@ -1023,6 +1041,7 @@ $wgGoogleMapsMessages['es'] = array(
 	'gm-color-path' => 'cambiar el color',
 	'gm-color-fill' => 'cambiar color de relleno',
 	'gm-add-fill' => 'Llenar en área',
+	'gm-remove-fill' => 'eliminar el relleno',
 	'gm-fill-color' => 'Llenar color',
 	'gm-line-color' => 'color de línea',
 	'gm-opacity' => 'Opacidad',

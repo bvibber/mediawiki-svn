@@ -67,6 +67,21 @@ $messages['arz'] = array(
 	'communityvoice-ratings-error-no-title' => 'صفة العنوان مفقودة فى وسم التقييم.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'communityvoice' => 'Glas zajednice',
+	'communityvoice-desc' => 'Alati za učestvovanje zajednice',
+	'communityvoice-ratings' => 'Rejtinzi',
+	'communityvoice-ratings-scale-status-sending' => 'Šaljem...',
+	'communityvoice-ratings-scale-status-error' => 'Greška pri slanju!',
+	'communityvoice-ratings-scale-status-thanks' => 'Hvala na glasanju!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|glas dat|glasa data|glasova datih}})',
+	'communityvoice-ratings-error-no-category' => 'U oznaci rejtinga nedostaje atribut kategorije.',
+	'communityvoice-ratings-error-no-title' => 'U oznaci rejtinga nedostaje naslovni atribut.',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */
@@ -233,11 +248,12 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'communityvoice' => 'Fellesskapsrøysta',
 	'communityvoice-desc' => 'Reiskap for å delta i fellesskapet',
 	'communityvoice-ratings-scale-status-sending' => 'Sender...',
 	'communityvoice-ratings-scale-status-error' => 'Feil i samband med sending!',
 	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du var med på røystinga!',
-	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vote|røyster}} avgjevne)',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|éi røyst avgjeven|$2 røyster avgjevne}})',
 );
 
 /** Occitan (Occitan)

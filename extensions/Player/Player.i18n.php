@@ -134,6 +134,7 @@ $messages['ast'] = array(
  */
 $messages['be-tarask'] = array(
 	'player-goto-page' => 'Старонка',
+	'player-goto-file' => 'файл',
 );
 
 /** Bulgarian (Български)

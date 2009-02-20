@@ -572,6 +572,13 @@ $messages['li'] = array(
 	'amazonplus-japanese' => 'Japans',
 );
 
+/** Mongolian (Монгол)
+ * @author E.shijir
+ */
+$messages['mn'] = array(
+	'amazonplus-nores' => 'Алдаа: Үр дүн олдсонгүй.',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */

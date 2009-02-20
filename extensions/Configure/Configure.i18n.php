@@ -1491,9 +1491,10 @@ Pšosym napóraj jen abo změń jen, aby wužywał rozšyrjenje.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
-	'configure-desc-group' => 'Ομάδες',
+	'configure-desc-group' => 'Ομάδα',
 	'configure-ext-settings' => 'Ρυθμίσεις',
 	'configure-js-prompt-group' => 'Εισάγετε το όνομα της νέας ομάδας:',
 	'configure-section-category' => 'Κατηγορίες',
@@ -2080,7 +2081,7 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-feed' => 'Syndication',
 	'configure-section-job' => 'Travaux',
 	'configure-section-extension' => 'Extensions',
-	'configure-section-search' => 'Recherche',
+	'configure-section-search' => 'Recherches',
 	'configure-section-copyright' => 'Droits d’auteur',
 	'configure-section-htcp' => 'HTCP multicanal',
 	'configure-section-misc' => 'Autres',

@@ -129,6 +129,17 @@ $messages['es'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Empezar un nuevo tema',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'discussionthreading-desc' => 'Eztabaida orrialdeei gaikako antolatzea gehiten die',
+	'discussionthreading-replysection' => 'erantzun',
+	'discussionthreading-replysectionhint' => 'Erantzun bidalketa honi',
+	'discussionthreading-threadnewsection' => 'berria',
+	'discussionthreading-threadnewsectionhint' => 'Kategoria berria hasi',
+);
+
 /** Finnish (Suomi)
  * @author Vililikku
  */

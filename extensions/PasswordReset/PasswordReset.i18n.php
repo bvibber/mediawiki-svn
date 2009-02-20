@@ -1073,6 +1073,30 @@ $messages['pt'] = array(
 	'right-passwordreset' => 'Repor palavra-chave de um utilizador ([[Special:PasswordReset|página especial]])',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'passwordreset' => 'Repor Palavra-chave',
+	'passwordreset-desc' => "[[Special:PasswordReset|Repõe palavras-chaves de utilizadores do wiki]] - requer privilégios 'passwordreset'",
+	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
+	'passwordreset-emptyusername' => 'Nome de Utilizador Vazio',
+	'passwordreset-nopassmatch' => 'Palavras-Chave não coincidem',
+	'passwordreset-badtoken' => 'Token de edição inválido',
+	'passwordreset-username' => 'Nome de utilizador:',
+	'passwordreset-newpass' => 'Nova palavra-chave:',
+	'passwordreset-confirmpass' => 'Confirme a palavra-chave:',
+	'passwordreset-submit' => 'Repor Palavra-Chave',
+	'passwordreset-success' => 'A palavra-chave foi reposta para o utilizador com o ID: $1',
+	'passwordreset-disableuser' => 'Desativar Conta de Utilizador?',
+	'passwordreset-disableuserexplain' => '(estabelece um hash de palavra-chave inválido - o utilizador não consegue se autenticar)',
+	'passwordreset-disablesuccess' => 'A conta de utilizador foi desativada (ID do utilizador: $1)',
+	'passwordreset-accountdisabled' => 'A conta foi desativada',
+	'disabledusers' => 'Utilizadores desativados',
+	'disabledusers-summary' => 'Esta é a lista de utilizadores que foram desativados via PasswordReset.',
+	'right-passwordreset' => 'Repor palavra-chave de um utilizador ([[Special:PasswordReset|página especial]])',
+);
+
 /** Rhaeto-Romance (Rumantsch) */
 $messages['rm'] = array(
 	'passwordreset-username' => "Num d'utilisader",

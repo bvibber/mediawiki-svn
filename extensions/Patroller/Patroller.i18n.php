@@ -350,12 +350,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'patrol' => 'Vérification des modifications',
 	'patrol-desc' => 'Interface mettant en valeur le patrouillage collaboratif.',
 	'patrol-endorse' => 'Accepter',
-	'patrol-revert' => 'Annuler',
+	'patrol-revert' => 'Rétablir',
 	'patrol-revert-reason' => 'Motif :',
 	'patrol-skip' => 'Sauter',
 	'patrol-reverting' => 'Annulation : $1',
@@ -1146,6 +1147,35 @@ $messages['pt'] = array(
 	'patrol-another' => 'Mostrar outra edição, se disponível.',
 	'patrol-stopped' => 'Você optou por não patrulhar uma outra edição. $1',
 	'patrol-resume' => 'Carregue aqui para continuar.',
+	'group-patroller' => 'Patrulhadores',
+	'group-patroller-member' => 'Patrulhador',
+	'grouppage-patroller' => '{{ns:project}}:Patrulhador',
+	'right-patroller' => 'Patrulhar páginas',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'patrol' => 'Patrulha de edições',
+	'patrol-desc' => 'Interface de patrulhamento melhorada com compartilhamento de carga de trabalho',
+	'patrol-endorse' => 'Aprovar',
+	'patrol-revert' => 'Reverter',
+	'patrol-revert-reason' => 'Motivo:',
+	'patrol-skip' => 'Saltar',
+	'patrol-reverting' => 'Revertendo: $1',
+	'patrol-nonefound' => 'Nenhuma edição apropriada foi encontrada para ser patrulhada.',
+	'patrol-endorsed-ok' => 'A edição foi marcada como patrulhada.',
+	'patrol-endorsed-failed' => 'A edição não pôde ser marcada como patrulhada.',
+	'patrol-reverted-ok' => 'A edição foi revertida.',
+	'patrol-reverted-failed' => 'A edição não pôde ser revertida.',
+	'patrol-skipped-ok' => 'Ignorando edição.',
+	'patrol-reasons' => '* Simples vandalismo
+* Teste de principiante
+* Ver página de discussão',
+	'patrol-another' => 'Mostrar outra edição, se disponível.',
+	'patrol-stopped' => 'Você optou por não patrulhar uma outra edição. $1',
+	'patrol-resume' => 'Clique aqui para continuar.',
 	'group-patroller' => 'Patrulhadores',
 	'group-patroller-member' => 'Patrulhador',
 	'grouppage-patroller' => '{{ns:project}}:Patrulhador',

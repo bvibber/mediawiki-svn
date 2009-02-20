@@ -1046,7 +1046,7 @@ $messages['fr'] = array(
 	'group-oversight-member' => 'Superviseur',
 	'grouppage-oversight' => '{{ns:project}}:Superviseur',
 	'right-oversight' => 'Voir les révisions cachées par supervision',
-	'right-hiderevision' => 'Examiner et restaurer les révisions masquées aux administrateurs',
+	'right-hiderevision' => 'Masquer des révisions aux administrateurs',
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue' => 'Continuer',
 	'hiderevision-text' => "Cette fonctionnalité doit être utilisée '''uniquement''' pour les cas suivants :
@@ -1065,7 +1065,8 @@ Les articles supprimés ne sont plus visibles dans ce système, mais ces suppres
 	'hiderevision-status' => 'Modification $1 : $2',
 	'hiderevision-success' => 'Archivé et supprimé avec succès.',
 	'hiderevision-error-missing' => 'Non trouvé dans la base de données.',
-	'hiderevision-error-current' => 'Ne peut supprimer la dernière révision dans une page. Faites une annulation d’édition auparavant.',
+	'hiderevision-error-current' => 'Ne peut supprimer la dernière modification d’une page.
+Annulez d’abord cette modification en rétablissant la version précédente.',
 	'hiderevision-error-delete' => 'Ne peut être archivé ; la page aurait-elle été supprimée ?',
 	'hiderevision-archive-status' => 'Modification supprimée de $1 : $2',
 	'oversight-nodiff' => 'Impossible de détecter des changements tant que ne se trouve aucune révision antérieure pour la page. Les raisons peuvent être les suivantes :

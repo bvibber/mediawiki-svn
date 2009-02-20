@@ -1195,6 +1195,37 @@ Você pode agora [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testá-la]
 Isto não pode ser feito segunda vez.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'createsigndocument' => 'Ativar a assinatura de documentos',
+	'createsigndoc-head' => "Use este formulário para criar uma página \"Assinar o documento\" para a página relacionada, de forma a que os utilizadores [[Special:SignDocument|possam assiná-lo]].
+Por favor, especifique o nome da página na qual quer ativar a assinatura digital, o grupo de utilizadores cujos membros podem assiná-lo, quais os campos que quer que estejam visíveis aos utilizadores e quais deverão ser opcionais, a idade mínima a exigir dos utilizadores para poderem assinar o documento (sem mínimo se omitido);
+e um breve texto introdutório que descreva o documento e forneça instruções aos utilizadores.
+<b>Atualmente não há forma de eliminar ou modificar os documentos de assinatura depois de serem criados</b> sem acesso direto à base de dados. Além disso, o texto da página apresentado na página de assinaturas será o texto ''atual'' da página, independentemente das alterações que sejam feitas a ela a partir de hoje.
+Por favor, certifique-se com o máximo rigor de que o documento está numa situação de estabilidade antes de assiná-lo.
+Assegure-se também de que especificou todos os campos exatamente como devem ser, ''antes de enviar este formulário''.",
+	'createsigndoc-pagename' => 'Página:',
+	'createsigndoc-allowedgroup' => 'Grupo autorizado:',
+	'createsigndoc-email' => 'Endereço de e-mail:',
+	'createsigndoc-address' => 'Endereço residencial:',
+	'createsigndoc-extaddress' => 'Cidade, Estado, País:',
+	'createsigndoc-phone' => 'Número de telefone:',
+	'createsigndoc-bday' => 'Data de nascimento:',
+	'createsigndoc-minage' => 'Idade mínima:',
+	'createsigndoc-introtext' => 'Introdução:',
+	'createsigndoc-hidden' => 'Escondido',
+	'createsigndoc-optional' => 'Opcional',
+	'createsigndoc-create' => 'Criar',
+	'createsigndoc-error-generic' => 'Erro: $1',
+	'createsigndoc-error-pagenoexist' => 'Erro: A página [[$1]] não existe.',
+	'createsigndoc-success' => 'A assinatura de documentos foi ativada com sucesso em [[$1]].
+Você pode agora [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testá-la].',
+	'createsigndoc-error-alreadycreated' => 'A assinatura do documento "$1" já existe.
+Isto não pode ser feito pela segunda vez.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

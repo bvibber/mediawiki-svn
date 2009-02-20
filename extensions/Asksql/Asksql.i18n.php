@@ -305,12 +305,14 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
 	'asksql' => 'SQL kontsulta',
 	'asksql-desc' => 'SQL kontsultak egin [[Special:Asksql|orrialde berezi]] batekin',
 	'sqlquery' => 'Kontsulta sartu',
 	'querybtn' => 'Kontsulta bidali',
+	'selectonly' => 'Irakurtzeko-soilik eskaeran baino ez dira baimentzen.',
 	'querysuccessful' => 'Kontsulta ondo egina',
 	'right-asksql' => 'SQL kontsultak egin',
 );

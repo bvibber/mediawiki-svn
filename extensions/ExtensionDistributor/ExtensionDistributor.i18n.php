@@ -528,15 +528,18 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Imre
  * @author Remember the dot
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'extensiondistributor' => 'Descargar extensión MediaWiki',
+	'extdist-no-such-extension' => 'No existe la extensión «$1»',
 	'extdist-no-such-version' => 'la extensión "$1" no existe en la versión "$2".',
 	'extdist-choose-extension' => 'Seleccione cual extensión desea descargar:',
 	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'Revisión actual (trunk)',
 	'extdist-no-versions' => 'La extensión seleccionada ($1) no esta disponible en ninguna versión!',
 	'extdist-submit-version' => 'Continuar',
+	'extdist-svn-error' => "''Subversion'' encontró un error: <pre>$1</pre>",
 	'extdist-want-more' => 'Obtener otra extensión',
 );
 
@@ -1575,6 +1578,57 @@ No Windows, poderá usar o [http://www.7-zip.org/ 7-zip] para extrair os ficheir
 Se o seu wiki está num servidor remoto, extraia os ficheiros para uma diretoria temporária no seu computador local, e depois carregue '''todos''' os ficheiros extraídos na diretoria de extensões do servidor.
 
 Note que algumas extensões precisam de um ficheiro chamado ExtensionFunctions.php, situado em <tt>extensions/ExtensionFunctions.php</tt>, ou seja, na diretoria ''pai'' da diretoria desta extensão em particular. O instantâneo destas extensões contém este ficheiro como uma 'tarbomb', extraída para ./ExtensionFunctions.php. Não negligencie o carregamento deste ficheiro para o seu servidor remoto.
+
+Após ter extraído os ficheiros, terá que registar a extensão em LocalSettings.php. A documentação da extensão deverá ter instruções de como o fazer.
+
+Se tiver alguma questão sobre este sistema de distribuição de extensões, por favor, vá a [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Obter outra extensão',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'extensiondistributor' => 'Descarregar extensão MediaWiki',
+	'extdist-desc' => 'Extensão para distribuir arquivos snapshot de extensões',
+	'extdist-not-configured' => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'O diretório de cópia de trabalho configurado não existe!',
+	'extdist-no-such-extension' => 'A extensão "$1" não existe',
+	'extdist-no-such-version' => 'A extensão "$1" não existe na versão "$2".',
+	'extdist-choose-extension' => 'Selecione que extensão pretende descarregar:',
+	'extdist-wc-empty' => 'O diretório de cópia de trabalho não possui extensões distribuíveis!',
+	'extdist-submit-extension' => 'Continuar',
+	'extdist-current-version' => 'Versão atual (tronco)',
+	'extdist-choose-version' => '<big>Você está a descarregando a extensão <b>$1</b>.</big>
+
+Selecione a versão do seu MediaWiki.
+
+A maioria das extensões funciona através de múltiplas versões do MediaWiki, portanto, se a versão do seu MediaWiki não estiver aqui, ou se tiver necessidade das últimas funcionalidades da extensão, experimente usar a versão atual.',
+	'extdist-no-versions' => 'A extensão selecionada ($1) não está disponível em nenhuma versão!',
+	'extdist-submit-version' => 'Continuar',
+	'extdist-no-remote' => 'Não foi possível contatar o cliente Subversion remoto.',
+	'extdist-remote-error' => 'Erro do cliente Subversion remoto: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Resposta inválida do cliente Subversion remoto.',
+	'extdist-svn-error' => 'O Subversion encontrou um erro: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Não foi possível processar o XML do "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar retornou código de saída $1:',
+	'extdist-created' => "Um instantâneo (''snapshot'') da versão <b>$2</b> da extensão <b>$1</b> para o MediaWiki <b>$3</b> foi criado. A sua descarga deverá iniciar-se automaticamente em 5 segundos.
+
+A URL deste instantâneo é:
+:$4
+Esta pode ser utilizada para descarga imediata para um servidor, mas por favor não a adicione aos seus favoritos, já que o seu conteúdo não será atualizado, e poderá ser eliminado posteriormente.
+
+O arquivo tar deverá ser extraído para o seu diretório de extensões. Por exemplo, num SO tipo UNIX:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+No Windows, poderá usar o [http://www.7-zip.org/ 7-zip] para extrair os arquivos.
+
+Se o seu wiki está num servidor remoto, extraia os ficheiros para um diretório temporário no seu computador local, e depois carregue '''todos''' os ficheiros extraídos no diretório de extensões do servidor.
+
+Note que algumas extensões precisam de um arquivo chamado ExtensionFunctions.php, situado em <tt>extensions/ExtensionFunctions.php</tt>, ou seja, no diretório ''pai'' da diretoria desta extensão em particular. O instantâneo destas extensões contém este arquivo como uma 'tarbomb', extraída para ./ExtensionFunctions.php. Não negligencie o carregamento deste ficheiro para o seu servidor remoto.
 
 Após ter extraído os ficheiros, terá que registar a extensão em LocalSettings.php. A documentação da extensão deverá ter instruções de como o fazer.
 

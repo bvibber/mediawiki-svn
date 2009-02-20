@@ -818,6 +818,36 @@ Aviso: o refrescamento pode demorar um tempo considerável em wikis grandes.',
 	'right-refreshspecial' => 'Refrescar páginas especiais',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'refreshspecial' => 'Atualizar páginas especiais',
+	'refreshspecial-desc' => 'Permite a [[Special:RefreshSpecial|atualização manual]] das páginas especiais',
+	'refreshspecial-title' => 'Atualizar páginas especiais',
+	'refreshspecial-help' => 'Esta página especial providencia uma forma de atualizar páginas especiais manualmente.
+Quando tiver escolhido todas as páginas que pretende atualizar, clique no botão "Atualizar selecionadas" abaixo para atualizar as páginas especiais selecionadas.
+Aviso: a atualização pode demorar um tempo considerável em wikis grandes.',
+	'refreshspecial-button' => 'Atualizar selecionadas',
+	'refreshspecial-fail' => 'Por favor, selecione pelo menos uma página especial para atualizar.',
+	'refreshspecial-refreshing' => 'atualizando páginas especiais',
+	'refreshspecial-skipped' => 'insignificante, saltado',
+	'refreshspecial-success-subtitle' => 'atualizando página especiais',
+	'refreshspecial-choice' => 'atualizando página especiais',
+	'refreshspecial-js-disabled' => '(<i>Não pode selecionar todas as páginas quando o JavaScript está desabilitado</i>)',
+	'refreshspecial-select-all-pages' => 'Selecionar todas as páginas',
+	'refreshspecial-link-back' => 'Voltar à página especial',
+	'refreshspecial-none-selected' => 'Não selecionou nenhuma página especial. Revertendo para a seleção padrão.',
+	'refreshspecial-db-error' => 'Falha: erro de base de dados',
+	'refreshspecial-no-page' => 'Página especial inexistente',
+	'refreshspecial-slave-lagged' => 'Servidor escravo com atraso, aguardando...',
+	'refreshspecial-reconnected' => 'Reconectado.',
+	'refreshspecial-reconnecting' => 'Conexão falhou, reconectando em 10 segundos...',
+	'refreshspecial-page-result' => '{{PLURAL:$1|obtida 1 linha|obtidas $1 linhas}} em',
+	'refreshspecial-total-display' => '$1 {{PLURAL:$1|página atualizada|páginas atualizadas}}, totalizando $2 {{PLURAL:$2|linha|linhas}} em tempo $3 (tempo total de execução do script é $4)',
+	'right-refreshspecial' => 'Atualizar páginas especiais',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

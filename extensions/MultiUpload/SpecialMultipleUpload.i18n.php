@@ -103,6 +103,7 @@ $messages['bar'] = array(
 	'multipleupload' => 'Datein aufelådn',
 	'multipleupload-ignoreallwarnings' => "'''Ålle Wårnungen''' ignorian und de Datein so speichan.",
 	'multipleupload-saveallfiles' => 'Ålle Datein speichan',
+	'multipleupload-addresswarnings' => "Bittschee, bevoa'st de Datei wieda aufelådst, ålle Wårnungen beårbeitn und ausrama.",
 	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
 	'multiupload-fileuploaded' => 'Datei is aufeglådn',
 	'multiupload-toolbox' => 'Mehrare Datein aufelådn',
