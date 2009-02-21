@@ -209,7 +209,7 @@ class CustomToolbarUploadForm extends UploadForm {
 					<table border='0'>
 						<tr>
 							<td align='left'><img src='{$icon_path}1.png' alt='1.' />
-								<label for='wpUploadFile'>{$source_filename}:</label></td>
+								<label for='wpUploadFile'>{$source_filename}</label></td>
 							<td align='left'>
 								<input type='file' name='wpUploadFile' id='wpUploadFile' "
 								. ($this->mDestFile?"":"onchange=\"opener.Uniwiki.CustomToolbar.fillDestFilename(document.getElementById('wpUploadFile').value, document.getElementById('wpDestFile') )\" ") . "size='40' />
@@ -217,7 +217,7 @@ class CustomToolbarUploadForm extends UploadForm {
 						</tr>
 						<tr>
 				            <td align='left'><img src='{$icon_path}2.png' alt='2.' />
-								<label for='wpCaption'>{$caption}:</label></td>
+								<label for='wpCaption'>{$caption}</label></td>
 				            <td align='left'>
 				        			<input type='text' name=\"wpCaption\" size='40' />
 				        	</td>

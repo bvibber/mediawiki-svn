@@ -47,9 +47,9 @@ $wgCustomToolbarMessages['en'] = array(
 	'ct_horizontal_caption'  => "Horizontal line",
 
 	'ct_upload'  => "Upload $1",
-	'ct_select'  => "Select $1 to upload",
-	'ct_caption' => "Add caption (optional)",
-	'ct_link'    => "Add link name (optional)",
+	'ct_select'  => "Select $1 to upload:",
+	'ct_caption' => "Add caption (optional):",
+	'ct_link'    => "Add link name (optional):",
 	'ct_submit'  => "Go!",
 	'ct_close'   => "Close window",
 	'ct_success' => "File upload successful!",
