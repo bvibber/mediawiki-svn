@@ -1,10 +1,15 @@
 <?php
+/**
+ * Internationalisation file for PasswordStrength extension.
+ *
+ * @addtogroup Extensions
+ */
 
-// i18n for password strength
 $messages = array();
 
 /**
  * English
+ * @author Chad Horohoe
  */
 $messages['en'] = array(
 	'passwordstr-desc' => 'Perform additional security checks on passwords with regular expressions',
