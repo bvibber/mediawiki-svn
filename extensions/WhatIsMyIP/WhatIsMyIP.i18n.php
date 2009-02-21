@@ -2,6 +2,7 @@
 /**
  * Internationalization file for WhatIsMyIP extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -14,6 +15,8 @@ $messages['en'] = array(
 	'whatismyip' => 'What is my IP',
 	'whatismyip-desc' => 'Shows current user\'s IP address on [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'Your IP:',
+	// For Special:ListGroupRights
+	'right-whatismyip' => 'View their own IP address on [[Special:WhatIsMyIP]]',
 );
 
 /** Message documentation (Message documentation)
@@ -188,6 +191,7 @@ $messages['fi'] = array(
 	'whatismyip' => 'Mikä IP-osoitteeni on',
 	'whatismyip-desc' => 'Näyttää käyttäjän nykyisen IP-osoitteen sivulla [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'IP-osoitteesi:',
+	'right-whatismyip' => 'Katsoa oman IP-osoitteensa sivulla [[Special:WhatIsMyIP]]',
 );
 
 /** French (Français)

@@ -1,11 +1,14 @@
 <?php
 /**
- * Aliases for special pages
+ * Aliases for WhatIsMyIP extension.
  *
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();
 
+/** English */
 $aliases['en'] = array(
 	'WhatIsMyIP' => array( 'WhatIsMyIP' ),
 );
