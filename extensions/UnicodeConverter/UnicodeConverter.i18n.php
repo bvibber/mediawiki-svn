@@ -280,6 +280,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'unicodeconverter' => '유니코드 변환기',
+	'unicodeconverter-desc' => '[[Special:UnicodeConverter|UTF-8로 주어진 문자열]]을 ISO 8859-1 웹 페이지를 위한 HTML 문자열로 변환',
 	'unicodeconverter-ok' => '확인',
 	'unicodeconverter-oldtext' => '원본 문자열:',
 	'unicodeconverter-newtext' => '변환된 문자열:',
@@ -526,6 +527,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'unicodeconverter-ok' => 'Tamam',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'unicodeconverter-ok' => 'Maqul',
 );
 
 /** Ukrainian (Українська)

@@ -306,7 +306,7 @@ $messages['gl'] = array(
 	'onlinestatus-js-error' => 'É imposible cambiar o status; o valor "$1" é inválido',
 	'onlinestatus-subtitle-offline' => 'Este usuario está actualmente desconectado',
 	'onlinestatus-subtitle-online' => 'Este usuario está actualmente conectado',
-	'onlinestatus-tab' => 'Status',
+	'onlinestatus-tab' => 'Estado',
 	'onlinestatus-toggles-desc' => 'O seu estado:',
 	'onlinestatus-toggles-explain' => 'Isto permítelle ensinar aos demais usuarios se está actualmente conectado ou non vendo a súa páxina de usuario.',
 	'onlinestatus-toggles-show' => 'Amosar o meu estado na miña páxina de usuario',
@@ -871,5 +871,12 @@ $messages['vo'] = array(
 	'onlinestatus-js-error' => 'Stadivotükam nemögon, völad: „$1“ no lonöfon',
 	'onlinestatus-tab' => 'Stad',
 	'onlinestatus-toggles-desc' => 'Stad olik:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'onlinestatus-tab' => '状态',
 );
 

@@ -452,6 +452,7 @@ $messages['pl'] = array(
 Żeby się podłączyć po prostu kliknij przycisk „Connect”.
 Jeżeli jesteś zalogowany, Twoja nazwa użytkownika zostanie wpisana jako nazwa domyślna.
 Użytkownicy anonimowi otrzymują losowy identyfikator, ale mogą go zmienić.',
+	'right-mibbit' => 'Korzystanie z czatu Mibbit',
 );
 
 /** Portuguese (Português)

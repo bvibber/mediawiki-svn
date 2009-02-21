@@ -191,7 +191,7 @@ $messages['gl'] = array(
 	'minipreview-files_in_gallery' => "Hai un total {{PLURAL:$1|dun ficheiro|de '''$1''' ficheiros}} nesta galería.",
 	'minipreview-no_more_files_here' => 'Non hai máis ficheiros nesta dirección.',
 	'minipreview-no_category_gallery' => 'Non hai categorías ou galerías!',
-	'minipreview-ignore_categories' => 'A seguinte é unha listaxe dos nomes das categorías ou comezos dos nomes. Estas categorías non se amosarán por MiniPreview. Por exemplo, "* PD-" non se amosarán todas as categorías que comecen por "PD-", como "PD-old".
+	'minipreview-ignore_categories' => 'A seguinte é unha lista dos nomes das categorías ou comezos dos nomes. Estas categorías non se amosarán por MiniPreview. Por exemplo, "* PD-" non se amosarán todas as categorías que comecen por "PD-", como "PD-old".
 * GFDL-
 * GFDL
 * CC-

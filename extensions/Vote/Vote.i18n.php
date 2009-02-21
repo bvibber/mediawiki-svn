@@ -1508,6 +1508,13 @@ $messages['tr'] = array(
 	'vote-results-count' => 'Sayma',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'vote-login-link' => 'kirish',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Aleksandrit

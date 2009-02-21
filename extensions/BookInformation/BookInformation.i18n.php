@@ -1645,11 +1645,13 @@ $messages['yue'] = array(
 	'bookinfo-provider' => '資料提供者: $1',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
 $messages['zh-hans'] = array(
 	'bookinfo-header' => '书籍资料',
 	'bookinfo-desc' => '扩展[[Special:Booksources|{{int:booksources}}]]的功能以们外部网站取得信息',
-	'bookinfo-result-title' => '标题:',
+	'bookinfo-result-title' => '标题：',
 	'bookinfo-result-author' => '作者:',
 	'bookinfo-result-publisher' => '出版者:',
 	'bookinfo-result-year' => '年份:',

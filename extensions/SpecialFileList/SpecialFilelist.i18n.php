@@ -263,9 +263,9 @@ $messages['gan'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'filelist' => 'Listaxe de arquivos',
+	'filelist' => 'Lista de arquivos',
 	'filelist-desc' => '[[Special:Filelist|Páxina especial]] para listar ficheiros cargados',
-	'filelist-show-list' => 'Amosar a listaxe',
+	'filelist-show-list' => 'Amosar a lista',
 	'filelist-show-gallery' => 'Amosar galería',
 	'filelist-image-desc' => 'desc',
 );
@@ -730,7 +730,9 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'filelist' => 'Dosya listesi',
+	'filelist-desc' => 'Yüklenen dosyaların listesi için: [[Special:Filelist|dosya listesi]]',
 	'filelist-show-list' => 'Listeyi gör',
+	'filelist-show-gallery' => 'Galeri göster',
 );
 
 /** Ukrainian (Українська)

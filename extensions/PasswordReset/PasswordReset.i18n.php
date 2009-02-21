@@ -381,7 +381,7 @@ $messages['gl'] = array(
 	'passwordreset-disablesuccess' => 'Desactivouse a conta do usuario (user_id: $1)',
 	'passwordreset-accountdisabled' => 'A conta foi desabilitada',
 	'disabledusers' => 'Usuarios desabilitados',
-	'disabledusers-summary' => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
+	'disabledusers-summary' => 'Esta é unha lista dos usuarios que foron deshabilitados por medio de PasswordReset.',
 	'right-passwordreset' => 'Restablecer o contrasinal dun usuario ([[Special:PasswordReset|páxina especial]])',
 );
 
@@ -1311,6 +1311,13 @@ $messages['tl'] = array(
  */
 $messages['ug-arab'] = array(
 	'passwordreset-username' => 'ئىشلەتكۇچى ئىسمى:',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'passwordreset-username' => 'Ishletkuchi ismi:',
 );
 
 /** Vietnamese (Tiếng Việt)

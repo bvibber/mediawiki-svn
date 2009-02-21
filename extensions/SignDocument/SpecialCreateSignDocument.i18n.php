@@ -315,7 +315,7 @@ Sie können es [{{SERVER}}{{localurl:Special:SignDocument|doc=$2}} hier ausprobi
  */
 $messages['dsb'] = array(
 	'createsigndocument' => 'Signěrowanje dokumentow zmóžniś',
-	'createsigndoc-head' => "Wuž toś ten formular, aby napórał 'signaturowy dokument' za pódany bok, tak až wužywarje mógu jen [[Special:SignDocument|signěrowaś]].
+	'createsigndoc-head' => "Wužyj toś ten formular, aby napórał 'signaturowy dokument' za pódany bok, tak až wužywarje mógu jen [[Special:SignDocument|signěrowaś]].
 Pšosym pódaj mě boka, za kótaryž coš digitalne signěrowanje zmóžniś, cłonki kótareje wužywarskeje kupki směju jen signěrowaś, kótare póla maju widobne byś a kótare maju opcionalne byś, minimalne starstwo, kótarež wužywarje deje měś, aby wóne mógu dokument signěrowaś (jolic to se wuwóstaja, minimum njejo) a krotki zawjeźeński tekst, kótaryž wopisujo dokument a dawa wukazanja wužywarjeju.
 
 <b>Tuchylu njejo žedna móžnosć signaturowe dokumenty pó jich napóranju wulašowaś abo změniś</b> bźez direktnego pśistup k datowej bance.
@@ -1473,6 +1473,13 @@ Hindi na ito magagawa sa ikalawang pagkakataon.',
  */
 $messages['tr'] = array(
 	'createsigndoc-pagename' => 'Sayfa:',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'createsigndoc-pagename' => 'Bet:',
 );
 
 /** Vietnamese (Tiếng Việt)

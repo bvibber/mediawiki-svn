@@ -1363,6 +1363,13 @@ $messages['tr'] = array(
 	'imagetagging-taggedimages-title' => '"$1" resimleri',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'imagetagging-article' => 'Bet:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -351,7 +351,7 @@ Protokol nejnowšych pśidanjow wobglědowańkam stoj na boku [[Special:PovWatch
 	'povwatch_not_allowed_subscribers' => 'Njamaš pšawo se lišćinu zregistrěrowanych wužywarjow PovWatch woglědaś.',
 	'povwatch_unknown_subpage' => 'Njeznaty pódbok.',
 	'povwatch_push' => 'Pśidaś',
-	'povwatch_push_intro' => 'Wuž slědujucy formular, aby pśidał boki wobglědowańkam zregistrěrowanych wužywarjow.
+	'povwatch_push_intro' => 'Wužyj slědujucy formular, aby pśidał boki wobglědowańkam zregistrěrowanych wužywarjow.
 Pšosym buź wobglědniwy pśi pisanju titela: teke njeeksistěrujuce boko daju se pśidaś, a njejo žedna móžnosć, aby titel wótpórało, gaž jo pśidany.',
 	'povwatch_title' => 'Titel:',
 	'povwatch_comment' => 'Protokolowy komentar:',
@@ -514,24 +514,24 @@ Inscrivez scrupuleusement le titre : une page inexistante peut être spécifiée
  */
 $messages['gl'] = array(
 	'povwatch' => 'PovWatch',
-	'povwatch_desc' => 'Extensión para [[Special:PovWatch|empurrar páxinas á listaxe de vixilancia]] doutros usuarios',
+	'povwatch_desc' => 'Extensión para [[Special:PovWatch|empurrar páxinas á lista de vixilancia]] doutros usuarios',
 	'povwatch_no_session' => 'Erro: non se pode enviar o formulario debido a unha perda dos datos de inicio da sesión.',
-	'povwatch_not_allowed_push' => 'Non é un administrador PovWatch, non pode empurrar páxinas ás listaxes de vixilancia doutros.',
+	'povwatch_not_allowed_push' => 'Non é un administrador PovWatch, non pode empurrar páxinas ás listas de vixilancia doutros.',
 	'povwatch_already_subscribed' => 'Vostede está aínda subscrito a PovWatch',
 	'povwatch_subscribed' => 'Vostede está agora subscrito a PovWatch',
 	'povwatch_not_subscribed' => 'Non ten unha subscrición a PovWatch, polo que non a pode cancelar.',
 	'povwatch_unsubscribed' => 'Cancelouse a súa subscrición a PovWatch',
 	'povwatch_invalid_title' => 'O título especificado foi non válido',
 	'povwatch_pushed' => '"[[$1]]" foi engadida con éxito {{PLURAL:$2|á páxina|ás páxinas}} de vixilancia de $2',
-	'povwatch_intro' => 'PovWatch é un servizo que permite que páxinas polémicas sexan "empurradas" discretamente ás listaxes de vixilancia dos adminitradores subscritos.
+	'povwatch_intro' => 'PovWatch é un servizo que permite que páxinas polémicas sexan "empurradas" discretamente ás listas de vixilancia dos adminitradores subscritos.
 
-un rexistro dos "empurróns" ás listaxes de vixilancia recentes está dispoñible en [[Special:PovWatch/log]].',
-	'povwatch_subscriber_list' => 'Unha [[Special:PovWatch/subscribers|listaxe de subscritores]] está dispoñíbel.',
-	'povwatch_subscriber_list_intro' => '<strong>Listaxe dos subscritores</strong>',
-	'povwatch_not_allowed_subscribers' => 'Non ten permiso para ver a listaxe de subscrición de PovWatch.',
+un rexistro dos "empurróns" ás listas de vixilancia recentes está dispoñible en [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Unha [[Special:PovWatch/subscribers|lista de subscritores]] está dispoñíbel.',
+	'povwatch_subscriber_list_intro' => '<strong>Lista dos subscritores</strong>',
+	'povwatch_not_allowed_subscribers' => 'Non ten permiso para ver a lista de subscrición de PovWatch.',
 	'povwatch_unknown_subpage' => 'Subpáxina descoñecida.',
 	'povwatch_push' => 'Empurrar',
-	'povwatch_push_intro' => 'Use o formulario de embaixo para "empurrar" páxinas ás listaxes de vixilancia dos usuarios subscritos.
+	'povwatch_push_intro' => 'Use o formulario de embaixo para "empurrar" páxinas ás listas de vixilancia dos usuarios subscritos.
 Por favor, sexa coidadoso ao teclear o título: incluso os títulos non existentes poden ser engadidos e non hai forma de eliminar un título unha vez que este foi "empurrado".',
 	'povwatch_title' => 'Título:',
 	'povwatch_comment' => 'Comentario do rexistro:',
@@ -544,8 +544,8 @@ Faga clic no botón de embaixo para cancelar a subscrición.',
 Faga clic no botón de embaixo para subscribirse.',
 	'povwatch_subscribe' => 'Subscribir',
 	'povwatch_added' => 'engadido',
-	'right-povwatch_admin' => 'Administrar os dereitos de usuario para engadir páxinas ás listaxes de vixilancia doutros usuarios',
-	'right-povwatch_user' => 'Engadir páxinas á listaxe de vixilancia doutros usuarios',
+	'right-povwatch_admin' => 'Administrar os dereitos de usuario para engadir páxinas ás listas de vixilancia doutros usuarios',
+	'right-povwatch_user' => 'Engadir páxinas á lista de vixilancia doutros usuarios',
 	'action-povwatch_admin' => 'administrar os dereitos de usuario PovWatch',
 	'action-povwatch_user' => 'engadir esta páxina á lista de vixilancia doutro usuario',
 );

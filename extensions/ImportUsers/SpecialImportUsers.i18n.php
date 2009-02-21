@@ -1122,6 +1122,7 @@ $messages['pl'] = array(
 	'importusers-password' => 'hasło',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'imię i nazwisko',
+	'right-import_users' => 'Hurtowe importowanie kont użytkowników',
 );
 
 /** Pashto (پښتو)
@@ -1447,6 +1448,13 @@ $messages['tl'] = array(
 	'importusers-realname' => 'totoong pangalan',
 	'right-import_users' => 'Umangkat ng bunton ng mga tagagamit',
 	'action-import_users' => 'umangkat ng bunton ng tagagamit',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'importusers-email' => 'élxet:',
 );
 
 /** Vietnamese (Tiếng Việt)

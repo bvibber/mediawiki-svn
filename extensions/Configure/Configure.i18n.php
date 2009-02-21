@@ -2227,7 +2227,7 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-no-setup' => 'Ten que chamar explicitamente <code>efConfigureSetup()</code> no seu ficheiro LocalSettings.php para usar esta extensión.',
 	'configure-no-transwiki' => 'Non ten permiso para cambiar as configuracións noutros wikis',
 	'configure-old' => 'Versións vellas',
-	'configure-old-versions' => 'Listaxe de versións vellas da configuración:',
+	'configure-old-versions' => 'Lista de versións vellas da configuración:',
 	'configure-old-not-available' => 'A versión vella das configuracións que solicitou, $1, non está dispoñible',
 	'configure-old-changes' => 'cambios',
 	'configure-old-summary' => '$1 por $2 $4 $3',
@@ -6439,6 +6439,13 @@ $messages['tr'] = array(
 	'configure-section-users' => 'Kullanıcılar',
 	'configure-section-search' => 'Ara',
 	'configure-section-copyright' => 'Telif hakları',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'configure-section-email' => 'Élxet',
 );
 
 /** Ukrainian (Українська)

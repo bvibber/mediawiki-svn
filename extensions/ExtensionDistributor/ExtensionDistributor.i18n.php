@@ -682,7 +682,7 @@ A maioría das extensións traballan con múltiples versións de MediaWiki, polo
 
 O enderezo URL desta fotografía é:
 :$4
-Poderá ser usada para descargala inmediatamente a un servidor, pero, por favor, non a engada á listaxe dos seus favoritos mentres o contido non é actualizado. Poderá tamén ser eliminada nuns días.
+Poderá ser usada para descargala inmediatamente a un servidor, pero, por favor, non a engada á lista dos seus favoritos mentres o contido non é actualizado. Poderá tamén ser eliminada nuns días.
 
 O arquivo tar deberá ser extraído no seu directorio de extensións. Por exemplo, nun sistema beseado no UNIX:
 

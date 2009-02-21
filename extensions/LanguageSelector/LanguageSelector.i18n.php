@@ -775,6 +775,13 @@ $messages['tr'] = array(
 	'languageselector' => 'Dil',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'languageselector' => 'Til',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

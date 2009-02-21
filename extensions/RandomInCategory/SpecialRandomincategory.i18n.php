@@ -506,8 +506,8 @@ $messages['mhr'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'randomincategory-nocategory' => '$1 എന്ന വിഭാഗം നിലവിലില്ല അല്ലെങ്കില്‍ ശൂന്യമാണ്‌',
-	'randomincategory-label' => 'വിഭാഗം:',
+	'randomincategory-nocategory' => '$1 എന്ന വര്‍ഗ്ഗം നിലവിലില്ല അല്ലെങ്കില്‍ ശൂന്യമാണ്‌',
+	'randomincategory-label' => 'വര്‍ഗ്ഗം:',
 	'randomincategory-submit' => 'പോകൂ',
 );
 
@@ -759,6 +759,13 @@ $messages['tl'] = array(
 	'randomincategory-nocategory' => 'Hindi umiiral o walang laman ang kauriang $1',
 	'randomincategory-label' => 'Kaurian:',
 	'randomincategory-submit' => 'Gawin na',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'randomincategory-submit' => 'Köchüsh',
 );
 
 /** Vietnamese (Tiếng Việt)

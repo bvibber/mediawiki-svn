@@ -141,11 +141,11 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'deletebatch-as' => 'Стартиране на скрипта като',
+	'deletebatch-as' => 'Стартиране на скрипта като:',
 	'deletebatch-or' => '<b>ИЛИ</b>',
-	'deletebatch-page' => 'Страници за изтриване',
+	'deletebatch-page' => 'Страници за изтриване:',
 	'deletebatch-reason' => 'Причина за изтриването',
-	'deletebatch-processing' => 'изтриване на страниците',
+	'deletebatch-processing' => 'изтриване на страниците $1',
 	'deletebatch-from-file' => 'от списък във файл',
 	'deletebatch-from-form' => 'от формуляр',
 	'deletebatch-success-subtitle' => 'за $1',

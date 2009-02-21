@@ -994,7 +994,7 @@ $messages['gl'] = array(
 	'tasks_you_have_no_assignments' => 'Non ten traballos pendentes',
 	'tasks_search_form_title' => 'Procurar',
 	'tasks_search_tasks' => 'Tarefas',
-	'tasks_search_status' => 'Status',
+	'tasks_search_status' => 'Estado',
 	'tasks_search_no_tasks_chosen_note' => '(Ao non seleccionar nada, buscaranse todos os tipos de tarefas.)',
 	'tasks_search_results' => 'Resultados da procura',
 	'tasks_previous' => 'Anterior',
@@ -2583,6 +2583,13 @@ $messages['tr'] = array(
 	'tasks_delete' => 'Sil',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'tasks_table_header_page' => 'Bet',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */
@@ -2710,6 +2717,7 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'tasks_delete' => '删除',
@@ -2717,6 +2725,7 @@ $messages['zh-hans'] = array(
 	'tasks_event_on_creation_anon' => '检查',
 	'tasks_table_header_page' => '页面',
 	'tasks_search_form_title' => '搜索',
+	'tasks_search_status' => '状态',
 	'tasks_search_results' => '搜索结果',
 );
 

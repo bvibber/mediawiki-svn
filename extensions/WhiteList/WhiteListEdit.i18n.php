@@ -669,7 +669,7 @@ $messages['dsb'] = array(
 	'whitelisttablesetview' => 'Woglědaś se',
 	'whitelisttableremove' => 'Wótpóraś',
 	'whitelistnewpagesfor' => 'Pśidaj nowe boki běłej lisćinje <b>$1</b><br />
-Wuž pak * abo % ako zastupne znamuško',
+Wužyj pak * abo % ako zastupne znamuško',
 	'whitelistnewtabledate' => 'Datum pśepadnjenja:',
 	'whitelistnewtableedit' => 'Wobźěłaś',
 	'whitelistnewtableview' => 'Woglědaś se',
@@ -991,8 +991,8 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'whitelist-desc' => 'Editar os permisos de acceso dos usuarios restrinxidos',
-	'whitelistedit' => 'Editor de acceso da listaxe branca (whitelist)',
-	'whitelist' => 'Páxinas da listaxe branca',
+	'whitelistedit' => 'Editor de acceso da lista branca (whitelist)',
+	'whitelist' => 'Páxinas da lista branca',
 	'mywhitelistpages' => 'As miñas páxinas',
 	'whitelistfor' => '<center>Información actual para <b>$1</b></center>',
 	'whitelisttablemodify' => 'Modificar',
@@ -1010,7 +1010,7 @@ $messages['gl'] = array(
 	'whitelisttablesetedit' => 'Preparar para editar',
 	'whitelisttablesetview' => 'Preparar para ver',
 	'whitelisttableremove' => 'Eliminar',
-	'whitelistnewpagesfor' => 'Engada novas páxinas á listaxe branca de <b>$1</b><br />
+	'whitelistnewpagesfor' => 'Engada novas páxinas á lista branca de <b>$1</b><br />
 Pode usar * ou %, como tamén o carácter "comodín"',
 	'whitelistnewtabledate' => 'Data de caducidade:',
 	'whitelistnewtableedit' => 'Preparar para editar',
@@ -1026,7 +1026,7 @@ Ten que [[Special:UserRights|engadir usuarios ao grupo]] antes de poder engadir 
 	'whitelistoverviewcd' => "* Cambiando a data a '''$1''' para [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Configurando o acceso a '''$1''' para [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Eliminando o acceso a [[:$1|$1]]',
-	'whitelistoverviewna' => "* Engadindo [[:$1|$1]] á listaxe branca (whitelist) con acceso a '''$2''' e data de remate '''$3'''",
+	'whitelistoverviewna' => "* Engadindo [[:$1|$1]] á lista branca (whitelist) con acceso a '''$2''' e data de remate '''$3'''",
 	'whitelistrequest' => 'Solicitar acceso a máis páxinas',
 	'whitelistrequestmsg' => '$1 solicitou ter acceso {{PLURAL:$3|á seguinte páxina|ás seguintes páxinas}}:
 
@@ -2136,8 +2136,8 @@ $2',
 Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone ograniczenia.",
 	'whitelistnever' => 'nigdy',
 	'whitelistnummatches' => ' - {{PLURAL:$1|1 wynik|$1 wyniki|$1 wyników}}',
-	'right-editwhitelist' => 'Zmień whitelistę dla istniejących użytkowników',
-	'right-restricttowhitelist' => 'Edytowanie i przeglądanie strony wyłącznie z białej listy',
+	'right-editwhitelist' => 'Zmiana białej listy dla istniejących użytkowników',
+	'right-restricttowhitelist' => 'Edytowanie i przeglądanie stron wyłącznie z białej listy',
 	'action-editwhitelist' => 'modyfikowania białej listy dla istniejących użytkowników',
 	'action-restricttowhitelist' => 'edytowania i przeglądania wyłącznie białej listy',
 	'group-restricted' => 'Ograniczenie użytkownicy',

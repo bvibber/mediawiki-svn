@@ -822,6 +822,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'recordadmin' => 'Administracja rekordami',
@@ -855,7 +856,7 @@ $messages['pl'] = array(
 	'recordadmin-viewlink' => 'zobacz',
 	'recordadmin-editlink' => 'edytuj',
 	'recordadmin-created' => 'Utworzony',
-	'right-recordadmin' => 'Znajdź i edytuj rekord stron',
+	'right-recordadmin' => 'Znajdywanie i edycja stron z rekordami danych',
 );
 
 /** Portuguese (Português)

@@ -1873,11 +1873,11 @@ $4',
 $messages['gl'] = array(
 	'code' => 'Revisión do código',
 	'code-comments' => 'Notas da revisión',
-	'code-change-status' => "cambiou o '''status''' desta revisión",
+	'code-change-status' => "cambiou o '''estado''' desta revisión",
 	'code-change-tags' => "cambiou as '''etiquetas''' desta revisión",
 	'code-change-removed' => 'eliminado:',
 	'code-change-added' => 'engadido:',
-	'code-prop-changes' => 'Status e rexistro de etiquetas',
+	'code-prop-changes' => 'Estado e rexistro de etiquetas',
 	'code-desc' => '[[Special:Code|Ferramenta de revisión do código]] con [[Special:RepoAdmin|apoio da subversión]]',
 	'code-no-repo' => 'Non hai ningún repositorio configurado!',
 	'code-load-diff' => 'Cargando as diferenzas…',
@@ -1893,14 +1893,14 @@ $messages['gl'] = array(
 	'code-author-orunlink' => 'Ou retirar a ligazón deste usuario do wiki:',
 	'code-author-name' => 'Insira un nome de usuario:',
 	'code-author-success' => 'O autor $1 foi ligado con éxito ao usuario do wiki $2',
-	'code-author-link' => 'ligar?',
-	'code-author-unlink' => 'retirar a ligazón?',
+	'code-author-link' => 'quere inserir a ligazón?',
+	'code-author-unlink' => 'quere retirar a ligazón?',
 	'code-author-unlinksuccess' => 'Foi retirada a ligazón que tiña o autor $1',
 	'code-field-id' => 'Revisión',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentarista',
 	'code-field-message' => 'Resumo de tarefas',
-	'code-field-status' => 'Status',
+	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
 	'code-field-path' => 'Ruta',
@@ -1917,8 +1917,8 @@ $messages['gl'] = array(
 	'code-rev-modified-r' => 'substituíu',
 	'code-rev-modified-d' => 'borrou',
 	'code-rev-modified-m' => 'modificou',
-	'code-rev-status' => 'Status:',
-	'code-rev-status-set' => 'Cambiar o status',
+	'code-rev-status' => 'Estado:',
+	'code-rev-status-set' => 'Cambiar o estado',
 	'code-rev-tags' => 'Etiquetas:',
 	'code-rev-tag-add' => 'Engadir as etiquetas:',
 	'code-rev-tag-remove' => 'Eliminar as etiquetas:',
@@ -1937,7 +1937,7 @@ $messages['gl'] = array(
 	'code-pathsearch-legend' => 'Procurar as revisións nesta resposta por ruta',
 	'code-pathsearch-path' => 'Ruta:',
 	'code-rev-submit' => 'Gardar os cambios',
-	'code-rev-submit-next' => 'Gardar e próximo non resolto',
+	'code-rev-submit-next' => 'Gardar e vindeiro non resolto',
 	'code-batch-status' => 'Cambiar o estado:',
 	'code-batch-tags' => 'Cambiar as etiquetas:',
 	'codereview-batch-title' => 'Cambiar todas as revisións seleccionadas',
@@ -1970,7 +1970,7 @@ $4',
 	'right-codereview-add-tag' => 'Engadir etiquetas novas ás revisións',
 	'right-codereview-remove-tag' => 'Eliminar as etiquetas das revisións',
 	'right-codereview-post-comment' => 'Engadir comentarios ás revisións',
-	'right-codereview-set-status' => 'Cambiar o status das revisións',
+	'right-codereview-set-status' => 'Cambiar o estado das revisións',
 	'right-codereview-link-user' => 'Ligar autores a usuarios do wiki',
 	'specialpages-group-developer' => 'Ferramentas dos desenvolvedores',
 );
@@ -3287,6 +3287,7 @@ $messages['lb'] = array(
 	'code-field-comments' => 'Notizen',
 	'code-field-path' => 'Pad',
 	'code-field-text' => 'Notiz',
+	'code-field-select' => 'Auswielen',
 	'code-rev-author' => 'Auteur:',
 	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Bemierkung:',
@@ -3316,6 +3317,9 @@ $messages['lb'] = array(
 	'code-pathsearch-path' => 'Pad:',
 	'code-rev-submit' => 'Ännerunge späicheren',
 	'code-rev-submit-next' => 'Späicheren & nächst ongeléist',
+	'codereview-batch-title' => 'All ausgewielte Versiounen änneren',
+	'code-release-startrev' => 'Ufanksversioun:',
+	'code-release-endrev' => 'Lescht Versioun:',
 	'codereview-subtitle' => 'Fir $1',
 	'codereview-reply-link' => 'äntwerten',
 	'codereview-email-subj' => '[$1] [r$2]: Nei Bemierkung derbäigesat',
@@ -3406,7 +3410,7 @@ $messages['ms'] = array(
 	'code-desc' => '[[Special:Code|Alat semakan kod]] dengan [[Special:RepoAdmin|sokongan Subversion]]',
 	'code-no-repo' => 'Tiada gedung yang ditetapkan!',
 	'code-load-diff' => 'Memuat perbezaan…',
-	'code-notes' => 'catatan semak',
+	'code-notes' => 'komen terbaru',
 	'code-authors' => 'pengarang',
 	'code-status' => 'status',
 	'code-tags' => 'label',
@@ -3430,6 +3434,7 @@ $messages['ms'] = array(
 	'code-field-comments' => 'Catatan',
 	'code-field-path' => 'Laluan',
 	'code-field-text' => 'Catatan',
+	'code-field-select' => 'Pilih',
 	'code-rev-author' => 'Pengarang:',
 	'code-rev-date' => 'Tarikh:',
 	'code-rev-message' => 'Ulasan:',
@@ -3462,6 +3467,10 @@ $messages['ms'] = array(
 	'code-pathsearch-path' => 'Laluan:',
 	'code-rev-submit' => 'Simpan perubahan',
 	'code-rev-submit-next' => 'Simpan & selesaikan yang berikutnya',
+	'code-batch-status' => 'Tukar status:',
+	'code-batch-tags' => 'Tukar label:',
+	'codereview-batch-title' => 'Tukar semua semakan yang dipilih',
+	'codereview-batch-submit' => 'Serah',
 	'code-releasenotes' => 'catatan lepasan',
 	'code-release-legend' => 'Jana catatan lepasan',
 	'code-release-startrev' => 'Semakan pertama:',
@@ -5445,6 +5454,14 @@ $4',
 	'specialpages-group-developer' => 'Geliştirici araçları',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'code-status-ok' => 'maqul',
+	'repoadmin-edit-button' => 'Maqul',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
@@ -5616,6 +5633,7 @@ $messages['vec'] = array(
 	'code-pathsearch-path' => 'Percorso:',
 	'code-rev-submit' => 'Salva le modìfeghe',
 	'code-rev-submit-next' => 'Salva e và al prossimo che xe da justar',
+	'code-batch-status' => 'Cànbia stato:',
 	'code-releasenotes' => 'note de rilàscio',
 	'code-release-legend' => 'Gènera le note de rilascio',
 	'code-release-startrev' => 'Revision de partensa:',
@@ -5838,6 +5856,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'code' => '查看代码',
@@ -5851,6 +5870,7 @@ $messages['zh-hans'] = array(
 	'code-no-repo' => '储存库未被设置！',
 	'code-notes' => '检查注释',
 	'code-authors' => '作者',
+	'code-status' => '状态',
 	'code-tags' => '标签',
 	'code-author-haslink' => '作者与维基用户 $1 相关联',
 	'code-author-orphan' => '作者没有与维基帐户相关联',

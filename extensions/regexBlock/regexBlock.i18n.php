@@ -444,8 +444,8 @@ $messages['dsb'] = array(
 	'regexblock-expire-duration' => '1 góźina,2 góźinje,4 góźiny,6 góźinow,1 źeń,3 dny,1 tyźeń,2 tyźenja,1 mjasec,3 mjasece,6 mjasecow,1 lěto,njewěsty',
 	'regexblock-page-title' => 'Blokěrowanje mjenjow pśez regularne wuraze',
 	'regexblockstats' => 'Statistika blokěrowanjow pśez regularne wuraze',
-	'regexblock-help' => 'Wuž slědujucy formular, aby blokěrował pisański pśistup za IP-adresu abo wužywarske mě.
-To by měło se jano cyniś. aby zajźowało wandalizm a w makanju z zasadach.
+	'regexblock-help' => 'Wužyj slědujucy formular, aby blokěrował pisański pśistup za IP-adresu abo wužywarske mě.
+To by měło se jano cyniś, aby zajźowało wandalizm a w makanju z zasadach.
 \'\'Toś ten bok buźo śi zmóžnjaś, samo njeeksistujucych wužywarjow blokěrowaś a buźo teke wužywarjow z pódobnym mjenim blokěrowaś, t.j. "Test" buźo se gromaźe "Test 2" atd. blokěrowaś. Móžoš teke dopołne IP-adrese blokěrowaś, to groni, až nichto, kótaryž se z nimi pśizjawja, njamóžo boki wobźěłaś. Pśispomnjeśe: źělne IP-adrese wobchadaju se ako wužywarske mjenja, aby rozsuźił wo blokěrowanju. Jolic pśicyna njejo pódana, buźo se powšykna pśicyna wužiwaś.\'\'',
 	'regexblock-page-title-1' => 'Adresu z pomocu regularnych wurazow blokěrowaś',
 	'regexblock-reason-ip' => 'Toś tej IP-adresy se zawoborujo wobźěłowanje dla wandalizma abo drugego mólenja wót tebje abo někogo, kótaryž ma samsku IP-adresu.
@@ -674,7 +674,7 @@ Isto debería facerse só para previr vandalismo, e segundo a política e normas
 	'regexblock-view-block-by' => 'bloqueado por',
 	'regexblock-view-block-unblock' => 'desbloquear',
 	'regexblock-view-stats' => 'estatísticas',
-	'regexblock-view-empty' => 'A listaxe dos nomes e enderezos bloqueados está baleira.',
+	'regexblock-view-empty' => 'A lista dos nomes e enderezos bloqueados está baleira.',
 	'regexblock-view-time' => 'en $1',
 	'right-regexblock' => 'Bloquearlles aos usuarios a edición en todos os wikis na granxa',
 );
@@ -1724,7 +1724,7 @@ Prawdopodobnie brak takiego użytkownika.',
 	'regexblock-view-stats' => 'statystyki',
 	'regexblock-view-empty' => 'Lista zablokowanych nazw i adresów jest pusta.',
 	'regexblock-view-time' => '$1',
-	'right-regexblock' => 'Zablokuj użytkownikom możliwość edycji na wszystkich wiki na tej farmie.',
+	'right-regexblock' => 'Blokowanie użytkownikom możliwości edycji na wszystkich wiki w obrębie farmy',
 );
 
 /** Pashto (پښتو)
@@ -2189,6 +2189,13 @@ Marahal ay walang ganyang tagagamit.',
  */
 $messages['tr'] = array(
 	'regexblock-form-reason' => 'Neden:',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'regexblock-view-go' => 'Köchüsh',
 );
 
 /** Vietnamese (Tiếng Việt)

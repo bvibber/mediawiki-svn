@@ -265,7 +265,7 @@ $messages['gl'] = array(
 	'inspectcache-get' => 'Obter',
 	'inspectcache-delete' => 'Eliminar',
 	'inspectcache-deleted' => 'Caché eliminada',
-	'inspectcache-list' => 'Listaxe',
+	'inspectcache-list' => 'Lista',
 );
 
 /** Gothic
@@ -872,6 +872,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'inspectcache-ok' => 'Tamam',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'inspectcache-ok' => 'Maqul',
 );
 
 /** Ukrainian (Українська)

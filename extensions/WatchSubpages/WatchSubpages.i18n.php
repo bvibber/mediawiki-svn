@@ -230,11 +230,11 @@ Pour cocher ou décocher plusieurs pages, vous pouvez maintenir enfoncée la tou
  */
 $messages['gl'] = array(
 	'watchsubpages' => 'Vixiar as subpáxinas',
-	'watchsubpages-addedtowatchlist' => 'O seguinte foi engadido á súa listaxe de vixilancia.',
+	'watchsubpages-addedtowatchlist' => 'O seguinte foi engadido á súa lista de vixilancia.',
 	'watchsubpages-addtitles' => 'Engadir as páxinas',
 	'watchsubpages-addtitlestowatchlist' => 'Engadir as páxinas á lista de vixilancia',
-	'watchsubpages-desc' => '[[Special:WatchSubpages|Engadir rapidamente todas as subpáxinas]] dunha páxina á listaxe de vixilancia',
-	'watchsubpages-form' => 'Seleccione embaixo as páxinas que queira engadir á súa listaxe de vixilancia.
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Engadir rapidamente todas as subpáxinas]] dunha páxina á lista de vixilancia',
+	'watchsubpages-form' => 'Seleccione embaixo as páxinas que queira engadir á súa lista de vixilancia.
 Para engadir unha páxina, marque o casilla que está ao seu carón e prema en "Engadir as páxinas".
 
 Para marcar ou deixar de marcar diversas páxinas, só ten que premer na tecla "Maiúsculas", e isto permitiralle seleccionar casillas consecutivas con só facer clic en cada final do rexistro.',

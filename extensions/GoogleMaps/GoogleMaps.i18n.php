@@ -1453,7 +1453,7 @@ $wgGoogleMapsMessages['ga'] = array(
 $wgGoogleMapsMessages['gl'] = array(
 	'gm-desc' => 'Creación sinxela de mapas con marcadores wikificados',
 	'gm-incompatible-browser' => 'Para poder ver o mapa que iría neste espazo ha de utilizar un navegador web compatíbel.',
-	'gm-incompatible-browser-link' => 'Faga clic aquí para ver unha listaxe dos navegadores compatibles.',
+	'gm-incompatible-browser-link' => 'Faga clic aquí para ver unha lista dos navegadores compatibles.',
 	'gm-no-editor' => 'Desafortunadamente, o seu navegador non soporta o característica interactiva map-making.
 Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) ou o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac e Linux).',
 	'gm-balloon-title' => 'Título:',
@@ -1468,7 +1468,7 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 	'gm-save-point' => 'gardar e fechar',
 	'gm-load-map-from-article' => 'Cargar un mapa dende a páxina:',
 	'gm-no-maps' => 'Non hai mapas para cargar nesta páxina.',
-	'gm-refresh-list' => 'Refrescar a listaxe',
+	'gm-refresh-list' => 'Refrescar a lista',
 	'gm-load-map' => 'Cargar mapa',
 	'gm-clip-result' => 'Engadir ao mapa',
 	'gm-no-results' => 'Sentímolo, non hai resultados',

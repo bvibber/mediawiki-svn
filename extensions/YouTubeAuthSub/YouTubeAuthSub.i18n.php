@@ -1417,7 +1417,7 @@ $messages['ml'] = array(
 	'youtubeauthsub_password' => 'യൂട്യൂബ് രഹസ്യവാക്ക്',
 	'youtubeauthsub_username' => 'യൂട്യൂബ് യൂസര്‍നാമം',
 	'youtubeauthsub_keywords' => 'കീവേര്‍ഡുകള്‍',
-	'youtubeauthsub_category' => 'വിഭാഗം',
+	'youtubeauthsub_category' => 'വര്‍ഗ്ഗം',
 	'youtubeauthsub_submit' => 'സമര്‍പ്പിക്കുക',
 	'youtubeauthsub_clickhere' => 'യൂട്യൂബിലേക്ക് ലോഗിന്‍ ചെയ്യാന്‍ ഇവിടെ ഞെക്കുക',
 	'youtubeauthsub_uploadhere' => 'നിങ്ങളുടെ വീഡിയോ ഇവിടെ നിന്നും അപ്‌ലോഡ് ചെയ്യുക:',
@@ -1517,23 +1517,23 @@ $messages['mt'] = array(
 	'youtubeauthsub_submit' => 'Ibgħat',
 	'youtubeauthsub_clickhere' => 'Agħfas hawn biex tillogja fuq YouTube',
 	'youtubeauthsub_tokenerror' => "Kien hemm problema biex jinħoloq it-token tal-awtorizazzjoni, prova tella' l-paġna mill-ġdid.",
-	'youtubeauthsub_success' => "Prosit!<br/>
-Il-vidjo tiegħek ittella'. 
-Biex tara l-vidjo agħfas <a href='http://www.youtube.com/watch?v=$1'>hawn</a>.
+	'youtubeauthsub_success' => "Prosit!<br />
+Il-vidjo tiegħek ġie mtella.<br />
+<a href='http://www.youtube.com/watch?v=$1'>Ara l-vidjo</a>.
 YouTube ikun irid ftit żmien sabiex jiproċessa l-vidjo tiegħek, allura jista' jkun li ma jkunx għadu lest.
 
-Sabiex tinkludi l-vidjo tiegħek fuq paġna tal-wiki, daħħal il-kodiċi segwenti fil-paġna:
+Biex tinkludi l-vidjo tiegħek fuq paġna tal-wiki, daħħal il-kodiċi segwenti fil-paġna:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => "Biex ittella' vidjo, hemm bżonn li l-ewwel tidħol fil-kont tiegħek fuq YouTube.",
 	'youtubeauthsub_uploadhere' => "Tella' l-vidjo tiegħek hawnhekk:",
 	'youtubeauthsub_uploadbutton' => "Tella'",
-	'youtubeauthsub_code' => "{{#ev:youtube|$1}}.
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Dan il-vidjo jista' jintwera [http://www.youtube.com/watch?v=$1 hawnhekk]",
+[http://www.youtube.com/watch?v=$1 Ara dan il-vidjo]',
 	'youtubeauthsub_summary' => "Il-vidjo tal-YouTube qiegħed jiġi mtella'",
 	'youtubeauthsub_uploading' => "Il-vidjo tiegħek qed jittella'.<br />
 Jekk jogħġbok kun pazjenti.",
-	'youtubeauthsub_viewpage' => "Tista' tara il-vidjo tiegħek [[$1|hawnhekk]].",
+	'youtubeauthsub_viewpage' => "Minflok, tista' tara l-vidjo tiegħek [[$1|hawnhekk]].",
 	'youtubeauthsub_jserror_nokeywords' => 'Jekk jogħġbok daħħal kelma jew aktar kliem ċavetta.',
 	'youtubeauthsub_jserror_notitle' => 'Jekk jogħġbok daħħal titlu għall-vidjo.',
 	'youtubeauthsub_jserror_nodesc' => 'Jekk jogħġbok daħħal deskrizzjoni għall-vidjo.',

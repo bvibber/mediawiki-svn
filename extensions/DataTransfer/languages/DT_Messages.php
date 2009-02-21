@@ -1122,6 +1122,13 @@ $messages['tr'] = array(
 	'dt_xml_title' => 'Başlık',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'dt_xml_page' => 'Bet',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

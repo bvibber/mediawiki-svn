@@ -2327,7 +2327,7 @@ $messages['gl'] = array(
 	'boardvote' => 'Eleccións dos Membros do Consello de Administración da Wikimedia',
 	'boardvote-desc' => '[[meta:Board elections/2008|Eleccións dos Membros do Consello de Administración da Wikimedia]]',
 	'boardvote_entry' => '* [[Special:BoardVote/vote|Votar]]
-* [[Special:BoardVote/list|Listaxe de votos ata a data]]
+* [[Special:BoardVote/list|Lista de votos ata a data]]
 * [[Special:BoardVote/dump|Crear un baleiramento do rexistro cifrado das eleccións]]',
 	'boardvote_intro' => '<p>Dámoslle a benvida ás Eleccións dos Membros do Consello de Administración da Wikimedia do ano 2008.
 Estamos a escoller unha persoa para que represente á comunidade de usuarios dos diversos proxectos da Wikimedia.
@@ -2380,7 +2380,7 @@ Necesita ter feitas, como mínimo, $1 {{PLURAL:$1|edición|edicións}} antes de 
 	'boardvote_days' => 'Días',
 	'boardvote_ip' => 'Enderezo IP',
 	'boardvote_ua' => 'Axente de usuario',
-	'boardvote_listintro' => '<p>Esta é unha listaxe de todos os votos rexistrados até o momento.
+	'boardvote_listintro' => '<p>Esta é unha lista de todos os votos rexistrados até o momento.
 $1 para ver os datos cifrados.</p>',
 	'boardvote_dumplink' => 'Prema aquí',
 	'boardvote_submit' => 'De acordo',
@@ -6617,6 +6617,13 @@ Bu dış sunucuya 20 saniye içinde yönlendirileceksiniz. Hemen gitmek için [$
 /** Tahitian (Reo Mā`ohi) */
 $messages['ty'] = array(
 	'boardvote_user' => 'Ta’ata fa’a’ohipa',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'boardvote_submit' => 'Maqul',
 );
 
 /** Ukrainian (Українська)

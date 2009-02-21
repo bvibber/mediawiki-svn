@@ -614,9 +614,15 @@ $messages['bg'] = array(
 	'deletequeue-list-queue' => 'Опашка:',
 	'deletequeue-list-status' => 'Статут:',
 	'deletequeue-list-search' => 'Търсене',
+	'deletequeue-list-votes' => 'Списък на гласовете',
 	'deletequeue-list-header-page' => 'Страница',
 	'deletequeue-list-header-queue' => 'Опашка',
+	'deletequeue-list-header-expiry' => 'Срок на изтичане',
 	'deletequeue-list-header-discusspage' => 'Дискусионна страница',
+	'deletequeue-case-details' => 'Основна информация',
+	'deletequeue-case-page' => 'Страница:',
+	'deletequeue-case-reason' => 'Причина:',
+	'deletequeue-case-expiry' => 'Срок на изтичане:',
 );
 
 /** Bosnian (Bosanski)
@@ -1407,7 +1413,7 @@ Pode rexistrar o seu propio apoio ou obxección na páxina da eliminación: [{{f
 	'deletequeue-list-text' => 'Esta páxina amosa todas as páxinas que están no sistema de eliminación.',
 	'deletequeue-list-search-legend' => 'Procurar páxinas',
 	'deletequeue-list-queue' => 'Cola:',
-	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-status' => 'Estado:',
 	'deletequeue-list-expired' => 'Amosar só as nominacións que requiren ser pechadas.',
 	'deletequeue-list-search' => 'Procurar',
 	'deletequeue-list-anyqueue' => '(calquera)',
@@ -3748,6 +3754,14 @@ $messages['tr'] = array(
 	'deletequeue-list-header-page' => 'Sayfa',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'deletequeue-list-header-page' => 'Bet',
+	'deletequeue-case-page' => 'Bet:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
@@ -3869,6 +3883,7 @@ $messages['zh-hans'] = array(
 	'deletequeue-vote-submit' => '提交',
 	'deletequeue-showvotes-restrict-endorse' => '只显示赞成票',
 	'deletequeue-showvotes-restrict-object' => '只显示反对票。',
+	'deletequeue-list-status' => '状态：',
 	'deletequeue-list-search' => '搜索',
 	'deletequeue-list-anyqueue' => '（任何）',
 	'deletequeue-list-votes' => '投票列表',

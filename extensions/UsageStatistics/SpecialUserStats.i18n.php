@@ -280,6 +280,7 @@ $messages['br'] = array(
 	'usagestatistics' => 'Stadegoù implijout',
 	'usagestatistics-desc' => 'Diskouez a ra stadegoù personel an implijerien hag an implij war ar wiki en e bezh',
 	'usagestatisticsfor' => '<h2>Stadegoù implijout evit [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Stadegoù implij evit an holl implijerien</h2>',
 	'usagestatisticsinterval' => 'Esaouenn',
 	'usagestatisticstype' => 'Seurt',
 	'usagestatisticsstart' => 'Deiziad kregiñ',

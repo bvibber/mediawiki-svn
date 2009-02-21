@@ -3539,6 +3539,7 @@ $wdMessages['haw'] = array(
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
+ * @author דניאל ב.
  */
 $wdMessages['he'] = array(
 	'languages' => 'ויקי־דאטא: מנהל השפות',
@@ -3559,6 +3560,11 @@ $wdMessages['he'] = array(
 	'importlangnames_added' => 'נוספו שמות השפה עבור "$1".',
 	'importlangnames_not_found' => '<strong>לא נמצאה רשומת השפה "$1"!</strong>',
 	'datasearch' => 'ויקי־דאטא: חיפוש נתונים',
+	'datasearch_language' => 'שפה:',
+	'datasearch_found_word' => 'מילה נמצאה',
+	'datasearch_meaning' => 'משמעות',
+	'datasearch_ext_identifier' => 'אמצעי זיהוי חיצוני',
+	'datasearch_search_text' => 'חיפוש טקסט:',
 	'ow_save' => 'שמירה',
 	'ow_history' => 'היסטוריה',
 	'ow_datasets' => 'בחירת ערכת נתונים',
@@ -8591,6 +8597,15 @@ $wdMessages['ug-arab'] = array(
 	'ow_transaction_user' => 'ئىشلەتكۇچى ئىسمى:',
 	'ow_dm_OK' => 'ماقۇل',
 	'ow_Language' => 'تىل',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$wdMessages['ug-latn'] = array(
+	'ow_transaction_user' => 'Ishletkuchi ismi:',
+	'ow_dm_OK' => 'Maqul',
+	'ow_Language' => 'Til',
 );
 
 /** Ukrainian (Українська)

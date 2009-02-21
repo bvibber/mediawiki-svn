@@ -1727,6 +1727,13 @@ $messages['ts'] = array(
 	'expand_templates_preview' => 'Ringanisa',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'expand_templates_ok' => 'Maqul',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

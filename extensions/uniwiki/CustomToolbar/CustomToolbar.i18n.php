@@ -1903,6 +1903,14 @@ $wgCustomToolbarMessages['ug-arab'] = array(
 	'ct_user_sample' => 'ئىشلەتكۇچى ئىسمى',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$wgCustomToolbarMessages['ug-latn'] = array(
+	'ct_submit' => 'Köchüsh!',
+	'ct_user_sample' => 'Ishletkuchi ismi',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

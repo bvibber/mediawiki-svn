@@ -508,6 +508,13 @@ $messages['tl'] = array(
 	'searchbox-namespaces' => 'Mga espasyo ng pangalan:',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'searchbox-go' => 'Köchüsh',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

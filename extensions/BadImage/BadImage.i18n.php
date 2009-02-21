@@ -692,26 +692,26 @@ $messages['gag'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'badimages' => 'Listaxe de imaxes con fallas',
-	'badimages-desc' => 'Incluír a listaxe de imaxes con fallas as habilidades de MediaWiki',
+	'badimages' => 'Lista de imaxes con fallas',
+	'badimages-desc' => 'Incluír a lista de imaxes con fallas as habilidades de MediaWiki',
 	'badimages-add-btn' => 'Engadir',
-	'badimages-added' => '$1 foi engadida á listaxe.',
-	'badimages-count' => "Hai '''$1''' {{PLURAL:$1|imaxe|imaxes}} na listaxe de imaxes con fallas.",
+	'badimages-added' => '$1 foi engadida á lista.',
+	'badimages-count' => "Hai '''$1''' {{PLURAL:$1|imaxe|imaxes}} na lista de imaxes con fallas.",
 	'badimages-name' => 'Nome:',
 	'badimages-not-added' => 'A imaxe non pode ser engadida.',
 	'badimages-not-removed' => 'A imaxe non pode ser eliminada.',
 	'badimages-reason' => 'Razón:',
 	'badimages-remove' => '(eliminar)',
 	'badimages-remove-btn' => 'Eliminar',
-	'badimages-remove-confirm' => 'Por favor confirme que vostede quere eliminar $1 da listaxe:',
-	'badimages-removed' => 'Eliminouse $1 da listaxe.',
+	'badimages-remove-confirm' => 'Por favor confirme que vostede quere eliminar $1 da lista:',
+	'badimages-removed' => 'Eliminouse $1 da lista.',
 	'badimages-subheading' => 'Temas actuais',
-	'badimages-unprivileged' => '(Vostede non ten permisos suficientes para alterar a listaxe)',
-	'badimages-log-name' => 'Listaxe de imaxes con fallas',
-	'badimages-log-header' => 'Este é un rexistro dos cambios para a [[{{MediaWiki:Badimages-page}}|Listaxe de imaxes con fallas]].',
-	'badimages-log-add' => 'engadiuse [[$1]] á listaxe de imaxes con fallas',
-	'badimages-log-remove' => 'eliminouse [[$1]] da listaxe de imaxes con fallas',
-	'badimages-page' => '{{ns:help}}:Listaxe de imaxes con fallas',
+	'badimages-unprivileged' => '(Vostede non ten permisos suficientes para alterar a lista)',
+	'badimages-log-name' => 'Lista de imaxes con fallas',
+	'badimages-log-header' => 'Este é un rexistro dos cambios para a [[{{MediaWiki:Badimages-page}}|Lista de imaxes con fallas]].',
+	'badimages-log-add' => 'engadiuse [[$1]] á lista de imaxes con fallas',
+	'badimages-log-remove' => 'eliminouse [[$1]] da lista de imaxes con fallas',
+	'badimages-page' => '{{ns:help}}:Lista de imaxes con fallas',
 );
 
 /** Gothic

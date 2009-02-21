@@ -254,9 +254,9 @@ Die Abfragen können die Server sehr stark belasten, deshalb nutzen Sie die Funk
 $messages['dsb'] = array(
 	'asksql' => 'SQL wótpšašanje',
 	'asksql-desc' => 'Wótpšašanja SQL pśez [[Special:Asksql|specialny bok]] pśewjasć',
-	'asksqltext' => "Wuž slědujucy formular, aby direktne wótpšašanje wót datoweje banki pśewjadł.
-Wuž jadnore pazorki ('kaž toś te'), aby znamuškowe rědy wótźělił.
-To móžo k wjelikemu wobśěźenjeju serwera wjasć, wuž togodla toś tu funkciju rědko.",
+	'asksqltext' => "Wužyj slědujucy formular, aby direktne wótpšašanje wót datoweje banki pśewjadł.
+Wužyj jadnore pazorki ('kaž toś te'), aby znamuškowe rědy wótźělił.
+To móžo k wjelikemu wobśěźenjeju serwera wjasć, wužyj togodla toś tu funkciju rědko.",
 	'sqlislogged' => 'Pšosym źiwaj na to, až se wšykne wótpšašanja protokolěruju.',
 	'sqlquery' => 'Wótpšašanje zapódaś',
 	'querybtn' => 'Wótpšašanje pśewjasć',

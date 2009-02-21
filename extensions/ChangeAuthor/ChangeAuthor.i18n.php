@@ -638,7 +638,7 @@ $messages['gl'] = array(
 	'changeauthor-pagenameform-go' => 'Adiante',
 	'changeauthor-comment' => 'Comentario:',
 	'changeauthor-changeauthors-multi' => 'Mudar {{PLURAL:$1|o autor|os autores}}',
-	'changeauthor-explanation-multi' => "Con este formulario pode cambiar as revisións dos autores. Simplemente cambie un ou máis dos nomes dos usuarios na listaxe de embaixo, engada un comentario (opcional) e prema no botón de 'Mudar autor(es)'",
+	'changeauthor-explanation-multi' => "Con este formulario pode cambiar as revisións dos autores. Simplemente cambie un ou máis dos nomes dos usuarios na lista de embaixo, engada un comentario (opcional) e prema no botón de 'Mudar autor(es)'",
 	'changeauthor-changeauthors-single' => 'Cambiar autor',
 	'changeauthor-explanation-single' => "Con este formulario pode cambiar a revisión do autor. Simplemente mude o nome do usuario embaixo, engada un comentario (opcional) e prema o botón de 'Mudar autor'",
 	'changeauthor-invalid-username' => 'Nome de usuario non válido "$1".',
@@ -1737,6 +1737,13 @@ $messages['tr'] = array(
 	'changeauthor-pagenameform-go' => 'Git',
 	'changeauthor-comment' => 'Yorum:',
 	'changeauthor-invalid-username' => '"$1" geçersiz kullanıcı.',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'changeauthor-pagenameform-go' => 'Köchüsh',
 );
 
 /** Ukrainian (Українська)

@@ -304,7 +304,7 @@ $messages['dsb'] = array(
 	'spamregex-desc' => 'Njewitane fraze na wobźěłanych bokach z pomocu regularnych wurazow [[Special:SpamRegex|wufiltrowaś]]',
 	'spamregex-error-unblocking' => 'Zmólka pśi pśipušćanju "$1". Nejskerjej taki muster njeeksistěrujo.',
 	'spamregex-summary' => 'Tekst jo se namakał w zespominanju boka.',
-	'spamregex-intro' => 'Wuž toś ten formular, aby zajźował, až by se składowali wuraze do teksta boka.
+	'spamregex-intro' => 'Wužyj toś ten formular, aby zajźował, až by se składowali wuraze do teksta boka.
 Jolic tekst wopśimujo pódany wuraz, změna njeby se składowała a wujasnjenje pokažo se wužiwarjeju, kótaryž jo wopytał bok składowaś.
 Buź pak wobglědniwy, wuraze njeby pśekrotke abo pśepowšykne byś.',
 	'spamregex-page-title' => 'Njewitane wuraze z pomocu regularnych wurazow blokěrowaś',

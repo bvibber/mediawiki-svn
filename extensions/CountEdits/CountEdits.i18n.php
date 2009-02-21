@@ -380,7 +380,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'countedits' => 'Contar edicións',
-	'countedits-desc' => '[[Special:CountEdits|Páxina especial]] que conta as edicións dos usuarios e proporciona unha listaxe dos dez que máis contribuíron',
+	'countedits-desc' => '[[Special:CountEdits|Páxina especial]] que conta as edicións dos usuarios e proporciona unha lista dos dez que máis contribuíron',
 	'countedits-warning' => "'''Advertencia:''' as aparencias enganan.
 Non xulgue a un colaborador polo seu número de edicións.",
 	'countedits-username' => 'Nome de usuario:',
@@ -1300,6 +1300,13 @@ $messages['tr'] = array(
 $messages['ug-arab'] = array(
 	'countedits-username' => 'ئىشلەتكۇچى ئىسمى:',
 	'countedits-ok' => 'ماقۇل',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'countedits-username' => 'Ishletkuchi ismi:',
 );
 
 /** Ukrainian (Українська)

@@ -52,6 +52,11 @@ $aliases['el'] = array(
 	'Contributors' => array( 'Συνεισφέροντες' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Contributors' => array( 'Kontribuantoj' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'Contributors' => array( 'Contributeurs' ),

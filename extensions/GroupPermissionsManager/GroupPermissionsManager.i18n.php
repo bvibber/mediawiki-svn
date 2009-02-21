@@ -1727,6 +1727,15 @@ $messages['pl'] = array(
 	'grouppermissions-rug-header' => 'Ta strona służy do usuwania użytkowników z nieużywanych lub usuniętych grup.',
 	'grouppermissions-rug-success' => 'Usunięto użytkowników z nieużywanych grup.',
 	'grouppermissions-rug-confirm' => 'Usuń użytkowników z nieużywanych grup',
+	'right-grouppermissions' => 'Zarządzanie uprawnieniami grup',
+	'right-viewsource' => 'Podglądanie źródła zabezpieczonych stron w formacie wiki',
+	'right-raw' => 'Podglądanie surowych stron',
+	'right-render' => 'Oglądanie wygenerowanych stron bez nawigacji',
+	'right-info' => 'Oglądanie info strony',
+	'right-credits' => 'Zobaczyć czołówkę stron',
+	'right-history' => 'Zobaczyć historię stron',
+	'right-search' => 'Przeszukiwać wiki',
+	'right-contributions' => 'Wyświetlić listę twórców stron',
 	'right-edit-new' => 'Edycja stron',
 );
 
@@ -2160,6 +2169,14 @@ $messages['tr'] = array(
 	'removeunusedgroups' => 'Kullanılmayan grupları sil',
 	'grouppermissions-desc' => 'Grup izinlerini [[Special:GroupPermissions|special page]] üzerinden yönetin',
 	'grouppermissions-desc4' => 'Araçlara yeni kalemler eklemeye izin verir',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'grouppermissions-dologin' => 'Kirish',
+	'grouppermissions-dosearch' => 'Köchüsh',
 );
 
 /** Volapük (Volapük)

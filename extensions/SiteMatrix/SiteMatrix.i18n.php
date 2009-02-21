@@ -564,8 +564,8 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'sitematrix' => 'Lista dos wikis da Wikimedia',
-	'sitematrix-summary' => 'Esta páxina especial ten na súa listaxe todos os wikis Wikimedia.',
-	'sitematrix-desc' => 'Mostra unha [[Special:SiteMatrix|listaxe dos wikis de Wikimedia]]',
+	'sitematrix-summary' => 'Esta páxina especial ten na súa lista todos os wikis Wikimedia.',
+	'sitematrix-desc' => 'Mostra unha [[Special:SiteMatrix|lista dos wikis de Wikimedia]]',
 	'sitematrix-language' => 'Lingua',
 	'sitematrix-project' => 'Nome do proxecto, ligazón entre proxectos e ligazón entre wikis',
 	'sitematrix-others' => 'Outros proxectos da Wikimedia',
@@ -1601,6 +1601,13 @@ $messages['tr'] = array(
  */
 $messages['ts'] = array(
 	'sitematrix-language' => 'Ririmi',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'sitematrix-language' => 'Til',
 );
 
 /** Ukrainian (Українська)

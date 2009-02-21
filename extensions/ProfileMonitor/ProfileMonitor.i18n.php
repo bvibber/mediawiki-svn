@@ -783,6 +783,13 @@ $messages['tr'] = array(
 	'profiling-data-count' => 'Say',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'profiling-ok' => 'Maqul',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

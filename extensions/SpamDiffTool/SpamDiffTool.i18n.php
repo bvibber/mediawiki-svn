@@ -404,13 +404,13 @@ Assurez-vous de ne pas bloquer des domaines entiers qui hébergent certains comp
  * @author Toliño
  */
 $messages['gl'] = array(
-	'spamdifftool' => 'Administrar a Listaxe Negra de Spam',
-	'spamdifftool-desc' => 'Proporciona un camiño básico para engadir novas entradas á listaxe negra de spam (spam blacklist) das diferenzas das páxinas',
-	'spamdifftool_cantedit' => 'Sentímolo - vostede non ten permisos para editar na Listaxe Negra de Spam.',
-	'spamdifftool_notext' => "Non hai texto para engadir a Listaxe negra de Spam. Prema <a href='$1'>aquí</a> para continuar.",
-	'spamdifftool_confirm' => "Confirme que quere engadir estas entradas á listaxe negra de <i>spam</i>.
+	'spamdifftool' => 'Administrar a Lista Negra de Spam',
+	'spamdifftool-desc' => 'Proporciona un camiño básico para engadir novas entradas á lista negra de spam (spam blacklist) das diferenzas das páxinas',
+	'spamdifftool_cantedit' => 'Sentímolo - vostede non ten permisos para editar na Lista Negra de Spam.',
+	'spamdifftool_notext' => "Non hai texto para engadir a Lista negra de Spam. Prema <a href='$1'>aquí</a> para continuar.",
+	'spamdifftool_confirm' => "Confirme que quere engadir estas entradas á lista negra de <i>spam</i>.
 (Faga clic <a href='$1' target='new'>aquí</a> para informar de calquera problema.)",
-	'spamdifftool_summary' => 'Engadindo a Listaxe Negra de Spam',
+	'spamdifftool_summary' => 'Engadindo a Lista Negra de Spam',
 	'spamdifftool_urls_detected' => 'Os seguintes enderezos URL foron detectados na(s) edición(s); cales quere engadir á lista negra de spam?
 Estas opcións van das máis restritivas ás menos, bloqueando o dominio enteiro bloquearanse todas as ligazóns que veñan dese dominio.
 

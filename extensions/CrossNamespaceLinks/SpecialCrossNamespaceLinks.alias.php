@@ -169,3 +169,8 @@ $aliases['tl'] = array(
 	'CrossNamespaceLinks' => array( 'Mga kawing ng pagtawid ng espasyo ng pangalan' ),
 );
 
+/** Turkish (Türkçe) */
+$aliases['tr'] = array(
+	'CrossNamespaceLinks' => array( 'AlanlarArasıBağlantılar' ),
+);
+

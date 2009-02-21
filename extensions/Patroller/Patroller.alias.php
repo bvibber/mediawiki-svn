@@ -37,6 +37,11 @@ $aliases['dsb'] = array(
 	'Patroller' => array( 'Doglědowaŕ' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Patroller' => array( 'Patrolanto' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Patroller' => array( 'Fäldhieter' ),

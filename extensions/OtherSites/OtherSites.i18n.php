@@ -359,3 +359,10 @@ $messages['vo'] = array(
 	'othersites' => 'Bevüresodatopäds votik',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wmr89502270
+ */
+$messages['zh-hans'] = array(
+	'othersites' => '其他网站',
+);
+

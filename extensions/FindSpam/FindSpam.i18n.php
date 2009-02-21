@@ -763,6 +763,13 @@ $messages['tr'] = array(
 	'findspam-ok' => 'Tamam',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'findspam-ok' => 'Maqul',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

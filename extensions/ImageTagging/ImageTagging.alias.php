@@ -92,3 +92,8 @@ $aliases['tl'] = array(
 	'ImageTagging' => array( 'Pagtatatak ng larawan' ),
 );
 
+/** Turkish (Türkçe) */
+$aliases['tr'] = array(
+	'ImageTagging' => array( 'DosyaEtiketleri' ),
+);
+

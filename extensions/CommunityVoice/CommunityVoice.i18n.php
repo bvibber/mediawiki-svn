@@ -83,10 +83,26 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'communityvoice' => 'Stimme der Gemeinschaft',
+	'communityvoice-desc' => 'Beteiligungswerkzeuge für die Gemeinschaft',
+	'communityvoice-ratings' => 'Bewertungen',
 	'communityvoice-ratings-scale-status-sending' => 'Sende …',
+	'communityvoice-ratings-scale-status-error' => 'Fehler beim Senden!',
+	'communityvoice-ratings-scale-status-thanks' => 'Danke, dass du abgestimmt hast!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|Stimme|Stimmen}} abgegeben)',
+	'communityvoice-ratings-error-no-category' => 'Bewertungstag hat kein Kategorie-Attribut.',
+	'communityvoice-ratings-error-no-title' => 'Bewertungstag hat kein Titel-Attribut.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
+ */
+$messages['de-formal'] = array(
+	'communityvoice-ratings-scale-status-thanks' => 'Danke, dass Sie abgestimmt haben!',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -250,10 +266,13 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'communityvoice' => 'Fellesskapsrøysta',
 	'communityvoice-desc' => 'Reiskap for å delta i fellesskapet',
+	'communityvoice-ratings' => 'Vurderingar',
 	'communityvoice-ratings-scale-status-sending' => 'Sender...',
 	'communityvoice-ratings-scale-status-error' => 'Feil i samband med sending!',
 	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du var med på røystinga!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|éi røyst avgjeven|$2 røyster avgjevne}})',
+	'communityvoice-ratings-error-no-category' => 'Kategoriattributt manglar i vurderingsmerke.',
+	'communityvoice-ratings-error-no-title' => 'Tittelattributt manglar i vurderingsmerke.',
 );
 
 /** Occitan (Occitan)

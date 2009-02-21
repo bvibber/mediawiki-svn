@@ -380,17 +380,17 @@ Votre bien aimable système de notification de %s',
  * @author Xosé
  */
 $messages['gl'] = array(
-	'tasklist' => 'Listaxe de Tarefas',
+	'tasklist' => 'Lista de Tarefas',
 	'tasklist-parser-desc' => 'engade a función de análise <nowiki>{{#todo:}}</nowiki> para asignar tarefas',
 	'tasklist-special-desc' => 'Engade unha páxina especial para revisar [[Special:TaskList|as tarefas asignadas]]',
-	'tasklistbyproject' => 'Listaxe de Tarefas por Proxecto',
+	'tasklistbyproject' => 'Lista de Tarefas por Proxecto',
 	'tasklistunknownproject' => 'Proxecto descoñecido',
 	'tasklistunspecuser' => 'Usuario sen especificar',
 	'tasklistincorrectuser' => 'Nome de usuario incorrecto',
 	'tasklistemail' => 'Querido %s',
-	'tasklistemailsubject' => '[%s] Cambio na Listaxe de Tarefas',
+	'tasklistemailsubject' => '[%s] Cambio na Lista de Tarefas',
 	'tasklistmytasks' => 'As miñas tarefas',
-	'tasklistbyprojectbad' => "O Proxecto '''%s''' non é un proxecto válido. Para unha listaxe de proxectos válidos, vexa
+	'tasklistbyprojectbad' => "O Proxecto '''%s''' non é un proxecto válido. Para unha lista de proxectos válidos, vexa
 [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Tarefas asignadas a '''%s'''",
 	'tasklistchooseproj' => 'Seleccionar Proxecto:',

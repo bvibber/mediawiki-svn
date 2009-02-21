@@ -101,6 +101,13 @@ $messages['dsb'] = array(
 	'charinsert-desc' => 'Dowólujo napóranje JavaScriptowego kašćika za [[MediaWiki:Edittools|zasajźenje specielnych znamješkow]]',
 );
 
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'charinsert-desc' => 'Επιτρέπει την δημιουργία κουτιού JavaScript για την [[MediaWiki:Edittools|εισαγωγή μη-κανονικών χαρακτήρων]]',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

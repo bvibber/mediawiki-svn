@@ -87,6 +87,11 @@ $aliases['el'] = array(
 	'ViewConfig' => array( 'ΕπισκόπησηΡυθμίσεων' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Configure' => array( 'Konfiguri' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'Configure' => array( 'Configurar' ),

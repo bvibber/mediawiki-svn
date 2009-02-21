@@ -1170,6 +1170,13 @@ $messages['tr'] = array(
 	'player-goto-file' => 'Dosya',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'player-goto-page' => 'Bet',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

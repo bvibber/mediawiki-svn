@@ -857,6 +857,7 @@ $messages['pl'] = array(
 	'lookupuser-touched' => 'Ostatnią aktywność użytkownika zanotowano $1',
 	'lookupuser-info-authenticated' => 'Uwierzytelnienie e-mailem: $1',
 	'lookupuser-useroptions' => 'Opcje użytkownika:',
+	'right-lookupuser' => 'Przeglądanie ustawień preferencji użytkowników',
 );
 
 /** Pashto (پښتو)

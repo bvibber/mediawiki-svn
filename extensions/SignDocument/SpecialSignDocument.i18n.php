@@ -698,7 +698,7 @@ $messages['dsb'] = array(
 	'signdocument' => 'Dokument signěrowaś',
 	'sign-nodocselected' => 'Pšosym wubjeŕ dokument, kótaryž coš signěrowaś.',
 	'sign-selectdoc' => 'Dokument:',
-	'sign-docheader' => '<div class="noarticletext">Pšosym wuž toś ten formular, aby signěrował slědujucy dokument "[[$1]]". Pśecytaj ceły dokument, a jolic coš swóju pódpěru za njen daś, wupołń trěbne póla, aby jen signěrował.</div>',
+	'sign-docheader' => '<div class="noarticletext">Pšosym wužyj toś ten formular, aby signěrował slědujucy dokument "[[$1]]". Pśecytaj ceły dokument, a jolic coš swóju pódpěru za njen daś, wupołń trěbne póla, aby jen signěrował.</div>',
 	'sign-error-nosuchdoc' => 'Dokument, kótaryž sy se pominał ($1), njeeksistěrujo.',
 	'sign-realname' => 'Mě:',
 	'sign-address' => 'Droga:',
@@ -722,7 +722,7 @@ $messages['dsb'] = array(
 Pšosym pśeznań se, až twóje wósobinske informacije su korektne a až mamy móžnosć se z tobu do zwiska stajiś, aby my pśekontrolěrowali twóju identitu.
 Glědaj, až twója IP-adresa a druge identificěrujuce informacije budu se pśez toś ten formular registrěrowaś a budu se wót moderatorow wužywaś, aby eliminěrowali dwójne signatury a wobkšuśowali pšawosć twójich wósobinskich informacijow.
 Dokulaž wužywanje wócynjonych a anonymnych proksy wobgranicujo našu móžnosć toś ten nadawk dopołniś, signatury ze takich proksy njebudu se nejskerje licyś.
-Jolic sy tuchylu pśez serwer proksy zwězany, pśetergni pšosym zwisk a wuž standardny zwisk pśi signěrowanju.</div>
+Jolic sy tuchylu pśez serwer proksy zwězany, pśetergni pšosym zwisk a wužyj standardny zwisk pśi signěrowanju.</div>
 
 $1',
 	'sig-success' => 'Sy wuspěšnje signěrował dokument.',
@@ -3527,6 +3527,13 @@ $1',
 $messages['tr'] = array(
 	'sign-viewfield-agent' => 'Kullanıcı temsilcisi',
 	'sign-submitreview' => 'Gözden geçirmeyi gönder',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'sign-viewfield-email' => 'Élxet',
 );
 
 /** Vietnamese (Tiếng Việt)
