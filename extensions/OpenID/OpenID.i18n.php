@@ -77,7 +77,7 @@ you can choose one from the options below.',
 	'openidalreadyloggedin' => "'''You are already logged in, $1!'''
 
 If you want to use OpenID to log in in the future, you can [[Special:OpenIDConvert|convert your account to use OpenID]].",
-	'tog-hideopenid' => 'Hide your <a href="http://openid.net/">OpenID</a> on your user page, if you log in with OpenID.',
+	'tog-hideopenid' => 'Do not show my <a href="http://openid.net/">OpenID</a> on my user page (when using OpenID)',
 	'openidnousername' => 'No username specified.',
 	'openidbadusername' => 'Bad username specified.',
 	'openidautosubmit' => 'This page includes a form that should be automatically submitted if you have JavaScript enabled.
