@@ -34,8 +34,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( $type && $wgRecordAdminUseNamespaces ) {
 			if ( $wpTitle && !ereg( "^$type:.+$", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
 		}
-
-		if (version_compare($wgVersion, '1.14.0') >= 0) {
+		if (version_compare(substr($wgVersion, 0, 4), '1.13') > 0) {
 			$wgOut->addHTML( $wgLang->pipeList( array(
 				"<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>",
 				"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br>\n"
