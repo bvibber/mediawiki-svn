@@ -15,10 +15,12 @@ BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 BuildRequires: TSpcre-devel
 BuildRequires: TScurl-devel
 BuildRequires: TSlibmcrypt-devel
+Buildrequires: TSmysql-devel
 
 Requires: TSpcre
 Requires: TScurl
 Requires: TSlibmcrypt
+Requires: TSmysql
 
 %package root
 Summary:                 %{summary} - / filesystem
@@ -37,11 +39,13 @@ fi
 
 export CC="cc"
 export CXX="CC"
-export CFLAGS="%optflags"
+export CFLAGS="%optflags -L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql"
 export LDFLAGS="%{_ldflags}"
 
-export EXTRA_LDFLAGS_PROGRAM='-L/opt/mysql/lib -R/opt/mysql/lib -L/opt/ts/lib -R/opt/ts/lib'
-export CPPFLAGS='-I/opt/ts/include -I/opt/mysql/include -I/usr/sfw/include' 
+export PATH=/opt/TSmysql/bin:/opt/ts/bin:$PATH
+export EXTRA_LDFLAGS_PROGRAM='-L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql -L/opt/ts/lib -R/opt/ts/lib'
+export LIBS='-L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql'
+export CPPFLAGS='-I/opt/ts/include -I/opt/TSmysql/include'
 
 ./configure  --prefix=%{_prefix} \
 	--with-xmlrpc \
@@ -55,14 +59,14 @@ export CPPFLAGS='-I/opt/ts/include -I/opt/mysql/include -I/usr/sfw/include'
 	--with-curl=/opt/ts \
 	--sysconfdir=/etc/opt/php \
 	--with-config-file-path=/etc/opt/php \
-	--with-mysql=/opt/mysql \
+	--with-mysql=/opt/TSmysql \
 	--disable-path-info-check \
 	--with-pcre-regex=/opt/ts \
         --with-zlib \
         --with-bz2 \
         --enable-exif \
         --enable-ftp \
-        --with-mysqli=/opt/mysql/bin/mysql_config \
+        --with-mysqli=/opt/TSmysql/bin/mysql_config \
 	--with-mcrypt=/opt/ts
 
 
@@ -99,6 +103,8 @@ rm -rf $RPM_BUILD_ROOT
 /etc/opt/php/pear.conf
 
 %changelog
+* Sat Feb 21 2009 - river@loreley.flyingparchment.org.uk
+- use TSmysql
 * Sun Dec 14 2008 - river@wikimedia.org
 - 5.2.8
 * Sun Dec  7 2008 - river@wikimedia.org

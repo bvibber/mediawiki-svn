@@ -5,8 +5,8 @@
 
 Name:                TSmysql
 Summary:             MySQL database server
-Version:             5.1.30
-Source:              http://mysql.mirrors.pair.com/Downloads/MySQL-5.1/mysql-%{version}.tar.gz
+Version:             5.1.31
+Source:              http://www.mirrorservice.org/sites/ftp.mysql.com/Downloads/MySQL-5.1/mysql-%{version}.tar.gz
 
 SUNW_BaseDir:        /opt/TSmysql
 BuildRoot:           %{_tmppath}/%{name}-%{version}-build
@@ -157,5 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/sql-bench/*
 
 %changelog
+* Sat Feb 21 2009 - river@loreley.flyingparchment.org.uk
+- 5.1.31
 * Thu Jan 29 2009 - river@wikimedia.org
 - initial version
