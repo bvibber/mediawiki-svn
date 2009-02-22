@@ -13,7 +13,6 @@ $messages = array();
 $messages['en'] = array(
 	'abcdesc' => 'Adds <tt>&lt;abc&gt;</tt> tag to format ABC music',
 	'abcdownload' => 'Download:',
-	'abcsep' => '|',
 	'abcabc' => 'ABC',
 	'abcpdf' => 'PDF',
 	'abcps' => 'PostScript',
@@ -55,7 +54,6 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'abcdesc' => 'يضيف وسم <tt>&lt;abc&gt;</tt> لصياغة موسيقى ABC',
 	'abcdownload' => 'تنزيل:',
-	'abcsep' => '|',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -193,12 +191,6 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'abcdesc' => 'הוספת תגית <tt>&lt;abc&gt;</tt> למוסיקה בפורמט ABC',
 	'abcdownload' => 'הורדה:',
-	'abcsep' => '|',
-	'abcabc' => 'ABC',
-	'abcpdf' => 'PDF',
-	'abcps' => 'PostScript',
-	'abcmidi' => 'MIDI',
-	'abcvorbis' => 'Ogg Vorbis',
 );
 
 /** Croatian (Hrvatski)
@@ -261,12 +253,6 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'abcdesc' => 'Deit dä <tt>&lt;abc&gt;</tt>-Befähl en et Wiki domet mer Mussik em ABC Fommaat opschrieve kann.',
 	'abcdownload' => 'Eronger lahde:',
-	'abcsep' => '|',
-	'abcabc' => 'ABC',
-	'abcpdf' => 'PDF',
-	'abcps' => 'PostScript',
-	'abcmidi' => 'MIDI',
-	'abcvorbis' => 'Ogg Vorbis',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -346,9 +332,6 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'abcdesc' => 'Apond una balisa <tt>&lt;abc&gt;</tt> per formatar la musica ABC',
 	'abcdownload' => 'Telecargar :',
-	'abcsep' => '|',
-	'abcabc' => 'ABC',
-	'abcpdf' => 'PDF',
 );
 
 /** Polish (Polski)
@@ -486,11 +469,6 @@ $messages['th'] = array(
 $messages['tl'] = array(
 	'abcdesc' => 'Nagdaragdag ng tatak na <tt>&lt;abc&gt;</tt> para maipormat ang tugtuging ABC',
 	'abcdownload' => 'Ikargang-pakuha:',
-	'abcabc' => 'ABC',
-	'abcpdf' => 'PDF',
-	'abcps' => 'PostScript',
-	'abcmidi' => 'MIDI',
-	'abcvorbis' => 'Ogg Vorbis',
 );
 
 /** Turkish (Türkçe)
@@ -570,4 +548,3 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'abcdownload' => '下載:',
 );
-
