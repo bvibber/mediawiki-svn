@@ -66,6 +66,8 @@ function wfIMStatusPCR()
 	$wgParser->setHook( "yahoo", "RenderYahoo" );
 }
 
+// FIXME: below should be put in its own class file and use PARSERFIRSTCALLINIT to optimise resource usage
+
 //NB: a nice list of styles and actions: http://cubicpath.syncleus.com/wiki/index.php/Cubicpath:Add-ons
 
 /**********************************************
@@ -79,9 +81,10 @@ function RenderAIM( $input, $argv )
 	// to get help as a user, use <aim help/>
 
 	// sanitize input
-    $input = htmlspecialchars($input,ENT_QUOTES);
+	$input = htmlspecialchars($input,ENT_QUOTES);
+
 	// get custom parameters
-    if( isset( $argv['style'] ) )
+	if( isset( $argv['style'] ) )
 	{
 		$style = $argv['style'];
 		if( !in_array( $style, array("presence", "api") ) ) $style = $style_default;
@@ -119,7 +122,7 @@ function RenderAIM( $input, $argv )
 		}
 	}
 	// sends output
-    return $output;
+	return $output;
 }
 
 /**********************************************
@@ -267,7 +270,7 @@ function RenderLiveMessenger( $input, $argv )
 		}
 	}
 	// sends output
-    return $output;
+	return $output;
 }
 
 
@@ -354,7 +357,7 @@ function RenderSkype( $input, $argv )
 	}
 
 	// prepares outupt
-    if(isset($argv['help']))
+	if(isset($argv['help']))
 	{
 		wfLoadExtensionMessages('IMStatus');
 
@@ -368,10 +371,10 @@ function RenderSkype( $input, $argv )
 	else
 	{
 		$output = '<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>';
-	    $output .= '<a href="skype:'.$input.'?'.$action.'">'.$image.'</a>';
+		$output .= '<a href="skype:'.$input.'?'.$action.'">'.$image.'</a>';
 	}
 	// sends output
-    return $output;
+	return $output;
 }
 
 
@@ -449,7 +452,7 @@ function RenderXfire( $input, $argv )
 	}
 
 	// prepares outupt
-    if(isset($argv['help']))
+	if(isset($argv['help']))
 	{
 		wfLoadExtensionMessages('IMStatus');
 
@@ -462,7 +465,7 @@ function RenderXfire( $input, $argv )
 	}
 	else $output = '<a href="'.$link_url.'">'.$image.'</a>';
 	// sends output
-    return $output;
+	return $output;
 }
 
 
@@ -538,7 +541,7 @@ function RenderYahoo( $input, $argv )
 	}
 
 	// prepares outupt
-    if(isset($argv['help']))
+	if(isset($argv['help']))
 	{
 		wfLoadExtensionMessages('IMStatus');
 
