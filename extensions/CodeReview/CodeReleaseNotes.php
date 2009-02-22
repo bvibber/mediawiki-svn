@@ -115,15 +115,22 @@ class CodeReleaseNotes extends CodeView {
 		}
 		$blurbs = array_map( 'trim', $blurbs ); # Clean up items
 		$blurbs = array_filter( $blurbs ); # Filter out any garbage
+		# Doesn't start with '*' and has some length?
+		# If so, then assume that the top bit is important.
+		if( count($blurbs) ) {
+			$header = strpos( ltrim($summary),'*' ) !== 0 && str_word_count($blurbs[0]) >= 5;
+		} else {
+			$header = false;
+		}
 		# Keep it short if possible...
 		if( count($blurbs) > 1 ) {
 			$summary = array();
 			foreach( $blurbs as $blurb ) {
 				# Always show the first bit
-				if( $first && count($summary) == 0 ) {
+				if( $header && $first && count($summary) == 0 ) {
 					$summary[] = $this->shortenSummary($blurb,true);
 				# Is this bit important? Does it mention a revision?
-				} else if( $this->isRelevant( $blurb ) || preg_match('/\br(\d+)\b/',$blurb) ) {
+				} else if( $this->isRelevant($blurb) || preg_match('/\br(\d+)\b/',$blurb) ) {
 					$bit = $this->shortenSummary($blurb,false);
 					if( $bit ) $summary[] = $bit;
 				}
@@ -145,7 +152,7 @@ class CodeReleaseNotes extends CodeView {
 		if( mb_strlen($summary) < 40 || $words <= 5 )
 			return false;
 		# All caps words (like "BREAKING CHANGE"/magic words)? 
-		if( preg_match( '/\b[A-Z]{7,30}\b/', $summary ) )
+		if( preg_match( '/\b[A-Z]{6,30}\b/', $summary ) )
 			return true;
 		# Random keywords
 		if( preg_match( '/\b(wiki|HTML\d|CSS\d|UTF-?8|(Apache|PHP|CGI|Java|Perl|Python|\w+SQL) ?\d?\.?\d?)\b/i', $summary ) )
