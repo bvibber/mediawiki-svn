@@ -6,4 +6,4 @@ if test -n "$REVISION"; then
 else
 	svn update
 fi
-php maintenance/SMW_setup.py
+php maintenance/SMW_setup.php

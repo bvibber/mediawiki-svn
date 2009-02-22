@@ -8,4 +8,4 @@ if test -n "$REVISION"; then
 else
 	svn checkout $repository
 fi
-php $NAME/maintenance/SMW_setup.py
+php $NAME/maintenance/SMW_setup.php
