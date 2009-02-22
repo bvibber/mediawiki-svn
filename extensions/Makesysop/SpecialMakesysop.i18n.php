@@ -1056,8 +1056,8 @@ $messages['nl'] = array(
 	'makesysop'                => 'Een gebruiker beheerder maken',
 	'already_sysop'            => 'Deze gebruiker is al beheerder',
 	'already_bureaucrat'       => 'Deze gebruiker is al bureaucraat',
-	'group-steward'            => 'Stewards',
-	'group-steward-member'     => 'Steward',
+	'group-steward'            => 'stewards',
+	'group-steward-member'     => 'steward',
 	'grouppage-steward'        => '{{ns:project}}:Stewards',
 );
 
