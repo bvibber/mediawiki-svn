@@ -166,7 +166,10 @@ class Installation_System:
 
 		if not self.exists(installer_name):
 			raise Installer_Exception("Can't find installer "+installer_name)
-			
+
+		self.do_download(installer_name, destination_dir)
+
+	def do_download(self, installer_name, destination_dir):
 		# if a particular step in the install procedure is not provided
 		# we simply skip it
 		if not self.can_exec(installer_name,"download"):
@@ -197,14 +200,16 @@ class Installation_System:
 			print installer_name+" does not appear to be installed"
 			return
 
-		# if a particular step in the install procedure is not provided
-		# we simply skip it
-		if not self.can_exec(installer_name,"uninstall"):
-			return
+	
+		self.do_uninstall(installer_name, destination_dir)
 
-		self.exec_task(installer_name,"uninstall")
-		
 		self.uninstall_settings(installer_name)
 		# use is_installed to determine success.
 		return not self.is_installed(installer_name) 
-
+		
+	def do_uninstall(self,installer_name, destination_dir):
+		# if a particular step in the install procedure is not provided
+		# we simply skip it
+		if self.can_exec(installer_name,"uninstall"):
+			self.exec_task(installer_name,"uninstall")
+	

@@ -6,11 +6,13 @@
 import settings
 import os, os.path, shutil
 import subprocess
+import installer_util
 
 #from installation_system import Installation_System
 from toolkit_installer import Toolkit_Installer
 from extension_installer import Extension_Installer
 from mediawiki_installer import Mediawiki_Installer
+from naive_installer import Naive_Installer
 from installation_system import Installer_Exception
 
 class Parse_Exception(Exception):
@@ -37,9 +39,7 @@ def ls(args):
 	
 	if output==None:
 		return
-
-	for line in output:
-		print line
+	print installer_util.pretty_list(output)
 
 def ls_available(ppath):
 	if ppath["system"]==None:
@@ -268,6 +268,8 @@ def parse_path(path,defaults=None):
 	
 
 
+
+
 def get_system(system_name):
 	if system_name not in systems:
 		print "Cannot find '"+system_name+"' in the list of supported installation systems."
@@ -277,7 +279,7 @@ def get_system(system_name):
 
 		return sYstem()
 
-systems={'wikiation_toolkit':Toolkit_Installer,'extension': Extension_Installer, 'mediawiki':Mediawiki_Installer}
+systems={'wikiation_toolkit':Toolkit_Installer,'extension': Extension_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer}
 
 if __name__=="__main__":
 	print "testing installers.py module"

@@ -67,4 +67,73 @@ def clean_target(target):
 
 	return target
 
+def pretty_list(mylist,layout_width=None):
+	"""format a list ~like ls"""
 
+	if layout_width==None:
+		layout_width=getTerminalSize()[0]
+
+
+	if layout_width:
+		#first find the widest item
+		max_width=0
+		for item in mylist:
+			width=len(item)+1
+			if width>max_width:
+				max_width=width
+		
+		#now calculate
+		columns=max(  layout_width/max_width  ,1)
+		column_width=layout_width/columns-1
+	
+		#and let's go
+		text=""
+		column=0
+		for item in mylist:
+			text+=item
+			text+=" "*(column_width-len(item)+1)
+			column+=1
+			if column>=columns:
+				text+="\n"
+				column=0
+	else:
+		#naive alternative in case we can't get a clear
+		#idea of what terminal we're on.
+		text="\n".join(mylist)
+
+	return text
+
+
+def getTerminalSize():
+    """determine the size of the terminal we are running in (where available)"""
+    def ioctl_GWINSZ(fd):
+        try:
+            import fcntl, termios, struct, os
+            cr = struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ,
+        '1234'))
+        except:
+            return None
+        return cr
+    cr = ioctl_GWINSZ(0) or ioctl_GWINSZ(1) or ioctl_GWINSZ(2)
+    if not cr:
+        try:
+            fd = os.open(os.ctermid(), os.O_RDONLY)
+            cr = ioctl_GWINSZ(fd)
+            os.close(fd)
+        except:
+            pass
+    if not cr:
+        try:
+            cr = (env['LINES'], env['COLUMNS'])
+        except:
+            cr = (25, 80)
+    return int(cr[1]), int(cr[0])
+
+
+if __name__=="__main__":
+	print "some tests for the utils module"
+	
+	x=range(1000,200000,1512)
+	x=[str(i) for i in x]
+	print x
+	print pretty_list(x)
