@@ -591,7 +591,7 @@ $messages['cs'] = array(
 	'group-oversight-member' => 'dozorce',
 	'grouppage-oversight' => '{{ns:project}}:Dozorci',
 	'right-oversight' => 'Zobrazování dříve skryté revize',
-	'right-hiderevision' => 'Prohlížení a obnovování revizí skrytých před správci',
+	'right-hiderevision' => 'Skrývání revizí před správci',
 	'hiderevision-prompt' => 'Číslo revize, která se má odstranit:',
 	'hiderevision-continue' => 'Pokračovat',
 	'hiderevision-text' => "Tato funkce by se měla využívat '''pouze''' v následujících případech:
@@ -641,6 +641,7 @@ $messages['da'] = array(
  * @author Metalhead64
  * @author Purodha
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'hiderevision' => 'Versionen dauerhaft entfernen',
@@ -661,8 +662,8 @@ $messages['de'] = array(
 Entfernte Versionen sind durch Niemanden mehr über die Website einzusehen.
 Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbankadministrator wiederhergestellt werden",
 	'hiderevision-reason' => 'Grund (wird unsichtbar protokolliert):',
-	'hiderevision-submit' => 'Entferne diese Version dauerhaft',
-	'hiderevision-tab' => 'Entferne Versionen',
+	'hiderevision-submit' => 'Diese Daten dauerhaft verbergen',
+	'hiderevision-tab' => 'Version verbergen',
 	'hiderevision-link' => 'Versteckte Benutzerbeiträge',
 	'hiderevision-norevisions' => 'Es wurde keine Version zum Entfernen angegeben.',
 	'hiderevision-noreason' => 'Du musst einen Grund für die Entfernung angeben.',
@@ -674,14 +675,15 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'hiderevision-archive-status' => 'Gelöschte Versionen von $1: $2',
 	'oversight-nodiff' => 'Es ist kein Versionsvergleich möglich, da es gegenwärtig keine frühere Version dieser Seite gibt. Mögliche Gründe:
 *Die Seite wurde gelöscht
-*Die entfernte Version war die erste Version',
+*Die verborgene Version war die erste Version',
 	'oversight-log-hiderev' => 'entfernte eine Version von „$1“',
 	'oversight' => 'Oversight',
 	'oversight-view' => 'Details',
 	'oversight-difference' => '(Unterschied zur vorhergehenden, verbleibenden Version)',
 	'oversight-prev' => 'Letzte vorhergehende Version',
-	'oversight-hidden' => 'Entfernte Version',
-	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
+	'oversight-hidden' => 'Verborgene Version',
+	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht verborgene Versionen.
+Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
 	'oversight-legend' => 'Logbuch durchsuchen',
 	'oversight-oversighter' => 'Oversight-Berechtigter:',
 	'oversight-offender' => 'Benutzer:',
@@ -980,6 +982,7 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'hiderevision' => 'Versioiden pysyvä piilottaminen',
@@ -988,7 +991,7 @@ $messages['fi'] = array(
 	'group-oversight-member' => 'häivyttäjä',
 	'grouppage-oversight' => '{{ns:project}}:Häivytysoikeudet',
 	'right-oversight' => 'Nähdä häivytetty versio',
-	'right-hiderevision' => 'Tarkastella ja palauttaa ylläpitäjiltä piilotettuja versioita',
+	'right-hiderevision' => 'Piilottaa versioita ylläpitäjiltä',
 	'hiderevision-prompt' => 'Poistettava versionumero',
 	'hiderevision-continue' => 'Jatka',
 	'hiderevision-text' => "Tätä toimintoa tulisi käyttää '''vain''' seuraavissa tapauksissa:
@@ -2553,7 +2556,7 @@ $messages['oc'] = array(
 	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisor',
 	'right-oversight' => 'Veire las revisions precedentament amagadas',
-	'right-hiderevision' => 'Examinar e restablir las revisions amagadas als administrators',
+	'right-hiderevision' => 'Amagar de revisions als administrators',
 	'hiderevision-prompt' => 'Numèro d’edicion de suprimir :',
 	'hiderevision-continue' => 'Contunhar',
 	'hiderevision-text' => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Entresenha personala inapropriada, *: ''Adreça personala e numèro de telefòn, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz facha una error.",

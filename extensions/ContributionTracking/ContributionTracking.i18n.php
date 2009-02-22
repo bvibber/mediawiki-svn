@@ -689,3 +689,10 @@ $messages['vo'] = array(
 	'contrib-tracking-button' => 'Föfiö!',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenzw
+ */
+$messages['zh-hans'] = array(
+	'contrib-tracking-error' => '错误',
+);
+

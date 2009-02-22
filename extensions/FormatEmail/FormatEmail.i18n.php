@@ -565,6 +565,17 @@ Ipinadala sa iyo ni $1 ang e-liham na ito sa pamamagitan ng sistemang pang-e-lih
 $2',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'email-desc' => 'Kullnıcı e-postalarına özel başlık/altbilgi eklenmesine izin verir',
+	'email_footer' => '----------------------------------------------------------------------------
+Bu e-posta size {{SITENAME}} e-posta sistemi aracılığıyla $1 tarafından gönderildi.
+
+$2',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

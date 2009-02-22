@@ -1674,6 +1674,12 @@ Pindutin ang pindutan sa ibaba upang tumanggap ng sipi.",
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'povwatch_no_session' => 'Hata: Oturumdaki veri kaybından dolayı form gönderilemedi.',
+	'povwatch_not_allowed_push' => 'Bir PovWatch yöneticisi değilsiniz, izleme listelerine sayfa itemezsiniz.',
+	'povwatch_already_subscribed' => "PovWatch'a zaten abonesiniz",
+	'povwatch_subscribed' => "PovWatch'a abone oldunuz",
+	'povwatch_not_subscribed' => "PovWatch'a abone değilsiniz, bu yüzden aboneliğinizi iptal edemezsiniz.",
+	'povwatch_unsubscribed' => 'PovWatch aboneliğiniz iptal edildi',
 	'povwatch_invalid_title' => 'Belirtilen başlık geçersizdi',
 	'povwatch_subscriber_list_intro' => '<strong>Abone listesi</strong>',
 	'povwatch_unknown_subpage' => 'Bilinmeyen altsayfa.',
@@ -1702,8 +1708,29 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_no_session' => "Eròr: No se gà podesto inviar el mòdulo parché xe 'ndà persi i dati de la session.",
+	'povwatch_already_subscribed' => 'Te sì zà iscrito a PovWatch',
+	'povwatch_subscribed' => 'Desso te sì iscrito a PovWatch',
+	'povwatch_not_subscribed' => 'No te sì mia iscrito a PovWatch, quindi no te poli disiscrìvarte.',
+	'povwatch_unsubscribed' => 'Desso te te sì disiscrito da PovWatch',
+	'povwatch_invalid_title' => "El tìtolo indicà no'l xe valido",
+	'povwatch_pushed' => "[[$1]] xe stà zontà su i {{PLURAL:$2|osservati speciali|osservati speciali}} de l'utente $2",
 	'povwatch_unknown_subpage' => 'Sotopàxena sconossiùa.',
+	'povwatch_push' => 'Inviar',
 	'povwatch_title' => 'Titolo:',
+	'povwatch_comment' => 'Comento par el registro:',
+	'povwatch_no_log' => 'No ghe xe comenti in tel registro.',
+	'povwatch_unsubscribe_intro' => 'Te sì iscrito a PovWatch.
+Struca el boton qua soto par disiscrìvarte.',
+	'povwatch_unsubscribe' => 'Disiscrìvete',
+	'povwatch_subscribe_intro' => 'No te sì mia iscrito a PovWatch.
+Struca el boton qua soto par iscrìvarte.',
+	'povwatch_subscribe' => 'Iscrìvete',
+	'povwatch_added' => 'zontà',
+	'right-povwatch_user' => 'Zonta pàxene ai osservati speciali de altri utenti',
+	'action-povwatch_admin' => 'aministra i parmessi dei utenti par PovWatch',
+	'action-povwatch_user' => "zonta sta pàxena ai osservati speciali de n'altro utente",
 );
 
 /** Vietnamese (Tiếng Việt)

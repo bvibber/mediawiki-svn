@@ -6181,6 +6181,13 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-throttle-action-move' => 'Flytta',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'configure-throttle-action-move' => 'Sogeza',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author వైజాసత్య

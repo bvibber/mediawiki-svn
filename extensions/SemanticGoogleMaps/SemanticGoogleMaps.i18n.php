@@ -56,7 +56,8 @@ $messages['arz'] = array(
  */
 $messages['br'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Istimañ an daveennoù',
-	'semanticgooglemaps-desc' => 'Aotren a ra an implijerien da ouzhpennañ Google Maps war pajennoù diazezet war roadennoù frammet',
+	'semanticgooglemaps-desc' => 'Aotren a ra an implijerien da aozañ ha da ziskwel roadennoù semantek daveennoù dre ober gant Google Maps',
+	'semanticgooglemaps-enteraddresshere' => "Merkit ar chomlec'h amañ",
 );
 
 /** Bosnian (Bosanski)

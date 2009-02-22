@@ -2731,11 +2731,13 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 	'ow_AlternativeDefinition' => 'Vaihtoehtoinen määritelmä',
 	'ow_AlternativeDefinitions' => 'Vaihtoehtoiset määritelmät',
 	'ow_Annotation' => 'Annotaatiot',
+	'ow_Class' => 'Luokka',
 	'ow_ClassAttributeAttribute' => 'Ominaisuus',
 	'ow_ClassAttributes' => 'Luokkaominaisuudet',
 	'ow_ClassAttributeLevel' => 'Taso',
 	'ow_ClassAttributeType' => 'Tyyppi',
 	'ow_Collection' => 'Kokoelma',
+	'ow_Collection_colon' => 'Kokoelma:',
 	'ow_Definition' => 'Määritelmä',
 	'ow_DefinedMeaningAttributes' => 'Huomautus',
 	'ow_ExactMeanings' => 'Tarkat merkityset',
@@ -8805,6 +8807,7 @@ $wdMessages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenzw
  * @author Gaoxuewei
  * @author Wmr89502270
  */
@@ -8821,6 +8824,8 @@ $wdMessages['zh-hans'] = array(
 	'langman_field_optional' => '（可选）',
 	'langman_addlang' => '增加语言',
 	'datasearch' => 'Wikidata: 数据搜寻',
+	'datasearch_language' => '语言：',
+	'datasearch_meaning' => '意思',
 	'ow_save' => '保存',
 	'ow_history' => '历史',
 	'ow_datasets' => '选择数据集',
@@ -8837,6 +8842,7 @@ $wdMessages['zh-hans'] = array(
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> 为一个已经定义的概念返回所有其他的</li>
 <li>&action=help  阅读帮助</li>
 </ul></p>',
+	'ow_Language' => '语言',
 	'ow_OptionAttributeOption' => '选择',
 	'ow_OptionAttributeOptions' => '选项',
 	'ow_Source' => '来源',

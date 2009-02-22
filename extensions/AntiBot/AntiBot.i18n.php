@@ -56,6 +56,13 @@ $messages['be-tarask'] = array(
 	'antibot-desc' => 'Просты сродак абароны ад спам-робатаў і робатаў, якія выклікаюць перагрузку сэрвэра',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'antibot-desc' => "Endro gwiriañ eeun a-enep d'ar spamerioù ha d'an endalc'hadoù loc'hañ emgefre",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

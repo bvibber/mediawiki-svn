@@ -1641,6 +1641,7 @@ $4',
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
+ * @author Str4nd
  * @author Tarmo
  */
 $messages['fi'] = array(
@@ -1710,6 +1711,7 @@ $messages['fi'] = array(
 	'code-pathsearch-path' => 'Polku',
 	'code-rev-submit' => 'Tallenna muutokset',
 	'code-rev-submit-next' => 'Tallenna ja seuraava avoin',
+	'code-releasenotes' => 'julkaisutiedot',
 	'codereview-reply-link' => 'vastaa',
 	'codereview-email-subj' => '[$1] [r$2]: Uusi kommentti lisätty',
 	'codereview-email-body' => 'Käyttäjä $1 jätti kommentin versioon r$3.
@@ -3114,6 +3116,7 @@ $messages['ko'] = array(
 	'code-rev-submit' => '저장',
 	'code-rev-submit-next' => '저장 및 다음 미해결된 문서로 이동',
 	'code-release-startrev' => '시작 버전:',
+	'code-release-endrev' => '마지막 버전:',
 	'codereview-subtitle' => '$1',
 	'codereview-reply-link' => '답변',
 	'codereview-email-subj' => '[$1] [$2판]: 새 의견이 추가되었습니다.',
@@ -3995,6 +3998,7 @@ $messages['oc'] = array(
 	'code-field-comments' => 'Nòtas',
 	'code-field-path' => 'Camin',
 	'code-field-text' => 'Nòta',
+	'code-field-select' => 'Seleccionar',
 	'code-rev-author' => 'Autor :',
 	'code-rev-date' => 'Data :',
 	'code-rev-message' => 'Comentari :',
@@ -4027,6 +4031,10 @@ $messages['oc'] = array(
 	'code-pathsearch-path' => 'Camin :',
 	'code-rev-submit' => 'Salvar las modificacions :',
 	'code-rev-submit-next' => 'Salvar & venenta pas resolguda',
+	'code-batch-status' => "Modificar l'estatut :",
+	'code-batch-tags' => 'Modificar las balisas :',
+	'codereview-batch-title' => 'Modificar totas las revisions seleccionadas',
+	'codereview-batch-submit' => 'Mandar',
 	'code-releasenotes' => 'Nòtas de version',
 	'code-release-legend' => 'Generir las nòtas de version',
 	'code-release-startrev' => 'Revision de començament :',
@@ -4576,6 +4584,7 @@ $messages['sah'] = array(
 	'code-field-comments' => 'Быһаарыылара',
 	'code-field-path' => 'Суола',
 	'code-field-text' => 'Быһаарыы',
+	'code-field-select' => 'Талыы',
 	'code-rev-author' => 'Ааптар:',
 	'code-rev-date' => 'Күнэ-дьыла:',
 	'code-rev-message' => 'Быһаарыы:',
@@ -4608,6 +4617,14 @@ $messages['sah'] = array(
 	'code-pathsearch-path' => 'Суола:',
 	'code-rev-submit' => 'Уларытыылары бигэргэтии',
 	'code-rev-submit-next' => 'Бигэргэт уонна аныгыскы быһаарылла илиги көрдөр',
+	'code-batch-status' => 'Туругун уларытыы:',
+	'code-batch-tags' => 'Бэлиэлэрин уларытыы:',
+	'codereview-batch-title' => 'Талыллыбыт барыллары барыларын уларыт',
+	'codereview-batch-submit' => 'Ыытарга',
+	'code-releasenotes' => 'Таһаарыы быһаарыыта',
+	'code-release-legend' => 'Таһаарыы быһаарыытын суруйуу',
+	'code-release-startrev' => 'Бастакы барыл:',
+	'code-release-endrev' => 'Бүтэһик барыл:',
 	'codereview-subtitle' => 'Манна $1',
 	'codereview-reply-link' => 'хоруй',
 	'codereview-email-subj' => '[$1] [r$2]: Саҥа ырытыы киирбит',
@@ -5855,6 +5872,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenzw
  * @author Gaoxuewei
  * @author Wmr89502270
  */
@@ -5922,6 +5940,7 @@ $messages['zh-hans'] = array(
 	'code-pathsearch-path' => '路径：',
 	'code-rev-submit' => '保存修改',
 	'code-rev-submit-next' => '保存，并处理下一条',
+	'codereview-batch-submit' => '提交',
 	'codereview-reply-link' => '回复',
 	'codereview-email-subj' => '[$1] [r$2]: 新的评论已添加',
 	'codereview-email-body' => '用户 "$1" 在 r$3 上添加了一条评论。

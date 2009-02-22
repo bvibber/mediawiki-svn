@@ -200,11 +200,16 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Sanbec
  */
 $messages['es'] = array(
 	'inspectcache-ok' => 'Aceptar',
+	'inspectcache-general' => 'Cache general',
+	'inspectcache-get' => 'Obtener',
 	'inspectcache-delete' => 'Borrar',
+	'inspectcache-deleted' => 'cache borrado',
+	'inspectcache-list' => 'Lista',
 );
 
 /** Basque (Euskara)

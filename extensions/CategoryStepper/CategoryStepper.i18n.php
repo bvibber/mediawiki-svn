@@ -278,6 +278,14 @@ $messages['km'] = array(
 	'categorystepper-start' => '(ការចាប់ផ្តើមនៃចំណាត់ថ្នាក់ក្រុម)',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'categorystepper-end' => '(분류의 끝)',
+	'categorystepper-start' => '(분류의 시작)',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

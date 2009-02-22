@@ -665,19 +665,34 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Konsnos
  * @author Omnipaedista
  */
 $messages['el'] = array(
 	'tasks' => 'Καθήκοντα',
+	'tasks_desc' => 'Μια επέκταση για την διαχείριση εργασιών',
 	'tasks_tab' => 'Καθήκοντα',
 	'tasks_title' => 'Καθήκοντα για τον "$1"',
+	'tasks_form_new' => 'Δημιουργία νέας εργασίας',
+	'tasks_form_comment' => 'Σχόλιο',
+	'tasks_error1' => 'Η εργασία δεν δημιουργήθηκε: υπάρχει ήδη η εργασία!',
+	'tasks_ok1' => 'Η νέα εργασία δημιουργήθηκε!',
+	'tasks_create_header' => 'Δημιουργία νέας εργασίας',
+	'tasks_close' => 'Κλείσιμο εργασίας',
+	'tasks_delete' => 'Διαγραφή',
+	'tasks_task_was_deleted' => 'Η εργασία διαγράφηκε επιτυχώς.',
 	'tasks_here' => 'εδώ',
 	'tasks_help_page' => 'Καθήκοντα',
 	'tasks_more_like_it' => 'περισσότερα',
 	'tasks_event_on_creation' => 'έλεγχος',
 	'tasks_event_on_creation_anon' => 'έλεγχος',
 	'tasks_table_header_page' => 'Σελίδα',
+	'tasks_you_have_no_assignments' => 'Δεν υπάρχουν ανοιχτές εργασίες',
 	'tasks_search_status' => 'Κατάσταση',
+	'tasks_previous' => 'Προηγούμενο',
+	'tasks_next' => 'Επόμενο',
+	'tasks_sort' => 'Ταξινόμηση',
+	'tasks_sign_delete' => '<b>Ζητήθηκε η διαγραφή αυτής της σελίδας!</b>',
 );
 
 /** Esperanto (Esperanto)

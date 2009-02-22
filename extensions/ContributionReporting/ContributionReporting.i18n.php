@@ -2626,10 +2626,12 @@ $messages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenzw
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'contrib-hist-name' => '名称',
+	'contribstats-value-over' => '超过 $1',
 	'fundraiserstats-date' => '日期',
 );
 

@@ -530,6 +530,62 @@ $messages['de-formal'] = array(
 Setzen Sie $wgLocalTmpDirectory auf ein Verzeichnis mit Schreibzugriff.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'inplace_access_disabled' => 'Pśistup na toś tu słužbu jo se znjemóžnił za wšě klienty.',
+	'inplace_access_denied' => 'Toś ta słužba wobgranicujo se pśez IP-adresu klienta.',
+	'inplace_scaler_no_temp' => 'Žeden płaśiwy temporarny zapis.
+Staj $wgLocalTmpDirectory na zapis z pisańskim pśistupom.',
+	'inplace_scaler_not_enough_params' => 'Pśemało parametrow.',
+	'inplace_scaler_invalid_image' => 'Njepłaśiwy wobraz, wjelikosć njejo se dała zwěsćiś.',
+	'inplace_scaler_failed' => 'Zmólka jo nastała pśi skalowanju wobraza: $1',
+	'inplace_scaler_no_handler' => 'Žedna programowa rutina za transformaciju toś togo typa MIME',
+	'inplace_scaler_no_output' => 'Dataja wudaśa transformacije njejo se napórała.',
+	'inplace_scaler_zero_size' => 'Transformacija jo napórała wudawańsku dataju z wjelikosću nul.',
+	'webstore-desc' => 'Middleware za składowanje datajow jano za Web (nic NFS)',
+	'webstore_access' => 'Słužba wobgranicujo se pśze IP-adresu klienta.',
+	'webstore_path_invalid' => 'Datajowe mě jo było njepłaśiwe.',
+	'webstore_dest_open' => 'Celowa dataja "$1" njedajo se wocyniś.',
+	'webstore_dest_lock' => 'Celowa dataja "$1" njedajo se zastojaś.',
+	'webstore_dest_mkdir' => 'Celowy zapis "$1" njedajo se napóraś.',
+	'webstore_archive_lock' => 'Archiwowa dataja "$1" njedajo se zastojaś.',
+	'webstore_archive_mkdir' => 'Archiwowy zapis "$1" njedajo se napóraś.',
+	'webstore_src_open' => 'Žrědłowa dataja "$1" njedajo se wócyniś.',
+	'webstore_src_close' => 'Zmólka pśi zacynjanju žrědłoweje dataje "$1".',
+	'webstore_src_delete' => 'Zmólka pśi lašowanju žrědłoweje dataje "$1".',
+	'webstore_rename' => 'Zmólka pśi pśemjenjowanju dataje "$1" do "$2".',
+	'webstore_lock_open' => 'Zmólka pśi wócynjanju zastajoneje dataje "$1".',
+	'webstore_lock_close' => 'Zmólka pśi zacynjanju zastajoneje dataje "$1".',
+	'webstore_dest_exists' => 'Zmólka, celowa dataja "$1" eksistěrujo.',
+	'webstore_temp_open' => 'Zmólka pśi wócynjanju temporarneje dataje "$1".',
+	'webstore_temp_copy' => 'Zmólka pśi kopěrowanju temporarneje dataje "$1" do celoweje dataje "$2".',
+	'webstore_temp_close' => 'Zmólka pśi zacynjanju temporarneje dataje "$1".',
+	'webstore_temp_lock' => 'Zmólka pśi zastajanju temporarneje dataje "$1".',
+	'webstore_no_archive' => 'Celowa dataja eksistěrujo a žeden archiw jo se pódał.',
+	'webstore_no_file' => 'Žedna dataja jo se nagrała.',
+	'webstore_move_uploaded' => 'Zmólka pśi pśesuwanju nagrateje dataje "$1" do temporarnego městna "$2".',
+	'webstore_invalid_zone' => 'Njepłaśiwa cona "$1".',
+	'webstore_no_deleted' => 'Archiwowy zapis za wulašowane dataje njejo se definěrował.',
+	'webstore_curl' => 'Zmólka z cURL: $1',
+	'webstore_404' => 'Dataja njenamakana.',
+	'webstore_php_warning' => 'PHP-warnowanje: $1',
+	'webstore_metadata_not_found' => 'Dataja njenamakana: $1',
+	'webstore_postfile_not_found' => 'Dataja za wótpósłanje njejo se namakała.',
+	'webstore_scaler_empty_response' => 'Wobrazowy skalěrowak jo wrośił prozne wótegrono z wótegronowym kodom 200.
+Zawina by mógła wjelicka PHP-zmólka w skalěrowaku byś.',
+	'webstore_invalid_response' => 'Njepłaśiwe wótegrono ze serwera:
+
+$1',
+	'webstore_no_response' => 'Žedne wótegrono ze serwera',
+	'webstore_backend_error' => 'Zmólka ze składowańskego serwera:
+
+$1',
+	'webstore_php_error' => 'PHP-zmólki su nastali:',
+	'webstore_no_handler' => 'Žedna programowa rutina za transformaciju toś togo typa MIME',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

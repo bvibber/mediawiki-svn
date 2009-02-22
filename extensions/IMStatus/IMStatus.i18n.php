@@ -265,6 +265,7 @@ $messages['es'] = array(
 	'imstatus_default' => 'Por defecto',
 	'imstatus_example' => 'Ejemplo',
 	'imstatus_possible_val' => 'Valores posibles',
+	'imstatus_or' => 'o',
 );
 
 /** Basque (Euskara)

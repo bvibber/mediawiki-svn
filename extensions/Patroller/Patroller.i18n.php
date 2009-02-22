@@ -269,8 +269,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Konsnos
  */
 $messages['el'] = array(
+	'patrol-revert' => 'Αναίρεση',
 	'patrol-revert-reason' => 'Λόγος:',
 );
 

@@ -93,6 +93,20 @@ $messages['bg'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'layouts-desc' => 'Poblañ ar pajennoù nevez-krouet gant ur "pajennaozañ" kemmus a-benn broudañ kaout ur framm boutin d\'an holl bajennoù',
+	'layouts_title' => 'Krouiñ ur bajenn',
+	'layouts_chooselayout' => 'Dibab ar pajennaozañ evit $1 :',
+	'layouts_nolayout' => 'Tamm pajennaozañ ebet',
+	'layouts_continue' => "Kenderc'hel",
+	'layouts_choosecategory' => 'Krouiñ ur rummad evit $1 :',
+	'layouts_unknown' => 'Dianav',
+	'layouts_tagline' => "Savet eo bet ar bajenn-mañ gant ar pajennaozañ '''$1'''",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

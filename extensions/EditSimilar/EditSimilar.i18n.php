@@ -149,6 +149,13 @@ Toś ten bok by teke twóju pomoc trjebał: $1',
 	'tog-edit-similar' => 'Naraźenja za pódobne boki zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Konsnos
+ */
+$messages['el'] = array(
+	'editsimilar-desc' => 'Παροτρύνει τους χρήστες να επεξεργαστούν παρόμοιες σελίδες αφού αποθήκευσαν μία σελίδα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

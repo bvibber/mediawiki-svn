@@ -130,6 +130,27 @@ $messages['bg'] = array(
 	'amazonplus-cp-none' => 'Няма',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'amazonplus-desc' => 'Un astenn aes da bersonelaat a-benn diskwel titouroù diwar Amazon',
+	'amazonplus-nores' => "Fazi : N'eus bet kavet tamm disoc'h ebet !",
+	'amazonplus-noidres' => "Fazi : N'eus ket bet kavet ID produ ebet !",
+	'amazonplus-fgcerr' => "Fazi : N'eus ket bet gallet adtapout roadennoù Amazon",
+	'amazonplus-slserr' => "Fazi : N'eus ket bet gallet dielfennañ roadennoù Amazon",
+	'amazonplus-used' => 'implijet',
+	'amazonplus-german' => 'Alamaneg',
+	'amazonplus-french' => 'Galleg',
+	'amazonplus-japanese' => 'Japaneg',
+	'amazonplus-amazon' => 'Priz Amazon',
+	'amazonplus-new' => 'nevez',
+	'amazonplus-none' => "N'haller prenañ eilenn ebet eus an draezenn-mañ",
+	'amazonplus-cp-none' => 'Hini ebet',
+	'amazonplus-more' => "muioc'h",
+	'amazonplus-less' => "nebeutoc'h",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

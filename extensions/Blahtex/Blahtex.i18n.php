@@ -573,6 +573,77 @@ Versuche die problematischen Zeichen in „\\text{…}“ einzuschließen.',
 Probiere die Anweisung „$3{…}“ aus.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'math_noblahtex' => 'blahtex njedajo se wuwjesć, kótaryž by  měła pla $1 byś',
+	'math-desc' => 'Wudaśe MathML za toflicki &lt;math&gt;',
+	'math_AmbiguousInfix' => '"$1" jo how wěcej zmysłowy.
+Wopytaj pśidatne wugibnjone spinki "{ ... }" wužywaś, aby wótpórał wěcejzmysłowosć.',
+	'math_CannotChangeDirectory' => 'Źěłowy zapis njedajo se změniś',
+	'math_CannotCreateTexFile' => 'tex-dataja njedajo se napóraś',
+	'math_CannotRunDvipng' => 'dvipng njedajo se wuwjesć',
+	'math_CannotRunLatex' => 'latex njedajo se wuwjesć',
+	'math_CannotWritePngDirectory' => 'Njejo móžno do PNG-zapisa pisaś',
+	'math_CannotWriteTexFile' => 'Njejo móžno do tex-dataje pisaś',
+	'math_CasesRowTooBig' => 'W kuždej smužce bloka "cases" stej jano dwa zapis móžno',
+	'math_DoubleSubscript' => 'Dwa indeksa na samkej bazy.
+Jano jaden indeks jo dowólony.',
+	'math_DoubleSuperscript' => 'Dwa eksponenta na samkej bazy.
+Jano jaden eksponent jo dowólony.',
+	'math_IllegalCharacter' => 'Njedowólone znamješko w zapódaśu',
+	'math_IllegalCommandInMathMode' => 'Pśikaz "$1" njejo dowólony w modusu math',
+	'math_IllegalCommandInMathModeWithHint' => 'Pśikaz "$1" njejo dowólony w modusu math.
+Snaź coš město togo "$2" wužywaś?',
+	'math_IllegalCommandInTextMode' => 'Pśikaz "$1" njejo dowólony w tekstowem modusu',
+	'math_IllegalCommandInTextModeWithHint' => 'Pśikaz "$1" njejo dowólony w tekstowem modusu.
+Snaź coš město togo "$2" wužywaś?',
+	'math_IllegalDelimiter' => 'Njedowólone źěleńske znamuško slězy "$1"',
+	'math_IllegalFinalBackslash' => 'Njedowólona nawopacna nakósna smužka "\\" na kóńcu zapódaśa',
+	'math_IllegalNestedFontEncodings' => 'Pśikaze znamješkowego kodowanja njesměju se zašachtelikaś',
+	'math_IllegalRedefinition' => 'Pśikaz "$1" jo južo definěrowany, njamóžoš jen hyšći raz definěrowaś',
+	'math_InvalidColour' => 'Barwa "$1" jo njepłaśiwa',
+	'math_InvalidUtf8Input' => 'Zapódawański tekst njejo płaśiwy rěd znamješkow UTF-8',
+	'math_LatexFontNotSpecified' => 'Za "$1" njejo žedne pismo LaTeX pódane',
+	'math_LatexPackageUnavailable' => 'Njemóžno PNG kresliś, dokulaž pakśik LaTeX "$1" njestoj k dispoziciji',
+	'math_MismatchedBeginAndEnd' => 'Pśikaza "$1" a "$2" se njemakatej',
+	'math_MisplacedLimits' => 'Pśikaz "$1" móžo jano za matematiskim operatorom wustupowaś.
+Rozmysl wó wužywanju "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'Felujuce abo njedowólone nowe pśikazowe mě "\\newcommand".
+Musy rowno jaden pśikaz definěrowany byś;
+musy se z nawopacneju nakósneju smužku "\\" zachopiś a smějo jano alfabetiske znamješka wopśimjeś.',
+	'math_MissingDelimiter' => 'Felujuce źěleńske znamuško za "$1"',
+	'math_MissingOpenBraceAfter' => 'Felujuca wócynjajuca wugibnjona spinka "<nowiki>{</nowiki>" za "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Felujuca wócynjajuca wugibnjona spinka "<nowiki>{</nowiki>" na kóńcu zapódaśa',
+	'math_MissingOpenBraceBefore' => 'Felujuca wócynjajuca wugibnjona spinka "{" pśed "$1"',
+	'math_MissingOrIllegalParameterCount' => 'Felujuca abo njedowólona licba w definiciji "$1".
+Musy to jadnotliwa cyfra mjazy 1 a inkluziwnje 9 byś.',
+	'math_MissingOrIllegalParameterIndex' => 'Felujucy abo njedowólony parametrowy indeks w definiciji "$1"',
+	'math_NonAsciiInMathMode' => 'Znamješka nic-ASCII směju se jano w tekstowem modusu wužywaś.
+Wopytaj problematiske znamješka pśez "\\text{...}" wobedaś.',
+	'math_NotEnoughArguments' => 'Nic dosć argumentow za "$1" pśepódane',
+	'math_PngIncompatibleCharacter' => 'PNG njedajo se ze znamuškom $1 korektnje napóraś',
+	'math_ReservedCommand' => 'Pśikaz "$1" jo za interne wužywanje pśez blahtex rezerwěrowany',
+	'math_SubstackRowTooBig' => 'W kuždej smužce bloka "substack" móžo jano jaden zapisk byś',
+	'math_TooManyMathmlNodes' => 'Jo pśewjele sukow w bomje MathML',
+	'math_TooManyTokens' => 'Zapódaśe jo pśedłujko',
+	'math_UnavailableSymbolFontCombination' => 'Symbol "$1" njestoj w pismje "$2" k dispoziciji',
+	'math_UnexpectedNextCell' => 'Pśikaz "&" móžo jano w bloku "\\begin ... \\end" wustupowaś',
+	'math_UnexpectedNextRow' => 'Pśikaz "\\\\" móžo jano w bloku "\\begin ... \\end" wustupowaś',
+	'math_UnmatchedBegin' => '"\\begin" bźez pśisłušajucego "\\end"',
+	'math_UnmatchedCloseBrace' => 'Zacynjajuca wugibnjona spinka "<nowiki>}</nowiki>" bźez pśisłušajuceje wócynjajuceje wugibnjoneje spinki "<nowiki>{</nowiki>"',
+	'math_UnmatchedEnd' => '"\\end" bźez pśisłušajucego "\\begin"',
+	'math_UnmatchedLeft' => '"\\left" bźez pśisłušajucego "\\right"',
+	'math_UnmatchedOpenBrace' => 'Wócynjajuca wugibnjona spinka "<nowiki>{</nowiki>" bźez pśisłušajuceje zacynjajuceje wugibnjoneje spinki "<nowiki>}</nowiki>"',
+	'math_UnmatchedOpenBracket' => 'Wócynjajuca rožkata spinka "<nowiki>[</nowiki>" bźez pśisłušajuceje zacynjajuceje rožkateje spinki "<nowiki>]</nowiki>"',
+	'math_UnmatchedRight' => '"\\right" bźez pśisłušajucego "\\left"',
+	'math_UnrecognisedCommand' => 'Njespóznaty pśikaz "$1"',
+	'math_WrongFontEncoding' => 'Symbol "$1" njesmějo w znamješkowem kodowanju "$2" wustupowaś',
+	'math_WrongFontEncodingWithHint' => 'Symbol "$1" njesmějo w znamješkowem kodowanju "$2" wustupowaś.
+Wopytaj pśikaz "$3{...}" wužywaś.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

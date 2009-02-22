@@ -582,6 +582,7 @@ $messages['da'] = array(
  * @author Leithian
  * @author MichaelFrey
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'ogg-desc' => 'Steuerungsprogramm für Ogg Theora- und Vorbis-Dateien, inklusive einer JavaScript-Abspielsoftware',
@@ -602,7 +603,7 @@ $messages['de'] = array(
 	'ogg-no-xiphqt' => 'Dein System scheint nicht über die XiphQT-Komponente für QuickTime zu verfügen. QuickTime kann ohne diese Komponente keine Ogg-Dateien abspielen.Bitte <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">lade XiphQT</a> oder wähle eine andere Abspielsoftware.',
 	'ogg-player-videoElement' => 'Vorhandene Browserunterstützung',
 	'ogg-player-oggPlugin' => 'Browser-Plugin',
-	'ogg-player-thumbnail' => 'Zeige Vorschaubild',
+	'ogg-player-thumbnail' => 'nur Vorschaubild',
 	'ogg-player-soundthumb' => 'Kein Player',
 	'ogg-player-selected' => '(ausgewählt)',
 	'ogg-use-player' => 'Abspielsoftware:',

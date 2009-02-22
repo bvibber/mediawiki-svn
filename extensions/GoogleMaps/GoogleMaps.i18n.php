@@ -2044,9 +2044,11 @@ $wgGoogleMapsMessages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
+ * @author IvanLanin
  * @author Rex
  */
 $wgGoogleMapsMessages['id'] = array(
+	'gm-desc' => 'Membuat peta dengan mudah dengan penanda wiki',
 	'gm-incompatible-browser' => 'Untuk menampilkan peta di ruang ini, Anda memerlukan penjelajah web yang kompatibel.',
 	'gm-incompatible-browser-link' => 'Klik di sini untuk melihat daftar penjelajah web yang kompatibel.',
 	'gm-no-editor' => 'Penjelajah web Anda tidak mendukung fitur pembuatan peta secara interaktif. Coba gunakan versi terbaru <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) atau <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',

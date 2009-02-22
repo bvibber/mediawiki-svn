@@ -24,12 +24,14 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Meno25
  * @author Purodha
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'abcdesc' => 'Short description of the ABC extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'abcdownload' => '{{Identical|Download}}',
 	'abcabc' => '{{optional}}',
 	'abcpdf' => '{{optional}}',
+	'abcps' => '{{optional}}',
 	'abcmidi' => '{{optional}}',
 	'abcvorbis' => '{{optional}}',
 );
@@ -244,6 +246,7 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'abcdesc' => 'ABC 음악을 포맷하기 위해 <tt>&lt;abc&gt;</tt> 태그를 추가',
 	'abcdownload' => '다운로드:',
 );
 
@@ -284,6 +287,14 @@ $messages['ml'] = array(
 $messages['mn'] = array(
 	'abcdesc' => 'ABC хөгжимиын горимд <tt>&lt;abc&gt;</tt> шошгыг нэмэх',
 	'abcdownload' => 'Өөртөө хуулах:',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'abcdesc' => 'Полады <tt>&lt;abc&gt;</tt> тег ABC музыканть форматировамонь туртов',
+	'abcdownload' => 'Таргамс:',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -548,3 +559,4 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'abcdownload' => '下載:',
 );
+

@@ -108,6 +108,13 @@ $messages['dsb'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Nowu nitku startowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Konsnos
+ */
+$messages['el'] = array(
+	'discussionthreading-replysection' => 'απάντηση',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

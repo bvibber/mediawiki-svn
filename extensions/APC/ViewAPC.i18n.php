@@ -522,6 +522,24 @@ $messages['bg'] = array(
 По-нова версия ($2) е налична на адрес http://pecl.php.net/package/APC/$2',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'viewapc' => 'Titouroù APC',
+	'viewapc-start-time' => "Eur loc'hañ",
+	'viewapc-misses' => 'Mankoù',
+	'viewapc-display-info' => 'Anv',
+	'viewapc-display-mem_size' => 'Ment',
+	'viewapc-ls-scope-deleted' => 'Diverket',
+	'viewapc-ls-sort-created' => 'Krouet',
+	'viewapc-ls-sort-deleted' => 'Diverket',
+	'viewapc-ls-sort-timeout' => 'Termen echuiñ',
+	'viewapc-ls-limit-none' => 'An holl',
+	'viewapc-ls-more' => "''$1 {{PLURAL:$1|moned|moned}}'' all zo",
+	'viewapc-ls-nodata' => "''Roadenn ebet ne glot''",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

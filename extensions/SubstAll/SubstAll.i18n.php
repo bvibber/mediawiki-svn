@@ -296,6 +296,13 @@ $messages['tl'] = array(
 	'substall-desc' => 'Lumilikha ng isang tatak na <nowiki><substall></nowiki> na nagpapalawak sa lahat ng mga suleras hanggang palaugnayan ng wiki',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'substall-desc' => 'Crea un tag <nowiki><substall></nowiki> che espande i template in wikisintassi',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

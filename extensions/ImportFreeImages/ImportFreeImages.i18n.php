@@ -1048,10 +1048,23 @@ Upang magawa ito, kumuha lamang ng isang susi ng API mula [http://www.flickr.com
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Mach
  */
 $messages['tr'] = array(
+	'importfreeimages' => 'Özgür resimleri içe aktar',
+	'importfreeimages-desc' => "[http://www.flickr.com Flickr]'dan [[Special:ImportFreeImages|uygun lisanslanmış fotoğrafları içe aktarmak için]] bir yol sağlar.",
+	'importfreeimages_description' => "Bu sayfa Flickr'dan uygun lisanslı fotoğrafları aramanıza ve vikinize aktarmanıza izin verir.",
+	'importfreeimages_noapikey' => "Flickr API Anahtarınızı yapılandırmadınız.
+Bunu yapmak için, [http://www.flickr.com/services/api/misc.api_keys.html buradan] bir API anahtarı alın ve ImportFreeImages.php'de wgFlickrAPIKey'i ayarlayın.",
+	'importfreeimages_nophotosfound' => "Arama kriteriniz '$1' için hiçbir fotoğraf bulunamadı, lütfen tekrar deneyin.",
+	'importfreeimages_invalidurl' => '"$1" URLsi geçerli bir Flickr resmi değil.',
+	'importfreeimages_owner' => 'Yazar',
+	'importfreeimages_importthis' => 'bunu içe aktar',
 	'importfreeimages_next' => 'Sonraki $1',
+	'importfreeimages_filefromflickr' => "$1 Flickr'daki <b>[$2]</b> kullanıcısı tarafından. Orjinal URL",
+	'importfreeimages_promptuserforfilename' => 'Lütfen bir hedef dosya adı girin:',
+	'importfreeimages_returntoform' => "Ya da, arama sonuçlarınıza dönmek için <a href='$1'>buraya</a> tıklayın",
 );
 
 /** Ukrainian (Українська)

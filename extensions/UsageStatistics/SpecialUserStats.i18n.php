@@ -570,9 +570,10 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author BlueDevil
+ * @author Huji
  */
 $messages['fa'] = array(
-	'usagestatisticsstart' => 'تاریخ شروع',
+	'usagestatisticsstart' => 'تاریخ آغاز',
 );
 
 /** Finnish (Suomi)

@@ -318,6 +318,13 @@ $messages['tl'] = array(
 	'stringfunctions-desc' => "Nagpapainam sa banghay na may mga tungkuling pambagting (''string'')",
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'stringfunctions-desc' => 'Dizi fonksiyonlarıyla derleyici geliştirir',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

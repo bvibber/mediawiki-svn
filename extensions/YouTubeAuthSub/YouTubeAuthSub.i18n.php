@@ -275,7 +275,7 @@ $messages['br'] = array(
 	'youtubeauthsub_tokenerror' => 'Fazi e-ser krouiñ an aotre, klaskit freskaat ar bajenn.',
 	'youtubeauthsub_success' => "Gourc'hemennoù!
 Enporzhiet eo bet ho video.
-Evit sellet ouzh ho video, klikit <a href='http://www.youtube.com/watch?v=$1'>amañ</a>.
+<a href='http://www.youtube.com/watch?v=$1'>Sellet ouzh ho video</a>.
 Un tamm amzer en deus ezhomm YouTube evit kargañ ho video, setu marteze n'eo ket prest diouzhtu c'hoazh.
 
 Evit enframmañ ho video en ur bajenn eus ar wiki, lakait enni ar c'hod da-heul :
@@ -285,11 +285,11 @@ Evit enframmañ ho video en ur bajenn eus ar wiki, lakait enni ar c'hod da-heul 
 	'youtubeauthsub_uploadbutton' => 'Enporzhiañ',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Gallout a reer sellet ouzh ar video-mañ [http://www.youtube.com/watch?v=$1 amañ]',
+[http://www.youtube.com/watch?v=$1 Sellet ouzh ar video]]',
 	'youtubeauthsub_summary' => 'Enporzhiañ ur video YouTube',
 	'youtubeauthsub_uploading' => 'Emeur o kargañ ho video. 
 Un tamm pasianted mar plij.',
-	'youtubeauthsub_viewpage' => "A-hend-all e c'hallit sellet ouzh ho video [[$1|amañ]].",
+	'youtubeauthsub_viewpage' => "A-hend-all e c'hallit [[$1|sellet ouzh ho video]].",
 	'youtubeauthsub_jserror_nokeywords' => 'Lakait ur ger-tremen pe meur a hini.',
 	'youtubeauthsub_jserror_notitle' => 'Lakait un titl evit ar video mar plij',
 	'youtubeauthsub_jserror_nodesc' => 'Lakait un deskrivadur evit ar video mar plij',
@@ -648,7 +648,7 @@ Izan pazientzia, arren.',
  * @author Mardetanha
  */
 $messages['fa'] = array(
-	'youtubeauthsub' => 'بارگذاری کردن ویدیوی یوتوب',
+	'youtubeauthsub' => 'بارگذاری ویدیوی یوتوب',
 	'youtubeauthsub_title' => 'عنوان',
 	'youtubeauthsub_description' => 'توضیحات',
 	'youtubeauthsub_password' => 'گذرواژهٔ یوتیوب',

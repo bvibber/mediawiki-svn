@@ -154,6 +154,13 @@ $messages['de'] = array(
 	'simpleantispam-desc' => 'Ergänzt Formulare um einen einfachen Bot-Spamschutz',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author MichaelFrey
+ */
+$messages['de-formal'] = array(
+	'simpleantispam' => 'Ihre Bearbeitung hat den Spamschutz ausgelöst.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

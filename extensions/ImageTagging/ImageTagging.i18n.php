@@ -375,12 +375,30 @@ Eble tial vi devas ensaluti por aldoni etikedojn al bildoj.
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'taggedimages' => 'imágenes etiquetadas',
+	'imagetagging-addimagetag' => 'Etiquetar esta imagen',
 	'imagetagging-article' => 'Página:',
+	'imagetagging-articletotag' => 'Página a etiquetar',
 	'imagetagging-imghistory' => 'Historial',
+	'imagetagging-images' => 'imágenes',
+	'imagetagging-inthisimage' => 'En esta imagen : $1',
+	'imagetagging-new' => '<sup><span style="color:red">Nuevo!</span></sup>',
+	'imagetagging-removetag' => 'remover etiqueta',
+	'imagetagging-done-button' => 'Etiquetado hecho',
+	'imagetagging-tag-button' => 'Etiqueta',
 	'imagetagging-tagcancel-button' => 'Cancelar',
+	'imagetagging-addingtag' => 'Agregando etiqueta...',
+	'imagetagging-removingtag' => 'Removiendo etiqueta...',
+	'imagetagging-addtagsuccess' => 'Etiqueta agregada.',
+	'imagetagging-removetagsuccess' => 'Etiqueta removida.',
+	'imagetagging-oneuniquetagmessage' => 'Esta imagen ya tiene una etiqueta con este nombre.',
+	'imagetagging-imagetag-seemoreimages' => 'Ver más imágenes de "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Imágenes de "$1"',
+	'imagetagging-taggedimages-displaying' => 'Mostrando $1 - $2 de $3 imágenes de "$4"',
 );
 
 /** Finnish (Suomi)

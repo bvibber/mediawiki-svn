@@ -314,6 +314,14 @@ $messages['tl'] = array(
 	'tog-microid' => 'Maglathala ng isang <a href="http://microid.org/">MicroID</a> upang mapatunayan ang kuwentang may panlabas na mga palingkuran (serbisyo).',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'microid-desc' => 'Hesabı dış hizmetlerle onaylamak için kullanıcı sayfalarına bir [http://www.microid.org/ MicroID] ekler',
+	'tog-microid' => 'Hesabı dış hizmetlerle onaylamak için bir <a href="http://microid.org/">MicroID</a> yayınla',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

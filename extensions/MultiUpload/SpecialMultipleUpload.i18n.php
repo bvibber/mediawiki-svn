@@ -1206,10 +1206,26 @@ Kaagad na buburahin ang hindi naaangkop na mga talaksan, tingnan ang [[{{MediaWi
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Mach
  */
 $messages['tr'] = array(
+	'multipleupload' => 'Dosyaları yükle',
+	'multipleupload-desc' => 'Kullanıcıların [[Special:MultipleUpload|aynı anda birçok dosya yüklemelerine]] izin verir',
+	'multipleupload-ignoreallwarnings' => "'''Tüm uyarıları''' yoksay ve dosyaları her halükarda yükle.",
+	'multipleupload-saveallfiles' => 'Tüm dosyaları kaydet',
+	'multipleupload-addresswarnings' => 'Lütfen dosyaları tekrar yüklemeden önce uyarıları adresleyin.',
+	'multipleupload-page' => '{{ns:project}}:Dosya silme ilkesi',
+	'multipleupload-text' => "Birden çok dosyayı buraya yükleyin.
+
+'Gözat'ı seçin ve yüklemek istediğiniz her dosyayı seçin.
+Bir seferde 1 ile $1 dosyayı yükleyebilirsiniz.
+
+İsteğe bağlı olarak '''Hedef dosya adı''' girebilir ve dosyanızı anlatan bir '''Özet''' sağlayabilirsiniz.
+
+Uygun olmayan dosyalar hemen silinecektir, [[{{MediaWiki:Multipleupload-page}}|dosya silme ilkesini]] görün.",
 	'multiupload-fileuploaded' => 'Dosya yüklendi.',
+	'multiupload-toolbox' => 'Birden fazla dosya yükle',
 );
 
 /** Ukrainian (Українська)

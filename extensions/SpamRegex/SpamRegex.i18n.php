@@ -995,6 +995,7 @@ $messages['oc'] = array(
 	'spamregex-currently-blocked' => "'''Frasas actualament blocadas :'''",
 	'spamregex-move' => "Lo motiu qu'avètz inscrich conteniá una frasa blocada.",
 	'spamregex-no-currently-blocked' => "'''I a pas cap de frasa blocada.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 suprimir]) apondut per $5 lo $6 a $7",
 	'spamregex-page-title-1' => "Blocatge d’una frasa utilizant d'expressions regularas",
 	'spamregex-unblock-success' => 'Lo desblocatge a capitat',
 	'spamregex-unblock-message' => "La frasa '''$1''' es estada desblocada a l’edicion.",

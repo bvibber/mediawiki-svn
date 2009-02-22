@@ -406,6 +406,17 @@ Wenn du Fragen zu diesem Erweiterungs-Verteil-System hast, gehe bitte zur Seite 
 	'extdist-want-more' => 'Eine weitere Erweiterung holen.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author MichaelFrey
+ */
+$messages['de-formal'] = array(
+	'extdist-choose-version' => '<big>Sie laden die <b>$1</b>-Erweiterung herunter.</big>
+
+Bitte wählen Sie ihre MediaWiki-Version.
+
+Die meisten Erweiterungen arbeiten mit vielen MediaWiki-Versionen zusammen. Wenn Ihre MediaWiki-Version hier nicht aufgeführt ist oder Sie die neuesten Fähigkeiten der Erweiterung nutzen möchtest, versuche es mit der aktuellen Version.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -589,6 +600,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'extensiondistributor' => 'Lataa MediaWikin laajennus',
+	'extdist-desc' => 'Laajennus laajennusten tilannevedosarkistojen jakelulle.',
 	'extdist-no-such-extension' => 'Laajennusta ”$1” ei löydy',
 	'extdist-submit-extension' => 'Jatka',
 	'extdist-current-version' => 'Nykyinen versio (trunk)',
