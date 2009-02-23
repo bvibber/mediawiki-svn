@@ -19,14 +19,14 @@ $messages['en'] = array(
 	"loading_plugin" => "loading plugin<blink>...</blink>",
 	"select_playback" => "Set Playback Preference",
 	"link_back" => "Link Back",
-	"error_load_lib" => "mv_embed=> Unable to load required javascript libraries\n insert script via DOM has failed, try reloading?  ",
+	"error_load_lib" => "mv_embed: Unable to load required javascript libraries\n insert script via DOM has failed, try reloading?  ",
 				 	
-	"error_swap_vid" => "Error=>mv_embed was unable to swap the video tag for the mv_embed interface",
+	"error_swap_vid" => "Error: mv_embed was unable to swap the video tag for the mv_embed interface",
 	
 	"download_segment" => "Download Selection:",
 	"download_full" => "Download Full Video File:",
 	"download_clip" => "Download the Clip",
-	"download_text" => "Download Text (<a style=\"color=>white\" title=\"cmml\" href=\"http=>//wiki.xiph.org/index.php/CMML\">cmml</a> xml:",
+	"download_text" => "Download Text (<a style=\"color:white\" title=\"cmml\" href=\"http=>//wiki.xiph.org/index.php/CMML\">cmml</a> xml:",
 	
 	"clip_linkback" => "Clip Source Page",
 	
@@ -39,8 +39,8 @@ $messages['en'] = array(
 	"mv_ogg-player-quicktime-activex" => "Quicktime ActiveX",
 	"mv_ogg-player-cortado" => "Java Cortado",
 	"mv_ogg-player-flowplayer" => "Flowplayer",
-	"mv_ogg-player-selected" => " (selected)",
-	"mv_generic_missing_plugin" => "You browser does not appear to support playback type=> <b>$1</b><br> visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
+	"mv_ogg-player-selected" => "(selected)",
+	"mv_generic_missing_plugin" => "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
 			
 	"add_to_end_of_sequence" => "Add to End of Sequence",
 	
@@ -64,7 +64,7 @@ $messages['en'] = array(
 	"uploaded-status"=>"Uploaded",
 	"upload-select-file"=>"Select File...",
 	"wgfogg_wrong_version"=>"You have firefogg installed but its outdated, <a href=\"http://firefogg.org\">please upgrade</a> ",
-	"wgfogg_waring_ogg_upload"=>"You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?",
+	"wgfogg_waring_ogg_upload"=>"You have selected an ogg file for conversion to ogg (this is probably unnecessary). Maybe disable the video converter?",
 
 #remoteSearchDriver.js
 	"mv_media_search"=>"Media Search why test test",
@@ -106,7 +106,7 @@ $messages['en'] = array(
 	"menu_options"=>"Options",
 	
 	"loading_timeline"=>"Loading TimeLine <blink>...</blink>",
-	"loading_user_rights"=>"Loading user rights <blink>...</blink>",
+	"loading_user_rights"=>"Loading User Rights <blink>...</blink>",
 	
 	"no_edit_permissions"=>"You don\'t have permissions to save changes to this sequence", 
 	
