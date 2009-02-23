@@ -239,7 +239,10 @@ def parse_path(path,defaults=None):
 
 	if ppath['ai'] not in ["available","installed",None]:
 		raise Parse_Exception("By '"+ppath['ai']+"', did you mean available or did you mean installed?")
-		
+	
+	if ppath['system']=="hailmary": #easter egg
+		ppath['system']='naive'
+
 	if ppath['system'] not in systems.keys() and not ppath['system']=="None":
 		system_names=", ".join(ls_systems())
 		raise Parse_Exception("Did you mean to specify any of "+system_names)
