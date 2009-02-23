@@ -1,0 +1,5 @@
+JR_USER=apache
+JR_NICE=20
+JR_SCRIPT=/usr/local/apache/common/php-1.5/maintenance/jobs-loop.sh
+JR_PID_FILE=/var/run/mw-jobs.pid
+

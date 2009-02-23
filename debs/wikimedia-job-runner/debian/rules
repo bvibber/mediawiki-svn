@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+build:
+
+binary: binary-indep
+binary-arch: 
+
+binary-indep:
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installinit --name=mw-job-runner
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+clean:
+	dh_testdir
+	dh_testroot
+	dh_clean
+
+.PHONY: build binary binary-indep binary-arch clean
+

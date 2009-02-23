@@ -1,0 +1,8 @@
+Source: wikimedia-job-runner
+Maintainer: Tim Starling <tstarling@wikimedia.org>
+
+Package: wikimedia-job-runner
+Architecture: all
+Depends: wikimedia-task-appserver
+Description: MediaWiki job queue runner
+
