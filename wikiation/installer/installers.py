@@ -14,6 +14,7 @@ from extension_installer import Extension_Installer
 from mediawiki_installer import Mediawiki_Installer
 from naive_installer import Naive_Installer
 from installation_system import Installer_Exception
+from download_installer import Download_Installer
 
 class Parse_Exception(Exception):
 	pass
@@ -282,7 +283,7 @@ def get_system(system_name):
 
 		return sYstem()
 
-systems={'wikiation_toolkit':Toolkit_Installer,'extension': Extension_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer}
+systems={'wikiation_toolkit':Toolkit_Installer,'extension': Extension_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer}
 
 if __name__=="__main__":
 	print "testing installers.py module"

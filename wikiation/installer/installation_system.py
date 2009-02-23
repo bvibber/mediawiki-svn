@@ -170,9 +170,9 @@ class Installation_System:
 		self.do_setup(installer_name,destination_dir)
 
 	def do_setup(self, installer_name, destination_dir):
+		#silently fail if there's no setup script
 		if not self.can_exec(installer_name,"setup"):
-			print "notice: cannot execute setup script for "+installer_name
-			return
+			return 
 
 		self.exec_task(installer_name,"setup")
 

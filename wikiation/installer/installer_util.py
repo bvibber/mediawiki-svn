@@ -70,6 +70,9 @@ def clean_target(target):
 def pretty_list(mylist,layout_width=None):
 	"""format a list ~like ls"""
 
+	if not mylist:
+		return ""
+
 	if layout_width==None:
 		layout_width=getTerminalSize()[0]
 
