@@ -30,17 +30,17 @@ $messages['en'] = array(
 	
 	"clip_linkback" => "Clip Source Page",
 	
-	"ogg-player-vlc-mozilla" => "VLC Plugin",
-	"ogg-player-videoElement" => "Native Ogg Video Support",
-	"ogg-player-vlc-activex" => "VLC ActiveX",
-	"ogg-player-oggPlay" => "Annodex OggPlay Plugin",
-	"ogg-player-oggPlugin" => "Generic Ogg Plugin",
-	"ogg-player-quicktime-mozilla" => "Quicktime Plugin",
-	"ogg-player-quicktime-activex" => "Quicktime ActiveX",
-	"ogg-player-cortado" => "Java Cortado",
-	"ogg-player-flowplayer" => "Flowplayer",
-	"ogg-player-selected" => " (selected)",
-	"generic_missing_plugin" => "You browser does not appear to support playback type=> <b>$1</b><br> visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
+	"mv_ogg-player-vlc-mozilla" => "VLC Plugin",
+	"mv_ogg-player-videoElement" => "Native Ogg Video Support",
+	"mv_ogg-player-vlc-activex" => "VLC ActiveX",
+	"mv_ogg-player-oggPlay" => "Annodex OggPlay Plugin",
+	"mv_ogg-player-oggPlugin" => "Generic Ogg Plugin",
+	"mv_ogg-player-quicktime-mozilla" => "Quicktime Plugin",
+	"mv_ogg-player-quicktime-activex" => "Quicktime ActiveX",
+	"mv_ogg-player-cortado" => "Java Cortado",
+	"mv_ogg-player-flowplayer" => "Flowplayer",
+	"mv_ogg-player-selected" => " (selected)",
+	"mv_generic_missing_plugin" => "You browser does not appear to support playback type=> <b>$1</b><br> visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
 			
 	"add_to_end_of_sequence" => "Add to End of Sequence",
 	
