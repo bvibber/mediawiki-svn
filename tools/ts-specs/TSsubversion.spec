@@ -5,8 +5,6 @@
 #
 %include Solaris.inc
 
-%define package_svn_apache %(/usr/bin/pkginfo -q SUNWsvn && echo 0 || echo 1)
-
 Name:			TSsubversion
 License:		Apache,LGPL,BSD
 Group:			system/dscm
@@ -15,9 +13,6 @@ Release:		1
 Summary:		Subversion SCM
 Source:			http://subversion.tigris.org/downloads/subversion-%{version}.tar.bz2
 
-# Home-grown svn-config needed by kdesdk
-#Source1:                svn-config
-#Patch1:                 subversion-01-libneon.la.diff
 URL:			http://subversion.tigris.org/
 BuildRoot:		%{_tmppath}/%{name}-%{version}-build
 SUNW_BaseDir:		%{_prefix}
@@ -34,6 +29,7 @@ BuildRequires: SUNWPython
 BuildRequires: SUNWopenssl-include
 BuildRequires: TSgdbm-devel
 BuildRequires: TSneon-devel
+BuildRequires: TSapache
 
 %description
 Subversion source code management system.
@@ -47,6 +43,12 @@ Requires:                SUNWbash
 Requires: SUNWopenssl-include
 Requires: TSgdbm-devel
 Requires: SUNWPython
+
+%package apache
+Summary:		%{summary} - Apache modules
+SUNW_BaseDir:		/opt/TSapache
+%include default-depend.inc
+Requires: TSapache
 
 %if %build_l10n
 %package l10n
@@ -64,24 +66,25 @@ Requires:                %{name}
 export PATH=/opt/ts/bin:/usr/ccs/bin:/usr/gnu/bin:/usr/bin:/usr/sbin:/bin:/usr/sfw/bin:/opt/SUNWspro/bin:/opt/jdsbld/bin
 export CC="cc"
 export CXX="CC"
-export CFLAGS="%optflags -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
+export CFLAGS="%optflags -D_LARGEFILE64_SOURCE"
 export LD=/usr/ccs/bin/ld
 export LDFLAGS="%_ldflags -L%{_libdir} -L$RPM_BUILD_ROOT%{_libdir}"
 export LIBS="-R/usr/sfw/lib:/opt/ts/lib"
-export PATH=$PATH:/usr/apache2/bin
-./configure \
-    --prefix=%{_prefix} \
-    --exec-prefix=%{_prefix} \
-    --disable-static \
-    --with-pic \
-    --with-installbuilddir=%{_datadir}/apr/build \
-    --disable-mod-activation \
-    --mandir=%{_mandir} \
-    --with-ssl \
-    --infodir=%{_infodir} \
-    --with-apr=/usr/apache2 \
-    --with-apr-util=/usr/apache2 \
-    --with-neon=%{_prefix}
+export PATH=/opt/TSapache/bin:$PATH
+./configure 						\
+    --prefix=%{_prefix}					\
+    --exec-prefix=%{_prefix} 				\
+    --disable-static 					\
+    --with-pic 						\
+    --with-installbuilddir=%{_datadir}/apr/build 	\
+    --disable-mod-activation 				\
+    --mandir=%{_mandir} 				\
+    --with-ssl 						\
+    --infodir=%{_infodir} 				\
+    --with-apr=/opt/ts 					\
+    --with-apr-util=/opt/ts 				\
+    --with-neon=%{_prefix}				\
+    --with-apxs=/opt/TSapache/bin/apxs
 
 gmake
 
@@ -99,8 +102,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.exp
 #cat $RPM_BUILD_ROOT%{_bindir}/svn-config | sed s/SVN_VERSION/%{version}/ > $RPM_BUILD_ROOT%{_bindir}/svn-config.new
 #mv $RPM_BUILD_ROOT%{_bindir}/svn-config.new $RPM_BUILD_ROOT%{_bindir}/svn-config
 #chmod 0755 $RPM_BUILD_ROOT%{_bindir}/svn-config
-
-rm -rf ${RPM_BUILD_ROOT}/usr/apache2
 
 %if %build_l10n
 %else
@@ -131,6 +132,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %attr (0755, root, bin) %{_includedir}
 %{_includedir}/*
 
+%files apache
+%defattr (-, root, bin)
+/opt/TSapache/modules/*.so
+
 %if %build_l10n
 %files l10n
 %defattr (-, root, bin)
@@ -139,6 +144,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Mon Feb 23 2009 - river@loreley.flyingparchment.org.uk
+- 1.5.5
+- build Apache module in TSsubversion-apache package
 * Thu Jun 19 2008 - river@wikimedia.org
 - modified for toolserver
 * Mon Feb 25 2008 - laca@sun.com

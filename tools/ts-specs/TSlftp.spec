@@ -9,7 +9,7 @@
 
 Name:                TSlftp
 Summary:             Sophisticated file transfer program
-Version:             3.7.3
+Version:             3.7.8
 Source:              http://ftp.yars.free.net/pub/source/lftp/lftp-%{version}.tar.gz
 
 SUNW_BaseDir:        %{_basedir}
@@ -17,6 +17,8 @@ BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
 
 BuildRequires: TSreadline
+BuildRequires: TSlibiconv-devel
+Requires: TSlibiconv
 Requires: TSreadline
 Requires: %{name}-root
 
@@ -38,14 +40,17 @@ fi
 export CC="gcc"
 export CXX="g++"
 export CFLAGS="%optflags"
-export LDFLAGS="%{_ldflags} -R/usr/sfw/lib -L%{_libdir} -R%{_libdir}"
+export LDFLAGS="%{_ldflags} -R/usr/sfw/lib:/opt/ts/lib -L%{_libdir}"
 export CPPFLAGS="-I/usr/sfw/include -I%{_includedir}"
 
-./configure --prefix=%{_prefix}  \
-            --mandir=%{_mandir}  \
-            --sysconfdir=%{_sysconfdir} \
-	    --disable-nls \
-	    --with-openssl=/usr/sfw \
+./configure 				\
+	--prefix=%{_prefix}  		\
+	--mandir=%{_mandir}  		\
+	--sysconfdir=%{_sysconfdir}	\
+	--disable-nls 			\
+	--with-openssl=/usr/sfw 	\
+	--with-libiconv-prefix=/opt/ts	
+
 
 gmake -j$CPUS
 
@@ -53,6 +58,7 @@ gmake -j$CPUS
 rm -rf $RPM_BUILD_ROOT
 
 gmake install DESTDIR=$RPM_BUILD_ROOT
+rm -f $RPM_BUILD_ROOT%{_libdir}/charset.alias
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,9 +79,11 @@ rm -rf $RPM_BUILD_ROOT
 %files root
 %defattr (-, root, sys)
 %dir %attr (0755, root, sys) %{_sysconfdir}
-%{_sysconfdir}/*
+%class(preserve) %{_sysconfdir}/*
 
 %changelog
+* Mon Feb 23 2009 - river@loreley.flyingparchment.org.uk
+- 3.7.8
 * Fri Sep 26 2008 - river@wikimedia.org
 - modified for ts-specs
 * Tue Apr 29 2008 - river@wikimedia.org

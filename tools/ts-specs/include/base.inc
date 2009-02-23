@@ -37,8 +37,8 @@
 %endif
 
 %ifarch i386
-%define gcc_optflags           %_gcc_opt_level -march=i586 -Xlinker -i -fno-omit-frame-pointer %gcc_picflags
-%define gcc_cxx_optflags       %_gxx_opt_level -march=i586 -Xlinker -i -fno-omit-frame-pointer %gcc_picflags
+%define gcc_optflags           %_gcc_opt_level -Xlinker -i -fno-omit-frame-pointer %gcc_picflags
+%define gcc_cxx_optflags       %_gxx_opt_level -Xlinker -i -fno-omit-frame-pointer %gcc_picflags
 %endif
 
 %ifarch sparc
