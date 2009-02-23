@@ -1,4 +1,3 @@
 #!/bin/sh
 
-cd $DESTINATION_DIR
-php $NAME/maintenance/SMW_setup.php
+php $DESTINATION_DIR/$NAME/maintenance/SMW_setup.php
