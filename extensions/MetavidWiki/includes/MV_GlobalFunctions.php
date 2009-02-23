@@ -341,7 +341,7 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 * enables linkback and autocomplete for search
 	 */
 function mvfAutoAllPageHeader() {
-	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle, $mvgJSDebug, $wgEnableScriptLoader;
+	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle, $mvgJSDebug, $wgEnableScriptLoader, $wgRequest;;
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;	
 	//set the unquie request value 
@@ -354,7 +354,10 @@ function mvfAutoAllPageHeader() {
 	
 	/* (moved to on_dom ready)  but here as well*/
 	if( $wgEnableScriptLoader ){
-		$debug_param = ($mvgJSDebug) ? '&debug=true' : '';	
+		$debug_param = ( $mvgJSDebug ||
+						 $wgRequest->getVal('debug')=='true' ||
+						 $wgRequest->getVal('debug')=='1' ) 
+			 		 ? '&debug=true' : '';	
 		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mvwScriptLoader.php?" . 
 								"class=window.jQuery,j.fn.autocomplete,j.fn.hoverIntent,mv_embed,mv_allpages,mv_search" .
 								'&urid=' .$unique_req_param . $debug_param . "\"></script>"
