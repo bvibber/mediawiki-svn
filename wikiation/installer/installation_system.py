@@ -150,13 +150,32 @@ class Installation_System:
 
 		self.download(installer_name)
 		self.install_settings(installer_name)
-		# ...
+		self.setup(installer_name)
 		# ...
 
 		#query the installer to see if ot thinks the component is properly installed
 		# any flaws at this point are the fault of the installer :-P
 		return self.is_installed(installer_name)
 	
+	def setup(self, installer_name, destination_dir=None):
+		"""perform actions needed to setup an extension post-download"""
+
+		destination_dir=destination_dir or self.destination_dir
+		if not destination_dir:
+			raise Exception("Installation_system: Internal Error: No  destination_dir provided")
+
+		if not self.exists(installer_name):
+			raise Installer_Exception("Can't find installer "+installer_name)
+
+		self.do_setup(installer_name,destination_dir)
+
+	def do_setup(self, installer_name, destination_dir):
+		if not self.can_exec(installer_name,"setup"):
+			print "notice: cannot execute setup script for "+installer_name
+			return
+
+		self.exec_task(installer_name,"setup")
+
 	def download (self, installer_name, destination_dir=None):
 		"""perform actions needed to download all the files we need"""
 
