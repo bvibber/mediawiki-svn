@@ -1816,7 +1816,7 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'math_noblahtex' => 'Blahtex kan niet uitgevoerd worden. Het programma zou hier moeten staan: $1',
 	'math-desc' => 'MathML-uitvoer voor &lt;math&gt; tags',
-	'math_AmbiguousInfix' => 'Ambigue plaatsing van "$1" (probeer het op te lossen met accolades "{ ... }" om te disambigueren)',
+	'math_AmbiguousInfix' => 'Ambigue plaatsing van "$1" (probeer het op te lossen met accolades "{ … }" om te disambigueren)',
 	'math_CannotChangeDirectory' => 'Kan de werkmap niet wijzigen',
 	'math_CannotCreateTexFile' => 'Kan geen tex-bestand aanmaken',
 	'math_CannotRunDvipng' => 'Kan dvipng niet uitvoeren',
@@ -1848,7 +1848,7 @@ $messages['nl'] = array(
 	'math_MissingOpenBraceBefore' => 'Ontbrekende openende accolade "{" na "$1"',
 	'math_MissingOrIllegalParameterCount' => 'Ontbrekende of een ongeldig aantal parameters in de definitie van "$1" (dit moet één cijfer zijn tussen 1 en 9)',
 	'math_MissingOrIllegalParameterIndex' => 'Ontbrekende of ongeldige parameterindex in de definitie van "$1"',
-	'math_NonAsciiInMathMode' => 'Niet-ASCII karakters mogen enkel in text-modus gebruikt worden (tracht de probleemkarakters te plaatsen tussen "\\text{...}")',
+	'math_NonAsciiInMathMode' => 'Niet-ASCII karakters mogen enkel in text-modus gebruikt worden (tracht de probleemkarakters te plaatsen tussen "\\text{…}")',
 	'math_NotEnoughArguments' => 'Er werden niet genoeg argumenten opgegeven voor "$1"',
 	'math_PngIncompatibleCharacter' => 'Het is niet mogelijk om een correcte PNG te maken met het karakter $1',
 	'math_ReservedCommand' => 'Het commando "$1" is gereserveerd voor intern gebruik door blahtex',
@@ -1856,8 +1856,8 @@ $messages['nl'] = array(
 	'math_TooManyMathmlNodes' => 'Er zijn te veel nodes in de boomstructuur van MathML',
 	'math_TooManyTokens' => 'De invoer is te lang',
 	'math_UnavailableSymbolFontCombination' => 'Het symbool "$1" is niet beschikbaar in het lettertype "$2"',
-	'math_UnexpectedNextCell' => 'Het commando "&" kan alleen voorkomen in een "\\begin ... \\end" constructie',
-	'math_UnexpectedNextRow' => 'Het commando "\\\\" kan alleen voorkomen in een "\\begin ... \\end" constructie',
+	'math_UnexpectedNextCell' => 'Het commando "&" kan alleen voorkomen in een "\\begin … \\end" constructie',
+	'math_UnexpectedNextRow' => 'Het commando "\\\\" kan alleen voorkomen in een "\\begin … \\end" constructie',
 	'math_UnmatchedBegin' => 'Er is een "\\begin" zonder bijbehorende "\\end"',
 	'math_UnmatchedCloseBrace' => 'Er is een accolade sluiten "}" zonder bijbehorende accolade openen "{"',
 	'math_UnmatchedEnd' => 'Er is een "\\end" zonder bijbehorende "\\begin"',
@@ -1867,7 +1867,7 @@ $messages['nl'] = array(
 	'math_UnmatchedRight' => 'Er is een "\\right" zonder bijbehorende "\\left"',
 	'math_UnrecognisedCommand' => 'Commando "$1" niet herkend',
 	'math_WrongFontEncoding' => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2"',
-	'math_WrongFontEncodingWithHint' => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2". Probeer het commando "$3{...}" te gebruiken.',
+	'math_WrongFontEncodingWithHint' => 'Het symbool "$1" mag niet voorkomen in lettertypecodering "$2". Probeer het commando "$3{…}" te gebruiken.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

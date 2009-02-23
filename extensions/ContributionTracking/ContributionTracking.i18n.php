@@ -461,7 +461,7 @@ $messages['nl'] = array(
 	'contributiontracking' => 'Donaties volgen',
 	'contrib-tracking-error' => 'Fout',
 	'contrib-tracking-error-text' => 'Ongeldige formulierinvoer',
-	'contrib-tracking-submitting' => 'Bezig met het uitvoeren van de betaling...',
+	'contrib-tracking-submitting' => 'Bezig met het uitvoeren van de betaling…',
 	'contrib-tracking-continue' => 'Als u niet automatisch wordt doorgestuurd, klik dan op de knop om uw donatie via PayPal te voltooien.',
 	'contrib-tracking-button' => 'Doorgaan',
 );
@@ -605,6 +605,14 @@ $messages['sv'] = array(
 	'contrib-tracking-submitting' => 'Skickar till betalningshanterare...',
 	'contrib-tracking-continue' => 'Om du inte kommer vidare automatiskt, klicka på knappen för att slutföra din donation hos PayPal.',
 	'contrib-tracking-button' => 'Fortsätt',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'contrib-tracking-error' => 'పొరపాటు',
+	'contrib-tracking-button' => 'కొనసాగించు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

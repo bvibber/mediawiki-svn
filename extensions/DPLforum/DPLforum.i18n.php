@@ -596,6 +596,13 @@ $messages['sv'] = array(
 	'dplforum-toomany' => 'DPL-forum: För många kategorier!',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'dplforum-by' => '$1 చే',
+);
+
 /** Tetum (Tetun)
  * @author MF-Warburg
  */

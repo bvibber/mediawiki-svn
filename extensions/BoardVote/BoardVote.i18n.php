@@ -4689,7 +4689,7 @@ Deze persoon beslist ook mede over hoe inkomsten gemaakt kunnen worden en waar h
 <p>Lees de kandidaatstelling en de antwoorden op vragen zorgvuldig voordat u stemt.
 Iedere kandidaat is een gewaardeerde gebruiker die aanzienlijke hoeveelheden tijd en moeite heeft besteed aan het bouwen van uitnodigende omgevingen die toegewijd zijn aan het nastreven en vrij verspreiden van menselijke kennis.</p>
 
-<p>Geef de kandidaten een aantal punten in het daarvoor bestemde vakje afhankelijk van uw voorkeur (1 = favoriete kandidaat, 2 = tweede keus, ...).
+<p>Geef de kandidaten een aantal punten in het daarvoor bestemde vakje afhankelijk van uw voorkeur (1 = favoriete kandidaat, 2 = tweede keus, …).
 U kunt kandidaten hetzelfe aantal punten geven, en ook kandidaten geen punten geven.
 Er wordt aangenomen dat u een voorkeur heeft voor kandidaten die u punten geeft boven kandidaten die u geen punten geeft.
 Voor kandidaten die u geen punten geeft wordt aangenomen dat u voor die groep geen voorkeursvolgorde hebt.</p>
@@ -4718,7 +4718,7 @@ Nu volgt de versleutelde versie. Deze is openbaar en [[Special:BoardVote/dump|na
 <pre>$3</pre>
 
 [[Special:BoardVote/entry|Terug]]',
-	'boardvote_invalidentered' => '<p><strong>Fout</strong>: de voorkeur voor kandidaten moet uitgedrukt worden in hele getallen (1, 2, 3, ...), of leeggelaten worden.</p>',
+	'boardvote_invalidentered' => '<p><strong>Fout</strong>: de voorkeur voor kandidaten moet uitgedrukt worden in hele getallen (1, 2, 3, …), of leeggelaten worden.</p>',
 	'boardvote_nosession' => 'Uw Wikimedia-gebruikersnummer kan niet bepaald worden.
 Meldt u zich aan in wiki waar u voldoet aan de eisen, en ga naar <nowiki>[[Special:BoardVote]]</nowiki>.
 Gebruik een gebruiker met tenminste $1 {{PLURAL:$1|bewerking|bewerkingen}} voor $2, en met tenminste $3 {{PLURAL:$3|bewerking|bewerkingen}} tussen $4 en $5.',
@@ -4745,8 +4745,8 @@ Er kan gestemd worden tot 22 juni',
 	'boardvote_notstarted' => 'Het stemmen is nog niet gestart',
 	'boardvote_closed' => 'De stemming is nu gesloten, zie binnenkort de [http://meta.wikimedia.org/wiki/Board_elections/2008/Results verkiezingspagina voor de resultaten].',
 	'boardvote_edits_many' => 'veel',
-	'group-boardvote' => 'Boardvote-beheerders',
-	'group-boardvote-member' => 'Boardvote-beheerder',
+	'group-boardvote' => 'boardvote-beheerders',
+	'group-boardvote-member' => 'boardvote-beheerder',
 	'grouppage-boardvote' => '{{ns:project}}:Boardvote-beheerder',
 	'boardvote_blocked' => 'U bent geblokkeerd op uw geregistreerde wiki.
 Geblokkeerde gebruikers mogen niet stemmen.',

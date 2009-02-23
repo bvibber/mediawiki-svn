@@ -569,10 +569,10 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'intersection-desc' => 'Geeft als uitvoer een ongenummerde lijst met de meest recent toegevoegde items in een categorie, of een combinatie van categorieën',
-	'intersection_toomanycats' => 'Error: Te veel categorieën!',
-	'intersection_toofewcats' => 'Error: Te weinig categorieën!',
-	'intersection_noresults' => 'Error: Geen resultaten!',
-	'intersection_noincludecats' => 'Error: U moet tenminste een categorie of een naamruimte opgeven!',
+	'intersection_toomanycats' => 'Fout: Te veel categorieën!',
+	'intersection_toofewcats' => 'Fout: Te weinig categorieën!',
+	'intersection_noresults' => 'Fout: Geen resultaten!',
+	'intersection_noincludecats' => 'Fout: U moet tenminste een categorie of een naamruimte opgeven!',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

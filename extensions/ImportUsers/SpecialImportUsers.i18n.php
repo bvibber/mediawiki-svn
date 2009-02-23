@@ -1362,6 +1362,13 @@ $messages['sv'] = array(
 	'right-import_users' => 'Importera flera användare samtidigt',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'importusers-log-summary' => 'Muhtasari',
+);
+
 /** Tamil (தமிழ்)
  * @author Trengarasu
  */

@@ -111,6 +111,24 @@ $messages['bg'] = array(
 	'onlinestatus-toggle-online' => 'На линия',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'onlinestatus-desc' => 'Dodaje preference za prikaz da li je korisnik trenutno prijavljen na wiki ili ne',
+	'onlinestatus-js-anon' => 'Greška: morate biti prijavljeni da bi ste koristili ovu mogućnost',
+	'onlinestatus-js-changed' => 'Vaš status je promijenjen na "$1"',
+	'onlinestatus-js-error' => 'Nemoguće je promijeniti status, vrijednost "$1" nije valjana',
+	'onlinestatus-subtitle-offline' => '{{GENDER:|Ovaj korisnik|Ova korisnica}} je trenutno van mreže',
+	'onlinestatus-subtitle-online' => '{{GENDER:|Ovaj korisnik|Ova korisnica}} je trenutno na mreži',
+	'onlinestatus-tab' => 'Status',
+	'onlinestatus-toggles-desc' => 'Vaš status:',
+	'onlinestatus-toggles-explain' => 'Ovo Vam omogućuje da na Vašoj korisničkoj stranici prikaže drugim korisnicima da li ste prijavljeni ili ne.',
+	'onlinestatus-toggles-show' => 'Prikaži status na mreži na mojoj korisničkoj stranici',
+	'onlinestatus-toggle-offline' => 'Van mreže',
+	'onlinestatus-toggle-online' => 'Na mreži',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

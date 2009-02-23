@@ -1012,7 +1012,7 @@ $messages['nl'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;: ongeldige coördinaten in regel $1, moet een getal zijn',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: ongeldige beschrijvingsspecificatie, dit moet er één zijn uit de volgende lijst: $1',
 	'imagemap_description' => 'Over deze afbeelding',
-	'imagemap_poly_odd' => 'Fout: poly gevonden met een oneven aantal coördinaten op regel $1',
+	'imagemap_poly_odd' => 'Fout: polygoon gevonden met een oneven aantal coördinaten op regel $1',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1178,6 +1178,13 @@ $messages['ro'] = array(
 	'imagemap_missing_coord' => 'Eroare: coordonate insuficiente pentru forma de la linia $1',
 	'imagemap_invalid_coord' => 'Eroare: coordonată incorectă la linia $1, trebuie să fie număr',
 	'imagemap_description' => 'Despre această imagine',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'imagemap_description' => "Sus a st'immaggine",
 );
 
 /** Russian (Русский)

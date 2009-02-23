@@ -157,6 +157,11 @@ $aliases['pl'] = array(
 	'Oversight' => array( 'Rejestr ukrywania' ),
 );
 
+/** Romanian (Română) */
+$aliases['ro'] = array(
+	'HideRevision' => array( 'Ascunde modificarea' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'HideRevision' => array( 'आवृत्तीलुपयति' ),

@@ -462,7 +462,9 @@ Haga clic en el botón abajo para subscribirse.',
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'povwatch_unknown_subpage' => 'Tuntematon alasivu.',
 	'povwatch_subscribe' => 'Tilaa',
+	'povwatch_added' => 'lisätty',
 );
 
 /** French (Français)

@@ -480,6 +480,13 @@ $messages['sk'] = array(
 	'lua_overflow_time' => 'Bol dosiahnutý limit času behu',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'lua_error_internal' => 'అంతర్గత పొరపాటు',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

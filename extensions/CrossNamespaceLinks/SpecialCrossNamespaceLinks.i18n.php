@@ -166,6 +166,16 @@ $messages['cy'] = array(
 	'crossnamespacelinkstext' => "$1: {{PLURAL:$2|Nid oes dim cysylltiad arni|mae arni $2 cysylltiad|mae arni $2 gysylltiad|mae arni $2 chysylltiad|mae arni $2 chysylltiad|mae arni $2 o gysylltiadau}} â'r parth $3",
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'crossnamespacelinks' => 'Henvisninger til andre navnerum',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Liste med henvisninger til andre navnerum]] som ikke burde findes på {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Denne side indeholder en liste med henvisninger fra en side i det primære navnerum til sider i andre navnerum (undtaget {{ns:special}}-, {{ns:talk}}-, {{ns:project}}- og {{ns:template}}-navnerummene), som det ikke anbefales at bruge.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|henvisning|henvisninger}} til $3',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -755,6 +765,13 @@ $messages['ro'] = array(
 	'crossnamespacelinks' => 'Legături între spaţii de nume',
 	'crossnamespacelinks-summary' => 'Această pagină pune la dispoziţie o listă a paginilor din spaţiul de nume principal care se leagă cu pagini din alt spaţiu de nume (excepţie pentru spaţiile de nume {{ns:special}}, {{ns:talk}}, {{ns:project}} şi {{ns:template}}).',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|se leagă|se leagă}} la $3',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|collegamende|collegaminde}} a $3',
 );
 
 /** Russian (Русский)

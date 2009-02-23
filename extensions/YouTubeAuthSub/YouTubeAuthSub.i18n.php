@@ -602,6 +602,16 @@ Por favor, sé paciente.',
 	'youtubeauthsub_jserror_nodesc' => 'Por favor, pon una descripción para el vídeo.',
 );
 
+/** Estonian (Eesti)
+ * @author KalmerE.
+ */
+$messages['et'] = array(
+	'youtubeauthsub_title' => 'Pealkiri',
+	'youtubeauthsub_description' => 'Kirjeldus',
+	'youtubeauthsub_password' => 'YouTube salasõna',
+	'youtubeauthsub_username' => 'YouTube kasutajanimi',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Theklan
@@ -854,10 +864,16 @@ Bitte ha e chly Geduld.',
 );
 
 /** Hawaiian (Hawai`i)
+ * @author Kalani
  * @author Singularity
  */
 $messages['haw'] = array(
+	'youtubeauthsub_password' => 'ʻŌlelo hūnā no YouTube',
+	'youtubeauthsub_username' => 'ʻEʻe no YouTube',
 	'youtubeauthsub_category' => 'Mahele',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 ʻIke i kēia wikiō',
 );
 
 /** Hebrew (עברית)

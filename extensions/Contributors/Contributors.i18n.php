@@ -382,12 +382,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'contributors' => 'Contributeurs',
-	'contributors-desc' => 'Met en sommaire les principaux contributeurs d’une page',
+	'contributors-desc' => 'Résume les principaux contributeurs d’une page',
 	'contributors-toolbox' => 'Principaux contributeurs',
 	'contributors-legend' => 'Lister les principaux contributeurs de la page',
 	'contributors-target' => 'Titre :',

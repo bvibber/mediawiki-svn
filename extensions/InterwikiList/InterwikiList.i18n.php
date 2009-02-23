@@ -355,7 +355,7 @@ $messages['nl'] = array(
 	'interwikilist' => 'Interwikilijst',
 	'interwikilist-desc' => 'Voegt een [[Special:Interwikilist|speciale pagina]] toe om de beschikbare interwikiverwijzingen te bekijken',
 	'interwikilist-linkname' => 'Interwikiverwijzing',
-	'interwikilist-target' => 'Doel URL',
+	'interwikilist-target' => 'Doel-URL',
 	'interwikilist-filter' => 'Lijst filteren',
 	'interwikilist-prefix' => 'Interwikivoorvoegsel:',
 );

@@ -5714,11 +5714,11 @@ Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 	'conceptmapping' => 'Wikidata: conceptkoppelingen',
 	'ow_conceptmapping_title' => 'Conceptkoppelingen',
 	'ow_conceptmapping_help' => '<p>mogelijke handelingen:<ul>
-<li>&action=insert&<data_context_prefix>=<defined_id>&...  een mapping toevoegen</li>
-<li>&action=get&concept=<concept_id>  een mapping teruglezen</li>
-<li>&action=list_sets  geeft een lijst met mogelijke gegevenscontextvoorvoegsels terug en waar ze naar verwijzen.</li>
+<li>&action=insert&<data_context_prefix>=<defined_id>&… een mapping toevoegen</li>
+<li>&action=get&concept=<concept_id> een mapping teruglezen</li>
+<li>&action=list_sets geeft een lijst met mogelijke gegevenscontextvoorvoegsels terug en waar ze naar verwijzen.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> voor een bepaalde betekenis in een concept, geeft alle overige weer</li>
-<li>&action=help  Zinvolle hulptekst weergeven.</li>
+<li>&action=help Zinvolle hulptekst weergeven.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ConceptMapping maakt het mogelijk om bepaalde betekenissen in meerdere gegevenssets als identiek te markeren.</p>',
 	'ow_conceptmapping_no_action_specified' => 'De handeling "$1" wordt niet ondersteund.',
@@ -7126,11 +7126,16 @@ $wdMessages['roa-tara'] = array(
 	'langman_langname' => "Nome d'a lènghe:",
 	'langman_iso639-3' => 'Codece ISO 639-3:',
 	'langman_iso639-2' => 'Codece ISO 639-2:',
+	'langman_addlang' => "Aggiunge 'na lènghe",
+	'datasearch_search_text' => "Cirche 'u teste:",
+	'ow_importtsv_file' => 'File TSV:',
+	'ow_exporttsv_not_allowed' => "Tu non ge tìne 'u permesse pe esportà 'nu file TSV.",
 	'ow_save' => 'Reggìstre',
 	'ow_history' => 'Storie',
 	'ow_noedit_title' => 'Non ge tine le permesse pe fà cangiaminde',
 	'ow_uiprefs' => 'Uicchidate',
 	'ow_none_selected' => 'Nisciuna selezione',
+	'ow_transaction_object' => 'Oggette',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => "non g'è 'nzerite ninde",
 	'ow_dm_not_found' => "non ge l'agghje acchiete jndr'à 'u database o jè malformete",

@@ -1258,9 +1258,14 @@ $messages['ia'] = array(
  */
 $messages['io'] = array(
 	'contrib-hist-name' => 'Nomo',
+	'contrib-hist-date' => 'Tempo e dato',
+	'contrib-hist-anonymous' => 'Anonima',
 	'contribstats-day' => 'Dio',
 	'contribstats-month' => 'Monato',
 	'contribstats-total-ytd' => 'Sumo (YTD)',
+	'contribstats-value-under' => 'Min kam $1',
+	'contribstats-value-from' => 'Inter $1 - $2',
+	'contribstats-value-over' => 'Plu kam $1',
 	'fundraiserstats-date' => 'Dato',
 	'fundraiserstats-day' => 'Dio $1 di $2',
 );

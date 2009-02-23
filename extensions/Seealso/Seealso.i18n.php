@@ -121,9 +121,11 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author Kobazulo
+ * @author Theklan
  */
 $messages['eu'] = array(
 	'seealso' => 'Ikus, gainera',
+	'seealso-desc' => "Lokalizatutako 'Ikus gainera' izenburuak <code><nowiki><seealso></nowiki></code> etiketa erabiliz",
 );
 
 /** Persian (فارسی)
@@ -195,6 +197,13 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'seealso' => 'Vide etiam',
 	'seealso-desc' => 'Capites "Vide etiam" localisate per medio del etiquetta <code><nowiki><seealso></nowiki></code>',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'seealso' => 'Videz anke',
 );
 
 /** Icelandic (Íslenska)

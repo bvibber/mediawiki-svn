@@ -105,6 +105,13 @@ $messages['dsb'] = array(
 	'abcdownload' => 'Ześěgnuś:',
 );
 
+/** Greek (Ελληνικά)
+ * @author Konsnos
+ */
+$messages['el'] = array(
+	'abcdownload' => 'Λήψη:',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

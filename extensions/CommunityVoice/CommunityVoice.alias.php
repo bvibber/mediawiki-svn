@@ -43,6 +43,11 @@ $aliases['ja'] = array(
 	'CommunityVoice' => array( 'コミュニティー・ボイス', 'コミュニティの声' ),
 );
 
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'CommunityVoice' => array( 'Gemeenschapsstem' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'CommunityVoice' => array( 'Tinig ng pamayanan' ),

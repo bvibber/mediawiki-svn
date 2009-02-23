@@ -822,6 +822,7 @@ $messages['id'] = array(
 $messages['io'] = array(
 	'expand_templates_output' => 'Rezulto',
 	'expand_templates_ok' => 'O.K.',
+	'expand_templates_preview' => 'Previdar',
 );
 
 /** Icelandic (Íslenska)
@@ -1219,7 +1220,7 @@ $messages['nl'] = array(
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Substitueert sjablonen, parserfuncties en variabelen]] en geeft wikitekst en een controleversie van een pagina weer',
 	'expand_templates_intro' => 'Deze speciale pagina leest de ingegeven tekst in en
 substitueert recursief alle sjablonen in de tekst.
-Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:...}} en
+Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:…}} en
 variabelen als <nowiki>{{</nowiki>CURRENTDAY}} — vrijwel alles tussen dubbele accolades.
 Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_title' => 'Contexttitel, voor {{PAGENAME}}, enzovoort:',

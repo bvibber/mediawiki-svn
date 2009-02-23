@@ -444,6 +444,13 @@ $messages['pt-br'] = array(
 	'cspammer-log-page' => 'Registro de "Spammers" de Comentários',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'commentspammer-log-msg' => 'cangiaminde da [[Special:Contributions/$1|$1]] a [[:$2]].',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

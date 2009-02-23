@@ -723,11 +723,11 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'ajax-se-desc' => 'Geeft gebruikers die een pagina bewerken aan, wie dezelfde pagina aan het bewerken is',
 	'ajax-se-title' => 'Gebruikers die deze pagina aan het bewerken zijn:',
-	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
+	'ajax-se-pending' => 'Deze pagina moet nog bijgewerkt worden. Klik op deze knop of begin met bewerken.',
 	'ajax-se-idling' => '($1s geleden)',
 	'ajax-se-pagedoesnotexist' => 'pagina bestaat niet',
-	'ajax-se-userinvalid' => 'FOUT: ongeldige gebruiker',
-	'ajax-se-usernotfound' => 'FOUT: gebruiker niet gevonden',
+	'ajax-se-userinvalid' => 'Fout: ongeldige gebruiker',
+	'ajax-se-usernotfound' => 'Fout: gebruiker niet gevonden',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

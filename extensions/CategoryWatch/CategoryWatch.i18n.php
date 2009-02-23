@@ -600,6 +600,20 @@ Detta meddelande meddelar dig att $3 användare $4 $5.',
 	'categorywatch-catsub' => 'tog bort $1 från kategori $2',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'categorywatch-desc' => 'గమనిస్తున్న వర్గాల్లోని సభ్యత్వపు మార్పుల గురించి గమనింపులు చూపించేలా వీక్షణ జాబితా సౌలభ్యాన్ని విస్తరిస్తుంది',
+	'categorywatch-emailbody' => 'హాయ్ $1, మీరు "$2" అనే వర్గాన్ని గమనిస్తున్నందున మీకీ సందేశం వచ్చింది.
+$3కి వాడుకరి $4 $5 తెలియజేయడంకోసం ఈ సందేశం.',
+	'categorywatch-emailsubject' => 'గమనిస్తున్న వర్గం "$1"లో జరుగుతున్న కలాపాలు',
+	'categorywatch-catmovein' => '$1 పేజీని $3 వర్గం నుండి $2కి మార్చారని',
+	'categorywatch-catmoveout' => '$1 పేజీని $2 వర్గం నుండి $3కి మార్చారని',
+	'categorywatch-catadd' => '$1 పేజీని $2 వర్గంలో చేర్చారని',
+	'categorywatch-catsub' => '$1 పేజీని $2 వర్గం నుండి తొలగించారని',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

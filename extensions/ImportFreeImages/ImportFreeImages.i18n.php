@@ -887,6 +887,14 @@ $messages['ro'] = array(
 	'importfreeimages_owner' => 'Autor',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'importfreeimages_owner' => 'Autore',
+	'importfreeimages_promptuserforfilename' => "Pe piacere scrive 'u nome d'u file de destinazione:",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

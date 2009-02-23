@@ -78,6 +78,11 @@ $aliases['no'] = array(
 	'GlobalUserrights' => array( 'Globale brukerrettigheter' ),
 );
 
+/** Romanian (Română) */
+$aliases['ro'] = array(
+	'GlobalUserrights' => array( 'Drepturi globale utilizator' ),
+);
+
 /** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
 	'GlobalUserrights' => array( 'वैश्विकयोजकाधिकार' ),

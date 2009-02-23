@@ -350,18 +350,19 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'countedits' => 'Compteur d’éditions',
-	'countedits-desc' => '[[Special:CountEdits|Page spéciale]] comptabilisant le nombre d’éditions des utilisateurs et fournissant la liste des dix principaux contributeurs.',
+	'countedits' => 'Compteur de modifications',
+	'countedits-desc' => '[[Special:CountEdits|Page spéciale]] qui comptabilise le nombre de modifications des utilisateurs et fournit la liste des dix contributeurs les plus prolifiques.',
 	'countedits-warning' => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
 	'countedits-username' => 'Utilisateur',
 	'countedits-ok' => 'Accepter',
 	'countedits-nosuchuser' => 'Aucun utilisateur ne correspond à $1',
 	'countedits-resultheader' => 'Résultats pour $1',
-	'countedits-resulttext' => '$1 a fait $2 {{PLURAL:$2|édition|éditions}}',
+	'countedits-resulttext' => '$1 a fait $2 modification{{PLURAL:$2||s}}',
 	'countedits-mostactive' => 'Contributeurs les plus actifs',
 	'countedits-nocontribs' => 'Aucune contribution sur ce wiki.',
 );

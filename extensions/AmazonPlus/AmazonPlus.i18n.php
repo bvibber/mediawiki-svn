@@ -233,6 +233,15 @@ $messages['dsb'] = array(
 	'amazonplus-less' => 'mjenjej',
 );
 
+/** Greek (Ελληνικά)
+ * @author Konsnos
+ */
+$messages['el'] = array(
+	'amazonplus-nores' => 'Σφάλμα: Δεν υπήρξαν αποτελέσματα!',
+	'amazonplus-fgcerr' => 'Σφάλμα: Δεν έγινε ανάκτηση δεδομένων από το Amazon!',
+	'amazonplus-none' => 'Δεν υπάρχουν αντίτυπα αυτού του προϊόντος προς πώληση.',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -774,8 +783,11 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'amazonplus-desc' => "'N'estenziona assaije personalizzabbile de le 'mbormaziune de Amazon",
 	'amazonplus-nores' => 'Errore:Nisciune resultete acchijete',
 	'amazonplus-noidres' => "Errore: Non ge riesche ad acchià 'u codece d'u prodotte!",
+	'amazonplus-fgcerr' => 'Errore: Non ge pozze pigghià le date da Amazon!',
+	'amazonplus-slserr' => 'Errore: Non ge pozze verificà le date da Amazon!',
 	'amazonplus-used' => 'ausete',
 	'amazonplus-german' => 'Tedesche',
 	'amazonplus-french' => 'Frangese',

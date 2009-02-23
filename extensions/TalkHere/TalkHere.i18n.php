@@ -607,7 +607,7 @@ De beheerders van deze site dragen geen verantwoordelijkheid voor de inhoud van 
 	'talkhere-notalk' => "''(nog geen opmerkingen)''",
 	'talkhere-addcomment' => 'opmerking toevoegen',
 	'talkhere-beforeinput' => 'Voeg uw opmerking hieronder toe',
-	'talkhere-loading' => 'editor aan het laden...',
+	'talkhere-loading' => 'Bezig met het laden van de tekstverwerker…',
 	'talkhere-collapse' => 'editor verbergen',
 );
 

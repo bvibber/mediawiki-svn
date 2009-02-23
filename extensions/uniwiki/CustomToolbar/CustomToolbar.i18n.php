@@ -548,7 +548,7 @@ $wgCustomToolbarMessages['eu'] = array(
 	'ct_nowiki_caption' => 'Wikitu gabe',
 	'ct_horizontal_caption' => 'Lerro horizontala',
 	'ct_upload' => 'Igo $1',
-	'ct_link' => 'Lotura izena gehitu (hautazkoa)',
+	'ct_link' => 'Lotura izena gehitu (hautazkoa):',
 	'ct_submit' => 'Joan!',
 	'ct_close' => 'Leihoa itxi',
 	'ct_success' => 'Fitxategi igoera arrakastatsua!',
@@ -1913,6 +1913,7 @@ $wgCustomToolbarMessages['ug-latn'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Ahonc
  * @author Aleksandrit
  */
 $wgCustomToolbarMessages['uk'] = array(
@@ -1945,7 +1946,7 @@ $wgCustomToolbarMessages['uk'] = array(
 	'ct_horizontal_tip' => 'Вставити горизонтальну лінію (використовуйте скупо)',
 	'ct_horizontal_caption' => 'Горизонтальна лінія',
 	'ct_upload' => 'Завантажити $1',
-	'ct_select' => 'Вибрати $1 для завантаження:',
+	'ct_select' => 'Обрати $1 для завантаження:',
 	'ct_caption' => "Додати заголовок (необов'язково):",
 	'ct_link' => "Додати назву посилання (необов'язково):",
 	'ct_close' => 'Закрити вікно',
