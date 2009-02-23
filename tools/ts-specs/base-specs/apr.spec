@@ -1,9 +1,9 @@
 Name:         	TSapr
-Version:      	1.3.2
+Version:      	1.3.3
 Source:         http://mirrors.dedipower.com/ftp.apache.org/apr/apr-%{version}.tar.gz
 
 %prep 
-%setup -q -n %{src_name}-%{version}
+%setup -q -n apr-%{version}
 export CC=cc
 export CXX=CC
 export CFLAGS="%optflags"

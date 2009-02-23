@@ -8,18 +8,13 @@
 %include base.inc
 %use apr = apr.spec
 
-%define src_name	apr
-%define src_version	1.3.2
-
 SUNW_BaseDir:	%{_basedir}
 
-Name:         	TSapr
-Summary:        Apache Portable Runtime
-Version:      	%{src_version}
-Release:      	%{pkg_release}
+Name:         	%{apr.name}
+Summary:        %{apr.summary}
+Version:      	%{apr.version}
 License:      	Apache
-Source:         http://mirrors.dedipower.com/ftp.apache.org/apr/apr-%{version}.tar.gz
-BuildRoot:		%{_tmppath}/%{src_name}-%{version}-build
+BuildRoot:		%{_tmppath}/apr-%{version}-build
 %include default-depend.inc
 
 %package devel
@@ -97,5 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Mon Feb 23 2009 - river@loreley.flyingparchment.org.uk
+- 1.3.3
 * Wed Jul  9 2008 - river@wikimedia.org
 - initial spec

@@ -8,18 +8,13 @@
 %include base.inc
 %use apu = apu.spec
 
-%define src_name	apu
-%define src_version	1.3.2
-
 SUNW_BaseDir:	%{_basedir}
 
-Name:         	TSapu
-Summary:        Apache Portable Runtime utilities
-Version:      	%{src_version}
-Release:      	%{pkg_release}
+Name:         	%{apu.name}
+Summary:        %{apu.summary}
+Version:      	%{apu.version}
 License:      	Apache
-Source:         http://mirrors.dedipower.com/ftp.apache.org/apr/apr-util-%{version}.tar.gz
-BuildRoot:		%{_tmppath}/%{src_name}-%{version}-build
+BuildRoot:		%{_tmppath}/apu-%{version}-build
 %include default-depend.inc
 
 %package devel
@@ -71,9 +66,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,bin)
 %dir %attr (0755, root, bin) %{_libdir}
 %{_libdir}/*.so.*
+%dir %attr (0755, root, bin) %{_libdir}/apr-util-1
+%{_libdir}/apr-util-1/*.so
 %ifarch amd64 sparcv9
 %dir %attr (0755, root, bin) %{_libdir}/%_arch64
 %{_libdir}/%_arch64/*.so.*
+%dir %attr (0755, root, bin) %{_libdir}/%_arch64/apr-util-1
+%{_libdir}/%_arch64/apr-util-1/*.so
 %endif
 
 %files devel
@@ -96,5 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 
 %changelog
+* Mon Feb 23 2009 - river@loreley.flyingparchment.org.uk
+- 1.3.4
 * Wed Jul  9 2008 - river@wikimedia.org
 - initial spec
