@@ -1,0 +1,11 @@
+--- Makefile.old	Tue Feb 24 01:03:26 2009
++++ Makefile	Tue Feb 24 01:03:30 2009
+@@ -668,7 +668,7 @@
+ 		NO_C99_FORMAT = YesPlease
+ 		NO_STRTOUMAX = YesPlease
+ 	endif
+-	INSTALL = ginstall
++	INSTALL = /opt/gnu/bin/install
+ 	TAR = gtar
+ 	BASIC_CFLAGS += -D__EXTENSIONS__
+ endif
