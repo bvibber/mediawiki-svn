@@ -77,7 +77,6 @@ you can choose one from the options below.',
 	'openidalreadyloggedin' => "'''You are already logged in, $1!'''
 
 If you want to use OpenID to log in in the future, you can [[Special:OpenIDConvert|convert your account to use OpenID]].",
-	'tog-hideopenid' => 'Do not show my <a href="http://openid.net/">OpenID</a> on my user page (when using OpenID)',
 	'openidnousername' => 'No username specified.',
 	'openidbadusername' => 'Bad username specified.',
 	'openidautosubmit' => 'This page includes a form that should be automatically submitted if you have JavaScript enabled.
@@ -91,12 +90,12 @@ OpenID lets you log into many different Web sites without using a different pass
 If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
 To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.
 
-There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID providers], and you may already have an OpenID-enabled account on another service.
-
-; Other wikis : If you have an account on an OpenID-enabled wiki, like [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] or [http://kei.ki/ Keiki], you can log in to {{SITENAME}} by entering the \'\'\'full URL\'\'\' of your user page on that other wiki in the box above. For example, \'\'<nowiki>http://kei.ki/en/User:Evan</nowiki>\'\'.
-; [http://openid.yahoo.com/ Yahoo!] : If you have an account with Yahoo!, you can log in to this site by entering your Yahoo!-provided OpenID in the box above. Yahoo! OpenID URLs have the form \'\'<nowiki>https://me.yahoo.com/yourusername</nowiki>\'\'.
-; [http://dev.aol.com/aol-and-63-million-openids AOL] : If you have an account with [http://www.aol.com/ AOL], like an [http://www.aim.com/ AIM] account, you can log in to {{SITENAME}} by entering your AOL-provided OpenID in the box above. AOL OpenID URLs have the form \'\'<nowiki>http://openid.aol.com/yourusername</nowiki>\'\'. Your username should be all lowercase, no spaces.
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : If you have a blog on any of these services, enter your blog URL in the box above. For example, \'\'<nowiki>http://yourusername.blogspot.com/</nowiki>\'\', \'\'<nowiki>http://yourusername.wordpress.com/</nowiki>\'\', \'\'<nowiki>http://yourusername.livejournal.com/</nowiki>\'\', or \'\'<nowiki>http://yourusername.vox.com/</nowiki>\'\'.',
+There are many [http://openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
+	'openidupdateuserinfo' => 'Update my personal information',
+	'openid-prefs' => 'OpenID',
+	'openid-prefstext' => '[http://openid.net/ OpenID] preferences',
+	'openid-pref-hide' => 'Hide your OpenID URL on your user page, if you log in with OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Update my information from OpenID persona every time I login'
 );
 
 /** Message documentation (Message documentation)
@@ -113,6 +112,10 @@ $messages['qqq'] = array(
 	'openidlanguage' => '{{Identical|Language}}',
 	'openidchoosepassword' => '{{Identical|Password}}',
 	'openidalreadyloggedin' => '$1 is a user name.',
+	'openid-prefs' => 'OpenID preferences tab title',
+	'openid-prefstext' => 'OpenID preferences tab text above the list of preferences',
+	'openid-pref-hide' => 'OpenID preference label (Hide your OpenID URL on your user page, if you log in with OpenID)',
+	'openid-pref-update-userinfo-on-login' => 'OpenID preference label for updating fron OpenID persona upon login'
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -203,7 +206,7 @@ $messages['ar'] = array(
 	'openidalreadyloggedin' => "'''أنت مسجل الدخول بالفعل، $1!'''
 
 لو كنت تريد استخدام الهوية المفتوحة لتسجيل الدخول في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك لاستخدام الهوية المفتوحة]].",
-	'tog-hideopenid' => 'لا تعرض <a href="http://openid.net/">هويتي المفتوحة</a> على صفحتي الشخصية (عند استخدام الهوية المفتوحة)',
+	'openid-pref-hide' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 	'openidnousername' => 'لا اسم مستخدم تم تحديده.',
 	'openidbadusername' => 'اسم المستخدم المحدد سيء.',
 	'openidautosubmit' => 'هذه الصفحة تحتوي على إستمارة ينبغي أن يتم إرسالها تلقائيا لو أنك لديك الجافاسكريبت مفعلة.
@@ -279,7 +282,7 @@ $messages['arz'] = array(
 	'openidalreadyloggedin' => "'''أنت مسجل الدخول بالفعل، $1!'''
 
 لو كنت تريد استخدام الهوية المفتوحة لتسجيل الدخول فى المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك لاستخدام الهوية المفتوحة]].",
-	'tog-hideopenid' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
+	'openid-pref-hide' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 	'openidnousername' => 'مافيش اسم يوزر تم تحديده.',
 	'openidbadusername' => 'اسم المستخدم المحدد سيء.',
 	'openidautosubmit' => 'هذه الصفحة تحتوى على إستمارة ينبغى أن يتم إرسالها تلقائيا لو أنك لديك الجافاسكريبت مفعلة.
@@ -360,7 +363,7 @@ $messages['bg'] = array(
 	'openidalreadyloggedin' => "'''Вече сте влезли в системата, $1!'''
 
 Ако желаете да използвате OpenID за бъдещи влизания, можете да [[Special:OpenIDConvert|преобразувате сметката си да използва OpenID]].",
-	'tog-hideopenid' => 'Скриване на <a href="http://openid.net/">OpenID</a> от потребителската страница ако влезете чрез OpenID.',
+	'openid-pref-hide' => 'Скриване на <a href="http://openid.net/">OpenID</a> от потребителската страница ако влезете чрез OpenID.',
 	'openidnousername' => 'Не е посочено потребителско име.',
 	'openidbadusername' => 'Беше посочено невалидно име.',
 	'openidautosubmit' => 'Тази страница включва формуляр, който би трябвало да се изпрати автоматично ако Джаваскриптът е разрешен.
@@ -435,7 +438,7 @@ možete odabrati jedan sa opcijama ispod.',
 	'openidalreadyloggedin' => "'''Vi ste već prijavljeni, $1!'''
 
 Ako želite da koristite OpenID za buduće prijave, možete [[Special:OpenIDConvert|promijeniti Vaš račun za upotrebu OpenID]].",
-	'tog-hideopenid' => 'Ne prikazuj moj <a href="http://openid.net/">OpenID</a> na mojoj korisničkoj stranici (kada se koristi OpenID)',
+	'openid-pref-hide' => 'Sakrij Vaš <a href="http://openid.net/">OpenID</a> na Vašoj korisničkoj stranici, ako ste prijavljeni sa OpenID.',
 	'openidnousername' => 'Nije navedeno korisničko ime.',
 	'openidbadusername' => 'Navedeno loše korisničko ime.',
 	'openidautosubmit' => 'Ova stranica uključuje obrazac koji bi se trebao automatski poslati ako je kod Vas omogućena JavaScript. Ako nije, pokušajte nastaviti dalje putem dugmeta \\"Continue\\".',
@@ -508,7 +511,7 @@ Prosím, poraďte se se [[Special:ListUsers/sysop|správcem]].',
 	'openidalreadyloggedin' => "'''Už jste přihlášený, $1!'''
 
 Pokud chcete pro přihlašování v budoucnu používat OpenID, můžete [[Special:OpenIDConvert|převést váš účet na OpenID]].",
-	'tog-hideopenid' => 'Nezobrazovat váš <a href="http://openid.net/">OpenID</a> na vaší uživatelské stránce pokud se přihlašujete pomocí OpenID.',
+	'openid-pref-hide' => 'Nezobrazovat váš <a href="http://openid.net/">OpenID</a> na vaší uživatelské stránce pokud se přihlašujete pomocí OpenID.',
 	'openidnousername' => 'Nebylo zadáno uživatelské jméno.',
 	'openidbadusername' => 'Bylo zadáno chybné uživatelské jméno.',
 	'openidautosubmit' => 'Tato stránka obsahuje formulář, který by měl být automaticky odeslán pokud máte zapnutý JavaScript.
@@ -599,7 +602,7 @@ du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidalreadyloggedin' => "'''Du bist bereits angemeldet, $1!'''
 
 Wenn du OpenID für künftige Anmeldevorgänge nutzen möchtest, kannst du [[Special:OpenIDConvert|dein Benutzerkonto nach OpenID konvertieren]].",
-	'tog-hideopenid' => 'Zeige meine <a href="http://openid.net/">OpenID</a> nicht auf meiner Benutzerseite (wenn OpenID benutzt wird)',
+	'openid-pref-hide' => 'Verstecke deine <a href="http://openid.net/">OpenID</a> auf deiner Benutzerseite, wenn du dich mit OpenID anmeldest.',
 	'openidnousername' => 'Kein Benutzername angegeben.',
 	'openidbadusername' => 'Falscher Benutzername angegeben.',
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicke bitte auf „Weiter“.',
@@ -673,7 +676,7 @@ móžoš jadno ze slědujucych opcijow wubraś.',
 	'openidalreadyloggedin' => "'''Sy južo pśizjawjony, $1!'''
 
 Jolic pśichodnje coš OpenID wužywaś, aby se pśizjawił, móžoš [[Special:OpenIDConvert|swójo konto za wužiwanje OpenID konwertěrowaś]].",
-	'tog-hideopenid' => 'Schowaj swój <a href="http://openid.net/">OpenID</a> na swójom wužywarskem boku (jolic wužywaš OpenID)',
+	'openid-pref-hide' => 'Schowaj swój <a href="http://openid.net/">OpenID</a> na swójom wužywarskem boku, jolic se pśizjawjaś z OpenID.',
 	'openidnousername' => 'Žedne wužywarske mě pódane.',
 	'openidbadusername' => 'Wopacne wužywarske mě pódane.',
 	'openidautosubmit' => 'Toś ten bok wopśimujo formular, kótaryž se awtmatiski wótpósćeła, jolic JavaScript jo zmóžnjony. Jolic nic, klikni na tłocašk "Dalej".',
@@ -756,7 +759,7 @@ vi povas selekti el unu la jenaj opcioj.',
 	'openidalreadyloggedin' => "'''Vi jam ensalutis, $1!'''
 
 Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConvert|konverti vian konton por uzi OpenID]].",
-	'tog-hideopenid' => 'Kaŝi viajn identigon <a href="http://openid.net/">OpenID</a> en via uzula paĝo, se vi ensalutas kun OpenID.',
+	'openid-pref-hide' => 'Kaŝi viajn identigon <a href="http://openid.net/">OpenID</a> en via uzula paĝo, se vi ensalutas kun OpenID.',
 	'openidnousername' => 'Neniu salutnomo estis donita.',
 	'openidbadusername' => 'Fuŝa salutnomo donita.',
 	'openidautosubmit' => 'Ĉi tiu paĝo inkluzivas kamparo kiu estos aŭtomate enigita se vi havas JavaScript-on ŝaltan.
@@ -800,7 +803,7 @@ $messages['es'] = array(
 	'openidconvertsuccesstext' => 'Usted ha convertido exitosamente su OpenID a $1.',
 	'openidconvertyourstext' => 'Esto ya es su OpenID.',
 	'openidconvertothertext' => 'Esto es el OpenID de alguien más.',
-	'tog-hideopenid' => 'Ocultar su <a href="http://openid.net/">OpenID</a> en su página de usuario, si usted ingresa con OpenID.',
+	'openid-pref-hide' => 'Ocultar su <a href="http://openid.net/">OpenID</a> en su página de usuario, si usted ingresa con OpenID.',
 	'openidnousername' => 'Ningún nombre de usuario especificado.',
 	'openidbadusername' => 'Nombre de usuario mal especificado.',
 	'openidclientonlytext' => 'No puede usar cuentas de este wiki como OpenID en otro sitio.',
@@ -898,7 +901,7 @@ Voit valita omasi alla olevista vaihtoehdoista.',
 	'openidalreadyloggedin' => "'''Olet jo kirjautuneena sisään, $1!'''
 
 Jos haluat käyttää OpenID:tä kirjautumiseen jatkossa, voit [[Special:OpenIDConvert|muuntaa tunnuksesi käyttämään OpenID:tä]].",
-	'tog-hideopenid' => 'Piilota <a href="http://openid.net/">OpenID:si</a> käyttäjäsivultani, jos kirjaudun sisään OpenID-tunnuksilla.',
+	'openid-pref-hide' => 'Piilota <a href="http://openid.net/">OpenID:si</a> käyttäjäsivultani, jos kirjaudun sisään OpenID-tunnuksilla.',
 	'openidnousername' => 'Käyttäjätunnus puuttuu.',
 	'openidbadusername' => 'Käyttäjätunnus on virheellinen.',
 	'openidautosubmit' => 'Tämä sivu sisältää lomakkeen, joka lähettää itse itsensä, jos JavaScript käytössä.
@@ -963,7 +966,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidalreadyloggedin' => "'''Vous êtes déjà connecté{{GENDER:||e|(e)}}, $1 !'''
 
 Vous vous désirez utiliser votre OpenID pour vous connecter ultérieurement, vous pouvez [[Special:OpenIDConvert|convertir votre compte pour utiliser OpenID]].",
-	'tog-hideopenid' => 'Cacher votre <a href="http://openid.net/">OpenID</a> sur votre page utilisateur (si vous vous connectez avec OpenID)',
+	'openid-pref-hide' => 'Cache votre <a href="http://openid.net/">OpenID</a> sur votre page utilisateur, si vous vous connectez avec OpenID.',
 	'openidnousername' => 'Aucun nom d’utilisateur n’a été indiqué.',
 	'openidbadusername' => 'Un mauvais nom d’utilisatteur a été indiqué.',
 	'openidautosubmit' => 'Cette page comprend un formulaire qui pourrait être envoyé automatiquement si vous avez activé JavaScript.
@@ -1042,7 +1045,7 @@ Por favor, consúlteo cun [[Special:ListUsers/sysop|administrador]] do sitio.',
 	'openidalreadyloggedin' => "'''Está dentro do sistema, $1!'''
 
 Se quere usar OpenID para acceder ao sistema no futuro, pode [[Special:OpenIDConvert|converter a súa conta para usar OpenID]].",
-	'tog-hideopenid' => 'Non mostrar o meu <a href="http://openid.net/">OpenID</a> na miña páxina de usuario (ao usar o OpenID)',
+	'openid-pref-hide' => 'Agoche o seu <a href="http://openid.net/">OpenID</a> na súa páxina de usuario, se accede ao sistema con OpenID.',
 	'openidnousername' => 'Non foi especificado ningún nome de usuario.',
 	'openidbadusername' => 'O nome de usuario especificado é incorrecto.',
 	'openidautosubmit' => 'Esta páxina inclúe un formulario que debería ser enviado automaticamente se ten o JavaScript permitido.
@@ -1129,7 +1132,7 @@ Du chasch us däre Lischt ein uussueche.',
 	'openidalreadyloggedin' => "'''Du bisch scho aagmäldet, $1!'''
 
 Wänn Du OpenID fir s Aamälde in Zuechumft wit nutze, no chasch [[Special:OpenIDConvert|Dyy Benutzerkonto no OpenID konvertiere]].",
-	'tog-hideopenid' => 'Versteck Dyyni <a href="http://openid.net/">OpenID</a> uf Dyynere Benutzersyte, wänn Di mit OpenID aamäldsch.',
+	'openid-pref-hide' => 'Versteck Dyyni <a href="http://openid.net/">OpenID</a> uf Dyynere Benutzersyte, wänn Di mit OpenID aamäldsch.',
 	'openidnousername' => 'Kei Benutzername aagee.',
 	'openidbadusername' => 'Falsche Benutzername aagee.',
 	'openidautosubmit' => 'Uf däre Syte het s e Formular, wu automatisch ibertrait wird, wänn JavaSkript aktiviert isch. Wänn nit, no druck bitte uf „Wyter“.',
@@ -1221,7 +1224,7 @@ $messages['he'] = array(
 	'openidalreadyloggedin' => "'''הינכם כבר מחוברים לחשבון, $1!'''
 
 אם ברצונכם להשתמש ב־OpenID כדי להתחבר בעתיד, תוכלו [[Special:OpenIDConvert|להמיר את חשבונכם לשימוש ב־OpenID]].",
-	'tog-hideopenid' => 'הסתרת ה־<a href="http://openid.net/">OpenID</a> מדף המשתמש, במקרה של כניסה לחשבון עם OpenID.',
+	'openid-pref-hide' => 'הסתרת ה־<a href="http://openid.net/">OpenID</a> מדף המשתמש, במקרה של כניסה לחשבון עם OpenID.',
 	'openidnousername' => 'לא צוין שם משתמש.',
 	'openidbadusername' => 'שם המשתמש שצוין אינו תקין.',
 	'openidautosubmit' => 'דף זה מכיל טופס שאמור להשלח אוטומטית אם יש לכם JavaScript פעיל.
@@ -1284,7 +1287,7 @@ $messages['hi'] = array(
 	'openidconvertsuccesstext' => 'आपने आपका ओपनID $1 में बदल दिया हैं।',
 	'openidconvertyourstext' => 'यह आपका ही ओपनID हैं।',
 	'openidconvertothertext' => 'यह किसी औरका ओपनID हैं।',
-	'tog-hideopenid' => 'अगर आपने ओपनID का इस्तेमाल करके लॉग इन किया हैं, तो आपके सदस्यपन्नेपर आपका <a href="http://openid.net/">ओपनID</a> छुपायें।',
+	'openid-pref-hide' => 'अगर आपने ओपनID का इस्तेमाल करके लॉग इन किया हैं, तो आपके सदस्यपन्नेपर आपका <a href="http://openid.net/">ओपनID</a> छुपायें।',
 	'openidnousername' => 'सदस्यनाम दिया नहीं हैं।',
 	'openidbadusername' => 'गलत सदस्यनाम दिया हैं।',
 	'openidclientonlytext' => 'इस विकिपर खोले गये खाते आप अन्य साइटपर ओपनID के तौर पर इस्तेमाल नहीं कर सकतें हैं।',
@@ -1356,7 +1359,7 @@ $messages['hsb'] = array(
 	'openidalreadyloggedin' => "'''Sy hižo přizjewjeny, $1!'''
 
 Jeli chceš OpenID wužiwać, hdyž přichodnje přizjewiš, móžeš [[Special:OpenIDConvert|swoje konto za wužiwanje OpenID konwertować]].",
-	'tog-hideopenid' => 'Twój <a href="http://openid.net/">OpenID</a> na twojej wužiwarskej stronje schować (jeli wužiwaš OpenID)',
+	'openid-pref-hide' => 'Twój <a href="http://openid.net/">OpenID</a> na twojej wužiwarskej stronje schować, jeli so z OpenID přizjewješ.',
 	'openidnousername' => 'Žane wužiwarske mjeno podate.',
 	'openidbadusername' => 'Wopačne wužiwarske mjeno podate.',
 	'openidautosubmit' => 'Tuta strona wobsahuje formular, kotryž měł so awtomatisce wotpósłać, jeli sy JavaScript zmóžnił. Jeli nic, spytaj tłóčatko "Dale".',
@@ -1418,7 +1421,7 @@ Lépj kapcsolatba egy [[Special:ListUsers/sysop|adminisztrátorral]].',
 	'openidalreadyloggedin' => "'''Már be vagy jelentkezve, $1!'''
 
 Ha ezentúl az OpenID-del akarsz bejelentkezni, [[Special:OpenIDConvert|konvertálhatod a felhasználói fiókodat OpenID-re]].",
-	'tog-hideopenid' => 'Az <a href="http://openid.net/">OpenID</a>-d elrejtése a felhasználói lapodon, amikor OpenID-vel jelentkezel be.',
+	'openid-pref-hide' => 'Az <a href="http://openid.net/">OpenID</a>-d elrejtése a felhasználói lapodon, amikor OpenID-vel jelentkezel be.',
 	'openidnousername' => 'Nem adtál meg felhasználónevet.',
 	'openidbadusername' => 'Rossz felhasználónevet adtál meg.',
 	'openidautosubmit' => 'Az ezen az oldalon lévő űrlap automatikusan elküldi az adatokat, ha a JavaScript engedélyezve van. Ha nem, használd a \\"Tovább\\" gombot.',
@@ -1491,7 +1494,7 @@ tu pote seliger un del optiones in basso.',
 	'openidalreadyloggedin' => "'''Tu es ja identificate, $1!'''
 
 Si tu vole usar OpenID pro aperir un session in le futuro, tu pote [[Special:OpenIDConvert|converter tu conto pro usar OpenID]].",
-	'tog-hideopenid' => 'Non monstrar mi <a href="http://openid.net/">OpenID</a> in mi pagina de usator (si io usa OpenID)',
+	'openid-pref-hide' => 'Celar tu <a href="http://openid.net/">OpenID</a> in tu pagina de usator, si tu aperi un session con OpenID.',
 	'openidnousername' => 'Nulle nomine de usator specificate.',
 	'openidbadusername' => 'Mal nomine de usator specificate.',
 	'openidautosubmit' => 'Iste pagina include un formulario que debe esser submittite automaticamente si tu ha JavaScript activate.
@@ -1514,7 +1517,6 @@ Il ha multe [http://wiki.openid.net/Public_OpenID_providers providitores de Open
 );
 
 /** Indonesian (Bahasa Indonesia)
- * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
@@ -1568,7 +1570,7 @@ Anda dapat memilih dari salah satu opsi berikut.',
 	'openidalreadyloggedin' => "'''Anda telah masuk log, $1!'''
 
 Jika Anda ingin menggunakan OpenID untuk masuk log di masa yang akan datang, Anda dapat [[Special:OpenIDConvert|mengkonversi akun Anda menjadi OpenID]].",
-	'tog-hideopenid' => 'Jangan tampilkan <a href="http://openid.net/">OpenID</a> saya di halaman pengguna saya (jika menggunakan OpenID)',
+	'openid-pref-hide' => 'Sembunyikan <a href="http://openid.net/">OpenID</a> Anda di halaman pengguna Anda, jika Anda masuk log dengan OpenID.',
 	'openidnousername' => 'Tidak ada nama pengguna diberikan.',
 	'openidbadusername' => 'Nama pengguna salah.',
 	'openidautosubmit' => 'Dalam halaman ini terdapat formulir yang akan dikirimkan secara otomatis jika Anda mengaktifkan JavaScript.
@@ -1653,7 +1655,7 @@ puoi sceglierne uno dalle opzioni seguenti.',
 	'openidalreadyloggedin' => "'''Hai già effettuato il login, $1!'''
 
 Se desideri usare OpenID per effettuare il login in futuro, puoi [[Special:OpenIDConvert|convertire il tuo account per utilizzare OpenID]].",
-	'tog-hideopenid' => 'Nascondi il tuo <a href="http://openid.net/">OpenID</a> sulla tua pagina utente, se effettui il login con OpenID.',
+	'openid-pref-hide' => 'Nascondi il tuo <a href="http://openid.net/">OpenID</a> sulla tua pagina utente, se effettui il login con OpenID.',
 	'openidnousername' => 'Nessun nome utente specificato.',
 	'openidbadusername' => 'Nome utente specificato errato.',
 	'openidautosubmit' => 'Questa pagina include un modulo che dovrebbe essere inviato automaticamente se hai JavaScript attivato. Se non lo è, prova a premere il pulsante \\"Continue\\".',
@@ -1727,7 +1729,7 @@ $messages['ja'] = array(
 	'openidalreadyloggedin' => "'''$1 さん、あなたは既にログインしています!'''
 
 将来は OpenID を使ってログインしたい場合は、[[Special:OpenIDConvert|あなたのアカウントを OpenID を使うように変換する]]ことができます。",
-	'tog-hideopenid' => '自分の利用者ページ上に <a href="http://openid.net/">OpenID</a> を表示しない (OpenID を使っている場合)',
+	'openid-pref-hide' => 'OpenID でログインしている場合に、あなたの <a href="http://openid.net/">OpenID</a> をあなたの利用者ページで表示しない。',
 	'openidnousername' => '利用者名が指定されていません。',
 	'openidbadusername' => '利用者名の指定が不正です。',
 	'openidautosubmit' => 'このページにあるフォームはあなたが JavaScript を有効にしていれば自動的に送信されるはずです。そうならない場合は、「続ける」ボタンを試してください。',
@@ -1802,7 +1804,7 @@ $messages['km'] = array(
 	'openidconvertothertext' => 'វាជាOpenIDរបស់អ្នកដទៃ។',
 	'openidalreadyloggedin' => "'''អ្នកបានឡុកអ៊ីនរួចហើយ $1!'''
 ប្រសិនបើអ្នកចង់់ប្រើ OpenID ដើម្បីឡុកអ៊ីននាពេលអនាគត អ្នកអាច[[Special:OpenIDConvert|បម្លែងគណនីរបស់អ្នកដើម្បីប្រើ OpenID]]។",
-	'tog-hideopenid' => 'លាក់<a href="http://openid.net/">OpenID</a>របស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់របស់អ្នក ប្រសិនបើអ្នកឡុកអ៊ីនដោយប្រើOpenID។',
+	'openid-pref-hide' => 'លាក់<a href="http://openid.net/">OpenID</a>របស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់របស់អ្នក ប្រសិនបើអ្នកឡុកអ៊ីនដោយប្រើOpenID។',
 	'openidnousername' => 'មិនមានឈ្មោះអ្នកប្រើប្រាស់បានបញ្ជាក់ទេ។',
 	'openidbadusername' => 'ឈ្មោះមិនត្រឹមត្រូវត្រូវបានបញ្ជាក់',
 );
@@ -1879,7 +1881,7 @@ Do kannß Der der Dinge unge druß üßsöke.',
 
 Wann De OpenID zom Enlogge bruche wells, spääder, dann kanns De
 [[Special:OpenIDConvert|Ding Aanmeldung op OpenID ömstelle]] jonn.",
-	'tog-hideopenid' => 'Zeich Ding <a lang="en" href="http://openid.net/">OpenID</a> <b>nit</b> op Dinge Metmaacher-Sigg, wann de met <span lang="en">OpenID</span> enloggs.',
+	'openid-pref-hide' => 'Versteich Ding <a lang="en" href="http://openid.net/">OpenID</a> op Dinge Metmaacher-Sigg, wann de met <span lang="en">OpenID</span> enloggs.',
 	'openidnousername' => 'Keine Metmaacher-Name aanjejovve.',
 	'openidbadusername' => 'Ene kapodde Metmaacher-Name aanjejovve.',
 	'openidautosubmit' => 'Di Sigg enthääld_e Fomulaa för Ennjave, wat automattesch afjeschek weed, wann de Javaskrip enjeschalldt häs.
@@ -1953,7 +1955,7 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidalreadyloggedin' => "'''Dir sidd schonn ageloggt, $1!'''
 
 Wann Dir OpenID benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [[Special:OpenIDConvert|Äre Benotzerkont an en OpenID-Benotzerkont ëmwandelen]].",
-	'tog-hideopenid' => 'Meng <a href="http://openid.net/">OpenID</a> op menger Benotzersäit (wann OpenID benotzt gëtt) net weisen.',
+	'openid-pref-hide' => 'Verstoppt Är <a href="http://openid.net/">OpenID</a> op ärer Benotzersäit, wann dir Iech mat OpenID aloggt.',
 	'openidnousername' => 'Kee Benotzernumm uginn.',
 	'openidbadusername' => 'Falsche Benotzernumm uginn.',
 	'openidautosubmit' => 'Op dëser Säit gëtt et e Formulaire deen automatesch soll verschéckt ginn wann Dir JavaScript ageschalt hutt.
@@ -2070,7 +2072,7 @@ $messages['mr'] = array(
 	'openidalreadyloggedin' => "'''$1, तुम्ही अगोदरच प्रवेश केलेला आहे!'''
 
 जर तुम्ही भविष्यात ओपनID वापरून प्रवेश करू इच्छित असाल, तर तुम्ही [[Special:OpenIDConvert|तुमचे खाते ओपनID साठी बदलू शकता]].",
-	'tog-hideopenid' => 'जर तुम्ही ओपनID वापरून प्रवेश केला, तर तुमच्या सदस्यपानावरील तुमचा <a href="http://openid.net/">ओपनID</a> लपवा.',
+	'openid-pref-hide' => 'जर तुम्ही ओपनID वापरून प्रवेश केला, तर तुमच्या सदस्यपानावरील तुमचा <a href="http://openid.net/">ओपनID</a> लपवा.',
 	'openidnousername' => 'सदस्यनाव दिले नाही.',
 	'openidbadusername' => 'चुकीचे सदस्यनाव दिले आहे.',
 	'openidautosubmit' => 'या पानावरील अर्ज जर तुम्ही जावास्क्रीप्ट वापरत असाल तर आपोआप पाठविला जाईल. जर तसे झाले नाही, तर \\"पुढे\\" कळीवर टिचकी मारा.',
@@ -2208,7 +2210,7 @@ Raadpleeg een  [[Special:ListUsers/sysop|beheerder]].",
 	'openidalreadyloggedin' => "'''U bent al aangemeld, $1!'''
 
 Als u in de toekomst uw OpenID wilt gebruiken om aan te melden, [[Special:OpenIDConvert|zet uw gebruiker dan om naar OpenID]].",
-	'tog-hideopenid' => 'Mijn <a href="http://openid.net/">OpenID</a> niet op mijn gebruikerspagina weergeven (bij gebruik van OpenID)',
+	'openid-pref-hide' => 'Bij aanmelden met <a href="http://openid.net/">OpenID</a>, uw OpenID op uw gebruikerspagina verbergen.',
 	'openidnousername' => 'Er is geen gebruikersnaam opgegeven.',
 	'openidbadusername' => 'De opgegeven gebruikersnaam is niet toegestaan.',
 	'openidautosubmit' => 'Deze pagina bevat een formulier dat automatisch wordt verzonden als JavaScript is ingeschaked.
@@ -2282,7 +2284,7 @@ Kontakt ein [[Special:ListUsers/sysop|administrator]].',
 	'openidalreadyloggedin' => "'''Du er allereie innlogga, $1.'''
 
 Om du ynskjer å nytta OpenID i framtida, kan du [[Special:OpenIDConvert|konvertera kontoen din til å nytta OpenID]].",
-	'tog-hideopenid' => 'Gøym <a href="http://openid.net/">OpenID-min</a> på brukarsida mi (når OpenID vert nytta)',
+	'openid-pref-hide' => 'Gøym <a href="http://openid.net/">OpenID</a> på brukarsida di om du loggar inn med ein.',
 	'openidnousername' => 'Du oppgav ingen brukarnamn.',
 	'openidbadusername' => 'Du oppgav eit ugyldig brukarnamn.',
 	'openidautosubmit' => 'Denne sida inneheld eit skjema som blir levert automatisk om du har JavaSvript slege på. Dersom ikkje, trykk på «Hald fram».',
@@ -2352,7 +2354,7 @@ Vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
 	'openidalreadyloggedin' => "'''$1, du er allerede logget inn.'''
 
 Om du ønsker å bruke OpenID i framtiden, kan du [[Special:OpenIDConvert|konvertere kontoen din til å bruke OpenID]].",
-	'tog-hideopenid' => 'Skjul <a href="http://openid.net/">OpenID</a> på brukersiden din om du logger inn med en.',
+	'openid-pref-hide' => 'Skjul <a href="http://openid.net/">OpenID</a> på brukersiden din om du logger inn med en.',
 	'openidnousername' => 'Intet brukernavn oppgitt.',
 	'openidbadusername' => 'Ugyldig brukernavn oppgitt.',
 	'openidautosubmit' => 'Denne siden inneholder et skjema som vil leveres automatisk om du har JavaScript slått på. Om ikke, trykk på «Fortsett».',
@@ -2422,7 +2424,7 @@ Metetz-vos en rapòrt amb l’[[Special:ListUsers/sysop|administrator]].",
 	'openidalreadyloggedin' => "'''Ja sètz connectat, $1 !'''
 
 Se desiratz utilizar vòstra OpenID per vos connectar ulteriorament, podètz [[Special:OpenIDConvert|convertir vòstre compte per utilizar OpenID]].",
-	'tog-hideopenid' => 'Amagar vòstra <a href="http://openid.net/">OpenID</a> sus vòstra pagina d\'utilizaire (se vos connectaz amb OpenID)',
+	'openid-pref-hide' => 'Amaga vòstra <a href="http://openid.net/">OpenID</a> sus vòstra pagina d\'utilizaire, se vos connectaz amb OpenID.',
 	'openidnousername' => 'Cap de nom d’utilizaire es pas estat indicat.',
 	'openidbadusername' => 'Un nom d’utilizaire marrit es estat indicat.',
 	'openidautosubmit' => 'Aquesta pagina compren un formulari que poiriá èsser mandat automaticament se avètz activat JavaScript.
@@ -2553,7 +2555,7 @@ pode escolher uma das opções abaixo.',
 	'openidalreadyloggedin' => "'''Você já se encontra autenticado, $1!'''
 
 Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConvert|converter a sua conta para usar OpenID]].",
-	'tog-hideopenid' => 'Esconder o seu <a href="http://openid.net/">OpenID</a> na sua página de utilizador, se se autenticar com OpenID.',
+	'openid-pref-hide' => 'Esconder o seu <a href="http://openid.net/">OpenID</a> na sua página de utilizador, se se autenticar com OpenID.',
 	'openidnousername' => 'Nenhum nome de utilizador especificado.',
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
 	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript activado.
@@ -2656,7 +2658,7 @@ $messages['ru'] = array(
 	'openidalreadyloggedin' => "'''Вы уже вошли, $1!'''
 
 Если вы желаете использовать в будущем вход через OpenID, вы можете [[Special:OpenIDConvert|преобразовать вашу учётную запись для использования в OpenID]].",
-	'tog-hideopenid' => 'Не показывать мой <a href="http://openid.net/">OpenID</a> на моей странице участника (когда он используется)',
+	'openid-pref-hide' => 'Скрывать ваш <a href="http://openid.net/">OpenID</a> на вашей странице участника, если вы вошли с помощью OpenID.',
 	'openidnousername' => 'Не указано имя участника.',
 	'openidbadusername' => 'Указано неверное имя участника.',
 	'openidautosubmit' => 'Эта страница содержит форму, которая должна быть автоматически отправлена, если у вас включён JavaScript.
@@ -2731,7 +2733,7 @@ ni poi pigghiari unu di chisti ccà di sècutu.",
 	'openidalreadyloggedin' => "'''Facisti ggià lu login, $1!'''
 
 Si disìi usari OpenID pi fari lu login ntô futuru, poi [[Special:OpenIDConvert|canciari lu tò account pi utilizzari OpenID]].",
-	'tog-hideopenid' => 'Ammuccia lu tò <a href="http://openid.net/">OpenID</a> supr\'a tò pàggina utenti, si fai lu login cu OpenID.',
+	'openid-pref-hide' => 'Ammuccia lu tò <a href="http://openid.net/">OpenID</a> supr\'a tò pàggina utenti, si fai lu login cu OpenID.',
 	'openidnousername' => 'Nuddu nomu utenti spicificatu.',
 	'openidbadusername' => 'Nomu utenti spicificatu sbagghiatu.',
 	'openidautosubmit' => 'Sta pàggina havi nu mòdulu c\'avissi èssiri mannatu autumàticamenti si JavaScript ci l\'hai attivatu. Si, mmeci, nun è accuddì, prova a mùnciri lu buttuni \\"Continue\\".',
@@ -2811,7 +2813,7 @@ Prosím, poraďte sa so [[Special:ListUsers/sysop|správcom]] tejto webovej loka
 	'openidalreadyloggedin' => "'''Už ste prihlásený, $1!'''
 
 Ak chcete na prihlasovanie v budúcnosti využívať OpenID, môžete [[Special:OpenIDConvert|previesť váš účet na OpenID]].",
-	'tog-hideopenid' => 'Nezobrazovať váš <a href="http://openid.net/">OpenID</a> na vašej používateľskej stránke ak sa prihlasujete pomocou OpenID.',
+	'openid-pref-hide' => 'Nezobrazovať váš <a href="http://openid.net/">OpenID</a> na vašej používateľskej stránke ak sa prihlasujete pomocou OpenID.',
 	'openidnousername' => 'Nebolo zadané používateľské meno.',
 	'openidbadusername' => 'Bolo zadané chybné používateľské meno.',
 	'openidautosubmit' => 'Táto stránka obsahuje formulár, ktorý by mal byť automaticky odoslaný ak máte zapnutý JavaScript.
@@ -2892,7 +2894,7 @@ du koast aan uut ju unnerstoundene Lieste uutwääle.',
 	'openidalreadyloggedin' => "'''Du bäst al anmälded, $1!'''
 
 Wan du OpenID foar kuumende Anmäldefoargonge nutsje moatest, koast du [[Special:OpenIDConvert|dien Benutserkonto ätter OpenID konvertierje]].",
-	'tog-hideopenid' => 'Fersteet dien <a href="http://openid.net/">OpenID</a> ap dien Benutsersiede, wan du die mäd OpenID anmäldest.',
+	'openid-pref-hide' => 'Fersteet dien <a href="http://openid.net/">OpenID</a> ap dien Benutsersiede, wan du die mäd OpenID anmäldest.',
 	'openidnousername' => 'Naan Benutsernoome anroat.',
 	'openidbadusername' => 'Falsken Benutsernoome anroat.',
 	'openidautosubmit' => 'Disse Siede änthaalt n Formular, dät automatisk uurdrain wäd, wan JavaSkript aktivierd is. Fals nit, klik ap „Fääre“.',
@@ -2910,7 +2912,6 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
- * @author Boivie
  * @author Jon Harald Søby
  * @author Lokal Profil
  * @author M.M.S.
@@ -2965,7 +2966,7 @@ du kan välja ett från alternativen nedan.',
 	'openidalreadyloggedin' => "'''Du är redan inloggad, $1!'''
 
 Om du vill använda OpenID att logga in i framtiden, kan du [[Special:OpenIDConvert|konvertera dina konton till att använda OpenID]].",
-	'tog-hideopenid' => 'Visa inte mitt <a href="http://openid.net/">OpenID</a> på min användarsida (vid användning av OpenID)',
+	'openid-pref-hide' => 'Dölj <a href="http://openid.net/">OpenID</a> på din användarsida, om du loggar in med OpenID.',
 	'openidnousername' => 'Inget användarnamn angivet.',
 	'openidbadusername' => 'Ogiltigt användarnamn angivet.',
 	'openidautosubmit' => 'Denna sida innehåller ett formulär som kommer levereras automatiskt om du har slagit på JavaScript. Om inte, tryck på "Fortsätt".',
@@ -3089,7 +3090,7 @@ makakapili ka mula sa mga pagpipiliang nasa ibaba.',
 	'openidalreadyloggedin' => "'''Nakalagda ka na, $1!'''
 
 Kung nais mong gumamit ng OpenID upang makalagda sa hinaharap, maaari mong [[Special:OpenIDConvert|palitan ang kuwenta mo para magamit ang OpenID]].",
-	'tog-hideopenid' => 'Huwag ipakita ang aking <a href="http://openid.net/">OpenID</a> sa ibabaw ng aking pahina ng tagagamit (kapag ginagamit angOpenID)',
+	'openid-pref-hide' => 'Itago ang <a href="http://openid.net/">OpenID</a> mo sa ibabaw ng iyong pahina ng tagagamit, kapag lumagda ka sa pamamagitan ng OpenID.',
 	'openidnousername' => 'Walang tinukoy na pangalan ng tagagamit.',
 	'openidbadusername' => 'Masama ang tinukoy na pangalan ng tagagamit.',
 	'openidautosubmit' => 'Kabilang/kasama sa pahinang ito ang isang pormularyo na dapat na kusang maipasa/maipadala kapag hindi pinaandar (pinagana) ang JavaScript.
@@ -3133,49 +3134,6 @@ Lütfen bir [[Special:ListUsers/sysop|yöneticiye]] danışın.',
 	'openidfailuretext' => 'OpenID URL doğrulaması başarısız oldu. Hata iletisi: "$1"',
 	'openidsuccess' => 'Doğrulama başarılı',
 	'openidsuccesstext' => 'OpenID URL doğrulaması başarılı.',
-	'openidserverlogininstructions' => '$3 sitesine $2 kullanıcısı (kullanıcı sayfası $1) olarak oturum açmak için parolanızı aşağıya girin.',
-	'openidtrustinstructions' => '$1 ile veri paylaşmak istediğinizi kontrol edin.',
-	'openidallowtrust' => "Bu kullanıcı hesabına güvenmek için $1'e izin ver.",
-	'openidnopolicy' => 'Site bir gizlilik ilkesi belirtmemiş.',
-	'openidpolicy' => 'Daha fazla bilgi için <a target="_new" href="$1">gizlilik ilkesine</a> bakın.',
-	'openidoptional' => 'İsteğe Bağlı',
-	'openidrequired' => 'Gerekli',
-	'openidnickname' => 'Kullanıcı adı',
-	'openidfullname' => 'Tam ad',
-	'openidemail' => 'E-posta adresi',
-	'openidlanguage' => 'Dil',
-	'openidnotavailable' => 'Tercih ettiğiniz kullanıcı adı ($1) zaten başka bir kullanıcı tarafından kullanımda.',
-	'openidnotprovided' => 'OpenID sunucunuz bir kullanıcı adı sağlamadı (ya bunu yapamadığı için, ya da yapmamasını söylediğiniz için).',
-	'openidchooseinstructions' => 'Tüm kullanıcılar için bir kullanıcı adı gereklidir;
-aşağıdaki seçeneklerden birini seçebilirsiniz.',
-	'openidchoosefull' => 'Tam adınız ($1)',
-	'openidchooseurl' => "OpenID'nizden bir isim alındı ($1)",
-	'openidchooseauto' => 'Otomatik oluşturulan bir isim ($1)',
-	'openidchoosemanual' => 'Tercihinizden bir isim:',
-	'openidchooseexisting' => 'Bu vikide mevcut bir hesap:',
-	'openidchoosepassword' => 'parola:',
-	'openidconvertinstructions' => 'Bu form bir OpenID URLsi kullanmak için kullanıcı hesabınızı değiştirmenizi sağlar.',
-	'openidconvertsuccess' => 'OpenIDye başarıyla dönüştürüldü',
-	'openidconvertsuccesstext' => "OpenIDnizi başarıyla $1'e dönüştürdünüz.",
-	'openidconvertyourstext' => 'Bu zaten sizin OpenIDniz.',
-	'openidconvertothertext' => 'Bu bir başkasının OpenIDsi.',
-	'openidalreadyloggedin' => "'''Zaten oturum açtınız, $1!'''
-
-Eğer gelecekte de oturum açmak için OpenID kullanmak isterseniz, [[Special:OpenIDConvert|hesabınızı OpenID kullanmak için dönüştürebilirsiniz]].",
-	'tog-hideopenid' => '<a href="http://openid.net/">OpenIDmi</a> kullanıcı sayfamda gösterme (OpenID kullanırken)',
-	'openidnousername' => 'Herhangi bir kullanıcı adı belirtilmedi.',
-	'openidbadusername' => 'Kötü bir kullanıcı adı belirtildi.',
-	'openidautosubmit' => 'Bu sayfa, JavaScript etkin ise otomatik olarak gönderilmesi gereken bir form içeriyor.
-Eğer değilse, \\"Devam\\" düğmesini deneyin.',
-	'openidclientonlytext' => 'Bu vikideki hesapları başka sitelerde OpenID olarak kullanamazsınız.',
-	'openidloginlabel' => 'OpenID URLsi',
-);
-
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
- * @author Jose77
- */
-$messages['ug-latn'] = array(
-	'openidlanguage' => 'Til',
 );
 
 /** Ukrainian (Українська)
@@ -3231,7 +3189,7 @@ $messages['uk'] = array(
 	'openidalreadyloggedin' => "'''Ви вже ввійшли, $1!'''
 
 Якщо ви бажаєте використовувати в майбутньому вхід через OpenID, ви можете [[Special:OpenIDConvert|перетворити ваш акаунт для використання в OpenID]].",
-	'tog-hideopenid' => 'Не показувати мій <a href="http://openid.net/">OpenID</a> на моїй сторінці користувача (коли він використовується)',
+	'openid-pref-hide' => 'Приховувати ваш <a href="http://openid.net/">OpenID</a> на вашій сторінці користувача, якщо ви ввійшли з допомогою OpenID.',
 	'openidnousername' => "Не вказано ім'я користувача.",
 	'openidbadusername' => "Зазначено невірне ім'я користувача.",
 	'openidautosubmit' => 'Ця сторінка містить форму, яка повинна бути автоматично відправлена, якщо у вас включений JavaScript.
@@ -3293,7 +3251,7 @@ te pol tórghene uno da le opzioni seguenti.',
 	'openidalreadyloggedin' => "'''Te sì xà entrà, $1!'''
 
 Se ti vol doparar OpenID par entrar in futuro, te pol [[Special:OpenIDConvert|convertir la to utensa par doparar OpenID]].",
-	'tog-hideopenid' => 'Scondi el to <a href="http://openid.net/">OpenID</a> su la to pàxena utente, se te fè el login con OpenID.',
+	'openid-pref-hide' => 'Scondi el to <a href="http://openid.net/">OpenID</a> su la to pàxena utente, se te fè el login con OpenID.',
 	'openidnousername' => 'Nissun nome utente indicà.',
 	'openidbadusername' => "El nome utente indicà no'l xe mia valido.",
 	'openidautosubmit' => 'Sta pàxena la include un modulo che\'l dovarìa èssar invià automaticamente se ti gà JavaScript ativà. Se no, próa a strucar el boton \\"Continua\\".',
@@ -3367,7 +3325,7 @@ Xin hãy liên lạc với [[Special:ListUsers/sysop|quản lý viên]].',
 	'openidalreadyloggedin' => "'''Bạn đã đăng nhập rồi, $1!'''
 
 Nếu bạn muốn sử dụng ID Mở để đăng nhập vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn để dùng ID Mở]].",
-	'tog-hideopenid' => 'Ẩn <a href="http://openid.net/">ID Mở</a> của bạn khỏi trang thành viên, nếu bạn đăng nhập bằng ID Mở.',
+	'openid-pref-hide' => 'Ẩn <a href="http://openid.net/">ID Mở</a> của bạn khỏi trang thành viên, nếu bạn đăng nhập bằng ID Mở.',
 	'openidnousername' => 'Chưa chỉ định tên người dùng.',
 	'openidbadusername' => 'Tên người dùng không hợp lệ.',
 	'openidautosubmit' => 'Trang này có một mẫu sẽ tự động đăng lên nếu bạn kích hoạt JavaScript.
@@ -3464,7 +3422,7 @@ $messages['zh-hans'] = array(
 	'openidalreadyloggedin' => "'''您已经成功登陆了，$1！'''
 
 如果您想以后使用OpenID登陆，您可以[[Special:OpenIDConvert|转换您的帐户使用OpenID]]。",
-	'tog-hideopenid' => '如果使用OpenID登陆，您可以在您的用户页隐藏您的<a href="http://openid.net/">OpenID</a>。',
+	'openid-pref-hide' => '如果使用OpenID登陆，您可以在您的用户页隐藏您的<a href="http://openid.net/">OpenID</a>。',
 	'openidnousername' => '没有指定用户名。',
 	'openidbadusername' => '指定的用户名是错误的。',
 	'openidautosubmit' => '本页包含的表单在启用JavaScript的情况下可以自动提交。
