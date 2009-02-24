@@ -59,8 +59,8 @@
 %endif
 
 %ifarch i386
-%define suncc_optflags64           -i %_cc64_opt_level -xstrconst -xarch=generic64 -Kpic -xregs=no%%frameptr
-%define suncc_cxx_optflags64       -i %_cxx64_opt_level -xarch=generic64 -Kpic -pentium -mr -norunpath -xregs=no%%frameptr
+%define suncc_optflags64           -i %_cc64_opt_level -xstrconst -m64 -Kpic -xregs=no%%frameptr
+%define suncc_cxx_optflags64       -i %_cxx64_opt_level -m64 -Kpic -pentium -mr -norunpath -xregs=no%%frameptr
 %endif
 
 %if %cc_is_gcc

@@ -1,0 +1,11 @@
+--- subversion/include/svn_utf.h.old	Mon Feb 23 22:24:11 2009
++++ subversion/include/svn_utf.h	Mon Feb 23 22:23:41 2009
+@@ -35,7 +35,7 @@
+ 
+ 
+ #ifndef AS400
+-#define SVN_APR_LOCALE_CHARSET APR_LOCALE_CHARSET
++#define SVN_APR_LOCALE_CHARSET ""
+ #define SVN_APR_DEFAULT_CHARSET APR_DEFAULT_CHARSET
+ #else
+ /* APR_LOCALE_CHARSET and APR_DEFAULT_CHARSET are defined as ints on

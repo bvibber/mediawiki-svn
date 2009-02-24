@@ -8,14 +8,15 @@
 Name:			TSsubversion
 License:		Apache,LGPL,BSD
 Group:			system/dscm
-Version:		1.4.6
+Version:		1.5.5
 Release:		1
 Summary:		Subversion SCM
 Source:			http://subversion.tigris.org/downloads/subversion-%{version}.tar.bz2
-
+Patch1:			subversion-01-iconv.diff
 URL:			http://subversion.tigris.org/
 BuildRoot:		%{_tmppath}/%{name}-%{version}-build
 SUNW_BaseDir:		%{_prefix}
+
 Requires: SUNWcsl
 Requires: SUNWcsr
 Requires: TSgdbm
@@ -24,12 +25,14 @@ Requires: SUNWzlib
 Requires: SUNWpostrun
 Requires: SUNWopenssl-libraries
 Requires: SUNWlexpt
-Requires: TSneon
+Requires: TSserf
+Requires: TSlibiconv
 BuildRequires: SUNWPython
 BuildRequires: SUNWopenssl-include
 BuildRequires: TSgdbm-devel
-BuildRequires: TSneon-devel
+BuildRequires: TSserf-devel
 BuildRequires: TSapache
+BuildRequires: TSlibiconv-devel
 
 %description
 Subversion source code management system.
@@ -60,6 +63,7 @@ Requires:                %{name}
 
 %prep
 %setup -q -n subversion-%{version}
+%patch1 -p0
 #%patch1 -p1 -b .patch01
 
 %build
@@ -83,7 +87,8 @@ export PATH=/opt/TSapache/bin:$PATH
     --infodir=%{_infodir} 				\
     --with-apr=/opt/ts 					\
     --with-apr-util=/opt/ts 				\
-    --with-neon=%{_prefix}				\
+    --with-serf=%{_prefix}				\
+    --with-neon=no					\
     --with-apxs=/opt/TSapache/bin/apxs
 
 gmake

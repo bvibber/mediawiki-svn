@@ -11,6 +11,8 @@
 %define bld_arch	"i386"
 %endif
 
+%define opt_arch64 0
+
 # use --without-gtk-doc to disable building gtk-docs (it takes quite
 # a while to build them)
 # default: build gtk-doc API docs

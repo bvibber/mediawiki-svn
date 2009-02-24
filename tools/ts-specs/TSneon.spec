@@ -10,7 +10,7 @@ License:		LGPL
 Group:			system/dscm
 # Be careful not to update this to a newer version without checking
 # if subversion will like it.
-Version:		0.26.2
+Version:		0.28.3
 Release:		1
 Summary:		neon http and webdav client library
 Source:			http://www.webdav.org/neon/neon-%{version}.tar.gz
@@ -132,6 +132,8 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Mon Feb 23 2009 - river@loreley.flyingparchment.org.uk
+- 2.83.3
 * Thu Jun 19 2008 - river@wikimedia.org
 - modified for toolserver
 * Mon Feb 25 2008 - laca@sun.com

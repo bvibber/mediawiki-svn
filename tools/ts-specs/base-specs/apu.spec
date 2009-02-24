@@ -2,7 +2,6 @@ Name:         	TSapu
 Summary:	Apache Portable Runtime utility functions
 Version:      	1.3.4
 Source:         http://mirrors.dedipower.com/ftp.apache.org/apr/apr-util-%{version}.tar.gz
-Source1:        http://mirrors.dedipower.com/ftp.apache.org/apr/apr-iconv-1.2.1.tar.gz
 
 %prep 
 %setup -q -n apr-util-%{version}
@@ -22,8 +21,9 @@ export PKG_CONF
 		--bindir=%{_bindir}	\
 		--with-apr=$APR_CONFIG	\
 		--includedir=$INCDIR	\
-		--with-ldap=ldap	\
-		--with-iconv=/opt/ts
+		--with-ldap=ldap
+
+		#--with-iconv=/opt/ts
 
 %build
 CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
