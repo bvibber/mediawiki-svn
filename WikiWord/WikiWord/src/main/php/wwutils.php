@@ -1,20 +1,28 @@
 <?php
 
-class WWUtil {
-    static function connect($server, $user, $password, $database) {
+class WWUtils {
+    var $debug = false;
+    var $db = NULL;
+
+    function connect($server, $user, $password, $database) {
 	$db = mysql_connect($server, $user, $password) or die("Connection Failure to Database: " . mysql_error());
 	mysql_select_db($database, $db) or die ("Database not found: " . mysql_error());
 	mysql_query("SET NAMES UTF8;", $db) or die ("Database not found: " . mysql_error());
 
-	if (isset($this)) $this->db = $db;
+	$this->db = $db;
+
 	return $db;
     }
 
-    static function query($sql, $db = NULL) {
-	if ($db == NULL && isset($this)) $db = $this->$db;
+    function query($sql, $db = NULL) {
+	if ($db == NULL && isset($this)) $db = $this->db;
 
-	if ($debug) {
+	if ($this->debug) {
 	    print htmlspecialchars($sql);
+	}
+
+	if (!$db) {
+	    throw new Exception("not connected!");
 	}
 
 	$result = mysql_query($sql, $db);
@@ -28,12 +36,18 @@ class WWUtil {
 	return $result;
     }
 
+    function close() {
+	if ($this->db) mysql_close($this->db);
+	$this->db = NULL;
+    }
+
     function queryConceptsForTerm($lang, $term) {
 	global $wwTablePrefix;
 
 	$term = trim($term);
 
-	$sql = "SELECT * FROM {$wwTablePrefix}_{$lang}_meaning "
+	$sql = "SELECT M.*, definition FROM {$wwTablePrefix}_{$lang}_meaning as M"
+	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON M.concept = D.concept "
 	      . " WHERE term_text = \"" . mysql_real_escape_string($term) . "\""
 	      . " ORDER BY freq DESC "
 	      . " LIMIT 100";
@@ -47,6 +61,7 @@ class WWUtil {
 	$term = trim($term);
 
 	$sql = "SELECT * FROM {$wwTablePrefix}_{$lang}_concept_info "
+	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON M.concept = D.concept "
 	      . " WHERE concept = $id ";
 
 	return $this->query($sql);
