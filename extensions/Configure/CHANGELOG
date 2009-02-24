@@ -1,6 +1,11 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.12.5 - 24 February 2009
+  Added foreign key constraint in the PostgreSQL's schema.
+  User who used Configure.pg.sql schema in older versions can use the
+  patch-cs_id_fkey.pg.sql patch.
+
 0.12.4 - 19 February 2009
   Groups in $wgGroupPermissions are now sorted alphabetically.
 

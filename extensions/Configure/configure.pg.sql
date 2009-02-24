@@ -33,7 +33,7 @@ CREATE INDEX cv_is_latest ON config_version( cv_is_latest );
 CREATE TABLE config_setting (
 
 	-- foreign key to config_version.cv_id, used for joins
-	cs_id INTEGER NOT NULL,
+	cs_id INTEGER NOT NULL REFERENCES config_version( cv_id ) ON DELETE CASCADE,
 
 	-- setting's name
 	cs_name TEXT NOT NULL,
