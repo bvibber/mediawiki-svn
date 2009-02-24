@@ -77,10 +77,15 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 					$wgRequest->getText( 'wpExistingName' ),
 					$wgRequest->getText( 'wpExistingPassword' )
 				);
-				
+
 				if ( !$user ) {
 					$this->chooseNameForm( $openid, $sreg, 'wrongpassword' );
 					return;
+				}
+
+				if ($wgRequest->getText( 'wpUpdateUserInfo' ))
+				{
+					$this->updateUser( $user, $sreg );
 				}
 			} else {
 				$name = $this->getUserName( $openid, $sreg, $choice, $nameValue);
@@ -142,8 +147,12 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 
 				$user = $this->getUser( $openid );
 
-				if ( isset( $user ) ) {
-					$this->updateUser( $user, $sreg ); # update from server
+				if ( isset( $user ) )
+				{
+					if ($user->getOption('openid-update-userinfo-on-login'))
+					{
+						$this->updateUser( $user, $sreg); # update from server
+					}
 				} else {
 					# For easy names
 					$name = $this->createName( $openid, $sreg );
@@ -227,44 +236,71 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			if ( isset( $_COOKIE["{$wgCookiePrefix}UserName"] ) ) {
 				$name = trim( $_COOKIE["{$wgCookiePrefix}UserName"] );
 			}
+
+			# show OpenID Attributes
+			$oidAttributesToAccept = array('fullname', 'nickname', 'email', 'language');
+			$oidAttributes = array();
+
+			foreach ($oidAttributesToAccept as $oidAttr)
+			{
+				if ($oidAttr == 'fullname' && !$wgAllowRealName)
+				{
+					next;
+				}
+
+				if ( array_key_exists( $oidAttr, $sreg )) {
+					$oidAttributes[] = '<div>'.wfMsg( "openid$oidAttr" ).': <i>'.$sreg[$oidAttr].'</i></div>';
+				}
+			}
+
+			$oidAttributesUpdate = '';
+			if (count($oidAttributes) > 0)
+			{
+				$oidAttributesUpdate = '<div style="margin-left: 25px">'.
+					'<input type="checkbox" name="wpUpdateUserInfo" id="wpUpdateUserInfo">' .
+					'<label for="wpUpdateUserInfo">' . wfMsg( "openidupdateuserinfo" ) .
+					'<div style="margin-left: 25px">'.implode('', $oidAttributes).'</div>'.
+					'</label></div>';
+			}
 			
-			$wgOut->addHTML("<input type='radio' name='wpNameChoice' id='wpNameChoiceExisting' value='existing' /> " .
-							"<label for='wpNameChoiceExisting'>" . wfMsg( "openidchooseexisting" ) . "</label> " .
-							"<input type='text' name='wpExistingName' id='wpExistingName' size='16' value='{$name}'> " .
-							"<label for='wpExistingPassword'>" . wfMsg( "openidchoosepassword" ) . "</label> " .
-							"<input type='password' name='wpExistingPassword' size='8' /><br />" );
+			$wgOut->addHTML("<div><input type='radio' name='wpNameChoice' id='wpNameChoiceExisting' value='existing' />" .
+				"<label for='wpNameChoiceExisting'>" . wfMsg( "openidchooseexisting" ) . "</label> " .
+				"<input type='text' name='wpExistingName' id='wpExistingName' size='16' value='{$name}'> " .
+				"<label for='wpExistingPassword'>" . wfMsg( "openidchoosepassword" ) . "</label> " .
+				"<input type='password' name='wpExistingPassword' size='8' /> " .
+				$oidAttributesUpdate . "</div>\n" );
 		}
 		
 		# These options won't exist if we can't get them.
 
 		if ( array_key_exists( 'fullname', $sreg ) && $this->userNameOK( $sreg['fullname'] ) ) {
-			$wgOut->addHTML( "<input type='radio' name='wpNameChoice' id='wpNameChoiceFull' value='full' " .
+			$wgOut->addHTML( "<div><input type='radio' name='wpNameChoice' id='wpNameChoiceFull' value='full' " .
 							( ( !$def ) ? "checked = 'checked'" : "" ) . " />" .
-							"<label for='wpNameChoiceFull'>" . wfMsg( "openidchoosefull", $sreg['fullname'] ) . "</label><br />" );
+							"<label for='wpNameChoiceFull'>" . wfMsg( "openidchoosefull", $sreg['fullname'] ) . "</label></div>\n" );
 			$def = true;
 		}
 
 		$idname = $this->toUserName( $openid );
 
 		if ( $idname && $this->userNameOK( $idname ) ) {
-			$wgOut->addHTML( "<input type='radio' name='wpNameChoice' id='wpNameChoiceUrl' value='url' " .
+			$wgOut->addHTML( "<div><input type='radio' name='wpNameChoice' id='wpNameChoiceUrl' value='url' " .
 							( ( !$def ) ? "checked = 'checked'" : "" ) . " />" .
-							"<label for='wpNameChoiceUrl'>" . wfMsg( "openidchooseurl", $idname ) . "</label><br />" );
+							"<label for='wpNameChoiceUrl'>" . wfMsg( "openidchooseurl", $idname ) . "</label></div>\n" );
 			$def = true;
 		}
 
 		# These are always available
 
-		$wgOut->addHTML( "<input type='radio' name='wpNameChoice' id='wpNameChoiceAuto' value='auto' " .
+		$wgOut->addHTML( "<div><input type='radio' name='wpNameChoice' id='wpNameChoiceAuto' value='auto' " .
 							( ( !$def ) ? "checked = 'checked'" : "" ) . " />" .
-							"<label for='wpNameChoiceAuto'>" . wfMsg( "openidchooseauto", $this->automaticName( $sreg ) ) . "</label><br />");
+							"<label for='wpNameChoiceAuto'>" . wfMsg( "openidchooseauto", $this->automaticName( $sreg ) ) . "</label></div>\n");
 
 		$def = true;
 
-		$wgOut->addHTML("<input type='radio' name='wpNameChoice' id='wpNameChoiceManual' value='manual' " .
+		$wgOut->addHTML("<div><input type='radio' name='wpNameChoice' id='wpNameChoiceManual' value='manual' " .
 						" checked='off' />" .
 						"<label for='wpNameChoiceManual'>" . wfMsg( "openidchoosemanual" ) . "</label> " .
-						"<input type='text' name='wpNameValue' id='wpNameValue' size='16' /><br />");
+						"<input type='text' name='wpNameValue' id='wpNameValue' size='16' /></div>\n");
 
 		$ok = wfMsg( 'login' );
 		$cancel = wfMsg( 'cancel' );
@@ -345,8 +381,7 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 			__METHOD__
 		);
 		if ( $id ) {
-			$name = User::whoIs( $id );
-			return User::newFromName( $name );
+			return User::newFromID( $id );
 		} else {
 			return NULL;
 		}
@@ -356,24 +391,13 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		global $wgAllowRealName;
 
 		# FIXME: only update if there's been a change
+		$user->setOption('nickname', array_key_exists( 'nickname', $sreg )
+			? $sreg['nickname'] : '');
 
-		if ( array_key_exists( 'nickname', $sreg ) ) {
-			$user->setOption( 'nickname', $sreg['nickname'] );
-		} else {
-			$user->setOption('nickname', '');
-		}
+		$user->setEmail( array_key_exists( 'email', $sreg ) ? $sreg['email'] : '' );
 
-		if ( array_key_exists( 'email', $sreg ) ) {
-			$user->setEmail( $sreg['email'] );
-		} else {
-			$user->setEmail( '' );
-		}
-
-		if ( array_key_exists( 'fullname', $sreg ) && $wgAllowRealName) {
-			$user->setRealName($sreg['fullname']);
-		} else {
-			$user->setRealName( '' );
-		}
+		$user->setRealName( (array_key_exists( 'fullname', $sreg ) && $wgAllowRealName)
+			? $sreg['fullname'] : '');
 
 		if ( array_key_exists( 'language', $sreg ) ) {
 			# FIXME: check and make sure the language exists
@@ -647,7 +671,6 @@ class SpecialOpenIDFinish extends SpecialOpenID {
 		}
 		
 		$this->setUserUrl( $user, $openid );
-		$this->updateUser( $user, $sreg );
 		
 		return $user;
 	}

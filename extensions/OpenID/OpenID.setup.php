@@ -145,7 +145,10 @@ $wgAutoloadClasses['SpecialOpenIDXRDS'] = $dir . 'SpecialOpenIDXRDS.body.php';
 $wgAutoloadClasses['Auth_OpenID_CheckIDRequest'] = OpenIDGetServerPath();
 
 $wgHooks['PersonalUrls'][] = 'OpenIDHooks::onPersonalUrls';
-$wgHooks['UserToggles'][] = 'OpenIDHooks::onUserToggles';
 $wgHooks['ArticleViewHeader'][] = 'OpenIDHooks::onArticleViewHeader';
 $wgHooks['SpecialPage_initList'][] = 'OpenIDHooks::onSpecialPage_initList';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OpenIDHooks::onLoadExtensionSchemaUpdates';
+$wgHooks['RenderPreferencesForm'][] = 'OpenIDHooks::onRenderPreferencesForm';
+$wgHooks['InitPreferencesForm'][] = 'OpenIDHooks::onInitPreferencesForm';
+$wgHooks['ResetPreferences'][] = 'OpenIDHooks::onResetPreferences';
+$wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';

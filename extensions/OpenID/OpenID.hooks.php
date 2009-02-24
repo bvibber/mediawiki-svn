@@ -45,7 +45,7 @@ class OpenIDHooks {
 					global $wgOpenIDShowUrlOnUserPage;
 
 					if ( $wgOpenIDShowUrlOnUserPage == 'always' ||
-						( $wgOpenIDShowUrlOnUserPage == 'user' && !$user->getOption( 'hideopenid' ) ) )
+						( $wgOpenIDShowUrlOnUserPage == 'user' && !$user->getOption( 'openid-hide' ) ) )
 					{
 						global $wgOpenIDLoginLogoUrl;
 
@@ -104,11 +104,59 @@ class OpenIDHooks {
 		return true;
 	}
 
-	public static function onUserToggles(&$extraToggles) {
-		global $wgOpenIDShowUrlOnUserPage;
+	# list of preferences used by extension
+	private static $oidPrefs = array( 'hide', 'update-userinfo-on-login' );
 
-		if ( $wgOpenIDShowUrlOnUserPage == 'user' ) {
-			$extraToggles[] = 'hideopenid';
+	public static function onInitPreferencesForm( $prefs, $request ) {
+		foreach (self::$oidPrefs as $oidPref)
+		{
+			$prefs->mToggles['openid-'.$oidPref]
+				= $request->getCheck( "wpOpOpenID-".$oidPref ) ? 1 : 0;
+		}
+
+		return true;
+	}
+
+	public static function onRenderPreferencesForm( $prefs, $out ) {
+		wfLoadExtensionMessages( 'OpenID' );
+
+		$out->addHTML( "\n<fieldset>\n<legend>" . wfMsgHtml( 'openid-prefs' ) . "</legend>\n" );
+
+		$out->addWikiText( wfMsg( 'openid-prefstext') );
+
+		foreach (self::$oidPrefs as $oidPref)
+		{
+			$out->addHTML( '<div class="toggle"><input type="checkbox" value="1" '.
+					'id="openid-'.$oidPref.'" name="wpOpOpenID-'.$oidPref.'"'.
+					($prefs->mToggles['openid-'.$oidPref] == 1 ? ' checked="checked"' : '').
+				'/> ' .
+				'<span class="toggletext">'.
+				'<label for="openid-'.$oidPref.'">'.wfMsg( 'openid-pref-'.$oidPref ).'</label>'.
+				"</span></div>\n" );
+		}
+
+		$out->addHTML( "</fieldset>\n\n" );
+
+		return true;
+	}
+
+	public static function onSavePreferences($prefs, $user, &$message, $old)
+	{
+		foreach (self::$oidPrefs as $oidPref)
+		{
+			$user->setOption('openid-'.$oidPref, $prefs->mToggles['openid-'.$oidPref]);
+			wfDebugLog('OpenID', 'Setting user preferences: ' . print_r($user, true) );
+		}
+
+		$user->saveSettings();
+
+		return true;
+	}
+
+	public static function onResetPreferences( $prefs, $user )
+	{
+		foreach ( self::$oidPrefs as $oidPref ) {
+			$prefs->mToggles['openid-'.$oidPref] = $user->getOption( 'openid-'.$oidPref );
 		}
 
 		return true;
