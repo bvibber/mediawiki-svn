@@ -451,8 +451,9 @@ public class DatabaseWikiWordStoreBuilder
 		} 
 	}
 
-	protected int resolveRedirects(RelationTable aliasTable, DatabaseTable table, String relNameField, String relIdField, AliasScope scope, int chunkFactor) throws PersistenceException {
+	protected int resolveRedirects(RelationTable aliasTable, DatabaseTable table, String relNameField, String relIdField, AliasScope scope, int chunkFactor, String forceIndex) throws PersistenceException {
 		if (relIdField==null && relNameField==null) throw new IllegalArgumentException("relNameFields and relIdField can't both be null");
+		if (forceIndex!=null && table.getKey(forceIndex)==null) throw new IllegalArgumentException("unknown key: "+forceIndex);
 		
 		DatabaseField nmField = relNameField ==null ? null : table.getField(relNameField);
 		DatabaseField idField = relIdField == null ? null : table.getField(relIdField);
@@ -465,7 +466,10 @@ public class DatabaseWikiWordStoreBuilder
 		
 		if (idTable!=null && nmTable!=null && !nmTable.equals(idTable)) throw new IllegalArgumentException(relNameField+" and "+relIdField+" in table "+table.getName()+" do not reference the same table: "+nmTable+" != "+idTable);
 	
-		String sql = "UPDATE "+table.getSQLName()+" as R JOIN "+aliasTable.getSQLName()+" as E "
+		
+		String sql = "UPDATE "+table.getSQLName()+" as R "
+					+ (forceIndex!=null ? " force index ("+forceIndex+") " : "")
+					+ " JOIN "+aliasTable.getSQLName()+" as E "
 					+ ((idField!=null) ? " ON R."+relIdField+" = E.source " : " ON R."+relNameField+" = E.source_name ")
 					+ " SET ";
 		
