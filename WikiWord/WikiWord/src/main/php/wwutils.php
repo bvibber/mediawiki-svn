@@ -55,7 +55,7 @@ class WWUtils {
 	return $this->query($sql);
     }
 
-    function queryLocalConcept($lang, $id) {
+    function queryLocalConceptInfo($lang, $id) {
 	global $wwTablePrefix;
 
 	$term = trim($term);
