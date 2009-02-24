@@ -373,8 +373,8 @@ function mvfAutoAllPageHeader() {
 	}
 	
 	//temp for testing: 
-	//if( $mvgJSDebug )		
-	//	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/add_media_wizard.js?{$unique_req_param}\"></script>" );
+	if( $mvgJSDebug )		
+		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/add_media_wizard.js?{$unique_req_param}\"></script>" );
 	
 	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 	$wgOut->addLink( array(

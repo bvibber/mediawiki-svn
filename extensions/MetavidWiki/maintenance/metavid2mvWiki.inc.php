@@ -183,9 +183,8 @@ function do_stream_file_check( $old_stream=false ) {
 		}
 		
 		//check archive.org paths: 
-		ao_file_Ogg_Video
 		
-		
+	
 		if ( count( $set ) == 0 ) {
 			// no files present (remove stream)
 			print 'no files present should remove: ' . $stream->name . "\n";

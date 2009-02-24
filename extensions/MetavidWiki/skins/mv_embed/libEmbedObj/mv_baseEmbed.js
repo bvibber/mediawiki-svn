@@ -223,7 +223,7 @@ var ctrlBuilder = {
 			}
 		},
 		'play_head':{
-			'w':0, //special case (takes up remaning space) 
+			'w':0, //special case (takes up remaining space) 
 			'o':function(){
 				return '<div class="seeker" id="mv_seeker_'+ctrlBuilder.id+'" style="width: ' + (ctrlBuilder.avaliable_width - 18) + 'px;">'+           
                     '		<div id="seeker_bar_'+ctrlBuilder.id+'" class="seeker_bar">'+
@@ -306,8 +306,7 @@ mediaSource.prototype =
         		this[ attr ] =  $j(element).attr( attr );
         	}
         }
-        
-        
+                
         if ( $j(element).attr('type'))
             this.mime_type = $j(element).attr('type');
         else if ($j(element).attr('content-type'))

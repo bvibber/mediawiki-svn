@@ -89,17 +89,17 @@ loadGM({
 	
 	"clip_linkback" : "Clip Source Page",
 	
-	"ogg-player-vlc-mozilla" : "VLC Plugin",
-	"ogg-player-videoElement" : "Native Ogg Video Support",
-	"ogg-player-vlc-activex" : "VLC ActiveX",
-	"ogg-player-oggPlay" : "Annodex OggPlay Plugin",
-	"ogg-player-oggPlugin" : "Generic Ogg Plugin",
-	"ogg-player-quicktime-mozilla" : "Quicktime Plugin",
-	"ogg-player-quicktime-activex" : "Quicktime ActiveX",
-	"ogg-player-cortado" : "Java Cortado",
-	"ogg-player-flowplayer" : "Flowplayer",
-	"ogg-player-selected" : " (selected)",
-	"generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
+	"mv_ogg-player-vlc-mozilla" : "VLC Plugin",
+	"mv_ogg-player-videoElement" : "Native Ogg Video Support",
+	"mv_ogg-player-vlc-activex" : "VLC ActiveX",
+	"mv_ogg-player-oggPlay" : "Annodex OggPlay Plugin",
+	"mv_ogg-player-oggPlugin" : "Generic Ogg Plugin",
+	"mv_ogg-player-quicktime-mozilla" : "Quicktime Plugin",
+	"mv_ogg-player-quicktime-activex" : "Quicktime ActiveX",
+	"mv_ogg-player-cortado" : "Java Cortado",
+	"mv_ogg-player-flowplayer" : "Flowplayer",
+	"mv_ogg-player-selected" : " (selected)",
+	"mv_generic_missing_plugin" : "You browser does not appear to support playback type: <b>$1</b><br> visit the <a href=\"http://metavid.org/wiki/Client_Playback\">Playback Methods</a> page to download a player<br>",
 			
 	"add_to_end_of_sequence" : "Add to End of Sequence",
 	
@@ -170,8 +170,7 @@ var mvBaseLoader = {
 			//two loading stages, first get jQuery
 			var _this = this;
 		 	mvJsLoader.doLoad({
-		 		'window.jQuery'		:'jquery/jquery-1.2.6.js',
-		 		'embedVideo'		:'libEmbedObj/mv_baseEmbed.js'
+		 		'window.jQuery'		:'jquery/jquery-1.2.6.js'	 		
 		 	},function(){  				 		
 		 		//once jQuery is loaded set up no conflict & load plugins:
 				_global['$j'] = jQuery.noConflict();
@@ -182,7 +181,8 @@ var mvBaseLoader = {
 				js_log('jquery loaded');
 				//load the jQuery dependent plugins:  		 		
 				mvJsLoader.doLoad({
-					'$j.ui.mouse'	 	:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
+					'embedVideo'	  : 'libEmbedObj/mv_baseEmbed.js',
+					'$j.ui.mouse'	  : 'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
 					'$j.ui.droppable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
 					'$j.ui.draggable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'
 					},function(){			
@@ -229,7 +229,7 @@ var mvJsLoader = {
 				}		
 	 		}
 	 		if( all_libs_loaded ){
-	 			js_log('all libs already loaded skiping...' + libs);
+	 			js_log('all libs already loaded skipping...' + libs);
 				callback();
 				return ;
 			}					 	
@@ -360,7 +360,7 @@ mediaPlayer.prototype =
     },
     getName : function()
     {
-        return gM('ogg-player-' + this.id);
+        return gM('mv_ogg-player-' + this.id);
     },
 	load : function(callback)
 	{
@@ -589,6 +589,7 @@ function setCookie(name, value, expiry, path, domain, secure) {
 		(secure ? "; secure" : "");
 }
 js_log("mv embed path:"+ mv_embed_path);
+
 /*
  * embedTypes object handles setting and getting of supported embed types:
  * closely mirrors OggHandler so that its easier to share efforts in this area:
@@ -959,7 +960,7 @@ function mv_do_remote_search(initObj){
 	mvJsLoader.loadBaseLibs(function(){
 		//load search specifc extra stuff 
 		mvJsLoader.doLoad({
-			'mvBaseRemoteSearch':'libAddMedia/remoteSearchDriver.js'
+			'remoteSearchDriver':'libAddMedia/remoteSearchDriver.js'
 		}, function(){
 			initObj['instance_name']= 'rsdMVRS';
 			rsdMVRS = new remoteSearchDriver( initObj );

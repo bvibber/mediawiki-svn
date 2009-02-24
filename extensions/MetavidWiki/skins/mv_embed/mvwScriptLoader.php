@@ -123,7 +123,7 @@ class jsScriptLoader{
 		//cache forever: 
 		//(the point is we never have to re validate since we should always change the request url based on the svn version)
 		$one_year = 60*60*24*365;
-		//header("Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_year  ) . " GM");  		
+		header("Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_year  ) . " GM");  		
 	}
 	/*
 	 * updates the proc Request  
