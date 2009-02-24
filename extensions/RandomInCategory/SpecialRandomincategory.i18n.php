@@ -761,6 +761,15 @@ $messages['tl'] = array(
 	'randomincategory-submit' => 'Gawin na',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'randomincategory' => 'Kategoriye göre rastgele sayfa',
+	'randomincategory-toolbox' => 'Rastgele sayfa',
+	'randomincategory-label' => 'Kategori:',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */

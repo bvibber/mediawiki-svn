@@ -773,6 +773,7 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'languageselector' => 'Dil',
+	'languageselector-setlang' => 'ayar',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

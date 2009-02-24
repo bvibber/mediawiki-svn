@@ -42,6 +42,13 @@ $messages['bs'] = array(
 	'preloader-desc' => 'Omogućuje unos po imenskom prostoru prilagodljivih šablona za nove stranice',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'preloader-desc' => 'Giver en forhåndsbestemt starttekst for nye sider for hvert navnerum',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

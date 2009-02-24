@@ -327,6 +327,13 @@ $messages['szl'] = array(
 	'woopra-desc' => 'Dozwalo wspůłpracować s MediaWiki uoprogramowańu śledzůncymu [http://www.woopra.com/ „Woopra”]',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'woopra-desc' => '[http://www.woopra.com/ వూప్రా లైవ్ ట్రాకింగ్ పరికరం] మీ మీడియావికీ స్థాపనకై పనిచేసేలా అనుమతిస్తుంది.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

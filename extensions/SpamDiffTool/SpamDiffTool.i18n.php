@@ -1168,6 +1168,15 @@ Pindutin <a href='$1'>dito</a> para makabalik.",
 	'spamdifftool_submit_buttom' => 'Ipasa',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'spamdifftool' => 'Spam karalistesini yönet',
+	'spamdifftool_block' => 'Engelle:',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

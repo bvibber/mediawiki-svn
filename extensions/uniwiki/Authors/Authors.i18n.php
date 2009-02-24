@@ -398,6 +398,13 @@ $messages['tl'] = array(
 	'authors_anonymous' => 'Hindi nagpapakilala (anonimo)',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'authors_anonymous' => 'Anonimler',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

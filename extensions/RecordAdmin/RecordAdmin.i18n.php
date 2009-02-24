@@ -1051,6 +1051,17 @@ $messages['tl'] = array(
 	'right-recordadmin' => 'Hanapin at baguhin ang mga pahina ng tala/rekord',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'recordadmin-category' => 'Kayıtlar',
+	'recordadmin-buttonsearch' => 'Ara',
+	'recordadmin-buttoncreate' => 'Oluştur',
+	'recordadmin-buttonreset' => 'Sıfırla',
+	'recordadmin-buttonsave' => 'Kaydet',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

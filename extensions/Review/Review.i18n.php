@@ -1715,6 +1715,14 @@ $messages['tl'] = array(
 	'review_comment' => 'Kumento (puna)',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'review_user_details_link' => '(detaylar)',
+	'review_topic' => 'Konu',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

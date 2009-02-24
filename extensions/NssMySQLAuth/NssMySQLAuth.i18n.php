@@ -652,6 +652,13 @@ $messages['tl'] = array(
 	'nss-db-error' => 'Kamalian sa pagbasa mula sa kalipunan ng datong pampagpapatunay',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'am-email' => 'e-posta',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

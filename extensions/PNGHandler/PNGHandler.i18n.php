@@ -295,6 +295,13 @@ $messages['sv'] = array(
 	'pnghandler-desc' => 'Ändra storleken på PNG-bilder med pngds',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'pnghandler-desc' => 'pngdsని ఉపయోగించి PNGల పరిమాణాన్ని మార్చండి',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

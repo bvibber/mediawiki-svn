@@ -167,6 +167,9 @@ $messages['bs'] = array(
 	'editmsg-new-search' => 'Nova pretraga',
 	'editmsg-warning-parse3' => '* Nije pronađen znak završetka linije: $1',
 	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod {{PLURAL:$2|slijedećeg|slijedećih}} jezika: $1',
+	'editmsg-apply-patch' => 'Primijeni patch',
+	'editmsg-no-patch' => 'Nemoguće izvršiti "patch" komandu',
+	'editmsg-patch-success' => 'Uspješno primijenjen patch.',
 );
 
 /** Catalan (Català)

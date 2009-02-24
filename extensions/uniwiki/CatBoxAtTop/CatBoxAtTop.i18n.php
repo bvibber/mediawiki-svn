@@ -373,6 +373,13 @@ $messages['tl'] = array(
 	'catboxattop-categories' => 'Mga kaurian',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'catboxattop-categories' => 'Kategoriler',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

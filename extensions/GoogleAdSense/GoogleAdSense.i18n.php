@@ -333,6 +333,13 @@ $messages['sv'] = array(
 	'googleadsense-desc' => 'Lägger till [http://www.google.com/adsense Google AdSense] till sidpanelen',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense గూగుల్ ఆడ్‌సెన్స్]ని ప్రక్కపట్టీకి చేరుస్తుంది',
+);
+
 /** Thai (ไทย)
  * @author Manop
  */

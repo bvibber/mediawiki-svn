@@ -1143,6 +1143,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Carla404
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
@@ -1158,6 +1159,7 @@ $messages['pt-br'] = array(
 	'imagemap_invalid_coord' => 'Erro: coordenada inválida na linha $1, é necessário que seja um número',
 	'imagemap_invalid_desc' => 'Erro: especificação desc inválida, é necessário que seja uma dentre: <tt>$1</tt>',
 	'imagemap_description' => 'Sobre esta imagem',
+	'imagemap_desc_types' => 'superior-direito, inferior-direito, inferior-esquerdo, superior-esquerdo, nenhum',
 	'imagemap_poly_odd' => 'Erro: encontrado polígono com número ímpar de coordenadas na linha $1',
 );
 

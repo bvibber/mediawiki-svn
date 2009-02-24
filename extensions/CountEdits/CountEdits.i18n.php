@@ -1234,7 +1234,7 @@ $messages['te'] = array(
 	'countedits-ok' => 'సరే',
 	'countedits-nosuchuser' => '$1 అనే పేరుతో వాడుకరి ఎవరూ లేరు.',
 	'countedits-resultheader' => '$1కి ఫలితాలు',
-	'countedits-resulttext' => '$1 $2 మార్పులు చేసారు',
+	'countedits-resulttext' => '$1 $2 {{PLURAL:$2|మార్పు|మార్పులు}} చేసారు',
 	'countedits-mostactive' => 'అత్యంత క్రియాశీల రచయితలు',
 	'countedits-nocontribs' => 'ఈ వికీలో ఇప్పటివరకు రచనలు ఏమీ లేవు.',
 );

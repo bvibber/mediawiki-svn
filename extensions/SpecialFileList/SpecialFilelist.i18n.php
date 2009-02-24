@@ -699,8 +699,9 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'filelist' => 'ఫైళ్ళ జాబితా',
-	'filelist-desc' => 'ఎగుమతైన ఫైళ్ళ జాబితాని చూపించడానికి ప్రత్యేక పేజీ',
+	'filelist-desc' => 'ఎగుమతైన ఫైళ్ళ జాబితాని చూపించడానికి [[Special:Filelist|ప్రత్యేక పేజీ]]',
 	'filelist-show-list' => 'జాబితాని చూపించు',
+	'filelist-show-gallery' => 'కొలువుని చూపించు',
 	'filelist-image-desc' => 'వివరణ',
 );
 

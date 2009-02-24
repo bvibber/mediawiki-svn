@@ -228,9 +228,10 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author Sherbrooke
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'layouts-desc' => "Peupler les pages nouvellement créées avec des « mises en page » modifiables afin d'encourager une structure commune à toutes les pages",
+	'layouts-desc' => 'Remplit les pages nouvellement créées à l’aide de « mises en page » modifiables afin d’encourager une structure commune à toutes les pages',
 	'layouts_title' => 'Créer une page',
 	'layouts_chooselayout' => 'Choisir une mise en page pour $1 :',
 	'layouts_nolayout' => 'Aucune mise en page',

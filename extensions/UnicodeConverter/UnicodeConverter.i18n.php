@@ -524,9 +524,11 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Karduelis
  */
 $messages['tr'] = array(
 	'unicodeconverter-ok' => 'Tamam',
+	'unicodeconverter-oldtext' => 'Orjinal metin:',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

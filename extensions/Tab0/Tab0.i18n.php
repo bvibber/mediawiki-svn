@@ -293,6 +293,13 @@ $messages['sv'] = array(
 	'tab0-desc' => 'Lägger till fliken "0", för att redigera det första avsnittet av en sida',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'tab0-desc' => 'పేజీ లోని మొదటి భాగాన్ని మార్చడానికి లింకుతో "0" ట్యాబుని చేరుస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

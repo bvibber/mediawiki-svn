@@ -220,6 +220,13 @@ $messages['sv'] = array(
 	'jskit-desc' => 'Integrerar js-kit-verktyg på en wikisida',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'jskit-desc' => 'js-kit పనిముట్లని ఒక వికీ పేజీలో సమీకృతం చేస్తుంది',
+);
+
 /** Tetum (Tetun)
  * @author MF-Warburg
  */

@@ -410,6 +410,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'minnamelength-error' => 'మీ వాడుకరిపేరు మరీ చిన్నగా ఉంది. కనిష్ఠ పొడవు $1.',
+	'minnamelength-desc' => 'కనిష్ఠ వాడుకరిపేరు పొడవుని నిర్ధేశించండి',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

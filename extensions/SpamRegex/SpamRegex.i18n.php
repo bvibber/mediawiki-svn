@@ -630,6 +630,7 @@ Caution avisate: le expressiones non debe esser troppo curte o troppo commun.',
 	'spamregex-currently-blocked' => "'''Phrases actualmente blocate:'''",
 	'spamregex-move' => 'Le motivo que tu entrava contineva un phrase blocate.',
 	'spamregex-no-currently-blocked' => "'''Il non ha phrases blocate.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 disblocar]) addite per $5 le $6 a $7",
 	'spamregex-page-title-1' => 'Blocar un phrase per medio de expressiones regular',
 	'spamregex-unblock-success' => 'Disblocada succedite',
 	'spamregex-unblock-message' => "Le phrase '''$1''' ha essite disblocate de figurar in modificationes.",
@@ -1295,6 +1296,13 @@ Imimungkahi ang pagiingat, hindi dapat na napakaiksi o napakapangkaraniwan ang m
 	'spamregex-text' => '(Teksto)',
 	'spamregex-summary-log' => '(Buod)',
 	'right-spamregex' => 'Hadlangan ang mga pariralang manlulusob sa pamamagitan ng [[Special:SpamRegex]]',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'spamregex-summary-log' => '(Özet)',
 );
 
 /** Vietnamese (Tiếng Việt)

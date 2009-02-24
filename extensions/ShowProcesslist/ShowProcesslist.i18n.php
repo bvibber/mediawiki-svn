@@ -805,6 +805,15 @@ $messages['tl'] = array(
 	'showprocesslist-info' => 'Kabatiran',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'showprocesslist-user' => 'Kullanıcı',
+	'showprocesslist-db' => 'Veritabanı',
+	'showprocesslist-info' => 'İçerik',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

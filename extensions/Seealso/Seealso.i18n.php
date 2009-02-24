@@ -251,6 +251,13 @@ $messages['km'] = array(
 	'seealso' => 'សូមមើលផងដែរ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'seealso' => '함께 보기',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

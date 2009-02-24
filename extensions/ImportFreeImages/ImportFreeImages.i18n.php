@@ -123,7 +123,10 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'importfreeimages' => 'Uvoz slobodnih slika',
+	'importfreeimages-desc' => 'Omogućuje način [[Special:ImportFreeImages|uvoza pravilno licenciranih slika]] sa [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Ova stranica omogućava pretragu pravilno licenciranih slika sa flickr i njihov uvoz u Vaš wiki.',
+	'importfreeimages_noapikey' => 'Niste podesili Vaš Flickr API ključ.
+Da bi ste to učinili, molimo uzmite API ključ [http://www.flickr.com/services/api/misc.api_keys.html odavde] i postavite wgFlickrAPIKey u datoteci ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Nije pronađena nijedna slika po Vašem upitu pretrage '$1', pokušajte ponovno.",
 	'importfreeimages_invalidurl' => 'URL "$1" nije valjana Flickr slika.',
 	'importfreeimages_owner' => 'Autor',

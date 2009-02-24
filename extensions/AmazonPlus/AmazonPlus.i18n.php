@@ -484,6 +484,27 @@ $messages['hu'] = array(
 	'amazonplus-cp-none' => 'Semmi',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'amazonplus-desc' => 'Un extension multo personalisabile pro presentar informationes de Amazon',
+	'amazonplus-nores' => 'Error: Nulle resultato trovate!',
+	'amazonplus-noidres' => 'Error: Non poteva trovar un ID de producto!',
+	'amazonplus-fgcerr' => 'Error: Non poteva reciper datos de Amazon!',
+	'amazonplus-slserr' => 'Error: Syntaxe incorrecte in le datos de Amazon!',
+	'amazonplus-used' => 'usate',
+	'amazonplus-german' => 'Germano',
+	'amazonplus-french' => 'Francese',
+	'amazonplus-japanese' => 'Japonese',
+	'amazonplus-amazon' => 'precio de Amazon',
+	'amazonplus-new' => 'nove',
+	'amazonplus-none' => 'Nulle copia de iste articulo es in vendita.',
+	'amazonplus-cp-none' => 'Necun',
+	'amazonplus-more' => 'plus',
+	'amazonplus-less' => 'minus',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty

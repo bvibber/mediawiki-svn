@@ -466,6 +466,13 @@ $messages['tl'] = array(
 	'categoryonupload-label' => 'Kaurian:',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'categoryonupload-label' => 'Kategori:',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

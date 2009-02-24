@@ -32,6 +32,24 @@ $messages['qqq'] = array(
 	'scanset_prev' => '{{Identical|Prev}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'scanset-desc' => 'Skaniruidud Groszan Andreasan kollekcijaspäi (CD/DVD) ottud kuvalehtpoliden läbikacmine.',
+	'scanset_no_name' => 'Viga: pidab kirjutada kuviden kollekcijan nimi, ozutesikš, &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Viga: kuviden kollekcijan nimi om vär, vai mugošt kollekcijad ei ole.',
+	'scanset_unrecognised_index_format' => 'Viga: tundmatoi indeksan format',
+	'scanset_opendir_error' => 'Viga: ei voi avaita $1-failhodrad',
+	'scanset_no_files' => 'Viga: neciš failhodras ei ole failoid.',
+	'scanset_no_volumes' => 'Viga: ei voi löuta lehtikoiden failhodroid',
+	'scanset_missing_index_file' => 'Viga: indeksan $1-fail ei ole löutud',
+	'scanset_index_file_error' => 'Viga: Indeksan failas $1-rives om viga',
+	'scanset_invalid_volume' => 'Viga: Vär lehtik',
+	'scanset_next' => "Jäl'ghine &gt;",
+	'scanset_prev' => '&lt; Edeline',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

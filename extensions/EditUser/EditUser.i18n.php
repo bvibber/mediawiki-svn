@@ -1057,6 +1057,14 @@ $messages['tl'] = array(
 	'right-edituser-exempt' => 'Hindi mababago ng iba ang mga kagustuhan ng tagagamit na ito',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'edituser-username' => 'Adı',
+	'edituser-dosearch' => 'Ara',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

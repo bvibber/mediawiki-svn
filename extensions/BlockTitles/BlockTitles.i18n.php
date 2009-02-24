@@ -664,6 +664,13 @@ $messages['tl'] = array(
 	'block_title_error' => 'Paumanhin, ang pamagat ng pahinang ito ay hindi pinapahintulutang masagip.',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'block_title_error_page_title' => 'Engelenmiş başlık',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

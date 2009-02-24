@@ -3523,9 +3523,21 @@ $1',
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Karduelis
  */
 $messages['tr'] = array(
+	'sign-realname' => 'Adı:',
+	'sign-city' => 'Şehir:',
+	'sign-zip' => 'Posta kodu:',
+	'sign-country' => 'Ülke:',
+	'sign-phone' => 'Telefon numarası:',
+	'sign-bday' => 'Yaş:',
+	'sign-email' => 'E-posta adresi:',
+	'sign-viewfield-address' => 'Adres',
+	'sign-viewfield-city' => 'Şehir',
+	'sign-viewfield-country' => 'Ülke',
 	'sign-viewfield-agent' => 'Kullanıcı temsilcisi',
+	'sign-viewfield-email' => 'E-posta',
 	'sign-submitreview' => 'Gözden geçirmeyi gönder',
 );
 

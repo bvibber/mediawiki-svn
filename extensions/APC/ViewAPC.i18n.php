@@ -573,6 +573,7 @@ Izgleda da APC ne radi.',
 	'viewapc-cache-efficiency' => 'Pogodci i promašaji',
 	'viewapc-memory-free' => 'Slobodno: $1 ($2)',
 	'viewapc-memory-used' => 'Iskorišteno: $1 ($2)',
+	'viewapc-fragmentation-none' => 'Fragmentacija: bez fragmentacije',
 	'viewapc-display-value' => 'Vrijednost',
 	'viewapc-display-filename' => 'Naziv datoteke',
 	'viewapc-display-device' => 'Uređaj',
@@ -590,6 +591,8 @@ Izgleda da APC ne radi.',
 	'viewapc-ls-submit' => 'Idi!',
 	'viewapc-ls-header-name' => 'Ime',
 	'viewapc-ls-header-size' => 'Veličina',
+	'viewapc-ls-header-accessed' => 'Zadnje pristupljeno',
+	'viewapc-ls-header-modified' => 'Zadnje izmijenjeno',
 	'viewapc-ls-header-created' => 'Napravljeno',
 	'viewapc-ls-header-deleted' => 'Obrisano',
 	'viewapc-ls-delete' => '[Obriši odmah]',
@@ -4424,6 +4427,17 @@ Tila hindi gumagana ang APC.',
 Makakakuha ng mas bagong bersyong $2 mula sa http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''Nalinis na ang taguan ng talaksan.'''''",
 	'viewapc-usercache-cleared' => "'''''Nalinis na ang taguan ng sopwer/aplikasyon.'''''",
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'viewapc-display-deletion_time' => 'Silindi',
+	'viewapc-display-no-delete' => 'Silinmedi',
+	'viewapc-ls-header-deleted' => 'Silindi',
+	'viewapc-ls-scope-deleted' => 'Silindi',
+	'viewapc-ls-sort-deleted' => 'Silindi',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

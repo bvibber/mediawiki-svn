@@ -1473,6 +1473,8 @@ Hindi na ito magagawa sa ikalawang pagkakataon.',
  */
 $messages['tr'] = array(
 	'createsigndoc-pagename' => 'Sayfa:',
+	'createsigndoc-phone' => 'Telefon numarası:',
+	'createsigndoc-bday' => 'Doğum günü:',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

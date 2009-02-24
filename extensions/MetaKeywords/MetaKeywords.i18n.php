@@ -107,6 +107,7 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -115,7 +116,7 @@ $messages['fr'] = array(
  # Les identificateurs d’espaces de noms (all) et (main) indiquent respectivement la valeur par défaut pour tous les espaces de noms et pour l’espace principal numéro 0.',
 	'metadescription' => ' # Ajoutez des lignes à cette page sous la forme "espaceDeNoms|Libellé de description à définir"
  # Les identificateurs d’espaces de noms (all) et (main) indiquent respectivement la valeur par défaut pour tous les espaces de noms et pour l’espace principal numéro 0.
- # Toutes les occurences de $1 seront remplacées par le titre de la page actuelle.',
+ # Toutes les occurrences de $1 seront remplacées par le titre de la page actuelle.',
 );
 
 /** Galician (Galego)

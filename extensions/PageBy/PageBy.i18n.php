@@ -91,6 +91,17 @@ $messages['bs'] = array(
 	'pageby-anon' => '<i>anonimni</i>',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'pageby-desc' => 'Viser bidragsydere på en wikiside med koden <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Siden er oprettet af $1 $2',
+	'pageby-last' => 'Sidst <a href="$3">ændret</a> af $1 $2',
+	'pageby-contributors' => 'Bidragsydere:',
+	'pageby-anon' => '<i>anonym</i>',
+);
+
 /** German (Deutsch)
  * @author Daniel Kinzler
  * @author Raimond Spekking
@@ -524,6 +535,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'pageby-desc' => '<code><nowiki><pageby></nowiki></code> అన్న టాగుని వాడటం ద్వారా ఒక వికీ పేజీలో ఆ పేజీకి తోడ్పడినవారి పేర్లని చూపిస్తుంది',
 	'pageby-first' => 'పేజీని సృష్టించినది $1, $2',
 	'pageby-last' => 'చివరగా <a href="$3">మార్చినది</a> $1, $2',
 	'pageby-contributors' => 'రచయితలు:',

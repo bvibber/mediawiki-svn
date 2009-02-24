@@ -441,6 +441,13 @@ $messages['tl'] = array(
 	'nstab-comments' => 'Kumentaryo',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'nstab-comments' => 'Yorum',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

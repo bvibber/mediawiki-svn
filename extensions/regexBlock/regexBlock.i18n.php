@@ -2185,10 +2185,12 @@ Marahal ay walang ganyang tagagamit.',
 );
 
 /** Turkish (Türkçe)
+ * @author Karduelis
  * @author Suelnur
  */
 $messages['tr'] = array(
 	'regexblock-form-reason' => 'Neden:',
+	'regexblock-view-all' => 'Hepsi',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

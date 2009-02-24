@@ -974,6 +974,14 @@ $messages['tl'] = array(
 	'right-refreshspecial' => 'Sariwain ang natatanging mga pahina',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'refreshspecial' => 'Yenilen özel sayfalar',
+	'refreshspecial-title' => 'Yenilen özel sayfalar',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

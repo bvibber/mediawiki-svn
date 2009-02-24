@@ -508,6 +508,15 @@ $messages['tl'] = array(
 	'searchbox-namespaces' => 'Mga espasyo ng pangalan:',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'searchbox-search' => 'Ara',
+	'searchbox-go' => 'Git',
+	'searchbox-namespaces' => 'Alan adları:',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */

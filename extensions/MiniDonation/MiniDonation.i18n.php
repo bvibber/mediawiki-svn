@@ -407,6 +407,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'donationform-desc' => 'పేపాల్ ద్వారా విరాళాలని అందుకునే వీలుకై <tt>&lt;donateform&gt;</tt> అన్న ట్యాగుని చేరుస్తుంది',
 	'donationform-submit' => 'పేపాల్ ద్వారా విరాళమివ్వండి',
 );
 

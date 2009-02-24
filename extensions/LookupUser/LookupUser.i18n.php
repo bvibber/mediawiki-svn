@@ -675,6 +675,17 @@ $messages['lfn'] = array(
 	'lookupuser-email' => 'Eposta: [[Special:EmailUser/$2|$1]]',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Tomasdd
+ */
+$messages['lt'] = array(
+	'lookupuser-nonexistent' => 'Klaida: Naudotojo tokiu vardu nėra',
+	'lookupuser-id' => 'Naudotojo ID: <tt>#$1</tt>',
+	'lookupuser-realname' => 'Tikras vardas: $1',
+	'lookupuser-registration' => 'Užsiregistravimo data: $1',
+	'lookupuser-no-registration' => 'įrašų nėra',
+);
+
 /** Malayalam (മലയാളം)
  * @author Anoopan
  * @author Shijualex
@@ -1094,11 +1105,17 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Mach
  */
 $messages['tr'] = array(
 	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'sağlanmamış',
 	'lookupuser-realname' => 'Gerçek isim: $1',
+	'lookupuser-registration' => 'Kayıt tarihi: $1',
+	'lookupuser-no-registration' => 'kayıtlı değil',
+	'lookupuser-info-authenticated' => 'E-posta doğrulama: $1',
+	'lookupuser-useroptions' => 'Kullanıcı seçenekleri:',
 );
 
 /** Ukrainian (Українська)

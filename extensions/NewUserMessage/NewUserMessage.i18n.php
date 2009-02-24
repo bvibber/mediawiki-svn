@@ -485,6 +485,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'newusermessage-desc' => 'కొత్తగా చేరిన వాడుకరుల చర్చా పేజీలకు ఓ సందేశాన్ని చేర్చండి',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|స్వాగత సందేశా]]న్ని కొత్త వాడుకరి చర్చా పేజీలో చేరుస్తుంది',
 );
 
 /** Tagalog (Tagalog)

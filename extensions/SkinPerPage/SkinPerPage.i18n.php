@@ -409,6 +409,13 @@ $messages['sv'] = array(
 	'skinperpage-desc' => 'Lägger till <tt>&lt;skin&gt;</tt>-taggen för att använda olika utseenden per sida',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'skinperpage-desc' => 'పేజీకొక అలంకారాన్ని వాడటానికై వీలుగా  <tt>&lt;skin&gt;</tt> అన్న ట్యాగుని చేరుస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

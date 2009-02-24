@@ -298,6 +298,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Louperivois
+ * @author PieRRoMaN
  * @author Urhixidur
  * @author Verdy p
  */
@@ -307,7 +308,7 @@ $messages['fr'] = array(
 	'ajax-se-pending' => 'Actualisation en attente... (cliquez sur ce message ou modifiez la page)',
 	'ajax-se-idling' => '(il y a $1 s)',
 	'ajax-se-pagedoesnotexist' => 'la page n’existe pas',
-	'ajax-se-userinvalid' => 'Erreur : utilisateur incorrect',
+	'ajax-se-userinvalid' => 'Erreur : utilisateur non valide',
 	'ajax-se-usernotfound' => 'Erreur : utilisateur introuvable',
 );
 

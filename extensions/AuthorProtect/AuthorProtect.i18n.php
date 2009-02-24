@@ -1102,6 +1102,16 @@ $messages['tl'] = array(
 	'restriction-level-author' => 'Nakasanggalang para sa may-akda',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'authorprotect-confirm' => 'Koruma seviyesini değiştir',
+	'authorprotect-reason' => 'Neden',
+	'authorprotect-success' => 'Koruma başarılı!',
+	'authorprotect-failure' => 'Koruma başarısız',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

@@ -2747,6 +2747,24 @@ Liberar tais dados poderá resultar na perda em definitivo dos privilégios de o
 	'oversight-offender' => 'Ofensor:',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Carla404
+ */
+$messages['pt-br'] = array(
+	'group-oversight' => 'Supervisores',
+	'hiderevision-text' => "Isto deverá ser utilizado '''apenas''' nos seguintes casos:
+*informações pessoais inadequadas
+*: ''endereços residenciais e números de telefone, número do seguro social, etc''
+
+'''Abusar deste recurso resultará na perda de privilégios de acesso.'''
+
+Os itens removidos não mais estarão visíveis para o público neste website, mas as remoções são registradas e poderão ser restauradas manualmente por um administrador do banco de dados, caso você cometa um erro.",
+	'hiderevision-success' => 'Arquivado e apagado com sucesso.',
+	'oversight-nodiff' => 'Não foi possível localizar as alterações, já que não há edições anteriores para esta página. Provavelmente:
+*A página foi eliminada
+*Esta edição oculta foi a primeira edição da página',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */

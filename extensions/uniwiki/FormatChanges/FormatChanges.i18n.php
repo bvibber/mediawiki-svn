@@ -400,9 +400,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'formatchanges-desc' => '[[Special:RecentChanges|ఇటీవలి మార్పుల]] ప్రదర్శనని పునర్వవస్థీకరిస్తుంది',
 	'formatchanges-anonymous' => 'అజ్ఞాత',
-	'formatchanges-createdby' => 'సృష్టించినది',
-	'formatchanges-editedby' => 'మార్చినది',
+	'formatchanges-createdby' => ' $1 - $2 సృష్టించారు ($3)',
+	'formatchanges-editedby' => '$1 - $2 మార్చారు ($3)',
 );
 
 /** Tagalog (Tagalog)
@@ -413,6 +414,13 @@ $messages['tl'] = array(
 	'formatchanges-anonymous' => 'Hindi kilala (anonimo)',
 	'formatchanges-createdby' => '$1 - nilikha ni $2 ($3)',
 	'formatchanges-editedby' => '$1 - binago ni $2 ($3)',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'formatchanges-anonymous' => 'Anonim',
 );
 
 /** Ukrainian (Українська)

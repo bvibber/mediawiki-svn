@@ -218,6 +218,14 @@ $messages['hsb'] = array(
 	'abcdownload' => 'Sćahnyć',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'abcdesc' => 'Adde le etiquetta <tt>&lt;abc&gt;</tt> pro formatar musica in notation ABC',
+	'abcdownload' => 'Discargar:',
+);
+
 /** Italian (Italiano)
  * @author Melos
  */

@@ -1011,6 +1011,12 @@ $messages['tl'] = array(
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'chemicalsources' => 'Kimyasal kaynaklar',
+	'chemFunctions_ListPage' => 'Kimyasal kaynaklar',
+	'chemFunctions_CAS' => 'CAS numarası',
+	'chemFunctions_ATCCode' => 'ATC kodu',
+	'chemFunctions_ECNumber' => 'EC numarası',
+	'chemFunctions_Formula' => 'Formül',
 	'chemFunctions_Name' => 'IUPAC adı',
 );
 

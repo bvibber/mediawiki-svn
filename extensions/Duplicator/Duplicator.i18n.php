@@ -191,6 +191,10 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'duplicator-options' => 'Opcije',
 	'duplicator-source' => 'Izvor:',
+	'duplicator-dest' => 'Odredište:',
+	'duplicator-summary' => 'Kopirano sa [[$1]]',
+	'duplicator-success-talknotcopied' => 'Stranica za razgovor se nije mogla kopirati.',
+	'duplicator-source-invalid' => 'Molimo navedite valjan izvorni naslov.',
 );
 
 /** Catalan (Català)

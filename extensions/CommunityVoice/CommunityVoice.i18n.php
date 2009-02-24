@@ -240,6 +240,8 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'communityvoice-ratings' => 'Bewertungen',
+	'communityvoice-ratings-scale-status-sending' => 'Schécken...',
 	'communityvoice-ratings-scale-status-thanks' => "Merci fir d'Ofstëmmen!",
 );
 
@@ -319,6 +321,21 @@ $messages['pt-br'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voto|votos}} lançados)',
 	'communityvoice-ratings-error-no-category' => 'Atributo categoria em falta na etiqueta de classificação.',
 	'communityvoice-ratings-error-no-title' => 'Atributo título em falta na etiqueta de classificação.',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'communityvoice' => 'Голос сообщества',
+	'communityvoice-desc' => 'Инструмент работы сообщества',
+	'communityvoice-ratings' => 'Рейтинги',
+	'communityvoice-ratings-scale-status-sending' => 'Отправка…',
+	'communityvoice-ratings-scale-status-error' => 'Ошибка при отправке!',
+	'communityvoice-ratings-scale-status-thanks' => 'Спасибо за голосование!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|подан $2 голос|подано $2 голоса|подано $2 голосов}})',
+	'communityvoice-ratings-error-no-category' => 'В теге рейтинга отсутствует атрибут категории.',
+	'communityvoice-ratings-error-no-title' => 'В теге рейтинга отсутствует атрибут названия.',
 );
 
 /** Slovak (Slovenčina)

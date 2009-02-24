@@ -1245,6 +1245,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'contributors' => 'రచయితలు',
+	'contributors-desc' => 'ఒక పేజీకి ముఖ్య తోడ్పాటుదార్లు ఎవరో సంగ్రహం చేస్తుంది',
 	'contributors-toolbox' => 'ముఖ్య రచయితలు',
 	'contributors-legend' => 'పేజీకి ముఖ్య రచయితలను చూపించు',
 	'contributors-target' => 'శీర్షిక:',

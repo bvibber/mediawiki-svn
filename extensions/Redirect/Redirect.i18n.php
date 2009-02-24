@@ -212,6 +212,13 @@ $messages['sv'] = array(
 	'redirect-desc' => 'Tillåter enkel konfigurering av omdirigeringar genom [[MediaWiki:Redirect-addnewaccount|kontoskapande]] och [[MediaWiki:Redirect-userlogoutcomplete|utloggning]]',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'redirect-desc' => '[[MediaWiki:Redirect-addnewaccount|ఖాతా సృష్టింపు]] మరియు [[MediaWiki:Redirect-userlogoutcomplete|నిష్క్రమణ]]ల దారిమార్పులని సులువుగా మార్చగలిగే వీలుకల్పిస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

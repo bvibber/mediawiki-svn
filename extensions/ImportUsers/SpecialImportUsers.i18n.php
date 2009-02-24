@@ -684,6 +684,7 @@ $messages['ia'] = array(
 	'importusers-password' => 'contrasigno',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'nomine real',
+	'right-import_users' => 'Importar usatores in massa',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1455,6 +1456,21 @@ $messages['tl'] = array(
 	'importusers-realname' => 'totoong pangalan',
 	'right-import_users' => 'Umangkat ng bunton ng mga tagagamit',
 	'action-import_users' => 'umangkat ng bunton ng tagagamit',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'importusers-uploadfile' => 'Dosya yükle',
+	'importusers-log-summary' => 'Özet',
+	'importusers-log-summary-all' => 'Hepsi',
+	'importusers-log-summary-added' => 'Eklendi',
+	'importusers-log-summary-updated' => 'Güncellendi',
+	'importusers-login-name' => 'Giriş adı',
+	'importusers-password' => 'Parola',
+	'importusers-email' => 'E-posta',
+	'importusers-realname' => 'gerçek isminiz',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

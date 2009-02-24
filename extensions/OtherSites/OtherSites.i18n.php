@@ -344,6 +344,13 @@ $messages['tl'] = array(
 	'othersites-desc' => "Naglilipat ng mga kawing na pang-ugnayang-wiki bukod pa sa ibang mga kawing na pangwikang nasa kani-kanilang pangsariling daanang-daungan (''portlet'')",
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'othersites' => 'Diğer siteler',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

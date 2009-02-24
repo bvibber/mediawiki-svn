@@ -976,8 +976,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'gep-desc' => 'దిద్దుబాటు పేజీ మరింత స్నేహశీలంగా ఉండేలా తోడ్పడుతుంది',
 	'gep-emailsubject' => '[$1] వర్గ సూచన: $2',
 	'gep-emailbody' => '"$3" సైటు కొరకు "$1" అనే వాడుకరి "$2" వర్గాన్ని సూచించారు.',
+	'gep-emailfailure' => 'క్షమించండి, మీ సలహాని పంపించలేకపోయాం.',
 	'gep-emailsuccess' => '$1 అనే వర్గాన్ని సూచించినందుకు కృతజ్ఞతలు.',
 	'gep-categories' => 'వర్గాలు',
 	'gep-addcategory' => 'ఒక వర్గాన్ని చేర్చండి',
@@ -985,10 +987,11 @@ $messages['te'] = array(
 	'gep-suggestcategory' => 'ఒక వర్గాన్ని సూచించండి',
 	'gep-suggestcategorybutton' => 'దాఖలుచెయ్యి',
 	'gep-sections' => 'విభాగాలు',
+	'gep-sectionnotdisabled' => 'ఈ విభాగాన్ని తీసివేయలేరు',
 	'gep-addsection' => 'ఒక విభాగాన్ని చేర్చండి',
 	'gep-addsectionbutton' => 'చేర్చు',
 	'gep-nosectioninstructions' => 'ఈ పేజీలో విభాగాలేమీ లేవు.
-కుడివైపునున్న పనిముట్లని ఉపయోగించి కొన్ని చేర్చండి.',
+మెనూ పట్టీలోని పనిముట్లని ఉపయోగించి కొన్ని చేర్చండి.',
 	'gep-nocategories' => 'భద్రపరిచేముంది కనీసం ఒక్క వర్గాన్నైనా ఎంచుకోండి',
 );
 
@@ -1032,9 +1035,11 @@ Magdagdag ng ilan sa pamamagitan ng mga pilian ng mga kagamitang nasa kanan.',
  */
 $messages['tr'] = array(
 	'gep-categories' => 'Kategoriler',
+	'gep-addcategory' => 'kategori ekle',
 	'gep-addcategorybutton' => 'Ekle',
 	'gep-addsectionbutton' => 'Ekle',
 	'gep-classicmode' => 'Klasik kip',
+	'gep-genericmode' => 'Genel kip',
 );
 
 /** Ukrainian (Українська)

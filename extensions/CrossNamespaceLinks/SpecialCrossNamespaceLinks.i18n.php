@@ -304,8 +304,8 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'crossnamespacelinks' => 'Ligazóns a través de espazos de nomes',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lista ás ligazóns aos espazos de nomes]] que non deberían existir en {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'Esta páxina fornece unha lista con ligazóns desde unha páxina no espazo de nomes principal cara a unha páxina noutro espazo de nomes (excepto os espazos de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}} namespaces), que se recomenda non empregar.',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lista as ligazóns aos espazos de nomes]] que non deberían existir en {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Esta páxina fornece unha lista con ligazóns desde unha páxina no espazo de nomes principal cara a unha páxina noutro espazo de nomes (agás os espazos de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), que se recomenda non empregar.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ligazón|ligazóns}} cara a $3',
 );
 

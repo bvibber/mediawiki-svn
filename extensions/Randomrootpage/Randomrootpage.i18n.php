@@ -283,6 +283,13 @@ $messages['tl'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Natatanging pahina]]ng kumukuha sa isang pinag-ugatang pahina ayon sa ibinibigay ng pagkakataon',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'randomrootpage' => 'Rastgele kök sayfası',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

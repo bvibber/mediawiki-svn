@@ -269,6 +269,13 @@ $messages['sv'] = array(
 	'newsextension-desc' => 'Visar skräddarsydda senaste ändringar på en wikisida, eller en RSS- eller Atom-matning',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'newsextension-desc' => 'సరికూర్చిన ఇటీవలి మార్పులని ఒక వికీ పేజీలో కానీ లేదా RSS లేదా ఆటమ్ ఫీడుగానీ చూపిస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

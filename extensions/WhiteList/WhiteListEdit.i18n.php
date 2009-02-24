@@ -904,6 +904,7 @@ $2',
 /** French (Français)
  * @author Grondin
  * @author McDutchie
+ * @author PieRRoMaN
  * @author Zetud
  */
 $messages['fr'] = array(
@@ -952,7 +953,7 @@ $2',
 	'whitelistnonrestricted' => "L'utilisateur '''$1''' n’est pas avec des droits restreints.
 Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.",
 	'whitelistnever' => 'jamais',
-	'whitelistnummatches' => ' - {{PLURAL:$1|une occurence|$1 occurences}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|une occurrence|$1 occurrences}}',
 	'right-editwhitelist' => 'Modifier la liste blanche pour les utilisateurs existants',
 	'right-restricttowhitelist' => 'Modifier et visionner les pages figurant uniquement sur la liste blanche',
 	'action-editwhitelist' => 'modifier la liste blanche pour les utilisateurs existants',

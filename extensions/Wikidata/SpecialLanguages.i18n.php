@@ -2773,6 +2773,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
  * @author Meithal
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $wdMessages['fr'] = array(
 	'languages' => 'Wikidata: Gestion des langues',
@@ -2980,7 +2981,7 @@ Peut-être êtes-vous venu{{GENDER:||e|(e)}} sur cette page directement ? Vous n
 	'ow_needs_xlation_dest_lang' => 'Langue de destination :',
 	'ow_needs_xlation_no_dest_lang' => 'Vous devez spécifiez une langue de destination.',
 	'ow_show' => 'Afficher',
-	'ow_upload' => 'Télécharger',
+	'ow_upload' => 'Téléverser',
 	'ow_create' => 'Créer',
 	'ow_collection_added' => '<strong>Collection $1 ajoutée.</strong>',
 	'ow_suggest_previous' => 'Précédent',
@@ -8585,8 +8586,10 @@ $wdMessages['tr'] = array(
 	'importlangnames_not_found' => '<strong>"$1" için dil kaydı bulunamadı!</strong>',
 	'datasearch_language' => 'Dil:',
 	'datasearch_found_word' => 'Bulunan sözcük',
+	'ow_exporttsv_languages' => 'Diller:',
 	'ow_save' => 'Kaydet',
 	'ow_history' => 'Geçmiş',
+	'ow_transaction_summary' => 'Özet',
 	'ow_dm_OK' => 'Tamam',
 	'ow_ClassAttributeLevel' => 'Seviye',
 	'ow_Collection' => 'Koleksiyon',

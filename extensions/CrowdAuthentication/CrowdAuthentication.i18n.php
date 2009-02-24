@@ -264,6 +264,13 @@ $messages['sv'] = array(
 	'crowdauthentication-desc' => 'Verifieringsprogramtillägg för Atlassian Crowd',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'crowdauthentication-desc' => 'అట్లాసియన్ క్రౌడ్ కొరకై అధీకరణ ప్లగిన్',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

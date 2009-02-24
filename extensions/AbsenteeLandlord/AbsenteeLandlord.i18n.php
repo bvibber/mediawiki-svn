@@ -311,6 +311,14 @@ $messages['km'] = array(
 	'absenteelandlord-desc' => 'ចាក់សោមូលដ្ឋានទិន្នន័យដោយស្វ័យប្រវត្តិ ប្រសិនបើអ្នកថែទាំប្រព័ន្ឋទាំងអស់គ្នាគ្មានសកម្មភាពក្នុងរយៈពេលមួយ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'absenteelandlord-reason' => '관리자의 부재로 인해 데이터베이스가 자동으로 잠겼습니다.',
+	'absenteelandlord-desc' => '모든 관리자가 일정한 기간동안 활동하지 않으면 자동으로 위키 데이터베이스를 잠금',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

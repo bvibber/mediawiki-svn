@@ -777,10 +777,11 @@ Ehkä sinun piti käyttää komentoa ”$2”?',
  * @author Grondin
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'math_noblahtex' => 'Ne peut exécuter blahtex, qui devrait être à $1',
-	'math-desc' => 'Sortie MathML pour les balises &lt;math&gt;',
+	'math-desc' => 'Rendu MathML du contenu des balises &lt;math&gt;',
 	'math_AmbiguousInfix' => "La position de « $1 » est ambiguë (ajouter des balises additionnelles « { ... } » peut lever l'ambiguïté)",
 	'math_CannotChangeDirectory' => 'Ne peut changer de dossier de travail',
 	'math_CannotCreateTexFile' => 'Ne peut créer un fichier tex',

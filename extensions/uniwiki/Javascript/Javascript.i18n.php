@@ -102,9 +102,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'javascript-desc' => 'Ajouter uniwiki.js à chaque page contenant du code JavaScript partagé entre les extensions Uniwiki',
+	'javascript-desc' => 'Ajoute uniwiki.js à chaque page contenant du code JavaScript partagé entre les extensions Uniwiki',
 );
 
 /** Galician (Galego)

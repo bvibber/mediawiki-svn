@@ -559,6 +559,13 @@ Hindi mo malilikha ang pahinang ito, subalit maaari mong [{{fullurl:{{FULLPAGENA
 <createbox>break=no</createbox>",
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'createbox-create' => 'Oluştur',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

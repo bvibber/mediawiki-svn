@@ -1206,6 +1206,14 @@ Pakipunuan {{PLURAL:$2|ito|sila}} ng laman.',
 	'formsaveerrortext' => "Nagkaroon ng isang hindi nalalamang kamalian habang sinasagip ang pahinang '$1'.",
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'formsave' => 'Kaydet',
+	'formbadpagename' => 'Kötü madde adı',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

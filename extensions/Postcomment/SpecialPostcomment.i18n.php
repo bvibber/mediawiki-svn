@@ -94,14 +94,18 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'postcomment_desc' => 'Omogućuje korisnicima da postave komentare direktno na stranice za razgovor.',
+	'postcomment_discussionprotected' => 'Ova stranica za razgovor je zaštićena od daljnjih komentara.',
 	'postcomment_notloggedin' => 'Niste prijavljeni.',
 	'postcomment_youareloggedinas' => 'Prijavljeni ste kao $1',
 	'postcomment_addcommentdiscussionpage' => 'Dodajte Vaš komentar na stranicu za razgovor',
 	'postcomment_leavemessagefor' => 'Ostavi poruku za $1',
+	'postcomment_post' => 'Pošalji',
 	'postcomment_on' => 'Dana',
 	'postcomment_said' => 'je napisao',
 	'postcomment_invalidrequest' => 'Nevaljan upit.',
 	'postcomment_replyto' => 'Odgovor za $1',
+	'postcomment_nopostingtoadd' => 'Nema ništa za dodati.',
 );
 
 /** Czech (Česky)
@@ -814,10 +818,12 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'postcomment_post' => 'Posta',
+	'postcomment_invalidrequest' => 'Geçersiz istek.',
 );
 
 /** Ukrainian (Українська)

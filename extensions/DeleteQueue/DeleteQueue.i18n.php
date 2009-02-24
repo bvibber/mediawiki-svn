@@ -3745,11 +3745,14 @@ Maaari mong [{{fullurl:{{FULLPAGENAME}}|action=delvote}} itala ang sarili mong p
 );
 
 /** Turkish (Türkçe)
+ * @author Karduelis
  * @author Mach
  */
 $messages['tr'] = array(
+	'deletequeue-delnom-otherreason' => 'Diğer nedenler',
 	'deletequeue-queue-speedy' => 'Hızlı silme',
 	'deletequeue-queue-deletediscuss' => 'Silme tartışması',
+	'deletequeue-review-reason' => 'Yorumlar',
 	'deletequeue-review-newreason' => 'Yeni gerekçe:',
 	'deletequeue-list-header-page' => 'Sayfa',
 );

@@ -325,6 +325,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'grouppermissions' => 'Upravljanje grupnim dopuštenjima',
 	'sortpermissions' => 'Sortiraj dopuštenja',
 	'removeunusedgroups' => 'Ukloni neiskorištene grupe',
 	'grouppermissions-desc' => 'Uređivanje grupnih dopuštenja preko [[Special:GroupPermissions|posebne stranice]]',
@@ -2185,6 +2186,7 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Karduelis
  * @author Nyasar
  */
 $messages['tr'] = array(
@@ -2193,6 +2195,9 @@ $messages['tr'] = array(
 	'removeunusedgroups' => 'Kullanılmayan grupları sil',
 	'grouppermissions-desc' => 'Grup izinlerini [[Special:GroupPermissions|special page]] üzerinden yönetin',
 	'grouppermissions-desc4' => 'Araçlara yeni kalemler eklemeye izin verir',
+	'grouppermissions-search' => 'Grup:',
+	'grouppermissions-add' => 'Grup ekle',
+	'grouppermissions-delete' => 'Grup sil',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

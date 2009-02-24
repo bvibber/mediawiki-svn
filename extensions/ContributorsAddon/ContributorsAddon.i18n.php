@@ -252,6 +252,13 @@ $messages['sv'] = array(
 	'contributorsaddon-desc' => 'Lägger till popup-rutor för länken till "Huvudsakliga bidragsgivare", med hjälp av JavaScript',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'contributorsaddon-desc' => '"ముఖ్య తోడ్పాటుదారుల" లింకులకి జావాస్క్రిప్టు పాపప్పులను చేరుస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

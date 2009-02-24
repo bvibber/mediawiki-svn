@@ -373,6 +373,13 @@ $messages['tl'] = array(
 	'multiboilerplate-submit' => 'Ikarga',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'multiboilerplate-submit' => 'Yükle',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

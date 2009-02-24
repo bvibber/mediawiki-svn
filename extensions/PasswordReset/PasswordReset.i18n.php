@@ -1306,6 +1306,15 @@ $messages['tl'] = array(
 	'right-passwordreset' => 'Muling itinakdang hudyat para sa isang tagagamit ([[Special:PasswordReset|natatanging pahina]])',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'passwordreset' => 'Parola sıfırlama',
+	'passwordreset-newpass' => 'Yeni parola:',
+	'passwordreset-submit' => 'parola sıfırla',
+);
+
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Alfredie
  */

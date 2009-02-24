@@ -354,6 +354,13 @@ $messages['tl'] = array(
 	'gblrights-rights-entry' => 'binago ang kasapian sa pandaigidigang pangkat para kay $1 mula $2 patungo sa $3',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'gblrights-logpage' => 'Küresel Kullanıcı Hakları Kayıtları',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

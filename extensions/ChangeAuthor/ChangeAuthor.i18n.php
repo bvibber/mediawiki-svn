@@ -879,6 +879,7 @@ Si iste error persiste, le base de datos es probabilemente defecte.',
 	'changeauthor-success' => 'Tu requesta ha essite processate con successo.',
 	'changeauthor-logentry' => 'Cambiava le autor del version $2 del pagina $1 de $3 a $4',
 	'changeauthor-logpagename' => 'Registro de cambiamentos de autores',
+	'right-changeauthor' => 'Cambiar le autor de un version',
 );
 
 /** Indonesian (Bahasa Indonesia)
