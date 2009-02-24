@@ -243,6 +243,15 @@ $messages['io'] = array(
 	'icon-badwidth' => 'Mala larjeso',
 );
 
+/** Italian (Italiano)
+ * @author Uno
+ */
+$messages['it'] = array(
+	'icon-badimage' => 'Immagine non valida',
+	'icon-badwidth' => 'Larghezza non valida',
+	'icon-desc' => 'Permette di usare le immagini come icone e icone con link',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

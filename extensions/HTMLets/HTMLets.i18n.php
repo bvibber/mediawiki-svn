@@ -123,6 +123,13 @@ $messages['ia'] = array(
 	'htmlets-desc' => 'Permitte incorporar fragmentos HTML ab files per medio del etiquetta <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Italian (Italiano)
+ * @author Uno
+ */
+$messages['it'] = array(
+	'htmlets-desc' => 'Permette di includere frammenti di codice HTML da file usando il tag <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
