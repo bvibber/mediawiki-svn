@@ -1,8 +1,7 @@
 package de.brightbyte.wikiword.store.builder;
 
+import java.sql.Connection;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.Connection;
 
 import de.brightbyte.application.Agenda;
 import de.brightbyte.db.Inserter;
