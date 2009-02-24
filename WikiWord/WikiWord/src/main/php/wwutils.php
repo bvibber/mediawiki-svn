@@ -28,6 +28,30 @@ class WWUtil {
 	return $result;
     }
 
+    function queryConceptsForTerm($lang, $term) {
+	global $wwTablePrefix;
+
+	$term = trim($term);
+
+	$sql = "SELECT * FROM {$wwTablePrefix}_{$lang}_meaning "
+	      . " WHERE term_text = \"" . mysql_real_escape_string($term) . "\""
+	      . " ORDER BY freq DESC "
+	      . " LIMIT 100";
+
+	return $this->query($sql);
+    }
+
+    function queryLocalConcept($lang, $id) {
+	global $wwTablePrefix;
+
+	$term = trim($term);
+
+	$sql = "SELECT * FROM {$wwTablePrefix}_{$lang}_concept_info "
+	      . " WHERE concept = $id ";
+
+	return $this->query($sql);
+    }
+
     static function authFailed($realm) {
 	    header("Status: 401 Unauthorized", true, 401);
 	    header('WWW-Authenticate: Basic realm="'.$realm.'"');
@@ -50,5 +74,16 @@ class WWUtil {
 	  }
 
 	  return $usr;
+    }
+
+    static function printSelector($name, $choices, $current = NULL) {
+	print "\n\t\t<select name=\"".htmlspecialchars($name)."\" id=\"".htmlspecialchars($name)."\">\n";
+
+	foreach ($choices as $choice => $name) {
+	    $sel = $choice == $current ? " selected=\"selected\"" : "";
+	    print "\t\t\t<option value=\"".htmlspecialchars($choice)."\"$sel>".htmlspecialchars($name)."</option>\n";
+	}
+
+	print "</select>";
     }
 }

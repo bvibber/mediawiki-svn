@@ -11,27 +11,43 @@ $lang = @$_REQUEST['lang'];
 
 $error = NULL;
 
+if ($lang && !isset($wwLanguages[$lang])) {
+    $lang = NULL;
+    $error = "bad language code: $lang";
+}
+
 $utils = new WWUtils();
 $utils->connect($wwDBServer, $wwDBUser, $wwDBPassword, $wwDBDatabase);
 
-if ($id) {
-    $result = $utils->queryConceptInfo($lang, $id);
-} else {
-    $result = $utils->queryConceptsForTerm($lang, $id);
+if (!$error) {
+  try {
+      if ($id) {
+	  if ($lang) {
+	    $result = $utils->queryLocalConceptInfo($lang, $id);
+	  } else {
+	    $result = $utils->queryGlobalConceptInfo($id);
+	  }
+      } else if ($lang) {
+	  $result = $utils->queryConceptsForTerm($lang, $id);
+      }
+  } catch (Exception $e) {
+      $error = $e->getMessage();
+  }
 }
 
-function print_result_row($row) {
+function printLocalConcept($lang, $row) {
     extract($row);
 
-    $bu = "http://www.bridgemanart.com/Search.aspx?key=artist:" . urlencode($bridgeman_name);
-    $wu = "http://en.wikipedia.org/wiki/" . urlencode($wikiword_name); //FIXME: which wiki?!
+    if (!isset($weight) && isset($freq)) $weight = $freq;
+
+    $wu = "http://$lang.wikipedia.org/wiki/" . urlencode($concept_name); 
+    $cu = "$wwSelf?id=" . urlencode($concept) . "&lang=" . urlencode($lang); 
 
     print "\t\t<li>";
-    print "<big><b><a href=\"".htmlspecialchars($bu)."\">".htmlspecialchars($bridgeman_name)."</a></b></big> ";
-    print "<small>(#".htmlspecialchars($bridgeman_id).")</small> ";
-    print "<br/><small><b><a href=\"".htmlspecialchars($wu)."\">".htmlspecialchars($wikiword_name)."</a></b>";
-    if ($definition) print ": " . htmlspecialchars($definition);
-    print "</small>";
+    if (isset($weight) && !empty($weight)) print "<b>" . htmlspecialchars($weight) . "</b> ";
+    print "<big><b><a href=\"".htmlspecialchars($wu)."\">".htmlspecialchars($concept_name)."</a></b></big> ";
+    print " (<a href=\"".htmlspecialchars($cu)."\">#".htmlspecialchars($concept)."</a>) ";
+    if (isset($definition) && !empty($definition)) print "<br/><small>" . htmlspecialchars($definition) . "</small>";
     print "</li>\n";
 }
 
@@ -39,16 +55,17 @@ function print_result_row($row) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"> 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Experimental Bridgeman Search</title>
+    <title>WikiWord Navigator</title>
 </head>
 <body>
-    <h1>Experimental Bridgeman Search</h1>
-    <p>This is a very rough interface to a first preview of an effort to tag and index Bidgeman's artist list by using Data from Wikipedia.
-    This is proof of concept and work in progress. It's not intended for public use.</p>
+    <h1>WikiWord Navigator</h1>
+    <p>Experimental proof of concept <a href="http://brightbyte.de/page/WikiWord">WikiWord</a> navigator.</p>
 
     <form name="search">
       <p>
-      <lable for="q">Artist: </label><input type="text" name="q" id="q" length="24" value="<?php print htmlspecialchars($query); ?>"/>
+      <lable for="term">Term: </label><input type="text" name="term" id="term" length="24" value="<?php print htmlspecialchars($term); ?>"/>
+      <lable for="term">Language: </label>
+	<?php WWUtils::printSelector("lang", $wwLanguages, $lang) ?>
       <input type="submit" value="go"/>
       </p>
     </form>
@@ -65,7 +82,8 @@ if ($result) {
     <?php 
       $count = 0;
       while ($row = mysql_fetch_assoc($result)) {
-	  print_result_row($row);
+	  if ($lang) printLocalConcept($lang, $row);
+	  else printGlobalConcept($lang, $row);
 	  $count += 1;
       }
 

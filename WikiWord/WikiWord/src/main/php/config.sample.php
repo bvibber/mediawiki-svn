@@ -5,7 +5,7 @@ $wwDBUser = "wikiword";
 $wwDBPassword = "xxxxxxxxxx";
 $wwDBDatabase = "wikiword";
 
-$wwLanguages = array("en", "de", "fr");
+$wwLanguages = array("en" => "Englisch", "de" => "German", "fr" => "French");
 $wwTablePrefix = "full";
 $wwThesaurusDataset = "thesaurus";
 
