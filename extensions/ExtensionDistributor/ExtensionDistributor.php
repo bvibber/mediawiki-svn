@@ -41,10 +41,6 @@ $wgExtDistBranches = array(
 		'tarLabel' => 'MW1.12',
 		'name' => '1.12.x',
 	),
-	'branches/REL1_11' => array(
-		'tarLabel' => 'MW1.11',
-		'name' => '1.11.x',
-	),
 );
 
 /** Remote socket for svn-invoker.php (optional) */
