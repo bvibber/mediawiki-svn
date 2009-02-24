@@ -90,7 +90,7 @@ actions:
 		'all_sync_past_date' --date [mm/dd/yy] all in_sync streams past date (-d option required)
 		[stream_name] will insert all records for the given stream name
 		'people' [person_name] will insert all the people articles optional followed by a person name
-		'bill' [bill_key]? ...empty bill key will insert all bills based on gov track subject page
+		'bill' [bill_key]? ...empty bill key will insert all bills based on gov track subject page		
 		'interest' will insert interests (uses people as base so run people first)
 		'update_templates' will update templates & some semantic properties
 		'file_check' checks inserted streams file urls/pointers
@@ -120,7 +120,7 @@ switch ( $args[0] ) {
 	case 'all_sync_past_date':
 		if ( !isset( $options['date'] ) )die( 'date missing' . "\n" );
 		do_stream_insert( 'all_sync_past_date' );
-	break;
+	break;	
 	case 'people' :
 		$force = ( isset( $options['force'] ) ) ? true:false;
 		$person_name = ( isset( $args[1] ) ) ? $args[1]:'';
