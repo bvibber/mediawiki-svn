@@ -83,7 +83,6 @@ class ApiQueryContributions extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 
 		//Initialise some variables
-		$data = array ();
 		$count = 0;
 		$limit = $this->params['limit'];
 
@@ -99,16 +98,21 @@ class ApiQueryContributions extends ApiQueryBase {
 			}
 
 			$vals = $this->extractRowInfo($row);
-			if ($vals)
-				$data[] = $vals;
+			$fit = $this->getResult()->addValue(array('query', $this->getModuleName()), null, $vals);
+			if(!$fit)
+			{
+				if($this->multiUserMode)
+					$this->setContinueEnumParameter('continue', $this->continueStr($row));
+				else
+					$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->rev_timestamp));
+				break;
+			}
 		}
 
 		//Free the database record so the connection can get on with other stuff
 		$db->freeResult($res);
 
-		//And send the whole shebang out as output.
-		$this->getResult()->setIndexedTagName($data, 'item');
-		$this->getResult()->addValue('query', $this->getModuleName(), $data);
+		$this->getResult()->setIndexedTagName_internal(array('query', $this->getModuleName()), 'item');
 	}
 
 	/**
@@ -137,7 +141,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		// We're after the revision table, and the corresponding page
 		// row for anything we retrieve. We may also need the
 		// recentchanges row.
-		$this->addTables(array('page', 'revision'));
+		$tables = array('page', 'revision'); // Order may change
 		$this->addWhere('page_id=rev_page');
 
 		// Handle continue parameter
@@ -164,7 +168,8 @@ class ApiQueryContributions extends ApiQueryBase {
 		// ... and in the specified timeframe.
 		// Ensure the same sort order for rev_user_text and rev_timestamp
 		// so our query is indexed
-		$this->addWhereRange('rev_user_text', $this->params['dir'], null, null);
+		if($this->multiUserMode)
+			$this->addWhereRange('rev_user_text', $this->params['dir'], null, null);
 		$this->addWhereRange('rev_timestamp',
 			$this->params['dir'], $this->params['start'], $this->params['end'] );
 		$this->addWhereFld('page_namespace', $this->params['namespace']);
@@ -182,7 +187,7 @@ class ApiQueryContributions extends ApiQueryBase {
 			$this->addWhereIf('rc_patrolled != 0', isset($show['patrolled']));
 		}
 		$this->addOption('LIMIT', $this->params['limit'] + 1);
-		$this->addOption('USE INDEX', array('revision' => 'usertext_timestamp'));
+		$index['revision'] = 'usertext_timestamp';
 
 		// Mandatory fields: timestamp allows request continuation
 		// ns+title checks if the user has access rights for this page
@@ -200,15 +205,33 @@ class ApiQueryContributions extends ApiQueryBase {
 			global $wgUser;
 			if(!$wgUser->useRCPatrol() && !$wgUser->useNPPatrol())
 				$this->dieUsage("You need the patrol right to request the patrolled flag", 'permissiondenied');
-			$this->addTables('recentchanges');
+			// Use a redundant join condition on both
+			// timestamp and ID so we can use the timestamp
+			// index
+			$index['recentchanges'] = 'rc_user_text';
 			if(isset($show['patrolled']) || isset($show['!patrolled']))
+			{
+				// Put the tables in the right order for
+				// STRAIGHT_JOIN
+				$tables = array('revision', 'recentchanges', 'page');
+				$this->addOption('STRAIGHT_JOIN');
+				$this->addWhere('rc_user_text=rev_user_text');
+				$this->addWhere('rc_timestamp=rev_timestamp');
 				$this->addWhere('rc_this_oldid=rev_id');
+			}
 			else
+			{
+				$tables[] = 'recentchanges';
 				$this->addJoinConds(array('recentchanges' => array(
-					'LEFT JOIN',
-					'rc_this_oldid=rev_id')));
+					'LEFT JOIN', array(
+						'rc_user_text=rev_user_text',
+						'rc_timestamp=rev_timestamp',
+						'rc_this_oldid=rev_id'))));
+			}
 		}
 
+		$this->addTables($tables);
+		$this->addOption('USE INDEX', $index);
 		$this->addFieldsIf('rev_page', $this->fld_ids);
 		$this->addFieldsIf('rev_id', $this->fld_ids || $this->fld_flags);
 		$this->addFieldsIf('page_latest', $this->fld_flags);

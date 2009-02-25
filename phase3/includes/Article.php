@@ -84,12 +84,12 @@ class Article {
 			return $this->mRedirectTarget;
 		# Query the redirect table
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'redirect',
+		$row = $dbr->selectRow( 'redirect',
 			array('rd_namespace', 'rd_title'),
-			array('rd_from' => $this->getID()),
+			array('rd_from' => $this->getID() ),
 			__METHOD__
 		);
-		if( $row = $dbr->fetchObject($res) ) {
+		if( $row ) {
 			return $this->mRedirectTarget = Title::makeTitle($row->rd_namespace, $row->rd_title);
 		}
 		# This page doesn't have an entry in the redirect table
@@ -606,7 +606,7 @@ class Article {
 			}
 			// Apparently loadPageData was never called
 			$this->loadContent();
-			$titleObj = Title::newFromRedirectRe( $this->fetchContent() );
+			$titleObj = Title::newFromRedirectRecurse( $this->fetchContent() );
 		} else {
 			$titleObj = Title::newFromRedirect( $text );
 		}
@@ -780,15 +780,17 @@ class Article {
 		}
 		$wgOut->setRobotPolicy( $policy );
 
+		# Allow admins to see deleted content if explicitly requested
+		$delId = $diff ? $diff : $oldid;
+		$unhide = $wgRequest->getInt('unhide') == 1 && $wgUser->matchEditToken( $wgRequest->getVal('token'), $delId );
 		# If we got diff and oldid in the query, we want to see a
 		# diff page instead of the article.
 
 		if( !is_null( $diff ) ) {
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 
-			$diff = $wgRequest->getVal( 'diff' );
 			$htmldiff = $wgRequest->getVal( 'htmldiff' , false);
-			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid, $purge, $htmldiff);
+			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid, $purge, $htmldiff, $unhide );
 			// DifferenceEngine directly fetched the revision:
 			$this->mRevIdFetched = $de->mNewid;
 			$de->showDiffPage( $diffOnly );
@@ -834,6 +836,11 @@ class Article {
 					$fragment = Xml::escapeJsString( $this->mTitle->getFragmentForURL() );
 					$wgOut->addInlineScript( "redirectToFragment(\"$fragment\");" );
 				}
+
+				// Add a <link rel="canonical"> tag
+				$wgOut->addLink( array( 'rel' => 'canonical',
+					'href' => $this->mTitle->getLocalURL() )
+				);
 				$wasRedirected = true;
 			}
 		} elseif( !empty( $rdfrom ) ) {
@@ -913,14 +920,15 @@ class Article {
 					// FIXME: This would be a nice place to load the 'no such page' text.
 				} else {
 					$this->setOldSubtitle( isset($this->mOldId) ? $this->mOldId : $oldid );
+					# Allow admins to see deleted content if explicitly requested
 					if( $this->mRevision->isDeleted( Revision::DELETED_TEXT ) ) {
-						if( !$this->mRevision->userCan( Revision::DELETED_TEXT ) ) {
-							$wgOut->addWikiMsg( 'rev-deleted-text-permission' );
+						if( !$unhide || !$this->mRevision->userCan(Revision::DELETED_TEXT) ) {
+							$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n", 'rev-deleted-text-permission' );
 							$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 							wfProfileOut( __METHOD__ );
 							return;
 						} else {
-							$wgOut->addWikiMsg( 'rev-deleted-text-view' );
+							$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n", 'rev-deleted-text-view' );
 							// and we are allowed to see...
 						}
 					}
@@ -1120,7 +1128,7 @@ class Article {
 					$o->tb_name,
 					$rmvtxt);
 		}
-		$wgOut->addWikiMsg( 'trackbackbox', $tbtext );
+		$wgOut->wrapWikiMsg( "<div id='mw_trackbacks'>$1</div>\n", array( 'trackbackbox', $tbtext ) );
 		$this->mTitle->invalidateCache();
 	}
 
@@ -1669,8 +1677,8 @@ class Article {
 			}
 
 			# Invalidate cache of this article and all pages using this article
-			# as a template. Partly deferred. Leave templatelinks for editUpdates().
-			Article::onArticleEdit( $this->mTitle, 'skiptransclusions' );
+			# as a template. Partly deferred.
+			Article::onArticleEdit( $this->mTitle );
 			# Update links tables, site stats, etc.
 			$this->editUpdates( $text, $summary, $isminor, $now, $revisionId, $changed );
 		} else {
@@ -1799,7 +1807,7 @@ class Article {
 
 		#It would be nice to see where the user had actually come from, but for now just guess
 		$returnto = $rc->getAttribute( 'rc_type' ) == RC_NEW ? 'Newpages' : 'Recentchanges';
-		$return = Title::makeTitle( NS_SPECIAL, $returnto );
+		$return = SpecialPage::getTitleFor( $returnto );
 
 		$dbw = wfGetDB( DB_MASTER );
 		$errors = $rc->doMarkPatrolled();
@@ -2167,7 +2175,7 @@ class Article {
 		// Calculate the maximum amount of chars to get
 		// Max content length = max comment length - length of the comment (excl. $1) - '...'
 		$maxLength = 255 - (strlen( $reason ) - 2) - 3;
-		$contents = $wgContLang->truncate( $contents, $maxLength, '...' );
+		$contents = $wgContLang->truncate( $contents, $maxLength );
 		// Remove possible unfinished links
 		$contents = preg_replace( '/\[\[([^\]]*)\]?$/', '$1', $contents );
 		// Now replace the '$1' placeholder
@@ -2524,6 +2532,14 @@ class Article {
 			$dbw->rollback();
 			return false;
 		}
+		
+		# Fix category table counts
+		$cats = array();
+		$res = $dbw->select( 'categorylinks', 'cl_to', array( 'cl_from' => $id ), __METHOD__ );
+		foreach( $res as $row ) {
+			$cats []= $row->cl_to;
+		}
+		$this->updateCategoryCounts( array(), $cats );
 
 		# If using cascading deletes, we can skip some explicit deletes
 		if( !$dbw->cascadingDeletes() ) {
@@ -2557,14 +2573,6 @@ class Article {
 
 		# Clear caches
 		Article::onArticleDelete( $this->mTitle );
-		
-		# Fix category table counts
-		$cats = array();
-		$res = $dbw->select( 'categorylinks', 'cl_to', array( 'cl_from' => $id ), __METHOD__ );
-		foreach( $res as $row ) {
-			$cats []= $row->cl_to;
-		}
-		$this->updateCategoryCounts( array(), $cats );
 
 		# Clear the cached article id so the interface doesn't act like we exist
 		$this->mTitle->resetArticleID( 0 );
@@ -2576,7 +2584,7 @@ class Article {
 
 		# Make sure logging got through
 		$log->addEntry( 'delete', $this->mTitle, $reason, array() );
-		
+
 		$dbw->commit();
 
 		return true;
@@ -2885,8 +2893,7 @@ class Article {
 		}
 
 		# Update the links tables
-		$u = new LinksUpdate( $this->mTitle, $editInfo->output, false );
-		$u->setRecursiveTouch( $changed ); // refresh/invalidate including pages too
+		$u = new LinksUpdate( $this->mTitle, $editInfo->output );
 		$u->doUpdate();
 		
 		wfRunHooks( 'ArticleEditUpdates', array( &$this, &$editInfo, $changed ) );
@@ -2971,7 +2978,7 @@ class Article {
 	 * @param $oldid String: revision ID of this article revision
 	 */
 	public function setOldSubtitle( $oldid = 0 ) {
-		global $wgLang, $wgOut, $wgUser;
+		global $wgLang, $wgOut, $wgUser, $wgRequest;
 
 		if( !wfRunHooks( 'DisplayOldSubtitle', array( &$this, &$oldid ) ) ) {
 			return;
@@ -3022,19 +3029,20 @@ class Article {
 			}
 			$cdel = "(<small>$cdel</small>) ";
 		}
-		# Show user links if allowed to see them. Normally they
-		# are hidden regardless, but since we can already see the text here...
-		$userlinks = $sk->revUserTools( $revision, false );
+		$unhide = $wgRequest->getInt('unhide') == 1 && $wgUser->matchEditToken( $wgRequest->getVal('token'), $oldid );
+		# Show user links if allowed to see them. If hidden, then show them only if requested...
+		$userlinks = $sk->revUserTools( $revision, !$unhide );
 
 		$m = wfMsg( 'revision-info-current' );
 		$infomsg = $current && !wfEmptyMsg( 'revision-info-current', $m ) && $m != '-'
 			? 'revision-info-current'
 			: 'revision-info';
 
-		$r = "\n\t\t\t\t<div id=\"mw-{$infomsg}\">" . wfMsgExt( $infomsg, array( 'parseinline', 'replaceafter' ), $td, $userlinks, $revision->getID() ) . "</div>\n" .
+		$r = "\n\t\t\t\t<div id=\"mw-{$infomsg}\">" . wfMsgExt( $infomsg, array( 'parseinline', 'replaceafter' ), 
+			$td, $userlinks, $revision->getID() ) . "</div>\n" .
 
-		     "\n\t\t\t\t<div id=\"mw-revision-nav\">" . $cdel . wfMsgHtml( 'revision-nav', $prevdiff, 
-				$prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
+		     "\n\t\t\t\t<div id=\"mw-revision-nav\">" . $cdel . wfMsgExt( 'revision-nav', array( 'escapenoentities', 'parsemag', 'replaceafter' ),
+		     	$prevdiff, $prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
 		$wgOut->setSubtitle( $r );
 	}
 
@@ -3279,12 +3287,11 @@ class Article {
 	/**
 	 * Purge caches on page update etc
 	 */
-	public static function onArticleEdit( $title, $transclusions = 'transclusions' ) {
+	public static function onArticleEdit( $title, $flags = '' ) {
 		global $wgDeferredUpdateList;
 
 		// Invalidate caches of articles which include this page
-		if( $transclusions !== 'skiptransclusions' )
-			$wgDeferredUpdateList[] = new HTMLCacheUpdate( $title, 'templatelinks' );
+		$wgDeferredUpdateList[] = new HTMLCacheUpdate( $title, 'templatelinks' );
 
 		// Invalidate the caches of all pages which redirect here
 		$wgDeferredUpdateList[] = new HTMLCacheUpdate( $title, 'redirect' );
@@ -3473,8 +3480,7 @@ class Article {
 			global $wgContLang;
 			$truncatedtext = $wgContLang->truncate(
 				str_replace("\n", ' ', $newtext),
-				max( 0, 200 - strlen( wfMsgForContent( 'autosumm-new' ) ) ),
-				'...' );
+				max( 0, 200 - strlen( wfMsgForContent( 'autosumm-new' ) ) ) );
 			return wfMsgForContent( 'autosumm-new', $truncatedtext );
 		}
 
@@ -3486,9 +3492,7 @@ class Article {
 			global $wgContLang;
 			$truncatedtext = $wgContLang->truncate(
 				$newtext,
-				max( 0, 200 - strlen( wfMsgForContent( 'autosumm-replace' ) ) ),
-				'...'
-			);
+				max( 0, 200 - strlen( wfMsgForContent( 'autosumm-replace' ) ) ) );
 			return wfMsgForContent( 'autosumm-replace', $truncatedtext );
 		}
 
@@ -3546,27 +3550,26 @@ class Article {
 				__METHOD__ );
 
 			global $wgContLang;
-
-			if( $res !== false ) {
-				foreach( $res as $row ) {
-					$tlTemplates[] = $wgContLang->getNsText( $row->tl_namespace ) . ':' . $row->tl_title ;
-				}
+			foreach( $res as $row ) {
+				$tlTemplates["{$row->tl_namespace}:{$row->tl_title}"] = true;
 			}
 
 			# Get templates from parser output.
-			$poTemplates_allns = $parserOutput->getTemplates();
-
-			$poTemplates = array ();
-			foreach ( $poTemplates_allns as $ns_templates ) {
-				$poTemplates = array_merge( $poTemplates, $ns_templates );
+			$poTemplates = array();
+			foreach ( $parserOutput->getTemplates() as $ns => $templates ) {
+				foreach ( $templates as $dbk => $id ) {
+					$key = $row->tl_namespace . ':'. $row->tl_title;
+					$poTemplates["$ns:$dbk"] = true;
+				}
 			}
 
 			# Get the diff
-			$templates_diff = array_diff( $poTemplates, $tlTemplates );
+			# Note that we simulate array_diff_key in PHP <5.0.x
+			$templates_diff = array_diff_key( $poTemplates, $tlTemplates );
 
 			if( count( $templates_diff ) > 0 ) {
 				# Whee, link updates time.
-				$u = new LinksUpdate( $this->mTitle, $parserOutput );
+				$u = new LinksUpdate( $this->mTitle, $parserOutput, false );
 				$u->doUpdate();
 			}
 		}

@@ -72,8 +72,8 @@ $specialPageAliases = array(
 	'Mostlinked'                => array( 'PasatekiPeprewoysi' ),
 	'Mostlinkedcategories'      => array( 'PasatekiGuru' ),
 	'Mostlinkedtemplates'       => array( 'PasatekiAnkra' ),
-	'Mostcategories'            => array( 'PasaGuru' ),
 	'Mostimages'                => array( 'PasaGefre' ),
+	'Mostcategories'            => array( 'PasaGuru' ),
 	'Mostrevisions'             => array( 'PasaKenki' ),
 	'Fewestrevisions'           => array( 'MenaKenki' ),
 	'Shortpages'                => array( 'SyartuPeprewoysi' ),
@@ -105,6 +105,47 @@ $specialPageAliases = array(
 	'Listbots'                  => array( 'Botrey' ),
 	'Search'                    => array( 'Suku' ),
 	'Withoutinterwiki'          => array( 'NoInterwiki' ),
+);
+
+$magicWords = array(
+	'redirect'              => array( '0', '#STIR', '#DOORVERWIJZING', '#REDIRECT' ),
+	'notoc'                 => array( '0', '__NOINOT__', '__GEENINHOUD__', '__NOTOC__' ),
+	'nogallery'             => array( '0', '__NOPIKTURAMA__', '__GEEN_GALERIJ__', '__NOGALLERY__' ),
+	'forcetoc'              => array( '0', '__INOTDWENGI__', '__INHOUD_DWINGEN__', '__FORCEERINHOUD__', '__FORCETOC__' ),
+	'toc'                   => array( '0', '__INOT__', '__INHOUD__', '__TOC__' ),
+	'noeditsection'         => array( '0', '__NOKENKISKAKI__', '__NIETBEWERKBARESECTIE__', '__NOEDITSECTION__' ),
+	'currentmonth'          => array( '1', 'CURRENTMOTNH', 'DISIMUN', 'HUIDIGEMAAND', 'CURRENTMONTH' ),
+	'currentmonthname'      => array( '1', 'DISIMUNNEN', 'HUIDIGEMAANDNAAM', 'CURRENTMONTHNAME' ),
+	'currentmonthnamegen'   => array( '1', 'DISIMUNNENGEN', 'HUIDIGEMAANDGEN', 'CURRENTMONTHNAMEGEN' ),
+	'currentmonthabbrev'    => array( '1', 'DISIMUNSH', 'HUIDIGEMAANDAFK', 'CURRENTMONTHABBREV' ),
+	'currentday'            => array( '1', 'DISIDEY', 'HUIDIGEDAG', 'CURRENTDAY' ),
+	'currentday2'           => array( '1', 'DISIDEY2', 'HUIDIGEDAG2', 'CURRENTDAY2' ),
+	'currentdayname'        => array( '1', 'DISIDEYNEN', 'HUIDIGEDAGNAAM', 'CURRENTDAYNAME' ),
+	'currentyear'           => array( '1', 'DISIYARI', 'HUIDIGJAAR', 'CURRENTYEAR' ),
+	'currenttime'           => array( '1', 'DISITEN', 'HUIDIGETIJD', 'CURRENTTIME' ),
+	'currenthour'           => array( '1', 'DISIYURU', 'HUIDIGUUR', 'CURRENTHOUR' ),
+	'localmonth'            => array( '1', 'PRESIMUN', 'PLAATSELIJKEMAAND', 'LOKALEMAAND', 'LOCALMONTH' ),
+	'localmonthname'        => array( '1', 'PRESIMUNNEN', 'PLAATSELIJKEMAANDNAAM', 'LOKALEMAANDNAAM', 'LOCALMONTHNAME' ),
+	'localmonthnamegen'     => array( '1', 'PRESIMUNNENGEN', 'PLAATSELIJKEMAANDNAAMGEN', 'LOKALEMAANDNAAMGEN', 'LOCALMONTHNAMEGEN' ),
+	'localmonthabbrev'      => array( '1', 'PRESIMUNSH', 'PLAATSELIJKEMAANDAFK', 'LOKALEMAANDAFK', 'LOCALMONTHABBREV' ),
+	'localday'              => array( '1', 'PRESIDEY', 'PLAATSELIJKEDAG', 'LOKALEDAG', 'LOCALDAY' ),
+	'localday2'             => array( '1', 'PRESIDEY2', 'PLAATSELIJKEDAG2', 'LOKALEDAG2', 'LOCALDAY2' ),
+	'localdayname'          => array( '1', 'PRESIDEYNEN', 'PLAATSELIJKEDAGNAAM', 'LOKALEDAGNAAM', 'LOCALDAYNAME' ),
+	'localyear'             => array( '1', 'PRESIYARI', 'PLAATSELIJKJAAR', 'LOKAALJAAR', 'LOCALYEAR' ),
+	'localtime'             => array( '1', 'PRESITEN', 'PLAATSELIJKETIJD', 'LOKALETIJD', 'LOCALTIME' ),
+	'localhour'             => array( '1', 'PRESIYURU', 'PLAATSELIJKUUR', 'LOKAALUUR', 'LOCALHOUR' ),
+	'numberofpages'         => array( '1', 'PAPIRANUMRO', 'AANTALPAGINAS', 'AANTALPAGINA\'S', 'AANTALPAGINA’S', 'NUMBEROFPAGES' ),
+	'numberofarticles'      => array( '1', 'PAPIRALEGIMNUMRO', 'AANTALARTIKELEN', 'NUMBEROFARTICLES' ),
+	'numberoffiles'         => array( '1', 'GEFRENUMRO', 'AANTALBESTANDEN', 'NUMBEROFFILES' ),
+	'numberofusers'         => array( '1', 'MASYINNUMRO', 'AANTALGEBRUIKERS', 'NUMBEROFUSERS' ),
+	'numberofedits'         => array( '1', 'KENKINUMRO', 'AANTALBEWERKINGEN', 'NUMBEROFEDITS' ),
+	'pagename'              => array( '1', 'PAPIRANEN', 'PAGINANAAM', 'PAGENAME' ),
+	'pagenamee'             => array( '1', 'PAPIRANENE', 'PAGINANAAME', 'PAGENAMEE' ),
+	'namespace'             => array( '1', 'NENPREKI', 'NAAMRUIMTE', 'NAMESPACE' ),
+	'namespacee'            => array( '1', 'NENPREKIE', 'NAAMRUIMTEE', 'NAMESPACEE' ),
+	'talkspace'             => array( '1', 'TAKIPREKI', 'OVERLEGRUIMTE', 'TALKSPACE' ),
+	'talkspacee'            => array( '1', 'TAKIPREKIE', 'OVERLEGRUIMTEE', 'TALKSPACEE' ),
+	'special'               => array( '0', 'spesyal', 'speciaal', 'special' ),
 );
 
 $messages = array(
@@ -411,9 +452,9 @@ Fu san ede: ''$2''.",
 
 # Login and logout pages
 'logouttitle'               => 'Kenroikiman psa gwe',
-'logouttext'                => '<strong>Yu psa gwe now.</strong><br />
+'logouttext'                => "'''Yu psa gwe now.'''<br />
 Yu kan tan kebroiki {{SITENAME}} sondro nen, noso yu kan psa kon baka leki a srefi noso wan tra kebroikiman.
-Sabi taki a kan gersi leki yu psa kon ete, te leki yu leygi a cache fu yu browser.',
+Sabi taki a kan gersi leki yu psa kon ete, te leki yu leygi a cache fu yu browser.",
 'welcomecreation'           => '== Welkom, $1! ==
 Yu account meki now.
 No fergiti fu kenki den seti fu yu gi {{SITENAME}}.',
@@ -552,9 +593,9 @@ Yu IP now na $3 en a tapu pasi ID na #$5. Gi wan, noso ala tu, ini yu brifi te y
 Kebroiki a '''back''' knopo ini yu browser, efu yu no ben wan opo a papira disi.",
 'noarticletext'          => 'A papira disi leigi.
 Yu kan [[Special:Search/{{PAGENAME}}|suku a papira nen disi]] ini tra papira noso <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} kenki a papira disi]</span>.',
-'note'                   => '<strong>Opotaki:</strong>',
-'previewnote'            => '<strong>Disi na soso fu luku na fesi;
-yu kenki no kibri ete!</strong>',
+'note'                   => "'''Opotaki:'''",
+'previewnote'            => "'''Disi na soso fu luku na fesi;
+yu kenki no kibri ete!'''",
 'editing'                => 'E Kenki $1',
 'editingsection'         => 'E kenki $1 (pisi papira)',
 'editingcomment'         => 'Kenki fu $1 (opotaki)',
@@ -563,10 +604,10 @@ yu kenki no kibri ete!</strong>',
 'copyrightwarning'       => "Ala sani di yu e poti na tapu {{SITENAME}} de leki efu den ben gi fri ondro a $2 (luku $1 gi a fin'fini).
 Efu yu no wani dati trawan e kenki noso panya san yu skrifi, no skrifi noti dyaso.<br />
 Yu e pramisi unu dati na yu skrifi disi yusrefi, noso yu teki en puru fu wan fri, opo presi.<br />
-<strong>NO KEBROIKI SANI DI KIBRI BAKA SKRIFIMAN-LETI, SONDRO FU ABI PRIMISI FU DU SO!</strong>",
-'longpagewarning'        => '<strong>WARSKOW: A papira disi de $1 kilobyte bigi;
+'''NO KEBROIKI SANI DI KIBRI BAKA SKRIFIMAN-LETI, SONDRO FU ABI PRIMISI FU DU SO!'''",
+'longpagewarning'        => "'''WARSKOW: A papira disi de $1 kilobyte bigi;
 Son browser abi problema fu kenki papira di bigi moro leki 32 kb.
-Kande yu kan prati a papira disi ini moro pikin pisi.</strong>',
+Kande yu kan prati a papira disi ini moro pikin pisi.'''",
 'templatesused'          => 'Template di ben kebroiki tapu a papira disi:',
 'templatesusedpreview'   => 'Template di ben kebroiki ini a Luku-na-fesi disi:',
 'templatesusedsection'   => 'Ankra teki opo disi seksi:',
@@ -795,7 +836,7 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 'imagelinks'                => 'File nen miti',
 'linkstoimage'              => '{{PLURAL:$1|A papira|$1 Den papira}} disi e kebroike a file disi:',
 'nolinkstoimage'            => 'Nowan papira e miti kon na a file disi.',
-'sharedupload'              => 'A file disi lai poti fu prati én tra project kan kebroiki en.',
+'sharedupload'              => 'A file disi lai poti fu prati én tra project kan kebroiki en. $2', # $1 is the repo name, $2 is shareduploadwiki(-desc)
 'shareduploadwiki'          => 'Si $1 fu pasa infrumasi.',
 'shareduploadwiki-linktext' => 'gefreinfrumasi',
 'noimage'                   => 'No wan file de nanga a nen disi. Yu kan $1.',
@@ -993,9 +1034,9 @@ Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini 
 'protect_expiry_invalid'      => 'A lasi ben fowtu.',
 'protect_expiry_old'          => 'A lasi ben ini iksini.',
 'protect-unchain'             => 'Gi dribi u',
-'protect-text'                => 'Dyaso ben yu kan tu kenki nanga aluku a tapunivo fu a papira <strong><nowiki>$1</nowiki></strong>.',
+'protect-text'                => "Dyaso ben yu kan tu kenki nanga aluku a tapunivo fu a papira '''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "'''Yu masyin abi no lesi tu kenki a tapunivo.'''
-Disi ben a tapunivo fu a papira <strong>[[$1]]</strong> now:",
+Disi ben a tapunivo fu a papira '''[[$1]]''' now:",
 'protect-cascadeon'           => 'Disi papira ben tapu sins a ini den folo {{PLURAL:$1|papira|peprewoysi}} ben e presi, dy tapu ben nanga a kaskade-opsi. A tapunivo kenki abi no efekti.',
 'protect-default'             => '(soma saki)',
 'protect-fallback'            => 'Dyaso ben a lesi "$1" fanowdu',

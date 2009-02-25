@@ -1,6 +1,4 @@
 <?php
-
-
 class UploadFromUrl extends UploadBase {
 	static function isAllowed( $user ) {
 		if( !$user->isAllowed( 'upload_by_url' ) )
@@ -82,7 +80,7 @@ class UploadFromUrl extends UploadBase {
 	function uploadCurlCallback( $ch, $data ) {
 		global $wgMaxUploadSize;
 		$length = strlen( $data );
-		$this->mFileSize += $length;
+		$this->mFileSize += $length; 
 		if( $this->mFileSize > $wgMaxUploadSize ) {
 			return 0;
 		}

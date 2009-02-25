@@ -14,7 +14,7 @@ span.texhtml { font-family: serif; }
 #wikiPreview.ontop { margin-bottom: 1em; }
 
 /* Stop floats from intruding into edit area in previews */
-#toolbar, #wpTextbox1 { clear: both; }
+#editform, #toolbar, #wpTextbox1 { clear: both; }
 
 div#mw-js-message {
 	margin: 1em 5%;
@@ -297,6 +297,19 @@ td#mw-emailuser-sender, td#mw-emailuser-recipient {
 	font-weight: bold;
 }
 
+/* Special:Prefixindex styling */
+table#mw-prefixindex-list-table,
+table#mw-prefixindex-nav-table {
+	width: 98%;
+	background-color: transparent;
+}
+td#mw-prefixindex-nav-form  {
+	font-size: smaller;
+	margin-bottom: 1em;
+	text-align: right;
+	vertical-align: top;
+}
+
 /*
  * Recreating deleted page warning
  * Reupload file warning
@@ -316,7 +329,7 @@ div.mw-warning-with-logexcerpt ul li {
 span.mw-revdelundel-link,
 strong.mw-revdelundel-link {
 	font-family: monospace;
-	font-size: smaller
+	font-size: smaller;
 }
 
 /* feed links */

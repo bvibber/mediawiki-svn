@@ -593,7 +593,12 @@ class LoginForm {
 	 */
 	function mailPassword() {
 		global $wgUser, $wgOut, $wgAuth;
-
+		
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return false;
+		}
+		
 		if( !$wgAuth->allowPasswordChange() ) {
 			$this->mainLoginForm( wfMsg( 'resetpass_forbidden' ) );
 			return;
@@ -969,6 +974,8 @@ class LoginForm {
 	 * @return string
 	 */
 	function makeLanguageSelector() {
+		global $wgLang;
+
 		$msg = wfMsgForContent( 'loginlanguagelinks' );
 		if( $msg != '' && !wfEmptyMsg( 'loginlanguagelinks', $msg ) ) {
 			$langs = explode( "\n", $msg );
@@ -980,7 +987,7 @@ class LoginForm {
 					$links[] = $this->makeLanguageSelectorLink( $parts[0], $parts[1] );
 				}
 			}
-			return count( $links ) > 0 ? wfMsgHtml( 'loginlanguagelabel', implode( ' | ', $links ) ) : '';
+			return count( $links ) > 0 ? wfMsgHtml( 'loginlanguagelabel', $wgLang->pipeList( $links ) ) : '';
 		} else {
 			return '';
 		}

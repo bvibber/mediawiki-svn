@@ -41,47 +41,60 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
+		$done = array();
 		foreach( $params['prop'] as $p )
 		{
 			switch ( $p )
 			{
 				case 'general':
-					$this->appendGeneralInfo( $p );
+					$fit = $this->appendGeneralInfo( $p );
 					break;
 				case 'namespaces':
-					$this->appendNamespaces( $p );
+					$fit = $this->appendNamespaces( $p );
 					break;
 				case 'namespacealiases':
-					$this->appendNamespaceAliases( $p );
+					$fit = $this->appendNamespaceAliases( $p );
 					break;
 				case 'specialpagealiases':
-					$this->appendSpecialPageAliases( $p );
+					$fit = $this->appendSpecialPageAliases( $p );
 					break;
 				case 'magicwords':
-					$this->appendMagicWords( $p );
+					$fit = $this->appendMagicWords( $p );
 					break;
 				case 'interwikimap':
 					$filteriw = isset( $params['filteriw'] ) ? $params['filteriw'] : false;
-					$this->appendInterwikiMap( $p, $filteriw );
+					$fit = $this->appendInterwikiMap( $p, $filteriw );
 					break;
 				case 'dbrepllag':
-					$this->appendDbReplLagInfo( $p, $params['showalldb'] );
+					$fit = $this->appendDbReplLagInfo( $p, $params['showalldb'] );
 					break;
 				case 'statistics':
-					$this->appendStatistics( $p );
+					$fit = $this->appendStatistics( $p );
 					break;
 				case 'usergroups':
-					$this->appendUserGroups( $p );
+					$fit = $this->appendUserGroups( $p );
 					break;
 				case 'extensions':
-					$this->appendExtensions( $p );
+					$fit = $this->appendExtensions( $p );
 					break;
 				case 'fileextensions':
-					$this->appendFileExtensions( $p );
+					$fit = $this->appendFileExtensions( $p );
+					break;
+				case 'rightsinfo':
+					$fit = $this->appendRightsInfo( $p );
 					break;
 				default :
 					ApiBase :: dieDebug( __METHOD__, "Unknown prop=$p" );
 			}
+			if(!$fit)
+			{
+				# Abuse siprop as a query-continue parameter
+				# and set it to all unprocessed props
+				$this->setContinueEnumParameter('prop', implode('|',
+						array_diff($params['prop'], $done)));
+				break;
+			}
+			$done[] = $p;
 		}
 	}
 
@@ -126,7 +139,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$data['timezone'] = $tz;
 		$data['timeoffset'] = $offset;
 
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 	protected function appendNamespaces( $property ) {
@@ -148,15 +161,20 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		}
 
 		$this->getResult()->setIndexedTagName( $data, 'ns' );
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 	protected function appendNamespaceAliases( $property ) {
 		global $wgNamespaceAliases, $wgContLang;
 		$wgContLang->load();
-		$aliases = array_merge($wgNamespaceAliases, $wgContLang->namespaceAliases);
+		$aliases = array_merge( $wgNamespaceAliases, $wgContLang->namespaceAliases );
+		$namespaces = $wgContLang->getNamespaces();
 		$data = array();
 		foreach( $aliases as $title => $ns ) {
+			if( $namespaces[$ns] == $title ) {
+				// Don't list duplicates
+				continue;
+			}
 			$item = array(
 				'id' => $ns
 			);
@@ -165,7 +183,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		}
 
 		$this->getResult()->setIndexedTagName( $data, 'ns' );
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 	protected function appendSpecialPageAliases( $property ) {
@@ -178,7 +196,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			$data[] = $arr;
 		}
 		$this->getResult()->setIndexedTagName( $data, 'specialpage' );
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 	
 	protected function appendMagicWords( $property ) {
@@ -194,7 +212,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			$data[] = $arr;
 		}
 		$this->getResult()->setIndexedTagName($data, 'magicword');
-		$this->getResult()->addValue('query', $property, $data);
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 	protected function appendInterwikiMap( $property, $filter ) {
@@ -232,7 +250,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$db->freeResult( $res );
 
 		$this->getResult()->setIndexedTagName( $data, 'iw' );
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 	protected function appendDbReplLagInfo( $property, $includeAll ) {
@@ -260,7 +278,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 		$result = $this->getResult();
 		$result->setIndexedTagName( $data, 'db' );
-		$result->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 	protected function appendStatistics( $property ) {
@@ -274,7 +292,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$data['activeusers'] = intval( SiteStats::activeUsers() );
 		$data['admins'] = intval( SiteStats::numberingroup('sysop') );
 		$data['jobs'] = intval( SiteStats::jobs() );
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 	protected function appendUserGroups( $property ) {
@@ -287,7 +305,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		}
 
 		$this->getResult()->setIndexedTagName( $data, 'group' );
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 	
 	protected function appendFileExtensions( $property ) {
@@ -298,7 +316,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			$data[] = array( 'ext' => $ext );
 		}
 		$this->getResult()->setIndexedTagName( $data, 'fe' );
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 	protected function appendExtensions( $property ) {
@@ -331,7 +349,25 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		}
 
 		$this->getResult()->setIndexedTagName( $data, 'ext' );
-		$this->getResult()->addValue( 'query', $property, $data );
+		return $this->getResult()->addValue( 'query', $property, $data );
+	}
+
+
+	protected function appendRightsInfo( $property ) {
+		global $wgRightsPage, $wgRightsUrl, $wgRightsText;
+		$title = Title::newFromText( $wgRightsPage );
+		$url = $title ? $title->getFullURL() : $wgRightsUrl;
+		$text = $wgRightsText;
+		if( !$text && $title ) {
+			$text = $title->getPrefixedText();
+		}
+
+		$data = array(
+			'url' => $url ? $url : '',
+			'text' => $text ?  $text : ''
+		);
+
+		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
 
@@ -352,6 +388,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 					'usergroups',
 					'extensions',
 					'fileextensions',
+					'rightsinfo',
 				)
 			),
 			'filteriw' => array(
@@ -368,17 +405,18 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		return array(
 			'prop' => array(
 				'Which sysinfo properties to get:',
-				' "general"      - Overall system information',
-				' "namespaces"   - List of registered namespaces and their canonical names',
-				' "namespacealiases" - List of registered namespace aliases',
-				' "specialpagealiases" - List of special page aliases',
-				' "magicwords"   - List of magic words and their aliases',
-				' "statistics"   - Returns site statistics',
-				' "interwikimap" - Returns interwiki map (optionally filtered)',
-				' "dbrepllag"    - Returns database server with the highest replication lag',
-				' "usergroups"   - Returns user groups and the associated permissions',
-				' "extensions"   - Returns extensions installed on the wiki',
-				' "fileextensions" - Returns list of file extensions allowed to be uploaded',
+				' general      - Overall system information',
+				' namespaces   - List of registered namespaces and their canonical names',
+				' namespacealiases - List of registered namespace aliases',
+				' specialpagealiases - List of special page aliases',
+				' magicwords   - List of magic words and their aliases',
+				' statistics   - Returns site statistics',
+				' interwikimap - Returns interwiki map (optionally filtered)',
+				' dbrepllag    - Returns database server with the highest replication lag',
+				' usergroups   - Returns user groups and the associated permissions',
+				' extensions   - Returns extensions installed on the wiki',
+				' fileextensions - Returns list of file extensions allowed to be uploaded',
+				' rightsinfo   - Returns wiki rights (license) information if available',
 			),
 			'filteriw' =>  'Return only local or only nonlocal entries of the interwiki map',
 			'showalldb' => 'List all database servers, not just the one lagging the most',

@@ -1,15 +1,16 @@
 <?php
-/** Austrian German
+/** Austrian German (Österreichisches Deutsch)
  *
  * @ingroup Language
  * @file
  *
+ * @author Revolus
  */
 
 $fallback = 'de';
 
 $messages = array(
 # Dates
-'january' => 'J�nner',
+'january' => 'Jänner',
 
 );

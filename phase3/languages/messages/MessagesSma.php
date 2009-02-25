@@ -281,19 +281,19 @@ Gïemhpes logge sïjse vihth männgan datne åtna låhka dïhte.',
 'accmailtext'            => 'Loevesbaakoe ihke ”$1” utnedh seedtedh gåajkoe $2.',
 'newarticle'             => '(Orre)',
 'noarticletext'          => 'Dïhte lea daelie ijje tjaalege sïjse dïhte bielie, dov dorje [[Special:Search/{{PAGENAME}}|ohtsedh ihke dïhte bielie nomme]] sïjse jeatjebh bielieh jallh [{{fullurl:{{FULLPAGENAME}}|action=edit}} värrhtoedimmie dïhte bielie].',
-'usercssjsyoucanpreview' => "<strong>Tiipse:</strong> Nuhtjie 'Vuesehte åvte-vuesiehtidh' båaloe ihke pryövoe dov orre CSS/JS åvte spååredh.",
+'usercssjsyoucanpreview' => "'''Tiipse:''' Nuhtjie 'Vuesehte åvte-vuesiehtidh' båaloe ihke pryövoe dov orre CSS/JS åvte spååredh.",
 'updated'                => '(Orrestahteme)',
-'note'                   => '<strong>Galtege:</strong>',
-'previewnote'            => '<strong>Dïhte lea aktegh åvte-vuesiehtidh; värrhtoedimmieh ånta ijje sjïdtedh spååredh!</strong>',
+'note'                   => "'''Galtege:'''",
+'previewnote'            => "'''Dïhte lea aktegh åvte-vuesiehtidh; värrhtoedimmieh ånta ijje sjïdtedh spååredh!'''",
 'editing'                => 'Sjiehtedimmie $1',
 'editingsection'         => 'Värrhtoedimmie $1 (sektiovne)',
 'yourtext'               => 'Dov tjaalege',
-'copyrightwarning'       => 'Tjaeleste gaajhke värrhtoedimmieh gåajkoe {{SITENAME}} lea ahte gïehtjele goh maam buektedh nuelesne $2 (vuajna $1 ihke detaaljeh). Bïjre datne ijje sïjhtedh dov tjaalege galka värrhtoedimmieh jallh kåpieeres minngesne jeatjebh daerpies voete, galka datne ijje tjaala daesnie.<br />
+'copyrightwarning'       => "Tjaeleste gaajhke värrhtoedimmieh gåajkoe {{SITENAME}} lea ahte gïehtjele goh maam buektedh nuelesne $2 (vuajna $1 ihke detaaljeh). Bïjre datne ijje sïjhtedh dov tjaalege galka värrhtoedimmieh jallh kåpieeres minngesne jeatjebh daerpies voete, galka datne ijje tjaala daesnie.<br />
 Datne luhpede mijjieh aaj datne tjaala tjaalege jïjtje, jallh kåpieeret raejeste gaaltjie goh ijje vaarjele dejstie bäjjesereaktah, jallh plïerehke.<br />
-<strong>LISSEHTE IJJE OLKESE BÄJJESEREAKTAHVAARJELE ÏEBNE NAMHTAH LUHPIE!</strong>',
-'longpagewarning'        => '<strong>VAAROEHTIDH: Dïhte bielie lea $1 kilobyteh guhkie; såemies
+'''LISSEHTE IJJE OLKESE BÄJJESEREAKTAHVAARJELE ÏEBNE NAMHTAH LUHPIE!'''",
+'longpagewarning'        => "'''VAAROEHTIDH: Dïhte bielie lea $1 kilobyteh guhkie; såemies
 gaskeviermie-låhkoeh åtna tsagkeseh värrhtoedimmie bielih stoerre jallh guhkies enn 32 kb.
-Joekedidh värrhtoedimmie sïjse unnebe sektiovneh.</strong>',
+Joekedidh värrhtoedimmie sïjse unnebe sektiovneh.'''",
 'templatesused'          => 'Maaleh nuhtjie nille dïhte bielie:',
 'templatesusedpreview'   => 'Maaleh nuhtjie sïjse dïhte åvte-vuesiehtidh:',
 'template-protected'     => '(vaarjeleme)',
@@ -435,7 +435,7 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 'imagelinks'                => 'Lïenghkeh',
 'linkstoimage'              => 'Tjuovvovasj bielieh lïenghkeh gåajkoe dïhte baalka:',
 'nolinkstoimage'            => 'Dïhte lea ijje bielieh goh nuhtjie dïhte baalka.',
-'sharedupload'              => 'Dïhte baalka lea sadde goh juaka jih dorje sjädta nuhtjie dejstie jeatjebh prosjekte.',
+'sharedupload'              => 'Dïhte baalka lea sadde goh juaka jih dorje sjädta nuhtjie dejstie jeatjebh prosjekte. $2', # $1 is the repo name, $2 is shareduploadwiki(-desc)
 'noimage'                   => 'Ijje baalka meatan dïhte nomme gååvnese, dov dorje $1.',
 'noimage-linktext'          => 'sadde dïhte',
 'uploadnewversion-linktext' => 'Sadde orre låhkoe dejstie dïhte baalka',
@@ -591,9 +591,9 @@ Vuajna $2 ihke galtege bïjre männgan sihkojuvvonh.',
 'protect_expiry_invalid'      => 'Ov-jiltiige buaorasjnuvvenaigi.',
 'protect_expiry_old'          => 'Boarasnuvvenaigi lea vaesedh.',
 'protect-unchain'             => 'Tjuevtedh jåhtaluhpie',
-'protect-text'                => 'Daesnie dorje datne vuajna jih värrhtoedimmie vaarjelidhdaltese dejstie bielie <strong><nowiki>$1</nowiki></strong>.',
-'protect-locked-access'       => 'Dov nuhtjien åtna ijje luhpie gåajkoe värrhtoedimmie tjaeleste-vaarjelidh.
-Daaletje tjaeleste-vaarjelidh sïjsestäälninge ihke bielie <strong>$1</strong> lea:',
+'protect-text'                => "Daesnie dorje datne vuajna jih värrhtoedimmie vaarjelidhdaltese dejstie bielie '''<nowiki>$1</nowiki>'''.",
+'protect-locked-access'       => "Dov nuhtjien åtna ijje luhpie gåajkoe värrhtoedimmie tjaeleste-vaarjelidh.
+Daaletje tjaeleste-vaarjelidh sïjsestäälninge ihke bielie '''$1''' lea:",
 'protect-default'             => '(åvte-veeljeme)',
 'protect-fallback'            => 'Luhpie "$1"',
 'protect-level-autoconfirmed' => 'Tjöödtjehtidh ov-registreered nuhtjienh',

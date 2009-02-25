@@ -107,7 +107,7 @@ class RevisionDeleteForm {
 			if( $wgUser->isAllowed('undelete') ) {
 				$undelete = SpecialPage::getTitleFor( 'Undelete' );
 				$links[] = $this->skin->makeKnownLinkObj( $undelete, wfMsgHtml( 'deletedhist' ),
-					wfArrayToCGI( array( 'target' => $this->page->getPrefixedUrl() ) ) );
+					wfArrayToCGI( array( 'target' => $this->page->getPrefixedDBkey() ) ) );
 			}
 			# Logs themselves don't have histories or archived revisions
 			$wgOut->setSubtitle( '<p>'.implode($links,' / ').'</p>' );
@@ -218,7 +218,7 @@ class RevisionDeleteForm {
 		} else {
 			// Run through and pull all our data in one query
 			foreach( $this->archrevs as $timestamp ) {
-				$where[] = $dbr->addQuotes( $timestamp );
+				$where[] = $dbr->timestamp( $timestamp );
 			}
 			$result = $dbr->select( 'archive', '*',
 				array(
@@ -227,18 +227,19 @@ class RevisionDeleteForm {
 					'ar_timestamp' => $where ),
 				__METHOD__ );
 			while( $row = $dbr->fetchObject( $result ) ) {
-				$revObjs[$row->ar_timestamp] = new Revision( array(
-				'page'       => $this->page->getArticleId(),
-				'id'         => $row->ar_rev_id,
-				'text'       => $row->ar_text_id,
-				'comment'    => $row->ar_comment,
-				'user'       => $row->ar_user,
-				'user_text'  => $row->ar_user_text,
-				'timestamp'  => $row->ar_timestamp,
-				'minor_edit' => $row->ar_minor_edit,
-				'text_id'    => $row->ar_text_id,
-				'deleted'    => $row->ar_deleted,
-				'len'        => $row->ar_len) );
+				$timestamp = wfTimestamp( TS_MW, $row->ar_timestamp );
+				$revObjs[$timestamp] = new Revision( array(
+					'page'       => $this->page->getArticleId(),
+					'id'         => $row->ar_rev_id,
+					'text'       => $row->ar_text_id,
+					'comment'    => $row->ar_comment,
+					'user'       => $row->ar_user,
+					'user_text'  => $row->ar_user_text,
+					'timestamp'  => $timestamp,
+					'minor_edit' => $row->ar_minor_edit,
+					'text_id'    => $row->ar_text_id,
+					'deleted'    => $row->ar_deleted,
+					'len'        => $row->ar_len) );
 			}
 			foreach( $this->archrevs as $timestamp ) {
 				if( !isset($revObjs[$timestamp]) ) {
@@ -333,7 +334,7 @@ class RevisionDeleteForm {
 		if( $this->deleteKey=='oldimage' ) {
 			// Run through and pull all our data in one query
 			foreach( $this->ofiles as $timestamp ) {
-				$where[] = $dbr->addQuotes( $timestamp.'!'.$this->page->getDBKey() );
+				$where[] = $timestamp.'!'.$this->page->getDBKey();
 			}
 			$result = $dbr->select( 'oldimage', '*',
 				array(
@@ -542,15 +543,16 @@ class RevisionDeleteForm {
 	 * @returns string
 	 */
 	private function historyLine( $rev ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 
 		$date = $wgLang->timeanddate( $rev->getTimestamp() );
 		$difflink = $del = '';
 		// Live revisions
 		if( $this->deleteKey=='oldid' ) {
-			$revlink = $this->skin->makeLinkObj( $this->page, $date, 'oldid=' . $rev->getId() );
+			$tokenParams = '&unhide=1&token='.urlencode( $wgUser->editToken( $rev->getId() ) );
+			$revlink = $this->skin->makeLinkObj( $this->page, $date, 'oldid='.$rev->getId() . $tokenParams );
 			$difflink = '(' . $this->skin->makeKnownLinkObj( $this->page, wfMsgHtml('diff'),
-				'diff=' . $rev->getId() . '&oldid=prev' ) . ')';
+				'diff=' . $rev->getId() . '&oldid=prev' . $tokenParams ) . ')';
 		// Archived revisions
 		} else {
 			$undelete = SpecialPage::getTitleFor( 'Undelete' );
@@ -560,7 +562,7 @@ class RevisionDeleteForm {
 			$difflink = '(' . $this->skin->makeKnownLinkObj( $undelete, wfMsgHtml('diff'),
 				"target=$target&diff=prev&timestamp=" . $rev->getTimestamp() ) . ')';
 		}
-
+		// Check permissions; items may be "suppressed"
 		if( $rev->isDeleted(Revision::DELETED_TEXT) ) {
 			$revlink = '<span class="history-deleted">'.$revlink.'</span>';
 			$del = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
@@ -569,8 +571,10 @@ class RevisionDeleteForm {
 				$difflink = '(' . wfMsgHtml('diff') . ')';
 			}
 		}
+		$userlink = $this->skin->revUserLink( $rev );
+		$comment = $this->skin->revComment( $rev );
 
-		return "<li> $difflink $revlink ".$this->skin->revUserLink( $rev )." ".$this->skin->revComment( $rev )."$del</li>";
+		return "<li> $difflink $revlink $userlink $comment{$del}</li>";
 	}
 
 	/**
@@ -877,7 +881,7 @@ class RevisionDeleter {
 		$Id_set = array();
 		// Run through and pull all our data in one query
 		foreach( $items as $timestamp ) {
-			$where[] = $this->dbw->addQuotes( $timestamp );
+			$where[] = $this->dbw->timestamp( $timestamp );
 		}
 		$result = $this->dbw->select( 'archive', '*',
 			array(
@@ -886,18 +890,19 @@ class RevisionDeleter {
 				'ar_timestamp' => $where ),
 			__METHOD__ );
 		while( $row = $this->dbw->fetchObject( $result ) ) {
-			$revObjs[$row->ar_timestamp] = new Revision( array(
-			'page'       => $title->getArticleId(),
-			'id'         => $row->ar_rev_id,
-			'text'       => $row->ar_text_id,
-			'comment'    => $row->ar_comment,
-			'user'       => $row->ar_user,
-			'user_text'  => $row->ar_user_text,
-			'timestamp'  => $row->ar_timestamp,
-			'minor_edit' => $row->ar_minor_edit,
-			'text_id'    => $row->ar_text_id,
-			'deleted'    => $row->ar_deleted,
-			'len'        => $row->ar_len) );
+			$timestamp = wfTimestamp( TS_MW, $row->ar_timestamp );
+			$revObjs[$timestamp] = new Revision( array(
+				'page'       => $title->getArticleId(),
+				'id'         => $row->ar_rev_id,
+				'text'       => $row->ar_text_id,
+				'comment'    => $row->ar_comment,
+				'user'       => $row->ar_user,
+				'user_text'  => $row->ar_user_text,
+				'timestamp'  => $timestamp,
+				'minor_edit' => $row->ar_minor_edit,
+				'text_id'    => $row->ar_text_id,
+				'deleted'    => $row->ar_deleted,
+				'len'        => $row->ar_len) );
 		}
 		// To work!
 		foreach( $items as $timestamp ) {
@@ -947,7 +952,7 @@ class RevisionDeleter {
 		$set = array();
 		// Run through and pull all our data in one query
 		foreach( $items as $timestamp ) {
-			$where[] = $this->dbw->addQuotes( $timestamp.'!'.$title->getDBKey() );
+			$where[] = $timestamp.'!'.$title->getDBKey();
 		}
 		$result = $this->dbw->select( 'oldimage', '*',
 			array(

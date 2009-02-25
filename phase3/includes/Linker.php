@@ -1053,7 +1053,7 @@ class Linker {
 	 * @return string
 	 */
 	public function userToolLinks( $userId, $userText, $redContribsWhenNoEdits = false, $flags = 0, $edits=null ) {
-		global $wgUser, $wgDisableAnonTalk, $wgSysopUserBans;
+		global $wgUser, $wgDisableAnonTalk, $wgSysopUserBans, $wgLang;
 		$talkable = !( $wgDisableAnonTalk && 0 == $userId );
 		$blockable = ( $wgSysopUserBans || 0 == $userId ) && !$flags & self::TOOL_LINKS_NOBLOCK;
 
@@ -1079,7 +1079,7 @@ class Linker {
 		}
 
 		if( $items ) {
-			return ' <span class="mw-usertoollinks">(' . implode( ' | ', $items ) . ')</span>';
+			return ' <span class="mw-usertoollinks">(' . $wgLang->pipeList( $items ) . ')</span>';
 		} else {
 			return '';
 		}
@@ -1783,9 +1783,7 @@ class Linker {
 		# FIXME: Per standard MW behavior, a value of '-' means to suppress the
 		# attribute, but this is broken for accesskey: that might be a useful
 		# value.
-		if( $accesskey != ''
-		&& $accesskey != '-'
-		&& !wfEmptyMsg( "accesskey-$name", $accesskey ) ) {
+		if( $accesskey != '' && $accesskey != '-' && !wfEmptyMsg( "accesskey-$name", $accesskey ) ) {
 			wfProfileOut( __METHOD__ );
 			return $accesskey;
 		}
@@ -1806,9 +1804,7 @@ class Linker {
 	public function revDeleteLink( $query = array(), $restricted = false ) {
 		$sp = SpecialPage::getTitleFor( 'Revisiondelete' );
 		$text = wfMsgHtml( 'rev-delundel' );
-		$tag = 'span';
-		if( $restricted )
-			$tag = 'strong';
+		$tag = $restricted ? 'strong' : 'span';
 		$link = $this->link( $sp, $text, array(), $query, array( 'known', 'noclasses' ) );
 		return Xml::tags( $tag, array( 'class' => 'mw-revdelundel-link' ), "($link)" );
 	}

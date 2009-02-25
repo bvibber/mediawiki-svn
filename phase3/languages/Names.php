@@ -6,7 +6,7 @@
   * @ingroup Language
   */
 /* private */ $wgLanguageNames = array(
-	'aa' => 'Afar',			# Afar
+	'aa' => 'Qafár af',	# Afar
 	'ab' => 'Аҧсуа',	# Abkhaz, should possibly add ' бысжѡа'
 	'ace' => 'Acèh',	# Aceh
 	'af' => 'Afrikaans',	# Afrikaans
@@ -105,7 +105,7 @@
 	'glk' => 'گیلکی',	# Gilaki
 	'gn' => 'Avañe\'ẽ',	# Guaraní, Paraguayan
 	'got' => '𐌲𐌿𐍄𐌹𐍃𐌺',	# Gothic
-	'grc' => 'Ἀρχαία ἑλληνικὴ', # Ancient Greece
+	'grc' => 'Ἀρχαία ἑλληνικὴ', # Ancient Greek
 	'gsw' => 'Alemannisch',	# Alemannic
 	'gu' => 'ગુજરાતી',	# Gujarati
 	'gv' => 'Gaelg',		# Manx
@@ -307,7 +307,7 @@
 	'tl' => 'Tagalog',		# Tagalog
 	#'tlh' => 'tlhIngan-Hol',	# Klingon - no interlanguage links allowed
 	'tn' => 'Setswana',		# Setswana
-	'to' => 'faka-Tonga',		# Tonga (Tonga Islands)
+	'to' => 'lea faka-Tonga',		# Tonga (Tonga Islands)
 	'tokipona' => 'Toki Pona',      # Toki Pona
 	'tp' => 'Toki Pona (deprecated:tokipona)',	# Toki Pona - non-standard language code
 	'tpi' => 'Tok Pisin',	# Tok Pisin
@@ -322,7 +322,9 @@
 	'tyv' => 'Тыва дыл',	# Tyvan
 	'tzm' => 'ⵜⴰⵎⴰⵣⵉⵖⵜ',	# (Central Morocco) Tamazight
 	'udm' => 'Удмурт',	# Udmurt
-	'ug' => 'Uyghurche‎ / ئۇيغۇرچە',	# Uyghur
+	'ug' => 'Uyghurche‎ / ئۇيغۇرچە',	# Uyghur (multiple scripts - defaults to Latin)
+	#'ug-arab' => 'ئۇيغۇرچە', # Uyghur (Arabic script). Disabled until sufficient localisation can be committed
+	'ug-latn' => 'Uyghurche‎', # Uyghur (Latin script - default)
 	'uk' => 'Українська',	# Ukrainian
 	'ur' => 'اردو',	# Urdu
 	'uz' => 'O\'zbek',	# Uzbek

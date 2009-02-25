@@ -153,8 +153,8 @@ $specialPageAliases = array(
 	'Mostlinked'                => array( 'Veel lenkte Sieden' ),
 	'Mostlinkedcategories'      => array( 'Veel bruukte Kategorien' ),
 	'Mostlinkedtemplates'       => array( 'Veel bruukte Vörlagen' ),
-	'Mostcategories'            => array( 'Sieden mit vele Kategorien' ),
 	'Mostimages'                => array( 'Veel bruukte Datein' ),
+	'Mostcategories'            => array( 'Sieden mit vele Kategorien' ),
 	'Mostrevisions'             => array( 'Faken ännerte Sieden' ),
 	'Fewestrevisions'           => array( 'Kuum ännerte Sieden' ),
 	'Shortpages'                => array( 'Korte Sieden' ),
@@ -213,6 +213,8 @@ $messages = array(
 'tog-highlightbroken'         => 'Verwies op leddige Sieten hervörheven',
 'tog-justify'                 => 'Text as Blocksatz',
 'tog-hideminor'               => 'Kene lütten Ännern in letzte Ännern wiesen',
+'tog-hidepatrolled'           => 'Nakeken Ännern bi „Toletzt ännert“ nich wiesen',
+'tog-newpageshidepatrolled'   => 'Nakeken Ännern bi „Ne’e Sieden“ nich wiesen',
 'tog-extendwatchlist'         => 'Utwiedt Oppasslist',
 'tog-usenewrc'                => 'Erwiederte letzte Ännern (nich för alle Browser bruukbor)',
 'tog-numberheadings'          => 'Överschrieven automatsch nummereern',
@@ -247,6 +249,7 @@ $messages = array(
 'tog-watchlisthideminor'      => 'Lütte Ännern op de Oppasslist nich wiesen',
 'tog-watchlisthideliu'        => 'Ännern vun anmellt Brukers nich wiesen',
 'tog-watchlisthideanons'      => 'Ännern vun anonyme Brukers nich wiesen',
+'tog-watchlisthidepatrolled'  => 'Nakeken Ännern op de Oppasslist nich wiesen',
 'tog-nolangconversion'        => 'Variantenkonverschoon utschalten',
 'tog-ccmeonemails'            => 'vun Nettbreven, de ik wegschick, mi sülvst Kopien tostüren',
 'tog-diffonly'                => "Na ''{{int:showdiff}}'' nich de kumplette Sied wiesen",
@@ -382,14 +385,14 @@ un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'talkpagelinktext'  => 'Diskuschoon',
 'specialpage'       => 'Spezialsiet',
 'personaltools'     => 'Persönliche Warktüüch',
-'postcomment'       => 'Kommentar hentofögen',
+'postcomment'       => 'Afsnidd tofögen',
 'articlepage'       => 'Artikel',
 'talk'              => 'Diskuschoon',
 'views'             => 'Ansichten',
 'toolbox'           => 'Warktüüch',
 'userpage'          => 'Brukersiet ankieken',
 'projectpage'       => 'Meta-Text',
-'imagepage'         => 'Bildsiet',
+'imagepage'         => 'Dateisied',
 'mediawikipage'     => 'Systemnaricht ankieken',
 'templatepage'      => 'Vörlaag ankieken',
 'viewhelppage'      => 'Helpsiet ankieken',
@@ -466,7 +469,7 @@ un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'nstab-main'      => 'Artikel',
 'nstab-user'      => 'Brukersied',
 'nstab-media'     => 'Media',
-'nstab-special'   => 'Spezial',
+'nstab-special'   => 'Spezialsied',
 'nstab-project'   => 'Över',
 'nstab-image'     => 'Bild',
 'nstab-mediawiki' => 'Naricht',
@@ -476,7 +479,9 @@ un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 
 # Main script and global functions
 'nosuchaction'      => 'Disse Aktschoon gifft dat nich',
-'nosuchactiontext'  => 'Disse Aktschoon warrt vun de MediaWiki-Software nich ünnerstütt',
+'nosuchactiontext'  => 'De in de URL angeven Akschoon warrt nich ünnerstütt.
+Villicht hest du in de URL en Tippfehler oder büst en verkehrten Lenk nagahn.
+Dat kann aver ok op en Bug in de Software henwiesen, de op {{SITENAME}} bruukt warrt.',
 'nosuchspecialpage' => 'Disse Spezialsiet gifft dat nich',
 'nospecialpagetext' => 'Disse Spezialsiet warrt vun de MediaWiki-Software nich ünnerstütt',
 
@@ -540,7 +545,7 @@ Query: $2',
 'protectedinterface'   => 'Op disse Siet staht Narichtentexte för dat System un de Siet is dorüm sparrt.',
 'editinginterface'     => "'''Wohrschau:''' Disse Siet bargt Text, de vun de MediaWiki-Software för ehr Böverflach bruukt warrt.
 Wat du hier ännerst, warkt sik op dat kumplette Wiki ut.
-Wenn du Text översetten wist, de betherto noch gornich översett is, denn maak dat opbest op [http://translatewiki.net/wiki/Main_Page?setlang=nds Betawiki], dat Översett-Projekt vun MediaWiki.",
+Wenn du Text översetten wist, de betherto noch gornich översett is, denn maak dat opbest op [http://translatewiki.net/wiki/Main_Page?setlang=nds translatewiki.net], dat Översett-Projekt vun MediaWiki.",
 'sqlhidden'            => '(SQL-Affraag versteken)',
 'cascadeprotected'     => 'Disse Siet is sperrt un kann nich ännert warrn. Dat kummt dorvun dat se in disse {{PLURAL:$1|Siet|Sieden}} inbunnen is, de över Kaskadensperr schuult {{PLURAL:$1|is|sünd}}:
 $2',
@@ -551,16 +556,16 @@ $2',
 As Grund is angeven: ''$2''.",
 
 # Virus scanner
-'virus-badscanner'     => 'Slechte Konfiguratschoon: unbekannten Virenscanner: <i>$1</i>',
+'virus-badscanner'     => "Slechte Konfiguratschoon: unbekannten Virenscanner: ''$1''",
 'virus-scanfailed'     => 'Scan hett nich klappt (Code $1)',
 'virus-unknownscanner' => 'Unbekannten Virenscanner:',
 
 # Login and logout pages
 'logouttitle'                => 'Bruker-Afmellen',
-'logouttext'                 => '<strong>Du büst nu afmellt.</strong>
+'logouttext'                 => "'''Du büst nu afmellt.'''
 
 Du kannst {{SITENAME}} nu anonym wiederbruken oder di ünner dissen oder en annern Brukernaam wedder [[Special:UserLogin|anmellen]].
-Denk dor an, dat welk Sieden ünner Ümstänn noch jümmer so wiest warrn köönt, as wenn du anmellt weerst. Dat ännert sik, wenn du den Cache vun dien Browser leddig maakst.',
+Denk dor an, dat welk Sieden ünner Ümstänn noch jümmer so wiest warrn köönt, as wenn du anmellt weerst. Dat ännert sik, wenn du den Cache vun dien Browser leddig maakst.",
 'welcomecreation'            => '== Willkamen, $1! ==
 Dien Brukerkonto is nu inricht.
 Vergeet nich, de Sied för di persönlich [[Special:Preferences|intostellen]].',
@@ -595,11 +600,12 @@ Vergeet nich, de Sied för di persönlich [[Special:Preferences|intostellen]].',
 'yourvariant'                => 'Dien Spraak',
 'yournick'                   => 'Dien Ökelnaam (för dat Ünnerschrieven)',
 'badsig'                     => 'De Signatur is nich korrekt, kiek nochmal na de HTML-Tags.',
-'badsiglength'               => 'De Ünnerschrift is to lang; de schall weniger as $1 {{PLURAL:$1|Teken|Tekens}} hebben.',
+'badsiglength'               => 'Diene Ünnerschrift is to lang; de schall weniger as $1 {{PLURAL:$1|Teken|Tekens}} hebben.',
 'yourgender'                 => 'Geslecht:',
 'gender-unknown'             => 'Nich angeven',
 'gender-male'                => 'Mann',
 'gender-female'              => 'Fro',
+'prefs-help-gender'          => 'Mutt nich angeven warrn: Warrt bruukt, dat di de Software korrekt ansnacken kann. Disse Informatschoon is vör annere Brukers sichtbor.',
 'email'                      => 'Nettbreef',
 'prefs-help-realname'        => 'De echte Naam mutt nich angeven warrn. Wenn du em angiffst, warrt de Naam bruukt, dat diene Arbeit di torekent warrn kann.',
 'loginerror'                 => 'Fehler bi dat Anmellen',
@@ -611,6 +617,7 @@ Vergeet nich, de Sied för di persönlich [[Special:Preferences|intostellen]].',
 'loginsuccesstitle'          => 'Anmellen hett Spood',
 'loginsuccess'               => 'Du büst nu as „$1“ bi {{SITENAME}} anmellt.',
 'nosuchuser'                 => 'Den Brukernaam „$1“ gifft dat nich.
+Brukernaams maakt en Ünnerscheed twischen groot un lütt schrevene Bookstaven.
 Kiek de Schrievwies na oder [[Special:UserLogin/signup|mell di as ne’en Bruker an]].',
 'nosuchusershort'            => 'De Brukernaam „<nowiki>$1</nowiki>“ existeert nich. Prööv de Schrievwies.',
 'nouserspecified'            => 'Du musst en Brukernaam angeven',
@@ -631,7 +638,7 @@ Ehrdat E-Mails vun annere Brukers över de E-Mail-Funkschoon kamen köönt, mutt
 In de E-Mail steiht, wat du doon musst.',
 'throttled-mailpassword'     => 'Binnen de {{PLURAL:$1|letzte Stünn|letzten $1 Stünnen}} is al mal en neet Passwoort toschickt worrn. Dat disse Funkschoon nich missbruukt warrt, kann blot {{PLURAL:$1|jede Stünn|alle $1 Stünnen}} een Maal en neet Passwoort toschickt warrn.',
 'mailerror'                  => 'Fehler bi dat Sennen vun de E-Mail: $1',
-'acct_creation_throttle_hit' => 'Du hest al {{PLURAL:$1|en Brukerkonto|$1 Brukerkontos}} anleggt. Du kannst nich noch mehr anleggen.',
+'acct_creation_throttle_hit' => 'Ünner disse IP-Adress hebbt Lüüd in de lesten 24 Stünnen al {{PLURAL:$1|een Brukerkonto|$1 Brukerkontos}} anleggt. Mehr is nich verlöövt in disse Tied. Dorüm köönt Brukers ünner disse IP-Adress eerstmal keen Brukerkonten mehr opstellen.',
 'emailauthenticated'         => 'Diene E-Mail-Adress is bestätigt worrn: $2, $3.',
 'emailnotauthenticated'      => 'Dien E-Mail-Adress is noch nich bestätigt. Disse E-Mail-Funkschonen kannst du eerst bruken, wenn de Adress bestätigt is.',
 'noemailprefs'               => 'Geev en E-Mail-Adress an, dat du disse Funkschonen bruken kannst.',
@@ -662,6 +669,7 @@ Wenn du dat Brukerkonto gor nich hebben wullst, denn is disse Naricht egaal för
 'resetpass-wrong-oldpass'   => 'Dat Passwoord (temporär oder aktuell) gellt nich.
 Villicht hest du dien Passwoord al ännert oder noch wedder en nee temporär Passwoord anfeddert.',
 'resetpass-temp-password'   => 'Temporär Passwoord:',
+'resetpass-no-others'       => 'Du kannst nich anner Lüüd ehr Passwoord trüchsetten.',
 
 # Edit page toolbar
 'bold_sample'     => 'Fetten Text',
@@ -680,7 +688,7 @@ Villicht hest du dien Passwoord al ännert oder noch wedder en nee temporär Pas
 'nowiki_tip'      => 'Unformateerten Text',
 'image_sample'    => 'Bispeel.jpg',
 'image_tip'       => 'Bild-Verwies',
-'media_sample'    => 'Bispeel.mp3',
+'media_sample'    => 'Bispeel.ogg',
 'media_tip'       => 'Mediendatei-Verwies',
 'sig_tip'         => 'Diene Signatur mit Tietstempel',
 'hr_tip'          => 'Waagrechte Lien (sporsam bruken)',
@@ -742,37 +750,40 @@ Wenn du över de Sperr snacken wist, denn mell di bi $1 oder een vun de [[{{Medi
 'loginreqlink'                     => 'anmellen',
 'loginreqpagetext'                 => 'Du musst di $1, dat du annere Sieden ankieken kannst.',
 'accmailtitle'                     => 'Passwoort is toschickt worrn.',
-'accmailtext'                      => 'Dat Passwoord vun $1 is $2 tostüürt worrn.',
+'accmailtext'                      => "En tofällig Passwoord för [[User talk:$1|$1]] is $2 tostüürt worrn.
+
+Dat Passwoord för dit Brukerkonto kann na dat Anmellen ünner ''[[Special:ChangePassword|Passwoord ännern]]'' ännert warrn.",
 'newarticle'                       => '(Nee)',
 'newarticletext'                   => 'Hier den Text vun de ne’e Siet indregen. Jümmer in ganze Sätz schrieven un kene Texten vun Annern, de en Oorheverrecht ünnerliggt, hierher kopeern.',
 'anontalkpagetext'                 => "---- ''Dit is de Diskuschoonssiet vun en nich anmellt Bruker, de noch keen Brukerkonto anleggt hett oder dat jüst nich bruukt.
 Wi mööt hier de numerische IP-Adress verwennen, üm den Bruker to identifizeern.
 So en Adress kann vun verscheden Brukern bruukt warrn.
 Wenn du en anonymen Bruker büst un meenst, dat disse Kommentaren nich an di richt sünd, denn [[Special:UserLogin/signup|legg di en Brukerkonto an]] oder [[Special:UserLogin|mell di an]], dat dat Problem nich mehr dor is.''",
-'noarticletext'                    => 'Dor is opstunns keen Text op disse Siet. Du kannst [[Special:Search/{{PAGENAME}}|na dissen Utdruck in annere Sieden söken]] oder [{{fullurl:{{FULLPAGENAME}}|action=edit}} disse Siet ännern].',
+'noarticletext'                    => 'Dor is opstunns keen Text op disse Sied. Du kannst [[Special:Search/{{PAGENAME}}|na dissen Utdruck in annere Sieden söken]], <span class="plainlinks">[{{fullurl:Special:Log|page={{urlencode:{{FULLPAGENAME}}}}}} in de Logböker söken],
+oder [{{fullurl:{{FULLPAGENAME}}|action=edit}} disse Sied ännern]</span>.',
 'userpage-userdoesnotexist'        => 'Dat Brukerkonto „$1“ gifft dat noch nich. Överlegg, wat du disse Siet würklich nee opstellen/ännern wullt.',
 'clearyourcache'                   => "'''Denk doran:''' No den Spiekern muttst du dien Browser noch seggen, de niege Version to laden: '''Mozilla/Firefox:''' ''Strg-Shift-R'', '''IE:''' ''Strg-F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
-'usercssjsyoucanpreview'           => '<strong>Tipp:</strong> Bruuk den Vörschau-Knoop, üm dien nieg CSS/JS vör dat Spiekern to testen.',
+'usercssjsyoucanpreview'           => "'''Tipp:''' Bruuk den Vörschau-Knoop, üm dien nieg CSS/JS vör dat Spiekern to testen.",
 'usercsspreview'                   => "'''Denk doran, dat du blots en Vörschau vun dien CSS ankickst, dat is noch nich spiekert!'''",
 'userjspreview'                    => "'''Denk doran, dat du blots en Vörschau vun dien JS ankiekst, dat is noch nich spiekert!'''",
 'userinvalidcssjstitle'            => "'''Wohrschau:''' Dat gifft keen Skin „$1“. Denk dor an, dat .css- un .js-Sieden  för Brukers mit en lütten Bookstaven anfangen mööt, to’n Bispeel ''{{ns:user}}:Brukernaam/monobook.css'' un nich ''{{ns:user}}:Brukernaam/Monobook.css''.",
 'updated'                          => '(Ännert)',
-'note'                             => '<strong>Wohrschau:</strong>',
-'previewnote'                      => '<strong>Dit is blots en Vörschau, de Siet is noch nich spiekert!</strong>',
+'note'                             => "'''Wohrschau:'''",
+'previewnote'                      => "'''Dit is blots en Vörschau, de Siet is noch nich spiekert!'''",
 'previewconflict'                  => 'Disse Vörschau wiest den Inholt vun dat Textfeld baven; so warrt de Siet utseihn, wenn du nu spiekerst.',
-'session_fail_preview'             => '<strong>Deit uns leed! Wi kunnen dien Ännern nich spiekern. Diene Sitzungsdaten weren weg.
-Versöök dat noch wedder. Wenn dat noch jümmer nich geiht, denn versöök di [[Special:UserLogout|aftomellen]] un denn wedder antomellen.</strong>',
-'session_fail_preview_html'        => "<strong>Deit uns leed! Wi kunnen dien Ännern nich spiekern, de Sitzungsdaten sünd verloren gahn.</strong>
+'session_fail_preview'             => "'''Deit uns leed! Wi kunnen dien Ännern nich spiekern. Diene Sitzungsdaten weren weg.
+Versöök dat noch wedder. Wenn dat noch jümmer nich geiht, denn versöök di [[Special:UserLogout|aftomellen]] un denn wedder antomellen.'''",
+'session_fail_preview_html'        => "'''Deit uns leed! Wi kunnen dien Ännern nich spiekern, de Sitzungsdaten sünd verloren gahn.'''
 
 ''In {{SITENAME}} is dat Spiekern vun rein HTML verlöövt, dorvun is de Vörschau utblennt, dat JavaScript-Angrepen nich mööglich sünd.''
 
-<strong>Versöök dat noch wedder un klick noch wedder op „Siet spiekern“. Wenn dat Problem noch jümmer dor is, [[Special:UserLogout|mell di af]] un denn wedder an.</strong>",
-'token_suffix_mismatch'            => '<strong>Dien Ännern sünd afwiest worrn. Dien Browser hett welk Teken in de Kuntrull-Tekenreeg kaputt maakt.
+'''Versöök dat noch wedder un klick noch wedder op „Siet spiekern“. Wenn dat Problem noch jümmer dor is, [[Special:UserLogout|mell di af]] un denn wedder an.'''",
+'token_suffix_mismatch'            => "'''Dien Ännern sünd afwiest worrn. Dien Browser hett welk Teken in de Kuntrull-Tekenreeg kaputt maakt.
 Wenn dat so spiekert warrt, kann dat angahn, dat noch mehr Teken in de Sied kaputt gaht.
-Dat kann to’n Bispeel dor vun kamen, dat du en anonymen Proxy-Deenst bruukst, de wat verkehrt maakt.</strong>',
+Dat kann to’n Bispeel dor vun kamen, dat du en anonymen Proxy-Deenst bruukst, de wat verkehrt maakt.'''",
 'editing'                          => 'Ännern vun $1',
 'editingsection'                   => 'Ännern vun $1 (Afsatz)',
-'editingcomment'                   => 'Ännern vun $1 (Kommentar)',
+'editingcomment'                   => 'Ännern vun $1 (nee Afsnidd)',
 'editconflict'                     => 'Konflikt bi dat Bearbeiden: $1',
 'explainconflict'                  => 'En anner Bruker hett disse Siet ännert, no de Tied dat du anfungen hest, de Siet to bearbeiden.
 Dat Textfeld baven wiest de aktuelle Siet.
@@ -783,28 +794,28 @@ Föög diene Ännern in dat Textfeld baven in.
 'yourtext'                         => 'Dien Text',
 'storedversion'                    => 'Spiekerte Version',
 'nonunicodebrowser'                => "'''Wohrschau: Dien Browser kann keen Unicode, bruuk en annern Browser, wenn du en Siet ännern wist.'''",
-'editingold'                       => '<strong>Wohrscho: Du bearbeidst en ole Version vun disse Siet.
-Wenn du spiekerst, warrn alle niegeren Versionen överschrieven.</strong>',
+'editingold'                       => "'''Wohrscho: Du bearbeidst en ole Version vun disse Siet.
+Wenn du spiekerst, warrn alle niegeren Versionen överschrieven.'''",
 'yourdiff'                         => 'Ünnerscheed',
-'copyrightwarning'                 => 'Bitte pass op, dat all diene Bidrääg to {{SITENAME}} so ansehn warrt, dat se ünner de $2 staht (kiek op $1 för de Details). Wenn du nich willst, dat diene Bidrääg ännert un verdeelt warrt, denn schallst du hier man nix bidragen. Du seggst ok to, dat du dat hier sülvst schreven hest, oder dat du dat ut en fre’e Born (to’n Bispeel gemeenfree oder so wat in disse Oort) kopeert hest.
-<strong>Stell hier nix rin, wat ünner Oorheverrecht steiht, wenn de, de dat Oorheverrecht hett, di dorto keen Verlööf geven hett!</strong>',
+'copyrightwarning'                 => "Bitte pass op, dat all diene Bidrääg to {{SITENAME}} so ansehn warrt, dat se ünner de $2 staht (kiek op $1 för de Details). Wenn du nich willst, dat diene Bidrääg ännert un verdeelt warrt, denn schallst du hier man nix bidragen. Du seggst ok to, dat du dat hier sülvst schreven hest, oder dat du dat ut en fre’e Born (to’n Bispeel gemeenfree oder so wat in disse Oort) kopeert hest.
+'''Stell hier nix rin, wat ünner Oorheverrecht steiht, wenn de, de dat Oorheverrecht hett, di dorto keen Verlööf geven hett!'''",
 'copyrightwarning2'                => "Dien Text, de du op {{SITENAME}} stellen wullst, könnt vun elkeen ännert oder wegmaakt warrn.
 Wenn du dat nich wullst, dröffst du dien Text hier nich apentlich maken.<br />
 
 Du bestätigst ok, dat du den Text sülvst schreven hest oder ut en „Public Domain“-Born oder en annere fre'e Born kopeert hest (Kiek ok $1 för Details).
-<strong>Kopeer kene Warken, de enen Oorheverrecht ünnerliggt, ahn Verlööv vun de Copyright-Inhebbers!</strong>",
-'longpagewarning'                  => '<strong>Wohrscho: Disse Siet is $1 kB groot; en poor Browser köönt Probleme hebben, Sieten to bearbeiden, de grötter as 32 kB sünd.
-Bedenk of disse Siet vilicht in lüttere Afsnitten opdeelt warrn kann.</strong>',
+'''Kopeer kene Warken, de enen Oorheverrecht ünnerliggt, ahn Verlööv vun de Copyright-Inhebbers!'''",
+'longpagewarning'                  => "'''Wohrscho: Disse Siet is $1 kB groot; en poor Browser köönt Probleme hebben, Sieten to bearbeiden, de grötter as 32 kB sünd.
+Bedenk of disse Siet vilicht in lüttere Afsnitten opdeelt warrn kann.'''",
 'longpageerror'                    => "'''Fehler: Dien Text is $1 Kilobytes lang. Dat is länger as dat Maximum vun $2 Kilobytes. Kann den Text nich spiekern.'''",
-'readonlywarning'                  => '<strong>Wohrscho: De Datenbank is för Pleegarbeiden sparrt worrn, so dat du de Sied en Stoot nich
-spiekern kannst. Seker di den Text un versöök dat later noch wedder.</strong>
+'readonlywarning'                  => "'''Wohrscho: De Datenbank is för Pleegarbeiden sparrt worrn, so dat du de Sied en Stoot nich
+spiekern kannst. Seker di den Text un versöök dat later noch wedder.'''
 
-As Grund is angeven: $1',
-'protectedpagewarning'             => '<strong>Wohrscho: Disse Siet is sparrt worrn, so dat blots
-Bruker mit Sysop-Rechten doran arbeiden könnt.</strong>',
+As Grund is angeven: $1",
+'protectedpagewarning'             => "'''Wohrscho: Disse Siet is sparrt worrn, so dat blots
+Bruker mit Sysop-Rechten doran arbeiden könnt.'''",
 'semiprotectedpagewarning'         => "'''Henwies:''' Disse Siet is sparrt. Blots anmellt Brukers köönt de Siet ännern.",
 'cascadeprotectedwarning'          => "'''Wohrschau:''' Disse Siet is so sparrt, dat blot Brukers mit Admin-Status ehr ännern köönt. Dat liggt dor an, dat se in disse {{PLURAL:$1|kaskadensparrte Siet|kaskadensparrten Sieden}} inbunnen is:",
-'titleprotectedwarning'            => '<strong>WOHRSCHAU: Disse Siet is schuult, dat blot welk Brukergruppen ehr anleggen köönt.</strong>',
+'titleprotectedwarning'            => "'''WOHRSCHAU: Disse Sied is schuult, dat blot welk [[Special:ListGroupRights|Brukergruppen]] ehr anleggen köönt.'''",
 'templatesused'                    => 'Vörlagen de in disse Siet bruukt warrt:',
 'templatesusedpreview'             => 'Vörlagen de in disse Vörschau bruukt warrt:',
 'templatesusedsection'             => 'Vörlagen de in dissen Afsnitt bruukt warrt:',
@@ -894,53 +905,54 @@ Villicht is se löscht worrn oder hett en annern Naam kregen.
 Versöök [[Special:Search|dat Söken]] na annere relevante Sieden.',
 
 # Revision deletion
-'rev-deleted-comment'         => '(Kommentar rutnahmen)',
-'rev-deleted-user'            => '(Brukernaam rutnahmen)',
-'rev-deleted-event'           => '(Logbook-Indrag rutnahmen)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
-Disse Version is nu wegdaan un is nich mehr apen in’t Archiv to sehn.
-Details dorto staht in dat [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbook].</div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
-Disse Version is wegsmeten worrn un is nich mehr apen to sehn.
+'rev-deleted-comment'            => '(Kommentar rutnahmen)',
+'rev-deleted-user'               => '(Brukernaam rutnahmen)',
+'rev-deleted-event'              => '(Logbook-Indrag rutnahmen)',
+'rev-deleted-text-permission'    => 'Disse Version is nu wegdaan un is nich mehr apen in’t Archiv to sehn.
+Details dorto staht in dat [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbook].',
+'rev-deleted-text-view'          => 'Disse Version is wegsmeten worrn un is nich mehr apen to sehn.
 As Administrater op {{SITENAME}} kannst du ehr aver noch jümmer sehn.
-Mehr över dat Wegsmieten is in dat [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbook] to finnen.</div>',
-'rev-delundel'                => 'wiesen/versteken',
-'revisiondelete'              => 'Versionen wegsmieten/wedderhalen',
-'revdelete-nooldid-title'     => 'kene Versionen dor, de passt',
-'revdelete-nooldid-text'      => 'Du hest keen Version för disse Akschoon angeven, de utwählte Version gifft dat nich oder du versöchst, de ne’este Version wegtodoon.',
-'revdelete-nologtype-title'   => 'Keen Logbooktyp angeven',
-'revdelete-selected'          => "'''{{PLURAL:$2|Wählte Version|Wählte Versionen}} vun [[:$1]]:'''",
-'logdelete-selected'          => "'''{{PLURAL:$1|Wählt Logbook-Indrag|Wählte Logbook-Indrääg}}:'''",
-'revdelete-text'              => "'''Wegsmetene Versionen staht noch jümmer in de Versionsgeschicht, sünd aver nich mehr apen intosehn.'''
+Mehr över dat Wegsmieten is in dat [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbook] to finnen.',
+'rev-delundel'                   => 'wiesen/versteken',
+'revisiondelete'                 => 'Versionen wegsmieten/wedderhalen',
+'revdelete-nooldid-title'        => 'kene Versionen dor, de passt',
+'revdelete-nooldid-text'         => 'Du hest keen Version för disse Akschoon angeven, de utwählte Version gifft dat nich oder du versöchst, de ne’este Version wegtodoon.',
+'revdelete-nologtype-title'      => 'Keen Logbooktyp angeven',
+'revdelete-nologtype-text'       => 'Du hest keen Logtyp för disse Akschoon angeven.',
+'revdelete-toomanytargets-title' => 'To veel Telen',
+'revdelete-nologid-title'        => 'Ungüllig Logindrag',
+'revdelete-selected'             => "'''{{PLURAL:$2|Wählte Version|Wählte Versionen}} vun [[:$1]]:'''",
+'logdelete-selected'             => "'''{{PLURAL:$1|Wählt Logbook-Indrag|Wählte Logbook-Indrääg}}:'''",
+'revdelete-text'                 => "'''Wegsmetene Versionen staht noch jümmer in de Versionsgeschicht, sünd aver nich mehr apen intosehn.'''
 
 {{SITENAME}}-Administraters köönt de Sieden noch jümmer sehn un ok wedderhalen, solang dat nich extra fastleggt is, dat ok Administraters dat nich mehr mehr dröfft.",
-'revdelete-legend'            => 'Inschränkungen för de Sichtborkeit setten',
-'revdelete-hide-text'         => 'Versiontext versteken',
-'revdelete-hide-name'         => 'Akschoon un Teel versteken',
-'revdelete-hide-comment'      => 'Kommentar versteken',
-'revdelete-hide-user'         => 'Brukernaam/IP vun’n Schriever versteken',
-'revdelete-hide-restricted'   => 'Disse Inschränkungen ok för Administraters gellen laten un dit Formular sperrn',
-'revdelete-suppress'          => 'Grund för dat Wegsmieten ok för Administraters versteken',
-'revdelete-hide-image'        => 'Dateiinholt versteken',
-'revdelete-unsuppress'        => 'Inschränkungen för wedderhaalte Versionen wegdoon',
-'revdelete-log'               => 'Kommentar:',
-'revdelete-submit'            => 'Op utwählte Version anwennen',
-'revdelete-logentry'          => 'Sichtborkeit vun Version för [[$1]] ännert',
-'logdelete-logentry'          => 'Sichtborkeit vun Begeevnis för [[$1]] ännert',
-'revdelete-success'           => "'''Sichtborkeit vun Version mit Spood ännert.'''",
-'logdelete-success'           => "'''Sichtborkeit in Logbook mit Spood ännert.'''",
-'revdel-restore'              => 'Sichtborkeit ännern',
-'pagehist'                    => 'Versionshistorie',
-'deletedhist'                 => 'wegsmetene Versionen',
-'revdelete-content'           => 'Inholt',
-'revdelete-summary'           => 'Tosamenfaten',
-'revdelete-uname'             => 'Brukernaam',
-'revdelete-restricted'        => 'Inschränkungen för Administraters instellt',
-'revdelete-unrestricted'      => 'Inschränkungen för Administraters rutnahmen',
-'revdelete-hid'               => 'hett $1 versteken',
-'revdelete-unhid'             => 'hett $1 wedder sichtbor maakt',
-'revdelete-log-message'       => '$1 för $2 {{PLURAL:$2|Version|Versionen}}',
-'logdelete-log-message'       => '$1 för $2 {{PLURAL:$2|Logbook-Indrag|Logbook-Indrääg}}',
+'revdelete-legend'               => 'Inschränkungen för de Sichtborkeit setten',
+'revdelete-hide-text'            => 'Versiontext versteken',
+'revdelete-hide-name'            => 'Akschoon un Teel versteken',
+'revdelete-hide-comment'         => 'Kommentar versteken',
+'revdelete-hide-user'            => 'Brukernaam/IP vun’n Schriever versteken',
+'revdelete-hide-restricted'      => 'Disse Inschränkungen ok för Administraters gellen laten un dit Formular sperrn',
+'revdelete-suppress'             => 'Grund för dat Wegsmieten ok för Administraters versteken',
+'revdelete-hide-image'           => 'Dateiinholt versteken',
+'revdelete-unsuppress'           => 'Inschränkungen för wedderhaalte Versionen wegdoon',
+'revdelete-log'                  => 'Kommentar:',
+'revdelete-submit'               => 'Op utwählte Version anwennen',
+'revdelete-logentry'             => 'Sichtborkeit vun Version för [[$1]] ännert',
+'logdelete-logentry'             => 'Sichtborkeit vun Begeevnis för [[$1]] ännert',
+'revdelete-success'              => "'''Sichtborkeit vun Version mit Spood ännert.'''",
+'logdelete-success'              => "'''Sichtborkeit in Logbook mit Spood ännert.'''",
+'revdel-restore'                 => 'Sichtborkeit ännern',
+'pagehist'                       => 'Versionshistorie',
+'deletedhist'                    => 'wegsmetene Versionen',
+'revdelete-content'              => 'Inholt',
+'revdelete-summary'              => 'Tosamenfaten',
+'revdelete-uname'                => 'Brukernaam',
+'revdelete-restricted'           => 'Inschränkungen för Administraters instellt',
+'revdelete-unrestricted'         => 'Inschränkungen för Administraters rutnahmen',
+'revdelete-hid'                  => 'hett $1 versteken',
+'revdelete-unhid'                => 'hett $1 wedder sichtbor maakt',
+'revdelete-log-message'          => '$1 för $2 {{PLURAL:$2|Version|Versionen}}',
+'logdelete-log-message'          => '$1 för $2 {{PLURAL:$2|Logbook-Indrag|Logbook-Indrääg}}',
 
 # Suppression log
 'suppressionlog'     => 'Oversight-Logbook',
@@ -1042,7 +1054,7 @@ Seh to, dat de Versionsgeschicht vun’n Artikel vun de Historie her bi de Reeg 
 'searchresults'                    => 'Söökresultaten',
 'searchresults-title'              => 'Söökresultaten för „$1“',
 'searchresulttext'                 => 'För mehr Informatschonen över {{SITENAME}}, kiek [[{{MediaWiki:Helppage}}|{{SITENAME}} dörsöken]].',
-'searchsubtitle'                   => 'För de Söökanfraag „[[:$1]]“',
+'searchsubtitle'                   => 'Du hest na „[[:$1]]“ söcht ([[Special:Prefixindex/$1|all Sieden, de mit „$1“ anfangt]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|all Sieden, de na „$1“ wiest]])',
 'searchsubtitleinvalid'            => 'För de Söökanfraag „$1“',
 'noexactmatch'                     => 'Gifft kene Siet mit dissen Naam. Bruuk de Vulltextsöök oder legg de Siet [[:$1|nee]] an.',
 'noexactmatch-nocreate'            => "'''Gifft kene Siet mit’n Titel „$1“.'''",
@@ -1153,7 +1165,7 @@ de aver nich jümmer den aktuellsten Stand weerspegelt.<p>',
 'stub-threshold'            => 'Grött ünner de Lenken op <a href="#" class="stub">Stubbens un lütte Sieden</a> farvlich kenntekent warrn schöölt (in Bytes):',
 'recentchangesdays'         => 'Daag, de de List vun de „Ne’esten Ännern“ wiesen schall:',
 'recentchangesdays-max'     => '(Maximal $1 {{PLURAL:$1|Dag|Daag}})',
-'recentchangescount'        => 'Antall „Letzte Ännern“',
+'recentchangescount'        => 'Antall Ännern, de bi Letzte Ännern, in Versionsgeschichten un in Logböker wiest warrt:',
 'savedprefs'                => 'Allens spiekert.',
 'timezonelegend'            => 'Tietrebeet',
 'timezonetext'              => 'Giff de Antall vun de Stünnen an, de twüschen dien Tiedrebeet un UTC liggen.',
@@ -1164,6 +1176,16 @@ de aver nich jümmer den aktuellsten Stand weerspegelt.<p>',
 'timezoneoffset'            => 'Ünnerscheed¹:',
 'servertime'                => 'Tied op den Server:',
 'guesstimezone'             => 'Ut den Browser övernehmen',
+'timezoneregion-africa'     => 'Afrika',
+'timezoneregion-america'    => 'Amerika',
+'timezoneregion-antarctica' => 'Antarktis',
+'timezoneregion-arctic'     => 'Arktis',
+'timezoneregion-asia'       => 'Asien',
+'timezoneregion-atlantic'   => 'Atlantisch Ozean',
+'timezoneregion-australia'  => 'Australien',
+'timezoneregion-europe'     => 'Europa',
+'timezoneregion-indian'     => 'Indisch Ozean',
+'timezoneregion-pacific'    => 'Pazifisch Ozean',
 'allowemail'                => 'Nettbreven vun annere Brukers annehmen',
 'prefs-searchoptions'       => 'Söökopschonen',
 'prefs-namespaces'          => 'Naamrüüm',
@@ -1178,7 +1200,7 @@ de aver nich jümmer den aktuellsten Stand weerspegelt.<p>',
 'userrights-lookup-user'      => 'Brukergruppen verwalten',
 'userrights-user-editname'    => 'Brukernaam ingeven:',
 'editusergroup'               => 'Brukergruppen bearbeiden',
-'editinguser'                 => "Ännern vun Brukerrechten vun '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'editinguser'                 => "Ännern vun Brukerrechten vun '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'    => 'Brukergruppen ännern',
 'saveusergroups'              => 'Brukergruppen spiekern',
 'userrights-groupsmember'     => 'Liddmaat vun:',
@@ -1271,6 +1293,7 @@ de aver nich jümmer den aktuellsten Stand weerspegelt.<p>',
 'right-userrights'           => 'Brukerrechten ännern',
 'right-userrights-interwiki' => 'Brukerrechten op annere Wikis ännern',
 'right-siteadmin'            => 'Datenbank sperren un wedder apen maken',
+'right-reset-passwords'      => 'Anner Lüüd ehr Passwoord trüchsetten',
 
 # User rights log
 'rightslog'      => 'Brukerrechten-Logbook',
@@ -1396,18 +1419,19 @@ Kiek bi de [[Special:NewFiles|Galerie vun ne’e Datein]] för en Översicht mit
 'large-file'                  => 'Datein schöölt opbest nich grötter wesen as $1. Disse Datei is $2 groot.',
 'largefileserver'             => 'De Datei is grötter as de vun’n Server verlöövte Bövergrenz för de Grött.',
 'emptyfile'                   => 'De hoochladene Datei is leddig. De Grund kann en Tippfehler in de Dateinaam ween. Kontrolleer, of du de Datei redig hoochladen wullst.',
-'fileexists'                  => 'En Datei mit dissen Naam existeert al, prööv <strong><tt>$1</tt></strong>, wenn du di nich seker büst of du dat ännern wullst.',
-'filepageexists'              => 'En Sied, de dat Bild beschrifft, gifft dat al as <strong><tt>$1</tt></strong>, dat gifft aver keen Datei mit dissen Naam. De Text, den du hier ingiffst, warrt nich op de Sied övernahmen. Du musst de Sied na dat Hoochladen noch wedder extra ännern.',
-'fileexists-extension'        => 'Dat gifft al en Datei mit en ähnlichen Naam:<br />
-Naam vun diene Datei: <strong><tt>$1</tt></strong><br />
-Naam vun de Datei, de al dor is: <strong><tt>$2</tt></strong><br />
-Blot dat Ennen vun de Datei is bi dat Groot-/Lütt-Schrieven anners. Kiek na, wat de Datein villicht desülven sünd.',
+'fileexists'                  => "En Datei mit dissen Naam existeert al, prööv '''<tt>$1</tt>''', wenn du di nich seker büst of du dat ännern wullst.",
+'filepageexists'              => "En Sied, de dat Bild beschrifft, gifft dat al as '''<tt>$1</tt>''', dat gifft aver keen Datei mit dissen Naam. De Text, den du hier ingiffst, warrt nich op de Sied övernahmen. Du musst de Sied na dat Hoochladen noch wedder extra ännern.",
+'fileexists-extension'        => "Dat gifft al en Datei mit en ähnlichen Naam:<br />
+Naam vun diene Datei: '''<tt>$1</tt>'''<br />
+Naam vun de Datei, de al dor is: '''<tt>$2</tt>'''<br />
+Blot dat Ennen vun de Datei is bi dat Groot-/Lütt-Schrieven anners. Kiek na, wat de Datein villicht desülven sünd.",
 'fileexists-thumb'            => "<center>'''Vörhannene Datei'''</center>",
-'fileexists-thumbnail-yes'    => 'De Datei schient en Bild to wesen, dat lütter maakt is <i>(thumbnail)</i>. Kiek di de Datei <strong><tt>$1</tt></strong> an.<br />
-Wenn dat dat Bild in vulle Grött is, denn bruukst du keen extra Vörschaubild hoochladen.',
-'file-thumbnail-no'           => 'De Dateinaam fangt an mit <strong><tt>$1</tt></strong>. Dat düüdt dor op hen, dat dat en lütter maakt Bild <i>(thumbnail, Duumnagel-Bild)</i> is.
-Kiek na, wat du dat Bild nich ok in vulle Grött hest un laad dat ünner’n Originalnaam hooch oder änner den Dateinaam.',
-'fileexists-forbidden'        => 'En Datei mit dissen Naam gifft dat al; gah trüch un laad de Datei ünner en annern Naam hooch. [[File:$1|thumb|center|$1]]',
+'fileexists-thumbnail-yes'    => "De Datei schient en Bild to wesen, dat lütter maakt is ''(thumbnail)''. Kiek di de Datei '''<tt>$1</tt>''' an.<br />
+Wenn dat dat Bild in vulle Grött is, denn bruukst du keen extra Vörschaubild hoochladen.",
+'file-thumbnail-no'           => "De Dateinaam fangt an mit '''<tt>$1</tt>'''. Dat düüdt dor op hen, dat dat en lütter maakt Bild ''(thumbnail, Duumnagel-Bild)'' is.
+Kiek na, wat du dat Bild nich ok in vulle Grött hest un laad dat ünner’n Originalnaam hooch oder änner den Dateinaam.",
+'fileexists-forbidden'        => 'En Datei mit dissen Naam gifft dat al un kann nich överschreven warrn.
+Wenn du ehr liekers hoochladen wullt, gah trüch un laad de Datei ünner en annern Naam hooch. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Dat gifft al en Datei mit dissen Naam. Gah trüch un laad de Datei ünner en annern Naam hooch. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'De Datei is desülve as disse {{PLURAL:$1|Datei|$1 Datein}}:',
 'file-deleted-duplicate'      => 'Jüst disse Datei ([[$1]]) is al mal löscht worrn. Kiek man eerst, wat in dat Löschlogbook steiht, ehrdat du ehr noch wedder hoochlaadst.',
@@ -1418,6 +1442,7 @@ Kiek na, wat du dat Bild nich ok in vulle Grött hest un laad dat ünner’n Ori
 'overwroteimage'              => 'Ne’e Version vun „[[$1]]“ hoochlaadt',
 'uploaddisabled'              => 'Dat Hoochladen is deaktiveert.',
 'uploaddisabledtext'          => 'Dat Hoochladen vun Datein is utschalt.',
+'php-uploaddisabledtext'      => 'Dat Hoochladen vun Datein is in PHP utstellt. Kiek de file_uploads-Instellungen na.',
 'uploadscripted'              => 'In disse Datei steiht HTML- oder Skriptkood in, de vun welk Browsers verkehrt dorstellt oder utföhrt warrn kann.',
 'uploadcorrupt'               => 'De Datei is korrupt oder hett en falsch Ennen. Datei pröven un nieg hoochladen.',
 'uploadvirus'                 => 'In de Datei stickt en Virus! Mehr: $1',
@@ -1430,7 +1455,7 @@ Kiek na, wat du dat Bild nich ok in vulle Grött hest un laad dat ünner’n Ori
 
 Bedenk di eerst, wat dat ok passt, dat du de Datei noch wedder hoochladen deist.
 Hier dat Logbook, wo insteiht, worüm de Sied wegsmeten worrn is:",
-'filename-bad-prefix'         => 'De Naam vun de Datei fangt mit <strong>„$1“</strong> an. Dat is normalerwies en Naam, den de Datei automaatsch vun de Digitalkamera kriggt. De Naam beschrievt de Datei nich un seggt dor ok nix över ut. Söök di doch en Naam för de Datei ut, de ok wat över den Inholt seggt.',
+'filename-bad-prefix'         => "De Naam vun de Datei fangt mit '''„$1“''' an. Dat is normalerwies en Naam, den de Datei automaatsch vun de Digitalkamera kriggt. De Naam beschrievt de Datei nich un seggt dor ok nix över ut. Söök di doch en Naam för de Datei ut, de ok wat över den Inholt seggt.",
 
 'upload-proto-error'      => 'Verkehrt Protokoll',
 'upload-proto-error-text' => 'De URL mutt mit <code>http://</code> oder <code>ftp://</code> anfangen.',
@@ -1466,41 +1491,38 @@ Kann angahn, dat dat beter geiht, wenn du dat to en Tiet versöchst, to de op de
 'listfiles_count'       => 'Versionen',
 
 # File description page
-'filehist'                       => 'Datei-Historie',
-'filehist-help'                  => 'Klick op de Tiet, dat du de Datei ankieken kannst, so as se do utseeg.',
-'filehist-deleteall'             => 'all wegsmieten',
-'filehist-deleteone'             => 'wegsmieten',
-'filehist-revert'                => 'Trüchsetten',
-'filehist-current'               => 'aktuell',
-'filehist-datetime'              => 'Datum/Tiet',
-'filehist-thumb'                 => 'Duumnagelbild',
-'filehist-thumbtext'             => 'Duumnagelbild för Version vun’n $1',
-'filehist-nothumb'               => 'Keen Duumnagelbild',
-'filehist-user'                  => 'Bruker',
-'filehist-dimensions'            => 'Grött',
-'filehist-filesize'              => 'Dateigrött',
-'filehist-comment'               => 'Kommentar',
-'imagelinks'                     => 'Bildverwiesen',
-'linkstoimage'                   => 'Disse {{PLURAL:$1|Sied|Sieden}} bruukt dit Bild:',
-'linkstoimage-more'              => 'Mehr as {{PLURAL:$1|ene Sied|$1 Sieden}} wiest na disse Datei.
+'filehist'                  => 'Datei-Historie',
+'filehist-help'             => 'Klick op de Tiet, dat du de Datei ankieken kannst, so as se do utseeg.',
+'filehist-deleteall'        => 'all wegsmieten',
+'filehist-deleteone'        => 'wegsmieten',
+'filehist-revert'           => 'Trüchsetten',
+'filehist-current'          => 'aktuell',
+'filehist-datetime'         => 'Datum/Tiet',
+'filehist-thumb'            => 'Duumnagelbild',
+'filehist-thumbtext'        => 'Duumnagelbild för Version vun’n $1',
+'filehist-nothumb'          => 'Keen Duumnagelbild',
+'filehist-user'             => 'Bruker',
+'filehist-dimensions'       => 'Grött',
+'filehist-filesize'         => 'Dateigrött',
+'filehist-comment'          => 'Kommentar',
+'imagelinks'                => 'Dateiverwiesen',
+'linkstoimage'              => 'Disse {{PLURAL:$1|Sied|Sieden}} bruukt dit Bild:',
+'linkstoimage-more'         => 'Mehr as {{PLURAL:$1|ene Sied|$1 Sieden}} wiest na disse Datei.
 Disse List wiest blot {{PLURAL:$1|den eersten Lenk|de eersten $1 Lenken}} op disse Datei.
 En [[Special:WhatLinksHere/$2|kumplette List]] gifft dat ok.',
-'nolinkstoimage'                 => 'Kene Siet bruukt dat Bild.',
-'morelinkstoimage'               => '[[Special:WhatLinksHere/$1|Mehr Verwiesen]] för disse Datei.',
-'redirectstofile'                => 'Disse {{PLURAL:$1|Datei is|Datein sünd}} en Redirect op disse Datei:',
-'duplicatesoffile'               => 'Disse {{PLURAL:$1|Datei is|Datein sünd}} jüst de {{PLURAL:$1|glieke|glieken}} as disse Datei:',
-'sharedupload'                   => 'Disse Datei is as gemeensam bruukte Datei hoochlaadt un warrt mööglicherwies ok vun annere Wikis bruukt.',
-'shareduploadwiki'               => 'Kiek bi $1 för mehr Informatschoon.',
-'shareduploadwiki-desc'          => 'Wat nu kummt is de Text vun de $1 op den gemeensamen Datei-Spiekerplatz.',
-'shareduploadwiki-linktext'      => 'Siet mit de Datei-Beschrievung',
-'shareduploadduplicate'          => 'Disse Datei is desülve as $1 vun’n gemeensam bruukten Datei-Spiekerplatz.',
-'shareduploadduplicate-linktext' => 'disse annere Datei',
-'shareduploadconflict'           => 'Disse Datei hett densülven Naam as $1 vun’n gemeensam bruukten Datei-Spiekerplatz.',
-'shareduploadconflict-linktext'  => 'disse annere Datei',
-'noimage'                        => 'Ene Datei mit dissen Naam gifft dat nich, du kannst ehr $1.',
-'noimage-linktext'               => 'hoochladen',
-'uploadnewversion-linktext'      => 'Ne’e Version vun disse Datei hoochladen',
-'imagepage-searchdupe'           => 'Söök na dubbelte Datein',
+'nolinkstoimage'            => 'Kene Siet bruukt dat Bild.',
+'morelinkstoimage'          => '[[Special:WhatLinksHere/$1|Mehr Verwiesen]] för disse Datei.',
+'redirectstofile'           => 'Disse {{PLURAL:$1|Datei is|Datein sünd}} en Redirect op disse Datei:',
+'duplicatesoffile'          => 'Disse {{PLURAL:$1|Datei is|Datein sünd}} jüst de {{PLURAL:$1|glieke|glieken}} as disse Datei hier ([[Special:FileDuplicateSearch/$2|mehr Infos]]):',
+'sharedupload'              => 'Disse Datei is as gemeensam bruukte Datei op $1 hoochlaadt un warrt mööglicherwies ok vun annere Wikis bruukt. $2', # $1 is the repo name, $2 is shareduploadwiki(-desc)
+'shareduploadwiki'          => 'Kiek bi $1 för mehr Informatschoon.',
+'shareduploadwiki-desc'     => 'Wat nu kummt is de Text vun de $1 dor.',
+'shareduploadwiki-linktext' => 'Siet mit de Datei-Beschrievung',
+'noimage'                   => 'Ene Datei mit dissen Naam gifft dat nich, du kannst ehr $1.',
+'noimage-linktext'          => 'hoochladen',
+'uploadnewversion-linktext' => 'Ne’e Version vun disse Datei hoochladen',
+'shared-repo-from'          => 'ut $1', # $1 is the repository name
+'shared-repo'               => 'en tohoop bruukt Medienarchiv', # used when shared-repo-NAME does not exist
 
 # File reversion
 'filerevert'                => '„$1“ Trüchsetten',
@@ -1515,7 +1537,7 @@ En [[Special:WhatLinksHere/$2|kumplette List]] gifft dat ok.',
 # File deletion
 'filedelete'                  => '$1 wegsmieten',
 'filedelete-legend'           => 'Datei wegsmieten',
-'filedelete-intro'            => "Du smittst '''[[Media:$1|$1]]''' weg.",
+'filedelete-intro'            => "Du smittst de Datei '''[[Media:$1|$1]]''' tohoop mit de ganze Versionsgeschicht weg.",
 'filedelete-intro-old'        => "Du smittst vun de Datei '''„[[Media:$1|$1]]“''' de [$4 Version vun $2, $3] weg.",
 'filedelete-comment'          => 'Kommentar:',
 'filedelete-submit'           => 'Wegsmieten',
@@ -1589,7 +1611,7 @@ to den vun den tweeten Wiederleiden wiest warrt, un to den de eerste Wiederleide
 'double-redirect-fixer'      => 'Redirect-Utbeterer',
 
 'brokenredirects'        => 'Kaputte Wiederleiden',
-'brokenredirectstext'    => 'Disse Wiederleiden wiest na en Siet, de dat nich gifft.',
+'brokenredirectstext'    => 'Disse Redirects wiest na Sieden, de dat nich gifft.',
 'brokenredirects-edit'   => '(ännern)',
 'brokenredirects-delete' => '(wegsmieten)',
 
@@ -1627,7 +1649,7 @@ to den vun den tweeten Wiederleiden wiest warrt, un to den de eerste Wiederleide
 'mostcategories'          => 'Artikels mit vele Kategorien',
 'mostimages'              => 'Datein, de veel bruukt warrt',
 'mostrevisions'           => 'Sieden mit de mehrsten Versionen',
-'prefixindex'             => 'All Sieden (mit Präfix)',
+'prefixindex'             => 'All Sieden mit Präfix',
 'shortpages'              => 'Korte Sieden',
 'longpages'               => 'Lange Sieden',
 'deadendpages'            => 'Sackstraatsieden',
@@ -1727,7 +1749,7 @@ Kiek ok bi de [[Special:WantedCategories|wünschten Kategorien]].',
 'newuserlogpagetext'          => 'Dit is dat Logbook för nee opstellte Brukerkonten.',
 'newuserlog-byemail'          => 'Passwoord per E-Mail toschickt',
 'newuserlog-create-entry'     => 'Nee Bruker',
-'newuserlog-create2-entry'    => 'hett Brukerkonto opstellt för $1',
+'newuserlog-create2-entry'    => 'hett nee Brukerkonto „$1“ opstellt',
 'newuserlog-autocreate-entry' => 'Brukerkonto automaatsch opstellt',
 
 # Special:ListGroupRights
@@ -1870,10 +1892,10 @@ Segg to, dat du över de Folgen Bescheed weetst un dat du in Övereenstimmen mit
 'rollbacklink'     => 'Trüchnehmen',
 'rollbackfailed'   => 'Trüchnahm hett kenen Spood',
 'cantrollback'     => 'De Ännern kann nich trüchnahmen warrn; de letzte Autor is de eenzige.',
-'alreadyrolled'    => 'Dat Trüchnehmen vun de Ännern an de Siet [[:$1]] vun [[User:$2|$2]] ([[User talk:$2|Diskuschoonssiet]] | [[Special:Contributions/$2|Bidrääg]]) is nich mööglich, vun wegen dat dor en annere Ännern oder Trüchnahm wesen is.
+'alreadyrolled'    => 'Dat Trüchnehmen vun de Ännern an de Siet [[:$1]] vun [[User:$2|$2]] ([[User talk:$2|Diskuschoonssiet]]{{int:pipe-separator}}[[Special:Contributions/$2|Bidrääg]]) is nich mööglich, vun wegen dat dor en annere Ännern oder Trüchnahm wesen is.
 
-De letzte Ännern is vun [[User:$3|$3]] ([[User talk:$3|Diskuschoon]] | [[Special:Contributions/$3|Bidrääg]]).',
-'editcomment'      => "De Ännerkommentar weer: ''$1''.", # only shown if there is an edit comment
+De letzte Ännern is vun [[User:$3|$3]] ([[User talk:$3|Diskuschoon]]{{int:pipe-separator}}[[Special:Contributions/$3|Bidrääg]]).',
+'editcomment'      => "De Ännerkommentar weer: „''$1''“.", # only shown if there is an edit comment
 'revertpage'       => 'Ännern vun [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskuschoon]]) rut un de Version vun [[User:$1]] wedderhaalt', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Ännern vun $1 trüchsett op letzte Version vun $2.',
 'sessionfailure'   => 'Dor weer en Problem mit diene Brukersitzung.
@@ -1896,13 +1918,13 @@ Gah een Sied trüch un versöök dat noch wedder.',
 'protect_expiry_old'          => 'Utlooptiet al vörbi.',
 'protect-unchain'             => 'Schuul vör dat Schuven ännern',
 'protect-text'                => "Hier kannst du den Schuulstatus för de Siet '''<nowiki>$1</nowiki>''' ankieken un ännern.",
-'protect-locked-blocked'      => 'Du kannst den Schuulstatus vun de Sied nich ännern, du büst sperrt. Hier sünd de aktuellen Schuulstatus-Instellungen för de Siet <strong>„$1“:</strong>',
-'protect-locked-dblock'       => 'De Datenbank is sperrt un de Schuulstatus vun de Sied kann nich ännert warrn. Dit sünd de aktuellen Schuul-Instellungen för de Sied <strong>„$1“:</strong>',
-'protect-locked-access'       => 'Du hest nich de nödigen Rechten, den Schuulstatus vun de Siet to ännern. Dit sünd de aktuellen Instellungen för de Siet <strong>„$1“:</strong>',
+'protect-locked-blocked'      => "Du kannst den Schuulstatus vun de Sied nich ännern, du büst sperrt. Hier sünd de aktuellen Schuulstatus-Instellungen för de Siet '''„$1“:'''",
+'protect-locked-dblock'       => "De Datenbank is sperrt un de Schuulstatus vun de Sied kann nich ännert warrn. Dit sünd de aktuellen Schuul-Instellungen för de Sied '''„$1“:'''",
+'protect-locked-access'       => "Du hest nich de nödigen Rechten, den Schuulstatus vun de Siet to ännern. Dit sünd de aktuellen Instellungen för de Siet '''„$1“:'''",
 'protect-cascadeon'           => 'Disse Siet is aktuell dör ene Kaskadensparr schuult. Se is in de nakamen {{PLURAL:$1|Siet|Sieden}} inbunnen, de dör Kaskadensparr schuult {{PLURAL:$1|is|sünd}}. De Schuulstatus kann för disse Siet ännert warrn, dat hett aver keen Effekt op de Kaskadensparr:',
-'protect-default'             => '(normal)',
+'protect-default'             => 'all Brukers',
 'protect-fallback'            => '„$1“-Rechten nödig.',
-'protect-level-autoconfirmed' => 'nich registreerte Brukers blocken',
+'protect-level-autoconfirmed' => 'Ne’e un nich registreerte Brukers blocken',
 'protect-level-sysop'         => 'Blots Admins',
 'protect-summary-cascade'     => 'Kaskadensparr',
 'protect-expiring'            => 'bet $1 (UTC)',
@@ -1921,7 +1943,7 @@ Gah een Sied trüch un versöök dat noch wedder.',
 ** veel bruukt Vörlaag
 ** Sied mit temlich veel Besökers',
 'protect-edit-reasonlist'     => 'Grünn för de Sperr ännern',
-'protect-expiry-options'      => '1 Stünn:1 hour,2 Stünnen:2 hours,6 Stünnen:6 hours,1 Dag:1 day,3 Daag:3 days,1 Week:1 week,2 Weken:2 weeks,1 Maand:1 month,3 Maand:3 months,1 Johr:1 year,ahn Enn:infinite', # display1:time1,display2:time2,...
+'protect-expiry-options'      => '1 Stünn:1 hour,1 Dag:1 day,1 Week:1 week,2 Weken:2 weeks,1 Maand:1 month,3 Maand:3 months,6 Maand:6 months,1 Johr:1 year,ahn Enn:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'Schuulstatus',
 'restriction-level'           => 'Schuulhööchd',
 'minimum-size'                => 'Minimumgrött',
@@ -2055,7 +2077,7 @@ Ok den Grund för dat Blocken indregen.',
 'ipbenableautoblock'              => 'Sperr de aktuell vun dissen Bruker bruukte IP-Adress un automaatsch all de annern, vun de ut he Sieden ännern oder Brukers anleggen will',
 'ipbsubmit'                       => 'Adress blocken',
 'ipbother'                        => 'Annere Tiet:',
-'ipboptions'                      => '1 Stünn:1 hour,2 Stünnen:2 hours,6 Stünnen:6 hours,1 Dag:1 day,3 Daag:3 days,1 Week:1 week,2 Weken:2 weeks,1 Maand:1 month,3 Maand:3 months,1 Johr:1 year,ahn Enn:infinite', # display1:time1,display2:time2,...
+'ipboptions'                      => '2 Stünnen:2 hours,1 Dag:1 day,3 Daag:3 days,1 Week:1 week,2 Weken:2 weeks,1 Maand:1 month,3 Maand:3 months,6 Maand:6 months,1 Johr:1 year,ahn Enn:infinite', # display1:time1,display2:time2,...
 'ipbotheroption'                  => 'Annere Duer',
 'ipbotherreason'                  => 'Annern Grund:',
 'ipbhidename'                     => 'Brukernaam in dat Sperr-Logbook, de List vun de aktiven Sperren un de Brukerlist versteken.',
@@ -2075,7 +2097,7 @@ Ok den Grund för dat Blocken indregen.',
 'ipb-blocklist-contribs'          => 'Brukerbidrääg för „$1“',
 'unblockip'                       => 'IP-Adress freegeven',
 'unblockiptext'                   => 'Bruuk dat Formular, üm en blockte IP-Adress freetogeven.',
-'ipusubmit'                       => 'Disse Adress freegeven',
+'ipusubmit'                       => 'Disse Sperr opheven',
 'unblocked'                       => '[[User:$1|$1]] freegeven',
 'unblocked-id'                    => 'Sperr $1 freegeven',
 'ipblocklist'                     => 'List vun blockte IP-Adressen un Brukernaams',
@@ -2195,8 +2217,8 @@ Bitte söök en annern Naam ut.',
 Diskuschoonssiet nich, vun wegen dat dat dor al ene Siet mit dissen Titel gifft. De Inholt mutt vun Hand anpasst warrn.',
 'movedto'                      => 'schaven na',
 'movetalk'                     => 'De Diskuschoonssiet ok schuven, wenn mööglich.',
-'move-subpages'                => 'All Ünnersieden, wenn welk dor sünd, mit schuven',
-'move-talk-subpages'           => 'All Ünnersieden vun Diskuschoonssieden, wenn welk dor sünd, mit schuven',
+'move-subpages'                => 'All Ünnersieden (bet to $1) mit schuven, wenn welk dor sünd',
+'move-talk-subpages'           => 'All Ünnersieden vun Diskuschoonssieden (bet to $1) mit schuven, wenn welk dor sünd',
 'movepage-page-exists'         => 'De Sied „$1“ gifft dat al un kann nich automaatsch överschreven warrn.',
 'movepage-page-moved'          => 'De Siet „$1“ is nu schaven na „$2“.',
 'movepage-page-unmoved'        => 'De Siet „$1“ kunn nich na „$2“ schaven warrn.',
@@ -2206,6 +2228,9 @@ Diskuschoonssiet nich, vun wegen dat dat dor al ene Siet mit dissen Titel gifft.
 'move-redirect-suppressed'     => 'Redirect ünnerdrückt',
 'movelogpage'                  => 'Schuuv-Logbook',
 'movelogpagetext'              => 'Dit is ene List vun all schavene Sieden.',
+'movesubpage'                  => 'Ünnersieden',
+'movesubpagetext'              => 'Disse Sied hett $1 {{PLURAL:$1|Ünnersied|Ünnersieden}}, de ünnen wiest warrt.',
+'movenosubpage'                => 'Disse Sied hett keen Ünnersieden.',
 'movereason'                   => 'Grund',
 'revertmove'                   => 'trüchschuven',
 'delete_and_move'              => 'Wegsmieten un Schuven',
@@ -2237,13 +2262,14 @@ De Siet „[[:$1]]“ gifft dat al. Wullt du ehr wegsmieten, dat disse Siet scha
 'export-addcat'     => 'Tofögen',
 'export-download'   => 'As XML-Datei spiekern',
 'export-templates'  => 'mit Vörlagen',
+'export-pagelinks'  => 'Sieden op de Lenken wiest, automaatsch mit exporteren, bet to en Deepd vun:',
 
 # Namespace 8 related
 'allmessages'               => 'Alle Systemnarichten',
 'allmessagesname'           => 'Naam',
 'allmessagesdefault'        => 'Standardtext',
 'allmessagescurrent'        => 'Text nu',
-'allmessagestext'           => 'Dit is de List vun all de Systemnarichten, de dat in den MediaWiki-Naamruum gifft.',
+'allmessagestext'           => 'Dit is de List vun de Systemnarichten, de dat in den MediaWiki-Naamruum gifft.',
 'allmessagesnotsupportedDB' => '{{ns:special}}:Allmessages is nich ünnerstütt, vun wegen dat wgUseDatabaseMessages utstellt is.',
 'allmessagesfilter'         => 'Narichtennaamfilter:',
 'allmessagesmodified'       => 'Blot ännerte wiesen',
@@ -2265,6 +2291,7 @@ De Versionsdaten un Brukernaams blievt dor bi vörhannen.
 All Transwiki-Import-Akschonen staht later ok in dat [[Special:Log/import|Import-Logbook]].',
 'import-interwiki-source'    => 'Bornwiki/sied:',
 'import-interwiki-history'   => 'Importeer all Versionen vun disse Siet',
+'import-interwiki-templates' => 'All Vörlagen inslaten',
 'import-interwiki-submit'    => 'Rinhalen',
 'import-interwiki-namespace' => 'Sied in dissen Naamruum halen:',
 'import-upload-filename'     => 'Dateinaam:',
@@ -2302,19 +2329,19 @@ All Transwiki-Import-Akschonen staht later ok in dat [[Special:Log/import|Import
 'import-logentry-interwiki-detail' => '{{PLURAL:$1|ene Version|$1 Versionen}} vun $2',
 
 # Tooltip help for the actions
-'tooltip-pt-userpage'             => 'Mien Brukersiet',
+'tooltip-pt-userpage'             => 'Dien Brukersied',
 'tooltip-pt-anonuserpage'         => 'De Brukersiet för de IP-Adress ünner de du schriffst',
-'tooltip-pt-mytalk'               => 'Mien Diskuschoonssiet',
+'tooltip-pt-mytalk'               => 'Dien Diskuschoonssied',
 'tooltip-pt-anontalk'             => 'Diskuschoon över Ännern vun disse IP-Adress',
 'tooltip-pt-preferences'          => 'Mien Instellen',
 'tooltip-pt-watchlist'            => 'Mien Oppasslist',
-'tooltip-pt-mycontris'            => 'List vun mien Bidreeg',
+'tooltip-pt-mycontris'            => 'List vun dien Bidrääg',
 'tooltip-pt-login'                => 'Du kannst di geern anmellen, dat is aver nich neudig, üm Sieten to bearbeiden.',
 'tooltip-pt-anonlogin'            => 'Du kannst di geern anmellen, dat is aver nich neudig, üm Sieten to bearbeiden.',
 'tooltip-pt-logout'               => 'Afmellen',
 'tooltip-ca-talk'                 => 'Diskuschoon över disse Siet',
 'tooltip-ca-edit'                 => 'Du kannst disse Siet ännern. Bruuk dat vör dat Spiekern.',
-'tooltip-ca-addsection'           => 'En Kommentar to disse Diskuschoonssiet hentofögen.',
+'tooltip-ca-addsection'           => 'En Afsnidd tofögen',
 'tooltip-ca-viewsource'           => 'Disse Siet is schuult. Du kannst den Borntext ankieken.',
 'tooltip-ca-history'              => 'Historie vun disse Siet.',
 'tooltip-ca-protect'              => 'Disse Siet schulen',
@@ -2429,6 +2456,7 @@ All Transwiki-Import-Akschonen staht later ok in dat [[Special:Log/import|Import
 'patrol-log-header'    => 'Dit is dat Patrolleer-Logbook.',
 'patrol-log-line'      => '$1 vun $2 as nakeken markt $3',
 'patrol-log-auto'      => '(automaatsch)',
+'patrol-log-diff'      => 'Version $1',
 'log-show-hide-patrol' => 'Nakiek-Logbook $1',
 
 # Image deletion
@@ -2803,10 +2831,8 @@ Wenn du dat nich sülvst wesen büst, denn folg den Lenk nich. De Bestätigungsk
 'scarytranscludetoolong'  => '[URL is to lang]',
 
 # Trackbacks
-'trackbackbox'      => '<div id="mw_trackbacks">
-Trackbacks för dissen Artikel:<br />
-$1
-</div>',
+'trackbackbox'      => 'Trackbacks för disse Sied:<br />
+$1',
 'trackbackremove'   => '([$1 wegsmieten])',
 'trackbacklink'     => 'Trackback',
 'trackbackdeleteok' => 'Trackback mit Spood wegsmeten.',
@@ -2841,10 +2867,10 @@ Wist du de Siet würklich nee anleggen?",
 'table_pager_empty'        => 'nix funnen',
 
 # Auto-summaries
-'autosumm-blank'   => 'Siet leddig maakt',
+'autosumm-blank'   => 'Sied leddig maakt',
 'autosumm-replace' => 'Siet leddig maakt un ‚$1‘ rinschreven',
 'autoredircomment' => 'Redirect sett na [[$1]]',
-'autosumm-new'     => 'Ne’e Siet: ‚$1‘',
+'autosumm-new'     => 'Ne’e Sied anleggt: ‚$1‘',
 
 # Live preview
 'livepreview-loading' => 'Läädt…',
@@ -2958,11 +2984,23 @@ Geev den Dateinaam ahn dat Präfix „{{ns:file}}:“ in.',
 #Delen vun reguläre Utdrück na disse Reeg indragen. Disse Reeg nich ännern</pre>',
 
 # Special:Tags
-'tag-filter'        => '
+'tag-filter'              => '
 [[Special:Tags|Tag]]-Filter:',
-'tag-filter-submit' => 'Filter',
-'tags-title'        => 'Tags',
-'tags-edit'         => 'ännern',
-'tags-hitcount'     => '$1 {{PLURAL:$1|Ännern|Ännern}}',
+'tag-filter-submit'       => 'Filter',
+'tags-title'              => 'Tags',
+'tags-tag'                => 'Intern Tagnaam',
+'tags-display-header'     => 'Weddergaav op de Ännernlisten',
+'tags-description-header' => 'Beschrievung, wat dat bedüüdt',
+'tags-edit'               => 'ännern',
+'tags-hitcount'           => '$1 {{PLURAL:$1|Ännern|Ännern}}',
+
+# Database error messages
+'dberr-header'      => 'Dit Wiki hett en Problem',
+'dberr-problems'    => 'Deit uns leed. Disse Websteed hett opstunns en beten technische Problemen.',
+'dberr-again'       => 'Tööv en poor Minuten un versöök dat denn noch wedder.',
+'dberr-info'        => '(Kunn nich mit’n Datenbank-Server verbinnen: $1)',
+'dberr-usegoogle'   => 'Du kannst dat solang mit Google versöken.',
+'dberr-outofdate'   => 'Wees gewohr, dat de Söökindex, de se vun uns Inhold hebbt, oold wesen kann.',
+'dberr-cachederror' => 'Dit is en Kopie ut’n Cache vun de opropen Sied un is villicht nich de ne’este Version.',
 
 );

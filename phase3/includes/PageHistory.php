@@ -23,6 +23,8 @@ class PageHistory {
 	var $lastdate;
 	var $linesonpage;
 	var $mLatestId = null;
+	
+	private $mOldIdChecked = 0;
 
 	/**
 	 * Construct a new PageHistory.
@@ -113,6 +115,7 @@ class PageHistory {
 		$year = $wgRequest->getInt( 'year' );
 		$month = $wgRequest->getInt( 'month' );
 		$tagFilter = $wgRequest->getVal( 'tagfilter' );
+		$tagSelector = ChangeTags::buildTagFilterSelector( $tagFilter );
 
 		$action = htmlspecialchars( $wgScript );
 		$wgOut->addHTML(
@@ -120,8 +123,8 @@ class PageHistory {
 			Xml::fieldset( wfMsg( 'history-fieldset-title' ), false, array( 'id' => 'mw-history-search' ) ) .
 			Xml::hidden( 'title', $this->mTitle->getPrefixedDBKey() ) . "\n" .
 			Xml::hidden( 'action', 'history' ) . "\n" .
-			$this->getDateMenu( $year, $month ) . '&nbsp;' .
-			implode( '&nbsp;', ChangeTags::buildTagFilterSelector( $tagFilter ) ) . '&nbsp;' .
+			xml::dateMenu( $year, $month ) . '&nbsp;' .
+			( $tagSelector ? ( implode( '&nbsp;', $tagSelector ) . '&nbsp;' ) : '' ) .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			'</fieldset></form>'
 		);
@@ -142,37 +145,6 @@ class PageHistory {
 		);
 
 		wfProfileOut( __METHOD__ );
-	}
-
-	/**
-	 * @return string Formatted HTML
-	 * @param int $year
-	 * @param int $month
-	 */
-	private function getDateMenu( $year, $month ) {
-		# Offset overrides year/month selection
-		if( $month && $month !== -1 ) {
-			$encMonth = intval( $month );
-		} else {
-			$encMonth = '';
-		}
-		if( $year ) {
-			$encYear = intval( $year );
-		} else if( $encMonth ) {
-			$thisMonth = intval( gmdate( 'n' ) );
-			$thisYear = intval( gmdate( 'Y' ) );
-			if( intval($encMonth) > $thisMonth ) {
-				$thisYear--;
-			}
-			$encYear = $thisYear;
-		} else {
-			$encYear = '';
-		}
-		return Xml::label( wfMsg( 'year' ), 'year' ) . ' '.
-			Xml::input( 'year', 4, $encYear, array('id' => 'year', 'maxlength' => 4) ) .
-				' '.
-			Xml::label( wfMsg( 'month' ), 'month' ) . ' '.
-			Xml::monthSelector( $encMonth, -1 );
 	}
 
 	/**
@@ -312,11 +284,11 @@ class PageHistory {
 		$s .= " $link";
 		$s .= " <span class='history-user'>" . $this->mSkin->revUserTools( $rev, true ) . "</span>";
 
-		if( $row->rev_minor_edit ) {
+		if( $rev->isMinor() ) {
 			$s .= ' ' . Xml::element( 'span', array( 'class' => 'minor' ), wfMsg( 'minoreditletter') );
 		}
 
-		if( !is_null( $size = $rev->getSize() ) && $rev->userCan( Revision::DELETED_TEXT ) ) {
+		if( !is_null( $size = $rev->getSize() ) && !$rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$s .= ' ' . $this->mSkin->formatRevisionSize( $size );
 		}
 
@@ -355,7 +327,7 @@ class PageHistory {
 		}
 
 		if( $tools ) {
-			$s .= ' (' . implode( ' | ', $tools ) . ')';
+			$s .= ' (' . $wgLang->pipeList( $tools ) . ')';
 		}
 
 		# Tags
@@ -378,14 +350,10 @@ class PageHistory {
 	function revLink( $rev ) {
 		global $wgLang;
 		$date = $wgLang->timeanddate( wfTimestamp(TS_MW, $rev->getTimestamp()), true );
-		if( $rev->userCan( Revision::DELETED_TEXT ) ) {
-			$link = $this->mSkin->makeKnownLinkObj(
-			$this->mTitle, $date, "oldid=" . $rev->getId() );
+		if( !$rev->isDeleted( Revision::DELETED_TEXT ) ) {
+			$link = $this->mSkin->makeKnownLinkObj( $this->mTitle, $date, "oldid=" . $rev->getId() );
 		} else {
-			$link = $date;
-		}
-		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
-			return '<span class="history-deleted">' . $link . '</span>';
+			$link = '<span class="history-deleted">' . $date . '</span>';
 		}
 		return $link;
 	}
@@ -398,7 +366,7 @@ class PageHistory {
 	 */
 	function curLink( $rev, $latest ) {
 		$cur = $this->message['cur'];
-		if( $latest || !$rev->userCan( Revision::DELETED_TEXT ) ) {
+		if( $latest || $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			return $cur;
 		} else {
 			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $cur,
@@ -424,7 +392,7 @@ class PageHistory {
 			# Next row probably exists but is unknown, use an oldid=prev link
 			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $last,
 				"diff=" . $prevRev->getId() . "&oldid=prev" );
-		} elseif( !$prevRev->userCan(Revision::DELETED_TEXT) || !$nextRev->userCan(Revision::DELETED_TEXT) ) {
+		} elseif( $prevRev->isDeleted(Revision::DELETED_TEXT) || $nextRev->isDeleted(Revision::DELETED_TEXT) ) {
 			return $last;
 		} else {
 			return $this->mSkin->makeKnownLinkObj( $this->mTitle, $last,
@@ -441,40 +409,29 @@ class PageHistory {
 	 * @return string HTML output for the radio buttons
 	 */
 	function diffButtons( $rev, $firstInList, $counter ) {
-		if( $this->linesonpage > 1) {
-			$radio = array(
-				'type'  => 'radio',
-				'value' => $rev->getId(),
-			);
-
-			if( !$rev->userCan( Revision::DELETED_TEXT ) ) {
-				$radio['disabled'] = 'disabled';
-			}
-
+		if( $this->linesonpage > 1 ) {
+			$radio = array( 'type'  => 'radio', 'value' => $rev->getId() );
 			/** @todo: move title texts to javascript */
 			if( $firstInList ) {
-				$first = Xml::element( 'input', array_merge(
-				$radio,
-				array(
-						'style' => 'visibility:hidden',
-						'name'  => 'oldid' ) ) );
+				$first = Xml::element( 'input', 
+					array_merge( $radio, array( 'style' => 'visibility:hidden', 'name'  => 'oldid' ) )
+				);
 				$checkmark = array( 'checked' => 'checked' );
 			} else {
-				if( $counter == 2 ) {
+				# Check visibility of old revisions
+				if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+					$radio['disabled'] = 'disabled';
+					$checkmark = array(); // We will check the next possible one
+				} else if( $counter == 2 || !$this->mOldIdChecked ) {
 					$checkmark = array( 'checked' => 'checked' );
+					$this->mOldIdChecked = $rev->getId();
 				} else {
 					$checkmark = array();
 				}
-				$first = Xml::element( 'input', array_merge(
-				$radio,
-				$checkmark,
-				array( 'name'  => 'oldid' ) ) );
+				$first = Xml::element( 'input', array_merge( $radio, $checkmark, array( 'name'  => 'oldid' ) ) );
 				$checkmark = array();
 			}
-			$second = Xml::element( 'input', array_merge(
-			$radio,
-			$checkmark,
-			array( 'name'  => 'diff' ) ) );
+			$second = Xml::element( 'input', array_merge( $radio, $checkmark, array( 'name'  => 'diff' ) ) );
 			return $first . $second;
 		} else {
 			return '';

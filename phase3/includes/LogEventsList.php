@@ -41,7 +41,7 @@ class LogEventsList {
 			$messages = array( 'revertmerge', 'protect_change', 'unblocklink', 'change-blocklink',
 				'revertmove', 'undeletelink', 'revdel-restore', 'rev-delundel', 'hist', 'pipe-separator' );
 			foreach( $messages as $msg ) {
-				$this->message[$msg] = wfMsgExt( $msg, array( 'escape' ) );
+				$this->message[$msg] = wfMsgExt( $msg, array( 'escapenoentities' ) );
 			}
 		}
 	}
@@ -65,15 +65,18 @@ class LogEventsList {
 	 * @param $pattern String
 	 * @param $year Integer: year
 	 * @param $month Integer: month
-	 * @param $filter Boolean
+	 * @param $filter: array
+	 * @param $tagFilter: array?
 	 */
 	public function showOptions( $type = '', $user = '', $page = '', $pattern = '', $year = '', 
-			$month = '', $filter = null, $tagFilter='' ) 
+		$month = '', $filter = null, $tagFilter='' ) 
 	{
 		global $wgScript, $wgMiserMode;
 		$action = htmlspecialchars( $wgScript );
 		$title = SpecialPage::getTitleFor( 'Log' );
 		$special = htmlspecialchars( $title->getPrefixedDBkey() );
+
+		$tagSelector = ChangeTags::buildTagFilterSelector( $tagFilter );
 
 		$this->out->addHTML( "<form action=\"$action\" method=\"get\"><fieldset>" .
 			Xml::element( 'legend', array(), wfMsg( 'log' ) ) .
@@ -82,8 +85,8 @@ class LogEventsList {
 			$this->getUserInput( $user ) . "\n" .
 			$this->getTitleInput( $page ) . "\n" .
 			( !$wgMiserMode ? ($this->getTitlePattern( $pattern )."\n") : "" ) .
-			"<p>" . $this->getDateMenu( $year, $month ) . "\n" .
-			Xml::tags( 'p', null, implode( '&nbsp;', ChangeTags::buildTagFilterSelector( $tagFilter ) ) ) . "\n" .
+			"<p>" . Xml::dateMenu( $year, $month ) . "\n" .
+			( $tagSelector ? Xml::tags( 'p', null, implode( '&nbsp;', $tagSelector ) ) :'' ). "\n" .
 			( $filter ? "</p><p>".$this->getFilterLinks( $type, $filter )."\n" : "" ) . "\n" .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "</p>\n" .
 			"</fieldset></form>"
@@ -91,20 +94,22 @@ class LogEventsList {
 	}
 	
 	private function getFilterLinks( $logType, $filter ) {
-		global $wgTitle;
+		global $wgTitle, $wgLang;
 		// show/hide links
 		$messages = array( wfMsgHtml( 'show' ), wfMsgHtml( 'hide' ) );
 		// Option value -> message mapping
 		$links = array();
+		$hiddens = ''; // keep track for "go" button
 		foreach( $filter as $type => $val ) {
 			$hideVal = 1 - intval($val);
 			$link = $this->skin->makeKnownLinkObj( $wgTitle, $messages[$hideVal],
 				wfArrayToCGI( array( "hide_{$type}_log" => $hideVal ), $this->getDefaultQuery() )
 			);
 			$links[$type] = wfMsgHtml( "log-show-hide-{$type}", $link );
+			$hiddens .= Xml::hidden( "hide_{$type}_log", $val ) . "\n";
 		}
 		// Build links
-		return implode( ' | ', $links );
+		return '<small>'.$wgLang->pipeList( $links ) . '</small>' . $hiddens;
 	}
 	
 	private function getDefaultQuery() {
@@ -173,37 +178,6 @@ class LogEventsList {
 	 */
 	private function getTitleInput( $title ) {
 		return Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'page', 20, $title );
-	}
-
-	/**
-	 * @param $year Integer
-	 * @param $month Integer
-	 * @return string Formatted HTML
-	 */
-	private function getDateMenu( $year, $month ) {
-		# Offset overrides year/month selection
-		if( $month && $month !== -1 ) {
-			$encMonth = intval( $month );
-		} else {
-			$encMonth = '';
-		}
-		if ( $year ) {
-			$encYear = intval( $year );
-		} else if( $encMonth ) {
-			$thisMonth = intval( gmdate( 'n' ) );
-			$thisYear = intval( gmdate( 'Y' ) );
-			if( intval($encMonth) > $thisMonth ) {
-				$thisYear--;
-			}
-			$encYear = $thisYear;
-		} else {
-			$encYear = '';
-		}
-		return Xml::label( wfMsg( 'year' ), 'year' ) . ' '.
-			Xml::input( 'year', 4, $encYear, array('id' => 'year', 'maxlength' => 4) ) .
-			' '.
-			Xml::label( wfMsg( 'month' ), 'month' ) . ' '.
-			Xml::monthSelector( $encMonth, -1 );
 	}
 
 	/**
@@ -278,7 +252,7 @@ class LogEventsList {
 					array(),
 					array( 'action' => 'unblock', 'ip' => $row->log_title ),
 					'known' ) 
-				. ' ' . $this->message['pipe-separator'] . ' ' .
+				. $this->message['pipe-separator'] .
 				$this->skin->link( SpecialPage::getTitleFor( 'Blockip', $row->log_title ), 
 					$this->message['change-blocklink'],
 					array(), array(), 'known' ) .
@@ -291,7 +265,7 @@ class LogEventsList {
 					array(),
 					array( 'action' => 'history', 'offset' => $row->log_timestamp ) );
 			if( $wgUser->isAllowed( 'protect' ) ) {
-				$revert .= ' ' . $this->message['pipe-separator'] . ' ' .
+				$revert .= $this->message['pipe-separator'] .
 					$this->skin->link( $title,
 						$this->message['protect_change'],
 						array(),
@@ -385,7 +359,7 @@ class LogEventsList {
 			$del = Xml::tags( 'span', array( 'class'=>'mw-revdelundel-link' ), '('.$this->message['rev-delundel'].')' );
 		} else {
 			$target = SpecialPage::getTitleFor( 'Log', $row->log_type );
-			$query = array( 'target' => $target->getPrefixedUrl(),
+			$query = array( 'target' => $target->getPrefixedDBkey(),
 				'logid' => $row->log_id
 			);
 			$del = $this->skin->revDeleteLink( $query, self::isDeleted( $row, LogPage::DELETED_RESTRICTED ) );
@@ -521,7 +495,7 @@ class LogPager extends ReverseChronologicalPager {
 
 		$this->mLogEventsList = $list;
 
-		$this->limitType( $type );
+		$this->limitType( $type ); // also excludes hidden types
 		$this->limitUser( $user );
 		$this->limitTitle( $title, $pattern );
 		$this->getDateCond( $year, $month );
@@ -598,6 +572,8 @@ class LogPager extends ReverseChronologicalPager {
 			$this->mConds[] = "NULL";
 		} else {
 			$this->mConds['log_user'] = $userid;
+			// Paranoia: avoid brute force searches (bug 17342)
+			$this->mConds[] = 'log_deleted & ' . LogPage::DELETED_USER . ' = 0';
 			$this->user = $usertitle->getText();
 		}
 	}
@@ -638,6 +614,8 @@ class LogPager extends ReverseChronologicalPager {
 			$this->mConds['log_namespace'] = $ns;
 			$this->mConds['log_title'] = $title->getDBkey();
 		}
+		// Paranoia: avoid brute force searches (bug 17342)
+		$this->mConds[] = 'log_deleted & ' . LogPage::DELETED_ACTION . ' = 0';
 	}
 
 	public function getQueryInfo() {

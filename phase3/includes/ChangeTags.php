@@ -91,7 +91,7 @@ class ChangeTags {
 	 * Needs $tables to be set up properly, so we can figure out which join conditions to use.
 	*/
 	static function modifyDisplayQuery( &$tables, &$fields,  &$conds, &$join_conds, $filter_tag = false ) {
-		global $wgRequest;
+		global $wgRequest, $wgUseTagFilter;
 		
 		if ($filter_tag === false) {
 			$filter_tag = $wgRequest->getVal( 'tagfilter' );
@@ -114,7 +114,7 @@ class ChangeTags {
 		$join_conds['tag_summary'] = array( 'LEFT JOIN', "ts_$join_cond=$join_cond" );
 		$fields[] = 'ts_tags';
 		
-		if ($filter_tag) {
+		if ($wgUseTagFilter && $filter_tag) {
 			// Somebody wants to filter on a tag.
 			// Add an INNER JOIN on change_tag
 
@@ -129,6 +129,11 @@ class ChangeTags {
 	 * If $fullForm is true, it returns an entire form.
 	 */
 	static function buildTagFilterSelector( $selected='', $fullForm = false /* used to put a full form around the selector */ ) {
+		global $wgUseTagFilter;
+		
+		if ( !$wgUseTagFilter || !count( self::listDefinedTags() ) )
+			return $fullForm ? '' : array();
+	
 		global $wgTitle;
 		
 		$data = array( wfMsgExt( 'tag-filter', 'parseinline' ), Xml::input( 'tagfilter', 20, $selected ) );
@@ -147,6 +152,13 @@ class ChangeTags {
 
 	/** Basically lists defined tags which count even if they aren't applied to anything */
 	static function listDefinedTags() {
+		// Caching...
+		global $wgMemc;
+		$key = wfMemcKey( 'valid-tags' );
+
+		if ($tags = $wgMemc->get( $key ))
+			return $tags;
+	
 		$emptyTags = array();
 
 		// Some DB stuff
@@ -158,6 +170,10 @@ class ChangeTags {
 		
 		wfRunHooks( 'ListDefinedTags', array(&$emptyTags) );
 
-		return array_filter( array_unique( $emptyTags ) );
+		$emptyTags = array_filter( array_unique( $emptyTags ) );
+
+		// Short-term caching.
+		$wgMemc->set( $key, $emptyTags, 300 );
+		return $emptyTags;
 	}
 }

@@ -674,12 +674,12 @@ class PreferencesForm {
 
 		$userInformationHtml =
 			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $wgUser->getName() ) ) .
-			$this->tableRow( wfMsgHtml( 'uid' ), $wgLang->formatNum( htmlspecialchars( $wgUser->getId() ) ) ).
+			$this->tableRow( wfMsgHtml( 'uid' ), htmlspecialchars( $wgUser->getId() ) ) .
 
 			$this->tableRow(
 				wfMsgExt( 'prefs-memberingroups', array( 'parseinline' ), count( $userEffectiveGroupsArray ) ),
 				$wgLang->commaList( $userEffectiveGroupsArray ) .
-				'<br />(' . implode( ' | ', $toolLinks ) . ')'
+				'<br />(' . $wgLang->pipeList( $toolLinks ) . ')'
 			) .
 
 			$this->tableRow(
@@ -755,7 +755,10 @@ class PreferencesForm {
 		$wgOut->addHTML(
 			$this->tableRow(
 				Xml::label( wfMsg( 'yourgender' ), 'wpGender' ),
-				$gender->getHTML()
+				$gender->getHTML(),
+				Xml::tags( 'div', array( 'class' => 'prefsectiontip' ),
+					wfMsgExt( 'prefs-help-gender', 'parseinline' )
+				)
 			)
 		);
 
@@ -1024,26 +1027,54 @@ class PreferencesForm {
 			'onchange' => 'javascript:updateTimezoneSelection(false)' ) );
 		$opt .= Xml::option( wfMsg( 'timezoneuseserverdefault' ), "System|$wgLocalTZoffset", $this->mTimeZone === "System|$wgLocalTZoffset" );
 		$opt .= Xml::option( wfMsg( 'timezoneuseoffset' ), 'Offset', $this->mTimeZone === 'Offset' );
+
 		if ( function_exists( 'timezone_identifiers_list' ) ) {
-			$optgroup = '';
+			# Read timezone list
 			$tzs = timezone_identifiers_list();
 			sort( $tzs );
-			$selZone = explode( '|', $this->mTimeZone, 3);
+
+			# Precache localized region names
+			$tzRegions = array();
+			$tzRegions['Africa'] = wfMsg( 'timezoneregion-africa' );
+			$tzRegions['America'] = wfMsg( 'timezoneregion-america' );
+			$tzRegions['Antarctica'] = wfMsg( 'timezoneregion-antarctica' );
+			$tzRegions['Arctic'] = wfMsg( 'timezoneregion-arctic' );
+			$tzRegions['Asia'] = wfMsg( 'timezoneregion-asia' );
+			$tzRegions['Atlantic'] = wfMsg( 'timezoneregion-atlantic' );
+			$tzRegions['Australia'] = wfMsg( 'timezoneregion-australia' );
+			$tzRegions['Europe'] = wfMsg( 'timezoneregion-europe' );
+			$tzRegions['Indian'] = wfMsg( 'timezoneregion-indian' );
+			$tzRegions['Pacific'] = wfMsg( 'timezoneregion-pacific' );
+			asort( $tzRegions );
+
+			$selZone = explode( '|', $this->mTimeZone, 3 );
 			$selZone = ( $selZone[0] == 'ZoneInfo' ) ? $selZone[2] : null;
 			$now = date_create( 'now' );
+			$optgroup = '';
+
 			foreach ( $tzs as $tz ) {
 				$z = explode( '/', $tz, 2 );
+
 				# timezone_identifiers_list() returns a number of
 				# backwards-compatibility entries. This filters them out of the 
 				# list presented to the user.
-				if ( count( $z ) != 2 || !in_array( $z[0], array( 'Africa', 'America', 'Antarctica', 'Arctic', 'Asia', 'Atlantic', 'Australia', 'Europe', 'Indian', 'Pacific' ) ) ) continue;
+				if ( count( $z ) != 2 || !array_key_exists( $z[0], $tzRegions ) )
+					continue;
+
+				# Localize region
+				$z[0] = $tzRegions[$z[0]];
+
+				# Create region groups
 				if ( $optgroup != $z[0] ) {
-					if ( $optgroup !== '' ) $opt .= Xml::closeElement( 'optgroup' );
+					if ( $optgroup !== '' ) {
+						$opt .= Xml::closeElement( 'optgroup' );
+					}
 					$optgroup = $z[0];
-					$opt .= Xml::openElement( 'optgroup', array( 'label' => $z[0] ) );
+					$opt .= Xml::openElement( 'optgroup', array( 'label' => $z[0] ) ) . "\n";
 				}
+
 				$minDiff = floor( timezone_offset_get( timezone_open( $tz ), $now ) / 60 );
-				$opt .= Xml::option( str_replace( '_', ' ', $tz ), "ZoneInfo|$minDiff|$tz", $selZone === $tz, array( 'label' => $z[1] ) );
+				$opt .= Xml::option( str_replace( '_', ' ', $z[0] . '/' . $z[1] ), "ZoneInfo|$minDiff|$tz", $selZone === $tz, array( 'label' => $z[1] ) ) . "\n";
 			}
 			if ( $optgroup !== '' ) $opt .= Xml::closeElement( 'optgroup' );
 		}
@@ -1215,25 +1246,34 @@ class PreferencesForm {
 
 		# Misc
 		#
-		$wgOut->addHTML('<fieldset><legend>' . wfMsg('prefs-misc') . '</legend>');
-		$wgOut->addHTML( '<label for="wpStubs">' . wfMsg( 'stub-threshold' ) . '</label>&nbsp;' );
-		$wgOut->addHTML( Xml::input( 'wpStubs', 6, $this->mStubs, array( 'id' => 'wpStubs' ) ) );
-		$msgUnderline = htmlspecialchars( wfMsg ( 'tog-underline' ) );
-		$msgUnderlinenever = htmlspecialchars( wfMsg ( 'underline-never' ) );
-		$msgUnderlinealways = htmlspecialchars( wfMsg ( 'underline-always' ) );
-		$msgUnderlinedefault = htmlspecialchars( wfMsg ( 'underline-default' ) );
-		$uopt = $wgUser->getOption("underline");
-		$s0 = $uopt == 0 ? ' selected="selected"' : '';
-		$s1 = $uopt == 1 ? ' selected="selected"' : '';
-		$s2 = $uopt == 2 ? ' selected="selected"' : '';
-		$wgOut->addHTML("
-<div class='toggle'><p><label for='wpOpunderline'>$msgUnderline</label>
-<select name='wpOpunderline' id='wpOpunderline'>
-<option value=\"0\"$s0>$msgUnderlinenever</option>
-<option value=\"1\"$s1>$msgUnderlinealways</option>
-<option value=\"2\"$s2>$msgUnderlinedefault</option>
-</select></p></div>");
+		$uopt = $wgUser->getOption( 'underline' );
+		$wgOut->addHTML(
+			Xml::fieldset( wfMsg( 'prefs-misc' ) ) .
+ 			Xml::openElement( 'table' ) .
+				'<tr>
+					<td class="mw-label">' .
+						// Xml::label() cannot be used because 'stub-threshold' contains plain HTML
+						Xml::tags( 'label', array( 'for' => 'wpStubs' ), wfMsg( 'stub-threshold' ) ) .
+					'</td>
+					<td class="mw-input">' .
+						Xml::input( 'wpStubs', 6, $this->mStubs, array( 'id' => 'wpStubs' ) ) .
+					'</td>
+				</tr><tr>
+					<td class="mw-label">' .
+						Xml::label( wfMsg( 'tog-underline' ), 'wpOpunderline' ) .
+					'</td>
+					<td class="mw-input">' .
+						Xml::openElement( 'select', array( 'id' => 'wpOpunderline', 'name' => 'wpOpunderline' ) ) .
+						Xml::option( wfMsg ( 'underline-never' ), '0', $uopt == 0 ) .
+						Xml::option( wfMsg ( 'underline-always' ), '1', $uopt == 1 ) .
+						Xml::option( wfMsg ( 'underline-default' ), '2', $uopt == 2 ) .
+						Xml::closeElement( 'select' ) .
+					'</td>
+				</tr>' .
+ 			Xml::closeElement( 'table' )
+		);
 
+		# And now the rest = Misc.
 		foreach ( $togs as $tname ) {
 			if( !array_key_exists( $tname, $this->mUsedToggles ) ) {
 				if( $tname == 'norollbackdiff' && $wgUser->isAllowed( 'rollback' ) )

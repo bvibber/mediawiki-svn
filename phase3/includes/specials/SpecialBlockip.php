@@ -428,7 +428,9 @@ class IPBlockForm {
 			}
 			wfRunHooks('BlockIpComplete', array($block, $wgUser));
 
-			if ( $this->BlockWatchUser ) { 
+			if ( $this->BlockWatchUser &&
+				# Only show watch link when this is no range block
+				$block->mRangeStart == $block->mRangeEnd) {
 				$wgUser->addWatch ( Title::makeTitle( NS_USER, $this->BlockAddress ) );
 			}
 			
@@ -524,14 +526,14 @@ class IPBlockForm {
 	 * @return string
 	 */
 	private function getConvenienceLinks() {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$skin = $wgUser->getSkin();
 		if( $this->BlockAddress )
 			$links[] = $this->getContribsLink( $skin );
 		$links[] = $this->getUnblockLink( $skin );
 		$links[] = $this->getBlockListLink( $skin );
 		$links[] = $skin->makeLink ( 'MediaWiki:Ipbreason-dropdown', wfMsgHtml( 'ipb-edit-dropdown' ) );
-		return '<p class="mw-ipb-conveniencelinks">' . implode( ' | ', $links ) . '</p>';
+		return '<p class="mw-ipb-conveniencelinks">' . $wgLang->pipeList( $links ) . '</p>';
 	}
 	
 	/**

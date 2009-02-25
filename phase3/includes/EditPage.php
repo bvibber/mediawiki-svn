@@ -324,7 +324,7 @@ class EditPage {
 	protected function wasDeletedSinceLastEdit() {
 		if ( $this->deletedSinceEdit )
 			return true;
-		if ( $this->mTitle->isDeleted() ) {
+		if ( $this->mTitle->isDeletedQuick() ) {
 			$this->lastDelete = $this->getLastDelete();
 			if ( $this->lastDelete ) {
 				$deleteTime = wfTimestamp( TS_MW, $this->lastDelete->log_timestamp );
@@ -523,7 +523,7 @@ class EditPage {
 		} elseif ( $this->section == 'new' ) {
 			// Nothing *to* preview for new sections
 			return false;
-		} elseif ( ( $wgRequest->getVal( 'preload' ) !== '' || $this->mTitle->exists() ) && $wgUser->getOption( 'previewonfirst' ) ) {
+		} elseif ( ( $wgRequest->getVal( 'preload' ) !== null || $this->mTitle->exists() ) && $wgUser->getOption( 'previewonfirst' ) ) {
 			// Standard preference behaviour
 			return true;
 		} elseif ( !$this->mTitle->exists() && $this->mTitle->getNamespace() == NS_CATEGORY ) {
@@ -554,7 +554,7 @@ class EditPage {
 			$this->textbox2 = $this->safeUnicodeInput( $request, 'wpTextbox2' );
 			$this->mMetaData = rtrim( $request->getText( 'metadata' ) );
 			# Truncate for whole multibyte characters. +5 bytes for ellipsis
-			$this->summary = $wgLang->truncate( $request->getText( 'wpSummary' ), 250 );
+			$this->summary = $wgLang->truncate( $request->getText( 'wpSummary' ), 250, '' );
 
 			# Remove extra headings from summaries and new sections.
 			$this->summary = preg_replace('/^\s*=+\s*(.*?)\s*=+\s*$/', '$1', $this->summary);
@@ -678,8 +678,16 @@ class EditPage {
 		if ( $this->suppressIntro ) {
 			return;
 		}
+
+		$namespace = $this->mTitle->getNamespace();
+
+		if ( $namespace == NS_MEDIAWIKI ) {
+			# Show a warning if editing an interface message
+			$wgOut->wrapWikiMsg( "<div class='mw-editinginterface'>\n$1</div>", 'editinginterface' );
+		}
+
 		# Show a warning message when someone creates/edits a user (talk) page but the user does not exists
-		if ( $this->mTitle->getNamespace() == NS_USER || $this->mTitle->getNamespace() == NS_USER_TALK ) {
+		if ( $namespace == NS_USER || $namespace == NS_USER_TALK ) {
 			$parts = explode( '/', $this->mTitle->getText(), 2 );
 			$username = $parts[0];
 			$id = User::idFromName( $username );
@@ -1161,7 +1169,7 @@ class EditPage {
 			}
 
 			if ( $this->missingComment ) {
-				$wgOut->wrapWikiMsg( '<div id="mw-missingcommenttext">$1</div>',  'missingcommenttext' );
+				$wgOut->wrapWikiMsg( '<div id="mw-missingcommenttext">$1</div>', 'missingcommenttext' );
 			}
 
 			if ( $this->missingSummary && $this->section != 'new' ) {
@@ -1183,9 +1191,9 @@ class EditPage {
 			// Let sysop know that this will make private content public if saved
 
 				if ( !$this->mArticle->mRevision->userCan( Revision::DELETED_TEXT ) ) {
-					$wgOut->addWikiMsg( 'rev-deleted-text-permission' );
+					$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n", 'rev-deleted-text-permission' );
 				} else if ( $this->mArticle->mRevision->isDeleted( Revision::DELETED_TEXT ) ) {
-					$wgOut->addWikiMsg( 'rev-deleted-text-view' );
+					$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n", 'rev-deleted-text-view' );
 				}
 
 				if ( !$this->mArticle->mRevision->isCurrent() ) {
@@ -1214,8 +1222,6 @@ class EditPage {
 
 		$classes = array(); // Textarea CSS
 		if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
-			# Show a warning if editing an interface message
-			$wgOut->addWikiMsg( 'editinginterface' );
 		} elseif ( $this->mTitle->isProtected( 'edit' ) ) {
 			# Is the title semi-protected?
 			if ( $this->mTitle->isSemiProtected() ) {
@@ -1271,6 +1277,7 @@ class EditPage {
 
 		$cancel = $sk->makeKnownLink( $wgTitle->getPrefixedText(),
 				wfMsgExt('cancel', array('parseinline')) );
+		$separator = wfMsgExt( 'pipe-separator' , 'escapenoentities' );
 		$edithelpurl = Skin::makeInternalOrExternalUrl( wfMsgForContent( 'edithelppage' ));
 		$edithelp = '<a target="helpwindow" href="'.$edithelpurl.'">'.
 			htmlspecialchars( wfMsg( 'edithelp' ) ).'</a> '.
@@ -1326,7 +1333,7 @@ class EditPage {
 
 		# if this is a comment, show a subject line at the top, which is also the edit summary.
 		# Otherwise, show a summary field at the bottom
-		$summarytext = htmlspecialchars( $wgContLang->recodeForEdit( $this->summary ) ); # FIXME
+		$summarytext = $wgContLang->recodeForEdit( $this->summary );
 
 		# If a blank edit summary was previously provided, and the appropriate
 		# user preference is active, pass a hidden tag as wpIgnoreBlankSummary. This will stop the
@@ -1340,7 +1347,25 @@ class EditPage {
 		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
 		$summaryhiddens .= Xml::hidden( 'wpAutoSummary', $autosumm );
 		if ( $this->section == 'new' ) {
-			$commentsubject="<span id='wpSummaryLabel'><label for='wpSummary'>{$subject}</label></span>\n<input tabindex='1' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
+			$commentsubject = '';
+			if ( !$wgRequest->getBool( 'nosummary' ) ) {
+				# Add an ID if 'missingsummary' is triggered to allow styling of the summary line
+				$summaryMissedID = $this->missingSummary ? ' mw-summarymissed' : '';
+
+				$commentsubject =
+					Xml::tags( 'label', array( 'for' => 'wpSummary' ), $subject );
+				$commentsubject =
+					Xml::tags( 'span', array( 'id' => "wpSummaryLabel$summaryMissedID" ), $commentsubject );
+				$commentsubject .= '&nbsp;';
+				$commentsubject .= Xml::input( 'wpSummary',
+									60,
+									$summarytext,
+									array(
+										'id' => 'wpSummary',
+										'maxlength' => '200',
+										'tabindex' => '1'
+									) );
+			}
 			$editsummary = "<div class='editOptions'>\n";
 			global $wgParser;
 			$formattedSummary = wfMsgForContent( 'newsectionsummary', $wgParser->stripSectionName( $this->summary ) );
@@ -1348,10 +1373,38 @@ class EditPage {
 			$summarypreview = '';
 		} else {
 			$commentsubject = '';
-			$editsummary="<div class='editOptions'>\n<span id='wpSummaryLabel'><label for='wpSummary'>{$summary}</label></span>\n<input tabindex='2' type='text' value=\"$summarytext\" name='wpSummary' id='wpSummary' maxlength='200' size='60' />{$summaryhiddens}<br />";
-			$summarypreview = $summarytext && $this->preview ? "<div class=\"mw-summary-preview\">". wfMsg('summary-preview') .$sk->commentBlock( $this->summary, $this->mTitle )."</div>\n" : '';
+
+			# Add an ID if 'missingsummary' is triggered to allow styling of the summary line
+			$summaryMissedID = $this->missingSummary ? ' mw-summarymissed' : '';
+
+			$editsummary = Xml::tags( 'label', array( 'for' => 'wpSummary' ), $summary );
+			$editsummary = Xml::tags( 'span', array( 'id' => "wpSummaryLabel$summaryMissedID" ), $editsummary ) . ' ';
+
+			$editsummary .= Xml::input( 'wpSummary',
+				60,
+				$summarytext,
+				array(
+					'id' => 'wpSummary',
+					'maxlength' => '200',
+					'tabindex' => '1'
+				) );
+
+			// No idea where this is closed.
+			$editsummary = Xml::openElement( 'div', array( 'class' => 'editOptions' ) )
+							. $editsummary . '<br/>';
+
+			$summarypreview = '';
+			if ( $summarytext && $this->preview ) {
+				$summarypreview =
+					Xml::tags( 'div',
+						array( 'class' => 'mw-summary-preview' ),
+						wfMsg( 'summary-preview' ) .
+							$sk->commentBlock( $this->summary, $this->mTitle )
+					);
+			}
 			$subjectpreview = '';
 		}
+		$commentsubject .= $summaryhiddens;
 
 		# Set focus to the edit box on load, except on preview or diff, where it would interfere with the display
 		if ( !$this->preview && !$this->diff ) {
@@ -1381,7 +1434,9 @@ class EditPage {
 		$recreate = '';
 		if ( $this->wasDeletedSinceLastEdit() ) {
 			if ( 'save' != $this->formtype ) {
-				$wgOut->wrapWikiMsg( '<div class="error mw-deleted-while-editing">$1</div>', 'deletedwhileediting' );
+				$wgOut->wrapWikiMsg(
+					'<div class="error mw-deleted-while-editing">$1</div>',
+					'deletedwhileediting' );
 			} else {
 				// Hide the toolbar and edit area, user can click preview to get it back
 				// Add an confirmation checkbox and explanation.
@@ -1445,7 +1500,7 @@ END
 		$wgOut->addHTML(
 "<div class='editButtons'>
 {$buttonshtml}
-	<span class='editHelp'>{$cancel} | {$edithelp}</span>
+	<span class='editHelp'>{$cancel}{$separator}{$edithelp}</span>
 </div><!-- editButtons -->
 </div><!-- editOptions -->");
 

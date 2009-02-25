@@ -155,8 +155,12 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		return $vals;
 	}
 
-	public static function allProps() {
+	public function getAllowedParams() {
 		return array (
+			'prop' => array (
+				ApiBase :: PARAM_ISMULTI => true,
+				ApiBase :: PARAM_DFLT => 'timestamp|user',
+				ApiBase :: PARAM_TYPE => array (
 					'timestamp',
 					'user',
 					'comment',
@@ -167,14 +171,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 					'metadata',
 					'archivename',
 					'bitdepth',
-				);
-	}
-	public function getAllowedParams() {
-		return array (
-			'prop' => array (
-				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_DFLT => 'timestamp|user',
-				ApiBase :: PARAM_TYPE => self::allProps()
+				)
 			),
 			'limit' => array(
 				ApiBase :: PARAM_TYPE => 'limit',

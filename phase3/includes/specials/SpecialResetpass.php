@@ -9,6 +9,9 @@
  * @ingroup SpecialPage
  */
 class SpecialResetpass extends SpecialPage {
+
+	private $mSelfChange = true; // Usually, but sometimes not :)
+
 	public function __construct() {
 		parent::__construct( 'Resetpass' );
 	}
@@ -19,10 +22,11 @@ class SpecialResetpass extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgAuth, $wgOut, $wgRequest;
 
-		$this->mUserName = $wgRequest->getVal( 'wpName' );
+		$this->mUserName = $wgRequest->getVal( 'wpName', $par );
 		$this->mOldpass = $wgRequest->getVal( 'wpPassword' );
 		$this->mNewpass = $wgRequest->getVal( 'wpNewPassword' );
 		$this->mRetype = $wgRequest->getVal( 'wpRetype' );
+		$this->mComment = $wgRequest->getVal( 'wpComment' );
 		
 		$this->setHeaders();
 		$this->outputHeader();
@@ -31,9 +35,24 @@ class SpecialResetpass extends SpecialPage {
 			$this->error( wfMsg( 'resetpass_forbidden' ) );
 			return;
 		}
+		
+		// Default to our own username when not given one
+		if ( !$this->mUserName ) {
+			$this->mUserName = $wgUser->getName();
+		}
+		
+		// Are we changing our own?
+		if ( $wgUser->getName() != $this->mUserName  ) {
+			$this->mSelfChange = false; // We're changing someone else
+		}
 
 		if( !$wgRequest->wasPosted() && !$wgUser->isLoggedIn() ) {
 			$this->error( wfMsg( 'resetpass-no-info' ) );
+			return;
+		}
+
+		if ( !$this->mSelfChange && !$wgUser->isAllowed( 'reset-passwords' ) ) {
+			$this->error( wfMsg( 'resetpass-no-others' ) );
 			return;
 		}
 
@@ -41,7 +60,8 @@ class SpecialResetpass extends SpecialPage {
 			try {
 				$this->attemptReset( $this->mNewpass, $this->mRetype );
 				$wgOut->addWikiMsg( 'resetpass_success' );
-				if( !$wgUser->isLoggedIn() ) {
+				// Only attempt this login session if we're changing our own password
+				if( $this->mSelfChange && !$wgUser->isLoggedIn() ) {
 					$data = array(
 						'action'     => 'submitlogin',
 						'wpName'     => $this->mUserName,
@@ -75,11 +95,13 @@ class SpecialResetpass extends SpecialPage {
 		global $wgOut, $wgUser, $wgRequest;
 
 		$wgOut->disallowUserJs();
+		
+		if ( $wgUser->isAllowed( 'reset-passwords') ) {
+			$wgOut->addScriptFile( 'changepassword.js' );
+		}
 
 		$self = SpecialPage::getTitleFor( 'Resetpass' );
-		if ( !$this->mUserName ) {
-			$this->mUserName = $wgUser->getName();
-		}
+
 		$rememberMe = '';
 		if ( !$wgUser->isLoggedIn() ) {
 			$rememberMe = '<tr>' .
@@ -96,24 +118,24 @@ class SpecialResetpass extends SpecialPage {
 			$oldpassMsg = 'oldpassword';
 			$submitMsg = 'resetpass-submit-loggedin';
 		}
-		$wgOut->addHTML(
-			Xml::fieldset( wfMsg( 'resetpass_header' ) ) .
+		$s = Xml::fieldset( wfMsg( 'resetpass_header' ) ) .
 			Xml::openElement( 'form',
 				array(
 					'method' => 'post',
 					'action' => $self->getLocalUrl(),
 					'id' => 'mw-resetpass-form' ) ) .	
 			Xml::hidden( 'token', $wgUser->editToken() ) .
-			Xml::hidden( 'wpName', $this->mUserName ) .
 			Xml::hidden( 'returnto', $wgRequest->getVal( 'returnto' ) ) .
 			wfMsgExt( 'resetpass_text', array( 'parse' ) ) .
-			Xml::openElement( 'table', array( 'id' => 'mw-resetpass-table' ) ) .
-			$this->pretty( array(
-				array( 'wpName', 'username', 'text', $this->mUserName ),
-				array( 'wpPassword', $oldpassMsg, 'password', $this->mOldpass ),
-				array( 'wpNewPassword', 'newpassword', 'password', '' ),
-				array( 'wpRetype', 'retypenew', 'password', '' ),
-			) ) .
+			Xml::openElement( 'table', array( 'id' => 'mw-resetpass-table' ) );
+		$formElements = array(
+				array( 'wpName', 'username', 'text', $this->mUserName, $wgUser->isAllowed( 'reset-passwords' ) ),
+				array( 'wpPassword', $oldpassMsg, 'password', $this->mOldpass, $this->mSelfChange ),
+				array( 'wpNewPassword', 'newpassword', 'password', '', true ),
+				array( 'wpRetype', 'retypenew', 'password', '', true ) );
+		if ( $wgUser->isAllowed( 'reset-passwords' ) && $this->mSelfChange )
+			$formElements[] = array( 'wpComment', 'resetpass-comment', 'text', $this->mComment, true );
+		$s .= $this->pretty( $formElements ) .
 			$rememberMe .
 			'<tr>' .
 				'<td></td>' .
@@ -123,28 +145,23 @@ class SpecialResetpass extends SpecialPage {
 			'</tr>' .
 			Xml::closeElement( 'table' ) .
 			Xml::closeElement( 'form' ) .
-			Xml::closeElement( 'fieldset' )
-		);
+			Xml::closeElement( 'fieldset' );
+		$wgOut->addHtml( $s );
 	}
 
 	function pretty( $fields ) {
 		$out = '';
 		foreach( $fields as $list ) {
-			list( $name, $label, $type, $value ) = $list;
-			if( $type == 'text' ) {
-				$field = htmlspecialchars( $value );
-			} else {
-				$field = Xml::input( $name, 20, $value,
-					array( 'id' => $name, 'type' => $type ) );
-			}
+			list( $name, $label, $type, $value, $enabled ) = $list;
+			$params = array( 'id' => $name, 'type' => $type );
+			if ( !$enabled )
+				$params['disabled'] = 'disabled';
+			$field = Xml::input( $name, 20, $value, $params );
 			$out .= '<tr>';
-			$out .= "<td class='mw-label'>";
-			if ( $type != 'text' )
-				$out .= Xml::label( wfMsg( $label ), $name );
-			else 
-				$out .=  wfMsg( $label );
+			$out .= '<td class="mw-label">';
+			$out .= Xml::label( wfMsg( $label ), $name );
 			$out .= '</td>';
-			$out .= "<td class='mw-input'>";
+			$out .= '<td class="mw-input">';
 			$out .= $field;
 			$out .= '</td>';
 			$out .= '</tr>';
@@ -166,11 +183,13 @@ class SpecialResetpass extends SpecialPage {
 			throw new PasswordError( wfMsg( 'badretype' ) );
 		}
 
-		if( !$user->checkTemporaryPassword($this->mOldpass) && !$user->checkPassword($this->mOldpass) ) {
-			wfRunHooks( 'PrefsPasswordAudit', array( $user, $newpass, 'wrongpassword' ) );
-			throw new PasswordError( wfMsg( 'resetpass-wrong-oldpass' ) );
+		if ( $this->mSelfChange ) {
+			if( !$user->checkTemporaryPassword($this->mOldpass) && !$user->checkPassword($this->mOldpass) ) {
+				wfRunHooks( 'PrefsPasswordAudit', array( $user, $newpass, 'wrongpassword' ) );
+				throw new PasswordError( wfMsg( 'resetpass-wrong-oldpass' ) );
+			}
 		}
-		
+
 		try {
 			$user->setPassword( $this->mNewpass );
 			wfRunHooks( 'PrefsPasswordAudit', array( $user, $newpass, 'success' ) );
@@ -181,7 +200,14 @@ class SpecialResetpass extends SpecialPage {
 			return;
 		}
 		
-		$user->setCookies();
+		if ( !$this->mSelfChange ) {
+			$log = new LogPage( 'password' );
+			$log->addEntry( 'reset', $user->getUserPage(), $this->mComment );
+		} else {
+			// Only set cookies if it was a self-change
+			$user->setCookies();
+		}
+		
 		$user->saveSettings();
 	}
 }

@@ -586,7 +586,7 @@ abstract class File {
 		} while (false);
 
 		wfProfileOut( __METHOD__ );
-		return $thumb;
+		return is_object( $thumb ) ? $thumb : false;
 	}
 
 	/**
@@ -865,22 +865,23 @@ abstract class File {
 	 *
 	 * @deprecated Use HTMLCacheUpdate, this function uses too much memory
 	 */
-	function getLinksTo( $options = '' ) {
+	function getLinksTo( $options = array() ) {
 		wfProfileIn( __METHOD__ );
 
 		// Note: use local DB not repo DB, we want to know local links
-		if ( $options ) {
+		if ( count( $options ) > 0 ) {
 			$db = wfGetDB( DB_MASTER );
 		} else {
 			$db = wfGetDB( DB_SLAVE );
 		}
 		$linkCache = LinkCache::singleton();
 
-		list( $page, $imagelinks ) = $db->tableNamesN( 'page', 'imagelinks' );
 		$encName = $db->addQuotes( $this->getName() );
-		$sql = "SELECT page_namespace,page_title,page_id,page_len,page_is_redirect,
-			FROM $page,$imagelinks WHERE page_id=il_from AND il_to=$encName $options";
-		$res = $db->query( $sql, __METHOD__ );
+		$res = $db->select( array( 'page', 'imagelinks'), 
+							array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect' ),
+							array( 'page_id' => 'il_from', 'il_to' => $encName ),
+							__METHOD__,
+							$options );
 
 		$retVal = array();
 		if ( $db->numRows( $res ) ) {
@@ -950,7 +951,7 @@ abstract class File {
 	 */
 	function wasDeleted() {
 		$title = $this->getTitle();
-		return $title && $title->isDeleted() > 0;
+		return $title && $title->isDeletedQuick();
 	}
 
 	/**

@@ -151,6 +151,10 @@ class ApiParse extends ApiBase {
 			$result_array['externallinks'] = array_keys($p_result->getExternalLinks());
 		if(isset($prop['sections']))
 			$result_array['sections'] = $p_result->getSections();
+		if(isset($prop['displaytitle']))
+			$result_array['displaytitle'] = $p_result->getDisplayTitle() ?
+							$p_result->getDisplayTitle() :
+							$titleObj->getPrefixedText();
 		if(!is_null($oldid))
 			$result_array['revid'] = $oldid;
 
@@ -223,7 +227,7 @@ class ApiParse extends ApiBase {
 			'redirects' => false,
 			'oldid' => null,
 			'prop' => array(
-				ApiBase :: PARAM_DFLT => 'text|langlinks|categories|links|templates|images|externallinks|sections|revid',
+				ApiBase :: PARAM_DFLT => 'text|langlinks|categories|links|templates|images|externallinks|sections|revid|displaytitle',
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => array(
 					'text',
@@ -234,7 +238,8 @@ class ApiParse extends ApiBase {
 					'images',
 					'externallinks',
 					'sections',
-					'revid'
+					'revid',
+					'displaytitle',
 				)
 			),
 			'pst' => false,

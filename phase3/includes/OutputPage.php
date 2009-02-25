@@ -29,6 +29,7 @@ class OutputPage {
 	var $mArticleBodyOnly = false;
 
 	var $mNewSectionLink = false;
+	var $mHideNewSectionLink = false;
 	var $mNoGallery = false;
 	var $mPageTitleActionText = '';
 	var $mParseWarnings = array();
@@ -309,20 +310,20 @@ class OutputPage {
 		}
 	}
 
-	public function setHTMLTitle( $name ) {$this->mHTMLtitle = $name; }
+	public function setHTMLTitle( $name ) { $this->mHTMLtitle = $name; }
 	public function setPageTitle( $name ) {
-		global $action, $wgContLang;
-		$name = $wgContLang->convert($name, true);
+		global $wgContLang;
+		$name = $wgContLang->convert( $name, true );
 		$this->mPagetitle = $name;
-		if(!empty($action)) {
-			$taction =  $this->getPageTitleActionText();
-			if( !empty( $taction ) ) {
-				$name .= ' - '.$taction;
-			}
+
+		$taction =  $this->getPageTitleActionText();
+		if( !empty( $taction ) ) {
+			$name .= ' - '.$taction;
 		}
 
 		$this->setHTMLTitle( wfMsg( 'pagetitle', $name ) );
 	}
+
 	public function getHTMLTitle() { return $this->mHTMLtitle; }
 	public function getPageTitle() { return $this->mPagetitle; }
 	public function setSubtitle( $str ) { $this->mSubtitle = /*$this->parse(*/$str/*)*/; } // @bug 2514
@@ -408,8 +409,12 @@ class OutputPage {
 		if ( wfRunHooks( 'OutputPageMakeCategoryLinks', array( &$this, $categories, &$this->mCategoryLinks ) ) ) {
 			$sk = $wgUser->getSkin();
 			foreach ( $categories as $category => $type ) {
+				$origcategory = $category;
 				$title = Title::makeTitleSafe( NS_CATEGORY, $category );
-				$wgContLang->findVariantLink( $category, $title );
+				$wgContLang->findVariantLink( $category, $title, true );
+				if ( $category != $origcategory )
+					if ( array_key_exists( $category, $categories ) )
+						continue;
 				$text = $wgContLang->convertHtml( $title->getText() );
 				$this->mCategoryLinks[$type][] = $sk->makeLinkObj( $title, $text );
 			}
@@ -512,6 +517,7 @@ class OutputPage {
 		$this->mLanguageLinks += $parserOutput->getLanguageLinks();
 		$this->addCategoryLinks( $parserOutput->getCategories() );
 		$this->mNewSectionLink = $parserOutput->getNewSection();
+		$this->mHideNewSectionLink = $parserOutput->getHideNewSection();
 
 		if( is_null( $wgExemptFromUserRobotsControl ) ) {
 			$bannedNamespaces = $wgContentNamespaces;
@@ -643,6 +649,18 @@ class OutputPage {
 			$linestart, true, $this->mRevisionId );
 		if ( $interface) { $popts->setInterfaceMessage(false); }
 		return $parserOutput->getText();
+	}
+
+	/** Parse wikitext, strip paragraphs, and return the HTML. */
+	public function parseInline( $text, $linestart = true, $interface = false ) {
+		$parsed = $this->parse( $text, $linestart, $interface );
+
+		$m = array();
+		if ( preg_match( '/^<p>(.*)\n?<\/p>\n?/sU', $parsed, $m ) ) {
+			$parsed = $m[1];
+		}
+
+		return $parsed;
 	}
 
 	/**
@@ -920,13 +938,13 @@ class OutputPage {
 					'rel' => 'alternate',
 					'type' => 'application/x-wiki',
 					'title' => wfMsg( 'edit' ),
-					'href' => $wgTitle->getFullURL( 'action=edit' )
+					'href' => $wgTitle->getLocalURL( 'action=edit' )
 				) );
 				// Alternate edit link
 				$this->addLink( array(
 					'rel' => 'edit',
 					'title' => wfMsg( 'edit' ),
-					'href' => $wgTitle->getFullURL( 'action=edit' )
+					'href' => $wgTitle->getLocalURL( 'action=edit' )
 				) );
 			}
 		}
@@ -1579,7 +1597,7 @@ class OutputPage {
 				foreach( $wgFeedClasses as $format => $class ) {
 					$tags[] = $this->feedLink(
 						$format,
-						$rctitle->getFullURL( "feed={$format}" ),
+						$rctitle->getLocalURL( "feed={$format}" ),
 						wfMsg( "site-{$format}-feed", $wgSitename ) ); # For grep: 'site-rss-feed', 'site-atom-feed'.
 				}
 			}
@@ -1759,6 +1777,15 @@ class OutputPage {
 	 */
 	public function showNewSectionLink() {
 		return $this->mNewSectionLink;
+	}
+
+	/**
+	* Forcibly hide the new section link?
+	*
+	* @return bool
+	*/
+	public function forceHideNewSectionLink() {
+		return $this->mHideNewSectionLink;
 	}
 
 	/**

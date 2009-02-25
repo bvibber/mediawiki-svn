@@ -31,6 +31,7 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'plural',           array( __CLASS__, 'plural'           ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofpages',    array( __CLASS__, 'numberofpages'    ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofusers',    array( __CLASS__, 'numberofusers'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'numberofactiveusers', array( __CLASS__, 'numberofactiveusers' ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofarticles', array( __CLASS__, 'numberofarticles' ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberoffiles',    array( __CLASS__, 'numberoffiles'    ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofadmins',   array( __CLASS__, 'numberofadmins'   ), SFH_NO_HASH );
@@ -47,6 +48,24 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'pagesincategory',  array( __CLASS__, 'pagesincategory'  ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'pagesize',         array( __CLASS__, 'pagesize'         ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'protectionlevel',  array( __CLASS__, 'protectionlevel'  ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'namespace',        array( __CLASS__, 'namespace'        ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'namespacee',       array( __CLASS__, 'namespacee'       ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'talkspace',        array( __CLASS__, 'talkspace'        ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'talkspacee',       array( __CLASS__, 'talkspacee'       ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'subjectspace',     array( __CLASS__, 'subjectspace'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'subjectspacee',    array( __CLASS__, 'subjectspacee'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'pagename',         array( __CLASS__, 'pagename'         ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'pagenamee',        array( __CLASS__, 'pagenamee'        ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'fullpagename',     array( __CLASS__, 'fullpagename'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'fullpagenamee',    array( __CLASS__, 'fullpagenamee'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'basepagename',     array( __CLASS__, 'basepagename'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'basepagenamee',    array( __CLASS__, 'basepagenamee'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'subpagename',      array( __CLASS__, 'subpagename'      ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'subpagenamee',     array( __CLASS__, 'subpagenamee'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'talkpagename',     array( __CLASS__, 'talkpagename'     ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'talkpagenamee',    array( __CLASS__, 'talkpagenamee'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'subjectpagename',  array( __CLASS__, 'subjectpagename'  ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'subjectpagenamee', array( __CLASS__, 'subjectpagenamee' ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'tag',              array( __CLASS__, 'tagObj'           ), SFH_OBJECT_ARGS );
 
 		if ( $wgAllowDisplayTitle ) {
@@ -226,6 +245,9 @@ class CoreParserFunctions {
 	static function numberofusers( $parser, $raw = null ) {
 		return self::formatRaw( SiteStats::users(), $raw );
 	}
+	static function numberofactiveusers( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::activeUsers(), $raw );
+	}
 	static function numberofarticles( $parser, $raw = null ) {
 		return self::formatRaw( SiteStats::articles(), $raw );
 	}
@@ -248,6 +270,124 @@ class CoreParserFunctions {
 		return self::formatRaw( SiteStats::numberingroup( strtolower( $name ) ), $raw );
 	} 
 
+	
+	/*
+	* Given a title, return the namespace name that would be given by the
+	* corresponding magic word 
+	*/
+	static function namespace( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return str_replace( '_', ' ', $t->getNsText() );
+	}
+	static function namespacee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return wfUrlencode( $t->getNsText() );
+	}
+	static function talkspace( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) || !$t->canTalk() )
+			return '';
+		return str_replace( '_', ' ', $t->getTalkNsText() );
+	}
+	static function talkspacee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) || !$t->canTalk() )
+			return '';
+		return wfUrlencode( $t->getTalkNsText() );
+	}
+	static function subjectspace( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return str_replace( '_', ' ', $t->getSubjectNsText() );
+	}
+	static function subjectspacee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return wfUrlencode( $t->getSubjectNsText() );
+	}
+	/*
+	 * Functions to get and normalize pagenames, corresponding to the magic words
+	 * of the same names
+	*/
+	static function pagename( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return wfEscapeWikiText( $t->getText() );
+	}
+	static function pagenamee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return $t->getPartialURL();
+	}
+	static function fullpagename( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) || !$t->canTalk() )
+			return '';
+		return wfEscapeWikiText( $t->getPrefixedText() );
+	}
+	static function fullpagenamee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) || !$t->canTalk() )
+			return '';
+		return $t->getPrefixedURL();
+	}
+	static function subpagename( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return $t->getSubpageText();
+	}
+	static function subpagenamee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return $t->getSubpageUrlForm();
+	}
+	static function basepagename( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return $t->getBaseText();
+	}
+	static function basepagenamee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return wfUrlEncode( str_replace( ' ', '_', $t->getBaseText() ) );
+	}	
+	static function talkpagename( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) || !$t->canTalk() )
+			return '';
+		return wfEscapeWikiText( $t->getTalkPage()->getPrefixedText() );
+	}
+	static function talkpagenamee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) || !$t->canTalk() )
+			return '';
+		return $t->getTalkPage()->getPrefixedUrl();
+	}
+	static function subjectpagename( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return wfEscapeWikiText( $t->getSubjectPage()->getPrefixedText() );
+	}
+	static function subjectpagenamee( $parser, $title = null ) {
+		$t = Title::newFromText( $title );
+		if ( is_null($t) )
+			return '';
+		return $t->getSubjectPage()->getPrefixedUrl();
+	}
+	
 	/**
 	 * Return the number of pages in the given category, or 0 if it's nonexis-
 	 * tent.  This is an expensive parser function and can't be called too many

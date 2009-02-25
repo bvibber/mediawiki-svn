@@ -89,6 +89,19 @@ if ( !function_exists( 'array_diff_key' ) ) {
 	}
 }
 
+// Support for Wietse Venema's taint feature
+if ( !function_exists( 'istainted' ) ) {
+	function istainted( $var ) {
+		return 0;
+	}
+	function taint( $var, $level = 0 ) {}
+	function untaint( $var, $level = 0 ) {}
+	define( 'TC_HTML', 1 );
+	define( 'TC_SHELL', 1 );
+	define( 'TC_MYSQL', 1 );
+	define( 'TC_PCRE', 1 );
+	define( 'TC_SELF', 1 );
+}
 /// @endcond
 
 
@@ -337,12 +350,14 @@ function wfErrorLog( $text, $file ) {
  */
 function wfLogProfilingData() {
 	global $wgRequestTime, $wgDebugLogFile, $wgDebugRawPage, $wgRequest;
-	global $wgProfiler, $wgUser;
-	if ( !isset( $wgProfiler ) )
-		return;
-
+	global $wgProfiler, $wgProfileLimit, $wgUser;
+	# Profiling must actually be enabled...
+	if( !isset( $wgProfiler ) ) return;
+	# Get total page request time
 	$now = wfTime();
 	$elapsed = $now - $wgRequestTime;
+	# Only show pages that longer than $wgProfileLimit time (default is 0)
+	if( $elapsed <= $wgProfileLimit ) return;
 	$prof = wfGetProfilingOutput( $wgRequestTime, $elapsed );
 	$forward = '';
 	if( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )
@@ -927,7 +942,8 @@ function wfBacktrace() {
  */
 function wfShowingResults( $offset, $limit ) {
 	global $wgLang;
-	return wfMsgExt( 'showingresults', array( 'parseinline' ), $wgLang->formatNum( $limit ), $wgLang->formatNum( $offset+1 ) );
+	return wfMsgExt( 'showingresults', array( 'parseinline' ), $wgLang->formatNum( $limit ),
+		$wgLang->formatNum( $offset+1 ) );
 }
 
 /**
@@ -935,18 +951,28 @@ function wfShowingResults( $offset, $limit ) {
  */
 function wfShowingResultsNum( $offset, $limit, $num ) {
 	global $wgLang;
-	return wfMsgExt( 'showingresultsnum', array( 'parseinline' ), $wgLang->formatNum( $limit ), $wgLang->formatNum( $offset+1 ), $wgLang->formatNum( $num ) );
+	return wfMsgExt( 'showingresultsnum', array( 'parseinline' ), $wgLang->formatNum( $limit ), 
+		$wgLang->formatNum( $offset+1 ), $wgLang->formatNum( $num ) );
 }
 
 /**
- * @todo document
+ * Generate (prev x| next x) (20|50|100...) type links for paging
+ * @param $offset string
+ * @param $limit int
+ * @param $link string
+ * @param $query string, optional URL query parameter string
+ * @param $atend bool, optional param for specified if this is the last page
  */
 function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 	global $wgLang;
 	$fmtLimit = $wgLang->formatNum( $limit );
-	$prev = wfMsg( 'prevn', $fmtLimit );
-	$next = wfMsg( 'nextn', $fmtLimit );
-
+	# Get prev/next link display text
+	$prev = wfMsgHtml( 'prevn', $fmtLimit );
+	$next = wfMsgHtml( 'nextn', $fmtLimit );
+	# Get prev/next link title text
+	$pTitle = wfMsgExt( 'prevn-title', array('parsemag','escape'), $fmtLimit );
+	$nTitle = wfMsgExt( 'nextn-title', array('parsemag','escape'), $fmtLimit );
+	# Fetch the title object
 	if( is_object( $link ) ) {
 		$title =& $link;
 	} else {
@@ -955,44 +981,58 @@ function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 			return false;
 		}
 	}
-
-	if ( 0 != $offset ) {
+	# Make 'previous' link
+	if( 0 != $offset ) {
 		$po = $offset - $limit;
-		if ( $po < 0 ) { $po = 0; }
+		$po = max($po,0);
 		$q = "limit={$limit}&offset={$po}";
-		if ( '' != $query ) { $q .= '&'.$query; }
-		$plink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" class=\"mw-prevlink\">{$prev}</a>";
-	} else { $plink = $prev; }
-
+		if( $query != '' ) {
+			$q .= '&'.$query;
+		}
+		$plink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" title=\"{$pTitle}\" class=\"mw-prevlink\">{$prev}</a>";
+	} else { 
+		$plink = $prev;
+	}
+	# Make 'next' link
 	$no = $offset + $limit;
-	$q = 'limit='.$limit.'&offset='.$no;
-	if ( '' != $query ) { $q .= '&'.$query; }
-
-	if ( $atend ) {
+	$q = "limit={$limit}&offset={$no}";
+	if( $query != '' ) {
+		$q .= '&'.$query;
+	}
+	if( $atend ) {
 		$nlink = $next;
 	} else {
-		$nlink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" class=\"mw-nextlink\">{$next}</a>";
+		$nlink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" title=\"{$nTitle}\" class=\"mw-nextlink\">{$next}</a>";
 	}
-	$nums = wfNumLink( $offset, 20, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 50, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 100, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 250, $title, $query ) . ' | ' .
-	  wfNumLink( $offset, 500, $title, $query );
-
+	# Make links to set number of items per page
+	$nums = $wgLang->pipeList( array( 
+		wfNumLink( $offset, 20, $title, $query ),
+		wfNumLink( $offset, 50, $title, $query ),
+		wfNumLink( $offset, 100, $title, $query ),
+		wfNumLink( $offset, 250, $title, $query ),
+		wfNumLink( $offset, 500, $title, $query )
+	) );
 	return wfMsg( 'viewprevnext', $plink, $nlink, $nums );
 }
 
 /**
- * @todo document
+ * Generate links for (20|50|100...) items-per-page links
+ * @param $offset string
+ * @param $limit int
+ * @param $title Title
+ * @param $query string, optional URL query parameter string
  */
-function wfNumLink( $offset, $limit, &$title, $query = '' ) {
+function wfNumLink( $offset, $limit, $title, $query = '' ) {
 	global $wgLang;
-	if ( '' == $query ) { $q = ''; }
-	else { $q = $query.'&'; }
-	$q .= 'limit='.$limit.'&offset='.$offset;
-
+	if( $query == '' ) { 
+		$q = '';
+	} else { 
+		$q = $query.'&';
+	}
+	$q .= "limit={$limit}&offset={$offset}";
 	$fmtLimit = $wgLang->formatNum( $limit );
-	$s = '<a href="' . $title->escapeLocalUrl( $q ) . "\" class=\"mw-numlink\">{$fmtLimit}</a>";
+	$lTitle = wfMsgExt('shown-title',array('parsemag','escape'),$limit);
+	$s = '<a href="' . $title->escapeLocalUrl( $q ) . "\" title=\"{$lTitle}\" class=\"mw-numlink\">{$fmtLimit}</a>";
 	return $s;
 }
 
@@ -2940,6 +2980,21 @@ function wfWaitForSlaves( $maxLag ) {
 			list( $host, $lag ) = $lb->getMaxLag();
 		}
 	}
+}
+
+/**
+ * Output some plain text in command-line mode or in the installer (updaters.inc).
+ * Do not use it in any other context, its behaviour is subject to change.
+ */
+function wfOut( $s ) {
+	static $lineStarted = false;
+	global $wgCommandLineMode;
+	if ( $wgCommandLineMode && !defined( 'MEDIAWIKI_INSTALL' ) ) {
+		echo $s;
+	} else {
+		echo htmlspecialchars( $s );
+	}
+	flush();
 }
 
 /** Generate a random 32-character hexadecimal token.

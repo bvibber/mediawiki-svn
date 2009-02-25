@@ -132,11 +132,11 @@ class HTMLFileCache {
 		$filename = $this->fileCacheName();
 		// Raw pages should handle cache control on their own,
 		// even when using file cache. This reduces hits from clients.
-		if( $this->mType !== 'raw' )
+		if( $this->mType !== 'raw' ) {
 			$wgOut->sendCacheControl();
-
-		header( "Content-type: $wgMimeType; charset={$wgOutputEncoding}" );
-		header( "Content-language: $wgContLanguageCode" );
+			header( "Content-Type: $wgMimeType; charset={$wgOutputEncoding}" );
+			header( "Content-Language: $wgContLanguageCode" );
+		}
 
 		if( $this->useGzip() ) {
 			if( wfClientAcceptsGzip() ) {
@@ -159,13 +159,12 @@ class HTMLFileCache {
 		wfMkdirParents( $mydir2 );
 	}
 
-	public function saveToFileCache( $origtext ) {
+	public function saveToFileCache( $text ) {
 		global $wgUseFileCache;
-		if( !$wgUseFileCache ) {
-			return $origtext; // return to output
+		if( !$wgUseFileCache || strlen( $text ) < 512 ) {
+			// Disabled or empty/broken output (OOM and PHP errors)
+			return $text;
 		}
-		$text = $origtext;
-		if( strcmp($text,'') == 0 ) return '';
 
 		wfDebug(" saveToFileCache()\n", false);
 

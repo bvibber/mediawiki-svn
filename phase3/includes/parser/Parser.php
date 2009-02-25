@@ -2492,6 +2492,8 @@ class Parser
 				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::images() );
 			case 'numberofusers':
 				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::users() );
+			case 'numberofactiveusers':
+				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::activeUsers() );
 			case 'numberofpages':
 				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::pages() );
 			case 'numberofadmins':
@@ -3386,6 +3388,12 @@ class Parser
 			$this->mOutput->setNewSection( true );
 		}
 
+		# Allow user to remove the "new section"
+		# link via __NONEWSECTIONLINK__
+		if ( isset( $this->mDoubleUnderscores['nonewsectionlink'] ) ) {
+			$this->mOutput->hideNewSection( true );
+		}
+
 		# if the string __FORCETOC__ (not case-sensitive) occurs in the HTML,
 		# override above conditions and always show TOC above first header
 		if ( isset( $this->mDoubleUnderscores['forcetoc'] ) ) {
@@ -3715,6 +3723,15 @@ class Parser
 			putenv( 'TZ='.$wgLocaltimezone );
 			$ts = date( 'YmdHis', $unixts );
 			$tz = date( 'T', $unixts );  # might vary on DST changeover!
+
+			/* Allow translation of timezones trough wiki. date() can return
+			 * whatever crap the system uses, localised or not, so we cannot
+			 * ship premade translations.
+			 */
+			$key = 'timezone-' . strtolower( trim( $tz ) );
+			$value = wfMsgForContent( $key );
+			if ( !wfEmptyMsg( $key, $value ) ) $tz = $value;
+
 			putenv( 'TZ='.$oldtz );
 		}
 
@@ -4534,7 +4551,11 @@ class Parser
 			// Output the replacement text
 			// Add two newlines on -- trailing whitespace in $newText is conventionally
 			// stripped by the editor, so we need both newlines to restore the paragraph gap
-			$outText .= $newText . "\n\n";
+			// Only add trailing whitespace if there is newText
+			if($newText != "") {
+				$outText .= $newText . "\n\n";
+			}
+
 			while ( $node ) {
 				$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
 				$node = $node->getNextSibling();
@@ -4750,6 +4771,102 @@ class Parser
 			}
 		}
 		return $out;
+	}
+
+	function serialiseHalfParsedText( $text ) {
+		$data = array();
+		$data['text'] = $text;
+
+		// First, find all strip markers, and store their
+		//  data in an array.
+		$stripState = new StripState;
+		$pos = 0;
+		while( ( $start_pos = strpos( $text, $this->mUniqPrefix, $pos ) ) && ( $end_pos = strpos( $text, self::MARKER_SUFFIX, $pos ) ) ) {
+			$end_pos += strlen( self::MARKER_SUFFIX );
+			$marker = substr( $text, $start_pos, $end_pos-$start_pos );
+
+			if ( !empty( $this->mStripState->general->data[$marker] ) ) {
+				$replaceArray = $stripState->general;
+				$stripText = $this->mStripState->general->data[$marker];
+			} elseif ( !empty( $this->mStripState->nowiki->data[$marker] ) ) {
+				$replaceArray = $stripState->nowiki;
+				$stripText = $this->mStripState->nowiki->data[$marker];
+			} else {
+				throw new MWException( "Hanging strip marker: '$marker'." );
+			}
+
+			$replaceArray->setPair( $marker, $stripText );
+			$pos = $end_pos;
+		}
+		$data['stripstate'] = $stripState;
+
+		// Now, find all of our links, and store THEIR
+		//  data in an array! :)
+		$links = array( 'internal' => array(), 'interwiki' => array() );
+		$pos = 0;
+
+		// Internal links
+		while( ( $start_pos = strpos( $text, '<!--LINK ', $pos ) ) ) {
+			list( $ns, $trail ) = explode( ':', substr( $text, $start_pos + strlen( '<!--LINK ' ) ), 2 );
+
+			$ns = trim($ns);
+			if (empty( $links['internal'][$ns] )) {
+				$links['internal'][$ns] = array();
+			}
+
+			$key = trim( substr( $trail, 0, strpos( $trail, '-->' ) ) );
+			$links['internal'][$ns][] = $this->mLinkHolders->internals[$ns][$key];
+			$pos = $start_pos + strlen( "<!--LINK $ns:$key-->" );
+		}
+
+		$pos = 0;
+
+		// Interwiki links
+		while( ( $start_pos = strpos( $text, '<!--IWLINK ', $pos ) ) ) {
+			$data = substr( $text, $start_pos );
+			$key = trim( substr( $data, 0, strpos( $data, '-->' ) ) );
+			$links['interwiki'][] = $this->mLinkHolders->interwiki[$key];
+			$pos = $start_pos + strlen( "<!--IWLINK $key-->" );
+		}
+		
+		$data['linkholder'] = $links;
+
+		return $data;
+	}
+
+	function unserialiseHalfParsedText( $data, $intPrefix = null /* Unique identifying prefix */ ) {
+		if (!$intPrefix)
+			$intPrefix = $this->getRandomString();
+		
+		// First, extract the strip state.
+		$stripState = $data['stripstate'];
+		$this->mStripState->general->merge( $stripState->general );
+		$this->mStripState->nowiki->merge( $stripState->nowiki );
+
+		// Now, extract the text, and renumber links
+		$text = $data['text'];
+		$links = $data['linkholder'];
+
+		// Internal...
+		foreach( $links['internal'] as $ns => $nsLinks ) {
+			foreach( $nsLinks as $key => $entry ) {
+				$newKey = $intPrefix . '-' . $key;
+				$this->mLinkHolders->internals[$ns][$newKey] = $entry;
+
+				$text = str_replace( "<!--LINK $ns:$key-->", "<!--LINK $ns:$newKey-->", $text );
+			}
+		}
+
+		// Interwiki...
+		foreach( $links['interwiki'] as $key => $entry ) {
+			$newKey = "$intPrefix-$key";
+			$this->mLinkHolders->interwikis[$newKey] = $entry;
+
+			$text = str_replace( "<!--IWLINK $key-->", "<!--IWLINK $newKey-->", $text );
+		}
+
+		// Should be good to go.
+		return $text;
 	}
 }
 

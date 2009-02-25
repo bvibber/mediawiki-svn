@@ -53,6 +53,10 @@ class Revision {
 			// Get the latest revision ID from the master
 			$dbw = wfGetDB( DB_MASTER );
 			$latest = $dbw->selectField( 'page', 'page_latest', $conds, __METHOD__ );
+			if ( $latest === false ) {
+				// Page does not exist
+				return null;
+			}
 			$conds['rev_id'] = $latest;
 		} else {
 			// Use a join to get the latest revision
@@ -680,7 +684,6 @@ class Revision {
 		}
 		return intval($prevId);
 	}
-
 	/**
 	  * Get revision text associated with an old or archive row
 	  * $row is usually an object from wfFetchRow(), both the flags and the text

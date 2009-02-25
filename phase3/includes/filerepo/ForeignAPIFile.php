@@ -59,7 +59,14 @@ class ForeignAPIFile extends File {
 	}
 	
 	public function getMetadata() {
-		return serialize( (array)@$this->mInfo['metadata'] );
+		if ( isset( $this->mInfo['metadata'] ) ) {
+			$ret = array();
+			foreach( $this->mInfo['metadata'] as $meta ) {
+				$ret[ $meta['name'] ] = $meta['value'];
+			}
+			return serialize( $ret );
+		}
+		return null;
 	}
 	
 	public function getSize() {
@@ -87,11 +94,11 @@ class ForeignAPIFile extends File {
 	}
 	
 	function getMimeType() {
-		if( empty( $info['mime'] ) ) {
+		if( !isset( $this->mInfo['mime'] ) ) {
 			$magic = MimeMagic::singleton();
-			$info['mime'] = $magic->guessTypesForExtension( $this->getExtension() );
+			$this->mInfo['mime'] = $magic->guessTypesForExtension( $this->getExtension() );
 		}
-		return $info['mime'];
+		return $this->mInfo['mime'];
 	}
 	
 	/// @fixme May guess wrong on file types that can be eg audio or video

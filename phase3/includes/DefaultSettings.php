@@ -278,7 +278,8 @@ $wgUrlProtocols = array(
 	'nntp://', // @bug 3808 RFC 1738
 	'worldwind://',
 	'mailto:',
-	'news:'
+	'news:',
+	'svn://',
 );
 
 /** internal name of virus scanner. This servers as a key to the $wgAntivirusSetup array.
@@ -1038,6 +1039,13 @@ $wgDebugDumpSql         = false;
 $wgDebugLogGroups       = array();
 
 /**
+ * Display debug data at the bottom of the main content area.
+ *
+ * Useful for developers and technical users trying to working on a closed wiki.
+ */
+$wgShowDebug            = false;
+
+/**
  * Show the contents of $wgHooks in Special:Version
  */
 $wgSpecialVersionShowHooks =  false;
@@ -1247,6 +1255,8 @@ $wgGroupPermissions['sysop']['movefile']         = true;
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights']  = true;
 $wgGroupPermissions['bureaucrat']['noratelimit'] = true;
+// Permission to change users' passwords
+# $wgGroupPermissions['bureaucrat']['reset-passwords'] = true;
 // Permission to change users' groups assignments across wikis
 #$wgGroupPermissions['bureaucrat']['userrights-interwiki'] = true;
 
@@ -1358,6 +1368,10 @@ $wgAutoConfirmCount = 0;
  *   array( APCOND_EMAILCONFIRMED ), *OR*
  *   array( APCOND_EDITCOUNT, number of edits ), *OR*
  *   array( APCOND_AGE, seconds since registration ), *OR*
+ *   array( APCOND_INGROUPS, group1, group2, ... ), *OR*
+ *   array( APCOND_ISIP, ip ), *OR*
+ *   array( APCOND_IPINRANGE, range ), *OR*
+ *   array( APCOND_AGE_FROM_EDIT, seconds since first edit ), *OR*
  *   similar constructs defined by extensions.
  *
  * If $wgEmailAuthentication is off, APCOND_EMAILCONFIRMED will be true for any
@@ -1455,7 +1469,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '203';
+$wgStyleVersion = '207';
 
 
 # Server-side caching:
@@ -2261,6 +2275,15 @@ $wgExportMaxHistory = 0;
 
 $wgExportAllowListContributors = false ;
 
+/**
+ * If non-zero, Special:Export accepts a "pagelink-depth" parameter
+ * up to this specified level, which will cause it to include all
+ * pages linked to from the pages you specify. Since this number
+ * can become *insanely large* and could easily break your wiki,
+ * it's disabled by default for now.
+ */
+$wgExportMaxLinkDepth = 0;
+
 
 /**
  * Edits matching these regular expressions in body text or edit summary
@@ -2737,6 +2760,9 @@ $wgBrowserBlackList = array(
  *
  * This variable is currently used ONLY for signature formatting, not for
  * anything else.
+ *
+ * Timezones can be translated by editing MediaWiki messages of type
+ * timezone-nameinlowercase like timezone-utc.
  */
 # $wgLocaltimezone = 'GMT';
 # $wgLocaltimezone = 'PST8PDT';
@@ -2817,6 +2843,7 @@ $wgLogTypes = array( '',
 	'patrol',
 	'merge',
 	'suppress',
+	'password',
 );
 
 /**
@@ -2871,6 +2898,7 @@ $wgLogNames = array(
 	'patrol'  => 'patrol-log-page',
 	'merge'   => 'mergelog',
 	'suppress' => 'suppressionlog',
+	'password' => 'resetpass-log'
 );
 
 /**
@@ -2891,6 +2919,7 @@ $wgLogHeaders = array(
 	'patrol'  => 'patrol-log-header',
 	'merge'   => 'mergelogpagetext',
 	'suppress' => 'suppressionlogtext',
+	'password' => 'resetpass-logtext',
 );
 
 /**
@@ -2926,6 +2955,7 @@ $wgLogActions = array(
 	'suppress/delete'   => 'suppressedarticle',
 	'suppress/block'	=> 'blocklogentry',
 	'suppress/reblock'  => 'reblock-logentry',
+	'password/reset'    => 'resetpass-logentry'
 );
 
 /**
@@ -2978,6 +3008,7 @@ $wgSpecialPageGroups = array(
 	'Newimages'                 => 'changes',
 	'Newpages'                  => 'changes',
 	'Log'                       => 'changes',
+	'Tags'			    => 'changes',
 
 	'Upload'                    => 'media',
 	'Listfiles'                 => 'media',
@@ -3240,6 +3271,12 @@ $wgRateLimitLog = null;
  *  $wgRateLimitsExcludedGroups = array( 'sysop', 'bureaucrat' );
  */
 $wgRateLimitsExcludedGroups = array();
+
+/**
+ * Array of IPs which should be excluded from rate limits.
+ * This may be useful for whitelisting NAT gateways for conferences, etc.
+ */
+$wgRateLimitsExcludedIPs = array();
 
 /**
  * On Special:Unusedimages, consider images "used", if they are put
@@ -3516,6 +3553,12 @@ $wgAPIListModules = array();
 $wgAPIMaxDBRows = 5000;
 
 /**
+ * The maximum size (in bytes) of an API result.
+ * Don't set this lower than $wgMaxArticleSize*1024
+ */
+$wgAPIMaxResultSize = 8388608;
+
+/**
  * Parser test suite files to be run by parserTests.php when no specific
  * filename is passed to it.
  *
@@ -3690,3 +3733,14 @@ $wgEnforceHtmlIds = true;
  * false = use Go button & Advanced search link
  */
 $wgUseTwoButtonsSearchForm = true;
+
+/**
+ * Preprocessor caching threshold
+ */
+$wgPreprocessorCacheThreshold = 1000;
+
+/**
+ * Allow filtering by change tag in recentchanges, history, etc
+ * Has no effect if no tags are defined in valid_tag.
+ */
+$wgUseTagFilter = true;

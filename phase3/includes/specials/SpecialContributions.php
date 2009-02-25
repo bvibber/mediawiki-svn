@@ -237,6 +237,10 @@ class SpecialContributions extends SpecialPage {
 		if( $this->opts['contribs'] == 'newbie' ) {
 			$this->opts['target'] = '';
 		}
+
+		if( !isset( $this->opts['tagfilter'] ) ) {
+			$this->opts['tagfilter'] = '';
+		}
 	
 		$f = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
 	

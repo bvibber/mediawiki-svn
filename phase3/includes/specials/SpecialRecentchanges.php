@@ -288,7 +288,7 @@ class SpecialRecentChanges extends SpecialPage {
 
 		// Tag stuff.
 		$fields = array(); // Fields are * in this case, so let the function modify an empty array to keep it happy.
-		ChangeTags::modifyDisplayQuery( &$tables, $fields, &$conds, &$join_conds, $opts['tagfilter'] );
+		ChangeTags::modifyDisplayQuery( $tables, $fields, $conds, $join_conds, $opts['tagfilter'] );
 
 		wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
 
@@ -381,7 +381,7 @@ class SpecialRecentChanges extends SpecialPage {
 				}
 				$rc->numberofWatchingusers = $watcherCache[$obj->rc_namespace][$obj->rc_title];
 			}
-			$s .= $list->recentChangesLine( $rc, !empty( $obj->wl_user ) );
+			$s .= $list->recentChangesLine( $rc, !empty( $obj->wl_user ), $counter );
 			--$limit;
 		}
 		$s .= $list->endRecentChangesList();
@@ -462,7 +462,9 @@ class SpecialRecentChanges extends SpecialPage {
 			$extraOpts['category'] = $this->categoryFilterForm( $opts );
 		}
 
-		$extraOpts['tagfilter'] = ChangeTags::buildTagFilterSelector( $opts['tagfilter'] );
+		$tagFilter = ChangeTags::buildTagFilterSelector( $opts['tagfilter'] );
+		if ( count($tagFilter) )
+			$extraOpts['tagfilter'] = $tagFilter;
 
 		wfRunHooks( 'SpecialRecentChangesPanel', array( &$extraOpts, $opts ) );
 		return $extraOpts;
@@ -620,14 +622,14 @@ class SpecialRecentChanges extends SpecialPage {
 			$cl[] = $this->makeOptionsLink( $wgLang->formatNum( $value ),
 				array( 'limit' => $value ), $nondefaults, $value == $options['limit'] ) ;
 		}
-		$cl = implode( ' | ', $cl );
+		$cl = $wgLang->pipeList( $cl );
 
 		// day links, reset 'from' to none
 		foreach( $wgRCLinkDays as $value ) {
 			$dl[] = $this->makeOptionsLink( $wgLang->formatNum( $value ),
 				array( 'days' => $value, 'from' => '' ), $nondefaults, $value == $options['days'] ) ;
 		}
-		$dl = implode( ' | ', $dl );
+		$dl = $wgLang->pipeList( $dl );
 
 
 		// show/hide links
@@ -652,7 +654,7 @@ class SpecialRecentChanges extends SpecialPage {
 		if( $wgUser->useRCPatrol() )
 			$links[] = wfMsgHtml( 'rcshowhidepatr', $patrLink );
 		$links[] = wfMsgHtml( 'rcshowhidemine', $myselfLink );
-		$hl = implode( ' | ', $links );
+		$hl = $wgLang->pipeList( $links );
 
 		// show from this onward link
 		$now = $wgLang->timeanddate( wfTimestampNow(), true );

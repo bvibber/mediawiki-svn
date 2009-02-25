@@ -334,9 +334,10 @@ class ChangesList {
 					'user'      => $rc->mAttribs['rc_user'],
 					'user_text' => $rc->mAttribs['rc_user_text']
 				) );
+				$rev->setTitle( $page );
 				$s .= ' '.$this->skin->generateRollback( $rev );
 			}
-		}	
+		}
 	}
 
 	protected function insertTags( &$s, &$rc, &$classes ) {
@@ -361,7 +362,7 @@ class OldChangesList extends ChangesList {
 	/**
 	 * Format a line using the old system (aka without any javascript).
 	 */
-	public function recentChangesLine( &$rc, $watched = false ) {
+	public function recentChangesLine( &$rc, $watched = false, $linenumber = NULL ) {
 		global $wgContLang, $wgLang, $wgRCShowChangedSize, $wgUser;
 		wfProfileIn( __METHOD__ );
 		# Should patrol-related stuff be shown?
@@ -372,6 +373,16 @@ class OldChangesList extends ChangesList {
 
 		$s = '';
 		$classes = array();
+		// use mw-line-even/mw-line-odd class only if linenumber is given (feature from bug 14468)
+		if( $linenumber ) {
+			if( $linenumber & 1 ) {
+				$classes[] = 'mw-line-odd';
+			}
+			else {
+				$classes[] = 'mw-line-even';
+			}
+		}
+
 		// Moved pages
 		if( $rc->mAttribs['rc_type'] == RC_MOVE || $rc->mAttribs['rc_type'] == RC_MOVE_OVER_REDIRECT ) {
 			$this->insertMove( $s, $rc );
@@ -458,6 +469,8 @@ class EnhancedChangesList extends ChangesList {
 	 */
 	public function recentChangesLine( &$baseRC, $watched = false ) {
 		global $wgLang, $wgContLang, $wgUser;
+		
+		wfProfileIn( __METHOD__ );
 
 		# Create a specialised object
 		$rc = RCCacheEntry::newFromParent( $baseRC );
@@ -594,8 +607,12 @@ class EnhancedChangesList extends ChangesList {
 			if( !isset( $this->rc_cache[$secureName] ) ) {
 				$this->rc_cache[$secureName] = array();
 			}
+
 			array_push( $this->rc_cache[$secureName], $rc );
 		}
+
+		wfProfileOut( __METHOD__ );
+
 		return $ret;
 	}
 
@@ -604,6 +621,9 @@ class EnhancedChangesList extends ChangesList {
 	 */
 	protected function recentChangesBlockGroup( $block ) {
 		global $wgLang, $wgContLang, $wgRCShowChangedSize;
+
+		wfProfileIn( __METHOD__ );
+
 		$r = '<table cellpadding="0" cellspacing="0" border="0" style="background: none"><tr>';
 
 		# Collate list of users
@@ -759,6 +779,8 @@ class EnhancedChangesList extends ChangesList {
 			# Extract fields from DB into the function scope (rc_xxxx variables)
 			// FIXME: Would be good to replace this extract() call with something
 			// that explicitly initializes variables.
+			# Classes to apply -- TODO implement
+			$classes = array();
 			extract( $rcObj->mAttribs );
 
 			#$r .= '<tr><td valign="top">'.$this->spacerArrow();
@@ -809,6 +831,9 @@ class EnhancedChangesList extends ChangesList {
 			$this->insertComment( $r, $rcObj );
 			# Rollback
 			$this->insertRollback( $r, $rcObj );
+			# Tags
+			$this->insertTags( $r, $rcObj, $classes );
+			
 			# Mark revision as deleted
 			if( !$rc_log_type && $this->isDeleted($rcObj,Revision::DELETED_TEXT) ) {
 				$r .= ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
@@ -819,6 +844,9 @@ class EnhancedChangesList extends ChangesList {
 		$r .= "</table></div>\n";
 
 		$this->rcCacheIndex++;
+
+		wfProfileOut( __METHOD__ );
+
 		return $r;
 	}
 
@@ -879,9 +907,13 @@ class EnhancedChangesList extends ChangesList {
 	 */
 	protected function recentChangesBlockLine( $rcObj ) {
 		global $wgContLang, $wgRCShowChangedSize;
+
+		wfProfileIn( __METHOD__ );
+
 		# Extract fields from DB into the function scope (rc_xxxx variables)
 		// FIXME: Would be good to replace this extract() call with something
 		// that explicitly initializes variables.
+		$classes = array(); // TODO implement
 		extract( $rcObj->mAttribs );
 		$curIdEq = "curid={$rc_cur_id}";
 
@@ -926,10 +958,15 @@ class EnhancedChangesList extends ChangesList {
 		}
 		$this->insertComment( $r, $rcObj );
 		$this->insertRollback( $r, $rcObj );
+		# Tags
+		$this->insertTags( $r, $rcObj, $classes );
 		# Show how many people are watching this if enabled
 		$r .= $this->numberofWatchingusers($rcObj->numberofWatchingusers);
 
 		$r .= "</td></tr></table>\n";
+
+		wfProfileOut( __METHOD__ );
+
 		return $r;
 	}
 
@@ -941,6 +978,9 @@ class EnhancedChangesList extends ChangesList {
 		if( count ( $this->rc_cache ) == 0 ) {
 			return '';
 		}
+
+		wfProfileIn( __METHOD__ );
+
 		$blockOut = '';
 		foreach( $this->rc_cache as $block ) {
 			if( count( $block ) < 2 ) {
@@ -949,6 +989,9 @@ class EnhancedChangesList extends ChangesList {
 				$blockOut .= $this->recentChangesBlockGroup( $block );
 			}
 		}
+
+		wfProfileOut( __METHOD__ );
+
 		return '<div>'.$blockOut.'</div>';
 	}
 

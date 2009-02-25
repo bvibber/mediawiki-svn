@@ -458,7 +458,7 @@ Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet
 'filehist-comment'    => 'Koment',
 'imagelinks'          => 'Lidhje e skedave',
 'linkstoimage'        => "K'to faqe lidhen te kjo figurë/skedë:",
-'sharedupload'        => 'Kjo skedë asht një ngarkim i përbashkët dhe munet me u përdor nga projekte të tjera.',
+'sharedupload'        => 'Kjo skedë asht një ngarkim i përbashkët dhe munet me u përdor nga projekte të tjera. $2', # $1 is the repo name, $2 is shareduploadwiki(-desc)
 
 # File deletion
 'filedelete-reason-otherlist' => 'Arsyje tjera',
@@ -509,8 +509,8 @@ Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet
 'protect_expiry_invalid'      => 'Data e skadimit asht e pasaktë.',
 'protect_expiry_old'          => 'Data e skadimit asht në kohën kalueme.',
 'protect-unchain'             => 'Ndryshoje lejen e zhvendosjeve',
-'protect-text'                => 'Këtu muneni me shiku dhe me ndryshu nivelin e mbrojtjes për faqen <strong><nowiki>$1</nowiki></strong>.',
-'protect-locked-access'       => 'Llogaria juej nuk ka privilegjet e nevojitme për me ndryshu nivelin e mbrojtjes. Kufizimet e kësaj faqe janë <strong>$1</strong>:',
+'protect-text'                => "Këtu muneni me shiku dhe me ndryshu nivelin e mbrojtjes për faqen '''<nowiki>$1</nowiki>'''.",
+'protect-locked-access'       => "Llogaria juej nuk ka privilegjet e nevojitme për me ndryshu nivelin e mbrojtjes. Kufizimet e kësaj faqe janë '''$1''':",
 'protect-default'             => '(parazgjedhje)',
 'protect-level-autoconfirmed' => 'Blloko përdoruesit pa llogari',
 'protect-level-sysop'         => 'Lejo veç administruesit',

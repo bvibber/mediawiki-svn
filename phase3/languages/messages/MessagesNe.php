@@ -223,8 +223,8 @@ $messages = array(
 'accmailtitle'           => 'पासवर्ड पठाइयो',
 'accmailtext'            => '"$1" को पासवर्ड $2मा पठाइएको छ ।',
 'newarticle'             => '(नयाँ)',
-'note'                   => '<strong>सुझाव:</strong>',
-'previewnote'            => '<strong>यो केवल पूर्वालोकन मात्र हो; परिवर्तनहरू संग्रह गरिसकिएको छैन!</strong>',
+'note'                   => "'''सुझाव:'''",
+'previewnote'            => "'''यो केवल पूर्वालोकन मात्र हो; परिवर्तनहरू संग्रह गरिसकिएको छैन!'''",
 'editing'                => '$1 सम्पादन गरिँदै',
 'editingsection'         => '$1 (खण्ड) सम्पादन गरिँदै',
 'editconflict'           => 'सम्पादन बाँझियो: $1',
@@ -269,6 +269,7 @@ $messages = array(
 'recentchangescount'    => 'नयाँ परिवर्तित शिर्षकहरु',
 'savedprefs'            => 'तपाँईका अभिरुचिहरू सङ्ग्रहित भयो।',
 'localtime'             => 'स्थानीय समय',
+'timezoneregion-africa' => 'अफ्रिका',
 'allowemail'            => 'अरु प्रयोगकर्ताहरुबाट प्राप्त हुने ईमेल enable गर्नुहोस् ।',
 
 # Groups

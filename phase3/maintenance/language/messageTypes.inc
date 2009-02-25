@@ -108,8 +108,6 @@ $wgIgnoredMessages = array(
 	'statistics-summary',
 	'statistics-footer',
 	'talkpagetext',
-	'trackback',
-	'trackbackexcerpt',
 	'uploadfooter',
 	'listgrouprights-link',
 	'search-interwiki-custom',
@@ -153,7 +151,6 @@ $wgIgnoredMessages = array(
 	'unusedtemplates-summary',
 	'fewestrevisions-summary',
 	'upload-summary',
-	'pagetitle-view-mainpage',
 	'newuserlogentry',
 	'restrictlogpage',
 	'wantedtemplates-summary',
@@ -264,7 +261,6 @@ $wgOptionalMessages = array(
 	'pagetitle',
 	'filename-prefix-blacklist',
 	'edittools',
-	'patrol-log-diff',
 	'size-bytes',
 	'size-kilobytes',
 	'size-megabytes',
@@ -334,6 +330,9 @@ $wgOptionalMessages = array(
 	'whatlinkshere-backlink',
 	'recentchangeslinked-backlink',
 	'diff-with-additional',
+	'pagetitle-view-mainpage',
+	'trackback',
+	'trackbackexcerpt',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

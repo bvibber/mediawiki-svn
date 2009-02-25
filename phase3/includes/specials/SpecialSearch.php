@@ -610,7 +610,8 @@ class SpecialSearch {
 
 		$redirect = Xml::check( 'redirs', $this->searchRedirects, array( 'value' => '1', 'id' => 'redirs' ) );
 		$redirectLabel = Xml::label( wfMsg( 'powersearch-redir' ), 'redirs' );
-		$searchField = Xml::input( 'search', 50, $term, array( 'type' => 'text', 'id' => 'powerSearchText' ) );
+		$searchField = Xml::inputLabel( wfMsg('powersearch-field'), 'search', 'powerSearchText', 50, $term,
+			array( 'type' => 'text') );
 		$searchButton = Xml::submitButton( wfMsg( 'powersearch' ), array( 'name' => 'fulltext' )) . "\n";
 		$searchTitle = SpecialPage::getTitleFor( 'Search' );
 		
@@ -630,10 +631,9 @@ class SpecialSearch {
 			"<hr style=\"clear: both;\" />\n".			
 			$redirectText ."\n".
 			"<div style=\"padding-top:2px;padding-bottom:2px;\">".
-			wfMsgExt( 'powersearch-field', array( 'parseinline' ) ) .
-			"&nbsp;" .
 			$searchField .
 			"&nbsp;" .
+			Xml::hidden( 'fulltext', 'Advanced search' ) . "\n" .
 			$searchButton .
 			"</div>".
 			"</form>";
@@ -765,6 +765,7 @@ class SpecialSearch {
 		$out .= Xml::hidden( "redirs", (int)$this->searchRedirects );
 		// Term box
 		$out .= Xml::input( 'search', 50, $term, array( 'type' => 'text', 'id' => 'searchText' ) ) . "\n";
+		$out .= Xml::hidden( 'fulltext', 'Search' );
 		$out .= Xml::submitButton( wfMsg( 'searchbutton' ), array( 'name' => 'fulltext' ) );
 		$out .= ' (' . wfMsgExt('searchmenu-help',array('parseinline') ) . ')';
 		$out .= Xml::closeElement( 'form' );
@@ -931,7 +932,7 @@ class SpecialSearchOld {
 		$search->showRedirects = $this->searchRedirects;
 		$search->prefix = $this->mPrefix;
 		$term = $search->transformSearchTerm($term);
-		
+
 		$this->setupPage( $term );
 
 		$rewritten = $search->replacePrefixes($term);
@@ -945,17 +946,17 @@ class SpecialSearchOld {
 					'search' 	=> $textMatches->getSuggestionQuery(), 
 					'fulltext' 	=> wfMsg('search')),
 					$this->powerSearchOptions());
-					
+
 			$suggestLink = $sk->makeKnownLinkObj( $st,
 				$textMatches->getSuggestionSnippet(),
 				$stParams );
-			 		
+
 			$wgOut->addHTML('<div class="searchdidyoumean">'.wfMsg('search-suggest',$suggestLink).'</div>');
 		}
 
 		$wgOut->addHTML( $extra );
 
-		$wgOut->addWikiMsg( 'searchresulttext' );
+		$wgOut->wrapWikiMsg( "<div class='mw-searchresult'>\n$1</div>", 'searchresulttext' );
 
 		if( '' === trim( $term ) ) {
 			// Empty query -- straight view of search form
@@ -1430,10 +1431,11 @@ class SpecialSearchOld {
 		$searchField = Xml::input( 'search', 50, $term, array( 'type' => 'text', 'id' => 'powerSearchText' ) );
 		$searchButton = Xml::submitButton( wfMsg( 'powersearch' ), array( 'name' => 'fulltext' ) ) . "\n";
 		$searchTitle = SpecialPage::getTitleFor( 'Search' );
+		$searchHiddens = Xml::hidden( 'title', $searchTitle->getPrefixedText() ) . "\n";
+		$searchHiddens .= Xml::hidden( 'fulltext', 'Advanced search' ) . "\n";
 		
 		$out = Xml::openElement( 'form', array(	'id' => 'powersearch', 'method' => 'get', 'action' => $wgScript ) ) .
-			Xml::fieldset( wfMsg( 'powersearch-legend' ),
-				Xml::hidden( 'title', $searchTitle->getPrefixedText() ) . "\n" .
+			Xml::fieldset( wfMsg( 'powersearch-legend' ),				
 				"<p>" .
 				wfMsgExt( 'powersearch-ns', array( 'parseinline' ) ) .
 				"</p>\n" .
@@ -1446,6 +1448,7 @@ class SpecialSearchOld {
 				"&nbsp;" .
 				$searchField .
 				"&nbsp;" .
+				$searchHiddens . 
 				$searchButton ) .
 			"</form>";
 
@@ -1470,13 +1473,14 @@ class SpecialSearchOld {
 			'action' => $wgScript
 		));
 		$searchTitle = SpecialPage::getTitleFor( 'Search' );
-		$out .= Xml::hidden( 'title', $searchTitle->getPrefixedText() );
 		$out .= Xml::input( 'search', 50, $term, array( 'type' => 'text', 'id' => 'searchText' ) ) . ' ';
 		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
 			if( in_array( $ns, $this->namespaces ) ) {
 				$out .= Xml::hidden( "ns{$ns}", '1' );
 			}
 		}
+		$out .= Xml::hidden( 'title', $searchTitle->getPrefixedText() );
+		$out .= Xml::hidden( 'fulltext', 'Search' );
 		$out .= Xml::submitButton( wfMsg( 'searchbutton' ), array( 'name' => 'fulltext' ) );
 		$out .= Xml::closeElement( 'form' );
 

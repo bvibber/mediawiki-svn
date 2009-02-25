@@ -80,6 +80,7 @@ class ApiMain extends ApiBase {
 		'emailuser' => 'ApiEmailUser',
 		'watch' => 'ApiWatch',
 		'patrol' => 'ApiPatrol',
+		'import' => 'ApiImport',
 	);
 
 	/**
@@ -360,9 +361,11 @@ class ApiMain extends ApiBase {
 			}
 
 			$this->getResult()->reset();
+			$this->getResult()->disableSizeCheck();
 			// Re-add the id
-			if($this->mRequest->getCheck('requestid'))
-				$this->getResult()->addValue(null, 'requestid', $this->mRequest->getVal('requestid'));
+			$requestid = $this->getParameter('requestid');
+			if(!is_null($requestid))
+				$this->getResult()->addValue(null, 'requestid', $requestid);
 			$this->getResult()->addValue(null, 'error', $errMessage);
 
 		return $errMessage['code'];
@@ -373,8 +376,9 @@ class ApiMain extends ApiBase {
 	 */
 	protected function executeAction() {
 		// First add the id to the top element
-		if($this->mRequest->getCheck('requestid'))
-			$this->getResult()->addValue(null, 'requestid', $this->mRequest->getVal('requestid'));
+		$requestid = $this->getParameter('requestid');
+		if(!is_null($requestid))
+			$this->getResult()->addValue(null, 'requestid', $requestid);
 
 		$params = $this->extractRequestParams();
 
@@ -438,7 +442,7 @@ class ApiMain extends ApiBase {
 	 * Print results using the current printer
 	 */
 	protected function printResult($isError) {
-		$this->getResult()->cleanupUTF8();
+		$this->getResult()->cleanUpUTF8();
 		$printer = $this->mPrinter;
 		$printer->profileIn();
 

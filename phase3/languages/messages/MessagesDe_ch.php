@@ -12,87 +12,87 @@ $separatorTransformTable = array( ',' => "'", '.' => ',' );
 
 $messages = array(
 # Edit pages
-'longpagewarning' => '<strong>WARNUNG: Diese Seite ist $1 KB gross; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die grösser als 32 KB sind.
-Überlege bitte, ob eine Aufteilung der Seite in kleinere Abschnitte möglich ist.</strong>',
-'longpageerror'   => '<strong>FEHLER: Der Text, den du zu speichern versuchst, ist $1 KB gross. Das ist grösser als das erlaubte Maximum von $2 KB – Speicherung nicht möglich.</strong>',
+'longpagewarning' => "'''WARNUNG: Diese Seite ist $1 KB gross; einige Browser kÃ¶nnten Probleme haben, Seiten zu bearbeiten, die grÃ¶sser als 32 KB sind.
+Ãœberlege bitte, ob eine Aufteilung der Seite in kleinere Abschnitte mÃ¶glich ist.'''",
+'longpageerror'   => "'''FEHLER: Der Text, den du zu speichern versuchst, ist $1 KB gross. Das ist grÃ¶sser als das erlaubte Maximum von $2 KB â€“ Speicherung nicht mÃ¶glich.'''",
 
 # Parser/template warnings
-'post-expand-template-inclusion-warning'  => 'Warnung: Die Grösse eingebundener Vorlagen ist zu gross, einige Vorlagen können nicht eingebunden werden.',
-'post-expand-template-inclusion-category' => 'Seiten, in denen die maximale Grösse eingebundener Vorlagen überschritten ist',
-'post-expand-template-argument-warning'   => 'Warnung: Diese Seite enthält mindestens ein Argument in einer Vorlage, das expandiert zu gross ist. Diese Argumente werden ignoriert.',
+'post-expand-template-inclusion-warning'  => 'Warnung: Die GrÃ¶sse eingebundener Vorlagen ist zu gross, einige Vorlagen kÃ¶nnen nicht eingebunden werden.',
+'post-expand-template-inclusion-category' => 'Seiten, in denen die maximale GrÃ¶sse eingebundener Vorlagen Ã¼berschritten ist',
+'post-expand-template-argument-warning'   => 'Warnung: Diese Seite enthÃ¤lt mindestens ein Argument in einer Vorlage, das expandiert zu gross ist. Diese Argumente werden ignoriert.',
 
 # Diffs
 'diff-big' => "'''gross'''",
 
 # Search results
-'nonefound' => "'''Hinweis:''' Es werden standardmässig nur einige Namensräume durchsucht. Setze ''all:'' vor deinen Suchbegriff, um alle Seiten (inkl. Diskussionsseiten, Vorlagen usw.) zu durchsuchen oder gezielt den Namen des zu durchsuchenden Namensraumes.",
+'nonefound' => "'''Hinweis:''' Es werden standardmÃ¤ssig nur einige NamensrÃ¤ume durchsucht. Setze ''all:'' vor deinen Suchbegriff, um alle Seiten (inkl. Diskussionsseiten, Vorlagen usw.) zu durchsuchen oder gezielt den Namen des zu durchsuchenden Namensraumes.",
 
 # Preferences page
-'prefs-watchlist-days' => 'Anzahl der Tage, die die Beobachtungsliste standardmässig umfassen soll:',
-'prefs-edit-boxsize'   => 'Grösse des Bearbeitungsfensters:',
-'defaultns'            => 'In diesen Namensräumen soll standardmässig gesucht werden:',
+'prefs-watchlist-days' => 'Anzahl der Tage, die die Beobachtungsliste standardmÃ¤ssig umfassen soll:',
+'prefs-edit-boxsize'   => 'GrÃ¶sse des Bearbeitungsfensters:',
+'defaultns'            => 'In diesen NamensrÃ¤umen soll standardmÃ¤ssig gesucht werden:',
 
 # Upload
-'largefileserver'      => 'Die Datei ist grösser als die vom Server eingestellte Maximalgrösse.',
-'fileexists-extension' => 'Eine Datei mit ähnlichem Namen existiert bereits:<br />
-Name der hochzuladenden Datei: <strong><tt>$1</tt></strong><br />
-Name der vorhandenen Datei: <strong><tt>$2</tt></strong><br />
-Nur die Dateiendung unterscheidet sich in Gross-/Kleinschreibung. Bitte prüfe, ob die Dateien inhaltlich identisch sind.',
-'file-thumbnail-no'    => 'Der Dateiname beginnt mit <strong><tt>$1</tt></strong>. Dies deutet auf ein Bild verringerter Grösse <i>(thumbnail)</i> hin.
-Bitte prüfe, ob du das Bild in voller Auflösung vorliegen hast und lade dieses unter dem Originalnamen hoch.',
+'largefileserver'      => 'Die Datei ist grÃ¶sser als die vom Server eingestellte MaximalgrÃ¶sse.',
+'fileexists-extension' => "Eine Datei mit Ã¤hnlichem Namen existiert bereits:<br />
+Name der hochzuladenden Datei: '''<tt>$1</tt>'''<br />
+Name der vorhandenen Datei: '''<tt>$2</tt>'''<br />
+Nur die Dateiendung unterscheidet sich in Gross-/Kleinschreibung. Bitte prÃ¼fe, ob die Dateien inhaltlich identisch sind.",
+'file-thumbnail-no'    => "Der Dateiname beginnt mit '''<tt>$1</tt>'''. Dies deutet auf ein Bild verringerter GrÃ¶sse ''(thumbnail)'' hin.
+Bitte prÃ¼fe, ob du das Bild in voller AuflÃ¶sung vorliegen hast und lade dieses unter dem Originalnamen hoch.",
 
 # Special:ListFiles
-'listfiles-summary' => 'Diese Spezialseite listet alle hochgeladenen Dateien auf. Standardmässig werden die zuletzt hochgeladenen Dateien zuerst angezeigt. Durch einen Klick auf die Spaltenüberschriften kann die Sortierung umgedreht werden oder es kann nach einer anderen Spalte sortiert werden.',
-'listfiles_size'    => 'Grösse',
+'listfiles-summary' => 'Diese Spezialseite listet alle hochgeladenen Dateien auf. StandardmÃ¤ssig werden die zuletzt hochgeladenen Dateien zuerst angezeigt. Durch einen Klick auf die SpaltenÃ¼berschriften kann die Sortierung umgedreht werden oder es kann nach einer anderen Spalte sortiert werden.',
+'listfiles_size'    => 'GrÃ¶sse',
 
 # File description page
 'filehist-dimensions' => 'Masse',
-'filehist-filesize'   => 'Dateigrösse',
+'filehist-filesize'   => 'DateigrÃ¶sse',
 
 # Special:Log
-'alllogstext' => 'Dies ist die kombinierte Anzeige aller in {{SITENAME}} geführten Logbücher.
-Die Ausgabe kann durch die Auswahl des Logbuchtyps, des Benutzers oder des Seitentitels eingeschränkt werden (Gross-/Kleinschreibung muss beachtet werden).',
+'alllogstext' => 'Dies ist die kombinierte Anzeige aller in {{SITENAME}} gefÃ¼hrten LogbÃ¼cher.
+Die Ausgabe kann durch die Auswahl des Logbuchtyps, des Benutzers oder des Seitentitels eingeschrÃ¤nkt werden (Gross-/Kleinschreibung muss beachtet werden).',
 
 # Protect
-'minimum-size' => 'Mindestgrösse',
-'maximum-size' => 'Maximalgrösse:',
+'minimum-size' => 'MindestgrÃ¶sse',
+'maximum-size' => 'MaximalgrÃ¶sse:',
 
 # Block/unblock
-'ipbreason-dropdown' => '* Allgemeine Sperrgründe
-** Löschen von Seiten
+'ipbreason-dropdown' => '* Allgemeine SperrgrÃ¼nde
+** LÃ¶schen von Seiten
 ** Einstellen unsinniger Seiten
-** Fortgesetzte Verstösse gegen die Richtlinien für Weblinks
-** Verstoss gegen den Grundsatz „Keine persönlichen Angriffe“
-* Benutzerspezifische Sperrgründe
+** Fortgesetzte VerstÃ¶sse gegen die Richtlinien fÃ¼r Weblinks
+** Verstoss gegen den Grundsatz â€žKeine persÃ¶nlichen Angriffeâ€œ
+* Benutzerspezifische SperrgrÃ¼nde
 ** Ungeeigneter Benutzername
-** Neuanmeldung eines unbeschränkt gesperrten Benutzers
-* IP-spezifische Sperrgründe
-** Proxy, wegen Vandalismus einzelner Benutzer längerfristig gesperrt',
+** Neuanmeldung eines unbeschrÃ¤nkt gesperrten Benutzers
+* IP-spezifische SperrgrÃ¼nde
+** Proxy, wegen Vandalismus einzelner Benutzer lÃ¤ngerfristig gesperrt',
 
 # Thumbnails
 'djvu_page_error' => 'DjVu-Seite ausserhalb des Seitenbereichs',
 
 # Special:Import
-'importuploaderrorsize' => 'Das Hochladen der Importdatei ist fehlgeschlagen. Die Datei ist grösser als die maximal erlaubte Dateigrösse.',
+'importuploaderrorsize' => 'Das Hochladen der Importdatei ist fehlgeschlagen. Die Datei ist grÃ¶sser als die maximal erlaubte DateigrÃ¶sse.',
 
 # Media information
-'imagemaxsize'   => 'Maximale Bildgrösse auf Bildbeschreibungsseiten:',
-'file-info'      => '(Dateigrösse: $1, MIME-Typ: $2)',
-'file-info-size' => '($1 × $2 Pixel, Dateigrösse: $3, MIME-Typ: $4)',
+'imagemaxsize'   => 'Maximale BildgrÃ¶sse auf Bildbeschreibungsseiten:',
+'file-info'      => '(DateigrÃ¶sse: $1, MIME-Typ: $2)',
+'file-info-size' => '($1 Ã— $2 Pixel, DateigrÃ¶sse: $3, MIME-Typ: $4)',
 
 # EXIF tags
-'exif-resolutionunit'              => 'Masseinheit der Auflösung',
-'exif-jpeginterchangeformatlength' => 'Grösse der JPEG-Daten in Bytes',
+'exif-resolutionunit'              => 'Masseinheit der AuflÃ¶sung',
+'exif-jpeginterchangeformatlength' => 'GrÃ¶sse der JPEG-Daten in Bytes',
 'exif-referenceblackwhite'         => 'Schwarz/Weiss-Referenzpunkte',
-'exif-maxaperturevalue'            => 'Grösste Blende',
+'exif-maxaperturevalue'            => 'GrÃ¶sste Blende',
 'exif-whitebalance'                => 'Weissabgleich',
-'exif-gpsdop'                      => 'Masspräzision',
+'exif-gpsdop'                      => 'MassprÃ¤zision',
 
-'exif-lightsource-13' => 'Tagesweiss fluoreszierend (N 4600–5400 K)',
-'exif-lightsource-14' => 'Kaltweiss fluoreszierend (W 3900–4500 K)',
-'exif-lightsource-15' => 'Weiss fluoreszierend (WW 3200–3700 K)',
+'exif-lightsource-13' => 'Tagesweiss fluoreszierend (N 4600â€“5400 K)',
+'exif-lightsource-14' => 'Kaltweiss fluoreszierend (W 3900â€“4500 K)',
+'exif-lightsource-15' => 'Weiss fluoreszierend (WW 3200â€“3700 K)',
 
 # Special:FileDuplicateSearch
-'fileduplicatesearch-info' => '$1 × $2 Pixel<br />Dateigrösse: $3<br />MIME-Typ: $4',
+'fileduplicatesearch-info' => '$1 Ã— $2 Pixel<br />DateigrÃ¶sse: $3<br />MIME-Typ: $4',
 
 );

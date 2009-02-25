@@ -141,9 +141,11 @@ class User {
 		'createtalk',
 		'delete',
 		'deletedhistory',
+		'deleterevision',
 		'edit',
 		'editinterface',
 		'editusercssjs',
+		'hideuser',
 		'import',
 		'importupload',
 		'ipblock-exempt',
@@ -160,17 +162,22 @@ class User {
 		'proxyunbannable',
 		'purge',
 		'read',
+		'reset-passwords',
 		'reupload',
 		'reupload-shared',
 		'rollback',
 		'siteadmin',
+		'suppressionlog',
 		'suppressredirect',
+		'suppressrevision',
 		'trackback',
 		'undelete',
 		'unwatchedpages',
 		'upload',
 		'upload_by_url',
 		'userrights',
+		'userrights-interwiki',
+		'writeapi',
 	);
 	/**
 	 * \string Cached results of getAllRights()
@@ -911,7 +918,7 @@ class User {
 		$this->mDataLoaded = true;
 
 		if ( isset( $row->user_id ) ) {
-			$this->mId = $row->user_id;
+			$this->mId = intval( $row->user_id );
 		}
 		$this->mName = $row->user_name;
 		$this->mRealName = $row->user_real_name;
@@ -1156,8 +1163,15 @@ class User {
 	 */
 	public function isPingLimitable() {
 		global $wgRateLimitsExcludedGroups;
+		global $wgRateLimitsExcludedIPs;
 		if( array_intersect( $this->getEffectiveGroups(), $wgRateLimitsExcludedGroups ) ) {
 			// Deprecated, but kept for backwards-compatibility config
+			return false;
+		}
+		if( in_array( wfGetIP(), $wgRateLimitsExcludedIPs ) ) {
+			// No other good way currently to disable rate limits
+			// for specific IPs. :P
+			// But this is a crappy hack and should die.
 			return false;
 		}
 		return !$this->isAllowed('noratelimit');
@@ -1313,6 +1327,15 @@ class User {
 	function blockedFor() {
 		$this->getBlockedStatus();
 		return $this->mBlockreason;
+	}
+	
+	/**
+	 * If user is blocked, return the ID for the block
+	 * @return \int Block ID
+	 */
+	function getBlockId() {
+		$this->getBlockedStatus();
+		return ($this->mBlock ? $this->mBlock->mId : false);
 	}
 	
 	/**

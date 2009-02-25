@@ -23,6 +23,7 @@ class LanguageConverter {
 	var $mTables;
 	var $mManualAddTables;
 	var $mManualRemoveTables;
+	var $mNamespaceTables;
 	var $mTitleDisplay='';
 	var $mDoTitleConvert=true, $mDoContentConvert=true;
 	var $mManualLevel; // 'bidirectional' 'unidirectional' 'disable' for each variants
@@ -89,6 +90,7 @@ class LanguageConverter {
 								:'bidirectional';
 			$this->mManualAddTables[$v] = array();
 			$this->mManualRemoveTables[$v] = array();
+			$this->mNamespaceTables[$v] = array();
 		}
 	}
 
@@ -357,10 +359,10 @@ class LanguageConverter {
 	 * prepare manual conversion table
 	 * @private
 	 */
-	function prepareManualConv($convRule){
+	function prepareManualConv( $convRule ){
 		// use syntax -{T|zh:TitleZh;zh-tw:TitleTw}- for custom conversion in title
 		$title = $convRule->getTitle();
-		if($title){
+		if( $title ){
 			$this->mTitleFromFlag = true;
 			$this->mTitleDisplay =  $title;
 		}
@@ -368,20 +370,20 @@ class LanguageConverter {
 		//apply manual conversion table to global table
 		$convTable = $convRule->getConvTable();
 		$action = $convRule->getRulesAction();
-		foreach($convTable as $v=>$t) {
-			if( !in_array($v,$this->mVariants) )continue;
+		foreach( $convTable as $v => $t ) {
+			if( !in_array( $v, $this->mVariants ) )continue;
 			if( $action=="add" ) {
-				foreach($t as $from=>$to) {
+				foreach( $t as $from => $to ) {
 					// to ensure that $from and $to not be left blank
 					// so $this->translate() could always return a string
-					if ($from || $to)
+					if ( $from || $to )
 						// more efficient than array_merge(), about 2.5 times.
 						$this->mManualAddTables[$v][$from] = $to;
 				}
 			}
-			elseif ( $action=="remove" ) {
-				foreach($t as $from=>$to) {
-					if ($from || $to)
+			elseif ( $action == "remove" ) {
+				foreach ( $t as $from=>$to ) {
+					if ( $from || $to )
 						$this->mManualRemoveTables[$v][$from] = $to;
 				}
 			}
@@ -416,19 +418,37 @@ class LanguageConverter {
 			return $text;
 		}
 
-		if($wgDisableLangConversion)
+		if ( $wgDisableLangConversion )
 			return $text;
 
 		$text = $this->convert( $text );
-		$parser->mOutput->setTitleText( $this->mTitleDisplay );
+
+		if ( $this->mTitleFromFlag )
+			$parser->mOutput->setTitleText( $this->mTitleDisplay );
 		return $text;
+	}
+	
+	/**
+	 * convert namespace
+	 * @param string $title the title included namespace
+	 * @return array of string
+	 * @private
+	 */
+	function convertNamespace( $title, $variant ) {
+		$splittitle = explode( ':', $title );
+		if (count($splittitle) < 2)
+			return $title;
+		if ( isset( $this->mNamespaceTables[$variant][$splittitle[0]] ) )
+			$splittitle[0] = $this->mNamespaceTables[$variant][$splittitle[0]];
+		$ret = implode(':', $splittitle );
+		return $ret;
 	}
 
 	/**
-	 *  convert title
+	 * convert title
 	 * @private
 	 */
-	function convertTitle($text){
+	function convertTitle( $text, $variant ){
 		global $wgDisableTitleConversion, $wgUser;
 
 		// check for global param and __NOTC__ tag
@@ -438,7 +458,7 @@ class LanguageConverter {
 		}
 
 		// use the title from the T flag if any
-		if($this->mTitleFromFlag){
+		if( $this->mTitleFromFlag ){
 			$this->mTitleFromFlag = false;
 			return $this->mTitleDisplay;
 		}
@@ -450,7 +470,8 @@ class LanguageConverter {
 		if ( $isredir == 'no' || $action == 'edit' || $action == 'submit' || $linkconvert == 'no' ) {
 			return $text;
 		} else {
-			$this->mTitleDisplay = $this->convert($text);
+			$text = $this->convertNamespace( $text, $variant );
+			$this->mTitleDisplay = $this->convert( $text );
 			return $this->mTitleDisplay;
 		}
 	}
@@ -471,7 +492,7 @@ class LanguageConverter {
 	 * @return string converted text
 	 * @public
 	 */
-	function convert( $text , $isTitle=false) {
+	function convert( $text, $isTitle = false ) {
 
 		$mw =& MagicWord::get( 'notitleconvert' );
 		if( $mw->matchAndRemove( $text ) )
@@ -483,36 +504,37 @@ class LanguageConverter {
 
 		// no conversion if redirecting
 		$mw =& MagicWord::get( 'redirect' );
-		if( $mw->matchStart( $text ))
+		if( $mw->matchStart( $text ) )
 			return $text;
 
-		// for title convertion
-		if ($isTitle) return $this->convertTitle($text);
-
 		$plang = $this->getPreferredVariant();
-		$tarray = StringUtils::explode($this->mMarkup['end'], $text);
+
+		// for title convertion
+		if ( $isTitle ) return $this->convertTitle( $text, $plang );
+
+		$tarray = StringUtils::explode( $this->mMarkup['end'], $text );
 		$text = '';
 
 		$marks = array();
-		foreach($tarray as $txt) {
-			$marked = explode($this->mMarkup['begin'], $txt, 2);
-			if (array_key_exists(1, $marked)) {
+		foreach ( $tarray as $txt ) {
+			$marked = explode( $this->mMarkup['begin'], $txt, 2 );
+			if ( array_key_exists( 1, $marked ) ) {
 				$crule = new ConverterRule($marked[1], $this);
-				$crule->parse($plang);
+				$crule->parse( $plang );
 				$marked[1] = $crule->getDisplay();
-				$this->prepareManualConv($crule);
+				$this->prepareManualConv( $crule );
 			}
 			else
 				$marked[0] .= $this->mMarkup['end'];
-			array_push($marks, $marked);
+			array_push( $marks, $marked );
 		}
 		$this->applyManualConv();
-		foreach ($marks as $marked) {
+		foreach ( $marks as $marked ) {
 			if( $this->mDoContentConvert )
-				$text .= $this->autoConvert($marked[0],$plang);
+				$text .= $this->autoConvert( $marked[0], $plang );
 			else
 				$text .= $marked[0];
-			if( array_key_exists(1, $marked) )
+			if( array_key_exists( 1, $marked ) )
 				$text .= $marked[1];
 		}
 		// Remove the last delimiter (wasn't real)
@@ -529,10 +551,12 @@ class LanguageConverter {
 	 *
 	 * @param string $link the name of the link
 	 * @param mixed $nt the title object of the link
+	 * @param boolean $ignoreOtherCond: to disable other conditions when
+	 *      we need to transclude a template or update a category's link
 	 * @return null the input parameters may be modified upon return
 	 * @public
 	 */
-	function findVariantLink( &$link, &$nt, $forTemplate = false ) {
+	function findVariantLink( &$link, &$nt, $ignoreOtherCond = false ) {
 		global $wgDisableLangConversion, $wgDisableTitleConversion, $wgRequest, $wgUser;
 		$isredir = $wgRequest->getText( 'redirect', 'yes' );
 		$action = $wgRequest->getText( 'action' );
@@ -542,10 +566,9 @@ class LanguageConverter {
 
 		$ns=NS_MAIN;
 
-		if ( $disableLinkConversion || ( !$forTemplate && ( $isredir == 'no' || $action == 'edit'
-			|| $action == 'submit' || $linkconvert == 'no' || $wgUser->getOption('noconvertlink') == 1 ) ) ) {
+		if ( $disableLinkConversion || ( !$ignoreOtherCond && ( $isredir == 'no' || $action == 'edit'
+			|| $action == 'submit' || $linkconvert == 'no' || $wgUser->getOption('noconvertlink') == 1 ) ) )
 			return;
-		}
 
 		if(is_object($nt))
 			$ns = $nt->getNamespace();
@@ -572,7 +595,7 @@ class LanguageConverter {
 		foreach( $titles as $varnt ) {
 			if( $varnt->getArticleID() > 0 ) {
 				$nt = $varnt;
-				$link = $v;
+				$link = $varnt->getText();
 				break;
 			}
 		}
