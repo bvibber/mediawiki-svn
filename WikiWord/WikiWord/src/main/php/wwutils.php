@@ -60,9 +60,10 @@ class WWUtils {
 
 	$term = trim($term);
 
-	$sql = "SELECT * FROM {$wwTablePrefix}_{$lang}_concept_info "
-	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON M.concept = D.concept "
-	      . " WHERE concept = $id ";
+	$sql = "SELECT C.*, F.*, definition FROM {$wwTablePrefix}_{$lang}_concept_info as F "
+	      . " JOIN {$wwTablePrefix}_{$lang}_concept as C ON F.concept = C.id "
+	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON F.concept = D.concept "
+	      . " WHERE F.concept = $id ";
 
 	return $this->query($sql);
     }
@@ -100,5 +101,23 @@ class WWUtils {
 	}
 
 	print "</select>";
+    }
+
+    static function unpickle($s, $hasId=true, $hasName=true, $hasConf=true) {
+	$ss = explode("\x1E", $s);
+	$items = array();
+
+	foreach ($ss as $i) {
+	    $r = explode("\x1F", $i);
+	    $offs = -1;
+
+	    if ($hasId)   $r['id']   = $r[$offs += 1];
+	    if ($hasName) $r['name'] = $r[$offs += 1];
+	    if ($hasConf) $r['conf'] = $r[$offs += 1];
+
+	    $items[] = $r;
+	}
+
+	return $items;
     }
 }
