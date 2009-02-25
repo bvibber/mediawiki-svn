@@ -11,6 +11,12 @@ $wgMediaHandlers['application/ogg'] = 'OggHandler';
 if ( !in_array( 'ogg', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'ogg';
 }
+if ( !in_array( 'ogv', $wgFileExtensions ) ) {
+	$wgFileExtensions[] = 'ogv';
+}
+if ( !in_array( 'oga', $wgFileExtensions ) ) {
+	$wgFileExtensions[] = 'oga';
+}
 ini_set( 'include_path', 
 	"$oggDir/PEAR/File_Ogg" .
 	PATH_SEPARATOR .
