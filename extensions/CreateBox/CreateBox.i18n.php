@@ -539,6 +539,18 @@ $messages['sw'] = array(
 	'createbox-create' => 'Anzisha kurasa',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'createbox-create' => 'సృష్టించు',
+	'createbox-exists' => "క్షమించండి, \"'''{{FULLPAGENAME}}'''\" ఇప్పటికే ఉంది.
+
+ఈ పేజీని మీరు సృష్టించలేరు, కానీ మీరు [{{fullurl:{{FULLPAGENAME}}|action=edit}} దీన్ని మార్చవచ్చు], [{{fullurl:{{FULLPAGENAME}}}} చదువవచ్చు], లేదా క్రింది పెట్టెని ఉపయోగించి మరో పేజీని సృష్టించవచ్చు.
+
+<createbox>break=no</createbox>",
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

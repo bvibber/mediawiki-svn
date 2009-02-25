@@ -183,18 +183,19 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'emergencydesysop' => 'Désysopage d’urgence',
-	'emergencydesysop-desc' => 'Permert à un administrateur de renoncer à ses propres limites, en ordre pour désysoper en autre',
-	'emergencydesysop-title' => 'Retire les accès d’administreur, ensemble l’utilisateur actuel puis un autre.',
+	'emergencydesysop-desc' => 'Permet à un administrateur de renoncer à ses privilèges pour désysoper un autre administrateur',
+	'emergencydesysop-title' => "Retire le statut d’administrateur à la fois pour l'utilisateur courant et pour un autre administrateur",
 	'emergencydesysop-otheradmin' => 'Autre administrateur à dégrouper',
 	'emergencydesysop-reason' => 'Motif du retrait',
 	'emergencydesysop-submit' => 'Soumettre',
 	'emergencydesysop-incomplete' => 'Tous les champs doivent être renseignés, veuillez essayer à nouveau.',
 	'emergencydesysop-notasysop' => 'L’utilisateur visé n’est pas dans le groupe des administrateurs.',
 	'emergencydesysop-nogroups' => 'Néant',
-	'emergencydesysop-done' => 'Action terminée, vous et [[$1]] avez eu ensemble vos droits d’administrateur de retirés.',
+	'emergencydesysop-done' => "Action terminée, vos droits d'administrateur ainsi que ceux de [[$1]] ont été retirés.",
 	'emergencydesysop-invalidtarget' => 'L’utilisateur visé n’existe pas.',
 	'emergencydesysop-blocked' => 'Vous ne pouvez pas accéder à cette page tant que vous êtes bloqué{{GENDER:||e|(e)}}',
 	'emergencydesysop-noright' => 'Vous n’avez pas les permissions suffisantes pour accéder à cette page',

@@ -287,6 +287,13 @@ $messages['sv'] = array(
 	'psinotocnum-desc' => 'Lägger till det magiska ordet "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'psinotocnum-desc' => 'కొత్త మాయాపదం "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

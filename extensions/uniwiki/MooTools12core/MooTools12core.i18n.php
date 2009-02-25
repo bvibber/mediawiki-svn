@@ -263,7 +263,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'mootools12core-desc' => 'Добавляет на каждую страницу [http://mootools.net mootools-1.2-core-yc.js]',
+	'mootools12core-desc' => 'Добавляет на каждую страницу компактный JavaScript-каркас [http://mootools.net mootools-1.2-core-yc.js]',
 );
 
 /** Slovak (Slovenčina)

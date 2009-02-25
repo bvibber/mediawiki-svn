@@ -799,6 +799,13 @@ $messages['tg-cyrl'] = array(
 	'postcomment_replyto' => 'Посух ба $1',
 );
 
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'postcomment_desc' => 'ให้ผู้ใช้สามารถแสดงความเห็นลงในหน้าอภิปรายได้โดยตรง',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

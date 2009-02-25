@@ -78,6 +78,13 @@ $messages['bs'] = array(
 	'seealso-desc' => "Lokalizirani 'Također pogledajte' naslovi koristeći oznaku <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'seealso' => 'Gweler hefyd',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Raimond Spekking

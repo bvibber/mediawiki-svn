@@ -1784,6 +1784,14 @@ $messages['id'] = array(
 	'deletequeue-list-search' => 'Cari',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'deletequeue-list-header-expiry' => 'Expiro',
+	'deletequeue-case-expiry' => 'Expiro:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

@@ -395,7 +395,10 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'intersection_toomanycats' => 'Eroro: Tro multa kategorii!',
+	'intersection_toofewcats' => 'Eroro: Tro poka kategorii!',
 	'intersection_noresults' => 'Eroro: Nula rezultaji!',
+	'intersection_noincludecats' => 'Eroro: Vu mustas inkluzar adminime un kategorio, o specigez nomaro!',
 );
 
 /** Italian (Italiano)

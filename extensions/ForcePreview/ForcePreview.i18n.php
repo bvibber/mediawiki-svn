@@ -128,10 +128,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'forcepreview' => 'Sauvegarde la page (lance en premier la prévisualisation)',
+	'forcepreview' => 'Sauvegarder la page (prévisualiser au préalable)',
 	'forcepreview-desc' => "Force la prévisualisation pour les utilisateurs ne disposant d'aucun privilège",
 	'right-forcepreviewexempt' => 'Peut publier sans utiliser la prévisualisation',
 );

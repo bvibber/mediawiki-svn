@@ -550,6 +550,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'authorprotect-notauthor' => "Vu ne es l'autoro di ca pagino",
 	'authorprotect-reason' => 'Motivo',
 );
 

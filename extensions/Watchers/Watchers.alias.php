@@ -95,7 +95,7 @@ $aliases['ksh'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'Watchers' => array( 'Iwwerwacher' ),
+	'Watchers' => array( 'Iwwerwaacher' ),
 );
 
 /** Macedonian (Македонски) */

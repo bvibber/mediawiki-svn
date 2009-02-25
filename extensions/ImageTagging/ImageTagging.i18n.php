@@ -1170,15 +1170,42 @@ Por favor, aguarde que a ação existente finalize.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Enqd
  */
 $messages['pt-br'] = array(
 	'taggedimages' => 'Imagens marcadas',
+	'imagetagging-desc' => 'Permite que um utilizador selecione uma região de uma imagem incorporada e associe uma página a essa região',
 	'imagetagging-addimagetag' => 'Marcar esta imagem',
+	'imagetagging-article' => 'Página:',
+	'imagetagging-articletotag' => 'Página a etiquetar',
+	'imagetagging-canteditothermessage' => 'Você não pode editar esta página, porque não possui permissões para isso, ou porque a página está bloqueada por outros motivos.',
+	'imagetagging-imghistory' => 'Histórico',
 	'imagetagging-images' => 'imagens',
+	'imagetagging-inthisimage' => 'Nesta imagem: $1',
+	'imagetagging-logentry' => 'Removida etiqueta para a página [[$1]] por $2',
+	'imagetagging-log-tagged' => 'A etiqueta da imagem [[$1|$2]] para a página [[$3]] foi adicionada por $4',
+	'imagetagging-new' => '<sup><span style="color:red">Nova!</span></sup>',
+	'imagetagging-removetag' => 'Remover etiqueta',
 	'imagetagging-done-button' => 'Marcação concluída',
 	'imagetagging-tag-button' => 'Marcar',
 	'imagetagging-tagcancel-button' => 'Cancelar',
+	'imagetagging-tagging-instructions' => 'Clique em pessoas ou objetos na imagem para os etiquetar.',
+	'imagetagging-addingtag' => 'Adicionando etiqueta…',
+	'imagetagging-removingtag' => 'Removendo etiqueta...',
+	'imagetagging-addtagsuccess' => 'Etiqueta adicionada.',
+	'imagetagging-removetagsuccess' => 'Etiqueta removida.',
+	'imagetagging-canteditneedloginmessage' => 'Você não pode editar esta página.
+Pode ser porque você precise se autenticar para etiquetar imagens.
+Deseja autenticar-se agora?',
+	'imagetagging-oneactionatatimemessage' => 'Apenas uma ação de etiquetagem é permitida de cada vez.
+Por favor, aguarde que a ação existente finalize.',
+	'imagetagging-oneuniquetagmessage' => 'Esta imagem já tem uma etiqueta com este nome.',
+	'imagetagging-imagetag-seemoreimages' => 'Ver mais imagens de "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Imagens de "$1"',
+	'imagetagging-taggedimages-displaying' => 'Mostrando $1 - $2 de $3 imagens de "$4"',
+	'tag-logpagename' => 'Registro de etiquetagens',
+	'tag-logpagetext' => 'Este é um registro de todas as adições e remoções de etiquetas de imagens.',
 );
 
 /** Tarifit (Tarifit)

@@ -168,6 +168,7 @@ $messages['dsb'] = array(
 	'findspam-ip' => 'IP-adresa',
 	'findspam-ok' => 'W pórěźe',
 	'findspam-notextfound' => 'Žedne pśinoski namakane',
+	'right-findspam' => 'Njedawno pśidany spam pytaś',
 );
 
 /** Greek (Ελληνικά)
@@ -234,6 +235,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Jack Phoenix
  * @author Jack Phoenix <jack@countervandalism.net>
  * @author Nike
  * @author Tarmo
@@ -249,6 +251,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -257,10 +260,12 @@ $messages['fr'] = array(
 	'findspam-ip' => 'Adresse IP :',
 	'findspam-ok' => 'Rechercher',
 	'findspam-notextfound' => 'Aucune contribution trouvée',
+	'right-findspam' => 'Rechercher des spam récemment ajoutés',
 );
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'findspam' => 'Atopar spam',
@@ -268,6 +273,7 @@ $messages['gl'] = array(
 	'findspam-ip' => 'Enderezo IP:',
 	'findspam-ok' => 'De acordo',
 	'findspam-notextfound' => 'Non foron atopadas contribucións',
+	'right-findspam' => 'Buscar o spam engadido recentemente',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -336,6 +342,7 @@ $messages['hsb'] = array(
 	'findspam-ip' => 'IP-adresa',
 	'findspam-ok' => 'W porjadku',
 	'findspam-notextfound' => 'Žane přinoški namakane',
+	'right-findspam' => 'Njedawno přidaty spam pytać',
 );
 
 /** Hungarian (Magyar)
@@ -372,6 +379,13 @@ $messages['id'] = array(
 	'findspam-notextfound' => 'Tidak ada kontribusi ditemukan',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'findspam-ip' => 'IP-adreso:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -385,6 +399,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'findspam' => 'スパムを探す',
@@ -392,6 +407,7 @@ $messages['ja'] = array(
 	'findspam-ip' => 'IPアドレス:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => '投稿記録はありません',
+	'right-findspam' => '最近追加されたスパムを検索する',
 );
 
 /** Javanese (Basa Jawa)
@@ -528,10 +544,12 @@ $messages['nl'] = array(
 	'findspam-ip' => 'IP-adres:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Geen bijdragen gevonden',
+	'right-findspam' => 'Zoeken naar recent toegevoegde spam',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Gunnernett
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
@@ -540,6 +558,7 @@ $messages['nn'] = array(
 	'findspam-ip' => 'IP-adresse:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Ingen bidrag funne',
+	'right-findspam' => 'Søk etter nylege ting som er kategorisert som spam',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -609,6 +628,7 @@ $messages['pt'] = array(
 	'findspam-ip' => 'Endereço IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Não foram encontradas contribuições',
+	'right-findspam' => 'Pesquisar "spam" recentemente adicionado',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -620,6 +640,7 @@ $messages['pt-br'] = array(
 	'findspam-ip' => 'Endereço IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Não foram encontradas contribuições',
+	'right-findspam' => 'Pesquisar "spam" adicionado recentemente',
 );
 
 /** Romanian (Română)
@@ -693,6 +714,7 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Lejonel
  * @author M.M.S.
  */
@@ -702,6 +724,7 @@ $messages['sv'] = array(
 	'findspam-ip' => 'IP-adress:',
 	'findspam-ok' => 'Sök',
 	'findspam-notextfound' => 'Inga bidrag hittades',
+	'right-findspam' => 'Sök efter nyligen tillagd spam',
 );
 
 /** Silesian (Ślůnski)
@@ -760,6 +783,7 @@ $messages['tl'] = array(
 	'findspam-ip' => 'adres ng IP:',
 	'findspam-ok' => "Sige/Ayos 'yan",
 	'findspam-notextfound' => 'Walang natagpuang mga ambag',
+	'right-findspam' => 'Maghanap ng kamakailan lamang idinagdag na manlulusob',
 );
 
 /** Turkish (Türkçe)

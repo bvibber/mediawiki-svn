@@ -428,6 +428,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'whitelist-desc' => 'Uređivanje dopuštenja pristupa za ograničene korisnike',
+	'whitelistedit' => 'Uređivač pristupa dopuštenom spisku',
 	'whitelist' => 'Spisak bijelih stranica',
 	'mywhitelistpages' => 'Moje stranice',
 	'whitelistfor' => '<center>Trenutne informacije za <b>$1</b></center>',
@@ -447,12 +448,15 @@ $messages['bs'] = array(
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnewtabledate' => 'Datum isteka:',
 	'whitelistnewtableview' => 'Postavi za pregled',
+	'whitelistnowhitelistedusers' => 'Nema korisnika u grupi "{{MediaWiki:Group-restricted}}".
+Morate da [[Special:UserRights|dodate korisnike u grupu]] prije nego što mognete dodavati stranice na dopušteni spisak korisnika.',
 	'whitelistnewtableprocess' => 'Proces',
 	'whitelistnewtablereview' => 'Pregled',
 	'whitelistselectrestricted' => '== Odaberi ograničeno korisničko ime ==',
 	'whitelistpagelist' => '{{SITENAME}} stranice za $1',
 	'whitelistoverview' => '== Pregled promjena za $1 ==',
 	'whitelistoverviewcd' => "* Mijenjam datum na '''$1''' za [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Postavljanje pristupa na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Uklanjam pristup na [[:$1|$1]]',
 	'whitelistrequest' => 'Traži pristup za više stranica',
 	'whitelistrequestmsg' => '$1 je zahtijevao pristup {{PLURAL:$3|slijedećoj stranici|slijedećim stranicama}}:

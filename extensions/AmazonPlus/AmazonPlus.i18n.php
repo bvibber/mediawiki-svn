@@ -838,6 +838,8 @@ $messages['ru'] = array(
 	'amazonplus-new' => 'новая',
 	'amazonplus-none' => 'Не осталось экземпляров этого товара для продажи.',
 	'amazonplus-cp-none' => 'Нет',
+	'amazonplus-more' => 'больше',
+	'amazonplus-less' => 'меньше',
 );
 
 /** Slovak (Slovenčina)
@@ -908,9 +910,17 @@ $messages['su'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'amazonplus-nores' => 'పొరపాటు: ఫలితాలేమీ లేవు!',
+	'amazonplus-noidres' => 'పొరపాటు: ఉత్పాదన ID కనబడలేదు!',
+	'amazonplus-fgcerr' => 'పొరపాటు: అమెజాన్ నుండి భోగట్టాని తేలేకపోయాం!',
+	'amazonplus-slserr' => 'పొరపాటు: అమెజాన్ నుండి వచ్చిన భోగట్టాని చదవలేకపోయాం!',
+	'amazonplus-used' => 'వాడినది',
 	'amazonplus-german' => 'జర్మను',
 	'amazonplus-french' => 'ఫ్రెంచి',
 	'amazonplus-japanese' => 'జపనీస్',
+	'amazonplus-amazon' => 'అమెజాన్ ధర',
+	'amazonplus-none' => 'దీని యొక్క కాపీలేమీ అమ్మకానికి లేవు.',
+	'amazonplus-more' => 'మరిన్ని',
 );
 
 /** Tetum (Tetun)

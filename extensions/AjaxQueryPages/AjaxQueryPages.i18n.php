@@ -415,6 +415,13 @@ $messages['sv'] = array(
 	'ajax-qp-desc' => 'Lägger till AJAX-funktioner på vissa specialsidor, som t.ex. [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'ajax-qp-desc' => '[[Special:Shortpages|{{int:shortpages}}]] లాంటి క్వెరీ పేజీలకి కొంచెం అజాక్సుని చేరుస్తుంది',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

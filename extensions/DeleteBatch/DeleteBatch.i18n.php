@@ -944,6 +944,37 @@ O ficheiro carregado deverá conter o nome da página e um motivo opcional, sepa
 	'right-deletebatch' => 'Apagar páginas em bloco',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'deletebatch' => 'Apagar páginas em bloco',
+	'deletebatch-desc' => 'Permite [[Special:DeleteBatch|eliminar páginas em bloco]]',
+	'deletebatch-help' => 'Elimine um bloco de páginas. Você pode realizar uma única eliminação, ou eliminar páginas listadas num arquivo.
+Escolha um utilizador que será mostrado nos registros de eliminação.
+O arquivo carregado deverá conter o nome da página e um motivo opcional, separados por um caractere "|" em cada linha.',
+	'deletebatch-caption' => 'Lista de páginas:',
+	'deletebatch-title' => 'Apagar bloco',
+	'deletebatch-link-back' => 'Voltar à página especial',
+	'deletebatch-as' => 'Executar o script como:',
+	'deletebatch-both-modes' => 'Por favor, escolha uma página especificada ou uma dada lista de páginas.',
+	'deletebatch-or' => '<b>ou</b>',
+	'deletebatch-page' => 'Páginas a eliminar:',
+	'deletebatch-reason' => 'Motivo da eliminação',
+	'deletebatch-processing' => 'eliminando páginas $1',
+	'deletebatch-from-file' => 'de lista em arquivo',
+	'deletebatch-from-form' => 'de formulário',
+	'deletebatch-success-subtitle' => 'para $1',
+	'deletebatch-omitting-nonexistant' => 'Omitindo página não existente $1.',
+	'deletebatch-omitting-invalid' => 'Omitindo página inválida $1.',
+	'deletebatch-file-bad-format' => 'O arquivo deve conter texto pleno',
+	'deletebatch-file-missing' => 'Não foi possível ler o arquivo fornecido',
+	'deletebatch-select-script' => 'script de eliminação de páginas',
+	'deletebatch-select-yourself' => 'você',
+	'deletebatch-no-page' => 'Por favor, especifique pelo menos uma página para eliminar OU escolha um arquivo contendo uma lista de páginas.',
+	'right-deletebatch' => 'Apagar páginas em bloco',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
@@ -971,13 +1002,14 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'deletebatch-caption' => 'Список страниц',
-	'deletebatch-as' => 'Пустить скрипт как',
+	'deletebatch-as' => 'Запустить скрипт как:',
 	'deletebatch-both-modes' => 'Пожалуйста, выберите одну страницу или список страниц.',
 	'deletebatch-or' => '<b>или</b>',
-	'deletebatch-page' => 'Страницы к удалению',
+	'deletebatch-page' => 'Страницы к удалению:',
 	'deletebatch-reason' => 'Причина удаления',
 	'deletebatch-from-file' => 'из списка файлов',
 	'deletebatch-success-subtitle' => 'для $1',

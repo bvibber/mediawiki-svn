@@ -65,7 +65,7 @@ $aliases['fr'] = array(
 
 /** Galician (Galego) */
 $aliases['gl'] = array(
-	'WhiteList' => array( 'Lista branca', 'Listaxe branca' ),
+	'WhiteList' => array( 'Lista branca' ),
 );
 
 /** Swiss German (Alemannisch) */

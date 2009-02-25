@@ -896,6 +896,35 @@ $messages['pt'] = array(
 	'invitations-invite-success' => 'Convidou $1 para usar esta funcionalidade com sucesso!',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'invite-logpage' => 'Registro de Convites',
+	'invite-logpagetext' => 'Isto é um registro de utilizadores que se convidam uns aos outros para usar as várias funcionalidades do software.',
+	'invite-logentry' => 'convidou $1 a usar a funcionalidade <i>$2</i>.',
+	'invitations' => 'Gerenciar convites para funcionalidades de software',
+	'invitations-desc' => 'Permite [[Special:Invitations|o gerenciamento de novas funcionalidades]] através da sua restrição a um sistema baseado em convites',
+	'invitations-invitedlist-description' => 'Você tem acesso às seguintes funcionalidades do software atribuídas apenas por convite. Para gerenciar convites para uma funcionalidade individual, clique no seu nome.',
+	'invitations-invitedlist-none' => 'Você não foi convidado a usar nenhuma funcionalidade do software atribuída apenas por convite.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Um convite disponível|$1 convites disponíveis}})',
+	'invitations-pagetitle' => 'Funcionalidades do software atribuídas apenas por convite',
+	'invitations-uninvitedlist-description' => 'Você não tem acesso a estas outras funcionalidades do software atribuídas apenas por convite.',
+	'invitations-uninvitedlist-none' => 'Neste momento, nenhuma outra funcionalidade do software é atribuída apenas por convite.',
+	'invitations-feature-pagetitle' => 'Gerenciamento de Convites - $1',
+	'invitations-feature-access' => 'Atualmente você não possui acesso ao uso de <i>$1</i>.',
+	'invitations-feature-numleft' => 'Ainda lhe {{PLURAL:$2|resta um|restam <b>$1</b>}} dos seus $2 convites.',
+	'invitations-feature-noneleft' => 'Você já utilizou toda a sua quota de convites para esta funcionalidade',
+	'invitations-feature-noneyet' => 'Você ainda não recebeu a sua quota de convites para esta funcionalidade.',
+	'invitations-feature-notallowed' => 'Você não tem acesso ao uso de <i>$1</i>.',
+	'invitations-inviteform-title' => 'Convidar um utilizador a usar $1',
+	'invitations-inviteform-username' => 'Utilizador a convidar',
+	'invitations-inviteform-submit' => 'Convidar',
+	'invitations-error-baduser' => 'O utilizador que especificou parece não existir.',
+	'invitations-error-alreadyinvited' => 'O utilizador que especificou já tem acesso a esta funcionalidade!',
+	'invitations-invite-success' => 'Convidou $1 para usar esta funcionalidade com sucesso!',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

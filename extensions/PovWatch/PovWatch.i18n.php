@@ -1139,8 +1139,12 @@ $messages['nah'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_unknown_subpage' => 'Unbekannte Ünnersied.',
+	'povwatch_push' => 'Tofögen',
 	'povwatch_title' => 'Titel:',
 	'povwatch_comment' => 'Logbook-Kommentar:',
+	'povwatch_no_log' => 'Gifft keen Logbookindrääg.',
 	'povwatch_unsubscribe' => 'Abo afmellen',
 	'povwatch_subscribe' => 'Abonneren',
 	'povwatch_added' => 'toföögt',
@@ -1412,6 +1416,47 @@ Clique no botão abaixo para subscrever.',
 	'action-povwatch_user' => 'adicionar esta página à lista de vigiados de outro utilizador',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Extensão para [[Special:PovWatch|adicionar páginas nas listas de artigos vigiados]] de outros utilizadores',
+	'povwatch_no_session' => 'Erro: Não foi possível enviar o formulário devido a perda de dados da sessão.',
+	'povwatch_not_allowed_push' => 'Você não é um administrador PovWatch, você não pode adicionar páginas em listas de artigos vigiados.',
+	'povwatch_already_subscribed' => 'Você já esta inscrito para o PovWatch',
+	'povwatch_subscribed' => 'Você agora está inscrito para o Povwatch',
+	'povwatch_not_subscribed' => 'Você não está inscrito no PovWatch, por isso não pode remover sua inscrição.',
+	'povwatch_unsubscribed' => 'Você não está mais inscrito no PovWatch',
+	'povwatch_invalid_title' => 'O título especificado é inválido',
+	'povwatch_pushed' => '[[$1]] foi adicionada com sucesso à lista de páginas vigiadas de {{PLURAL:$2|$2 utilizador|$2 utilizadores}}',
+	'povwatch_intro' => 'PovWatch é um serviço que permite que páginas sejam discretamente adicionadas para a lista de artigos vigiados de administradores inscritos.
+
+Um registro das páginas adicionadas recentemente na lista de artigos vigiados está disponível na página [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Uma [[Special:PovWatch/subscribers|lista de inscritos]] está disponível.',
+	'povwatch_subscriber_list_intro' => '<strong>Lista de inscritos</strong>',
+	'povwatch_not_allowed_subscribers' => 'Você não tem permissão para visualizar a lista de inscritos no PovWatch.',
+	'povwatch_unknown_subpage' => 'Subpágina desconhecida.',
+	'povwatch_push' => 'Enviar',
+	'povwatch_push_intro' => 'Utilize o formulário abaixo para adicionar páginas na lista de artigos vigiados de utilizadores inscritos.
+Tenha cuidado ao digitar o título: mesmo os títulos que não existem podem ser adicionados, e não há uma maneira de remover um título depois de ter sido adicionado.',
+	'povwatch_title' => 'Título:',
+	'povwatch_comment' => 'Registrar comentário:',
+	'povwatch_no_log' => 'Não há regitros',
+	'povwatch_no_subscribers' => 'Não existem inscritos.',
+	'povwatch_unsubscribe_intro' => 'Você está inscrito no PovWatch.
+Clique no botão abaixo para remover sua inscrição.',
+	'povwatch_unsubscribe' => 'Cancelar inscrição',
+	'povwatch_subscribe_intro' => 'Você não está inscrito no PovWatch.
+Clique no botão abaixo para inscrever-se.',
+	'povwatch_subscribe' => 'Inscrever-se',
+	'povwatch_added' => 'adicionado',
+	'right-povwatch_admin' => 'Administrar privilégios do utilizador para adicionar páginas nas listas de artigos vigiados de outros utilizadores',
+	'right-povwatch_user' => 'Adicionar páginas na lista de artigos vigiados de outros utilizadores',
+	'action-povwatch_admin' => 'administrar direitos de utilizador para o PovWatch',
+	'action-povwatch_user' => 'adicionar esta página à lista de vigiados de outro utilizador',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
@@ -1676,6 +1721,8 @@ Pindutin ang pindutan sa ibaba upang tumanggap ng sipi.",
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Sayfaları, diğer kullanıcıların [[Special:PovWatch|izleme listelerine itmek]] için eklenti',
 	'povwatch_no_session' => 'Hata: Oturumdaki veri kaybından dolayı form gönderilemedi.',
 	'povwatch_not_allowed_push' => 'Bir PovWatch yöneticisi değilsiniz, izleme listelerine sayfa itemezsiniz.',
 	'povwatch_already_subscribed' => "PovWatch'a zaten abonesiniz",
@@ -1683,11 +1730,23 @@ $messages['tr'] = array(
 	'povwatch_not_subscribed' => "PovWatch'a abone değilsiniz, bu yüzden aboneliğinizi iptal edemezsiniz.",
 	'povwatch_unsubscribed' => 'PovWatch aboneliğiniz iptal edildi',
 	'povwatch_invalid_title' => 'Belirtilen başlık geçersizdi',
+	'povwatch_pushed' => '[[$1]] $2 kullanıcının {{PLURAL:$2|izleme listesine|izleme listelerine}} başarıyla itildi.',
+	'povwatch_intro' => 'PovWatch, tartışmalı sayfaların abone olan yöneticilerin izleme listelerine ihtiyaten itilmesine izin veren bir servistir.
+
+Son izleme listesi itmelerinin günlüğü, [[Special:PovWatch/günlük]] sayfasında mevcuttur.',
+	'povwatch_subscriber_list' => 'Bir [[Special:PovWatch/subscribers|abone listesi]] mevcut.',
 	'povwatch_subscriber_list_intro' => '<strong>Abone listesi</strong>',
+	'povwatch_not_allowed_subscribers' => 'PovWatch abone listesini görmeye izniniz yok.',
 	'povwatch_unknown_subpage' => 'Bilinmeyen altsayfa.',
+	'povwatch_push' => 'İt',
+	'povwatch_push_intro' => 'Abone kullanıcıların izleme listelerine sayfaları itmek için aşağıdaki formu kullanın.
+Lütfen başlığı yazarken dikkatli olun: varolmayan sayfalar bile eklenebilir, ve bir kere itildikten sonra başlığı geri alma yolu yoktur.',
 	'povwatch_title' => 'Başlık:',
 	'povwatch_comment' => 'Günlük yorumu:',
 	'povwatch_no_log' => 'Hiç günlük girdisi yok.',
+	'povwatch_no_subscribers' => 'Abone yok.',
+	'povwatch_unsubscribe_intro' => "PovWatch'a abone oldunuz.
+Abonelikten çıkmak için aşağıdaki düğmeye tıklayın.",
 	'povwatch_unsubscribe' => 'Abonelikten çık',
 	'povwatch_subscribe_intro' => "PovWatch'a abone değilsiniz.
 Abone olmak için aşağıdaki düğmeye tıklayın.",

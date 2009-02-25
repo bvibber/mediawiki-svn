@@ -180,6 +180,17 @@ $messages['bg'] = array(
 	'slippymap_code' => 'Уикикод за тази карта:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'slippymap_widthbig' => 'vrijednost širina (w) ne može biti veća od 1000',
+	'slippymap_widthsmall' => 'vrijednost širina (w) ne može biti manja od 100',
+	'slippymap_heightbig' => 'vrijednost visina (h) ne može biti veća od 1000',
+	'slippymap_maperror' => 'Greška mape:',
+	'slippymap_osmtext' => 'Vidi ovu mapu na OpenStreetMap.org',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Mormegil
@@ -881,6 +892,39 @@ $messages['pt'] = array(
 	'slippymap_code' => 'Código wiki para esta vista do mapa:',
 	'slippymap_button_code' => 'Buscar código wiki',
 	'slippymap_resetview' => 'Repor vista',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'slippymap_desc' => 'Permite o uso da marca <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para apresentar um mapa corrediço OpenLayers. Os mapas provêm de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'Faltando o valor lat (para a latitude).',
+	'slippymap_lonmissing' => 'Faltando o valor lon (para a longitude).',
+	'slippymap_zoommissing' => 'Falta valor z (para o nível de zoom).',
+	'slippymap_longdepreciated' => "Por favor, use 'lon' em vez de 'long' (o parâmetro foi renomeado).",
+	'slippymap_widthnan' => "o valor de largura (w) '%1' não é um inteiro válido",
+	'slippymap_heightnan' => "o valor de altura (h) '%1' não é um inteiro válido",
+	'slippymap_zoomnan' => "o valor de zoom (z) '%1' não é um inteiro válido",
+	'slippymap_latnan' => "o valor de latitude (lat) '%1' não é um número válido",
+	'slippymap_lonnan' => "o valor de longitude (lon) '%1' não é um número válido",
+	'slippymap_widthbig' => 'o valor da largura (w) não pode ser maior que 1000',
+	'slippymap_widthsmall' => 'o valor da largura (w) não pode ser menor que 100',
+	'slippymap_heightbig' => 'o valor da altura (h) não pode ser maior que 1000',
+	'slippymap_heightsmall' => 'o valor da altura (h) não pode ser menor que 100',
+	'slippymap_latbig' => 'o valor da latitude (lat) não pode ser maior que 90',
+	'slippymap_latsmall' => 'o valor da latitude (lat) não pode ser menor que -90',
+	'slippymap_lonbig' => 'o valor da longitude (lon) não pode ser maior que 180',
+	'slippymap_lonsmall' => 'o valor da longitude (lon) não pode ser menor que -180',
+	'slippymap_zoomsmall' => 'o valor do zoom (z) não pode ser menor que zero',
+	'slippymap_zoom18' => 'o valor do zoom (z) não pode ser maior que 17. Note que esta extensão MediaWiki liga-se ao visualizador "osmarender" do OpenStreetMap cujo valor de zoom não ultrapassa o nível 17. O visualizador Mapnik disponível no openstreetmap.org, vai até o nivel 18',
+	'slippymap_zoombig' => 'O valor de zoom (z) não pode ser maior que 17.',
+	'slippymap_invalidlayer' => "Valor '%1' inválido para 'layer'",
+	'slippymap_maperror' => 'Erro no mapa:',
+	'slippymap_osmtext' => 'Veja este mapa em OpenStreetMap.org',
+	'slippymap_code' => 'Código wiki para esta vista do mapa:',
+	'slippymap_button_code' => 'Buscar código wiki',
+	'slippymap_resetview' => 'Reiniciar vista',
 );
 
 /** Romanian (Română)

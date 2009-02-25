@@ -282,17 +282,27 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'changeauthor' => 'Promjena autora revizije',
 	'changeauthor-desc' => 'Omogućuje promjenu autora revizije',
 	'changeauthor-title' => 'Promjena autora revizije',
 	'changeauthor-search-box' => 'Traži revizije',
+	'changeauthor-pagename-or-revid' => 'Naziv stranice ili ID revizije:',
 	'changeauthor-pagenameform-go' => 'Idi',
 	'changeauthor-comment' => 'Komentar:',
 	'changeauthor-changeauthors-multi' => 'Promijeni {{PLURAL:$1|autora|autore}}',
+	'changeauthor-explanation-multi' => "Sa ovim obrascem možete promijeniti autora revizije.
+Jednostavno promijenite jedno ili više korisničkih imena na spisku ispod, dodajte komentar (neobavezno) i kliknite na dugme 'Promijeni autora(e)'.",
 	'changeauthor-changeauthors-single' => 'Promijeni autora',
 	'changeauthor-invalid-username' => 'Nevaljano korisničko ime "$1".',
 	'changeauthor-nosuchuser' => 'Nema takvog korisnika "$1".',
 	'changeauthor-revview' => 'Revizija #$1 od $2',
 	'changeauthor-nosuchtitle' => 'Nema stranice s nazivom "$1".',
+	'changeauthor-weirderror' => 'Desila se nepredviđena greška.
+Molimo ponovite Vaš upit.
+Ako se ova greška nastavi ponavljati, vjerovatno je baza podataka u kvaru.',
+	'changeauthor-success' => 'Vaš zahtjev je uspješno obrađen.',
+	'changeauthor-logentry' => 'Promijenjen autor revizije $2 stranice $1 sa $3 na $4',
+	'changeauthor-logpagename' => 'Zapisnik promjene autora',
 	'right-changeauthor' => 'Promjena autora revizije',
 );
 
@@ -910,6 +920,16 @@ Jika kesalahan ini tetap terulang, kemungkinan terjadi kerusakan di basis data.'
 	'changeauthor-success' => 'Permintaan Anda telah berhasil diproses.',
 	'changeauthor-logentry' => 'Mengubah penulis revisi $2 halaman $1 dari $3 menjadi $4',
 	'changeauthor-logpagename' => 'Log perubahan penulis',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'changeauthor-comment' => 'Komento:',
+	'changeauthor-changeauthors-multi' => 'Chanjez {{PLURAL:$1|autoro|autori}}',
+	'changeauthor-changeauthors-single' => 'Chanjez autoro',
+	'changeauthor-invalid-username' => 'Ne-valida uzantonomo "$1".',
 );
 
 /** Icelandic (Íslenska)

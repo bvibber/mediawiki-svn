@@ -288,20 +288,27 @@ Ongelmien ratkaisuun voit kokeilla sivua <b>Special:Call/DebuG</b>",
  * @author Grondin
  * @author IAlex
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'call' => 'Appel',
-	'call-desc' => 'Crée un lien hypertexte vers un modèle ou une page wiki normal tout en passant des paramètres. Elle peut être utilisée en ligne de commande depuis un navigateur ou à travers un texte wiki.',
+	'call-desc' => 'Crée un lien hypertexte permettant d’afficher l’expansion d’un modèle (ou d’une page wiki normale) tout en lui passant des paramètres.
+Ce lien peut être utilisé en ligne de commande depuis un navigateur ou dans un texte wiki.',
 	'call-text' => "L’extension Appel a besoin d’une page wiki et des paramètres facultatifs pour cette dernière comme argument.<br /><br />
-Exemple 1: &nbsp; <tt>[[Special:Call/Mon modèle,parm1=value1]]</tt><br />
-Exemple 2: &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,parm1=value1]]</tt><br />
-Exemple 3: &nbsp; <tt>[[Special:Call/:Ma page,parm1=value1,parm2=value2]]</tt><br /><br />
-Exemple 4 (Adresse pour navigateur) : &nbsp; <tt>http://mondomaine/monwiki/index.php?Special:Call/:Ma_Page,parm1=value1</tt><br /><br />
+Exemple 1 : &nbsp; <tt>[[Special:Call/Mon modèle,param1=valeur1]]</tt><br />
+Exemple 2 : &nbsp; <tt>[[Special:Call/Discussion:Ma discussion,param1=valeur1]]</tt><br />
+Exemple 3 : &nbsp; <tt>[[Special:Call/:Ma page,param1=valeur1,param2=valeur2]]</tt><br />
+Exemple 4 (adresse pour navigateur) : &nbsp; <tt>http://mondomaine/monwiki/index.php?Special:Call/:Ma_Page,param1=value1</tt>
 
-L’extension <i>Appel</i> appellera la page indiquée en lui passant les paramètres.<br />Vous verrez les informations de cette page, son titre, mais son « type » sera celui d’une page spéciale qui ne pourra pas être éditée.<br />Les informations que vous verrez varieront en fonction des paramètres que vous aurez indiqués.<br />Cette extension est très pratique pour créer des applications interactives avec MediaWiki.<br />À titre d’exemple, voyez <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br />En cas de problèmes, vous pouvez essayer <b>Special:Call/DebuG</b>",
-	'call-save' => "Ce qui est indiqué par cet appel pourrait être sauvé vers une page intitulée ''$1''.",
-	'call-save-success' => 'Le texte suivant a été sauvegardé vers la page <big>[[$1]]</big> .',
-	'call-save-failed' => 'Le texte suivant n’a pu être sauvergardé vers la page <big>[[$1]]</big> du fait qu’elle existe déjà.',
+L’extension <i>Appel</i> appellera la page indiquée tout en lui passant les paramètres.<br />
+Vous verrez les informations de cette page, son titre, mais son « type » sera celui d’une page spéciale qui ne pourra pas être éditée.<br />Les informations que vous verrez varieront en fonction des paramètres que vous avez passés.
+
+Cette extension est très pratique pour créer des applications interactives avec MediaWiki.<br />
+À titre d’exemple, voyez <a href='http://semeb.com/dpldemo/Template:Catlist'>l’interface DPL</a>...<br />
+En cas de problèmes, vous pouvez essayer <b>Special:Call/DebuG</b>",
+	'call-save' => "Le résultat de cet appel pourrait être publié dans une page appelée ''$1''.",
+	'call-save-success' => 'Le texte suivant a été publié vers la page <big>[[$1]]</big>.',
+	'call-save-failed' => 'Le texte suivant n’a pu être publié vers la page <big>[[$1]]</big> car cette page existe déjà.',
 );
 
 /** Galician (Galego)

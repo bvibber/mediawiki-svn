@@ -189,12 +189,21 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'duplicator' => 'Dupliciraj stranicu',
+	'duplicator-desc' => 'Pravi nezavisne [[Special:Duplicate|kopije stranica]] sa potpunim historijama uređivanja',
+	'duplicator-toolbox' => 'Dupliciraj ovu stranicu',
 	'duplicator-options' => 'Opcije',
 	'duplicator-source' => 'Izvor:',
 	'duplicator-dest' => 'Odredište:',
+	'duplicator-dotalk' => 'Dupliciraj stranicu za razgovor (ako je moguće)',
+	'duplicator-submit' => 'Dupliciraj',
 	'duplicator-summary' => 'Kopirano sa [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] je kopirano na [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revizija je kopirana|revizije su kopirane|revizija je kopirano}}.',
+	'duplicator-success-talkcopied' => 'Stranica za razgovor je također kopirana.',
 	'duplicator-success-talknotcopied' => 'Stranica za razgovor se nije mogla kopirati.',
 	'duplicator-source-invalid' => 'Molimo navedite valjan izvorni naslov.',
+	'duplicator-dest-invalid' => 'Molimo navedite valjan naslov odredišta.',
 );
 
 /** Catalan (Català)

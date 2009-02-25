@@ -60,7 +60,7 @@ $aliases['fi'] = array(
 
 /** Galician (Galego) */
 $aliases['gl'] = array(
-	'InterwikiList' => array( 'Lista de interwikis', 'Listaxe de interwikis' ),
+	'InterwikiList' => array( 'Lista de interwikis' ),
 );
 
 /** Swiss German (Alemannisch) */

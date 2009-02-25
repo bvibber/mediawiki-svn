@@ -314,17 +314,18 @@ $messages['fi'] = array(
  * @author Grondin
  * @author Louperivois
  * @author Meithal
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'edituser-desc' => 'Permet aux utilisateurs disposant de certains privilèges d’éditer les préférences des autres utilisateurs',
-	'edituser' => "Éditer l'utilisateur",
+	'edituser-desc' => 'Permet aux utilisateurs disposant de certains privilèges de modifier les préférences des autres utilisateurs',
+	'edituser' => "Modifier l'utilisateur",
 	'edituser-logout' => 'Ferme la session utilisateur',
 	'edituser-username' => 'Nom',
 	'edituser-dosearch' => 'Rechercher',
 	'edituser-nouser' => "L'utilisateur spécifié n'existe pas",
 	'edituser-exempt' => "L'utilisateur spécifié ne peut pas être modifié",
 	'right-edituser' => 'Modifie les préférences des autres utilisateurs',
-	'right-edituser-exempt' => 'Ne peut obtenir leurs préférences modifiées par les autres',
+	'right-edituser-exempt' => 'Les préférences de cet utilisateur ne sont pas modifiables par les autres',
 );
 
 /** Western Frisian (Frysk)

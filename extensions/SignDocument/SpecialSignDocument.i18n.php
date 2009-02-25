@@ -1667,6 +1667,13 @@ $messages['id'] = array(
 	'sign-viewfield-options' => 'Pilihan',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'sign-viewfield-ip' => 'IP-adreso',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'sign-realname' => 'Nafn:',

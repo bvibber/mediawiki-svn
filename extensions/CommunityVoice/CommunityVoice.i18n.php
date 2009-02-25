@@ -353,6 +353,14 @@ $messages['sk'] = array(
 	'communityvoice-ratings-error-no-title' => 'V značke hodnotenia chýba atribút názvu.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'పంపిస్తున్నాం...',
+	'communityvoice-ratings-scale-status-thanks' => 'వోటేసినందుకు కృతజ్ఞతలు!',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

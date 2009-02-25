@@ -1328,6 +1328,35 @@ $messages['pt'] = array(
 	'usagestatistics-editpages' => 'Estatísticas $1 de páginas de utilizador individual',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'specialuserstats' => 'Estatísticas de uso',
+	'usagestatistics' => 'Estatísticas de uso',
+	'usagestatistics-desc' => 'Mostrar estatísticas de utilizadores individuais e de uso geral da wiki',
+	'usagestatisticsfor' => '<h2>Estatísticas de utilização para [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Estatísticas de utilização para todos os utilizadores</h2>',
+	'usagestatisticsinterval' => 'Intervalo',
+	'usagestatisticstype' => 'Tipo',
+	'usagestatisticsstart' => 'Data de Início',
+	'usagestatisticsend' => 'Data de Fim',
+	'usagestatisticssubmit' => 'Gerar Estatísticas',
+	'usagestatisticsnostart' => 'Por favor indique uma data de início',
+	'usagestatisticsnoend' => 'Por favor indique uma data de término',
+	'usagestatisticsbadstartend' => '<b>Datas de <i>início</i> e/ou <i>término</i> inválidas!</b>',
+	'usagestatisticsintervalday' => 'Dia',
+	'usagestatisticsintervalweek' => 'Semana',
+	'usagestatisticsintervalmonth' => 'Mês',
+	'usagestatisticsincremental' => 'Incremental',
+	'usagestatisticsincremental-text' => 'incrementais',
+	'usagestatisticscumulative' => 'Cumulativo',
+	'usagestatisticscumulative-text' => 'cumulativas',
+	'usagestatisticscalselect' => 'Escolher',
+	'usagestatistics-editindividual' => 'Estatísticas $1 de edição de utilizador individual',
+	'usagestatistics-editpages' => 'Estatísticas $1 de páginas de utilizador individual',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

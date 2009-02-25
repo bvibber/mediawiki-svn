@@ -1315,6 +1315,7 @@ $messages['lb'] = array(
 	'webstore_rename' => 'Feeler beim Ëmbennen vum Fichier "$1" op "$2".',
 	'webstore_lock_open' => 'Feeler beim Opmaache vum gespaarte Fichier "$1".',
 	'webstore_lock_close' => 'Feeler beim Zoumaache vum gespaarte Fichier "$1".',
+	'webstore_dest_exists' => 'Feeler, den Zilfichier "$1" gëtt et.',
 	'webstore_temp_open' => 'Feeler beim Opmaache vum temporäre Fichier "$1".',
 	'webstore_temp_close' => 'Feeler beim Zoumaache vum temporäre Fichier "$1".',
 	'webstore_temp_lock' => 'Feeler beim Zoumaache vum tempräre Fichier "$1".',

@@ -1885,6 +1885,44 @@ Por favor seja paciente.',
 	'youtubeauthsub_jserror_nodesc' => 'Por favor, introduza uma descrição para o vídeo.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'youtubeauthsub' => 'Carregar vídeo do YouTube',
+	'youtubeauthsub-desc' => 'Permite aos usuários [[Special:YouTubeAuthSub|carregar vídeos]] diretamente no TouTube',
+	'youtubeauthsub_info' => 'Para carregar um vídeo para o YouTube para incluir numa página, preencha a seguinte informação:',
+	'youtubeauthsub_title' => 'Título',
+	'youtubeauthsub_description' => 'Descrição',
+	'youtubeauthsub_password' => 'Palavra-chave no YouTube',
+	'youtubeauthsub_username' => 'Nome de utilizador no YouTube',
+	'youtubeauthsub_keywords' => 'Palavras-chave',
+	'youtubeauthsub_category' => 'Categoria',
+	'youtubeauthsub_submit' => 'Enviar',
+	'youtubeauthsub_clickhere' => 'Clique aqui para se autenticar no YouTube',
+	'youtubeauthsub_tokenerror' => 'Erro ao gerar o token de autorização. Tente atualizar a página.',
+	'youtubeauthsub_success' => "Parabéns!
+O seu vídeo foi carregado.
+<a href='http://www.youtube.com/watch?v=$1'>Veja o seu video</a>.
+O YouTube pode necessitar de algum tempo para processar o seu vídeo, de modo que poderá não estar já disponível.
+
+Para incluir o seu vídeo numa página da wiki, insira o seguinte código numa página:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Para carregar um vídeo, será necessário que se autentique primeiro no YouTube.',
+	'youtubeauthsub_uploadhere' => 'Carregar o seu vídeo a partir de:',
+	'youtubeauthsub_uploadbutton' => 'Carregar',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Veja este vídeo]',
+	'youtubeauthsub_summary' => 'Carregando vídeo no YouTube',
+	'youtubeauthsub_uploading' => 'O seu vídeo está sendo carregado.
+Por favor seja paciente.',
+	'youtubeauthsub_viewpage' => 'Como alternativa, você pode [[$1|ver o seu vídeo]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Por favor, introduza 1 ou mais palavras-chave.',
+	'youtubeauthsub_jserror_notitle' => 'Por favor, introduza um título para o vídeo.',
+	'youtubeauthsub_jserror_nodesc' => 'Por favor, introduza uma descrição para o vídeo.',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

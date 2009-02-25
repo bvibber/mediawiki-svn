@@ -226,14 +226,14 @@ $messages['fi'] = array(
  * @author Zetud
  */
 $messages['fr'] = array(
-	'categorywatch-desc' => 'Étend la fonctionnalité de la liste de suivi pour inclure la notification des modifications des membres des catégories suivies.',
-	'categorywatch-emailbody' => 'Bonjour $1, vous avez reçu ce message parce que vous êtes en train de suivre la catégorie « $2 ».
-Ce message est destiné à vous informer que le $3 l’utilisateur $4 $5.',
+	'categorywatch-desc' => 'Étend la fonctionnalité de la liste de suivi afin d’y inclure la notification des modifications de la liste des membres des catégories suivies.',
+	'categorywatch-emailbody' => 'Bonjour $1, vous avez reçu ce message parce que vous avez inclu la catégorie « $2 » dans votre liste de suivi.
+Ce message vous informe que le $3, l’utilisateur $4 $5.',
 	'categorywatch-emailsubject' => 'Activité concernant la catégorie suivie « $1 »',
-	'categorywatch-catmovein' => 'a déplacé $1 dans la catégorie $2 depuis $3',
-	'categorywatch-catmoveout' => 'a déplacé $1 de la catégorie $2 vers $3',
-	'categorywatch-catadd' => 'a ajouté $1 dans la catégorie $2',
-	'categorywatch-catsub' => 'a retiré $1 de la catégorie $2',
+	'categorywatch-catmovein' => 'a inclu la page $1 dans la catégorie $2 en la retirant de $3',
+	'categorywatch-catmoveout' => 'a retiré la page $1 de la catégorie $2 en l’incluant dans $3',
+	'categorywatch-catadd' => 'a inclu la page $1 dans la catégorie $2',
+	'categorywatch-catsub' => 'a retiré la page $1 de la catégorie $2',
 );
 
 /** Galician (Galego)
@@ -549,12 +549,12 @@ Stu mèssagge avène mannete pe notificà a te ca \'u $3 l\'utende $4 $5.',
 $messages['ru'] = array(
 	'categorywatch-desc' => 'Расширяет функциональность списка наблюдения возможностью уведомлений об изменениях в страницах, входящих в некоторую категорию',
 	'categorywatch-emailbody' => 'Привет $1, вы получили это сообщение, потому что следите за категорией «$2»
-Это сообщение уведомляет вас о $3 участника $4 $5.',
+Это сообщение уведомляет вас о том, что $3 участник $4 $5.',
 	'categorywatch-emailsubject' => 'Изменения, затрагивающие наблюдаемую категорию «$1»',
-	'categorywatch-catmovein' => 'перенесён $1 в категорию $2 из $3',
-	'categorywatch-catmoveout' => 'перенесён $1 из категории $2 в $3',
-	'categorywatch-catadd' => 'добавлено $1 в категорию $2',
-	'categorywatch-catsub' => 'удалено $1 из категории $2',
+	'categorywatch-catmovein' => 'перенёс $1 в категорию $2 из $3',
+	'categorywatch-catmoveout' => 'перенёс $1 из категории $2 в $3',
+	'categorywatch-catadd' => 'добавил $1 в категорию $2',
+	'categorywatch-catsub' => 'удалил $1 из категории $2',
 );
 
 /** Slovak (Slovenčina)

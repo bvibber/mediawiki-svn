@@ -66,6 +66,13 @@ $messages['bs'] = array(
 	'donationform-submit' => 'Donirajte putem PayPal',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'donationform-submit' => 'Rhoi trwy PayPal',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

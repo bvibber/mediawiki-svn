@@ -2352,7 +2352,7 @@ $messages['nds'] = array(
 	'group-oversight-member' => 'Oversight',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
 	'right-oversight' => 'Ankieken vun en versteken Version',
-	'right-hiderevision' => 'Ankieken un wedderhalen vun Versionen, de ok för Administraters versteken sünd',
+	'right-hiderevision' => 'Versionen ok för Administraters versteken',
 	'hiderevision-prompt' => 'Versionsnummer, de wegdaan warrn schall:',
 	'hiderevision-continue' => 'Wieder',
 	'hiderevision-reason' => 'Grund (warrt nich sichtbor in’t Logbook opnahmen):',
@@ -2749,9 +2749,18 @@ Liberar tais dados poderá resultar na perda em definitivo dos privilégios de o
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Carla404
+ * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
+	'hiderevision' => 'Ocultar revisões permanentemente',
+	'hiderevision-desc' => 'Esconde, de todos os utilizadores, revisões individuais por razões legais, etc.',
 	'group-oversight' => 'Supervisores',
+	'group-oversight-member' => 'Supervisor',
+	'grouppage-oversight' => '{{ns:project}}:Supervisão',
+	'right-oversight' => 'Ver uma revisão previamente ocultada',
+	'right-hiderevision' => 'Rever e restaurar revisões ocultadas dos Sysops',
+	'hiderevision-prompt' => 'Número da revisão a ser removida:',
+	'hiderevision-continue' => 'Avançar',
 	'hiderevision-text' => "Isto deverá ser utilizado '''apenas''' nos seguintes casos:
 *informações pessoais inadequadas
 *: ''endereços residenciais e números de telefone, número do seguro social, etc''
@@ -2759,10 +2768,32 @@ $messages['pt-br'] = array(
 '''Abusar deste recurso resultará na perda de privilégios de acesso.'''
 
 Os itens removidos não mais estarão visíveis para o público neste website, mas as remoções são registradas e poderão ser restauradas manualmente por um administrador do banco de dados, caso você cometa um erro.",
+	'hiderevision-reason' => 'Motivo (será registado privadamente):',
+	'hiderevision-submit' => 'Ocultar estes dados permanentemente',
+	'hiderevision-tab' => 'Ocultar revisões',
+	'hiderevision-link' => 'Contribuições de utilizador ocultadas',
+	'hiderevision-norevisions' => 'Não foram especificadas revisões a serem removidas.',
+	'hiderevision-noreason' => 'É necessário descrever o motivo para esta remoção.',
+	'hiderevision-status' => 'Revisão $1: $2',
 	'hiderevision-success' => 'Arquivado e apagado com sucesso.',
+	'hiderevision-error-missing' => 'Não foi localizada na base de dados.',
+	'hiderevision-error-current' => 'Não é possível ocultar a edição mais recente de uma página. Reverta a alteração primeiro.',
+	'hiderevision-error-delete' => 'Não é possível arquivar; não teria sido eliminada antes da tentativa?',
+	'hiderevision-archive-status' => 'Revisão ocultada de $1: $2',
 	'oversight-nodiff' => 'Não foi possível localizar as alterações, já que não há edições anteriores para esta página. Provavelmente:
 *A página foi eliminada
 *Esta edição oculta foi a primeira edição da página',
+	'oversight-log-hiderev' => 'removida uma edição de $1',
+	'oversight' => 'Supervisão',
+	'oversight-view' => 'detalhes',
+	'oversight-difference' => '(Diferenças entre as edições anteriores restantes)',
+	'oversight-prev' => 'Última edição anterior',
+	'oversight-hidden' => 'Edição oculta',
+	'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
+Liberar tais dados poderá resultar na perda em definitivo dos privilégios de Supervisão.',
+	'oversight-legend' => 'Pesquisar registro de revisões ocultas',
+	'oversight-oversighter' => 'Supervisor:',
+	'oversight-offender' => 'Ofensor:',
 );
 
 /** Quechua (Runa Simi)

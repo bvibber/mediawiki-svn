@@ -170,13 +170,14 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'categoryintersection' => 'Recoupage de catégories',
-	'categoryintersection-desc' => "Maintient une table avec des valeurs à la volée pour les [[Special:CategoryIntersection|recoupages de catégories]] au moyen d'une page",
+	'categoryintersection' => 'Intersection de catégories',
+	'categoryintersection-desc' => 'Maintient une table de valeurs de hachage permettant de déterminer les [[Special:CategoryIntersection|intersections de catégories]] au sein d’une même page',
 	'categoryintersection-doit' => 'Liste les pages dans toutes ces catégories',
-	'categoryintersection-maxcategories' => 'Le nombre maximum du nombre des catégories s’entrecoupant est de $1.',
-	'categoryintersection-results' => 'La recherche a retourné $1 {{PLURAL:$1|titre|titres}}.',
+	'categoryintersection-maxcategories' => 'Le nombre de catégories en intersection ne peut pas dépasser le maximum de $1.',
+	'categoryintersection-results' => 'La recherche a retourné $1 résultat{{PLURAL:$1||s}}.',
 );
 
 /** Galician (Galego)
@@ -264,6 +265,13 @@ $messages['ia'] = array(
 	'categoryintersection-doit' => 'Listar le paginas in tote iste categorias',
 	'categoryintersection-maxcategories' => 'Le numero maxime de categorias intersecante permittite es $1.',
 	'categoryintersection-results' => 'Le recerca retornava $1 {{PLURAL:$1|resultato|resultatos}}.',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'categoryintersection' => 'Interseko di kategorii',
 );
 
 /** Icelandic (Íslenska)

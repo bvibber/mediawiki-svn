@@ -478,10 +478,11 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'bookinfo-header' => 'Informations sur les ouvrages',
-	'bookinfo-desc' => 'Étend [[Special:Booksources|la page spéciale des sources du livre]] avec des informations à partir d’un service Internet',
+	'bookinfo-desc' => 'Complète la [[Special:Booksources|page spéciale des sources d’ouvrages de références]] à l’aide d’informations provenant de services Internet',
 	'bookinfo-result-title' => 'Titre :',
 	'bookinfo-result-author' => 'Auteur :',
 	'bookinfo-result-publisher' => 'Éditeur :',

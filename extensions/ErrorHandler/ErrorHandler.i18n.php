@@ -281,6 +281,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author IAlex
  * @author McDutchie
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'errorhandler-desc' => "Gestionnaire d'erreurs pour MediaWiki",
@@ -290,20 +291,20 @@ $messages['fr'] = array(
 	'errorhandler-error-parse' => 'Erreur de parse',
 	'errorhandler-error-notice' => 'Notice',
 	'errorhandler-error-deprecated' => 'Obsolète',
-	'errorhandler-error-core-error' => 'Erreur du coeur',
-	'errorhandler-error-core-warning' => 'Avertissement du coeur',
-	'errorhandler-error-compile-error' => 'Erreur de compliation',
+	'errorhandler-error-core-error' => 'Erreur de noyau',
+	'errorhandler-error-core-warning' => 'Avertissement du noyau',
+	'errorhandler-error-compile-error' => 'Erreur de compilation',
 	'errorhandler-error-compile-warning' => 'Avertissement de compilation',
 	'errorhandler-error-user-error' => 'Erreur (utilisateur)',
 	'errorhandler-error-user-warning' => 'Avertissement (utilisateur)',
 	'errorhandler-error-user-notice' => 'Notice (utilisateur)',
 	'errorhandler-error-user-deprecated' => 'Obsolète (utilisateur)',
 	'errorhandler-error-strict' => 'Standards stricts',
-	'errorhandler-error-recoverable' => 'Erreur fatale attrapable',
+	'errorhandler-error-recoverable' => 'Erreur fatale qui peut être attrapée',
 	'errorhandler-msg-text' => '$1 : $2 dans $3 (ligne $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> dans <b>$3</b> (ligne <b>$4</b>)',
 	'errorhandler-trace' => 'trace :',
-	'errorhandler-trace-line' => '$1 (ligne $2): $3',
+	'errorhandler-trace-line' => '$1 (ligne $2) : $3',
 	'errorhandler-trace-line-internal' => '[fonction interne] : $1',
 );
 

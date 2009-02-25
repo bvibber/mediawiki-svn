@@ -163,9 +163,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Louperivois
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'categorystepper-desc' => 'Affiche une boîte de catégorie sur des pages qui sont indiquées dans une catégorie',
+	'categorystepper-desc' => 'Affiche une boîte de catégories permettant de visiter alphabétiquement de l’une à l’autre la (ou les) catégorie(s) dont une page est membre.',
 	'categorystepper-end' => '(Fin de catégorie)',
 	'categorystepper-start' => '(Début de catégorie)',
 );

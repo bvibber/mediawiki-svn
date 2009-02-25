@@ -418,7 +418,10 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'math_noblahtex' => 'Ne može se izvršiti blahtex, koji bi trebao biti na $1',
+	'math-desc' => 'MathML izlaz za &lt;math&gt; oznake',
+	'math_CannotChangeDirectory' => 'Ne mogu promijeniti radni direktorijum',
 	'math_IllegalCharacter' => 'Nevaljan znak u unosu',
+	'math_IllegalCommandInTextMode' => 'Komanda "$1" nije valjana u tekstualnom modu',
 	'math_IllegalFinalBackslash' => 'Nevaljana kosa crta "\\" na kraju unosa',
 	'math_MissingOpenBraceAfter' => 'Nedostaje otvorena zagrada "{" poslije "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Nedostaje otvorena zagrada "{" na kraju unosa',

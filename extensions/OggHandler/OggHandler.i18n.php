@@ -2278,6 +2278,38 @@ $messages['pt'] = array(
 	'ogg-desc-link' => 'Sobre este ficheiro',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'ogg-desc' => 'Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript',
+	'ogg-short-audio' => 'Arquivo de áudio Ogg $1, $2',
+	'ogg-short-video' => 'Arquivo de vídeo Ogg $1, $2',
+	'ogg-short-general' => 'Arquivo multimídia Ogg $1, $2',
+	'ogg-long-audio' => '(Arquivo de Áudio Ogg $1, $2 de duração, $3)',
+	'ogg-long-video' => '(Vídeo Ogg $1, $2 de duração, $4×$5 pixels, $3)',
+	'ogg-long-multiplexed' => '(Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo)',
+	'ogg-long-general' => '(Multimídia Ogg, $2 de duração, $3)',
+	'ogg-long-error' => '(Ficheiro ogg inválido: $1)',
+	'ogg-play' => 'Reproduzir',
+	'ogg-pause' => 'Pausar',
+	'ogg-stop' => 'Parar',
+	'ogg-play-video' => 'Reproduzir vídeo',
+	'ogg-play-sound' => 'Reproduzir som',
+	'ogg-no-player' => 'Lamentamos, mas seu sistema aparenta não ter um reprodutor suportado. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o download de um reprodutor</a>.',
+	'ogg-no-xiphqt' => 'Aparentemente você não tem o componente XiphQT para QuickTime. Não será possível reproduzir arquivos Ogg pelo QuickTime sem tal componente. Por gentileza, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">faça o descarregamento do XiphQT</a> ou escolha outro reprodutor.',
+	'ogg-player-videoElement' => 'Suporte interno do navegador',
+	'ogg-player-oggPlugin' => 'Plugin do navegador',
+	'ogg-player-thumbnail' => 'Apenas imagem estática',
+	'ogg-player-soundthumb' => 'Sem reprodutor',
+	'ogg-player-selected' => '(selecionado)',
+	'ogg-use-player' => 'Usar reprodutor:',
+	'ogg-more' => 'Mais...',
+	'ogg-dismiss' => 'Fechar',
+	'ogg-download' => 'Descarregar arquivo',
+	'ogg-desc-link' => 'Sobre este arquivo',
+);
+
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */

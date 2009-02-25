@@ -145,6 +145,16 @@ $messages['cs'] = array(
 	'simpleantispam-desc' => 'Přidává do formulářů jednoduchou kontrolu botů/spamu.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'simpleantispam' => "Achosodd eich golygiad i'r teclyn gwrth-sbam ddechrau",
+	'simpleantispam-label' => "Prawf gwrth-sbam.
+'''Peidiwch''' â llenwi hwn!",
+	'simpleantispam-desc' => 'Yn ychwanegu prawf sbam/bot syml i ffurflenni',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

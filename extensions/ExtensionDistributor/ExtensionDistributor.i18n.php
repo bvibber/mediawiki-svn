@@ -1275,6 +1275,13 @@ $messages['myv'] = array(
  */
 $messages['nds'] = array(
 	'extdist-submit-extension' => 'Wiedermaken',
+	'extdist-current-version' => 'Aktuelle Version (trunk)',
+	'extdist-no-versions' => 'De utwählte Extension ($1) is in keen Version verföögbor!',
+	'extdist-submit-version' => 'Wiedermaken',
+	'extdist-no-remote' => 'De feernstüürte Subversion-Client mellt sik nich.',
+	'extdist-svn-parse-error' => 'XML-Daten von „svn info“ kunnen nich verarbeidt warrn: <pre>$1</pre>',
+	'extdist-tar-error' => 'Dat Tar-Programm mellt den Enn-Kood $1:',
+	'extdist-want-more' => 'En annere Extension kriegen.',
 );
 
 /** Dutch (Nederlands)

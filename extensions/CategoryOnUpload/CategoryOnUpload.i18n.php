@@ -448,6 +448,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'categoryonupload-desc' => 'ఫైళ్ళని ఎగుమతి చేసేప్పుడు వర్గాన్ని ఎంచుకోమని వాడుకరులకి గుర్తుచేస్తుంది',
 	'categoryonupload-label' => 'వర్గం:',
 );
 

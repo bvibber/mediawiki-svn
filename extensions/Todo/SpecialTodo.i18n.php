@@ -1152,6 +1152,41 @@ $4',
 	'todo-form-submit' => 'Submeter pesquisa',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'todo' => 'Lista de tarefas',
+	'todo-desc' => 'Extensão experimental de [[Special:Todo|lista pessoal de tarefas]]',
+	'todo-tab' => 'tarefas',
+	'todo-new-queue' => 'novo',
+	'todo-mail-subject' => 'Itens completos na lista de tarefas de $1',
+	'todo-mail-body' => 'Você pediu um e-mail de confirmação sobre a finalização de um item que você submeteu para a lista de tarefas online de $1.
+
+Item: $2
+Submetido em: $3
+
+Este item foi marcado como completo, com este comentário:
+$4',
+	'todo-invalid-item' => 'Item em falta ou inválido',
+	'todo-update-else-item' => 'Tentando atualizar os itens de outra pessoa',
+	'todo-unrecognize-type' => 'Tipo não reconhecido',
+	'todo-user-invalide' => 'Tarefa fornecida inválida, em falta, ou utilizador sem possibilidade de tarefas',
+	'todo-item-list' => 'Seus itens',
+	'todo-no-item' => 'Sem tarefas.',
+	'todo-invalid-owner' => 'Proprietário inválido neste item',
+	'todo-add-queue' => 'Adicionar fila…',
+	'todo-move-queue' => 'Mover para fila…',
+	'todo-list-for' => 'Lista de tarefas de $1',
+	'todo-list-change' => 'Alterar',
+	'todo-list-cancel' => 'Cancelar',
+	'todo-new-item' => 'Novo item',
+	'todo-issue-summary' => 'Sumário do problema:',
+	'todo-form-details' => 'Detalhes:',
+	'todo-form-email' => 'Para receber uma notificação por e-mail quando este item for fechado, escreva o seu endereço aqui:',
+	'todo-form-submit' => 'Submeter pesquisa',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */

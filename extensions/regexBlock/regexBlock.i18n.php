@@ -1061,6 +1061,13 @@ $messages['id'] = array(
 	'regexblock-view-all' => 'Semua',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'regexblock-form-expiry' => 'Expiro:',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

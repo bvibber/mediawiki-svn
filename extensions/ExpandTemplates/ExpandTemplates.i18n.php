@@ -1664,10 +1664,12 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Ans
  * @author Octahedron80
  */
 $messages['th'] = array(
 	'expand_templates_ok' => 'ตกลง',
+	'expand_templates_preview' => 'ตัวอย่างผลแสดง',
 );
 
 /** Tagalog (Tagalog)
