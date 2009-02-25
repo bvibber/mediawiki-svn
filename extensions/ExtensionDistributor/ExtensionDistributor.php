@@ -24,24 +24,7 @@ $wgExtDistWorkingCopy = false;
  * To add a branch, first check out the new branch in $wgExtDistWorkingCopy, and 
  * then add it here. Do not add a branch here without first checking it out.
  */
-$wgExtDistBranches = array(
-	'trunk' => array(
-		'tarLabel' => 'trunk',
-		'msgName' => 'extdist-current-version',
-	),
-	'branches/REL1_14' => array(
-		'tarLabel' => 'MW1.14',
-		'name' => '1.14.x',
-	),
-	'branches/REL1_13' => array(
-		'tarLabel' => 'MW1.13',
-		'name' => '1.13.x',
-	),
-	'branches/REL1_12' => array(
-		'tarLabel' => 'MW1.12',
-		'name' => '1.12.x',
-	),
-);
+$wgExtDistBranches = array();
 
 /** Remote socket for svn-invoker.php (optional) */
 $wgExtDistRemoteClient = false;
