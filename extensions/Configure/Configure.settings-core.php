@@ -36,6 +36,7 @@ $settings = array(
 			'wgUseTeX' => 'bool',
 			'wgEnableHtmlDiff' => 'bool',
 			'wgUseAutomaticEditSummaries' => 'bool',
+			'wgUseTagFilter' => 'bool',
 			'wgUseTrackbacks' => 'bool',
 			'wgUseMetadataEdit' => 'bool',
 			'wgMetadataWhitelist' => 'text',
@@ -1097,4 +1098,5 @@ $settingsVersion = array(
 	'wgShowDebug' => array( array( '1.15alpha', '>=' ) ),
 	'wgPreprocessorCacheThreshold' => array( array( '1.15alpha', '>=' ) ),
 	'wgExportMaxLinkDepth' => array( array( '1.15alpha', '>=' ) ),
+	'wgUseTagFilter' => array( array( '1.15alpha', '>=' ) ),
 );

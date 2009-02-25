@@ -556,6 +556,7 @@ $defaultNames = array(
 	'wgUseGeoMode' => "Recognise longitude/latitude coordinates",
 	'wgUseOldExistenceCheck' => "Use old prefill link method, for debugging only",
 	'wgUserBlockExpiration' => "User blocks expire after this many seconds",
+	'wgUseTagFilter' => "Allow filtering by change tag in recentchanges, history, etc.",
 	'wgUseTrackbacks' => "Not yet documented (''see'' [[m:Trackback]])",
 	'wgUseValidation' => "Validation for print or other production versions",
 	'wgValidationForAnons' => "Whether to use article validation for anonymous users",

@@ -355,6 +355,7 @@ $messages['en'] = array(
 	'configure-setting-wgUpdateRowsPerQuery' => "Number of rows to update per query",
 	'configure-setting-wgUseAutomaticEditSummaries' => "Use automatic edit summaries",
 	'configure-setting-wgUseTrackbacks' => "Use trackbacks",
+	'configure-setting-wgUseTagFilter' => "Allow filtering edits with tags in recent changes, history, etc.",
 	'configure-setting-wgDisableHardRedirects' => "Disable redirects to special pages and interwiki pages",
 	'configure-setting-wgEnableScaryTranscluding' => "Enable interwiki transclusion",
 	'configure-setting-wgImportSources' => "List of interwiki prefixes for transwiki",
