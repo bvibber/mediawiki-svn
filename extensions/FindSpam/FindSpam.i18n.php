@@ -1,18 +1,24 @@
 <?php
 /**
- * Internationalisation file for extension FindSpam.
+ * Internationalisation file for FindSpam extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
+/** English
+ * @author Tim Starling
+ */
 $messages['en'] = array(
-	'findspam'             => 'Find spam',
-	'findspam-desc'        => 'Adds a [[Special:FindSpam|special page]] that allows to find recently added spam',
-	'findspam-ip'          => 'IP address:',
-	'findspam-ok'          => 'OK',
+	'findspam' => 'Find spam',
+	'findspam-desc' => 'Adds a [[Special:FindSpam|special page]] that allows to find recently added spam',
+	'findspam-ip' => 'IP address:',
+	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'No contributions found',
+	// For Special:ListGroupRights
+	'right-findspam' => 'Search for recently added spam',
 );
 
 /** Message documentation (Message documentation)
@@ -228,7 +234,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
- * @author Jack Phoenix
+ * @author Jack Phoenix <jack@countervandalism.net>
  * @author Nike
  * @author Tarmo
  */
@@ -238,6 +244,7 @@ $messages['fi'] = array(
 	'findspam-ip' => 'IP-osoite',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Muokkauksia ei löytynyt',
+	'right-findspam' => 'Etsiä äskettäin lisättyä spämmiä',
 );
 
 /** French (Français)
