@@ -24,7 +24,7 @@ class CodeRevisionListView extends CodeView {
 		
 		// Check for batch change requests.
 		$editToken = $wgRequest->getVal( 'wpBatchChangeEditToken' );
-		if ( $wgUser->matchEditToken( $editToken ) ) {
+		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $editToken ) ) {
 			$this->doBatchChange();
 			return;
 		}
@@ -32,8 +32,9 @@ class CodeRevisionListView extends CodeView {
 		$this->showForm();
 		$pager = $this->getPager();
 		
-		// Batch change interface.
-		$changeInterface = $this->buildBatchInterface( $pager );
+		// Build batch change interface as needed
+		$this->batchForm = $wgUser->isAllowed('codereview-set-status') || 
+			$wgUser->isAllowed('codereview-add-tag');
 		
 		$wgOut->addHTML( 
 			$pager->getNavigationBar() .
@@ -43,7 +44,7 @@ class CodeRevisionListView extends CodeView {
 			) .
 			$pager->getBody() . 
 			$pager->getNavigationBar() .
-			$changeInterface .
+			( $this->batchForm ? $this->buildBatchInterface( $pager ) : "" ).
 			Xml::closeElement( 'form' )
 		);
 	}
@@ -94,7 +95,7 @@ class CodeRevisionListView extends CodeView {
 		$wgOut->redirect( $this->getPager()->getTitle()->getFullURL( $fields ) );
 	}
 	
-	function buildBatchInterface( $pager ) {
+	protected function buildBatchInterface( $pager ) {
 		global $wgUser;
 		
 		$changeInterface = '';
@@ -110,10 +111,11 @@ class CodeRevisionListView extends CodeView {
 				);
 		}
 		
-		if ($wgUser->isAllowed( 'codereview-add-tag' ) ) {
-			$changeFields['code-batch-tags'] =
-				CodeRevisionView::addTagForm( '', '' );
+		if( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
+			$changeFields['code-batch-tags'] = CodeRevisionView::addTagForm( '', '' );
 		}
+		
+		if( !count($changeFields) ) return ''; // nothing to do here
 		
 		$changeInterface = Xml::fieldset( wfMsg('codereview-batch-title'),
 				Xml::buildForm( $changeFields, 'codereview-batch-submit' ) );
@@ -209,8 +211,7 @@ class SvnRevTablePager extends TablePager {
 	}
 
 	function getFieldNames() {
-		return array(
-			'selectforchange' => wfMsg( 'code-field-select' ),
+		$fields = array(
 			$this->getDefaultSort() => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
 			'comments' => wfMsg( 'code-field-comments' ),
@@ -219,6 +220,11 @@ class SvnRevTablePager extends TablePager {
 			'cr_author' => wfMsg( 'code-field-author' ),
 			'cr_timestamp' => wfMsg( 'code-field-timestamp' ),
 		);
+		# Only show checkboxen as needed
+		if( !empty($this->mView->batchForm) ) {
+			$fields = array('selectforchange' => wfMsg('code-field-select') ) + $fields;
+		}
+		return $fields;
 	}
 	
 	function formatValue( $name, $value ) {} // unused
@@ -228,8 +234,7 @@ class SvnRevTablePager extends TablePager {
 		switch( $name ) {
 		case 'selectforchange':
 			$sort = $this->getDefaultSort();
-			return Xml::check( "wpRevisionSelected[]", false,
-							array( 'value' => $row->$sort ) );
+			return Xml::check( "wpRevisionSelected[]", false, array( 'value' => $row->$sort ) );
 		case 'cp_rev_id':
 		case 'cr_id':
 			return $this->mView->mSkin->link(
