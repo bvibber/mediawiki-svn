@@ -21,7 +21,7 @@
 if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
 if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.15, 2008-12-14');
+define('SIMPLESECURITY_VERSION', '4.2.16, 2009-02-16');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -94,7 +94,7 @@ class SimpleSecurity {
 		$wgLogActions['security/deny'] = 'securitylogentry';
 
 		# Extend protection form groups, actions and messages
-		$wgMessageCache->addMessages(array('protect-unchain' => "Modify actions individually"));
+		$wgMessageCache->addMessages(array('protect-unchain'  => "Modify actions individually"));
 		$wgMessageCache->addMessages(array('badaccess-group1' => wfMsg('badaccess-group0')));
 		$wgMessageCache->addMessages(array('badaccess-group2' => wfMsg('badaccess-group0')));
 		$wgMessageCache->addMessages(array('badaccess-groups' => wfMsg('badaccess-group0')));
@@ -102,8 +102,7 @@ class SimpleSecurity {
 		foreach ($wgSecurityExtraActions as $k => $v) {
 			if (empty($v)) $v = ucfirst($k);
 			$wgRestrictionTypes[] = $k;
-			$wgMessageCache->addMessages(array( "restriction-$k" => $v ));
-			#$wgGroupPermissions['sysop'][$k] = true; # Ensure sysops have the right to perform this extra action
+			$wgMessageCache->addMessages(array("restriction-$k" => $v));
 		}
 		
 		# Ensure the new groups show up in rights management
@@ -113,8 +112,9 @@ class SimpleSecurity {
 		foreach ($wgSecurityExtraGroups as $k => $v) {
 			if (empty($v)) $v = ucfirst($k);
 			$wgRestrictionLevels[] = $k;
-			$wgMessageCache->addMessages(array( "protect-level-$k" => $v ));
-			$wgGroupPermissions[$k][$k] = true;
+			$wgMessageCache->addMessages(array("protect-level-$k" => $v));
+			$wgGroupPermissions[$k][$k] = true;      # members of $k must be allowed to perform $k
+			$wgGroupPermissions['sysop'][$k] = true; # sysops must be allowed to perform $k as well
 		}
 	}
 
