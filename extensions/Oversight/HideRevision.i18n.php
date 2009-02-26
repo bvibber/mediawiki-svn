@@ -2116,7 +2116,7 @@ $messages['li'] = array(
 	'group-oversight-member' => 'Toezichhaojer',
 	'grouppage-oversight' => '{{ns:project}}:Euverzich',
 	'right-oversight' => 'Verbórge versies bekieke',
-	'right-hiderevision' => 'Verborge versies bekijke en terugplaatse',
+	'right-hiderevision' => 'Versies verbèrge veur admins',
 	'hiderevision-prompt' => 'Te verwijdere versienummer:',
 	'hiderevision-continue' => 'Doorguuen',
 	'hiderevision-text' => "Dit deent '''allein''' gebroek te waere in de volgende gevalle:
@@ -2131,6 +2131,7 @@ trökgezat waere door databasebeheerders es geer 'n fout maak.",
 	'hiderevision-reason' => 'Ree (wordt discreet opgeslage):',
 	'hiderevision-submit' => 'Deze gegaeves permanent verberge',
 	'hiderevision-tab' => 'Verberg versie',
+	'hiderevision-link' => 'Vebórge biedraag',
 	'hiderevision-norevisions' => "d'r Zeen gein te wisse versies opgegaeve.",
 	'hiderevision-noreason' => "Doe mós 'n ree opgaeve veur 't wisse.",
 	'hiderevision-status' => 'Versie $1: $2',
@@ -2149,6 +2150,9 @@ trökgezat waere door databasebeheerders es geer 'n fout maak.",
 	'oversight-prev' => 'Letste vorge versie',
 	'oversight-hidden' => 'Verborge versie',
 	'oversight-header' => "Hie onder steit 'n lijst met versies die permanent verborge zien veur idderein. 't Vriegaeve van deze informatie kan tot gevolg höbbe dat Oversightrechte worde ingenaeme.",
+	'oversight-legend' => 'Logbook verbórge versies doorzeuke',
+	'oversight-oversighter' => 'Oversightgebroeker:',
+	'oversight-offender' => 'Daajer:',
 );
 
 /** Lithuanian (Lietuvių)
@@ -2883,7 +2887,7 @@ $messages['sah'] = array(
 	'group-oversight-member' => 'Ревизор',
 	'grouppage-oversight' => '{{ns:project}}:Ревизордар',
 	'right-oversight' => 'Урут кистэммит барылы көрүү',
-	'right-hiderevision' => 'Дьаһабыллартан кистэммит көннөрүүлэри көрүү уонна төннөрүү',
+	'right-hiderevision' => 'Сирэйдэр барылларын дьаһабылларга көстүбэт гыныы',
 	'hiderevision-prompt' => 'Кистэниэхтээх барыл нүөмэрэ:',
 	'hiderevision-continue' => 'Салгыы',
 	'hiderevision-text' => "Бу сирэй киһи ''дьиҥнээх аата, дьиэтин аадырыһа, төлөппүөнүн, пааспарын нүөмэрдэрэ уонна да атын сиһилии сибидиэнньэлэр'' бэриллэр '''буоллахтарына эрэ''' туттуллуон сөп.

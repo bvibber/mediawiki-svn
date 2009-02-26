@@ -320,6 +320,14 @@ $messages['lb'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Wëllkommens Message]] op engem neie Benotzer seng Diskussiounssäit derbäisetzen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'newusermessage-desc' => "Voeg 'n berich toe aan de euverlegpagina van nuuj gebroekers",
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Welkomsberich]] toegevoeg aan de euverlekpagina van de nuuje gebroeker',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Homo
  * @author Hugo.arg

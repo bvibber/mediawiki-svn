@@ -130,6 +130,21 @@ $messages['bg'] = array(
 	'errorhandler-trace-line-internal' => '[вътрешна функция]: $1',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'errorhandler-errors' => 'Greške:',
+	'errorhandler-error-fatal' => 'Fatalna greška',
+	'errorhandler-error-warning' => 'Upozorenje',
+	'errorhandler-error-parse' => 'Greška parsera',
+	'errorhandler-error-notice' => 'Obavještenje',
+	'errorhandler-error-user-error' => 'Korisnička greška',
+	'errorhandler-error-user-warning' => 'Korisničko upozorenje',
+	'errorhandler-error-user-notice' => 'Korisničko upozorenje',
+	'errorhandler-msg-text' => '$1 : $2 u datoteci $3 (linija $4)',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian

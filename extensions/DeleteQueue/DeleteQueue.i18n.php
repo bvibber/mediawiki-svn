@@ -629,7 +629,16 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'deletequeue-action-queued' => 'Brisanje',
+	'deletequeue-speedy-title' => 'Označi "$1" za brzo brisanje',
+	'deletequeue-delnom-reason' => 'Razlog za nominaciju:',
 	'deletequeue-delnom-otherreason' => 'Ostali razlozi',
+	'deletequeue-delnom-submit' => 'Pošalji nominaciju',
+	'right-prod-nominate' => 'Predlaganje brisanja stranice',
+	'deletequeue-queue-deletediscuss' => 'Brisanje razgovora',
+	'deletequeue-review-newreason' => 'Novi razlog:',
+	'deletequeue-review-newextra' => 'Dodatne informacije:',
+	'deletequeue-review-original' => 'Razlog za nominaciju',
 	'deletequeue-vote-submit' => 'Pošalji',
 	'deletequeue-list-search' => 'Traži',
 	'deletequeue-list-header-page' => 'Stranica',

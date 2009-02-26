@@ -568,12 +568,15 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
 	'whitelisttablemodifynone' => 'Ingen',
 	'whitelisttableedit' => 'Redigér',
 	'whitelistnever' => 'aldrig',
+	'action-editwhitelist' => 'ændre hvidlisten for eksisterende brugere',
+	'action-restricttowhitelist' => 'redigere og se sider som kun er på hvidlisten',
 );
 
 /** German (Deutsch)
@@ -2233,10 +2236,13 @@ Esta página só se aplica a utilizadores restritos.",
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'whitelist-desc' => 'Edita as permissões de acesso de usuários restritos',
+	'whitelistedit' => 'Editor de acessos da lista branca',
+	'whitelist' => 'Páginas na lista branca',
 	'mywhitelistpages' => 'Minhas páginas',
 	'whitelistfor' => '<center>Informação atual para <b>$1</b></center>',
 	'whitelisttablemodify' => 'Modificar',
@@ -2251,7 +2257,43 @@ $messages['pt-br'] = array(
 	'whitelisttableview' => 'Ver',
 	'whitelisttablenewdate' => 'Nova data:',
 	'whitelisttablechangedate' => 'Alterar data em que expira',
+	'whitelisttablesetedit' => 'Ativar edição',
+	'whitelisttablesetview' => 'Ativar visualização',
 	'whitelisttableremove' => 'Remover',
+	'whitelistnewpagesfor' => 'Adicione novas páginas à lista branca de <b>$1</b><br />
+Use * ou % como caractere curinga',
+	'whitelistnewtabledate' => 'Validade:',
+	'whitelistnewtableedit' => 'Ativar edição',
+	'whitelistnewtableview' => 'Ativar visualização',
+	'whitelistnowhitelistedusers' => 'Não há utilizadores no grupo "{{MediaWiki:Group-restricted}}".
+Você tem que [[Special:UserRights|adicionar utilizadores ao grupo]] antes de poder adicionar páginas à lista branca de um utilizador.',
+	'whitelistnewtableprocess' => 'Processar',
+	'whitelistnewtablereview' => 'Rever',
+	'whitelistselectrestricted' => '== Selecionar nome de utilizador restrito ==',
+	'whitelistpagelist' => 'Páginas de {{SITENAME}} para $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Parece que [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], um pré-requisito para esta extensão, não foi instalada devidamente!</font>",
+	'whitelistoverview' => '== Resumo das alterações a $1 ==',
+	'whitelistoverviewcd' => "* Alterando data de [[:$2|$2]] para '''$1'''",
+	'whitelistoverviewsa' => "* Modificar o acesso de [[:$2|$2]] para '''$1'''",
+	'whitelistoverviewrm' => '* Removendo acesso a [[:$1|$1]]',
+	'whitelistoverviewna' => "* Adicionando [[:$1|$1]] à lista branca com acesso '''$2''' e validade '''$3'''",
+	'whitelistrequest' => 'Requisitar acesso a mais páginas',
+	'whitelistrequestmsg' => '$1 requisitou acesso {{PLURAL:$3|à seguinte página|às seguintes páginas}}:
+
+$2',
+	'whitelistrequestconf' => 'A requisição para novas páginas foi enviada para $1',
+	'whitelistnonrestricted' => "O utilizador '''$1''' não é um utilizador restrito.
+Esta página só se aplica a utilizadores restritos.",
+	'whitelistnever' => 'nunca',
+	'whitelistnummatches' => ' - {{PLURAL:$1|um resultado|$1 resultados}}',
+	'right-editwhitelist' => 'Modificar a lista branca para utilizadores existentes',
+	'right-restricttowhitelist' => 'Editar e ver apenas páginas na lista branca',
+	'action-editwhitelist' => 'modificar a lista branca para utilizadores existentes',
+	'action-restricttowhitelist' => 'editar e ver apenas páginas na lista branca',
+	'group-restricted' => 'Utilizadores restritos',
+	'group-restricted-member' => 'Utilizador restrito',
+	'group-manager' => 'Gerenciadores',
+	'group-manager-member' => 'Gerenciador',
 );
 
 /** Tarifit (Tarifit)

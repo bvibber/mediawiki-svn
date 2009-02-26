@@ -2259,6 +2259,7 @@ $1',
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'webstore_path_invalid' => 'Dosya adı geçersiz.',
 	'webstore_404' => 'Dosya bulunamadı.',
 	'webstore_metadata_not_found' => '$1 dosyası bulunamadı',
 );

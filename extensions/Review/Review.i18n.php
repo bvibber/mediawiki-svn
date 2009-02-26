@@ -1465,6 +1465,52 @@ As suas outras classificações serão fundidas nesta onde selecionou 'sem opini
 	'review_comment' => 'Comentário',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'review_sidebar_title' => 'Revisão',
+	'review-desc' => 'A ressuscitada funcionalidade de [[Special:Review|validação]]',
+	'review_topics' => "# O seguinte é uma lista de tópicos e intervalos para a extensão de revisão.
+# Cada tópico é definido por uma linha de cinco valores, separados por ':' (todas as outras linhas são ignoradas).
+# A ordem é: chave numérica (>0), nome, intervalo máximo (>1; 2=sim/não), significado do menor valor (p.ex. 'mau'), significado do maior valor (p.ex. 'bom').
+1:Qualidade:5:má:boa
+2:Pronto para 1.0:2:não:sim",
+	'review_topic_page' => 'Tópicos de revisão',
+	'review_sidebar_explanation' => "A caixa de seleção mais à esquerda significa sempre 'sem opinião'.",
+	'review_save' => 'Gravar revisão',
+	'review_your_review' => 'A sua revisão desta página/versão:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Você já reviu outras versões desta página.
+As suas outras classificações serão fundidas nesta onde selecionou 'sem opinião'.",
+	'review_page_link' => 'estatísticas de revisão',
+	'review_sidebar_final' => 'Para dados da revisão desta vista da página, veja a sua $1',
+	'review_for_page' => 'Revisão da página "$1"',
+	'review_for_user' => 'Revisão do utilizador "$1"',
+	'review_error' => 'Algo está errado!',
+	'review_no_reviews_for_page' => 'Atualmente, não há revisões para "$1".',
+	'review_total_statistics' => 'Total',
+	'review_statistics_left_corner' => 'Revisão',
+	'review_version_link' => 'Revisão #$1',
+	'review_statistic_cell' => 'Média: $1 de $2<br />($4 utilizadores, $5 anônimos)',
+	'review_version_statistic_cell' => '$1 de $2',
+	'review_version_reviews_link' => '<small>(revisões de versão)</small>',
+	'review_concerns_page' => 'Esta revisão é sobre a página "$1".',
+	'review_concerns_user' => 'Isto é sobre as revisões do utilizador "$1".',
+	'review_user_reviews' => '<small>(revisões deste utilizador)</small>',
+	'review_user_page_list' => 'O utilizador reviu as seguintes páginas:',
+	'review_user_details_link' => '(detalhes)',
+	'review_do_merge' => 'Fundir as minhas revisões de outras versões desta página nesta',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>A sua revisão analisada foi guardada!</span>",
+	'revision_review_this_page_version_link' => 'Rever esta versão da página.',
+	'review_page_review' => 'Revisão da página "$1"',
+	'review_blocked' => 'Você está bloqueado e não pode participar em revisões.',
+	'review_wrong_namespace' => 'As páginas neste espaço nominal não podem ser revistas!',
+	'review_topic' => 'Tópico',
+	'review_no_opinion' => 'Sem opinião',
+	'review_rating' => 'Classificação',
+	'review_comment' => 'Comentário',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

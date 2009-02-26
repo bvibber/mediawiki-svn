@@ -187,11 +187,12 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
 	'bookinfo-header' => 'বই বিষয়ক তথ্য',
-	'bookinfo-desc' => '[[Special:Booksources]]-কে কোন ওয়েব সেবার তথ্যসহ সম্প্রসারিত করে',
+	'bookinfo-desc' => 'ওয়েব সেবার থেকে তথ্য দিয়ে [[Special:Booksources|বইয়ের উৎস সম্পর্কিত বিশেষ পাতাকে]] সম্প্রসারিত করে',
 	'bookinfo-result-title' => 'শিরোনাম:',
 	'bookinfo-result-author' => 'লেখক:',
 	'bookinfo-result-publisher' => 'প্রকাশক:',

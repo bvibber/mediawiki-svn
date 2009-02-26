@@ -51,6 +51,16 @@ $messages['arz'] = array(
 	'semanticgooglemaps-enteraddresshere' => 'أدخل العنوان هنا',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Пошук каардынатаў',
+	'semanticgooglemaps-desc' => 'Дазваляе ўдзельнікам рэдагаваць і паказваць сэмантычныя зьвесткі пра каардынаты з выкарыстаньнем Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Увядзіце тут адрас',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

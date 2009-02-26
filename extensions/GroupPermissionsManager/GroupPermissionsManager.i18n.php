@@ -339,10 +339,16 @@ $messages['bs'] = array(
 	'grouppermissions-add' => 'Dodaj grupu',
 	'grouppermissions-delete' => 'Obriši grupu',
 	'grouppermissions-comment' => 'Komentar:',
+	'grouppermissions-addsuccess' => '$1 je uspješno dodano',
 	'grouppermissions-deletesuccess' => '$1 je uspješno obrisano',
 	'grouppermissions-true' => 'Tačno',
 	'grouppermissions-false' => 'Netačno',
 	'grouppermissions-never' => 'Nikad',
+	'grouppermissions-sort-read' => 'Čitanje',
+	'grouppermissions-sort-edit' => 'Uređivanje',
+	'grouppermissions-sort-manage' => 'Upravljanje',
+	'grouppermissions-sort-admin' => 'Administracija',
+	'grouppermissions-sort-tech' => 'Tehničko',
 	'grouppermissions-sort-misc' => 'Razno',
 	'grouppermissions-log-add' => 'dodana grupa "$2"',
 	'grouppermissions-log-delete' => 'obrisana grupa "$2"',
@@ -355,7 +361,9 @@ $messages['bs'] = array(
 	'right-raw' => 'Pregled sirovih stranica',
 	'right-info' => 'Pregled informacija stranica',
 	'right-history' => 'Pregled historija stranica',
+	'right-search' => 'Pretraživanje wikija',
 	'right-recentchanges' => 'Pregled nedavnih izmjena',
+	'right-edittalk' => 'Uređivanje stranica za razgovor',
 );
 
 /** Catalan (Català)
@@ -2196,8 +2204,11 @@ $messages['tr'] = array(
 	'grouppermissions-desc' => 'Grup izinlerini [[Special:GroupPermissions|special page]] üzerinden yönetin',
 	'grouppermissions-desc4' => 'Araçlara yeni kalemler eklemeye izin verir',
 	'grouppermissions-search' => 'Grup:',
+	'grouppermissions-dologin' => 'oturum açma',
+	'grouppermissions-deletelabel' => 'Grup sil',
 	'grouppermissions-add' => 'Grup ekle',
 	'grouppermissions-delete' => 'Grup sil',
+	'grouppermissions-sp-save' => 'Kaydet',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

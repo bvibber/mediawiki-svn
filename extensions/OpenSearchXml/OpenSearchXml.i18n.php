@@ -213,6 +213,13 @@ $messages['lb'] = array(
 	'opensearchxml-desc' => 'XML-Interface fir [http://www.opensearch.org OpenSearch] mat Text-Extraiten',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-interface die tekstextracte levertj',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

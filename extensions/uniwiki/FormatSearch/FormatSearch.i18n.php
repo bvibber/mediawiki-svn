@@ -310,6 +310,13 @@ $messages['tl'] = array(
 	'formatsearch-desc' => 'Naglilinis ng pahina ng lumabas na mga resulta matapos ang paghahanap',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'formatsearch-desc' => 'Arama sonuçları sayfasını temizler',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

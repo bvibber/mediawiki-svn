@@ -118,6 +118,15 @@ $messages['bn'] = array(
 	'filelist-image-desc' => 'বিবরণ',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'filelist' => 'Spisak datoteka',
+	'filelist-show-list' => 'Pokaži spisak',
+	'filelist-show-gallery' => 'Pokaži galeriju',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */

@@ -208,8 +208,10 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'imagetagging-article' => 'Stranica:',
 	'imagetagging-imghistory' => 'Historija',
+	'imagetagging-images' => 'slike',
 	'imagetagging-inthisimage' => 'Na ovoj slici: $1',
 	'imagetagging-tagcancel-button' => 'Odustani',
+	'imagetagging-imagetag-seemoreimages' => 'Vidi više slika od "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Slike od "$1"',
 	'imagetagging-taggedimages-displaying' => 'Prikazane su $1 - $2 od $3 slika iz "$4"',
 );

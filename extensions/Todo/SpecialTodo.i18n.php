@@ -1416,8 +1416,13 @@ $4',
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'todo' => 'Yapılacaklar listesi',
+	'todo-tab' => 'yapılacaklar',
 	'todo-new-queue' => 'yeni',
+	'todo-item-list' => 'Sizin öğeniz',
 	'todo-list-cancel' => 'İptal',
+	'todo-new-item' => 'Yeni öğe',
+	'todo-form-details' => 'Detaylar:',
 );
 
 /** Vietnamese (Tiếng Việt)

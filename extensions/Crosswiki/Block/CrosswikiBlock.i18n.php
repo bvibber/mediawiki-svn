@@ -285,14 +285,15 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
 	'crosswikiblock-reason' => 'Begrundelse:',
 	'crosswikiblock-submit' => 'Bloker denne bruger',
-	'crosswikiblock-nocreate' => 'Forhindre oprettelse af brugerkonti',
+	'crosswikiblock-nocreate' => 'Forhindr oprettelse af brugerkontoer',
 	'crosswikiblock-autoblock' => 'Spærre den IP-adresse, der bruges af denne bruger samt automatisk alle følgende, hvorfra han foretager ændringer eller forsøger at anlægge brugerkonti',
-	'crosswikiblock-noemail' => 'Spærre brugerens adgang til at sende mail',
+	'crosswikiblock-noemail' => 'Spær brugerens adgang til at sende e-mail',
 	'crosswikiunblock-reason' => 'Begrundelse:',
 );
 

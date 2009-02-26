@@ -38,6 +38,13 @@ $messages['arz'] = array(
 	'semanticgallery-desc' => 'يضيف صيغة خرج معرض إلى استعلامات سيمانتيك ميدياويكn الداخلية',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'semanticgallery-desc' => 'Дадае выходны фармат галерэі ў запыты Semantic MediaWiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

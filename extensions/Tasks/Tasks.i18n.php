@@ -2618,7 +2618,14 @@ $messages['tl'] = array(
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'tasks' => 'Görevler',
+	'tasks_tab' => 'Görevler',
 	'tasks_delete' => 'Sil',
+	'tasks_help_page' => 'Görevler',
+	'tasks_search_tasks' => 'Görevler',
+	'tasks_previous' => 'Önceki',
+	'tasks_next' => 'Sonraki',
+	'tasks_logpage' => 'Görev kayıtları',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

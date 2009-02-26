@@ -61,6 +61,7 @@ $messages['ar'] = array(
 	'findspam-ip' => 'عنوان الأيبي:',
 	'findspam-ok' => 'موافق',
 	'findspam-notextfound' => 'لم يتم العثور على مساهمات',
+	'right-findspam' => 'البحث عن السبام المضاف حديثا',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -129,6 +130,7 @@ $messages['bs'] = array(
 	'findspam-ip' => 'IP adresa:',
 	'findspam-ok' => 'U redu',
 	'findspam-notextfound' => 'Nisu pronađeni doprinosi',
+	'right-findspam' => 'Pretraga za nedavno dodanim spamom',
 );
 
 /** Czech (Česky)
@@ -150,13 +152,16 @@ $messages['da'] = array(
 	'findspam-ok' => 'OK',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
 $messages['de'] = array(
 	'findspam' => 'Spam finden',
 	'findspam-desc' => 'Ergänzt eine [[Special:FindSpam|Spezialseite]] zum Auffinden von Spam',
 	'findspam-ip' => 'IP-Adresse:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Keine Beiträge gefunden',
+	'right-findspam' => 'Nach kürzlich hinzugefügtem Spam suchen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -293,6 +298,7 @@ $messages['gsw'] = array(
 	'findspam-ip' => 'IP-Adräss:',
 	'findspam-ok' => 'In Ornig',
 	'findspam-notextfound' => 'Kei Byyträg gfunde',
+	'right-findspam' => 'Spam sueche, wu erscht letschti dryygsetzt woren isch',
 );
 
 /** Manx (Gaelg)
@@ -366,6 +372,7 @@ $messages['ia'] = array(
 	'findspam-ip' => 'Adresse IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nulle contribution trovate',
+	'right-findspam' => 'Cercar spam recentemente addite',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -455,6 +462,7 @@ $messages['ksh'] = array(
 	'findspam-ip' => 'IP-Address:',
 	'findspam-ok' => 'Loß jonn!',
 	'findspam-notextfound' => 'Kein Beidräsch ze fenge',
+	'right-findspam' => 'Noh fresch erinjekumme <i lang="en">SPAM</i> söke',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

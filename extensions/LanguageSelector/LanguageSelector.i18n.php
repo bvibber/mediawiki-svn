@@ -769,10 +769,12 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'languageselector' => 'Dil',
+	'languageselector-desc' => 'Her sayfada dil seçicisi, aynı zamanda ziyaretçiler için',
 	'languageselector-setlang' => 'ayar',
 );
 

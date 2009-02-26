@@ -157,10 +157,15 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'deletebatch-button' => 'Obriši',
+	'deletebatch-caption' => 'Spisak stranica:',
 	'deletebatch-or' => '<b>ili</b>',
+	'deletebatch-page' => 'Stranice koje će biti obrisane:',
 	'deletebatch-reason' => 'Razlog brisanja',
 	'deletebatch-processing' => 'brisanje stranica $1',
+	'deletebatch-from-file' => 'iz spiska datoteke',
+	'deletebatch-from-form' => 'iz obrazca',
+	'deletebatch-success-subtitle' => 'za $1',
+	'deletebatch-select-yourself' => 'vi',
 );
 
 /** Catalan (Català)

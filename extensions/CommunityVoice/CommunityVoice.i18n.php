@@ -206,6 +206,21 @@ $messages['hsb'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atribut "title" w tafličce "rating" pobrachuje.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'communityvoice' => 'Voce del communitate',
+	'communityvoice-desc' => 'Instrumentos pro le participation del communitate',
+	'communityvoice-ratings' => 'Evalutationes',
+	'communityvoice-ratings-scale-status-sending' => 'Invio in curso…',
+	'communityvoice-ratings-scale-status-error' => 'Error de inviar!',
+	'communityvoice-ratings-scale-status-thanks' => 'Gratias pro votar!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voto|votos}} submittite)',
+	'communityvoice-ratings-error-no-category' => 'Le attributo "category" manca in le etiquetta "rating".',
+	'communityvoice-ratings-error-no-title' => 'Le attributo "title" manca in le etiquetta "rating".',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

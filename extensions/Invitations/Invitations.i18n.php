@@ -137,6 +137,16 @@ $messages['bg'] = array(
 	'invitations-invite-success' => 'Поканата на $1 за достъп до услугата беше изпратена успешно!',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Jedan poziv|$1 poziva}} dostupno)',
+	'invitations-feature-access' => 'Trenutno imate pristup za upotrebu <i>$1</i>.',
+	'invitations-inviteform-title' => 'Pozovi korisnika da koristi $1',
+	'invitations-inviteform-submit' => 'Pozovi',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Pill

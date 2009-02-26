@@ -96,6 +96,13 @@ $messages['cs'] = array(
 	'doublewiki-desc' => 'Zobrazí stránku a její překlad z jiné wiki ve dvou sloupcích na jedné straně',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'doublewiki-desc' => 'Viser en side og dens oversættelse fra en anden wiki i to kolonner på samme side',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

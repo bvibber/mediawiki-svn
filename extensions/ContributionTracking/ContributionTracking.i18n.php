@@ -570,7 +570,11 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'contributiontracking-desc' => 'Викимедиаҕа киирбит үп ханна барбытын көрүү',
+	'contributiontracking' => 'Үп хантан киирбитин көрүү',
 	'contrib-tracking-error' => 'Алҕас',
+	'contrib-tracking-continue' => 'Аптамаатынан наадалаах сиргэ тиийбэтэх буоллаххына, тимэҕи баттаан PayPal тиһилигин көмөтүнэн сиэртибэлээһиҥҥин түмүктээ.',
+	'contrib-tracking-button' => 'Салгыы',
 );
 
 /** Slovak (Slovenčina)

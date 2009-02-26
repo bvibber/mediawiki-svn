@@ -596,6 +596,13 @@ $messages['tl'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Baguhinpahinamgatatak',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'layouts_unknown' => 'Bilinmiyor',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

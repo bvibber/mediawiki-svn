@@ -266,6 +266,14 @@ $messages['pt-br'] = array(
 	'tog-microid' => 'Publique um <a href="http://microid.org/">MicroID</a> para confirmar a conta com serviços externos',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'microid-desc' => "Aggiunge 'nu [http://www.microid.org/ MicroID] a le pàggene utende pe confermà 'u cunde utende ausanne servizie de fore",
+	'tog-microid' => 'Pubblichesce \'nu <a href="http://microid.org/">MicroID</a> pe confermà \'u cunde cu servizie de fore',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

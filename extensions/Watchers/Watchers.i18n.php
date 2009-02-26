@@ -689,6 +689,8 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'watchers' => 'Наблюдающие',
+	'watchers-desc' => 'Показывает [[Special:Watchers|участников, которые включили страницу в свой список наблюдения]]',
 	'watchers_link_title' => 'Кто следит за этой страницей?',
 	'watchers_error_article' => '<b>ошибка:</b> статьи не существует.',
 	'watchers_header' => '{{PLURAL:$2|Участник|Участники}}, наблюдающие за страницей "$1"',

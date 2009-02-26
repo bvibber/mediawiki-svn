@@ -67,6 +67,13 @@ $messages['cs'] = array(
 	'didyoumean-desc' => 'Přidává odkazy na stránky s „podobnými“ názvy',
 );
 
+/** Danish (Dansk)
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'didyoumean-desc' => 'Tilføjer henvisninger til sider med "lignende" titler',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

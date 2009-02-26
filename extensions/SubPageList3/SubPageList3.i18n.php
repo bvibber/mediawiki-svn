@@ -112,7 +112,7 @@ $messages['cs'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'spl3-desc' => 'Automatisches Erstellen einer Liste von Unterseiten zu eine Seite mit Hilfe des <tt><nowiki><splist /></nowiki></tt>-Tags.',
+	'spl3-desc' => 'Automatisches Erstellen einer Liste von Unterseiten zu einer Seite mit Hilfe des <tt><nowiki><splist /></nowiki></tt>-Tags.',
 	'spl3_debug' => 'Unbekannter Wert für Option $1.',
 	'spl3_nosubpages' => '$1 hat keine Unterseiten.',
 );

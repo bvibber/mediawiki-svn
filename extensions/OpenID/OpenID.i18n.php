@@ -214,19 +214,16 @@ $messages['ar'] = array(
 لو لا، جرب زر \\"Continue\\".',
 	'openidclientonlytext' => 'أنت لا يمكنك استخدام الحسابات من هذا الويكي كهوية مفتوحة على موقع آخر.',
 	'openidloginlabel' => 'مسار الهوية المفتوحة',
-	'openidlogininstructions' => "{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردي بين مواقع الويب.
+	'openidlogininstructions' => '{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردي بين مواقع الويب.
 الهوية المفتوحة تسمح لك بتسجيل الدخول إلى مواقع ويب عديدة مختلفة بدون استخدام كلمة سر مختلفة لكل موقع.
 (انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة في يويكيبيديا] لمزيد من المعلومات.)
 
 لو أنك لديك بالفعل حساب في {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
 لاستخدام الهوية المفتوحة في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
 
-يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.
-
-; الويكيات الأخرى : لو أنك لديك حساب على ويكي مفعل الهوية المفتوحة، مثل [http://wikitravel.org/ ويكي ترافيل]، [http://www.wikihow.com/ ويكي هاو]، [http://vinismo.com/ فينيزمو]، [http://aboutus.org/ أبوت أس] أو [http://kei.ki/ كيكي]، يمكنك تسجيل الدخول إلى {{SITENAME}} بواسطة إدخال '''المسار الكامل''' لصفحة مستخدمك على هذا الويكي الآخر في الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
-; [http://openid.yahoo.com/ ياهو!] : إذا لديك حساب مع ياهو!، يمكنك تسجيل الدخول إلى هذا الموقع بواسطة إدخال هويتك المفتوحة الموفرة بواسطة ياهو! في الصندوق بالأعلى. مسارات هوية ياهو! المفتوحة تأخذ الصيغة ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
-; [http://dev.aol.com/aol-and-63-million-openids إيه أو إل] : لو لديك حساب مع [http://www.aol.com/ إيه أو إل]، مثل حساب [http://www.aim.com/ إيه أي إم]، يمكنك تسجيل الدخول إلى {{SITENAME}} بواسطة إدخال هويتك المفتوحة الموفرة بواسطة AOL في الصندوق بالأعلى. مسارات هوية AOL المفتوحة تأخذ الصيغة ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. اسم مستخدمك ينبغي أن يكون كله حروفا صغيرة، لا مسافات.
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html بلوجر], [http://faq.wordpress.com/2007/03/06/what-is-openid/ وورد بريس دوت كوم]، [http://www.livejournal.com/openid/about.bml ليف جورنال]، [http://bradfitz.vox.com/library/post/openid-for-vox.html فوكس] : لو لديك مدونة على أي من هذه الخدمات، أدخل مسار مدونتك في الصندوق بالأعلى. على سبيل المثال، ''<nowiki>http://yourusername.blogspot.com/</nowiki>''، ''<nowiki>http://yourusername.wordpress.com/</nowiki>''، ''<nowiki>http://yourusername.livejournal.com/</nowiki>''، أو ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
+	'openidupdateuserinfo' => 'تحديث معلوماتي الشخصية',
+	'openid-prefstext' => 'تفضيلات [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 );
 
@@ -1131,20 +1128,18 @@ Wänn Du OpenID fir s Aamälde in Zuechumft wit nutze, no chasch [[Special:OpenI
 	'openidautosubmit' => 'Uf däre Syte het s e Formular, wu automatisch ibertrait wird, wänn JavaSkript aktiviert isch. Wänn nit, no druck bitte uf „Wyter“.',
 	'openidclientonlytext' => 'Du chasch kei Benutzerkonte us däm Wiki as OpenID fir anderi Syte verwände.',
 	'openidloginlabel' => 'OpenID-URL',
-	'openidlogininstructions' => "{{SITENAME}} unterstitzt dr [http://openid.net/ OpenID]-Standard zum sich fir mehreri Websites aazmälde.
+	'openidlogininstructions' => '{{SITENAME}} unterstitzt dr [http://openid.net/ OpenID]-Standard zum sich fir mehreri Websites aazmälde.
 OpenID mäldet Di bi vyyle unterschidlige Netzsyte aa, ohni ass Du fir jedi e ander Passwort muesch verwände.
 (Meh Informatione bietet dr [http://de.wikipedia.org/wiki/OpenID dytsch Wikipedia-Artikel zue dr OpenID].)
 
 Wänn Du imfall scho ne Benutzerkonto bi {{SITENAME}} hesch, no chasch Di ganz normal mit em Benutzername un em Passwort [[Special:UserLogin|aamälde]].
 Wänn Du in Zuechumft OpenID mechtsch verwände, chasch [[Special:OpenIDConvert|Dyy Account zue OpenID konvertiere]], wänn Di normal aagmäldet hesch.
 
-S git vyyl [http://wiki.openid.net/Public_OpenID_providers effentligi OpenID-Provider] un villicht hesch scho ne  Benutzerkonto mit aktiviertem OpenID bin eme andere Aabieter.
-
-; Anderi Sites: Wänn Du scho ne Benutzerkonto uf eme Wiki mit aktiviertem OpenID hesch, wie z. B. [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] oder [http://kei.ki/ Keiki], chasch Di bi {{SITENAME}} aamälde, wänn Du di '''komplett URL''' vu Dyynere Benutzersyte uf däm andere Wiki in Textfäld obe yygisch. Z. B.  ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
-; [http://openid.yahoo.com/ Yahoo!]: Wänn Du ne Yahoo!-Konto hesch, chasch Di mit dr OpenID, wu vu Yahoo! aagee wird, im Textfäld obe aamälde. Yahoo!-OpenID hän d Form ''<nowiki>https://me.yahoo.com/dyybenutzername</nowiki>''.
-; [http://dev.aol.com/aol-and-63-million-openids AOL]: Wänn Du ne [http://www.aol.com/ AOL]-Konto hesch, z B. e  [http://www.aim.com/ AIM]-Benutzerkonto, chasch Di bi {{SITENAME}} aamälde, wänn Du OpenID, wu vu AOL aagee wird, im  Textfäld yygisch. AOL-OpenID hän d Form ''<nowiki>http://openid.aol.com/dyybenutzername</nowiki>''. Dyy Benutzername sott nume us chleine Buechstabe bstoh un s sott kei Läärzeiche din haa.
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Wänn Du uf däne Syte ne Blog hesch, no gib d URL vu Dyynem Blog in s Textfäld obe yy. Z. B. ''<nowiki>http://deinbenutzername.blogspot.com/</nowiki>'', ''<nowiki>http://dyybenutzername.wordpress.com/</nowiki>'', ''<nowiki>http://dyybenutzername.livejournal.com/</nowiki>'', oder ''<nowiki>http://dyybenutzername.vox.com/</nowiki>''.",
+S git vyyl [http://wiki.openid.net/Public_OpenID_providers effentligi OpenID-Provider] un villicht hesch scho ne  Benutzerkonto mit aktiviertem OpenID bin eme andere Aabieter.',
+	'openidupdateuserinfo' => 'Myni persenlige Date aktualisiere',
+	'openid-prefstext' => '[http://openid.net/ OpenID] Yystellige',
 	'openid-pref-hide' => 'Versteck Dyyni <a href="http://openid.net/">OpenID</a> uf Dyynere Benutzersyte, wänn Di mit OpenID aamäldsch.',
+	'openid-pref-update-userinfo-on-login' => 'Myyni Date mit em OpenID-Konto bi jedere Aamäldig aktualisiere',
 );
 
 /** Manx (Gaelg)

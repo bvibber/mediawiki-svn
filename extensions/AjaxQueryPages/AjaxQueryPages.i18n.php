@@ -387,6 +387,13 @@ $messages['ru'] = array(
 	'ajax-qp-desc' => 'Добавляет немного AJAX в QueryPages, например, [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'ajax-qp-desc' => 'Query сирэйдэригэр AJAX эбэр, холобур, [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -898,6 +898,45 @@ $messages['pt'] = array(
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'recordadmin' => 'Administração de registros',
+	'recordadmin-desc' => 'Uma [[Special:RecordAdmin|página especial]] para encontrar e editar páginas de registros usando um formulário',
+	'recordadmin-category' => 'Registros',
+	'recordadmin-select' => 'Selecione o tipo de registro a pesquisar',
+	'recordadmin-newsearch' => 'Nova pesquisa $1',
+	'recordadmin-newrecord' => 'Selecionar outro tipo de registro',
+	'recordadmin-submit' => 'Enviar',
+	'recordadmin-create' => 'Procurar ou criar um registro "$1"',
+	'recordadmin-alreadyexist' => 'Desculpe, "$1" já existe!',
+	'recordadmin-createsuccess' => '$1 criado',
+	'recordadmin-createerror' => 'Ocorreu um erro ao tentar criar o $1!',
+	'recordadmin-badtitle' => 'Título inválido!',
+	'recordadmin-recordid' => 'ID do registro:',
+	'recordadmin-invert' => 'Inverter seleção',
+	'recordadmin-buttonsearch' => 'Pesquisar',
+	'recordadmin-buttoncreate' => 'Criar',
+	'recordadmin-buttonreset' => 'Reiniciar',
+	'recordadmin-searchresult' => 'Resultados da pesquisa',
+	'recordadmin-nomatch' => 'Não foram encontrados resultados correspondentes!',
+	'recordadmin-edit' => 'Editando $1',
+	'recordadmin-typeupdated' => 'Propriedades de $1 atualizadas',
+	'recordadmin-updatesuccess' => '$1 atualizado',
+	'recordadmin-updateerror' => 'Ocorreu um erro durante a atualização',
+	'recordadmin-buttonsave' => 'Gravar',
+	'recordadmin-noform' => 'Não há um formulário associado com registros "$1"!',
+	'recordadmin-createlink' => '<a href=$1>criar um</a>',
+	'recordadmin-newcreated' => 'Novo $1 criado a partir de formulário público',
+	'recordadmin-summary-typecreated' => 'Novo $1 criado',
+	'recordadmin-viewlink' => 'ver',
+	'recordadmin-editlink' => 'editar',
+	'recordadmin-created' => 'Criado',
+	'recordadmin-actions' => 'Ações',
+	'right-recordadmin' => 'Encontrar e editar páginas de registros',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

@@ -72,6 +72,14 @@ $messages['bg'] = array(
 	'categoryonupload-label' => 'Категория:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'categoryonupload-desc' => 'ফাইল আপলোডের সময় ব্যবহারকারীকে বিষয়শ্রেণী নির্বাচন করতে স্মরণ করিয়ে দাও',
+	'categoryonupload-label' => 'বিষয়শ্রেণী:',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -129,7 +129,9 @@ Diverkañ',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'inspectcache-ok' => 'U redu',
 	'inspectcache-delete' => 'Obriši',
+	'inspectcache-list' => 'Izlistaj',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)

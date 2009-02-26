@@ -215,6 +215,13 @@ $messages['lb'] = array(
 	'trustedxff-desc' => 'Gestioun vun enger Lëscht vu vertrauenswerte Proxy-Adressen ([http://meta.wikimedia.org/wiki/XFF_project Projet-XFF])',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'trustedxff-desc' => 'Hanjele einer lies mit gooje proxy addresse ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

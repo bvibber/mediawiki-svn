@@ -178,10 +178,27 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'importusers' => 'Uvoz korisnika',
+	'importusers-desc' => '[[Special:ImportUsers|Uvozi korisnike]] u grupi iz CSV-datoteke; kodiranje: UTF-8',
+	'importusers-uploadfile' => 'Postavi datoteku',
+	'importusers-form-caption' => 'Unos CSV-datoteke (UTF-8)',
+	'importusers-form-file' => 'Format korisničke datoteke (csv):',
+	'importusers-form-replace-present' => 'Zamijeni postojeće korisnike',
+	'importusers-form-button' => 'Uvezi',
+	'importusers-user-added' => 'Korisnik <b>%s</b> je dodan.',
+	'importusers-user-present-update' => 'Korisnik <b>%s</b> već postoji. Ažuriran.',
+	'importusers-user-present-not-update' => 'Korisnik <b>%s</b> već postoji. Nije ažuriran.',
+	'importusers-user-invalid-format' => 'Korisnički podaci na liniji #%s nisu u valjanom formatu ili su prazni. Preskočeno.',
 	'importusers-log' => 'Zapisnik uvoza',
 	'importusers-log-summary' => 'Sažetak',
 	'importusers-log-summary-all' => 'Sve',
+	'importusers-log-summary-added' => 'Dodan',
+	'importusers-log-summary-updated' => 'Ažurirano',
+	'importusers-login-name' => 'Ime pri prijavi',
 	'importusers-password' => 'šifra',
+	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'pravo ime',
+	'right-import_users' => 'Uvoz korisnika u grupi',
 );
 
 /** Catalan (Català)

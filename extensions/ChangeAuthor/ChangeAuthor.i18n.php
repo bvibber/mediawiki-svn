@@ -293,6 +293,8 @@ $messages['bs'] = array(
 	'changeauthor-explanation-multi' => "Sa ovim obrascem možete promijeniti autora revizije.
 Jednostavno promijenite jedno ili više korisničkih imena na spisku ispod, dodajte komentar (neobavezno) i kliknite na dugme 'Promijeni autora(e)'.",
 	'changeauthor-changeauthors-single' => 'Promijeni autora',
+	'changeauthor-explanation-single' => "S ovim obrascem možete promijeniti autora revizije.
+Jednostavno promijenite korisničko ime ispod, dodajte komentar (neobavezno) i kliknite na dugme 'Promijeni autora'.",
 	'changeauthor-invalid-username' => 'Nevaljano korisničko ime "$1".',
 	'changeauthor-nosuchuser' => 'Nema takvog korisnika "$1".',
 	'changeauthor-revview' => 'Revizija #$1 od $2',
@@ -300,6 +302,7 @@ Jednostavno promijenite jedno ili više korisničkih imena na spisku ispod, doda
 	'changeauthor-weirderror' => 'Desila se nepredviđena greška.
 Molimo ponovite Vaš upit.
 Ako se ova greška nastavi ponavljati, vjerovatno je baza podataka u kvaru.',
+	'changeauthor-invalidform' => 'Molimo koristite obrazac koji je postavljen na [[Special:ChangeAuthor|posebnoj stranici]] a ne ručno postavljeni.',
 	'changeauthor-success' => 'Vaš zahtjev je uspješno obrađen.',
 	'changeauthor-logentry' => 'Promijenjen autor revizije $2 stranice $1 sa $3 na $4',
 	'changeauthor-logpagename' => 'Zapisnik promjene autora',

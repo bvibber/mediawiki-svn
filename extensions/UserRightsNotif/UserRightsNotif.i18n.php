@@ -770,6 +770,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Flrn
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'userrightsnotifysubject' => 'Членство в группах было изменено на «$1»',
@@ -783,6 +784,7 @@ $messages['ru'] = array(
 С наилучшими пожеланиями,
 
 $2',
+	'userrightsnotif-desc' => 'Отправляет уведомления участникам при изменении прав',
 );
 
 /** Slovak (Slovenčina)

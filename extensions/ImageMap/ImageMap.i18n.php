@@ -877,11 +877,13 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Matthias
+ * @author Ooswesthoesbes
  */
 $messages['li'] = array(
 	'imagemap_desc' => 'Maakt aanklikbare imagemaps meugelijk met de tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => "Error: geef 'n afbeelding op in de eerste regel",
 	'imagemap_invalid_image' => 'Error: de afbeelding is corrupt of bestaat neet',
+	'imagemap_bad_image' => 'Fout: de afbeelding steit op de zwarte lies voor deze pagina',
 	'imagemap_no_link' => 'Error: er is geen geldige link aangetroffen aan het einde van regel $1',
 	'imagemap_invalid_title' => 'Error: er staat een ongeldige titel in de verwijzing op regel $1',
 	'imagemap_missing_coord' => 'Error: neet genoeg coördinaten veur vorm in regel $1',
@@ -890,6 +892,7 @@ $messages['li'] = array(
 	'imagemap_invalid_coord' => 'Error: ongeldige coördinaten in regel $1, moet een getal zien',
 	'imagemap_invalid_desc' => 'Error: ongeldige beschrijvingsspecificatie, dit moet er één zijn uit de volgende lijst: $1',
 	'imagemap_description' => 'Euver deze aafbeelding',
+	'imagemap_poly_odd' => 'Fout: polygoon gevonje met een oneven aantal coördinate op regel $1',
 );
 
 /** Lithuanian (Lietuvių)

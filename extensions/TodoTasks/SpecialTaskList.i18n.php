@@ -1129,7 +1129,10 @@ Ang iyong palakaibigang sistemang tagapagbigay ng ulat ng %s',
  */
 $messages['tr'] = array(
 	'tasklist' => 'Görev listesi',
+	'tasklistunknownproject' => 'Bilinmeyen proje',
+	'tasklistincorrectuser' => 'Yanlış kullanıcı adı',
 	'tasklistmytasks' => 'Görevlerim',
+	'tasklistchooseproj' => 'Proje seçin:',
 	'tasklistprojdisp' => 'Gösteri',
 );
 

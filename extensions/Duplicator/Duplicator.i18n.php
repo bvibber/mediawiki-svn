@@ -192,6 +192,8 @@ $messages['bs'] = array(
 	'duplicator' => 'Dupliciraj stranicu',
 	'duplicator-desc' => 'Pravi nezavisne [[Special:Duplicate|kopije stranica]] sa potpunim historijama uređivanja',
 	'duplicator-toolbox' => 'Dupliciraj ovu stranicu',
+	'duplicator-header' => 'Ova stranica omogućava da se dovrši duplikacija stranice, stvarajući nezavisne kopije svih historija.
+Ovo je korisno za dijeljenje stranice itd.',
 	'duplicator-options' => 'Opcije',
 	'duplicator-source' => 'Izvor:',
 	'duplicator-dest' => 'Odredište:',

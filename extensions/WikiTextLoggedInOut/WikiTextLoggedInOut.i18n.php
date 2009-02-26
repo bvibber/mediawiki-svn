@@ -247,6 +247,13 @@ $messages['pt-br'] = array(
 	'wikitextloggedinout-desc' => 'Dois "hooks" do analisador (parser), <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, para mostrar diferentes textos dependendo do estado de autenticação do utilizador',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikitextloggedinout-desc' => "Doje hook analizzature, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> fanne vedè teste differende a seconde d'u state de collegamende de l'utinde",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

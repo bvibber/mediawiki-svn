@@ -81,6 +81,15 @@ $messages['bg'] = array(
 	'unicodeconverter-newtext' => 'Преобразуван текст:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'unicodeconverter-ok' => 'U redu',
+	'unicodeconverter-oldtext' => 'Prvobitni tekst:',
+	'unicodeconverter-newtext' => 'Pretvoreni tekst:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -529,6 +538,7 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'unicodeconverter-ok' => 'Tamam',
 	'unicodeconverter-oldtext' => 'Orjinal metin:',
+	'unicodeconverter-newtext' => 'Dönüştürülmüş metin:',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
