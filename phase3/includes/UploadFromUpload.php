@@ -6,7 +6,7 @@ class UploadFromUpload extends UploadBase {
 		$desiredDestName = $request->getText( 'wpDestFile' );
 		if( !$desiredDestName )
 			$desiredDestName = $request->getText( 'wpUploadFile' );
-		
+		print "about to init: \n";
 		return $this->initialize( 
 			$desiredDestName, 
 			$request->getFileTempName( 'wpUploadFile' ), 

@@ -55,24 +55,25 @@ class UploadBase {
 	/**
 	 * Create a form of UploadBase depending on wpSourceType and initializes it
 	 */
-	static function createFromRequest( &$request, $type = null ) {
+	static function createFromRequest( &$request, $type = null ) {		
 		$type = $type ? $type : $request->getVal( 'wpSourceType' );
 		if( !$type ) 
 			return null;
-		$type = ucfirst($type);
+		$type = ucfirst($type);	
 		$className = 'UploadFrom'.$type;
 		if( !in_array( $type, self::$uploadHandlers ) )
 			return null;
+											
 		if( !call_user_func( array( $className, 'isEnabled' ) ) )
-			return null;
+			return null;		
+			
 		if( !call_user_func( array( $className, 'isValidRequest' ), $request ) )
 			return null;
-		
-		$handler = new $className;
+					
+		$handler = new $className;				
 		$handler->initializeFromRequest( $request );
 		return $handler;
-	}
-	
+	}	
 	/**
 	 * Check whether a request if valid for this handler
 	 */

@@ -1,5 +1,6 @@
 <?php
 class UploadFromUrl extends UploadBase {
+		
 	static function isAllowed( $user ) {
 		if( !$user->isAllowed( 'upload_by_url' ) )
 			return 'upload_by_url';
@@ -8,14 +9,24 @@ class UploadFromUrl extends UploadBase {
 	static function isEnabled() {
 		global $wgAllowCopyUploads;
 		return $wgAllowCopyUploads && parent::isEnabled();
-	}
+	}	
 	
 	function initialize( $name, $url ) {
 		global $wgTmpDirectory;
 		$local_file = tempnam( $wgTmpDirectory, 'WEBUPLOAD' );
-		$this->initialize( $name, $local_file, 0, true );
+		parent::initialize( $name, $local_file, 0, true );
 
 		$this->mUrl = trim( $url );
+	}
+	
+	function initializeFromRequest( &$request ) {
+		$desiredDestName = $request->getText( 'wpDestFile' );
+		if( !$desiredDestName )
+			$desiredDestName = $request->getText( 'wpUploadFile' );		
+		return $this->initialize( 
+			$desiredDestName, 
+	 		$request->getVal('wpUploadFileURL')
+		);
 	}
 	
 	/**
@@ -86,5 +97,12 @@ class UploadFromUrl extends UploadBase {
 		}
 		fwrite( $this->mCurlDestHandle, $data );
 		return $length;
+	}
+	static function isValidRequest( $request ){
+		if( !$request->getVal('wpUploadFileURL') )
+			return false;
+		//check that is a valid url:
+		return preg_match('/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/',
+						  $request->getVal('wpUploadFileURL'), $matches);
 	}
 }

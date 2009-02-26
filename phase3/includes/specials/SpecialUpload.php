@@ -8,7 +8,7 @@
 /**
  * Entry point
  */
-function wfSpecialUpload() {
+function wfSpecialUpload() {	
 	global $wgRequest;
 	$form = new UploadForm( $wgRequest );
 	$form->execute();
@@ -41,7 +41,7 @@ class UploadForm {
 	 * Get data POSTed through the form and assign them to the object
 	 * @param $request Data posted.
 	 */
-	function __construct( &$request ) {
+	function __construct( &$request ) {		
 		// Guess the desired name from the filename if not provided
 		$this->mDesiredDestName   = $request->getText( 'wpDestFile' );
 		if( !$this->mDesiredDestName )
@@ -55,7 +55,6 @@ class UploadForm {
 			# filename and description
 			return;
 		}
-
 		# Placeholders for text injection by hooks (empty per default)
 		$this->uploadFormTextTop = "";
 		$this->uploadFormTextAfterSummary = "";
@@ -72,8 +71,7 @@ class UploadForm {
 		$this->mForReUpload       = $request->getBool( 'wpForReUpload' );
 		$this->mReUpload          = $request->getCheck( 'wpReUpload' );
 
-		$this->mAction            = $request->getVal( 'action' );
-
+		$this->mAction            = $request->getVal( 'action' );		
 		$this->mUpload = UploadBase::createFromRequest( $request );
 	}
 
@@ -84,7 +82,7 @@ class UploadForm {
 	 */
 	function execute() {
 		global $wgUser, $wgOut;
-
+		
 		# Check uploading enabled
 		if( !UploadBase::isEnabled() ) {
 			$wgOut->showErrorPage( 'uploaddisabled', 'uploaddisabledtext' );
@@ -115,8 +113,7 @@ class UploadForm {
 		if( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
-		}
-
+		}		
 		if( $this->mReUpload ) {
 			// User did not choose to ignore warnings
 			if( !$this->mUpload->unsaveUploadedFile() ) {
@@ -670,7 +667,7 @@ wgUploadAutoFill = {$autofill};
 				break;
 			default:
 				$val2 = $val;
-		}
+		}				
 		$val2 = UploadFromUrl::isEnabled() ? min( $wgMaxUploadSize, $val2 ) : $val2;
 		$maxUploadSize = '<div id="mw-upload-maxfilesize">' . 
 			wfMsgExt( 'upload-maxfilesize', array( 'parseinline', 'escapenoentities' ), 
@@ -698,7 +695,7 @@ wgUploadAutoFill = {$autofill};
 		$watchChecked = $this->watchCheck() ? 'checked="checked"' : '';
 		# Re-uploads should not need "file exist already" warnings
 		$warningChecked = ($this->mIgnoreWarning || $this->mForReUpload) ? 'checked="checked"' : '';
-
+		
 		// Prepare form for upload or upload/copy
 		if( UploadFromUrl::isEnabled() && $wgUser->isAllowed( 'upload_by_url' ) ) {
 			$filename_form =
