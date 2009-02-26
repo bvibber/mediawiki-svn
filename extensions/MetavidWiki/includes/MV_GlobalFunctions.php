@@ -122,6 +122,7 @@ function mvSetupExtension() {
 	$wgJSAutoloadClasses['upFirefogg'] 			= $mvjsp . 'libAddMedia/firefogg.js';
 	$wgJSAutoloadClasses['mvUploader'] 			= $mvjsp . 'libAddMedia/mvUploader.js';
 	$wgJSAutoloadClasses['remoteSearchDriver'] 	= $mvjsp . 'libAddMedia/remoteSearchDriver.js';
+	$wgJSAutoloadClasses['seqRemoteSearchDriver'] = $mvjsp . 'libAddMedia/seqRemoteSearchDriver.js';
 	$wgJSAutoloadClasses['mediaWikiSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/mediaWikiSearch.js';
 	$wgJSAutoloadClasses['metavidSearch'] 		= $mvjsp . 'libAddMedia/searchLibs/metavidSearch.js';
 	$wgJSAutoloadClasses['solrArchiveSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/solrArchiveSearch.js';	

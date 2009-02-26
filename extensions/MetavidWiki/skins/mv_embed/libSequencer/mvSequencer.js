@@ -27,7 +27,7 @@ loadGM( {
 	"loading_timeline" : "Loading TimeLine <blink>...</blink>",
 	"loading_user_rights" : "Loading user rights <blink>...</blink>",
 	
-	"no_edit_permissions" : "You don\'t have permissions to save changes to this sequence", 
+	"no_edit_permissions" : "You don't have permissions to save changes to this sequence", 
 	
 	"edit_clip" : "Edit Clip",
 	"edit_save" : "Save Changes",
@@ -44,9 +44,8 @@ loadGM( {
 	"rmclip" : "Remove Clip",
 	"clip_in" : "clip in",
 	"clip_out" : "clip out",
-	
-	"mv_welcome_to_sequencer" : "<h3>Welcome to the sequencer demo</h3>"+
-	"very <b>limited</b> functionality right now. Not much documentation yet either",
+		
+	"mv_welcome_to_sequencer" : "<h3>Welcome to the sequencer demo</h3> very <b>limited</b> functionality right now. Not much documentation yet either",
 	
 	"no_selected_resource" : "<h3>No Resource selected</h3> Select a Clip to enable resource editing",
 	"error_edit_multiple" : "<h3>Multiple Resources Selected</h3> Select a single clip to edit it", 
