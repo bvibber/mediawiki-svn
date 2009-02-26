@@ -7,7 +7,7 @@ import settings
 import os, os.path, shutil
 import subprocess
 
-from installation_system import Installation_System
+from installation_system import Installation_System, Installer_Exception
 from extension_installer import Extension_Installer_Exception
 
 class Download_Installer_Exception(Extension_Installer_Exception):
@@ -62,7 +62,9 @@ class Download_Installer(Installation_System):
 			settings.extensionsdir+"/"+\
 			installer_name+"'"
 		#print command
-		os.system(command)
+		result=os.system(command)
+		if result!=0:
+			raise Installer_Exception("download failed, return value "+str(result>>8))
 	
 	def _settings_filepath(self, installer_name):
 		settingsdir=os.path.join(self.destination_dir,"../LocalSettings")

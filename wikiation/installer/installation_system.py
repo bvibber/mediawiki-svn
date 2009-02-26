@@ -147,11 +147,15 @@ class Installation_System:
 		if self.is_installed(installer_name):
 			print installer_name,"already installed."
 			return
-
-		self.download(installer_name)
-		self.install_settings(installer_name)
-		self.setup(installer_name)
+		try:
+			self.download(installer_name)
+			self.install_settings(installer_name)
+			self.setup(installer_name)
 		# ...
+		except Installer_Exception:
+			pass
+		except:
+			raise
 
 		#query the installer to see if ot thinks the component is properly installed
 		# any flaws at this point are the fault of the installer :-P
