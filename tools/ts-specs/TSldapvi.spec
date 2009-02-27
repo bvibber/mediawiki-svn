@@ -48,10 +48,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr (-, root, bin)
 %dir %attr (0755, root, bin) %{_bindir}
 %{_bindir}/*
-%dir %attr (0755, root, bin) %{_docdir}
-%dir %attr (0755, root, bin) %{_docdir}/ldapvi
-%{_docdir}/ldapvi/*
 %dir %attr (0755, root, sys) %{_datadir}
+%dir %attr (0755, root, other) %{_docdir}
+%dir %attr (0755, root, other) %{_docdir}/ldapvi
+%{_docdir}/ldapvi/*
 %dir %attr (0755, root, bin) %{_mandir}
 %dir %attr (0755, root, bin) %{_mandir}/man1
 %{_mandir}/man1/*

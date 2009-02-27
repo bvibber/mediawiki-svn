@@ -55,7 +55,12 @@ rm -rf $RPM_BUILD_ROOT
 %dir %attr (0755, root, bin) %{_bindir}
 %{_bindir}/*
 %dir %attr (0755, root, sys) %{_datadir}
-%{_datadir}/*
+%dir %attr (0755, root, other) %{_datadir}/doc
+%{_datadir}/doc/*
+%dir %attr (0755, root, sys) %{_datadir}/joe
+%{_datadir}/joe/*
+%dir %attr (0755, root, bin) %{_datadir}/man
+%{_datadir}/man/*
 
 %files root
 %defattr (-, root, sys)

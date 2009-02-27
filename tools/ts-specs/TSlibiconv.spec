@@ -89,8 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %attr(0755, root, bin) %{_mandir}
 %dir %attr(0755, root, bin) %{_mandir}/man1
 %{_mandir}/man1/*
-%dir %attr(0755, root, bin) %{_docdir}
-%dir %attr(0755, root, bin) %{_docdir}/libiconv
+%dir %attr(0755, root, other) %{_docdir}
+%dir %attr(0755, root, other) %{_docdir}/libiconv
 %{_docdir}/libiconv/*
 %ifarch amd64 sparcv9
 %dir %attr (0755, root, bin) %{_libdir}/%_arch64

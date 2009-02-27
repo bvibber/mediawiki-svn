@@ -17,6 +17,11 @@ License:      	Apache
 BuildRoot:		%{_tmppath}/serf-%{version}-build
 %include default-depend.inc
 
+BuildRequires: TSapr
+Requires: TSapr
+BuildRequires: TSapu
+Requires: TSapu
+
 %package devel
 Summary: %{summary} - development files
 SUNW_BaseDir: %{_basedir}
