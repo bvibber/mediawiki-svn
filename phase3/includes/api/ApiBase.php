@@ -615,8 +615,9 @@ abstract class ApiBase {
 			$this->dieUsage("Only one $possibleValues is allowed for parameter '$valueName'", "multival_$valueName");
 		}
 		if (is_array($allowedValues)) {
+			
 			# Check for unknown values
-			$unknown = array_diff($valuesList, $allowedValues);
+			$unknown = array_diff($valuesList, $allowedValues);									
 			if(count($unknown))
 			{
 				if($allowMultiple)

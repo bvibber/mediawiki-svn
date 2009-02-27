@@ -24,7 +24,7 @@ class UploadFromStash extends UploadBase {
 			 * them in the session on the server and just give
 			 * an opaque key to the user agent.
 			 */
-			$this->initialize( $name, 
+			parent::initialize( $name, 
 				$sessionData['mTempPath'], 
 				$sessionData['mFileSize'],
 				false
