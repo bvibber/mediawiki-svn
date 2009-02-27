@@ -27,9 +27,9 @@ if test "x$CPUS" = "x" -o $CPUS = 0; then
      CPUS=1
 fi
 
-./Configure -de
+./Configure -f config.sh -des
 gmake -j$CPUS
-%
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
