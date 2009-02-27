@@ -9,4 +9,3 @@
 class UploadFromChunks extends UploadBase {
 	
 }
-?>
