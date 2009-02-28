@@ -1,15 +1,17 @@
 %define _prefix /opt/TSmysql
 
-Name:                TSmysql
-Summary:             MySQL database server
-Version:             5.1.31
-Source:              http://www.mirrorservice.org/sites/ftp.mysql.com/Downloads/MySQL-5.1/mysql-%{version}.tar.gz
+Name:		TSmysql
+Summary:	MySQL database server
+Version:	5.1.31
+Source:		http://www.mirrorservice.org/sites/ftp.mysql.com/Downloads/MySQL-5.1/mysql-%{version}.tar.gz
+Patch1:		mysql-01-libdir.diff
 
 SUNW_BaseDir:        /opt/TSmysql
 BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 
 %prep
 %setup -q -n mysql-%version
+%patch1 -p0
 
 %build
 

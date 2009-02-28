@@ -59,11 +59,11 @@ export CPPFLAGS='-I/usr/sfw/include'
 %include arch64.inc
 export CFLAGS="%optflags -m64"
 export CXXFLAGS="%cxx_optflags -m64"
-export LDFLAGS="%{_ldflags} -m64 -L/usr/sfw/lib/%_arch64 -R/usr/sfw/lib/%_arch64"
+export LDFLAGS="%{_ldflags} -m64 -L/opt/TSmysql/lib/%_arch64/mysql -L/usr/sfw/lib/%_arch64 -R/opt/TSmysql/lib/%_arch64/mysql:/usr/sfw/lib/%_arch64"
 %mysql64.build -d %name-%version/%_arch64
 %endif
 %include base.inc
-export LDFLAGS="%{_ldflags} -L/usr/sfw/lib -R/usr/sfw/lib"
+export LDFLAGS="%{_ldflags} -L/opt/TSmysql/lib/mysql -L/usr/sfw/lib -R/opt/TSmysql/lib/mysql:/usr/sfw/lib"
 export CFLAGS="%optflags"
 export CXXFLAGS="%cxx_optflags"
 %mysql.build -d %name-%version/%{base_arch}

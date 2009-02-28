@@ -1,0 +1,15 @@
+--- scripts/mysqld_safe.sh.old	Sat Feb 28 00:27:28 2009
++++ scripts/mysqld_safe.sh	Sat Feb 28 00:29:32 2009
+@@ -217,10 +217,10 @@
+   MY_BASEDIR_VERSION=$MY_PWD		# Where bin, share and data are
+   ledir=$MY_BASEDIR_VERSION/bin		# Where mysqld is
+ # Check for the directories we would expect from a source install
+-elif test -f "$relpkgdata"/english/errmsg.sys -a -x ./libexec/mysqld
++elif test -f "$relpkgdata"/english/errmsg.sys -a -x ./lib/mysqld
+ then
+   MY_BASEDIR_VERSION=$MY_PWD		# Where libexec, share and var are
+-  ledir=$MY_BASEDIR_VERSION/libexec	# Where mysqld is
++  ledir=$MY_BASEDIR_VERSION/lib		# Where mysqld is
+ # Since we didn't find anything, used the compiled-in defaults
+ else
+   MY_BASEDIR_VERSION=@prefix@
