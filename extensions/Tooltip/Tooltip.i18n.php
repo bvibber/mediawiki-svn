@@ -180,6 +180,13 @@ $messages['jv'] = array(
 	'tooltip-desc' => 'Nambahaké <tt><nowiki><tooltip></nowiki></tt> lan tag <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt>과 <tt><nowiki>{{#tooltip:}}</nowiki></tt> 태그를 추가',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

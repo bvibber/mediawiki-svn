@@ -311,6 +311,13 @@ $messages['tl'] = array(
 	'gnuplot-desc' => 'Nagdaragdag ng tatak na <code><nowiki><gnuplot></nowiki></code> upang magamit ang Gnuplot',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'gnuplot-desc' => 'Gnuplot kullanmak için <code><nowiki><gnuplot></nowiki></code> etiketini ekler',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

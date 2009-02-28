@@ -4787,6 +4787,18 @@ $messages['nn'] = array(
 	'boardvote_entry' => '* [[Special:BoardVote/vote|Røyst]]
 * [[Special:BoardVote/list|Liste over røyster]]
 * [[Special:BoardVote/dump|Dump med kryptert stemmehistorikk]]',
+	'boardvote_intro' => '<p>Velkomen til styrevalet for Wikimedia i 2008. Her røyster Wikimedia sine bidragsytarar inn éin medlem til styret for å representera brukarane på dei einskilde prosjekta. Styremedlemene avgjer kva retning Wikimedia-prosjekta skal ta i framtida, og representerer interessene <em>dine</em> i styret. Dei vil avgjera på kva måtar stiftinga kan samla pengar, og korleis desse skal verta nytta.</p>
+
+<p>Les kandidatane sine presentasjonar og svara deira på spørsmål før du gjev røysta di. Alle kandidatane er respektable brukarar som har nytta mykje tid og energi på å gjera Wikimedia-prosjekta betre.</p>
+
+<p>For å røysta på kandidatar, fyller du inn eit nummer i boksen. Du rangerer kandidatane etter kor mykje du vil at kvar kandidat skal verta vald. Kandidaten du skriv «1» på, er førstepreferansen din. Kandidaten som får «2», er andrepreferansen din osb. Du kan nytta same tal på fleire kandidatar, og du treng ikkje å rangera alle kandidatane. Systemet reknar med at du set rangerte kandidatar føre dei du ikkje har rangert, og at du ikkje har noka meining om kandidatar du ikkje har rangert.</p>
+
+<p>Kven som vinn valet vert rekna ut ved av Schulze-metoden. For meir informasjon om dette, sjå dei offisielle valsidene.</p>
+
+<p>For meir informasjon, sjå:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/nb" class="external">Styreval 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/nb" class="external">Kandidatar</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulze-methoden</a> (engelsk)</li></ul>',
 	'boardvote_intro_change' => '<p>Du har allereie gjeve di røyst. Likevel kan du endra røysta di ved å bruka skjemaet under. Ver venleg ranger kandidatane etter dine ønskje, der eit lågare tal indikerer at du set denne kandidaten høgare. Du kan gje den same rangeringa til meir enn ein kandidat, og treng ikkje å rangera alle kandidatane.</p>',
 	'boardvote_entered' => 'Takk, di røyst har blitt registrert.
 

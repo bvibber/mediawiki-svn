@@ -1600,6 +1600,57 @@ $messages['lb'] = array(
 	'specialpages-group-contribution' => 'Donen/Quêteur',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'contributionreporting-desc' => 'Liverapportaasj veure fónswèrvingsaksie ven Wikimedia',
+	'contributiontotal' => 'Totaal gifte',
+	'contributionhistory' => 'Giftegesjiedenès',
+	'contrib-hist-header' => 'Ópmèrkinger ven donore vanoet de ganse welt',
+	'contrib-hist-name' => 'Naam',
+	'contrib-hist-date' => 'Datum èn tied',
+	'contrib-hist-amount' => 'Bedraag',
+	'contrib-hist-next' => 'Ieëder gifte',
+	'contrib-hist-previous' => 'Later gifte',
+	'contrib-hist-anonymous' => 'Anoniem',
+	'contributionstatistics' => 'Gifstatistieker',
+	'contribstats-desc' => 'Stattistieke waergaeve veur gifte ane Wikimediaföndaasje',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Totaal veur vandaag|Dagelikse totale veur de aafgeloupe $1 daag}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Totaal veur deze maondj|Maondjelikse totale veur de aafgeloupe $1 maondje}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Totaal veur $1 maondj|Maondjelikse totale veur $1 maondje}}',
+	'contribstats-currency-range-totals' => 'Totale möntjeinhijjer (ven $1 toet $2)',
+	'contribstats-contribution-range-breakdown' => 'Details ven gifte (ven $1 toet $1)',
+	'contribstats-currency-totals' => "Totale möntjeinhijjer veur 't fiskaal jaor ven $1",
+	'contribstats-contribution-breakdown' => "Details ven donaasjes veur 't fiskaal jaor $1",
+	'contribstats-day' => 'Daag',
+	'contribstats-month' => 'Maondj',
+	'contribstats-currency' => 'Möntj',
+	'contribstats-amount' => 'Bedraag (in USD)',
+	'contribstats-contributions' => 'Gifter',
+	'contribstats-total' => 'Totaal (in USD)',
+	'contribstats-avg' => 'Gemiddeldj (in USD)',
+	'contribstats-max' => 'Maximaal (in USD)',
+	'contribstats-percentage-ytd' => 'Percentaasj (dit jaor)',
+	'contribstats-total-ytd' => 'Totaal (dit jaor)',
+	'contribstats-value-exactly' => 'Prónt $1',
+	'contribstats-value-under' => 'Minder es $1',
+	'contribstats-value-from' => 'Tösje $1 en $2',
+	'contribstats-value-over' => 'Meer es $1',
+	'fundraiserstatistics' => 'Fónswèrvindstattistieker',
+	'fundraiserstats-date' => 'Datom',
+	'fundraiserstats-day' => 'Daag $1 ven $2',
+	'fundraiserstats-contributions' => 'Gifte',
+	'fundraiserstats-total' => 'Totaal (in USD)',
+	'fundraiserstats-avg' => 'Gemiddeldj (in USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
+	'fundraiserstats-tab-totals' => 'Totale (USD)',
+	'fundraiserstats-tab-contributions' => 'Aantal gifter',
+	'fundraiserstats-tab-averages' => 'Gemiddelde (USD)',
+	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
+	'specialpages-group-contribution' => 'Gifte/Fónswèrvingsaksie',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

@@ -371,9 +371,11 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'usercontactlink-baduser' => 'некорректное имя участника',
+	'usercontactlink-desc' => 'Предоставляет возможность легко добавить имена других участников с помощью синтаксиса ^^^участник^^^',
 );
 
 /** Slovak (Slovenčina)

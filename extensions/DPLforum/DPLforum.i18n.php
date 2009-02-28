@@ -623,10 +623,16 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'dplforum-desc' => 'DPL-temelli forum eklentisi',
+	'dplforum-by' => '$1 tarafından',
+	'dplforum-edited' => '- Son değiştirme',
 	'dplforum-never' => 'Asla',
+	'dplforum-toofew' => 'DPL Forum: Çok az kategori!',
+	'dplforum-toomany' => 'DPL Forum: Çok fazla kategori!',
 );
 
 /** Ukrainian (Українська)

@@ -90,6 +90,21 @@ $messages['akz'] = array(
 	'ogg-more' => 'Maatàasasi...',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'ogg-play' => 'Väta',
+	'ogg-pause' => 'Pauz',
+	'ogg-stop' => 'Azotada',
+	'ogg-play-video' => 'Ozutada video',
+	'ogg-play-sound' => 'Väta kulundad',
+	'ogg-more' => 'Enamba...',
+	'ogg-dismiss' => 'Peitta',
+	'ogg-download' => 'Jügutoitta fail',
+	'ogg-desc-link' => 'Informacii neciš failas',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin

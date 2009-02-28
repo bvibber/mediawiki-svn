@@ -476,9 +476,11 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'categoryonupload-desc' => 'Bir dosya yüklerken kullanıcının bir kategori seçmesini ister',
 	'categoryonupload-label' => 'Kategori:',
 );
 

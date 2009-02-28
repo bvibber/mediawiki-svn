@@ -89,6 +89,21 @@ $3',
 	'latexdoc-desc' => 'Съвместно редактиране на документи на LaTeX',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'latexdoc_cant_write' => 'Ne mogu pisati u datoteku $1',
+	'latexdoc_error' => 'LaTeX greška
+
+Komanda: $1
+
+Izlaz: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Preuzmi DVI',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Melancholie

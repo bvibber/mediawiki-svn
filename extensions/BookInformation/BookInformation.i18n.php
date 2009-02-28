@@ -380,15 +380,19 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Dmcdevit
+ * @author Drini
  */
 $messages['es'] = array(
 	'bookinfo-header' => 'Información de libro',
+	'bookinfo-desc' => 'Ampliar la [[Special:Booksources|página especial de fuentes de libros]] con información de un servicio web',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editorial:',
 	'bookinfo-result-year' => 'Año:',
 	'bookinfo-error-invalidisbn' => 'Se introduce el ISBN inválido.',
 	'bookinfo-error-nosuchitem' => 'Item no existe o no pudo ser encontrado.',
+	'bookinfo-error-nodriver' => 'No se pudo inicializar un Controlador de Información de Libro apropiado.',
+	'bookinfo-error-noresponse' => 'No hay respuesta o expiró.',
 	'bookinfo-purchase' => 'Comprar este libro de $1',
 	'bookinfo-provider' => 'Proveedor de datos: $1',
 );
@@ -1525,6 +1529,17 @@ $messages['tg-cyrl'] = array(
 	'bookinfo-error-noresponse' => 'Посухе вуҷуд надошт ё мӯҳлати дархост сипарӣ шуд.',
 	'bookinfo-purchase' => 'Харидани ин китоб аз $1',
 	'bookinfo-provider' => 'Муҳаёкунандаи иттилоот: $1',
+);
+
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'bookinfo-header' => 'ข้อมูลหนังสือ',
+	'bookinfo-result-author' => 'ผู้แต่ง:',
+	'bookinfo-result-publisher' => 'สำนักพิมพ์:',
+	'bookinfo-result-year' => 'ปี:',
+	'bookinfo-error-invalidisbn' => 'รหัส ISBN ที่ใส่ไม่ถูกต้อง',
 );
 
 /** Tagalog (Tagalog)

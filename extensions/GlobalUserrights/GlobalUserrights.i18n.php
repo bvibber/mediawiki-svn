@@ -127,6 +127,16 @@ $messages['es'] = array(
 	'right-userrights-global' => 'Administrar derechos de usuario global',
 );
 
+/** Estonian (Eesti)
+ * @author KalmerE.
+ * @author Ker
+ */
+$messages['et'] = array(
+	'globaluserrights' => 'Globaalne kasutaja õiguste haldamine',
+	'gur-desc' => 'Lihtne [[Special:GlobalUserRights|globaalkasutaja õiguste]] haldamine',
+	'gur-rightslog-name' => 'Globaal õiguste logiraamat',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

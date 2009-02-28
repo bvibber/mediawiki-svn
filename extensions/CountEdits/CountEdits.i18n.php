@@ -356,7 +356,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'countedits' => 'Compteur de modifications',
-	'countedits-desc' => '[[Special:CountEdits|Page spéciale]] qui comptabilise le nombre de modifications des utilisateurs et fournit la liste des dix contributeurs les plus prolifiques.',
+	'countedits-desc' => '[[Special:CountEdits|Page spéciale]] qui comptabilise le nombre de modifications des utilisateurs et qui fournit la liste des dix contributeurs les plus prolifiques.',
 	'countedits-warning' => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
 	'countedits-username' => 'Utilisateur',
 	'countedits-ok' => 'Accepter',

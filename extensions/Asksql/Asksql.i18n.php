@@ -297,10 +297,20 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Drini
  */
 $messages['es'] = array(
+	'asksql' => 'Consulta SQL',
+	'asksql-desc' => 'Realiza consultas SQL a través de una [[Special:Asksql|página especial]]',
+	'asksqltext' => "Usa el formulario para hacer una consulta directa a la base de datos.
+Usa comillas simples ('como éstas') para delimitar cadenas literales.
+Esto puede añadir una carga considerable al servidor, por lo que úsalo esporádicamente.",
+	'sqlislogged' => 'Por favor nota que todas las consultas quedan registradas',
 	'sqlquery' => 'Ingresar pregunta',
 	'querybtn' => 'Enviar pregunta',
+	'selectonly' => 'Sólo se permiten consultas de lectura solamente.',
+	'querysuccessful' => 'Consulta exitosa',
+	'right-asksql' => 'Realiza consultas SQL',
 );
 
 /** Basque (Euskara)

@@ -1400,14 +1400,27 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'specialuserstats' => 'Статистика использования',
 	'usagestatistics' => 'Статистика использования',
+	'usagestatistics-desc' => 'Показывает индивидуальную для участника и общую для вики статистику использования',
 	'usagestatisticsfor' => '<h2>Статистика использования для участника [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Статистика использования для всех участников</h2>',
 	'usagestatisticsinterval' => 'Интервал',
 	'usagestatisticstype' => 'Тип',
+	'usagestatisticsstart' => 'Начальная дата',
+	'usagestatisticsend' => 'Конечная дата',
+	'usagestatisticssubmit' => 'Сформировать статистику',
+	'usagestatisticsnostart' => 'Пожалуйста, укажите начальную дату',
+	'usagestatisticsnoend' => 'Пожалуйста, укажите конечную дату',
+	'usagestatisticsbadstartend' => '<b>Неправильная <i>начальная</i> и/или <i>конечная</i> дата!</b>',
 	'usagestatisticsintervalday' => 'День',
 	'usagestatisticsintervalweek' => 'Неделя',
 	'usagestatisticsintervalmonth' => 'Месяц',
+	'usagestatisticsincremental' => 'Возрастающая',
+	'usagestatisticsincremental-text' => 'возростающая',
+	'usagestatisticscumulative' => 'Совокупная',
+	'usagestatisticscumulative-text' => 'совокупная',
 	'usagestatisticscalselect' => 'Выбрать',
+	'usagestatistics-editindividual' => 'Статистика $1 для индивидуальных правок',
+	'usagestatistics-editpages' => 'Статистика $1 для страниц участника',
 );
 
 /** Slovak (Slovenčina)

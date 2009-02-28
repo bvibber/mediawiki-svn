@@ -758,7 +758,7 @@ $messages['el'] = array(
 	'group-oversight-member' => 'επιτηρητής',
 	'grouppage-oversight' => '{{ns:project}}:Επιτήρηση',
 	'right-oversight' => 'Δείτε μια προηγουμένως κρυφή αναθεώρηση',
-	'right-hiderevision' => 'Ανασκόπηση και επαναφορά αναθεωρήσεων κρυφών από διαχειριστές',
+	'right-hiderevision' => 'Απόκρυψη αναθεωρήσεων από τους διαχειριστές',
 	'hiderevision-prompt' => 'Αριθμός αναθεώρησης προς αφαίρεση:',
 	'hiderevision-continue' => 'Συνέχεια',
 	'hiderevision-text' => "Αυτό πρέπει να χρησιμοποιηθεί '''μόνο''' για τις ακόλουθες περιπτώσεις:
@@ -1658,6 +1658,8 @@ in caso di errori.",
 	'oversight-header' => 'Qui di seguito viene presentata una lista delle revisioni oscurate in modo permanente ai visitatori del sito.
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
 	'oversight-legend' => 'Cerca i log delle revisioni nascoste',
+	'oversight-oversighter' => 'Autore della rimozione:',
+	'oversight-offender' => "Autore dell'azione rimossa:",
 );
 
 /** Japanese (日本語)
@@ -2463,7 +2465,7 @@ $messages['nn'] = array(
 	'group-oversight' => 'Versjonsfjernarar',
 	'group-oversight-member' => 'Versjonsfjernar',
 	'grouppage-oversight' => '{{ns:project}}:Versjonsfjerning',
-	'right-oversight' => 'Syna tidlegare gøymde versjonar',
+	'right-oversight' => 'Sjå tidlegare gøymde versjonar',
 	'right-hiderevision' => 'Løyna versjonar for administratorar',
 	'hiderevision-prompt' => 'Nummeret på versjonen som skal fjernast:',
 	'hiderevision-continue' => 'Hald fram',
@@ -3161,7 +3163,7 @@ $messages['stq'] = array(
 	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
 	'right-oversight' => 'Bekiekjen fon ne foartied ferstatte Version',
-	'right-hiderevision' => 'Bekiekjen en wier Moakjen fon Versione, do uk foar Administratore ferstat sunt',
+	'right-hiderevision' => 'Versione foar Administratore fersteete',
 	'hiderevision-prompt' => 'Wäch tou hoaljene Versionsnummer:',
 	'hiderevision-continue' => 'Fääre',
 	'hiderevision-text' => "Dit duur '''bloot''' in do foulgjende Falle geböäre:
@@ -3478,7 +3480,7 @@ $messages['uk'] = array(
 	'group-oversight-member' => 'ревізор',
 	'grouppage-oversight' => '{{ns:project}}:Ревізори',
 	'right-oversight' => 'Перегляд прихованих версій',
-	'right-hiderevision' => 'Перегляд і відновлення версій, прихованих від адміністраторів',
+	'right-hiderevision' => 'Приховування версій сторінок від адміністраторів',
 	'hiderevision-prompt' => 'Номер версії, яку потрібно приховати',
 	'hiderevision-continue' => 'Продовжити',
 	'hiderevision-text' => "Ця сторінка повинна використовуватися '''тільки''' у випадках:

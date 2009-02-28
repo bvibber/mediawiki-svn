@@ -406,6 +406,13 @@ $messages['sr-ec'] = array(
 	'mwsearch-desc' => 'MWSearch додатак',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'mwsearch-desc' => 'Bäätergruundprozess foar ju Lucene-Säikmaschine',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

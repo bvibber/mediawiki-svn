@@ -665,10 +665,13 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'block_title_error_page_title' => 'Engelenmiş başlık',
+	'block_title_error-desc' => 'Belirli başlıktaki sayfaların oluşturulmasını ya da kaydedilmesini önlemek için basit bir yol sağlar.',
+	'block_title_error' => 'Üzgünüz, bu sayfanın başlığının kaydedilmesine izin verilmiyor.',
 );
 
 /** Ukrainian (Українська)

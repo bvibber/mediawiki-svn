@@ -123,8 +123,10 @@ $messages['bn'] = array(
  */
 $messages['bs'] = array(
 	'filelist' => 'Spisak datoteka',
+	'filelist-desc' => '[[Special:Filelist|Posebna stranica]] za prikazivanje postavljenih datoteka',
 	'filelist-show-list' => 'Pokaži spisak',
 	'filelist-show-gallery' => 'Pokaži galeriju',
+	'filelist-image-desc' => 'spisak',
 );
 
 /** Catalan (Català)

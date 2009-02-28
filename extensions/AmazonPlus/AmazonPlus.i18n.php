@@ -263,9 +263,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Drini
  */
 $messages['es'] = array(
+	'amazonplus-desc' => 'Una extensión altamente personalizable para desplegar informaciónde Amazon',
 	'amazonplus-nores' => 'Error: Sin resultados encontrados!',
+	'amazonplus-noidres' => 'Error: ¡No se pudo encontrar el ID del producto!',
+	'amazonplus-fgcerr' => 'Error: ¡No se pudo obtener los datos desde Amazon!',
+	'amazonplus-slserr' => 'Error: ¡no se pudo procesar los datos desde Amazon!',
 	'amazonplus-used' => 'usado',
 	'amazonplus-german' => 'Alemán',
 	'amazonplus-french' => 'Francés',
@@ -840,6 +845,27 @@ $messages['ru'] = array(
 	'amazonplus-cp-none' => 'Нет',
 	'amazonplus-more' => 'больше',
 	'amazonplus-less' => 'меньше',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'amazonplus-desc' => 'Amazon саайтыттан ылыллар билиигэ туттуллар уларытыллар тупсарыы',
+	'amazonplus-nores' => 'Алҕас: Туох да көстүбэтэ!',
+	'amazonplus-noidres' => 'Алҕас: Табаар ID нүөмэрин булар табыллыбата!',
+	'amazonplus-fgcerr' => 'Алҕас: Amazon саайтын кытта ситимнэһэр табыллыбата!',
+	'amazonplus-slserr' => 'Error: Amazon саайтыттан ылыллыбыт информация кыайан ааҕыллыбата!',
+	'amazonplus-used' => 'туттуллар',
+	'amazonplus-german' => 'ниэмэс',
+	'amazonplus-french' => 'француз',
+	'amazonplus-japanese' => 'дьоппуон',
+	'amazonplus-amazon' => 'Amazon сыаната',
+	'amazonplus-new' => 'саҥа',
+	'amazonplus-none' => 'Бу табаар атыыга тахсара бүппүт.',
+	'amazonplus-cp-none' => 'Суох',
+	'amazonplus-more' => 'өссө',
+	'amazonplus-less' => 'аҕыйат',
 );
 
 /** Slovak (Slovenčina)

@@ -707,9 +707,34 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Drini
  */
 $messages['es'] = array(
+	'math_noblahtex' => 'No se puede ejecutar blahtex, que deberia estar en $1',
+	'math-desc' => 'Salida MathML para etiquetas &lt;math&gt;',
+	'math_AmbiguousInfix' => 'Colocación ambigua de "$1".
+Intenta usar llaves adicionales "{ ... }" para precisar.',
+	'math_CannotChangeDirectory' => 'No se puede cambiar directorio actual',
+	'math_CannotCreateTexFile' => 'No se puede crear archivo tex',
+	'math_CannotRunDvipng' => 'No se puede ejecutar dvipng',
+	'math_CannotRunLatex' => 'No se puede ejecutar latex',
+	'math_CannotWritePngDirectory' => 'No se puede escribir al directorio de salida PNG',
+	'math_CannotWriteTexFile' => 'No se puede escribir en el archivo tex',
+	'math_CasesRowTooBig' => 'Sólo puede haber dos entradas en cada línea de un bloque "cases" (casos).',
+	'math_DoubleSubscript' => 'Se encontraron dos subíndices anexos a una misma base.
+Sólo se permite uno.',
+	'math_DoubleSuperscript' => 'Se encontraro dos superíndices anexos a una misma base.
+Sólo se permite uno.',
 	'math_IllegalCharacter' => 'Caracter ilegal en la entrada',
+	'math_IllegalCommandInMathMode' => 'El comando "$1" es ilegal en modo matemático',
+	'math_IllegalCommandInMathModeWithHint' => 'El comando "$1" es ilegal en modo matemático.
+¿Quizás querías usar "$2" ?',
+	'math_IllegalCommandInTextMode' => 'El comando "$1" es ilegal en modo texto',
+	'math_IllegalCommandInTextModeWithHint' => 'El comando $1$ es ilegal en modo texto.
+¿Quizás querías usar "$2" ?',
+	'math_IllegalDelimiter' => 'Delimitador ilegal a continuación de "$1"',
+	'math_IllegalFinalBackslash' => 'Barra ilegal "\\" al final de la entrada',
+	'math_IllegalNestedFontEncodings' => 'Comandos de codificación de fuentes no pueden estar anidados',
 	'math_IllegalRedefinition' => 'El comando "$1" ya ha sido definido; usted no puede redefinirlo',
 	'math_InvalidColour' => 'El color "$1" es inválido',
 	'math_TooManyMathmlNodes' => 'Hay demasiados nodos en el árbol MathML',

@@ -1658,6 +1658,7 @@ $wdMessages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
+ * @author Ortografix
  * @author Purodha
  * @author Revolus
  * @author Umherirrender
@@ -1811,7 +1812,7 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_OptionAttributeValues' => 'Optionswerte',
 	'ow_OtherDefinedMeaning' => 'Andere DefinedMeaning',
 	'ow_PopupAnnotation' => 'Annotation',
-	'ow_RecordLifeSpan' => 'Laufzeit aufzeichnen',
+	'ow_RecordLifeSpan' => 'Datensatz-Lebenslauf',
 	'ow_Relations' => 'Relationen',
 	'ow_RelationType' => 'Relationstyp',
 	'ow_Remove' => 'Entfernen',
@@ -1856,7 +1857,7 @@ Bitte kontaktiere den Serveradminstrator.',
 	'ow_no_action_specified' => '<h3>Es wurde keine Aktion angegeben</h3> Vielleicht kamst du direkt zu dieser Seite?',
 	'ow_db_consistency_not_found' => '<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidata kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.',
 	'ow_history_transaction' => 'Transaktion:',
-	'ow_history_show_life_span' => 'Aufgezeichnete Laufzeit zeigen:',
+	'ow_history_show_life_span' => 'Lebenslauf anzeigen:',
 	'ow_class_attr_type_dm' => 'Festgelegte Bedeutung',
 	'ow_class_attr_type_xlate' => 'Übersetzbarer Text',
 	'ow_class_attr_type_plain' => 'Klartext',
@@ -5127,6 +5128,7 @@ $wdMessages['lb'] = array(
 	'datasearch_language' => 'Sprooch:',
 	'datasearch_found_word' => 'Wuert fonnt',
 	'datasearch_meaning' => 'Bedeitung',
+	'datasearch_ext_identifier' => 'Externen Idendificateur',
 	'datasearch_search_text' => 'Sichtext:',
 	'datasearch_within_words' => 'An de Wierder:',
 	'importtsv' => 'Wikidata: TSV importéieren',

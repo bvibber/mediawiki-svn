@@ -468,6 +468,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'newusermessage-desc' => 'Föiget ne Ättergjucht ap do Benutserdiskussionssieden näi anmäldede Benutsere bietou',
+	'newuseredit-summary' => 'Begröitet n näien Benutser ap sien Diskussionssiede mäd n [[{{int:newusermessage-template}}|Wäilkuumens-Ättergjucht]]',
 );
 
 /** Sundanese (Basa Sunda)

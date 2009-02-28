@@ -377,10 +377,12 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Drini
  * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
+	'imagemap_desc' => "Permite ''image-maps'' dinámicos usando la etiqueta <tt><nowiki><imagemap></nowiki></tt>",
 	'imagemap_no_image' => 'Error: hay que especificar un imagen en la línea primera',
 	'imagemap_invalid_image' => 'Error: la imagen no es válida o no existe',
 	'imagemap_bad_image' => 'Error: la imagen esta en la lista negra en esta página',

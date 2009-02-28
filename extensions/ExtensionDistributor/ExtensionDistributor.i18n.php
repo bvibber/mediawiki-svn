@@ -1211,6 +1211,57 @@ Déi meescht Erweiderungen fonctionnéieren mat verschiddene Versioune vu MediaW
 	'extdist-want-more' => 'Eng aner Erweiderung benotzen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'extensiondistributor' => 'Download MediaWiki extension',
+	'extdist-desc' => 'Extension veur distributere snapshot archieve óf extensions',
+	'extdist-not-configured' => 'Maak de instellinge veur $wgExtDistTarDir en $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'De instelde werkmap besteit neet!',
+	'extdist-no-such-extension' => 'De uitbreiding "$1" besteit neet',
+	'extdist-no-such-version' => 'De uitbreiding "$1" besteit neet in de versie "$2".',
+	'extdist-choose-extension' => 'Selekteer de extensie dae se wils downloade:',
+	'extdist-wc-empty' => 'De ingestelde werkmap bevat gein te distributere extensies!',
+	'extdist-submit-extension' => 'Doorgaon',
+	'extdist-current-version' => 'Hujige versie (trunk)',
+	'extdist-choose-version' => '<big>De bös de uitbreiding <b>$1</b> aan t downloade.</big>
+
+Selecteer de versie van MediaWiki.
+
+De meiste uitbreidinge werke met meerdere versies van MediaWiki, dus as de versie neet in de lies steit, of as se behoefte höbs aan de nieuwste meugelikhede van de uitbreidinge, gebroek den de hujige versie.',
+	'extdist-no-versions' => 'De geselecteerde uitbreiding ($1) is in gein enkele versie besjikbaar!',
+	'extdist-submit-version' => 'Doorgaon',
+	'extdist-no-remote' => 't Waas neet meugelik de externe subversionclient te benadere',
+	'extdist-remote-error' => 'Fout van de externe subversionclient: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Ongeldig antwoord van de externe subversionclient.',
+	'extdist-svn-error' => 'Subversion göf de volgende foutmelding: <pre>$1</pre>',
+	'extdist-svn-parse-error' => '\'t Waas neet meugelik de XML van "svn info" te verwerke: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar goof de volgende exitcode $1:',
+	'extdist-created' => 'De snapshot voor versie <b>$2</b> voor de uitbreiding <b>$1</b> voor MediaWiki <b>$3</b> is aangemaakt. Uw download start automatisch over 5 seconden.
+
+De URL voor de snapshot is:
+:$4
+Deze verwijzing kan gebruikt worden door het direct downloaden van de server, maar maak geen bladwijzers aan, omdat de inhoud bijgewerkt kan worden, of de snapshot op een later moment verwijderd kan worden.
+
+Pak het tararchief uit in uw map "extensions/". Op een UNIX-achtig besturingssysteem gaat dat als volgt:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Op Windows kunt u [http://www.7-zip.org/ 7-zip] gebruiken om de bestanden uit te pakken.
+
+Als uw wiki op een op afstand beheerde server staat, pak de bestanden dan uit in een tijdelijke map op uw computer. Upload daarna \'\'\'alle\'\'\' uitgepakte bestanden naar de map "extensions/" op de server.
+
+Een aantal uitbreidingen hebben het bestand ExtensionFunctions.php nodig, <tt>extensions/ExtensionFunctions.php</tt>, dat in de map direct boven de map met de naam van de uitbreiding hoort te staan. De snapshots voor deze uitbreidingen bevatten dit bestand als tarbomb. Het wordt uitgepakt als ./ExtensionFunctions.php. Vergeet dit bestand niet te uploaden naar uw server.
+
+Nadat u de bestanden hebt uitgepakt en op de juiste plaatst hebt neergezet, moet u de uitbreiding registreren in LocalSettings.php. In de documentatie van de uitbreiding treft u de instructies aan.
+
+Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[Extension talk:ExtensionDistributor]].',
+	'extdist-want-more' => "Nag 'n uitbreiding downloade",
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

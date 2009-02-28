@@ -125,6 +125,24 @@ $messages['bn'] = array(
 	'chemFunctions_ChemFormInputError' => 'রাসায়নিক ফর্ম: ইনপুট ত্রুটি!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'chemicalsources' => 'Mammennoù kimiek',
+	'chemicalsource-desc' => 'Ouzhpennañ a ra ar valizenn <nowiki><chemform></nowiki>, evit ar formulennoù kimiek',
+	'chemFunctions_ListPage' => 'Mammennoù kimiek',
+	'chemFunctions_DataList' => 'Dindan ez eus ur roll liammoù a gas da lec\'hiennoù a c\'hall reiñ titouroù diwar-benn an danvezennoù kimiek a glaskit.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Kediad $MIXCASNameFormula at NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS Skol-veur Oxford (UK) (diglaskus)</a><br />',
+	'chemFunctions_CAS' => 'Niverenn CAS',
+	'chemFunctions_ATCCode' => 'Kod ATC',
+	'chemFunctions_ECNumber' => 'Nomenkladur EC',
+	'chemFunctions_Formula' => 'Formulenn',
+	'chemFunctions_Name' => 'Anv IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform, enmont faziek !',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

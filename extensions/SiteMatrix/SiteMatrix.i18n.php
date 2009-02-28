@@ -32,6 +32,17 @@ $messages['qqq'] = array(
 	'sitematrix-sitetotal' => '{{Identical|Total}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'sitematrix-language' => 'Kel’',
+	'sitematrix-sitetotal' => 'Kaiked',
+	'sitematrix-private' => 'privatine',
+	'sitematrix-fishbowl' => 'redaktiruind om kaidetud',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -771,6 +782,7 @@ $messages['id'] = array(
 $messages['io'] = array(
 	'sitematrix' => 'Listo di wiki-i Wikimedia',
 	'sitematrix-language' => 'Linguo',
+	'sitematrix-others' => 'Altra projekti di Wikimedia',
 	'sitematrix-sitetotal' => 'Sumo',
 	'sitematrix-private' => 'privata',
 );

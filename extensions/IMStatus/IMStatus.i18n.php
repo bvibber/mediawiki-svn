@@ -141,6 +141,19 @@ $messages['bg'] = array(
 	'imstatus_or' => 'или',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'imstatus_example' => 'Primjer',
+	'imstatus_possible_val' => 'Moguće vrijednosti',
+	'imstatus_or' => 'ili',
+	'imstatus_style' => 'stil statusnog pokazatelja',
+	'imstatus_your_name' => 'Vaše $1 ime',
+	'imstatus_icq_id' => 'Vaš ICQ ID',
+	'imstatus_icq_style' => 'broj između 0 i 26 (da, dostupno je 27 stilova...).',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -516,6 +529,7 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'imstatus-desc' => '各種インスタントメッセンジャーのオンライン状態を示すためのタグを追加する (AIM、Google トーク、ICQ、MSN/Live メッセンジャー、Skype、Xfire、Yahoo)',
@@ -526,8 +540,24 @@ $messages['ja'] = array(
 	'imstatus_max' => '最大',
 	'imstatus_min' => '最小',
 	'imstatus_or' => 'または',
+	'imstatus_style' => '状態の表示のスタイル',
+	'imstatus_action' => 'ボタンがクリックされたときのアクション',
+	'imstatus_details_saa' => 'すべてのスタイルとアクションについてのさらなる詳細は、$1をご参照ください。',
 	'imstatus_your_name' => 'あなたの$1の名前',
+	'imstatus_aim_presence' => '$1は、利用者がAIMをインストールしている場合にあなたにインスタントメッセージを送信するためにAIMを起動するリンクとともに、あなたの状態を表示します。',
+	'imstatus_aim_api' => '$1は、あなたにインスタントメッセージを送信できるように、ブラウザーを起動して JavaScript 版の AIM を表示するリンクを付けて、あなたの状態を表示します。',
+	'imstatus_gtalk_code' => 'あなたのGoogleトークコード',
+	'imstatus_gtalk_get_code' => 'あなたのGoogleトークコード: $1で取得する。',
+	'imstatus_gtalk_height' => 'ボックスの高さ（ピクセル単位）',
+	'imstatus_gtalk_width' => 'ボックスの幅（ピクセル単位）',
 	'imstatus_icq_id' => 'あなたのICQ ID',
+	'imstatus_icq_style' => '0から26の範囲の数（つまり、27の有効なスタイルが存在します…）',
+	'imstatus_live_code' => 'あなたのLive MessengerウェブサイトのID',
+	'imstatus_live_get_code' => 'あなたのLiveメッセンジャー・ウェブサイトのID: <strong>これは、あなたのeメールアドレスではなく</strong>、 <a href="$1">あなたのLiveメッセンジャーのオプション</a>で取得する必要があります。
+必要とされるIDは、"$2"と"$3"の間の文字と数字からなります。',
+	'imstatus_skype_nbstyle' => '註: もし、あなたがアクションをともなったスタイルを選択したならば、あなたの選択したアクションは、選択されたスタイルに適合するアクションで上書きされます。',
+	'imstatus_xfire_size' => '$1（最大）から$2（最小）のボタンのサイズ。',
+	'imstatus_yahoo_style' => '$1（最大）から$2（最小）のボタンのスタイル（$3と$4は、音声メール用）。',
 );
 
 /** Khmer (ភាសាខ្មែរ)

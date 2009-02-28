@@ -904,7 +904,7 @@ $messages['ru'] = array(
 	'gep-classicmode' => 'Классический режим',
 	'gep-genericmode' => 'Общий режим',
 	'gep-nosectioninstructions' => 'На этой странице нет разделов.
-Вы можете их добавить с помощью инструментов, размещённых справа.',
+Добавьте их с помощью инструментов из меню.',
 	'gep-nocategories' => 'Пожалуйста, выберите перед сохранением хотя бы одну категорию',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );

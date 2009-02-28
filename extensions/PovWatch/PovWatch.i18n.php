@@ -1630,6 +1630,8 @@ Beoachtje: uk nit foarhoundene Sieden konnen bietouföiged wäide un dät rakt n
 	'povwatch_added' => 'bietouföiged',
 	'right-povwatch_admin' => 'Dät Benutsergjucht touluuke of äntluuke, Sieden tou ju Beooboachtengslieste fon uur Benutsere bietouföigje tou duuren',
 	'right-povwatch_user' => 'Bietouföigjen fon Sieden tou ju Beooboachtengslieste fon uur Benutsere',
+	'action-povwatch_admin' => 'Gjuchte foar PovWatch tou ferwaltjen',
+	'action-povwatch_user' => 'föigje disse Siede tou ju Beoboachtengslieste fon n uur Benutser bietou',
 );
 
 /** Swedish (Svenska)
@@ -1807,11 +1809,15 @@ $messages['vec'] = array(
 	'povwatch_unsubscribed' => 'Desso te te sì disiscrito da PovWatch',
 	'povwatch_invalid_title' => "El tìtolo indicà no'l xe valido",
 	'povwatch_pushed' => "[[$1]] xe stà zontà su i {{PLURAL:$2|osservati speciali|osservati speciali}} de l'utente $2",
+	'povwatch_subscriber_list' => 'Se pol consultar la [[Special:PovWatch/subscribers|lista dei iscriti]].',
+	'povwatch_subscriber_list_intro' => '<strong>Lista dei iscriti</strong>',
+	'povwatch_not_allowed_subscribers' => 'No te ghè el parmesso de vardar la lista dei iscriti a PovWatch.',
 	'povwatch_unknown_subpage' => 'Sotopàxena sconossiùa.',
 	'povwatch_push' => 'Inviar',
 	'povwatch_title' => 'Titolo:',
 	'povwatch_comment' => 'Comento par el registro:',
 	'povwatch_no_log' => 'No ghe xe comenti in tel registro.',
+	'povwatch_no_subscribers' => 'No ghe xe iscriti.',
 	'povwatch_unsubscribe_intro' => 'Te sì iscrito a PovWatch.
 Struca el boton qua soto par disiscrìvarte.',
 	'povwatch_unsubscribe' => 'Disiscrìvete',

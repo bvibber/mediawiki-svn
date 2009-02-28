@@ -3360,6 +3360,27 @@ $messages['lfn'] = array(
 	'repoadmin-edit-button' => 'Oce',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'code' => 'Kodekontraol',
+	'code-comments' => 'Ópmèrkinger bie beoeardeiling',
+	'code-change-status' => "haet de '''staat''' veur dees verzie angerdj",
+	'code-change-tags' => "haet de '''labels''' veur dees verzie angerdj",
+	'code-change-removed' => 'gewösj:',
+	'code-change-added' => 'drbie:',
+	'code-prop-changes' => 'Logbook staat èn labels',
+	'code-desc' => '[[Special:Code|Hölpprogramma veur kodekontraol]] mid [[Special:RepoAdmin|óngerstäöning veur Subversion]]',
+	'code-no-repo' => 'dr Is gein repositoir ingesteldj!',
+	'code-load-diff' => 'Angeringslaajendje...',
+	'code-notes' => 'lèste ópmèrkinger',
+	'code-authors' => 'sjrievers',
+	'code-status' => 'staat',
+	'code-tags' => 'labels',
+	'code-status-ok' => 'gaon',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

@@ -191,15 +191,21 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Drini
  */
 $messages['es'] = array(
 	'postcomment_desc' => 'Permite a los usuarios enviar comentarios directamente en las páginas de discusión.',
 	'postcomment_discussionprotected' => 'Esta página de discusión ha sido protegido de envíos adicionales.',
+	'postcomment_notloggedin' => 'No has ingresado al sistema.',
+	'postcomment_youareloggedinas' => 'Has ingresado como $1',
 	'postcomment_addcommentdiscussionpage' => 'Agregar tu comentario en esta página de discusión',
 	'postcomment_leavemessagefor' => 'Dejar un mensaje para $1',
+	'postcomment_post' => 'Enviar',
+	'postcomment_on' => 'el',
 	'postcomment_said' => 'dijo',
 	'postcomment_invalidrequest' => 'Solicitud inválida.',
 	'postcomment_replyto' => 'Responder a $1',
+	'postcomment_nopostingtoadd' => 'No hay mensaje qué añadir.',
 );
 
 /** Basque (Euskara)
@@ -829,8 +835,18 @@ $messages['tl'] = array(
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'postcomment_desc' => 'Kullanıcıların doğrudan tartışma sayfalarına yorum göndermelerine izin verir.',
+	'postcomment_discussionprotected' => 'Bu tartışma sayfası ileriki gönderimler için koruma altındadır.',
+	'postcomment_notloggedin' => 'Oturum açmadınız.',
+	'postcomment_youareloggedinas' => '$1 olarak oturum açmadınız',
+	'postcomment_addcommentdiscussionpage' => 'Bu tartışma sayfasına yorumunuzu ekleyin',
+	'postcomment_leavemessagefor' => '$1 için bir mesaj bırakın',
 	'postcomment_post' => 'Posta',
+	'postcomment_on' => 'Tarihinde',
+	'postcomment_said' => 'dedi ki',
 	'postcomment_invalidrequest' => 'Geçersiz istek.',
+	'postcomment_replyto' => "$1'e cevap ver",
+	'postcomment_nopostingtoadd' => 'Eklenecek gönderi yok.',
 );
 
 /** Ukrainian (Українська)

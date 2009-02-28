@@ -131,8 +131,10 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author KalmerE.
  */
 $messages['et'] = array(
+	'abcdesc' => 'Lisab <tt>&lt;abc&gt;</tt> laiendi ABC muusika vormindamiseks.',
 	'abcdownload' => 'Laadi alla:',
 );
 

@@ -95,6 +95,21 @@ $messages['bg'] = array(
 	'nss-welcome-mail' => 'Беше ви създадена сметка с потребителско име $1 и парола $2.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'am-username' => 'korisničko ime',
+	'am-email' => 'e-mail',
+	'am-active' => 'aktivan',
+	'am-updated' => 'Vaše promjene su uspješno sačuvane',
+	'nss-rights' => 'prava',
+	'nss-save-changes' => 'Spremi promjene',
+	'nss-create-account-header' => 'Napravi novi račun',
+	'nss-create-account' => 'Napravi račun',
+	'nss-no-mail' => 'Ne šalji e-mail',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -348,18 +363,25 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'accountmanager' => 'アカウントマネージャー',
 	'am-username' => 'ユーザー名',
 	'am-email' => '電子メール',
 	'am-active' => '有効',
+	'am-updated' => 'あなたの変更の保存が成功しました',
+	'nss-desc' => 'libnss-mysqlデータベースに対して認証を行うプラグイン。[[Special:AccountManager|アカウント・マネージャー]]を含む。',
 	'nss-rights' => '権限',
 	'nss-save-changes' => '変更を保存',
 	'nss-create-account-header' => '新しいアカウントを作成',
 	'nss-create-account' => 'アカウントの作成',
+	'nss-no-mail' => 'eメールを送らない',
+	'nss-welcome-mail' => '利用者名 $1、パスワード $2 のアカウントが、あなた用に作成されました。',
 	'nss-welcome-mail-subject' => 'アカウント作成',
+	'nss-db-error' => '認証データベースからの読み込みエラー',
 );
 
 /** Khmer (ភាសាខ្មែរ)

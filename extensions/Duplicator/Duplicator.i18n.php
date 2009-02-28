@@ -204,7 +204,10 @@ Ovo je korisno za dijeljenje stranice itd.',
 	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revizija je kopirana|revizije su kopirane|revizija je kopirano}}.',
 	'duplicator-success-talkcopied' => 'Stranica za razgovor je također kopirana.',
 	'duplicator-success-talknotcopied' => 'Stranica za razgovor se nije mogla kopirati.',
+	'duplicator-failed' => 'Stranica nije mogla biti duplicirana.
+Desila se nepoznata greška.',
 	'duplicator-source-invalid' => 'Molimo navedite valjan izvorni naslov.',
+	'duplicator-source-notexist' => '[[$1]] ne postoji. Molimo navedite naslov stranice koji postoji.',
 	'duplicator-dest-invalid' => 'Molimo navedite valjan naslov odredišta.',
 );
 

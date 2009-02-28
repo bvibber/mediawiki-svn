@@ -242,9 +242,26 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Drini
  */
 $messages['es'] = array(
 	'call' => 'Llamar',
+	'call-desc' => 'Crea un enlace a una plantilla (o página wiki normal) pasando parámetros.
+Puede usarse en la línea de comandos del navegador o dentro de wikitexto.',
+	'call-text' => 'La extensión Call recibe una página wiki y parámetros opcionales para esa página como argumentos.
+
+Ejemplo 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Ejemplo 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+Ejemplo 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Ejemplo 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My Page,parm1=value1</tt>
+
+La <i>extensión Call</i> llamará a la paǵina indicada y pasará los parámetros.<br />
+Verás los contenidos de la página llamada y su título, pero su "tipo" será el de una página especial (esto es, no podrá ser editada)<br />Los contenidos que veas dependerán del valor de los parámetros indicados.
+
+La <i>extensión Call</i> es útil para construir aplicaciones interactivas con MediaWiki.<br />
+Por ejemplo: <a href=\'http://semeb.com/dpldemo/Template:Catlist\'>la interfaz DPL</a> ..<br />
+En caso de problemas, puedes invocar <b>Special:Call/DebuG</b>',
+	'call-save' => "El resultado de esta llamada se guardará en una página llamada ''$1''.",
 	'call-save-success' => 'El siguiente texto ha sido grabado a la página <big>[[$1]]</big> .',
 	'call-save-failed' => 'El siguiente texto NO ha sido grabado a la página <big>[[$1]]</big> porque esa página ya existe.',
 );

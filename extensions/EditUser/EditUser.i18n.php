@@ -167,6 +167,10 @@ $messages['bs'] = array(
 	'edituser' => 'Uređivanje korisnika',
 	'edituser-username' => 'Ime',
 	'edituser-dosearch' => 'Traži',
+	'edituser-nouser' => 'Navedeni korisnik ne postoji',
+	'edituser-exempt' => 'Navedeni korisnik ne može biti uređivan',
+	'right-edituser' => 'Uređivanje postavki drugih korisnika',
+	'right-edituser-exempt' => 'Drugi ne mogu uređivati postavke ovog korisnika',
 );
 
 /** Buginese (ᨅᨔ ᨕᨘᨁᨗ)

@@ -412,6 +412,19 @@ $messages['lb'] = array(
 	'contrib-tracking-button' => 'Weider',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'contributiontracking-desc' => 'Vólge ven gifte veur de fónswèrving ven Wikimedia',
+	'contributiontracking' => 'Gifte vólge',
+	'contrib-tracking-error' => 'Fout',
+	'contrib-tracking-error-text' => 'Óngèldige formuleerinveur',
+	'contrib-tracking-submitting' => "Bezig mit 't oetveure venne betaling...",
+	'contrib-tracking-continue' => 'Es se neet automatisch wörs doorgestuurdj, klik den óp de knoep óm dien gif via PayPal aaf te make.',
+	'contrib-tracking-button' => 'Doorgaon',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

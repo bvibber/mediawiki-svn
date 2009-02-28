@@ -127,6 +127,8 @@ $messages['bs'] = array(
 	'onlinestatus-toggles-show' => 'Prikaži status na mreži na mojoj korisničkoj stranici',
 	'onlinestatus-toggle-offline' => 'Van mreže',
 	'onlinestatus-toggle-online' => 'Na mreži',
+	'tog-onlineOnLogin' => "Promijeni moj status na ''na mreži'' pri prijavi",
+	'tog-offlineOnLogout' => "Promijeni moj status na ''van mreže'' pri odjavi",
 );
 
 /** Catalan (Català)
@@ -855,6 +857,9 @@ $messages['tl'] = array(
  */
 $messages['vec'] = array(
 	'onlinestatus-desc' => "Zonta na preferensa par mostrar se l'utente el xe presente in sto momento su la wiki",
+	'onlinestatus-js-anon' => 'Eròr: te devi aver fato el login par doparar sta funsion',
+	'onlinestatus-js-changed' => 'El to stato el xe stà canbià a "$1"',
+	'onlinestatus-js-error' => 'No se pol canbiar el stato, el valor "$1" no\'l xe vàlido',
 	'onlinestatus-subtitle-offline' => "Sto utente desso no'l xe mìa in linea",
 	'onlinestatus-subtitle-online' => 'Sto utente desso el xe in linea',
 	'onlinestatus-tab' => 'Stato',
@@ -863,6 +868,8 @@ $messages['vec'] = array(
 	'onlinestatus-toggles-show' => 'Mostra se son in linea o no su la me pagina utente',
 	'onlinestatus-toggle-offline' => 'Mìa in linea',
 	'onlinestatus-toggle-online' => 'In linea',
+	'tog-onlineOnLogin' => 'Canbia el me stato a "online" co fasso el login',
+	'tog-offlineOnLogout' => 'Canbia el me stato a "offline" co me desconéto',
 );
 
 /** Vietnamese (Tiếng Việt)

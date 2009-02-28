@@ -342,6 +342,7 @@ Klaku <a href='$1'>ĉi tie</a> por reveni.",
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Drini
  * @author Imre
  * @author Sanbec
  */
@@ -351,7 +352,13 @@ $messages['es'] = array(
 	'spamdifftool_cantedit' => 'Disculpe - usted no tiene permiso para editar la lista negra de spam.',
 	'spamdifftool_notext' => "No hay texto para agregar en la lista negra de spam.
 Click <a href='$1'>aquí</a> para continuar.",
+	'spamdifftool_confirm' => "Confirme que desea añadir estas entradas a la lista negra de Spam.
+(Haga click <a href='$1' target='new'>aquí</a> para reportar un problema).",
 	'spamdifftool_summary' => 'Agregando a la lista negra de spam',
+	'spamdifftool_urls_detected' => 'Las siguientes URLS fueron detectadas en la edición. ¿Cuales desea que se añadan a la lista negra de spam?
+Estas opciones se ordenan de la más restrictiva a la menos, bloqueando el dominion entero bloqueará todos los enlaces que provengan de él.
+
+Asegúrese se no bloquear dominios enteros que hospeden cuentas de usuario (como blogspot, geocities, etc.).',
 	'spamdifftool_no_urls_detected' => "Ningún urls fue borrado.
 Click <a href='$1'>aquí</a> para regresar.",
 	'spamdifftool_spam_link_text' => 'agregar a spam',
@@ -1174,7 +1181,13 @@ Pindutin <a href='$1'>dito</a> para makabalik.",
  */
 $messages['tr'] = array(
 	'spamdifftool' => 'Spam karalistesini yönet',
+	'spamdifftool_spam_link_text' => "spam'e ekle",
+	'spamdifftool_option_domain' => 'bu domainden hepsini',
+	'spamdifftool_option_subdomain' => 'bu alt domainden hepsini',
+	'spamdifftool_option_directory' => 'bu alt domain ve dizin',
+	'spamdifftool_option_none' => 'hiçbir şey',
 	'spamdifftool_block' => 'Engelle:',
+	'spamdifftool_submit_buttom' => 'Gönder',
 );
 
 /** Ukrainian (Українська)

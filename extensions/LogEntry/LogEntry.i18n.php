@@ -60,6 +60,13 @@ $messages['bar'] = array(
 	'logentry-invalidpage' => 'Ungültige Seitn',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'logentry-invalidpage' => 'Nevaljana stranica',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
