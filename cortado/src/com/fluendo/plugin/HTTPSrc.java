@@ -405,13 +405,13 @@ public class HTTPSrc extends Element
       documentBase = (URL)value;
     }
     else if (name.equals("userId")) {
-      userId = String.valueOf(value);
+      userId = (value == null) ? null : String.valueOf(value);
     }
     else if (name.equals("userAgent")) {
       userAgent = String.valueOf(value);
     }
     else if (name.equals("password")) {
-      password = String.valueOf(value);
+      password = (value == null) ? null : String.valueOf(value);
     }
     else if (name.equals("readSize")) {
       readSize = Integer.parseInt((String)value);
