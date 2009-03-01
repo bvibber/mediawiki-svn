@@ -958,6 +958,24 @@ With regards,
 $2',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'userrightsnotifysubject' => 'Canbiamento del grupo de apartenensa in $1',
+	'userrightsnotifybody' => 'Ciao $1.
+
+Te informemo che el to grupo de apartenensa su $2 el xe stà canbià da $3 el $4
+
+Xontà: $5
+Cavà: $6
+
+Con tanti saluti,
+
+$2',
+	'userrightsnotif-desc' => 'Manda na e-mail de notifica co vien canbià i diriti del grupo utente de un utente',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

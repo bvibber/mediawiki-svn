@@ -313,6 +313,13 @@ $messages['tl'] = array(
 	'randomimage-desc' => 'Nagbibigay ng isang tagapili ng alin mang midya sa pamamagitan ng paggamit ng <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'randomimage-desc' => '<tt>&lt;randomimage /&gt;</tt> kullanarak bir rasgele ortam alıcısı sağlar',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

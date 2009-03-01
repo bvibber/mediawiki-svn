@@ -405,6 +405,16 @@ $messages['tl'] = array(
 	'signaturelogentry' => 'nilagdaan na ang kasulatang $1',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'signaturelogpage' => 'Registro de le firme',
+	'signature-desc' => 'Permete de [[Special:SignDocument|firmar]] i documenti',
+	'signaturelogpagetext' => 'Sto qua el xe un registro de [[Special:SignDocument|tute le firme xontà ai documenti]].',
+	'signaturelogentry' => 'gà firmà el documento $1',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

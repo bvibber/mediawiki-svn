@@ -541,6 +541,15 @@ $messages['uk'] = array(
 	'categorystepper-start' => '(початок категорії)',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'categorystepper-desc' => 'Mostra un quadro de le categorie permetendoghe ai utenti de navigar avanti e indrìo alfabeticamente atraverso le varie categorie de cui fa parte na pàxena',
+	'categorystepper-end' => '(Fine de la categoria)',
+	'categorystepper-start' => '(Scominsio de la categoria)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

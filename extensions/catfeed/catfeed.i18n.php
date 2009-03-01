@@ -168,6 +168,15 @@ $messages['lb'] = array(
 Leet eng nei Versioun an der Säit unn, besonnesch nëtzlech fir Wikinews',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'catfeed-desc' => "Gebroek informatie oet de recente wieziginge.
+Maak 'n versie binne 'n pagina.
+In 't biezunjer henjig veur Wikinews",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

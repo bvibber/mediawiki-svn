@@ -395,3 +395,16 @@ Bu ayrıca, kullanıcı sayfanızı OpenID olarak kullanmanıza da izin verir.",
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'linkopenid-desc' => 'Permete ai utenti de ligar la so utensa a un OpenID esterno',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Se te ghè un OpenID da un provider esterno te poli indicarli qua.
+Questo el te permete de doparar la to pàxena utente come OpenID.',
+	'linkopenid-prefstext-openid' => 'El to OpenID:',
+	'linkopenid-prefstext-v1url' => 'Server-URL par OpenID Version 1.1:',
+	'linkopenid-prefstext-v2url' => 'Server-URL par OpenID Version 2:',
+);
+

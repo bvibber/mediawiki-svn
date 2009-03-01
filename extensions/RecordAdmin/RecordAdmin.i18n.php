@@ -150,11 +150,13 @@ $messages['bg'] = array(
 	'recordadmin-invert' => 'Обръщане на избора',
 	'recordadmin-buttonsearch' => 'Търсене',
 	'recordadmin-buttoncreate' => 'Създаване',
+	'recordadmin-searchresult' => 'Резултати от търсенето',
 	'recordadmin-edit' => 'Редактиране на $1',
 	'recordadmin-updateerror' => 'Възникна грешка по време на обновяването',
 	'recordadmin-buttonsave' => 'Съхраняване',
 	'recordadmin-viewlink' => 'преглеждане',
 	'recordadmin-editlink' => 'редактиране',
+	'recordadmin-actions' => 'Действия',
 );
 
 /** German (Deutsch)

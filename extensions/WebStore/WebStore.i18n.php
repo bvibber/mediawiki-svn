@@ -1826,6 +1826,61 @@ $1',
 	'webstore_no_handler' => 'Não há um tratador para transformar este tipo MIME',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'inplace_access_disabled' => 'O acesso a este serviço foi desabilitado para todos os clientes.',
+	'inplace_access_denied' => 'Este serviço está restringido por IP de cliente.',
+	'inplace_scaler_no_temp' => 'Não existe diretório temporário, defina $wgLocalTmpDirectory com uma diretório onde seja possível escrever.',
+	'inplace_scaler_not_enough_params' => 'Parâmetros insuficientes.',
+	'inplace_scaler_invalid_image' => 'Imagem inválida. Não foi possível determinar o tamanho.',
+	'inplace_scaler_failed' => 'Foi encontrado um erro durante o escalamento da imagem: $1',
+	'inplace_scaler_no_handler' => 'Nenhum manipulador definido para transformar este tipo MIME',
+	'inplace_scaler_no_output' => 'Nenhum arquivo de saída de transformação foi gerado.',
+	'inplace_scaler_zero_size' => 'A transformação produziu um arquivo de saída de tamanho zero.',
+	'webstore-desc' => 'Middleware de armazenamento de arquivos apenas Web (não NFS)',
+	'webstore_access' => 'Este serviço está restrito por IP cliente.',
+	'webstore_path_invalid' => 'O nome de arquivo é inválido.',
+	'webstore_dest_open' => 'Impossível abrir o arquivo de destino "$1".',
+	'webstore_dest_lock' => 'Falha ao bloquear o arquivo de destino "$1".',
+	'webstore_dest_mkdir' => 'Impossível criar o diretório de destino "$1".',
+	'webstore_archive_lock' => 'Falha ao bloquear o arquivo "$1".',
+	'webstore_archive_mkdir' => 'Impossível criar a pasta de arquivo "$1".',
+	'webstore_src_open' => 'Impossível abrir o arquivo original "$1".',
+	'webstore_src_close' => 'Erro ao fechar o arquivo original "$1".',
+	'webstore_src_delete' => 'Erro ao eliminar o arquivo original "$1".',
+	'webstore_rename' => 'Erro ao renomear o arquivo "$1" para "$2".',
+	'webstore_lock_open' => 'Erro ao abrir o arquivo de bloqueio "$1".',
+	'webstore_lock_close' => 'Erro ao fechar o arquivo de bloqueio "$1".',
+	'webstore_dest_exists' => 'Erro, o arquivo de destino "$1" já existe.',
+	'webstore_temp_open' => 'Erro ao abrir o arquivo temporário "$1".',
+	'webstore_temp_copy' => 'Erro ao copiar o arquivo temporário "$1" para o arquivo de destino "$2".',
+	'webstore_temp_close' => 'Erro ao fechar o arquivo temporário "$1".',
+	'webstore_temp_lock' => 'Erro ao bloquear o arquivo temporário "$1".',
+	'webstore_no_archive' => 'Arquivo destino existe e nenhum arquivo foi dado.',
+	'webstore_no_file' => 'Nenhum arquivo foi carregado.',
+	'webstore_move_uploaded' => 'Erro ao mover o arquivo carregado "$1" para a localização temporária "$2".',
+	'webstore_invalid_zone' => 'Zona "$1" inválida.',
+	'webstore_no_deleted' => 'Nenhuma pasta de arquivo para arquivos eliminados está definida.',
+	'webstore_curl' => 'Erro da cURL: $1',
+	'webstore_404' => 'Arquivo não encontrado.',
+	'webstore_php_warning' => 'Aviso PHP: $1',
+	'webstore_metadata_not_found' => 'Arquivo não encontrado: $1',
+	'webstore_postfile_not_found' => 'Arquivo a enviar não encontrado.',
+	'webstore_scaler_empty_response' => 'O redimensionador da imagem devolveu uma mensagem com o código de resposta 200.
+Isso pode ser devido a um erro fatal de PHP no redimensionador.',
+	'webstore_invalid_response' => 'Resposta inválida do servidor:
+
+$1',
+	'webstore_no_response' => 'Sem resposta do servidor',
+	'webstore_backend_error' => 'Erro do servidor de armazenamento:
+
+$1',
+	'webstore_php_error' => 'Foram encontrados erros PHP:',
+	'webstore_no_handler' => 'Não há um tratador para transformar este tipo MIME',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

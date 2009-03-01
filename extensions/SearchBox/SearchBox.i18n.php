@@ -526,6 +526,16 @@ $messages['ug-latn'] = array(
 	'searchbox-go' => 'Köchüsh',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'searchbox-desc' => "Permeti l'inclusion de mòduli de riserca",
+	'searchbox-search' => 'Serca',
+	'searchbox-go' => 'Và',
+	'searchbox-namespaces' => 'Namespace:',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

@@ -632,6 +632,16 @@ $messages['tr'] = array(
 	'userimages-noimages' => '$1 resmi yüklenemedi.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'userimages-desc' => 'Gènera galerìe de imagini cargà dai utenti con <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'Imagini cargà da $1',
+	'userimages-noname' => 'Nome utente sbalià o mancante.',
+	'userimages-noimages' => "$1 no'l gà cargà imagini.",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

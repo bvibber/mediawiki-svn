@@ -112,6 +112,11 @@ $aliases['nl'] = array(
 	'Badimages' => array( 'ZwarteLijstAfbeeldingen' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'Badimages' => array( 'Dårlege bilete' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'Badimages' => array( 'Dårlige bilder' ),

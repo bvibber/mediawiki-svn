@@ -134,6 +134,13 @@ $messages['lb'] = array(
 	'redirect-desc' => 'Erlaabt et Viruleedungen beim [[MediaWiki:Redirect-addnewaccount|Benotzerkont opmaachen]] an [[MediaWiki:Redirect-userlogoutcomplete|Ausloggen ]] einfach ze configuréieren.',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'redirect-desc' => 'Einvawdige instelling ven redireks bie [[MdiaWiki:Redirect-addnewaccount|gebroeker aanmake]] en [[MediaWiki:Redirect-userlogoutcomplete|aafmelje]]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

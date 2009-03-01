@@ -265,3 +265,11 @@ $messages['tl'] = array(
 	'random-users-avatars-desc' => "Nagdaragdag ng tatak na <tt>&lt;randomuserswithavatars&gt;</tt> upang maipakita/mapalitaw ang mga abatar/huwaran ng mga tagagamit na napili ayon sa ibinigay ng pagkakataon/tsansa (''random'')",
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'random-users-avatars-title' => 'Incontra la comunità',
+	'random-users-avatars-desc' => 'Xonta un tag <tt>&lt;randomuserswithavatars&gt;</tt> par far védar i avatar de utenti sielti a caso',
+);
+

@@ -414,6 +414,15 @@ $messages['uk'] = array(
 	'authors_anonymous' => 'Анонім',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'authors-desc' => 'Xonta a le pàxene na lista de contribudori',
+	'authors_authors' => 'Autori',
+	'authors_anonymous' => 'Anonimo',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

@@ -269,6 +269,13 @@ $messages['tl'] = array(
 	'navigationpopups-desc' => "Nagkakarga sa MediaWiki ng pangpaglilibot na mga panitik ng mga \"sulpot-litaw\" (''popup'') ni Lupin",
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'navigationpopups-desc' => 'Carga i script dei popup de navigassion de Lupin in MediaWiki',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

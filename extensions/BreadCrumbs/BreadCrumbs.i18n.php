@@ -218,6 +218,13 @@ $messages['lb'] = array(
 	'breadcrumbs-desc' => "Weist de Benotzer hire Wee duerch d'Wiki.",
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'breadcrumbs-desc' => 'Tuuntj gebroekerspaad dore wiki.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

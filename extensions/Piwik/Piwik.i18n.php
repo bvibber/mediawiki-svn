@@ -451,6 +451,16 @@ $messages['tl'] = array(
 	'piwik-browsers' => 'Mga pantingin-tingin',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'piwik-desc' => 'Inserìsse un script Piwik in te le pàxene MediaWiki par xontar [[Special:Piwik|alcune statìsteghe]]',
+	'piwik-lastvisits' => 'Ùltime vìsite',
+	'piwik-countries' => 'Paesi',
+	'piwik-browsers' => 'Browser',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -439,6 +439,13 @@ $messages['tr'] = array(
 	'usercontactlink-baduser' => 'Hatalı kullanıcı adı',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'usercontactlink-baduser' => 'nome utente mia justo',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

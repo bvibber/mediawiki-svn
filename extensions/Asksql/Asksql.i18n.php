@@ -682,6 +682,13 @@ Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofi
 	'right-asksql' => 'SQL-Offroe maachen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'asksql' => 'SQL-zeukopdrach',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Garas
  * @author Hugo.arg
@@ -1094,6 +1101,16 @@ $messages['uk'] = array(
 $messages['vec'] = array(
 	'asksql' => 'Query SQL',
 	'asksql-desc' => 'Esegue query SQL mediante na [[Special:Asksql|pagina speciale]]',
+	'asksqltext' => "El mòdulo qua soto el consente de eseguir interogassion direte sul database.
+Dòpara àpici singoli ('come sti qua') par indicar le stringhe costanti.
+Sta funsion la pode èssar molto onerosa nei confronti dei server, se
+prega quindi de dopararla con molta parsimonia.",
+	'sqlislogged' => 'Tien presente che tute le query le vien registrà.',
+	'sqlquery' => 'Inserissi la query',
+	'querybtn' => 'Manda la query',
+	'selectonly' => 'Se pode far solo query de letura.',
+	'querysuccessful' => 'Query eseguìa coretamente',
+	'right-asksql' => 'Eseguir quey SQL',
 );
 
 /** Vietnamese (Tiếng Việt)

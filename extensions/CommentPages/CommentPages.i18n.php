@@ -456,6 +456,14 @@ $messages['uk'] = array(
 	'nstab-comments' => 'Коментар',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'commentpages-desc' => 'Pàxene de comento par el namespace prinsipale',
+	'nstab-comments' => 'Comento',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

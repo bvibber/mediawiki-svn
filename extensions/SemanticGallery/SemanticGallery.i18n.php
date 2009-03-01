@@ -137,6 +137,13 @@ $messages['lb'] = array(
 	'semanticgallery-desc' => 'Setzt a Semantic MediaWiki-Ufroen e Gallerie-Output-Format derbäi',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'semanticgallery-desc' => "Voog 'n galerieoetveurformaat toe aan zeukopdrachte via Semantic MediaWiki",
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

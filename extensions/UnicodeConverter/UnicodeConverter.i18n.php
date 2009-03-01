@@ -557,6 +557,17 @@ $messages['uk'] = array(
 	'unicodeconverter-oldtext' => 'Оригінальний текст:',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'unicodeconverter' => 'Convertidor Unicode',
+	'unicodeconverter-desc' => 'Un senplice esenpio del mòdulo de na pàxena speciale. [[Special:UnicodeConverter|Data na stringa in UTF-8]], el la converte in entità HTML che vaga ben par na pàxena web ISO 8859-1',
+	'unicodeconverter-ok' => 'Va ben',
+	'unicodeconverter-oldtext' => 'Testo orixinàl:',
+	'unicodeconverter-newtext' => 'Testo convertìo:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

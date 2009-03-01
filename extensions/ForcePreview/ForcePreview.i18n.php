@@ -440,6 +440,15 @@ $messages['tl'] = array(
 	'right-forcepreviewexempt' => 'Maaaring sagipin na hindi ginagamit ang Ipakita ang paunang-tingin',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'forcepreview' => "Salva la pàxena (dòpara prima l'anteprima)",
+	'forcepreview-desc' => "Forza l'uso de l'anteprima par i utenti che no i gà privilegi suficenti",
+	'right-forcepreviewexempt' => 'El pol salvar sensa doparar el Mostra anteprima',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

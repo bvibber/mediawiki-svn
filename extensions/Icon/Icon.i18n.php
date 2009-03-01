@@ -524,6 +524,15 @@ $messages['tr'] = array(
 	'icon-badimage' => 'Kötü resim',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'icon-badimage' => 'Imagine mia valida',
+	'icon-badwidth' => 'Larghessa mia valida',
+	'icon-desc' => 'Permete de doparar le imagini come icone e icone con colegamento',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

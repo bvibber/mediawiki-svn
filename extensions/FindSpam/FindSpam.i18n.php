@@ -700,6 +700,7 @@ $messages['sk'] = array(
 	'findspam-ip' => 'IP adresa:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Neboli nájdené žiadne príspevky',
+	'right-findspam' => 'Hľadať iba nedávno pridaný spam',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

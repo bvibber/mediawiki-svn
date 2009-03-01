@@ -372,3 +372,11 @@ $messages['tl'] = array(
 	'whosonline-desc' => 'Nagpapakita ng [[Special:WhosOnline|isang talaan]] ng nakatala at hindi nagpapakilalang mga tagagamit na kasalukuyang nasa internet',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'whosonline' => 'Chi xe in linea',
+	'whosonline-desc' => 'Mosrta [[Special:WhosOnline|na lista]] dei utenti registrà e anonimi atualmente in linea',
+);
+

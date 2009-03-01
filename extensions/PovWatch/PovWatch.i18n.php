@@ -898,6 +898,7 @@ $messages['ko'] = array(
 	'povwatch_pushed' => '[[$1]] 문서가 $2명의 사용자 주시문서 목록에 성공적으로 추가되었습니다.',
 	'povwatch_subscriber_list_intro' => '<strong>수신자 목록</strong>',
 	'povwatch_title' => '제목:',
+	'povwatch_no_subscribers' => '수신자가 없습니다.',
 	'povwatch_subscribe' => '수신',
 );
 
@@ -1802,18 +1803,25 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Estension par [[Special:PovWatch|xontar pàxene sui osservati speciali]] de altri utenti',
 	'povwatch_no_session' => "Eròr: No se gà podesto inviar el mòdulo parché xe 'ndà persi i dati de la session.",
+	'povwatch_not_allowed_push' => 'No te sì mia un aministrador de PovWatch, no te poli xontar pàxene ai osservati speciali.',
 	'povwatch_already_subscribed' => 'Te sì zà iscrito a PovWatch',
 	'povwatch_subscribed' => 'Desso te sì iscrito a PovWatch',
 	'povwatch_not_subscribed' => 'No te sì mia iscrito a PovWatch, quindi no te poli disiscrìvarte.',
 	'povwatch_unsubscribed' => 'Desso te te sì disiscrito da PovWatch',
 	'povwatch_invalid_title' => "El tìtolo indicà no'l xe valido",
 	'povwatch_pushed' => "[[$1]] xe stà zontà su i {{PLURAL:$2|osservati speciali|osservati speciali}} de l'utente $2",
+	'povwatch_intro' => 'PovWatch el xe un servissio che el parmete de xontar, in maniera discreta, pàxene controverse ai osservati speciali dei aministradori iscriti al servissio.
+
+Un registro dei ultimi inserimenti el se cata su [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Se pol consultar la [[Special:PovWatch/subscribers|lista dei iscriti]].',
 	'povwatch_subscriber_list_intro' => '<strong>Lista dei iscriti</strong>',
 	'povwatch_not_allowed_subscribers' => 'No te ghè el parmesso de vardar la lista dei iscriti a PovWatch.',
 	'povwatch_unknown_subpage' => 'Sotopàxena sconossiùa.',
 	'povwatch_push' => 'Inviar',
+	'povwatch_push_intro' => 'Dòpara el mòdulo qua de soto par xontar pàxene sui osservati speciali dei utenti iscriti.
+Par piaser stà tento a scrìvar ben el tìtolo: anca pàxene che no esiste le se pol xontar, e no ghe xe modo de cavar un tìtolo na olta che el xe stà inserìo.',
 	'povwatch_title' => 'Titolo:',
 	'povwatch_comment' => 'Comento par el registro:',
 	'povwatch_no_log' => 'No ghe xe comenti in tel registro.',
@@ -1825,6 +1833,7 @@ Struca el boton qua soto par disiscrìvarte.',
 Struca el boton qua soto par iscrìvarte.',
 	'povwatch_subscribe' => 'Iscrìvete',
 	'povwatch_added' => 'zontà',
+	'right-povwatch_admin' => 'Diriti de utente aministrador par xontar pàxene ai osservati speciali de altri utenti',
 	'right-povwatch_user' => 'Zonta pàxene ai osservati speciali de altri utenti',
 	'action-povwatch_admin' => 'aministra i parmessi dei utenti par PovWatch',
 	'action-povwatch_user' => "zonta sta pàxena ai osservati speciali de n'altro utente",

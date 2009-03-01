@@ -259,7 +259,7 @@ $messages['dsb'] = array(
 	'formbadpagenametext' => 'Formularne daty, kótarež sy zapódał, napóraju njepłaśiwe mě boka, "$1".',
 	'formrequiredfielderror' => '{{PLURAL:$2|Pólo $1 jo trěbne|Póli $1 stej trěbnej|Póla $1 su trěbne|Póla $1 su trěbne}} za toś ten fromular.
 Pšosym wupołń {{PLURAL:$2|jo|jej|je|je}}.',
-	'formsavesummary' => 'Nowy bok na zakłaźe [[Special:Form/formulara $1]]',
+	'formsavesummary' => 'Nowy bok z pomocu [[Special:Form/$1|formulara $1]]',
 	'formsaveerror' => 'Zmólka pśi składowanju formulara',
 	'formsaveerrortext' => "Njeznata zmólka jo nastała pśi składowanju boka '$1'.",
 );

@@ -617,9 +617,9 @@ Rozmysl wó wužywanju "\\mathop".',
 Musy rowno jaden pśikaz definěrowany byś;
 musy se z nawopacneju nakósneju smužku "\\" zachopiś a smějo jano alfabetiske znamješka wopśimjeś.',
 	'math_MissingDelimiter' => 'Felujuce źěleńske znamuško za "$1"',
-	'math_MissingOpenBraceAfter' => 'Felujuca wócynjajuca wugibnjona spinka "<nowiki>{</nowiki>" za "$1"',
-	'math_MissingOpenBraceAtEnd' => 'Felujuca wócynjajuca wugibnjona spinka "<nowiki>{</nowiki>" na kóńcu zapódaśa',
-	'math_MissingOpenBraceBefore' => 'Felujuca wócynjajuca wugibnjona spinka "{" pśed "$1"',
+	'math_MissingOpenBraceAfter' => 'Felujuca wócynjajuca wugibnjona spinka "&#123;" za "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Felujuca wócynjajuca wugibnjona spinka "&#123;" na kóńcu zapódaśa',
+	'math_MissingOpenBraceBefore' => 'Felujuca wócynjajuca wugibnjona spinka "&#123;" pśed "$1"',
 	'math_MissingOrIllegalParameterCount' => 'Felujuca abo njedowólona licba w definiciji "$1".
 Musy to jadnotliwa cyfra mjazy 1 a inkluziwnje 9 byś.',
 	'math_MissingOrIllegalParameterIndex' => 'Felujucy abo njedowólony parametrowy indeks w definiciji "$1"',

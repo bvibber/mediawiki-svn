@@ -489,6 +489,18 @@ $messages['tl'] = array(
 	'interwikilist-prefix' => "Unlapi ng ugnayang-wiki (''interwiki''):",
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'interwikilist' => 'Vikilerarası listesi',
+	'interwikilist-desc' => 'Uygun vikilerarası bağlantıları görmek için bir [[Special:Interwikilist|özel sayfa]] ekler',
+	'interwikilist-linkname' => 'Vikilerarası bağlantı',
+	'interwikilist-target' => 'Hedef URL',
+	'interwikilist-filter' => 'Listeyi filtrele',
+	'interwikilist-prefix' => 'Vikilerarası öneki:',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

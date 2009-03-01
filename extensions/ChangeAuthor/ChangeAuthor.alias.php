@@ -127,6 +127,11 @@ $aliases['nl'] = array(
 	'ChangeAuthor' => array( 'AuteurWijzigen' ),
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'ChangeAuthor' => array( 'Endra forfattar' ),
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ChangeAuthor' => array( 'Endre forfatter' ),

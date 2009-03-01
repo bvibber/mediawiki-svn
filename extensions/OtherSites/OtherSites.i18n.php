@@ -351,6 +351,13 @@ $messages['tr'] = array(
 	'othersites' => 'Diğer siteler',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'othersites' => 'Altri siti',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

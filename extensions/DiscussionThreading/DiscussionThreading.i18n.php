@@ -244,8 +244,11 @@ $messages['ia'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Initiar un nove filo',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
 $messages['it'] = array(
+	'discussionthreading-desc' => "Aggiunge il ''threading'' alle pagine di discussione",
 	'discussionthreading-replysection' => 'rispondi',
 	'discussionthreading-replysectionhint' => 'Rispondi a questo messaggio',
 	'discussionthreading-threadnewsection' => 'nuovo',

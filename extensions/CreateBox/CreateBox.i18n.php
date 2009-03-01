@@ -591,6 +591,19 @@ $messages['uk'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'createbox-desc' => 'Inputbox specialixà par la creassion de pàxene',
+	'createbox-create' => 'Crèa',
+	'createbox-exists' => "Scusa, \"'''{{FULLPAGENAME}}'''\" la esiste de xà.
+
+No ti pol crear sta pàxena, ma ti pol [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificarla], [{{fullurl:{{FULLPAGENAME}}}} lèxerla] o sièliere de crear na pàxena difarente doparando la casèla qua soto.
+
+<createbox>break=no</createbox>",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

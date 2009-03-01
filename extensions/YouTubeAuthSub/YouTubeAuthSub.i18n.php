@@ -1498,9 +1498,12 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
+ * @author Izzudin
  */
 $messages['ms'] = array(
 	'youtubeauthsub' => 'Muat naik video YouTube',
+	'youtubeauthsub-desc' => 'Benarkan pengguna [[Special:YouTubeAuthSub|memuat naik video]] terus ke YouTube',
+	'youtubeauthsub_info' => 'Untuk muat naik video ke YouTube bagi disertakan dalam laman, isikan maklumat berikut:',
 	'youtubeauthsub_title' => 'Tajuk',
 	'youtubeauthsub_description' => 'Maklumat dan penerangan',
 	'youtubeauthsub_password' => 'Kata laluan YouTube',
@@ -1508,10 +1511,26 @@ $messages['ms'] = array(
 	'youtubeauthsub_keywords' => 'Kata kunci',
 	'youtubeauthsub_category' => 'Kategori',
 	'youtubeauthsub_submit' => 'Hantar',
+	'youtubeauthsub_clickhere' => 'Klik untuk log masuk ke YouTube',
+	'youtubeauthsub_tokenerror' => 'Ralat dalam menjana token kebenaran, cuba muat semula.',
+	'youtubeauthsub_success' => "Tahniah!
+Video anda telah dimuat naik.
+<a href='http://www.youtube.com/watch?v=$1'>Tonton video anda</a>.
+YouTube memerlukan masa untuk memproses video anda, ia mungkin belum sedia buat masa ini.
+
+Untuk letak video anda dalam laman wiki, letakkan kod berikut dalam laman:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Anda perlu log masuk sebelum boleh muat naik video ke YouTube.',
+	'youtubeauthsub_uploadhere' => 'Muat naik video dari sini:',
 	'youtubeauthsub_uploadbutton' => 'Muat naik',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Tonton video ini]',
 	'youtubeauthsub_summary' => 'Video YouTube sedang dimuat naik',
 	'youtubeauthsub_uploading' => 'Video anda sedang dimuat naik. 
 Kerjasama anda amat dihargai.',
+	'youtubeauthsub_viewpage' => 'Cara lain, anda dapat [[$1|tonton video anda]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Sila masukkan 1 atau lebih kata kunci.',
 	'youtubeauthsub_jserror_notitle' => 'Sila sertakan tajuk video',
 	'youtubeauthsub_jserror_nodesc' => 'Sila sertakan penerangan dan maklumat tentang video',
 );

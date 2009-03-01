@@ -1181,6 +1181,19 @@ Pindutin <a href='$1'>dito</a> para makabalik.",
  */
 $messages['tr'] = array(
 	'spamdifftool' => 'Spam karalistesini yönet',
+	'spamdifftool-desc' => 'Spam karalistesine fark sayfalarından yeni girdiler eklemek için basit bir yol sağlar',
+	'spamdifftool_cantedit' => 'Üzgünüz - spam karalistesini değiştirmek için izniniz yok.',
+	'spamdifftool_notext' => "Spam karalistesine eklenecek metin yok.
+Devam etmek için <a href='$1'>buraya</a> tıklayın.",
+	'spamdifftool_confirm' => "Bu girdileri spam karalistesine eklemek istediğinizi onaylayın.
+(Bir sorun bildirmek için <a href='$1' target='new'>buraya</a> tıklayın.)",
+	'spamdifftool_summary' => 'Spam kara listesine ekleniyor',
+	'spamdifftool_urls_detected' => 'Değişiklikte, aşağıdaki URLler algılandı, hangilerini spam karalistesine eklemek istersiniz?
+Bu seçenekler fazla kısıtlayıcıdan az kısıtlayıcıya sıralanır, bütün domaini engellemek bu domainden gelen tüm bağlantıları engeller.
+
+Kullanıcı hesapları barındıran domainleri -blogpost.com, geocities.com gibi- engellemediğinizden emin olun.',
+	'spamdifftool_no_urls_detected' => "Hiçbir url algılanmadı.
+Geri dönmek için <a href='$1'>buraya</a> tıklayın.",
 	'spamdifftool_spam_link_text' => "spam'e ekle",
 	'spamdifftool_option_domain' => 'bu domainden hepsini',
 	'spamdifftool_option_subdomain' => 'bu alt domainden hepsini',

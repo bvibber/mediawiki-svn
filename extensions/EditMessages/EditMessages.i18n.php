@@ -227,7 +227,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'editmessages-desc' => '[[SpeciaL:EditMessages|Wobźěłowanje]] wulkeje licby datajow Messages*.php we Webje',
+	'editmessages-desc' => '[[Special:EditMessages|Wobźěłowanje]] wulkeje licby datajow Messages*.php we Webje',
 	'editmessages' => 'Powěźeńki wobźěłaś',
 	'editmsg-target' => 'Celowa powěźeńka:',
 	'editmsg-search' => 'Pytaś',

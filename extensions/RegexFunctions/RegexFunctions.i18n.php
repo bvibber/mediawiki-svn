@@ -157,6 +157,13 @@ $messages['lb'] = array(
 	'regexfunctions-desc' => 'Parserfunktioune fir regulär Ausdréck',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'regexfunctions-desc' => 'Regelierexpressieparserfunksje',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

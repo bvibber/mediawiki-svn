@@ -428,6 +428,14 @@ $messages['sk'] = array(
 	'categoryonupload-label' => 'Kategória:',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Smihael
+ */
+$messages['sl'] = array(
+	'categoryonupload-desc' => 'Pozove, da uporabnik izbere kategorijo med nalaganjem',
+	'categoryonupload-label' => 'Kategorija:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -490,6 +498,14 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'categoryonupload-desc' => 'Дозволяє користувачеві вибрати категорію для завантажуваного файлу',
 	'categoryonupload-label' => 'Категорія:',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'categoryonupload-desc' => "Sugerisse a l'utente de selessionar na categoria par un file durante el so caricamento",
+	'categoryonupload-label' => 'Categoria:',
 );
 
 /** Vietnamese (Tiếng Việt)

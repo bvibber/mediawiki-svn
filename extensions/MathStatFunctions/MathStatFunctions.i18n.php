@@ -545,6 +545,16 @@ $messages['tl'] = array(
 	'msfunc_div_zero' => 'Hatiin sa pamamagitan ng wala',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'msfunc_desc' => 'Na racolta de funsion matemàteghe e statìsteghe',
+	'msfunc_nan' => "El risultato no'l xe un nùmaro",
+	'msfunc_inf' => 'El risultato el xe infinìo',
+	'msfunc_div_zero' => 'Division par xero',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

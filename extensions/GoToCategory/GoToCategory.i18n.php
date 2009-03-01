@@ -135,6 +135,13 @@ $messages['lb'] = array(
 	'gotocategory-desc' => "Iwwerpréift Sichbegreffer géint den Nummraum-Kategorien fir d'fonctioun 'Op d'Säit sprangen'",
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'gotocategory-desc' => "Doorzeuk ouch de naamrummdje Category: veur zeuktèrm óm 'nao paasj gaon' meugelik tö make",
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

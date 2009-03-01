@@ -402,6 +402,15 @@ $messages['lb'] = array(
 	'block_title_error' => 'Pardon, eng Säit mat dësem Numm däerf net gespäichert ginn.',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'block_title_error_page_title' => 'Geblokkeerdje paasjnaam',
+	'block_title_error-desc' => "Bijdj 'n bazesfunctionaliteit óm paazjes mit bepaolde paginaname neet te kinne opslaon of aanmake",
+	'block_title_error' => "'t Is neet toegestaon om 'ne pasjena mit deze naam op te slaon.",
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

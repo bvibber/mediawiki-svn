@@ -1109,13 +1109,22 @@ $messages['tl'] = array(
  * @author Mach
  */
 $messages['tr'] = array(
+	'lookupuser' => 'Kullanıcı bilgisine bak',
+	'lookupuser-desc' => 'Bir kullanıcı hakkında e-posta adresi ve ID gibi [[Special:LookupUser|bilgileri al]]',
+	'lookupuser-intro' => 'Kullanıcıların tercihlerini görmek için bir kullanıcı adı girin.',
+	'lookupuser-nonexistent' => 'Hata: Kullanıcı yok',
+	'lookupuser-authenticated' => '$1 üzerinde denetlendi',
+	'lookupuser-not-authenticated' => 'denetlenmedi',
+	'lookupuser-id' => 'Kullanıcı IDsi: <tt>#$1</tt>',
 	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'sağlanmamış',
 	'lookupuser-realname' => 'Gerçek isim: $1',
 	'lookupuser-registration' => 'Kayıt tarihi: $1',
 	'lookupuser-no-registration' => 'kayıtlı değil',
+	'lookupuser-touched' => 'Kullanıcı kaydı son dokunuldu: $1',
 	'lookupuser-info-authenticated' => 'E-posta doğrulama: $1',
 	'lookupuser-useroptions' => 'Kullanıcı seçenekleri:',
+	'right-lookupuser' => 'Kullanıcı tercihlerine bak',
 );
 
 /** Ukrainian (Українська)

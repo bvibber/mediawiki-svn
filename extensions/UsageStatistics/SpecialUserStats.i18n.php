@@ -612,14 +612,15 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'specialuserstats' => "Statistiques d'utilisation",
-	'usagestatistics' => 'Statistiques Utilisation',
-	'usagestatistics-desc' => 'Affiche les statistiques individuelles des utilisateurs ainsi que l’utilisation sur l’ensemble du wiki.',
-	'usagestatisticsfor' => '<h2>Statistiques Utilisation pour [[User:$1|$1]]</h2>',
-	'usagestatisticsforallusers' => '<h2>Statistiques utilisation pour tous les utilisateurs</h2>',
+	'usagestatistics' => "Statistiques d'utilisation",
+	'usagestatistics-desc' => "Affiche les statistiques d'utilisation par utilisateur et pour l'ensemble du wiki.",
+	'usagestatisticsfor' => "<h2>Statistiques d'utilisation pour [[User:$1|$1]]</h2>",
+	'usagestatisticsforallusers' => "<h2>Statistiques d'utilisation pour tous les utilisateurs</h2>",
 	'usagestatisticsinterval' => 'Intervalle',
 	'usagestatisticstype' => 'Type',
 	'usagestatisticsstart' => 'Date de début',
@@ -636,8 +637,8 @@ $messages['fr'] = array(
 	'usagestatisticscumulative' => 'Cumulatif',
 	'usagestatisticscumulative-text' => 'cumulatives',
 	'usagestatisticscalselect' => 'Sélectionner',
-	'usagestatistics-editindividual' => 'Éditions statistiques $1 par utilisateur',
-	'usagestatistics-editpages' => 'Statistiques $1 des pages par seul utilisateur',
+	'usagestatistics-editindividual' => 'Statistiques $1 des modifications par utilisateur',
+	'usagestatistics-editpages' => 'Statistiques $1 des pages par utilisateur',
 );
 
 /** Irish (Gaeilge)
