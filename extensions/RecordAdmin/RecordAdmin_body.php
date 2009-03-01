@@ -146,11 +146,12 @@ class SpecialRecordAdmin extends SpecialPage {
 		# A specific record has been selected, render form for updating
 		else {
 			$wgOut->addWikiText( "== " . wfMsg( 'recordadmin-edit', $record ) . " ==\n" );
-			$article = new Article( Title::newFromText( $record ) );
+			$rtitle = Title::newFromText( $record );
+			$article = new Article( $rtitle );
 			$text = $article->fetchContent();
 
 			# Update article if form posted
-			if ( count( $posted ) ) {
+			if ( count( $posted ) && $rtitle->userCan('edit', false)) {
 
 				# Get the location and length of the record braces to replace
 				foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
@@ -172,20 +173,28 @@ class SpecialRecordAdmin extends SpecialPage {
 				$wgOut->addHTML( "<br><br><br><br>\n" );
 			}
 
-			# Populate the form with the current values in the article
+			# Extract current values from article
+			$braces = false;
 			foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
-			$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
+			if ($braces) {
 
-			# Render the form
-			$wgOut->addHTML( Xml::element( 'form', array( 'class' => 'recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null ) );
-			$wgOut->addHTML( $this->form );
-			$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
-			$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
-			$wgOut->addHTML( '<br><hr><br><table width="100%"><tr>'
-				. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '</td>'
-				. '<td width="100%" align="left">' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
-				. '</tr></table></form>'
-			);
+				# Fill in current values
+				$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
+
+				# Render the form
+				$wgOut->addHTML( Xml::element( 'form', array( 'class' => 'recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null ) );
+				$wgOut->addHTML( $this->form );
+				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
+				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
+				$wgOut->addHTML( '<br><hr><br><table width="100%"><tr>'
+					. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '</td>'
+					. '<td width="100%" align="left">' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
+					. '</tr></table></form>'
+				);
+			}
+			
+			# No instance of the template found, just display the article content
+			else $wgOut->addWikiText($text);
 		}
 	}
 
