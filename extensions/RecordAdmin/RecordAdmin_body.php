@@ -367,7 +367,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				break;
 				case 'list':
 					$html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html );
-					if ( $v ) $html = preg_replace( "|(?<=<option)(?=>$v</option>)|s", " selected", $html );
+					if ( $v ) $html = preg_replace( "|(<option[^>]*)(?=>$v</option>)|s", "$1 selected", $html );
 				break;
 				case 'blob':
 					$html = preg_replace( "|>.*?(?=</textarea>)|s", ">$v", $html );
