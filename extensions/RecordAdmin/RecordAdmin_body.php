@@ -263,12 +263,15 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
 	function renderRecords($records, $cols = false, $sortable = true) {
+		global $wgUser;
 		if (count($records) < 1) return wfMsg( 'recordadmin-nomatch' );
 
-		$special = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
-		$type = $this->type;
+		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$type     = $this->type;
 		$sortable = $sortable ? ' sortable' : '';
-		$br = $sortable ? '<br />' : '';
+		$br       = $sortable ? '<br />' : '';
+		$parser   = new Parser;
+		$options  = ParserOptions::newFromUser($wgUser);
 
 		# Table header
 		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
@@ -299,7 +302,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				'created' => "<td class='col2'>$ts</td>\n"
 			);
 			foreach ( array_keys( $this->types ) as $col ) {
-				$v = isset( $r[$col] ) ? $r[$col] : '&nbsp;';
+				$v = isset( $r[$col] ) ? $parser->parse( $r[$col], $special, $options, true, true )->getText() : '&nbsp;';
 				$class = 'col'.preg_replace('|\W|', '-', $col);
 				$row[$col] = "<td class='$class'>$v</td>";
 			}
