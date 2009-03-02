@@ -59,6 +59,7 @@ $settings = array(
 		'performance' => array(
 			'wgAPIMaxDBRows' => 'int',
 			'wgAPIMaxResultSize' => 'int',
+			'wgAPIMaxUncachedDiffs' => 'int',
 			'wgDisableQueryPages' => 'bool',
 			'wgDisableQueryPageUpdate' => 'array',
 			'wgDisableSearchContext' => 'bool',
@@ -402,6 +403,7 @@ $settings = array(
 		),
 		'filter' => array(
 			'wgSpamRegex' => 'array',
+			'wgSummarySpamRegex' => 'array',
 			'wgFilterCallback' => 'text',
 			'wgDeleteRevisionsLimit' => 'int',
 			'wgPasswordAttemptThrottle' => 'array',
@@ -787,6 +789,7 @@ $arrayDefs = array(
 	'wgRestrictionTypes' => 'simple',
 	'wgWhitelistRead' => 'simple',
 	'wgSpamRegex' => 'simple',
+	'wgSummarySpamRegex' => 'simple',
 	'wgRateLimits' => 'rate-limits',
 	'wgRateLimitsExcludedGroups' => 'simple',
 	'wgPasswordAttemptThrottle' => 'assoc',
@@ -1099,4 +1102,6 @@ $settingsVersion = array(
 	'wgPreprocessorCacheThreshold' => array( array( '1.15alpha', '>=' ) ),
 	'wgExportMaxLinkDepth' => array( array( '1.15alpha', '>=' ) ),
 	'wgUseTagFilter' => array( array( '1.15alpha', '>=' ) ),
+	'wgSummarySpamRegex' => array( array( '1.15alpha', '>=' ) ),
+	'wgAPIMaxUncachedDiffs' => array( array( '1.15alpha', '>=' ) ), 
 );
