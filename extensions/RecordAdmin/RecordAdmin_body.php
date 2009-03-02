@@ -327,7 +327,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			$form = new Article( $title );
 			$form = $form->getContent();
 			$form = preg_replace( '#<input.+?type=[\'"]?submit["\']?.+?/(input| *)>#', '', $form );    # remove submits
-			$form = preg_replace( '#^.+?<form.+?>#s', '', $form );                                     # remove up to and including form open
+			$form = preg_replace( '#^.+?<form.*?>#s', '', $form );                                     # remove up to and including form open
 			$form = preg_replace( '#</form>.+?$#s', '', $form );                                       # remove form close and everything after
 			$form = preg_replace( '#name\s*=\s*([\'"])(.*?)\\1#s', 'name="ra_$2"', $form );            # prefix input names with ra_
 			$form = preg_replace( '#(<select.+?>)\s*(?!<option/>)#s', '$1<option selected/>', $form ); # ensure all select lists have default blank
