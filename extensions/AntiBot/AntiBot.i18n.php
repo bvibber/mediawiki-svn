@@ -367,6 +367,13 @@ $messages['sv'] = array(
 	'antibot-desc' => 'Enkel struktur för spambotskontroller och nyttolastsutlösare.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'antibot-desc' => 'స్పాంబోట్లను కనుక్కోడానికి మరియు పేలోడ్లను వదలడానికి సరళమైన ఫ్రేమువర్క్',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

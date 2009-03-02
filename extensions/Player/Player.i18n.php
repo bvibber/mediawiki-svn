@@ -780,6 +780,13 @@ $messages['mt'] = array(
 	'player-file' => 'Isem il-fajl',
 );
 
+/** Mirandese (Mirandés)
+ * @author Malafaya
+ */
+$messages['mwl'] = array(
+	'player-goto-page' => 'Páigina',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -477,6 +477,18 @@ $messages['sv'] = array(
 	'interwikilist-prefix' => 'Interwikiprefix:',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'interwikilist' => 'అంతర్వికీల జాబితా',
+	'interwikilist-desc' => 'అందుబాటులో ఉన్న అంతర్వికీ లింకులుని చూపించడానికి ఒక [[Special:Interwikilist|ప్రత్యేక పేజీ]]ని చేరుస్తుంది',
+	'interwikilist-linkname' => 'అంతర్వికీ లింకు',
+	'interwikilist-target' => 'లక్ష్యిత URL',
+	'interwikilist-filter' => 'జాబితా వడపోత',
+	'interwikilist-prefix' => 'అంతర్వికీ ఉపసర్గ:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

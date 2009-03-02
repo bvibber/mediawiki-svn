@@ -183,6 +183,13 @@ $messages['bg'] = array(
 	'formsaveerrortext' => "Възникна непозната грешка при опит да се съхрани страницата '$1'.",
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'formsave' => 'Enrollañ',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung

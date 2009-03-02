@@ -107,8 +107,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Konsnos
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'abcdesc' => 'Προσθέτει το tag <tt>&lt;abc&gt;</tt> για να μορφοποιεί μουσική ABC',
 	'abcdownload' => 'Λήψη:',
 );
 
@@ -478,8 +480,10 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author C.Chandra Kanth Rao
+ * @author Veeven
  */
 $messages['te'] = array(
+	'abcdesc' => 'ABC సంగీతాన్ని చూపించడానికై <tt>&lt;abc&gt;</tt> అనే ట్యాగుని చేరుస్తుంది',
 	'abcdownload' => 'డౌన్‌లోడ్',
 );
 

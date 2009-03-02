@@ -755,6 +755,7 @@ $messages['te'] = array(
 	'findspam-ip' => 'IP చిరునామా:',
 	'findspam-ok' => 'సరే',
 	'findspam-notextfound' => 'రచనలు ఏమీ కనబడలేదు',
+	'right-findspam' => 'ఇటీవల చేరిన చెత్తకోసం చూడండి',
 );
 
 /** Tetum (Tetun)

@@ -289,6 +289,14 @@ $messages['sv'] = array(
 	'catfeed-desc' => 'Använder information från senaste ändringarna. Man kan skapa versioner för användning till innehållssidor, något som är speciellt användbart för Wikinews.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'catfeed-desc' => 'ఇటీవలి మార్పుల ఫీడుల నుండి అంకాలని వాడుకుంటుంది.
+పేజీ-లో సంచికని సృష్టించండి, వికీన్యూస్&zwnj;కి ఉపయోగకరం',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

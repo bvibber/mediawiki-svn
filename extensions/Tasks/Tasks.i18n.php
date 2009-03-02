@@ -1370,6 +1370,7 @@ $messages['ia'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'tasks' => 'Attività',
@@ -1414,7 +1415,7 @@ $messages['it'] = array(
 	'tasks_event_on_creation_anon' => 'check',
 	'tasks_on_creation_comment' => 'Attività generata automaticamente alla creazione della pagina',
 	'tasks_link_your_assignments' => 'attività assegnate aperte',
-	'tasks_see_your_assignments' => 'Attività assegnate aperte in questo momento: $1. Si veda $2.',
+	'tasks_see_your_assignments' => "Hai al momento {{PLURAL:$1|un'attività assegnata aperta|$2 attività assegnate aperte}}. Si veda $2.",
 	'tasks_my_assignments' => 'Attività {{PLURAL:$1|assegnata|assegnate}}',
 	'tasks_table_header_page' => 'Pagina',
 	'tasks_you_have_no_assignments' => 'Nessuna attività assegnata aperta',
@@ -1776,6 +1777,13 @@ $messages['lb'] = array(
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logpagetext' => 'Dëst ass eng Lëscht vun den Ännerunge vun den Aufgaben',
 	'tasks_logentry' => 'Fir "[[$1]]"',
+);
+
+/** Mirandese (Mirandés)
+ * @author Malafaya
+ */
+$messages['mwl'] = array(
+	'tasks_table_header_page' => 'Páigina',
 );
 
 /** Nahuatl (Nāhuatl)

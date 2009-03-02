@@ -737,6 +737,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'backforth-next' => 'తర్వాత ($1)',
+	'backforth-desc' => 'పేజీల పై భాగాన "తర్వాత" మరియు "గత" అనే అక్షరానుసార పేజీకరణ లింకులును చేరుస్తుంది',
 	'backforth-prev' => 'గత ($1)',
 );
 

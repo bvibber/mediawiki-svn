@@ -503,6 +503,7 @@ $messages['ta'] = array(
  * @author వైజాసత్య
  */
 $messages['te'] = array(
+	'categorystepper-desc' => 'ఒక పేజీని లోని వర్గాలకి అక్షరానుసారంగా వెనక్కి ముందుకీ వెళ్ళగలిగే వీలుని కల్పించే వర్గ స్టెపర్ పెట్టెని చూపిస్తుంది',
 	'categorystepper-end' => '(వర్గపు చివర)',
 	'categorystepper-start' => '(వర్గపు మొదలు)',
 );

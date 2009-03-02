@@ -510,6 +510,27 @@ $messages['ia'] = array(
 	'amazonplus-less' => 'minus',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'amazonplus-desc' => "Un'estensione altamente personalizzabile per visualizzare le informazioni Amazon",
+	'amazonplus-nores' => 'Errore: Nessun risultato trovato!',
+	'amazonplus-noidres' => 'Errore: Impossibile trovare un ID di prodotto!',
+	'amazonplus-fgcerr' => 'Errore: Impossibile recuperare i dati da Amazon!',
+	'amazonplus-slserr' => 'Errore: Impossibile analizzare i dati da Amazon!',
+	'amazonplus-used' => 'usato',
+	'amazonplus-german' => 'Tedesco',
+	'amazonplus-french' => 'Francese',
+	'amazonplus-japanese' => 'Giapponese',
+	'amazonplus-amazon' => 'prezzo di amazon',
+	'amazonplus-new' => 'nuovo',
+	'amazonplus-none' => 'Nessun pezzo di questo articolo è in vendita.',
+	'amazonplus-cp-none' => 'Nessuno',
+	'amazonplus-more' => 'più',
+	'amazonplus-less' => 'meno',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty

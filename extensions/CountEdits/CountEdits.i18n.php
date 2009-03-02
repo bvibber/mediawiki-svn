@@ -556,7 +556,7 @@ Non judica le contributores per le numero de lor modificationes.",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Non existe un usator con le nomine $1.',
 	'countedits-resultheader' => 'Resultatos pro $1',
-	'countedits-resulttext' => '$1 ha facite $2 {{PLURAL:$2|modification}modificationes}}',
+	'countedits-resulttext' => '$1 ha facite $2 {{PLURAL:$2|modification|modificationes}}',
 	'countedits-mostactive' => 'Contributores le plus active',
 	'countedits-nocontribs' => 'Il non ha alcun contribution a iste wiki.',
 );

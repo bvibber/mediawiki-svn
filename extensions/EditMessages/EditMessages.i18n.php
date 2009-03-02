@@ -749,6 +749,20 @@ $messages['mr'] = array(
 	'editmsg-patch-success' => 'पॅच यशस्वी.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Penyuntingan berasaskan laman web]] berdasarkan fail Messages*.php',
+	'editmessages' => 'Sunting pesanan',
+	'editmsg-target' => 'Mesej target:',
+	'editmsg-search' => 'Carian',
+	'editmsg-show-list' => 'Senaraikan maklumat mesej tajuk "$1"',
+	'editmsg-get-patch' => 'Lakukan penyesuaian',
+	'editmsg-new-search' => 'Carian baru',
+	'editmsg-warning-parse1' => '* Nama mesej regex tidak tepat: $1',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

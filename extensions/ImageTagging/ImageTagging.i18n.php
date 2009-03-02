@@ -935,6 +935,13 @@ $messages['mt'] = array(
 	'imagetagging-tagcancel-button' => 'Annulla',
 );
 
+/** Mirandese (Mirandés)
+ * @author Malafaya
+ */
+$messages['mwl'] = array(
+	'imagetagging-article' => 'Páigina:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

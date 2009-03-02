@@ -818,9 +818,44 @@ $messages['io'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Estensione per [[Special:PovWatch|aggiungere pagine negli osservati speciali]] di altri utenti',
+	'povwatch_no_session' => 'Errore: Impossibile inviare il modulo a causa di una perdita dei dati di sessione.',
+	'povwatch_not_allowed_push' => 'Non sei un amministratore PovWatch, non è possibile aggiungere le pagine nelle liste degli osservati speciali.',
+	'povwatch_already_subscribed' => 'Sei già iscritto a PovWatch',
+	'povwatch_subscribed' => 'Sei ora iscritto a PovWatch',
+	'povwatch_not_subscribed' => 'Non sei iscritto a PovWatch, quindi non puoi cancellarti.',
+	'povwatch_unsubscribed' => 'Ti sei ora cancellato da PovWatch',
+	'povwatch_invalid_title' => 'Il titolo specificato non era valido',
+	'povwatch_pushed' => '[[$1]] è stato aggiunto con successo {{PLURAL:$2|alla lista degli osservati speciali|alle $2 liste degli osservati speciali}} utente',
+	'povwatch_intro' => 'PovWatch è un servizio che consente di aggiungere discretamente le pagine dibattute alle liste degli osservati speciali degli amministratori iscritti.
+
+Un registro delle aggiunte recenti agli osservati speciali è disponibile presso [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'È disponibile un [[Special:PovWatch/subscribers|elenco degli iscritti]].',
+	'povwatch_subscriber_list_intro' => '<strong>Elenco degli iscritti</strong>',
+	'povwatch_not_allowed_subscribers' => 'Non sei autorizzato a visualizzare l&#39;elenco degli iscritti a PovWatch.',
+	'povwatch_unknown_subpage' => 'Sottopagina sconosciuta.',
+	'povwatch_push' => 'Aggiungi',
+	'povwatch_push_intro' => 'Usa il modulo sottostante per aggiungere pagine alle liste degli osservati speciali degli utenti iscritti.
+Per favore sii attento a digitare il titolo: possono essere aggiunti persino i titoli inesistenti e non vi è alcun modo per rimuovere un titolo una volta che è stato aggiunto.',
 	'povwatch_title' => 'Titolo:',
+	'povwatch_comment' => 'Registra commento:',
+	'povwatch_no_log' => 'Non ci sono occorrenze nel registro.',
+	'povwatch_no_subscribers' => 'Non vi sono iscritti.',
+	'povwatch_unsubscribe_intro' => 'Sei iscritto a PovWatch.
+Clicca sul pulsante qui sotto per cancellarti.',
+	'povwatch_unsubscribe' => 'Cancellati',
+	'povwatch_subscribe_intro' => 'Non sei iscritto aa PovWatch.
+Clicca sul pulsante qui sotto per iscriverti.',
+	'povwatch_subscribe' => 'Iscriviti',
+	'povwatch_added' => 'aggiunto',
+	'right-povwatch_admin' => 'Amministra i diritti utente per l&#39;aggiunta di pagine alle liste degli osservati speciali di altri utenti',
+	'right-povwatch_user' => 'Aggiungi pagine alle liste degli osservati speciali di altri utenti',
+	'action-povwatch_admin' => 'gestire i diritti degli utenti per PovWatch',
+	'action-povwatch_user' => 'aggiungere questa pagina alla lista degli osservati speciali di un altro utente',
 );
 
 /** Japanese (日本語)

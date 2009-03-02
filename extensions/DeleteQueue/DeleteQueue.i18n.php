@@ -2267,6 +2267,14 @@ $messages['mhr'] = array(
 	'deletequeue-delnom-otherreason' => 'Вес амал',
 );
 
+/** Mirandese (Mirandés)
+ * @author Malafaya
+ */
+$messages['mwl'] = array(
+	'deletequeue-list-header-page' => 'Páigina',
+	'deletequeue-case-page' => 'Páigina:',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

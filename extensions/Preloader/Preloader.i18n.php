@@ -239,6 +239,13 @@ $messages['sv'] = array(
 	'preloader-desc' => 'Ger en egendefinierad förhandsladdad text för nya sidor',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'preloader-desc' => 'కొత్త పేజీలకి పేరుబరివారీగా మార్చుకొనగలిగే మూస పాఠ్యాన్ని అందిస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

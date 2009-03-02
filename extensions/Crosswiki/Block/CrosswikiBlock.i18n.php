@@ -460,8 +460,30 @@ Por favor, verifique si está autorizado a actuar en esa wiki y que sus acciones
 	'crosswikiblock-autoblock' => 'Bloquear automáticamente la dirección IP usada por este usuario, y cualquier IP posterior desde la cual intente editar',
 	'crosswikiblock-noemail' => 'Prevenir el envío de correo electrónico',
 	'crosswikiunblock' => 'Desbloquear usuario en otra wiki',
+	'crosswikiunblock-header' => 'Esta página permite desbloquear usuarios en otra wiki.
+Por favor verifique si estás permitido de actuar en este wiki y tus acciones cumplen todas las políticas.',
 	'crosswikiunblock-reason' => 'Motivo:',
+	'crosswikiunblock-submit' => 'Desbloquear este usuario',
+	'crosswikiunblock-success' => "Usuario '''$1''' desbloqueado exitosamente.
+
+Retornar a:
+* [[Special:CrosswikiBlock|Formulario de bloqueo]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Ningún nombre de usuario fue dado',
+	'crosswikiblock-local' => 'Bloqueos locales no están soportados a través de esta interface. Usar [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Base de datos $1 no existe',
+	'crosswikiblock-noname' => '"$1" no es un nombre de usuario válido.',
+	'crosswikiblock-nouser' => 'Usuario "$3" no es encontrado.',
+	'crosswikiblock-noexpiry' => 'Expiración inválida: $1.',
+	'crosswikiblock-noreason' => 'Sin razón especificada.',
 	'crosswikiblock-alreadyblocked' => 'Usuario "$3" ya está bloqueado.',
+	'crosswikiblock-noblock' => 'Este usuario no está bloqueado.',
+	'crosswikiblock-success' => "Usuario '''$3''' bloqueado existosamente.
+
+Retorne a:
+* [[Special:CrosswikiBlock|Formulario de bloqueo]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Desbloqueos locales no están soportados a través de esta interface. Usar [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Estonian (Eesti)

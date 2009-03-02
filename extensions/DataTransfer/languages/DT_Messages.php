@@ -715,6 +715,13 @@ $messages['mr'] = array(
 	'dt_xml_freetext' => 'मुक्त मजकूर',
 );
 
+/** Mirandese (Mirandés)
+ * @author Malafaya
+ */
+$messages['mwl'] = array(
+	'dt_xml_page' => 'Páigina',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

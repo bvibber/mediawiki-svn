@@ -133,10 +133,16 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
 	'createbox-create' => 'Crear',
+	'createbox-exists' => "Disculpe, \"'''{{FULLPAGENAME}}'''\" ya existe.
+
+No puedes crear esta página, pero puedes [{{fullurl:{{FULLPAGENAME}}|action=edit}} editarla], [{{fullurl:{{FULLPAGENAME}}}} leerla], o escoger crear una página diferente usando la tabla de debajo.
+
+<createbox>break=no</createbox>",
 );
 
 /** Basque (Euskara)

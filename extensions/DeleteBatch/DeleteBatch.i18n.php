@@ -588,7 +588,7 @@ Le file cargate debe continer in cata linea un nomine de pagina e un motivo facu
 	'deletebatch-or' => '<b>o</b>',
 	'deletebatch-page' => 'Paginas a deler',
 	'deletebatch-reason' => 'Motivo pro deletion',
-	'deletebatch-processing' => 'deletion de paginas',
+	'deletebatch-processing' => 'deletion del paginas $1',
 	'deletebatch-from-file' => 'a partir del lista in un file',
 	'deletebatch-from-form' => 'a partir del formulario',
 	'deletebatch-success-subtitle' => 'pro $1',

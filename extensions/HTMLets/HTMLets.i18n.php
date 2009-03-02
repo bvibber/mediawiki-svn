@@ -229,6 +229,13 @@ $messages['sv'] = array(
 	'htmlets-desc' => 'Låter dig infoga HTML-kod från filer med hjälp av taggen <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> అనే ట్యాగుని ఉపయోగించడం ద్వారా ఫైళ్ళనుండి HTML ముక్కలని పేజీలలో చేర్చుకోనిస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

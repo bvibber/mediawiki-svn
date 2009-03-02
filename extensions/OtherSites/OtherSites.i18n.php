@@ -334,6 +334,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'othersites' => 'ఇతర సైట్లు',
+	'othersites-desc' => 'భాషల లింకులుకాని అంతర్వికీ లింకులని వాటి స్వంత కలుగులోనికి తరలిస్తుంది',
 );
 
 /** Tagalog (Tagalog)

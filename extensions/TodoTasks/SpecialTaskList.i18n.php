@@ -979,11 +979,33 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Rubin
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'tasklist' => 'Список задачь',
+	'tasklist-parser-desc' => 'Добавляет функцию парсера <nowiki>{{#todo:}}</nowiki> для назначения задач',
+	'tasklist-special-desc' => 'Добавляет служебную страницу для просмотра [[Special:TaskList|назначенных задач]]',
+	'tasklistbyproject' => 'Список задач по проектам',
 	'tasklistunknownproject' => 'Неизвестный проект',
+	'tasklistunspecuser' => 'Неизвестный участник',
+	'tasklistincorrectuser' => 'Неправильное имя участника',
+	'tasklistemail' => 'Уважаемый(ая) %s',
+	'tasklistemailsubject' => '[%s] Изменение списка задач',
 	'tasklistmytasks' => 'Мои задачи',
+	'tasklistbyprojectbad' => "Проект '''%s''' не является корректным.
+Список действующих проектов можно посмотреть на [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Назначенный задачи для '''%s'''",
 	'tasklistchooseproj' => 'Выберите проект:',
+	'tasklistprojdisp' => 'Показать',
+	'tasklistbyname' => '== Список задач для %s ==',
+	'tasklistnoprojects' => "Ошибка. Похоже, что вы включили '''\$wgUseProjects''', но не создали [[MediaWiki: TodoTasksValidProjects]]. Подробнее см. в [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Руководстве по установке].",
+	'tasklistemailbody' => ',
+
+Кто-то назначил для вас новую задачу в %s.
+
+Что просмотреть весь список задач, обратитесь к %s.
+
+Ваша система уведомления %s.',
 );
 
 /** Slovak (Slovenčina)

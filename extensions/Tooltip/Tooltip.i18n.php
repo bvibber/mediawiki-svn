@@ -280,6 +280,13 @@ $messages['roa-tara'] = array(
 	'tooltip-desc' => 'Aggiunge le tag <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'tooltip-desc' => 'Добавляет теги <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

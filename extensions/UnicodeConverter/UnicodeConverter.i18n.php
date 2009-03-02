@@ -459,8 +459,11 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'unicodeconverter' => 'Преобразователь юникода',
+	'unicodeconverter-desc' => 'Простой пример модуля в виде служебной страницы. [[Special:UnicodeConverter|Переданная строка в кодировке UTF-8]] преобразуется в HTML-суррогат, пригодный для использования на страницах ISO 8859-1.',
 	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Исходный текст:',
+	'unicodeconverter-newtext' => 'Преобразованный текст:',
 );
 
 /** Slovak (Slovenčina)

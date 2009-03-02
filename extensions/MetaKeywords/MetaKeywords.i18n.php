@@ -22,8 +22,8 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'metakeywords-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'metakeywords' => "Optional message. '''(all)''' and '''(main)''' should not be translated.",
-	'metadescription' => "Optional message. '''(all)''' and '''(main)''' should not be translated.
+	'metakeywords' => "Optional message. '''(all)''' and '''(main)''' should not be translated. Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The lines of this messages have one (1) leading space.",
+	'metadescription' => "Optional message. '''(all)''' and '''(main)''' should not be translated. Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The lines of this messages have one (1) leading space.
 * $1 will not be replaced in this message.",
 );
 
@@ -39,11 +39,11 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'metakeywords-desc' => 'يسمح بضبط وسوم <tt><nowiki><meta "keywords"></nowiki></tt> و <tt><nowiki><meta "description"></nowiki></tt> لكل نطاق',
-	'metakeywords' => '  # أضف السطور إلى هذه الصفحة بالصيغة "namespace|comma separated,keywords,to,add"
-  # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفري بالترتيب.',
-	'metadescription' => '  # أضف السطور إلى هذه الصفحة بالصيغة "namespace|description tag to set"
-  # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفري بالترتيب.
-  # أي وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
+	'metakeywords' => ' # أضف السطور إلى هذه الصفحة بالصيغة "namespace|comma separated,keywords,to,add"
+ # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفري بالترتيب.',
+	'metadescription' => ' # أضف السطور إلى هذه الصفحة بالصيغة "namespace|description tag to set"
+ # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفري بالترتيب.
+ # أي وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -51,11 +51,11 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'metakeywords-desc' => 'يسمح بضبط وسوم <tt><nowiki><meta "keywords"></nowiki></tt> و <tt><nowiki><meta "description"></nowiki></tt> لكل نطاق',
-	'metakeywords' => '  # أضف السطور إلى هذه الصفحة بالصيغة "namespace|comma separated,keywords,to,add"
-  # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفرى بالترتيب.',
-	'metadescription' => '  # أضف السطور إلى هذه الصفحة بالصيغة "namespace|description tag to set"
-  # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفرى بالترتيب.
-  # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
+	'metakeywords' => ' # أضف السطور إلى هذه الصفحة بالصيغة "namespace|comma separated,keywords,to,add"
+ # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفرى بالترتيب.',
+	'metadescription' => ' # أضف السطور إلى هذه الصفحة بالصيغة "namespace|description tag to set"
+ # معرفات النطاقات (all) و (main) تحدد افتراضيا لكل النطاقات والنطاق الصفرى بالترتيب.
+ # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
 /** Bulgarian (Български)
@@ -84,11 +84,11 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'metakeywords-desc' => 'Erlaubt die Konfiguration von <tt><nowiki><meta "keywords"></nowiki></tt>- und <tt><nowiki><meta "description"></nowiki></tt>-Tags pro Namensraum',
-	'metakeywords' => '  # Zeilen dieser Seite müssen das folgendes Format haben: „Namensraum|Mit Komma getrennte,Schlüsselwörter,die hinzugefügt,werden sollen“
-  # Die Namensraumidentifiktoren „(all)“ und „(main)“ erlauben einen Standard für alle Namensräume oder den Hauptnamensraum.',
-	'metadescription' => '  # Zeilen dieser Seite müssen das folgendes Format haben: "Namensraum|Beschreibung des zu setzenden Tags"
-  # Die Namensraumidentifiktoren „(all)“ und „(main)“ erlauben einen Standard für alle Namensräume oder den Hauptnamensraum.
-  # Jedes Auftreten von $1 wird durch den jeweiligen Seitentitel ersetzt.',
+	'metakeywords' => ' # Zeilen dieser Seite müssen das folgendes Format haben: „Namensraum|Mit Komma getrennte,Schlüsselwörter,die hinzugefügt,werden sollen“
+ # Die Namensraumidentifiktoren „(all)“ und „(main)“ erlauben einen Standard für alle Namensräume oder den Hauptnamensraum.',
+	'metadescription' => ' # Zeilen dieser Seite müssen das folgendes Format haben: "Namensraum|Beschreibung des zu setzenden Tags"
+ # Die Namensraumidentifiktoren „(all)“ und „(main)“ erlauben einen Standard für alle Namensräume oder den Hauptnamensraum.
+ # Jedes Auftreten von $1 wird durch den jeweiligen Seitentitel ersetzt.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -152,11 +152,11 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'metakeywords-desc' => 'Permitte le configuration del etiquettas <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> per spatio de nomines',
-	'metakeywords' => '  # Adde lineas a iste pagina in le forma "spatio de nomines|parolas clave,pro,adder,separate,con,commas"
-  # Le identificatores de spatio de nomines (all) e (main) specifica un predefinition pro tote le spatios de nomine, e le zeresime spatio de nomines, respectivemente.',
-	'metadescription' => '  # Adde lineas a iste pagina in le forma "spatio de nomines|etiquetta de description a definir"
-  # Le identificatores de spatio de nomines (all) e (main) specifica un predefinition pro tote le spatios de nomines e le zeresime spatio de nomines, respectivemente.
-  # Omne occurrentias de $1 essera reimplaciate per le titulo del pagina actual.',
+	'metakeywords' => ' # Adde lineas a iste pagina in le forma "spatio de nomines|parolas clave,pro,adder,separate,con,commas"
+ # Le identificatores de spatio de nomines (all) e (main) specifica un predefinition pro tote le spatios de nomine, e le zeresime spatio de nomines, respectivemente.',
+	'metadescription' => ' # Adde lineas a iste pagina in le forma "spatio de nomines|etiquetta de description a definir"
+ # Le identificatores de spatio de nomines (all) e (main) specifica un predefinition pro tote le spatios de nomines e le zeresime spatio de nomines, respectivemente.
+ # Omne occurrentias de $1 essera reimplaciate per le titulo del pagina actual.',
 );
 
 /** Japanese (日本語)
@@ -180,10 +180,10 @@ $messages['ksh'] = array(
 # Appachtemang|Schlüsselwööter met Kommas,dozwesche,zom Enndraare
 # De Name (all) un (main) för et Appachtemang jevve en default för
 # all de Appachtemangs, udder de Wääte för dat Houp-Appachtemeng aan.',
-	'metadescription' => '# Donn Reije en dä Sigg hee endraare, wo dren steiht:
-# Appachtemang|Dä Tex fö de description (jede $1 weet dorsch der Siggetittel äsaz)
-# De Name (all) un (main) för et Appachtemang jevve en default för
-# all de Appachtemangs, udder de Wääte för dat Houp-Appachtemeng aan.',
+	'metadescription' => ' # Donn Reije en dä Sigg hee endraare, wo dren steiht:
+ # Appachtemang|Dä Tex fö de description (jede $1 weet dorsch der Siggetittel äsaz)
+ # De Name (all) un (main) för et Appachtemang jevve en default för
+ # all de Appachtemangs, udder de Wääte för dat Houp-Appachtemeng aan.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
