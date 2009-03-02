@@ -17,6 +17,7 @@
 
 #include	<my_global.h>
 #include	"status.h"
+#include	"config.h"
 
 static int rq_ping(void);
 static int rq_status(void);
@@ -35,30 +36,56 @@ main(argc, argv)
 	int argc;
 	char *argv[];
 {
-	if (argv[1] == NULL) {
-		(void) fprintf(stderr, "usage: twctl <ping | status | start | stop | shutdown>\n");
+int		 c, i;
+char const	*cfgfile = NULL;
+
+	while ((c = getopt(argc, argv, "c:")) != -1) {
+		switch(c) {
+		case 'c':
+			cfgfile = optarg;
+			break;
+		default:
+			(void) fprintf(stderr, "usage: twctl -c <config> <ping | status | start | stop | shutdown>\n");
+			return 1;
+		}
+	}
+	argc -= optind;
+	argv += optind;
+
+	if (cfgfile == NULL || argv[0] == NULL) {
+		(void) fprintf(stderr, "usage: twctl -c <config> <ping | status | start | stop | shutdown>\n");
 		return 1;
 	}
 
-	if ((door = open(STATUS_DOOR, O_RDWR)) == -1) {
+	if (read_configuration(cfgfile) == -1) {
+		(void) fprintf(stderr, "could not read configuration\n");
+		return 1;
+	}
+
+	if (!ctldoor) {
+		(void) fprintf(stderr, "control door not specified in configuration\n");
+		return 1;
+	}
+
+	if ((door = open(ctldoor, O_RDWR)) == -1) {
 		(void) fprintf(stderr, "cannot open door \"%s\": %s\n",
-			       STATUS_DOOR, strerror(errno));
+			       ctldoor, strerror(errno));
 		return 1;
 	}
 
-	if (!strcmp(argv[1], "ping"))
+	if (!strcmp(argv[0], "ping"))
 		return rq_ping();
-	else if (!strcmp(argv[1], "status"))
+	else if (!strcmp(argv[0], "status"))
 		return rq_status();
-	else if (!strcmp(argv[1], "start"))
+	else if (!strcmp(argv[0], "start"))
 		return rq_start();
-	else if (!strcmp(argv[1], "stop"))
+	else if (!strcmp(argv[0], "stop"))
 		return rq_stop();
-	else if (!strcmp(argv[1], "shutdown"))
+	else if (!strcmp(argv[0], "shutdown"))
 		return rq_shutdown();
 	else {
 		(void) fprintf(stderr, "unknown command \"%s\"\n",
-			       argv[1]);
+			       argv[0]);
 		return 1;
 	}
 }
@@ -72,7 +99,7 @@ char	rq = RQ_PING;
 	
 	if (door_call(door, &args) == -1) {
 		(void) fprintf(stderr, "door_call: \"%s\": %s\n",
-			       STATUS_DOOR, strerror(errno));
+			       ctldoor, strerror(errno));
 		exit(1);
 	}
 
@@ -107,7 +134,7 @@ char	rq = RQ_SHUTDOWN;
 	
 	if (door_call(door, &args) == -1) {
 		(void) fprintf(stderr, "door_call: \"%s\": %s\n",
-			       STATUS_DOOR, strerror(errno));
+			       ctldoor, strerror(errno));
 		exit(1);
 	}
 
@@ -147,7 +174,7 @@ int		 nwstats, i, j;
 	
 	if (door_call(door, &args) == -1) {
 		(void) fprintf(stderr, "door_call: \"%s\": %s\n",
-			       STATUS_DOOR, strerror(errno));
+			       ctldoor, strerror(errno));
 		exit(1);
 	}
 
@@ -186,7 +213,7 @@ int		 nwstats, i, j;
 
 	if (door_call(door, &args) == -1) {
 		(void) fprintf(stderr, "door_call: \"%s\": %s\n",
-			       STATUS_DOOR, strerror(errno));
+			       ctldoor, strerror(errno));
 		exit(1);
 	}
 
@@ -223,7 +250,7 @@ int		 nwstats, i, j;
 
 	if (door_call(door, &args) == -1) {
 		(void) fprintf(stderr, "door_call: \"%s\": %s\n",
-			       STATUS_DOOR, strerror(errno));
+			       ctldoor, strerror(errno));
 		exit(1);
 	}
 
@@ -281,7 +308,7 @@ char	rq = RQ_START;
 	
 	if (door_call(door, &args) == -1) {
 		(void) fprintf(stderr, "door_call: \"%s\": %s\n",
-			       STATUS_DOOR, strerror(errno));
+			       ctldoor, strerror(errno));
 		exit(1);
 	}
 
@@ -311,7 +338,7 @@ char	rq = RQ_STOP;
 	
 	if (door_call(door, &args) == -1) {
 		(void) fprintf(stderr, "door_call: \"%s\": %s\n",
-			       STATUS_DOOR, strerror(errno));
+			       ctldoor, strerror(errno));
 		exit(1);
 	}
 

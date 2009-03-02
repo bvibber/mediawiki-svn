@@ -55,6 +55,7 @@
 #include	"queue.h"
 #include	"status.h"
 #include	"fnv.h"
+#include	"config.h"
 
 typedef uint32_t logpos_t;
 
@@ -67,9 +68,6 @@ static void set_thread_name(char const *);
 static char const *get_thread_name(void);
 static pthread_key_t threadname;
 
-static char const *cfgfile = "trainwreck.conf";
-
-static void read_configuration(void);
 static void *read_master_logs(void *);
 static void *slave_write_thread(void *);
 static int process_master_logs_once(void);
@@ -79,22 +77,13 @@ static void stop_slave_write_thread(void);
 static void stop_master_read_thread(void);
 static void setup_status_door(void);
 static void logmsg(char const *fmt, ...);
-static char *master_host, *master_user, *master_pass;
-static int master_port;
-static char *slave_host, *slave_user, *slave_pass;
-static int slave_port;
 static MYSQL *master_conn;
 static int debug;
-static int server_id = 4123;
 
 static pthread_t master_thread;
 
 static char *binlog_file;
 static int64_t binlog_pos = 4;
-static int max_buffer = 0;
-
-regex_t *db_regex;
-regex_t *ignore_regex;
 
 static int execute_query(MYSQL *, char const *);
 
@@ -149,17 +138,10 @@ typedef struct writer {
 } writer_t;
 
 writer_t *writers;
-static int nwriters = 1;
 
 static void writer_init(writer_t *);
 static int retrieve_binlog_position(writer_t *);
 static writer_t *get_writer_for_dbname(char const *);
-
-static int *ignorable_errno;
-static int nignorable;
-
-static int can_ignore_errno(unsigned);
-static void do_ignore_errno(unsigned);
 
 static pthread_mutex_t rst_mtx = PTHREAD_MUTEX_INITIALIZER,
 		       wst_mtx = PTHREAD_MUTEX_INITIALIZER;
@@ -191,13 +173,12 @@ main(argc, argv)
 	int argc;
 	char *argv[];
 {
-int		c, i;
-port_event_t	pe;
+int		 c, i;
+port_event_t	 pe;
+char const	*cfgfile = NULL;
 
 	(void) pthread_key_create(&threadname, NULL);
 	set_thread_name("main");
-
-	setup_status_door();
 
 	while ((c = getopt(argc, argv, "f:F:p:Dau")) != -1) {
 		switch (c) {
@@ -225,10 +206,19 @@ port_event_t	pe;
 			unsynced = 1;
 			break;
 
+		case 'c':
+			cfgfile = optarg;
+			break;
+
 		default:
 			usage();
 			exit(1);
 		}
+	}
+
+	if (!cfgfile) {
+		(void) fprintf(stderr, "no configuration file specified\n");
+		return 1;
 	}
 
 	if ((ctl_port = port_create()) == -1) {
@@ -237,7 +227,12 @@ port_event_t	pe;
 		return 1;
 	}
 
-	read_configuration();
+	if (read_configuration(cfgfile) == -1) {
+		(void) fprintf(stderr, "cannot read configuration file\n");
+		return 1;
+	}
+
+	setup_status_door();
 
 	writers = calloc(1, sizeof(writer_t) * nwriters);
 
@@ -292,87 +287,6 @@ usage()
 		       "usage: trainwreck [-adu] [-f <cfg>] [-F binlog] [-p binlogpos]\n");
 }
 
-static void
-read_configuration()
-{
-FILE	*f;
-char	 line[1024];
-
-	if ((f = fopen(cfgfile, "r")) == NULL) {
-		(void) fprintf(stderr, "cannot open configuration file \"%s\": %s\n",
-			       cfgfile, strerror(errno));
-		exit(1);
-	}
-
-	while (fgets(line, sizeof(line), f)) {
-	char	*opt, *value;
-	size_t	 n;
-
-		n = strlen(line) - 1;
-		if (line[n] == '\n')
-			line[n] = '\0';
-
-		if (*line == '#')
-			continue;
-
-		opt = line;
-		if ((value = strchr(opt, ' ')) == NULL) {
-			(void) fprintf(stderr, "syntax error in configuration file \"%s\"\n",
-				       cfgfile);
-			exit(1);
-		}
-
-		*value++ = '\0';
-
-		if (!strcmp(opt, "master-host")) {
-			strdup_free(&master_host, value);
-		} else if (!strcmp(opt, "master-user")) {
-			strdup_free(&master_user, value);
-		} else if (!strcmp(opt, "master-pass")) {
-			strdup_free(&master_pass, value);
-		} else if (!strcmp(opt, "master-port")) {
-			master_port = atoi(value);
-		} else if (!strcmp(opt, "slave-host")) {
-			strdup_free(&slave_host, value);
-		} else if (!strcmp(opt, "slave-user")) {
-			strdup_free(&slave_user, value);
-		} else if (!strcmp(opt, "slave-pass")) {
-			strdup_free(&slave_pass, value);
-		} else if (!strcmp(opt, "slave-port")) {
-			slave_port = atoi(value);
-		} else if (!strcmp(opt, "ignore-errno")) {
-			do_ignore_errno(atoi(value));
-		} else if (!strcmp(opt, "nwriters")) {
-			nwriters = atoi(value);
-		} else if (!strcmp(opt, "max-buffer")) {
-			max_buffer = atoi(value);
-		} else if (!strcmp(opt, "server-id")) {
-			server_id = atoi(value);
-		} else if (!strcmp(opt, "only-replicate")) {
-		int	err;
-			db_regex = calloc(1, sizeof(*db_regex));
-			if ((err = regcomp(db_regex, value, REG_EXTENDED | REG_NOSUB)) != 0) {
-			char	errbuf[1024];
-				(void) regerror(err, NULL, errbuf, sizeof(errbuf));
-				(void) fprintf(stderr, "error in regular expression \"%s\": %s\n",
-					       value, errbuf);
-			}
-		} else if (!strcmp(opt, "ignore-database")) {
-		int	err;
-			ignore_regex = calloc(1, sizeof(*ignore_regex));
-			if ((err = regcomp(ignore_regex, value, REG_EXTENDED | REG_NOSUB)) != 0) {
-			char	errbuf[1024];
-				(void) regerror(err, NULL, errbuf, sizeof(errbuf));
-				(void) fprintf(stderr, "error in regular expression \"%s\": %s\n",
-					       value, errbuf);
-			}
-		} else {
-			(void) fprintf(stderr, "unknown option \"%s\" in configuration file \"%s\"\n",
-				       opt, cfgfile);
-			exit(1);
-		}
-	}
-}
 
 static void
 strdup_free(s, new)
@@ -506,7 +420,7 @@ char		 lastdb[128];
 char		 buf[BINLOG_NAMELEN + 10];
 	/* So we don't hold rst_mtx across simple_command() */
 char		*curfile;
-logpos_t	 curpos;
+logpos_t	 curpos = 0;
 unsigned long	 len;
 
 	logmsg("starting binlog dump...");
@@ -1029,26 +943,6 @@ unsigned	i;
 }
 
 static void
-do_ignore_errno(n)
-	unsigned n;
-{
-	ignorable_errno = realloc(ignorable_errno, sizeof(int) * (nignorable + 1));
-	ignorable_errno[nignorable] = n;
-	nignorable++;
-}
-
-static int
-can_ignore_errno(n)
-	unsigned n;
-{
-int	i;
-	for (i = 0; i < nignorable; i++)
-		if (ignorable_errno[i] == n)
-			return 1;
-	return 0;
-}
-
-static void
 set_thread_name(name)
 	char const *name;
 {
@@ -1170,24 +1064,30 @@ static void
 setup_status_door()
 {
 int	i;
+
+	if (!ctldoor) {
+		logmsg("warning: no control door specificied");
+		return;
+	}
+
 	if ((status_door = door_create(service_status_request,
 					NULL, 0)) == -1) {
 		logmsg("creating status door: %s", strerror(errno));
 		exit(1);
 	}
 
-	(void) unlink(STATUS_DOOR);
-	if ((i = open(STATUS_DOOR, O_EXCL | O_CREAT | O_RDWR, 0600)) == -1) {
+	(void) unlink(ctldoor);
+	if ((i = open(ctldoor, O_EXCL | O_CREAT | O_RDWR, 0600)) == -1) {
 		logmsg("creating status door \"%s\": %s",
-				STATUS_DOOR, strerror(errno));
+				ctldoor, strerror(errno));
 		exit(1);
 	}
 	(void) close(i);
 
-	(void) fdetach(STATUS_DOOR);
-	if (fattach(status_door, STATUS_DOOR) == -1) {
+	(void) fdetach(ctldoor);
+	if (fattach(status_door, ctldoor) == -1) {
 		logmsg("attaching status door to \"%s\": %s",
-				STATUS_DOOR, strerror(errno));
+				ctldoor, strerror(errno));
 		exit(1);
 	}
 }

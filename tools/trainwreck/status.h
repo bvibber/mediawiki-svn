@@ -13,8 +13,6 @@
 
 #include	<sys/types.h>
 
-#define STATUS_DOOR "trainwreck_door"
-
 #define RQ_PING			1 /* test server is alive		*/
 #define RQ_STATUS		2 /* get read/write thread status	*/
 #define RQ_STOP			3 /* stop read/write threads		*/
