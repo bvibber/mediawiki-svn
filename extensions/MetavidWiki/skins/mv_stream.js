@@ -170,9 +170,9 @@ var mv_stream_interface = {
 		//check for #autoplay ancor
 		var hash = window.location.hash.toString();
 		js_log(" hash is: " + hash);
-		if( hash =='#autoplay'){
-			window.location.hash = '';	
-			$j('#embed_vid').get(0).play();					
+		if( hash == '#autoplay'){
+			//window.location.hash = '';
+			setTimeout('mv_do_play()', 500);							
 		}
 		
 		js_log('done with mv_init_inerface');
@@ -901,19 +901,20 @@ function mv_do_play( mvd_id ){
 		}
 	}
 	//check if we are out of range: 
-	var time_ary = $j('#mv_fd_mvd_'+mvd_id).attr('name').split('/');
-	if( ntp2seconds( time_ary[1] ) <  ntp2seconds( $j('#embed_vid').get(0).start_ntp ) ){		
-		window.location =  wgArticlePath.replace( '$1', wgPageName +'/'+ time_ary[1] + '/' + time_ary[2]) + '#autoplay';
-	}else{	
-		//update the embed video actual play time
-		//time_chunk = $j('#embed_vid').get(0).src.split('t=');
-		//$j('#mv_videoPlayerTime').html( time_chunk[1] );
-		//stop the video if playing and play:
-		$j('#embed_vid').get(0).didSeekJump=true;
-		//@@todo extend mv_embed to support src switching
-		$j('#embed_vid').get(0).play();
-	}
-
+	if(mvd_id){
+		var time_ary = $j('#mv_fd_mvd_'+mvd_id).attr('name').split('/');
+		if( ntp2seconds( time_ary[1] ) <  ntp2seconds( $j('#embed_vid').get(0).start_ntp ) ){		
+			window.location =  wgArticlePath.replace( '$1', wgPageName +'/'+ time_ary[1] + '/' + time_ary[2]) + '#autoplay';
+			return ;
+		}	
+	}	
+	//update the embed video actual play time
+	//time_chunk = $j('#embed_vid').get(0).src.split('t=');
+	//$j('#mv_videoPlayerTime').html( time_chunk[1] );
+	//stop the video if playing and play:
+	$j('#embed_vid').get(0).didSeekJump=true;
+	//@@todo extend mv_embed to support src switching
+	$j('#embed_vid').get(0).play();	
 }
 
 //adjusts the interface to show the play controls:
