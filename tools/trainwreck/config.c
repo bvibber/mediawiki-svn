@@ -70,6 +70,9 @@ char	 line[1024];
 		if (*line == '#')
 			continue;
 
+		if (strlen(line) == 0)
+			continue;
+
 		opt = line;
 		if ((value = strchr(opt, ' ')) == NULL) {
 			(void) fprintf(stderr, "syntax error in configuration file \"%s\"\n",
@@ -107,8 +110,8 @@ char	 line[1024];
 			strdup_free(&statedir, value);
 		} else if (!strcmp(opt, "autostart")) {
 			autostart = atoi(value);
-		} else if (!strcmp(opt, "unsynced")) {
-			unsynced = atoi(value);
+		} else if (!strcmp(opt, "fsync")) {
+			unsynced = !atoi(value);
 		} else if (!strcmp(opt, "only-replicate")) {
 		int	err;
 			db_regex = calloc(1, sizeof(*db_regex));

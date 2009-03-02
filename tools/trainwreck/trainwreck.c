@@ -126,7 +126,7 @@ static pthread_cond_t sync_cond = PTHREAD_COND_INITIALIZER;
 
 static int ctl_port;
 
-static int writers_initialising;
+static int writers_initialising = 1;
 static pthread_mutex_t wi_mtx = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t wi_cond = PTHREAD_COND_INITIALIZER;
 static logpos_t lowest_log_pos;
@@ -334,7 +334,7 @@ read_master_logs(p)
 	set_thread_name("reader");
 
 	(void) pthread_mutex_lock(&wi_mtx);
-	logmsg("waiting for %d writers to become ready...", writers_initialising);
+	logmsg("waiting for writer to become ready...", writers_initialising);
 	while (writers_initialising > 0)
 		(void) pthread_cond_wait(&wi_cond, &wi_mtx);
 	(void) pthread_mutex_unlock(&wi_mtx);
@@ -768,8 +768,8 @@ char		 namebuf[16];
 	}
 
 	if (retrieve_binlog_position(self) != 0) {
-		logmsg("could not retrieve binlog position; trying to continue anyway");
-		/*return 0;*/
+		logmsg("could not retrieve binlog position");
+		exit(1);
 	}
 
 	(void) pthread_mutex_lock(&wi_mtx);
@@ -944,18 +944,24 @@ char		 sname[2048];
 	if ((rstat = open(sname, O_RDONLY)) == -1) {
 		logmsg("cannot open state file \"%s\": %s",
 				sname, strerror(errno));
+		if (errno != ENOENT)
+			return 1;
+
 		/*
 		 * Use the binlog position specified on command line.
 		 */
+		if (!binlog_file) {
+			logmsg("no stored binlog position and none on command line; exiting");
+			return 1;
+		}
+
 		writer->wr_last_executed_pos = binlog_pos;
 		strdup_free(&writer->wr_last_executed_file, binlog_file);
 		(void) pthread_mutex_lock(&rst_mtx);
 		if (lowest_log_pos == 0 || writer->wr_last_executed_pos < lowest_log_pos)
 			lowest_log_pos = writer->wr_last_executed_pos;
 		(void) pthread_mutex_unlock(&rst_mtx);
-		if (errno == ENOENT)
-			return 1;
-		exit(1);
+		return 0;
 	}
 
 	if (fstat(rstat, &st) == -1) {
