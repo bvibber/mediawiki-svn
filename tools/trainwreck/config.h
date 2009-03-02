@@ -17,7 +17,6 @@ int read_configuration(char const *);
 
 int can_ignore_errno(unsigned);
 
-extern int nwriters;
 extern int *ignorable_errno;
 extern int nignorable;
 
@@ -29,6 +28,9 @@ extern int slave_port;
 extern int max_buffer;
 
 extern char *ctldoor;
+extern char *statedir;
+extern int autostart;
+extern int unsynced;
 
 extern regex_t *db_regex;
 extern regex_t *ignore_regex;

@@ -20,7 +20,6 @@ regex_t *db_regex;
 regex_t *ignore_regex;
 
 int server_id = 4123;
-int nwriters = 1;
 int *ignorable_errno;
 int nignorable;
 
@@ -31,6 +30,9 @@ int slave_port;
 int max_buffer = 0;
 
 char *ctldoor;
+char *statedir;
+int autostart;
+int unsynced;
 
 static void do_ignore_errno(unsigned);
 
@@ -95,14 +97,18 @@ char	 line[1024];
 			slave_port = atoi(value);
 		} else if (!strcmp(opt, "ignore-errno")) {
 			do_ignore_errno(atoi(value));
-		} else if (!strcmp(opt, "nwriters")) {
-			nwriters = atoi(value);
 		} else if (!strcmp(opt, "max-buffer")) {
 			max_buffer = atoi(value);
 		} else if (!strcmp(opt, "server-id")) {
 			server_id = atoi(value);
 		} else if (!strcmp(opt, "control-door")) {
 			strdup_free(&ctldoor, value);
+		} else if (!strcmp(opt, "statedir")) {
+			strdup_free(&statedir, value);
+		} else if (!strcmp(opt, "autostart")) {
+			autostart = atoi(value);
+		} else if (!strcmp(opt, "unsynced")) {
+			unsynced = atoi(value);
 		} else if (!strcmp(opt, "only-replicate")) {
 		int	err;
 			db_regex = calloc(1, sizeof(*db_regex));

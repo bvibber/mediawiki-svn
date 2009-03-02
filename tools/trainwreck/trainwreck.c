@@ -9,33 +9,7 @@
 /* $Id$ */
 
 /*
- * trainwreck: multi-threaded MySQL replication tool.
- */
-
-/*
- * About multi-writer replication status:
- *
- * At startup, we create 1 reader thread to collect the binlogs from the 
- * master, and N writers to send queries to the slaves.  The reader distributes 
- * write queries between writers based on a hash of the database name, so 
- * updates for the same database always go to the same writer.  This ensures 
- * that replication within a database is always linear.  We don't make any 
- * attempt to handle cross-database updates, and they probably won't work 
- * properly.
- *
- * Each writer maintains its own on-disk state, holding the binlog it is 
- * replicating, and the position it's replicated up to.  When the reader 
- * detects a binlog rotation, it causes a synchronisation event to ensure that 
- * all writers have caught up to the end of the current binlog before changing.  
- * This ensures that all writers are executing the same binlog, which makes 
- * recovery from saved state after startup much easier.
- * 
- * At startup, each writer reads its saved state.  A note is kept of the oldest 
- * log position any writer has seen, and each writer also stores its own 
- * current position.  Then the reader thread starts, and requests binlogs from 
- * the master starting from the oldest state and sends them to the writers.  
- * Each writer then discards logs it's already seen.  Once we pass the last 
- * seen logs, it starts executing queries again.
+ * trainwreck: MySQL replication tool.
  */
 
 #include	<stdio.h>
@@ -54,7 +28,6 @@
 
 #include	"queue.h"
 #include	"status.h"
-#include	"fnv.h"
 #include	"config.h"
 
 typedef uint32_t logpos_t;
@@ -87,7 +60,6 @@ static int64_t binlog_pos = 4;
 
 static int execute_query(MYSQL *, char const *);
 
-#define ET_SYNC -2
 #define ET_QUERY 2
 #define ET_INTVAR 5
 #define ET_ROTATE 4
@@ -126,7 +98,6 @@ static void lq_put(le_queue_t *, logentry_t *);
 static logentry_t *lq_get(le_queue_t *);
 
 typedef struct writer {
-	int		 wr_num;
 	pthread_t	 wr_thread;
 	logpos_t	 wr_last_executed_pos;
 	char		*wr_last_executed_file;
@@ -137,16 +108,14 @@ typedef struct writer {
 	int		 wr_status;
 } writer_t;
 
-writer_t *writers;
+writer_t writer;
 
 static void writer_init(writer_t *);
 static int retrieve_binlog_position(writer_t *);
-static writer_t *get_writer_for_dbname(char const *);
 
 static pthread_mutex_t rst_mtx = PTHREAD_MUTEX_INITIALIZER,
 		       wst_mtx = PTHREAD_MUTEX_INITIALIZER;
 static status_t reader_st = ST_STOPPED;
-static int autostart;
 static int master_thread_stop;
 
 static void executed_up_to(writer_t *, char const *, logpos_t);
@@ -161,8 +130,6 @@ static int writers_initialising;
 static pthread_mutex_t wi_mtx = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t wi_cond = PTHREAD_COND_INITIALIZER;
 static logpos_t lowest_log_pos;
-
-static int unsynced;
 
 #define CTL_STOP	1
 #define CTL_START	2
@@ -206,10 +173,6 @@ char const	*cfgfile = NULL;
 			unsynced = 1;
 			break;
 
-		case 'c':
-			cfgfile = optarg;
-			break;
-
 		default:
 			usage();
 			exit(1);
@@ -232,14 +195,14 @@ char const	*cfgfile = NULL;
 		return 1;
 	}
 
+	if (!statedir) {
+		(void) fprintf(stderr, "error: statedir not specified in configuration file\n");
+		return 1;
+	}
+
 	setup_status_door();
 
-	writers = calloc(1, sizeof(writer_t) * nwriters);
-
-	for (i = 0; i < nwriters; ++i) {
-		writer_init(&writers[i]);
-		writers[i].wr_num = i;
-	}
+	writer_init(&writer);
 
 	if (autostart) {
 		(void) start_slave_write_thread();
@@ -314,15 +277,12 @@ static void
 stop_slave_write_thread()
 {
 int	i;
-	for (i = 0; i < nwriters; ++i) {
-		(void) pthread_cancel(writers[i].wr_thread);
-		if (pthread_join(writers[i].wr_thread, NULL) == -1) {
-			logmsg("cannot join slave thread: %s",
-					strerror(errno));
-		}
-		mysql_close(writers[i].wr_conn);
-		writers[i].wr_status = ST_STOPPED;
+	(void) pthread_cancel(writer.wr_thread);
+	if (pthread_join(writer.wr_thread, NULL) == -1) {
+		logmsg("cannot join slave thread: %s", strerror(errno));
 	}
+	mysql_close(writer.wr_conn);
+	writer.wr_status = ST_STOPPED;
 	logmsg("slave threads stopped");
 }
 
@@ -505,34 +465,7 @@ unsigned long	 len;
 
 		if (ent->le_type == ET_ROTATE && ent->le_time != 0) {
 		int	i;
-			/*
-			 * Insert an ET_SYNC event into every writer, and wait 
-			 * for all writers to sync.  This is needed to simplify 
-			 * binlog management.
-			 */
-			nsyncs = nwriters;
-			for (i = 0; i < nwriters; ++i) {
-			logentry_t	*ent;
-				ent = calloc(1, sizeof(*ent));
-				ent->le_type = ET_SYNC;
-				lq_put(&writers[i].wr_log_queue, ent);
-			}
-
-			(void) pthread_mutex_lock(&sync_mtx);
-			while (nsyncs)
-				(void) pthread_cond_wait(&sync_cond, &sync_mtx);
-			(void) pthread_mutex_unlock(&sync_mtx);
-
-			/*
-			 * Set the saved position for all writers to the new 
-			 * log position.
-			 */
-			for (i = 0; i < nwriters; ++i)
-				executed_up_to(&writers[i], ent->le_info, 4);
-
-			/*
-			 * Now do the actual rotation.
-			 */
+			executed_up_to(&writer, ent->le_info, 4);
 
 			strdup_free(&curfile, ent->le_info);
 			curpos = 4;
@@ -552,7 +485,6 @@ unsigned long	 len;
 			    (ignore_regex == NULL || regexec(ignore_regex, ent->le_database, 0, NULL, 0) != 0) &&
 			    (ent->le_type == ET_INTVAR || ent->le_type == ET_QUERY)) {
 			writer_t	*writer;
-				writer = get_writer_for_dbname(ent->le_database);
 				lq_put(&writer->wr_log_queue, ent);
 			} else {
 				free_log_entry(ent);
@@ -790,16 +722,12 @@ start_slave_write_thread()
 {
 int	i;
 	(void) pthread_mutex_lock(&wst_mtx);
-	for (i = 0; i < nwriters; i++)
-		if (writers[i].wr_status != ST_STOPPED)
-			return -1;
+	if (writer.wr_status != ST_STOPPED)
+		return -1;
 
-	writers_initialising = nwriters;
 	(void) pthread_mutex_unlock(&wst_mtx);
 
-	for (i = 0; i < nwriters; ++i) {
-		(void) pthread_create(&writers[i].wr_thread, NULL, slave_write_thread, &writers[i]);
-	}
+	(void) pthread_create(&writer.wr_thread, NULL, slave_write_thread, &writer);
 	return 0;
 }
 
@@ -820,7 +748,7 @@ char		 namebuf[16];
 	 */
 	(void) pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
 
-	(void) snprintf(namebuf, sizeof(namebuf), "writer-%d", self->wr_num);
+	(void) snprintf(namebuf, sizeof(namebuf), "writer");
 	set_thread_name(namebuf);
 
 	self->wr_status = ST_INITIALISING;
@@ -852,8 +780,8 @@ char		 namebuf[16];
 	self->wr_status = ST_WAIT_FOR_ENTRY;
 	while ((e = lq_get(&self->wr_log_queue)) != NULL) {
 		if (debug)
-			logmsg("%s,%lu [%d: %s]", e->le_file, (unsigned long) e->le_pos,
-				self->wr_num, e->le_database);
+			logmsg("%s,%lu [%s]", e->le_file, (unsigned long) e->le_pos,
+				e->le_database);
 
 		self->wr_status = ST_EXECUTING;
 		self->wr_last_executed_time = e->le_time;
@@ -867,11 +795,6 @@ char		 namebuf[16];
 			}
 
 		switch (e->le_type) {
-		case ET_SYNC:
-			logmsg("syncing for binlog rotation...");
-			sync_ack(self);
-			break;
-
 		case ET_INTVAR: {
 		char	query[128];
 			(void) snprintf(query, sizeof(query), "SET INSERT_ID=%llu",
@@ -967,7 +890,8 @@ executed_up_to(writer, log, pos)
 	char const *log;
 	logpos_t pos;
 {
-char	buf[BINLOG_NAMELEN + 4];
+char	buf[2048];
+int	fd;
 
 	(void) pthread_mutex_lock(&wst_mtx);
 	if (writer->wr_last_executed_file && !strcmp(log, writer->wr_last_executed_file)) {
@@ -980,28 +904,31 @@ char	buf[BINLOG_NAMELEN + 4];
 	writer->wr_last_executed_pos = pos;
 	(void) pthread_mutex_unlock(&wst_mtx);
 
-	if (writer->wr_rstat == 0) {
-		(void) snprintf(buf, sizeof(buf), "%d.logpos", writer->wr_num);
+	if (!writer || writer->wr_rstat == 0) {
+		(void) snprintf(buf, sizeof(buf), "%s/logpos", statedir);
 		if (unlink(buf) == -1 && errno != ENOENT) {
 			logmsg("cannot remove old state file \"%s\": %s",
 					buf, strerror(errno));
 			exit(1);
 		}
 
-		if ((writer->wr_rstat = open(buf, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
+		if ((fd = open(buf, O_WRONLY | O_CREAT | O_EXCL, 0600)) == -1) {
 			logmsg("cannot open state file \"%s\": %s",
 					buf, strerror(errno));
 			exit(1);
 		}
+
+		if (writer)
+			writer->wr_rstat = fd;
 	} else
 		(void) lseek(writer->wr_rstat, 0, SEEK_SET);
 
-	(void) ftruncate(writer->wr_rstat, 0);
+	(void) ftruncate(fd, 0);
 	int4store(buf, pos);
 	(void) strlcpy(buf + 4, log, sizeof(buf) - 4);
-	(void) write(writer->wr_rstat, buf, 4 + strlen(log));
+	(void) write(fd, buf, 4 + strlen(log));
 	if (!unsynced)
-		(void) fdatasync(writer->wr_rstat);
+		(void) fdatasync(fd);
 }
 
 static int
@@ -1012,8 +939,8 @@ int		 rstat;
 ssize_t		 n;
 struct stat	 st;
 char		*buf;
-char		 sname[128];
-	(void) snprintf(sname, sizeof(sname), "%d.logpos", writer->wr_num);
+char		 sname[2048];
+	(void) snprintf(sname, sizeof(sname), "%s/logpos", statedir);
 	if ((rstat = open(sname, O_RDONLY)) == -1) {
 		logmsg("cannot open state file \"%s\": %s",
 				sname, strerror(errno));
@@ -1118,18 +1045,17 @@ int	 i;
 		return;
 
 	case RQ_STATUS:
-		st = malloc(2 + nwriters);
+		st = malloc(2 + 1);
 		st[0] = RR_OK;
 		(void) pthread_mutex_lock(&rst_mtx);
 		st[1] = reader_st;
 		(void) pthread_mutex_unlock(&rst_mtx);
 
 		(void) pthread_mutex_lock(&wst_mtx);
-		for (i = 0; i < nwriters; i++)
-			st[2 + i] = writers[i].wr_status;
+		st[2] = writer.wr_status;
 		(void) pthread_mutex_unlock(&wst_mtx);
 
-		door_return((char *) st, 2 + nwriters, NULL, 0);
+		door_return((char *) st, 2 + 1, NULL, 0);
 		return;
 
 	case RQ_READER_POSITION:
@@ -1153,22 +1079,19 @@ int	 i;
 	case RQ_WRITER_POSITION:
 		(void) pthread_mutex_lock(&wst_mtx);
 		offs = 2;
-		st = alloca(1 + (10 + BINLOG_NAMELEN) * nwriters);
+		st = alloca(1 + (10 + BINLOG_NAMELEN));
 		st[0] = RR_OK;
-		st[1] = nwriters;
+		st[1] = 1;
 
-		for (i = 0; i < nwriters; ++i) {
-			if (!writers[i].wr_last_executed_file) {
-				int4store(st + offs, (uint32_t) 0);
-				offs += 4;
-				continue;
-			}
-
-			blen = strlen(writers[i].wr_last_executed_file);
-			int4store(st + offs, writers[i].wr_last_executed_pos);
-			int4store(st + offs + 4, (uint32_t) writers[i].wr_last_executed_time);
+		if (!writer.wr_last_executed_file) {
+			int4store(st + offs, (uint32_t) 0);
+			offs += 4;
+		} else {
+			blen = strlen(writer.wr_last_executed_file);
+			int4store(st + offs, writer.wr_last_executed_pos);
+			int4store(st + offs + 4, (uint32_t) writer.wr_last_executed_time);
 			int2store(st + offs + 8, (uint16_t) blen);
-			(void) memcpy(st + offs + 10, writers[i].wr_last_executed_file, blen);
+			(void) memcpy(st + offs + 10, writer.wr_last_executed_file, blen);
 			offs += 10 + blen;
 		}
 
@@ -1199,14 +1122,6 @@ int	 i;
 		door_return(c, 1, NULL, 0);
 		return;
 	}
-}
-
-static writer_t *
-get_writer_for_dbname(name)
-	char const *name;
-{
-int	n = fnv_32a_str(name, FNV1_32A_INIT) % nwriters;
-	return &writers[n];
 }
 
 static void

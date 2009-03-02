@@ -14,7 +14,6 @@ PROG		= trainwreck
 SRCS		= 	\
 	trainwreck.c	\
 	config.c	\
-	hash_32a.c	\
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -33,7 +32,7 @@ lint:
 	lint $(INCLUDES) $(MYSQL_CFLAGS) -axsm -u -errtags=yes -s -Xc99=%none -Xarch=amd64 -errsecurity=core -erroff=E_INCONS_ARG_DECL2 -erroff=E_CONSTANT_CONDITION $(SRCS)
 
 clean:
-	rm -f trainwreck $(OBJS) twctl.o
+	rm -f trainwreck twctl $(OBJS) twctl.o
 
 .PHONY: clean install lint
 .KEEP_STATE:

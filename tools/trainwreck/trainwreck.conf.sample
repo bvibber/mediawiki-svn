@@ -47,3 +47,15 @@ ignore-database ^commonswiki$
 # times.  Note: if you need this, it might indicate out-of-sync replication.  
 # DO NOT set this for transient error likes 'Lock wait timeout exceeded'.
 ignore-errno 1061
+
+# Where the log position state is called.  Needs to be writable by trainwreck.
+statedir /var/trainwreck
+
+# Set this to 1 if you want trainwreck to start replicating when it's started,
+# or 0 if you want to start replication manually.
+autostart 1
+
+# Whether to fsync() every time we write to the binlog state file.  Turning
+# this off can improve performance, but if the system crashes, we might restart
+# replication from the wrong position.
+fsync 1
