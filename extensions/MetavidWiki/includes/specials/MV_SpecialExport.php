@@ -223,6 +223,10 @@ class MV_SpecialExport {
 		// get the stream stream req
 		if ( $this->output_xml_header )
 		header( 'Content-Type: text/xml' );
+		header( "Pragma: public" );
+		$one_day = 60*60*24;
+		header("Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_day  ) . " GM");  	
+		
 		// print the header:
 		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
 		/*

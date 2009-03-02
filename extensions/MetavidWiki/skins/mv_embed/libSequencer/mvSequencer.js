@@ -32,7 +32,7 @@ loadGM( {
 	"edit_clip" : "Edit Clip",
 	"edit_save" : "Save Changes",
 	"edit_cancel" : "Cancel Edit",
-	"edit_cancel_confirm" : "Are you sure you want to cancel your edit, changes will be lost",
+	"edit_cancel_confirm" : "Are you sure you want to cancel your edit. Changes will be lost",
 			
 	"zoom_in" : "Zoom In",
 	"zoom_out" : "Zoom Out",
@@ -253,7 +253,7 @@ mvSequencer.prototype = {
 	},
 	updateSeqSaveButtons:function(){		
 		var cancel_button = '<a style="border:' +
-				'solid gray;font-size:1.2em;" onClick="window.confirm(\''+gM('edit_cancel_confirm')+'\')" '+ 
+				'solid gray;font-size:1.2em;" onClick="window.confirm("' + gM('edit_cancel_confirm') + '\")" '+ 
 				'href="javascript:'+this.instance_name+'.closeModEditor()">'+
 					gM('edit_cancel') + '</a> ';
 		if( this.sequenceEditToken ){

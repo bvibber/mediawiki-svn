@@ -120,10 +120,12 @@ class jsScriptLoader{
 		global $wgJsMimeType;
 		//output js mime type: 
 		header( 'Content-type: '.$wgJsMimeType);
+		header("Pragma: public");
 		//cache forever: 
 		//(the point is we never have to re validate since we should always change the request url based on the svn version)
 		$one_year = 60*60*24*365;
-		header("Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_year  ) . " GM");  		
+		header("Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_year  ) . " GM");  	
+			
 	}
 	/*
 	 * updates the proc Request  
@@ -216,8 +218,8 @@ class jsScriptLoader{
 			foreach($jmsg as $msgKey => $default_en_value){
 				$jmsg[$msgKey] = wfMsgNoTrans( $msgKey );
 			}
-			//return the updated loadGM json 
-			return 'loadGM( '. json_encode( $jmsg ) . ')';	
+			//return the updated loadGM json with fixed new lines: 		
+			return 'loadGM( ' . json_encode( $jmsg ) . ')';	
 		}else{
 			$this->error_msg.= "Could not parse JSON language msg in File:\n" .
 								$this->cur_file ."\n";

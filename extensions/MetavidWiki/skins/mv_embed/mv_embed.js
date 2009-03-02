@@ -233,7 +233,7 @@ var mvJsLoader = {
 				callback();
 				return ;
 			}					 	
-			debug_attr = (getMvEmbedURL().indexOf('debug=') !== false)?'&debug=true':'';	
+			debug_attr = (parseUri( getMvEmbedURL()).queryKey)?'&debug=true':'';	
 	 		//check if we should use the script loader to combine all the requests into one:
 		 	if( MV_USE_SCRIPT_LOADER ){		
 		 		var class_set = '';

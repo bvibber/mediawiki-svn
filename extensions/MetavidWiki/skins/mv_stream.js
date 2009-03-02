@@ -522,7 +522,7 @@ function mv_history_disp(titleKey, mvd_id){
 }*/
 
 /* non-ajax preview of clip adjustment*/
-function mv_adjust_preview(mvd_id){		
+function mv_adjust_preview( mvd_id ){		
 	js_log('start val:#mv_start_hr_'+mvd_id+' ' + $j('#mv_start_hr_'+mvd_id).val() + ' end:'+ $j('#mv_end_hr_'+mvd_id).val() );
 	$j('#embed_vid').get(0).hideHighlight();
 	$j('#embed_vid').get(0).stop();
@@ -530,7 +530,7 @@ function mv_adjust_preview(mvd_id){
 	mv_lock_vid_updates=false;
 	do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
 	mv_lock_vid_updates=true;
-	//start playing
+	//start playing	
 	$j('#embed_vid').get(0).play();
 	//mv_lock_vid_updates=false;
 }
@@ -879,6 +879,7 @@ function mv_pause(){
 }
 function mv_do_play( mvd_id ){
 	js_log('mv_do_play:' + mvd_id);
+	$j('#embed_vid').get(0).preview_mode=false;
 	//stop the current
 	$j('#embed_vid').get(0).stop();
 	//stop any deferred updates:

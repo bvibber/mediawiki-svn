@@ -1606,13 +1606,15 @@ var flashEmbed = {
 				   right:'0px'
 				}	     		
     		},
-			screen: {
-				opacity: 0.2
-			}    	
+    		screen: {
+    			opacity: 1.0
+    		}			
     	};
-    	//don't have low volume/opacity on seek: 
-    	if( this.didSeekJump )
-    		flowConfig.screen.opacity = 1.0;    	
+    	
+    	//if in preview mode set grey and lower volume until "ready"
+    	if( this.preview_mode && ! this.didSeekJump ){
+    		flowConfig.screen.opacity = 0.2;    	    	 
+    	}    	    	    
     	
 		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf', flowConfig);    	    	  
 		//get the this.fla value: 		
@@ -1623,12 +1625,12 @@ var flashEmbed = {
     	})
     	this.fla.onResume( function(){
     		_this.parent_play();	//update the interface    
-    	});
-
-		//hide by default (utill its ready) 
-    	if( ! this.didSeekJump )	
-    		this.fla.setVolume(0);    	
+    	});	    	    
     	
+    	//set the volume to zero until "ready"
+    	if( this.preview_mode && !this.didSeekJump ){
+    		this.fla.setVolume( 0 );
+    	}
     	//start monitor: 
     	this.monitor();  
     	this.old_pid++;
@@ -1647,6 +1649,7 @@ var flashEmbed = {
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()', 250);
     	}
     },
+    //@@todo support mute
     toggleMute: function(){
     	parent_toggleMute();
     	this.getFLA();
@@ -1678,8 +1681,7 @@ var flashEmbed = {
 		    			this.fla.pause();  
 		    			
 		    			//restore volume and opacity 
-		    			this.fla.setVolume(90);
-        				$f().getPlugin('screen').css({'opacity':'1.0'});    	  	
+		    			this.restorePlayer(); 	  	
 		    		}
 		    	}
 	    	}
@@ -1697,8 +1699,8 @@ var flashEmbed = {
     		var d = new Date(); 	
     		if(!this.didDateStartTimeRestore )
     			this.fla.setVolume(0);
-    		if( (d.getTime() - this.dateStartTime) > 4000  && !this.didDateStartTimeRestore){
-    			js_log('more than 4 seconds have passed since first monitor call issue restore');    			
+    		if( (d.getTime() - this.dateStartTime) > 6000  && !this.didDateStartTimeRestore){
+    			js_log('more than 6 seconds have passed since first monitor call issue restore');    			
     			this.restorePlayer(); 
     		}
     	}  
@@ -1749,8 +1751,7 @@ var flashEmbed = {
         	var fail = false;
         	try
 			{
-				js_log("time is "+ this.currentTime + " started playback set opacity");				    				
-	        	
+				this.restorePlayer();	        	
 			}
 			catch(err)
 			{
@@ -1758,9 +1759,9 @@ var flashEmbed = {
 				fail = true;
 			}
         	if(!fail)
-        		this.startedTimedPlayback=true;     
-        		   	         	
+        		this.startedTimedPlayback=true;             		   	         	
         }
+        
         /* to support local seeks */
 		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.supportsURLTimeEncoding() )
 		{
@@ -1769,13 +1770,10 @@ var flashEmbed = {
 			this.seek_time_sec = 0;
 		}        
 		
-        if( !this.userSlide ){			   		       		
-	        if((this.currentTime - ntp2seconds(this.start_ntp)) < 0){
-	        	this.setStatus('buffering...');	        	
-	        }else{        			   		       		
-		       	this.setStatus( seconds2ntp(this.currentTime) + '/' + this.end_ntp);      		
-		        this.setSliderValue((this.currentTime - ntp2seconds(this.start_ntp)) / (ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)) );
-	        }
+        if( !this.userSlide ){			   		       			        
+        	//set the status: 
+	       	this.setStatus( seconds2ntp(this.currentTime) + '/' + this.end_ntp);      		
+	        this.setSliderValue((this.currentTime - ntp2seconds(this.start_ntp)) / (ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)) );
         }        
         
         //checks to see if we reached the end of playback:	    	    

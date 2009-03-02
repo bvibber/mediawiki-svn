@@ -1897,6 +1897,8 @@ embedVideo.prototype = {
 		var val = Math.round( perc  * $j('#mv_seeker_'+this_id).width() - (this.mv_seeker_width*perc));
 		if(val > ($j('#mv_seeker_'+this_id).width() -this.mv_seeker_width) )
 			val = $j('#mv_seeker_'+this_id).width() -this.mv_seeker_width ;
+		if(val < 0) 
+			val = 0;
 		$j('#mv_seeker_slider_'+this_id).css('left', (val)+'px' );
 		
 		//update the playback progress bar
