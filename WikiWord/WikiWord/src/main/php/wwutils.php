@@ -58,8 +58,6 @@ class WWUtils {
     function queryLocalConceptInfo($lang, $id) {
 	global $wwTablePrefix;
 
-	$term = trim($term);
-
 	$sql = "SELECT C.*, F.*, definition FROM {$wwTablePrefix}_{$lang}_concept_info as F "
 	      . " JOIN {$wwTablePrefix}_{$lang}_concept as C ON F.concept = C.id "
 	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON F.concept = D.concept "
@@ -111,9 +109,9 @@ class WWUtils {
 	    $r = explode("\x1F", $i);
 	    $offs = -1;
 
-	    if ($hasId)   $r['id']   = $r[$offs += 1];
-	    if ($hasName) $r['name'] = $r[$offs += 1];
-	    if ($hasConf) $r['conf'] = $r[$offs += 1];
+	    if ($hasId)   $r['id']   = @$r[$offs += 1];
+	    if ($hasName) $r['name'] = @$r[$offs += 1];
+	    if ($hasConf) $r['conf'] = @$r[$offs += 1];
 
 	    $items[] = $r;
 	}

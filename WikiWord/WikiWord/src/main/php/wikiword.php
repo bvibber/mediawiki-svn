@@ -92,7 +92,7 @@ function printLocalConcept($lang, $row, $pos = 0) {
     $wu = "http://$lang.wikipedia.org/wiki/" . urlencode($concept_name); 
     $cu = "$wwSelf?id=" . urlencode($concept) . "&lang=" . urlencode($lang); 
 
-    if (!$weight) $wclass = "x";
+    if (!isset($weight) || !$weight) $wclass = "x";
     else if ($weight>1000) $wclass = "huge";
     else if ($weight>100) $wclass = "big";
     else if ($weight>10) $wclass = "normal";
@@ -154,7 +154,7 @@ function printLocalConcept($lang, $row, $pos = 0) {
     </tr>
     <?php } ?>
     <?php
-    if ($weight && $weight<2 && $pos>=3) return false;
+    if (isset($weight) && $weight && $weight<2 && $pos>=3) return false;
     else return true;
 }
 
