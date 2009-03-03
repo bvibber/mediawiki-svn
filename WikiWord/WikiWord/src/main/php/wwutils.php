@@ -30,7 +30,7 @@ class WWUtils {
 	if(!$result) {
 		$error = mysql_error($db);
 		$errno = mysql_errno($db);
-		throw new Exception("$error (#$errno)");
+		throw new Exception("$error (#$errno);\nlast query: $sql");
 	}
 
 	return $result;
@@ -101,9 +101,11 @@ class WWUtils {
 	print "</select>";
     }
 
-    static function unpickle($s, $hasId=true, $hasName=true, $hasConf=true) {
+    function unpickle($s, $lang, $hasId=true, $hasName=true, $hasConf=true) {
 	$ss = explode("\x1E", $s);
 	$items = array();
+
+	$fetchNames = false;
 
 	foreach ($ss as $i) {
 	    $r = explode("\x1F", $i);
@@ -113,9 +115,51 @@ class WWUtils {
 	    if ($hasName) $r['name'] = @$r[$offs += 1];
 	    if ($hasConf) $r['conf'] = @$r[$offs += 1];
 
-	    $items[] = $r;
+	    if ($hasName && $hasId && !isset($r['name'])) 
+	      $fetchNames = true;
+
+	    if ($hasId) $items[ $r['id'] ] = $r;
+	    else $items[] = $r;
+	}
+
+	if ($fetchNames) {
+	    $names = $this->fetchNames(array_keys($items), $lang);
+
+	    $keys = array_keys($items);
+	    foreach ($keys as $k) {
+		$id = $items[$k]['id'];
+		$items[$k]['name'] = $names[$id];
+	    }
 	}
 
 	return $items;
+    }
+
+    function fetchNames($ids, $lang) {
+	global $wwTablePrefix;
+
+	$names = array();
+	if (!$ids) return $names;
+
+	$set = NULL;
+	foreach ($ids as $id) {
+	   if ($set===NULL) $set = "";
+	   else $set .= ", ";
+	   $set .= $id;
+	}
+
+	$sql = "select id, name from {$wwTablePrefix}_{$lang}_concept ";
+	$sql .= "where id in ($set)";
+
+	$res = $this->query($sql);
+
+	while ($row = mysql_fetch_assoc($res)) {
+	    $id = $row['id'];
+	    $names[$id] = $row['name'];
+	}
+	
+	mysql_free_result($res);
+
+	return $names;
     }
 }

@@ -6,7 +6,8 @@ require_once("$IP/config.php");
 require_once("$IP/wwutils.php");
 
 function printLocalConceptList($lang, $concepts) {
-    if (is_string($concepts)) $concepts = WWUtils::unpickle($concepts);
+    global $utils;
+    if (is_string($concepts)) $concepts = $utils->unpickle($concepts, $lang);
 
     ?>
     <ul class="terselist">
@@ -47,7 +48,8 @@ function printLocalConceptLink($lang, $row) {
 }
 
 function printTermList($lang, $terms) {
-    if (is_string($terms)) $terms = WWUtils::unpickle($terms);
+    global $utils;
+    if (is_string($terms)) $terms = $utils->unpickle($terms, $lang);
 
     ?>
     <ul class="terselist">
@@ -95,7 +97,7 @@ function printLocalConcept($lang, $row, $pos = 0) {
     $cu = "$wwSelf?id=" . urlencode($concept) . "&lang=" . urlencode($lang); 
 
     if (!isset($weight) || !$weight) { 
-      $wclass = "x";
+      $wclass = "unknown";
       $weight = NULL;
     }
     else if ($weight>1000) $wclass = "huge";
@@ -214,8 +216,9 @@ if (!$error) {
 	.weight_huge { font-size: 140%; font-weight:bold; }
 	.weight_big { font-size: 120%; font-weight:bold; }
 	.weight_normal { font-size: 110%; font-weight:bold; }
-	.weight_some { font-size: 100%; font-weight:normal; }
-	.weight_little { font-size: 90%; font-weight:normal; }
+	.weight_some { font-size: 100%; font-weight:bold; }
+	.weight_little { font-size: 90%; font-weight:bold; }
+	.weight_unknown { font-size: 100%; font-weight:bold; }
 	.row_def td { font-size: 80%; font-style:italic; }
 	.row_details td { font-size: 80%; }
 	.cell_weight { text-align: right; }
@@ -258,7 +261,7 @@ if ($error) {
 <?php
 if ($result) {
 ?>    
-    <table  border="1" class="results">
+    <table  border="0" class="results">
     <?php 
       $count = 0;
       while ($row = mysql_fetch_assoc($result)) {
