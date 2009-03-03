@@ -96,7 +96,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 						# Attempt to create the article
 						$article = new Article( $t );
-						$summary = "[[Special:RecordAdmin/$type|RecordAdmin]]:" . wfMsg( 'recordadmin-summary-typecreated' );
+						$summary = "[[Special:RecordAdmin/$type|RecordAdmin]]:" . wfMsg( 'recordadmin-summary-typecreated', $type );
 						$text = '';
 						foreach ( $posted as $k => $v ) if ( $v ) {
 							if ( $this->types[$k] == 'bool' ) $v = 'yes';
