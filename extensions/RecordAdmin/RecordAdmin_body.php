@@ -26,6 +26,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		global $wgVersion, $wgOut, $wgRequest, $wgRecordAdminUseNamespaces, $wgLang, $wgRecordAdminCategory;
 		$this->setHeaders();
 		$type     = $wgRequest->getText( 'wpType' ) or $type = $param;
+		$newtype  = $wgRequest->getText( 'wpNewType' );
 		$record   = $wgRequest->getText( 'wpRecord' );
 		$invert   = $wgRequest->getText( 'wpInvert' );
 		$title    = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
@@ -37,12 +38,12 @@ class SpecialRecordAdmin extends SpecialPage {
 		if (version_compare(substr($wgVersion, 0, 4), '1.13') > 0) {
 			$wgOut->addHTML( $wgLang->pipeList( array(
 				"<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>",
-				"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br>\n"
+				"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br />\n"
 			) ) );
 		}
 		else {
-			$wgOut->addHTML( "<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a> | "
-				. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br>\n"
+			$wgOut->addHTML( "<a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a> | "
+				. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a><br />\n"
 			);
 		}
 		
@@ -59,9 +60,16 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Clear any default values
 		$this->populateForm( array() );
 
-		# If no type selected, render select list of record types from Category:Records
+		# Process Create New Type form if submitted and user permitted
+		if ( $newtype ) {
+			$this->createRecordType( $newtype );
+			$type = '';
+		}
+
+		# If no type selected, render form for record types and create record-type
 		if ( empty( $type ) ) {
-			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-select' ) . "==\n" );
+			$wgOut->addWikiText( "<div class='visualClear'></div>\n==" . wfMsg( 'recordadmin-select' ) . "==\n" );
+			$wgOut->addHTML( Xml::element( 'form', array( 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null ) );
 
 			# Get titles in $wgRecordAdminCategory and build option list
 			$options = '';
@@ -71,19 +79,25 @@ class SpecialRecordAdmin extends SpecialPage {
 			$res  = $dbr->select( $cl, 'cl_from', "cl_to = $cat", __METHOD__, array( 'ORDER BY' => 'cl_sortkey' ) );
 			while ( $row = $dbr->fetchRow( $res ) ) $options .= '<option>' . Title::newFromID( $row[0] )->getText() . '</option>';
 
-			# Render type-selecting form
-			if ($options) {
-				$wgOut->addHTML( Xml::element( 'form', array( 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
-					. "<select name='wpType'>$options</select> "
-					. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
-					. '</form>'
-				);
-			}
+			# Render type select list
+			if ($options) $wgOut->addHTML( 
+				"<select name='wpType'>$options</select> "
+				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
+			);
 			else {
 				# No records found in $wgRecordAdminCategory
 				$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY );
 				$wgOut->AddWikiText( wfMsg( 'recordadmin-categoryempty', $cat->getPrefixedText() ) );
 			}
+
+			# Render type create
+			$wgOut->addWikiText( "<br />\n==" . wfMsg( 'recordadmin-createtype' ) . "==\n" );
+			$wgOut->addHTML( Xml::element( 'input', array( 'name' => 'wpNewType', 'type' => 'text' ) )
+				. '&nbsp;'
+				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) )
+				. '</form>'
+			);
+
 		}
 
 		# Record type known, but no record selected, render form for searching or creating
@@ -103,7 +117,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 						# Attempt to create the article
 						$article = new Article( $t );
-						$summary = "[[Special:RecordAdmin/$type|RecordAdmin]]:" . wfMsg( 'recordadmin-summary-typecreated', $type );
+						$summary = "[[Special:RecordAdmin/$type|".wfMsgForContent( 'recordadmin' )."]]: " . wfMsg( 'recordadmin-summary-typecreated', $type );
 						$text = '';
 						foreach ( $posted as $k => $v ) if ( $v ) {
 							if ( $this->types[$k] == 'bool' ) $v = 'yes';
@@ -486,6 +500,40 @@ class SpecialRecordAdmin extends SpecialPage {
 			}
 			$text = $text ? "{{" . "$type\n$text}}" : "{{" . "$type}}";
 			$success = $article->doEdit( $text, $summary, EDIT_NEW );
+		}
+	}
+
+	/**
+	 * Create a new record type
+	 */
+	function createRecordType( $newtype ) {
+		global $wgOut, $wgRecordAdminCategory;
+
+		# Compose the content of the new template
+		$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY )->getPrefixedText();
+		$text = "<noinclude>[[$cat]]</noinclude>\n{| class=recordadmin-template\n|}\n<includeonly>[[Category:{$newtype}s]]</includeonly>";
+
+		$rtype = wfMsg( 'recordadmin-recordtype' ) . " ($newtype)";
+		$title = Title::newFromtext( $newtype, NS_TEMPLATE );
+		if (!is_object($title)) {
+			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $rtype ) . "</div>\n" );
+		}
+		elseif ( $title->exists() ) {
+
+			# the template already exists
+			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-alreadyexist', $title->getPrefixedText() ) . "</div>\n" );
+
+		}
+		else {
+
+			# Attempt to create the article
+			$article = new Article( $title );
+			$summary = "[[Special:RecordAdmin/$newtype|".wfMsgForContent( 'recordadmin' )."]]: " . wfMsg( 'recordadmin-summary-typecreated', $rtype );
+			$success = $article->doEdit( $text, $summary, EDIT_NEW );
+
+			# Report success or error
+			if ( $success ) $wgOut->addHTML( "<div class='successbox'>" . wfMsg( 'recordadmin-createsuccess', $rtype ) . "</div>\n" );
+			else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $rtype ) . "</div>\n" );
 		}
 	}
 
