@@ -13,18 +13,24 @@
 Name:			%{mysql.name}
 Summary:		%{mysql.summary}
 Version:		%{mysql.version}
+Source2:		mysql.xml
 
 SUNW_BaseDir:        /opt/TSmysql
 BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
 
 Requires: TSisaexec
+Requires: TSlibfasttime
 
 %package devel
 Summary:                 %{summary} - development files
 SUNW_BaseDir:            %{_basedir}
 %include default-depend.inc
 Requires:                %name
+
+%package root
+Summary:		%{summary} - / filesystem
+SUNW_BaseDir:		/
 
 %package extra
 Summary:                 %{summary} - test suite and benchmark tools
@@ -92,6 +98,9 @@ mv $RPM_BUILD_ROOT/%{_libdir}/mysqld $RPM_BUILD_ROOT/%{_libdir}/sparcv7
 
 ln -s ../../ts/lib/isaexec $RPM_BUILD_ROOT%{_libdir}/mysqld
 
+mkdir -p $RPM_BUILD_ROOT/var/svc/manifest
+cp %SOURCE2 $RPM_BUILD_ROOT/var/svc/manifest
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -147,6 +156,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %attr (0755, root, bin) %{_bindir}/%_arch64
 %{_bindir}/%_arch64/*
 %endif
+
+%files root
+%defattr (-, root, sys)
+%class(manifest) /var/svc/manifest/mysql.xml
 
 %files extra
 %defattr (-, root, bin)

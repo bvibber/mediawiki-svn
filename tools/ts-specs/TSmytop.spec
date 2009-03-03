@@ -5,6 +5,7 @@ Summary:	mytop - show MySQL database state
 Version:	1.6
 Source:		http://jeremy.zawodny.com/mysql/mytop/mytop-%{version}.tar.gz
 Patch1:		mytop-01-specials.diff
+Patch2:		mytop-02-questions.diff
 
 SUNW_BaseDir:	%{_basedir}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
@@ -22,6 +23,7 @@ BuildRequires: TSperl-DBI
 %prep
 %setup -q -n mytop-%version
 %patch1 -p0
+%patch2 -p0
 
 %build
 
