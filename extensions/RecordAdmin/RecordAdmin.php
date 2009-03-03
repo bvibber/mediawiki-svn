@@ -11,9 +11,10 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'RECORDADMIN_VERSION', '0.5.2, 2009-03-02' );
+define( 'RECORDADMIN_VERSION', '0.5.3, 2009-03-04' );
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
+$wgRecordAdminCategory      = 'Records'; # Category containing record types
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'RecordAdmin.i18n.php';
@@ -43,7 +44,7 @@ $wgExtensionCredits['specialpage'][] = array(
  * Called from $wgExtensionFunctions array when initialising extensions
  */
 function wfSetupRecordAdmin() {
-	global $wgSpecialRecordAdmin, $wgParser, $wgRequest, $wgRecordAdminTag, $wgRecordAdminMagic;
+	global $wgSpecialRecordAdmin, $wgParser, $wgRequest, $wgRecordAdminTag, $wgRecordAdminMagic, $wgRecordAdminCategory;
 
 	# Make a global singleton so methods are accessible as callbacks etc
 	$wgSpecialRecordAdmin = new SpecialRecordAdmin();

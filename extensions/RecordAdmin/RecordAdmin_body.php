@@ -23,7 +23,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Override SpecialPage::execute()
 	 */
 	function execute( $param ) {
-		global $wgVersion, $wgOut, $wgRequest, $wgRecordAdminUseNamespaces, $wgLang;
+		global $wgVersion, $wgOut, $wgRequest, $wgRecordAdminUseNamespaces, $wgLang, $wgRecordAdminCategory;
 		$this->setHeaders();
 		$type     = $wgRequest->getText( 'wpType' ) or $type = $param;
 		$record   = $wgRequest->getText( 'wpRecord' );
@@ -63,20 +63,27 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( empty( $type ) ) {
 			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-select' ) . "==\n" );
 
-			# Get titles in 'recordadmin-category' (default: Category:Records) and build option list
+			# Get titles in $wgRecordAdminCategory and build option list
 			$options = '';
 			$dbr  = wfGetDB( DB_SLAVE );
 			$cl   = $dbr->tableName( 'categorylinks' );
-			$cat  = $dbr->addQuotes( wfMsgForContent( 'recordadmin-category' ) );
+			$cat  = $dbr->addQuotes( $wgRecordAdminCategory );
 			$res  = $dbr->select( $cl, 'cl_from', "cl_to = $cat", __METHOD__, array( 'ORDER BY' => 'cl_sortkey' ) );
 			while ( $row = $dbr->fetchRow( $res ) ) $options .= '<option>' . Title::newFromID( $row[0] )->getText() . '</option>';
 
 			# Render type-selecting form
-			$wgOut->addHTML( Xml::element( 'form', array( 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
-				. "<select name='wpType'>$options</select> "
-				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
-				. '</form>'
-			);
+			if ($options) {
+				$wgOut->addHTML( Xml::element( 'form', array( 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
+					. "<select name='wpType'>$options</select> "
+					. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
+					. '</form>'
+				);
+			}
+			else {
+				# No records found in $wgRecordAdminCategory
+				$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY );
+				$wgOut->AddWikiText( wfMsg( 'recordadmin-categoryempty', $cat->getPrefixedText() ) );
+			}
 		}
 
 		# Record type known, but no record selected, render form for searching or creating
