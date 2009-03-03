@@ -80,6 +80,7 @@ function sajax_do_call(func_name, args, target) {
 	var i, x, n;
 	var uri;
 	var post_data;
+		
 	uri = wgServer +
 		((wgScript == null) ? (wgScriptPath + "/index.php") : wgScript) +
 		"?action=ajax";
@@ -117,16 +118,15 @@ function sajax_do_call(func_name, args, target) {
 	}
 	x.setRequestHeader("Pragma", "cache=yes");
 	x.setRequestHeader("Cache-Control", "no-transform");
-	x.onreadystatechange = function() {
+	x.onreadystatechange = function() {				
 		if (x.readyState != 4)
 			return;
-
+		
 		sajax_debug("received (" + x.status + " " + x.statusText + ") " + x.responseText);
 
 		//if (x.status != 200)
 		//	alert("Error: " + x.status + " " + x.statusText + ": " + x.responseText);
 		//else
-
 		if ( typeof( target ) == 'function' ) {
 			target( x );
 		}

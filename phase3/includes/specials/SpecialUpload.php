@@ -144,8 +144,8 @@ class UploadForm {
 	 */
 	function processUpload(){
 		global $wgUser, $wgOut, $wgFileExtensions, $wgLang;
-	 	$details = $this->internalProcessUpload();
-
+	 	$details = $this->internalProcessUpload();		
+		
 	 	switch( $details['status'] ) {
 			case UploadBase::SUCCESS:
 				$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
@@ -213,7 +213,7 @@ class UploadForm {
 				break;
 
 			case UploadBase::UPLOAD_WARNING:
-				unset( $details['status'] );
+				unset( $details['status'] );				
 				$this->uploadWarning( $details );
 				break;
 
@@ -303,7 +303,7 @@ class UploadForm {
 	 */
 	static function getExistsWarning( $exists ) {
 		global $wgUser, $wgContLang;
-		
+	
 		if( $exists === false )
 			return '';
 		
@@ -482,7 +482,7 @@ class UploadForm {
 	function uploadWarning( $warnings ) {
 		global $wgOut, $wgUser;
 		global $wgUseCopyrightUpload;
-
+		
 		$sessionData = $this->mUpload->stashSession();
 		
 		if( $sessionData === false ) {
@@ -500,8 +500,13 @@ class UploadForm {
 		foreach( $warnings as $warning => $args ) {
 				$msg = null;
 				if( $warning == 'exists' ) {
-					if ( !$this->mDestWarningAck )
+					
+					//we should not have produced this warning if the user already acknowledged the destination warning
+					//at any rate I don't see why we should hid this warning if mDestWarningAck has been checked 
+					//(it produces an empty warning page when no other warnings are fired) 									
+					//if ( !$this->mDestWarningAck ) 
 						$msg = self::getExistsWarning( $args );
+					
 				} elseif( $warning == 'duplicate' ) {
 					$msg = $this->getDupeWarning( $args );
 				} elseif( $warning == 'duplicate-archive' ) {

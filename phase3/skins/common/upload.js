@@ -75,9 +75,10 @@ var wgUploadWarningObj = {
 		// anonymous callback. fileName is copied so that multiple overlapping 
 		// ajax requests can be supported.
 		var obj = this;
-		var fileName = this.nameToCheck;
+		var fileName = this.nameToCheck;		
 		sajax_do_call( 'UploadForm::ajaxGetExistsWarning', [this.nameToCheck], 
 			function (result) {
+				
 				obj.processResult(result, fileName)
 			}
 		);
