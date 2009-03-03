@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'recordadmin-desc' => 'A [[Special:RecordAdmin|special page]] for finding and editing record pages using a form',
 	'recordadmin-categoryempty' => 'There are currently no record types. Please categorise record templates into [[:$1|$1]].',
 	'recordadmin-select' => 'Select the type of record to search for',
+	'recordadmin-createtype' => 'Enter the name of a new record type to create',
 	'recordadmin-newsearch' => 'New $1 search',
 	'recordadmin-newrecord' => 'Select another record type',
 	'recordadmin-submit' => 'Submit',
