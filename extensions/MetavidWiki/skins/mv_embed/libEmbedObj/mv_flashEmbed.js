@@ -1607,12 +1607,12 @@ var flashEmbed = {
 				}	     		
     		},
     		screen: {
-    			opacity: 1.0
+    			opacity : '1.0'
     		}			
     	};
     	
     	//if in preview mode set grey and lower volume until "ready"
-    	if( this.preview_mode && ! this.didSeekJump ){
+    	if( this.preview_mode ){
     		flowConfig.screen.opacity = 0.2;    	    	 
     	}    	    	    
     	
@@ -1626,11 +1626,7 @@ var flashEmbed = {
     	this.fla.onResume( function(){
     		_this.parent_play();	//update the interface    
     	});	    	    
-    	
-    	//set the volume to zero until "ready"
-    	if( this.preview_mode && !this.didSeekJump ){
-    		this.fla.setVolume( 0 );
-    	}
+    	   
     	//start monitor: 
     	this.monitor();  
     	this.old_pid++;
@@ -1696,9 +1692,10 @@ var flashEmbed = {
     		this.dateStartTime = d.getTime();
     		
     	}else{
-    		var d = new Date(); 	
-    		if(!this.didDateStartTimeRestore )
+    		var d = new Date(); 	        			
+    		if( !this.didDateStartTimeRestore  && this.preview_mode)
     			this.fla.setVolume(0);
+    			
     		if( (d.getTime() - this.dateStartTime) > 6000  && !this.didDateStartTimeRestore){
     			js_log('more than 6 seconds have passed since first monitor call issue restore');    			
     			this.restorePlayer(); 
@@ -1789,15 +1786,17 @@ var flashEmbed = {
 	    this.prevTime = this.currentTime;    
 	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(this.start_ntp)) +' / ' +(ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)));
     },
-    restorePlayer:function(){
+    restorePlayer:function(){    	
     	if(!this.fla)
     		this.getFLA();
-    		
-    	this.fla.setVolume(90); 
-	    $f().getPlugin('screen').css({'opacity':'1.0'} );  
+    	if(this.fla){
+    		js_log('f:do restorePlayer');
+    		this.fla.setVolume(90); 
+	    	$f().getPlugin('screen').css({'opacity':'1.0'} );  
 	    
-	    //set the fallback date restore flag to true:
-	    this.didDateStartTimeRestore=true;
+	    	//set the fallback date restore flag to true:
+	    	this.didDateStartTimeRestore=true;
+	    }
     },
     // get the embed fla object 
     getFLA : function (){

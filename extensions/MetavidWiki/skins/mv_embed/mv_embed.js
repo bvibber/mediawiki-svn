@@ -559,24 +559,24 @@ mediaPlayers.prototype =
     },
     savePreferences : function()
     {
-        var cookieVal = '';
-        for(var i=0; i < this.preference.length;i++)
+        var cookieVal = '';        
+        for(var i in this.preference)
             cookieVal+= i + '='+ this.preference[i] + '&';
             
-        cookieVal=cookieVal.substr(0, cookieVal.length-1);
-        js_log('setting preference cookie to ' + cookieVal);
+        cookieVal=cookieVal.substr(0, cookieVal.length-1);        
 		var week = 7*86400*1000;
 		setCookie( 'ogg_player_exp', cookieVal, week, false, false, false, false );
     }
 };
 
-var getCookie = function ( cookieName ) {
-		 var m = document.cookie.match( cookieName + '=(.*?)(;|$)' );
-		 js_log('getCookie:' + (m ? unescape( m[1] ) : false));
-		 return m ? unescape( m[1] ) : false;
+function getCookie ( cookieName ) {
+	var m = document.cookie.match( cookieName + '=(.*?)(;|$)' );
+	js_log('getCookie:' + cookieName + ' v:' + (m ? unescape( m[1] ) : false));
+	return m ? unescape( m[1] ) : false;
 }
 
 function setCookie(name, value, expiry, path, domain, secure) {
+	js_log('setCookie:' + name + ' v:' + value);
    	var expiryDate = false;
 	if ( expiry ) {
 		expiryDate = new Date();
@@ -588,8 +588,8 @@ function setCookie(name, value, expiry, path, domain, secure) {
 		(domain ? ("; domain=" + domain) : "") + 
 		(secure ? "; secure" : "");
 }
-js_log("mv embed path:"+ mv_embed_path);
 
+js_log("mv embed path:"+ mv_embed_path);
 /*
  * embedTypes object handles setting and getting of supported embed types:
  * closely mirrors OggHandler so that its easier to share efforts in this area:

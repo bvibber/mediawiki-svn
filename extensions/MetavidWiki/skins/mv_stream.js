@@ -157,7 +157,6 @@ var mv_stream_interface = {
 			});
 		});
 
-
 		//do any tool specific hooks:
 		this.tool_key = parseUri(document.URL).queryKey.tool_disp;
 		if(this.tool_key){
@@ -384,7 +383,7 @@ function mv_disp_add_mvd(mvd_type){
 		return ;
 	}
 	mv_open_edit_mvd=mvd_type;
-	$j('#embed_vid').get(0).preview_mode=true;//turn on clip preivew mode:
+	$j('#embed_vid').get(0).preview_mode=true; //turn on clip preivew mode:
 	
 	sajax_request_type='GET';
 	sajax_do_call( "mv_add_disp",[wgTitle, mvd_type, org_vid_time_req], f );
@@ -879,7 +878,7 @@ function mv_pause(){
 }
 function mv_do_play( mvd_id ){
 	js_log('mv_do_play:' + mvd_id);
-	$j('#embed_vid').get(0).preview_mode=false;
+	$j('#embed_vid').get(0).preview_mode=false
 	//stop the current
 	$j('#embed_vid').get(0).stop();
 	//stop any deferred updates:
