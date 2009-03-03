@@ -70,7 +70,7 @@ var nativeEmbed = {
 		//js_log('current time: '+ this.vid.currentTime  + ' dur: ' + this.duration);
 		
 		//update duration if not set (for now trust the getDuration more than this.vid.duration		
-		this.duration =(this.getDuration())?this.getDuration():this.vid.duration;
+		this.duration = (this.getDuration()) ?this.getDuration():this.vid.duration;	
 				
 		//update currentTime
 		this.currentTime = this.vid.currentTime;
@@ -87,9 +87,9 @@ var nativeEmbed = {
 		
 		//only update the interface if controls have been included:	
 		if( this.currentTime > 0 ){
-			if(!this.userSlide){
-				if(this.currentTime > this.duration){//we are likely viewing a annodex stream add in offset
-					this.setSliderValue((this.currentTime-this.start_offset)/this.duration);			
+			if( !this.userSlide ){
+				if( this.start_offset  ){ //if start offset included add that in: 
+					this.setSliderValue( ( this.currentTime - this.start_offset ) / this.duration );			
 					this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.start_offset+this.duration ));		
 				}else{
 					this.setSliderValue(this.currentTime/this.duration );

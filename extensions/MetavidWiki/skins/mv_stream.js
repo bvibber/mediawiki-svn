@@ -854,7 +854,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 			mv_lock_vid_updates=false;
 			//free the editor slot:
 			mv_open_edit_mvd=null;
-			$j('#embed_vid').get(0).preview_mode=false;//turn off clip preivew mode:
+			$j('#embed_vid').get(0).preview_mode=false;//turn off clip preview mode:
         }
 	}
 	//return false to prevent the form being submitted
