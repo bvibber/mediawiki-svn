@@ -655,11 +655,11 @@ $messages['he'] = array(
 	'sitematrix-summary' => 'דף זה כולל רשימה של כל אתרי קרן ויקימדיה.',
 	'sitematrix-desc' => 'הצגת [[Special:SiteMatrix|רשימת אתרי ויקי של ויקימדיה]]',
 	'sitematrix-language' => 'שפה',
-	'sitematrix-project' => 'שם הפרויקט, קישורי אינטרוויקי ובין המיזמים',
+	'sitematrix-project' => 'שם המיזם וקישורי הבינוויקי',
 	'sitematrix-others' => 'מיזמים אחרים של ויקימדיה',
 	'sitematrix-total' => "'''מספר האתרים: $1'''",
 	'sitematrix-sitetotal' => 'סך הכל',
-	'sitematrix-private' => 'פרטיים',
+	'sitematrix-private' => 'פרטי',
 	'sitematrix-fishbowl' => 'העריכה מוגבלת',
 );
 
