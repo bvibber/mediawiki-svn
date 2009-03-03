@@ -27,9 +27,9 @@ function printLocalConceptLink($lang, $row) {
     if (!isset($weight) && isset($freq)) $weight = $freq;
     if (!isset($weight) && isset($conf)) $weight = $conf;
     if (!isset($concept_name) && isset($name)) $concept_name = $name;
-    if (!isset($concept_name) && isset($name)) $concept_name = NULL;
+    if (!isset($concept_name)) $concept_name = NULL;
     if (!isset($concept) && isset($id)) $concept = $id;
-    if (!isset($concept) && isset($id)) $concept = NULL;
+    if (!isset($concept)) $concept = NULL;
 
     $wu = $concept_name ? "http://$lang.wikipedia.org/wiki/" . urlencode($concept_name) : NULL; 
     $cu = "$wwSelf?id=" . urlencode($concept) . "&lang=" . urlencode($lang); 
