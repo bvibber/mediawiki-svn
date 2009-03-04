@@ -17,6 +17,8 @@ BuildRoot:		%{_tmppath}/%{name}-%{version}-build
 Requires:               SUNWperl584core
 Requires: SUNWgm4
 Requires:               SUNWpostrun
+Requires:		TSautoconf
+BuildRequires:		TSautoconf
 
 %prep
 %setup -q -n automake-%{version}
