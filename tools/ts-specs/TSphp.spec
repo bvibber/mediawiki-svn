@@ -16,11 +16,13 @@ BuildRequires: TSpcre-devel
 BuildRequires: TScurl-devel
 BuildRequires: TSlibmcrypt-devel
 Buildrequires: TSmysql-devel
+BuildRequires: TSlibiconv-devel
 
 Requires: TSpcre
 Requires: TScurl
 Requires: TSlibmcrypt
 Requires: TSmysql
+Requires: TSlibiconv
 
 %package root
 Summary:                 %{summary} - / filesystem
@@ -47,27 +49,28 @@ export EXTRA_LDFLAGS_PROGRAM='-L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql 
 export LIBS='-L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql'
 export CPPFLAGS='-I/opt/ts/include -I/opt/TSmysql/include'
 
-./configure  --prefix=%{_prefix} \
-	--with-xmlrpc \
-	--enable-sockets \
-	--enable-soap \
-	--with-pgsql=/usr/postgres/8.2 \
-	--enable-mbstring \
-	--enable-fastcgi \
-	--enable-pcntl \
-	--with-openssl \
-	--with-curl=/opt/ts \
-	--sysconfdir=/etc/opt/php \
-	--with-config-file-path=/etc/opt/php \
-	--with-mysql=/opt/TSmysql \
-	--disable-path-info-check \
-	--with-pcre-regex=/opt/ts \
-        --with-zlib \
-        --with-bz2 \
-        --enable-exif \
-        --enable-ftp \
-        --with-mysqli=/opt/TSmysql/bin/mysql_config \
-	--with-mcrypt=/opt/ts
+./configure  --prefix=%{_prefix} 				\
+	--with-xmlrpc 						\
+	--enable-sockets 					\
+	--enable-soap 						\
+	--with-pgsql=/usr/postgres/8.2 				\
+	--enable-mbstring 					\
+	--enable-fastcgi 					\
+	--enable-pcntl 						\
+	--with-openssl 						\
+	--with-curl=/opt/ts 					\
+	--sysconfdir=/etc/opt/php 				\
+	--with-config-file-path=/etc/opt/php 			\
+	--with-mysql=/opt/TSmysql 				\
+	--disable-path-info-check 				\
+	--with-pcre-regex=/opt/ts 				\
+        --with-zlib 						\
+        --with-bz2 						\
+        --enable-exif 						\
+        --enable-ftp 						\
+        --with-mysqli=/opt/TSmysql/bin/mysql_config 		\
+	--with-mcrypt=/opt/ts					\
+	--with-iconv=/opt/ts				\
 
 
 gmake -j$CPUS
