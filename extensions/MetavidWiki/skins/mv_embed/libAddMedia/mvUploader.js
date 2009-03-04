@@ -39,31 +39,35 @@ mvUploader.prototype = {
 		this.on_upload_page = ( wgPageName== "Special:Upload")?true:false;					
 		js_log('f:mvUploader: onuppage:' + this.on_upload_page);
 		//grab firefogg.js: 
-		mvJsLoader.doLoad({'upFirefogg' : 'libAddMedia/firefogg.js'},function(){
-			//if we are not on the upload page grab the upload html via ajax:		
-			if( !_this.on_upload_page){					
-				$j.get(wgArticlePath.replace(/\$1/, 'Special:Upload'), {}, function(data){
-					//add upload.js: 
-					$j.getScript( stylepath + '/common/upload.js', function(){ 	
-						//really _really_ need an "upload api"!
-						wgAjaxUploadDestCheck = true;
-						wgAjaxLicensePreview = false;
-						wgUploadAutoFill = true;									
-						//strip out inline scripts:
-						sp = data.indexOf('<div id="content">');
-						se = data.indexOf('<!-- end content -->');	
-						if(sp!=-1 && se !=-1){		
-							result_data = data.substr(sp, (se-sp) ).replace('/\<script\s.*?\<\/script\>/gi',' ');
-							js_log("trying to set: " + result_data );																			
-							//$j('#'+_this.target_div).html( result_data );
-						}						
-						_this.setupFirefogg();
-					});	
-				});				
-			}else{
-				_this.setupFirefogg();
-			}							
-		});
+		mvJsLoader.doLoad({
+				'mvFirefogg' : 'libAddMedia/mvFirefogg.js'
+			},function(){
+				//if we are not on the upload page grab the upload html via ajax:
+				//@@todo refactor with 		
+				if( !_this.on_upload_page){					
+					$j.get(wgArticlePath.replace(/\$1/, 'Special:Upload'), {}, function(data){
+						//add upload.js: 
+						$j.getScript( stylepath + '/common/upload.js', function(){ 	
+							//really _really_ need an "upload api"!
+							wgAjaxUploadDestCheck = true;
+							wgAjaxLicensePreview = false;
+							wgUploadAutoFill = true;									
+							//strip out inline scripts:
+							sp = data.indexOf('<div id="content">');
+							se = data.indexOf('<!-- end content -->');	
+							if(sp!=-1 && se !=-1){		
+								result_data = data.substr(sp, (se-sp) ).replace('/\<script\s.*?\<\/script\>/gi',' ');
+								js_log("trying to set: " + result_data );																			
+								//$j('#'+_this.target_div).html( result_data );
+							}						
+							_this.setupFirefogg();
+						});	
+					});				
+				}else{
+					_this.setupFirefogg();
+				}							
+			}
+		);
 	},
 	setupFirefogg:function(){
 		var _this = this;
@@ -77,7 +81,7 @@ mvUploader.prototype = {
 		//set up the upload_done action 
 		//redirect if we are on the upload page  
 		//do a callback if in called from gui) 
-		var intFirefoggObj = (this.on_upload_page)? 
+		var intFirefoggObj = ( this.on_upload_page )? 
 				{'upload_done_action':'redirect'}:
 				{'upload_done_action':function( rTitle ){
 						js_log('add_done_action callback for uploader');
@@ -85,10 +89,10 @@ mvUploader.prototype = {
 						_this.upload_done_action( rTitle );		
 					}
 				};
+		js_log('new mvFirefogg');
 		//if firefog is not taking over the submit we can here: 
-		if( ! init_firefogg( intFirefoggObj ) ){			
-			//no firefogg installed
-		}
+		_this.fogg = new mvFirefogg( intFirefoggObj );			
+			
 	},
 	//same add code as specialUpload if($wgEnableFirefogg){
 	addFirefoggHtml:function(){		

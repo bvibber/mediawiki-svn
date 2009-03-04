@@ -26,7 +26,7 @@ var MV_EMBED_VERSION = '1.0r11';
 
 //if we should use the scriptLoader 
 //( lets you group requests, minimize javascript, and use mediaWiki localization infastructure) 
-var MV_USE_SCRIPT_LOADER = true;
+var MV_USE_SCRIPT_LOADER = false;
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';

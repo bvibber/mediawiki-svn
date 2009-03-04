@@ -92,8 +92,8 @@ var nativeEmbed = {
 					this.setSliderValue( ( this.currentTime - this.start_offset ) / this.duration );			
 					this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.start_offset+this.duration ));		
 				}else{
-					this.setSliderValue(this.currentTime/this.duration );
-					this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.duration ));
+					this.setSliderValue( this.currentTime / this.duration );
+					this.setStatus( seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.duration ));
 				}				
 			}
 		}					

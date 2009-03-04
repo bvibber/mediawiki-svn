@@ -42,7 +42,7 @@ function init_firefogg( iObj ){
 						
 			//do the version check: 
 			var fv = fogg.fogg.version;
-			if(fv.replace(/[^0-9]/gi, '') < min_firefogg_version.replace(/[^0-9]/gi, '') ){
+			if( fv.replace(/[^0-9]/gi, '') < min_firefogg_version.replace(/[^0-9]/gi, '') ){
 				e = document.getElementById('wgfogg_wrong_version');
 				if(e) 
 					e.style.display='inline';
@@ -53,7 +53,7 @@ function init_firefogg( iObj ){
 			}
 			
 			//make sure the checkbox accurately reflects the current state: 
-			if(fogg.enabled == false)
+			if( fogg.enabled == false )
 				fe.checked = false;
 			
 			addHandler( fe, 'click', function(){			
@@ -64,7 +64,7 @@ function init_firefogg( iObj ){
 				}
 			});					
 		}else{			
-			js_log('could not find wgEnableFirefogg');
+			alert('could not find wgEnableFirefogg');
 		}
 	}		
 	//we did init with support
