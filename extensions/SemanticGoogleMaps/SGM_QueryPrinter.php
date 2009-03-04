@@ -28,6 +28,7 @@ class SGMResultPrinter extends SMWResultPrinter {
 			$lat = $lon = $title = $text = $icon = "";
 			foreach ($row as $i => $field) {
 				$pr = $field->getPrintRequest();
+				$coords_for_page = array();
 				while ( ($object = $field->getNextObject()) !== false ) {
 					if ($object->getTypeID() == '_geo') { // use shorter "LongText" for wikipage
 						// don't add geographical coordinates to the display
@@ -41,11 +42,12 @@ class SGMResultPrinter extends SMWResultPrinter {
 					}
 					if ($pr->getMode() == SMWPrintRequest::PRINT_PROP && $pr->getTypeID() == '_geo') {
 						list($lat,$lon) = explode(',', $object->getXSDValue());
-
+						if ($lat != '' && $lon != '')
+							$coords_for_page[] = array($lat, $lon);
 					}
 				}
 			}
-			if ($lat != '' && $lon != '') {
+			foreach ($coords_for_page as $coords) {
 				// look for display_options field, which can
 				// be set by Semantic Compound Queries
 				if (property_exists($row[0], 'display_options')) {
@@ -71,6 +73,7 @@ class SGMResultPrinter extends SMWResultPrinter {
 					$icon = $icon_image_page->getDisplayedFile()->getURL();
 				}
 
+				list($lat, $lon) = $coords;
 				$locations[] = array($lat, $lon, $title, $text, $icon);
 			}
 		}
