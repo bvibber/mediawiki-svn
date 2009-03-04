@@ -21,7 +21,8 @@ export PKG_CONF
 		--bindir=%{_bindir}	\
 		--with-apr=$APR_CONFIG	\
 		--includedir=$INCDIR	\
-		--with-ldap=ldap
+		--with-ldap=ldap	\
+		--with-expat=/opt/ts
 
 		#--with-iconv=/opt/ts
 
