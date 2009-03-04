@@ -19,18 +19,27 @@ rm -rf %name-%version
 
 %build
 
+PATH=/opt/ts/bin:$PATH
+
+rm -rf libltdl
+libtoolize --ltdl
+aclocal
+automake
+autoconf
+
 ./configure --prefix=%{_prefix}			\
 	    --bindir=%{_bindir}			\
 	    --includedir=%{_includedir}		\
 	    --mandir=%{_mandir}			\
             --libdir=%{_libdir}                 \
             --enable-rpath			\
+            --enable-dynamic-loading		\
             %{?configure_options}
 
-dmake -j$CPUS all
+gmake -j$CPUS all
 
 %install
-make DESTDIR=${RPM_BUILD_ROOT} install
+gmake DESTDIR=${RPM_BUILD_ROOT} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
