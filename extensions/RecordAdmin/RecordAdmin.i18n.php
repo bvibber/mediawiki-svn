@@ -322,7 +322,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'recordadmin' => 'Gestion des enregistrements',
 	'recordadmin-desc' => 'Une page spéciale pour trouver et modifier l’enregistrement des pages par l’utilisation d’un formulaire',
-	'recordadmin-select' => 'Sélectionner le type d’enregistrement à rechercher pour',
+	'recordadmin-select' => 'Sélectionner le type d’enregistrement à gérer',
 	'recordadmin-newsearch' => 'Nouvelle recherche $1',
 	'recordadmin-newrecord' => 'Sélectionner un autre type d’enregistrement',
 	'recordadmin-submit' => 'Soumettre',
@@ -697,7 +697,11 @@ $messages['nah'] = array(
 $messages['nl'] = array(
 	'recordadmin' => 'Gegevensbeheer',
 	'recordadmin-desc' => "Een [[Special:RecordAdmin|speciale pagina]] voor het zoeken en bewerken van gegevenspagina's die een formulier gebruiken",
-	'recordadmin-select' => 'Geef aan welk type gegeven te zoeken',
+	'recordadmin-categoryempty' => 'Er zijn nog geen gegevenstypes.
+Categoriseer de gegevenssjablonen [[:$1|$1]].',
+	'recordadmin-select' => 'Selecteer het te beheren gegevenstype',
+	'recordadmin-createtype' => 'Voer de naam van een nieuw aan te maken gegevenstype in',
+	'recordadmin-recordtype' => 'gegevenstype',
 	'recordadmin-newsearch' => 'Nieuwe zoekopdracht voor $1',
 	'recordadmin-newrecord' => 'Een ander gegevenstype selecteren',
 	'recordadmin-submit' => 'OK',
@@ -725,7 +729,7 @@ $messages['nl'] = array(
 	'recordadmin-viewlink' => 'bekijken',
 	'recordadmin-editlink' => 'bewerken',
 	'recordadmin-created' => 'Aangemaakt',
-	'recordadmin-actions' => 'Handelingen',
+	'recordadmin-actions' => 'Acties',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 );
 

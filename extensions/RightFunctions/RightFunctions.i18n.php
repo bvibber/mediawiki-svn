@@ -48,6 +48,17 @@ $messages['arz'] = array(
 	'rightfunctions-ns' => '(من حماية نطاق)',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'rightfunctions-desc' => 'Функцыі парсэра заснаваныя на дазволах',
+	'rightfunctions-casc' => '(з каскаднай абароны)',
+	'rightfunctions-local' => '(з лякальнай старонкі)',
+	'rightfunctions-ns' => '(з абароны прасторы назваў)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

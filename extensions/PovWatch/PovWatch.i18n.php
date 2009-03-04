@@ -461,6 +461,14 @@ Haga clic en el botón abajo para subscribirse.',
 	'action-povwatch_user' => 'agregar esta página a la lista de seguimiento de otro usuario',
 );
 
+/** Persian (فارسی)
+ * @author Mardetanha
+ */
+$messages['fa'] = array(
+	'povwatch_title' => 'عنوان:',
+	'povwatch_added' => 'افزوده‌شد',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -934,6 +942,7 @@ $messages['ko'] = array(
 	'povwatch_subscriber_list_intro' => '<strong>수신자 목록</strong>',
 	'povwatch_title' => '제목:',
 	'povwatch_no_subscribers' => '수신자가 없습니다.',
+	'povwatch_unsubscribe' => '수신 해제',
 	'povwatch_subscribe' => '수신',
 );
 
@@ -1563,8 +1572,15 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
+	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Сирэйдэри атын киһи [[Special:PovWatch|кэтээн көрүүтүн тиһигэр киллэрэргэ]] туһаныллар тупсарыы',
 	'povwatch_no_session' => 'Алҕас: Ситим быстан форма кыайан ыытыллыбата.',
+	'povwatch_invalid_title' => 'Ааттаммыт бас сыыһалаах',
+	'povwatch_pushed' => '[[$1]] $2 кыттааччы кэтээн көрүүтүн {{PLURAL:$2|тиһигэр|тиһиктэригэр}} сөпкө киирдэ',
+	'povwatch_intro' => 'PovWatch - дьаһабыллар кэтээн көрүүлэригэр мөккүөрдээх сирэйдэри атыттартан кистээн киллэрэр сулууспа.
+
+Соторутааҕыта кэтэбилгэ угуллубут сирэйдэр тиһиктэрэ манна баар [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|Сурутааччылар тиһиктэрэ]] баар.',
 	'povwatch_subscriber_list_intro' => '<strong>Сурутааччылар тиһиктэрэ</strong>',
 	'povwatch_not_allowed_subscribers' => 'Эн PovWatch сурутааччыларын тиһигин көрөр кыаҕыҥ суох.',
 	'povwatch_unknown_subpage' => 'Биллибэт алын сирэй.',

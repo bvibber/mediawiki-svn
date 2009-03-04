@@ -515,6 +515,14 @@ $messages['ro'] = array(
 	'layouts_choosecategory' => 'Alegeţi o categorie pentru $1:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'layouts_title' => "Ccreje 'na vosce",
+	'layouts_unknown' => 'Scanusciute',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

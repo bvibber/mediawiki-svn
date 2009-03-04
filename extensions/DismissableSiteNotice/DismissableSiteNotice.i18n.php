@@ -651,6 +651,14 @@ $messages['ro'] = array(
 	'sitenotice-desc' => 'Permite utilizatorilor să închidă notificările sitului',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'sitenotice_close' => 'achiude',
+	'sitenotice-desc' => "Permette a l'utinde de achiudere 'u site de le notizie",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

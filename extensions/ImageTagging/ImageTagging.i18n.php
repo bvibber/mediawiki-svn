@@ -210,6 +210,7 @@ $messages['bs'] = array(
 	'imagetagging-imghistory' => 'Historija',
 	'imagetagging-images' => 'slike',
 	'imagetagging-inthisimage' => 'Na ovoj slici: $1',
+	'imagetagging-new' => '<sup><span style="color:red">Novo!</span></sup>',
 	'imagetagging-tagcancel-button' => 'Odustani',
 	'imagetagging-imagetag-seemoreimages' => 'Vidi više slika od "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Slike od "$1"',

@@ -353,6 +353,15 @@ $messages['ro'] = array(
 	'authors_anonymous' => 'Anonim',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'authors-desc' => "Appenne 'na liste de condrebbutore a le pàggene",
+	'authors_authors' => 'Autore',
+	'authors_anonymous' => 'Anonime',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -387,6 +396,15 @@ $messages['stq'] = array(
 $messages['te'] = array(
 	'authors_authors' => 'రచయితలు',
 	'authors_anonymous' => 'అజ్ఞాత',
+);
+
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'authors-desc' => 'ใส่รายชื่อผู้ร่วมเขียนไว้ท้ายหน้า',
+	'authors_authors' => 'ผู้เขียน',
+	'authors_anonymous' => 'นิรนาม',
 );
 
 /** Tagalog (Tagalog)

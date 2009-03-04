@@ -249,7 +249,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'emailaddressimage-desc' => 'Dodaje znacznik <tt>&lt;email&gt;</tt> pozwalający wyświetlić adres e-mail jako obrazek.',
+	'emailaddressimage-desc' => 'Dodaje znacznik <tt>&lt;email&gt;</tt> pozwalający wyświetlić adres e‐mail jako obrazek.',
 );
 
 /** Pashto (پښتو)

@@ -286,6 +286,13 @@ $messages['ksh'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Ene neue Fäddem aanfange',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'discussionthreading-threadnewsection' => 'nowyth',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -133,6 +133,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'dt_viewxml_categories' => 'Катэгорыі',
+	'dt_viewxml_namespaces' => 'Прасторы назваў',
 	'dt_xml_namespace' => 'Прастора назваў',
 	'dt_xml_page' => 'Старонка',
 	'dt_xml_title' => 'Назва',
@@ -638,6 +639,14 @@ $messages['ksh'] = array(
 	'dt_xml_title' => 'Tėttel',
 	'dt_xml_id' => 'Kännong',
 	'dt_xml_freetext' => 'Freije Täx',
+);
+
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'dt_viewxml_categories' => 'Klasyansow',
+	'dt_xml_page' => 'Folen',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

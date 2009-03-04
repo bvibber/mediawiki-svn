@@ -444,9 +444,13 @@ $messages['bs'] = array(
 	'whitelisttableview' => 'Pregled',
 	'whitelisttablenewdate' => 'Novi datum:',
 	'whitelisttablechangedate' => 'Promijeni datum isteka',
+	'whitelisttablesetedit' => 'Postavi za uređivanje',
 	'whitelisttablesetview' => 'Postavi za pregled',
 	'whitelisttableremove' => 'Ukloni',
+	'whitelistnewpagesfor' => 'Dodaj nove stranice na dopušteni spisak korisnika <b>$1</b><br />
+Koristite * ili % kao zamjenski znak',
 	'whitelistnewtabledate' => 'Datum isteka:',
+	'whitelistnewtableedit' => 'Postavi za uređivanje',
 	'whitelistnewtableview' => 'Postavi za pregled',
 	'whitelistnowhitelistedusers' => 'Nema korisnika u grupi "{{MediaWiki:Group-restricted}}".
 Morate da [[Special:UserRights|dodate korisnike u grupu]] prije nego što mognete dodavati stranice na dopušteni spisak korisnika.',
@@ -454,10 +458,12 @@ Morate da [[Special:UserRights|dodate korisnike u grupu]] prije nego što mognet
 	'whitelistnewtablereview' => 'Pregled',
 	'whitelistselectrestricted' => '== Odaberi ograničeno korisničko ime ==',
 	'whitelistpagelist' => '{{SITENAME}} stranice za $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Izgleda da [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Ekstenzija:Statisike korištenja], koja je neophodna za ovo proširenje, nije pravilno instalisana!</font>",
 	'whitelistoverview' => '== Pregled promjena za $1 ==',
 	'whitelistoverviewcd' => "* Mijenjam datum na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Postavljanje pristupa na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Uklanjam pristup na [[:$1|$1]]',
+	'whitelistoverviewna' => "* Dodaje [[:$1|$1]] na dozvoljeni spisak sa pristupom '''$2''' i '''$3''' datumom isteka",
 	'whitelistrequest' => 'Traži pristup za više stranica',
 	'whitelistrequestmsg' => '$1 je zahtijevao pristup {{PLURAL:$3|slijedećoj stranici|slijedećim stranicama}}:
 
@@ -1852,19 +1858,19 @@ $messages['nl'] = array(
 	'whitelisttablemodifynone' => 'Geen',
 	'whitelisttablepage' => 'Wikipagina',
 	'whitelisttabletype' => 'Toegangstype',
-	'whitelisttableexpires' => 'Verloopt op',
+	'whitelisttableexpires' => 'Vervalt op',
 	'whitelisttablemodby' => 'Laatste bewerking door',
 	'whitelisttablemodon' => 'Laatste wijziging op',
 	'whitelisttableedit' => 'Bewerken',
 	'whitelisttableview' => 'Bekijken',
 	'whitelisttablenewdate' => 'Nieuwe datum:',
-	'whitelisttablechangedate' => 'Verloopdatum bewerken',
+	'whitelisttablechangedate' => 'Vervaldatum bewerken',
 	'whitelisttablesetedit' => 'Op bewerken instellen',
 	'whitelisttablesetview' => 'Op bekijken instellen',
 	'whitelisttableremove' => 'Verwijderen',
 	'whitelistnewpagesfor' => "Nieuwe pagina's aan de witte lijst voor <b>$1</b> toevoegen<br />
 Gebruik * of % als wildcard",
-	'whitelistnewtabledate' => 'Verloopdatum:',
+	'whitelistnewtabledate' => 'Vervaldatum:',
 	'whitelistnewtableedit' => 'Op bewerken instellen',
 	'whitelistnewtableview' => 'Op bekijken instellen',
 	'whitelistnowhitelistedusers' => 'Er zijn geen gebruikers die lid zijn van de groep "{{MediaWiki:Group-restricted}}".
@@ -1875,10 +1881,10 @@ U moet [[Special:UserRights|gebruikers aan de groep toevoegen]] voordat u pagina
 	'whitelistpagelist' => "{{SITENAME}} pagina's voor $1",
 	'whitelistnocalendar' => "<font color='red' size=3>[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], een voorwaarde voor deze uitbreiding, lijkt niet juist geïnstalleerd!</font>",
 	'whitelistoverview' => '== Overzicht van wijzigingen voor $1 ==',
-	'whitelistoverviewcd' => "* verloopdatum gewijzigd naar '''$1''' voor [[:$2|$2]]",
+	'whitelistoverviewcd' => "* vervaldatum gewijzigd naar '''$1''' voor [[:$2|$2]]",
 	'whitelistoverviewsa' => "* toegangstype '''$1''' ingesteld voor [[:$2|$2]]",
 	'whitelistoverviewrm' => '* toegang voor [[:$1|$1]] wordt verwijderd',
-	'whitelistoverviewna' => "* [[:$1|$1]] wordt toegevoegd aan de witte lijst met toegangstype '''$2''' en verloopdatum '''$3'''",
+	'whitelistoverviewna' => "* [[:$1|$1]] wordt toegevoegd aan de witte lijst met toegangstype '''$2''' en vervaldatum '''$3'''",
 	'whitelistrequest' => "Toegang tot meer pagina's vragen",
 	'whitelistrequestmsg' => "$1 heeft toegang gevraagd tot de volgende {{PLURAL:$3|pagina|pagina's}}:
 

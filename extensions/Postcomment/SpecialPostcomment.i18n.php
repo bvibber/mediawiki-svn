@@ -685,6 +685,13 @@ $messages['ro'] = array(
 	'postcomment_invalidrequest' => 'Cerere incorectă.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'postcomment_invalidrequest' => 'Richieste invalide.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

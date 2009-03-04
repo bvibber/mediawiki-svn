@@ -165,10 +165,14 @@ $messages['bs'] = array(
 	'editmsg-show-list' => 'Prikazuje vrijednosti za poruku s naslovom "$1"',
 	'editmsg-get-patch' => 'Generiraj patch',
 	'editmsg-new-search' => 'Nova pretraga',
+	'editmsg-warning-parse1' => '* Ime poruke regex se ne slaže: $1',
+	'editmsg-warning-parse2' => '* Nakon strelice očekivan je znak navodnika: $1',
 	'editmsg-warning-parse3' => '* Nije pronađen znak završetka linije: $1',
 	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod {{PLURAL:$2|slijedećeg|slijedećih}} jezika: $1',
+	'editmsg-warning-mismatch' => '* Prvobitni tekst nije imao očekivanu vrijednost za {{PLURAL:$2|slijedeći jezik|slijedeće jezike}}: $1',
 	'editmsg-apply-patch' => 'Primijeni patch',
 	'editmsg-no-patch' => 'Nemoguće izvršiti "patch" komandu',
+	'editmsg-patch-failed' => 'Patch nije uspio sa izlaznom porukom $1',
 	'editmsg-patch-success' => 'Uspješno primijenjen patch.',
 );
 
@@ -665,6 +669,14 @@ $messages['ksh'] = array(
  */
 $messages['ku-latn'] = array(
 	'editmsg-search' => 'Lêbigere',
+);
+
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'editmsg-search' => 'Hwilas',
+	'editmsg-new-search' => 'Hwilas nowyth',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

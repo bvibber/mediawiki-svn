@@ -438,6 +438,13 @@ $messages['ro'] = array(
 	'icon-badwidth' => 'Lăţime incorectă',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'icon-badimage' => 'Immaggine cattiva',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

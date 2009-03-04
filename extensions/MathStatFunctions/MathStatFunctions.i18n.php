@@ -462,6 +462,13 @@ $messages['ro'] = array(
 	'msfunc_div_zero' => 'Împărţire la zero',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'msfunc_div_zero' => 'Divisione pe zero',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  * @author Александр Сигачёв

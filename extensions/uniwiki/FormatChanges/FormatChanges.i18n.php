@@ -243,8 +243,8 @@ $messages['ja'] = array(
 $messages['jv'] = array(
 	'formatchanges-desc' => 'Format ulang kaca [[Special:RecentChanges|owah-owahan pungkasan]]',
 	'formatchanges-anonymous' => 'Tanpa aran / anonim',
-	'formatchanges-createdby' => 'kacipta déning',
-	'formatchanges-editedby' => 'kasunting déning',
+	'formatchanges-createdby' => '$1 - kacipta déning $2 ($3)',
+	'formatchanges-editedby' => '$1 - kasunting déning $2 ($3)',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -351,8 +351,8 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'formatchanges-desc' => 'Reformatează [[Special:RecentChanges|schimbările recente]]',
 	'formatchanges-anonymous' => 'Anonim',
-	'formatchanges-createdby' => 'creat de',
-	'formatchanges-editedby' => 'modificat de',
+	'formatchanges-createdby' => '$1 - creat de $2 ($3)',
+	'formatchanges-editedby' => '$1 - modificat de $2 ($3)',
 );
 
 /** Russian (Русский)
@@ -465,7 +465,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '建立者：',
-	'formatchanges-editedby' => '編輯者：',
+	'formatchanges-createdby' => '$1-建立者：$2 ($3)',
+	'formatchanges-editedby' => '$1-編輯者：$2 ($3)',
 );
 

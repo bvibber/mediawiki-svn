@@ -236,8 +236,11 @@ $messages['ast'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'review_sidebar_title' => 'Адзнака',
+	'review-desc' => 'Магчымасьць [[Special:Review|праверкі]]',
 	'review_statistics_left_corner' => 'Вэрсія',
 	'review_user_details_link' => '(падрабязнасьці)',
 	'review_comment' => 'Камэнтар',
@@ -1529,6 +1532,13 @@ $messages['ro'] = array(
 	'review_total_statistics' => 'Total',
 	'review_user_details_link' => '(detalii)',
 	'review_comment' => 'Comentariu',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'review_total_statistics' => 'Totale',
 );
 
 /** Russian (Русский)

@@ -487,6 +487,15 @@ $messages['ro'] = array(
 	'pageby-anon' => '<i>anonim</i>',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'pageby-first' => 'Vosce ccrejate da $1, $2',
+	'pageby-contributors' => 'Condrebbutore:',
+	'pageby-anon' => '<i>anoneme</i>',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

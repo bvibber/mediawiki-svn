@@ -788,6 +788,13 @@ $messages['ku-latn'] = array(
 	'contributors-nosuchpage' => 'Gotarê $2 tune ye.',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'contributors-submit' => 'Diskwedhes',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */

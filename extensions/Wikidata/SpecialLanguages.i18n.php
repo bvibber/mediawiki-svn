@@ -5110,6 +5110,13 @@ $wdMessages['ku-latn'] = array(
 	'ow_Source' => 'Çavkanî',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$wdMessages['kw'] = array(
+	'datasearch_language' => 'Yeth:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

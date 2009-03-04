@@ -129,8 +129,10 @@ Diverkañ',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'inspectcache-desc' => 'Jednostavni alat za pronalaženje grešaka za provjeru sadržaja dijeljenog keša',
 	'inspectcache-ok' => 'U redu',
 	'inspectcache-delete' => 'Obriši',
+	'inspectcache-deleted' => 'Obrisani keš',
 	'inspectcache-list' => 'Izlistaj',
 );
 

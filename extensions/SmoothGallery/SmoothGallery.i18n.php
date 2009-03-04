@@ -747,10 +747,10 @@ Cho phép phần lớn tùy chọn của SmoothGallery',
 	'smoothgallery-gallery-not-found' => 'Trang ảnh yêu cầu không tồn tại.',
 	'smoothgallery-not-found' => 'Không có hình nào được thêm vào trang ảnh.
 Xin hãy thêm ít nhất một hình.',
-	'smoothgallery-no-images' => 'Không tìm thấy hình nào trong trang ảnh.
-Hãy chắc chắn rằng tất cả các hình được yêu cầu có tồn tại.
-Những hình sau không tìm thấy: $1',
-	'smoothgallery-invalid-images' => 'Những hình được yêu cầu sau có kiểu không phù hợp: $1',
+	'smoothgallery-no-images' => 'Không tìm thấy hình nào trong trang trưng bày ảnh.
+Hãy chắc chắn rằng {{PLURAL:$3|hình|tất cả các hình}} được yêu cầu có tồn tại.
+{{PLURAL:$2|Hình|Những hình}} sau không tìm thấy: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Hình|Những hình}} được yêu cầu sau có kiểu không phù hợp: $1',
 	'smoothgallery-unexpected-error' => 'Xảy ra lỗi không lường được.
 Xin hãy đăng một báo cáo lỗi.',
 	'smoothgallery-javascript-disabled' => 'Cần phải kích hoạt Javascript để trang ảnh hiển thị đúng.',

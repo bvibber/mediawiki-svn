@@ -152,8 +152,20 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'closewikis-desc' => 'Omogućava zatvaranje wiki projekata u wiki farmama',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-success' => 'Wiki uspješno zatvoren',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Razlog:',
+	'closewikis-page-reopen-success' => 'Wiki uspješno ponovno otvoren',
+	'closewikis-page-err-closed' => 'Wiki je već zatvoren',
+	'closewikis-page-err-opened' => 'Wiki nije zatvoren',
+	'closewikis-list' => 'Spisak zatvorenih wikija',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zatvorio',
+	'closewikis-list-header-timestamp' => 'Zatvoreno dana',
 	'closewikis-list-header-dispreason' => 'Navedeni razlog',
+	'closewikis-log-close' => 'zatvoreno $2',
+	'closewikis-log-reopen' => 'ponovno otvoreno $2',
 );
 
 /** Czech (Česky)
@@ -1285,6 +1297,7 @@ $messages['tl'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'closewikis-desc' => 'Cho phép đóng cửa các wiki trong mạng wiki',
@@ -1303,11 +1316,18 @@ $messages['vi'] = array(
 	'closewikis-page-err-nowiki' => 'Định rõ wiki không hợp lệ',
 	'closewikis-page-err-closed' => 'Wiki đã bị đóng cửa',
 	'closewikis-page-err-opened' => 'Wiki chưa bị đóng cửa',
+	'closewikis-list' => 'Danh sách các wiki đã đóng',
+	'closewikis-list-intro' => 'Danh này bao gồm các wiki đã được tiếp viên đóng lại.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Đóng bởi',
+	'closewikis-list-header-timestamp' => 'Đóng vào ngày',
+	'closewikis-list-header-dispreason' => 'Lý do được hiển thị',
 	'closewikis-log' => 'Nhật trình đóng cửa wiki',
 	'closewikis-log-header' => 'Đây là danh sách các tác vụ đóng cửa wiki và mở cửa lại wiki được thực hiện bởi tiếp viên.',
 	'closewikis-log-close' => 'đóng cửa $2',
 	'closewikis-log-reopen' => 'mở cửa lại $2',
 	'right-editclosedwikis' => 'Sửa đổi các wiki bị đóng cửa',
+	'right-closewikis' => 'Đóng wiki',
 );
 
 /** Volapük (Volapük)

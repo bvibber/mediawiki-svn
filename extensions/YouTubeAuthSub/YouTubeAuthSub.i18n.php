@@ -1319,6 +1319,13 @@ Bes jet jedoldesch.',
 	'youtubeauthsub_jserror_nodesc' => 'Don dä Viddejo winneßtens med enem Satz udder zwei beschrieve, söns weet dat nix, hee.',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'youtubeauthsub_category' => 'Klasyans',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

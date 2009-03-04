@@ -149,9 +149,13 @@ $messages['bs'] = array(
 	'imstatus_possible_val' => 'Moguće vrijednosti',
 	'imstatus_or' => 'ili',
 	'imstatus_style' => 'stil statusnog pokazatelja',
+	'imstatus_action' => 'akcija kada se klikne dugme',
 	'imstatus_your_name' => 'Vaše $1 ime',
+	'imstatus_gtalk_height' => 'visina kutije, u pikselima.',
+	'imstatus_gtalk_width' => 'širina kutije, u pikselima.',
 	'imstatus_icq_id' => 'Vaš ICQ ID',
 	'imstatus_icq_style' => 'broj između 0 i 26 (da, dostupno je 27 stilova...).',
+	'imstatus_live_code' => 'vaš Live Messenger website id',
 );
 
 /** Czech (Česky)

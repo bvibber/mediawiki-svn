@@ -738,10 +738,12 @@ $messages['as'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'configure-desc-ns' => 'Прасторы назваў',
 	'configure-desc-val' => 'Значэньне',
 	'configure-js-remove' => 'Выдаліць',
 	'configure-no-old' => 'Няма даступнай старай вэрсіі канфігурацыі.',
 	'configure-section-email' => 'Адрас электроннай пошты',
+	'configure-section-namespaces' => 'Прасторы назваў',
 	'configure-section-category' => 'Катэгорыі',
 );
 
@@ -3945,6 +3947,16 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'viewconfig' => 'Dem Wiki sing Enstellunge beloore',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'configure-section-pages' => 'Folennow',
+	'configure-section-upload' => 'Ughkarga',
+	'configure-section-search' => 'Hwilas',
+	'configure-throttle-action-edit' => 'Chanjya',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -4631,7 +4643,7 @@ Er wordt een voorvertoning weergegeven als u het veld verlaat.',
 	'configure-throttle-group-ip' => 'Per IP-adres',
 	'configure-throttle-group-subnet' => 'Per klasse C-subnet',
 	'configure-throttle-count' => 'Toegestane handelingen:',
-	'configure-throttle-period' => 'Verloopperiode (seconden):',
+	'configure-throttle-period' => 'Vervalperiode (seconden):',
 	'configure-throttle-summary' => '$1 handelingen in $2 seconden.',
 	'configure-throttle-group' => 'Type',
 	'configure-throttle-limit' => 'Limiet',
@@ -5270,8 +5282,8 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-section-mysql' => 'Specjalne dla MySQL',
 	'configure-section-postgres' => 'Specjalne dla PostgreSQL',
 	'configure-section-sqlite' => 'Specjalne dla SQLite',
-	'configure-section-email' => 'Adres e-mail',
-	'configure-section-enotif' => 'Powiadomienie e-mail',
+	'configure-section-email' => 'Adres e‐mail',
+	'configure-section-enotif' => 'Powiadomienie e‐mail',
 	'configure-section-localization' => 'Lokalizacja',
 	'configure-section-timezone' => 'Strefa czasowa',
 	'configure-section-zh-conversion' => 'Konwersja dla Chińskiego',
@@ -5343,7 +5355,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-throttle-action-move' => 'Przenoszenie',
 	'configure-throttle-action-rollback' => 'Cofanie',
 	'configure-throttle-action-mailpassword' => 'Wysyłanie przypomnienia hasła',
-	'configure-throttle-action-emailuser' => 'Wysyłanie wiadomości e-mail',
+	'configure-throttle-action-emailuser' => 'Wysyłanie wiadomości e‐mail',
 	'configure-throttle-group-anon' => 'Wszyscy anonimowi użytkownicy',
 	'configure-throttle-group-user' => 'Dla konta użytkownika',
 	'configure-throttle-group-newbie' => 'Dla nowego konta użytkownika',
@@ -5364,7 +5376,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-condition-requirement' => 'Wymagania',
 	'configure-condition-name-1' => 'Minimalna liczba edycji',
 	'configure-condition-name-2' => 'Minimalny wiek',
-	'configure-condition-name-3' => 'Potwierdzony e-mail',
+	'configure-condition-name-3' => 'Potwierdzony e‐mail',
 	'configure-condition-name-4' => 'W grupach',
 	'configure-condition-name-5' => 'Adres IP użytkownika',
 	'configure-condition-name-6' => 'Adres IP użytkownika w zakresie CIDR',
@@ -5372,7 +5384,7 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-autopromote-noconds' => 'Brak wymagań wstępnych',
 	'configure-condition-description-1' => 'Minimalna liczba edycji wynosi $1',
 	'configure-condition-description-2' => 'Minimalny wiek konta wynosi $1 {{PLURAL:$1|sekundę|sekundy|sekund}}',
-	'configure-condition-description-3' => 'Potwierdzony e-mail',
+	'configure-condition-description-3' => 'Potwierdzony e‐mail',
 	'configure-condition-description-4' => 'W {{PLURAL:$2|grupie|następujących grupach:}} $1',
 	'configure-condition-description-5' => 'Adres IP użytkownika to $1',
 	'configure-condition-description-6' => 'Adres IP użytkownika znajduje się w zakresie $1',

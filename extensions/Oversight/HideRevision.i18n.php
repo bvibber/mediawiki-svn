@@ -1039,6 +1039,7 @@ $messages['fo'] = array(
  * @author Grondin
  * @author IAlex
  * @author Meithal
+ * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
@@ -1049,7 +1050,7 @@ $messages['fr'] = array(
 	'group-oversight' => 'Superviseurs',
 	'group-oversight-member' => 'Superviseur',
 	'grouppage-oversight' => '{{ns:project}}:Superviseur',
-	'right-oversight' => 'Voir les révisions cachées par supervision',
+	'right-oversight' => 'Voir les versions cachées par supervision',
 	'right-hiderevision' => 'Masquer des révisions aux administrateurs',
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue' => 'Continuer',
@@ -3581,7 +3582,7 @@ $messages['vi'] = array(
 	'group-oversight-member' => 'Giám sát viên',
 	'grouppage-oversight' => '{{ns:project}}:Giám sát viên',
 	'right-oversight' => 'Xem phiên bản ẩn',
-	'right-hiderevision' => 'Xem lại và phục hồi phiên bản mà Sysop không thấy',
+	'right-hiderevision' => 'Ản các phiên bản, không cho người quản lý xem',
 	'hiderevision-prompt' => 'Số phiên bản để giấu:',
 	'hiderevision-continue' => 'Tiếp',
 	'hiderevision-text' => "'''Chỉ''' được xài chức năng này trong những trường hợp có:

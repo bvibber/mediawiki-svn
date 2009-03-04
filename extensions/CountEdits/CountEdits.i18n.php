@@ -740,6 +740,13 @@ $messages['ku-latn'] = array(
 	'countedits-nocontribs' => 'Di vê wîkîyê da guherandin tune ne.',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'countedits-username' => 'Hanow-usyer:',
+);
+
 /** Latin (Latina)
  * @author SPQRobin
  */

@@ -1138,7 +1138,7 @@ $messages['pl'] = array(
 	'importusers-log-summary-updated' => 'Zmodyfikowano',
 	'importusers-login-name' => 'Nazwa użytkownika',
 	'importusers-password' => 'hasło',
-	'importusers-email' => 'e-mail',
+	'importusers-email' => 'e‐mail',
 	'importusers-realname' => 'imię i nazwisko',
 	'right-import_users' => 'Hurtowe importowanie kont użytkowników',
 );
@@ -1503,7 +1503,7 @@ $messages['ug-latn'] = array(
  */
 $messages['vi'] = array(
 	'importusers' => 'Nhập khẩu Thành viên',
-	'importusers-desc' => 'Nhập nhiều thành viên từ tậptin CSV; mã hóa: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Nhập nhiều thành viên]] từ tập tin CSV; mã hóa: UTF-8',
 	'importusers-uploadfile' => 'Tải tập tin lên',
 	'importusers-form-caption' => 'Tập CSV đầu vào (UTF-8)',
 	'importusers-form-file' => 'Định dạng tập tin người dùng (csv):',
@@ -1522,6 +1522,7 @@ $messages['vi'] = array(
 	'importusers-password' => 'mật khẩu',
 	'importusers-email' => 'thư điện tử',
 	'importusers-realname' => 'tên thật',
+	'right-import_users' => 'Nhập nhiều thành viên',
 );
 
 /** Volapük (Volapük)

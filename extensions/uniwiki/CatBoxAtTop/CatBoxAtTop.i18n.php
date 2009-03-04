@@ -319,6 +319,14 @@ $messages['ro'] = array(
 	'catboxattop-categories' => 'Categorii',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'catboxattop-desc' => "Aggiunge 'nu scatele de le categorije sus a vanna destre d'a pàgene",
+	'catboxattop-categories' => 'Categorije',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

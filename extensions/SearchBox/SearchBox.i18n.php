@@ -68,6 +68,17 @@ $messages['arz'] = array(
 	'searchbox-namespaces' => 'النطاقات:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'searchbox-desc' => 'Дазваляе уключэньні форму пошуку',
+	'searchbox-search' => 'Пошук',
+	'searchbox-go' => 'Перайсьці',
+	'searchbox-namespaces' => 'Прасторы назваў:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

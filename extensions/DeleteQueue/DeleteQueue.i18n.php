@@ -1732,6 +1732,8 @@ Per favor assecura te que iste pagina pote esser delite rapidemente in conformit
 
 Un [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] de declarationes pro e contra iste deletion es disponibile, e le discussion mesme se trova a [[\$2]].
 Per favor assecura te que tu face un decision in conformitate con le consenso del discussion.",
+	'deletequeue-review-success' => 'Tu ha revidite con successo le deletion de iste pagina',
+	'deletequeue-review-success-title' => 'Revision complete',
 	'deletequeue-deletediscuss-discussionpage' => 'Isto es le pagina de discussion super le deletion de [[$1]].
 Al momento, il ha $2 {{PLURAL:$2|usator|usatores}} qui se ha declarate pro iste deletion, e $3 {{PLURAL:$3|usator|usatores}} contra.
 Tu pote [{{fullurl:$1|action=delvote}} declarar te pro o contra] le deletion, o [{{fullurl:$1|action=delviewvotes}} vider tote le declarationes pro e contra].',
@@ -1784,6 +1786,15 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 	'deletequeue-list-header-votes' => 'Declarationes pro e contra',
 	'deletequeue-list-header-expiry' => 'Expiration',
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
+	'deletequeue-case-intro' => 'Iste pagina lista le informationes super un caso specific de deletion.',
+	'deletequeue-list-header-reason' => 'Motivo del deletion',
+	'deletequeue-case-votes' => 'Pro/contra:',
+	'deletequeue-case-title' => 'Detalios del caso de deletion',
+	'deletequeue-case-details' => 'Detalios de base',
+	'deletequeue-case-page' => 'Pagina:',
+	'deletequeue-case-reason' => 'Motivo:',
+	'deletequeue-case-expiry' => 'Expiration:',
+	'deletequeue-case-needs-review' => 'Iste caso require [$1|revision]].',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2193,6 +2204,15 @@ Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odde
 	'deletequeue-list-header-discusspage' => 'Klaafsigg',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'deletequeue-list-search' => 'Hwilas',
+	'deletequeue-list-anyqueue' => '(vydh)',
+	'deletequeue-case-page' => 'Folen:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -2368,7 +2388,7 @@ Overleg over dit voorstel wordt gevoerd op [[$3]], en loopt af op ''$2''.",
 	'deletequeue-review-submit' => 'Beoordeling opslaan',
 	'deletequeue-review-original' => 'Reden voor nominatie',
 	'deletequeue-actiondisabled-involved' => 'De volgende handeling is uitgeschakeld omdat u in de volgende rollen aan deze verwijdernominatie hebt deelgenomen: $1',
-	'deletequeue-actiondisabled-notexpired' => 'De volgende handeling is uitgeschakeld omdat de verwijdernominatie is nog niet verlopen:',
+	'deletequeue-actiondisabled-notexpired' => 'De volgende handeling is uitgeschakeld omdat de verwijdernominatie is nog niet vervallen:',
 	'deletequeue-review-badaction' => 'U hebt een niet-bestaande handeling opgegeven',
 	'deletequeue-review-actiondenied' => 'U hebt een handeling opgegeven die voor deze pagina is uigeschakeld',
 	'deletequeue-review-objections' => "'''Waarschuwing''': er is [{{FULLURL:{{FULLPAGENAME}}|action=delvoteview|votetype=object}} bezwaar] gemaakt tegen de verwijdernominatie voor deze pagina.
@@ -2438,7 +2458,7 @@ U kunt ook [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} steun of bezwaar] aangeg
 	'deletequeue-list-header-page' => 'Pagina',
 	'deletequeue-list-header-queue' => 'Wachtrij',
 	'deletequeue-list-header-votes' => 'Steun en bezwaar',
-	'deletequeue-list-header-expiry' => 'Verloopdatum',
+	'deletequeue-list-header-expiry' => 'Vervaldatum',
 	'deletequeue-list-header-discusspage' => 'Overlegpagina',
 	'deletequeue-case-intro' => 'Deze pagina geeft informatie weer over een verwijdering.',
 	'deletequeue-list-header-reason' => 'Reden voor de verwijdering',
@@ -2447,7 +2467,7 @@ U kunt ook [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} steun of bezwaar] aangeg
 	'deletequeue-case-details' => 'Basisdetails',
 	'deletequeue-case-page' => 'Pagina:',
 	'deletequeue-case-reason' => 'Reden:',
-	'deletequeue-case-expiry' => 'Verloop:',
+	'deletequeue-case-expiry' => 'Vervalt:',
 	'deletequeue-case-needs-review' => 'Deze zaak heeft verder [[$1|onderzoek]] nodig.',
 );
 

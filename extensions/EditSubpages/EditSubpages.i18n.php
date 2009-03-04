@@ -246,7 +246,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'editsubpages-desc' => 'Permitte al administratores de disblocar un pagina e tote su subpaginas pro permitter modificationes anonyme via [[MediaWiki:Unlockedpages]]',
 	'unlockedpages' => ' #<!-- non modificar iste linea --><pre>
-# Insere le paginas que tu vole disbloar infra, in le forma
+# Insere le paginas que tu vole disblocar infra, in le forma
 # * Nomine de pagina
 # Le paginas debe comenciar con un bolletta pro esser disblocate,
 # tote le resto es considerate como commento.

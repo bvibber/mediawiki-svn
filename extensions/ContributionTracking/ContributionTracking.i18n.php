@@ -399,6 +399,13 @@ $messages['ksh'] = array(
 	'contrib-tracking-button' => 'Wigger',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'contrib-tracking-error' => 'Gwall',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

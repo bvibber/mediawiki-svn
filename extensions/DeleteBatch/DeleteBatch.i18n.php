@@ -580,13 +580,13 @@ $messages['ia'] = array(
 	'deletebatch-help' => 'Deler un lot de paginas. Tu pote executar un deletion singule, o deler paginas listate in un file.
 Selige un usator que se monstrara in le registro de deletiones.
 Le file cargate debe continer in cata linea un nomine de pagina e un motivo facultative separate per un character "|".',
-	'deletebatch-caption' => 'Lista de paginas',
+	'deletebatch-caption' => 'Lista de paginas:',
 	'deletebatch-title' => 'Deler in lot',
-	'deletebatch-link-back' => 'Tu pote retornar al extension',
-	'deletebatch-as' => 'Executar le script como',
+	'deletebatch-link-back' => 'Retornar al pagina special',
+	'deletebatch-as' => 'Executar le script como:',
 	'deletebatch-both-modes' => 'Per favor selige, o un del paginas specificate, o un lista date de paginas.',
 	'deletebatch-or' => '<b>o</b>',
-	'deletebatch-page' => 'Paginas a deler',
+	'deletebatch-page' => 'Paginas a deler:',
 	'deletebatch-reason' => 'Motivo pro deletion',
 	'deletebatch-processing' => 'deletion del paginas $1',
 	'deletebatch-from-file' => 'a partir del lista in un file',
@@ -599,6 +599,7 @@ Le file cargate debe continer in cata linea un nomine de pagina e un motivo facu
 	'deletebatch-select-script' => 'script pro deler paginas',
 	'deletebatch-select-yourself' => 'tu',
 	'deletebatch-no-page' => 'Per favor, o specifica al minus un pagina a deler, o selige un file continente un lista de paginas.',
+	'right-deletebatch' => 'Deler paginas in lot',
 );
 
 /** Italian (Italiano)
@@ -1194,15 +1195,15 @@ $messages['vi'] = array(
 	'deletebatch-help' => 'Xóa một nhóm trang. Bạn có thể thực hiện việc xóa từng trang, hoặc xóa các trang liệt kê trong một tập tin.
 Chọn một thành viên sẽ hiện ra trong nhật trình xóa.
 Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tách bằng ký tự "|" tại mỗi dòng.',
-	'deletebatch-caption' => 'Danh sách trang',
+	'deletebatch-caption' => 'Danh sách trang:',
 	'deletebatch-title' => 'Xóa nhóm',
-	'deletebatch-link-back' => 'Bạn có thể trở lại bộ mở rộng',
-	'deletebatch-as' => 'Chạy script với tên',
+	'deletebatch-link-back' => 'Trở lại trang đặc biệt',
+	'deletebatch-as' => 'Chạy script với tên:',
 	'deletebatch-both-modes' => 'Xin hãy chọn một trang hoặc một danh sách trang cho trước.',
 	'deletebatch-or' => '<b>hoặc</b>',
-	'deletebatch-page' => 'Các trang sẽ bị xóa',
+	'deletebatch-page' => 'Các trang sẽ bị xóa:',
 	'deletebatch-reason' => 'Lý do xóa',
-	'deletebatch-processing' => 'đang xóa trang',
+	'deletebatch-processing' => 'đang xóa trang $1',
 	'deletebatch-from-file' => 'từ danh sách tập tin',
 	'deletebatch-from-form' => 'từ mẫu',
 	'deletebatch-success-subtitle' => 'đối với $1',
@@ -1213,6 +1214,7 @@ Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tá
 	'deletebatch-select-script' => 'xóa script của trang',
 	'deletebatch-select-yourself' => 'bạn',
 	'deletebatch-no-page' => 'Xin hãy chỉ định ít nhất một trang để xóa HOẶC chọn một tập tin có chứa danh sách các trang.',
+	'right-deletebatch' => 'Xóa nhóm trang',
 );
 
 /** Volapük (Volapük)

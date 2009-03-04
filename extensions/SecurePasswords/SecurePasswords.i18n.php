@@ -65,6 +65,23 @@ $messages['arz'] = array(
 	'securepasswords-word' => 'لا تكون كلمة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'securepasswords-desc' => 'Стварае больш бясьпечныя хэшы пароляў і дадае палепшаную праверку сакрэтнасьці пароляў',
+	'securepasswords-valid' => 'Ваш пароль няслушны ці занадта кароткі.
+Павінен:',
+	'securepasswords-minlength' => 'складацца хаця б $1 {{PLURAL:$1|сымбаль|сымбалі|сымбаляў}}',
+	'securepasswords-lowercase' => 'утрымліваць хаця бы адну малую літару',
+	'securepasswords-uppercase' => 'утрымліваць хаця бы адну вялікую літару',
+	'securepasswords-digit' => 'утрымліваць хаця бы адну лічбу',
+	'securepasswords-special' => 'утрымліваць хаця бы адзін спэцыяльны сымбаль (такі як: $1)',
+	'securepasswords-username' => 'адрозьнівацца ад Вашага імя ўдзельніка',
+	'securepasswords-word' => 'ня быць словам',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -443,6 +460,9 @@ Aceasta trebuie:',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'securepasswords-valid' => "'A password toje jè invalida o troppe cuciule.
+Adda essere:",
+	'securepasswords-username' => "differende da 'u nome utende tue",
 	'securepasswords-word' => "non g'addà essere 'na parole",
 );
 

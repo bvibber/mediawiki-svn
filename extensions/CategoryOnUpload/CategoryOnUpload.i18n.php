@@ -290,6 +290,13 @@ $messages['ksh'] = array(
 	'categoryonupload-none' => '-',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'categoryonupload-label' => 'Klasyans:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

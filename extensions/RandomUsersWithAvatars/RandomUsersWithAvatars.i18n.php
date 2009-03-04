@@ -273,3 +273,11 @@ $messages['vec'] = array(
 	'random-users-avatars-desc' => 'Xonta un tag <tt>&lt;randomuserswithavatars&gt;</tt> par far védar i avatar de utenti sielti a caso',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'random-users-avatars-title' => 'Gặp gỡ cộng đồng',
+	'random-users-avatars-desc' => 'Thêm thẻ <tt>&lt;randomuserswithavatars&gt;</tt> để hiển thị hình đại diện của các thành viên được chọn ngẫu nhiên',
+);
+

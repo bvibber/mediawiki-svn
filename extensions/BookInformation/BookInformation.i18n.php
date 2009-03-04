@@ -1532,12 +1532,13 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Ans
  * @author Manop
  */
 $messages['th'] = array(
 	'bookinfo-header' => 'ข้อมูลหนังสือ',
 	'bookinfo-result-author' => 'ผู้แต่ง:',
-	'bookinfo-result-publisher' => 'สำนักพิมพ์:',
+	'bookinfo-result-publisher' => 'ผู้ตีพิมพ์:',
 	'bookinfo-result-year' => 'ปี:',
 	'bookinfo-error-invalidisbn' => 'รหัส ISBN ที่ใส่ไม่ถูกต้อง',
 );

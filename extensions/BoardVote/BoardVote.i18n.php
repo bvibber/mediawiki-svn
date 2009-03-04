@@ -2115,6 +2115,7 @@ $messages['fo'] = array(
  * @author Guérin Nicolas
  * @author IAlex
  * @author Lejonel
+ * @author PieRRoMaN
  * @author Sherbrooke
  * @author Verdy p
  * @author Zetud
@@ -2168,7 +2169,7 @@ Pour voter, vous devez utiliser un compte avec au moins $1 {{PLURAL:$1|contribut
 	'boardvote_notqualified' => 'Vous ne répondez pas actuellement aux conditions requises pour voter lors de ce scrutin.
 Il vous est nécessaire d’avoir au moins $1 {{PLURAL:$1|contribution effectuée|contributions effectuées}} avant le $2 et au moins $3 {{PLURAL:$3|contribution effectuée|contributions effectuées}} entre le $4 et le $5.',
 	'boardvote_novotes' => 'Personne n’a encore voté.',
-	'boardvote_time' => 'Heure',
+	'boardvote_time' => 'Date',
 	'boardvote_user' => 'Utilisateur',
 	'boardvote_edits' => 'Modifications',
 	'boardvote_days' => 'Jours',
@@ -2186,7 +2187,7 @@ $1 pour les données cryptées.</p>',
 	'boardvote_closed' => 'L’élection est désormais terminée. Le résultat est ou sera proclamé sur [http://meta.wikimedia.org/wiki/Board_elections/2008/Results/fr la page dédiée] (fr).',
 	'boardvote_edits_many' => 'plusieurs',
 	'group-boardvote' => 'Administrateurs des élections du conseil d’administration',
-	'group-boardvote-member' => 'Membre votant du conseil d’administration',
+	'group-boardvote-member' => 'administrateur des élections du conseil',
 	'grouppage-boardvote' => '{{ns:project}}:Administrateur des élections du conseil',
 	'boardvote_blocked' => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine.
 Les utilisateurs bloqués ne peuvent pas voter.',

@@ -209,6 +209,9 @@ Desila se nepoznata greška.',
 	'duplicator-source-invalid' => 'Molimo navedite valjan izvorni naslov.',
 	'duplicator-source-notexist' => '[[$1]] ne postoji. Molimo navedite naslov stranice koji postoji.',
 	'duplicator-dest-invalid' => 'Molimo navedite valjan naslov odredišta.',
+	'duplicator-dest-exists' => '[[$1]] već postoji. Molimo navedite odredišni naslov koji još ne postoji.',
+	'duplicator-toomanyrevisions' => '[[$1]] ima previše (%2) revizija i ne može se kopirati.
+Trenutno ograničenje je $3.',
 );
 
 /** Catalan (Català)
@@ -1371,7 +1374,7 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'duplicator' => 'Nhân bản một trang',
-	'duplicator-desc' => 'Tạo ra bản sao độc lập của trang với đầy đủ lịch sử sửa đổi',
+	'duplicator-desc' => 'Tạo ra [[Special:Duplicate|bản sao]] độc lập của trang với đầy đủ lịch sử sửa đổi',
 	'duplicator-toolbox' => 'Nhân bản trang này',
 	'duplicator-header' => 'Trang này cho phép nhân bản hoàn toàn một trang, tạo ra những bản sao độc lập tất cả các lịch sử.
 Việc này hữu dụng cho việc phân phối trang, v.v.',

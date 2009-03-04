@@ -524,11 +524,12 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'accountmanager' => 'Menedżer konta',
 	'am-username' => 'nazwa użytkownika',
-	'am-email' => 'e-mail',
+	'am-email' => 'e‐mail',
 	'am-active' => 'aktywny',
 	'am-updated' => 'Wprowadzone zmiany zostały zapisane pomyślnie',
 	'nss-desc' => 'Wtyczka do uwierzytelniania w bazie danych libnss-mysql. Zawiera [[Special:AccountManager|menedżer konta]]',
@@ -536,7 +537,7 @@ $messages['pl'] = array(
 	'nss-save-changes' => 'Zapisz zmiany',
 	'nss-create-account-header' => 'Utwórz nowe konto',
 	'nss-create-account' => 'Utwórz konto',
-	'nss-no-mail' => 'Nie wysyłaj e-mailu',
+	'nss-no-mail' => 'Nie wysyłaj e‐maila',
 	'nss-welcome-mail' => 'Zostało dla Ciebie utworzone konto z nazwą użytkownika $1 i hasłem $2.',
 	'nss-welcome-mail-subject' => 'Utworzenie konta',
 	'nss-db-error' => 'Błąd odczytu z uwierzytelniania bazy danych',

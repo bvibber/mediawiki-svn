@@ -1992,6 +1992,14 @@ Wann Dir OpenID benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [[S
 Wann net, da verich et mam Knäppche "Weider"',
 	'openidclientonlytext' => 'Dir kënnt keng Benotzerkonten aus dëser Wiki als OpendIDen op anere Site benotzen.',
 	'openidloginlabel' => 'URL vun der OpenID',
+	'openidlogininstructions' => '{{SITENAME}} ënnerstetzt den [http://openid.net/ OpenID]-Standard fir eng eenheetlech Umeldung fir méi Websiten.
+OpenID mellt Iech bäi ville verschiddene Websäiten un, ouni datt Dir fir jidfer Siten een anert Passwuert gebrauche musst.
+(Méi Informatiounen fannt Dir am [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikel iwwer OpenID].)
+
+Wann Dir schonn e Benotzerkont op {{SITENAME}} hutt, kënnt Dir Iech ganz normal mat ärem Benotzernumm a Passwuert [[Special:UserLogin|aloggen]].
+Fir an Zukunft OpenID ze benotzen, kënnt Dir [[Special:OpenIDConvert|äre Benotzerkont op OpenID ëmwandelen]], nodeem Dir Iech normal ageloggt huet.
+
+Et gëtt vill [http://openid.net/get/ OpenID-Provider] a méiglecherweis hutt Dir schonn e Benotzerkont mat aktivéierter OpenID bäi engem aneren Ubidder.',
 	'openidupdateuserinfo' => 'Meng perséinlech Informatiounen aktualiséieren',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-Astellungen',
 	'openid-pref-hide' => 'Verstoppt Är <a href="http://openid.net/">OpenID</a> op ärer Benotzersäit, wann dir Iech mat OpenID aloggt.',
@@ -2506,7 +2514,7 @@ $messages['pl'] = array(
 	'openidrequired' => 'Wymagane',
 	'openidnickname' => 'Nazwa użytkownika',
 	'openidfullname' => 'Imię i nazwisko',
-	'openidemail' => 'Adres e-mail',
+	'openidemail' => 'Adres e‐mail',
 	'openidlanguage' => 'Język',
 	'openidnotavailable' => 'Wybrana nazwa użytkownika „$1” jest już zajęta.',
 	'openidchooseinstructions' => 'Wszyscy użytkownicy muszą posiadać nazwę.
@@ -3424,20 +3432,18 @@ Nếu bạn muốn sử dụng ID Mở để đăng nhập vào lần sau, bạn
 Nếu không, hãy thử nút \\"Tiếp tục\\".',
 	'openidclientonlytext' => 'Bạn không thể sử dụng tài khoản tại wiki này như ID Mở tại trang khác.',
 	'openidloginlabel' => 'Địa chỉ OpenID',
-	'openidlogininstructions' => "{{SITENAME}} hỗ trợ chuẩn [http://openid.net/ OpenID] (ID Mở) để đăng nhập một lần giữa các trang web.
-ID Mở cho phép bạn đăng nhập vào nhiều trang web khác nhau mà không phải sử dụng mật khẩu khác nhau tại mỗi trang.
-(Xem [http://en.wikipedia.org/wiki/OpenID bài viết về ID Mở của Wikipedia] để biết thêm chi tiết.)
+	'openidlogininstructions' => '{{SITENAME}} hỗ trợ chuẩn [http://openid.net/ OpenID] để đăng nhập một lần giữa các trang web.
+OpenID cho phép bạn đăng nhập vào nhiều trang web khác nhau mà không phải sử dụng mật khẩu khác nhau tại mỗi trang.
+(Xem [http://en.wikipedia.org/wiki/OpenID bài viết về OpenID của Wikipedia] để biết thêm chi tiết.)
 
 Nếu bạn đã có một tài khoản tại {{SITENAME}}, bạn có thể [[Special:UserLogin|đăng nhập]] bằng tên người dùng và mật khẩu của bạn như thông thường.
-Để dùng ID Mở vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn sang ID Mở]] sau khi đã đăng nhập bình thường.
+Để dùng OpenID vào lần sau, bạn có thể [[Special:OpenIDConvert|chuyển đổi tài khoản của bạn sang ID Mở]] sau khi đã đăng nhập bình thường.
 
-Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp ID Mở Công cộng], và có thể bạn đã có một tài khoản kích hoạt ID Mở tại dịch vụ khác.
-
-; Các wiki khác : Nếu bạn có tài khoản tại một wiki có sử dụng ID Mở, như [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] hay [http://kei.ki/ Keiki], bạn có thể đặp nhập vào {{SITENAME}} bằng cách gõ vào '''URL đầy đủ''' của trang người dùng của bạn tại wiki đó trong hộp ở phía trên. Ví dụ, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
-; [http://openid.yahoo.com/ Yahoo!] : Nếu bạn có tài khoản Yahoo!, bạn có thể đăng nhập vào trang này bằng cách gõ vào ID Mở do Yahoo! cung cấp vào hộp phía trên. Địa chỉ URL của Yahoo! OpenID có dạng ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
-; [http://dev.aol.com/aol-and-63-million-openids AOL] : Nếu bạn có tài khoản [http://www.aol.com/ AOL], như một tài khoản [http://www.aim.com/ AIM], bạn có thể đăng nhập vào {{SITENAME}} bằng cách gõ ID Mở do AOL cung cấp cho bạn vào hộp phía trên. Địa chỉ URL của Open ID AOL có dạng ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Tên người dùng của bạn nên tất cả là chữ thường, không có khoảng cách.
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Nếu bạn có blog tại bất kỳ một dịch nào bên trên, gõ vào địa chỉ URL blog của bạn vào hộp phía trên. Ví dụ, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', hay ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp OpenID Công cộng], và có thể bạn đã có một tài khoản kích hoạt OpenID tại dịch vụ khác.',
+	'openidupdateuserinfo' => 'Cập nhật thông tin cá nhân của tôi',
+	'openid-prefstext' => 'Tùy chỉnh [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ẩn <a href="http://openid.net/">ID Mở</a> của bạn khỏi trang thành viên, nếu bạn đăng nhập bằng ID Mở.',
+	'openid-pref-update-userinfo-on-login' => 'Cập nhật thông tin của tôi từ OpenID persona mỗi khi tôi đăng nhập',
 );
 
 /** Volapük (Volapük)

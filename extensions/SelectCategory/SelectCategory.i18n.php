@@ -61,6 +61,16 @@ $messages['bcl'] = array(
 	'selectcategory-title' => 'Magpilì nin mga kategorya',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'selectcategory-title' => 'Выбар катэгорый',
+	'selectcategory-desc' => 'Дазваляе ўдзельніку выбіраць з існуючых катэгорый пад час рэдагаваньня старонкі',
+	'selectcategory-subtitle' => 'Shift+клік мышкі выбірае некалькі суседніх элемэнтаў, Ctrl+клік мышкі выбірае элемэнты, якія знаходзяцца ня побач.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

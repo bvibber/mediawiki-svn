@@ -388,6 +388,15 @@ $messages['pt-br'] = array(
 	'purgecache-button' => 'Purgar',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'purgecache' => "Sdevache 'a cache",
+	'purgecache-purged' => "'A cache ha state sdevachete",
+	'purgecache-button' => 'Sdevache',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -1108,7 +1108,7 @@ $messages['os'] = array(
  */
 $messages['pl'] = array(
 	'createsigndoc-pagename' => 'Strona:',
-	'createsigndoc-email' => 'Adres e-mail:',
+	'createsigndoc-email' => 'Adres e‐mail:',
 	'createsigndoc-address' => 'Adres domowy',
 	'createsigndoc-extaddress' => 'Miejscowość, kraj',
 	'createsigndoc-phone' => 'Numer telefonu:',

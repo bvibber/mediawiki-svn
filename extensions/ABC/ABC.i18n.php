@@ -277,6 +277,13 @@ $messages['ksh'] = array(
 	'abcdownload' => 'Eronger lahde:',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'abcdownload' => 'Iskarga:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

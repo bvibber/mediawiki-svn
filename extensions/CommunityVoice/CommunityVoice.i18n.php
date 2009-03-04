@@ -338,6 +338,13 @@ $messages['pt-br'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atributo título em falta na etiqueta de classificação.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'communityvoice-ratings-scale-status-error' => 'Errore de invie!',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

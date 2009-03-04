@@ -853,6 +853,7 @@ $messages['vi'] = array(
 	'findspam-ip' => 'Địa chỉ IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Không tìm thấy đóng góp',
+	'right-findspam' => 'Tìm các spam vừa mới thêm',
 );
 
 /** Volapük (Volapük)

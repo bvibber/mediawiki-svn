@@ -497,13 +497,15 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'edituser-desc' => 'Permitte que usatores con le privilegio necessari modifica le preferentias de altere usatores',
+	'edituser-desc' => 'Permitte que usatores con le privilegio requisite modifica le preferentias de altere usatores',
 	'edituser' => 'Modificar usator',
 	'edituser-logout' => 'Clauder le session del usator',
 	'edituser-username' => 'Nomine',
 	'edituser-dosearch' => 'Cercar',
 	'edituser-nouser' => 'Le usator specificate non existe',
 	'edituser-exempt' => 'Le usator specificate non pote esser modificate',
+	'right-edituser' => 'Modificar le preferentias de altere usatores',
+	'right-edituser-exempt' => 'Altere personas non pote modificar le preferentias de iste usator',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -628,6 +630,13 @@ $messages['ksh'] = array(
  */
 $messages['ku-latn'] = array(
 	'edituser-dosearch' => 'Lêbigere',
+);
+
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'edituser-dosearch' => 'Hwilas',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1082,6 +1091,8 @@ $messages['vi'] = array(
 	'edituser-dosearch' => 'Tìm kiếm',
 	'edituser-nouser' => 'Thành viên chỉ định không tồn tại',
 	'edituser-exempt' => 'Thành viên chỉ định không sửa được',
+	'right-edituser' => 'Sửa đổi tùy chọn cá nhân của thành viên khác',
+	'right-edituser-exempt' => 'Những người khác không thể sửa đổi tùy chọn cá nhân của thành viên này',
 );
 
 /** Volapük (Volapük)

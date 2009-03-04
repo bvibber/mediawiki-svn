@@ -1012,6 +1012,13 @@ $messages['ro'] = array(
 	'formsaveerrortext' => "A intervenit o eroare necunoscută la salvarea paginii '$1'.",
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'formsave' => 'Reggistre',
+);
+
 /** Russian (Русский)
  * @author Innv
  * @author Rubin

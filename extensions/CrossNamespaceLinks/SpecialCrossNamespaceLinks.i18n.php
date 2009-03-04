@@ -196,6 +196,15 @@ $messages['dsb'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|wótkaz|wótkazej|wótkaze|wótkazow}} do $3',
 );
 
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Καταγράφει συνδέσμους μεταξύ τομέων]] που δεν θα έπρεπε να υπάρχουν στην {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Αυτή η σελίδα παραθέτει ένα κατάλογο συνδέσμων από μια σελίδα στον κύριο τομέα προς μια σελίδα προς άλλους τομείς (εκτός από τους τομείς {{ns:special}}, {{ns:talk}}, {{ns:project}}, και {{ns:template}}), που δεν συνιστάται να χρησιμοποιούνται.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|σύνδεσμος|σύνδεσμοι}} στην $3',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

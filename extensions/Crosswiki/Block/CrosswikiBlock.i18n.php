@@ -256,9 +256,13 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'crosswikiblock-expiry' => 'Ističe:',
 	'crosswikiblock-reason' => 'Razlog:',
+	'crosswikiblock-submit' => 'Blokiraj ovog korisnika',
 	'crosswikiblock-autoblock' => 'Automatski blokiraj zadnju IP adresu koju je koristio ovaj korisnik i sve druge IP adrese s kojih je on pokušao uređivati',
 	'crosswikiunblock-reason' => 'Razlog:',
+	'crosswikiunblock-submit' => 'Deblokiraj ovog korisnika',
+	'crosswikiblock-nousername' => 'Nije navedeno korisničko ime',
 	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
 );
 
@@ -1604,7 +1608,7 @@ Upewnij się czy masz prawo to zrobić i czy to co robisz jest w zgodzie z zasad
 	'crosswikiblock-anononly' => 'Zablokuj tylko anonimowych użytkowników',
 	'crosswikiblock-nocreate' => 'Zablokuj tworzenie konta',
 	'crosswikiblock-autoblock' => 'Zablokuj ostatni adres IP tego użytkownika i automatycznie wszystkie kolejne, z których będzie próbował edytować',
-	'crosswikiblock-noemail' => 'Zablokuj możliwość wysyłania e-maili',
+	'crosswikiblock-noemail' => 'Zablokuj możliwość wysyłania e‐maili',
 	'crosswikiunblock' => 'Odblokuj użytkownika na innych wiki',
 	'crosswikiunblock-header' => 'Ta strona pozwala na odblokowanie użytkownika na innych wiki.
 Upewnij się czy masz prawo to zrobić i czy to co robisz jest w zgodzie z zasadami.',

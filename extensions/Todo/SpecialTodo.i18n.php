@@ -1106,7 +1106,7 @@ $4',
 	'todo-new-item' => 'Nowa pozycja',
 	'todo-issue-summary' => 'Podsumowanie kwestii:',
 	'todo-form-details' => 'Szczegóły:',
-	'todo-form-email' => 'Jeśli chcesz otrzymać powiadomienie pocztą elektroniczna po zamknięciu tej pozycji, wpisz w polu poniżej swój adres e-mail:',
+	'todo-form-email' => 'Jeśli chcesz otrzymać powiadomienie pocztą elektroniczna po zamknięciu tej pozycji, wpisz w polu poniżej swój adres e‐mail:',
 	'todo-form-submit' => 'Wyślij zapytanie',
 );
 
@@ -1220,12 +1220,38 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'todo' => 'Перечень задач',
+	'todo-desc' => 'Экспериментальное расширение персональный [[Special:Todo|перечень задач]] (Todo list)',
+	'todo-tab' => 'задачи',
+	'todo-new-queue' => 'новая',
+	'todo-mail-subject' => 'Завершённый пункты в перечне задач $1',
+	'todo-mail-body' => 'Вы указали уведомлять по эл. подтверждение о выполнении пунктов, помещённых в перечень задач $1.
+
+Пункт: $2
+Размещён: $3
+
+Этот пункт отмечен как выполненный, примечание:
+$4',
+	'todo-invalid-item' => 'Ошибочный пункт',
+	'todo-update-else-item' => 'Попытка обновить чужие пункты',
+	'todo-unrecognize-type' => 'Неизвестный тип',
+	'todo-user-invalide' => 'Указанный участник ошибочен, отсутствует или не может использоваться в перечне задач.',
+	'todo-item-list' => 'Ваши задачи',
+	'todo-no-item' => 'Нет записей.',
+	'todo-invalid-owner' => 'У этой записи ошибочный владелец',
 	'todo-add-queue' => 'Добавить очередь…',
 	'todo-move-queue' => 'Переместить в очередь…',
+	'todo-list-for' => 'Перечень задач для $1',
 	'todo-list-change' => 'Выбрать',
 	'todo-list-cancel' => 'Отмена',
+	'todo-new-item' => 'Новая запись',
+	'todo-issue-summary' => 'Краткое описание:',
+	'todo-form-details' => 'Подробности:',
+	'todo-form-email' => 'Укажите адрес эл. почты, чтобы получить уведомление о выполнении задания.',
+	'todo-form-submit' => 'Отправить запрос',
 );
 
 /** Slovak (Slovenčina)

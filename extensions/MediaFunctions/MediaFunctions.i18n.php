@@ -397,6 +397,15 @@ $messages['ro'] = array(
 	'mediafunctions-not-exist' => '"$1" nu există',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mediafunctions-desc' => "Funziune de analisi pe avè 'mbormaziune cirche le file media",
+	'mediafunctions-invalid-title' => '"$1" non g\'è \'nu titele valide',
+	'mediafunctions-not-exist' => '"$1" non g\'esiste',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  */

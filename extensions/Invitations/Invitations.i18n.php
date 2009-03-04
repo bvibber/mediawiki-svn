@@ -942,6 +942,15 @@ $messages['ro'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|O invitaţie disponibilă|$1 invitaţii disponibile}})',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'invite-logpage' => 'Archivije de le invite',
+	'invitations-inviteform-username' => 'Utende da invità',
+	'invitations-inviteform-submit' => 'Invite',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
