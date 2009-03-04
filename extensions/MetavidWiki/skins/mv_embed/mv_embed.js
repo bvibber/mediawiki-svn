@@ -299,7 +299,7 @@ var mvJsLoader = {
 		 var i=null;
 		 for(var i in this.libs){ //for in loop oky on object			 		 
 			 if( ! this.checkObjPath( i ) ){				 
-				 if(!this.libreq[i]) loadExternalJs( mv_embed_path + this.libs[i] );
+				 if(!this.libreq[i]) loadExternalJs( getMvEmbedPath() + this.libs[i] );
 				 this.libreq[i]=1;
 				 loading=1;
 			 }
@@ -322,7 +322,6 @@ var mvJsLoader = {
 	loadBaseLibs:function( callback ){
 		mvBaseLoader.load( callback);
 	}
-	
 }
 
 
