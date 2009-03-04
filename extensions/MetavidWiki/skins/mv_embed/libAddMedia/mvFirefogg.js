@@ -4,7 +4,8 @@
  
 var default_firefogg_options = {
 	'upload_done_action':'redirect',
-	'enabled':false
+	'enabled':false,
+	'api_url':false
 }
 var mvFirefogg = function(initObj){
 	return this.init( initObj );
@@ -18,10 +19,11 @@ mvFirefogg.prototype = {
 		'maxSize': 400, 
 		'videoBitrate': 400
 	},	
+	formData:{}, //the form to be submited
+	
 	init : function( iObj ){
 		if(!iObj)
 			iObj = {};
-			js_log("wtf");
 		//inherit iObj properties:
 		for(var i in default_firefogg_options){
 			if(iObj[i]){
@@ -45,7 +47,7 @@ mvFirefogg.prototype = {
 		$j('#wgfogg_installed,#wgEnableFirefogg').show();
 		
 		if( $j('#wgEnableFirefogg').length > 0 ){
-			this.fogg = new Firefogg();	
+			_this.fogg = new Firefogg();	
 			//do the version check:			
 			if( this.fogg.version.replace(/[^0-9]/gi, '') < this.min_firefogg_version.replace(/[^0-9]/gi, '' ) ){
 				//show wrong version error: 
@@ -100,7 +102,7 @@ mvFirefogg.prototype = {
 	},
 	select_fogg:function(){			
 		var _this = this;
-		if(_this.fogg.selectVideo()) {											
+		if( _this.fogg.selectVideo() ) {											
 			//update destination filename:
 			if( _this.fogg.sourceFilename ){				
 				var sf = _this.fogg.sourceFilename;						
@@ -127,13 +129,14 @@ mvFirefogg.prototype = {
 			}
 			 				
 			//setup the form handling 
-			var editForm = $j('#mw-upload-form').get(0);
+			_this.editForm = $j('#mw-upload-form').get(0);
 			
 			//set up the org_onsubmit if not set: 
 			if( typeof( _this.org_onsubmit ) == 'undefined' )
-				_this.org_onsubmit = editForm.onsubmit;
+				_this.org_onsubmit = _this.editForm.onsubmit;
 					
-			editForm.onsubmit = function() {	
+			_this.editForm.onsubmit = function() {	
+				
 				//run the original onsubmit (if not run yet set flag to avoid excessive chaining ) 
 				if( typeof( _this.org_onsubmit ) == 'function' ){										  
 					if( ! _this.org_onsubmit() ){
@@ -141,125 +144,187 @@ mvFirefogg.prototype = {
 						return false;					
 					}
 				}												
-				//get the input 
-				//var formData = _this.getEditFormData( editForm );				
-				var tmpAryData = $j( editForm ).serializeArray();				
+				//get the input form data in flat json: 										
+				var tmpAryData = $j( _this.editForm ).serializeArray();					
 				for(var i=0; i < tmpAryData.length; i++){
 					if( tmpAryData[i]['name'] )
-						formData[ mpAryData[i]['name'] ] = mpAryData[i]['value'];
-				}
-			
+						_this.formData[ tmpAryData[i]['name'] ] = tmpAryData[i]['value'];
+				}								
+				//hard code a value 
+				_this.formData['wpSourceType']='file';	
+					
 				//display the loader:
 				$j('#dlbox-centered,#dlbox-overlay').show();				
 				
 				//for some unknown reason we have to drop down the #p-search z-index:
 				$j('#p-search').css('z-index', 1);								
 				
-				//check the upload mode: 
-				if( _this.upload_mode == 'autodetect'){
-					
-				}else{
-					
-				}
-				var options = JSON.stringify( _this.encoder_settings );
-			  	_this.fogg.encode(options);		  	
-			  	
-			  	var encodingStatus = function() {
-			    	var status = _this.fogg.status();
+				//select upload mode: 
+				_this.doUploadSwitch();
+				//don't submit the form (firefogg will handle that)	
+		  		return false;			
+			}
+		}
+	},
+	doUploadSwitch:function(){
+		var _this = this;
+		//check the upload mode: 
+		if( _this.upload_mode == 'autodetect' ){
+			if( ! _this.api_url )
+				return js_error( 'Error: can\'t autodetect mode without api url' );
+			do_api_req( {
+				'data':{ 'action':'paraminfo','modules':'upload' },
+				'url':_this.api_url 
+			}, function(data){
+				if( typeof data.paraminfo == 'undefined' || typeof data.paraminfo.modules == 'undefined' )
+					return js_error( 'Error: bad api results' );
+				if( typeof data.paraminfo.modules[0].classname == 'undefined'){
+					js_log( 'Autodetect Upload Mode: \'post\' ');
+					_this.upload_mode = 'post';
+				}else{					
+					for( var i in data.paraminfo.modules[0].parameters ){
+						var pname = data.paraminfo.modules[0].parameters[i].name;
+						if( pname == 'chunks' ){
+							js_log( 'Autodetect Upload Mode: chunks ' );
+							_this.upload_mode = 'chunks';
+							break;
+						}
+					}
+					//somewhat verbose 					
+					if( _this.upload_mode != 'chunks'){
+						return js_error('Upload API without chunks param is not supported');
+					}
+				}				
+				_this.doUploadSwitch();
+			});
+		}else if( _this.upload_mode == 'post') {
+			_this.doEncUpload();
+		}else if( _this.upload_mode == 'chunks'){
+			_this.doChunkUpload();
+		}else{			
+			js_error( 'Error: unrecongized upload mode: ' + _this.upload_mode );
+		}			
+	},
+	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
+	doChunkUpload : function(){
+		var _this = this;		
+		_this.fogg.upload( JSON.stringify( _this.encoder_settings ), _this.editForm.action ,  JSON.stringify( _this.formData ) );	
+		//update upload status:						
+		_this.doUploadStatus();
+	},
+	//doEncUpload first encodes then uploads
+	doEncUpload : function(){	
+		var _this = this;		
+		_this.fogg.encode( JSON.stringify( _this.encoder_settings ) );		  	
+		
+		//setup a local function for timed callback:
+		var encodingStatus = function() {
+			var status = _this.fogg.status();
 			
-			    	//update progress bar
-			    	_this.fogg_update_progress( _this.fogg.progress() );
+			//update progress bar
+			_this.fogg_update_progress( _this.fogg.progress() );
 			
-			    	//loop to get new status if still encoding
-			    	if( _this.fogg.state == 'encoding' ) {
-			      		setTimeout(encodingStatus, 500);
-			    	}
-			    	//encoding done, state can also be 'encoding failed'
-			    	else if ( _this.fogg.state == 'encoding done' ) {
-			    		//hide the fogg-status-transcode
-			    		$j('#fogg-status-transcode').hide();
+			//loop to get new status if still encoding
+			if( _this.fogg.state == 'encoding' ) {
+				setTimeout(encodingStatus, 500);
+			}else if ( _this.fogg.state == 'encoding done' ) { //encoding done, state can also be 'encoding failed'
+				//now call the upload function 
+								    		
+			    //hide the fogg-status-transcode
+			    $j('#fogg-status-transcode').hide();
 			    			
-			    		//show the fogg-status-upload
-			    		$j('#fogg-status-upload').show();			    			    					    							
-												
-						//hard code some values 
-						formData['wpSourceType']='file';						 						
-						
-						var data = JSON.stringify( formData );						
-						//send to the post url: 							
-						_this.fogg.post( editForm.action, 'wpUploadFile', data);
-						var uploadStatus = function() {							
-					        var status = _this.fogg.status();							        					      					        					
-							//js_log(' up stats: ' + status + ' p:' + _this.fogg.progress() + ' state: '+ _this.fogg.state + ' result page:' + result_page);
-							
-					        //update progress bar
-					       	_this.fogg_update_progress( _this.fogg.progress() );
-					
-					        //loop to get new status if still uploading
-					        if(_this.fogg.state == 'uploading') {
-					        	setTimeout(uploadStatus, 500);
-					        }
-					        //upload sucesfull, state can also be 'upload failed'
-					        else if( _this.fogg.state == 'upload done' ) {	
-					        	//js_log( 'firefogg:upload done: ');							        			        
-					        	//@@todo handle errors same problem as #695 in remoteSearchDriver.js
-					        	//we need to add image uploading to the api rather than parse the HTML output of the pages  
-								var result_page = _this.fogg.responseText;
-								var sstring = 'var wgTitle = "' + formData['wpDestFile'].replace('_',' ');								
-								if( result_page && result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
-									js_log('upload done got redirect found: ' +sstring + ' r:' + _this.upload_done_action);										
-									if( _this.upload_done_action == 'redirect'){
-										window.location = wgArticlePath.replace(/\$1/, 'File:' + formData['wpDestFile'] );
-									}else{
-										//check if the add_done_action is a callback:
-										if( typeof _this.upload_done_action == 'function' )
-											_this.upload_done_action();
-									}									
-								}else{								
-									js_log('upload page error: did not find: ' +sstring);	
-									var error_txt = 'Unkown error';
-									if(!result_page){
-										//@@todo fix this: 
-										//the mediaWiki upload system does not have an API so we can\'t accuratly read errors 
-										error_txt = 'Your upload should be accessible <a href="' + 
-													wgArticlePath.replace(/\$1/, 'File:' + formData['wpDestFile'] ) + '">'+
-													'here</a> \n';
-									}else{
-										sp = result_page.indexOf('<span class="error">');
-										if(sp!=-1){
-											se = result_page.indexOf('</span>', sp);
-											error_txt = result_page.substr(sp, (sp-se));
-										}else{
-											//look for warning: 
-											sp = result_page.indexOf('<ul class="warning">')
-											if(sp!=-1){
-												se = result_page.indexOf('</ul>', sp);
-												error_txt = result_page.substr(sp, (sp-se));
-											}
-										}			
-									}						
-									e = document.getElementById('dlbox-centered');
-									if(e) 
-										e.innerHTML = '<h3>Upload Completed:</h3>' + error_txt;
-								}							
-					        }
-					        //upload error: 
-					        else{
-					        	alert('firefogg upload error: ' + _this.fogg.state);		
-					        }
-				      	}
-				      	uploadStatus();
-				    }else if(_this.fogg.state == 'encoding fail'){
-				    	//@@todo error handling: 
-				    	alert('encoding failed');
-				    }
-			  }
-			  encodingStatus();
-			  //don't submit the form (let firefogg handle it)	
-			  return false;			
-			};	//addHandler mapping
-		}else{
-			//remove upload binding if no file was selected
-		}	 
-	}	
+			    //show the fogg-status-upload
+			    $j('#fogg-status-upload').show();			    			    					    																											 						
+															
+				//send to the post url: 							
+				_this.fogg.post( _this.editForm.action, 'wpUploadFile', JSON.stringify( _this.formData ) );
+				//update upload status:						
+				_this.doUploadStatus();
+			}else if(_this.fogg.state == 'encoding fail'){
+				//@@todo error handling: 
+					alert('encoding failed');
+			}
+		}
+		encodingStatus();		  			
+	},
+	doUploadStatus:function() {	
+		var _this = this;
+		//setup a local function for timed callback: 				
+		var uploadStatus = function(){	
+			var status = _this.fogg.status();							        					      					        					
+			js_log(' up stats: ' + status + ' p:' + _this.fogg.progress() + ' state: '+ _this.fogg.state + ' result page:' + _this.fogg.responseText);
+			
+		    //update progress bar
+		    _this.fogg_update_progress( _this.fogg.progress() );
+		
+		    //loop to get new status if still uploading (could also be encoding if we are in chunk upload mode) 
+		    if( _this.fogg.state == 'encoding' || _this.fogg.state == 'uploading') {
+				setTimeout(uploadStatus, 500);
+			}
+		    //check upload state
+		    else if( _this.fogg.state == 'upload done' ||  _this.fogg.state == 'done' ) {	
+		       	js_log( 'firefogg:upload done: ');							        			        
+		       	//@@todo handle errors same problem as #695 in remoteSearchDriver.js
+		       	 
+		       	//if in "post" upload mode read the html response: 
+		       	if( _this.upload_mode == 'post' ) {
+		       		//var foo = _this;
+		       		//var cat = _this.fogg.responseText;
+		       		//var cat_json = eval('var result =' + _this.fogg.responseText );
+		       		//debugger;
+		       		js_log('done upload response is:' + _this.fogg.responseText );
+		       		_this.procPageResponse( _this.fogg.responseText );
+		       	}else if( _this.upload_mode == 'chunks'){
+		       		//should have an json result:\
+		       		var foo = _this;
+		       		var cat = _this.fogg.responseText;
+		       		var cat_json = eval('var result =' + _this.fogg.responseText );
+		       		debugger;
+		       	}													
+			}
+	       //upload error: 
+	       else{
+				alert('firefogg upload error: ' + _this.fogg.state );		
+	       }
+	   }
+	   uploadStatus();
+	},	
+	procPageResponse:function( result_page ){
+		js_log('f:procPageResponse');
+		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');								
+		if( result_page && result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
+			js_log( 'upload done got redirect found: ' + sstring + ' r:' + _this.upload_done_action );										
+			if( _this.upload_done_action == 'redirect' ){
+				window.location = wgArticlePath.replace( /\$1/, 'File:' + formData['wpDestFile'] );
+			}else{
+				//check if the add_done_action is a callback:
+				if( typeof _this.upload_done_action == 'function' )
+					_this.upload_done_action();
+			}									
+		}else{								
+			js_log( 'upload page error: did not find: ' +sstring + ' in ' + "\n" + result_page );	
+			var error_txt = 'Unkown error';
+			if( !result_page ){
+				//@@todo fix this: 
+				//the mediaWiki upload system does not have an API so we can\'t acuratly read errors 
+				error_txt = 'Your upload should be accessible <a href="' + 
+							wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
+							'here</a> \n';
+			}else{
+				sp = result_page.indexOf('<span class="error">');
+				if(sp!=-1){
+					se = result_page.indexOf('</span>', sp);
+					error_txt = result_page.substr(sp, (sp-se));
+				}else{
+					//look for warning: 
+					sp = result_page.indexOf('<ul class="warning">')
+					if(sp!=-1){
+						se = result_page.indexOf('</ul>', sp);
+						error_txt = result_page.substr(sp, (sp-se));
+					}
+				}			
+			}					
+			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt);
+		}
+	}
 }

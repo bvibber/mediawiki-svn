@@ -1067,7 +1067,7 @@ function mv_addLoadEvent(func) {
 }
 
 //does a remote or local api request based on request url 
-//@param : url, data, cbParam, callback
+//@param options: url, data, cbParam, callback
 function do_api_req( options, callback ){
 	if(typeof options.data != 'object'){
 		js_log('Error: request paramaters must be an object');
@@ -1083,9 +1083,14 @@ function do_api_req( options, callback ){
 	 	options.url =  options.url.replace('index.php', 'api.php');		
 	}			
 	if(typeof options.data == 'undefined')
-		options.data = {};		
-	//build request string: (force the format to json):				
-	if( parseUri(document.URL).host == parseUri( options['api_url'] ).host ){
+		options.data = {};	
+	
+	//set the format to json (if not already set)  	
+	if(typeof options.data['format'] == 'undefined')
+		options.data['format'] = 'json';
+		
+	//build request string: 				
+	if( parseUri( document.URL ).host == parseUri( options['api_url'] ).host ){
 		//local request do api request directly		
 		$j.ajax({
 			type: "POST",
@@ -1097,8 +1102,10 @@ function do_api_req( options, callback ){
 			}
 		});
 	}else{	
+		//set the callback param if not already set: 
 		if( typeof options.jsonCB == 'undefined')
 			options.jsonCB = 'callback';
+						
 		var req_url = options.url;		
 		var paramAnd = (req_url.indexOf('?')==-1)?'?':'&';		
 		//put all the values into the GET req: 	
@@ -1306,5 +1313,6 @@ function js_log(string){
 
 function js_error(string){
 	alert(string);
+	return false;
 }
 

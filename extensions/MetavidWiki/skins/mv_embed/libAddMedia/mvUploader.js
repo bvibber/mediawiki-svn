@@ -16,7 +16,8 @@ loadGM( {
 
 var default_upload_options = {
 	'target_div':'',
-	'upload_done_action':'redirect'
+	'upload_done_action':'redirect',
+	'api_url':false
 }
 
 var mvUploader = function(initObj){
@@ -89,6 +90,8 @@ mvUploader.prototype = {
 						_this.upload_done_action( rTitle );		
 					}
 				};
+		if( _this.api_url )
+			intFirefoggObj['api_url'] =  _this.api_url;
 		js_log('new mvFirefogg');
 		//if firefog is not taking over the submit we can here: 
 		_this.fogg = new mvFirefogg( intFirefoggObj );			

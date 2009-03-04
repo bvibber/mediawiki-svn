@@ -420,8 +420,7 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		reqObj={
 			'action':'query', 
-			'titles': _this.cFileNS + ':' + rTitle,
-			'format':'json'
+			'titles': _this.cFileNS + ':' + rTitle
 		};								
 		do_api_req( {
 			'data':reqObj,

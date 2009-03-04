@@ -24,8 +24,7 @@ mediaWikiSearch.prototype = {
 		 								
 		//build the image request object: 
 		var reqObj = {
-			'action':'query', 
-			'format':'json',
+			'action':'query', 			
 			'generator':'search',
 			'gsrsearch': encodeURIComponent( $j('#rsd_q').val() ),  
 			'gsrnamespace':6, //(only search the "file" namespace (audio, video, images)

@@ -44,9 +44,10 @@ if(wgPageName== "Special:Upload"){
 			//load jQuery and what not (we need to refactor the loading system for mv_embed)
 			mvJsLoader.loadBaseLibs(function(){
 				mvJsLoader.doLoad( {
+					'mvFirefogg' : 'libAddMedia/mvFirefogg.js',	
 					'mvUploader' : 'libAddMedia/mvUploader.js'
 				},function(){		
-					mvUp = new mvUploader();		
+					mvUp = new mvUploader( { 'api_url' : wg_local_wiki_api_url } );		
 				});
 			});
 		});

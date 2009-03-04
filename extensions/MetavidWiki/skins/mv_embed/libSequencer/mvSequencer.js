@@ -452,7 +452,6 @@ mvSequencer.prototype = {
 		if(typeof this.sequenceEditToken == 'undefined'){			
 			var reqObj = {
 				'action':'query',
-				'format':'json',
 				'prop':'info',
 				'intoken':'edit',
 				'titles': this_seq.plObj.mTitle

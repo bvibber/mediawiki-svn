@@ -119,7 +119,7 @@ function mvSetupExtension() {
 	$wgJSAutoloadClasses['j.fn.hoverIntent']	= $mvjsp . 'jquery/plugins/jquery.hoverIntent.js';
 	
 	//libAddMedia:
-	$wgJSAutoloadClasses['upFirefogg'] 			= $mvjsp . 'libAddMedia/firefogg.js';
+	$wgJSAutoloadClasses['mvFirefogg'] 			= $mvjsp . 'libAddMedia/mvFirefogg.js';
 	$wgJSAutoloadClasses['mvUploader'] 			= $mvjsp . 'libAddMedia/mvUploader.js';
 	$wgJSAutoloadClasses['remoteSearchDriver'] 	= $mvjsp . 'libAddMedia/remoteSearchDriver.js';
 	$wgJSAutoloadClasses['seqRemoteSearchDriver'] = $mvjsp . 'libAddMedia/seqRemoteSearchDriver.js';
