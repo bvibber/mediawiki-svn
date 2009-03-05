@@ -24,7 +24,7 @@
 
 #include	<ldap.h>
 
-#define SERVER		"localhost"
+#define SERVER		"hemlock.toolserver.org"
 #define PORT		LDAP_PORT
 #define SECRET		"/etc/ldap_secret"
 #define ADMIN_DN 	"cn=Directory Manager"
