@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.12.9 - 5 March 2009
+  The left column on Special:Extension no longer overlaps the bottom of the
+  page.
+
 0.12.8 - 3 March 2009
   Updated FlaggedRevs and Cite extensions.
 
