@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'honeypot-desc',
 );
 
-$wgExtensionMessagesFiles['HoneypotIntegration'] =  "$dir/Honeypot.i18n.php";
+$wgExtensionMessagesFiles['HoneypotIntegration'] =  "$dir/HoneypotIntegration.i18n.php";
 $wgAutoloadClasses[ 'HoneypotIntegration' ] = "$dir/HoneypotIntegration.class.php";
 
 $wgHooks['AbuseFilter-filterAction'][] = 'HoneypotIntegration::onAbuseFilterFilterAction';
