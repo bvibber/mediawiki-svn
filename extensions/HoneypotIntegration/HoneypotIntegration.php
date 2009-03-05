@@ -17,8 +17,8 @@ $dir = dirname( __FILE__ );
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'HoneypotIntegration',
 	'author'         => 'Andrew Garrett',
-	'svn-date'       => '$LastChangedDate: 2009-03-05 13:43:05 +1100 (Thu, 05 Mar 2009) $',
-	'svn-revision'   => '$LastChangedRevision: 48042 $',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Provides integration with Project Honeypot for MediaWiki sites',
 	'descriptionmsg' => 'honeypot-desc',
 );
