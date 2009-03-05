@@ -397,6 +397,16 @@ $messages['pt-br'] = array(
 	'templatelink_newtitle' => '$1 (transcluído)',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'templatelink' => 'Ссылка на шаблон',
+	'templatelink_desc' => 'Это расширение может показывать шаблоны как новые страницы',
+	'templatelink_empty' => 'Вы должны указать параметр.',
+	'templatelink_newtitle' => '$1 (включение)',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

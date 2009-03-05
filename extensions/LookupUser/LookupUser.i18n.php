@@ -641,7 +641,7 @@ $messages['ksh'] = array(
 	'lookupuser-registration' => 'Et eets aanjemelldt om: $1',
 	'lookupuser-no-registration' => '–nit&nbsp;faßjehallde–',
 	'lookupuser-touched' => 'Letz Änderung am Metmaacher-Datesatz: $1',
-	'lookupuser-info-authenticated' => 'Bestätesch övver <i lang="en">e-mail</i>:',
+	'lookupuser-info-authenticated' => 'Bestätesch övver <i lang="en">e-mail</i>: $1',
 	'lookupuser-useroptions' => 'Enstellunge:',
 	'right-lookupuser' => 'Enem Metmaacher sing Enstellunge aankike',
 );

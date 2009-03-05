@@ -212,6 +212,13 @@ $messages['sk'] = array(
 	'gotocategory-desc' => 'Vyhľadá slová v mennom priestore Kategória: pomocou funkcie „Ísť na stránku“',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'gotocategory-desc' => 'Wröiget Säikbegriepe juun dän Kategorien-Noomensruum foar ju "Gung fluks tou ju Siede"-Funktionoalität',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

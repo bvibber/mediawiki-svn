@@ -723,11 +723,12 @@ Ole kärsivällinen.',
  * @author Grondin
  * @author IAlex
  * @author Louperivois
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'youtubeauthsub' => 'Importer une vidéo YouTube',
-	'youtubeauthsub-desc' => "Permet aux utilisateurs [[Special:YouTubeAuthSub|d'importer des vidéos]] directement sur YouTube",
-	'youtubeauthsub_info' => "Pour importer une vidéo sur YouTube pour l'incorporer dans une page, renseignez les informations suivantes :",
+	'youtubeauthsub' => 'Téléverser une vidéo YouTube',
+	'youtubeauthsub-desc' => 'Permet aux utilisateurs de [[Special:YouTubeAuthSub|téléverser des vidéos]] directement sur YouTube',
+	'youtubeauthsub_info' => "Pour téléverser une vidéo sur YouTube afin de l'incorporer dans une page, renseignez les informations suivantes :",
 	'youtubeauthsub_title' => 'Titre',
 	'youtubeauthsub_description' => 'Description',
 	'youtubeauthsub_password' => 'Mot de passe sur YouTube',
@@ -737,25 +738,25 @@ $messages['fr'] = array(
 	'youtubeauthsub_submit' => 'Soumettre',
 	'youtubeauthsub_clickhere' => 'Cliquez ici pour vous connecter sur YouTube',
 	'youtubeauthsub_tokenerror' => "Erreur lors de la demande d'autorisation, essayez de rafraîchir la page.",
-	'youtubeauthsub_success' => "Félicitations :
-Votre vidéo est importée.
+	'youtubeauthsub_success' => "Félicitations !
+Votre vidéo est téléversée.
 <a href='http://www.youtube.com/watch?v=$1'>Visionnez votre vidéo</a>.
-YouTube peut demander un laps de temps pour prendre en compte votre vidéo, aussi elle peut ne pas être encore prête.
+Il se peut que YouTube ait besoin d'un certain temps pour prendre en compte votre vidéo, il est donc possible qu'elle ne soit pas encore disponible.
 
-Pour incorporer votre vidéo dans une page du wiki, insérez le code suivant dans cette dernière :
+Pour incorporer votre vidéo dans une page du wiki, insérez le code suivant dans celle-ci :
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'Pour importer une vidéo, il vous sera demandé de vous connecter d’abord sur YouTube.',
-	'youtubeauthsub_uploadhere' => 'Importer votre vidéo depuis ici :',
-	'youtubeauthsub_uploadbutton' => 'Importer',
+	'youtubeauthsub_authsubinstructions' => "Pour téléverser une vidéo, vous devrez d'abord vous connecter sur YouTube.",
+	'youtubeauthsub_uploadhere' => 'Téléverser votre vidéo depuis ici :',
+	'youtubeauthsub_uploadbutton' => 'Téléverser',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Voir cette vidéo]',
-	'youtubeauthsub_summary' => 'Importer une vidéo YouTube',
-	'youtubeauthsub_uploading' => 'Votre vidéo est en cours d’importation.
-Soyez patient.',
+	'youtubeauthsub_summary' => 'Téléverser une vidéo YouTube',
+	'youtubeauthsub_uploading' => 'Votre vidéo est en cours de téléversement.
+Veuillez patienter.',
 	'youtubeauthsub_viewpage' => 'Sinon, vous pouvez [[$1|visionner votre vidéo]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Vous êtes prié d’entrer un ou plusieurs mots clefs.',
-	'youtubeauthsub_jserror_notitle' => 'Vous êtes prié d’entrer un titre pour la vidéo.',
+	'youtubeauthsub_jserror_nokeywords' => 'Veuillez entrer un ou plusieurs mots clefs.',
+	'youtubeauthsub_jserror_notitle' => 'Veuillez entrer un titre pour la vidéo.',
 	'youtubeauthsub_jserror_nodesc' => 'Veuillez entrer une description pour la vidéo.',
 );
 

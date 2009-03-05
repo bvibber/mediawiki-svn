@@ -283,6 +283,8 @@ $messages['es'] = array(
 	'editmessages' => 'Editando mensajes',
 	'editmsg-search' => 'Buscar',
 	'editmsg-new-search' => 'Nueva búsqueda',
+	'editmsg-warning-file' => '* Errores de lectura de archivo fueron encontrados para los siguientes {{PLURAL:$2|lenguaje|lenguajes}}: $1',
+	'editmsg-warning-mismatch' => '* El texto original no tuvo el valor esperado para los siguientes {{PLURAL:$2|lenguaje|lenguajes}}: $1',
 );
 
 /** Estonian (Eesti)

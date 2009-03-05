@@ -1253,20 +1253,18 @@ $messages['he'] = array(
 אם זה לא פועל, נסו את הכפתור \\"המשך\\".',
 	'openidclientonlytext' => 'אינכם יכולים להשתמש בחשבונות משתמש מוויקי זה כזהויות OpenID באתר אחר.',
 	'openidloginlabel' => 'כתובת OpenID',
-	'openidlogininstructions' => "ב{{grammar:תחילית|{{SITENAME}}}} מותקנת תמיכה בתקן ה־[http://openid.net/ OpenID] לחשבון משתמש מאוחד בין אתרי אינטרנט.
+	'openidlogininstructions' => 'ב{{grammar:תחילית|{{SITENAME}}}} מותקנת תמיכה בתקן ה־[http://openid.net/ OpenID] לחשבון משתמש מאוחד בין אתרי אינטרנט.
 OpenID מאפשר לכם להיכנס לחשבון במגוון אתרים מבלי להשתמש בסיסמה שונה עבור כל אחד מהם.
 (עיינו ב[http://he.wikipedia.org/wiki/OpenID ערך על OpenID בוויקיפדיה העברית] למידע נוסף.)
 
 אם כבר יש ברשותכם חשבון במערכת {{SITENAME}}, תוכלו [[Special:UserLogin|להיכנס לחשבון]] עם שם המשתמש והסיסמה שלכם כרגיל.
 על מנת להשתמש ב־OpenID בעתיד, תוכלו [[Special:OpenIDConvert|להמיר את חשבונכם ל־OpenID]] לאחר שנכנסתם לחשבון באופן הרגיל.
 
-ישנם [http://wiki.openid.net/Public_OpenID_providers ספקי OpenID ציבוריים] רבים, ויתכן שכבר יש לכם חשבון התומך ב־OpenID בשירות אחר.
-
-; אתרי ויקי אחרים : אם יש לכם חשבון באתר ויקי התומך ב־OpenID, כגון [http://wikitravel.org/he ויקיטיול], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] או [http://kei.ki/ Keiki], תוכלו להיכנס לחשבון ב{{grammar:תחילית|{{SITENAME}}}} על ידי כתיבת '''הכתובת המלאה''' של דף המשתמש שלכם באתר הוויקי האחר בתיבה שלהלן. לדוגמה, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
-; [http://openid.yahoo.com/ Yahoo!] : אם יש ברשותכם חשבון Yahoo!, תוכלו להיכנס לחשבון ב{{grammar:תחילית|{{SITENAME}}}} על ידי כתיבת ה־OpenID שסופק על ידי Yahoo! בתיבה שלהלן. כתובות OpenID של Yahoo! הינן בתבנית ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
-; [http://dev.aol.com/aol-and-63-million-openids AOL] : אם יש ברשותכם חשבון אצל [http://www.aol.com/ AOL], כגון חשבון [http://www.aim.com/ AIM], תוכלו להיכנס לחשבון ב{{grammar:תחילית|{{SITENAME}}}} על ידי כתיבת ה־OpenID שסופק לכם על ידי AOL בתיבה שלהלן. כתובת OpenID של AOL הינן בתבנית ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. על שם המשתמש שלכם להיות כולו באותיות קטנות באנגלית, ללא רווחים.
-; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : אם אתם מנהלים בלוג באחד מהשירותים הללו, תוכלו להיכנס לחשבון ב{{grammar:תחילית|{{SITENAME}}}} על ידי כתיבת כתובת הבלוג שלכם בתיבה שלהלן. לדוגמה, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', או ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+ישנם [http://wiki.openid.net/Public_OpenID_providers ספקי OpenID ציבוריים] רבים, ויתכן שכבר יש לכם חשבון התומך ב־OpenID בשירות אחר.',
+	'openidupdateuserinfo' => 'עדכון הנתונים האישיים שלי',
+	'openid-prefstext' => 'העדפות [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'הסתרת ה־<a href="http://openid.net/">OpenID</a> מדף המשתמש, במקרה של כניסה לחשבון עם OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'הנתונים שלי יעודכנו מכרטיס ה־OpenID שלי עם כל התחברות',
 );
 
 /** Hindi (हिन्दी)

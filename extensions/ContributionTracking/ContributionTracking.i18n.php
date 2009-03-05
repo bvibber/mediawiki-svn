@@ -573,6 +573,14 @@ $messages['ro'] = array(
 	'contrib-tracking-error' => 'Eroare',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'contrib-tracking-error' => 'Errore',
+	'contrib-tracking-button' => 'Condinue',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -221,6 +221,13 @@ $messages['sk'] = array(
 	'htmlets-desc' => 'Umožňuje vkladať kúsky HTML kódu zo súborov pomocou značky <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'htmlets-desc' => 'Benutset dät <tt><nowiki><htmlet></nowiki></tt>-Tag toun Ienföigjen fon HTML-Snipsele',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.

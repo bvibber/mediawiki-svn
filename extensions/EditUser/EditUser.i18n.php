@@ -164,7 +164,9 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'edituser-desc' => 'Omogućuje korisnicima sa privilegijama da uređuju postavke drugih korisnika',
 	'edituser' => 'Uređivanje korisnika',
+	'edituser-logout' => 'Odjava korisnika',
 	'edituser-username' => 'Ime',
 	'edituser-dosearch' => 'Traži',
 	'edituser-nouser' => 'Navedeni korisnik ne postoji',
@@ -285,6 +287,15 @@ $messages['es'] = array(
 	'edituser-exempt' => 'El usuario especificado no puede ser editado',
 	'right-edituser' => 'Editar las preferencias de otro usuario',
 	'right-edituser-exempt' => 'Otros no pueden editar estas preferencias de usuario',
+);
+
+/** Estonian (Eesti)
+ * @author KalmerE.
+ */
+$messages['et'] = array(
+	'edituser-logout' => 'Logi välja',
+	'edituser-username' => 'Nimi',
+	'edituser-dosearch' => 'otsi',
 );
 
 /** Basque (Euskara)

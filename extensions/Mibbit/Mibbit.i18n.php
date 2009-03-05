@@ -483,6 +483,14 @@ Utilizadores anônimos recebem um apelido gerado aleatoriamente, mas este pode s
 	'right-mibbit' => 'Autorizado a usar o Bate-papo Mibbit',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mibbit' => 'Chat mibbit',
+	'right-mibbit' => "Permitte de ausà 'a chat Mibbit",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

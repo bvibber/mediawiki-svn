@@ -330,6 +330,7 @@ $messages['bs'] = array(
 	'removeunusedgroups' => 'Ukloni neiskorištene grupe',
 	'grouppermissions-desc' => 'Uređivanje grupnih dopuštenja preko [[Special:GroupPermissions|posebne stranice]]',
 	'grouppermissions-desc2' => 'Prošireni sistem dopuštenja',
+	'grouppermissions-desc4' => 'Omogućuje dodavanje dodatnih stavki u alatnu kutiju',
 	'grouppermissions-desc-nsm' => 'Upravljanje imenskim prostorima preko posebne stranice',
 	'grouppermissions-search' => 'Grupa:',
 	'grouppermissions-dologin' => 'Prijava',
@@ -354,14 +355,20 @@ $messages['bs'] = array(
 	'grouppermissions-sort-tech' => 'Tehničko',
 	'grouppermissions-sort-misc' => 'Razno',
 	'grouppermissions-log-add' => 'dodana grupa "$2"',
+	'grouppermissions-log-change' => 'promijenjena dopuštrenja za grupu "$2"',
 	'grouppermissions-log-delete' => 'obrisana grupa "$2"',
 	'grouppermissions-log-name' => 'Zapisnik grupnih dopuštenja',
+	'grouppermissions-needjs' => 'Upozorenje: JavaScript je onemogućen u Vašem pregledniku. Neke funkcije možda neće raditi!',
 	'grouppermissions-sp-sort' => 'Sortiraj dopuštenja',
 	'grouppermissions-sp-save' => 'Sačuvaj',
 	'grouppermissions-sp-success' => 'Dopuštenja su uspješno sortirana',
+	'grouppermissions-sp-addtype' => 'Dodaj tip sortiranja',
 	'grouppermissions-sp-addperm' => 'Dodaj dopuštenje',
 	'grouppermissions-sp-remove' => 'ukloni',
+	'grouppermissions-sp-deltype' => 'Obriši tip sortiranja',
 	'grouppermissions-rug-header' => 'Možete koristiti ovu stranicu za uklanjanje korisnika iz neiskorištenih (obrisanih) grupa.',
+	'grouppermissions-rug-confirm' => 'Uklanjanje korisnika iz neiskorištenih grupa',
+	'right-grouppermissions' => 'Upravljanje grupnim dopuštenjima',
 	'right-raw' => 'Pregled sirovih stranica',
 	'right-info' => 'Pregled informacija stranica',
 	'right-credits' => 'Pregled autora stranice',
@@ -2026,6 +2033,21 @@ $messages['sk'] = array(
 	'right-edittalk' => 'Upraviť diskusné stránky',
 	'right-edit-new' => 'Upravovať stránky (ktoré nie sú diskusné stránky)',
 	'right-readold' => 'Zobrazovať obsah starých revízií a ich rozdiely',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'grouppermissions' => 'Gruppenbegjuchtigengen ferwaltje',
+	'sortpermissions' => 'Begjuchtigengen sortierje',
+	'removeunusedgroups' => 'Nit benutsede Gruppen wächhoalje',
+	'grouppermissions-desc' => 'Ferwaltjen fon Gruppenbegjuchtigengen uur ne [[Special:GroupPermissions|Spezioalsiede]]',
+	'grouppermissions-desc2' => 'Wieder Begjuchtigengssystem',
+	'grouppermissions-desc3' => 'Moaket ju Anpaasenge muugelk fon do Inhooldsaktione (Tabs)',
+	'grouppermissions-desc4' => 'Moaket dät Bietouföigjen muugelk fon äkstroa Iendraage tou ju Reewe-Navigationslieste',
+	'grouppermissions-desc-nsm' => 'Ferwaltjen fon Noomensruume uur ne Spezioalsiede',
+	'grouppermissions-header' => 'Mäd disse Spezioalsiede koast du do Begjuchtigengen fon  Benutsergruppen annerje.',
 );
 
 /** Swedish (Svenska)

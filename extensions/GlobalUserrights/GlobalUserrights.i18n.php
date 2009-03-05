@@ -132,7 +132,7 @@ $messages['es'] = array(
  * @author Ker
  */
 $messages['et'] = array(
-	'globaluserrights' => 'Globaalne kasutaja õiguste haldamine',
+	'globaluserrights' => 'Kasutaja globaal õiguste haldamine',
 	'gur-desc' => 'Lihtne [[Special:GlobalUserRights|globaalkasutaja õiguste]] haldamine',
 	'gur-rightslog-name' => 'Globaal õiguste logiraamat',
 );
@@ -354,6 +354,18 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'gur-rightslog-name' => 'Jurnal drepturi globale',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'globaluserrights' => 'Gestione de le deritte utinde globale',
+	'gur-desc' => "Facile amministrazione de le [[Special:GlobalUserRights|deritte de l'utinde globale]]",
+	'gur-rightslog-name' => 'Archivije de le deritte globale',
+	'gur-rightslog-header' => "Quiste jè 'n'archivije de le cangiaminde sus a le deritte globale.",
+	'gur-rightslog-entry' => "membre d'u gruppe globale cangete pe $1 da $2 a $3",
+	'right-userrights-global' => "Gestisce le deritte de l'utinde globale",
 );
 
 /** Slovak (Slovenčina)

@@ -1794,7 +1794,7 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 	'deletequeue-case-page' => 'Pagina:',
 	'deletequeue-case-reason' => 'Motivo:',
 	'deletequeue-case-expiry' => 'Expiration:',
-	'deletequeue-case-needs-review' => 'Iste caso require [$1|revision]].',
+	'deletequeue-case-needs-review' => 'Iste caso require [[$1|revision]].',
 );
 
 /** Indonesian (Bahasa Indonesia)

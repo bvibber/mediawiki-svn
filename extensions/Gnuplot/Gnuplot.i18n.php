@@ -276,6 +276,13 @@ $messages['sq'] = array(
 	'gnuplot-desc' => 'E vendos kodin <code><nowiki><gnuplot></nowiki></code> për të përdorur Gnuplot',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'gnuplot-desc' => 'Föiget dän <code><nowiki><gnuplot></nowiki></code>-Tag bietou, uum Gnuplot tou ferweenden',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

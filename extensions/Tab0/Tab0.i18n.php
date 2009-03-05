@@ -272,6 +272,13 @@ $messages['roa-tara'] = array(
 	'tab0-desc' => "Aggiunge 'u tab \"0\", pe collegà a 'a pàgene de le cangiaminde 'a prima sezione d'a pàgene",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'tab0-desc' => 'Добавляет вкладку «0», ссылающуюся на страницу редактирования первого раздела страницы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

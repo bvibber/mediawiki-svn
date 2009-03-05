@@ -102,9 +102,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'wikitextloggedinout-desc' => 'Deux crochets de parseur, <tt>&lt;loggedin&gt;</tt> and <tt>&lt;loggedout&gt;</tt>, pour montrer un texte différent en fonction du statut de connection de l’utilisateur',
+	'wikitextloggedinout-desc' => 'Deux crochets du parseur, <tt>&lt;loggedin&gt;</tt> et <tt>&lt;loggedout&gt;</tt>, pour montrer un texte différent suivant le statut de connexion de l’utilisateur',
 );
 
 /** Galician (Galego)

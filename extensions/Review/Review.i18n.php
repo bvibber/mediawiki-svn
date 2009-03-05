@@ -241,8 +241,43 @@ $messages['ast'] = array(
 $messages['be-tarask'] = array(
 	'review_sidebar_title' => 'Адзнака',
 	'review-desc' => 'Магчымасьць [[Special:Review|праверкі]]',
+	'review_topics' => "# Ніжэй пададзены сьпіс тэмаў і дыяпазонаў для пашырэньня адзнакі.
+# Кожная тэма вызначана ў радку з пяці значэньняў, падзеленых ':' (усе іншыя радкі не ўлічваюцца).
+# Парадак наступны: лічбавы ключ (>0), назва, максымальнае значэньне (>1; 2=yes/no), апісаньне самага малога значэньня (напрыклад, 'дрэнная'), значэньне самай высокай адзнакі (напрыклад, 'добрая').
+1:Якасьць:5:дрэнная:добрая
+2:Гатова для 1.0:2:не:так",
+	'review_topic_page' => 'Адзнака тэмаў',
+	'review_sidebar_explanation' => "Першая клетка заўсёды азначае 'няма меркаваньня'.",
+	'review_save' => 'Захаваць адзнаку',
+	'review_your_review' => 'Ваша адзнака гэтай старонкі/вэрсіі:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Вы ўжо адзначалі іншыя вэрсіі гэтай старонкі.
+Вашы іншыя адзнакі будуць аб'яднаны з гэтай там, дзе Вы выберыце 'няма меркаваньня'.",
+	'review_page_link' => 'статыстыка адзнакаў',
+	'review_sidebar_final' => 'Глядзіце зьвесткі пра прагляд гэтай старонкі на $1',
+	'review_for_page' => 'Адзнака старонкі «$1»',
+	'review_for_user' => 'Адзнака {{GENDER:$1|ўдзельніка|ўдзельніцы}} «$1»',
+	'review_error' => 'Нешта ня так!',
+	'review_no_reviews_for_page' => 'Зараз няма адзнакаў для «$1».',
+	'review_total_statistics' => 'Усяго',
 	'review_statistics_left_corner' => 'Вэрсія',
+	'review_version_link' => 'Вэрсія #$1',
+	'review_statistic_cell' => 'Сярэдняя: $1 з $2<br />($4 удзельнікаў, $5 ананімаў)',
+	'review_version_statistic_cell' => '$1 з $2',
+	'review_version_reviews_link' => '<small>(адзнакі вэрсіі)</small>',
+	'review_concerns_page' => 'Гэта адзнака старонкі «$1».',
+	'review_concerns_user' => 'Гэта адзнакі {{GENDER:$1|удзельніка|удзельніцы}} «$1».',
+	'review_user_reviews' => '<small>(адзнакі гэтага ўдзельніка)</small>',
+	'review_user_page_list' => 'Удзельнік адзначыў наступныя старонкі:',
 	'review_user_details_link' => '(падрабязнасьці)',
+	'review_do_merge' => "Аб'яднаць мае адзнакі іншых вэрсіяў гэтай старонкі з гэтай адзнакай",
+	'review_has_been_stored' => "<span id='review_has_been_stored'>Ваша адзнака была захавана!</span>",
+	'revision_review_this_page_version_link' => 'Адзначыць гэту вэрсію старонкі.',
+	'review_page_review' => 'Адзнака старонкі «$1»',
+	'review_blocked' => 'Вы заблякаваны і ня можаце ставіць адзнакі.',
+	'review_wrong_namespace' => 'Старонкі з гэтай прасторы назваў ня могуць быць адзначаны!',
+	'review_topic' => 'Тэма',
+	'review_no_opinion' => 'Няма меркаваньня',
+	'review_rating' => 'Рэйтынг',
 	'review_comment' => 'Камэнтар',
 );
 

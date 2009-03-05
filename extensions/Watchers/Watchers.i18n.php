@@ -20,6 +20,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Lejonel
+ * @author PieRRoMaN
  * @author Raymond
  */
 $messages['qqq'] = array(
@@ -28,7 +29,7 @@ $messages['qqq'] = array(
 	'watchers_link_title' => 'In Watchers extension. The text for the link to Special:Watchers in the toolbox.',
 	'watchers_error_article' => 'In Watchers extension. Error message which is displayed when trying to use Special:Watchers for a page that does no exist.',
 	'watchers_noone_watches' => 'In Watchers extension. Used in Special:Watchers for pages which are not on the watchlist of any user.',
-	'watchers_x_or_more' => 'In Watchers extension. Used in Special:Watchers for pages that has at least a certain number of watching users.
+	'watchers_x_or_more' => 'In Watchers extension. Used in Special:Watchers for pages that have at least a certain number of watching users.
 
 $1 is an integer (specified in the configuration of the wiki).',
 	'watchers_less_than_x' => 'In Watchlist extension. Used in Special:Watchers for pages that has less than a certain number of watching users.
@@ -312,18 +313,19 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
  * @author Zetud
  */
 $messages['fr'] = array(
-	'watchers' => 'Observateurs',
-	'watchers-desc' => 'Afficher [[Special:Watchers|les utilisateurs qui ont une page dans leur liste de suivi]]',
+	'watchers' => 'Suiveurs',
+	'watchers-desc' => 'Affiche [[Special:Watchers|quels utilisateurs ont une page dans leur liste de suivi]]',
 	'watchers_link_title' => 'Qui suit cette page ?',
 	'watchers_error_article' => '<b>Erreur :</b> La page n’existe pas.',
 	'watchers_header' => '{{PLURAL:$2|Utilisateur qui suit|Utilisateurs qui suivent}} « $1 »',
 	'watchers_noone_watches' => 'Personne ne suit cette page.',
-	'watchers_x_or_more' => '$1 utilisateurs voire même {{PLURAL:$1|un autre|plusieurs autres}} ont cette page dans leur liste de suivi.',
+	'watchers_x_or_more' => '$1 utilisateur{{PLURAL:$1||s}} ou plus ont cette page dans leur liste de suivi.',
 	'watchers_less_than_x' => 'Moins {{PLURAL:$1|d’un utilisateur suit|de $1 utilisateurs suivent}} cette page.',
 );
 

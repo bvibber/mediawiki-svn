@@ -55,6 +55,15 @@ $messages['bg'] = array(
 	'eval_code' => 'Код',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'eval-desc' => 'Dodaje [[Special:Eval|interfejs]] za funkciju <code>eval()</code>',
+	'eval_out' => 'Izlaz',
+	'eval_code' => 'Kod',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

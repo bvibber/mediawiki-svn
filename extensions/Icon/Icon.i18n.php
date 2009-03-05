@@ -469,6 +469,7 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'icon-badimage' => 'Defekte Bielde',
 	'icon-badwidth' => 'Falske Bratte',
+	'icon-desc' => 'Moaket ju Ferweendenge muugelk fon Bielden as Icons un Icon-Links',
 );
 
 /** Sundanese (Basa Sunda)

@@ -139,10 +139,13 @@ $messages['bs'] = array(
 	'errorhandler-error-warning' => 'Upozorenje',
 	'errorhandler-error-parse' => 'Greška parsera',
 	'errorhandler-error-notice' => 'Obavještenje',
+	'errorhandler-error-core-error' => 'Greška jezgre',
+	'errorhandler-error-core-warning' => 'Upozorenje jezgre',
 	'errorhandler-error-user-error' => 'Korisnička greška',
 	'errorhandler-error-user-warning' => 'Korisničko upozorenje',
 	'errorhandler-error-user-notice' => 'Korisničko upozorenje',
 	'errorhandler-msg-text' => '$1 : $2 u datoteci $3 (linija $4)',
+	'errorhandler-trace-line' => '$1 (linija $2): $3',
 );
 
 /** German (Deutsch)

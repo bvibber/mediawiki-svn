@@ -2784,6 +2784,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
  * @author IAlex
  * @author Korrigan
  * @author Meithal
+ * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
@@ -2801,10 +2802,10 @@ $wdMessages['fr'] = array(
 	'langman_wikimedia' => 'Code Wikimedia :',
 	'langman_field_optional' => '(optionnel)',
 	'langman_addlang' => 'Ajouter la langue',
-	'importlangnames' => 'Wikidata : importer les noms des langues',
-	'importlangnames_title' => 'Importer les noms de langues',
-	'importlangnames_not_allowed' => "Vous n'avez pas la permission d'importer le nom des langues.",
-	'importlangnames_added' => 'Nom de langues pour « $1 » ajoutés.',
+	'importlangnames' => 'Wikidata : importer des noms de langue',
+	'importlangnames_title' => 'Importer des noms de langue',
+	'importlangnames_not_allowed' => "Vous n'avez pas la permission d'importer des noms de langue.",
+	'importlangnames_added' => 'Noms de langue pour « $1 » ajoutés.',
 	'importlangnames_not_found' => "<strong>Aucune entrée de langue n'a été trouvée pour « $1 » !</strong>",
 	'datasearch' => 'Wikidata : recherche de données',
 	'datasearch_language' => 'Langue :',
@@ -2814,7 +2815,7 @@ $wdMessages['fr'] = array(
 	'datasearch_search_text' => 'Texte à rechercher :',
 	'datasearch_within_words' => 'Dans les mots :',
 	'datasearch_within_ext_ids' => 'Dans les identificateurs externes :',
-	'datasearch_showing_only' => 'Affichage d’au maximum $1 correspondance{{PLURAL:$1||s}}.',
+	'datasearch_showing_only' => "Affichage d'au plus {{PLURAL:$1|une correspondance|$1 correspondances}}.",
 	'datasearch_match_ext_ids' => 'Identificateurs externes correspondant à <i>$1</i>',
 	'datasearch_match_words' => 'Mots correspondant à <i>$1</i> et leur signification associée',
 	'datasearch_match_words_lang' => 'Mots en <i>$1</i> correspondant à <i>$2</i> et leur signification associée',
@@ -2853,8 +2854,8 @@ Sélectionnez une collection à exporter. Dans la boite de texte de langues, ent
 	'ow_history' => 'Historique',
 	'ow_datasets' => 'Sélection des ensembles de données',
 	'ow_noedit_title' => 'Pas de permission pour modifier',
-	'ow_noedit' => "Vous n'êtes pas autorisé{{GENDER:||e|(e)}} à éditer les pages dans les données préétablies « $1 ».
-Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
+	'ow_noedit' => "Vous n'êtes pas autorisé{{GENDER:||e|(e)}} à modifier les pages dans les données préétablies « $1 ».
+Veuillez consulter [[{{MediaWiki:Ow editing policy url}}|nos règles sur la modification]].",
 	'ow_uipref_datasets' => 'Vue par défaut :',
 	'ow_uiprefs' => 'Données wiki',
 	'ow_none_selected' => 'Aucune sélection',
@@ -2953,7 +2954,7 @@ Veuillez vérifier l’adresse internet de la page.',
 	'ow_Text' => 'Texte',
 	'ow_TextAttribute' => 'Propriété',
 	'ow_TextAttributeHeader' => 'Attribut du texte',
-	'ow_TextAttributeValues' => 'Textes',
+	'ow_TextAttributeValues' => 'Textes bruts',
 	'ow_Time' => 'Date',
 	'ow_TranslatedTextAttribute' => 'Propriété',
 	'ow_TranslatedText' => 'Texte traduit',
@@ -2961,7 +2962,7 @@ Veuillez vérifier l’adresse internet de la page.',
 	'ow_TranslatedTextAttributeValues' => 'Textes traduisibles',
 	'ow_Label' => 'Label',
 	'ow_Link' => 'Lien',
-	'ow_LinkAttribute' => 'Attribut',
+	'ow_LinkAttribute' => 'Propriété',
 	'ow_LinkAttributeValues' => 'Liens',
 	'ow_User' => 'Utilisateur',
 	'ow_Property' => 'Propriété',
@@ -2971,21 +2972,21 @@ Veuillez vérifier l’adresse internet de la page.',
 	'ow_meaningsoftitle' => 'Sens de « $1 »',
 	'ow_meaningsofsubtitle' => '<em>lien wiki :</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Permission refusée</h2>',
-	'ow_copy_no_action_specified' => 'Merci de spécifier une action',
+	'ow_copy_no_action_specified' => 'Veuillez spécifier une action',
 	'ow_copy_help' => 'L’aide n’a pas encore été implémentée.',
-	'ow_please_proved_dmid' => 'Il manque un ?dmid=<...> (dmid=Identificateur de Sens Défini)<br />
-Veuillez contactez un administrateur du serveur.',
+	'ow_please_proved_dmid' => 'Il manque un ?dmid=<ID> dans votre entrée (dmid=identificateur de sens défini)<br />
+Veuillez contacter un administrateur du serveur.',
 	'ow_please_proved_dc1' => 'Il semble qu’il manque un « ?dc1=<quelquechose> » dans votre entrée (dc1=premier contexte d’ensemble de données, celui DEPUIS lequel on copie)<br />
 Veuillez contacter un administrateur du serveur.',
 	'ow_please_proved_dc2' => 'Il semble qu’il manque un « ?dc2=<quelquechose> » dans votre entrée (dc2=deuxième contexte d’ensemble de données, celui VERS lequel on copie)<br />
 Veuillez contacter un administrateur du serveur.',
-	'ow_copy_successful' => '<h2>Succès de la copie</h2>
+	'ow_copy_successful' => '<h2>Copie réussie</h2>
 Vos données semblent avoir été copiées avec succès.
-N’oubliez pas de les vérifier à nouveau pour vous en assurer !',
+N’oubliez pas de les vérifier de nouveau pour vous en assurer !',
 	'ow_copy_unsuccessful' => '<h3>Copie infructueuse</h3>
 Aucune opération de copie n’a été mise en place.',
-	'ow_no_action_specified' => '<h3>Aucune action n’a été spécifiée</h3>
-Peut-être êtes-vous venu{{GENDER:||e|(e)}} sur cette page directement ? Vous n’avez normalement pas besoin de venir ici.',
+	'ow_no_action_specified' => "<h3>Aucune action n’a été spécifiée</h3>
+Peut-être êtes-vous arrivé{{GENDER:||e|(e)}} sur cette page directement ? Vous n’avez normalement pas besoin d'être ici.",
 	'ow_db_consistency_not_found' => '<h2>Erreur</h2>
 La base de données semble inconsistante, Wikidata ne peut trouver des données valides liées à cet identificateur de sens défini.
 Il pourrait être perdu.
@@ -2994,7 +2995,7 @@ Veuillez contacter l’opérateur ou l’administrateur du serveur.',
 	'ow_history_show_life_span' => 'Afficher la durée de vie de l’enregistrement :',
 	'ow_class_attr_type_dm' => 'Sens défini',
 	'ow_class_attr_type_xlate' => 'Texte traduisible',
-	'ow_class_attr_type_plain' => 'Texte plein',
+	'ow_class_attr_type_plain' => 'Texte brut',
 	'ow_class_attr_type_link' => 'Lien',
 	'ow_class_attr_type_option' => 'Liste d’options',
 	'needstranslation' => 'Wikidata : expressions nécessitant une traduction',
@@ -4111,7 +4112,7 @@ Per favor vide [[{{MediaWiki:Ow editing policy url}}|nostre politica de modifica
 	'ow_transaction_first_dm' => 'Prime significato definite',
 	'ow_transaction_second_dm' => 'Secunde significato definite',
 	'ow_transaction_summary' => 'Summario',
-	'conceptmapping' => 'Wikidatos: Schema conceptual',
+	'conceptmapping' => 'Wikidatos: Mappamento de conceptos',
 	'ow_conceptmapping_title' => 'Schema conceptual',
 	'ow_conceptmapping_help' => '<p>actiones possibile: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  inserer un correspondentia</li>
@@ -6502,7 +6503,7 @@ gdzie iso należy zastąpić kodem języka.</p>',
 	'ow_importtsv_nothing_added' => 'Nic nie zostało dodane.',
 	'ow_importtsv_nothing_added_test' => 'Nic nie zostało dodane (wykonałeś próbne uruchomienie).',
 	'ow_importtsv_results' => 'Dodano $1 {{PLURAL:$1|definicję|definicje|definicji}} oraz $2 {{PLURAL:$2|tłumaczenie|tłumaczenia|tłumaczeń}}.',
-	'ow_impexptsv_unknown_lang' => '<p>Nieznany lub nieprawidłowy kod języka $1.<br >
+	'ow_impexptsv_unknown_lang' => '<p>Nieznany lub nieprawidłowy kod języka $1.<br />
 Dostępne są kody języków według ISO 639-3.</p>',
 	'exporttsv' => 'Wikidata: Eksport TSV',
 	'ow_exporttsv_title' => 'Eksport kolekcji do TSV',

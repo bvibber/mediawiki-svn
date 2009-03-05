@@ -1305,6 +1305,44 @@ Počkajte prosím, kým sa dokončí prebiehajúca operácia.',
 	'tag-logpagetext' => 'Toto je záznam všetkých pridaní a odstránení značiek obrázkov.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'taggedimages' => 'Bielden mäd Tags',
+	'imagetagging-desc' => 'Moaket dät Benutsere muugelk, Beräkke fon ienbäädede Bielden uuttouwäälen un do mäd ne Siede tou ferknätten',
+	'imagetagging-addimagetag' => 'Markierengen ap disse Bielde touföigje',
+	'imagetagging-article' => 'Siede:',
+	'imagetagging-articletotag' => 'Siede, ju der tagged wäd',
+	'imagetagging-canteditothermessage' => 'Du koast disse Siede nit beoarbaidje, deeruum dät du neen Begjuchtigenge deertou hääst of deeruum dät ju Siede uut n uur Gruund speerd is.',
+	'imagetagging-imghistory' => 'Versione:',
+	'imagetagging-images' => 'Bielde',
+	'imagetagging-inthisimage' => 'In disse Bielde: $1',
+	'imagetagging-logentry' => 'Tag ap Siede [[$1]] wuud fon $2 wächhoald',
+	'imagetagging-log-tagged' => 'Bielde [[$1|$2]] wuud fon $4 markierd un mäd [[$3]] ferlinked',
+	'imagetagging-new' => '<sup><span style="color:red">Näi !</span></sup>',
+	'imagetagging-removetag' => 'Tag wächhoalje',
+	'imagetagging-done-button' => 'Tagging däin',
+	'imagetagging-tag-button' => 'Tagje',
+	'imagetagging-tagcancel-button' => 'Oubreeke',
+	'imagetagging-tagging-instructions' => 'Klik ap Persone of Dingere in ju Bielde uum do mäd n Tag tou fersjoon.',
+	'imagetagging-addingtag' => 'Tag bietouföigje ...',
+	'imagetagging-removingtag' => 'Tag wächhoalje ...',
+	'imagetagging-addtagsuccess' => 'Bietouföigede Tags',
+	'imagetagging-removetagsuccess' => 'Wächhoalde Tags.',
+	'imagetagging-canteditneedloginmessage' => 'Du koast disse Siede nit beoarbaidje.
+Muugelkerwiese moast du die anmäldje, uum Bielden tou tagjen.
+Moatest du die nu anmäldje?',
+	'imagetagging-oneactionatatimemessage' => 'Der is man een gliektiedige Tagging-Aktion ferlööwed.
+Täif jädden, bit ju momentoane Aktion ousleeten is.',
+	'imagetagging-oneuniquetagmessage' => 'Disse Bielde häd al n Tag mäd dissen Noome.',
+	'imagetagging-imagetag-seemoreimages' => 'Sjuch moor Bielden fon "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Bielden fon "$1"',
+	'imagetagging-taggedimages-displaying' => 'Anwiesd wäide $1 - $2 fon $3 Bielden uut "$4"',
+	'tag-logpagename' => 'Tagging-Logbouk',
+	'tag-logpagetext' => 'Dit is n Logbouk fon aal do bietouföigede un wächhoalde Bieldetags.',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

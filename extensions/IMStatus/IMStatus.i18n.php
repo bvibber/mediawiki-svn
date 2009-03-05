@@ -940,6 +940,25 @@ Identifikátor, ktorý musíte zadať, sú písmená a číslice medzi „$2” 
 	'imstatus_yahoo_style' => 'štýl tlačidla od $1 (najväčší) do $2 (najmenší). $3 a $4 slúžia pre hlasovú poštu.',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'imstatus-desc' => 'Föiget Tags bietou, uum dän Online-Stoatus fon ferscheedene Instant-Messengere antouwiesen (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Syntax',
+	'imstatus_default' => 'Standoard',
+	'imstatus_example' => 'Biespil',
+	'imstatus_possible_val' => 'Muugelke Wäide',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'of',
+	'imstatus_style' => 'Stil fon ju Stoatus-Anwiesenge',
+	'imstatus_action' => 'Aktion bie dät Klikken fon ju Schaltfläche',
+	'imstatus_details_saa' => 'Wiedere Details tou do Stile un Aktione fint me ap: $1.',
+	'imstatus_your_name' => 'dien $1-Noome',
+	'imstatus_aim_presence' => '$1 wiest din Stoatus mäd n Link, die AIM startet (sofier et installierd is), uum die ne Ättergjucht tou seenden.',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

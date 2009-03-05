@@ -285,8 +285,19 @@ $messages['haw'] = array(
 
 /** Hebrew (עברית)
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
+	'profiling' => 'נתוני הרכבת פרופיל',
+	'profiling-desc' => '[[Special:Profiling|דף מיוחד]] לחיפוש ולבחינת נתוני הרכבת פרופיל',
+	'profiling-process' => 'מחרוזת לעיבוד:',
+	'profiling-wildcard' => 'שימוש בתווי־כל',
+	'profiling-ok' => 'אישור',
+	'profiling-data' => 'נתוני הרכבת פרופיל עבור `$1`',
+	'profiling-data-process' => 'עיבוד',
+	'profiling-data-count' => 'ספירה',
+	'profiling-data-time' => 'זמן (הכול)',
+	'profiling-data-average' => 'זמן (ממוצע)',
 	'profiling-no-data' => 'לא נמצאו נתונים מתאימים.',
 );
 

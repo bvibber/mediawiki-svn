@@ -419,6 +419,14 @@ $messages['ro'] = array(
 	'contributionseditcount' => 'Acest utilizator are $1 modificări.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'contributionseditcount' => "St'utende ha fatte $1 cangiaminde.",
+	'contributionseditcount-desc' => "Face vedè 'nu cunde de le cangiaminnde sus a [[Special:Contributions|pàgene de le condrebbute de l'utende]]",
+);
+
 /** Russian (Русский)
  * @author Kaganer
  * @author Александр Сигачёв

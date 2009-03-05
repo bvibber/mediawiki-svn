@@ -406,7 +406,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'countedits' => 'Byytragszeller',
-	'countedits-desc' => '[[{{ns:special}}:CountEdits|Spezialsyte]], wu Benutzerbytreg zellt un e Top-Ten-Lischt aalegt',
+	'countedits-desc' => '[[Special:CountEdits|Spezialsyte]], wu Benutzerbytreg zellt un e Top-Ten-Lischt aalegt',
 	'countedits-warning' => "'''Warnig''': E Buech beurteilsch au nit no synem Umschlag. Vu dohär beurteil e Autor au nit no synem Bytragszeller.",
 	'countedits-username' => 'Benutzername',
 	'countedits-ok' => 'OK',

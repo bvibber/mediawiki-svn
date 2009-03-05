@@ -131,10 +131,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'whosonline'      => 'Qui est en ligne',
-	'whosonline-desc' => 'Affiche [[Special:WhosOnline|une liste]] des personnes inscrites et des utilisateurs anonymes actuellement en ligne',
+	'whosonline' => 'Qui est en ligne',
+	'whosonline-desc' => 'Affiche [[Special:WhosOnline|une liste]] des utilisateurs connectés ou anonymes actuellement en ligne',
 );
 
 /** Galician (Galego)
@@ -306,8 +307,8 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'whosonline'      => 'Quem está ligado',
-	'whosonline-desc' => 'Apresenta [[{{ns:special}}:WhosOnline|uma lista]] de utilizadores autenticados e anónimos que se encontram ligados neste momento',
+	'whosonline' => 'Quem está ligado',
+	'whosonline-desc' => 'Apresenta [[Special:WhosOnline|uma lista]] de utilizadores autenticados e anónimos que se encontram ligados neste momento',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -315,7 +316,7 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'whosonline' => 'Quem está ligado',
-	'whosonline-desc' => 'Apresenta [[{{ns:special}}:WhosOnline|uma lista]] de utilizadores autenticados e anônimos que se encontram ligados neste momento',
+	'whosonline-desc' => 'Apresenta [[Special:WhosOnline|uma lista]] de utilizadores autenticados e anônimos que se encontram ligados neste momento',
 );
 
 /** Sinhalese (සිංහල)

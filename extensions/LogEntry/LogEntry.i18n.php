@@ -163,6 +163,7 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'logentry-append' => 'הוספה',
+	'logentry-invalidpage' => 'דף בלתי תקני',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

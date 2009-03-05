@@ -211,18 +211,19 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author Louperivois
+ * @author PieRRoMaN
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'watchsubpages' => 'Observer les sous-pages',
+	'watchsubpages' => 'Suivre les sous-pages',
 	'watchsubpages-addedtowatchlist' => 'Ce qui suit a été ajouté à votre liste de suivi.',
 	'watchsubpages-addtitles' => 'Ajouter des pages',
 	'watchsubpages-addtitlestowatchlist' => 'Ajouter des pages à la liste de suivi',
-	'watchsubpages-desc' => 'Ajoute rapidement [[Special:WatchSubpages|toutes les sous-pages]] à la liste de suivi',
-	'watchsubpages-form' => 'Sélectionner les pages à ajouter à votre liste de suivi ci-dessous.
-Pour ajouter une page, cocher la case après elle, et cliquez « Ajouter des pages ».
+	'watchsubpages-desc' => "Ajoute rapidement [[Special:WatchSubpages|toutes les sous-pages]] d'une page à la liste de suivi",
+	'watchsubpages-form' => 'Sélectionnez les pages à ajouter à votre liste de suivi ci-dessous.
+Pour ajouter une page, cocher la case correspondante, et cliquez sur « Ajouter des pages ».
 
-Pour cocher ou décocher plusieurs pages, vous pouvez maintenir enfoncée la touche « Majuscule » en cliquant chaque extrémité de l’étendue de cases consécutives à sélectionner.',
+Pour cocher ou décocher plusieurs pages, vous pouvez maintenir enfoncée la touche « Majuscule » en cliquant sur la case à chaque extrémité du groupe de cases à cocher.',
 );
 
 /** Galician (Galego)

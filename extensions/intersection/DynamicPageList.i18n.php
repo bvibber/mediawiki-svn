@@ -660,6 +660,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'intersection-desc' => "Fa assè 'na liste cu le palle de le urteme urteme artichele ca stonne jndr'à 'na categorije, o 'n'interseziona de cchiù categorije",
 	'intersection_toomanycats' => 'Errore: Troppe categorije!',
 	'intersection_toofewcats' => 'Errore: Troppe picche categorije!',
 	'intersection_noresults' => 'Errore: Nisciune resultete!',

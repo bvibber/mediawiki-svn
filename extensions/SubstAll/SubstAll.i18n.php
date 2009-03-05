@@ -261,6 +261,13 @@ $messages['roa-tara'] = array(
 	'substall-desc' => "Ccreje 'nu tag <nowiki><substall></nowiki> ca spanne tutte le template ausanne '''wikisyntax'''",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'substall-desc' => 'Создаёт тег <nowiki><substall></nowiki>, который разворачивает все шаблоны в вики-разметку',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

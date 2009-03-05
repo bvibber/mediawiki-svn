@@ -3550,8 +3550,21 @@ $wgGoogleMapsMessages['ro'] = array(
  * @author Joetaras
  */
 $wgGoogleMapsMessages['roa-tara'] = array(
+	'gm-balloon-title' => 'Titele:',
+	'gm-save-point' => 'reggistre &amp; achiude',
+	'gm-load-map' => "Careche 'a mappe",
+	'gm-no-results' => 'Niscune resultete',
+	'gm-large' => 'Granne',
+	'gm-medium' => 'Medie',
+	'gm-small' => 'Piccinne',
+	'gm-no-zoom-control' => 'Ninde',
 	'gm-yes' => 'Sine',
 	'gm-no' => 'None',
+	'gm-search' => 'Cirche',
+	'gm-save-path' => 'Reggistre',
+	'gm-earth' => 'Terra',
+	'gm-moon' => 'Lune',
+	'gm-mars' => 'Marte',
 );
 
 /** Russian (Русский)

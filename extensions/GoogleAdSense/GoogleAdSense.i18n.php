@@ -319,6 +319,13 @@ $messages['sq'] = array(
 	'googleadsense-desc' => 'Vendosë [http://www.google.com/adsense Google AdSense] në kolonat anësore',
 );
 
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'googleadsense-desc' => 'Föiget [http://www.google.com/adsense Google AdSense] an ju Sidebar bietou',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

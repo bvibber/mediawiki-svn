@@ -110,9 +110,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author McDutchie
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'woopra-desc' => 'Autorise pour le [http://www.woopra.com/ logicial pour suivi en direct Woopra] de travailler pour votre installation MediaWiki',
+	'woopra-desc' => "Permet au [http://www.woopra.com/ logiciel de suivi en direct Woopra] de s'occuper de votre installation MediaWiki",
 );
 
 /** Galician (Galego)

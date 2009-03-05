@@ -1322,7 +1322,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'importusers' => 'Benutsere importierje',
-	'importusers-desc' => 'Importiert Benutsere uut ne CSV-Doatäi; Codierenge: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Importiert Benutsere]] uut ne CSV-Doatäi; Codierenge: UTF-8',
 	'importusers-uploadfile' => 'Doatäi hoochleede',
 	'importusers-form-caption' => 'CSV-Doatäi (UTF-8)',
 	'importusers-form-file' => 'Benutserdoatäiformoat (csv):',
@@ -1341,6 +1341,7 @@ $messages['stq'] = array(
 	'importusers-password' => 'Paaswoud',
 	'importusers-email' => 'E-Mail',
 	'importusers-realname' => 'Ächten Noome',
+	'right-import_users' => 'Benutserdoaten in grooten Uumfang importierje',
 );
 
 /** Sundanese (Basa Sunda)

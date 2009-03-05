@@ -191,6 +191,21 @@ $messages['gsw'] = array(
 	'communityvoice-ratings-error-no-title' => 'Titel-Eigeschaft fählt im Rangfolg-Tag.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'communityvoice' => 'קול הקהילה',
+	'communityvoice-desc' => 'כלי השתתפות קהילתיים',
+	'communityvoice-ratings' => 'דירוגים',
+	'communityvoice-ratings-scale-status-sending' => 'שליחה...',
+	'communityvoice-ratings-scale-status-error' => 'שגיאה בשליחה!',
+	'communityvoice-ratings-scale-status-thanks' => 'תודה על ההצבעה!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|הצבעה אחת נחשבת|$2 הצבעות נחשבות}})',
+	'communityvoice-ratings-error-no-category' => 'תכונת הקטגוריה חסרה בתגית הדירוג.',
+	'communityvoice-ratings-error-no-title' => 'תכונת הכותרת חסרה בתגית הדירוג.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

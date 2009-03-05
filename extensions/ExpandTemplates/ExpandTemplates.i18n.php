@@ -352,10 +352,23 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
-	'expand_templates_ok' => 'OK',
+	'expandtemplates' => 'Udfold skabeloner',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Udfolder skabeloner, oversætterfunktioner og variabler]] for at vise den resulterende wikitekst og en forhåndsvisning af en side med den',
+	'expand_templates_intro' => 'Denne specialside tager noget tekst og folder alle skabeloner ud rekursivt.
+Den udfolder også specielle oversætterfunktioner såsom <nowiki>{{#if:...}}</nowiki> samt variabler såsom <nowiki>{{CURRENTDAY}}</nowiki> –
+faktisk folder den næsten hvad som helst i dobbelte krøllede parenteser ud.
+Den gør det ved at kalde det relevante analysetrin i MediaWiki-softwaren.',
+	'expand_templates_title' => 'Titlen på siden som {{PAGENAME}} og tilsvarende skal tolkes ud fra:',
+	'expand_templates_input' => 'Inputtekst:',
+	'expand_templates_output' => 'Resultat',
+	'expand_templates_xml_output' => 'XML-kode',
+	'expand_templates_ok' => 'Udfold',
+	'expand_templates_remove_comments' => 'Fjern kommentarer',
+	'expand_templates_generate_xml' => 'Vis analysetræ som XML',
 	'expand_templates_preview' => 'Forhåndsvisning',
 );
 

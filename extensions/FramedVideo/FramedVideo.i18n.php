@@ -215,7 +215,7 @@ $messages['gl'] = array(
 	'framedvideo_error_limit' => 'O valor máis grande permitido é $1.',
 	'framedvideo_error_full_size_not_allowed' => 'O valor "full" para o parámetro "size" non está permitido para o id do servizo de vídeo "$1".',
 	'framedvideo_helppage' => 'Help:Vídeo',
-	'framedvideo_error_see_help' => '[[((MediaWiki:Framedvideo_helppage))|Máis información sobre a sintaxe]].',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Máis información sobre a sintaxe]].',
 	'framedvideo_error_height_and_width_required' => 'O tipo de vídeo "$1" precisa dos parámetros "height" e "width2" ou "width".',
 	'framedvideo-desc' => 'Permite embelecer os vídeos de varios sitios web usando a etiqueta <tt><nowiki><video></nowiki></tt>',
 );
@@ -413,6 +413,7 @@ $messages['oc'] = array(
 	'framedvideo-desc' => "Permet d'integrar de vidèos de diferents sits web en utilizant la balisa <tt><nowiki><video></nowiki></tt>",
 );
 
+/** Polish (Polski) */
 $messages['pl'] = array(
 	'framedvideo_errors' => 'Wystąpiły błędy!',
 	'framedvideo_error' => 'Wystąpił błąd!',
@@ -425,7 +426,7 @@ $messages['pl'] = array(
 	'framedvideo_error_no_integer' => 'Podana wartość dla parametru „$1” nie jest dodatnią wartością liczbową.',
 	'framedvideo_error_limit' => 'Największa dopuszczalna wartość to $1.',
 	'framedvideo_error_full_size_not_allowed' => 'Wartość „full” dla parametru „size” niedopuszczalna dla identyfikatora „$1”.',
-	'framedvideo_error_see_help' => 'Aby dowiedzieć się więcej o formatowaniu, zobacz [[pomoc:Wideo|stronę pomocy]].',
+	'framedvideo_error_see_help' => 'Aby dowiedzieć się więcej o formatowaniu, zobacz [[{{MediaWiki:Framedvideo_helppage}}|stronę pomocy]].',
 	'framedvideo_error_height_and_width_required' => 'Wideo z serwisu o identyfikatorze „$1” wymaga podania parametru „height” i „width2” lub „width”.',
 	'framedvideo-desc' => 'Pozwala na osadzanie wideo z innych serwisów',
 );

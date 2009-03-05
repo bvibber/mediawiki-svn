@@ -669,7 +669,7 @@ $messages['sk'] = array(
 	'smoothgallery-no-images' => 'V tejto galérii neboli nájdené žiadne obrázky.
 Uistite sa, že {{PLURAL:$3|požadovaný obrázok existuje|všetky požadované obrázky existujú}}.
 {{PLURAL:$2|Nasledovný obrázok nebol nájdený|Nasledovné obrázky neboli nájdené}}: $1',
-	'smoothgallery-invalid-images' => '{{PLURAL:$2|Nasledovný požadovaný obrázok bol|Nasledovné požadované obrázky boli} neplatného typu: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Nasledovný požadovaný obrázok bol|Nasledovné požadované obrázky boli}} neplatného typu: $1',
 	'smoothgallery-unexpected-error' => 'Nastala neočakávaná chyba. Prosím, podajte správu o chybe.',
 	'smoothgallery-javascript-disabled' => 'Správne zobrazenie tejto galérie vyžaduje JavaScript.',
 );

@@ -330,9 +330,7 @@ $messages['ksh'] = array(
 	'newusernotifbody' => 'Jooden Daach $1,
 
 Ene neue Metmaacher mem Name "$2"
-es aam $5 öm $6 Uhr en de $3 neu aanjemeldt woode.
-
-Ene Jrooss vun de {{SITENAME}}',
+es aam $5 öm $6 Uhr en de $3 neu aanjemeldt woode.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

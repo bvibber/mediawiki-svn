@@ -168,7 +168,10 @@ $messages['bg'] = array(
 $messages['de'] = array(
 	'recordadmin' => 'Aufzeichnungsadministrierung',
 	'recordadmin-desc' => 'Eine [[Special:RecordAdmin|spezielle Seite]] zum Finden und Editieren der Aufzeichnungsseiten mittels eines Formulars',
-	'recordadmin-select' => 'Wähle den Aufzeichnungstypen, nach dem gesucht werden soll',
+	'recordadmin-categoryempty' => 'Derzeit gibt es keine Aufzeichnungstypen. Bitte kategorisiere Aufzeichnungsvorlagen unter [[:$1|$1]].',
+	'recordadmin-select' => 'Wähle den zu verwaltenden Aufzeichnungstyp',
+	'recordadmin-createtype' => 'Gebe den Namen des zu erstellenden Aufzeichnungstyp an',
+	'recordadmin-recordtype' => 'Aufzeichnungstyp',
 	'recordadmin-newsearch' => 'Neue $1-Suche',
 	'recordadmin-newrecord' => 'Wähle einen anderen Aufzeichnungstypen',
 	'recordadmin-submit' => 'Übermitteln',
@@ -202,9 +205,10 @@ $messages['de'] = array(
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'recordadmin-select' => 'Ihre Prüfung dieser Seite/Version:',
+	'recordadmin-select' => 'Wählen Sie den zu verwaltenden Aufzeichnungstyp',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -213,7 +217,10 @@ $messages['de-formal'] = array(
 $messages['dsb'] = array(
 	'recordadmin' => 'Administracija zapisow',
 	'recordadmin-desc' => '[[Special:RecordAdmin|Specialny bok]] za pytanje a wobźěłowanje zapisowych bokow z pomocu formulara',
-	'recordadmin-select' => 'Wubjeŕ typ zapisa, kótaryž ma se pytaś',
+	'recordadmin-categoryempty' => 'Tuchylu njejsu žedne typy registracije. Kategorizěruj pšosym pśedłogi registracije do [[:$1|$1]].',
+	'recordadmin-select' => 'Wubjeŕ typ registracije, kótaryž ma se zastojaś',
+	'recordadmin-createtype' => 'Zapódaj mě nowego typa registracije, kótaryž ma se napóraś',
+	'recordadmin-recordtype' => 'typ registracije',
 	'recordadmin-newsearch' => 'Nowe pytanje $1',
 	'recordadmin-newrecord' => 'Wubjeŕ drugi zapisowy typ',
 	'recordadmin-submit' => 'Wótpósłaś',
@@ -318,11 +325,15 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'recordadmin' => 'Gestion des enregistrements',
 	'recordadmin-desc' => 'Une page spéciale pour trouver et modifier l’enregistrement des pages par l’utilisation d’un formulaire',
+	'recordadmin-categoryempty' => "Il n'y a actuellement aucun type d'enregistrement. Veuillez catégoriser les modèles d'enregistrement dans [[:$1|$1]].",
 	'recordadmin-select' => 'Sélectionner le type d’enregistrement à gérer',
+	'recordadmin-createtype' => "Entrez le nom d'un type d'enregistrement pour le créer",
+	'recordadmin-recordtype' => "type d'enregistrement",
 	'recordadmin-newsearch' => 'Nouvelle recherche $1',
 	'recordadmin-newrecord' => 'Sélectionner un autre type d’enregistrement',
 	'recordadmin-submit' => 'Soumettre',
@@ -360,7 +371,10 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'recordadmin' => 'Xestión dos rexistros',
 	'recordadmin-desc' => 'Unha [[Special:RecordAdmin|páxina especial]] para atopar e editar páxinas de rexistros usando un formulario',
-	'recordadmin-select' => 'Seleccione o tipo de rexistro para procurar por',
+	'recordadmin-categoryempty' => 'Nestes intres non hai tipos de rexistro. Por favor, categorice os modelos de rexistro en "[[:$1|$1]]".',
+	'recordadmin-select' => 'Seleccione o tipo de rexistro a xestionar',
+	'recordadmin-createtype' => 'Introduza o nome dun novo tipo de rexistro para crealo',
+	'recordadmin-recordtype' => 'tipo de rexistro',
 	'recordadmin-newsearch' => 'Nova procura $1',
 	'recordadmin-newrecord' => 'Seleccione outro tipo de rexistro',
 	'recordadmin-submit' => 'Enviar',
@@ -398,7 +412,10 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'recordadmin' => 'Ufzeichnigsverwaltig',
 	'recordadmin-desc' => 'E [[Special:RecordAdmin|speziälli Syte]] zum Finde un Bearbeite vu dr Ufzeichnigssyte mit eme Formular',
-	'recordadmin-select' => 'Wehl dr Ufzeichnigstyp, wu soll gsuecht wäre',
+	'recordadmin-categoryempty' => 'Aktuällt het s kei Ufzeichnigstype. bitte katogorisier vorlage in [[:$1|$1]].',
+	'recordadmin-select' => 'Wehl dr Ufzeichnigstyp, wu soll verwaltet wäre',
+	'recordadmin-createtype' => 'Trag dr Name yy vun eme neje Ufzeichnigstyp, wu soll aagleit wäre',
+	'recordadmin-recordtype' => 'Ufzeichnigstyp',
 	'recordadmin-newsearch' => 'Neji $1-Suechi',
 	'recordadmin-newrecord' => 'Wehl en andere Ufzeichnigstyp',
 	'recordadmin-submit' => 'Ibertrage',
@@ -437,7 +454,10 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'recordadmin' => 'ניהול רשומות',
 	'recordadmin-desc' => '[[Special:RecordAdmin|דף מיוחד]] למציאה ועריכה של דפי רשומות באמצעות טופס',
-	'recordadmin-select' => 'בחירת סוג הרשומות לחיפוש',
+	'recordadmin-categoryempty' => 'נכון לעכשיו אין סוגי רשומות. אנא סווגו תבניות רשומות לתוך [[:$1|$1]].',
+	'recordadmin-select' => 'בחירת סוג הרשומות לניהול',
+	'recordadmin-createtype' => 'הזינו את סוג הרשומה החדש ליצירה',
+	'recordadmin-recordtype' => 'סוג הרשומה',
 	'recordadmin-newsearch' => 'חיפוש $1 חדש',
 	'recordadmin-newrecord' => 'בחירת סוג אחר של רשומות',
 	'recordadmin-submit' => 'שליחה',
@@ -475,7 +495,10 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'recordadmin' => 'Administracija zregistrowanjow',
 	'recordadmin-desc' => '[[Special:RecordAdmin|Specialna strona]] za namakanje a wobdźěłowanje stronow zregistrowanjow z pomocu formulara',
-	'recordadmin-select' => 'Wubjer typ zregistrowanjow, kotrež so maja pytać',
+	'recordadmin-categoryempty' => 'Tuchwilu žane typy registrowanja njejsu. Kategorizuj prošu předłohi registrowanja do [:$1|$1]].',
+	'recordadmin-select' => 'Wubjer typ registracijow, kotrež so maja zrjadować',
+	'recordadmin-createtype' => 'Zapodaj mjeno typa registracije, kotryž ma so wutworić',
+	'recordadmin-recordtype' => 'typ registracije',
 	'recordadmin-newsearch' => 'Nowe pytanje $1',
 	'recordadmin-newrecord' => 'Druhi typ zregistrowanja wubrać',
 	'recordadmin-submit' => 'Wotpósłać',
@@ -552,9 +575,12 @@ $messages['ia'] = array(
 $messages['ja'] = array(
 	'recordadmin' => '記録管理',
 	'recordadmin-desc' => 'フォームを用いて記録ページを検索および編集するための[[Special:RecordAdmin|特別ページ]]',
-	'recordadmin-select' => '検索したい記録の種類を選んでください',
+	'recordadmin-categoryempty' => '現時点では記録種別がありません。記録テンプレートを [[:$1|$1]] に分類してください。',
+	'recordadmin-select' => '対処したい記録種別を選んでください',
+	'recordadmin-createtype' => '新規作成したい記録種別の名前を入力してください',
+	'recordadmin-recordtype' => '記録種別',
 	'recordadmin-newsearch' => '新規$1検索',
-	'recordadmin-newrecord' => '別の記録種類を選んでください',
+	'recordadmin-newrecord' => '別の記録種別を選んでください',
 	'recordadmin-submit' => '送信',
 	'recordadmin-create' => '「$1」記録を検索または作成する',
 	'recordadmin-alreadyexist' => '「$1」は既に存在します。',
@@ -621,7 +647,10 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'recordadmin' => 'Datesätz verwallde',
 	'recordadmin-desc' => 'En [[Special:RecordAdmin|Söndersigg]] för Sigge met Datesätz ze fenge un övver e Fommulaa zo ändere.',
-	'recordadmin-select' => 'Donn de Zoot Datesatz ußsöke, för donoh ze söke',
+	'recordadmin-categoryempty' => 'Mer han em Momang kein Datesatz-Zoote. Bes esu joot un donn de Dateaatz-Schablone en [[:$1|$1]] enzoteere.',
+	'recordadmin-select' => 'Donn de Zoot Datesatz ußsöke, för die de jet verwallde wells',
+	'recordadmin-createtype' => 'Donn dä Name för ene neue Zoot Datesätz enjäve',
+	'recordadmin-recordtype' => 'Datesatz-Zoote',
 	'recordadmin-newsearch' => 'Neu $1 söke',
 	'recordadmin-newrecord' => 'Sök en ander Zoot Datesatz uß',
 	'recordadmin-submit' => 'Loß Jonn!',
@@ -851,11 +880,15 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'recordadmin' => 'Administração de registos',
 	'recordadmin-desc' => 'Uma [[Special:RecordAdmin|página especial]] para encontrar e editar páginas de registos usando um formulário',
-	'recordadmin-select' => 'Selecione o tipo de registo a pesquisar',
+	'recordadmin-categoryempty' => 'No momento não há tipos de registo. Por favor, categorize predefinições de registo em [[:$1|$1]].',
+	'recordadmin-select' => 'Selecione o tipo de registo a gerir',
+	'recordadmin-createtype' => 'Introduza o nome do novo tipo de registo a criar',
+	'recordadmin-recordtype' => 'Tipo de registo',
 	'recordadmin-newsearch' => 'Nova pesquisa $1',
 	'recordadmin-newrecord' => 'Selecionar outro tipo de registo',
 	'recordadmin-submit' => 'Submeter',
@@ -955,7 +988,10 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'recordadmin' => 'Správa záznamov',
 	'recordadmin-desc' => '[[Special:RecordAdmin|Špeciálna stránka]] na hľadanie a úpravu stránok záznamov pomocou fomulára',
-	'recordadmin-select' => 'Vyberte typ záznamu, ktorý sa má hľadať',
+	'recordadmin-categoryempty' => 'Momentálne nie sú žiadne typy záznamov. Prosím, kategorizujte šablóny záznamov do [[:$1|$1]].',
+	'recordadmin-select' => 'Vyberte typ záznamu, ktorý chcete spravovať',
+	'recordadmin-createtype' => 'Zadajte názov nového typu záznamu, ktorý sa má vytvoriť',
+	'recordadmin-recordtype' => 'typ záznamu',
 	'recordadmin-newsearch' => 'Nové hľadanie $1',
 	'recordadmin-newrecord' => 'Vyberte iný typ záznamu',
 	'recordadmin-submit' => 'Odoslať',
@@ -1043,7 +1079,10 @@ $messages['te'] = array(
 $messages['tl'] = array(
 	'recordadmin' => 'Pangangasiwa ng tala (rekord)',
 	'recordadmin-desc' => 'Isang [[Special:RecordAdmin|natatanging pahina]] para sa paghahanap at pagbabago ng pahina ng mga tala/rekord na gumagamit ng isang pormularyo',
-	'recordadmin-select' => 'Paliin ang uri ng tala/rekord na hahanapin',
+	'recordadmin-categoryempty' => 'Kasalukuyang walang mga uri ng talaan. Pakibigyan ng kaurian ang mga suleras ng talaan upang maging [[:$1|$1]].',
+	'recordadmin-select' => 'Piliin ang uri ng tala/rekord na hahanapin',
+	'recordadmin-createtype' => 'Ipasok ang pangalan ng isang bagong uri ng talaang lilikhain',
+	'recordadmin-recordtype' => 'uri ng talaan',
 	'recordadmin-newsearch' => 'Bagong paghahanap ng $1',
 	'recordadmin-newrecord' => 'Pumili ng iba pang uri ng tala/rekord',
 	'recordadmin-submit' => 'Ipasa/ipadala',

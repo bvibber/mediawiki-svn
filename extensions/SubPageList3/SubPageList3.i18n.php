@@ -333,6 +333,15 @@ $messages['ro'] = array(
 	'spl3_nosubpages' => '$1 nu are subpagini pentru afişat.',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'spl3-desc' => 'Автоматически создаёт список подстраниц некоторой страницы, использующей тег <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Неизвестное значение параметра $1.',
+	'spl3_nosubpages' => '$1 не имеет подстраниц для включения в список.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

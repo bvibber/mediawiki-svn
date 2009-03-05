@@ -731,25 +731,27 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Dereckson
  * @author Grondin
+ * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'inplace_access_disabled' => "L'accès à ce service est désactivé pour tous les clients.",
 	'inplace_access_denied' => 'Ce service est restreint sur la base de l’IP du client.',
-	'inplace_scaler_no_temp' => "Aucun dossier temporaire valide, \$wgLocalTmpDirectory doit contenir le nom d'un dossier avec droits d'écriture.",
-	'inplace_scaler_not_enough_params' => 'Pas suffisamment de paramètres',
-	'inplace_scaler_invalid_image' => 'Image incorrecte, ne peut déterminer sa taille',
-	'inplace_scaler_failed' => "Une erreur est survenue pendant la décompression/compression (« scaling ») de l'image : $1",
-	'inplace_scaler_no_handler' => 'Aucune fonction (« handler ») pour transformer ce format MIME.',
-	'inplace_scaler_no_output' => 'Aucun fichier de transformation généré',
-	'inplace_scaler_zero_size' => 'La transformation a créé un fichier de taille zéro.',
-	'webstore-desc' => 'Intergiciel de stockage de fichiers pour Internet uniquement (non NFS)',
+	'inplace_scaler_no_temp' => 'Aucun répertoire temporaire valide.
+$wgLocalTmpDirectory doit contenir le nom d\'un répertoire accessible en écriture.',
+	'inplace_scaler_not_enough_params' => 'Pas suffisamment de paramètres.',
+	'inplace_scaler_invalid_image' => 'Image incorrecte, impossible de déterminer sa taille.',
+	'inplace_scaler_failed' => "Une erreur est survenue pendant le redimensionnement de l'image : $1",
+	'inplace_scaler_no_handler' => "Aucun ''handler'' pour transformer ce type MIME.",
+	'inplace_scaler_no_output' => "La transformation n'a suscité la génération d'aucun fichier de sortie.",
+	'inplace_scaler_zero_size' => 'La transformation a produit un fichier de sortie de taille nulle.',
+	'webstore-desc' => 'Intergiciel de stockage de fichiers pour le Web uniquement (non NFS)',
 	'webstore_access' => 'Ce service est restreint par adresse IP.',
 	'webstore_path_invalid' => "Le nom de fichier n'est pas correct.",
 	'webstore_dest_open' => "Impossible d'ouvrir le fichier de destination « $1 ».",
 	'webstore_dest_lock' => 'Échec d’obtention du verrou sur le fichier de destination « $1 ».',
-	'webstore_dest_mkdir' => 'Impossible de créer le répertoire « $1 ».',
+	'webstore_dest_mkdir' => 'Impossible de créer le répertoire de destination « $1 ».',
 	'webstore_archive_lock' => 'Échec d’obtention du verrou du fichier archivé « $1 ».',
 	'webstore_archive_mkdir' => "Impossible de créer le répertoire d'archivage « $1 ».",
 	'webstore_src_open' => 'Impossible d’ouvrir le fichier source « $1 ».',
@@ -764,18 +766,18 @@ $messages['fr'] = array(
 	'webstore_temp_close' => 'Erreur de fermeture du fichier temporaire « $1 ».',
 	'webstore_temp_lock' => 'Erreur de verrouillage du fichier temporaire « $1 ».',
 	'webstore_no_archive' => "Le fichier de destination existe et aucune archive n'a été donnée.",
-	'webstore_no_file' => 'Aucun fichier n’a été importé.',
-	'webstore_move_uploaded' => 'Erreur de déplacement du fichier importé « $1 » vers l’emplacement temporaire « $2 ».',
+	'webstore_no_file' => 'Aucun fichier n’a été téléversé.',
+	'webstore_move_uploaded' => 'Erreur de déplacement du fichier téléversé « $1 » vers l’emplacement temporaire « $2 ».',
 	'webstore_invalid_zone' => 'Zone « $1 » invalide.',
 	'webstore_no_deleted' => "Aucun répertoire d’archive pour les fichiers supprimés n'a été défini.",
 	'webstore_curl' => 'Erreur depuis cURL : $1',
 	'webstore_404' => 'Fichier non trouvé.',
-	'webstore_php_warning' => 'PHP Warning: $1',
+	'webstore_php_warning' => 'Avertissement PHP : $1',
 	'webstore_metadata_not_found' => 'Fichier non trouvé : $1',
 	'webstore_postfile_not_found' => 'Fichier à enregistrer non trouvé.',
-	'webstore_scaler_empty_response' => "L’échantillonnage de l'image a donné une réponse nulle avec un code de réponse 200.
-Ceci pourrait être dû à une erreur de l'échantillonage.",
-	'webstore_invalid_response' => 'Réponse invalide depuis le serveur : 
+	'webstore_scaler_empty_response' => "Le redimensionneur d'image a donné une réponse nulle avec un code de réponse 200.
+Ceci pourrait être dû à une erreur fatale de PHP dans le redimensionneur.",
+	'webstore_invalid_response' => 'Réponse invalide de la part du serveur : 
 
 $1',
 	'webstore_no_response' => 'Le serveur ne répond pas',
@@ -783,7 +785,7 @@ $1',
 
 $1',
 	'webstore_php_error' => 'Les erreurs PHP suivantes sont survenues :',
-	'webstore_no_handler' => 'Ce type MIME ne peut être transformé.',
+	'webstore_no_handler' => "Aucun ''handler'' pour transformer ce type MIME.",
 );
 
 /** Irish (Gaeilge)
@@ -1923,6 +1925,7 @@ $1',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'webstore_invalid_zone' => 'Zone invalide "$1".',
 	'webstore_invalid_response' => "Risposte sbagliete da 'u server:
 
 $1",

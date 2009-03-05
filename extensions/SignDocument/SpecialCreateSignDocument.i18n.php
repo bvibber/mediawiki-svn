@@ -1269,6 +1269,10 @@ $messages['roa-tara'] = array(
 	'createsigndoc-create' => 'Ccreje',
 	'createsigndoc-error-generic' => 'Errore: $1',
 	'createsigndoc-error-pagenoexist' => "Errore: 'A pàgene [[$1]] non g'esiste.",
+	'createsigndoc-success' => "'A firme d'u documende ha state abbilitate cu successe sus a [[$1]].
+Tu puè [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testarle].",
+	'createsigndoc-error-alreadycreated' => '\'U documende firmate "$1" già esiste.
+Non ge pò essere fatte do vote.',
 );
 
 /** Russian (Русский)

@@ -330,6 +330,17 @@ Por favor, aguarde um momento e clique em 'atualizar' no seu navegador para reen
 	'acct_creation_global_soft_throttle_hit-desc' => 'Restringir a criação de utilizadores',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Возможность создания учётных записей была автоматически приостановлена на некоторое время из-за необычно большого числа попыток представиться системе.
+Пожалуйста, подождите несколько минут и попробуйте снова.',
+	'acct_creation_global_hard_throttle_hit' => 'Возможность создания учётных записей была автоматически приостановлена на несколько секунд, что снизить возможность атаки, основанной на массовых регистрациях.
+Пожалуйста, подождите немного и попробуйте нажать кнопку «Обновить» вашего браузера.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Ограничение регистрации участников',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

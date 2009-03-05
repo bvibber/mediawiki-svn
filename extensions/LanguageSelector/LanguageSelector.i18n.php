@@ -698,6 +698,13 @@ $messages['sk'] = array(
 	'languageselector-setlang' => 'nastaviť',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Smihael
+ */
+$messages['sl'] = array(
+	'languageselector' => 'Jezik',
+);
+
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */

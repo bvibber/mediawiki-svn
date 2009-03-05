@@ -85,6 +85,14 @@ $messages['bg'] = array(
 	'minipreview-no_category_gallery' => 'Няма категории или галерии!',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'minipreview-files_in_gallery' => "Ova galerija sadrži '''$1''' {{PLURAL:$1|datoteku|datoteke|datoteka}}.",
+	'minipreview-no_more_files_here' => 'Nema više datoteka u ovom pravcu.',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Imre

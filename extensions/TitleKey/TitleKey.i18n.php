@@ -327,6 +327,13 @@ $messages['pt-br'] = array(
 	'titlekey-desc' => 'Motor de sugestão de pesquisa por prefixo de título',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'titlekey-desc' => "'A ricerche d'u prefisse d'u titele se consiglie da rete",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

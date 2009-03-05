@@ -281,8 +281,10 @@ $messages['pt-br'] = array(
 
 /** Russian (Русский)
  * @author Kaganer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'tidy-desc' => 'Добавляет на обычные страницы вкладки tidy и untidy (в зависимости от $wgUseTidy), позволяющие переопределять для конкретного просмотра глобальную настройку HTML tidy',
 	'tidy' => 'Упорядочить',
 	'untidy' => 'Разупорядочить',
 );

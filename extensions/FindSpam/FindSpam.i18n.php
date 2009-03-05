@@ -327,6 +327,7 @@ $messages['he'] = array(
 	'findspam-ip' => 'כתובת IP:',
 	'findspam-ok' => 'אישור',
 	'findspam-notextfound' => 'לא נמצאו תרומות',
+	'right-findspam' => 'חיפוש אחר השחתה שבוצעה לאחרונה',
 );
 
 /** Hindi (हिन्दी)
@@ -475,6 +476,7 @@ $messages['lb'] = array(
 	'findspam-ip' => 'IP-Adress:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Keng Kontributioune fonnt',
+	'right-findspam' => 'No Spam sichen déi viru kuerzem derbäigesat gouf',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)

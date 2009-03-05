@@ -276,7 +276,7 @@ $messages['qqq'] = array(
 	'configure-condition-description-2' => '* $1 is the number of seconds',
 	'configure-condition-description-3' => '{{Identical|E-mail confirmed}}',
 	'configure-condition-description-4' => '* $1 is a list of groups
-* $2 (not present in the definition) contains the count of groups in $1, for <nowiki>{{PLURAL:}}</nowiki> if you need it',
+* $2 (optional, for use with PLURAL) contains the count of groups in $1, for <nowiki>{{PLURAL:}}</nowiki> if you need it',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -2780,7 +2780,7 @@ $messages['he'] = array(
 	'configure-condition-description-2' => 'ותק החשבון הנמוך ביותר הוא {{PLURAL:$1|שניה אחת|$1 שניות}}',
 	'configure-condition-description-3' => 'כתובת הדוא"ל מאומתת',
 	'configure-condition-description-4' => 'בכל ה{{PLURAL:$2|קבוצה|קבוצות}} $1',
-	'configure-condition-description-5' => 'כתובת ה־IP של המשתמש היא',
+	'configure-condition-description-5' => 'כתובת ה־IP של המשתמש היא $1',
 	'configure-condition-description-6' => 'כתובת ה־IP של המשתמש היא בטווח $1',
 	'configure-condition-description-7' => 'ותק החשבון הנמוך ביותר הוא {{PLURAL:$1|שניה אחת|$1 שניות}} לאחר העריכה הראשונה',
 	'configure-boolop-description-and' => 'כל התנאים חייבים להתקיים',

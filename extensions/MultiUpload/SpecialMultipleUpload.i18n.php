@@ -717,7 +717,7 @@ $messages['lb'] = array(
 	'multipleupload-text' => "Hei kënnt dir méi Fichieren mateneen eroplueden.
 
 Wielt 'Browse' a wielt déi Fichieren eraus déi Dir eropluede wëllt.
-Dir kënnt vun 1 bis $2 Fichiere mateneen eroplueden.
+Dir kënnt vun 1 bis $1 Fichiere mateneen eroplueden.
 
 Dir kënnt en optionellen '''Zil-Fichiersnumm''' uginn an e '''Resumé''' aginn deen Äre Fichier beschreiwt.
 

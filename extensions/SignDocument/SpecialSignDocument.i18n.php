@@ -2095,7 +2095,7 @@ $messages['lb'] = array(
 	'sign-uniquequery-similaraddress' => 'Ähnlech Adress',
 	'sign-uniquequery-similarphone' => 'Ähnlech Telefonsnummer',
 	'sign-uniquequery-similaremail' => 'Ähnlech E-Mailadress',
-	'sign-uniquequery-1signed2' => '{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ënnerschriwwen [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ënnerschriwwen [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Lithuanian (Lietuvių)

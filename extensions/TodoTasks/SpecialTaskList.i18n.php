@@ -998,7 +998,7 @@ $messages['ru'] = array(
 	'tasklistchooseproj' => 'Выберите проект:',
 	'tasklistprojdisp' => 'Показать',
 	'tasklistbyname' => '== Список задач для %s ==',
-	'tasklistnoprojects' => "Ошибка. Похоже, что вы включили '''\$wgUseProjects''', но не создали [[MediaWiki: TodoTasksValidProjects]]. Подробнее см. в [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Руководстве по установке].",
+	'tasklistnoprojects' => "Ошибка. Похоже, что вы включили '''\$wgUseProjects''', но не создали [[MediaWiki:TodoTasksValidProjects]]. Подробнее см. в [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Руководстве по установке].",
 	'tasklistemailbody' => ',
 
 Кто-то назначил для вас новую задачу в %s.

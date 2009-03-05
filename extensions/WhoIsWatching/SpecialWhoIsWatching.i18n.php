@@ -243,13 +243,15 @@ $messages['fi'] = array(
  * @author Dereckson
  * @author Grondin
  * @author McDutchie
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'whoiswatching' => 'Utilisateurs regardant une page du wiki',
+	'whoiswatching' => 'Qui suit une page wiki',
 	'whoiswatching-desc' => 'Fournit une liste des utilisateurs qui suivent une page wiki',
-	'specialwhoiswatchingthepage' => 'Utilisateurs regardant %s',
-	'specialwhoiswatchingusage' => "Cette page spéciale ne peut être utilisée seule. Passez par [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d'entrée vers cette page spéciale.",
+	'specialwhoiswatchingthepage' => 'Qui suit %s',
+	'specialwhoiswatchingusage' => "Cette page spéciale ne peut être utilisée seule.
+Veuillez utiliser la page [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d'entrée vers cette page spéciale.",
 	'specialwhoiswatchingaddusers' => 'Ajouter les utilisateurs pour suivre la page',
 	'specialwhoiswatchingaddbtn' => 'Ajouter les utilisateurs sélectionnés',
 );
@@ -593,6 +595,13 @@ $messages['ro'] = array(
 Te rugăm să foloseşti pagina [[MediaWiki:Number_of_watching_users_pageview]] pentru a defini un punct de intrare în această pagină specială.',
 	'specialwhoiswatchingaddusers' => 'Adaugă utilizatori care să urmărească pagina',
 	'specialwhoiswatchingaddbtn' => 'Adaugă utilizatorii selectaţi',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'specialwhoiswatchingaddbtn' => "Aggiunge l'utinde selezionate",
 );
 
 /** Russian (Русский)

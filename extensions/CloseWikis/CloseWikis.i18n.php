@@ -339,6 +339,7 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author KalmerE.
  */
 $messages['et'] = array(
 	'closewikis-page' => 'Sulge wiki',
@@ -356,6 +357,7 @@ $messages['et'] = array(
 	'closewikis-page-err-closed' => 'Wiki on juba suletud',
 	'closewikis-page-err-opened' => 'Wiki ei ole suletud',
 	'closewikis-list' => 'Suletud wikide list',
+	'closewikis-list-header-wiki' => 'Viki',
 );
 
 /** Basque (Euskara)
