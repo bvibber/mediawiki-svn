@@ -370,7 +370,8 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 			<form method='post' id="review_sidebar">
 <?php
 	if ( $did_update_review )
-		print wfMsgForContent ( 'review_has_been_stored' ) . "<br />" ;
+		print '<span id="review_has_been_stored">' .
+			wfMsgForContent ( 'review_has_been_stored' ) . '</span><br />' ;
 	print wfMsgForContent ( 'review_your_review' ) . "<br />" ;
 	foreach( $wgReviewExtensionTopics as $topic ) {
 ?>
@@ -713,7 +714,8 @@ function wfReviewExtensionFunction () {
 			$out .= "<form method='post' id='review_page_version'>" ;
 			
 			if ( $did_update_review )
-				$out .= wfMsgForContent ( 'review_has_been_stored' ) . "<br />" ;
+				$out .= '<span id="review_has_been_stored">' .
+					wfMsgForContent ( 'review_has_been_stored' ) . '</spam><br />' ;
 			
 			$out .= wfMsgForContent ( 'review_your_review' ) . "<br />" ;
 			$out .= "<table border='1' width='100%'>" ;

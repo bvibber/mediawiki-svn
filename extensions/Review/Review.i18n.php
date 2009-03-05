@@ -39,7 +39,7 @@ Your other ratings will be merged into this one where you selected 'no opinion'.
 	'review_user_page_list' => "The user reviewed the following pages:",
 	'review_user_details_link' => "(details)",
 	'review_do_merge' => "Merge my reviews of other revisions of this page into this one",
-	'review_has_been_stored' => "<span id='review_has_been_stored'>Your review has been stored!</span>",
+	'review_has_been_stored' => 'Your review has been stored!',
 	'revision_review_this_page_version_link' => "Review this version of the page.",
 	'review_page_review' => "Review of page \"$1\"",
 	'review_blocked' => "You are blocked and cannot participate in reviews.",
