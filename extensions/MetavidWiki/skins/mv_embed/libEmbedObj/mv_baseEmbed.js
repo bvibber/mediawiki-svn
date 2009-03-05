@@ -275,7 +275,7 @@ mediaSource.prototype =
 	supports_url_time_encoding:null,
     /** Start offset of the requested segment */
     start_offset:null,
-    /** Duration of the requested segment (NaN if not known) */
+    /** Duration of the requested segment (0 if not known) */
     duration:NaN,
     is_playable:null,
     upddate_interval:null,
@@ -891,7 +891,7 @@ embedVideo.prototype = {
         		var missing_type = this.pc.type;        		        	
         	
            	js_log('no player found for given source type ' + missing_type);
-           	this.load_error= gM('generic_missing_plugin', missing_type );             	          	            
+           	this.load_error= gM('mv_generic_missing_plugin', missing_type );             	          	            
         }        
 	},
 	inheritEmbedObj:function(){		
@@ -947,7 +947,7 @@ embedVideo.prototype = {
 		}
     },
 	getTimeReq:function(){
-		js_log('f:getTimeReq:'+ this.getDurationNTP());
+		//js_log('f:getTimeReq:'+ this.getDurationNTP());
 		var default_time_req = '0:00:00/' + this.getDurationNTP() ;
 		if(!this.media_element)
 			return default_time_req;
@@ -957,10 +957,11 @@ embedVideo.prototype = {
 			return default_time_req;		
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},	
-    getDuration:function(){   
+    getDuration:function(){       	
     	//update some local pointers for the selected source:    	
     	if( this.media_element.selected_source.duration &&
-    		this.media_element.selected_source.duration != 0 ){    		  
+    		this.media_element.selected_source.duration != 0 )
+    	{    		    		  
         	this.duration = this.media_element.selected_source.duration;        	        	
         	this.start_offset = this.media_element.selected_source.start_offset;
         	this.start_ntp = this.media_element.selected_source.start_ntp;
@@ -1030,8 +1031,8 @@ embedVideo.prototype = {
 		this.selected_player.load(function()
 		{
 			js_log('performing embed for ' + _this.id);			
-			var embed_code = _this.getEmbedHTML();
-			//js_log(embed_code);
+			var embed_code = _this.getEmbedHTML();			
+			//js_log('shopuld embed:' + embed_code);
 			$j('#mv_embedded_player_'+_this.id).html(embed_code);	
 		});
     },
@@ -1516,7 +1517,9 @@ embedVideo.prototype = {
 			o+='<a class="email" href="'+this.linkback+'">Share Clip via Link</a> '+
 			'<p>or</p> ';
 		}
-		o+='<span style="color:#FFF;font-size:14px;">Embed Clip in Blog or Site</span>'+
+		o+='<span style="color:#FFF;font-size:14px;">Embed Clip in Blog or Site</span><br>'+
+			'<span style="color:#FFF;font-size:12px;"><a style="color:red" href="http://metavid.org/wiki/Security_Notes_on_Remote_Embedding">'+
+				'Read This</a> before embeding.</span>'+
 			'<div class="embed_code"> '+
 				'<textarea onClick="this.select();" id="embedding_user_html_'+this.id+'" name="embed">' +
 					embed_code+
@@ -1864,6 +1867,42 @@ embedVideo.prototype = {
 	postEmbedJS:function(){
 		return '';
 	},
+	//do common monitor code like update the playhead and play status 
+	//plugin objects are responsible for updating currentTime
+	monitor:function(){
+		if( this.currentTime && this.currentTime > 0 && this.duration){
+			if( !this.userSlide ){
+				if( this.start_offset  ){ //if start offset included add that in: 
+					this.setSliderValue( ( this.currentTime - this.start_offset ) / this.duration );			
+					this.setStatus( seconds2ntp(this.currentTime) + '/'+ seconds2ntp(this.start_offset+this.duration ));		
+				}else{
+					this.setSliderValue( this.currentTime / this.duration );
+					this.setStatus( seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.duration ));
+				}				
+			}
+		}else{
+			//js_log(' ct:' + this.currentTime + ' dur: ' + this.duration);
+			if( this.isStoped() ){
+				this.setStatus( this.getTimeReq() );
+			}else if( this.isPaused() ){
+				this.setStatus( "paused" );
+			}else if( this.isPlaying() ){
+				if( this.currentTime && ! this.duration ) 
+					this.setStatus( seconds2ntp( this.currentTime ) + ' /' );
+				else   
+					this.setStatus(" - - - ");
+			}else{
+				this.setStatus( this.getTimeReq() );
+			}			
+		}
+		
+		//update monitorTimerId to call child monitor
+		if( ! this.monitorTimerId ){
+	    	if(document.getElementById(this.id)){
+	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
+	    	}
+	    }
+	},
 	getPluginEmbed : function(){
 		if (window.document[this.pid]){
 	        return window.document[this.pid];
@@ -1910,7 +1949,7 @@ embedVideo.prototype = {
 		}
 		
 		//update the buffer progress bar (if available )
-		if( this.bufferedPercent!=0 ){
+		if( this.bufferedPercent != 0 ){
 			//js_log('bufferedPercent: ' + this.bufferedPercent);			
 			if(this.bufferedPercent > 1)
 				this.bufferedPercent=1;				

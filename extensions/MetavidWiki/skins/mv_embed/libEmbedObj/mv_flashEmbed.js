@@ -1700,14 +1700,7 @@ var flashEmbed = {
     			js_log('more than 6 seconds have passed since first monitor call issue restore');    			
     			this.restorePlayer(); 
     		}
-    	}  
-    	
-    	
-    	//do monitor update: 
-	    if( ! this.monitorTimerId ){
-	    	if( $j('#'+this.id).length != 0 )	    
-	        	this.monitorTimerId = window.setInterval('$j(\'#'+_this.id+'\').get(0).monitor()', 250);	        
-	    }	  
+    	}      	    	    
 		              
         var flash_state = this.fla.getStatus();
 		//update the duration from the clip if its zero or not set: 
@@ -1731,7 +1724,7 @@ var flashEmbed = {
 	        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	
 	        this.bufferedPercent = flash_state.bufferEnd / this.getDuration();	        	        	        
         }               
-        //set the current Time (based on timeFormat)
+        //set the current Time (based on timeFormat)        
         if( this.media_element.selected_source.timeFormat =='anx' ){
         	this.currentTime = flash_state.time;        	  
         	//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration()); 
@@ -1765,13 +1758,7 @@ var flashEmbed = {
 			js_log('flashEmbed: _local_ Seeking to ' + this.seek_time_sec);
 			this.fla.seek( this.seek_time_sec );
 			this.seek_time_sec = 0;
-		}        
-		
-        if( !this.userSlide ){			   		       			        
-        	//set the status: 
-	       	this.setStatus( seconds2ntp(this.currentTime) + '/' + this.end_ntp);      		
-	        this.setSliderValue((this.currentTime - ntp2seconds(this.start_ntp)) / (ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)) );
-        }        
+		}        		        
         
         //checks to see if we reached the end of playback:	    	    
         if(this.duration && this.startedTimedPlayback && 
@@ -1783,6 +1770,11 @@ var flashEmbed = {
         	js_log('prbally reached end of stream: '+this.currentTime);
         	this.onClipDone();         	     
         }	    
+        
+        //update the status and check timmer via universal parent monitor
+        this.parent_monitor();
+        
+        
 	    this.prevTime = this.currentTime;    
 	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(this.start_ntp)) +' / ' +(ntp2seconds(this.end_ntp)-ntp2seconds(this.start_ntp)));
     },

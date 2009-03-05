@@ -25,18 +25,19 @@ Here are some sample embeds:<br />
 <?
 $sample_embed = array();
 
-$sample_embed[0]['tag'] = '<video  id="embed_vid" 
+/*$sample_embed[0]['tag'] = '<video  id="embed_vid" 
 thumbnail="http://metavid.org/wiki/index.php?action=ajax&rs=mv_frame_server&stream_id=501&t=0:01:32&amp;size=400x300" 
 roe="http://metavid.org/wiki/index.php?title=Special:MvExportStream&stream_name=House_proceeding_01-28-08&feed_format=roe&t=0:01:32/0:03:20" 
 style="width:400px;height:300px" 
 controls="true" embed_link="true" >	
 	<source type="video/x-flv" src="http://mvbox2.cse.ucsc.edu/mvFlvServer.php/house_proceeding_01-28-08.flv?t=0:01:32/0:03:20"></source>
 </video>';
-$sample_embed[0]['desc'] = 'Sample Similar to metavid usage';
+$sample_embed[0]['desc'] = 'Sample Similar to metavid usage';*/
 
 
-$sample_embed[0]['tag'] = '<video id="vogg" src="http://localhost/lucky.ogv"></video>';
+$sample_embed[0]['tag'] = '<video id="vogg" src="http://' . $_SERVER['SERVER_NAME'] . '/lucky.ogv?t=0:0:10/0:0:56"></video>';
 $sample_embed[0]['desc'] = 'flash video usage with manual controls:<br />';
+
 //					'<a href="javascript:document.getElementById(\'vflash\').play();">Play</a> | ' .
 //					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';
 

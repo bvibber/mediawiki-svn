@@ -100,32 +100,25 @@ function error_out($error=''){
 }
 function output_page($params){
 	extract( $params );
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-	<title>cortado_embed</title>
+	<title>cortado_embed</title>	
 	<script type="text/javascript">
-		var i = 1;
-		var last_msg='';
-		function doMonitor(){
-			//get the current time: 
-			var jce = document.getElementById('<?php echo  htmlspecialchars( $id ) ?>');    	
-			if(jce){
-				//setup the msg: 
-				var hash = 'currentTime=' + jce.getPlayPosition();
-				
-				//update the msg frame hash:
-				window.top['mvMsgFrame'].location = '#' + hash;
-				top.location = '#' + hash;
-						
-			}									
-				
-			setTimeout(doMonitor, 1000);		    
-		    i++;		   
-		}
-		setTimeout(doMonitor, 1000);
+		<? //set the parent domain: 
+			if( $parent_domain ){?>
+			try{
+				document.domain = '<?php echo  htmlspecialchars( $parent_domain )?>';
+			}catch (e){
+				alert('could not set domain ... not good');
+			}
+		<?
+		 } ?>	
+		 var jPlayer = null;
+		 function setGlobalJplayer(){
+		 	jPlayer = document.getElementById('<?php echo  htmlspecialchars( $id ) ?>');
+		 }	 						
 	</script>
 	<style type="text/css">
 	<!--
@@ -137,11 +130,12 @@ function output_page($params){
 	}
 	-->
 	</style></head>
-	<body>
+	<body onload="setGlobalJplayer()" >
 	<?php if (empty($error)){ ?>
-		<applet id="<?php echo  htmlspecialchars( $id ) ?>" 
+			<div id="jPlayer"></div>			
+			<OBJECT id="<?php echo  htmlspecialchars( $id ) ?>" 
 		  code="com.fluendo.player.Cortado.class" 
-		  archive="cortado-svn.jar" 
+		  archive="cortado-wmf-r46643.jar" 
 		  width="<?php echo  htmlspecialchars( $width )?>" 
 		  height="<?php echo htmlspecialchars( $height )?>"
 		  >
@@ -150,16 +144,18 @@ function output_page($params){
 			<param name="keepaspect" value="true" />
 			<param name="video" value="<?php echo  htmlspecialchars( $video )?>" />
 			<param name="audio" value="<?php echo  htmlspecialchars( $audio )?>" />
-			<param name="seekable" value="true" />
+			<param name="seekable" value="false" />
 			<? if($duration!=0){
 				?>
 				<param name="duration" value="<?php echo  htmlspecialchars( $duration )?>" />
 				<?
 			 } ?>
+			<param name='showStatus' value='hide'>
+		    <param name='autoPlay'value='true'>
 			<param name='BufferSize' value='8192'>
 			<param name='BufferHigh' value='30'>
 			<param name='BufferLow' value='5'>
-		</applet>
+	</OBJECT>
 	<? }else{ ?>
 		<b>Error:</b> <?php echo  htmlspecialchars( $error )?>	
 	<?
@@ -169,4 +165,53 @@ function output_page($params){
 	</html>
 <?
 }
+/* 
+javascript envoked version:
+	function doPlayer(){
+			jPlayer = document.createElement('OBJECT');
+		    jPlayer.setAttribute('classid', 'java:com.fluendo.player.Cortado.class');
+		    jPlayer.type = 'application/x-java-applet';
+		    jPlayer.setAttribute('archive', this.CortadoLocation);
+		    jPlayer.id = '<?php echo  htmlspecialchars( $id ) ?>';
+		    jPlayer.width = '<?php echo  htmlspecialchars( $width )?>';
+		    jPlayer.height = '<?php echo  htmlspecialchars( $height )?>';
+		
+		    var params = {
+		      'code': 'com.fluendo.player.Cortado',
+		      'archive': 'cortado-wmf-r46643.jar',
+		      'url': '<?php echo  htmlspecialchars( $media_url )?>',
+		      'local': 'false',
+		      'keepAspect': 'true',
+		      'video': '<?php echo  htmlspecialchars( $video )?>',
+		      'audio': '<?php echo  htmlspecialchars( $audio )?>',
+		      'seekable': 'false',
+		      'showStatus': 'hide',
+		      'autoPlay': 'true',
+		      'bufferSize': '8192',
+		      'BufferHigh':'30',
+			  'BufferLow' : '5',
+			     <? if($duration!=0){
+					?>
+					'duration':'<?php echo  htmlspecialchars( $duration )?>',
+					<?
+				 } ?>
+		      'debug': 0
+		    }
+		    for(name in params){
+		      var p = document.createElement('param');
+		      p.name = name;
+		      p.value = params[name];
+		      jPlayer.appendChild(p);
+		    }
+		    var pHolder = document.getElementById('jPlayer');
+		    if(pHolder)
+		    	pHolder.appendChild( jPlayer );
+		}
+		doPlayer();		
+//then in the page: 
+<script type="text/javascript">
+				doPlayer();
+			</script>
+ * 
+*/
 ?>

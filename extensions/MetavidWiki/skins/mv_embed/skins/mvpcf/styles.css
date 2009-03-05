@@ -89,7 +89,7 @@ div.floatleft, table.floatleft {
 .videoPlayer a:hover {color: #75a5e4; text-decoration: underline;}
 .videoPlayer img, .videoPlayer img a, .videoPlayer img a:hover {border: 0;}
 
-.videoPlayer h1, h2, h3, h4, h5, h6 {color: #242424; margin: 5px 0; padding: 0;}
+.videoPlayer h1, .videoPlayer h2, .videoPlayer h3, .videoPlayer h4, .videoPlayer h5, .videoPlayer h6 {color: #242424; margin: 5px 0; padding: 0;}
 .videoPlayer h1 {font-size: 24px;}
 .videoPlayer h2 {font-size: 18px;}
 .videoPlayer h3 {font-size: 16px;}

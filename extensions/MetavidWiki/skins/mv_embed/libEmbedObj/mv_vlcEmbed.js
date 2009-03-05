@@ -154,12 +154,8 @@ var vlcEmbed = {
 		        this.onPlaying();
 		    }
     	}
-    	//do monitor update: 
-	    if( ! this.monitorTimerId ){
-	    	if(document.getElementById(this.id)){
-	        	this.monitorTimerId = setInterval('document.getElementById(\''+this.id+'\').monitor()', 250);
-	    	}
-	    }
+    	//update the status and check timmer via universal parent monitor
+        this.parent_monitor();
     },
 /* events */
     onOpen: function(){
@@ -223,36 +219,7 @@ var vlcEmbed = {
         }else{
         	this.currentTime = (this.vlc.input.time/1000) + this.media_element.selected_source.start_offset;       
         }       	      
-        //js_log('cur vlc:time: ' +  	this.currentTime);
-        if( this.duration > 0 || this.vlc.input.time > 0){                             				     					
-			this.start_offset=this.media_element.selected_source.start_offset;		
-			
-			//if we have media duration proceed
-			if(this.duration){
-			//as long as the user is not interacting with the playhead update:
-				if(! this.userSlide){
-					//slider pos is not accurate with flash: 
-					if(this.vlc.input.position!=0 && this.media_element.selected_source.mime_type!='video/x-flv'){
-						/*js_log(' set slider via input.position: ' + 
-							this.media_element.selected_source.mime_type + ' pos:'+ this.vlc.input.position);
-						*/
-						this.setSliderValue(this.vlc.input.position);
-					}else{
-						//set via time:
-						/*js_log('t:' +(this.vlc.input.time/1000) +' - so:'+this.start_offset+
-							' set slider:' + ((this.vlc.input.time/1000)-this.start_offset) + ' / ' + this.duration +
-							' ='+  ((this.vlc.input.time/1000)-this.start_offset)/this.duration );
-						*/
-						this.setSliderValue( ((this.vlc.input.time/1000) -this.start_offset) / this.duration);
-					}
-					//js_log('set status: '+ seconds2ntp(this.currentTime) + ' e:'+seconds2ntp(this.duration+this.start_offset));    
-					this.setStatus(seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.duration+this.start_offset) );					
-			   }
-			}
-        }else{        	        	
-        	//@@todo hide playhead remove the slider (its a live stream)     
-            this.setStatus('live');
-        }
+        //updates hanlded by parent monitor and currentTime
    },
    onPause: function(){   		
    		this.parent_pause(); //update the inteface if paused via native control

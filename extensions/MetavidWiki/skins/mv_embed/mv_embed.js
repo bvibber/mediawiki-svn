@@ -26,7 +26,7 @@ var MV_EMBED_VERSION = '1.0r11';
 
 //if we should use the scriptLoader 
 //( lets you group requests, minimize javascript, and use mediaWiki localization infastructure) 
-var MV_USE_SCRIPT_LOADER = false;
+var MV_USE_SCRIPT_LOADER = true;
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -441,8 +441,9 @@ mediaPlayers.prototype =
         this.default_players['video/x-flv'] = ['flash','vlc'];
         this.default_players['video/h264'] = ['flash', 'vlc'];
         
-        this.default_players['video/ogg'] = ['native','vlc','java'];        
-        this.default_players['application/ogg'] = ['native','vlc','java'];
+        this.default_players['video/ogg'] = ['native','vlc','java', 'generic'];        
+        this.default_players['application/ogg'] = ['native','vlc','java', 'generic'];
+        
 		this.default_players['video/mp4'] = ['vlc'];
 		
 		this.default_players['text/html'] = ['html'];
@@ -1230,7 +1231,8 @@ function getMvEmbedURL(){
 	js_elements = document.getElementsByTagName("script");
 	for(var i=0;i<js_elements.length; i++){		
 		//check for normal mv_embed.js and or script loader
-		if( js_elements[i].src.indexOf('mv_embed.js') !=-1 || 	( js_elements[i].src.indexOf('mv_embed') != -1 && js_elements[i].src.indexOf('mvwScriptLoader.php') != -1) ){
+		if( js_elements[i].src.indexOf('mv_embed.js') !=-1 ||
+			( js_elements[i].src.indexOf('mvwScriptLoader.php')!=-1 && js_elements[i].src.indexOf('mv_embed') != -1) ){
 			return  js_elements[i].src;			
 		}
 	}
@@ -1250,7 +1252,11 @@ function getMvUniqueReqId(){
  */
 function getMvEmbedPath(){	
 	var mv_embed_url = getMvEmbedURL();
-	if( !mv_embed_url || mv_embed_url.indexOf('mv_embed.js') !== -1){
+	
+	if( !mv_embed_url )
+		return js_error('error: could not get Mv Embed Path');
+		
+	if( mv_embed_url.indexOf('mv_embed.js') !== -1 ){
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
 	}else{
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mvwScriptLoader.php'));
@@ -1298,9 +1304,9 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-     /*var log_elm = document.getElementById('mv_js_log');
+    /* var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
-     	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:50px;"><textarea id="mv_js_log" cols="120" rows="10"></textarea></div>');
+     	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:10px;"><textarea id="mv_js_log" cols="120" rows="5"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){
