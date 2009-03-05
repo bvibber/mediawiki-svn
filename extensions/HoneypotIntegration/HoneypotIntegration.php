@@ -4,7 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die( "This is a MediaWiki extension definition file; it is not a valid entry point." );
 
 /**#@+
- * Provides integration with Project Honeypot for MediaWiki sites.
+ * Provides integration with Project Honey Pot for MediaWiki sites.
  * Requires
  * @addtogroup Extensions
  *
@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Andrew Garrett',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
-	'description'    => 'Provides integration with Project Honeypot for MediaWiki sites',
+	'description'    => 'Provides integration with Project Honey Pot for MediaWiki sites',
 	'descriptionmsg' => 'honeypot-desc',
 );
 
