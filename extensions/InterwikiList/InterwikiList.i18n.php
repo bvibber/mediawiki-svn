@@ -1,16 +1,23 @@
 <?php
-
-// Internationalization file for Extension:InterwikiList
+/**
+ * Internationalisation file for InterwikiList extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
-$messages['en'] = array (
-                'interwikilist'          => 'Interwiki list',
-                'interwikilist-desc'     => 'Adds a [[Special:Interwikilist|special page]] to view available interwiki links',
-                'interwikilist-linkname' => 'Interwiki link',
-                'interwikilist-target'   => 'Target URL',
-				'interwikilist-filter'   => 'Filter list',
-				'interwikilist-prefix'   => 'Interwiki prefix:',
+/** English
+ * @author Chad Horohoe
+ */
+$messages['en'] = array(
+	'interwikilist' => 'Interwiki list',
+	'interwikilist-desc' => 'Adds a [[Special:Interwikilist|special page]] to view available interwiki links',
+	'interwikilist-linkname' => 'Interwiki link',
+	'interwikilist-target' => 'Target URL',
+	'interwikilist-filter' => 'Filter list',
+	'interwikilist-prefix' => 'Interwiki prefix:',
 );
 
 /** Message documentation (Message documentation)
