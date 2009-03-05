@@ -1,10 +1,10 @@
 <?php
 
-if ( !defined('MEDIAWIKI') )
+if ( !defined( 'MEDIAWIKI' ) )
 	die( "This is a MediaWiki extension definition file; it is not a valid entry point." );
-	
+
 /**#@+
- * Provides integration with Project Honeypot for Wikimedia sites.
+ * Provides integration with Project Honeypot for MediaWiki sites.
  * Requires
  * @addtogroup Extensions
  *
@@ -13,13 +13,13 @@ if ( !defined('MEDIAWIKI') )
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$dir = dirname(__FILE__);
+$dir = dirname( __FILE__ );
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'HoneypotIntegration',
 	'author'         => 'Andrew Garrett',
 	'svn-date'       => '$LastChangedDate: 2009-03-05 13:43:05 +1100 (Thu, 05 Mar 2009) $',
 	'svn-revision'   => '$LastChangedRevision: 48042 $',
-	'description'    => 'Provides integration with Project Honeypot for Wikimedia sites',
+	'description'    => 'Provides integration with Project Honeypot for MediaWiki sites',
 	'descriptionmsg' => 'honeypot-desc',
 );
 
