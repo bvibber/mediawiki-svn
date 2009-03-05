@@ -1677,13 +1677,13 @@ embedVideo.prototype = {
 				for(var i=0; i < supporting_players.length ; i++){				
 					if( _this.selected_player.id == supporting_players[i].id && is_selected ){
 						out+='<li style="border-style:dashed;margin-left:20px;">'+
-									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+
+									'<img border="0" width="16" height="16" src="' + mv_embed_path + 'images/plugin.png">' +
 									supporting_players[i].getName() +
 							'</li>';
 					}else{
 						//else gray plugin and the plugin with link to select
 						out+='<li style="margin-left:20px;">'+
-								'<a href="#" onClick="'+ source_select_code + 'embedTypes.players.userSelectPlayer(\''+supporting_players[i].id+'\',\''+ source.getMIMEType()+'\');return false;">'+
+								'<a href="#" onClick="'+ source_select_code + 'embedTypes.players.userSelectPlayer(\'' + supporting_players[i].id + '\',\'' + source.getMIMEType() +'\');return false;">'+
 									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+
 									supporting_players[i].getName() +
 								'</a>'+

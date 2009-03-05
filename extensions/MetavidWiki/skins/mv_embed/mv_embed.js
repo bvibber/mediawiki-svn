@@ -54,6 +54,7 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
 if( !mv_embed_path ){
 	var mv_embed_path = getMvEmbedPath();
 }
+//js_log("mv embed path:"+ mv_embed_path);
 //set the unique request id (for ensuring fresh copies of scripts on updates) 
 if( !mv_embed_urid ){
 	var mv_embed_urid = getMvUniqueReqId();
@@ -384,7 +385,7 @@ mediaPlayer.prototype =
 			});*/
 			
 			eval('var lib = {"'+this.library+'Embed":\'libEmbedObj/mv_'+this.library+'Embed.js\'}');
-			//js_log('DO LOAD: '+this.library); 
+			js_log('DO LOAD: '+this.library); 
 			mvJsLoader.doLoad(lib,function(){
 				//js_log( 'type of lib: ' + eval( 'typeof ' + this.library + 'Embed' ) );
 				//js_log(_this.id + ' plugin loaded');
@@ -587,8 +588,6 @@ function setCookie(name, value, expiry, path, domain, secure) {
 		(domain ? ("; domain=" + domain) : "") + 
 		(secure ? "; secure" : "");
 }
-
-js_log("mv embed path:"+ mv_embed_path);
 /*
  * embedTypes object handles setting and getting of supported embed types:
  * closely mirrors OggHandler so that its easier to share efforts in this area:
@@ -1230,7 +1229,8 @@ function loadExternalCss(url){
 function getMvEmbedURL(){
 	js_elements = document.getElementsByTagName("script");
 	for(var i=0;i<js_elements.length; i++){		
-		if( js_elements[i].src.indexOf('mv_embed') !=-1){
+		//check for normal mv_embed.js and or script loader
+		if( js_elements[i].src.indexOf('mv_embed.js') !=-1 || 	( js_elements[i].src.indexOf('mv_embed') != -1 && js_elements[i].src.indexOf('mvwScriptLoader.php') != -1) ){
 			return  js_elements[i].src;			
 		}
 	}
@@ -1250,13 +1250,13 @@ function getMvUniqueReqId(){
  */
 function getMvEmbedPath(){	
 	var mv_embed_url = getMvEmbedURL();
-	if(mv_embed_url.indexOf('mv_embed.js') !== -1){
+	if( !mv_embed_url || mv_embed_url.indexOf('mv_embed.js') !== -1){
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
 	}else{
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mvwScriptLoader.php'));
 	}
 	//absolute the url (if relative) (if we don't have mv_embed path)
-	if(mv_embed_path.indexOf('://')==-1){	
+	if( mv_embed_path.indexOf('://') == -1){	
 		var pURL = parseUri( document.URL );		
 		if(mv_embed_path.charAt(0)=='/'){
 			mv_embed_path = pURL.protocol + '://' + pURL.authority + mv_embed_path;

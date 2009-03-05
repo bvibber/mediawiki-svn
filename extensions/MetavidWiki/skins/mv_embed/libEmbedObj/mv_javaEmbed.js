@@ -1,5 +1,6 @@
 var javaEmbed = {
 	instanceOf:'javaEmbed',
+	iframe_src:'',
     supports: {
     	'play_head':true, 
     	'pause':true, 
@@ -14,9 +15,12 @@ var javaEmbed = {
 		//set a default duration of 30 seconds: cortao should detect duration.
 		return this.wrapEmebedContainer( this.getEmbedObj() );
     },
-    getEmbedObj:function(){
-    	if(!this.duration)this.duration=30;
-		if(mv_java_iframe){
+    getEmbedObj:function(){    
+    	//get the duration
+    	this.getDuration();
+    	//if still unset set to an arbitrary time 60 seconds: 
+    	if(!this.duration)this.duration=60;
+		if( mv_java_iframe ){
 			//make sure iframe and embed path match (java security model)
 			var iframe_src='';
             var src = this.media_element.selected_source.getURI();
@@ -45,9 +49,17 @@ var javaEmbed = {
 			iframe_src+= "&width=" + this.width + "&height=" + this.height;
 			iframe_src+= "&duration=" + this.duration;
 			iframe_src+=parent_domain;
-			return '<iframe id="iframe_'+this.pid+'" width="'+this.width+'" height="'+this.height+'" '+
-	                   'frameborder=0  scrolling=no marginwidth=0 marginheight=0 ' +
-	                   'src = "'+ iframe_src + '"></iframe>';
+			
+			//check for the mvMsgFrame
+			if($j('#mvMsgFrame').length == 0){
+				js_log('appened mvMsgFrame');
+				//add it to the dom: (sh
+				$j('body').prepend( '<iframe id="mvMsgFrame" width="0" height="0" scrolling=no marginwidth=0 marginheight=0 src="#none"></iframe>' );
+			}
+			this.iframe_src = iframe_src;
+			return '<iframe id="iframe_' + this.pid + '" width="'+this.width+'" height="'+this.height+'" '+
+	                   'frameborder="0" scrolling="no" marginwidth="0" marginheight="0" ' +
+	                   'src = "'+ this.iframe_src + '"></iframe>';
 		}else{
 			//load directly in the page..
 			// (media must be on the same server or applet must be signed)
@@ -62,31 +74,51 @@ var javaEmbed = {
 				'<param name="duration" value="'+this.duration+'" />'+"\n"+
 				'<param name="bufferSize" value="200" />'+"\n"+
 			'</applet>';
-		}
+		}		
     },
+    sendFrameMsg:function( msg ){
+    	var iwin;
+		if(navigator.userAgent.indexOf("Safari") != -1){
+			iwin = frames["iframe_" + this.pid];
+		}else{
+			iwin = document.getElementById("iframe_" + this.pid).contentWindow;
+		}
+		//update the msg text: 
+		iwin.location = this.iframe_src +'#'+ msg;
+	},    
     postEmbedJS:function(){
-		this.getJCE();
+    	//start monitor: 
+		this.monitor();
+		this.sendFrameMsg('test_frame_update');
+    },
+    monitor:function(){
+   		this.updateJavaState();   	
+    	
+    	 if( ! this.monitorTimerId ){
+	    	if(document.getElementById(this.id)){
+	        	this.monitorTimerId = setInterval('document.getElementById(\''+this.id+'\').monitor()', 250);
+	    	}
+	    }
+    },
+    updateJavaState:function(){    	
+    	if( ! mv_java_iframe ){
+    		this.getJCE();
+    		if(typeof this.jce != 'undefined' ){
+				if(typeof this.jce.getPlayPosition != 'undefined' ){
+					this.currentTime = this.jce.getPlayPosition();
+				}
+			}			
+    	}else{
+    		//read the packaged info from the iframe:     		
+    		//js_log( 'iframe_src: ' + $j('#mvMsgFrame' + this.pid).attr("src") );
+    	}
     },
     //get java cortado embed object
-    getJCE:function(){
-    	if(!mv_java_iframe){
-	    	this.jce = $j('#'+this.pid).get(0);
-    	}else{
-    		//set via iframe refrence:
-    		//(does not work even if we set window.domain on the remote iframe)
-    		//this.jce =  $j('#iframe_'+this.pid).get(0).contentDocument.getElementById(this.pid);
-    	}
+    getJCE:function(){    	
+		this.jce = $j('#'+this.pid).get(0);    	
     },
     pause:function(){
     	this.parent_pause();
         this.stop();
-    },
-    currentTime:function(){
-    	if(typeof this.jce != 'undefined' ){
-			if(typeof this.jce.getPlayPosition != 'undefined' ){
-				return this.jce.getPlayPosition();
-			}
-		}
-		return '0';
     }
 }

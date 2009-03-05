@@ -12,7 +12,7 @@ function do_sample_page(){
 <html>
 <head>
 	<title>sample mv embed</title>
- 	<script type="text/javascript" src="../mv_embed.js?<?php echo time()?>"></script>
+ 	<script type="text/javascript" src="../mv_embed.js?urid=<?php echo time()?>"></script>
 </head>
 <body>
 <h3> Sample Embed</h3>

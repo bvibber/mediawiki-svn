@@ -106,11 +106,27 @@ function output_page($params){
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<title>cortado_embed</title>
-	<?php if( !empty( $parent_domain ) ){?>
 	<script type="text/javascript">
-		window.DOMAIN = '<?php echo escapeJsString( $parent_domain ); ?>';
+		var i = 1;
+		var last_msg='';
+		function doMonitor(){
+			//get the current time: 
+			var jce = document.getElementById('<?php echo  htmlspecialchars( $id ) ?>');    	
+			if(jce){
+				//setup the msg: 
+				var hash = 'currentTime=' + jce.getPlayPosition();
+				
+				//update the msg frame hash:
+				window.top['mvMsgFrame'].location = '#' + hash;
+				top.location = '#' + hash;
+						
+			}									
+				
+			setTimeout(doMonitor, 1000);		    
+		    i++;		   
+		}
+		setTimeout(doMonitor, 1000);
 	</script>
-	<?php }?>
 	<style type="text/css">
 	<!--
 	body {
@@ -125,7 +141,7 @@ function output_page($params){
 	<?php if (empty($error)){ ?>
 		<applet id="<?php echo  htmlspecialchars( $id ) ?>" 
 		  code="com.fluendo.player.Cortado.class" 
-		  archive="cortado-ovt-stripped_r34336.jar" 
+		  archive="cortado-svn.jar" 
 		  width="<?php echo  htmlspecialchars( $width )?>" 
 		  height="<?php echo htmlspecialchars( $height )?>"
 		  >
@@ -140,7 +156,9 @@ function output_page($params){
 				<param name="duration" value="<?php echo  htmlspecialchars( $duration )?>" />
 				<?
 			 } ?>
-			<param name="bufferSize" value="200" />
+			<param name='BufferSize' value='8192'>
+			<param name='BufferHigh' value='30'>
+			<param name='BufferLow' value='5'>
 		</applet>
 	<? }else{ ?>
 		<b>Error:</b> <?php echo  htmlspecialchars( $error )?>	
