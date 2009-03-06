@@ -1,0 +1,67 @@
+#!/sbin/sh
+#
+# Copyright 2004 Sun Microsystems, Inc.  All rights reserved.
+# Use is subject to license terms.
+#
+# ident	"@(#)sshd	1.4	04/11/17 SMI"
+
+SSHDIR=/etc/opt/ts/ssh
+KEYGEN="/opt/ts/bin/ssh-keygen -q"
+PIDFILE=/var/run/sshd.pid
+
+# Checks to see if RSA, and DSA host keys are available
+# if any of these keys are not present, the respective keys are created.
+create_key()
+{
+	keypath=$1
+	keytype=$2
+
+	if [ ! -f $keypath ]; then
+		grep "^HostKey $keypath" $SSHDIR/sshd_config > /dev/null 2>&1
+		if [ $? -eq 0 ]; then
+			echo Creating new $keytype public/private host key pair
+			$KEYGEN -f $keypath -t $keytype -N ''
+			return $?
+		fi
+	fi
+
+	return 0
+}
+
+case $1 in 
+'start')
+	# Copy host keys from Sun SSH, if available, otherwise generate new ones.
+	if [ ! -f $SSHDIR/ssh_host_rsa_key ]; then
+		if [ -f /etc/ssh/ssh_host_rsa_key ]; then
+			cp /etc/ssh/ssh_host_rsa_key $SSHDIR
+			cp /etc/ssh/ssh_host_rsa_key.pub $SSHDIR
+		else
+			create_key $SSHDIR/ssh_host_rsa_key rsa
+		fi
+	fi
+
+	if [ ! -f $SSHDIR/ssh_host_dsa_key ]; then
+		if [ -f /etc/ssh/ssh_host_dsa_key ]; then
+			cp /etc/ssh/ssh_host_dsa_key $SSHDIR
+			cp /etc/ssh/ssh_host_dsa_key.pub $SSHDIR
+		else
+			create_key $SSHDIR/ssh_host_dsa_key dsa
+		fi
+	fi
+
+	/opt/ts/sbin/sshd
+	;;
+
+'restart')
+	if [ -f "$PIDFILE" ]; then
+		/usr/bin/kill -HUP `/usr/bin/cat $PIDFILE`
+	fi
+	;;
+
+*)
+	echo "Usage: $0 { start | restart }"
+	exit 1
+	;;
+esac	
+
+exit $?
