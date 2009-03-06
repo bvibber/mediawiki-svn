@@ -715,7 +715,7 @@ function wfReviewExtensionFunction () {
 			
 			if ( $did_update_review )
 				$out .= '<span id="review_has_been_stored">' .
-					wfMsgForContent ( 'review_has_been_stored' ) . '</spam><br />' ;
+					wfMsgForContent ( 'review_has_been_stored' ) . '</span><br />' ;
 			
 			$out .= wfMsgForContent ( 'review_your_review' ) . "<br />" ;
 			$out .= "<table border='1' width='100%'>" ;
