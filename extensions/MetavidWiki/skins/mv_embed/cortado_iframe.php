@@ -111,7 +111,8 @@ function output_page($params){
 			try{
 				document.domain = '<?php echo  htmlspecialchars( $parent_domain )?>';
 			}catch (e){
-				alert('could not set domain ... not good');
+				if( window.console )
+					console.log('could not set domain to <?php echo  htmlspecialchars( $parent_domain )?>');
 			}
 		<?
 		 } ?>	
@@ -131,14 +132,16 @@ function output_page($params){
 	-->
 	</style></head>
 	<body onload="setGlobalJplayer()" >
-	<?php if (empty($error)){ ?>
+	<?php 
+		$appid = ( preg_match("/MSIE/i", getenv("HTTP_USER_AGENT")) ) ? '' : 'classid="java:com.fluendo.player.Cortado.class"';
+		if (empty($error)){ ?>
 			<div id="jPlayer"></div>			
 			<OBJECT id="<?php echo  htmlspecialchars( $id ) ?>" 
 		  code="com.fluendo.player.Cortado.class" 
+		  <?php echo $appid ?>
 		  archive="cortado-wmf-r46643.jar" 
 		  width="<?php echo  htmlspecialchars( $width )?>" 
-		  height="<?php echo htmlspecialchars( $height )?>"
-		  >
+		  height="<?php echo htmlspecialchars( $height )?>" >
 			<param name="url" value="<?php echo  htmlspecialchars( $media_url )?>" />
 			<param name="local" value="false"/>
 			<param name="keepaspect" value="true" />
@@ -150,11 +153,11 @@ function output_page($params){
 				<param name="duration" value="<?php echo  htmlspecialchars( $duration )?>" />
 				<?
 			 } ?>
-			<param name='showStatus' value='hide'>
-		    <param name='autoPlay'value='true'>
-			<param name='BufferSize' value='8192'>
-			<param name='BufferHigh' value='30'>
-			<param name='BufferLow' value='5'>
+			<param name="showStatus" value="hide" />
+		    <param name="autoPlay" value="true" />
+			<param name="BufferSize" value="8192" />
+			<param name="BufferHigh" value="30" />
+			<param name="BufferLow" value="5" />
 	</OBJECT>
 	<? }else{ ?>
 		<b>Error:</b> <?php echo  htmlspecialchars( $error )?>	
