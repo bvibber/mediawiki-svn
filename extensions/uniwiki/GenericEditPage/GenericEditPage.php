@@ -704,7 +704,7 @@ function UW_GenericEditPage_combineBeforeSave ( &$editpage_Obj ) {
 	 * pressing the "switch mode" button, then
 	 * set a global to do some jiggery-pokery
 	 * in the displayEditPage function, later */
-	if ( isset( $data['switch-mode'] ) )
+	if ( isset( $data['switch-mode'] ) and strlen( $data['switch-mode']) > 0)
 		$wgSwitchMode = true;
 
 	/* if we are editing in classic mode,
