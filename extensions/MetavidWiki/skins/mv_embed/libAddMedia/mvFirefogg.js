@@ -268,10 +268,6 @@ mvFirefogg.prototype = {
 		       	 
 		       	//if in "post" upload mode read the html response: 
 		       	if( _this.upload_mode == 'post' ) {
-		       		//var foo = _this;
-		       		//var cat = _this.fogg.responseText;
-		       		//var cat_json = eval('var result =' + _this.fogg.responseText );
-		       		//debugger;
 		       		js_log('done upload response is:' + _this.fogg.responseText );
 		       		_this.procPageResponse( _this.fogg.responseText );
 		       	}else if( _this.upload_mode == 'chunks'){

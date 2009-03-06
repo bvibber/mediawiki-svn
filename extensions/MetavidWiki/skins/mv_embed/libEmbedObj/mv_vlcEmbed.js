@@ -257,6 +257,7 @@ var vlcEmbed = {
     		}
     		if(this.vlc.playlist)
 				this.vlc.playlist.play();
+				
 			this.monitor();
 			this.paused=false;
     	}    	

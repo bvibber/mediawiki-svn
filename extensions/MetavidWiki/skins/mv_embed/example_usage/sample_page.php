@@ -12,7 +12,7 @@ function do_sample_page(){
 <html>
 <head>
 	<title>sample mv embed</title>
- 	<script type="text/javascript" src="../mv_embed.js?urid=<?php echo time()?>"></script>
+ 	<script type="text/javascript" src="../mv_embed.js"></script>
 </head>
 <body>
 <h3> Sample Embed</h3>
@@ -25,21 +25,15 @@ Here are some sample embeds:<br />
 <?
 $sample_embed = array();
 
-/*$sample_embed[0]['tag'] = '<video  id="embed_vid" 
+$sample_embed[0]['tag'] = '<video  id="embed_vid" 
 thumbnail="http://metavid.org/wiki/index.php?action=ajax&rs=mv_frame_server&stream_id=501&t=0:01:32&amp;size=400x300" 
 roe="http://metavid.org/wiki/index.php?title=Special:MvExportStream&stream_name=House_proceeding_01-28-08&feed_format=roe&t=0:01:32/0:03:20" 
 style="width:400px;height:300px" 
 controls="true" embed_link="true" >	
 	<source type="video/x-flv" src="http://mvbox2.cse.ucsc.edu/mvFlvServer.php/house_proceeding_01-28-08.flv?t=0:01:32/0:03:20"></source>
 </video>';
-$sample_embed[0]['desc'] = 'Sample Similar to metavid usage';*/
+$sample_embed[0]['desc'] = 'Sample Similar to metavid usage';
 
-
-$sample_embed[0]['tag'] = '<video id="vogg" src="http://' . $_SERVER['SERVER_NAME'] . '/lucky.ogv?t=0:0:10/0:0:56"></video>';
-$sample_embed[0]['desc'] = 'flash video usage with manual controls:<br />';
-
-//					'<a href="javascript:document.getElementById(\'vflash\').play();">Play</a> | ' .
-//					'<a href="javascript:document.getElementById(\'vflash\').stop();">Stop</a> <br />';
 
 $sample_embed[1]['tag'] = '<video roe="http://metavid.org/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_06-06-06_1&t=0:07:50/0:09:06">';
 $sample_embed[1]['desc'] = 'Demo of json ROE attribute';
@@ -88,7 +82,7 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
   <table border="1" cellpadding="6" width="600">
   	<? foreach ( $sample_embed as $key => $aval ) {
   		// $key!=8 && $key!=3  $key != 0  && $key != 1 &&  && $key!=3
-  		if ( $key!=0 )continue;
+  		if ( $key!=0 && $key!=8 )continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>

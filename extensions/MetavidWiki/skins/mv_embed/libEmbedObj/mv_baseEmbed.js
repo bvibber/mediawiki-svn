@@ -140,6 +140,13 @@ var ctrlBuilder = {
         	},
         	stop:function(e, ui){
         		embedObj.userSlide=false;
+        		//stop the monitor timer:         		
+				if( this.monitorTimerId != 0 )
+			    {
+			        clearInterval(this.monitorTimerId);
+			        this.monitorTimerId = 0;
+			    }
+        		
         		var perc = (($j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft-embedObj.base_seeker_slider_offset)
 						/
 					($j('#mv_seeker_'+embedObj.id).width()-14));   
@@ -563,11 +570,10 @@ mediaElement.prototype =
     		if( i==index ){
     			this.selected_source = playable_sources[i];
     			//update the user selected format: 
-    			embedTypes.players.userSelectFormat( playable_sources[i].mime_type);
+    			embedTypes.players.userSelectFormat( playable_sources[i].mime_type );
     			break;
     		}
-    	}
-    	js_log("selected source " + this.sources[index].getTitle());    	
+    	}    	
     },
     /** selects the default source via cookie preference, default marked, or by id order
      * */
@@ -1649,15 +1655,13 @@ embedVideo.prototype = {
         var out='<span style="color:#FFF;background-color:black;"><blockquote style="background-color:black;">';
         var _this=this;
         //js_log('selected src'+ _this.media_element.selected_source.url);
-		$j.each(this.media_element.getPlayableSources(), function(index, source)
-        {     		
-	        var default_player = embedTypes.players.defaultPlayer( source.getMIMEType() );
-	        var source_select_code = '$j(\'#'+this_id+'\').get(0).closeDisplayedHTML(); $j(\'#'+_this.id+'\').get(0).media_element.selectSource(\''+index+'\');';
-	        
-	        //var player_code = _this.getPlayerSelectList( source.getMIMEType(), index, source_select_code);
+		$j.each( this.media_element.getPlayableSources(), function(source_id, source){     		
+	        var default_player = embedTypes.players.defaultPlayer( source.getMIMEType() );	        	        	       
 	        
 	        var is_selected = (source == _this.media_element.selected_source);
 	        var image_src = mv_embed_path+'images/stream/';
+	        
+	        //set the Playable source type: 
 	        if( source.mime_type == 'video/x-flv' ){
 	        	image_src += 'flash_icon_';
 	        }else if( source.mime_type == 'video/h264'){
@@ -1667,16 +1671,18 @@ embedVideo.prototype = {
 	        	image_src += 'fish_xiph_org_';
 	        }
 	        image_src += is_selected ? 'color':'bw';
-	        image_src += '.png';
+	        image_src += '.png';	        	       
+	        
 	        if (default_player)
 	        {
 	            out += '<img src="'+image_src+'"/>';
 	            if( ! is_selected )
-	                out+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
+	                out+='<a href="#" class="sel_source" id="sc_' + source_id + '_' + default_player.id +'">';
 	            out += source.getTitle()+ (is_selected?'</a>':'') + ' ';
+	            
 	        	//output the player select code: 
 	        	var supporting_players = embedTypes.players.getMIMETypePlayers( source.getMIMEType() );		
-				out+='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
+				out+='<div id="player_select_list_' + source_id + '" class="player_select_list"><ul>';
 				for(var i=0; i < supporting_players.length ; i++){				
 					if( _this.selected_player.id == supporting_players[i].id && is_selected ){
 						out+='<li style="border-style:dashed;margin-left:20px;">'+
@@ -1686,7 +1692,7 @@ embedVideo.prototype = {
 					}else{
 						//else gray plugin and the plugin with link to select
 						out+='<li style="margin-left:20px;">'+
-								'<a href="#" onClick="'+ source_select_code + 'embedTypes.players.userSelectPlayer(\'' + supporting_players[i].id + '\',\'' + source.getMIMEType() +'\');return false;">'+
+								'<a href="#" class="sel_source" id="sc_' + source_id + '_' + supporting_players[i].id +'">'+
 									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+
 									supporting_players[i].getName() +
 								'</a>'+
@@ -1699,6 +1705,28 @@ embedVideo.prototype = {
         });
         out+='</blockquote></span>';
         this.displayHTML(out);
+        
+        //set up the click bindings:
+        $j('.sel_source').each(function(){
+        	$j(this).click(function(){
+        		var iparts = $j(this).attr( 'id' ).replace(/sc_/,'').split('_');
+        		var source_id = iparts[0];
+        		var default_player_id = iparts[1];
+        		js_log('source id: ' +  source_id + ' player id: ' + default_player_id);        		
+        		 
+        		$j('#' + this_id  ).get(0).closeDisplayedHTML();        		
+        		$j('#' + _this.id ).get(0).media_element.selectSource( source_id );
+        		
+        		embedTypes.players.userSelectPlayer( default_player_id,
+        			 _this.media_element.sources[ source_id ].getMIMEType() );
+        			 
+        		//be sure to issue a stop
+        		$j('#' + this_id  ).get(0).stop();
+        		
+        		//don't follow the empty # link:
+        		return false;
+        	});
+        });
     },
 	/*download list is too complicated ... rewrite for clarity: */
 	showVideoDownload:function(){		
