@@ -900,7 +900,7 @@ $extensions = array(
 	// P
 	array(
 		'name' => 'ParserFunctions',
-		'url' => 'http://meta.wikimedia.org/wiki/ParserFunctions',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:ParserFunctions',
 	),
 	array(
 		'name' => 'PasswordReset',

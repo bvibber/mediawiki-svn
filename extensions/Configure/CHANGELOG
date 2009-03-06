@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.12.10 - 6 March 2009
+  Updated ParserFunctions' documentation link.
+
 0.12.9 - 5 March 2009
   The left column on Special:Extension no longer overlaps the bottom of the
   page.
