@@ -48,6 +48,11 @@ if ($contents =~ /^Content-Transfer-Encoding: base64/m) {
 	$contents =~ s/\n\n(\n?([[:alnum:]\=+]{1,76}\n)+)/decode_base64($1)/seg;
 }
 
+if ($contents =~ /^Content-Transfer-Encoding: quoted-printable/m) {
+	use MIME::QuotedPrint;
+	$contents = decode_qp( $contents );
+}
+
 if ($contents =~ /^From: bugzilla-daemon/m)
 {
 	# E-mail is from MediaZilla
@@ -147,7 +152,7 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 if ($output)
 {
 	open (OUT, ">>/var/wikibugs/wikibugs.log");
-	#print $output;
+#	print $output;
 	print OUT $output;
 	close OUT;
 }
