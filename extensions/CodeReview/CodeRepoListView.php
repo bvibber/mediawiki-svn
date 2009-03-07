@@ -6,18 +6,18 @@ class CodeRepoListView {
 	function execute() {
 		global $wgOut;
 		$repos = CodeRepository::getRepoList();
-		if( !count( $repos ) ){
+		if ( !count( $repos ) ) {
 			$wgOut->addWikiMsg( 'code-no-repo' );
 			return;
 		}
 		$text = '';
-		foreach( $repos as $repo ){
+		foreach ( $repos as $repo ) {
 			$name = $repo->getName();
-			$text .= "* ".self::getNavItem( $name )."\n";
+			$text .= "* " . self::getNavItem( $name ) . "\n";
 		}
 		$wgOut->addWikiText( $text );
 	}
-	
+
 	public static function getNavItem( $name ) {
 		global $wgLang;
 		$text = "'''[[Special:Code/$name|$name]]''' (";

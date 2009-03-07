@@ -1,5 +1,5 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class SpecialCode extends SpecialPage {
 	function __construct() {
@@ -14,9 +14,9 @@ class SpecialCode extends SpecialPage {
 		$this->setHeaders();
 		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
 		# Remove stray slashes
-		$subpage = preg_replace( '/\/$/','', $subpage );
+		$subpage = preg_replace( '/\/$/', '', $subpage );
 
-		if( $subpage == '' ) {
+		if ( $subpage == '' ) {
 			$view = new CodeRepoListView();
 		} else {
 			$params = explode( '/', $subpage );
@@ -25,23 +25,23 @@ class SpecialCode extends SpecialPage {
 				$view = new CodeRevisionListView( $params[0] );
 				break;
 			case 2:
-				if( $params[1] === 'tag' ) {
+				if ( $params[1] === 'tag' ) {
 					$view = new CodeTagListView( $params[0] );
 					break;
-				} elseif( $params[1] === 'author' ) {
+				} elseif ( $params[1] === 'author' ) {
 					$view = new CodeAuthorListView( $params[0] );
 					break;
-				} elseif( $params[1] === 'status' ) {
+				} elseif ( $params[1] === 'status' ) {
 					$view = new CodeStatusListView( $params[0] );
 					break;
-				} elseif( $params[1] === 'comments' ) {
+				} elseif ( $params[1] === 'comments' ) {
 					$view = new CodeCommentsListView( $params[0] );
 					break;
-				} elseif( $params[1] === 'releasenotes' ) {
+				} elseif ( $params[1] === 'releasenotes' ) {
 					$view = new CodeReleaseNotes( $params[0] );
 					break;
-				} else if( $wgRequest->wasPosted() && !$wgRequest->getCheck('wpPreview') ) {
-					# Add any tags, Set status, Adds comments 
+				} else if ( $wgRequest->wasPosted() && !$wgRequest->getCheck( 'wpPreview' ) ) {
+					# Add any tags, Set status, Adds comments
 					$submit = new CodeRevisionCommitter( $params[0], $params[1] );
 					$submit->execute();
 					return;
@@ -50,46 +50,46 @@ class SpecialCode extends SpecialPage {
 					break;
 				}
 			case 3:
-				if( $params[1] === 'tag' ) {
+				if ( $params[1] === 'tag' ) {
 					$view = new CodeRevisionTagView( $params[0], $params[2] );
 					break;
-				} elseif( $params[1] === 'author' ) {
+				} elseif ( $params[1] === 'author' ) {
 					$view = new CodeRevisionAuthorView( $params[0], $params[2] );
 					break;
-				} elseif( $params[1] === 'status' ) {
+				} elseif ( $params[1] === 'status' ) {
 					$view = new CodeRevisionStatusView( $params[0], $params[2] );
 					break;
-				} elseif( $params[1] === 'comments' ) {
+				} elseif ( $params[1] === 'comments' ) {
 					$view = new CodeCommentsListView( $params[0] );
 					break;
 				} else {
 					# Nonsense parameters, back out
-					if( empty($params[1]) )
+					if ( empty( $params[1] ) )
 						$view = new CodeRevisionListView( $params[0] );
 					else
 						$view = new CodeRevisionView( $params[0], $params[1] );
 					break;
 				}
 			case 4:
-				if ( $params[1] == 'author' && $params[3] == 'link') {
+				if ( $params[1] == 'author' && $params[3] == 'link' ) {
 					$view = new CodeRevisionAuthorLink( $params[0], $params[2] );
 					break;
 				}
 			default:
-				if( $params[2] == 'reply' ) {
+				if ( $params[2] == 'reply' ) {
 					$view = new CodeRevisionView( $params[0], $params[1], $params[3] );
 					break;
 				}
-				$wgOut->addWikiText( wfMsg('nosuchactiontext') );
+				$wgOut->addWikiText( wfMsg( 'nosuchactiontext' ) );
 				$wgOut->returnToMain( null, SpecialPage::getTitleFor( 'Code' ) );
 				return;
 			}
 		}
 		$view->execute();
-		
+
 		// Add subtitle for easy navigation
 		global $wgOut;
-		if( $view instanceof CodeView && ($repo = $view->getRepo()) ) {
+		if ( $view instanceof CodeView && ( $repo = $view->getRepo() ) ) {
 			$wgOut->setSubtitle( wfMsgExt( 'codereview-subtitle', 'parse', CodeRepoListView::getNavItem( $repo->getName() ) ) );
 		}
 	}
@@ -105,17 +105,17 @@ abstract class CodeView {
 		global $wgUser;
 		$this->mSkin = $wgUser->getSkin();
 	}
-	
+
 	function validPost( $permission ) {
 		global $wgRequest, $wgUser;
 		return $wgRequest->wasPosted()
-			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) 
+			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) )
 			&& $wgUser->isAllowed( $permission );
 	}
 
 	abstract function execute();
 
-	/* 
+	/*
 	 *	returns a User object if $author has a wikiuser associated,
 	 *	of false
 	*/
@@ -128,12 +128,12 @@ abstract class CodeView {
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );
 		return $this->mSkin->link( $special, htmlspecialchars( $author ) );
 	}
-	
+
 	function statusDesc( $status ) {
 		return wfMsg( "code-status-$status" );
 	}
 
-	function formatMessage( $text ){
+	function formatMessage( $text ) {
 		$text = nl2br( htmlspecialchars( $text ) );
 		$linker = new CodeCommentLinkerHtml( $this->mRepo );
 		return $linker->link( $text );
@@ -153,12 +153,12 @@ abstract class CodeView {
 	 */
 	function formatMetaData( $fields ) {
 		$html = '<table class="mw-codereview-meta">';
-		foreach( $fields as $label => $data ) {
+		foreach ( $fields as $label => $data ) {
 			$html .= "<tr><td>" . wfMsgHtml( $label ) . "</td><td>$data</td></tr>\n";
 		}
 		return $html . "</table>\n";
 	}
-	
+
 	function getRepo() {
 		if ( $this->mRepo )
 			return $this->mRepo;
@@ -176,23 +176,23 @@ class CodeCommentLinker {
 	function link( $text ) {
 		# Catch links like http://www.mediawiki.org/wiki/Special:Code/MediaWiki/44245#c829
 		# Ended by space or brackets (like those pesky <br/> tags)
-		$text = preg_replace_callback( '/(\b)('.wfUrlProtocols().')([^ <>]+)(\b)/', array( $this, 'generalLink' ), $text );
+		$text = preg_replace_callback( '/(\b)(' . wfUrlProtocols() . ')([^ <>]+)(\b)/', array( $this, 'generalLink' ), $text );
 		$text = preg_replace_callback( '/\br(\d+)\b/', array( $this, 'messageRevLink' ), $text );
 		$text = preg_replace_callback( '/\bbug #?(\d+)\b/i', array( $this, 'messageBugLink' ), $text );
 		return $text;
 	}
-	
+
 	function generalLink( $arr ) {
 		$url = $arr[2] . $arr[3];
 		// Re-add the surrounding space/punctuation
-		return $arr[1] . $this->makeExternalLink( $url, $url ). $arr[4];
+		return $arr[1] . $this->makeExternalLink( $url, $url ) . $arr[4];
 	}
 
 	function messageBugLink( $arr ) {
 		$text = $arr[0];
 		$bugNo = intval( $arr[1] );
 		$url = $this->mRepo->getBugPath( $bugNo );
-		if( $url ) {
+		if ( $url ) {
 			return $this->makeExternalLink( $url, $text );
 		} else {
 			return $text;

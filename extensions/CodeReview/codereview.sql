@@ -45,7 +45,7 @@ CREATE TABLE /*$wgDBprefix*/code_rev (
   -- This is *not* wikitext, but will get some light formatting
   -- on display...
   cr_message blob,
-  
+
   -- Status key for how this thang is...
   -- 'new': Hasn't yet been reviewed
   -- 'fixme': This revision has some problem which needs to be resolved
@@ -58,7 +58,7 @@ CREATE TABLE /*$wgDBprefix*/code_rev (
   -- * if the revision change only one file, the file path
   -- * else, common directory for all changes (e.g. trunk/phase3/includes/ )
   cr_path varchar(255) binary,
-  
+
   -- Text of the diff or ES url
   cr_diff mediumblob NULL,
   -- Text flags: gzip,utf-8,external

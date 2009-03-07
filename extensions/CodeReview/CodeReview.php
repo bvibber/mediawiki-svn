@@ -1,5 +1,5 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  *
  * @author Brion Vibber
@@ -36,7 +36,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'code-desc',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'ApiCodeUpdate.php';
 $wgAutoloadClasses['ApiCodeDiff'] = $dir . 'ApiCodeDiff.php';

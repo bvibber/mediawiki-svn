@@ -3,7 +3,7 @@
 // Special:Code/MediaWiki/40696
 class CodeRevisionView extends CodeView {
 
-	function __construct( $repoName, $rev, $replyTarget=null ){
+	function __construct( $repoName, $rev, $replyTarget = null ) {
 		global $wgRequest;
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
@@ -11,26 +11,26 @@ class CodeRevisionView extends CodeView {
 		$this->mPreviewText = false;
 		# URL params...
 		$this->mAddTags = $wgRequest->getText( 'wpTag' );
-		$this->mRemoveTags =$wgRequest->getText( 'wpRemoveTag' );
-		$this->mStatus = $wgRequest->getText('wpStatus');
-		$this->jumpToNext = $wgRequest->getCheck('wpSaveAndNext');
-		$this->mReplyTarget = $replyTarget ? 
+		$this->mRemoveTags = $wgRequest->getText( 'wpRemoveTag' );
+		$this->mStatus = $wgRequest->getText( 'wpStatus' );
+		$this->jumpToNext = $wgRequest->getCheck( 'wpSaveAndNext' );
+		$this->mReplyTarget = $replyTarget ?
 			(int)$replyTarget : $wgRequest->getIntOrNull( 'wpParent' );
 		$this->text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
-		$this->mSkipCache = ($wgRequest->getVal( 'action' ) == 'purge');
+		$this->mSkipCache = ( $wgRequest->getVal( 'action' ) == 'purge' );
 		# Make tag arrays
 		$this->mAddTags = $this->splitTags( $this->mAddTags );
 		$this->mRemoveTags = $this->splitTags( $this->mRemoveTags );
 	}
 
-	function execute(){
+	function execute() {
 		global $wgOut, $wgUser, $wgLang;
-		if( !$this->mRepo ) {
+		if ( !$this->mRepo ) {
 			$view = new CodeRepoListView();
 			$view->execute();
 			return;
 		}
-		if( !$this->mRev ) {
+		if ( !$this->mRev ) {
 			$view = new CodeRevisionListView( $this->mRepo->getName() );
 			$view->execute();
 			return;
@@ -38,7 +38,7 @@ class CodeRevisionView extends CodeView {
 		$this->mStatus = $this->mStatus ? $this->mStatus : $this->mRev->getStatus();
 
 		$redirectOnPost = $this->checkPostings();
-		if( $redirectOnPost ) {
+		if ( $redirectOnPost ) {
 			$wgOut->redirect( $redirectOnPost );
 			return;
 		}
@@ -48,16 +48,16 @@ class CodeRevisionView extends CodeView {
 		$revText = $this->navigationLinks();
 		$paths = '';
 		$modifiedPaths = $this->mRev->getModifiedPaths();
-		foreach( $modifiedPaths as $row ){
+		foreach ( $modifiedPaths as $row ) {
 			$paths .= $this->formatPathLine( $row->cp_path, $row->cp_action );
 		}
-		if( $paths ){
+		if ( $paths ) {
 			$paths = "<div class='mw-codereview-paths'><ul>\n$paths</ul></div>\n";
 		}
 		$comments = $this->formatComments();
 		$commentsLink = "";
-		if( $comments ) {
-			$commentsLink = " (<a href=\"#code-comments\">" . wfMsgHtml( 'code-comments' ) ."</a>)\n";
+		if ( $comments ) {
+			$commentsLink = " (<a href=\"#code-comments\">" . wfMsgHtml( 'code-comments' ) . "</a>)\n";
 		}
 		$fields = array(
 			'code-rev-repo' => $repoLink,
@@ -69,49 +69,49 @@ class CodeRevisionView extends CodeView {
 			'code-rev-message' => $this->formatMessage( $this->mRev->getMessage() ),
 			'code-rev-paths' => $paths,
 		);
-		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$this->mRev->getId() );
+		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mRev->getId() );
 
 		$html = Xml::openElement( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ) );
 
-		if( $wgUser->isAllowed('codereview-post-comment') ) {
+		if ( $wgUser->isAllowed( 'codereview-post-comment' ) ) {
 			$html .= $this->addActionButtons();
 		}
-		
+
 		$html .= $this->formatMetaData( $fields );
 
-		if( $this->mRev->isDiffable() ) {
+		if ( $this->mRev->isDiffable() ) {
 			$diffHtml = $this->formatDiff();
 			$html .=
 				"<h2>" . wfMsgHtml( 'code-rev-diff' ) .
 				' <small>[' . $wgUser->getSkin()->makeLinkObj( $special,
-					wfMsg('code-rev-purge-link'), 'action=purge' ) . ']</small></h2>' .
+					wfMsg( 'code-rev-purge-link' ), 'action=purge' ) . ']</small></h2>' .
 				"<div class='mw-codereview-diff' id='mw-codereview-diff'>" . $diffHtml . "</div>\n";
 		}
-		if( $comments ) {
-			$html .= "<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" . $comments;
+		if ( $comments ) {
+			$html .= "<h2 id='code-comments'>" . wfMsgHtml( 'code-comments' ) . "</h2>\n" . $comments;
 		}
-		
-		if( $this->mReplyTarget ) {
+
+		if ( $this->mReplyTarget ) {
 			global $wgJsMimeType;
 			$id = intval( $this->mReplyTarget );
 			$html .= "<script type=\"$wgJsMimeType\">addOnloadHook(function(){" .
 				"document.getElementById('wpReplyTo$id').focus();" .
 				"});</script>\n";
 		}
-		
-		if( $wgUser->isAllowed('codereview-post-comment') ) {
+
+		if ( $wgUser->isAllowed( 'codereview-post-comment' ) ) {
 			$html .= $this->addActionButtons();
 		}
-			
+
 		$changes = $this->formatPropChanges();
-		if( $changes ) {
-			$html .= "<h2 id='code-changes'>". wfMsgHtml( 'code-prop-changes' ) ."</h2>\n" . $changes;
+		if ( $changes ) {
+			$html .= "<h2 id='code-changes'>" . wfMsgHtml( 'code-prop-changes' ) . "</h2>\n" . $changes;
 		}
 		$html .= xml::closeElement( 'form' );
 
 		$wgOut->addHTML( $html );
 	}
-	
+
 	protected function navigationLinks() {
 		global $wgLang;
 
@@ -119,24 +119,24 @@ class CodeRevisionView extends CodeView {
 		$prev = $this->mRev->getPrevious();
 		$next = $this->mRev->getNext();
 		$repo = $this->mRepo->getName();
-		
+
 		$links = array();
-		
-		if( $prev ) {
+
+		if ( $prev ) {
 			$prevTarget = SpecialPage::getTitleFor( 'Code', "$repo/$prev" );
 			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, "r$prev" );
 		}
-		
+
 		$revText = "<b>r$rev</b>";
 		$viewvc = $this->mRepo->getViewVcBase();
-		if( $viewvc ){
+		if ( $viewvc ) {
 			$url = htmlspecialchars( "$viewvc/?view=rev&revision=$rev" );
 			$viewvcTxt = wfMsgHtml( 'code-rev-rev-viewvc' );
 			$revText .= " (<a href=\"$url\" title=\"revision $rev\">$viewvcTxt</a>)";
 		}
 		$links[] = $revText;
 
-		if( $next ) {
+		if ( $next ) {
 			$nextTarget = SpecialPage::getTitleFor( 'Code', "$repo/$next" );
 			$links[] = $this->mSkin->link( $nextTarget, "r$next" ) . '&nbsp;&gt;';
 		}
@@ -146,13 +146,13 @@ class CodeRevisionView extends CodeView {
 
 	protected function checkPostings() {
 		global $wgRequest, $wgUser;
-		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal('wpEditToken') ) ) {
+		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			// Look for a posting...
 			$text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
 			$parent = $wgRequest->getIntOrNull( 'wpParent' );
 			$review = $wgRequest->getInt( 'wpReview' );
 			$isPreview = $wgRequest->getCheck( 'wpPreview' );
-			if( $isPreview ) {
+			if ( $isPreview ) {
 				// Save the text for reference on later comment display...
 				$this->mPreviewText = $text;
 			}
@@ -161,30 +161,31 @@ class CodeRevisionView extends CodeView {
 	}
 
 	protected function formatPathLine( $path, $action ) {
-		$desc = wfMsgHtml( 'code-rev-modified-'.strtolower( $action ) );
+		// Uses messages 'code-rev-modified-a', 'code-rev-modified-r', 'code-rev-modified-d', 'code-rev-modified-m'
+		$desc = wfMsgHtml( 'code-rev-modified-' . strtolower( $action ) );
 		// Find any ' (from x)' from rename comment in the path.
 		preg_match( '/ \([^\)]+\)$/', $path, $matches );
-		$from = isset($matches[0]) ? $matches[0] : '';
+		$from = isset( $matches[0] ) ? $matches[0] : '';
 		// Remove ' (from x)' from rename comment in the path.
 		$path = preg_replace( '/ \([^\)]+\)$/', '', $path );
 		$viewvc = $this->mRepo->getViewVcBase();
 		$diff = '';
-		if( $viewvc ) {
+		if ( $viewvc ) {
 			$rev = $this->mRev->getId();
 			$prev = $rev - 1;
 			$safePath = wfUrlEncode( $path );
-			if( $action !== 'D' ) {
+			if ( $action !== 'D' ) {
 				$link = $this->mSkin->makeExternalLink(
 					"$viewvc$safePath?view=markup&pathrev=$rev",
 					$path . $from );
 			} else {
 				$link = $safePath;
 			}
-			if( $action !== 'A' && $action !== 'D' ) {
+			if ( $action !== 'A' && $action !== 'D' ) {
 				$diff = ' (' .
 					$this->mSkin->makeExternalLink(
-						"$viewvc$safePath?&pathrev=$rev&r1=$prev&r2=$rev", 
-						wfMsg('code-rev-diff-link') ) .
+						"$viewvc$safePath?&pathrev=$rev&r1=$prev&r2=$rev",
+						wfMsg( 'code-rev-diff-link' ) ) .
 					')';
 			}
 		} else {
@@ -192,76 +193,76 @@ class CodeRevisionView extends CodeView {
 		}
 		return "<li>$link ($desc)$diff</li>\n";
 	}
-	
+
 	protected function tagForm() {
 		global $wgUser;
 		$tags = $this->mRev->getTags();
 		$list = '';
-		if( count($tags) ) {
+		if ( count( $tags ) ) {
 			$list = implode( ", ",
 				array_map(
 					array( $this, 'formatTag' ),
-					$tags ) 
+					$tags )
 			) . '&nbsp;';
 		}
-		if( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
+		if ( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
 			$list .= $this->addTagForm( $this->mAddTags, $this->mRemoveTags );
 		}
 		return $list;
 	}
-	
+
 	protected function splitTags( $input ) {
-		if( !$this->mRev ) return array();
+		if ( !$this->mRev ) return array();
 		$tags = array_map( 'trim', explode( ",", $input ) );
-		foreach( $tags as $key => $tag ) {
+		foreach ( $tags as $key => $tag ) {
 			$normal = $this->mRev->normalizeTag( $tag );
-			if( $normal === false ) {
+			if ( $normal === false ) {
 				return null;
 			}
 			$tags[$key] = $normal;
 		}
 		return $tags;
 	}
-	
+
 	static function listTags( $tags ) {
-		if( empty($tags) )
+		if ( empty( $tags ) )
 			return "";
-		return implode(",",$tags);
+		return implode( ",", $tags );
 	}
-	
+
 	protected function statusForm() {
 		global $wgUser;
-		if( $wgUser->isAllowed( 'codereview-set-status' ) ) {
+		if ( $wgUser->isAllowed( 'codereview-set-status' ) ) {
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
 			return Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
 				self::buildStatusList( $this->mRev->getStatus(), $this ) .
-				xml::closeElement('select');
+				xml::closeElement( 'select' );
 		} else {
 			return htmlspecialchars( $this->statusDesc( $this->mRev->getStatus() ) );
 		}
 	}
-	
+
 	static function buildStatusList( $status, $view ) {
 		$states = CodeRevision::getPossibleStates();
 		$out = '';
-		foreach( $states as $state ) {
+		foreach ( $states as $state ) {
 			$out .= Xml::option( $view->statusDesc( $state ), $state,
 						$status === $state );
 		}
 		return $out;
 	}
-	
+
 	/** Parameters are the tags to be added/removed sent with the request */
 	static function addTagForm( $addTags, $removeTags ) {
 		global $wgUser;
 		return '<div><table><tr><td>' .
-			Xml::inputLabel( wfMsg('code-rev-tag-add'), 'wpTag', 'wpTag', 20,
+			Xml::inputLabel( wfMsg( 'code-rev-tag-add' ), 'wpTag', 'wpTag', 20,
 				self::listTags( $addTags ) ) . '</td><td>&nbsp;</td><td>' .
-			Xml::inputLabel( wfMsg('code-rev-tag-remove'), 'wpRemoveTag', 'wpRemoveTag', 20,
+			Xml::inputLabel( wfMsg( 'code-rev-tag-remove' ), 'wpRemoveTag', 'wpRemoveTag', 20,
 				self::listTags( $removeTags ) ) . '</td></tr></table></div>';
 	}
-	
+
 	protected function formatTag( $tag ) {
 		global $wgUser;
 		$repo = $this->mRepo->getName();
@@ -271,16 +272,16 @@ class CodeRevisionView extends CodeView {
 
 	protected function formatDiff() {
 		global $wgEnableAPI;
-		
+
 		// Asynchronous diff loads will require the API
 		// And JS in the client, but tough shit eh? ;)
 		$deferDiffs = $wgEnableAPI;
-		
-		if( $this->mSkipCache ) {
+
+		if ( $this->mSkipCache ) {
 			// We're purging the cache on purpose, probably
 			// because the cached data was corrupt.
 			$cache = 'skipcache';
-		} elseif( $deferDiffs ) {
+		} elseif ( $deferDiffs ) {
 			// If data is already cached, we'll take it now;
 			// otherwise defer the load to an AJAX request.
 			// This lets the page be manipulable even if the
@@ -290,7 +291,7 @@ class CodeRevisionView extends CodeView {
 			$cache = '';
 		}
 		$diff = $this->mRepo->getDiff( $this->mRev->getId(), $cache );
-		if( !$diff && $deferDiffs ) {
+		if ( !$diff && $deferDiffs ) {
 			// We'll try loading it by AJAX...
 			return $this->stubDiffLoader();
 		}
@@ -316,52 +317,53 @@ class CodeRevisionView extends CodeView {
 		$comments = implode( "\n",
 			array_map( array( $this, 'formatCommentInline' ), $this->mRev->getComments() )
 		) . $this->postCommentForm();
-		if( !$comments ) {
+		if ( !$comments ) {
 			return false;
 		}
 		return "<div class='mw-codereview-comments'>$comments</div>";
 	}
-	
+
 	protected function formatPropChanges() {
 		$changes = implode( "\n",
 			array_map( array( $this, 'formatChangeInline' ), $this->mRev->getPropChanges() )
 		);
-		if( !$changes ) {
+		if ( !$changes ) {
 			return false;
 		}
 		return "<ul class='mw-codereview-changes'>$changes</ul>";
 	}
 
 	protected function formatCommentInline( $comment ) {
-		if( $comment->id === $this->mReplyTarget ) {
+		if ( $comment->id === $this->mReplyTarget ) {
 			return $this->formatComment( $comment,
 				$this->postCommentForm( $comment->id ) );
 		} else {
 			return $this->formatComment( $comment );
 		}
 	}
-	
+
 	protected function formatChangeInline( $change ) {
 		global $wgLang;
 		$revId = $change->rev->getId();
 		$line = $wgLang->timeanddate( $change->timestamp, true );
 		$line .= '&nbsp;' . $this->mSkin->userLink( $change->user, $change->userText );
 		$line .= $this->mSkin->userToolLinks( $change->user, $change->userText );
-		$line .= '&nbsp;' . wfMsgExt("code-change-{$change->attrib}",'parseinline',$revId);
+		// Uses messages 'code-change-status', 'code-change-tags'
+		$line .= '&nbsp;' . wfMsgExt( "code-change-{$change->attrib}", 'parseinline', $revId );
 		$line .= " <i>[";
-		if( $change->removed ) {
-			$line .= '<b>'.wfMsg('code-change-removed').'</b> ';
-			$line .= htmlspecialchars($change->removed);
+		if ( $change->removed ) {
+			$line .= '<b>' . wfMsg( 'code-change-removed' ) . '</b> ';
+			$line .= htmlspecialchars( $change->removed );
 			$line .= $change->added ? "&nbsp;" : "";
 		}
-		if( $change->added ) {
-			$line .= '<b>'.wfMsg('code-change-added').'</b> ';
-			$line .=  htmlspecialchars($change->added);
+		if ( $change->added ) {
+			$line .= '<b>' . wfMsg( 'code-change-added' ) . '</b> ';
+			$line .=  htmlspecialchars( $change->added );
 		}
 		$line .= "]</i>";
 		return "<li>$line</li>";
 	}
-	
+
 	protected function commentLink( $commentId ) {
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
@@ -369,31 +371,31 @@ class CodeRevisionView extends CodeView {
 		$title->setFragment( "#c{$commentId}" );
 		return $title;
 	}
-	
+
 	protected function revLink() {
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
 		return $title;
-	}	
-	
-	protected function previewComment( $text, $review=0 ) {
+	}
+
+	protected function previewComment( $text, $review = 0 ) {
 		$comment = $this->mRev->previewComment( $text, $review );
 		return $this->formatComment( $comment );
 	}
-	
-	protected function formatComment( $comment, $replyForm='' ) {
+
+	protected function formatComment( $comment, $replyForm = '' ) {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
-		
-		if( $comment->id === null ) {
+
+		if ( $comment->id === null ) {
 			$linkId = 'cpreview';
 			$permaLink = "<b>Preview:</b> ";
 		} else {
 			$linkId = 'c' . intval( $comment->id );
 			$permaLink = $this->mSkin->link( $this->commentLink( $comment->id ), "#" );
 		}
-		
+
 		return Xml::openElement( 'div',
 			array(
 				'class' => 'mw-codereview-comment',
@@ -418,23 +420,23 @@ class CodeRevisionView extends CodeView {
 
 	protected function commentStyle( $comment ) {
 		$depth = $comment->threadDepth();
-		$margin = ($depth - 1) * 48;
+		$margin = ( $depth - 1 ) * 48;
 		return "margin-left: ${margin}px";
 	}
-	
+
 	protected function commentReplyLink( $id ) {
 		global $wgUser;
-		if( !$wgUser->isAllowed('codereview-post-comment') ) return '';
+		if ( !$wgUser->isAllowed( 'codereview-post-comment' ) ) return '';
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		$self = SpecialPage::getTitleFor( 'Code', "$repo/$rev/reply/$id" );
 		$self->setFragment( "#c$id" );
 		return '[' . $this->mSkin->link( $self, wfMsg( 'codereview-reply-link' ) ) . ']';
 	}
-	
-	protected function postCommentForm( $parent=null ) {
+
+	protected function postCommentForm( $parent = null ) {
 		global $wgUser;
-		if( $this->mPreviewText !== false && $parent === $this->mReplyTarget ) {
+		if ( $this->mPreviewText !== false && $parent === $this->mReplyTarget ) {
 			$preview = $this->previewComment( $this->mPreviewText );
 			$text = htmlspecialchars( $this->mPreviewText );
 		} else {
@@ -443,13 +445,13 @@ class CodeRevisionView extends CodeView {
 		}
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
-		if( !$wgUser->isAllowed('codereview-post-comment') ) {
+		if ( !$wgUser->isAllowed( 'codereview-post-comment' ) ) {
 			return '';
 		}
 		return '<div class="mw-codereview-post-comment">' .
 			$preview .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
-			($parent ? Xml::hidden( 'wpParent', $parent ) : '') .
+			( $parent ? Xml::hidden( 'wpParent', $parent ) : '' ) .
 			'<div>' .
 			Xml::openElement( 'textarea', array(
 				'name' => "wpReply{$parent}",

@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'code-prop-changes' => 'Status & tagging log',
 	'code-desc' => '[[Special:Code|Code review tool]] with [[Special:RepoAdmin|Subversion support]]',
 	'code-no-repo' => 'No repository configured!',
-	'code-load-diff'=> 'Loading diff…',
+	'code-load-diff' => 'Loading diff…',
 	'code-notes' => 'recent comments',
 	'code-authors' => 'authors',
 	'code-status' => 'status',
@@ -76,28 +76,28 @@ $messages['en'] = array(
 	'code-pathsearch-path' => 'Path:',
 	'code-rev-submit' => 'Save changes',
 	'code-rev-submit-next' => 'Save & next unresolved',
-	
+
 	'code-batch-status' => 'Change status:',
 	'code-batch-tags' => 'Change tags:',
 	'codereview-batch-title' => 'Change all selected revisions',
 	'codereview-batch-submit' => 'Submit',
-	
+
 	'code-releasenotes'     => 'release notes',
 	'code-release-legend'   => 'Generate release notes',
 	'code-release-startrev' => 'Start rev:',
 	'code-release-endrev'   => 'Last rev:',
-	
+
 	'codereview-subtitle' => 'For $1',
-	
+
 	'codereview-reply-link' => 'reply',
-	
+
 	'codereview-email-subj' => '[$1] [r$2]: New comment added',
 	'codereview-email-body' => 'User "$1" posted a comment on r$3.
-	
+
 Full URL: $2
 
 Comment:
-	
+
 $4',
 
 	'repoadmin' => 'Repository Administration',
@@ -117,7 +117,7 @@ $4',
 	'right-codereview-post-comment' => 'Add comments on revisions',
 	'right-codereview-set-status' => 'Change revisions status',
 	'right-codereview-link-user' => 'Link authors to wiki users',
-	
+
 	'specialpages-group-developer' => 'Developer tools',
 );
 

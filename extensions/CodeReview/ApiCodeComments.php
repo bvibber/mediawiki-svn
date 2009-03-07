@@ -27,25 +27,25 @@ class ApiCodeComments extends ApiQueryBase {
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'cc' );
 	}
-	
+
 	public function execute() {
 		$params = $this->extractRequestParams();
 		if ( is_null( $params['repo'] ) )
 			$this->dieUsageMsg( array( 'missingparam', 'repo' ) );
 		$this->props = array_flip( $params['prop'] );
-		
+
 		$listview = new CodeCommentsListView( $params['repo'] );
-		if( is_null( $listview->getRepo() ) )
+		if ( is_null( $listview->getRepo() ) )
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
 		$pager = $listview->getPager();
-		
+
 		if ( !is_null( $params['start'] ) )
 			$pager->setOffset( $this->getDB()->timestamp( $params['start'] ) );
 		$limit = $params['limit'];
 		$pager->setLimit( $limit );
-		
+
 		$pager->doQuery();
-		
+
 		$comments = $pager->getResult();
 		$data = array();
 
@@ -57,18 +57,18 @@ class ApiCodeComments extends ApiQueryBase {
 					wfTimestamp( TS_ISO_8601, $lastTimestamp ) );
 				break;
 			}
-			
+
 			$data[] = $this->formatRow( $row );
 			$lastTimestamp = $row->cc_timestamp;
 			$count++;
 		}
 		$comments->free();
-		
+
 		$result = $this->getResult();
 		$result->setIndexedTagName( $data, 'comment' );
 		$result->addValue( 'query', $this->getModuleName(), $data );
 	}
-	
+
 	private function formatRow( $row ) {
 		$item = array();
 		if ( isset( $this->props['timestamp'] ) )
@@ -81,7 +81,7 @@ class ApiCodeComments extends ApiQueryBase {
 			ApiResult::setContent( $item, $row->cc_text );
 		return $item;
 	}
-	
+
 	public function getAllowedParams() {
 		return array (
 			'repo' => null,
@@ -92,7 +92,7 @@ class ApiCodeComments extends ApiQueryBase {
 				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
 				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
-			'start' => array( 
+			'start' => array(
 				ApiBase :: PARAM_TYPE => 'timestamp'
 			),
 			'prop' => array (
@@ -107,7 +107,7 @@ class ApiCodeComments extends ApiQueryBase {
 			),
 		);
 	}
-	
+
 	public function getParamDescription() {
 		return array(
 			'repo' => 'Name of the repository',
@@ -116,19 +116,19 @@ class ApiCodeComments extends ApiQueryBase {
 			'prop' => 'Which properties to return',
 		);
 	}
-	
+
 	public function getDescription() {
 		return 'List comments on revisions in CodeReview';
 	}
-	
+
 	public function getExamples() {
 		return array(
 			'api.php?action=query&list=codecomments&ccrepo=MediaWiki',
 			'api.php?action=query&list=codecomments&ccrepo=MediaWiki&ccprop=timestamp|user|revision|text',
 		);
 	}
-	
+
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
-	}	
+	}
 }
