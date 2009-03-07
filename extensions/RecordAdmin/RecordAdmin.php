@@ -64,8 +64,8 @@ function wfSetupRecordAdmin() {
 /**
  * Setup parser-function magic
  */
-function wfRecordAdminLanguageGetMagic(&$magicWords, $langCode = 0) {
+function wfRecordAdminLanguageGetMagic( &$magicWords, $langCode = 0 ) {
 	global $wgRecordAdminMagic;
-	$magicWords[$wgRecordAdminMagic] = array($langCode, $wgRecordAdminMagic);
+	$magicWords[$wgRecordAdminMagic] = array( $langCode, $wgRecordAdminMagic );
 	return true;
 }

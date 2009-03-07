@@ -35,7 +35,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( $type && $wgRecordAdminUseNamespaces ) {
 			if ( $wpTitle && !ereg( "^$type:.+$", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
 		}
-		if (version_compare(substr($wgVersion, 0, 4), '1.13') > 0) {
+		if ( version_compare( substr( $wgVersion, 0, 4 ), '1.13' ) > 0 ) {
 			$wgOut->addHTML( $wgLang->pipeList( array(
 				"<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>",
 				"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br />\n"
@@ -46,7 +46,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a><br />\n"
 			);
 		}
-		
+
 		# Get posted form values if any
 		$posted = array();
 		foreach ( $_POST as $k => $v ) if ( ereg( '^ra_(.+)$', $k, $m ) ) $posted[$m[1]] = $v;
@@ -80,7 +80,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			while ( $row = $dbr->fetchRow( $res ) ) $options .= '<option>' . Title::newFromID( $row[0] )->getText() . '</option>';
 
 			# Render type select list
-			if ($options) $wgOut->addHTML( 
+			if ( $options ) $wgOut->addHTML(
 				"<select name='wpType'>$options</select> "
 				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
 			);
@@ -117,7 +117,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 						# Attempt to create the article
 						$article = new Article( $t );
-						$summary = "[[Special:RecordAdmin/$type|".wfMsgForContent( 'recordadmin' )."]]: " . wfMsg( 'recordadmin-summary-typecreated', $type );
+						$summary = "[[Special:RecordAdmin/$type|" . wfMsgForContent( 'recordadmin' ) . "]]: " . wfMsg( 'recordadmin-summary-typecreated', $type );
 						$text = '';
 						foreach ( $posted as $k => $v ) if ( $v ) {
 							if ( $this->types[$k] == 'bool' ) $v = 'yes';
@@ -139,7 +139,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Render the form
 			$wgOut->addHTML(
-				Xml::element( 'form', array( 'class' => strtolower($type).'-record recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
+				Xml::element( 'form', array( 'class' => strtolower( $type ) . '-record recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
 				. '<b>' . wfMsg( 'recordadmin-recordid' ) . '</b> ' . Xml::element( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
 				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. "\n<br><br><hr><br>\n{$this->form}"
@@ -159,7 +159,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$records = $this->getRecords( $type, $posted, $wpTitle, $invert );
 
 				# Render resulting records
-				$wgOut->addHTML( $this->renderRecords($records) );
+				$wgOut->addHTML( $this->renderRecords( $records ) );
 
 			}
 		}
@@ -172,7 +172,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			$text = $article->fetchContent();
 
 			# Update article if form posted
-			if ( count( $posted ) && $rtitle->userCan('edit', false)) {
+			if ( count( $posted ) && $rtitle->userCan( 'edit', false ) ) {
 
 				# Get the location and length of the record braces to replace
 				foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
@@ -197,7 +197,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Extract current values from article
 			$braces = false;
 			foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
-			if ($braces) {
+			if ( $braces ) {
 
 				# Fill in current values
 				$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
@@ -213,16 +213,16 @@ class SpecialRecordAdmin extends SpecialPage {
 					. '</tr></table></form>'
 				);
 			}
-			
+
 			# No instance of the template found, just display the article content
-			else $wgOut->addWikiText($text);
+			else $wgOut->addWikiText( $text );
 		}
 	}
 
 	/**
 	 * Return an array of records given type and other criteria
 	 */
-	function getRecords($type, $posted, $wpTitle = '', $invert = false, $orderby = 'created desc') {
+	function getRecords( $type, $posted, $wpTitle = '', $invert = false, $orderby = 'created desc' ) {
 		$records = array();
 		$dbr  = wfGetDB( DB_SLAVE );
 		$tbl  = $dbr->tableName( 'templatelinks' );
@@ -246,7 +246,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			}
 		}
 		$dbr->freeResult( $res );
-		
+
 		# Add the creation date column to the records
 		foreach ( $records as $i => $r ) {
 			$t = $r[0];
@@ -263,19 +263,19 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 
 		# Sort the records according to "orderby" parameter
-		if ($this->desc = eregi(' +desc *$', $orderby)) $orderby = eregi_replace(' +desc *$', '', $orderby);
+		if ( $this->desc = eregi( ' +desc *$', $orderby ) ) $orderby = eregi_replace( ' +desc *$', '', $orderby );
 		$this->orderby = $orderby;
-		usort($records, array($this, 'sortCallback'));
+		usort( $records, array( $this, 'sortCallback' ) );
 
 		return $records;
 	}
-	
+
 	/**
 	 * Compares to arrays by column
 	 */
-	function sortCallback($row1, $row2) {
-		if (!isset($row1[$this->orderby]) || !isset($row1[$this->orderby])) return 0;
-		if ($row1[$this->orderby] == $row2[$this->orderby]) return 0;
+	function sortCallback( $row1, $row2 ) {
+		if ( !isset( $row1[$this->orderby] ) || !isset( $row1[$this->orderby] ) ) return 0;
+		if ( $row1[$this->orderby] == $row2[$this->orderby] ) return 0;
 		$cmp = $row1[$this->orderby] > $row2[$this->orderby] ? 1 : -1;
 		return $this->desc ? -$cmp : $cmp;
 	}
@@ -283,16 +283,16 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
-	function renderRecords($records, $cols = false, $sortable = true) {
+	function renderRecords( $records, $cols = false, $sortable = true ) {
 		global $wgUser;
-		if (count($records) < 1) return wfMsg( 'recordadmin-nomatch' );
+		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
 		$type     = $this->type;
 		$sortable = $sortable ? ' sortable' : '';
 		$br       = $sortable ? '<br />' : '';
 		$parser   = new Parser;
-		$options  = ParserOptions::newFromUser($wgUser);
+		$options  = ParserOptions::newFromUser( $wgUser );
 
 		# Table header
 		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
@@ -301,11 +301,11 @@ class SpecialRecordAdmin extends SpecialPage {
 			'actions' => "<th class='col1'>" . wfMsg( 'recordadmin-actions' ) . "$br</th>",
 			'created' => "<th class='col2'>" . wfMsg( 'recordadmin-created' ) . "$br</th>"
 		);
-		foreach ( array_keys($this->types) as $col ) {
-			$class = 'col'.preg_replace('|\W|', '-', $col);
+		foreach ( array_keys( $this->types ) as $col ) {
+			$class = 'col' . preg_replace( '|\W|', '-', $col );
 			$th[$col] = "<th class='$class'>$col$br</th>";
 		}
-		foreach ( $cols ? $cols : array_keys($th) as $col ) $table .= $th[$col]."\n";
+		foreach ( $cols ? $cols : array_keys( $th ) as $col ) $table .= $th[$col] . "\n";
 		$table .= "</tr>\n";
 
 		$stripe = '';
@@ -318,17 +318,17 @@ class SpecialRecordAdmin extends SpecialPage {
 			$table .= "<tr$stripe>";
 			$row = array(
 				'title'   => "<td class='col0'><a href='$u'>$col</a></td>",
-				'actions' => "<td class='col1'>(<a href='$u'>" . wfMsg( 'recordadmin-viewlink' ) . "</a>)".
+				'actions' => "<td class='col1'>(<a href='$u'>" . wfMsg( 'recordadmin-viewlink' ) . "</a>)" .
 				             "(<a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$col" ) . "'>" . wfMsg( 'recordadmin-editlink' ) . "</a>)</td>",
 				'created' => "<td class='col2'>$ts</td>\n"
 			);
 			foreach ( array_keys( $this->types ) as $col ) {
 				$v = isset( $r[$col] ) ? $parser->parse( $r[$col], $special, $options, true, true )->getText() : '&nbsp;';
-				$class = 'col'.preg_replace('|\W|', '-', $col);
+				$class = 'col' . preg_replace( '|\W|', '-', $col );
 				$row[$col] = "<td class='$class'>$v</td>";
 			}
-			foreach ($cols ? $cols : array_keys($th) as $col) $table .= $row[$col]."\n";
-			
+			foreach ( $cols ? $cols : array_keys( $th ) as $col ) $table .= $row[$col] . "\n";
+
 			$table .= "</tr>\n";
 		}
 		$table .= "</table>\n";
@@ -512,7 +512,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$rtype = wfMsg( 'recordadmin-recordtype' ) . " ($newtype)";
 		$ttitle = Title::newFromtext( $newtype, NS_TEMPLATE );
 		$ftitle = Title::newFromtext( $newtype, NS_FORM );
-		if ( !is_object($ttitle) || !is_object($ftitle) ) {
+		if ( !is_object( $ttitle ) || !is_object( $ftitle ) ) {
 			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $rtype ) . "</div>\n" );
 		}
 		$tttext = $ttitle->getPrefixedText();
@@ -530,27 +530,27 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Attempt to create the template and form
 		else {
-			$summary = "[[Special:RecordAdmin/$newtype|".wfMsgForContent( 'recordadmin' )."]]: " . wfMsg( 'recordadmin-summary-typecreated', $rtype );
+			$summary = "[[Special:RecordAdmin/$newtype|" . wfMsgForContent( 'recordadmin' ) . "]]: " . wfMsg( 'recordadmin-summary-typecreated', $rtype );
 
 			# Compose the content of the new template
 			$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY )->getPrefixedText();
-			$link = "[{{fullurl:$tttext|action=edit}} ".wfMsg('recordadmin-needscontent')."]";
+			$link = "[{{fullurl:$tttext|action=edit}} " . wfMsg( 'recordadmin-needscontent' ) . "]";
 			$text = "<noinclude>[[$cat]]</noinclude>\n{| class=recordadmin-template\n\n$link\n\n|}<includeonly>[[Category:{$newtype}s]]</includeonly>";
 			$article = new Article( $ttitle );
 			$success = $article->doEdit( $text, $summary, EDIT_NEW );
-			if (!$success) {
+			if ( !$success ) {
 				$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $tttext ) . "</div>\n" );
 			}
 			else {
 
 				# Compose the content of the new form
 				$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY )->getPrefixedText();
-				$url = $ftitle->getLocalUrl('action=edit');
-				$link = "<a href=\"$url\">".wfMsg('recordadmin-needscontent')."</a>";
+				$url = $ftitle->getLocalUrl( 'action=edit' );
+				$link = "<a href=\"$url\">" . wfMsg( 'recordadmin-needscontent' ) . "</a>";
 				$text = "<html>\n\t<form>\n\t\t<table>\n\t\t$link\n\t\t</table>\n\t</form>\n</html>";
 				$article = new Article( $ftitle );
 				$success = $article->doEdit( $text, $summary, EDIT_NEW );
-				if (!$success) {
+				if ( !$success ) {
 					$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $fttext ) . "</div>\n" );
 				}
 			}
@@ -563,7 +563,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Render a record search in a parser-function
 	 */
-	function expandMagic(&$parser, $type) {
+	function expandMagic( &$parser, $type ) {
 		$parser->mOutput->mCacheTime = -1;
 		$filter   = array();
 		$title    = '';
@@ -571,27 +571,27 @@ class SpecialRecordAdmin extends SpecialPage {
 		$orderby  = 'created desc';
 		$cols     = false;
 		$sortable = true;
-		foreach (func_get_args() as $arg) if (!is_object($arg)) {
-			if (preg_match("/^(.+?)\\s*=\\s*(.+)$/", $arg, $match)) {
-				list(, $k, $v) = $match;
-				if ($k == 'title') $title = $v;
-				elseif ($k == 'invert')   $invert   = $v;
-				elseif ($k == 'orderby')  $orderby  = $v;
-				elseif ($k == 'cols')     $cols     = preg_split('/\s*,\s*/', $v);
-				elseif ($k == 'sortable') $sortable = eregi('1|yes|true|on', $v);
+		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
+			if ( preg_match( "/^(.+?)\\s*=\\s*(.+)$/", $arg, $match ) ) {
+				list( , $k, $v ) = $match;
+				if ( $k == 'title' ) $title = $v;
+				elseif ( $k == 'invert' )   $invert   = $v;
+				elseif ( $k == 'orderby' )  $orderby  = $v;
+				elseif ( $k == 'cols' )     $cols     = preg_split( '/\s*,\s*/', $v );
+				elseif ( $k == 'sortable' ) $sortable = eregi( '1|yes|true|on', $v );
 				else $filter[$match[1]] = $match[2];
 			}
 		}
-		$this->preProcessForm($type);
+		$this->preProcessForm( $type );
 		$this->examineForm();
-		$records = $this->getRecords($type, $filter, $title, $invert, $orderby);
-		$table = $this->renderRecords($records, $cols, $sortable);
+		$records = $this->getRecords( $type, $filter, $title, $invert, $orderby );
+		$table = $this->renderRecords( $records, $cols, $sortable );
 		return array(
 			$table,
 			'noparse' => true,
 			'isHTML' => true
 		);
-		
+
 	}
 
 	/**
