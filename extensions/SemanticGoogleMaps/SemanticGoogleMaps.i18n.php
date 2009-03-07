@@ -274,6 +274,13 @@ $messages['pt-br'] = array(
 	'semanticgooglemaps-enteraddresshere' => 'Introduza um endereço aqui',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'semanticgooglemaps-enteraddresshere' => "Scaffe l'indirizze aqquà",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

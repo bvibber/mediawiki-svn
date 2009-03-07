@@ -142,6 +142,22 @@ $messages['bg'] = array(
 	'talkhere-collapse' => 'скриване на редактора',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'talkhere-desc' => 'Stavlja stranicu za razgovor u stranicu',
+	'talkhere-foottext' => 'Gornji komentari su postavljeni od strane posjetioca.
+
+Operatori ovog sajta ne preuzimaju odgovornost za sadržaj tih komentara.',
+	'talkhere-talkpage' => 'stranica za razgovor',
+	'talkhere-notalk' => "''(nema još komentara)''",
+	'talkhere-addcomment' => 'dodaj komentar',
+	'talkhere-beforeinput' => 'Možete dodati komentar ispod',
+	'talkhere-loading' => 'učitavam uređivač...',
+	'talkhere-collapse' => 'sakrij uređivač',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP

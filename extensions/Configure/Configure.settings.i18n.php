@@ -4361,7 +4361,7 @@ $messages['he'] = array(
 	'configure-setting-wgActionPaths-key' => 'פעולה',
 	'configure-setting-wgActionPaths-value' => 'תבנית הכתובת',
 	'configure-setting-wgAllDBsAreLocalhost' => 'העברה שקטה של כל חיבורי בסיס הנתונים לשרת המקומי',
-	'configure-setting-wgCheckDBSchema' => 'בדיקה האם מסד הנתונים מעודכן עם כל צפיה בדף (הופסק)',
+	'configure-setting-wgCheckDBSchema' => 'בדיקה האם מסד הנתונים מעודכן עם כל צפיה בדף (תכונה מיושנת)',
 	'configure-setting-wgDBAvgStatusPoll' => 'הזמן הממוצע שבין שאילתות SHOW STATUS בתנאי עומס יתר',
 	'configure-setting-wgDBerrorLog' => 'קובץ אליו יישמר יומן השגיאות של בסיס הנתונים',
 	'configure-setting-wgDBname' => 'שם בסיס הנתונים לשימוש',
@@ -4391,8 +4391,8 @@ $messages['he'] = array(
 	'configure-setting-wgMainCacheType' => 'סוג מערכת המטמון הראשית',
 	'configure-setting-wgUseGzip' => 'שימוש בהצפנת GZIP',
 	'configure-setting-wgDisableLangConversion' => 'ביטול המרת שפה',
-	'configure-setting-wgArticleRobotPolicies-value' => 'מדיניות הרובוט',
-	'configure-setting-wgMaxArticleSize' => 'גודל הדף המירבי (ק"ב)',
+	'configure-setting-wgArticleRobotPolicies-value' => 'מדיניות רובוטים',
+	'configure-setting-wgMaxArticleSize' => 'גודל הדף המירבי (בקילובייט)',
 	'configure-setting-wgCheckFileExtensions' => 'בדיקת סיומות קבצים',
 	'configure-setting-wgMaxUploadSize' => 'גודל ההעלאה המירבי המותר',
 	'configure-setting-wgLogRestrictions-key' => 'סוג היומן',
@@ -5333,6 +5333,13 @@ $messages['lb'] = array(
 	'configure-setting-wgRCLinkDays' => 'Limit vun den Deeg déi bäi de rezenten Ännerungen ugewise ginn',
 	'configure-setting-wgBlockAllowsUTEdit' => "Engem gespaarte Benotzer erlaben seng eegen Diskussiounssäit z'änneren",
 	'configure-setting-wgEnotifMinorEdits' => 'E-Mail Noriichten och fir "kleng Ännerungen" (Benotzer-Astellung gëtt gewisen an de Benotzer muss d\'Optioun aktivéieren)',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'configure-setting-wgXhtmlNamespaces-key' => 'Лӱм-влакын кумдыкышт',
 );
 
 /** Macedonian (Македонски)
@@ -7028,8 +7035,22 @@ $messages['pl'] = array(
 	'configure-setting-wgSharedTables' => 'Tabele do współdzielenia',
 	'configure-setting-wgAllowImageMoving' => 'Włącz możliwość zmiany nazwy plików',
 	'configure-setting-wgIgnoreImageErrors' => 'Nie wyświetlaj komunikatów o błędach dla grafik',
+	'configure-setting-wgMaxAnimatedGifArea' => 'Dopuszczalny rozmiar w pikselach dla animowanego GIF',
+	'configure-setting-wgMaxImageArea' => 'Dopuszczalny rozmiar w pikselach dla grafik',
 	'configure-setting-wgMediaHandlers-key' => 'Typ MIME',
+	'configure-setting-wgShowEXIF' => 'Pokaż dane EXIF na stronie opisu pliku',
+	'configure-setting-wgCachePages' => 'Dopuść po stronie klienta użycie pamięci tymczasowej dla stron',
 	'configure-setting-wgFileCacheDirectory' => 'Katalog plików tymczasowych',
+	'configure-setting-wgUseFileCache' => 'Używaj pamięci tymczasowej dla plików',
+	'configure-setting-wgUseGzip' => 'Używaj kodowania GZIP',
+	'configure-setting-wgParserConf' => 'Konfiguracja analizatora składni',
+	'configure-setting-wgDisableLangConversion' => 'Wyłącz konwersję języka',
+	'configure-setting-wgLanguageCode' => 'Kod języka witryny',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Tytuł strony',
+	'configure-setting-wgCapitalLinks' => 'Pierwszy znak we wszystkich tytułach stron pisać wielką literą',
+	'configure-setting-wgExtraLanguageNames-key' => 'Kod języka',
+	'configure-setting-wgExtraLanguageNames-value' => 'Nazwa',
+	'configure-setting-wgExtraSubtitle' => 'Podtytuł (pojawia się pod tytułem każdej strony)',
 	'configure-setting-wgMaxArticleSize' => 'Maksymalny rozmiar strony (kB)',
 	'configure-setting-wgMaxRedirects' => 'Maksymalna liczba kolejnych przekierowań w rozwiązywanych przekierowaniach',
 	'configure-setting-wgSiteNotice' => 'Ogłoszenie witryny',
@@ -7038,6 +7059,7 @@ $messages['pl'] = array(
 	'configure-setting-wgCheckFileExtensions' => 'Sprawdzaj rozszerzenia plików',
 	'configure-setting-wgEnableUploads' => 'Włącz przesyłanie plików',
 	'configure-setting-wgFileBlacklist' => 'Zabronione rozszerzenia plików',
+	'configure-setting-wgFileStore' => 'Gdzie przechowywać usunięte pliki',
 	'configure-setting-wgLocalFileRepo' => 'Lokalne repozytorium plików',
 	'configure-setting-wgLogHeaders' => 'Opisy rejestrów',
 	'configure-setting-wgLogNames' => 'Nazwy rejestrów',
@@ -7048,6 +7070,8 @@ $messages['pl'] = array(
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupa',
 	'configure-setting-wgAutopromote-value' => 'Warunki',
 	'configure-setting-wgSMTP' => 'serwer SMTP',
+	'configure-setting-wgDebugLogGroups-value' => 'Plik',
+	'configure-setting-wgHooks' => 'Haki',
 	'configure-setting-wgRCLinkLimits' => 'Maksymalna liczba zmian widoczna w ostatnich zmianach',
 	'configure-setting-wgRCLinkDays' => 'Maksymalna liczba dni widoczna w ostatnich zmianach',
 	'configure-setting-wgRCMaxAge' => 'Minimalny wiek wpisów usuwanych z ostatnich zmian',
@@ -7056,6 +7080,7 @@ $messages['pl'] = array(
 	'configure-setting-wgSysopEmailBans' => 'Pozwalaj administratorom na blokowanie użytkownikom dostępu do [[Special:EmailUser]]',
 	'configure-setting-wgSysopRangeBans' => 'Pozwalaj administratorom na blokowanie zakresów adresów IP',
 	'configure-setting-wgSysopUserBans' => 'Pozwalaj administratorom na blokowanie zalogowanych użytkowników',
+	'configure-setting-wgEnotifUseJobQ' => 'Wyślij e‐maile poprzez kolejkę zadań',
 );
 
 /** Pashto (پښتو)
@@ -8659,6 +8684,11 @@ $messages['sv'] = array(
 	'configure-setting-wgXhtmlDefaultNamespace' => 'Förvald XHTML-namnrymd',
 	'configure-setting-wgXhtmlNamespaces' => 'Andra XHTML-namnrymder',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Namnrymd',
+	'configure-setting-wgUseZhdaemon' => 'Använd ZhDaemon för behandling av kinesisk text',
+	'configure-setting-wgZhdaemonHost' => 'ZhDaemon-värd',
+	'configure-setting-wgZhdaemonPort' => 'ZhDaemon-port',
+	'configure-setting-wgLocaltimezone' => 'Lokal tidszon',
+	'configure-setting-wgLocalTZoffset' => 'Tidszons-avvikelse',
 );
 
 /** Telugu (తెలుగు)

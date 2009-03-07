@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'regexfunctions-desc' => 'دوال محلل تعبيرات منتظمة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'regexfunctions-desc' => 'Функцыі парсэра для працы з рэгулярнымі выразамі',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

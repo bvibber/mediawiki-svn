@@ -1023,10 +1023,30 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Innv
  * @author Rubin
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'form-desc' => '[[Special:Form|Интерфейс]] (в виде формы) для создания новых страниц',
+	'form' => 'Форма',
+	'formnoname' => 'Нет имени формы',
+	'formnonametext' => 'Вы должны указать имя формы, в виде как «Special:Form/Имяформы».',
+	'formbadname' => 'Плохое имя формы',
+	'formbadnametext' => 'Нет формы с таким именем.',
+	'formpattern' => '$1-форма',
+	'formtitlepattern' => 'Добавить новый $1',
 	'formsave' => 'Сохранить',
+	'formindexmismatch-title' => 'Несоответствие образца и шаблона',
+	'formindexmismatch' => 'В этой форме есть несоответствие имени и шаблона в позиции $1.',
 	'formarticleexists' => 'Страница существует',
+	'formarticleexiststext' => 'Страница [[$1]] уже существует.',
+	'formbadpagename' => 'Плохое имя страницы',
+	'formbadrecaptcha' => 'Неправильное значение reCaptcha. Попробуйте ещё раз.',
+	'formbadpagenametext' => 'Введённые вами данные формы, приводят к ошибочному имени страницы, «$1».',
+	'formrequiredfielderror' => 'В этой форме требуется заполнить {{PLURAL:$2|$2 поле|$2 поля|$2 полей}}: $1.
+Пожалуйста дозаполните {{PLURAL:$2|это поле|эти поля}}.',
+	'formsavesummary' => 'Новая страница, с помощью [[Special:Form/$1|формы $1]]',
+	'formsaveerror' => 'Ошибка при сохранении формы',
+	'formsaveerrortext' => 'При сохранении страницы «$1» возникла неизвестная ошибка.',
 );
 
 /** Slovak (Slovenčina)

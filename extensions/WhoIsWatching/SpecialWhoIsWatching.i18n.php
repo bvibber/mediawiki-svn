@@ -349,10 +349,12 @@ Per favor usa le pagina [[MediaWiki:Number_of_watching_users_pageview]] pro defi
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Pietrodn
  */
 $messages['it'] = array(
 	'whoiswatching' => 'Chi sta osservando una pagina wiki',
+	'whoiswatching-desc' => 'Elenca i nomi degli utenti che tengono sotto osservazione una pagina wiki',
 	'specialwhoiswatchingthepage' => 'Chi sta osservando %s',
 	'specialwhoiswatchingusage' => 'Questa pagina speciale non può essere usata da sola. Per favore usa la pagina [[MediaWiki:Number_of_watching_users_pageview]] per definire un punto di entrata per questa pagina speciale.',
 	'specialwhoiswatchingaddusers' => 'Aggiungi utenti ad osservare la pagina',

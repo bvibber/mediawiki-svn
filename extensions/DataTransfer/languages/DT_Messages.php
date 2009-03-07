@@ -686,6 +686,7 @@ $messages['lt'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'dt_xml_namespace' => 'Лӱм-влакын кумдыкышт',
 	'dt_xml_page' => 'Лаштык',
 );
 
@@ -943,6 +944,7 @@ $messages['roa-tara'] = array(
 	'viewxml' => "Vide l'XML",
 	'dt_viewxml_categories' => 'Categorije',
 	'dt_viewxml_namespaces' => 'Namespace',
+	'dt_viewxml_simplifiedformat' => 'Formate semblifichete',
 	'dt_xml_namespace' => 'Namespace',
 	'dt_xml_page' => 'Pàgene',
 	'dt_xml_field' => 'Cambe',

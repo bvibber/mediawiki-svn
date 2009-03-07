@@ -408,10 +408,14 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Loupeter
  */
 $messages['ca'] = array(
 	'contrib-hist-date' => 'Data i hora',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Total per avui|Totals diaris dels darrers $1 dies}}',
+	'contribstats-monthly-totals' => "{{PLURAL:$1|Total d'aquest mes|Totals mensuals dels darrers $1 mesos}}",
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Total per $1 mes|Totals mensuals per $1 mesos}}',
 	'fundraiserstats-date' => 'Data',
 );
 
@@ -635,6 +639,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Aleator
  * @author Crazymadlover
  * @author Imre
  * @author Remember the dot
@@ -651,7 +656,7 @@ $messages['es'] = array(
 	'contrib-hist-anonymous' => 'Anónimo',
 	'contributionstatistics' => 'Estadísticas de contribución',
 	'contribstats-desc' => 'Muestra estadísticas de contribuciones hechas a la Fundación Wikimedia',
-	'contribstats-daily-totals' => '{{PLURAL:$1|Total por hoy|Totales diarios enn los últimos $1 días}}',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Total por hoy|Totales diarios en los últimos $1 días}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Total por este mes|Totales mensuales en los últimos $1 meses}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total por $1 mes|totales mensuales para $1 meses}}',
 	'contribstats-currency-range-totals' => 'Total monetario (de $1 a $2)',
@@ -1268,6 +1273,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -1286,6 +1292,10 @@ $messages['it'] = array(
 	'contribstats-daily-totals' => '{{PLURAL:$1|Totale per oggi|Totale giornaliero per gli scorsi $1 giorni}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Totale per questo mese|Totale mensile per gli scorsi $1 mesi}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Totale per $1 mese|Totale mensile per $1 mesi}}',
+	'contribstats-currency-range-totals' => 'Totali per valuta (dal $1 al $2)',
+	'contribstats-contribution-range-breakdown' => 'Suddivisione delle donazioni per valore (da $1 a $1)',
+	'contribstats-currency-totals' => "Totali per valuta per l'anno fiscale $1",
+	'contribstats-contribution-breakdown' => "Suddivisione delle donazioni per valore per l'anno fiscale $1",
 	'contribstats-day' => 'Giorno',
 	'contribstats-month' => 'Mese',
 	'contribstats-currency' => 'Valuta',
@@ -1311,6 +1321,7 @@ $messages['it'] = array(
 	'fundraiserstats-tab-contributions' => 'Numero di contributi',
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Massimi (USD)',
+	'specialpages-group-contribution' => 'Donazioni/Raccolta fondi',
 );
 
 /** Japanese (日本語)

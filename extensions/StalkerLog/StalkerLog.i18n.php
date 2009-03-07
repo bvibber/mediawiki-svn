@@ -370,6 +370,17 @@ $messages['pt-br'] = array(
 	'stalkerlog-log-text' => 'Este é um registro de autenticações e desautenticações de utilizadores.',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'stalkerlog-desc' => 'Добавляет [[Special:Log/stalkerlog|журнал]] представлений системе и завершения сеансов участников',
+	'stalkerlog-log-login' => 'представился системе.',
+	'stalkerlog-log-logout' => 'завершил сеанс.',
+	'stalkerlog-log-type' => 'Журнал аутентификации участников',
+	'stalkerlog-log-text' => 'Это журнал, регистрирующий представления системе (вход) и завершение сеанса (выход) участников.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

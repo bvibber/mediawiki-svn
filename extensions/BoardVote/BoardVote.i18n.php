@@ -5101,7 +5101,7 @@ Interpretacja głosu będzie taka, że preferujesz każdego z tych, na których 
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Wybory 2008</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandydaci</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Metoda Schulze\'a (opis w języku angielskim)</a></li></ul>',
-	'boardvote_intro_change' => '<p>W tych wyborach już głosowałeś. Możesz jednak zmienić głos za pomocą poniższego formularza. Określ swoje preferencje. Liczbą o wyższej wartości oznacz kandydata, którego bardziej popierasz, a niższą tego, który mniej Ci odpowiada. Możesz wystawić tą samą notę więcej niż jednemu kandydatowi, możesz również pozostawić kandydata bez oceny.</p>',
+	'boardvote_intro_change' => '<p>W tych wyborach już głosowałeś. Możesz jednak zmienić głos za pomocą poniższego formularza. Określ swoje preferencje. Liczbą o wyższej wartości oznacz kandydata, którego bardziej popierasz, a niższą tego, który mniej Ci odpowiada. Możesz wystawić tę samą notę więcej niż jednemu kandydatowi, możesz również pozostawić kandydata bez oceny.</p>',
 	'boardvote_entered' => 'Dziękujemy – Twój głos został zapisany.
 
 Jeśli chcesz, możesz zapisać poniższe informacje. Oto zapis Twojego głosu:
@@ -6366,8 +6366,8 @@ $messages['te'] = array(
 ఖాళీగా వదిలెయ్యాలి.</p>',
 	'boardvote_nosession' => 'మీ వికీమీడియా వాడుకరి ఐడీని నిర్ధారించుకోలేకున్నాం.
 మీకు వోటేసే అర్హత ఉన్న వికీలో లాగినయ్యి, <nowiki>[[Special:BoardVote]]</nowiki> కు వెళ్ళండి. మీరు వాడే ఖాతాతో $2 నాటికి కనీసం $1 మార్పుచేర్పులు చేసి ఉండాలి. అలాగే $4, $5 ల మధ్య కనీసం $3 మార్పుచేర్పులు చేసి ఉండాలి.',
-	'boardvote_notloggedin' => 'మీరు లాగిన్ అయి లేరు.
-వోటేసేందుకు, మీకు ఓ ఖాతా ఉండి, $2కి ముందు కనీసం $1 మార్పులు చేసివుండాలి. అలాగే $4, $5 ల మధ్య కనీసం $3 మార్పుచేర్పులు చేసి ఉండాలి.',
+	'boardvote_notloggedin' => 'మీరు లోనికి ప్రవేశించలేదు.
+వోటేసేందుకు, మీకు ఓ ఖాతా ఉండి, $2కి ముందు కనీసం $1 {{PLURAL:$1|మార్పు|మార్పులు}} చేసివుండాలి, మరియు $4, $5ల మధ్య కనీసం $3 {{PLURAL:$3|మార్పు|మార్పులు}} చేసి ఉండాలి.',
 	'boardvote_notqualified' => 'ఈ ఎన్నికలో వోటేసేందుకు మీకు అర్హత లేదు.
 $2 కి ముందు మీరు కనీసం $3 మార్పులు చేసివుండాలి. అలాగే $4, $5 ల మధ్య కనీసం $3 మార్పుచేర్పులు చేసి ఉండాలి.',
 	'boardvote_novotes' => 'ఇంకా ఎవరూ ఓటెయ్యలేదు.',

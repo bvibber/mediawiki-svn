@@ -159,11 +159,12 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'logentry-append' => 'הוספה',
-	'logentry-invalidpage' => 'דף בלתי תקני',
+	'logentry-invalidpage' => 'דף בלתי תקין',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

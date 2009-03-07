@@ -167,6 +167,13 @@ $messages['ksh'] = array(
 	'random-users-avatars-desc' => 'Määt et müjjelesch, met <tt>&lt;randomuserswithavatars&gt;</tt> de Avataare fun zofälesch ußsohte Metmaacher aanzezeije.',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'random-users-avatars-title' => 'Dyerbynna an kemmynieth',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

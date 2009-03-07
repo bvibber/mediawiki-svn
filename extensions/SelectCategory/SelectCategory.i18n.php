@@ -382,6 +382,13 @@ $messages['pt-br'] = array(
 	'selectcategory-subtitle' => 'Shift-clique para selecionar múltiplas entradas contíguas, Ctrl-clique para selecionar entradas não-contíguas.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'selectcategory-title' => 'Selezione le categorije',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

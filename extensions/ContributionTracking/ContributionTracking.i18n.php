@@ -329,10 +329,16 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'contributiontracking-desc' => 'Monitoraggio donazioni per la raccolta fondi Wikimedia',
+	'contributiontracking' => 'Monitoraggio donazioni',
 	'contrib-tracking-error' => 'Errore',
+	'contrib-tracking-error-text' => "Errore nell'invio del modulo",
+	'contrib-tracking-submitting' => 'Invio al gestore del pagamento...',
+	'contrib-tracking-continue' => 'Se il collegamento non avviene automaticamente, fare clic sul pulsante per completare la donazione con PayPal.',
 	'contrib-tracking-button' => 'Continua',
 );
 
@@ -430,6 +436,13 @@ $messages['li'] = array(
 	'contrib-tracking-submitting' => "Bezig mit 't oetveure venne betaling...",
 	'contrib-tracking-continue' => 'Es se neet automatisch wörs doorgestuurdj, klik den óp de knoep óm dien gif via PayPal aaf te make.',
 	'contrib-tracking-button' => 'Doorgaon',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'contrib-tracking-error' => 'Йоҥылыш',
 );
 
 /** Macedonian (Македонски)
@@ -601,6 +614,8 @@ $messages['sah'] = array(
 	'contributiontracking-desc' => 'Викимедиаҕа киирбит үп ханна барбытын көрүү',
 	'contributiontracking' => 'Үп хантан киирбитин көрүү',
 	'contrib-tracking-error' => 'Алҕас',
+	'contrib-tracking-error-text' => 'Форма сыыһа сигэнэр',
+	'contrib-tracking-submitting' => 'Төлөбүрү таҥастааччыга ыытыы...',
 	'contrib-tracking-continue' => 'Аптамаатынан наадалаах сиргэ тиийбэтэх буоллаххына, тимэҕи баттаан PayPal тиһилигин көмөтүнэн сиэртибэлээһиҥҥин түмүктээ.',
 	'contrib-tracking-button' => 'Салгыы',
 );

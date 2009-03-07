@@ -620,14 +620,22 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Maire
+ * @author Sp5uhe
  * @author ToSter
  */
 $messages['pl'] = array(
+	'postcomment_desc' => 'Pozwól użytkownikom wpisywać komentarze bezpośrednio do stron dyskusji.',
 	'postcomment_discussionprotected' => 'Ta strona dyskusji została zabezpieczona. Nie można już dodawać wpisów.',
 	'postcomment_notloggedin' => 'Nie jesteś zalogowany/-a.',
 	'postcomment_youareloggedinas' => 'Jesteś zalogowany/-a jako $1',
 	'postcomment_addcommentdiscussionpage' => 'Dodaj komentarz na tej stronie dyskusji',
 	'postcomment_leavemessagefor' => 'Zostaw wiadomość dla $1',
+	'postcomment_post' => 'Wyślij',
+	'postcomment_on' => 'O',
+	'postcomment_said' => 'napisał',
+	'postcomment_invalidrequest' => 'Nieprawidłowe żądanie.',
+	'postcomment_replyto' => 'Odpowiedz $1',
+	'postcomment_nopostingtoadd' => 'Brak wiadomości do dodania.',
 );
 
 /** Pashto (پښتو)

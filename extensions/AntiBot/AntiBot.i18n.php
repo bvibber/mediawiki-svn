@@ -198,6 +198,13 @@ $messages['id'] = array(
 	'antibot-desc' => 'Kerangka kerja sederhana untuk memeriksa spambot dan alat pemicu',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'antibot-desc' => "Semplice framework per le verifiche anti-spambot e l'attivazione di specifici payload.",
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
@@ -379,6 +386,13 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'antibot-desc' => "Payak na kayarian ng balangkas para sa mga pagsusuri ng ''bot'' na pangmanlulusob (''spambot'') at pampagalaw ng mga \"pambayad-karga\" (''payload'')",
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'antibot-desc' => 'Spambot kontrolleri ve tetikleyici yükler için basit bir çerçeve',
 );
 
 /** Ukrainian (Українська)

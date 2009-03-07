@@ -35,8 +35,8 @@ $messages['bs'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'honeypot-desc' => 'Bietet Integration mit [http://projecthoneypot.org/ „Project Honey Pot“] für MediaWiki-Seiten',
-	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Anzahl aktueller Ereignisse die durch eine IP-Adresse ausgelöst wurden, gemäß „Project Honey Pot“',
+	'honeypot-desc' => 'Integration mit dem [http://projecthoneypot.org/ „Honey Pot“-Projekt] für MediaWiki-Installationen',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Anzahl der durch einer IP-Adresse ausgelöster aktueller Ereignisse, gemäß dem „Honey Pot“-Projekt',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -72,10 +72,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'honeypot-desc' => 'אספקת שילוב עם [http://projecthoneypot.org/ מיזם Honey Pot] עבור אתרי מדיהוויקי',
+	'honeypot-desc' => 'שילוב אתרי מדיה־ויקי עם [http://projecthoneypot.org/ מיזם Honey Pot]',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'מספר האירועים האחרונים שבוצעו מכתובת ה־IP, לפי מיזם Honey Pot',
 );
 
@@ -116,6 +117,38 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'honeypot-desc' => 'Biedt integratie met [http://projecthoneypot.org/ Project Honey Pot] voor MediaWiki-sites',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Aantal recente gebeurtenissen die het IP-adres heeft veroorzaakt volgens Project Honey Pot',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'honeypot-desc' => 'Gjev integrering for [http://projecthoneypot.org/ Project Honey Pot] på MediaWiki-nettstader',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Tal på nylege hendingar IP-adressa har sett i verk, ifylgje Project Honey Pot',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'honeypot-desc' => "Permet d'integrar de sites MediaWiki amb lo [http://projecthoneypot.org/ Projècte Honey Pot]",
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Nombre d'eveniments recents que l'adreça IP a fach, en acòrd amb lo projècte Honey Pot",
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'honeypot-desc' => 'Providencia integração com [http://projecthoneypot.org/ Project Honey Pot] para sítios MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Número de eventos recentes que o endereço IP despoletou, segundo Project Honey Pot',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'honeypot-desc' => 'Provê integração com [http://projecthoneypot.org/ Project Honey Pot] para sítios MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Número de eventos recentes que o endereço IP disparou, segundo Project Honey Pot',
 );
 
 /** Russian (Русский)

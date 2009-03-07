@@ -611,6 +611,13 @@ $messages['oc'] = array(
 	'intersection_noincludecats' => 'Error : avètz besonh d’inclure almens una categoria, o de precisar un nom d’espaci !',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'intersection_toomanycats' => 'Рæдыд: æгæр бирæ категоритæ!',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

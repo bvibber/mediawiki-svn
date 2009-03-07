@@ -3316,6 +3316,7 @@ Subukan me ing pekabayung bersion ning <a href="http://www.microsoft.com/ie">Int
  * @author Sp5uhe
  */
 $wgGoogleMapsMessages['pl'] = array(
+	'gm-desc' => 'Łatwe tworzenie map z użyciem zakładek wiki',
 	'gm-incompatible-browser' => 'Korzystanie z mapy wymaga byś używał współpracującej z nią przeglądarki.',
 	'gm-incompatible-browser-link' => 'Kliknij tutaj, by zobaczyć listę wspieranych przeglądarek.',
 	'gm-no-editor' => 'Niestety używana przez Ciebie przeglądarka internetowa nie obsługuje mechanizmu mapy interaktywnej.

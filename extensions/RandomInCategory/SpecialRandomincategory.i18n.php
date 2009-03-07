@@ -460,6 +460,13 @@ $messages['ksh'] = array(
 	'randomincategory-submit' => 'Loß Jonn!',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'randomincategory-toolbox' => 'Folen dre jons',
+);
+
 /** Latin (Latina)
  * @author UV
  */

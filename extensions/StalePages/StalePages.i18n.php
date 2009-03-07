@@ -352,6 +352,15 @@ $messages['pt-br'] = array(
 	'stalepages-summary' => 'Esta é uma lista das páginas que não foram editadas {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'stalepages' => 'Устаревшие страницы',
+	'stalepages-desc' => 'Составляет [[Special:Stalepages|список страниц]], в которых в последнее время не было правок',
+	'stalepages-summary' => 'Это список страниц, в которых не было правок в течение ((PLURAL:$1|последнего $1 дня|последних $1 дней|последних $1 дней)).',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

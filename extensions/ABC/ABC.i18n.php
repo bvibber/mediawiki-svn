@@ -373,9 +373,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'abcdesc' => 'Dodaje znacznik <tt>&lt;abc&gt;</tt> do muzyki w formacie ABC',
+	'abcdesc' => 'Dodaje znacznik <tt>&lt;abc&gt;</tt> dla muzyki w formacie ABC',
 	'abcdownload' => 'Pobierz:',
 );
 

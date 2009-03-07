@@ -1233,6 +1233,9 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'sitematrix-language' => 'Æвзаг',
+	'sitematrix-others' => 'Викимедийы æндæр проекттæ',
+	'sitematrix-total' => "'''Æдæппæты нымæц: $1'''",
+	'sitematrix-sitetotal' => 'Æдæппæт',
 );
 
 /** Pangasinan (Pangasinan) */

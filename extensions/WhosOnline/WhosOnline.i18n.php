@@ -194,6 +194,14 @@ $messages['is'] = array(
 	'whosonline-desc' => 'Sýna [[Special:WhosOnline|lista]] yfir innskráða og óþekkta notendur sem eru tengdir',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'whosonline' => 'Chi è online',
+	'whosonline-desc' => 'Mostra [[Special:WhosOnline|un elenco]] di utenti attualmente online, anonimi compresi',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

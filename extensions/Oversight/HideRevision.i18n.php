@@ -551,7 +551,7 @@ $messages['ca'] = array(
 	'hiderevision' => 'Oculta aquestes revisions permanentment',
 	'hiderevision-desc' => 'Amaga revisions individuals de tots els usuaris per raons legals, etc.',
 	'right-oversight' => 'Vegeu una revisió prèviament amagada',
-	'right-hiderevision' => 'Revisar i restaurar les versions amagades als administradors',
+	'right-hiderevision' => 'Amagar revisions dels administradors',
 	'hiderevision-prompt' => 'Número de la revisió a suprimir:',
 	'hiderevision-continue' => 'Continua',
 	'hiderevision-reason' => 'Motiu (es registrarà de forma privada):',
@@ -1449,6 +1449,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dorgan
  * @author KossuthRad
  */
 $messages['hu'] = array(
@@ -1473,6 +1474,7 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 	'hiderevision-reason' => 'Ok (titkosan lesz naplózva):',
 	'hiderevision-submit' => 'Adat eltávolítása véglegesen',
 	'hiderevision-tab' => 'Rejtett átdolgozás',
+	'hiderevision-link' => 'Rejtett szerkesztői közreműködések',
 	'hiderevision-norevisions' => 'Nincsenek megadva az eltávolítandó változatok.',
 	'hiderevision-noreason' => 'Indokolnod kell a törléshez/ eltávolításhoz.',
 	'hiderevision-status' => 'Átdolgozott kiadás $1: $2',
@@ -1492,6 +1494,8 @@ adatbázis-adminisztrátor, ha hibát vétesz.",
 	'oversight-hidden' => 'Rejtett változat',
 	'oversight-header' => 'Alább találhatóak meg a nyilvánosság elől legutóbb elrejtett változatok.
 Ezen információk kiadása az adatvédelmi biztosi jogosultség végleges elvesztését is jelentheti.',
+	'oversight-oversighter' => 'Adatvédelmi biztos:',
+	'oversight-offender' => 'IP-cím vagy felhasználói név:',
 );
 
 /** Interlingua (Interlingua)

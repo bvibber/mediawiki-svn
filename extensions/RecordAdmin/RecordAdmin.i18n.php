@@ -54,13 +54,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author CERminator
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'recordadmin-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
-	'recordadmin-category' => 'Category which contains the templates used as records and having corresponding forms',
+	'recordadmin-buttoncreate' => '{{Identical|Create}}',
 );
 
 /** Arabic (العربية)
@@ -160,6 +161,25 @@ $messages['bg'] = array(
 	'recordadmin-actions' => 'Действия',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'recordadmin-submit' => 'Pošalji',
+	'recordadmin-alreadyexist' => 'Žao nam je, "$1" već postoji!',
+	'recordadmin-createsuccess' => '$1 napravljen',
+	'recordadmin-badtitle' => 'Nevaljan naslov!',
+	'recordadmin-buttonsearch' => 'Traži',
+	'recordadmin-buttoncreate' => 'Napravi',
+	'recordadmin-searchresult' => 'Rezultati pretrage',
+	'recordadmin-edit' => 'Uređuje se $1',
+	'recordadmin-updatesuccess' => '$1 ažurirano',
+	'recordadmin-buttonsave' => 'Sačuvaj',
+	'recordadmin-createlink' => '<a href=$1>napravi {{GENDER:$1|jedan|jednu}}</a>',
+	'recordadmin-summary-typecreated' => 'Novi $1 napravljen',
+	'recordadmin-actions' => 'Akcije',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Melancholie
@@ -171,7 +191,7 @@ $messages['de'] = array(
 	'recordadmin-desc' => 'Eine [[Special:RecordAdmin|spezielle Seite]] zum Finden und Editieren der Aufzeichnungsseiten mittels eines Formulars',
 	'recordadmin-categoryempty' => 'Derzeit gibt es keine Aufzeichnungstypen. Bitte kategorisiere Aufzeichnungsvorlagen unter [[:$1|$1]].',
 	'recordadmin-select' => 'Wähle den zu verwaltenden Aufzeichnungstyp',
-	'recordadmin-createtype' => 'Gebe den Namen des zu erstellenden Aufzeichnungstyp an',
+	'recordadmin-createtype' => 'Gib den Namen des zu erstellenden Aufzeichnungstyps an',
 	'recordadmin-recordtype' => 'Aufzeichnungstyp',
 	'recordadmin-newsearch' => 'Neue $1-Suche',
 	'recordadmin-newrecord' => 'Wähle einen anderen Aufzeichnungstypen',
@@ -201,6 +221,7 @@ $messages['de'] = array(
 	'recordadmin-editlink' => 'ändern',
 	'recordadmin-created' => 'Erstellt',
 	'recordadmin-actions' => 'Aktionen',
+	'recordadmin-needscontent' => 'Inhalt wird benötigt, klicke hier zum hinzufügen …',
 	'right-recordadmin' => 'Finde und Editiere Aufzeichnungsseiten',
 );
 
@@ -250,6 +271,7 @@ $messages['dsb'] = array(
 	'recordadmin-editlink' => 'wobźěłaś',
 	'recordadmin-created' => 'Napórany',
 	'recordadmin-actions' => 'Akcije',
+	'recordadmin-needscontent' => 'Wopśimjeśe trěbne, klikni sem, aby jen pśidał...',
 	'right-recordadmin' => 'Zapisowe boki namakaś a wobźěłaś',
 );
 
@@ -363,6 +385,7 @@ $messages['fr'] = array(
 	'recordadmin-editlink' => 'modifier',
 	'recordadmin-created' => 'Créé',
 	'recordadmin-actions' => 'Actions',
+	'recordadmin-needscontent' => "Contenu requis, cliquez ici pour l'ajouter...",
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 
@@ -404,6 +427,7 @@ $messages['gl'] = array(
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Creado',
 	'recordadmin-actions' => 'Accións',
+	'recordadmin-needscontent' => 'Contido necesario, prema aquí para engadilo...',
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
@@ -445,6 +469,7 @@ $messages['gsw'] = array(
 	'recordadmin-editlink' => 'ändere',
 	'recordadmin-created' => 'Aagleit',
 	'recordadmin-actions' => 'Aktione',
+	'recordadmin-needscontent' => 'S bruucht e Inhalt, druck doo zue zuefiege ...',
 	'right-recordadmin' => 'Find Ufzeichnigssyte un bearbeit si',
 );
 
@@ -457,7 +482,7 @@ $messages['he'] = array(
 	'recordadmin-desc' => '[[Special:RecordAdmin|דף מיוחד]] למציאה ועריכה של דפי רשומות באמצעות טופס',
 	'recordadmin-categoryempty' => 'נכון לעכשיו אין סוגי רשומות. אנא סווגו תבניות רשומות לתוך [[:$1|$1]].',
 	'recordadmin-select' => 'בחירת סוג הרשומות לניהול',
-	'recordadmin-createtype' => 'הזינו את סוג הרשומה החדש ליצירה',
+	'recordadmin-createtype' => 'כתבו את סוג הרשומה החדש ליצירה',
 	'recordadmin-recordtype' => 'סוג הרשומה',
 	'recordadmin-newsearch' => 'חיפוש $1 חדש',
 	'recordadmin-newrecord' => 'בחירת סוג אחר של רשומות',
@@ -528,6 +553,7 @@ $messages['hsb'] = array(
 	'recordadmin-editlink' => 'wobdźěłać',
 	'recordadmin-created' => 'Wutworjeny',
 	'recordadmin-actions' => 'Akcije',
+	'recordadmin-needscontent' => 'Wobsah trěbny, klikń sem, zo by jón přidał...',
 	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
 );
 
@@ -680,6 +706,7 @@ $messages['ksh'] = array(
 	'recordadmin-editlink' => 'ändere',
 	'recordadmin-created' => 'Neu aanjelaat',
 	'recordadmin-actions' => 'Axjohne',
+	'recordadmin-needscontent' => 'Mer bruche noch ene Enhalld doför, donn hee klecke, öm den dobei ze donn:',
 	'right-recordadmin' => 'Datesätz fenge un ändere',
 );
 
@@ -760,6 +787,7 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 	'recordadmin-editlink' => 'bewerken',
 	'recordadmin-created' => 'Aangemaakt',
 	'recordadmin-actions' => 'Acties',
+	'recordadmin-needscontent' => 'Inhoud toevoegen…',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 );
 
@@ -770,7 +798,10 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 $messages['nn'] = array(
 	'recordadmin' => 'Oppføringshandsaming',
 	'recordadmin-desc' => 'Ei [[Special:RecordAdmin|spesialside]] for å finna og redigera oppføringar ved å bruka eit skjema',
-	'recordadmin-select' => 'Vel type oppføring å søkja etter',
+	'recordadmin-categoryempty' => 'Det finst for tida ingen oppføringstypar. Kategoriser oppføringsmalar i [[:$1|$1]].',
+	'recordadmin-select' => 'Vel kva oppføringstype du ynskjer å handsama',
+	'recordadmin-createtype' => 'Skriv inn namnet på ein ny oppføringstype som du ynskjer å oppretta',
+	'recordadmin-recordtype' => 'oppføringstype',
 	'recordadmin-newsearch' => 'Nytt søk etter $1',
 	'recordadmin-newrecord' => 'Vel ein annan type oppføring',
 	'recordadmin-submit' => 'Send',
@@ -799,6 +830,7 @@ $messages['nn'] = array(
 	'recordadmin-editlink' => 'endra',
 	'recordadmin-created' => 'Oppretta',
 	'recordadmin-actions' => 'Handlingar',
+	'recordadmin-needscontent' => 'Innhald trengst, trykk her for å leggja det til...',
 	'right-recordadmin' => 'Finn og gjer endringar på oppføringssider',
 );
 
@@ -808,7 +840,10 @@ $messages['nn'] = array(
 $messages['oc'] = array(
 	'recordadmin' => 'Gestion dels enregistraments',
 	'recordadmin-desc' => 'Una pagina especiala per trobar e modificar l’enregistrament de las paginas per l’utilizacion d’un formulari',
-	'recordadmin-select' => 'Seleccionar lo tipe d’enregistrament de recercar per',
+	'recordadmin-categoryempty' => "Actualament, i a pas cap de tipe d'enregistrament. Categorizatz los modèls d'enregistrament dins [[:$1|$1]].",
+	'recordadmin-select' => 'Seleccionatz lo tipe d’enregistrament de gerir',
+	'recordadmin-createtype' => "Picatz lo nom d'un tipe d'enregistrament per o crear",
+	'recordadmin-recordtype' => "tipe d'enregistrament",
 	'recordadmin-newsearch' => 'Recèrca novèla $1',
 	'recordadmin-newrecord' => 'Seleccionar un autre tipe d’enregistrament',
 	'recordadmin-submit' => 'Sometre',
@@ -918,6 +953,7 @@ $messages['pt'] = array(
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Criado',
 	'recordadmin-actions' => 'Ações',
+	'recordadmin-needscontent' => 'Conteúdo necessário, clique aqui para adicioná-lo ...',
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 );
 
@@ -927,7 +963,10 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'recordadmin' => 'Administração de registros',
 	'recordadmin-desc' => 'Uma [[Special:RecordAdmin|página especial]] para encontrar e editar páginas de registros usando um formulário',
-	'recordadmin-select' => 'Selecione o tipo de registro a pesquisar',
+	'recordadmin-categoryempty' => 'No momento não há tipos de registro. Por favor, categorize predefinições de registro em [[:$1|$1]].',
+	'recordadmin-select' => 'Selecione o tipo de registro a gerenciar',
+	'recordadmin-createtype' => 'Introduza o nome do novo tipo de registo a criar',
+	'recordadmin-recordtype' => 'Tipo de registro',
 	'recordadmin-newsearch' => 'Nova pesquisa $1',
 	'recordadmin-newrecord' => 'Selecionar outro tipo de registro',
 	'recordadmin-submit' => 'Enviar',
@@ -956,6 +995,7 @@ $messages['pt-br'] = array(
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Criado',
 	'recordadmin-actions' => 'Ações',
+	'recordadmin-needscontent' => 'Conteúdo necessário, clique aqui para adicioná-lo ...',
 	'right-recordadmin' => 'Encontrar e editar páginas de registros',
 );
 
@@ -1021,6 +1061,7 @@ $messages['sk'] = array(
 	'recordadmin-editlink' => 'upraviť',
 	'recordadmin-created' => 'Vytvorené',
 	'recordadmin-actions' => 'Operácie',
+	'recordadmin-needscontent' => 'Je potrebné pridať obsah, pridajte ho kliknutím sem...',
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
 );
 

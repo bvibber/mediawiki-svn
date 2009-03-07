@@ -1344,6 +1344,17 @@ $messages['ro'] = array(
 	'bookinfo-provider' => 'Furnizor date: $1',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'bookinfo-header' => "'Mbormazione sus a 'u libbre",
+	'bookinfo-result-title' => 'Titele:',
+	'bookinfo-result-author' => 'Autore:',
+	'bookinfo-result-publisher' => 'Pubblicatore:',
+	'bookinfo-result-year' => 'Anne:',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

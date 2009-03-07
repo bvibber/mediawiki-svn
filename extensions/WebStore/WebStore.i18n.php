@@ -1703,7 +1703,7 @@ $1',
 
 $1',
 	'webstore_php_error' => 'Napotkano następujące błędy PHP:',
-	'webstore_no_handler' => 'Nie odnaleziono handlera do obsługi danych tego typu MIME',
+	'webstore_no_handler' => 'Nie odnaleziono wtyczki obsługującej dane tego typu MIME',
 );
 
 /** Piedmontese (Piemontèis)

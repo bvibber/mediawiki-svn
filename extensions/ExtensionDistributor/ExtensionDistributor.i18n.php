@@ -1325,11 +1325,17 @@ $messages['myv'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'extensiondistributor' => 'MediaWiki-Extension dalladen',
+	'extdist-no-such-extension' => 'Extension „$1“ gifft dat nich',
+	'extdist-no-such-version' => 'De Extension „$1“ gifft dat nich in de Version „$2“.',
 	'extdist-submit-extension' => 'Wiedermaken',
 	'extdist-current-version' => 'Aktuelle Version (trunk)',
 	'extdist-no-versions' => 'De utwählte Extension ($1) is in keen Version verföögbor!',
 	'extdist-submit-version' => 'Wiedermaken',
 	'extdist-no-remote' => 'De feernstüürte Subversion-Client mellt sik nich.',
+	'extdist-remote-error' => 'Fehler vun’n feernstüürt Subversion-Client: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Ungüllige Antwoord vun’n feernstüürt Subversion-Client.',
+	'extdist-svn-error' => 'Subversion hett en Fehler mellt: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'XML-Daten von „svn info“ kunnen nich verarbeidt warrn: <pre>$1</pre>',
 	'extdist-tar-error' => 'Dat Tar-Programm mellt den Enn-Kood $1:',
 	'extdist-want-more' => 'En annere Extension kriegen.',

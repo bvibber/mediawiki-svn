@@ -327,7 +327,7 @@ $messages['he'] = array(
 	'findspam-ip' => 'כתובת IP:',
 	'findspam-ok' => 'אישור',
 	'findspam-notextfound' => 'לא נמצאו תרומות',
-	'right-findspam' => 'חיפוש אחר השחתה שבוצעה לאחרונה',
+	'right-findspam' => 'חיפוש אחר ספאם שהוסף לאחרונה',
 );
 
 /** Hindi (हिन्दी)
@@ -621,6 +621,7 @@ $messages['pl'] = array(
 	'findspam-ip' => 'Adres IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nie odnaleziono żadnych edycji',
+	'right-findspam' => 'Wyszukaj ostatnio dodany spam',
 );
 
 /** Pashto (پښتو)
