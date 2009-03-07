@@ -113,7 +113,7 @@ if ($from =~ /^bugzilla-daemon/)
 				} elsif ($status eq 'REOPENED') {
 					$st = "\00304(REOPENED)\003";
 				} else {
-					$st = "\00303($2)\003";
+					$st = "\00303($status)\003";
 				}
 
 				if ($st eq "\00303(RESOLVED)\003" && $body =~ /Resolution\|\s+\|(\w+)/m) {
@@ -158,8 +158,8 @@ if ($from =~ /^bugzilla-daemon/)
 
 if ($output)
 {
-	open (OUT, ">>/var/wikibugs/wikibugs.log");
-#	print $output;
-	print OUT $output;
-	close OUT;
+#	open (OUT, ">>/var/wikibugs/wikibugs.log");
+	print $output;
+#	print OUT $output;
+#	close OUT;
 }
