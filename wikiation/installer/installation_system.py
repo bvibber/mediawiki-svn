@@ -80,9 +80,16 @@ class Installation_System:
 			if filename.startswith(task2[0]):
 				task2[0]=os.path.join(installdir,filename)
 				try:
-					#print task2,env	#useful for debugging. Might want to make a flag! :-)
+					if settings.debug:
+						print " === " +task+" === "
+						print "environment",env
+						print "task",task2
 					process=subprocess.Popen(task2 ,stdout=subprocess.PIPE, env=env)
 					stdout,stderr=process.communicate()
+					if settings.debug:
+						print "stdout:",stdout
+						print "stderr:",stderr
+						print
 				except Exception, e:
 					#reraise with task and env info included, to give us a clue where we went wrong
 					raise Exception((e,task2,env))

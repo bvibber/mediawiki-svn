@@ -2,9 +2,13 @@
 # This software is developed by Kim Bruning.
 #
 # Distributed under the terms of the MIT license.
-# ======================================
-#Default settings file. DO NOT EDIT (edit settings.py instead)
-# =======================================
+#
+# =============================================================
+# Default settings file. DO NOT EDIT (edit settings.py instead)
+# =============================================================
+
+# Provides sane defauls and backwards compatibility for
+# settings.py.
 
 import os
 
@@ -46,7 +50,7 @@ mysql_command="mysql -uwiki -pwiki1234"
 # this set to False.
 run_automated_tests=False
 
-
+debug=False
 
 if os.path.exists(os.path.join(installerdir, 'settings.py')):
         from settings import *

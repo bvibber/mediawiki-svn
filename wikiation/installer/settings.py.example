@@ -37,10 +37,15 @@ isolation_test=toolkit_dir+'/wikiation_check_isolation/dl_and_check.sh'
 
 # what mysql command should be used. (Who us? Use horrible hacks?)
 
-mysql_command="mysql -uwiki -pwiki1234"
+mysql_command="mysql -uroot"
 
 # run automated tests during installation
 # this is useful if you are in a testing environment.
 # If you are running production, you might want to leave
 # this set to False.
 run_automated_tests=False
+
+
+# Print debugging messages when executing insatller scripts
+# (off by default)
+debug=False
