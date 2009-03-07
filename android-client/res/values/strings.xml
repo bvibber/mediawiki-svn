@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- GLOBAL THINGS -->
+    <string name="app_name">Mediawiki Client</string>
+	<string name="app_version">0.0.5</string>
+	<string name="app_authors">Chad Horohoe</string>
+	<string name="app_license">GNU GPL v2 (or later)</string>
+	<string name="fetch_data">Fetching data...</string>
+	
+	<!-- MAIN MENU -->
+	<string name="menu_home">Home</string>
+	<string name="menu_about">About</string>
+	<string name="menu_config">Configuration</string>
+	<string name="menu_search">Search</string>
+	<string name="menu_pagelinks">Page links</string>
+	<string name="menu_categories">Categories</string>
+	<string name="menu_langlinks">In other languages</string>
+	
+	<!-- INTENTS FOR MANIFEST -->
+	<string name="intent_edit">Edit Page</string>
+	<string name="intent_main">Main Page</string>
+	<string name="intent_view">View</string>
+	<string name="intent_search">Search</string>
+	<string name="intent_config">Configuration</string>
+	
+	<!-- PREFERENCES -->
+	<string name="prefcat_caching">Caching options</string>
+	<string name="pref_usecache">Use cache</string>
+	<string name="pref_usecache_summary">Use experimental SQLite cache</string>
+	<string name="pref_cachetime">Cache time</string>
+	<string name="pref_cachetime_summary">How long to cache (in minutes)</string>
+	<string name="prefcat_wikis">Wiki options</string>
+</resources>

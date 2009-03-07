@@ -1,0 +1,19 @@
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/prefcat_caching">
+		<CheckBoxPreference
+			android:key="usecache"
+			android:title="@string/pref_usecache"
+			android:summary="@string/pref_usecache_summary" />
+		<EditTextPreference
+			android:key="cachetime"
+			android:title="@string/pref_cachetime"
+			android:summary="@+string/pref_cachetime_summary" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/prefcat_wikis">
+		<EditTextPreference 
+			android:key="wiki_url"
+			android:title="Wiki URL"
+			android:summary="URL of api.php" />
+	</PreferenceCategory>
+</PreferenceScreen>
