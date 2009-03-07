@@ -29,7 +29,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$newtype  = $wgRequest->getText( 'wpNewType' );
 		$record   = $wgRequest->getText( 'wpRecord' );
 		$invert   = $wgRequest->getText( 'wpInvert' );
-		$title    = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$title    = $this->title = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
 		$wpTitle  = trim( $wgRequest->getText( 'wpTitle' ) );
 
 		if ( $type && $wgRecordAdminUseNamespaces ) {
@@ -399,6 +399,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					if ( $v ) $html = preg_replace( "|(/?>)$|", " checked $1", $html );
 				break;
 				case 'list':
+					$html = preg_replace_callback("|\{\{.+\}\}|s", array($this, 'parsePart'), $html); # parse any braces				
 					$html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html );
 					if ( $v ) $html = preg_replace( "|(<option[^>]*)(?=>$v</option>)|s", "$1 selected", $html );
 				break;
@@ -410,6 +411,17 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Replace the element in the form with the modified html
 			$this->form = substr_replace( $this->form, $html, $pos, $len );
 		}
+	}
+
+	/**
+	 * Used to parse any braces in select lists when populating form
+	 */
+	function parsePart($part) {
+		global $wgUser, $wgParser;
+		$parser  = new Parser;
+		$options = ParserOptions::newFromUser( $wgUser );
+		$html = $parser->parse( $part[0], $this->title, $options, true, true )->getText();
+		return '';
 	}
 
 	/**
