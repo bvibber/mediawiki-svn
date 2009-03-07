@@ -275,7 +275,7 @@ $extensions = array(
 			'wgCentralAuthNew2UDPPrefix' => 'text',
 		),
 		'array' => array(
-			'wgCentralAuthAutoLoginWikis' => 'simple',
+			'wgCentralAuthAutoLoginWikis' => 'assoc',
 		),
 		'schema' => true,
 		'url' => 'http://www.mediawiki.org/wiki/Extension:CentralAuth',
@@ -307,6 +307,7 @@ $extensions = array(
 			'wgNoticeCentralDirectory' => false,
 			'wgNoticeLocalDirectory' => false,
 		),
+		'schema' => true,
 		'url' => 'http://www.mediawiki.org/wiki/Extension:CentralNotice',
 	),
 	array(
@@ -416,13 +417,13 @@ $extensions = array(
 	),
 	array(
 		'name' => 'CommentSpammer',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:CommentSpammer',
 		'settings' => array(
 			'wgCommentSpammerLog' => 'array',
 		),
 		'array' => array(
 			'wgCommentSpammerLog' => 'assoc',
 		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:CommentSpammer',
 	),
 	array(
 		'name' => 'ConfirmAccount',
@@ -524,8 +525,8 @@ $extensions = array(
 			'wgContributorsLimit' => 'int',
 			'wgContributorsThreshold' => 'int',
 		),
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Contributors',
 		'schema' => true,
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Contributors',
 	),
 	array(
 		'name' => 'ContributorsAddon',
@@ -654,7 +655,7 @@ $extensions = array(
 	),
 	array(
 		'name' => 'FindSpam',
-#		'url'=>'http://www.mediawiki.org/wiki/Extension:Find_Spam',
+		'url'=>'http://www.mediawiki.org/wiki/Extension:Find_Spam',
 	),
 	array(
 		'name' => 'FlaggedRevs',

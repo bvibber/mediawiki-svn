@@ -1,6 +1,11 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.12.11 - 7 March 2009
+  * Added documentation url for Find Spam
+  * Fixed $wgCentralAuthAutoLoginWikis array type
+  * Marked that CentralNotice requires a schema change
+
 0.12.10 - 6 March 2009
   Updated ParserFunctions' documentation link.
 
