@@ -37,6 +37,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     private int kateIndex;
     private boolean showSpeaker;
     private boolean keepAspect;
+    private boolean ignoreAspect;
     private boolean autoPlay;
     private int bufferSize;
     private String userId;
@@ -110,6 +111,8 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
             {"showSpeaker", "boolean", "Show a speaker icon when audio is available (default true)"},
             {"keepAspect", "boolean",
                 "Use aspect ratio of video (default true)"},
+            {"ignoreAspect", "boolean",
+                "Ignore the aspect ratio as signalled by the video, always assume square pixels (default false)"},
             {"bufferSize", "int",
                 "The size of the prebuffer in Kbytes (default 100)"},
             {"bufferLow", "int", "Percent of empty buffer (default 10)"},
@@ -232,6 +235,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         hideTimeout = getIntParam("hideTimeout", 3);
         showSpeaker = getBoolParam("showSpeaker", true);
         keepAspect = getBoolParam("keepAspect", true);
+        ignoreAspect = getBoolParam("ignoreAspect", false);
         bufferSize = getIntParam("bufferSize", 200);
         bufferLow = getIntParam("bufferLow", 10);
         bufferHigh = getIntParam("bufferHigh", 70);
@@ -260,6 +264,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         pipeline.setPassword(password);
         pipeline.enableAudio(audio);
         pipeline.enableVideo(video);
+        pipeline.setIgnoreAspect(ignoreAspect);
         pipeline.enableKateIndex(kateIndex);
         pipeline.setBufferSize(bufferSize);
         pipeline.setBufferLow(bufferLow);

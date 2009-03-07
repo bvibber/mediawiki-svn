@@ -27,6 +27,7 @@ public class VideoSink extends Sink
 {
   private Component component;
   private boolean keepAspect;
+  private boolean ignoreAspect;
   private boolean scale;
   private Frame frame;
 
@@ -56,17 +57,16 @@ public class VideoSink extends Sink
     aspectX = caps.getFieldInt("aspect_x", 1);
     aspectY = caps.getFieldInt("aspect_y", 1);
 
-    /*
-    Debug.log(Debug.DEBUG, this+" dimension: "+width+"x"+height+", aspect: "+aspectX+"/"+aspectY);
+    if(!ignoreAspect) {
+      Debug.log(Debug.DEBUG, this+" dimension: "+width+"x"+height+", aspect: "+aspectX+"/"+aspectY);
 
-    if (aspectY > aspectX) {
-      height = height * aspectY / aspectX;
+      if (aspectY > aspectX) {
+        height = height * aspectY / aspectX;
+      } else {
+        width = width * aspectX / aspectY;
+      }
+      Debug.log(Debug.DEBUG, this+" scaled source: "+width+"x"+height);
     }
-    else {
-      width = width * aspectX / aspectY;
-    }
-    Debug.log(Debug.DEBUG, this+" scaled source: "+width+"x"+height);
-    */
 
     component.setVisible(true);
 
@@ -166,8 +166,9 @@ public class VideoSink extends Sink
     }
     else if (name.equals("keep-aspect")) {
       keepAspect = String.valueOf(value).equals("true");
-    }
-    else if (name.equals("scale")) {
+    } else if(name.equals("ignore-aspect")) {
+      ignoreAspect = value.toString().equals("true");
+    } else if (name.equals("scale")) {
       scale = String.valueOf(value).equals("true");
     } else if (name.equals("bounds")) {
       bounds = (Rectangle) value;

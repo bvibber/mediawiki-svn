@@ -32,6 +32,7 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
   private String password;
   private boolean enableAudio;
   private boolean enableVideo;
+  private boolean ignoreAspect;
   private int enableKate;
   private Component component;
   private int bufferSize = -1;
@@ -111,7 +112,7 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
       v_queue = ElementFactory.makeByName("queue", "v_queue");
       if (v_queue == null) {
         noSuchElement ("queue");
-	return;
+	    return;
       }
 
       if (!setupVideoDec ("theoradec"))
@@ -328,6 +329,9 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
   }
   public void setUserId(String aUserId) {
     userId = aUserId;
+  }
+  public void setIgnoreAspect(boolean ignore) {
+    ignoreAspect = ignore;
   }
   public void setPassword(String aPassword) {
     password = aPassword;
@@ -559,6 +563,9 @@ public class CortadoPipeline extends Pipeline implements PadListener, CapsListen
         noSuchElement ("videosink");
         return false;
       }
+
+      videosink.setProperty("ignore-aspect", ignoreAspect ? "true" : "false");
+
       videosink.setProperty ("component", component);
       resize(component.getSize());
 
