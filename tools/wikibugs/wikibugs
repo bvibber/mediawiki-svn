@@ -158,8 +158,8 @@ if ($from =~ /^bugzilla-daemon/)
 
 if ($output)
 {
-#	open (OUT, ">>/var/wikibugs/wikibugs.log");
-	print $output;
-#	print OUT $output;
-#	close OUT;
+	open (OUT, ">>/var/wikibugs/wikibugs.log");
+#	print $output;
+	print OUT $output;
+	close OUT;
 }
