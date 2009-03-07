@@ -1,5 +1,4 @@
 <?php
-
 class UploadFromStash extends UploadBase {
 	static function isValidSessionKey( $key, $sessionData ) {
 		return !empty( $key ) && 
@@ -15,8 +14,7 @@ class UploadFromStash extends UploadBase {
 			$request->getInt( 'wpSessionKey' ),
 			$sessionData
 		);
-	}
-	
+	}	
 	function initialize( $name, $sessionData ) {
 			/**
 			 * Confirming a temporarily stashed upload.
@@ -56,3 +54,4 @@ class UploadFromStash extends UploadBase {
 		return array();
 	}
 }
+?>

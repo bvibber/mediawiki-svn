@@ -46,41 +46,49 @@ class ApiUpload extends ApiBase {
 		$this->mParams['file'] = $request->getFileName( 'file' );
 		
 		// Check whether upload is enabled
-		if( !UploadFromBase::isEnabled() )
+		if( !UploadBase::isEnabled() )
 			$this->dieUsageMsg( array( 'uploaddisabled' ) );
 		
 		// One and only one of the following parameters is needed
 		$this->requireOnlyOneParameter( $this->mParams,
-			'sessionkey', 'file', 'url' );
+			'sessionkey', 'file', 'url', 'enablechunks' );
 		
 		if( $this->mParams['sessionkey'] ) {
-			// Stashed upload
-			
+			// Stashed upload			
 			$this->mUpload = new UploadFromStash();
 			$this->mUpload->initialize( $this->mParams['sessionkey'] );
 		} else {
-			// Upload from url or file
+			// Upload from url or file or start a chunks request
 			
 			// Parameter filename is required
 			if( !isset( $this->mParams['filename'] ) )
 				$this->dieUsageMsg( array( 'missingparam', 'filename' ) );
 			
 			// Initialize $this->mUpload
-			if( isset( $this->mParams['file'] ) ) {
+			if( isset( $this->mParams['file'] ) ) {				
 				$this->mUpload = new UploadFromUpload();
 				$this->mUpload->initialize(
 					$request->getFileTempName( 'file' ),
 					$request->getFileSize( 'file' ),
 					$request->getFileName( 'file' )
-				);
-			} elseif( isset( $this->mParams['url'] ) ) {
+				);				
+			} elseif( isset( $this->mParams['url'] ) ) {											
 				$this->mUpload = new UploadFromUrl();
-				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url'] );
+				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url'] );											
+			}elseif (isset( $this->mParams['enablechunks'])) {								
+				$this->mUpload = new UploadFromChunks();
+				$this->mUpload->initializeFromParams( $this->mParams );				
 			}
 		}
-		
 		// Check whether the user has the appropriate permissions to upload anyway
 		$permission = $this->mUpload->isAllowed( $wgUser );
+		
+		/*global $wgGroupPermissions;
+		
+		print "perm: $permission";
+		print_r($wgGroupPermissions['user'], $wgUser->isAllowed( 'upload' ));
+		die();*/
+		
 		if( $permission !== true ) {
 			if( !$wgUser->isLoggedIn() )
 				$this->dieUsageMsg( array( 'mustbeloggedin', 'upload' ) );
@@ -195,7 +203,9 @@ class ApiUpload extends ApiBase {
 		return $result; 
 	}
 
-	public function mustBePosted() { return true; }
+	public function mustBePosted() { 
+		return false; 
+	}
 
 	public function getAllowedParams() {
 		return array (
@@ -207,6 +217,8 @@ class ApiUpload extends ApiBase {
 			),
 			'watch' => false,
 			'ignorewarnings' => false,
+			'enablechunks' => false,
+			'done'	=> false,
 			'sessionkey' => null,
 		);
 	}
@@ -219,13 +231,16 @@ class ApiUpload extends ApiBase {
 			'comment' => 'Upload comment or initial page text',
 			'watch' => 'Watch the page',
 			'ignorewarnings' => 'Ignore any warnings',
-			'sessionkey' => 'Session key in case there were any warnings'
+			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',
+			'chunk_inx'=> 'The index of the chunk being uploaded. Used to order the build of a single file',
+			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',
+			'sessionkey' => 'Session key in case there were any warnings, or uploading chunks'
 		);
 	}
 
 	public function getDescription() {
 		return array(
-			'Upload an image'
+			'Upload an File'
 		);
 	}
 

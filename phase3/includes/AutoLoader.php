@@ -199,6 +199,7 @@ $wgAutoloadLocalClasses = array(
 	'UploadFromStash' => 'includes/UploadFromStash.php',
 	'UploadFromUpload' => 'includes/UploadFromUpload.php',
 	'UploadFromUrl' => 'includes/UploadFromUrl.php',
+	'UploadFromChunks' => 'includes/UploadFromChunks.php',
 	'User' => 'includes/User.php',
 	'UserArray' => 'includes/UserArray.php',
 	'UserArrayFromResult' => 'includes/UserArray.php',
