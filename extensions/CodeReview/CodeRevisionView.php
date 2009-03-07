@@ -343,10 +343,11 @@ class CodeRevisionView extends CodeView {
 	
 	protected function formatChangeInline( $change ) {
 		global $wgLang;
+		$revId = $change->rev->getId();
 		$line = $wgLang->timeanddate( $change->timestamp, true );
 		$line .= '&nbsp;' . $this->mSkin->userLink( $change->user, $change->userText );
 		$line .= $this->mSkin->userToolLinks( $change->user, $change->userText );
-		$line .= '&nbsp;' . wfMsgExt("code-change-{$change->attrib}",array('parseinline'));
+		$line .= '&nbsp;' . wfMsgExt("code-change-{$change->attrib}",'parseinline',$revId);
 		$line .= " <i>[";
 		if( $change->removed ) {
 			$line .= '<b>'.wfMsg('code-change-removed').'</b> ';
