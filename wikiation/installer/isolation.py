@@ -4,7 +4,7 @@
 # Distributed under the terms of the MIT license.
 
 import sys,os, os.path
-import settings
+import settings_handler as settings
 
 #support for wikiation_check_isolation
 

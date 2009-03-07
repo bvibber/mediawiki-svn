@@ -9,7 +9,7 @@ import sys,os, os.path
 import readline
 import re
 import shutil
-import settings
+import settings_handler as settings
 
 import installers
 

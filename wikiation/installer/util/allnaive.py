@@ -28,7 +28,7 @@ def do_test():
 
 def test_extension(extension_name):
 	installer=Naive_Installer()
-	installer.set_revision(target_wiki)
+	installer.set_instance(target_wiki)
 	installer.install(extension_name)
 	result=do_test()
 	print "result=",result
@@ -40,7 +40,7 @@ if __name__=="__main__":
 	installer=Naive_Installer()
 	# NOTE TO SELF set_revision is a bad name for this...
 	# needs refactoring
-	installer.set_revision(target_wiki)
+	installer.set_instance(target_wiki)
 	naive_extensions=installer.get_installers()
 	for extension_name in naive_extensions:
 		print extension_name,

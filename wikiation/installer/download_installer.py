@@ -3,7 +3,7 @@
 #
 # Distributed under the terms of the MIT license.
 
-import settings
+import settings_handler as settings
 import os, os.path, shutil
 import subprocess
 
@@ -21,9 +21,9 @@ class Download_Installer(Installation_System):
 	system_name='download'
 	destination_dir=None
 
-	def set_revision(self,revision):
-		self.destination_dir=os.path.join(settings.revisionsdir,revision,"extensions")
-		Installation_System.set_revision(self,revision)
+	def set_instance(self,instance):
+		self.destination_dir=os.path.join(settings.instancesdir,instance,"extensions")
+		Installation_System.set_instance(self,instance)
 
 	def get_installers(self):
 		l=list(os.popen('svn ls '+settings.extensionsdir))
@@ -36,10 +36,10 @@ class Download_Installer(Installation_System):
 	#exists()  ok.
 	
 	def installdir_name():
-		raise Unsupported_Exception("naive installer does not use installdirs")
+		raise Unsupported_Exception("download installer does not use installdirs")
 
 	def exec_task():
-		raise Unsupported_Exception("naive installer does not use installdirs, and therefore also does not exec scripts in installdirs")
+		raise Unsupported_Exception("download installer does not use installdirs, and therefore also does not exec scripts in installdirs")
 	
 	def can_exec(self, installer_name, task):
 		return False	# we don't have an installdir, so we
@@ -48,8 +48,8 @@ class Download_Installer(Installation_System):
 	# get_installed: works ok.
 
 	def is_installed(self, installer_name):
-		if self.revision==None:
-			raise Download_Installer_Exception("no revision specified ... did you try doing   ...  in <Revision> ?")
+		if self.instance==None:
+			raise Download_Installer_Exception("no instance specified ... did you try doing   ...  in <instance> ?")
 		path=os.path.join(self.destination_dir,installer_name)
 		return os.path.isdir(path)
 

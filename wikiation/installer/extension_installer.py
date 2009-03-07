@@ -3,7 +3,7 @@
 #
 # Distributed under the terms of the MIT license.
 
-import settings
+import settings_handler as settings
 import os, os.path, shutil
 import subprocess
 
@@ -15,13 +15,10 @@ class Extension_Installer_Exception(Installer_Exception):
 class Extension_Installer(Installation_System):
 	system_name='extensions'
 	destination_dir=None
-
-#	def __init__(self, revision):
-#		Installation_System.__init__(self, revision)
-
-	def set_revision(self,revision):
-		self.destination_dir=os.path.join(settings.revisionsdir,revision,"extensions")
-		self.revision=revision	
+	
+	def set_instance(self,instance):
+		self.destination_dir=os.path.join(settings.instancesdir,instance,"extensions")
+		self.instance=instance	
 	
 
 	def install_settings(self, installer_name):
@@ -47,8 +44,8 @@ class Extension_Installer(Installation_System):
 
 
 	def is_installed(self, installer_name):
-		if self.revision==None:
-			raise Extension_Installer_Exception("no revision specified ... did you try doing   ...  in <Revision> ?")
+		if self.instance==None:
+			raise Extension_Installer_Exception("no instance specified ... did you try doing   ...  in <instance> ?")
 		return Installation_System.is_installed(self, installer_name)
 
 	def exec_task(self,installer_name,task,env=None):

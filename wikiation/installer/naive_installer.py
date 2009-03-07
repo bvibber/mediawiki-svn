@@ -3,7 +3,7 @@
 #
 # Distributed under the terms of the MIT license.
 
-import settings
+import settings_handler as settings
 import os, os.path, shutil
 import subprocess
 

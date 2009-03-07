@@ -2,7 +2,7 @@
 #
 # Distributed under the terms of the MIT license.
 
-import settings
+import settings_handler as settings
 import os, os.path, shutil
 import subprocess
 
@@ -27,9 +27,9 @@ class Mediawiki_Installer(Installation_System):
 	"""installer for mediawiki revisions"""
 	system_name='mediawiki_installer'
 	# TODO: destination_dir isn't quite changable until we have finished refactoring everything (not today)
-	destination_dir=settings.revisionsdir
 	def __init__(self):
 		Installation_System.__init__(self)
+		self.destination_dir=settings.instancesdir
 	
 	def get_installers(self):
 		"""list available items"""
@@ -51,6 +51,8 @@ class Mediawiki_Installer(Installation_System):
 
 	def get_installed(self):
 		"""list installed items"""
+		if not self.destination_dir:
+			raise Exception("Internal Error: Mediawiki_Installer: get_installed, self.destination_dir not set")
 		return os.listdir(self.destination_dir)
 
 	def is_installed(self, installer_name):
@@ -83,7 +85,7 @@ class Mediawiki_Installer(Installation_System):
 #duplicate of get_installed() TODO: Refactor
 def installed():
 	"""list installed items"""
-	return os.listdir(settings.revisionsdir)
+	return os.listdir(settings.instancesdir)
 
 #duplicate of get_installers() TODO: Refactor
 def available():
@@ -121,7 +123,7 @@ def install(target, option_as):
 		return
 
 	#Everything checks out ok, so let's install.
-	os.chdir(settings.revisionsdir)
+	os.chdir(settings.instancesdir)
 	print "Checking out code from subversion (please be patient)..."
 	if latest:
 		checkout_latest(name)
@@ -150,7 +152,7 @@ def uninstall(target):
 		return
 	
 	#Ok, looks like our arguments are valid.
-	os.chdir(settings.revisionsdir)
+	os.chdir(settings.instancesdir)
 	print "Dropping database..."
 	dropdb(target)
 	print "Deleting directory..."
@@ -182,17 +184,17 @@ def localsettings(target):
 	LocalSettings.php is the main configuration file for mediawiki."""
 
 	template=settings.installerdir+"/LocalSettings.php.template"
-	localsettings=settings.revisionsdir+"/"+target+"/LocalSettings.php"
+	localsettings=settings.instancesdir+"/"+target+"/LocalSettings.php"
 	replacements={'<<TARGET>>':target,"<<BASE_SCRIPTPATH>>":settings.base_scriptpath}
 	replace_generic(replacements,template,localsettings)	
-	subdir=settings.revisionsdir+"/"+target+"/LocalSettings"
+	subdir=settings.instancesdir+"/"+target+"/LocalSettings"
 	os.mkdir(subdir)
 
 def logo(target):
 	"""copy a nice logo"""
 
 	logo=settings.installerdir+"/Logo.png"
-	dest=settings.revisionsdir+"/"+target+"/Logo.png"
+	dest=settings.instancesdir+"/"+target+"/Logo.png"
 	shutil.copy(logo,dest)
 
 def makedb(target):
@@ -207,7 +209,7 @@ def make_tables(target):
 	"""use the maintenance/tables.sql file provided by target mediawiki
 	instance to generate our tables"""
 
-	target_file=settings.revisionsdir+"/"+target+"/maintenance/tables.sql"
+	target_file=settings.instancesdir+"/"+target+"/maintenance/tables.sql"
 	do_sql(target, target_file)
 
 def make_admin(target):

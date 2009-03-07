@@ -3,7 +3,7 @@
 #
 # Distributed under the terms of the MIT license.
 
-import settings
+import settings_handler as settings
 import os, os.path, shutil
 import subprocess
 import installer_util
@@ -72,7 +72,7 @@ def ls_installed_in_system(ppath):
 		return
 
 	if ppath["in_installer"]:
-		system.set_revision(ppath["in_installer"])
+		system.set_instance(ppath["in_installer"])
 	installed=None
 	try:
 		installed=system.get_installed()
@@ -117,7 +117,7 @@ def install(args):
 	
 	system=get_system(ppath["system"])
 	if ppath["in_installer"]:
-		system.set_revision(ppath["in_installer"])
+		system.set_instance(ppath["in_installer"])
 	if ppath["as_alias"]:
 		system.as_alias=ppath["as_alias"]
 
@@ -150,7 +150,7 @@ def uninstall(args):
 
 	system=get_system(ppath["system"])
 	if ppath["in_installer"]:
-		system.set_revision(ppath["in_installer"])
+		system.set_instance(ppath["in_installer"])
 	if ppath["as_alias"]:
 		system.as_alias=ppath["as_alias"]
 	try:
@@ -261,7 +261,7 @@ def parse_path(path,defaults=None):
 	#	mysystem=get_system(system)
 	#	
 	#	if in_installer:
-	#		system.set_revision(ppath["in_installer"])
+	#		system.set_instance(ppath["in_installer"])
 	#	
 	#	if system.is_installed(installer)
 	

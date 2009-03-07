@@ -3,7 +3,7 @@
 #
 # Distributed under the terms of the MIT license.
 
-import settings
+import settings_handler as settings
 import os, os.path, shutil
 import subprocess
 
@@ -14,17 +14,18 @@ class Installer_Exception (Exception):
 class Installation_System:
 	system_name=None
 	destination_dir=None
-	revision=None
 	as_alias=None
 
-	def __init__(self,revision=None):
+	def __init__(self,instance=None):
 		self.subsystemdir=os.path.join(settings.installfiles, self.system_name)
+		self.destination_dir=None
+		self.instance=None
+		self.as_alias=None
+		if instance:
+			self.set_instance(instance)
 
-		if revision:
-			self.set_revision(revision)
-
-	def set_revision(self,revision):
-		self.revision=revision	
+	def set_instance(self,instance):
+		self.instance=instance	
 
 	def get_installers(self):
 		installers=os.listdir(self.subsystemdir)
@@ -49,7 +50,7 @@ class Installation_System:
 		   * if more than one match exists, one match is picked
 		        Exactly Which match is picked is not defined
 			(so Don't Do That)
-		   * destination_dir is passed as a parameter 
+			* destination_dir is passed as a parameter 
 			returns 
 			* stdout returned by task command if successful
 			* None if task not available
