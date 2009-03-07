@@ -509,31 +509,54 @@ class SpecialRecordAdmin extends SpecialPage {
 	function createRecordType( $newtype ) {
 		global $wgOut, $wgRecordAdminCategory;
 
-		# Compose the content of the new template
-		$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY )->getPrefixedText();
-		$text = "<noinclude>[[$cat]]</noinclude>\n{| class=recordadmin-template\n|}\n<includeonly>[[Category:{$newtype}s]]</includeonly>";
-
 		$rtype = wfMsg( 'recordadmin-recordtype' ) . " ($newtype)";
-		$title = Title::newFromtext( $newtype, NS_TEMPLATE );
-		if (!is_object($title)) {
+		$ttitle = Title::newFromtext( $newtype, NS_TEMPLATE );
+		$ftitle = Title::newFromtext( $newtype, NS_FORM );
+		if ( !is_object($ttitle) || !is_object($ftitle) ) {
 			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $rtype ) . "</div>\n" );
 		}
-		elseif ( $title->exists() ) {
+		$tttext = $ttitle->getPrefixedText();
+		$fttext = $ftitle->getPrefixedText();
 
-			# the template already exists
-			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-alreadyexist', $title->getPrefixedText() ) . "</div>\n" );
-
+		# check if the template already exists
+		if ( $ttitle->exists() ) {
+			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-alreadyexist', $tttext ) . "</div>\n" );
 		}
+
+		# check if the form already exists
+		elseif ( $ftitle->exists() ) {
+			$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-alreadyexist', $fttext ) . "</div>\n" );
+		}
+
+		# Attempt to create the template and form
 		else {
-
-			# Attempt to create the article
-			$article = new Article( $title );
 			$summary = "[[Special:RecordAdmin/$newtype|".wfMsgForContent( 'recordadmin' )."]]: " . wfMsg( 'recordadmin-summary-typecreated', $rtype );
-			$success = $article->doEdit( $text, $summary, EDIT_NEW );
 
-			# Report success or error
+			# Compose the content of the new template
+			$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY )->getPrefixedText();
+			$link = "[{{fullurl:$tttext|action=edit}} ".wfMsg('recordadmin-needscontent')."]";
+			$text = "<noinclude>[[$cat]]</noinclude>\n{| class=recordadmin-template\n\n$link\n\n|}<includeonly>[[Category:{$newtype}s]]</includeonly>";
+			$article = new Article( $ttitle );
+			$success = $article->doEdit( $text, $summary, EDIT_NEW );
+			if (!$success) {
+				$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $tttext ) . "</div>\n" );
+			}
+			else {
+
+				# Compose the content of the new form
+				$cat = Title::newFromText( $wgRecordAdminCategory, NS_CATEGORY )->getPrefixedText();
+				$url = $ftitle->getLocalUrl('action=edit');
+				$link = "<a href=\"$url\">".wfMsg('recordadmin-needscontent')."</a>";
+				$text = "<html>\n\t<form>\n\t\t<table>\n\t\t$link\n\t\t</table>\n\t</form>\n</html>";
+				$article = new Article( $ftitle );
+				$success = $article->doEdit( $text, $summary, EDIT_NEW );
+				if (!$success) {
+					$wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $fttext ) . "</div>\n" );
+				}
+			}
+
+			# Report success
 			if ( $success ) $wgOut->addHTML( "<div class='successbox'>" . wfMsg( 'recordadmin-createsuccess', $rtype ) . "</div>\n" );
-			else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $rtype ) . "</div>\n" );
 		}
 	}
 
