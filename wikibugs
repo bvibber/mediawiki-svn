@@ -12,7 +12,6 @@ use utf8;
 
 $/ = undef;
 my $contents = <STDIN>;
-$contents =~ s/\r\n/\n/g;
 my $output;
 
 my $shash = { 
@@ -43,22 +42,22 @@ my $rhash = {
 	'REMIND' => "\00306(REMIND)\003" 
 };
 
-if ($contents =~ /^Content-Transfer-Encoding: base64/m) {
-	use MIME::Base64;
-	$contents =~ s/\n\n(\n?([[:alnum:]\=+]{1,76}\n)+)/decode_base64($1)/seg;
-}
+use Email::MIME;
 
-use MIME::QuotedPrint;
-$contents = decode_qp( $contents );
+my $mail = Email::MIME->new( $contents );
 
-if ($contents =~ /^From: bugzilla-daemon/m)
+my $from = $mail->header( 'From' );
+my $body = $mail->body;
+my $subject = $mail->header( 'Subject' );
+
+if ($from =~ /^bugzilla-daemon/)
 {
 	# E-mail is from MediaZilla
 
 	$/ = "";
 	# extract and remove the comment section
 	my ($haschanges, $user);
-	my $comment = $contents =~ s/^--- Comment #\d+ from (?-s:.*?<)?(\S+)\@.*//ms;
+	my $comment = $body =~ s/^--- Comment #\d+ from (?-s:.*?<)?(\S+)\@.*//ms;
 	if($comment) {
 		$user = $1;
 	} else {
@@ -69,16 +68,21 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 	# Check if this is a dependency e-mail. If so, ignore it.
 	# We have removed the comment section to prevent people from using
 	# this by adding the right text to a comment.
-	if ($contents !~ /^Bug \d+ depends on bug \d+, which changed state/m)
+	if ($body !~ /^Bug \d+ depends on bug \d+, which changed state/m)
 	{
 
 		my ($bug, $summary, $st);
-		if ($contents =~ /\nSubject: \[Bug (\d+)\]\s+New:\s+(.*?)\nX-Bugzilla-Reason/s) {
+		if ($subject =~ /\[Bug (\d+)\]\s+New:\s+(.*)/s) {
 			($bug, $summary, $st) = ($1, $2, "\00303(NEW)\003");
-		} elsif ($contents =~ /Subject: \[Bug (\d+)\]\s(.*?)\nX-Bugzilla-Reason/s) {
+		} elsif ($subject =~ /\[Bug (\d+)\]\s(.*)/s) {
 			($bug, $summary, $st) = ($1, $2, "\00303(mod)\003");
 		}
-		my $url = $contents =~ /^http.*show_bug\.cgi.*$/m ? $& : "http://bugzilla.wikimedia.org/show_bug.cgi?id=$bug";
+		
+		## Set the URL to the URL found in the message body if available, else construct our own URL
+		my $url =
+			$body =~ /^http.*show_bug\.cgi.*$/m
+			? $&
+			: "http://bugzilla.wikimedia.org/show_bug.cgi?id=$bug";
 
 		$summary =~ s/\s+/ /g; 
 
@@ -88,11 +92,12 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 
 		if ($st eq "\00303(NEW)\003")
 		{
-			my $product = $1 if $contents =~ /Product: (.*)$/m;
-			my $component = $1 if $contents =~ /Component: (.*)$/m;
-			my $severity = $shash->{$1} if $contents =~ /Severity: (.*)$/m;
-			my $priority = $phash->{$1} if $contents =~ /Priority: (.*)$/m;
-			my $reporter = $1 if $contents =~ /ReportedBy: (.*)\@.*$/m;
+			my $product = $mail->header( 'X-Bugzilla-Product' );
+			my $component = $mail->header( 'X-Bugzilla-Component' );
+			my $severity = $mail->header( 'X-Bugzilla-Severity' );
+			my $priority = $mail->header( 'X-Bugzilla-Priority' );
+			## Doesn't seem to be sent as a header.
+			my $reporter = $1 if $body =~ /ReportedBy: (.*)\@.*$/m;
 
 			$output .= "$severity; $priority; \002$product\002\: $component; (\002$reporter\002)\n";
 		}
@@ -102,21 +107,25 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 
 			if ($haschanges) {
 				my @outputs;
-				if ($contents =~ /Status\|(\w+)\s+\|(\w+)/m) {
-					$st = $2 eq 'NEW'       ? "\00303(mod)\003" :
-					$2 eq 'REOPENED'  ? "\00304(REOPENED)\003" :
-					"\00303($2)\003";
+				my $status = $mail->header( 'X-Bugzilla-Status' );
+				if ($status eq 'NEW') {
+					$st = "\00303(mod)\003";
+				} elsif ($status eq 'REOPENED') {
+					$st = "\00304(REOPENED)\003";
+				} else {
+					$st = "\00303($2)\003";
 				}
-				if ($st eq "\00303(RESOLVED)\003" && $contents =~ /Resolution\|\s+\|(\w+)/m) {
+
+				if ($st eq "\00303(RESOLVED)\003" && $body =~ /Resolution\|\s+\|(\w+)/m) {
 					$st = $rhash->{$1};
 				}
-				if ($contents =~ /Severity\|(\w+)\s+\|(\w+)/m) {
+				if ($body =~ /Severity\|(\w+)\s+\|(\w+)/m) {
 					push @outputs, "$shash->{$1}\->$shash->{$2}";
 				}
-				if ($contents =~ /Priority\|(\w+)\s+\|(\w+)/m) {
+				if ($body =~ /Priority\|(\w+)\s+\|(\w+)/m) {
 					push @outputs, "$phash->{$1}\->$phash->{$2}";
 				}
-				if ($contents =~ /Keywords\|.*$/s) {
+				if ($body =~ /Keywords\|.*$/s) {
 					my @lines = split (/\n/, $&);
 					my $added = '';
 					my $removed = '';
@@ -132,9 +141,9 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 					);
 				}
 
-				push @outputs, 'summary' if $contents =~ /Summary\|.*?\|.*?/;
+				push @outputs, 'summary' if $body =~ /Summary\|.*?\|.*?/;
 
-				push @outputs, 'deps' if $contents =~ /OtherBugs\w+\|.*?\|.*?$/m;
+				push @outputs, 'deps' if $body =~ /OtherBugs\w+\|.*?\|.*?$/m;
 
 				push @outputs, "+comment" if $comment;
 
@@ -149,8 +158,8 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 
 if ($output)
 {
-	open (OUT, ">>/var/wikibugs/wikibugs.log");
-#	print $output;
-	print OUT $output;
-	close OUT;
+#	open (OUT, ">>/var/wikibugs/wikibugs.log");
+	print $output;
+#	print OUT $output;
+#	close OUT;
 }
