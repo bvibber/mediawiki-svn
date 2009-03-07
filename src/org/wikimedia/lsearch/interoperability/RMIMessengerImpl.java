@@ -254,6 +254,19 @@ public class RMIMessengerImpl implements RMIMessenger {
 			cache = SearcherCache.getInstance();
 		cache.hostDeploying(host);
 	}
+	
+	public void takeOutOfRotation(String host, String dbrole) throws RemoteException {
+		if(cache == null)
+			cache = SearcherCache.getInstance();
+		cache.takeOutOfRotation(host, dbrole);
+		
+	}
+
+	public void returnToRotation(String host, String dbrole) throws RemoteException {
+		if(cache == null)
+			cache = SearcherCache.getInstance();
+		cache.returnToRotation(host, dbrole);
+	}
 
 	protected RMIMessengerImpl(){
 		networkStatus = null;

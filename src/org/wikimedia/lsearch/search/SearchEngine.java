@@ -592,6 +592,13 @@ public class SearchEngine {
 		Hashtable<String,NamespaceFilter> cachedFilters = GlobalConfiguration.getInstance().getNamespacePrefixes();
 		boolean searchAll = false;
 		
+		// check for empty queries
+		if(searchterm.equals("")){
+			res = new SearchResults();
+			res.setErrorMsg("Empty search");
+			return res;
+		}
+		
 		// if search is over one field, try to use filters
 		if(fields.size()==1){
 			if(fields.contains(new NamespaceFilter())){
@@ -702,7 +709,7 @@ public class SearchEngine {
 				e.printStackTrace();
 				res = new SearchResults();
 				res.retry();
-				log.warn("Retry, temportal error for query: ["+q+"] on "+iid+" : "+e.getMessage(),e);
+				log.warn("Retry, temporal error for query: ["+searchterm+"] on "+iid+" : "+e.getMessage(),e);
 				return res;
 			}			
 		} catch(ParseException e){

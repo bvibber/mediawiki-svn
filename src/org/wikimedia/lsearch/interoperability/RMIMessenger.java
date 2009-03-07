@@ -266,4 +266,22 @@ public interface RMIMessenger extends Remote {
 	
 	/** Remote host has been deployed */
 	public void hostDeployed(String host) throws RemoteException;
+	
+	/**
+	 * Take index out of rotation temporarely 
+	 * 
+	 * @param host
+	 * @param dbrole
+	 * @throws RemoteException
+	 */
+	public void takeOutOfRotation(String host, String dbrole) throws RemoteException;
+	
+	/** 
+	 * Put index back to rotation 
+	 * 
+	 * @param host
+	 * @param dbrole
+	 * @throws RemoteException
+	 */
+	public void returnToRotation(String host, String dbrole) throws RemoteException;
 }

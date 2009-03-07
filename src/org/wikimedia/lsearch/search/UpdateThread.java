@@ -106,6 +106,8 @@ public class UpdateThread extends Thread {
 	protected boolean forceLocalDeployment = false;
 	/** If old update/ dirs should be deleted once the new index is deployed */
 	protected boolean deleteOldUpdates = false;
+	/** when indexes are updated, which indexes to take out of rotation */
+	protected Set<String> forceRedirect = Collections.synchronizedSet(new HashSet<String>());
 	
 	protected static Object threadSerialization = new Object();
 	
@@ -236,6 +238,19 @@ public class UpdateThread extends Thread {
 						log.warn("Error notifying host "+host+" of index deployment: "+e.getMessage(),e);
 					}
 				}
+			} else if( !forceRedirect.isEmpty() ){
+				for(String dbrole : forceRedirect){
+					cache.takeOutOfRotation("localhost", dbrole);
+					String myHost = global.getLocalhost();
+					for(String host : global.getAllSearchHosts()){
+						try{
+							if(!host.equals(myHost))
+								messenger.takeOutOfRotation(host,myHost,dbrole);
+						} catch(Exception e){
+							log.warn("Error trying to take index "+dbrole+" out of rotation on "+host+" : "+e.getMessage(),e);
+						}
+					}
+				}
 			}
 			// if local, use cp -lr instead of rsync
 			if(global.isLocalhost(iid.getIndexHost())){
@@ -302,6 +317,20 @@ public class UpdateThread extends Thread {
 						log.warn("Error notifying host "+host+" of end of deployment: "+e.getMessage(),e);
 					}
 				}
+			} else if( !forceRedirect.isEmpty() ){
+				for(String dbrole : forceRedirect){
+					cache.returnToRotation("localhost", dbrole);
+					String myHost = global.getLocalhost();
+					for(String host : global.getAllSearchHosts()){
+						try{
+							if(!host.equals(myHost))
+								messenger.returnToRotation(host,myHost,dbrole);
+						} catch(Exception e){
+							log.warn("Error trying to return index "+dbrole+" in rotation on "+host+" : "+e.getMessage(),e);
+						}
+					}
+				}
+
 			}
 		}
 	}
@@ -418,6 +447,15 @@ public class UpdateThread extends Thread {
 		rsyncPath = config.getString("Rsync","path","/usr/bin/rsync");
 		rsyncParams = config.getString("Rsync","params","");
 		forceLocalDeployment = config.getBoolean("Search","forceLocalDeployment");
+		for(String indexpart : config.getArray("Search","forceRedirect")){
+			try{
+				// make sure these indexes are actually valid index names
+				IndexId iid = IndexId.get(indexpart);
+				forceRedirect.add(iid.toString());
+			} catch(RuntimeException e){
+				log.warn("Ignoring force redirect index "+indexpart+" since it doesn't exist.");
+			}
+		}
 		deleteOldUpdates = config.getBoolean("Search","deleteOldUpdates");
 	}
 	

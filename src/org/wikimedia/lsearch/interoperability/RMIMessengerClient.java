@@ -429,5 +429,28 @@ public class RMIMessengerClient {
 			log.error("Messenger not bound: "+e.getMessage(),e);
 		}	
 	}
+	
+	public void takeOutOfRotation(String host, String myHost, String dbrole) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			r.takeOutOfRotation(myHost, dbrole);
+		} catch(NotBoundException e){
+			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage(),e);
+		}	
+		
+	}
+
+	public void returnToRotation(String host, String myHost, String dbrole) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			r.returnToRotation(myHost, dbrole);
+		} catch(NotBoundException e){
+			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage(),e);
+		}	
+	}
 
 }

@@ -212,6 +212,9 @@ public class SearcherCache {
 	
 	/** Remote hosts being deployed, never use their searchers, unless necessary! (host->deployment level) */
 	protected Hashtable<String,Integer> hostsDeploying = new Hashtable<String,Integer>();
+	
+	/** dbrole -> hosts - indexes taken out of rotation */
+	protected Hashtable<String,Set<String>> outOfRotation = new Hashtable<String,Set<String>>();
 
 	/** deployment has been tried at least once for these */
 	protected static Set<String> initialWarmup = Collections.synchronizedSet(new HashSet<String>());
@@ -225,6 +228,40 @@ public class SearcherCache {
 	 */
 	public boolean hasLocalSearcher(IndexId iid){
 		return localCache.containsKey(iid.toString());		
+	}
+	
+	/** Take a certain index on a remote or localhost out of rotation */
+	public void takeOutOfRotation(String host, String dbrole){
+		synchronized(outOfRotation){
+			Set<String> hosts = outOfRotation.get(dbrole);
+			if(hosts == null)
+				outOfRotation.put(dbrole, hosts = Collections.synchronizedSet(new HashSet<String>()));
+			hosts.add(host);
+		}
+	}
+	
+	/** Put certain index back into rotation */
+	public void returnToRotation(String host, String dbrole){
+		synchronized(outOfRotation){
+			Set<String> hosts = outOfRotation.get(dbrole);
+			if(hosts == null){
+				log.warn("Tried to put host="+host+", dbrole="+dbrole+" back into rotation, but hasn't been out of rotation.");
+				return; 
+			}
+			hosts.remove(host);
+			if(hosts.isEmpty())
+				outOfRotation.remove(dbrole);
+		}
+	}
+	
+	/** Check if this index is out of rotation */
+	public boolean isOutOfRotation(String host, IndexId iid){
+		synchronized(outOfRotation){
+			Set<String> hosts = outOfRotation.get(iid.toString());
+			if(hosts != null && hosts.contains(host))
+				return true;
+			return false;
+		}
 	}
 	
 	/** Signalize that host is begining it's index update, and that we shouldn't touch it */
@@ -253,6 +290,19 @@ public class SearcherCache {
 		}
 	}
 	
+	/** Produce nice human-readable list of indexes out of rotation */
+	public ArrayList<String> indexesTakenOutOfRotation(){
+		ArrayList<String> out = new ArrayList<String>();
+		synchronized(hostsDeploying){
+			for(Entry<String,Set<String>> e : outOfRotation.entrySet()){
+				for(String host : e.getValue()){
+					out.add(e.getKey()+" at "+host);
+				}
+			}
+		}
+		return out;
+	}
+	
 	public boolean thisHostIsDeploying(){
 		return hostsDeploying.containsKey("localhost");
 	}
@@ -265,7 +315,8 @@ public class SearcherCache {
 	 * @return
 	 */
 	public String getRandomHost(IndexId iid){
-		if(iid.isMySearch() && hasLocalSearcher(iid) && !hostsDeploying.containsKey("localhost"))
+		if(iid.isMySearch() && hasLocalSearcher(iid) 
+				&& !hostsDeploying.containsKey("localhost") && !isOutOfRotation("localhost",iid))
 			return "localhost";
 		if(!initialized.contains(iid.toString()))
 			initializeRemote(iid);
@@ -277,6 +328,11 @@ public class SearcherCache {
 			HashSet<String> hosts = new HashSet<String>();
 			hosts.addAll(pools.keySet());
 			hosts.removeAll(hostsDeploying.keySet());
+			// get hosts for which this index is out of rotation
+			Set<String> takenOut = outOfRotation.get(iid.toString());
+			if(takenOut != null)
+				hosts.removeAll(takenOut);
+			// no hosts left
 			if(hosts.size() == 0)
 				return null;
 			int num = (int)(Math.random()*hosts.size());

@@ -359,6 +359,12 @@ public class SearchDaemon extends HttpHandler {
 				}
 			}
 		}
+		ArrayList<String> outOfRotation = cache.indexesTakenOutOfRotation();
+		if( !outOfRotation.isEmpty() ){
+			sendOutputLine("Out of rotation:");
+			for(String s : outOfRotation)
+				sendOutputLine(s);
+		}
 	}
 	
 	// never use keepalive
