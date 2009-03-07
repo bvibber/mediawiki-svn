@@ -418,10 +418,9 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function parsePart($part) {
 		global $wgUser, $wgParser;
-		$parser  = new Parser;
 		$options = ParserOptions::newFromUser( $wgUser );
-		$html = $parser->parse( $part[0], $this->title, $options, true, true )->getText();
-		return '';
+		$html = $wgParser->parse($part[0], $this->mTitle, $options, true, true )->getText();		
+		return preg_match("|(<option.+</option>)|s", $html, $m) ? $m[1] : '';
 	}
 
 	/**
