@@ -261,8 +261,10 @@ class SvnRevTablePager extends TablePager {
 				return intval( $value );
 			}
 		case 'cr_path':
-			return Xml::element('div', array( 'title' => (string)$value ),
-				$wgLang->truncate( (string)$value, 30 ) );
+			return Xml::openElement( 'div', array( 'title' => (string)$value ) ) .
+					$this->mView->mSkin->link(
+					SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/path?path=' . (string)$value ),
+					$wgLang->truncate( (string)$value, 30 ) ) . "</div>";
 		}
 	}
 	
