@@ -130,7 +130,7 @@ public class WikiPage {
 			
 			// Revid and page content
 			this.__revId = json.getInt( "revid" );
-			this.__pageContent = json.getString( "text" );
+			this.__pageContent = json.getJSONObject( "text" ).getString( "*" );
 			this.__pageContent = this.__pageContent.replace("\\", "");
 			
 			// Populate categories
