@@ -255,14 +255,19 @@ public class Links {
 				for(IndexUpdateRecord rec : records){
 					if(rec.doDelete()){
 						Article a = rec.getArticle();
+						String articleKey = null;
 						if(a.getTitle()==null || a.getTitle().equals("")){
 							// try to fetch ns:title so we can have nicer debug info					
 							String key = getKeyFromPageId(rec.getIndexKey());
 							if(key != null)
 								a.setNsTitleKey(key);
-						}
+						} else
+							articleKey = a.getNsTitleKey();
 						log.debug(iid+": Deleting "+a);
 						reader.deleteDocuments(new Term("article_pageid",rec.getIndexKey()));
+						
+						if( articleKey != null ) // if not a deletion be sure to cleanup funky stuff when moving over redirects, etc..
+							reader.deleteDocuments(new Term("article_key", articleKey));
 					}
 				}
 				flush();
