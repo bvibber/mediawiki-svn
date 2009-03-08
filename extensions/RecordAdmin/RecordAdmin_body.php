@@ -144,10 +144,10 @@ class SpecialRecordAdmin extends SpecialPage {
 				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. "\n<br><br><hr><br>\n{$this->form}"
 				. Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) )
-				. '<br><hr><br><table width="100%"><tr>'
+				. '<br><hr><br><table><tr>'
 				. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpFind', 'value' => wfMsg( 'recordadmin-buttonsearch' ) ) ) . '</td>'
 				. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpCreate', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) ) . '</td>'
-				. '<td width="100%" align="left">' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
+				. '<td>' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
 				. '</tr></table></form>'
 			);
 
@@ -207,9 +207,9 @@ class SpecialRecordAdmin extends SpecialPage {
 				$wgOut->addHTML( $this->form );
 				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
 				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
-				$wgOut->addHTML( '<br><hr><br><table width="100%"><tr>'
+				$wgOut->addHTML( '<br><hr><br><table><tr>'
 					. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '</td>'
-					. '<td width="100%" align="left">' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
+					. '<td>' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
 					. '</tr></table></form>'
 				);
 			}
