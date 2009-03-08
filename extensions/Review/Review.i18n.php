@@ -54,6 +54,7 @@ Your other ratings will be merged into this one where you selected 'no opinion'.
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'review_sidebar_title' => '{{Identical|Review}}',
@@ -68,6 +69,10 @@ $messages['qqq'] = array(
 * $5 is the number of anonymous reviewers',
 	'review_version_statistic_cell' => '* $1 is the average of review data
 * $2 is the max value that review data can be',
+	'review_user_reviews' => '{{gender}}
+* (optional) $1 is a user name.',
+	'review_user_page_list' => '{{gender}}
+* (optional) $1 is a user name.',
 	'review_user_details_link' => '{{Identical|Details}}',
 	'review_comment' => '{{Identical|Comment}}',
 );
@@ -380,7 +385,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'review_sidebar_title' => 'Prüfung',
-	'review-desc' => 'Das wiederauferstandene [[Special:Review|Validierungswerkzeug]].',
+	'review-desc' => 'Ermöglicht Benutzern Seiten zu [[Special:Review|prüfen]].',
 	'review_topics' => '# Nachfolgend die Liste der Themen und Bereiche für die Review-Extension.
 # Jedes Thema ist definiert durch eine Zeile von fünf Werten, getrennt durch „:“ (alle anderen Zeilen werden ignoriert).
 # Reihenfolge: Nummerischer Schlüssel (> 0), Name, maximaler Bereich (> 1; 2=ja/nein), Bedeutung des niedrigsten Wertes (z. B. „schlecht“), Bedeutung des höchsten Wertes (z. B. „gut“).
@@ -400,7 +405,7 @@ $messages['de'] = array(
 	'review_total_statistics' => 'Gesamt',
 	'review_statistics_left_corner' => 'Prüfung',
 	'review_version_link' => 'Prüfung Nr. $1',
-	'review_statistic_cell' => 'Durchschnitt: $1 von $2<br />($4 Benutzer, $5 IP-Adressen)',
+	'review_statistic_cell' => 'Durchschnitt: $1 von $2<br />($4 {{PLURAL:$4|Benutzer|Benutzer}}, $5 {{PLURAL:$5|IP-Adresse|IP-Adressen}})',
 	'review_version_statistic_cell' => '$1 von $2',
 	'review_version_reviews_link' => '<small>(Versionsprüfung)</small>',
 	'review_concerns_page' => 'Diese Rezension ist über die Seite „$1“.',
@@ -433,7 +438,7 @@ $messages['de-formal'] = array(
  */
 $messages['dsb'] = array(
 	'review_sidebar_title' => 'Pśeglědanje',
-	'review-desc' => 'Zasejwóžiwjona [[Special:Review|pśeglědowańska]] funkcija',
+	'review-desc' => 'Wobnowjona [[Special:Review|pśeglědowańska]] funkcija',
 	'review_topics' => "# Dołojce lisćina temow a wobcerkow za pśeglědowańske rozšyrjenje.
 # Kužda tema definěrujo se pśez smužku z pěś gódnotami, wótźělenymi pśez ':' (wše druge smužki se ignorěruju).
 # Pórěd jo: numeriski kluc (>0), mě, maksimalny wobcerk (>1; 2=jo/ně), wóznam nejnišeje gódnoty (na pś. 'špatny'), wóznam nejwušeje gódnoty (na pś. 'dobry').
@@ -454,7 +459,7 @@ Twóje druge pógódnośenja zjadnośuju se do toś togo, źož sy wubrał 'žed
 	'review_total_statistics' => 'Dogromady',
 	'review_statistics_left_corner' => 'Wersija',
 	'review_version_link' => 'Wersija #$1',
-	'review_statistic_cell' => 'Pśerězk: $1 z $2<br />($4 {{PLURAL:$4|wužywaŕ|wužywarja|wužywarje|wužywarjow}}, $5 {{PLURAL:$5|IP-adresa|IP-adresy|IP-adrese|IP-adresow}})',
+	'review_statistic_cell' => 'Pśerězk: $1 z $2<br />($4 {{PLURAL:$4|zregistrěrowany wužywaŕ|zregistrěrowanej wužywarja|zregistrěrowane wužywarje|zregistrěrowanych wužywarjow}}, $5 {{PLURAL:$5|anonymna adresa|anonymnej adresy|anonymne adrese|anonymnych adresow}})',
 	'review_version_statistic_cell' => '$1 z $2',
 	'review_version_reviews_link' => '<small>(wersijowe pśeglědanja)</small>',
 	'review_concerns_page' => 'Toś to pśeglědanje jo wó boku "$1".',
@@ -900,7 +905,7 @@ $messages['hsb'] = array(
 	'review_total_statistics' => 'Dohromady',
 	'review_statistics_left_corner' => 'Wersija',
 	'review_version_link' => 'Wersija #$1',
-	'review_statistic_cell' => 'Přerězk: $1 z $2<br />($4 {{PLURAL:$4|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}}, $5 {{PLURAL:$5|anonymny|anonymnej|anonymne|anonymnych}})',
+	'review_statistic_cell' => 'Přerězk: $1 z $2<br />($4 {{PLURAL:$4|zregistrowany wužiwar|zregistrowanej wužiwarjej|zregistrowani wužiwarjo|zregistrowanych wužiwarjow}}, $5 {{PLURAL:$5|anonymny|anonymnej|anonymne|anonymnych}})',
 	'review_version_statistic_cell' => '$1 z $2',
 	'review_version_reviews_link' => '<small>(wersijowe přepruwowanja)</small>',
 	'review_concerns_page' => 'Tute přepruwowanje je za stronu "$1".',
@@ -988,7 +993,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'review_sidebar_title' => '批評',
-	'review-desc' => '[[Special:Review|批評]]機能',
+	'review-desc' => '利用者がページを[[Special:Review|批評]]できるようにする',
 	'review_topics' => '# 以下は批評機能で使用する、題目と値の範囲のリストです。
 # 各題目は、5つの値をもつ行で定義されます。値は「:」で区切ります。その他の行は無視されます。
 # 順序は次のようにします: 数値キー (>0)、名前、値の数 (>1。2 = 真/偽)、最低値の意味 (例: 不良)、最高値の意味 (例: 良)
@@ -1322,7 +1327,7 @@ Uw andere waarderingen worden samengevoegd met deze waar u 'geen mening' hebt op
  */
 $messages['nn'] = array(
 	'review_sidebar_title' => 'Vurder',
-	'review-desc' => 'Den gjenoppliva [[Special:Review|valideringsfunksjonen]].',
+	'review-desc' => 'Lèt brukarar [[Special:Review|vurdera]] sider',
 	'review_topics' => '# Følgjande er ei lista over emne og verdiar for valideringsutvidinga.
 # Kvart emne er definert av ei lina på fem verdiar, skilte frå kvarandre med «:» (alle andre liner vert ignorerte).
 # Rekkjefølgja er: Numerisk verdi (>0), namn, maksimum verdi (>1; 2=yes/no), tyding av lågaste verdi (t.d. «dårleg»), tyding av høgaste verdi (t.d. «bra»).
@@ -1342,7 +1347,7 @@ $messages['nn'] = array(
 	'review_total_statistics' => 'Totalt',
 	'review_statistics_left_corner' => 'Versjon',
 	'review_version_link' => 'Versjon #$1',
-	'review_statistic_cell' => 'Snitt: $1 av $2<br />($4 registrerte, $5 uregistrerte)',
+	'review_statistic_cell' => 'Snitt: $1 av $2<br />({{PLURAL:$4|éin registrert brukar|$4 registrerte brukarar}}, {{PLURAL:$5|éin uregistrert brukar|$5 uregistrerte brukarar}})',
 	'review_version_statistic_cell' => '$1 av $2',
 	'review_version_reviews_link' => '<small>(versjonsvurderingar)</small>',
 	'review_concerns_page' => 'Denne vurderinga gjeld sida «$1».',
@@ -1561,7 +1566,7 @@ As suas outras classificações serão fundidas nesta onde selecionou 'sem opini
  */
 $messages['pt-br'] = array(
 	'review_sidebar_title' => 'Revisão',
-	'review-desc' => 'A ressuscitada funcionalidade de [[Special:Review|validação]]',
+	'review-desc' => 'Permite aos usuários [[Special:Review|validar]] páginas',
 	'review_topics' => "# O seguinte é uma lista de tópicos e intervalos para a extensão de revisão.
 # Cada tópico é definido por uma linha de cinco valores, separados por ':' (todas as outras linhas são ignoradas).
 # A ordem é: chave numérica (>0), nome, intervalo máximo (>1; 2=sim/não), significado do menor valor (p.ex. 'mau'), significado do maior valor (p.ex. 'bom').
@@ -1582,7 +1587,7 @@ As suas outras classificações serão fundidas nesta onde selecionou 'sem opini
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Revisão',
 	'review_version_link' => 'Revisão #$1',
-	'review_statistic_cell' => 'Média: $1 de $2<br />($4 utilizadores, $5 anônimos)',
+	'review_statistic_cell' => 'Média: $1 de $2<br />($4 {{PLURAL:$4|utilizador registrado|utilizadores registrados}}, $5 {{PLURAL:$5|utilizador anônimo|utilizadores anônimos}})',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(revisões de versão)</small>',
 	'review_concerns_page' => 'Esta revisão é sobre a página "$1".',

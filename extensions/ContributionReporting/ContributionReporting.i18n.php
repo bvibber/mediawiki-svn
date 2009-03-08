@@ -2085,6 +2085,57 @@ $messages['pt'] = array(
 	'specialpages-group-contribution' => 'Contribuições/Angariação de fundos',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'contributionreporting-desc' => 'Relatório ao vivo da angariação de fundos da Wikimedia',
+	'contributiontotal' => 'Total de contribuições',
+	'contributionhistory' => 'Histórico de contribuições',
+	'contrib-hist-header' => 'Comentários em tempo real de doadores de todo o mundo',
+	'contrib-hist-name' => 'Nome',
+	'contrib-hist-date' => 'Hora e data',
+	'contrib-hist-amount' => 'Quantia',
+	'contrib-hist-next' => 'Doações mais antigas',
+	'contrib-hist-previous' => 'Doações mais recentes',
+	'contrib-hist-anonymous' => 'Anônimo',
+	'contributionstatistics' => 'Estatísticas de contribuições',
+	'contribstats-desc' => 'Apresenta estatísticas das contribuições feitas à Fundação Wikimedia',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Total de hoje|Totais diários dos $1 dias passados}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Total deste mês|Totais mensais dos $1 meses passados}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Total de $1 mês|Totais mensais de $1 meses}}',
+	'contribstats-currency-range-totals' => 'Totais por divisa (de $1 a $2)',
+	'contribstats-contribution-range-breakdown' => 'Separação das contribuições por valor (de $1 a $2)',
+	'contribstats-currency-totals' => 'Totais de divisa para o ano fiscal de $1',
+	'contribstats-contribution-breakdown' => 'Repartição das contribuições por valor para o ano fiscal de $1',
+	'contribstats-day' => 'Dia',
+	'contribstats-month' => 'Mês',
+	'contribstats-currency' => 'Divisa',
+	'contribstats-amount' => 'Montante (USD)',
+	'contribstats-contributions' => 'Contribuições',
+	'contribstats-total' => 'Total (USD)',
+	'contribstats-avg' => 'Média (USD)',
+	'contribstats-max' => 'Máximo (USD)',
+	'contribstats-percentage-ytd' => 'Percentagem (do início do ano até hoje)',
+	'contribstats-total-ytd' => 'Total (do início do ano até hoje)',
+	'contribstats-value-exactly' => 'Exatamente $1',
+	'contribstats-value-under' => 'Menos de $1',
+	'contribstats-value-from' => 'Entre $1 - $2',
+	'contribstats-value-over' => 'Mais de $1',
+	'fundraiserstatistics' => 'Estatísticas da angariação de fundos',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Dia $1 de $2',
+	'fundraiserstats-contributions' => 'Contribuições',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Média (USD)',
+	'fundraiserstats-max' => 'Máximo (USD)',
+	'fundraiserstats-tab-totals' => 'Totais (USD)',
+	'fundraiserstats-tab-contributions' => 'Número de contribuições',
+	'fundraiserstats-tab-averages' => 'Médias (USD)',
+	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
+	'specialpages-group-contribution' => 'Contribuições/Angariação de fundos',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

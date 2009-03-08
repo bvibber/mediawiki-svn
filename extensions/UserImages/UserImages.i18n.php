@@ -199,12 +199,13 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'userimages-desc' => 'Crée des galleries des images téléchargées par l’utilisateur avec <code><nowiki><userimage /></nowiki></code>.',
-	'userimages-caption' => 'Images importées par $1',
+	'userimages-desc' => "Génère des galeries d'images téléversées par un utilisateur avec <code><nowiki><userimage /></nowiki></code>",
+	'userimages-caption' => 'Images téléversées par $1',
 	'userimages-noname' => 'Nom d’utilisateur invalide ou manquant.',
-	'userimages-noimages' => '$1 n’a importé aucune image.',
+	'userimages-noimages' => "$1 n’a pas téléversé d'image.",
 );
 
 /** Galician (Galego)

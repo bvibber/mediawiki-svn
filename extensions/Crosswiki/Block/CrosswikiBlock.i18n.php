@@ -565,6 +565,7 @@ Palaa:
  * @author Grondin
  * @author IAlex
  * @author Meithal
+ * @author PieRRoMaN
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -598,7 +599,7 @@ Revenir à :
 	'crosswikiblock-nouser' => 'L’utilisateur « $3 » est introuvable.',
 	'crosswikiblock-noexpiry' => 'Date ou durée d’expiration incorrecte : $1.',
 	'crosswikiblock-noreason' => 'Aucun motif indiqué.',
-	'crosswikiblock-notoken' => 'Édition prise incorrecte.',
+	'crosswikiblock-notoken' => 'Jeton de modification invalide.',
 	'crosswikiblock-alreadyblocked' => 'L’utilisateur « $3 » est déjà bloqué.',
 	'crosswikiblock-noblock' => "Cet utilisateur n'est pas bloqué en écriture.",
 	'crosswikiblock-success' => "L’utilisateur '''$3''' a été bloqué avec succès.

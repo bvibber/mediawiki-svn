@@ -107,10 +107,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'formatsearch-desc' => 'Nettoyer la page de résultats de recherche',
+	'formatsearch-desc' => 'Nettoie la page de résultats des recherches',
 );
 
 /** Galician (Galego)

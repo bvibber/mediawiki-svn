@@ -177,14 +177,15 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author McDutchie
+ * @author PieRRoMaN
  * @author Zetud
  */
 $messages['fr'] = array(
 	'unicodeconverter' => 'Convertisseur Unicode',
-	'unicodeconverter-desc' => "Un simple exemple d'un module de page spéciale. [[Special:UnicodeConverter|Étant donnée une chaîne de caractères au format UTF-8]], la convertit en entités HTML appropriés pour une page web en ISO 8859-1",
+	'unicodeconverter-desc' => "Un simple exemple d'un module de page spéciale. [[Special:UnicodeConverter|Étant donnée une chaîne de caractères au format UTF-8]], il la convertit en entités HTML appropriées pour une page web en ISO 8859-1",
 	'unicodeconverter-ok' => 'Convertir',
 	'unicodeconverter-oldtext' => 'Texte d’origine :',
-	'unicodeconverter-newtext' => 'Texte une fois converti :',
+	'unicodeconverter-newtext' => 'Texte converti :',
 );
 
 /** Galician (Galego)

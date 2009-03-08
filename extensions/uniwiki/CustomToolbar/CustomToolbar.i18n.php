@@ -605,10 +605,11 @@ Tarkista ponnahdusikkunoiden eston asetukset.',
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $wgCustomToolbarMessages['fr'] = array(
-	'ct-desc' => 'Ajouter une barre d’outils extensible',
+	'ct-desc' => 'Ajoute une barre d’outils extensible',
 	'ct_bold_sample' => 'Texte gras',
 	'ct_bold_tip_ins' => 'Insérer un texte en gras',
 	'ct_bold_tip_wrap' => 'Mettre ce texte en gras',
@@ -627,7 +628,7 @@ $wgCustomToolbarMessages['fr'] = array(
 	'ct_image_tip' => 'Insérer une image',
 	'ct_image_caption' => 'Ajouter une image',
 	'ct_attachment_tip' => 'Insérer un fichier joint',
-	'ct_attachment_caption' => 'Ajouter un fichier en attachement',
+	'ct_attachment_caption' => 'Ajouter un fichier joint',
 	'ct_math_sample' => 'Insérer ici une formule LaTeX',
 	'ct_math_tip_ins' => 'Insérer une formule mathématique (LaTeX)',
 	'ct_math_tip_wrap' => 'Mettre ce texte en formule mathématique (LaTeX)',
@@ -635,18 +636,18 @@ $wgCustomToolbarMessages['fr'] = array(
 	'ct_nowiki_sample' => 'Insérer ici un texte non formaté',
 	'ct_nowiki_tip_ins' => 'Ignorer le formatage wiki',
 	'ct_nowiki_tip_wrap' => 'Ignorer le formatage wiki pour ce texte',
-	'ct_nowiki_caption' => 'Non wiki',
+	'ct_nowiki_caption' => 'Pas de wiki',
 	'ct_horizontal_tip' => 'Insérer une ligne horizontale (à utiliser avec parcimonie)',
 	'ct_horizontal_caption' => 'Ligne horizontale',
-	'ct_upload' => 'Importer $1',
-	'ct_select' => 'Sélectionner $1 pour l’import :',
+	'ct_upload' => 'Téléverser $1',
+	'ct_select' => 'Sélectionner $1 à téléverser :',
 	'ct_caption' => 'Ajouter un en-tête (facultatif) :',
 	'ct_link' => 'Ajouter un nom de lien (facultatif) :',
 	'ct_submit' => 'Lancer',
 	'ct_close' => 'Fermer la fenêtre',
-	'ct_success' => 'Import du fichier réussi !',
-	'ct_popupblocked' => 'La fenêtre popup d’import a été bloquée dès l’ouverture.
-Veuiller consulter vos paramètres de blocage des popups.',
+	'ct_success' => 'Téléversement du fichier réussi !',
+	'ct_popupblocked' => "L'ouverture de la fenêtre de téléversement a été empêchée.
+Veuillez vérifier vos paramètres de blocage des fenêtres intruses.",
 	'ct_user_user' => 'Utilisateur',
 	'ct_user_tip' => 'Insérer un lien vers une page utilisateur',
 	'ct_user_caption' => 'Lien de l’utilisateur',

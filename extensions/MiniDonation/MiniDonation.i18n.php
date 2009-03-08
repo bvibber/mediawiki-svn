@@ -70,6 +70,7 @@ $messages['bs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'donationform-desc' => "Yn ychwanegu tag <tt>&lt;donateform&gt;</tt> sy'n galluogi rhoi trwy Paypal",
 	'donationform-submit' => 'Rhoi trwy PayPal',
 );
 

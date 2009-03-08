@@ -46,6 +46,21 @@ $messages['qqq'] = array(
 	'gep-categorypage' => '{{optional}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'gep-addcategorybutton' => 'Ližata',
+	'gep-suggestcategory' => 'Nevoda kategorii',
+	'gep-suggestcategorybutton' => 'Oigeta',
+	'gep-sections' => 'Jagused',
+	'gep-sectionnotdisabled' => 'Ei sa saubata nece jaguz',
+	'gep-addsection' => 'Ližata jaguz',
+	'gep-addsectionbutton' => 'Ližata',
+	'gep-classicmode' => 'Klassine režim',
+	'gep-genericmode' => 'Ühthine režim',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -322,14 +337,15 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'gep-desc' => 'Suppléer le formulaire de modification pour être plus facile à utiliser',
+	'gep-desc' => 'Complète le formulaire de modification pour être plus convivial',
 	'gep-emailsubject' => '[$1] Suggestion de catégorie : $2',
 	'gep-emailbody' => "L'utilisateur « $1 » a suggéré la catégorie « $2 » pour le site « $3 ».",
 	'gep-emailfailure' => "Désolé, votre suggestion n'a pas pu être effectuée.",
-	'gep-emailsuccess' => 'Merci pour avoir suggéré la catégorie : $1.',
+	'gep-emailsuccess' => "Merci d'avoir suggéré la catégorie : $1.",
 	'gep-categories' => 'Catégories',
 	'gep-addcategory' => 'Ajouter une catégorie',
 	'gep-addcategorybutton' => 'Ajouter',

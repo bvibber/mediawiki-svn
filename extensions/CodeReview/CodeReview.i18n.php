@@ -1356,8 +1356,8 @@ $4',
 $messages['es'] = array(
 	'code' => 'Revisión de código',
 	'code-comments' => 'Comentarios',
-	'code-change-status' => "cambiado el '''estatus''' de esta revisión",
-	'code-change-tags' => "cambiadas las '''etiquetas''' de esta revisión",
+	'code-change-status' => "cambiado el '''status''' de r$1",
+	'code-change-tags' => "cambiadas las '''etiquetas''' de r$1",
 	'code-change-removed' => 'quitados:',
 	'code-change-added' => 'agregado:',
 	'code-prop-changes' => 'Registro de estatus y etiquetado',
@@ -1456,14 +1456,15 @@ $4',
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
 	'code' => 'Kode Berrikuspena',
 	'code-comments' => 'Iruzkinak',
-	'code-change-status' => "berrikuspen honen '''egoera''' aldatu da",
-	'code-change-tags' => "berrikuspen honetako '''etiketak''' aldatu dira",
+	'code-change-status' => "r$1-(e)n '''egoera''' aldatu da",
+	'code-change-tags' => "r$1-eko '''etiketak''' aldatu dira",
 	'code-change-removed' => 'ezabatua:',
 	'code-change-added' => 'gehitua:',
 	'code-prop-changes' => 'Egoera eta etiketatzeko loga',
@@ -1648,8 +1649,8 @@ $4',
 $messages['fi'] = array(
 	'code' => 'Koodintarkistus',
 	'code-comments' => 'Kommentit',
-	'code-change-status' => "muutti tämän version '''tilaa'''",
-	'code-change-tags' => "muutti tämän version '''merkintöjä'''",
+	'code-change-status' => "muutti version $1 '''tilaa'''",
+	'code-change-tags' => "muutti version $1 '''merkintöjä'''",
 	'code-change-removed' => 'poistettu:',
 	'code-change-added' => 'lisätty:',
 	'code-prop-changes' => 'Tila- ja merkintäloki',
@@ -2801,8 +2802,8 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'code' => 'コードレビュー',
 	'code-comments' => 'コメント',
-	'code-change-status' => "この版の'''ステータス'''を変更しました",
-	'code-change-tags' => "この版の'''タグ'''を変更しました",
+	'code-change-status' => "r$1 の'''ステータス'''を変更しました",
+	'code-change-tags' => "r$1 の'''タグ'''を変更しました",
 	'code-change-removed' => '除去:',
 	'code-change-added' => '追加:',
 	'code-prop-changes' => 'ステータスとタグ付けのログ',
@@ -3724,6 +3725,8 @@ $messages['nds'] = array(
 	'code-rev-submit-next' => 'Spiekern un na’n nächsten unprööften',
 	'code-batch-status' => 'Status ännern:',
 	'code-batch-tags' => 'Tags ännern:',
+	'codereview-batch-title' => 'All utwählt Versionen ännern',
+	'codereview-batch-submit' => 'Afschicken',
 	'code-releasenotes' => 'Release Notes',
 	'code-release-legend' => 'Release Notes tügen',
 	'code-release-startrev' => 'Start-Version:',
@@ -4450,13 +4453,14 @@ $4',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'code' => 'Revisão de Código',
 	'code-comments' => 'Comentários',
-	'code-change-status' => "alterado o '''''status''''' desta revisão",
-	'code-change-tags' => "alteradas as '''''tags''''' para esta revisão",
+	'code-change-status' => "alterou o '''estado''' da revisão r$1",
+	'code-change-tags' => "alterou as '''etiquetas''' da revisão r$1",
 	'code-change-removed' => 'removido:',
 	'code-change-added' => 'adicionado:',
 	'code-prop-changes' => "''Status'' e registro de etiquetagem",
@@ -5119,8 +5123,8 @@ $4',
 $messages['sv'] = array(
 	'code' => 'Kodgranskning',
 	'code-comments' => 'Kommentarer',
-	'code-change-status' => "ändrade '''statusen''' för denna version",
-	'code-change-tags' => "ändrade '''taggen''' för denna version",
+	'code-change-status' => "ändrade '''statusen''' för version $1",
+	'code-change-tags' => "ändrade '''taggen''' för version $1",
 	'code-change-removed' => 'tog bort:',
 	'code-change-added' => 'la till:',
 	'code-prop-changes' => 'Logg för status & taggning',

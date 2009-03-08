@@ -30,6 +30,13 @@ $messages['qqq'] = array(
 * $3 is the time at which the page was changed',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'formatchanges-anonymous' => 'Anonim',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -159,10 +166,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'formatchanges-desc' => 'Reformater les [[Special:RecentChanges|modifications récentes]]',
+	'formatchanges-desc' => 'Reformate les [[Special:RecentChanges|modifications récentes]]',
 	'formatchanges-anonymous' => 'Anonyme',
 	'formatchanges-createdby' => '$1 - créé par $2 ($3)',
 	'formatchanges-editedby' => '$1 - modifié par $2 ($3)',

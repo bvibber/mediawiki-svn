@@ -146,6 +146,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'categoryintersection' => 'Categoría intersección',
 	'categoryintersection-doit' => 'Lista de páginas en todas estas categorías',
+	'categoryintersection-maxcategories' => 'El número máximo permitido de categorías intersectadas es $1.',
 	'categoryintersection-results' => 'La búsqueda retornó $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 

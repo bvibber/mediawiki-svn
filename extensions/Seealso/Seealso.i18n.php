@@ -83,6 +83,7 @@ $messages['bs'] = array(
  */
 $messages['cy'] = array(
 	'seealso' => 'Gweler hefyd',
+	'seealso-desc' => "Pennawdau 'Gweler hefyd' wedi eu cyfieithu gyda'r tag <code><nowiki><seealso></nowiki></code>",
 );
 
 /** German (Deutsch)

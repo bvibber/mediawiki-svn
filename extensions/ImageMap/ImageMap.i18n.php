@@ -982,6 +982,7 @@ $messages['ms'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'imagemap_desc' => 'Verlöövt dat Instellen vun Lenken op Biller över den Tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Error: in de eerste Reeg mutt en Bild angeven wesen',
 	'imagemap_invalid_image' => 'Error: Bild geiht nich oder dat gifft dat gornich',
 	'imagemap_bad_image' => 'Fehler: Dat Bild steiht op de swarte List för disse Sied',
@@ -993,6 +994,7 @@ $messages['nds'] = array(
 	'imagemap_invalid_coord' => 'Error: Koordinaat in Reeg $1 nich bi de Reeg, mutt en Tall wesen',
 	'imagemap_invalid_desc' => 'Error: Beschrieven nich bi de Reeg, mutt een vun disse wesen: <tt>$1</tt>',
 	'imagemap_description' => 'Över dit Bild',
+	'imagemap_poly_odd' => 'Fehler: Polygon mit unevene Tall Koordinaten in Reeg $1',
 );
 
 /** Nepali (नेपाली) */

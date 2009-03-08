@@ -147,10 +147,11 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author McDutchie
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'authors-desc' => 'Ajouter aux pages une liste des contributeurs',
+	'authors-desc' => 'Ajoute une liste des contributeurs dans les pages',
 	'authors_authors' => 'Auteurs',
 	'authors_anonymous' => 'Anonyme',
 );

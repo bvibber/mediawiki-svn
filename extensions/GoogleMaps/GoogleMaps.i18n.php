@@ -1665,10 +1665,12 @@ $wgGoogleMapsMessages['hak'] = array(
 );
 
 /** Hawaiian (Hawai`i)
+ * @author Kalani
  * @author Singularity
  */
 $wgGoogleMapsMessages['haw'] = array(
 	'gm-remove' => 'kāpae',
+	'gm-zoom-control' => 'Ka hoʻokele ʻana',
 	'gm-kml-loading' => 'ke ho‘ouka nei…',
 );
 
@@ -3239,10 +3241,18 @@ $wgGoogleMapsMessages['or'] = array(
  */
 $wgGoogleMapsMessages['os'] = array(
 	'gm-balloon-title' => 'Сæргонд',
+	'gm-clip-result' => 'Картæмæ бафтау',
+	'gm-map' => 'Картæ',
+	'gm-width' => 'Уæрх',
+	'gm-height' => 'Бæрзæнд',
+	'gm-large' => 'Стыр',
+	'gm-medium' => 'Рæстæмбис',
+	'gm-small' => 'Чысыл',
 	'gm-no-zoom-control' => 'Нæй',
 	'gm-yes' => 'О',
 	'gm-no' => 'Нæ',
 	'gm-search' => 'Агур',
+	'gm-line-width' => 'Уæрх',
 );
 
 /** Pampanga (Kapampangan)

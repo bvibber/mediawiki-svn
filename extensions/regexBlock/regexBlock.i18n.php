@@ -286,8 +286,8 @@ $messages['be-tarask'] = array(
 Увага: частковая ІР-адрасы будуць інтэрпрэтавацца як назвы рахункаў у вызначаных блякаваньнях.
 Калі не пазначаная прычына, будзе выкарыстоўвацца агульнае апісаньне па змоўчваньні.''",
 	'regexblock-page-title-1' => 'Блякаваньне адрасоў з выкарыстаньнем рэгулярнага выразу',
-	'regexblock-reason-ip' => 'Гэта ІР-адрас быў заблякаваны па прычыне вандалізму ці іншага парушэньня зробленага Вамі ці кім-небудзь яшчэ, хто карыстаецца Вашым ІР-адрасам. 
-Калі Вы лічыце, што гэта памылка, калі ласка $1',
+	'regexblock-reason-ip' => 'Гэта ІР-адрас быў заблякаваны па прычыне вандалізму ці іншага парушэньня зробленага Вамі альбо кім-небудзь іншым, хто карыстаецца гэтым ІР-адрасам.
+Калі Вы лічыце, што гэта памылка, калі ласка, $1',
 	'regexblock-form-reason' => 'Прычына:',
 );
 
@@ -1836,6 +1836,66 @@ Por favor, crie um nome de utilizador alternativo ou $1 sobre o problema',
 	'regexblock-view-go' => 'Ir',
 	'regexblock-view-match' => '(correspondência exata)',
 	'regexblock-view-regex' => '(correspondência a regex)',
+	'regexblock-view-account' => '(bloqueio de criação de conta)',
+	'regexblock-view-reason' => 'motivo: $1',
+	'regexblock-view-reason-default' => 'motivo genérico',
+	'regexblock-view-block-infinite' => 'bloqueio permanente',
+	'regexblock-view-block-temporary' => 'expira em',
+	'regexblock-view-block-expired' => 'EXPIRADO em',
+	'regexblock-view-block-by' => 'bloqueado por',
+	'regexblock-view-block-unblock' => 'desbloquear',
+	'regexblock-view-stats' => 'estatísticas',
+	'regexblock-view-empty' => 'Esta lista de nomes e endereços bloqueados está vazia.',
+	'regexblock-view-time' => 'em $1',
+	'right-regexblock' => 'Bloquear a edição a utilizadores em todos os wikis da farm de wikis',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'regexblock' => 'Bloqueio por expressões regulares',
+	'regexblock-already-blocked' => '$1 já está bloqueada.',
+	'regexblock-block-log' => "Nome de utilizador ou endereço IP '''$1''' foi bloqueado.",
+	'regexblock-block-success' => 'Bloqueio com sucesso',
+	'regexblock-currently-blocked' => 'Endereços bloqueados atualmente:',
+	'regexblock-desc' => 'Extensão usada para bloquear nomes de utilizador ou endereços IP através de expressões regulares. Contém o mecanismo e uma [[Special:Regexblock|página especial]] para adicionar/gerenciar os bloqueios.',
+	'regexblock-expire-duration' => '1 hora,2 horas,4 horas,6 horas,1 dia,3 dias,1 semana,2 semanas,1 mês,3 meses,6 meses,1 ano,infinito',
+	'regexblock-page-title' => 'Bloqueio de nomes por expressões regulares',
+	'regexblockstats' => 'Estatísticas de bloqueio por expressões regulares',
+	'regexblock-help' => 'Use o formulário abaixo para bloquear o acesso de escrita a um endereço IP ou nome de utilizador específicos.
+Isto deverá ser feito apenas para prevenir vandalismo, e de acordo com as políticas.
+\'\'Esta página lhe permitirá bloquear até mesmo utilizadores não existentes, e também bloqueará utilizadores com nomes semelhantes ao dado, p. ex. "Teste" será bloqueado juntamente com "Teste 2", etc.
+Você pode também bloquear endereços IP completos, significando isto que ninguém proveniente deles poderá editar páginas.
+Nota: endereços IP parciais serão tratados como nomes de utilizadores na determinação do bloqueio.
+Se nenhum motivo for especificado, um motivo genérico padrão será usado.\'\'',
+	'regexblock-page-title-1' => 'Bloquear endereço utilizando expressões regulares',
+	'regexblock-reason-ip' => 'Este endereço IP está impedido de editar devido a vandalismo ou outra perturbação por si ou outra pessoa que compartilha o seu endereço IP.
+Se você acredita que se trata de um erro, por favor, $1',
+	'regexblock-reason-name' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outro tipo de disrupção. Se julgar tratar-se de um erro, por favor $1',
+	'regexblock-reason-regex' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outra perturbação por um utilizador com um nome semelhante.
+Por favor, crie um nome de utilizador alternativo ou $1 sobre o problema',
+	'regexblock-form-username' => 'Endereço IP ou nome de utilizador:',
+	'regexblock-form-reason' => 'Motivo:',
+	'regexblock-form-expiry' => 'Validade:',
+	'regexblock-form-match' => 'Correspondência exata',
+	'regexblock-form-account-block' => 'Bloquear criação de novas contas',
+	'regexblock-form-submit' => 'Bloquear este Utilizador',
+	'regexblock-form-submit-empty' => 'Forneça um nome de utilizador ou um endereço IP para bloquear.',
+	'regexblock-form-submit-regex' => 'Expressão regular inválida.',
+	'regexblock-form-submit-expiry' => 'Por favor, seleccione um período de expiração.',
+	'regexblock-match-stats-record' => "$1 bloqueou '$2' em '$3' em '$4', proveniente do endereço '$5'",
+	'regexblock-nodata-found' => 'Nenhum dado encontrado',
+	'regexblock-stats-title' => 'Estatísticas de bloqueio de expressões regulares',
+	'regexblock-unblock-success' => 'Desbloqueio bem sucedido',
+	'regexblock-unblock-log' => "O nome de utilizador ou endereço IP '''$1''' foi desbloqueado.",
+	'regexblock-unblock-error' => 'Erro ao desbloquear $1. Provavelmente não existe esse utilizador.',
+	'regexblock-regex-filter' => 'ou valor de regex:',
+	'regexblock-view-blocked' => 'Ver bloqueios por:',
+	'regexblock-view-all' => 'Todos',
+	'regexblock-view-go' => 'Ir',
+	'regexblock-view-match' => '(correspondência exata)',
+	'regexblock-view-regex' => '(correspondência por regex)',
 	'regexblock-view-account' => '(bloqueio de criação de conta)',
 	'regexblock-view-reason' => 'motivo: $1',
 	'regexblock-view-reason-default' => 'motivo genérico',

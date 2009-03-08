@@ -74,9 +74,10 @@ $messages['es'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'gotocategory-desc' => "Vérifier les termes des recherches envers l'espace de noms « Catégorie: » pour la fonctionnalité « Aller à la page »",
+	'gotocategory-desc' => "Vérifie les termes des recherches envers l'espace de noms « Catégorie: » pour la fonctionnalité « Aller à la page »",
 );
 
 /** Galician (Galego)

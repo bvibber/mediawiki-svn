@@ -3929,6 +3929,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-section-groups' => 'Jruppe',
 	'configure-section-block' => 'Sperre',
 	'configure-section-rates' => 'Bejrenzunge för Raate',
+	'configure-section-cookie' => 'Cookies',
 	'configure-section-upload' => 'Huhlaade',
 	'configure-section-sharedupload' => 'Gemeinsam Repositorijum',
 	'configure-section-mime' => 'MIME-Zoote',

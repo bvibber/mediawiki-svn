@@ -315,9 +315,14 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'contributors' => 'Colaboradores',
 	'contributors-toolbox' => 'Colaboradores principales',
+	'contributors-legend' => 'Listar principales contribuyentes a esta página',
 	'contributors-target' => 'Título:',
 	'contributors-submit' => 'Mostrar',
+	'contributors-subtitle' => 'Principales contribuyentes a $1',
+	'contributors-others-long' => 'Hay {{PLURAL:$1|algun otro contribuyente|$1 otros contribuyentes}} a esta página.',
+	'contributors-others' => 'y {{PLURAL:$1|algun otro|$1 otros}}',
 	'contributors-badtitle' => 'Título inválido.',
+	'contributors-nosuchpage' => 'La página $1 no existe.',
 );
 
 /** Estonian (Eesti)

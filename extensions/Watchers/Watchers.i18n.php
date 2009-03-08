@@ -164,12 +164,13 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'watchers' => 'Evezhierien',
+	'watchers-desc' => 'Diskwel a ra [[Special:Watchers|peseurt implijerien o deus enrollet pajennoù en o roll evezhiañ]]',
 	'watchers_link_title' => "Piv a vez oc'h evezhiañ ar bajenn-mañ ?",
 	'watchers_error_article' => "<b>Fazi :</b> n'eus ket eus ar bajenn-se.",
-	'watchers_header' => 'Tud a heuilh "$1"',
+	'watchers_header' => '{{PLURAL:$2|Den|Tud}} a heuilh "$1"',
 	'watchers_noone_watches' => 'Den ebet ne heuilh ar bajenn-mañ.',
-	'watchers_x_or_more' => "$1 a dud pe muioc'h a heuilh ar bajenn-mañ.",
-	'watchers_less_than_x' => "Nebeutoc'h eget $1 implijer o deus lakaet ar bajenn-mañ war evezh.",
+	'watchers_x_or_more' => "$1 {{PLURAL:$1|den|den}} pe muioc'h zo renablet ar bajenn-mañ en o roll evezhiañ.",
+	'watchers_less_than_x' => "Nebeutoc'h eget $1 {{PLURAL:$1|implijer|implijer}} zo renablet ar bajenn-mañ en o roll evezhiañ.",
 );
 
 /** Bosnian (Bosanski)
@@ -321,7 +322,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'watchers' => 'Suiveurs',
 	'watchers-desc' => 'Affiche [[Special:Watchers|quels utilisateurs ont une page dans leur liste de suivi]]',
-	'watchers_link_title' => 'Qui suit cette page ?',
+	'watchers_link_title' => 'Qui a cette page en suivi ?',
 	'watchers_error_article' => '<b>Erreur :</b> La page n’existe pas.',
 	'watchers_header' => '{{PLURAL:$2|Utilisateur qui suit|Utilisateurs qui suivent}} « $1 »',
 	'watchers_noone_watches' => 'Personne ne suit cette page.',

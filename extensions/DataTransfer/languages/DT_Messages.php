@@ -274,12 +274,15 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'viewxml' => 'Ver XML',
 	'dt_viewxml_categories' => 'Categorías',
 	'dt_viewxml_namespaces' => 'Espacios de nombres',
+	'dt_viewxml_simplifiedformat' => 'Formato simplificado',
 	'dt_xml_namespace' => 'Espacio de nombres',
 	'dt_xml_page' => 'Página',
 	'dt_xml_name' => 'Nombre',

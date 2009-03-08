@@ -146,13 +146,14 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'autocreatecategorypages-desc' => 'Créer automatiquement les pages de catégories manquantes lors de la sauvegarde',
-	'autocreatecategorypages-stub' => 'Ceci est une page de catégories.
-Elle liste toutes les pages issues de la catégorie « $1 » et, le cas échéant, aussi bien que toutes ses sous-catégories.',
+	'autocreatecategorypages-desc' => 'Crée automatiquement les pages de catégorie manquantes lors de la publication',
+	'autocreatecategorypages-stub' => 'Ceci est une page de catégorie.
+Elle liste toutes les pages comprises dans la catégorie « $1 » ainsi que toutes ses éventuelles sous-catégories.',
 	'autocreatecategorypages-createdby' => 'Créée automatiquement par l’extension AutoCreateCategoryPages.',
-	'autocreatecategorypages-editor' => 'Créateur automatique de catégorie.',
+	'autocreatecategorypages-editor' => 'Créateur automatique de catégorie',
 );
 
 /** Irish (Gaeilge)

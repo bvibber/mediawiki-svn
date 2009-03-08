@@ -888,6 +888,13 @@ Fahr mit dr Muus iber e Rächt go d Byschryybig aazeige.',
 	'right-readold' => 'Dr Inhalt vu alte Versionen un Versionsunterschid aaluege',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'grouppermissions-dologin' => 'ʻEʻe',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -1126,6 +1126,7 @@ $messages['or'] = array(
  */
 $messages['os'] = array(
 	'imagetagging-imghistory' => 'Истори',
+	'imagetagging-tagcancel-button' => 'Нæ бæззы',
 );
 
 /** Polish (Polski)

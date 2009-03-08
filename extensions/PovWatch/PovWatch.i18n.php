@@ -490,16 +490,16 @@ $messages['fi'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'povwatch' => 'Surveillance des guerres d’éditions',
+	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Extension permettant d’[[Special:PovWatch|ajouter des pages à la liste de suivi]] d’autres utilisateurs',
 	'povwatch_no_session' => 'Erreur : impossible de soumettre le formulaire par suite d’une perte des données de session.',
-	'povwatch_not_allowed_push' => 'Vous n’êtes pas un administrateur pour la surveillance des guerres d’édition. Vous ne pouvez pas ajouter les pages dans la liste correspondante.',
-	'povwatch_already_subscribed' => 'Vous êtes déjà inscrit pour la surveillance des guerres d’édition.',
-	'povwatch_subscribed' => 'Vous êtes maintenant inscrit pour la surveillance des guerres d’édition.',
-	'povwatch_not_subscribed' => 'Vous n’êtes pas inscrit pour la surveillance des guerres d’édition. Par conséquent, vous ne pouvez pas résilier d’inscription.',
-	'povwatch_unsubscribed' => 'Votre inscription pour la surveillance des guerres d’édition est maintenant résiliée.',
+	'povwatch_not_allowed_push' => 'Vous n’êtes pas un administrateur de PovWatch. Vous ne pouvez pas ajouter les pages dans la liste correspondante.',
+	'povwatch_already_subscribed' => 'Vous êtes déjà inscrit à PovWatch.',
+	'povwatch_subscribed' => 'Vous êtes maintenant inscrit à PovWatch.',
+	'povwatch_not_subscribed' => 'Vous n’êtes pas inscrit à PovWatch, vous ne pouvez donc pas résilier d’inscription.',
+	'povwatch_unsubscribed' => 'Votre inscription a PovWatch est maintenant résiliée.',
 	'povwatch_invalid_title' => 'Le titre indiqué est invalide.',
-	'povwatch_pushed' => '[[$1]] a été inscrite avec succès dans {{PLURAL:$2|la liste|les listes}} de surveillance de $2 {{PLURAL:$2|utilisateur|utilisateurs}}',
+	'povwatch_pushed' => "[[$1]] a été ajoutée à la liste de suivi {{PLURAL:$2|d'un utilisateur|de $2 utilisateurs}}.",
 	'povwatch_intro' => "PovWatch est un service qui permet d'ajouter implicitement les pages controversées dans la liste de suivi des administrateurs qui le souhaitent.
 
 Un journal des pages récemment ajoutées à la liste est disponible sur [[Special:PovWatch/log]].",
@@ -521,8 +521,8 @@ Cliquez sur le bouton ci-dessous pour résilier votre abonnement.',
 Cliquez sur le bouton ci-dessous pour vous abonner.',
 	'povwatch_subscribe' => "S'abonner",
 	'povwatch_added' => 'ajouté',
-	'right-povwatch_admin' => 'Administrer les droits d’utilisateur permettant l’ajout de pages aux listes de suivi d’autres utilisateurs.',
-	'right-povwatch_user' => "Ajoute des pages à la liste de suivi d'autres utilisateurs",
+	'right-povwatch_admin' => 'Administrer les droits d’utilisateur pour ajouter des pages à la liste de suivi d’autres utilisateurs.',
+	'right-povwatch_user' => "Ajouter des pages à la liste de suivi d'autres utilisateurs",
 	'action-povwatch_admin' => "administrer les droits d'utilisateur pour PovWatch",
 	'action-povwatch_user' => 'ajouter cette page à la liste de suivi d’un autre utilisateur',
 );
@@ -1199,11 +1199,15 @@ $messages['nah'] = array(
  */
 $messages['nds'] = array(
 	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Extension för dat [[Special:PovWatch|Tofögen vun Sieden to de Oppasslistlist]] vun annere Brukers',
+	'povwatch_no_session' => 'Fehler: Dat Formular kunn nich verarbeidt warrn, de Sitzungsdaten sünd verloren gahn.',
+	'povwatch_not_allowed_push' => 'Du büst keen PovWatch-Administrater, du kannst keen Sieden to de Oppasslist vun annere Brukers tofögen.',
 	'povwatch_already_subscribed' => 'Du büst al för PovWatch anmellt',
 	'povwatch_subscribed' => 'Du büst nu för PovWatch anmellt',
 	'povwatch_not_subscribed' => 'Du büst gornich för PovWatch anmellt un kannst di dorüm ok nich afmellen.',
 	'povwatch_unsubscribed' => 'Du büst nu vun PovWatch afmellt',
 	'povwatch_invalid_title' => 'De angeven Titel weer ungüllig',
+	'povwatch_pushed' => '[[$1]] is to de Oppasslist vun {{PLURAL:$2|een Bruker|$2 Brukers}} toföögt worrn.',
 	'povwatch_subscriber_list' => 'En [[Special:PovWatch/subscribers|List vun de anmellt Brukers]] is verföögbor.',
 	'povwatch_subscriber_list_intro' => '<strong>List vun anmellt Brukers</strong>',
 	'povwatch_not_allowed_subscribers' => 'Du dröffst de PovWatch-Brukerlist nich ankieken.',
@@ -1213,9 +1217,14 @@ $messages['nds'] = array(
 	'povwatch_comment' => 'Logbook-Kommentar:',
 	'povwatch_no_log' => 'Gifft keen Logbookindrääg.',
 	'povwatch_no_subscribers' => 'Nüms is anmellt.',
+	'povwatch_unsubscribe_intro' => 'Du büst för PovWatch anmellt.
+Klick op den Knopp, dat du di afmellst.',
 	'povwatch_unsubscribe' => 'Abo afmellen',
+	'povwatch_subscribe_intro' => 'Du büst för PovWatch nich anmellt.
+Klick op den Knopp, dat du di anmellst.',
 	'povwatch_subscribe' => 'Abonneren',
 	'povwatch_added' => 'toföögt',
+	'right-povwatch_admin' => 'Dat Brukerrecht towiesen, Sieden to de Oppasslist vun annere Brukers totofögen',
 	'right-povwatch_user' => 'Tofögen vun Sieden to de Oppasslist vun annere Brukers',
 	'action-povwatch_admin' => 'Brukerrechten för PovWatch to verwalten',
 	'action-povwatch_user' => 'disse Sied to de Oppasslist vun en annern Bruker totofögen',

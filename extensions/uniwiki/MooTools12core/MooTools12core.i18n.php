@@ -109,10 +109,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'mootools12core-desc' => 'Ajoute [http://mootools.net mootools-1.2-core-yc.js], un framework JavaScript compacte, à chaque page',
+	'mootools12core-desc' => 'Ajoute [http://mootools.net mootools-1.2-core-yc.js], un framework JavaScript compact, à chaque page',
 );
 
 /** Galician (Galego)

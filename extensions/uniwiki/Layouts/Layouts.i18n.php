@@ -32,6 +32,15 @@ $messages['qqq'] = array(
 	'layouts_unknown' => '{{Identical|Unknown}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'layouts_title' => "Säta lehtpol'",
+	'layouts_unknown' => 'Tundmatoi',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda

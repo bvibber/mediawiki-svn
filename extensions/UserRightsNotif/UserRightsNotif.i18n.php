@@ -329,6 +329,7 @@ $2',
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'userrightsnotifysubject' => 'Changement d’appartenance à des groupes d’utilisateurs sur $1',
@@ -342,7 +343,7 @@ Retiré : $6
 Cordialement,
 
 $2",
-	'userrightsnotif-desc' => 'Envoie une notification, par courriel, aux utilisateurs concernés lors de la modification de leurs droits',
+	'userrightsnotif-desc' => 'Envoie un courriel de notification aux utilisateurs dont les droits ont été modifiés',
 );
 
 /** Galician (Galego)

@@ -1073,6 +1073,13 @@ $messages['oc'] = array(
 	'todo-form-submit' => 'Sometre la requèsta',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'todo-list-cancel' => 'Нæ бæззы',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe

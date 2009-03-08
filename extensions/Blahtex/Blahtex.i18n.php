@@ -2212,6 +2212,42 @@ $messages['pt'] = array(
 	'math_WrongFontEncodingWithHint' => 'O símbolo "$1" não pode aparecer na codificação de tipo de letra "$2" (experimente usar o comando "$3{...}")',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'math_noblahtex' => 'Não é possível executar blahtex, que deveria estar em $1',
+	'math-desc' => 'Resultado MathML para marcas &lt;math&gt;',
+	'math_AmbiguousInfix' => 'Posicionamento ambíguo de "$1" (experimente usar chaves adicionais "{ ... }" para desfazer a ambiguidade)',
+	'math_CannotChangeDirectory' => 'Não foi possível mudar diretório de trabalho',
+	'math_CannotCreateTexFile' => 'Não foi possível criar arquivo tex',
+	'math_CannotRunDvipng' => 'Não foi possível executar dvipng',
+	'math_CannotRunLatex' => 'Não é possível executar latex',
+	'math_CannotWritePngDirectory' => 'Não foi possível escrever no diretório de saída de PNGs',
+	'math_CannotWriteTexFile' => 'Não foi possível escrever para arquivo tex',
+	'math_CasesRowTooBig' => 'Só pode haver duas entradas em cada linha de um bloco "cases"',
+	'math_DoubleSubscript' => 'Foram encontrados dois subscritos ligados à mesma base.
+Apenas um é permitido',
+	'math_DoubleSuperscript' => 'Foram encontrados dois superscritos ligados à mesma base (apenas um é permitido)',
+	'math_IllegalCharacter' => 'Caractere inválido nos dados introduzidos',
+	'math_IllegalCommandInMathMode' => 'O comando "$1" é inválido em modo matemático',
+	'math_IllegalCommandInMathModeWithHint' => 'O comando "$1" é inválido em modo matemático (talvez pretendesse usar "$2"?)',
+	'math_IllegalCommandInTextMode' => 'O comando "$1" é inválido em modo de texto',
+	'math_IllegalCommandInTextModeWithHint' => 'O comando "$1" é inválido em modo de texto (talvez pretendesse usar "$2"?)',
+	'math_IllegalDelimiter' => 'Delimitador inválido após "$1"',
+	'math_IllegalFinalBackslash' => 'Barra inversa "\\" inválida no fim dos dados introduzidos',
+	'math_IllegalNestedFontEncodings' => 'Comandos de codificação de tipo de letra não podem ser encapsulados uns nos outros',
+	'math_IllegalRedefinition' => 'O comando "$1" já foi definido; não é possível redefini-lo',
+	'math_InvalidColour' => 'A cor "$1" é inválida',
+	'math_InvalidUtf8Input' => 'O texto introduzido não é UTF-8 válido',
+	'math_LatexFontNotSpecified' => 'Nenhum tipo de letra LaTeX foi especificado para "$1"',
+	'math_LatexPackageUnavailable' => 'Impossível criar PNG porque o pacote LaTeX "$1" não está disponível',
+	'math_MisplacedLimits' => 'O comando "$1" apenas pode aparecer depois de um operador matemático (considere a utilização de "\\mathop")',
+	'math_MissingCommandAfterNewcommand' => 'Nome de novo comando em falta ou inválido após "\\newcommand" (tem de haver exatamente um comando definido; este deverá começar com barra invertida "\\" e conter apenas caracteres alfabéticos)',
+	'math_MissingDelimiter' => 'Falta delimitador depois de "$1"',
+	'math_MissingOpenBraceAfter' => 'Falta chave de abertura "{" depois de "$1"',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila

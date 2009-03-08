@@ -109,10 +109,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'csshooks-desc' => 'Ajouter du CSS à la sortie de la page HTML pour un meilleur style',
+	'csshooks-desc' => 'Ajoute du CSS au rendu HTML des pages pour un meilleur style',
 );
 
 /** Galician (Galego)

@@ -66,6 +66,23 @@ Cumulative statistics means that for each interval the number of edits in that i
 	'usagestatistics-editpages' => "Text in usage statistics graph. Parameter $1 can be either 'cumulative' ({{msg|Usagestatisticscumulative-text}}) or 'incremental' ({{msg|Usagestatisticsincremental-text}})",
 );
 
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'usagestatisticsinterval' => 'Interval',
+	'usagestatisticstype' => 'Tip',
+	'usagestatisticsstart' => 'Augotiždat',
+	'usagestatisticsend' => 'Lopdat',
+	'usagestatisticssubmit' => 'Generiruida statistikad',
+	'usagestatisticsnostart' => 'Olgat hüväd, kirjutagat augotiždat',
+	'usagestatisticsnoend' => 'Olgat hüväd, kirjutagat lopdat',
+	'usagestatisticsintervalday' => 'Päiv',
+	'usagestatisticsintervalweek' => 'Nedal’',
+	'usagestatisticsintervalmonth' => 'Ku',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -618,7 +635,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'specialuserstats' => "Statistiques d'utilisation",
 	'usagestatistics' => "Statistiques d'utilisation",
-	'usagestatistics-desc' => "Affiche les statistiques d'utilisation par utilisateur et pour l'ensemble du wiki.",
+	'usagestatistics-desc' => "Affiche les statistiques d'utilisation par utilisateur et pour l'ensemble du wiki",
 	'usagestatisticsfor' => "<h2>Statistiques d'utilisation pour [[User:$1|$1]]</h2>",
 	'usagestatisticsforallusers' => "<h2>Statistiques d'utilisation pour tous les utilisateurs</h2>",
 	'usagestatisticsinterval' => 'Intervalle',
@@ -626,8 +643,8 @@ $messages['fr'] = array(
 	'usagestatisticsstart' => 'Date de début',
 	'usagestatisticsend' => 'Date de fin',
 	'usagestatisticssubmit' => 'Générer les statistiques',
-	'usagestatisticsnostart' => 'Entrer une date de début',
-	'usagestatisticsnoend' => 'Entrer une date de fin',
+	'usagestatisticsnostart' => 'Veuillez spécifier une date de début',
+	'usagestatisticsnoend' => 'Veuillez spécifier une date de fin',
 	'usagestatisticsbadstartend' => '<b>Mauvais format de date de <i>début</i> ou de <i>fin</i> !</b>',
 	'usagestatisticsintervalday' => 'Jour',
 	'usagestatisticsintervalweek' => 'Semaine',

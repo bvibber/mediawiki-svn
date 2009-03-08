@@ -109,7 +109,8 @@ A security warning about an unsigned certificate may be displayed.',
  */
 $messages['qqq'] = array(
 	'boardvote-desc' => 'Short description of the Boardvote extension, shown in [[Special:Version]]. Do not translate or change links.',
-	'boardvote_intro' => 'Used during Wikimedia Board of Trustees election via [[Special:BoardVote]]. This message is rewritten each election and especially the last paragraph should probably not be translated.',
+	'boardvote_intro' => 'Used during Wikimedia Board of Trustees election via [[Special:BoardVote]]. This message is rewritten each election and especially the last paragraph should probably not be translated. {{gender}}
+* (optional) $1 is a user name.',
 	'boardvote_intro_change' => 'Used during Wikimedia Board of Trustees election via [[Special:BoardVote]]. This message is a notification that a user has already voted and can change his vote.',
 	'boardvote_entered' => 'Used during Wikimedia Board of Trustees election via [[Special:BoardVote]]. The parameters still need to be documented.',
 	'boardvote_nosession' => 'Used during Wikimedia Board of Trustees election via [[Special:BoardVote]].',

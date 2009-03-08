@@ -100,6 +100,13 @@ $messages['cs'] = array(
 	'interwikilist-prefix' => 'Interwiki prefix:',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'interwikilist-prefix' => 'Rhagddodiad rhyngwici:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

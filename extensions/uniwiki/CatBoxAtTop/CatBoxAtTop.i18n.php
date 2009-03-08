@@ -133,10 +133,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'catboxattop-desc' => 'Ajouter une boîte de catégorie en haut à droite des pages',
+	'catboxattop-desc' => 'Ajoute une boîte de catégorie en haut à droite des pages',
 	'catboxattop-categories' => 'Catégories',
 );
 

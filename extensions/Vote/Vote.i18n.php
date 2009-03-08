@@ -62,6 +62,17 @@ $messages['niu'] = array(
 	'vote-login-link' => 'hu ki loto',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'vote-view-results' => "Nähta rezul'tatad",
+	'vote-results' => "Änestusen rezul'tatad",
+	'vote-results-choice' => 'Valičend',
+	'vote-results-count' => 'Lugumär',
+	'vote-login-link' => 'kirjutadas sistemha',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -558,11 +569,12 @@ riddler|Arvuuttaja',
  * @author Ashar Voultoiz
  * @author Grondin
  * @author Meithal
+ * @author PieRRoMaN
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'vote' => 'Vote',
-	'vote-desc' => 'Fournit les possibilités d’élection simple.',
+	'vote-desc' => 'Permet de mettre en place des sondages simplement',
 	'vote-header' => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
 	'vote-current' => "Votre vote actuel est pour '''$1'''.",
 	'vote-legend' => 'Placer ou modifier un vote',
@@ -646,6 +658,13 @@ riddler|Riddler',
 	'vote-login' => 'Du muesch $1 zum abstimme z chenne.',
 	'vote-login-link' => 'Di aamälde',
 	'vote-invalid-choice' => 'Du muesch eini vu dr meglige Optione wähle.',
+);
+
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'vote-login-link' => 'ʻeʻe',
 );
 
 /** Hebrew (עברית)

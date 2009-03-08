@@ -349,11 +349,26 @@ Estus utila por disigo de artikoloj, ktp.',
  */
 $messages['es'] = array(
 	'duplicator' => 'Duplicar una página',
+	'duplicator-desc' => 'Crear [[Special:Duplicate|copias independientes de página]] con historiales completos de ediciones',
 	'duplicator-toolbox' => 'Duplicar ésta página',
 	'duplicator-options' => 'Opciones',
 	'duplicator-source' => 'Fuente:',
 	'duplicator-dest' => 'Destino:',
+	'duplicator-dotalk' => 'Duplicar página de discusión (si es aplicable)',
 	'duplicator-submit' => 'Duplicado',
+	'duplicator-summary' => 'Copiado de [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] fue copiado a [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revisión fue|revisiones fueron}} copiadas.',
+	'duplicator-success-talkcopied' => 'La página de discusión también fue copiada.',
+	'duplicator-success-talknotcopied' => 'La página de discusión no pudo ser copiada.',
+	'duplicator-failed' => 'La página no pudo ser duplicad.
+Ocurrió un error desconocido.',
+	'duplicator-source-invalid' => 'Por favor provea un título de fuente válido.',
+	'duplicator-source-notexist' => '[[$1]] no existe. Por favor provea el título de una página que exista.',
+	'duplicator-dest-invalid' => 'Por favor provea un título de destino válido.',
+	'duplicator-dest-exists' => '[[$1]] ya existe. Por favor provea un título de destino el cual no exista.',
+	'duplicator-toomanyrevisions' => '[[$1]] tiene demasiadas ($2) revisiones y no puede ser copiada.
+El límite actual es $3.',
 );
 
 /** Basque (Euskara)

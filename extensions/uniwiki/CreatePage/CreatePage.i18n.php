@@ -215,18 +215,19 @@ Sortutako orria aldatu nahiko al zenuke?',
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'createpage' => 'Créer une page',
-	'createpage-desc' => 'Ajouter une [[Special:CreatePage|page spéciale]] pour créer des nouvelles pages',
+	'createpage-desc' => 'Ajoute une [[Special:CreatePage|page spéciale]] pour créer des nouvelles pages',
 	'createpage_submitbutton' => 'Soumettre',
-	'createpage_instructions' => 'Entrer le titre de la page que vous désirez créer :',
+	'createpage_instructions' => 'Entrez le titre de la page que vous souhaitez créer :',
 	'createpage_entertitle' => 'Veuillez entrer un titre pour votre page.',
-	'createpage_titleexists' => 'Une page ayant pour titre [[$1]] existe déjà.
-Désirez-vous modifier cette dernière ?',
+	'createpage_titleexists' => 'Une page existe déjà sous le nom [[$1]].
+Désirez-vous modifier la page existante ?',
 	'createpage_tryagain' => 'Non, je désire créer une nouvelle page avec un titre distinct.',
-	'createpage_editexisting' => 'Oui, je désire contribuer dans cette page existante.',
+	'createpage_editexisting' => 'Oui, je désire contribuer à la page existante.',
 	'createpage-badtitle' => '« $1 » ne peut pas être utilisé comme nom de page',
 );
 

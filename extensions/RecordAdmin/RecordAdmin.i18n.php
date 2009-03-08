@@ -221,7 +221,7 @@ $messages['de'] = array(
 	'recordadmin-editlink' => 'ändern',
 	'recordadmin-created' => 'Erstellt',
 	'recordadmin-actions' => 'Aktionen',
-	'recordadmin-needscontent' => 'Inhalt wird benötigt, klicke hier zum hinzufügen …',
+	'recordadmin-needscontent' => 'Inhalt hinzufügen …',
 	'right-recordadmin' => 'Finde und Editiere Aufzeichnungsseiten',
 );
 
@@ -271,7 +271,7 @@ $messages['dsb'] = array(
 	'recordadmin-editlink' => 'wobźěłaś',
 	'recordadmin-created' => 'Napórany',
 	'recordadmin-actions' => 'Akcije',
-	'recordadmin-needscontent' => 'Wopśimjeśe trěbne, klikni sem, aby jen pśidał...',
+	'recordadmin-needscontent' => 'Wopśimjeśe pśidaś...',
 	'right-recordadmin' => 'Zapisowe boki namakaś a wobźěłaś',
 );
 
@@ -346,6 +346,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author PieRRoMaN
@@ -385,7 +386,7 @@ $messages['fr'] = array(
 	'recordadmin-editlink' => 'modifier',
 	'recordadmin-created' => 'Créé',
 	'recordadmin-actions' => 'Actions',
-	'recordadmin-needscontent' => "Contenu requis, cliquez ici pour l'ajouter...",
+	'recordadmin-needscontent' => 'Ajouter le contenu...',
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 
@@ -427,7 +428,7 @@ $messages['gl'] = array(
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Creado',
 	'recordadmin-actions' => 'Accións',
-	'recordadmin-needscontent' => 'Contido necesario, prema aquí para engadilo...',
+	'recordadmin-needscontent' => 'Engadir o contido...',
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
@@ -469,7 +470,7 @@ $messages['gsw'] = array(
 	'recordadmin-editlink' => 'ändere',
 	'recordadmin-created' => 'Aagleit',
 	'recordadmin-actions' => 'Aktione',
-	'recordadmin-needscontent' => 'S bruucht e Inhalt, druck doo zue zuefiege ...',
+	'recordadmin-needscontent' => 'Inhalt zuefiege ...',
 	'right-recordadmin' => 'Find Ufzeichnigssyte un bearbeit si',
 );
 
@@ -553,7 +554,7 @@ $messages['hsb'] = array(
 	'recordadmin-editlink' => 'wobdźěłać',
 	'recordadmin-created' => 'Wutworjeny',
 	'recordadmin-actions' => 'Akcije',
-	'recordadmin-needscontent' => 'Wobsah trěbny, klikń sem, zo by jón přidał...',
+	'recordadmin-needscontent' => 'Wobsah přidać...',
 	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
 );
 
@@ -634,6 +635,7 @@ $messages['ja'] = array(
 	'recordadmin-editlink' => '編集',
 	'recordadmin-created' => '作成',
 	'recordadmin-actions' => '操作',
+	'recordadmin-needscontent' => '内容の追加...',
 	'right-recordadmin' => '記録ページを検索および編集する',
 );
 
@@ -706,7 +708,7 @@ $messages['ksh'] = array(
 	'recordadmin-editlink' => 'ändere',
 	'recordadmin-created' => 'Neu aanjelaat',
 	'recordadmin-actions' => 'Axjohne',
-	'recordadmin-needscontent' => 'Mer bruche noch ene Enhalld doför, donn hee klecke, öm den dobei ze donn:',
+	'recordadmin-needscontent' => 'Enhalld dobei donn&nbsp;…',
 	'right-recordadmin' => 'Datesätz fenge un ändere',
 );
 
@@ -830,7 +832,7 @@ $messages['nn'] = array(
 	'recordadmin-editlink' => 'endra',
 	'recordadmin-created' => 'Oppretta',
 	'recordadmin-actions' => 'Handlingar',
-	'recordadmin-needscontent' => 'Innhald trengst, trykk her for å leggja det til...',
+	'recordadmin-needscontent' => 'Legg til innhald',
 	'right-recordadmin' => 'Finn og gjer endringar på oppføringssider',
 );
 
@@ -872,6 +874,7 @@ $messages['oc'] = array(
 	'recordadmin-editlink' => 'modificar',
 	'recordadmin-created' => 'Creat',
 	'recordadmin-actions' => 'Accions',
+	'recordadmin-needscontent' => 'Apondre lo contengut...',
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 
@@ -953,7 +956,7 @@ $messages['pt'] = array(
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Criado',
 	'recordadmin-actions' => 'Ações',
-	'recordadmin-needscontent' => 'Conteúdo necessário, clique aqui para adicioná-lo ...',
+	'recordadmin-needscontent' => 'Adicionar conteúdo...',
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 );
 
@@ -995,7 +998,7 @@ $messages['pt-br'] = array(
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Criado',
 	'recordadmin-actions' => 'Ações',
-	'recordadmin-needscontent' => 'Conteúdo necessário, clique aqui para adicioná-lo ...',
+	'recordadmin-needscontent' => 'Adicione conteúdo...',
 	'right-recordadmin' => 'Encontrar e editar páginas de registros',
 );
 

@@ -188,11 +188,23 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  */
 $messages['es'] = array(
+	'accountmanager' => 'Administrador de cuenta',
 	'am-username' => 'nombre de usuario',
+	'am-email' => 'correo electrónico',
 	'am-active' => 'activo',
+	'am-updated' => 'Tus cambios han sido grabados exitosamente',
+	'nss-rights' => 'derechos',
+	'nss-save-changes' => 'Grabar cambios',
+	'nss-create-account-header' => 'Crear nueva cuenta',
+	'nss-create-account' => 'Crear cuenta',
+	'nss-no-mail' => 'No enviar correo electrónico',
+	'nss-welcome-mail' => 'Una cuenta con nombre de usuario $1 y contraseña $2 ha sido creado para ti.',
+	'nss-welcome-mail-subject' => 'Creación de cuenta',
+	'nss-db-error' => 'Error leyendo de la base de datos de autenticación',
 );
 
 /** Basque (Euskara)

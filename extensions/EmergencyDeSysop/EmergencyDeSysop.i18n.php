@@ -168,7 +168,9 @@ $messages['es'] = array(
 	'emergencydesysop-title' => 'Remover acceso de administrador tanto de usuario actual y otro administrador',
 	'emergencydesysop-reason' => 'Razones para remoción',
 	'emergencydesysop-submit' => 'Enviar',
+	'emergencydesysop-notasysop' => 'El usuario objetivo no está en el grupo administrador.',
 	'emergencydesysop-nogroups' => 'Ninguno',
+	'emergencydesysop-invalidtarget' => 'El usuario objetivo no existe.',
 	'emergencydesysop-blocked' => 'No puede acceder a esta página mientras esté bloqueado',
 	'emergencydesysop-noright' => 'No tienes suficientes permisos para acceder a esta página',
 );

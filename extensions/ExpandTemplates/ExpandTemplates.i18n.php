@@ -1052,7 +1052,7 @@ $messages['lb'] = array(
 	'expand_templates_intro' => 'Op dëser Spezialsäit kann Text agi ginn an all Schablounen doran gi rekursiv expandéiert.
 Och Parserfonctioune wéi <nowiki>{{</nowiki>#if:…}} a Variabele wéi 
 <nowiki>{{</nowiki>CURRENTDAY}} ginn ausgewert&mdash; faktisch alles wat an duebele geschweefte Klamere steet.
-Dëst geschitt duerch Oprufe vun de jeweiligen Parser-Phasen vu MediaWiki selwer.',
+Dëst geschitt duerch Oprufe vun de jeweiligen Parser-Phase vu MediaWiki selwer.',
 	'expand_templates_title' => 'Titel vun der Säit, dëst kann nëtzlech si wa(nn) {{PAGENAME}} benotzt gëtt:',
 	'expand_templates_input' => 'Gitt ären Text hei an:',
 	'expand_templates_output' => 'Resultat',
@@ -1206,6 +1206,12 @@ $messages['nan'] = array(
  */
 $messages['nds'] = array(
 	'expandtemplates' => 'Vörlagen oplösen',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Wannelt Vörlagen, Parser-Funkschonen un Variablen]] to Wikitext un wiest de Sied, so as se naher utsüht',
+	'expand_templates_intro' => 'Mit disse Spezialsied köönt Vörlagen in ingeven Text in Wikitext ümwannelt warrn.
+Ok Parserfunkschonen so as
+<nowiki>{{</nowiki>#if:…}}, un Variabeln so as
+<nowiki>{{</nowiki>CURRENTDAY}} warrt ümwannelt. Also so temlich allens, wat twischen swiefte Klammern steit.
+Dorto warrt de nödigen Parser-Phasen in MediaWiki direkt opropen.',
 	'expand_templates_title' => 'Kontexttitel, för {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Inputtext:',
 	'expand_templates_output' => 'Resultat',

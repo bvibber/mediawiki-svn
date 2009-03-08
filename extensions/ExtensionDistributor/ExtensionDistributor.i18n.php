@@ -1326,8 +1326,13 @@ $messages['myv'] = array(
  */
 $messages['nds'] = array(
 	'extensiondistributor' => 'MediaWiki-Extension dalladen',
+	'extdist-desc' => 'Extension för dat Bereidstellen vun Snappschuss-Archiven von Extensions',
+	'extdist-not-configured' => 'Stell $wgExtDistTarDir un $wgExtDistWorkingCopy in',
+	'extdist-wc-missing' => 'De instellt Warkmapp för Kopien gifft dat gornich!',
 	'extdist-no-such-extension' => 'Extension „$1“ gifft dat nich',
 	'extdist-no-such-version' => 'De Extension „$1“ gifft dat nich in de Version „$2“.',
+	'extdist-choose-extension' => 'Wähl de Extension ut, de du dalladen wullt:',
+	'extdist-wc-empty' => 'In de instellt Warkmapp för Kopien sünd keen Extensions in!',
 	'extdist-submit-extension' => 'Wiedermaken',
 	'extdist-current-version' => 'Aktuelle Version (trunk)',
 	'extdist-no-versions' => 'De utwählte Extension ($1) is in keen Version verföögbor!',

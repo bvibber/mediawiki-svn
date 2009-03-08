@@ -248,6 +248,13 @@ $messages['oc'] = array(
 	'googleadsense-desc' => 'Apond [http://www.google.com/adsense Google AdSense] a la barra laterala',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense Рекламæ Google AdSense] навигацион панельмæ бафтауы',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  */

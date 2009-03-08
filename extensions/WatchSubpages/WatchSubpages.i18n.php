@@ -104,6 +104,15 @@ $messages['bg'] = array(
 	'watchsubpages-desc' => 'Бързо [[Special:WatchSubpages|добавяне на всички подстраници]] на страница в списъка за наблюдение',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'watchsubpages' => 'Evezhiañ an ispajennoù',
+	'watchsubpages-addtitles' => 'Ouzhpennañ pajennoù',
+	'watchsubpages-addtitlestowatchlist' => "Ouzhpennañ pajennoù d'ar roll evezhiañ",
+);
+
 /** Catalan (Català)
  * @author SMP
  */

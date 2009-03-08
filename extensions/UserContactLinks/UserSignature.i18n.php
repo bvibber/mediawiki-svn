@@ -162,10 +162,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'usercontactlink-baduser' => 'nom d’utilisateur incorrect',
-	'usercontactlink-desc' => "Fournit la possiblité d'ajouter simplement et avec consistance d'autres noms d'utilisateurs en utilisant la syntaxe ^^^user^^^",
+	'usercontactlink-desc' => "Permet d'ajouter simplement et avec consistance d'autres noms d'utilisateurs en utilisant la syntaxe ^^^user^^^",
 );
 
 /** Galician (Galego)
