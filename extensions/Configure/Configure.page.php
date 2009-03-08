@@ -30,7 +30,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgUser, $wgRequest, $wgOut, $wgConf, $wgConfigureWikis;
+		global $wgUser, $wgRequest, $wgOut, $wgConf, $wgConfigureWikis, $wgLang;
 
 		$this->setHeaders();
 
@@ -63,7 +63,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				}
 				if ( is_array( $wgConfigureWikis ) && !in_array( $wiki, $wgConfigureWikis ) ) {
 					$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>',
-						array( 'configure-transwiki-not-in-range', $wiki, implode( ', ', $wgConfigureWikis ) ) );
+						array( 'configure-transwiki-not-in-range', $wiki, $wgLang->commaList( $wgConfigureWikis ) ) );
 					return;
 				}
 			}

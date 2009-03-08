@@ -223,8 +223,10 @@ class EditMessagesPage extends SpecialPage {
 
 		foreach ( $warnings as $warningType => $warnings2 ) {
 			if ( $warningsCount = count( $warnings2 ) ) {
+				global $wgLang;
+
 				$wgOut->addWikiMsg( 'editmsg-warning-' . $warningType,
-					implode( ', ', $warnings2 ), $warningsCount );
+					$wgLang->commaList( $warnings2 ), $warningsCount );
 				// is this really needed?
 				$warningsCount = 0;
 			}
