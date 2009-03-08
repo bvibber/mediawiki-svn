@@ -8,11 +8,11 @@
 $messages = array();
 
 $messages['en'] = array(
-	'review_sidebar_title' => "Review",
-	'review-desc' => 'The resurrected [[Special:Review|validation]] feature',
+	'review_sidebar_title' => 'Review',
+	'review-desc' => 'Allows users to [[Special:Review|review]] pages',
 	'review_topics' => "# The following is the list of topics and ranges for the review extension.
 # Each topic is defined by a line of five values, separated by ':' (all other lines are ignored).
-# The order is: numerical key (>0), name, max range (>1; 2=yes/no), meaning of lowest value (f.e. 'bad'), meaning of highest value (f.e. 'good').
+# The order is: numerical key (>0), name, max range (>1; 2=yes/no), meaning of lowest value (for example 'bad'), meaning of highest value (for example 'good').
 1:Quality:5:bad:good
 2:Ready for 1.0:2:no:yes",
 	'review_topic_page' => "Review topics",
