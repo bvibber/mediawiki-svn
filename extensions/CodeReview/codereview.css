@@ -79,7 +79,7 @@ table.mw-codereview-meta td {
 }
 
 .mw-codereview-diff del {
-	text-decoration: none;
+	text-decoration: line-through;
 	color: red;
 }
 
