@@ -35,7 +35,7 @@ Your other ratings will be merged into this one where you selected 'no opinion'.
 	'review_version_reviews_link' => "<small>(version reviews)</small>",
 	'review_concerns_page' => "This review is about the page \"$1\".",
 	'review_concerns_user' => "This is about reviews by user \"$1\".",
-	'review_user_reviews' => "<small>(reviews by this user)</small>",
+	'review_user_reviews' => "<small>(reviews by this user)</small>", # This message supports {{GENDER}}
 	'review_user_page_list' => "The user reviewed the following pages:",
 	'review_user_details_link' => "(details)",
 	'review_do_merge' => "Merge my reviews of other revisions of this page into this one",

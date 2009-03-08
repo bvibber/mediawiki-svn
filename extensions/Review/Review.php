@@ -581,9 +581,11 @@ function wfReviewExtensionFunction () {
 				}
 				$ret .= $skin->makeLinkObj ( $user->getUserPage() , $user->getName() ) ;
 				$ret .= "<br />" ;
-				$ret .= $skin->makeLinkObj ( $wgTitle ,
-							wfMsgForContent('review_user_reviews') ,
-							"mode=view_user_reviews&{$user_reviews}" ) ;
+				$ret .= $skin->makeLinkObj (
+					$wgTitle ,
+					wfMsgExt( 'review_user_reviews', array( 'content', 'parsemag' ), $user->getName() ),
+					"mode=view_user_reviews&{$user_reviews}"
+				);
 			} else {
 				# Individual revision
 				$page_id = $title->getArticleID() ;
