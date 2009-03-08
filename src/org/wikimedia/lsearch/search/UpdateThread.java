@@ -447,13 +447,16 @@ public class UpdateThread extends Thread {
 		rsyncPath = config.getString("Rsync","path","/usr/bin/rsync");
 		rsyncParams = config.getString("Rsync","params","");
 		forceLocalDeployment = config.getBoolean("Search","forceLocalDeployment");
-		for(String indexpart : config.getArray("Search","forceRedirect")){
-			try{
-				// make sure these indexes are actually valid index names
-				IndexId iid = IndexId.get(indexpart);
-				forceRedirect.add(iid.toString());
-			} catch(RuntimeException e){
-				log.warn("Ignoring force redirect index "+indexpart+" since it doesn't exist.");
+		String[] forceRedirectValue = config.getArray("Search","forceRedirect");
+		if(forceRedirectValue != null){
+			for(String indexpart : forceRedirectValue){
+				try{
+					// make sure these indexes are actually valid index names
+					IndexId iid = IndexId.get(indexpart);
+					forceRedirect.add(iid.toString());
+				} catch(RuntimeException e){
+					log.warn("Ignoring force redirect index "+indexpart+" since it doesn't exist.");
+				}
 			}
 		}
 		deleteOldUpdates = config.getBoolean("Search","deleteOldUpdates");
