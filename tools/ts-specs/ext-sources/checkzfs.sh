@@ -4,6 +4,7 @@ MAILTO=admins@toolserver.org
 VARDIR=/var/opt/ts/checkzfs
 
 ZFS=/sbin/zfs
+ZPOOL=/sbin/zpool
 STATUSFILE=$VARDIR/curr
 NEWSTATUS=$VARDIR/new
 MAILFILE=$VARDIR/mail
@@ -17,8 +18,8 @@ fi
 
 rm -f $NEWSTATUS
 
-if ! $ZFS status >>$NEWSTATUS; then
-	echo >&2 "$0: $ZFS status failed; see above messages for details"
+if ! $ZPOOL status >>$NEWSTATUS; then
+	echo >&2 "$0: $ZPOOL status failed; see above messages for details"
 	exit 1
 fi
 
