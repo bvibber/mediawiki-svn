@@ -344,7 +344,7 @@ function efSecurePasswordsMessage( &$key, &$useDB, &$langCode, &$transform ) {
 		$msg .= ', ' . wfMsg( 'securepasswords-special', str_replace( '\\', '', $wgSecurePasswordsSpecialChars ) );
 	}
 	if( $wgValidPasswords['usercheck'] ) {
-		$msg .= ', ' . wfMsg( 'securepasswords-username' );
+		$msg .= ', ' . wfMsgExt( 'securepasswords-username', array( 'parsemag' ), $user->getName() );
 	}
 	if( $wgValidPasswords['wordcheck'] ) {
 		$msg .= ', ' . wfMsg( 'securepasswords-word' );

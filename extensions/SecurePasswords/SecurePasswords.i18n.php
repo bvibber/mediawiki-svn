@@ -17,7 +17,7 @@ It must:',
 	'securepasswords-uppercase' => 'contain at least 1 uppercase letter',
 	'securepasswords-digit' => 'contain at least 1 digit',
 	'securepasswords-special' => 'contain at least 1 special character (special characters are: $1)',
-	'securepasswords-username' => 'be different from your username',
+	'securepasswords-username' => 'be different from your username', # This message supports {{GENDER}} using $1
 	'securepasswords-word' => 'not be a word',
 );
 
