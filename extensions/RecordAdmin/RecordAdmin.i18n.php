@@ -28,7 +28,7 @@ $messages['en'] = array(
 	'recordadmin-createsuccess' => '$1 created',
 	'recordadmin-createerror' => 'An error occurred while attempting to create the $1!',
 	'recordadmin-badtitle' => 'Bad title!',
-	'recordadmin-recordid' => 'Record ID:',
+	'recordadmin-recordid' => 'Record ID/Name:',
 	'recordadmin-invert' => 'Invert selection',
 	'recordadmin-buttonsearch' => 'Search',
 	'recordadmin-buttoncreate' => 'Create',
@@ -49,7 +49,7 @@ $messages['en'] = array(
 	'recordadmin-title' => '$1',
 	'recordadmin-created' => 'Created',
 	'recordadmin-actions' => 'Actions',
-	'recordadmin-needscontent' => 'Add content...',
+	'recordadmin-needscontent' => 'Content needed, click here to add it...',
 	'right-recordadmin' => 'Find and edit record pages',
 );
 

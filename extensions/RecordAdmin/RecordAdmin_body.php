@@ -68,8 +68,12 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# If no type selected, render form for record types and create record-type
 		if ( empty( $type ) ) {
+			$wgOut->addHTML( Xml::element(
+				'form',
+				array( 'class' => 'recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ),
+				null
+			) );
 			$wgOut->addWikiText( "<div class='visualClear'></div>\n==" . wfMsg( 'recordadmin-select' ) . "==\n" );
-			$wgOut->addHTML( Xml::element( 'form', array( 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null ) );
 
 			# Get titles in $wgRecordAdminCategory and build option list
 			$options = '';
@@ -81,7 +85,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Render type select list
 			if ( $options ) $wgOut->addHTML(
-				"<select name='wpType'>$options</select> "
+				"<select name='wpType'>$options</select>&nbsp;"
 				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
 			);
 			else {
@@ -102,7 +106,6 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Record type known, but no record selected, render form for searching or creating
 		elseif ( empty( $record ) ) {
-			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-create', $type ) . "==\n" );
 
 			# Process Create submission
 			if ( count( $posted ) && $wgRequest->getText( 'wpCreate' ) ) {
@@ -140,7 +143,10 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Render the form
 			$wgOut->addHTML(
 				Xml::element( 'form', array( 'class' => strtolower( $type ) . '-record recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
-				. '<b>' . wfMsg( 'recordadmin-recordid' ) . '</b> ' . Xml::element( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
+			);
+			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-create', $type ) . "==\n" );
+			$wgOut->addHTML(
+				'<b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
 				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. "\n<br><br><hr><br>\n{$this->form}"
 				. Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) )
