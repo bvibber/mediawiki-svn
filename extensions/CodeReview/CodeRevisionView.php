@@ -271,8 +271,9 @@ class CodeRevisionView extends CodeView {
 	}
 
 	protected function formatDiff() {
-		global $wgEnableAPI;
+		global $wgEnableAPI, $wgCodeReviewImgRegex;
 
+		$viewvc = $this->mRepo->getViewVcBase();
 		// Asynchronous diff loads will require the API
 		// And JS in the client, but tough shit eh? ;)
 		$deferDiffs = $wgEnableAPI;
@@ -296,7 +297,40 @@ class CodeRevisionView extends CodeView {
 			return $this->stubDiffLoader();
 		}
 		$hilite = new CodeDiffHighlighter();
-		return $hilite->render( $diff );
+		$html = $hilite->render( $diff );
+		// Get image diffs
+		$imgDiffs = '';
+		$modifiedPaths = $this->mRev->getModifiedPaths();
+		foreach ( $modifiedPaths as $row ) {
+			// Typical image file?
+			if( preg_match($wgCodeReviewImgRegex,$row->cp_path) ) {
+				$safePath = wfUrlEncode( $row->cp_path );
+				$imgDiffs .= 'Index: '.htmlspecialchars( $row->cp_path )."\n";
+				$imgDiffs .= '<table border="1px" style="background:white;"><tr>';
+				if( $row->cp_action != 'A' ) { // old
+					// What was done to it?
+					$alt = $row->cp_action == 'D' ? 'code-rev-modified-d' : 'code-rev-modified-r';
+					$alt = wfMsgHtml($alt);
+					// Link to old image
+					$url = htmlspecialchars( "{$viewvc}{$safePath}?&revision={$this->mRev->getPrevious()}" );
+					$imgDiffs .= "<td><img src='$url' alt='$alt' title='$alt'/></td>";
+				}
+				if( $row->cp_action != 'D' ) { // new
+					// What was done to it?
+					$alt = $row->cp_action == 'A' ? 'code-rev-modified-a' : 'code-rev-modified-m';
+					$alt = wfMsgHtml($alt);
+					// Link to new image
+					$url = htmlspecialchars( "{$viewvc}{$safePath}?&revision={$this->mRev->getId()}" );
+					$imgDiffs .= "<td><img src='$url' alt='$alt' title='$alt'/></td>";
+				}
+				$imgDiffs .= "</tr></table>\n";
+			}
+		}
+		if( $imgDiffs ) {
+			$html .= '<h3>'.wfMsgHtml('code-rev-imagediff').'</h3>';
+			$html .= "<div class='mw-codereview-imgdiff'>$imgDiffs</div>\n";
+		}
+		return $html;
 	}
 
 	protected function stubDiffLoader() {

@@ -22,6 +22,12 @@ table.mw-codereview-meta td {
 	margin-bottom: 8px;
 }
 
+.mw-codereview-imgdiff {
+	border: solid 1px #aaaab3;
+	padding: 1em;
+	background: #eee;
+}
+
 .mw-codereview-comment-meta {
 	padding: 4px 8px;
 }

@@ -98,7 +98,7 @@ $wgSubversionProxy = false;
 $wgSubversionProxyTimeout = 30; // default 3 secs is too short :)
 
 // Bump the version number every time you change a CodeReview .css/.js file
-$wgCodeReviewStyleVersion = 3;
+$wgCodeReviewStyleVersion = 4;
 
 // The name of a repo which represents the code running on this wiki, used to highlight active revisions
 $wgWikiSVN = 'MediaWiki';
@@ -111,3 +111,6 @@ $wgSubversionPassword = false;
 
 // Leave this off by default until it works right
 $wgCodeReviewENotif = false;
+
+// What images can be used for client-side side-by-side comparisons?
+$wgCodeReviewImgRegex = '/\.(png|jpg|jpeg|gif)$/i';
