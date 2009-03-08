@@ -864,7 +864,7 @@ function wfReviewExtensionFunction () {
 				} else {
 					# View the pages reviewed by a user
 					$data = $this->get_list_of_pages_reviewed_by_user ( $theuser ) ;
-					$out .= "<h2>" . wfMsgForContent ( 'review_user_page_list' ) . "</h2>\n" ;
+					$out .= "<h2>" . wfMsgExt( 'review_user_page_list', array( 'content', 'parsemag' ), $theuser->getName() ) . "</h2>\n" ;
 					$data2 = array () ;
 					if ( $user_id == 0 )
 						$user_link = "user_ip=".$user_ip ;
