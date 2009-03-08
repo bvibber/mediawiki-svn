@@ -626,13 +626,14 @@ function wfReviewExtensionFunction () {
 							) ;
 							$ret .= "<br />" . htmlentities ( $data[$type]->comment ) ;
 						} else {
-							$ret .= wfMsgForContent ( 'review_statistic_cell' ,
-											sprintf ( "%1.1f" , $average ) ,
-											$data[$type]->max ,
-											$data[$type]->total_count ,
-											$data[$type]->total_count - $data[$type]->anon_count ,
-											$data[$type]->anon_count
-							) ;
+							$ret .= wfMsgExt( 'review_statistic_cell' ,
+								array( 'content', 'parsemag' ),
+								sprintf ( "%1.1f" , $average ) ,
+								$data[$type]->max ,
+								$data[$type]->total_count ,
+								$data[$type]->total_count - $data[$type]->anon_count ,
+								$data[$type]->anon_count
+							);
 						}
 						$ret .= "</div>" ;
 					} else {
