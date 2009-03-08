@@ -282,7 +282,8 @@ class BoardVotePage extends UnlistedSpecialPage {
 		if ( $this->mHasVoted ) {
 			$intro = wfMsg( 'boardvote_intro_change' );
 		} else {
-			$intro = wfMsg( 'boardvote_intro' );
+			global $wgUser;
+			$intro = wfMsgExt( 'boardvote_intro', array( 'parsemag' ), $wgUser->getName() );
 		}
 
 		$ok = wfMsgHtml( 'boardvote_submit' );
