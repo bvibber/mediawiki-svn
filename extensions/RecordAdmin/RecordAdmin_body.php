@@ -49,7 +49,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Get posted form values if any
 		$posted = array();
-		foreach ( $_POST as $k => $v ) if ( ereg( '^ra_(.+)$', $k, $m ) ) $posted[$m[1]] = $v;
+		foreach ( $_REQUEST as $k => $v ) if ( ereg( '^ra_(.+)$', $k, $m ) ) $posted[$m[1]] = $v;
 
 		# Read in and prepare the form for this record type if one has been selected
 		if ( $type ) $this->preProcessForm( $type );
