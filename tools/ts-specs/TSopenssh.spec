@@ -8,6 +8,9 @@ Source1:	TSopenssh
 Source2:	TSopenssh.xml
 Patch1:		openssh-01-hpn.diff
 
+Requires:	TSlibedit
+BuildRequires:	TSlibedit
+
 SUNW_BaseDir:	%{_basedir}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
@@ -43,8 +46,8 @@ fi
 export CC="cc"
 export CXX="CC"
 export CFLAGS="%optflags"
-export LDFLAGS="%{_ldflags} -L/usr/sfw/lib -R/usr/sfw/lib"
-export CPPFLAGS="-I/usr/sfw/include"
+export LDFLAGS="%{_ldflags} -L/opt/ts/lib -L/usr/sfw/lib -R/opt/ts/lib:/usr/sfw/lib"
+export CPPFLAGS="-I/opt/ts/include -I/usr/sfw/include"
 
 ./configure 						\
 	--prefix=%{_prefix} 				\
@@ -59,7 +62,8 @@ export CPPFLAGS="-I/usr/sfw/include"
 	--with-privsep-path=/var/opt/ts/ssh/empty	\
 	--with-xauth=/usr/openwin/bin/xauth		\
 	--sysconfdir=/etc/opt/ts/ssh			\
-	--libexecdir=/opt/ts/lib/openssh
+	--libexecdir=/opt/ts/lib/openssh		\
+	--with-libedit
 
 gmake -j$CPUS
 

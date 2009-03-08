@@ -1,4 +1,4 @@
-Name:                    TSedit
+Name:                    TSlibedit
 Summary:                 BSD editline
 Version:                 20090111-3.0
 Source:                  http://thrysoee.dk/editline/libedit-%{version}.tar.gz
