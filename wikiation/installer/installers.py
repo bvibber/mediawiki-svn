@@ -227,17 +227,17 @@ def _ppath_find(l,keyword):
 		return value
 
 def parse_path(path,defaults=None):
-	ai=None	
-	system=None
-	installer=None
-	in_installer=None
-	as_alias=None
-	revision=None
-	tag=None
+	ai=None	# available, installed (and now revisions and tags too)
+	system=None	# installation system
+	installer=None	# installer from that installation system
+	in_installer=None # in which instance should we install?
+	as_alias=None	# if installing, as what name?
+	revision=None	# revision number, if any
+	tag=None	# tag, if any
 
 	#partial components
 	whence=None	# eg. 'available.mediawiki:'
-	single_case=None # a single word without context
+	single_case=None # a single word or element, with insufficient context upfront to figure what it is
 	inpath=None	# eg. 'ImageMap in REL1_13_2"
 
 	if ":" in path:
@@ -261,7 +261,7 @@ def parse_path(path,defaults=None):
 			# ?    : ...
 			single_case=whence
 	
-	# Hmmm, not a well formed path. Perhaps we can still make heads or tails of it?
+	# Hmmm, not a fully-formed path(-section). Perhaps we can still make heads or tails of it?
 	if single_case:
 		if single_case in systems.keys():
 			system=single_case
@@ -292,7 +292,6 @@ def parse_path(path,defaults=None):
 		"as_alias":as_alias,
 		"revision":revision,
 		"tag":tag}
-	
 
 	# maybe we can assume some useful defaults (saves typing)
 	if defaults:
@@ -301,12 +300,11 @@ def parse_path(path,defaults=None):
 	# let's check to see if what we get is sane.
 
 	if ppath['ai'] not in ["available","installed","revisions","tags",None]:
-		raise Parse_Exception("By '"+ppath['ai']+"', did you mean available or did you mean installed?")
+		raise Parse_Exception("By '"+ppath['ai']+"', did you mean available, installed, revisions, or tags?")
 	
 	if ppath['system']=="hailmary": # easter egg
 		ppath['system']='naive' # the naive installer was originally pitched as a 
-					# "hail mary" installer, but that sounds a bit
-					# unprofessional, so the name was changed.
+					# "hail mary" installer, as that's what it does, after all! ;-)
 
 	if ppath['system'] not in systems.keys() and not ppath['system']=="None":
 		system_names=", ".join(ls_systems())
@@ -324,6 +322,7 @@ def parse_path(path,defaults=None):
 
 
 def get_system(system_name):
+	"""Factory method. Instantiates and returns the relevant installer for the given system_name"""
 	if system_name not in systems:
 		print "Cannot find '"+system_name+"' in the list of supported installation systems."
 		return None

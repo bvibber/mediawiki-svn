@@ -12,6 +12,15 @@ class Installer_Exception (Exception):
 	pass
 
 class Installation_System:
+	"""An Abstract Installation System. Don't instantiate this class directly.
+		An installation system understands how to install and uninstall
+		'things' (instances). An instance might be a particular wiki
+		(in the case of the mediawiki installer) or a particular extension 
+		in that wiki (extension installer), or perhaps a tool from the wikiation
+		toolkit. 
+		Next to installing and uninstalling, an installer can also determine
+		the status of an instance (installed or uninstalled), and can provide
+		lists of instances that are available or installed"""
 	system_name=None
 	destination_dir=None
 
@@ -29,6 +38,7 @@ class Installation_System:
 		self.instance=instance	
 
 	def get_installers(self):
+		"""list the installers capable of installing an instance"""
 		installers=os.listdir(self.subsystemdir)
 		installers2=[]
 		for line in installers:
@@ -38,12 +48,16 @@ class Installation_System:
 		return installers2
 
 	def get_revisions(self,installer_name):
+		"""list the revisions a particular installer can install"""
 		if not self.exists(installer_name):
                         raise Installer_Exception("Can't find installer "+installer_name)
 
 		return self.do_get_revisions(installer_name)
 
 	def do_get_revisions(self, installer_name):
+		"""actually perform the task of getting revisions for get_revisions
+		First checks to see if someone has provided a script to determine
+		revisions. If not, falls back to internal method do_get_revisions_generic."""
 		if self.can_exec(installer_name,'get_revisions'):
 			revisions_string=self.exec_task(installer_name,'get_revisions')
 			return revisions_string.split('\n')
@@ -56,6 +70,7 @@ class Installation_System:
 		return None
 
 	def do_get_revisions_generic(self, installer):
+		"""directly query svn to get a list of available revisions. Most of the time, this is adequate."""
 		svnbase=self.get_svnbase()
 		if svnbase:
 			location=svnbase+"/"+installer
@@ -77,24 +92,29 @@ class Installation_System:
 
 			return revs
 
-		return None	# just to make explicit what happens elsewise
+		return None	# just to make explicit what happens otherwise.
 
 
 	def exists(self,installer_name):
+		"""checks to see if a particular installer exists"""
 		return installer_name in self.get_installers()
 
 	def installdir_name(self, installer_name):
+		"""returns the location of the .install directory for the given installer_name.
+		An installer directory is where we store all the scripts to install one particular
+		extension, tool from the wikiation_toolkit, or etc. """
 		return os.path.join(self.subsystemdir, installer_name+".install")
 	
 
 	def exec_task(self, installer_name, task, env=None):
 		"""attempt to execute a file starting with the name of task[o] (ie. task.sh, task.py, task.pl, etc)
-		   * task is name of task. If task requires args, provide a list, task[0] is name of task, task[1:] is args
+		   * We look for the files in the relevant .install directoty (see also: installdir_name() )
+		   * task is name of some task. If task requires args, provide a list, task[0] is name of task, task[1:] is args
 		   * if no such file exists or file fails to run, return an exception.
 		   * if more than one match exists, one match is picked
 		        Exactly Which match is picked is not defined
 			(so Don't Do That)
-			* destination_dir is passed as a parameter 
+			* Quite some information is passed via environment vars. Set debug=True in settings.py to take a look.
 			returns 
 			* stdout returned by task command if successful
 			* None if task not available
@@ -103,7 +123,6 @@ class Installation_System:
 			"""
 		
 		installdir=self.installdir_name(installer_name)
-		dirlist=os.listdir(installdir)
 
 		if env==None:
 			env={}
@@ -121,6 +140,7 @@ class Installation_System:
 		else:
 			task2=list(task)
 
+		dirlist=os.listdir(installdir)
 		for filename in dirlist:
 			if filename.startswith(task2[0]):
 				task2[0]=os.path.join(installdir,filename)
@@ -129,12 +149,15 @@ class Installation_System:
 						print " === " +task+" === "
 						print "environment",env
 						print "task",task2
+
 					process=subprocess.Popen(task2 ,stdout=subprocess.PIPE, env=env)
 					stdout,stderr=process.communicate()
+
 					if settings.debug:
 						print "stdout:",stdout
 						print "stderr:",stderr
 						print
+
 				except Exception, e:
 					#reraise with task and env info included, to give us a clue where we went wrong
 					raise Exception((e,task2,env))
@@ -142,6 +165,10 @@ class Installation_System:
 		return None
 
 	def can_exec(self, installer_name, task):
+		"""checks to see if there is an executable script available for the given task
+		It's usually a good idea to call this before running exec_task
+		
+		returns: True if script exists"""
 		installdir=self.installdir_name(installer_name)
 		dirlist=os.listdir(installdir)
 		for filename in dirlist:
@@ -152,7 +179,7 @@ class Installation_System:
 	
 	
 	def get_installed(self):
-
+		"""return a list of installed items"""
 		installed=[]
 		for installer_name in self.get_installers():
 			if self.is_installed(installer_name):
@@ -161,6 +188,7 @@ class Installation_System:
 		return installed
 	
 	def is_installed(self,installer_name):
+		"""return true if the particular item is already installed"""
 		if not self.destination_dir:
 			raise Installer_Exception("Installation_system: Internal Error: No destination_dir provided")
 
@@ -192,7 +220,7 @@ class Installation_System:
 			print "This installer provides no information."
 
 	def install (self, installer_name):
-		"""use the installation dir to actually install the program
+		"""Actually install the item
 			returns True if installation successful, false if not, and None if unknown"""
 		if not self.exists(installer_name):
 			raise Installer_Exception("Can't find installer "+installer_name)
@@ -227,6 +255,7 @@ class Installation_System:
 		self.do_setup(installer_name,destination_dir)
 
 	def do_setup(self, installer_name, destination_dir):
+		"""actually perform the setup required by setup (do not call directly)"""
 		#silently fail if there's no setup script
 		if not self.can_exec(installer_name,"setup"):
 			return 
@@ -246,6 +275,7 @@ class Installation_System:
 		self.do_download(installer_name, destination_dir)
 
 	def do_download(self, installer_name, destination_dir):
+		"""actually perform the download for download() (do not call directly)"""
 		# if a particular step in the install procedure is not provided
 		# we simply skip it
 		if not self.can_exec(installer_name,"download"):
@@ -284,6 +314,7 @@ class Installation_System:
 		return not self.is_installed(installer_name) 
 		
 	def do_uninstall(self,installer_name, destination_dir):
+		"""actually uninstall the component (do not call directly)"""
 		# if a particular step in the install procedure is not provided
 		# we simply skip it
 		if self.can_exec(installer_name,"uninstall"):
