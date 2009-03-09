@@ -86,6 +86,7 @@ class CodeRevisionView extends CodeView {
 				' <small>[' . $wgUser->getSkin()->makeLinkObj( $special,
 					wfMsg( 'code-rev-purge-link' ), 'action=purge' ) . ']</small></h2>' .
 				"<div class='mw-codereview-diff' id='mw-codereview-diff'>" . $diffHtml . "</div>\n";
+			$html .= $this->formatImgDiff();
 		}
 		if ( $comments ) {
 			$html .= "<h2 id='code-comments'>" . wfMsgHtml( 'code-comments' ) . "</h2>\n" . $comments;
@@ -271,9 +272,8 @@ class CodeRevisionView extends CodeView {
 	}
 
 	protected function formatDiff() {
-		global $wgEnableAPI, $wgCodeReviewImgRegex;
+		global $wgEnableAPI;
 
-		$viewvc = $this->mRepo->getViewVcBase();
 		// Asynchronous diff loads will require the API
 		// And JS in the client, but tough shit eh? ;)
 		$deferDiffs = $wgEnableAPI;
@@ -295,11 +295,17 @@ class CodeRevisionView extends CodeView {
 		if ( !$diff && $deferDiffs ) {
 			// We'll try loading it by AJAX...
 			return $this->stubDiffLoader();
+		} else {
+			$hilite = new CodeDiffHighlighter();
+			return $hilite->render( $diff );
 		}
-		$hilite = new CodeDiffHighlighter();
-		$html = $hilite->render( $diff );
+	}
+	
+	protected function formatImgDiff() {
+		global $wgCodeReviewImgRegex;
+		$viewvc = $this->mRepo->getViewVcBase();
 		// Get image diffs
-		$imgDiffs = '';
+		$imgDiffs = $html = '';
 		$modifiedPaths = $this->mRev->getModifiedPaths();
 		foreach ( $modifiedPaths as $row ) {
 			// Typical image file?
@@ -329,7 +335,7 @@ class CodeRevisionView extends CodeView {
 			}
 		}
 		if( $imgDiffs ) {
-			$html .= '<h3>'.wfMsgHtml('code-rev-imagediff').'</h3>';
+			$html = '<h2>'.wfMsgHtml('code-rev-imagediff').'</h2>';
 			$html .= "<div class='mw-codereview-imgdiff'>$imgDiffs</div>\n";
 		}
 		return $html;
