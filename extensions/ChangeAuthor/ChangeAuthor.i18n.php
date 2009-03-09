@@ -948,6 +948,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -975,6 +976,7 @@ Se l'errore dovesse persistere, il database è probabilmente rotto.",
 	'changeauthor-success' => 'La tua richiesta è stata eseguita con successo.',
 	'changeauthor-logentry' => "Modificato l'autore di $2 di $1 da $3 a $4",
 	'changeauthor-logpagename' => 'Log delle modifiche autori',
+	'right-changeauthor' => "Modifica l'autore di una revisione",
 );
 
 /** Japanese (日本語)

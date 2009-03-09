@@ -58,6 +58,11 @@ $aliases['fi'] = array(
 	'InterwikiList' => array( 'Interwikilista' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'InterwikiList' => array( 'Liste interwiki', 'ListeInterwiki' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'InterwikiList' => array( 'Lista de interwikis' ),

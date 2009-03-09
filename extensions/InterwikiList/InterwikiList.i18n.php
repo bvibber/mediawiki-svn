@@ -503,6 +503,18 @@ $messages['te'] = array(
 	'interwikilist-prefix' => 'అంతర్వికీ ఉపసర్గ:',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'interwikilist' => 'Wikiara sanawy',
+	'interwikilist-desc' => 'Elýeterli wikiara çykgytlary görmek için bir [[Special:Interwikilist|ýörite sahypa]] goşýar',
+	'interwikilist-linkname' => 'Wikiara çykgyt',
+	'interwikilist-target' => 'Maksat edilýän URL',
+	'interwikilist-filter' => 'Filtr sanawy',
+	'interwikilist-prefix' => 'Wikiara prefiksi:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

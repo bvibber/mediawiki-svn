@@ -1027,6 +1027,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'badimages' => 'Elenco dei file discutibili',
+	'badimages-desc' => 'Estende le funzioni di MediaWiki per gestire le immagini discutibili',
 	'badimages-add-btn' => 'Aggiungi',
 	'badimages-added' => "Il file $1 è stato aggiunto all'elenco.",
 	'badimages-count' => "{{PLURAL:$1|C'è|Ci sono}} '''$1''' {{PLURAL:$1|immagine|immagini}} nella lista delle immagini discutibili.",

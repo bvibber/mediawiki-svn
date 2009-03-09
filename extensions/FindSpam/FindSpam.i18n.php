@@ -396,6 +396,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -404,6 +405,7 @@ $messages['it'] = array(
 	'findspam-ip' => 'Indirizzo IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nessun contributo trovato',
+	'right-findspam' => 'Cerca lo spam più recente',
 );
 
 /** Japanese (日本語)

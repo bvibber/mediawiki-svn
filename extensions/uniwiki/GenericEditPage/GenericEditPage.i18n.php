@@ -174,6 +174,31 @@ $messages['bg'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'gep-desc' => "Klokaat a ra ar furmskrid kemmañ evit ma vo un tres plijusoc'h gantañ",
+	'gep-emailsubject' => '[$1] Kinnig rummad : $2',
+	'gep-emailbody' => 'Kinniget en deus an implijer "$1" ar rummad "$2" evit al lec\'hienn "$3".',
+	'gep-emailfailure' => "Ho tigarez, n'eus ket bet gallet plediñ gant ho kinnig.",
+	'gep-emailsuccess' => 'Trugarez da vezañ kinniget ar rummad : $1.',
+	'gep-categories' => 'Rummadoù',
+	'gep-addcategory' => 'Ouzhpennañ ur rummad',
+	'gep-addcategorybutton' => 'Ouzhpennañ',
+	'gep-suggestcategory' => 'Kinnig ur rummad all',
+	'gep-suggestcategorybutton' => 'Kas',
+	'gep-sections' => 'Rannoù',
+	'gep-sectionnotdisabled' => "N'haller ket diweredekaat ar rann-mañ",
+	'gep-addsection' => 'Ouzhpennañ ur rann',
+	'gep-addsectionbutton' => 'Ouzhpennañ',
+	'gep-classicmode' => 'Mod klasel',
+	'gep-genericmode' => 'Mod hollek',
+	'gep-nosectioninstructions' => "N'eus rann ebet war ar bajenn-mañ.
+Ouzhpennit-int en ur ober gant ostilhoù barrenn al lañserioù.",
+	'gep-nocategories' => 'Diuzit ur rummad da nebeutañ a-raok enrollañ.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

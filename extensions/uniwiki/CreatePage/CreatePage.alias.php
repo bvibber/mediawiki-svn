@@ -37,7 +37,7 @@ $aliases['es'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'CreatePage' => array( 'CréerPage', 'Créer page' ),
+	'CreatePage' => array( 'Créer page', 'CréerPage' ),
 );
 
 /** Galician (Galego) */

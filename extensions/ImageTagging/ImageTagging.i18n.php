@@ -585,7 +585,7 @@ Bitte wart, bis di momentan Aktion abgschlossen isch.',
  */
 $messages['haw'] = array(
 	'imagetagging-article' => '‘Ao‘ao:',
-	'imagetagging-imghistory' => 'Mo‘olelo',
+	'imagetagging-imghistory' => 'Mōʻaukala',
 );
 
 /** Hebrew (עברית)

@@ -66,6 +66,11 @@ $aliases['fa'] = array(
 	'BoardVote' => array( 'رای_به_هیئت_امنا' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'BoardVote' => array( "Vote du conseil d'administration", 'VoteConseil' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'BoardVote' => array( 'Kuratoriumswahl' ),

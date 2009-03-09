@@ -554,13 +554,23 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'dt-desc' => "Permette l'importazione e l'esportazione di dati strutturati contenuti in chiamate a template",
+	'viewxml' => 'Vedi XML',
+	'dt_viewxml_docu' => 'Selezionare tra le categorie e namespace indicati di seguito quelli da visualizzare in formato XML.',
 	'dt_viewxml_categories' => 'Categorie',
 	'dt_viewxml_namespaces' => 'Namespace',
+	'dt_viewxml_simplifiedformat' => 'Formato semplificato',
+	'dt_xml_namespace' => 'Namespace',
+	'dt_xml_page' => 'Pagina',
+	'dt_xml_field' => 'Campo',
 	'dt_xml_name' => 'Nome',
 	'dt_xml_title' => 'Titolo',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Testo libero',
 );
 
 /** Japanese (日本語)

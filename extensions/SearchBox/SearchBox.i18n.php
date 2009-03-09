@@ -220,6 +220,13 @@ $messages['grc'] = array(
 	'searchbox-namespaces' => 'Ὀνοματεῖα:',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'searchbox-search' => 'Huli',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

@@ -4630,6 +4630,30 @@ $messages['nds'] = array(
 	'boardvote_entry' => '* [[Special:BoardVote/vote|Afstimmen]]
 * [[Special:BoardVote/list|Bet nu al afgevene Stimmen]]
 * [[Special:BoardVote/dump|Verslötelte Wahlindrääg]]',
+	'boardvote_intro' => '<p>Willkamen to de Wahl 2008 to dat Wikimedia-Kuratorium, dat Verwaltungsorgan vun de Wikimedia-Foundation.
+Een Person warrt wählt, de Gemeenschop vun de Wikimedianers in de verscheden Wikimedia-Projekten to repräsenteren.
+He schall dor bi helpen, de Gahricht vun de Wikimedia-Projekten mit fasttoleggen, enkelt un as Grupp un he repräsenteert <em>diene</em> Intressen un wat di an’t Hart liggt bi dat Wikimedia-Kuratorium.
+Blangen velen annern Kraam schall he över de Innahmen un Utgaven mit bestimmen.</p>
+
+<p>Lees man de Texten, de de Kandidaten över sik schreven hebbt, un jemehr Antwoorden op Fragen.
+Elkeen Kandidat is en respekteerten Bruker, de al veel Tied opwennt hett, dat de Projekten en positiv Ümfeld för dat fre’e Verbreden vun dat Weten vun de Minschheit hebbt.</p>
+
+<p>Stell de Kandidaten in en Reeg na dien Köör. Dorto schriffst du en Nummer in de Kassens blangen jem (1 = Favorit, 2 = tweten Favorit, …)
+Du dröffst desülve Nummer för mehr Kandidaten bruken un du dröffst Kandidaten utlaten.
+Warrt dor vun utgahn, dat du Kandidaten mit Rangnummer beter magst as welk ahn Rangnummer un dat du bi Kandidaten ahn Rangnummer keen besünner Menen hest.</p>
+
+<p>De Winner vun de Wahl warrt na de Schulze-Methood berekent. För mehr Infos dorto kiek di de offiziellen Wahlsieden an.</p>
+
+<p>Mehr Infos:</p>
+<ul>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Kuratoriumwahl 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidaten</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Schulze-Methode" class="external">Schulze-Methood</a></li>
+</ul>',
+	'boardvote_intro_change' => 'Du hest al afstimmt.
+Du kannst aver diene Stimmen mit dit Formular ännern.
+Geev de Reeg an, welk Kandidaten du opleevst harrst, en lüttjere Tall bedüüdt, dat du den Kandidaten lever harrst.
+Du kannst desülve Tall an mehr as een Kandidaten vergeven un du kannst Kandidaten utlaten.',
 	'boardvote_entered' => 'Wees bedankt, dien Stimm is optekent.
 
 Wenn du wullt, kannst du di disse Infos opbewohren. Die Daten sünd:
@@ -4646,8 +4670,13 @@ Wat nu kummt, is de verslötelte Version. De is [[Special:BoardVote/dump|apen si
 
 [[Special:BoardVote/entry|Trüch]]',
 	'boardvote_invalidentered' => '<p><strong>Fehler:</strong> De Reeg vun de Kannedaten mutt in ganze positive Tallen utdrückt warrn (1, 2, 3, …) oder leddig laten warrn.</p>',
+	'boardvote_nosession' => 'Dien Wikimedia-Bruker-ID kunn nich rutkregen warrn.
+Mell di op dat Wiki an, bi dat du för de Wahl tolaten büst un gah dor na <nowiki>[[Special:BoardVote]]</nowiki>.
+Wählen dröfft Brukers, de opminnst $1 {{PLURAL:$1|Maal|Maal}} vör’n $2 Sieden ännert hebbt un de opminnst $3 {{PLURAL:$3|Maal|Maal}} twischen $4 un $5 Sieden ännert hebbt.',
 	'boardvote_notloggedin' => 'Du büst nich anmellt.
 Dat du wählen dröffst, musst du as en Bruker anmellt wesen, de opminnst $1 {{PLURAL:$1|Bidrag|Bidrääg}} vör $2 un opminnt $3 {{PLURAL:$3|Bidrag|Bidrääg}} twischen $4 un $5 maakt hett.',
+	'boardvote_notqualified' => 'Du dröffst bi disse Wahl nich wählen.
+Dat du afstimmen dröffst, musst du anmellt wesen un en Brukerkonto hebben, mit dat vör den $2 opminnst $1 Ännern maakt {{PLURAL:$1|worrn is|worrn sünd}}, un mit dat opminnst $3 Ännern twischen $4 un $5 maakt {{PLURAL:$1|worrn is|worrn sünd}}.',
 	'boardvote_novotes' => 'Noch hett nüms afstimmt.',
 	'boardvote_time' => 'Tiet',
 	'boardvote_user' => 'Bruker',
@@ -4676,6 +4705,11 @@ Sperrt Brukers dröfft nich wählen.',
 Bots dröfft nich afstimmen.',
 	'boardvote_welcome' => "Moin '''$1'''.",
 	'go_to_board_vote' => 'Wahlen to dat Wikimedia-Kuratorium 2008',
+	'boardvote_redirecting' => 'Dat bi de Wahl allens seker un transparent aflöppt, löppt de Wahl op en externen, unafhängig kuntrolleerten Server.
+
+Du warrst in 20 Sekunnen na dissen Server ümleidt. [$1 Klick hier], dat du dor glieks henkummst.
+
+Kann angahn, dat du dorbi en Sekerheitswohrschau över en nich aftekent Zertifikat kriggst.',
 	'right-boardvote' => 'Wahlen administreren',
 );
 

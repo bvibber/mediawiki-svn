@@ -55,6 +55,11 @@ $aliases['lb'] = array(
 	'RegexBlock' => array( 'Regex Spär' ),
 );
 
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'RegexBlock' => array( 'RegexBlokkade' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'RegexBlock' => array( 'Paghadlang sa karaniwang pagsasaad' ),

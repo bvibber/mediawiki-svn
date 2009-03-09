@@ -1574,14 +1574,20 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'bookinfo-header' => 'Kitap bilgisi',
+	'bookinfo-desc' => '[[Special:Booksources|Kitap kaynakları özel sayfasını]], bir web servisinden bilgilerle genişletir',
 	'bookinfo-result-title' => 'Başlık:',
 	'bookinfo-result-author' => 'Yazar:',
 	'bookinfo-result-publisher' => 'Yayımcı:',
 	'bookinfo-result-year' => 'Yıl:',
+	'bookinfo-error-invalidisbn' => 'Geçersiz ISBN girildi.',
+	'bookinfo-error-nosuchitem' => 'Öğe yok veya bulunamadı.',
+	'bookinfo-error-nodriver' => 'Uygun bir Kitap Bilgi Sürücüsü başlatılamıyor.',
+	'bookinfo-error-noresponse' => 'Yanıt yok ya da istek zaman aşımına uğradı.',
 	'bookinfo-purchase' => 'Bu kitapı buradan satın al: $1',
 	'bookinfo-provider' => 'Veri sağlayıcısı: $1',
 );

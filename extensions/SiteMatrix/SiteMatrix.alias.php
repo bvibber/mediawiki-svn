@@ -65,6 +65,11 @@ $aliases['fi'] = array(
 	'SiteMatrix' => array( 'Sivumatriisi' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'SiteMatrix' => array( 'Matrice des sites', 'Wikis de Wikimedia' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'SiteMatrix' => array( 'Wikis Wikimedia' ),

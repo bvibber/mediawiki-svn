@@ -56,7 +56,8 @@ $aliases['dsb'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'GroupPermissions' => array( 'Permission des groupes' ),
+	'GroupPermissions' => array( 'Permissions des groupes', 'Permission des groupes' ),
+	'SortPermissions' => array( 'Trier les permissions' ),
 );
 
 /** Swiss German (Alemannisch) */

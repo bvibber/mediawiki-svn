@@ -659,6 +659,7 @@ $messages['nan'] = array(
 $messages['nds'] = array(
 	'crossnamespacelinks' => 'Sieden mit Lenken na annere Naamrüüm',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Wiest Lenken op Sieden in annere Naamrüüm]], de in {{SITENAME}} nich vörhannen weesen schöölt',
+	'crossnamespacelinks-summary' => 'Disse List wiest Sieden, de Lenken op Sieden in annere Naamrüüm hebbt, op de normalerwies keen Lenken wiesen schullen. Utnahmen sünd de Naamrüüm {{ns:special}}, {{ns:talk}}, {{ns:project}} un {{ns:template}}.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|Lenk|Lenken}} na $3',
 );
 

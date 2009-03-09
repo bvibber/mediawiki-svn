@@ -38,6 +38,11 @@ $aliases['es'] = array(
 	'GlobalUserrights' => array( 'Permisos_de_usuarios_globales', 'Permisos_usuarios_globales', 'Derechos_usuarios_globales' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'GlobalUserrights' => array( 'Droits des utilisateurs globaux', 'DroitsDesUtilisateursGlobaux' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'GlobalUserrights' => array( 'Dereitos de usuario globais' ),

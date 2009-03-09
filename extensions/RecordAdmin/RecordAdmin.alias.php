@@ -22,7 +22,7 @@ $aliases['arz'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'RecordAdmin' => array( 'GérerEnregistrement', 'GererEnregistrement', 'Gérer enregistrement' ),
+	'RecordAdmin' => array( 'Gérer enregistrement', 'GérerEnregistrement', 'GererEnregistrement' ),
 );
 
 /** Swiss German (Alemannisch) */

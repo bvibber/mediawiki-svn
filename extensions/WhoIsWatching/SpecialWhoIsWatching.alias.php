@@ -45,6 +45,11 @@ $aliases['fa'] = array(
 	'WhoIsWatching' => array( 'چه_کسی_پی‌گیری_می‌کند' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'WhoIsWatching' => array( 'Qui a en suivi', 'QuiAEnSuivi' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'WhoIsWatching' => array( 'Quen está vixiando' ),

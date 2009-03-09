@@ -1028,6 +1028,7 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Srhat
  */
 $messages['tr'] = array(
@@ -1035,6 +1036,9 @@ $messages['tr'] = array(
 	'ajax-se-title' => 'Şu an düzenleyen:',
 	'ajax-se-pending' => 'yenileme bekleniyor ... (bu kutuya tıklayın veya düzenlemeye başlayın)',
 	'ajax-se-idling' => '($1s önce)',
+	'ajax-se-pagedoesnotexist' => 'sayfa mevcut değil',
+	'ajax-se-userinvalid' => 'Hata: kullanıcı geçersiz',
+	'ajax-se-usernotfound' => 'Hata: kullanıcı bulunamadı',
 );
 
 /** Ukrainian (Українська)

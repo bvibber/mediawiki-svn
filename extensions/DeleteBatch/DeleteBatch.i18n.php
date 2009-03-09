@@ -310,13 +310,18 @@ Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "
  */
 $messages['es'] = array(
 	'deletebatch-caption' => 'Lista de páginas:',
+	'deletebatch-link-back' => 'Regresar a la página especial',
+	'deletebatch-or' => '<b>o</b>',
 	'deletebatch-page' => 'Páginas a ser borradas:',
 	'deletebatch-reason' => 'Razón para borrado',
 	'deletebatch-processing' => 'borrando páginas $1',
+	'deletebatch-from-file' => 'de la lista de archivos',
+	'deletebatch-from-form' => 'del formulario',
 	'deletebatch-success-subtitle' => 'Para $1',
 	'deletebatch-omitting-nonexistant' => 'Omitiendo página no existente $1.',
 	'deletebatch-omitting-invalid' => 'Omitiendo página inválida $1.',
 	'deletebatch-select-yourself' => 'usted',
+	'deletebatch-no-page' => 'Por favor especifique al menos una página a borrar O escoja un archivo conteniendo una lista de páginas.',
 );
 
 /** Finnish (Suomi)

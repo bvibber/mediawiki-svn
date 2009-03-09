@@ -1269,6 +1269,25 @@ $messages['km'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'សូមសរសេរការពិពណ៌នាឱ្យវីដេអូ។',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'youtubeauthsub' => '유투브 동영상을 올립니다.',
+	'youtubeauthsub_password' => '유투브 비밀번호',
+	'youtubeauthsub_username' => '유투브 사용자 이름',
+	'youtubeauthsub_success' => "축하드립니다!
+
+당신의 동영상이 올라갔습니다.
+
+<a href='http://www.youtube.com/watch?v=$1'>당신의 동영상을 보세요</a>.
+
+유투브는 당신의 동영상을 처리하기 위해 얼마간의 시간을 필요로 합니다. 그래서 아직 준비가 되지 않았을 수도 있습니다.
+
+위키에 있는 페이지에 당신의 동영상을 포함시키시려면, 다음 코드를 페이지에 입력해 주세요.
+<code>{{&#35;ev:youtube|$1}}</code>",
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

@@ -1161,6 +1161,13 @@ Wänn Du in e paar Sekunden imfall nit wytergleitet wirsch, no druck $1.',
 	'tog-show_task_comments' => 'Ufgabe-Diskussionssyte yybinde.',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'tasks_search_form_title' => 'Huli',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

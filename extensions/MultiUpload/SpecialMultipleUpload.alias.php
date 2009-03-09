@@ -45,7 +45,7 @@ $aliases['dsb'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'MultiUpload' => array( 'Téléchargement multiple', 'TéléchargementMultiple' ),
+	'MultiUpload' => array( 'Téléversement multiple', 'TéléversementMultiple' ),
 );
 
 /** Swiss German (Alemannisch) */

@@ -407,10 +407,12 @@ $messages['hak'] = array(
 );
 
 /** Hawaiian (Hawai`i)
+ * @author Kalani
  * @author Singularity
  */
 $messages['haw'] = array(
 	'edituser-username' => 'Inoa',
+	'edituser-dosearch' => 'Huli',
 );
 
 /** Hebrew (עברית)

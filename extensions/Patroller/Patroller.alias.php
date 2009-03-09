@@ -42,6 +42,11 @@ $aliases['eo'] = array(
 	'Patroller' => array( 'Patrolanto' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'Patroller' => array( 'Patrouilleur' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'Patroller' => array( 'Fäldhieter' ),

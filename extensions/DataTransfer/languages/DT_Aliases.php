@@ -39,7 +39,7 @@ $aliases['eu'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'ViewXML' => array( 'Voir XML', 'VoirXML' ),
+	'ViewXML' => array( 'Voir le XML', 'Voir XML', 'VoirXML' ),
 );
 
 /** Galician (Galego) */

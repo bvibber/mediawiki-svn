@@ -346,6 +346,13 @@ $messages['ru'] = array(
 	'antibot-desc' => 'Простая среда для проверки спамботов и включения полезной нагрузки',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'antibot-desc' => 'Спамбуоттары тургутар уонна полезнай ноҕуруусканы холбуур судургу үнүстүрүмүөн',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

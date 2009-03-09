@@ -2666,6 +2666,79 @@ Existems vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de
 	'openid-pref-update-userinfo-on-login' => 'Atualizar a minha informação a partir da minha "persona" OpenID cada vez que me autentico',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'openid-desc' => 'Autentique-se no wiki com um [http://openid.net/ OpenID], e autentique-se em outros sítios que usem OpenID com uma conta de utilizador wiki',
+	'openidlogin' => 'Autenticação com OpenID',
+	'openidfinish' => 'Terminar autenticação OpenID',
+	'openidserver' => 'Servidor OpenID',
+	'openidxrds' => 'Arquivo Yadis',
+	'openidconvert' => 'Conversor de OpenID',
+	'openiderror' => 'Erro de verificação',
+	'openiderrortext' => 'Ocorreu um erro durante a verificação da URL OpenID.',
+	'openidconfigerror' => 'Erro de Configuração do OpenID',
+	'openidconfigerrortext' => 'A configuração de armazenamento OpenID para este wiki é inválida.
+Por favor, consulte um [[Special:ListUsers/sysop|administrator]].',
+	'openidpermission' => 'Erro de permissões OpenID',
+	'openidpermissiontext' => 'O OpenID fornecido não está autorizado a autenticar-se neste servidor.',
+	'openidcancel' => 'Verificação cancelada',
+	'openidcanceltext' => 'A verificação da URL OpenID foi cancelada.',
+	'openidfailure' => 'Verificação falhou',
+	'openidfailuretext' => 'A verificação da URL OpenID falhou. Mensagem de erro: "$1"',
+	'openidsuccess' => 'Verificação com sucesso',
+	'openidsuccesstext' => 'A verificação da URL OpenID foi bem sucedida.',
+	'openidusernameprefix' => 'UtilizadorOpenID',
+	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
+	'openidtrustinstructions' => 'Verifique se pretende compartilhar dados com $1.',
+	'openidallowtrust' => 'Permitir que $1 confie nesta conta de utilizador.',
+	'openidnopolicy' => 'O sítio não especificou uma política de privacidade.',
+	'openidpolicy' => 'Consulte a <a target="_new" href="$1">política de privacidade</a> para mais informações.',
+	'openidoptional' => 'Opcional',
+	'openidrequired' => 'Requerido',
+	'openidnickname' => 'Apelido',
+	'openidfullname' => 'Nome completo',
+	'openidemail' => 'Endereço de e-mail',
+	'openidlanguage' => 'Língua',
+	'openidnotavailable' => 'O seu apelido preferido ($1) já está em uso por outro utilizador.',
+	'openidnotprovided' => 'O seu servidor OpenID não forneceu um apelido(ou porque não pôde, ou porque você lhe disse para não o fazer).',
+	'openidchooseinstructions' => 'Todos os utilizadores precisam de um apelido;
+pode escolher uma das opções abaixo.',
+	'openidchoosefull' => 'O seu nome completo ($1)',
+	'openidchooseurl' => 'Um nome escolhido a partir do seu OpenID ($1)',
+	'openidchooseauto' => 'Um nome gerado automaticamente ($1)',
+	'openidchoosemanual' => 'Um nome à sua escolha:',
+	'openidchooseexisting' => 'Uma conta existente neste wiki:',
+	'openidchoosepassword' => 'palavra-chave:',
+	'openidconvertinstructions' => 'Este formulário lhe permite alterar a sua conta de utilizador para usar uma URL OpenID.',
+	'openidconvertsuccess' => 'Convertido para OpenID com sucesso',
+	'openidconvertsuccesstext' => 'Você converteu com sucesso o seu OpenID para $1.',
+	'openidconvertyourstext' => 'Esse já é o seu OpenID.',
+	'openidconvertothertext' => 'Esse é o OpenID de outra pessoa.',
+	'openidalreadyloggedin' => "'''Você já se encontra autenticado, $1!'''
+
+Se no futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConvert|converter a sua conta para usar OpenID]].",
+	'openidnousername' => 'Nenhum nome de utilizador especificado.',
+	'openidbadusername' => 'Nome de utilizador especificado inválido.',
+	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript ativado.
+Caso contrário, utilize o botão \\"Continuar\\".',
+	'openidclientonlytext' => 'Você pode usar contas deste wiki como OpenIDs em outro sítio.',
+	'openidloginlabel' => 'URL do OpenID',
+	'openidlogininstructions' => '{{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação única entre sítios Web.
+O OpenID lhe permite autenticar-se em diversos sítios Web sem usar uma palavra-chave diferente em cada um.
+(Veja [http://pt.wikipedia.org/wiki/OpenID o artigo OpenID na Wikipédia] para mais informação.)
+
+Se já possui uma conta em {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]] com o seu nome de utilizador e palavra-chave como habitualmente.
+Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta em OpenID]] após autenticar-se normalmente.
+
+Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID], e você poderá já ter uma conta ativada para OpenID em outro serviço.',
+	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal',
+	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',
+	'openid-pref-hide' => 'Esconder o seu <a href="http://openid.net/">OpenID</a> na sua página de utilizador, caso se autentique com OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Atualizar a minha informação a partir da minha "persona" OpenID cada vez que me autentico',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

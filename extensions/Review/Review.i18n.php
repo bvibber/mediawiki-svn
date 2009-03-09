@@ -243,7 +243,7 @@ $messages['ast'] = array(
  */
 $messages['be-tarask'] = array(
 	'review_sidebar_title' => 'Адзнака',
-	'review-desc' => 'Магчымасьць [[Special:Review|праверкі]]',
+	'review-desc' => 'Дазваляе ўдзельнікам [[Special:Review|правераць]] старонкі',
 	'review_topics' => "# Ніжэй пададзены сьпіс тэмаў і дыяпазонаў для пашырэньня адзнакі.
 # Кожная тэма вызначана ў радку з пяці значэньняў, падзеленых ':' (усе іншыя радкі не ўлічваюцца).
 # Парадак наступны: лічбавы ключ (>0), назва, максымальнае значэньне (>1; 2=yes/no), апісаньне самага малога значэньня (напрыклад, 'дрэнная'), значэньне самай высокай адзнакі (напрыклад, 'добрая').
@@ -264,7 +264,7 @@ $messages['be-tarask'] = array(
 	'review_total_statistics' => 'Усяго',
 	'review_statistics_left_corner' => 'Вэрсія',
 	'review_version_link' => 'Вэрсія #$1',
-	'review_statistic_cell' => 'Сярэдняя: $1 з $2<br />($4 удзельнікаў, $5 ананімаў)',
+	'review_statistic_cell' => 'Сярэдняя: $1 з $2<br />($4 {{PLURAL:$4|удзельнік|удзельнікі|удзельнікаў}}, $5  {{PLURAL:$5|ананім|ананімы|ананімаў}})',
 	'review_version_statistic_cell' => '$1 з $2',
 	'review_version_reviews_link' => '<small>(адзнакі вэрсіі)</small>',
 	'review_concerns_page' => 'Гэта адзнака старонкі «$1».',
@@ -351,7 +351,7 @@ $messages['bs'] = array(
 	'review_sidebar_explanation' => "Krajnji lijevi potvrdni okvir uvijek znači 'bez mišljenja'.",
 	'review_error' => 'Nešto nije u redu!',
 	'review_total_statistics' => 'Ukupno',
-	'review_statistic_cell' => 'Prosjek: $1 of $2<br />($4 korisnika, $5 anonimnih)',
+	'review_statistic_cell' => 'Prosjek: $1 of $2<br />($4 {{PLURAL:$4|registrovani korisnik|registrovana korisnika|registrovanih korisnika}}, $5 {{PLURAL:$4|anonimni korisnik|anonimna korisnika|anonimnih korisnika}})',
 	'review_user_details_link' => '(detalji)',
 	'review_blocked' => 'Blokirani ste i ne možete učestvovati u pregledima.',
 	'review_topic' => 'Tema',
@@ -623,7 +623,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'review_sidebar_title' => 'Révision',
-	'review-desc' => 'Relance la fonctionnalité de [[Special:Review|validation]] de pages.',
+	'review-desc' => 'Permet aux utilisateurs de [[Special:Review|valider]] des pages',
 	'review_topics' => "# Liste de sujets pour l'extension « review » de MediaWiki.
 # ....
 # Chaque sujet est défini par une liste de données séparées par « : » (toute autre liste est ignorée).
@@ -654,7 +654,7 @@ $messages['fr'] = array(
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Révision',
 	'review_version_link' => 'Révision #$1',
-	'review_statistic_cell' => 'Moyenne : $1 de $2<br />($4 utilisateurs inscrits, $5 anonymes)',
+	'review_statistic_cell' => 'Moyenne : $1 de $2<br />($4 {{PLURAL:$4|utilisateur inscrit|utilisateurs inscrits}}, $5 {{PLURAL:$4|utilisateur anonyme|utilisateurs anonymes}})',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(révisions de version)</small>',
 	'review_concerns_page' => 'Cette révision est à propos de la page « $1 ».',
@@ -687,7 +687,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'review_sidebar_title' => 'Revisar',
-	'review-desc' => 'A característica de [[Special:Review|validación]] resucitada.',
+	'review-desc' => 'Permite aos usuarios [[Special:Review|revisar]] páxinas',
 	'review_topics' => '# O que segue é unha lista de temas e rangos para a extensión de revisión.
 # Cada tema é definido por unha liña de cinco valores, separados por ":" (todas as outras liñas son ignoradas).
 # A orde é: tecla numérica (>0), nome, rango máximo (>1; 2=si/non), significado do valor máis baixo (por exemplo, "malo"), significado do valor máis alto (por exemplo, "bo").
@@ -707,7 +707,7 @@ $messages['gl'] = array(
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Revisión',
 	'review_version_link' => 'Revisión #$1',
-	'review_statistic_cell' => 'Promedio: $1 de $2<br />($4 usuarios, $5 anónimos)',
+	'review_statistic_cell' => 'Promedio: $1 de $2<br />($4 {{PLURAL:$4|usuario rexistrado|usuarios rexistrados}}, $5 {{PLURAL:$4|usuario anónimo|usuarios anónimos}})',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(versión revisada)</small>',
 	'review_concerns_page' => 'Esta revisión é acerca da páxina "$1".',
@@ -744,7 +744,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'review_sidebar_title' => 'Priefig',
-	'review-desc' => 'S [[Special:Review|Validierigswärchzyyg]], wu wider uferstanden isch.',
+	'review-desc' => 'Macht s Benutzer megli Syte z [[Special:Review|priefe]]',
 	'review_topics' => '# Doo chunnt d Lischt vu dr Themene un Beryych fir d Review-Extension.
 # E jedes Thema isch definiert dur e Zyyle vu fimf Wärt, trännt dur „:“ (alli andere Zyylen wäre ignoriert).
 # Reihefolg: Nummerische Schlissel (> 0), Name, maximale Beryych (> 1; 2=jo/nei), Bedytig vu niderschte Wärt (z. B. „schlächt“), Bedytig vum hegschte Wärt (z. B. „guet“).
@@ -764,7 +764,7 @@ $messages['gsw'] = array(
 	'review_total_statistics' => 'Gsamt',
 	'review_statistics_left_corner' => 'Priefig',
 	'review_version_link' => 'Priefig Nr. $1',
-	'review_statistic_cell' => 'Durschnitt: $1 vu $2<br />($4 Benutzer, $5 IP-Adrässe)',
+	'review_statistic_cell' => 'Durschnitt: $1 vu $2<br />($4 {{PLURAL:$4|Benutzer|Benutzer}}, $5 {{PLURAL:$5|IP-Adräss|IP-Adrässe}})',
 	'review_version_statistic_cell' => '$1 vu $2',
 	'review_version_reviews_link' => '<small>(Versionspriefig)</small>',
 	'review_concerns_page' => 'Die Rezension isch iber d Syte „$1“.',
@@ -1089,7 +1089,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'review_sidebar_title' => 'Enschätze',
-	'review-desc' => 'Dat widder-op-ershtande Werrekzüsh för et [[Special:Review|Sigge-Enschätze]].',
+	'review-desc' => 'Määt et müjjelesch, dat Metmaacher [[Special:Review|Sigge ennschäze]] künne.',
 	'review_topics' => '# Hee kütt en Leß met Pungkte un Berette för Sigge enzeschätze.
 # Jede Pungk weet övver en Reih met fönef Wääte beshtemmp, die
 # zwesche „:“ (alsu Dubbelpüngkscher) shtonn. All ander Reihe donn nix,
@@ -1280,7 +1280,7 @@ $messages['nah'] = array(
  */
 $messages['nl'] = array(
 	'review_sidebar_title' => 'Beoordelen',
-	'review-desc' => 'De wederopstanding van de [[Special:Review|waarderingsfunctie]]',
+	'review-desc' => "Stelt gebruikers in staat om pagina's te [[Special:Review|beoordelen]]",
 	'review_topics' => "# The following is the list of topics and ranges for the review extension.
 # Each topic is defined by a line of five values, separated by ':' (all other lines are ignored).
 # The order is: numerical key (>0), name, max range (>1; 2=yes/no), meaning of lowest value (e.g., 'bad'), meaning of highest value (e.g., 'good').
@@ -1301,7 +1301,7 @@ Uw andere waarderingen worden samengevoegd met deze waar u 'geen mening' hebt op
 	'review_total_statistics' => 'Totaal',
 	'review_statistics_left_corner' => 'Versie',
 	'review_version_link' => 'Versie #$1',
-	'review_statistic_cell' => 'Gemiddelde: $1 van $2<br />($4 gebruikers, $5 anomienen)',
+	'review_statistic_cell' => 'Gemiddelde: $1 van $2<br />($4 {{PLURAL:$4|gebruiker|gebruikers}}, $5 anonieme {{PLURAL:$5|gebruiker|gebruikers}})',
 	'review_version_statistic_cell' => '$1 van $2',
 	'review_version_reviews_link' => '<small>(versiebeoordelingen)</small>',
 	'review_concerns_page' => 'Deze beoordeling gaat over de pagina "$1".',
@@ -1427,7 +1427,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'review_sidebar_title' => 'Revision',
-	'review-desc' => 'Torna aviar la foncionalitat de [[Special:Review|validacion]] d’un article.',
+	'review-desc' => 'Permet als utilizaires de [[Special:Review|validar]] de paginas',
 	'review_topics' => "# Lista de subjèctes per l'extension « review » de MediaWiki. 
 # .... 
 # Cada subjècte es definit per una lista de donadas separadas per « : » (tota autra lista es ignorada).
@@ -1447,7 +1447,7 @@ $messages['oc'] = array(
 	'review_total_statistics' => 'Soma',
 	'review_statistics_left_corner' => 'Revision',
 	'review_version_link' => 'Revision #$1',
-	'review_statistic_cell' => 'Mejana : $1 de $2<br />($4 utilizaires inscriches, $5 anonims)',
+	'review_statistic_cell' => 'Mejana : $1 de $2<br />($4 {{PLURAL:$4|utilizaire inscrich|utilizaires inscriches}}, $5 {{PLURAL:$4|utilizaire anonim|utilizaires anonims}})',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(revisions de version)</small>',
 	'review_concerns_page' => 'Aquesta revision es a prepaus de la pagina « $1 ».',
@@ -1520,7 +1520,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'review_sidebar_title' => 'Revisão',
-	'review-desc' => 'A ressuscitada funcionalidade de [[Special:Review|validação]]',
+	'review-desc' => 'Permite aos utilizadores [[Special:Review|validarem]] páginas',
 	'review_topics' => "# O seguinte é uma lista de tópicos e intervalos para a extensão de revisão.
 # Cada tópico é definido por uma linha de cinco valores, separados por ':' (todas as outras linhas são ignoradas).
 # A ordem é: chave numérica (>0), nome, intervalo máximo (>1; 2=sim/não), significado do menor valor (p.ex. 'mau'), significado do maior valor (p.ex. 'bom').
@@ -1541,7 +1541,7 @@ As suas outras classificações serão fundidas nesta onde selecionou 'sem opini
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Revisão',
 	'review_version_link' => 'Revisão #$1',
-	'review_statistic_cell' => 'Média: $1 de $2<br />($4 utilizadores, $5 anónimos)',
+	'review_statistic_cell' => 'Média: $1 de $2<br />($4 {{PLURAL:$4|utilizador registado|utilizadores registados}}, $5 {{PLURAL:$5|utilizador anónimo|utilizadores anónimos}})',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(revisões de versão)</small>',
 	'review_concerns_page' => 'Esta revisão é sobre a página "$1".',
@@ -1674,7 +1674,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'review_sidebar_title' => 'Kontrola',
-	'review-desc' => 'Oživená možnosť [[Special:Review|overovania]].',
+	'review-desc' => 'Umožňuje používateľom [[Special:Review|kontrolovať]] stránky',
 	'review_topics' => '# Toto je zoznam téma a rozsahov rozšírenia Kontrola (Review)
 # Každú tému definuje riadok s piatimi hodnotami oddelenými „:“ (všetky ostatné riadky sú ignorované).
 # Poradie je: číselný kľúč (>0), názov, max. rozsah (>1; 2=áno/nie), význam najnižšej hodnoty (napr., „zlý“), význam najvyššej hodnoty (napr., „dobrý“).
@@ -1694,7 +1694,7 @@ $messages['sk'] = array(
 	'review_total_statistics' => 'Celkom',
 	'review_statistics_left_corner' => 'Revízia',
 	'review_version_link' => 'Revízia #$1',
-	'review_statistic_cell' => 'Priemer: $1 z $2<br />($4 používateľov, $5 anonymov)',
+	'review_statistic_cell' => 'Priemer: $1 z $2<br />($4 {{PLURAL:$4|registrovaný používateľ|registrovaní používatelia|registrovaných používateľov}}, $5 {{PLURAL:$5|anonymný používateľ|anonymní používatelia|anonymných používateľov}})',
 	'review_version_statistic_cell' => '$1 z $2',
 	'review_version_reviews_link' => '<small>(kontroly verzie)</small>',
 	'review_concerns_page' => 'Toto je kontrola stránky „$1“.',
@@ -1824,7 +1824,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tl'] = array(
 	'review_sidebar_title' => 'Balik-tanawin (suriin)',
-	'review-desc' => 'Ang muling binuhay na katangiang-kasangkapang [[Special:Review|pampagpapatunay]].',
+	'review-desc' => 'Nagpapahintulot sa mga tagagamit na [[Special:Review|muling suriin]] ang mga pahina',
 	'review_topics' => "# Ang sumusunod ay isang talaan ng mga paksa at mga saklaw para sa karugtong na pagsusuri.
 # Bawat paksa ay pinakahuluganan ng isang guhit/hanay ng limang mga halaga, inihihiwalay ng ':' (hindi pinapansin ang lahat ng iba pang mga guhit/hanay).
 # Ang pagkakasunud-sunod ay: susi ng bilang (>0), pangalan, pinakamataas na sakop (>1; 2=oo/hindi), kahulugan ng pinakamababang halaga (halimbawa na ang 'masama'), kahulugan ng pinakamataas na halaga (halimbawa na ang 'mabuti').
@@ -1844,7 +1844,7 @@ $messages['tl'] = array(
 	'review_total_statistics' => 'Kabuoan',
 	'review_statistics_left_corner' => 'Pagbabago',
 	'review_version_link' => 'Pagbabagong #$1',
-	'review_statistic_cell' => 'Balasak (pinatakang halaga): $1 ng $2<br />($4 mga tagagamit, $5 mga hindi nagpapakilala/anonimo)',
+	'review_statistic_cell' => 'Balasak (pinatakang halaga): $1 ng $2<br />($4 nakatalang {{PLURAL:$4|tagagamit|mga tagagamit}}, $5 mga hindi nagpapakilalang {{PLURAL:$5|tagagamit|mga tagagamit}})',
 	'review_version_statistic_cell' => '$1 ng $2',
 	'review_version_reviews_link' => '<small>(mga pagsusuri ng bersyon)</small>',
 	'review_concerns_page' => 'Ang pagsusuring ito ay tungkol sa pahinang "$1".',

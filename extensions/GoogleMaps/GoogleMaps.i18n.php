@@ -1671,6 +1671,7 @@ $wgGoogleMapsMessages['hak'] = array(
 $wgGoogleMapsMessages['haw'] = array(
 	'gm-remove' => 'kāpae',
 	'gm-zoom-control' => 'Ka hoʻokele ʻana',
+	'gm-search' => 'Huli',
 	'gm-kml-loading' => 'ke ho‘ouka nei…',
 );
 
@@ -2167,10 +2168,12 @@ $wgGoogleMapsMessages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  * @author Pietrodn
  */
 $wgGoogleMapsMessages['it'] = array(
+	'gm-desc' => 'Creazione semplificata di mappe con marcatori in stile wiki',
 	'gm-incompatible-browser' => 'Per vedere la mappa che andrà in questo spazio, avrai bisogno di usare un browser compatibile.',
 	'gm-incompatible-browser-link' => 'Fai clic qui per vedere un elenco di browser compatibili.',
 	'gm-no-editor' => 'Purtroppo il tuo browser non supporta la caratteristica di creazione di mappe interattive. Prova l\'ultima versione di <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac e Linux).',
@@ -2200,6 +2203,7 @@ $wgGoogleMapsMessages['it'] = array(
 	'gm-width' => 'Larghezza',
 	'gm-height' => 'Altezza',
 	'gm-scale-control' => 'Scala',
+	'gm-overview-control' => "Vista d'insieme",
 	'gm-selector-control' => 'Selettore Mappa/Satellite',
 	'gm-zoom-control' => 'Navigazione',
 	'gm-large' => 'Grande',
@@ -2458,9 +2462,11 @@ $wgGoogleMapsMessages['km'] = array(
 /** Korean (한국어)
  * @author Kwj2772
  * @author ToePeu
+ * @author Yknok29
  */
 $wgGoogleMapsMessages['ko'] = array(
 	'gm-remove' => '제거',
+	'gm-no-results' => '죄송합니다. 아무런 결과가 없습니다.',
 	'gm-map' => '지도',
 	'gm-scale-control' => '축척',
 	'gm-yes' => '예',

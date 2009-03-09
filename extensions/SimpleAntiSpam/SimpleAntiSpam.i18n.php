@@ -375,8 +375,10 @@ $messages['jv'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Yknok29
  */
 $messages['ko'] = array(
+	'simpleantispam' => '당신의 편집은 반(反)스팸 메커니즘이 작동하게 했습니다.',
 	'simpleantispam-label' => "스팸 방지 검사입니다.
 이것을 입력하지 '''마세요'''!",
 );

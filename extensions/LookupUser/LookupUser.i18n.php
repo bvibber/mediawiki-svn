@@ -540,6 +540,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -558,6 +559,7 @@ $messages['it'] = array(
 	'lookupuser-touched' => "Ultima visita registrata dell'utente: $1",
 	'lookupuser-info-authenticated' => 'Autenticazione e-mail: $1',
 	'lookupuser-useroptions' => 'Opzioni utente:',
+	'right-lookupuser' => 'Consulta le preferenze utente',
 );
 
 /** Japanese (日本語)

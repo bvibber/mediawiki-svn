@@ -271,6 +271,7 @@ $messages['ia'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  * @author Melos
  */
@@ -280,6 +281,7 @@ $messages['it'] = array(
 	'commentspammer-log-msg' => 'modifica di [[Special:Contributions/$1|$1]] a [[:$2]].',
 	'commentspammer-log-msg-info' => "L'ultimo spam è stato effettuato $1 {{PLURAL:$1|giorno|giorni}} fa, il livello della minaccia è $2 e il codice di attacco è $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Visualizza i dettagli] oppure [[Special:Blockip/$4|blocca]].",
 	'cspammerlogpagetext' => 'Registro delle modifiche che sono state permesse o negate a seconda che la fonte fosse uno spammer noto.',
+	'cspammer-log-page' => 'Registro dello spam sui commenti',
 );
 
 /** Japanese (日本語)

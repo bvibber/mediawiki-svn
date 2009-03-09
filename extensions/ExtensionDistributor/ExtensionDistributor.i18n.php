@@ -1335,6 +1335,11 @@ $messages['nds'] = array(
 	'extdist-wc-empty' => 'In de instellt Warkmapp för Kopien sünd keen Extensions in!',
 	'extdist-submit-extension' => 'Wiedermaken',
 	'extdist-current-version' => 'Aktuelle Version (trunk)',
+	'extdist-choose-version' => '<big>Du laadst de <b>$1</b>-Extension dal.</big>
+
+Wähl dien MediaWiki-Version ut.
+
+En groten Deel vun de Extensions arbeidt mit vele MediaWiki-Versionen. Wenn dien MediaWiki-Version hier nich opdükert oder du de ne’esten KNeep vun de Extension bruken wullt, denn versöök de aktuelle Version to bruken.',
 	'extdist-no-versions' => 'De utwählte Extension ($1) is in keen Version verföögbor!',
 	'extdist-submit-version' => 'Wiedermaken',
 	'extdist-no-remote' => 'De feernstüürte Subversion-Client mellt sik nich.',
@@ -1343,6 +1348,27 @@ $messages['nds'] = array(
 	'extdist-svn-error' => 'Subversion hett en Fehler mellt: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'XML-Daten von „svn info“ kunnen nich verarbeidt warrn: <pre>$1</pre>',
 	'extdist-tar-error' => 'Dat Tar-Programm mellt den Enn-Kood $1:',
+	'extdist-created' => "En Snappschuss vun de Version <b>$2</b> vun de MediaWiki-Extension <b>$1</b> is opstellt worrn (MediaWiki-Version <b>$3</b>). Dat Dalladen geit automaatsch los in 5 Sekunnen.
+
+De URL för den Snappschuss is:
+:$4
+De URL is blot för dat Dalladen nu glieks dacht, spieker ehr nich as Leesteken af, de Datei warrt nich opfrischt un kann later ganz wegdaan warrn.
+
+Dat Tar-Archiv schull in de Extension-Mapp utpackt warrn. Op en Unix-achtig Bedrievssystem mit:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Ünner Windows kannst du dat Programm [http://www.7-zip.org/ 7-zip] för dat Utpacken vun de Datein bruken.
+
+Wenn dien Wiki op en vun feern bedeenten Server löppt, pack de Datein in en temporäre Mapp op dien lokalen Reekner ut un laad denn '''all''' utpackte Datein op den Server hooch.
+
+Acht dor op, dat welk Extensions de Datei <tt>ExtensionFunctions.php</tt> bruukt. De liggt ünner <tt>extensions/ExtensionFunctions.php</tt>, de Hööfdmapp för de Extensions. Bi den Snappschuss vun disse Extension is disse Datei ok as tarbomb bi, utpackt na <tt>./ExtensionFunctions.php</tt>. Vergeet nich, ok disse Datei op dien Server hoochtoladen.
+
+Nadem du de Datein utpackt hest, musst du de Extension in de <tt>LocalSettings.php</tt> registreren. In de Doku för de Extension schull dor wat to stahn.
+
+Wenn du Fragen to dit Extensions-Verdeel-System hest, gah man na de Sied [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'En annere Extension kriegen.',
 );
 

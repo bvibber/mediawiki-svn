@@ -2366,6 +2366,13 @@ $messages['nds'] = array(
 	'right-hiderevision' => 'Versionen ok för Administraters versteken',
 	'hiderevision-prompt' => 'Versionsnummer, de wegdaan warrn schall:',
 	'hiderevision-continue' => 'Wieder',
+	'hiderevision-text' => "Dit schull '''blot''' in disse Fäll bruukt warrn:
+* Persönliche Informatschonen
+*: ''Adressen, Telefonnummern, Sozialversekerungsnummern etc.''
+
+'''Missbruuk sorgt dor för, dat den Bruker de Rechten afgeven mutt.'''
+
+Rutnahmen Daten sünd över de Websteed för keeneen mehr to sehn, aver allens warrt in de Logböker optekent un kann vun en Datenbank-Administrater per Hand wedderhaalt warrn, wenn doch mal en Fehler passeert.",
 	'hiderevision-reason' => 'Grund (warrt nich sichtbor in’t Logbook opnahmen):',
 	'hiderevision-submit' => 'Disse Daten duurhaft versteken',
 	'hiderevision-tab' => 'Version versteken',
@@ -2378,12 +2385,17 @@ $messages['nds'] = array(
 	'hiderevision-error-current' => 'De lest Ännern vun en Sied kann nich wegsmeten warrn. Dreih de Ännern eerst trüch.',
 	'hiderevision-error-delete' => 'In’t Archiv schuven güng nich. Is de Sied wegsmeten worrn?',
 	'hiderevision-archive-status' => 'Wegdaan Version vun $1: $2',
+	'oversight-nodiff' => 'Dor is keen Versionsvergliek mööglich, dat gifft opstunns keen ehrdere Version vun disse Sied. Dor kann dat an liggen:
+*De Sied is wegsmeten worrn
+*De versteken Version weer de eerste Version',
 	'oversight-log-hiderev' => 'en Ännern vun $1 rutnahmen',
 	'oversight' => 'Oversight',
 	'oversight-view' => 'Details',
 	'oversight-difference' => '(Ünnerscheed to de vörige nablevene Version)',
 	'oversight-prev' => 'Leste vörige Version',
 	'oversight-hidden' => 'Versteken Version',
+	'oversight-header' => 'Ünnen steit en List mit de toletzt duurhaftig versteken Versionen.
+Disse Daten annere togänglich to maken, kann dor för sorgen, dat di de Oversight-Rechten wegnahmen warrt.',
 	'oversight-legend' => 'Logbook för versteken Versionen dörsöken',
 	'oversight-oversighter' => 'Oversighter:',
 	'oversight-offender' => 'Öveldader:',

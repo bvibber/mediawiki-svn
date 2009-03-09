@@ -1634,6 +1634,13 @@ Du chasch Dyy eige Stimm zue dr Leschig [{{fullurl:{{FULLPAGENAME}}|action=delvo
 	'deletequeue-case-needs-review' => 'Dää Fall bruucht e [[$1|Priefig]].',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'deletequeue-list-search' => 'Huli',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -2159,6 +2166,9 @@ $messages['ksh'] = array(
 	'deletequeue-action-queued' => 'Fottschmiiße',
 	'deletequeue-action' => 'Fottschmiiße vürjeschlare',
 	'deletequeue-action-title' => '„$1“ för fottzeschmiiße vörschlare',
+	'deletequeue-action-text-queued' => 'Do kanns för hee der Förschlaach zem Fottschmiiße op hee di Sigge jonn, un domet:
+*de [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} aktoälle Zohshtemmunge un Afflehnunge beloore],
+*udder [{{fullurl:{{FULLPAGENAME}}|action=delvote}} donn sellver zohshtemme udder afflehne].',
 	'deletequeue-permissions-noedit' => 'Do moß en Sigg ändere dörve, öm beshtemme ze dörve, of se fottjeschmeße weed udder nit.',
 	'deletequeue-generic-reasons' => '* jrundläje Jründ
    ** Vandaleere
@@ -2167,7 +2177,17 @@ $messages['ksh'] = array(
    ** Paß nit ent Projäk',
 	'deletequeue-nom-alreadyqueued' => 'Die Sigg es ald en dä Fotschmiiß-Leß',
 	'deletequeue-speedy-title' => '„$1“ för flöck fottzeschmiiße vörschlaare',
+	'deletequeue-speedy-text' => 'Övver hee dat Fommulaa kanns De de Sigg „$1“ för flöck fottzeschmiiße förmerke.
+
+Ene Wiki-Köbes weed dä Förschlaach pröfe, un wann dä ene jode Jrond hät,
+weed di Sigg fottjeschmeße. Do moß ene Jrund för et Fottschmiiße uß
+unge dä Leß ußsööke, un alles sönß aanjevve, wat weschtesch sin künnt.',
 	'deletequeue-prod-title' => 'Vörschlaach zem Fottschmiiße: „$1“',
+	'deletequeue-prod-text' => 'Övver hee dat Fommulaa kanns De de Sigg „$1“ för fottzeschmiiße förschlonn.
+
+Wann bes en fönnef Dääsch keine jet jääje et Fottschmiiße förjebraat hät,
+weed ene Wiki-Köbes dä Förschlaach pröfe, un wann ene jode Jrond do es,
+di Sigg fottschmiiße.',
 	'deletequeue-delnom-reason' => 'Dä Jrund för dä Vörschlach:',
 	'deletequeue-delnom-otherreason' => 'Ene andere Jrund',
 	'deletequeue-delnom-extra' => 'Zosätzlijje Enfommazjuhne:',
@@ -2188,13 +2208,20 @@ $messages['ksh'] = array(
 	'deletequeue-queue-deletediscuss' => 'Klaaf övver et Fottschmiiße',
 	'deletequeue-page-speedy' => "Mer han ene Vörschlaach, di Sigg hee flöck fottzeschmiiße.
 Als der Jrond doför es ''$1'' aanjejovve.",
+	'deletequeue-page-prod' => "Mer han ene Vörschlaach, di Sigg hee fottzeschmiiße.
+Als der Jrond doför wood ''$1'' aanjejovve.
+Wann bes $2 kein Jäjeshtemme opjedouch sin, dann dom_mer di Sigg fottschmiiße.
+Wann De meijns, kanns De [{{fullurl:{{FULLPAGENAME}}|action=delvote}} jääje et Fottschmiiße shtemme].",
 	'deletequeue-page-deletediscuss' => "Mer han ene Vörschlaach, di Sigg hee fottzeschmiiße.
 Als der Jrond doför wood ''$1'' aanjejovve.
 Et jitt ävver Jäjeshtemme.
 Der Klaaf do drövver op [[$3]] jeiht bes $2.",
+	'deletequeue-notqueued' => 'Do häß_Der en Sigg ußjesooht, di jaa nit en de Leß för fottzeschmiiße es.',
 	'deletequeue-review-action' => 'Wat ze donn es:',
 	'deletequeue-review-delete' => 'Die Sigg fottschmiiße.',
 	'deletequeue-review-change' => 'De Sigg fottschmiiße, ävver met enem andere Jrond.',
+	'deletequeue-review-requeue' => 'Donn hee di Sigg en de Leß:',
+	'deletequeue-review-dequeue' => 'Donn nix sönß, ävver donn di Sigg uß dä Leß för et Fottschmiiße eruß nämme.',
 	'deletequeue-review-reason' => 'Kommäntaare:',
 	'deletequeue-review-newreason' => 'Neue Jrund:',
 	'deletequeue-review-newextra' => 'Zosätzlijje Enfommazjuhne:',
@@ -2203,16 +2230,34 @@ Der Klaaf do drövver op [[$3]] jeiht bes $2.",
 	'deletequeue-actiondisabled-involved' => 'De Axjuhn hee noh is för Desch nit zohjelohße, Do häs jo ald als $1 beij dämm Vörschlaach för et Fottschmiiße metjemaat:',
 	'deletequeue-actiondisabled-notexpired' => 'De Axjuhn hee noh is jez nit zohjelohße, dä Vörschlaach för et Fottschmiiße es noch jaa nit affjeloufe:',
 	'deletequeue-review-badaction' => 'Do häs en onjöltijje Axjuhn aanjejovve',
+	'deletequeue-review-actiondenied' => 'Do häs en Axjuhn jewullt, die för hee die Sigg affjeschalldt es.',
+	'deletequeue-review-objections' => "'''Opjepaß''': Di Sigg hee fottzeschmiiße, hät
+[{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} Jäjeshtemme] krääje.
+Beß sescher, dat De Der di dorsch der Kopp jon löhß, iih dat de di Sigg wörklesch fott schmiiße deihß.",
 	'deletequeue-reviewspeedy-tab' => 'Et flöcke Fottschmiiße pröfe',
 	'deletequeue-reviewspeedy-title' => '„$1“ flöck Fottschmiiße pröfe',
+	'deletequeue-reviewspeedy-text' => 'Do kanns met dämm Fommullaa hee dä Vörschlaach prööve,
+di Sigg „$1“ flöck fottzeschmiiße.
+Paß op: Beß sescher, dat di Sigg moh unser_Rääjelle
+och wörklesch flöck fottjeschmeße wäde kann.',
+	'deletequeue-reviewprod-tab' => 'Vörjeschlaare Fottschmiiße pröve',
+	'deletequeue-reviewprod-title' => 'Vörjeschlaare Fottschmiiße pröve för „$1“',
+	'deletequeue-reviewprod-text' => 'Do kanns met dämm Fommullaa hee dä Förschlaach, di Sigg „$1“ fottzeschmiiße, pröfe. Dä hät kei Jäjeshtemme kaßeet.',
 	'deletequeue-reviewdeletediscuss-tab' => 'Et Fottschmiiße pröfe',
 	'deletequeue-reviewdeletediscuss-title' => 'Dä Klaaf övver et Fottschmiiße fun „$1“ pröfe',
-	'deletequeue-deletediscuss-discussionpage' => 'Dat hee es de Klaafsigg offer et Fottschmiiße fun [[$1]].
+	'deletequeue-reviewdeletediscuss-text' => 'Do kanns met dämm Fommullaa hee dä Klaaf drövver, di Sigg „$1“ fottzeschmiiße, pröfe.
+
+En [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Leß met Shtemme doför un däjääje]
+es för Desch do, un dä Klaaf sellver fengkß de op  [[$2]].
+Paß op: Beß sescher, dat och wörklesch noh unser_Rääjelle äntscheidtß.',
+	'deletequeue-review-success' => 'Do häs dat Fottschmiiße jeprööf, för he di Sigg.',
+	'deletequeue-review-success-title' => 'De Prööverei es fäädesch',
+	'deletequeue-deletediscuss-discussionpage' => 'Dat hee es de Klaafsigg övver et Fottschmiiße fun [[$1]].
 Mer han jez jraad {{PLURAL:$2|eine|$2|keine}} Metmaacher,
 die do för sin, un {{PLURAL:$3|eine|$3|keine}} Metmaacher,
 die do jäje sin.
 Do kanns [{{fullurl:$1|action=delvote}} zoshtemme odder afflehne], dat
-die Sigg fottjeschmeße wedd, un Der de
+die Sigg fottjeschmeße weed, un Der de
 [{{fullurl:$1|action=delviewvotes}} Zostemmunge un Afflehnunge aankike].',
 	'deletequeue-discusscreate-summary' => 'Dä Klaaf övver et Fottschmiiße vun [[$1]] weed opjemaat.',
 	'deletequeue-discusscreate-text' => 'Dat Fottschmiiße wood vörjeschlare wäje: $2',
@@ -2221,12 +2266,21 @@ die Sigg fottjeschmeße wedd, un Der de
 	'deletequeue-role-vote-object' => 'Wä jäje et Fottschmiiße es',
 	'deletequeue-vote-tab' => 'Övver et Fottschmiiße affshtemme',
 	'deletequeue-vote-title' => 'Däm Fottschmiiße vun „$1“ zoshtemme odder et aflähne',
+	'deletequeue-vote-text' => "Do kanns met dämm Fommullaa hee dä Vörschlaach, di Sigg „$1“ fottzeschmiiße,
+zohshtemme udde desch dojääje ensäzze. Domet deihß De all Ding fröjere
+Zohshtemmunge udder Afflehnunge widder ophävve. Wann De meijns, kanns De de
+[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Shtemme doför un däjääje aanloore].
+Als der Jrond för de Sigg fottzeschmiiße wood ''$2'' aanjejovve.",
 	'deletequeue-vote-legend' => 'Däm Fottschmiiße zoshtemme odder et aflähne',
 	'deletequeue-vote-action' => 'Emfällung:',
 	'deletequeue-vote-endorse' => 'Zoshtimme zom Fottschmiiße.',
 	'deletequeue-vote-object' => 'Jäje et Fottschmiiße.',
 	'deletequeue-vote-reason' => 'Kommäntaare:',
 	'deletequeue-vote-submit' => 'Loß Jonn!',
+	'deletequeue-vote-success-endorse' => 'Dö häs doför jeshtimmp, di Sigg hee fottzeschmiiße.',
+	'deletequeue-vote-success-object' => 'Dö häs dojääje jeshtimmp, di Sigg hee fottzeschmiiße.',
+	'deletequeue-vote-requeued' => 'Dö häs dojääje jeshtimmp, di Sigg hee fottzeschmiiße.
+Dröm es die Sigg jetz en de Leß „$1“ jekumme.',
 	'deletequeue-showvotes' => 'Zohshtemmung un Aflehnunge doför un dojääje, „$1“ fottzeschmiiße',
 	'deletequeue-showvotes-text' => "Unge sen de Zoshtemmunge un Aflehnunge för et Fottschmiiße vun dä Sigg „'''$1'''“ opjeleß.
 Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odder Aflehnung zom Fottschmiiße endraare].",

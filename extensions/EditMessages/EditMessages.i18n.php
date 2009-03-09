@@ -435,6 +435,13 @@ $messages['hak'] = array(
 	'editmsg-search' => 'Chhìm-cháu',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'editmsg-search' => 'Huli',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author StuB

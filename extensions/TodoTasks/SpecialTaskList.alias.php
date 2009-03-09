@@ -45,6 +45,12 @@ $aliases['fi'] = array(
 	'TaskListByProject' => array( 'Projektin tehtävälista' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'TaskList' => array( 'Liste des tâches', 'ListeTâches' ),
+	'TaskListByProject' => array( 'Liste des tâches par projet', 'ListeTâchesParProjet' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'TaskList' => array( 'Ufgabelischt' ),

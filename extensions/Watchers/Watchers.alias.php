@@ -48,6 +48,11 @@ $aliases['fa'] = array(
 	'Watchers' => array( 'پی‌گیری‌کنندگان' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'Watchers' => array( 'Suiveurs', 'Suiveur' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Watchers' => array( 'Vixilantes' ),

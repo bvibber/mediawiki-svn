@@ -1109,13 +1109,23 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'authorprotect' => 'Sayfayı yazar-olmayanlardan koru',
+	'authorprotect-desc' => 'Bir sayfanın yazarının, sayfayı diğer kullanıcılardan korumasına izin verir',
+	'authorprotect-notauthor' => 'Bu sayfanın yazarı değilsiniz',
 	'authorprotect-confirm' => 'Koruma seviyesini değiştir',
+	'authorprotect-edit' => 'Yazarlara değiştirmeyi kısıtla',
+	'authorprotect-move' => 'Yazarlara taşımayı kısıtla',
+	'authorprotect-expiry' => 'Sona erme zamanı',
 	'authorprotect-reason' => 'Neden',
+	'authorprotect-intro' => 'Bu sayfayı yazar-olmayanlardan kilitlemek için bu formu kullanın',
 	'authorprotect-success' => 'Koruma başarılı!',
 	'authorprotect-failure' => 'Koruma başarısız',
+	'protect-level-author' => 'Yazar-olmayanlardan koru',
+	'restriction-level-author' => 'Yazar-korumalı',
 );
 
 /** Ukrainian (Українська)

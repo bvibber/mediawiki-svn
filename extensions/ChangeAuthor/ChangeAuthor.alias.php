@@ -49,7 +49,7 @@ $aliases['dsb'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'ChangeAuthor' => array( 'Changer auteur', 'ChangerAuteur' ),
+	'ChangeAuthor' => array( "Modifier l'auteur", 'ModifierAuteur', 'Changer auteur', 'ChangerAuteur' ),
 );
 
 /** Galician (Galego) */

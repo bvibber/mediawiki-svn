@@ -321,6 +321,7 @@ Iste message es pro notificar te que, le $3, le usator $4 $5.',
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(

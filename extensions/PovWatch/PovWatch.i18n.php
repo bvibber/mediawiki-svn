@@ -1208,11 +1208,16 @@ $messages['nds'] = array(
 	'povwatch_unsubscribed' => 'Du büst nu vun PovWatch afmellt',
 	'povwatch_invalid_title' => 'De angeven Titel weer ungüllig',
 	'povwatch_pushed' => '[[$1]] is to de Oppasslist vun {{PLURAL:$2|een Bruker|$2 Brukers}} toföögt worrn.',
+	'povwatch_intro' => 'PovWatch is en Deenst, de Sieden, de en Oppasser bruukt, op de Oppasslist vun anmellt Administraters totofögen.
+
+En Logbook vun de över PovWatch toföögt Sieden steit ünner [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'En [[Special:PovWatch/subscribers|List vun de anmellt Brukers]] is verföögbor.',
 	'povwatch_subscriber_list_intro' => '<strong>List vun anmellt Brukers</strong>',
 	'povwatch_not_allowed_subscribers' => 'Du dröffst de PovWatch-Brukerlist nich ankieken.',
 	'povwatch_unknown_subpage' => 'Unbekannte Ünnersied.',
 	'povwatch_push' => 'Tofögen',
+	'povwatch_push_intro' => 'Bruuk dit Formular, dat du Sieden to de Oppasslistlist vun anmellt Brukers toföögst.
+Wees vörsichtig bi’t Schrieven vun de Siedennaams. Ok Sieden, de dat gornich gifft, köönt toföögt warrn un dat geit nich wedder trüchtodreihn, wenn du de Sieden eerst toföögt hest.',
 	'povwatch_title' => 'Titel:',
 	'povwatch_comment' => 'Logbook-Kommentar:',
 	'povwatch_no_log' => 'Gifft keen Logbookindrääg.',

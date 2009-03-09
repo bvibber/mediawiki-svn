@@ -133,6 +133,16 @@ $messages['arz'] = array(
 	'right-refreshspecial' => 'إنعاش الصفحات الخاصة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'refreshspecial' => 'Абнавіць спэцыяльныя старонкі',
+	'refreshspecial-desc' => 'Дазваляе [[Special:RefreshSpecial|ручное абнаўленьне]] спэцыяльных старонак',
+	'refreshspecial-title' => 'Абнаўленьне спэцыяльныя старонкі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

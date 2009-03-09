@@ -45,7 +45,7 @@ $aliases['dsb'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'EditUser' => array( 'EditerUtilisateur', 'ÉditerUtilisateur', 'Éditer l’utilisateur' ),
+	'EditUser' => array( 'Modifier l’utilisateur', 'ModifierUtilisateur', 'EditerUtilisateur', 'ÉditerUtilisateur', 'Éditer l’utilisateur' ),
 );
 
 /** Galician (Galego) */

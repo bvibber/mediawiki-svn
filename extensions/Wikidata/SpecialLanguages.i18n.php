@@ -1371,6 +1371,7 @@ $wdMessages['bg'] = array(
 	'langman_addlang' => 'Добавяне на език',
 	'datasearch' => 'Уикиданни: Търсене на данни',
 	'datasearch_language' => 'Език:',
+	'datasearch_showing_only' => 'Показване на максимум $1 {{PLURAL:$1|съвпадение|съвпадения}}.',
 	'ow_importtsv_nothing_added' => 'Нищо не беше добавено.',
 	'ow_exporttsv_languages' => 'Езици:',
 	'ow_save' => 'Съхранение',
@@ -1421,6 +1422,9 @@ $wdMessages['bg'] = array(
 	'ow_copy_unsuccessful' => '<h3>Копирането беше неуспешно</h3>
 Не беше извършено копиране.',
 	'ow_no_action_specified' => '<h3>Не е посочено действие</h3> Вероятно сте попаднали тук директно? Обикновено не се налага да идвате тук.',
+	'ow_needs_xlation_source_lang' => 'Изходен език:',
+	'ow_needs_xlation_dest_lang' => 'Целеви език:',
+	'ow_needs_xlation_no_dest_lang' => 'Необходимо е да се посочи целеви език.',
 	'ow_show' => 'Показване',
 	'ow_upload' => 'Качване',
 	'ow_create' => 'Създаване',
@@ -3820,7 +3824,7 @@ $wdMessages['hak'] = array(
  * @author Singularity
  */
 $wdMessages['haw'] = array(
-	'ow_history' => 'Mo‘olelo',
+	'ow_history' => 'Mōʻaukala',
 	'ow_dm_OK' => 'Hiki nō',
 	'ow_Language' => 'ʻŌlelo',
 );
@@ -7241,10 +7245,21 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Heldergeovane
+ * @author Jorge Morais
  */
 $wdMessages['pt-br'] = array(
 	'languages' => 'Wikidata: Gestor de línguas',
 	'langman_title' => 'Gestor de línguas',
+	'langman_header' => 'Digite abaixo o código da língua e o seu nome em inglês:',
+	'langman_req_fields' => 'Ambos o nome da língua e o código ISO 639-3 são necessários!',
+	'langman_adding' => 'Adicionando língua $1 com chave $2.',
+	'langman_langname' => 'Nome da língua:',
+	'langman_iso639-3' => 'Código ISO 639-3:',
+	'langman_iso639-2' => 'Código ISO 639-2:',
+	'langman_wikimedia' => 'Código Wikimedia:',
+	'langman_field_optional' => '(opcional)',
+	'langman_addlang' => 'Adicionar língua',
+	'importlangnames' => 'Wikidata: Importar nomes de línguas',
 	'datasearch' => 'Wikidata: Pesquisa de dados',
 	'ow_save' => 'Salvar',
 	'ow_history' => 'Histórico',
@@ -7316,8 +7331,8 @@ Por favor, verifique o endereço ''web''.",
 	'ow_SynonymsAndTranslations' => 'Sinônimos e traduções',
 	'ow_Source' => 'Fonte',
 	'ow_SourceIdentifier' => 'Identificador da fonte',
-	'ow_TextAttribute' => 'Propriedade',
 	'ow_Text' => 'Texto',
+	'ow_TextAttribute' => 'Propriedade',
 	'ow_TextAttributeValues' => 'Textos simples',
 	'ow_TranslatedTextAttribute' => 'Propriedade',
 	'ow_TranslatedText' => 'Texto traduzido',

@@ -282,7 +282,15 @@ $messages['es'] = array(
 	'imstatus_default' => 'Por defecto',
 	'imstatus_example' => 'Ejemplo',
 	'imstatus_possible_val' => 'Valores posibles',
+	'imstatus_max' => 'máximo',
+	'imstatus_min' => 'mínimo',
 	'imstatus_or' => 'o',
+	'imstatus_style' => 'estilo del indicador de status',
+	'imstatus_your_name' => 'tu $1 nombre',
+	'imstatus_gtalk_code' => 'tu código de discusión google',
+	'imstatus_gtalk_get_code' => 'tu código de discusión google: obtenlo en $1.',
+	'imstatus_gtalk_height' => 'altura de la tabla, en pixeles.',
+	'imstatus_gtalk_width' => 'ancho de la tabla, en pixeles.',
 );
 
 /** Basque (Euskara)

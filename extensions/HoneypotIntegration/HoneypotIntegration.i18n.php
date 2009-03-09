@@ -135,6 +135,14 @@ $messages['oc'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Nombre d'eveniments recents que l'adreça IP a fach, en acòrd amb lo projècte Honey Pot",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'honeypot-desc' => 'Zapewnia integrację pomiędzy [http://projecthoneypot.org/ Projektem Honey Pot] a witrynami MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Liczba ostatnich zdarzeń wywołanych adresem IP, zgodnie z Projektem Honey Pot',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

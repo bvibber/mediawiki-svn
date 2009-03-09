@@ -51,7 +51,7 @@ $aliases['fa'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'WatchSubpages' => array( 'VoirSousPages' ),
+	'WatchSubpages' => array( 'Voir les sous-pages', 'VoirSousPages' ),
 );
 
 /** Galician (Galego) */

@@ -50,7 +50,7 @@ $aliases['fi'] = array(
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'ImportUsers' => array( 'ImporterUtilisateur' ),
+	'ImportUsers' => array( 'Importer utilisateurs', 'ImporterUtilisateurs', 'ImporterUtilisateur' ),
 );
 
 /** Galician (Galego) */

@@ -560,6 +560,7 @@ $messages['ms'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'intersection-desc' => 'Wiest en List mit de aktuellsten Indrääg in en Kategorie, oder de Snittmengd vun mehr Kategorien',
 	'intersection_toomanycats' => 'Fehler: Toveel Kategorien!',
 	'intersection_toofewcats' => 'Fehler: To wenig Kategorien!',
 	'intersection_noresults' => 'Fehler: Nix funnen!',

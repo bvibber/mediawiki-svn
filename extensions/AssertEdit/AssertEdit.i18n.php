@@ -431,6 +431,15 @@ $messages['ms'] = array(
 	'assert_edit_message' => 'Penegasan yang dinyatakan ($1) gagal.',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'assert_edit_title' => 'Oplagen för dat Ännern kunnen nich sekerstellt warrn',
+	'assert_edit_desc' => 'Maakt dat Tofögen vun Oplagen för dat Ännern mööglich',
+	'assert_edit_message' => 'De angeven Oplaag ($1) för dat Ännern kunn nich sekerstellt warrn.',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

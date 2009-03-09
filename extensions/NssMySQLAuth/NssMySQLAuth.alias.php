@@ -37,6 +37,11 @@ $aliases['dsb'] = array(
 	'AccountManager' => array( 'Kontowy zastojnik' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'AccountManager' => array( 'Gestionnaire de compte', 'GestionnaireDeCompte' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'AccountManager' => array( 'Xestor de contas' ),
