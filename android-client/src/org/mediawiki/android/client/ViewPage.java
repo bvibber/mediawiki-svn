@@ -1,8 +1,8 @@
 package org.mediawiki.android.client;
 
+// Imports
 import org.mediawiki.android.WikiApi;
 import org.mediawiki.android.WikiPage;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+// Base class definition for viewing pages
 public class ViewPage extends Activity {
 	
 	protected static final int PAGELINKS = 2;
@@ -41,6 +42,7 @@ public class ViewPage extends Activity {
         view.setText( Html.fromHtml(html) );
     }
 
+    /** Accessor method for setting our page title. */
     private void makePageTitle() {
     	this.setTitle( this.getTitle() + " - " + this.pageTitle );
     }

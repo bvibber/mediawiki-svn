@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+// Entry point into MW client
 public class MainPage extends Activity {
 	
+	// Menu constants. We keep HOME public so other places can use it
 	public static final int HOME   = 1;
 	private static final int ABOUT  = 2;
 	private static final int CONFIG = 3;
@@ -34,8 +36,7 @@ public class MainPage extends Activity {
 			startActivity( i );
 		}
 	};
-	
-	
+		
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,8 +82,7 @@ public class MainPage extends Activity {
 	}
 	
 	/**
-	 * Simple helper function for making the "About" dialogue. Used
-	 * on every page, so we'll just keep it here.
+	 * Simple helper function for making the "About" dialogue.
 	 */
 	private void constructAboutDialogue() {
 		String msg = getString(R.string.app_name) + "\nVersion " + 

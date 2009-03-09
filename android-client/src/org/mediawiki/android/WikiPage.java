@@ -1,5 +1,6 @@
 package org.mediawiki.android;
 
+// Imports
 import java.util.ArrayList;
 import java.util.Hashtable;
 import org.json.JSONArray;
@@ -7,11 +8,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.mediawiki.android.WikiApi;
 
+// Class to handle the concept of a page in a Mediawiki install
 public class WikiPage {
 
+	// Have we loaded the page
 	private boolean __loaded = false;
-	private WikiApi __api;
 	
+	// Our private instance of the WikiApi
+	private WikiApi __api;
 	
 	// Aspects of the page
 	protected int __revId;
@@ -24,6 +28,10 @@ public class WikiPage {
 	protected ArrayList<String> __templates;
 	protected Hashtable<String,String> __interwikiLinks;
 	
+	/** 
+	 * Get the API
+	 * @return WikiApi
+	 */
 	public WikiApi getApi() {
 		return this.__api;
 	}
@@ -85,7 +93,8 @@ public class WikiPage {
 	}
 	
 	/**
-	 * Load a new page
+	 * Load a new page from the current API
+	 * @param String page Page title to load
 	 */
 	public void loadPage( String page ) {
 		if ( this.__pageName == page ) {
@@ -98,13 +107,17 @@ public class WikiPage {
 	
 	/**
 	 * Have we loaded the data on this page?
+	 * @return boolean
 	 */
 	protected boolean isLoaded() {
 		return this.__loaded;
 	}
 	
 	/**
-	 * 
+	 * Load the page data. Functions needing data should call this,
+	 * as it handles (potentially) reading data from cache instead
+	 * of making remote requests.
+	 * @return boolean
 	 */
 	protected boolean loadData() {
 		if ( this.isLoaded() ) {
@@ -119,11 +132,16 @@ public class WikiPage {
 		return this.__loaded;
 	}
 	
+	/**
+	 * Couldn't find it in the cache, so make some remote calls to get
+	 * the information
+	 * @return boolean
+	 * @throws JSONException
+	 */
 	protected boolean loadDataFromRemote() throws JSONException {
 		WikiApi api = this.getApi();
 		api.newAction( "parse" );
 		api.addParams( "prop", "revid|text|categories|externallinks|images|templates|links" );
-		// api.addParams( "prop", "langlinks" );
 		api.addParams( "page", this.__pageName );
 		if ( api.doRequest() ) {
 			JSONObject json = api.getJson().getJSONObject( "parse" );

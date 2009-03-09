@@ -15,14 +15,13 @@ FEATURES:
 * Makes request to API url entered, Returns some default information on page
   name provided.
 
-TODO:
+TODO (in no real order):
  1) i18n - check Google's progress in native Android. Possible workarounds?
- 2) Document everything
- 3) Make the cache work
- 4) Multiple wiki sources in prefs
- 5) User authentication
- 6) Make data available as a ContentProvider
- 7) Make page views actually attractive and usable (not just POC)
+ 2) Make the cache work
+ 3) Multiple wiki sources in prefs
+ 4) User authentication
+ 5) Make data available as a ContentProvider
+ 6) Make page views actually attractive and usable (not just POC)
 
 -- 
  This program is free software; you can redistribute it and/or modify

@@ -1,5 +1,4 @@
 package org.mediawiki.android;
-
 // Imports
 import java.io.IOException;
 import java.net.SocketException;
@@ -14,14 +13,19 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
- * Class definition. Pretty simple use to get a raw HTTP GET/POST
- * No caching, just a raw request.
+ * Pretty simple use to get a raw HTTP GET/POST. No caching, just a raw request
+ * Should remind MW devs of Http::get() and Http::post().
  */
 public class HttpRequest {
 
 	// Keep a single client 
 	private static HttpClient __client;
 	
+	/**
+	 * Http GET request
+	 * @param String url URL to request
+	 * @return String
+	 */
 	public static String get( String url ) {
 		URI uri = HttpRequest.makeUri( url );
 		if ( uri == null ) {
@@ -39,7 +43,12 @@ public class HttpRequest {
 		}
 		return responseBody;
 	}
-	
+
+	/**
+	 * Http POST request
+	 * @param String url URL to request
+	 * @return String
+	 */
 	public static String post( String url ) {
 		URI uri = HttpRequest.makeUri( url );
 		if ( uri == null ) {
@@ -61,6 +70,10 @@ public class HttpRequest {
 		return responseBody;
 	}
 	
+	/**
+	 * Get the static instance of the HTTP client we keep around
+	 * @return HttpClient
+	 */
 	private static HttpClient getClient() {
 		if ( HttpRequest.__client == null ) {
 			HttpRequest.__client = new DefaultHttpClient();
@@ -68,6 +81,11 @@ public class HttpRequest {
 		return HttpRequest.__client;
 	}
 	
+	/**
+	 * Friendly wrapper around making a URI object
+	 * @param String uri String URL to make into a URI object
+	 * @return URI
+	 */
 	private static URI makeUri( String uri ) {
 		try {
 			return new URI( uri );

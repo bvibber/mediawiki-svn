@@ -1,15 +1,16 @@
 package org.mediawiki.android.client;
 
+// Imports
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -17,8 +18,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.mediawiki.android.WikiApi;
 
+// Class definition for a search results page
 public class SearchPage extends ListActivity {
 
+	/**
+	 * Overriding the parent method. When the list item is clicked (in this
+	 * case, a search term), load up the ViewPage and let it show us the page
+	 * we've selected.
+	 */
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		String title = (String)l.getItemAtPosition( position );
@@ -35,11 +42,15 @@ public class SearchPage extends ListActivity {
         try {
 			this.fillData( getIntent().getExtras().getString( "searchTerm" ) );
 		} catch (JSONException e) {
-			Toast t = Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG );
-			t.show();
+			Log.e( "JSON Error in Search", e.getMessage() );
 		}
     }
     
+    /**
+     * Search for a term and fill ListActivity with the results
+     * @param String searchTerm The term to look for in the API
+     * @throws JSONException
+     */
 	private void fillData( String searchTerm ) throws JSONException {
         List<String> items = new ArrayList<String>();
         WikiApi api = WikiApi.getSingleton();
@@ -63,7 +74,7 @@ public class SearchPage extends ListActivity {
 	}
 
 	/**
-     * Setup our menus at the bottom
+     * Setup our menus at the bottom. Only linking to HOME here
      */
     @Override
 	public boolean onCreateOptionsMenu( Menu menu ) {
