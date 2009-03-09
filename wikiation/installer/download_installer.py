@@ -76,3 +76,6 @@ class Download_Installer(Installation_System):
 		pathname=os.path.join(destination_dir, installer_name)
 		shutil.rmtree(pathname,ignore_errors=True)
 
+
+	def get_svnbase(self):
+		return settings.extensionsdir

@@ -5,6 +5,20 @@
 #
 # Distributed under the terms of the MIT license.
 
+# Automated Installation tool for mediawiki and extensions.
+# primarily inteded to be run in test environments,
+# where you quickly (and automatically) want to set up
+# and tear down mediawiki instances several times a minute
+
+# Ways to use:
+# * Interactive mode CLI to pick up how the system works
+# * Call from bash scripts
+# * import the relevant installer(s) directly in python, and use from there
+
+# This file: 
+#* Main entry point for Interactive CLI mode, (call with no params)
+#* Main entry point for scriptable mode (call with relevant command as parameters) 
+
 import sys,os, os.path
 import readline
 import re
@@ -67,7 +81,9 @@ def command():
 	return True
 
 def do_command(all_args):
-	"""execute a command. Command is expected as a list (like we get from str.split(), or from sys.args). all_args[0] is expected to be the command name.
+	"""execute a command. Command is expected as a list
+	(like we get from str.split(), or from sys.args). 
+	all_args[0] is expected to be the command name.
 	"""
 
 	if all_args[0] in commands:
@@ -121,12 +137,16 @@ def default_revision(args):
 
 def main():
 	"""main function. start of execution when run from shell"""
+
+	# if we have command line params, parse them and exit
 	if len(sys.argv)>1:
 		args=sys.argv[1:]
 		do_command(args)
 		exit()
 		
+	#else we'll run our own interactive CLI
 
+	#readline
 	histfile=os.path.join(os.environ["HOME"], ".installerhist")
 	try:
 	    readline.read_history_file(histfile)
@@ -137,13 +157,14 @@ def main():
 	import atexit
 	atexit.register(readline.write_history_file, histfile)
 
-	intro()
 
+	intro()
 	# main loop.
 	while(command()):
 		pass
 
-# Global!
+
+# unused global...
 default_revision=None
 
 #constants
@@ -170,6 +191,7 @@ ls available : list items available"""
 
 
 # our internal "directory structure"
+#TODO: check... is this still used?
 internal_dirs=os.listdir(settings.installfiles)
 internal_dirs.extend(['mediawiki'])
 

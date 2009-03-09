@@ -3,6 +3,10 @@
 #
 # Distributed under the terms of the MIT license.
 
+# Back end code to deal with paths and to delegate 
+#tasks to relevant installation systems
+
+
 import settings_handler as settings
 import os, os.path, shutil
 import subprocess
@@ -19,6 +23,9 @@ from download_installer import Download_Installer
 class Parse_Exception(Exception):
 	pass
 
+class Listing_Exception(Exception):
+	pass
+
 def ls(args):
 	if len(args)==0:
 		print "Internal error: args list too short"
@@ -33,10 +40,18 @@ def ls(args):
 		print e.message
 		return
 
-	if ppath['ai']=='available':
-		output=ls_available(ppath)
-	elif ppath['ai']=='installed' or ppath['ai']==None: # XXX hardcoded default
-		output=ls_installed(ppath)
+	try:
+		if ppath['ai']=='available':
+			output=ls_available(ppath)
+		elif ppath['ai']=='revisions':
+			output=ls_revisions(ppath)
+		elif ppath['ai']=='tags':
+			output=ls_tags(ppath)
+		elif ppath['ai']=='installed' or ppath['ai']==None: # XXX hardcoded default
+			output=ls_installed(ppath)
+	except Listing_Exception,e:
+		print e.message
+		return
 	
 	if output==None:
 		return
@@ -60,6 +75,7 @@ def ls_installed(ppath):
 def ls_systems():
 	return [item+':' for item in systems.keys()]
 
+
 def ls_available_in_system(ppath):
 	system=get_system(ppath["system"])
 	if not system:
@@ -81,6 +97,21 @@ def ls_installed_in_system(ppath):
 		return 
 
 	return installed
+
+def ls_revisions(ppath):
+	if not ppath["system"]:
+		raise Listing_Exception("What system would you like me to list?")
+	
+	if not ppath["installer"]:
+		raise Listing_Exception("What installer would you like to know the available revisions for?")
+	
+	system=get_system(ppath["system"])
+	return system.get_revisions(ppath["installer"])
+
+
+def ls_tags(ppath):
+	print "To be implemented."
+
 
 
 def info(args):
@@ -234,7 +265,7 @@ def parse_path(path,defaults=None):
 	if single_case:
 		if single_case in systems.keys():
 			system=single_case
-		elif single_case in ["available","installed"]:
+		elif single_case in ["available","installed", "revisions","tags"]:
 			ai=single_case
 		elif single_case==path:
 			inpath=single_case
@@ -269,7 +300,7 @@ def parse_path(path,defaults=None):
 
 	# let's check to see if what we get is sane.
 
-	if ppath['ai'] not in ["available","installed",None]:
+	if ppath['ai'] not in ["available","installed","revisions","tags",None]:
 		raise Parse_Exception("By '"+ppath['ai']+"', did you mean available or did you mean installed?")
 	
 	if ppath['system']=="hailmary": # easter egg

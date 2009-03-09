@@ -48,6 +48,9 @@ class Extension_Installer(Installation_System):
 			raise Extension_Installer_Exception("no instance specified ... did you try doing   ...  in <instance> ?")
 		return Installation_System.is_installed(self, installer_name)
 
+	def get_svnbase(self):
+		return settings.extensionsdir
+
 	def exec_task(self,installer_name,task,env=None):
 		if env==None:
 			env={}
