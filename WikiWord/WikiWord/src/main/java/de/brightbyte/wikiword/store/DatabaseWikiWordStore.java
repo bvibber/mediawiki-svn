@@ -190,6 +190,10 @@ public class DatabaseWikiWordStore implements WikiWordStore {
 	protected Agenda getAgenda() throws PersistenceException {
 		return null;
 	}
+	
+	protected Agenda createAgenda() throws PersistenceException {
+		return null;
+	}
 
 	public <T>DataSet<T> executeChunkedQuery(String context, String name, String sql, String where, String rest, DatabaseTable chunkTable, String chunkField, int factor, DatabaseDataSet.Factory<T> factory) throws PersistenceException {
 		

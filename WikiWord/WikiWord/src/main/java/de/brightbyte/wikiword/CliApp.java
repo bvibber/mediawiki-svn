@@ -33,8 +33,8 @@ import de.brightbyte.wikiword.store.WikiWordStoreFactory;
  */
 public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 	
-	public static final String VERSION_INFO = "WikiWord by Daniel Kinzler, brightbyte.de, 2007-2008";
-	public static final String LICENSE_INFO = "Developed at the University of Leipzig. Free Software, GNU GPL";
+	public static final String VERSION_INFO = "WikiWord by Daniel Kinzler, brightbyte.de, 2007-2009";
+	public static final String LICENSE_INFO = "Originally created at the University of Leipzig,\n\tdevelopment supported by Wikimedia Deutschland.\n\tFree Software, GNU LGPL. See COPYING for details.";
 	
 	protected Arguments args;
 	
@@ -262,10 +262,13 @@ public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 		declareOptions();
 		
 		args.parse(argv);
-		applyArguments();
-		
-		if (args.isSet("h") || args.isSet("help")) {
-			args.printHelp(ConsoleIO.output); //XXX: stream?!
+
+		if (!applyArguments()) {
+			args.printHelp(ConsoleIO.output); 
+			exit(1);
+			return;
+		} else if (args.isSet("h") || args.isSet("help")) {
+			args.printHelp(ConsoleIO.output); 
 			exit(0);
 			return;
 		}
@@ -487,8 +490,8 @@ public abstract class CliApp<S extends WikiWordConceptStoreBase> {
 				"or as system properties");
 	}
 
-	protected void applyArguments() {
-		//noop
+	protected boolean applyArguments() {
+		return true;
 	}
 
 	public void setTweaks(TweakSet tweaks) {
