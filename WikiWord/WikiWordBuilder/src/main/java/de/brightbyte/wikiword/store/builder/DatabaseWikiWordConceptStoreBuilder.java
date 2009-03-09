@@ -373,8 +373,8 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 	protected int buildLangMatch() throws PersistenceException {
 		final String sql = "INSERT IGNORE INTO "+relationTable.getSQLName()+" (concept1, concept2, langmatch)" +
 				" SELECT LL.concept, LR.concept, 1 " +
-				" FROM "+langlinkTable.getSQLName()+" as LL " +
-				" JOIN "+langlinkTable.getSQLName()+" as LR ON LR.language = LL.language AND LR.target = LL.target ";
+				" FROM "+langlinkTable.getSQLName()+" as LL force index(concept_language_target) " +
+				" JOIN "+langlinkTable.getSQLName()+" as LR force index(language_target) ON LR.language = LL.language AND LR.target = LL.target ";
 		
 		final String where = " LL.concept != LR.concept ";
 		final String rest = " ON DUPLICATE KEY UPDATE langmatch = langmatch + VALUES(langmatch) ";
