@@ -14,13 +14,14 @@ class Installer_Exception (Exception):
 class Installation_System:
 	system_name=None
 	destination_dir=None
-	as_alias=None
 
 	def __init__(self,instance=None):
 		self.subsystemdir=os.path.join(settings.installfiles, self.system_name)
 		self.destination_dir=None
 		self.instance=None
 		self.as_alias=None
+		self.revision=None
+		self.tag=None
 		if instance:
 			self.set_instance(instance)
 
@@ -69,7 +70,8 @@ class Installation_System:
 		env["INSTALL_DIR"]=installdir
 		env["DESTINATION_DIR"]=self.destination_dir
 		env["NAME"]=installer_name
-		env["REVISION"]=""	#reserved for future expansion
+		env["REVISION"]=self.revision or ''
+		env["TAG"]=self.tag or ''
 
 		if isinstance(task,str):
 			task2=[task]

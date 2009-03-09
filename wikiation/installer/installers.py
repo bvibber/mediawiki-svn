@@ -100,6 +100,7 @@ def info(args):
 	system=get_system(ppath["system"])
 	system.get_info(ppath["installer"])
 	
+
 def install(args):
 	if len(args)<1:
 		print "install: Internal error: expected more arguments"
@@ -120,6 +121,10 @@ def install(args):
 		system.set_instance(ppath["in_installer"])
 	if ppath["as_alias"]:
 		system.as_alias=ppath["as_alias"]
+	if ppath["revision"]:
+		system.revision=ppath["revision"]
+	if ppath["tag"]:
+		system.tag=ppath["tag"]
 
 	try:
 		success=system.install(ppath["installer"])
@@ -163,11 +168,32 @@ def uninstall(args):
 		print e.message
 		return 
 
+
 def _ppath_defaults(ppath,defaults):
+	"""take a parse path, and fill in empty spots with
+	default values.
+	see: parse_path"""
 	for key in ppath.keys():
 		if key in defaults:
 			ppath[key]=ppath[key] or defaults[key]
 		
+
+def _ppath_find(l,keyword):
+	"""
+	 refactor of parse_path. Take l=inpath.split(),
+	 and see if the keyword exists in that list
+	 if exists, return the value following the keyword
+	 if not exists, nothing happens
+	 if keyword exists but no value is provided, throw exception
+	 see: parse_path"""
+	if keyword in l:
+		i=l.index(keyword)
+		try:
+			value=l[i+1]
+		except IndexError:
+			raise Parse_Exception("Syntax error. Nothing after '"+keyword+"'.")
+		
+		return value
 
 def parse_path(path,defaults=None):
 	ai=None	
@@ -175,6 +201,8 @@ def parse_path(path,defaults=None):
 	installer=None
 	in_installer=None
 	as_alias=None
+	revision=None
+	tag=None
 
 	#partial components
 	whence=None	# eg. 'available.mediawiki:'
@@ -182,18 +210,27 @@ def parse_path(path,defaults=None):
 	inpath=None	# eg. 'ImageMap in REL1_13_2"
 
 	if ":" in path:
+		# installed.extension: in foo
+		#|-----whence--------|-inpath-|
 		whence, inpath=path.split(':')
 	elif "." in path:
+		#installed.extension
 		whence=path
 	else:
+		# ? 
 		single_case=path
 
+	# left side (whence)  __________:
 	if whence:
 		if "." in whence:
+			# installed.extension    : ...
+			#|---ai----|-system--|
 			ai,system=whence.split('.')
 		else:
+			# ?    : ...
 			single_case=whence
-
+	
+	# Hmmm, not a well formed path. Perhaps we can still make heads or tails of it?
 	if single_case:
 		if single_case in systems.keys():
 			system=single_case
@@ -204,32 +241,26 @@ def parse_path(path,defaults=None):
 		else:
 			raise Parse_Exception("I'm not sure what to do with '"+single_case+"' in this context.")
 
+	# right side (inpath)  :_______________
 	if inpath:
 		l=inpath.split()
-		if l[0] not in ["in","as"]:
+		if l[0] not in ['in', 'as', 'revision', 'tag']:
 			installer=l[0]
 
-		if "in" in l:
-			i=l.index("in")
-			try:
-				in_installer=l[i+1]
-			except IndexError:
-				raise Parse_Exception("Syntax error. Nothing after 'in'.")
+		in_installer=_ppath_find(l,"in")
+		as_alias=_ppath_find(l,"as")
+		revision=_ppath_find(l,"revision")
+		tag=_ppath_find(l,'tag')	
 
-		if "as" in l:
-			i=l.index("as")
-			try:
-				as_alias=l[i+1]
-			except IndexError:
-				raise Parse_Exception("Syntax error. Nothing after 'as'.")
-	
 	# Ok, we have our basic return value now
 	ppath={
 		"ai":ai,	#available or installed
 		"system":system,
 		"installer":installer,
 		"in_installer":in_installer,
-		"as_alias":as_alias}
+		"as_alias":as_alias,
+		"revision":revision,
+		"tag":tag}
 	
 
 	# maybe we can assume some useful defaults (saves typing)
@@ -241,36 +272,23 @@ def parse_path(path,defaults=None):
 	if ppath['ai'] not in ["available","installed",None]:
 		raise Parse_Exception("By '"+ppath['ai']+"', did you mean available or did you mean installed?")
 	
-	if ppath['system']=="hailmary": #easter egg
-		ppath['system']='naive'
+	if ppath['system']=="hailmary": # easter egg
+		ppath['system']='naive' # the naive installer was originally pitched as a 
+					# "hail mary" installer, but that sounds a bit
+					# unprofessional, so the name was changed.
 
 	if ppath['system'] not in systems.keys() and not ppath['system']=="None":
 		system_names=", ".join(ls_systems())
 		raise Parse_Exception("Did you mean to specify any of "+system_names)
 	
 	# we assume that the "in" directive always applies to a mediawiki instance
+	# NOTE:possibly this snippet of code should be in mediawiki_installer instead
 	if ppath['in_installer']:
 		mediawiki=get_system('mediawiki')
 		if not mediawiki.is_installed(ppath['in_installer']):
 			raise Parse_Exception(ppath['in_installer']+' is not currently installed')
-	
-	# :-(
-	#if installer:
-	#	if not system:
-	#		system='mediawiki'	# XXX hardcoded default
-	#	mysystem=get_system(system)
-	#	
-	#	if in_installer:
-	#		system.set_instance(ppath["in_installer"])
-	#	
-	#	if system.is_installed(installer)
-	
-	# we can only check if the installer name itself is valid
-	# somewhat later, once we know what context we are in.
-	
-	return ppath
-	
 
+	return ppath
 
 
 
