@@ -69,8 +69,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	 * @param dbInfo database connection info, used to connect to the database
 	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
 	 */
-	public DatabaseGlobalConceptStoreBuilder(DatasetIdentifier set, DataSource dbInfo, TweakSet tweaks) throws SQLException {
-		this(new GlobalConceptStoreSchema(set, dbInfo, tweaks, true), tweaks);
+	public DatabaseGlobalConceptStoreBuilder(DatasetIdentifier set, DataSource dbInfo, TweakSet tweaks, Agenda agenda) throws SQLException {
+		this(new GlobalConceptStoreSchema(set, dbInfo, tweaks, true), tweaks, agenda);
 	}
 	
 	/**
@@ -82,8 +82,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	 * @param db a database connection
 	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
 	 */
-	public DatabaseGlobalConceptStoreBuilder(DatasetIdentifier set, Connection db, TweakSet tweaks) throws SQLException {
-		this(new GlobalConceptStoreSchema(set, db, tweaks, true), tweaks);
+	public DatabaseGlobalConceptStoreBuilder(DatasetIdentifier set, Connection db, TweakSet tweaks, Agenda agenda) throws SQLException {
+		this(new GlobalConceptStoreSchema(set, db, tweaks, true), tweaks, agenda);
 	}
 	
 	/**
@@ -96,8 +96,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
 	 * @throws SQLException 
 	 */
-	public DatabaseGlobalConceptStoreBuilder(GlobalConceptStoreSchema database, TweakSet tweaks) throws SQLException {
-		super(database, tweaks);
+	public DatabaseGlobalConceptStoreBuilder(GlobalConceptStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+		super(database, tweaks, agenda);
 		
 		this.tweaks = tweaks;
 		
@@ -853,8 +853,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	protected class DatabaseGlobalStatisticsStoreBuilder extends DatabaseStatisticsStoreBuilder {
 
-		protected DatabaseGlobalStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks) throws SQLException {
-			super(database, tweaks);
+		protected DatabaseGlobalStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+			super(database, tweaks, agenda);
 			// TODO Auto-generated constructor stub
 		}
 		
@@ -870,8 +870,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	
 	protected class DatabaseGlobalConceptInfoStoreBuilder extends DatabaseConceptInfoStoreBuilder<GlobalConcept> {
 		
-		protected DatabaseGlobalConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks) throws SQLException {
-			super(database, tweaks);
+		protected DatabaseGlobalConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+			super(database, tweaks, agenda);
 		}
 			
 		@Override
@@ -891,13 +891,13 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	@Override
 	protected DatabaseConceptInfoStoreBuilder<GlobalConcept> newConceptInfoStoreBuilder() throws SQLException {
 		ConceptInfoStoreSchema schema = new ConceptInfoStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), false, tweaks, false, false);
-		return new DatabaseGlobalConceptInfoStoreBuilder(schema, tweaks);
+		return new DatabaseGlobalConceptInfoStoreBuilder(schema, tweaks, getAgenda());
 	}
 
 	@Override
 	protected DatabaseStatisticsStoreBuilder newStatisticsStoreBuilder() throws SQLException {
 		StatisticsStoreSchema schema = new StatisticsStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), true, tweaks, false); 
-		return new DatabaseGlobalStatisticsStoreBuilder(schema, tweaks);
+		return new DatabaseGlobalStatisticsStoreBuilder(schema, tweaks, getAgenda());
 	}
 	
 	@Override

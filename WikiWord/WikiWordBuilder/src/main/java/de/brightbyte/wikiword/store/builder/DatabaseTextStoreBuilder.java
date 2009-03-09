@@ -49,10 +49,9 @@ public class DatabaseTextStoreBuilder extends DatabaseIncrementalStoreBuilder im
 	}
 	
 	protected DatabaseTextStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, TextStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
-		super(database, tweaks);
+		super(database, tweaks, agenda);
 		
 		localConceptDatabase = new LocalConceptStoreSchema(database.getCorpus(), database.getConnection(), tweaks, false);
-		this.agenda = agenda;
 		
 		//XXX: wen don't need inserters, really...
 		plainTextInserter = configureTable("plaintext", 32, 8*1024);

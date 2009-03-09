@@ -51,6 +51,34 @@ public abstract class AbstractImporter implements WikiWordImporter {
 		}
 	}
 	
+	protected static class MemoryTracker extends ProgressRateTracker {
+		protected long baseline = 0;
+		protected long used = 0;
+		
+		public MemoryTracker() {
+		}
+		
+		protected long getUsedMemory() {
+			return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory(); 
+		}
+		
+		protected void step() {
+			if (baseline<=0) baseline = getUsedMemory();
+		}
+		
+		protected void chunk() {
+			if (baseline<=0) baseline = getUsedMemory();
+			used = getUsedMemory();
+			super.progress(new Progress.Event(Progress.PROGRESS, null, "memory", Runtime.getRuntime().totalMemory()  - baseline, used - baseline, null));
+		}
+		
+		@Override
+		public String toString() {
+			//return MessageFormat.format("{0}: {1,number,0}KB ({2,number,0.0}KB/sec, currently {3,number,0.0}KB/sec)", "memory", position/1024, getAverageRate()/1024, getCurrentRate()/1024);
+			return MessageFormat.format("{0}: {1,number,0}KB", "memory", position/1024);
+		}
+	}
+	
 	private int progressInterval = 1000;
 	private int safepointInterval = 30 * 1000;
 	
@@ -59,6 +87,8 @@ public abstract class AbstractImporter implements WikiWordImporter {
 	
 	private Tracker pageTracker;
 	private Tracker bulkTracker;
+	private MemoryTracker memoryTracker;
+	
 	private int progressTicks = 0;
 	private int safepointTicks = 0;
 	private int safepointNumber = 0;
@@ -112,6 +142,7 @@ public abstract class AbstractImporter implements WikiWordImporter {
 	public void reset() {
 		pageTracker = new Tracker("pages");
 		bulkTracker = new Tracker("chars");
+		memoryTracker = new MemoryTracker();
 		progressTicks = 0;
 		safepointTicks = 0;
 	}
@@ -119,10 +150,19 @@ public abstract class AbstractImporter implements WikiWordImporter {
 	public void trackerChunk() {
 		pageTracker.chunk();
 		bulkTracker.chunk();
+		memoryTracker.chunk();
 		
 		out.info("--- "+new Date()+" ---");
 		out.info("- "+pageTracker);
 		out.info("- "+bulkTracker);
+		out.info("- "+memoryTracker);
+	}
+
+	public void memoryTrackerChunk() {
+		memoryTracker.chunk();
+		
+		out.info("--- "+new Date()+" ---");
+		out.info("- "+memoryTracker);
 	}
 	
 	/*
@@ -184,6 +224,7 @@ public abstract class AbstractImporter implements WikiWordImporter {
 				if (doit) {
 					pageTracker.step();
 					bulkTracker.step(text.length());
+					memoryTracker.step();
 					
 					int rcId = importPage(namespace, title, text, timestamp);
 					if (rcId>0) lastRcId = rcId;
@@ -342,6 +383,7 @@ public abstract class AbstractImporter implements WikiWordImporter {
 	
 	public void endTask(String context, String task) throws PersistenceException {
 		store.getAgenda().endTask(context, task);
+		memoryTrackerChunk();
 	}
 
 	public int getSkip() {

@@ -11,6 +11,7 @@ import java.util.Random;
 
 import javax.sql.DataSource;
 
+import de.brightbyte.application.Agenda;
 import de.brightbyte.data.PersistentIdManager;
 import de.brightbyte.data.cursor.CursorProcessor;
 import de.brightbyte.data.cursor.DataSet;
@@ -86,8 +87,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	 * @param dbInfo database connection info, used to connect to the database
 	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
 	 */
-	public DatabaseLocalConceptStoreBuilder(Corpus corpus, DataSource dbInfo, TweakSet tweaks) throws SQLException {
-		this(new LocalConceptStoreSchema(corpus, dbInfo, tweaks, true), tweaks);
+	public DatabaseLocalConceptStoreBuilder(Corpus corpus, DataSource dbInfo, TweakSet tweaks, Agenda agenda) throws SQLException {
+		this(new LocalConceptStoreSchema(corpus, dbInfo, tweaks, true), tweaks, agenda);
 	}
 	
 	/**
@@ -99,8 +100,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	 * @param db a database connection
 	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
 	 */
-	public DatabaseLocalConceptStoreBuilder(Corpus corpus, Connection db, TweakSet tweaks) throws SQLException {
-		this(new LocalConceptStoreSchema(corpus, db, tweaks, true), tweaks);
+	public DatabaseLocalConceptStoreBuilder(Corpus corpus, Connection db, TweakSet tweaks, Agenda agenda) throws SQLException {
+		this(new LocalConceptStoreSchema(corpus, db, tweaks, true), tweaks, agenda);
 	}
 	
 	/**
@@ -113,8 +114,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
 	 * @throws SQLException 
 	 */
-	public DatabaseLocalConceptStoreBuilder(LocalConceptStoreSchema database, TweakSet tweaks) throws SQLException {
-		super(database, tweaks);
+	public DatabaseLocalConceptStoreBuilder(LocalConceptStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+		super(database, tweaks, agenda);
 		
 		this.corpus = database.getCorpus();
 		this.tweaks = tweaks;
@@ -1150,8 +1151,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	protected class DatabaseLocalStatisticsStoreBuilder extends DatabaseStatisticsStoreBuilder {
 		protected EntityTable termTable;
 
-		protected DatabaseLocalStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks) throws SQLException {
-			super(database, tweaks);
+		protected DatabaseLocalStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+			super(database, tweaks, agenda);
 
 			Inserter termInserter = configureTable("term", 64, 1024);
 			termTable =   (EntityTable)termInserter.getTable();
@@ -1207,8 +1208,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 
 		protected EntityTable conceptDescriptionTable;
 
-		protected DatabaseLocalConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks) throws SQLException {
-			super(database, tweaks);
+		protected DatabaseLocalConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+			super(database, tweaks, agenda);
 			
 			Inserter conceptDescriptionInserter = configureTable("concept_description", 64, 1024);
 			conceptDescriptionTable = (EntityTable)conceptDescriptionInserter.getTable();
@@ -1267,13 +1268,13 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	@Override
 	protected DatabaseConceptInfoStoreBuilder<LocalConcept> newConceptInfoStoreBuilder() throws SQLException {
 		ConceptInfoStoreSchema schema = new ConceptInfoStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), true, tweaks, false, true);
-		return new DatabaseLocalConceptInfoStoreBuilder(schema, tweaks);
+		return new DatabaseLocalConceptInfoStoreBuilder(schema, tweaks, getAgenda());
 	}
 
 	@Override
 	protected DatabaseStatisticsStoreBuilder newStatisticsStoreBuilder() throws SQLException {
 		StatisticsStoreSchema schema = new LocalStatisticsStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), tweaks, false); 
-		return new DatabaseLocalStatisticsStoreBuilder(schema, tweaks);
+		return new DatabaseLocalStatisticsStoreBuilder(schema, tweaks, getAgenda());
 	}
 
 	@Override

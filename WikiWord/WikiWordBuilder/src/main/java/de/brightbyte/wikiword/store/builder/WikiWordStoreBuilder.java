@@ -27,6 +27,8 @@ public interface WikiWordStoreBuilder extends WikiWordStore {
 
 	//public abstract void deleteDataAfter(int rcId) throws PersistenceException;
 	
+	public abstract Agenda createAgenda() throws PersistenceException;
+	
 	public abstract Agenda getAgenda() throws PersistenceException;
 
 	public abstract void optimize() throws PersistenceException;

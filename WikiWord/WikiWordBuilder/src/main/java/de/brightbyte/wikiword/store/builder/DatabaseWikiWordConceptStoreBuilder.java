@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.brightbyte.application.Agenda;
 import de.brightbyte.data.IntList;
 import de.brightbyte.data.IntRelation;
 import de.brightbyte.data.cursor.DataSet;
@@ -57,8 +58,8 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 	 * @param tweaks a tweak set from which additional options can be taken (see description at the top).
 	 * @throws SQLException 
 	 */
-	public DatabaseWikiWordConceptStoreBuilder(WikiWordConceptStoreSchema database, TweakSet tweaks) throws SQLException {
-		super(database, tweaks);
+	public DatabaseWikiWordConceptStoreBuilder(WikiWordConceptStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+		super(database, tweaks, agenda);
 		
 		conceptInserter =  configureTable("concept", 256, 32);
 		broaderInserter =  configureTable("broader", 1024, 64);
@@ -463,8 +464,8 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		protected EntityTable statsTable;
 		protected EntityTable degreeTable;
 		
-		protected DatabaseStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks) throws SQLException {
-			super(database, tweaks);
+		protected DatabaseStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+			super(database, tweaks, agenda);
 			
 			//XXX: wen don't need inserters, really...
 			Inserter statsInserter = configureTable("stats", 64, 1024);
@@ -764,8 +765,8 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		
 		protected EntityTable conceptInfoTable;
 
-		protected DatabaseConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks) throws SQLException {
-			super(database, tweaks);
+		protected DatabaseConceptInfoStoreBuilder(ConceptInfoStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+			super(database, tweaks, agenda);
 			
 			Inserter conceptInfoInserter = configureTable("concept_info", 64, 1024);
 			conceptInfoTable = (EntityTable)conceptInfoInserter.getTable();

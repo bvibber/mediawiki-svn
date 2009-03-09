@@ -2,14 +2,15 @@ package de.brightbyte.wikiword.store.builder;
 
 import java.sql.SQLException;
 
+import de.brightbyte.application.Agenda;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.schema.WikiWordStoreSchema;
 
 public abstract class DatabaseIncrementalStoreBuilder extends DatabaseWikiWordStoreBuilder implements IncrementalStoreBuilder {
 
-	public DatabaseIncrementalStoreBuilder(WikiWordStoreSchema database, TweakSet tweaks) throws SQLException {
-		super(database, tweaks);
+	protected DatabaseIncrementalStoreBuilder(WikiWordStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
+		super(database, tweaks, agenda);
 	}
 
 	protected abstract void deleteDataFrom(int rcId, String op) throws PersistenceException;

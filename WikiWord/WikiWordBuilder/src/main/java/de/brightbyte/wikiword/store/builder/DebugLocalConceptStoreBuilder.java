@@ -68,6 +68,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			return null;
 		}
 
+		public Agenda createAgenda() throws PersistenceException {
+			return null;
+		}
+
 		public int getNumberOfWarnings() throws PersistenceException {
 			return 0;
 		}
@@ -162,6 +166,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			return null;
 		}
 
+		public Agenda createAgenda() throws PersistenceException {
+			return null;
+		}
+
 		public int getNumberOfWarnings() throws PersistenceException {
 			return 0;
 		}
@@ -252,6 +260,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			return agenda;
 		}
 
+		public Agenda createAgenda() throws PersistenceException {
+			return null;
+		}
+
 		public int getNumberOfWarnings() throws PersistenceException {
 			return 0;
 		}
@@ -333,6 +345,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 		public Agenda getAgenda() throws PersistenceException {
 			return agenda;
+		}
+
+		public Agenda createAgenda() throws PersistenceException {
+			return null;
 		}
 
 		public int getNumberOfWarnings() throws PersistenceException {
@@ -571,6 +587,10 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 
 	public Agenda getAgenda() {
 		return agenda;
+	}
+
+	public Agenda createAgenda() throws PersistenceException {
+		return null;
 	}
 
 	public void optimize() {

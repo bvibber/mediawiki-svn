@@ -28,7 +28,8 @@ public class DatabaseWikiWordStoreBuilder
 	extends DatabaseWikiWordStore 
 	implements WikiWordStoreBuilder {
 	
-	protected Agenda agenda;
+	private Agenda agenda;
+	
 	protected Map<String, Inserter> inserters = new HashMap<String, Inserter>();
 	
 	protected Inserter warningInserter;
@@ -42,8 +43,10 @@ public class DatabaseWikiWordStoreBuilder
 	protected boolean useEntityBuffer;
 	protected boolean useRelationBuffer;
 		
-	protected DatabaseWikiWordStoreBuilder(WikiWordStoreSchema database, TweakSet tweaks) throws SQLException {
+	protected DatabaseWikiWordStoreBuilder(WikiWordStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
 		super(database, tweaks);
+		
+		this.agenda = agenda;
 		
 		int bufferScale = database.getBufferScale();
 		
@@ -400,15 +403,21 @@ public class DatabaseWikiWordStoreBuilder
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#getAgenda()
 	 */
 	@Override
-	public Agenda getAgenda() throws PersistenceException {
-		if (agenda==null) {
-			try {
-				DatabaseAgendaPersistor log = new DatabaseAgendaPersistor(database.getTable("log")); 
-				agenda = new Agenda(log);
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
+	public Agenda getAgenda() {
+		return agenda;
+	}
+	
+	@Override
+	public Agenda createAgenda() throws PersistenceException {
+		if (agenda!=null) return agenda;
+
+		try {
+			DatabaseAgendaPersistor log = new DatabaseAgendaPersistor(database.getTable("log")); 
+			agenda = new Agenda(log);
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
 		}
+		
 		return agenda;
 	}
 

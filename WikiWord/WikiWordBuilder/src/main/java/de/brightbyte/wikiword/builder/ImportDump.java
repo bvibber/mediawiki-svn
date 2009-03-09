@@ -18,8 +18,9 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 	protected URL dumpFile;
 
 	@Override
-	protected void applyArguments() {
+	protected boolean applyArguments() {
 		String d = getTargetFileName();
+		if (d==null) return false;
 		
 		if (args.isSet("url")) {
 			try {
@@ -35,6 +36,8 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 				throw new RuntimeException("failed to generate local file url for `"+d+"`");
 			}
 		}
+		
+		return true;
 	}
 
 	@Override

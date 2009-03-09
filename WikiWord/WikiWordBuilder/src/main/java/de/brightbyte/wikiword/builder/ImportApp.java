@@ -44,7 +44,7 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 	@SuppressWarnings("unchecked")
 	@Override
 	protected WikiWordStoreFactory<S> createConceptStoreFactory() throws IOException, PersistenceException {
-		return new DatabaseConceptStoreBuilders.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, true, true);
+		return new DatabaseConceptStoreBuilders.Factory(getConfiguredDataSource(), getConfiguredDataset(), tweaks, null, true, true);
 	}
 
 	@Override
@@ -248,6 +248,16 @@ public abstract class ImportApp<S extends WikiWordConceptStoreBuilder<? extends 
 		}		
 	}
 
+	protected void createStores(WikiWordStoreFactory<? extends S> factory) throws IOException, PersistenceException {
+		super.createStores(factory);
+		
+		boolean noimport = args.isSet("noimport");
+
+		if (!noimport && useAgenda) {
+				agenda = conceptStore.createAgenda();
+		}
+	}
+	
 	@Override
 	protected void execute() throws Exception {
 		boolean noimport = args.isSet("noimport");

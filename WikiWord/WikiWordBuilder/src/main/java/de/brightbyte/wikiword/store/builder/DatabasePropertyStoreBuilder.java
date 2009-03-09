@@ -37,7 +37,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 	}
 	
 	protected DatabasePropertyStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, PropertyStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
-		super(database, tweaks);
+		super(database, tweaks, agenda);
 
 		//this.conceptStore = conceptStore;
 		
@@ -45,7 +45,6 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		this.propertyTable =  (RelationTable)propertyInserter.getTable();
 		
 		this.conceptStoreSchema = conceptStoreSchema;
-		this.agenda = agenda;
 	}	
 
 	@Override

@@ -55,8 +55,12 @@ public abstract class FauxStoreBuilder implements WikiWordStoreBuilder {
 		//noop
 	}
 
-	public Agenda getAgenda() throws PersistenceException {
+	public Agenda createAgenda() throws PersistenceException {
 		if (agenda==null) agenda = new Agenda(new Agenda.TransientPersistor());
+		return agenda;
+	}
+
+	public Agenda getAgenda() {
 		return agenda;
 	}
 
