@@ -26,7 +26,7 @@ public class BuildStatistics extends ImportApp<WikiWordConceptStoreBuilder<? ext
 		super.declareOptions();
 	}
 	
-	protected WikiWordConceptStoreBuilder<?> conceptStore;
+	//protected WikiWordConceptStoreBuilder<?> conceptStore;
 	
 	
 	@Override
