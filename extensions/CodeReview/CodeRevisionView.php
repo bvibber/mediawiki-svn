@@ -307,20 +307,22 @@ class CodeRevisionView extends CodeView {
 				$safePath = wfUrlEncode( $row->cp_path );
 				$imgDiffs .= 'Index: '.htmlspecialchars( $row->cp_path )."\n";
 				$imgDiffs .= '<table border="1px" style="background:white;"><tr>';
-				if( $row->cp_action != 'A' ) { // old
+				if( $row->cp_action !== 'A' ) { // old
 					// What was done to it?
 					$alt = $row->cp_action == 'D' ? 'code-rev-modified-d' : 'code-rev-modified-r';
 					$alt = wfMsgHtml($alt);
 					// Link to old image
-					$url = htmlspecialchars( "{$viewvc}{$safePath}?&revision={$this->mRev->getPrevious()}" );
+					$rev = $this->mRev->getPrevious();
+					$url = htmlspecialchars( "{$viewvc}{$safePath}?&pathrev=$rev&revision=$rev" );
 					$imgDiffs .= "<td><img src='$url' alt='$alt' title='$alt'/></td>";
 				}
-				if( $row->cp_action != 'D' ) { // new
+				if( $row->cp_action !== 'D' ) { // new
 					// What was done to it?
 					$alt = $row->cp_action == 'A' ? 'code-rev-modified-a' : 'code-rev-modified-m';
 					$alt = wfMsgHtml($alt);
 					// Link to new image
-					$url = htmlspecialchars( "{$viewvc}{$safePath}?&revision={$this->mRev->getId()}" );
+					$rev = $this->mRev->getId();
+					$url = htmlspecialchars( "{$viewvc}{$safePath}?&pathrev=$rev&revision=$rev" );
 					$imgDiffs .= "<td><img src='$url' alt='$alt' title='$alt'/></td>";
 				}
 				$imgDiffs .= "</tr></table>\n";
