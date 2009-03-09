@@ -227,7 +227,7 @@ if (!$error) {
 	.inputform { text-align: center; margin:1ex auto; padding:1ex; width:80%; border:1px solid #666666; background-color:#DDDDDD; }
 	.footer { font-size:80%; text-align: center; border-top: 1px solid #666666; }
 	.note { font-size:80%; }
-	.terselist, .terselist li { display: inline; }
+	.terselist, .terselist li { display: inline; margin:0; padding:0; }
 	.terselist li { display: inline; }
 	.terselist li:before { content:" - " }
 	.terselist li:first-child:before { content:"" }
