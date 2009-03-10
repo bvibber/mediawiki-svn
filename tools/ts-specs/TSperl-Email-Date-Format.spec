@@ -1,21 +1,20 @@
 %define _basedir /opt/TSperl
 %include Solaris.inc
 
-Name:		TSperl-Email-Simple-Creator
-Summary:	Email::Simple::Creator module for Perl
-Version:	1.424
-Source:		http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Simple-Creator-%{version}.tar.gz
+Name:		TSperl-Email-Date-Format
+Summary:	Email::Date::Format module for Perl
+Version:	1.002
+Source:		http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Date-Format-%{version}.tar.gz
 
 SUNW_BaseDir:	%{_basedir}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
 
 Requires: TSperl
-Requires: TSperl-Email-Date-Format
 BuildRequires: TSperl
 
 %prep
-%setup -q -n Email-Simple-Creator-%version
+%setup -q -n Email-Date-Format-%version
 
 %build
 
