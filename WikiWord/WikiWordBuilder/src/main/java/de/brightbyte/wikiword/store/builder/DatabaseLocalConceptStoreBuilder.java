@@ -11,6 +11,9 @@ import java.util.Random;
 
 import javax.sql.DataSource;
 
+import org.ardverk.collection.PatriciaTrie;
+import org.ardverk.collection.StringKeyAnalyzer;
+
 import de.brightbyte.application.Agenda;
 import de.brightbyte.data.PersistentIdManager;
 import de.brightbyte.data.cursor.CursorProcessor;
@@ -149,7 +152,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			File f = new File(dir+"/wikiword."+db+"."+pfx+".ids");
 			
 			int bsz = tweaks.getTweak("dbstore.idManager.bufferSize", 16*1024);
-			idManager = new PersistentIdManager(f, "UTF-8", bsz);
+			idManager = new PersistentIdManager(new PatriciaTrie<String, Integer>(new StringKeyAnalyzer()), f, "UTF-8", bsz);
 		}
 		
 		/*
