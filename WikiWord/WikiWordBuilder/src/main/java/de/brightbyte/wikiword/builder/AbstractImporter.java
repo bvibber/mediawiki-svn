@@ -75,7 +75,7 @@ public abstract class AbstractImporter implements WikiWordImporter {
 		@Override
 		public String toString() {
 			//return MessageFormat.format("{0}: {1,number,0}KB ({2,number,0.0}KB/sec, currently {3,number,0.0}KB/sec)", "memory", position/1024, getAverageRate()/1024, getCurrentRate()/1024);
-			return MessageFormat.format("{0}: {1,number,0}KB", "memory", position/1024);
+			return MessageFormat.format("{0}: {1,number,0}KB (free: {2,number,0}KB; used: {3,number,0}KB;)", "memory", position/1024, Runtime.getRuntime().freeMemory()/1024, used/1024);
 		}
 	}
 	
