@@ -152,6 +152,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			File f = new File(dir+"/wikiword."+db+"."+pfx+".ids");
 			
 			int bsz = tweaks.getTweak("dbstore.idManager.bufferSize", 16*1024);
+			
+			//FIXME: use factory to create map impl!
 			idManager = new PersistentIdManager(new PatriciaTrie<String, Integer>(new StringKeyAnalyzer()), f, "UTF-8", bsz);
 		}
 		
@@ -171,9 +173,9 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			//FIXME: should failon partial load
 			//XXX: could probably be skipped if continuing at a stage after dump reading
 			if (idManager!=null) {
-				log("loading persisted ID map...");
+				log("loading persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
 				idManager.load(); 
-				log("Max persisted ID: "+idManager.getMaxId());
+				log("Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
 			}
 		}
 		
@@ -196,7 +198,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	
 
 	protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
-		deleteDataFrom(rcId, op, definitionTable, "concept", aboutTable, "resource");
+		deleteDataFrom(rcId, op, definitionTable, "concept", aboutTable, "concept", "resource");
 		
 		deleteDataFrom(rcId, op, linkTable, "resource");
 		deleteDataFrom(rcId, op, langlinkTable, "resource");

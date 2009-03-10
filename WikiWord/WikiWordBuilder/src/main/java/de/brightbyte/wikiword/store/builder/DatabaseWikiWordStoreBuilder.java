@@ -243,17 +243,17 @@ public class DatabaseWikiWordStoreBuilder
 	*/
 
 	protected void deleteDataFrom(int rcId, String op, DatabaseTable rel, String field) throws PersistenceException {
-		deleteDataFrom(rcId, op, rel, field, null, null);
+		deleteDataFrom(rcId, op, rel, field, null, null, null);
 	}
 	
-	protected void deleteDataFrom(int rcId, String op, DatabaseTable rel, String field, DatabaseTable via, String viaField) throws PersistenceException {
+	protected void deleteDataFrom(int rcId, String op, DatabaseTable rel, String field, DatabaseTable via, String viaJoinField, String viaField) throws PersistenceException {
 		String sql;
 		
 		if (via!=null) {
 			sql = "DELETE FROM T";
 			sql += " USING "+rel.getSQLName()+" AS T ";
 			sql += " LEFT JOIN "+via.getSQLName()+" AS C";
-			sql += " ON T."+field+" = C.id";
+			sql += " ON T."+field+" = C."+viaJoinField+" ";
 			sql += " WHERE "+viaField+" "+op+" "+rcId;
 		}
 		else {
@@ -272,10 +272,10 @@ public class DatabaseWikiWordStoreBuilder
 		ReferenceField f = (ReferenceField)ref.getField(refField);
 		String field = f.getTargetField();
 		
-		sql = "DELETE FROM " + table.getSQLName() + " AS T ";
+		sql = "DELETE FROM " + table.getSQLName() + " ";
 		sql += " WHERE NOT EXISTS ( ";
 		sql += "   SELECT * FROM " + ref.getSQLName() + " AS R ";
-		sql += "       WHERE R." + refField + " = T." + field;
+		sql += "       WHERE R." + refField + " = "+ table.getSQLName() + "." + field;
 		sql += " )";
 		
 		long t = System.currentTimeMillis();
