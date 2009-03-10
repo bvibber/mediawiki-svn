@@ -25,6 +25,8 @@ public class Namespace {
     public static final int PROJECT_TALK = 5; 
     public static final int IMAGE = 6; 
     public static final int IMAGE_TALK = 7; 
+    public static final int FILE= 6; 
+    public static final int FILE_TALK = 7; 
     public static final int MEDIAWIKI = 8; 
     public static final int MEDIAWIKI_TALK = 9; 
     public static final int TEMPLATE = 10; 
@@ -119,7 +121,10 @@ public class Namespace {
 				if (nsp==NONE) throw new MissingResourceException("invalid namespace key: "+k, Namespace.class.getName(), n);
 				String v = p.getProperty(k);
 					
-				ns.addNamespace(nsp, v);
+				String[] vv = v.split("\\s*\\|\\s*");
+				for (String vn: vv) {
+					ns.addNamespace(nsp, vn);
+				}
 			}
 			
 			return ns;
@@ -163,7 +168,7 @@ public class Namespace {
 	 * localized namespace names and custom namespaces and aliases.
 	 */
 	private static int valueOf(String k) {
-		k = k.toUpperCase().trim();
+		k = k.toUpperCase().trim().replace(' ', '_');
 		
 		if (k.equals("NONE")) return NONE;
 		if (k.equals("MEDIA")) return MEDIA;
@@ -176,6 +181,8 @@ public class Namespace {
 		if (k.equals("PROJECT_TALK")) return PROJECT_TALK;
 		if (k.equals("IMAGE")) return IMAGE;
 		if (k.equals("IMAGE_TALK")) return IMAGE_TALK;
+		if (k.equals("FILE")) return FILE;
+		if (k.equals("FILE_TALK")) return FILE_TALK;
 		if (k.equals("MEDIAWIKI")) return MEDIAWIKI;
 		if (k.equals("MEDIAWIKI_TALK")) return MEDIAWIKI_TALK;
 		if (k.equals("TEMPLATE")) return TEMPLATE;
