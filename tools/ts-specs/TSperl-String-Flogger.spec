@@ -12,6 +12,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 
 Requires: TSperl
 Requires: TSperl-Sub-Exporter
+Requires: TSperl-JSON
 BuildRequires: TSperl
 
 %prep

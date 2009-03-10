@@ -1,22 +1,20 @@
 %define _basedir /opt/TSperl
 %include Solaris.inc
 
-Name:		TSperl-Email-Sender
-Summary:	Email::Sender module for Perl
-Version:	0.002
-Source:		http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Sender-%{version}.tar.gz
+Name:		TSperl-Mouse
+Summary:	Mouse module for Perl
+Version:	0.19
+Source:		http://search.cpan.org/CPAN/authors/id/S/SA/SARTAK/Mouse-%{version}.tar.gz
 
 SUNW_BaseDir:	%{_basedir}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
 
 Requires: TSperl
-Requires: TSperl-Mouse
-Requires: TSperl-Email-Abstract
 BuildRequires: TSperl
 
 %prep
-%setup -q -n Email-Sender-%version
+%setup -q -n Mouse-%version
 
 %build
 
