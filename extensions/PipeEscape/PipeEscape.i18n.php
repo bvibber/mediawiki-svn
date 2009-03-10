@@ -39,70 +39,20 @@ Do not translate link targets, or function names.',
  * @author Purodha
  */
 $messages['de'] = array(
-	'pipeescape-desc' => '!!FUZZY!!Parserfunktion <code>#!</code> ',
-);
-
-/** German (formal address) (Deutsch (Sie-Form))
- */
-$messages['de-formal'] = array(
-);
-
-/** Haitian (Kreyòl ayisyen)
- */
-$messages['ht'] = array(
-);
-
-/** Hungarian (Magyar)
- */
-$messages['hu'] = array(
-);
-
-/** Interlingua (Interlingua)
- */
-$messages['ia'] = array(
-);
-
-/** Ido (Ido)
- */
-$messages['io'] = array(
-);
-
-/** Icelandic (Íslenska)
- */
-$messages['is'] = array(
-);
-
-/** Italian (Italiano)
- */
-$messages['it'] = array(
+	'pipeescape-desc' => 'Parserfunktion <code>#!</code> versteckt Parameter-Trenner',
 );
 
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'pipeescape-desc' => '!!FUZZY!!Brengk de Paaserfunxjuhn <code>#!</code> en et Wiki, die der sangkraaschte Shtresh unmollesteet dorsch loht.',
+	'pipeescape-desc' => 'Brengk de Paaserfunxjuhn <code>#!</code> en et Wiki, die der sangkraaschte Shtresh unmollesteet dorsch loht.',
 );
 
 /** Latin (Latina)
  * @author purodha
  */
 $messages['la'] = array(
-	'pipeescape-desc' => '!!FUZZY!!Functio parseris nominae <code>#!</code> adita in vici, protegens litera | qui haec separator parametorum non interpretatur.',
-);
-
-/** Luxembourgish (Lëtzebuergesch)
- */
-$messages['lb'] = array(
-);
-
-/** Low German (Plattdüütsch)
- */
-$messages['nds'] = array(
-);
-
-/** Nedersaksisch (Nedersaksisch)
- */
-$messages['nds-nl'] = array(
+	'pipeescape-desc' => 'Functio parseris nominae <code>#!</code> adita in vici, protegens litera | qui haec separator parametorum non interpretatur.',
 );
 
