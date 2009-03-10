@@ -48,6 +48,7 @@ $messages['en'] = array(
 	'recordadmin-editlink' => 'edit',
 	'recordadmin-title' => '$1',
 	'recordadmin-created' => 'Created',
+	'recordadmin-modified' => 'Modified',
 	'recordadmin-actions' => 'Actions',
 	'recordadmin-needscontent' => 'Add content...',
 	'right-recordadmin' => 'Find and edit record pages',

@@ -258,7 +258,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 		$dbr->freeResult( $res );
 
-		# Add the creation date column to the records
+		# Add the creation and modified date columns to the records
 		foreach ( $records as $i => $r ) {
 			$t = $r[0];
 			$id = $t->getArticleID();
@@ -271,6 +271,14 @@ class SpecialRecordAdmin extends SpecialPage {
 				array( 'ORDER BY' => 'rev_timestamp' )
 			);
 			$records[$i]['created'] = $row->rev_timestamp;
+			$row = $dbr->selectRow(
+				$tbl,
+				'rev_timestamp',
+				"rev_page = $id",
+				__METHOD__,
+				array( 'ORDER BY' => 'rev_timestamp DESC' )
+			);
+			$records[$i]['modified'] = $row->rev_timestamp;
 		}
 
 		# Sort the records according to "orderby" parameter
@@ -308,9 +316,10 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Table header
 		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
 		$th = array(
-			'title'   => "<th class='col0'>" . wfMsg( 'recordadmin-title', $type ) . "$br</th>",
-			'actions' => "<th class='col1'>" . wfMsg( 'recordadmin-actions' ) . "$br</th>",
-			'created' => "<th class='col2'>" . wfMsg( 'recordadmin-created' ) . "$br</th>"
+			'title'    => "<th class='col0'>" . wfMsg( 'recordadmin-title', $type ) . "$br</th>",
+			'actions'  => "<th class='col1'>" . wfMsg( 'recordadmin-actions' ) . "$br</th>",
+			'created'  => "<th class='col2'>" . wfMsg( 'recordadmin-created' ) . "$br</th>",
+			'modified' => "<th class='col3'>" . wfMsg( 'recordadmin-modified' ) . "$br</th>"
 		);
 		foreach ( array_keys( $this->types ) as $col ) {
 			$class = 'col' . preg_replace( '|\W|', '-', $col );
@@ -321,17 +330,19 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		$stripe = '';
 		foreach ( $records as $r ) {
-			$ts  = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $r['created'] );
+			$tsc  = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $r['created'] );
+			$tsm  = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $r['modified'] );
 			$t   = $r[0];
 			$u   = $t->getLocalURL();
 			$col = $r['title'];
 			$stripe = $stripe ? '' : ' class="stripe"';
 			$table .= "<tr$stripe>";
 			$row = array(
-				'title'   => "<td class='col0'><a href='$u'>$col</a></td>",
-				'actions' => "<td class='col1'>(<a href='$u'>" . wfMsg( 'recordadmin-viewlink' ) . "</a>)" .
+				'title'    => "<td class='col0'><a href='$u'>$col</a></td>",
+				'actions'  => "<td class='col1'>(<a href='$u'>" . wfMsg( 'recordadmin-viewlink' ) . "</a>)" .
 				             "(<a href='" . $special->getLocalURL( "wpType=$type&wpRecord=$col" ) . "'>" . wfMsg( 'recordadmin-editlink' ) . "</a>)</td>",
-				'created' => "<td class='col2'>$ts</td>\n"
+				'created'  => "<td class='col2'>$tsc</td>\n",
+				'modified' => "<td class='col3'>$tsm</td>\n",
 			);
 			foreach ( array_keys( $this->types ) as $col ) {
 				$v = isset( $r[$col] ) ? $parser->parse( $r[$col], $special, $options, true, true )->getText() : '&nbsp;';
