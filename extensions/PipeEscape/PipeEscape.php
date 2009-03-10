@@ -8,7 +8,7 @@
  *
  * @author David M. Sledge
  * @modifier Purodha Blissenbach
- * @copyright Copyright © 2008 David M. Sledge
+ * @copyright Copyright Â© 2008 David M. Sledge
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0
  *     or later
  * @version 0.1.0
@@ -40,7 +40,6 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 
 $dir = dirname(__FILE__) . DIRECTORY_SEPARATOR;
 $wgExtensionMessagesFiles['Pipe Escape'] = $dir . 'PipeEscape.i18n.php';
-# $wgExtensionAliasesFiles['Pipe Escape'] = $dir . 'PipeEscape.alias.php';
 $wgHooks[ 'LanguageGetMagic' ][]  = 'ExtPipeEsc::languageGetMagic';
 
 class ExtPipeEsc

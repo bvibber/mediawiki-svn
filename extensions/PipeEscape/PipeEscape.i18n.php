@@ -11,7 +11,7 @@
  *
  * @author David M. Sledge
  * @author Purodha Blissenbach, http://ksh.wikipedia.org/wiki/User:Purodha
- * @copyright Copyright © 2008 David M. Sledge
+ * @copyright Copyright Â© 2008 David M. Sledge
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -23,14 +23,14 @@ $messages = array();
  */
 $messages['en'] = array(
 	# general messages
-	'pipeescape-desc'	=> 'Parser function <code>#!</code> for when you want a pipe character to be just a pipe character',
+	'pipeescape-desc' => 'Parser function <code>#!</code> for when you want a pipe character to be just a pipe character',
 );
 
 /** Message documentation (Message documentation)
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'pipeescape-desc'	=> 'Short description of the [[:mw:Extension:Pipe_Escape|Pipe_Escape]] extension.
+	'pipeescape-desc' => 'Short description of the [[:mw:Extension:Pipe_Escape|Pipe_Escape]] extension.
 Shown in [[Special:Version]].
 Do not translate link targets, or function names.',
 );
@@ -55,4 +55,3 @@ $messages['ksh'] = array(
 $messages['la'] = array(
 	'pipeescape-desc' => 'Functio parseris nominae <code>#!</code> adita in vici, protegens litera | qui haec separator parametorum non interpretatur.',
 );
-
