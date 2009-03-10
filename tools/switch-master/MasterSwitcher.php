@@ -9,17 +9,24 @@
  */
 class MasterSwitcher {
 	var $lbfConf;
-	var $replUser = 'repl';
-	var $rootPass, $replPass, $confLocation;
+	var $replUser, $replPass, $rootUser, $rootPass, $dbConfFile, $dbConfPostEditCmd;
 	var $conns = array();
 	var $confOps = array();
+	var $doneBackup = false;
 
 	function __construct( $options ) {
 		global $wgLBFactoryConf;
 		$this->lbfConf = $wgLBFactoryConf;
-		$this->rootPass = $options['rootPass'];
-		$this->replPass = $options['replPass'];
-		$this->confLocation = $options['conf'];
+		$optionNames = array(
+			'replUser', 
+			'replPass', 
+			'rootUser', 
+			'rootPass', 
+			'dbConfFile',
+		);
+		foreach ( $optionNames as $var ) {
+			$this->$var = $var;
+		}
 	}
 
 	function switchMaster( $oldMaster, $newMaster, $options = array() ) {
@@ -128,7 +135,7 @@ class MasterSwitcher {
 
 	function getConnection( $host ) {
 		if ( !isset( $this->conns[$host] ) ) {
-			$this->conns[$host] = new Database( $host, 'root', $this->rootPass );
+			$this->conns[$host] = new Database( $host, $this->rootUser, $this->rootPass );
 		}
 		return $this->conns[$host];
 	}
@@ -158,7 +165,7 @@ class MasterSwitcher {
 	}
 
 	function getConfText() {
-		return file_get_contents( $this->confLocation );
+		return file_get_contents( $this->dbConfFile );
 	}
 
 	function testConf() {
@@ -182,14 +189,20 @@ class MasterSwitcher {
 		$confEditor = new ConfEditor( $text );
 		$text = $confEditor->edit( $this->confOps );
 		// Create a backup
-		rename( $this->confLocation, "{$this->confLocation}~" );
+		if ( !$this->doneBackup ) {
+			rename( $this->dbConfFile, "{$this->dbConfFile}~" );
+			$this->doneBackup = true;
+		}
 		// Write the file
-		file_put_contents( $this->confLocation, $text );
+		file_put_contents( $this->dbConfFile, $text );
 		// Sync
-		passthru( "sync-file " . basename( $this->confLocation ), $ret );
-		if ( $ret ) {
-			$this->log( "Unable to sync the configuration file.\n" );
-			exit( 1 );
+		if ( $this->dbConfPostEditCmd ) {
+			$ret = false;
+			passthru( $this->dbConfPostEditCmd, $ret );
+			if ( $ret ) {
+				$this->log( "Unable to run the post-edit command.\n" );
+				exit( 1 );
+			}
 		}
 
 		$this->confOps = array();

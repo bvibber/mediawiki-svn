@@ -1,0 +1,27 @@
+<?php
+# Remove the line below when you are done editing this file
+$broken = true;
+
+$switchConf = array(
+	/**
+	 * User with SUPER privs, etc.
+	 */
+	'rootUser' => 'root',
+	'rootPass' => 'mysql root password',
+
+	/**
+	 * The replication slave user (for CHANGE MASTER TO)
+	 */
+	'replUser' => 'mysql replication user',
+	'replPass' => 'mysql replication password',
+
+	/**
+	 * path to a PHP file that sets $wgLBFactoryConf
+	 */
+	'dbConfFile' => '/path/to/db.php',
+
+	/**
+	 * A shell command to run after altering the DB conf file
+	 */
+	'dbConfPostEditCmd' => false,
+);

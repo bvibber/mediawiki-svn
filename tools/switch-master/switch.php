@@ -1,9 +1,25 @@
 <?php
 
+$confFile = dirname(__FILE__).'/SwitchSettings.php';
 
+if ( !file_exists( $confFile ) ) {
+	copy( "$confFile.sample", $confFile );
+}
+
+$switchConf = array();
+$broken = false;
 $IP = getenv( 'MW_INSTALL_PATH' );
+require( $confFile ); # Sets $switchConf
+
+if ( $broken ) {
+	echo "Please customise SwitchSettings.php\n";
+	exit( 1 );
+}
+
 if ( $IP === false ) {
-	$IP = '/home/wikipedia/common/php-1.5';
+	echo "Unable to find MediaWiki installation. " .
+		"Set the MW_INSTALL_PATH environment variable, or set \$IP in SwitchSettings.php.\n";
+	exit( 1 );
 }
 $optionsWithArgs = array( 'slave-load', 'master-load' );
 require( "$IP/commandLine.inc" );
@@ -37,11 +53,7 @@ if ( isset( $options['master-load'] ) ) {
 	$switchOptions['masterLoad'] = parseLoad( $options['master-load'] );
 }
 
-$switcher = new MasterSwitcher( array(
-	'rootPass' => trim( wfShellExec( 'mysql_root_pass' ) ),
-	'replPass' => trim( file_get_contents( '/home/wikipedia/doc/repl-password' ) ),
-	'conf' => "$IP/db.php" 
-) );
+$switcher = new MasterSwitcher( $switchConf );
 
 $result = $switcher->switchMaster( $args[0], $args[1], $switchOptions );
 if ( !$result ) {
