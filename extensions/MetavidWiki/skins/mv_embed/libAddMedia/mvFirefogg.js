@@ -191,15 +191,14 @@ mvFirefogg.prototype = {
 					js_log( 'Autodetect Upload Mode: \'post\' ');
 					_this.upload_mode = 'post';
 				}else{					
-					for( var i in data.paraminfo.modules[0].parameters ){
+					for( var i in data.paraminfo.modules[0].parameters ){						
 						var pname = data.paraminfo.modules[0].parameters[i].name;
-						if( pname == 'chunks' ){
+						if( pname == 'enablechunks' ){
 							js_log( 'Autodetect Upload Mode: chunks ' );
 							_this.upload_mode = 'chunks';
 							break;
 						}
-					}
-					//somewhat verbose 					
+					}											
 					if( _this.upload_mode != 'chunks'){
 						return js_error('Upload API without chunks param is not supported');
 					}
@@ -222,7 +221,8 @@ mvFirefogg.prototype = {
 			'action'	: 'upload',
 			'format'	: 'json',
 			'filename'	: _this.formData['wpDestFile'],
-			'comment'	: _this.formData['wpUploadDescription']		
+			'comment'	: _this.formData['wpUploadDescription'],
+			'enablechunks': true
 		};
 		if( _this.formData['wpWatchthis'] )
 			aReq['watch'] =  _this.formData['wpWatchthis'];
@@ -234,7 +234,7 @@ mvFirefogg.prototype = {
 			'data': aReq
 		}, function(data){
 			var foo = data;
-			js_log('data');
+			js_log('data: ' + data);
 			debugger;
 		});								
 		//_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  aReq ,  JSON.stringify( _this.formData ) );
@@ -305,21 +305,17 @@ mvFirefogg.prototype = {
 			}
 		    //check upload state
 		    else if( _this.fogg.state == 'upload done' ||  _this.fogg.state == 'done' ) {	
-		       	js_log( 'firefogg:upload done: '); 			        
-		       	//@@todo improve error hanlding for http response 
-		       	//improve firefogg side of things result responseText should be in resultText; 
-		       	var cat = JSON.parse( _this.fogg.uploadstatus() );		       
-		       	//$j('body').html( cat["responseText"] );
-		       	//debugger;		       	
-		       	//if in "post" upload mode read the html response: 
+		       	js_log( 'firefogg:upload done: '); 			        		       			       			       	       		       			       	
+		       	//if in "post" upload mode read the html response (should be depricated): 
 		       	if( _this.upload_mode == 'post' ) {
-		       		js_log( 'done upload response is: ' + cat["responseText"] );
-		       		_this.procPageResponse( cat["responseText"] );
+		       		//js_log( 'done upload response is: ' + cat["responseText"] );
+		       		_this.procPageResponse( JSON.parse( _this.fogg.uploadstatus() )["responseText"] );
 		       	}else if( _this.upload_mode == 'chunks'){
 		       		//should have an json result:
 		       		var foo = _this;
-		       		var cat = _this.fogg.responseText;
-		       		var cat_json = eval('var result =' + _this.fogg.resultText );		       		
+		       		var cat = _JSON.parse( _this.fogg.uploadstatus() );
+		       		debugger;
+		       			       		
 		       	}													
 			}else{  
 				//upload error: 

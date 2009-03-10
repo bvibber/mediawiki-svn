@@ -60,7 +60,7 @@ if( !mv_embed_urid ){
 	var mv_embed_urid = getMvUniqueReqId();
 }
 
-var mvLoadEvent = new Array() //the onReady global event.. @@todo should be depricated for jquery style document.ready stuff 
+var mvLoadEvent = new Array() //the onReady global event.. @@todo should be removed and use jquery style document.ready stuff insted
 //the default thumbnail for missing images:
 var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
 
@@ -132,12 +132,14 @@ function gM( key , args ) {
 	 	return '[' + key + ']';
 	 }	 
 }
+
 //gets the loading image:
 function mv_get_loading_img( style , class_attr ){
 	var style_txt = (style)?style:'';
 	var class_attr = (class_attr)?'class="'+class_attr+'"':'class="mv_loading_img"';
 	return '<div '+class_attr+' style="' + style +'"></div>';
 }
+
 function mv_set_loading(target, load_id){
 	var id_attr = ( load_id )?' id="' + load_id + '" ':'';
 	$j(target).append('<div '+id_attr+' style="position:absolute;top:0px;left:0px;height:100%;width:100%;'+
