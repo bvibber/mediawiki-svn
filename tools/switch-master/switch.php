@@ -21,8 +21,10 @@ if ( $IP === false ) {
 		"Set the MW_INSTALL_PATH environment variable, or set \$IP in SwitchSettings.php.\n";
 	exit( 1 );
 }
+
 $optionsWithArgs = array( 'slave-load', 'master-load' );
-require( "$IP/commandLine.inc" );
+$wgNoDBParam = true;
+require( "$IP/maintenance/commandLine.inc" );
 $wgAutoloadClasses['ConfEditor'] = dirname(__FILE__).'/ConfEditor.php';
 $wgAutoloadClasses['MasterSwitcher'] = dirname(__FILE__).'/MasterSwitcher.php';
 
@@ -40,6 +42,7 @@ where <load-spec> is a list of loads per section:
 
 Any unspecified loads will be set to 100 for (ex-master) slaves,
 and 0 for new masters.
+
 EOT;
 
 	exit( 1 );
@@ -63,16 +66,21 @@ exit( 0 );
 
 
 function parseLoad( $s ) {
+	global $wgLBFactoryConf;
 	$loads = array();
 	$sectionStrings = array_map( 'trim', explode( ',', $s ) );
 	foreach( $sectionStrings as $sectionString ) {
 		$parts = array_map( 'trim', explode( '=', $sectionString ) );
 		if ( count( $parts ) != 2 ) {
-			echo "Invalid load specification \"$sectionString\n";
+			echo "Invalid load specification \"$sectionString\"\n";
 			exit( 1 );
 		}
 		if ( !preg_match( '/^\d+$/', $parts[1] ) ) {
 			echo "Invalid load \"{$parts[1]}\"\n";
+			exit( 1 );
+		}
+		if ( !isset( $wgLBFactoryConf['sectionLoads'][$parts[0]] ) ) {
+			echo "Invalid section \"{$parts[0]}\"\n";
 			exit( 1 );
 		}
 		$loads[$parts[0]] = intval( $parts[1] );

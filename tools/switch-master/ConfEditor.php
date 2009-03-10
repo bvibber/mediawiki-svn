@@ -164,28 +164,17 @@ class ConfEditor {
 				$slashPos = strrpos( $path, '/' );
 				$key = var_export( substr( $path, $slashPos + 1 ), true );
 				$path = substr( $path, 0, $slashPos );
+				// Fall through
 			case 'append':
 				// Find the last array element
-				$lastEltPath = $lastEltInfo = false;
-				foreach ( $this->pathInfo as $candidatePath => $info ) {
-					$part1 = substr( $candidatePath, 0, strlen( $path ) + 1 );
-					$part2 = substr( $candidatePath, strlen( $path ) + 1, 1 );
-					if ( $part2 == '@' ) {
-						// Do nothing
-					} elseif ( $part1 == "$path/" ) {
-						$lastEltPath = $candidatePath;
-						$lastEltInfo = $info;
-					} elseif ( $lastEltPath !== false ) {
-						break;
-					}
-				}
-
+				$lastEltPath = $this->findLastArrayElement( $path );
 				if ( $lastEltPath === false ) {
-					throw new MWException( "Can't find path \"$path\"" );
+					throw new MWException( "Can't find any element of array \"$path\"" );
 				}
+				$lastEltInfo = $this->pathInfo[$lastEltPath];
 
 				// Has it got a comma already?
-				if ( !$lastEltInfo['hasComma'] ) {
+				if ( strpos( $lastEltPath, '@extra' ) === false && !$lastEltInfo['hasComma'] ) {
 					// No comma, insert one after the value region
 					list( $start, $end ) = $this->findValueRegion( $lastEltPath );
 					$this->replaceSourceRegion( $end - 1, $end - 1, ',' );
@@ -209,19 +198,12 @@ class ConfEditor {
 				break;
 			case 'insert':
 				// Find first array element
-				$found = false;
-				foreach ( $this->pathInfo as $nextEltPath => $info ) {
-					$part1 = substr( $nextEltPath, 0, strlen( $path ) + 1 );
-					$part2 = substr( $nextEltPath, strlen( $path ) + 1, 1 );
-					if ( $part1 == "$path/" && $part2 != '@' ) {
-						$found = true;
-						break;
-					}
+				$firstEltPath = $this->findFirstArrayElement( $path );
+				if ( $firstEltPath === false ) {
+					throw new MWException( "Can't find array element of \"$path\"" );
 				}
-				if ( !$found ) {
-					throw new MWException( "Can't find path \"$path\"" );
-				}
-				list( $start, $end ) = $this->findDeletionRegion( $nextEltPath );
+				list( $start, $end ) = $this->findDeletionRegion( $firstEltPath );
+				$info = $this->pathInfo[$firstEltPath];
 
 				// Make the text to insert
 				if ( $key === null ) {
@@ -306,7 +288,7 @@ class ConfEditor {
 	 */
 	function findDeletionRegion( $pathName ) {
 		if ( !isset( $this->pathInfo[$pathName] ) ) {
-			throw new MWEXception( "Can't find path \"$pathName\"" );
+			throw new MWException( "Can't find path \"$pathName\"" );
 		}
 		$path = $this->pathInfo[$pathName];
 		// Find the start
@@ -370,6 +352,67 @@ class ConfEditor {
 			throw new MWException( "Can't find value region for path \"$pathName\"" );
 		}
 		return array( $path['valueStartByte'], $path['valueEndByte'] );
+	}
+
+	/**
+	 * Find the path name of the last element in the array.
+	 * If the array is empty, this will return the @extra interstitial element.
+	 * If the specified path is not found or is not an array, it will return false.
+	 */
+	function findLastArrayElement( $path ) {
+		// Try for a real element
+		$lastEltPath = false;
+		foreach ( $this->pathInfo as $candidatePath => $info ) {
+			$part1 = substr( $candidatePath, 0, strlen( $path ) + 1 );
+			$part2 = substr( $candidatePath, strlen( $path ) + 1, 1 );
+			if ( $part2 == '@' ) {
+				// Do nothing
+			} elseif ( $part1 == "$path/" ) {
+				$lastEltPath = $candidatePath;
+			} elseif ( $lastEltPath !== false ) {
+				break;
+			}
+		}
+		if ( $lastEltPath !== false ) {
+			return $lastEltPath;
+		}
+
+		// Try for an interstitial element
+		$extraPath = false;
+		foreach ( $this->pathInfo as $candidatePath => $info ) {
+			$part1 = substr( $candidatePath, 0, strlen( $path ) + 1 );
+			if ( $part1 == "$path/" ) {
+				$extraPath = $candidatePath;
+			} elseif ( $extraPath !== false ) {
+				break;
+			}
+		}
+		return $extraPath;
+	}
+
+	/*
+	 * Find the path name of first element in the array.
+	 * If the array is empty, this will return the @extra interstitial element.
+	 * If the specified path is not found or is not an array, it will return false.
+	 */
+	function findFirstArrayElement( $path ) {
+		// Try for an ordinary element
+		foreach ( $this->pathInfo as $candidatePath => $info ) {
+			$part1 = substr( $candidatePath, 0, strlen( $path ) + 1 );
+			$part2 = substr( $candidatePath, strlen( $path ) + 1, 1 );
+			if ( $part1 == "$path/" && $part2 != '@' ) {
+				return $candidatePath;
+			}
+		}
+
+		// Try for an interstitial element
+		foreach ( $this->pathInfo as $candidatePath => $info ) {
+			$part1 = substr( $candidatePath, 0, strlen( $path ) + 1 );
+			if ( $part1 == "$path/" ) {
+				return $candidatePath;
+			}
+		}
+		return false;
 	}
 
 	/**

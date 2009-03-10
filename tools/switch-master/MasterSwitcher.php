@@ -23,9 +23,10 @@ class MasterSwitcher {
 			'rootUser', 
 			'rootPass', 
 			'dbConfFile',
+			'dbConfPostEditCmd',
 		);
 		foreach ( $optionNames as $var ) {
-			$this->$var = $var;
+			$this->$var = $options[$var];
 		}
 	}
 
@@ -49,14 +50,14 @@ class MasterSwitcher {
 			if ( isset( $options['masterLoad'][$section] ) ) {
 				$masterLoads[$section] = $options['masterLoad'][$section];
 			} else {
-				$masterLoads[$section] = 100;
+				$masterLoads[$section] = 0;
 			}
 		}
 
 		// Set read-only mode on the wiki
 		$this->log( 'Setting read-only mode' );
 		foreach ( $sections as $section ) {
-			$this->setConf( "readOnlyBySection/$section", 
+			$this->setConf( "readOnlyBySection/$section",
 				'Switching master to ' . $newMaster . ', should be back in a few minutes' );
 		}
 		$this->commitConf();
@@ -72,6 +73,7 @@ class MasterSwitcher {
 		
 		// Stop slave on the new master and reset it so it can't start again
 		$this->log( 'Configuring the new master' );
+		$newMasterDB = $this->getConnection( $newMaster );
 		$newMasterDB->query( 'STOP SLAVE' );
 		$newMasterDB->query( 'CHANGE MASTER TO master_host=\'\'' );
 		$newMasterDB->query( 'RESET SLAVE'  );
@@ -87,18 +89,19 @@ class MasterSwitcher {
 		}
 		$file = $newMasterPos->file;
 
-		// Change master on the new slaves
-		$this->log( 'Configuring the slaves' );
+		// Change master on the new slaves (not on the new master)
 		$slaves = $this->getSlaves( $oldMaster );
+		$slaves = array_diff( $slaves, array( $newMaster ) );
 		$changeMasterSql = 
 			'CHANGE MASTER TO' .
-			' master_host=' . $cc->addQuotes( $newMaster ) .
-			' master_user=' . $cc->addQuotes( $this->replUser ) .
-			' master_password=' . $cc->addQuotes( $this->replPassword ) .
-			' master_log_file=' . $cc->addQuotes( $newMasterPos->file ) .
-			' master_log_pos=' . $validatedPos;
+			' master_host=' . $newMasterDB->addQuotes( $newMaster ) .
+			', master_user=' . $newMasterDB->addQuotes( $this->replUser ) .
+			', master_password=' . $newMasterDB->addQuotes( $this->replPass ) .
+			', master_log_file=' . $newMasterDB->addQuotes( $newMasterPos->file ) .
+			', master_log_pos=' . $validatedPos;
 
 		if ( $oldMasterDB ) {
+			$this->log( "Configuring the old master $oldMaster as a slave" );
 			if ( $oldMasterDB->getSlavePos() ) {
 				$this->doQueryLogErrors( $oldMasterDB, $oldMaster, 'SLAVE STOP' );
 			}
@@ -106,6 +109,7 @@ class MasterSwitcher {
 			$this->doQueryLogErrors( $oldMasterDB, $oldMaster, 'SLAVE START' );
 		}
 
+		$this->log( 'Configuring slaves: ' . implode( ', ', $slaves ) );
 		foreach ( $slaves as $slave ) {
 			$conn = $this->getConnection( $slave );
 			if ( !$conn ) {
@@ -116,6 +120,10 @@ class MasterSwitcher {
 			$this->doQueryLogErrors( $conn, $slave, $changeMasterSql );
 			$this->doQueryLogErrors( $conn, $slave, 'SLAVE START' );
 		}
+
+		// Enable writes
+		$this->log( 'Enabling writes to the new master' );
+		$newMasterDB->query( 'SET GLOBAL read_only=0' );
 
 		// Update configuration
 		$this->log( 'Doing final configuration update' );
@@ -223,7 +231,7 @@ class MasterSwitcher {
 		$sections = array();
 		foreach ( $this->lbfConf['sectionLoads'] as $section => $loads ) {
 			reset( $loads );
-			$master = key( $loads );
+			$host = key( $loads );
 			if ( $master == $host ) {
 				$sections[] = $section;
 			}
@@ -328,6 +336,7 @@ class MasterSwitcher {
 		
 		// Kill long-running queries
 		$res = $conn->query( 'SHOW PROCESSLIST' );
+		$killQueries = array();
 		foreach ( $res as $row ) {
 			if ( ( $row->User == 'wikiadmin' || $row->User == 'wikiuser' )
 				&& $row->Time > 10 && preg_match( '/^\d+$/', $row->Id ) )
@@ -356,14 +365,16 @@ class MasterSwitcher {
 		$oldMasterPos = $conn->getMasterPos();
 
 		// Wait for that position on all slaves
+		$this->log( "Waiting for slaves..." );
 		foreach ( $this->getSlaves( $hostName ) as $slave ) {
 			$slaveDB = $this->getConnection( $slave );
 			if ( !$slaveDB ) {
 				$this->log( "Error connecting to slave DB: $slave. Continuing anyway." );
 				continue;
 			}
-			$slaveDB->waitFor( $oldMasterPos );
+			$slaveDB->masterPosWait( $oldMasterPos, -1 );
 		}
+		$this->log( "Done" );
 	}
 
 	function log( $msg ) {
