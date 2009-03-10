@@ -229,11 +229,15 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Return an array of records given type and other criteria
 	 */
 	function getRecords( $type, $posted, $wpTitle = '', $invert = false, $orderby = 'created desc' ) {
+
+		# First get all the articles using the type's template
 		$records = array();
 		$dbr  = wfGetDB( DB_SLAVE );
 		$tbl  = $dbr->tableName( 'templatelinks' );
 		$ty   = $dbr->addQuotes( $type );
 		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
+
+		# Loop through them adding only those that match the regex fields
 		while ( $row = $dbr->fetchRow( $res ) ) {
 			$t = Title::newFromID( $row[0] );
 			if ( empty( $wpTitle ) || eregi( $wpTitle, $t->getPrefixedText() ) ) {
@@ -243,6 +247,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$r = array( 0 => $t, 'title' => $t->getPrefixedText() );
 				foreach ( array_keys( $this->types ) as $k ) {
 					$v = isset( $posted[$k] ) ? ( $this->types[$k] == 'bool' ? 'yes' : $posted[$k] ) : '';
+					if ( !preg_match( "|\s*\|\s*$k\s*=|", $text ) ) $text .= "\n|$k=|\n"; # Treat non-existent fields as existing but empty
 					$i = preg_match( "|\s*\|\s*$k\s*=\s*(.*?)\s*(?=[\|\}])|si", $text, $m );
 					if ( $v && !( $i && eregi( $v, $m[1] ) ) ) $match = false;
 					$r[$k] = isset( $m[1] ) ? $m[1] : '';
