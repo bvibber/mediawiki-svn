@@ -117,6 +117,13 @@ $messages['dsb'] = array(
 	'doublewiki-desc' => 'Zwobraznja bok a jogo pśełožk z drugego wikija w dwěma słupikoma samkego boka',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'doublewiki-desc' => 'Εμφανίζει μια σελίδα και την μετάφρασή της από ένα άλλο wiki, σε δύο στήλες της ίδιας σελίδας.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

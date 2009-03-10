@@ -1508,7 +1508,7 @@ $messages['ug-latn'] = array(
  */
 $messages['vi'] = array(
 	'createsigndocument' => 'Cho phép ký tài liệu',
-	'createsigndoc-head' => "Hãy dùng mẫu này để tạo trang 'Ký tài liệu' cho trang chỉ định, sao cho người dùng sẽ có thể ký tên vào nó thông qua [[Special:SignDocument]].
+	'createsigndoc-head' => "Hãy dùng mẫu này để tạo trang 'Ký tài liệu' cho trang chỉ định, sao cho người dùng sẽ có thể [[Special:SignDocument|ký tên vào nó]].
 Xin hãy ghi rõ tên trang bạn muốn cho phép ký tên điện tử, thành viên của nhóm thành viên nào được cho phép ký tên, vùng nào bạn muốn người dùng nhìn thấy và cái nào là tùy chọn, tuổi tối thiểu được được ký tài liệu (không có giới hạn nếu bỏ trống);
 và một đoạn giới thiệu ngắn gọn mô tả tài liệu và cung cấp hướng dẫn cho người dùng.
 
@@ -1530,8 +1530,9 @@ Xin hãy cực kỳ chắc chắn rằng tài liệu đã đạt tới mức ổ
 	'createsigndoc-error-generic' => 'Lỗi: $1',
 	'createsigndoc-error-pagenoexist' => 'Lỗi: Trang [[$1]] không tồn tại.',
 	'createsigndoc-success' => 'Khả năng ký tên đã được kích hoạt tại trang [[$1]].
-Để thử nghiệm, xin hãy thăm [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} trang này].',
-	'createsigndoc-error-alreadycreated' => 'Văn bản ký tên "$1" đã tồn tại.',
+Bạn có thể [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} thử nghiệm nó].',
+	'createsigndoc-error-alreadycreated' => 'Văn bản ký tên "$1" đã tồn tại.
+Bạn không thể làm điều này hai lần.',
 );
 
 /** Volapük (Volapük)

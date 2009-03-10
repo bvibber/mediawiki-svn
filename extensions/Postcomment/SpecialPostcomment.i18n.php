@@ -37,6 +37,16 @@ $messages['qqq'] = array(
 	'postcomment_replyto' => '$1 is the user that has posted previous comment. For example see http://www.wikihow.com/Discussion:Main-Page',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'postcomment_post' => 'Oigeta',
+	'postcomment_on' => 'Avaita',
+	'postcomment_said' => 'sanui',
+	'postcomment_invalidrequest' => 'Petuzline küzund.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

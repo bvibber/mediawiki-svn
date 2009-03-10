@@ -2166,6 +2166,10 @@ $messages['ksh'] = array(
 	'deletequeue-action-queued' => 'Fottschmiiße',
 	'deletequeue-action' => 'Fottschmiiße vürjeschlare',
 	'deletequeue-action-title' => '„$1“ för fottzeschmiiße vörschlare',
+	'deletequeue-action-text' => 'Mer han en Aanzahl fun Müjjeleschkeite, wie mer Sigge loßß krijje künne:
+* Wann De meins, dat en Sigg joot doför es, dann [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} schlaach för, se flöck fottzeschmiiße].
+* Wann flöck Fottschmiiße nit paß, ävver koum Eine jet dojäje han weed, donn [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} Fottschmiiße oohne Jäjeshtemme vörschlonn].
+* Wann de jlöüfs, dat et wall Jääjeshtemme jevve weet, dann es joot, [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} ene Klaaf drövver opzemaache].',
 	'deletequeue-action-text-queued' => 'Do kanns för hee der Förschlaach zem Fottschmiiße op hee di Sigge jonn, un domet:
 *de [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} aktoälle Zohshtemmunge un Afflehnunge beloore],
 *udder [{{fullurl:{{FULLPAGENAME}}|action=delvote}} donn sellver zohshtemme udder afflehne].',

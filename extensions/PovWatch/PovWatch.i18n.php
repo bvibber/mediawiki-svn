@@ -442,6 +442,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Extensión para [[Special:PovWatch|meter páginas en las listas de seguimiento]] de otros usuarios',
+	'povwatch_already_subscribed' => 'Ya está suscrito en PovWatch',
 	'povwatch_invalid_title' => 'El título especificado fue inválido',
 	'povwatch_subscriber_list' => 'Una [[Special:PovWatch/subscribers|lista de suscriptores]] está disponible.',
 	'povwatch_subscriber_list_intro' => '<strong>Lista de suscriptores</strong>',
@@ -465,11 +466,12 @@ Haga clic en el botón abajo para subscribirse.',
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Mardetanha
  */
 $messages['fa'] = array(
 	'povwatch_title' => 'عنوان:',
-	'povwatch_added' => 'افزوده‌شد',
+	'povwatch_added' => 'افزوده شد',
 );
 
 /** Finnish (Suomi)

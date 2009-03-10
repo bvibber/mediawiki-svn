@@ -1305,6 +1305,11 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'regexblock-desc' => 'Määt et müjjelesch, Metmaacher  un IP-Addresse övver <i lang="en">regular expressions</i> ze sperre. Deit sperre, un hät en [[Special:Regexblock|Söndersigg]], öm de Sperre ze verwallde.',
+	'regexblock-reason-ip' => 'Et es jraad verbodde, met hee dä IP-Addräß aam Wiki jet ze ändere.
+Dat litt dodraan, dat zoh vill Driß drövver jemaat wood.
+Dat moß ävver nit vun Dir jekumme sin, et kann vun Jedem jekumme sin,
+dä di Address och ens jehatt hät.
+Wann De meins, dat dat esu nit sinn sullt, dann donn $1.',
 	'regexblock-form-reason' => 'Aanlass:',
 	'regexblock-view-all' => 'All',
 	'regexblock-view-go' => 'Loß Jonn!',

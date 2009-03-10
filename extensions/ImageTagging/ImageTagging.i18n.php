@@ -74,6 +74,15 @@ $messages['niu'] = array(
 	'imagetagging-tagcancel-button' => 'Tiaki',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'imagetagging-article' => "Lehtpol':",
+	'imagetagging-articletotag' => "Lehtpol' virgates",
+	'imagetagging-tag-button' => 'Virg',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -1477,6 +1486,7 @@ $messages['vi'] = array(
 	'imagetagging-addimagetag' => 'Gắn thẻ hình này',
 	'imagetagging-article' => 'Trang:',
 	'imagetagging-articletotag' => 'Trang gắn thẻ',
+	'imagetagging-canteditothermessage' => 'Bạn không thể sửa đổi trang này, có thể do bạn không có quyền thực hiện hoặc do trang bị khóa vì một lý do nào khác.',
 	'imagetagging-imghistory' => 'Lịch sử',
 	'imagetagging-images' => 'hình',
 	'imagetagging-inthisimage' => 'Trong hình này: $1',
@@ -1501,6 +1511,8 @@ Xin hãy chờ tác vụ hoàn thành.',
 	'imagetagging-imagetag-seemoreimages' => 'Xem nhiều hình của "$1" hơn ($2)',
 	'imagetagging-taggedimages-title' => 'Hình của "$1"',
 	'imagetagging-taggedimages-displaying' => 'Hiển thị $1 - $2 trong tổng số $3 hình của "$4"',
+	'tag-logpagename' => 'Gắn thẻ cho nhật trình',
+	'tag-logpagetext' => 'Đây là nhật trình ghi lại tất cả tác vụ thêm và bỏ thẻ hình ảnh.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -488,9 +488,9 @@ $messages['ja'] = array(
 例3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
 例4 (ブラウザURL): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:MyPage,parm1=value1</tt>
 
-<i>ページ呼び出しエクステンション</i> は、与えられたページをパラメータ付きで呼び出します。<br />あなたは呼び出されたページ内容とページ名を見ることはできますが、ページの「タイプ」は特別ページとなり、<br />つまりそのページを編集することはできません。<br />ページ内容は指定したパラメータによって変化します。
+ページ呼び出し拡張機能は、与えられたページをパラメータ付きで呼び出します。<br />あなたは呼び出されたページ内容とページ名を見ることはできますが、ページの「タイプ」は特別ページとなり、<br />つまりそのページを編集することはできません。<br />ページ内容は指定したパラメータによって変化します。
 
-<i>ページ呼び出しエクステンション</i> は、MediaWiki 上で対話的なアプリケーションを構築するのに便利です。<br /><a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a>を参考にしてください。<br />
+ページ呼び出し拡張機能は、MediaWiki 上で対話的なアプリケーションを構築するのに便利です。<br /><a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a>を参考にしてください。<br />
 問題が発生した場合は、<b>Special:Call/DebuG</b> をお試しください。",
 	'call-save' => "このページ呼び出し結果は、ページ ''$1'' として保存されます。",
 	'call-save-success' => '以下のテキストが、ページ <big>[[$1]]</big> として保存されました。',

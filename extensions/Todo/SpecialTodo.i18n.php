@@ -441,37 +441,38 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author McDutchie
+ * @author PieRRoMaN
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'todo' => 'Liste des tâches à exécuter',
-	'todo-desc' => 'Extension expérimentale d’une [[Special:Todo|liste personnelle de tâches à accomplir]]',
+	'todo' => 'Liste des choses à faire',
+	'todo-desc' => 'Extension expérimentale pour une [[Special:Todo|liste personnelle de choses à faire]]',
 	'todo-tab' => 'à faire',
 	'todo-new-queue' => 'Nouveau',
-	'todo-mail-subject' => 'Article achevé sur la liste des tâches de $1',
-	'todo-mail-body' => "Vous avez demandé la confirmation par courriel en ce qui concerne l'achèvement d'un article que vous aviez sur la liste des tâches de $1.
+	'todo-mail-subject' => 'Élément achevé dans la liste des choses à faire de $1',
+	'todo-mail-body' => "Vous avez demandé à être notifié par courriel lors de l'achèvement d'un élément que vous inscrit dans la liste des choses à faire de $1.
 
-Article : $2
+Élément : $2
 Soumis : $3
 
-Cet article a été marqué comme terminé avec le commentaire suivant :
+Cet élément a été marqué comme terminé, avec le commentaire suivant :
 $4",
-	'todo-invalid-item' => 'Article manquant ou invalide',
-	'todo-update-else-item' => "Tentative de mise à jour des articles de quelqu'un d'autre",
+	'todo-invalid-item' => 'Élément manquant ou invalide',
+	'todo-update-else-item' => "Tentative de mise à jour des éléments de quelqu'un d'autre",
 	'todo-unrecognize-type' => 'Type non reconnu',
-	'todo-user-invalide' => 'Tâche à faire invalide, manquante, ou utilisateur ne disposant pas des droits nécessaires pour cela.',
-	'todo-item-list' => 'Vos articles',
-	'todo-no-item' => 'Aucune tâche à exécuter',
-	'todo-invalid-owner' => 'Propriétaire de cet article invalide',
-	'todo-add-queue' => 'Ajouter une queue…',
-	'todo-move-queue' => 'Déplacer vers la queue…',
-	'todo-list-for' => 'Liste des tâches à exécuter pour $1',
+	'todo-user-invalide' => "La chose à faire spécifiée est invalide, manquante, ou l'utilisateur n'a pas de liste de choses à faire.",
+	'todo-item-list' => 'Vos éléments',
+	'todo-no-item' => 'Aucun élément à accomplir.',
+	'todo-invalid-owner' => 'Propriétaire de cet élément invalide',
+	'todo-add-queue' => "Ajouter à la liste d'attente…",
+	'todo-move-queue' => "Déplacer vers la liste d'attente…",
+	'todo-list-for' => 'Liste des choses à faire pour $1',
 	'todo-list-change' => 'Modifier',
 	'todo-list-cancel' => 'Annuler',
-	'todo-new-item' => 'Nouvel article',
-	'todo-issue-summary' => 'Résumé sommaire :',
+	'todo-new-item' => 'Nouvel élément',
+	'todo-issue-summary' => 'Résumé du problème :',
 	'todo-form-details' => 'Précisions :',
-	'todo-form-email' => 'Pour recevoir les notifications par courriel une fois l’article clôturé, inscrivez votre adresse dans le cadre ci-dessous :',
+	'todo-form-email' => "Pour recevoir un courriel de notification lorsque l'élément sera fermé, inscrivez votre adresse dans le cadre ci-dessous :",
 	'todo-form-submit' => 'Soumettre la requête',
 );
 

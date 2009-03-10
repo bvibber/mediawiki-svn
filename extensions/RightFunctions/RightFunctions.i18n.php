@@ -346,5 +346,8 @@ $messages['tl'] = array(
  */
 $messages['vi'] = array(
 	'rightfunctions-desc' => 'Hàm cú pháp dựa trên sự cấp phép',
+	'rightfunctions-casc' => '(từ nguồn xếp tầng)',
+	'rightfunctions-local' => '(từ trang nội bộ)',
+	'rightfunctions-ns' => '(từ khóa không gian tên)',
 );
 

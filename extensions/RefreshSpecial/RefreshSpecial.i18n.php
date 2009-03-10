@@ -141,6 +141,24 @@ $messages['be-tarask'] = array(
 	'refreshspecial' => 'Абнавіць спэцыяльныя старонкі',
 	'refreshspecial-desc' => 'Дазваляе [[Special:RefreshSpecial|ручное абнаўленьне]] спэцыяльных старонак',
 	'refreshspecial-title' => 'Абнаўленьне спэцыяльныя старонкі',
+	'refreshspecial-help' => 'Гэта спэцыяльная старонка дазваляе абнаўляць спэцыяльныя старонкі ў ручным рэжыме.
+Калі Вы выберыце ўсе старонкі, якія Вы жадаеце абнавіць, націсьніце кнопку «Абнавіць выбраныя» унізе, каб абнавіць іх.
+Увага: абнаўленьне можа патрабаваць пэўны час у вялікіх вікі.',
+	'refreshspecial-button' => 'Абнавіць выбраныя',
+	'refreshspecial-fail' => 'Калі ласка, пазначце хаця б адну спэцыяльную старонку для абнаўленьня.',
+	'refreshspecial-refreshing' => 'абнаўленьне спэцыяльных старонак',
+	'refreshspecial-skipped' => 'няважнае, прапушчанае',
+	'refreshspecial-success-subtitle' => 'абнаўленьне спэцыяльных старонак',
+	'refreshspecial-choice' => 'абнаўленьне спэцыяльных старонак',
+	'refreshspecial-js-disabled' => '(<i>Вы ня можаце выбраць усе старонкі, калі JavaScript адключаны</i>)',
+	'refreshspecial-select-all-pages' => 'Выбраць усе старонкі',
+	'refreshspecial-link-back' => 'Вярнуцца на спэцыяльную старонку',
+	'refreshspecial-none-selected' => 'Вы ня выбралі ніякай спэцыяльнай старонкі. Вярнуцца да выбару па змоўчваньні.',
+	'refreshspecial-db-error' => 'Памылка базы зьвестак',
+	'refreshspecial-no-page' => 'Няма такой спэцыяльнай старонкі',
+	'refreshspecial-slave-lagged' => 'Праблемы сувязі з падпарадкаванай сыстэмай. Калі ласка, пачакайце...',
+	'refreshspecial-reconnected' => 'Перадалучэньне.',
+	'refreshspecial-reconnecting' => 'Памылка злучэньня, перадалучэньне праз 10 сэкундаў...',
 );
 
 /** Bulgarian (Български)

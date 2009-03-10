@@ -675,6 +675,7 @@ $messages['es'] = array(
 	'contribstats-value-under' => 'Debajo de $1',
 	'contribstats-value-from' => 'De $1 a $2',
 	'contribstats-value-over' => 'Sobre $1',
+	'fundraiserstatistics' => 'Estadísticas del recaudador de fondos',
 	'fundraiserstats-date' => 'Fecha',
 	'fundraiserstats-day' => 'Día $1 de $2',
 	'fundraiserstats-contributions' => 'Contribuciones',
@@ -685,6 +686,7 @@ $messages['es'] = array(
 	'fundraiserstats-tab-contributions' => 'Número de contribuciones',
 	'fundraiserstats-tab-averages' => 'Promedios (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
+	'specialpages-group-contribution' => 'Contribuciones/Recaudador de fondos',
 );
 
 /** Basque (Euskara)

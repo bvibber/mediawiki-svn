@@ -543,6 +543,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'extensiondistributor' => 'Descargar extensión MediaWiki',
+	'extdist-not-configured' => 'Por favor configure $wgExtDistTarDir y $wgExtDistWorkingCopy',
 	'extdist-no-such-extension' => 'No existe la extensión «$1»',
 	'extdist-no-such-version' => 'la extensión "$1" no existe en la versión "$2".',
 	'extdist-choose-extension' => 'Seleccione cual extensión desea descargar:',

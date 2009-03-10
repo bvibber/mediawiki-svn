@@ -1629,7 +1629,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'review_sidebar_title' => 'Оценка',
-	'review-desc' => 'Возрождённая функция [[Special:Review|проверки]]',
+	'review-desc' => 'Позволяет участникам [[Special:Review|проверять]] страницы',
 	'review_topics' => '# Ниже представлен список тем и диапазонов для расширения оценки.
 # Каждая тема определяется в строке из пяти значений, разделённых «:» (все другие строки игнорируются).
 # Порядок следующий: числовой ключ (>0), имя, максимальное значение (>1; 2=yes/no), описание низшего значения (например, «плохая»), описание высшего значения (например, «хорошая»).
@@ -1878,7 +1878,7 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'review_sidebar_title' => 'Duyệt',
-	'review-desc' => 'Tính năng [[Special:Review|phê chuẩn]] được phục hồi.',
+	'review-desc' => 'Cho phép thành viên [[Special:Review|phê chuẩn]] trang',
 	'review_topics' => "# Dưới đây là danh sách các chủ đề và tầm vực của gói mở rộng duyệt bài.
 # Mỗi chủ đề được định nghĩa bằng một dòng năm giá trị, cách nhau bởi      Normal   0               false   false   false      EN-US   JA   X-NONE                                                         MicrosoftInternetExplorer4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ‘:’  (tất cả những dòng khác được bỏ qua).
 # Thứ tự là: khóa số (>0), tên, tầm lớn nhất (>1; 2=có/không), ý nghĩa của giá trị nhỏ nhất (ví dụ, 'tồi'), ý nghĩa của giá trị cao nhất (ví dụ, 'tốt').
@@ -1898,7 +1898,7 @@ $messages['vi'] = array(
 	'review_total_statistics' => 'Tổng cộng',
 	'review_statistics_left_corner' => 'Phiên bản',
 	'review_version_link' => 'Phiên bản #$1',
-	'review_statistic_cell' => 'Trung bình: $1 của $2<br />($4 thành viên, $5 vô danh)',
+	'review_statistic_cell' => 'Trung bình: $1 của $2<br />($4 {{PLURAL:$4|thành viên|thành viên}}, $5 {{PLURAL:$5|vô danh|vô danh}})',
 	'review_version_statistic_cell' => '$1 trong $2',
 	'review_version_reviews_link' => '<small>(duyệt phiên bản)</small>',
 	'review_concerns_page' => 'Lần duyệt này là về trang "$1".',

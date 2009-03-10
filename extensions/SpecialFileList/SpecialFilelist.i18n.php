@@ -615,9 +615,14 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Innv
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'filelist' => 'Список файлов',
+	'filelist-desc' => '[[Special:Filelist|Служебная страница]], выводящая список загруженных файлов',
+	'filelist-show-list' => 'Показать список',
+	'filelist-show-gallery' => 'Показать галерею',
+	'filelist-image-desc' => 'по убыванию',
 );
 
 /** Yakut (Саха тыла) */

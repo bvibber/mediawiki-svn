@@ -112,6 +112,22 @@ $messages['rtm'] = array(
 	'grouppermissions-dologin' => 'Surum',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'grouppermissions-search' => 'Grupp:',
+	'grouppermissions-dologin' => 'Kävutajan nimi',
+	'grouppermissions-dosearch' => 'Mända',
+	'grouppermissions-searchlabel' => 'Ectä gruppiš',
+	'grouppermissions-deletelabel' => 'Čuta grupp',
+	'grouppermissions-never' => 'Nikonz',
+	'grouppermissions-sort-admin' => 'Administriruind',
+	'grouppermissions-sort-tech' => 'Tehnižed',
+	'grouppermissions-sort-misc' => 'Erazvuiččed',
+	'grouppermissions-log-add' => 'ližatihe «$2»-grupp',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

@@ -178,6 +178,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'contributiontracking' => 'Seguimiento contribucional',
 	'contrib-tracking-error' => 'Error',
+	'contrib-tracking-error-text' => 'Envío de formulario inválido',
 	'contrib-tracking-submitting' => 'Entregando al procesador de pagos...',
 	'contrib-tracking-continue' => 'Si usted no es automáticamente redirigido, haga click en el botón para completar su donación en Paypal.',
 	'contrib-tracking-button' => 'Continuar',

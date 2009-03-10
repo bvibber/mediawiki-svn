@@ -342,3 +342,12 @@ $messages['uk'] = array(
 	'untidy' => 'Розпорядкувати',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'tidy-desc' => 'Thêm một thẻ gọn gàng hoặc không gọn gàng (tùy vào $wgUseTidy) trên các trang thông thường để cho phép ghi đè lên thiết lập gọn gàng của HTML toàn cục cho một trang cụ thể',
+	'tidy' => 'Gọn gàng',
+	'untidy' => 'Không gọn gàng',
+);
+

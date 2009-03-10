@@ -80,6 +80,16 @@ $messages['bg'] = array(
 	'formatchanges-desc' => 'Преформатира [[Special:RecentChanges|списъка с последните промени]]',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'formatchanges-desc' => "Adfurmadiñ a ra ar [[Special:RecentChanges|c'hemmoù diwezhañ]]",
+	'formatchanges-anonymous' => 'Dizanv',
+	'formatchanges-createdby' => '$1 - savet gant $2 ($3)',
+	'formatchanges-editedby' => '$1 - kemmet gant $2 ($3)',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -442,9 +452,13 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'formatchanges-desc' => 'Tái định dạng [[Special:RecentChanges|thay đổi gần đây]]',
 	'formatchanges-anonymous' => 'Vô danh',
+	'formatchanges-createdby' => '$1 - tạo bởi $2 ($3)',
+	'formatchanges-editedby' => '$1 - sửa bởi $2 ($3)',
 );
 
 /** Volapük (Volapük)

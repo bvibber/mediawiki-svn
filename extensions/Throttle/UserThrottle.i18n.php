@@ -381,6 +381,16 @@ Maghintay lamang po ng isang sandali at pindutin ang 'muling ikarga' na nasa pan
 	'acct_creation_global_soft_throttle_hit-desc' => 'Paglikha ng pagsiil ng tagagamit',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Việc tạo tài khoản đã được tự động tạm ngưng trong giây lát do có một lượng lớn yêu cầu đăng nhập vừa xảy ra một cách bất thường. Xin hãy đợi trong ít phút rồi thử lại.',
+	'acct_creation_global_hard_throttle_hit' => "Việc tạo tài khoản đã được tự động tạm ngưng trong giây lát để giảm sự tấn công gây tràn qua việc đăng ký tài khoản.
+Xin hãy đợi trong ít phút rồi nhấn 'reload' trong trình duyệt để đăng lên lại.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Nút cổ chai khi tạo tài khoản',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

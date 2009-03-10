@@ -359,31 +359,32 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author McDutchie
+ * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'tasklist' => 'Liste de tâches',
 	'tasklist-parser-desc' => 'Ajoute <nowiki>{{#todo:}}</nowiki> une fonction parseur pour assigner des tâches',
-	'tasklist-special-desc' => 'Ajoute une page spéciale pour réviser [[Special:TaskList|la liste des tâches assignées]]',
+	'tasklist-special-desc' => 'Ajoute une page spéciale pour réviser les [[Special:TaskList|tâches assignées]]',
 	'tasklistbyproject' => 'Liste de tâches par projet',
 	'tasklistunknownproject' => 'Projet inconnu',
-	'tasklistunspecuser' => 'Contributeur inconnu',
-	'tasklistincorrectuser' => 'Pseudonyme incorrect',
+	'tasklistunspecuser' => 'Utilisateur non spécifié',
+	'tasklistincorrectuser' => "Nom d'utilisateur incorrect",
 	'tasklistemail' => 'Cher %s',
-	'tasklistemailsubject' => '[%s] Changement à la liste de tâches',
+	'tasklistemailsubject' => '[%s] Modification dans la liste de tâches',
 	'tasklistmytasks' => 'Mes tâches',
-	'tasklistbyprojectbad' => "Le projet '''%s''' n'est pas valide. Consulter la [[MediaWiki:TodoTasksValidProjects|liste des projets]].",
+	'tasklistbyprojectbad' => "Le projet '''%s''' n'est pas valide. Pour une liste des projets valides, voir [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Tâches assignées pour '''%s'''.",
-	'tasklistchooseproj' => 'Sélectionnez un projet :',
+	'tasklistchooseproj' => 'Sélectionner un projet :',
 	'tasklistprojdisp' => 'Afficher',
-	'tasklistbyname' => '== Liste de tâches à faire pour %s ==',
-	'tasklistnoprojects' => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Prière de lire les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d'installation] pour plus de détails.",
+	'tasklistbyname' => '== Liste de tâches pour %s ==',
+	'tasklistnoprojects' => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Consultez les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d'installation] pour plus de détails.",
 	'tasklistemailbody' => ',
 
 Quelqu’un vous a assigné une nouvelle tâche sur %s.
 
-Pour voir votre liste complète des tâches à effectuer, allez sur %s.
+Pour voir la liste complète de vos tâches, allez sur %s.
 
 Votre bien aimable système de notification de %s',
 );

@@ -264,6 +264,54 @@ $wgCustomToolbarMessages['bg'] = array(
 	'ct_user_sample' => 'Потребителско име',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$wgCustomToolbarMessages['br'] = array(
+	'ct-desc' => 'Ouzhpennañ a ra ur varrenn ostilhoù astennidik',
+	'ct_bold_sample' => 'Testenn dev',
+	'ct_bold_tip_ins' => "Ensoc'hañ un destenn e tev",
+	'ct_bold_tip_wrap' => 'Lakaat an destenn-mañ e tev',
+	'ct_bold_caption' => 'Tev',
+	'ct_italic_sample' => 'Testenn en italeg',
+	'ct_italic_tip_ins' => "Ensoc'hañ un destenn en italeg",
+	'ct_italic_tip_wrap' => 'Lakaat an destenn-mañ en italeg',
+	'ct_italic_caption' => 'Italeg',
+	'ct_internal_sample' => 'Anv ar bajenn',
+	'ct_internal_tip_ins' => "Ensoc'hañ ul liamm diabarzh",
+	'ct_internal_tip_wrap' => 'Lakaat an destenn-mañ da liamm diabarzh',
+	'ct_internal_caption' => 'Liamm diabarzh',
+	'ct_external_tip_ins' => "Ensoc'hañ ul liamm diavaez",
+	'ct_external_tip_wrap' => 'Lakaat an destenn-mañ da liamm diavaez',
+	'ct_external_caption' => 'Liamm diavaez',
+	'ct_image_tip' => "Ensoc'hañ ur skeudenn",
+	'ct_image_caption' => 'Ouzhpennañ ur skeudenn',
+	'ct_attachment_tip' => "Ensoc'hañ ur restr stag",
+	'ct_attachment_caption' => 'Ouzhpennañ ur restr stag',
+	'ct_math_sample' => "Ensoc'hañ ur formulenn LaTeX amañ",
+	'ct_math_tip_ins' => "Ensoc'hañ ur formulenn jedoniel (LaTeX)",
+	'ct_math_tip_wrap' => 'Lakaat an destenn-mañ da formulenn jedoniel (LaTeX)',
+	'ct_math_caption' => 'Formulenn',
+	'ct_nowiki_sample' => "Ensoc'hañ amañ un destenn difurmad",
+	'ct_nowiki_tip_ins' => 'Na ober van ouzh furmad ar wiki',
+	'ct_nowiki_tip_wrap' => 'Na ober van ouzh furmad ar wiki evit an destenn-mañ',
+	'ct_nowiki_caption' => 'Wiki ebet',
+	'ct_horizontal_tip' => "Ensoc'hañ ul linenn a-hed (da implijout nemeur)",
+	'ct_horizontal_caption' => 'Linenn a-hed',
+	'ct_upload' => 'Enporzhiañ $1',
+	'ct_select' => 'Diuzañ $1 da enporzhiañ :',
+	'ct_caption' => 'Ouzhpennañ un talbenn (diret)',
+	'ct_link' => 'Ouzhpennañ un anv liamm (diret)',
+	'ct_submit' => "Kit de'i!",
+	'ct_close' => 'Serriñ ar prenestr',
+	'ct_success' => 'Enporzhiadenn kaset da benn !',
+	'ct_popupblocked' => 'Berzet eo bet digoridigezh ar prenestr enporzhiañ. Gwiriit arventennoù berzañ ar prenestroù dispak.',
+	'ct_user_user' => 'Implijer',
+	'ct_user_tip' => "Ensoc'hañ ul liamm war-du ur bajenn implijer",
+	'ct_user_caption' => 'Liamm an implijer',
+	'ct_user_sample' => 'Anv implijer',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -415,6 +415,15 @@ $messages['tr'] = array(
 	'stalepages' => 'Eski sayfalar',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'stalepages' => 'Các trang cũ',
+	'stalepages-desc' => 'Tạo [[Special:Stalepages|danh sách trang]] lâu rồi không được sửa đổi',
+	'stalepages-summary' => 'Đây là danh sách các trang chưa được sửa đổi trong $1 {{PLURAL:$1|ngày|ngày}} qua.',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

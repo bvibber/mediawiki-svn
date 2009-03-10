@@ -309,6 +309,15 @@ $messages['tl'] = array(
 	'semanticgooglemaps-enteraddresshere' => 'Ipasok ang adres dito',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Tra tọa độ',
+	'semanticgooglemaps-desc' => 'Cho phép thành viên sửa đổi và hiển thị dữ liệu tọa độ ngữ nghĩa bằng Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Nhập địa chỉ vào đây',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

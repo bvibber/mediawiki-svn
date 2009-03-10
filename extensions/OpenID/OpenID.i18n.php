@@ -134,6 +134,15 @@ $messages['niu'] = array(
 	'openidchoosepassword' => 'kupu fufu:',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'openidoptional' => 'Opcionaline',
+	'openidemail' => 'E-počtan adres',
+	'openidlanguage' => "Kel'",
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
