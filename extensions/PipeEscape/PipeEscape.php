@@ -34,7 +34,7 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 			     'to be just a pipe character',
 	'url'             => 'http://www.mediawiki.org/wiki/Extension:Pipe_Escape',
 	'descriptionmsg'  => 'pipeescape-desc',
-	'svn-revision'    => '$LastChangedRevision: 0007B $',
+	'svn-revision'    => '$LastChangedRevision$',
 	'svn-date'        => '$LastChangedDate$',
 );
 
