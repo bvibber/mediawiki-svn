@@ -14,7 +14,7 @@ $messages = array();
 $messages['en'] = array(
 	'whatismyip' => 'What is my IP',
 	'whatismyip-desc' => 'Shows current user\'s [[Special:WhatIsMyIP|IP address]]',
-	'whatismyip-out' => 'Your IP adrress:',
+	'whatismyip-out' => 'Your IP address:',
 	// For Special:ListGroupRights
 	'right-whatismyip' => 'View own IP address on [[Special:WhatIsMyIP]]',
 );
