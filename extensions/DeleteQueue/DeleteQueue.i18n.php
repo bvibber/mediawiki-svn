@@ -19,8 +19,8 @@ $messages['en'] = array(
 	'deletequeue-action-queued' => 'Deletion',
 	'deletequeue-action' => 'Suggest deletion',
 	'deletequeue-action-title' => "Suggest deletion of \"$1\"",
-	'deletequeue-action-text' => "{{SITENAME}} has a number of processes for deleting pages:
-*If you believe that this page warrants ''speedy deletion'', you may suggest that [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} here].
+	'deletequeue-action-text' => "This wiki has a number of processes for deleting pages:
+*If you believe that this page warrants it, you may [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} suggest it for ''speedy deletion''].
 *If this page does not warrant speedy deletion, but ''deletion will likely be uncontroversial'', you should [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propose uncontested deletion].
 *If this page's deletion is ''likely to be contested'', you should [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} open a discussion].",
 	'deletequeue-action-text-queued' => "You may view the following pages for this deletion case:
