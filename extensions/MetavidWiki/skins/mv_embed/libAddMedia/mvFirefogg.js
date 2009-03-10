@@ -77,28 +77,39 @@ mvFirefogg.prototype = {
 		this.enabled=true;
 		
 		//make sure file is "checked"
-		$j('#wpSourceTypeFile').get(0).checked = true;		
+		$j( '#wpSourceTypeFile' ).get(0).checked = true;		
 		
-		//hide normal file upload stuff (this would all be much shorter code with jquery) 
-		$j('#wg-base-upload').hide();
+		//hide normal file upload stuff
+		$j( '#wg-base-upload' ).hide();
 		
+		//setup the form pointer:
+		_this.editForm = $j( '#mw-upload-form' ).get(0);
+			
 		//show fogg & add click binding: 
-		$j('#fogg-video-file').show().click( function(){
+		$j( '#fogg-video-file' ).show().click( function(){
 			_this.select_fogg();
 		});							
 	},
 	disable_fogg:function(){
+		var _this = this;
 		//not enabled: 
 		this.enabled=false;		
 
-		$j('#wg-base-upload').show();
+		$j( '#wg-base-upload' ).show();
 		
 		//hide any errors warnings and video select:
-		$j('#wgfogg_waring_ogg_upload,#wgfogg_waring_bad_extension,#fogg-video-file').hide();		
+		$j( '#wgfogg_waring_ogg_upload,#wgfogg_waring_bad_extension,#fogg-video-file' ).hide();	
+		
+		//restore the orignal  		
+		if( _this.org_onsubmit ){	
+			_this.editForm.onsubmit = _this.org_onsubmit;
+		}else{
+			_this.editForm.onsubmit = function(){ return true; };
+		}
 	},
 	fogg_update_progress:function(progress){
-		$j('#fogg-progressbar').css('width', parseInt(progress*100) +'%');		
-		$j('#fogg-pstatus').html( parseInt(progress*100) + '% - ');
+		$j( '#fogg-progressbar' ).css( 'width', parseInt(progress*100) +'%');		
+		$j( '#fogg-pstatus' ).html( parseInt(progress*100) + '% - ');
 	},
 	select_fogg:function(){			
 		var _this = this;
@@ -119,20 +130,17 @@ mvFirefogg.prototype = {
 						  ext == 'dv' ){
 					//hide ogg warning
 					$j('#wgfogg_waring_ogg_upload').hide();									
-					sf = sf.replace(ext, 'ogg');
+					sf = sf.replace( ext, 'ogg' );
 					$j('#wpDestFile').val( sf );
 				}else{
 					//not video extension error:	
 					$j('#wgfogg_waring_bad_extension').show();					
 					return false;			
-				}								
+				}
 			}
 			//run the onClick hanndle: 
-			if(toggleFilenameFiller) 		
-				toggleFilenameFiller();
-			
-			//setup the form handling 
-			_this.editForm = $j('#mw-upload-form').get(0);
+			if( toggleFilenameFiller ) 		
+				toggleFilenameFiller();						
 			
 			//set up the org_onsubmit if not set: 
 			if( typeof( _this.org_onsubmit ) == 'undefined' )
@@ -152,10 +160,8 @@ mvFirefogg.prototype = {
 				for(var i=0; i < tmpAryData.length; i++){
 					if( tmpAryData[i]['name'] )
 						_this.formData[ tmpAryData[i]['name'] ] = tmpAryData[i]['value'];
-				}								
-				//hard code a value 
-				_this.formData['wpSourceType']='file';	
-					
+				}							
+				
 				//display the loader:
 				$j('#dlbox-centered,#dlbox-overlay').show();				
 				
@@ -239,7 +245,7 @@ mvFirefogg.prototype = {
 	},
 	//doEncUpload first encodes then uploads
 	doEncUpload : function(){	
-		var _this = this;		
+		var _this = this;				
 		_this.fogg.encode( JSON.stringify( _this.encoder_settings ) );		  	
 		
 		//setup a local function for timed callback:
@@ -260,7 +266,12 @@ mvFirefogg.prototype = {
 			    			
 			    //show the fogg-status-upload
 			    $j('#fogg-status-upload').show();			    			    					    																											 						
-															
+				
+				// ignore warnings & set source type 
+				//_this.formData[ 'wpIgnoreWarning' ]='true';
+				_this.formData[ 'wpSourceType' ]='file';		
+				_this.formData[ 'action' ] = 'submit';
+				
 				//send to the post url: 				
 				js_log('sending form data to : ' + _this.editForm.action);
 				for(var fk in _this.formData){
@@ -317,6 +328,8 @@ mvFirefogg.prototype = {
 	   }
 	   uploadStatus();
 	},	
+	/*
+	procPageResponse should be faded out soon.. its all very fragile to read the html output and guess at stuff*/
 	procPageResponse:function( result_page ){
 		js_log('f:procPageResponse');
 		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');								
@@ -331,36 +344,43 @@ mvFirefogg.prototype = {
 			}									
 		}else{								
 			js_log( 'upload page error: did not find: ' +sstring + ' in ' + "\n" + result_page );	
-			var error_txt = 'Unkown error';
+			var error_txt = 'Unkown error';			
+			var form_txt = '';		
 			if( !result_page ){
 				//@@todo fix this: 
-				//the mediaWiki upload system does not have an API so we can\'t acuratly read errors 
+				//the mediaWiki upload system does not have an API so we can\'t accuratly read errors
 				error_txt = 'Your upload should be accessible <a href="' + 
-							wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
-							'here</a> \n';
-			}else{
-			
+						wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
+						'here</a> \n'; 				
+			}else{			
 				sp = result_page.indexOf('<span class="error">');
 				if(sp!=-1){
 					se = result_page.indexOf('</span>', sp);
-					error_txt = result_page.substr(sp, (sp-se));
+					error_txt = result_page.substr(sp, (sp-se)) + '</span>';
 				}else{
 					//look for warning: 
 					sp = result_page.indexOf('<ul class="warning">')
 					if(sp!=-1){
 						se = result_page.indexOf('</ul>', sp);
-						error_txt = result_page.substr(sp, (sp-se));
+						error_txt = result_page.substr(sp, (se-sp)) + '</ul>';
+						//try and add the ignore form item: 
+						sfp = result_page.indexOf('<form method="post"');
+						if(sfp!=-1){
+							sfe = result_page.indexOf('</form>', sfp);
+							form_txt = result_page.substr(sfp, ( sfe - sfp )) + '</form>';
+						}
 					}else{
 						//one more error type check: 
 						sp = result_page.indexOf('class="mw-warning-with-logexcerpt">')
 						if(sp!=-1){
 							se = result_page.indexOf('</div>', sp);
-							error_txt = result_page.substr(sp, (sp-se));
+							error_txt = result_page.substr(sp, ( se - sp )) + '</div>';
 						}
 					}
 				}			
-			}					
-			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt);
+			}		
+			js_log( 'error text is: ' + error_txt );		
+			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt + '<br>' + form_txt);
 		}
 	}
 }
