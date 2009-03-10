@@ -303,7 +303,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true ) {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
@@ -330,8 +330,8 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		$stripe = '';
 		foreach ( $records as $r ) {
-			$tsc  = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $r['created'] );
-			$tsm  = preg_replace( '|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $r['modified'] );
+			$tsc = $wgLang->timeanddate( $r['created'], true, true );
+			$tsm = $wgLang->timeanddate( $r['modified'], true, true );
 			$t   = $r[0];
 			$u   = $t->getLocalURL();
 			$col = $r['title'];
