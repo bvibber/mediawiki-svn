@@ -1,6 +1,8 @@
 WikiWord is a system for automatically extracting a thesaurus from 
 Wikipedia. It was developed by Daniel Kinzler in 2007-2009.
 
+See the section CONTRIBUTIONS below for 3rd party contributions.
+
 Development started in 2007 as part of a master's thesis at the
 University of Leipzig, see <http://brightbyte.de/page/WikiWord>.
 
@@ -31,3 +33,10 @@ under some other license or condition, please contact the author at
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    
+CONTRIBUTIONS
+ 
+WikiWordBuilder includes a Patricia Trie implementation by rkapsi 
+(<http://kapsi.de>), which can be found on Google Code at
+<http://code.google.com/p/patricia-trie/> and is released under the
+Apache License 2.0. See lib/patritia-trie*
