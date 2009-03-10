@@ -1077,9 +1077,10 @@ function do_api_req( options, callback ){
 			js_log('Error: no api url');
 			return false;
 		}		
-		options.url =  wgServer +((wgServer == null) ? parseUri(document.URL).host + (wgScriptPath + "/api.php") : parseUri(document.URL).host + wgScript);
+		if (wgServer && wgScript)
+			options.url = wgServer + wgScript;
 		//update to api.php (if index.php was in the wgScript path): 
-	 	options.url =  options.url.replace('index.php', 'api.php');		
+	 	options.url =  options.url.replace(/index.php/, 'api.php');		
 	}			
 	if(typeof options.data == 'undefined')
 		options.data = {};	

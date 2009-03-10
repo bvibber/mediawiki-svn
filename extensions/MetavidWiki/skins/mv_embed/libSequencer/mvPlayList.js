@@ -471,7 +471,7 @@ mvPlayList.prototype = {
 		//render out the dividers on the timeline: 
 		this.colorPlayHead();		
 		//update status:
-		this.setStatus('0:0:00/'+seconds2ntp( this.getDuration() ));				
+		this.setStatus( '0:0:00/' + seconds2ntp( this.getDuration() ) );				
 	},	
 	/*setStatus override (could call the jquery directly) */
 	setStatus:function(value){

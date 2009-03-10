@@ -75,7 +75,7 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 	'rsd_box_layout' => 'Box layout',
 	'rsd_list_layout' => 'List layout',
 	#set to ignored for now. Messages does not appear to be final
-	'rsd_results_desc' => 'Results some', # do not translate or duplicate this message to other languages
+	'rsd_results_desc' => 'Results', # do not translate or duplicate this message to other languages
 	'rsd_results_next' => 'next',
 	'rsd_results_prev' => 'previous',
 	'upload' => 'Upload',

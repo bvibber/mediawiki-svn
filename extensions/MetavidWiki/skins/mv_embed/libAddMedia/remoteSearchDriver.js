@@ -7,11 +7,10 @@
 	metavid 
 	and archive.org
 */
-
 loadGM( { "mv_media_search" : "Media Search why test test",
 		"rsd_box_layout" : "Box layout",
 		"rsd_list_layout" : "List Layout",
-		"rsd_results_desc" : "Results some ",
+		"rsd_results_desc" : "Results ",
 		"rsd_results_next" : "next ",
 		"rsd_results_prev" : "previous ",
 		"upload" : "Upload",
@@ -1007,7 +1006,7 @@ remoteSearchDriver.prototype = {
 				var to_num = ( cp.limit > cp.sObj.num_results )?
 								(cp.offset + cp.sObj.num_results):
 								(cp.offset + cp.limit);  
-				var out = gM('rsd_results_desc') +  (cp.offset+1) + ' to ' + to_num;
+				var out = gM('rsd_results_desc') + ' ' +  (cp.offset+1) + ' to ' + to_num;
 				//check if we have more results (next prev link)
 				if(  cp.offset >=  cp.limit )
 					out+=' <a href="#" id="rsd_pprev">' + gM('rsd_results_prev') + cp.limit + '</a>';

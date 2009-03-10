@@ -117,6 +117,7 @@ function mvSetupExtension() {
 	$wgJSAutoloadClasses['j.contextMenu']		= $mvjsp . 'jquery/plugins/jquery.contextMenu.js';
 	$wgJSAutoloadClasses['j.fn.autocomplete']	= $mvjsp . 'jquery/plugins/jquery.autocomplete.js';
 	$wgJSAutoloadClasses['j.fn.hoverIntent']	= $mvjsp . 'jquery/plugins/jquery.hoverIntent.js';
+	$wgJSAutoloadClasses['j.Jcrop'] 				= $mvjsp . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 	
 	//libAddMedia:
 	$wgJSAutoloadClasses['mvFirefogg'] 			= $mvjsp . 'libAddMedia/mvFirefogg.js';

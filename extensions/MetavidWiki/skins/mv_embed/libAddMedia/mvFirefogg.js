@@ -1,5 +1,5 @@
-/* firefogg refactor using jQuery
-	invovked using the 
+/* adds firefogg support. 
+* autodetects: new upload api or old http POST.  
  */
  
 var default_firefogg_options = {
@@ -15,7 +15,7 @@ mvFirefogg.prototype = {
 	min_firefogg_version : '0.9.3',
 	enabled : false, 			//if firefogg is enabled or not. 
 	upload_mode:'autodetect', 	//can be 'post', 'chunks' or autodetect. (autodetect issues an api call)   
-	encoder_settings:{			//@@todo maybe allow server to set this? 
+	encoder_settings:{			//@@todo allow server to set this 
 		'maxSize': 400, 
 		'videoBitrate': 400
 	},	
@@ -127,7 +127,10 @@ mvFirefogg.prototype = {
 					return false;			
 				}								
 			}
-			 				
+			//run the onClick hanndle: 
+			if(toggleFilenameFiller) 		
+				toggleFilenameFiller();
+			
 			//setup the form handling 
 			_this.editForm = $j('#mw-upload-form').get(0);
 			
@@ -207,10 +210,32 @@ mvFirefogg.prototype = {
 	},
 	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
 	doChunkUpload : function(){
-		var _this = this;		
-		_this.fogg.upload( JSON.stringify( _this.encoder_settings ), _this.editForm.action ,  JSON.stringify( _this.formData ) );	
+		var _this = this;				
+		//build the api url: 
+		var aReq ={
+			'action'	: 'upload',
+			'format'	: 'json',
+			'filename'	: _this.formData['wpDestFile'],
+			'comment'	: _this.formData['wpUploadDescription']		
+		};
+		if( _this.formData['wpWatchthis'] )
+			aReq['watch'] =  _this.formData['wpWatchthis'];
+		
+		if(  _this.formData['wpIgnoreWarning'] )
+			aReq['ignorewarnings'] = _this.formData['wpIgnoreWarning'];
+			
+		do_api_req({
+			'data': aReq
+		}, function(data){
+			var foo = data;
+			js_log('data');
+			debugger;
+		});								
+		//_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  aReq ,  JSON.stringify( _this.formData ) );
+		
+			
 		//update upload status:						
-		_this.doUploadStatus();
+		//_this.doUploadStatus();
 	},
 	//doEncUpload first encodes then uploads
 	doEncUpload : function(){	
@@ -236,10 +261,16 @@ mvFirefogg.prototype = {
 			    //show the fogg-status-upload
 			    $j('#fogg-status-upload').show();			    			    					    																											 						
 															
-				//send to the post url: 							
+				//send to the post url: 				
+				js_log('sending form data to : ' + _this.editForm.action);
+				for(var fk in _this.formData){
+					js_log(fk + ' : ' +  _this.formData[fk]);
+				}			
 				_this.fogg.post( _this.editForm.action, 'wpUploadFile', JSON.stringify( _this.formData ) );
+				
 				//update upload status:						
 				_this.doUploadStatus();
+				
 			}else if(_this.fogg.state == 'encoding fail'){
 				//@@todo error handling: 
 					alert('encoding failed');
@@ -263,23 +294,24 @@ mvFirefogg.prototype = {
 			}
 		    //check upload state
 		    else if( _this.fogg.state == 'upload done' ||  _this.fogg.state == 'done' ) {	
-		       	js_log( 'firefogg:upload done: ');							        			        
-		       	//@@todo handle errors same problem as #695 in remoteSearchDriver.js
-		       	 
+		       	js_log( 'firefogg:upload done: '); 			        
+		       	//@@todo improve error hanlding for http response 
+		       	//improve firefogg side of things result responseText should be in resultText; 
+		       	var cat = JSON.parse( _this.fogg.uploadstatus() );		       
+		       	//$j('body').html( cat["responseText"] );
+		       	//debugger;		       	
 		       	//if in "post" upload mode read the html response: 
 		       	if( _this.upload_mode == 'post' ) {
-		       		js_log('done upload response is:' + _this.fogg.responseText );
-		       		_this.procPageResponse( _this.fogg.responseText );
+		       		js_log( 'done upload response is: ' + cat["responseText"] );
+		       		_this.procPageResponse( cat["responseText"] );
 		       	}else if( _this.upload_mode == 'chunks'){
-		       		//should have an json result:\
+		       		//should have an json result:
 		       		var foo = _this;
 		       		var cat = _this.fogg.responseText;
-		       		var cat_json = eval('var result =' + _this.fogg.responseText );
-		       		debugger;
+		       		var cat_json = eval('var result =' + _this.fogg.resultText );		       		
 		       	}													
-			}
-	       //upload error: 
-	       else{
+			}else{  
+				//upload error: 
 				alert('firefogg upload error: ' + _this.fogg.state );		
 	       }
 	   }
@@ -307,6 +339,7 @@ mvFirefogg.prototype = {
 							wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
 							'here</a> \n';
 			}else{
+			
 				sp = result_page.indexOf('<span class="error">');
 				if(sp!=-1){
 					se = result_page.indexOf('</span>', sp);
@@ -317,6 +350,13 @@ mvFirefogg.prototype = {
 					if(sp!=-1){
 						se = result_page.indexOf('</ul>', sp);
 						error_txt = result_page.substr(sp, (sp-se));
+					}else{
+						//one more error type check: 
+						sp = result_page.indexOf('class="mw-warning-with-logexcerpt">')
+						if(sp!=-1){
+							se = result_page.indexOf('</div>', sp);
+							error_txt = result_page.substr(sp, (sp-se));
+						}
 					}
 				}			
 			}					

@@ -30,7 +30,7 @@ if( wgAction == 'edit' || wgAction == 'submit' ){
 	});
 }
 //add firefog support to Special Upload page:
-if(wgPageName== "Special:Upload"){	
+if( wgPageName== "Special:Upload" ){	
 	addOnloadHook( function(){		
 		//(for commons force the &uploadformstyle=plain form
 		/*var loc =  window.location.toString();
@@ -41,7 +41,7 @@ if(wgPageName== "Special:Upload"){
 		}*/
 		//alert("!!upload hook");
 		load_mv_embed( function(){			
-			//load jQuery and what not (we need to refactor the loading system for mv_embed)
+			//load jQuery and what not
 			mvJsLoader.loadBaseLibs(function(){
 				mvJsLoader.doLoad( {
 					'mvFirefogg' : 'libAddMedia/mvFirefogg.js',	
@@ -146,8 +146,7 @@ function load_mv_embed( callback ){
 function check_for_mv_embed( callback ){
 	if( typeof mvEmbed == 'undefined'){		 
 		setTimeout('check_for_mv_embed( ' + callback +');', 25);
-	}else{
-		js_log('callback is now: ' + callback);
+	}else{		
 		callback();
 	}
 }
