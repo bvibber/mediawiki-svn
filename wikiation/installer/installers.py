@@ -263,7 +263,7 @@ def parse_path(path,defaults=None):
 	
 	# Hmmm, not a fully-formed path(-section). Perhaps we can still make heads or tails of it?
 	if single_case:
-		if single_case in systems.keys():
+		if single_case in systems.keys() or single_case=="hailmary":
 			system=single_case
 		elif single_case in ["available","installed", "revisions","tags"]:
 			ai=single_case
