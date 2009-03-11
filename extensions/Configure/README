@@ -20,6 +20,15 @@ LocalSettings.php:
 
 $wgConfigureEditableSettings = array();
 
+=== Optimisation ===
+
+The definition file for Special:Extensions (i.e. configurable extensions)
+is in a plain text format and will need to be parsed when accessing e.g.
+Special:Extensions or Special:ViewConfig. To speed up this operation, a PHP
+extension is provided in the load_txt_def subdirectory. If you want to install
+it, please read load_txt_def/INSTALL for instructions. Once installed, Configure
+will automatically use it.
+
 == Configuration ==
 
 The extension will require to store the configuration either:

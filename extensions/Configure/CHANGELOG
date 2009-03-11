@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.13.0 - 11 March 2009
+  Rewrote extension definitions handling, now using text file.
+
+
 0.12.11 - 7 March 2009
   * Added documentation url for Find Spam
   * Fixed $wgCentralAuthAutoLoginWikis array type

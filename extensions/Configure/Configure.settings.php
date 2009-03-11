@@ -12,9 +12,6 @@ class ConfigurationSettings {
 	protected $settings, $arrayDefs, $emptyValues, $editRestricted,
 		$viewRestricted, $notEditableSettings, $settingsVersion;
 
-	// Extension settings
-	protected $extensions;
-
 	// Cache
 	protected $cache = array();
 
@@ -51,9 +48,6 @@ class ConfigurationSettings {
 		$this->notEditableSettings = $notEditableSettings;
 		$this->settingsVersion = $settingsVersion;
 
-		require( dirname( __FILE__ ) . '/Configure.settings-ext.php' );
-		$this->extensions = $extensions;
-
 		wfProfileOut( __METHOD__ );
 	}
 
@@ -64,11 +58,15 @@ class ConfigurationSettings {
 	 */
 	public function getAllExtensionsObjects() {
 		static $list;
-		if( isset($list) ) return $list;
+
+		if( isset( $list ) )
+			return $list;
+
 		wfProfileIn( __METHOD__ );
-		$this->loadSettingsDefs();
+
 		global $wgConfigureAdditionalExtensions;
-		$extensions = array_merge( $this->extensions, $wgConfigureAdditionalExtensions );
+		$coreExtensions = TxtDef::remapForConfigure( TxtDef::loadFromFile( dirname( __FILE__ ) . '/Configure.settings-ext.txt' ) );
+		$extensions = array_merge( $coreExtensions, $wgConfigureAdditionalExtensions );
 		usort( $extensions, array( __CLASS__, 'compExt' ) );
 		foreach( $extensions as $ext ) {
 			$ext = new WebExtension( $ext );
