@@ -29,12 +29,14 @@ import installers
 
 from installer_util import *
 from isolation	import *
+from getch import getch
 
 def intro():
 	"""a nice banner/intro text for interactive mode"""
 
 	print "=== Wikiation installer (v. "+revision()+") ==="
 	print
+	print "(last known safe version: 48307)"
 	print "Interactive mode.",
 	print "Automated testing is",
 	if settings.run_automated_tests:
@@ -120,7 +122,14 @@ def uninstall(args):
 def update_self(args):
 	"""update self to newest revision, (and switch to interactive mode)"""
 
-	
+	print "This could cause the wikiation_installer to break. Are you sure? Y/N"
+	answer=getch()
+	if answer.upper()=="Y":
+		print "Continuing..."
+	else:
+		print "You did not answer Y. I won't update."
+		return
+
 	os.chdir(settings.installerdir)	
 	if len(args)==1:
 		os.system("svn update")
