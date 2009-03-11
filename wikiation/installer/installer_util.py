@@ -132,6 +132,12 @@ def getTerminalSize():
             cr = (25, 80)
     return int(cr[1]), int(cr[0])
 
+def isanint(value):
+	try:
+		num=int(value)
+	except ValueError:
+		return False
+	return True
 
 if __name__=="__main__":
 	print "some tests for the utils module"
@@ -140,3 +146,9 @@ if __name__=="__main__":
 	x=[str(i) for i in x]
 	print x
 	print pretty_list(x)
+
+	print "isanint(0)",isanint(0)
+	print "isanint('22')",isanint('22')
+	print "isanint('22.foo')",isanint('22.foo')
+	print "isanint('foo.22')",isanint('foo.22')
+	print "isanint('bar')",isanint('bar')

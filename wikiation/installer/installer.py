@@ -117,11 +117,18 @@ def uninstall(args):
 	"""uninstall something"""
 	installers.uninstall(args)
 
-def update_self(ignored_args):
+def update_self(args):
 	"""update self to newest revision, (and switch to interactive mode)"""
 
+	
 	os.chdir(settings.installerdir)	
-	os.system("svn update")
+	if len(args)==1:
+		os.system("svn update")
+	elif len(args)>=2 and isanint(args[1]):
+		os.system("svn update "+args[1])
+	elif len(args)>=2:
+		print "I'm not sure what to do with "+ (" ".join(args[1:]))
+
 	print "\n\n"
 	print "wikiation_installer update attempted/completed. Restarting"
 	print "----------------------------------------------------------"

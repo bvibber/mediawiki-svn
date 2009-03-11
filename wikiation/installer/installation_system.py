@@ -70,7 +70,7 @@ class Installation_System:
 		return None
 
 	def do_get_revisions_generic(self, installer):
-		"""directly query svn to get a list of available revisions. Most of the time, this is adequate."""
+		"""directly query svn to get a list of available revisions. Usually this is adequate."""
 		svnbase=self.get_svnbase()
 		if svnbase:
 			location=svnbase+"/"+installer
