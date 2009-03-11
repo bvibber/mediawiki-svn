@@ -125,7 +125,7 @@ def update_self(args):
 	if len(args)==1:
 		os.system("svn update")
 	elif len(args)>=2 and isanint(args[1]):
-		os.system("svn update "+args[1])
+		os.system("svn update -r"+args[1])
 	elif len(args)>=2:
 		print "I'm not sure what to do with "+ (" ".join(args[1:]))
 
