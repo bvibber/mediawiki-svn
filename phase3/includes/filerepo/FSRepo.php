@@ -211,7 +211,22 @@ class FSRepo extends FileRepo {
 		}
 		return $status;
 	}
-
+	function append( $srcPath, $toAppendPath ){
+		$status = $this->newGood();
+		//make sure files are there: 
+		if ( !is_file( $srcPath ) ) 				
+			$status->fatal( 'filenotfound', $srcPath );
+			
+		if ( !is_file( $toAppendPath ) ) 				
+			$status->fatal( 'filenotfound', $toAppendPath );
+			
+		//I assume fopen($src, 'a') fopen ($$toAppend .. etc would be faster / more memory friendly
+		//but ideally we don't append "big" files so it does not matter 
+		if( ! file_put_contents( $srcPath, file_get_contents( $toAppendPath ), FILE_APPEND ) )
+			$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
+					
+		return $status;		
+	}
 	/**
 	 * Take all available measures to prevent web accessibility of new deleted
 	 * directories, in case the user has not configured offline storage
@@ -240,6 +255,14 @@ class FSRepo extends FileRepo {
 		$dstUrlRel = $hashPath . $date . '!' . rawurlencode( $originalName );
 
 		$result = $this->store( $srcPath, 'temp', $dstRel );
+		$result->value = $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
+		return $result;
+	}
+	/*append to a temporary file (used in chunks uploads) */
+	function appendToTemp( $srcPath, $appendDataPath ) {
+		//open the source file
+
+		$result = $this->append( $srcPath, $appendDataPath );
 		$result->value = $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
 		return $result;
 	}

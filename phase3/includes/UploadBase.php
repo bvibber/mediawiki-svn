@@ -21,12 +21,13 @@ class UploadBase {
 	const UPLOAD_VERIFICATION_ERROR = 11;
 	const UPLOAD_WARNING = 12;
 	const INTERNAL_ERROR = 13;
+	const MIN_LENGHT_PARTNAME = 14;
 	
 	const SESSION_VERSION = 2;
 	
 	/**
 	 * Returns true if uploads are enabled.
-	 * Can be overriden by subclasses.
+	 * Can be override by subclasses.
 	 */
 	static function isEnabled() {
 		global $wgEnableUploads;
@@ -319,9 +320,8 @@ class UploadBase {
 		$status = $this->mLocalFile->upload( $this->mTempPath, $comment, $pageText,
 			File::DELETE_SOURCE, $this->mFileProps, false, $user );
 		
-		if( $status->isGood() && $watch ) {
-			$user->addWatch( $this->mLocalFile->getTitle() );
-		}
+		if( $status->isGood() && $watch ) 
+			$user->addWatch( $this->mLocalFile->getTitle() );		
 		
 		if( $status->isGood() )
 			wfRunHooks( 'UploadComplete', array( &$this ) );
@@ -418,10 +418,15 @@ class UploadBase {
 	 * @return string - full path the stashed file, or false on failure
 	 * @access private
 	 */
-	function saveTempUploadedFile( $saveName, $tempName ) {
-		global $wgOut;
+	function saveTempUploadedFile( $saveName, $tempName ) {		
 		$repo = RepoGroup::singleton()->getLocalRepo();
 		$status = $repo->storeTemp( $saveName, $tempName );
+		return $status;
+	}
+	/* append to a stached file */
+	function appendToUploadFile($srcPath, $toAppendPath ){
+		$repo = RepoGroup::singleton()->getLocalRepo();
+		$status = $repo->append($srcPath, $toAppendPath);
 		return $status;
 	}
 	
@@ -435,19 +440,28 @@ class UploadBase {
 	 * @access private
 	 */
 	function stashSession() {
-		$status = $this->saveTempUploadedFile( $this->mDestName, $this->mTempPath );
+		$stash = $this->saveTempUploadedFile( $this->mDestName, $this->mTempPath );
 
-		if( !$status->isGood() ) {
+		if( !$stash ) {
 			# Couldn't save the file.
 			return false;
 		}
 
-		return array(
-			'mTempPath'       => $status->value,
+		$key = $this->getSessionKey ();
+		$_SESSION['wsUploadData'][$key] = array(
+			'mTempPath'       => $stash,
 			'mFileSize'       => $this->mFileSize,
+			'mSrcName'        => $this->mSrcName,
 			'mFileProps'      => $this->mFileProps,
 			'version'         => self::SESSION_VERSION,
 	   	);
+		return $key;
+	}
+	//pull session Key gen from stash in cases where we want to start an upload without much information 
+	function getSessionKey(){
+		$key = mt_rand( 0, 0x7fffffff );
+		$_SESSION['wsUploadData'][$key] = array();
+		return $key;
 	}
 	
 	/**
@@ -843,6 +857,10 @@ class UploadBase {
 		
 		return true;
 				  
+	}
+	/* allow for getAPIresult override (normally just return  UploadFrom::OK to continue form processing */
+	function getAPIresult(){
+		 return UploadFrom::OK;
 	}
 	
 	/**

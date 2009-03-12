@@ -336,7 +336,7 @@ abstract class FileRepo {
 		}
 		return $status;
 	}
-
+	
 	/**
 	 * Store a batch of files
 	 *

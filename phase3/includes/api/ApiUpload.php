@@ -32,7 +32,7 @@ if (!defined('MEDIAWIKI')) {
  * @ingroup API
  */
 class ApiUpload extends ApiBase {
-
+	
 	public function __construct($main, $action) {
 		parent :: __construct($main, $action);
 	}
@@ -43,7 +43,7 @@ class ApiUpload extends ApiBase {
 		$this->mParams = $this->extractRequestParams();
 		$request = $this->getMain()->getRequest();
 		// Add the uploaded file to the params array
-		$this->mParams['file'] = $request->getFileName( 'file' );
+		$this->mParams['file'] = $request->getFileName( 'file' );				
 		
 		// Check whether upload is enabled
 		if( !UploadBase::isEnabled() )
@@ -52,12 +52,21 @@ class ApiUpload extends ApiBase {
 		// One and only one of the following parameters is needed
 		$this->requireOnlyOneParameter( $this->mParams,
 			'sessionkey', 'file', 'url', 'enablechunks' );
+					
+		if( $this->mParams['enablechunks'] ){
+			//chunks upload enabled
+			$this->mUpload = new UploadFromChunks();
+			$this->mUpload->initializeFromParams( $this->mParams );		
 		
-		if( $this->mParams['sessionkey'] ) {
+			if( isset( $this->mUpload->status[ 'error' ] ) )
+				$this->dieUsageMsg( $this->mUpload->status[ 'error' ] );	
+			
+		} else if( $this->mParams['sessionkey'] ) {
 			// Stashed upload			
 			$this->mUpload = new UploadFromStash();
 			$this->mUpload->initialize( $this->mParams['sessionkey'] );
-		} else {
+							
+		}else{
 			// Upload from url or file or start a chunks request
 			
 			// Parameter filename is required
@@ -75,11 +84,12 @@ class ApiUpload extends ApiBase {
 			} elseif( isset( $this->mParams['url'] ) ) {											
 				$this->mUpload = new UploadFromUrl();
 				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url'] );											
-			}elseif (isset( $this->mParams['enablechunks'])) {								
-				$this->mUpload = new UploadFromChunks();
-				$this->mUpload->initializeFromParams( $this->mParams );				
 			}
-		}
+		}		
+		if( !isset( $this->mUpload ) )		
+			$this->dieUsageMsg( array( 'no upload module set' ) );
+		
+		
 		// Check whether the user has the appropriate permissions to upload anyway
 		$permission = $this->mUpload->isAllowed( $wgUser );
 		
@@ -115,35 +125,35 @@ class ApiUpload extends ApiBase {
 			$result['result'] = 'Failure';
 			$result['error'] = 'permission-denied';
 			return $result;
-		}
+		}			
 		
 		$verification = $this->mUpload->verifyUpload( $resultDetails );
-		if( $verification != UploadFromBase::OK ) {
+		if( $verification != UploadBase::OK ) {
 			$result['result'] = 'Failure';
 			switch( $verification ) {
-				case UploadFromBase::EMPTY_FILE:
+				case UploadBase::EMPTY_FILE:
 					$result['error'] = 'empty-file';
 					break;
-				case UploadFromBase::FILETYPE_MISSING:
+				case UploadBase::FILETYPE_MISSING:
 					$result['error'] = 'filetype-missing';
 					break;
-				case UploadFromBase::FILETYPE_BADTYPE:
+				case UploadBase::FILETYPE_BADTYPE:
 					global $wgFileExtensions;
 					$result['error'] = 'filetype-banned';
 					$result['filetype'] = $resultDetails['finalExt'];
 					$result['allowed-filetypes'] = $wgFileExtensions;
 					break;
-				case UploadFromBase::MIN_LENGHT_PARTNAME:
+				case UploadBase::MIN_LENGHT_PARTNAME:
 					$result['error'] = 'filename-tooshort';
 					break;
-				case UploadFromBase::ILLEGAL_FILENAME:
+				case UploadBase::ILLEGAL_FILENAME:
 					$result['error'] = 'illegal-filename';
 					$result['filename'] = $resultDetails['filtered'];
 					break;
-				case UploadFromBase::OVERWRITE_EXISTING_FILE:
+				case UploadBase::OVERWRITE_EXISTING_FILE:
 					$result['error'] = 'overwrite';
 					break;
-				case UploadFromBase::VERIFICATION_ERROR:
+				case UploadBase::VERIFICATION_ERROR:
 					$result['error'] = 'verification-error';
 					$args = $resultDetails['veri'];
 					$code = array_shift( $args );
@@ -151,7 +161,7 @@ class ApiUpload extends ApiBase {
 					$result['args'] = $args;
 					$this->getResult()->setIndexedTagName( $result['args'], 'arg' );
 					break;
-				case UploadFromBase::UPLOAD_VERIFICATION_ERROR:
+				case UploadBase::UPLOAD_VERIFICATION_ERROR:
 					$result['error'] = 'upload-verification-error';
 					$result['upload-verification-error'] = $resultDetails['error'];
 					break;
@@ -178,8 +188,14 @@ class ApiUpload extends ApiBase {
 					$result['sessionkey'] = $sessionKey;
 				return $result;
 			}
-		}
+		}		
 		
+		//check for special API upload response: 
+		$upApiResult = $this->mUpload->getAPIresult( $this->mParams['comment'], $this->mParams['watch'] );
+		if( $upApiResult != UploadBase::OK ) //if we have a result override return it			
+			return $upApiResult;
+		
+		//do the upload			
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
 			$this->mParams['comment'], $this->mParams['watch'], $wgUser );
 		
@@ -231,8 +247,7 @@ class ApiUpload extends ApiBase {
 			'comment' => 'Upload comment or initial page text',
 			'watch' => 'Watch the page',
 			'ignorewarnings' => 'Ignore any warnings',
-			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',
-			'chunk_inx'=> 'The index of the chunk being uploaded. Used to order the build of a single file',
+			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',			
 			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',
 			'sessionkey' => 'Session key in case there were any warnings, or uploading chunks'
 		);
