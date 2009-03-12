@@ -11,6 +11,12 @@
  		$o = '';
  		$sk = $wgUser->getSkin();
  		$dbr =& wfGetDB( DB_SLAVE );
+ 		
+ 		//if in overview mode don't print out the navigator:
+ 		global $wgRequest;
+ 		if( $wgRequest->getVal( 'view' )=='overview' )
+ 			return '';
+ 		
  		// get all annotative layers
  		$stream_id = $this->mv_interface->article->mvTitle->getStreamId();
  		$stream_name = $this->mv_interface->article->mvTitle->getStreamName();
@@ -18,6 +24,7 @@
  		$start_sec = $this->mv_interface->article->mvTitle->getStartTimeSeconds();
  		$duration_sec = $this->mv_interface->article->mvTitle->getDuration();
 		$end_sec   = $this->mv_interface->article->mvTitle->getEndTimeSeconds();
+		
 		// print "start $start_sec end:$end_sec \n ";		
 		foreach ( array( 'prev', 'next' ) as $pntype ) {
 			if ( $o != '' )$o .= ' ';

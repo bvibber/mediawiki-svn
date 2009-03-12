@@ -430,6 +430,8 @@ Jump to stream view: $2',
 	'mv_export_cmml' => 'Export cmml',
 	#'mv_search_stream' => 'Search stream', # duplicate
 	'mv_navigate_stream' => 'Navigate full stream',
+	'mv_stream_overview' => 'stream overview',
+	'mv_edit_time' => 'edit time',
 	'mv_embed_options' => 'Embed options',
 	'mv_overlay' => 'Overlay controls',
 	'mv_stream_tool_heading' => 'Stream tools',
@@ -443,7 +445,6 @@ Jump to stream view: $2',
 	'mv_next_bill' => 'Next bill: $1',
 	'mv_prev_cat' => 'Previous category: $1',
 	'mv_next_cat' => 'Next category: $1',
-	#'mv_navigate_stream' => 'Navigate stream', # duplicate
 
 	# msg for overlay interface:
 	'mv_search_stream' => 'Search stream',

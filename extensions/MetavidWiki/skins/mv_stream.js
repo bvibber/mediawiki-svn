@@ -124,12 +124,12 @@ var mv_stream_interface = {
 
 		//add edit/navigate hook
 		var st_input_mode=false;
-		$j('#mv_stream_time').click(function(){
+		$j('#mv_stream_time,#mv_edit_time').click(function(){
 			if(!st_input_mode){
-				var st = $j('#'+this.id+' .mv_start_time').html();
-				var et =  $j('#'+this.id+' .mv_end_time').html();
-				$j(this).hide();
-				$j(this).after('<form style="display:inline" action="javascript:alert(\'wtf\');" id="td_st_mv_stream_time">' +
+				var st = $j('#mv_stream_time .mv_start_time').html();
+				var et =  $j('#mv_stream_time .mv_end_time').html();
+				$j('#mv_stream_time').hide();
+				$j('#mv_stream_time').after('<form style="display:inline" action="javascript:alert(\'wtf\');" id="td_st_mv_stream_time">' +
 						'<input class="videoHeader" id="mv_td_start_time" size="7" value="'+st+'">'+
 						'<input class="videoHeader" id="mv_td_end_time" size="7" value="'+et+'"> '+
 						'<a href="#" id="mv_td_st_go">go</a> :: '+

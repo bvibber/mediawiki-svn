@@ -31,7 +31,7 @@ roe="http://metavid.org/wiki/index.php?title=Special:MvExportStream&stream_name=
 style="width:400px;height:300px" 
 controls="true" embed_link="true" >	
 	<source type="video/x-flv" src="http://mvbox2.cse.ucsc.edu/mvFlvServer.php/house_proceeding_01-28-08.flv?t=0:01:32/0:03:20"></source>
-	<source type="video/x-flv" src="http://metavidstorage01.ucsc.edu/media/house_proceeding_01-28-08.ogg?t=0:01:32/0:03:20"></source>
+	<source type="video/ogg" src="http://metavidstorage01.ucsc.edu/media/house_proceeding_01-28-08.ogg?t=0:01:32/0:03:20"></source>
 </video>';
 $sample_embed[0]['desc'] = 'Sample Similar to metavid usage';
 

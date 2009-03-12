@@ -1,6 +1,5 @@
 <?php
 // sample embed page (this could be plain html its a php script so that we can grab its location)
-
 do_testing_page();
 
 function do_testing_page(){
@@ -18,7 +17,7 @@ function do_testing_page(){
 <h3>testing embed</h3>
   <table border="1" cellpadding="6" width="600">
 	    <tr>
-	      <td valign="top"><video id="vogg" src="http://<?= $_SERVER['SERVER_NAME']?>/lucky.ogv"></video></td>
+	      <td valign="top"><video id="vogg" src="http://<?= $_SERVER['SERVER_NAME']?>/test.ogg?t=0:0:0/0:6:14"></video></td>
 	      <td valign="top"><b>Test embed</b><br />
 	      </td>
 	    </tr>	    

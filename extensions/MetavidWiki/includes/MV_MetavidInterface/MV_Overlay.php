@@ -19,7 +19,8 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
  	var $parserOutput = null;
  	var $oddEvenToggle = true;
  	var $mvd_pages = array();
- 	/*structures the component output and call html code generation */
+ 	
+/*structures the component output and call html code generation */
  	function getHTML() {
  		switch( $this->req ) {
  			case 'stream_transcripts':
@@ -30,12 +31,14 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
  			break;
  		}
 	}
+	
 	// renders recent changes in the MVD namespace 
 	function do_Recentchanges() {
 		global $wgOut;
 		// quick and easy way: 
 		$wgOut->addWikiText( '{{Special:Recentchanges/namespace=' . MV_NS_MVD . '}}' );
 	}
+	
 	function do_stream_transcripts() {
 		global $wgOut;
 		$this->procMVDReqSet();
@@ -54,6 +57,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			$this->get_transcript_pages();
 		$wgOut->addHTML( "</div>" );
 	}
+	
 	function render_full() {
 		global $wgOut;
  		// "<div >" . 		 					 	
@@ -64,6 +68,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
  		$wgOut->addHTML( $this->render_controls() );
  		
 	}
+	
 	function render_controls() {
 		return '<div class="layers">	
 				<ul>
@@ -121,6 +126,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		// global $mvgIP;
 		// require_once($mvgIP . '/includes/MV_Index.php');
 		$dbr =& wfGetDB( DB_SLAVE );
+		global $wgRequest;
 		$mvd_rows = & MV_Index::getMVDInRange( $this->mv_interface->article->mvTitle->getStreamId(),
 							$this->mv_interface->article->mvTitle->getStartTimeSeconds(),
 							$this->mv_interface->article->mvTitle->getEndTimeSeconds(),

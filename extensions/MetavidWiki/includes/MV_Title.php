@@ -131,11 +131,20 @@
 	}
  	function getTimeRequest() { return $this->start_time . '/' . $this->end_time; }
 	function getMwTitle() { return Title::MakeTitle( MV_NS_MVD, $this->wiki_title ); }
+	
 	function setStartEndIfEmpty() {
-		global $mvDefaultStreamViewLength;
+		global $mvDefaultStreamViewLength, $wgRequest;
+		//if overview mode override the time settings: 
+		if( $wgRequest->getVal('view') == 'overview' ){
+			$this->start_time_sec = 0;
+			$this->start_time = seconds2ntp( $this->start_time_sec ); 
+			$this->end_time_sec = $this->getDuration();
+			$this->end_time = seconds2ntp( $this->end_time_sec );
+		}
+		
 		if ( $this->start_time == null ) {
 			$this->start_time_sec = 0;
- 			$this->start_time = seconds2ntp( $this->start_time_sec );
+ 			$this->start_time = seconds2ntp( $this->start_time_sec ); 			
  		} else {
  			$this->start_time_sec = ntp2seconds( $this->start_time );
 		}
