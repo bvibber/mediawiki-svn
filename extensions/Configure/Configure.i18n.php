@@ -20,9 +20,13 @@ $messages['en'] = array(
 	'configure-edit-ext'                  => 'Extensions',
 	'configure-viewconfig-default-diff'   => 'Changes from default settings',
 
+	'configure-ext-ext-dependencies'      => "'''Warning:''' this extension requires the following {{PLURAL:$2|extension|extensions}} to be activated: $1.",
+	'configure-ext-ext-dependency-err'    => "'''Error:''' the $1 extension requires the $2 extension to be activated.",
 	'configure-ext-doc'                   => 'See online documentation',
 	'configure-ext-schemachange'          => "'''Warning:''' this extension requires a database update to work correctly!",
 	'configure-ext-settings'              => 'Settings',
+	'configure-ext-settings-dep-errors'   => 'This extension cannot be enabled because the following {{PLURAL:$1|setting has|settings have}} an unacceptable value:',
+	'configure-ext-settings-dep-error'    => '$1: required value: $2, current value: $3',
 	'configure-ext-use-extension'         => 'Use this extension',
 	'configure-ext-use'                   => 'Use',
 	'configure-form-reason'               => 'Reason for change:',

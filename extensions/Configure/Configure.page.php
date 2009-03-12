@@ -108,7 +108,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$this->showForm();
 			break;
 		case 'diff':
-			$this->conf = $this->importFromRequest();
+			$this->conf = $this->importFromRequest() + $this->conf;
 			$this->showDiff();
 		case 'initial':
 		default:
@@ -161,6 +161,15 @@ abstract class ConfigurationPage extends SpecialPage {
 			$allowed = $wgUser->isAllowed( $this->mRestriction . '-interwiki' );
 		}
 		return $allowed;
+	}
+
+	/**
+	 * Accessor for $this->conf
+	 *
+	 * @return array
+	 */
+	public function getConf() {
+		return $this->conf;
 	}
 
 	/**

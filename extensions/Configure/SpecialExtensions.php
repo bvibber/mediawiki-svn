@@ -28,6 +28,11 @@ class SpecialExtensions extends ConfigurationPage {
 		$current = $wgConf->getCurrent( $this->mWiki );
 		$settings = $this->importFromRequest();
 		$new = $settings + $current;
+		if ( !$this->checkExtensionsDependencies() ) {
+			$this->conf = $new;
+			$this->showForm();
+			return;
+		}
 		$new = $this->removeDefaults( $new );
 		$new['__includes'] = $this->getRequiredFiles();
 		$ok = $wgConf->saveNewSettings( $new, $this->mWiki, $reason );
@@ -52,6 +57,31 @@ class SpecialExtensions extends ConfigurationPage {
 	}
 
 	/**
+	 * Check dependencies against other extensions, and print errors if any
+	 *
+	 * @return Boolean: success
+	 */
+	protected function checkExtensionsDependencies() {
+		global $wgRequest, $wgOut;
+
+		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
+			if ( !count( $ext->getExtensionsDependencies() ) || !$wgRequest->getCheck( $ext->getCheckName() ) )
+				continue;
+			
+			foreach ( $ext->getExtensionsDependencies() as $depName ) {
+				$dep = $this->mConfSettings->getExtension( $depName );
+				if ( !is_object( $dep ) )
+					throw new MWException( "Unable to find \"{$depName}\" dependency for \"{$ext->getName()}\" extension" );
+				if ( !$wgRequest->getCheck( $dep->getCheckName() ) ) {
+					$wgOut->wrapWikiMsg( '<span class="errorbox">$1</span>', array( 'configure-ext-ext-dependency-err', $ext->getName(), $depName ) );
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Get an array of files to include at each request
 	 * @return array
 	 */
@@ -61,7 +91,8 @@ class SpecialExtensions extends ConfigurationPage {
  			return array();
 		$arr = array();
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
-			if( !$ext->isInstalled() ) continue; // must exist
+			if( !$ext->isInstalled() )
+				continue; // must exist
 			if ( $ext->useVariable() )
  				continue;
 			if ( $wgRequest->getCheck( $ext->getCheckName() ) )
@@ -93,10 +124,12 @@ class SpecialExtensions extends ConfigurationPage {
 		$ret = '';
 		$globalDone = false;
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
-			if( !$ext->isInstalled() ) continue; // must exist
+			if( !$ext->isInstalled() )
+				continue; // must exist
+			$ext->setPageObj( $this );
 			$settings = $ext->getSettings();
 			foreach ( $settings as $setting => $type ) {
-				if ( !isset( $this->conf[$setting] ) && file_exists( $ext->getFile() ) ) {
+				if ( !isset( $this->conf[$setting] ) && $ext->canIncludeFile() ) {
 					if ( !$globalDone ) {
 						extract( $GLOBALS, EXTR_REFS );
 						global $wgHooks;
@@ -109,7 +142,6 @@ class SpecialExtensions extends ConfigurationPage {
 						$this->conf[$setting] = $$setting;
 				}
 			}
-			$ext->setPageObj( $this );
 			$ret .= $ext->getHtml();
 		}
 		if ( $globalDone )

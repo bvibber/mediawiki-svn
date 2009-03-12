@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.13.1 - 12 March 2009
+  (bug 17112) Added dependencies checking for extensions.
+
 0.13.0 - 11 March 2009
   Rewrote extension definitions handling, now using text file.
 

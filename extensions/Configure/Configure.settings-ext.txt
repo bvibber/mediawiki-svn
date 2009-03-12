@@ -15,6 +15,7 @@ settings[] = wgAbuseFilterNativeExpressionEvaluator: text
 settings[] = wgAbuseFilterRestrictedActions: array
 array[] = wgAbuseFilterAvailableActions: simple
 array[] = wgAbuseFilterRestrictedActions: simple
+extensions-dependencies[] = AntiSpoof
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:AbuseFilter
 
@@ -240,6 +241,7 @@ settings[] = wgConfirmAccountNotice: bool, wgAllowAccountRequestFiles: bool
 settings[] = wgAccountRequestExts: array
 array[] = wgAccountRequestTypes: array, wgConfirmAccountSortkey: simple
 array[] = wgAccountRequestExts: simple
+settings-dependencies[] = wgEnableEmail: true
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:ConfirmAccount
 

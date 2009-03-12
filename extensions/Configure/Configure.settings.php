@@ -12,6 +12,8 @@ class ConfigurationSettings {
 	protected $settings, $arrayDefs, $emptyValues, $editRestricted,
 		$viewRestricted, $notEditableSettings, $settingsVersion;
 
+	protected $extensionsObjects = null;
+
 	// Cache
 	protected $cache = array();
 
@@ -51,16 +53,9 @@ class ConfigurationSettings {
 		wfProfileOut( __METHOD__ );
 	}
 
-	/**
-	 * Get an array of WebExtensions objects
-	 *
-	 * @return array
-	 */
-	public function getAllExtensionsObjects() {
-		static $list;
-
-		if( isset( $list ) )
-			return $list;
+	protected function loadExtensions() {
+		if ( is_array( $this->extensionsObjects ) )
+			return;
 
 		wfProfileIn( __METHOD__ );
 
@@ -68,14 +63,41 @@ class ConfigurationSettings {
 		$coreExtensions = TxtDef::remapForConfigure( TxtDef::loadFromFile( dirname( __FILE__ ) . '/Configure.settings-ext.txt' ) );
 		$extensions = array_merge( $coreExtensions, $wgConfigureAdditionalExtensions );
 		usort( $extensions, array( __CLASS__, 'compExt' ) );
+		$list = array();
 		foreach( $extensions as $ext ) {
 			$ext = new WebExtension( $ext );
 			#if( $ext->isInstalled() ) {
 				$list[] = $ext;
 			#}
 		}
+		
+		$this->extensionsObjects = $list;
+		
 		wfProfileOut( __METHOD__ );
-		return $list;
+	}
+
+	/**
+	 * Get an array of WebExtensions objects
+	 *
+	 * @return array
+	 */
+	public function getAllExtensionsObjects() {
+		$this->loadExtensions();
+		
+		return $this->extensionsObjects;
+	}
+
+	/**
+	 * Get an extension object by name
+	 */
+	public function getExtension( $name ) {
+		$this->loadExtensions();
+		
+		foreach( $this->extensionsObjects as $ext )
+			if ( $ext->getName() == $name )
+				return $ext;
+
+		return null;
 	}
 
 	/**

@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.13.0',
+	'version' => '0.13.1',
 );
 
 # Configuration part
@@ -88,6 +88,10 @@ $wgConfigureExtDir = "$IP/extensions/";
  *   extensions-all right
  * - edit-restricted: list of settings that only be modified by users with
  *   extensions-all right
+ * - extensions-dependencies: list of extensions that must be enabled so that
+ *   this extension can be enabled too
+ * - settings-dependencies: array mapping settings to their values that must be
+ *   set so that this extension can be enabled
  * - schema: put it to true if the extension requires a database schema change
  * - url: url to the documentation page
  */
