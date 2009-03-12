@@ -192,15 +192,29 @@ class WebExtension {
 			}
 			return $ret . "</ul>\n</span>\n</fieldset>";
 		}
+
+		$warnings = array();
+
 		if ( $this->mDbChange ) {
-			$warn = wfMsgExt( 'configure-ext-schemachange', array( 'parseinline' ) );
-			$ret .= "<span class=\"errorbox\">{$warn}</span><br clear=\"left\" />\n";
+			$warnings[] = wfMsgExt( 'configure-ext-schemachange', array( 'parseinline' ) );
 		}
 		if ( count( $this->mExtensionsDependencies ) ) {
 			global $wgLang;
-			$warn = wfMsgExt( 'configure-ext-ext-dependencies', array( 'parseinline' ), $wgLang->listToText( $this->mExtensionsDependencies ), count( $this->mExtensionsDependencies ) );
-			$ret .= "<span class=\"errorbox\">{$warn}</span><br clear=\"left\" />\n";
+			$warnings[] = wfMsgExt( 'configure-ext-ext-dependencies', array( 'parseinline' ), $wgLang->listToText( $this->mExtensionsDependencies ), count( $this->mExtensionsDependencies ) );
 		}
+
+		if ( count( $warnings ) ) {
+			$ret .= "<span class=\"errorbox\">\n";
+			if ( count( $warnings ) > 1 ) {
+				$ret .= "<ul>\n<li>";
+				$ret .= implode( "</li>\n<li>", $warnings );
+				$ret .= "</li>\n</ul>";
+			} else {
+				$ret .= $warnings[0];
+			}
+			$ret .= "</span><br clear=\"left\" />\n";
+		}
+
 		$use = wfMsgExt( 'configure-ext-use', array( 'parseinline' ) );
 		$ret .= "<h2>{$use}</h2>\n";
 		$ret .= "<table class=\"configure-table configure-table-ext\"><tr><td>\n";
