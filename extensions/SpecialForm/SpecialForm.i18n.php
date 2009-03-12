@@ -92,7 +92,7 @@ $messages['ar'] = array(
 	'formbadpagename' => 'اسم صفحة سيء',
 	'formbadrecaptcha' => 'قيم غير صحيحة لreCaptcha. حاول مرة ثانية.',
 	'formbadpagenametext' => 'بيانات الاستمارة التي أدخلتها تصنع اسم صفحة سيئا، "$1".',
-	'formrequiredfielderror' => '{{PLURAL:$2|الحقل $1 مطلوب|الحقول $1 مطلوبة}} لهذه الإستمارة.
+	'formrequiredfielderror' => '{{PLURAL:$2|الحقل $1 مطلوب|الحقول $1 مطلوبة}} لهذه الاستمارة.
 من فضلك {{PLURAL:$2|املأه|املأها}}.',
 	'formsavesummary' => 'صفحة جديدة باستخدام [[Special:Form/$1|الاستمارة $1]]',
 	'formsaveerror' => 'خطأ في حفظ الاستمارة',

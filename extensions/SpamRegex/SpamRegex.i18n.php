@@ -1044,7 +1044,7 @@ Należy zwrócić uwagę, by wyrażania nie były zbyt krótkie lub zbyt często
 	'spamregex-no-currently-blocked' => "'''Nie ma zablokowanych wyrażeń.'''",
 	'spamregex-page-title-1' => 'Blokuj frazę za pomocą wyrażenia regularnego',
 	'spamregex-unblock-success' => 'Odblokowano',
-	'spamregex-unblock-message' => "Fraza '''$1''' została odblokowana.",
+	'spamregex-unblock-message' => "Edycja frazy '''$1''' została odblokowana.",
 	'spamregex-page-title-2' => 'Blokuj zapis zwrotów z wykorzystaniem wyrażeń regularnych',
 	'spamregex-block-success' => 'Zablokowano',
 	'spamregex-block-message' => "Wyrażenie '''$1''' zostało zablokowane.",
@@ -1190,6 +1190,7 @@ $messages['ru'] = array(
 	'spamregex-block-submit' => 'Блокировать эту фразу',
 	'spamregex-text' => '(Текст)',
 	'spamregex-summary-log' => '(описание)',
+	'right-spamregex' => 'блокирование спам-фраз с помощью [[Special:SpamRegex]]',
 );
 
 /** Sassaresu (Sassaresu)

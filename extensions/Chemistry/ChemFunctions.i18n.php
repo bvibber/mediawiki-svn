@@ -578,6 +578,16 @@ $messages['km'] = array(
 	'chemFunctions_Name' => 'ឈ្មោះ IUPAC',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'chemicalsource-desc' => '화학식 표현을 위해 <nowiki><chemform></nowiki> 태그를 추가',
+	'chemFunctions_CAS' => 'CAS 등록 번호',
+	'chemFunctions_Formula' => '식',
+	'chemFunctions_ChemFormInputError' => '화학식: 입력 오류!',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

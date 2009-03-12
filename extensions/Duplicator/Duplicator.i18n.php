@@ -1057,7 +1057,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'duplicator' => 'Duplikowanie strony',
-	'duplicator-desc' => 'Stwórz niezależne [[Special:Duplicate|kopie stron]] z pełną historią edycji',
+	'duplicator-desc' => 'Utwórz niezależne [[Special:Duplicate|kopie stron]] z pełną historią edycji',
 	'duplicator-toolbox' => 'Duplikuj tę stronę',
 	'duplicator-header' => 'Ta strona pozwala na stworzenie kompletnego duplikatu artykułu, tworząc niezależne kopie aktualnej treści wraz z pełną historią zmian. Jest to przydatne przy rozwidlaniu (klonowaniu) artykułów itp.',
 	'duplicator-options' => 'Opcje',
@@ -1068,7 +1068,7 @@ $messages['pl'] = array(
 	'duplicator-summary' => 'Skopiowano z [[$1]]',
 	'duplicator-success' => "<big>'''Artykuł [[$1]] został skopiowany do [[$2]].'''</big>",
 	'duplicator-success-revisions' => '$1 {{PLURAL:$1|edycja została skopiowana|edycje zostały skopiowane|edycji zostało skopiowanych}}.',
-	'duplicator-success-talkcopied' => 'Strona dyskusji również została skopiowana.',
+	'duplicator-success-talkcopied' => 'Skopiowana została również strona dyskusji.',
 	'duplicator-success-talknotcopied' => 'Strona dyskusji nie mogła być skopiowana.',
 	'duplicator-failed' => 'Strona nie może zostać zduplikowana. Wystąpił nieznany błąd.',
 	'duplicator-source-invalid' => 'Podaj poprawny tytuł źródła.',

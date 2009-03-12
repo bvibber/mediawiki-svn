@@ -2175,8 +2175,8 @@ Można stosować symbole wieloznaczne * i %',
 	'whitelistnewtabledate' => 'Wygasa:',
 	'whitelistnewtableedit' => 'Przełącz na edycję',
 	'whitelistnewtableview' => 'Przełącz na podgląd',
-	'whitelistnowhitelistedusers' => 'Nie ma żadnych użytkowników w grupie „{{MediaWiki:Group-restricted}}”.
-Musisz [[Special:UserRights|dodać użytkowników do tej grupy]] zanim będziesz mógł dodawać strony do whitelisty użytkownika.',
+	'whitelistnowhitelistedusers' => 'Brak użytkowników w grupie „{{MediaWiki:Group-restricted}}”.
+Musisz [[Special:UserRights|dodać użytkowników do tej grupy]] zanim będziesz mógł dodawać uprawnienia do stron użytkownikom.',
 	'whitelistnewtableprocess' => 'Przetwórz',
 	'whitelistnewtablereview' => 'Przejrzyj',
 	'whitelistselectrestricted' => '== Wybierz nazwę użytkownika z ograniczeniami ==',
@@ -2202,8 +2202,8 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
 	'action-restricttowhitelist' => 'edytowania i przeglądania wyłącznie białej listy',
 	'group-restricted' => 'Ograniczenie użytkownicy',
 	'group-restricted-member' => 'Ograniczony użytkownik',
-	'group-manager' => 'Zarządzający',
-	'group-manager-member' => 'Zarządzający',
+	'group-manager' => 'Zarządcy',
+	'group-manager-member' => 'Zarządca',
 );
 
 /** Pashto (پښتو)

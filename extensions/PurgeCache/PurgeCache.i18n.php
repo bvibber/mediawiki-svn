@@ -45,6 +45,16 @@ $messages['arz'] = array(
 	'purgecache-button' => 'إفراغ الكاش',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'purgecache' => 'Ачысьціць кэш',
+	'purgecache-desc' => '[[Special:PurgeCache|Спэцыяльная старонка]], якая выкарыстоўваецца для ачысткі табліцы OBJECTCACHE',
+	'purgecache-warning' => 'Адбудзецца ачыстка кэш-табліцы.',
+	'purgecache-purged' => 'Кэш быў ачышчаны.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

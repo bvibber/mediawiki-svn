@@ -2064,6 +2064,13 @@ un wat domet zosamme hängk, flöck quitt.',
 	'oversight-offender' => 'Metmaacher:',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'hiderevision-continue' => 'Pesya',
+);
+
 /** Latin (Latina)
  * @author UV
  */

@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'randomimage-desc' => 'يوفر ميديا عشوائية باستخدام <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'randomimage-desc' => 'Дазваляе выпадкова выбіраць мэдыя з дапамогай <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

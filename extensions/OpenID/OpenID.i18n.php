@@ -209,7 +209,7 @@ $messages['ar'] = array(
 	'openidchoosemanual' => 'اسم من اختيارك:',
 	'openidchooseexisting' => 'حساب موجود في هذه الويكي:',
 	'openidchoosepassword' => 'كلمة السر:',
-	'openidconvertinstructions' => 'هذه الإستمارة تسمح لك بتغيير حساب مستخدمك ليستعمل مسار هوية مفتوحة.',
+	'openidconvertinstructions' => 'هذه الاستمارة تسمح لك بتغيير حساب مستخدمك ليستعمل مسار هوية مفتوحة.',
 	'openidconvertsuccess' => 'تم التحول بنجاح إلى الهوية المفتوحة',
 	'openidconvertsuccesstext' => 'أنت حولت بنجاح هويتك المفتوحة إلى $1.',
 	'openidconvertyourstext' => 'هذه بالفعل هويتك المفتوحة.',
@@ -219,7 +219,7 @@ $messages['ar'] = array(
 لو كنت تريد استخدام الهوية المفتوحة لتسجيل الدخول في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك لاستخدام الهوية المفتوحة]].",
 	'openidnousername' => 'لا اسم مستخدم تم تحديده.',
 	'openidbadusername' => 'اسم المستخدم المحدد سيء.',
-	'openidautosubmit' => 'هذه الصفحة تحتوي على إستمارة ينبغي أن يتم إرسالها تلقائيا لو أنك لديك الجافاسكريبت مفعلة.
+	'openidautosubmit' => 'هذه الصفحة تحتوي على استمارة ينبغي أن يتم إرسالها تلقائيا لو أنك لديك الجافاسكريبت مفعلة.
 لو لا، جرب زر \\"Continue\\".',
 	'openidclientonlytext' => 'أنت لا يمكنك استخدام الحسابات من هذا الويكي كهوية مفتوحة على موقع آخر.',
 	'openidloginlabel' => 'مسار الهوية المفتوحة',
@@ -232,6 +232,7 @@ $messages['ar'] = array(
 
 يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
 	'openidupdateuserinfo' => 'تحديث معلوماتي الشخصية',
+	'openid-prefs' => 'هوية مفتوحة',
 	'openid-prefstext' => 'تفضيلات [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 	'openid-pref-update-userinfo-on-login' => 'حدث معلوماتي من شخصية الهوية المفتوحة كل مرة أسجل الدخول',

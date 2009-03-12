@@ -360,6 +360,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author PieRRoMaN

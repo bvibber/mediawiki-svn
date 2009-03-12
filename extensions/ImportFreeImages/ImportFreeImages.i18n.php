@@ -827,7 +827,7 @@ $messages['os'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'importfreeimages' => 'Import grafik z odpowiednią licencją.',
+	'importfreeimages' => 'Import grafik na odpowiednich licencjach',
 	'importfreeimages-desc' => 'Umożliwia [[Special:ImportFreeImages|import grafik z odpowiednią licencją]] z [http://www.flickr.com flickra]',
 	'importfreeimages_description' => 'Ta strona pozwala na wyszukiwanie na serwisie flickr zdjęć z odpowiednią licencją i na ich import do wiki.',
 	'importfreeimages_noapikey' => 'Nie masz skonfigurowanego klucza API Flickr.

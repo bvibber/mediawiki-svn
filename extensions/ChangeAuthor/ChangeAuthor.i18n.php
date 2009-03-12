@@ -390,6 +390,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author DaSch
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -413,7 +414,7 @@ $messages['de'] = array(
 	'changeauthor-invalidform' => 'Bitte benutze das Formular auf der [[Special:ChangeAuthor|Spezialseite]].',
 	'changeauthor-success' => 'Deine Änderung wurde erfolgreich durchgeführt.',
 	'changeauthor-logentry' => 'änderte Autorenname der $2 von $1 von $3 auf $4',
-	'changeauthor-logpagename' => 'Autorenname-Änderungslogbuch',
+	'changeauthor-logpagename' => 'Autorennameänderungs-Logbuch',
 	'changeauthor-rev' => 'Version $1',
 	'right-changeauthor' => 'Ändere den Autor einer Version',
 );

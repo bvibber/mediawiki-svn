@@ -831,6 +831,13 @@ $messages['de-formal'] = array(
 	'deletequeue-review-success' => 'Sie haben erfolgreich die Löschung dieser Seite geprüft',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'deletequeue-case-reason' => 'Αιτία:',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -3441,6 +3448,13 @@ $messages['ru'] = array(
 	'deletequeue-list-header-queue' => 'Очередь',
 	'deletequeue-list-header-expiry' => 'Истёкшие',
 	'deletequeue-list-header-discusspage' => 'Страница обсуждения',
+);
+
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'deletequeue-delnom-otherreason' => 'Ostali razlog/zi',
 );
 
 /** Slovak (Slovenčina)

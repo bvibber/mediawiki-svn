@@ -2717,7 +2717,7 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-bday' => 'Wiek:',
 	'sign-email' => 'Adres e‐mail:',
 	'sign-indicates-req' => '<small><i><font color="red">*</font> oznacza wymagane pole.</i></small>',
-	'sign-hide-note' => '<small><i><font color="red">**</font> Uwaga: Ukryte przez Ciebie informacje nadal będą widoczne dla moderatorów/administratorów.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Uwaga – ukryte przez Ciebie informacje nadal będą widoczne dla administratorów.</i></small>',
 	'sign-list-hideaddress' => 'Nie pokazuj adresu',
 	'sign-list-hideextaddress' => 'Nie pokazuj miejscowości, kodu pocztowego ani kraju.',
 	'sign-list-hidephone' => 'Nie pokazuj numeru telefonu',

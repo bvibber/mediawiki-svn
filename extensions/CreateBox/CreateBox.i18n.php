@@ -65,6 +65,13 @@ $messages['arz'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'createbox-create' => 'Стварыць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -38,6 +38,14 @@ $messages['arz'] = array(
 	'random-users-avatars-desc' => 'يضيف وسم <tt>&lt;randomuserswithavatars&gt;</tt> لعرض أفاترات مستخدمين مختارين عشوائيا',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'random-users-avatars-title' => 'Знайсьці новую суполку',
+	'random-users-avatars-desc' => 'Дадае тэг <tt>&lt;randomuserswithavatars&gt;</tt> для паказу аватараў выпадкова выбраных ўдзельнікаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

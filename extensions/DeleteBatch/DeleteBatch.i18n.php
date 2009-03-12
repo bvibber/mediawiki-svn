@@ -897,7 +897,7 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
  */
 $messages['pl'] = array(
 	'deletebatch' => 'Usuń grupę stron',
-	'deletebatch-desc' => '[[Special:DeleteBatch|Usuń grupę stron]]',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Usuwanie grup stron]]',
 	'deletebatch-help' => 'Usuwanie grupy stron. Strony możesz usuwać pojedynczo lub poprzez usunięcie grupy stron, wymienionych w pliku.
 Wybierz użytkownika, który będzie widoczny w logu stron usuniętych.
 Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej linii tekstu, przedzielone symbolem „|”.',
@@ -917,9 +917,9 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 	'deletebatch-omitting-invalid' => 'Pominięto niewłaściwą stronę $1.',
 	'deletebatch-file-bad-format' => 'Plik powinien zawierać wyłącznie tekst',
 	'deletebatch-file-missing' => 'Nie można odczytać pliku',
-	'deletebatch-select-script' => 'usuwanie stron',
+	'deletebatch-select-script' => 'usuwanie stron skryptem',
 	'deletebatch-select-yourself' => 'Ty',
-	'deletebatch-no-page' => 'Wybierz pojedynczą stronę do usunięcia ALBO wybierz plik zawierający listę stron.',
+	'deletebatch-no-page' => 'Wybierz jedną stronę LUB plik z listą stron do usunięcia.',
 	'right-deletebatch' => 'usuwanie grupy stron',
 );
 

@@ -575,16 +575,22 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['el'] = array(
 	'contrib-hist-name' => 'Όνομα',
 	'contrib-hist-amount' => 'Ποσόν',
+	'contrib-hist-next' => 'Προηγούμενες δωρεές',
+	'contrib-hist-previous' => 'Νεώτερες δωρεές',
 	'contrib-hist-anonymous' => 'Ανώνυμος',
 	'contribstats-day' => 'Ημέρα',
 	'contribstats-month' => 'Μήνας',
+	'contribstats-currency' => 'Νόμισμα',
 	'contribstats-amount' => 'Ποσόν (USD)',
+	'contribstats-contributions' => 'Εισφορές',
 	'fundraiserstats-date' => 'Ημερομηνία',
+	'fundraiserstats-contributions' => 'Εισφορές',
 );
 
 /** Esperanto (Esperanto)
@@ -1492,6 +1498,7 @@ $messages['ko'] = array(
 	'contribstats-amount' => '금액 (USD)',
 	'contribstats-total' => '합계 (USD)',
 	'contribstats-avg' => '평균 (USD)',
+	'contribstats-max' => '최대 (USD)',
 	'contribstats-total-ytd' => '합계 (연간)',
 	'contribstats-value-exactly' => '정확히 $1',
 	'contribstats-value-under' => '$1 미만',

@@ -146,6 +146,19 @@ $messages['es'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Gracias por votar!',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'communityvoice' => 'Komunitatearen Ahotsa',
+	'communityvoice-desc' => 'Komunitate parte-hartze tresnak',
+	'communityvoice-ratings' => 'Balorazioak',
+	'communityvoice-ratings-scale-status-sending' => 'Bidaltzen...',
+	'communityvoice-ratings-scale-status-error' => 'Bidaltzen akatsa suertatu da!',
+	'communityvoice-ratings-scale-status-thanks' => 'Eskerrik asko bozkatzeagatik!',
+	'communityvoice-ratings-error-no-category' => 'Kategoria falta da balorazio etiketan.',
+);
+
 /** French (Français)
  * @author IAlex
  */

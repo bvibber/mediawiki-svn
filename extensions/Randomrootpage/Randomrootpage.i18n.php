@@ -38,6 +38,14 @@ $messages['arz'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحة خاصة]] تعرض صفحة جذر عشوائية',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'randomrootpage' => 'Выпадковая карэнная старонка',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Спэцыяльная старонка]], якая выбірае выпадковую карэнную старонку',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

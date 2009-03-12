@@ -690,7 +690,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'errorhandler-desc' => 'Błąd operatora MediaWiki',
+	'errorhandler-desc' => 'Wyłapywanie błędów MediaWiki',
 	'errorhandler-errors' => 'Błędy:',
 	'errorhandler-error-fatal' => 'Błąd krytyczny',
 	'errorhandler-error-warning' => 'Ostrzeżenie',

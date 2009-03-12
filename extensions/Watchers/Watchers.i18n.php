@@ -624,7 +624,7 @@ $messages['os'] = array(
  */
 $messages['pl'] = array(
 	'watchers' => 'Obserwujący',
-	'watchers-desc' => 'Pokazuje, [[Special:Watchers|którzy użytkownicy mają stroną w obserwowanych]]',
+	'watchers-desc' => 'Pokazuje [[Special:Watchers|użytkowników, którzy mają stroną w obserwowanych]]',
 	'watchers_link_title' => 'Kto obserwuje tę stronę?',
 	'watchers_error_article' => '<b>Błąd:</b> Strona nie istnieje',
 	'watchers_header' => '{{PLURAL:$2|Obserwujący|Obserwujący}} „$1”',

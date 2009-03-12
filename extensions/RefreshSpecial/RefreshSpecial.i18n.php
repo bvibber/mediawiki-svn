@@ -159,6 +159,9 @@ $messages['be-tarask'] = array(
 	'refreshspecial-slave-lagged' => 'Праблемы сувязі з падпарадкаванай сыстэмай. Калі ласка, пачакайце...',
 	'refreshspecial-reconnected' => 'Перадалучэньне.',
 	'refreshspecial-reconnecting' => 'Памылка злучэньня, перадалучэньне праз 10 сэкундаў...',
+	'refreshspecial-page-result' => '{{PLURAL:$1|атрыманы $1 радок у|атрыманыя $1 радкі ў|атрыманыя $1 радкоў у}}',
+	'refreshspecial-total-display' => '{{PLURAL:$1|Адноўленая $1 старонка|Адноўленыя $1 старонкі|Адноўленыя $1 старонак}} уключаючы $2 {{PLURAL:$2|радок|радкі|радкоў}} за $3 (поўны час выкананьня скрыпта $4)',
+	'right-refreshspecial' => 'Абнавіць спэцыяльныя старонкі',
 );
 
 /** Bulgarian (Български)

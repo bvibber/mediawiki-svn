@@ -35,6 +35,13 @@ Shown in [[Special:Version]].
 Do not translate link targets, or function names.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'pipeescape-desc' => 'دالة محلل <code>#!</code> لعندما تريد حرف أنبوبة ليكون فقط حرف أنبوبة',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */
@@ -42,16 +49,95 @@ $messages['de'] = array(
 	'pipeescape-desc' => 'Parserfunktion <code>#!</code> versteckt Parameter-Trenner',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'pipeescape-desc' => 'Parserowa funkcija <code>#!</code>, joli coš znamješko | schowaś (znamješko | ma se jano pśedstajiś, bźez wósebneje funkcije)',
+);
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'pipeescape-desc' => 'Fonction parseur <code>#!</code> pour inséser le caractère pipe en tant que simple caractère.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'pipeescape-desc' => 'Función analítica <code>#!</code> para cando queira un carácter punto que sexa só un carácter punto',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'pipeescape-desc' => 'Parserfunktion <code>#!</code> versteckt Parameter-Trenner',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'pipeescape-desc' => 'Parserowa funkcija <code>#!</code>, jeli chceš znamješko | schować (znamješko | ma so jenož předstajić, bjez wosebiteje funkcije)',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'pipeescape-desc' => 'パイプ記号をパイプ記号のまま扱いたい場合のために、パーサー関数 <code>#!</code> を追加する',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'pipeescape-desc' => 'Brengk de Paaserfunxjuhn <code>#!</code> en et Wiki, die der sangkraaschte Shtresh unmollesteet dorsch loht.',
+	'pipeescape-desc' => 'Brengk de Paaserfunxjuhn <code>#!</code> en et Wiki, die der sängkrääschte Shtresh unmollesteet dorsch löht.',
 );
 
 /** Latin (Latina)
+ * @author UV
  * @author purodha
  */
 $messages['la'] = array(
-	'pipeescape-desc' => 'Functio parseris nominae <code>#!</code> adita in vici, protegens litera | qui haec separator parametorum non interpretatur.',
+	'pipeescape-desc' => 'Functio parseris <code>#!</code> qui protegit litteram | ne haec littera separet parametra',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'pipeescape-desc' => 'Parserfunctie <code>#!</code> om een pipe-karakter gewoon een pipe-karakter te laten zijn',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'pipeescape-desc' => 'Foncion parser <code>#!</code> per inserir lo caractèr pipe en tant que caractèr simple.',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'pipeescape-desc' => 'Função do analisador parser <code>#!</code> para quando se pretende que um caráter barra vertical ("pipe") seja apenas um caráter barra vertical.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'pipeescape-desc' => 'Função do analisador (parser) <code>#!</code> para quando se pretende que um caractere barra vertical ("pipe") seja apenas um caractere barra vertical.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'pipeescape-desc' => 'Funkciu syntaktického analyzátora <code>#!</code> použijete vtedy, keď chcete, aby bol znak rúry iba znakom rúry',
+);
+

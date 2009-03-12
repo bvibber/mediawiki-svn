@@ -86,9 +86,15 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'randomincategory' => 'Выпадковая старонка ў катэгорыі',
+	'randomincategory-desc' => '[[Special:Randomincategory|Спэцыяльная старонка]] для атрыманьня выпадковай старонкі ў катэгорыі',
+	'randomincategory-toolbox' => 'Выпадковая старонка',
+	'randomincategory-nocategory' => 'Катэгорыя $1 не існуе, ці яна пустая',
 	'randomincategory-label' => 'Катэгорыя:',
+	'randomincategory-submit' => 'Перайсьці',
 );
 
 /** Bulgarian (Български)

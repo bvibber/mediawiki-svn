@@ -378,6 +378,13 @@ $messages['eu'] = array(
 	'spamdifftool_option_none' => 'ezer',
 );
 
+/** Persian (فارسی)
+ * @author BlueDevil
+ */
+$messages['fa'] = array(
+	'spamdifftool_cantedit' => 'متاسفانه شما اجازه ویرایش لیست سیاه اسپم را ندارید.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

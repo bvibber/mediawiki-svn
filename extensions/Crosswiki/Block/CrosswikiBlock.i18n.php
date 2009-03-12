@@ -1588,6 +1588,7 @@ Tornar cap a :
 $messages['os'] = array(
 	'crosswikiblock-reason' => 'Аххос:',
 	'crosswikiunblock-reason' => 'Аххос:',
+	'crosswikiblock-dbnotfound' => 'Бæрæггæнæнты базæ нæй',
 );
 
 /** Polish (Polski)

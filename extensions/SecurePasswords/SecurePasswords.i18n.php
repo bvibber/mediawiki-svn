@@ -549,6 +549,7 @@ Dapat itong:',
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
@@ -559,7 +560,7 @@ Muton:',
 	'securepasswords-uppercase' => 'ninädon mayudi pu bali',
 	'securepasswords-digit' => 'ninädön numati pu bali',
 	'securepasswords-special' => 'ninädon malati patik pu bali (malats patik binons: $1)',
-	'securepasswords-username' => 'difön de gebananam olik',
+	'securepasswords-username' => 'difön de gebananem olik',
 	'securepasswords-word' => 'no binön vöd',
 );
 

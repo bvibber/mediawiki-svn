@@ -107,7 +107,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'review_sidebar_title' => 'مراجعة',
-	'review-desc' => 'خاصية [[Special:Review|التحقق]] المشهورة.',
+	'review-desc' => 'يسمح للمستخدمين [[Special:Review|بالتحقق]] من الصفحات',
 	'review_topics' => "# التالي هو قائمة المواضيع والنطاقات لامتداد المراجعة.
 # كل موضوع معرف بواسطة سطر من خمس قيم، مفصولة بواسطة ':' (كل السطور الأخرى سيتم تجاهلها).
 # الترتيب هو: مفتاح رقمي (>0)، اسم، أقصى نطاق (>1؛ 2=نعم/لا)، معنى أقل قيمة (مثال، 'سيء')، معنى أعلى قيمة (مثال، 'جيد').
@@ -127,7 +127,7 @@ $messages['ar'] = array(
 	'review_total_statistics' => 'الإجمالي',
 	'review_statistics_left_corner' => 'المراجعة',
 	'review_version_link' => 'المراجعة #$1',
-	'review_statistic_cell' => 'المتوسط: $1 من $2<br />($4 مستخدم، $5 مجهول)',
+	'review_statistic_cell' => 'المتوسط: $1 of $2<br />($4 سجل {{PLURAL:$4|مستخدم|مستخدم}}، $5 {{PLURAL:$5|مستخدم|مستخدم}} مجهول)',
 	'review_version_statistic_cell' => '$1 من $2',
 	'review_version_reviews_link' => '<small>(مراجعات النسخة)</small>',
 	'review_concerns_page' => 'هذه المراجعة هي حول الصفحة "$1".',

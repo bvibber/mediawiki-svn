@@ -31,6 +31,13 @@ $messages['arz'] = array(
 	'redirect-desc' => 'يسمح بضبط سهل للتحويلات عند [[MediaWiki:Redirect-addnewaccount|إنشاء الحساب]] و [[MediaWiki:Redirect-userlogoutcomplete|تسجيل الخروج]]',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'redirect-desc' => 'Дазваляе лёгка канфігураваць перанакіраваньне на [[MediaWiki:Redirect-addnewaccount|стварэньне рахунку]] і [[MediaWiki:Redirect-userlogoutcomplete|выйсьце]]',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
