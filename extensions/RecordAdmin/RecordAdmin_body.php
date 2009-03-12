@@ -35,18 +35,10 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( $type && $wgRecordAdminUseNamespaces ) {
 			if ( $wpTitle && !ereg( "^$type:.+$", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
 		}
-		if ( version_compare( substr( $wgVersion, 0, 4 ), '1.13' ) > 0 ) {
-			$wgOut->addHTML( $wgLang->pipeList( array(
-				"<div class='recordadmin-menubar'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>",
-				"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div>\n"
-			) ) );
-		}
-		else {
-			$wgOut->addHTML(
-				"<div class='recordadmin-menubar'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a> | "
-				. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div>\n"
-			);
-		}
+		$wgOut->addHTML(
+			"<div class='recordadmin-menubar'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>"
+			. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div>\n"
+		);
 
 		# Get posted form values if any
 		$posted = array();
