@@ -34,6 +34,7 @@ var nativeEmbed = {
 				   	'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
 				   	'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
 				   	'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' +
+				   	'onprogress="$j(\'#'+this.id+'\').get(0).onprogress( event );return false;" '+
 				   	'onended="$j(\'#'+this.id+'\').get(0).onended();return false;" >' +
 				'</video>';
 	},
@@ -96,6 +97,9 @@ var nativeEmbed = {
 	onloadedmetadata: function(){
 		js_log('f:onloadedmetadata metadata ready');
 		//set the clip duration 
+	},
+	onprogress: function(e){
+		this.bufferedPercent =  Math.round(e.loaded/e.total*100);
 	},
 	onended:function(){
 		//clip "ended" 
