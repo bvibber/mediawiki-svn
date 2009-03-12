@@ -37,13 +37,14 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 		if ( version_compare( substr( $wgVersion, 0, 4 ), '1.13' ) > 0 ) {
 			$wgOut->addHTML( $wgLang->pipeList( array(
-				"<div class='center'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>",
-				"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div><br />\n"
+				"<div class='recordadmin-menubar'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a>",
+				"<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div>\n"
 			) ) );
 		}
 		else {
-			$wgOut->addHTML( "<a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a> | "
-				. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a><br />\n"
+			$wgOut->addHTML(
+				"<div class='recordadmin-menubar'><a href='" . $title->getLocalURL() . "/$type'>" . wfMsg( 'recordadmin-newsearch', $type ) . "</a> | "
+				. "<a href='" . $title->getLocalURL() . "'>" . wfMsg( 'recordadmin-newrecord' ) . "</a></div>\n"
 			);
 		}
 
