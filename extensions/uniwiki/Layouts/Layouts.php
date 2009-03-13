@@ -253,9 +253,14 @@ function UW_Layouts_preFillTextBox ( &$text, $title ) {
 	$layout_title = Title::newFromURL ( "Layout:" . $layout_slug );
 	$layout_article = new Article ( $layout_title );
 
+	$layout_cats = '';
+
 	/* if the layout article exists, pre-fill the textarea with its
 	 * wiki text. if it doesn't exist, do nothing (no error) */
 	if ( ( $layout_text = $layout_article->fetchContent() ) !== false ) {
+
+		$layout_text = UW_Layouts_stripCats($layout_text, $layout_cats);
+		$text .= $layout_cats;
 
 		/* break the layout text into sections by splitting
 		 * at header level =one= or ==two==, and iterate */
@@ -281,4 +286,39 @@ function UW_Layouts_preFillTextBox ( &$text, $title ) {
 		$text .= "\n\n<layout name=\"$layout_slug\" />";
 
 	return true;
+}
+
+function UW_Layouts_stripCats($texttostrip,&$catsintext){
+	global $wgContLang, $wgOut;
+
+	# Get localised namespace string:
+	$m_catString = strtolower( $wgContLang->getNsText( NS_CATEGORY ) );
+	# The regular expression to find the category links:
+	$m_pattern = "\[\[({$m_catString}|category):(.*?)\]\]";
+
+	$m_replace = "$2";
+	# The container to store the processed text:
+	$m_cleanText = '';
+
+	# Check linewise for category links:
+	foreach( explode( "\n", $texttostrip ) as $m_textLine ) {
+		# Filter line through pattern and store the result:
+		$m_cleanText .= trim( preg_replace( "/{$m_pattern}/i", "", $m_textLine ) . "\n" );
+
+		# Check if we have found a category, else proceed with next line:
+		if( preg_match_all( "/{$m_pattern}/i",$m_textLine,$catsintext2,PREG_SET_ORDER) ){        
+			foreach( $catsintext2 as $local_cat => $m_prefix ) {
+				//Set first letter to upper case to match MediaWiki standard
+				$strFirstLetter = substr($m_prefix[2], 0,1);
+				strtoupper($strFirstLetter);
+				$newString = strtoupper($strFirstLetter) . substr($m_prefix[2], 1);
+				$catsintext .= "[[" . $m_catString . ":" . $newString . "]]\n";                                  
+			}
+			# Get the category link from the original text and store it in our list:
+			preg_replace( "/.*{$m_pattern}/i", $m_replace,$m_textLine,-1,$intNumber );
+		}
+
+	}
+
+	return $m_cleanText;    
 }
