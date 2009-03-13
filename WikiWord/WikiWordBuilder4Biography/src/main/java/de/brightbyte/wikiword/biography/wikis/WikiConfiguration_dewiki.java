@@ -12,14 +12,14 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 
 		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Personendaten"),
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-sortname", "NAME").setStripMarkup(true),
-				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-names", "NAME").setStripMarkup(true),
-				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-names", "ALTERNATIVNAMEN").setStripMarkup(true)
+				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-name", "NAME").setStripMarkup(true),
+				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-name", "ALTERNATIVNAMEN").setStripMarkup(true)
 						.setSplitPattern(Pattern.compile("\\s[;]\\s")).addNormalizer(Pattern.compile("\\(.*?\\)"),""),
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-occupation", "KURZBESCHREIBUNG").setStripMarkup(true),
-				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-born", "GEBURTSDATUM").setStripMarkup(true),
-				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-died", "STERBEDATUM").setStripMarkup(true),
-				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-born-at", "GEBURTSORT").setStripMarkup(true),
-				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-died-at", "STERBEORT").setStripMarkup(true)
+				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-birth-date", "GEBURTSDATUM").setStripMarkup(true),
+				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-death-date", "STERBEDATUM").setStripMarkup(true),
+				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-birth-place", "GEBURTSORT").setStripMarkup(true),
+				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("person-death-place", "STERBEORT").setStripMarkup(true)
 			) );
 
 	}
