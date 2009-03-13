@@ -37,7 +37,11 @@ function pyver {
 	return 0
 }
 
-google=`ping -q -c3 -W2 www.google.com`
+
+uname -a 2>&1 | grep "Linux" >/dev/null 2>&1 && echo "Linux detected." || { 
+	echo "This isn't Linux."; exit 1; }
+
+google=`ping -q -c3 -W2 www.google.com 2>&1`
 echo $google | grep "unknown host" > /dev/null && {
 	echo "No DNS available. Is the network available at all? Ensure the network becomes available"
 	exit 1 
@@ -48,15 +52,17 @@ echo $google | grep "100% packet loss" > /dev/null && {
  }
 echo $google | grep "0% packet loss" >/dev/null && echo "Network seems up"
 
-uname -a 2>&1 | grep "Linux" >/dev/null 2>&1 && echo "Linux detected." || { 
-	echo "This isn't Linux."; exit 1; }
-
 aptitude --version >/dev/null 2>&1 && echo "aptitude found, continuing" || { 
-	echo "aptitude fails to respond, please ensure your debian environment is sane."; exit 1; }
+	echo "aptitude fails to respond, please ensure your debian environment is sane. (Try something like apt-get update; apt-get install aptitude) "; exit 1; }
 
 echo " --- "
 
+locale -a 2>&1 | grep "en_US.utf8" >/dev/null && echo "System supports utf8 locale" || echo "locale en_US.utf8 not installed. Ensure debconf is installed, then run   dpkg-reconfigure locales"
+
+echo " --- "
 x=0
+checkexist debconf
+x=$(($?|$x))
 checkexist mysql-server-5.0
 x=$(($?|$x))
 checkexist mysql-client-5.0 
@@ -73,7 +79,10 @@ checkexist apache2.2-common
 x=$(($?|$x))
 checkexist subversion
 x=$(( $?|$x ))
-
+checkexist php5-mysql
+x=$(( $?|$x ))
+checkexist php5-imagick
+x=$(( $?|$x ))
 echo " --- "
 if [ $x != 0 ]; then
 	echo "One or more issues were discovered. It is unlikely that the installer will work"
@@ -81,3 +90,12 @@ else
 	echo "It may be possible to install the wikiation installer"
 fi
 
+echo
+echo "=== Specific things for wikiation environment"
+test -d /var/www/revisions && echo "revisionsdir exists" || { echo "you may want to create a directory /var/www/revisions. Don't forget to modify your apache configuration."; exit 1; }
+
+checkexist wget || exit 1
+
+touch /var/www/revisions/installertest
+wget 'http://localhost/revisions/installertest' 2>&1 | grep "200 OK" >/dev/null && echo "apache configured ok" || echo "apache not correctly configured"
+rm /var/www/revisions/installertest
