@@ -115,9 +115,10 @@ class UploadFromChunks extends UploadBase {
 			
 		}else if( $this->chunk_mode == UploadFromChunks::DONE ){
 			//append the last chunk: 
-			$this->doChunkAppend();
-			//process the upload normally: 
-			return UploadFrom::OK;
+			if( $this->doChunkAppend() ){
+				//process the upload normally: 
+				return UploadFrom::OK;
+			}			
 		}		
 	}
 	//append the given chunk to the temporary uploaded file. (if no temporary uploaded file exists created it.
@@ -143,13 +144,6 @@ class UploadFromChunks extends UploadBase {
 				$this->appendToUploadFile( $this->mTempAppendPath,  $this->mTempPath );	
 			}
 		}
-		//@@todo api should allow for "comment vs page text"
-		
-		
-		//do the chunk append:
-		
-		//do the actual upload:		
-		 
 	}
 		
 	function checkAPIresultOverride(){

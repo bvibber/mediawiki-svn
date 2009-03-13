@@ -87,17 +87,12 @@ class ApiUpload extends ApiBase {
 			}
 		}		
 		if( !isset( $this->mUpload ) )		
-			$this->dieUsageMsg( array( 'no upload module set' ) );
+			$this->dieUsage( 'No upload module set', 'nomodule' );		
 		
 		
 		// Check whether the user has the appropriate permissions to upload anyway
 		$permission = $this->mUpload->isAllowed( $wgUser );
 		
-		/*global $wgGroupPermissions;
-		
-		print "perm: $permission";
-		print_r($wgGroupPermissions['user'], $wgUser->isAllowed( 'upload' ));
-		die();*/
 		
 		if( $permission !== true ) {
 			if( !$wgUser->isLoggedIn() )
