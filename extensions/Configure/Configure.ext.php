@@ -22,6 +22,7 @@ class WebExtension {
 	protected $mDoc;
 	protected $mExtVar = null;
 	protected $mObj = null;
+	protected $mTempActivated = null;
 
 	/**
 	 * Construct a new object.
@@ -258,8 +259,13 @@ class WebExtension {
 		$ret = array();
 		$conf = $this->mObj->getConf();
 		foreach ( $this->mSettingsDependencies as $setting => $value ) {
-			if ( $conf[$setting] !== $value ) {
-				$ret[] = array( $setting, $value, $conf[$setting] );
+			if ( array_key_exists( $setting, $conf ) )
+				$actual = $conf[$setting];
+			else
+				$actual = $GLOBALS[$setting];
+			 
+			if ( $actual !== $value ) {
+				$ret[] = array( $setting, $value, $actual );
 			}
 		}
 		return $ret;
@@ -301,13 +307,19 @@ class WebExtension {
  		return $this->mExtVar;
  	}
 
+	public function setTempActivated( $val = null ) {
+		return wfSetVar( $this->mTempActivated, $val );
+	}
+
 	/**
 	 * Is this extension activated?
 	 *
 	 * @return Boolean
 	 */
 	public function isActivated() {
-		if( $this->useVariable() ) {
+		if( $this->mTempActivated !== null ) {
+			return $this->mTempActivated;
+		} else if( $this->useVariable() ) {
  			return isset( $GLOBALS[$this->getVariable()] ) && $GLOBALS[$this->getVariable()];
  		} else {
  			global $wgConf;

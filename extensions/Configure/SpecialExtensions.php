@@ -30,6 +30,7 @@ class SpecialExtensions extends ConfigurationPage {
 		$new = $settings + $current;
 		if ( !$this->checkExtensionsDependencies() ) {
 			$this->conf = $new;
+			$this->mIsPreview = true;
 			$this->showForm();
 			return;
 		}
@@ -121,19 +122,25 @@ class SpecialExtensions extends ConfigurationPage {
 	 * @return xhtml
 	 */
 	protected function buildAllSettings() {
+		global $wgRequest;
+
 		$ret = '';
 		$globalDone = false;
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
 			if( !$ext->isInstalled() )
 				continue; // must exist
+
 			$ext->setPageObj( $this );
+
+			if ( $this->mIsPreview )
+				$ext->setTempActivated( $wgRequest->getCheck( $ext->getCheckName() ) );
+
 			$settings = $ext->getSettings();
 			foreach ( $settings as $setting => $type ) {
 				if ( !isset( $this->conf[$setting] ) && $ext->canIncludeFile() ) {
 					if ( !$globalDone ) {
 						extract( $GLOBALS, EXTR_REFS );
 						global $wgHooks;
-
 						$oldHooks = $wgHooks;
 						$globalDone = true;
 					}
@@ -142,10 +149,12 @@ class SpecialExtensions extends ConfigurationPage {
 						$this->conf[$setting] = $$setting;
 				}
 			}
+			if ( $globalDone )
+				$GLOBALS['wgHooks'] = $oldHooks;
+
 			$ret .= $ext->getHtml();
 		}
-		if ( $globalDone )
-			$GLOBALS['wgHooks'] = $oldHooks;
+
 		return $ret;
 	}
 }

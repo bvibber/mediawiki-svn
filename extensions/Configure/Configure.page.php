@@ -11,6 +11,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected $mCanEdit = true;
 	protected $conf;
 	protected $mConfSettings;
+	protected $mIsPreview = false;
 
 	/**
 	 * Constructor
@@ -109,6 +110,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			break;
 		case 'diff':
 			$this->conf = $this->importFromRequest() + $this->conf;
+			$this->mIsPreview = true;
 			$this->showDiff();
 		case 'initial':
 		default:
