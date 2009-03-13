@@ -371,8 +371,8 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Create a red link to the form if it doesn't exist
 		else {
-			$form = "<b>" . wfMsg( 'recordadmin-noform', $type ) . "</b>"
-			       . "<br><br>" . wfMsg( 'recordadmin-createlink', $title->getLocalURL( 'action=edit' ) ) . "</div>";
+			$form = "<b>" . wfMsg( 'recordadmin-noform', $type ) . "</b><br />"
+			       . "<a href=\"" . $title->getLocalURL( 'action=edit' ) . "\">(". wfMsg( 'recordadmin-createlink' ) . ")</a><br />";
 		}
 		$this->form = $form;
 	}
