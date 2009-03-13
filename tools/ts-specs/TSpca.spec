@@ -26,10 +26,5 @@ cp pca $RPM_BUILD_ROOT%{_bindir}
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_bindir}
-%attr (0755, root, bin) %{_bindir}/pca
-
-%changelog
-* Thu Oct  9 2008 - river@wikimedia.org
-- initial spec
+%defattr (-, root, root)
+%{_bindir}

@@ -87,7 +87,7 @@
 %define _bindir		 %{_prefix}/bin/%{bld_arch}
 %define _libdir		 %{_prefix}/lib/%{bld_arch}
 %define _libexecdir	 %{_prefix}/lib/%{bld_arch}
-%define _pkg_config_path %{_libdir}/pkgconfig
+%define _pkg_config_path %{_libdir}/pkgconfig:/usr/lib/%_arch64/pkgconfig:/usr/sfw/%_arch64/lib
 # obsolete, don't use:
 %define _pkg_config_path64 %{_prefix}/lib/%{_arch64}/pkgconfig
 
@@ -106,16 +106,3 @@
 %define xorg_lib        /usr/X11/lib/%{bld_arch}
 %define xorg_inc        /usr/X11/include
 %define xorg_lib_path   -L%xorg_lib -R%xorg_lib
-
-# ChangeLog:
-# 2008-02-17  Laszlo (Laca) Peter  <laca@sun.com>
-# - define _cxx_libdir and _gpp_version for building C++ libs
-# 2007-03-20  Doug Scott  <dougs@truemail.co.th>
-# added %_cc64_opt_level to suncc_optflags64
-# added standard directories definitions
-# 2007-03-19  Doug Scott  <dougs@truemail.co.th>
-# - Fixed -fno-omit-frame-pointer flag
-# 2007-03-15  Laszlo (Laca) Peter  <laca@sun.com>
-# - renamed from amd64.inc
-# - updated to work for either amd64 or sparcv9
-# 2007-03-12  Doug Scott  <dougs@truemail.co.th>

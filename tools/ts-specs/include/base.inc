@@ -74,8 +74,8 @@
 %define _bindir		 %{_prefix}/bin
 %define _libdir		 %{_prefix}/lib
 %define _libexecdir	 %{_prefix}/lib
-%define _pkg_config_path %{_libdir}/pkgconfig
-%define _sysconfdir      /etc
+%define _pkg_config_path %{_libdir}/pkgconfig:/usr/lib/pkgconfig:/usr/sfw/lib/pkgconfig
+%define _sysconfdir      /etc/opt/ts
 
 # Define some standard directories
 %define gnu_bin         /usr/gnu/bin
@@ -91,23 +91,4 @@
 %define xorg_inc        /usr/X11/include
 %define xorg_lib_path   -L%xorg_lib -R%xorg_lib
 
-# ChangeLog:
-# 2008-05-09  Laszlo (Laca) Peter  <laca@sun.com>
-# - use %_gpp instead of g++ when checking the version of g++
-# 2008-02-17  Laszlo (Laca) Peter  <laca@sun.com>
-# - define _cxx_libdir and _gpp_version for building C++ libs
-# 2007-06-09  Laszlo (Laca) Peter  <laca@sun.com>
-# - delete cc_is_gcc conditional when setting _gcc_opt_level,
-#   because we want this set anyway so it can be used in spec
-#   files that force gcc
-# 2007-04-05  Laszlo (Laca) Peter  <laca@sun.com>
-# - fix cxx_optflags: use EXTRA_CXXFLAGS and not EXTRA_LDFLAGS
-# 2007-03-20  Doug Scott  <dougs@truemail.co.th>
-# added standard directories definitions
-# 2007-03-19  Doug Scott  <dougs@truemail.co.th>
-# - Fixed -fno-omit-frame-pointer flag
-# 2007-03-15  Laszlo (Laca) Peter  <laca@sun.com>
-# - copied from x86_sse2.inc
-# - new include file that resets macros to their default (32-bit build)
-#   values
-# 2007-03-12  Doug Scott  <dougs@truemail.co.th>
+%define _configure ./configure --prefix=%_prefix --bindir=%_bindir --libdir=%_libdir --mandir=%_mandir --datadir=%_datadir --includedir=%_includedir --disable-nls --disable-static

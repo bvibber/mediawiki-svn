@@ -1,14 +1,8 @@
-#
-# spec file for package TSlibconfuse
-#
-# includes module(s): libconfuse
-#
-Name:                    TSlibconfuse
-Version:		 2.6
-Source:                  http://bzero.se/confuse/confuse-%{version}.tar.gz
-SUNW_BaseDir:            %{_basedir}
-BuildRoot:               %{_tmppath}/%{name}-%{version}-build
-%include default-depend.inc
+Name:		TSlibconfuse
+Version:	2.6
+Source:		http://bzero.se/confuse/confuse-%{version}.tar.gz
+SUNW_BaseDir:	%{_basedir}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 
 %prep
 rm -rf %name-%version
@@ -21,18 +15,15 @@ rm -rf %name-%version
 	    --includedir=%{_includedir}		\
 	    --mandir=%{_mandir}			\
             --libdir=%{_libdir}			\
+		--disable-nls			\
+		--disable-static		\
 	    --enable-shared
 
 gmake -j$CPUS all
 
 %install
 gmake DESTDIR=${RPM_BUILD_ROOT} install
-
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%changelog
-* Thu Oct 16 2008 - river@wikimedia.org
-- initial spec

@@ -1,0 +1,11 @@
+--- gettext-tools/gnulib-lib/Makefile.in.old	Thu Mar 12 20:37:39 2009
++++ gettext-tools/gnulib-lib/Makefile.in	Thu Mar 12 20:37:47 2009
+@@ -680,7 +680,7 @@
+ INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+ JAR = @JAR@
+ JAVA_CHOICE = @JAVA_CHOICE@
+-LDFLAGS = @LDFLAGS@
++LDFLAGS = @LDFLAGS@ -lsec
+ LIBCROCO = @LIBCROCO@
+ LIBEXPAT = @LIBEXPAT@
+ LIBEXPAT_PREFIX = @LIBEXPAT_PREFIX@
