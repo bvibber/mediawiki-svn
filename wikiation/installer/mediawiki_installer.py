@@ -80,6 +80,12 @@ class Mediawiki_Installer(Installation_System):
 		uninstall(name)
 		return not self.is_installed(name) 
 
+#TODO: use this method everywhere a database name is requested
+def dbname(installer_name):
+	"""based on the name of the installer/instance, figure out what the name of the
+	database is. Right now we just use the name of the installer as the name of the database,
+	but that might not always work."""
+	return installer_name
 
 
 #duplicate of get_installed() TODO: Refactor

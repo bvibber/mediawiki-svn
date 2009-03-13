@@ -8,6 +8,7 @@ import os, os.path, shutil
 import subprocess
 
 from installation_system import Installation_System, Installer_Exception
+from mediawiki_installer import dbname
 	
 class Extension_Installer_Exception(Installer_Exception):
 	pass
@@ -57,6 +58,8 @@ class Extension_Installer(Installation_System):
 
 		env=dict(env)
 		env["EXTENSIONS_SVN"]=settings.extensionsdir
+		env["DATABASE_NAME"]=dbname(self.instance)
+		env["IN_INSTANCE"]=self.instance
 
 		return Installation_System.exec_task(self, installer_name,task,env)
 	
