@@ -134,6 +134,7 @@ class Installation_System:
 		env["NAME"]=installer_name
 		env["REVISION"]=self.revision or ''
 		env["TAG"]=self.tag or ''
+		env["MYSQL_COMMAND"]=settings.mysql_command
 
 		if isinstance(task,str):
 			task2=[task]
