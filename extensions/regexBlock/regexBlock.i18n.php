@@ -16,7 +16,7 @@ $messages = array();
 $messages['en'] = array(
 	'regexblock' => 'Regex block',
 	'regexblock-already-blocked' => '$1 is already blocked.',
-	'regexblock-block-log' => 'User name or IP address \'\'\'$1\'\'\' has been blocked.',
+	'regexblock-block-log' => "User name or IP address '''$1''' has been blocked.",
 	'regexblock-block-success' => 'Block succedeed',
 	'regexblock-currently-blocked' => 'Currently blocked addresses:',
 	'regexblock-desc' => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a [[Special:Regexblock|special page]] to add/manage blocks',
@@ -31,11 +31,11 @@ Note: partial IP addresses will be treated by usernames in determining blocking.
 If no reason is specified, a default generic reason will be used.\'\'',
 	'regexblock-page-title-1' => 'Block address using regular expressions',
 	'regexblock-reason-ip' => 'This IP address is prevented from editing due to vandalism or other disruption by you or by someone who shares your IP address.
-If you believe this is in error, please $1' ,
+If you believe this is in error, please [[$1|contact us]]',
 	'regexblock-reason-name' => 'This username is prevented from editing due to vandalism or other disruption.
-If you believe this is in error, please $1',
+If you believe this is in error, please [[$1|contact us]]',
 	'regexblock-reason-regex' => 'This username is prevented from editing due to vandalism or other disruption by a user with a similar name.
-Please create an alternate user name or $1 about the problem',
+Please create an alternate user name or [[$1|contact us]] about the problem',
 	'regexblock-form-username' => 'IP address or username:',
 	'regexblock-form-reason' => 'Reason:',
 	'regexblock-form-expiry' => 'Expiry:',
@@ -49,7 +49,7 @@ Please create an alternate user name or $1 about the problem',
 	'regexblock-nodata-found' => 'No data found',
 	'regexblock-stats-title' => 'Regex block statistics',
 	'regexblock-unblock-success' => 'Unblock succeeded',
-	'regexblock-unblock-log' => 'User name or IP address \'\'\'$1\'\'\' has been unblocked.',
+	'regexblock-unblock-log' => "User name or IP address '''$1''' has been unblocked.",
 	'regexblock-unblock-error' => 'Error unblocking $1.
 Probably there is no such user.',
 	'regexblock-regex-filter' => ' or regex value: ', // FIXME: bad i18n. Static formatting and lego
@@ -64,7 +64,7 @@ Probably there is no such user.',
 	'regexblock-view-block-infinite' => 'permanent block',
 	'regexblock-view-block-temporary' => 'expires on ',
 	'regexblock-view-block-expired' => 'EXPIRED on ',
-	'regexblock-view-block-by' => 'blocked by ',
+	'regexblock-view-block-by' => 'blocked by:',
 	'regexblock-view-block-unblock' => 'unblock',
 	'regexblock-view-stats' => 'stats',
 	'regexblock-view-empty' => 'The list of blocked names and addresses is empty.',
