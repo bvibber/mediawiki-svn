@@ -349,7 +349,7 @@ mediaSource.prototype =
     			end_ntp = this.end_ntp;
     			
     		if( this.timeFormat == 'anx' ){
-    			this.src = getUpdateTimeURL(this.src, start_ntp +'/'+end_ntp);
+    			this.src = getURLParamReplace(this.src, { 't': start_ntp +'/'+end_ntp } );
     		}else if ( this.timeFormat =='mp4'){
     			var mp4URL =  parseUri( this.src );
 	    		this.src =  mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + 
@@ -388,7 +388,7 @@ mediaSource.prototype =
        		return this.src;       		       	
     	}
        	if( this.timeFormat == 'anx' ){
-       		var new_url = getUpdateTimeURL(this.src,  seconds2ntp(seek_time_sec)+'/'+ this.end_ntp);
+       		var new_url = getURLParamReplace(this.src,  { 't': seconds2ntp(seek_time_sec)+'/'+ this.end_ntp } );
        	}else if(this.timeFormat=='mp4'){
        		var mp4URL =  parseUri( this.src );
 	    	var new_url = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start='
@@ -1351,7 +1351,7 @@ embedVideo.prototype = {
 		
 		if( my_thumb_src.indexOf('t=') !== -1){
 			var time_ntp =  seconds2ntp ( options.time + parseInt(this.start_offset) );
-			my_thumb_src = getUpdateTimeURL( my_thumb_src, time_ntp, options.size );
+			my_thumb_src = getURLParamReplace( my_thumb_src, { 't':time_ntp, 'size': options.size } );
 		}
 		var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';
 		return '<div class="' + thumb_class + '" src="' + my_thumb_src +'" '+
@@ -1372,7 +1372,8 @@ embedVideo.prototype = {
 			this.org_thum_src = this.media_element.getThumbnailURL();
 		}							
 		if( this.org_thum_src.indexOf('t=') !== -1){
-			this.last_thumb_url = getUpdateTimeURL(this.org_thum_src,seconds2ntp( float_sec + parseInt(this.start_offset)));									
+			this.last_thumb_url = getURLParamReplace(this.org_thum_src, 
+				{ 't' : seconds2ntp( float_sec + parseInt(this.start_offset)) } );									
 			if(!this.thumbnail_updating){				
 				this.updateThumbnail(this.last_thumb_url ,false);
 				this.last_thumb_url =null;

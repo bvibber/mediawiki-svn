@@ -26,7 +26,7 @@ var MV_EMBED_VERSION = '1.0r11';
 
 //if we should use the scriptLoader 
 //( lets you group requests, minimize javascript, and use mediaWiki localization infastructure) 
-var MV_USE_SCRIPT_LOADER = true;
+var MV_USE_SCRIPT_LOADER = false;
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -1010,7 +1010,7 @@ function mv_do_sequence(initObj){
 * utility functions:
 */
 //simple url re-writer for standard temporal and size request urls: 
-function getUpdateTimeURL(url, new_time, size){	
+function getURLParamReplace( url, opt ){	
 	var pSrc = parseUri(url);	
 	if(pSrc.protocol != '' ){
 		var new_url = pSrc.protocol +'://'+ pSrc.authority + pSrc.path +'?';       			
@@ -1018,14 +1018,10 @@ function getUpdateTimeURL(url, new_time, size){
 		var new_url = pSrc.path +'?';      
 	}	
 	var amp = '';
-	if(new_time && pSrc.queryKey['t'])
-		pSrc.queryKey['t'] = new_time;
-	
-	if(size &&  pSrc.queryKey['size'])
-		pSrc.queryKey['size']=size;
-			
-	$j.each(pSrc.queryKey, function(key, val){		
-		new_url+= amp + key + '=' + val;			
+	for(var i in pSrc.queryKey, function(key, val){
+		if( opt[ key ] )
+			val = opt[ key ];
+		new_url+= amp + key + '=' + val;					
 		amp = '&';    	
 	});
 	return new_url;

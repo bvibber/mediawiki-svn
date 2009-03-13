@@ -73,6 +73,24 @@ metavidSearch.prototype = {
 			return '<video ' + id_attr + ' roe="' + rObj['roe_url'] + '"></video>';
 		}
 	},	
+	getImageObj:function( rObj, size, callback ){
+		var pUrl = parseURI( rObj.poster );
+		//per Mv_StreamImage.php page
+		var imgurl = ''; 			
+		
+		if( size.width <= 80 ){
+			imgurl = getURLParamReplace( rObj.poster, { 't' : "icon" } )
+		}else if( size.width <= 160 ){
+			imgurl = getURLParamReplace( rObj.poster, { 't' : "small" } )
+		}else if( size.width <= 320 ){
+			imgurl = getURLParamReplace( rObj.poster, { 't' : 'medium' } )
+		}else if( size.width <= 512 ){
+			imgurl = getURLParamReplace( rObj.poster, { 't' : 'large' } )
+		}else{
+			imgurl = getURLParamReplace( rObj.poster, { 't' : 'full' } )
+		}
+		callback( imgurl );
+	},
 	getEmbedObjParsedInfo:function(rObj, eb_id){
 		var sources = $j('#'+eb_id).get(0).media_element.getSources();
 		rObj.other_versions ='*[' + rObj['roe_url'] + ' XML of all Video Formats and Timed Text]'+"\n";

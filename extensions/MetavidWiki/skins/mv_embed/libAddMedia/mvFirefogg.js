@@ -12,7 +12,7 @@ var mvFirefogg = function(initObj){
 }
 mvFirefogg.prototype = {
 
-	min_firefogg_version : '0.9.3',
+	min_firefogg_version : '0.9.5',
 	enabled : false, 			//if firefogg is enabled or not. 
 	upload_mode:'autodetect', 	//can be 'post', 'chunks' or autodetect. (autodetect issues an api call)   
 	encoder_settings:{			//@@todo allow server to set this 
@@ -113,7 +113,8 @@ mvFirefogg.prototype = {
 	},
 	select_fogg:function(){			
 		var _this = this;
-		if( _this.fogg.selectVideo() ) {											
+		if( _this.fogg.selectVideo() ) {
+			
 			//update destination filename:
 			if( _this.fogg.sourceFilename ){				
 				var sf = _this.fogg.sourceFilename;						
@@ -215,7 +216,23 @@ mvFirefogg.prototype = {
 	},
 	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
 	doChunkUpload : function(){
-		var _this = this;				
+		var _this = this;						
+		//add chunk response hook to build the resultURL when uploading chunks 						
+		/*_this.fogg.setChunkCallback( function( result ){
+			js_log( 'chunkResponseHook:' + result );
+			try{
+				var upRes = JSON.parse( result );				
+				if( upRes.upload.sessionkey ){
+				
+				}
+				if( upRes.upload.result ){
+					
+				}				
+			}catch(e){
+				js_error( 'error could not parse chunkResponse' );
+			}			
+		});*/
+		
 		
 		//build the api url: 
 		var aReq ={
@@ -282,8 +299,7 @@ mvFirefogg.prototype = {
 			}
 		}
 		encodingStatus();		  			
-	},
-	foggHookResultUrl  
+	},	
 	doUploadStatus:function() {	
 		var _this = this;
 		//setup a local function for timed callback: 				

@@ -101,7 +101,7 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,
+			'd'		:0,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -137,7 +137,7 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,			
+			'd'		:1,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
@@ -466,13 +466,17 @@ remoteSearchDriver.prototype = {
 								_this.thumb_width + 'px;height:'+ (_this.thumb_width-20) +'px;position:relative;">';
 							//check for missing poster types for audio
 							if( rItem.mime=='audio/ogg' && !rItem.poster ){
-								rItem.poster = mv_embed_path + 'skins/' + mv_skin_name + '/images/sound_music_icon-80.png';									
+								rItem.poster = mv_embed_path + 'skins/' + mv_skin_name + 
+									'/images/sound_music_icon-80.png';									
 							}
-							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
+							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +
+									'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
 							//add a linkback to resource page in upper right:
 							if( rItem.link ) 
-								o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' + gM('Resource Description Page') + 
-									'" href="' + rItem.link + '"><img src="' + stylepath + '/common/images/magnify-clip.png"></a>';
+								o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' +
+									 gM('Resource Description Page') + 
+									'" href="' + rItem.link + '"><img src="' + stylepath + 
+									'/common/images/magnify-clip.png"></a>';
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
