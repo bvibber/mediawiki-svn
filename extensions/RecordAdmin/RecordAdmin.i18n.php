@@ -782,7 +782,7 @@ $messages['ksh'] = array(
 	'recordadmin-updateerror' => 'Beim Ändere es jet donävve jejange',
 	'recordadmin-buttonsave' => 'Dä Datesatz avspeichere!',
 	'recordadmin-noform' => 'Mer han kei Fommulaa för de „$1“-Datesätz',
-	'recordadmin-createlink' => '<a href="$1">ein aanlääje',
+	'recordadmin-createlink' => 'ein aanlääje',
 	'recordadmin-newcreated' => 'Neu $1 övver e öffentlesch Fommulaa aanjelaat',
 	'recordadmin-summary-typecreated' => 'Neu $1 aanjelaat',
 	'recordadmin-viewlink' => 'aankike',

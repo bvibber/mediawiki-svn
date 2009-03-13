@@ -127,7 +127,7 @@ class SpecialRecordAdmin extends SpecialPage {
 						else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-createerror', $type ) . "</div>\n" );
 					}
 				} else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-badtitle' ) . "</div>\n" );
-				$wgOut->addHTML( "<br><br><br><br>\n" );
+				$wgOut->addHTML( "<br /><br /><br /><br />\n" );
 			}
 
 			# Populate the search form with any posted values
@@ -141,9 +141,9 @@ class SpecialRecordAdmin extends SpecialPage {
 			$wgOut->addHTML(
 				'<b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
 				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
-				. "\n<br><br><hr><br>\n{$this->form}"
+				. "\n<br /><br /><hr /><br />\n{$this->form}"
 				. Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) )
-				. '<br><hr><br><table><tr>'
+				. '<br /><hr /><br /><table><tr>'
 				. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpFind', 'value' => wfMsg( 'recordadmin-buttonsearch' ) ) ) . '</td>'
 				. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpCreate', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) ) . '</td>'
 				. '<td>' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
@@ -152,7 +152,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Process Find submission
 			if ( count( $posted ) && $wgRequest->getText( 'wpFind' ) ) {
-				$wgOut->addWikiText( "<br>\n== " . wfMsg( 'recordadmin-searchresult' ) . " ==\n" );
+				$wgOut->addWikiText( "<br />\n== " . wfMsg( 'recordadmin-searchresult' ) . " ==\n" );
 
 				# Select records which use the template and exhibit a matching title and other fields
 				$records = $this->getRecords( $type, $posted, $wpTitle, $invert );
@@ -190,7 +190,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				# Report success or error
 				if ( $success ) $wgOut->addHTML( "<div class='successbox'>" . wfMsg( 'recordadmin-updatesuccess', $type ) . "</div>\n" );
 				else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-updateerror' ) . "</div>\n" );
-				$wgOut->addHTML( "<br><br><br><br>\n" );
+				$wgOut->addHTML( "<br /><br /><br /><br />\n" );
 			}
 
 			# Extract current values from article
@@ -206,7 +206,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$wgOut->addHTML( $this->form );
 				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
 				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
-				$wgOut->addHTML( '<br><hr><br><table><tr>'
+				$wgOut->addHTML( '<br /><hr /><br /><table"><tr>'
 					. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '</td>'
 					. '<td>' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
 					. '</tr></table></form>'
@@ -368,11 +368,11 @@ class SpecialRecordAdmin extends SpecialPage {
 			$form = preg_replace( '#name\s*=\s*([\'"])(.*?)\\1#s', 'name="ra_$2"', $form );            # prefix input names with ra_
 			$form = preg_replace( '#(<select.+?>)\s*(?!<option/>)#s', '$1<option selected/>', $form ); # ensure all select lists have default blank
 		}
-
-		# Create a red link to the form if it doesn't exist
 		else {
-			$form = "<b>" . wfMsg( 'recordadmin-noform', $type ) . "</b><br />"
-			       . "<a href=\"" . $title->getLocalURL( 'action=edit' ) . "\">(". wfMsg( 'recordadmin-createlink' ) . ")</a><br />";
+			# Create a red link to the form if it doesn't exist
+			$form = '<b>' . wfMsg( 'recordadmin-noform', $type ) . '</b>'
+				. '<br /><a href=" . $title->getLocalURL( "action=edit"' )
+				. '">' . wfMsg( 'recordadmin-createlink' ) . '</a><br />";
 		}
 		$this->form = $form;
 	}
