@@ -94,7 +94,7 @@
 			'<span style="font-size:90%">';
 		if( $wgRequest->getVal('view') != 'overview' )
 			$this->page_header.= $sk->makeKnownLinkObj( $wgTitle, wfMsg( 'mv_stream_overview' ), 'view=overview' ) ;
-		$this->page_header.=' <i><a id="mv_edit_time" style="color:#2060C1;" href="#" onclick="return false;" alt=" ' . 
+		$this->page_header.=' <a id="mv_edit_time" style="color:#2060C1;" href="#" onclick="return false;" alt=" ' . 
 						wfMsg('mv_edit_time'). '" >'. wfMsg('mv_edit_time') . '</a></i></span></h1>';
 			
 		if($mvEnableStreamNotice){

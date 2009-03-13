@@ -216,6 +216,7 @@ mvFirefogg.prototype = {
 	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
 	doChunkUpload : function(){
 		var _this = this;				
+		
 		//build the api url: 
 		var aReq ={
 			'action'	: 'upload',
@@ -224,24 +225,17 @@ mvFirefogg.prototype = {
 			'comment'	: _this.formData['wpUploadDescription'],
 			'enablechunks': true
 		};
+		
 		if( _this.formData['wpWatchthis'] )
 			aReq['watch'] =  _this.formData['wpWatchthis'];
 		
 		if(  _this.formData['wpIgnoreWarning'] )
 			aReq['ignorewarnings'] = _this.formData['wpIgnoreWarning'];
-			
-		do_api_req({
-			'data': aReq
-		}, function(data){
-			var foo = data;
-			js_log('data: ' + data);
-			debugger;
-		});								
-		//_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  aReq ,  JSON.stringify( _this.formData ) );
-		
+													
+		_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  aReq ,  JSON.stringify( _this.formData ) );		
 			
 		//update upload status:						
-		//_this.doUploadStatus();
+		_this.doUploadStatus();
 	},
 	//doEncUpload first encodes then uploads
 	doEncUpload : function(){	
@@ -289,6 +283,7 @@ mvFirefogg.prototype = {
 		}
 		encodingStatus();		  			
 	},
+	foggHookResultUrl  
 	doUploadStatus:function() {	
 		var _this = this;
 		//setup a local function for timed callback: 				
