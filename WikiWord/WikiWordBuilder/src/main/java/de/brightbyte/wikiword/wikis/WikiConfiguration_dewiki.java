@@ -76,6 +76,9 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 
 		redirectPattern = Pattern.compile("^#(?:REDIRECT(?:ION)?|WEITERLEITUNG)"+REDIRECT_LINK, Pattern.CASE_INSENSITIVE);
 		disambigStripSectionPattern = sectionPattern("Siehe auch", 0);  
+
+		displayTitlePattern = Pattern.compile("DISPLAYTITLE|SEITENTITEL", Pattern.CASE_INSENSITIVE);
+		defaultSortKeyPattern = Pattern.compile("DEFAULT(SORT(KEY)?|CATEGORYSORT)|SORTIERUNG", Pattern.CASE_INSENSITIVE);
 	}
 
 }
