@@ -55,6 +55,11 @@ public class ConceptType {
 	 **/
 	public static final ConceptType LIFEFORM;
 
+	/** Specific (historical) events. Recurrent events may also have this type,
+	 * however, generic types or classes of events should not.
+	 **/
+	public static final ConceptType EVENT;
+
 	/** Unknown concept type. Generic catch all type, expected to occurr frequently. **/
 	public static final ConceptType OTHER;
 
@@ -87,6 +92,7 @@ public class ConceptType {
 			TIME = canonicalConceptTypes.getType(50);
 			NUMBER = canonicalConceptTypes.getType(60);
 			LIFEFORM = canonicalConceptTypes.getType(70);
+			EVENT = canonicalConceptTypes.getType(80);
 			OTHER = canonicalConceptTypes.getType(90);
 			//NONE = canonicalConceptTypes.getType(100000);
 			ALIAS = canonicalConceptTypes.getType(100010);
