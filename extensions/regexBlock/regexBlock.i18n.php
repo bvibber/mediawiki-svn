@@ -861,11 +861,11 @@ $messages['haw'] = array(
 $messages['he'] = array(
 	'regexblock' => 'חסימה לפי ביטויים רגולריים',
 	'regexblock-already-blocked' => '$1 כבר חסום.',
-	'regexblock-block-log' => "שם המשתמש או כתובת ה־IP '''$1''' נחסמו.",
+	'regexblock-block-log' => "כתובת ה־IP או שם המשתמש '''$1''' נחסמו.",
 	'regexblock-block-success' => 'החסימה בוצעה בהצלחה',
 	'regexblock-currently-blocked' => 'הכתובות החסומות נכון לעכשיו:',
 	'regexblock-desc' => 'הרחבה המשמשת לחסימת שמות וכתובות IP של משתמשים בעזרת ביטויים רגולריים. היא מכילה גם את מנגנון החסימה וגם [[Special:Regexblock|דף מיוחד]] להוספת/ניהול החסימות.',
-	'regexblock-expire-duration' => 'שעה,שעתיים,4 שעות,6 שעות,יום‏,3 ימים,שבוע,שבועיים,חודש,‏3 חודשים,6 חודשים,שנה,לצמיתות',
+	'regexblock-expire-duration' => 'שעה,שעתיים,4 שעות,6 שעות,יום,3 ימים,שבוע,שבועיים,חודש,3 חודשים,6 חודשים,שנה,לצמיתות',
 	'regexblock-page-title' => 'חסימת שם לפי ביטוי רגולרי',
 	'regexblockstats' => 'סטטיסטיקת החסימה באמצעות ביטויים רגולריים',
 	'regexblock-help' => "השתמשו בטופס שלהלן כדי לחסום גישה לכתיבה מפני שם משתמש או כתובת IP מסוימים.
@@ -876,11 +876,11 @@ $messages['he'] = array(
 אם לא צוינה סיבה, יעשה שימוש בהודעה כללית כברירת מחדל.'''",
 	'regexblock-page-title-1' => 'חסימת כתובת באמצעות ביטויים רגולריים',
 	'regexblock-reason-ip' => 'העריכה מכתובת IP זו נחסמה עקב  השחתה או הפרעה אחרת על ידיכם או על ידי מישהו אחר החולק איתכם את כתובת ה־IP.
-אם אתם חושבים שזו טעות, אנא $1',
+אם אתם חושבים שזו טעות, אנא [[$1|צרו קשר]]',
 	'regexblock-reason-name' => 'העריכה מחשבון משתמש זה נחסמה עקב השחתה או הפרעה אחרת.
-אם אתם חושבים שזו טעות, אנא $1',
+אם אתם חושבים שזו טעות, אנא [[$1|צרו קשר]]',
 	'regexblock-reason-regex' => 'הרשאות העריכה של שם משתמש זה נשללו עקב השחתה או הפרעה אחרת על ידי משתמש בעל שם משתמש דומה.
-אנא צרו שם משתמש חלופי או $1 אודות הבעיה.',
+אנא צרו שם משתמש חלופי או [[$1|צרו קשר]] אודות הבעיה.',
 	'regexblock-form-username' => 'כתובת IP או שם משתמש:',
 	'regexblock-form-reason' => 'סיבה:',
 	'regexblock-form-expiry' => 'פקיעה:',
@@ -894,7 +894,7 @@ $messages['he'] = array(
 	'regexblock-nodata-found' => 'לא נמצאו נתונים',
 	'regexblock-stats-title' => 'סטטיסטיקת הנתונים הרגולריים',
 	'regexblock-unblock-success' => 'שחרור החסימה הושלם בהצלחה',
-	'regexblock-unblock-log' => "שם המשתמש או כתובת ה־IP '''$1''' שוחררו מחסימה.",
+	'regexblock-unblock-log' => "כתובת ה־IP או שם המשתמש '''$1''' שוחררו מחסימה.",
 	'regexblock-unblock-error' => 'שגיאה בשחרור $1.
 כנראה שאין משתמש כזה.',
 	'regexblock-regex-filter' => '  או ערך ביטוי רגולרי:',
@@ -909,7 +909,7 @@ $messages['he'] = array(
 	'regexblock-view-block-infinite' => 'חסימה קבועה',
 	'regexblock-view-block-temporary' => 'תפקע ב־',
 	'regexblock-view-block-expired' => 'פקעה ב־',
-	'regexblock-view-block-by' => 'נחסם על ידי',
+	'regexblock-view-block-by' => 'נחסם על ידי:',
 	'regexblock-view-block-unblock' => 'שחרור חסימה',
 	'regexblock-view-stats' => 'סטטיסטיקה',
 	'regexblock-view-empty' => 'רשימת השמות והכתובות החסומים ריקה.',
