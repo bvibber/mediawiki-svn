@@ -376,3 +376,24 @@ $messages['vi'] = array(
 	'trustedxff-desc' => 'Xử lý danh sách các địa chỉ proxy được tin cậy ([http://meta.wikimedia.org/wiki/XFF_project dự án XFF])',
 );
 
+/** Cantonese (廣東話)
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'trustedxff-desc' => '處理一個可信嘅Proxy地址一覽 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
+/** Chinese (Simplified) (中文 (简化字))
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'trustedxff-desc' => '处理一个可信的Proxy地址一览 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
+/** Chinese (Traditional) (中文 (傳統字))
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'trustedxff-desc' => '處理一個可信的Proxy地址一覽 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+

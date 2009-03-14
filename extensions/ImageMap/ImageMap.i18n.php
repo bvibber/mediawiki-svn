@@ -1530,6 +1530,7 @@ $messages['yue'] = array(
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
 	'imagemap_description' => '關於呢幅圖像',
 	'imagemap_desc_types' => '右上, 右下, 左下, 左上, 無',
+	'imagemap_poly_odd'   => '錯: 響第$1行搵到單數嘅多邊坐標',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -1548,6 +1549,7 @@ $messages['zh-hans'] = array(
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
 	'imagemap_description' => '关于这幅图像',
 	'imagemap_desc_types' => '右上, 右下, 左下, 左上, 无',
+	'imagemap_poly_odd'   => '错误: 在第$1行找到单数的多边坐标',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1566,5 +1568,6 @@ $messages['zh-hant'] = array(
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
 	'imagemap_description' => '關於這幅圖像',
 	'imagemap_desc_types' => '右上, 右下, 左下, 左上, 無',
+	'imagemap_poly_odd'   => '錯誤: 在第$1行找到單數的多邊坐標',
 );
 
