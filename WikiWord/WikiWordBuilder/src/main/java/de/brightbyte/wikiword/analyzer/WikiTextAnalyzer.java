@@ -237,38 +237,38 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 	}
 	
-	public interface NameMatcher {
+	public interface AttributeMatcher<T> extends Filter<T> {
+		public boolean matches(T s);
 		
-		public boolean matches(CharSequence s);
+		public <V> Iterable<V> matches(Map<? extends T, V> m);
+		public <V, C extends Collection<V>> Iterable<C> matches(MultiMap<? extends T, V, C> m);
+		public <V extends T> Iterable<V> matches(Set<V> values);
+	}
+	
+	public interface NameMatcher extends AttributeMatcher<CharSequence> {
 		public boolean matchesLine(String lines);
 		
 		public String getRegularExpression();
-		
-		public <V> Iterable<V> matches(Map<? extends CharSequence, V> m);
-		public <V, C extends Collection<V>> Iterable<C> matches(MultiMap<? extends CharSequence, V, C> m);
-		public <V extends CharSequence> Iterable<V> matches(Set<V> values);
-
 	}
 
-	public static abstract class AbstractNameMatcher implements NameMatcher {
+	public static abstract class  AbstractAttributeMatcher<T> implements AttributeMatcher<T> {
 
-		public <V, C extends Collection<V>> Iterable<C> matches(MultiMap<? extends CharSequence, V, C> m) {
+		public <V, C extends Collection<V>> Iterable<C> matches(MultiMap<? extends T, V, C> m) {
 			final Iterator it = m.entrySet().iterator();
 			return matches(it);
 		}
 		
-		public <V> Iterable<V> matches(Map<? extends CharSequence, V> m) {
+		public <V> Iterable<V> matches(Map<? extends T, V> m) {
 			final Iterator it = m.entrySet().iterator();
 			return matches(it);
 		}
 		
-		public <V extends CharSequence> Iterable<V> matches(Set<V> m) {
+		public <V extends T> Iterable<V> matches(Set<V> m) {
 			final Iterator it = m.iterator();
 			return matches(it);
 		}
 		
 		protected <V> Iterable<V> matches(final Iterator it) {
-			
 			return new Iterable<V>() {
 				public Iterator<V> iterator() {
 					return new Iterator<V>() {
@@ -282,7 +282,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 							hasNext = false;
 							while (it.hasNext()) {
 								hasNext = true;
-								Map.Entry<? extends CharSequence, V> e = (Map.Entry<? extends CharSequence, V>) it.next();
+								Map.Entry<? extends T, V> e = (Map.Entry<? extends T, V>) it.next();
 								next = e.getValue();
 								if (matches(e.getKey())) break;
 								hasNext = false;
@@ -390,7 +390,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 	}
 	
-	public static class PatternNameMatcher extends AbstractNameMatcher {
+	public static class PatternNameMatcher extends AbstractAttributeMatcher<CharSequence> implements NameMatcher {
 		protected Matcher matcher;
 		protected boolean anchored;
 
@@ -1063,11 +1063,11 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		protected String prefix = null;
 		protected String suffix = null;
 		
-		public DefaultTemplateParameterPropertySpec(String name, String prop) {
-			if (name==null) throw new NullPointerException();
+		public DefaultTemplateParameterPropertySpec(String param, String prop) {
+			if (param==null) throw new NullPointerException();
 			if (prop==null) throw new NullPointerException();
 			
-			this.parameter = name;
+			this.parameter = param;
 			this.property = prop;
 		}
 		
@@ -1225,8 +1225,60 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 		
 	}
+
+	public static interface TemplateMatcher  extends AttributeMatcher<TemplateExtractor.TemplateData> {
+	}
+	
+	public static class TemplateNameMatcher extends AbstractAttributeMatcher<TemplateExtractor.TemplateData> implements TemplateMatcher {
+		protected NameMatcher matcher;
+		
+		public TemplateNameMatcher(NameMatcher matcher) {
+			if(matcher==null) throw new NullPointerException();
+			this.matcher = matcher;
+		}
+
+		public boolean matches(TemplateData t) {
+			return false;
+		}
+	}
+	
+	public static class CategoryPatternParameterExtractor implements PropertyExtractor {
+		protected String property;
+		protected Matcher matcher;
+		protected String replacement;
+
+		public CategoryPatternParameterExtractor(String pattern, String replacement, int flags, String property) {
+			this(Pattern.compile(pattern, flags), replacement, property);
+		}
+
+		public CategoryPatternParameterExtractor(Pattern pattern, String replacement, String property) {
+			this(pattern.matcher(""), replacement, property);
+		}
+
+		public CategoryPatternParameterExtractor(Matcher matcher, String replacement, String property) {
+			this.property = property;
+			this.matcher = matcher;
+			this.replacement = replacement;
+		}
+
+		public MultiMap<String, CharSequence, Set<CharSequence>> extract(WikiPage page, MultiMap<String, CharSequence, Set<CharSequence>> into) {
+			for(CharSequence s: page.getCategories()) {
+				matcher.reset(s);
+				if (matcher.find()) {
+					String v = matcher.group();
+					v = matcher.replaceAll(replacement);
+					
+					if (into==null) into = new ValueSetMultiMap<String, CharSequence>();
+					into.put(property, v);
+				}
+			}
+			
+			return into;
+		}
+	}
 	
 	public static class TemplateParameterExtractor implements PropertyExtractor, TemplateUser {
+		//TODO: allow for matching templates by the parameters they contain, etc. use TemplateMatcher
 		protected NameMatcher template;
 		protected TemplateParameterPropertySpec[] properties;
 		
@@ -1239,6 +1291,11 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		}
 		
 		public TemplateParameterExtractor(NameMatcher template, TemplateParameterPropertySpec... properties) {
+/*			this(new TemplateNameMatcher(template), properties);
+		}
+		
+		public TemplateParameterExtractor(TemplateMatcher template, TemplateParameterPropertySpec... properties) {
+*/
 			if (template==null) throw new NullPointerException();
 			if (properties==null) throw new NullPointerException();
 			
