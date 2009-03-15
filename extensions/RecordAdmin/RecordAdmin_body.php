@@ -206,7 +206,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$wgOut->addHTML( $this->form );
 				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
 				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
-				$wgOut->addHTML( '<br /><hr /><br /><table"><tr>'
+				$wgOut->addHTML( '<br /><hr /><br /><table><tr>'
 					. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '</td>'
 					. '<td>' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
 					. '</tr></table></form>'
