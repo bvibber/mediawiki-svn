@@ -17,7 +17,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^(\\d+s?)_deaths$", "$1", 0, "person-death-date") );
 
 		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^(.+)_(artists|painters|sculptors)$", "$1", 0, "artist-group") );
-		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("(^|_)(painter|sculptor|photographer)s$", "$2", Pattern.CASE_INSENSITIVE, "artist-group") );
+		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^.*(^|_)(painter|sculptor|photographer)s$", "$2", Pattern.CASE_INSENSITIVE, "artist-group") );
 		
 		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Persondata"),
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("NAME", "person-sortname").setStripMarkup(true),

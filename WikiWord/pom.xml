@@ -12,6 +12,7 @@
 		<module>WikiWord</module>
 		<module>WikiWordBuilder</module>
                 <module>WikiWordBuilder4LifeScience</module>
+		<module>WikiWordBuilder4Biography</module>
 	</modules>
 	
 	<!--

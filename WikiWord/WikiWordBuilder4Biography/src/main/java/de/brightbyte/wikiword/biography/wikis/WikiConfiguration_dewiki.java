@@ -12,11 +12,11 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 
 		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^Geboren_(\\d+(_v\\._Chr\\.)?)$", "$1", 0, "person-birth-date") );
 		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^Gestorben_(\\d+(_v\\._Chr\\.)?)$", "$1", 0, "person-death-date") );
-
+ 
 		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^Maler_(der|des)_(.+)$", "$2", 0, "artist-group") );
 		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^(Maler|Bildhauer|Fotograf)(_|$)", "$2", 0, "artist-group") );
-		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("[^_](maler|bildhauer|fotograf)$", "$2", 0, "artist-group") );
-		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("([-_\\wäöü]+)(maler|bildhauer|fotograf)$", "$1", 0, "artist-group") );
+		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^.*[^_](maler|bildhauer|fotograf)$", "$2", 0, "artist-group") );
+		propertyExtractors.add( new WikiTextAnalyzer.CategoryPatternParameterExtractor("^.*([-_\\wäöü]+)(maler|bildhauer|fotograf)$", "$1", 0, "artist-group") );
 
 		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("Personendaten"),
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("NAME", "person-sortname").setStripMarkup(true),
