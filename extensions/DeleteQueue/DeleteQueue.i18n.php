@@ -226,16 +226,16 @@ $messages['qqq'] = array(
 	'right-deletediscuss-nominate' => '{{doc-right}}',
 	'right-deletediscuss-review' => '{{doc-right}}',
 	'right-deletequeue-vote' => '{{doc-right}}',
-	'deletequeue-page-speedy' => '$1 is the reason that the proposer entered.';
+	'deletequeue-page-speedy' => '$1 is the reason that the proposer entered.',
 	'deletequeue-page-prod' => '$1 is the reason that the proposer entered,
 $2 is a date/time,
 $3 is its date alone,
-$4 is its time alone';
+$4 is its time alone',
 	'deletequeue-page-deletediscuss' => '$1 is the reason that the proposer entered,
 $2 is a date/time,
 $3 is its date alone,
 $4 is its time alone,
-$5 is a page title.';
+$5 is a page title.',
 	'deletequeue-review-reason' => '{{Identical|Comments}}',
 	'deletequeue-review-newextra' => '{{Identical|Extra information}}',
 	'deletequeue-vote-reason' => '{{Identical|Comments}}',
