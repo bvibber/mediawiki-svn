@@ -191,12 +191,16 @@ var wgOggPlayer = {
 		{
 			//do another test for safari: 
 			if( wgOggPlayer.safari ){
-				dummyvid = document.createElement("video");
-				if (dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
-				{
-					this.clientSupports['videoElement'] = true;
-				} else {
-					/* could add some user nagging to install the xiph qt */
+				try{
+					var dummyvid = document.createElement("video");
+					if (dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
+					{
+						this.clientSupports['videoElement'] = true;
+					} else {
+						/* could add some user nagging to install the xiph qt */
+					}
+				}catch(e){
+					//could not use canPlayType
 				}
 			}else{
 				this.clientSupports['videoElement'] = true;
