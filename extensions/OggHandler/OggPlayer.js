@@ -8,7 +8,7 @@ var wgOggPlayer = {
 
 	// List of players in order of preference
 	// Downpreffed VLC because it crashes my browser all the damn time -- TS
-	'players': ['cortado', 'quicktime-mozilla', 'quicktime-activex', 'vlc-mozilla', 'vlc-activex', 'totem', 'kmplayer', 'kaffeine', 'mplayerplug-in', 'oggPlugin', 'videoElement'],
+	'players': ['videoElement', 'cortado', 'quicktime-mozilla', 'quicktime-activex', 'vlc-mozilla', 'vlc-activex', 'totem', 'kmplayer', 'kaffeine', 'mplayerplug-in', 'oggPlugin'],
 
 	// Client support table
 	'clientSupports': { 'thumbnail' : true },
@@ -189,7 +189,18 @@ var wgOggPlayer = {
 		if ( typeof HTMLVideoElement == 'object' // Firefox, Safari
 				|| typeof HTMLVideoElement == 'function' ) // Opera
 		{
-			this.clientSupports['videoElement'] = true;
+			//do another test for safari: 
+			if( wgOggPlayer.safari ){
+				dummyvid = document.createElement("video");
+				if (dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
+				{
+					this.clientSupports['videoElement'] = true;
+				} else {
+					/* could add some user nagging to install the xiph qt */
+				}
+			}else{
+				this.clientSupports['videoElement'] = true;
+			}
 		}
 
 		if (!navigator.mimeTypes || navigator.mimeTypes.length == 0) {
@@ -610,7 +621,7 @@ var wgOggPlayer = {
 
 		// Wrap it in an iframe to avoid hanging the rendering thread in FF 2.0 and similar
 		// Doesn't work in MSIE or Safari/Mac or Opera 9.5
-		if ( this.mozilla ) {
+		/*if ( this.mozilla ) {
 			var iframeHtml = '<html><body>' + html + '</body></html>';
 			var iframeJs = 'parent.wgOggPlayer.writeApplet(self, "' + iframeHtml.replace( /"/g, '\\"' ) + '");';
 			var iframeUrl = 'javascript:' + encodeURIComponent( iframeJs );
@@ -619,7 +630,7 @@ var wgOggPlayer = {
 				'     height=' + this.hq( playerHeight ) + 
 				'     scrolling="no" frameborder="0" marginwidth="0" marginheight="0"' +
 				'     src=' + this.hq( iframeUrl ) + '/>';
-		}
+		}*/
 		elt.innerHTML = '<div>' + html + '</div>';
 	},
 
