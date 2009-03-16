@@ -97,5 +97,5 @@ test -d /var/www/revisions && echo "revisionsdir exists" || { echo "you may want
 checkexist wget || exit 1
 
 touch /var/www/revisions/installertest
-wget 'http://localhost/revisions/installertest' 2>&1 | grep "200 OK" >/dev/null && echo "apache configured ok" || echo "apache not correctly configured"
+wget 'http://localhost/revisions/installertest' 2>&1 | grep "200 OK" >/dev/null && echo "apache configured well enough." || echo "apache not correctly configured"
 rm /var/www/revisions/installertest

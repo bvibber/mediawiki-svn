@@ -145,12 +145,6 @@ def update_self(args):
 	os.execl("/usr/bin/python","/usr/bin/python",__file__)
 
 
-def default_revision(args):
-	if len(args)>1:
-		defualt_revision=args[1]
-	
-	print "current revision:",default_revision
-
 def main():
 	"""main function. start of execution when run from shell"""
 
@@ -180,8 +174,6 @@ def main():
 		pass
 
 
-# unused global...
-default_revision=None
 
 #constants
 
@@ -195,7 +187,6 @@ commands={
 	"info":info,
 	"check_isolation":check_isolation,
 	"update_self":update_self,
-	"revision":default_revision
 }
 
 # additional help texts for some commands.
