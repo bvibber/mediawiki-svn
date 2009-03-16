@@ -87,7 +87,7 @@ mvFirefogg.prototype = {
 		_this.editForm = $j( '#mw-upload-form' ).get(0);
 			
 		//show fogg & add click binding: 
-		$j( '#fogg-video-file' ).show().click( function(){
+		$j( '#fogg-video-file' ).unbind().show().click( function(){
 			_this.select_fogg();
 		});							
 	},
@@ -358,8 +358,8 @@ mvFirefogg.prototype = {
 			var form_txt = '';		
 			if( !result_page ){
 				//@@todo fix this: 
-				//the mediaWiki upload system does not have an API so we can\'t accuratly read errors
-				error_txt = 'Your upload should be accessible <a href="' + 
+				//the mediaWiki upload system does not have an API so we can\'t read errors
+				error_txt = 'Your upload <i>could be</i> accessible <a href="' + 
 						wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
 						'here</a> \n'; 				
 			}else{			

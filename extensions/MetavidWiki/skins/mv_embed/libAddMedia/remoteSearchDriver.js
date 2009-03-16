@@ -109,7 +109,7 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,
+			'd'		:1,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -145,7 +145,7 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,			
+			'd'		:0,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',

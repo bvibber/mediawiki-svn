@@ -127,7 +127,7 @@ function load_mv_embed( callback ){
 	//inject mv_embed if needed:
 	if( typeof mvEmbed == 'undefined'){		
 		//get mv_embed path from _this_ file location: 	
-		var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );
+		var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );		
 		//if debug on; ensure a time stamp fresh copy: 
 		//if(mv_embed_url.indexOf('debug')!==-1){
 		//	var d = new Date(); // Generic JS date object
