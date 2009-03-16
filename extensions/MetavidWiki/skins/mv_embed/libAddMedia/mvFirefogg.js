@@ -342,10 +342,17 @@ mvFirefogg.prototype = {
 	procPageResponse should be faded out soon.. its all very fragile to read the html output and guess at stuff*/
 	procPageResponse:function( result_page ){
 		js_log('f:procPageResponse');
-		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');								
+		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');		
+		error_txt = 'Your upload <i>could be</i> accessible <a href="' + 
+						wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
+						'here</a> \n';
+		//set the error text in case we dont' get far along in proccessing the response 
+		$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt );
+												
 		if( result_page && result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
 			js_log( 'upload done got redirect found: ' + sstring + ' r:' + _this.upload_done_action );										
 			if( _this.upload_done_action == 'redirect' ){
+			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt + '<br>' + form_txt);
 				window.location = wgArticlePath.replace( /\$1/, 'File:' + formData['wpDestFile'] );
 			}else{
 				//check if the add_done_action is a callback:
@@ -358,10 +365,7 @@ mvFirefogg.prototype = {
 			var form_txt = '';		
 			if( !result_page ){
 				//@@todo fix this: 
-				//the mediaWiki upload system does not have an API so we can\'t read errors
-				error_txt = 'Your upload <i>could be</i> accessible <a href="' + 
-						wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
-						'here</a> \n'; 				
+				//the mediaWiki upload system does not have an API so we can\'t read errors							
 			}else{			
 				sp = result_page.indexOf('<span class="error">');
 				if(sp!=-1){
