@@ -109,7 +109,7 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,
+			'd'		:0,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -131,7 +131,7 @@ remoteSearchDriver.prototype = {
 		'archive_org':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,
+			'd'		:1,
 			'title' : 'Archive.org',
 			'desc'	: 'The Internet Archive, a digital library of cultural artifacts',
 			'homepage':'http://archive.org',
@@ -534,6 +534,8 @@ remoteSearchDriver.prototype = {
 			if(typeof cp['sObj'] != 'undefined'){
 				$j.each(cp.sObj.resultsObj, function(rInx, rItem){					
 					var disp = ( cp.d ) ? '' : 'display:none;';
+					
+					
 					if( _this.result_display_mode == 'box' ){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_box_result" style="' + disp + 'width:' +
 								_this.thumb_width + 'px;height:'+ (_this.thumb_width-20) +'px;position:relative;">';
@@ -554,14 +556,20 @@ remoteSearchDriver.prototype = {
 									'" href="' + rItem.link + '"><img src="' + stylepath + 
 									'/common/images/magnify-clip.png"></a>';
 							//add license icons if present				
-							if( rItem.license ){	
-								o+= _this.getlicenseImgSet( rItem.license );								
-							}
+							if( rItem.license )	
+								o+= _this.getlicenseImgSet( rItem.license );																													
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="float:left;width:' +
-									 _this.thumb_width + 'px; padding:5px;" src="' + rItem.poster + '">';			
+									 _this.thumb_width + 'px; padding:5px;" src="' + 
+									 cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } )
+									  + '">';			
+							 
+							//add license icons if present				
+							if( rItem.license )	
+								o+= _this.getlicenseImgSet( rItem.license );								
+							
 							o+= rItem.desc ;					
 						o+='<div style="clear:both" />';			
 						o+='</div>';						
@@ -576,21 +584,30 @@ remoteSearchDriver.prototype = {
 		this.addResultBindings();
 	},
 	addResultBindings:function(){
-		var _this = this;			
+		var _this = this;					
 		$j('.mv_clip_'+_this.result_display_mode+'_result').hover(function(){
 			$j(this).addClass('mv_clip_'+_this.result_display_mode+'_result_over');
+			//also set the animated image if avaliable 
+			var res_id = $j(this).children('.rsd_res_item').attr('id');
+			var rObj = _this.getResourceFromId( res_id );
+			if( rObj.poster_ani )
+				$j('#' + res_id ).attr('src', rObj.poster_ani);
+			
 		},function(){
-			$j(this).removeClass('mv_clip_'+_this.result_display_mode+'_result_over');
+			$j(this).removeClass('mv_clip_'+_this.result_display_mode+'_result_over');	
+			var res_id = $j(this).children('.rsd_res_item').attr('id');
+			var rObj = _this.getResourceFromId( res_id );	
+			//restore the original (non animated)
+			$j('#' + res_id ).attr('src', rObj.poster);
 		});				
 		//resource click action: (bring up the resource editor) 		
-		$j('.rsd_res_item').click(function(){						
-			//get the resource obj:
-			var rObj = _this.getResourceFromId( this.id );					
+		$j('.rsd_res_item').click(function(){	
+			var rObj = _this.getResourceFromId( $j(this).attr("id") );													
 			_this.resourceEdit( rObj, this );										
 		});
 	},
 	resourceEdit:function( rObj, rsdElement){
-		js_log('f:resourceEdit');		
+		js_log('f:resourceEdit:' + rObj.title);		
 		var _this = this;
 		//remove any existing resource edit interface: 
 		$j('#rsd_resource_edit').remove();				
@@ -700,7 +717,7 @@ remoteSearchDriver.prototype = {
 				}).error(function () { 
 					js_log("Error with:  " +  imObj.url);
 				}).attr('src', imObj.url);   
-		});		
+			});		
 	},
 	//loads the media editor:
 	doMediaEdit:function( rObj , mediaType){

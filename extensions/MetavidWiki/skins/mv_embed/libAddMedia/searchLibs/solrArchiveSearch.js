@@ -57,13 +57,18 @@ solrArchiveSearch.prototype = {
 					'link'		 :'http://www.archive.org/details/' + resource.identifier,				
 					'title'		 :resource.title
 				};			
-				rObj['poster']='http://www.archive.org/download/'+resource.identifier+'/format=thumbnail';
+				rObj['poster']='http://www.archive.org/download/' + resource.identifier+'/format=thumbnail';
+				rObj['poster_ani']='http://www.archive.org/download/' + resource.identifier+'/format=Animated+Gif';
+				
 				rObj['thumbwidth']=160;
 				rObj['thumbheight']=110;				
-				rObj['src']='http://www.archive.org/download/'+ +resource.identifier+'/format=Ogg+video';
-				rObj['mime']='application/ogg';		
+				rObj['src']='http://www.archive.org/download/' + resource.identifier+'/format=Ogg+video';
+				rObj['mime']='application/ogg';
 				rObj['pSobj']=_this;				
-				this.resultsObj[resource_id] =rObj;
+				
+				//set the licence: 
+				
+				this.resultsObj[ resource_id ] =rObj;
 				
 				//likely a audio clip if no poster and type application/ogg 
 				//@@todo we should return audio/ogg for the mime type or some other way to specify its "audio" 
@@ -76,6 +81,10 @@ solrArchiveSearch.prototype = {
 		}		
 	},
 	getEmbedHTML: function( rObj , options) {
-		//alert('archive.org support not yet ready');
+		js_log('getEmbedHTML:: ' + rObj.poster );
+		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
+		if(rObj.mime == 'application/ogg' || rObj.mime == 'audio/ogg' || rObj.mime=='video/ogg'){
+			return '<video ' + id_attr + ' src="' + rObj.src + '" poster="' + rObj.poster + '" type="video/ogg"></video>';
+		}
 	},		
 }

@@ -581,6 +581,7 @@ div.rsd_selected {
 	padding:10px;
 	border: thin solid #BBB;
 	clear:both;
+	position:relative;
 }
 .mv_clip_list_result_over{
 	padding:10px;

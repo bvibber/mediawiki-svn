@@ -70,7 +70,8 @@ metavidSearch.prototype = {
 	},
 	getEmbedHTML:function( rObj , options ){
 		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
-		var style_attr = (options['max_width'])?' style="width:'+options['max_width']+'px;"':'';		
+		var style_attr = (options['max_width'])?' style="width:'+options['max_width']+'px;"':'';	
+		//@@maybe check type here ?	
 		if(options['only_poster']){
 			return '<img ' + id_attr + ' src="' + rObj['poster']+'" ' + style_attr + '>';	
 		}else{

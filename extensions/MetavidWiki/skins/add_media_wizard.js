@@ -100,7 +100,7 @@ function mv_do_load_wiz(){
 	imE = document.getElementById('mv-add_media');	
 	if(imE){
 		addHandler( imE, 'click', function() {
-				mv_do_load_wiz();
+			mv_do_load_wiz();
 		});
 	}
 	//load mv_embed and do text search interface: 
