@@ -2021,7 +2021,7 @@ $messages['ja'] = array(
 	'deletequeue-queue-deletediscuss' => '削除議論',
 	'deletequeue-page-speedy' => 'このページの即時削除が提案されています。削除の提案理由は「$1」です。',
 	'deletequeue-page-prod' => "このページの削除が提案されています。提案理由は「$1」です。''$2'' 時点でこの提案に異論が申し立てられていない場合、このページは削除されます。あなたは[{{fullurl:{{FULLPAGENAME}}|action=delvote}} この削除に反対し]、異論を申し立てることができます。",
-	'deletequeue-page-deletediscuss' => "このページの削除が提案され、議論が行われています。提案理由は「$1」です。削除議論は[[$3]]で進行中で、''$2'' に結論が出ます。",
+	'deletequeue-page-deletediscuss' => "このページの削除が提案され、議論が行われています。提案理由は「$1」です。削除議論は[[$5]]で進行中で、''$2'' に結論が出ます。",
 	'deletequeue-notqueued' => '選択されたページは現時点で削除キューに入っていません',
 	'deletequeue-review-action' => '対処:',
 	'deletequeue-review-delete' => 'ページを削除する。',
