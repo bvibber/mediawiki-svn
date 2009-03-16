@@ -82,7 +82,7 @@ If this proposal is uncontested at ''$2'', this page will be deleted.
 You can contest this page's deletion by [{{fullurl:{{FULLPAGENAME}}|action=delvote}} objecting to deletion].",
 	'deletequeue-page-deletediscuss' => "This page has been proposed for deletion, and that proposal has been contested.
 The reason given was ''$1''.
-A discussion is ongoing at [[$3]], which will conclude at ''$2''.",
+A discussion is ongoing at [[$5]], which will conclude at ''$2''.",
 
 	// Review
 	//Generic
@@ -226,6 +226,16 @@ $messages['qqq'] = array(
 	'right-deletediscuss-nominate' => '{{doc-right}}',
 	'right-deletediscuss-review' => '{{doc-right}}',
 	'right-deletequeue-vote' => '{{doc-right}}',
+	'deletequeue-page-speedy' => '$1 is the reason that the proposer entered.';
+	'deletequeue-page-prod' => '$1 is the reason that the proposer entered,
+$2 is a date/time,
+$3 is its date alone,
+$4 is its time alone';
+	'deletequeue-page-deletediscuss' => '$1 is the reason that the proposer entered,
+$2 is a date/time,
+$3 is its date alone,
+$4 is its time alone,
+$5 is a page title.';
 	'deletequeue-review-reason' => '{{Identical|Comments}}',
 	'deletequeue-review-newextra' => '{{Identical|Extra information}}',
 	'deletequeue-vote-reason' => '{{Identical|Comments}}',
@@ -320,7 +330,7 @@ $messages['ar'] = array(
 يمكنك الاعتراض على حذف هذه الصفحة بواسطة [{{fullurl:{{FULLPAGENAME}}|action=delvote}} الاعتراض على الحذف].",
 	'deletequeue-page-deletediscuss' => "هذه الصفحة تم اقتراحها للحذف، وهذا الاقتراح تم الاعتراض عليه.
 السبب المعطى كان ''$1''.
-يجري نقاش في [[$3]]، سينتهي في ''$2''.",
+يجري نقاش في [[$5]]، سينتهي في ''$2''.",
 	'deletequeue-notqueued' => 'الصفحة التي اخترتها ليست في طابور الحذف حاليا',
 	'deletequeue-review-action' => 'الفعل للعمل:',
 	'deletequeue-review-delete' => 'حذف الصفحة.',
@@ -480,7 +490,7 @@ $messages['arz'] = array(
 يمكنك الاعتراض على حذف هذه الصفحة بواسطة [{{fullurl:{{FULLPAGENAME}}|action=delvote}} الاعتراض على الحذف].",
 	'deletequeue-page-deletediscuss' => "هذه الصفحة تم اقتراحها للحذف، وهذا الاقتراح تم الاعتراض عليه.
 السبب المعطى كان ''$1''.
-يجرى نقاش فى [[$3]]، سينتهى فى ''$2''.",
+يجرى نقاش فى [[$5]]، سينتهى فى ''$2''.",
 	'deletequeue-notqueued' => 'الصفحة التى اخترتها ليست فى طابور الحذف حاليا',
 	'deletequeue-review-action' => 'الفعل للعمل:',
 	'deletequeue-review-delete' => 'حذف الصفحة.',
@@ -728,7 +738,7 @@ Wenn hiergegen bis zum ''$2'' kein Widerspruch eingelegt wird, wird diese Seite 
 Du kannst gegen diesen Löschantrag [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Widerspruch einlegen].",
 	'deletequeue-page-deletediscuss' => "Diese Seite wurde zur Löschung vorgeschlagen und hiergegen wurde Widerspruch eingelegt.
 Der angegebene Grund lautet ''$1''.
-Die [[$3|Löschdiskussion]] läuft noch bis zum ''$2''.",
+Die [[$5|Löschdiskussion]] läuft noch bis zum ''$2''.",
 	'deletequeue-notqueued' => 'Die von dir ausgewählte Seite ist momentan in keiner Lösch-Warteschlange',
 	'deletequeue-review-action' => 'Auszuführende Aktion:',
 	'deletequeue-review-delete' => 'Seite löschen.',
@@ -1212,7 +1222,7 @@ Si la proposition ne rencontre aucune objection sur ''$2'', la page sera supprim
 Vous pouvez contester cette suppression en [{{fullurl:{{FULLPAGENAME}}|action=delvote}} vous y opposant].",
 	'deletequeue-page-deletediscuss' => "Cette page a été proposé à la suppression, celle-ci a été contestée.
 Le motif invoqué était ''« $1 »''
-Une discussion est intervenue sur [[$3]], laquelle sera conclue le ''$2''.",
+Une discussion est intervenue sur [[$5]], laquelle sera conclue le ''$2''.",
 	'deletequeue-notqueued' => 'La page que vous avez sélectionnée n’est pas dans la queue des suppression',
 	'deletequeue-review-action' => 'Action à prendre :',
 	'deletequeue-review-delete' => 'Supprimer la page.',
@@ -1372,7 +1382,7 @@ Se esta proposta non recibe resposta en ''$2'', esta páxina será borrada.
 Pode votar na páxina de eliminación [{{fullurl:{{FULLPAGENAME}}|action=delvote}} obxectando].",
 	'deletequeue-page-deletediscuss' => "Esta páxina foi proposta para a súa eliminación e esa proposta foi contestada.
 A razón dada foi ''\$1''.
-Unha conversa está en curso en \"[[\$3]]\", que concluirá o ''\$2''.",
+Unha conversa está en curso en \"[[\$5]]\", que concluirá o ''\$2''.",
 	'deletequeue-notqueued' => 'A páxina que seleccionou non está na cola de eliminación actualmente',
 	'deletequeue-review-action' => 'Acción que levar a cabo:',
 	'deletequeue-review-delete' => 'Borrar a páxina.',
@@ -1545,7 +1555,7 @@ Wänn dodergege bis zum ''$2'' kei Yyspruch yygleit wird, no wird die Syte glesc
 Du chasch gege dää Leschaatrag [{{fullurl:{{FULLPAGENAME}}|action=delvote}} en Yyspruch yylege].",
 	'deletequeue-page-deletediscuss' => "Die Syte isch zum Lesche vorgschlaa wore un dodergege isch Yyspruch yygleit wore.
 Dr Grund, wu aagee woren isch, isch ''$1''.
-D [[$3|Leschdiskussion]] lauft no bis am ''$2''.",
+D [[$5|Leschdiskussion]] lauft no bis am ''$2''.",
 	'deletequeue-notqueued' => 'D Syte, wu Du uusgwehlt hesch, isch zur Zyt in keinere Lesch-Warteschlang',
 	'deletequeue-review-action' => 'Aktion, wu uusgfiert soll wäre:',
 	'deletequeue-review-delete' => 'Syte lesche.',
@@ -1731,7 +1741,7 @@ Si iste proposition remane non contestate al ''$2'', le pagina essera delite.
 Tu pote contestar iste deletion per [{{fullurl:{{FULLPAGENAME}}|action=delvote}} facer un objection contra le deletion].",
 	'deletequeue-page-deletediscuss' => "Iste pagina ha essite proponite pro deletion, e iste proposition ha essite contestate.
 Le motivo date esseva ''$1''.
-Un discussion es in curso a [[$3]], le qual se concludera le ''$2''.",
+Un discussion es in curso a [[$5]], le qual se concludera le ''$2''.",
 	'deletequeue-notqueued' => 'Le pagina que tu ha seligite non es in le cauda de deletiones',
 	'deletequeue-review-action' => 'Action a prender:',
 	'deletequeue-review-delete' => 'Deler le pagina.',
@@ -1887,7 +1897,7 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'deletequeue-queue-deletediscuss' => 'Discussione sulla cancellazione',
 	'deletequeue-page-speedy' => "Questa pagina è stata segnalata per la cancellazione immediata. La motivazione fornita per questa cancellazione è ''$1''.",
 	'deletequeue-page-prod' => "Questa pagina è stata proposta per la cancellazione. La motivazione fornita è ''$1''. Se questa proposta non avrà opposizioni il ''$2'', questa pagina sarà cancellata. È possibile contestare questa cancellazione [{{fullurl:{{FULLPAGENAME}}|action=delvote}} opponendosi a essa].",
-	'deletequeue-page-deletediscuss' => "Questa pagina è stata proposta per la cancellazione e la proposta è stata contestata. La motivazione fornita è ''$1''. La discussione si sta tenendo in [[$3]] e si concluderà il ''$2''.",
+	'deletequeue-page-deletediscuss' => "Questa pagina è stata proposta per la cancellazione e la proposta è stata contestata. La motivazione fornita è ''$1''. La discussione si sta tenendo in [[$5]] e si concluderà il ''$2''.",
 	'deletequeue-notqueued' => 'La pagina che è stata selezionata non è al momento in coda per la cancellazione',
 	'deletequeue-review-action' => 'Azione da effettuare:',
 	'deletequeue-review-delete' => 'Cancella la pagina.',
@@ -2011,7 +2021,7 @@ $messages['ja'] = array(
 	'deletequeue-queue-deletediscuss' => '削除議論',
 	'deletequeue-page-speedy' => 'このページの即時削除が提案されています。削除の提案理由は「$1」です。',
 	'deletequeue-page-prod' => "このページの削除が提案されています。提案理由は「$1」です。''$2'' 時点でこの提案に異論が申し立てられていない場合、このページは削除されます。あなたは[{{fullurl:{{FULLPAGENAME}}|action=delvote}} この削除に反対し]、異論を申し立てることができます。",
-	'deletequeue-page-deletediscuss' => "このページの削除が提案され、議論が行われています。提案理由は「$1」です。削除議論は[[$3]]で進行中で、''$2'' に結論が出ます。",
+	'deletequeue-page-deletediscuss' => "このページの削除が提案され、議論が行われています。提案理由は「$1」です。削除議論は[[$5]]で進行中で、''$2'' に結論が出ます。",
 	'deletequeue-notqueued' => '選択されたページは現時点で削除キューに入っていません',
 	'deletequeue-review-action' => '対処:',
 	'deletequeue-review-delete' => 'ページを削除する。',
@@ -2226,7 +2236,7 @@ Wann De meijns, kanns De [{{fullurl:{{FULLPAGENAME}}|action=delvote}} jääje et
 	'deletequeue-page-deletediscuss' => "Mer han ene Vörschlaach, di Sigg hee fottzeschmiiße.
 Als der Jrond doför wood ''$1'' aanjejovve.
 Et jitt ävver Jäjeshtemme.
-Der Klaaf do drövver op [[$3]] jeiht bes $2.",
+Der Klaaf do drövver op [[$5]] jeiht bes $2.",
 	'deletequeue-notqueued' => 'Do häß_Der en Sigg ußjesooht, di jaa nit en de Leß för fottzeschmiiße es.',
 	'deletequeue-review-action' => 'Wat ze donn es:',
 	'deletequeue-review-delete' => 'Die Sigg fottschmiiße.',
@@ -2502,7 +2512,7 @@ Als er geen bezwaar is tegen dit voorstel op ''$2'', wordt deze pagina verwijder
 U kunt [{{fullurl:{{FULLPAGENAME}}|action=delvote}} bezwaar maken] tegen de verwijdernominatie.",
 	'deletequeue-page-deletediscuss' => "Deze pagina is genomineerd voor verwijdering, en tegen dat voorstel is bezwaar gemaakt.
 De opgegeven reden is: ''$1''.
-Overleg over dit voorstel wordt gevoerd op [[$3]], en loopt af op ''$2''.",
+Overleg over dit voorstel wordt gevoerd op [[$5]], en loopt af op ''$2''.",
 	'deletequeue-notqueued' => 'De door u geselecteerde pagina is niet genomineerd voor verwijdering',
 	'deletequeue-review-action' => 'Te nemen actie:',
 	'deletequeue-review-delete' => 'De pagina verwijderen.',
@@ -2655,7 +2665,7 @@ Om dette forslaget ikkje er gått imot innan ''$2'', vil sida verta sletta.
 Du kan gå imot sletting av sida [{{fullurl:{{FULLPAGENAME}}|action=delvote}} her].",
 	'deletequeue-page-deletediscuss' => "Det finst eit framlegg om å sletta denne sida, men innvendingar har kome.
 Den oppgjevne sletteårsaka var ''$1''.
-Eit ordskifte skjer på [[$3]]; det vil slutta ''$2''.",
+Eit ordskifte skjer på [[$5]]; det vil slutta ''$2''.",
 	'deletequeue-notqueued' => 'Det har ikkje kome framlegg om sletting for sida du valde.',
 	'deletequeue-review-action' => 'Handling:',
 	'deletequeue-review-delete' => 'Slett sida.',
@@ -2804,7 +2814,7 @@ Om dette forslaget ikke er motsagt innen ''$2'', vil siden bli slettet.
 Du kan bestride sletting av siden ved å [{{fullurl:{{FULLPAGENAME}}|action=delvote}} motsi sletting].",
 	'deletequeue-page-deletediscuss' => "Denne siden har blitt foreslått slettet, men forslaget har blitt bestridt.
 Den oppgitte slettingsgrunnen var ''$1''.
-En diskusjon foregår på [[$3]]; den vil slutte ''$2''.",
+En diskusjon foregår på [[$5]]; den vil slutte ''$2''.",
 	'deletequeue-notqueued' => 'Siden du har valgt er ikke foreslått slettet',
 	'deletequeue-review-action' => 'Handling:',
 	'deletequeue-review-delete' => 'Slette siden.',
@@ -2908,7 +2918,7 @@ Se la proposicion rencontra pas cap d'objeccion sus ''$2'', la pagina serà supr
 Podètz contestar aquesta supression en [{{fullurl:{{FULLPAGENAME}}|action=delvote}} vos i opausant].",
 	'deletequeue-page-deletediscuss' => "Aquesta pagina es estada prepausada a la supression, aquesta es estada contestada.
 Lo motiu invocat èra ''« $1 »''
-Una discussion es intervenguda sus [[$3]], la quala serà concluida lo ''$2''.",
+Una discussion es intervenguda sus [[$5]], la quala serà concluida lo ''$2''.",
 	'deletequeue-notqueued' => "La pagina qu'avètz seleccionada es pas dins la coa de las supressions",
 	'deletequeue-review-action' => 'Accion de prene :',
 	'deletequeue-review-delete' => 'Suprimir la pagina.',
@@ -3106,7 +3116,7 @@ Se esta proposta não for contestada em ''$2'', esta página será eliminada.
 Você pode contestar a eliminação desta página [{{fullurl:{{FULLPAGENAME}}|action=delvote}} objetando à eliminação].",
 	'deletequeue-page-deletediscuss' => "Esta página foi proposta para eliminação, e essa proposta foi contestada.
 O motivo dado foi ''$1''.
-Uma discussão encontra-se em curso em [[$3]], e que será concluída em ''$2''.",
+Uma discussão encontra-se em curso em [[$5]], e que será concluída em ''$2''.",
 	'deletequeue-notqueued' => 'A página que selecionou não está atualmente em nenhum fila para eliminação',
 	'deletequeue-review-action' => 'Acção a tomar:',
 	'deletequeue-review-delete' => 'Eliminar a página.',
@@ -3262,7 +3272,7 @@ Se esta proposta não for contestada até ''$2'', esta página será eliminada.
 Você pode contestar a eliminação desta página [{{fullurl:{{FULLPAGENAME}}|action=delvote}} objetando a eliminação].",
 	'deletequeue-page-deletediscuss' => "Esta página foi proposta para eliminação, e a proposta foi contestada.
 A razão dada foi ''$1''.
-Uma discussão está acontecendo em [[$3]], e será encerrada em ''$2''.",
+Uma discussão está acontecendo em [[$5]], e será encerrada em ''$2''.",
 	'deletequeue-notqueued' => 'A página que você selecionou não está na fila de eliminação no momento',
 	'deletequeue-review-action' => 'Ação a tomar:',
 	'deletequeue-review-delete' => 'Eliminar a página.',
@@ -3516,7 +3526,7 @@ Ak nebude tento návrh napadnutý ''$2'', táto stránka bude zmazaná.
 Návrh môžete napadnúť [{{fullurl:{{FULLPAGENAME}}|action=delvote}} námietkou proti zmazaniu].",
 	'deletequeue-page-deletediscuss' => "Bolo navrhnuté zmazanie tejto stránky a tento návrh bol napadnutý.
 Ako dôvod bolo uvedené ''$1''.
-Na [[$3]] prebieha diskusia, ktorá skončí ''$2''.",
+Na [[$5]] prebieha diskusia, ktorá skončí ''$2''.",
 	'deletequeue-notqueued' => 'Stránka, ktorú ste vybrali, momentálne nie je vo fronte na zmazanie',
 	'deletequeue-review-action' => 'Vykonať operáciu:',
 	'deletequeue-review-delete' => 'Zmazať stránku.',
@@ -3827,7 +3837,7 @@ Kapag hindi tinutulan ang mungkahing ito sa ''$2'', buburahin na ang pahinang it
 Maaari mong tutulan ang pagbura ng pahinang ito sa pamamagitan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} ng pagtutol sa pagbura].",
 	'deletequeue-page-deletediscuss' => "Iminungkahing burahin ang pahinang ito, at may tumututol sa mungkahing ito.
 Ang ibinigay na dahilan ay ''$1''.
-Kasalukuyang nagaganap ang isang usapan sa [[$3]], na magtatapos sa ''$2''.",
+Kasalukuyang nagaganap ang isang usapan sa [[$5]], na magtatapos sa ''$2''.",
 	'deletequeue-notqueued' => 'Kasalukuyang hindi nakahanay para sa pagbura ang pahinang napili mo',
 	'deletequeue-review-action' => 'Kilos na gagawin:',
 	'deletequeue-review-delete' => 'Burahin ang pahina.',

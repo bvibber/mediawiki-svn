@@ -89,6 +89,8 @@ class DeleteQueueHooks {
 		$options[] = $dqi->getReason();
 		$expiry = wfTimestamp( TS_UNIX, $dqi->getExpiry() );
 		$options[] = $wgLang->timeanddate( $expiry );
+		$options[] = $wgLang->date( $expiry );
+		$options[] = $wgLang->time( $expiry );
 		if ($queue == 'deletediscuss') {
 			$options[] = $dqi->getDiscussionPage()->mTitle->getPrefixedText();
 		}
