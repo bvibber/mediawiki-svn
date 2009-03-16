@@ -77,7 +77,8 @@ mvFirefogg.prototype = {
 		this.enabled=true;
 		
 		//make sure file is "checked"
-		$j( '#wpSourceTypeFile' ).get(0).checked = true;		
+		if($j( '#wpSourceTypeFile' ).length != 0)
+			$j( '#wpSourceTypeFile' ).get(0).checked = true;		
 		
 		//hide normal file upload stuff
 		$j( '#wg-base-upload' ).hide();
@@ -284,10 +285,10 @@ mvFirefogg.prototype = {
 				_this.formData[ 'action' ] = 'submit';
 				
 				//send to the post url: 				
-				js_log('sending form data to : ' + _this.editForm.action);
-				for(var fk in _this.formData){
-					js_log(fk + ' : ' +  _this.formData[fk]);
-				}			
+				//js_log('sending form data to : ' + _this.editForm.action);
+				//for(var fk in _this.formData){
+				//	js_log(fk + ' : ' +  _this.formData[fk]);
+				//}			
 				_this.fogg.post( _this.editForm.action, 'wpUploadFile', JSON.stringify( _this.formData ) );
 				
 				//update upload status:						
@@ -305,7 +306,7 @@ mvFirefogg.prototype = {
 		//setup a local function for timed callback: 				
 		var uploadStatus = function(){	
 			var status = _this.fogg.status();							        					      					        					
-			js_log(' up stats: ' + status + ' p:' + _this.fogg.progress() + ' state: '+ _this.fogg.state + ' result page:' + _this.fogg.responseText);
+			//js_log(' up stats: ' + status + ' p:' + _this.fogg.progress() + ' state: '+ _this.fogg.state + ' result page:' + _this.fogg.responseText);
 			
 		    //update progress bar
 		    _this.fogg_update_progress( _this.fogg.progress() );
@@ -319,13 +320,15 @@ mvFirefogg.prototype = {
 		       	js_log( 'firefogg:upload done: '); 			        		       			       			       	       		       			       	
 		       	//if in "post" upload mode read the html response (should be depricated): 
 		       	if( _this.upload_mode == 'post' ) {
+		       		var pstatus = JSON.parse( _this.fogg.uploadstatus() );
 		       		//js_log( 'done upload response is: ' + cat["responseText"] );
-		       		_this.procPageResponse( JSON.parse( _this.fogg.uploadstatus() )["responseText"] );
+		       		_this.procPageResponse( pstatus["responseText"] );
 		       	}else if( _this.upload_mode == 'chunks'){
 		       		//should have an json result:
-		       		var foo = _this;
-		       		var cat = _JSON.parse( _this.fogg.uploadstatus() );
-		       		debugger;
+		       		js_error('chunks upload not yet supported');
+		       		//var foo = _this;
+		       		//var cat = _JSON.parse( _this.fogg.uploadstatus() );
+		       		//debugger;
 		       			       		
 		       	}													
 			}else{  
@@ -350,7 +353,7 @@ mvFirefogg.prototype = {
 					_this.upload_done_action();
 			}									
 		}else{								
-			js_log( 'upload page error: did not find: ' +sstring + ' in ' + "\n" + result_page );	
+			//js_log( 'upload page error: did not find: ' +sstring + ' in ' + "\n" + result_page );	
 			var error_txt = 'Unkown error';			
 			var form_txt = '';		
 			if( !result_page ){

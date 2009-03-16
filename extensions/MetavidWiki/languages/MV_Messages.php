@@ -71,7 +71,7 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 
 	# remoteSearchDriver.js
 	#set to ignored for now. Messages does not appear to be final
-	'mv_media_search' => 'Media search why test test', # do not translate or duplicate this message to other languages
+	'mv_media_search' => 'Media search', # do not translate or duplicate this message to other languages
 	'rsd_box_layout' => 'Box layout',
 	'rsd_list_layout' => 'List layout',
 	#set to ignored for now. Messages does not appear to be final
@@ -81,6 +81,15 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 	'upload' => 'Upload',
 	'rsd_layout' => 'Layout:',
 	'rsd_resource_edit' => 'Edit resource:',
+	'resource_description_page'=> "Resource Description Page",
+	
+	'cc_title' => 'Creative Commons',
+	'cc_by_title' => 'Attribution',
+	'cc_nc_title' => 'Noncommercial',
+	'cc_nd_title' => 'No Derivative Works',
+	'cc_sa_title' => 'Share Alike',
+	'cc_pd_title' => 'Public Domain',
+		
 
 	# mvClipEdit.js
 	'mv_crop' => 'Crop image',

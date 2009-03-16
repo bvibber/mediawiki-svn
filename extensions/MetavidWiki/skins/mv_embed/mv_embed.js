@@ -643,12 +643,25 @@ var embedTypes = {
 			 // quicktime
 			 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
 			 	this.players.addPlayer(quicktimeActiveXPlayer);			 
-		 }
-		
-		 // <video> element (should not need to be attached to the dom to test)(
-		 var v = document.createElement("video");
-		 if( v.play )
-		 	this.players.addPlayer( videoElementPlayer );
+		 }				 
+		// <video> element
+		if ( typeof HTMLVideoElement == 'object' // Firefox, Safari
+				|| typeof HTMLVideoElement == 'function' ) // Opera
+		{
+			//do another test for safari: 
+			if( this.safari ){
+				var dummyvid = document.createElement("video");
+				if (dummyvid.canPlayType("video/ogg;codecs=\"theora,vorbis\"") == "probably")
+				{
+					this.players.addPlayer( videoElementPlayer );
+				} else {
+					/* could add some user nagging to install the xiph qt */
+				}
+			}else{
+				this.players.addPlayer( videoElementPlayer );
+			}
+		}
+		 	
 		
 		 // Mozilla plugins
 		if( navigator.mimeTypes && navigator.mimeTypes.length > 0) {
@@ -1011,19 +1024,22 @@ function mv_do_sequence(initObj){
 */
 //simple url re-writer for standard temporal and size request urls: 
 function getURLParamReplace( url, opt ){	
-	var pSrc = parseUri(url);	
+	var pSrc = parseUri( url );	
 	if(pSrc.protocol != '' ){
 		var new_url = pSrc.protocol +'://'+ pSrc.authority + pSrc.path +'?';       			
 	}else{
 		var new_url = pSrc.path +'?';      
 	}	
 	var amp = '';
-	for(var i in pSrc.queryKey, function(key, val){
+	for(var key in pSrc.queryKey){
+		var val = pSrc.queryKey[ key ];
+		//do override if requested 
 		if( opt[ key ] )
 			val = opt[ key ];
 		new_url+= amp + key + '=' + val;					
 		amp = '&';    	
-	});
+	};
+	
 	return new_url;
 }
 

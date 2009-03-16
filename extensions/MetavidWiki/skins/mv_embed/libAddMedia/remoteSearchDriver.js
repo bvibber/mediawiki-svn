@@ -7,7 +7,7 @@
 	metavid 
 	and archive.org
 */
-loadGM( { "mv_media_search" : "Media Search why test test",
+loadGM( { "mv_media_search" : "Media Search",
 		"rsd_box_layout" : "Box layout",
 		"rsd_list_layout" : "List Layout",
 		"rsd_results_desc" : "Results ",
@@ -15,7 +15,15 @@ loadGM( { "mv_media_search" : "Media Search why test test",
 		"rsd_results_prev" : "previous ",
 		"upload" : "Upload",
 		"rsd_layout" : "Layout:",
-		"rsd_resource_edit" : "Edit Resource:"
+		"rsd_resource_edit" : "Edit Resource:",
+		"resource_description_page": "Resource Description Page",
+		
+		"cc_title": "Creative Commons",
+		"cc_by_title": "Attribution",
+		"cc_nc_title": "Noncommercial",
+		"cc_nd_title": "No Derivative Works",
+		"cc_sa_title": "Share Alike",
+		"cc_pd_title": "Public Domain"
 });
 
 var default_remote_search_options = {
@@ -65,7 +73,7 @@ remoteSearchDriver.prototype = {
 		'advanced_search':{
 			'title': 'Advanced Options'
 		}		
-	},
+	},	
 	content_providers:{				
 		/*content_providers documentation: 			
 			@enabled: whether the search provider can be selected
@@ -157,6 +165,71 @@ remoteSearchDriver.prototype = {
 			'tab_img':true					   		 
 		}
 	},	
+	//define the licenses
+    // ... this will get complicated quick... 
+    // (just look at complexity for creative commons without exessive "duplicate data") 
+    // ie cc_by could be "by/3.0/us/" or "by/2.1/jp/" to infinitum...
+    // some complexity should be negated by license equivalances.     
+    
+    // but we will have to abstract into another class let content providers provide license urls 
+    // and we have to clone the license object and allow local overrides
+    
+	licenses:{		
+		//for now only support creative commons type licenses
+		//used page: http://creativecommons.org/licenses/
+		'cc':{
+			'base_img_url':'http://upload.wikimedia.org/wikipedia/commons/thumb/',
+			'base_license_url': 'http://creativecommons.org/licenses/',
+			'licenses':{
+				'by':'by/3.0/',
+				'by-sa':'by-sa/3.0/',						
+				'by-nc-nd':'by-nc-nd/3.0/',
+				'by-nc':'by-nc/3.0/',
+				'by-nc-sa':'by-nc-sa/3.0/',
+				'by-sa':'by-nc/3.0',
+				'pd':'publicdomain/'
+			},
+			'license_img':{
+				'by':{
+					'im':'1/11/Cc-by_new_white.svg/20px-Cc-by_new_white.svg.png',
+				},
+				'nc':{
+					'im':'2/2f/Cc-nc_white.svg/20px-Cc-nc_white.svg.png',
+				},
+				'nd':{
+					'im':'b/b3/Cc-nd_white.svg/20px-Cc-nd_white.svg.png',
+				},
+				'sa':{
+					'im':'d/df/Cc-sa_white.svg/20px-Cc-sa_white.svg.png',
+				},
+				'pd':{
+					'im':'5/51/Cc-pd-new_white.svg/20px-Cc-pd-new_white.svg.png',					
+				}
+			}
+		}
+	},
+	getlicenseImgSet:function( license_key ){		
+		if( typeof( this.licenses.cc.licenses[ license_key ]) == 'undefined')
+			return js_error('only cc licencs presently supported, could not find:' + license_key);
+		//set the current license pointer: 
+		var cl = this.licenses.cc;
+		var title = gM('cc_title');
+		var imgs = '';		
+		var license_set = license_key.split('-');		
+		for(var i=0;i < license_set.length; i++){			
+			lkey = 	license_set[i];												
+			title += gM( lkey + '_desc');
+			imgs +='<img width="20" src="' + cl.base_img_url +
+				cl.license_img[ lkey ].im + '">';
+		}
+		js_log('output images: '+ imgs);
+		return '<div class="rsd_license" title="'+ title + '" >' +
+					'<a target="_new" href="'+ cl.base_license_url + cl.licenses[ lkey ] +
+					 	'" title="' + title + '">'+ 
+							imgs +
+					'</a>'+ 
+			  	'</div>';
+	},
 	//some default layout values:		
 	thumb_width 		: 80,
 	image_edit_width	: 600,
@@ -469,14 +542,21 @@ remoteSearchDriver.prototype = {
 								rItem.poster = mv_embed_path + 'skins/' + mv_skin_name + 
 									'/images/sound_music_icon-80.png';									
 							}
+							//get a thumb with proper resolution transform if possible: 
 							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +
-									'" style="width:' + _this.thumb_width + 'px;" src="' + rItem.poster + '">';
+									'" style="width:' + _this.thumb_width + 'px;" src="' + 
+									cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } ) 
+									+ '">';
 							//add a linkback to resource page in upper right:
 							if( rItem.link ) 
 								o+='<a target="_new" style="position:absolute;top:0px;right:0px" title="' +
-									 gM('Resource Description Page') + 
+									 gM('resource_description_page') + 
 									'" href="' + rItem.link + '"><img src="' + stylepath + 
 									'/common/images/magnify-clip.png"></a>';
+							//add license icons if present				
+							if( rItem.license ){	
+								o+= _this.getlicenseImgSet( rItem.license );								
+							}
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
@@ -737,11 +817,11 @@ remoteSearchDriver.prototype = {
 												
 						base_resource_desc+='}}';
 						
-						//add in licence template tag: 
-						if( rObj.licence_template_tag )
+						//add in license template tag: 
+						if( rObj.license_template_tag )
 							base_resource_desc += "\n" +
 								'== [[Commons:Copyright tags|Licensing]]: ==' +"\n"+
-								'{{' + rObj.licence_template_tag + '}}';
+								'{{' + rObj.license_template_tag + '}}';
 						
 						$j('#rsd_resource_import').remove();//remove any old resource imports
 						//@@ show user dialog to import the resource
@@ -1158,9 +1238,13 @@ mvBaseRemoteSearch.prototype = {
 			_this.num_results++;		
 		});		
 	},
-	//by default just return the existing image: 
+	//by default just return the existing image with callback 
 	getImageObj:function( rObj, size, callback){
 		callback( {'url':rObj.poster} );
+	},
+	//by default just return the poster (clients can overide) 
+	getImageTransform:function(rObj, opt){
+		return rObj.poster;
 	},
 	getEmbedObjParsedInfo:function(rObj, eb_id){
 		return rObj;

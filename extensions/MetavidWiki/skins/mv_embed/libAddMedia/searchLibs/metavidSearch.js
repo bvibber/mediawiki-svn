@@ -49,6 +49,10 @@ metavidSearch.prototype = {
 				rObj['start_time'] = proe.queryKey['t'].split('/')[0];
 				rObj['end_time'] = proe.queryKey['t'].split('/')[1];	
 				rObj['stream_name'] = proe.queryKey['stream_name'];
+				
+				//all metavid content is public domain: 
+				rObj['license'] = 'pd';
+				
 				//transform the title into a wiki_safe title: 			
 				//rObj['titleKey'] = proe.queryKey['stream_name'] + '_' + rObj['start_time'].replace(/:/g,'.') + '_' + rObj['end_time'].replace(/:/g,'.') + '.ogg';
 				rObj['titleKey'] = proe.queryKey['stream_name'] + '/' + rObj['start_time'] + '/' + rObj['end_time'] + '__.ogg';						
@@ -73,23 +77,18 @@ metavidSearch.prototype = {
 			return '<video ' + id_attr + ' roe="' + rObj['roe_url'] + '"></video>';
 		}
 	},	
-	getImageObj:function( rObj, size, callback ){
-		var pUrl = parseURI( rObj.poster );
-		//per Mv_StreamImage.php page
-		var imgurl = ''; 			
-		
-		if( size.width <= 80 ){
-			imgurl = getURLParamReplace( rObj.poster, { 't' : "icon" } )
-		}else if( size.width <= 160 ){
-			imgurl = getURLParamReplace( rObj.poster, { 't' : "small" } )
-		}else if( size.width <= 320 ){
-			imgurl = getURLParamReplace( rObj.poster, { 't' : 'medium' } )
-		}else if( size.width <= 512 ){
-			imgurl = getURLParamReplace( rObj.poster, { 't' : 'large' } )
+	getImageTransform:function( rObj, opt ){		
+		if( opt.width <= 80 ){
+			return getURLParamReplace( rObj.poster, { 'size' : "icon" } )
+		}else if( opt.width <= 160 ){
+			return getURLParamReplace( rObj.poster, { 'size' : "small" } )
+		}else if( opt.width <= 320 ){
+			return getURLParamReplace( rObj.poster, { 'size' : 'medium' } )
+		}else if( opt.width <= 512 ){
+			return getURLParamReplace( rObj.poster, { 'size' : 'large' } )
 		}else{
-			imgurl = getURLParamReplace( rObj.poster, { 't' : 'full' } )
-		}
-		callback( imgurl );
+			return getURLParamReplace( rObj.poster, { 'size' : 'full' } )
+		}		
 	},
 	getEmbedObjParsedInfo:function(rObj, eb_id){
 		var sources = $j('#'+eb_id).get(0).media_element.getSources();
@@ -113,7 +112,7 @@ metavidSearch.prototype = {
 		var year_full = (dParts[3].length==2)?'20'+dParts[3].toString():dParts[3];
 		d.setFullYear(year_full, dParts[1]-1, dParts[2]);	
 		rObj['date'] = 	d.toDateString();		
-		rObj['licence_template_tag']='PD-USGov';		
+		rObj['license_template_tag']='PD-USGov';		
 		//update based on new start time: 		
 		js_log('url is: ' + rObj.src + ' ns: ' + rObj.start_time + ' ne:' + rObj.end_time);		
 						

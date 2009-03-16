@@ -319,7 +319,7 @@ function mvSetupExtension() {
 	);
 }
 # Define a setup function
-# Add a hook to initialise the magic word
+# Add a hook to initialize the magic word
 $wgHooks['LanguageGetMagic'][]       = 'mvMagicParserFunction_Magic';
  
 function mvMagicParserFunction_Magic( &$magicWords, $langCode ) {

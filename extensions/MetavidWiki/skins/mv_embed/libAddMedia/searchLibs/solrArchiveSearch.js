@@ -1,7 +1,6 @@
 //archive.org uses solr engine: 
 //more about solr here: 
 //http://lucene.apache.org/solr/
-
 //if we ever have another remote repository using solr we could abstract thouse pieces into a seperate lib
 
 var solrArchiveSearch = function ( initObj){
@@ -26,7 +25,8 @@ solrArchiveSearch.prototype = {
 		js_log('f:getSearchResults for:' + $j('#rsd_q').val() );
 		//build the query var
 		var q = $j('#rsd_q').val();
-		//@@todo check advanced options: 
+		//@@todo check advanced options: include audio and images media types
+		//for now force (Ogg video) & a creativecommons license
 		q+=' format:(Ogg video)';
 		q+=' licenseurl:(http\\:\\/\\/creativecommons\\.org*)';
 		var reqObj = {

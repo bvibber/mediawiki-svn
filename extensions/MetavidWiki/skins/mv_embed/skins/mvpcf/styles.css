@@ -559,6 +559,15 @@ div.rsd_selected {
 #rsd_resource_edit{
 	z-index:2;
 }
+.rsd_license{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	width:100%;
+}
+.rsd_license img{
+	float:left;
+}
 .mv_clip_box_result{
 	padding:10px;
 	float:left;
