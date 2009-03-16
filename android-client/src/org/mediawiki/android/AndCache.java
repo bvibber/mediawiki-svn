@@ -28,7 +28,7 @@ import android.util.Log;
  * set.
  *
  * @author Chad Horohoe
- * @version 0.1
+ * @version 0.2
  * @license GNU GPL v2 (or later)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -53,6 +53,9 @@ public class AndCache {
 	
 	// For debugging
 	private static final String LOG = "org.mediawiki.android.Cache";
+	
+	// Call lockCache() to get a lock on the cache
+	private static boolean locked = false;	
 	
 	// Database info
 	private static final String DB_NAME = "cache.db";
@@ -165,11 +168,23 @@ public class AndCache {
 	private static void delete( String key ) throws CacheException {
 		SQLiteDatabase db = mWrapper.getWritableDatabase();
 		try {
-			db.execSQL( "DELETE FROM " + TBL_NAME + " WHERE " + TBL_SCHEMA.cols.KEY + " = '" + key + "'" );
+			db.delete( TBL_NAME, TBL_SCHEMA.cols.KEY + " = '" + key + "'", null );
 		} catch ( SQLiteException e ) {
-			throw new CacheException( "SQL Error in AndCache.delete() :" + e.getMessage() ); 
+			throw new CacheException( "SQL", "AndCache.delete", e.getMessage() ); 
 		} finally {
 			Log.i( "org.mediawiki.android.Cache", "Deleting key: " + key );
+		}
+	}
+	
+	/**
+	 * Flush the entire cache. Helpful if you've got stuff caught in it
+	 */
+	public static void flush() throws CacheException {
+		SQLiteDatabase db = mWrapper.getWritableDatabase();
+		try {
+			db.delete( TBL_NAME , "1", null );
+		} catch( SQLiteException e ) {
+			throw new CacheException( "Query", "flush()", e.getMessage() );
 		}
 	}
 	
@@ -198,11 +213,11 @@ public class AndCache {
 			oOut.writeObject(obj);
 			bytes = bOut.toByteArray();
 		} catch ( IOException e ) {
-			throw new CacheException( "Failed to serialize, IOException: " + e.getMessage() );
+			throw new CacheException( "IOException", "AndCache.serialize", e.getMessage() );
 		}
 		return bytes;
 	}
-	
+
 	/**
 	 * Unserialize an object
 	 * @param byte[] bytes A byte array to be deserialized into an object
@@ -217,9 +232,9 @@ public class AndCache {
 		    bIn.close();
 		    return obj;
 		} catch( IOException e ) {
-			throw new CacheException( "Failed to unserialize, IOException: " + e.getMessage() );
+			throw new CacheException( "IOException", "AndCache.unserialize", e.getMessage() );
 		} catch (ClassNotFoundException e) {
-			throw new CacheException( "Failed to unserialize: " + e.getMessage() );
+			throw new CacheException( "ClassNotFoundException", "AndCache.unserialize" ,e.getMessage() );
 		}
 	}
 	
@@ -266,15 +281,33 @@ public class AndCache {
 	 * Need to be able to set our context
 	 * @param Context c the new Context to use
 	 */
-	public static void setContext( Context c ) throws CacheException {
-		try {
-			AndCache.ctx = c;
-			mWrapper = new DbWrapper( AndCache.ctx );
+	public static void setContext( Context c, boolean lock ) throws CacheException {
+		String curPackage = AndCache.ctx.getPackageName();
+		if ( c.getPackageName() == curPackage ) {
+			return;
 		}
-		catch ( SQLiteException e ) {
-			throw new CacheException( "Could not setup db for ctx " + 
-						c.getClass().getName() + ". SQL error was" + e.getMessage() );
+		else if ( AndCache.locked ) {
+			throw new CacheException( "Context locked", "AndCache.setContext", 
+										"locked to " + curPackage );
 		}
+		else {
+			try {
+				AndCache.ctx = c;
+				mWrapper = new DbWrapper( AndCache.ctx );
+				AndCache.locked = lock;
+			}
+			catch ( SQLiteException e ) {
+				throw new CacheException( "Create DB", "AndCache.setContext", e.getMessage() );
+			}
+		}
+	}
+	
+	/**
+	 * Unlock the cache. Call this if you've gotten a lock and you're
+	 * done with the cache.
+	 */
+	public static void unlockCache() {
+		AndCache.locked = false;
 	}
 	
 	/**
@@ -291,8 +324,19 @@ public class AndCache {
 	public static class CacheException extends Exception {
 		// Auto-gen
 		private static final long serialVersionUID = 675324595007281374L;
-		public CacheException( String msg ) {
-			super(msg);
+		/**
+		 * Cache exceptions. We generally throw these when catching higher 
+		 * exceptions so we can bail out nicer.
+		 * @param error The specific type of error or exception being caught
+		 * @param method The method that is throwing the error (eg: AndCache.get)
+		 * @param eMsg Any extra info to return, perhaps from a caught exception
+		 */
+		public CacheException( String error, String caller, String eMsg ) {
+			// Java is stupid and wants the parent call first, so I can't
+			// just make a string and use it twice :\
+			super( error + " error in " + caller + "()" + ( eMsg != null ? ": " + eMsg : "" ) );
+			Log.e( AndCache.LOG, error + " error in " + caller + "()" + 
+						( eMsg != null ? ": " + eMsg : "" )  );
 		}
 	}
 }
