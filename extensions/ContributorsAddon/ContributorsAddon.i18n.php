@@ -131,6 +131,13 @@ $messages['ia'] = array(
 	'contributorsaddon-desc' => 'Adde pop-ups via onMouseOver in JS al ligamines "Contributores principal"',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'contributorsaddon-desc' => 'Aggiunge dei popup JavaScript ai collegamenti "Principali contributori"',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author JtFuruhata

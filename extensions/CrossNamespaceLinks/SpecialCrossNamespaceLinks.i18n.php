@@ -974,10 +974,10 @@ Xe esclusi i colegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:pro
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'crossnamespacelinks' => 'Liên kết qua tên miền không gian',
-	'crossnamespacelinks-desc' => 'Liệt kê [[Special:CrossNamespaceLinks|các liên kết giữa không gian tên]] mà không nên có tại {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'Trang này liệt danh sách các liên kết từ một trang ở không gian tên chính đến một trang ở không gian tên khác (trừ không gian tên {{ns:special}}, {{ns:talk}}, {{ns:project}} và {{ns:template}}), là điều không khuyến khích sử dụng.',
-	'crossnamespacelinkstext' => '$1: $2 liên kết đến $3',
+	'crossnamespacelinks' => 'Liên kết giữa các không gian tên',
+	'crossnamespacelinks-desc' => 'Liệt kê [[Special:CrossNamespaceLinks|các liên kết không nên tồn tại giữa các không gian tên]] tại {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Trang này liệt danh sách các liên kết từ một trang ở không gian tên chính đến một trang ở các không gian tên khác (trừ không gian tên {{ns:special}}, {{ns:talk}}, {{ns:project}} và {{ns:template}}), điều này không được khuyến khích sử dụng.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|liên kết|liên kết}} đến $3',
 );
 
 /** Volapük (Volapük)

@@ -81,6 +81,13 @@ $messages['niu'] = array(
 	'todo-list-cancel' => 'Tiaki',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'todo-form-details' => 'Detalid:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -412,6 +419,7 @@ $messages['es'] = array(
 	'todo-unrecognize-type' => 'Tipo no reconocido',
 	'todo-item-list' => 'Sus items',
 	'todo-no-item' => 'Sin items de quehaceres.',
+	'todo-invalid-owner' => 'Propietario inválido en este item',
 	'todo-add-queue' => 'Agregar cola...',
 	'todo-move-queue' => 'Mover a la cola...',
 	'todo-list-for' => 'Lista de quehaceres para $1',

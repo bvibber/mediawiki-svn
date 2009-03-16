@@ -444,11 +444,16 @@ $messages['es'] = array(
 	'povwatch_desc' => 'Extensión para [[Special:PovWatch|meter páginas en las listas de seguimiento]] de otros usuarios',
 	'povwatch_already_subscribed' => 'Ya está suscrito en PovWatch',
 	'povwatch_invalid_title' => 'El título especificado fue inválido',
+	'povwatch_intro' => 'PovWatch es un servicio el cual permite a las páginas polémicas ser discretamente enviadas a la lista de vigilancia de administradores suscritos.
+
+Un registro de envios recientes a una lista de vigilancia esta disponible en [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Una [[Special:PovWatch/subscribers|lista de suscriptores]] está disponible.',
 	'povwatch_subscriber_list_intro' => '<strong>Lista de suscriptores</strong>',
 	'povwatch_not_allowed_subscribers' => 'No se le permite ver la lista de suscriptores PovWatch.',
 	'povwatch_unknown_subpage' => 'Subpágina desconocida.',
 	'povwatch_push' => 'Presionar',
+	'povwatch_push_intro' => 'Usar el formulario de abajo para enviar páginas a la lista de vigilancia de usuarios suscritos.
+Por favor se cuidadoso escribiendo el título: aún títulos inexistentes pueden ser agregados, y no hay forma de remover un título una vez que ha sido enviado.',
 	'povwatch_title' => 'Título:',
 	'povwatch_comment' => 'Comentario del registro:',
 	'povwatch_no_log' => 'No existen elementos.',
@@ -1150,8 +1155,10 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Izzudin
  */
 $messages['ms'] = array(
+	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Penyambung untuk [[Special:PovWatch|menerbitkan laman ke dalam senarai pantau]] pengguna lain',
 	'povwatch_no_session' => 'Ralat: Borang tidak dapat diserahkan kerana kehilangan data sesi.',
 	'povwatch_not_allowed_push' => 'Anda bukan pentadbir PovWatch. Anda tidak boleh menerbitkan laman ke dalam senarai pantau pengguna.',
@@ -1161,6 +1168,9 @@ $messages['ms'] = array(
 	'povwatch_unsubscribed' => 'Anda telah berhenti daripada menyertai PovWatch',
 	'povwatch_invalid_title' => 'Tajuk yang dinyatakan tidak sah',
 	'povwatch_pushed' => '[[$1]] telah diterbitkan ke dalam $2 senarai pantau pengguna',
+	'povwatch_intro' => 'PovWatch ialah servis yang membenarkan laman kontroversi dimasukkan secara senyap ke dalam senarai pantau penyelia.
+
+Log untuk senarai pantau yang dimasukkan terkini boleh didapati di [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Anda boleh melihat [[Special:PovWatch/subscribers|senarai peserta]].',
 	'povwatch_subscriber_list_intro' => '<strong>Senarai peserta</strong>',
 	'povwatch_not_allowed_subscribers' => 'Anda tidak dibenarkan melihat senarai peserta PovWatch.',
@@ -1178,6 +1188,7 @@ $messages['ms'] = array(
 	'povwatch_added' => 'ditambah',
 	'right-povwatch_admin' => 'Mentadbir hak pengguna untuk menambah laman ke dalam senarai pantau pengguna lain',
 	'right-povwatch_user' => 'Menambah laman ke dalam senarai pantau pengguna lain',
+	'action-povwatch_admin' => 'selia hak pengguna untuk PovWatch',
 	'action-povwatch_user' => 'menambah laman ini ke dalam senarai pantau pengguna lain',
 );
 

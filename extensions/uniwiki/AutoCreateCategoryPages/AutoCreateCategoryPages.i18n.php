@@ -411,6 +411,17 @@ $messages['uk'] = array(
 	'autocreatecategorypages-editor' => 'Автоматичний творець категорій',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'autocreatecategorypages-desc' => 'Tự động tạo ra trang thể loại còn thiếu khi lưu trang',
+	'autocreatecategorypages-stub' => 'Đây là một trang thể loại.
+Nó liệt kê tất cả các trang trong thể loại “$1” cũng như tất cả các thể loại con của thể loại “$1” nếu có.',
+	'autocreatecategorypages-createdby' => 'Được bộ mở rộng AutoCreateCategoryPages tự động tạo ra.',
+	'autocreatecategorypages-editor' => 'Bộ tự động tạo thể loại',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

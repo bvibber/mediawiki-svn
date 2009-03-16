@@ -584,6 +584,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'chemicalsource-desc' => '화학식 표현을 위해 <nowiki><chemform></nowiki> 태그를 추가',
 	'chemFunctions_CAS' => 'CAS 등록 번호',
+	'chemFunctions_ATCCode' => 'ATC 코드',
 	'chemFunctions_Formula' => '식',
 	'chemFunctions_ChemFormInputError' => '화학식: 입력 오류!',
 );
@@ -1036,16 +1037,22 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'chemicalsources' => 'Kimyasal kaynaklar',
+	'chemicalsource-desc' => 'Kimyasal formüller için, <nowiki><chemform></nowiki> etiketini ekler',
 	'chemFunctions_ListPage' => 'Kimyasal kaynaklar',
+	'chemFunctions_DataList' => 'Aşağıdaki, aradığınız kimyasal madde hakkında bilgi sağlayabilecek sitelere bağlantıların bir listesidir.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST\'de Bileşik $MIXCASNameFormula</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">Oxford Üniversitesinde (UK) MSDS (aranabilir değil)</a><br />',
 	'chemFunctions_CAS' => 'CAS numarası',
 	'chemFunctions_ATCCode' => 'ATC kodu',
 	'chemFunctions_ECNumber' => 'EC numarası',
 	'chemFunctions_Formula' => 'Formül',
 	'chemFunctions_Name' => 'IUPAC adı',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Girdi hatası!',
 );
 
 /** Ukrainian (Українська)

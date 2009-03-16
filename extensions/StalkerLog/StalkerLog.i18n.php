@@ -115,6 +115,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'stalkerlog-log-login' => 'Conectado',
 	'stalkerlog-log-logout' => 'Desconectado',
+	'stalkerlog-log-type' => 'Registro de autenticación de usuario',
 );
 
 /** Basque (Euskara)

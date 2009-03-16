@@ -147,6 +147,24 @@ $messages['niu'] = array(
 	'whitelisttableedit' => 'Fakahakohako',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'mywhitelistpages' => 'Minun lehtpoled',
+	'whitelistfor' => '<center>Aktualine informacii <b>$1</b>-kävutajan täht</center>',
+	'whitelisttablemodify' => 'Modificiruida',
+	'whitelisttablemodifyall' => 'Kaik',
+	'whitelisttablemodifynone' => 'Nimidä',
+	'whitelisttablepage' => "Wikin lehtpol'",
+	'whitelisttableedit' => 'Redaktiruida',
+	'whitelisttableview' => 'Nähta',
+	'whitelisttablenewdate' => "Uz' dat:",
+	'whitelisttablechangedate' => 'Lopstrokun datan vajehtuz',
+	'whitelisttableremove' => 'Čuta poiš',
+	'whitelistnewtableprocess' => 'Process',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */

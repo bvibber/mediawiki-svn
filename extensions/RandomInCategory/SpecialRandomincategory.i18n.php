@@ -92,7 +92,7 @@ $messages['be-tarask'] = array(
 	'randomincategory' => 'Выпадковая старонка ў катэгорыі',
 	'randomincategory-desc' => '[[Special:Randomincategory|Спэцыяльная старонка]] для атрыманьня выпадковай старонкі ў катэгорыі',
 	'randomincategory-toolbox' => 'Выпадковая старонка',
-	'randomincategory-nocategory' => 'Катэгорыя $1 не існуе, ці яна пустая',
+	'randomincategory-nocategory' => 'Катэгорыя $1 не існуе альбо пустая',
 	'randomincategory-label' => 'Катэгорыя:',
 	'randomincategory-submit' => 'Перайсьці',
 );
@@ -775,10 +775,12 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'randomincategory' => 'Kategoriye göre rastgele sayfa',
+	'randomincategory-desc' => 'Kategoride rasgele bir sayfa için [[Special:Randomincategory|özel sayfa]]',
 	'randomincategory-toolbox' => 'Rastgele sayfa',
 	'randomincategory-label' => 'Kategori:',
 );

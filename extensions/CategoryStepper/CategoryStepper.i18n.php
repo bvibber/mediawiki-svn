@@ -253,6 +253,15 @@ $messages['is'] = array(
 	'categorystepper-start' => '(Upphaf flokks)',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'categorystepper-desc' => 'Visualizza una casella stepper per le categorie che permette di navigare avanti e indietro in ordine alfabetico attraverso una o più categorie di una pagina',
+	'categorystepper-end' => '(Fine della categoria)',
+	'categorystepper-start' => '(Inizio della categoria)',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
@@ -531,6 +540,14 @@ $messages['tl'] = array(
 	'categorystepper-desc' => 'Nagpapakita ng isang kahong hakbangan ng kaurian na nagpapahintulot sa isa na alpabetikong makapaglibot pasulong at paurong sa pamamagitan ng isa o mas marami pang mga kauriang kinapapalooban ng isang pahina',
 	'categorystepper-end' => '(Wakas ng kaurian)',
 	'categorystepper-start' => '(Simula ng kaurian)',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'categorystepper-end' => '(Kategori sonu)',
+	'categorystepper-start' => '(Kategori başlangıcı)',
 );
 
 /** Ukrainian (Українська)

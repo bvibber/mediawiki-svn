@@ -610,10 +610,34 @@ Le file cargate debe continer in cata linea un nomine de pagina e un motivo facu
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos
+ * @author Pietrodn
  */
 $messages['it'] = array(
-	'deletebatch-button' => 'Cancella',
+	'deletebatch' => 'Elimina un gruppo di pagine',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Elimina un gruppo di pagine]]',
+	'deletebatch-help' => 'Eliminazione di un gruppo di pagine. Puoi eseguire una sola eliminazione, o eliminare le pagine elencate in un file.
+Scegli un utente che sarà mostrato nel registro delle cancellazioni.
+I file caricati dovrebbero contenere il nome della pagina e un motivo opzionale separati da un carattere "|" in ciascuna linea.',
+	'deletebatch-caption' => 'Elenco delle pagine:',
+	'deletebatch-title' => 'Elimina gruppo',
+	'deletebatch-link-back' => 'Torna alla pagina speciale',
+	'deletebatch-as' => 'Esegui lo script come:',
+	'deletebatch-both-modes' => 'Per favore scegli o una pagina specificata o una data lista di pagine.',
+	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-page' => 'Pagine da cancellare:',
 	'deletebatch-reason' => 'Motivo della cancellazione',
+	'deletebatch-processing' => 'eliminazione di pagine $1',
+	'deletebatch-from-file' => 'da elenco in un file',
+	'deletebatch-from-form' => 'da modulo',
+	'deletebatch-success-subtitle' => 'per $1',
+	'deletebatch-omitting-nonexistant' => 'Tralascio la pagina non esistente $1.',
+	'deletebatch-omitting-invalid' => 'Tralascio la pagina non valida $1.',
+	'deletebatch-file-bad-format' => 'Il file dovrebbe essere di solo testo',
+	'deletebatch-file-missing' => 'Impossibile leggere il file dato',
+	'deletebatch-select-script' => 'script di cancellazione pagina',
+	'deletebatch-select-yourself' => 'tu',
+	'deletebatch-no-page' => "Per favore specifica almeno una pagina da eliminare O scegli un file contenente l'elenco delle pagine.",
+	'right-deletebatch' => 'Elimina le pagine in massa',
 );
 
 /** Japanese (日本語)

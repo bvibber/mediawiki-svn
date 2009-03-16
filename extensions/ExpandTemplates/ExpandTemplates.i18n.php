@@ -477,6 +477,13 @@ Lo hace llamando al nivel del analizador sintáctico correspondiente del propio 
 	'expand_templates_preview' => 'Previsualización',
 );
 
+/** Estonian (Eesti)
+ * @author Ker
+ */
+$messages['et'] = array(
+	'expandtemplates' => 'Mallide lahendamine',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

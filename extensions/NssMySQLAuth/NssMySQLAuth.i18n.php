@@ -610,6 +610,26 @@ $messages['ro'] = array(
 	'nss-welcome-mail-subject' => 'Crearea contului',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'accountmanager' => 'Gestore de le cunde utinde',
+	'am-username' => "nome de l'utende",
+	'am-email' => 'e-mail',
+	'am-active' => 'attive',
+	'am-updated' => 'Le cangiaminde tue onne state reggistrate correttamende',
+	'nss-desc' => "'Nu plugin pe autendicà condre a 'nu database libnss-mysql. Condene 'nu [[Special:AccountManager|gestore de cunde utinde]]",
+	'nss-rights' => 'deritte',
+	'nss-save-changes' => 'Reggistre le cangiaminde',
+	'nss-create-account-header' => "Ccreje 'nu cunde utende nuève",
+	'nss-create-account' => "Ccreje 'nu cunde utende",
+	'nss-no-mail' => 'No sce invianne le email',
+	'nss-welcome-mail' => "'Nu cunde utende cu 'u nome $1 e 'a password $2 ha state ccrejate pe te.",
+	'nss-welcome-mail-subject' => "Creazione d'u cunde utende",
+	'nss-db-error' => "Errore leggenne da l'autendicazione d'u database",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

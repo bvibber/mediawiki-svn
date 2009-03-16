@@ -323,8 +323,18 @@ $messages['ast'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'openid-desc' => 'Уваход ў {{GRAMMAR:вінавальны|{{SITENAME}}}} з дапамогай [http://openid.net/ OpenID], а так сама ў іншыя сайты, якія падтрымліваюць OpenID з вікі-рахунка',
+	'openidlogin' => 'Уваход у сыстэму з дапамогай OpenID',
+	'openidfinish' => 'Скончыць уваход у сыстэму з дапамогай OpenID',
+	'openidserver' => 'Сэрвэр OpenID',
+	'openidxrds' => 'Файл Yadis',
+	'openidconvert' => 'Канвэртар OpenID',
+	'openiderror' => 'Памылка праверкі',
+	'openiderrortext' => 'Пад час праверкі адрасу OpenID узьнікла памылка.',
+	'openidconfigerror' => 'Памылка ў канфігурацыі OpenID',
 	'openidemail' => 'Адрас электроннай пошты',
 	'openidlanguage' => 'Мова',
 	'openidchoosepassword' => 'пароль:',

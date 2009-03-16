@@ -295,6 +295,13 @@ $messages['tl'] = array(
 	'mootools12core-desc' => 'Nagdaragdag ng [http://mootools.net mootools-1.2-core-yc.js], isang siksik na kaayusan ng balangkas ng JavaScript, sa bawat pahina',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'mootools12core-desc' => 'Her sayfaya [http://mootools.net mootools-1.2-core-yc.js], kompakt bir JavaScript çerçevesi, ekler',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

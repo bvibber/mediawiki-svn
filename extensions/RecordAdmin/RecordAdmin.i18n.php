@@ -567,7 +567,7 @@ $messages['he'] = array(
 	'recordadmin-newsearch' => 'חיפוש $1 חדש',
 	'recordadmin-newrecord' => 'בחירת סוג אחר של רשומות',
 	'recordadmin-submit' => 'שליחה',
-	'recordadmin-create' => 'מציאת או יצירת רשומת "$1"',
+	'recordadmin-create' => 'מציאת או יצירת רשומות "$1"',
 	'recordadmin-alreadyexist' => '"$1" כבר קיים!',
 	'recordadmin-createsuccess' => '$1 נוצרה',
 	'recordadmin-createerror' => 'אירעה שגיאה בעת הנסיון ליצור את $1!',
@@ -963,6 +963,13 @@ $messages['oc'] = array(
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'recordadmin-buttonsave' => 'Афтæ уæд',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
@@ -971,16 +978,16 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'recordadmin' => 'Administracja rekordami',
 	'recordadmin-desc' => '[[Special:RecordAdmin|Strona specjalna]] służąca do wyszukiwania i edytowania stron ze zbiorami danych (rekordami) przy użyciu formularza',
-	'recordadmin-select' => 'Wybierz typ rekordu, którego chcesz szukać',
+	'recordadmin-select' => 'Wybierz typ rekordu, którym chcesz zarządzać',
 	'recordadmin-newsearch' => 'Nowe wyszukiwanie $1',
 	'recordadmin-newrecord' => 'Wybierz inny typ rekordu',
 	'recordadmin-submit' => 'OK',
-	'recordadmin-create' => 'Znajdź lub utwórz rekord „$1”',
+	'recordadmin-create' => 'Znajdź lub utwórz rekordy „$1”',
 	'recordadmin-alreadyexist' => 'Niestety, „$1” już istnieje!',
 	'recordadmin-createsuccess' => '$1 utworzony',
 	'recordadmin-createerror' => 'Wystąpił błąd podczas próby utworzenia $1!',
 	'recordadmin-badtitle' => 'Niepoprawny tytuł!',
-	'recordadmin-recordid' => 'ID rekordu:',
+	'recordadmin-recordid' => 'ID lub nazwa rekordu',
 	'recordadmin-invert' => 'Odwróć wybór',
 	'recordadmin-buttonsearch' => 'Szukaj',
 	'recordadmin-buttoncreate' => 'Utwórz',

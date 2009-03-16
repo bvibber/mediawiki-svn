@@ -28,9 +28,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Dead3y3
+ * @author Sp5uhe
  */
 $messages['qqq'] = array(
-	'communityvoice-desc' => 'Description for the Community Voice extension',
+	'communityvoice-desc' => 'Description for the [http://www.mediawiki.org/wiki/Extension:CommunityVoice Community Voice extension]',
 	'communityvoice-ratings-scale-stats' => 'Guessing:
 
 * $1 / 5: rating
@@ -333,6 +334,21 @@ $messages['oc'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vòte|vòtes}})',
 	'communityvoice-ratings-error-no-category' => "L'atribut de categoria es absent dins la balisa de notacion.",
 	'communityvoice-ratings-error-no-title' => "L'atribut de títol es absent dins la balisa de notacion.",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'communityvoice' => 'Głos społeczności',
+	'communityvoice-desc' => 'Narzędzia współpracy społeczności',
+	'communityvoice-ratings' => 'Rankingi',
+	'communityvoice-ratings-scale-status-sending' => 'Wysyłanie...',
+	'communityvoice-ratings-scale-status-error' => 'Błąd wysyłania!',
+	'communityvoice-ratings-scale-status-thanks' => 'Dziękujemy za zagłosowanie!',
+	'communityvoice-ratings-scale-stats' => '$1 z 5 ($2 {{PLURAL:$2|oddany głos|oddane głosy|oddanych głosów}})',
+	'communityvoice-ratings-error-no-category' => 'Brak kategorii w atrybutach głosowania.',
+	'communityvoice-ratings-error-no-title' => 'Brak tytułu w atrybutach głosowania.',
 );
 
 /** Portuguese (Português)

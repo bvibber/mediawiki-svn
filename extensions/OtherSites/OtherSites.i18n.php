@@ -38,6 +38,14 @@ $messages['arz'] = array(
 	'othersites-desc' => 'ينقل وصلات الإنترويكى غير وصلات اللغة إلى مكانها الخاص',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'othersites' => 'Іншыя сайты',
+	'othersites-desc' => 'Пераносіць інтэрвікі-спасылкі іншыя чым моўныя спасылкі ў іх уласных партлетах',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -99,9 +99,20 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'profiling' => 'Зьвесткі прафіляваньня',
+	'profiling-desc' => '[[Special:Profiling|Спэцыяльная старонка]] для пошуку і праверкі зьвестак прафіляваньня',
+	'profiling-process' => 'Радок працэсу:',
+	'profiling-wildcard' => 'Выкарыстаньне групавых сымбаляў',
 	'profiling-ok' => 'Добра',
+	'profiling-data' => 'Зьвесткі прафіляваньня для «$1»',
+	'profiling-data-process' => 'Працэс',
+	'profiling-data-count' => 'Колькасьць',
+	'profiling-data-time' => 'Час (увесь)',
+	'profiling-data-average' => 'Час (сярэдні)',
+	'profiling-no-data' => 'Ня знойдзена адпаведных зьвестак.',
 );
 
 /** Bulgarian (Български)

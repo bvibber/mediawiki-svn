@@ -149,8 +149,20 @@ $messages['ast'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'player' => 'Прайгравальнік',
+	'player-desc' => 'Убудаваны мультымэдыя-прайгравальнік, які выкарыстоўвае агульныя дапаўненьні браўзэра, і [[Special:Player|спэцыяльная старонка]]',
+	'player-title' => 'Прайгравальнік',
+	'player-playertitle' => 'Прайгравальнік: $1',
+	'player-file' => 'Назва файла',
+	'player-play' => 'Прайграць',
+	'player-not-allowed' => 'недазволены фармат',
+	'player-not-found' => 'файл ня знойдзены',
+	'player-invalid-title' => 'няслушная назва',
+	'player-clicktoplay' => 'Прайграць $1',
+	'player-goto-player' => 'прайгравальнік',
 	'player-goto-page' => 'Старонка',
 	'player-goto-file' => 'файл',
 );
@@ -1021,10 +1033,13 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'player' => 'Sciucatore',
+	'player-desc' => "Playback multimediale a scatola gnore ausanne le plugin d'u browser comune e 'na [[Special:Player|pàgena speciale]]",
 	'player-title' => 'Sciucatore',
 	'player-playertitle' => 'Sciucatore: $1',
 	'player-file' => "Nome d'u file",
 	'player-play' => 'Sciueche',
+	'player-not-allowed' => 'formate non permesse',
+	'player-not-found' => 'file non acchiate',
 	'player-invalid-title' => 'titele invalide',
 	'player-clicktoplay' => 'Sciueche $1',
 	'player-goto-player' => 'sciucatore',

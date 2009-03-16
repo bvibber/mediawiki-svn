@@ -880,12 +880,13 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'specialuserstats' => 'Statistiche di utilizzo',
 	'usagestatistics' => 'Statistiche di utilizzo',
 	'usagestatistics-desc' => 'Mostra le statistiche di utilizzo individuali per utente e globali per il sito',
-	'usagestatisticsfor' => '<h2>Statistiche di utilizzo per [[Utente:$1|$1]]</h2>',
+	'usagestatisticsfor' => '<h2>Statistiche di utilizzo per [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statistiche di utilizzo per tutti gli utenti</h2>',
 	'usagestatisticsinterval' => 'Periodo',
 	'usagestatisticstype' => 'Tipo',

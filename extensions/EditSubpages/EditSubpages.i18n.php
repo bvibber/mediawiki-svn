@@ -453,6 +453,13 @@ $messages['pt-br'] = array(
    #</pre><!-- deixe esta linha como está -->",
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'editsubpages-desc' => "Permette a le sysop de sbloccà 'na pàgene e tutte le sottopàggene de quedda pàgene pe 'nu camngiamende anonime ausanne [[MediaWiki:Unlockedpages|sbluecche le pàggene]]",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

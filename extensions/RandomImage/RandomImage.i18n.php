@@ -33,10 +33,11 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'randomimage-desc' => 'Дазваляе выпадкова выбіраць мэдыя з дапамогай <tt>&lt;randomimage /&gt;</tt>',
+	'randomimage-desc' => 'Дазваляе выпадкова выбіраць мэдыя-файлы з дапамогай тэга <tt>&lt;randomimage /&gt;</tt>',
 );
 
 /** Bosnian (Bosanski)

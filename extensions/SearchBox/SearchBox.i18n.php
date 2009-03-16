@@ -554,6 +554,16 @@ $messages['vec'] = array(
 	'searchbox-namespaces' => 'Namespace:',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'searchbox-desc' => 'Cho phép nhúng hộp tìm kiếm',
+	'searchbox-search' => 'Tìm kiếm',
+	'searchbox-go' => 'Xem',
+	'searchbox-namespaces' => 'Không gian tên:',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

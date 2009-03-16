@@ -482,6 +482,16 @@ $messages['vec'] = array(
 	'templatelink_newtitle' => '$1 (trasclusión)',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'templatelink' => 'Liên kết tiêu banr',
+	'templatelink_desc' => 'Bộ mở rộng này có thể hiển thị một tiêu bản như một trang mới',
+	'templatelink_empty' => 'Bạn phải cung cấp một tham số.',
+	'templatelink_newtitle' => '$1 (được nhúng)',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

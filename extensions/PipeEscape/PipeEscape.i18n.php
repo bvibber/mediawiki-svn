@@ -42,6 +42,13 @@ $messages['ar'] = array(
 	'pipeescape-desc' => 'دالة محلل <code>#!</code> لعندما تريد حرف أنبوبة ليكون فقط حرف أنبوبة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'pipeescape-desc' => 'Функцыя парсэра <code>#!</code>, якая сочыць, каб калі Вы жадаеце дадаць сымбаль «|», дадаваліся толькі сымбаль «|».',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */
@@ -139,5 +146,12 @@ $messages['pt-br'] = array(
  */
 $messages['sk'] = array(
 	'pipeescape-desc' => 'Funkciu syntaktického analyzátora <code>#!</code> použijete vtedy, keď chcete, aby bol znak rúry iba znakom rúry',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'pipeescape-desc' => 'Hàm cú pháp <code>#!</code> dùng khi bạn muốn một ký tự sổ dọc chỉ đơn thuần là một ký tự sổ dọc',
 );
 

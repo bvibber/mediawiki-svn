@@ -229,6 +229,14 @@ $messages['is'] = array(
 	'nstab-comments' => 'Skýring',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'commentpages-desc' => 'Pagine di commenti per il namespace principale',
+	'nstab-comments' => 'Commenti',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */
@@ -442,9 +450,11 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'commentpages-desc' => 'Ana ad alanı için yorum sayfaları',
 	'nstab-comments' => 'Yorum',
 );
 

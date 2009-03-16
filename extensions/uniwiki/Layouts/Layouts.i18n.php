@@ -614,10 +614,17 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'layouts_title' => 'Bir sayfa oluştur',
+	'layouts_chooselayout' => '$1 için bir düzen seçin:',
+	'layouts_nolayout' => 'Düzen yok',
+	'layouts_continue' => 'Devam',
+	'layouts_choosecategory' => '$1 için bir kategori seçin:',
 	'layouts_unknown' => 'Bilinmiyor',
+	'layouts_tagline' => "Bu sayfa '''$1''' düzeni ile oluşturulmuştur.",
 );
 
 /** Vietnamese (Tiếng Việt)

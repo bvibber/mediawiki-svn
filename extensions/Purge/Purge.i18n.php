@@ -16,9 +16,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
+	'purge' => '{{Identical|Purge}}',
 	'purge-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
@@ -36,6 +38,14 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'purge' => 'إفراغ الكاش',
 	'purge-desc' => 'يضيف لسان إفراغ للكاش فى كل الصفحات العادية ويتفادى تحقق الكاش للمستخدمين المجهولين مما يسمح بإفراغ الكاش بشكل سريع',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'purge' => 'ачысьціць',
+	'purge-desc' => 'Дадае закладку ачысткі на ўсе звычайныя старонкі і прапускае праверку ачысткі для ананімных удзельнікаў, для хуткай ачысткі кэшу',
 );
 
 /** Bulgarian (Български)

@@ -797,7 +797,7 @@ $messages['gv'] = array(
  */
 $messages['he'] = array(
 	'review_sidebar_title' => 'סקירה',
-	'review-desc' => 'תכונת ה[[Special:Review|אימות]] המשוקמת.',
+	'review-desc' => 'מתן האפשרות ל[[Special:Review|אימות]] דפים על ידי המשתמשים',
 	'review_topics' => "# להלן רשימת הנושאים והטווחים עבור הרחבת הסקירה.
 # כל נושא מוגדר על ידי שורה של חמישה ערכים, מופרדים עם ':' (כל השורות האחרות אינן נכללות).
 # הסדר הינו: ערך מספרי (>0), שם, טווח מרבי (>1; 2=yes/no), משמעות הערך הנמוך ביותר (לדוגמה 'bad'), משמעות הערך הגבוה ביותר (לדוגמה 'good').
@@ -1473,7 +1473,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'review_sidebar_title' => 'oceń',
-	'review-desc' => 'Narzędzie ponownej [[Special:Review|oceny]] artykułów.',
+	'review-desc' => 'Umożliwia użytkownikom [[Special:Review|ocenę]] artykułów.',
 	'review_topic_page' => 'Oceniane tematy',
 	'review_save' => 'Zapisz ocenę',
 	'review_your_review' => 'Twoja ocena tej strony lub wersji',
@@ -1485,7 +1485,7 @@ $messages['pl'] = array(
 	'review_total_statistics' => 'Podsumowanie',
 	'review_statistics_left_corner' => 'Wersja',
 	'review_version_link' => 'Wersja $1',
-	'review_statistic_cell' => 'Średnia: $1 z $2<br />($4 zalogowanych, $5 anonimowych)',
+	'review_statistic_cell' => 'Średnio $1 na maksymalnych $2<br />($4 {{PLURAL:$4|zalogowany|zalogowanych}}, $5 {{PLURAL:$5|anonimowy|anonimowych}})',
 	'review_version_statistic_cell' => '$1 lub $2',
 	'review_version_reviews_link' => '<small>(recenzje tej wersji)</small>',
 	'review_concerns_page' => 'Ta recenzja dotyczy strony „$1”.',

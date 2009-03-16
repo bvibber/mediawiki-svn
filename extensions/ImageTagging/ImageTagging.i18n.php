@@ -80,6 +80,7 @@ $messages['niu'] = array(
 $messages['vep'] = array(
 	'imagetagging-article' => "Lehtpol':",
 	'imagetagging-articletotag' => "Lehtpol' virgates",
+	'imagetagging-imghistory' => 'Istorii',
 	'imagetagging-tag-button' => 'Virg',
 );
 

@@ -770,8 +770,14 @@ $messages['vec'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
-/** Vietnamese (Tiếng Việt) */
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
 $messages['vi'] = array(
+	'filelist' => 'Danh sách tập tin',
+	'filelist-desc' => '[[Special:Filelist|Trang đặc biệt]] để liệt kê các tập tin được tải lên',
+	'filelist-show-list' => 'Hiển thị danh sách',
+	'filelist-show-gallery' => 'Hiển thị trưng bày hình ảnh',
 	'filelist-image-desc' => 'miêu tả',
 );
 

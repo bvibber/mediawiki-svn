@@ -3487,6 +3487,16 @@ Una version novèla $2 es disponibla a http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Amagatal de l'aplicacion suprimit.'''''",
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'viewapc-display-deletion_time' => 'Аппæрст',
+	'viewapc-ls-header-deleted' => 'Аппæрст',
+	'viewapc-ls-scope-deleted' => 'Аппæрст',
+	'viewapc-ls-sort-deleted' => 'Аппæрст',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

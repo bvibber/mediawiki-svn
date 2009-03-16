@@ -2049,6 +2049,7 @@ $messages['oc'] = array(
  * @author Amikeco
  */
 $messages['os'] = array(
+	'tasks_search_form_title' => 'Агуырд',
 	'tasks_search_status' => 'Статус',
 );
 

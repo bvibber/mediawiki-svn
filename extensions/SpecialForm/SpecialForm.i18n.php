@@ -892,6 +892,13 @@ Vos {{PLURAL:$2|lo|los}} cal emplenar.',
 	'formsaveerrortext' => "Una error desconeguda s'es producha pendent lo salvament de ''$1''.",
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'formsave' => 'Афтæ уæд',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad

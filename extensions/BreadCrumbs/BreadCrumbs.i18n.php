@@ -183,6 +183,13 @@ $messages['is'] = array(
 	'breadcrumbs-desc' => 'Sýnir flakk notenda á wiki-síðunni',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'breadcrumbs-desc' => 'Mostra gli utenti il percorso attraverso la wiki.',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

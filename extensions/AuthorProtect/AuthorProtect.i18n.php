@@ -982,6 +982,13 @@ $messages['ro'] = array(
 	'restriction-level-author' => 'Protejat de autor',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'authorprotect-reason' => 'Mutive',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

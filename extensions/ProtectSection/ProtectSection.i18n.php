@@ -53,6 +53,16 @@ $messages['avk'] = array(
 	'protectsection_forbidden' => 'Poun',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'protectsection_desc' => 'Дазваляе аўтарызаваным удзельнікам абараняць часткі старонак з дапамогай тэгу <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Вы спрабуеце дадаць ці выдаліць абароненую сэкцыю',
+	'protectsection_modify' => 'Вы спрабуеце зьмяніць абаронены тэкст',
+	'protectsection_forbidden' => 'Забаронены',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

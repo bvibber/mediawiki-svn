@@ -50,6 +50,8 @@ $messages['qqq'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'gep-categories' => 'Kategorijad',
+	'gep-addcategory' => 'Ližata kategorii',
 	'gep-addcategorybutton' => 'Ližata',
 	'gep-suggestcategory' => 'Nevoda kategorii',
 	'gep-suggestcategorybutton' => 'Oigeta',
@@ -277,6 +279,14 @@ $messages['dsb'] = array(
 Pśidaj někotare z rědami w menijowej kšomje.',
 	'gep-nocategories' => 'Pšosym wubjeŕ nanejmjenjej jadnu kategoriju do składowanja',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'gep-addcategorybutton' => 'Προσθήκη',
+	'gep-addsectionbutton' => 'Προσθήκη',
 );
 
 /** Esperanto (Esperanto)

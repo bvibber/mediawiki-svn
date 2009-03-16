@@ -307,9 +307,22 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'slippymap_latnan' => "valor de latitud (lat) '%1' no es un número válido",
+	'slippymap_lonnan' => "valor de longitud (lon) '%1' no es un número válido",
+	'slippymap_widthbig' => 'valor de anchura (w) no puede ser mayor que 1000',
+	'slippymap_widthsmall' => 'valor de anchura (w) no puede ser menor que 100',
+	'slippymap_heightbig' => 'valor de altura (h) no puede ser mayor que 1000',
+	'slippymap_heightsmall' => 'valor de altura (h) no puede ser menor que 100',
+	'slippymap_latbig' => 'valor de latitud (lat) no puede ser mayor que 90',
+	'slippymap_latsmall' => 'valor de latitud (lat) no puede ser menor que -90',
+	'slippymap_lonbig' => 'valor de longitud (lon) no puede ser mayor que 180',
+	'slippymap_lonsmall' => 'valor de longitud (lon) no puede ser menor que -180',
+	'slippymap_zoomsmall' => 'valor de zoom (z) no puede ser menor que cero',
+	'slippymap_zoombig' => 'valor de zoom (z) no puede ser mayor que 17.',
 	'slippymap_maperror' => 'Error en mapa:',
 	'slippymap_code' => 'Wikicode para esta vista de mapa:',
 	'slippymap_button_code' => 'Obtener wikicode',
+	'slippymap_resetview' => 'Reestablecer vista',
 );
 
 /** Basque (Euskara)

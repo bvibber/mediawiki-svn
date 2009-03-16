@@ -21,6 +21,14 @@ $messages['qqq'] = array(
 	'tidy-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'tidy' => 'Tark',
+	'untidy' => 'Čočoi',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

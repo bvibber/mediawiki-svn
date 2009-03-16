@@ -383,9 +383,11 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'catboxattop-desc' => 'Sayfaların sağ üst kısmına bir kategori kutusu ekler',
 	'catboxattop-categories' => 'Kategoriler',
 );
 

@@ -28,6 +28,13 @@ $messages['arz'] = array(
 	'psinotocnum-desc' => 'كلمة سحرية جديدة "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'psinotocnum-desc' => 'Новае магічнае слова «<nowiki>__NOTOCNUM__</nowiki>»',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

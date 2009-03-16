@@ -17,10 +17,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'purgecache-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'purgecache-button' => '{{Identical|Purge}}',
 );
 
 /** Arabic (العربية)
@@ -46,13 +48,15 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'purgecache' => 'Ачысьціць кэш',
-	'purgecache-desc' => '[[Special:PurgeCache|Спэцыяльная старонка]], якая выкарыстоўваецца для ачысткі табліцы OBJECTCACHE',
-	'purgecache-warning' => 'Адбудзецца ачыстка кэш-табліцы.',
+	'purgecache-desc' => '[[Special:PurgeCache|Спэцыяльная старонка]] для ачысткі табліцы OBJECTCACHE',
+	'purgecache-warning' => 'Адбудзецца ачыстка кэш-табліц.',
 	'purgecache-purged' => 'Кэш быў ачышчаны.',
+	'purgecache-button' => 'Ачысьціць',
 );
 
 /** Bulgarian (Български)
@@ -403,6 +407,8 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'purgecache' => "Sdevache 'a cache",
+	'purgecache-desc' => "[[Special:PurgeCache|Pàgena speciale]] ausete pe sdevacà 'a taggella OBJECTCACHE",
+	'purgecache-warning' => "Quiste adda sdevacà le taggelle d'a cache.",
 	'purgecache-purged' => "'A cache ha state sdevachete",
 	'purgecache-button' => 'Sdevache',
 );

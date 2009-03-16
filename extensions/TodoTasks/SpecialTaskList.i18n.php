@@ -53,6 +53,14 @@ $messages['rtm'] = array(
 	'tasklistincorrectuser' => 'Seseva',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'tasklistemail' => 'Kalliž %s',
+	'tasklistprojdisp' => 'Ozutada',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

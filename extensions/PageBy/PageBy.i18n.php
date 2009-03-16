@@ -71,6 +71,18 @@ $messages['arz'] = array(
 	'pageby-anon' => '<i>مجهول</i>',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'pageby-desc' => 'Паказвае аўтараў у вікі-старонцы з выкарыстаньнем тэга <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Старонка створана {{GENDER:$1|ўдзельнікам|ўдзельніцай}} $1, $2',
+	'pageby-last' => 'Апошняе <a href="$3">рэдагаваньне </a> зробленае {{GENDER:$1|ўдзельнікам|ўдзельніцай}} $1, $2',
+	'pageby-contributors' => 'Аўтары:',
+	'pageby-anon' => '<i>ананім</i>',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

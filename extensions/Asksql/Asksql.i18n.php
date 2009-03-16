@@ -1079,6 +1079,23 @@ Kalimitang nakadaragdag ito ng malaki-laking karga sa serbidor, kaya't huwag mas
 	'right-asksql' => 'Gumawa ng mga katanungang SQL',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'asksql' => 'SQL sorgusu',
+	'asksql-desc' => '[[Special:Asksql|Özel bir sayfa]] aracılığıyla SQL sorguları yap',
+	'asksqltext' => "Veritabanında doğrudan bir sorgu yapmak için aşağıdaki formu kullanın.
+Dizi harflerini sınırlamak için tek tırnak ('bu gibi') kullanın.
+Bu çoğu kez sunucuya oldukça yük ekler, bu yüzden lütfen bu fonksiyonu tedbirli şekilde kullanın.",
+	'sqlislogged' => 'Lütfen tüm sorguların günlüklendiğini unutmayın.',
+	'sqlquery' => 'Sorguyu girin',
+	'querybtn' => 'Sorguyu gönderin',
+	'selectonly' => 'Sadece salt-okunur sorgulara izin verilir.',
+	'querysuccessful' => 'Sorgu başarılı',
+	'right-asksql' => 'SQL sorguları yap',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

@@ -4634,6 +4634,26 @@ $messages['ia'] = array(
 	'configure-setting-wgFilterCallback' => 'Reappello al filtro antispam',
 	'configure-setting-wgImplicitGroups' => 'Gruppos que non es monstrate in [[Special:ListUsers]] e alteres',
 	'configure-setting-wgPasswordAttemptThrottle' => 'Limitator de tentativas de contrasigno',
+	'configure-setting-wgPasswordSalt' => '"Sal" pro contrasignos',
+	'configure-setting-wgReadOnly' => 'Prohibir le modification, monstrante iste texto qua motivo',
+	'configure-setting-wgReadOnlyFile' => 'File con motivo del blocada del base de datos',
+	'configure-setting-wgRestrictionTypes' => 'Actiones que pote esser restringite',
+	'configure-setting-wgSpamRegex' => 'Expressiones regular pro le filtro antispam',
+	'configure-setting-wgSummarySpamRegex' => 'Como $wgSpamRegex, ma pro le summarios de modification',
+	'configure-setting-wgWhitelistRead' => 'Le paginas que un usator anonyme pote vider',
+	'configure-setting-wgEmailAuthentication' => 'Requirer le authentication del addresses de e-mail pro poter usar le functiones de e-mail',
+	'configure-setting-wgEmergencyContact' => 'Le adresse de e-mail del administrator del sito',
+	'configure-setting-wgEnableEmail' => 'Activar le functionalitate de e-mail',
+	'configure-setting-wgEnableUserEmail' => 'Activar le e-mail de usator a usator',
+	'configure-setting-wgNoReplyAddress' => 'Adresses ficte que debe esser acceptate durante le action de inviar e-mail',
+	'configure-setting-wgPasswordSender' => 'Adresse de e-mail pro le rememorationes del contrasigno',
+	'configure-setting-wgPasswordReminderResendTime' => 'Tempore minime, in horas, que debe passar inter le rememorationes de contrasigno',
+	'configure-setting-wgSMTP' => 'Servitor SMTP',
+	'configure-setting-wgUserEmailUseReplyTo' => 'Usar Reply-To in loco de From',
+	'configure-setting-wgColorErrors' => 'Colorar le messages de linea de commando',
+	'configure-setting-wgDebugComments' => 'Includer portiones del registro in commentos HTML in le paginas.',
+	'configure-setting-wgDebugDumpSql' => 'Reproducer le consultas SQL in le output de debugging',
+	'configure-setting-wgDebugLogFile' => 'File de registro de debugging',
 );
 
 /** Japanese (日本語)
@@ -9332,10 +9352,14 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'configure-setting-wgSitename' => 'Site adı',
+	'configure-setting-wgActionPaths-key' => 'Eylem',
+	'configure-setting-wgActionPaths-value' => 'URL şablonu',
+	'configure-setting-wgAllDBsAreLocalhost' => 'Yerel konağa tüm veritabanı bağlantılarını sessizce yeniden yaz',
 	'configure-setting-wgMediaHandlers-key' => 'MIME tipi',
 	'configure-setting-wgExtraLanguageNames-key' => 'Dil kodu',
 	'configure-setting-wgExtraLanguageNames-value' => 'Adı',

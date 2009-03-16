@@ -533,6 +533,27 @@ $messages['eo'] = array(
 	'extdist-no-versions' => 'La selektita etendilo ($1) ne estas havebla en iu ajn versio!',
 	'extdist-submit-version' => 'Daŭri',
 	'extdist-tar-error' => 'Tar donis elirkodon $1:',
+	'extdist-created' => "Statika kopio de versio <b>$2</b> de la <b>$1</b> kromprogramo por MediaWiki <b>$3</b> estis kreita. Via elŝuto komencos aŭtomate post 5 sekundoj.
+
+La URL-o por ĉi tiu statika kopio estas:
+:$4
+Ĝi estas uzebla por tuja elŝuto al servilo, sed bonvolu ne aldoni legosignon al ĝin, ĉar la enhavo ne estos ĝisdata, kaj ĝi eble estos forigita ĉe posta dato.
+
+La tar-arkivo estu eltirita en vian kromprograman dosierujon. Ekz-e, en Unikseca OS:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Kun Vindozo, vi povas utiligi [http://www.7-zip.org/ 7-zip] eltiri la dosierojn.
+
+Se via vikio estas en ektera servilo, eltiru la dosierojn al provizoran dosierujon en via loka komputilo, kaj poste alŝutu '''ĉiuj''' de la eltiritaj dosieroj al la kromprograma dosierujo en la servilo.
+
+Notu, ke iuj kromprogramoj bezonas dosieron nomitan ExtensionFunctions.php, lokitan en <tt>extensions/ExtensionFunctions.php</tt>, alivorte, la ''patra'' dosierujo de la dosierujo de ĉi tiu kromprogramo. La statika kopio por ĉi tiuj kromprogramoj enhavas ĉi tiun dosieron kiel ''tar-bombo'', eltiritan al ./ExtensionFunctions.php. Ne forgesu alŝuti ĉi tiun dosieron al via ekstera servilo.
+
+Post vi eltiris la dosierojn, vi bezonas registri la kromprogramon en LocalSettings.php. La kromprograma dokumentado havos la instrukcioj kiel fari.
+
+Se vi havas iujn demandojn pri ĉi tiu kromprograma distribuada sistemo, bonvolu komenti al [[Extension talk:ExtensionDistributor]].",
 );
 
 /** Spanish (Español)
@@ -549,6 +570,11 @@ $messages['es'] = array(
 	'extdist-choose-extension' => 'Seleccione cual extensión desea descargar:',
 	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'Revisión actual (trunk)',
+	'extdist-choose-version' => '<big>Estás descargando la extensión <b>$1</b>.</big>
+
+Selecciona tu versión MediaWiki.
+
+La mayoría de extensiones funcionan a través de múltiples versiones de Mediawiki, entonces si tu versión Mediawiki no está aquí, o si necesitas las últimas características de las extensiones. trata de usar la versión actual.',
 	'extdist-no-versions' => 'La extensión seleccionada ($1) no esta disponible en ninguna versión!',
 	'extdist-submit-version' => 'Continuar',
 	'extdist-svn-error' => "''Subversion'' encontró un error: <pre>$1</pre>",

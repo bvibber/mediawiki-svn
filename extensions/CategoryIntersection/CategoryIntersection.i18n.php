@@ -283,6 +283,17 @@ $messages['is'] = array(
 	'categoryintersection-results' => 'Leitin skilaði $1 {{PLURAL:$1|útkomu|útkomum}}.',
 );
 
+/** Italian (Italiano)
+ * @author BrokenArrow
+ */
+$messages['it'] = array(
+	'categoryintersection' => 'Intersezione tra categorie',
+	'categoryintersection-desc' => "Gestisce una tabella con i valori di hash per le [[Special:CategoryIntersection|intersezioni tra categorie]] nell'ambito di una pagina",
+	'categoryintersection-doit' => 'Elenca le pagine che appartengono a tutte le categorie indicate',
+	'categoryintersection-maxcategories' => 'Non è possibile indicare più di $1 categorie da interesecare.',
+	'categoryintersection-results' => 'La ricerca ha restituito {{PLURAL:$1|un risultato|$1 risultati}}.',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

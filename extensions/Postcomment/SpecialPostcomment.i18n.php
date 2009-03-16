@@ -83,6 +83,25 @@ $messages['arz'] = array(
 	'postcomment_nopostingtoadd' => 'لا رسالة للإضافة.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'postcomment_desc' => 'Дазваляе ўдзельнікам адпраўляць камэнтары непасрэдна на старонкі абмеркаваньня.',
+	'postcomment_discussionprotected' => 'Гэтая старонка абмеркаваньня была абароненая ад даданьня новых паведамленьняў.',
+	'postcomment_notloggedin' => 'Вы не ўвайшлі ў сыстэму.',
+	'postcomment_youareloggedinas' => 'Вы ўвайшлі ў сыстэму як $1',
+	'postcomment_addcommentdiscussionpage' => 'Дадаць Ваш камэнтар на гэтую старонку абмеркаваньня',
+	'postcomment_leavemessagefor' => 'Пакіньце паведамленьне для $1',
+	'postcomment_post' => 'Адправіць',
+	'postcomment_on' => 'Уключыць',
+	'postcomment_said' => 'паведаміў(-ла)',
+	'postcomment_invalidrequest' => 'Няслушны запыт.',
+	'postcomment_replyto' => 'Адказаць $1',
+	'postcomment_nopostingtoadd' => 'Няма паведамленьня для даданьня.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

@@ -1802,6 +1802,16 @@ $wdMessages['ca'] = array(
 $wdMessages['cs'] = array(
 	'languages' => 'Wikidata: Správce jazyků',
 	'langman_title' => 'Správce jazyků',
+	'langman_not_allowed' => 'Nemáte oprávnění měnit jazykové nastavení.',
+	'langman_header' => 'Níže napište kód a anglický název jazyku:',
+	'langman_req_fields' => 'Název jazyku i jeho ISO 693-3 kód musí být vyplněny.',
+	'langman_adding' => 'Přidává se jazyk $1 s kódem $2.',
+	'langman_langname' => 'Název jazyku:',
+	'langman_iso639-3' => 'ISO 639-3 kód:',
+	'langman_iso639-2' => 'ISO 639-2 kód:',
+	'langman_wikimedia' => 'Kód Wikimedia:',
+	'langman_field_optional' => '(nepovinné)',
+	'langman_addlang' => 'Přidat jazyk',
 	'datasearch' => 'Wikidata: Hledání údajů',
 	'ow_save' => 'Uložit',
 	'ow_history' => 'Historie',
@@ -1870,8 +1880,8 @@ Prosím, podívejte se na [[{{MediaWiki:Ow editing policy url}}|naše pravidla o
 	'ow_SynonymsAndTranslations' => 'Synonyma a překlady',
 	'ow_Source' => 'Zdroj',
 	'ow_SourceIdentifier' => 'Identifikátor zdroje',
-	'ow_TextAttribute' => 'Vlastnost',
 	'ow_Text' => 'Text',
+	'ow_TextAttribute' => 'Vlastnost',
 	'ow_TextAttributeValues' => 'Prostý text',
 	'ow_TranslatedTextAttribute' => 'Vlastnost',
 	'ow_TranslatedText' => 'Přeložený text',
@@ -4752,7 +4762,7 @@ $wdMessages['ja'] = array(
 	'ow_ClassAttributeAttribute' => '属性',
 	'ow_ClassAttributes' => 'クラス属性',
 	'ow_ClassAttributeLevel' => '水準',
-	'ow_ClassAttributeType' => 'タイプ',
+	'ow_ClassAttributeType' => '型',
 	'ow_ClassMembership' => 'クラス帰属関係',
 	'ow_Collection' => 'コレクション',
 	'ow_Collection_colon' => 'コレクション:',
@@ -6705,6 +6715,7 @@ $wdMessages['or'] = array(
  * @author Amikeco
  */
 $wdMessages['os'] = array(
+	'ow_save' => 'Афтæ уæд',
 	'ow_history' => 'Истори',
 	'ow_dm_OK' => 'Афтæ уæд!',
 	'ow_ClassAttributeType' => 'Тип',
@@ -7022,13 +7033,14 @@ $wdMessages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Jorge Morais
  * @author Malafaya
  * @author Waldir
  */
 $wdMessages['pt'] = array(
 	'languages' => 'Wikidata: Gestor de línguas',
 	'langman_title' => 'Gestor de línguas',
-	'langman_not_allowed' => 'Você não tem permissão para alterar a configuração das línguas.',
+	'langman_not_allowed' => 'Você não tem permissão para alterar as configurações de línguas.',
 	'langman_header' => 'Introduza abaixo o código da língua e o seu nome em inglês:',
 	'langman_req_fields' => 'Ambos o nome da língua e o código ISO 639-3 são obrigatórios!',
 	'langman_adding' => 'A adicionar língua $1 com chave $2.',
@@ -7049,8 +7061,8 @@ $wdMessages['pt'] = array(
 	'datasearch_meaning' => 'Significado',
 	'datasearch_ext_identifier' => 'Identificador externo',
 	'datasearch_search_text' => 'Texto a pesquisar:',
-	'datasearch_within_words' => 'Dentro de palavras:',
-	'datasearch_within_ext_ids' => 'Dentro de identificadores externos:',
+	'datasearch_within_words' => 'Dentre as palavras:',
+	'datasearch_within_ext_ids' => 'Dentre identificadores externos:',
 	'datasearch_showing_only' => 'A mostrar apenas um máximo de $1 {{PLURAL:$1|resultado|resultados}}.',
 	'datasearch_match_ext_ids' => 'Identificadores externos correspondendo a <i>$1</i>',
 	'datasearch_match_words' => 'Palavras correspondendo a <i>$1</i> e significados associados',
@@ -7250,6 +7262,7 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
 $wdMessages['pt-br'] = array(
 	'languages' => 'Wikidata: Gestor de línguas',
 	'langman_title' => 'Gestor de línguas',
+	'langman_not_allowed' => 'Você não tem permissão para alterar as configurões de línguas.',
 	'langman_header' => 'Digite abaixo o código da língua e o seu nome em inglês:',
 	'langman_req_fields' => 'Ambos o nome da língua e o código ISO 639-3 são necessários!',
 	'langman_adding' => 'Adicionando língua $1 com chave $2.',
@@ -7260,7 +7273,23 @@ $wdMessages['pt-br'] = array(
 	'langman_field_optional' => '(opcional)',
 	'langman_addlang' => 'Adicionar língua',
 	'importlangnames' => 'Wikidata: Importar nomes de línguas',
+	'importlangnames_title' => 'Importar Nomes de Línguas',
+	'importlangnames_not_allowed' => 'Você não tem permissão para importar nomes de línguas.',
+	'importlangnames_added' => 'Nomes de língua para "$1" adicionados.',
+	'importlangnames_not_found' => '<strong>Nenhuma entrada de língua para "$1" encontrada!</strong>',
 	'datasearch' => 'Wikidata: Pesquisa de dados',
+	'datasearch_language' => 'Língua:',
+	'datasearch_found_word' => 'Palavra encontrada',
+	'datasearch_meaning' => 'Significado',
+	'datasearch_ext_identifier' => 'Identificador externo',
+	'datasearch_search_text' => 'Texto a pesquisar:',
+	'datasearch_within_words' => 'Dentre as palavras:',
+	'datasearch_within_ext_ids' => 'Dentre identificadores externos:',
+	'datasearch_showing_only' => 'Mostrando apenas um máximo de $1 {{PLURAL:$1|resultado|resultados}}.',
+	'datasearch_match_ext_ids' => 'Identificadores externos correspondendo a <i>$1</i>',
+	'datasearch_match_words' => 'Palavras correspondendo a <i>$1</i> e significados associados',
+	'datasearch_match_words_lang' => 'Palavras em <i>$1</i> correspondendo a <i>$2</i> e significados associados',
+	'importtsv' => 'Wikidata: Imporat TSV',
 	'ow_save' => 'Salvar',
 	'ow_history' => 'Histórico',
 	'ow_datasets' => 'Seleção de conjunto de dados',

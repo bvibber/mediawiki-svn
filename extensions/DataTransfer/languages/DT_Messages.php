@@ -1142,16 +1142,24 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  * @author Mach
  */
 $messages['tr'] = array(
+	'dt-desc' => 'Şablon çağrılarında içerilen yapısal verilerin içe ve dışa aktarımına izin verir',
+	'viewxml' => "XML'i gör",
+	'dt_viewxml_docu' => 'Lütfen, XML formatında görüntülemek için aşağıdaki kategori ve ad alanları arasından seçin.',
 	'dt_viewxml_categories' => 'Kategoriler',
 	'dt_viewxml_namespaces' => 'Alan adları',
+	'dt_viewxml_simplifiedformat' => 'Basitleştirilmiş format',
 	'dt_xml_namespace' => 'Alan adı',
 	'dt_xml_page' => 'Sayfa',
+	'dt_xml_field' => 'Alan',
 	'dt_xml_name' => 'İsim',
 	'dt_xml_title' => 'Başlık',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Özgür Metin',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

@@ -717,7 +717,14 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'watchsubpages' => 'Theo dõi các trang con',
+	'watchsubpages-addedtowatchlist' => 'Những trang sau đã được thêm vào danh sách theo dõi của bạn.',
+	'watchsubpages-addtitles' => 'Thêm trang',
+	'watchsubpages-addtitlestowatchlist' => 'Thêm trang vào danh sách theo dõi',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
+	'watchsubpages-form' => 'Chọn ở dưới những trang bạn muốn thêm vào danh sách theo dõi.
+Để thêm một trang, đánh dấu vào hộp kiểm kế bên nó, rồi nhấn "Thêm trang".
+
+Khi đánh dấu hoặc bỏ dấu nhiều trang, giữ phím shift sẽ giúp cho bạn chọn các hộp kiểm liền nhau bằng cách nhấn vào hai đầu khoảng mà bạn muốn đánh dấu.',
 );
 
 /** Volapük (Volapük)

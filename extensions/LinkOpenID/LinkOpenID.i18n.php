@@ -122,7 +122,10 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'linkopenid-desc' => 'Permitir a los usuarios vincular sus cuentas a un OpenID externo',
 	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Si tienes un OpenID de un proveedor externo puedes especificarlo aquí.
+Esto te permite usar tu página de usuario como un OpenID también.',
 	'linkopenid-prefstext-openid' => 'Su OpenID:',
 );
 

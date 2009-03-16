@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'icon-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'icon-badimage' => 'Hond kuva',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05

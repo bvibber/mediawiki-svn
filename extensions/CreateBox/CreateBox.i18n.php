@@ -585,10 +585,17 @@ Hindi mo malilikha ang pahinang ito, subalit maaari mong [{{fullurl:{{FULLPAGENA
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'createbox-desc' => 'Sayfası oluşturmak için özelleştirilmiş girdikutusu',
 	'createbox-create' => 'Oluştur',
+	'createbox-exists' => "Üzgünüz, \"'''{{FULLPAGENAME}}'''\" zaten mevcut.
+
+Bu sayfayı oluşturamazsınız, ancak [{{fullurl:{{FULLPAGENAME}}|action=edit}} değiştirebilir], [{{fullurl:{{FULLPAGENAME}}}} okuyabilir], ya da aşağıdaki kutuyu kullanarak farklı bir sayfa oluşturmayı seçebilirsiniz.
+
+<createbox>break=no</createbox>",
 );
 
 /** Ukrainian (Українська)

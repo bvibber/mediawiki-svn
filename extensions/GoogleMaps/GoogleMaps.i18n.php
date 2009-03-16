@@ -83,26 +83,92 @@ $wgGoogleMapsMessages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Purodha
  */
 $wgGoogleMapsMessages['qqq'] = array(
-	'gm-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change tag names, or link anchors.',
-	'gm-balloon-title' => '{{Identical|Title}}',
-	'gm-remove' => '{{Identical|Remove}}',
-	'gm-no-results' => '{{Identical|Sorry, no results}}',
-	'gm-width' => '{{Identical|Width}}',
-	'gm-height' => '{{Identical|Height}}',
+	'gm-desc' => 'Short description of this [http://www.mediawiki.org/wiki/Extension:Google_Maps extension], shown on [[Special:Version]]. Do not translate or change tag names, or link anchors.',
+	'gm-incompatible-browser' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-incompatible-browser-link' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-no-editor' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-balloon-title' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Title}}',
+	'gm-balloon-link-article' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-make-marker' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-remove' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Remove}}',
+	'gm-caption' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-tab-title' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-tab' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-start-path' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-save-point' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-load-map-from-article' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-no-maps' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-refresh-list' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-load-map' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-clip-result' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-no-results' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Sorry, no results}}',
+	'gm-searching' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-map' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-note' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-instructions' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-are-you-sure' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-clear-all-points' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-refresh-points' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-width' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Width}}',
+	'gm-height' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Height}}',
+	'gm-scale-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-overview-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-zoom-control' => '{{Identical|Navigation}}',
-	'gm-large' => '{{Identical|Large}}',
-	'gm-medium' => '{{Identical|Medium}}',
-	'gm-small' => '{{Identical|Small}}',
-	'gm-no-zoom-control' => '{{Identical|None}}',
-	'gm-yes' => '{{Identical|Yes}}',
-	'gm-no' => '{{Identical|No}}',
-	'gm-search' => '{{Identical|Search}}',
-	'gm-save-path' => '{{Identical|Save}}',
-	'gm-line-width' => '{{Identical|Width}}',
-	'gm-kml-loading' => '{{Identical|Loading}}',
+	'gm-large' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Large}}',
+	'gm-medium' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Medium}}',
+	'gm-small' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Small}}',
+	'gm-no-zoom-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|None}}',
+	'gm-yes' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension. On radio buttons for map viewing options.
+
+{{Identical|Yes}}',
+	'gm-no' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension. On radio buttons for map viewing options.
+
+{{Identical|No}}',
+	'gm-search' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Search}}',
+	'gm-meters' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-miles' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-save-path' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Save}}',
+	'gm-edit-path' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-show-path' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-line-width' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Width}}',
+	'gm-make-map' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-hide-map' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-back' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-kml-include-link' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-kml-loading' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
+
+{{Identical|Loading}}',
+	'gm-earth' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-moon' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-mars' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -704,6 +770,58 @@ $wgGoogleMapsMessages['cs'] = array(
  */
 $wgGoogleMapsMessages['cu'] = array(
 	'gm-search' => 'ищи́',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$wgGoogleMapsMessages['cy'] = array(
+	'gm-desc' => "Lluniwch fapiau'n rhwydd a gosod cystrawen wici ynddynt",
+	'gm-balloon-title' => 'Teitl:',
+	'gm-remove' => 'tynnu',
+	'gm-caption' => 'Pennawd',
+	'gm-tab-title' => 'Teitl y tab',
+	'gm-tab' => 'Tab',
+	'gm-start-path' => 'dechrau llwybr',
+	'gm-save-point' => 'cadw a chau',
+	'gm-load-map-from-article' => "Llwytho map o'r dudalen:",
+	'gm-no-maps' => "Does dim mapiau yn y dudalen hon i'w llwytho.",
+	'gm-refresh-list' => "Adnewyddu'r rhestr",
+	'gm-load-map' => "Llwytho'r map",
+	'gm-clip-result' => 'Ychwanegu at y map',
+	'gm-no-results' => 'Dim canlyniadau',
+	'gm-searching' => "wrthi'n chwilio...",
+	'gm-map' => 'Map',
+	'gm-note' => 'Nodyn: copïwch yr hyn yr ydych am ei roi ar gadw ar y dudalen isod cyn pwyso ar "Llwytho\'r map", "Cadw" neu "Rhagolwg"!',
+	'gm-instructions' => "Mae'r cystrawen wici ar gyfer tynnu'r map uchod i'w gael isod.",
+	'gm-are-you-sure' => "Ydych chi'n siwr?",
+	'gm-clear-all-points' => "Clirio'r holl bwyntiau",
+	'gm-refresh-points' => "Adnewyddu'r pwyntiau",
+	'gm-width' => 'Lled',
+	'gm-height' => 'Uchder',
+	'gm-scale-control' => 'Graddfa',
+	'gm-overview-control' => 'Trosolwg',
+	'gm-large' => 'Mawr',
+	'gm-medium' => 'Canolig',
+	'gm-small' => 'Bach',
+	'gm-no-zoom-control' => 'Dim',
+	'gm-yes' => 'Ie',
+	'gm-no' => 'Na',
+	'gm-search' => 'Chwilio',
+	'gm-meters' => 'metr',
+	'gm-miles' => 'milltir',
+	'gm-save-path' => 'Cadw',
+	'gm-edit-path' => 'ychwanegu pwyntiau',
+	'gm-show-path' => 'dangos y pwyntiau',
+	'gm-line-width' => 'Lled',
+	'gm-make-map' => 'gwneuthur map',
+	'gm-hide-map' => "cuddio'r map",
+	'gm-back' => 'nôl',
+	'gm-kml-include-link' => 'ychwanegu at y map',
+	'gm-kml-loading' => "wrthi'n llwytho...",
+	'gm-earth' => 'Y ddaear',
+	'gm-moon' => 'Y lleuad',
+	'gm-mars' => 'Mawrth',
 );
 
 /** Danish (Dansk)
@@ -3258,6 +3376,7 @@ $wgGoogleMapsMessages['os'] = array(
 	'gm-yes' => 'О',
 	'gm-no' => 'Нæ',
 	'gm-search' => 'Агур',
+	'gm-save-path' => 'Афтæ уæд',
 	'gm-line-width' => 'Уæрх',
 );
 

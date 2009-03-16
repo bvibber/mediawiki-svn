@@ -414,7 +414,7 @@ $messages['de'] = array(
 	'changeauthor-invalidform' => 'Bitte benutze das Formular auf der [[Special:ChangeAuthor|Spezialseite]].',
 	'changeauthor-success' => 'Deine Änderung wurde erfolgreich durchgeführt.',
 	'changeauthor-logentry' => 'änderte Autorenname der $2 von $1 von $3 auf $4',
-	'changeauthor-logpagename' => 'Autorennameänderungs-Logbuch',
+	'changeauthor-logpagename' => 'Autorenänderungs-Logbuch',
 	'changeauthor-rev' => 'Version $1',
 	'right-changeauthor' => 'Ändere den Autor einer Version',
 );
@@ -1759,12 +1759,35 @@ Kapag nagpatuloy sa paglitaw ang ganitong kamalian, may sira marahil ang kalipun
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'changeauthor' => 'Revizyon yazarını değiştir',
+	'changeauthor-desc' => 'Bir revizyonun yazarını değiştirmeye izin verir',
+	'changeauthor-title' => 'Bir revizyonun yazarını değiştir',
+	'changeauthor-search-box' => 'Revizyonları ara',
+	'changeauthor-pagename-or-revid' => 'Sayfa adı ya da revizyon IDsi:',
 	'changeauthor-pagenameform-go' => 'Git',
 	'changeauthor-comment' => 'Yorum:',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Yazarı|Yazarları}} değiştir',
+	'changeauthor-explanation-multi' => "Bu form ile revizyon yazarlarını değiştirebilirsiniz.
+Sadece, aşağıdaki listedeki bir ya da daha fazla kullanıcı adını değiştirin, bir yorum ekleyin (isteğe bağlı) ve 'Yazar(lar)ı değiştir' düğmesine tıklayın.",
+	'changeauthor-changeauthors-single' => 'Yazarı değiştir',
+	'changeauthor-explanation-single' => "Bu form ile revizyon yazarını değiştirebilirsiniz.
+Sadece, aşağıdaki kullanıcı adını değiştirin, bir yorum ekleyin (isteğe bağlı) ve 'Yazarı değiştir' düğmesine tıklayın.",
 	'changeauthor-invalid-username' => '"$1" geçersiz kullanıcı.',
+	'changeauthor-nosuchuser' => 'Böyle bir kullanıcı yok "$1".',
+	'changeauthor-revview' => '$2 sayfasının #$1 revizyonu',
+	'changeauthor-nosuchtitle' => '"$1" isminde bir sayfa yok.',
+	'changeauthor-weirderror' => 'Çok garip bir hata oluştu.
+Lütfen isteğinizi tekrar deneyin.
+Eğer bu hata görünmeye devam ederse, muhtemelen veritabanı bozulmuştur.',
+	'changeauthor-invalidform' => 'Lütfen özel bir form yerine [[Special:ChangeAuthor|özel sayfa]] tarafından sağlanan formu kullanın.',
+	'changeauthor-success' => 'İsteğiniz başarıyla işlendi.',
+	'changeauthor-logentry' => '$1 sayfasının $2 revizyonu yazarı $3 iken $4 olarak değiştirildi',
+	'changeauthor-logpagename' => 'Yazar değişim günlüğü',
+	'right-changeauthor' => 'Bir revizyonun yazarını değiştir',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

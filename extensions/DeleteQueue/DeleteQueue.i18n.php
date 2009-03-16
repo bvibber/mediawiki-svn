@@ -1676,6 +1676,79 @@ $messages['hr'] = array(
 	'deletequeue-list-header-page' => 'Stranica',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'deletequeue-desc' => 'Wutworja [[Special:DeleteQueue|system za zarjadowanje wušmórnjenjow na zakładźe čakanskeho rynka]]',
+	'deletequeue-action-queued' => 'Wušmórnjenje',
+	'deletequeue-action' => 'Wušmórnjenje namjetować',
+	'deletequeue-action-title' => '"$1" za wušmórnjenje namjetować',
+	'deletequeue-generic-reasons' => '* Powšitkowne přičiny
+  ** Wandalizm
+  ** Spam
+  ** Wothladowanje
+  ** Zwonka projektoweho wobłuka',
+	'deletequeue-nom-alreadyqueued' => 'Tuta strona je hižo w čakanskim rynku.',
+	'deletequeue-speedy-title' => '"$1" za spěšne wušmórnjenje markěrować',
+	'deletequeue-prod-title' => '"$1" za wušmórnjenje namjetować',
+	'deletequeue-delnom-reason' => 'Přičina za pomjenowanje:',
+	'deletequeue-delnom-otherreason' => 'Druha přičina',
+	'deletequeue-delnom-extra' => 'Přidatne informacije',
+	'deletequeue-delnom-submit' => 'Pomjenowanje wotpósłać',
+	'right-speedy-nominate' => 'Strony za spěšne wušmórnjenje pomjenować',
+	'right-speedy-review' => 'Pomjenowanja za spěšne wušmórnjenje přepruwować',
+	'right-prod-nominate' => 'Wušmórnjenje strony namjetować',
+	'right-deletediscuss-nominate' => 'Diskusije wo wušmórnjenje započeć',
+	'right-deletediscuss-review' => 'Diskusije wo wušmórnjenju skónčić',
+	'deletequeue-queue-speedy' => 'Spěšne wušmórnjenje',
+	'deletequeue-queue-prod' => 'Namjetowane wušmórnjenje',
+	'deletequeue-queue-deletediscuss' => 'Diskusija wo wušmórnjenju',
+	'deletequeue-review-action' => 'Akcija, kotraž ma so wuwjesć:',
+	'deletequeue-review-delete' => 'Stronu wušmórnyć.',
+	'deletequeue-review-reason' => 'Komentary:',
+	'deletequeue-review-newreason' => 'Nowa přičina:',
+	'deletequeue-review-newextra' => 'Přidatne informacije:',
+	'deletequeue-review-submit' => 'Přepruwowanje składować',
+	'deletequeue-review-original' => 'Přičina za pomjenowanje',
+	'deletequeue-review-badaction' => 'Sy njepłaćiwu akciju podał',
+	'deletequeue-review-actiondenied' => 'Sy akciju podał, kotraž bu za tutu stronu znjemóžnjena',
+	'deletequeue-reviewspeedy-tab' => 'Spěšne wušmórnjenje přepruwować',
+	'deletequeue-reviewprod-tab' => 'Namjetowane wušmórnjenje přepruwować',
+	'deletequeue-reviewdeletediscuss-tab' => 'Wušmórnjenje přepruwować',
+	'deletequeue-review-success' => 'Sy wušmórnjenje tuteje stronje wuspěšnje přepruwował.',
+	'deletequeue-review-success-title' => 'Přepruwowanje dokónčene',
+	'deletequeue-discusscreate-text' => 'Wušmórnjenje bu ze slědowaceje přičiny namjetowane: $2',
+	'deletequeue-role-vote-endorse' => 'Podpěrar wušmórnjenja',
+	'deletequeue-role-vote-object' => 'Přećiwnik wušmórnjenja',
+	'deletequeue-vote-tab' => 'Wo wušmórnjenju wothłosować',
+	'deletequeue-vote-legend' => 'Wušmórnjenje podpěrać/wotpokazać',
+	'deletequeue-vote-action' => 'Poručenje:',
+	'deletequeue-vote-reason' => 'Komentary:',
+	'deletequeue-vote-submit' => 'Wotpósłać',
+	'deletequeue-showvotes-restrict-endorse' => 'Jenož schwalenja pokazać',
+	'deletequeue-showvotes-restrict-object' => 'Jenož znapřećiwjenja pokazać',
+	'deletequeue-showvotes-restrict-none' => 'Wšě schwalenja a znapřećiwjenja pokazać',
+	'deletequeue-showvotes-showingonly-endorse' => 'Jenož schwalenja so pokazuja',
+	'deletequeue-showvotes-showingonly-object' => 'Jenož znapřećiwjenja so pokazuja',
+	'deletequeue-list-search-legend' => 'Strony pytać',
+	'deletequeue-list-queue' => 'Čakanski rynk:',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-search' => 'Pytać',
+	'deletequeue-list-anyqueue' => '(někajki)',
+	'deletequeue-list-votes' => 'Lisćina hłosow',
+	'deletequeue-list-header-page' => 'Strona',
+	'deletequeue-list-header-queue' => 'Čakanski rynk',
+	'deletequeue-list-header-votes' => 'Schwalenja a znapřećiwjenja',
+	'deletequeue-list-header-expiry' => 'Spadnjenje',
+	'deletequeue-list-header-discusspage' => 'Diskusijna strona',
+	'deletequeue-list-header-reason' => 'Přičina za wušmórnjenje',
+	'deletequeue-case-details' => 'Zakładne podrobnosće',
+	'deletequeue-case-page' => 'Strona:',
+	'deletequeue-case-reason' => 'Přičina:',
+	'deletequeue-case-expiry' => 'Spadnjenje:',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

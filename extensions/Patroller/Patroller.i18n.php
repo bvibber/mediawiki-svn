@@ -158,9 +158,32 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'patrol' => 'Патруляваныя рэдагаваньні',
+	'patrol-desc' => 'Пашыраны інтэрфэйс патруляваньня з падзелам працоўнай нагрузкі',
+	'patrol-endorse' => 'Пацьвердзіць',
+	'patrol-revert' => 'Адмяніць',
 	'patrol-revert-reason' => 'Прычына:',
+	'patrol-skip' => 'Прапусьціць',
+	'patrol-reverting' => 'Адмена: $1',
+	'patrol-nonefound' => 'Немагчыма знайсьці адпаведныя рэдагаваньні для патруляваньня.',
+	'patrol-endorsed-ok' => 'Рэдагаваньне было пазначанае як патруляванае.',
+	'patrol-endorsed-failed' => 'Рэдагаваньне ня можа быць пазначанае як патруляванае.',
+	'patrol-reverted-ok' => 'Рэдагаваньне было адмененае.',
+	'patrol-reverted-failed' => 'Рэдагаваньне ня можа быць адмененае.',
+	'patrol-skipped-ok' => 'Рэдагаваньне прапушчана.',
+	'patrol-reasons' => '* Просты вандалізм
+* Тэст новага ўдзельніка
+* Глядзіце старонку абмеркаваньня',
+	'patrol-another' => 'Паказаць іншае рэдагаваньне, калі яно існуе.',
+	'patrol-stopped' => 'Вы вырашылі не патруляваць іншае рэдагаваньне. $1',
+	'patrol-resume' => 'Націсьніце тут, каб працягваць.',
+	'group-patroller' => 'Патруліруючыя',
+	'group-patroller-member' => 'патруліруючы',
+	'grouppage-patroller' => '{{ns:project}}:Патруліруючыя',
+	'right-patroller' => 'патруляваньне старонак',
 );
 
 /** Bulgarian (Български)

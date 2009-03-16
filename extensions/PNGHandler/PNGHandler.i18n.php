@@ -35,6 +35,13 @@ $messages['arz'] = array(
 	'pnghandler-desc' => 'يغير حجم PNG باستخدام pngds',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'pnghandler-desc' => 'Зьмена памеру выяваў у фармаце PNG з дапамогай «pngds»',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

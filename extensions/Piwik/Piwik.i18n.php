@@ -19,10 +19,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'piwik-desc' => 'Short description of the Piwik extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'piwik-countries' => '{{Identical|Country}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -65,6 +67,17 @@ $messages['ast'] = array(
 	'piwik-lastvisits' => 'Caberes visites',
 	'piwik-countries' => 'Países',
 	'piwik-browsers' => 'Navegadores',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'piwik-desc' => 'Устаўляе скрыпт Piwik для назіраньня ў старонкі MediaWiki і дадае [[Special:Piwik|статыстыку]]',
+	'piwik-lastvisits' => 'Апошнія наведваньні',
+	'piwik-countries' => 'Краіны',
+	'piwik-browsers' => 'Браўзэры',
 );
 
 /** Bulgarian (Български)

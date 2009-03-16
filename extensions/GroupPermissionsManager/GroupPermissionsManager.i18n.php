@@ -1762,6 +1762,7 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'grouppermissions-search' => 'Къорд:',
+	'grouppermissions-sp-save' => 'Афтæ уæд',
 );
 
 /** Polish (Polski)

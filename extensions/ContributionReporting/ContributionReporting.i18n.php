@@ -582,7 +582,7 @@ $messages['el'] = array(
 	'contrib-hist-name' => 'Όνομα',
 	'contrib-hist-amount' => 'Ποσόν',
 	'contrib-hist-next' => 'Προηγούμενες δωρεές',
-	'contrib-hist-previous' => 'Νεώτερες δωρεές',
+	'contrib-hist-previous' => 'Νεότερες δωρεές',
 	'contrib-hist-anonymous' => 'Ανώνυμος',
 	'contribstats-day' => 'Ημέρα',
 	'contribstats-month' => 'Μήνας',
@@ -1301,7 +1301,7 @@ $messages['it'] = array(
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Totale per questo mese|Totale mensile per gli scorsi $1 mesi}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Totale per $1 mese|Totale mensile per $1 mesi}}',
 	'contribstats-currency-range-totals' => 'Totali per valuta (dal $1 al $2)',
-	'contribstats-contribution-range-breakdown' => 'Suddivisione delle donazioni per valore (da $1 a $1)',
+	'contribstats-contribution-range-breakdown' => 'Suddivisione delle donazioni per valore (da $1 a $2)',
 	'contribstats-currency-totals' => "Totali per valuta per l'anno fiscale $1",
 	'contribstats-contribution-breakdown' => "Suddivisione delle donazioni per valore per l'anno fiscale $1",
 	'contribstats-day' => 'Giorno',
@@ -1506,6 +1506,7 @@ $messages['ko'] = array(
 	'contribstats-value-over' => '$1 초과',
 	'fundraiserstatistics' => '모금 활동 통계',
 	'fundraiserstats-date' => '날짜',
+	'fundraiserstats-contributions' => '기부 횟수',
 	'fundraiserstats-total' => '합계 (USD)',
 	'fundraiserstats-avg' => '평균 (USD)',
 	'fundraiserstats-max' => '최대 (USD)',
@@ -1668,6 +1669,7 @@ $messages['li'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Izzudin
  */
 $messages['ms'] = array(
 	'contributionreporting-desc' => 'Laporan langsung kempen dana Wikimedia',
@@ -1699,6 +1701,7 @@ $messages['ms'] = array(
 	'contribstats-max' => 'Maksimum (USD)',
 	'contribstats-percentage-ytd' => 'Peratusan (YTD)',
 	'contribstats-total-ytd' => 'Jumlah (YTD)',
+	'contribstats-value-exactly' => 'Tepat-tepat $1',
 	'contribstats-value-under' => 'Di bawah $1',
 	'contribstats-value-from' => 'Antara $1 - $2',
 	'contribstats-value-over' => 'Melebihi $1',
