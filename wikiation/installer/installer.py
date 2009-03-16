@@ -172,9 +172,6 @@ def main():
 	# main loop.
 	while(command()):
 		pass
-
-
-
 #constants
 
 # bind commands to functions
@@ -195,12 +192,6 @@ subhelp={
 ls available : list items available"""
 
 }
-
-
-# our internal "directory structure"
-#TODO: check... is this still used?
-internal_dirs=os.listdir(settings.installfiles)
-internal_dirs.extend(['mediawiki'])
 
 if __name__ == "__main__":
 	main()
