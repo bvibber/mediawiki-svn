@@ -108,7 +108,7 @@ mvFirefogg.prototype = {
 			_this.editForm.onsubmit = function(){ return true; };
 		}
 	},
-	fogg_update_progress:function(progress){
+	fogg_update_progress:function(progress){		
 		$j( '#fogg-progressbar' ).css( 'width', parseInt(progress*100) +'%');		
 		$j( '#fogg-pstatus' ).html( parseInt(progress*100) + '% - ');
 	},
@@ -265,7 +265,7 @@ mvFirefogg.prototype = {
 			var status = _this.fogg.status();
 			
 			//update progress bar
-			_this.fogg_update_progress( _this.fogg.progress() );
+			_this.fogg_update_progress( _this.fogg.progress() );			
 			
 			//loop to get new status if still encoding
 			if( _this.fogg.state == 'encoding' ) {
@@ -310,10 +310,10 @@ mvFirefogg.prototype = {
 			
 		    //update progress bar
 		    _this.fogg_update_progress( _this.fogg.progress() );
-		
+		    		    
 		    //loop to get new status if still uploading (could also be encoding if we are in chunk upload mode) 
 		    if( _this.fogg.state == 'encoding' || _this.fogg.state == 'uploading') {
-				setTimeout(uploadStatus, 500);
+				setTimeout(uploadStatus, 100);
 			}
 		    //check upload state
 		    else if( _this.fogg.state == 'upload done' ||  _this.fogg.state == 'done' ) {	
@@ -343,7 +343,7 @@ mvFirefogg.prototype = {
 	procPageResponse:function( result_page ){
 		js_log('f:procPageResponse');
 		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');		
-		error_txt = 'Your upload <i>could be</i> accessible <a href="' + 
+		var error_txt = 'Your upload <i>should be</i> accessible <a href="' + 
 						wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
 						'here</a> \n';
 		//set the error text in case we dont' get far along in proccessing the response 

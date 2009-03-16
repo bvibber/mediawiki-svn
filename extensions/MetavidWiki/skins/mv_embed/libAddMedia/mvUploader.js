@@ -107,12 +107,12 @@ mvUploader.prototype = {
 						"<span id='wgfogg_not_installed'>" + 
 							gM('upload-fogg_not_installed') +
 						'</span>' +
-						"<span class='error' id='wgfogg_wrong_version'  style='display:none'>" +
+						"<span class='error' id='wgfogg_wrong_version'  style='display:none'><br>" +
 							gM('wgfogg_wrong_version') +
 						'</span>' +
-						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none' >"+
+						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none' ><br>"+
 								gM('wgfogg_waring_ogg_upload') +
-						'</span>'+
+						'</span>' + 
 						"<span id='wgfogg_installed' style='display:none' >"+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 								gM('upload-enable-converter') +
