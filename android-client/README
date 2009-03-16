@@ -6,7 +6,7 @@ API.
 
 --
 
-Version 0.0.5
+Version 0.0.7
 
 NOTE: This software is pre-pre-alpha and is not guaranteed to work
 on any device at any point. Use at your own risk.
@@ -17,10 +17,14 @@ FEATURES:
 
 TODO (in no real order):
  1) i18n - check Google's progress in native Android. Possible workarounds?
- 2) Make the cache work
+ 2) Make the cache work better
  3) Multiple wiki sources in prefs
  4) User authentication
+    -- Have a base User class. Doesn't really work yet
  5) Make data available as a ContentProvider
+    -- Partially done. Make it sane! Right now the Cursor is just a retarded 
+       wrapper around some raw JSON. Would be AWESOME to get it into a proper
+       wrapper with column names and the like.
  6) Make page views actually attractive and usable (not just POC)
 
 -- 

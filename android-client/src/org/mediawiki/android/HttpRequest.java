@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -27,7 +28,7 @@ public class HttpRequest {
 	 * @return String
 	 */
 	public static String get( String url ) {
-		URI uri = HttpRequest.makeUri( url );
+		URI uri = Utils.makeUri( url );
 		if ( uri == null ) {
 			return null;
 		}
@@ -50,7 +51,7 @@ public class HttpRequest {
 	 * @return String
 	 */
 	public static String post( String url ) {
-		URI uri = HttpRequest.makeUri( url );
+		URI uri = Utils.makeUri( url );
 		if ( uri == null ) {
 			return null;
 		}
@@ -80,20 +81,42 @@ public class HttpRequest {
 		}
 		return HttpRequest.__client;
 	}
-	
+
 	/**
-	 * Friendly wrapper around making a URI object
-	 * @param String uri String URL to make into a URI object
-	 * @return URI
+	 * Class for a few Http-related utils
 	 */
-	private static URI makeUri( String uri ) {
-		try {
-			return new URI( uri );
-		}
-		catch( URISyntaxException use ) { {
-			return null;
-		}
+	public static class Utils {
+		
+		/**
+		 * Friendly wrapper around making a URI object
+		 * @param String uri String URL to make into a URI object
+		 * @return URI
+		 */
+		public static URI makeUri( String uri ) {
+			try {
+				return new URI( uri );
+			}
+			catch( URISyntaxException use ) {
+				return null;
+			}
+		} 
+		
+		/**
+		 * Check if two URLs are from the same hostname 
+		 */
+		public static boolean areSameHost( String src, String dest ) {
+			// If the destination URL is just relative, then 
+			if ( dest.startsWith( "/" ) ) {
+				return true;
+			}
+			URI srcUri = Utils.makeUri( src );
+			URI destUri = Utils.makeUri( dest );
 			
+			// Bad URLs :(
+			if ( srcUri == null || destUri == null ) {
+				return false;
+			}
+			return srcUri.getHost() == destUri.getHost();
 		}
-	} 
+	};
 }

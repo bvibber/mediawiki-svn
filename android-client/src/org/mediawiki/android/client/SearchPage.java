@@ -1,22 +1,22 @@
 package org.mediawiki.android.client;
 
 // Imports
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.mediawiki.android.WikiApi;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.mediawiki.android.WikiApi;
 
 // Class definition for a search results page
 public class SearchPage extends ListActivity {
@@ -54,14 +54,12 @@ public class SearchPage extends ListActivity {
 	private void fillData( String searchTerm ) throws JSONException {
         List<String> items = new ArrayList<String>();
         WikiApi api = WikiApi.getSingleton();
-        api.newAction( "query" );
+        api.newRequest();
+        api.addParams( "action", "query" );
         api.addParams( "list", "search" );
         api.addParams( "srwhat", "text" );
         api.addParams( "srsearch", searchTerm );
-        Toast t = Toast.makeText( this, this.getString(R.string.fetch_data), 60 * 5 );
-        t.show();
         api.doRequest();
-        t.cancel();
         JSONArray json = api.getJson().getJSONObject("query").getJSONArray("search");
         JSONObject jsonItem;
         for ( int i = 0; i < json.length(); i++ ) {
@@ -78,21 +76,8 @@ public class SearchPage extends ListActivity {
      */
     @Override
 	public boolean onCreateOptionsMenu( Menu menu ) {
-    	menu.add(0, MainPage.HOME, MainPage.HOME, getString( R.string.menu_home ) );
-    	return super.onCreateOptionsMenu(menu);
+    	Menus.Builder mb = new Menus.Builder( this, menu );
+    	mb.useMenu( Menus.Targets.HOME );
+    	return super.onCreateOptionsMenu( mb.getMenu() );
     }
-    
-    /**
-     * Handle our menus :)
-     */
-	@Override
-	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		switch ( item.getItemId() ) {
-			case MainPage.HOME:
-			default:
-				this.startActivity( new Intent( this, MainPage.class ) );
-				break;
-		}
-		return super.onMenuItemSelected(featureId, item);
-	}
 }

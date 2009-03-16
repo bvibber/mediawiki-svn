@@ -1,15 +1,19 @@
 package org.mediawiki.android;
 
 // Imports
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.mediawiki.android.WikiApi;
 
 // Class to handle the concept of a page in a Mediawiki install
-public class WikiPage {
+public class WikiPage implements Serializable {
+
+	// Auto gen
+	private static final long serialVersionUID = 8107296374141364956L;
 
 	// Have we loaded the page
 	private boolean __loaded = false;
@@ -140,7 +144,8 @@ public class WikiPage {
 	 */
 	protected boolean loadDataFromRemote() throws JSONException {
 		WikiApi api = this.getApi();
-		api.newAction( "parse" );
+		api.newRequest();
+		api.addParams( "action", "parse" );
 		api.addParams( "prop", "revid|text|categories|externallinks|images|templates|links" );
 		api.addParams( "page", this.__pageName );
 		if ( api.doRequest() ) {
@@ -188,4 +193,6 @@ public class WikiPage {
 			return false;
 		}
 	}
+
+	
 }

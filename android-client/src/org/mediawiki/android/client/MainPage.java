@@ -14,11 +14,8 @@ import android.widget.Toast;
 // Entry point into MW client
 public class MainPage extends Activity {
 	
-	// Menu constants. We keep HOME public so other places can use it
-	public static final int HOME   = 1;
-	private static final int ABOUT  = 2;
-	private static final int CONFIG = 3;
-
+	public static final String MAIN = "org.mediawiki.android.client.MainPage.MAIN";
+	
 	// Button handlers for view/search
 	private OnClickListener mSearchOnClickListener = new OnClickListener() {
 		public void onClick(View v) {
@@ -55,10 +52,11 @@ public class MainPage extends Activity {
      */
     @Override
 	public boolean onCreateOptionsMenu( Menu menu ) {
-    	menu.add(0, MainPage.HOME, MainPage.HOME, getString( R.string.menu_home ) );
-    	menu.add(0, MainPage.ABOUT, MainPage.ABOUT, getString( R.string.menu_about ) );
-    	menu.add(0, MainPage.CONFIG, MainPage.CONFIG, getString( R.string.menu_config ) );
-    	return super.onCreateOptionsMenu(menu);
+    	Menus.Builder mb = new Menus.Builder( this, menu );
+    	mb.useMenu( Menus.Targets.HOME );
+    	mb.useMenu( Menus.Targets.ABOUT );
+    	mb.useMenu( Menus.Targets.CONFIG );
+    	return super.onCreateOptionsMenu( mb.getMenu() );
     }
     
     /**
@@ -66,17 +64,8 @@ public class MainPage extends Activity {
      */
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		switch ( item.getItemId() ) {
-			case MainPage.ABOUT:
-				this.constructAboutDialogue();
-				break;
-			case MainPage.CONFIG:
-				this.startActivity( new Intent( this, ConfigurationPage.class ) );
-				break;
-			case MainPage.HOME:
-			default:
-				this.startActivity( new Intent( this, MainPage.class ) );
-				break;
+		if ( item.getItemId() == Menus.Targets.ABOUT ) {
+			this.constructAboutDialogue();
 		}
 		return super.onMenuItemSelected(featureId, item);
 	}
