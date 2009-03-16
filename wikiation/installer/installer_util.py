@@ -68,7 +68,8 @@ def clean_target(target):
 	return target
 
 def pretty_list(mylist,layout_width=None):
-	"""format a list ~like ls"""
+	"""format a list into columns that fit the terminal,
+	similar to gnu ls output."""
 
 	if not mylist:
 		return ""
@@ -133,6 +134,8 @@ def getTerminalSize():
     return int(cr[1]), int(cr[0])
 
 def isanint(value):
+	"""If value can be converted to int, return
+	true, else return false"""
 	try:
 		num=int(value)
 	except ValueError:
