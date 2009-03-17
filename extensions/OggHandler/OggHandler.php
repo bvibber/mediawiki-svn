@@ -23,7 +23,7 @@ ini_set( 'include_path',
 	ini_get( 'include_path' ) );
 
 // Bump this when updating OggPlayer.js to help update caches
-$wgOggScriptVersion = '8';
+$wgOggScriptVersion = '9';
 
 $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
 $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
