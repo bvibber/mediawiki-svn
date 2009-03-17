@@ -499,7 +499,7 @@ class SpecialOversight extends SpecialPage {
 			$info = $this->listRow( $row );
 			$list = $this->revisionInfo( $row );
 			$rev = new Revision( $row );
-			$text = $rev->getText();
+			$text = $rev->getText( Revision::FOR_THIS_USER );
 			$wgOut->addHTML(
 				"<ul>" .
 				$info .
@@ -550,7 +550,7 @@ class SpecialOversight extends SpecialPage {
 			if ( $prevId ) {
 				$prev = Revision::newFromTitle( $rev->mTitle, $prevId );
 				if( $prev ) {
-					$otext = strval( $prev->getText());
+					$otext = strval( $prev->getText( Revision::FOR_THIS_USER ) );
 				} else {
 					$otext = '';
 				}
@@ -563,7 +563,7 @@ class SpecialOversight extends SpecialPage {
 				$wgOut->addWikiText( wfMsgNoTrans( 'oversight-nodiff' ) );
 				return;
 			}
-			$ntext = strval( $rev->getText());
+			$ntext = strval( $rev->getText( Revision::FOR_THIS_USER ) );
 
 			$diffEngine = new DifferenceEngine();
 			$diffEngine->showDiffStyle();
