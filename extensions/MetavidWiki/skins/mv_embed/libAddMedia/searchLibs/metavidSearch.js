@@ -21,6 +21,9 @@ metavidSearch.prototype = {
 		}
 	},	
 	getSearchResults:function(){
+		//call parent: 
+		this.parent_getSearchResults();
+		
 		var _this = this;
 		//start loading:
 		_this.loading= 1;
@@ -30,21 +33,18 @@ metavidSearch.prototype = {
 		//add on the req_param
 		for(var i in this.reqObj){
 			url += '&' + i + '=' + this.reqObj[i];
-		}
-		//do basic query:
-		this.last_query = $j('#rsd_q').val();
-		this.last_offset = this.cp.offset;
+		}		
 		url += '&f[0][t]=match&f[0][v]=' + $j('#rsd_q').val();
 		//add offset limit: 
 		url+='&limit=' + this.cp.limit;
-		url+='&offset=' + this.cp.offset;
+		url+='&offset=' + this.cp.offset;				
 		
 		do_request(url, function(data){ 
 			//should have an xml rss data object:
 			_this.addRSSData( data , url );
-			//do some metavid specific pos processing on the rObj data: 
-			for(var i in _this.resultsObj){
-				var rObj = _this.resultsObj[i];	
+			//do some metavid specific pos processing on the rObj data:
+			for(var i in _this.resultsObj){				
+				var rObj = _this.resultsObj[i];				
 				var proe = parseUri( rObj['roe_url'] );				
 				rObj['start_time'] = proe.queryKey['t'].split('/')[0];
 				rObj['end_time'] = proe.queryKey['t'].split('/')[1];	

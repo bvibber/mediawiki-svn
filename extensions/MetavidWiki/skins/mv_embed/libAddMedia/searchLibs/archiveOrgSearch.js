@@ -1,12 +1,11 @@
 //archive.org uses solr engine: 
 //more about solr here: 
 //http://lucene.apache.org/solr/
-//if we ever have another remote repository using solr we could abstract thouse pieces into a seperate lib
 
-var solrArchiveSearch = function ( initObj){
+var archiveOrgSearch = function ( initObj){
 	return this.init( initObj );
 }
-solrArchiveSearch.prototype = {
+archiveOrgSearch.prototype = {
 	init:function( initObj ){
 		//init base class and inherit: 
 		var baseSearch = new mvBaseRemoteSearch( initObj );
@@ -20,9 +19,12 @@ solrArchiveSearch.prototype = {
 		//inherit the cp settings for 
 	},
 	getSearchResults:function(){
-		var _this = this;
+		//call parent: 
+		this.parent_getSearchResults();
+		
+		var _this = this;		
 		this.loading=true;
-		js_log('f:getSearchResults for:' + $j('#rsd_q').val() );
+		js_log('f:getSearchResults for:' + $j('#rsd_q').val() );		
 		//build the query var
 		var q = $j('#rsd_q').val();
 		//@@todo check advanced options: include audio and images media types
@@ -40,15 +42,18 @@ solrArchiveSearch.prototype = {
 			'data':reqObj, 
 			'url':this.cp.api_url,
 			'jsonCB':'json.wrf'
-			}, function(data){
+			}, function(data){				
 				_this.addResults( data);
 				_this.loading = false;
 			}
 		);
 	},
 	addResults:function( data ){		
-		var _this = this;	
+		var _this = this;			
 		if(data.response && data.response.docs){
+			//set result info: 
+			this.num_results = data.response.numFound;
+		
 			for(var resource_id in data.response.docs){
 				var resource = data.response.docs[resource_id];
 				//make sure the reop is shared
@@ -66,7 +71,8 @@ solrArchiveSearch.prototype = {
 				rObj['mime']='application/ogg';
 				rObj['pSobj']=_this;				
 				
-				//set the licence: 
+				//set the licence: (rsd is a pointer to the parent remoteSearchDriver ) 
+				rObj['license'] = this.rsd.getLicenceFromUrl( resource.licenseurl );								 
 				
 				this.resultsObj[ resource_id ] =rObj;
 				

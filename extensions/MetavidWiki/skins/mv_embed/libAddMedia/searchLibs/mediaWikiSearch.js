@@ -15,11 +15,12 @@ mediaWikiSearch.prototype = {
 		//inherit the cp settings for 
 	},
 	getSearchResults:function(){
+		//call parent: 
+		this.parent_getSearchResults();
+		
 		var _this = this;
 		this.loading=true;
 		js_log('f:getSearchResults for:' + $j('#rsd_q').val() );		
-		//empty out the current results: 
-		this.resultsObj={};
 		//do two queries against the Image / File / MVD namespace:
 		 								
 		//build the image request object: 
@@ -38,8 +39,7 @@ mediaWikiSearch.prototype = {
 		};				
 		//set up the number of request: 
 		this.completed_req=0;
-		this.num_req=1;
-		this.last_query = $j('#rsd_q').val();
+		this.num_req=1;		
 		//setup the number of requests result flag: 											
 		//also do a request for page titles (would be nice if api could query both at the same time) 
 		reqObj['gsrwhat']='text';

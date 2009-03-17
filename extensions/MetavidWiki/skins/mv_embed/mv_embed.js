@@ -54,11 +54,6 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
 if( !mv_embed_path ){
 	var mv_embed_path = getMvEmbedPath();
 }
-//js_log("mv embed path:"+ mv_embed_path);
-//set the unique request id (for ensuring fresh copies of scripts on updates) 
-if( !mv_embed_urid ){
-	var mv_embed_urid = getMvUniqueReqId();
-}
 
 var mvLoadEvent = new Array() //the onReady global event.. @@todo should be removed and use jquery style document.ready stuff insted
 //the default thumbnail for missing images:
@@ -220,7 +215,7 @@ var mvJsLoader = {
 	 load_error:false,//load error flag (false by default)
 	 load_time:0,	 
 	 callbacks:new Array(),	 	  	 
-	 doLoad:function(libs, callback){
+	 doLoad:function(libs, callback){	 	
 	 	this.ctime++;
 	 	if(libs){ //setup this.libs: 	 		 		 	
 	 		//first check if we already have this lib loaded
@@ -235,8 +230,7 @@ var mvJsLoader = {
 	 			js_log('all libs already loaded skipping...' + libs);
 				callback();
 				return ;
-			}					 	
-			debug_attr = (parseUri( getMvEmbedURL()).queryKey)?'&debug=true':'';	
+			}					 						
 	 		//check if we should use the script loader to combine all the requests into one:
 		 	if( MV_USE_SCRIPT_LOADER ){		
 		 		var class_set = '';
@@ -252,7 +246,7 @@ var mvJsLoader = {
 		 	 	}	 	 					 	 	 	
 		 	 	this.libs[ last_class ] = 'mvwScriptLoader.php?class=' + class_set +
 		 	 						'&urid='+ getMvUniqueReqId()+
-		 	 						debug_attr; 			
+		 	 						(parseUri( getMvEmbedURL() ).queryKey['debug'])?'&debug=true':''; 			
 		 	}else{			 	 		 	 			 		 	 
 				//do many requests:
 			 	for(var i in libs){ //for in loop oky on object
@@ -1201,8 +1195,7 @@ function mv_jsdata_cb(response){
 	global_req_cb[response['cb_inx']]( response['pay_load'] );
 }
 //load external js via dom injection
-//@@todo swich over to jQuery injection
-function loadExternalJs(url, callback){
+function loadExternalJs( url ){
    	js_log('load js: '+ url);
     //if(window['$j']) //use jquery call:    
        /*$j.ajax({
@@ -1232,7 +1225,7 @@ function styleSheetPresent(url){
 }
 function loadExternalCss(url){
 	if( url.indexOf('?') == -1 ){
-		url+='?'+mv_embed_urid;
+		url+='?'+getMvUniqueReqId();
 	}
    js_log('load css: ' + url);
    var e = document.createElement("link");
@@ -1255,7 +1248,13 @@ function getMvEmbedURL(){
 }
 //gets a unique request id to ensure fresh javascript 
 function getMvUniqueReqId(){
-	var mv_embed_url = getMvEmbedURL();
+	var mv_embed_url = getMvEmbedURL();		
+	//if in debug mode get a fresh unique request key: 
+	if(  parseUri( mv_embed_url ).queryKey['debug'] == 'true'){
+		var d = new Date();
+		return d.getTime()
+	}
+	//if we have a uri retun that: 
 	var urid = parseUri( mv_embed_url).queryKey['urid']
 	if( urid )
 		return urid;

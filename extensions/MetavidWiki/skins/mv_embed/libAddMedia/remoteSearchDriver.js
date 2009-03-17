@@ -23,9 +23,9 @@ loadGM( { "mv_media_search" : "Media Search",
 		"cc_nc_title": "Noncommercial",
 		"cc_nd_title": "No Derivative Works",
 		"cc_sa_title": "Share Alike",
-		"cc_pd_title": "Public Domain"
+		"cc_pd_title": "Public Domain",
+		"unknown_license": "Unknown License"
 });
-
 var default_remote_search_options = {
 	'profile':'mediawiki_edit',	
 	'target_id':null, //the div that will hold the search interface
@@ -137,7 +137,7 @@ remoteSearchDriver.prototype = {
 			'homepage':'http://archive.org',
 			
 			'api_url':'http://homeserver7.us.archive.org:8983/solr/select',
-			'lib'	: 'solrArchive',
+			'lib'	: 'archiveOrg',
 			'local'	: false,
 			'resource_prefix': 'AO_',
 			'tab_img':true
@@ -208,27 +208,64 @@ remoteSearchDriver.prototype = {
 			}
 		}
 	},
-	getlicenseImgSet:function( license_key ){		
+	/*
+	* getlicenseImgSet
+	* @param license_key  the license key (ie "by-sa" or "by-nc-sa" etc) 
+	*/
+	getlicenseImgSet: function( licenseObj ){		
+		//js_log('output images: '+ imgs);
+		return '<div class="rsd_license" title="'+ licenseObj.title + '" >' +
+					'<a target="_new" href="'+ licenseObj.lurl +'" ' + 
+					'title="' + licenseObj.title + '">'+ 
+							licenseObj.img_html +
+					'</a>'+ 
+			  	'</div>';
+	},
+	/*
+	* getLicenceKeyFromKey
+	* @param license_key the key of the license (must be defined in: this.licenses.cc.licenses)
+	*/
+	getLicenceFromKey:function( license_key , force_url){
 		if( typeof( this.licenses.cc.licenses[ license_key ]) == 'undefined')
-			return js_error('only cc licencs presently supported, could not find:' + license_key);
+			return js_error('could not find:' + license_key);
 		//set the current license pointer: 
 		var cl = this.licenses.cc;
 		var title = gM('cc_title');
 		var imgs = '';		
 		var license_set = license_key.split('-');		
 		for(var i=0;i < license_set.length; i++){			
-			lkey = 	license_set[i];												
-			title += gM( lkey + '_desc');
-			imgs +='<img width="20" src="' + cl.base_img_url +
+			lkey = 	license_set[i];								
+			title += ' ' + gM( 'cc_' + lkey + '_title');
+			imgs +='<img class="license_desc" width="20" src="' + cl.base_img_url +
 				cl.license_img[ lkey ].im + '">';
 		}
-		js_log('output images: '+ imgs);
-		return '<div class="rsd_license" title="'+ title + '" >' +
-					'<a target="_new" href="'+ cl.base_license_url + cl.licenses[ lkey ] +
-					 	'" title="' + title + '">'+ 
-							imgs +
-					'</a>'+ 
-			  	'</div>';
+		return {
+			'title': title,
+			'img_html':imgs,
+			'lurl':cl.base_license_url + cl.licenses[ lkey ]
+		};
+	},
+	/*
+	* getLicenceKeyFromUrl
+	* @param licence_url the url of the license
+	*/
+	getLicenceFromUrl: function( license_url ){
+		//first do a direct lookup check: 
+		for(var i in this.licenses.cc.licenses){
+			var lkey = this.licenses.cc.licenses[i].split('/')[0];
+			//guess by url trim
+			js_log('looking for:/' + lkey +'/  in:' + parseUri(license_url).path );
+			if( parseUri(license_url).path.indexOf('/'+ lkey +'/') != -1){
+				js_log("FOUND");
+				return this.getLicenceFromKey( i , license_url);
+			}
+		}
+		//could not find it return unknown_license
+		return {
+			'title' 	: gM('unknown_license'),
+			'img_html'	: '<span>' + gM('unknown_license') + '</span>',
+			'lurl' 		: license_url
+		};
 	},
 	//some default layout values:		
 	thumb_width 		: 80,
@@ -388,7 +425,9 @@ remoteSearchDriver.prototype = {
 			);
 		});  
 	},
-	runSearch: function(){				
+	runSearch: function(){	
+		//draw_direct_flag
+		var draw_direct_flag = true;			
 		//set loading div: 
 		mv_set_loading('#rsd_results');			
 		//get a remote search object for each search provider and run the search
@@ -405,12 +444,23 @@ remoteSearchDriver.prototype = {
 				
 			//check if we need to update: 
 			if( typeof cp.sObj != 'undefined' ){
-				if(cp.sObj.last_query == $j('#rsd_q').val() && cp.sObj.last_offset == cp.offset)
-					continue;					
+				if(cp.sObj.last_query == $j('#rsd_q').val() && cp.sObj.last_offset == cp.offset){
+					js_log('last query is: ' + cp.sObj.last_query + ' matches: ' +  $j('#rsd_q').val());					
+				}else{
+					js_log('last query is: ' + cp.sObj.last_query + ' not match: ' +  $j('#rsd_q').val());
+					draw_direct_flag = false;
+				}
+			}else{
+				draw_direct_flag = false;
 			}
-			//make sure the search library is loaded and do the search: 
-			this.getLibSearchResults( cp );			
-		}			
+			if( !draw_direct_flag ){			
+				//make sure the search library is loaded and issue the search request 
+				this.getLibSearchResults( cp );
+			}			
+		}
+		//draw the reulsts without runing a query
+		if(draw_direct_flag)
+			this.drawOutputResults();		
 	},	
 	getLibSearchResults:function( cp ){
 		var _this = this;		
@@ -425,8 +475,8 @@ remoteSearchDriver.prototype = {
 			//inherit defaults if not set: 
 			cp.limit = (cp.limit) ? cp.limit : cp.sObj.limit;
 			cp.offset = (cp.offset) ? cp.offset : cp.sObj.offset;
-			
-			//do search:
+						
+			//do search		
 			cp.sObj.getSearchResults();
 			_this.checkResultsDone();				
 		});	
@@ -750,7 +800,7 @@ remoteSearchDriver.prototype = {
 			//rewrite by id handldes getting any libs we are missing: 		
 			rewrite_by_id('embed_vid',function(){
 				//grab any information that we got from the ROE xml or parsed from the media file
-				rObj = rObj.pSobj.getEmbedObjParsedInfo(rObj, 'embed_vid');					
+				rObj = rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );					
 				//add the re-sizable to the doLoad request: 
 				loadLibs['$j.ui.resizable']	  = 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
 				loadLibs['$j.fn.hoverIntent'] = 'jquery/plugins/jquery.hoverIntent.js';
@@ -1185,17 +1235,25 @@ mvBaseRemoteSearch.prototype = {
 	num_results		:0,	
 	
 	//init the object: 
-	init:function( initObj ){		
+	init: function( initObj ){		
 		js_log('mvBaseRemoteSearch:init');
 		for(var i in initObj){
 			this[i] = initObj[i];
 		}
 		return this;
 	},
+	getSearchResults:function(){
+		//empty out the current results before issuing a request 
+		this.resultsObj = {};
+		//do global getSearchResults bindings
+		this.last_query = $j('#rsd_q').val();
+		this.last_offset = this.cp.offset;
+		//@@todo its possible that video rss is the "default" format we could put that logic here: 
+	},
 	/*
 	* Parses and adds video rss based input format
-	* @data XML 		data to parse
-	* @provider_url 	the source url (used to generate absolute links)  
+	* @param $data XML data to parse
+	* @param provider_url 	the source url (used to generate absolute links)  
 	*/
 	addRSSData:function( data , provider_url ){
 		var _this = this;
@@ -1204,7 +1262,7 @@ mvBaseRemoteSearch.prototype = {
 		if(provider_url){
 			pUrl =  parseUri( provider_url );
 			http_host = pUrl.protocol +'://'+ pUrl.authority;  
-			http_path = pUrl.directory;
+			http_path = pUrl.directory;	
 		}
 		items = data.getElementsByTagName('item');
 		$j.each(data.getElementsByTagName('item'), function(inx, item){		
@@ -1283,4 +1341,3 @@ mvBaseRemoteSearch.prototype = {
 		return rObj;
 	}
 }
-
