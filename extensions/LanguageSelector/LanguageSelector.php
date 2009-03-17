@@ -261,12 +261,12 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 
 function wfLanguageSelectorDetectLanguage( $mode ) {
 	global $wgContLang, $wgLanguageSelectorLanguages;
-	
+
+	$contLang = $wgContLang->getCode();
+
 	if ( !$mode || $mode == LANGUAGE_SELECTOR_USE_CONTENT_LANG ) {
 		return $contLang;
 	}
-
-	$contLang = $wgContLang->getCode();
 
 	/**
 	* get accepted languages from Accept-Languages
@@ -277,7 +277,7 @@ function wfLanguageSelectorDetectLanguage( $mode ) {
 	if ( empty( $accept ) )
 		return $contLang;
 	
-	$accept = split( ',', $accept );
+	$accept = explode( ',', $accept );
 	
 	/**
 	* normalize accepted languages
