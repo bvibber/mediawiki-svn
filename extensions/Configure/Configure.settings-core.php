@@ -470,6 +470,7 @@ $settings = array(
 			'wgTrustedMediaFormats' => 'array',
 		),
 		'thumbnail' => array(
+			'wgTiffThumbnailType' => 'array',
 			'wgThumbnailEpoch' => 'text',
 			'wgThumbnailScriptPath' => 'text',
 			'wgThumbUpright' => 'text',
@@ -805,6 +806,7 @@ $arrayDefs = array(
 	'wgImageLimits' => 'simple-dual',
 	'wgMediaHandlers' => 'assoc',
 	'wgTrustedMediaFormats' => 'simple',
+	'wgTiffThumbnailType' => 'simple',
 	'wgThumbLimits' => 'simple',
 	'wgSVGConverters' => 'assoc',
 	'wgAntivirusSetup' => 'array',
@@ -883,6 +885,7 @@ $emptyValues = array(
 	'wgSharedUploadDBname' => false,
 	'wgMimeDetectorCommand' => null,
 	'wgCustomConvertCommand' => false,
+	'wgTiffThumbnailType' => false,
 	'wgThumbnailScriptPath' => false,
 	'wgDjvuDump' => null,
 	'wgDjvuRenderer' => null,
@@ -1103,5 +1106,6 @@ $settingsVersion = array(
 	'wgExportMaxLinkDepth' => array( array( '1.15alpha', '>=' ) ),
 	'wgUseTagFilter' => array( array( '1.15alpha', '>=' ) ),
 	'wgSummarySpamRegex' => array( array( '1.15alpha', '>=' ) ),
-	'wgAPIMaxUncachedDiffs' => array( array( '1.15alpha', '>=' ) ), 
+	'wgAPIMaxUncachedDiffs' => array( array( '1.15alpha', '>=' ) ),
+	'wgTiffThumbnailType' => array( array( '1.15alpha', '>=' ) ),
 );

@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.13.3 - 17 March 2009
+  Added $wgTiffThumbnailType.
+
 0.13.2 - 13 March 2009
   * extensions activation is now correct when previewing
   * Fixed some PHP errors in Special:Extensions

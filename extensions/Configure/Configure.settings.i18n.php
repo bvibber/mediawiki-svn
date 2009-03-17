@@ -44,6 +44,7 @@ $messages['en'] = array(
 	'configure-setting-wgShowEXIF' => "Show EXIF data on file description pages",
 	'configure-setting-wgThumbLimits' => "Allowed image thumbnail sizes",
 	'configure-setting-wgTrustedMediaFormats' => "Media types and MIME types which are considered 'safe'",
+	'configure-setting-wgTiffThumbnailType' => 'File extension and mime type used to transform TIFF images to',
 	'configure-setting-wgMainCacheType' => "Type of main caching system",
 	'configure-setting-wgCacheEpoch' => "Cache invalidation epoch",
 	'configure-setting-wgCachePages' => "Allow client-side caching of pages",

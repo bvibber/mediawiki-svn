@@ -392,6 +392,7 @@ $defaultNames = array(
 	'wgGenerateThumbnailOnParse' => "Allow thumbnail rendering on page view",
 	'wgMaxAnimatedGifArea' => "Force thumbnailing of animated GIFs above this size to a single frame instead of an animated thumbnail",
 	'wgSharedThumbnailScriptPath' => "Same as [[#\$wgThumbnailScriptPath|\$wgThumbnailScriptPath]], but for shared uploads",
+	'wgTiffThumbnailType' => 'Array of extension and mime type to transform TIFF images to',
 	'wgThumbnailScriptPath' => "Give a path here to use [[Manual:Thumb.php|thumb.php]] for thumbnail generation on client request, instead of generating them on render and outputting a static URL",
 	'wgThumbUpright' => "Adjust width of upright images when parameter 'upright' is used",
 	'wgThumbLimits' => "List of image sizes users can pick from",
