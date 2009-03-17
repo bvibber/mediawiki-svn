@@ -30,7 +30,7 @@ archiveOrgSearch.prototype = {
 		//@@todo check advanced options: include audio and images media types
 		//for now force (Ogg video) & a creativecommons license
 		q+=' format:(Ogg video)';
-		q+=' licenseurl:(http\\:\\/\\/creativecommons\\.org*)';
+		q+=' licenseurl:(http\\:\\/\\/*)';
 		var reqObj = {
 			'q': q, //just search for video atm
 			'fl':"description,title,identifier,licenseurl,format,license,thumbnail",			

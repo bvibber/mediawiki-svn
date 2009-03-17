@@ -69,8 +69,7 @@ mvClipEdit.prototype = {
 			}else if( this.rObj.type.indexOf("text/") === 0){
 				this.media_type = 'template';
 			}
-		}
-		
+		}		
 		//display control:
 		if(this.profile == 'sequence'){			
 			this.doEditTypesMenu();

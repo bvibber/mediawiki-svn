@@ -118,8 +118,9 @@ remoteSearchDriver.prototype = {
 			'lib'	:'mediaWiki',			
 			'resource_prefix': 'WC_', //prefix on imported resources (not applicable if the repository is local)
 			
-			//list all the domains where commons is local? or set this some other way by doing an api query 
-			//or by seeding this config when calling the remote search 			
+			//list all the domains where commons is local? 
+			// probably should set this some other way by doing an api query 
+			// or by seeding this config when calling the remote search? 			
 			'local_domains': ['wikimedia','wikipedia','wikibooks'],
 			//specific to wiki commons config: 
 			'search_title':false, //disable title search 
@@ -131,7 +132,7 @@ remoteSearchDriver.prototype = {
 		'archive_org':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,
+			'd'		:0,
 			'title' : 'Archive.org',
 			'desc'	: 'The Internet Archive, a digital library of cultural artifacts',
 			'homepage':'http://archive.org',
@@ -145,7 +146,7 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,			
+			'd'		:1,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
@@ -154,7 +155,7 @@ remoteSearchDriver.prototype = {
 			'local'	:false,			//if local set to true we can use local 
 			'resource_prefix': 'MV_', //what prefix to use on imported resources
 			
-			'local_domains': ['metavid', 'localhost'], // if the domain name contains metavid 
+			'local_domains': ['metavid'], // if the domain name contains metavid 
 									   // no need to import metavid content to metavid sites
 									   
 			'stream_import_key': 'mv_ogg_low_quality', // which stream to import, could be mv_ogg_high_quality 
@@ -181,13 +182,14 @@ remoteSearchDriver.prototype = {
 			'base_img_url':'http://upload.wikimedia.org/wikipedia/commons/thumb/',
 			'base_license_url': 'http://creativecommons.org/licenses/',
 			'licenses':{
-				'by':'by/3.0/',
-				'by-sa':'by-sa/3.0/',						
-				'by-nc-nd':'by-nc-nd/3.0/',
-				'by-nc':'by-nc/3.0/',
-				'by-nc-sa':'by-nc-sa/3.0/',
-				'by-sa':'by-nc/3.0',
-				'pd':'publicdomain/'
+				'by': 'by/3.0/',
+				'by-sa': 'by-sa/3.0/',						
+				'by-nc-nd': 'by-nc-nd/3.0/',
+				'by-nc': 'by-nc/3.0/',
+				'by-nd': 'by-nd/3.0/',
+				'by-nc-sa': 'by-nc-sa/3.0/',
+				'by-sa': 'by-nc/3.0',
+				'pd': 'publicdomain/'
 			},
 			'license_img':{
 				'by':{
@@ -239,10 +241,11 @@ remoteSearchDriver.prototype = {
 			imgs +='<img class="license_desc" width="20" src="' + cl.base_img_url +
 				cl.license_img[ lkey ].im + '">';
 		}
+		var url = (force_url) ? force_url : cl.base_license_url + cl.licenses[ license_key ];
 		return {
 			'title': title,
 			'img_html':imgs,
-			'lurl':cl.base_license_url + cl.licenses[ lkey ]
+			'lurl' : url
 		};
 	},
 	/*
@@ -254,9 +257,7 @@ remoteSearchDriver.prototype = {
 		for(var i in this.licenses.cc.licenses){
 			var lkey = this.licenses.cc.licenses[i].split('/')[0];
 			//guess by url trim
-			js_log('looking for:/' + lkey +'/  in:' + parseUri(license_url).path );
-			if( parseUri(license_url).path.indexOf('/'+ lkey +'/') != -1){
-				js_log("FOUND");
+			if( parseUri(license_url).path.indexOf('/'+ lkey +'/') != -1){			
 				return this.getLicenceFromKey( i , license_url);
 			}
 		}
@@ -377,11 +378,11 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		js_log("f:add_interface_bindings:");		
 		//setup for this.main_search_options:
-		$j('#mso_cancel').click(function(){ 
+		$j('#mso_cancel').unbind().click(function(){ 
 			_this.closeAll(); 
 		});
 		
-		$j('#mso_selprovider,#mso_selprovider_close').click(function(){
+		$j('#mso_selprovider,#mso_selprovider_close').unbind().click(function(){
 			if($j('#rsd_options_bar:hidden').length !=0 ){
 				$j('#rsd_options_bar').animate({
 					'height':'110px',
@@ -398,7 +399,7 @@ remoteSearchDriver.prototype = {
 		});						
 		//setup binding for search provider check box: 
 		//search button: 
-		$j('#rms_search_button').click(function(){
+		$j('#rms_search_button').unbind().click(function(){
 			_this.runSearch();
 		});		
 	},
@@ -555,15 +556,19 @@ remoteSearchDriver.prototype = {
 	},	
 	//@@todo we could load the id with the content provider id to find the object faster...
 	getResourceFromId:function( rid ){
+		//js_log('getResourceFromId:' + rid );
 		//strip out /res/ if preset: 
 		rid = rid.replace(/res_/, '');
 		for(var cp_id in  this.content_providers){
-			cp = this.content_providers[ cp_id ];		
-			if(	cp['sObj']){
-				for(var rInx in cp.sObj.resultsObj){				
-					if(rInx == rid)
-						return cp.sObj.resultsObj[rInx];
-				};
+			cp = this.content_providers[ cp_id ];
+			if(rid.indexOf( cp_id ) != -1){
+				rid = rid.replace( cp_id + '_',''); 		
+				if(	cp['sObj']){
+					for(var rInx in cp.sObj.resultsObj){				
+						if( rInx == rid )
+							return cp.sObj.resultsObj[rInx];
+					};
+				}
 			}
 		}
 		js_log("ERROR: could not find " + rid);
@@ -583,8 +588,7 @@ remoteSearchDriver.prototype = {
 			//output results based on display mode & input: 
 			if(typeof cp['sObj'] != 'undefined'){
 				$j.each(cp.sObj.resultsObj, function(rInx, rItem){					
-					var disp = ( cp.d ) ? '' : 'display:none;';
-					
+					var disp = ( cp.d ) ? '' : 'display:none;';					
 					
 					if( _this.result_display_mode == 'box' ){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_box_result" style="' + disp + 'width:' +
@@ -595,7 +599,7 @@ remoteSearchDriver.prototype = {
 									'/images/sound_music_icon-80.png';									
 							}
 							//get a thumb with proper resolution transform if possible: 
-							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +
+							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + cp_id + '_' + rInx +
 									'" style="width:' + _this.thumb_width + 'px;" src="' + 
 									cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } ) 
 									+ '">';
@@ -611,7 +615,7 @@ remoteSearchDriver.prototype = {
 						o+='</div>';
 					}else if(_this.result_display_mode == 'list'){
 						o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="' + disp + 'width:90%">';					
-							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + rInx +'" style="float:left;width:' +
+							o+='<img title="'+rItem.title+'" class="rsd_res_item" id="res_' + cp_id + '_' + rInx +'" style="float:left;width:' +
 									 _this.thumb_width + 'px; padding:5px;" src="' + 
 									 cp.sObj.getImageTransform( rItem, {'width':_this.thumb_width } )
 									  + '">';			
@@ -651,7 +655,7 @@ remoteSearchDriver.prototype = {
 			$j('#' + res_id ).attr('src', rObj.poster);
 		});				
 		//resource click action: (bring up the resource editor) 		
-		$j('.rsd_res_item').click(function(){	
+		$j('.rsd_res_item').unbind().click(function(){	
 			var rObj = _this.getResourceFromId( $j(this).attr("id") );													
 			_this.resourceEdit( rObj, this );										
 		});
@@ -680,12 +684,12 @@ remoteSearchDriver.prototype = {
 		$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
 			'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
 				'<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
-				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:30px;left:0px;bottom:0px;'+
+				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:35px;left:0px;bottom:0px;'+
 					'width:' + (maxWidth + 30) + 'px;" >' +
 						mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
 				'</div>'+
 				'<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
-					'top:30px;left:' + (maxWidth+30) +'px;bottom:0px;right:0px;">'+
+					'top:35px;left:' + (maxWidth+30) +'px;bottom:0px;right:0px;">'+
 					mv_get_loading_img() +  					
 				'</div>'+
 			'</div>');
