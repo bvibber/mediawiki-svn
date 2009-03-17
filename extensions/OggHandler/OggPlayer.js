@@ -325,6 +325,7 @@ var wgOggPlayer = {
 	},
 
 	'testActiveX' : function ( name ) {
+		if ( this.mozilla ) return false;
 		var hasObj = true;
 		try {
 			// No IE, not a class called "name", it's a variable
@@ -623,32 +624,24 @@ var wgOggPlayer = {
 		    '  <param name="statusHeight"  value="' + statusHeight + '"/>' +
 		    '</applet>';
 
-		// Wrap it in an iframe to avoid hanging the rendering thread in FF 2.0 and similar
+		// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
 		// Doesn't work in MSIE or Safari/Mac or Opera 9.5
-		/*if ( this.mozilla ) {
-			var iframeHtml = '<html><body>' + html + '</body></html>';
-			var iframeJs = 'parent.wgOggPlayer.writeApplet(self, "' + iframeHtml.replace( /"/g, '\\"' ) + '");';
-			var iframeUrl = 'javascript:' + encodeURIComponent( iframeJs );
-				'document.write("' + iframeHtml.replace( /"/g, '\\"' ) + '");';
-			html = '<iframe width=' + this.hq( params.width ) + 
-				'     height=' + this.hq( playerHeight ) + 
-				'     scrolling="no" frameborder="0" marginwidth="0" marginheight="0"' +
-				'     src=' + this.hq( iframeUrl ) + '/>';
-		}*/
-		elt.innerHTML = '<div>' + html + '</div>';
-	},
-
-	'writeApplet' : function ( win, html ) {
-		win.document.write( html );
-		if ( win.stop ) win.stop();
-		// Disable autoplay on back button
-		this_ = this;
-		win.setTimeout( 
-			function () { 
-				this_.setParam( win.document.applets[0], 'autoPlay', '' ); 
-			}, 
-			1 
-		);
+		if ( this.mozilla ) {
+			var iframe = document.createElement( 'iframe' );
+			iframe.setAttribute( 'width', params.width );
+			iframe.setAttribute( 'height', playerHeight );
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'frameborder', 0 );
+			iframe.setAttribute( 'marginWidth', 0 );
+			iframe.setAttribute( 'marginHeight', 0 );
+			elt.appendChild( iframe );
+			var newDoc = iframe.contentDocument;
+			newDoc.open();
+			newDoc.write( '<html><body>' + html + '</body></html>' );
+			newDoc.close(); // spurious error in some versions of FF, no workaround known
+		} else {
+			elt.innerHTML ='<div>' + html + '</div>';
+		}
 	},
 
 	'embedQuicktimePlugin': function ( elt, params, player ) {
