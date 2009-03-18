@@ -97,7 +97,7 @@ function mv_do_load_wiz(){
 				'opacity: 0.6;"/>';
 	}
 	//make sure the click action is still there
-	imE = document.getElementById('mv-add_media');	
+	var imE = document.getElementById('mv-add_media');	
 	if(imE){
 		addHandler( imE, 'click', function() {
 			mv_do_load_wiz();
@@ -127,12 +127,7 @@ function load_mv_embed( callback ){
 	//inject mv_embed if needed:
 	if( typeof mvEmbed == 'undefined'){		
 		//get mv_embed path from _this_ file location: 	
-		var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );		
-		//if debug on; ensure a time stamp fresh copy: 
-		//if(mv_embed_url.indexOf('debug')!==-1){
-		//	var d = new Date(); // Generic JS date object
-		//	mv_embed_url+='&dtime=' + d.getTime();
-		//}
+		var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );						
 		var e = document.createElement("script");
 	    e.setAttribute('src', mv_embed_url);	    
 	    e.setAttribute('type',"text/javascript");

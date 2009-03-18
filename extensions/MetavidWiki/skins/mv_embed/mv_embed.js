@@ -25,7 +25,7 @@ if( MV_EMBED_VERSION ){
 var MV_EMBED_VERSION = '1.0r11';
 
 //if we should use the scriptLoader 
-//( lets you group requests, minimize javascript, and use mediaWiki localization infastructure) 
+//( lets you group requests, minimize javascript, and use mediaWiki localization infrastructure) 
 var MV_USE_SCRIPT_LOADER = false;
 
 //the name of the player skin (default is mvpcf)
@@ -55,7 +55,7 @@ if( !mv_embed_path ){
 	var mv_embed_path = getMvEmbedPath();
 }
 
-var mvLoadEvent = new Array() //the onReady global event.. @@todo should be removed and use jquery style document.ready stuff insted
+var mvLoadEvent = new Array() //the onReady global event.. @@todo should be removed and use jquery style document.ready stuff instead
 //the default thumbnail for missing images:
 var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
 
@@ -1093,23 +1093,26 @@ function do_api_req( options, callback ){
 	if(typeof options.data == 'undefined')
 		options.data = {};	
 	
-	//set the format to json (if not already set)  	
-	if(typeof options.data['format'] == 'undefined')
-		options.data['format'] = 'json';
-		
-	//build request string: 				
-	if( parseUri( document.URL ).host == parseUri( options['api_url'] ).host ){
+	//force format to json (if not already set)  		
+	options.data['format'] = 'json';
+				
+	//build request string:	 		
+	if( parseUri( document.URL ).host == parseUri( options.url ).host ){		
 		//local request do api request directly		
 		$j.ajax({
-			type: "POST",
+			type: "GET",
 			url: options.url,
 			data: options.data,
+			dataType:'json', //api requests _should_ always return JSON data: 
             async: false,
-			success:function(data){					
+			success:function(data){			
 				callback(  data );
+			},
+			error:function(){
+				js_error( ' error in getting: ' + options.url); 
 			}
 		});
-	}else{	
+	}else{			
 		//set the callback param if not already set: 
 		if( typeof options.jsonCB == 'undefined')
 			options.jsonCB = 'callback';

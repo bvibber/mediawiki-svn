@@ -24,7 +24,9 @@ loadGM( { "mv_media_search" : "Media Search",
 		"cc_nd_title": "No Derivative Works",
 		"cc_sa_title": "Share Alike",
 		"cc_pd_title": "Public Domain",
-		"unknown_license": "Unknown License"
+		"unknown_license": "Unknown License",
+		
+		"no_import_by_url": "This User or Wiki <b>can not</b> import assets from remote URLs. <br> If permissions are set you may have to enable $wgAllowCopyUploads, <a href=\"http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads\">more info</a>"
 });
 var default_remote_search_options = {
 	'profile':'mediawiki_edit',	
@@ -34,6 +36,8 @@ var default_remote_search_options = {
 	
 	'caret_pos':null,
 	'local_wiki_api_url':null,
+	'import_url_mode': 'autodetect', //can be 'api', 'form', 'autodetect' or 'none' (none should be used where no remote repositories are enabled) 
+	
 	'target_title':null,
 	
 	'target_textbox':null,
@@ -426,11 +430,12 @@ remoteSearchDriver.prototype = {
 			);
 		});  
 	},
-	runSearch: function(){	
+	runSearch: function(){			
 		//draw_direct_flag
 		var draw_direct_flag = true;			
 		//set loading div: 
-		mv_set_loading('#rsd_results');			
+		mv_set_loading('#rsd_results');						
+				
 		//get a remote search object for each search provider and run the search
 		for(var cp_id in  this.content_providers){
 			var cp = this.content_providers[ cp_id ];			
@@ -459,12 +464,112 @@ remoteSearchDriver.prototype = {
 				this.getLibSearchResults( cp );
 			}			
 		}
-		//draw the reulsts without runing a query
+		
+		//draw the results without running a query
 		if(draw_direct_flag)
 			this.drawOutputResults();		
 	},	
+	//issue a api request & cache the result
+	//this check can be avoided by setting the this.import_url_mode = 'api' | 'form' | insted of 'autodetect' or 'none'
+	checkForCopyURLSupport:function ( callback ){
+		var _this = this;
+		js_log('checkForCopyURLSupport');
+		if( this.import_url_mode == 'autodetect' ){
+			do_api_req( {
+				'data':{ 'action':'paraminfo','modules':'upload' },
+				'url': _this.local_wiki_api_url 
+			}, function(data){						
+				if( typeof data.paraminfo.modules[0].classname == 'undefined'){										
+					//@@todo would be nice if API permission on: action=query&meta=userinfo&uiprop=rights
+					// upload_by_url property reflected if $wgAllowCopyUploads config value .. oh well. 								
+					$j.ajax({
+						type: "GET",
+						dataType: 'html',
+						url: wgArticlePath.replace('$1', 'Special:Upload'), //@@todo may have problems in localized special pages 
+															   //(could hit meta=siteinfo & specialpagealiases ) 
+															   // but might be overkill for now.  
+						success: function( form_html ){							
+							if( form_html.indexOf( 'wpUploadFileURL' ) != -1){
+								_this.import_url_mode= 'form';	
+							}else{
+								_this.import_url_mode= 'none';
+							}
+							callback();
+						},
+						error: function(){
+							js_log('error in getting Special:Upload page');
+							_this.import_url_mode= 'none';
+							callback();
+						}
+					});
+				}else{					
+					for( var i in data.paraminfo.modules[0].parameters ){						
+						var pname = data.paraminfo.modules[0].parameters[i].name;						
+						if( pname == 'url' ){
+							js_log( 'Autodetect Upload Mode: api: copy by url:: ' );							
+							//check permission  too: 
+							_this.checkForCopyURLPermission(function( canCopyUrl ){
+								if(canCopyUrl){
+									_this.import_url_mode = 'api';
+									callback();								
+								}else{
+									_this.import_url_mode = 'none';
+									callback();
+								}
+							});	
+							break;						
+						}
+					}				
+				}	
+			});			
+		}else{
+			callback();
+		}
+	},
+	/*
+	* checkForCopyURLPermission:
+	* not really nessesary the api request to upload will return apopprirate error if the user lacks permission. or $wgAllowCopyUploads is set to false
+	* (just here in case we want to issue a warning up front)
+	*/  
+	checkForCopyURLPermission:function( callback ){
+		var _this = this;
+		//do api check: 		
+		do_api_req( {
+				'data':{ 'action' : 'query', 'meta' : 'userinfo', 'uiprop' : 'rights' },
+				'url': _this.local_wiki_api_url,
+				'userinfo' : true
+		}, function(data){			
+			for( var i in data.query.userinfo.rights){		
+				var right = data.query.userinfo.rights[i];
+				js_log('checking: ' + right ) ;			
+				if(right == 'upload_by_url'){
+					callback( true );				
+					return true; //break out of the function
+				}
+			}
+			callback( false );					
+		});
+	},
 	getLibSearchResults:function( cp ){
 		var _this = this;		
+		
+		//first check if we should even run the search at all (can we import / insert into the page? ) 
+		if( !this.checkRepoLocal( cp ) && this.import_url_mode == 'autodetect' ){
+			//cp is not local check if we can support the import mode: 
+			this.checkForCopyURLSupport( function(){
+				_this.getLibSearchResults( cp );
+			});
+			return false;
+		}else if( !this.checkRepoLocal( cp ) && this.import_url_mode == 'none'){
+			if(  this.disp_item == 'combined'){
+				//combined results are harder to error handle just ignore that repo
+				cp.sObj.loading = false;
+			}else{
+				$j('#rsd_results').html( '<div style="padding:10px">'+ gM('no_import_by_url') +'</div>');
+			}
+			return false;
+		}
+		
 		eval('var libLoadReq = {'+cp.lib+'Search: \'libAddMedia/searchLibs/' +cp.lib + 'Search.js\' };');			
 		mvJsLoader.doLoad( libLoadReq, function(){
 			//else we need to run the search: 
@@ -684,7 +789,7 @@ remoteSearchDriver.prototype = {
 		$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
 			'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
 				'<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
-				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:35px;left:0px;bottom:0px;'+
+				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:35px;left:5px;bottom:0px;'+
 					'width:' + (maxWidth + 30) + 'px;" >' +
 						mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
 				'</div>'+
@@ -815,29 +920,32 @@ remoteSearchDriver.prototype = {
 			});
 		}	
 	},
+	checkRepoLocal:function( cp ){	
+		if( cp.local ){
+			return true;
+		}else{
+			//check if we can embed the content locally per a domain name check:			
+			var local_host = parseUri( this.local_wiki_api_url ).host;
+			if( cp.local_domains ) {								
+				for(var i=0;i < cp.local_domains.length; i++){
+					var ld = cp.local_domains[i];
+					 if( local_host.indexOf( ld ) != -1)
+					 	return true;
+				}
+			}
+			return false;
+		}
+		
+	},
 	checkImportResource:function( rObj, cir_callback){
 		//@@todo get the localized File/Image namespace name or do a general {NS}:Title aproch
 		var cp = rObj.pSobj.cp;	
 		var _this = this;
 		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');					
 			
-		//first do the simple check
-		if( rObj.pSobj.cp.local ){
-			local_embed_ref=true;
-		}else{
-			//check if we can embed the content locally per a domain name check:
-			var local_embed_ref=false;
-			var local_host = parseUri(this.local_wiki_api_url).host;
-			if( rObj.pSobj.cp.local_domains ) {								
-				for(var i=0;i < rObj.pSobj.cp.local_domains.length; i++){
-					var ld = rObj.pSobj.cp.local_domains[i];
-					 if( local_host.indexOf( ld ) != -1)
-					 	local_embed_ref=true;
-				}
-			}		
-		}
-		//locally embed jump to callback:
-		if( local_embed_ref ){
+		//check if local repository
+		if( this.checkRepoLocal( cp ) ){
+			//local repo jump directly to check Import Resource callback:
 		 	cir_callback( rObj );
 		}else{											
 			//not a local domain update target resource name with the prefix: 
@@ -875,7 +983,7 @@ remoteSearchDriver.prototype = {
 						'|Source=' + '[' + rObj.link.replace(/^\s\s*/, '').replace(/\s\s*$/, '') +' Original Source]'+ "\n";
 						
 						if( rObj.author )
-							base_resource_desc+='|Author= ' + rObj.author +"\n";										
+							base_resource_desc+='|Author=' + rObj.author +"\n";										
 							
 						if( rObj.date )
 							base_resource_desc+='|Date=' + rObj.date +"\n";								
