@@ -59,12 +59,23 @@ $wgHooks['BeforePageDisplay'][] = 'CommunityVoice::addStyles';
 
 abstract class CommunityVoice {
 
-	/* Static Members */
+	/* Private Static Members */
 
-	static private $modules = array(
+	private static $modules = array(
 		'Ratings' => array( 'class' => 'CommunityVoiceRatings' )
 	);
-	static private $messagesLoaded = false;
+	private static $messagesLoaded = false;
+
+	/* Private Static Functions */
+
+	private static function autoLoadMessages() {
+		// Checks if extension messages have been loaded already
+		if ( !self::$messagesLoaded ) {
+			// Loads extension messages
+			wfLoadExtensionMessages( 'CommunityVoice' );
+			self::$messagesLoaded = true;
+		}
+	}
 
 	/* Static Functions */
 
@@ -124,16 +135,31 @@ abstract class CommunityVoice {
 		$message,
 		$parameter = null
 	) {
-		// Checks if extension messages have been loaded already
-		if ( !self::$messagesLoaded ) {
-			// Loads extension messages
-			wfLoadExtensionMessages( 'CommunityVoice' );
-			self::$messagesLoaded = true;
-		}
+		// Makes sure messages are laoded
+		self::autoLoadMessages();
 		// Returns message
 		return wfMsg( 'communityvoice-' . $module . '-' . $message, $parameter );
 	}
 
+	public static function getMessageParse(
+		$module,
+		$message
+	) {
+		// Makes sure messages are laoded
+		self::autoLoadMessages();
+		// Gets variadic parameters
+		$parameters = func_get_args();
+		// Less the first two
+		array_shift( $parameters );
+		array_shift( $parameters );
+		// Returns message
+		return wfMsgExt(
+			'communityvoice-' . $module . '-' . $message,
+			array( 'parsemag' ),
+			$parameters
+		);
+	}
+	
 	/**
 	 * Adds scripts to document
 	 */
