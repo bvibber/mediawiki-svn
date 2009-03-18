@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.util;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -38,6 +39,12 @@ public class Configure {
 		String mediawiki = args[0];
 		if(mediawiki.endsWith(System.getProperty("file.separator")))
 			mediawiki = mediawiki.substring(0,mediawiki.length()-1);
+		
+		if( ! new File(mediawiki+"/LocalSettings.php").exists() ){
+			System.out.println("ERROR: "+mediawiki+" does not appear to contain a MediaWiki installation. ");
+			System.out.println("Please give full path to root directory (where LocaliseSettings.php is) of your MediWiki installation. ");
+			return;
+		}
 		
 		String dbname = getVariable(mediawiki,"wgDBname");
 		String scriptPath = getVariable(mediawiki,"wgScriptPath");
