@@ -36,7 +36,7 @@ def intro():
 
 	print "=== Wikiation installer (v. "+revision()+") ==="
 	print
-	print "(last known safe version: 48307)"
+	print "(last known safe version: 48528)"
 	print "Interactive mode.",
 	print "Automated testing is",
 	if settings.run_automated_tests:
