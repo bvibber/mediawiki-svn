@@ -20,6 +20,8 @@ from naive_installer import Naive_Installer
 from installation_system import Installer_Exception
 from download_installer import Download_Installer
 
+from tags import Tags, TagsException
+
 class Parse_Exception(Exception):
 	pass
 
@@ -110,9 +112,16 @@ def ls_revisions(ppath):
 
 
 def ls_tags(ppath):
-	print "To be implemented."
+	if not ppath["installer"]:
+		raise Listing_Exception("What extension would you like to know the available revisions for?")
 
-
+	system=get_system(ppath["system"])
+	try:
+		tags=system.get_tags(ppath["installer"])
+	except TagsException, e:
+		raise Listing_Exception(e.message)
+	
+	return tags
 
 def info(args):
 	if len(args)<1:
@@ -331,7 +340,10 @@ def get_system(system_name):
 
 		return sYstem()
 
+# Constants
+
 systems={'wikiation_toolkit':Toolkit_Installer,'extension': Extension_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer}
+
 
 if __name__=="__main__":
 	print "testing installers.py module"

@@ -18,12 +18,15 @@ installerdir=os.path.dirname(os.path.abspath(__file__))
 # where to find .install directories and the files contained therein
 installfiles=os.path.join(installerdir,'installfiles')
 
+# where do we store the _tagcache file
+tagcache=os.path.join(installerdir,"_tagcache")
 
 # where to find mediawiki tags and trunk on svn
 tagsdir="http://svn.wikimedia.org/svnroot/mediawiki/tags"
 trunkdir="http://svn.wikimedia.org/svnroot/mediawiki/trunk"
 # we could alternately/additionally take a tag version for extensions. (future)
-extensionsdir=trunkdir+"/extensions"
+extensionssubdir="extensions"
+extensionsdir=trunkdir+"/"+extensionssubdir
 
 # where to install diverse revisions
 instancesdir='/var/www/revisions'

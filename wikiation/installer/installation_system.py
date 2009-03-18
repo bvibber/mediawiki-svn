@@ -6,6 +6,7 @@
 import settings_handler as settings
 import os, os.path, shutil
 import subprocess
+from tags import Tags
 
 
 class Installer_Exception (Exception):
@@ -45,8 +46,10 @@ class Installation_System:
 			if line.endswith(".install"):
 				installers2.append(line.replace(".install",""))
 
+		installers2.sort()
 		return installers2
 
+	# XXX This should be a mixin
 	def get_revisions(self,installer_name):
 		"""list the revisions a particular installer can install"""
 		if not self.exists(installer_name):
@@ -54,6 +57,7 @@ class Installation_System:
 
 		return self.do_get_revisions(installer_name)
 
+	# XXX this should be a mixin
 	def do_get_revisions(self, installer_name):
 		"""actually perform the task of getting revisions for get_revisions
 		First checks to see if someone has provided a script to determine
@@ -65,6 +69,12 @@ class Installation_System:
 			return self.do_get_revisions_generic(installer_name)
 
 		return None
+
+	# XXX should be a mixin
+	def get_tags(self, installer_name):
+		"""get list of tags available for this installer."""
+		return Tags().gettags(installer_name)
+		
 
 	def get_svnbase():
 		return None

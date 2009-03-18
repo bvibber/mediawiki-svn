@@ -30,6 +30,7 @@ import installers
 from installer_util import *
 from isolation	import *
 from getch import getch
+from tags import Tags
 
 def intro():
 	"""a nice banner/intro text for interactive mode"""
@@ -138,12 +139,17 @@ def update_self(args):
 	elif len(args)>=2:
 		print "I'm not sure what to do with "+ (" ".join(args[1:]))
 
+	os.unlink(settings.tagcache)	#paranoia is good for you
+
 	print "\n\n"
 	print "wikiation_installer update attempted/completed. Restarting"
 	print "----------------------------------------------------------"
 	print "\n\n"
 	os.execl("/usr/bin/python","/usr/bin/python",__file__)
 
+def update_tags(args):
+	"""manually force update of the tag cache"""
+	Tags.update_cache_file()
 
 def main():
 	"""main function. start of execution when run from shell"""
@@ -184,6 +190,7 @@ commands={
 	"info":info,
 	"check_isolation":check_isolation,
 	"update_self":update_self,
+	"update_tags":update_tags
 }
 
 # additional help texts for some commands.
