@@ -270,7 +270,13 @@ p.text {float: right; display: inline; width: 360px; margin: 8px 10px 10px 0; pa
 	padding-top:0px;
 	padding-bottom:0px;
 }
-
+/*annotative layers */
+.anno_en_odd{
+	background:#EEE !important;
+}
+.anno_en_even{
+	background:#DDD !important;
+} 
 /*Ajax search suggestions*/
 #suggestions {
 	width: 295px;
@@ -509,13 +515,14 @@ ul#metaResults li.subscribe {float:right;}
 	margin: 0 0 26px 0;
 	overflow: hidden;
 	height: 100%;
+	border:solid thin #CCC;
 }
 #resultsArea ul#results li.moreBy {
 	padding: 10px 0 0 173px;
 }
 #resultsArea ul#results li.moreBy a {text-decoration: none; font-weight: bold; font-size: 14px;}
 
-#resultsArea ul#results li.result .vid_img {float: left; display: inline; width:160px;}
+#resultsArea ul#results li.result .vid_img {float: left; display: inline; width:160px;padding:4px;}
 #resultsArea ul#results li.result div.result_description {
 	width: 353px;
 	float: left;
@@ -525,8 +532,9 @@ ul#metaResults li.subscribe {float:right;}
 #resultsArea ul#results li.result div.result_description p {margin: 0; padding: 8px 0;}
 #resultsArea ul#results li.result div.result_description h4 {margin: 0; padding: 0;}
 #resultsArea ul#results li.result div.result_description a {text-decoration: none;}
-#resultsArea ul#results li.result div.result_meta {float: right; display: inline; color: #7a7979;}
+#resultsArea ul#results li.result div.result_meta {float: right; display: inline; color: #7a7979;padding:4px;}
 #resultsArea ul#results li.result div.result_meta span {display: block; font-size: 12px; padding: 2px 0;}
+#resultsArea ul#results li.result div.parent_meta{clear:both; font-size: 12px; background:#EEE;font-style:italic; padding:4px;}
 
 #profile {
 	margin: 10px 0;
