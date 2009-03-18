@@ -77,11 +77,14 @@ $wgExtensionMessagesFiles['CodeReview'] = $dir . 'CodeReview.i18n.php';
 $wgExtensionAliasesFiles['CodeReview'] = $dir . 'CodeReview.alias.php';
 
 $wgAvailableRights[] = 'repoadmin';
+$wgAvailableRights[] = 'codereview-use';
 $wgAvailableRights[] = 'codereview-add-tag';
 $wgAvailableRights[] = 'codereview-remove-tag';
 $wgAvailableRights[] = 'codereview-post-comment';
 $wgAvailableRights[] = 'codereview-set-status';
 $wgAvailableRights[] = 'codereview-link-user';
+
+$wgGroupPermissions['*']['codereview-use'] = true;
 
 $wgGroupPermissions['user']['codereview-add-tag'] = true;
 $wgGroupPermissions['user']['codereview-remove-tag'] = true;

@@ -3,13 +3,18 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class SpecialCode extends SpecialPage {
 	function __construct() {
-		parent::__construct( 'Code' );
+		parent::__construct( 'Code' , 'codereview-use' );
 	}
 
 	function execute( $subpage ) {
 		global $wgOut, $wgRequest, $wgUser, $wgScriptPath, $wgCodeReviewStyleVersion;
 
 		wfLoadExtensionMessages( 'CodeReview' );
+
+		if( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
+			return;
+		}
 
 		$this->setHeaders();
 		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
