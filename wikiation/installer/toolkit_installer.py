@@ -6,7 +6,7 @@ from installation_system import Installation_System
 
 class Toolkit_Installer(Installation_System):
 	system_name='wikiation_toolkit'
-	destination_dir=settings.toolkit_dir
-#	def __init__(self,instance):
-#		Installation_System.__init__(self)
+	def __init__(self,instance=None):
+		Installation_System.__init__(self, instance)
+		self.destination_dir=settings.toolkit_dir
 	
