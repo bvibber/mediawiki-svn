@@ -8,5 +8,3 @@ if test -n "$REVISION"; then
 else
 	svn checkout $repository
 fi
-
-$MYSQL_COMMAND $DATABASE_NAME < $NAME/ConfirmAccount.sql
