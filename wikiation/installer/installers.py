@@ -252,7 +252,12 @@ def parse_path(path,defaults=None):
 	if ":" in path:
 		# installed.extension: in foo
 		#|-----whence--------|-inpath-|
-		whence, inpath=path.split(':')
+
+		try:
+			whence, inpath=path.split(':')
+		except ValueError:
+			raise Parse_Exception("You're doing something odd with ':'. I don't understand.")
+
 	elif "." in path:
 		#installed.extension
 		whence=path
@@ -265,7 +270,10 @@ def parse_path(path,defaults=None):
 		if "." in whence:
 			# installed.extension    : ...
 			#|---ai----|-system--|
-			ai,system=whence.split('.')
+			try:
+				ai,system=whence.split('.')
+			except ValueError:
+				raise Parse_Exception("You're doing something odd with '.'. I don't understand.")
 		else:
 			# ?    : ...
 			single_case=whence
