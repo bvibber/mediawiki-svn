@@ -226,6 +226,7 @@ $messages['bg'] = array(
 	'spamregex-block-submit' => 'Блокиране&nbsp;на&nbsp;фразата',
 	'spamregex-text' => '(Текст)',
 	'spamregex-summary-log' => '(Резюме)',
+	'right-spamregex' => 'Блокиране на спам фрази чрез [[Special:SpamRegex]]',
 );
 
 /** Bosnian (Bosanski)

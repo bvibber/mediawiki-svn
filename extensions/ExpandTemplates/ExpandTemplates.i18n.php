@@ -408,6 +408,13 @@ $messages['dsb'] = array(
 	'expand_templates_preview' => 'Pśeglěd',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'expand_templates_preview' => 'Kpɔe do ŋgɔ',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Dead3y3

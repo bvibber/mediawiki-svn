@@ -386,7 +386,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'todo' => 'Tasklisto',
-	'todo-desc' => 'Eksperimenta persona etendilo [[Special:Todo|tasklisto]]',
+	'todo-desc' => 'Eksperimenta propra kromprogramo [[Special:Todo|tasklisto]]',
 	'todo-tab' => 'tasko',
 	'todo-new-queue' => 'nova',
 	'todo-mail-subject' => 'Kompletis taskon en taskolisto de $1',

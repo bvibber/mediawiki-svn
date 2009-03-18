@@ -238,6 +238,18 @@ $messages['ia'] = array(
 	'eval_code' => 'Codice',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => "Aggiunge [[Special:Eval|un'interfaccia]] alla funzione <code>eval()</code>",
+	'eval_submit' => 'Valuta',
+	'eval_escape' => "Fai l'escaping dell'output",
+	'eval_out' => 'Output',
+	'eval_code' => 'Codice',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

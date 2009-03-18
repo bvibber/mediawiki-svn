@@ -90,9 +90,23 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'onlinestatus-desc' => 'Дадае устаноўкі для паказу, ці прысутнічае ўдзельнік у {{GRAMMAR:месны|{{SITENAME}}}}, ці не',
+	'onlinestatus-js-anon' => 'Памылка: Вам неабходна увайсьці ў сыстэму, каб выкарыстоўваць гэтую магчымасьць',
+	'onlinestatus-js-changed' => 'Ваш статус быў зьменены на «$1»',
+	'onlinestatus-js-error' => 'Немагчыма зьмяніць статус, няслушнае значэньне «$1»',
+	'onlinestatus-subtitle-offline' => 'Гэтага ўдзельніка зараз няма ў {{GRAMMAR:месны|{{SITENAME}}}}',
+	'onlinestatus-subtitle-online' => 'Гэты ўдзельнік зараз у {{GRAMMAR:месны|{{SITENAME}}}}',
 	'onlinestatus-tab' => 'Статус',
+	'onlinestatus-toggles-desc' => 'Ваш статус:',
+	'onlinestatus-toggles-explain' => 'Дазваляе іншым удзельнікам, якія наведваюць Вашу старонку, даведацца, ці Вы зараз у {{GRAMMAR:месны|{{SITENAME}}}} ці не.',
+	'onlinestatus-toggles-show' => 'Паказаць маю прысутнасьць на маёй старонцы ўдзельніка',
+	'onlinestatus-toggle-offline' => 'Няма ў {{GRAMMAR:месны|{{SITENAME}}}}',
+	'onlinestatus-toggle-online' => 'У {{GRAMMAR:месны|{{SITENAME}}}}',
+	'tog-onlineOnLogin' => 'Зьмяняць мой статус на «у {{GRAMMAR:месны|{{SITENAME}}}}» пры ўваходзе ў сыстэму',
+	'tog-offlineOnLogout' => 'Зьмяняць мой статус на «няма ў {{GRAMMAR:месны|{{SITENAME}}}}» пры выхадзе з сыстэмы',
 );
 
 /** Bulgarian (Български)

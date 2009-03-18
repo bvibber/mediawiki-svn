@@ -531,11 +531,12 @@ Attention: le refrescamento pote durar un poco de tempore in wikis plus grande.'
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'refreshspecial' => 'Aggiorna pagine speciali',
-	'refreshspecial-desc' => "Permette l'[[Special:RefreshSpecial|aggiornamento manuale]] di pagine speciali",
+	'refreshspecial-desc' => "Permette l'[[Special:RefreshSpecial|aggiornamento manuale]] delle pagine speciali",
 	'refreshspecial-title' => 'Aggiorna pagine speciali',
 	'refreshspecial-help' => 'Questa pagina speciale permette di aggiornare manualmente le pagine speciali. Quando hai scelto tutte le pagine che vuoi aggiornare, fai clic sul pulsante "Aggiorna pagine selezionate" per aggiornare le pagine speciali selezionate. Attenzione: l\'aggiornamento potrebbe richiedere un po\' di tempo sulle wiki più grandi.',
 	'refreshspecial-button' => 'Aggiorna pagine selezionate',
@@ -549,8 +550,10 @@ $messages['it'] = array(
 	'refreshspecial-none-selected' => 'Non è stata selezionata alcuna pagina speciale. Ripristino alla selezione di default.',
 	'refreshspecial-db-error' => 'Fallito: errore del database',
 	'refreshspecial-no-page' => 'Pagina speciale inesistente',
+	'refreshspecial-slave-lagged' => 'In attesa per ritardo del server slave...',
 	'refreshspecial-reconnected' => 'Riconnesso.',
 	'refreshspecial-reconnecting' => 'Connessione fallita, prossimo tentativo fra 10 secondi...',
+	'refreshspecial-page-result' => '{{PLURAL:$1|ottenuta 1 riga|ottenute $1 righe}} in',
 	'refreshspecial-total-display' => '$1 {{PLURAL:$1|pagina aggiornata|pagine aggiornate}} per un totale di $2 {{PLURAL:$1|linea|linee}} in un tempo di $3 (il tempo totale di esecuzione dello script è di $4)',
 	'right-refreshspecial' => 'Aggiorna pagine speciali',
 );

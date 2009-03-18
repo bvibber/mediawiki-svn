@@ -524,13 +524,18 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'extensiondistributor' => 'Elŝuti etendilon MediaWiki',
-	'extdist-no-such-extension' => 'Etendilo "$1" ne ekzistas',
-	'extdist-no-such-version' => 'La etendilo "$1" ne ekzistas en la versio "$2".',
-	'extdist-choose-extension' => 'Selektu kiun etendilon tiun vi volas alŝuti.',
+	'extensiondistributor' => 'Elŝuti kromprogramon por MediaWiki',
+	'extdist-no-such-extension' => 'Kromprogramo "$1" ne ekzistas',
+	'extdist-no-such-version' => 'La kromprogramo "$1" ne ekzistas en la versio "$2".',
+	'extdist-choose-extension' => 'Elektu kiun kromprogramon tiun vi volas elŝuti.',
 	'extdist-submit-extension' => 'Daŭri',
 	'extdist-current-version' => 'Nuna versio (bazo)',
-	'extdist-no-versions' => 'La selektita etendilo ($1) ne estas havebla en iu ajn versio!',
+	'extdist-choose-version' => '<big>Vi elŝutas la <b>$1</b> kromprogramon.</big>
+
+Elektu vian MediaWiki-version.
+
+Pliparto de kromprogramoj funkcias trans pluraj versioj de MediaWiki, do se via MediaWiki-versio ne estas trovebla cxi tie, aux se vi bezonas la plej novajn ecojn, provu uzi la plej lastan version.',
+	'extdist-no-versions' => 'La elektita kromprogramo ($1) ne estas havebla en iu ajn versio!',
 	'extdist-submit-version' => 'Daŭri',
 	'extdist-tar-error' => 'Tar donis elirkodon $1:',
 	'extdist-created' => "Statika kopio de versio <b>$2</b> de la <b>$1</b> kromprogramo por MediaWiki <b>$3</b> estis kreita. Via elŝuto komencos aŭtomate post 5 sekundoj.
@@ -554,6 +559,7 @@ Notu, ke iuj kromprogramoj bezonas dosieron nomitan ExtensionFunctions.php, loki
 Post vi eltiris la dosierojn, vi bezonas registri la kromprogramon en LocalSettings.php. La kromprograma dokumentado havos la instrukcioj kiel fari.
 
 Se vi havas iujn demandojn pri ĉi tiu kromprograma distribuada sistemo, bonvolu komenti al [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Akiri pluan kromprogramon',
 );
 
 /** Spanish (Español)
@@ -578,6 +584,27 @@ La mayoría de extensiones funcionan a través de múltiples versiones de Mediaw
 	'extdist-no-versions' => 'La extensión seleccionada ($1) no esta disponible en ninguna versión!',
 	'extdist-submit-version' => 'Continuar',
 	'extdist-svn-error' => "''Subversion'' encontró un error: <pre>$1</pre>",
+	'extdist-created' => "Una instantánea de la versión <b>$2</b> de la <b>$1</b> extensión para MediaWiki <b>$3</b> ha sido creada. Tu descarga debería comenzar automáticamente en 5 segundos.
+
+El URL para esta instantánea es:
+:$4
+Puede ser usada para una descarga inmediata a un servidor, pero por favor no ponerlo como marcador, ya que los contenidos no serán actualizados, y pueden ser borrados en una fecha posterior.
+
+El archivo brea debería ser extraído dentro de tu directorio de extensiones. Por ejemplo, en un sistema operativo tipo Unix:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+En Windows, Puedes usar [http://www.7-zip.org/ 7-zip] para extraer los archivos.
+
+Si tu wiki está en un archivo remoto, extrae el archivo a un directorio temporal en tu computadora local, y luego carga '''todo''' de los archivos extraídos al directorio de extensiones en el servidor.
+
+Nota que algunas extensiones necesitan un archivo llamado ExtensionFunctions.php, localizado en <tt>extensions/ExtensionFunctions.php</tt>, que está, en el directorio ''matriz'' de éste particular directorio de extensiones. la instantánea de estas extensiones contiene este archivo como una bomba de alquitrán, extraído a ./ExtensionFunctions.php. No olvides de cargar éste archivo a tu servidor remoto.
+
+Después que has extraído los archivos, necesitarás registrar la extensión en LocalSettings.php. La documentación de extensiones deberían tener instrucciones de como hacer esto.
+
+Si tienes algunas preguntas acerca de éste sistema de distribución de extensiones, por favor ve a [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Obtener otra extensión',
 );
 

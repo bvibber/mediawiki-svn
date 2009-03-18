@@ -184,9 +184,19 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'slippymap_latmissing' => 'Nedostaje vrijednost lat (za geografsku širinu).',
+	'slippymap_lonmissing' => 'Nedostaje vrijednost lon (za geografsku dužinu).',
+	'slippymap_zoommissing' => 'Nedostaje vrijednost z (za nivo zumiranja).',
+	'slippymap_widthnan' => "vrijednost širine (w) '%1' nije valjan cijeli broj",
+	'slippymap_heightnan' => "vrijednost visine (h) '%1' nije validan cijeli broj",
+	'slippymap_zoomnan' => "vrijednost zumiranja (z) '%1' nije valjan cijeli broj",
+	'slippymap_latnan' => "vrijednost širina (lat) '%1' nije validan broj",
+	'slippymap_lonnan' => "vrijednost dužine (lon) '%1' nije valjan broj",
 	'slippymap_widthbig' => 'vrijednost širina (w) ne može biti veća od 1000',
 	'slippymap_widthsmall' => 'vrijednost širina (w) ne može biti manja od 100',
 	'slippymap_heightbig' => 'vrijednost visina (h) ne može biti veća od 1000',
+	'slippymap_zoombig' => 'vrijednost zumiranja (z) ne može biti veća od 17.',
+	'slippymap_invalidlayer' => "Nevaljana vrijednost 'layer' '%1'",
 	'slippymap_maperror' => 'Greška mape:',
 	'slippymap_osmtext' => 'Vidi ovu mapu na OpenStreetMap.org',
 );

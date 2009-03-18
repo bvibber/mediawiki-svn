@@ -193,12 +193,14 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'profiling-ok' => 'Aceptar',
 	'profiling-data-process' => 'Proceso',
+	'profiling-data-count' => 'Contar',
 );
 
 /** Basque (Euskara)
@@ -383,6 +385,7 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'profiling' => 'Dati di profiling',
+	'profiling-desc' => "[[Special:Profiling|Pagina speciale]] per la ricerca e l'ispezione dei dati di profiling",
 	'profiling-process' => 'Stringa processo:',
 	'profiling-wildcard' => 'Usa metacaratteri',
 	'profiling-ok' => 'OK',

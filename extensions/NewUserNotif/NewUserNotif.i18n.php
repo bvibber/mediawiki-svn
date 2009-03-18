@@ -77,6 +77,18 @@ $messages['avk'] = array(
 $2 warzafa favesikpata su zo redur koe $3 ko $4.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'newusernotifsubj' => 'Паведамленьне аб новым удзельніку для $1',
+	'newusernotif-desc' => 'Дасылае паведамленьне па электроннай пошце пры стварэньні новых рахункаў',
+	'newusernotifbody' => 'Прывітаньне, $1,
+
+Новы рахунак, $2, быў створаны $3 $4.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

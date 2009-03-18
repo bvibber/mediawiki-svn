@@ -601,10 +601,12 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'player' => 'Player',
+	'player-desc' => 'Riproduzione integrata di contenuti multimediali mediante i consueti plugin per browser e una [[Special:Player|pagina speciale]]',
 	'player-title' => 'Player',
 	'player-playertitle' => 'Player: $1',
 	'player-file' => 'Nome del file',

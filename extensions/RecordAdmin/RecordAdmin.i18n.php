@@ -801,6 +801,7 @@ $messages['lb'] = array(
 	'recordadmin-newsearch' => 'Nei $1 sichen',
 	'recordadmin-alreadyexist' => 'Pardon, "$1" gëtt et schonn!',
 	'recordadmin-badtitle' => 'Schlechten Titel!',
+	'recordadmin-recordid' => 'ID/Numm vun deem wat gespäichert gouf:',
 	'recordadmin-invert' => 'Auswiel ëmdréinen',
 	'recordadmin-buttonsearch' => 'Sichen',
 	'recordadmin-buttonreset' => 'Zrécksetzen',
@@ -812,6 +813,7 @@ $messages['lb'] = array(
 	'recordadmin-viewlink' => 'weisen',
 	'recordadmin-editlink' => 'änneren',
 	'recordadmin-created' => 'Ugeluecht',
+	'recordadmin-modified' => 'Geännert',
 	'recordadmin-actions' => 'Aktiounen',
 );
 

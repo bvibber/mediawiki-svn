@@ -420,6 +420,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'povwatch_invalid_title' => 'La enigita titolo estis nevalida',
+	'povwatch_pushed' => '[[$1]] estis sukcese pelita al $2 {{PLURAL:$2|uzula atentaro|uzulaj atentaroj}}',
 	'povwatch_subscriber_list_intro' => '<strong>Listo de abonantoj</strong>',
 	'povwatch_unknown_subpage' => 'Nekonata subpaĝo.',
 	'povwatch_push' => 'Premi',
@@ -442,8 +443,13 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Extensión para [[Special:PovWatch|meter páginas en las listas de seguimiento]] de otros usuarios',
+	'povwatch_not_allowed_push' => 'No eres un administrador PovWatch, no puedes enviar páginas listas de vigilancia.',
 	'povwatch_already_subscribed' => 'Ya está suscrito en PovWatch',
+	'povwatch_subscribed' => 'Estás ahora suscrito a PovWatch',
+	'povwatch_not_subscribed' => 'No estás suscrito a PovWatch, por tanto no puedes desuscribirte.',
+	'povwatch_unsubscribed' => 'Estás ahora desuscrito de PovWatch',
 	'povwatch_invalid_title' => 'El título especificado fue inválido',
+	'povwatch_pushed' => '[[$1]] ha sido enviado exitosamente a las {{PLURAL:$2|lista de vigilancia|listas de vigilancias}} del usuario $2',
 	'povwatch_intro' => 'PovWatch es un servicio el cual permite a las páginas polémicas ser discretamente enviadas a la lista de vigilancia de administradores suscritos.
 
 Un registro de envios recientes a una lista de vigilancia esta disponible en [[Special:PovWatch/log]].',
@@ -465,6 +471,7 @@ Haga clic en el botón abajo para desubscribirse.',
 Haga clic en el botón abajo para subscribirse.',
 	'povwatch_subscribe' => 'Suscribir',
 	'povwatch_added' => 'agregado',
+	'right-povwatch_admin' => 'Administrar derechos de usuario para agregar páginas a las listas de vigilancia de otros usuarios',
 	'right-povwatch_user' => 'Agregar páginas a las listas de seguimiento de otros usuarios',
 	'action-povwatch_admin' => 'Administrar derechos de usuario de PovWatch',
 	'action-povwatch_user' => 'agregar esta página a la lista de seguimiento de otro usuario',

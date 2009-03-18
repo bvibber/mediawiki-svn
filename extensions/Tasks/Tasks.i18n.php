@@ -413,6 +413,7 @@ $messages['bs'] = array(
 	'tasks_assign_to' => 'Dodijeli',
 	'tasks_unassign_me' => 'Ukloni moje zaduženje',
 	'tasks_close' => 'Zatvori zadatak',
+	'tasks_wontfix' => 'Odbijeno',
 	'tasks_delete' => 'Obriši',
 	'tasks_no_task_delete_title' => 'nije dopušteno',
 	'tasks_no_task_delete_texe' => 'Nije Vam dopušteno da obrišete zadatak. Samo administratori to mogu učiniti.',
@@ -454,12 +455,16 @@ $messages['bs'] = array(
 	'tasks_status_open' => 'otvori',
 	'tasks_status_assigned' => 'Dodijeljen',
 	'tasks_status_closed' => 'zatvoreno',
+	'tasks_status_wontfix' => 'Odbijeno',
 	'tasks_action_open' => 'Zadatak "$1" otvoren.',
 	'tasks_action_assigned' => 'Zadatak "$1" dodijeljen.',
 	'tasks_action_closed' => 'Zadatak "$1" zatvoren.',
+	'tasks_action_wontfix' => 'Ne može se popraviti zadatak "$1".',
+	'tasks_sign_delete' => '<b>Traženo je da se obriše ova stranica!</b>',
 	'tasks_logpage' => 'Zapisnik zadataka',
 	'tasks_logpagetext' => 'Ovo je zapisnik promjena u zadacima',
 	'tasks_logentry' => 'za "[[$1]]"',
+	'tog-show_task_comments' => 'Uključivanje stranice komentara zadatka.',
 );
 
 /** Czech (Česky)

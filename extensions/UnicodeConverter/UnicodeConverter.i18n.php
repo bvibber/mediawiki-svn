@@ -81,6 +81,17 @@ $messages['bg'] = array(
 	'unicodeconverter-newtext' => 'Преобразуван текст:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'unicodeconverter' => 'Treuzkaser Unicode',
+	'unicodeconverter-desc' => 'Ur skouer eeun eus modulenn ur bajenn dibar. [[Special:UnicodeConverter|Bezet lakaet un neudennad arouezennoù UTF-8]], o amdreiñ a ra e stummoù HTML implijadus evit ur bajenn web ISO 8859-1',
+	'unicodeconverter-ok' => 'Amdreiñ',
+	'unicodeconverter-oldtext' => 'Testenn orin :',
+	'unicodeconverter-newtext' => 'Testenn amdroet :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

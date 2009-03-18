@@ -153,6 +153,13 @@ $messages['ia'] = array(
 	'emailaddressimage-desc' => 'Adde <tt>&lt;email&gt;</tt> pro monstrar un adresse de e-mail como imagine',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'emailaddressimage-desc' => 'Aggiunge <tt>&lt;email&gt;</tt> per visualizzare un indirizzo e-mail come immagine',
+);
+
 /** Japanese (日本語)
  * @author JtFuruhata
  */

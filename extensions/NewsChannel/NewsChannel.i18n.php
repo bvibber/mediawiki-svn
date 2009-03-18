@@ -73,6 +73,17 @@ $messages['ast'] = array(
 	'newschannel_submit_button' => "Crear fonte d'anuncies",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'newschannel' => 'Канал навінаў',
+	'newschannel-desc' => 'Стварае канал навінаў на дынамічнай [[Special:NewsChannel|спэцыяльнай старонцы]]',
+	'newschannel_format' => 'Фармат:',
+	'newschannel_limit' => 'Ліміт:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

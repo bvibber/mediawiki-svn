@@ -889,6 +889,13 @@ Asseguratz-vos de blocar pas de domenis entièrs que detenon d'unes comptadors d
 	'spamdifftool_submit_buttom' => 'Sometre',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'spamdifftool_submit_buttom' => 'Рарвит',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Maikking

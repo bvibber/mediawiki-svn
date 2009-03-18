@@ -579,6 +579,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Pietrodn
  */
 $messages['it'] = array(
@@ -594,6 +595,7 @@ $messages['it'] = array(
 	'authorprotect-success' => 'Protezione avvenuta con successo!',
 	'authorprotect-failure' => 'Protezione fallita',
 	'protect-level-author' => 'Protetta dai non-autori',
+	'restriction-level-author' => "Protetta dall'autore",
 );
 
 /** Japanese (日本語)

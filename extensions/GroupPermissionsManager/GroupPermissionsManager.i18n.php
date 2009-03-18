@@ -383,6 +383,7 @@ $messages['bs'] = array(
 	'grouppermissions-sp-remove' => 'ukloni',
 	'grouppermissions-sp-deltype' => 'Obriši tip sortiranja',
 	'grouppermissions-rug-header' => 'Možete koristiti ovu stranicu za uklanjanje korisnika iz neiskorištenih (obrisanih) grupa.',
+	'grouppermissions-rug-success' => 'Uspješno uklonjeni korisnici iz neiskorištenih grupa!',
 	'grouppermissions-rug-confirm' => 'Uklanjanje korisnika iz neiskorištenih grupa',
 	'right-grouppermissions' => 'Upravljanje grupnim dopuštenjima',
 	'right-raw' => 'Pregled sirovih stranica',
@@ -1187,6 +1188,7 @@ $messages['ia'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
 	'grouppermissions' => 'Gestisci permessi di gruppi',
@@ -1194,6 +1196,7 @@ $messages['it'] = array(
 	'removeunusedgroups' => 'Rimuovi gruppi inutilizzati',
 	'grouppermissions-desc' => 'Gestisci permessi di gruppo attraverso una [[Special:GroupPermissions|pagina speciale]]',
 	'grouppermissions-desc2' => 'Sistema dei permessi esteso',
+	'grouppermissions-desc3' => 'Permette di personalizzare le azioni sul contenuto (tab)',
 	'grouppermissions-desc4' => 'Permette di aggiungere elementi aggiuntivi alla Toolbox',
 	'grouppermissions-desc-nsm' => 'Gestisce i namespace attraverso una pagina speciale',
 	'grouppermissions-header' => 'È possibile usare questa pagina per cambiare i permessi sottostanti dei vari gruppi utente.',
@@ -1239,12 +1242,17 @@ $messages['it'] = array(
 	'grouppermissions-rug-confirm' => 'Rimuovi utenti dai gruppi inutilizzati',
 	'right-grouppermissions' => 'Gestisce i permessi di gruppo',
 	'right-viewsource' => 'Visualizza il sorgente wiki di pagine protette',
+	'right-raw' => 'Visualizza le pagine grezze',
+	'right-render' => 'Visualizza le pagine rese senza la navigazione',
 	'right-info' => 'Visualizza le informazioni delle pagine',
+	'right-credits' => 'Vede i crediti della pagina',
 	'right-history' => 'Visualizza le cronologie delle pagine',
+	'right-search' => 'Cerca nella wiki',
 	'right-contributions' => 'Visualizza le pagine dei contributi',
 	'right-recentchanges' => 'Visualizza le ultime modifiche',
 	'right-edittalk' => 'Modifica le pagine di discussione',
 	'right-edit-new' => 'Modifica pagine (che non sono pagine di discussione)',
+	'right-readold' => 'Vede il contenuto delle vecchie revisioni e delle diff',
 );
 
 /** Japanese (日本語)
@@ -1806,7 +1814,10 @@ $messages['pl'] = array(
 	'right-history' => 'Zobaczyć historię stron',
 	'right-search' => 'Przeszukiwać wiki',
 	'right-contributions' => 'Wyświetlić listę twórców stron',
+	'right-recentchanges' => 'Pokaż ostatnie zmiany',
+	'right-edittalk' => 'Edytuj stronę dyskusji',
 	'right-edit-new' => 'Edycja stron',
+	'right-readold' => 'Wyświetl treść starych wersji i różnice',
 );
 
 /** Pashto (پښتو)

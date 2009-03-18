@@ -30,9 +30,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
+	'am-username' => '{{Identical|Username}}',
+	'am-email' => '{{Identical|E-mail}}',
 	'nss-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
@@ -81,6 +84,27 @@ $messages['arz'] = array(
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'accountmanager' => 'Кіраваньне рахункамі',
+	'am-username' => 'імя ўдзельніка',
+	'am-email' => 'адрас электроннай пошты',
+	'am-active' => 'актыўны',
+	'am-updated' => 'Вашы зьмены былі пасьпяхова захаваны',
+	'nss-desc' => 'Дапашненьне для аўтэнтыфікацыі ў базе зьвестак libnss-mysql. Утрымлівае [[Special:AccountManager|кіраваньне рахункамі]]',
+	'nss-rights' => 'правы',
+	'nss-save-changes' => 'Захаваць зьмены',
+	'nss-create-account-header' => 'Стварыць новы рахунак',
+	'nss-create-account' => 'Стварыць рахунак',
+	'nss-no-mail' => 'Не дасылаць ліст па электроннай пошце',
+	'nss-welcome-mail' => 'Для Вас быў створаны рахунак з імем $1 і паролем $2.',
+	'nss-welcome-mail-subject' => 'Стварэньне рахунку',
+	'nss-db-error' => 'Памылка чытаньня з базы зьвестак аўтэнтыфікацыі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -99,6 +123,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'accountmanager' => 'Upravljanje računima',
 	'am-username' => 'korisničko ime',
 	'am-email' => 'e-mail',
 	'am-active' => 'aktivan',
@@ -108,6 +133,7 @@ $messages['bs'] = array(
 	'nss-create-account-header' => 'Napravi novi račun',
 	'nss-create-account' => 'Napravi račun',
 	'nss-no-mail' => 'Ne šalji e-mail',
+	'nss-welcome-mail-subject' => 'Pravljenje računa',
 );
 
 /** Czech (Česky)

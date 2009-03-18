@@ -317,6 +317,26 @@ $messages['ia'] = array(
 	'right-emergencydesysop' => 'Pote "disadministratorar" mutualmente un altere usator',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'emergencydesysop' => "DeSysop d'emergenza",
+	'emergencydesysop-desc' => 'Consente a un amministratore di sacrificare i propri privilegi al fine di desysoppare un altro amministratore',
+	'emergencydesysop-title' => "Rimuovere l'accesso di amministratore sia dall'utente corrente sia da un altro amministratore",
+	'emergencydesysop-otheradmin' => 'Altro amministratore da togliere dal gruppo',
+	'emergencydesysop-reason' => 'Motivo per la rimozione',
+	'emergencydesysop-submit' => 'Invia',
+	'emergencydesysop-incomplete' => 'Tutti i campi del modulo sono obbligatori, si prega di riprovare.',
+	'emergencydesysop-notasysop' => "L'utente interessato non è nel gruppo degli amministratori.",
+	'emergencydesysop-nogroups' => 'Nessuno',
+	'emergencydesysop-done' => 'Azione completata, sia tu sia [[$1]] siete stati desysoppati.',
+	'emergencydesysop-invalidtarget' => "L'utente interessato non esiste.",
+	'emergencydesysop-blocked' => 'Non puoi accedere a questa pagina mentre sei bloccato',
+	'emergencydesysop-noright' => 'Non hai i permessi sufficienti per accedere a questa pagina',
+	'right-emergencydesysop' => 'Desysoppa un altro utente, reciprocamente',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

@@ -1232,6 +1232,8 @@ $messages['oc'] = array(
  * @author Amikeco
  */
 $messages['os'] = array(
+	'sitematrix' => 'Викимедиæ-йы проекттæ',
+	'sitematrix-summary' => 'Ацы сæрмагонд фарс сфыссы Викимедиæ-йы вики-проекттæ',
 	'sitematrix-language' => 'Æвзаг',
 	'sitematrix-others' => 'Викимедийы æндæр проекттæ',
 	'sitematrix-total' => "'''Æдæппæты нымæц: $1'''",

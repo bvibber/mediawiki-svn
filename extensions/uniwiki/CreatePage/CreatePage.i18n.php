@@ -478,6 +478,13 @@ La volètz modificar ?",
 	'createpage-badtitle' => '« $1 » pòt pas èsser utilizat coma nom de pagina',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'createpage_submitbutton' => 'Афтæ уæд',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */

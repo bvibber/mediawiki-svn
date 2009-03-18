@@ -102,6 +102,13 @@ $messages['dsb'] = array(
 	'ajax-qp-desc' => 'AJAX pśidaś, aby se boki kaž [[Special:Shortpages|{{int:shortpages}}]] wótpšašali',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'ajax-qp-desc' => 'Tsɔ AJAX kpe ɖe axa tɔxewo abe [[Special:Shortpages|{{int:shortpages}}]] ŋu',
+);
+
 /** Greek (Ελληνικά)
  * @author Omnipaedista
  */

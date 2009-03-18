@@ -184,9 +184,13 @@ $messages['dsb'] = array(
 	'languageselector-setlang' => 'stajiś',
 );
 
-/** Ewe (Eʋegbe) */
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
 $messages['ee'] = array(
 	'languageselector' => 'Gbe',
+	'languageselector-desc' => 'Gbe tiala le axa ɖesiaɖe dzi, na ŋkɔmaŋlɔlawo hã',
+	'languageselector-setlang' => 'wɔe',
 );
 
 /** Greek (Ελληνικά)

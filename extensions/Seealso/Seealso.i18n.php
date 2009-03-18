@@ -37,6 +37,13 @@ $messages['ar'] = array(
 	'seealso-desc' => "عناوين 'See also' مترجمة باستخدام الوسم <code><nowiki><seealso></nowiki></code>.",
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'seealso' => 'ܐܦ ܚܙܝ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

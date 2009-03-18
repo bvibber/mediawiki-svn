@@ -577,9 +577,25 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Modifica via web]] di un gran numero di file Messages*.php',
+	'editmessages' => 'Modifica messaggi',
+	'editmsg-target' => 'Messaggio interessato:',
 	'editmsg-search' => 'Ricerca',
+	'editmsg-show-list' => 'Sono visualizzati i valori per il nome di messaggio "$1"',
+	'editmsg-get-patch' => 'Genera patch',
+	'editmsg-new-search' => 'Nuova ricerca',
+	'editmsg-warning-parse1' => '* Regex del nome di messaggio non ha trovato: $1',
+	'editmsg-warning-parse2' => '* Era atteso un carattere di citazione dopo la freccia: $1',
+	'editmsg-warning-parse3' => '* Stringa di fine del valore non trovata: $1',
+	'editmsg-warning-file' => '* Sono stati riscontrati errori di lettura file per {{PLURAL:$2|la seguente lingua|le seguenti lingue}}: $1',
+	'editmsg-warning-mismatch' => '* Il testo originale non aveva il valore atteso per {{PLURAL:$2|la seguente lingua|le seguenti lingue}}: $1',
+	'editmsg-apply-patch' => 'Applica la patch',
+	'editmsg-no-patch' => 'Impossibile eseguire il comando "patch"',
+	'editmsg-patch-failed' => 'La patch è fallita con stato di uscita $1',
+	'editmsg-patch-success' => 'Patchato con successo.',
 );
 
 /** Japanese (日本語)

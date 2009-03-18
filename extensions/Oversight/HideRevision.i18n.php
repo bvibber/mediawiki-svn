@@ -824,7 +824,7 @@ Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skri
 	'hiderevision-norevisions' => 'Neniuj versioj specifigita por forigo.',
 	'hiderevision-noreason' => 'Vi nepre priskribu la kialon por ĉi tiu forigo.',
 	'hiderevision-status' => 'Versio $1: $2',
-	'hiderevision-success' => 'Arkivita kaj forigita sukcese.',
+	'hiderevision-success' => 'Arkivis kaj forigis sukcese.',
 	'hiderevision-error-missing' => 'Ne trovita en datumbazo.',
 	'hiderevision-error-current' => 'Ne povas forigi la lastan redakton de paĝo.
 Malfaru ĉi tiun ŝanĝon antaŭe.',

@@ -209,6 +209,18 @@ $messages['ia'] = array(
 	'right-userrights-global' => 'Gerer le derectos global de usatores',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'globaluserrights' => 'Gestione dei Diritti Utente Globali',
+	'gur-desc' => 'Amministrazione facile dei [[Special:GlobalUserRights|diritti utente globali]]',
+	'gur-rightslog-name' => 'Registro dei diritti globali',
+	'gur-rightslog-header' => 'Questo è un registro dei cambiamenti ai diritti globali.',
+	'gur-rightslog-entry' => "ha cambiato l'appartenenza ai gruppi globali per $1 da $2 a $3",
+	'right-userrights-global' => 'Gestisce i diritti utente globali',
+);
+
 /** Japanese (日本語)
  * @author Fievarsty
  * @author Fryed-peach

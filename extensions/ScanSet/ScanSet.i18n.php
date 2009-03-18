@@ -923,6 +923,13 @@ $messages['oc'] = array(
 	'scanset_prev' => '&lt; Precedent',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'scanset_no_files' => 'Рæдыд: амынд файлдоны мидæг файлтæ нæй.',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

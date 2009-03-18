@@ -115,6 +115,13 @@ $messages['ia'] = array(
 	'gotocategory-desc' => "Cerca parolas etiam in le spatio de nomines Categoria: a fin de possibilisar le function 'ir al pagina'",
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'gotocategory-desc' => "Controlla i termini di ricerca con il namespace Categoria: per la funzionalità di 'salta alla pagina' di Vai",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

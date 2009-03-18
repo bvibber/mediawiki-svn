@@ -64,6 +64,15 @@ $messages['bg'] = array(
 	'stalkerlog-log-text' => 'Тази страница съдържа дневник на потребителските влизания и излизания.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'stalkerlog-log-login' => 'prijavljen.',
+	'stalkerlog-log-logout' => 'odjavljen.',
+	'stalkerlog-log-type' => 'Zapisnik korisničke potvrde',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -529,6 +529,13 @@ $messages['sk'] = array(
 	'userimages-noimages' => '$1 nenahral žiadne obrázky.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Yerpo
+ */
+$messages['sl'] = array(
+	'userimages-noname' => 'Neveljavno ali neznano uporabniško ime.',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

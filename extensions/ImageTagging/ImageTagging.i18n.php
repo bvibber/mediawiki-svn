@@ -738,9 +738,41 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Pietrodn
  */
 $messages['it'] = array(
+	'taggedimages' => 'Immagini taggate',
+	'imagetagging-desc' => "Consente a un utente di selezionare regioni di un'immagine inclusa e associare una pagina con quella regione",
+	'imagetagging-addimagetag' => 'Tagga questa immagine',
+	'imagetagging-article' => 'Pagina:',
+	'imagetagging-articletotag' => 'Pagina da taggare',
+	'imagetagging-canteditothermessage' => 'Non puoi modificare questa pagina, o perché non hai i diritti per farlo, o perché la pagina è bloccata per altri motivi.',
 	'imagetagging-imghistory' => 'Cronologia',
+	'imagetagging-images' => 'immagini',
+	'imagetagging-inthisimage' => 'In questa immagine: $1',
+	'imagetagging-logentry' => 'Rimosso il tag alla pagina [[$1]] da parte di $2',
+	'imagetagging-log-tagged' => "L'immagine [[$1|$2]], è stata taggata alla pagina [[$3]] da $4",
+	'imagetagging-new' => '<span style="color:red"><sup>Nuovo!</sup></span>',
+	'imagetagging-removetag' => 'rimuovi tag',
+	'imagetagging-done-button' => 'Tagging eseguito',
+	'imagetagging-tag-button' => 'Tagga',
+	'imagetagging-tagcancel-button' => 'Annulla',
+	'imagetagging-tagging-instructions' => "Fai clic su persone o cose nell'immagine per taggarle.",
+	'imagetagging-addingtag' => 'Aggiungo il tag…',
+	'imagetagging-removingtag' => 'Rimuovo il tag…',
+	'imagetagging-addtagsuccess' => 'Tag aggiunto.',
+	'imagetagging-removetagsuccess' => 'Tag rimosso.',
+	'imagetagging-canteditneedloginmessage' => 'Non puoi modificare questa pagina.
+Può essere perché è necessario effettuare il login per taggare le immagini.
+Vuoi effettuare il login adesso?',
+	'imagetagging-oneactionatatimemessage' => "È permessa solo un'azione di tag alla volte.
+Per favore aspetta che venga completata l'azione esistente.",
+	'imagetagging-oneuniquetagmessage' => 'Questa immagine ha già un tag con questo nome.',
+	'imagetagging-imagetag-seemoreimages' => 'Vedi più immagini di "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Immagini di "$1"',
+	'imagetagging-taggedimages-displaying' => 'Visualizzo $1 - $2 di $3 immagini di "$4"',
+	'tag-logpagename' => 'Registro dei tag',
+	'tag-logpagetext' => 'Questo è un registro di tutte le aggiunte e rimozioni dei tag immagine.',
 );
 
 /** Japanese (日本語)

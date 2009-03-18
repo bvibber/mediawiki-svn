@@ -335,9 +335,63 @@ $messages['be-tarask'] = array(
 	'openiderror' => 'Памылка праверкі',
 	'openiderrortext' => 'Пад час праверкі адрасу OpenID узьнікла памылка.',
 	'openidconfigerror' => 'Памылка ў канфігурацыі OpenID',
+	'openidconfigerrortext' => 'Канфігурацыя сховішча OpenID у {{GRAMMAR:месны|{{SITENAME}}}} — няслушная.
+Калі ласка, зьвярніцеся да [[Special:ListUsers/sysop|адміністратараў]].',
+	'openidpermission' => 'Памылка правоў доступу OpenID',
+	'openidpermissiontext' => 'Пазначаны Вамі OpenID не дазваляе ўвайсьці на гэты сэрвэр.',
+	'openidcancel' => 'Праверка адменена',
+	'openidcanceltext' => 'Праверка адрасу OpenID была скасавана.',
+	'openidfailure' => 'Праверка не атрымалася',
+	'openidfailuretext' => 'Праверка адрасу OpenID не атрымалася. Паведамленьне пра памылку: «$1»',
+	'openidsuccess' => 'Праверка прайшла пасьпяхова',
+	'openidsuccesstext' => 'Праверка адрасу OpenID прайшла пасьпяхова.',
+	'openidusernameprefix' => 'КарыстальнікOpenID',
+	'openidserverlogininstructions' => 'Увядзіце Ваш пароль ніжэй, каб увайсьці на $3 як {{GENDER:$2|удзельнік|удзельніца}} $2 (старонка {{GENDER:$2|ўдзельніка|удзельніцы}} $1).',
+	'openidtrustinstructions' => 'Пазначце, калі Вы жадаеце даць доступ да зьвестак для $1.',
+	'openidallowtrust' => 'Дазволіць $1 давераць гэтаму рахунку.',
+	'openidnopolicy' => 'Сайт ня мае правілаў адносна прыватнасьці.',
+	'openidpolicy' => 'Глядзіце дадатковую інфармацыю ў <a target="_new" href="$1">правілах адносна прыватнасьці</a>.',
+	'openidoptional' => 'Неабавязковае',
+	'openidrequired' => 'Абавязковае',
+	'openidnickname' => 'Мянушка',
+	'openidfullname' => 'Поўнае імя',
 	'openidemail' => 'Адрас электроннай пошты',
 	'openidlanguage' => 'Мова',
+	'openidnotavailable' => 'Пазначаная Вамі мянушка ($1) ужо выкарыстоўваецца.',
+	'openidnotprovided' => 'Ваш сэрвэр OpenID не даслаў мянушку (магчыма, таму што ня можа, альбо Вы загадалі гэтага не рабіць).',
+	'openidchooseinstructions' => 'Кожны ўдзельнік павінен мець мянушку;
+Вы можаце выбраць адну з пададзеных ніжэй.',
+	'openidchoosefull' => 'Ваша поўнае імя ($1)',
+	'openidchooseurl' => 'Імя атрыманае ад Вашага сэрвэра OpenID ($1)',
+	'openidchooseauto' => 'Аўтаматычна створанае імя ($1)',
+	'openidchoosemanual' => 'Імя на Ваш выбар:',
+	'openidchooseexisting' => 'Існуючы рахунак у {{GRAMMAR:месны|{{SITENAME}}}}:',
 	'openidchoosepassword' => 'пароль:',
+	'openidconvertinstructions' => 'Гэта форма дазваляе зьмяніць Ваш рахунак на выкарыстаньне адрасу OpenID.',
+	'openidconvertsuccess' => 'Пасьпяховае пераўтварэньне ў OpenID',
+	'openidconvertsuccesstext' => 'Вы пасьпяхова пераўтварылі Ваш OpenID у $1.',
+	'openidconvertyourstext' => 'Гэта ўжо Ваш OpenID.',
+	'openidconvertothertext' => 'Гэта ня Ваш OpenID.',
+	'openidalreadyloggedin' => "'''Вы ўжо ўвайшлі, $1!'''
+
+Калі Вы жадаеце выкарыстоўваць OpenID для ўваходаў у будучыні, Вы можаце [[Special:OpenIDConvert|пераўтварыць Ваш рахунак на выкарыстаньне OpenID]].",
+	'openidnousername' => 'Не пазначана імя ўдзельніка.',
+	'openidbadusername' => 'Пазначана няслушнае імя ўдзельніка.',
+	'openidautosubmit' => 'Гэта старонка ўтрымлівае форму, якая павінна быць аўтаматычна адпраўлена, калі ў Вас уключаны JavaScript.
+Калі гэтага не адбылася, паспрабуйце націснуць кнопку «Працягнуць».',
+	'openidclientonlytext' => 'Вы ня можаце выкарыстоўваць рахункі {{GRAMMAR:родны|{{SITENAME}}}} як OpenID на іншых сайтах.',
+	'openidloginlabel' => 'Адрас OpenID',
+	'openidlogininstructions' => "{{SITENAME}} падтрымлівае стандарт [http://openid.net/ OpenID], які дазваляе выкарыстоўваць адзіны уліковы запіс для ўваходу ў розныя сайты без выкарыстаньня розных пароляў для кожнага зь іх.
+(Глядзіце падрабязнасьці на [http://en.wikipedia.org/wiki/OpenID Wikipedia's OpenID article].)
+
+Калі Вы ўжо маеце рахунак у {{GRAMMAR:месны|{{SITENAME}}}}, Вы можаце [[Special:UserLogin|ўвайсьці]] з Вашым імем і паролем як звычайна.
+Каб выкарыстоўваць OpenID у будучыні, Вы можаце [[Special:OpenIDConvert|пераўтварыць Ваш рахунак у OpenID]] пасьля таго, як увайшлі звычайным чынам.
+
+Існуе шмат [http://openid.net/get/ OpenID сэрвісаў], у Вы, магчыма, ужо маеце OpenID рахунак у іншым сэрвісе.",
+	'openidupdateuserinfo' => 'Абнавіць маю асабістую інфармацыю',
+	'openid-prefstext' => 'Устаноўкі [http://openid.net/ OpenID]',
+	'openid-pref-hide' => 'Хаваць Ваш адрас OpenID на Вашай старонцы ўдзельніка, калі Вы ўвайшлі з дапамогай OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Абнаўляць маю інфармацыю з OpenID кожны раз калі я уваходжу ў сыстэму',
 );
 
 /** Bulgarian (Български)

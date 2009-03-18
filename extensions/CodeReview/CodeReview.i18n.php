@@ -847,8 +847,8 @@ $messages['ca'] = array(
 $messages['cs'] = array(
 	'code' => 'Kontrola kódu',
 	'code-comments' => 'Komentáře',
-	'code-change-status' => "změnil '''stav''' této revize",
-	'code-change-tags' => "změnil '''značky''' této revize",
+	'code-change-status' => "změnil '''stav''' revize $1",
+	'code-change-tags' => "změnil '''značky''' revize $1",
 	'code-change-removed' => 'odebráno:',
 	'code-change-added' => 'přidáno:',
 	'code-prop-changes' => 'Záznam změn stavu a značek',
@@ -891,6 +891,7 @@ $messages['cs'] = array(
 	'code-rev-modified-r' => 'nahrazeno',
 	'code-rev-modified-d' => 'odstraněno',
 	'code-rev-modified-m' => 'změněno',
+	'code-rev-imagediff' => 'Změny obrázků',
 	'code-rev-status' => 'Stav:',
 	'code-rev-status-set' => 'Změnit stav',
 	'code-rev-tags' => 'Značky:',
@@ -1167,6 +1168,15 @@ $4',
 	'right-codereview-set-status' => 'Status rewizijow změniś',
 	'right-codereview-link-user' => 'Awtorow z wikijowymi wužywarjami zwězaś',
 	'specialpages-group-developer' => 'Rědy wuwiwarjow',
+);
+
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'code-field-timestamp' => 'Ŋkeke',
+	'code-rev-date' => 'Ŋkeke:',
+	'code-rev-comment-preview' => 'Kpɔe do ŋgɔ',
 );
 
 /** Greek (Ελληνικά)
@@ -2796,35 +2806,59 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author BrokenArrow
  * @author Darth Kule
  * @author Melos
  * @author Santu
  */
 $messages['it'] = array(
+	'code' => 'Revisione del codice',
 	'code-comments' => 'Commenti',
-	'code-author-haslink' => 'Questo autore è collegato al wiki utente $1',
-	'code-author-orphan' => 'Questo autore non è collegato a un account wiki',
+	'code-change-status' => "ha modificato lo '''stato''' di r$1",
+	'code-change-tags' => "ha modificato i '''tag''' di r$1",
+	'code-change-removed' => 'eliminazioni:',
+	'code-change-added' => 'aggiunte:',
+	'code-prop-changes' => 'Registro dello stato e dei tag',
+	'code-desc' => '[[Special:Code|Strumento per la revisione del codice]] con [[Special:RepoAdmin|supporto per Subversion]]',
+	'code-no-repo' => 'Nessun repository configurato.',
+	'code-load-diff' => 'Caricamento diff in corso…',
+	'code-notes' => 'commenti più recenti',
+	'code-authors' => 'autori',
+	'code-status' => 'stato',
+	'code-tags' => 'tag',
+	'code-authors-text' => 'Di seguito viene presentata una lista di autori relativi al repository, in ordine cronologico per i commit recenti.',
+	'code-author-haslink' => "Questo autore è collegato all'utente wiki $1",
+	'code-author-orphan' => 'Questo autore non è collegato a un utente wiki',
 	'code-author-dolink' => 'Collegare questo autore a un utente wiki:',
 	'code-author-alterlink' => "Cambiare l'utente wiki collegato a questo autore:",
 	'code-author-orunlink' => 'O rimuovere il collegamento con questo utente wiki:',
 	'code-author-name' => 'Inserire un nome utente:',
 	'code-author-success' => "L'autore $1 è stato collegato all'utente wiki $2",
+	'code-author-link' => 'collega?',
+	'code-author-unlink' => 'scollega?',
 	'code-author-unlinksuccess' => "È stato rimosso il collegamento all'autore $1",
 	'code-field-id' => 'Revisione',
 	'code-field-author' => 'Autore',
-	'code-field-message' => 'Commento',
+	'code-field-user' => 'Autore del commento',
+	'code-field-message' => 'Oggetto del commento',
 	'code-field-status' => 'Stato',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Note',
+	'code-field-path' => 'Percorso',
+	'code-field-text' => 'Nota',
+	'code-field-select' => 'Seleziona',
 	'code-rev-author' => 'Autore:',
 	'code-rev-date' => 'Data:',
 	'code-rev-message' => 'Commento:',
+	'code-rev-repo' => 'Repository:',
 	'code-rev-rev' => 'Revisione:',
 	'code-rev-rev-viewvc' => 'su ViewVC',
+	'code-rev-paths' => 'Percorsi modificati:',
 	'code-rev-modified-a' => 'aggiunto',
 	'code-rev-modified-r' => 'sostituito',
 	'code-rev-modified-d' => 'cancellato',
 	'code-rev-modified-m' => 'modificato',
+	'code-rev-imagediff' => "Modifiche all'immagine",
 	'code-rev-status' => 'Stato:',
 	'code-rev-status-set' => 'Modifica stato',
 	'code-rev-tags' => 'Tag:',
@@ -2835,9 +2869,44 @@ $messages['it'] = array(
 	'code-rev-comment-preview' => 'Anteprima',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-pathsearch-legend' => 'Ricerca nelle revisioni di questo repository in base al percorso',
+	'code-pathsearch-path' => 'Percorso:',
+	'code-rev-submit' => 'Salva le modifiche',
+	'code-rev-submit-next' => 'Salva e vai alla prossima situazione irrisolta',
+	'code-batch-status' => 'Modifica stato:',
+	'code-batch-tags' => 'Modifica tag:',
+	'codereview-batch-title' => 'Modifica tutte le revisioni selezionate',
+	'codereview-batch-submit' => 'Invia',
+	'code-releasenotes' => 'note di versione',
+	'code-release-legend' => 'Genera note di versione',
+	'code-release-startrev' => 'Revisione iniziale:',
+	'code-release-endrev' => 'Revisione finale:',
+	'codereview-subtitle' => 'Per $1',
 	'codereview-reply-link' => 'rispondi',
+	'codereview-email-subj' => '[$1] [r$2]: Aggiunto un commento',
+	'codereview-email-body' => 'L\'utente "$1" ha inviato un commento a r$3.
+
+URL completo: $2
+
+Commento:
+
+$4',
+	'repoadmin' => 'Gestione dei repository',
+	'repoadmin-new-legend' => 'Crea un nuovo repository',
+	'repoadmin-new-label' => 'Nome del repository:',
 	'repoadmin-new-button' => 'Crea',
+	'repoadmin-edit-legend' => 'Modifica del repository: "$1"',
+	'repoadmin-edit-path' => 'Percorso nel repository:',
+	'repoadmin-edit-bug' => 'Percorso su Bugzilla:',
+	'repoadmin-edit-view' => 'Percorso su ViewVC:',
 	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'La modifica del repository "[[Special:Code/$1|$1]]" è stata completata correttamente.',
+	'right-repoadmin' => 'Gestione dei repository del codice',
+	'right-codereview-add-tag' => 'Aggiunge nuovi tag alle revisioni',
+	'right-codereview-remove-tag' => 'Rimuove i tag dalle revisioni',
+	'right-codereview-post-comment' => 'Aggiunge commenti alle revisioni',
+	'right-codereview-set-status' => 'Modifica lo stato delle revisioni',
+	'right-codereview-link-user' => 'Collega gli autori agli utenti del sito wiki',
 	'specialpages-group-developer' => 'Tool di sviluppo',
 );
 

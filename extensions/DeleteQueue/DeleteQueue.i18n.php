@@ -233,8 +233,8 @@ $3 is its date alone,
 $4 is its time alone',
 	'deletequeue-page-deletediscuss' => '$1 is the reason that the proposer entered,
 $2 is a date/time,
-$3 is its date alone,
-$4 is its time alone,
+$3 is the date alone,
+$4 is the time alone,
 $5 is a page title.',
 	'deletequeue-review-reason' => '{{Identical|Comments}}',
 	'deletequeue-review-newextra' => '{{Identical|Extra information}}',
@@ -647,6 +647,7 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'deletequeue-action-queued' => 'Brisanje',
 	'deletequeue-action' => 'Predloži brisanje',
+	'deletequeue-action-title' => 'Predlaganje brisanja za "$1"',
 	'deletequeue-generic-reasons' => '*Opći razlozi
   ** Vandalizam
   ** Spam
@@ -655,8 +656,12 @@ $messages['bs'] = array(
 	'deletequeue-speedy-title' => 'Označi "$1" za brzo brisanje',
 	'deletequeue-delnom-reason' => 'Razlog za nominaciju:',
 	'deletequeue-delnom-otherreason' => 'Ostali razlozi',
+	'deletequeue-delnom-extra' => 'Dodane informacije:',
 	'deletequeue-delnom-submit' => 'Pošalji nominaciju',
+	'deletequeue-log-dequeue' => "uklonjena [[$1]] iz reda za brisanje '$2'.",
+	'right-speedy-nominate' => 'Nominiranje stranica za brzo brisanje',
 	'right-prod-nominate' => 'Predlaganje brisanja stranice',
+	'right-deletediscuss-nominate' => 'Započinjanje razgovora o brisanju',
 	'right-deletediscuss-review' => 'Zatvaranje diskusija o brisanju',
 	'deletequeue-queue-speedy' => 'Brzo brisanje',
 	'deletequeue-queue-deletediscuss' => 'Brisanje razgovora',
@@ -1167,6 +1172,7 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
  * @author IAlex
  * @author McDutchie
  * @author Meno25
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'deletequeue-desc' => 'Crée un [[Special:DeleteQueue|système de queue pour gérer les suppression]]',
@@ -1220,9 +1226,9 @@ La raison invoquée pour cela est ''« $1 »''.",
 La raison invoquée est ''« $1 »''.
 Si la proposition ne rencontre aucune objection sur ''$2'', la page sera supprimée.
 Vous pouvez contester cette suppression en [{{fullurl:{{FULLPAGENAME}}|action=delvote}} vous y opposant].",
-	'deletequeue-page-deletediscuss' => "Cette page a été proposé à la suppression, celle-ci a été contestée.
-Le motif invoqué était ''« $1 »''
-Une discussion est intervenue sur [[$5]], laquelle sera conclue le ''$2''.",
+	'deletequeue-page-deletediscuss' => "Cette page a été proposée à la suppression, mais cette requête a été contestée.
+Le motif invoqué était « $1 ».
+Une discussion est en cours sur [[$5]], elle terminera le ''$2''.",
 	'deletequeue-notqueued' => 'La page que vous avez sélectionnée n’est pas dans la queue des suppression',
 	'deletequeue-review-action' => 'Action à prendre :',
 	'deletequeue-review-delete' => 'Supprimer la page.',
@@ -1380,9 +1386,9 @@ O motivo dado para este borrado é ''$1''.",
 A razón dada foi ''$1''.
 Se esta proposta non recibe resposta en ''$2'', esta páxina será borrada.
 Pode votar na páxina de eliminación [{{fullurl:{{FULLPAGENAME}}|action=delvote}} obxectando].",
-	'deletequeue-page-deletediscuss' => "Esta páxina foi proposta para a súa eliminación e esa proposta foi contestada.
+	'deletequeue-page-deletediscuss' => "Esta páxina foi proposta para a súa eliminación e esa proposta foi presentada como candidata.
 A razón dada foi ''\$1''.
-Unha conversa está en curso en \"[[\$5]]\", que concluirá o ''\$2''.",
+Unha conversa está en curso en \"[[\$5]]\", a cal concluirá o ''\$2''.",
 	'deletequeue-notqueued' => 'A páxina que seleccionou non está na cola de eliminación actualmente',
 	'deletequeue-review-action' => 'Acción que levar a cabo:',
 	'deletequeue-review-delete' => 'Borrar a páxina.',
@@ -1684,6 +1690,7 @@ $messages['hsb'] = array(
 	'deletequeue-action-queued' => 'Wušmórnjenje',
 	'deletequeue-action' => 'Wušmórnjenje namjetować',
 	'deletequeue-action-title' => '"$1" za wušmórnjenje namjetować',
+	'deletequeue-permissions-noedit' => 'Dyrbiš móc stronu wobdźěłać, zo by móhł jeje status wušmórnjenja wobwliwować.',
 	'deletequeue-generic-reasons' => '* Powšitkowne přičiny
   ** Wandalizm
   ** Spam
@@ -1696,57 +1703,94 @@ $messages['hsb'] = array(
 	'deletequeue-delnom-otherreason' => 'Druha přičina',
 	'deletequeue-delnom-extra' => 'Přidatne informacije',
 	'deletequeue-delnom-submit' => 'Pomjenowanje wotpósłać',
+	'deletequeue-log-nominate' => "je [[$1]] za wušmórnjenje w čakanskim rynku '$2' namjetował.",
+	'deletequeue-log-rmspeedy' => 'je wotpokazał [[$1]] spěšnje wušmórnyć.',
+	'deletequeue-log-requeue' => "je [[$1]] k druhemu čakanskemu rynkej přenjesł: wot '$2' do '$3'.",
+	'deletequeue-log-dequeue' => "je [[$1]] z čakanskeho rynka '$2' wotstronił.",
 	'right-speedy-nominate' => 'Strony za spěšne wušmórnjenje pomjenować',
 	'right-speedy-review' => 'Pomjenowanja za spěšne wušmórnjenje přepruwować',
 	'right-prod-nominate' => 'Wušmórnjenje strony namjetować',
+	'right-prod-review' => 'Připóznate namjety za wušmórnjenje přepruwować',
 	'right-deletediscuss-nominate' => 'Diskusije wo wušmórnjenje započeć',
 	'right-deletediscuss-review' => 'Diskusije wo wušmórnjenju skónčić',
+	'right-deletequeue-vote' => 'Wušmórnjenja schwalić abo wotpokazać',
 	'deletequeue-queue-speedy' => 'Spěšne wušmórnjenje',
 	'deletequeue-queue-prod' => 'Namjetowane wušmórnjenje',
 	'deletequeue-queue-deletediscuss' => 'Diskusija wo wušmórnjenju',
+	'deletequeue-page-speedy' => "Tuta strona bu za spěšnje wušmórnjenje namjetowana.
+Podata přičina za to je ''$1''.",
+	'deletequeue-notqueued' => 'Strona, kotraž sy wubrana, tuchwilu w žanym čakanskim rynku njeje.',
 	'deletequeue-review-action' => 'Akcija, kotraž ma so wuwjesć:',
 	'deletequeue-review-delete' => 'Stronu wušmórnyć.',
+	'deletequeue-review-change' => 'Tutu stronu wušmórnyć, ale z druhim wopodstatnjenjom.',
+	'deletequeue-review-requeue' => 'Tutu stronu do slědowaceho čakanskeho rynka přenjesć:',
+	'deletequeue-review-dequeue' => 'Žanu akciju njewuwjesć  a stronu z čakanskeho rynka wušmórnjenja wotstronić.',
 	'deletequeue-review-reason' => 'Komentary:',
 	'deletequeue-review-newreason' => 'Nowa přičina:',
 	'deletequeue-review-newextra' => 'Přidatne informacije:',
 	'deletequeue-review-submit' => 'Přepruwowanje składować',
 	'deletequeue-review-original' => 'Přičina za pomjenowanje',
+	'deletequeue-actiondisabled-notexpired' => 'Slědowaca akcija je znjemóžnjena, dokelž požadanje wo wušmórnjenje hišće njeje spadnjene:',
 	'deletequeue-review-badaction' => 'Sy njepłaćiwu akciju podał',
 	'deletequeue-review-actiondenied' => 'Sy akciju podał, kotraž bu za tutu stronu znjemóžnjena',
 	'deletequeue-reviewspeedy-tab' => 'Spěšne wušmórnjenje přepruwować',
 	'deletequeue-reviewprod-tab' => 'Namjetowane wušmórnjenje přepruwować',
+	'deletequeue-reviewprod-title' => 'Namjetowane wušmórnjenje za "$2" přepruwować',
+	'deletequeue-reviewprod-text' => "Móžeš tutón formular wužiwać, zo by připóznaty namjet za wušmórnjenje \"'''\$1'''\" přepruwował.",
 	'deletequeue-reviewdeletediscuss-tab' => 'Wušmórnjenje přepruwować',
+	'deletequeue-reviewdeletediscuss-title' => 'Diskusiju wo wušmórnjenju za "$1" přepruwować',
 	'deletequeue-review-success' => 'Sy wušmórnjenje tuteje stronje wuspěšnje přepruwował.',
 	'deletequeue-review-success-title' => 'Přepruwowanje dokónčene',
+	'deletequeue-discusscreate-summary' => 'Diskusija za wušmórnjenje [[$1]] so wutworja.',
 	'deletequeue-discusscreate-text' => 'Wušmórnjenje bu ze slědowaceje přičiny namjetowane: $2',
+	'deletequeue-role-nominator' => 'prěnjotny požadar za wušmórnjenje',
 	'deletequeue-role-vote-endorse' => 'Podpěrar wušmórnjenja',
 	'deletequeue-role-vote-object' => 'Přećiwnik wušmórnjenja',
 	'deletequeue-vote-tab' => 'Wo wušmórnjenju wothłosować',
+	'deletequeue-vote-title' => 'Wušmórnjenje "$1" schwalić abo wotpokazać',
 	'deletequeue-vote-legend' => 'Wušmórnjenje podpěrać/wotpokazać',
 	'deletequeue-vote-action' => 'Poručenje:',
+	'deletequeue-vote-endorse' => 'Wušmórnjenje schwalić.',
+	'deletequeue-vote-object' => 'Wušmórnjenje wotpokazać.',
 	'deletequeue-vote-reason' => 'Komentary:',
 	'deletequeue-vote-submit' => 'Wotpósłać',
+	'deletequeue-vote-success-endorse' => 'Sy wušmórnjenje tuteje strony wuspěšnje schwalił.',
+	'deletequeue-vote-success-object' => 'Sy wušmórnjenje tuteje strony wuspěšnje wotpokazał.',
+	'deletequeue-showvotes' => 'Schwalenja a wotpokazanja k wušmórnjenju  "$1"',
 	'deletequeue-showvotes-restrict-endorse' => 'Jenož schwalenja pokazać',
-	'deletequeue-showvotes-restrict-object' => 'Jenož znapřećiwjenja pokazać',
-	'deletequeue-showvotes-restrict-none' => 'Wšě schwalenja a znapřećiwjenja pokazać',
+	'deletequeue-showvotes-restrict-object' => 'Jenož wotpokazanja pokazać',
+	'deletequeue-showvotes-restrict-none' => 'Wšě schwalenja a wotpokazanja pokazać',
+	'deletequeue-showvotes-vote-endorse' => "'''Podpěra''' wušmórnjenje $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Wotpokaza''' wušmórnjenje $1 $2",
 	'deletequeue-showvotes-showingonly-endorse' => 'Jenož schwalenja so pokazuja',
-	'deletequeue-showvotes-showingonly-object' => 'Jenož znapřećiwjenja so pokazuja',
+	'deletequeue-showvotes-showingonly-object' => 'Jenož wotpokazanja so pokazuja',
+	'deletequeue-showvotes-none' => 'Schwalenja abo wotpokazanja k wušmórnjenju tuteje strony njejsu.',
+	'deletequeue-showvotes-none-endorse' => 'Schwalenja k wušmórnjenju tuteje strony njejsu.',
+	'deletequeue-showvotes-none-object' => 'Njejsu žane znapřećiwjenja přećiwo wušmórnjenju tuteje strony.',
+	'deletequeue' => 'Čakanski rynk wušmórnjenja',
+	'deletequeue-list-text' => 'Tuta strona zwobraznja wšě strony, kotrež su w systemje wušmórnjenja.',
 	'deletequeue-list-search-legend' => 'Strony pytać',
 	'deletequeue-list-queue' => 'Čakanski rynk:',
 	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-expired' => 'Jenož požadanja wušmórnjenja pokazać, kotrež maja so začinić.',
 	'deletequeue-list-search' => 'Pytać',
 	'deletequeue-list-anyqueue' => '(někajki)',
 	'deletequeue-list-votes' => 'Lisćina hłosow',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|schwalenje|schwaleni|schwalenja|schwalenjow}}, $2 {{PLURAL:$2|wotpokazanje|wozpokazani|wotpokazanja|wotzpokazanjow}}',
 	'deletequeue-list-header-page' => 'Strona',
 	'deletequeue-list-header-queue' => 'Čakanski rynk',
-	'deletequeue-list-header-votes' => 'Schwalenja a znapřećiwjenja',
+	'deletequeue-list-header-votes' => 'Schwalenja a wotpokazanja',
 	'deletequeue-list-header-expiry' => 'Spadnjenje',
 	'deletequeue-list-header-discusspage' => 'Diskusijna strona',
+	'deletequeue-case-intro' => 'Tuta strona informacije wo wěstym padźe wušmórnjenja nalistuje.',
 	'deletequeue-list-header-reason' => 'Přičina za wušmórnjenje',
+	'deletequeue-case-votes' => 'Schwalenja/Wotpokazanja:',
+	'deletequeue-case-title' => 'Podrobnosće wo padźe wušmórnjenja',
 	'deletequeue-case-details' => 'Zakładne podrobnosće',
 	'deletequeue-case-page' => 'Strona:',
 	'deletequeue-case-reason' => 'Přičina:',
 	'deletequeue-case-expiry' => 'Spadnjenje:',
+	'deletequeue-case-needs-review' => 'Tutón pad sej [[$1|přepruwowanje]] wužaduje.',
 );
 
 /** Hungarian (Magyar)
@@ -2304,12 +2348,12 @@ di Sigg fottschmiiße.',
 Als der Jrond doför es ''$1'' aanjejovve.",
 	'deletequeue-page-prod' => "Mer han ene Vörschlaach, di Sigg hee fottzeschmiiße.
 Als der Jrond doför wood ''$1'' aanjejovve.
-Wann bes $2 kein Jäjeshtemme opjedouch sin, dann dom_mer di Sigg fottschmiiße.
+Wann bes aam $3 öm $4 Uhr kei Jäjeshtemme opjedouch sin, dann dom_mer di Sigg fottschmiiße.
 Wann De meijns, kanns De [{{fullurl:{{FULLPAGENAME}}|action=delvote}} jääje et Fottschmiiße shtemme].",
 	'deletequeue-page-deletediscuss' => "Mer han ene Vörschlaach, di Sigg hee fottzeschmiiße.
 Als der Jrond doför wood ''$1'' aanjejovve.
 Et jitt ävver Jäjeshtemme.
-Der Klaaf do drövver op [[$5]] jeiht bes $2.",
+Der Klaaf do drövver op [[$5]] jeiht bes aam $3 öm $2 Uhr.",
 	'deletequeue-notqueued' => 'Do häß_Der en Sigg ußjesooht, di jaa nit en de Leß för fottzeschmiiße es.',
 	'deletequeue-review-action' => 'Wat ze donn es:',
 	'deletequeue-review-delete' => 'Die Sigg fottschmiiße.',
