@@ -89,7 +89,10 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 	'cc_nd_title' => 'No Derivative Works',
 	'cc_sa_title' => 'Share Alike',
 	'cc_pd_title' => 'Public Domain',
-		
+	'unknown_license' => 'Unknown License',
+
+	'no_import_by_url' => 'This User or Wiki <b>can not</b> import assets via URLs. <br> 
+							If permissions are correct; you may have to enable $wgAllowCopyUploads, <a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">more info</a>"',
 
 	# mvClipEdit.js
 	'mv_crop' => 'Crop image',
@@ -439,11 +442,11 @@ Jump to stream view: $2',
 	'mv_export_cmml' => 'Export cmml',
 	#'mv_search_stream' => 'Search stream', # duplicate
 	'mv_navigate_stream' => 'Navigate full stream',
-	'mv_stream_overview' => 'stream overview',
-	'mv_edit_time' => 'edit time',
+	'mv_stream_overview' => 'Stream Overview',
+	'mv_edit_time' => 'Edit Time',
 	'mv_embed_options' => 'Embed options',
 	'mv_overlay' => 'Overlay controls',
-	'mv_stream_tool_heading' => 'Stream tools',
+	'mv_stream_tool_heading' => 'Stream Tools',
 	'mv_tool_missing' => 'requested tool does not exist',
 	'mv_bad_tool_request' => 'bad tool line should be form: tool_name|tool_display_name',
 	#'mv_update_layers' => 'update layers view', # duplicate

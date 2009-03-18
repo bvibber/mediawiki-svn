@@ -547,14 +547,14 @@ mediaElement.prototype =
         	return this.sources;
         //apply mime filter: 
        	var source_set = new Array();
-        for(var i=0; i < this.sources; i++){
+        for(var i=0; i < this.sources.length ; i++){
         	if( this.sources[i].mime_type.indexOf( mime_filter ) != -1 )
         		source_set.push( this.sources[i] );
         }
         return source_set;
     },
-    getSourceById:function( source_id ){
-    	for(var i=0; i < this.sources; i++){
+    getSourceById:function( source_id ){    	
+    	for(var i=0; i < this.sources.length ; i++){
     		if( this.sources[i].id ==  source_id)
     			return this.sources[i];
     	}

@@ -309,26 +309,29 @@ mvClipEdit.prototype = {
 	},
 	setUpVideoCtrl:function(){
 		js_log('setUpVideoCtrl:f');
-		var this_seq = this;
+		var _this = this;
 		var eb = $j('#embed_vid').get(0);
 		//turn on preview to avoid onDone actions
 		eb.preview_mode = true;
 		$j('#'+this.control_ct).html('<h3>Edit Video Tools:</h3>');
 		if( eb.supportsURLTimeEncoding() ){			
 			$j('#'+this.control_ct).append( 
-				this_seq.getSetInOut({
+				_this.getSetInOut({
 					'start_ntp'	: eb.start_ntp, 
 					'end_ntp'	: eb.end_ntp		
 				}) 
 			);
-			this_seq.setInOutBindings();			
+			_this.setInOutBindings();			
 		}
 		$j('#'+this.control_ct).append(	this.getInsertDesc() );
 		
-		$j('#'+this.control_ct).append(	'<b>Remote Clip inserts not yet supported</b>' +
-			'<a href="#" class="mv_cancel_img_edit" title="' + gM('mv_cancel_image_insert')+'">' + gM('mv_cancel_image_insert') + '</a> ');					
-		//$j('#'+this.control_ct).append( this.getInsertDesc() + this.getInsertAction()	);				
-		
+		if( _this.p_rsdObj && _this.p_rsdObj.import_url_mode == 'none'){
+			// in theory this code should never run since we should nto get past the repository checks 
+			$j('#'+this.control_ct).append(	 gM('no_import_by_url') + '<br>' + 			
+				'<a href="#" class="mv_cancel_img_edit" title="' + gM('mv_cancel_image_insert')+'">' + gM('mv_cancel_image_insert') + '</a> ' );
+		}else{										
+			$j('#'+this.control_ct).append(  this.getInsertAction()	);
+		}						
 		this.applyInsertControlBindings();
 	},
 	setInOutBindings:function(){
@@ -387,6 +390,7 @@ mvClipEdit.prototype = {
 				'<a href="#" class="mv_cancel_img_edit" title="' + gM('mv_cancel_image_insert')+'">' + gM('mv_cancel_image_insert') + '</a> ';
 	},
 	applyEdit:function(){
+		js_log('applyEdit::' + this.media_type);
 		if(this.media_type == 'image'){
 			this.applyCrop();
 		}else if(this.media_type == 'video'){
@@ -401,10 +405,11 @@ mvClipEdit.prototype = {
 			_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
 			_this.p_rsdObj.insertResource( _this.rObj );
 		});
-		$j('.mv_preview_insert').click(function(){
+		$j('.mv_preview_insert').click(function(){		
 			_this.applyEdit();
 			//copy over the desc text to the resource object
 			_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
+			js_log('going to call previewResource on rObj');
 			_this.p_rsdObj.previewResource( _this.rObj );
 		});
 		$j('.mv_cancel_img_edit').click( function(){
@@ -452,17 +457,16 @@ mvClipEdit.prototype = {
 		this.applyInsertControlBindings();
 	},
 	applyVideoAdj:function(){		
+		js_log('applyVideoAdj::');		
 		//update video related keys		
 		this.rObj['start_time'] = $j('#mv_start_hr_rsd').val();
 		this.rObj['end_time'] = $j('#mv_end_hr_rsd').val();
-		//select the ogg stream		
-		if( this.rObj.pSobj.cp.stream_import_key && this.rObj.roe_url){			
+		//if the video is "roe" based select the ogg stream		
+		if( this.rObj.roe_url && this.rObj.pSobj.cp.stream_import_key){			
 			var source = $j('#embed_vid').get(0).media_element.getSourceById( this.rObj.pSobj.cp.stream_import_key );
 			this.rObj['src'] = source.getURI();
 			js_log("g src_key: " + this.rObj.pSobj.cp.stream_import_key + ' src:' + this.rObj['src']) ;
-		}
-		//update the title: 
-		this.rObj['title'] = ' updated title';
+		}		
 	},
 	applyCrop:function(){
 		var _this = this;

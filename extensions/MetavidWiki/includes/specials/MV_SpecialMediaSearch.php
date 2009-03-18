@@ -345,7 +345,7 @@ class MV_SpecialMediaSearch {
 			wfMsg( 'mv_results_found', $rs, $re, number_format( $this->numResultsFound ) ) .
 			'</li>';
 		}
-		// check order prefrence:
+		// check order
 		$prevnext = '';
 		// pagging
 		if ( $this->numResultsFound > $this->limit ) {
@@ -359,7 +359,7 @@ class MV_SpecialMediaSearch {
 
 		// force host for script (should be a better way to do this)
 		if ( !isset( $_SERVER['HTTP_HOST'] ) )
-			$_SERVER['HTTP_HOST'] = 'metavid.ucsc.edu';
+			$_SERVER['HTTP_HOST'] = 'metavid.org';
 
 		// make miro link:
 		$o .= '<li class="subscribe"><a href="http://subscribe.getMiro.com/?url1=' .
@@ -399,6 +399,43 @@ class MV_SpecialMediaSearch {
 		$o .= '	<ul id="results">';
 		foreach ( $this->results as $inx => & $mvd ) {
 			$mvTitle = new MV_Title( $mvd->wiki_title );
+			
+			
+			//get parent meta if requested: 
+			global $mvGetParentMeta;						
+			$pmeta_out = '';		
+			if( $mvGetParentMeta && strtolower( $mvTitle->getMvdTypeKey() ) == 'ht_en'){
+				$pmvd = MV_Index::getParentAnnotativeLayers($mvTitle);				
+								
+				if( $pmvd->wiki_title ){											
+					$pMvTitle =  new MV_Title( $pmvd->wiki_title );
+					$pAnnoStreamLink = Title :: MakeTitle( MV_NS_STREAM, $pMvTitle->getNearStreamName( 0 ) );
+					$clip_desc_txt = 'Segment';
+					if($pmvd->Speech_by){	
+						$personTitle = Title :: newFromText( $pmvd->Speech_by );
+						$clip_desc_txt = 'Speech By ' . $personTitle->getText();
+					}					
+						
+					$pmeta_out.='This clip is part of a '. seconds2Description ( $pMvTitle->getSegmentDuration() ). ' ' . 
+						$sk->makeKnownLinkObj($pAnnoStreamLink, $clip_desc_txt );
+					if($pmvd->category){
+						$pmeta_out.='<br>Covering: ';
+						$coma='';
+						foreach($pmvd->category as $cat_titlekey ){
+							$cTitle = $cTitle = Title :: MakeTitle( NS_CATEGORY, $cat_titlekey );
+							$pmeta_out .= $coma . $sk->makeKnownLinkObj( $cTitle, $cTitle->getText() );
+							$coma=', ';
+							assoc_array_increment( $sideBarLinkBucket, 'category', $cat_titlekey );
+						}
+					}
+					if($pmvd->Bill){
+						$pmeta_out.='<br>Bill: ';						
+						$bTitle = Title :: newFromText( $pmvd->Bill );
+						$pmeta_out .= $sk->makeKnownLinkObj( $bTitle, $bTitle->getText() );		
+						assoc_array_increment( $sideBarLinkBucket, 'bill', $pmvd->Bill );					
+					}					
+				}
+			}						
 			$mvd_cnt_links = '';
 			if ( isset ( $mvd->spoken_by ) ) {
 				$ptitle = Title :: MakeTitle( NS_MAIN, $mvd->spoken_by );
@@ -433,12 +470,12 @@ class MV_SpecialMediaSearch {
 			}
 			// link directly to the current range:
 			//if the clip length is < $mvDefaultClipLength get range:
-			global $mvDefaultClipLength;
-			if($mvTitle->getDuration() < $mvDefaultClipLength){
+			global $mvDefaultClipLength;			
+			if( $mvTitle->getSegmentDuration() < $mvDefaultClipLength){		
 				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( $mvDefaultClipRange ) );
 			}else{
-				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( 0 ) );
-			}
+				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( 0 ) );				
+			}			
 			// $mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
 			$mvd_text = $mvd->text;
 
@@ -461,12 +498,14 @@ class MV_SpecialMediaSearch {
 					</div>
 					<div class="result_meta">
 						<span class="views">Views: ' . htmlspecialchars( $mvd->view_count ) . '</span>
-						<span class="duration">' . wfMsg( 'mv_duration_label' ) . ':' . htmlspecialchars( $mvTitle->getSegmentDurationNTP( $short_time = true ) ) . '</span>
-						<span class="comments">Comments: NYA</span>
+						<span class="duration">' . wfMsg( 'mv_duration_label' ) . ':' . htmlspecialchars( $mvTitle->getSegmentDurationNTP( $short_time = true ) ) . '</span>						
 						<span class="playinline"><a href="javascript:mv_pl(\'' . htmlspecialchars( $mvd->id ) . '\')">' .
 			wfMsg( 'mv_play_inline' ) . '</a></span>
-										</div>
-									</li>';
+										</div>';
+					if($pmeta_out!=''){
+						$o .='<div class="parent_meta">'.$pmeta_out.'</div>';
+					}
+					$o.='</li>';
 		}
 		$o .= '</ul>';
 		// add in prev-next at bottom too:

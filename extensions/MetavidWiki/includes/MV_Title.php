@@ -44,6 +44,8 @@
  		// print "mv_title stream name: " . $this->stream_name. "\n";
  	}
  	function inheritTitle( & $title ) {
+ 		if(!is_object($title))
+ 			print_r( debug_backtrace() );
  		foreach ( $title as $k => $v ) {
  			$this->$k = $v;
  		}
@@ -119,7 +121,6 @@
 		}
 		return false;
 	}
-	function getTypeMarker() { return $this->type_marker; }
 	function getWikiTitle() { return $this->wiki_title; }
 	function getStartTime() { return $this->start_time; }
 	function setStartTimeNtp($start_time){
@@ -191,8 +192,11 @@
 		$stream = & mvGetMVStream( $this->stream_name );
 		return $stream->getDuration();
 	}
+	function getSegmentDuration(){
+		return $this->getEndTimeSeconds() - $this->getStartTimeSeconds();
+	}
 	function getSegmentDurationNTP( $short_time = false ) {
-		return seconds2ntp( $this->getEndTimeSeconds() - $this->getStartTimeSeconds(), $short_time );
+		return seconds2ntp( $this->getSegmentDuration(), $short_time );
 	}
 	/*
 	 * returns a near by stream range:
@@ -202,8 +206,8 @@
 		
 		$stream = & mvGetMVStream( $this->stream_name );
 	
-		if ( $range == null )$range = $mvDefaultClipRange;
-		if ( $length == null )$length = $mvDefaultClipLength;
+		if ( $range === null )$range = $mvDefaultClipRange;
+		if ( $length === null )$length = $mvDefaultClipLength;		
 		
 		// subtract $range seconds from the start time:
 		$start_t = $this->getStartTimeSeconds()  - $range;

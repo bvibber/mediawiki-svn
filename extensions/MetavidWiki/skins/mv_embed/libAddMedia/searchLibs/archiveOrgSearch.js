@@ -55,26 +55,23 @@ archiveOrgSearch.prototype = {
 			this.num_results = data.response.numFound;
 		
 			for(var resource_id in data.response.docs){
-				var resource = data.response.docs[resource_id];
-				//make sure the reop is shared
-				rObj = {
-					'titleKey'	 :resource.identifier,
-					'link'		 :'http://www.archive.org/details/' + resource.identifier,				
-					'title'		 :resource.title
-				};			
-				rObj['poster']='http://www.archive.org/download/' + resource.identifier+'/format=thumbnail';
-				rObj['poster_ani']='http://www.archive.org/download/' + resource.identifier+'/format=Animated+Gif';
-				
-				rObj['thumbwidth']=160;
-				rObj['thumbheight']=110;				
-				rObj['src']='http://www.archive.org/download/' + resource.identifier+'/format=Ogg+video';
-				rObj['mime']='application/ogg';
-				rObj['pSobj']=_this;				
-				
-				//set the licence: (rsd is a pointer to the parent remoteSearchDriver ) 
-				rObj['license'] = this.rsd.getLicenceFromUrl( resource.licenseurl );								 
-				
-				this.resultsObj[ resource_id ] =rObj;
+				var resource = data.response.docs[resource_id];				
+				var rObj = {
+					'titleKey'	 : resource.identifier,
+					'link'		 : 'http://www.archive.org/details/' + resource.identifier,				
+					'title'		 : resource.title,
+					'poster'	 : 'http://www.archive.org/download/' + resource.identifier+'/format=thumbnail',
+					'poster_ani' : 'http://www.archive.org/download/' + resource.identifier+'/format=Animated+Gif',
+					'thumbwidth' : 160,
+					'thumbheight': 110,			
+					'desc'		 : resource.description,
+					'src' 		 : 'http://www.archive.org/download/' + resource.identifier+'/format=Ogg+video',
+					'mime' 		 : 'application/ogg',
+					//set the licence: (rsd is a pointer to the parent remoteSearchDriver ) 		
+					'license' 	 : this.rsd.getLicenceFromUrl( resource.licenseurl ),
+					'pSobj'		 :_this
+				};																						 				
+				this.resultsObj[ resource_id ] = rObj;
 				
 				//likely a audio clip if no poster and type application/ogg 
 				//@@todo we should return audio/ogg for the mime type or some other way to specify its "audio" 

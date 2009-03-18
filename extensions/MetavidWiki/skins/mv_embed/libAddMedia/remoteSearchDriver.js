@@ -541,7 +541,7 @@ remoteSearchDriver.prototype = {
 		}, function(data){			
 			for( var i in data.query.userinfo.rights){		
 				var right = data.query.userinfo.rights[i];
-				js_log('checking: ' + right ) ;			
+				//js_log('checking: ' + right ) ;			
 				if(right == 'upload_by_url'){
 					callback( true );				
 					return true; //break out of the function
@@ -749,15 +749,15 @@ remoteSearchDriver.prototype = {
 			//also set the animated image if avaliable 
 			var res_id = $j(this).children('.rsd_res_item').attr('id');
 			var rObj = _this.getResourceFromId( res_id );
-			if( rObj.poster_ani )
-				$j('#' + res_id ).attr('src', rObj.poster_ani);
-			
+			if( rObj.poster_ani )				
+				$j('#' + res_id ).attr('src', rObj.poster_ani);			
 		},function(){
 			$j(this).removeClass('mv_clip_'+_this.result_display_mode+'_result_over');	
 			var res_id = $j(this).children('.rsd_res_item').attr('id');
 			var rObj = _this.getResourceFromId( res_id );	
 			//restore the original (non animated)
-			$j('#' + res_id ).attr('src', rObj.poster);
+			if( rObj.poster_ani )
+				$j('#' + res_id ).attr('src', rObj.poster);
 		});				
 		//resource click action: (bring up the resource editor) 		
 		$j('.rsd_res_item').unbind().click(function(){	
@@ -908,6 +908,8 @@ remoteSearchDriver.prototype = {
 			);	
 			//rewrite by id handldes getting any libs we are missing: 		
 			rewrite_by_id('embed_vid',function(){
+				//hide the rsd_edit_img: 
+				$j('#rsd_edit_img').hide();
 				//grab any information that we got from the ROE xml or parsed from the media file
 				rObj = rObj.pSobj.getEmbedObjParsedInfo( rObj, 'embed_vid' );					
 				//add the re-sizable to the doLoad request: 
@@ -937,7 +939,7 @@ remoteSearchDriver.prototype = {
 		}
 		
 	},
-	checkImportResource:function( rObj, cir_callback){
+	checkImportResource:function( rObj, cir_callback){		
 		//@@todo get the localized File/Image namespace name or do a general {NS}:Title aproch
 		var cp = rObj.pSobj.cp;	
 		var _this = this;
@@ -1196,6 +1198,7 @@ remoteSearchDriver.prototype = {
 		);	
 	},	
 	insertResource:function( rObj){		
+		js_log('insertResource: ' + rObj.title);
 		var _this = this
 		this.checkImportResource( rObj, function(){
 			_this.updatePreviewText( rObj );

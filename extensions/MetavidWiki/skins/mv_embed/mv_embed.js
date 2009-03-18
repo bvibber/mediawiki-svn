@@ -1130,30 +1130,28 @@ function do_api_req( options, callback ){
 		loadExternalJs( req_url );				
 	}	
 }
-//do a "normal" request (should be depriecated via extending the mediaWiki API) 
-function do_request(req_url, callback){	
-	//pass along a unique inentifier if set
- 	js_log('do request: ' + req_url);
- 		//if we are doing a request to the same domain or relative link do a normal GET: 
-		if( parseUri(document.URL).host == parseUri(req_url).host ||
-			req_url == parseUri( req_url).host ){ //relative url
-			//do a direct request:
-			$j.ajax({
-				type: "GET",
-				url:req_url,
-                async: false,
-				success:function(data){		
-					callback( data );
-				}
-			});
-		}else{						
-			//get data via DOM injection with callback
-			global_req_cb.push(callback);
-			//prepend json_ to feed_format if not already requesting json format
-			if( req_url.indexOf("feed_format=")!=-1 &&  req_url.indexOf("feed_format=json")==-1)
-				req_url = req_url.replace(/feed_format=/, 'feed_format=json_');													
-			loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));			
-		}
+//do a "normal" request 
+function do_request(req_url, callback){		 	
+	//if we are doing a request to the same domain or relative link do a normal GET: 
+	if( parseUri(document.URL).host == parseUri(req_url).host ||
+		req_url == parseUri( req_url).host ){ //relative url
+		//do a direct request:
+		$j.ajax({
+			type: "GET",
+			url:req_url,
+               async: false,
+			success:function(data){		
+				callback( data );
+			}
+		});
+	}else{						
+		//get data via DOM injection with callback
+		global_req_cb.push(callback);
+		//prepend json_ to feed_format if not already requesting json format
+		if( req_url.indexOf("feed_format=")!=-1 &&  req_url.indexOf("feed_format=json")==-1)
+			req_url = req_url.replace(/feed_format=/, 'feed_format=json_');													
+		loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));			
+	}
 }
 function mv_jsdata_cb(response){
 	js_log('f:mv_jsdata_cb:'+ response['cb_inx']);

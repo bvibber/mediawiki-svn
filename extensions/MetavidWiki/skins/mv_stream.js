@@ -179,11 +179,13 @@ var mv_stream_interface = {
 	},
 	oddEvenPaint:function(){
 		//remove existing class:
-		$j('.mv_fd_mvd').removeClass("odd").removeClass("even");
-		$j('.mv_fd_mvd:odd').addClass("odd");
-		$j('.mv_fd_mvd:even').addClass("even");		
+		$j('.mv_fd_mvd:not(.anno_en)').removeClass("odd").removeClass("even");
+		$j('.mv_fd_mvd:odd').filter(':not(.anno_en)').addClass("odd");
+		$j('.mv_fd_mvd:even').filter(':not(.anno_en)').addClass("even");		
 		//remove odd/even class for annoative layer: 
-		$j('.anno_en').removeClass("odd").removeClass("even");
+		$j('.anno_en:odd').addClass("anno_en_odd")
+		$j('.anno_en:even').addClass("anno_en_even");
+		//add annotative odd even collor: 
 	},
 	addHoverHooks:function(selector){
 		this_stream=this;

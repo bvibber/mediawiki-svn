@@ -20,6 +20,9 @@ define( 'SEQUENCE_TAG', 'sequence_hlrd' );
 include_once( 'MV_GlobalFunctions.php' );
 
 
+//greatly affects site performance (turn to false to avoid costly parent lookups on all search results) : 
+$mvGetParentMeta = true;
+
 
 //script loader settings: 
 $mvgJSDebug=false;

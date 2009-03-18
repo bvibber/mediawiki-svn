@@ -372,7 +372,7 @@
 			if ( !isset( $this->article->mvTitle ) ) {
 				$this->mvTitle = new MV_Title( $this->mTitle->getDBkey() );
 			}
-			$editFormType = strtolower( $this->mvTitle->getTypeMarker() );
+			$editFormType = strtolower( $this->mvTitle->getMvdTypeKey() );
 		} else {
 			// check if its seq type: 
 			if ( $this->mvd_id == 'seq' ) {

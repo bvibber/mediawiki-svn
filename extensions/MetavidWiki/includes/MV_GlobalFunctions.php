@@ -126,7 +126,7 @@ function mvSetupExtension() {
 	$wgJSAutoloadClasses['seqRemoteSearchDriver'] = $mvjsp . 'libAddMedia/seqRemoteSearchDriver.js';
 	$wgJSAutoloadClasses['mediaWikiSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/mediaWikiSearch.js';
 	$wgJSAutoloadClasses['metavidSearch'] 		= $mvjsp . 'libAddMedia/searchLibs/metavidSearch.js';
-	$wgJSAutoloadClasses['solrArchiveSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/solrArchiveSearch.js';	
+	$wgJSAutoloadClasses['archiveOrgSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/archiveOrgSearch.js';	
 	
 	//libClipEdit:
 	$wgJSAutoloadClasses['mvClipEdit'] 			= $mvjsp . 'libClipEdit/mvClipEdit.js';
