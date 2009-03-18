@@ -214,7 +214,7 @@ abstract class CommunityVoiceRatings {
 								array(
 									'stats' => $stats,
 									'status' => array(
-										'null' => '&nbsp;',
+										'ready' => '&nbsp;',
 										'sending' => CommunityVoice::getMessage(
 											'ratings', 'scale-status-sending'
 										),
@@ -355,7 +355,7 @@ abstract class CommunityVoiceRatings {
 			return Js::toObject(  $result );
 		}
 		// Returns error information
-		return Js::toObject( array( 'rating' => - 1, 'stats' => null ) );
+		return Js::toObject( array( 'rating' => - 1, 'stats' => 'ready' ) );
 	}
 
 	/**

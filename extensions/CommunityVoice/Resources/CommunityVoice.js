@@ -73,7 +73,7 @@ function CommunityVoiceRatingsScale(
 	var stars = [];
 	var labels = {};
 	// Sets state
-	var status = null;
+	var status = 'ready';
 	var locked = true;
 
 	/* Functions */
