@@ -13,21 +13,13 @@ rm -rf %name-%version
 
 %build
 
-./configure --prefix=%{_prefix}			\
-	    --bindir=%{_bindir}			\
-	    --includedir=%{_includedir}		\
-	    --mandir=%{_mandir}			\
-            --libdir=%{_libdir}                 \
-	    --disable-static			\
-	    --enable-shared			\
-	    --without-x				\
-		--enable-svg=yes		\
-	    %{?configure_options}
+%_configure	--without-x		\
+		--enable-svg=yes
 
-gmake -j$CPUS all
+%_make all
 
 %install
-gmake DESTDIR=${RPM_BUILD_ROOT} install
+%_make DESTDIR=${RPM_BUILD_ROOT} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
