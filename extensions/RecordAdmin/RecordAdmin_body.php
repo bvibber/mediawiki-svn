@@ -296,7 +296,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true ) {
-		global $wgUser, $wgLang;
+		global $wgUser;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
@@ -323,8 +323,8 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		$stripe = '';
 		foreach ( $records as $r ) {
-			$tsc = $wgLang->date( $r['created'], true, true ) . ', ' . $wgLang->time( $r['created'], true, true );
-			$tsm = $wgLang->date( $r['modified'], true, true ) . ', ' . $wgLang->time( $r['modified'], true, true );
+			$tsc = $this->formatDate( $r['created'] );
+			$tsm = $this->formatDate( $r['modified'] );
 			$t   = $r[0];
 			$u   = $t->getLocalURL();
 			$col = $r['title'];
@@ -349,6 +349,15 @@ class SpecialRecordAdmin extends SpecialPage {
 		$table .= "</table>\n";
 
 		return $table;
+	}
+
+	/**
+	 * Take a MediaWiki timestamp and return a formatted date appropriate for sortable table
+	 */
+	function formatDate( $ts ) {
+		global $wgLang;
+		$ts = preg_replace( "|^(....)(..)(..)(..)(..)(..)|", "$1-$2-$3 $4:$5:$6", $wgLang->userAdjust( $ts ) );
+		return date( 'd M Y, H:i', strtotime( $ts ) );
 	}
 
 	/**
