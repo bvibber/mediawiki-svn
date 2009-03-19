@@ -50,6 +50,7 @@
 	 								$options = array( 'LIMIT' => 1, 'ORDER BY' => $orderby )
 	 						);
 	 		//print $dbr->lastQuery();
+	 		//print_r($mvd_rows);
 			//die;
 	 		// print "SHOULD GET $pntype for $stream_time_req";				
 	 		reset( $mvd_rows );
@@ -78,7 +79,6 @@
 	 			}
 	 		}
 		}
-		
  		return $o;
  	}
  	function render_full() {

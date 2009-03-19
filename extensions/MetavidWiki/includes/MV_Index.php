@@ -108,7 +108,9 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		if ( $dbr->numRows( $result ) == 0 )return array();
 		
 		$do_cat_lookup = $do_smw_lookup = false;
-		$smw_properties = explode( ',', $smw_properties );	
+		if( !is_array($smw_properties) ){
+			$smw_properties = explode( ',', $smw_properties );
+		}	
 		foreach($smw_properties as $propKey){
 			if($propKey == 'category')
 				$do_cat_lookup=true;

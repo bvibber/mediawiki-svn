@@ -22,7 +22,7 @@ if( MV_EMBED_VERSION ){
 }
 
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0r11';
+var MV_EMBED_VERSION = '1.0r12';
 
 //if we should use the scriptLoader 
 //( lets you group requests, minimize javascript, and use mediaWiki localization infrastructure) 
