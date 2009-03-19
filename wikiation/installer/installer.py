@@ -139,8 +139,6 @@ def update_self(args):
 	elif len(args)>=2:
 		print "I'm not sure what to do with "+ (" ".join(args[1:]))
 
-	os.unlink(settings.tagcache)	#paranoia is good for you
-
 	print "\n\n"
 	print "wikiation_installer update attempted/completed. Restarting"
 	print "----------------------------------------------------------"
