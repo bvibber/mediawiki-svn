@@ -19,7 +19,7 @@
 #ifndef PHP_LOAD_TXT_DEF_H
 #define PHP_LOAD_TXT_DEF_H
 
-#define PHP_LOAD_TXT_DEF_VERSION "0.1"
+#define PHP_LOAD_TXT_DEF_VERSION "0.2"
 
 extern zend_module_entry load_txt_def_module_entry;
 
@@ -27,6 +27,7 @@ PHP_MINFO_FUNCTION( load_txt_def );
 PHP_FUNCTION( load_txt_def );
 
 void ltd_trim( char*, int, char**, int* );
+int ltd_in_array( char**, int, char* );
 int ltd_skip_subarrays( char*, int, char**, char*, int );
 int ltd_process_array( zval*, char*, int, char*, int );
 int ltd_process_entry( zval*, char*, int, char*, int );

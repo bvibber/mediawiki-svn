@@ -60,7 +60,7 @@ class ConfigurationSettings {
 		wfProfileIn( __METHOD__ );
 
 		global $wgConfigureAdditionalExtensions;
-		$coreExtensions = TxtDef::remapForConfigure( TxtDef::loadFromFile( dirname( __FILE__ ) . '/Configure.settings-ext.txt' ) );
+		$coreExtensions = TxtDef::loadFromFile( dirname( __FILE__ ) . '/Configure.settings-ext.txt', array( 'key' => 'name' ) );
 		$extensions = array_merge( $coreExtensions, $wgConfigureAdditionalExtensions );
 		usort( $extensions, array( __CLASS__, 'compExt' ) );
 		$list = array();

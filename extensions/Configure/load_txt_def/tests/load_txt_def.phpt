@@ -6,7 +6,7 @@ if( !extension_loaded( 'load_txt_def' ) )
 	print 'skip';
 --FILE--
 <?php
-var_dump( load_txt_def( dirname( __FILE__ ) . '/sample.txt' ) );
+var_dump( load_txt_def( dirname( __FILE__ ) . '/sample.txt', false, array( 'array' => array( 'array3' ) ) ) );
 --EXPECT--
 array(2) {
   ["Scalar"]=>
@@ -15,7 +15,7 @@ array(2) {
     string(12) "scalar value"
   }
   ["Arrays"]=>
-  array(3) {
+  array(4) {
     ["array"]=>
     array(2) {
       ["key1"]=>
@@ -44,6 +44,13 @@ array(2) {
         ["sub4"]=>
         string(4) "val4"
       }
+    }
+    ["array3"]=>
+    array(2) {
+      ["key3"]=>
+      string(6) "value3"
+      ["key4"]=>
+      string(6) "value4"
     }
   }
 }
