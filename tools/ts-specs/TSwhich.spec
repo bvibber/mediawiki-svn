@@ -21,11 +21,11 @@ cp %SOURCE1 .
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 cp which.sh $RPM_BUILD_ROOT%{_bindir}/which
+chmod 755 $RPM_BUILD_ROOT%{_bindir}/which
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_bindir}
-%attr (0755, root, bin) %{_bindir}/which
+%defattr (-, root, root)
+%{_bindir}
