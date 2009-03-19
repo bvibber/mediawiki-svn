@@ -331,3 +331,12 @@ class Installation_System:
 		if self.can_exec(installer_name,"uninstall"):
 			self.exec_task(installer_name,"uninstall")
 	
+	def get_extensionsdir(self):
+		"""return the relevant extensionsdir to look in"""
+		extensionsdir=None
+		if self.tag:
+			extensionsdir=settings.tagsdir+"/"+self.tag+"/"+settings.extensionssubdir
+		else:
+			extensionsdir=settings.extensionsdir
+
+		return extensionsdir

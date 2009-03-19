@@ -57,7 +57,7 @@ class Extension_Installer(Installation_System):
 			env={}
 
 		env=dict(env)
-		env["EXTENSIONS_SVN"]=settings.extensionsdir
+		env["EXTENSIONS_SVN"]=self.get_extensionsdir()
 		env["DATABASE_NAME"]=dbname(self.instance)
 		env["IN_INSTANCE"]=self.instance
 

@@ -58,8 +58,13 @@ class Download_Installer(Installation_System):
 	
 	def do_download (self, installer_name, destination_dir):
 		os.chdir(destination_dir)
-		command="svn checkout '"+\
-			settings.extensionsdir+"/"+\
+		
+		r=''
+		if self.revision:
+			r="-r "+str(self.revision)
+		command="svn checkout "+\
+			r+" '"+\
+			self.get_extensionsdir()+"/"+\
 			installer_name+"'"
 		#print command
 		result=os.system(command)
