@@ -416,7 +416,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				case 'list':
 					$html = preg_replace_callback("|\{\{.+\}\}|s", array($this, 'parsePart'), $html); # parse any braces
 					$html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html ); # remove the currently selected option
-					if ( $v ) { print "\"$v\"";
+					if ( $v ) {
 						$html = preg_match( "|<option[^>]+value\s*=|s", $html )
 							? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|s", "$1 selected$2", $html )
 							: preg_replace( "|(<option[^>]*)(?=>$v</option>)|s", "$1 selected", $html );
