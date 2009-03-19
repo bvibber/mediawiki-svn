@@ -219,8 +219,11 @@ def make_tables(target):
 	do_sql(target, target_file)
 
 def make_admin(target):
-	"""use our usr.sql file to create an admin user"""
-	do_sql(target, settings.installerdir+"/user.sql")
+	"""create an admin user using createAndPromote.php"""
+	#do_sql(target, settings.installerdir+"/user.sql")
+	phpfile=os.path.join(settings.instancesdir,target,"maintenance","createAndPromote.php")
+	command="php "+phpfile+" --bureaucrat admin admin1234"
+	os.system(command)
 
 def do_sql(target, infile):
 	"""execute an sql file, using mysql"""
