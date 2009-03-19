@@ -10,28 +10,11 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 %setup -q -n pkg-config-%version
 
 %build
-CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
-if test "x$CPUS" = "x" -o $CPUS = 0; then
-    CPUS=1
-fi
-
-export CC="cc"
-export CXX="CC"
-export CFLAGS="%optflags"
-export RPM_OPT_FLAGS="$CFLAGS"
-export MSGFMT="/usr/bin/msgfmt"
-
-./configure --prefix=%{_prefix}			\
-		--bindir=%{_bindir}		\
-	    --libexecdir=%{_libexecdir}         \
-	    --mandir=%{_mandir}                 \
-	    --datadir=%{_datadir}               \
-            --infodir=%{_datadir}/info
-	    		
-gmake -j$CPUS
+%_configure
+%_make
 
 %install
-gmake install DESTDIR=$RPM_BUILD_ROOT
+%_make install DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT

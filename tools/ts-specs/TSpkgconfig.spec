@@ -5,9 +5,9 @@
 %include base.inc
 %use pkgconfig=pkgconfig.spec
 
-Name:		TSpkgconfig
+Name:		%{pkgconfig.name}
 Summary:	pkgconfig
-Version:	0.23
+Version:	%{pkgconfig.version}
 Source:		http://pkgconfig.freedesktop.org/releases/pkg-config-%{version}.tar.gz
 SUNW_BaseDir:	%{_basedir}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
@@ -24,26 +24,12 @@ mkdir %name-%version/%{base_arch}
 %pkgconfig.prep -d %name-%version/%{base_arch}
 
 %build
-CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
-if test "x$CPUS" = "x" -o $CPUS = 0; then
-    CPUS=1
-fi
-
-export CC="cc"
-export CXX="CC"
- 
 %include arch64.inc
-export CFLAGS="%optflags"
-export RPM_OPT_FLAGS="$CFLAGS"
-export LDFLAGS="%_ldflags -L%{_libdir} -L/usr/sfw/lib/%_arch64 -R%{_libdir}:/usr/sfw/lib/%_arch64"
-export CPPFLAGS="-I%{_includedir}"
+%include stdenv.inc
 %pkgconfig64.build -d %name-%version/%_arch64
  
 %include base.inc
-export LDFLAGS="%_ldflags -L%{_libdir} -L/usr/sfw/lib -R%{_libdir}:/usr/sfw/lib"
-export CFLAGS="%optflags"
-export CPPFLAGS="-I%{_includedir}"
-export RPM_OPT_FLAGS="$CFLAGS"
+%include stdenv.inc
 %pkgconfig.build -d %name-%version/%{base_arch}
 
 %install
@@ -54,15 +40,7 @@ export RPM_OPT_FLAGS="$CFLAGS"
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_bindir}
-%{_bindir}/pkg-config
-%dir %attr (0755, root, bin) %{_bindir}/%_arch64
-%{_bindir}/%_arch64/pkg-config
-%dir %attr(0755, root, sys) %{_datadir}
-%dir %attr(0755, root, other) %{_datadir}/aclocal
-%{_datadir}/aclocal/*
-%dir %attr(0755, root, bin) %{_mandir}
-%dir %attr(0755, root, bin) %{_mandir}/man1
-%{_mandir}/man1/*
-
+%defattr (-, root, root)
+%{_bindir}
+%{_datadir}/aclocal
+%{_mandir}/man1
