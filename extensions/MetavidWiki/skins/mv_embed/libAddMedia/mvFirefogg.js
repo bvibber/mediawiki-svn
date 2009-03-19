@@ -129,7 +129,7 @@ mvFirefogg.prototype = {
 					return false;
 				}else if( ext == 'avi' || ext == 'mov' || ext == 'mp4' || ext=='mp2' ||
 						  ext == 'mpeg' || ext == 'mpeg2' || ext == 'mpeg4' ||
-						  ext == 'dv' ){
+						  ext == 'dv' || ext=='wmv' ){
 					//hide ogg warning
 					$j('#wgfogg_waring_ogg_upload').hide();									
 					sf = sf.replace( ext, 'ogg' );
@@ -320,9 +320,16 @@ mvFirefogg.prototype = {
 		       	js_log( 'firefogg:upload done: '); 			        		       			       			       	       		       			       	
 		       	//if in "post" upload mode read the html response (should be depricated): 
 		       	if( _this.upload_mode == 'post' ) {
-		       		var pstatus = JSON.parse( _this.fogg.uploadstatus() );
+		       		var response_text ='';
+		       		try{
+		       			var pstatus = JSON.parse( _this.fogg.uploadstatus() );
+		       			response_text = pstatus["responseText"];
+		       		}catch(e){
+		       			js_log("could not parse uploadstatus / could not get responseText");
+		       		}
 		       		//js_log( 'done upload response is: ' + cat["responseText"] );
-		       		_this.procPageResponse( pstatus["responseText"] );
+		       		_this.procPageResponse( response_text );
+		       		
 		       	}else if( _this.upload_mode == 'chunks'){
 		       		//should have an json result:
 		       		js_error('chunks upload not yet supported');
@@ -360,8 +367,7 @@ mvFirefogg.prototype = {
 					_this.upload_done_action();
 			}									
 		}else{								
-			//js_log( 'upload page error: did not find: ' +sstring + ' in ' + "\n" + result_page );	
-			var error_txt = 'Unkown error';			
+			//js_log( 'upload page error: did not find: ' +sstring + ' in ' + "\n" + result_page );					
 			var form_txt = '';		
 			if( !result_page ){
 				//@@todo fix this: 

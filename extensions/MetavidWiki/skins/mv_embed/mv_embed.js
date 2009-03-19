@@ -551,7 +551,7 @@ mediaPlayers.prototype =
             {
                 var name_value = pairs[i].split('=');
                 this.preference[name_value[0]]=name_value[1];
-                js_log('load preference for ' + name_value[0] + ' is ' + name_value[1]);
+                //js_log('load preference for ' + name_value[0] + ' is ' + name_value[1]);
             }
         }
     },
@@ -569,7 +569,7 @@ mediaPlayers.prototype =
 
 function getCookie ( cookieName ) {
 	var m = document.cookie.match( cookieName + '=(.*?)(;|$)' );
-	js_log('getCookie:' + cookieName + ' v:' + (m ? unescape( m[1] ) : false));
+	//js_log('getCookie:' + cookieName + ' v:' + (m ? unescape( m[1] ) : false));
 	return m ? unescape( m[1] ) : false;
 }
 

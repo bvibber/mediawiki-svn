@@ -68,6 +68,7 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 	'upload-select-file' => 'Select file...',
 	'wgfogg_wrong_version' => "You have Firefogg installed but it is outdated. <a href=\"http://firefogg.org\">Please upgrade</a>.",
 	'wgfogg_waring_ogg_upload' => 'You have selected an .ogg file for conversion to Ogg (this is probably unnecessary). Maybe disable the video converter?',
+	'wgfogg_waring_bad_extension'=> 'You have selected a file with an unsuported extension. <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">More help</a>', 
 
 	# remoteSearchDriver.js
 	#set to ignored for now. Messages does not appear to be final

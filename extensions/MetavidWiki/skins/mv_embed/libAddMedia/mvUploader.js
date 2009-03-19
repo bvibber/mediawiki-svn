@@ -9,9 +9,10 @@ loadGM( {
 	"upload-in-progress":"Doing Transcode & Upload (do not close this window)",
 	"upload-transcoded-status": "Transcoded",
 	"uploaded-status": "Uploaded",
-	"upload-select-file": "Select File...",
+	"upload-select-file": "Select File...",	
 	"wgfogg_wrong_version": "You have firefogg installed but its outdated, <a href=\"http://firefogg.org\">please upgrade</a> ",
-	"wgfogg_waring_ogg_upload": "You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?"
+	"wgfogg_waring_ogg_upload": "You have selected an ogg file for conversion to ogg (this is probably unnessesary). Maybe disable the video converter?",
+	"wgfogg_waring_bad_extension" : "You have selected a file with an unsuported extension. <a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types\">More help</a>" 
 });
 
 var default_upload_options = {
@@ -106,13 +107,19 @@ mvUploader.prototype = {
 						'<input style="display:none" id="fogg-video-file" name="fogg-video-file" type="button" value="' + gM('upload-select-file') + '">' +
 						"<span id='wgfogg_not_installed'>" + 
 							gM('upload-fogg_not_installed') +
-						'</span>' +
-						"<span class='error' id='wgfogg_wrong_version'  style='display:none'><br>" +
+						"</span>" +
+						"<span class='error' id='wgfogg_wrong_version'  style='display:none;'><br>" +
 							gM('wgfogg_wrong_version') +
-						'</span>' +
-						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none' ><br>"+
-								gM('wgfogg_waring_ogg_upload') +
-						'</span>' + 
+						"<br>" +
+						"</span>" +
+						"<span class='error' id='wgfogg_waring_ogg_upload' style='display:none;'><br>"+
+							gM('wgfogg_waring_ogg_upload') +
+						"<br>" +
+						"</span>" + 
+						"<span class='error' id='wgfogg_waring_bad_extension' style='display:none;'><br>"+
+							gM('wgfogg_waring_bad_extension') + 						
+						"<br>" +
+						"</span>" +  
 						"<span id='wgfogg_installed' style='display:none' >"+
 							'<input id="wgEnableFirefogg" type="checkbox" name="wgEnableFirefogg" >' + 							
 								gM('upload-enable-converter') +
