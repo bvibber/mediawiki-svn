@@ -15,7 +15,7 @@ else
     $dbname \
     --current \
     --server=$slave > $dumpfile
-  [ -e $indexe/status ] || mkdir $indexes/status
+  [ -e $indexes/status ] || mkdir -p $indexes/status
   echo "timestamp=$timestamp" > $indexes/status/$dbname
 fi
 
