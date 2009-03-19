@@ -74,7 +74,7 @@ class TxtDef {
 		return $out;
 	}
 
-	public static function remapKeys( $arr, $key ) {
+	private static function remapKeys( $arr, $key ) {
 		$out = array();
 		foreach( $arr as $name => $defs ) {
 			$out[] = array( $key => $name ) + $defs;
