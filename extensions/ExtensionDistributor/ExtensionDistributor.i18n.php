@@ -841,7 +841,7 @@ $messages['he'] = array(
 	'extdist-choose-extension' => 'בחרו איזו הרחבה תרצו להוריד:',
 	'extdist-wc-empty' => 'בתיקייה שהוגדרה כתיקיית ההרחבות אין הרחבות שניתן להוריד!',
 	'extdist-submit-extension' => 'המשך',
-	'extdist-current-version' => 'הגרסה הנוכחית (trunk)',
+	'extdist-current-version' => 'גרסת הפיתוח (trunk)',
 	'extdist-choose-version' => '
 <big>אתם מורידים את ההרחבה <b>$1</b>.</big>
 
