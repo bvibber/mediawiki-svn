@@ -19,7 +19,7 @@ rm -rf %name-%version
 
 %build
 
-PATH=/opt/ts/bin:$PATH
+%include stdenv.inc
 
 rm -rf libltdl
 libtoolize --ltdl
@@ -27,23 +27,15 @@ aclocal
 automake
 autoconf
 
-./configure --prefix=%{_prefix}			\
-	    --bindir=%{_bindir}			\
-	    --includedir=%{_includedir}		\
-	    --mandir=%{_mandir}			\
-            --libdir=%{_libdir}                 \
-            --enable-rpath			\
-            --enable-dynamic-loading		\
-            %{?configure_options}
+%_configure --enable-rpath			\
+            --enable-dynamic-loading
 
-gmake -j$CPUS all
+%_make all
 
 %install
-gmake DESTDIR=${RPM_BUILD_ROOT} install
+%include stdenv.inc
+
+%_make DESTDIR=${RPM_BUILD_ROOT} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%changelog
-* Sun Oct  5 2008 - river@wikimedia.org
-- initial release

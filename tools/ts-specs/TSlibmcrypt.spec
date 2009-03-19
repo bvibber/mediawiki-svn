@@ -1,8 +1,3 @@
-#
-# spec file for package TSlibmcrypt
-#
-# includes module(s): libmcrypt
-
 %include Solaris.inc
 
 %include arch64.inc
@@ -18,6 +13,7 @@ BuildRoot:               %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:	TSautomake
 BuildRequires:	TSautoconf
+BuildRequires: TSlibtool
 
 %include default-depend.inc
 
@@ -38,25 +34,11 @@ mkdir %name-%version/%{base_arch}
 %libmcrypt.prep -d %name-%version/%{base_arch}
 
 %build
-CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
-if test "x$CPUS" = "x" -o $CPUS = 0; then
-    CPUS=1
-fi
-
-export CC="cc"
-export CXX="CC"
-export CPPFLAGS="-I/usr/sfw/include"
-export MSGFMT="/usr/bin/msgfmt"
-
 %include arch64.inc
-export CFLAGS="%optflags -m64 -I/usr/sfw/include -DANSICPP -L/usr/sfw/lib/%_arch64"
-export RPM_OPT_FLAGS="$CFLAGS"
-export LDFLAGS="-m64 -L/usr/sfw/lib/%_arch64 -R/usr/sfw/lib/%_arch64"
+%include stdenv.inc
 %libmcrypt64.build -d %name-%version/%_arch64
 %include base.inc
-export LDFLAGS="-L/usr/sfw/lib -R/usr/sfw/lib"
-export CFLAGS="%optflags -I/usr/sfw/include -DANSICPP -L/usr/sfw/lib"
-export RPM_OPT_FLAGS="$CFLAGS"
+%include stdenv.inc
 %libmcrypt.build -d %name-%version/%{base_arch}
 
 %install
@@ -78,32 +60,16 @@ rm -rf $RPM_BUILD_ROOT%{_includedir}/ltdl.h
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_libdir}
+%defattr (-, root, root)
 %{_libdir}/lib*.so*
-%dir %attr (0755, root, bin) %{_libdir}/libmcrypt
 %{_libdir}/libmcrypt/*.so
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64/libmcrypt
 %{_libdir}/%_arch64/libmcrypt/*.so
-%dir %attr(0755, root, sys) %{_datadir}
-%dir %attr(0755, root, bin) %{_mandir}
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64
 %{_libdir}/%_arch64/lib*.so*
 
 %files devel
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_bindir}
+%defattr (-, root, root)
 %{_bindir}/libmcrypt-config
-%dir %attr (0755, root, bin) %{_includedir}
-%{_includedir}/*
-%dir %attr(0755, root, sys) %{_datadir}
-%dir %attr(0755, root, other) %{_datadir}/aclocal
-%{_datadir}/aclocal/*
-%dir %attr(0755, root, bin) %{_mandir}
-%dir %attr(0755, root, bin) %{_mandir}/man3
-%{_mandir}/man3/*
-%{_bindir}/%_arch64/libmcrypt-config
-
-%changelog
-* Sun Oct  5 2008 - river@wikimedia.org
-- initial spec
+%{_bindir}/%_arch64
+%{_includedir}
+%{_datadir}/aclocal
+%{_mandir}/man3
