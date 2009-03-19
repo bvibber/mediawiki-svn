@@ -583,37 +583,7 @@ class mvRSSFeed extends ChannelFeed {
 			if( $pmvd->wiki_title){			
 				$pMvTitle =  new MV_Title( $pmvd->wiki_title );
 				$pAnnoStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $pMvTitle->getNearStreamName( 0 ) );
-				
-				$parent_clip_desc = 'Parent Clip';
-				if($pmvd->Speech_by){	
-					$personTitle = Title :: newFromText( $pmvd->Speech_by );
-					$parent_clip_desc = 'Speech By ' . $personTitle->getText();
-				}									
-				$pMvTitle =  new MV_Title( $pmvd->wiki_title );
-				$pAnnoStreamLink = Title :: MakeTitle( MV_NS_STREAM, $pMvTitle->getNearStreamName( 0 ) );
-				$clip_desc_txt = 'Segment';
-				if($pmvd->Speech_by){	
-					$personTitle = Title :: newFromText( $pmvd->Speech_by );
-					$clip_desc_txt = 'Speech By ' . $personTitle->getText();
-				}					
-					
-				$desc_html.='This clip is part of a '. seconds2Description ( $pMvTitle->getSegmentDuration() ). ' ' . 
-					$sk->makeKnownLinkObj($pAnnoStreamLink, $clip_desc_txt );
-				if($pmvd->category){
-					$desc_html.=' <br>Covering: ';
-					$coma='';
-					foreach($pmvd->category as $cat_titlekey ){
-						$cTitle = $cTitle = Title :: MakeTitle( NS_CATEGORY, $cat_titlekey );
-						$desc_html .= $coma . $sk->makeKnownLinkObj( $cTitle, $cTitle->getText() );
-						$coma=', ';
-					}
-				}
-				if($pmvd->Bill){
-					$desc_html.=' <br>Bill: ';						
-					$bTitle = Title :: newFromText( $pmvd->Bill );
-					$desc_html .= $sk->makeKnownLinkObj( $bTitle, $bTitle->getText() );					
-				}					
-			}	
+			}			
 		}
 		
 		
@@ -661,20 +631,27 @@ if($stream_url) {
 <?php echo mvRSSFeed::xmlEncode( $talkpage->getFullUrl() )?>
 </comments>
 <?php
+$person='';
+if($pmvd && $pmvd->Speech_by ){
+	$personTitle = Title :: newFromText( $pmvd->Speech_by );				
+?>
+<media:person label="<?php echo $personTitle->getText() ?>" url="<?php echo mvRSSFeed::xmlEncode( $personTitle->getFullURL() ); ?>
+<?php
+}
 //handle any parent clip tag info: 
 if( $pmvd ){ ?>
-	<media:parent_clip label="<?php echo $parent_clip_desc ?>" url="<?php echo mvRSSFeed::xmlEncode( $pAnnoStreamTitle->getFullUrl() )  ?>" />
+<media:parent_clip label="<?php echo $parent_clip_desc ?>" url="<?php echo mvRSSFeed::xmlEncode( $pAnnoStreamTitle->getFullUrl() )  ?>" />
 	<?php if( $pmvd->Bill ){ 		
 		$bTitle = Title :: newFromText( $pmvd->Bill );
 		?>
-		<media:bill label="<?php echo $bTitle->getText() ?>" url="<?php echo mvRSSFeed::xmlEncode( $bTitle->getFullURL() );?>" />		
-	<?php }
+<media:bill label="<?php echo $bTitle->getText() ?>" url="<?php echo mvRSSFeed::xmlEncode( $bTitle->getFullURL() );?>" />		
+<?php }
 	if( $pmvd->category ){  
 		foreach($pmvd->category as $cat_titlekey ){ 
 			$cTitle = $cTitle = Title :: MakeTitle( NS_CATEGORY, $cat_titlekey );
 		?>
-		<media:category label="<?php echo $cTitle->getText() ?> url=<?php echo mvRSSFeed::xmlEncode( $cTitle->getFullUrl())  ?>" />
-		<?php
+		<media:category label="<?php echo $cTitle->getText()?>" url=<?php echo mvRSSFeed::xmlEncode( $cTitle->getFullUrl())  ?>" />
+<?php
 		}
 	}
 }

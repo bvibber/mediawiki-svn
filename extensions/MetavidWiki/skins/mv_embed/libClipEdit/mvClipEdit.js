@@ -379,9 +379,15 @@ mvClipEdit.prototype = {
 			'<div style="clear: both;"/>'+		
 			'<input id="mv_preview_clip" type="button" value="Preview/Play In-out points">';
 	},
-	getInsertDesc:function(){
-		return '<h3>Inline Description</h3><br>'+ 				
-					'<textarea style="width:300px;" id="mv_inline_img_desc" rows="4" cols="30"></textarea><br>';
+	getInsertDesc:function(){		
+		var o= '<h3>Inline Description</h3>'+ 				
+					'<textarea style="width:375px;" id="mv_inline_img_desc" rows="5" cols="30">';				
+		if( this.p_rsdObj ){
+			//if we have a parent remote search driver let it parse the inline description		
+			o+= this.rObj.pSobj.getInlineDescWiki( this.rObj );
+		}
+		o+='</textarea><br>';		
+		return o;
 	},
 	getInsertAction:function(){
 		return '<h3>Actions</h3>'+
@@ -457,7 +463,7 @@ mvClipEdit.prototype = {
 		this.applyInsertControlBindings();
 	},
 	applyVideoAdj:function(){		
-		js_log('applyVideoAdj::');		
+		js_log('applyVideoAdj::');				
 		//update video related keys		
 		this.rObj['start_time'] = $j('#mv_start_hr_rsd').val();
 		this.rObj['end_time'] = $j('#mv_end_hr_rsd').val();

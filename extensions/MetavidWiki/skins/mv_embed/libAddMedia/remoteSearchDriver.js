@@ -794,7 +794,7 @@ remoteSearchDriver.prototype = {
 						mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
 				'</div>'+
 				'<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
-					'top:35px;left:' + (maxWidth+30) +'px;bottom:0px;right:0px;">'+
+					'top:35px;left:' + (maxWidth+30) +'px;bottom:0px;right:0px;padding:5px;overflow:auto;">'+
 					mv_get_loading_img() +  					
 				'</div>'+
 			'</div>');
@@ -1364,7 +1364,7 @@ mvBaseRemoteSearch.prototype = {
 		this.last_query = $j('#rsd_q').val();
 		this.last_offset = this.cp.offset;
 		//@@todo its possible that video rss is the "default" format we could put that logic here: 
-	},
+	},	
 	/*
 	* Parses and adds video rss based input format
 	* @param $data XML data to parse
@@ -1431,6 +1431,14 @@ mvBaseRemoteSearch.prototype = {
 	//by default just return the existing image with callback 
 	getImageObj:function( rObj, size, callback){
 		callback( {'url':rObj.poster} );
+	},
+	//by default just return the rObj.desc
+	getInlineDescWiki:function( rObj ){
+		//return striped html  & trim white space 
+		if(rObj.desc)
+			return rObj.desc.replace(/(<([^>]+)>)/ig,"").replace(/^\s+|\s+$/g,"");
+		//no desc avaliable: 
+		return '';
 	},
 	//by default just return the poster (clients can overide) 
 	getImageTransform:function(rObj, opt){

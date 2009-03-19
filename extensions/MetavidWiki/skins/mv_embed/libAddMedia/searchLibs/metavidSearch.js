@@ -62,11 +62,17 @@ metavidSearch.prototype = {
 		});
 	},
 	getEmbedWikiText:function(rObj, options){
-		//if we are using a local copy do the standard b:  
+		//if we are using a local copy do the standard embed:  
 		if( this.cp.local_copy == true)
 			return this.parent_getEmbedWikiText(rObj, options);								
-		//if local_copy is false and embed metavid extension is enabled: 		
-		return 
+		//else get using the updated property id::		
+		js_log('getEmbedWikiText missing embed method for this.cp.local_copy==false');
+	},
+	//format is "quote" followed by [[name of person]]
+	getInlineDescWiki:function( rObj ){		
+		var desc_val = this.parent_getInlineDescWiki(rObj);
+		var desc_parts = desc_val.split(':',2);
+		return '"' + desc_parts[1].replace(/^\s+|\s+$/g,"") + '" by [[' + desc_parts[0].replace(/^\s+|\s+$/g,"") + ']]';
 	},
 	getEmbedHTML:function( rObj , options ){
 		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
