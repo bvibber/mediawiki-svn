@@ -13,19 +13,14 @@ rm -rf %name-%version
 
 %build
 
+%include stdenv.inc
 PATH=/opt/ts/bin:$PATH
 
-./configure --prefix=%{_prefix}			\
-	    --bindir=%{_bindir}			\
-	    --includedir=%{_includedir}		\
-	    --mandir=%{_mandir}			\
-            --libdir=%{_libdir}                 \
-            --enable-rpath			\
-
-gmake -j$CPUS all
+%_configure --enable-rpath
+%_make
 
 %install
-gmake DESTDIR=${RPM_BUILD_ROOT} install
+%_make DESTDIR=${RPM_BUILD_ROOT} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
