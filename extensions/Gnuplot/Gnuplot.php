@@ -147,6 +147,6 @@ function getOutputName ( $gnuplotsrc ) {
  * Output  : the filesystem path for the file
  */
 function getSourceDataPath ( $name ) {
-	$h = Image::newFromName($name);
+	$h = wfFindFile($name);
 	return $h->exists() ? $h->getImagePath() : null;
 }

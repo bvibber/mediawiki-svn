@@ -60,7 +60,7 @@ class TaggedImages extends SpecialPage {
 
 			$res = $db->query($SQL);
 		while ($o = $db->fetchObject($res)) {
-			$img = Image::newFromName($o->img_name);
+			$img = wfFindFile($o->img_name);
 			$this->add($img, '');
 		}
 		$db->freeResult($res);

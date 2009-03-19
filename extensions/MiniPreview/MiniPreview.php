@@ -388,7 +388,7 @@ function wfMiniPreviewGetPreviewForGallery ( $id , $title , $imagePage ) {
 function wfMiniPreviewGetImageData ( $image_titles , &$image_data ) {
 	$image_data = array(); # Paranoia
 	foreach ( $image_titles AS $i ) {
-		$image_data[$i] = Image::newFromName( $i );
+		$image_data[$i] = wfFindFile( $i );
 		$image_data[$i]->load();
 	}
 }

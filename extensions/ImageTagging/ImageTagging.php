@@ -94,7 +94,7 @@ function addTag($action, $article) {
 	$tagName = preg_replace( "/[\"'<>]/", "", $tagName );
 	$imgName = preg_replace( "/[\"'<>]/", "", $imgName );
 
-	$img = Image::newFromName($imgName);
+	$img = wfFindFile($imgName);
 	if ($img) {
 		$imgTitle = $img->getTitle();
 
@@ -150,7 +150,7 @@ function removeTag($action, $article) {
 	$tagName = preg_replace( "/[\"'<>]/", "", $tagName );
 	$imgName = preg_replace( "/[\"'<>]/", "", $imgName );
 
-	$img = Image::newFromName($imgName);
+	$img = wfFindFile($imgName);
 	if ($img) {
 		$imgTitle = $img->getTitle();
 

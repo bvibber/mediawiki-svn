@@ -70,7 +70,7 @@ class TreeAndMenu {
 		# Convert image titles to file paths and store as JS to update dTree
 		foreach ($wgTreeViewImages as $k => $v) {
 			$title = Title::newFromText($v,NS_IMAGE);
-			$image = Image::newFromTitle($title);
+			$image = wfFindFile($title);
 			$v = $image && $image->exists() ? $image->getURL() : $wgTreeViewImages[$k];
 			$this->images .= "tree.icon['$k'] = '$v';";
 			}
