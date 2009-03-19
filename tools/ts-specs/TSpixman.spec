@@ -30,24 +30,13 @@ mkdir %name-%version/%{base_arch}
 %pixman.prep -d %name-%version/%{base_arch}
 
 %build
-CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
-if test "x$CPUS" = "x" -o $CPUS = 0; then
-    CPUS=1
-fi
-
-export CC="cc"
-export CXX="CC"
 
 %include arch64.inc
-export CFLAGS="%optflags"
-export RPM_OPT_FLAGS="$CFLAGS"
-export LDFLAGS="%_ldflags -L/usr/sfw/lib/%_arch64 -R/usr/sfw/lib/%_arch64:%{_libdir}"
+%include stdenv.inc
 %pixman64.build -d %name-%version/%_arch64
 
 %include base.inc
-export LDFLAGS="%_ldflags -L/usr/sfw/lib -R/usr/sfw/lib:%{_libdir}"
-export CFLAGS="%optflags"
-export RPM_OPT_FLAGS="$CFLAGS"
+%include stdenv.inc
 %pixman.build -d %name-%version/%{base_arch}
 
 %install
@@ -64,22 +53,14 @@ rm -rf $RPM_BUILD_ROOT%{_bindir}/%_arch64
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_libdir}
+%defattr (-, root, root)
 %{_libdir}/lib*.so.*
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64
 %{_libdir}/%_arch64/lib*.so*
 
 %files devel
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_libdir}
+%defattr (-, root, root)
 %{_libdir}/lib*.so
-%dir %attr (0755, root, other) %{_libdir}/pkgconfig
-%{_libdir}/pkgconfig/*
-%dir %attr (0755, root, bin) %{_includedir}
-%dir %attr (0755, root, bin) %{_includedir}/pixman-1
-%{_includedir}/pixman-1/*
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64
+%{_libdir}/pkgconfig
+%{_includedir}/pixman-1
 %{_libdir}/%_arch64/lib*.so
-%dir %attr (0755, root, other) %{_libdir}/%_arch64/pkgconfig
-%{_libdir}/%_arch64/pkgconfig/*
+%{_libdir}/%_arch64/pkgconfig

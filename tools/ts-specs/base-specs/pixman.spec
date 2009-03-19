@@ -13,21 +13,11 @@ rm -rf %name-%version
 
 %build
 
-./configure --prefix=%{_prefix}			\
-	    --bindir=%{_bindir}			\
-	    --includedir=%{_includedir}		\
-	    --mandir=%{_mandir}			\
-            --libdir=%{_libdir}                 \
-            --enable-rpath			\
-	    --disable-static			\
-	    --enable-shared			\
-	    --disable-gtk			\
-	    %{?configure_options}
-
-gmake -j$CPUS all
+%_configure --disable-gtk
+%_make
 
 %install
-gmake DESTDIR=${RPM_BUILD_ROOT} install
+%_make DESTDIR=${RPM_BUILD_ROOT} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
