@@ -106,3 +106,5 @@
 %define xorg_lib        /usr/X11/lib/%{bld_arch}
 %define xorg_inc        /usr/X11/include
 %define xorg_lib_path   -L%xorg_lib -R%xorg_lib
+
+%define _configure ./configure --prefix=%_prefix --bindir=%_bindir --libdir=%_libdir --mandir=%_mandir --datadir=%_datadir --includedir=%_includedir --infodir=%_datadir/info --disable-nls --disable-static

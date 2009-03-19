@@ -91,4 +91,6 @@
 %define xorg_inc        /usr/X11/include
 %define xorg_lib_path   -L%xorg_lib -R%xorg_lib
 
-%define _configure ./configure --prefix=%_prefix --bindir=%_bindir --libdir=%_libdir --mandir=%_mandir --datadir=%_datadir --includedir=%_includedir --disable-nls --disable-static
+%define _configure ./configure --prefix=%_prefix --bindir=%_bindir --libdir=%_libdir --mandir=%_mandir --datadir=%_datadir --includedir=%_includedir --infodir=%_datadir/info --disable-nls --disable-static
+
+%define _make gmake -j`/usr/sbin/psrinfo | grep on-line | wc -l | cut -f1 | awk '{print $1}'`
