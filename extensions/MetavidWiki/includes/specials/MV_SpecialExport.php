@@ -525,6 +525,7 @@ echo $ns?>meta> </<?php echo $ns?>head>
 }
 class mvRSSFeed extends ChannelFeed {
 	function outHeader( $set_content_type=true ) {		
+		global $wgStyleVersion, $wgStylePath;
 		if( $set_content_type )
 			$this->httpHeaders();
 		
@@ -642,7 +643,7 @@ $mvTitle->getStreamNameText() . ' ' .  $time_desc )?></title>
 <?php echo $desc_xml?>
 </description>
 <?php
-global $mvDefaultVideoQualityKey, $mvVidQualityMsgKeyType, $mvDefaultVideoHighQualityKey;
+global $mvDefaultVideoQualityKey, $mvVidQualityMsgKeyType, $mvDefaultVideoHighQualityKey, $mvDefaultFlashQualityKey;
 //check a few different types in order of prefrence: 
 if( $stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoHighQualityKey) ){
 	$mk = $mvDefaultVideoHighQualityKey;

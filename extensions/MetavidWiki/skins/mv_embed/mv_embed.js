@@ -26,7 +26,7 @@ var MV_EMBED_VERSION = '1.0r11';
 
 //if we should use the scriptLoader 
 //( lets you group requests, minimize javascript, and use mediaWiki localization infrastructure) 
-var MV_USE_SCRIPT_LOADER = false;
+var MV_USE_SCRIPT_LOADER = true;
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -243,10 +243,11 @@ var mvJsLoader = {
 			 	 		last_class=i;
 			 	 		coma=',';
 		 	 		}
-		 	 	}	 	 					 	 	 	
+		 	 	}	 
+		 	 	var dbug_attr = (parseUri( getMvEmbedURL() ).queryKey['debug'])?'&debug=true':''; 		 					 	 	 	
 		 	 	this.libs[ last_class ] = 'mvwScriptLoader.php?class=' + class_set +
-		 	 						'&urid='+ getMvUniqueReqId()+
-		 	 						(parseUri( getMvEmbedURL() ).queryKey['debug'])?'&debug=true':''; 			
+		 	 						'&urid=' + getMvUniqueReqId() + dbug_attr;
+		 	 								
 		 	}else{			 	 		 	 			 		 	 
 				//do many requests:
 			 	for(var i in libs){ //for in loop oky on object
