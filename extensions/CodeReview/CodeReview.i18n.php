@@ -113,6 +113,7 @@ $4',
 	'repoadmin-edit-sucess' => 'The repository "[[Special:Code/$1|$1]]" has been successfully modified.',
 
 	'right-repoadmin' => 'Manage code repositories',
+	'right-codereview-use' => 'Use of Special:Code',
 	'right-codereview-add-tag' => 'Add new tags to revisions',
 	'right-codereview-remove-tag' => 'Remove tags from revisions',
 	'right-codereview-post-comment' => 'Add comments on revisions',
