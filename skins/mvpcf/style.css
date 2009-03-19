@@ -908,7 +908,7 @@ p#copyInfo a:hover {color: #999;}
 
 ul {
 	line-height:1.5em;
-	list-style-image:url(bullet.gif);
+	/*list-style-image:url(bullet.gif);*/
 	list-style-type:square;
 	margin:0.3em 0 0 1.5em;
 	padding:0;
