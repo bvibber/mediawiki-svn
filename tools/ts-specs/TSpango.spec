@@ -13,11 +13,15 @@ BuildRoot:               %{_tmppath}/%{name}-%{version}-build
 
 %include default-depend.inc
 
+Requires: TScairo
+BuildRequires: TScairo-devel
+
 %package devel
 Summary:		 %{summary} - development files
 SUNW_BaseDir:            %{_basedir}
 %include default-depend.inc
-Requires:		 %name
+Requires:	%name
+Requires:	TScairo-devel
 
 %prep
 rm -rf %name-%version
