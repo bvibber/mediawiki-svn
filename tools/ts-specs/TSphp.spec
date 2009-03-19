@@ -15,7 +15,7 @@ BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 BuildRequires: TSpcre-devel
 BuildRequires: TScurl-devel
 BuildRequires: TSlibmcrypt-devel
-Buildrequires: TSmysql-devel
+BuildRequires: TSmysql-devel
 BuildRequires: TSlibiconv-devel
 
 Requires: TSpcre
@@ -43,11 +43,11 @@ export CC="cc"
 export CXX="CC"
 export CFLAGS="%optflags -L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql"
 export LDFLAGS="%{_ldflags}"
-
+export PKG_CONFIG_PATH=/opt/ts/lib/pkgconfig:/usr/lib/pkgconfig:/usr/sfw/lib/pkgconfig
 export PATH=/opt/TSmysql/bin:/opt/ts/bin:$PATH
-export EXTRA_LDFLAGS_PROGRAM='-L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql -L/opt/ts/lib -R/opt/ts/lib'
+export EXTRA_LDFLAGS_PROGRAM='-L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql -L/opt/ts/lib -R/opt/ts/lib -R/usr/sfw/lib'
 export LIBS='-L/opt/TSmysql/lib/mysql -R/opt/TSmysql/lib/mysql'
-export CPPFLAGS='-I/opt/ts/include -I/opt/TSmysql/include'
+export CPPFLAGS='-I/opt/ts/include -I/opt/TSmysql/include -I/usr/sfw/include'
 
 ./configure  --prefix=%{_prefix} 				\
 	--with-xmlrpc 						\
@@ -70,7 +70,11 @@ export CPPFLAGS='-I/opt/ts/include -I/opt/TSmysql/include'
         --enable-ftp 						\
         --with-mysqli=/opt/TSmysql/bin/mysql_config 		\
 	--with-mcrypt=/opt/ts					\
-	--with-iconv=/opt/ts				\
+	--with-iconv=/opt/ts					\
+	--with-gd						\
+	--with-png=/usr						\
+	--with-jpeg=/usr					\
+	--enable-bcmath						\
 
 
 gmake -j$CPUS
