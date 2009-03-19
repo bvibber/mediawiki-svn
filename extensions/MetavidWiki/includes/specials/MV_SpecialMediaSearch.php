@@ -416,8 +416,9 @@ class MV_SpecialMediaSearch {
 						$clip_desc_txt = 'Speech By ' . $personTitle->getText();
 					}					
 						
-					$pmeta_out.='This clip is part of a '. seconds2Description ( $pMvTitle->getSegmentDuration() ). ' ' . 
-						$sk->makeKnownLinkObj($pAnnoStreamLink, $clip_desc_txt );
+					$pmeta_out.='This '. $sk->makeKnownLinkObj($pAnnoStreamLink, seconds2Description ( $mvTitle->getSegmentDuration(), true, true ) ).
+								' clip is part of a larger '. 
+								$sk->makeKnownLinkObj($pAnnoStreamLink, seconds2Description ( $pMvTitle->getSegmentDuration(), true, true ) ) . ' Speech';
 					if($pmvd->category){
 						$pmeta_out.='<br>Covering: ';
 						$coma='';
@@ -859,9 +860,9 @@ class MV_SpecialMediaSearch {
 					if ( $f['t'] != 'match' ) // no desc for text search
 						$o .= ( $query_key ) ? $a : $a . wfMsg( 'mv_' . $f['t'] ) . ' ';
 				if ( $f['t'] == 'date_range' ) { // handle special case of date range:
-					$o .= wfMsg( 'mv_time_separator', $bo . htmlspecialchars( $f['vs'] ) . $bc, $bo . htmlspecialchars( $f['ve'] ) . $bc );
+					$o .= ' '+ wfMsg( 'mv_time_separator', $bo . htmlspecialchars( $f['vs'] ) . $bc, $bo . htmlspecialchars( $f['ve'] ) . $bc );
 				} else {
-					$o .= $bo . str_replace( '_', ' ', htmlspecialchars( $f['v'] ) ) . $bc;
+					$o .=' '. $bo . str_replace( '_', ' ', htmlspecialchars( $f['v'] ) ) . $bc .' ';
 				}
 			}
 		}

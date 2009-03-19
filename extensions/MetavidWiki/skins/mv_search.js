@@ -389,6 +389,8 @@ function mv_add_person_ac(inx){
 				js_log('selected:' + v.innerHTML );
 				//update the image:
 				$j('#mv_person_img_'+inx).attr('src', $j(v).children('img').attr('src'));
+				//update the text: 
+				$j('#mv_person_input_'+inx).val( $j('#mv_person_input_'+inx).val().replace('_', ' ') );
 			},
 			formatItem:function(row){
 				//return '<img width="44" src="'+ row[2] + '">'+row[1];

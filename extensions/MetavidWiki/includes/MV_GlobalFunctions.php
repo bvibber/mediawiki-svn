@@ -672,18 +672,22 @@ function seconds2ntp( $seconds, $short = false ) {
 		return sprintf( "%d:%02d:%02d", $dur['hours'], $dur['minutes'], $dur['seconds'] );
 	}
 }
-function seconds2Description( $seconds, $short=false){
+function seconds2Description( $seconds, $short=false, $singular=false){
 	$dur = time_duration_2array( $seconds );
 	$o='';
-	if( $dur['hours'] )
-		$o.= wfMsg('mv_hours', intval( $dur['hours']) );
-	if( $dur['minutes'] ){
+	if( $dur['hours'] != 0  ){
+		$msg = ($singular)?'mv_hours_singular':'mv_hours';
+		$o.= wfMsg($msg, intval( $dur['hours']) );
+	}		
+	if( $dur['minutes'] != 0  ){
+		$msg = ($singular)?'mv_minutes_singular':'mv_minutes';
 		$o.=($o!='')?' ':'';
-		$o.= wfMsg('mv_minutes', intval( $dur['minutes']) );
-	}
-	if( $short==false && $dur['seconds'] ){
+		$o.= wfMsg($msg, intval( $dur['minutes']) );
+	}		
+	if( ( $short == false || $o == '' ) && $dur['seconds'] ){
+		$msg = ($singular)?'mv_seconds_singular':'mv_seconds';		
 		$o.=($o!='')?' ':'';
-		$o.= wfMsg('mv_seconds', intval( $dur['seconds']) );
+		$o.= wfMsg($msg, intval( $dur['seconds']) );
 	}
 	return $o;
 }
