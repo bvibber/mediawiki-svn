@@ -4,12 +4,14 @@
  */
 class SpecialRecordAdmin extends SpecialPage {
 
-	var $form = '';
-	var $type = '';
-	var $types = array();
-	var $orderby = '';
-	var $desc = false;
-	var $guid = '';
+	var $form      = '';
+	var $formClass = '';
+	var $formAtts  = '';
+	var $type      = '';
+	var $types     = array();
+	var $orderBy   = '';
+	var $desc      = false;
+	var $guid      = '';
 
 	function __construct() {
 		# Name to use for creating a new record either via RecordAdmin or a public form
@@ -30,6 +32,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$record   = $wgRequest->getText( 'wpRecord' );
 		$invert   = $wgRequest->getText( 'wpInvert' );
 		$title    = $this->title = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$action   = $title->getLocalURL( 'action=submit' );
 		$wpTitle  = trim( $wgRequest->getText( 'wpTitle' ) );
 
 		if ( $type && $wgRecordAdminUseNamespaces ) {
@@ -61,11 +64,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# If no type selected, render form for record types and create record-type
 		if ( empty( $type ) ) {
-			$wgOut->addHTML( Xml::element(
-				'form',
-				array( 'class' => 'recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ),
-				null
-			) );
+			$wgOut->addHTML( Xml::element( 'form', array( 'class' => 'recordadmin', 'action' => $action, 'method' => 'post' ), null ) );
 			$wgOut->addWikiText( "<div class='visualClear'></div>\n==" . wfMsg( 'recordadmin-select' ) . "==\n" );
 
 			# Get titles in $wgRecordAdminCategory and build option list
@@ -134,9 +133,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			$this->populateForm( $posted );
 
 			# Render the form
-			$wgOut->addHTML(
-				Xml::element( 'form', array( 'class' => strtolower( $type ) . '-record recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
-			);
+			$wgOut->addHTML( "<form class=\"{$this->formClass}\"{$this->formAtts} action=\"$action\" method=\"POST\">" );
 			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-create', $type ) . "==\n" );
 			$wgOut->addHTML(
 				'<b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
@@ -202,7 +199,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
 
 				# Render the form
-				$wgOut->addHTML( Xml::element( 'form', array( 'class' => 'recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null ) );
+				$wgOut->addHTML( "<form class=\"{$this->formClass}\"{$this->formAtts} action=\"$action\" method=\"POST\">" );
 				$wgOut->addHTML( $this->form );
 				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
 				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
@@ -276,7 +273,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Sort the records according to "orderby" parameter
 		if ( $this->desc = eregi( ' +desc *$', $orderby ) ) $orderby = eregi_replace( ' +desc *$', '', $orderby );
-		$this->orderby = $orderby;
+		$this->orderBy = $orderby;
 		usort( $records, array( $this, 'sortCallback' ) );
 
 		return $records;
@@ -286,9 +283,9 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Compares to arrays by column
 	 */
 	function sortCallback( $row1, $row2 ) {
-		if ( !isset( $row1[$this->orderby] ) || !isset( $row1[$this->orderby] ) ) return 0;
-		if ( $row1[$this->orderby] == $row2[$this->orderby] ) return 0;
-		$cmp = $row1[$this->orderby] > $row2[$this->orderby] ? 1 : -1;
+		if ( !isset( $row1[$this->orderBy] ) || !isset( $row1[$this->orderBy] ) ) return 0;
+		if ( $row1[$this->orderBy] == $row2[$this->orderBy] ) return 0;
+		$cmp = $row1[$this->orderBy] > $row2[$this->orderBy] ? 1 : -1;
 		return $this->desc ? -$cmp : $cmp;
 	}
 
@@ -364,13 +361,26 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Read in and prepare the form (for use as a search filter) for passed record type
 	 * - we're using the record's own form as a filter for searching for records
 	 * - extract only the content from between the form tags and remove any submit inputs
+	 * - also record the forms attributes and class if any
 	 */
 	function preProcessForm( $type ) {
 		$this->type = $type;
+		$this->formClass = strtolower( $type ) . '-record recordadmin';
+		$this->formAtts = '';
 		$title = Title::newFromText( $type, NS_FORM );
 		if ( $title->exists() ) {
+
+			# Get the form content
 			$form = new Article( $title );
 			$form = $form->getContent();
+			
+			# Extract form's class and other attributes (except method and action)
+			if ( preg_match( "|<form\s*([^>]+)\s*>.+</form>|s", $form, $atts )) {
+				if ( preg_match( "|class\s*=\s*[\"'](.+?)['\"]|", $atts[1], $m ) ) $this->formClass .= ' ' . $m[1];
+				$this->formAtts = ' ' . trim( preg_replace( "/(class|action|method)\s*=\s*[\"'](.*?)['\"]/", "", $atts[1] ) );
+			}
+			
+			# Process content
 			$form = preg_replace( '#<input.+?type=[\'"]?submit["\']?.+?/(input| *)>#', '', $form );    # remove submits
 			$form = preg_replace( '#^.+?<form.*?>#s', '', $form );                                     # remove up to and including form open
 			$form = preg_replace( '#</form>.+?$#s', '', $form );                                       # remove form close and everything after
@@ -384,6 +394,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				. '">(' . wfMsg( 'recordadmin-createlink' ) . ')</a><br />';
 		}
 		$this->form = $form;
+		print $this->formAtts;
 	}
 
 
