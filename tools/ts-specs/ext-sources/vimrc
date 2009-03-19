@@ -1,4 +1,0 @@
-" Load the global TS vimrc
-runtime! ts.vim
-
-" Set your local vim options here
