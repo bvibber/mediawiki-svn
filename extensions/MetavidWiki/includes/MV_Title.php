@@ -44,8 +44,9 @@
  		// print "mv_title stream name: " . $this->stream_name. "\n";
  	}
  	function inheritTitle( & $title ) {
- 		if(!is_object($title))
- 			print_r( debug_backtrace() );
+ 		if( !is_object($title))
+ 			return false;
+ 			//print_r( debug_backtrace() );
  		foreach ( $title as $k => $v ) {
  			$this->$k = $v;
  		}

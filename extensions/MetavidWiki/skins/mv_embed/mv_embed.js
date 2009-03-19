@@ -24,10 +24,6 @@ if( MV_EMBED_VERSION ){
 //used to grab fresh copies of scripts. (should be changed on commit)  
 var MV_EMBED_VERSION = '1.0r12';
 
-//if we should use the scriptLoader 
-//( lets you group requests, minimize javascript, and use mediaWiki localization infrastructure) 
-var MV_USE_SCRIPT_LOADER = true;
-
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
 
@@ -232,7 +228,7 @@ var mvJsLoader = {
 				return ;
 			}					 						
 	 		//check if we should use the script loader to combine all the requests into one:
-		 	if( MV_USE_SCRIPT_LOADER ){		
+		 	if( usingScriptLoaderCheck() ){		
 		 		var class_set = '';
 		 	 	var last_class = '';	
 		 	 	var coma = ''; 
@@ -1236,7 +1232,10 @@ function loadExternalCss(url){
    e.rel = 'stylesheet';
    document.getElementsByTagName("head")[0].appendChild(e);
 }
-
+function usingScriptLoaderCheck(){
+	return ( getMvEmbedURL().indexOf('mvwScriptLoader.php') != -1 )?true:false;
+	
+}
 function getMvEmbedURL(){
 	js_elements = document.getElementsByTagName("script");
 	for(var i=0;i<js_elements.length; i++){		

@@ -580,41 +580,40 @@ class mvRSSFeed extends ChannelFeed {
 		if( $mvGetParentMeta && strtolower( $mvTitle->getMvdTypeKey() ) == 'ht_en'){			
 			$pmvd = MV_Index::getParentAnnotativeLayers($mvTitle);		
 			
-			$pMvTitle =  new MV_Title( $pmvd->wiki_title );
-			$pAnnoStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $pMvTitle->getNearStreamName( 0 ) );
-			
-			$parent_clip_desc = 'Parent Clip';
-			if($pmvd->Speech_by){	
-				$personTitle = Title :: newFromText( $pmvd->Speech_by );
-				$parent_clip_desc = 'Speech By ' . $personTitle->getText();
-			}
-			//append to the html output: should be merged with getUnifiedResultsHTML stuff
-			if( $pmvd->wiki_title ){											
-					$pMvTitle =  new MV_Title( $pmvd->wiki_title );
-					$pAnnoStreamLink = Title :: MakeTitle( MV_NS_STREAM, $pMvTitle->getNearStreamName( 0 ) );
-					$clip_desc_txt = 'Segment';
-					if($pmvd->Speech_by){	
-						$personTitle = Title :: newFromText( $pmvd->Speech_by );
-						$clip_desc_txt = 'Speech By ' . $personTitle->getText();
-					}					
-						
-					$desc_html.='This clip is part of a '. seconds2Description ( $pMvTitle->getSegmentDuration() ). ' ' . 
-						$sk->makeKnownLinkObj($pAnnoStreamLink, $clip_desc_txt );
-					if($pmvd->category){
-						$desc_html.=' <br>Covering: ';
-						$coma='';
-						foreach($pmvd->category as $cat_titlekey ){
-							$cTitle = $cTitle = Title :: MakeTitle( NS_CATEGORY, $cat_titlekey );
-							$desc_html .= $coma . $sk->makeKnownLinkObj( $cTitle, $cTitle->getText() );
-							$coma=', ';
-						}
+			if( $pmvd->wiki_title){			
+				$pMvTitle =  new MV_Title( $pmvd->wiki_title );
+				$pAnnoStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $pMvTitle->getNearStreamName( 0 ) );
+				
+				$parent_clip_desc = 'Parent Clip';
+				if($pmvd->Speech_by){	
+					$personTitle = Title :: newFromText( $pmvd->Speech_by );
+					$parent_clip_desc = 'Speech By ' . $personTitle->getText();
+				}									
+				$pMvTitle =  new MV_Title( $pmvd->wiki_title );
+				$pAnnoStreamLink = Title :: MakeTitle( MV_NS_STREAM, $pMvTitle->getNearStreamName( 0 ) );
+				$clip_desc_txt = 'Segment';
+				if($pmvd->Speech_by){	
+					$personTitle = Title :: newFromText( $pmvd->Speech_by );
+					$clip_desc_txt = 'Speech By ' . $personTitle->getText();
+				}					
+					
+				$desc_html.='This clip is part of a '. seconds2Description ( $pMvTitle->getSegmentDuration() ). ' ' . 
+					$sk->makeKnownLinkObj($pAnnoStreamLink, $clip_desc_txt );
+				if($pmvd->category){
+					$desc_html.=' <br>Covering: ';
+					$coma='';
+					foreach($pmvd->category as $cat_titlekey ){
+						$cTitle = $cTitle = Title :: MakeTitle( NS_CATEGORY, $cat_titlekey );
+						$desc_html .= $coma . $sk->makeKnownLinkObj( $cTitle, $cTitle->getText() );
+						$coma=', ';
 					}
-					if($pmvd->Bill){
-						$desc_html.=' <br>Bill: ';						
-						$bTitle = Title :: newFromText( $pmvd->Bill );
-						$desc_html .= $sk->makeKnownLinkObj( $bTitle, $bTitle->getText() );					
-					}					
-				}	
+				}
+				if($pmvd->Bill){
+					$desc_html.=' <br>Bill: ';						
+					$bTitle = Title :: newFromText( $pmvd->Bill );
+					$desc_html .= $sk->makeKnownLinkObj( $bTitle, $bTitle->getText() );					
+				}					
+			}	
 		}
 		
 		
