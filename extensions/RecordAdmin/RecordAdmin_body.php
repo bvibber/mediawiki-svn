@@ -16,7 +16,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	function __construct() {
 		# Name to use for creating a new record either via RecordAdmin or a public form
 		# todo: should add a hook here for custom default-naming
-		$this->guid = strftime( '%Y%m%d', time() ) . '-' . substr( strtoupper( uniqid() ), -5 );
+		$this->guid = strftime( '%Y%m%d', time() ) . '-' . substr( strtoupper( uniqid('', true) ), -5 );
 		wfLoadExtensionMessages ( 'RecordAdmin' );
 		SpecialPage::SpecialPage( 'RecordAdmin', 'recordadmin' );
 	}
@@ -388,6 +388,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			$form = preg_replace( '#(<select.+?>)\s*(?!<option/>)#s', '$1<option selected/>', $form ); # ensure all select lists have default blank
 		}
 		else {
+
 			# Create a red link to the form if it doesn't exist
 			$form = '<b>' . wfMsg( 'recordadmin-noform', $type ) . '</b>'
 				. '<br /><a href="' . $title->getLocalURL( 'action=edit' )
