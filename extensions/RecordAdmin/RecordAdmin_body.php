@@ -323,8 +323,8 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		$stripe = '';
 		foreach ( $records as $r ) {
-			$tsc = $wgLang->timeanddate( $r['created'], true, true );
-			$tsm = $wgLang->timeanddate( $r['modified'], true, true );
+			$tsc = $wgLang->date( $r['created'], true, true ) . ', ' . $wgLang->time( $r['created'], true, true );
+			$tsm = $wgLang->date( $r['modified'], true, true ) . ', ' . $wgLang->time( $r['modified'], true, true );
 			$t   = $r[0];
 			$u   = $t->getLocalURL();
 			$col = $r['title'];
