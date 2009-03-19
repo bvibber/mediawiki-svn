@@ -12,7 +12,7 @@ $messages['en'] = array(
 		'extdist-choose-extension' => 'Select which extension you want to download:',
 		'extdist-wc-empty' => 'The configured working copy directory has no distributable extensions!',
 		'extdist-submit-extension' => 'Continue',
-		'extdist-current-version' => 'Current version (trunk)',
+		'extdist-current-version' => 'Development version (trunk)',
 		'extdist-choose-version' => '
 <big>You are downloading the <b>$1</b> extension.</big>
 
