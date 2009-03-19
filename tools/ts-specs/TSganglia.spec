@@ -18,7 +18,9 @@ BuildRoot:		%{_tmppath}/%{name}-%{version}-build
 
 Requires: SUNWgccruntime
 Requires: TSlibconfuse
+Requires: TSrrdtool
 BuildRequires: TSlibconfuse-devel
+BuildRequires: TSrrdtool-devel
 
 %package root
 Summary:		%{summary} - / filesystem
@@ -48,22 +50,22 @@ SUNW_BaseDir:		/
 
 %build
 
-CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
-if test "x$CPUS" = "x" -o $CPUS = 0; then
-     CPUS=1
-fi
-
 %include stdenv.inc
 CFLAGS="$CFLAGS -std=c99"
-%_configure --with-gmetad
+%_configure 					\
+	--with-gmetad				\
+	--with-librrd=/opt/ts			\
+	--with-libexpat=/opt/ts			\
+	--with-libconfuse=/opt/ts		\
+	--with-libapr=/opt/ts/bin/apr-1-config
+	 
 
-gmake -j$CPUS
+%_make -j$CPUS
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %include stdenv.inc
-
-gmake install DESTDIR=$RPM_BUILD_ROOT
+%_make install DESTDIR=$RPM_BUILD_ROOT
 
 rm ${RPM_BUILD_ROOT}%{_libdir}/libganglia.la
 
