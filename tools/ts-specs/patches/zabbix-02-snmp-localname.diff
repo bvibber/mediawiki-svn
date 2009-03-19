@@ -1,0 +1,24 @@
+--- ./src/zabbix_server/poller/checks_snmp.c.old	Wed Mar 18 07:18:30 2009
++++ ./src/zabbix_server/poller/checks_snmp.c	Wed Mar 18 07:18:46 2009
+@@ -176,8 +176,10 @@
+ 
+ 	zabbix_log (LOG_LEVEL_DEBUG, "OID [%s]", OID);
+ 
++#if 0
+ 	if (NULL != CONFIG_SOURCE_IP)
+ 		session.localname = CONFIG_SOURCE_IP;
++#endif
+ 
+ 	SOCK_STARTUP;
+ 	ss = snmp_open (&session);
+@@ -469,8 +471,10 @@
+ 			session.remote_port);
+ 	}
+ 
++#if 0
+ 	if (NULL != CONFIG_SOURCE_IP)
+ 		session.localname = CONFIG_SOURCE_IP;
++#endif
+ 
+ 	SOCK_STARTUP;
+ 	ss = snmp_open(&session);
