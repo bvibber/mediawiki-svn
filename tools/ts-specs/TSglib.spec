@@ -11,6 +11,9 @@ Version:                 %{glib.version}
 SUNW_BaseDir:            %{_basedir}
 BuildRoot:               %{_tmppath}/%{name}-%{version}-build
 
+BuildRequires: TSpkgconfig
+BuildRequires: TSwhich
+
 %include default-depend.inc
 
 %package devel
@@ -30,38 +33,24 @@ mkdir %name-%version/%{base_arch}
 %glib.prep -d %name-%version/%{base_arch}
 
 %build
-CPUS=`/usr/sbin/psrinfo | grep on-line | wc -l | tr -d ' '`
-if test "x$CPUS" = "x" -o $CPUS = 0; then
-    CPUS=1
-fi
-
-export CC="cc"
-export CXX="CC"
-
 %include arch64.inc
-export PATH=/opt/ts/bin/%_arch64:/opt/ts/bin:/opt/SUNWspro/bin:/usr/ccs/bin:/usr/bin
-export CFLAGS="%optflags"
-export RPM_OPT_FLAGS="$CFLAGS"
-export LDFLAGS="%_ldflags -L%{_libdir} -L/usr/sfw/lib/%_arch64 -R%{_libdir}:/usr/sfw/lib/%_arch64"
-export CPPFLAGS="-I%{_includedir}"
+%include stdenv.inc
 %glib64.build -d %name-%version/%_arch64
 
 %include base.inc
-export PATH=/opt/ts/bin:/opt/SUNWspro/bin:/usr/ccs/bin:/usr/bin
-export LDFLAGS="%_ldflags -L%{_libdir} -L/usr/sfw/lib -R%{_libdir}:/usr/sfw/lib"
-export CFLAGS="%optflags"
-export CPPFLAGS="-I%{_includedir}"
-export RPM_OPT_FLAGS="$CFLAGS"
+%include stdenv.inc
 %glib.build -d %name-%version/%{base_arch}
 
 %install
+%include arch64.inc
+%include stdenv.inc
 %glib64.install -d %name-%version/%_arch64
 rm -f $RPM_BUILD_ROOT%{_libdir}/%_arch64/*.la
-rm -f $RPM_BUILD_ROOT%{_libdir}/%_arch64/*.a
 
+%include base.inc
+%include stdenv.inc
 %glib.install -d %name-%version/%{base_arch}
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.a
 rm -rf $RPM_BUILD_ROOT%{_bindir}/%_arch64
 rm -f $RPM_BUILD_ROOT%{_libdir}/charset.alias
 rm -f $RPM_BUILD_ROOT%{_libdir}/%_arch64/charset.alias
@@ -70,44 +59,28 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/%_arch64/charset.alias
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_bindir}
-%{_bindir}/*
-%dir %attr (0755, root, bin) %{_libdir}
+%defattr (-, root, root)
+%{_bindir}
+%dir %{_libdir}
 %{_libdir}/lib*.so.*
-%dir %attr (0755, root, bin) %{_libdir}/gio
-%dir %attr (0755, root, bin) %{_libdir}/gio/modules
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64/gio
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64/gio/modules
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64
+%dir %{_libdir}/gio
+%dir %{_libdir}/gio/modules
+%dir %{_libdir}/%_arch64/gio
+%dir %{_libdir}/%_arch64/gio/modules
+%dir %{_libdir}/%_arch64
 %{_libdir}/%_arch64/lib*.so.*
-%dir %attr(0755, root, sys) %{_datadir}
-%dir %attr(0755, root, bin) %{_mandir}/man1
-%{_mandir}/man1/*
-%dir %attr(0755, root, other) %{_datadir}/locale
-%dir %attr(0755, root, other) %{_datadir}/locale/*
-%{_datadir}/locale/*/*
-%dir %attr(0755, root, other) %{_datadir}/glib-2.0
-%{_datadir}/glib-2.0/*
+%{_mandir}/man1
+%{_datadir}/locale
+%{_datadir}/glib-2.0
 
 %files devel
-%defattr (-, root, bin)
-%dir %attr (0755, root, bin) %{_libdir}
+%defattr (-, root, root)
 %{_libdir}/lib*.so
-%dir %attr (0755, root, bin) %{_libdir}/glib-2.0
-%{_libdir}/glib-2.0/*
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64/glib-2.0
-%{_libdir}/%_arch64/glib-2.0/*
-%dir %attr (0755, root, bin) %{_includedir}
-%{_includedir}/*
-%dir %attr (0755, root, bin) %{_libdir}/%_arch64
+%{_libdir}/glib-2.0
+%{_libdir}/%_arch64/glib-2.0
+%{_includedir}
 %{_libdir}/%_arch64/lib*.so
-%dir %attr(0755, root, sys) %{_datadir}
-%dir %attr(0755, root, other) %{_datadir}/gtk-doc
-%{_datadir}/gtk-doc/*
-%dir %attr (0755, root, other) %{_libdir}/pkgconfig
-%{_libdir}/pkgconfig/*
-%dir %attr (0755, root, other) %{_libdir}/%_arch64/pkgconfig
-%{_libdir}/%_arch64/pkgconfig/*
-%dir %attr(0755, root, other) %{_datadir}/aclocal
-%{_datadir}/aclocal/*
+%{_datadir}/gtk-doc
+%{_libdir}/pkgconfig
+%{_libdir}/%_arch64/pkgconfig
+%{_datadir}/aclocal

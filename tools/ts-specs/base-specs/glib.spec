@@ -13,25 +13,17 @@ rm -rf %name-%version
 
 %build
 
-export PATH=/opt/ts/bin:$PATH
-./configure --prefix=%{_prefix}			\
-	    --bindir=%{_bindir}			\
-	    --includedir=%{_includedir}		\
-	    --mandir=%{_mandir}			\
-            --libdir=%{_libdir}                 \
-	    --disable-static			\
-	    --enable-shared			\
-		--with-pcre=system		\
-		--with-libiconv=gnu		\
-		--disable-visibility		\
-		--disable-gtk-doc		\
-            %{?configure_options}
+%_configure 				\
+	--with-pcre=system		\
+	--with-libiconv=gnu		\
+	--disable-visibility		\
+	--disable-gtk-doc
 
-/usr/sfw/bin/gmake -j$CPUS all
+%_make all
 
 %install
-export PATH=/opt/ts/bin:$PATH
-/usr/sfw/bin/gmake DESTDIR=${RPM_BUILD_ROOT} install
+%_make DESTDIR=${RPM_BUILD_ROOT} install
+rm -f $RPM_BUILD_ROOT/%_libdir/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
