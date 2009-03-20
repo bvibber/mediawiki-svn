@@ -182,6 +182,7 @@ def main():
 commands={
 	"help":help,
 	"quit":quit,
+	"exit":quit,
 	"ls":ls,
 	"install":install,
 	"uninstall":uninstall,

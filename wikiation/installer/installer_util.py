@@ -31,7 +31,7 @@ def help(args):
 		print
 		print "wikiation installer, interactive mode"
 		print "help: get help"
-		print "quit: quit"
+		print "quit, exit: quit"
 		print "ls <path>: list information on available versions "
 		print "install <path>: installs the version specified"
 		print "install <path> as <name>: installs the version specified under an alternate name"
