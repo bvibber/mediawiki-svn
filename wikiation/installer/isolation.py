@@ -5,7 +5,6 @@
 
 import sys,os, os.path
 import settings_handler as settings
-from mediawiki_installer import installed
 
 #support for wikiation_check_isolation
 
@@ -35,5 +34,11 @@ def difftests(target):
 	difftest=settings.isolation_create
 	command=difftest+" "+target
 	os.system(command)
+
+def installed():
+	"""list installed items"""
+	# XXX COPIED from mediawiki_installer.py
+	#( Else we'd have a recursive import)
+	return os.listdir(settings.instancesdir)
 
 
