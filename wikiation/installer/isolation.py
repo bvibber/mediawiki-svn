@@ -5,6 +5,7 @@
 
 import sys,os, os.path
 import settings_handler as settings
+from mediawiki_installer import installed
 
 #support for wikiation_check_isolation
 
