@@ -8,6 +8,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $formClass = '';
 	var $formAtts  = '';
 	var $type      = '';
+	var $record    = '';
 	var $types     = array();
 	var $orderBy   = '';
 	var $desc      = false;
@@ -29,8 +30,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		$this->setHeaders();
 		$type     = $wgRequest->getText( 'wpType' ) or $type = $param;
 		$newtype  = $wgRequest->getText( 'wpNewType' );
-		$record   = $wgRequest->getText( 'wpRecord' );
 		$invert   = $wgRequest->getText( 'wpInvert' );
+		$record   = $this->record = $wgRequest->getText( 'wpRecord' );
 		$title    = $this->title = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
 		$action   = $title->getLocalURL( 'action=submit' );
 		$wpTitle  = trim( $wgRequest->getText( 'wpTitle' ) );
@@ -52,9 +53,6 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Extract the input names and types used in the form
 		$this->examineForm();
-
-		# Clear any default values
-		$this->populateForm( array() );
 
 		# Process Create New Type form if submitted and user permitted
 		if ( $newtype ) {
@@ -435,9 +433,9 @@ class SpecialRecordAdmin extends SpecialPage {
 					if ( $v ) $html = preg_replace( "|(/?>)$|", " checked $1", $html );
 				break;
 				case 'list':
-					$html = preg_replace_callback("|\{\{.+\}\}|s", array($this, 'parsePart'), $html); # parse any braces
+					$html = preg_replace_callback("|\{\{.+\}\}|s", array($this, 'parsePart'), $html);  # parse any braces
+					if ( empty( $this->record ) ) $html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html ); # remove the currently selected option
 					if ( $v ) {
-						$html = preg_replace( "|(<option[^<>]*) selected|", "$1", $html ); # remove the currently selected option
 						$html = preg_match( "|<option[^>]+value\s*=|s", $html )
 							? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|s", "$1 selected$2", $html )
 							: preg_replace( "|(<option[^>]*)(?=>$v</option>)|s", "$1 selected", $html );
