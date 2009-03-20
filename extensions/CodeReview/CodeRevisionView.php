@@ -303,33 +303,25 @@ class CodeRevisionView extends CodeView {
 	
 	protected function formatImgDiff() {
 		global $wgCodeReviewImgRegex;
-		$viewvc = $this->mRepo->getViewVcBase();
 		// Get image diffs
 		$imgDiffs = $html = '';
 		$modifiedPaths = $this->mRev->getModifiedPaths();
 		foreach ( $modifiedPaths as $row ) {
 			// Typical image file?
 			if( preg_match($wgCodeReviewImgRegex,$row->cp_path) ) {
-				$safePath = wfUrlEncode( $row->cp_path );
 				$imgDiffs .= 'Index: '.htmlspecialchars( $row->cp_path )."\n";
 				$imgDiffs .= '<table border="1px" style="background:white;"><tr>';
 				if( $row->cp_action !== 'A' ) { // old
 					// What was done to it?
-					$alt = $row->cp_action == 'D' ? 'code-rev-modified-d' : 'code-rev-modified-r';
-					$alt = wfMsgHtml($alt);
+					$action = $row->cp_action == 'D' ? 'code-rev-modified-d' : 'code-rev-modified-r';
 					// Link to old image
-					$rev = $this->mRev->getPrevious();
-					$url = htmlspecialchars( "{$viewvc}{$safePath}?&pathrev=$rev&revision=$rev" );
-					$imgDiffs .= "<td><img src='$url' alt='$alt' title='$alt'/></td>";
+					$imgDiffs .= $this->formatImgCell( $row->cp_path, $this->mRev->getPrevious(), $action );
 				}
 				if( $row->cp_action !== 'D' ) { // new
 					// What was done to it?
-					$alt = $row->cp_action == 'A' ? 'code-rev-modified-a' : 'code-rev-modified-m';
-					$alt = wfMsgHtml($alt);
+					$action = $row->cp_action == 'A' ? 'code-rev-modified-a' : 'code-rev-modified-m';
 					// Link to new image
-					$rev = $this->mRev->getId();
-					$url = htmlspecialchars( "{$viewvc}{$safePath}?&pathrev=$rev&revision=$rev" );
-					$imgDiffs .= "<td><img src='$url' alt='$alt' title='$alt'/></td>";
+					$imgDiffs .= $this->formatImgCell( $row->cp_path, $this->mRev->getId(), $action );
 				}
 				$imgDiffs .= "</tr></table>\n";
 			}
@@ -339,6 +331,25 @@ class CodeRevisionView extends CodeView {
 			$html .= "<div class='mw-codereview-imgdiff'>$imgDiffs</div>\n";
 		}
 		return $html;
+	}
+	
+	protected function formatImgCell( $path, $rev, $message ) {
+		$viewvc = $this->mRepo->getViewVcBase();
+		$safePath = wfUrlEncode( $path );
+		$url = "{$viewvc}{$safePath}?&pathrev=$rev&revision=$rev";
+
+		$alt = wfMsg( $message );
+
+		return Xml::tags( 'td',
+			array(),
+			Xml::tags( 'a',
+				array( 'href' => $url ),
+				Xml::element( 'img',
+					array(
+						'src' => $url,
+						'alt' => $alt,
+						'title' => $alt,
+						'border' => '0' ) ) ) );
 	}
 
 	protected function stubDiffLoader() {
