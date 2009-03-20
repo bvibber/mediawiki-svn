@@ -198,7 +198,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	
 
 	protected void deleteDataFrom(int rcId, String op) throws PersistenceException {
-		deleteDataFrom(rcId, op, definitionTable, "concept", aboutTable, "concept", "resource");
+		deleteDataFrom(rcId, op, definitionTable, "resource");
 		
 		deleteDataFrom(rcId, op, linkTable, "resource");
 		deleteDataFrom(rcId, op, langlinkTable, "resource");
@@ -248,6 +248,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		try {
 			if (conceptId<0) throw new IllegalArgumentException("bad concept id "+conceptId);
 
+			definitionInserter.updateInt("resource", rcId);
 			definitionInserter.updateInt("concept", conceptId);
 			definitionInserter.updateString("definition", clipString(rcId, definition, 1024 * 8, "definition text (concept {0})", conceptId));
 			definitionInserter.updateRow();

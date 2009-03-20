@@ -74,6 +74,7 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		
 		definitionTable = new EntityTable(this, "definition", defaultTableAttributes);
 		definitionTable.addField( new ReferenceField(this, "concept", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ) );
+		definitionTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.UNIQUE, "resource", "id", null ) );
 		definitionTable.addField( new DatabaseField(this, "definition", getTextType(1024*8), null, true, null ) );
 		definitionTable.setAutomaticField(null);
 		addTable(definitionTable);
