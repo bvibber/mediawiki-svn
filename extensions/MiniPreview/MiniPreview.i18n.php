@@ -74,6 +74,26 @@ $messages['bcl'] = array(
 	'minipreview-files_in_gallery' => "$1 total na mga ''file'' sa galleriang ini.",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'minipreview-desc' => 'Гэтае пашырэньне паказвае каля выявы невялікія выявы іншых мэдыя-файлаў з той жа катэгорыі альбо выкарыстаных на тых жа старонках',
+	'minipreview-files_in_category' => "Гэта катэгорыя ўтрымлівае '''$1''' {{PLURAL:$1|файл|файлы|файлаў}}.",
+	'minipreview-files_in_gallery' => "Гэтая галерэя ўтрымлівае '''$1''' {{PLURAL:$1|файл|файлы|фалаў}}.",
+	'minipreview-no_more_files_here' => 'Няма файлаў у гэтым накірунку.',
+	'minipreview-no_category_gallery' => 'Няма катэгорыяў альбо галерэяў!',
+	'minipreview-ignore_categories' => 'Ніжэй пададзены сьпіс назваў катэгорыяў ці пачаткаў іх назваў.
+Гэтыя катэгорыі ня будуць адлюстроўвацца ў MiniPreview.
+Напрыклад, «* PD-» азначае, што ня будуць адлюстроўвацца ўсе катэгорыі, якія пачынаюцца на «PD-», напрыклад «PD-old».
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

@@ -41,6 +41,13 @@ $messages['qqq'] = array(
 	'invitations-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'invitations-inviteform-submit' => 'Kucta',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

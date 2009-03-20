@@ -27,6 +27,14 @@ $messages['qqq'] = array(
 	'discussionthreading-threadnewsection' => '{{Identical|New}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'discussionthreading-threadnewsection' => "uz'",
+	'discussionthreading-threadnewsectionhint' => "Augotada uz' barb",
+);
+
 /** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */

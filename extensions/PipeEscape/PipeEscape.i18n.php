@@ -49,6 +49,13 @@ $messages['be-tarask'] = array(
 	'pipeescape-desc' => 'Функцыя парсэра <code>#!</code>, якая сочыць, каб калі Вы жадаеце дадаць сымбаль «|», дадаваліся толькі сымбаль «|».',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'pipeescape-desc' => 'Parserska funkcija <code>#!</code> kada želite da pipe znak bude isključivo samo pipe znak',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */
@@ -111,6 +118,13 @@ $messages['ksh'] = array(
  */
 $messages['la'] = array(
 	'pipeescape-desc' => 'Functio parseris <code>#!</code> qui protegit litteram | ne haec littera separet parametra',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'pipeescape-desc' => 'Parserfonctioun <code>#!</code> fir den Trenn-Parameter als normale Buchstaw ze benotzen',
 );
 
 /** Dutch (Nederlands)

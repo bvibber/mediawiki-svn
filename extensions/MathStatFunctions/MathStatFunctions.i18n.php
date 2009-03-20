@@ -63,6 +63,16 @@ $messages['ast'] = array(
 	'msfunc_div_zero' => 'Divisón por cero',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'msfunc_desc' => 'Калекцыя матэматычных і статыстычных функцыяў',
+	'msfunc_nan' => 'Вынік не зяўляецца лічбай',
+	'msfunc_inf' => 'Выніль зьяўляецца бяскончасьцю',
+	'msfunc_div_zero' => 'Дзяленьне на ноль',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

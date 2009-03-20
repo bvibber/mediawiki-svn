@@ -42,6 +42,13 @@ Do not translate or change tag names, or link anchors.',
 	'right-emergencydesysop' => 'This is a user right description, as shown on [[Special:ListGroupRights]], e.g.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'emergencydesysop-submit' => 'Oigeta',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda

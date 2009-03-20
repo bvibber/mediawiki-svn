@@ -56,6 +56,21 @@ $messages['qqq'] = array(
 	'errorhandler-trace-line-internal' => '* $1: function name',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'errorhandler-errors' => 'Petused:',
+	'errorhandler-error-fatal' => 'Luja petuz',
+	'errorhandler-error-warning' => 'Varutuz',
+	'errorhandler-error-parse' => 'Parseran petuz',
+	'errorhandler-error-notice' => 'Homaičend',
+	'errorhandler-error-user-error' => 'Kävutajan petuz',
+	'errorhandler-error-user-warning' => 'Kävutajan varutuz',
+	'errorhandler-error-user-notice' => 'Kävutajan homaičend',
+	'errorhandler-error-strict' => 'Tarkad standartad',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

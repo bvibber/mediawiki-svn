@@ -39,6 +39,20 @@ $messages['niu'] = array(
 	'inspectcache-delete' => 'Tamate',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => 'Ühthine keš',
+	'inspectcache-parser' => 'Parseran keš',
+	'inspectcache-message' => 'Tedotusiden keš',
+	'inspectcache-get' => 'Sada',
+	'inspectcache-delete' => 'Čuta poiš',
+	'inspectcache-deleted' => 'Keš om čutud poiš',
+	'inspectcache-list' => 'Kaik avadimed',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */

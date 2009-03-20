@@ -546,6 +546,7 @@ $messages['tl'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
+	'categorystepper-desc' => 'Bir sayfanın içinde bulunduğu bir veya daha fazla kategoride, alfabetik olarak ileri ve geri dolaşıma izin veren bir kategori basamaklayıcı kutusu gösterir',
 	'categorystepper-end' => '(Kategori sonu)',
 	'categorystepper-start' => '(Kategori başlangıcı)',
 );

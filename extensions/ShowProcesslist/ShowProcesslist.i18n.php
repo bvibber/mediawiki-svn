@@ -102,8 +102,10 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'showprocesslist' => 'Pokaži spisak procesa',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Korisnik',
+	'showprocesslist-command' => 'Komanda',
 	'showprocesslist-time' => 'Vrijeme',
 );
 
@@ -470,6 +472,7 @@ $messages['lb'] = array(
 	'showprocesslist-desc' => "D'Resultat vun [[Special:ShowProcesslist|Liste des processus]] weisen",
 	'showprocesslist-id' => 'Nummer',
 	'showprocesslist-user' => 'Benotzer',
+	'showprocesslist-host' => 'Host',
 	'showprocesslist-db' => 'Datebank',
 	'showprocesslist-command' => 'Kommando',
 	'showprocesslist-time' => 'Zäit',

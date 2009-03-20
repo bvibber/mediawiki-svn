@@ -109,6 +109,29 @@ $messages['bar'] = array(
 	'multiupload-toolbox' => 'Mehrare Datein aufelådn',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'multipleupload' => 'Загрузка файлаў',
+	'multipleupload-desc' => 'Дазваляе ўдзельнікам [[Special:MultipleUpload|загружаць некалькі файлаў за раз]]',
+	'multipleupload-ignoreallwarnings' => "Ігнараваць '''усе папярэджаньні''' і захаваць файлы ў любым выпадку.",
+	'multipleupload-saveallfiles' => 'Захаваць усе файлы',
+	'multipleupload-addresswarnings' => 'Калі ласка, разглядзіце ўсе папярэджаньні перад паўторная загрузкай файлаў.',
+	'multipleupload-page' => '{{ns:project}}:Правілы выдаленьня файлаў',
+	'multipleupload-text' => "З дапамогай гэтай старонкі можна загрузіць некалькі файлаў.
+
+Націсьніце «Агляд» і выберыце ўсе файлы, якія Вы жадаеце загрузіць.
+Адначасова Вы можаце загрузіць ад 1 да $1 {{PLURAL:$1|файла|файлаў|файлаў}}.
+
+Вы можаце запоўніць неабавязковыя палі '''Мэтавае імя файла''' і дадаць кароткае '''Апісаньне''' Вашых файлаў.
+
+Неадпаведныя файлы будуць выдалены неадкладна, глядзіце [[{{MediaWiki:Multipleupload-page}}|правілы выдаленьня фалаў]].",
+	'multiupload-fileuploaded' => 'Файл загружаны.',
+	'multiupload-toolbox' => 'Загрузка некалькіх файлаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

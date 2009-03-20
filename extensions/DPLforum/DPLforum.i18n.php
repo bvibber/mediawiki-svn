@@ -31,6 +31,14 @@ $messages['qqq'] = array(
 	'dplforum-never' => '{{Identical|Never}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'dplforum-never' => 'Nikonz',
+	'dplforum-toofew' => 'DPL-forum: Vähähk kategorijoid!',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

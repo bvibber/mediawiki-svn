@@ -251,6 +251,28 @@ $5 is a page title.',
 	'deletequeue-case-expiry' => '{{Identical|Expiry}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'deletequeue-generic-reasons' => '* Tipižed süd
+   ** Vandalizm
+   ** Spam
+   ** Holitand
+   ** Projektan röunan taga',
+	'deletequeue-delnom-otherreason' => 'Toine sü',
+	'deletequeue-delnom-extra' => 'Ližainformacii:',
+	'deletequeue-delnom-submit' => 'Vahvištoitta nominacii',
+	'deletequeue-review-newreason' => "Uz' sü:",
+	'deletequeue-review-newextra' => 'Ližainformacii:',
+	'deletequeue-review-submit' => 'Panda arvostelend muštho',
+	'deletequeue-review-original' => 'Nominacijan sü',
+	'deletequeue-vote-submit' => 'Oigeta',
+	'deletequeue-list-queue' => 'Jono:',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-case-page' => "Lehtpol':",
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -1730,10 +1752,12 @@ Podata přičina za to je ''$1''.",
 	'deletequeue-review-newextra' => 'Přidatne informacije:',
 	'deletequeue-review-submit' => 'Přepruwowanje składować',
 	'deletequeue-review-original' => 'Přičina za pomjenowanje',
+	'deletequeue-actiondisabled-involved' => 'Slědowaca akcija je znjemóžnena, dokelž sy so w tutym padźe wušmórnjenja jako $1 wobdźělił:',
 	'deletequeue-actiondisabled-notexpired' => 'Slědowaca akcija je znjemóžnjena, dokelž požadanje wo wušmórnjenje hišće njeje spadnjene:',
 	'deletequeue-review-badaction' => 'Sy njepłaćiwu akciju podał',
 	'deletequeue-review-actiondenied' => 'Sy akciju podał, kotraž bu za tutu stronu znjemóžnjena',
 	'deletequeue-reviewspeedy-tab' => 'Spěšne wušmórnjenje přepruwować',
+	'deletequeue-reviewspeedy-title' => 'Požadanje wo spěšne wušmórnjenje "$1" přepruwować',
 	'deletequeue-reviewprod-tab' => 'Namjetowane wušmórnjenje přepruwować',
 	'deletequeue-reviewprod-title' => 'Namjetowane wušmórnjenje za "$2" přepruwować',
 	'deletequeue-reviewprod-text' => "Móžeš tutón formular wužiwać, zo by připóznaty namjet za wušmórnjenje \"'''\$1'''\" přepruwował.",
@@ -1756,6 +1780,8 @@ Podata přičina za to je ''$1''.",
 	'deletequeue-vote-submit' => 'Wotpósłać',
 	'deletequeue-vote-success-endorse' => 'Sy wušmórnjenje tuteje strony wuspěšnje schwalił.',
 	'deletequeue-vote-success-object' => 'Sy wušmórnjenje tuteje strony wuspěšnje wotpokazał.',
+	'deletequeue-vote-requeued' => 'Sy wušmórnjenje tuteje strony wuspěšnje wotpokazał.
+Přez twoje znapřećiwjenje strona je so do čakanskeho rynka $1 přesunyła.',
 	'deletequeue-showvotes' => 'Schwalenja a wotpokazanja k wušmórnjenju  "$1"',
 	'deletequeue-showvotes-restrict-endorse' => 'Jenož schwalenja pokazać',
 	'deletequeue-showvotes-restrict-object' => 'Jenož wotpokazanja pokazać',

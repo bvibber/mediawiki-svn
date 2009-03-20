@@ -82,6 +82,9 @@ $messages['be-tarask'] = array(
 	'newschannel-desc' => 'Стварае канал навінаў на дынамічнай [[Special:NewsChannel|спэцыяльнай старонцы]]',
 	'newschannel_format' => 'Фармат:',
 	'newschannel_limit' => 'Ліміт:',
+	'newschannel_include_category' => 'Дадатковая катэгорыя:',
+	'newschannel_exclude_category' => 'Выключыць катэгорыю:',
+	'newschannel_submit_button' => 'Стварыць канал',
 );
 
 /** Bulgarian (Български)
@@ -92,6 +95,19 @@ $messages['bg'] = array(
 	'newschannel_limit' => 'Лимит:',
 	'newschannel_include_category' => 'Допълнителна категория:',
 	'newschannel_exclude_category' => 'Изключване на категория:',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'newschannel' => 'Kanal novosti',
+	'newschannel-desc' => 'Koristi kanal za novosti kao dinamičku [[Special:NewsChannel|posebnu stranicu]]',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Ograničenje:',
+	'newschannel_include_category' => 'Dodatna kategorija:',
+	'newschannel_exclude_category' => 'Isključi kategoriju:',
+	'newschannel_submit_button' => 'Napravi fid',
 );
 
 /** Czech (Česky)

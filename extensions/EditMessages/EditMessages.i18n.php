@@ -49,6 +49,14 @@ $messages['niu'] = array(
 	'editmsg-search' => 'Kumi',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'editmessages' => 'Redaktiruida tedotused',
+	'editmsg-search' => 'Ectä',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */

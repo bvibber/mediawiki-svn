@@ -65,6 +65,20 @@ $messages['gom-latn'] = array(
 	'deletebatch-success-subtitle' => '$1 khatir',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'deletebatch-caption' => 'Lehtpoliden nimikirjutez:',
+	'deletebatch-title' => 'Čuta uded lehtpoled',
+	'deletebatch-link-back' => 'Tagaze specialižele lehtpolele',
+	'deletebatch-as' => 'Radatada skript kut:',
+	'deletebatch-both-modes' => "Olgat hüväd, valikat lehtpol' vai lehtpoliden nimikirjutez.",
+	'deletebatch-or' => '<b>vai</b>',
+	'deletebatch-page' => 'Lehtpoled čutes:',
+	'deletebatch-reason' => 'Čudandan sü',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

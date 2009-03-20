@@ -46,6 +46,14 @@ $messages['bcl'] = array(
 	'minnamelength-error' => 'An saimong username halîpoton. An minimum na labâ $1.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'minnamelength-error' => 'Ваша імя ўдзельніка занадта каароткае. Мінімальная даўжыня гэта $1.',
+	'minnamelength-desc' => 'Усталёўвае мінімальную даўжыню імя ўдзельніка',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

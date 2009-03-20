@@ -49,6 +49,14 @@ $messages['bcl'] = array(
 	'donationform-submit' => 'Magdonar sa paagi kan PayPal',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'donationform-desc' => 'Дадае тэг <tt>&lt;donateform&gt;</tt> для падтрымкі магчымасьці ахвяраваньня праз PayPal',
+	'donationform-submit' => 'Ахвяраваць праз PayPal',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

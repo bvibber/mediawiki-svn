@@ -30,6 +30,13 @@ $messages['arz'] = array(
 	'navigationpopups-desc' => 'يحمل منبثقات سكريبتات إبحار لوبين فى ميدياويكي',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'navigationpopups-desc' => 'Загружае скрыпты навігацыі Lupin ў MediaWiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

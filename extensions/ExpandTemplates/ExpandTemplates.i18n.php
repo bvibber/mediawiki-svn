@@ -37,6 +37,18 @@ $messages['qqq'] = array(
 	'expand_templates_preview' => '{{Identical|Preview}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'expand_templates_input' => 'Tekst:',
+	'expand_templates_output' => "Rezul'tat",
+	'expand_templates_xml_output' => 'XML-lähtmižvend',
+	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'Čuta kommentarijad',
+	'expand_templates_preview' => 'Ezikacund',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

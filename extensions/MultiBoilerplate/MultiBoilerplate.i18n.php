@@ -59,8 +59,11 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'multiboilerplate-desc' => 'Дазваляе ўдзельнікам выбіраць тыповыя тэксты са сьпісу над полем рэдагаваньня',
+	'multiboilerplate-legend' => 'Выбар узору',
 	'multiboilerplate-submit' => 'Загрузіць',
 );
 

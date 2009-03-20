@@ -491,10 +491,12 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Nyasar
  */
 $messages['tr'] = array(
 	'advancedrandom' => 'Gelişmiş rassal',
+	'advancedrandom-desc' => 'Tartışma ya da konu sayfası verilen bir sayfaya bağlantı veren birinden bir rasgele sayfa al, rasgele bir kaliteli madde almak için [[Special:AdvancedRandom/Template:Featured/Talk]] gibi ya da rasgele bir GÖBL resmi almak için [[Special:AdvancedRandom/Template:GFDL/Image]] gibi kullanılabilir',
 );
 
 /** Ukrainian (Українська)

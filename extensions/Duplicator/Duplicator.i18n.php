@@ -47,6 +47,14 @@ $messages['qqq'] = array(
 	'duplicator-source' => '{{Identical|Source}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'duplicator-source' => 'Purde:',
+	'duplicator-dest' => 'Met (kuna):',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */

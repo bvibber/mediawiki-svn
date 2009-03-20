@@ -46,6 +46,15 @@ $messages['niu'] = array(
 	'edituser-dosearch' => 'Fano',
 );
 
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'edituser' => 'Redaktiruida kävutajad',
+	'edituser-username' => 'Nimi',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

@@ -35,6 +35,13 @@ Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'linkopenid-prefs' => 'OpenID',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -58,6 +58,15 @@ $messages['qqq'] = array(
 * $3 is "@apps.messenger"',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'imstatus_max' => 'maks.',
+	'imstatus_min' => 'min.',
+	'imstatus_or' => 'vai',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -201,6 +201,21 @@ Ouzhpennit-int en ur ober gant ostilhoù barrenn al lañserioù.",
 	'gep-nocategories' => 'Diuzit ur rummad da nebeutañ a-raok enrollañ.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'gep-emailfailure' => 'Žao nam je, Vaš prijedlog nije mogao biti obrađen.',
+	'gep-categories' => 'Kategorije',
+	'gep-addcategory' => 'Dodaj kategoriju',
+	'gep-addcategorybutton' => 'Dodaj',
+	'gep-suggestcategory' => 'Predloži kategoriju',
+	'gep-suggestcategorybutton' => 'Pošalji',
+	'gep-addsection' => 'Dodaj sekciju',
+	'gep-addsectionbutton' => 'Dodaj',
+	'gep-classicmode' => 'Klasični način',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

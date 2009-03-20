@@ -2830,7 +2830,7 @@ Liberar tais dados poderá resultar na perda em definitivo dos privilégios de S
  * @author AlimanRuna
  */
 $messages['qu'] = array(
-	'right-hiderevision' => 'Kamachiqkunamanta pakasqa musuqchasqakunata qhawaspa paqarichiy',
+	'right-hiderevision' => 'Kamachiqkunamanta musuqchasqakunata pakay',
 	'oversight-difference' => "(ñawpaqllan kakuqraq llamk'apusqamanta wakin kay)",
 	'oversight-prev' => "Kay p'anqap kunan kachkayninpa ñawpaqllan llamk'apusqa",
 	'oversight-hidden' => "Pakasqa llamk'apusqa",

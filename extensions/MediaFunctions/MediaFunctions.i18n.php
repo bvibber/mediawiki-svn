@@ -46,6 +46,14 @@ $messages['arz'] = array(
 	'mediafunctions-not-exist' => '"$1" غير موجود',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'mediafunctions-invalid-title' => '«$1» зьяўляецца няслушнай назвай',
+	'mediafunctions-not-exist' => '«$1» не існуе',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

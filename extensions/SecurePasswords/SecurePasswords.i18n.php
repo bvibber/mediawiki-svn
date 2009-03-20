@@ -469,6 +469,13 @@ Adda essere:",
 	'securepasswords-word' => "non g'addà essere 'na parole",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'securepasswords-username' => 'будет отличаться от вашего имени участника',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Rudko

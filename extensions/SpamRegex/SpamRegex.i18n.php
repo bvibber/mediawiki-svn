@@ -233,6 +233,8 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'spamregex-unblock-success' => 'Deblokada uspješna',
+	'spamregex-block-success' => 'Blokada uspješna',
 	'spamregex-already-blocked' => '"$1" je već blokiran',
 );
 

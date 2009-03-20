@@ -36,6 +36,14 @@ $messages['arz'] = array(
 	'tog-microid' => 'انشر <a href="http://microid.org/">هوية مصغرة</a> لتأكيد الحساب مع الخدمات الخارجية',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'microid-desc' => 'Дадае [http://www.microid.org/ MicroID] на старонкі ўдзельнікаў, для пацьверджаньня рахункаў зьнешнімі сэрвісамі',
+	'tog-microid' => 'Апублікуйце <a href="http://microid.org/">MicroID</a> для пацьверджаньня рахунку зьнешнімі сэрвісамі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
