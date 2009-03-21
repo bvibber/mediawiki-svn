@@ -160,10 +160,10 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# A specific record has been selected, render form for updating
 		else {
-			$wgOut->addWikiText( "== " . wfMsg( 'recordadmin-edit', $record ) . " ==\n" );
 			$rtitle = Title::newFromText( $record );
 			$article = new Article( $rtitle );
 			$text = $article->fetchContent();
+			$wgOut->addWikiText( "== " . wfMsg( 'recordadmin-edit', $rtitle->getPrefixedText() ) . " ==\n" );
 
 			# Update article if form posted
 			if ( count( $posted ) && $rtitle->userCan( 'edit', false ) ) {
