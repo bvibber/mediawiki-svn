@@ -201,9 +201,9 @@ Click
 url = http://www.mediawiki.org/wiki/Extension:Click
 
 CodeReview
-settings[] = wgCodeReviewENotif: bool, wgSubversionProxy: text
-settings[] = wgSubversionProxyTimeout: int, wgSubversionUser: text
-settings[] = wgSubversionPassword: text, wgWikiSVN: text
+settings[] = wgCodeReviewENotif: bool, wgCodeReviewImgRegex: text
+settings[] = wgSubversionProxy: text, wgSubversionProxyTimeout: int
+settings[] = wgSubversionUser: text, wgSubversionPassword: text, wgWikiSVN: text
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CodeReview
 
@@ -369,18 +369,19 @@ settings[] = wgFlaggedRevsComments: bool, wgReviewChangesAfterEdit: bool
 settings[] = wgFlaggedRevsAutoReview: bool, wgFlaggedRevsAutoReviewNew: bool
 settings[] = wgUseCurrentTemplates: bool, wgUseCurrentImages: bool
 settings[] = wgFlaggedRevTags: array, wgFlagRestrictions: array
-settings[] = wgReviewCodes: array, wgFlaggedRevsStylePath: text
-settings[] = wgFlaggedRevsAutopromote: array, wgFlaggedRevsLogInRC: bool
-settings[] = wgFlaggedRevsOversightAge: int, wgFlaggedRevsVisible: array
-settings[] = wgFlaggedRevsTalkVisible: bool, wgFeedbackNamespaces: array
-settings[] = wgFlaggedRevsFeedbackTags: array, wgFlaggedRevsFeedbackAge: int
-settings[] = wgFlaggedRevsStatsAge: int,	wgPHPlotDir: text, wgSvgGraphDir: text
+settings[] = wgReviewCodes: array, wgFlaggedRevsRestrictionLevels: array,
+settings[] = wgFlaggedRevsStylePath: text, wgFlaggedRevsAutopromote: array
+settings[] = wgFlaggedRevsLogInRC: bool, wgFlaggedRevsOversightAge: int
+settings[] = wgFlaggedRevsVisible: array, wgFlaggedRevsTalkVisible: bool
+settings[] = wgFeedbackNamespaces: array, wgFlaggedRevsFeedbackTags: array
+settings[] = wgFlaggedRevsFeedbackAge: int, wgFlaggedRevsStatsAge: int
+settings[] = wgPHPlotDir: text, wgSvgGraphDir: text
 array[] = wgFlaggedRevsNamespaces: ns-simple, wgFlaggedRevsPatrolNamespaces: ns-simple
 array[] = wgFlaggedRevsWhitelist: simple, wgFlaggedRevsExceptions: simple
 array[] = wgFlaggedRevTags: array, wgFlagRestrictions: array,
-array[] = wgReviewCodes: simple, wgFlaggedRevsAutopromote: assoc
-array[] = wgFlaggedRevsVisible: simple, wgFeedbackNamespaces: ns-simple
-array[] = wgFlaggedRevsFeedbackTags: assoc
+array[] = wgReviewCodes: simple, wgFlaggedRevsRestrictionLevels: simple
+array[] = wgFlaggedRevsAutopromote: assoc, wgFlaggedRevsVisible: simple
+array[] = wgFeedbackNamespaces: ns-simple, wgFlaggedRevsFeedbackTags: assoc
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:FlaggedRevs
 
