@@ -19,6 +19,7 @@ This message is to notify you that at $3 user $4 $5.",
 	'categorywatch-catmoveout' => "moved $1 out of category $2 into $3",
 	'categorywatch-catadd' => "added $1 to category $2",
 	'categorywatch-catsub' => "removed $1 from category $2",
+	'categorywatch-autocat' => "Articles automatically watched by $1",
 );
 
 /** Message documentation (Message documentation)
