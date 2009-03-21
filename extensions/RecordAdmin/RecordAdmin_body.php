@@ -130,8 +130,20 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Populate the search form with any posted values
 			$this->populateForm( $posted );
 
+			# Process Find submission
+			if ( count( $posted ) && $wgRequest->getText( 'wpFind' ) ) {
+				$wgOut->addWikiText( "== " . wfMsg( 'recordadmin-searchresult' ) . " ==\n" );
+
+				# Select records which use the template and exhibit a matching title and other fields
+				$records = $this->getRecords( $type, $posted, $wpTitle, $invert );
+
+				# Render resulting records
+				$wgOut->addHTML( $this->renderRecords( $records ) );
+
+			}
+
 			# Render the form
-			$wgOut->addHTML( "<form class=\"{$this->formClass}\"{$this->formAtts} action=\"$action\" method=\"POST\">" );
+			$wgOut->addHTML( "<br /><form class=\"{$this->formClass}\"{$this->formAtts} action=\"$action\" method=\"POST\">" );
 			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-create', $type ) . "==\n" );
 			$wgOut->addHTML(
 				'<b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
@@ -144,18 +156,6 @@ class SpecialRecordAdmin extends SpecialPage {
 				. '<td>' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
 				. '</tr></table></form>'
 			);
-
-			# Process Find submission
-			if ( count( $posted ) && $wgRequest->getText( 'wpFind' ) ) {
-				$wgOut->addWikiText( "<br />\n== " . wfMsg( 'recordadmin-searchresult' ) . " ==\n" );
-
-				# Select records which use the template and exhibit a matching title and other fields
-				$records = $this->getRecords( $type, $posted, $wpTitle, $invert );
-
-				# Render resulting records
-				$wgOut->addHTML( $this->renderRecords( $records ) );
-
-			}
 		}
 
 		# A specific record has been selected, render form for updating
