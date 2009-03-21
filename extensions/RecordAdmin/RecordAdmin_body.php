@@ -408,7 +408,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( !is_array( $values ) ) {
 			$text = $values;
 			$values = array();
-			preg_match_all( "|\|\s*(.+?)\s*=\s*(.*?)\s*(?=[\|\}])|s", $text, $m );
+			preg_match_all( "|^\s*\|\s*(.+?)\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
 			foreach ( $m[1] as $i => $k ) $values[$k] = $m[2][$i];
 		}
 
