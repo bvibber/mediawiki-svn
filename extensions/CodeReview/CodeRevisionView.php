@@ -369,7 +369,10 @@ class CodeRevisionView extends CodeView {
 	protected function formatComments() {
 		$comments = implode( "\n",
 			array_map( array( $this, 'formatCommentInline' ), $this->mRev->getComments() )
-		) . $this->postCommentForm();
+		);
+		if ( !$this->mReplyTarget ) {
+			$comments .= $this->postCommentForm();
+		}
 		if ( !$comments ) {
 			return false;
 		}
