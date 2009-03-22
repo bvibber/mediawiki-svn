@@ -405,12 +405,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	function populateForm( $values ) {
 
 		# If values are wikitext, convert to hash
-		if ( !is_array( $values ) ) {
-			$text = $values;
-			$values = array();
-			preg_match_all( "|^\s*\|\s*(.+?)\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
-			foreach ( $m[1] as $i => $k ) $values[$k] = $m[2][$i];
-		}
+		if ( !is_array( $values ) ) $values = $this->valuesFromText( $values );
 
 		# Add the values into the form's HTML depending on their type
 		foreach ( $this->types as $k => $type ) {
@@ -520,6 +515,16 @@ class SpecialRecordAdmin extends SpecialPage {
 	}
 
 	/**
+	 * Return array of args represented by passed template syntax
+	 */
+	function valuesFromText( $text ) {
+		$values = array();
+		preg_match_all( "|^\s*\|\s*(.+?)\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
+		foreach ( $m[1] as $i => $k ) $values[$k] = $m[2][$i];
+		return $values;
+	}
+
+	/**
 	 * A callback for processing public forms
 	 */
 	function createRecord() {
@@ -612,7 +617,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Render a record search in a parser-function
 	 */
-	function expandMagic( &$parser, $type ) {
+	function expandTableMagic( &$parser, $type ) {
 		$parser->mOutput->mCacheTime = -1;
 		$filter   = array();
 		$title    = '';
@@ -641,6 +646,37 @@ class SpecialRecordAdmin extends SpecialPage {
 			'isHTML' => true
 		);
 
+	}
+
+	/**
+	 * Obtain a record or record field value from passed parameters
+	 */
+	function expandDataMagic( &$parser ) {
+		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
+			if ( preg_match( "/^(.+?)\\s*=\\s*(.+)$/", $arg, $match ) ) {
+				list( , $k, $v ) = $match;
+				if ( $k == 'type' ) $type = $v;
+				elseif ( $k == 'record' ) $record = $v;
+				elseif ( $k == 'field' ) $field = $v;
+			}
+		}
+		
+		# If a record and field name are specified, return the field value
+		if ( isset( $record ) && isset( $field ) && isset( $type ) ) {
+			$title = Title::newFromText( $record );
+			if ( is_object( $title ) ) {
+				$article = new Article( $title );
+				$text = $article->getContent();
+				$braces = false;
+				foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
+				if ( $braces ) {
+					$values = $this->valuesFromText( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
+					return isset( $values[$field] ) ? $values[$field] : '';
+				}
+			}
+		}
+
+		return '';
 	}
 
 	/**

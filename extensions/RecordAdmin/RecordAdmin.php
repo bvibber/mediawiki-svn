@@ -11,7 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'RECORDADMIN_VERSION', '0.5.11, 2009-03-21' );
+define( 'RECORDADMIN_VERSION', '0.6.0, 2009-03-22' );
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $wgRecordAdminCategory      = 'Records'; # Category containing record types
@@ -22,7 +22,8 @@ $wgExtensionAliasesFiles['RecordAdmin']  = $dir . 'RecordAdmin.alias.php';
 $wgAutoloadClasses['SpecialRecordAdmin'] = $dir . 'RecordAdmin_body.php';
 $wgSpecialPages['RecordAdmin']           = 'SpecialRecordAdmin';
 $wgSpecialPageGroups['RecordAdmin']      = 'wiki';
-$wgRecordAdminMagic                      = 'recordtable';
+$wgRecordAdminTableMagic                 = 'recordtable';
+$wgRecordAdminDataMagic                  = 'recorddata';
 $wgRecordAdminTag                        = 'recordid';
 
 $wgGroupPermissions['sysop']['recordadmin'] = true;
@@ -44,7 +45,8 @@ $wgExtensionCredits['specialpage'][] = array(
  * Called from $wgExtensionFunctions array when initialising extensions
  */
 function wfSetupRecordAdmin() {
-	global $wgSpecialRecordAdmin, $wgParser, $wgRequest, $wgRecordAdminTag, $wgRecordAdminMagic, $wgRecordAdminCategory;
+	global $wgSpecialRecordAdmin, $wgParser, $wgRequest, $wgRecordAdminCategory,
+		$wgRecordAdminTag, $wgRecordAdminTableMagic, $wgRecordAdminDataMagic;
 
 	# Make a global singleton so methods are accessible as callbacks etc
 	$wgSpecialRecordAdmin = new SpecialRecordAdmin();
@@ -52,8 +54,9 @@ function wfSetupRecordAdmin() {
 	# Make recordID's of articles created with public forms available via recordid tag
 	$wgParser->setHook( $wgRecordAdminTag, array( $wgSpecialRecordAdmin, 'expandTag' ) );
 
-	# Add the parser-function
-	$wgParser->setFunctionHook( $wgRecordAdminMagic, array( $wgSpecialRecordAdmin, 'expandMagic' ) );
+	# Add the parser-functions
+	$wgParser->setFunctionHook( $wgRecordAdminTableMagic, array( $wgSpecialRecordAdmin, 'expandTableMagic' ) );
+	$wgParser->setFunctionHook( $wgRecordAdminDataMagic,  array( $wgSpecialRecordAdmin, 'expandDataMagic'  ) );
 
 	# Check if posting a public creation form
 	$title = Title::newFromText( $wgRequest->getText( 'title' ) );
@@ -65,7 +68,8 @@ function wfSetupRecordAdmin() {
  * Setup parser-function magic
  */
 function wfRecordAdminLanguageGetMagic( &$magicWords, $langCode = 0 ) {
-	global $wgRecordAdminMagic;
-	$magicWords[$wgRecordAdminMagic] = array( $langCode, $wgRecordAdminMagic );
+	global $wgRecordAdminTableMagic, $wgRecordAdminDataMagic;
+	$magicWords[$wgRecordAdminTableMagic] = array( $langCode, $wgRecordAdminTableMagic );
+	$magicWords[$wgRecordAdminDataMagic]  = array( $langCode, $wgRecordAdminDataMagic );
 	return true;
 }
