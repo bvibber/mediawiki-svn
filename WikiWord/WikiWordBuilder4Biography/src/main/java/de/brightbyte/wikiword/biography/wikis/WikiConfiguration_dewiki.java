@@ -30,6 +30,8 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("STERBEORT", "person-death-place").setStripMarkup(true)
 			) );
 
+		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("person-sortname") ); 
+		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("person-name") ); 
 	}
 	
 }

@@ -2349,6 +2349,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 	
 	public Set<CharSequence> determinePageTerms(WikiPage page) {
+		//TODO: extract bold parts of first sentence!
+		
 		return evalExtractors(config.pageTermExtractors, page);
 	}
 	

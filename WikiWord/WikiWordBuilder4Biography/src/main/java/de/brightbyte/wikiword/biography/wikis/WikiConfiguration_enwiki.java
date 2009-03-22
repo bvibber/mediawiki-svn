@@ -46,6 +46,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("award", "artist-award").setStripMarkup(true)
 			) );
 
+		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("person-sortname") ); 
+		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("person-name") ); 
+
 		conceptTypeSensors.add( new WikiTextAnalyzer.HasTemplateLikeSensor(ConceptType.PERSON, "^(Infobox[ ]Artist)$", 0));
 	}
 	
