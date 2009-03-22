@@ -184,7 +184,7 @@ function modifyTabs($skin, $content_actions) {
 	}
 
 	// Add context dataset (old hooks 'GetEditLinkTrail' and 'GetHistoryLinkTrail')
-	if (!$editChanged) {
+	if (!$editChanged && $content_actions['edit'] != null) {
 		addWikidataEditLinkTrail($linkTrail);
 		$content_actions['edit']['href'] = ($content_actions['edit']['href'] . $linkTrail);
 	}
