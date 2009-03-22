@@ -652,17 +652,19 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Obtain a record or record field value from passed parameters
 	 */
 	function expandDataMagic( &$parser ) {
+		$regexp = '';
 		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
 			if ( preg_match( "/^(.+?)\\s*=\\s*(.+)$/", $arg, $match ) ) {
 				list( , $k, $v ) = $match;
 				if ( $k == 'type' ) $type = $v;
 				elseif ( $k == 'record' ) $record = $v;
 				elseif ( $k == 'field' ) $field = $v;
+				else $regexp .= "AND old_text REGEXP('[|] *{$k} *= *{$v}[[:space:]]*[|}]')";
 			}
 		}
 		
 		# If a record and field name are specified, return the field value
-		if ( isset( $record ) && isset( $field ) && isset( $type ) ) {
+		if ( isset( $type ) && isset( $record ) && isset( $field ) ) {
 			$title = Title::newFromText( $record );
 			if ( is_object( $title ) ) {
 				$article = new Article( $title );
@@ -674,6 +676,18 @@ class SpecialRecordAdmin extends SpecialPage {
 					return isset( $values[$field] ) ? $values[$field] : '';
 				}
 			}
+		}
+
+		# If record is not set, find first record matching the supplied field values
+		if ( isset( $type ) && !isset( $record ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow(
+				array( 'page', 'revision', 'text', 'templatelinks' ),
+				'page_id',
+				"rev_id=page_latest AND old_id=rev_text_id AND tl_from=page_id AND tl_title='$type' $regexp",
+				__METHOD__
+			);
+			if ($row) return Title::newFromId( $row->page_id )->getPrefixedText();
 		}
 
 		return '';
