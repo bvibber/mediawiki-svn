@@ -42,12 +42,13 @@ class WWUtils {
     }
 
     function queryConceptsForTerm($lang, $term) {
-	global $wwTablePrefix;
+	global $wwTablePrefix, $wwThesaurusDataset;
 
 	$term = trim($term);
 
-	$sql = "SELECT M.*, definition FROM {$wwTablePrefix}_{$lang}_meaning as M"
+	$sql = "SELECT M.*, O.*, definition FROM {$wwTablePrefix}_{$lang}_meaning as M"
 	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON M.concept = D.concept "
+	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND M.concept = O.local_concept "
 	      . " WHERE term_text = \"" . mysql_real_escape_string($term) . "\""
 	      . " ORDER BY freq DESC "
 	      . " LIMIT 100";
@@ -56,12 +57,13 @@ class WWUtils {
     }
 
     function queryLocalConceptInfo($lang, $id) {
-	global $wwTablePrefix;
+	global $wwTablePrefix, $wwThesaurusDataset;
 
-	$sql = "SELECT C.*, F.*, definition FROM {$wwTablePrefix}_{$lang}_concept_info as F "
+	$sql = "SELECT O.*, C.*, F.*, definition FROM {$wwTablePrefix}_{$lang}_concept_info as F "
 	      . " JOIN {$wwTablePrefix}_{$lang}_concept as C ON F.concept = C.id "
+	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND F.concept = O.local_concept "
 	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON F.concept = D.concept "
-	      . " WHERE F.concept = $id ";
+	      . " WHERE O.local_concept = $id ";
 
 	return $this->query($sql);
     }
