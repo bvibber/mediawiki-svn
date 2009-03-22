@@ -57,6 +57,9 @@ def ls(args):
 	
 	if output==None:
 		return
+	
+	if ppath['limit']:
+		output=output[0:ppath['limit']]
 	print installer_util.pretty_list(output)
 
 def ls_available(ppath):
@@ -104,16 +107,18 @@ def ls_revisions(ppath):
 	if not ppath["system"]:
 		raise Listing_Exception("What system would you like me to list?")
 	
-	if not ppath["installer"]:
-		raise Listing_Exception("What installer would you like to know the available revisions for?")
-	
 	system=get_system(ppath["system"])
-	return system.get_revisions(ppath["installer"])
+
+	revisions=None
+	try:
+		revisions=system.get_revisions(ppath["installer"])
+	except Installer_Exception, e:
+		raise Listing_Exception(e.message)
+
+	return revisions
 
 
 def ls_tags(ppath):
-	if not ppath["installer"]:
-		raise Listing_Exception("What extension would you like to know the available revisions for?")
 
 	system=get_system(ppath["system"])
 	try:
@@ -243,6 +248,7 @@ def parse_path(path,defaults=None):
 	as_alias=None	# if installing, as what name?
 	revision=None	# revision number, if any
 	tag=None	# tag, if any
+	limit=None	# limit output from list commands to n lines.
 
 	#partial components
 	whence=None	# eg. 'available.mediawiki:'
@@ -292,13 +298,17 @@ def parse_path(path,defaults=None):
 	# right side (inpath)  :_______________
 	if inpath:
 		l=inpath.split()
-		if l[0] not in ['in', 'as', 'revision', 'tag']:
+		if l[0] not in ['in', 'as', 'revision', 'tag','limit']:
 			installer=l[0]
 
 		in_installer=_ppath_find(l,"in")
 		as_alias=_ppath_find(l,"as")
 		revision=_ppath_find(l,"revision")
 		tag=_ppath_find(l,'tag')	
+		try:
+			limit=int(_ppath_find(l,'limit'))
+		except Exception:
+			pass
 
 	# Ok, we have our basic return value now
 	ppath={
@@ -308,7 +318,8 @@ def parse_path(path,defaults=None):
 		"in_installer":in_installer,
 		"as_alias":as_alias,
 		"revision":revision,
-		"tag":tag}
+		"tag":tag,
+		"limit":limit}
 
 	# maybe we can assume some useful defaults (saves typing)
 	if defaults:

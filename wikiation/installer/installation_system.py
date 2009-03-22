@@ -52,6 +52,10 @@ class Installation_System:
 	# XXX This should be a mixin
 	def get_revisions(self,installer_name):
 		"""list the revisions a particular installer can install"""
+
+		if not installer_name:
+			raise Installer_Exception("What installer would you like to know the available revisions for?")
+
 		if not self.exists(installer_name):
                         raise Installer_Exception("Can't find installer "+installer_name)
 
@@ -73,14 +77,32 @@ class Installation_System:
 	# XXX should be a mixin
 	def get_tags(self, installer_name):
 		"""get list of tags available for this installer."""
+		if not installer_name:
+			raise Installer_Exception("What extension would you like to know the available revisions for?")
+
 		return Tags().gettags(installer_name)
 		
 
-	def get_svnbase():
+	def get_svnbase(self):
 		return None
 
 	def _get_revisions_generic(self, installer):
 		"""directly query svn to get a list of available revisions. Usually this is adequate."""
+
+		loglist=self._get_revisions_generic_raw(installer)
+		if loglist:
+			revs=[]
+			for line in loglist:
+				if line.startswith("r"):
+					rev=line.split()[0]	#get the first value
+					revs.append(rev[1:])		# strip off the leading r
+
+			return revs
+
+		return None	# just to make explicit what happens otherwise.
+
+	def _get_revisions_generic_raw(self, installer):
+		"""do the actual svn query"""
 		svnbase=self.get_svnbase()
 		if svnbase:
 			location=svnbase+"/"+installer
@@ -94,15 +116,7 @@ class Installation_System:
 			# r47345 | kim | 2009-02-17 00:29:07 +0100 (Tue, 17 Feb 2009)
 			# |-----| 
 			# we need the numbers after the first r on the line
-			revs=[]
-			for line in loglist:
-				if line.startswith("r"):
-					rev=line.split()[0]	#get the first value
-					revs.append(rev[1:])		# strip off the leading r
-
-			return revs
-
-		return None	# just to make explicit what happens otherwise.
+			return loglist
 
 
 	def exists(self,installer_name):

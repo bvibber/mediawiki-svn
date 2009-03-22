@@ -6,7 +6,7 @@ import settings_handler as settings
 import os, os.path, shutil
 import subprocess
 
-from installation_system import Installation_System
+from installation_system import Installation_System, Installer_Exception
 
 from installer_util import *
 from isolation import *
@@ -22,10 +22,16 @@ from isolation import *
 #Things that are not mediawiki revisions (in the svn tags directory on mediawiki svn)
 filter_available=['extensions/']
 
+# a cache for mediawiki revisions. Just making a global in this namespace is easiest.
+revision_cache=[]
+
+class Mediawiki_Installer_Exception(Installer_Exception):
+	pass
+
 
 class Mediawiki_Installer(Installation_System):
 	"""installer for mediawiki revisions"""
-	system_name='mediawiki_installer'
+	system_name='mediawiki'
 	# TODO: destination_dir isn't quite changable until we have finished refactoring everything (not today)
 	def __init__(self):
 		Installation_System.__init__(self)
@@ -42,6 +48,9 @@ class Mediawiki_Installer(Installation_System):
 				stripped.remove(item)
 		return stripped
 	
+	def get_tags(self,installer_name=None):
+		return self.get_installers()
+
 	#def exists: same as super
 
 	# Hmm: perhaps these should really belong in a separate mixin?
@@ -61,10 +70,20 @@ class Mediawiki_Installer(Installation_System):
 	# super.get_info does something sane here, let's leave it in. 
 	# (we can even provide info files for certain releases if we want)
 
-	def install(self, installer_name, as_alias=None):
+	def install(self, installer_name=None, as_alias=None):
+
+		if self.tag:
+			installer_name=self.tag
+
+		if self.revision:
+			installer_name="latest"
+
+		if not installer_name:
+			raise Mediawiki_Installer_Exception("Please specify which mediawiki tag or revision you would like to view")
+
 		name=as_alias or self.as_alias or installer_name
 
-		install(installer_name, name)
+		install(installer_name, name, self.revision)
 		return self.is_installed(name)
 
 	#download is unused, but leave for future expansion
@@ -79,6 +98,22 @@ class Mediawiki_Installer(Installation_System):
 	
 		uninstall(name)
 		return not self.is_installed(name) 
+	
+	def get_revisions(self,installer=None):
+
+		global revision_cache
+		if revision_cache:
+			print "Using cached mediawiki revision list."
+		else:
+			print "Getting list of mediawiki revisions... One moment (takes 10-20 seconds)"
+			revision_cache=self._get_revisions_generic("phase3")
+	
+		return revision_cache
+
+	def get_svnbase(self):
+		return settings.trunkdir
+
+
 
 #TODO: use this method everywhere a database name is requested
 def dbname(installer_name):
@@ -106,7 +141,7 @@ def available():
 
 
 
-def install(target, option_as):
+def install(target, option_as, revision):
 	"""implement install command. Installs a mediawiki version"""
 	target=clean_target(target)
 	
@@ -132,9 +167,9 @@ def install(target, option_as):
 	os.chdir(settings.instancesdir)
 	print "Checking out code from subversion (please be patient)..."
 	if latest:
-		checkout_latest(name)
+		checkout_latest(name, revision)
 	else:
-		checkout(target+"/", name)
+		checkout(target+"/", name, revision)
 
 	print "Creating LocalSettings.php..."
 	localsettings(name)
@@ -165,16 +200,22 @@ def uninstall(target):
 	delete(target)
 	print "Done."
 
-def checkout(target, name):
+def checkout(target, name, revision):
 	"""checkout the given target revision"""
 
-	command="svn checkout "+settings.tagsdir+"/"+target+"phase3"
+	command="svn checkout "
+	if revision:
+		command+="-r"+str(revision)+" "
+	command+=settings.tagsdir+"/"+target+"phase3"
 	_checkout(command,name)
 
-def checkout_latest(name):
+def checkout_latest(name, revision):
 	"""checkout the latest trunk revision"""
 
-	command="svn checkout "+settings.trunkdir+"/phase3"
+	command="svn checkout "
+	if revision:
+		command+="-r"+str(revision)+" "
+	command+=settings.trunkdir+"/phase3"
 	_checkout(command,name)
 
 def _checkout(command, name):
