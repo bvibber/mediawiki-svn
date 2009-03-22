@@ -32,41 +32,6 @@ from isolation	import *
 from getch import getch
 from tags import Tags
 
-def intro():
-	"""a nice banner/intro text for interactive mode"""
-
-	print "=== Wikiation installer (v. "+revision()+") ==="
-	print
-	print "(last known safe version: 48528)"
-	print "Interactive mode.",
-	print "Automated testing is",
-	if settings.run_automated_tests:
-		print "enabled."
-	else:
-		print "disabled."
-	print
-	print "please type a command and hit enter"
-	print "help<enter> for help"
-	print "^D, or quit<enter> to quit"
-	print
-
-def revision():
-	"""obtain revision number for wikiation_installer itself"""
-
-	revision_string=None
-	os.chdir(settings.installerdir)
-	info=os.popen("svn info .")
-	for line in info:
-		if line.startswith("Revision:"):
-			revision_string=line.strip()
-			break
-	info.close()
-	if revision_string==None:
-		revision="unknown"
-	else:
-		revision=revision_string.replace("Revision:","")
-	
-	return revision
 
 def command():
 	"""handle the command line in interactive mode"""

@@ -55,18 +55,18 @@ class Installation_System:
 		if not self.exists(installer_name):
                         raise Installer_Exception("Can't find installer "+installer_name)
 
-		return self.do_get_revisions(installer_name)
+		return self._get_revisions(installer_name)
 
 	# XXX this should be a mixin
-	def do_get_revisions(self, installer_name):
+	def _get_revisions(self, installer_name):
 		"""actually perform the task of getting revisions for get_revisions
 		First checks to see if someone has provided a script to determine
-		revisions. If not, falls back to internal method do_get_revisions_generic."""
+		revisions. If not, falls back to internal method _get_revisions_generic."""
 		if self.can_exec(installer_name,'get_revisions'):
 			revisions_string=self.exec_task(installer_name,'get_revisions')
 			return revisions_string.split('\n')
 		else:
-			return self.do_get_revisions_generic(installer_name)
+			return self._get_revisions_generic(installer_name)
 
 		return None
 
@@ -79,7 +79,7 @@ class Installation_System:
 	def get_svnbase():
 		return None
 
-	def do_get_revisions_generic(self, installer):
+	def _get_revisions_generic(self, installer):
 		"""directly query svn to get a list of available revisions. Usually this is adequate."""
 		svnbase=self.get_svnbase()
 		if svnbase:
@@ -263,9 +263,9 @@ class Installation_System:
 		if not self.exists(installer_name):
 			raise Installer_Exception("Can't find installer "+installer_name)
 
-		self.do_setup(installer_name,destination_dir)
+		self._setup(installer_name,destination_dir)
 
-	def do_setup(self, installer_name, destination_dir):
+	def _setup(self, installer_name, destination_dir):
 		"""actually perform the setup required by setup (do not call directly)"""
 		#silently fail if there's no setup script
 		if not self.can_exec(installer_name,"setup"):
@@ -283,9 +283,9 @@ class Installation_System:
 		if not self.exists(installer_name):
 			raise Installer_Exception("Can't find installer "+installer_name)
 
-		self.do_download(installer_name, destination_dir)
+		self._download(installer_name, destination_dir)
 
-	def do_download(self, installer_name, destination_dir):
+	def _download(self, installer_name, destination_dir):
 		"""actually perform the download for download() (do not call directly)"""
 		# if a particular step in the install procedure is not provided
 		# we simply skip it
@@ -318,13 +318,13 @@ class Installation_System:
 			return
 
 	
-		self.do_uninstall(installer_name, destination_dir)
+		self._uninstall(installer_name, destination_dir)
 
 		self.uninstall_settings(installer_name)
 		# use is_installed to determine success.
 		return not self.is_installed(installer_name) 
 		
-	def do_uninstall(self,installer_name, destination_dir):
+	def _uninstall(self,installer_name, destination_dir):
 		"""actually uninstall the component (do not call directly)"""
 		# if a particular step in the install procedure is not provided
 		# we simply skip it

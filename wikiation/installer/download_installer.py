@@ -7,8 +7,7 @@ import settings_handler as settings
 import os, os.path, shutil
 import subprocess
 
-from installation_system import Installation_System, Installer_Exception
-from extension_installer import Extension_Installer_Exception
+from extension_installer import Extension_Installer, Extension_Installer_Exception
 
 class Download_Installer_Exception(Extension_Installer_Exception):
 	pass
@@ -16,14 +15,10 @@ class Download_Installer_Exception(Extension_Installer_Exception):
 class Unsupported_Exception(Exception):
 	pass
 
-class Download_Installer(Installation_System):
+class Download_Installer(Extension_Installer):
 	"""download an extension, do nothing else"""
 	system_name='download'
 	destination_dir=None
-
-	def set_instance(self,instance):
-		self.destination_dir=os.path.join(settings.instancesdir,instance,"extensions")
-		Installation_System.set_instance(self,instance)
 
 	def get_installers(self):
 		l=list(os.popen('svn ls '+settings.extensionsdir))
@@ -56,7 +51,7 @@ class Download_Installer(Installation_System):
 	# get info will cause an exception to be raised
 	# install: ok.
 	
-	def do_download (self, installer_name, destination_dir):
+	def _download (self, installer_name, destination_dir):
 		os.chdir(destination_dir)
 		
 		r=''
@@ -77,10 +72,6 @@ class Download_Installer(Installation_System):
 		filepath=os.path.join(settingsdir,filename)
 		return filepath
 
-	def do_uninstall(self, installer_name, destination_dir):
+	def _uninstall(self, installer_name, destination_dir):
 		pathname=os.path.join(destination_dir, installer_name)
 		shutil.rmtree(pathname,ignore_errors=True)
-
-
-	def get_svnbase(self):
-		return settings.extensionsdir

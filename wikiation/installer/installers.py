@@ -14,7 +14,7 @@ import installer_util
 
 #from installation_system import Installation_System
 from toolkit_installer import Toolkit_Installer
-from extension_installer import Extension_Installer
+from scripted_installer import Scripted_Installer
 from mediawiki_installer import Mediawiki_Installer
 from naive_installer import Naive_Installer
 from installation_system import Installer_Exception
@@ -350,7 +350,7 @@ def get_system(system_name):
 
 # Constants
 
-systems={'wikiation_toolkit':Toolkit_Installer,'extension': Extension_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer}
+systems={'wikiation_toolkit':Toolkit_Installer,'scripted': Scripted_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer}
 
 
 if __name__=="__main__":
@@ -385,7 +385,7 @@ if __name__=="__main__":
 #	print "isolation", repr(system.uninstall("wikiation_check_isolation"))
 #
 #	print "wikiation_extension (assumes existing wiki)"
-#	extension_installer=Extension_Installer("REL1_13_3")
+#	extension_installer=Scripted_Installer("REL1_13_3")
 #
 #	print " \ uninstall " , repr (extension_installer.uninstall("ImageMap"))
 #	print "ImageMap", repr (extension_installer.install("ImageMap"))
@@ -404,7 +404,7 @@ if __name__=="__main__":
 #	print "install mediawiki 1_13_2", repr (mediawiki_installer.install("REL1_13_2"))
 #
 #	print "extension (assumes existing wiki)"
-#	extension_installer=Extension_Installer("REL1_13_2")
+#	extension_installer=Scripted_Installer("REL1_13_2")
 #
 #	print " \ uninstall " , repr (extension_installer.uninstall("ImageMap"))
 #	print "ImageMap", repr (extension_installer.install("ImageMap"))

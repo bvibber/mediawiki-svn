@@ -3,7 +3,8 @@
 #
 # Distributed under the terms of the MIT license.
 
-import sys
+import sys, os
+import settings_handler as settings
 
 def replace_generic(replacements,infilename,outfilename):
 	"""generic replace function, takes a dictionary of search/replace
@@ -45,6 +46,44 @@ def help(args):
 		print "wikiation_installer command [args]..."
 	else:
 		print 'no detailed help available'
+
+
+
+def revision():
+	"""obtain revision number for wikiation_installer itself"""
+
+	revision_string=None
+	os.chdir(settings.installerdir)
+	info=os.popen("svn info .")
+	for line in info:
+		if line.startswith("Revision:"):
+			revision_string=line.strip()
+			break
+	info.close()
+	if revision_string==None:
+		revision="unknown"
+	else:
+		revision=revision_string.replace("Revision:","")
+	
+	return revision
+
+def intro():
+	"""a nice banner/intro text for interactive mode"""
+
+	print "=== Wikiation installer (v. "+revision()+") ==="
+	print
+	print "(last known safe version: 48528)"
+	print "Interactive mode.",
+	print "Automated testing is",
+	if settings.run_automated_tests:
+		print "enabled."
+	else:
+		print "disabled."
+	print
+	print "please type a command and hit enter"
+	print "help<enter> for help"
+	print "^D, exit<enter> or quit<enter> to quit"
+	print
 
 def help_for(something):
 	"""If the user types incorrect input, try to gently correct them"""
