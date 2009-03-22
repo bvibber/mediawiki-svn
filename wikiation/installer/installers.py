@@ -19,6 +19,7 @@ from mediawiki_installer import Mediawiki_Installer
 from naive_installer import Naive_Installer
 from installation_system import Installer_Exception
 from download_installer import Download_Installer
+from extension_installer2 import extension_installer2
 
 from tags import Tags, TagsException
 
@@ -361,7 +362,7 @@ def get_system(system_name):
 
 # Constants
 
-systems={'wikiation_toolkit':Toolkit_Installer,'scripted': Scripted_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer}
+systems={'wikiation_toolkit':Toolkit_Installer,'scripted': Scripted_Installer, 'mediawiki':Mediawiki_Installer,'naive': Naive_Installer, 'download':Download_Installer, 'extension':extension_installer2}
 
 
 if __name__=="__main__":

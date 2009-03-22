@@ -9,10 +9,10 @@ import subprocess
 from tags import Tags
 
 
-class Installer_Exception (Exception):
+class Installer_Exception(Exception):
 	pass
 
-class Installation_System:
+class Installation_System(object):
 	"""An Abstract Installation System. Don't instantiate this class directly.
 		An installation system understands how to install and uninstall
 		'things' (instances). An instance might be a particular wiki
@@ -241,6 +241,7 @@ class Installation_System:
 
 		if os.path.exists(info_filename):
 			print file(info_filename).read()
+			return True
 		else:
 			print "This installer provides no information."
 

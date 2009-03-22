@@ -72,13 +72,16 @@ def intro():
 
 	print "=== Wikiation installer (v. "+revision()+") ==="
 	print
-	print "(last known safe version: 48528) (NOTE: 'extension:' has been renamed 'scripted:'"
+	print "(last known safe version: 48528)"
 	print "Interactive mode.",
 	print "Automated testing is",
 	if settings.run_automated_tests:
 		print "enabled."
 	else:
 		print "disabled."
+	print
+	print "Note: 'extension:' now means something else"
+	print "if you want the old functionality: use 'scripted:'"
 	print
 	print "please type a command and hit enter"
 	print "help<enter> for help"
