@@ -222,7 +222,7 @@ def make_admin(target):
 	"""create an admin user using createAndPromote.php"""
 	#do_sql(target, settings.installerdir+"/user.sql")
 	phpfile=os.path.join(settings.instancesdir,target,"maintenance","createAndPromote.php")
-	command="php "+phpfile+" --bureaucrat admin admin1234"
+	command="php "+phpfile+" --bureaucrat "+settings.adminuser_name+" "+settings.adminuser_password
 	os.system(command)
 
 def do_sql(target, infile):

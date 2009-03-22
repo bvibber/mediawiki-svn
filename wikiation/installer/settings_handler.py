@@ -55,6 +55,11 @@ run_automated_tests=False
 
 debug=False
 
+# initial user
+adminuser_name="admin"
+adminuser_password="admin1234"
+
+
 if os.path.exists(os.path.join(installerdir, 'settings.py')):
         from settings import *
 

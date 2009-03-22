@@ -65,7 +65,7 @@ def ls(args):
 		print \
 """available.mediawiki:		installed.mediawiki:
 available.wikiation_toolkit:	installed.wikiation_toolkit:
-available.extension:		installed.extension:	} 
+available.scripted:		installed.scripted:	} 
 available.naive:		installed.naive:	} extensions
 available.download:		installer.download:	} 
 """
