@@ -17,13 +17,13 @@ $messages['en'] = array(
 	'linkopenid-desc' => 'Allow users to link their account to an external OpenID',
 
 	# for Special:Preferences
-	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefs' => 'OpenID', # only translate this message to other languages if you have to change it
 	'linkopenid-prefstext-pre' => 'If you have a OpenID from an external provider you can specify it here.
 This allows you to use your userpage as an OpenID as well.',
 	'linkopenid-prefstext-openid' => 'Your OpenID:',
 	'linkopenid-prefstext-v1url' => 'Server-URL for OpenID Version 1.1:',
 	'linkopenid-prefstext-v2url' => 'Server-URL for OpenID Version 2:',
-	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:', # Only translate this if needed.
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:', # only translate this message to other languages if you have to change it
 );
 
 /** Message documentation (Message documentation)
@@ -33,13 +33,6 @@ $messages['qqq'] = array(
 	'linkopenid-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
-);
-
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'linkopenid-prefs' => 'OpenID',
 );
 
 /** Arabic (العربية)
@@ -75,7 +68,6 @@ $messages['arz'] = array(
  */
 $messages['bs'] = array(
 	'linkopenid-desc' => 'Omogućava korisnicima da povežu svoj račun sa vanjskim OpenID',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Ako imate OpenID od Vašeg vanjskog provajdera možete ga navesti ovdje.
 Ovo Vam omogućava da koristite Vašu korisničku stranicu kao i Vaš OpenID.',
 	'linkopenid-prefstext-openid' => 'Vaš OpenID:',
@@ -88,7 +80,6 @@ Ovo Vam omogućava da koristite Vašu korisničku stranicu kao i Vaš OpenID.',
  */
 $messages['de'] = array(
 	'linkopenid-desc' => 'Erlaubt Benutzern eine externe OpenID ihrem Account zuzuordnen',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Wenn du eine OpenID bei einem externen Anbieter besitzt, kannst du diese hier angeben.
 Dies ermöglicht dir die alternative Nutzung deiner Benutzerseite als OpenID.',
 	'linkopenid-prefstext-openid' => 'Deine OpenID:',
@@ -108,7 +99,6 @@ Dies ermöglicht Ihnen die alternative Nutzung Ihrer Benutzerseite als OpenID.',
  */
 $messages['dsb'] = array(
 	'linkopenid-desc' => 'Wužywarjam dowóliś jich konto z eksternym OpenID zwězaś',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Jolic maš OpenID wót eksternego póbitowarja, móžoš jen how pódaś.
 To śi dowólijo swój wužywarski bok teke ako OpenID wužywaś.',
 	'linkopenid-prefstext-openid' => 'Twój OpenID:',
@@ -121,7 +111,6 @@ To śi dowólijo swój wužywarski bok teke ako OpenID wužywaś.',
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-openid' => 'Via OpenID:',
 );
 
@@ -130,7 +119,6 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'linkopenid-desc' => 'Permitir a los usuarios vincular sus cuentas a un OpenID externo',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Si tienes un OpenID de un proveedor externo puedes especificarlo aquí.
 Esto te permite usar tu página de usuario como un OpenID también.',
 	'linkopenid-prefstext-openid' => 'Su OpenID:',
@@ -142,7 +130,6 @@ Esto te permite usar tu página de usuario como un OpenID también.',
  */
 $messages['fi'] = array(
 	'linkopenid-desc' => 'Antaa käyttäjille mahdollisuuden linkittää heidän tunnuksensa ulkoiseen OpenID-palveluun.',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Jos sinulla on OpenID-tunnus ulkoisella palveluntarjoajalla, voit määritellä sen tässä.
 Tämä antaa sinun käyttää myös käyttäjäsivuasi OpenID:nä.',
 	'linkopenid-prefstext-openid' => 'OpenID:si',
@@ -156,7 +143,6 @@ Tämä antaa sinun käyttää myös käyttäjäsivuasi OpenID:nä.',
  */
 $messages['fr'] = array(
 	'linkopenid-desc' => 'Permet aux utilisateurs de lier leur compter avec un OpenID externe',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => "Si vous avez un OpenID d'un fournisseur externe, vous pouvez le spécifier ici.
 Ceci vous permet aussi d'utiliser votre page utilisateur comme OpenID.",
 	'linkopenid-prefstext-openid' => 'Votre OpenID :',
@@ -170,7 +156,6 @@ Ceci vous permet aussi d'utiliser votre page utilisateur comme OpenID.",
  */
 $messages['gl'] = array(
 	'linkopenid-desc' => 'Permite aos usuarios ligar a súa conta cun OpenID externo',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Se ten un OpenID dun proveedor externo pode especificalo aquí.
 Isto permitiralle usar a súa páxina de usuario tamén como un OpenID.',
 	'linkopenid-prefstext-openid' => 'O seu OpenID:',
@@ -183,7 +168,6 @@ Isto permitiralle usar a súa páxina de usuario tamén como un OpenID.',
  */
 $messages['gsw'] = array(
 	'linkopenid-desc' => 'Erlaubt Benutzer Ihr Benutzerkonto uf en externi OpenID z vergleiche',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Wänn Du ne OpenID bi me extärnen Aabieter hesch, no chasch die do aagee.
 Des macht Dir di alternativ Nutzig vu Dyyere Benutzersyte as OpenID megli.',
 	'linkopenid-prefstext-openid' => 'Dyy OpenID:',
@@ -209,7 +193,6 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'linkopenid-desc' => 'Wužiwarjam dowolić, jich konto z eksternym OenID zwjazać',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Jeli maš OpenID wot eksterneho poskićowarja, móžeš jón tu podać. To ći dowola twoju wužiwarsku stronu tohorunja jako OpenID wužiwać.',
 	'linkopenid-prefstext-openid' => 'Twój OpenID:',
 	'linkopenid-prefstext-v1url' => 'Serwerowy URL za OpenID wersiju 1.1:',
@@ -221,7 +204,6 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'linkopenid-desc' => 'Permitter que usatores liga lor conto a un OpenID externe',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Si tu possede un OpenID de un providitor externe, tu pote specificar lo hic.
 Isto te permitte etiam usar tu pagina de usator como OpenID.',
 	'linkopenid-prefstext-openid' => 'Tu OpenID:',
@@ -235,7 +217,6 @@ Isto te permitte etiam usar tu pagina de usator como OpenID.',
  */
 $messages['ja'] = array(
 	'linkopenid-desc' => '利用者がアカウントを外部のOpenIDと関連付けられるようにする',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'あなたが外部プロバイダからのOpenIDをもっているならば、ここでそれを指定できます。
 その指定によって、あなたの利用者ページを同様にOpenIDとして使えます。',
 	'linkopenid-prefstext-openid' => 'あなたのOpenID:',
@@ -247,7 +228,6 @@ $messages['ja'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-openid' => '당신의 OpenID:',
 );
 
@@ -269,7 +249,6 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'linkopenid-desc' => 'Erlaabt de Benotzer et fir hire Benotzerkont mat enger externer OpenID ze verbannen',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Wann Dir eng OpenID vun engem externe rovider hutt, da  kënnt dir se hei uginn.
 Dëst erlaabt et datt Dir Är Benotzersäit och als OpenID benotze kënnt.',
 	'linkopenid-prefstext-openid' => 'Är OpenID:',
@@ -282,7 +261,6 @@ Dëst erlaabt et datt Dir Är Benotzersäit och als OpenID benotze kënnt.',
  */
 $messages['nl'] = array(
 	'linkopenid-desc' => 'Maakt het voor gebruikers mogelijk een koppeling te maken met een externe OpenID-gebruiker',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Als u een OpenID hebt van een externe provider dan kunt u die hier aangeven.
 Hierdoor wordt het mogelijk uw gebruikerspagina ook al OpenID te gebruiken.',
 	'linkopenid-prefstext-openid' => 'Uw OpenID:',
@@ -295,7 +273,6 @@ Hierdoor wordt het mogelijk uw gebruikerspagina ook al OpenID te gebruiken.',
  */
 $messages['nn'] = array(
 	'linkopenid-desc' => 'Gjer det mogleg for brukarar å lenkja kontoen sin til ein ekstern OpenID',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Om du har ein OpenID frå ein ekstern leverandør, kan du oppgje det her.
 Dette lèt deg nytta brukarsida di som ein OpenID.',
 	'linkopenid-prefstext-openid' => 'Din OpenID:',
@@ -308,7 +285,6 @@ Dette lèt deg nytta brukarsida di som ein OpenID.',
  */
 $messages['oc'] = array(
 	'linkopenid-desc' => 'Permet als utilizaires de ligar lor comptador amb un OpenID extèrn',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => "S'avètz un OpenID d'un provesidor extèrn, o podètz especificar aicí.
 Aquò vos permet tanben d'utilizar vòstra page d'utilizaire coma OpenID.",
 	'linkopenid-prefstext-openid' => 'Vòstre OpenID :',
@@ -322,7 +298,6 @@ Aquò vos permet tanben d'utilizar vòstra page d'utilizaire coma OpenID.",
  */
 $messages['pt'] = array(
 	'linkopenid-desc' => 'Permite aos utilizadores associarem a sua conta a um OpenID externo',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Se possui um OpenID de um fornecedor externo, pode especificá-lo aqui.
 Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
 	'linkopenid-prefstext-openid' => 'O seu OpenID:',
@@ -335,7 +310,6 @@ Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
  */
 $messages['pt-br'] = array(
 	'linkopenid-desc' => 'Permite aos utilizadores associarem a sua conta a um OpenID externo',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Se possui um OpenID de um fornecedor externo, pode especificá-lo aqui.
 Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
 	'linkopenid-prefstext-openid' => 'O seu OpenID:',
@@ -348,7 +322,6 @@ Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
  */
 $messages['sk'] = array(
 	'linkopenid-desc' => 'Umožniť používateľom spojiť svoj účet s externým OpenID',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Ak máte OpenID od externého poskytovateľa, môžete ho tu uviesť.
 To vám umožní používať svoju používateľskú stránku tiež ako OpenID.',
 	'linkopenid-prefstext-openid' => 'Váš OpenID:',
@@ -361,7 +334,6 @@ To vám umožní používať svoju používateľskú stránku tiež ako OpenID.'
  */
 $messages['sv'] = array(
 	'linkopenid-desc' => 'Gör det möjligt för användare att länka sina konton till en extern OpenID',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Om du har en OpenID från en extern leverantör kan du uppge det här.
 Detta låter dig använda din användarsida som en OpenID.',
 	'linkopenid-prefstext-openid' => 'Din OpenID:',
@@ -373,7 +345,6 @@ Detta låter dig använda din användarsida som en OpenID.',
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-openid' => 'Ó-nia OpenID:',
 );
 
@@ -396,7 +367,6 @@ Magpapahintulot ito na magamit ang iyong pahina ng tagagamit bilang isa ring Ope
  */
 $messages['tr'] = array(
 	'linkopenid-desc' => "Kullanıcıların hesaplarını bir dış OpenID'ye bağlamalarına olanak sağlar",
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => "Eğer bir dış sağlayıcıdan OpenID'niz varsa burada belirtebilirsiniz.
 Bu ayrıca, kullanıcı sayfanızı OpenID olarak kullanmanıza da izin verir.",
 	'linkopenid-prefstext-openid' => "OpenID'niz:",
@@ -410,7 +380,6 @@ Bu ayrıca, kullanıcı sayfanızı OpenID olarak kullanmanıza da izin verir.",
  */
 $messages['vec'] = array(
 	'linkopenid-desc' => 'Permete ai utenti de ligar la so utensa a un OpenID esterno',
-	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-pre' => 'Se te ghè un OpenID da un provider esterno te poli indicarli qua.
 Questo el te permete de doparar la to pàxena utente come OpenID.',
 	'linkopenid-prefstext-openid' => 'El to OpenID:',
