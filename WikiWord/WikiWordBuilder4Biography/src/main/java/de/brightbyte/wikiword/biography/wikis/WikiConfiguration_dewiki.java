@@ -29,6 +29,14 @@ public class WikiConfiguration_dewiki extends WikiConfiguration {
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("GEBURTSORT", "person-birth-place").setStripMarkup(true),
 				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("STERBEORT", "person-death-place").setStripMarkup(true)
 			) );
+		
+		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("PND"),
+				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("1", "ID-PND").setStripMarkup(true) ) );
+
+		propertyExtractors.add( new WikiTextAnalyzer.TemplateParameterExtractor(new WikiTextAnalyzer.ExactNameMatcher("LeMO"),
+				new WikiTextAnalyzer.DefaultTemplateParameterPropertySpec("1", "ID-LeMO").setStripMarkup(true) ) );
+		
+		//TODO: {{BAM|Kohl|Helmut}}
 
 		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("person-sortname") ); 
 		pageTermExtractors.add( new WikiTextAnalyzer.PagePropertyValueExtractor("person-name") ); 
