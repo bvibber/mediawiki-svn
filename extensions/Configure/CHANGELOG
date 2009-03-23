@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.13.6 - 23 March 2009
+  Updated AbuseFilter and FlaggedRevs extensions.
+
 0.13.5 - 20 March 2009
   * Updated CodeReview and FlaggedRevs extensions.
   * Fixed a bug when using PostgresSQL with database handler: old versions
