@@ -250,9 +250,8 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	}
 
 	/**
-	 * List all archived versions
+	 * List all archived versions, with detailled information
 	 * FIXME: serious O(n) overhead
-	 * FIXME: timestamp not unique
 	 * @return array of timestamps
 	 */
 	public function getArchiveVersions( $options = array() ) {
@@ -275,14 +274,18 @@ class ConfigureHandlerDb implements ConfigureHandler {
 		$arr = array();
 		foreach ( $ret as $row ) {
 			$timestamp = wfTimestamp( TS_MW, $row->cv_timestamp );
-			$arr[$timestamp] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki, 'reason' => $row->cv_reason, 'timestamp' => $timestamp );
+			$arr[$timestamp] = array(
+				'username' => $row->cv_user_text,
+				'userwiki' => $row->cv_user_wiki,
+				'reason' => $row->cv_reason,
+				'timestamp' => $timestamp,
+			);
 		}
 		return $arr;
 	}
 
 	/**
-	 * Same as listArchiveVersions(), but with more information about each
-	 * version
+	 * Same as getArchiveVersions(), but only get a list of timestamps
 	 *
 	 * @param $options Array of options
 	 * @return Array of versions
