@@ -9,11 +9,8 @@ API.
 Version 0.0.7
 
 NOTE: This software is pre-pre-alpha and is not guaranteed to work
-on any device at any point. Use at your own risk.
-
-FEATURES:
-* Makes request to API url entered, Returns some default information on page
-  name provided.
+on any device at any point. Use at your own risk. Does not build
+on 1.0, requires 1.1.
 
 TODO (in no real order):
  1) i18n - check Google's progress in native Android. Possible workarounds?
