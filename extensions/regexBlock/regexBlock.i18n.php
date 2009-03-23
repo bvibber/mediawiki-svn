@@ -606,6 +606,16 @@ Verŝajne ne estas uzanto kun tiu nomo.',
  */
 $messages['es'] = array(
 	'regexblock-already-blocked' => '"$1" ya está bloqueado.',
+	'regexblock-block-log' => "Nombre de usuario o dirección IP '''$1''' ha sido bloqueada.",
+	'regexblock-block-success' => 'Bloqueo fue un éxito',
+	'regexblock-currently-blocked' => 'Direcciones actualmente bloqueadas:',
+	'regexblock-expire-duration' => '1 hora,2 horas,4 horas,6 horas,1 día,3 días,1 semana,2 semanas,1 mes,3 meses,6 meses,1 año,infinito',
+	'regexblock-reason-ip' => 'Esta dirección IP está prevenida de editar a causa de vandalismo u otra desorganización tuya o pde alguien que comparte tu dirección IP.
+Si crees que esto es un error, por favor [[$1|contactanos]]',
+	'regexblock-reason-name' => 'Este nombre de usuario está prevenido de editar a causa de vandalismo u otra desorganización.
+Si crees que esto es un error, por favor [[$1|contactanos]]',
+	'regexblock-reason-regex' => 'Este nombre de usuario está prevenido de editar a causa de vandalismo u otra desorganización hecha por un usuario con un nombre similar.
+Por favor crea un nombre alternativo o [[$1|contactanos]] acerca del problema',
 	'regexblock-form-username' => 'Dirección IP o nombre de usuario:',
 	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-expiry' => 'Expiración:',
@@ -615,7 +625,10 @@ $messages['es'] = array(
 	'regexblock-form-submit-regex' => 'Expresión regular inválida.',
 	'regexblock-form-submit-expiry' => 'Por favor especifique un periodo de expiración.',
 	'regexblock-nodata-found' => 'Sin datos encontrados',
+	'regexblock-unblock-success' => 'Desbloqueo fue un éxito',
 	'regexblock-unblock-log' => "Nombre de usuario o dirección IP '''$1''' ha sido bloqueada.",
+	'regexblock-unblock-error' => 'Error desbloqueando $1.
+Probablemente no existe tal usuario.',
 	'regexblock-view-blocked' => 'Ver bloqueos por:',
 	'regexblock-view-all' => 'Todos',
 	'regexblock-view-go' => 'Ir',
@@ -627,6 +640,7 @@ $messages['es'] = array(
 	'regexblock-view-block-expired' => 'EXPIRA en',
 	'regexblock-view-block-by' => 'bloqueado por:',
 	'regexblock-view-block-unblock' => 'desbloquear',
+	'regexblock-view-stats' => 'Estadísticas',
 	'regexblock-view-empty' => 'La lista de nombres y direcciones bloqueadas está vacía',
 	'regexblock-view-time' => 'en $1',
 );
@@ -1859,10 +1873,10 @@ Nota: endereços IP parciais serão tratados como nomes de utilizadores na deter
 Se nenhum motivo for especificado, um motivo genérico por defeito será usado.\'\'',
 	'regexblock-page-title-1' => 'Bloquear endereço utilizando expressões regulares',
 	'regexblock-reason-ip' => 'Este endereço IP está impedido de editar devido a vandalismo ou outra perturbação por si ou outra pessoa que partilha o seu endereço IP.
-Se crê que se trata de um erro, por favor, $1',
-	'regexblock-reason-name' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outro tipo de disrupção. Se julgar tratar-se de um erro, por favor $1',
+Se crê que se trata de um erro, por favor, [[$1|entre em contacto]]',
+	'regexblock-reason-name' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outro tipo de disrupção. Se julgar tratar-se de um erro, por favor [[$1|entre em contacto]]',
 	'regexblock-reason-regex' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outra perturbação por um utilizador com um nome semelhante.
-Por favor, crie um nome de utilizador alternativo ou $1 sobre o problema',
+Por favor, crie um nome de utilizador alternativo ou [[$1|avise-nos]] sobre o problema',
 	'regexblock-form-username' => 'Endereço IP ou nome de utilizador:',
 	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-expiry' => 'Validade:',
@@ -1890,7 +1904,7 @@ Por favor, crie um nome de utilizador alternativo ou $1 sobre o problema',
 	'regexblock-view-block-infinite' => 'bloqueio permanente',
 	'regexblock-view-block-temporary' => 'expira em',
 	'regexblock-view-block-expired' => 'EXPIRADO em',
-	'regexblock-view-block-by' => 'bloqueado por',
+	'regexblock-view-block-by' => 'bloqueado por:',
 	'regexblock-view-block-unblock' => 'desbloquear',
 	'regexblock-view-stats' => 'estatísticas',
 	'regexblock-view-empty' => 'Esta lista de nomes e endereços bloqueados está vazia.',

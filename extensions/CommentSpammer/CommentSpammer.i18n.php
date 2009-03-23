@@ -131,9 +131,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Baiji
+ * @author Crazymadlover
  */
 $messages['es'] = array(
+	'commentspammer-save-blocked' => 'Tu dirección IP es un comentador spammer sospechoso. Por tanto la página no ha sido grabada.
+[[Special:UserLogin|Inicie sesión o cree una cuenta]] para evitar esto.',
+	'commentspammer-desc' => 'Rechaza ediciones de comentadores spammer sospechosos en una lista negra DNS',
 	'commentspammer-log-msg' => 'edición de [[Special:Contributions/$1|$1]] en [[:$2]].',
+	'cspammer-log-page' => 'Registro de comentadores spammer',
 );
 
 /** Basque (Euskara)

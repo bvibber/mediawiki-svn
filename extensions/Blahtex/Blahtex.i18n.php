@@ -649,9 +649,11 @@ Wopytaj pśikaz "$3{...}" wužywaś.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Konsnos
  */
 $messages['el'] = array(
 	'math_InvalidColour' => 'Το χρώμα "$1" είναι άκυρο',
+	'math_UnrecognisedCommand' => 'Άγνωστη εντολή "$1"',
 );
 
 /** Esperanto (Esperanto)

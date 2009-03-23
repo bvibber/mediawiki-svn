@@ -803,12 +803,20 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Aushulz
  * @author Cruccone
  */
 $messages['it'] = array(
 	'vote' => 'Vota',
 	'vote-current' => "Il tuo voto corrente è per '''$1'''.",
 	'vote-caption' => 'La tua selezione:',
+	'vote-submit' => 'Vota',
+	'vote-registered' => 'Il tuo voto è stato registrato.',
+	'vote-view-results' => 'Vedi risultati',
+	'vote-results' => 'Risultati della votazione',
+	'vote-results-choice' => 'Scelta',
+	'vote-results-none' => 'Non è stato espresso alcun voto.',
+	'vote-invalid-choice' => 'Devi selezionare una delle possibili opzioni.',
 );
 
 /** Japanese (日本語)

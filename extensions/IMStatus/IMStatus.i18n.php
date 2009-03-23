@@ -288,6 +288,7 @@ $messages['eo'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'imstatus_syntax' => 'Sintaxis',
 	'imstatus_default' => 'Por defecto',
 	'imstatus_example' => 'Ejemplo',
 	'imstatus_possible_val' => 'Valores posibles',
@@ -295,11 +296,16 @@ $messages['es'] = array(
 	'imstatus_min' => 'mínimo',
 	'imstatus_or' => 'o',
 	'imstatus_style' => 'estilo del indicador de status',
+	'imstatus_action' => 'acción cuando el botón está presionado',
+	'imstatus_details_saa' => 'Para más detalles acerca de todos los estilos y acciones, vea $1.',
 	'imstatus_your_name' => 'tu $1 nombre',
 	'imstatus_gtalk_code' => 'tu código de discusión google',
 	'imstatus_gtalk_get_code' => 'tu código de discusión google: obtenlo en $1.',
 	'imstatus_gtalk_height' => 'altura de la tabla, en pixeles.',
 	'imstatus_gtalk_width' => 'ancho de la tabla, en pixeles.',
+	'imstatus_icq_id' => 'Tu ICQ ID',
+	'imstatus_xfire_size' => 'el tamaño del botón, de $1 (mayor) a $2 (menor).',
+	'imstatus_yahoo_style' => 'el estilo del botón, de $1 (mayor) a $2 (menor), $3 y $4 son para correo de voz.',
 );
 
 /** Basque (Euskara)

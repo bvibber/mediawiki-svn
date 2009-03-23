@@ -82,6 +82,6 @@ $aliases['sa'] = array(
 
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'RandomInCategory' => array( 'Alin mang kaurian' ),
+	'RandomInCategory' => array( 'Alinmang kaurian' ),
 );
 

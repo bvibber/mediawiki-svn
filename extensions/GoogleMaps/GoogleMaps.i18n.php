@@ -3795,6 +3795,16 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-mars' => 'Марс',
 );
 
+/** Sardinian (Sardu)
+ * @author Marzedu
+ */
+$wgGoogleMapsMessages['sc'] = array(
+	'gm-balloon-title' => 'Tìtulu:',
+	'gm-map' => 'Mapa',
+	'gm-yes' => 'Eja',
+	'gm-no' => 'No',
+);
+
 /** Sicilian (Sicilianu)
  * @author Santu
  */

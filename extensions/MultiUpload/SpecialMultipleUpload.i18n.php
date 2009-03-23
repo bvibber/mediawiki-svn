@@ -711,7 +711,7 @@ $messages['ksh'] = array(
 	'multipleupload-text' => "Etlijje Dateie op eimol Huhlade.
 
 Jangk op 'Browse' un donn all de Dateie uswähle, di De huhlade wells.
-Do kannst fun 1 bes $1 Dateie op eimol huhlade.
+Do kanns {{PLURAL:ävver nur ein Datei|fun 1 bes $1 Dateie|kein Dateie}} op eimol huhlade.
 
 De kanns och ene '''Dateiname för et Afspeichere''' aanjevve, un ene '''Tex drövver''' metschecke.
 

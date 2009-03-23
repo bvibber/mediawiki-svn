@@ -112,7 +112,9 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'signaturelogpage' => 'Registro de firma',
 	'signature-desc' => 'Habilita [[Special:SignDocument|firma]] de documentos',
+	'signaturelogpagetext' => 'Este es un registro de [[Special:SignDocument|todas las firmas agregadas a los documentos]].',
 	'signaturelogentry' => 'firmado el documento $1',
 );
 

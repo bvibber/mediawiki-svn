@@ -155,6 +155,13 @@ $messages['pt-br'] = array(
 	'pipeescape-desc' => 'Função do analisador (parser) <code>#!</code> para quando se pretende que um caractere barra vertical ("pipe") seja apenas um caractere barra vertical.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'pipeescape-desc' => "Funziona d'analisi <code>#!</code> pe quanne tu vuè ca 'nu carattere de ''pipe'' avène conziderate cumme a 'nu ''pipe''",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

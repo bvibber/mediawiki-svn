@@ -118,6 +118,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'purgecache' => 'Purgar caché',
+	'purgecache-warning' => 'Esto purgara las tablas de cache.',
+	'purgecache-purged' => 'El cache ha sido purgado.',
 	'purgecache-button' => 'Purgar',
 );
 

@@ -124,6 +124,6 @@ $aliases['sw'] = array(
 
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'CountEdits' => array( 'Bilangin ang pamamatnugot' ),
+	'CountEdits' => array( 'Bilangin ang pagbabago' ),
 );
 

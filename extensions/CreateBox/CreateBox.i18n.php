@@ -132,6 +132,13 @@ Njamóžoš tós ten bok napóraś, ale móžoš jen [{{fullurl:{{FULLPAGENAME}}
 <createbox>break=no</createbox>",
 );
 
+/** Greek (Ελληνικά)
+ * @author Konsnos
+ */
+$messages['el'] = array(
+	'createbox-create' => 'Δημιουργία',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

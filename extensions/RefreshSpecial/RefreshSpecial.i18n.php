@@ -1024,7 +1024,9 @@ $messages['vi'] = array(
 	'refreshspecial' => 'Làm mới trang đặc biệt',
 	'refreshspecial-desc' => 'Cho phép [[Special:RefreshSpecial|người dùng làm mới trang đặc biệt]]',
 	'refreshspecial-title' => 'Làm mới trang đặc biệt',
-	'refreshspecial-help' => 'Trang đặc biệt này là phương tiện để làm mới (refresh) các trang đặc biệt. Khi bạn đã chọn các trang bạn muốn làm mới, nhấn vào nút Làm mới phía dưới để thực hiện. Cảnh báo: việc làm mới có thể sẽ mất một lúc nếu wiki khá lớn.',
+	'refreshspecial-help' => 'Trang đặc biệt này là phương tiện để làm mới (refresh) các trang đặc biệt bằng tay.
+Khi bạn chọn các trang bạn muốn làm mới, nhấn vào nút "Làm mới" phía dưới để thực hiện làm mới các trang đặc biệt đã chọn.
+Cảnh báo: việc làm mới có thể sẽ mất một lúc nếu wiki khá lớn.',
 	'refreshspecial-button' => 'Làm mới các trang đã chọn',
 	'refreshspecial-fail' => 'Xin hãy chọn ít nhất một trang đặc biệt để làm mới.',
 	'refreshspecial-refreshing' => 'đang làm mới trang đặc biệt',
@@ -1032,7 +1034,7 @@ $messages['vi'] = array(
 	'refreshspecial-success-subtitle' => 'đang làm mới trang đặc biệt',
 	'refreshspecial-choice' => 'đang làm mới trang đặc biệt',
 	'refreshspecial-js-disabled' => '(<i>Bạn không thể chọn tất cả các trang trong khi JavaScript bị tắt</i>)',
-	'refreshspecial-select-all-pages' => ' chọn tất cả các trang',
+	'refreshspecial-select-all-pages' => 'Chọn tất cả các trang',
 	'refreshspecial-link-back' => 'Quay về bộ mở rộng',
 	'refreshspecial-none-selected' => 'Bạn chưa chọn trang đặc biệt nào. Đang quay về lựa chọn mặc định.',
 	'refreshspecial-db-error' => 'Thất bại: lỗi cơ sở dữ liệu',
@@ -1040,7 +1042,9 @@ $messages['vi'] = array(
 	'refreshspecial-slave-lagged' => 'Máy phụ bị trễ, đang chờ…',
 	'refreshspecial-reconnected' => 'Đã kết nối lại.',
 	'refreshspecial-reconnecting' => 'Kết nối thất bại, đang kết nối lại trong 10 giây nữa…',
-	'refreshspecial-total-display' => 'Đã làm mới $1 trang, tổng cộng là $2 hàng trong thời gian $3 (thời gian để hoàn thành chạy mã kịch bản là $4)',
+	'refreshspecial-page-result' => 'có $1 {{PLURAL:$1|hàng|hàng}} trong',
+	'refreshspecial-total-display' => 'Đã làm mới $1 {{PLURAL:$1|trang|trang}}, tổng cộng là $2 {{PLURAL:$2|hàng|hàng}} trong thời gian $3 (thời gian để hoàn thành chạy mã kịch bản là $4)',
+	'right-refreshspecial' => 'Làm mới trang đặc biệt',
 );
 
 /** Volapük (Volapük)

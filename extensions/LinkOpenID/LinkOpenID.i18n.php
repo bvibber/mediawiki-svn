@@ -28,11 +28,13 @@ This allows you to use your userpage as an OpenID as well.',
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'linkopenid-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
+	'linkopenid-prefs' => '{{Optional}}',
 );
 
 /** Arabic (العربية)
@@ -385,5 +387,17 @@ Questo el te permete de doparar la to pàxena utente come OpenID.',
 	'linkopenid-prefstext-openid' => 'El to OpenID:',
 	'linkopenid-prefstext-v1url' => 'Server-URL par OpenID Version 1.1:',
 	'linkopenid-prefstext-v2url' => 'Server-URL par OpenID Version 2:',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'linkopenid-desc' => 'Cho phép người dùng liên kết tài khoản của họ đến một OpenID bên ngoài',
+	'linkopenid-prefstext-pre' => 'Nếu bạn có một OpenID từ một nhà cung cấp bên ngoài, bạn có thể ghi nó ở đây.
+Nó cũng cho phép bạn sử dung trang người dùng làm một OpenID.',
+	'linkopenid-prefstext-openid' => 'OpenID của bạn:',
+	'linkopenid-prefstext-v1url' => 'Địa chỉ URL máy chủ dành cho OpenID phiên bản 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL máy chủ dành cho OpenID phiên bản 2:',
 );
 

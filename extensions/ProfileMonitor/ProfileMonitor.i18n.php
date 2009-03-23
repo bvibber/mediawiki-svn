@@ -198,9 +198,13 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'profiling' => 'Datos de perfil',
+	'profiling-desc' => '[[Special:Profiling|Página especial]] para buscar e inspeccionar datos de perfil',
 	'profiling-ok' => 'Aceptar',
+	'profiling-data' => 'Datos de perfil para `$1`',
 	'profiling-data-process' => 'Proceso',
 	'profiling-data-count' => 'Contar',
+	'profiling-no-data' => 'No se enontraron datos coincidentes.',
 );
 
 /** Basque (Euskara)

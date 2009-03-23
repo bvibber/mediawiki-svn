@@ -1045,6 +1045,7 @@ Należy zwrócić uwagę, by wyrażania nie były zbyt krótkie lub zbyt często
 	'spamregex-currently-blocked' => "'''Aktualnie zablokowane wyrażenia:'''",
 	'spamregex-move' => 'Powód który wpisałeś zawiera zabroniony zwrot.',
 	'spamregex-no-currently-blocked' => "'''Nie ma zablokowanych wyrażeń.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 usuń]) dodane przez $5 dnia $6 o $7",
 	'spamregex-page-title-1' => 'Blokuj frazę za pomocą wyrażenia regularnego',
 	'spamregex-unblock-success' => 'Odblokowano',
 	'spamregex-unblock-message' => "Edycja frazy '''$1''' została odblokowana.",

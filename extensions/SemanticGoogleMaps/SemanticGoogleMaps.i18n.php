@@ -110,6 +110,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'semanticgooglemaps-desc' => 'Permite a los usuario editar y mostrar datos de coordinación semántica usando Google Maps',
 	'semanticgooglemaps-enteraddresshere' => 'Ingresar dirección aquí',
 );
 
@@ -254,6 +255,7 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticgooglemaps-desc' => 'Umożliwia użytkownikom edycję i prezentację współrzędnych geograficznych z użyciem Google Maps',
+	'semanticgooglemaps-enteraddresshere' => 'Podaj adres',
 );
 
 /** Portuguese (Português)

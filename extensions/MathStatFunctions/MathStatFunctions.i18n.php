@@ -64,13 +64,14 @@ $messages['ast'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'msfunc_desc' => 'Калекцыя матэматычных і статыстычных функцыяў',
-	'msfunc_nan' => 'Вынік не зяўляецца лічбай',
-	'msfunc_inf' => 'Выніль зьяўляецца бяскончасьцю',
-	'msfunc_div_zero' => 'Дзяленьне на ноль',
+	'msfunc_nan' => 'Вынік не зьяўляецца лікай',
+	'msfunc_inf' => 'Вынік зьяўляецца бясконцасьцю',
+	'msfunc_div_zero' => 'Дзяленьне на нуль',
 );
 
 /** Bulgarian (Български)
@@ -415,8 +416,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  */
 $messages['pl'] = array(
+	'msfunc_desc' => 'Zbiór funkcji matematycznych i statystycznych',
 	'msfunc_nan' => 'Wartość wynikowa nie jest liczbą',
 	'msfunc_inf' => 'Wartość wynikowa to nieskończoność',
 	'msfunc_div_zero' => 'Dzielenie przez zero',

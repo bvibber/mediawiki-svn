@@ -121,6 +121,6 @@ $aliases['th'] = array(
 
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'PurgeCache' => array( 'Dalisayin ang talaksan' ),
+	'PurgeCache' => array( 'Purgahin ang baunan' ),
 );
 

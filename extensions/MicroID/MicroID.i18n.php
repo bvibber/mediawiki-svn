@@ -37,11 +37,12 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'microid-desc' => 'Дадае [http://www.microid.org/ MicroID] на старонкі ўдзельнікаў, для пацьверджаньня рахункаў зьнешнімі сэрвісамі',
-	'tog-microid' => 'Апублікуйце <a href="http://microid.org/">MicroID</a> для пацьверджаньня рахунку зьнешнімі сэрвісамі',
+	'microid-desc' => 'Дадае [http://www.microid.org/ MicroID] на старонкі ўдзельнікаў, для пацьверджаньня рахункаў вонкавымі сэрвісамі',
+	'tog-microid' => 'Апублікаваць <a href="http://microid.org/">MicroID</a> для пацьверджаньня рахунку вонкавымі сэрвісамі',
 );
 
 /** Bulgarian (Български)

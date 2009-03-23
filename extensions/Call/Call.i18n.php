@@ -387,6 +387,19 @@ Fir Probläm git s <b>{{ns:special}}:Call/DebuG</b>",
 	'call-save-failed' => 'Dää Täxt ischt NIT uf dr Syte <big>[[$1]]</big> gspycheret wore, wel s die Syte scho git.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'call' => 'קריאה',
+	'call-desc' => 'יצירת קישור לתבנית (או לדף ויקי רגיל) עם העברת משתנים.
+ניתן לשימוש בשורת הפקודה של הדפדפן או כטקסט בוויקי.',
+	'call-save' => "פלט הקריאה יישמר לדף בשם '''$1'''.",
+	'call-save-success' => 'הטקסט הבא נשמר לדף <big>[[$1]]</big> .',
+	'call-save-failed' => 'הטקסט הבא <b>לא</b> נשמר לדף <big>[[$1]]</big> כיוון שהוא כבר קיים.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

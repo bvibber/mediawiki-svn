@@ -165,6 +165,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'lua_error' => 'Error en línea $1',
+	'lua_extension_notfound' => 'Extensión Lua no configurada',
+	'lua_interp_notfound' => 'Intérprete Lua no encontrado',
 	'lua_error_internal' => 'Error interno',
 );
 

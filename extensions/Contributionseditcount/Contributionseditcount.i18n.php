@@ -102,9 +102,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Konsnos
  */
 $messages['el'] = array(
 	'contributionseditcount' => 'Αυτός ο χρήστης έχει κάνει $1 επεξεργασίες.',
+	'contributionseditcount-desc' => 'Εμφανίζει τον αριθμό επεξεργασιών στην [[Special:Contributions|σελίδα συνεισφοράς χρήστη]]',
 );
 
 /** Esperanto (Esperanto)

@@ -128,12 +128,15 @@ $messages['bs'] = array(
 	'am-email' => 'e-mail',
 	'am-active' => 'aktivan',
 	'am-updated' => 'Vaše promjene su uspješno sačuvane',
+	'nss-desc' => 'Dodatak za autentifikaciju protiv libnss-mysql baze podataka. Sadrži [[Special:AccountManager|upravljanje računima]]',
 	'nss-rights' => 'prava',
 	'nss-save-changes' => 'Spremi promjene',
 	'nss-create-account-header' => 'Napravi novi račun',
 	'nss-create-account' => 'Napravi račun',
 	'nss-no-mail' => 'Ne šalji e-mail',
+	'nss-welcome-mail' => 'Račun sa korisničkim imenom $1 i šifrom $2 je napravljen za Vas.',
 	'nss-welcome-mail-subject' => 'Pravljenje računa',
+	'nss-db-error' => 'Greška pri čitanju iz autentifikacijske baze podataka',
 );
 
 /** Czech (Česky)

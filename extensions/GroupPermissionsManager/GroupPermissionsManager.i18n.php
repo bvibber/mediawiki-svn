@@ -77,6 +77,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author CERminator
  * @author Dalibor Bosits
  * @author Jon Harald Søby
  * @author Meno25
@@ -103,6 +104,7 @@ $messages['qqq'] = array(
 	'right-recentchanges' => '{{doc-right}}',
 	'right-edittalk' => '{{doc-right}}',
 	'right-edit-new' => '{{doc-right}}',
+	'right-readold' => '{{doc-right}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -346,8 +348,10 @@ $messages['bs'] = array(
 	'removeunusedgroups' => 'Ukloni neiskorištene grupe',
 	'grouppermissions-desc' => 'Uređivanje grupnih dopuštenja preko [[Special:GroupPermissions|posebne stranice]]',
 	'grouppermissions-desc2' => 'Prošireni sistem dopuštenja',
+	'grouppermissions-desc3' => 'Omogućuje da se akcije sadržaja (tabovi) prilagođavaju',
 	'grouppermissions-desc4' => 'Omogućuje dodavanje dodatnih stavki u alatnu kutiju',
 	'grouppermissions-desc-nsm' => 'Upravljanje imenskim prostorima preko posebne stranice',
+	'grouppermissions-header' => 'Možete koristiti ovu stranicz za izmjenu odgovarajućih dopuštenja za različite korisničke grupe.',
 	'grouppermissions-search' => 'Grupa:',
 	'grouppermissions-dologin' => 'Prijava',
 	'grouppermissions-dosearch' => 'Idi',
@@ -374,6 +378,7 @@ $messages['bs'] = array(
 	'grouppermissions-log-change' => 'promijenjena dopuštrenja za grupu "$2"',
 	'grouppermissions-log-delete' => 'obrisana grupa "$2"',
 	'grouppermissions-log-name' => 'Zapisnik grupnih dopuštenja',
+	'grouppermissions-log-header' => 'Ova stranica prati promjene na određenim dopuštenjima korisničkih grupa.',
 	'grouppermissions-needjs' => 'Upozorenje: JavaScript je onemogućen u Vašem pregledniku. Neke funkcije možda neće raditi!',
 	'grouppermissions-sp-sort' => 'Sortiraj dopuštenja',
 	'grouppermissions-sp-save' => 'Sačuvaj',
@@ -386,7 +391,9 @@ $messages['bs'] = array(
 	'grouppermissions-rug-success' => 'Uspješno uklonjeni korisnici iz neiskorištenih grupa!',
 	'grouppermissions-rug-confirm' => 'Uklanjanje korisnika iz neiskorištenih grupa',
 	'right-grouppermissions' => 'Upravljanje grupnim dopuštenjima',
+	'right-viewsource' => 'Pregledavanje wiki koda zaštićenih stranica',
 	'right-raw' => 'Pregled sirovih stranica',
+	'right-render' => 'Pregledavanje ispisanih stranica bez navigacije',
 	'right-info' => 'Pregled informacija stranica',
 	'right-credits' => 'Pregled autora stranice',
 	'right-history' => 'Pregled historija stranica',
@@ -394,6 +401,8 @@ $messages['bs'] = array(
 	'right-contributions' => 'Pregled stranica doprinosa',
 	'right-recentchanges' => 'Pregled nedavnih izmjena',
 	'right-edittalk' => 'Uređivanje stranica za razgovor',
+	'right-edit-new' => 'Uređivanje stranica (koje nisu stranice za razgovor)',
+	'right-readold' => 'Pregledavanje sadržaja starih revizija i razlika',
 );
 
 /** Catalan (Català)
@@ -406,6 +415,7 @@ $messages['ca'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian
+ * @author Purodha
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -434,7 +444,7 @@ $messages['de'] = array(
 	'grouppermissions-true' => 'Ja',
 	'grouppermissions-false' => 'Nein',
 	'grouppermissions-never' => 'Nie',
-	'grouppermissions-nooldrev' => 'Bei der Archivierung der aktuellen Konfigurationsdatei ist ein Fehler aufgetreten. Es wird kein Archiv angelegt',
+	'grouppermissions-nooldrev' => 'Bei der Archivierung der aktuellen Konfigurationsdatei ist ein Fehler aufgetreten. Es wird kein Archiv angelegt.',
 	'grouppermissions-sort-read' => 'Lesen',
 	'grouppermissions-sort-edit' => 'Bearbeiten',
 	'grouppermissions-sort-manage' => 'Verwaltung',
@@ -1396,6 +1406,54 @@ $messages['ksh'] = array(
 	'grouppermissions-desc4' => 'Määt exta Endrääsch onger „{{int:toolbox}}“ müjjelesch',
 	'grouppermissions-desc-nsm' => 'Donn de Appachtemangs övver en Söndersigg verwallde',
 	'grouppermissions-header' => 'Do kanns op dä Sigg hee de Rääschde vun dä Metmaacher en dä divärse Metmaacherjroppe ändere.',
+	'grouppermissions-search' => 'Jropp:',
+	'grouppermissions-dologin' => 'Enlogge',
+	'grouppermissions-dosearch' => 'Lohß Jonn!',
+	'grouppermissions-searchlabel' => 'En Jropp söhke',
+	'grouppermissions-deletelabel' => 'De Jropp fottschmiiße',
+	'grouppermissions-change' => 'Rääschde för Jroppe fun Metmaachere ändere',
+	'grouppermissions-add' => 'Jropp dobei donn',
+	'grouppermissions-delete' => 'Jropp fottschmiiße',
+	'grouppermissions-addsuccess' => '$1 woodt dobei jedonn',
+	'grouppermissions-deletesuccess' => '$1 es fotjeschmesse',
+	'grouppermissions-changesuccess' => 'De Rääschde för Metjleeder fun $1 sin jeändert',
+	'grouppermissions-true' => 'Jo, dat shtemmp!',
+	'grouppermissions-false' => 'Nää, shtemmp nit!',
+	'grouppermissions-never' => 'Nimohls',
+	'grouppermissions-nooldrev' => 'Ene Fähler es opjedouch, wi mer de aktoälle Enshtellunge en en Datei schriive wullte. Jez lääje mer kei Aschiifdatei aan.',
+	'grouppermissions-sort-read' => 'Lesse',
+	'grouppermissions-sort-edit' => 'Ändere',
+	'grouppermissions-sort-manage' => 'Verwallde',
+	'grouppermissions-sort-tech' => 'Täschnesch',
+	'grouppermissions-sort-misc' => 'Söns jet',
+	'grouppermissions-log-add' => 'hät de Jropp „$2“ dobei jedonn',
+	'grouppermissions-log-change' => 'hät de Rääschde för de Metjleeder en dä Jropp „$2“ verändert',
+	'grouppermissions-log-delete' => 'hät de Jropp „$2“ dobei jedonn',
+	'grouppermissions-log-name' => 'et Logboch fun de Jroppe_Rääschte',
+	'grouppermissions-log-header' => 'Op dä Sigg hee wäde Änderunge aan de Rääschte för de diverse Metmaacherjroppe faßjehallde.',
+	'grouppermissions-needjs' => 'Opjepaß: En Dingem Brauser es JavaSkripp ußjeschalldt. Müjjlesch, dat doh nit Alles esu fjuppe deiht, wi et sull!',
+	'grouppermissions-sp-header' => 'Op hee dä Söndersigg kanns De Rääschte em Wiki zotteere un neu Rääschte enreschte.
+
+Jangk met de Mous övver e Rääsch en dä Leß, öm jezeisch ze krijje, wat domet loß es.',
+	'grouppermissions-sp-save' => 'Afshpeishere',
+	'grouppermissions-sp-addperm' => 'Donn e Rääsch dobei',
+	'grouppermissions-sp-remove' => 'fott domet',
+	'grouppermissions-rug-header' => 'Do kann hee op dä Sigg Metmaacher uß Jroppe eruß nämme, die nit (mieh) en Jebruch sen.',
+	'grouppermissions-rug-success' => 'Han dä Metmaacher us der Jroppe eruß jenumme, di nit en Jebruch sen!',
+	'grouppermissions-rug-confirm' => 'Metmaacher uß Jroppe eruß nämme, di nit en Jebruch sen',
+	'right-grouppermissions' => 'Jropperääschde verwallde',
+	'right-viewsource' => 'Der Wikitex fun jeschözde Sigge beloore',
+	'right-raw' => 'Sigge „rüh“ beloore, nur der Wikitex vun Sigge afroofe',
+	'right-render' => 'De aanjezeischte Sigge belohre, der ohne do hen jonn ze möße',
+	'right-info' => 'De Date un Enfommazjuhne övver Sigge beloore',
+	'right-credits' => 'De Credits vun Sigge beloore',
+	'right-history' => 'De Leste met ällder Versione vun Sigge beloore',
+	'right-search' => 'Em Wiki söhke',
+	'right-contributions' => 'Sigge met Beidrääsch aanloore',
+	'right-recentchanges' => 'De {{lcfirst:{{int:Recentchanges}}}} beloore',
+	'right-edittalk' => 'Klaafsigge ändere',
+	'right-edit-new' => 'Sigge ändere, die kein Klaafsigge sen',
+	'right-readold' => 'Der Enhalt fun ahle Versione un dänne ier Ongerscheide beloore',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

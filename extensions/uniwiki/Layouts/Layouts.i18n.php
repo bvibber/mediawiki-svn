@@ -629,11 +629,17 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'layouts-desc' => 'Tập hợp các trang mới được khởi tạo bằng "kiểu trình bày" cho phép thay đổi để khuyến khích một cấu trúc chung cho các trang',
 	'layouts_title' => 'Tạo trang',
+	'layouts_chooselayout' => 'Chọn một kiểu trình bày cho $1:',
+	'layouts_nolayout' => 'Không có kiểu trình bày',
 	'layouts_continue' => 'Tiếp tục',
+	'layouts_choosecategory' => 'Chọn một thể loại cho $1:',
 	'layouts_unknown' => 'Không biết',
+	'layouts_tagline' => "Trang này được tạo ra theo cách trình bày '''$1'''.",
 );
 
 /** Volapük (Volapük)

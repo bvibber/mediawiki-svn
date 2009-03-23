@@ -693,9 +693,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Ilovesabbath
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'scanset_no_name' => '에러: 스캔셋 이름을 정해야 합니다. (예:&lt;scanset name="EB1911" /&gt;.)',
 	'scanset_next' => '다음 &gt;',
 	'scanset_prev' => '&lt; 이전',
 );

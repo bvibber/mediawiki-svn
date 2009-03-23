@@ -943,6 +943,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'lookupuser-nonexistent' => "Errore: L'utende non g'esiste",
+	'lookupuser-id' => "ID de l'utende: <tt>#$1</tt>",
 	'lookupuser-realname' => 'Nome vere: $1',
 );
 

@@ -289,10 +289,16 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'editmessages' => 'Editando mensajes',
+	'editmsg-target' => 'Mensaje objetivo:',
 	'editmsg-search' => 'Buscar',
+	'editmsg-show-list' => 'Mostrando valores para el nombre de mensaje "$1"',
+	'editmsg-get-patch' => 'Generar parche',
 	'editmsg-new-search' => 'Nueva búsqueda',
 	'editmsg-warning-file' => '* Errores de lectura de archivo fueron encontrados para los siguientes {{PLURAL:$2|lenguaje|lenguajes}}: $1',
 	'editmsg-warning-mismatch' => '* El texto original no tuvo el valor esperado para los siguientes {{PLURAL:$2|lenguaje|lenguajes}}: $1',
+	'editmsg-apply-patch' => 'Aplicar parche',
+	'editmsg-no-patch' => 'Incapaz de ejecutar comando "parche"',
+	'editmsg-patch-success' => 'Parchado exitosamente.',
 );
 
 /** Estonian (Eesti)

@@ -327,6 +327,14 @@ $messages['pt-br'] = array(
 	'whosonline-desc' => 'Apresenta [[Special:WhosOnline|uma lista]] de utilizadores autenticados e anônimos que se encontram ligados neste momento',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'whosonline' => "Ce stè ''online''",
+	'whosonline-desc' => "Face vedè [[Special:WhosOnline|'na liste]] de utinde collegate e anonime ca stonne online jndr'à stu mumende",
+);
+
 /** Sinhalese (සිංහල)
  * @author Asiri wiki
  */

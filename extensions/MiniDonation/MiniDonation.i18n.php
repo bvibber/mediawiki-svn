@@ -50,10 +50,11 @@ $messages['bcl'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'donationform-desc' => 'Дадае тэг <tt>&lt;donateform&gt;</tt> для падтрымкі магчымасьці ахвяраваньня праз PayPal',
+	'donationform-desc' => 'Дадае тэг <tt>&lt;donateform&gt;</tt> для падтрымкі магчымасьці ахвяраваньняў з дапамогай PayPal',
 	'donationform-submit' => 'Ахвяраваць праз PayPal',
 );
 
@@ -328,8 +329,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'donationform-desc' => 'Dodaje znacznik <tt>&lt;donateform&gt;</tt> do obsługi darowizn poprzez PayPal',
 	'donationform-submit' => 'Przekaż dar pieniężny przez PayPal',
 );
 

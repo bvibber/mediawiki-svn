@@ -314,7 +314,7 @@ $messages['cs'] = array(
 	'extdist-choose-extension' => 'Vyberte, které rozšíření chcete stáhnout:',
 	'extdist-wc-empty' => 'Nastavený adresář s pracovní kopií neobsahuje žádná rozšíření, která by bylo možné distribuovat!',
 	'extdist-submit-extension' => 'Pokračovat',
-	'extdist-current-version' => 'Aktuální verze (trunk)',
+	'extdist-current-version' => 'Vývojová verze (trunk)',
 	'extdist-choose-version' => '<big>Stahujete rozšíření <b>$1</b>.</big>
 
 Vyberte verzi MediaWiki.
@@ -526,11 +526,12 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['eo'] = array(
 	'extensiondistributor' => 'Elŝuti kromprogramon por MediaWiki',
+	'extdist-desc' => 'Kromprogramo por distribui statikajn arkivojn de kromprogramoj',
 	'extdist-no-such-extension' => 'Kromprogramo "$1" ne ekzistas',
 	'extdist-no-such-version' => 'La kromprogramo "$1" ne ekzistas en la versio "$2".',
 	'extdist-choose-extension' => 'Elektu kiun kromprogramon tiun vi volas elŝuti.',
 	'extdist-submit-extension' => 'Daŭri',
-	'extdist-current-version' => 'Nuna versio (bazo)',
+	'extdist-current-version' => 'Disvolvada versio (bazo)',
 	'extdist-choose-version' => '<big>Vi elŝutas la <b>$1</b> kromprogramon.</big>
 
 Elektu vian MediaWiki-version.
@@ -538,6 +539,7 @@ Elektu vian MediaWiki-version.
 Pliparto de kromprogramoj funkcias trans pluraj versioj de MediaWiki, do se via MediaWiki-versio ne estas trovebla cxi tie, aux se vi bezonas la plej novajn ecojn, provu uzi la plej lastan version.',
 	'extdist-no-versions' => 'La elektita kromprogramo ($1) ne estas havebla en iu ajn versio!',
 	'extdist-submit-version' => 'Daŭri',
+	'extdist-no-remote' => 'Ne eblas kontakti eksteran klienton de subversion.',
 	'extdist-tar-error' => 'Tar donis elirkodon $1:',
 	'extdist-created' => "Statika kopio de versio <b>$2</b> de la <b>$1</b> kromprogramo por MediaWiki <b>$3</b> estis kreita. Via elŝuto komencos aŭtomate post 5 sekundoj.
 
@@ -576,7 +578,7 @@ $messages['es'] = array(
 	'extdist-no-such-version' => 'la extensión "$1" no existe en la versión "$2".',
 	'extdist-choose-extension' => 'Seleccione cual extensión desea descargar:',
 	'extdist-submit-extension' => 'Continuar',
-	'extdist-current-version' => 'Revisión actual (trunk)',
+	'extdist-current-version' => 'versión en desarrollo (principal)',
 	'extdist-choose-version' => '<big>Estás descargando la extensión <b>$1</b>.</big>
 
 Selecciona tu versión MediaWiki.
@@ -1160,7 +1162,7 @@ $messages['ko'] = array(
 	'extdist-no-such-version' => '확장 기능 "$1"은 "$2" 버전용이 존재하지 않습니다.',
 	'extdist-choose-extension' => '당신이 다운로드하기를 원하는 확장 기능을 선택하십시오:',
 	'extdist-submit-extension' => '계속',
-	'extdist-current-version' => '현재 버전 (trunk)',
+	'extdist-current-version' => '개발 중인 버전 (trunk)',
 	'extdist-choose-version' => '
 <big>당신은 <b>$1</b> 확장 기능을 다운로드하고 있습니다.</big>
 
@@ -1441,7 +1443,7 @@ $messages['nl'] = array(
 	'extdist-choose-extension' => 'Selecteer de uitbreiding die u wilt downloaden:',
 	'extdist-wc-empty' => 'De ingestelde werkmap bevat geen te distribueren uitbreidingen!',
 	'extdist-submit-extension' => 'Doorgaan',
-	'extdist-current-version' => 'Huidige versie (trunk)',
+	'extdist-current-version' => 'Ontwikkelversie (trunk)',
 	'extdist-choose-version' => '<big>U bent de uitbreiding <b>$1</b> aan het downloaden.</big>
 
 Selecteer uw versie van MediaWiki.
@@ -1595,7 +1597,7 @@ $messages['oc'] = array(
 	'extdist-choose-extension' => 'Seleccionatz l’extension que volètz telecargar :',
 	'extdist-wc-empty' => "Lo repertòri de la còpia de trabalh configurada a pas cap d'extension distribuibla !",
 	'extdist-submit-extension' => 'Contunhar',
-	'extdist-current-version' => 'Version correnta (trunk)',
+	'extdist-current-version' => 'Version de desvolopament (trunk)',
 	'extdist-choose-version' => "<big>Sètz a telecargar l’extension <b>$1</b>.</big>
 
 Seleccionatz vòstra version MediaWiki.
@@ -2144,7 +2146,7 @@ $messages['vec'] = array(
 	'extdist-choose-extension' => 'Siegli quala estension te voli descargar:',
 	'extdist-wc-empty' => 'La cartèla par copie de laoro configurà no la contien estension distribuibili!',
 	'extdist-submit-extension' => 'Continua',
-	'extdist-current-version' => 'Version corente (trunk)',
+	'extdist-current-version' => 'Version de svilùpo (trunk)',
 	'extdist-choose-version' => "<big>Te sì drio descargar l'estension <b>$1</b>.</big>
 
 Selessiona la to version de MediaWiki.
@@ -2195,7 +2197,7 @@ $messages['vi'] = array(
 	'extdist-choose-extension' => 'Chọn bộ mở rộng bạn muốn tải về:',
 	'extdist-wc-empty' => 'Thư mục sao chép hiện hành được cấu hình không có bộ mở rộng nào phân phối được!',
 	'extdist-submit-extension' => 'Tiếp tục',
-	'extdist-current-version' => 'Phiên bản hiện tại (trunk)',
+	'extdist-current-version' => 'Phiên bản phát triển (trunk)',
 	'extdist-choose-version' => '<big>Bạn đang tải xuống bộ mở rộng <b>$1</b>.</big>
 
 Chọn phiên bản MediaWiki của bạn.

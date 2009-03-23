@@ -1482,9 +1482,13 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Ilovesabbath
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'contributionreporting-desc' => '위키미디어 모금 현황',
+	'contributiontotal' => '기부 총액',
+	'contributionhistory' => '기부 역사',
 	'contrib-hist-header' => '전세계 기부자들의 실시간 한 마디',
 	'contrib-hist-name' => '이름',
 	'contrib-hist-date' => '날짜와 시각',
@@ -1494,11 +1498,15 @@ $messages['ko'] = array(
 	'contrib-hist-anonymous' => '익명',
 	'contributionstatistics' => '기부 통계',
 	'contribstats-desc' => '위키미디어 재단으로의 기부의 통계를 보여 줌',
+	'contribstats-day' => '일',
+	'contribstats-month' => '월',
 	'contribstats-currency' => '화폐',
 	'contribstats-amount' => '금액 (USD)',
+	'contribstats-contributions' => '기부',
 	'contribstats-total' => '합계 (USD)',
 	'contribstats-avg' => '평균 (USD)',
 	'contribstats-max' => '최대 (USD)',
+	'contribstats-percentage-ytd' => '백분율 (연초대비증가율)',
 	'contribstats-total-ytd' => '합계 (연간)',
 	'contribstats-value-exactly' => '정확히 $1',
 	'contribstats-value-under' => '$1 미만',
@@ -1506,12 +1514,14 @@ $messages['ko'] = array(
 	'contribstats-value-over' => '$1 초과',
 	'fundraiserstatistics' => '모금 활동 통계',
 	'fundraiserstats-date' => '날짜',
+	'fundraiserstats-day' => '$2의 $1일째',
 	'fundraiserstats-contributions' => '기부 횟수',
 	'fundraiserstats-total' => '합계 (USD)',
 	'fundraiserstats-avg' => '평균 (USD)',
 	'fundraiserstats-max' => '최대 (USD)',
 	'fundraiserstats-tab-totals' => '합계 (USD)',
 	'fundraiserstats-tab-averages' => '평균 (USD)',
+	'fundraiserstats-tab-maximums' => '최댓값 (USD)',
 );
 
 /** Ripoarisch (Ripoarisch)

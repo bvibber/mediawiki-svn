@@ -435,6 +435,17 @@ $messages['tl'] = array(
 	'stalkerlog-log-text' => 'Isa itong talaan ng mga mga paglagda at pag-alis mula sa pagkakalagda ng tagagamit.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'stalkerlog-desc' => 'Thêm [[Special:Log/stalkerlog|nhật trình]] ghi lại các lần đăng nhập và đăng xuất của thành viên',
+	'stalkerlog-log-login' => 'đã đăng nhập.',
+	'stalkerlog-log-logout' => 'đã đăng xuất.',
+	'stalkerlog-log-type' => 'Nhật trình xác minh người dùng',
+	'stalkerlog-log-text' => 'Đây là nhật trình ghi lại các lần đăng nhập và đăng xuất của người dùng.',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

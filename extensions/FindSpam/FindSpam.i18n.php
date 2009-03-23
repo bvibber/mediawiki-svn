@@ -685,6 +685,13 @@ $messages['ru'] = array(
 	'findspam-notextfound' => 'Не найдено вклада',
 );
 
+/** Sardinian (Sardu)
+ * @author Marzedu
+ */
+$messages['sc'] = array(
+	'findspam-ok' => 'OK',
+);
+
 /** Sicilian (Sicilianu)
  * @author Santu
  */

@@ -175,7 +175,15 @@ $messages['el'] = array(
 $messages['es'] = array(
 	'framedvideo_errors' => 'Múltiples errores han ocurrido!',
 	'framedvideo_error' => 'Un error ha ocurrido!',
+	'framedvideo_error_height_required' => 'Tipo de video "$1" requiere parámetro "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Tipo de video "$1" requiere parámetro "height", no solamente parámetro "width".',
+	'framedvideo_error_width_too_big' => 'Valor dado de parámetro "width" es demasiado grande.',
+	'framedvideo_error_height_too_big' => 'Valor dado de parámetro "heigth" es demasiado largo.',
+	'framedvideo_error_no_integer' => 'Valor dado de "$1" no es un número positivo.',
+	'framedvideo_error_limit' => 'El valor permitido más alto es $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Valor "full" para parámetro "size" no permitido para servicio de video id "$1".',
 	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_height_and_width_required' => 'Tipo de video "$1" requiere parámetros "height" y "width2" o "width".',
 );
 
 /** French (Français)
@@ -413,7 +421,9 @@ $messages['oc'] = array(
 	'framedvideo-desc' => "Permet d'integrar de vidèos de diferents sits web en utilizant la balisa <tt><nowiki><video></nowiki></tt>",
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Leinad
+ */
 $messages['pl'] = array(
 	'framedvideo_errors' => 'Wystąpiły błędy!',
 	'framedvideo_error' => 'Wystąpił błąd!',
@@ -426,6 +436,7 @@ $messages['pl'] = array(
 	'framedvideo_error_no_integer' => 'Podana wartość dla parametru „$1” nie jest dodatnią wartością liczbową.',
 	'framedvideo_error_limit' => 'Największa dopuszczalna wartość to $1.',
 	'framedvideo_error_full_size_not_allowed' => 'Wartość „full” dla parametru „size” niedopuszczalna dla identyfikatora „$1”.',
+	'framedvideo_helppage' => 'Help:Video',
 	'framedvideo_error_see_help' => 'Aby dowiedzieć się więcej o formatowaniu, zobacz [[{{MediaWiki:Framedvideo_helppage}}|stronę pomocy]].',
 	'framedvideo_error_height_and_width_required' => 'Wideo z serwisu o identyfikatorze „$1” wymaga podania parametru „height” i „width2” lub „width”.',
 	'framedvideo-desc' => 'Pozwala na osadzanie wideo z innych serwisów',

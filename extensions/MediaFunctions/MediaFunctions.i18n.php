@@ -47,10 +47,12 @@ $messages['arz'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'mediafunctions-invalid-title' => '«$1» зьяўляецца няслушнай назвай',
+	'mediafunctions-desc' => 'Функцыя парсэра для атрыманьня інфармацыя пра мэдыя-файлы',
+	'mediafunctions-invalid-title' => '«$1» не зьяўляецца слушнай назвай',
 	'mediafunctions-not-exist' => '«$1» не існуе',
 );
 

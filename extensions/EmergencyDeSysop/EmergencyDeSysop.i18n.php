@@ -487,6 +487,27 @@ $messages['oc'] = array(
 	'right-emergencydesysop' => 'Possible de desysopar mutualament un autre utilizaire.',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'emergencydesysop' => 'Awaryjne odbieranie uprawnień administratora',
+	'emergencydesysop-desc' => 'Umożliwia administratorowi poświęcenie własnych uprawnień w celu odebrania uprawnień innemu administratorowi',
+	'emergencydesysop-title' => 'Odbiera uprawnienia administratora zarówno bieżącemu użytkownikowi jak i innemu administratorowi',
+	'emergencydesysop-otheradmin' => 'Administrator, któremu mają zostać odebrane uprawnienia',
+	'emergencydesysop-reason' => 'Powód odebrania uprawnień',
+	'emergencydesysop-submit' => 'Zapisz',
+	'emergencydesysop-incomplete' => 'Wymagane jest wypełnienie wszystkich pól formularza, proszę spróbować ponownie.',
+	'emergencydesysop-notasysop' => 'Wskazany użytkownik nie należy do grupy administratorów.',
+	'emergencydesysop-nogroups' => 'Brak',
+	'emergencydesysop-done' => 'Operacja wykonana, zarówno Ty jak i [[$1]] utraciliście uprawnienia administratora.',
+	'emergencydesysop-invalidtarget' => 'Wskazany użytkownik nie istnieje.',
+	'emergencydesysop-blocked' => 'Nie masz dostępu do tej strony, gdy jesteś zablokowany',
+	'emergencydesysop-noright' => 'Nie posiadasz wystarczających uprawnień by mieć dostęp do tej strony',
+	'right-emergencydesysop' => 'Możliwość odebrania uprawnień administratora innemu użytkownikowi, kosztem własnych uprawnień',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

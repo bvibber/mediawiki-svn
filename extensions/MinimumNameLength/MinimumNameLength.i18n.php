@@ -47,11 +47,12 @@ $messages['bcl'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'minnamelength-error' => 'Ваша імя ўдзельніка занадта каароткае. Мінімальная даўжыня гэта $1.',
-	'minnamelength-desc' => 'Усталёўвае мінімальную даўжыню імя ўдзельніка',
+	'minnamelength-error' => 'Вашае імя ўдзельніка занадта кароткае. Мінімальная даўжыня — $1.',
+	'minnamelength-desc' => 'Правярае мінімальную даўжыню імя ўдзельніка',
 );
 
 /** Bulgarian (Български)
@@ -373,6 +374,14 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'minnamelength-error' => 'Numele dumneavoastră de utilizator este prea scurt. Lungimea minimă este $1.',
 	'minnamelength-desc' => 'Impune o lungime minimă a numelui de utilizator',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'minnamelength-error' => "'U nome utende tue jè troppe curte. 'A lunghezza minime jè $1.",
+	'minnamelength-desc' => "Forze a 'a lunghezza minime d'u nome de l'utende",
 );
 
 /** Russian (Русский)

@@ -216,6 +216,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'imagetagging-desc' => 'Omogućuje korisniku da odabere regione uklopljene slike i poveže ih sa željenom stranicom',
 	'imagetagging-article' => 'Stranica:',
 	'imagetagging-imghistory' => 'Historija',
 	'imagetagging-images' => 'slike',

@@ -102,6 +102,7 @@ $aliases['km'] = array(
 
 /** Korean (한국어) */
 $aliases['ko'] = array(
+	'Code' => array( '코드검토' ),
 	'RepoAdmin' => array( '저장소관리' ),
 );
 

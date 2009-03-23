@@ -419,6 +419,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'povwatch_no_session' => 'Eraro: Ne eblis enigi formularon pro perdo de seancaj datenoj.',
 	'povwatch_invalid_title' => 'La enigita titolo estis nevalida',
 	'povwatch_pushed' => '[[$1]] estis sukcese pelita al $2 {{PLURAL:$2|uzula atentaro|uzulaj atentaroj}}',
 	'povwatch_subscriber_list_intro' => '<strong>Listo de abonantoj</strong>',
@@ -431,6 +432,7 @@ $messages['eo'] = array(
 	'povwatch_unsubscribe' => 'Ellistiĝi',
 	'povwatch_subscribe' => 'Enskribiĝi',
 	'povwatch_added' => 'aldonita',
+	'right-povwatch_admin' => 'Administri uzulajn rajtojn por aldoni paĝojn al atentaroj de aliaj uzantoj',
 );
 
 /** Spanish (Español)
@@ -953,6 +955,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Yknok29
  */
 $messages['ko'] = array(
 	'povwatch_pushed' => '[[$1]] 문서가 $2명의 사용자 주시문서 목록에 성공적으로 추가되었습니다.',
@@ -961,6 +964,7 @@ $messages['ko'] = array(
 	'povwatch_no_subscribers' => '수신자가 없습니다.',
 	'povwatch_unsubscribe' => '수신 해제',
 	'povwatch_subscribe' => '수신',
+	'povwatch_added' => '덧붙이는',
 );
 
 /** Ripoarisch (Ripoarisch)

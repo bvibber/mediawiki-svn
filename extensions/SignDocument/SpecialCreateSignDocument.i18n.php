@@ -227,8 +227,13 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'createsigndocument' => 'Omogućuje potpisivanje dokumenata',
 	'createsigndoc-pagename' => 'Stranica:',
+	'createsigndoc-address' => 'Kućna adresa:',
+	'createsigndoc-hidden' => 'Sakriveno',
 	'createsigndoc-create' => 'Napravi',
+	'createsigndoc-error-generic' => 'Greška: $1',
+	'createsigndoc-error-pagenoexist' => 'Greška: Stranica [[$1]] ne postoji.',
 );
 
 /** Catalan (Català)

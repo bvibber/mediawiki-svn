@@ -47,6 +47,13 @@ $messages['dsb'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Licba aktualnych tšojenjow, kótarež IP-adresa jo zapušćiła, pó projekśe Honey Pot',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'honeypot-desc' => 'Provee integración con [http://projecthoneypot.org/ Projecto Honey Pot] para sitios MediaWiki',
+);
+
 /** French (Français)
  * @author IAlex
  */

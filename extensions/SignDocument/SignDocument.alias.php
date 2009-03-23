@@ -111,7 +111,7 @@ $aliases['th'] = array(
 
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'SignDocument' => array( 'Lagdaan ang kasulatan' ),
+	'SignDocument' => array( 'Lagdaan ang dokumento' ),
 	'CreateSignDocument' => array( 'Likhain ang paglagda sa kasulatan' ),
 );
 

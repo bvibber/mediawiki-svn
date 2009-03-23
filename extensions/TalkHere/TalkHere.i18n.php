@@ -890,9 +890,17 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'talkhere-desc' => 'Đặt trang thảo luận vào trang',
+	'talkhere-foottext' => 'Các lời bình luận ở trên có thể do những khách viếng thăm ghi lại.
+
+Những người điều hành trang này không chịu trách nhiệm cho nội dung của các bình luận đó.',
 	'talkhere-talkpage' => 'trang thảo luận',
+	'talkhere-notalk' => "''(chưa có bình luận)''",
+	'talkhere-addcomment' => 'thêm bình luận',
+	'talkhere-beforeinput' => 'Bạn có thể thêm bình luận vào phía dưới',
 	'talkhere-loading' => 'đang nạp bộ soạn…',
 	'talkhere-collapse' => 'giấu bộ soạn',
 );

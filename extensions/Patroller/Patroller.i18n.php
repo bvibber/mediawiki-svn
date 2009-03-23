@@ -214,7 +214,10 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'patrol-revert' => 'Vrati',
 	'patrol-revert-reason' => 'Razlog:',
+	'patrol-skip' => 'Preskoči',
+	'patrol-reverting' => 'Vraćanje: $1',
 );
 
 /** Danish (Dansk)

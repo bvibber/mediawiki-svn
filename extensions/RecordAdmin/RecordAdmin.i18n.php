@@ -572,7 +572,7 @@ $messages['he'] = array(
 	'recordadmin-createsuccess' => '$1 נוצרה',
 	'recordadmin-createerror' => 'אירעה שגיאה בעת הנסיון ליצור את $1!',
 	'recordadmin-badtitle' => 'כותרת בלתי תקינה!',
-	'recordadmin-recordid' => 'מספר הרשומה:',
+	'recordadmin-recordid' => 'שם/מספר הרשומה:',
 	'recordadmin-invert' => 'הפיכת הבחירה',
 	'recordadmin-buttonsearch' => 'חיפוש',
 	'recordadmin-buttoncreate' => 'יצירה',
@@ -591,7 +591,9 @@ $messages['he'] = array(
 	'recordadmin-viewlink' => 'הצגה',
 	'recordadmin-editlink' => 'עריכה',
 	'recordadmin-created' => 'נוצרה',
+	'recordadmin-modified' => 'השתנתה',
 	'recordadmin-actions' => 'פעולות',
+	'recordadmin-needscontent' => 'הוספת תוכן...',
 	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
 );
 

@@ -115,7 +115,7 @@ $aliases['ja'] = array(
 
 /** Korean (한국어) */
 $aliases['ko'] = array(
-	'BoardVote' => array( '이사회선거', '보드보트' ),
+	'BoardVote' => array( '보드보트' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

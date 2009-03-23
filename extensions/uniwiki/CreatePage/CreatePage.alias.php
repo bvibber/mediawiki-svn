@@ -137,7 +137,7 @@ $aliases['sw'] = array(
 
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'CreatePage' => array( 'Likhain ang pahina' ),
+	'CreatePage' => array( 'Likhain ang pahina', 'LikhaPahina' ),
 );
 
 /** Vèneto (Vèneto) */

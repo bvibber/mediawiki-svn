@@ -935,6 +935,7 @@ $messages['bs'] = array(
 	'configure-section-timezone' => 'Vremenska zona',
 	'configure-section-zh-conversion' => 'Pretvaranje kineskih znakova',
 	'configure-section-namespaces' => 'Imenski prostori',
+	'configure-section-cache' => 'Keš',
 	'configure-section-access' => 'Pristup',
 	'configure-section-groups' => 'Grupe',
 	'configure-section-block' => 'Blokade',
@@ -943,8 +944,20 @@ $messages['bs'] = array(
 	'configure-section-specialpages' => 'Posebne stranice',
 	'configure-section-recentchanges' => 'Nedavne izmjene',
 	'configure-section-users' => 'Korisnici',
+	'configure-section-job' => 'Poslovi',
 	'configure-section-search' => 'Traži',
+	'configure-section-output' => 'Izlaz',
 	'configure-select-wiki-desc' => 'Odaberite wiki koji želite postaviti.',
+	'configure-view' => 'Pogled',
+	'configure-throttle-action-edit' => 'Uređivanje',
+	'configure-throttle-action-move' => 'Premjesti',
+	'configure-throttle-group' => 'Tip',
+	'configure-condition-name-1' => 'Najmanji broj izmjena',
+	'configure-condition-name-2' => 'Najmanja starost',
+	'configure-condition-name-5' => 'Korisnička IP adresa',
+	'configure-condition-name-7' => 'Najmanja starost za prvo uređivanje',
+	'configure-condition-description-1' => 'Najmanji broj uređivanja je $1',
+	'configure-condition-description-3' => 'E-mail potvrđen',
 );
 
 /** Chamorro (Chamoru)

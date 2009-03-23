@@ -235,7 +235,14 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'todo-desc' => 'Probno proširenje ličnog [[Special:Todo|spiska za uraditi]]',
 	'todo-new-queue' => 'novi',
+	'todo-mail-subject' => 'Završena stavka na spisku za uraditi korisnika $1',
+	'todo-unrecognize-type' => 'Neprepoznati tip',
+	'todo-item-list' => 'Vaše stavke',
+	'todo-no-item' => 'Nema stavki za uraditi.',
+	'todo-list-cancel' => 'Odustani',
+	'todo-new-item' => 'Nova stavka',
 	'todo-form-details' => 'Detalji:',
 );
 

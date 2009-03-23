@@ -79,6 +79,11 @@ $aliases['gsw'] = array(
 	'Vote' => array( 'Abstimme' ),
 );
 
+/** Hawaiian (Hawai`i) */
+$aliases['haw'] = array(
+	'Vote' => array( 'Koho' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'Vote' => array( 'Wothłosować' ),

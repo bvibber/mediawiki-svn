@@ -919,6 +919,13 @@ $messages['ru'] = array(
 	'importfreeimages_returntoform' => "Или нажмите <a href='$1'>здесь</a>, чтобы вернуться к вашим результатам поиска.",
 );
 
+/** Sardinian (Sardu)
+ * @author Marzedu
+ */
+$messages['sc'] = array(
+	'importfreeimages_owner' => 'Autore',
+);
+
 /** Sicilian (Sicilianu)
  * @author Santu
  */
