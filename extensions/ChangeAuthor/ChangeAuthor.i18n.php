@@ -5,22 +5,23 @@
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
+ * @file
+ * @ingroup Extensions
  * @author Roan Kattouw <roan.kattouw@home.nl>
- * @copyright Copyright (C) 2007 Roan Kattouw
+ * @copyright Copyright © 2007 Roan Kattouw
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  *
  * An extension that allows changing the author of a revision
  * Written for the Bokt Wiki <http://www.bokt.nl/wiki/> by Roan Kattouw <roan.kattouw@home.nl>
  * For information how to install and use this extension, see the README file.
- *
  */
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the extension file directly.
-if (!defined('MEDIAWIKI')) {
+if( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 To install the ChangeAuthor extension, put the following line in LocalSettings.php:
 require_once( "\$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php" );
 EOT;
-	exit(1);
+	exit( 1 );
 }
 
 $messages = array();
@@ -30,19 +31,18 @@ $messages = array();
  */
 $messages['en'] = array(
 	'changeauthor' => 'Change revision author',
-	'changeauthor-short' => 'ChangeAuthor',
-	'changeauthor-desc' => 'Allows changing a revision\'s author',
+	'changeauthor-desc' => "Allows changing a revision's author",
 	'changeauthor-title' => 'Change the author of a revision',
 	'changeauthor-search-box' => 'Search revisions',
 	'changeauthor-pagename-or-revid' => 'Page name or revision ID:',
 	'changeauthor-pagenameform-go' => 'Go',
 	'changeauthor-comment' => 'Comment:',
 	'changeauthor-changeauthors-multi' => 'Change {{PLURAL:$1|author|authors}}',
-	'changeauthor-explanation-multi' => 'With this form you can change revision authors.
-Simply change one or more usernames in the list below, add a comment (optional) and click the \'Change author(s)\' button.',
+	'changeauthor-explanation-multi' => "With this form you can change revision authors.
+Simply change one or more usernames in the list below, add a comment (optional) and click the 'Change author(s)' button.",
 	'changeauthor-changeauthors-single' => 'Change author',
-	'changeauthor-explanation-single' => 'With this form you can change a revision author.
-Simply change the username below, add a comment (optional) and click the \'Change author\' button.',
+	'changeauthor-explanation-single' => "With this form you can change a revision author.
+Simply change the username below, add a comment (optional) and click the 'Change author' button.",
 	'changeauthor-invalid-username' => 'Invalid username "$1".',
 	'changeauthor-nosuchuser' => 'No such user "$1".',
 	'changeauthor-revview' => 'Revision #$1 of $2',
