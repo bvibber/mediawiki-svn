@@ -9,6 +9,28 @@ var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
 //if mv_embed is hosted somewhere other than near by the add_media_wizard you can define it here: 
 var mv_add_media_wizard_path = 'http://mvbox2.cse.ucsc.edu/w/extensions/MetavidWiki/skins/';
 
+var MV_EMBED_VIDEO_HANDLER = true; // if we should use mv_embed for all ogg_hanlder video embeds.
+
+
+if( MV_EMBED_VIDEO_HANDLER ){
+	var vidIdList = new Array();
+	addOnloadHook( function(){		
+		var divs = document.getElementsByTagName('div');	
+		for(var i = 0; i < divs.length; i++){		
+			if( divs[i].id.substring(0,11) == 'ogg_player_'){
+				vidIdList.push( divs[i].id );
+			} 
+		}			
+		if( vidIdList.length > 0){
+			load_mv_embed( function(){
+				mvJsLoader.loadBaseLibs(function(){													
+					//do utilty rewrite of oggHanlder content: 
+					rewrite_for_oggHanlder( vidIdList );					
+				});
+			});
+		}
+	});
+}
 
 //*code should not have to modify anything below*/
 //check if we are on a edit page:

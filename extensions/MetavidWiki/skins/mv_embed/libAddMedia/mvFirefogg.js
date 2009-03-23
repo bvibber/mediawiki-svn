@@ -19,7 +19,7 @@ mvFirefogg.prototype = {
 		'maxSize': 400, 
 		'videoBitrate': 400
 	},	
-	formData:{}, //the form to be submited
+	formData:{}, //the form to be submitted
 	
 	init : function( iObj ){
 		if(!iObj)
@@ -353,7 +353,7 @@ mvFirefogg.prototype = {
 		var error_txt = 'Your upload <i>should be</i> accessible <a href="' + 
 						wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
 						'here</a> \n';
-		//set the error text in case we dont' get far along in proccessing the response 
+		//set the error text in case we dont' get far along in processing the response 
 		$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt );
 												
 		if( result_page && result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
@@ -372,32 +372,14 @@ mvFirefogg.prototype = {
 			if( !result_page ){
 				//@@todo fix this: 
 				//the mediaWiki upload system does not have an API so we can\'t read errors							
-			}else{			
-				sp = result_page.indexOf('<span class="error">');
-				if(sp!=-1){
-					se = result_page.indexOf('</span>', sp);
-					error_txt = result_page.substr(sp, (sp-se)) + '</span>';
-				}else{
-					//look for warning: 
-					sp = result_page.indexOf('<ul class="warning">')
-					if(sp!=-1){
-						se = result_page.indexOf('</ul>', sp);
-						error_txt = result_page.substr(sp, (se-sp)) + '</ul>';
-						//try and add the ignore form item: 
-						sfp = result_page.indexOf('<form method="post"');
-						if(sfp!=-1){
-							sfe = result_page.indexOf('</form>', sfp);
-							form_txt = result_page.substr(sfp, ( sfe - sfp )) + '</form>';
-						}
-					}else{
-						//one more error type check: 
-						sp = result_page.indexOf('class="mw-warning-with-logexcerpt">')
-						if(sp!=-1){
-							se = result_page.indexOf('</div>', sp);
-							error_txt = result_page.substr(sp, ( se - sp )) + '</div>';
-						}
-					}
-				}			
+			}else{
+				var res = mvUploader.grabWikiFormError( result_page );
+							
+				if(res.error_txt)
+					error_txt = opt.error_txt;
+					
+				if(res.form_txt)
+					form_txt = res.form_txt;
 			}		
 			js_log( 'error text is: ' + error_txt );		
 			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt + '<br>' + form_txt);

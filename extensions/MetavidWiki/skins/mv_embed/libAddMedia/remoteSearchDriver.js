@@ -45,7 +45,7 @@ var default_remote_search_options = {
 	'default_query':null, //default search query
 	//specific to sequence profile
 	'p_seq':null,	
-	'cFileNS':'Image', //what is the cannonical namespace for images 
+	'cFileNS':'File', //what is the cannonical namespace for images 
 					  //@@todo (should get that from the api or inpage vars)
 					  
 	'enable_uploads':false // if we want to enable an uploads tab:  
@@ -247,9 +247,10 @@ remoteSearchDriver.prototype = {
 		}
 		var url = (force_url) ? force_url : cl.base_license_url + cl.licenses[ license_key ];
 		return {
-			'title': title,
-			'img_html':imgs,
-			'lurl' : url
+			'title'		: title,
+			'img_html'	: imgs,
+			'key' 		: license_key,
+			'lurl' 		: url
 		};
 	},
 	/*
@@ -268,7 +269,7 @@ remoteSearchDriver.prototype = {
 		//could not find it return unknown_license
 		return {
 			'title' 	: gM('unknown_license'),
-			'img_html'	: '<span>' + gM('unknown_license') + '</span>',
+			'img_html'	: '<span>' + gM('unknown_license') + '</span>',			
 			'lurl' 		: license_url
 		};
 	},
@@ -940,7 +941,7 @@ remoteSearchDriver.prototype = {
 		
 	},
 	checkImportResource:function( rObj, cir_callback){		
-		//@@todo get the localized File/Image namespace name or do a general {NS}:Title aproch
+		//@@todo get the localized File/Image namespace name or do a general {NS}:Title 
 		var cp = rObj.pSobj.cp;	
 		var _this = this;
 		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');					
@@ -989,20 +990,16 @@ remoteSearchDriver.prototype = {
 							
 						if( rObj.date )
 							base_resource_desc+='|Date=' + rObj.date +"\n";								
-												
-						if( rObj.permission )
-							base_resource_desc+='|Permission='+ rObj.permission +"\n";
+						
+						//add the Permision info: 						
+						base_resource_desc+='|Permission=' + rObj.pSobj.getPermissionWikiTag( rObj ) +"\n";
 							
 						if( rObj.other_versions )
-							base_resource_desc+='|Other_versions=' + rObj.other_versions + "\n";
+							base_resource_desc+='|other_versions=' + rObj.other_versions + "\n";
 												
 						base_resource_desc+='}}';
 						
-						//add in license template tag: 
-						if( rObj.license_template_tag )
-							base_resource_desc += "\n" +
-								'== [[Commons:Copyright tags|Licensing]]: ==' +"\n"+
-								'{{' + rObj.license_template_tag + '}}';
+					
 						
 						$j('#rsd_resource_import').remove();//remove any old resource imports
 						//@@ show user dialog to import the resource
@@ -1039,21 +1036,17 @@ remoteSearchDriver.prototype = {
 						});
 						//add bidings: 				
 						$j('#rsd_import_apreview').click(function(){
-							$j('#rsd_import_desc').show().html(
+							/*$j('#rsd_import_desc').show().html(
 								mv_get_loading_img()
-							);
+							);*/
 							//load the preview text: 
 							_this.getParsedWikiText( $j('#rsd_import_ta').val(), _this.cFileNS +':'+ rObj.target_resource_title, function( o ){
 								js_log('got updated preivew: '+ o);
 								$j('#rsd_import_desc').html(o);
 							});
 						});
-						$j('#rsd_import_doimport').click(function(){
-							//replace the parent with progress bar: 
-							$j('#rsd_resource_import').html(
-								'<h3>Importing asset</h3>'+
-								mv_get_loading_img() 
-							);			
+						$j('#rsd_import_doimport').click(function(){							
+				
 							//get an edittoken: 
 							do_api_req( {
 								'data':	{	'action':'query',
@@ -1076,16 +1069,16 @@ remoteSearchDriver.prototype = {
 											});
 										}else{								
 											//not sure if we can do remote url uploads (so just do a local post) 
-											js_log('got token for new page:' +editToken);
+											js_log('got token for new page:' +editToken);											
 											var postVars = {
 												'wpSourceType'		:'web',
-												'wpUploadFileURL'	: rObj.url,
+												'wpUploadFileURL'	: rObj.src,
 												'wpDestFile'		: rObj.target_resource_title,
-												'wpUploadDescription':$j('#rsd_import_ta').val(),
-												'wpWatchthis'		: $j('#wpWatchthis').val(),		
+												'wpUploadDescription': $j('#rsd_import_ta').val(),
+												'wpWatchthis'		:  $j('#wpWatchthis').val(),		
 												'wpUpload'			: 'Upload file'																																									
 											}
-											//set to uploading: 
+											//set to uploading: 																							
 											$j('#rsd_resource_import').append('<div id="rsd_import_progress"'+										
 												'style="position:absolute;top:0px;'+
 													'left:0px;width:100%;height:100%;'+											
@@ -1275,9 +1268,9 @@ remoteSearchDriver.prototype = {
 				var out = gM('rsd_results_desc') + ' ' +  (cp.offset+1) + ' to ' + to_num;
 				//check if we have more results (next prev link)
 				if(  cp.offset >=  cp.limit )
-					out+=' <a href="#" id="rsd_pprev">' + gM('rsd_results_prev') + cp.limit + '</a>';
+					out+=' <a href="#" id="rsd_pprev">' + gM('rsd_results_prev') + ' ' + cp.limit + '</a>';
 				if( cp.sObj.more_results )					
-					out+=' <a href="#" id="rsd_pnext">' + gM('rsd_results_next') + cp.limit + '</a>';
+					out+=' <a href="#" id="rsd_pnext">' + gM('rsd_results_next') + ' ' + cp.limit + '</a>';
 				$j(target).html(out);
 				//set bindings 
 				$j('#rsd_pnext').click(function(){
@@ -1427,7 +1420,7 @@ mvBaseRemoteSearch.prototype = {
 			_this.resultsObj[inx] = rObj;	
 			_this.num_results++;		
 		});		
-	},
+	},	
 	//by default just return the existing image with callback 
 	getImageObj:function( rObj, size, callback){
 		callback( {'url':rObj.poster} );
@@ -1439,6 +1432,15 @@ mvBaseRemoteSearch.prototype = {
 			return rObj.desc.replace(/(<([^>]+)>)/ig,"").replace(/^\s+|\s+$/g,"");
 		//no desc avaliable: 
 		return '';
+	},
+	//default licence permision wiki text is cc based template mapping (does not confirm the templates actually exist)  
+	getPermissionWikiTag: function( rObj ){
+		//check that its a defined creative commons licnese key: 
+		if( typeof   this.rsd.licenses.cc.licenses[ rObj.license.key ] != 'undefined' ){
+			return '{{Cc-' + rObj.license.key + '}}';
+		}else if( rObj.license.lurl ) {
+			return '{{Template:External_License|' + rObj.license.lurl + '}}';
+		}
 	},
 	//by default just return the poster (clients can overide) 
 	getImageTransform:function(rObj, opt){

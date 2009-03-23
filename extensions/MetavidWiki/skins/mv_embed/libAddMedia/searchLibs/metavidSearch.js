@@ -55,11 +55,15 @@ metavidSearch.prototype = {
 				
 				//transform the title into a wiki_safe title: 			
 				//rObj['titleKey'] = proe.queryKey['stream_name'] + '_' + rObj['start_time'].replace(/:/g,'.') + '_' + rObj['end_time'].replace(/:/g,'.') + '.ogg';
-				rObj['titleKey'] = proe.queryKey['stream_name'] + '/' + rObj['start_time'] + '/' + rObj['end_time'] + '__.ogg';						
+				rObj['titleKey'] = proe.queryKey['stream_name'] + '_start-' + rObj['start_time'].replace(/:/g,'.') + '_end-' + rObj['end_time'].replace(/:/g,'.') + '.ogg';						
 			}			
 			//done loading: 
 			_this.loading=0;
 		});
+	},
+	//metavid descption tied to public domain license key (government produced content) 
+	getPermissionWikiTag:function( rObj ){
+		return '{{PD-USGov}}';
 	},
 	getEmbedWikiText:function(rObj, options){
 		//if we are using a local copy do the standard embed:  

@@ -776,6 +776,28 @@ function rewrite_by_id( vid_id, ready_callback ){
 	 	mv_embed(ready_callback, vid_id ); 
 	});
 }
+function rewrite_for_oggHanlder( vidIdList ){		
+	for(var i = 0; i < vidIdList.length ; i++){		
+		var vidId = vidIdList[i];
+		js_log('looking at vid: ' + i +' ' + vidId);		
+		//grab the thumbnail and src video
+		var pimg = $j('#'+vidId + ' img');
+		var poster = pimg.attr('src');
+		var pwidth = pimg.attr('width');
+		var pheight = pimg.attr('height');		
+		//reg videoUrl\":\s*"([^"]*)
+		
+		var re = new RegExp( /videoUrl(&quot;:?\s*)*([^&]*)/ );
+		var src  = re.exec( $j('#'+vidId).html() )[2];
+		//replace the top div with mv_embed based player: 
+		if( src && poster)	
+		 	$j('#'+vidId).replaceWidth( '<video id="vid_' + i +'" '+ 
+		 		'src="' + src + ' poster="' + poster + '" style="width:' + pwidth +
+		 			 	'px;height:' + pheight + 'px;"></video>';		
+		//rewrite that video id: 
+		rewrite_by_id('vid_' + i);
+	}
+}
 
 
 /*********** INITIALIZATION CODE *************
@@ -1072,7 +1094,7 @@ function mv_addLoadEvent(func) {
 
 //does a remote or local api request based on request url 
 //@param options: url, data, cbParam, callback
-function do_api_req( options, callback ){
+function do_api_req( options, callback ){	
 	if(typeof options.data != 'object'){
 		js_log('Error: request paramaters must be an object');
 		return false;
@@ -1092,12 +1114,13 @@ function do_api_req( options, callback ){
 	
 	//force format to json (if not already set)  		
 	options.data['format'] = 'json';
-				
+	
+	js_log('do api req: ' + options.url + options.data);			
 	//build request string:	 		
 	if( parseUri( document.URL ).host == parseUri( options.url ).host ){		
 		//local request do api request directly		
 		$j.ajax({
-			type: "GET",
+			type: "POST",
 			url: options.url,
 			data: options.data,
 			dataType:'json', //api requests _should_ always return JSON data: 
@@ -1105,8 +1128,8 @@ function do_api_req( options, callback ){
 			success:function(data){			
 				callback(  data );
 			},
-			error:function(){
-				js_error( ' error in getting: ' + options.url); 
+			error:function(e){
+				js_error( ' error' + e +' in getting: ' + options.url); 
 			}
 		});
 	}else{			
@@ -1150,6 +1173,7 @@ function do_request(req_url, callback){
 		loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));			
 	}
 }
+
 function mv_jsdata_cb(response){
 	js_log('f:mv_jsdata_cb:'+ response['cb_inx']);
 	//run the callback from the global req cb object:
