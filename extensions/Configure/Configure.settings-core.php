@@ -545,6 +545,7 @@ $settings = array(
 			'wgAllowSpecialInclusion' => 'bool',
 			'wgExportAllowHistory' => 'bool',
 			'wgExportAllowListContributors' => 'bool',
+			'wgExportFromNamespaces' => 'bool',
 			'wgExportMaxHistory' => 'int',
 			'wgExportMaxLinkDepth' => 'int',
 			'wgExtraRandompageSQL' => 'text',
@@ -1108,4 +1109,5 @@ $settingsVersion = array(
 	'wgSummarySpamRegex' => array( array( '1.15alpha', '>=' ) ),
 	'wgAPIMaxUncachedDiffs' => array( array( '1.15alpha', '>=' ) ),
 	'wgTiffThumbnailType' => array( array( '1.15alpha', '>=' ) ),
+	'wgExportFromNamespaces' => array( array( '1.15alpha', '>=' ) ),
 );

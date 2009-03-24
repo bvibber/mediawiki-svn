@@ -137,6 +137,7 @@ $messages['en'] = array(
 	'configure-setting-wgAllowSpecialInclusion' => "Allow inclusion of special pages",
 	'configure-setting-wgExportAllowHistory' => "Allow exports to include full history",
 	'configure-setting-wgExportAllowListContributors' => "Allow a list of contributors to be exported",
+	'configure-setting-wgExportFromNamespaces' => 'Whether to allow the "export all pages in namespace" option in Special:Export',
 	'configure-setting-wgExportMaxHistory' => "Maximum number of revisions for Special:Export",
 	'configure-setting-wgExportMaxLinkDepth' => "Maximum value of the \"pagelink-depth\" parameter in Special:Export",
 	'configure-setting-wgFilterLogTypes' => "Allowed log deletion types",

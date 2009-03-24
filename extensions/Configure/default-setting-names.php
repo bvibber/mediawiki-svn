@@ -433,6 +433,7 @@ $defaultNames = array(
 	'wgValidateAllHtml' => "Validate the overall output using tidy and refuse to display the page if it's not valid",
 	'wgAllowSpecialInclusion' => "Allow special page inclusions such as <code><nowiki>{{Special:Allpages}}</nowiki></code>",
 	'wgExportAllowHistory' => "Enable the full-history option on Special:Export",
+	'wgExportFromNamespaces' => 'Whether to allow the "export all pages in namespace" option',
 	'wgExportMaxHistory' => "Special:Export requests for history of pages with more revisions than this will be rejected",
 	'wgExportMaxLinkDepth' => 'Maximum value of the "pagelink-depth" parameter in Special:Export.',
 	'wgFilterLogTypes' => "Show/hide links on Special:Log will be shown for these log types",
