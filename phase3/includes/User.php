@@ -3440,7 +3440,7 @@ class User {
 		foreach( $this->mOptions as $key => $value ) {
 			$ser = serialize($value);
 			
-			if ( isset($wgDefaultUserOptions[$key]) && 
+			if ( !isset($wgDefaultUserOptions[$key]) || 
 					$value != $wgDefaultUserOptions[$key] ) {			
 				$insert_rows[] = array(
 						'up_user' => $this->getId(),
