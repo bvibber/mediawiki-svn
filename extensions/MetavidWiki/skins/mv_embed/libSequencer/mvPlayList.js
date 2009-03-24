@@ -703,7 +703,7 @@ mvPlayList.prototype = {
 				 'border-left:solid thin black;':
 				 'border-right:solid thin black;';											
 			barHtml+= 'filter:alpha(opacity=40);'+
-					'-moz-opacity:.40;">'
+					'-moz-opacity:.40;">'+
 					'</div>';
 			//background:#DDDclip.getColor()
 			$j('#seeker_bar_'+_this.id).append(barHtml);
