@@ -3431,6 +3431,7 @@ class User {
 	}
 	
 	protected function saveOptions() {
+		$this->loadOptions();
 		global $wgDefaultUserOptions;
 		$dbw = wfGetDB( DB_MASTER );
 		
