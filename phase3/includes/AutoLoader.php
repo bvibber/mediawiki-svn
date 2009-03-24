@@ -89,6 +89,7 @@ $wgAutoloadLocalClasses = array(
 	'HTMLCacheUpdate' => 'includes/HTMLCacheUpdate.php',
 	'HTMLCacheUpdateJob' => 'includes/HTMLCacheUpdate.php',
 	'HTMLFileCache' => 'includes/HTMLFileCache.php',
+	'HTMLForm' => 'includes/HTMLForm.php',
 	'Http' => 'includes/HttpFunctions.php',
 	'IEContentAnalyzer' => 'includes/IEContentAnalyzer.php',
 	'ImageGallery' => 'includes/ImageGallery.php',
