@@ -3,7 +3,7 @@
 # Distributed under the terms of the MIT license.
 
 import settings_handler as settings
-import os, os.path, shutil
+import os, os.path, shutil, sys
 import subprocess
 
 from installation_system import Installation_System, Installer_Exception
@@ -106,6 +106,7 @@ class Mediawiki_Installer(Installation_System):
 			print "Using cached mediawiki revision list."
 		else:
 			print "Getting list of mediawiki revisions... One moment (takes 10-20 seconds)"
+			sys.stdout.flush()
 			revision_cache=self._get_revisions_generic("phase3")
 	
 		return revision_cache
