@@ -20,7 +20,6 @@ if( MV_EMBED_VERSION ){
 	js_log('mv_embed already included do nothing');
 	MV_DO_INIT=false;	
 }
-
 //used to grab fresh copies of scripts. (should be changed on commit)  
 var MV_EMBED_VERSION = '1.0r12';
 
@@ -790,10 +789,11 @@ function rewrite_for_oggHanlder( vidIdList ){
 		var re = new RegExp( /videoUrl(&quot;:?\s*)*([^&]*)/ );
 		var src  = re.exec( $j('#'+vidId).html() )[2];
 		//replace the top div with mv_embed based player: 
-		if( src && poster)	
-		 	$j('#'+vidId).replaceWidth( '<video id="vid_' + i +'" '+ 
+		var vid_html = '<video id="vid_' + i +'" '+ 
 		 		'src="' + src + ' poster="' + poster + '" style="width:' + pwidth +
-		 			 	'px;height:' + pheight + 'px;"></video>';		
+		 			 	'px;height:' + pheight + 'px;"></video>';
+		if( src && poster)	
+		 	$j('#'+vidId).replaceWidth( vid_html );		
 		//rewrite that video id: 
 		rewrite_by_id('vid_' + i);
 	}

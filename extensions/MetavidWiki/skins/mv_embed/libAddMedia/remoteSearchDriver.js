@@ -80,6 +80,9 @@ remoteSearchDriver.prototype = {
 	},	
 	content_providers:{				
 		/*content_providers documentation: 			
+		 *  @@todo we should move the bulk of the configuration to each file
+		 *  	
+		 
 			@enabled: whether the search provider can be selected
 			@checked: whether the search provider will show up as seleatable tab (todo: user prefrence) 
 			@d: 	  default: if the current cp should be displayed (only one should be the default) 
