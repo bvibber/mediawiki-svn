@@ -121,7 +121,7 @@ mvFirefogg.prototype = {
 				var sf = _this.fogg.sourceFilename;						
 				var ext = '';
 				if(	sf.lastIndexOf('.') != -1){
-					ext = sf.substring( sf.lastIndexOf('.')+1 );
+					ext = sf.substring( sf.lastIndexOf('.')+1 ).toLowerCase();
 				}
 				//set upload warning				
 				if( ext == 'ogg' || ext == 'ogv' ){		
