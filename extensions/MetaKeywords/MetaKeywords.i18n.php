@@ -58,6 +58,13 @@ $messages['arz'] = array(
  # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'metakeywords-desc' => 'Дазваляе канфігураваць тэгі <tt><nowiki><meta "keywords"></nowiki></tt> і <tt><nowiki><meta "description"></nowiki></tt> для асобных прастораў назваў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

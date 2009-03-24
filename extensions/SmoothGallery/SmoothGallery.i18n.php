@@ -552,13 +552,17 @@ Verificatz que {{PLURAL:$3|l'imatge requerit existís|totes los imatges requerit
  */
 $messages['pl'] = array(
 	'smoothgallery' => 'Płynna galeria',
+	'smoothgallery-desc' => 'Pozwala użytkownikom na tworzenie galerii przesłanych zdjęć. 
+Udostępnia większości opcji SmoothGallery',
 	'smoothgallery-title' => 'Płynna galeria',
 	'smoothgallery-smoothgallerytitle' => 'Płynna galeria: $1',
 	'smoothgallery-error' => '<b>Błąd płynnej galerii:</b>',
+	'smoothgallery-gallery-not-found' => 'Żądana galeria nie istnieje.',
 	'smoothgallery-not-found' => 'Nie dodano żadnych grafik do tej galerii. Dodaj przynajmniej jedną grafikę.',
 	'smoothgallery-no-images' => 'Nie odnaleziono grafik w tej galerii.
 Upewnij się, czy {{PLURAL:$3|szukana grafika istnieje|szukane grafiki istnieją}}.
 {{PLURAL:$2|Następująca grafika nie została odnaleziona|Następujące grafiki nie zostały odnalezione}}: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Następująca żądana grafika jest|Następujące żądane grafiki są}} nieprawidłowego typu – $1',
 	'smoothgallery-unexpected-error' => 'Wystąpił niespodziewany błąd. Prosimy o wypełnienie zgłoszenia błędu.',
 	'smoothgallery-javascript-disabled' => 'Do obejrzenia tej galerii wymagany jest JavaScript.',
 );

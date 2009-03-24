@@ -96,6 +96,8 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'unicodeconverter' => 'Pretvarač za Unicode',
+	'unicodeconverter-desc' => 'Jednostavni primjer specijalnog modula stranice. [[Special:UnicodeConverter|Date znakove u formatu UTF-8]], pretvara u HTML stavke pogodne za web stranice u ISO 8859-1 formatu',
 	'unicodeconverter-ok' => 'U redu',
 	'unicodeconverter-oldtext' => 'Prvobitni tekst:',
 	'unicodeconverter-newtext' => 'Pretvoreni tekst:',

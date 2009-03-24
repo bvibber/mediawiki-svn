@@ -412,16 +412,22 @@ $1',
  */
 $messages['bs'] = array(
 	'inplace_access_denied' => 'Ova usluga je zabranjena od strane IPa klijenta.',
+	'inplace_scaler_no_temp' => 'Nema valjanog privremenog direktorijuma.
+Postavite varijablu $wgLocalTmpDirectory kao direktorijum za pisanje.',
 	'inplace_scaler_not_enough_params' => 'Nema dovoljno parametara.',
 	'inplace_scaler_invalid_image' => 'Nevaljana slika, nije joj moguće odrediti veličinu.',
 	'webstore_path_invalid' => 'Naziv datoteke nije valjan.',
+	'webstore_dest_open' => 'Ne može se otvoriti odredišna datoteka "$1".',
 	'webstore_src_open' => 'Ne može se otvoriti izvorišna datoteka "$1".',
+	'webstore_src_close' => 'Greška pri zatvaranju datoteke koda "$1".',
 	'webstore_dest_exists' => 'Greška, odredišna datoteka "$1" postoji.',
+	'webstore_no_file' => 'Nijedna datoteka nije postavljena.',
 	'webstore_invalid_zone' => 'Nevaljana zona "$1".',
 	'webstore_404' => 'Datoteka nije nađena.',
 	'webstore_php_warning' => 'PHP upozorenje: $1',
 	'webstore_metadata_not_found' => 'Datoteka nije nađena: $1',
 	'webstore_no_response' => 'Nema odgovora od servera',
+	'webstore_php_error' => 'PHP greške koje su se desile:',
 );
 
 /** Czech (Česky)

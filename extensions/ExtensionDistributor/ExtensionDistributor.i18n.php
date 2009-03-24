@@ -1281,7 +1281,7 @@ $messages['li'] = array(
 	'extdist-choose-extension' => 'Selekteer de extensie dae se wils downloade:',
 	'extdist-wc-empty' => 'De ingestelde werkmap bevat gein te distributere extensies!',
 	'extdist-submit-extension' => 'Doorgaon',
-	'extdist-current-version' => 'Hujige versie (trunk)',
+	'extdist-current-version' => 'Óntwikkelverzje (trunk)',
 	'extdist-choose-version' => '<big>De bös de uitbreiding <b>$1</b> aan t downloade.</big>
 
 Selecteer de versie van MediaWiki.

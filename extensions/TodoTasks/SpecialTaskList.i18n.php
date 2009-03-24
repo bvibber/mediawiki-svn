@@ -193,6 +193,7 @@ $messages['bs'] = array(
 	'tasklistbyprojname' => "Dodijeljeni zadaci za '''%s'''",
 	'tasklistchooseproj' => 'Odaberite projekat:',
 	'tasklistprojdisp' => 'Prikaz',
+	'tasklistbyname' => '== Spisak za uraditi za %s ==',
 );
 
 /** Czech (Česky)

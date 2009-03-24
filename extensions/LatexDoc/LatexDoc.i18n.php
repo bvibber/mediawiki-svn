@@ -93,6 +93,8 @@ $3',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'latexdoc_no_text' => 'Stranica ne sadrži tekst, ne može se generirati DVI',
+	'latexdoc_cant_create_dir' => 'Ne može se napraviti privremeni direktorijum $1',
 	'latexdoc_cant_write' => 'Ne mogu pisati u datoteku $1',
 	'latexdoc_error' => 'LaTeX greška
 
@@ -102,6 +104,8 @@ Izlaz: $2
 
 $3',
 	'latexdoc_get_dvi' => 'Preuzmi DVI',
+	'latexdoc_get_pdf' => 'Napravi PDF',
+	'latexdoc-desc' => 'Zajedničko uređivanje LaTeX dokumenata',
 );
 
 /** German (Deutsch)

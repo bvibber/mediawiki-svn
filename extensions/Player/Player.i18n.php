@@ -737,8 +737,11 @@ $messages['lb'] = array(
 	'player-title' => 'Spiller',
 	'player-playertitle' => 'Spiller: $1',
 	'player-file' => 'Numm vum Fichier',
+	'player-play' => 'Spillen',
 	'player-not-allowed' => 'Format den net erlaabt ass',
 	'player-not-found' => 'Fichier net fonnt',
+	'player-invalid-title' => 'net valabelen Titel',
+	'player-clicktoplay' => '$1 spillen',
 	'player-goto-page' => 'Säit',
 	'player-goto-file' => 'Fichier',
 );

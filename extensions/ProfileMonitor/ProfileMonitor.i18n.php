@@ -126,8 +126,12 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'profiling' => 'Podaci profila',
+	'profiling-desc' => '[[Special:Profiling|Posebna stranica]] za traženje i provjeru podataka profila',
+	'profiling-process' => 'Komandna linija:',
 	'profiling-wildcard' => 'Koristi zamjenski znak',
 	'profiling-ok' => 'U redu',
+	'profiling-data' => 'Podaci profila za `$1`',
 	'profiling-data-process' => 'Proces',
 	'profiling-data-count' => 'Brojanje',
 	'profiling-data-time' => 'Vrijeme (sve)',

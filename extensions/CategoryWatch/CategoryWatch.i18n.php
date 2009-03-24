@@ -390,6 +390,7 @@ Ene Jrooss vun der {{SITENAME}}.',
 	'categorywatch-catmoveout' => '"$1" uss de Saachjropp "$2" erus jenomme un en de Saachjropp "$3" jedonn.',
 	'categorywatch-catadd' => '"$1" en de Saachjropp "$2" jedonn.',
 	'categorywatch-catsub' => '"$1" uss de Saachjropp "$2" eruss jenumme.',
+	'categorywatch-autocat' => 'Automattesch op {{GENDER:$1|däm $1 singe|däm $1 sing|däm Metmaacher $1 singe|dä $ ier|däm $1 singe}} Oppassleß',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

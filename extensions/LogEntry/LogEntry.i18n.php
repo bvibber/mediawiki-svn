@@ -64,6 +64,7 @@ $messages['bar'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'logentry' => 'StavkaZapisa',
 	'logentry-invalidpage' => 'Nevaljana stranica',
 );
 

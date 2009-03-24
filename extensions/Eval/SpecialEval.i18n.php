@@ -59,7 +59,10 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'eval' => 'Ocjenjivanje',
 	'eval-desc' => 'Dodaje [[Special:Eval|interfejs]] za funkciju <code>eval()</code>',
+	'eval_submit' => 'Ocijeni',
+	'eval_escape' => 'Sakrij izlaz',
 	'eval_out' => 'Izlaz',
 	'eval_code' => 'Kod',
 );

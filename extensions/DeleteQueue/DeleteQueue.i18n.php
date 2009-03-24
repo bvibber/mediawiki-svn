@@ -670,32 +670,45 @@ $messages['bs'] = array(
 	'deletequeue-action-queued' => 'Brisanje',
 	'deletequeue-action' => 'Predloži brisanje',
 	'deletequeue-action-title' => 'Predlaganje brisanja za "$1"',
+	'deletequeue-permissions-noedit' => 'Morate imati mogućnost uređivanja stranica da bi ste mogli uticati na njen status brisanja.',
 	'deletequeue-generic-reasons' => '*Opći razlozi
   ** Vandalizam
   ** Spam
   ** Održavanje
   ** Van smisla projekta',
+	'deletequeue-nom-alreadyqueued' => 'Ova stranica se već nalazi u redu za brisanje.',
 	'deletequeue-speedy-title' => 'Označi "$1" za brzo brisanje',
+	'deletequeue-prod-title' => 'Predloženo brisanje "$1"',
 	'deletequeue-delnom-reason' => 'Razlog za nominaciju:',
 	'deletequeue-delnom-otherreason' => 'Ostali razlozi',
 	'deletequeue-delnom-extra' => 'Dodane informacije:',
 	'deletequeue-delnom-submit' => 'Pošalji nominaciju',
+	'deletequeue-log-nominate' => "nominirana stranica [[$1]] za brisanje u redu za čekanje '$2'.",
 	'deletequeue-log-dequeue' => "uklonjena [[$1]] iz reda za brisanje '$2'.",
 	'right-speedy-nominate' => 'Nominiranje stranica za brzo brisanje',
 	'right-prod-nominate' => 'Predlaganje brisanja stranice',
 	'right-deletediscuss-nominate' => 'Započinjanje razgovora o brisanju',
 	'right-deletediscuss-review' => 'Zatvaranje diskusija o brisanju',
 	'deletequeue-queue-speedy' => 'Brzo brisanje',
+	'deletequeue-queue-prod' => 'Predloženo brisanje',
 	'deletequeue-queue-deletediscuss' => 'Brisanje razgovora',
+	'deletequeue-review-action' => 'Akcija koja se preduzima:',
 	'deletequeue-review-delete' => 'Brisanje stranice.',
 	'deletequeue-review-reason' => 'Komentari:',
 	'deletequeue-review-newreason' => 'Novi razlog:',
 	'deletequeue-review-newextra' => 'Dodatne informacije:',
+	'deletequeue-review-submit' => 'Sačuvaj pregled',
 	'deletequeue-review-original' => 'Razlog za nominaciju',
 	'deletequeue-review-badaction' => 'Naveli ste nevaljanu akciju',
+	'deletequeue-review-actiondenied' => 'Naveli ste akciju koja je onemogućena na ovoj stranici',
+	'deletequeue-role-nominator' => 'prvobitni predlagač brisanja',
+	'deletequeue-vote-action' => 'Preporuke:',
+	'deletequeue-vote-reason' => 'Komentari:',
 	'deletequeue-vote-submit' => 'Pošalji',
+	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Traži',
 	'deletequeue-list-header-page' => 'Stranica',
+	'deletequeue-case-expiry' => 'Ističe:',
 );
 
 /** Catalan (Català)
@@ -2591,6 +2604,8 @@ $messages['lb'] = array(
 	'deletequeue-list-votes' => 'Lëscht vun de Stëmmen',
 	'deletequeue-list-header-page' => 'Säit',
 	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
+	'deletequeue-case-page' => 'Säit:',
+	'deletequeue-case-reason' => 'Grond:',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)

@@ -1715,6 +1715,14 @@ $messages['wuu'] = array(
 	'sitematrix-language' => '闲话',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'sitematrix-language' => 'שפראַך',
+	'sitematrix-others' => 'אַנדערע פראיעקטן פֿון וויקימעדיע',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

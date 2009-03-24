@@ -1127,6 +1127,8 @@ APC no parece estar ejecutándose.',
 	'viewapc-upload-support' => 'Archivar ayuda de carga',
 	'viewapc-filecache-info' => 'Archivar información de cache',
 	'viewapc-usercache-info' => 'Información de cache de usuario',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|archivo|archivos}} ($2)',
+	'viewapc-rps' => '$1 solicitudes por segundo',
 	'viewapc-memory-usage-detailed' => 'Uso de memoria<br />
 (múltiples porciones indican fragmentos)',
 	'viewapc-memory-usage' => 'Uso de memoria',

@@ -172,6 +172,17 @@ $messages['bg'] = array(
 	'refreshspecial-no-page' => 'Няма такава специална страница',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'refreshspecial-button' => 'Odabrano osvježavanje',
+	'refreshspecial-refreshing' => 'osvježavam specijalne stranice',
+	'refreshspecial-select-all-pages' => 'Odaberi sve stranice',
+	'refreshspecial-db-error' => 'Neuspjelo: greška baze podataka',
+	'refreshspecial-no-page' => 'Nema takve specijalne stranice',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

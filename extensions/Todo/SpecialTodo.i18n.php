@@ -231,16 +231,31 @@ $messages['bg'] = array(
 	'todo-form-submit' => 'Изпращане на заявка',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'todo-list-change' => 'Kemmañ',
+	'todo-list-cancel' => 'Nullañ',
+	'todo-new-item' => 'Elfenn nevez',
+	'todo-issue-summary' => 'Diverrañ eus ar gudenn :',
+	'todo-form-details' => 'Munudoù :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
+	'todo' => 'Spisak za uraditi',
 	'todo-desc' => 'Probno proširenje ličnog [[Special:Todo|spiska za uraditi]]',
 	'todo-new-queue' => 'novi',
 	'todo-mail-subject' => 'Završena stavka na spisku za uraditi korisnika $1',
+	'todo-invalid-item' => 'Nedostajuća ili nevaljana stavka',
 	'todo-unrecognize-type' => 'Neprepoznati tip',
 	'todo-item-list' => 'Vaše stavke',
 	'todo-no-item' => 'Nema stavki za uraditi.',
+	'todo-list-for' => 'Spisak za uraditi za $1',
+	'todo-list-change' => 'Izmjena',
 	'todo-list-cancel' => 'Odustani',
 	'todo-new-item' => 'Nova stavka',
 	'todo-form-details' => 'Detalji:',

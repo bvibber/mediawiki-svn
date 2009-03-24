@@ -380,6 +380,7 @@ $messages['bs'] = array(
 	'regexblock-form-expiry' => 'Ističe:',
 	'regexblock-form-match' => 'Tačno slaganje',
 	'regexblock-form-submit' => 'Blokiraj ovog korisnika',
+	'regexblock-form-submit-regex' => 'Nevaljan regularni izraz.',
 	'regexblock-form-submit-expiry' => 'Molimo odredite vrijeme isteka.',
 	'regexblock-nodata-found' => 'Podaci nisu nađeni',
 	'regexblock-unblock-success' => 'Deblokiranje uspjelo',

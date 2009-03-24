@@ -187,6 +187,7 @@ $messages['bs'] = array(
 	'slippymap_latmissing' => 'Nedostaje vrijednost lat (za geografsku širinu).',
 	'slippymap_lonmissing' => 'Nedostaje vrijednost lon (za geografsku dužinu).',
 	'slippymap_zoommissing' => 'Nedostaje vrijednost z (za nivo zumiranja).',
+	'slippymap_longdepreciated' => "Molimo koristite 'lon' umjesto 'long' (parametar je preimenovan).",
 	'slippymap_widthnan' => "vrijednost širine (w) '%1' nije valjan cijeli broj",
 	'slippymap_heightnan' => "vrijednost visine (h) '%1' nije validan cijeli broj",
 	'slippymap_zoomnan' => "vrijednost zumiranja (z) '%1' nije valjan cijeli broj",
@@ -195,6 +196,12 @@ $messages['bs'] = array(
 	'slippymap_widthbig' => 'vrijednost širina (w) ne može biti veća od 1000',
 	'slippymap_widthsmall' => 'vrijednost širina (w) ne može biti manja od 100',
 	'slippymap_heightbig' => 'vrijednost visina (h) ne može biti veća od 1000',
+	'slippymap_heightsmall' => 'vrijednost visina (h) ne može biti manja od 100',
+	'slippymap_latbig' => 'vrijednost geografske širine (lat) ne može biti veća od 90',
+	'slippymap_latsmall' => 'vrijednost geografske širine (lat) ne može biti manja od -90',
+	'slippymap_lonbig' => 'vrijednost geografske dužine (lon) ne može biti veća od 180',
+	'slippymap_lonsmall' => 'vrijednost geografske dužine (lon) ne može biti manja od -180',
+	'slippymap_zoomsmall' => 'vrijednost zumiranja (z) ne može biti manja od nule',
 	'slippymap_zoombig' => 'vrijednost zumiranja (z) ne može biti veća od 17.',
 	'slippymap_invalidlayer' => "Nevaljana vrijednost 'layer' '%1'",
 	'slippymap_maperror' => 'Greška mape:',
@@ -877,9 +884,36 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'slippymap_desc' => 'Pozwala na korzystanie ze znacznika <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> powodującego wyświetlenie ruchomej mapy OpenLayers. Mapy pochodzą z [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'Brakująca wartość „lat” (szerokość geograficzna).',
+	'slippymap_lonmissing' => 'Brakująca wartość „lon” (długość geograficzna).',
+	'slippymap_zoommissing' => 'Brakująca wartość „z” (stopień powiększenia).',
+	'slippymap_longdepreciated' => 'Należy użyć „lon” zamiast „long” (nazwa parametru została zmieniona).',
+	'slippymap_widthnan' => 'szerokość (w) wartość „$1” nie jest liczbą całkowitą',
+	'slippymap_heightnan' => 'wysokość (h) wartość „$1” nie jest liczbą całkowitą',
+	'slippymap_zoomnan' => 'stopień powiększenia (z) wartość „$1” nie jest liczbą całkowitą',
+	'slippymap_latnan' => 'szerokość geograficzna (lat) wartość „$1” nie jest liczbą',
+	'slippymap_lonnan' => 'długość geograficzna (lon) wartość „$1” nie jest liczbą',
+	'slippymap_widthbig' => 'szerokość (w) nie może być większa niż 1000',
+	'slippymap_widthsmall' => 'szerokość (w) nie może być mniejsza niż 100',
+	'slippymap_heightbig' => 'wysokość (h) nie może być większa niż 1000',
+	'slippymap_heightsmall' => 'wysokość (h) nie może być mniejsza niż 100',
+	'slippymap_latbig' => 'szerokość geograficzna (lat) nie może być większa niż 90',
+	'slippymap_latsmall' => 'szerokość geograficzna (lat) nie może być mniejsza niż -90',
+	'slippymap_lonbig' => 'długość geograficzna (lon) nie może być większa niż 180',
+	'slippymap_lonsmall' => 'długość geograficzna (lon) nie może być mniejsza niż -180',
+	'slippymap_zoomsmall' => 'stopień powiększenia (z) nie może być niższy niż zero',
+	'slippymap_zoom18' => 'stopień powiększenia (z) nie może być wyższy niż 17. To rozszerzenie MediaWiki działa w OpenStreetMap w warstwie „osmarender”, która nie wykracza poza stopień powiększenia 17. W warstwie „Mapnik” dostępnej na openstreetmap.org, można uzyskać powiększenie 18',
+	'slippymap_zoombig' => 'stopień powiększenia (z) nie może być wyższy niż 17.',
+	'slippymap_invalidlayer' => 'Nieprawidłowa warstwa „leyer” „%1”',
 	'slippymap_maperror' => 'Błąd mapy:',
+	'slippymap_osmtext' => 'Zobacz tę mapę na OpenStreetMap.org',
+	'slippymap_code' => 'Kod wiki dla tego widoku mapy:',
+	'slippymap_button_code' => 'Pobierz kod wiki',
+	'slippymap_resetview' => 'Zresetuj widok',
 );
 
 /** Portuguese (Português)

@@ -2695,7 +2695,9 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'youtubeauthsub_title' => 'קעפל',
 	'youtubeauthsub_category' => 'קאַטעגאריע',
+	'youtubeauthsub_uploadbutton' => 'ארויפֿלאָדן',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

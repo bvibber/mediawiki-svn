@@ -628,9 +628,15 @@ $messages['pdt'] = array(
  */
 $messages['pl'] = array(
 	'showprocesslist' => 'Pokaż listę procesów',
+	'showprocesslist-desc' => 'Wyświetla [[Special:ShowProcesslist|pełną listę procesów]]',
 	'showprocesslist-id' => 'Id.',
 	'showprocesslist-user' => 'Użytkownik',
+	'showprocesslist-host' => 'Komputer',
+	'showprocesslist-db' => 'Baza danych',
 	'showprocesslist-command' => 'Polecenie',
+	'showprocesslist-time' => 'Czas',
+	'showprocesslist-state' => 'Stan',
+	'showprocesslist-info' => 'Informacje',
 );
 
 /** Pashto (پښتو)
@@ -849,5 +855,13 @@ $messages['vo'] = array(
 	'showprocesslist-time' => 'Tim',
 	'showprocesslist-state' => 'Stad',
 	'showprocesslist-info' => 'Nüns',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'showprocesslist-user' => 'באַניצער',
+	'showprocesslist-time' => 'צײַט',
 );
 
