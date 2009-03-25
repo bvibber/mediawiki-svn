@@ -3,6 +3,11 @@
 class ApiCodeUpdate extends ApiBase {
 
 	public function execute() {
+		global $wgUser;
+		// Before doing anything at all, let's check permissions
+		if( !$wgUser->isAllowed('codereview-use') ) {
+			$this->dieUsage('You don\'t have permission update code','permissiondenied');
+		}
 		$params = $this->extractRequestParams();
 
 		if ( !isset( $params['repo'] ) ) {
