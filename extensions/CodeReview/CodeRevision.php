@@ -180,12 +180,22 @@ class CodeRevision {
 					'cp_path' => $path['path'],
 					'cp_action' => $path['action'] );
 			}
-			$dbw->insert( 'code_paths',
-				$data,
-				__METHOD__,
-				array( 'IGNORE' ) );
+			$dbw->insert( 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
 		}
-
+		// Update code relations (One-digit revs skipped due to some false-positives)
+		if ( preg_match( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
+			$data = array();
+			unset($m[0]); // ignore the whole match
+			foreach( $m as $rev ) {
+				$data[] = array(
+					'cf_repo_id' => $this->mRepoId,
+					'cf_from'    => $this->mId,
+					'cf_to'      => intval($rev)
+				);
+			}
+			$dbw->insert( 'code_relations', $data, __METHOD__, array( 'IGNORE' ) );
+		}
+		
 		$dbw->commit();
 	}
 
