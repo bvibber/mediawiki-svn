@@ -376,6 +376,26 @@ class CodeRevision {
 		}
 		return $users;
 	}
+	
+	public function getReferences() {
+		$refs = array();
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			array( 'code_relations', 'code_rev' ),
+			array( 'cr_id', 'cr_status', 'cr_timestamp', 'cr_author', 'cr_message' ),
+			array(
+				'cf_repo_id' => $this->mRepoId,
+				'cf_to' => $this->mId,
+				'cr_repo_id = cf_repo_id',
+				'cr_id = cf_from'
+			),
+			__METHOD__
+		);
+		while ( $row = $res->fetchObject() ) {
+			$refs[] = $row;
+		}
+		return $refs;
+	}
 
 	public function getTags( $from = DB_SLAVE ) {
 		$db = wfGetDB( $from );

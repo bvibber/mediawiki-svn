@@ -45,7 +45,7 @@ class CodeRevisionView extends CodeView {
 
 		$wgOut->setPageTitle( wfMsgHtml('code-rev-title',$this->mRev->getId()) );
 
-		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
+		$repoLink = $this->mSkin->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
 			htmlspecialchars( $this->mRepo->getName() ) );
 		$revText = $this->navigationLinks();
 		$paths = '';
@@ -80,18 +80,26 @@ class CodeRevisionView extends CodeView {
 		}
 
 		$html .= $this->formatMetaData( $fields );
-
+		# Output diff
 		if ( $this->mRev->isDiffable() ) {
 			$diffHtml = $this->formatDiff();
 			$html .=
 				"<h2>" . wfMsgHtml( 'code-rev-diff' ) .
-				' <small>[' . $wgUser->getSkin()->makeLinkObj( $special,
+				' <small>[' . $this->mSkin->makeLinkObj( $special,
 					wfMsg( 'code-rev-purge-link' ), 'action=purge' ) . ']</small></h2>' .
 				"<div class='mw-codereview-diff' id='mw-codereview-diff'>" . $diffHtml . "</div>\n";
 			$html .= $this->formatImgDiff();
 		}
+		# Show code relations
+		$relations = $this->formatReferences();
+		if ( $relations ) {
+			$html .= "<h2 id='code-references'>" . wfMsgHtml( 'code-references' ) .
+				"</h2>\n" . $relations;
+		}
+		# Add revision comments
 		if ( $comments ) {
-			$html .= "<h2 id='code-comments'>" . wfMsgHtml( 'code-comments' ) . "</h2>\n" . $comments;
+			$html .= "<h2 id='code-comments'>" . wfMsgHtml( 'code-comments' ) .
+				"</h2>\n" . $comments;
 		}
 
 		if ( $this->mReplyTarget ) {
@@ -390,6 +398,20 @@ class CodeRevisionView extends CodeView {
 		}
 		return "<ul class='mw-codereview-changes'>$changes</ul>";
 	}
+	
+	protected function formatReferences() {
+		$refs = implode( "\n",
+			array_map( array( $this, 'formatReferenceInline' ), $this->mRev->getReferences() )
+		);
+		if ( !$refs ) {
+			return false;
+		}
+		$header = '<th>'.wfMsg( 'code-field-id' ).'</th>';
+		$header .= '<th>'.wfMsg( 'code-field-message' ) .'</th>';
+		$header .= '<th>'.wfMsg( 'code-field-author' ).'</th>';
+		$header .= '<th>'.wfMsg( 'code-field-timestamp' ).'</th>';
+		return "<table border='1' class='TablePager'><tr>{$header}</tr>{$refs}</table>";
+	}
 
 	protected function formatCommentInline( $comment ) {
 		if ( $comment->id === $this->mReplyTarget ) {
@@ -420,6 +442,20 @@ class CodeRevisionView extends CodeView {
 		}
 		$line .= "]</i>";
 		return "<li>$line</li>";
+	}
+	
+	protected function formatReferenceInline( $row ) {
+		global $wgLang;
+		$rev = intval( $row->cr_id );
+		$repo = $this->mRepo->getName();
+		// Borrow the code revision list css
+		$css = 'mw-codereview-status-' . htmlspecialchars( $row->cr_status );
+		$date = $wgLang->timeanddate( $row->cr_timestamp, true );
+		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
+		$revLink = $this->mSkin->link( $title, "r$rev" );
+		$summary = $this->messageFragment( $row->cr_message );
+		$author = $this->authorLink( $row->cr_author );
+		return "<tr class='$css'><td>$revLink</td><td>$summary</td><td>$author</td><td>$date</td></tr>";
 	}
 
 	protected function commentLink( $commentId ) {
