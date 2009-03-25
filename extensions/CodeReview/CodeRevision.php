@@ -183,7 +183,7 @@ class CodeRevision {
 			$dbw->insert( 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
 		}
 		// Update code relations (One-digit revs skipped due to some false-positives)
-		if ( preg_match( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
+		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
 			$data = array();
 			unset($m[0]); // ignore the whole match
 			foreach( $m as $rev ) {
