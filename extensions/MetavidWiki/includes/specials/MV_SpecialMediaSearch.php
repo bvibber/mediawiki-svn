@@ -397,15 +397,16 @@ class MV_SpecialMediaSearch {
 							'bill' => array()
 						);
 		$o .= '	<ul id="results">';
+		//setup the MV_index:
+		$mvIndex = new MV_Index();			
 		foreach ( $this->results as $inx => & $mvd ) {
-			$mvTitle = new MV_Title( $mvd->wiki_title );
-			
+			$mvTitle = new MV_Title( $mvd->wiki_title );			
 			
 			//get parent meta if requested: 
 			global $mvGetParentMeta;						
 			$pmeta_out = '';		
-			if( $mvGetParentMeta && strtolower( $mvTitle->getMvdTypeKey() ) == 'ht_en'){
-				$pmvd = MV_Index::getParentAnnotativeLayers($mvTitle);				
+			if( $mvGetParentMeta && strtolower( $mvTitle->getMvdTypeKey() ) == 'ht_en'){						
+				$pmvd = $mvIndex->getParentAnnotativeLayers($mvTitle);				
 								
 				if( $pmvd->wiki_title ){											
 					$pMvTitle =  new MV_Title( $pmvd->wiki_title );
