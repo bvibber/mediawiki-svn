@@ -10,6 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'code' => 'Code Review',
+	'code-rev-title' => 'r$1 - Code Review',
 	'code-comments' => 'Comments',
 	'code-change-status' => 'changed the \'\'\'status\'\'\' of r$1',
 	'code-change-tags' => 'changed the \'\'\'tags\'\'\' for r$1',

@@ -43,6 +43,8 @@ class CodeRevisionView extends CodeView {
 			return;
 		}
 
+		$wgOut->setPageTitle( wfMsgHtml('code-rev-title',$this->mRev->getId()) );
+
 		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
 			htmlspecialchars( $this->mRepo->getName() ) );
 		$revText = $this->navigationLinks();
