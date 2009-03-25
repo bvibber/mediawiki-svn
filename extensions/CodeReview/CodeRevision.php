@@ -185,8 +185,7 @@ class CodeRevision {
 		// Update code relations (One-digit revs skipped due to some false-positives)
 		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
 			$data = array();
-			unset($m[0]); // ignore the whole match
-			foreach( $m as $rev ) {
+			foreach( $m[1] as $rev ) {
 				$data[] = array(
 					'cf_repo_id' => $this->mRepoId,
 					'cf_from'    => $this->mId,
