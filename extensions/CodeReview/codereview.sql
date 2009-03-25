@@ -123,7 +123,8 @@ CREATE TABLE /*$wgDBprefix*/code_relations (
   -- -> cr_id
   cf_to int not null,
 
-  primary key (cf_repo_id, cf_from, cf_to)
+  primary key (cf_repo_id, cf_from, cf_to),
+  key (cf_repo_id, cf_to, cf_from)
 ) /*$wgDBTableOptions*/;
 
 -- Freetext tagging for revisions
