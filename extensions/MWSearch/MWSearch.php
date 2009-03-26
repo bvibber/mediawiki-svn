@@ -59,8 +59,6 @@ $wgLuceneSearchTimeout = 6;
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'MWSearch',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'author'         => array( 'Kate Turner', 'Brion Vibber' ),
 	'descriptionmsg' => 'mwsearch-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:MWSearch',

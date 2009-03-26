@@ -10,8 +10,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Reformats the [[Special:RecentChanges|recent changes]]',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Format_Changes',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'descriptionmsg' => 'formatchanges-desc',
 );
 

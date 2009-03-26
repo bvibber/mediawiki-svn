@@ -16,8 +16,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'DeleteQueue',
 	'author'         => 'Andrew Garrett',
-	'svn-date'       => '$LastChangedDate: 2008-06-08 20:48:19 +1000 (Sun, 08 Jun 2008) $',
-	'svn-revision'   => '$LastChangedRevision: 36018 $',
 	'description'    => 'Creates a queue-based system for managing deletion.',
 	'descriptionmsg' => 'deletequeue-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DeleteQueue',

@@ -28,8 +28,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SecurePasswords',
 	'version'        => '1.1.1',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Creates more secure password hashes and adds a password strength checker',
 	'descriptionmsg' => 'securepasswords-desc',
 );

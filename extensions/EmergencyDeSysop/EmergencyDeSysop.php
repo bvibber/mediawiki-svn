@@ -11,8 +11,6 @@ EOT;
 $wgExtensionCredits['specialpage'][] = array(
 	'author'	=> 'SQL',
 	'name'		=> 'EmergencyDeSysop',
-	'svn-date'    => '$LastChangedDate$',
-	'svn-revision'    => '$LastChangedRevision$',
 	'url' 		=> 'http://www.mediawiki.org/wiki/Extension:EmergencyDeSysop',
 	'description'	=> 'Allows a Sysop to sacrifice their own bit, in order to desysop another',
 	'descriptionmsg' => 'emergencydesysop-desc',

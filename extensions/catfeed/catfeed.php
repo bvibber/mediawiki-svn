@@ -29,8 +29,6 @@
 $wgExtensionFunctions[] = 'setupCatRSSExtension';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Category Feed',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Gabriel Wicke',
 	'description' => 'Uses bits from recentchanges feeds. Create in-page version, especially useful for wikinews',
 	'descriptionmsg' => 'catfeed-desc',

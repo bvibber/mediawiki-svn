@@ -29,8 +29,6 @@ http://pecl.php.net/package/svn
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'CodeReview',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CodeReview',
 	'author' => array( 'Brion Vibber', 'Aaron Schulz', 'Alexandre Emsenhuber', 'Chad Horohoe' ),
 	'descriptionmsg' => 'code-desc',

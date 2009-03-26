@@ -28,8 +28,6 @@ if ( !$wgUseAjax ) {
  */
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'AjaxTest',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Daniel Kinzler',
 	'description' => 'AjaxTest extension',
 );

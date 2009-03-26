@@ -16,8 +16,6 @@ $wgHooks['BeforePageDisplay'][] = 'efSkinPerPageBeforePageDisplayHook';
 $wgExtensionCredits['other'][] = array(
 	'name'        => 'SkinPerNamespace',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:SkinPerNamespace',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'description' => 'Allow a per-namespace skin',
 	'author'      => 'Alexandre Emsenhuber',
 	

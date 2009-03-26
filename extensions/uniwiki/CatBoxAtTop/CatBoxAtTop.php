@@ -13,8 +13,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Adds a category box to the top right of pages',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Category_Box_at_Top',
-	'svn-date'       => '$LastChangedDate',
-	'svn-revision'   => '$LastChangedRevision$',
 	'descriptionmsg' => 'catboxattop-desc',
 );
 

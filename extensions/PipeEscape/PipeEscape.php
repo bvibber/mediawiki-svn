@@ -34,8 +34,6 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 			     'to be just a pipe character',
 	'url'             => 'http://www.mediawiki.org/wiki/Extension:Pipe_Escape',
 	'descriptionmsg'  => 'pipeescape-desc',
-	'svn-revision'    => '$LastChangedRevision$',
-	'svn-date'        => '$LastChangedDate$',
 );
 
 $dir = dirname(__FILE__) . DIRECTORY_SEPARATOR;

@@ -11,8 +11,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Adds mootools-1.2-core-yc.js to each page',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:MooTools_1.2_Core',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'descriptionmsg' => 'mootools12core-desc',
 );
 

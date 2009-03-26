@@ -24,8 +24,6 @@
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'MetaKeywords',
 	'author'         => '[http://en.wiktionary.org/wiki/User:Conrad.Irwin Conrad Irwin]',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:MetaKeywords',
 	'description'    => 'Lets wikis add meta keywords depending on namespace',
 	'descriptionmsg' => 'metakeywords-desc',

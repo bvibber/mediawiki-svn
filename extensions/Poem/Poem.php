@@ -27,8 +27,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Poem',
 	'author'         => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poem',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'description'    => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
 	'descriptionmsg' => 'poem-desc',
 );

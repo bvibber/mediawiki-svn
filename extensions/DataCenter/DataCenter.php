@@ -37,9 +37,6 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DataCenter',
 	'description' => 'DataCenter Planing and Asset Tracking System',
-	'svn-date' =>
-		'$LastChangedDate: 2008-11-05 11:44:10 -0800 (Wed, 05 Nov 2008) $',
-	'svn-revision' => '$LastChangedRevision: 43233 $',
 	'description-msg' => 'datacenter-desc',
 );
 

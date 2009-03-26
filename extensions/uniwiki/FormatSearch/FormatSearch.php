@@ -10,8 +10,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Changes to clean up the search results page',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Format_Search',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'descriptionmsg' => 'formatsearch-desc',
 );
 

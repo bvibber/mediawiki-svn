@@ -15,8 +15,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Book Information',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Rob Church',
 	'description' => 'Expands [[Special:Booksources]] with information from a web service',
 	'descriptionmsg' => 'bookinfo-desc',

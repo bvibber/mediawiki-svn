@@ -33,8 +33,6 @@ $wgAntiBotPayloads = array(
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'AntiBot',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AntiBot',
 	'author' => 'Tim Starling',
 	'description' => 'Simple framework for spambot checks and trigger payloads',

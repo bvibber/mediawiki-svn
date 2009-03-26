@@ -18,8 +18,6 @@ $wgContributionReportingDBname = $wgDBname;
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Contribution Reporting',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ContributionReporting',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'author' => array( 'David Strauss', 'Brion Vibber', 'Siebrand Mazeland', 'Trevor Parscal' ),
 	'descriptionmsg' => 'contributionreporting-desc',
 );

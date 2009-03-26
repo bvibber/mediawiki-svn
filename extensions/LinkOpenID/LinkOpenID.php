@@ -17,8 +17,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Michael Holzt',
 	'description'    => 'allow users to link their account to an external OpenID',
 	'descriptionmsg' => 'linkopenid-desc',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:LinkOpenID',
 );
 

@@ -15,8 +15,6 @@ exit(1);
  
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Vote',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Rob Church',
 	'description' => 'Provides simple polling capabilities',
 	'descriptionmsg' => 'vote-desc',

@@ -28,8 +28,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'SearchBox',
 	'author'         => array( 'Trevor Parscal' ),
-	'svn-date'       => '$LastChangedDate: 2008-10-27 13:56:23 -0700 (Mon, 27 Oct 2008) $',
-	'svn-revision'   => '$LastChangedRevision: 42686 $',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SearchBox',
 	'description'    => 'Allow inclusion of search forms',
 	'descriptionmsg' => 'searchbox-desc',

@@ -13,8 +13,6 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Import Users',
 	'author' => array('Yuriy Ilkiv', 'Rouslan Zenetl'),
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportUsers',
 	'description' => 'Imports users in bulk from CSV-file; encoding: UTF-8',
 	'descriptionmsg' => 'importusers-desc',

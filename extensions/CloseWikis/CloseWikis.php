@@ -24,8 +24,6 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'CloseWikis',
 	'author'         => 'Victor Vasiliev',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Allows to close wiki sites',
 	'descriptionmsg' => 'closewikis-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:CloseWikis',

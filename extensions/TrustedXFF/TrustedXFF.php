@@ -16,8 +16,6 @@ $wgTrustedXffFile = dirname(__FILE__).'/trusted-xff.cdb';
 /** Registration */
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'TrustedXFF',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Handling of trusted proxy addresses (XFF)',
 	'descriptionmsg' => 'trustedxff-desc',
 	'author'         => 'Tim Starling',

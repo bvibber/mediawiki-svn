@@ -19,8 +19,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Rob Church',
 	'description' => 'Special page used to wipe the OBJECTCACHE table',
 	'descriptionmsg' => 'purgecache-desc',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 );
 
 $dir = dirname(__FILE__) . '/';

@@ -9,8 +9,6 @@ require_once( 'DYMNorm.php' );
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'DidYouMean',
 	'author'         => 'hippietrail (Andrew Dunbar)',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DidYouMean',
 	'descriptionmsg' => 'didyoumean-desc',
 );

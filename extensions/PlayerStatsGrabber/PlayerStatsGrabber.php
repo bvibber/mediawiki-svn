@@ -98,8 +98,6 @@ $wgAjaxExportList[] = 'mw_push_player_stats';
 $wgExtensionCredits['media'][] = array(
 	'name'           => 'PlayerStats',
 	'author'         => 'Michael Dale',
-	'svn-date' 		 => '$LastChangedDate: 2008-08-06 07:18:43 -0700 (Wed, 06 Aug 2008) $',
-	'svn-revision' 	 => '$LastChangedRevision: 38715 $',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:PlayerStats',
 	'description'    => 'PlayerStats and survey for monitoring theora support relative to flash'
 );

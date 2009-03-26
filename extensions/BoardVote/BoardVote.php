@@ -19,8 +19,6 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
 	'author' => array( 'Tim Starling', 'Kwan Ting Chan', 'others' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BoardVote',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]',
 	'descriptionmsg' => 'boardvote-desc',
 );

@@ -12,8 +12,6 @@ if( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'PHP highlight',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PhpHighlight',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Alexandre Emsenhuber',
 	'description' => 'Adds a <code>&lt;php&gt;</code> tag to use the PHP syntax highlighter',
 );
