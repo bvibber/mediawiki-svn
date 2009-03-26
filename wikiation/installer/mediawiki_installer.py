@@ -115,6 +115,30 @@ class Mediawiki_Installer(Installation_System):
 		return settings.trunkdir
 
 
+	def duplicate(self, src, dst):
+		if not self.is_installed(src):
+			raise Mediawiki_Installer_Exception(src+" not found.")
+
+		if self.is_installed(dst):
+			raise Mediawiki_Installer_Exception(dst+" already exists.")
+
+		srcpath= os.path.join(settings.instancesdir,src)
+		dstpath= os.path.join(settings.instancesdir,dst)
+		dbtmp=os.path.join(dstpath,"installerdbtmp.sql")
+		print "Copying instance files..."
+		shutil.copytree(srcpath,dstpath,symlinks=True)
+		print "updating unique settings"
+		uniquesettings(dst)
+		print "Copying instance database..."
+		dumpdb(src,dbtmp)
+		dropdb(dst)
+		createdb(dst)
+		do_sql(dst,dbtmp)
+		print "cleanup"
+		os.unlink(dbtmp)
+		print "done."
+		
+
 
 #TODO: use this method everywhere a database name is requested
 def dbname(installer_name):
@@ -172,8 +196,9 @@ def install(target, option_as, revision):
 	else:
 		checkout(target+"/", name, revision)
 
-	print "Creating LocalSettings.php..."
+	print "Copying LocalSettings.php,creating unique settings..."
 	localsettings(name)
+	uniquesettings(name)
 	print "Copy logo..."
 	logo(name)
 	print "Setting up database..."
@@ -228,19 +253,22 @@ def _checkout(command, name):
 
 def localsettings(target):
 	"""Copy over our LocalSettings.php , and create InstallerUniqueSettings.php
-	(which contains settings unique to this instance)
+	(which contains settings unique to this instance), and create LocalSettings dir.
 	LocalSettings.php is the main configuration file for mediawiki."""
 
 	here=settings.installerdir+"/LocalSettings.php"
 	instancedir=settings.instancesdir+"/"+target
 	there=instancedir+"/LocalSettings.php"
 	shutil.copy2(here,there)
+	subdir=os.path.join(settings.revisionsdir,target,"LocalSettings")
+	os.mkdir(subdir)
 	
+def uniquesettings(target):
 	uniquesettings=settings.instancesdir+"/"+target+"/InstallerUniqueSettings.php"
 	unique=file(uniquesettings,"w")
 	unique.write('<?php\n')
 	unique.write('$wgSitename = "Wikiation_'+target+'";\n')
-	unique.write('$wgScriptPath = "'+settings.base_scriptpath+"/"+target+'";\n')
+	unique.write('$wgScriptPath = "'+settings.base_scriptpath+target+'";\n')
 	unique.write('$wgDBname = "'+target+'";\n')
 	unique.write('?>\n')
 	
@@ -274,6 +302,10 @@ def make_admin(target):
 	#do_sql(target, settings.installerdir+"/user.sql")
 	phpfile=os.path.join(settings.instancesdir,target,"maintenance","createAndPromote.php")
 	command="php "+phpfile+" --bureaucrat "+settings.adminuser_name+" "+settings.adminuser_password
+	os.system(command)
+
+def dumpdb(target,outfile):
+	command=settings.mysqldump_command+" "+target+" > "+outfile
 	os.system(command)
 
 def do_sql(target, infile):

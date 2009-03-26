@@ -80,6 +80,11 @@ def install(args):
 	"""install something"""
 	installers.install(args)
 
+def duplicate(args):
+	"""duplicate an instance"""
+	if len(args)!=3:
+		print "syntax:\n duplicate source_instance destination_instance"
+	installers.duplicate(args)
 
 def uninstall(args):
 	"""uninstall something"""
@@ -154,7 +159,8 @@ commands={
 	"info":info,
 	"check_isolation":check_isolation,
 	"update_self":update_self,
-	"update_tags":update_tags
+	"update_tags":update_tags,
+	"duplicate":duplicate
 }
 
 # additional help texts for some commands.

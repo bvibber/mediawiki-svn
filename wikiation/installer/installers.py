@@ -147,6 +147,14 @@ def info(args):
 	system.get_info(ppath["installer"])
 	
 
+def duplicate(args):
+	mw=get_system("mediawiki")
+	try:
+		mw.duplicate(args[1],args[2])
+	except Mediawiki_Installer_Exception,e:
+		print e.message
+
+
 def install(args):
 	if len(args)<1:
 		print "install: Internal error: expected more arguments"
