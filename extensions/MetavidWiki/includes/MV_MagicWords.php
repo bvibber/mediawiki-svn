@@ -62,7 +62,10 @@ class MV_MagicWords {
 				return $this->getRecentSpeeches();
 				break;
 			case 'PERSONSPEECHES':
-				return $this->getPersonOut();
+				return $this->getPersonOut( 'speech_by');
+				break;
+			case 'PERSONSPOKENBY':
+				return $this->getPersonOut( 'spoken_by' );
 				break;
 			case 'VIDEOBILL':
 				return $this->getBillOut();
@@ -84,8 +87,8 @@ class MV_MagicWords {
 		$ms->filters[] = array ( 'a' => 'and', 't' => 'bill', 'v' => $bill_name );
 		$ms->doSearch( $log_search = false );
 		return $ms->getUnifiedResultsHTML( $show_sidebar = false );
-	}
-	function getPersonOut() {
+	}	
+	function getPersonOut( $sp_mode = 'speech_by' ) {
 		if ( $this->params['person'] != '' ) {
 			$person_name = $this->params['person'];
 		} else {
@@ -99,7 +102,7 @@ class MV_MagicWords {
 		$pgsl = $mvMediaSearchResultsLimit;
 		$mvMediaSearchResultsLimit	= $this->params['num_results'];
 
-		$ms->filters[] = array ( 'a' => 'and', 't' => 'spoken_by', 'v' => $person_name );
+		$ms->filters[] = array ( 'a' => 'and', 't' => $sp_mode, 'v' => $person_name );
 		$ms->doSearch( $log_search = false );
 
 		$mvMediaSearchResultsLimit = $pgsl;
