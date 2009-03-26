@@ -22,7 +22,6 @@ Warning: the refresh may take a while on larger wikis.',
 	'refreshspecial-fail' => 'Please check at least one special page to refresh.',
 	'refreshspecial-refreshing' => 'refreshing special pages',
 	'refreshspecial-skipped' => 'cheap, skipped',
-	'refreshspecial-success-subtitle' => 'refreshing special pages',
 	'refreshspecial-choice' => 'refreshing special pages',
 	'refreshspecial-js-disabled' => '(<i>You cannot select all pages when JavaScript is disabled</i>)',
 	'refreshspecial-select-all-pages' => 'Select all pages',
@@ -329,7 +328,7 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
- * @author Jack Phoenix
+ * @author Jack Phoenix <jack@countervandalism.net>
  * @author Mobe
  * @author Nike
  * @author Vililikku
