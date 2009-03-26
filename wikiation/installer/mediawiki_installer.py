@@ -227,16 +227,25 @@ def _checkout(command, name):
 
 
 def localsettings(target):
-	"""create a localSettings.php file, for target mediawiki instance based
-	on the LocalSettings.php.template file
+	"""Copy over our LocalSettings.php , and create InstallerUniqueSettings.php
+	(which contains settings unique to this instance)
 	LocalSettings.php is the main configuration file for mediawiki."""
 
-	template=settings.installerdir+"/LocalSettings.php.template"
-	localsettings=settings.instancesdir+"/"+target+"/LocalSettings.php"
-	replacements={'<<TARGET>>':target,"<<BASE_SCRIPTPATH>>":settings.base_scriptpath}
-	replace_generic(replacements,template,localsettings)	
-	subdir=settings.instancesdir+"/"+target+"/LocalSettings"
-	os.mkdir(subdir)
+	here=settings.installerdir+"/LocalSettings.php"
+	instancedir=settings.instancesdir+"/"+target
+	there=instancedir+"/LocalSettings.php"
+	shutil.copy2(here,there)
+	
+	uniquesettings=settings.instancesdir+"/"+target+"/InstallerUniqueSettings.php"
+	unique=file(uniquesettings,"w")
+	unique.write('<?php\n')
+	unique.write('$wgSitename = "Wikiation_'+target+'";\n')
+	unique.write('$wgScriptPath = "'+settings.base_scriptpath+"/"+target+'";\n')
+	unique.write('$wgDBname = "'+target+'";\n')
+	unique.write('?>\n')
+	
+	unique.close()
+	
 
 def logo(target):
 	"""copy a nice logo"""

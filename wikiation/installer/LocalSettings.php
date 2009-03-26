@@ -34,11 +34,10 @@ if ( $wgCommandLineMode ) {
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename         = "Wikiation_<<TARGET>>";
+require_once ("$IP/InstallerUniqueSettings.php");
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
-$wgScriptPath       = "<<BASE_SCRIPTPATH>><<TARGET>>";
 $wgScriptExtension  = ".php";
 
 
@@ -63,7 +62,6 @@ $wgEmailAuthentication = true;
 
 $wgDBtype           = "mysql";
 $wgDBserver         = "localhost";
-$wgDBname           = '<<TARGET>>';
 $wgDBuser           = "root";
 $wgDBpassword       = "";
 
