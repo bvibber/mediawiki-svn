@@ -42,7 +42,7 @@ class SimpleSecurity {
 			$wgRestrictionTypes[] = $k;
 			$wgMessageCache->addMessages( array( "restriction-$k" => $v ) );
 		}
-		
+
 		# Ensure the new groups show up in rights management
 		# - note that 1.13 does a strange check in the ProtectionForm::buildSelector
 		#   $wgUser->isAllowed($key) where $key is an item from $wgRestrictionLevels
@@ -84,7 +84,7 @@ class SimpleSecurity {
 		);
 		return true;
 	}
-	
+
 	/**
 	 * Render security info if any restrictions on this title
 	 */
@@ -118,7 +118,7 @@ class SimpleSecurity {
 					info.style.display = info.style.display ? '' : 'none';
 				}</script>"
 			);
- 
+
 			# Add info-toggle before title and hidden info after title
 			$link = "<a href='javascript:'>" . wfMsg( 'security-info-toggle' ) . "</a>";
 			$link = "<span onClick='toggleSecurityInfo()'>$link</span>";
@@ -154,7 +154,7 @@ class SimpleSecurity {
 		$ns = $title->getNamespace();
 		if ( $ns == NS_SPECIAL ) {
 			list( $name, $par ) = explode( '/', $title->getDBkey() . '/', 2 );
-			if ( $par ) $title = Title::newFromText( $par);
+			if ( $par ) $title = Title::newFromText( $par );
 			elseif ( $wgRequest->getVal( 'target' ) )   $title = Title::newFromText( $wgRequest->getVal( 'target' ) );
 			elseif ( $wgRequest->getVal( 'oldtitle' ) ) $title = Title::newFromText( $wgRequest->getVal( 'oldtitle' ) );
 		}
@@ -187,9 +187,9 @@ class SimpleSecurity {
 		# If title is not readable by user, remove the read and move rights
 		if ( !in_array( 'sysop', $groups ) && !$this->userCanReadTitle( $user, $title, $error ) ) {
 			foreach ( $rights as $i => $right ) if ( $right === 'read' || $right === 'move' ) unset( $rights[$i] );
-			#$this->info['CR'] = array('read', '', '');
+			# $this->info['CR'] = array('read', '', '');
 		}
-				
+
 		return true;
 	}
 
@@ -233,8 +233,8 @@ class SimpleSecurity {
 		if ( !is_object( $title ) || in_array( 'sysop', $groups ) ) return true;
 
 		# Retrieve result from cache if exists (for re-use within current request)
-		$key = $user->getID().'\x07'.$title->getPrefixedText();
-		if (array_key_exists($key, $this->cache)) {
+		$key = $user->getID() . '\x07' . $title->getPrefixedText();
+		if ( array_key_exists( $key, $this->cache ) ) {
 			$error = $this->cache[$key][1];
 			return $this->cache[$key][0];
 		}
@@ -279,8 +279,8 @@ class SimpleSecurity {
 			$deny = false;
 
 			# Validate rule against the title based on its type
- 			switch ($type) {
- 				
+ 			switch ( $type ) {
+
 				case "Category":
 
 					# If processing first category rule, build a list of cats this article belongs to
@@ -295,7 +295,7 @@ class SimpleSecurity {
 
 					$deny = in_array( $data, $cats );
 					break;
-					
+
 				case "Namespace":
 					$deny = $data == $title->getNsText();
 					break;
@@ -310,7 +310,7 @@ class SimpleSecurity {
 					if ( $updateInfo ) $this->info['LS'][] = array( $action, $reqgroups, wfMsg( 'security-desc-LS', strtolower( $type ), $data ) );
 					if ( !in_array( 'sysop', $groups ) && !array_intersect( $groups, $reqgroups ) ) {
 						foreach ( $rights as $i => $right ) if ( $right === $action ) unset( $rights[$i] );
-						#$this->info['CR'][] = array($action, $reqgroups, wfMsg('security-desc-CR'));
+						# $this->info['CR'][] = array($action, $reqgroups, wfMsg('security-desc-CR'));
 					}
 				}
 			}
