@@ -16,7 +16,7 @@
  * @subpackage Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
  * @copyright © 2007 Aran Dunkley
- * @licence GNU General Public Licence 2.0 or later
+ * @license GNU General Public Licence 2.0 or later
  */
 
 if ( !defined( 'MEDIAWIKI' ) )                     die( 'Not an entry point.' );
@@ -30,6 +30,7 @@ $wgExtensionMessagesFiles['SimpleSecurity'] = $dir . 'SimpleSecurity.i18n.php';
 $wgAutoloadClasses['SimpleSecurity'] = $dir . 'SimpleSecurity_body.php';
 
 # Global security settings
+# TODO: Localize magic words
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
 $wgSecurityMagicGroup           = "ifgroup";                    # the name for doing a group-based conditional
 $wgSecurityLogActions           = array( 'edit', 'download' );  # Actions that should be logged
@@ -56,7 +57,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author'      => "[http://www.organicdesign.co.nz/User:Nad User:Nad]",
 	'description' => "Extends the MediaWiki article protection to allow restricting viewing of article content",
 	'url'         => "http://www.mediawiki.org/wiki/Extension:SimpleSecurity",
-	'version'     => SIMPLESECURITY_VERSION
+	'version'     => SIMPLESECURITY_VERSION,
+	'descmsg'     => 'security-desc',
+
 );
 
 # SearchEngine is based on $wgDBtype so must be set before it gets changed to DatabaseSimpleSecurity
