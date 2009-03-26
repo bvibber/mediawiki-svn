@@ -27,5 +27,5 @@ $messages['en'] = array(
 	'security-desc-CR'         => "''(this restriction is '''in effect now''')''",
 	'security-infosysops'      => "No restrictions are in effect because you are a member of the '''sysop''' group",
 	'security-manygroups'      => 'groups $1 and $2',
-	'protect-unchain'          => 'Modify actions individually', # message key conflicts with core. Do not translate or duplicate this message to other languages
+	# 'protect-unchain'          => 'Modify actions individually', # message key conflicts with core. Do not translate or duplicate this message to other languages
 );
