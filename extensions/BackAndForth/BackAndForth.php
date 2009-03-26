@@ -13,7 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgAutoloadClasses['BackAndForth'] = dirname( __FILE__ ) . '/BackAndForth.class.php';
-$wgExtensionFunctions[] = 'efBackAndForth';
+$wgHooks['ArticleViewHeader'][] = 'BackAndForth::viewHook';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Back and Forth',
 	'author' => 'Rob Church',
@@ -23,14 +23,3 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $wgExtensionMessagesFiles['BackAndForth'] = dirname(__FILE__) . '/BackAndForth.i18n.php';
-
-/**
- * Extension setup function
- */
-function efBackAndForth() {
-	global $wgHooks;
-
-	wfLoadExtensionMessages( 'BackAndForth' );
-
-	$wgHooks['ArticleViewHeader'][] = 'BackAndForth::viewHook';
-}
