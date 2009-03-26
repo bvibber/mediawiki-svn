@@ -525,9 +525,14 @@ echo $ns?>meta> </<?php echo $ns?>head>
 }
 class mvRSSFeed extends ChannelFeed {
 	function outHeader( $set_content_type=true ) {		
-		global $wgStyleVersion, $wgStylePath;
+		global $wgStyleVersion, $wgStylePath, $wgOut;		
+		
 		if( $set_content_type )
 			$this->httpHeaders();
+			
+		//force the cache headers for 1 hour cache of rss and search results 
+		header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', ( time() + 60*60 ) ) . ' GMT' );
+		header( "Cache-Control: max-age=" . (60*60) . " );" ); 
 		
 		echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 		echo '<?xml-stylesheet type="text/css" href="' .
