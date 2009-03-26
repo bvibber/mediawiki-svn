@@ -259,7 +259,7 @@ class SimpleSecurity {
 	private function groupText( &$groups ) {
 		$gl = $groups;
 		$gt = array_pop( $gl );
-		// FIXME: use $wgLang->commaList()
+		// FIXME: use $wgLang->commafy()
 		// FIXME: hard coded bold. Not all scripts use this. Needs i18n support.
 		if ( count( $groups ) > 1 ) $gt = wfMsg( 'security-manygroups', "<b>" . join( "</b>, <b>", $gl ) . "</b>", "<b>$gt</b>" );
 		else $gt = "the <b>$gt</b> group"; // FIXME: hard coded text. Needs i18n support.
