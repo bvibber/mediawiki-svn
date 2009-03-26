@@ -27,7 +27,40 @@ class WikiMap {
 		} else {
 			return null;
 		}
-
+	}
+	
+	// Convenience functions from GlobalBlocking
+	static function getWikiName( $wiki_id ) {
+		// We can give more info than just the wiki id!
+		$wiki = WikiMap::getWiki( $wiki_id );
+			
+		if ($wiki) {
+			return $wiki->getDisplayName();
+		}
+		return $wiki_id;
+	}
+	
+	static function foreignUserLink( $wiki_id, $user ) {
+		return self::makeForeignLink( $wiki_id, "User:$user" );
+	}
+	
+	static function makeForeignLink( $wiki_id, $page, $text=null ) {
+		global $wgUser;
+		$sk = $wgUser->getSkin();
+		
+		if (!$text)
+			$text=$page;
+		
+		return $sk->makeExternalLink( self::getForeignURL( $wiki_id, $page ) , $text );
+	}
+	
+	static function getForeignURL( $wiki_id, $page ) {
+		$wiki = WikiMap::getWiki( $wiki_id );
+		
+		if ($wiki)
+			return $wiki->getUrl( $page );
+			
+		return false;
 	}
 }
 
