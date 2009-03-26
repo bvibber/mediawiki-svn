@@ -2272,8 +2272,10 @@ $messages['hak'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'code' => 'בדיקת קוד',
+	'code' => 'בדיקת הקוד',
+	'code-rev-title' => 'גרסה $1 - בדיקת הקוד',
 	'code-comments' => 'הערות',
+	'code-references' => 'גרסאות המשך',
 	'code-change-status' => "שינה את ה'''מצב''' של גרסה $1",
 	'code-change-tags' => "שינה את ה'''תגיות''' של גרסה $1",
 	'code-change-removed' => 'הוסרו:',
