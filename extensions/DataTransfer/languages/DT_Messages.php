@@ -309,15 +309,16 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'dt-desc' => 'Autorise l’import et l’export de données structurées contenues dans des appels de modèles',
 	'viewxml' => 'Voir XML',
-	'dt_viewxml_docu' => 'Veuillez sélectionner parmi les catégories et les espaces de nommages afin de visionner en format XML.',
+	'dt_viewxml_docu' => 'Veuillez sélectionner parmi les catégories et les espaces de noms suivants afin de visionner au format XML.',
 	'dt_viewxml_categories' => 'Catégories',
-	'dt_viewxml_namespaces' => 'Espaces de nommage',
+	'dt_viewxml_namespaces' => 'Espaces de noms',
 	'dt_viewxml_simplifiedformat' => 'Format simplifié',
-	'dt_xml_namespace' => 'Espace de nommage',
+	'dt_xml_namespace' => 'Espace de noms',
 	'dt_xml_page' => 'Page',
 	'dt_xml_field' => 'Champ',
 	'dt_xml_name' => 'Nom',
@@ -954,7 +955,9 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'dt-desc' => "Permette de 'mbortà e esportà date strutturate ca stonne jndr'à le chiamate a le template",
 	'viewxml' => "Vide l'XML",
+	'dt_viewxml_docu' => "Pe piacere scacchie ìmbrà le categorije seguende e le namespace seguende pe vedè 'u formate XML.",
 	'dt_viewxml_categories' => 'Categorije',
 	'dt_viewxml_namespaces' => 'Namespace',
 	'dt_viewxml_simplifiedformat' => 'Formate semblifichete',

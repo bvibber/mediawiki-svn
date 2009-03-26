@@ -190,6 +190,15 @@ $messages['br'] = array(
 	'formsave' => 'Enrollañ',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'form' => 'Obrazac',
+	'formsave' => 'Sačuvaj',
+	'formsaveerror' => 'Greška pri spremanju obrasca',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung

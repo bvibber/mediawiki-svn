@@ -77,22 +77,6 @@ Shown in [[Special:Version]].',
 	'webstore_404' => '{{Identical|File not found}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'webstore_path_invalid' => 'Failannimi oli vär.',
-	'webstore_dest_open' => 'Ei voi avaita "$1"-failad.',
-	'webstore_404' => 'Fail ei ole löutud.',
-	'webstore_php_warning' => 'PHP Varatuz: $1',
-	'webstore_metadata_not_found' => 'Fail ei ole löutud: $1',
-	'webstore_postfile_not_found' => 'Ei voi löuta failad oigetes.',
-	'webstore_no_response' => 'Server ei anda vastust.',
-	'webstore_backend_error' => 'Serveran-varaaitan petuz:
-
-$1',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin
@@ -2342,6 +2326,22 @@ $messages['tr'] = array(
 	'webstore_path_invalid' => 'Dosya adı geçersiz.',
 	'webstore_404' => 'Dosya bulunamadı.',
 	'webstore_metadata_not_found' => '$1 dosyası bulunamadı',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'webstore_path_invalid' => 'Failannimi oli vär.',
+	'webstore_dest_open' => 'Ei voi avaita "$1"-failad.',
+	'webstore_404' => 'Fail ei ole löutud.',
+	'webstore_php_warning' => 'PHP Varatuz: $1',
+	'webstore_metadata_not_found' => 'Fail ei ole löutud: $1',
+	'webstore_postfile_not_found' => 'Ei voi löuta failad oigetes.',
+	'webstore_no_response' => 'Server ei anda vastust.',
+	'webstore_backend_error' => 'Serveran-varaaitan petuz:
+
+$1',
 );
 
 /** Vietnamese (Tiếng Việt)

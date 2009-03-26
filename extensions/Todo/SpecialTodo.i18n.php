@@ -81,13 +81,6 @@ $messages['niu'] = array(
 	'todo-list-cancel' => 'Tiaki',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'todo-form-details' => 'Detalid:',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -1488,6 +1481,13 @@ $messages['tr'] = array(
 	'todo-list-cancel' => 'İptal',
 	'todo-new-item' => 'Yeni öğe',
 	'todo-form-details' => 'Detaylar:',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'todo-form-details' => 'Detalid:',
 );
 
 /** Vietnamese (Tiếng Việt)

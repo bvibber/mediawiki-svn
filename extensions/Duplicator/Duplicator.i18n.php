@@ -47,14 +47,6 @@ $messages['qqq'] = array(
 	'duplicator-source' => '{{Identical|Source}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'duplicator-source' => 'Purde:',
-	'duplicator-dest' => 'Met (kuna):',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -218,7 +210,7 @@ Desila se nepoznata greška.',
 	'duplicator-source-notexist' => '[[$1]] ne postoji. Molimo navedite naslov stranice koji postoji.',
 	'duplicator-dest-invalid' => 'Molimo navedite valjan naslov odredišta.',
 	'duplicator-dest-exists' => '[[$1]] već postoji. Molimo navedite odredišni naslov koji još ne postoji.',
-	'duplicator-toomanyrevisions' => '[[$1]] ima previše (%2) revizija i ne može se kopirati.
+	'duplicator-toomanyrevisions' => '[[$1]] ima previše ($2) revizija i ne može se kopirati.
 Trenutno ograničenje je $3.',
 );
 
@@ -1390,6 +1382,14 @@ $messages['tr'] = array(
 	'duplicator-options' => 'Seçenekler',
 	'duplicator-source' => 'Kaynak:',
 	'duplicator-dest' => 'Hedef:',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'duplicator-source' => 'Purde:',
+	'duplicator-dest' => 'Met (kuna):',
 );
 
 /** Vietnamese (Tiếng Việt)

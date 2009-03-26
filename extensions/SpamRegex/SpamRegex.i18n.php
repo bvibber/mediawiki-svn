@@ -233,9 +233,14 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'spamregex-currently-blocked' => "'''Trenutno blokirane fraze:'''",
 	'spamregex-unblock-success' => 'Deblokada uspješna',
 	'spamregex-block-success' => 'Blokada uspješna',
+	'spamregex-block-message' => "Fraza '''$1''' je blokirana.",
 	'spamregex-already-blocked' => '"$1" je već blokiran',
+	'spamregex-phrase-block' => 'Fraza za blokadu:',
+	'spamregex-text' => '(Tekst)',
+	'spamregex-summary-log' => '(Sažetak)',
 );
 
 /** Catalan (Català)

@@ -41,13 +41,6 @@ $messages['qqq'] = array(
 	'invitations-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'invitations-inviteform-submit' => 'Kucta',
-);
-
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -1130,6 +1123,13 @@ Para mapamahalaan ang mga paanyaya para sa isang partikular na kasangkapang-kata
 	'invitations-error-baduser' => 'Tila hindi pa umiiral ang tinukoy mong tagagamit.',
 	'invitations-error-alreadyinvited' => 'Ang tinukoy mong tagagamit ay nakakapunta na sa ganitong kasangkapang-katangian!',
 	'invitations-invite-success' => 'Matagumpay mong naanyayahan si $1 upang magamit ang kasangkapang-katangiang ito!',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'invitations-inviteform-submit' => 'Kucta',
 );
 
 /** Vietnamese (Tiếng Việt)

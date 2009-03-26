@@ -73,6 +73,16 @@ $messages['ast'] = array(
 	'lua_overflow_time' => "Algamáu'l máximu tiempu d'execución",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'lua_error' => 'Памылка ў радку $1',
+	'lua_extension_notfound' => 'Пашырэньне Lua не сканфігураванае',
+	'lua_interp_notfound' => 'Інтэрпрэтатар Lua ня знойдзены',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

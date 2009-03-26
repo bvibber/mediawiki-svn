@@ -282,7 +282,9 @@ $4',
  */
 $messages['ar'] = array(
 	'code' => 'مراجعة الكود',
+	'code-rev-title' => 'ن$1 - مراجعة الكود',
 	'code-comments' => 'ملاحظات المراجعة',
+	'code-references' => 'مراجعات ملحقة',
 	'code-change-status' => "غير '''حالة''' ن$1",
 	'code-change-tags' => "غير '''الوسوم''' لن$1",
 	'code-change-removed' => 'أزال:',
@@ -544,7 +546,9 @@ $messages['bcc'] = array(
  */
 $messages['be-tarask'] = array(
 	'code' => 'Рэцэнзаваньне коду',
+	'code-rev-title' => 'r$1 - Рэцэнзаваньне коду',
 	'code-comments' => 'Камэнтары',
+	'code-references' => 'Наступныя вэрсіі',
 	'code-change-status' => "зьменены '''статус''' вэрсіі r$1",
 	'code-change-tags' => "зьмененыя '''тэгі''' вэрсіі r$1",
 	'code-change-removed' => 'выдалена:',
@@ -716,7 +720,9 @@ $4',
  */
 $messages['bs'] = array(
 	'code' => 'Provjera koda',
+	'code-rev-title' => 'r$1 - Pregled koda',
 	'code-comments' => 'Komentari',
+	'code-references' => 'Naknadne revizije',
 	'code-change-status' => "promijenjeno '''stanje''' r$1",
 	'code-change-tags' => "promijenjeni ''tagovi'' za r$1",
 	'code-change-removed' => 'uklonjeno:',
@@ -966,7 +972,9 @@ $4',
  */
 $messages['de'] = array(
 	'code' => 'Codeprüfung',
+	'code-rev-title' => 'r$1 – Codeprüfung',
 	'code-comments' => 'Kommentare',
+	'code-references' => 'Nachfolgende Revisionen',
 	'code-change-status' => "änderte den '''Status''' von Revision $1",
 	'code-change-tags' => "änderte die '''Tags''' für Revision $1",
 	'code-change-removed' => 'entfernt:',
@@ -1076,7 +1084,9 @@ $4',
  */
 $messages['dsb'] = array(
 	'code' => 'Kodowa kontrola',
+	'code-rev-title' => 'r$1 - Pśeglědanje koda',
 	'code-comments' => 'Komentary',
+	'code-references' => 'Naslědne wersije',
 	'code-change-status' => "jo '''status''' wersije r$1 změnił",
 	'code-change-tags' => "jo '''toflicki''' za wersiju r$1 změnił",
 	'code-change-removed' => 'wótpórany:',
@@ -1812,6 +1822,7 @@ $4',
 /** French (Français)
  * @author Cedric31
  * @author Crochet.david
+ * @author Dereckson
  * @author Grondin
  * @author IAlex
  * @author Verdy p
@@ -1819,7 +1830,9 @@ $4',
  */
 $messages['fr'] = array(
 	'code' => 'Révision du code',
+	'code-rev-title' => 'r$1 - Révision du code',
 	'code-comments' => 'Commentaires',
+	'code-references' => 'Références vers les révisions',
 	'code-change-status' => "a modifié l’'''état''' de r$1",
 	'code-change-tags' => "a modifié les '''balises''' de r$1",
 	'code-change-removed' => 'retiré :',
@@ -1910,7 +1923,7 @@ $4',
 	'repoadmin-new-button' => 'Créer',
 	'repoadmin-edit-legend' => 'Modification du dépôt « $1 »',
 	'repoadmin-edit-path' => 'Chemin du dépôt :',
-	'repoadmin-edit-bug' => 'Chemin de Bugzilla :',
+	'repoadmin-edit-bug' => 'Chemin vers Bugzilla :',
 	'repoadmin-edit-view' => 'Chemin de ViewVC :',
 	'repoadmin-edit-button' => 'Valider',
 	'repoadmin-edit-sucess' => 'Le dépôt « [[Special:Code/$1|$1]] » a été modifié avec succès.',
@@ -1945,7 +1958,9 @@ $4',
  */
 $messages['gl'] = array(
 	'code' => 'Revisión do código',
+	'code-rev-title' => 'r$1 - Revisión do código',
 	'code-comments' => 'Notas da revisión',
+	'code-references' => 'Seguir as revisións',
 	'code-change-status' => "cambiou o '''estado''' da r$1",
 	'code-change-tags' => "cambiou as '''etiquetas''' da r$1",
 	'code-change-removed' => 'eliminado:',
@@ -2057,8 +2072,8 @@ $4',
 $messages['grc'] = array(
 	'code' => 'Ἐπιθεωρεῖν τὸν Κώδικα',
 	'code-comments' => 'Σχόλια',
-	'code-change-status' => "μεταβεβλημένον τὸ '''καθεστὼς''' τῆσδε τῆς ἀναθεωρήσεως",
-	'code-change-tags' => "μεταβλητέα εἰσὶ τὰ '''πρότυπα''' διὰ τήνδε τὴν ἀναθεώρησιν",
+	'code-change-status' => "μεταβεβλημένον τὸ '''καθεστὼς''' τῆς ἀναθεωρήσεως r$1",
+	'code-change-tags' => "μεταβλητέα εἰσὶ τὰ '''πρότυπα''' διὰ τὴν ἀναθεώρησιν r$1",
 	'code-change-removed' => 'προστεθειμένη:',
 	'code-change-added' => 'ἀφῃρημένη:',
 	'code-prop-changes' => 'Καθεστὼς & κατάλογος προσαρτημάτων',
@@ -2155,7 +2170,9 @@ $4',
  */
 $messages['gsw'] = array(
 	'code' => 'Codepriefig',
+	'code-rev-title' => 'r$1 – Codepriefig',
 	'code-comments' => 'Kommentar',
+	'code-references' => 'Negschti Versione',
 	'code-change-status' => "het dr '''Status''' vu r$1 gänderet",
 	'code-change-tags' => "het d '''Tag''' vu r$1 gänderet",
 	'code-change-removed' => 'usegnuh:',
@@ -2505,7 +2522,9 @@ $4',
  */
 $messages['hsb'] = array(
 	'code' => 'Kodowa kontrola',
+	'code-rev-title' => 'r$2 - Přepruwowanje koda',
 	'code-comments' => 'Komentary',
+	'code-references' => 'Naslědne wersije',
 	'code-change-status' => "změni '''status''' wersije r$1",
 	'code-change-tags' => "změni '''taflički''' za wersiju r$1",
 	'code-change-removed' => 'wotstronjeny:',
@@ -2708,7 +2727,9 @@ $4',
  */
 $messages['ia'] = array(
 	'code' => 'Revision de codice',
+	'code-rev-title' => 'v$1 - Revision de codice',
 	'code-comments' => 'Commentos',
+	'code-references' => 'Versiones de sequimento',
 	'code-change-status' => "cambiava le '''stato''' de v$1",
 	'code-change-tags' => "cambiava le '''etiquettas''' de v$1",
 	'code-change-removed' => 'removeva:',
@@ -2942,7 +2963,9 @@ $4',
  */
 $messages['ja'] = array(
 	'code' => 'コードレビュー',
+	'code-rev-title' => '$1版 - コードレビュー',
 	'code-comments' => 'コメント',
+	'code-references' => '追補版',
 	'code-change-status' => "r$1 の'''ステータス'''を変更しました",
 	'code-change-tags' => "r$1 の'''タグ'''を変更しました",
 	'code-change-removed' => '除去:',
@@ -3202,6 +3225,7 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Yknok29
  */
 $messages['ko'] = array(
 	'code' => '코드 검토',
@@ -3220,6 +3244,8 @@ $messages['ko'] = array(
 	'code-tags' => '태그',
 	'code-authors-text' => '다음은 최근에 코드를 적용한 저장소의 저자 목록입니다.',
 	'code-author-haslink' => '이 만든이는 위키 사용자 $1로 연결되어 있습니다.',
+	'code-author-orphan' => '이 저자는 위키 계정과 연결되어 있지 않습니다',
+	'code-author-alterlink' => '이 저자와 연결된 위키 사용자를 바꾸세요:',
 	'code-author-name' => '사용자 이름을 입력하십시오:',
 	'code-author-success' => '제작자 $1은(는) 위키 사용자 $2(으)로 연결되었습니다.',
 	'code-author-link' => '링크하시겠습니까?',
@@ -3243,6 +3269,7 @@ $messages['ko'] = array(
 	'code-rev-modified-r' => '대체됨',
 	'code-rev-modified-d' => '삭제됨',
 	'code-rev-modified-m' => '수정됨',
+	'code-rev-imagediff' => '이미지가 바뀝니다',
 	'code-rev-status' => '상태:',
 	'code-rev-status-set' => '상태 변경',
 	'code-rev-tags' => '태그:',
@@ -3266,6 +3293,7 @@ $messages['ko'] = array(
 	'code-batch-status' => '상태 변경:',
 	'code-batch-tags' => '태그 변경:',
 	'codereview-batch-title' => '모든 선택된 판을 수정',
+	'codereview-batch-submit' => '제출',
 	'code-release-startrev' => '시작 버전:',
 	'code-release-endrev' => '마지막 버전:',
 	'codereview-subtitle' => '$1',
@@ -3302,7 +3330,9 @@ $4',
  */
 $messages['ksh'] = array(
 	'code' => 'Projramme beärbeide',
+	'code-rev-title' => 'Version $1 - Programm nohloore',
 	'code-comments' => 'Kommäntaare',
+	'code-references' => 'De Opfolljer-Versione',
 	'code-change-status' => "hät der '''Shtattus''' vun de Version $1 verändert",
 	'code-change-tags' => "hät de '''Makeerunge''' vun dä Version $1 verändert",
 	'code-change-removed' => 'eruß jenomme:',
@@ -3522,7 +3552,9 @@ $messages['lfn'] = array(
  */
 $messages['li'] = array(
 	'code' => 'Kodekontraol',
+	'code-rev-title' => 'r$1 - Koeajehèrzuuch',
 	'code-comments' => 'Ópmèrkinger bie beoeardeiling',
+	'code-references' => 'Ópvolghèrzuuch',
 	'code-change-status' => "haet de '''staat''' veur r$1 angerdj",
 	'code-change-tags' => "haet de '''labels''' veur r$1 angerdj",
 	'code-change-removed' => 'gewösj:',
@@ -3808,7 +3840,9 @@ $messages['nah'] = array(
  */
 $messages['nds'] = array(
 	'code' => 'Koodkuntrull',
+	'code-rev-title' => 'r$1 - Kood-Kuntrull',
 	'code-comments' => 'Kommentarn',
+	'code-references' => 'Nakamen Versionen',
 	'code-change-status' => "hett den '''Status''' för r$1 ännert",
 	'code-change-tags' => "hett de '''Tags''' för r$1 ännert",
 	'code-change-removed' => 'rutnahmen:',
@@ -3919,7 +3953,9 @@ $4',
  */
 $messages['nl'] = array(
 	'code' => 'Codecontrole',
+	'code-rev-title' => 'r$1 - Programmacodecontrole',
 	'code-comments' => 'Opmerkingen bij beoordeling',
+	'code-references' => 'Versies met correcties',
 	'code-change-status' => "heeft de '''status''' voor versie r$1 gewijzigd",
 	'code-change-tags' => "heeft de '''labels''' voor versie r$1 gewijzigd",
 	'code-change-removed' => 'verwijderd:',
@@ -4373,7 +4409,9 @@ $messages['os'] = array(
  */
 $messages['pl'] = array(
 	'code' => 'Podgląd kodu',
+	'code-rev-title' => 'r$1 – Podgląd kodu',
 	'code-comments' => 'Komentarze',
+	'code-references' => 'Następne wersje',
 	'code-change-status' => "zmieniono '''status''' r$1",
 	'code-change-tags' => "zmieniono '''znaczniki''' r$1",
 	'code-change-removed' => 'usunięto:',
@@ -4804,7 +4842,9 @@ $4',
  */
 $messages['ru'] = array(
 	'code' => 'Проверка кода',
+	'code-rev-title' => 'r$1 — Проверка кода',
 	'code-comments' => 'Комментарии',
+	'code-references' => 'Последующие ревизии',
 	'code-change-status' => "изменил '''состояние''' r$1",
 	'code-change-tags' => "изменил '''метки''' для r$1",
 	'code-change-removed' => 'удалено:',
@@ -5119,7 +5159,9 @@ $4',
  */
 $messages['sk'] = array(
 	'code' => 'Kontrola kódu',
+	'code-rev-title' => 'r$1 - Kontrola kódu',
 	'code-comments' => 'Komentáre',
+	'code-references' => 'Sledovať revízie',
 	'code-change-status' => "zmenil '''stav''' r$1",
 	'code-change-tags' => "zmenil '''značky''' r$1",
 	'code-change-removed' => 'odstránené:',
@@ -5745,7 +5787,9 @@ $4',
  */
 $messages['tr'] = array(
 	'code' => 'Kod Gözden Geçirmesi',
+	'code-rev-title' => 'r$1 - Kod İnceleme',
 	'code-comments' => 'Yorumlar',
+	'code-references' => 'Revizyonları takip et',
 	'code-change-status' => "r$1'in '''durumunu''' değiştirdi",
 	'code-change-tags' => "r$1 için '''etiketleri''' değiştirdi",
 	'code-change-removed' => 'kaldırıldı:',
@@ -6075,7 +6119,9 @@ $4',
  */
 $messages['vi'] = array(
 	'code' => 'Duyệt mã',
+	'code-rev-title' => 'r$1 - Duyệt Mã',
 	'code-comments' => 'Ghi chú',
+	'code-references' => 'Các phiên bản ngay sau',
 	'code-change-status' => "đã đổi '''trạng thái''' của phiên bản r$1",
 	'code-change-tags' => "đã đổi các '''thẻ''' của phiên bản r$1",
 	'code-change-removed' => 'đã dời:',

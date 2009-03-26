@@ -636,6 +636,8 @@ Izgleda da APC ne radi.',
 	'viewapc-version-info' => 'Informacije o verziji',
 	'viewapc-version-changelog' => 'Zapisnik promjena',
 	'viewapc-version-ok' => 'Koristite posljednju verziju APC ($1)',
+	'viewapc-version-old' => 'Koristite stariju verziju APC-a ($1).
+Novija verzija $2 je dostupna na http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''Keš datoteke očišćen.'''''",
 	'viewapc-usercache-cleared' => "'''''Keš aplikacije očišćen.'''''",
 );
@@ -2733,6 +2735,7 @@ $messages['lb'] = array(
 	'viewapc-display-info' => 'Numm',
 	'viewapc-display-ttl' => 'Verfallsdatum',
 	'viewapc-display-type' => 'Typ',
+	'viewapc-display-type-file' => 'tëschegespäicherte Fichier',
 	'viewapc-display-num_hits' => 'Treffer',
 	'viewapc-display-mtime' => 'Geännert',
 	'viewapc-display-creation_time' => 'Gemaach',

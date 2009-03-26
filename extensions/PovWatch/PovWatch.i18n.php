@@ -960,11 +960,13 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'povwatch_pushed' => '[[$1]] 문서가 $2명의 사용자 주시문서 목록에 성공적으로 추가되었습니다.',
 	'povwatch_subscriber_list_intro' => '<strong>수신자 목록</strong>',
+	'povwatch_unknown_subpage' => '알려지지 않은 하위 페이지입니다.',
 	'povwatch_title' => '제목:',
 	'povwatch_no_subscribers' => '수신자가 없습니다.',
 	'povwatch_unsubscribe' => '수신 해제',
 	'povwatch_subscribe' => '수신',
 	'povwatch_added' => '덧붙이는',
+	'right-povwatch_user' => '다른 사용자의 주시문서 목록에 페이지를 추가해주세요',
 );
 
 /** Ripoarisch (Ripoarisch)

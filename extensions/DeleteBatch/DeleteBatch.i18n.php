@@ -65,20 +65,6 @@ $messages['gom-latn'] = array(
 	'deletebatch-success-subtitle' => '$1 khatir',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'deletebatch-caption' => 'Lehtpoliden nimikirjutez:',
-	'deletebatch-title' => 'Čuta uded lehtpoled',
-	'deletebatch-link-back' => 'Tagaze specialižele lehtpolele',
-	'deletebatch-as' => 'Radatada skript kut:',
-	'deletebatch-both-modes' => "Olgat hüväd, valikat lehtpol' vai lehtpoliden nimikirjutez.",
-	'deletebatch-or' => '<b>vai</b>',
-	'deletebatch-page' => 'Lehtpoled čutes:',
-	'deletebatch-reason' => 'Čudandan sü',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -172,6 +158,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'deletebatch-caption' => 'Spisak stranica:',
+	'deletebatch-link-back' => 'Nazad na posebnu stranicu',
 	'deletebatch-or' => '<b>ili</b>',
 	'deletebatch-page' => 'Stranice koje će biti obrisane:',
 	'deletebatch-reason' => 'Razlog brisanja',
@@ -1227,6 +1214,20 @@ $messages['uk'] = array(
 	'deletebatch-omitting-nonexistant' => 'Пропускання неіснуючої сторінки $1.',
 	'deletebatch-file-missing' => 'Не в змозі прочитати наданий файл',
 	'deletebatch-select-yourself' => 'ви',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'deletebatch-caption' => 'Lehtpoliden nimikirjutez:',
+	'deletebatch-title' => 'Čuta uded lehtpoled',
+	'deletebatch-link-back' => 'Tagaze specialižele lehtpolele',
+	'deletebatch-as' => 'Radatada skript kut:',
+	'deletebatch-both-modes' => "Olgat hüväd, valikat lehtpol' vai lehtpoliden nimikirjutez.",
+	'deletebatch-or' => '<b>vai</b>',
+	'deletebatch-page' => 'Lehtpoled čutes:',
+	'deletebatch-reason' => 'Čudandan sü',
 );
 
 /** Vietnamese (Tiếng Việt)

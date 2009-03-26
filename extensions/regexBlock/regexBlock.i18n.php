@@ -456,12 +456,12 @@ Du kannst auch ganze IP-Adressen sperren, so dass niemand der sich unter diesen 
 Achtung: Teile von IP-Adressen werden als Benutzernamen beim Sperren aufgefasst.
 Falls kein Sperrgrund angegeben ist, wird ein Standard-Begründung verwendet.''",
 	'regexblock-page-title-1' => 'Sperre Adressen anhand regulärer Ausdrücke',
-	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu Editieren, da von dieser IP-Adresse – von dir oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
-Wenn du denkst, dass es sich hierbei um einen Fehler handelt, $1',
-	'regexblock-reason-name' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem verhalten, verboten zu Editieren.
-Wenn du denkst, dass es sich hierbei um einen Fehler handelt, $1',
-	'regexblock-reason-regex' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem Verhalten eines Benutzers mit einem ähnliches Benutzernamen, verboten zu Editieren.
-Bitte melde dich mit einem anderen Benutzernamen an oder $1 über das Problem.',
+	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten, Seiten zu bearbeiten, da von dieser IP-Adresse – von dir oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
+Wenn du denkst, dass es sich hierbei um einen Fehler handelt, [[$1|nimm bitte Kontakt mit uns auf]].',
+	'regexblock-reason-name' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem verhalten, verboten, Seiten zu bearbeiten.
+Wenn du denkst, dass es sich hierbei um einen Fehler handelt, [[$1|nimm bitte Kontakt mit uns auf]].',
+	'regexblock-reason-regex' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem Verhalten eines Benutzers mit einem ähnliches Benutzernamen, verboten, Seiten zu bearbeiten.
+Bitte melde dich mit einem anderen Benutzernamen an oder [[$1|nimm Kontakt mit uns auf]].',
 	'regexblock-form-username' => 'IP-Adresse oder Benutzername:',
 	'regexblock-form-reason' => 'Grund:',
 	'regexblock-form-expiry' => 'Ablaufdatum:',
@@ -489,8 +489,8 @@ Vermutlich gibt es keinen solchen Benutzer.',
 	'regexblock-view-reason-default' => 'allgemeiner Grund',
 	'regexblock-view-block-infinite' => 'permanente Sperrung',
 	'regexblock-view-block-temporary' => 'läuft ab am',
-	'regexblock-view-block-expired' => 'ABGELAUFEN am',
-	'regexblock-view-block-by' => 'gesperrt von',
+	'regexblock-view-block-expired' => 'Abgelaufen am',
+	'regexblock-view-block-by' => 'gesperrt von:',
 	'regexblock-view-block-unblock' => 'entsperren',
 	'regexblock-view-stats' => 'Statistiken',
 	'regexblock-view-empty' => 'Die Liste der gesperrten Namen und Adressen ist leer.',
@@ -1323,15 +1323,32 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'regexblock-already-blocked' => '$1 es ald jesperrt.',
+	'regexblock-block-log' => "Dä Metmaacher met däm Name '''\$1''' odder de <code lang=\"en\">IP</code>-Address es jesperrt woode.",
+	'regexblock-block-success' => 'Jesperrt',
+	'regexblock-currently-blocked' => 'Addresse, di em Momang jesperrt sin:',
 	'regexblock-desc' => 'Määt et müjjelesch, Metmaacher  un IP-Addresse övver <i lang="en">regular expressions</i> ze sperre. Deit sperre, un hät en [[Special:Regexblock|Söndersigg]], öm de Sperre ze verwallde.',
+	'regexblock-expire-duration' => '1 Stund:1 hour,2 Stund:2 hours,3 Stund:3 hours,6 Stund:6 hours,12 Stund:12 hours,1 Dach:1 day,3 Däch:3 days,1 Woch:1 week,2 Woche:2 weeks,3 Woche:3 weeks,1 Mond:1 month,3 Mond:3 months,6 Mond:6 months,9 Mond:9 months,1 Johr:1 year,2 Johre:2 years,3 Johre:3 years,Iewich:infinite',
+	'regexblock-page-title' => 'Name Sperre övver <i lang="en">regular expressions</i>',
+	'regexblockstats' => 'Statistike övver et {{int:Regexblock-page-title}}',
+	'regexblock-help' => 'En hee däm Fommulaa kanns De en besptemmpte <code lang="en">IP</code>-Addreß odder enem MEtmaacher singe Name shperre un domet et Schriive em Wikki verbeede.
+Dat sullt mer bloß donn, öm Kappottmaacherei ze verhindere, un nur noh dä Räjelle, di mer doför han.
+\'\'Die Sigg hee määt et müjjelesch, Metmaacher ze shperre, die et (noch) nit jitt. Mer hann och leish Metmaacher met ähnlesche Name en einem Rötsch shperre. Zom Beishpell „Ens Versöke“ weet metjeshperrt, wam_mer „Ens Versöke 2“ shperre deiht, un esu wigger. Mer kann och janze <code lang="en">IP</code>-Addresse shperre, wat bedügg, dat keine, dä vun dä Addreß enlogge deiht, mieh Sigge ändere darf. Opjepaß: Hallve <code lang="en">IP</code>-Addresse will be treated by usernames wann et öm et Beshtemme vun Shperre jeiht. Wann keine Jrond för et Shperre aanjejovve es, weed ene Shtandatt-Tex jenumme.\'\'',
 	'regexblock-reason-ip' => 'Et es jraad verbodde, met hee dä IP-Addräß aam Wiki jet ze ändere.
 Dat litt dodraan, dat zoh vill Driß drövver jemaat wood.
 Dat moß ävver nit vun Dir jekumme sin, et kann vun Jedem jekumme sin,
 dä di Address och ens jehatt hät.
 Wann De meins, dat dat esu nit sinn sullt, dann donn $1.',
+	'regexblock-form-username' => 'De <code lang="en">IP</code>-Addreß odder enem Metmacher singe Name:',
 	'regexblock-form-reason' => 'Aanlass:',
+	'regexblock-form-account-block' => 'Donn et neu Aanmelde verbeede',
+	'regexblock-form-submit-empty' => 'Jiff enem Metmacher singe Name odder en <code lang="en">IP</code>-Addreß för zem Sperre aan.',
+	'regexblock-unblock-log' => "Dä Metmacher odder de <code lang=\"en\">IP</code>-Addreß '''„\$1“''' es widder frei jejovve.",
 	'regexblock-view-all' => 'All',
 	'regexblock-view-go' => 'Loß Jonn!',
+	'regexblock-view-match' => '(jenou jetroffe)',
+	'regexblock-view-regex' => '(<i lang="en">regular expression</i> jetroffe)',
+	'regexblock-view-block-expired' => 'Ußjeloufe',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -2194,7 +2194,7 @@ $1 pour les données cryptées.</p>',
 Les utilisateurs bloqués ne peuvent pas voter.',
 	'boardvote_bot' => "Désolé, vous avez le statut de ''Bot'' sur le wiki où vous êtes enregistré{{GENDER:||e|(e)}}.
 Les comptes de ''Bot'' ne sont pas autorisés à voter.",
-	'boardvote_welcome' => "Bienvenue '''$1'''!",
+	'boardvote_welcome' => "Bienvenue '''$1''' !",
 	'go_to_board_vote' => 'Élection 2008 au conseil d’administration de la Wikimedia Foundation',
 	'boardvote_redirecting' => 'Pour plus de transparence et de sécurité, le vote se déroule sur un serveur externe et indépendant.
 

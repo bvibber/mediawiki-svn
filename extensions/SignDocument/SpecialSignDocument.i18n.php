@@ -552,7 +552,12 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'sign-selectdoc' => 'Dokument:',
 	'sign-realname' => 'Ime:',
+	'sign-city' => 'Grad:',
+	'sign-bday' => 'Starost:',
+	'sign-email' => 'E-mail adresa:',
+	'sig-success' => 'Uspješno ste potpisali dokument.',
 	'sign-viewfield-realname' => 'Ime',
 	'sign-viewfield-ip' => 'IP adresa',
 	'sign-viewfield-options' => 'Opcije',

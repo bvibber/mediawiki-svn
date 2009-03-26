@@ -32,17 +32,6 @@ $messages['qqq'] = array(
 	'sitematrix-sitetotal' => '{{Identical|Total}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Triple-ADHD-AS
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'sitematrix-language' => 'Kel’',
-	'sitematrix-sitetotal' => 'Kaiked',
-	'sitematrix-private' => 'privatine',
-	'sitematrix-fishbowl' => 'redaktiruind om kaidetud',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -633,7 +622,7 @@ $messages['gv'] = array(
 	'sitematrix' => 'Rolley wikighyn Wikimedia',
 	'sitematrix-summary' => 'Ta rolley dagh ooilley wiki Wikimedia er y duillag er lheh shoh',
 	'sitematrix-language' => 'Çhengey',
-	'sitematrix-project' => 'Ennym y halee, kiangley eddyrhalee as kiangley eddyrwiki',
+	'sitematrix-project' => 'Ennym y çhalee, kiangley eddyrhalee as kiangley eddyrwiki',
 	'sitematrix-others' => 'Shaleeghyn elley Wikimedia',
 	'sitematrix-total' => "'''Coontey yn clane: $1'''",
 	'sitematrix-sitetotal' => 'Yn clane',
@@ -1662,6 +1651,17 @@ $messages['vec'] = array(
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privato',
 	'sitematrix-fishbowl' => 'modifiche limità',
+);
+
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'sitematrix-language' => 'Kel’',
+	'sitematrix-sitetotal' => 'Kaiked',
+	'sitematrix-private' => 'privatine',
+	'sitematrix-fishbowl' => 'redaktiruind om kaidetud',
 );
 
 /** Vietnamese (Tiếng Việt)

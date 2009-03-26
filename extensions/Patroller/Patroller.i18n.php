@@ -218,6 +218,13 @@ $messages['bs'] = array(
 	'patrol-revert-reason' => 'Razlog:',
 	'patrol-skip' => 'Preskoči',
 	'patrol-reverting' => 'Vraćanje: $1',
+	'patrol-nonefound' => 'Nije mogla biti nađena odgovarajuća izmjena za patroliranje.',
+	'patrol-endorsed-ok' => 'Izmjena je označena kao patrolirana.',
+	'patrol-endorsed-failed' => 'Izmjena nije mogla biti označena kao patrolirana.',
+	'patrol-reverted-failed' => 'Izmjena nije mogla biti vraćena.',
+	'patrol-reasons' => '* Jednostavni vandalizam
+* Početnička proba
+* Vidi stranicu za razgovor',
 );
 
 /** Danish (Dansk)

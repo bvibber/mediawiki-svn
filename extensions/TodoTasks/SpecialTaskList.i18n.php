@@ -53,14 +53,6 @@ $messages['rtm'] = array(
 	'tasklistincorrectuser' => 'Seseva',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'tasklistemail' => 'Kalliž %s',
-	'tasklistprojdisp' => 'Ozutada',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -186,7 +178,9 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'tasklist' => 'Spisak zadataka',
+	'tasklist-parser-desc' => 'Dodaje parsersku funkciju <nowiki>{{#todo:}}</nowiki> za dodjelu zadataka',
 	'tasklistbyproject' => 'Spisak zadataka po projektima',
+	'tasklistunspecuser' => 'Neodređen korisnik',
 	'tasklistincorrectuser' => 'Netačno korisničko ime',
 	'tasklistemail' => 'Poštovani %s',
 	'tasklistmytasks' => 'Moji zadaci',
@@ -1180,6 +1174,14 @@ $messages['tr'] = array(
 	'tasklistmytasks' => 'Görevlerim',
 	'tasklistchooseproj' => 'Proje seçin:',
 	'tasklistprojdisp' => 'Gösteri',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'tasklistemail' => 'Kalliž %s',
+	'tasklistprojdisp' => 'Ozutada',
 );
 
 /** Volapük (Volapük)

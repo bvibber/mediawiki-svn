@@ -312,6 +312,36 @@ $wgCustomToolbarMessages['br'] = array(
 	'ct_user_sample' => 'Anv implijer',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$wgCustomToolbarMessages['bs'] = array(
+	'ct_bold_sample' => 'Podebljan tekst',
+	'ct_bold_tip_ins' => 'Ubaci podebljan tekst',
+	'ct_bold_tip_wrap' => 'Podebljaj ovaj tekst',
+	'ct_bold_caption' => 'Podebljano',
+	'ct_italic_sample' => 'Kurzivni tekst',
+	'ct_italic_tip_ins' => 'Ubaci kurzivni tekst',
+	'ct_italic_tip_wrap' => 'Napravi ovaj tekst kurzivom',
+	'ct_italic_caption' => 'Kurziv',
+	'ct_internal_sample' => 'ImeStranice',
+	'ct_internal_tip_ins' => 'Dodavanje unutrašnjeg linka',
+	'ct_internal_caption' => 'Unutrašnji link',
+	'ct_external_tip_ins' => 'Ubacivanje vanjskog linka',
+	'ct_external_caption' => 'Vanjski link',
+	'ct_image_tip' => 'Ubacivanje slike',
+	'ct_image_caption' => 'Dodaj sliku',
+	'ct_attachment_caption' => 'Dodaj dodatak',
+	'ct_math_sample' => 'Ubaci LaTeX formulu ovdje',
+	'ct_math_tip_ins' => 'Ubaci matematičku formulu (LaTeX)',
+	'ct_horizontal_caption' => 'Vodoravna linija',
+	'ct_submit' => 'Idi!',
+	'ct_close' => 'Zatvori prozor',
+	'ct_success' => 'Postavljanje datoteke uspješno!',
+	'ct_user_user' => 'Korisnik',
+	'ct_user_sample' => 'Korisničko ime',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

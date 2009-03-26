@@ -109,8 +109,18 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'minipreview-files_in_category' => "Ova kategorija sadrži '''$1''' {{PLURAL:$1|datoteku|datoteke|datoteka}}.",
 	'minipreview-files_in_gallery' => "Ova galerija sadrži '''$1''' {{PLURAL:$1|datoteku|datoteke|datoteka}}.",
 	'minipreview-no_more_files_here' => 'Nema više datoteka u ovom pravcu.',
+	'minipreview-no_category_gallery' => 'Nema kategorija ni galerija!',
+	'minipreview-ignore_categories' => 'Slijedi spisak imena kategorija ili početaka imena.
+Ove kategorije se neće prikazivati na MiniPreview.
+Na primjer, "* PD-" neće prikazivati nijednu kategoriju koja počinje sa "PD-", poput npr. "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
 );
 
 /** German (Deutsch)

@@ -31,14 +31,6 @@ $messages['qqq'] = array(
 	'dplforum-never' => '{{Identical|Never}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'dplforum-never' => 'Nikonz',
-	'dplforum-toofew' => 'DPL-forum: Vähähk kategorijoid!',
-);
-
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -542,6 +534,18 @@ $messages['ro'] = array(
 	'dplforum-never' => 'Niciodată',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'dplforum-desc' => "Estenzione d'u forum basate sus a DPL",
+	'dplforum-by' => 'da $1',
+	'dplforum-edited' => '- Urtema cangiamende',
+	'dplforum-never' => 'Maje',
+	'dplforum-toofew' => 'Forum DPL: Troppe picche categorije!',
+	'dplforum-toomany' => 'Forum DPL: Le categorije sonde assaije proprie!',
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Александр Сигачёв
@@ -665,6 +669,14 @@ $messages['vec'] = array(
 	'dplforum-never' => 'Mai',
 	'dplforum-toofew' => 'DPL Forum: Massa poche categorie!',
 	'dplforum-toomany' => 'DPL Forum: Massa categorie!',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'dplforum-never' => 'Nikonz',
+	'dplforum-toofew' => 'DPL-forum: Vähähk kategorijoid!',
 );
 
 /** Vietnamese (Tiếng Việt)

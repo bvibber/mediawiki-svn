@@ -98,6 +98,13 @@ $messages['dsb'] = array(
 	'antibot-desc' => 'Jadnory framework za kontrole pśeśiwo spambotam',
 );
 
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'antibot-desc' => 'Απλή εφαρμογή για έλεγχο spam και ενεργοποίηση ενεργειών',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

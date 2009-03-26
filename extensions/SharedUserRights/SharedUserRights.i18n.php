@@ -74,6 +74,15 @@ $messages['bg'] = array(
 	'gblrights-rights-entry' => 'промени членството в глобална група за $1 от $2 на $3',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'shareduserrights' => 'Upravljanje zajedničkim korisničkim pravima',
+	'gblrights-desc' => 'Lahko [[Special:SharedUserRights|upravljanje globalnim korisničkim pravima]]',
+	'gblrights-logpage' => 'Zapisnik globalnih prava',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

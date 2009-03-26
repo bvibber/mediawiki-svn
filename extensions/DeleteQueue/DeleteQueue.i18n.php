@@ -251,28 +251,6 @@ $5 is a page title.',
 	'deletequeue-case-expiry' => '{{Identical|Expiry}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'deletequeue-generic-reasons' => '* Tipižed süd
-   ** Vandalizm
-   ** Spam
-   ** Holitand
-   ** Projektan röunan taga',
-	'deletequeue-delnom-otherreason' => 'Toine sü',
-	'deletequeue-delnom-extra' => 'Ližainformacii:',
-	'deletequeue-delnom-submit' => 'Vahvištoitta nominacii',
-	'deletequeue-review-newreason' => "Uz' sü:",
-	'deletequeue-review-newextra' => 'Ližainformacii:',
-	'deletequeue-review-submit' => 'Panda arvostelend muštho',
-	'deletequeue-review-original' => 'Nominacijan sü',
-	'deletequeue-vote-submit' => 'Oigeta',
-	'deletequeue-list-queue' => 'Jono:',
-	'deletequeue-list-status' => 'Status:',
-	'deletequeue-case-page' => "Lehtpol':",
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -879,6 +857,81 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
  */
 $messages['de-formal'] = array(
 	'deletequeue-review-success' => 'Sie haben erfolgreich die Löschung dieser Seite geprüft',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'deletequeue-desc' => 'Napórajo [[Special:DeleteQueue|system za zastojanje wulašowanjow na zakłaźe cakajucego rěda]]',
+	'deletequeue-action-queued' => 'Wulašowanje',
+	'deletequeue-action' => 'Wulašowanje naraźiś',
+	'deletequeue-action-title' => 'Wulašowanje boka "$1" naraźiś',
+	'deletequeue-generic-reasons' => '* Powšykne pśicyny
+  ** Wandalizm
+  ** Spam
+  ** Wótwardowanje
+  ** Zwenka projektowego cela',
+	'deletequeue-nom-alreadyqueued' => 'Toś ten bok jo južo w lašowańskem cakajucem rěźe.',
+	'deletequeue-speedy-title' => '"$1" za spěšne wulašowanje markěrowaś',
+	'deletequeue-prod-title' => 'Wulašowanje boka "$1" naraźiś',
+	'deletequeue-delnom-reason' => 'Pśicyna za lašowańske póžedanje:',
+	'deletequeue-delnom-otherreason' => 'Druga pśicyna',
+	'deletequeue-delnom-extra' => 'Pśidatne informacije:',
+	'deletequeue-delnom-submit' => 'Póžedanje stajiś',
+	'right-prod-nominate' => 'Bok za wulašowanje naraźiś',
+	'right-deletediscuss-nominate' => 'Lašowańske diskusije zachopiś',
+	'right-deletediscuss-review' => 'Lašowańske diskusije skóńcyś',
+	'right-deletequeue-vote' => 'Wulašowanja pódprěś abo wótpokazaś',
+	'deletequeue-queue-speedy' => 'Spěšne wulašowanje',
+	'deletequeue-queue-prod' => 'Naraźone wulašowanje',
+	'deletequeue-queue-deletediscuss' => 'Lašowańska diskusija',
+	'deletequeue-page-speedy' => "Toś ten bok jo se za spěšne wulašowanje naraźił.
+Pódana pśicyna za toś to wulašowanje jo ''$1''.",
+	'deletequeue-notqueued' => 'Bok, kótaryž sy wubrał, njejo tuchylu w cakajucem rěźe za wulašowanje',
+	'deletequeue-review-action' => 'Akcija, kótaraž ma se wuwjasć:',
+	'deletequeue-review-delete' => 'Bok wulašowaś.',
+	'deletequeue-review-reason' => 'Komentary:',
+	'deletequeue-review-newreason' => 'Nowa pśicyna:',
+	'deletequeue-review-newextra' => 'Pśidatne informacije:',
+	'deletequeue-review-submit' => 'Pśeglědanje składowaś',
+	'deletequeue-review-original' => 'Pśicyna za póžedanje',
+	'deletequeue-review-badaction' => 'Sy pódał njepłaśiwu akciju',
+	'deletequeue-vote-legend' => 'Wulašowanje pódprěś/wótpokazaś',
+	'deletequeue-vote-action' => 'Pórucenje:',
+	'deletequeue-vote-endorse' => 'Wulašowanje pódprěś.',
+	'deletequeue-vote-object' => 'Wulašowanje wótpokazaś.',
+	'deletequeue-vote-reason' => 'Komentary:',
+	'deletequeue-vote-submit' => 'Wótpósłaś',
+	'deletequeue-vote-success-endorse' => 'Sy wuspěšnje pódprěł wulašowanje tós togo boka.',
+	'deletequeue-vote-success-object' => 'Sy wuspěšnje wótpokazał wulašowanje toś togo boka.',
+	'deletequeue-vote-requeued' => 'Sy wuspěšnje wótpokazał wulašowanje toś togo boka.
+Pśez twójo wótpokazanje jo se bok do cakajucego rěda $1 psésunuł.',
+	'deletequeue-showvotes' => 'Pódpěranja a znapśeśiwjenja za wulašowanje boka "$1"',
+	'deletequeue-showvotes-restrict-endorse' => 'Jano pódpěranja pokazaś',
+	'deletequeue-showvotes-restrict-object' => 'Jano wótpokazanje pokazaś',
+	'deletequeue-showvotes-restrict-none' => 'Wšykne pódpěranja a znapśeśiwjenja pokazaś',
+	'deletequeue' => 'Lašowański cakajucy rěd',
+	'deletequeue-list-search-legend' => 'Boki pytaś',
+	'deletequeue-list-queue' => 'Cakajucy rěd:',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-search' => 'Pytaś',
+	'deletequeue-list-anyqueue' => '(někaki)',
+	'deletequeue-list-votes' => 'Lisćina głosow',
+	'deletequeue-list-header-page' => 'Bok',
+	'deletequeue-list-header-queue' => 'Cakajucy rěd',
+	'deletequeue-list-header-votes' => 'Pódpěranja a znapśeśiwjenja',
+	'deletequeue-list-header-expiry' => 'Spadnjenje',
+	'deletequeue-list-header-discusspage' => 'Diskusijny bok',
+	'deletequeue-case-intro' => 'Toś ten bok zwobraznjujo informacije wó wěstem lašowańskem paźe.',
+	'deletequeue-list-header-reason' => 'Pśicyna za wulašowanje',
+	'deletequeue-case-votes' => 'Pódpěranja/zanpśeśiwjenja',
+	'deletequeue-case-title' => 'Drobnostki wó lašowańskem paźe',
+	'deletequeue-case-details' => 'Zakładne drobnostki',
+	'deletequeue-case-page' => 'Bok:',
+	'deletequeue-case-reason' => 'Pśicyna:',
+	'deletequeue-case-expiry' => 'Spadnjenje:',
+	'deletequeue-case-needs-review' => 'Toś ten pad trjeba [[$1|pśeglědanje]].',
 );
 
 /** Greek (Ελληνικά)
@@ -3243,6 +3296,7 @@ $messages['pl'] = array(
 	'right-speedy-nominate' => 'Oznacz strony do ekspresowego skasowania',
 	'right-speedy-review' => 'Przejrzyj strony do ekspresowego skasowania',
 	'deletequeue-review-delete' => 'Usuń stronę.',
+	'deletequeue-review-newextra' => 'Dodatkowe informacje:',
 	'deletequeue-vote-reason' => 'Komentarze:',
 	'deletequeue-vote-submit' => 'Zapisz',
 	'deletequeue-list-search-legend' => 'Szukaj stron',
@@ -4162,6 +4216,28 @@ $messages['tr'] = array(
 $messages['ug-latn'] = array(
 	'deletequeue-list-header-page' => 'Bet',
 	'deletequeue-case-page' => 'Bet:',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'deletequeue-generic-reasons' => '* Tipižed süd
+   ** Vandalizm
+   ** Spam
+   ** Holitand
+   ** Projektan röunan taga',
+	'deletequeue-delnom-otherreason' => 'Toine sü',
+	'deletequeue-delnom-extra' => 'Ližainformacii:',
+	'deletequeue-delnom-submit' => 'Vahvištoitta nominacii',
+	'deletequeue-review-newreason' => "Uz' sü:",
+	'deletequeue-review-newextra' => 'Ližainformacii:',
+	'deletequeue-review-submit' => 'Panda arvostelend muštho',
+	'deletequeue-review-original' => 'Nominacijan sü',
+	'deletequeue-vote-submit' => 'Oigeta',
+	'deletequeue-list-queue' => 'Jono:',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-case-page' => "Lehtpol':",
 );
 
 /** Vietnamese (Tiếng Việt)

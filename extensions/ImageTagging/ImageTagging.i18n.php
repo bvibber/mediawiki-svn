@@ -74,16 +74,6 @@ $messages['niu'] = array(
 	'imagetagging-tagcancel-button' => 'Tiaki',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'imagetagging-article' => "Lehtpol':",
-	'imagetagging-articletotag' => "Lehtpol' virgates",
-	'imagetagging-imghistory' => 'Istorii',
-	'imagetagging-tag-button' => 'Virg',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -1509,6 +1499,16 @@ $messages['tr'] = array(
  */
 $messages['ug-latn'] = array(
 	'imagetagging-article' => 'Bet:',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'imagetagging-article' => "Lehtpol':",
+	'imagetagging-articletotag' => "Lehtpol' virgates",
+	'imagetagging-imghistory' => 'Istorii',
+	'imagetagging-tag-button' => 'Virg',
 );
 
 /** Vietnamese (Tiếng Việt)

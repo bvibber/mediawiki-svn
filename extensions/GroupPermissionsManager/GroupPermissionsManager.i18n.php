@@ -114,22 +114,6 @@ $messages['rtm'] = array(
 	'grouppermissions-dologin' => 'Surum',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'grouppermissions-search' => 'Grupp:',
-	'grouppermissions-dologin' => 'Kävutajan nimi',
-	'grouppermissions-dosearch' => 'Mända',
-	'grouppermissions-searchlabel' => 'Ectä gruppiš',
-	'grouppermissions-deletelabel' => 'Čuta grupp',
-	'grouppermissions-never' => 'Nikonz',
-	'grouppermissions-sort-admin' => 'Administriruind',
-	'grouppermissions-sort-tech' => 'Tehnižed',
-	'grouppermissions-sort-misc' => 'Erazvuiččed',
-	'grouppermissions-log-add' => 'ližatihe «$2»-grupp',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -368,6 +352,7 @@ $messages['bs'] = array(
 	'grouppermissions-true' => 'Tačno',
 	'grouppermissions-false' => 'Netačno',
 	'grouppermissions-never' => 'Nikad',
+	'grouppermissions-nooldrev' => 'Desila se greška pri pokušaju da se arhivira trenutna konfiguracijska datoteka. Arhiva nije napravljena',
 	'grouppermissions-sort-read' => 'Čitanje',
 	'grouppermissions-sort-edit' => 'Uređivanje',
 	'grouppermissions-sort-manage' => 'Upravljanje',
@@ -380,6 +365,7 @@ $messages['bs'] = array(
 	'grouppermissions-log-name' => 'Zapisnik grupnih dopuštenja',
 	'grouppermissions-log-header' => 'Ova stranica prati promjene na određenim dopuštenjima korisničkih grupa.',
 	'grouppermissions-needjs' => 'Upozorenje: JavaScript je onemogućen u Vašem pregledniku. Neke funkcije možda neće raditi!',
+	'grouppermissions-sp-header' => 'Možete koristiti ovu stranicu za određivanje kako će se sortirati dopuštenja i dodavati nova. Pređite mišem preko dopuštenja da pročitate njegov opis',
 	'grouppermissions-sp-sort' => 'Sortiraj dopuštenja',
 	'grouppermissions-sp-save' => 'Sačuvaj',
 	'grouppermissions-sp-success' => 'Dopuštenja su uspješno sortirana',
@@ -1403,6 +1389,8 @@ $messages['ksh'] = array(
 	'sortpermissions' => 'Rääschte zotteere',
 	'removeunusedgroups' => 'Nit jebruchte Jruppe fott schmiiße',
 	'grouppermissions-desc' => 'Donn de Jroppe-Rääschte övver en [[Special:GroupPermissions|Söndersigg]] verwallde.',
+	'grouppermissions-desc2' => 'E jrüüßer Süßteem vu Rääschte',
+	'grouppermissions-desc3' => 'Määt et müjjelesch, de Akßjuhne för der Enhaldt em Wiki enzeshtelle',
 	'grouppermissions-desc4' => 'Määt exta Endrääsch onger „{{int:toolbox}}“ müjjelesch',
 	'grouppermissions-desc-nsm' => 'Donn de Appachtemangs övver en Söndersigg verwallde',
 	'grouppermissions-header' => 'Do kanns op dä Sigg hee de Rääschde vun dä Metmaacher en dä divärse Metmaacherjroppe ändere.',
@@ -1411,9 +1399,11 @@ $messages['ksh'] = array(
 	'grouppermissions-dosearch' => 'Lohß Jonn!',
 	'grouppermissions-searchlabel' => 'En Jropp söhke',
 	'grouppermissions-deletelabel' => 'De Jropp fottschmiiße',
+	'grouppermissions-error' => 'Ene unbekannte Fähler es opjetrodde. Donn dä „Retuur“-Knopp en Dingem Brauser bruche, un dann versöhk et norr_en neu.',
 	'grouppermissions-change' => 'Rääschde för Jroppe fun Metmaachere ändere',
 	'grouppermissions-add' => 'Jropp dobei donn',
 	'grouppermissions-delete' => 'Jropp fottschmiiße',
+	'grouppermissions-comment' => 'Kommentaa:',
 	'grouppermissions-addsuccess' => '$1 woodt dobei jedonn',
 	'grouppermissions-deletesuccess' => '$1 es fotjeschmesse',
 	'grouppermissions-changesuccess' => 'De Rääschde för Metjleeder fun $1 sin jeändert',
@@ -1424,6 +1414,7 @@ $messages['ksh'] = array(
 	'grouppermissions-sort-read' => 'Lesse',
 	'grouppermissions-sort-edit' => 'Ändere',
 	'grouppermissions-sort-manage' => 'Verwallde',
+	'grouppermissions-sort-admin' => 'Zotteer Verwallde',
 	'grouppermissions-sort-tech' => 'Täschnesch',
 	'grouppermissions-sort-misc' => 'Söns jet',
 	'grouppermissions-log-add' => 'hät de Jropp „$2“ dobei jedonn',
@@ -1435,9 +1426,13 @@ $messages['ksh'] = array(
 	'grouppermissions-sp-header' => 'Op hee dä Söndersigg kanns De Rääschte em Wiki zotteere un neu Rääschte enreschte.
 
 Jangk met de Mous övver e Rääsch en dä Leß, öm jezeisch ze krijje, wat domet loß es.',
+	'grouppermissions-sp-sort' => 'De Rääschte zotteere',
 	'grouppermissions-sp-save' => 'Afshpeishere',
+	'grouppermissions-sp-success' => 'De Rääschte sen jez zotteet',
+	'grouppermissions-sp-addtype' => 'Donn en Aat vun Zotteer dobei',
 	'grouppermissions-sp-addperm' => 'Donn e Rääsch dobei',
 	'grouppermissions-sp-remove' => 'fott domet',
+	'grouppermissions-sp-deltype' => 'Donn en Aat vun Zotteer fott nämme',
 	'grouppermissions-rug-header' => 'Do kann hee op dä Sigg Metmaacher uß Jroppe eruß nämme, die nit (mieh) en Jebruch sen.',
 	'grouppermissions-rug-success' => 'Han dä Metmaacher us der Jroppe eruß jenumme, di nit en Jebruch sen!',
 	'grouppermissions-rug-confirm' => 'Metmaacher uß Jroppe eruß nämme, di nit en Jebruch sen',
@@ -1446,7 +1441,7 @@ Jangk met de Mous övver e Rääsch en dä Leß, öm jezeisch ze krijje, wat dom
 	'right-raw' => 'Sigge „rüh“ beloore, nur der Wikitex vun Sigge afroofe',
 	'right-render' => 'De aanjezeischte Sigge belohre, der ohne do hen jonn ze möße',
 	'right-info' => 'De Date un Enfommazjuhne övver Sigge beloore',
-	'right-credits' => 'De Credits vun Sigge beloore',
+	'right-credits' => 'De Metmaacher ier ääschte Name un ehr Beidräch för en Sigg beloore',
 	'right-history' => 'De Leste met ällder Versione vun Sigge beloore',
 	'right-search' => 'Em Wiki söhke',
 	'right-contributions' => 'Sigge met Beidrääsch aanloore',
@@ -2406,6 +2401,22 @@ $messages['tr'] = array(
 $messages['ug-latn'] = array(
 	'grouppermissions-dologin' => 'Kirish',
 	'grouppermissions-dosearch' => 'Köchüsh',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'grouppermissions-search' => 'Grupp:',
+	'grouppermissions-dologin' => 'Kävutajan nimi',
+	'grouppermissions-dosearch' => 'Mända',
+	'grouppermissions-searchlabel' => 'Ectä gruppiš',
+	'grouppermissions-deletelabel' => 'Čuta grupp',
+	'grouppermissions-never' => 'Nikonz',
+	'grouppermissions-sort-admin' => 'Administriruind',
+	'grouppermissions-sort-tech' => 'Tehnižed',
+	'grouppermissions-sort-misc' => 'Erazvuiččed',
+	'grouppermissions-log-add' => 'ližatihe «$2»-grupp',
 );
 
 /** Volapük (Volapük)

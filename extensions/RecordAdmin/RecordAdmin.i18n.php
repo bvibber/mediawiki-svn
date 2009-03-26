@@ -232,7 +232,7 @@ $messages['bs'] = array(
 	'recordadmin-edit' => 'Uređuje se $1',
 	'recordadmin-updatesuccess' => '$1 ažurirano',
 	'recordadmin-buttonsave' => 'Sačuvaj',
-	'recordadmin-createlink' => 'napravi {{GENDER:$1|jedan|jednu}}',
+	'recordadmin-createlink' => 'napravi jedan',
 	'recordadmin-summary-typecreated' => 'Novi $1 napravljen',
 	'recordadmin-actions' => 'Akcije',
 );

@@ -47,24 +47,6 @@ $messages['qqq'] = array(
 	'player-goto-file' => '{{Identical|File}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'player' => 'Plejer',
-	'player-title' => 'Plejer',
-	'player-playertitle' => 'Plejer: $1',
-	'player-file' => 'Failan nimi',
-	'player-play' => 'Väta',
-	'player-not-allowed' => 'laskmatoi format',
-	'player-not-found' => 'ei voi löuta failad',
-	'player-invalid-title' => 'petuzline pälkirjutez',
-	'player-clicktoplay' => 'Väta $1',
-	'player-goto-player' => 'plejer',
-	'player-goto-page' => "Lehtpol'",
-	'player-goto-file' => 'fail',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -1239,6 +1221,24 @@ $messages['vec'] = array(
 	'player-goto-player' => 'riprodutor',
 	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'file',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'player' => 'Plejer',
+	'player-title' => 'Plejer',
+	'player-playertitle' => 'Plejer: $1',
+	'player-file' => 'Failan nimi',
+	'player-play' => 'Väta',
+	'player-not-allowed' => 'laskmatoi format',
+	'player-not-found' => 'ei voi löuta failad',
+	'player-invalid-title' => 'petuzline pälkirjutez',
+	'player-clicktoplay' => 'Väta $1',
+	'player-goto-player' => 'plejer',
+	'player-goto-page' => "Lehtpol'",
+	'player-goto-file' => 'fail',
 );
 
 /** Vietnamese (Tiếng Việt)

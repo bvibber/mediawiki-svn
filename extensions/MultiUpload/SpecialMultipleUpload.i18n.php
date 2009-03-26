@@ -264,6 +264,8 @@ Móžoš zapódaś opcionalne '''datajowe mě''' a '''Zespominanje''', kótarež
 Njegóźece se dataje budu se ned lašowaś, glědaj [[{{MediaWiki:Multipleupload-page}}|zasady lašowanja datajow]].",
 	'multiupload-fileuploaded' => 'Dataja nagrata.',
 	'multiupload-toolbox' => 'Někotare dataje nagraś',
+	'multiupload-no-files' => 'Pšsosym wubjeŕ nanejmjenjej jadnu dataju za nagraśe',
+	'multiupload-blank' => 'Žedna dataja wubrana',
 );
 
 /** Greek (Ελληνικά)

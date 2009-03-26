@@ -471,6 +471,7 @@ Jolic maš pšašanja wo toś tom systemje rozdźělowanja rozšyrjenjow, źi p�
 
 /** Greek (Ελληνικά)
  * @author Dead3y3
+ * @author Geraki
  * @author Omnipaedista
  */
 $messages['el'] = array(
@@ -483,7 +484,7 @@ $messages['el'] = array(
 	'extdist-choose-extension' => 'Επιλέξτε ποια επέκταση θέλετε να κατεβάσετε:',
 	'extdist-wc-empty' => 'Ο καθορισμένος πηγαίος κατάλογος εργασίας δεν έχει διανεμήσιμες επεκτάσεις!',
 	'extdist-submit-extension' => 'Συνέχεια',
-	'extdist-current-version' => 'Τρέχουσα έκδοση (κορμός)',
+	'extdist-current-version' => 'Έκδοση ανάπτυξης (κορμός)',
 	'extdist-choose-version' => '<big>Κατεβάζετε την επέκταση <b>$1</b>.</big>
 
 Επιλέξτε την έκδοση του MediaWiki σας.
@@ -1711,7 +1712,7 @@ $messages['pt'] = array(
 	'extdist-choose-extension' => 'Selecione que extensão pretende descarregar:',
 	'extdist-wc-empty' => 'A directoria de cópia de trabalho não possui extensões distribuíveis!',
 	'extdist-submit-extension' => 'Continuar',
-	'extdist-current-version' => 'Versão atual (tronco)',
+	'extdist-current-version' => 'Versão de desenvolvimento (tronco)',
 	'extdist-choose-version' => '<big>Você está a descarregar a extensão <b>$1</b>.</big>
 
 Selecione a versão do seu MediaWiki.

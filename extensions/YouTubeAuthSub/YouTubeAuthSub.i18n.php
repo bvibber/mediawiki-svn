@@ -1274,8 +1274,14 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'youtubeauthsub' => '유투브 동영상을 올립니다.',
+	'youtubeauthsub_title' => '제목',
+	'youtubeauthsub_description' => '설명',
 	'youtubeauthsub_password' => '유투브 비밀번호',
 	'youtubeauthsub_username' => '유투브 사용자 이름',
+	'youtubeauthsub_keywords' => '키워드',
+	'youtubeauthsub_category' => '분류',
+	'youtubeauthsub_submit' => '제출하세요',
+	'youtubeauthsub_clickhere' => '이 곳을 클릭하여 유투브에 로그 인 하세요',
 	'youtubeauthsub_success' => "축하드립니다!
 
 당신의 동영상이 올라갔습니다.

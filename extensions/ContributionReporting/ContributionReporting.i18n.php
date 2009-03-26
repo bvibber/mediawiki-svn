@@ -1484,6 +1484,7 @@ $messages['km'] = array(
 /** Korean (한국어)
  * @author Ilovesabbath
  * @author Kwj2772
+ * @author Yknok29
  */
 $messages['ko'] = array(
 	'contributionreporting-desc' => '위키미디어 모금 현황',
@@ -1520,6 +1521,7 @@ $messages['ko'] = array(
 	'fundraiserstats-avg' => '평균 (USD)',
 	'fundraiserstats-max' => '최대 (USD)',
 	'fundraiserstats-tab-totals' => '합계 (USD)',
+	'fundraiserstats-tab-contributions' => '기여 횟수',
 	'fundraiserstats-tab-averages' => '평균 (USD)',
 	'fundraiserstats-tab-maximums' => '최댓값 (USD)',
 );

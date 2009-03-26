@@ -46,23 +46,6 @@ $messages['qqq'] = array(
 	'gep-categorypage' => '{{optional}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'gep-categories' => 'Kategorijad',
-	'gep-addcategory' => 'Ližata kategorii',
-	'gep-addcategorybutton' => 'Ližata',
-	'gep-suggestcategory' => 'Nevoda kategorii',
-	'gep-suggestcategorybutton' => 'Oigeta',
-	'gep-sections' => 'Jagused',
-	'gep-sectionnotdisabled' => 'Ei sa saubata nece jaguz',
-	'gep-addsection' => 'Ližata jaguz',
-	'gep-addsectionbutton' => 'Ližata',
-	'gep-classicmode' => 'Klassine režim',
-	'gep-genericmode' => 'Ühthine režim',
-);
-
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -205,15 +188,22 @@ Ouzhpennit-int en ur ober gant ostilhoù barrenn al lañserioù.",
  * @author CERminator
  */
 $messages['bs'] = array(
+	'gep-emailsubject' => '[$1] Prijedlog kategorije: $2',
+	'gep-emailbody' => 'Korisnik "$1" je predložio kategoriju "$2" za sajt "$3".',
 	'gep-emailfailure' => 'Žao nam je, Vaš prijedlog nije mogao biti obrađen.',
+	'gep-emailsuccess' => 'Zahvaljujemo Vam za prijedlog kategorije: $1.',
 	'gep-categories' => 'Kategorije',
 	'gep-addcategory' => 'Dodaj kategoriju',
 	'gep-addcategorybutton' => 'Dodaj',
 	'gep-suggestcategory' => 'Predloži kategoriju',
 	'gep-suggestcategorybutton' => 'Pošalji',
+	'gep-sections' => 'Sekcije',
+	'gep-sectionnotdisabled' => 'Ova sekcija ne može biti onemogućena',
 	'gep-addsection' => 'Dodaj sekciju',
 	'gep-addsectionbutton' => 'Dodaj',
 	'gep-classicmode' => 'Klasični način',
+	'gep-nosectioninstructions' => 'Nema sekcija na ovoj stranici.
+Dodajte jednu koristeći alate u meniju.',
 );
 
 /** Czech (Česky)
@@ -1126,6 +1116,23 @@ $messages['uk'] = array(
 	'gep-classicmode' => 'Класичний режим',
 	'gep-genericmode' => 'Загальний режим',
 	'gep-nocategories' => 'Будь ласка, виберіть перед збереженням хоча б одну категорію',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'gep-categories' => 'Kategorijad',
+	'gep-addcategory' => 'Ližata kategorii',
+	'gep-addcategorybutton' => 'Ližata',
+	'gep-suggestcategory' => 'Nevoda kategorii',
+	'gep-suggestcategorybutton' => 'Oigeta',
+	'gep-sections' => 'Jagused',
+	'gep-sectionnotdisabled' => 'Ei sa saubata nece jaguz',
+	'gep-addsection' => 'Ližata jaguz',
+	'gep-addsectionbutton' => 'Ližata',
+	'gep-classicmode' => 'Klassine režim',
+	'gep-genericmode' => 'Ühthine režim',
 );
 
 /** Vietnamese (Tiếng Việt)

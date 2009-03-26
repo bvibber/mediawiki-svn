@@ -66,6 +66,7 @@ $messages['ar'] = array(
 	'categorywatch-catmoveout' => 'نقل $1 من التصنيف $2 إلى $3',
 	'categorywatch-catadd' => 'أضاف $1 إلى التصنيف $2',
 	'categorywatch-catsub' => 'أزال $1 من التصنيف $2',
+	'categorywatch-autocat' => 'مراقبة تلقائيا بواسطة $1',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -397,7 +398,7 @@ Ene Jrooss vun der {{SITENAME}}.',
  * @author Robby
  */
 $messages['lb'] = array(
-	'categorywatch-desc' => "Erweidert d'Fonctionalitéite vun der Iwwerwwaachungslëscht op d'Notifikatioun iwwer déi Säiten déi an der iwwerwaachter Kategorie dr sinn.",
+	'categorywatch-desc' => "Erweidert d'Fonctionalitéite vun der Iwwerwwaachungslëscht op d'Notifikatioun iwwer déi Säiten, déi an der iwwerwaachter Kategorie dra sinn.",
 	'categorywatch-emailbody' => 'Bonjour $1, Dir kritt dëse Message well Dir d\'Kategorie "$2" iwwerwaacht.
 Dëse Message informéiert iech datt den $3 Auer de Benotzer $4 $5.',
 	'categorywatch-emailsubject' => 'Aktivitéit an der iwwerwaachter Kategorie "$1"',
@@ -405,6 +406,7 @@ Dëse Message informéiert iech datt den $3 Auer de Benotzer $4 $5.',
 	'categorywatch-catmoveout' => "$1 aus der Kategorie $2 an d'Kategorie $3 geréckelt huet",
 	'categorywatch-catadd' => "$1 an d'Kategorie $2 derbäigesat huet",
 	'categorywatch-catsub' => '$1 aus der Kategorie $2 erausgeholl huet',
+	'categorywatch-autocat' => 'Automatesch iwwerwaacht vum $1',
 );
 
 /** Macedonian (Македонски)
@@ -479,6 +481,7 @@ Aqueste messatge es destinat a vos far saber que lo $3 l’utilizaire $4 $5.',
 	'categorywatch-catmoveout' => 'a desplaçat $1 de la categoria $2 cap a $3',
 	'categorywatch-catadd' => 'a apondut $1 dins la categoria $2',
 	'categorywatch-catsub' => 'a levat $1 de la categoria $2',
+	'categorywatch-autocat' => 'Seguida automaticament per $1',
 );
 
 /** Polish (Polski)
@@ -510,6 +513,7 @@ Esta mensagem serve para o notificar de que, em $3, o utilizador $4 $5.',
 	'categorywatch-catmoveout' => 'moveu $1 da categoria $2 para $3',
 	'categorywatch-catadd' => 'adicionou $1 à categoria $2',
 	'categorywatch-catsub' => 'removeu $1 da categoria $2',
+	'categorywatch-autocat' => 'Vigiada automaticamente por $1',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -553,6 +557,7 @@ Stu mèssagge avène mannete pe notificà a te ca \'u $3 l\'utende $4 $5.',
 	'categorywatch-catmoveout' => "spueste $1 fore d'a categorije $2 jndr'a $3",
 	'categorywatch-catadd' => "aggiunge $1 jndr'à categorije $2",
 	'categorywatch-catsub' => "live $1 da 'a categorije $2",
+	'categorywatch-autocat' => 'Automaticamende viste da $1',
 );
 
 /** Russian (Русский)

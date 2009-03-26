@@ -132,7 +132,7 @@ Da bi ste to učinili, molimo uzmite API ključ [http://www.flickr.com/services/
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'uvezi ovo',
 	'importfreeimages_next' => 'slijedeća $1',
-	'importfreeimages_filefromflickr' => '$ od {{GENDER:$2|korisnika|korisnice}} <b>[$2]</b> sa flickr. Prvobitni URL',
+	'importfreeimages_filefromflickr' => '$1 od {{GENDER:$2|korisnika|korisnice}} <b>[$2]</b> sa flickr. Prvobitni URL',
 	'importfreeimages_promptuserforfilename' => 'Molimo unesite ime odredišne datoteke:',
 	'importfreeimages_returntoform' => "ili kliknite <a href='$1'>ovdje</a> za povratak na Vaše rezultate pretrage",
 );

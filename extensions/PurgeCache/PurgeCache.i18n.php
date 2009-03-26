@@ -70,6 +70,14 @@ $messages['bg'] = array(
 	'purgecache-button' => 'Изчистване',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'purgecache' => 'Čišćenje keša',
+	'purgecache-button' => 'Očisti',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

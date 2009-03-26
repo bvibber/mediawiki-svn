@@ -503,7 +503,9 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'pageby-desc' => "Face vedè le condrebbutore sus a linèe sus a 'na pàgene de Uicchi ausanne 'u tag <code><nowiki><pageby></nowiki></code>",
 	'pageby-first' => 'Vosce ccrejate da $1, $2',
+	'pageby-last' => 'Urteme <a href="$3">cangiamende</a> de $1, $2',
 	'pageby-contributors' => 'Condrebbutore:',
 	'pageby-anon' => '<i>anoneme</i>',
 );

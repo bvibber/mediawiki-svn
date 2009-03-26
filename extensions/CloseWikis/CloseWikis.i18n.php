@@ -153,10 +153,16 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'closewikis-desc' => 'Omogućava zatvaranje wiki projekata u wiki farmama',
 	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Razlog (prikazani):',
+	'closewikis-page-close-reason' => 'Razlog (zapisani):',
+	'closewikis-page-close-submit' => 'Zatvori',
 	'closewikis-page-close-success' => 'Wiki uspješno zatvoren',
+	'closewikis-page-reopen' => 'Ponovno otvaranje wikija',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Razlog:',
+	'closewikis-page-reopen-submit' => 'Ponovno otvori',
 	'closewikis-page-reopen-success' => 'Wiki uspješno ponovno otvoren',
+	'closewikis-page-err-nowiki' => 'Navedeni wiki je nevaljan',
 	'closewikis-page-err-closed' => 'Wiki je već zatvoren',
 	'closewikis-page-err-opened' => 'Wiki nije zatvoren',
 	'closewikis-list' => 'Spisak zatvorenih wikija',
@@ -166,6 +172,7 @@ $messages['bs'] = array(
 	'closewikis-list-header-dispreason' => 'Navedeni razlog',
 	'closewikis-log-close' => 'zatvoreno $2',
 	'closewikis-log-reopen' => 'ponovno otvoreno $2',
+	'right-closewikis' => 'Zatvaranje wikija',
 );
 
 /** Czech (Česky)

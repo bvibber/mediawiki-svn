@@ -134,15 +134,6 @@ $messages['niu'] = array(
 	'openidchoosepassword' => 'kupu fufu:',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'openidoptional' => 'Opcionaline',
-	'openidemail' => 'E-počtan adres',
-	'openidlanguage' => "Kel'",
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -473,7 +464,7 @@ $messages['bs'] = array(
 	'openiderrortext' => 'Desila se greška pri provjeri OpenID URL adrese.',
 	'openidconfigerror' => 'Greška OpenID postavki',
 	'openidconfigerrortext' => 'OpenID konfiguracija spremanja za ovaj wiki je nevaljana. 
-Molimo konsultujte se sa [[Special:Listusers/sysop|administratorom]].',
+Molimo konsultujte se sa [[Special:ListUsers/sysop|administratorom]].',
 	'openidpermission' => 'Greška kod OpenID dopuštenja',
 	'openidpermissiontext' => 'OpenID koji ste naveli nije dopušteno da se prijavi na ovaj server.',
 	'openidcancel' => 'Provjera poništena',
@@ -3565,6 +3556,15 @@ Ghe xe molti [http://openid.net/get/ Provider OpenID], e te podaressi verghe zà
 	'openid-prefstext' => '[http://openid.net/ OpenID] preferense',
 	'openid-pref-hide' => 'Scondi el to <a href="http://openid.net/">OpenID</a> su la to pàxena utente, se te fè el login con OpenID.',
 	'openid-pref-update-userinfo-on-login' => "Ajorna le me informassion da l'utensa de OpenID ogni olta che me conéto",
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'openidoptional' => 'Opcionaline',
+	'openidemail' => 'E-počtan adres',
+	'openidlanguage' => "Kel'",
 );
 
 /** Vietnamese (Tiếng Việt)
