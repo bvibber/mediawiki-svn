@@ -35,8 +35,8 @@ body {
 table .filehistory, td .filehistory{
 	border: 1px solid #03476F;	
 }
-a .new{
-	color:#F22
+.new{
+	color:#F22 !important;
 }
 body#frontPage {background: #eef6ff;}
 .bodyContent{	
