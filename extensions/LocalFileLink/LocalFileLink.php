@@ -9,37 +9,29 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'Allows the usage of local file links with FCKEditor',
 );
 
-function lflAddLocalFileLinks(&$out) {
-    
-    $text = $out->mBodytext;
-    
-    $search         = '/\[(file\:\/{2,5}[a-zA-Z]{0,1}[\:]{0,1}\S*)\s*([^\]]*)\]/';
-    $replace        = '<a href="$1" class="link-ftp">$2</a>';
+function lflAddLocalFileLinks( &$out ) {
 
-    $text = preg_replace($search, $replace, $text);
-    
-    $out->mBodytext = $text;
+	$search  = '/\[(file\:\/{2,5}[a-zA-Z]{0,1}[\:]{0,1}\S*)\s*([^\]]*)\]/';
+	$replace = '<a href="$1" class="link-ftp">$2</a>';
 
-    return true;
+	$out->mBodytext = preg_replace( $search, $replace, $out->mBodytext );
+
+	return true;
 } 
 
-function lflAjaxAddLocalFileLinks(&$parser, &$text) {
-    
-    $search         = '/\[(file\:\/{2,5}[a-zA-Z]{0,1}[\:]{0,1}\S*)\s*([^\]]*)\]/';
-    $replace        = '<a href="$1" class="link-ftp">$2</a>';
+function lflAjaxAddLocalFileLinks( &$parser, &$text ) {
 
-    $text = preg_replace($search, $replace, $text);
-    
-    return true;
-} 
+	$search  = '/\[(file\:\/{2,5}[a-zA-Z]{0,1}[\:]{0,1}\S*)\s*([^\]]*)\]/';
+	$replace = '<a href="$1" class="link-ftp">$2</a>';
 
+	$text = preg_replace($search, $replace, $text);
 
+	return true;
+}
 
 if ( isset($_REQUEST['rs']) ) {
-    $wgHooks['ParserBeforeTidy'][] = 'lflAjaxAddLocalFileLinks';
+	$wgHooks['ParserBeforeTidy'][] = 'lflAjaxAddLocalFileLinks';
 }
 else {
-    $wgHooks['BeforePageDisplay'][] = 'lflAddLocalFileLinks';
+	$wgHooks['BeforePageDisplay'][] = 'lflAddLocalFileLinks';
 }
-
-?>
