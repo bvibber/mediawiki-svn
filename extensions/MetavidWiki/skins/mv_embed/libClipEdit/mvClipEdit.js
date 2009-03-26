@@ -406,7 +406,7 @@ mvClipEdit.prototype = {
 	applyInsertControlBindings:function(){
 		var _this = this;
 		$j('.mv_insert_image_page').click(function(){
-			_this.applyEdit();			
+			_this.applyEdit();	
 			//copy over the desc text to the resource object
 			_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
 			_this.p_rsdObj.insertResource( _this.rObj );
@@ -470,8 +470,13 @@ mvClipEdit.prototype = {
 		//if the video is "roe" based select the ogg stream		
 		if( this.rObj.roe_url && this.rObj.pSobj.cp.stream_import_key){			
 			var source = $j('#embed_vid').get(0).media_element.getSourceById( this.rObj.pSobj.cp.stream_import_key );
-			this.rObj['src'] = source.getURI();
-			js_log("g src_key: " + this.rObj.pSobj.cp.stream_import_key + ' src:' + this.rObj['src']) ;
+			if(!source){
+				js_error('Error::could not find source: ' +  this.rObj.pSobj.cp.stream_import_key);					
+			}else{
+				this.rObj['src'] = source.getURI();
+				js_log("g src_key: " + this.rObj.pSobj.cp.stream_import_key + ' src:' + this.rObj['src']) ;
+				return true;
+			}
 		}		
 	},
 	applyCrop:function(){
@@ -494,6 +499,7 @@ mvClipEdit.prototype = {
 				'</div>'						
 			);
 		}
+		return true;
 	},
 	//right now enableCrop loads "just in time" 
 	//@@todo we really need an "auto loader" type system. 

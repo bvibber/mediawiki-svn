@@ -678,7 +678,7 @@ mvPlayList.prototype = {
 	//ads colors/dividers between tracks
 	colorPlayHead: function(){
 		if( !this.mv_seeker_width)
-			this.mv_seeker_width = $j('#mv_seeker_slider_'+this.id).width();								
+			this.mv_seeker_width = $j('#mv_seeker_slider_'+this.id).width();					
 	
 		if( !this.track_len ) 
 			this.track_len = $j('#seeker_bar_'+this.id).css('width').replace(/px/, '');

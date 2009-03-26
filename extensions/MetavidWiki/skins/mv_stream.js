@@ -169,7 +169,7 @@ var mv_stream_interface = {
 		//check for #autoplay ancor
 		var hash = window.location.hash.toString();
 		js_log(" hash is: " + hash);
-		if( hash == '#autoplay'){
+		if( hash == '#autoplay'){			
 			//window.location.hash = '';
 			setTimeout('mv_do_play()', 500);							
 		}
@@ -904,7 +904,7 @@ function mv_do_play( mvd_id ){
 	//check if we are out of range: 
 	if(mvd_id){
 		var time_ary = $j('#mv_fd_mvd_'+mvd_id).attr('name').split('/');
-		if( ntp2seconds( time_ary[1] ) <  ntp2seconds( $j('#embed_vid').get(0).start_ntp ) ){		
+		if( ntp2seconds( time_ary[1] ) <  ntp2seconds( $j('#embed_vid').get(0).start_ntp ) ){			
 			window.location =  wgArticlePath.replace( '$1', wgPageName +'/'+ time_ary[1] + '/' + time_ary[2]) + '#autoplay';
 			return ;
 		}	

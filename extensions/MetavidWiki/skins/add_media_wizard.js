@@ -11,7 +11,6 @@ var mv_add_media_wizard_path = 'http://mvbox2.cse.ucsc.edu/w/extensions/MetavidW
 
 var MV_EMBED_VIDEO_HANDLER = true; // if we should use mv_embed for all ogg_hanlder video embeds.
 
-
 if( MV_EMBED_VIDEO_HANDLER ){
 	var vidIdList = new Array();
 	addOnloadHook( function(){		

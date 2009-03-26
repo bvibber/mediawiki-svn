@@ -354,7 +354,6 @@ function mvfAutoAllPageHeader() {
 		$unique_req_param = MV_VERSION;
 	}
 	
-	/* (moved to on_dom ready)  but here as well*/
 	if( $wgEnableScriptLoader ){
 		$debug_param = ( $mvgJSDebug ||
 						 $wgRequest->getVal('debug')=='true' ||

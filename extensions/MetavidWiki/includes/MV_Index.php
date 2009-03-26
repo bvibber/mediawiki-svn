@@ -444,8 +444,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$dbr->tableName( 'mv_stream_files' ) . '.stream_id ' .
 					' AND (' . $dbr->tableName( 'mv_stream_files' ) . '.file_desc_msg = ' .
 						$dbr->addQuotes( $mvDefaultVideoQualityKey ) .
-					' OR '. $dbr->tableName( 'mv_stream_files' ) .'.file_desc_msg = ' . 
-						$dbr->addQuotes( $mvDefaultFlashQualityKey ) .
+					//' OR '. $dbr->tableName( 'mv_stream_files' ) .'.file_desc_msg = ' . 
+					//	$dbr->addQuotes( $mvDefaultFlashQualityKey ) .
 					')'.
 				') ';
 

@@ -631,17 +631,19 @@ if($stream_url) {
 <?php echo mvRSSFeed::xmlEncode( $talkpage->getFullUrl() )?>
 </comments>
 <?php
+
 $person='';
 if($pmvd && $pmvd->Speech_by ){
 	$personTitle = Title :: newFromText( $pmvd->Speech_by );				
 ?>
-<media:person label="<?php echo $personTitle->getText() ?>" url="<?php echo mvRSSFeed::xmlEncode( $personTitle->getFullURL() ); ?>
+<media:person label="<?php echo $personTitle->getText() ?>" url="<?php echo mvRSSFeed::xmlEncode( $personTitle->getFullURL() ); ?>" />
 <?php
 }
 //handle any parent clip tag info: 
 if( $pmvd ){ ?>
 <media:parent_clip label="<?php echo $parent_clip_desc ?>" url="<?php echo mvRSSFeed::xmlEncode( $pAnnoStreamTitle->getFullUrl() )  ?>" />
-	<?php if( $pmvd->Bill ){ 		
+<?php
+	 if( $pmvd->Bill ){ 		
 		$bTitle = Title :: newFromText( $pmvd->Bill );
 		?>
 <media:bill label="<?php echo $bTitle->getText() ?>" url="<?php echo mvRSSFeed::xmlEncode( $bTitle->getFullURL() );?>" />		
@@ -650,11 +652,12 @@ if( $pmvd ){ ?>
 		foreach($pmvd->category as $cat_titlekey ){ 
 			$cTitle = $cTitle = Title :: MakeTitle( NS_CATEGORY, $cat_titlekey );
 		?>
-		<media:category label="<?php echo $cTitle->getText()?>" url=<?php echo mvRSSFeed::xmlEncode( $cTitle->getFullUrl())  ?>" />
-<?php
+<media:category label="<?php echo $cTitle->getText()?>" url="<?php echo mvRSSFeed::xmlEncode( $cTitle->getFullUrl())  ?>" />
+<?php		
 		}
 	}
 }
+
 ?>
 <media:thumbnail
 	url="<?php echo mvRSSFeed::xmlEncode( $thumb_ref ) ?>" />	

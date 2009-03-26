@@ -17,7 +17,8 @@ mvFirefogg.prototype = {
 	upload_mode:'autodetect', 	//can be 'post', 'chunks' or autodetect. (autodetect issues an api call)   
 	encoder_settings:{			//@@todo allow server to set this 
 		'maxSize': 400, 
-		'videoBitrate': 400
+		'videoBitrate': 400,
+		'noUpscaling':true
 	},	
 	formData:{}, //the form to be submitted
 	
