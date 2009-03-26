@@ -223,8 +223,9 @@ class SpecialEmailPage extends SpecialPage {
 			} else $css = '';
 
 			# Create a html wrapper for the message
+			$doctype = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
 			$head    = "<head>$css</head>";
-			$message = "<html>$head<body style=\"margin:10px\"><div id=\"bodyContent\">$message</div></body></html>";
+			$message = "$doctype\n<html>$head<body style=\"margin:10px\"><div id=\"bodyContent\">$message</div></body></html>";
 		}
 
 		# Send message or list recipients
