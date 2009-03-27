@@ -112,7 +112,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		if (beginTask("finishAliases", "resolveRedirects:property")) {
 			RelationTable aliasTable = (RelationTable)conceptStoreSchema.getTable("alias");
 			
-			int n = resolveRedirects(aliasTable, propertyTable, "concept_name", "concept", AliasScope.REDIRECT, 3, null);     
+			int n = resolveRedirects(aliasTable, propertyTable, "concept_name", "concept", AliasScope.REDIRECT, 3, null, null);     
 			endTask("finishAliases", "resolveRedirects:property", n+" entries");
 		}
 	}
