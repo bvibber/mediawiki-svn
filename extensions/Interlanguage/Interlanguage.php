@@ -52,7 +52,7 @@ function InterlanguageExtension( &$parser, $param) {
 
 	$url = $wgInterlanguageExtensionApiUrl . "?action=query&prop=langlinks&" . 
 			"lllimit=500&format=php&redirects&titles=" . strtr( $param, ' ', '_' );
-	$key = wfMemc( 'Interlanguage', md5( $url ) );
+	$key = wfMemcKey( 'Interlanguage', md5( $url ) );
 	$res = $wgMemc->get( $key );
 
 	if ( !$res ) {
