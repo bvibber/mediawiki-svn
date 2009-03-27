@@ -66,6 +66,10 @@ class ApiCodeUpdate extends ApiBase {
 		// Discourage casual browsing :)
 		return true;
 	}
+	
+	public function isWriteMode() {
+		return true;
+	}
 
 	public function getAllowedParams() {
 		return array(
