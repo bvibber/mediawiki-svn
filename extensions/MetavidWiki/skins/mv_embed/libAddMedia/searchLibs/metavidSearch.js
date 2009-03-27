@@ -68,19 +68,20 @@ metavidSearch.prototype = {
 		return '{{PD-USGov}}';
 	},	
 	getExtraResourceDescWiki:function( rObj ){
+		var o = '';
 		//check for person	
 		if( rObj.person['label'])
-			o += '* featuring [[' + rObj.person.lable + ']]' + "\n";
+			o += '* featuring [[' + rObj.person['label'] + ']]' + "\n";
 			
 		if( rObj.parent_clip )
 			o += '* part of longer [' + rObj.parent_clip + ' video clip]'+ "\n";
 			
 		if( rObj.person.url)
-			o += '* also see speeches by [' + trimStr( rObj.person.url ) + ' ' + rObj.person.lable + ']';
+			o += '* also see speeches by [' + trimStr( rObj.person.url ) + ' ' + rObj.person['label'] + ']'+ "\n";
 		
 		//check for bill:
-		if( rObj.bill['label'] && rObj.bill['url'])
-			o += '* related to bill: [[' + rObj.bill['label'] + ']] more bill [' + rObj.bill['url'] + ' video clips]';
+		if( rObj.bill && rObj.bill['label'] && rObj.bill['url'])
+			o += '* related to bill: [[' + rObj.bill['label'] + ']] more bill [' + rObj.bill['url'] + ' video clips]'+ "\n";			
 		return o;
 	},	
 	//format is "quote" followed by [[name of person]]
@@ -147,7 +148,7 @@ metavidSearch.prototype = {
 		rObj['license_template_tag']='PD-USGov';		
 		//update based on new start time: 		
 		js_log('url is: ' + rObj.src + ' ns: ' + rObj.start_time + ' ne:' + rObj.end_time);		
-						
+			
 		return rObj;
 	},
 	getDateFromLink:function( link ){

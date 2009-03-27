@@ -15,6 +15,8 @@ var force_mv_embed_path = false;
 
 var MV_EMBED_VIDEO_HANDLER = true; // if we should use mv_embed for all ogg_hanlder video embeds.
 
+
+//*code should not have to modify anything below*/
 if( MV_EMBED_VIDEO_HANDLER ){
 	var vidIdList = new Array();
 	addOnloadHook( function(){		
@@ -35,7 +37,6 @@ if( MV_EMBED_VIDEO_HANDLER ){
 	});
 }
 
-//*code should not have to modify anything below*/
 //check if we are on a edit page:
 if( wgAction == 'edit' || wgAction == 'submit' ){
 	//add onPage ready request:
