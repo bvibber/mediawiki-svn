@@ -12,7 +12,9 @@ $messages = array();
  * @author Inez Korczyński <korczynski@gmail.com>
  */
 $messages['en'] = array(
-	'ajaxLogin1' => 'To complete your log in, you must enter a new password.  This will take you away from this edit page and you may lose your current edit.',
+	'ajaxlogin-desc' => 'Dynamic box which allow users to login and remind password',
+	'ajaxLogin1' => 'To complete your log in, you must enter a new password.
+This will take you away from this edit page and you may lose your current edit.',
 	'ajaxLogin2' => 'Are you sure? You may lose your edits if you leave this page now.',
 	'ajaxlogin-create' => 'Create an account',
 );

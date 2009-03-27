@@ -4,7 +4,7 @@
  *
  * @file
  * @ingroup Extensions
- * @version 1.1
+ * @version 1.1.1
  * @author Inez Korczyński <korczynski(at)gmail(dot)com>
  * @author Jack Phoenix <jack@countervandalism.net>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
@@ -17,10 +17,11 @@ if( !defined( 'MEDIAWIKI' ) ){
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'name' => 'AjaxLogin',
-	'version' => '1.1',
+	'version' => '1.1.1',
 	'author' => array( 'Inez Korczyński', 'Jack Phoenix' ),
 	'description' => 'Dynamic box which allow users to login and remind password',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxLogin',
+	'descmsg' => 'ajaxlogin-desc',
 );
 
 // Array of skins for which AjaxLogin is enabled.
