@@ -49,8 +49,10 @@ CREATE TABLE /*$wgDBprefix*/code_rev (
   -- Status key for how this thang is...
   -- 'new': Hasn't yet been reviewed
   -- 'fixme': This revision has some problem which needs to be resolved
+  -- 'reverted': Was completely reverted by a later revision
   -- 'resolved': Issues with this rev have been since resolved
-  -- 'ok': Reviewed, no issues
+  -- 'ok': Reviewed, no issues spotted
+  -- 'verified': Reviewed and tested, no issues spotted
   -- 'deferred': Not reviewed at this time (usually non-Wikimedia extension)
   cr_status enum('new', 'fixme', 'reverted', 'resolved', 'ok', 'verified', 'deferred') not null default 'new',
 
