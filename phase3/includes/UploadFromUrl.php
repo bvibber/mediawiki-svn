@@ -54,7 +54,7 @@ class UploadFromUrl extends UploadBase {
 	 * Returns true if there was an error, false otherwise
 	 */
 	private function curlCopy() {
-		global $wgOut;
+		global $wgOut, $wgCopyUploadTimeout;
 
 		# Open temporary file
 		$this->mCurlDestHandle = @fopen( $this->mTempPath, "wb" );
@@ -65,7 +65,7 @@ class UploadFromUrl extends UploadBase {
 
 		$ch = curl_init();
 		curl_setopt( $ch, CURLOPT_HTTP_VERSION, 1.0); # Probably not needed, but apparently can work around some bug
-		curl_setopt( $ch, CURLOPT_TIMEOUT, 60*60); # 1 hour timeout
+		curl_setopt( $ch, CURLOPT_TIMEOUT, $wgCopyUploadTimeout); # 1 hour timeout
 		curl_setopt( $ch, CURLOPT_LOW_SPEED_LIMIT, 512); # 0.5KB per second minimum transfer speed
 		curl_setopt( $ch, CURLOPT_URL, $this->mUrl);
 		curl_setopt( $ch, CURLOPT_WRITEFUNCTION, array( $this, 'uploadCurlCallback' ) );
