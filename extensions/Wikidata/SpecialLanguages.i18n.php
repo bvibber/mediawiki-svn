@@ -11,6 +11,7 @@ $wdMessages = array();
  */
 $wdMessages['en'] = array(
 	'languages'                             => 'Wikidata: Language manager',
+	'langman-desc'                          => 'Add and change language settings with [[Special:Languages]]',
 	'langman_title'                         => 'Language manager',
 	'langman_not_allowed'					=> 'You do not have permission to change language settings.',
 	'langman_header'						=> 'Type the language code and its English name below:',
@@ -247,6 +248,7 @@ Please contact the server operator or administrator.",
 	
 	'ow_nstab_definedmeaning'			=> 'defined meaning',
 	'ow_nstab_edit_copy'				=> 'edit copy',
+	'right-addlanguage'				=> 'Add and change language settings',
 );
 
 /** Message documentation (Message documentation)

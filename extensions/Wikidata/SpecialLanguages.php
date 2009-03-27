@@ -15,6 +15,7 @@ $wgExtensionFunctions[] = 'wfSpecialManageLanguages';
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Language manager',
 	'author' => 'Erik Moeller',
+	'descmsg' => 'langman-desc',
 );
 
 require_once( 'SpecialLanguages.i18n.php' );
