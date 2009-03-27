@@ -646,7 +646,7 @@ if($pmvd && $pmvd->Speech_by ){
 }
 //handle any parent clip tag info: 
 if( $pmvd ){ ?>
-<media:parent_clip label="<?php echo $parent_clip_desc ?>" url="<?php echo mvRSSFeed::xmlEncode( $pAnnoStreamTitle->getFullUrl() )  ?>" />
+<media:parent_clip url="<?php echo mvRSSFeed::xmlEncode( $pAnnoStreamTitle->getFullUrl() )  ?>" />
 <?php
 	 if( $pmvd->Bill ){ 		
 		$bTitle = Title :: newFromText( $pmvd->Bill );

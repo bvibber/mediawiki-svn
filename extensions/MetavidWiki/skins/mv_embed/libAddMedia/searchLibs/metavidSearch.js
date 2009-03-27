@@ -39,9 +39,11 @@ metavidSearch.prototype = {
 		url+='&limit=' + this.cp.limit;
 		url+='&offset=' + this.cp.offset;				
 		
-		do_request(url, function(data){ 
+		do_request(url, function(data){
+			js_log('mvSearch: got data response'); 
 			//should have an xml rss data object:
 			_this.addRSSData( data , url );
+			
 			//do some metavid specific pos processing on the rObj data:
 			for(var i in _this.resultsObj){				
 				var rObj = _this.resultsObj[i];				
@@ -64,19 +66,42 @@ metavidSearch.prototype = {
 	//metavid descption tied to public domain license key (government produced content) 
 	getPermissionWikiTag:function( rObj ){
 		return '{{PD-USGov}}';
-	},
-	getEmbedWikiText:function(rObj, options){
-		//if we are using a local copy do the standard embed:  
-		if( this.cp.local_copy == true)
-			return this.parent_getEmbedWikiText(rObj, options);								
-		//else get using the updated property id::		
-		js_log('getEmbedWikiText missing embed method for this.cp.local_copy==false');
-	},
+	},	
+	getExtraResourceDescWiki:function( rObj ){
+		//check for person	
+		if( rObj.person['label'])
+			o += '* featuring [[' + rObj.person.lable + ']]' + "\n";
+			
+		if( rObj.parent_clip )
+			o += '* part of longer [' + rObj.parent_clip + ' video clip]'+ "\n";
+			
+		if( rObj.person.url)
+			o += '* also see speeches by [' + trimStr( rObj.person.url ) + ' ' + rObj.person.lable + ']';
+		
+		//check for bill:
+		if( rObj.bill['label'] && rObj.bill['url'])
+			o += '* related to bill: [[' + rObj.bill['label'] + ']] more bill [' + rObj.bill['url'] + ' video clips]';
+		return o;
+	},	
 	//format is "quote" followed by [[name of person]]
-	getInlineDescWiki:function( rObj ){		
-		var desc_val = this.parent_getInlineDescWiki(rObj);
-		var desc_parts = desc_val.split(':',2);
-		return '"' + desc_parts[1].replace(/^\s+|\s+$/g,"") + '" by [[' + desc_parts[0].replace(/^\s+|\s+$/g,"") + ']]';
+	getInlineDescWiki:function( rObj ){							
+		var o = this.parent_getInlineDescWiki( rObj );		
+		//add in person if found
+		if( rObj.person['label'] ){
+			o = trimStr( o.replace(rObj.person['label'], '') );
+			//trim leading : 
+			if(o.substr(0,1)==':')
+				o =  trimStr( o.substr(1) );				
+			//add quotes and person at the end: 
+			var d = this.getDateFromLink( rObj.link );
+			o ='"' + o + '" [[' + rObj.person['label'] + ']] on ' + d.toDateString();
+		}		
+		//could do ref or direct link:  
+		o += ' \'\'[' + trimStr(rObj.link) + ' source clip]\'\' '; 
+		
+		//var o= '"' + o + '" by [[' + rObj.person['label'] + ']] '+
+		//		'<ref>[' + rObj.link + ' Metavid Source Page] for ' + rObj.title +'</ref>';		
+		return o;		
 	},
 	getEmbedHTML:function( rObj , options ){
 		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
@@ -117,16 +142,20 @@ metavidSearch.prototype = {
 	updateDataForImport:function( rObj ){
 		rObj['author']='US Government';
 		//convert data to UTC type date:
-		var dateExp = new RegExp(/_([0-9]+)\-([0-9]+)\-([0-9]+)/);	
-		var dParts = rObj.link.match (dateExp);
-		var d = new Date();
-		var year_full = (dParts[3].length==2)?'20'+dParts[3].toString():dParts[3];
-		d.setFullYear(year_full, dParts[1]-1, dParts[2]);	
+		var d = this.getDateFromLink( rObj.link );
 		rObj['date'] = 	d.toDateString();		
 		rObj['license_template_tag']='PD-USGov';		
 		//update based on new start time: 		
 		js_log('url is: ' + rObj.src + ' ns: ' + rObj.start_time + ' ne:' + rObj.end_time);		
 						
 		return rObj;
+	},
+	getDateFromLink:function( link ){
+		var dateExp = new RegExp(/_([0-9]+)\-([0-9]+)\-([0-9]+)/);	
+		var dParts = link.match (dateExp);
+		var d = new Date();
+		var year_full = (dParts[3].length==2)?'20'+dParts[3].toString():dParts[3];
+		d.setFullYear(year_full, dParts[1]-1, dParts[2]);	
+		return d;
 	}
 }

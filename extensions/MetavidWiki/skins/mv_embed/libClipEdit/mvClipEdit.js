@@ -323,7 +323,7 @@ mvClipEdit.prototype = {
 			);
 			_this.setInOutBindings();			
 		}
-		$j('#'+this.control_ct).append(	this.getInsertDesc() );
+		$j('#'+this.control_ct).append(	_this.getInsertDescHtml() );
 		
 		if( _this.p_rsdObj && _this.p_rsdObj.import_url_mode == 'none'){
 			// in theory this code should never run since we should nto get past the repository checks 
@@ -379,7 +379,7 @@ mvClipEdit.prototype = {
 			'<div style="clear: both;"/>'+		
 			'<input id="mv_preview_clip" type="button" value="Preview/Play In-out points">';
 	},
-	getInsertDesc:function(){		
+	getInsertDescHtml:function(){	
 		var o= '<h3>Inline Description</h3>'+ 				
 					'<textarea style="width:375px;" id="mv_inline_img_desc" rows="5" cols="30">';				
 		if( this.p_rsdObj ){
@@ -387,6 +387,7 @@ mvClipEdit.prototype = {
 			o+= this.rObj.pSobj.getInlineDescWiki( this.rObj );
 		}
 		o+='</textarea><br>';		
+		js_log('getInsertDescHtml: ' + o );
 		return o;
 	},
 	getInsertAction:function(){
@@ -438,7 +439,7 @@ mvClipEdit.prototype = {
 				'<a href="#" style="display:none" class="mv_apply_scale">' + gM('mv_apply_scale') + '</a> '+
 				'<a href="#" style="display:none" class="mv_rest_scale">' + gM('mv_reset_scale') + '</a><br> '+
 				*/
-				_this.getInsertDesc() + 
+				_this.getInsertDescHtml() + 
 				_this.getInsertAction()					
 		);
 		//add bindings: 

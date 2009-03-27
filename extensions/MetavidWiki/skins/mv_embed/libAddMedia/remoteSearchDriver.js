@@ -980,13 +980,13 @@ remoteSearchDriver.prototype = {
 						js_log("resource not present: update:"+ _this.cFileNS + ':' + rObj.target_resource_title);
 						
 						//update the rObj with import info
-						rObj.pSobj.updateDataForImport( rObj );
-						
+						rObj.pSobj.updateDataForImport( rObj );										
+					
 						//setup the resource description from resource description: 					
 						var base_resource_desc = '{{Information '+"\n"+
-						'|Description= ' + rObj.title + ' imported from ' + '[' + cp.homepage + 
-									 ' ' + cp.title+']' + "\n" +
-						'|Source=' + '[' + rObj.link.replace(/^\s\s*/, '').replace(/\s\s*$/, '') +' Original Source]'+ "\n";
+							'|Description= ' + rObj.pSobj.getImportResourceDescWiki( rObj );
+						//output person and bill info if 
+						base_resource_desc+='|Source=' + '[' + trimStr( rObj.link ) + ' Original Source]'+ "\n";
 						
 						if( rObj.author )
 							base_resource_desc+='|Author=' + rObj.author +"\n";										
@@ -1044,7 +1044,7 @@ remoteSearchDriver.prototype = {
 							);*/
 							//load the preview text: 
 							_this.getParsedWikiText( $j('#rsd_import_ta').val(), _this.cFileNS +':'+ rObj.target_resource_title, function( o ){
-								js_log('got updated preivew: '+ o);
+								js_log('got updated preivew: ');
 								$j('#rsd_import_desc').html(o);
 							});
 						});
@@ -1157,8 +1157,8 @@ remoteSearchDriver.prototype = {
 						'</div>' +
 					'</div>');						
 			//update the preview_wtext
-			_this.updatePreviewText( rObj );
-										   
+			_this.updatePreviewText( rObj );		
+				   
 			_this.getParsedWikiText(_this.preview_wtext, _this.target_title,
 				function(phtml){
 					$j('#rsd_preview_display').html( phtml );
@@ -1181,6 +1181,9 @@ remoteSearchDriver.prototype = {
 		_this.preview_wtext = _this.caret_pos.text.substring(0, _this.caret_pos.s) + 
 								rObj.pSobj.getEmbedWikiText( rObj ) + 
 							   _this.caret_pos.text.substring( _this.caret_pos.s );
+		//check for missing </refrences>
+		if( _this.preview_wtext.indexOf('<references/>') ==-1 &&  _this.preview_wtext.indexOf('<ref>') != -1 )
+			 _this.preview_wtext =  _this.preview_wtext + '<references/>';
 	},
 	getParsedWikiText:function( wikitext, title,  callback ){
 		do_api_req( {
@@ -1272,8 +1275,10 @@ remoteSearchDriver.prototype = {
 				//check if we have more results (next prev link)
 				if(  cp.offset >=  cp.limit )
 					out+=' <a href="#" id="rsd_pprev">' + gM('rsd_results_prev') + ' ' + cp.limit + '</a>';
+					
 				if( cp.sObj.more_results )					
 					out+=' <a href="#" id="rsd_pnext">' + gM('rsd_results_next') + ' ' + cp.limit + '</a>';
+					
 				$j(target).html(out);
 				//set bindings 
 				$j('#rsd_pnext').click(function(){
@@ -1320,15 +1325,27 @@ remoteSearchDriver.prototype = {
 		this.drawOutputResults();
 	}
 }
-//default values: 
-// tag_name@{attribute}
-var rsd_default_rss_item_mapping = {
+//default values:
+// @key is name of rObj variable 
+// @value is where to find the value in the item xml
+// 
+// *format:*  
+// . indicates multiple tags @ seperates the tag from attribute list 
+// {.}tag_name@{attribute1|attribute12}
+// @@todo should probably switch this over to something like Xpath if we end up parsing a lot of rss formats 
+var rsd_default_rss_item_mapping = {	
 	'poster'	: 'media:thumbnail@url',
 	'roe_url'	: 'media:roe_embed@url',
+	'person'	: 'media:person@label|url',	
+	'parent_clip':'media:parent_clip@url',
+	'bill'		: 'media:bill@label|url',	
 	'title'		: 'title',
 	'link'		: 'link',
-	'desc'		: 'description'
+	'desc'		: 'description',
+	//multiple items
+	'category'  : '.media:category@label|url'
 }
+
 var mvBaseRemoteSearch = function(initObj) {
 	return this.init(initObj);
 };
@@ -1366,7 +1383,7 @@ mvBaseRemoteSearch.prototype = {
 	* @param $data XML data to parse
 	* @param provider_url 	the source url (used to generate absolute links)  
 	*/
-	addRSSData:function( data , provider_url ){
+	addRSSData:function( data , provider_url ){	
 		var _this = this;
 		var http_host = '';
 		var http_path = '';		
@@ -1374,33 +1391,58 @@ mvBaseRemoteSearch.prototype = {
 			pUrl =  parseUri( provider_url );
 			http_host = pUrl.protocol +'://'+ pUrl.authority;  
 			http_path = pUrl.directory;	
-		}
-		items = data.getElementsByTagName('item');
-		$j.each(data.getElementsByTagName('item'), function(inx, item){		
-			var rObj ={};			
-			for(var i in rsd_default_rss_item_mapping){								
-				var selector = rsd_default_rss_item_mapping[i].split('@');
+		}			
+		var items = data.getElementsByTagName('item');
+		//js_log('found ' + items.length );
+		$j.each(items, function(inx, item){		
+			var rObj = {};			
+			for(var i in rsd_default_rss_item_mapping){														
+				var selector = rsd_default_rss_item_mapping[i].split('@');								
 				
-				var tag_name = selector[0];
-				var attr_name = null;								
+				var flag_multiple = (  selector[0].substr(0,1) == '.' ) ? true : false;
+				if( flag_multiple ){
+					rObj[i] = new Array();
+					var tag_name = selector[0].substr(1);
+				}else{					
+					var tag_name = selector[0];
+				}
 				
-				if( selector[1] )
-					attr_name = selector[1];
+				var attr_name = null;												
+				if( typeof selector[1] != 'undefined'){
+					attr_name = selector[1];									
+					if( attr_name.indexOf('|') != -1 )
+						attr_name = attr_name.split('|');	
+				}																																
+				$j.each(item.getElementsByTagName( tag_name ), function (inx, node){				
+					var tag_val = ''; 												
+					if( node!=null && attr_name == null ){					
+						if( node.childNodes[0] != null){									
+							tag_val = trimStr( node.textContent ) ;							
+						}
+					}				
+					if( node!=null && attr_name != null){
+						if(typeof attr_name == 'string'){ 
+							tag_val = trimStr( $j(node).attr( attr_name ) );
+						}else{
+							var attr_vals = {};
+							for(var j in attr_name){
+								if( $j(node).attr( attr_name[j]).length != 0)
+									attr_vals[ attr_name[j] ] = trimStr( $j(node).attr( attr_name[j]) );
+							}
+							tag_val = attr_vals ;
+						}
+					}									
+									
+					if(flag_multiple){
+						rObj[i].push( tag_val)
+					}else{
+						rObj[i] = tag_val;
+					} 																			
+				});		
+									
+			} // done with property loop
+						
 				
-				//grab the first match 
-				var node = item.getElementsByTagName( tag_name )[0];
-				//js_log('node: ' + node +  ' nv:' +  $j(node).html() + ' nv[0]'+ node.innerHTML + 
-				//' cn' + node.childNodes[0].nodeValue  );				
-					
-				if( node!=null && attr_name == null ){
-					if( node.childNodes[0] != null){			
-						rObj[i] =  node.textContent;						
-					}			
-				}	
-								
-				if( node!=null && attr_name != null)
-					rObj[i] = $j(node).attr( attr_name );									
-			}	
 			//make relative urls absolute:
 			var url_param = new Array('src', 'poster'); 
 			for(var j=0; j < url_param.length; j++){
@@ -1414,14 +1456,14 @@ mvBaseRemoteSearch.prototype = {
 					}
 				}
 			}			
-			//force a mime type for now.. in the future generalize for other RSS feeds 
+			//force a mime type for now.. in the future generalize for other RSS feeds and conversions 
 			rObj['mime'] = 'video/ogg';
 			//add pointer to parent search obj:( this.cp.limit )? this.cp.limit : this.limit,
 		
 			rObj['pSobj'] = _this;
 			//add the result to the result set: 
-			_this.resultsObj[inx] = rObj;	
-			_this.num_results++;		
+			_this.resultsObj[ inx ] = rObj;	
+			_this.num_results++;
 		});		
 	},	
 	//by default just return the existing image with callback 
@@ -1432,11 +1474,11 @@ mvBaseRemoteSearch.prototype = {
 	getInlineDescWiki:function( rObj ){
 		//return striped html  & trim white space 
 		if(rObj.desc)
-			return rObj.desc.replace(/(<([^>]+)>)/ig,"").replace(/^\s+|\s+$/g,"");
+			return trimStr( rObj.desc.replace(/(<([^>]+)>)/ig,"") );
 		//no desc avaliable: 
 		return '';
 	},
-	//default licence permision wiki text is cc based template mapping (does not confirm the templates actually exist)  
+	//default license permission wiki text is cc based template mapping (does not confirm the templates actually exist)  
 	getPermissionWikiTag: function( rObj ){
 		//check that its a defined creative commons licnese key: 
 		if( typeof   this.rsd.licenses.cc.licenses[ rObj.license.key ] != 'undefined' ){
@@ -1444,6 +1486,14 @@ mvBaseRemoteSearch.prototype = {
 		}else if( rObj.license.lurl ) {
 			return '{{Template:External_License|' + rObj.license.lurl + '}}';
 		}
+	},
+	getImportResourceDescWiki:function(rObj){
+		return rObj.title + ' imported from ' + '[' + this.cp.homepage + 
+			' ' + this.cp.title+']';
+	},
+	//for thigns like categories and the like
+	getExtraResourceDescWiki:function( rObj ){
+		return '';
 	},
 	//by default just return the poster (clients can overide) 
 	getImageTransform:function(rObj, opt){

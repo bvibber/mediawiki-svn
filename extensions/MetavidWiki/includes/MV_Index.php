@@ -191,16 +191,16 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		return $ret_ary;
 	}	
  	//gets an Annotative layer that encapsulates the mvTilte  
-	function getParentAnnotativeLayers(& $mvTitle){
-		//first check the cache: 
-		if(count($this->annoCache)!=0){
-			foreach($this->annoCache as $aMVD){
+	static function getParentAnnotativeLayers(& $mvTitle){
+		//first check if we are in range of the cache: 
+		if(count(self::$annoCache)!=0){
+			foreach(self::$annoCache as $aMVD){
 				if(	$aMVD->start_time <=  $mvTitle->getStartTimeSeconds() && 
 					$aMVD->start_time <=  $mvTitle->getEndTimeSeconds() && 
 					$aMVD->end_time >= $mvTitle->getEndTimeSeconds() && 
 					$aMVD->end_time >= $mvTitle->getEndTimeSeconds() && 
 					$aMVD->stream_id ==  $mvTitle->getStreamId() ){
-						//just return the cached result (worlds faster than the set of db queries below)			
+						//just return the cached result (faster than the set of db queries below)			
 						return $aMVD;
 				}
 			}
@@ -230,7 +230,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$aMvd_rows = MV_Index::getMVDMeta($res, false, 'Speech_by,Bill,category');
 		//returns the result in array set to current: 
 		$aMvd = end($aMvd_rows );		
-		if(!isset($this->annoCache[ $aMvd->id ])){
+		if(!isset(self::$annoCache[ $aMvd->id ])){
 			$this->annoCache[ $aMvd->id ] = $aMvd;
 		};		
 		return $aMvd;
