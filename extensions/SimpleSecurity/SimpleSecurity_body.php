@@ -33,6 +33,7 @@ class SimpleSecurity {
 
 		# Load messages
 		wfLoadExtensionMessages ( 'SimpleSecurity' );
+		$wgMessageCache->addMessages( array( 'protect-unchain' => wfMsg( 'security-unchain' ) ) );
 		$wgMessageCache->addMessages( array( 'badaccess-group1' => wfMsg( 'badaccess-group0' ) ) );
 		$wgMessageCache->addMessages( array( 'badaccess-group2' => wfMsg( 'badaccess-group0' ) ) );
 		$wgMessageCache->addMessages( array( 'badaccess-groups' => wfMsg( 'badaccess-group0' ) ) );
