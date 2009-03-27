@@ -116,7 +116,7 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,
+			'd'		:1,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -142,7 +142,7 @@ remoteSearchDriver.prototype = {
 			'd'		:0,
 			'title' : 'Archive.org',
 			'desc'	: 'The Internet Archive, a digital library of cultural artifacts',
-			'homepage':'http://archive.org',
+			'homepage':'http://www.archive.org/about/about.php',
 			
 			'api_url':'http://homeserver7.us.archive.org:8983/solr/select',
 			'lib'	: 'archiveOrg',
@@ -153,7 +153,7 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,			
+			'd'		:0,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
@@ -435,6 +435,7 @@ remoteSearchDriver.prototype = {
 		});  
 	},
 	runSearch: function(){			
+		js_log("f:runSearch");
 		//draw_direct_flag
 		var draw_direct_flag = true;			
 		//set loading div: 
@@ -470,14 +471,16 @@ remoteSearchDriver.prototype = {
 		}
 		
 		//draw the results without running a query
-		if(draw_direct_flag)
-			this.drawOutputResults();		
+		if( draw_direct_flag ){
+			js_log('do drawOutputResults direct')
+			this.drawOutputResults();
+		}		
 	},	
 	//issue a api request & cache the result
 	//this check can be avoided by setting the this.import_url_mode = 'api' | 'form' | insted of 'autodetect' or 'none'
 	checkForCopyURLSupport:function ( callback ){
 		var _this = this;
-		js_log('checkForCopyURLSupport');
+		js_log('checkForCopyURLSupport');	
 		if( this.import_url_mode == 'autodetect' ){
 			do_api_req( {
 				'data':{ 'action':'paraminfo','modules':'upload' },
@@ -494,9 +497,9 @@ remoteSearchDriver.prototype = {
 															   // but might be overkill for now.  
 						success: function( form_html ){							
 							if( form_html.indexOf( 'wpUploadFileURL' ) != -1){
-								_this.import_url_mode= 'form';	
+								_this.import_url_mode= 'form';											
 							}else{
-								_this.import_url_mode= 'none';
+								_this.import_url_mode= 'none';							
 							}
 							callback();
 						},
@@ -574,8 +577,8 @@ remoteSearchDriver.prototype = {
 			return false;
 		}
 		
-		eval('var libLoadReq = {'+cp.lib+'Search: \'libAddMedia/searchLibs/' +cp.lib + 'Search.js\' };');			
-		mvJsLoader.doLoad( libLoadReq, function(){
+		eval('var libLoadReq = {'+cp.lib+'Search: \'libAddMedia/searchLibs/' +cp.lib + 'Search.js\' };');
+		mvJsLoader.doLoad( libLoadReq, function(){		
 			//else we need to run the search: 
 			var iObj = {'cp':cp, 'rsd':_this};			
 			eval('cp.sObj = new '+cp.lib+'Search( iObj );');
@@ -658,7 +661,7 @@ remoteSearchDriver.prototype = {
 			'data':reqObj,
 			'url':this.local_wiki_api_url
 			}, function(data){
-				//propogate the rO
+				//@@todo propogate the rObj
 				var rObj = {};
 			}
 		);
@@ -794,11 +797,11 @@ remoteSearchDriver.prototype = {
 			'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
 				'<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
 				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:35px;left:5px;bottom:0px;'+
-					'width:' + (maxWidth + 30) + 'px;" >' +
+					'width:' + (maxWidth + 25) + 'px;" >' +
 						mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
 				'</div>'+
 				'<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
-					'top:35px;left:' + (maxWidth+30) +'px;bottom:0px;right:0px;padding:5px;overflow:auto;">'+
+					'top:35px;left:' + ( maxWidth + 30 ) +'px;bottom:0px;right:0px;padding:5px;overflow:auto;">'+
 					mv_get_loading_img() +  					
 				'</div>'+
 			'</div>');
@@ -983,25 +986,26 @@ remoteSearchDriver.prototype = {
 						rObj.pSobj.updateDataForImport( rObj );										
 					
 						//setup the resource description from resource description: 					
-						var base_resource_desc = '{{Information '+"\n"+
+						var wt = '{{Information '+"\n"+
 							'|Description= ' + rObj.pSobj.getImportResourceDescWiki( rObj );
 						//output person and bill info if 
-						base_resource_desc+='|Source=' + '[' + trimStr( rObj.link ) + ' Original Source]'+ "\n";
+						wt+='|Source=' + '[' + trimStr( rObj.link ) + ' Original Source]'+ "\n";
 						
 						if( rObj.author )
-							base_resource_desc+='|Author=' + rObj.author +"\n";										
+							wt+='|Author=' + rObj.author +"\n";										
 							
 						if( rObj.date )
-							base_resource_desc+='|Date=' + rObj.date +"\n";								
+							wt+='|Date=' + rObj.date +"\n";								
 						
 						//add the Permision info: 						
-						base_resource_desc+='|Permission=' + rObj.pSobj.getPermissionWikiTag( rObj ) +"\n";
+						wt+='|Permission=' + rObj.pSobj.getPermissionWikiTag( rObj ) +"\n";
 							
 						if( rObj.other_versions )
-							base_resource_desc+='|other_versions=' + rObj.other_versions + "\n";
+							wt+='|other_versions=' + rObj.other_versions + "\n";
 												
-						base_resource_desc+='}}';
-						
+						wt+='}}';
+						//get any extra categories or helpful links
+						wt+= rObj.pSobj.getExtraResourceDescWiki( rObj );
 					
 						
 						$j('#rsd_resource_import').remove();//remove any old resource imports
@@ -1023,7 +1027,7 @@ remoteSearchDriver.prototype = {
 									'<input type="text" size="30" value="' + rObj.target_resource_title + '" readonly="true"><br>'+
 									'<strong>Edit WikiText Resource Description:</strong>(will be replaced by forms soon)'+																									
 									'<textarea id="rsd_import_ta" id="mv_img_desc" style="width:90%;" rows="8" cols="50">'+
-										base_resource_desc + 
+										wt + 
 									'</textarea><br>'+
 									'<input type="checkbox" value="true" id="wpWatchthis" name="wpWatchthis" tabindex="7"/>'+
 									'<label for="wpWatchthis">Watch this page</label><br>'+
@@ -1034,7 +1038,7 @@ remoteSearchDriver.prototype = {
 								//output the rendered and non-renderd version of description for easy swiching:	
 						'</div>');			
 						//load the preview text: 					
-						_this.getParsedWikiText( base_resource_desc, _this.cFileNS +':'+ rObj.target_resource_title, function( o ){						
+						_this.getParsedWikiText( wt, _this.cFileNS +':'+ rObj.target_resource_title, function( o ){						
 							$j('#rsd_import_desc').html(o);
 						});
 						//add bidings: 				
@@ -1103,22 +1107,24 @@ remoteSearchDriver.prototype = {
 														js_log('found: ' + sstring);	
 														$j('#rsd_resource_import').remove();											
 														cir_callback( rObj );
-													}else{
+													}else{														
 														js_log("Error or warning: (did not find: \"" + sstring + ' in output' );
 														pos_etitle = '<h1 class="firstHeading">';
-														var error_txt='';
-														if(data.indexOf(pos_etitle)!=-1){
-															var sp = data.indexOf(pos_etitle) + pos_etitle.length;
-															error_txt = data.substr(sp , 
-																		(data.indexOf('</h1>',sp	)-sp)
-																	);
-														}
-														//var error_msg = 
-														$j('#rsd_resource_import').html(
-															'<b>error importing asset (we should have better error handling soon)</b><br>'+
-															error_txt + '<br>'+
-															'<a href="#" id="rsd_import_error" >Cancel import</a>'													
+														var error_txt = form_txt = '';																																																			
+														var res = grabWikiFormError( data );
+														
+														if( res.error_txt )
+															error_txt = res.error_txt;
+																
+														if( res.form_txt )
+															form_txt = res.form_txt;
+															
+														js_log( 'error text is: ' + error_txt );		
+														$j( '#rsd_resource_import' ).html( '<h3>Error</h3>' + error_txt + '<br>' + form_txt +
+																'<br>'+
+															'<a href="#" id="rsd_import_error" >Cancel import</a>'	
 														);
+														//set up cancel action: 
 														$j('#rsd_import_error').click(function(){
 															$j('#rsd_resource_import').remove();
 														});
@@ -1218,8 +1224,12 @@ remoteSearchDriver.prototype = {
 		var list_dark_url 	= mv_embed_path + 'skins/' + mv_skin_name + '/images/list_layout_icon_dark.png';
 		var list_light_url 	= mv_embed_path + 'skins/' + mv_skin_name + '/images/list_layout_icon.png';
 		
-		
-		$j('#rsd_results').append('<div id="rds_results_bar">'+
+		var about_desc ='';
+		if( this.content_providers[this.disp_item] ){
+			var cp = this.content_providers[this.disp_item];
+			about_desc ='<div style="position:absolute;bottom:0px;left:5px;"><i>About <a href="'+ cp.homepage + '" target="_new" >'+ cp.title +'</a> </i></div>';
+		}
+		$j('#rsd_results').append( about_desc + '<div id="rds_results_bar">'+				
 			'<span style="position:relative;top:-5px;font-style:italic;">'+
 				gM('rsd_layout')+' '+
 			'</span>'+
@@ -1369,7 +1379,7 @@ mvBaseRemoteSearch.prototype = {
 			this[i] = initObj[i];
 		}
 		return this;
-	},
+	},	
 	getSearchResults:function(){
 		//empty out the current results before issuing a request 
 		this.resultsObj = {};
@@ -1465,7 +1475,7 @@ mvBaseRemoteSearch.prototype = {
 			_this.resultsObj[ inx ] = rObj;	
 			_this.num_results++;
 		});		
-	},	
+	},		
 	//by default just return the existing image with callback 
 	getImageObj:function( rObj, size, callback){
 		callback( {'url':rObj.poster} );

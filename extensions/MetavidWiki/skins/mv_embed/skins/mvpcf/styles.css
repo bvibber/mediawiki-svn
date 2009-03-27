@@ -612,6 +612,19 @@ div.rsd_selected {
 	height:22px;
 	float:left;
 }
+#mv_layout_left_img{
+	width:50px;
+	height:33px;
+	background-image: url('images/image_layout_left.png');
+	float:left;
+}
+#mv_layout_right_img{
+	width:50px;
+	height:33px;
+	background-image: url('images/image_layout_right.png');
+	float:left;
+}
+
 .mv_crop_button_base{
 	background-image: url('images/stock-tool-button-crop.png');
 }

@@ -433,16 +433,40 @@ mvClipEdit.prototype = {
 					'<span style="display:none" class="mv_crop_msg_load">' + gM('loading_txt') + '</span> '+
 					'<a href="#" style="display:none" class="mv_apply_crop">' + gM('mv_apply_crop') + '</a> '+
 					'<a href="#" style="display:none" class="mv_rest_crop">' + gM('mv_reset_crop') + '</a> '+
-				'<br style="clear:both"><br>'+				
-				/*'<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+gM('mv_scale')+'"></div>'+				
-				'<a href="#" class="mv_scale_msg">' + gM('mv_scale') + '</a><br>'+
-				'<a href="#" style="display:none" class="mv_apply_scale">' + gM('mv_apply_scale') + '</a> '+
-				'<a href="#" style="display:none" class="mv_rest_scale">' + gM('mv_reset_scale') + '</a><br> '+
-				*/
+				'<hr style="clear:both"/><br>'+				
+			'<span style="float:left;">Layout:</span>' +
+				'<input type="radio" name="mv_layout" id="mv_layout_left" style="float:left"><div id="mv_layout_left_img" title="'+gM('mv_layout_left')+'"/>'+
+				'<input type="radio" name="mv_layout" id="mv_layout_right" style="float:left"><div id="mv_layout_right_img" title="'+gM('mv_layout_left')+'"/>'+	
+			'<hr style="clear:both" /><br>' + 									
 				_this.getInsertDescHtml() + 
 				_this.getInsertAction()					
 		);
-		//add bindings: 
+		/*scale: 
+		 '<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+gM('mv_scale')+'"></div>'+				
+				'<a href="#" class="mv_scale_msg">' + gM('mv_scale') + '</a><br>'+
+				'<a href="#" style="display:none" class="mv_apply_scale">' + gM('mv_apply_scale') + '</a> '+
+				'<a href="#" style="display:none" class="mv_rest_scale">' + gM('mv_reset_scale') + '</a><br> '+
+		
+		*/
+		//add bindings:
+		
+		//make sure the default is reflected:
+		if( ! _this.rObj.layout )
+			_this.rObj.layout = 'right';
+		$j('#mv_layout_' + _this.rObj.layout)[0].checked = true;
+		
+		//left radio click 
+		$j('#mv_layout_left,#mv_layout_left_img').click(function(){
+			$j('#mv_layout_right')[0].checked = false;
+			$j('#mv_layout_left')[0].checked = true;
+			_this.rObj.layout = 'left';
+		});
+		//right radio click
+		$j('#mv_layout_right,#mv_layout_right_img').click(function(){
+			$j('#mv_layout_left')[0].checked = false;
+			$j('#mv_layout_right')[0].checked = true;
+			_this.rObj.layout = 'right';
+		});
 		$j('#mv_crop_button,.mv_crop_msg,.mv_apply_crop').click(function(){
 			js_log('click:mv_crop_button: base width: ' + _this.rObj.width + ' bh: ' + _this.rObj.height);
 			if($j('#mv_crop_button').hasClass('mv_crop_button_selected')){				
@@ -464,7 +488,9 @@ mvClipEdit.prototype = {
 		this.applyInsertControlBindings();
 	},
 	applyVideoAdj:function(){		
-		js_log('applyVideoAdj::');				
+		js_log('applyVideoAdj::');	
+		//be sure to "stop the video (some plugins can't have DOM elements on top of them) 
+		$j('#embed_vid').get(0).stop();	
 		//update video related keys		
 		this.rObj['start_time'] = $j('#mv_start_hr_rsd').val();
 		this.rObj['end_time'] = $j('#mv_end_hr_rsd').val();

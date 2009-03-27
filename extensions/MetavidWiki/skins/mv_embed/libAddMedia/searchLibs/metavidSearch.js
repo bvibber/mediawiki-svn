@@ -1,7 +1,7 @@
 /*
 * api modes (implementations should call these objects which inherit the mvBaseRemoteSearch  
 */
-var metavidSearch = function(initObj) {		
+var metavidSearch = function(initObj) {
 	return this.init(initObj);
 };
 metavidSearch.prototype = {

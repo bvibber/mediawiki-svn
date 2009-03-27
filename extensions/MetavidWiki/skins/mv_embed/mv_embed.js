@@ -21,7 +21,7 @@ if( MV_EMBED_VERSION ){
 	MV_DO_INIT=false;	
 }
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0r12';
+var MV_EMBED_VERSION = '1.0r13';
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -1153,6 +1153,36 @@ function do_api_req( options, callback ){
 		req_url += '&' + options.jsonCB + '=' + fname;								
 		loadExternalJs( req_url );				
 	}	
+}
+
+function grabWikiFormError ( result_page ){
+		var res = {};
+		sp = result_page.indexOf('<span class="error">');
+		if(sp!=-1){
+			se = result_page.indexOf('</span>', sp);
+			res.error_txt = result_page.substr(sp, (sp-se)) + '</span>';
+		}else{
+			//look for warning: 
+			sp = result_page.indexOf('<ul class="warning">')
+			if(sp != -1){
+				se = result_page.indexOf('</ul>', sp);
+				res.error_txt = result_page.substr(sp, (se-sp)) + '</ul>';
+				//try and add the ignore form item: 
+				sfp = result_page.indexOf('<form method="post"');
+				if(sfp!=-1){
+					sfe = result_page.indexOf('</form>', sfp);
+					res.form_txt = result_page.substr(sfp, ( sfe - sfp )) + '</form>';
+				}
+			}else{
+				//one more error type check: 
+				sp = result_page.indexOf('class="mw-warning-with-logexcerpt">')
+				if(sp!=-1){
+					se = result_page.indexOf('</div>', sp);
+					res.error_txt = result_page.substr(sp, ( se - sp )) + '</div>';
+				}
+			}
+		}	
+		return res;		
 }
 //do a "normal" request 
 function do_request(req_url, callback){		 	

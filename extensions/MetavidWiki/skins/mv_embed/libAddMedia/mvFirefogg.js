@@ -374,10 +374,10 @@ mvFirefogg.prototype = {
 				//@@todo fix this: 
 				//the mediaWiki upload system does not have an API so we can\'t read errors							
 			}else{
-				var res = mvUploader.grabWikiFormError( result_page );
+				var res = grabWikiFormError( result_page );
 							
 				if(res.error_txt)
-					error_txt = opt.error_txt;
+					error_txt = res.error_txt;
 					
 				if(res.form_txt)
 					form_txt = res.form_txt;

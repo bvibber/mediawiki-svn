@@ -81,14 +81,14 @@ mediaWikiSearch.prototype = {
 										
 				this.resultsObj[page_id]={
 					'titleKey'	 : page.title,
-					'link'		 :page.imageinfo[0].descriptionurl,				
-					'title'		 :page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv|.oga/ig, ''),
-					'poster'	 :page.imageinfo[0].thumburl,
-					'thumbwidth' :page.imageinfo[0].thumbwidth,
-					'thumbheight':page.imageinfo[0].thumbheight,
-					'mime'		 :page.imageinfo[0].mime,
-					'src'		 :page.imageinfo[0].url,
-					'desc'		 :page.revisions[0]['*'],		
+					'link'		 : page.imageinfo[0].descriptionurl,				
+					'title'		 : page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv|.oga/ig, ''),
+					'poster'	 : page.imageinfo[0].thumburl,
+					'thumbwidth' : page.imageinfo[0].thumbwidth,
+					'thumbheight': page.imageinfo[0].thumbheight,
+					'mime'		 : page.imageinfo[0].mime,
+					'src'		 : page.imageinfo[0].url,
+					'desc'		 : page.revisions[0]['*'],		
 					//add pointer to parent search obj:
 					'pSobj'		 :_this,			
 					'meta':{
@@ -194,6 +194,18 @@ mediaWikiSearch.prototype = {
 			}
 		}		
 		js_log('ERROR:unsupored mime type: ' + rObj.mime);
+	},
+	getInlineDescWiki:function( rObj ){						
+		var desc = this.parent_getInlineDescWiki( rObj );
+		//just grab the description tag for inline desc:
+		var descMatch = new RegExp(/Description=(\{\{en\|)?([^|]*|)/);			
+		var dparts = desc.match(descMatch);
+				
+		if( dparts && dparts.length > 1)	
+			return (dparts.length == 2)? dparts[1] : dparts[2].replace('}}','');
+		//else return the title since we could not find the desc:
+		js_log('we could not find the Description tag in :' + desc );
+		return rObj.title;
 	},
 	//returns the inline wikitext for insertion (template based crops for now) 
 	getEmbedWikiText: function( rObj ){		
