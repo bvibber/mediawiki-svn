@@ -70,13 +70,13 @@ metavidSearch.prototype = {
 	getExtraResourceDescWiki:function( rObj ){
 		var o = '';
 		//check for person	
-		if( rObj.person['label'])
+		if(  rObj.person && rObj.person['label'])
 			o += '* featuring [[' + rObj.person['label'] + ']]' + "\n";
 			
 		if( rObj.parent_clip )
 			o += '* part of longer [' + rObj.parent_clip + ' video clip]'+ "\n";
 			
-		if( rObj.person.url)
+		if( rObj.person && rObj.person['url'] && rObj.person['label'] )
 			o += '* also see speeches by [' + trimStr( rObj.person.url ) + ' ' + rObj.person['label'] + ']'+ "\n";
 		
 		//check for bill:
@@ -85,10 +85,10 @@ metavidSearch.prototype = {
 		return o;
 	},	
 	//format is "quote" followed by [[name of person]]
-	getInlineDescWiki:function( rObj ){							
+	getInlineDescWiki:function( rObj ){								
 		var o = this.parent_getInlineDescWiki( rObj );		
 		//add in person if found
-		if( rObj.person['label'] ){
+		if( rObj.person &&  rObj.person['label'] ){
 			o = trimStr( o.replace(rObj.person['label'], '') );
 			//trim leading : 
 			if(o.substr(0,1)==':')

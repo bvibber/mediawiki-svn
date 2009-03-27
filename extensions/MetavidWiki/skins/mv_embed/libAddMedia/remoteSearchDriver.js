@@ -1427,7 +1427,8 @@ mvBaseRemoteSearch.prototype = {
 					var tag_val = ''; 												
 					if( node!=null && attr_name == null ){					
 						if( node.childNodes[0] != null){									
-							tag_val = trimStr( node.textContent ) ;							
+							//trim and strip html:
+							tag_val = trimStr( node.textContent ).replace(/(<([^>]+)>)/ig,""); 							
 						}
 					}				
 					if( node!=null && attr_name != null){
@@ -1437,18 +1438,19 @@ mvBaseRemoteSearch.prototype = {
 							var attr_vals = {};
 							for(var j in attr_name){
 								if( $j(node).attr( attr_name[j]).length != 0)
-									attr_vals[ attr_name[j] ] = trimStr( $j(node).attr( attr_name[j]) );
+									attr_vals[ attr_name[j] ] = trimStr( $j(node).attr( attr_name[j]) ).replace(/(<([^>]+)>)/ig,"");
 							}
 							tag_val = attr_vals ;
 						}
-					}									
-									
+					}																		
+							
 					if(flag_multiple){
 						rObj[i].push( tag_val)
 					}else{
 						rObj[i] = tag_val;
 					} 																			
 				});		
+				
 									
 			} // done with property loop
 						
