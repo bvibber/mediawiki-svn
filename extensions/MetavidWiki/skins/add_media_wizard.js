@@ -7,7 +7,11 @@ var wg_content_proivers_config = {}; //you can overwrite by defining (after)
 var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
 
 //if mv_embed is hosted somewhere other than near by the add_media_wizard you can define it here: 
-var mv_add_media_wizard_path = 'http://mvbox2.cse.ucsc.edu/w/extensions/MetavidWiki/skins/';
+var force_mv_add_media_wizard_path=false;
+//var force_mv_add_media_wizard_path = 'http://metavid.org/w/extensions/MetavidWiki/skins/';
+
+var force_mv_embed_path = false;
+//var force_mv_embed_path = 'http://metavid.org/w/extensions/MetavidWiki/skins/mv_embed/mvwScriptLoader.php?class=mv_embed';
 
 var MV_EMBED_VIDEO_HANDLER = true; // if we should use mv_embed for all ogg_hanlder video embeds.
 
@@ -148,7 +152,11 @@ function load_mv_embed( callback ){
 	//inject mv_embed if needed:
 	if( typeof mvEmbed == 'undefined'){		
 		//get mv_embed path from _this_ file location: 	
-		var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );						
+		if( force_mv_embed_path ){
+			var mv_embed_url = force_mv_embed_path;
+		}else{
+			var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );
+		}						
 		var e = document.createElement("script");
 	    e.setAttribute('src', mv_embed_url);	    
 	    e.setAttribute('type',"text/javascript");
@@ -169,15 +177,16 @@ function check_for_mv_embed( callback ){
 function getAddMediaPath( replace_str ){
 	if(!replace_str)
 		replace_str = '';
+	if( force_mv_add_media_wizard_path )
+		return force_mv_add_media_wizard_path + replace_str;
+			
 	for(var i=0; i < document.getElementsByTagName('script').length; i++){
 		var s = document.getElementsByTagName('script')[i];
 		if( s.src.indexOf('add_media_wizard.js') != -1 ){
 			//use the external_media_wizard path: 
 			return s.src.replace('add_media_wizard.js', replace_str);
 		}
-	}
-	js_log('return default path: ' + mv_add_media_wizard_path + replace_str);
-	return mv_add_media_wizard_path + replace_str;
+	}	
 }
 
 
