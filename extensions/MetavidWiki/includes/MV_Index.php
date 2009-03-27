@@ -25,7 +25,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
  class MV_Index {
 	var $mvTitle = null;
-	var $annoCache = array();
+	static $annoCache = array();
 	function __construct( & $mvTitle = null ) {
 		if ( $mvTitle != null )
 			$this->mvTitle = $mvTitle;
@@ -231,7 +231,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		//returns the result in array set to current: 
 		$aMvd = end($aMvd_rows );		
 		if(!isset(self::$annoCache[ $aMvd->id ])){
-			$this->annoCache[ $aMvd->id ] = $aMvd;
+			self::$annoCache[ $aMvd->id ] = $aMvd;
 		};		
 		return $aMvd;
 	}
