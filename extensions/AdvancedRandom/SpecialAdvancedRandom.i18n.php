@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'advancedrandom'      => 'Advanced random',
-	'advancedrandom-desc' => 'Get a random page from whos talk or subjectpage links to a given page, can be used like [[Special:AdvancedRandom/Template:Featured/Talk]] to get a random featured article or like [[Special:AdvancedRandom/Template:GFDL/Image]] to get a random GFDL file',
+	'advancedrandom-desc' => 'Get a random page from any namespace, the talk or subjectpage of which links to a given page. Can be used like [[Special:AdvancedRandom/Template:Featured/Talk]] to get a random featured article talk, or like [[Special:AdvancedRandom/Template:GFDL/File]] to get a random GFDL file',
 );
 
 /** Message documentation (Message documentation)
