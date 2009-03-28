@@ -7,7 +7,7 @@
  * @author Inez Korczyński <korczynski@gmail.com>
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This is not a valid entry point.\n" );
 }
 
@@ -21,7 +21,7 @@ class ApiAjaxLogin extends ApiBase {
 		$Name = $Password = $Remember = $Loginattempt = $Mailmypassword = null;
 		extract( $this->extractRequestParams() );
 
-		if( !empty( $Loginattempt ) ) {
+		if ( !empty( $Loginattempt ) ) {
 			// Login attempt
 			$params = new FauxRequest(
 				array(
@@ -80,7 +80,7 @@ class ApiAjaxLogin extends ApiBase {
 			$dbw->commit();
 
 			$this->getResult()->addValue( null, 'ajaxlogin', $result );
-		} else if( !empty( $Mailmypassword ) ) {
+		} else if ( !empty( $Mailmypassword ) ) {
 			// Remind password attempt
 			$params = new FauxRequest(
 				array(
@@ -90,10 +90,10 @@ class ApiAjaxLogin extends ApiBase {
 			$result = array();
 			$loginForm = new LoginForm( $params );
 			global $wgUser, $wgOut, $wgAuth;
-			if( !$wgAuth->allowPasswordChange() ) {
+			if ( !$wgAuth->allowPasswordChange() ) {
 				$result['result'] = 'resetpass_forbidden';
 				$result['text'] = wfMsg( 'resetpass_forbidden' );
-			} else if( $wgUser->isBlocked() ) {
+			} else if ( $wgUser->isBlocked() ) {
 				$result['result'] = 'blocked-mailpassword';
 				$result['text'] = wfMsg( 'blocked-mailpassword' );
 			} else if ( '' == $loginForm->mName ) {
@@ -101,7 +101,7 @@ class ApiAjaxLogin extends ApiBase {
 				$result['text'] = wfMsg( 'noname' );
 			} else {
 				$u = User::newFromName( $loginForm->mName );
-				if( is_null( $u ) ) {
+				if ( is_null( $u ) ) {
 					$result['result'] = 'noname';
 					$result['text'] = wfMsg( 'noname' );
 				} else if ( 0 == $u->getID() ) {
@@ -113,7 +113,7 @@ class ApiAjaxLogin extends ApiBase {
 					$result['text'] = wfMsg( 'throttled-mailpassword', round( $wgPasswordReminderResendTime, 3 ) );
 				} else {
 					$res = $loginForm->mailPasswordInternal( $u, true );
-					if( WikiError::isError( $res ) ) {
+					if ( WikiError::isError( $res ) ) {
 						$result['result'] = 'mailerror';
 						$result['text'] = wfMsg( 'mailerror', $res->getMessage() );
 					} else {
