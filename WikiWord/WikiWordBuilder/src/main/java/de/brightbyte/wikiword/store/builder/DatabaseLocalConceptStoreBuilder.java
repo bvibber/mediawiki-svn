@@ -748,7 +748,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			if (beginTask("finishAliases", "resolveRedirects:link")) {
 				//XXX: SLOW!
 				//TODO: smaller chunks? chunk on target table, not alias table? force index? 
-				int n = resolveRedirects(aliasTable, linkTable, "target_name", "target", AliasScope.REDIRECT, 8, null, "source");     
+				int n = resolveRedirects(aliasTable, linkTable, "target_name", "target", AliasScope.REDIRECT, 8, null, null);     
 				endTask("finishAliases", "resolveRedirects:link", n+" entries");
 			}
 
