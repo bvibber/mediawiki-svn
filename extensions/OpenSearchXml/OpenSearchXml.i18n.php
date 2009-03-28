@@ -360,3 +360,23 @@ $messages['vi'] = array(
 	'opensearchxml-desc' => 'Giao diện [http://www.opensearch.org/ OpenSearch] cung cấp đoạn trích văn bản dạng XML',
 );
 
+/** Cantonese (廣東話)
+ * @author Shinjiman
+ */
+$messages['yue'] = array(
+	'opensearchxml-desc' => '提供文字擷取嘅[http://www.opensearch.org OpenSearch] XML界面',
+);
+
+/** Chinese Simplified (中文简化字)
+ * @author Shinjiman
+ */
+$messages['zh-hans'] = array(
+	'opensearchxml-desc' => '提供文字撷取的[http://www.opensearch.org OpenSearch] XML界面',
+);
+
+/** Chinese Traditional (中文傳統字)
+ * @author Shinjiman
+ */
+$messages['zh-hant'] = array(
+	'opensearchxml-desc' => '提供文字擷取的[http://www.opensearch.org OpenSearch] XML界面',
+);
