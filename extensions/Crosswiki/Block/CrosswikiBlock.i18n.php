@@ -995,6 +995,7 @@ Torna a:
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fievarsty
  * @author Fryed-peach
  * @author JtFuruhata
  */
@@ -1004,13 +1005,13 @@ $messages['ja'] = array(
 	'crosswikiblock-header' => 'このページでは他ウィキの利用者をブロックすることができます。
 あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',
 	'crosswikiblock-target' => 'IPアドレスか利用者名、および対象となるウィキ:',
-	'crosswikiblock-expiry' => 'ブロック期限:',
-	'crosswikiblock-reason' => 'ブロック理由:',
+	'crosswikiblock-expiry' => '期間:',
+	'crosswikiblock-reason' => '理由:',
 	'crosswikiblock-submit' => 'この利用者をブロック',
-	'crosswikiblock-anononly' => '匿名利用者以外はブロックできません',
-	'crosswikiblock-nocreate' => 'アカウント作成が拒否されています',
-	'crosswikiblock-autoblock' => 'この利用者が最近編集に使用したIPアドレスは、全て自動的にブロックされているものです',
-	'crosswikiblock-noemail' => '電子メールを送ることのできない利用者です',
+	'crosswikiblock-anononly' => '匿名利用者のみブロック',
+	'crosswikiblock-nocreate' => 'アカウント作成を禁止',
+	'crosswikiblock-autoblock' => 'この利用者が最後に使用したIPアドレスを自動的にブロック（ブロック後に使用したIPアドレスも含む）',
+	'crosswikiblock-noemail' => 'メール送信をブロック',
 	'crosswikiunblock' => '他ウィキの利用者をブロック解除',
 	'crosswikiunblock-header' => 'このページでは他ウィキの利用者をブロック解除することができます。
 あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',
@@ -1037,7 +1038,7 @@ $messages['ja'] = array(
 戻る:
 * [[Special:CrosswikiBlock|ブロックフォーム]]
 * [[$4]]",
-	'crosswikiunblock-local' => 'このウィキ自身における利用者ブロック解除を、このページでは行えません。[[Special:IPBlockList|{{int:ipblocklist}}]]を利用してください。',
+	'crosswikiunblock-local' => 'このウィキ限定に限定した、利用者のブロック解除はこのページでは行えません。[[Special:IPBlockList|{{int:ipblocklist}}]]を利用してください。',
 );
 
 /** Javanese (Basa Jawa)

@@ -867,6 +867,10 @@ $messages['dsb'] = array(
 	'deletequeue-action-queued' => 'Wulašowanje',
 	'deletequeue-action' => 'Wulašowanje naraźiś',
 	'deletequeue-action-title' => 'Wulašowanje boka "$1" naraźiś',
+	'deletequeue-action-text-queued' => 'Móžoš se slědujuce boki za toś ten lašowański pad woglědaś:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Aktualne pódpěranja a znapśeśiwjenja se woglědaś].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Wulašowanje toś togo boka pódprěś abo wótpokazaś].',
+	'deletequeue-permissions-noedit' => 'Musyš bok wobźěłaś móc, aby wobwliwował jogo lašowański status.',
 	'deletequeue-generic-reasons' => '* Powšykne pśicyny
   ** Wandalizm
   ** Spam
@@ -874,12 +878,26 @@ $messages['dsb'] = array(
   ** Zwenka projektowego cela',
 	'deletequeue-nom-alreadyqueued' => 'Toś ten bok jo južo w lašowańskem cakajucem rěźe.',
 	'deletequeue-speedy-title' => '"$1" za spěšne wulašowanje markěrowaś',
+	'deletequeue-speedy-text' => "Móžoš toś ten formular wužywaś, aby markěrował bok \"'''\$1'''\" za spěšne wulašowanje.
+
+Administrator buźo toś to pominanje pśekontrolěrowaś a, jolic jo wopšawnjone, bok wulašowaś.
+Musyš z padajuceje lisćiny dołojce pśicynu za wulašowanje wubraś a druge relewantne informacije pśidaś.",
 	'deletequeue-prod-title' => 'Wulašowanje boka "$1" naraźiś',
+	'deletequeue-prod-text' => "Móžoš toś ten formular wužywaś, aby naraźił, až by se \"'''\$1'''\" wulašował.
+
+Jolic pó pěś dnjach nichten njejo wótpokazał wulašowanje boka, buźo se pó dokóńcnem pśeglědanju pśez administratora lašowaś.",
 	'deletequeue-delnom-reason' => 'Pśicyna za lašowańske póžedanje:',
 	'deletequeue-delnom-otherreason' => 'Druga pśicyna',
 	'deletequeue-delnom-extra' => 'Pśidatne informacije:',
 	'deletequeue-delnom-submit' => 'Póžedanje stajiś',
+	'deletequeue-log-nominate' => "jo naraźił [[$1]] za wulašowanje w cakajucem rěźe '$2'.",
+	'deletequeue-log-rmspeedy' => 'jo spěšne wulašowanje za [[$1]] wótpokazał.',
+	'deletequeue-log-requeue' => "Jo pśenjasł [[$1]] do drugego lašowańskego cakajucego rěda: wót '$2' do '$3'.",
+	'deletequeue-log-dequeue' => "jo wótpórał [[$1]] z lašowańskego cakajucego rěda '$2'.",
+	'right-speedy-nominate' => 'Boki za spěšne wulašowanje naraźiś',
+	'right-speedy-review' => 'Póžedanja za spěšne wulašowanje pśeglědaś',
 	'right-prod-nominate' => 'Bok za wulašowanje naraźiś',
+	'right-prod-review' => 'Pśipóznate naraźenja za wulašowanje pśeglědaś',
 	'right-deletediscuss-nominate' => 'Lašowańske diskusije zachopiś',
 	'right-deletediscuss-review' => 'Lašowańske diskusije skóńcyś',
 	'right-deletequeue-vote' => 'Wulašowanja pódprěś abo wótpokazaś',
@@ -888,15 +906,44 @@ $messages['dsb'] = array(
 	'deletequeue-queue-deletediscuss' => 'Lašowańska diskusija',
 	'deletequeue-page-speedy' => "Toś ten bok jo se za spěšne wulašowanje naraźił.
 Pódana pśicyna za toś to wulašowanje jo ''$1''.",
+	'deletequeue-page-deletediscuss' => "Toś ten bok jo se naraźił za wulašowanje a to naraźenje jo se spśeśiwił.
+Pódana pśicyna jo była ''$1''.
+Diskusija wó boku [[$5]] běžy, kótaraž skóńcyjo se ''$2''.",
 	'deletequeue-notqueued' => 'Bok, kótaryž sy wubrał, njejo tuchylu w cakajucem rěźe za wulašowanje',
 	'deletequeue-review-action' => 'Akcija, kótaraž ma se wuwjasć:',
 	'deletequeue-review-delete' => 'Bok wulašowaś.',
+	'deletequeue-review-change' => 'Toś ten bok lašowaś, ale z drugim wobtwarźenim.',
+	'deletequeue-review-requeue' => 'Toś ten bok do slědujucego cakajucego rěda pśenjasć:',
+	'deletequeue-review-dequeue' => 'Žednu akciju wuwjasć a bok z lašowańskego cakajucego rěda wótpóraś.',
 	'deletequeue-review-reason' => 'Komentary:',
 	'deletequeue-review-newreason' => 'Nowa pśicyna:',
 	'deletequeue-review-newextra' => 'Pśidatne informacije:',
 	'deletequeue-review-submit' => 'Pśeglědanje składowaś',
 	'deletequeue-review-original' => 'Pśicyna za póžedanje',
+	'deletequeue-actiondisabled-involved' => 'Slědujuca akcija jo znjemóžnjona, dokulaž sy južo wobźělił na toś tom wulašenju ako $1:',
+	'deletequeue-actiondisabled-notexpired' => 'Slědujuca akcija jo znjemóžnjona, dokulaž lašowańske póžedanje hyšći njejo pśepadnjone:',
 	'deletequeue-review-badaction' => 'Sy pódał njepłaśiwu akciju',
+	'deletequeue-review-actiondenied' => 'Sy pódał akciju, kótaraž jo za toś ten bok znjemóžnjona.',
+	'deletequeue-review-objections' => "'''Warnowanje''': Wulašowanje toś togo boka ma [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} znapśeśiwjenja].
+Pšosym pśeznań se, až sy źiwał na toś te znapśeśiwjenja, pjerwjej až lašujoš toś ten bok.",
+	'deletequeue-reviewspeedy-tab' => 'Spěšne wulašowanje pśeglědaś',
+	'deletequeue-reviewspeedy-title' => 'Póžedanje za spěšne wulašowanje boka "$1" pśeglědaś',
+	'deletequeue-reviewspeedy-text' => "Móžoš toś ten formular wužywaś, aby pśeglědał póžedanje za spěšne wulašowanje za \"'''\$1'''\".
+Pšosym pśeznań se, až toś ten bok móžo se pó zasadach spěšnje lašowaś.",
+	'deletequeue-reviewprod-tab' => 'Naraźone wulašowanje pśeglědaś',
+	'deletequeue-reviewprod-title' => 'Naraźone wulašowanje boka "$1" pśeglědaś',
+	'deletequeue-reviewprod-text' => "Móžoš toś ten formular wužywaś, aby pśeglědał pśipóznate naraźenje za wulašowanje boka \"'''\$1'''\".",
+	'deletequeue-reviewdeletediscuss-tab' => 'Wulašowanje pśeglědaś',
+	'deletequeue-reviewdeletediscuss-title' => 'Lašowańsku diskusiju za "$1" pśeglědaś',
+	'deletequeue-review-success' => 'Sy wuspěšnje pśeglědał wulašowanje toś togo boka.',
+	'deletequeue-review-success-title' => 'Pśeglědanje skóńcone',
+	'deletequeue-discusscreate-summary' => 'Diskusija wó wulašowanju boka [[$1]] se zarědujo.',
+	'deletequeue-discusscreate-text' => 'Wulašowanje jo se naraźiło ze slědujuceje pśicyny: $2',
+	'deletequeue-role-nominator' => 'spócetny póžedaŕ wulašowanja',
+	'deletequeue-role-vote-endorse' => 'Pódpěraŕ wulašowanja',
+	'deletequeue-role-vote-object' => 'pśeśiwnik wulašowanja',
+	'deletequeue-vote-tab' => 'Wó wulašowanju wótgłosowaś',
+	'deletequeue-vote-title' => 'Wulašowanje boka "$1" pódprěś abo wótpokazaś',
 	'deletequeue-vote-legend' => 'Wulašowanje pódprěś/wótpokazaś',
 	'deletequeue-vote-action' => 'Pórucenje:',
 	'deletequeue-vote-endorse' => 'Wulašowanje pódprěś.',
@@ -908,16 +955,28 @@ Pódana pśicyna za toś to wulašowanje jo ''$1''.",
 	'deletequeue-vote-requeued' => 'Sy wuspěšnje wótpokazał wulašowanje toś togo boka.
 Pśez twójo wótpokazanje jo se bok do cakajucego rěda $1 psésunuł.',
 	'deletequeue-showvotes' => 'Pódpěranja a znapśeśiwjenja za wulašowanje boka "$1"',
+	'deletequeue-showvotes-text' => "Dołojce su pódpěranja a znapśeśiwjenja k wulašowanjeju boka \"'''\$1'''\".
+Móžoš k toś tomu wulašowanjeju [{{fullurl:{{FULLPAGENAME}}|action=delvote}} swójo pódpěranje abo znapśeśiwjenje registrěrowaś].",
 	'deletequeue-showvotes-restrict-endorse' => 'Jano pódpěranja pokazaś',
 	'deletequeue-showvotes-restrict-object' => 'Jano wótpokazanje pokazaś',
 	'deletequeue-showvotes-restrict-none' => 'Wšykne pódpěranja a znapśeśiwjenja pokazaś',
+	'deletequeue-showvotes-vote-endorse' => "Wulašowanje $1 $2 '''pódprěte'''",
+	'deletequeue-showvotes-vote-object' => "Wulašowanje $1 $2 '''wótpokazane'''",
+	'deletequeue-showvotes-showingonly-endorse' => 'Jano pódpěranja se pokazuju',
+	'deletequeue-showvotes-showingonly-object' => 'Jano znapśeśiwjenja se pokazuju',
+	'deletequeue-showvotes-none' => 'Njejsu žedne pódpěranja abo znapśeśiwjenja k wulašowanjeju toś togo boka.',
+	'deletequeue-showvotes-none-endorse' => 'Njejsu žedne pódpěranja wulašowanja toś togo boka.',
+	'deletequeue-showvotes-none-object' => 'Njejsu žedne znapśeśiwjenja k wulašowanjeju toś togo boka.',
 	'deletequeue' => 'Lašowański cakajucy rěd',
+	'deletequeue-list-text' => 'Toś ten bok zwobraznjujo wše boki, kótarež su w systemje wulašowanja.',
 	'deletequeue-list-search-legend' => 'Boki pytaś',
 	'deletequeue-list-queue' => 'Cakajucy rěd:',
 	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-expired' => 'Jano póžedanja pokazaś, kótarež maju se zacyniś.',
 	'deletequeue-list-search' => 'Pytaś',
 	'deletequeue-list-anyqueue' => '(někaki)',
 	'deletequeue-list-votes' => 'Lisćina głosow',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|pódpěranje|pódpěrani|pódpěranja|pódpěranjow}}, $2 {{PLURAL:$2|wótpokazanje|wótpokazani|wótpokazanja|wótpokazanjow}}',
 	'deletequeue-list-header-page' => 'Bok',
 	'deletequeue-list-header-queue' => 'Cakajucy rěd',
 	'deletequeue-list-header-votes' => 'Pódpěranja a znapśeśiwjenja',
@@ -2492,7 +2551,7 @@ Wann De meijns, kanns De [{{fullurl:{{FULLPAGENAME}}|action=delvote}} jääje et
 	'deletequeue-page-deletediscuss' => "Mer han ene Vörschlaach, di Sigg hee fottzeschmiiße.
 Als der Jrond doför wood ''$1'' aanjejovve.
 Et jitt ävver Jäjeshtemme.
-Der Klaaf do drövver op [[$5]] jeiht bes aam $3 öm $2 Uhr.",
+Der Klaaf do drövver op [[$5]] jeiht bes aam $3 öm $4 Uhr.",
 	'deletequeue-notqueued' => 'Do häß_Der en Sigg ußjesooht, di jaa nit en de Leß för fottzeschmiiße es.',
 	'deletequeue-review-action' => 'Wat ze donn es:',
 	'deletequeue-review-delete' => 'Die Sigg fottschmiiße.',
@@ -3954,6 +4013,7 @@ Du koast dien oaine Unnerstutsenge of Oulienenge fon ju Läskenge [{{fullurl:{{F
  * @author Leo Johannes
  * @author M.M.S.
  * @author Najami
+ * @author Njaelkies Lea
  * @author StefanB
  */
 $messages['sv'] = array(
@@ -3961,6 +4021,10 @@ $messages['sv'] = array(
 	'deletequeue-action-queued' => 'Radering',
 	'deletequeue-action' => 'Föreslå radering',
 	'deletequeue-action-title' => 'Föreslå radering av "$1"',
+	'deletequeue-action-text' => "Denna wiki har flera processer för att radera sidor:
+*Om du anser att denna sida bör snabbraderas kan du [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} föreslå detta här].
+*Om denna sida inte kvalificerar för snabbradering, men ''radering sannolikt ändå är okontroversiellt'', kan du [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} föreslå radering här].
+*Om sidans radering ''sannolikt kommer att bli diskuterad'', bör du [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} starta en diskussion] om saken.",
 	'deletequeue-permissions-noedit' => 'Du måste kunna redigera en sida för att kunna påverka dess raderingsstatus.',
 	'deletequeue-generic-reasons' => '* Vanliga anledningar
   ** Vandalisering
@@ -3981,6 +4045,8 @@ Om ingen har några motsättningar mot raderingen inom fem dagar, kommer raderin
 	'deletequeue-delnom-otherreason' => 'Annan anledning',
 	'deletequeue-delnom-extra' => 'Extrainformation:',
 	'deletequeue-delnom-submit' => 'Nominera',
+	'deletequeue-log-nominate' => 'nominerade [[$1]] för radering i kön "$2".',
+	'deletequeue-log-rmspeedy' => 'tillät inte snabbradering av [[$1]].',
 	'deletequeue-queue-speedy' => 'Snabbradering',
 	'deletequeue-queue-prod' => 'Föreslagen radering',
 	'deletequeue-queue-deletediscuss' => 'Raderingsdiskussion',

@@ -3852,6 +3852,13 @@ $messages['gl'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'Porto para a análise de rendemento UDP',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'configure-setting-wgExtraLanguageNames-value' => 'Ὄνομα',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -6579,7 +6586,7 @@ $messages['oc'] = array(
 	'configure-setting-wgActionPaths' => "URL per cada accion. Permet d'aver d'URL « polidas ».",
 	'configure-setting-wgActionPaths-key' => 'Accion',
 	'configure-setting-wgActionPaths-value' => "Modèl d'URL",
-	'configure-setting-wgAllDBsAreLocalhost' => 'Renvia totas las conneccions cap a las bancas de donadas vèrs lo servidor local',
+	'configure-setting-wgAllDBsAreLocalhost' => 'Renvia totas las connexions cap a las bancas de donadas cap al servidor local',
 	'configure-setting-wgCheckDBSchema' => "Verifica se l'esquèma de la banca de donadas es a jorn a cada visita (obsolet)",
 	'configure-setting-wgDBAvgStatusPoll' => 'Temps mejan entre doas requèstas « SHOW STATUS » dins de condicions de carga fòrta',
 	'configure-setting-wgDBerrorLog' => 'Fichièr per jornalizar las errors de la banca de donadas',
@@ -8933,6 +8940,7 @@ $messages['tl'] = array(
 	'configure-setting-wgShowEXIF' => 'Ipakit ang datong EXIF sa ibabaw ng mga pahina ng paglalarawan',
 	'configure-setting-wgThumbLimits' => 'Pinapahintulutang mga sukat ng kagyat na larawan',
 	'configure-setting-wgTrustedMediaFormats' => "Mga uri ng midya at mga uri ng MIME na itinuturing na 'ligtas'",
+	'configure-setting-wgTiffThumbnailType' => "Ginamit ang karugtong ng talaksan at uri ng ''mime'' upang baguhin ang mga larawang TIFF upang maging",
 	'configure-setting-wgMainCacheType' => 'Uri ng pangunahing sistemang pantago',
 	'configure-setting-wgCacheEpoch' => 'Panahon ng hindi pagtanggap sa nakakubling taguan',
 	'configure-setting-wgCachePages' => 'Pahintulutan ang pagtatago ng mga pahina mula sa dako ng kliyente',
@@ -9025,6 +9033,7 @@ $messages['tl'] = array(
 	'configure-setting-wgAllowSpecialInclusion' => 'Pahinutulutan ang pagsasali ng natatanging mga pahina',
 	'configure-setting-wgExportAllowHistory' => 'Pahintulutan ang mga pagluluwas na isama ang buong kasaysayan',
 	'configure-setting-wgExportAllowListContributors' => 'Magpahintulot na mailuwas ang isang talaan ng mga tagapag-ambag',
+	'configure-setting-wgExportFromNamespaces' => 'Kung papahintulutan ba o hindi ang pagpipiliang "iluwas ang lahat ng mga pahinang nasa loob ng espasyo ng pangalan" sa loob ng Natatangi:Iluwas',
 	'configure-setting-wgExportMaxHistory' => 'Pinakamataas na bilang mga pagbabago para sa Special:Export',
 	'configure-setting-wgExportMaxLinkDepth' => 'Pinakamataas na halaga ng parametrong "lalim ng kawing ng pahina" na nasa loob ng Special:Export',
 	'configure-setting-wgFilterLogTypes' => 'Pinapahintulutang mga uri ng pagbubura ng talaan',

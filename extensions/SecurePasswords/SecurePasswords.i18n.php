@@ -401,8 +401,8 @@ Deu :',
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'securepasswords-valid' => 'Twoje hasło jest nieprawidłowe lub zbyt krótkie.
-Musi:',
+	'securepasswords-valid' => 'Hasło jest nieprawidłowe lub zbyt krótkie.
+Musi ono:',
 	'securepasswords-minlength' => 'składać się z co najmniej $1 {{PLURAL:$1|znaku|znaków}}',
 	'securepasswords-lowercase' => 'zawierać co najmniej 1 małą literę',
 	'securepasswords-uppercase' => 'zawierać co najmniej 1 wielką literę',

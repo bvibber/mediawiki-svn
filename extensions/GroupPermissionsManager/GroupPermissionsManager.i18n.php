@@ -824,10 +824,12 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'grouppermissions-search' => 'Ὁμάς:',
 	'grouppermissions-dologin' => 'Συνδεῖσθαι',
 	'grouppermissions-dosearch' => 'Ἱέναι',
 	'grouppermissions-comment' => 'Σχόλιον:',
 	'grouppermissions-never' => 'Οὔποτε',
+	'grouppermissions-sp-save' => 'Γράφειν',
 	'grouppermissions-sp-remove' => 'ἀφαιρεῖν',
 );
 

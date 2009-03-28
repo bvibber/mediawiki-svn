@@ -60,6 +60,19 @@ $messages['bar'] = array(
 	'logentry-invalidpage' => 'Ungültige Seitn',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'logentry-append' => 'Дадаць',
+	'logentry-parserhook-desc' => 'Гэты тэг пашырэньня дадае форму для даданьня інфармацыі ў журналы падзеяў',
+	'logentry-specialpage-desc' => 'Гэты тэг пашырэньня дазваляе дадаваць інфармацыю ў журналы падзеяў',
+	'logentry' => 'Дадаць інфармацыю ў журналы падзеяў',
+	'logentry-invalidpage' => 'Няслушная старонка',
+	'logentry-invalidtoken' => 'Няслушны сымбаль',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -84,6 +84,29 @@ $messages['arz'] = array(
 	'right-lookupuser' => 'مطالعة تفضيلات المستخدم',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'lookupuser' => 'Пошук зьвестак пра ўдзельніка',
+	'lookupuser-desc' => '[[Special:LookupUser|Атрыманьне зьвестак]] пра удзельнікаў, такіх, як адрас электроннай пошты і ідэнтыфікатар',
+	'lookupuser-intro' => 'Увядзіце імя ўдзельніка каб праглядзець яго ўстаноўкі.',
+	'lookupuser-nonexistent' => 'Памылка: Удзельнік не існуе',
+	'lookupuser-authenticated' => 'аўтэнтыфікаваны па $1',
+	'lookupuser-not-authenticated' => 'не аўтэнтыфікаваны',
+	'lookupuser-id' => 'Ідэнтыфікатар удзельніка: <tt>#$1</tt>',
+	'lookupuser-email' => 'Электронная пошта: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'не пазначана',
+	'lookupuser-realname' => 'Сапраўднае імя: $1',
+	'lookupuser-registration' => 'Дата рэгістрацыі: $1',
+	'lookupuser-no-registration' => 'не запісаны',
+	'lookupuser-touched' => 'Апошнія абнаўленьні зьвестак пра удзельніка: $1',
+	'lookupuser-info-authenticated' => 'Аўтэнтыфікацыя электроннай пошты: $1',
+	'lookupuser-useroptions' => 'Устаноўкі ўдзельніка:',
+	'right-lookupuser' => 'пошук зьвестак пра удзельнікаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -968,6 +991,15 @@ $messages['ru'] = array(
 	'lookupuser-info-authenticated' => 'Аутентификация по почте: $1',
 	'lookupuser-useroptions' => 'Настройки участника:',
 	'right-lookupuser' => 'поиск настроек участников',
+);
+
+/** Sardinian (Sardu)
+ * @author Marzedu
+ */
+$messages['sc'] = array(
+	'lookupuser-id' => 'ID usuàriu: <tt>#$1</tt>',
+	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-realname' => 'Nòmene beru: $1',
 );
 
 /** Sicilian (Sicilianu)

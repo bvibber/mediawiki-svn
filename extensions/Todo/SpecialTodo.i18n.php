@@ -429,6 +429,7 @@ $messages['es'] = array(
 	'todo' => 'Lista de quehaceres',
 	'todo-tab' => 'quehaceres',
 	'todo-new-queue' => 'nuevo',
+	'todo-mail-subject' => 'Item completado en la lista de quehaceres de $1',
 	'todo-invalid-item' => 'Item perdido o inválido',
 	'todo-update-else-item' => 'Tratando de actualizar items de alguien más',
 	'todo-unrecognize-type' => 'Tipo no reconocido',

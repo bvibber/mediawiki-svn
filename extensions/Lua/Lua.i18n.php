@@ -78,9 +78,14 @@ $messages['ast'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'lua_desc' => 'Пашырае парсэр падтрымкай убудаваных блёкаў коду [http://www.lua.org/ Lua]',
 	'lua_error' => 'Памылка ў радку $1',
 	'lua_extension_notfound' => 'Пашырэньне Lua не сканфігураванае',
 	'lua_interp_notfound' => 'Інтэрпрэтатар Lua ня знойдзены',
+	'lua_error_internal' => 'Унутраная памылка',
+	'lua_overflow_recursion' => 'Дасягнуты ліміт рэкурсіўных выклікаў',
+	'lua_overflow_loc' => 'Дасягнуты максымальны ліміт колькасьці радкоў у кодзе',
+	'lua_overflow_time' => 'Дасягнуты максымальны час выкананьня',
 );
 
 /** Bulgarian (Български)

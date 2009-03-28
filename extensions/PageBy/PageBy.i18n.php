@@ -444,7 +444,7 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'pageby-desc' => 'Pokazuje w treści strony jej autorów, wykorzystując do tego znacznik <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Strona utworzona przez $1, $2',
-	'pageby-last' => 'Ostatnia <a href="$3">modyfikacja</a> zrobiona przez $1, $2',
+	'pageby-last' => 'Ostatnia <a href="$3">modyfikacja</a> wykonana przez $1, $2',
 	'pageby-contributors' => 'Autorzy:',
 	'pageby-anon' => '<i>anonimowy</i>',
 );

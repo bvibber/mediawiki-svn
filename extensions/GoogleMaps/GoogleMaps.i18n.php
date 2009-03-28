@@ -1698,6 +1698,7 @@ $wgGoogleMapsMessages['grc'] = array(
 	'gm-yes' => 'Ναί',
 	'gm-no' => 'Οὐ',
 	'gm-search' => 'Ζητεῖν',
+	'gm-save-path' => 'Γράφειν',
 	'gm-kml-loading' => 'φορτίζειν...',
 	'gm-moon' => 'Σελήνη',
 );
@@ -3802,9 +3803,12 @@ $wgGoogleMapsMessages['ru'] = array(
  */
 $wgGoogleMapsMessages['sc'] = array(
 	'gm-balloon-title' => 'Tìtulu:',
+	'gm-searching' => 'chirchendi...',
 	'gm-map' => 'Mapa',
 	'gm-yes' => 'Eja',
 	'gm-no' => 'No',
+	'gm-search' => 'Chirca',
+	'gm-save-path' => 'Sarva',
 );
 
 /** Sicilian (Sicilianu)

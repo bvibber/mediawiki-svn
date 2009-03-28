@@ -2485,7 +2485,7 @@ Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandører av Op
 $messages['oc'] = array(
 	'openid-desc' => "Se connecta al wiki amb [http://openid.net/ OpenID] e se connecta a d'autres sits internet OpenID amb un wiki utilizant un compte d'utilizaire.",
 	'openidlogin' => 'Se connectar amb OpenID',
-	'openidfinish' => 'Acabar la conneccion OpenID',
+	'openidfinish' => 'Acabar la connexion OpenID',
 	'openidserver' => 'Servidor OpenID',
 	'openidxrds' => 'Fichièr Yadis',
 	'openidconvert' => 'Convertisseire OpenID',

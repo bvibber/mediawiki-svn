@@ -661,7 +661,7 @@ $messages['fi'] = array(
 	'extdist-desc' => 'Laajennus laajennusten tilannevedosarkistojen jakelulle.',
 	'extdist-no-such-extension' => 'Laajennusta ”$1” ei löydy',
 	'extdist-submit-extension' => 'Jatka',
-	'extdist-current-version' => 'Nykyinen versio (trunk)',
+	'extdist-current-version' => 'Kehitysversio (trunk)',
 	'extdist-submit-version' => 'Jatka',
 	'extdist-svn-error' => 'Subversion kohtasi virheen: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar-ohjelman suoritus päättyi paluuarvoon $1:',
@@ -1495,7 +1495,7 @@ $messages['nn'] = array(
 	'extdist-choose-extension' => 'Vel kva utviding du ønskjer å lasta ned:',
 	'extdist-wc-empty' => 'Mappa med arbeidskopien har ingen utvidingar som kan bli distribuerte.',
 	'extdist-submit-extension' => 'Hald fram',
-	'extdist-current-version' => 'Noverande versjon (trunk)',
+	'extdist-current-version' => 'Utviklingsverjson (trunk)',
 	'extdist-choose-version' => '<big>Du lastar ned utvidinga <b>$1</b>.</big>
 
 Oppgje kva MediaWiki-versjon du nyttar.
@@ -1882,7 +1882,7 @@ $messages['sah'] = array(
 	'extdist-choose-extension' => 'Тупсарыыны хачайдыырга тал:',
 	'extdist-wc-empty' => 'Уларытыллыахтаах үлэлиир копиялаах директория тупсарыыта суох!',
 	'extdist-submit-extension' => 'Салгыы',
-	'extdist-current-version' => 'Билиҥҥи барыла (trunk)',
+	'extdist-current-version' => 'Сайдар барыла (trunk)',
 	'extdist-choose-version' => '<big><b>«$1»</b> тупсарыыны хачайдаан эрэҕин.</big>
 
 Бэйэҕэр турар MediaWiki барылын тал.
@@ -2045,7 +2045,7 @@ $messages['tl'] = array(
 	'extdist-choose-extension' => 'Piliin kung aling karugtong ang nais mong ikarga pababa:',
 	'extdist-wc-empty' => 'Walang maaaring ipamahaging mga karugtong ang naisaayos na direktoryo ng siping panggawain!',
 	'extdist-submit-extension' => 'Ipagpatuloy',
-	'extdist-current-version' => 'Kasulukyang bersyon (baul)',
+	'extdist-current-version' => 'Bersyon ng pagpapaunlad (baul)',
 	'extdist-choose-version' => "<big>Ikinakarga mo pababa ang <b>$1</b> na karugtong.</big>
 
 Piliin ang iyong bersyon ng MediaWiki.

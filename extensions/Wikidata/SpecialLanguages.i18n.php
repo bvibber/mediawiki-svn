@@ -274,6 +274,7 @@ $wdMessages['qqq'] = array(
 	'datasearch_match_words' => "*'''$1''': searched text",
 	'datasearch_match_words_lang' => "*'''$1''': language name
 *'''$2''': searched text",
+	'importtsv' => '"TSV" is a "Tab Separated Values File"',
 	'ow_importtsv_header' => "'test run' comes from {{msg-mw|ow importtsv test run}}.",
 	'ow_importtsv_bad_columns' => "Do not translate 'definition_iso' and 'translations_iso'.",
 	'addcollection' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
@@ -338,6 +339,7 @@ Visible on this [http://www.omegawiki.org/Special:NeedsTranslation OmegaWiki pag
 	'ow_suggest_next' => '{{Identical|Next}}',
 	'ow_nstab_definedmeaning' => 'Tab title when displaying a Defined Meaning',
 	'ow_nstab_edit_copy' => "Tab title when copying across datasets. The word 'edit' is a verb here.",
+	'right-addlanguage' => '{{doc-right|addlanguage}}',
 );
 
 /** Karelian (Karjala)
@@ -994,6 +996,7 @@ $wdMessages['bcl'] = array(
  */
 $wdMessages['be-tarask'] = array(
 	'languages' => 'Вікізьвесткі: кіраваньне мовамі',
+	'langman-desc' => 'Дазваляе дадаваць і зьмяняць устаноўкі моваў з дапамогай [[Special:Languages]]',
 	'langman_title' => 'Кіраваньне мовамі',
 	'langman_not_allowed' => 'Вы ня маеце правоў на зьмену настроек моваў.',
 	'langman_header' => 'Увядзіце код мовы і яе ангельскую назву ніжэй:',
@@ -1215,6 +1218,7 @@ $wdMessages['be-tarask'] = array(
 	'ow_suggest_clear' => 'Ачысьціць',
 	'ow_nstab_definedmeaning' => 'вызначанае значэньне',
 	'ow_nstab_edit_copy' => 'рэдагаваць копію',
+	'right-addlanguage' => 'даданьне і зьмена установак моваў',
 );
 
 /** Bulgarian (Български)
@@ -1827,6 +1831,7 @@ $wdMessages['da'] = array(
  */
 $wdMessages['de'] = array(
 	'languages' => 'Wikidata: Sprachen-Manager',
+	'langman-desc' => 'Spracheinstellungen mit [[Special:Languages]] hinzufügen und ändern',
 	'langman_title' => 'Sprachen-Manager',
 	'langman_not_allowed' => 'Du hast nicht die Berechtigung die Spracheneinstellungen zu ändern.',
 	'langman_header' => 'Gib den Sprachencode ein und darunter seinen englischsprachigen Namen:',
@@ -2039,6 +2044,7 @@ Bitte kontaktiere den Serveradminstrator.',
 	'ow_suggest_clear' => 'Leeren',
 	'ow_nstab_definedmeaning' => 'Festgelegte Bedeutung',
 	'ow_nstab_edit_copy' => 'Kopie bearbeiten',
+	'right-addlanguage' => 'Spracheinstellungen hinzufügen und ändern',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -2081,6 +2087,7 @@ Vielleicht kamen Sie direkt zu dieser Seite?',
  */
 $wdMessages['dsb'] = array(
 	'languages' => 'Wikidata: Zastojnik rěcow',
+	'langman-desc' => 'Rěcne nastajenja z [[Special:Languages]] pśidaś a změniś',
 	'langman_title' => 'Zastojnik rěcow',
 	'langman_not_allowed' => 'Njamaš pšawo rěcne nastajenja změniś.',
 	'langman_header' => 'Zapódaj rěcny kod a jogo engelske mě:',
@@ -2301,6 +2308,7 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
 	'ow_suggest_clear' => 'Wuprozniś',
 	'ow_nstab_definedmeaning' => 'definěrowany wóznam',
 	'ow_nstab_edit_copy' => 'kopiju wobźěłaś',
+	'right-addlanguage' => 'Rěcne nastajenja pśidaś a změniś',
 );
 
 /** Greek (Ελληνικά)
@@ -2471,6 +2479,7 @@ Neniu kopia operacio okazis.',
  */
 $wdMessages['es'] = array(
 	'languages' => 'Wikidata: Gestor de lenguas',
+	'langman-desc' => 'Agregue y cambie configuraciones de lenguaje con [[Special:Lenguajes]]',
 	'langman_title' => 'Gestor de lenguas',
 	'langman_not_allowed' => 'Usted no tiene permiso para cambiar la configuración de lenguaje.',
 	'langman_header' => 'Escriba debajo el código de lenguaje y su nombre en inglés:',
@@ -2612,6 +2621,7 @@ El lenguaje debe utilizar código ISO 639-3.</p>',
 	'ow_OptionAttributeValues' => 'Valores',
 	'ow_OtherDefinedMeaning' => 'Otro sentido definido',
 	'ow_PopupAnnotation' => 'Nota',
+	'ow_RecordLifeSpan' => 'Registro de vida',
 	'ow_Relations' => 'Relaciones',
 	'ow_RelationType' => 'Tipo de relación',
 	'ow_Remove' => 'Remover',
@@ -2658,6 +2668,7 @@ Hay un problema con la consistencia de esta base de datos, wikidata no puede enc
 Puede que esté perdido.
 Contacta por favor el operador o el administrador del servicio.',
 	'ow_history_transaction' => 'Transacción:',
+	'ow_history_show_life_span' => 'Mostrar registro de vida:',
 	'ow_class_attr_type_dm' => 'Sentido definido',
 	'ow_class_attr_type_xlate' => 'Texto traducible',
 	'ow_class_attr_type_plain' => 'Texto explicativo',
@@ -2677,6 +2688,7 @@ Contacta por favor el operador o el administrador del servicio.',
 	'ow_suggest_clear' => 'Borrar',
 	'ow_nstab_definedmeaning' => 'significado definido',
 	'ow_nstab_edit_copy' => 'editar copia',
+	'right-addlanguage' => 'Agregar y cambiar configuraciones de lenguaje',
 );
 
 /** Estonian (Eesti)
@@ -2963,6 +2975,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
  */
 $wdMessages['fr'] = array(
 	'languages' => 'Wikidata : gestionnaire de langues',
+	'langman-desc' => 'Ajouter et modifier les paramètres de langues avec [[Special:Languages]]',
 	'langman_title' => 'Gestionnaire de langues',
 	'langman_not_allowed' => 'Vous n’avez pas la permission de modifier les paramètres de langues.',
 	'langman_header' => 'Entrez le code de langue ainsi que son nom anglais ci-dessous :',
@@ -3184,6 +3197,7 @@ Veuillez contacter l’opérateur ou l’administrateur du serveur.',
 	'ow_suggest_clear' => 'Effacer',
 	'ow_nstab_definedmeaning' => 'sens défini',
 	'ow_nstab_edit_copy' => 'modifier la copie',
+	'right-addlanguage' => 'Ajouter et modifier les paramètres de langues',
 );
 
 /** Western Frisian (Frysk)
@@ -3234,6 +3248,7 @@ $wdMessages['ga'] = array(
  */
 $wdMessages['gl'] = array(
 	'languages' => 'Wikidata: Xestor de linguas',
+	'langman-desc' => 'Engadir e modificar a configuración de lingua con [[Special:Languages]]',
 	'langman_title' => 'Xestor de linguas',
 	'langman_not_allowed' => 'Non ten os permisos necesarios para cambiar as características da lingua.',
 	'langman_header' => 'Insira o código da lingua e o seu nome en inglés embaixo:',
@@ -3453,6 +3468,7 @@ Por favor, póñase en contacto cun operador ou administrador do servidor.',
 	'ow_suggest_clear' => 'Limpar',
 	'ow_nstab_definedmeaning' => 'significado definido',
 	'ow_nstab_edit_copy' => 'editar a copia',
+	'right-addlanguage' => 'Engadir e modificar a configuración de lingua',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -3463,6 +3479,7 @@ $wdMessages['grc'] = array(
 	'langman_field_optional' => '(Προαιρετικόν)',
 	'datasearch_language' => 'Γλῶττα:',
 	'ow_exporttsv_languages' => 'Γλῶτται:',
+	'ow_save' => 'Γράφειν',
 	'ow_history' => 'Αἱ προτέραι',
 	'ow_transaction_user' => 'Ὄνομα χρωμένου:',
 	'ow_transaction_rollback_button' => 'Ἀναστροφή',
@@ -3927,6 +3944,7 @@ $wdMessages['hr'] = array(
  */
 $wdMessages['hsb'] = array(
 	'languages' => 'Wikidata: Zrjadowak rěčow',
+	'langman-desc' => 'Rěčne nastajenja z [[Special:Languages]] přidać a změnić',
 	'langman_title' => 'Zrjadowak rěčow',
 	'langman_not_allowed' => 'Nimaš prawa rěčne nastajenja změnić.',
 	'langman_header' => 'Zapodaj rěčny kod a jeho jendźelske mjeno:',
@@ -4133,6 +4151,7 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 	'ow_suggest_clear' => 'Wuprózdnić',
 	'ow_nstab_definedmeaning' => 'definowany woznam',
 	'ow_nstab_edit_copy' => 'kopiju wobdźěłać',
+	'right-addlanguage' => 'Rěčne nastajenja přidać a změnić',
 );
 
 /** Hungarian (Magyar)
@@ -4656,6 +4675,7 @@ Non è stata eseguita l'operazione di copia.",
  */
 $wdMessages['ja'] = array(
 	'languages' => 'ウィキデータ: 言語管理',
+	'langman-desc' => '[[Special:Languages]] を使用して言語設定を追加および変更する',
 	'langman_title' => '言語管理',
 	'langman_not_allowed' => 'あなたには言語設定を変更する権限がありません。',
 	'langman_header' => '言語コードとその英語名を下に入力してください:',
@@ -4871,6 +4891,7 @@ $wdMessages['ja'] = array(
 	'ow_suggest_clear' => '消去',
 	'ow_nstab_definedmeaning' => '意味定義',
 	'ow_nstab_edit_copy' => '複製を編集',
+	'right-addlanguage' => '言語設定の追加と変更',
 );
 
 /** Javanese (Basa Jawa)
@@ -5576,6 +5597,7 @@ Sprooche mussen dem ISO-639-3-Sproochecode entspriechen.</p>',
 	'ow_suggest_clear' => 'Eidel maachen',
 	'ow_nstab_definedmeaning' => 'Definéiert Bedeitung',
 	'ow_nstab_edit_copy' => 'Kopie änneren',
+	'right-addlanguage' => 'Sproochastellungen derbäisetzen an änneren',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
@@ -5950,6 +5972,7 @@ $wdMessages['nds'] = array(
  */
 $wdMessages['nl'] = array(
 	'languages' => 'Wikidata: Taalmanager',
+	'langman-desc' => 'Toevoegen en wijzigen van taalinstellingen via [[Special:Languages]]',
 	'langman_title' => 'Taalmanager',
 	'langman_not_allowed' => 'U hebt geen rechten om taalinstellingen te wijzigen.',
 	'langman_header' => 'Geef de taalcode in en voer hieronder de vertaling in het Engels in:',
@@ -6165,6 +6188,7 @@ Vergeet niet om dit te controleren!',
 	'ow_suggest_clear' => 'Opschonen',
 	'ow_nstab_definedmeaning' => 'gedefinieerde betekenis',
 	'ow_nstab_edit_copy' => 'kopie bewerken',
+	'right-addlanguage' => 'Toevoegen en wijzigen van taalinstellingen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -7849,6 +7873,7 @@ $wdMessages['ru'] = array(
  */
 $wdMessages['sk'] = array(
 	'languages' => 'Wikidata: Správca jazykov',
+	'langman-desc' => 'Pridať a zmeniť jazykové nastavenia pomocou [[Special:Languages]]',
 	'langman_title' => 'Správca jazykov',
 	'langman_not_allowed' => 'Nemáte oprávnenie meniť jazykové nastavenia.',
 	'langman_header' => 'Dolu napíšte kód a anglický názov jazyka:',
@@ -8058,6 +8083,7 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'ow_suggest_clear' => 'Vyčistiť',
 	'ow_nstab_definedmeaning' => 'definovaný význam',
 	'ow_nstab_edit_copy' => 'upraviť kópiu',
+	'right-addlanguage' => 'Pridať a zmeniť jazykové nastavenia pomocou',
 );
 
 /** Somali (Soomaaliga)
@@ -8905,6 +8931,7 @@ $wdMessages['tk'] = array(
  */
 $wdMessages['tl'] = array(
 	'languages' => 'Wikidata: Tagapamahala ng wika',
+	'langman-desc' => 'Magdagdag at baguhin ang mga katakdaang pangwika sa pamamagitan ng [[Special:Languages]]',
 	'langman_title' => 'Tagapamahala ng wika',
 	'langman_not_allowed' => 'Wala kang pahintulot upang magbago ng mga katakdaang pangwika.',
 	'langman_header' => 'Imakinilya sa ibaba ang kodigo ng wika at pangalan nito sa Ingles:',
@@ -9126,6 +9153,7 @@ Makipagugnayan sa isang tagapamalakad/tagapagpatakbo ng serbidor o tagapangasiwa
 	'ow_suggest_clear' => 'Hawiin',
 	'ow_nstab_definedmeaning' => 'inilirawang kahulugan',
 	'ow_nstab_edit_copy' => 'baguhin ang sipi',
+	'right-addlanguage' => 'Magdagdag at baguhin ang mga katakdaang pangwika',
 );
 
 /** Turkish (Türkçe)

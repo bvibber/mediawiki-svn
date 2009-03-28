@@ -453,6 +453,7 @@ Denne meldinga kjem for å gjera deg merksam på at $3 brukar $4 $5.',
 	'categorywatch-catmoveout' => 'flytta $1 frå kategorien $2 til $3',
 	'categorywatch-catadd' => 'la til $1 i kategori $2',
 	'categorywatch-catsub' => 'fjerna $1 frå kategori $2',
+	'categorywatch-autocat' => 'Automatisk overvaka av $1',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -645,6 +646,7 @@ Ang mensaheng ito ay para ipagbigay-alam sa iyo na noong $3 si tagagamit $4 ang 
 	'categorywatch-catmoveout' => 'inilipat ang $1 palabas mula sa kauriang $2 patungo sa $3',
 	'categorywatch-catadd' => 'idinagdag ang $1 patungo sa kauriang $2',
 	'categorywatch-catsub' => 'tinanggal ang $1 magmula sa kauriang $2',
+	'categorywatch-autocat' => 'Kusang minatyagan ni $1',
 );
 
 /** Vietnamese (Tiếng Việt)

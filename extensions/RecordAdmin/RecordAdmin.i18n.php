@@ -510,6 +510,13 @@ $messages['gl'] = array(
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'recordadmin-buttonsave' => 'Γράφειν',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -759,7 +766,7 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'recordadmin' => 'Datesätz verwallde',
 	'recordadmin-desc' => 'En [[Special:RecordAdmin|Söndersigg]] för Sigge met Datesätz ze fenge un övver e Fommulaa zo ändere.',
-	'recordadmin-categoryempty' => 'Mer han em Momang kein Datesatz-Zoote. Bes esu joot un donn de Dateaatz-Schablone en [[:$1|$1]] enzoteere.',
+	'recordadmin-categoryempty' => 'Mer han em Momang kein Datesatz-Zoote. Bes esu joot un donn de Datesatz-Schablone en de [[:$1|$1]] enzoteere.',
 	'recordadmin-select' => 'Donn de Zoot Datesatz ußsöke, för die de jet verwallde wells',
 	'recordadmin-createtype' => 'Donn dä Name för ene neue Zoot Datesätz enjäve',
 	'recordadmin-recordtype' => 'Datesatz-Zoote',

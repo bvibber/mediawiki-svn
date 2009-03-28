@@ -430,6 +430,13 @@ $messages['gl'] = array(
 	'formsaveerrortext' => "Houbo un erro descoñecido ao gardar a páxina '$1'.",
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'formsave' => 'Γράφειν',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

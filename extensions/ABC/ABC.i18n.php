@@ -445,6 +445,13 @@ $messages['sah'] = array(
 	'abcdownload' => 'Хачайдааһын:',
 );
 
+/** Sardinian (Sardu)
+ * @author Marzedu
+ */
+$messages['sc'] = array(
+	'abcdownload' => 'Scàrriga:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

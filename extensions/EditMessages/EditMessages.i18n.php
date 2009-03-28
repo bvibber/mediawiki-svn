@@ -49,14 +49,6 @@ $messages['niu'] = array(
 	'editmsg-search' => 'Kumi',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'editmessages' => 'Redaktiruida tedotused',
-	'editmsg-search' => 'Ectä',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -695,7 +687,7 @@ $messages['ksh'] = array(
 	'editmsg-warning-parse1' => '* di <i lang="en">regular expression</i> paß op kein Name fun System-Nohreschte: <code>$1</code>',
 	'editmsg-warning-parse2' => '* Mer wollte ävver en Aanföhrung noh dämm Piel hann: <code>$1</code>',
 	'editmsg-warning-parse3' => '* Dä Wäät jeiht nit zo Engk: <code>$1</code>',
-	'editmsg-warning-file' => '* Fähler beim Dateie-Lesse för de Shprooch{{PLURAL:$2||e|e}: $1',
+	'editmsg-warning-file' => '* Fähler beim Dateie-Lesse för de Shprooch{{PLURAL:$2||e|e}}: $1',
 	'editmsg-warning-mismatch' => '* Dä Ojinaal Täx wohr nit wat mer äwaadt han för {{PLURAL:$2|di Shprooch|de Shprooche|nix}}: $1',
 	'editmsg-apply-patch' => 'Donn dä „Flecke“ (<i lang="en">patch</i>) aanwennde',
 	'editmsg-no-patch' => 'Kann dat Kommando <i lang="en"><code>patch</code></i> nit aanwende',
@@ -1205,6 +1197,14 @@ $messages['uk'] = array(
 	'editmsg-target' => 'Цільове повідомлення:',
 	'editmsg-search' => 'Пошук',
 	'editmsg-new-search' => 'Новий пошук',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'editmessages' => 'Redaktiruida tedotused',
+	'editmsg-search' => 'Ectä',
 );
 
 /** Vietnamese (Tiếng Việt)

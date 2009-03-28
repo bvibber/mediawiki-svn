@@ -272,7 +272,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'antibot-desc' => 'Simpel framework veur controle op spambots en trigger payload',
+	'antibot-desc' => "Eenvoudig raamwark veur 't naokieken op spambots",
 );
 
 /** Dutch (Nederlands)

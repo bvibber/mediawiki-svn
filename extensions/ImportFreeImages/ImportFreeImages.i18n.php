@@ -554,7 +554,7 @@ $messages['ja'] = array(
 	'importfreeimages_invalidurl' => 'URL "$1" は有効な Flickr 画像ではありません。',
 	'importfreeimages_owner' => '著者',
 	'importfreeimages_importthis' => 'これをインポート',
-	'importfreeimages_next' => '次 $1',
+	'importfreeimages_next' => '次の$1件',
 	'importfreeimages_filefromflickr' => 'Flickr の利用者 <b>[$2]</b> による $1。元のURL',
 	'importfreeimages_promptuserforfilename' => '変更先ファイル名を入力してください:',
 	'importfreeimages_returntoform' => "もしくは、<a href='$1'>ここ</a>をクリックして検索結果に戻ります",
