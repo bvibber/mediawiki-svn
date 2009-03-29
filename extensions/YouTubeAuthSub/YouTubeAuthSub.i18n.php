@@ -822,8 +822,10 @@ Por favor, sexa paciente.',
  */
 $messages['grc'] = array(
 	'youtubeauthsub_title' => 'Ἐπιγραφή',
+	'youtubeauthsub_description' => 'Διέξοδος',
 	'youtubeauthsub_category' => 'Κατηγορία',
 	'youtubeauthsub_submit' => 'Ὑποβάλλειν',
+	'youtubeauthsub_uploadbutton' => 'Ἐπιφόρτισις',
 );
 
 /** Swiss German (Alemannisch)
@@ -1862,6 +1864,15 @@ Czekaj.',
 	'youtubeauthsub_jserror_nokeywords' => 'Wprowadź jedno lub więcej słów kluczowych.',
 	'youtubeauthsub_jserror_notitle' => 'Wprowadź tytuł materiału wideo.',
 	'youtubeauthsub_jserror_nodesc' => 'Wprowadź opis materiału wideo.',
+);
+
+/** Pontic (Ποντιακά)
+ * @author Sinopeus
+ */
+$messages['pnt'] = array(
+	'youtubeauthsub_category' => 'Κατηγορίαν',
+	'youtubeauthsub_submit' => 'Στείλον',
+	'youtubeauthsub_uploadbutton' => 'Φόρτωμαν',
 );
 
 /** Pashto (پښتو)

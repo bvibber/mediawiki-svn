@@ -184,10 +184,11 @@ $messages['bs'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'refreshspecial' => 'Obnovit speciální stránky',
-	'refreshspecial-desc' => 'Umožňje manuální [[Special:RefreshSpecial|obnovení speciálních stránek]]',
+	'refreshspecial-desc' => 'Umožňuje [[Special:RefreshSpecial|ruční obnovení speciálních stránek]]',
 	'refreshspecial-title' => 'Obnovit speciální stránky',
 	'refreshspecial-help' => 'Tato speciální stránka slouží k manuálnímu obnovení speciálních stránek.
 Po vybrání všech stránek, které chcete obnovit, klikněte na tlačítko „Obnovit vybrané”.
@@ -196,10 +197,9 @@ Upozornění: na větších wiki může obnovení chvíli trvat.',
 	'refreshspecial-fail' => 'Prosím, vyberte alespoň jednu speciální stránku, která se má obnovit',
 	'refreshspecial-refreshing' => 'obnovují se speciální stránky',
 	'refreshspecial-skipped' => 'přeskočeno',
-	'refreshspecial-success-subtitle' => 'obnovují se speciální stránky',
 	'refreshspecial-choice' => 'obnovují se speciální stránky',
 	'refreshspecial-js-disabled' => '(<i>Není možné použít funkci výběru všech stránek, pokud máte vypnutý JavaScript</i>)',
-	'refreshspecial-select-all-pages' => ' vybrat všechny stránky',
+	'refreshspecial-select-all-pages' => 'Vybrat všechny stránky',
 	'refreshspecial-link-back' => 'Zpět na rozšíření',
 	'refreshspecial-none-selected' => 'Nevybrali jste žádné speciální stránky. Vrací se původní výběr.',
 	'refreshspecial-db-error' => 'Chyba: chyba databáze',

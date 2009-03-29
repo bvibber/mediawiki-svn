@@ -1267,6 +1267,13 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'createsigndocument' => "Abbilite le firme sus a 'u documende",
+	'createsigndoc-head' => "Ause sta schermate pe ccrejà 'na vôsce de 'Documende Firmate' pa pàgene, cumme a certe utinde ca 'u ponne [[Special:SignDocument|firmà]].
+Pe piacere specifiche 'u nome d'a vôsce sus a quale tu vuè ccu abbilitesce 'a firma diggitale, le membre de quale gruppe utinde avessere avè 'u permesse pe firmà, cè cambe tu vuè face vedè a l'utinde e quale avessere a essere facoltative, l'età minime da cercà a l'utinde pe farle firmà 'nu documende (ce non ge mitte ninde non ge serve l'età); e 'n'indroduziona piccenne ca descrive 'u documente e dè le istruziune a l'utinde.
+
+<b>Non ge stè nisciune mode pe luvà o cangià 'a firme de le documinde apprisse ca onne state ccrejate</b> senza 'n'accesse dirette a 'u database.
+In aggiunde, 'u teste d'a pàgene visualizzate sus a pàgene de firme addevènde 'u teste ''corrende'' d'a pàgene, senze scè penzanne a le cangiaminde fatte apprisse a osce.
+Pe piacere vide ce sì secure secure ca 'u documende jè 'nu punde de securezze pa firme.
+Pe piacere fà attenzione a specificà tutte le cambe esattamende cumme avessera essere, ''apprime de confermà sta schermata''.",
 	'createsigndoc-pagename' => 'Pàgene:',
 	'createsigndoc-allowedgroup' => 'Gruppe permesse:',
 	'createsigndoc-email' => 'Indirizze e-mail:',

@@ -35,10 +35,12 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'multipleupload' => '{{Identical|Upload files}}',
 	'multipleupload-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'multipleupload-text' => 'Plural is supported for $1.',
 );
 
 /** Karelian (Karjala)
@@ -304,6 +306,8 @@ Vi povas eniri nedevigan '''Cela doserionomo''' kaj doni '''Resumo''' priskriban
 Malkonvenaj dosieroj estos tuj forigita. Vidu la [[{{MediaWiki:Multipleupload-page}}|regularo pri forigado de dosieroj]].",
 	'multiupload-fileuploaded' => 'Dosiero alŝutita.',
 	'multiupload-toolbox' => 'Alŝuti multe de dosierojn',
+	'multiupload-no-files' => 'Bonvolu elekti almenaŭ unu dosieron por alŝuti',
+	'multiupload-blank' => 'Neniu dosiero elektita',
 );
 
 /** Spanish (Español)
@@ -595,6 +599,8 @@ Tu pote entrar optionalmente un '''Nomine de file de destination''' e fornir un 
 Le files inappropriate essera delite immediatemente; vide le [[{{MediaWiki:Multipleupload-page}}|politica pro le deletion de files]].",
 	'multiupload-fileuploaded' => 'File cargate.',
 	'multiupload-toolbox' => 'Cargar plure files',
+	'multiupload-no-files' => 'Per favor selige al minus un file a cargar',
+	'multiupload-blank' => 'Nulle file seligite',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1183,6 +1189,7 @@ Uunoainde Doatäie wäide fluks läsked, sjuch do [[{{MediaWiki:Multipleupload-p
 /** Swedish (Svenska)
  * @author Lokal Profil
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'multipleupload' => 'Ladda upp filer',
@@ -1201,6 +1208,8 @@ Du kan skriva in valfritt '''målnamn''' och ange en '''sammanfattning''' för a
 Opassande filer raderas omedelbart, se [[{{MediaWiki:Multipleupload-page}}|riktlinjer för filraderingar]].",
 	'multiupload-fileuploaded' => 'Fil uppladdad.',
 	'multiupload-toolbox' => 'Ladda upp flera filer',
+	'multiupload-no-files' => 'Välj minst en fil som ska laddas upp',
+	'multiupload-blank' => 'Ingen fil vald',
 );
 
 /** Tamil (தமிழ்)

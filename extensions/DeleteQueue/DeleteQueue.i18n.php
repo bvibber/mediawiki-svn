@@ -867,6 +867,10 @@ $messages['dsb'] = array(
 	'deletequeue-action-queued' => 'Wulašowanje',
 	'deletequeue-action' => 'Wulašowanje naraźiś',
 	'deletequeue-action-title' => 'Wulašowanje boka "$1" naraźiś',
+	'deletequeue-action-text' => "Toś ten wiki ma licbu procesow za lašowanje bokow:
+*Jolic wěriš, až toś ten bok jo wobpšawja, móžoš [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} jen za ''spěšne wulašowanje'' naraźiś].
+*Jolic toś ten bok njewobpšawja spěšne wulašowanje, ale ''wulašowanje by nejskerjej njezwadne'', ty by měł [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} pśipoznate wulašowanje naraźiś].
+*Jolic wulašowanje toś togo boka se ''nejskerjej wóteprěwa'', ty by měł [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} diskusiju wótwóriś].",
 	'deletequeue-action-text-queued' => 'Móžoš se slědujuce boki za toś ten lašowański pad woglědaś:
 * [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Aktualne pódpěranja a znapśeśiwjenja se woglědaś].
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Wulašowanje toś togo boka pódprěś abo wótpokazaś].',
@@ -906,6 +910,10 @@ Jolic pó pěś dnjach nichten njejo wótpokazał wulašowanje boka, buźo se p�
 	'deletequeue-queue-deletediscuss' => 'Lašowańska diskusija',
 	'deletequeue-page-speedy' => "Toś ten bok jo se za spěšne wulašowanje naraźił.
 Pódana pśicyna za toś to wulašowanje jo ''$1''.",
+	'deletequeue-page-prod' => "Jo se naraźiło, až ten bok se lašujo.
+Pódana pśicyna jo była ''$1''.
+Jolic toś to naraźenje jo ''$2'' píspóznate, toś ten bok buźo se lašowaś.
+Móžoš wulašowanje toś togo boka pśez [{{fullurl:{{FULLPAGENAME}}|action=delvote}} wótpokazowanje wulašowanja] wóteprěś.",
 	'deletequeue-page-deletediscuss' => "Toś ten bok jo se naraźił za wulašowanje a to naraźenje jo se spśeśiwił.
 Pódana pśicyna jo była ''$1''.
 Diskusija wó boku [[$5]] běžy, kótaraž skóńcyjo se ''$2''.",
@@ -935,8 +943,15 @@ Pšosym pśeznań se, až toś ten bok móžo se pó zasadach spěšnje lašowa�
 	'deletequeue-reviewprod-text' => "Móžoš toś ten formular wužywaś, aby pśeglědał pśipóznate naraźenje za wulašowanje boka \"'''\$1'''\".",
 	'deletequeue-reviewdeletediscuss-tab' => 'Wulašowanje pśeglědaś',
 	'deletequeue-reviewdeletediscuss-title' => 'Lašowańsku diskusiju za "$1" pśeglědaś',
+	'deletequeue-reviewdeletediscuss-text' => "Móžoš toś ten formular wužywaś, aby lašowańsku diskusiju boka \"'''\$1'''\" pśeglědaś.
+
+[{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Lisćina] pódpěranjow a wótpokazanjow toś togo wulašowanja stoj k dispoziciji a diskusija sama dajo se na [[\$2]] namakaś.
+Pšosym pśeznań se, až rozsuśijoš pó konsensu diskusije.",
 	'deletequeue-review-success' => 'Sy wuspěšnje pśeglědał wulašowanje toś togo boka.',
 	'deletequeue-review-success-title' => 'Pśeglědanje skóńcone',
+	'deletequeue-deletediscuss-discussionpage' => 'To jo diskusijny bok za lašowanje boka [[$1]].
+Tuchylu {{PLURAL:$2|jo $2 wužywaŕ|stej $2 wužiwarja|su $2 wužiwarje|jo $2 wužiwarjow}}, kótarež pódpěraju wulašowanje a $3 {{PLURAL:$3|wužiwaŕ|wužiwarja|wužiwarje|wužiwarjow}}, kótarež wótpokazuju wulašowanje.
+Móžoš wulašowanje [{{fullurl:$1|action=delvote}} pódprěś abo wótpokazaś] abo [{{fullurl:$1|action=delviewvotes}} se wše pódpěranja a wótpokazanja woglědaś].',
 	'deletequeue-discusscreate-summary' => 'Diskusija wó wulašowanju boka [[$1]] se zarědujo.',
 	'deletequeue-discusscreate-text' => 'Wulašowanje jo se naraźiło ze slědujuceje pśicyny: $2',
 	'deletequeue-role-nominator' => 'spócetny póžedaŕ wulašowanja',

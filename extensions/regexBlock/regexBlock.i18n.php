@@ -95,6 +95,7 @@ $messages['qqq'] = array(
 * $3: database name
 * $4: date/time
 * $5: IP address',
+	'regexblock-view-blocked' => 'This is a label followed by a dropdown list of all users who have ever used regexBlock on the wiki, allowing the viewer to filter down the list of regexBlocks, i.e. see all blocks performed by User:X if users X, Y and Z have used regexBlock tool. There is [[mw:File:RegexBlock.png|a screenshot]].',
 	'regexblock-view-all' => '{{Identical|All}}',
 	'regexblock-view-go' => '{{Identical|Go}}',
 	'regexblock-view-match' => '{{Identical|Exact match}}',
@@ -424,10 +425,12 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Byrial
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
 	'regexblock-form-reason' => 'Begrundelse:',
+	'regexblock-view-blocked' => 'Vis blokerede af:',
 );
 
 /** German (Deutsch)
@@ -1343,6 +1346,9 @@ Wann De meins, dat dat esu nit sinn sullt, dann donn $1.',
 	'regexblock-reason-name' => 'Dä Metmaacher-Name es jesperrt un kann kei Sigge ändere.
 För jewöhnlesch deiht dat bedügge, dat dä zevill Driß jemaat hät.
 Wann de meins, dat es nit en Odenung, [[$1|lohß et uns weße]].',
+	'regexblock-reason-regex' => 'Dä Metmaacher-Name es jesperrt un mer kann med em kei Sigge ändere.
+Dat litt dodraan, dat zoh vill Driß övver ene janz äähnlijje Name jemaat wood.
+Wann de meins, dat es nit en Odenung, [[$1|lohß et uns weße]], odder nemm janz ene andere Metmaacher-Name. Kanns jo flöck ene neue aanmelde.',
 	'regexblock-form-username' => 'De <code lang="en">IP</code>-Addreß odder enem Metmacher singe Name:',
 	'regexblock-form-reason' => 'Aanlass:',
 	'regexblock-form-match' => 'Akkeraate Treffer',
@@ -1350,16 +1356,20 @@ Wann de meins, dat es nit en Odenung, [[$1|lohß et uns weße]].',
 	'regexblock-form-submit' => 'Donn dä Metmaacher Sperre',
 	'regexblock-form-submit-empty' => 'Jiff enem Metmacher singe Name odder en <code lang="en">IP</code>-Addreß för zem Sperre aan.',
 	'regexblock-form-submit-regex' => 'En onjöltijje <i lang="en">regular expression</i>.',
+	'regexblock-form-submit-expiry' => 'Beß esu joot, un donn en Zick för et Engk fun de Shperr aanjevve.',
 	'regexblock-nodata-found' => 'Kein Date jefonge',
+	'regexblock-stats-title' => 'Shtatistike för de Shperre övver <i lang="en">regular expressions</i>',
 	'regexblock-unblock-success' => 'Nimmieh jeshperrt',
 	'regexblock-unblock-log' => "Dä Metmacher odder de <code lang=\"en\">IP</code>-Addreß '''„\$1“''' es widder frei jejovve.",
 	'regexblock-unblock-error' => 'Fähler beim Sperr-Ophävve. Ene Metmaacher „<nowiki>$1</nowiki>“ jit et nit.',
+	'regexblock-view-blocked' => 'Sök bloß de Sperre uß vun däm Metmaacher:',
 	'regexblock-view-all' => 'All',
 	'regexblock-view-go' => 'Loß Jonn!',
 	'regexblock-view-match' => '(akkeraat jetroffe)',
 	'regexblock-view-regex' => '(<i lang="en">regular expression</i> jetroffe)',
 	'regexblock-view-account' => '(Neu Aanmelde verbodde)',
 	'regexblock-view-reason' => 'Jrund: $1',
+	'regexblock-view-reason-default' => '— keine Jrund aanjejovve —',
 	'regexblock-view-block-infinite' => 'för iewisch Shperre',
 	'regexblock-view-block-temporary' => 'leuf uß aam',
 	'regexblock-view-block-expired' => 'Ußjeloufe',

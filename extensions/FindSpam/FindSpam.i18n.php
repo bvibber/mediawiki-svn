@@ -192,6 +192,7 @@ $messages['eo'] = array(
 	'findspam-ip' => 'IP adreson:',
 	'findspam-ok' => 'Ek!',
 	'findspam-notextfound' => 'Neniuj kontribuoj trovitaj',
+	'right-findspam' => 'Serĉi por lastatempe aldonitaj spamaĵoj',
 );
 
 /** Spanish (Español)

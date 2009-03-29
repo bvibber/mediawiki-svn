@@ -257,6 +257,7 @@ $messages['eo'] = array(
 	'lookupuser-touched' => 'Rikordo de uzanto estis laste ŝanĝita: $1',
 	'lookupuser-info-authenticated' => 'Retpoŝta aŭtentokontrolo: $1',
 	'lookupuser-useroptions' => 'Opcioj de uzanto:',
+	'right-lookupuser' => 'Trarigardi agordojn de uzantoj',
 );
 
 /** Spanish (Español)

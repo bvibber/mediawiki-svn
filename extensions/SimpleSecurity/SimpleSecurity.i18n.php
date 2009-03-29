@@ -44,6 +44,10 @@ $messages['qqq'] = array(
 	'security-info' => '$1 is {{msg-mw|Security-info-toggle}} with a link',
 	'security-inforestrict' => '* $1 is an action name
 * $2 contains user group name(s)',
+	'security-desc-LS' => '* $1 is the name of a category or namespace
+* $2 is {{msg-mw|security-type-category}} or {{msg-mw|security-type-namespace}}',
+	'security-type-category' => '{{Identical|Category}}',
+	'security-type-namespace' => '{{Identical|Namespace}}',
 );
 
 /** Arabic (العربية)
@@ -96,6 +100,7 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -109,10 +114,11 @@ $messages['de'] = array(
 	'security-inforestrict' => '$1 ist begrenzt auf $2',
 	'security-desc-LS' => "''(gilt, weil diese Seite ist in der '''$2 $1''')''",
 	'security-desc-PR' => "''(gesetzt über den Tab '''Seitenschutz''')''",
-	'security-desc-CR' => "''(diese Begrenzung ist '''jetzt wirksam''')''",
 	'security-infosysops' => 'Für dich sind keine Begrenzungen aktiv, weil du der Gruppe „Administrator“ angehörst',
 	'security-manygroups' => 'Gruppen $1 und $2',
 	'security-unchain' => 'Ändere Aktionen einzeln',
+	'security-type-category' => 'Kategorie',
+	'security-type-namespace' => 'Namensraum',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -137,10 +143,11 @@ $messages['dsb'] = array(
 	'security-inforestrict' => '$1 jo na $2 wobgranicowany',
 	'security-desc-LS' => "''(nałožujo se, dokulaž toś ten nastawk jo w '''$2 $1''')''",
 	'security-desc-PR' => "''(ze '''šćitowego rejtarka''' stajony)''",
-	'security-desc-CR' => "''(toś to wobgranicowanje '''něnto statkujo''')''",
 	'security-infosysops' => "Njejsu žedne wobgranicowanja, dokulaž sy cłonk w kupce '''administratorow'''",
 	'security-manygroups' => 'kupce $1 a $2',
 	'security-unchain' => 'Akcije jadnotliwje změniś',
+	'security-type-category' => 'kategorija',
+	'security-type-namespace' => 'mjenjowy rum',
 );
 
 /** Spanish (Español)
@@ -173,10 +180,11 @@ $messages['fr'] = array(
 	'security-inforestrict' => '$1 est limité à $2',
 	'security-desc-LS' => "''(s'applique parce que cet article est dans le '''$2 $1''')''",
 	'security-desc-PR' => "''(défini depuis l''''onglet de protection''')''",
-	'security-desc-CR' => "''(cette restriction est '''effective maintenant''')''",
 	'security-infosysops' => "Aucune restriction en vigueur parce que vous êtes un membre du groupe '''administrateur'''",
 	'security-manygroups' => 'groupes $1 et $2',
 	'security-unchain' => 'Modifier les actions individuellement',
+	'security-type-category' => 'catégorie',
+	'security-type-namespace' => 'espace de noms',
 );
 
 /** Galician (Galego)
@@ -193,9 +201,11 @@ $messages['gl'] = array(
 	'security-inforestrict' => '$1 está restrinxido a $2',
 	'security-desc-LS' => "''(aplícase porque esta páxina está en '''$2 $1''')''",
 	'security-desc-PR' => "''(establecido desde a '''lapela de protección''')''",
-	'security-desc-CR' => "''(esta restrición está actualmente '''en vigor''')''",
 	'security-infosysops' => "Non hai restricións en vigor porque vostede é membro do grupo dos '''administradores'''",
 	'security-manygroups' => 'grupos $1 e $2',
+	'security-unchain' => 'Modificar as accións individualmente',
+	'security-type-category' => 'categoría',
+	'security-type-namespace' => 'espazo de nomes',
 );
 
 /** Swiss German (Alemannisch)
@@ -228,10 +238,11 @@ $messages['hsb'] = array(
 	'security-inforestrict' => '$1 je na $2 wobmjezowany',
 	'security-desc-LS' => "''(nałožuje so, dokelž tutón nastawk je w '''$2 $1''')''",
 	'security-desc-PR' => "''(ze '''škitoweho rajtarka''' stajeny)''",
-	'security-desc-CR' => "''(tute wobmjezowanje '''nětko skutkuje''')''",
 	'security-infosysops' => "Njejsu wobmjezowanja, dokelž sy čłon skupiny '''administratorow'''",
 	'security-manygroups' => 'skupinje $1 a $2',
 	'security-unchain' => 'Akcije jednotliwje změnić',
+	'security-type-category' => 'kategorija',
+	'security-type-namespace' => 'mjenowy rum',
 );
 
 /** Japanese (日本語)
@@ -250,10 +261,11 @@ $messages['ja'] = array(
 	'security-inforestrict' => '$1は$2に限定されています',
 	'security-desc-LS' => "''(この記事が'''$2 $1'''にあるため)''",
 	'security-desc-PR' => "''('''保護タブ'''からの設定)''",
-	'security-desc-CR' => "''(この制限は現在有効です)''",
 	'security-infosysops' => "あなたは'''{{int:group-sysop}}'''グループに所属しているため、制限は無効です",
 	'security-manygroups' => 'グループ $1 および $2',
 	'security-unchain' => '操作別に変更する',
+	'security-type-category' => 'カテゴリ',
+	'security-type-namespace' => '名前空間',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -264,14 +276,13 @@ $messages['ksh'] = array(
 	'security-desc' => 'Määt der Siggeschotz en MediaWiki esu jruuß,
 dat mer och et Sigge-Aanloore ennschrängke kann.',
 	'security-logpage' => 'Et Logboch övver de Beschrängkunge för et Aanloore',
-	'security-logpagetext' => 'Dat hee es et Logboch met de Akßjuhne, di de [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity extension] afjeblock hät.',
+	'security-logpagetext' => 'Dat hee es et Logboch met de Akßjuhne, di dat [http://www.mediawiki.org/wiki/Extension:SimpleSecurity Zosatzprojramm <i lang="en">SimpleSecurity</i>] afjeblock hät.',
 	'badaccess-read' => 'Opjepaß: De Sigg „$1“ jeiht noh hee, ävver Do häs nit jenooch Rääschde för der Zohjreff doh drop.',
 	'security-info' => 'Mer han $1 op dä Sigg hee',
 	'security-info-toggle' => 'Beschrängkunge för et Aanloore',
 	'security-inforestrict' => '$1 es beschrängk op $2',
 	'security-desc-LS' => "''(jelt, weil de Sigg en de '''$2 $1''' es)''",
 	'security-desc-PR' => "''(jesaz övver dä '''Lengk „{{int:Protect}}“''')''",
-	'security-desc-CR' => "''(die Beschrängkong es '''jez enjeschalldt''')''",
 	'security-infosysops' => "För Disch jidd_et kein Beschrängkonge, weil De dä Metmaacher-Jropp vun de '''{{int:group-sysop}}''' bes.",
 	'security-manygroups' => 'Jroppe $1 un $2',
 	'security-unchain' => 'Donn de Akßjuhne einzel ändere',
@@ -299,11 +310,13 @@ $messages['nl'] = array(
 	'security-info' => 'Er zijn $1 voor deze pagina',
 	'security-info-toggle' => 'beveiligingsbeperkingen',
 	'security-inforestrict' => '$1 is alleen mogelijk door $2',
+	'security-desc-LS' => "''(van toepassing omdat deze pagina is zich in de '''$2 $1''' bevindt)''",
 	'security-desc-PR' => "''(ingesteld vanuit de functie '''beveiligen''')''",
-	'security-desc-CR' => "''(deze beperking is '''actief''')''",
 	'security-infosysops' => 'Beperkingen zijn niet van kracht zijn omdat u lid bent van de groep beheerders',
 	'security-manygroups' => 'groepen $1 en $2',
 	'security-unchain' => 'Handelingen individueel wijzigen',
+	'security-type-category' => 'categorie',
+	'security-type-namespace' => 'naamruimte',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -340,6 +353,25 @@ $messages['oc'] = array(
 	'security-desc-CR' => "''(aquesta restriccion es '''efectiva ara''')''",
 	'security-infosysops' => "Cap de restriccion pas en vigor perque sètz un membre del grop '''administrator'''",
 	'security-manygroups' => 'gropes $1 e $2',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'security' => 'Rejestr zabezpieczania',
+	'security-desc' => 'Dodaje do funkcjonalności zabezpieczania stron możliwość ograniczania wyświetlania zawartości strony',
+	'security-logpage' => 'Rejestr zabezpieczania',
+	'security-logpagetext' => 'Jest to rejestr działań zablokowanych przez [http://www.mediawiki.org/wiki/Extension:SimpleSecurity rozszerzenie SimpleSecurity].',
+	'badaccess-read' => 'Uwaga – nie masz wystarczających uprawnień dla dostępu do żądanej strony „$1”.',
+	'security-info' => 'Dostęp do tej strony jest $1',
+	'security-info-toggle' => 'ograniczony',
+	'security-inforestrict' => '$1 jest ograniczone do $2',
+	'security-desc-LS' => "''(ma zastosowanie, ponieważ ta strona jest w '''$2 $1''')''",
+	'security-desc-PR' => "''(ustawione poprzez zakładkę '''zabezpiecz''')''",
+	'security-infosysops' => "Brak obowiązujących ograniczeń, ponieważ jesteś członkiem grupy '''administratorzy'''.",
+	'security-manygroups' => 'grup $1 oraz $2',
+	'security-unchain' => 'Zmiana działania indywidualnie',
 );
 
 /** Portuguese (Português)
@@ -386,5 +418,12 @@ $messages['tl'] = array(
 	'security-desc-CR' => "''('''umiiral na ngayon''' ang paghahangga)''",
 	'security-infosysops' => 'Walang umiiral na mga paghahanga dahil isa kang kasapi ng pangkat na tagapagpaandar ng sistema',
 	'security-manygroups' => 'mga pangkat na $1 at $2',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'security' => 'Güvenlik günlüğü',
 );
 

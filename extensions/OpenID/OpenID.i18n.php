@@ -825,7 +825,10 @@ Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConv
 Se ne, klaku la butonon \\"Daŭri\\".',
 	'openidclientonlytext' => 'Vi ne povas uzi kontojn de ĉi tiu vikio kiel OpenID-ojn en alia retejo.',
 	'openidloginlabel' => 'URL-o OpenID',
+	'openidupdateuserinfo' => 'Ĝisdatigi mian personan informon',
+	'openid-prefstext' => '[http://openid.net/ OpenID]-agordoj',
 	'openid-pref-hide' => 'Kaŝi viajn identigon <a href="http://openid.net/">OpenID</a> en via uzula paĝo, se vi ensalutas kun OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Ĝisdatigi mian informon de OpenID-konto ĉiam mi ensalutos',
 );
 
 /** Spanish (Español)

@@ -34,7 +34,7 @@ $aliases['bs'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'RefreshSpecial' => array( 'Toimintosivujen päivitys' ),
+	'RefreshSpecial' => array( 'Toimintosivun päivitys' ),
 );
 
 /** Galician (Galego) */

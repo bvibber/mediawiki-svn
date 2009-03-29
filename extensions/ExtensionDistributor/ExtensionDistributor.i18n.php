@@ -1266,6 +1266,7 @@ Wielt är MediaWiki Versioun.
 Déi meescht Erweiderungen fonctionnéieren mat verschiddene Versioune vu MediaWiki, wann är Versioun vu MediaWiki net hei steet, oder wann dor déi neiste Fonctiounen vun den Erweidrunge braucht, da versicht déi neiste Versioun ze benotzen.",
 	'extdist-no-versions' => 'Déi gewielten Erweiderung ($1) ass a kenger Versioun disponibel!',
 	'extdist-submit-version' => 'Viru fueren',
+	'extdist-svn-parse-error' => 'XML\'en vun "svn info" kënnen net verschafft ginn: <pre>$1</pre>',
 	'extdist-want-more' => 'Eng aner Erweiderung benotzen',
 );
 

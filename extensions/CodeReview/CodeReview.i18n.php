@@ -861,7 +861,9 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'code' => 'Kontrola kódu',
+	'code-rev-title' => 'r$1 – Kontrola kódu',
 	'code-comments' => 'Komentáře',
+	'code-references' => 'Odkazy na tuto revizi',
 	'code-change-status' => "změnil '''stav''' revize $1",
 	'code-change-tags' => "změnil '''značky''' revize $1",
 	'code-change-removed' => 'odebráno:',
@@ -923,6 +925,7 @@ $messages['cs'] = array(
 	'code-status-reverted' => 'revertováno',
 	'code-status-resolved' => 'vyřešená',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'ověřeno',
 	'code-status-deferred' => 'odložená',
 	'code-pathsearch-legend' => 'Hledat revize v tomto úložišti podle cesty',
 	'code-pathsearch-path' => 'Cesta:',
@@ -2026,6 +2029,7 @@ $messages['gl'] = array(
 	'code-status-reverted' => 'revertido',
 	'code-status-resolved' => 'resolto',
 	'code-status-ok' => 'de acordo',
+	'code-status-verified' => 'verificado',
 	'code-status-deferred' => 'diferido',
 	'code-pathsearch-legend' => 'Procurar as revisións nesta resposta por ruta',
 	'code-pathsearch-path' => 'Ruta:',
@@ -4487,6 +4491,7 @@ $messages['pl'] = array(
 	'code-status-reverted' => 'cofnięty',
 	'code-status-resolved' => 'rozwiązany',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'zweryfikowanych',
 	'code-status-deferred' => 'odroczony',
 	'code-pathsearch-legend' => 'Szukaj wersji w tym repozytorium na podstawie ścieżki',
 	'code-pathsearch-path' => 'Ścieżka',
@@ -5174,6 +5179,7 @@ $4',
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Mormegil
  */
 $messages['sk'] = array(
 	'code' => 'Kontrola kódu',

@@ -258,10 +258,14 @@ Please contact the server operator or administrator.",
  * @author Lloffiwr
  * @author Malafaya
  * @author Meno25
+ * @author Purodha
  * @author Siebrand
  */
 $wdMessages['qqq'] = array(
 	'languages' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
+	'langman-desc' => 'A short description of this extension shown in [[Special:Version]].
+{{doc-important|Do not translate tag names.}}
+{{doc-important|Do not translate links.}}',
 	'langman_title' => 'Title in Language manager special page ([http://www.omegawiki.org/Special:Languages http://www.omegawiki.org/Special:Languages])',
 	'langman_header' => 'Translate the word "English"; don\'t change it to your own language!',
 	'langman_adding' => "$1 is the language name; $2 is the language's ISO 639-3 code.",
@@ -2387,8 +2391,15 @@ $wdMessages['eo'] = array(
 	'langman_wikimedia' => 'Wikimedia-kodo:',
 	'langman_field_optional' => '(nedeviga)',
 	'langman_addlang' => 'Aldoni lingvon',
+	'importlangnames' => 'Wikidata: Importi lingvo-nomojn',
+	'importlangnames_title' => 'Importi Lingvo-Nomojn',
+	'importlangnames_not_found' => '<strong>Neniu lingvo por "$1" estis trovita!</strong>',
 	'datasearch_language' => 'Lingvo:',
+	'datasearch_found_word' => 'Trovita vorto',
 	'datasearch_meaning' => 'Signifo',
+	'datasearch_search_text' => 'Serĉi tekston:',
+	'ow_importtsv_import_failed' => 'Importado malsukcesis',
+	'ow_importtsv_test_run' => 'Testprovo:',
 	'ow_save' => 'Konservi',
 	'ow_history' => 'Historio',
 	'ow_datasets' => 'Datumara selekto',
@@ -2398,6 +2409,8 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_uipref_datasets' => 'Defaŭlta vido:',
 	'ow_uiprefs' => 'Vikidatenoj',
 	'ow_none_selected' => 'Nenio elektita',
+	'ow_transaction_previous_version' => 'Antaŭa versio',
+	'ow_transaction_summary' => 'Resumo',
 	'ow_conceptmapping_no_action_specified' => 'Bedaŭrinde, mi ne scias kiel "$1".',
 	'ow_dm_OK' => 'Ek!',
 	'ow_dm_not_present' => 'ne enigita',
@@ -2438,6 +2451,7 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_PopupAnnotation' => 'Prinotado',
 	'ow_Relations' => 'Rilatoj',
 	'ow_RelationType' => 'Rilata tipo',
+	'ow_Remove' => 'Forigi',
 	'ow_Spelling' => 'Literumado',
 	'ow_Synonyms' => 'Sinonimoj',
 	'ow_SynonymsAndTranslations' => 'Sinonimoj kaj tradukoj',
@@ -2450,15 +2464,18 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_TranslatedText' => 'Tradukita teksto',
 	'ow_TranslatedTextAttributeValue' => 'Teksto',
 	'ow_TranslatedTextAttributeValues' => 'Tradukeblaj tekstoj',
+	'ow_Link' => 'Ligilo',
 	'ow_LinkAttribute' => 'Eco',
 	'ow_LinkAttributeValues' => 'Ligiloj',
 	'ow_Property' => 'Eco',
 	'ow_Value' => 'Valuto',
+	'ow_added' => 'Aldonita',
+	'ow_removed' => 'Forigita',
 	'ow_meaningsoftitle' => 'Signifoj de "$1"',
 	'ow_meaningsofsubtitle' => '<em>Vikiligilo:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>PERMESO NEITA</h2>',
 	'ow_copy_no_action_specified' => 'Bonvolu specifigi agon',
-	'ow_copy_help' => 'Iutage, ne eble helpos vin.',
+	'ow_copy_help' => 'Helpado ne estas jam funkciigita.',
 	'ow_copy_successful' => '<h2>Kopio sukcesis</h2>
 Viaj datenoj verŝajne estis kopiitaj sukcese.
 Ne forgesu rekontroli por certigi!',
@@ -2466,6 +2483,7 @@ Ne forgesu rekontroli por certigi!',
 Neniu kopia operacio okazis.',
 	'ow_no_action_specified' => '<h3>Neniu ago estis specifigita</h3>
 Ĉu eble vi alvenis ĉi tiun paĝon rekte? Norme vi ne bezonus esti ĉi tie.',
+	'ow_class_attr_type_xlate' => 'Tradukebla teksto',
 );
 
 /** Spanish (Español)
@@ -3476,6 +3494,9 @@ Por favor, póñase en contacto cun operador ou administrador do servidor.',
  * @author LeighvsOptimvsMaximvs
  */
 $wdMessages['grc'] = array(
+	'langman_langname' => 'Ὄνομα γλώττης:',
+	'langman_iso639-3' => 'Κῶδιξ ISO 639-3:',
+	'langman_iso639-2' => 'Κῶδιξ ISO 639-2:',
 	'langman_field_optional' => '(Προαιρετικόν)',
 	'datasearch_language' => 'Γλῶττα:',
 	'ow_exporttsv_languages' => 'Γλῶτται:',
@@ -5239,6 +5260,7 @@ $wdMessages['krj'] = array(
  */
 $wdMessages['ksh'] = array(
 	'languages' => 'Sproche verwallde för Wikidata.',
+	'langman-desc' => 'Donn de Enstellunge för Shprooche dobei, udder ömmoodelle, met [[{{#special:Languages}}]].',
 	'langman_title' => 'Sproche-Verwaldung',
 	'langman_not_allowed' => 'Do häs kei Rääsch, de Enstellunge för de Shprooche ze ändere.',
 	'langman_header' => 'Jif dä Kood för di Shprooch en, un dä Änglesche Name do dronger:',
@@ -5262,23 +5284,32 @@ $wdMessages['ksh'] = array(
 	'datasearch_search_text' => 'Tex zem Söke:',
 	'datasearch_within_words' => 'En Wööter dren:',
 	'datasearch_showing_only' => 'Mer zeije nur {{PLURAL:$1|jenou eine|bes $1|keine}} Treffer.',
+	'datasearch_match_words' => 'Wööter, di op <i>$1</i> passe donn, un dänne ier Bedüggdeniß',
+	'datasearch_match_words_lang' => 'Wööter en <i>$1</i>, di op <i>$2</i> passe donn, un dänne ier Bedüggdeniß',
+	'importtsv' => 'Wikidata: En Datei uß Reije met Wääte met Tabulatore dozwesche empoteere',
+	'ow_importtsv_title1' => 'En Datei uß Reije met Wääte met Tabulatore dozwesche empoteere',
+	'ow_importtsv_title2' => 'Donn Bedüggdeniße un Övversäzonge empoteere',
+	'ow_importtsv_header' => "<p>Donn Bedüggdeniße un Övversäzonge empoteere vun ene Dattei, woh Reihe met Täxshtöcksche met Tabbulatohre dozwesche dren sin. Esu en Dattei kritt mer zom Beispell pä Äxpoot uß OpenOffice, Excel un ander Tabelleprojramme.</p>
+<p>Dat Fommaat vun dä Dattei moß et sellve sin, wi dat, wat mer met dä Sigg [[{{#special:ExportTSV}}]] kritt. Wann de Shpallde ier Övverschreffte ömjemoodelt sen, jeiht dat Empoteere donevve. Wann de Nommer odder dä Tex för en Bedüggdeniß verändert sen, för en beshtemmpte faßjelaate un explizeete Bedüggdeniß, dann jeiht dä ier Reih bemm Empoteere verschött. Wann Shpallde dobei jekumme sen, dann möße se en Övverschreff han, di entweder wi <code lang=\"en\">definitions_''iso''</code> udder wi <code lang=\"en\">translations_''iso''</code> ußsüüht, woh <code lang=\"en\">''iso''</code> e Shprooche-Köözel noh de ISO 639-3 es.</p>
+<p>Wan dat Käßje „{{int:ow_importtsv_test_run}}“ e Höhksche hät, dann kriß ene Bereesch övver all dat, wat passeere däht, ävver nix weet wörklesch en de Datebangk jedonn. Donn ene Versochslouf maache, ih dat De dä reschtijje Empoot määß.</p>",
+	'ow_importtsv_not_allowed' => 'Do häs nit dat Rääsch, en Datei uß Reije met Wääte met Tabulatore dozwesche ze empoteere.',
+	'ow_importtsv_importing' => 'Ben en Datei uß Reije met Wääte met Tabulatore dozwesche am empoteere',
 	'ow_importtsv_import_failed' => 'Et Empoteere es donävve jejange',
-	'ow_importtsv_test_run' => 'Teß Louf:',
+	'ow_importtsv_file' => 'De Datei uß Reije met Wääte met Tabulatore dozwesche:',
+	'ow_importtsv_test_run' => 'Versochslouf:',
+	'ow_importtsv_not_utf8' => '<p>Dat schingk kei UTF-8 ze sinn en dä Dattei. Di Datei moß ävver en UTF-8 koddeet sin. Do moß drop aade, dat Ding Projramm di Datei reschtesch afjeshpeichert of expoteet hät.</p>',
+	'ow_importtsv_not_tsv' => '<p>Dat schingk kei Datei uß Reije met Wääte met Tabulatore dozwesche ze sin.</p>',
+	'ow_importtsv_test_run_title' => 'Versoochslouf för en Datei met Reije met Wääte un Tabulatore dozwesche ze empoteere',
 	'ow_importtsv_nothing_added' => 'Nix dobei jedonn.',
 	'ow_importtsv_nothing_added_test' => 'Nix dobei jedonn (Do häs jo nor ene Versochslouf jemaat).',
-	'ow_impexptsv_unknown_lang' => '<p>De Shprooch es nit bikannt odder verjeeht: $1.<br />
-Shprooche möße övverISO 639-3 Koods annjejovve wääde.</p>',
-	'ow_exporttsv_header' => '<p>Donn en Sammlong expoteere in en Tex-Dattei met
-Tabbulattore zwesche Varijable (et TSV Fommaat). Di Dattei kanns
-De en OpenOffice.org, Excel, un ander Projramme en dä Aat empotteere.
-<br />
-Sök Der en Sammlong för et Expoteere us. En dämm Kaßte för de Shprooche
-jiß De en Leß met ISO 639-3 Koods för Shprooche en, met Kommas dozwesche.
-Fang aan met dä Shprooche, woh De fun övversäze wells, esu vill wie de
-bruche kanns, un am Eng maach die hen, en die De övversäze deijß.
-Dann dröck dä Knopp „{{int:ow_create}}“ öm de Dattei ußzejävve.</p>',
+	'ow_impexptsv_unknown_lang' => '<p>He di Shprooch es nit bikannt, odder se es verkeeht: $1.<br />Shprooche möße övver dänne ier ISO 639-3 Koods annjejovve wääde.</p>',
+	'exporttsv' => 'Wikidata: En Datei uß Reije met Wääte met Tabulatore dozwesche expoteere',
+	'ow_exporttsv_title' => 'En Sammlong als en Datei uß Reije met Wääte met Tabulatore dozwesche expoteere',
+	'ow_exporttsv_header' => '<p>Donn en Sammlong expoteere als en Tex-Dattei uß Reije met Wääte met Tabulatore dozwesche (em TSV Fommaat). Di Dattei kanns De en OpenOffice.org, Excel, un ander Projramme en dä Aat empotteere.<br />Sök Der en Sammlong för et Expoteere us. En dämm Kaßte för de Shprooche jiß De en Leß met ISO 639-3 Koods för Shprooche en, met Kommas dozwesche. Fang aan met dä Shprooche, woh De fun övversäze wells, esu vill wie de bruche kanns, un am Eng maach die hen, en die De övversäze deijß. Dann dröck dä Knopp „{{int:ow_create}}“ öm de Dattei ußzejävve.</p>',
 	'ow_exporttsv_languages' => 'Shprooche:',
+	'ow_exporttsv_not_allowed' => 'Do häs nit dat Rääsch, en en Datei uß Reije met Wääte met Tabulatore dozwesche ze expoteere.',
 	'ow_exporttsv_export_failed' => 'Dä Expoot es donävve jejange',
+	'addcollection' => 'Wikidata: Sammlong dobei donn',
 	'ow_save' => 'Afspeichere',
 	'ow_history' => 'Versione',
 	'ow_datasets' => 'Date-Knubbel ußsöke',
@@ -5297,26 +5328,26 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 	'ow_transaction_second_dm' => 'Zweite faßjelaate un explizeete Bedüggdeniß',
 	'ow_transaction_summary' => 'Zosammejefaß, Quelle',
 	'ow_conceptmapping_help' => '<p>Müjjelesche Akßjuhne: <ul>
-<li><code>&action=insert&<data_context_prefix>=<defined_id>&... </code> donn en Afbelldung dobei</li>
-<li><code>&action=get&concept=<concept_id> </code> liß en Afbelldung zerök</li>
-<li><code>&action=list_sets </code> jif en Leß met müjjelesche data context prefixes uß, un woh se sesch drop betrecke.</li>
-<li><code>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> </code> jif all andere defined meanings uß för ein bestemmpte defined meaning en enem Konzep</li>
-<li><code>&action=help </code> Zeich Hülp.</li>
+<li><code>&action=insert&<data_context_prefix>=<defined_id>& </code>{{int:ellipsis}} — donn en Afbelldung dobei</li>
+<li><code>&action=get&concept=<concept_id> </code> — liß en Afbelldung zerök</li>
+<li><code>&action=list_sets </code> — jif en Leß met müjjelesche data context prefixes uß, un woh se sesch drop betrecke.</li>
+<li><code>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> </code> — jif all de övverijje faßjelaate un explizeete Bedüggdeniße uß för ein bestemmpte faßjelaate un explizeete Bedüggdeniß en enem Konzep</li>
+<li><code>&action=help </code> — Zeich Hülp.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Met em <i lang="en">Concept Mapping</i> läsch mer faß, wat för en <i lang="en">DefinedMeaning</i> em eine <i lang="en">Dataset</i> desellve sin, wi ander <i lang="en">DefinedMeanings</i> en andere <i lang="en">Datasets</i>.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Deit mer leid, en Akziun „$1“ kenne mer nit.',
 	'ow_dm_not_present' => 'nit enjejovve',
 	'ow_dm_not_found' => 'nit en de Datebank, udder kappott',
 	'ow_mapping_successful' => 'Alle met [{{int:Ow dm OK}}] makeete Fellder sin zojeoodenet.<br />',
-	'ow_mapping_unsuccessful' => 'Mer möße ald zwei <i lang="en">DefinedMeanings</i> han, ih dat mer se meddenein verlinke kann.',
+	'ow_mapping_unsuccessful' => 'Mer möße ald winnischßdens zwei ongerscheedlijje beshtemmpte faßjelaate un explizeete Bedüggdeniße han, ih dat mer se meddenein verlinke kann.',
 	'ow_will_insert' => 'Dat hee weed enjesaz:',
 	'ow_contents_of_mapping' => 'Ennhallde fun de Afbelldung',
 	'ow_available_contexts' => 'Müjjelesche Zosammehäng',
 	'ow_add_concept_link' => 'Ene Link op annder Konzeppte dobei don',
 	'ow_concept_panel' => 'Konzep Schaltfläsch',
-	'ow_dm_badtitle' => 'Di Sigg hee zeich nit op en DefinedMeaning (Konzepp).
+	'ow_dm_badtitle' => 'Di Sigg hee zeich nit op en faßjelaate un explizeete Bedüggdeniß (Konzepp).
 Don ens noh dä Webaddress loore.',
-	'ow_dm_missing' => 'Di Sigg hee zeich op en <i lang="en">DefinedMeaning</i> (Konzepp) wat et nit jit.
+	'ow_dm_missing' => 'Di Sigg hee zeich op en faßjelaate un explizeete Bedüggdeniß (udder e Konzepp) wat et nit jit.
 Don ens noh dä Webaddress loore.',
 	'ow_AddHint' => 'Jif neu Reije en, för se dobei ze donn',
 	'ow_AlternativeDefinition' => 'De Bedüggdeniß ens anders explezeet',
@@ -5324,8 +5355,12 @@ Don ens noh dä Webaddress loore.',
 	'ow_Annotation' => 'Aanmerkung',
 	'ow_ApproximateMeanings' => 'Onjefähr Bedüggdeniße',
 	'ow_ClassAttributeAttribute' => 'Eijeschaff',
+	'ow_ClassAttributeLevel' => 'Nivo',
 	'ow_ClassAttributeType' => 'Tüp',
 	'ow_Collection' => 'Aansamlung',
+	'ow_Collection_colon' => 'Sammlong:',
+	'ow_CollectionMember' => 'En dä Sammlong',
+	'ow_CollectionMembership' => 'Wat bei de Sammlong hürt',
 	'ow_DefinedMeaningAttributes' => 'Aanmerkung',
 	'ow_DefinedMeaning' => 'Faßjelaate un explizeete Bedüggdeniß',
 	'ow_DefinedMeaningReference' => 'Faßjelaate un explizeete Bedüggdeniß',
@@ -5396,12 +5431,13 @@ Velleisch bes De tiräk op di Sigg hee jespronge?
 Nomaal sullt me hee nit hen kumme.',
 	'ow_db_consistency_not_found' => '<h2>Fähler</h2>
 De Datebangk es nit mieh konsistent.
-Wikidata kunnt kein jöltije Date fenge, di met dä Nommer för en DefindeMeaning zosamme passe däte.
+Wikidata kunnt kein jöltije Date fenge, di met dä Nommer för en faßjelaate un explizeete Bedüggdeniß zosamme passe däte.
 Bes esu joot, un saach dat enem Wiki-Köbes, udder ennem Administrator fun däm Server.',
 	'ow_class_attr_type_dm' => 'Faßjelaate un explizeete Bedüggdeniß',
 	'ow_class_attr_type_xlate' => 'Övversetzbaa Tex',
 	'ow_class_attr_type_plain' => 'Eijfach Tex',
 	'ow_class_attr_type_link' => 'Lengk',
+	'ow_class_attr_type_option' => "Leß met 'Option'e",
 	'needstranslation' => 'Wikidata: Ußdröck, die övversaz wäde möße',
 	'ow_needs_xlation_title' => 'Ußdröck, die övversaz wäde mööte',
 	'ow_needs_xlation_source_lang' => 'Shprooch fun woh övversäze:',
@@ -5414,6 +5450,9 @@ Bes esu joot, un saach dat enem Wiki-Köbes, udder ennem Administrator fun däm 
 	'ow_suggest_previous' => 'Vürijje',
 	'ow_suggest_next' => 'Nächs',
 	'ow_suggest_clear' => 'Leddish maache',
+	'ow_nstab_definedmeaning' => 'explizeete Bedüggdeniß',
+	'ow_nstab_edit_copy' => 'en Koppi ändere',
+	'right-addlanguage' => 'Enstellunge för Shprooche dobei donn udder ändere',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

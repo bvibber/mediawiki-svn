@@ -104,6 +104,18 @@ $messages['ga'] = array(
 Má imíonn tú ón leathanach seo anois, is féidir go gcaillfear na hathruithe a rinne tú.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'ajaxlogin-desc' => 'Caixa dinámica que permite aos usuarios rexistrarse e lembrar o seu contrasinal',
+	'ajaxLogin1' => 'Para completar o seu rexistro, debe introducir un novo contrasinal.
+Isto levarao desta páxina de edición e pode perder a súa edición actual.',
+	'ajaxLogin2' => 'Está seguro?
+Pode perder os cambios feitos nesta páxina se sae dela agora.',
+	'ajaxlogin-create' => 'Crear unha conta',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -234,12 +246,15 @@ Tým prejdete preč z tejto upravovacej stránky a mohli by ste stratiť svoje �
 
 /** Swedish (Svenska)
  * @author Grillmannen
+ * @author Najami
  */
 $messages['sv'] = array(
+	'ajaxlogin-desc' => 'En dynamisk box som låter användare logga in och komma ihåg lösenord',
 	'ajaxLogin1' => 'För att komplettera din inloggning måste du skriva in ett nytt lösenord.
 Detta kommer att föra dig bort från den här redigeringssidan och du kan komma att förlora din nuvarande redigering.',
 	'ajaxLogin2' => 'Är du säker?
 Du kan förlora din redigering om du lämnar den här sidan nu.',
+	'ajaxlogin-create' => 'Skapa ett konto',
 );
 
 /** Turkish (Türkçe)
