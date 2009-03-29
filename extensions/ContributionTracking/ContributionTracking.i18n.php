@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Invalid form submission',
 
-	'contrib-tracking-submitting' => 'Submitting to payment processor...',
+	'contrib-tracking-submitting' => 'Submitting to payment processor…',
 	'contrib-tracking-continue' => 'If you are not automatically redirected, click the button to complete your donation at PayPal.',
 
 	'contrib-tracking-button' => 'Continue',

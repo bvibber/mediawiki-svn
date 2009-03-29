@@ -25,7 +25,7 @@ They will decide on ways to generate income and the allocation of moneys raised.
 Please read the candidates' statements and responses to queries carefully before voting.
 Each of the candidates is a respected user, who has contributed considerable time and effort to making these projects a welcoming environment committed to the pursuit and free distribution of human knowledge.
 
-Please rank the candidates according to your preferences by filling in a number beside the box (1 = favourite candidate, 2 = second favourite, ...).
+Please rank the candidates according to your preferences by filling in a number beside the box (1 = favourite candidate, 2 = second favourite, …).
 You may give the same preference to more than one candidate and may keep candidates unranked.
 It is presumed that you prefer all ranked candidates to all not ranked candidates and that you are indifferent between all not ranked candidates.
 
@@ -55,7 +55,7 @@ The resulting encrypted version follows. It will be [[Special:BoardVote/dump|dis
 <pre>$3</pre>
 
 [[Special:BoardVote/entry|Back]]",
-	'boardvote_invalidentered' => "<p><strong>Error</strong>: candidate preference must be expressed in positive whole number only (1, 2, 3, ....), or
+	'boardvote_invalidentered' => "<p><strong>Error</strong>: candidate preference must be expressed in positive whole number only (1, 2, 3, …), or
 left empty.</p>",
 	'boardvote_nosession' => "Your Wikimedia user ID could not be determined.
 Please log in to the wiki where you are qualified to vote, and go to <nowiki>[[Special:BoardVote]]</nowiki>.

@@ -30,7 +30,7 @@ $messages['en'] = array(
         'imstatus_gtalk_width' => 'width of the box, in pixels.',
 
         'imstatus_icq_id' => 'your ICQ ID',
-        'imstatus_icq_style' => 'a number ranging from 0 to 26 (yes, there are 27 available styles...).',
+        'imstatus_icq_style' => 'a number ranging from 0 to 26 (yes, there are 27 available styles).',
 
         'imstatus_live_code' => 'your Live Messenger website id',
         'imstatus_live_get_code' => 'your Live Messenger website id: <strong>this is not your e-mail address</strong>, you need to generate one in

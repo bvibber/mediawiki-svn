@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'communityvoice-desc' => 'Community participation tools',
 	// Ratings Module
 	'communityvoice-ratings' => 'Ratings',
-	'communityvoice-ratings-scale-status-sending' => 'Sending...',
+	'communityvoice-ratings-scale-status-sending' => 'Sending…',
 	'communityvoice-ratings-scale-status-error' => 'Error sending!',
 	'communityvoice-ratings-scale-status-thanks' => 'Thanks for voting!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vote|votes}} cast)',
