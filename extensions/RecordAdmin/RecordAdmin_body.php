@@ -243,7 +243,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				foreach ( array_keys( $this->types ) as $k ) {
 					$v = isset( $posted[$k] ) ? ( $this->types[$k] == 'bool' ? 'yes' : $posted[$k] ) : '';
 					if ( !preg_match( "|\s*\|\s*$k\s*=|", $text ) ) $text .= "\n|$k=|\n"; # Treat non-existent fields as existing but empty
-					$i = preg_match( "|\s*\|\s*$k\s*=\s*(.*?)\s*(?=[\|\}])|si", $text, $m );
+					$i = preg_match( "|^\s*\|\s*$k\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
 					if ( $v && !( $i && eregi( $v, $m[1] ) ) ) $match = false;
 					$r[$k] = isset( $m[1] ) ? $m[1] : '';
 				}
@@ -342,8 +342,14 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Render this row
 			if ( $template ) {
 				$text = '{'.'{'."$template|title=$col|created=$tsc|modified=$tsm";
+				foreach ( array_keys( $this->types ) as $col ) {
+					$v = isset( $r[$col] ) ? $r[$col] : '';
+					$text .= "|$col=$v";
+				}
 				$text .= '}}';
-				$table .= $parser->parse( $text, $special, $options, true, true )->getText();
+				$text = $parser->parse( $text, $special, $options, true, true )->getText();
+				$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
+				$table .= "$text\n";
 			}
 			else {
 				$row = array(
