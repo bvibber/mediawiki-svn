@@ -242,10 +242,10 @@ class SpecialRecordAdmin extends SpecialPage {
 				$r = array( 0 => $t, 'title' => $t->getPrefixedText() );
 				foreach ( array_keys( $this->types ) as $k ) {
 					$v = isset( $posted[$k] ) ? ( $this->types[$k] == 'bool' ? 'yes' : $posted[$k] ) : '';
-					if ( !preg_match( "|\s*\|\s*$k\s*=|", $text ) ) $text .= "\n|$k=|\n"; # Treat non-existent fields as existing but empty
+					if ( !preg_match( "|\s*\|\s*$k\s*=|", $text ) ) $text .= "\n|$k=\n|"; # Treat non-existent fields as existing but empty
 					$i = preg_match( "|^\s*\|\s*$k\s*=\s*(.*?)\s*(?=^\s*[\|\}])|sm", $text, $m );
-					if ( $v && !( $i && eregi( $v, $m[1] ) ) ) $match = false;
 					$r[$k] = isset( $m[1] ) ? $m[1] : '';
+					if ( $v && !( $i && eregi( $v, $r[$k] ) ) ) $match = false;
 				}
 				if ( $invert ) $match = !$match;
 				if ( $match ) $records[] = $r;
