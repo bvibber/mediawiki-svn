@@ -309,8 +309,14 @@ class SimpleSecurity {
 			# - also update info array with page-restriction that apply to this title (LS), and rules in effect for this user (CR)
 			if ( $deny ) {
 				foreach ( $restriction as $action => $reqgroups ) {
-					if ( !is_array( $reqgroups ) ) $reqgroups = array( $reqgroups );
-					if ( $updateInfo ) $this->info['LS'][] = array( $action, $reqgroups, wfMsg( 'security-desc-LS', strtolower( $type ), $data ) );
+					if ( !is_array( $reqgroups ) ) {
+						$reqgroups = array( $reqgroups );
+					}
+
+					if ( $updateInfo ) {
+						$this->info['LS'][] = array( $action, $reqgroups, wfMsg( 'security-desc-LS', wfMsg( 'security-type-' . strtolower( $type ) ), $data ) );
+					}
+
 					if ( !in_array( 'sysop', $groups ) && !array_intersect( $groups, $reqgroups ) ) {
 						foreach ( $rights as $i => $right ) if ( $right === $action ) unset( $rights[$i] );
 						# $this->info['CR'][] = array($action, $reqgroups, wfMsg('security-desc-CR'));

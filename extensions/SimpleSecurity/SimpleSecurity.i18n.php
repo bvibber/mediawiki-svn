@@ -24,10 +24,12 @@ $messages['en'] = array(
 	'security-inforestrict'    => '$1 is restricted to $2',
 	'security-desc-LS'         => "''(applies because this page is in the '''$2 $1''')''",
 	'security-desc-PR'         => "''(set from the '''protect tab''')''",
-	'security-desc-CR'         => "''(this restriction is '''in effect now''')''",
+	#'security-desc-CR'         => "''(this restriction is '''in effect now''')''",
 	'security-infosysops'      => "No restrictions are in effect because you are a member of the '''sysop''' group",
 	'security-manygroups'      => 'groups $1 and $2',
 	'security-unchain'         => 'Modify actions individually',
+	'security-type-category'   => 'category',
+	'security-type-namespace'  => 'namespace',
 );
 
 /** Message documentation (Message documentation)
