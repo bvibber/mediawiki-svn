@@ -359,7 +359,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				);
 				foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
 					if ( !isset( $row[$col] ) ) {
-						$v = isset( $r[$col] ) ? $parser->parse( $r[$col], $special, $options, true, true )->getText() : '&nbsp;';
+						$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $special, $wgParser->mOptions, true, true )->getText() : '&nbsp;';
 						$class = 'col' . preg_replace( '|\W|', '-', $col );
 						$row[$col] = "<td class='$class'>$v</td>";
 					}
