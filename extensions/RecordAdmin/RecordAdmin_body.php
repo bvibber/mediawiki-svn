@@ -302,6 +302,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$parser   = new Parser;
 		$type     = $this->type;
 		$sortable = $sortable ? ' sortable' : '';
 		$br       = $sortable ? '<br />' : '';
@@ -345,7 +346,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					$text .= "|$col=$v";
 				}
 				$text .= '}}';
-				$text = $wgParser->parse( $text, $special, $wgParser->mOptions, true, true )->getText();
+				$text = $wgParser->parse( $text, $special, $parser->mOptions, true, true )->getText();
 				$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
 				$table .= "$text\n";
 			}
@@ -359,7 +360,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				);
 				foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
 					if ( !isset( $row[$col] ) ) {
-						$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $special, $wgParser->mOptions, true, true )->getText() : '&nbsp;';
+						$v = isset( $r[$col] ) ? $parser->parse( $r[$col], $special, $wgParser->mOptions, true, true )->getText() : '&nbsp;';
 						$class = 'col' . preg_replace( '|\W|', '-', $col );
 						$row[$col] = "<td class='$class'>$v</td>";
 					}
