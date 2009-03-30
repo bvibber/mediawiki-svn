@@ -132,6 +132,8 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'shareduserrights' => 'Administración de derechos de usuario compartido',
 	'gblrights-desc' => '[[Special:SharedUserRights|Administración de derechos de usuario global]] fácil',
+	'gblrights-logpage' => 'Registro de derechos global',
+	'gblrights-pagetext' => 'Este es un registro de todos los cambios que son hechas a la tabla de derechos globales de la familia wiki',
 	'gblrights-rights-entry' => 'cambiado membresía de grupo global para $1 de $2 a $3',
 );
 

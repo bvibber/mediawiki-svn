@@ -679,6 +679,15 @@ $messages['ru'] = array(
 	'languageselector-setlang' => 'установить',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'languageselector' => 'Омук тыла',
+	'languageselector-desc' => 'Хас сирэй аайы омук тылын талыы баар, көрөөччүлэргэ эмиэ',
+	'languageselector-setlang' => 'туруор',
+);
+
 /** Tachelhit (Tašlḥiyt)
  * @author Zanatos
  */

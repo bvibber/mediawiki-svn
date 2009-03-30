@@ -149,6 +149,7 @@ $messages['es'] = array(
 	'interwikilist' => 'Lista interwiki',
 	'interwikilist-desc' => 'Agrega una [[Special:Interwikilist|página especial]] para ver vínculos interwiki disponibles',
 	'interwikilist-linkname' => 'Vínculo interwiki',
+	'interwikilist-target' => 'URL objetivo',
 	'interwikilist-filter' => 'Lista de filtros',
 	'interwikilist-prefix' => 'Prefijo interwiki:',
 );

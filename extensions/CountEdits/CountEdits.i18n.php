@@ -299,6 +299,9 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'countedits' => 'Contar ediciones',
+	'countedits-desc' => '[[Special:CountEdits|Página especial]] que contabiliza las ediciones del usuario y provee una lista top-ten de contribuyentes',
+	'countedits-warning' => "'''Advertenciag:''' No juzgue un libro por su cubierta.
+No juzgue a los contribuyentes por el número de sus ediciones.",
 	'countedits-username' => 'Nombre de usuario:',
 	'countedits-ok' => 'Aceptar',
 	'countedits-nosuchuser' => 'No hay usuario con el nombre $1.',

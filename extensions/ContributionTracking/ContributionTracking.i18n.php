@@ -178,6 +178,7 @@ $messages['eo'] = array(
  * @author Remember the dot
  */
 $messages['es'] = array(
+	'contributiontracking-desc' => 'Contribución para el seguimiento del recaudador de fondos de Wikimedia',
 	'contributiontracking' => 'Seguimiento contribucional',
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Envío de formulario inválido',

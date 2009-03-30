@@ -266,6 +266,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'lookupuser' => 'Ver información de usuario',
+	'lookupuser-desc' => '[[Special:LookupUser|Recuperar información]] sobre un usuario tal como correo electrónico y ID',
 	'lookupuser-intro' => 'Ingrese un nombre de usuario para ver las preferencias de ese usuario.',
 	'lookupuser-nonexistent' => 'Error: Usuario no existe',
 	'lookupuser-authenticated' => 'autenticado en $1',

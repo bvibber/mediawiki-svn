@@ -27,12 +27,25 @@ $messages['qqq'] = array(
 	'ajaxlogin-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links or tag names.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'ajaxlogin-desc' => 'Dinamička kutija koja omogućuje korisnicima prijavu i pamćenje šifre',
+	'ajaxLogin1' => 'Da bi ste završili Vašu prijavu, morate unijeti šifru.
+Ovo će Vas preusmjeriti sa ove stranice za uređivanje i ukloniti Vaše trenutne izmjene.',
+	'ajaxLogin2' => 'Da li ste sigurni?
+Možete izgubiti promjene koje ste napravili na ovoj stranicu ako sada napustite ovu stranicu.',
+	'ajaxlogin-create' => 'Napravite račun',
+);
+
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Tim 'Avatar' Bartel
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'ajaxlogin-desc' => 'Dynamische Box, welche es Benutzern erlaubt sich anzumelden und ein neues Passwort zu zusenden',
+	'ajaxlogin-desc' => 'Dynamische Box, welche es Benutzern erlaubt sich anzumelden und ein neues Passwort zuzusenden',
 	'ajaxLogin1' => 'Du musst ein neues Passwort eingeben um die Anmeldung durchzuführen.
 Dies geschieht auf einer anderen Seite, so dass du deine aktuellen Änderungen auf dieser Seite möglicherweise verlieren wirst.',
 	'ajaxLogin2' => 'Bist du sicher?
@@ -63,13 +76,16 @@ To buźo k drugemu bokoju wjasć a ty by mógał swóju aktualnu změnu zgubiś.
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Juan David Ruiz
  */
 $messages['es'] = array(
+	'ajaxlogin-desc' => 'Tabla dinámica la cual permite a los usuario iniciar sesión y recordar contraseña',
 	'ajaxLogin1' => 'Para completar tu registro, debes escribir una nueva contraseña.
 Esto hará que salgas de esta página de edición y podrías perder tu edición actual.',
 	'ajaxLogin2' => '¿Estas seguro?
 Podrías perder tus ediciones si abandonas esta página ahora.',
+	'ajaxlogin-create' => 'Crear una cuenta',
 );
 
 /** Finnish (Suomi)
@@ -114,6 +130,31 @@ Isto levarao desta páxina de edición e pode perder a súa edición actual.',
 	'ajaxLogin2' => 'Está seguro?
 Pode perder os cambios feitos nesta páxina se sae dela agora.',
 	'ajaxlogin-create' => 'Crear unha conta',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'ajaxlogin-desc' => 'Dynamische Chaschte, wu s Benutzer erlaubt sich aazmälden un e nej Passwort zuezschicke',
+	'ajaxLogin1' => 'Du muesch e nej Passwort yygee go d aamäldig abschließe.
+Des gschiht uf ere andere Syte, wäge däm verliersch villicht Dyyni aktuälle Änderige uf däre Syte.',
+	'ajaxLogin2' => 'Bisch sicher?
+Viliicht gehn Dyyni aktuällen Änderige verlore, wänn du die Syte verlosch.',
+	'ajaxlogin-create' => 'E Benutzerkonto aalege',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'ajaxlogin-desc' => 'תיבה דינמית המאפשרת למשתמשים להיכנס ולקבל תזכורת סיסמה',
+	'ajaxLogin1' => 'על מנת להשלים את כניסתכם, עליכם לכתוב סיסמה חדשה.
+פעולה זו עלולה להוציא אתכם מדף העריכה, ואתם עלולים לאבד את עריכתכם הנוכחית.',
+	'ajaxLogin2' => 'האם אתם בטוחים?
+אתם עלולים לאבד את השינויים שביצעתם בדף זה אם תעזבו אותו כעת.',
+	'ajaxlogin-create' => 'יצירת חשבון',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -196,6 +237,18 @@ Du kan missa alle endringane du gjorde på denne sida om du går ut av ho no.',
 	'ajaxlogin-create' => 'Opprett ein konto',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'ajaxlogin-desc' => 'Formulari dinamic que permet als utilizaires de se connectar e que se remembre lo senhal',
+	'ajaxLogin1' => 'Per completar vòstra connexion, vos cal picar un senhal novèl.
+Aquò vos farà quitar aquesta pagina e poiriatz perdre vòstra modificacion.',
+	'ajaxLogin2' => 'Sètz segur(a) ?
+Poiriatz perdre vòstras modificacions se quitatz aquesta pagina ara.',
+	'ajaxlogin-create' => 'Crear un compte',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -205,12 +258,15 @@ $messages['ps'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Brunoy Anastasiya Seryozhenko
+ * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
+	'ajaxlogin-desc' => 'Caixa dinâmica que permite que os utilizadores se autentiquem e gravem sua palavra-chave',
 	'ajaxLogin1' => 'Para completar seu login, Você deve colocar uma nova password.
 Isto o impedirá de editar esta página e você perderá esta edição.',
 	'ajaxLogin2' => 'Tem certeza?
 Você perderá as suas edições se abandonar a página agora.',
+	'ajaxlogin-create' => 'Criar uma conta',
 );
 
 /** Romanian (Română)

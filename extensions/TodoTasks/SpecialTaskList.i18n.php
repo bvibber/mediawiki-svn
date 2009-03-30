@@ -324,6 +324,8 @@ Para una lista de proyectos válido, vea [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj' => 'Seleccionar proyecto:',
 	'tasklistprojdisp' => 'Exhibir',
 	'tasklistbyname' => '== Lista de quehaceres para %s ==',
+	'tasklistnoprojects' => "Error: Parece que tu habilitaste '''\$wgUseProjects''', pero no creaste [[MediaWiki:TodoTasksValidProjects]]. Mira 
+[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instrucciones de instalación] para más detalles.",
 	'tasklistemailbody' => ',
 
 Alguien ha asignado una nueva Tarea para usted en %s.

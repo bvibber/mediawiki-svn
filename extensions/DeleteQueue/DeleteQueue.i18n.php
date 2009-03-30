@@ -959,6 +959,10 @@ Móžoš wulašowanje [{{fullurl:$1|action=delvote}} pódprěś abo wótpokazaś
 	'deletequeue-role-vote-object' => 'pśeśiwnik wulašowanja',
 	'deletequeue-vote-tab' => 'Wó wulašowanju wótgłosowaś',
 	'deletequeue-vote-title' => 'Wulašowanje boka "$1" pódprěś abo wótpokazaś',
+	'deletequeue-vote-text' => "Móžoš toś ten formular wužywaś, aby pódpěrał abo wótpokazał wulašowanje \"'''\$1'''\".
+Toś ta akcija buźo pjerwjejšne pódpěranja/znapśeśiwjenja pśepisowaś, kótarež sy gronił k wulašowanjeju toś togo boka.
+Móžoš se eksistěrujuce pódpěranja a znapśeśiwjenja [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} woglědaś].
+Pódana pśicyna w póžedanju za wulašowanje jo była ''\$2''.",
 	'deletequeue-vote-legend' => 'Wulašowanje pódprěś/wótpokazaś',
 	'deletequeue-vote-action' => 'Pórucenje:',
 	'deletequeue-vote-endorse' => 'Wulašowanje pódprěś.',

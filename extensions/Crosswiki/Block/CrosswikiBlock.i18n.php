@@ -256,13 +256,17 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'crosswikiblock' => 'Blokiranje korisnika na drugim wikijima',
 	'crosswikiblock-expiry' => 'Ističe:',
 	'crosswikiblock-reason' => 'Razlog:',
 	'crosswikiblock-submit' => 'Blokiraj ovog korisnika',
 	'crosswikiblock-autoblock' => 'Automatski blokiraj zadnju IP adresu koju je koristio ovaj korisnik i sve druge IP adrese s kojih je on pokušao uređivati',
+	'crosswikiblock-noemail' => 'Onemogući korisnika da šalje e-mail',
+	'crosswikiunblock' => 'Deblokiranje korisnika na drugim wikijima',
 	'crosswikiunblock-reason' => 'Razlog:',
 	'crosswikiunblock-submit' => 'Deblokiraj ovog korisnika',
 	'crosswikiblock-nousername' => 'Nije navedeno korisničko ime',
+	'crosswikiblock-noreason' => 'Nije naveden razlog.',
 	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
 );
 
@@ -466,6 +470,7 @@ Por favor, verifique si está autorizado a actuar en esa wiki y que sus acciones
 	'crosswikiunblock' => 'Desbloquear usuario en otra wiki',
 	'crosswikiunblock-header' => 'Esta página permite desbloquear usuarios en otra wiki.
 Por favor verifique si estás permitido de actuar en este wiki y tus acciones cumplen todas las políticas.',
+	'crosswikiunblock-user' => 'Nombre de usuario, dirección IP o bloquear ID y wiki de destino:',
 	'crosswikiunblock-reason' => 'Motivo:',
 	'crosswikiunblock-submit' => 'Desbloquear este usuario',
 	'crosswikiunblock-success' => "Usuario '''$1''' desbloqueado exitosamente.
@@ -480,6 +485,7 @@ Retornar a:
 	'crosswikiblock-nouser' => 'Usuario "$3" no es encontrado.',
 	'crosswikiblock-noexpiry' => 'Expiración inválida: $1.',
 	'crosswikiblock-noreason' => 'Sin razón especificada.',
+	'crosswikiblock-notoken' => 'Ficha de edición inválida.',
 	'crosswikiblock-alreadyblocked' => 'Usuario "$3" ya está bloqueado.',
 	'crosswikiblock-noblock' => 'Este usuario no está bloqueado.',
 	'crosswikiblock-success' => "Usuario '''$3''' bloqueado existosamente.

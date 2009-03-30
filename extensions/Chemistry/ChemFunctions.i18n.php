@@ -287,6 +287,9 @@ $messages['es'] = array(
 	'chemicalsources' => 'Fuentes químicas',
 	'chemicalsource-desc' => 'Agrega la etiqueta <nowiki><chemform></nowiki>, para fórmulas químicas',
 	'chemFunctions_ListPage' => 'Fuentes químicas',
+	'chemFunctions_DataList' => 'Debajo hay una lista de vínculos a sitios que pueden proveer información acerca de la sustancia química que estás buscando.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Componer $MIXCASNameFormula en NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS en la Universidad de Oxford (UK) (no buscable)</a><br />',
 	'chemFunctions_CAS' => 'Número CAS',
 	'chemFunctions_Formula' => 'Fórmula',
 	'chemFunctions_Name' => 'Nombre IUPAC',

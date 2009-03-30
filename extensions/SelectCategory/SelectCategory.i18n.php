@@ -130,6 +130,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'selectcategory-title' => 'Seleccionar categorías',
 	'selectcategory-desc' => 'Permite a los usuarios seleccionar de categorías existentes cuando editen una página',
+	'selectcategory-subtitle' => 'tecla shift y botón del mouse para seleccionar entradas contíguas múltiples, tecla ctrl y botón del mouse para seleccionar entradas no contíguas.',
 );
 
 /** Basque (Euskara)

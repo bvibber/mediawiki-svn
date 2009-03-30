@@ -490,6 +490,8 @@ $messages['he'] = array(
 קבצים לא מתאימים יימחקו מיידית, עיינו ב[[{{MediaWiki:Multipleupload-page}}|מדיניות מחיקת הקבצים]].",
 	'multiupload-fileuploaded' => 'הקובץ הועלה.',
 	'multiupload-toolbox' => 'העלאת מספר קבצים',
+	'multiupload-no-files' => 'אנא בחרו לפחות קובץ אחד להעלאה',
+	'multiupload-blank' => 'לא נבחר אף קובץ',
 );
 
 /** Hindi (हिन्दी)
@@ -1055,6 +1057,8 @@ Pode opcionalmente introduzir um '''Nome de arquivo destino''' e fornecer um '''
 Arquivos impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Multipleupload-page}}|política de eliminação de arquivos]].",
 	'multiupload-fileuploaded' => 'Arquivo carregado.',
 	'multiupload-toolbox' => 'Carregar múltiplos arquivos',
+	'multiupload-no-files' => 'Por favor selecione ao menos um arquivo para carregar',
+	'multiupload-blank' => 'Nenhum arquivo selecionado',
 );
 
 /** Romanian (Română)

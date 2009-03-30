@@ -197,7 +197,7 @@ $messages['be-tarask'] = array(
 	'recordadmin-created' => 'Створаны',
 	'recordadmin-modified' => 'Абноўлены',
 	'recordadmin-actions' => 'Дзеяньні',
-	'recordadmin-needscontent' => 'Дадаць зьмест...',
+	'recordadmin-needscontent' => 'Дадаць зьмест…',
 	'right-recordadmin' => 'пошук і рэдагаваньне старонак запісаў',
 );
 
@@ -514,6 +514,7 @@ $messages['gl'] = array(
  * @author Crazymadlover
  */
 $messages['grc'] = array(
+	'recordadmin-submit' => 'Ὑποβάλλειν',
 	'recordadmin-buttonsave' => 'Γράφειν',
 );
 

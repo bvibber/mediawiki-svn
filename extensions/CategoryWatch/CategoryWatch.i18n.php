@@ -286,6 +286,7 @@ $messages['he'] = array(
 	'categorywatch-catmoveout' => 'העביר את $1 אל מחוץ לקטגוריה $2 אל הקטגוריה $3',
 	'categorywatch-catadd' => 'הוסיף את $1 לקטגוריה $2',
 	'categorywatch-catsub' => 'הסיר את $1 מהקטגוריה $2',
+	'categorywatch-autocat' => 'במעקב אוטומטי על ידי $1',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -530,6 +531,7 @@ Esta mensagem serve para notificá-lo de que, em $3, o utilizador $4 $5.',
 	'categorywatch-catmoveout' => 'moveu $1 da categoria $2 para $3',
 	'categorywatch-catadd' => 'adicionou $1 à categoria $2',
 	'categorywatch-catsub' => 'removeu $1 da categoria $2',
+	'categorywatch-autocat' => 'Vigiada automaticamente por $1',
 );
 
 /** Romanian (Română)
@@ -618,6 +620,7 @@ Detta meddelande meddelar dig att $3 användare $4 $5.',
 	'categorywatch-catmoveout' => 'flyttade $1 från kategori $2 till $3',
 	'categorywatch-catadd' => 'la till $1 i kategori $2',
 	'categorywatch-catsub' => 'tog bort $1 från kategori $2',
+	'categorywatch-autocat' => 'Automatiskt bevakad av $1',
 );
 
 /** Telugu (తెలుగు)

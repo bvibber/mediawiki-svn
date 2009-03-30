@@ -427,12 +427,21 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'todo' => 'Lista de quehaceres',
+	'todo-desc' => 'Extensión de [[Special:Todo|Lista de quehaceres]] personal experimental',
 	'todo-tab' => 'quehaceres',
 	'todo-new-queue' => 'nuevo',
 	'todo-mail-subject' => 'Item completado en la lista de quehaceres de $1',
+	'todo-mail-body' => 'Solicitaste confirmación de correo electrónico acerca lo completado de un item que has enviado a la lista de quehaceres en línea de $1.
+
+Item: $2
+Enviado: $3
+
+Este item ha sido marcado como completo, con este comentario:
+$4',
 	'todo-invalid-item' => 'Item perdido o inválido',
 	'todo-update-else-item' => 'Tratando de actualizar items de alguien más',
 	'todo-unrecognize-type' => 'Tipo no reconocido',
+	'todo-user-invalide' => 'Quehaceres dados inválidos, perdidos, o usuario que no puede realizar quehaceres.',
 	'todo-item-list' => 'Sus items',
 	'todo-no-item' => 'Sin items de quehaceres.',
 	'todo-invalid-owner' => 'Propietario inválido en este item',

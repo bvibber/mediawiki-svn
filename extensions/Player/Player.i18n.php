@@ -407,7 +407,7 @@ $messages['grc'] = array(
 	'player-invalid-title' => 'Ἄκυρος ἐπιγραφή',
 	'player-goto-player' => 'παίκτης',
 	'player-goto-page' => 'Δέλτος',
-	'player-goto-file' => 'Ἀρχεῖον',
+	'player-goto-file' => 'ἀρχεῖον',
 );
 
 /** Swiss German (Alemannisch)

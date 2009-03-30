@@ -139,6 +139,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'categorystepper-desc' => 'Muestra una tabla de pasos de categorías permitiendo que uno navegue hacia adelante y atrás en orden alfabético a través de una o más categorías que hay en una página',
 	'categorystepper-end' => '(fin de categoría)',
 	'categorystepper-start' => '(comienzo de categoría)',
 );

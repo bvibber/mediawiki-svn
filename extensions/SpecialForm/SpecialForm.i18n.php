@@ -195,6 +195,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'form' => 'Obrazac',
+	'formnoname' => 'Nema imena obrasca',
 	'formsave' => 'Sačuvaj',
 	'formsaveerror' => 'Greška pri spremanju obrasca',
 );
@@ -324,6 +325,7 @@ $messages['es'] = array(
 	'formarticleexiststext' => 'La página [[$1]] ya existe.',
 	'formbadpagename' => 'Mal nombre de página',
 	'formbadrecaptcha' => 'Valores incorrectos para reCaptcha. Intente nuevamente.',
+	'formbadpagenametext' => 'Los datos de formulario que ingresó hacen un mal nombre de página, "$1".',
 	'formrequiredfielderror' => 'Los {{PLURAL:$2|campo $1 es|campos $1 son}} requeridos para este formulario.
 Por favor {{PLURAL:$2|rellénelo|rellénelos}}.',
 	'formsavesummary' => 'Nueva página usando [[Special:Form/$1|formulario $1]]',

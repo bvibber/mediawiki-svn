@@ -426,6 +426,7 @@ $messages['bs'] = array(
 	'math_CannotWritePngDirectory' => 'Ne može se pisati u izlazni PNG direktorijum',
 	'math_CannotWriteTexFile' => 'Ne može se pisati u tex datoteku',
 	'math_IllegalCharacter' => 'Nevaljan znak u unosu',
+	'math_IllegalCommandInMathMode' => 'Komanda "$1" je u nevaljanom math načinu',
 	'math_IllegalCommandInTextMode' => 'Komanda "$1" nije valjana u tekstualnom modu',
 	'math_IllegalFinalBackslash' => 'Nevaljana kosa crta "\\" na kraju unosa',
 	'math_InvalidColour' => 'Boja "$1" nije valjana',

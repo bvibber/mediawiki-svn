@@ -151,6 +151,7 @@ $messages['eo'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'createbox-desc' => 'Tabla de ingreso especializada para creación de página',
 	'createbox-create' => 'Crear',
 	'createbox-exists' => "Disculpe, \"'''{{FULLPAGENAME}}'''\" ya existe.
 

@@ -119,10 +119,20 @@ $messages['dsb'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Sanbec
  */
 $messages['es'] = array(
 	'editsubpages-desc' => 'Permita a los administradores desbloquear una página y sus subpáginas para edición anónima a través de [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => '#<!-- Deje esta línea como está --><pre>
+# Coloque páginas que deseas desbloquear debajo usando
+# * Nombre de página
+# Páginas desbloqueadas deben comenzar con una bala para ser contadas,
+# Todo lo adicional es considerado un comentario
+# Nombres de páginas pueden ser [[vínculos]] y son sensibles a la mayúsculas
+# También, páginas de discusión serán automáticamente desbloqueadas con la página
+# Ver http://www.mediawiki.org/wiki/Extension:EditSubpages para más información
+  #</pre><!-- deje esta línea como está -->',
 );
 
 /** Finnish (Suomi)

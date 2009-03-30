@@ -77,8 +77,10 @@ $messages['be-tarask'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'logentry-parserhook-desc' => 'Ova oznaka proširenja omogućuje obrazac za dodavanje/uklanjanje informacija sa stranica zapisnika',
 	'logentry' => 'StavkaZapisa',
 	'logentry-invalidpage' => 'Nevaljana stranica',
+	'logentry-invalidtoken' => 'Nevaljan token',
 );
 
 /** German (Deutsch)
@@ -123,6 +125,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'logentry-invalidpage' => 'Página inválida',
+	'logentry-invalidtoken' => 'Ficha inválida',
 );
 
 /** Finnish (Suomi)

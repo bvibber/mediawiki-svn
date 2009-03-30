@@ -123,6 +123,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'globaluserrights' => 'Administración global de derechos de usuario',
+	'gur-desc' => 'Fácil administración [[Special:GlobalUserRights|global de los derechos de los usuarios]]',
 	'gur-rightslog-name' => 'Registro de permisos globales',
 	'gur-rightslog-header' => 'Esto es un registro de cambios a los derechos globales.',
 	'gur-rightslog-entry' => 'cambiada membresía de grupo global para $1 de $2 a $3',

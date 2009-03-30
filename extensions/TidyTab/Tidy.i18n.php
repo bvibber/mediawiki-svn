@@ -21,14 +21,6 @@ $messages['qqq'] = array(
 	'tidy-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'tidy' => 'Tark',
-	'untidy' => 'Čočoi',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -106,6 +98,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'tidy-desc' => 'Agrega una pestaña ordenada o desordenada (dependiente en $wgUseTidy) en páginas normales permitiendo eliminar configuración ordenada HTML global para una sola vista',
 	'tidy' => 'Organizado',
 	'untidy' => 'Desorganizado',
 );
@@ -348,6 +341,14 @@ $messages['tl'] = array(
 $messages['uk'] = array(
 	'tidy' => 'Впорядкувати',
 	'untidy' => 'Розпорядкувати',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'tidy' => 'Tark',
+	'untidy' => 'Čočoi',
 );
 
 /** Vietnamese (Tiếng Việt)

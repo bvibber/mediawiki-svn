@@ -314,6 +314,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'contributors' => 'Colaboradores',
+	'contributors-desc' => 'Resume los principales contribuyentes a una página',
 	'contributors-toolbox' => 'Colaboradores principales',
 	'contributors-legend' => 'Listar principales contribuyentes a esta página',
 	'contributors-target' => 'Título:',

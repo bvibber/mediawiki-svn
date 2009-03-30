@@ -217,6 +217,7 @@ $messages['gl'] = array(
  * @author Crazymadlover
  */
 $messages['grc'] = array(
+	'searchbox-go' => 'Ἱέναι',
 	'searchbox-namespaces' => 'Ὀνοματεῖα:',
 );
 

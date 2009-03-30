@@ -1326,6 +1326,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'regexblock' => 'Sperre övver <i lang="en">regular expressions</i>',
 	'regexblock-already-blocked' => '$1 es ald jesperrt.',
 	'regexblock-block-log' => "Dä Metmaacher met däm Name '''\$1''' odder de <code lang=\"en\">IP</code>-Address es jesperrt woode.",
 	'regexblock-block-success' => 'Jesperrt',
@@ -1351,17 +1352,20 @@ Dat litt dodraan, dat zoh vill Driß övver ene janz äähnlijje Name jemaat woo
 Wann de meins, dat es nit en Odenung, [[$1|lohß et uns weße]], odder nemm janz ene andere Metmaacher-Name. Kanns jo flöck ene neue aanmelde.',
 	'regexblock-form-username' => 'De <code lang="en">IP</code>-Addreß odder enem Metmacher singe Name:',
 	'regexblock-form-reason' => 'Aanlass:',
+	'regexblock-form-expiry' => 'Endt aam:',
 	'regexblock-form-match' => 'Akkeraate Treffer',
 	'regexblock-form-account-block' => 'Donn et neu Aanmelde verbeede',
 	'regexblock-form-submit' => 'Donn dä Metmaacher Sperre',
 	'regexblock-form-submit-empty' => 'Jiff enem Metmacher singe Name odder en <code lang="en">IP</code>-Addreß för zem Sperre aan.',
 	'regexblock-form-submit-regex' => 'En onjöltijje <i lang="en">regular expression</i>.',
 	'regexblock-form-submit-expiry' => 'Beß esu joot, un donn en Zick för et Engk fun de Shperr aanjevve.',
+	'regexblock-match-stats-record' => 'Dä Ußdrock „$1“ hät öm/aam $4 för en Sperr en „$3“ för {{GENDER:$2|dä|et|dä Metmaacher|dat|de}} „$2“ jesorrsch, beim Enlogge vun dä IP-Addreeß $5',
 	'regexblock-nodata-found' => 'Kein Date jefonge',
 	'regexblock-stats-title' => 'Shtatistike för de Shperre övver <i lang="en">regular expressions</i>',
 	'regexblock-unblock-success' => 'Nimmieh jeshperrt',
 	'regexblock-unblock-log' => "Dä Metmacher odder de <code lang=\"en\">IP</code>-Addreß '''„\$1“''' es widder frei jejovve.",
 	'regexblock-unblock-error' => 'Fähler beim Sperr-Ophävve. Ene Metmaacher „<nowiki>$1</nowiki>“ jit et nit.',
+	'regexblock-regex-filter' => ' odder en <i lang="en">regular expression</i>:',
 	'regexblock-view-blocked' => 'Sök bloß de Sperre uß vun däm Metmaacher:',
 	'regexblock-view-all' => 'All',
 	'regexblock-view-go' => 'Loß Jonn!',

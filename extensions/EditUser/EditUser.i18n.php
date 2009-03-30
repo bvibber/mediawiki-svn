@@ -46,15 +46,6 @@ $messages['niu'] = array(
 	'edituser-dosearch' => 'Fano',
 );
 
-/** Veps (Vepsan kel')
- * @author Triple-ADHD-AS
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'edituser' => 'Redaktiruida kävutajad',
-	'edituser-username' => 'Nimi',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -290,6 +281,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'edituser-desc' => 'Permite a usuarios privilegiados editar las preferencias de otro usuario',
 	'edituser' => 'Editar usuario',
+	'edituser-logout' => 'Cerrar sesión de usuario',
 	'edituser-username' => 'Nombre',
 	'edituser-dosearch' => 'Buscar',
 	'edituser-nouser' => 'El usuario especificado no existe',
@@ -1099,6 +1091,15 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'edituser-username' => 'Adı',
 	'edituser-dosearch' => 'Ara',
+);
+
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'edituser' => 'Redaktiruida kävutajad',
+	'edituser-username' => 'Nimi',
 );
 
 /** Vietnamese (Tiếng Việt)

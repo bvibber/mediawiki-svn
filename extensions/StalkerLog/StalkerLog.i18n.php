@@ -122,9 +122,11 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'stalkerlog-desc' => 'Agrega [[Special:Log/stalkerlog|un registro]] de inicios y cierres de sesión de usuario',
 	'stalkerlog-log-login' => 'Conectado',
 	'stalkerlog-log-logout' => 'Desconectado',
 	'stalkerlog-log-type' => 'Registro de autenticación de usuario',
+	'stalkerlog-log-text' => 'Este es un registro de inicios y cierres de sesión de usuario.',
 );
 
 /** Basque (Euskara)

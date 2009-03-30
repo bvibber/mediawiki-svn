@@ -445,6 +445,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Extensión para [[Special:PovWatch|meter páginas en las listas de seguimiento]] de otros usuarios',
+	'povwatch_no_session' => 'Error: No se podría enviar formulario a causa de falta de datos de sesión.',
 	'povwatch_not_allowed_push' => 'No eres un administrador PovWatch, no puedes enviar páginas listas de vigilancia.',
 	'povwatch_already_subscribed' => 'Ya está suscrito en PovWatch',
 	'povwatch_subscribed' => 'Estás ahora suscrito a PovWatch',

@@ -110,6 +110,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Busque las coordenadas',
 	'semanticgooglemaps-desc' => 'Permite a los usuario editar y mostrar datos de coordinación semántica usando Google Maps',
 	'semanticgooglemaps-enteraddresshere' => 'Ingresar dirección aquí',
 );

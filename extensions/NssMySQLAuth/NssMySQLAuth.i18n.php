@@ -226,6 +226,7 @@ $messages['es'] = array(
 	'am-email' => 'correo electrónico',
 	'am-active' => 'activo',
 	'am-updated' => 'Tus cambios han sido grabados exitosamente',
+	'nss-desc' => 'Un plugin para autenticar contra una base de datos mysql-libnss. Contiene un [[Special:AccountManager|administrador de cuentas]]',
 	'nss-rights' => 'derechos',
 	'nss-save-changes' => 'Grabar cambios',
 	'nss-create-account-header' => 'Crear nueva cuenta',

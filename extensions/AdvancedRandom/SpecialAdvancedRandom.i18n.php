@@ -78,7 +78,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'advancedrandom' => 'Napredna slučajna stranica',
-	'advancedrandom-desc' => 'Prikazuje slučajnu stranicu na čijoj stranici za razgovor ili linkovima o predmetu stranice, može biti korišteno poput [[Special:AdvancedRandom/Template:Featured/Talk]] za dobivanje slučajnog odabranog članka ili [[Special:AdvancedRandom/Template:GFDL/Image]] za dobivanje slučajne GFDL datoteke',
+	'advancedrandom-desc' => 'Prikazuje slučajnu stranicu na čijoj stranici za razgovor ili linkovima o predmetu stranice, može biti korišteno poput [[Special:AdvancedRandom/Template:Featured/Talk]] za dobivanje slučajnog odabranog članka ili [[Special:AdvancedRandom/Template:GFDL/File]] za dobivanje slučajne GFDL datoteke',
 );
 
 /** Czech (Česky)

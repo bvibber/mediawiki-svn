@@ -1492,10 +1492,13 @@ $messages['bs'] = array(
 	'configure-setting-wgSortSpecialPages' => 'Sortiranje posebnih stranica na [[Special:SpecialPages]]',
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupa',
 	'configure-setting-wgAccountCreationThrottle' => 'Broj računa koje svaka IP adresa može napraviti',
+	'configure-setting-wgDisabledActions' => 'Onemogućene akcije na stranici',
 	'configure-setting-wgEnableAPI' => 'Omogući API',
 	'configure-setting-wgRestrictionTypes' => 'Akcije koje se mogu ograničiti',
 	'configure-setting-wgWhitelistRead' => 'Stranice koje anonimni korisnik može vidjeti',
+	'configure-setting-wgSMTP' => 'SMTP server',
 	'configure-setting-wgDebugLogGroups-value' => 'Datoteka',
+	'configure-setting-wgShowSQLErrors' => 'Pokaži stranice grešaka baze podataka',
 	'configure-setting-wgAvailableRights' => 'Spisak dostupnih prava',
 	'configure-setting-wgAlwaysUseTidy' => 'Uvijek koristi Tidy',
 );
@@ -3857,6 +3860,8 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'configure-setting-wgExtraLanguageNames-value' => 'Ὄνομα',
+	'configure-setting-wgDebugLogGroups-value' => 'Ἀρχεῖον',
+	'configure-setting-wgXhtmlNamespaces-key' => 'Ὀνοματεῖον',
 );
 
 /** Swiss German (Alemannisch)

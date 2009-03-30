@@ -793,6 +793,7 @@ Por favor, comprobe o seu bloqueador de ventás emerxentes.',
  * @author Crazymadlover
  */
 $wgCustomToolbarMessages['grc'] = array(
+	'ct_submit' => 'Ἱέναι!',
 	'ct_user_user' => 'Χρώμενος',
 	'ct_user_sample' => 'Ὄνομα χρωμένου',
 );

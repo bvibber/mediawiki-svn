@@ -1557,6 +1557,7 @@ $wdMessages['bs'] = array(
 	'ow_importtsv_import_failed' => 'Uvoz nije uspjeo.',
 	'ow_importtsv_file' => 'TSV datoteka:',
 	'ow_importtsv_test_run' => 'Probno pokretanje:',
+	'ow_importtsv_not_tsv' => '<p>Ovo ne izgleda kao valjana TSV datoteka.</p>',
 	'ow_importtsv_test_run_title' => 'Probno pokretanje uvoza TSV podataka',
 	'ow_importtsv_nothing_added' => 'Ništa nije dodano.',
 	'ow_importtsv_nothing_added_test' => 'Ništa nije dodano (uradili ste probno pokretanje).',
@@ -3524,6 +3525,7 @@ $wdMessages['grc'] = array(
  */
 $wdMessages['gsw'] = array(
 	'languages' => 'Wikidata: Sproche-Manager',
+	'langman-desc' => 'Sprochyystellige mit [[Special:Languages]] zuefiege un ändere',
 	'langman_title' => 'Sprochmanager',
 	'langman_not_allowed' => 'Du derfsch d Sprochenyystellige nit ändere.',
 	'langman_header' => 'Gib dr Sprochcode yy un drunter dr änglisch Name:',
@@ -3735,6 +3737,7 @@ Bitte kontaktier dr Serveradminschtrator.',
 	'ow_suggest_clear' => 'Lääre',
 	'ow_nstab_definedmeaning' => 'Definierti Bedytig',
 	'ow_nstab_edit_copy' => 'Kopii bearbeite',
+	'right-addlanguage' => 'Sprochyystellige zuefiege un ändere',
 );
 
 /** Manx (Gaelg)
@@ -5299,9 +5302,11 @@ $wdMessages['ksh'] = array(
 	'ow_importtsv_test_run' => 'Versochslouf:',
 	'ow_importtsv_not_utf8' => '<p>Dat schingk kei UTF-8 ze sinn en dä Dattei. Di Datei moß ävver en UTF-8 koddeet sin. Do moß drop aade, dat Ding Projramm di Datei reschtesch afjeshpeichert of expoteet hät.</p>',
 	'ow_importtsv_not_tsv' => '<p>Dat schingk kei Datei uß Reije met Wääte met Tabulatore dozwesche ze sin.</p>',
+	'ow_importtsv_bad_columns' => "<p>„$1“ es ene verkeehte Name.<br />Spallde möße „<code>definition_''iso''</code>“ udder „<code>translations_''iso''</code>“ heiße. Dat „<code>''iso''</code>“ es dobei ene Kood för en Shprooch.</p>",
 	'ow_importtsv_test_run_title' => 'Versoochslouf för en Datei met Reije met Wääte un Tabulatore dozwesche ze empoteere',
 	'ow_importtsv_nothing_added' => 'Nix dobei jedonn.',
 	'ow_importtsv_nothing_added_test' => 'Nix dobei jedonn (Do häs jo nor ene Versochslouf jemaat).',
+	'ow_importtsv_results' => 'Han {{PLURAL:$1|ein Bedüggdeniß|$1 Bedüggdeniße|kei Bedüggdeniß}} un  {{PLURAL:$1|ein Övversäzung|$2 Övversäzunge|kein Övversäzung}} neu opjenumme un dobei jedonn.',
 	'ow_impexptsv_unknown_lang' => '<p>He di Shprooch es nit bikannt, odder se es verkeeht: $1.<br />Shprooche möße övver dänne ier ISO 639-3 Koods annjejovve wääde.</p>',
 	'exporttsv' => 'Wikidata: En Datei uß Reije met Wääte met Tabulatore dozwesche expoteere',
 	'ow_exporttsv_title' => 'En Sammlong als en Datei uß Reije met Wääte met Tabulatore dozwesche expoteere',
@@ -5334,7 +5339,7 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 <li><code>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> </code> — jif all de övverijje faßjelaate un explizeete Bedüggdeniße uß för ein bestemmpte faßjelaate un explizeete Bedüggdeniß en enem Konzep</li>
 <li><code>&action=help </code> — Zeich Hülp.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext' => '<p>Met em <i lang="en">Concept Mapping</i> läsch mer faß, wat för en <i lang="en">DefinedMeaning</i> em eine <i lang="en">Dataset</i> desellve sin, wi ander <i lang="en">DefinedMeanings</i> en andere <i lang="en">Datasets</i>.</p>',
+	'ow_conceptmapping_uitext' => '<p>Met em <i lang="en">Concept Mapping</i> läsch mer faß, wat för en faßjelaate un explizeete Bedüggdeniß en einem <i lang="en">Dataset</i> desellve sin, wi ander faßjelaate un explizeete Bedüggdeniße en andere <i lang="en">Datasets</i>.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Deit mer leid, en Akziun „$1“ kenne mer nit.',
 	'ow_dm_not_present' => 'nit enjejovve',
 	'ow_dm_not_found' => 'nit en de Datebank, udder kappott',
@@ -6569,6 +6574,7 @@ $wdMessages['nso'] = array(
  */
 $wdMessages['oc'] = array(
 	'languages' => 'Wikidata: Gestion de las lengas',
+	'langman-desc' => 'Apondre e modificar los paramètres de lengas amb [[Special:Languages]]',
 	'langman_title' => 'Gestion de las lengas',
 	'langman_not_allowed' => 'Avètz pas la permission de modificar los paramètres de las lengas.',
 	'langman_header' => 'Picatz lo còde de lenga e mai son nom anglés çaijós :',
@@ -6782,6 +6788,7 @@ Contactatz l’administrator.',
 	'ow_suggest_clear' => 'Escafar',
 	'ow_nstab_definedmeaning' => 'significacion definida',
 	'ow_nstab_edit_copy' => 'modificar la còpia',
+	'right-addlanguage' => 'Apondre e modificar los paramètres de lengas',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -7342,6 +7349,7 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
  */
 $wdMessages['pt-br'] = array(
 	'languages' => 'Wikidata: Gestor de línguas',
+	'langman-desc' => 'Adicione e mude configurações de língua com [[Special:Languages]]',
 	'langman_title' => 'Gestor de línguas',
 	'langman_not_allowed' => 'Você não tem permissão para alterar as configurões de línguas.',
 	'langman_header' => 'Digite abaixo o código da língua e o seu nome em inglês:',
@@ -7564,6 +7572,7 @@ Por favor, contate o operador ou administrador do servidor.',
 	'ow_suggest_clear' => 'Limpar',
 	'ow_nstab_definedmeaning' => 'significado definido',
 	'ow_nstab_edit_copy' => 'editar cópia',
+	'right-addlanguage' => 'Adicionar e modificar configurações de língua',
 );
 
 /** Tarifit (Tarifit)

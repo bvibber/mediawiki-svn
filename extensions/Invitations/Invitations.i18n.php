@@ -142,6 +142,8 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'invite-logpage' => 'Zapisnik pozivnica',
+	'invite-logentry' => 'pozovi $1 da koristi mogućnost <i>$2</i>.',
+	'invitations-invitedlist-none' => 'Niste pozvani da koristite neku od mogućnosti softvera za pozivanje.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Jedan poziv|$1 poziva}} dostupno)',
 	'invitations-feature-access' => 'Trenutno imate pristup za upotrebu <i>$1</i>.',
 	'invitations-inviteform-title' => 'Pozovi korisnika da koristi $1',
