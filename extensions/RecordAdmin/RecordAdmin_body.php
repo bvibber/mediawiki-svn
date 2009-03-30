@@ -298,15 +298,13 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false ) {
-		global $wgUser;
+		global $wgParser;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
 		$type     = $this->type;
 		$sortable = $sortable ? ' sortable' : '';
 		$br       = $sortable ? '<br />' : '';
-		$parser   = new Parser;
-		$options  = ParserOptions::newFromUser( $wgUser );
 
 		# Table header
 		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
@@ -347,7 +345,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					$text .= "|$col=$v";
 				}
 				$text .= '}}';
-				$text = $parser->parse( $text, $special, $options, true, true )->getText();
+				$text = $wgParser->parse( $text, $special, $wgParser->mOptions, true, true )->getText();
 				$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
 				$table .= "$text\n";
 			}
@@ -481,7 +479,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	function parsePart($part) {
 		global $wgUser, $wgParser;
 		$options = ParserOptions::newFromUser( $wgUser );
-		$html = $wgParser->parse($part[0], $this->mTitle, $options, true, true )->getText();		
+		$html = $wgParser->parse($part[0], $this->title, $options, true, true )->getText();		
 		return preg_match("|(<option.+</option>)|s", $html, $m) ? $m[1] : '';
 	}
 
