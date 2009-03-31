@@ -102,6 +102,7 @@ $messages['qqq'] = array(
 	'regexblock-view-go' => '{{Identical|Go}}',
 	'regexblock-view-match' => '{{Identical|Exact match}}',
 	'regexblock-view-block-temporary' => '{{Identical|Expires on}}',
+	'regexblock-view-time' => 'parameters: $1 is a date/time, $2 is its date alone, $3 is its time isolated.',
 	'right-regexblock' => '{{doc-right}}',
 );
 
