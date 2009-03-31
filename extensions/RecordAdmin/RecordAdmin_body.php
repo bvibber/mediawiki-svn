@@ -40,7 +40,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			if ( $wpTitle && !ereg( "^$type:.+$", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
 		}
 		$wgOut->addHTML(
-			'<div class="recordadmin-menubar"><a href="' . $title->getLocalURL() . '/$type">' . wfMsg( 'recordadmin-newsearch', $type ) . '</a>'
+			'<div class="recordadmin-menubar"><a href="' . $title->getLocalURL() . "/$type\">" . wfMsg( 'recordadmin-newsearch', $type ) . '</a>'
 			. wfMsg( 'pipe-separator' )
 			. '<a href="' . $title->getLocalURL() . '">' . wfMsg( 'recordadmin-newrecord' ) . '</a></div>'."\n"
 		);
