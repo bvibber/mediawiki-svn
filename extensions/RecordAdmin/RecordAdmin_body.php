@@ -648,6 +648,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$cols     = false;
 		$sortable = true;
 		$template = false;
+		$count    = false;
 		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
 			if ( preg_match( "/^(.+?)\\s*=\\s*(.+)$/", $arg, $match ) ) {
 				list( , $k, $v ) = $match;
@@ -657,12 +658,14 @@ class SpecialRecordAdmin extends SpecialPage {
 				elseif ( $k == 'cols' )     $cols     = preg_split( '/\s*,\s*/', $v );
 				elseif ( $k == 'sortable' ) $sortable = eregi( '1|yes|true|on', $v );
 				elseif ( $k == 'template' ) $template = $v;
+				elseif ( $k == 'count' )    $count    = $v;
 				else $filter[$match[1]] = $match[2];
 			}
 		}
 		$this->preProcessForm( $type );
 		$this->examineForm();
 		$records = $this->getRecords( $type, $filter, $title, $invert, $orderby );
+		if ( $count ) while ( count( $records ) > $count ) array_pop( $records );
 		$table = $this->renderRecords( $records, $cols, $sortable, $template );
 		return array( $table, 'noparse' => true, 'isHTML' => true );
 	}
