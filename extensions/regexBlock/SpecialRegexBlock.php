@@ -410,7 +410,9 @@ class RegexBlockForm extends SpecialPage {
 							$row->stats_user,
 							htmlspecialchars( $row->stats_dbname ),
 							$wgLang->timeanddate( wfTimestamp( TS_MW, $row->stats_timestamp ), true ),
-							$row->stats_ip
+							$row->stats_ip,
+							$wgLang->date( wfTimestamp( TS_MW, $row->stats_timestamp ), true ),
+							$wgLang->time( wfTimestamp( TS_MW, $row->stats_timestamp ), true )
 						)
 					).'
 					</li>');

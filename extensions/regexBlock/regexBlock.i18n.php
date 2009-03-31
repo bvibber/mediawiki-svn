@@ -94,7 +94,9 @@ $messages['qqq'] = array(
 * $2: username
 * $3: database name
 * $4: date/time
-* $5: IP address',
+* $5: IP address
+* $6: isolated date of $4
+* $7: isolated time of $4',
 	'regexblock-view-blocked' => 'This is a label followed by a dropdown list of all users who have ever used regexBlock on the wiki, allowing the viewer to filter down the list of regexBlocks, i.e. see all blocks performed by User:X if users X, Y and Z have used regexBlock tool. There is [[mw:File:RegexBlock.png|a screenshot]].',
 	'regexblock-view-all' => '{{Identical|All}}',
 	'regexblock-view-go' => '{{Identical|Go}}',
