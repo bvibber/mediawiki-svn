@@ -12,7 +12,8 @@ def _check_isolation(args):
 	"""wikiation_check_isolation: check diffs now"""
 	difftest=settings.isolation_test
 	command=difftest+" "+" ".join(args)
-	os.system(command)
+	exit_status=os.system(command)>>8
+	return exit_status==0
 
 def check_isolation(args):
 	"""implement check_isolation command"""
@@ -25,7 +26,7 @@ def check_isolation(args):
 		print target+' is not currently installed'
 		return
 
-	_check_isolation(args[1:])
+	return _check_isolation(args[1:])
 
 
 def difftests(target):

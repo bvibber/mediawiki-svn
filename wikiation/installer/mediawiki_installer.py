@@ -79,6 +79,9 @@ class Mediawiki_Installer(Installation_System):
 			installer_name="latest"
 
 		if not installer_name:
+			installer_name=self.instance
+
+		if not installer_name:
 			raise Mediawiki_Installer_Exception("Please specify which mediawiki tag or revision you would like to view")
 
 		name=as_alias or self.as_alias or installer_name
@@ -116,6 +119,10 @@ class Mediawiki_Installer(Installation_System):
 
 
 	def duplicate(self, src, dst):
+		"""Duplicate an existing instance. 
+		src is the instance to duplicate
+		dst is the name to copy to.  
+		"""
 		if not self.is_installed(src):
 			raise Mediawiki_Installer_Exception(src+" not found.")
 
