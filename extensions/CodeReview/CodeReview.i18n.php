@@ -2391,12 +2391,20 @@ $messages['he'] = array(
 	'code-release-endrev' => 'גרסה אחרונה:',
 	'codereview-subtitle' => 'עבור $1',
 	'codereview-reply-link' => 'תגובה',
-	'codereview-email-subj' => '[$1] [r$2]: נוספה הערה חדשה',
+	'codereview-email-subj' => '[$1] [גרסה $2]: נוספה הערה חדשה',
 	'codereview-email-body' => 'המשתמש "$1" פרסם הערה אודות r$3.
 
 הכתובת המלאה: $2
 
 ההערה:
+
+$4',
+	'codereview-email-subj2' => '[$1] [גרסה $2]: גרסאות המשך',
+	'codereview-email-body2' => 'המשתמש "$1" הוסיף גרסאות המשך לגרסה $2.
+
+הכתובת המלאה: $3
+
+הודעת הגרסה:
 
 $4',
 	'repoadmin' => 'ניהול מאגרים',
