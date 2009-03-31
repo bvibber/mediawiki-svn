@@ -24,11 +24,21 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionMessagesFiles['HoneypotIntegration'] =  "$dir/HoneypotIntegration.i18n.php";
 $wgAutoloadClasses[ 'HoneypotIntegration' ] = "$dir/HoneypotIntegration.class.php";
 
-$wgHooks['AbuseFilter-filterAction'][] = 'HoneypotIntegration::onAbuseFilterFilterAction';
-$wgHooks['AbuseFilter-builder'][] = 'HoneypotIntegration::onAbuseFilterBuilder';
+#$wgHooks['AbuseFilter-filterAction'][] = 'HoneypotIntegration::onAbuseFilterFilterAction';
+#$wgHooks['AbuseFilter-builder'][] = 'HoneypotIntegration::onAbuseFilterBuilder';
 $wgHooks['EditPage::showEditForm:fields'][] = 'HoneypotIntegration::onShowEditForm';
+$wgHooks['GetUserPermissionsErrorsExpensive'][] =
+	'HoneypotIntegration::onGetUserPermissionsErrorsExpensive';
 
 $wgHoneypotURLs = array( 'http://www.google.com' );
 $wgHoneypotTemplates = array(
 	'<a href="honeypoturl"><!-- randomtext --></a>',
 );
+
+$wgHoneypotAutoLoad = false;
+
+$wgHoneypotDataFile = false;
+
+if ( !extension_loaded( 'fss' ) ) {
+	die( "FastStringSearch is required for Project Honeypot Integration" );
+}

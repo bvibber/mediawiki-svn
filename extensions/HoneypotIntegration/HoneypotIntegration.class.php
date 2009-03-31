@@ -1,6 +1,8 @@
 <?php
 
 class HoneypotIntegration {
+	static $IPs = array();
+	static $Data = array();
 	public static function onAbuseFilterFilterAction( &$vars, $title ) {
 		$vars->setVar( 'honeypot_list_count', self::listingCount() ? 1 : 0 );
 		return true;
@@ -10,14 +12,6 @@ class HoneypotIntegration {
 		wfLoadExtensionMessages( 'HoneypotIntegration' );
 		$builder['vars']['honeypot_list_count'] = 'honeypot-list-count';
 		return true;
-	}
-
-	public static function listingCount( $ip = null ) {
-		if ( $ip === null )
-			$ip = wfGetIP();
-
-			// TODO IMPLEMENT
-			return 0;
 	}
 
 	public static function onShowEditForm( &$editPage, &$out ) {
@@ -60,5 +54,122 @@ class HoneypotIntegration {
 		);
 
 		return "$output\n";
+	}
+	
+	public static function isIPListed( $ip ) {
+		$subnet = substr( IP::toHex( $ip ), 0, -6 );
+		$subnet_ips = self::getHoneypotIPs( $subnet );
+		
+		$fss = fss_prep_search( "[$ip]" );
+		return false !== fss_exec_search( $fss, $subnet_ips );
+	}
+	
+	// Gets data from memcached
+	// for a given class A subnet
+	public static function getHoneypotData( $subnet ) {
+		if ( isset(self::$Data[$subnet]) ) {
+			return self::$Data[$subnet];
+		}
+		// Check cache
+		global $wgMemc;
+		
+		$data = $wgMemc->get( wfMemcKey( 'honeypot-data', $subnet ) );
+		if ($data) {
+			wfDebug( "Honeypot Integration: Got data for subnet $subnet from memcached\n" );
+			self::$mData[$subnet] = $data;
+			return $data;
+		}
+		
+		global $wgHoneypotAutoLoad;
+		
+		if ($wgHoneypotAutoLoad) {
+			list($data,$ips) = self::loadHoneypotData( $subnet );
+			return $data;
+		}
+		
+		wfDebug( "Honeypot Integration: Couldn't find honeypot data for subnet $subnet ".
+					"in cache, and AutoLoad disabled\n" );
+	}
+	
+	// Gets IPs from memcached for a given Class A subnet
+	public static function getHoneypotIPs( $subnet ) {
+		if ( isset(self::$IPs[$subnet]) ) {
+			return self::$IPs[$subnet];
+		}
+	
+		// Check cache
+		global $wgMemc;
+		
+		$ips = $wgMemc->get( wfMemcKey( 'honeypot-ips', $subnet ) );
+		if ($ips) {
+			wfDebug( "Honeypot Integration: Got IPs for subnet $subnet from memcached\n" );
+			self::$IPs[$subnet] = $ips;
+			return $ips;
+		}
+		
+		global $wgHoneypotAutoLoad;
+		
+		if ($wgHoneypotAutoLoad) {
+			list($data,$ips) = self::loadHoneypotData( $subnet );
+			return $ips;
+		}
+		
+		wfDebug( "Honeypot Integration: Couldn't find honeypot data for subnet $subnet" .
+					" in cache, and AutoLoad disabled\n" );
+	}
+	
+	// Loads data and saves it to memcached
+	public static function loadHoneypotData() {
+		list($data,$ips) = self::loadHoneypotDataFromFile();
+		
+		global $wgMemc;
+		foreach ( $ips as $subnet => $ipData ) {
+			$wgMemc->set( wfMemcKey( 'honeypot-data', $subnet ), $data[$subnet], 86400 );
+			$wgMemc->set( wfMemcKey( 'honeypot-ips', $subnet ), $ips[$subnet], 86400 );
+		}
+		
+		return array($data,$ips);
+	}
+	
+	// Loads data
+	public static function loadHoneypotDataFromFile() {
+		global $wgHoneypotDataFile;
+		$fh = fopen( $wgHoneypotDataFile, 'r' );
+		
+		$save_data = array();
+		$ips = array();
+		
+		while ( !feof($fh) ) {
+			$line = trim( fgets( $fh ) );
+			$data = preg_split( '/\s/', $line, 3 );
+			
+			if ( IP::isIPAddress( $data[0] ) ) {
+				$subnet = substr( IP::toHex( $data[0] ), 0, -6 );
+				
+				if ( !isset($ips[$subnet]) )
+					$ips[$subnet] = '';
+				if ( !isset( $save_data[$subnet] ) )
+					$save_data[$subnet] = array();
+				
+				$save_data[$subnet][$data[0]] = $data;
+				$ips[$subnet] .= '['.$data[0]."]\n";
+			}
+		}
+		
+		fclose( $fh );
+		
+		self::$IPs = $ips;
+		self::$Data = $save_data;
+		
+		return array( $save_data, $ips );
+	}
+	
+	public static function onGetUserPermissionsErrorsExpensive() {
+		$ip = wfGetIP();
+		
+		if ( self::isIPListed( $ip ) ) {
+			wfDebugLog( 'HoneypotIntegrationMatches', "Attempted edit from $ip matched honeypot" );
+		}
+		return true;
 	}
 }
