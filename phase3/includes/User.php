@@ -3425,6 +3425,7 @@ class User {
 								__METHOD__
 							);
 		
+		global $wgDefaultUserOptions;
 		$this->mOptions = $wgDefaultUserOptions;
 		
 		while( $row = $dbr->fetchObject( $res ) ) {
