@@ -363,8 +363,8 @@ class MV_SpecialMediaSearch {
 
 		// make miro link:
 		$o .= '<li class="subscribe"><a href="http://subscribe.getMiro.com/?url1=' .
-		'http%3A%2F%2F' . $_SERVER['HTTP_HOST'] .  urlencode(  $this->get_httpd_filters_query()  ) . '" ' .
-		'title="Subscribe with Miro"><img src="' . $wgStylePath . '/mvpcf/images/button_subscribe.png" alt="Miro Video Player" border="0" /></a></li>';
+			'http%3A%2F%2F' . $_SERVER['HTTP_HOST'] .  urlencode( $sTitle->getFullUrl( $this->get_httpd_filters_query() ) )  . '" ' .
+		 'title="Subscribe with Miro"><img src="' . $wgStylePath . '/mvpcf/images/button_subscribe.png" alt="Miro Video Player" border="0" /></a></li>';
 
 		// make rss link:
 		$o .= '<li class="rss">';
