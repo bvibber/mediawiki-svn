@@ -152,6 +152,8 @@ class Combined_Installer(Installation_System):
 
 	def uninstall(self, installer_name):
 		"""actually uninstall something. Short circuits (Will try each installer, until success)"""
+
+		messages=[]
 		for system in self.systemlist:
 			try:
 				if system.uninstall(installer_name):
