@@ -158,7 +158,7 @@ class Combined_Installer(Installation_System):
 			try:
 				if system.uninstall(installer_name):
 					return True
-			except: #TODO sometimes an installer may recognise that something CAN NOT be uninstalled, in that case, we should stop trying
+			except Exception,e: #TODO sometimes an installer may recognise that something CAN NOT be uninstalled, in that case, we should stop trying
 				messages.append(system.system_name+": "+e.message)
 		
 		if messages:

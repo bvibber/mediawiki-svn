@@ -252,7 +252,7 @@ class Installation_System(object):
 			raise Installer_Exception("Can't find installer "+installer_name)
 
 		if self.is_installed(installer_name):
-			raise Installer_Exception(installer_name+"already installed.")
+			raise Installer_Exception(installer_name+" already installed.")
 		#try:
 		self.download(installer_name)
 		self.install_settings(installer_name)
