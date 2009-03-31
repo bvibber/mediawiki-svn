@@ -3425,6 +3425,8 @@ class User {
 								__METHOD__
 							);
 		
+		$this->mOptions = $wgDefaultUserOptions;
+		
 		while( $row = $dbr->fetchObject( $res ) ) {
 			$this->mOptions[$row->up_property] = unserialize( $row->up_value );
 		}
