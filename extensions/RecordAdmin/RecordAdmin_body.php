@@ -41,7 +41,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 		$wgOut->addHTML(
 			'<div class="recordadmin-menubar"><a href="' . $title->getLocalURL() . "/$type\">" . wfMsg( 'recordadmin-newsearch', $type ) . '</a>'
-			. wfMsg( 'pipe-separator' )
+			. '&nbsp;'
 			. '<a href="' . $title->getLocalURL() . '">' . wfMsg( 'recordadmin-newrecord' ) . '</a></div>'."\n"
 		);
 
