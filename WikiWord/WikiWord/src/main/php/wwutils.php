@@ -62,8 +62,20 @@ class WWUtils {
 	$sql = "SELECT O.*, C.*, F.*, definition FROM {$wwTablePrefix}_{$lang}_concept_info as F "
 	      . " JOIN {$wwTablePrefix}_{$lang}_concept as C ON F.concept = C.id "
 	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND F.concept = O.local_concept "
-	      . " JOIN {$wwTablePrefix}_{$lang}_definition as D ON F.concept = D.concept "
+	      . " LEFT JOIN {$wwTablePrefix}_{$lang}_definition as D ON F.concept = D.concept "
 	      . " WHERE O.local_concept = $id ";
+
+	return $this->query($sql);
+    }
+
+    function queryConceptInfo($id, $lang) {
+	global $wwTablePrefix, $wwThesaurusDataset;
+
+	$sql = "SELECT O.*, C.*, F.*, definition FROM  {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O "
+	      . " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as F ON O.global_concept = F.concept "
+	      . " LEFT JOIN {$wwTablePrefix}_{$lang}_concept as C ON O.local_concept = C.id "
+	      . " LEFT JOIN {$wwTablePrefix}_{$lang}_definition as D ON O.local_concept = D.concept "
+	      . " WHERE O.global_concept = $id AND O.lang = \"" . mysql_real_escape_string($lang) . "\" ";
 
 	return $this->query($sql);
     }
@@ -117,7 +129,7 @@ class WWUtils {
 	    if ($hasName) $r['name'] = @$r[$offs += 1];
 	    if ($hasConf) $r['conf'] = @$r[$offs += 1];
 
-	    if ($hasName && $hasId && !isset($r['name'])) 
+	    if ($hasId && !isset($r['name'])) 
 	      $fetchNames = true;
 
 	    if ($hasId) $items[ $r['id'] ] = $r;
@@ -138,7 +150,7 @@ class WWUtils {
     }
 
     function fetchNames($ids, $lang) {
-	global $wwTablePrefix;
+	global $wwTablePrefix, $wwThesaurusDataset;
 
 	$names = array();
 	if (!$ids) return $names;
@@ -150,8 +162,8 @@ class WWUtils {
 	   $set .= $id;
 	}
 
-	$sql = "select id, name from {$wwTablePrefix}_{$lang}_concept ";
-	$sql .= "where id in ($set)";
+	$sql = "select global_concept as id, local_concept_name as name from {$wwTablePrefix}_{$wwThesaurusDataset}_origin ";
+	$sql .= "where global_concept in ($set) and lang = \"" . mysql_real_escape_string($lang) . "\" ";
 
 	$res = $this->query($sql);
 

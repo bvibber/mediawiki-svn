@@ -7,7 +7,7 @@ require_once("$IP/wwutils.php");
 
 function printLocalConceptList($lang, $concepts) {
     global $utils;
-    if (is_string($concepts)) $concepts = $utils->unpickle($concepts, $lang);
+    if (is_string($concepts)) $concepts = $utils->unpickle($concepts, $lang, true, false, true);
 
     ?>
     <ul class="terselist">
@@ -93,12 +93,18 @@ function normalizeConceptRow($lang, $row) {
     if (!isset($row['weight']) && isset($row['freq'])) $row['weight'] = $row['freq'];
     if (!isset($row['weight']) && isset($row['conf'])) $row['weight'] = $row['conf'];
     if (!isset($row['concept_name']) && isset($row['name'])) $row['concept_name'] = $row['name'];
-    if (!isset($row['concept']) && isset($row['id'])) $row['concept'] = $row['id'];
-    if (!isset($row['concept']) && isset($row['global_id'])) $row['concept'] = $row['global_id'];
-    if (!isset($row['concept']) && isset($row['global_concept'])) $row['concept'] = $row['global_concept'];
+    if (!isset($row['reference_id']) && isset($row['global_id'])) $row['reference_id'] = $row['global_id'];
+    if (!isset($row['reference_id']) && isset($row['global_concept'])) $row['reference_id'] = $row['global_concept'];
+    if (!isset($row['reference_id']) && isset($row['concept'])) $row['reference_id'] = $row['concept'];
+    if (!isset($row['reference_id']) && isset($row['id'])) $row['reference_id'] = $row['id'];
+
+    #print "<pre>";
+    #print_r($row);
+    #print "</pre>";
 
     $row['wu'] = "http://$lang.wikipedia.org/wiki/" . urlencode($row['concept_name']); 
-    $row['cu'] = "$wwSelf?id=" . urlencode($row['concept']) . "&lang=" . urlencode($lang); 
+    #$row['cu'] = "$wwSelf?id=" . urlencode($row['concept']) . "&lang=" . urlencode($lang); 
+    $row['cu'] = "$wwSelf?id=" . urlencode($row['reference_id']) . "&lang=" . urlencode($lang); 
 
     if (!isset($row['weight']) || !$row['weight']) { 
       $row['wclass'] = "unknown";
@@ -127,12 +133,12 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td class="cell_weight  <?php print "weight_$a_wclass"; ?>"><?php print htmlspecialchars($a_weight); ?></td>
       <td colspan="3" class="cell_name  <?php print "weight_$a_wclass"; ?>">
 	<a href="<?php print htmlspecialchars($a_wu); ?>"><?php print htmlspecialchars($a_concept_name); ?></a>
-	<span class="conceptref">(#<a href="<?php print htmlspecialchars($a_cu); ?>"><?php print htmlspecialchars($a_concept); ?></a>)</span>
+	<span class="conceptref">(#<a href="<?php print htmlspecialchars($a_cu); ?>"><?php print htmlspecialchars($a_reference_id); ?></a>)</span>
       </td>
       <?php if ($b_row) { ?>
       <td colspan="3" class="cell_name  <?php print "weight_$b_wclass"; ?>">
 	<a href="<?php print htmlspecialchars($b_wu); ?>"><?php print htmlspecialchars($b_concept_name); ?></a>
-	<span class="conceptref">(#<a href="<?php print htmlspecialchars($b_cu); ?>"><?php print htmlspecialchars($b_concept); ?></a>)</span>
+	<span class="conceptref">(#<a href="<?php print htmlspecialchars($b_cu); ?>"><?php print htmlspecialchars($b_reference_id); ?></a>)</span>
       </td>
       <?php } ?>
     </tr>
@@ -142,6 +148,7 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td class="cell_label">Definition:</td>
       <td colspan="2"><?php print htmlspecialchars($a_definition); ?></td>
       <?php if ($b_row) { ?>
+      <td class="cell_label">Definition:</td>
       <td colspan="2"><?php print htmlspecialchars($b_definition); ?></td>
       <?php } ?>
     </tr>
@@ -152,6 +159,7 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td class="cell_label">Terms:</td>
       <td class="cell_terms" colspan="2"><?php printTermList($a_lang, $a_terms); ?></td>
       <?php if ($b_row) { ?>
+      <td class="cell_label">Terms:</td>
       <td class="cell_terms" colspan="2"><?php printTermList($b_lang, $b_terms); ?></td>
       <?php } ?>
     </tr>
@@ -163,6 +171,7 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td class="cell_label">Similar:</td>
       <td class="cell_similar" colspan="2"><?php printLocalConceptList($a_lang, $a_similar); ?></td>
       <?php if ($b_row) { ?>
+      <td class="cell_label">Similar:</td>
       <td class="cell_similar" colspan="2"><?php printLocalConceptList($b_lang, $b_similar); ?></td>
       <?php } ?>
     </tr>
@@ -174,6 +183,7 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td class="cell_label">Related:</td>
       <td class="cell_related" colspan="2"><?php printLocalConceptList($a_lang, $a_related); ?></td>
       <?php if ($b_row) { ?>
+      <td class="cell_label">Related:</td>
       <td class="cell_related" colspan="2"><?php printLocalConceptList($b_lang, $b_related); ?></td>
       <?php } ?>
     </tr>
@@ -185,6 +195,7 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td class="cell_label">Narrower:</td>
       <td class="cell_narrower" colspan="2"><?php printLocalConceptList($a_lang, $a_narrower); ?></td>
       <?php if ($b_row) { ?>
+      <td class="cell_label">Narrower:</td>
       <td class="cell_narrower" colspan="2"><?php printLocalConceptList($b_lang, $b_narrower); ?></td>
       <?php } ?>
     </tr>
@@ -196,6 +207,7 @@ function printLocalConcept($a_lang, $a_row, $b_lang, $b_row, $pos = 0) {
       <td class="cell_label">Broader:</td>
       <td class="cell_broader" colspan="2"><?php printLocalConceptList($a_lang, $a_broader); ?></td>
       <?php if ($b_row) { ?>
+      <td class="cell_label">Broader:</td>
       <td class="cell_broader" colspan="2"><?php printLocalConceptList($b_lang, $b_broader); ?></td>
       <?php } ?>
     </tr>
@@ -233,12 +245,8 @@ $result = NULL;
 
 if (!$error) {
   try {
-      if ($concept) {
-	  if ($lang) {
-	    $result = $utils->queryLocalConceptInfo($lang, $concept);
-	  } /*else {
-	    $result = $utils->queryGlobalConceptInfo($concept);
-	  }*/
+      if ($lang && $concept) {
+	  $result = $utils->queryConceptInfo($concept, $lang);
       } else if ($lang && $term) {
 	  $result = $utils->queryConceptsForTerm($lang, $term, $limit);
       }
@@ -326,7 +334,11 @@ if ($error) {
 
 <?php
 if ($result) {
+    if ($concept) $title = "Concept #$concept";
+    else if ($tolang) $title = "$lang: $term -> $tolang";
+    else $title = "$lang: $term";
 ?>    
+    <h2><?php print htmlspecialchars($title); ?></h2>
     <table  border="0" class="results">
     <?php 
       $count = 0;
@@ -337,7 +349,7 @@ if ($result) {
 	      $show_single = true;
 
 	      if ($tolang && isset($row['global_concept'])) {
-		  $toresult = $utils->queryLocalConceptInfo($tolang, $row['global_concept']);
+		  $toresult = $utils->queryConceptInfo($row['global_concept'], $tolang);
 		  while ($torow = mysql_fetch_assoc($toresult)) {
 		      $continue= printLocalConcept($lang, $row, $tolang, $torow, $count);
 		      $show_single = false;
@@ -365,7 +377,7 @@ if ($result) {
 ?>
 
 <p class="footer">
-The WikiWord Navigator is part of the WikiWord project <a href="http://brightbyte.de/page/WikiWord">WikiWord</a>
+The WikiWord Navigator is part of the <a href="http://wikimedia.de">Wikimedia</a> project <a href="http://brightbyte.de/page/WikiWord">WikiWord</a>
 <p>
 </body>
 </html>
