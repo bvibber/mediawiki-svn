@@ -103,6 +103,11 @@ class Mediawiki_Installer(Installation_System):
 		return not self.is_installed(name) 
 	
 	def get_revisions(self,installer=None):
+		"""Get list of available revisions.
+		This list is cached in ram at first call to this function.
+                installer parameter is ignored (inherited from Installation_System)
+                """
+
 
 		global revision_cache
 		if revision_cache:
