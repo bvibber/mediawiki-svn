@@ -104,6 +104,15 @@ Comment:
 
 $4',
 
+	'codereview-email-subj2' => '[$1] [r$2]: Follow-up changes',
+	'codereview-email-body2' => 'User "$1" made follow-up changes to r$2.
+
+Full URL: $3
+
+Commit summary:
+
+$4',
+
 	'repoadmin' => 'Repository Administration',
 	'repoadmin-new-legend' => 'Create a new repository',
 	'repoadmin-new-label' => 'Repository name:',

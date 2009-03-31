@@ -156,9 +156,11 @@ class CodeRevision {
 				'cr_status' => $this->mStatus,
 				'cr_path' => $this->mCommonPath ),
 			__METHOD__,
-			array( 'IGNORE' ) );
+			array( 'IGNORE' )
+		);
 		// Already exists? Update the row!
-		if ( !$dbw->affectedRows() ) {
+		$newRevision = $dbw->affectedRows() > 0;
+		if ( !$newRevision ) {
 			$dbw->update( 'code_rev',
 				array(
 					'cr_author' => $this->mAuthor,
@@ -168,7 +170,8 @@ class CodeRevision {
 				array(
 					'cr_repo_id' => $this->mRepoId,
 					'cr_id' => $this->mId ),
-				__METHOD__ );
+				__METHOD__
+			);
 		}
 		// Update path tracking used for output and searching
 		if ( $this->mPaths ) {
@@ -183,6 +186,7 @@ class CodeRevision {
 			$dbw->insert( 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
 		}
 		// Update code relations (One-digit revs skipped due to some false-positives)
+		$affectedRevs = array();
 		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
 			$data = array();
 			foreach( $m[1] as $rev ) {
@@ -191,10 +195,42 @@ class CodeRevision {
 					'cf_from'    => $this->mId,
 					'cf_to'      => intval($rev)
 				);
+				$affectedRevs[] = intval($rev);
 			}
 			$dbw->insert( 'code_relations', $data, __METHOD__, array( 'IGNORE' ) );
 		}
-		
+		// Email the authors of revisions that this follows up on
+		if( $newRevision && count($affectedRevs) > 0 ) {
+			// Get committer wiki user name, or repo name at least
+			$user = $this->mRepo->authorWikiUser( $this->mAuthor );
+			$committer = $user ? $user->getName() : htmlspecialchars($this->mAuthor);
+			// Get the authors of these revisions
+			$res = $dbw->select( 'code_rev',
+				array( 'cr_author', 'cr_id' ),
+				array(
+					'cr_repo_id' => $this->mRepoId,
+					'cr_id'      => $affectedRevs,
+					// No sense in notifying if it's the same person
+					'cr_author != '.$dbw->addQuotes($this->mAuthor)
+				),
+				__METHOD__,
+				array( 'USE INDEX' => 'PRIMARY' )
+			);
+			// Get repo and build comment title (for url)
+			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
+			$url = $title->getFullUrl();
+			foreach( $res as $row ) {
+				$user = $this->mRepo->authorWikiUser( $row->cr_author );
+				// User must exist on wiki and have a valid email addy
+				if( !$user || !$user->canReceiveEmail() ) continue;
+				// Send message in receiver's language
+				$lang = array( 'language' => $user->getOption( 'language' ) );
+				$user->sendMail(
+					wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $row->cr_id ),
+					wfMsgExt( 'codereview-email-body2', $lang, $committer, $row->cr_id, $url, $this->mMessage )
+				);
+			}
+		}
 		$dbw->commit();
 	}
 
