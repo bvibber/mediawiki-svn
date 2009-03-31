@@ -7,7 +7,7 @@ class Extension_Installer_Exception(Installer_Exception):
 
 
 class Extension_Installer(Installation_System):
-	system_name='extensions'
+	system_name='extensions_generic'
 	destination_dir=None
 	
 	def set_instance(self,instance):

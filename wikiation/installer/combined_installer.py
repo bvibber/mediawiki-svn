@@ -122,12 +122,16 @@ class Combined_Installer(Installation_System):
 
 	def install(self, installer_name):
 		"""actually install something. Short circuits (Will try each installer, until success"""
+		messages=[]
 		for system in self.systemlist:
 			try:
 				if system.install(installer_name):
 					return True
-			except:	#TODO sometimes an installer may recognise that something CAN NOT be installed, in that case, we should stop trying.
-				pass
+			except Exception,e:	#TODO sometimes an installer may recognise that something CAN NOT be installed, in that case, we should stop trying.
+				messages.append(system.system_name+": "+e.message)
+		
+		if messages:
+			raise Combined_Installer_Exception ("\n".join(messages))
 		
 		return False
 
@@ -153,8 +157,11 @@ class Combined_Installer(Installation_System):
 				if system.uninstall(installer_name):
 					return True
 			except: #TODO sometimes an installer may recognise that something CAN NOT be uninstalled, in that case, we should stop trying
-				pass
+				messages.append(system.system_name+": "+e.message)
 		
+		if messages:
+			raise Combined_Installer_Exception ("\n".join(messages))
+
 		return False
 
 	

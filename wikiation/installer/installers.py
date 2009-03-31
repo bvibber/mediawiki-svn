@@ -189,7 +189,6 @@ def install(args):
 
 	except Installer_Exception,e:
 		print e.message
-		return 
 
 
 def uninstall(args):

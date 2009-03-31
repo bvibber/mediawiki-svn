@@ -252,17 +252,16 @@ class Installation_System(object):
 			raise Installer_Exception("Can't find installer "+installer_name)
 
 		if self.is_installed(installer_name):
-			print installer_name,"already installed."
-			return
-		try:
-			self.download(installer_name)
-			self.install_settings(installer_name)
-			self.setup(installer_name)
+			raise Installer_Exception(installer_name+"already installed.")
+		#try:
+		self.download(installer_name)
+		self.install_settings(installer_name)
+		self.setup(installer_name)
 		# ...
-		except Installer_Exception:
-			pass
-		except:
-			raise
+		#except Installer_Exception:
+		#	pass
+		#except:
+		#	raise
 
 		#query the installer to see if ot thinks the component is properly installed
 		# any flaws at this point are the fault of the installer :-P

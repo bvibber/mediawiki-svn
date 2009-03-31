@@ -15,6 +15,12 @@ class Scripted_Installer_Exception (Extension_Installer_Exception):
 	
 
 class Scripted_Installer(Extension_Installer):
+
+	def __init__(self,instance=None):
+		Extension_Installer.__init__(self,instance)
+		self.subsystemdir=os.path.join(settings.installfiles,"extensions")
+
+	system_name="scripted"	
 	def install_settings(self, installer_name):
 		installdir=self.installdir_name(installer_name)
 		settingsdir=os.path.join(self.destination_dir,"../LocalSettings")
