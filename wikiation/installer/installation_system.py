@@ -131,7 +131,7 @@ class Installation_System(object):
 	
 
 	def exec_task(self, installer_name, task, env=None):
-		"""attempt to execute a file starting with the name of task[o] (ie. task.sh, task.py, task.pl, etc)
+		"""attempt to execute a file starting with the name of task[0] (ie. task.sh, task.py, task.pl, etc)
 		   * We look for the files in the relevant .install directoty (see also: installdir_name() )
 		   * task is name of some task. If task requires args, provide a list, task[0] is name of task, task[1:] is args
 		   * if no such file exists or file fails to run, return an exception.
