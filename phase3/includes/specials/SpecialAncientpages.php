@@ -20,21 +20,23 @@ class AncientPagesPage extends QueryPage {
 
 	function isSyndicated() { return false; }
 
-	function getSQL() {
+	function getQueryInfo() {
+		// FIXME convert timestamps elsewhere
+		// Possibly add bool returnsTimestamps()
+		// FIXME standardize 'name' AS type ?
 		global $wgDBtype;
-		$db = wfGetDB( DB_SLAVE );
-		$page = $db->tableName( 'page' );
-		$revision = $db->tableName( 'revision' );
 		$epoch = $wgDBtype == 'mysql' ? 'UNIX_TIMESTAMP(rev_timestamp)' :
-			'EXTRACT(epoch FROM rev_timestamp)';
-		return
-			"SELECT 'Ancientpages' as type,
-					page_namespace as namespace,
-			        page_title as title,
-			        $epoch as value
-			FROM $page, $revision
-			WHERE page_namespace=".NS_MAIN." AND page_is_redirect=0
-			  AND page_latest=rev_id";
+				'EXTRACT(epoch FROM rev_timestamp)';
+		return array(
+			'tables' => array( 'page', 'revision' ),
+			'fields' => array( "'{$this->getName()}' AS type",
+					'page_namespace AS namespace',
+					'page_title AS title',
+					"$epoch AS value" ),
+			'conds' => array( 'page_namespace' => NS_MAIN,
+					'page_is_redirect' => 0,
+					'page_latest=rev_id' )
+		);
 	}
 
 	function sortDescending() {

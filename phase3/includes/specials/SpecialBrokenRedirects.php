@@ -39,9 +39,33 @@ class BrokenRedirectsPage extends PageQueryPage {
 				    AND p2.page_namespace IS NULL";
 		return $sql;
 	}
+	
+	function getQueryInfo() {
+		return array(
+			'tables' => array( 'redirect', 'page AS p1', 'page AS p2' ),
+			'fields' => array( "'{$this->getName()}' AS type",
+					'p1.page_namespace AS namespace',
+					'p1.page_title AS title',
+					'rd_namespace',
+					'rd_title'
+			),
+			'conds' => array( 'rd_namespace >= 0',
+					'p2.page_namespace IS NULL'
+			),
+			// TODO test this join
+			'join_conds' => array( 'page AS p1' => array( 'LEFT JOIN', array(
+						'rd_from=p1.page_id',
+					) ),
+					'page AS p2' => array( 'LEFT JOIN', array(
+						'rd_namespace=p2.page_namespace',
+						'rd_title=p2.page_title'
+					) )
+			)
+		);
+	}
 
 	function getOrder() {
-		return '';
+		return array ();
 	}
 
 	function formatResult( $skin, $result ) {
