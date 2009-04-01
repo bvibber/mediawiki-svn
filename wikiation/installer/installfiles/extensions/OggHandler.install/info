@@ -1,0 +1,6 @@
+OggHandler
+==========
+http://www.mediawiki.org/wiki/Extension:OggHandler
+
+OggHandler is an extension which allows you to display Ogg audio and video files in wiki pages, 
+using the same syntax as for image files. It also has limited support for metadata display on image description pages.

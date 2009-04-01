@@ -1,0 +1,3 @@
+#!/bin/sh
+
+$MYSQL_COMMAND $DATABASE_NAME < $DESTINATION_DIR/$NAME/update_table.sql
