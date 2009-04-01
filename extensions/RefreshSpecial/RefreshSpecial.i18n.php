@@ -316,12 +316,14 @@ $messages['es'] = array(
 	'refreshspecial-button' => 'Refrescar seleccionados',
 	'refreshspecial-fail' => 'Por favor chequee al menos una página especial a refrescar.',
 	'refreshspecial-refreshing' => 'refrescando páginas especiales',
-	'refreshspecial-success-subtitle' => 'refrescando páginas especiales',
 	'refreshspecial-choice' => 'refrescando páginas especiales',
 	'refreshspecial-js-disabled' => '(<i>Usted no puede seleccionar todas las páginas donde JavaScript está deshabiltada</i>)',
 	'refreshspecial-select-all-pages' => 'Seleccione todas las páginas',
 	'refreshspecial-link-back' => 'Regresar a página especial',
+	'refreshspecial-none-selected' => 'No has seleccionado ninguna pagina especial. Revertiendo a la selección por defecto.',
+	'refreshspecial-no-page' => 'No tal página especial',
 	'refreshspecial-reconnected' => 'Reconectado.',
+	'refreshspecial-reconnecting' => 'Conexión falló, reconectando en 10 segundos...',
 	'right-refreshspecial' => 'Refrescar páginas especiales',
 );
 

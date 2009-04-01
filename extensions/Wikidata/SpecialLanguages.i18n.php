@@ -9365,6 +9365,7 @@ $wdMessages['uk'] = array(
  * @author Игорь Бродский
  */
 $wdMessages['vep'] = array(
+	'languages' => 'Wikiandmused: keliden menadžer',
 	'langman_langname' => 'Kelen nimi:',
 	'langman_iso639-3' => 'Kod ISO 639-3:',
 	'langman_iso639-2' => 'Kod ISO 639-2:',
@@ -9495,6 +9496,9 @@ $wdMessages['vep'] = array(
 	'ow_meaningsoftitle' => '«$1»:n znamoičendad',
 	'ow_meaningsofsubtitle' => '<em>Wiki-kosketuz:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Teile ei sa lugeda da toižetada necidä</h2>',
+	'ow_class_attr_type_link' => 'Kosketuz',
+	'ow_class_attr_type_option' => 'Opcijoiden nimikirjutez',
+	'ow_needs_xlation_source_lang' => "Purtken kel':",
 	'ow_show' => 'Ozutada',
 	'ow_upload' => 'Jügutoitta',
 	'ow_create' => 'Säta',

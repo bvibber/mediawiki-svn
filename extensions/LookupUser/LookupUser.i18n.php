@@ -1208,6 +1208,15 @@ $messages['vec'] = array(
 	'right-lookupuser' => "Varda le preferense de l'utente",
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'lookupuser-realname' => 'Todesine nimi: $1',
+	'lookupuser-useroptions' => 'Kävutajan järgendused:',
+	'right-lookupuser' => 'Ectä kävutajan järgendused',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

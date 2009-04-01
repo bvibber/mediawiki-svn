@@ -348,6 +348,13 @@ Pšosym cakaj, až eksistěrujuca akcija jo se skóńcyła.',
 	'tag-logpagetext' => 'To jo protokol wšych pśidanjow a wótpóranjow wobrazowych wobznamjenjow.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'imagetagging-imghistory' => 'Ιστορικό',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1509,6 +1516,7 @@ $messages['vep'] = array(
 	'imagetagging-articletotag' => "Lehtpol' virgates",
 	'imagetagging-imghistory' => 'Istorii',
 	'imagetagging-tag-button' => 'Virg',
+	'imagetagging-tagcancel-button' => 'Heitta pätand',
 );
 
 /** Vietnamese (Tiếng Việt)

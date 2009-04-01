@@ -687,6 +687,13 @@ $messages['tr'] = array(
 	'minipreview-no_category_gallery' => 'Hiçbir kategori veya galeri yok !',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'minipreview-no_category_gallery' => 'Ei ole kategoirijoid vai gallereid!',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -188,6 +188,7 @@ Ouzhpennit-int en ur ober gant ostilhoù barrenn al lañserioù.",
  * @author CERminator
  */
 $messages['bs'] = array(
+	'gep-desc' => 'Omogućuje da stranica za uređivanje bude jednostavnija za korištenje',
 	'gep-emailsubject' => '[$1] Prijedlog kategorije: $2',
 	'gep-emailbody' => 'Korisnik "$1" je predložio kategoriju "$2" za sajt "$3".',
 	'gep-emailfailure' => 'Žao nam je, Vaš prijedlog nije mogao biti obrađen.',
@@ -202,8 +203,10 @@ $messages['bs'] = array(
 	'gep-addsection' => 'Dodaj sekciju',
 	'gep-addsectionbutton' => 'Dodaj',
 	'gep-classicmode' => 'Klasični način',
+	'gep-genericmode' => 'Opći način',
 	'gep-nosectioninstructions' => 'Nema sekcija na ovoj stranici.
 Dodajte jednu koristeći alate u meniju.',
+	'gep-nocategories' => 'Molimo odaberite najmanje jednu kategoriju prije spremanja',
 );
 
 /** Czech (Česky)

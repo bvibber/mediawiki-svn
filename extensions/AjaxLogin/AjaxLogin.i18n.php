@@ -256,6 +256,13 @@ $messages['ps'] = array(
 	'ajaxlogin-create' => 'يو کارن-حساب جوړول',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'ajaxlogin-create' => 'Criar uma conta',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Brunoy Anastasiya Seryozhenko
  * @author Eduardo.mps

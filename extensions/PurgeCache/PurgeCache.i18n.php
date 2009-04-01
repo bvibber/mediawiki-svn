@@ -75,6 +75,9 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'purgecache' => 'Čišćenje keša',
+	'purgecache-desc' => '[[Special:PurgeCache|Posebna stranica]] koja se koristi za uklanjanje tabele OBJECTCACHE',
+	'purgecache-warning' => 'Ovo će očistiti keš tabele.',
+	'purgecache-purged' => 'Keš je očišćen.',
 	'purgecache-button' => 'Očisti',
 );
 

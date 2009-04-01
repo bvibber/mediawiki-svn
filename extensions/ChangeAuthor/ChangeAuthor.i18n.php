@@ -500,15 +500,26 @@ $messages['es'] = array(
 	'changeauthor-desc' => 'Permite el cambio del autor de una revisión',
 	'changeauthor-title' => 'Cambiar el autor de una revisión',
 	'changeauthor-search-box' => 'Buscar revisiones',
+	'changeauthor-pagename-or-revid' => 'Nombre de página o ID de revisión:',
 	'changeauthor-pagenameform-go' => 'Ir',
 	'changeauthor-comment' => 'Comentario:',
 	'changeauthor-changeauthors-multi' => 'Cambie {{PLURAL:$1|autor|autores}}',
+	'changeauthor-explanation-multi' => "Con este formulario puedes cambiar los autores de la revisión.
+Simplemente cambie uno o más nombres de usuarios en la lista de abajo, agrega un comentario (opcional) y haz click en el botón de 'cambio del autor'.",
 	'changeauthor-changeauthors-single' => 'Cambiar autor',
+	'changeauthor-explanation-single' => "Con este formulario puedes cambiar un autor de la revisión.
+Simplemente cambie el nombre de usuario abajo, agrega un comentario (opcional) y haz click en el botón de 'cambio del autor'.",
 	'changeauthor-invalid-username' => 'Nombre de usuario inválido "$1".',
+	'changeauthor-nosuchuser' => 'No tal usuario "$1".',
 	'changeauthor-revview' => 'Revisión #$1 de $2',
 	'changeauthor-nosuchtitle' => 'No hay página llamada "$1".',
+	'changeauthor-weirderror' => 'Un error muy extraño ocurrió.
+Por favor reintente su solicitud.
+Si este error sigue apareciendo, la base de datos está problablemente averiada.',
+	'changeauthor-invalidform' => 'Por favor usar el formulario proveído por la [[Special:ChangeAuthor|página especial]] en lugar de un formulario personalizado.',
 	'changeauthor-success' => 'Su solicitud ha sido procesada exitosamente.',
 	'changeauthor-logentry' => 'Cambiado autor de $2 de $1 de $3 a $4',
+	'changeauthor-logpagename' => 'Registro de cambio de autor',
 	'right-changeauthor' => 'Cambiar el autor de una revisión',
 );
 

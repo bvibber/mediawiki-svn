@@ -1384,8 +1384,8 @@ Wann de meins, dat es nit en Odenung, [[$1|lohß et uns weße]], odder nemm janz
 	'regexblock-view-block-unblock' => 'Sperr ophävve',
 	'regexblock-view-stats' => 'Shtatistike',
 	'regexblock-view-empty' => 'De Leß me de jesperrte Metmaacher ier Name un Adresse eß leddisch.',
-	'regexblock-view-time' => 'aam $1',
-	'right-regexblock' => 'Donn dänne Metmaacher en alle Wikis en dä Wiki-Farrem et Äandere verbeede',
+	'regexblock-view-time' => 'aam $2 öm $3 Uhr',
+	'right-regexblock' => 'Donn dänne Metmaacher en alle Wikis em eije Shtall voll Wikis et Äandere verbeede',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

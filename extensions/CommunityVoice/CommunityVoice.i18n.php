@@ -142,6 +142,7 @@ $messages['el'] = array(
 $messages['es'] = array(
 	'communityvoice' => 'Voz de la comunidad',
 	'communityvoice-desc' => 'Herramientas de comunicación de la comunidad',
+	'communityvoice-ratings' => 'Valoraciones',
 	'communityvoice-ratings-scale-status-sending' => 'Enviando...',
 	'communityvoice-ratings-scale-status-error' => 'Error enviando!',
 	'communityvoice-ratings-scale-status-thanks' => 'Gracias por votar!',

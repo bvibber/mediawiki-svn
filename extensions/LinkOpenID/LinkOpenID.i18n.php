@@ -124,6 +124,8 @@ $messages['es'] = array(
 	'linkopenid-prefstext-pre' => 'Si tienes un OpenID de un proveedor externo puedes especificarlo aquí.
 Esto te permite usar tu página de usuario como un OpenID también.',
 	'linkopenid-prefstext-openid' => 'Su OpenID:',
+	'linkopenid-prefstext-v1url' => 'Servidor-URL para OpenID Version 1.1:',
+	'linkopenid-prefstext-v2url' => 'Servidor-URL para OpenID Version 2:',
 );
 
 /** Finnish (Suomi)

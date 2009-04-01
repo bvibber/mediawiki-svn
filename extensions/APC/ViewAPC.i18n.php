@@ -1017,13 +1017,18 @@ Nowša wersija $2 stoj na http://pecl.php.net/package/APC/$2 k dispoziciji.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
+	'viewapc-display-deletion_time' => 'Διαγραμμένος',
 	'viewapc-display-mem_size' => 'Μέγεθος',
 	'viewapc-ls-header-name' => 'Όνομα',
 	'viewapc-ls-header-size' => 'Μέγεθος',
+	'viewapc-ls-header-deleted' => 'Διαγραμμένος',
+	'viewapc-ls-scope-deleted' => 'Διαγραμμένος',
 	'viewapc-ls-sort-size' => 'Μέγεθος',
 	'viewapc-ls-sort-name' => 'Όνομα',
+	'viewapc-ls-sort-deleted' => 'Διαγραμμένος',
 );
 
 /** Esperanto (Esperanto)

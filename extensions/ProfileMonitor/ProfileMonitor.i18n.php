@@ -208,6 +208,8 @@ $messages['es'] = array(
 	'profiling-data' => 'Datos de perfil para `$1`',
 	'profiling-data-process' => 'Proceso',
 	'profiling-data-count' => 'Contar',
+	'profiling-data-time' => 'Tiempo (todo)',
+	'profiling-data-average' => 'Tiempo (promedio)',
 	'profiling-no-data' => 'No se enontraron datos coincidentes.',
 );
 

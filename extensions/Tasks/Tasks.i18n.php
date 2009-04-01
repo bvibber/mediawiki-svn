@@ -709,6 +709,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Crazymadlover
  * @author Konsnos
  * @author Omnipaedista
  */
@@ -732,6 +733,7 @@ $messages['el'] = array(
 	'tasks_event_on_creation_anon' => 'έλεγχος',
 	'tasks_table_header_page' => 'Σελίδα',
 	'tasks_you_have_no_assignments' => 'Δεν υπάρχουν ανοιχτές εργασίες',
+	'tasks_search_form_title' => 'Αναζήτηση',
 	'tasks_search_status' => 'Κατάσταση',
 	'tasks_previous' => 'Προηγούμενο',
 	'tasks_next' => 'Επόμενο',
@@ -2713,6 +2715,36 @@ $messages['uk'] = array(
 	'tasks_logpage' => 'Журнал завдань',
 	'tasks_logpagetext' => 'Це журнал зміни завдань',
 	'tasks_logentry' => 'Для «[[$1]]»',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'tasks_form_comment' => 'Homaičend',
+	'tasks_noone' => 'niken',
+	'tasks_assign_me' => 'Otta tö ičeleze',
+	'tasks_assign_to' => 'Antta kävutajale',
+	'tasks_unassign_me' => 'Čuta minun tö',
+	'tasks_close' => 'Saubata tö',
+	'tasks_wontfix' => 'Ei linne lattäs',
+	'tasks_delete' => 'Čuta poiš',
+	'tasks_no_task_delete_title' => 'Ei sa',
+	'tasks_no_task_delete_texe' => 'Teile ei sa čuta töid. Nece om administratoriden prerogativ.',
+	'tasks_action_delete' => 'Tö om čutud.',
+	'tasks_task_was_deleted' => 'Tö om čutud jügedusita.',
+	'tasks_reopen' => 'Avaita tö udes',
+	'tasks_assignedto' => 'Anttihe $1-kävutajale',
+	'tasks_here' => 'naku',
+	'tasks_more_like_it' => 'völ',
+	'tasks_table_header_page' => "Lehtpol'",
+	'tasks_search_form_title' => 'Ectä',
+	'tasks_previous' => 'Tagaze',
+	'tasks_next' => 'Edeleze',
+	'tasks_sort' => 'Sorturuida',
+	'tasks_status_open' => 'Om avaitud',
+	'tasks_status_assigned' => 'Om pandud',
+	'tasks_status_closed' => 'Om sauptud',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -701,6 +701,7 @@ $messages['lb'] = array(
 	'formarticleexists' => "D'Säit gëtt et schonn.",
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
 	'formbadpagename' => 'Falsche Säitennumm',
+	'formbadrecaptcha' => 'Falsche Wert fir reCaptcha. Probéiert nach emol.',
 	'formbadpagenametext' => 'Déi Donnéeën déi Dir an de Formulaire aginn hutt erginn e Säitennumm, den net ka gespäichert ginn: "$1".',
 	'formrequiredfielderror' => "D'{{PLURAL:$2|Feld $1 muss|Felder $1 mussen}} an dësem Formulaire ausgefëllt ginn.
 Fëllt {{PLURAL:$2|et|se}} w.e.g. aus.",
@@ -1280,6 +1281,16 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'formsave' => 'Зберегти',
 	'formarticleexists' => 'Сторінка існує',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'form' => 'Form',
+	'formnoname' => 'Ei ole forman nimed',
+	'formbadname' => 'Hond forman nimi',
+	'formsave' => 'Panda muštho',
 );
 
 /** Volapük (Volapük)

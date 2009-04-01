@@ -399,6 +399,13 @@ $messages['uk'] = array(
 	'catboxattop-categories' => 'Категорії',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'catboxattop-categories' => 'Kategorijad',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

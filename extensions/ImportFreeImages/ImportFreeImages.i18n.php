@@ -1127,6 +1127,13 @@ Par farlo domanda na chiave API [http://www.flickr.com/services/api/misc.api_key
 	'importfreeimages_returntoform' => "O senò struca <a href='$1'>chì</a> par tornar indrìo ai risultati de la to riçerca",
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'importfreeimages_owner' => 'Avtor',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

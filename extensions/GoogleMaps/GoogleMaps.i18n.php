@@ -4861,6 +4861,48 @@ Próa l\'ultima version de <a href="http://www.microsoft.com/ie">Internet Explor
 	'gm-mars' => 'Marte',
 );
 
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$wgGoogleMapsMessages['vep'] = array(
+	'gm-no-results' => "Pakičem armahtust, ei ole rezul'tatoid",
+	'gm-map' => 'Kart',
+	'gm-width' => 'Leveduz',
+	'gm-height' => 'Korktuz',
+	'gm-scale-control' => 'Pordhišt',
+	'gm-overview-control' => 'Ühthine nägu',
+	'gm-selector-control' => 'Valita Kart/Kaimdai',
+	'gm-zoom-control' => 'Navigacii',
+	'gm-large' => "Sur'",
+	'gm-medium' => 'Keskmäine',
+	'gm-small' => 'Pen’',
+	'gm-no-zoom-control' => 'Ei ole',
+	'gm-yes' => 'Ka',
+	'gm-no' => 'Ei',
+	'gm-search' => 'Ectä',
+	'gm-clear-search' => "Čuta ecmižen rezul'tatad",
+	'gm-meters' => 'metrad',
+	'gm-miles' => 'milid',
+	'gm-editing-path' => 'Plokutagat kartale, miše ližata čokkoimid necile tele.',
+	'gm-save-path' => 'Panda muštho',
+	'gm-edit-path' => 'Ližata čokkoimid',
+	'gm-show-path' => 'ozutada čokkoimed',
+	'gm-color-path' => 'vajehtada muju',
+	'gm-color-fill' => 'vajehtada täutmižmuju',
+	'gm-add-fill' => 'täutta territorii mujul',
+	'gm-remove-fill' => 'čuta täutmižmuju',
+	'gm-line-width' => 'Leveduz',
+	'gm-make-map' => 'tehta kart',
+	'gm-hide-map' => 'peitta kart',
+	'gm-back' => 'tagaze',
+	'gm-kml-include' => 'Irdaline KML/GeoRSS:',
+	'gm-kml-include-link' => 'ližata kartale',
+	'gm-earth' => 'Ma',
+	'gm-moon' => 'Kudmaine',
+	'gm-mars' => 'Mars',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

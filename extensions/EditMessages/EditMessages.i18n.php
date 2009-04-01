@@ -251,8 +251,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
+	'editmsg-search' => 'Αναζήτηση',
 	'editmsg-new-search' => 'Νέα αναζήτηση',
 );
 

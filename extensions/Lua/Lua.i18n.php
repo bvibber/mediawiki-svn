@@ -183,6 +183,8 @@ $messages['es'] = array(
 	'lua_extension_notfound' => 'Extensión Lua no configurada',
 	'lua_interp_notfound' => 'Intérprete Lua no encontrado',
 	'lua_error_internal' => 'Error interno',
+	'lua_overflow_loc' => 'Límite máximo de líneas de código alcanzada',
+	'lua_overflow_time' => 'Tiempo de ejecución máximo alcanzado',
 );
 
 /** Finnish (Suomi)

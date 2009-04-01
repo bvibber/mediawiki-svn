@@ -411,6 +411,13 @@ $messages['uk'] = array(
 	'autocreatecategorypages-editor' => 'Автоматичний творець категорій',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'autocreatecategorypages-editor' => 'Avtomatine kategorijoiden sädai',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

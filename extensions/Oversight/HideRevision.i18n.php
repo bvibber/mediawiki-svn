@@ -2313,6 +2313,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Aviator
  */
 $messages['ms'] = array(
@@ -2320,7 +2321,7 @@ $messages['ms'] = array(
 	'hiderevision-desc' => 'Menyembunyikan semakan-semakan tertentu daripada semua pengguna atas sebab undang-undang dan sebagainya.',
 	'group-oversight' => 'Pengawal',
 	'group-oversight-member' => 'Pengawal',
-	'grouppage-oversight' => 'Pengawal',
+	'grouppage-oversight' => '{{ns:project}}:Penyemak',
 	'right-oversight' => 'Melihat semakan yang telah disembunyikan',
 	'right-hiderevision' => 'Menyembunyikan semakan daripada pandangan pentadbir',
 	'hiderevision-prompt' => 'Nombor semakan yang ingin dibuang:',

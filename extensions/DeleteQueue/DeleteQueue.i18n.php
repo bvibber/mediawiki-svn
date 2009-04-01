@@ -1016,6 +1016,7 @@ Móžoš k toś tomu wulašowanjeju [{{fullurl:{{FULLPAGENAME}}|action=delvote}}
  * @author Crazymadlover
  */
 $messages['el'] = array(
+	'deletequeue-list-search' => 'Αναζήτηση',
 	'deletequeue-case-reason' => 'Αιτία:',
 );
 

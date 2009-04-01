@@ -898,6 +898,7 @@ $messages['bs'] = array(
 	'configure-ext-doc' => 'Pogledajte dokumentaciju na internetu',
 	'configure-ext-schemachange' => "'''Upozorenje:''' ovo proširenje zahtjeva ažuriranje baze podataka da bi ispravno radilo!",
 	'configure-ext-settings' => 'Postavke',
+	'configure-ext-settings-dep-error' => '$1: zahtijevana vrijednost: $2, trenutna vrijednost: $3',
 	'configure-ext-use-extension' => 'Koristi ovo proširenje',
 	'configure-ext-use' => 'Koristi',
 	'configure-form-reason' => 'Razlog za izmjenu:',
@@ -1547,6 +1548,7 @@ Pšosym napóraj jen abo změń jen, aby wužywał rozšyrjenje.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['el'] = array(
@@ -1554,6 +1556,7 @@ $messages['el'] = array(
 	'configure-ext-settings' => 'Ρυθμίσεις',
 	'configure-js-prompt-group' => 'Εισάγετε το όνομα της νέας ομάδας:',
 	'configure-section-category' => 'Κατηγορίες',
+	'configure-section-search' => 'Αναζήτηση',
 );
 
 /** Esperanto (Esperanto)
@@ -4230,10 +4233,12 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-condition-name-7' => 'Mindestalter zënter der éischter Ännerung',
 	'configure-autopromote-noconds' => 'Keng Virbedingungen',
 	'configure-condition-description-1' => 'Mindestzuel vun Ännerungen vun $1',
+	'configure-condition-description-2' => 'Mindesalter vum Benotzerkont vu(n) $1 {{PLURAL:$1|Sekonn|Sekonnen}}',
 	'configure-condition-description-3' => "D'E-Mailadress ass confirméiert",
 	'configure-condition-description-4' => 'An alle Gruppen $1',
 	'configure-condition-description-5' => 'Dem Benotzer seng IP-Adress ass $1',
 	'configure-condition-description-6' => 'Deb Bentzer seng IP-Adress ass am Beräich $1',
+	'configure-condition-description-7' => 'Mindesalter vum Benotzerkont vu(n) {{PLURAL:$1|Sekonn|Sekonnen}} no der éischter Ännerung',
 	'configure-boolop-description-and' => 'All Bedingunge mussen erfëllt sinn',
 	'configure-boolop-description-or' => 'Mindestens eng Bedingung muss wouer sinn',
 	'configure-boolop-description-xor' => 'Genee eng Bedingung muss wouer sinn',
@@ -6846,6 +6851,13 @@ $messages['vec'] = array(
 	'configure-desc' => 'Permete ai utenti autorizà de [[Special:Configure|configurar]] la wiki tramite na interfacia web-based',
 	'right-configure' => 'Configura la wiki',
 	'right-configure-all' => 'Configura tute le inpostassion de la wiki',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'configure-throttle-action-edit' => 'Redaktiruida',
 );
 
 /** Vietnamese (Tiếng Việt)

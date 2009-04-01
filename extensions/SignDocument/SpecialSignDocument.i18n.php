@@ -788,6 +788,7 @@ $1',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'sign-realname' => 'Όνομα:',
@@ -806,6 +807,7 @@ $messages['el'] = array(
 	'sign-viewfield-options' => 'Επιλογές',
 	'sign-signatures' => 'Υπογραφές',
 	'sig-anonymous' => '<i>Ανώνυμος</i>',
+	'sig-private' => '<i>Ιδιωτικός</i>',
 	'sign-viewfield-reviewcomment' => 'Σχόλιο',
 	'sign-review-comment' => 'Σχόλιο',
 	'sign-uniquequery-similarname' => 'Παρόμοιο όνομα',

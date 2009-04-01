@@ -254,9 +254,11 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'edituser-username' => 'Όνομα',
+	'edituser-dosearch' => 'Αναζήτηση',
 );
 
 /** Esperanto (Esperanto)
@@ -1100,6 +1102,7 @@ $messages['tr'] = array(
 $messages['vep'] = array(
 	'edituser' => 'Redaktiruida kävutajad',
 	'edituser-username' => 'Nimi',
+	'right-edituser' => 'Redaktiruida toižiden kävutajiden järgendused',
 );
 
 /** Vietnamese (Tiếng Việt)

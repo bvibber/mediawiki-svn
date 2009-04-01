@@ -32,15 +32,6 @@ $messages['qqq'] = array(
 	'layouts_unknown' => '{{Identical|Unknown}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Triple-ADHD-AS
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'layouts_title' => "Säta lehtpol'",
-	'layouts_unknown' => 'Tundmatoi',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda
@@ -625,6 +616,16 @@ $messages['tr'] = array(
 	'layouts_choosecategory' => '$1 için bir kategori seçin:',
 	'layouts_unknown' => 'Bilinmiyor',
 	'layouts_tagline' => "Bu sayfa '''$1''' düzeni ile oluşturulmuştur.",
+);
+
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'layouts_title' => "Säta lehtpol'",
+	'layouts_continue' => 'Jatkata',
+	'layouts_unknown' => 'Tundmatoi',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -379,6 +379,8 @@ $messages['nn'] = array(
 	'security-infosysops' => "Ingen avgrensingar er verksame etter di du er ein '''administrator'''",
 	'security-manygroups' => 'gruppene $1 og $2',
 	'security-unchain' => 'Endra handlingar individuelt',
+	'security-type-category' => 'kategori',
+	'security-type-namespace' => 'namnerom',
 );
 
 /** Occitan (Occitan)
@@ -403,6 +405,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -419,13 +422,19 @@ $messages['pl'] = array(
 	'security-infosysops' => "Brak obowiązujących ograniczeń, ponieważ jesteś członkiem grupy '''administratorzy'''.",
 	'security-manygroups' => 'grup $1 oraz $2',
 	'security-unchain' => 'Zmiana działania indywidualnie',
+	'security-type-category' => 'kategoria',
+	'security-type-namespace' => 'przestrzeń nazw',
 );
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'security-info' => 'Há $1 nesta página',
 	'security-manygroups' => 'grupos $1 e $2',
+	'security-type-category' => 'categoria',
+	'security-type-namespace' => 'domínio',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

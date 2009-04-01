@@ -1498,6 +1498,19 @@ $messages['ug-latn'] = array(
 	'importusers-email' => 'élxet:',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'importusers-log-summary-all' => 'Kaiked',
+	'importusers-log-summary-added' => 'Ližatud',
+	'importusers-log-summary-updated' => 'Udištadud',
+	'importusers-login-name' => 'Kävutajan nimi',
+	'importusers-password' => 'peitsana',
+	'importusers-email' => 'e-počt',
+	'importusers-realname' => 'todesine nimi',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

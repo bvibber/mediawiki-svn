@@ -222,12 +222,17 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'recordadmin-recordtype' => 'tip zapisa',
+	'recordadmin-newsearch' => '{{PLURAL:$1|Nova $1 pretraga|Nove $1 pretrage|Novih $1 pretraga}}',
+	'recordadmin-newrecord' => 'Odaberi drugi tip zapisa',
 	'recordadmin-submit' => 'Pošalji',
 	'recordadmin-alreadyexist' => 'Žao nam je, "$1" već postoji!',
 	'recordadmin-createsuccess' => '$1 napravljen',
 	'recordadmin-badtitle' => 'Nevaljan naslov!',
+	'recordadmin-invert' => 'Obrnuti odabir',
 	'recordadmin-buttonsearch' => 'Traži',
 	'recordadmin-buttoncreate' => 'Napravi',
+	'recordadmin-buttonreset' => 'Poništi',
 	'recordadmin-searchresult' => 'Rezultati pretrage',
 	'recordadmin-edit' => 'Uređuje se $1',
 	'recordadmin-updatesuccess' => '$1 ažurirano',
@@ -235,6 +240,7 @@ $messages['bs'] = array(
 	'recordadmin-createlink' => 'napravi jedan',
 	'recordadmin-summary-typecreated' => 'Novi $1 napravljen',
 	'recordadmin-actions' => 'Akcije',
+	'recordadmin-needscontent' => 'Dodaj sadržaj...',
 );
 
 /** German (Deutsch)
@@ -333,6 +339,13 @@ $messages['dsb'] = array(
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Wopśimjeśe pśidaś...',
 	'right-recordadmin' => 'Zapisowe boki namakaś a wobźěłaś',
+);
+
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'recordadmin-buttonsearch' => 'Αναζήτηση',
 );
 
 /** Esperanto (Esperanto)

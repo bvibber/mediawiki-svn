@@ -1497,6 +1497,11 @@ $messages['tr'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'todo-new-queue' => "uz'",
+	'todo-list-change' => 'Vajehtada',
+	'todo-list-cancel' => 'Heitta pätand',
+	'todo-new-item' => "Uz' kirjutez",
+	'todo-issue-summary' => 'Lühüd ümbrikirjutamine:',
 	'todo-form-details' => 'Detalid:',
 );
 

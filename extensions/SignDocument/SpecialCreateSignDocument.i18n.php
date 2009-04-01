@@ -349,6 +349,7 @@ To njedajo se drugi raz cyniś.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'createsigndoc-pagename' => 'Σελίδα:',
@@ -359,6 +360,7 @@ $messages['el'] = array(
 	'createsigndoc-phone' => 'Τηλεφωνικός αριθμός:',
 	'createsigndoc-bday' => 'Ημερομηνία Γέννησης:',
 	'createsigndoc-introtext' => 'Εισαγωγή:',
+	'createsigndoc-hidden' => 'Κρυμμένος',
 	'createsigndoc-error-generic' => 'Σφάλμα: $1',
 	'createsigndoc-error-pagenoexist' => 'Σφάλμα: Η σελίδα [[$1]] δεν υπάρχει.',
 );

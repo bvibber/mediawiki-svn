@@ -442,6 +442,15 @@ $messages['vec'] = array(
 	'authors_anonymous' => 'Anonimo',
 );
 
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'authors_authors' => 'Tegijad',
+	'authors_anonymous' => 'Anonim',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

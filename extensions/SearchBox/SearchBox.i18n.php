@@ -145,6 +145,13 @@ $messages['dsb'] = array(
 	'searchbox-namespaces' => 'Mjenjowe rumy:',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'searchbox-search' => 'Αναζήτηση',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

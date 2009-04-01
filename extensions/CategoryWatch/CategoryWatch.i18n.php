@@ -191,12 +191,15 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'categorywatch-desc' => 'Extiende funcionalidad de la lista de vigilancia para incluir notificación acerca de cambios en la mmbresía de las categorías vigiladas',
 	'categorywatch-emailbody' => 'Hola $1, estás recibiendo este mensaje debido a que estás revisando la categoría "$2".
 Este mensaje es para notificarte que el $3 el usuario $4 $5.',
+	'categorywatch-emailsubject' => 'Actividad involucrando categoría vigilada "$1"',
 	'categorywatch-catmovein' => '$1 trasladado a la categoría $2 desde $3',
 	'categorywatch-catmoveout' => '$1 retirado de la categoría $2 a $3',
 	'categorywatch-catadd' => 'agregado $1 a categoría $2',
 	'categorywatch-catsub' => '$1 retirado de la categoría $2',
+	'categorywatch-autocat' => 'Automáticamente vigilado por $1',
 );
 
 /** Basque (Euskara)

@@ -2414,11 +2414,22 @@ $messages['vep'] = array(
 	'grouppermissions-dosearch' => 'Mända',
 	'grouppermissions-searchlabel' => 'Ectä gruppiš',
 	'grouppermissions-deletelabel' => 'Čuta grupp',
+	'grouppermissions-add' => 'Ližata grupp',
+	'grouppermissions-delete' => 'Čuta grupp',
+	'grouppermissions-comment' => 'Homaičend:',
+	'grouppermissions-true' => 'Todesine',
+	'grouppermissions-false' => 'Vär',
 	'grouppermissions-never' => 'Nikonz',
+	'grouppermissions-sort-read' => 'Lugend',
+	'grouppermissions-sort-edit' => 'Redaktiruind',
+	'grouppermissions-sort-manage' => 'Ohjendamine',
 	'grouppermissions-sort-admin' => 'Administriruind',
 	'grouppermissions-sort-tech' => 'Tehnižed',
 	'grouppermissions-sort-misc' => 'Erazvuiččed',
 	'grouppermissions-log-add' => 'ližatihe «$2»-grupp',
+	'grouppermissions-sp-save' => 'Panda muštho',
+	'right-edittalk' => 'Redaktiruida lodulehtpoled',
+	'right-edit-new' => 'Redaktiruide lehtpoled (päiči lodulehtpolid)',
 );
 
 /** Volapük (Volapük)

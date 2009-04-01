@@ -147,24 +147,6 @@ $messages['niu'] = array(
 	'whitelisttableedit' => 'Fakahakohako',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'mywhitelistpages' => 'Minun lehtpoled',
-	'whitelistfor' => '<center>Aktualine informacii <b>$1</b>-kävutajan täht</center>',
-	'whitelisttablemodify' => 'Modificiruida',
-	'whitelisttablemodifyall' => 'Kaik',
-	'whitelisttablemodifynone' => 'Nimidä',
-	'whitelisttablepage' => "Wikin lehtpol'",
-	'whitelisttableedit' => 'Redaktiruida',
-	'whitelisttableview' => 'Nähta',
-	'whitelisttablenewdate' => "Uz' dat:",
-	'whitelisttablechangedate' => 'Lopstrokun datan vajehtuz',
-	'whitelisttableremove' => 'Čuta poiš',
-	'whitelistnewtableprocess' => 'Process',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -2944,6 +2926,31 @@ $messages['uk'] = array(
 	'whitelisttableremove' => 'Вилучити',
 	'whitelistnewtabledate' => 'Дата закінчення:',
 	'whitelistnewtableedit' => 'Установити для редагування',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'whitelistedit' => 'Vauktan nimikirjutesennoks pästtud ristitud',
+	'whitelist' => 'Vauktan nimikirjutesen lehtpoled',
+	'mywhitelistpages' => 'Minun lehtpoled',
+	'whitelistfor' => '<center>Aktualine informacii <b>$1</b>-kävutajan täht</center>',
+	'whitelisttablemodify' => 'Modificiruida',
+	'whitelisttablemodifyall' => 'Kaik',
+	'whitelisttablemodifynone' => 'Nimidä',
+	'whitelisttablepage' => "Wikin lehtpol'",
+	'whitelisttableedit' => 'Redaktiruida',
+	'whitelisttableview' => 'Nähta',
+	'whitelisttablenewdate' => "Uz' dat:",
+	'whitelisttablechangedate' => 'Lopstrokun datan vajehtuz',
+	'whitelisttableremove' => 'Čuta poiš',
+	'whitelistnewtableprocess' => 'Process',
+	'whitelistnever' => 'nikonz',
+	'group-restricted' => 'Kaidetud kävutajad',
+	'group-restricted-member' => 'Kaidetud kävutai',
+	'group-manager' => 'Menadžerad',
+	'group-manager-member' => 'Menadžer',
 );
 
 /** Vietnamese (Tiếng Việt)

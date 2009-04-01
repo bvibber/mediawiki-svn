@@ -152,6 +152,8 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'closewikis-desc' => 'Omogućava zatvaranje wiki projekata u wiki farmama',
+	'closewikis-page' => 'Zatvaranje wikija',
+	'closewikis-page-close' => 'Zatvaranje wikija',
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-dreason' => 'Razlog (prikazani):',
 	'closewikis-page-close-reason' => 'Razlog (zapisani):',
@@ -166,12 +168,16 @@ $messages['bs'] = array(
 	'closewikis-page-err-closed' => 'Wiki je već zatvoren',
 	'closewikis-page-err-opened' => 'Wiki nije zatvoren',
 	'closewikis-list' => 'Spisak zatvorenih wikija',
+	'closewikis-list-intro' => 'Ovaj spisak sadrži wikije koje su stjuardi zatvorili.',
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Zatvorio',
 	'closewikis-list-header-timestamp' => 'Zatvoreno dana',
 	'closewikis-list-header-dispreason' => 'Navedeni razlog',
+	'closewikis-log' => 'Zapisnik o zatvaranju wikija',
+	'closewikis-log-header' => 'Ovdje se nalazi zapisnik svih zatvaranja i ponovnih otvaranja wikija koje su načinili stjuardi.',
 	'closewikis-log-close' => 'zatvoreno $2',
 	'closewikis-log-reopen' => 'ponovno otvoreno $2',
+	'right-editclosedwikis' => 'Uređivanje zatvorenih wikija',
 	'right-closewikis' => 'Zatvaranje wikija',
 );
 
@@ -1316,6 +1322,18 @@ $messages['tl'] = array(
 	'closewikis-log-reopen' => 'binuksang muli ang $2',
 	'right-editclosedwikis' => 'Baguhin ang nakasarang mga wiki',
 	'right-closewikis' => 'Isara ang mga wiki',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Sauptai:',
+	'closewikis-list-header-timestamp' => 'Om sauptud',
+	'closewikis-list-header-dispreason' => 'Ozutadud sü',
 );
 
 /** Vietnamese (Tiếng Việt)

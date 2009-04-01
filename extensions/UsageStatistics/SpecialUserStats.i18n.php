@@ -66,23 +66,6 @@ Cumulative statistics means that for each interval the number of edits in that i
 	'usagestatistics-editpages' => "Text in usage statistics graph. Parameter $1 can be either 'cumulative' ({{msg|Usagestatisticscumulative-text}}) or 'incremental' ({{msg|Usagestatisticsincremental-text}})",
 );
 
-/** Veps (Vepsan kel')
- * @author Triple-ADHD-AS
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'usagestatisticsinterval' => 'Interval',
-	'usagestatisticstype' => 'Tip',
-	'usagestatisticsstart' => 'Augotiždat',
-	'usagestatisticsend' => 'Lopdat',
-	'usagestatisticssubmit' => 'Generiruida statistikad',
-	'usagestatisticsnostart' => 'Olgat hüväd, kirjutagat augotiždat',
-	'usagestatisticsnoend' => 'Olgat hüväd, kirjutagat lopdat',
-	'usagestatisticsintervalday' => 'Päiv',
-	'usagestatisticsintervalweek' => 'Nedal’',
-	'usagestatisticsintervalmonth' => 'Ku',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -1662,6 +1645,26 @@ $messages['tr'] = array(
 	'usagestatisticsintervalday' => 'Gün',
 	'usagestatisticsintervalweek' => 'Hafta',
 	'usagestatisticsintervalmonth' => 'Ay',
+);
+
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'usagestatisticsinterval' => 'Interval',
+	'usagestatisticstype' => 'Tip',
+	'usagestatisticsstart' => 'Augotiždat',
+	'usagestatisticsend' => 'Lopdat',
+	'usagestatisticssubmit' => 'Generiruida statistikad',
+	'usagestatisticsnostart' => 'Olgat hüväd, kirjutagat augotiždat',
+	'usagestatisticsnoend' => 'Olgat hüväd, kirjutagat lopdat',
+	'usagestatisticsintervalday' => 'Päiv',
+	'usagestatisticsintervalweek' => 'Nedal’',
+	'usagestatisticsintervalmonth' => 'Ku',
+	'usagestatisticsincremental' => 'Kazvai',
+	'usagestatisticsincremental-text' => 'kazvai',
+	'usagestatisticscalselect' => 'Valita',
 );
 
 /** Vietnamese (Tiếng Việt)

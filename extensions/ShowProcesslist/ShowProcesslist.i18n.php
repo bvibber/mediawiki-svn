@@ -180,9 +180,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'showprocesslist-user' => 'Χρήστης',
+	'showprocesslist-time' => 'Χρόνος',
 	'showprocesslist-info' => 'Πληροφορίες',
 );
 

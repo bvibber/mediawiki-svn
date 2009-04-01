@@ -160,6 +160,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'pageby-first' => 'Página creada por $1, $2',
+	'pageby-last' => 'ültimo <a href="$3">modificado</a> por $1, $2',
 	'pageby-contributors' => 'Contribuyentes:',
 	'pageby-anon' => '<i>anónimo</i>',
 );

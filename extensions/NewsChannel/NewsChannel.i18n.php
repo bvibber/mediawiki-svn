@@ -166,6 +166,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'newschannel' => 'Canal de noticias',
+	'newschannel-desc' => 'Implementa un canal de noticias como una [[Special:NewsChannel|página especial]] dinámica',
 	'newschannel_format' => 'Formato:',
 	'newschannel_limit' => 'Límite:',
 	'newschannel_include_category' => 'Categoría adicional:',

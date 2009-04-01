@@ -448,9 +448,10 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Millosh
+ * @author Nikola Smolenski
  */
 $messages['sr-ec'] = array(
-	'poem-desc' => 'Додаје <tt>&lt;poem&gt;</tt> ознаку за форматирање песме.',
+	'poem-desc' => 'Додаје <tt>&lt;poem&gt;</tt> ознаку за форматирање песама.',
 );
 
 /** Seeltersk (Seeltersk)

@@ -237,10 +237,11 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'stalepages' => 'ទំព័រចាស់ៗ',
-	'stalepages-summary' => 'នេះជាបញ្ជីនៃទំព័រត្រូវបានកែប្រែក្នុងរយៈពេល$1ថ្ងៃចុងក្រោយនេះ។',
+	'stalepages-summary' => 'នេះ​ជា​បញ្ជី​នៃ​ទំព័រ​ដែល​ត្រូវ​បាន​កែប្រែ​ក្នុង​រយៈពេល $1 {{PLURAL:$1|ថ្ងៃ|ថ្ងៃ}} ចុងក្រោយនេះ​។',
 );
 
 /** Ripoarisch (Ripoarisch)

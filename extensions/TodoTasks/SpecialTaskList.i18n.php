@@ -1182,6 +1182,9 @@ $messages['tr'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'tasklistunknownproject' => 'Tundmatoi proekt',
+	'tasklistunspecuser' => 'Tundmatoi kävutai',
+	'tasklistincorrectuser' => 'Vär kävutajan nimi',
 	'tasklistemail' => 'Kalliž %s',
 	'tasklistprojdisp' => 'Ozutada',
 );

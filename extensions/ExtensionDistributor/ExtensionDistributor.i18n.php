@@ -1322,6 +1322,7 @@ Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Aviator
  */
 $messages['ms'] = array(
@@ -1334,7 +1335,7 @@ $messages['ms'] = array(
 	'extdist-choose-extension' => 'Sila pilih penyambung yang ingin dimuat turun:',
 	'extdist-wc-empty' => 'Direktori salinan kerja yang ditetapkan tidak mengandungi sebarang penyambung boleh edar!',
 	'extdist-submit-extension' => 'Teruskan',
-	'extdist-current-version' => 'Versi semasa (trunk)',
+	'extdist-current-version' => 'Versi pembangunan (utama)',
 	'extdist-choose-version' => '<big>Anda sedang memuat turun penyambung <b>$1</b>.</big>
 
 Sila pilih versi MediaWiki anda.
@@ -2184,6 +2185,14 @@ Dopo che ti gà estrato i file, te gavarè bisogno de registrar l'estension in L
 
 Se ti gà qualche domanda riguardo el sistema de distribussion de sta estension, varda [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => "Toli n'antra estension",
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'extdist-submit-extension' => 'Jatkta',
+	'extdist-submit-version' => 'Jatkata',
 );
 
 /** Vietnamese (Tiếng Việt)

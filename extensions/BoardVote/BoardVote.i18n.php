@@ -101,6 +101,7 @@ A security warning about an unsigned certificate may be displayed.',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author Lloffiwr
  * @author Meno25
@@ -134,8 +135,12 @@ $messages['qqq'] = array(
 	'boardvote_submit' => 'Button name
 
 {{Identical|OK}}',
-	'boardvote_strike' => 'Used during Wikimedia Board of Trustees elections via [[Special:BoardVote]]. "To strike a vote" means "to mark a vote invalid".',
-	'boardvote_unstrike' => 'Used during Wikimedia Board of Trustees elections via [[Special:BoardVote]]. "To unstrike a vote" means to mark a vote valid again after it has been marked invalid.',
+	'boardvote_strike' => 'Used during Wikimedia Board of Trustees elections via [[Special:BoardVote]]. "To strike a vote" means "to mark a vote invalid".
+
+{{Identical|Strike}}',
+	'boardvote_unstrike' => 'Used during Wikimedia Board of Trustees elections via [[Special:BoardVote]]. "To unstrike a vote" means to mark a vote valid again after it has been marked invalid.
+
+{{Identical|Unstrike}}',
 	'boardvote_needadmin' => 'Used during Wikimedia Board of Trustees elections via [[Special:BoardVote]].',
 	'boardvote_sitenotice' => 'Used during Wikimedia Board of Trustees elections via [[Special:BoardVote]].',
 	'boardvote_notstarted' => 'Used during Wikimedia Board of Trustees elections via [[Special:BoardVote]].',

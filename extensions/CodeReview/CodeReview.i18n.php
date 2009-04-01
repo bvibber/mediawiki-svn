@@ -143,6 +143,7 @@ $4',
  * @author Jon Harald Søby
  * @author Kwj2772
  * @author McDutchie
+ * @author Mormegil
  * @author Nike
  * @author Purodha
  */
@@ -171,6 +172,14 @@ $messages['qqq'] = array(
 	'codereview-subtitle' => '{{Identical|For $1}}
 ----
 $1 = Repository name',
+	'codereview-email-subj2' => 'Subject of an e-mail sent to a user whose revision has been followed upon.
+* <code>$1</code> – Repository name
+* <code>$2</code> – Number of the original revision (which has been followed upon)',
+	'codereview-email-body2' => 'Subject of an e-mail sent to a user whose revision has been followed upon.
+* <code>$1</code> – User who created the follow-up revision
+* <code>$2</code> – Number of the revision that has been followed upon.
+* <code>$3</code> – URL to the new revision.
+* <code>$4</code> – Commit message of the new revision.',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',
@@ -644,6 +653,14 @@ $messages['be-tarask'] = array(
 Камэнтар:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Наступныя зьмены',
+	'codereview-email-body2' => 'Карыстальнік «$1» зрабіў наступныя зьмены ў r$2.
+
+Поўны URL-адрас: $3
+
+Кароткае апісаньне зьменаў:
+
+$4',
 	'repoadmin' => 'Кіраваньне сховішчам коду',
 	'repoadmin-new-legend' => 'Стварыць новае сховішча',
 	'repoadmin-new-label' => 'Назва сховішча:',
@@ -819,6 +836,14 @@ Puni URL: $2
 Komentar:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Slijedeće izmjene',
+	'codereview-email-body2' => 'Korisnik "$1" je izvršio povezane izmjene na r$2.
+
+Puni URL: $3
+
+Napravljeni sažetak:
+
+$4',
 	'repoadmin' => 'Administracija repozitorijuma',
 	'repoadmin-new-legend' => 'Napravi novi repozitorijum',
 	'repoadmin-new-label' => 'Naziv repozitorija:',
@@ -960,6 +985,14 @@ Plné URL: $2
 Komentář:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Reagující změna',
+	'codereview-email-body2' => 'Uživatel „$1“ svou změnou reagoval na r$2.
+
+Úplné URL: $3
+
+Komentář ke změně:
+
+$4',
 	'repoadmin' => 'Správa úložišť',
 	'repoadmin-new-legend' => 'Vytvořit nové úložiště',
 	'repoadmin-new-label' => 'Název úložiště:',
@@ -1075,6 +1108,14 @@ Vollständige URL: $2
 Kommentar:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Darauffolgende Änderungen',
+	'codereview-email-body2' => 'Benutzer „$1“ machte darauffolgende Änderungen zu r$2.
+
+Volle URL: $3
+
+Übertragungszusammenfassung:
+
+$4',
 	'repoadmin' => 'Repositoriums-Administration',
 	'repoadmin-new-legend' => 'Neues Repositorium erstellen',
 	'repoadmin-new-label' => 'Name des Repositoriums:',
@@ -1089,7 +1130,7 @@ $4',
 	'right-codereview-use' => 'Special:Code benutzen',
 	'right-codereview-add-tag' => 'Hinzufügen neuer Tags zu Revisionen',
 	'right-codereview-remove-tag' => 'Entfernen von Tags von Revisionen',
-	'right-codereview-post-comment' => 'Ergänzen von Kommentaren zu Revisionen',
+	'right-codereview-post-comment' => 'Eigene Kommentare zu Revisionen einstellen',
 	'right-codereview-set-status' => 'Ändern des Revisionsstatus',
 	'right-codereview-link-user' => 'Autoren auf Wiki-Benutzer verlinken',
 	'specialpages-group-developer' => 'Entwicklerwerkzeuge',
@@ -1186,6 +1227,14 @@ $messages['dsb'] = array(
 Dopołny URL: $2
 
 Komentar:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Naslědne změny',
+	'codereview-email-body2' => 'Wužywaŕ "$1" su naslědne změny k r$2 cynił.
+
+Dopołny URL: $3
+
+Zespominanje pśenjasenja:
 
 $4',
 	'repoadmin' => 'Administracija repozitoriuma',
@@ -1395,6 +1444,7 @@ $messages['eo'] = array(
 	'code-status-reverted' => 'malfarita',
 	'code-status-resolved' => 'farita',
 	'code-status-ok' => 'Ek!',
+	'code-status-verified' => 'kontrolita',
 	'code-status-deferred' => 'prokrastita',
 	'code-pathsearch-legend' => 'Serĉi versiojn en ĉi tiu kodujo laŭ vojo',
 	'code-pathsearch-path' => 'Vojo:',
@@ -1509,6 +1559,7 @@ $messages['es'] = array(
 	'code-status-reverted' => 'revertido',
 	'code-status-resolved' => 'resuelto',
 	'code-status-ok' => 'aceptar',
+	'code-status-verified' => 'verificado',
 	'code-status-deferred' => 'diferido',
 	'code-pathsearch-legend' => 'Buscar revisiones en este repositorio por ruta',
 	'code-pathsearch-path' => 'Ruta:',
@@ -2064,6 +2115,14 @@ Enderezo URL: $2
 Comentario:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: seguimento de cambios',
+	'codereview-email-body2' => 'O usuario "$1" fixo un seguimento dos cambios feitos na r$2.
+
+Enderezo URL completo: $3
+
+Resumo:
+
+$4',
 	'repoadmin' => 'Administración do repositorio',
 	'repoadmin-new-legend' => 'Crear un novo repositorio',
 	'repoadmin-new-label' => 'Nome do repositorio:',
@@ -2276,6 +2335,14 @@ $messages['gsw'] = array(
 Vollständigi URL: $2
 
 Kommentar:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Änderige wu derno chemme',
+	'codereview-email-body2' => 'Benutzer „$1“ het zue r$2 Änderige wu derno chemme gmacht.
+
+Volli URL: $3
+
+Ibertragzämmefassig:
 
 $4',
 	'repoadmin' => 'Adminischtration vum Repositorium',
@@ -2638,6 +2705,14 @@ $messages['hsb'] = array(
 Dospołny URL: $2
 
 Komentar:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Naslědne změny',
+	'codereview-email-body2' => 'Wužiwar "$1" je naslědne změny k r$2 činił.
+
+Dopołny URL: $3
+
+Zjeće přenjesenja:
 
 $4',
 	'repoadmin' => 'Administracija repozitorija',
@@ -3083,6 +3158,14 @@ $messages['ja'] = array(
 コメント:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: 追補の変更',
+	'codereview-email-body2' => '利用者 $1 が r$2 に追補の変更を加えました。
+
+フルURL: $3
+
+コミットの要約:
+
+$4',
 	'repoadmin' => 'リポジトリ管理',
 	'repoadmin-new-legend' => '新規リポジトリを作成',
 	'repoadmin-new-label' => 'リポジトリ名:',
@@ -3362,8 +3445,8 @@ $4',
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'code' => 'Projramme beärbeide',
-	'code-rev-title' => 'Version $1 - Programm nohloore',
+	'code' => 'Projramm-Änderunge verwallde',
+	'code-rev-title' => 'Version $1 - Programm-Änderunge nohloore',
 	'code-comments' => 'Kommäntaare',
 	'code-references' => 'De Versione donoh',
 	'code-change-status' => "hät der '''Shtattus''' vun de Version $1 verändert",
@@ -3371,7 +3454,7 @@ $messages['ksh'] = array(
 	'code-change-removed' => 'eruß jenomme:',
 	'code-change-added' => 'dobei jedonn:',
 	'code-prop-changes' => 'Logboch för Shtattus un Makeerunge',
-	'code-desc' => 'Werkzüch för [[Special:Code|Projramme ze beärbeide]] met [[Special:RepoAdmin|Ongershtözung för <i lang="en">Subversion</i>]]',
+	'code-desc' => 'Werkzüch för [[Special:Code|Projramm-Änderunge ze verwallde]] met [[Special:RepoAdmin|Ongershtözung för <i lang="en">Subversion</i>]]',
 	'code-no-repo' => 'Et es kei Repositorijum enjeshtallt.',
 	'code-load-diff' => 'Ben de Ungerscheide aam Lade&nbsp;…',
 	'code-notes' => 'De neuste Bemerkunge',
@@ -3405,7 +3488,7 @@ $messages['ksh'] = array(
 	'code-rev-repo' => 'Repositorijum:',
 	'code-rev-rev' => 'Version:',
 	'code-rev-rev-viewvc' => 'op <i lang="en">ViewVC</i>',
-	'code-rev-paths' => 'Jeänderte Pahde:',
+	'code-rev-paths' => 'Pahde met Veränderunge:',
 	'code-rev-modified-a' => 'dobeij jedonn',
 	'code-rev-modified-r' => 'ußjetuusch',
 	'code-rev-modified-d' => 'fottjeschmeße',
@@ -3432,7 +3515,7 @@ $messages['ksh'] = array(
 	'code-pathsearch-legend' => 'Söhk en däm Repositorijum noh Versione, övver dänne iere Pahd',
 	'code-pathsearch-path' => 'Pahd:',
 	'code-rev-submit' => 'Änderunge faßhallde',
-	'code-rev-submit-next' => 'Don dat faßhallde, dann jangk nohm nächste unjelöste Kumflick',
+	'code-rev-submit-next' => 'Don dat faßhallde, un jangk nohm nächste unjelöste Kumflick',
 	'code-batch-status' => 'Shtattus ändere:',
 	'code-batch-tags' => 'Makeerunge ändere:',
 	'codereview-batch-title' => 'All de ußjesoohte Versione ändere',
@@ -3451,6 +3534,14 @@ De janze URL es: $2
 Dä Kommentaa es:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: De Änderunge donoh',
+	'codereview-email-body2' => '{{GENDER:$1|Dä|Et|Dä Metmaacher|Dat|De}} "$1" hät aan de Version $2 noch noch jet jedonn.
+
+Loor op de URL: $3
+
+Singe Kommentaa dozo:
+
+$4',
 	'repoadmin' => 'Repositorijums-Verwalldung',
 	'repoadmin-new-legend' => 'E neu Repositorijum aanlääje',
 	'repoadmin-new-label' => 'Däm Repositorijum singe Name:',
@@ -3461,11 +3552,11 @@ $4',
 	'repoadmin-edit-view' => '<i lang="en">ViewVC</i> Pahd:',
 	'repoadmin-edit-button' => 'Loß Jonn!',
 	'repoadmin-edit-sucess' => 'Dat Repositorijum „[[Special:Code/$1|$1]]“ woht verändert.',
-	'right-repoadmin' => 'Repositorije ze verwallde',
+	'right-repoadmin' => 'Repositorije verwallde',
 	'right-codereview-use' => '[[{{#special:Code}}]] bruche',
-	'right-codereview-add-tag' => 'Makeerunge för Versione ze verjäve',
-	'right-codereview-remove-tag' => 'Makeerunge vun Versione fott ze nämme',
-	'right-codereview-post-comment' => 'Donn enen Kommentaa för Versione loßlooße',
+	'right-codereview-add-tag' => 'Makeerunge för Projramm-Versione verjäve',
+	'right-codereview-remove-tag' => 'Makeerunge vun Projramm-Versione fott nämme',
+	'right-codereview-post-comment' => 'Eije Kommentaare för Projramm-Versione veröffentlesche',
 	'right-codereview-set-status' => 'Dä Stattus vun ene Version ändere',
 	'right-codereview-link-user' => 'Schriiver op Metmaacher em Wiki verlinke',
 	'specialpages-group-developer' => 'Werkzüch fö Entwecklere',
@@ -3476,6 +3567,7 @@ $4',
  */
 $messages['lb'] = array(
 	'code' => 'Code nokucken',
+	'code-rev-title' => 'r$1 - Versioun vum Code',
 	'code-comments' => 'Bemierkungen',
 	'code-change-status' => 'huet de "Statut" vun $1 geännert',
 	'code-change-tags' => "huet '''Taggen''' fir $1 geännert",
@@ -3534,6 +3626,7 @@ $messages['lb'] = array(
 	'code-status-reverted' => 'zréckgesat',
 	'code-status-resolved' => 'geléist',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'nogekuckt',
 	'code-status-deferred' => 'zréckgestallt',
 	'code-pathsearch-path' => 'Pad:',
 	'code-rev-submit' => 'Ännerunge späicheren',
@@ -3939,6 +4032,7 @@ $messages['nds'] = array(
 	'code-status-reverted' => 'trüchdreit',
 	'code-status-resolved' => 'lööst',
 	'code-status-ok' => 'OK',
+	'code-status-verified' => 'naprüüft',
 	'code-status-deferred' => 'trüchstellt',
 	'code-pathsearch-legend' => 'In dit Repositorium na Versionen söken, na Padd',
 	'code-pathsearch-path' => 'Padd:',
@@ -3960,6 +4054,14 @@ $messages['nds'] = array(
 Vulle URL: $2
 
 Kommentar:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Nakamen Ännern',
+	'codereview-email-body2' => 'Bruker „$1“ hett na r$2 noch wedder wat ännert.
+
+Vull URL: $3
+
+Commit-Kommentar:
 
 $4',
 	'repoadmin' => 'Repositorium-Administratschoon',
@@ -4074,6 +4176,14 @@ $messages['nl'] = array(
 Volledige URL: $2
 
 Opmerking:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: wijzigingen met correcties',
+	'codereview-email-body2' => 'Gebruiker "$1" heeft wijzigingen met correcties voor r$2 gemaakt.
+
+Volledige URL: $3
+
+Toelichting bij commit:
 
 $4',
 	'repoadmin' => 'Repositorybeheer',
@@ -4537,6 +4647,14 @@ Pełny URL: $2
 Komentarz:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Kolejne zmiany',
+	'codereview-email-body2' => 'Użytkownik „$1” wykonał kolejne zmiany w r$2
+
+Pełny adres URL: $3
+
+Skrócony opis:
+
+$4',
 	'repoadmin' => 'Administrowanie repozytorium',
 	'repoadmin-new-legend' => 'Utwórz nowe repozytorium',
 	'repoadmin-new-label' => 'Nazwa repozytorium',
@@ -4950,6 +5068,7 @@ $messages['ru'] = array(
 	'code-status-reverted' => 'откачено',
 	'code-status-resolved' => 'решено',
 	'code-status-ok' => 'готово',
+	'code-status-verified' => 'проверено',
 	'code-status-deferred' => 'отложено',
 	'code-pathsearch-legend' => 'Поиск в этом хранилище конкретных редакций по их адресу',
 	'code-pathsearch-path' => 'Путь:',
@@ -4971,6 +5090,14 @@ $messages['ru'] = array(
 Полный URL: $2
 
 Комментарий:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Последующие изменения',
+	'codereview-email-body2' => 'Пользователь «$1» внёс изменения в r$2.
+
+Полный  URL: $3
+
+Описание изменения:
 
 $4',
 	'repoadmin' => 'Управление хранилищем программного кода',
@@ -5210,7 +5337,7 @@ $messages['sk'] = array(
 	'code' => 'Kontrola kódu',
 	'code-rev-title' => 'r$1 - Kontrola kódu',
 	'code-comments' => 'Komentáre',
-	'code-references' => 'Sledovať revízie',
+	'code-references' => 'Nadväzujúce revízie',
 	'code-change-status' => "zmenil '''stav''' r$1",
 	'code-change-tags' => "zmenil '''značky''' r$1",
 	'code-change-removed' => 'odstránené:',
@@ -5294,6 +5421,14 @@ $messages['sk'] = array(
 Plný URL: $2
 
 Komentár:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Nadväzujúce zmeny',
+	'codereview-email-body2' => 'Používateľ „$1“ urobil v r$2 nadväzujúce zmeny.
+
+Plný URL: $3
+
+Zhrnutie commitu:
 
 $4',
 	'repoadmin' => 'Správa úložiska',
@@ -5931,6 +6066,14 @@ Tam adres: $2
 Yorum:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Takip değişiklikleri',
+	'codereview-email-body2' => '"$1" kullanıcısı r$2 için takip değişiklikleri yaptı.
+
+Tam URL: $3
+
+Teslim özeti:
+
+$4',
 	'repoadmin' => 'Depo Yönetimi',
 	'repoadmin-new-legend' => 'Yeni bir depo oluştur',
 	'repoadmin-new-label' => 'Depo adı:',
@@ -6170,6 +6313,27 @@ $4',
 	'right-codereview-set-status' => 'Canbia el stato de le revision',
 	'right-codereview-link-user' => 'Liga i autori a dei utenti wiki',
 	'specialpages-group-developer' => "Strumenti pa' i svilupadori",
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'code-field-author' => 'Avtor',
+	'code-field-user' => 'Kommentator',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Dat',
+	'code-field-comments' => 'Homaitused',
+	'code-field-path' => 'Te',
+	'code-field-text' => 'Homaičend',
+	'code-field-select' => 'Valita',
+	'code-rev-author' => 'Avtor:',
+	'code-rev-date' => 'Dat:',
+	'code-rev-message' => 'Komment:',
+	'code-rev-repo' => 'Varaait:',
+	'code-rev-rev' => 'Versii:',
+	'code-rev-rev-viewvc' => 'ViewVC:s',
+	'code-batch-status' => 'Vajehtada status:',
 );
 
 /** Vietnamese (Tiếng Việt)

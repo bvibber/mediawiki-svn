@@ -1356,6 +1356,14 @@ I file inapropriati i vegnarà scancelati de paca, lèzi le [[{{MediaWiki:Multip
 	'multiupload-toolbox' => 'Carga file multipli',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'multipleupload-saveallfiles' => 'Panda muštho kaik failad',
+	'multiupload-fileuploaded' => 'Fail om jügutoittud',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

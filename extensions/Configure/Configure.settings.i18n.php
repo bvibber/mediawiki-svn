@@ -5373,6 +5373,7 @@ $messages['lb'] = array(
 	'configure-setting-wgLegalTitleChars' => 'Buchstawn déi en de Säitentitelen erlaabt sinn (Regex-Zeecheklass)',
 	'configure-setting-wgMaxArticleSize' => 'Maximal Gréisst vun enger Säit (kB)',
 	'configure-setting-wgNoFollowLinks' => 'Den Attribut rel="nofollows" bäi extern Linken derbäisetzen',
+	'configure-setting-wgNoFollowDomainExceptions' => 'Extern Linken op dës Domain-Nimm (oder hir Ënnerdomainen) kréien de rel="nofollow" Attribut net',
 	'configure-setting-wgPageShowWatchingUsers' => 'Weis watfir Benotzer eng Säit iwwerwaachen',
 	'configure-setting-wgSiteNotice' => 'Notiz vum Site',
 	'configure-setting-wgSiteSupportPage' => 'Säit mat Informatiounen iwwert Donatiounen',
@@ -5410,6 +5411,7 @@ $messages['lb'] = array(
 	'configure-setting-wgSMTP' => 'SMTP-Server',
 	'configure-setting-wgDebugLogGroups-value' => 'Fichier',
 	'configure-setting-wgDebugRedirects' => "Viruleedungszil uweisen an net direkt op d'Zil URL viruleeden",
+	'configure-setting-wgShowSQLErrors' => "D'Datebankfeeler op de Säite weisen",
 	'configure-setting-wgDisableQueryPageUpdate' => 'Spezialsäiten déi ausgeschalt sinn',
 	'configure-setting-wgDisableTextSearch' => 'Volltext-Sich ausschalten',
 	'configure-setting-wgEdititis' => 'De Compteur vun de Benotzerkontributiounen op verschiddene bekannte Plazen weisen',
@@ -9492,6 +9494,17 @@ $messages['uk'] = array(
 	'configure-setting-wgLocalDatabases' => 'Інші бази даних, які можуть адмініструватися з цього сервера',
 	'configure-setting-wgLanguageCode' => 'Код мови сайту',
 	'configure-setting-wgSMTP' => 'SMTP-сервер',
+);
+
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'configure-setting-wgSitename' => 'Saitan nimi',
+	'configure-setting-wgExtraLanguageNames-key' => 'Kelenkod',
+	'configure-setting-wgExtraLanguageNames-value' => 'Nimi',
+	'configure-setting-wgDebugLogGroups-value' => 'Fail',
 );
 
 /** Vietnamese (Tiếng Việt)

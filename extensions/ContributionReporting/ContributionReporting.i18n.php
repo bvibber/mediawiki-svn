@@ -580,6 +580,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'contrib-hist-name' => 'Όνομα',
+	'contrib-hist-date' => 'Ώρα και ημερομηνία',
 	'contrib-hist-amount' => 'Ποσόν',
 	'contrib-hist-next' => 'Προηγούμενες δωρεές',
 	'contrib-hist-previous' => 'Νεότερες δωρεές',
@@ -589,6 +590,9 @@ $messages['el'] = array(
 	'contribstats-currency' => 'Νόμισμα',
 	'contribstats-amount' => 'Ποσόν (USD)',
 	'contribstats-contributions' => 'Εισφορές',
+	'contribstats-total' => 'Σύνολο (USD)',
+	'contribstats-percentage-ytd' => 'Ποσοστό (YTD)',
+	'contribstats-total-ytd' => 'Σύνολο (YTD)',
 	'fundraiserstats-date' => 'Ημερομηνία',
 	'fundraiserstats-contributions' => 'Εισφορές',
 );
