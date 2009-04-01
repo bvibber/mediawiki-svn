@@ -511,9 +511,9 @@ mvPlayList.prototype = {
 		
 		//handle offset hack @@todo fix so this is not needed:
 		if(perc_offset > .66)
-			perc_offset+=(8/track_len);
+			perc_offset+=( 8/track_len );
 		//js_log('perc:'+ perc_offset +' c:'+ clip_perc + '*' + prec_done + ' v:'+(clip_perc*prec_done));
-		return perc_offset + (clip_perc*prec_done);
+		return perc_offset + ( clip_perc * prec_done );
 	},
 	//attempts to load the embed object with the playlist
 	loadEmbedPlaylist: function(){
@@ -1517,7 +1517,7 @@ var smilPlaylist ={
 		var transition_tags = this.data.getElementsByTagName('transition');	
 		$j.each(transition_tags, function( i, trans_elm ){		
 			if( $j(trans_elm).attr("id") ){
-				_this.transitions[ $j(trans_elm).attr("id")]= new transitionObj(trans_elm);
+				_this.transitions[ $j(trans_elm).attr("id")]= new transitionObj( trans_elm );
 			}else{
 				js_log('skipping transition: (missing id) ' + trans_elm );
 			}

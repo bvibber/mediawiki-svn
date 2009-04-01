@@ -29,14 +29,6 @@
  * 
  */
 
-
-
-//set the initial javascript classes: (for loading javascript via class name) 
-global $wgJSAutoloadClasses;
-$wgJSAutoloadClasses = array(
-
-);
-
 //include WebStart.php (this can be simplified once we move mvwScriptLoader to the root dir: 
 $root_path = dirname(__FILE__) . '/../../../../';
 chdir( $root_path );
@@ -54,7 +46,7 @@ if( isset( $_SERVER['SCRIPT_URL'] ) ) {
 if( strpos($url, "mvwScriptLoader$wgScriptExtension") === false){
 	wfHttpError( 403, 'Forbidden',
 		'mvwScriptLoader must be accessed through the primary script entry point.' );
-	return;
+	return ;
 }
 //Verify the script loader is on: 
 if (!$wgEnableScriptLoader) {
@@ -65,6 +57,8 @@ if (!$wgEnableScriptLoader) {
 //run the main action: 
 $myScriptLoader = new jsScriptLoader();
 $myScriptLoader->doScriptLoader();
+
+//setup page output hook 
 
 class jsScriptLoader{
 	var $jsFileList = array();
@@ -122,7 +116,7 @@ class jsScriptLoader{
 		header( 'Content-type: '.$wgJsMimeType);
 		header("Pragma: public");
 		//cache forever: 
-		//(the point is we never have to re validate since we should always change the request url based on the svn version)
+		//(the point is we never have to re validate since we should always change the request url based on the svn or article version)
 		$one_year = 60*60*24*365;
 		header("Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_year  ) . " GM");  	
 			

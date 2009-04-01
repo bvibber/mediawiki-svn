@@ -4,7 +4,7 @@ var flickrOrgSearch = function ( initObj){
 flickrOrgSearch.prototype = {
 	init:function( initObj ){
 		//init base class and inherit: 
-		var baseSearch = new mvBaseRemoteSearch( initObj );
+		var baseSearch = new baseRemoteSearch( initObj );
 		for(var i in baseSearch){
 			if(typeof this[i] =='undefined'){
 				this[i] = baseSearch[i];

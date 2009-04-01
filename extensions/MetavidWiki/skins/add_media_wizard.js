@@ -39,7 +39,7 @@ if( MV_EMBED_VIDEO_HANDLER ){
 		var divs = document.getElementsByTagName('div');	
 		for(var i = 0; i < divs.length; i++){		
 			if( divs[i].id.substring(0,11) == 'ogg_player_'){
-				vidIdList.push( divs[i].id );
+				vidIdList.push( divs[i].getAttribute("id") );
 			} 
 		}			
 		if( vidIdList.length > 0){
@@ -174,11 +174,16 @@ function load_mv_embed( callback ){
 			var mv_embed_url = force_mv_embed_path;
 		}else{
 			var mv_embed_url = getAddMediaPath( 'mv_embed/mv_embed.js' );
-		}						
+		}	
+		//check if we are in debug mode (send a urid to mv_embed too) 					
+		if( mv_embed_url.indexOf('debug=true') != -1 ){
+			var d = new Date();
+			mv_embed_url+='&urid=' + d.getTime();
+		} 				
 		var e = document.createElement("script");
-	    e.setAttribute('src', mv_embed_url);	    
-	    e.setAttribute('type',"text/javascript");
-	    document.getElementsByTagName("head")[0].appendChild(e);
+	    e.setAttribute( 'src', mv_embed_url );	    
+	    e.setAttribute( 'type', "text/javascript" );
+	    document.getElementsByTagName("head")[0].appendChild(e);	    
 	    check_for_mv_embed( callback ); 
 	}else{		
 		check_for_mv_embed( callback );

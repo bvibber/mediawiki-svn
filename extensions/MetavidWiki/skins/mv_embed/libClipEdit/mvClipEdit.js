@@ -64,11 +64,11 @@ mvClipEdit.prototype = {
 		//if media type was not supplied detect for resource if possible:
 		//@@todo more advanced detection. 
 		if(!this.media_type){
-			if( this.rObj.type.indexOf("image/") === 0){
+			if( this.rObj.mime.indexOf("image/") === 0){
 				this.media_type = 'image';
-			}else if( this.rObj.type.indexOf("video/") === 0){
+			}else if( this.rObj.mime.indexOf("video/") === 0){
 				this.media_type = 'video';
-			}else if( this.rObj.type.indexOf("text/") === 0){
+			}else if( this.rObj.mime.indexOf("text/") === 0){
 				this.media_type = 'template';
 			}
 		}		
@@ -144,7 +144,7 @@ mvClipEdit.prototype = {
 						var testing_a = _this.rObj.tVars;
 						//debugger;
 						o+= '<tr>'+
-								'<td colspan="2"><b>'+gM('mv_template_properties')+'</b></td>'+
+								'<td colspan="2"><b>' + gM('mv_template_properties') + '</b></td>'+
 							'</tr>';
 						for(var i =0; i < _this.rObj.tVars.length ; i++){
 							o+='<tr>'+
@@ -393,7 +393,7 @@ mvClipEdit.prototype = {
 			o+= this.rObj.pSobj.getInlineDescWiki( this.rObj );
 		}
 		o+='</textarea><br>';		
-		js_log('getInsertDescHtml: ' + o );
+		//js_log('getInsertDescHtml: ' + o );
 		return o;
 	},
 	getInsertAction:function(){

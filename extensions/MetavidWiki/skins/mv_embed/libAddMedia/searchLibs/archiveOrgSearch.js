@@ -8,7 +8,7 @@ var archiveOrgSearch = function ( initObj){
 archiveOrgSearch.prototype = {
 	init:function( initObj ){
 		//init base class and inherit: 
-		var baseSearch = new mvBaseRemoteSearch( initObj );
+		var baseSearch = new baseRemoteSearch( initObj );
 		for(var i in baseSearch){
 			if(typeof this[i] =='undefined'){
 				this[i] = baseSearch[i];
@@ -89,5 +89,5 @@ archiveOrgSearch.prototype = {
 		if(rObj.mime == 'application/ogg' || rObj.mime == 'audio/ogg' || rObj.mime=='video/ogg'){
 			return '<video ' + id_attr + ' src="' + rObj.src + '" poster="' + rObj.poster + '" type="video/ogg"></video>';
 		}
-	},		
+	}
 }

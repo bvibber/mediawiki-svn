@@ -264,7 +264,7 @@ var mvJsLoader = {
 		 	 	this.callbacks.push(callback);
 		}		
 		if( mvJsLoader.checkLoading() ){
-			 if( this.load_time++ > 2000){ //time out after ~50seconds
+			 if( this.load_time++ > 3000){ //time out after ~30seconds
 			 	js_error( gM('error_load_lib') +  this.cur_path );
 			 	this.load_error=true;			 	
 			 }else{
@@ -1298,19 +1298,27 @@ function usingScriptLoaderCheck(){
 	return ( getMvEmbedURL().indexOf('mvwScriptLoader.php') != -1 )?true:false;
 	
 }
-function getMvEmbedURL(){
-	js_elements = document.getElementsByTagName("script");
-	for(var i=0;i<js_elements.length; i++){		
+function getMvEmbedURL(){	
+	if( _global['mv_embed_url'] ) 
+		return _global['mv_embed_url'];				
+	var js_elements = document.getElementsByTagName("script");			
+	for(var i=0; i < js_elements.length; i++){					
 		//check for normal mv_embed.js and or script loader
-		if( js_elements[i].src.indexOf('mv_embed.js') !=-1 ||
-			( js_elements[i].src.indexOf('mvwScriptLoader.php')!=-1 && js_elements[i].src.indexOf('mv_embed') != -1) ){
-			return  js_elements[i].src;			
+		var src = js_elements[i].getAttribute("src");		
+		if( src ){			
+			if( src.indexOf('mv_embed.js') !=-1 || ( src.indexOf('mvwScriptLoader.php') != -1 && src.indexOf('mv_embed') != -1) ){
+				_global['mv_embed_url'] = src;
+				return  src;		
+			}
 		}
 	}
+	js_error('Error: getMvEmbedURL failed to get Embed Path');
 	return false;
 }
 //gets a unique request id to ensure fresh javascript 
 function getMvUniqueReqId(){
+	if( _global['urid'] ) 
+		return _global['urid'];		
 	var mv_embed_url = getMvEmbedURL();		
 	//if in debug mode get a fresh unique request key: 
 	if(  parseUri( mv_embed_url ).queryKey['debug'] == 'true'){
@@ -1319,19 +1327,18 @@ function getMvUniqueReqId(){
 	}
 	//if we have a uri retun that: 
 	var urid = parseUri( mv_embed_url).queryKey['urid']
-	if( urid )
+	if( urid ){
+		_global['urid']	= urid;
 		return urid;
+	}
 	//else just return the mv_embed version;
 	return MV_EMBED_VERSION;
 }
 /*
  * sets the global mv_embed path based on the scripts location
  */
-function getMvEmbedPath(){	
-	var mv_embed_url = getMvEmbedURL();
-	
-	if( !mv_embed_url )
-		return js_error('error: could not get Mv Embed Path');
+function getMvEmbedPath(){		
+	var mv_embed_url = getMvEmbedURL();				
 		
 	if( mv_embed_url.indexOf('mv_embed.js') !== -1 ){
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
@@ -1340,7 +1347,7 @@ function getMvEmbedPath(){
 	}
 	//absolute the url (if relative) (if we don't have mv_embed path)
 	if( mv_embed_path.indexOf('://') == -1){	
-		var pURL = parseUri( document.URL );		
+		var pURL = parseUri( document.URL );
 		if(mv_embed_path.charAt(0)=='/'){
 			mv_embed_path = pURL.protocol + '://' + pURL.authority + mv_embed_path;
 		}else{
@@ -1381,9 +1388,13 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-    /* var log_elm = document.getElementById('mv_js_log');
+     /*var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
-     	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:10px;"><textarea id="mv_js_log" cols="120" rows="5"></textarea></div>');
+     	document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + 
+     				'<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:10px;">'+
+     					'<textarea id="mv_js_log" cols="120" rows="5"></textarea>'+
+     				'</div>';
+     	     	
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){
@@ -1397,4 +1408,3 @@ function js_error(string){
 	alert(string);
 	return false;
 }
-

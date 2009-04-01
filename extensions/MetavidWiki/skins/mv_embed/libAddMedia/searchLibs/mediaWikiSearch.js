@@ -4,7 +4,7 @@ var mediaWikiSearch = function( initObj ) {
 mediaWikiSearch.prototype = {
 	init:function( initObj ){
 		//init base class and inherit: 
-		var baseSearch = new mvBaseRemoteSearch( initObj );
+		var baseSearch = new baseRemoteSearch( initObj );
 		for(var i in baseSearch){
 			if(typeof this[i] =='undefined'){
 				this[i] = baseSearch[i];
@@ -122,18 +122,18 @@ mediaWikiSearch.prototype = {
 			this.loading = 0;
 		}
 	},	
-	getImageObj:function( rObj, size, callback ){		
-		debugger;	
+	getImageObj:function( rObj, size, callback ){					
 		if( rObj.mime=='application/ogg' )
 			return callback( {'url':rObj.src, 'poster' : rObj.url } );
 		
-		//we can just use direct request urls.. (check if png or jpeg (wont scale above   orgwidth
-		var baseImgUrl = this.cp.api_url.replace('api.php', 'thumb.php'); 
+		//we can just use direct request urls
+		//@@todo thumb.php has some issues (cant serve the full image size, has poor erro handling etc) 
+		/*var baseImgUrl = this.cp.api_url.replace('api.php', 'thumb.php'); 
 		if ( rObj.mime=='image/jpeg' || rObj.mime=='image/png' ){
 			//if requested size is greater than org size return reduced size obj: 
 			if( size.width > rObj.orgwidth){
 				callback({ 
-						'url'	: baseImgUrl + '?f=' + rObj.titleKey + '&w='+ rObj.orgwidth,
+						'url'	: baseImgUrl + '?f=' + rObj.titleKey.replace(/\s/g, '_') + '&w='+ rObj.orgwidth,
 						'width'	: rObj.orgwidth,
 						'height': rObj.orgheight
 				}); 
@@ -147,11 +147,9 @@ mediaWikiSearch.prototype = {
 				'height': Math.round( ( rObj.orgheight / rObj.orgwidth)*size.width ) 
 		}); 
 		return false;
+		*/		
 		
-		
-		//this is depreciated (I did not know we had thumb.php) 
-		// (could re-enable if api hit + direct image is less resource intensive than image server)
-		/*
+		//his could be depreciated if thumb.php improves
 		var reqObj = {
 			'action':'query',
 			'format':'json',
@@ -162,11 +160,11 @@ mediaWikiSearch.prototype = {
 		//set the width: 
 		if(size.width)
 			reqObj['iiurlwidth']= size.width;				 
- 
+ 		js_log('going to do req: ' + this.cp.api_url + ' ' + reqObj );
 		do_api_req( {
 			'data':reqObj, 
 			'url' : this.cp.api_url
-			}, function(data){
+			}, function(data){								
 				var imObj = {};
 				for(var page_id in  data.query.pages){
 					var iminfo =  data.query.pages[ page_id ].imageinfo[0];
@@ -187,7 +185,6 @@ mediaWikiSearch.prototype = {
 				js_log('getImageObj: get: ' + size.width + ' got url:' + imObj.url);			
 				callback( imObj ); 
 		});
-		*/
 	},
 	//the insert image function   
 	insertImage:function( cEdit ){
@@ -230,11 +227,17 @@ mediaWikiSearch.prototype = {
 		var descMatch = new RegExp(/Description=(\{\{en\|)?([^|]*|)/);			
 		var dparts = desc.match(descMatch);
 				
-		if( dparts && dparts.length > 1)	
-			return (dparts.length == 2)? dparts[1] : dparts[2].replace('}}','');
+		if( dparts && dparts.length > 1){	
+			desc = (dparts.length == 2) ? dparts[1] : dparts[2].replace('}}','');
+			desc = (desc.substr(0,2) == '1=') ?desc.substr(2): desc;
+			return desc;	 
+		}
 		//else return the title since we could not find the desc:
 		js_log('we could not find the Description tag in :' + desc );
 		return rObj.title;
+	},
+	parseWikiTemplate: function( text ){
+		//@@todo parse wiki Template return object with properties and values
 	},
 	//returns the inline wikitext for insertion (template based crops for now) 
 	getEmbedWikiText: function( rObj ){		
