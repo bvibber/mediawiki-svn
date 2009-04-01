@@ -1,5 +1,10 @@
 #!/bin/sh
 
+repository="http://svn.wikimedia.org/svnroot/mediawiki/trunk/wikiation/util/"
 
 cd $DESTINATION_DIR
-svn checkout 'http://svn.wikimedia.org/svnroot/pywikipedia/trunk/util/'
+if test -n "$REVISION"; then
+	svn checkout -r $REVISION $repository
+else
+	svn checkout $repository
+fi
