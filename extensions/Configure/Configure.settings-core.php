@@ -419,6 +419,7 @@ $settings = array(
 			'wgAjaxLicensePreview' => 'bool',
 			'wgAllowCopyUploads' => 'bool',
 			'wgCheckFileExtensions' => 'bool',
+			'wgCopyUploadTimeout' => 'int',
 			'wgEnableUploads' => 'bool',
 			'wgFileBlacklist' => 'array',
 			'wgFileExtensions' => 'array',
@@ -476,6 +477,7 @@ $settings = array(
 			'wgThumbUpright' => 'text',
 			'wgGenerateThumbnailOnParse' => 'bool',
 			'wgThumbLimits' => 'array',
+			'wgUseImageResize' => 'bool',
 		),
 		'djvu' => array(
 			'wgDjvuDump' => 'text',
@@ -592,6 +594,8 @@ $settings = array(
 			'wgAllowUserSkin' => 'bool',
 			'wgDefaultUserOptions' => 'array',
 			'wgDisableAnonTalk' => 'bool',
+			'wgInvalidUsernameCharacters' => 'text',
+			'wgUserrightsInterwikiDelimiter' => 'text',
 			'wgMaxNameChars' => 'int',
 			'wgMaxSigChars' => 'int',
 			'wgMinimalPasswordLength' => 'int',
@@ -1110,4 +1114,8 @@ $settingsVersion = array(
 	'wgAPIMaxUncachedDiffs' => array( array( '1.15alpha', '>=' ) ),
 	'wgTiffThumbnailType' => array( array( '1.15alpha', '>=' ) ),
 	'wgExportFromNamespaces' => array( array( '1.15alpha', '>=' ) ),
+	'wgUseImageResize' => array( array( '1.15alpha', '>=' ) ),
+	'wgCopyUploadTimeout' => array( array( '1.15alpha', '>=' ) ),
+	'wgInvalidUsernameCharacters' => array( array( '1.15alpha', '>=' ) ),
+	'wgUserrightsInterwikiDelimiter' => array( array( '1.15alpha', '>=' ) ),
 );
