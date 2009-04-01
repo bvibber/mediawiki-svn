@@ -12,7 +12,7 @@ loadGM( {
 	"mv_reset_crop":"Rest Crop",
 	"mv_insert_image_page":"Insert Into page",
 	"mv_preview_insert":"Preview Insert",
-	"mv_cancel_image_insert":"Cancel Image Insert",
+	"mv_cancel_image_insert": "Cancel Insert",
 	
 	"sc_fileopts":"Clip Detail Edit",
 	"sc_inoutpoints":"Set In-Out points",
@@ -25,7 +25,9 @@ loadGM( {
 	"mv_custom_title":"Custom Title",
 	"mv_edit_properties":"Edit Properties",
 	"mv_other_properties":"Other Properties",
-	"mv_resource_page":"Resource Page"
+	"mv_resource_page":"Resource Page",
+	
+	"mv_set_in_out_points": "Set in-out points"
 });
 
 var default_clipedit_values = {
@@ -335,15 +337,19 @@ mvClipEdit.prototype = {
 		this.applyInsertControlBindings();
 	},
 	setInOutBindings:function(){
+		var _this = this;
 		//setup bindings for adjust / preview:
-		add_adjust_hooks( 'rsd' );			 
+		add_adjust_hooks( 'rsd', function(){
+			//update the resource
+			 _this.applyVideoAdj();
+		});			 
 		$j('#mv_preview_clip').click(function(){			
 			$j('#embed_vid').get(0).stop();
 			$j('#embed_vid').get(0).play();
 		});		
 	},
 	getSetInOut:function( setInt ){
-		return '<strong>Set in-out points</strong>'+
+		return '<strong>' + gM('mv_set_in_out_points') + '</strong>'+
 			'<table border="0" style="background: transparent; width:94%;height:50px;">'+
 				'<tr>' +
 					'<td style="width:50px">'+
@@ -412,7 +418,7 @@ mvClipEdit.prototype = {
 			_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
 			_this.p_rsdObj.insertResource( _this.rObj );
 		});
-		$j('.mv_preview_insert').click(function(){		
+		$j('.mv_preview_insert').click(function(){					
 			_this.applyEdit();
 			//copy over the desc text to the resource object
 			_this.rObj['inlineDesc']= $j('#mv_inline_img_desc').val();
@@ -489,29 +495,25 @@ mvClipEdit.prototype = {
 	},
 	applyVideoAdj:function(){		
 		js_log('applyVideoAdj::');	
+		
 		//be sure to "stop the video (some plugins can't have DOM elements on top of them) 
 		$j('#embed_vid').get(0).stop();	
-		//update video related keys		
+		
+		//update video related keys:		
 		this.rObj['start_time'] = $j('#mv_start_hr_rsd').val();
-		this.rObj['end_time'] = $j('#mv_end_hr_rsd').val();
-		//if the video is "roe" based select the ogg stream		
-		if( this.rObj.roe_url && this.rObj.pSobj.cp.stream_import_key){			
-			var source = $j('#embed_vid').get(0).media_element.getSourceById( this.rObj.pSobj.cp.stream_import_key );
-			if(!source){
-				js_error('Error::could not find source: ' +  this.rObj.pSobj.cp.stream_import_key);					
-			}else{
-				this.rObj['src'] = source.getURI();
-				js_log("g src_key: " + this.rObj.pSobj.cp.stream_import_key + ' src:' + this.rObj['src']) ;
-				return true;
-			}
-		}		
+		this.rObj['end_time'] 	= $j('#mv_end_hr_rsd').val();		
+		
+		//do the local video adjust
+		if(typeof this.rObj.pSobj['applyVideoAdj'] != 'undefined'){			
+			this.rObj.pSobj.applyVideoAdj( this.rObj );
+		}
 	},
 	applyCrop:function(){
 		var _this = this;
 		$j('.mv_apply_crop').hide();
 		$j('.mv_crop_msg').show();
 		$j('#mv_crop_button').removeClass('mv_crop_button_selected').addClass('mv_crop_button_base').attr('title',gM('mv_crop'));
-		js_log('click:turn off');
+		js_log( 'click:turn off' );
 		if(_this.rObj.crop){
 			//empty out and display croped:
 			$j('#'+_this.clip_disp_ct ).empty().html(
@@ -566,7 +568,7 @@ mvClipEdit.prototype = {
 if(typeof mv_lock_vid_updates == 'undefined')
 	mv_lock_vid_updates= false;
 
-function add_adjust_hooks(mvd_id){
+function add_adjust_hooks( mvd_id, adj_callback ){
 	js_log('add_adjust_hooks: ' + mvd_id );	
 	//if options are unset populate functions:
 	//add mouse over end time frame highlight
@@ -699,6 +701,9 @@ function add_adjust_hooks(mvd_id){
 			}
 			//update the clip
 			do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
+			//call the adjustment callback
+			if(typeof adj_callback == 'function')
+				adj_callback();
 		},
 		resize: function(e,ui) {
 			base_offset = ntp2seconds( $j('#track_time_start_'+mvd_id).html());
@@ -743,6 +748,7 @@ function add_adjust_hooks(mvd_id){
 }
 function do_video_time_update(start_time, end_time, mvd_id)	{
 	js_log('do_video_time_update: ' +start_time + end_time);
+	
 	if(mv_lock_vid_updates==false){
 		//update the vid title:
 		$j('#mv_videoPlayerTime').html( start_time + ' to ' + end_time );

@@ -113,18 +113,22 @@ loadGM({
 
 //get a language message 
 function gM( key , args ) {
-	 if ( key in gMsg ) {
-	    if(typeof args == 'object'){	    		 
+	var ms ='';
+	if ( key in gMsg ) {
+		ms = gMsg[ key ];
+		if(typeof args == 'object'){	    		 
 		 	for(var v in args){
-		 		gMsg[key] = gMsg[key].replace('\$'+v, args[v]);
+		 		var rep = '\$'+ ( parseInt(v) + 1 );
+		 		//msg test replace arguments start at 1 insted of zero: 
+		 		ms = ms.replace( rep, args[v]);
 		 	}		 	
-	 	}else if(typeof args =='string'){
-	 		gMsg[key] = gMsg[key].replace(/\$1/, args);
+		}else if(typeof args =='string'){
+			ms = ms.replace(/\$1/, args);
 	 	}
-	 	return gMsg[key];
-	 } else{
-	 	return '[' + key + ']';
-	 }	 
+ 		return ms;
+	} else{
+		return '[' + key + ']';
+	}	 
 }
 
 //gets the loading image:

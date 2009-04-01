@@ -15,8 +15,24 @@ var force_mv_embed_path = false;
 
 var MV_EMBED_VIDEO_HANDLER = true; // if we should use mv_embed for all ogg_hanlder video embeds.
 
-
 //*code should not have to modify anything below*/
+
+
+//copied utility functions from mv_embed (can remove once utility functions are in js core)
+if(typeof gMsg == 'undefined'){
+	gMsg = {};
+}
+if(typeof loadGM == 'undefined'){  
+	function loadGM( msgSet ){
+		for(var i in msgSet){
+			gMsg[ i ] = msgSet[i];
+		}
+	}
+}
+loadGM( { 
+	'add_media_to_page' : "Add Media to this Page"
+});
+
 if( MV_EMBED_VIDEO_HANDLER ){
 	var vidIdList = new Array();
 	addOnloadHook( function(){		
@@ -45,6 +61,7 @@ if( wgAction == 'edit' || wgAction == 'submit' ){
 		imE.style.cursor = 'pointer';	
 		imE.id = 'mv-add_media';		
 		imE.src = getAddMediaPath( 'mv_embed/images/Button_add_media.png' );
+		imE.title = gMsg['add_media_to_page'];
 		
 		var toolbar = document.getElementById("toolbar");
 		if(toolbar)

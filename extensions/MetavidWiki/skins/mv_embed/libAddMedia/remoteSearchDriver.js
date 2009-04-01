@@ -13,9 +13,11 @@ loadGM( { "mv_media_search" : "Media Search",
 		"rsd_results_desc" : "Results ",
 		"rsd_results_next" : "next ",
 		"rsd_results_prev" : "previous ",
+		"rsd_no_results"   : "No search results for <b>$1</b>",
+		
 		"upload" : "Upload",
 		"rsd_layout" : "Layout:",
-		"rsd_resource_edit" : "Edit Resource:",
+		"rsd_resource_edit" : "Edit Resource: $1",
 		"resource_description_page": "Resource Description Page",
 		
 		"cc_title": "Creative Commons",
@@ -369,13 +371,7 @@ remoteSearchDriver.prototype = {
 		//search provider tabs based on "checked" and "enabled" and "combined tab"
 		out+='<div id="rsd_results_container"></div>';
 		
-		$j('#'+ this.target_id ).html( out );
-		//set up bindings
-		$j('#rsd_form').submit(function(){
-			_this.runSearch();
-			//don't submit the form
-			return false;
-		});			
+		$j('#'+ this.target_id ).html( out );	
 		//draw the tabs: 
 		this.drawTabs();
 		//run the default search: 
@@ -404,11 +400,12 @@ remoteSearchDriver.prototype = {
 					$j(this).hide();
 				});
 			}
-		});						
-		//setup binding for search provider check box: 
-		//search button: 
-		$j('#rms_search_button').unbind().click(function(){
+		});								
+		//set form bindings
+		$j('#rsd_form').submit(function(){			
 			_this.runSearch();
+			//don't submit the form
+			return false;
 		});		
 	},
 	doUploadInteface:function(){	
@@ -606,6 +603,7 @@ remoteSearchDriver.prototype = {
 		}
 		
 		if( loading_done ){
+			js_log("checkResultsDone: load done");
 			this.drawOutputResults();
 		}else{			
 			setTimeout( _this.instance_name + '.checkResultsDone()', 30);
@@ -692,13 +690,15 @@ remoteSearchDriver.prototype = {
 		var o='';
 		$j('#rsd_results').empty();
 		//output the results bar / controls
-		_this.setResultBarControl();				 
+		_this.setResultBarControl();
+				
+		var drawResultCount	=0;
 		
 		//output all the results (hide based on tab selection) 
 		for( var cp_id in  this.content_providers ){
 			cp = this.content_providers[ cp_id ];
 			//output results based on display mode & input: 
-			if(typeof cp['sObj'] != 'undefined'){
+			if( typeof cp['sObj'] != 'undefined' ){				
 				$j.each(cp.sObj.resultsObj, function(rInx, rItem){					
 					var disp = ( cp.d ) ? '' : 'display:none;';					
 					
@@ -739,12 +739,23 @@ remoteSearchDriver.prototype = {
 							o+= rItem.desc ;					
 						o+='<div style="clear:both" />';			
 						o+='</div>';						
-					}			
+					}
+					
+					if( cp.d )
+						drawResultCount++;			
 				});	
 			}						
 		}				
 		//put in the new output:  
-		$j('#rsd_results').append( o )		
+		$j('#rsd_results').append( o );
+		
+		js_log( ' drawResultCount :: ' + drawResultCount + ' append: ' + $j('#rsd_q').val() );
+		
+		//remove any old search res
+		$j('#rsd_no_search_res').remove();	
+		if( drawResultCount == 0 )
+			$j('#rsd_results').append( '<span style="padding:10px">' + gM( 'rsd_no_results', $j('#rsd_q').val() ) + '</span>');						
+								
 		//remove rss only display class if present
 		$j('#rsd_results .mv_rss_view_only').remove();
 		this.addResultBindings();
@@ -795,7 +806,7 @@ remoteSearchDriver.prototype = {
 		//append to the top level of model window: 
 		$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
 			'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
-				'<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
+				'<h3 id="rsd_resource_title" style="margin:4px;">' + gM('rsd_resource_edit', rObj.title )  +'</h3>'+
 				'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:35px;left:5px;bottom:0px;'+
 					'width:' + (maxWidth + 25) + 'px;" >' +
 						mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
@@ -852,10 +863,10 @@ remoteSearchDriver.prototype = {
 	loadHQImg:function(rObj, size, target_img_id, callback){		
 		//get the HQ image url: 
 		rObj.pSobj.getImageObj( rObj, size, function( imObj ){			
-			rObj['url'] = imObj.url;
+			rObj['edit_url'] = imObj.url;
 			
-			//update the rObj
-			rObj['org_width'] = imObj.org_width;			
+			js_log("edit url: " + imObj.url);
+			//update the rObj				
 			rObj['width'] = imObj.width;
 			rObj['height'] = imObj.height;
 				
@@ -877,7 +888,7 @@ remoteSearchDriver.prototype = {
 			var img = new Image();		
 			// load the image image: 				
 			$j(img).load(function () { 
-	                 $j('#'+target_img_id).attr('src', imObj.url);                 
+	                 $j('#'+target_img_id).attr('src', imObj.edit_url);                 
 	                 //let the caller know we are done and what size we ended up with: 
 	                 callback();	                 
 				}).error(function () { 

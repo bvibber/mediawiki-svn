@@ -77,11 +77,12 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 	'rsd_list_layout' => 'List layout',
 	#set to ignored for now. Messages does not appear to be final
 	'rsd_results_desc' => 'Results', # do not translate or duplicate this message to other languages
+	'rsd_no_results'   => 'No search results for <b>$1</b>',
 	'rsd_results_next' => 'next',
 	'rsd_results_prev' => 'previous',
 	'upload' => 'Upload',
 	'rsd_layout' => 'Layout:',
-	'rsd_resource_edit' => 'Edit resource:',
+	'rsd_resource_edit' => 'Edit resource: $1',
 	'resource_description_page'=> "Resource Description Page",
 	
 	'cc_title' => 'Creative Commons',
@@ -94,6 +95,8 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 
 	'no_import_by_url' => 'This User or Wiki <b>can not</b> import assets via URLs. <br> 
 							If permissions are correct; you may have to enable $wgAllowCopyUploads, <a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">more info</a>"',
+	#metavidSearch.js	
+	'mv_stream_title' => '$1 $2 to $3', # $stream name $start time to $end time
 
 	# mvClipEdit.js
 	'mv_crop' => 'Crop image',
@@ -101,7 +104,7 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 	'mv_reset_crop' => 'Rest crop',
 	'mv_insert_image_page' => 'Insert into page',
 	'mv_preview_insert' => 'Preview insert',
-	'mv_cancel_image_insert' => 'Cancel image insert',
+	'mv_cancel_image_insert' => 'Cancel insert',
 
 	'sc_fileopts' => 'Clip detail edit',
 	'sc_inoutpoints' => 'Set in-Out points',
@@ -114,7 +117,8 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 	'mv_custom_title' => 'Custom title',
 	'mv_edit_properties' => 'Edit properties',
 	'mv_other_properties' => 'Other properties',
-	'mv_resource_page' => 'Resource page',
+	'mv_resource_page' => 'Resource page',	
+	'mv_set_in_out_points' => 'Set in-out points',
 
 	# mvSequencer.js
 	'menu_clipedit' => 'Edit selected resource',

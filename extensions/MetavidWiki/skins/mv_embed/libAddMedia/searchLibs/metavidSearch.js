@@ -1,6 +1,9 @@
 /*
 * api modes (implementations should call these objects which inherit the mvBaseRemoteSearch  
 */
+loadGM( {
+	"mv_stream_title" : "$1 $2 to $3"
+});
 var metavidSearch = function(initObj) {
 	return this.init(initObj);
 };
@@ -40,6 +43,7 @@ metavidSearch.prototype = {
 		url+='&offset=' + this.cp.offset;				
 		
 		do_request(url, function(data){
+			
 			js_log('mvSearch: got data response'); 
 			//should have an xml rss data object:
 			_this.addRSSData( data , url );
@@ -57,12 +61,20 @@ metavidSearch.prototype = {
 				
 				//transform the title into a wiki_safe title: 			
 				//rObj['titleKey'] = proe.queryKey['stream_name'] + '_' + rObj['start_time'].replace(/:/g,'.') + '_' + rObj['end_time'].replace(/:/g,'.') + '.ogg';
-				rObj['titleKey'] = proe.queryKey['stream_name'] + '_start-' + rObj['start_time'].replace(/:/g,'.') + '_end-' + rObj['end_time'].replace(/:/g,'.') + '.ogg';						
+				rObj['titleKey'] = 	_this.getTitleKey( rObj );			
 			}			
 			//done loading: 
 			_this.loading=0;
 		});
 	},
+	getTitleKey:function( rObj ){
+		return rObj['stream_name'] + '_start-' + rObj['start_time'].replace(/:/g,'.') + '_end-' + rObj['end_time'].replace(/:/g,'.') + '.ogg';	
+	},	
+	getTitle:function( rObj ){
+		var sn = rObj['stream_name'].replace(/_/g, ' ');
+		sn = sn.charAt(0).toUpperCase() + sn.substr(1);		
+		return gM('mv_stream_title', [ sn, rObj.start_time, rObj.end_time ]);	
+	},	
 	//metavid descption tied to public domain license key (government produced content) 
 	getPermissionWikiTag:function( rObj ){
 		return '{{PD-USGov}}';
@@ -103,6 +115,31 @@ metavidSearch.prototype = {
 		//var o= '"' + o + '" by [[' + rObj.person['label'] + ']] '+
 		//		'<ref>[' + rObj.link + ' Metavid Source Page] for ' + rObj.title +'</ref>';		
 		return o;		
+	},
+	//give an updated start and end time updates the title and url
+	applyVideoAdj: function( rObj ){
+		js_log('mv ApplyVideoAdj::');		
+		//update the titleKey: 
+		rObj['titleKey'] = 	this.getTitleKey( rObj );	
+		
+		//update the title: 
+		rObj['title'] = this.getTitle( rObj );	
+		
+		//update the interface: 
+		js_log('update title to: ' + rObj['title']);
+		$j('#rsd_resource_title').html( gM('rsd_resource_edit', rObj['title'] ) );
+		
+		//if the video is "roe" based select the ogg stream		
+		if( rObj.roe_url && rObj.pSobj.cp.stream_import_key){			
+			var source = $j('#embed_vid').get(0).media_element.getSourceById( rObj.pSobj.cp.stream_import_key );
+			if(!source){
+				js_error('Error::could not find source: ' +  rObj.pSobj.cp.stream_import_key);					
+			}else{
+				rObj['src'] = source.getURI();
+				js_log("g src_key: " + rObj.pSobj.cp.stream_import_key + ' src:' + rObj['src']) ;
+				return true;
+			}
+		}	
 	},
 	getEmbedHTML:function( rObj , options ){
 		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';

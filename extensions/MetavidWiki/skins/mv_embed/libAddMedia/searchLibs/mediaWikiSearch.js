@@ -19,7 +19,7 @@ mediaWikiSearch.prototype = {
 		this.parent_getSearchResults();
 		
 		var _this = this;
-		this.loading=true;
+		this.loading = true;
 		js_log('f:getSearchResults for:' + $j('#rsd_q').val() );		
 		//do two queries against the Image / File / MVD namespace:
 		 								
@@ -33,7 +33,7 @@ mediaWikiSearch.prototype = {
 			'gsrlimit':  this.cp.limit,
 			'gsroffset': this.cp.offset,
 			'prop':'imageinfo|revisions|categories',
-			'iiprop':'url|mime',
+			'iiprop':'url|mime|size',
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
 			'rvprop':'content'
 		};				
@@ -47,6 +47,7 @@ mediaWikiSearch.prototype = {
 			'data':reqObj, 
 			'url':this.cp.api_url 
 			}, function(data){
+				js_log('mediaWikiSearch: got data response'); 
 				//parse the return data
 				_this.addResults( data);
 				//_this.checkRequestDone(); //only need if we do two queries one for title one for text
@@ -86,6 +87,8 @@ mediaWikiSearch.prototype = {
 					'poster'	 : page.imageinfo[0].thumburl,
 					'thumbwidth' : page.imageinfo[0].thumbwidth,
 					'thumbheight': page.imageinfo[0].thumbheight,
+					'orgwidth'	 : page.imageinfo[0].width,
+					'orgheight'	 : page.imageinfo[0].height,
 					'mime'		 : page.imageinfo[0].mime,
 					'src'		 : page.imageinfo[0].url,
 					'desc'		 : page.revisions[0]['*'],		
@@ -119,11 +122,36 @@ mediaWikiSearch.prototype = {
 			this.loading = 0;
 		}
 	},	
-	getImageObj:function( rObj, size, callback ){			
+	getImageObj:function( rObj, size, callback ){		
+		debugger;	
 		if( rObj.mime=='application/ogg' )
 			return callback( {'url':rObj.src, 'poster' : rObj.url } );
-	
-		//build the query to get the req size image: 
+		
+		//we can just use direct request urls.. (check if png or jpeg (wont scale above   orgwidth
+		var baseImgUrl = this.cp.api_url.replace('api.php', 'thumb.php'); 
+		if ( rObj.mime=='image/jpeg' || rObj.mime=='image/png' ){
+			//if requested size is greater than org size return reduced size obj: 
+			if( size.width > rObj.orgwidth){
+				callback({ 
+						'url'	: baseImgUrl + '?f=' + rObj.titleKey + '&w='+ rObj.orgwidth,
+						'width'	: rObj.orgwidth,
+						'height': rObj.orgheight
+				}); 
+				return false;
+			}			
+		}
+		//assuming svg or size is in range: give them requeted size
+		callback({ 
+				'url'	: baseImgUrl + '?f=' + rObj.titleKey + '&w='+ size.width,
+				'width'	: size.width,
+				'height': Math.round( ( rObj.orgheight / rObj.orgwidth)*size.width ) 
+		}); 
+		return false;
+		
+		
+		//this is depreciated (I did not know we had thumb.php) 
+		// (could re-enable if api hit + direct image is less resource intensive than image server)
+		/*
 		var reqObj = {
 			'action':'query',
 			'format':'json',
@@ -159,6 +187,7 @@ mediaWikiSearch.prototype = {
 				js_log('getImageObj: get: ' + size.width + ' got url:' + imObj.url);			
 				callback( imObj ); 
 		});
+		*/
 	},
 	//the insert image function   
 	insertImage:function( cEdit ){
