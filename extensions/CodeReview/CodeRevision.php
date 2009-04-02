@@ -179,21 +179,58 @@ class CodeRevision {
 			foreach ( $this->mPaths as $path ) {
 				$data[] = array(
 					'cp_repo_id' => $this->mRepoId,
-					'cp_rev_id' => $this->mId,
-					'cp_path' => $path['path'],
-					'cp_action' => $path['action'] );
+					'cp_rev_id'  => $this->mId,
+					'cp_path'    => $path['path'],
+					'cp_action'  => $path['action'] );
 			}
 			$dbw->insert( 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
 		}
-		// Update code relations (One-digit revs skipped due to some false-positives)
+		// Update bug references table...
+		$affectedBugs = array();
+		if ( preg_match_all( '/\bbug (\d+)\b/', $this->mMessage, $m ) ) {
+			$data = array();
+			foreach( $m[1] as $bug ) {
+				$data[] = array(
+					'cb_repo_id' => $this->mRepoId,
+					'cb_from'    => $this->mId,
+					'cb_bug'     => $bug
+				);
+				$affectedBugs[] = intval($bug);
+			}
+			$dbw->insert( 'code_bugs', $data, __METHOD__, array( 'IGNORE' ) );
+		}
+		// Get the revisions this commit references...
 		$affectedRevs = array();
 		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
-			$data = array();
 			foreach( $m[1] as $rev ) {
+				$affectedRevs[] = intval($rev);
+			}
+		}
+		// Also, get previous revisions that have bugs in common...
+		if( count($affectedBugs) ) {
+			$res = $dbw->select( 'code_bugs',
+				array( 'cb_from' ),
+				array(
+					'cb_repo_id' => $this->mRepoId,
+					'cb_bug'     => $affectedBugs,
+					'cb_from < '.intval($this->mId), # just in case
+				),
+				__METHOD__,
+				array( 'USE INDEX' => 'cb_repo_id' )
+			);
+			foreach( $res as $row ) {
+				$affectedRevs[] = intval($row->cb_from);
+			}
+		}
+		// Filter any duplicate revisions
+		if( count($affectedRevs) ) {
+			$data = array();
+			$affectedRevs = array_unique($affectedRevs);
+			foreach( $affectedRevs as $rev ) {
 				$data[] = array(
 					'cf_repo_id' => $this->mRepoId,
 					'cf_from'    => $this->mId,
-					'cf_to'      => intval($rev)
+					'cf_to'      => $rev
 				);
 				$affectedRevs[] = intval($rev);
 			}
@@ -210,6 +247,7 @@ class CodeRevision {
 				array(
 					'cr_repo_id' => $this->mRepoId,
 					'cr_id'      => $affectedRevs,
+					'cr_id < '.intval($this->mId), # just in case
 					// No sense in notifying if it's the same person
 					'cr_author != '.$dbw->addQuotes($this->mAuthor)
 				),

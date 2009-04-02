@@ -129,6 +129,19 @@ CREATE TABLE /*$wgDBprefix*/code_relations (
   key (cf_repo_id, cf_to, cf_from)
 ) /*$wgDBTableOptions*/;
 
+-- And for our commenting system...
+-- To specify bug relationships...
+CREATE TABLE /*$wgDBprefix*/code_bugs (
+  cb_repo_id int not null,
+  -- -> cr_id
+  cb_from int not null,
+  -- -> bug ID number
+  cb_bug int not null,
+
+  primary key (cb_repo_id, cb_from, cb_bug),
+  key (cb_repo_id, cb_bug, cb_from)
+) /*$wgDBTableOptions*/;
+
 -- Freetext tagging for revisions
 CREATE TABLE /*$wgDBprefix*/code_tags (
   ct_repo_id int not null,
