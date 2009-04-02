@@ -63,6 +63,8 @@ if ($from =~ /^bugzilla-daemon/)
 	} else {
 		$user = 'N/A' # shouldn't be possible'
 	}
+	
+	my @changed_fields = split /\s+/, $mail->header( 'X-Bugzilla-Changed-Fields' );
 
 
 	# Check if this is a dependency e-mail. If so, ignore it.
@@ -110,10 +112,12 @@ if ($from =~ /^bugzilla-daemon/)
 				my $status = $mail->header( 'X-Bugzilla-Status' );
 				if ($status eq 'NEW') {
 					$st = "\00303(mod)\003";
-				} elsif ($status eq 'REOPENED') {
+				} elsif ($status eq 'REOPENED' && grep {$_ eq 'Status'} @changed_fields) {
 					$st = "\00304(REOPENED)\003";
-				} else {
+				} elsif ( grep {$_ eq 'Status'} @changed_fields ) {
 					$st = "\00303($status)\003";
+				} else {
+					$st = "\00303(mod)\003";
 				}
 
 				if ($st eq "\00303(RESOLVED)\003" && $body =~ /Resolution\|\s+\|(\w+)/m) {
