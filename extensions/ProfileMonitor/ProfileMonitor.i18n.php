@@ -627,9 +627,20 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'profiling' => 'Optymalizacja danych',
+	'profiling-desc' => '[[Special:Profiling|Strona specjalna]] do wyszukiwania i kontroli optymalizacji danych',
+	'profiling-process' => 'Polecenie',
+	'profiling-wildcard' => 'Użyj znaków wieloznacznych',
 	'profiling-ok' => 'OK',
+	'profiling-data' => 'Dane optymalizacyjne o „$1”',
+	'profiling-data-process' => 'Proces',
+	'profiling-data-count' => 'Liczba',
+	'profiling-data-time' => 'Czas (łącznie)',
+	'profiling-data-average' => 'Czas (średni)',
+	'profiling-no-data' => 'Nie znaleziono pasujących danych.',
 );
 
 /** Piedmontese (Piemontèis)

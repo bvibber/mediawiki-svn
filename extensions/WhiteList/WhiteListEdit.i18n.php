@@ -1125,6 +1125,20 @@ $messages['grc'] = array(
 	'whitelistnever' => 'οὔποτε',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'mywhitelistpages' => 'Αἱ δέλτοι μου',
+	'whitelisttablemodifyall' => 'Ἅπασαι',
+	'whitelisttablemodifynone' => 'Οὐδέν',
+	'whitelisttableedit' => 'Μεταγράφειν',
+	'whitelisttableremove' => 'Άφαιρεῖν',
+	'whitelistnewtablereview' => 'Éπισκόπησις',
+	'whitelistnever' => 'οὔποτε',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

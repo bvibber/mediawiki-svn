@@ -42,13 +42,6 @@ Do not translate or change tag names, or link anchors.',
 	'right-emergencydesysop' => 'This is a user right description, as shown on [[Special:ListGroupRights]], e.g.',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'emergencydesysop-submit' => 'Oigeta',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda
@@ -637,6 +630,20 @@ $messages['tl'] = array(
 	'emergencydesysop-blocked' => 'Hindi mo mapupuntahan ang pahinang ito habang hinahadlangan',
 	'emergencydesysop-noright' => 'Wala kang sapat na mga kapahintulutan upang mapuntahan ang pahinang ito',
 	'right-emergencydesysop' => 'Nagawang tanggalin na mula sa pagiging tagapagpaandar ng sistema ang isa pang tagagamit, pareho',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'emergencydesysop-submit' => 'Oigeta',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'emergencydesysop-nogroups' => 'Không có',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

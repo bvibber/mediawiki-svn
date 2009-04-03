@@ -497,6 +497,13 @@ Teña en conta que as expresións non deberían ser moi curtas ou moi comúns.',
 	'right-spamregex' => 'Bloquear as frases de spam mediante [[Special:SpamRegex]]',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'spamregex-summary-log' => '(Σύνοψις)',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

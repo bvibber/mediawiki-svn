@@ -498,6 +498,7 @@ $messages['grc'] = array(
 	'importusers-uploadfile' => 'Ἐπιφορτίζειν ἀρχεῖον',
 	'importusers-form-caption' => 'Ἐντιθέναι CSV-ἀρχεῖον (UTF-8)',
 	'importusers-form-button' => 'Εἰσάγειν',
+	'importusers-log-summary' => 'Σύνοψις',
 	'importusers-log-summary-all' => 'Ἅπασαι',
 	'importusers-password' => 'σύνθημα',
 	'importusers-email' => 'ἠλ-ταχυδρομεῖον',

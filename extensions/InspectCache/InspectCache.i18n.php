@@ -193,6 +193,13 @@ $messages['ee'] = array(
 	'inspectcache-delete' => 'Tutui',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'inspectcache-ok' => 'Εντάξει',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

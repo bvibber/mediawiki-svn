@@ -213,6 +213,31 @@ Nevhodné soubory budou okmažitě smazány, vizte [[{{MediaWiki:Multipleupload-
 	'multiupload-toolbox' => 'Nahrát více souborů',
 );
 
+/** Danish (Dansk)
+ * @author BabelFrode
+ * @author Byrial
+ */
+$messages['da'] = array(
+	'multipleupload' => 'Læg filer op',
+	'multipleupload-desc' => 'Tillader brugere at [[Special:MultipleUpload|lægge flere filer op samtidig]]',
+	'multipleupload-ignoreallwarnings' => "Overhør '''alle advarsler''' og gem filerne.",
+	'multipleupload-saveallfiles' => 'Gem alle filer',
+	'multipleupload-addresswarnings' => 'Vis hensyn overfor enhver advarsel før du lægger filerne op igen.',
+	'multipleupload-page' => '{{ns:project}}:Retningslinjer for sletning af filer',
+	'multipleupload-text' => "Læg flere filer op her.
+
+Vælg \"Gennemse...\" og vælg hver fil, du ønsker skal lægges op.
+Du kan lægge mellem 1 og \$1 filer op ad gangen.
+
+Du kan indsætte et valgfrit '''Målnavn''' og en '''Beskrivelse/kilde''', som beskriver din fil.
+
+Upassende filer bliver slettet øjeblikkeligt - se [[{{MediaWiki:Multipleupload-page}}|Retningslinjer for sletning af filer]].",
+	'multiupload-fileuploaded' => 'Filen er lagt op.',
+	'multiupload-toolbox' => 'Læg flere filer op.',
+	'multiupload-no-files' => 'Vælg mindst én fil du vil lægge op.',
+	'multiupload-blank' => 'Ingen filer valgt',
+);
+
 /** German (Deutsch)
  * @author Purodha
  * @author Raimond Spekking
@@ -1035,6 +1060,8 @@ Pode opcionalmente introduzir um '''Nome de ficheiro destino''' e fornecer um ''
 Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Multipleupload-page}}|política de eliminação de ficheiros]].",
 	'multiupload-fileuploaded' => 'Ficheiro carregado.',
 	'multiupload-toolbox' => 'Carregar múltiplos ficheiros',
+	'multiupload-no-files' => 'Por favor, selecione pelo menos um ficheiro a carregar',
+	'multiupload-blank' => 'Nenhum ficheiro selecionado',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

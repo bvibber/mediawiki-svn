@@ -142,3 +142,8 @@ $aliases['tl'] = array(
 	'CloseWiki' => array( 'Isara ang wiki' ),
 );
 
+/** Veps (Vepsan kel') */
+$aliases['vep'] = array(
+	'CloseWiki' => array( 'SaubataWiki' ),
+);
+

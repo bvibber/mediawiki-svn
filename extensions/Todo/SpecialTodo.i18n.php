@@ -1516,7 +1516,7 @@ $messages['vi'] = array(
 	'todo-no-item' => 'Không có việc cần làm.',
 	'todo-list-for' => 'Danh sách việc cần làm của $1',
 	'todo-list-change' => 'Thay đổi',
-	'todo-list-cancel' => 'Bãi bỏ',
+	'todo-list-cancel' => 'Hủy bỏ',
 	'todo-form-details' => 'Chi tiết:',
 );
 

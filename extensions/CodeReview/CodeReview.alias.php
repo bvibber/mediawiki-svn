@@ -161,3 +161,8 @@ $aliases['tl'] = array(
 	'RepoAdmin' => array( 'Tagapangasiwa ng repositoryo' ),
 );
 
+/** Veps (Vepsan kel') */
+$aliases['vep'] = array(
+	'Code' => array( 'Kod' ),
+);
+

@@ -42,6 +42,13 @@ $messages['arz'] = array(
 	'jskit-desc' => 'يدمج مجموعة أدوات جافاسكريبت إلى صفحة ويكى',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'jskit-desc' => 'Інтэгруе інструмэнты js-kit ў старонкі {{GRAMMAR:родны|{{SITENAME}}}}',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

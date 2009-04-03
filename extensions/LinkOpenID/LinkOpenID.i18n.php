@@ -65,6 +65,19 @@ $messages['arz'] = array(
 	'linkopenid-prefstext-v2url' => 'مسار الخادم للهوية المفتوحة النسخة 2:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'linkopenid-desc' => 'Дазваляе ўдзельнікам зьвязваць іх рахункі з вонкавым OpenID',
+	'linkopenid-prefstext-pre' => 'Калі Вы маеце OpenID у вонкавым сэрвісе, Вы можаце пазначаць яго тут.
+Гэта дазволіць Вам таксама выкарыстоўваць старонку удзельніка як OpenID.',
+	'linkopenid-prefstext-openid' => 'Ваш OpenID:',
+	'linkopenid-prefstext-v1url' => 'URL-адрас сэрвэра OpenID вэрсіі 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL-адрас сэрвэра OpenID вэрсіі 2:',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -288,9 +301,9 @@ Dette lèt deg nytta brukarsida di som ein OpenID.',
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'linkopenid-desc' => 'Permet als utilizaires de ligar lor comptador amb un OpenID extèrn',
-	'linkopenid-prefstext-pre' => "S'avètz un OpenID d'un provesidor extèrn, o podètz especificar aicí.
-Aquò vos permet tanben d'utilizar vòstra page d'utilizaire coma OpenID.",
+	'linkopenid-desc' => 'Permet als utilizaires de ligar lor comptador amb un OpenID extèrne',
+	'linkopenid-prefstext-pre' => "S'avètz un OpenID d'un provesidor extèrne, o podètz especificar aicí.
+Aquò vos permet tanben d'utilizar vòstra pagina d'utilizaire coma OpenID.",
 	'linkopenid-prefstext-openid' => 'Vòstre OpenID :',
 	'linkopenid-prefstext-v1url' => 'URL del servidor per OpenID version 1.1 :',
 	'linkopenid-prefstext-v2url' => 'URL del servidor per OpenID version 2 :',

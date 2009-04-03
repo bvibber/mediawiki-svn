@@ -503,6 +503,7 @@ $3 użytkownik $4 $5.',
 	'categorywatch-catmoveout' => 'przeniósł $1 z kategorii $2 do $3',
 	'categorywatch-catadd' => 'dodał $1 do kategorii $2',
 	'categorywatch-catsub' => 'usunął $1 z kategorii $2',
+	'categorywatch-autocat' => 'Automatycznie obserwowane przez $1',
 );
 
 /** Portuguese (Português)

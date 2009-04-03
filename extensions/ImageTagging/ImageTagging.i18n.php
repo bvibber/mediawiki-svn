@@ -1520,6 +1520,7 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -1538,7 +1539,7 @@ $messages['vi'] = array(
 	'imagetagging-removetag' => 'bỏ thẻ',
 	'imagetagging-done-button' => 'Đã gắn thẻ xong',
 	'imagetagging-tag-button' => 'Thẻ',
-	'imagetagging-tagcancel-button' => 'Bãi bỏ',
+	'imagetagging-tagcancel-button' => 'Hủy bỏ',
 	'imagetagging-tagging-instructions' => 'Nhấn vào người hoặc vật trong hình để gắn thẻ cho chúng.',
 	'imagetagging-addingtag' => 'Đang thêm thẻ…',
 	'imagetagging-removingtag' => 'Đang bỏ thẻ…',

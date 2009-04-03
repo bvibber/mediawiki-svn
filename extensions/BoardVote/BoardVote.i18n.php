@@ -6967,7 +6967,7 @@ $1 có dữ liệu mã hóa.</p>',
 	'boardvote_dumplink' => 'Nhấn vào đây',
 	'boardvote_submit' => 'Đồng ý',
 	'boardvote_strike' => 'Gạch bỏ',
-	'boardvote_unstrike' => 'Không gạch bỏ',
+	'boardvote_unstrike' => 'Phục hồi',
 	'boardvote_needadmin' => 'Chỉ có viên chức bầu cử mới có thể thực hiện được tác vụ này.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Bầu cử Ban Quản trị Wikimedia</a>:
 Bỏ phiếu cho đến ngày 22 tháng 6',

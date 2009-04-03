@@ -577,24 +577,33 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
+	'contributionhistory' => 'Ιστορικό συνεισφορών',
 	'contrib-hist-name' => 'Όνομα',
 	'contrib-hist-date' => 'Ώρα και ημερομηνία',
 	'contrib-hist-amount' => 'Ποσόν',
 	'contrib-hist-next' => 'Προηγούμενες δωρεές',
 	'contrib-hist-previous' => 'Νεότερες δωρεές',
 	'contrib-hist-anonymous' => 'Ανώνυμος',
+	'contributionstatistics' => 'Στατιστικά συνεισφορών',
 	'contribstats-day' => 'Ημέρα',
 	'contribstats-month' => 'Μήνας',
 	'contribstats-currency' => 'Νόμισμα',
 	'contribstats-amount' => 'Ποσόν (USD)',
 	'contribstats-contributions' => 'Εισφορές',
 	'contribstats-total' => 'Σύνολο (USD)',
+	'contribstats-avg' => 'Μέσος Όρος (USD)',
 	'contribstats-percentage-ytd' => 'Ποσοστό (YTD)',
 	'contribstats-total-ytd' => 'Σύνολο (YTD)',
+	'contribstats-value-exactly' => 'Ακριβώς $1',
+	'contribstats-value-under' => 'Κάτω από $1',
+	'contribstats-value-from' => 'Από $1 έως $2',
+	'contribstats-value-over' => 'Πάνω από $1',
 	'fundraiserstats-date' => 'Ημερομηνία',
 	'fundraiserstats-contributions' => 'Εισφορές',
+	'fundraiserstats-total' => 'Σύνολο (USD)',
 );
 
 /** Esperanto (Esperanto)

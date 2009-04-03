@@ -528,6 +528,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'recordadmin-submit' => 'Ὑποβάλλειν',
+	'recordadmin-buttoncreate' => 'Ποιεῖν',
 	'recordadmin-buttonsave' => 'Γράφειν',
 );
 
@@ -1143,6 +1144,13 @@ $messages['ru'] = array(
 	'recordadmin-submit' => 'Отправить',
 	'recordadmin-buttonsearch' => 'Найти',
 	'recordadmin-buttoncreate' => 'Создать',
+);
+
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'recordadmin-invert' => 'Sve osim odabranog',
 );
 
 /** Slovak (Slovenčina)

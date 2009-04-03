@@ -58,15 +58,6 @@ $messages['qqq'] = array(
 * $3 is "@apps.messenger"',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'imstatus_max' => 'maks.',
-	'imstatus_min' => 'min.',
-	'imstatus_or' => 'vai',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -412,10 +403,12 @@ O ID que precisa proporcionar son os números e letras entre "$2" e "$3".',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'imstatus_syntax' => 'Σύνταξις',
+	'imstatus_default' => 'Προκαθωρισμένη',
 	'imstatus_max' => 'μέγ',
 	'imstatus_min' => 'ἐλάχ',
 	'imstatus_or' => 'ἢ',
@@ -1045,6 +1038,15 @@ Ang id na dapat mong ibigay ay ang mga bilang at mga titik na nasa pagitan ng "$
 	'imstatus_skype_nbstyle' => 'Paunawa: Kapag pinili mo ang isang estilong isa rin galaw, ang napili mong galaw ay madaraig (mapapangingibabawan) ng galaw na tumutugma sa iyong piniling estilo.',
 	'imstatus_xfire_size' => 'sukat ng pindutan, mula $1 (pinakamalaki) hanggang $2 (pinakamaliit).',
 	'imstatus_yahoo_style' => 'estilo ng pindutan, mula $1 (pinakamaliit) hanggang $2 (pinakamalaki), para sa "liham na may tinig" (\'\'voicemail\'\') ang $3 at $4.',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'imstatus_max' => 'maks.',
+	'imstatus_min' => 'min.',
+	'imstatus_or' => 'vai',
 );
 
 /** Vietnamese (Tiếng Việt)

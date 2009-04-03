@@ -147,3 +147,8 @@ $aliases['tl'] = array(
 	'ViewAPC' => array( 'Tingnan ang APC' ),
 );
 
+/** Veps (Vepsan kel') */
+$aliases['vep'] = array(
+	'ViewAPC' => array( 'KactaAPC' ),
+);
+

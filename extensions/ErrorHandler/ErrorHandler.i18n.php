@@ -56,21 +56,6 @@ $messages['qqq'] = array(
 	'errorhandler-trace-line-internal' => '* $1: function name',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'errorhandler-errors' => 'Petused:',
-	'errorhandler-error-fatal' => 'Luja petuz',
-	'errorhandler-error-warning' => 'Varutuz',
-	'errorhandler-error-parse' => 'Parseran petuz',
-	'errorhandler-error-notice' => 'Homaičend',
-	'errorhandler-error-user-error' => 'Kävutajan petuz',
-	'errorhandler-error-user-warning' => 'Kävutajan varutuz',
-	'errorhandler-error-user-notice' => 'Kävutajan homaičend',
-	'errorhandler-error-strict' => 'Tarkad standartad',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -226,6 +211,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'errorhandler-errors' => 'Σφάλματα:',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (γραμμή <b>$4</b>)',
 );
 
 /** Esperanto (Esperanto)
@@ -941,6 +927,21 @@ $messages['tl'] = array(
 	'errorhandler-trace' => 'bakas:',
 	'errorhandler-trace-line' => '$1 (guhit na $2): $3',
 	'errorhandler-trace-line-internal' => '[panloob na tungkulin]: $1',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'errorhandler-errors' => 'Petused:',
+	'errorhandler-error-fatal' => 'Luja petuz',
+	'errorhandler-error-warning' => 'Varutuz',
+	'errorhandler-error-parse' => 'Parseran petuz',
+	'errorhandler-error-notice' => 'Homaičend',
+	'errorhandler-error-user-error' => 'Kävutajan petuz',
+	'errorhandler-error-user-warning' => 'Kävutajan varutuz',
+	'errorhandler-error-user-notice' => 'Kävutajan homaičend',
+	'errorhandler-error-strict' => 'Tarkad standartad',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

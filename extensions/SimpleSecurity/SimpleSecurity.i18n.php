@@ -155,6 +155,13 @@ $messages['dsb'] = array(
 	'security-type-namespace' => 'mjenjowy rum',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'security-type-category' => 'κατηγορία',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -283,6 +290,27 @@ $messages['hsb'] = array(
 	'security-unchain' => 'Akcije jednotliwje změnić',
 	'security-type-category' => 'kategorija',
 	'security-type-namespace' => 'mjenowy rum',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'security' => 'Registro de securitate',
+	'security-desc' => 'Extende le protection de paginas MediaWiki pro permitter restringer le vista del contento del paginas',
+	'security-logpage' => 'Registro de securitate',
+	'security-logpagetext' => 'Isto es un registro de actiones blocate per le [http://www.mediawiki.org/wiki/Extension:SimpleSecurity extension SimpleSecurity].',
+	'badaccess-read' => 'Attention: "$1" es referentiate ci, ma tu non ha permissiones sufficiente pro acceder a illo.',
+	'security-info' => 'Iste pagina es subjecte a $1',
+	'security-info-toggle' => 'restrictiones de securitate',
+	'security-inforestrict' => '$1 es restringite a $2',
+	'security-desc-LS' => "''(se applica proque iste pagina es in le '''$2 $1''')''",
+	'security-desc-PR' => "''(definite con le '''scheda de protection''')''",
+	'security-infosysops' => "Nulle restriction es in vigor proque tu es membro del gruppo '''administratores'''",
+	'security-manygroups' => 'gruppos $1 e $2',
+	'security-unchain' => 'Modificar actiones individualmente',
+	'security-type-category' => 'categoria',
+	'security-type-namespace' => 'spatio de nomines',
 );
 
 /** Japanese (日本語)
@@ -431,8 +459,12 @@ $messages['pl'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'security' => 'Registo de segurança',
+	'security-logpage' => 'Registo de segurança',
 	'security-info' => 'Há $1 nesta página',
+	'security-info-toggle' => 'restrições de segurança',
 	'security-manygroups' => 'grupos $1 e $2',
+	'security-unchain' => 'Modificar ações individualmente',
 	'security-type-category' => 'categoria',
 	'security-type-namespace' => 'domínio',
 );

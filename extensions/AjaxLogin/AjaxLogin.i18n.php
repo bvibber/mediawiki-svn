@@ -249,6 +249,18 @@ Poiriatz perdre vòstras modificacions se quitatz aquesta pagina ara.',
 	'ajaxlogin-create' => 'Crear un compte',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'ajaxlogin-desc' => 'Dynamiczne pole, które pozwala użytkownikom na zalogowanie się oraz przypomnienie hasła',
+	'ajaxLogin1' => 'Aby się zalogować, należy wprowadzić nowe hasło.
+Obecne edytowana strona zostanie zmieniana co może spowodować utratę wprowadzonych teraz zmian.',
+	'ajaxLogin2' => 'Czy jesteś pewien?
+Możesz stracić zmiany które zrobiłeś na tej stronie, jeśli ją teraz opuścisz.',
+	'ajaxlogin-create' => 'Załóż konto',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -257,9 +269,15 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
+	'ajaxlogin-desc' => 'Caixa dinâmica que permite que os utilizadores se autentiquem e memorizem a palavra-passe',
+	'ajaxLogin1' => 'Para completar a sua autenticação, terá de introduzir uma nova palavra-chave.
+Isto leva-lo-á a abandonar esta página de edição e poderá perder a sua edição corrente.',
+	'ajaxLogin2' => 'Tem a certeza?
+Poderá perder as suas alterações a esta página se abandonar esta página agora.',
 	'ajaxlogin-create' => 'Criar uma conta',
 );
 

@@ -137,3 +137,8 @@ $aliases['tl'] = array(
 	'Call' => array( 'Tawagin' ),
 );
 
+/** Veps (Vepsan kel') */
+$aliases['vep'] = array(
+	'Call' => array( 'SätaPagin' ),
+);
+

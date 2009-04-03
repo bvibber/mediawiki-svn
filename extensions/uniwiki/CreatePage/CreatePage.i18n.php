@@ -164,6 +164,13 @@ By ty rady eksistěrujucy bok wobźěłaś?',
 	'createpage-badtitle' => '"$1" njedajo se ako titel boka wužywaś.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'createpage_submitbutton' => 'Υποβολή',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

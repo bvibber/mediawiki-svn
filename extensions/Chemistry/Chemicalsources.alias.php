@@ -117,3 +117,8 @@ $aliases['tl'] = array(
 	'ChemicalSources' => array( 'Mga pinagmulang makakimika' ),
 );
 
+/** Veps (Vepsan kel') */
+$aliases['vep'] = array(
+	'ChemicalSources' => array( 'HimižedPurtked' ),
+);
+

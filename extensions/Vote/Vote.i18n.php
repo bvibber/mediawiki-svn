@@ -62,17 +62,6 @@ $messages['niu'] = array(
 	'vote-login-link' => 'hu ki loto',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'vote-view-results' => "Nähta rezul'tatad",
-	'vote-results' => "Änestusen rezul'tatad",
-	'vote-results-choice' => 'Valičend',
-	'vote-results-count' => 'Lugumär',
-	'vote-login-link' => 'kirjutadas sistemha',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -411,6 +400,7 @@ riddler|Riddler',
  */
 $messages['el'] = array(
 	'vote' => 'Ψηφοφορία',
+	'vote-desc' => 'Παρέχει δυνατότητες απλών δημοσκοπήσεων',
 	'vote-caption' => 'Η επιλογή σας:',
 	'vote-submit' => 'Ψηφοφορία',
 	'vote-registered' => 'Η ψήφος σας έχει προσμετρηθεί.',
@@ -1567,6 +1557,17 @@ $messages['uk'] = array(
 	'vote-login' => 'Ви повинні $1 для голосування.',
 	'vote-login-link' => 'вхід до системи',
 	'vote-invalid-choice' => 'Ви можете обрати один з доступних варіантів.',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'vote-view-results' => "Nähta rezul'tatad",
+	'vote-results' => "Änestusen rezul'tatad",
+	'vote-results-choice' => 'Valičend',
+	'vote-results-count' => 'Lugumär',
+	'vote-login-link' => 'kirjutadas sistemha',
 );
 
 /** Vietnamese (Tiếng Việt)

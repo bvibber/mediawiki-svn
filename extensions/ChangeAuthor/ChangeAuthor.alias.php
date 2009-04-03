@@ -172,3 +172,8 @@ $aliases['vec'] = array(
 	'ChangeAuthor' => array( 'CanbiaAutor' ),
 );
 
+/** Veps (Vepsan kel') */
+$aliases['vep'] = array(
+	'ChangeAuthor' => array( 'VajehtadaAvtorad' ),
+);
+

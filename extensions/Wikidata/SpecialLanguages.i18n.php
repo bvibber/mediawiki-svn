@@ -2498,7 +2498,7 @@ Neniu kopia operacio okazis.',
  */
 $wdMessages['es'] = array(
 	'languages' => 'Wikidata: Gestor de lenguas',
-	'langman-desc' => 'Agregue y cambie configuraciones de lenguaje con [[Special:Lenguajes]]',
+	'langman-desc' => 'Agregue y cambie configuraciones de lenguaje con [[Special:Languages]]',
 	'langman_title' => 'Gestor de lenguas',
 	'langman_not_allowed' => 'Usted no tiene permiso para cambiar la configuración de lenguaje.',
 	'langman_header' => 'Escriba debajo el código de lenguaje y su nombre en inglés:',
@@ -3499,6 +3499,7 @@ $wdMessages['grc'] = array(
 	'langman_iso639-3' => 'Κῶδιξ ISO 639-3:',
 	'langman_iso639-2' => 'Κῶδιξ ISO 639-2:',
 	'langman_field_optional' => '(Προαιρετικόν)',
+	'langman_addlang' => 'Προστιθέναι γλῶττα',
 	'datasearch_language' => 'Γλῶττα:',
 	'ow_exporttsv_languages' => 'Γλῶτται:',
 	'ow_save' => 'Γράφειν',
@@ -3507,14 +3508,23 @@ $wdMessages['grc'] = array(
 	'ow_transaction_rollback_button' => 'Ἀναστροφή',
 	'ow_transaction_rollback_header' => 'Ἀναστροφή',
 	'ow_transaction_remove' => 'Άφαιρεῖν',
+	'ow_transaction_summary' => 'Σύνοψις',
 	'ow_dm_OK' => 'εἶεν',
 	'ow_ClassAttributeType' => 'Τύπος',
 	'ow_Language' => 'Γλῶττα',
+	'ow_OptionAttribute' => 'Ἰδιότης',
 	'ow_OptionAttributeOptions' => 'Ἐπιλογαί',
 	'ow_Remove' => 'Άφαιρεῖν',
 	'ow_Source' => 'Πηγή',
+	'ow_TextAttribute' => 'Ἰδιότης',
+	'ow_TranslatedTextAttribute' => 'Ἰδιότης',
+	'ow_LinkAttribute' => 'Ἰδιότης',
 	'ow_User' => 'Χρώμενος',
+	'ow_Property' => 'Ἰδιότης',
 	'ow_Value' => 'Τιμή',
+	'ow_show' => 'Ἐμφανίζειν',
+	'ow_upload' => 'Ἐπιφόρτισις',
+	'ow_create' => 'Ποιεῖν',
 	'ow_suggest_previous' => 'Προηγουμέναι',
 	'ow_suggest_next' => 'Ἑπομέναι',
 );
@@ -4251,6 +4261,7 @@ Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
  */
 $wdMessages['ia'] = array(
 	'languages' => 'Wikidatos: Gestion de linguas',
+	'langman-desc' => 'Adder e cambiar configurationes de linguas con [[Special:Languages]]',
 	'langman_title' => 'Gestion de linguas',
 	'langman_not_allowed' => 'Tu non ha le permission de alterar le configuration de linguas.',
 	'langman_header' => 'Entra le codice del lingua e su nomine in anglese:',
@@ -4472,6 +4483,7 @@ Per favor contacta le operator o administrator del servitor.',
 	'ow_suggest_clear' => 'Vacuar',
 	'ow_nstab_definedmeaning' => 'significato definite',
 	'ow_nstab_edit_copy' => 'modificar copia',
+	'right-addlanguage' => 'Adder e cambiar configurationes de linguas',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -6242,6 +6254,7 @@ Vergeet niet om dit te controleren!',
  */
 $wdMessages['nn'] = array(
 	'languages' => 'Wikidata: Språkhandsamar',
+	'langman-desc' => 'Legg til og endre språkinstillingar med [[Special:Languages]]',
 	'langman_title' => 'Språkhandsamar',
 	'langman_not_allowed' => 'Du har ikkje løyve til å endra språkinnstillingar.',
 	'langman_header' => 'Skriv inn språkkoden og det engelske namnet under:',
@@ -6450,6 +6463,7 @@ Vél ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparer
 	'ow_suggest_clear' => 'Tøm',
 	'ow_nstab_definedmeaning' => 'definert tyding',
 	'ow_nstab_edit_copy' => 'endra kopi',
+	'right-addlanguage' => 'Legg til og endre språkinstillingar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -6595,7 +6609,7 @@ $wdMessages['oc'] = array(
 	'datasearch_language' => 'Lenga :',
 	'datasearch_found_word' => 'Mot trobat',
 	'datasearch_meaning' => 'Significacion',
-	'datasearch_ext_identifier' => 'Identificator extèrn',
+	'datasearch_ext_identifier' => 'Identificator extèrne',
 	'datasearch_search_text' => 'Tèxt de recercar :',
 	'datasearch_within_words' => 'Dins los mots :',
 	'datasearch_within_ext_ids' => 'Dins los identificators extèrnes :',
@@ -7126,6 +7140,7 @@ $wdMessages['ps'] = array(
  */
 $wdMessages['pt'] = array(
 	'languages' => 'Wikidata: Gestor de línguas',
+	'langman-desc' => 'Adicione e modifique configurações de línguas com [[Special:Languages]]',
 	'langman_title' => 'Gestor de línguas',
 	'langman_not_allowed' => 'Você não tem permissão para alterar as configurações de línguas.',
 	'langman_header' => 'Introduza abaixo o código da língua e o seu nome em inglês:',
@@ -7340,6 +7355,7 @@ Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verif
 	'ow_suggest_clear' => 'Limpar',
 	'ow_nstab_definedmeaning' => 'significado definido',
 	'ow_nstab_edit_copy' => 'editar cópia',
+	'right-addlanguage' => 'Adicionar e modificar configurações de línguas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

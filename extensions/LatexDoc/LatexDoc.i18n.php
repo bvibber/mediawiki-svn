@@ -69,6 +69,25 @@ $3',
 	'latexdoc-desc' => 'تعديل تعاونى لوثائق لا تك',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'latexdoc_no_text' => 'Старонка не ўтрымлівае тэкст, немагчыма стварыць DVI',
+	'latexdoc_cant_create_dir' => 'Немагчыма стварыць часовую дырэкторыю $1',
+	'latexdoc_cant_write' => 'Немагчыма запісаць у файл $1',
+	'latexdoc_error' => 'Памылка LaTeX
+
+Каманда: $1
+
+Вывад: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Атрымаць DVI',
+	'latexdoc_get_pdf' => 'Атрымаць PDF',
+	'latexdoc-desc' => 'Сумеснае рэдагаваньне дакумэнтаў LaTeX',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

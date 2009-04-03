@@ -1570,6 +1570,8 @@ $messages['es'] = array(
 	'codereview-batch-title' => 'Cambiar todas las revisiones seleccionadas',
 	'codereview-batch-submit' => 'Enviar',
 	'code-releasenotes' => 'notas de la versión',
+	'code-release-startrev' => 'Primera rev:',
+	'code-release-endrev' => 'Última rev:',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
 	'codereview-email-subj' => '[$1] [r$2]: Añadido nuevo comentario',
@@ -1591,6 +1593,7 @@ $4',
 	'repoadmin-edit-button' => 'Aceptar',
 	'repoadmin-edit-sucess' => 'El repositorio «[[Special:Code/$1|$1]]» ha sido modificado correctamente.',
 	'right-repoadmin' => 'Gestionar repositorios de código',
+	'right-codereview-use' => 'Uso de especial:Código',
 	'right-codereview-add-tag' => 'Añadir nuevas etiquetas a las revisiones',
 	'right-codereview-remove-tag' => 'Quitar etiquetas de las revisiones',
 	'right-codereview-post-comment' => 'Añadir comentarios a las revisiones',
@@ -3767,6 +3770,14 @@ Vólledige URL: $2
 Ópmèrking:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: wieziginge mit correcties',
+	'codereview-email-body2' => 'Gebroeker "$1" haet wiezigingen mit correcties veur r$2 gemaak.
+
+Volledige URL: $3
+
+Toelichting bie toevoging:
+
+$4',
 	'repoadmin' => 'Repositoirbehieër',
 	'repoadmin-new-legend' => 'Maak nuuj repositoir',
 	'repoadmin-new-label' => 'Repositoirnaam:',
@@ -4214,6 +4225,7 @@ $messages['nn'] = array(
 	'code' => 'Kodesaumfaring',
 	'code-rev-title' => 'r$1 - kodesaumfaring',
 	'code-comments' => 'Kommentarar',
+	'code-references' => 'Oppfylgjande endringar',
 	'code-change-status' => "endra '''stoda''' for versjon $1",
 	'code-change-tags' => "endra '''merka''' for versjon $1",
 	'code-change-removed' => 'tok vekk:',
@@ -4275,6 +4287,7 @@ $messages['nn'] = array(
 	'code-status-reverted' => 'attenderulla',
 	'code-status-resolved' => 'løyst',
 	'code-status-ok' => 'OK',
+	'code-status-verified' => 'verifisert',
 	'code-status-deferred' => 'forskjøve',
 	'code-pathsearch-legend' => 'Søk i versjonar i databsen etter stig',
 	'code-pathsearch-path' => 'Stig:',
@@ -4298,6 +4311,14 @@ Fullstendig adressa: $2
 Kommentar:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Påfylgjande endringar',
+	'codereview-email-body2' => 'Brukar "$1" gjorde påfylgjande endringar til r$2.
+
+Full URL: $3
+
+Oppsummering:
+
+$4',
 	'repoadmin' => 'Databaseadministrasjon',
 	'repoadmin-new-legend' => 'Opprett ein ny database',
 	'repoadmin-new-label' => 'Databasenamn:',
@@ -4309,6 +4330,7 @@ $4',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'Databasen [[Special:Code/$1|$1]] har blitt endra.',
 	'right-repoadmin' => 'Handsama kodesamlingar',
+	'right-codereview-use' => 'Bruk av Special:Code',
 	'right-codereview-add-tag' => 'Leggja til nye merke til versjonar',
 	'right-codereview-remove-tag' => 'Fjerna merke frå versjonar',
 	'right-codereview-post-comment' => 'Leggja til kommentarar til versjonar',
@@ -4518,6 +4540,14 @@ Adreça completa : $2
 Comentari :
 
 $4",
+	'codereview-email-subj2' => '[$1] [r$2] : Modificacion seguida',
+	'codereview-email-body2' => 'L’utilizaire « $1 » a fach de modificacions religadas e r$2.
+
+URL completa : $3
+
+Resumit de las modificacions :
+
+$4',
 	'repoadmin' => 'Administracion dels depausses',
 	'repoadmin-new-legend' => 'Crear un depaus novèl',
 	'repoadmin-new-label' => 'Nom del depaus :',

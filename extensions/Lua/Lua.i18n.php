@@ -437,6 +437,20 @@ $messages['os'] = array(
 	'lua_error_internal' => 'Мидæг рæдыд',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'lua_desc' => 'Rozszerza analizator składni o wsparcie dla wbudowanych bloków skryptów w języku [http://www.lua.org/ Lua]',
+	'lua_error' => 'Błąd w wierszu $1',
+	'lua_extension_notfound' => 'Rozszerzenie Lua nie zostało skonfigurowane',
+	'lua_interp_notfound' => 'Brak interpretera Lua',
+	'lua_error_internal' => 'Błąd wewnętrzny',
+	'lua_overflow_recursion' => 'Osiągnięto ograniczenie głębokości rekurencji',
+	'lua_overflow_loc' => 'Osiągnięto maksymalną liczbę linii kodu',
+	'lua_overflow_time' => 'Osiągnięto maksymalny czas wykonywania',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

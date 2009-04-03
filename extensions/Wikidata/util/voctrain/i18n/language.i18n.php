@@ -638,11 +638,14 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'voctrain_Permission_Denied' => 'Zabranjen pristup',
+	'voctrain_try_again_' => 'pokušaj ponovno?',
 	'voctrain_continue' => 'nastavi',
+	'voctrain_bye' => 'zbogom',
 	'voctrain_Languages' => 'Jezici',
 	'voctrain_Questions' => 'Pitanja',
 	'voctrain_Word' => 'Riječ',
 	'voctrain_submit_answer' => 'pošalji odgovor',
+	'voctrain_skip' => 'preskoči',
 	'voctrain_Question' => 'Pitanje',
 	'voctrain_one_of' => 'jedan od',
 	'voctrain_Start_a_new_exercise' => 'Započni novu vježbu',
@@ -820,11 +823,18 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'voctrain_Hello_World' => 'ΓΕΙΑ ΣΟΥ WIKI!',
+	'voctrain_try_again_' => 'μήπως να προσπαθήσετε πάλι;',
+	'voctrain_continue' => 'συνέχεια',
+	'voctrain_bye' => 'αντίο',
 	'voctrain_Number_of_questions' => 'Αριθμός ερωτήσεων',
 	'voctrain_Languages' => 'Γλώσσες',
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(πχ, eng για Αγγλικά, deu για Γερμανικά).',
 	'voctrain_Questions' => 'Ερωτήσεις',
 	'voctrain_Answers' => 'Απαντήσεις',
+	'voctrain_collection' => 'συλλογή',
+	'voctrain_Definition' => 'Ορισμός',
+	'voctrain_Word' => 'Λέξη',
 	'voctrain_Please_type_your_answer_here' => 'Παρακαλώ πληκτρολογήστε την απάντησή σας εδώ',
 	'voctrain_Question' => 'Ερώτηση',
 	'voctrain_Answer' => 'Απάντηση',
@@ -836,7 +846,10 @@ $messages['el'] = array(
 	'voctrain_Login' => 'Σύνδεση',
 	'voctrain_Language' => 'Γλώσσα',
 	'voctrain_Log_in' => 'Συνδεθείτε',
+	'voctrain_Definitions' => 'Ορισμοί',
 	'voctrain_Translation' => 'Μετάφραση',
+	'voctrain_hiding' => 'Απόκρυψη',
+	'voctrain_other' => 'άλλος',
 );
 
 /** Esperanto (Esperanto)

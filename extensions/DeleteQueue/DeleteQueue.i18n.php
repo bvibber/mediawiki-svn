@@ -4395,6 +4395,7 @@ $messages['vi'] = array(
 	'deletequeue-list-header-votes' => 'Số phiếu',
 	'deletequeue-list-header-expiry' => 'Thời hạn',
 	'deletequeue-list-header-discusspage' => 'Trang thảo luận',
+	'deletequeue-case-reason' => 'Lý do:',
 );
 
 /** Volapük (Volapük)
