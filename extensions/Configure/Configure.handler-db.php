@@ -323,7 +323,9 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * Get settings that are not editable with the database handler
 	 */
 	public function getUneditableSettings() {
-		return array(
+		global $wgConfigureAllowDeferSetup;
+
+		$uneditable = array(
 		# Database
 			'wgAllDBsAreLocalhost',
 			'wgCheckDBSchema',
@@ -356,5 +358,38 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			'wgMemCachedPersistent',
 			'wgMemCachedServers',
 		);
+
+		if ( $wgConfigureAllowDeferSetup ) {
+			// These settings are backward compatible settings which are used
+			// in Setup.php before the SetupAfterCache hook is called
+			$uneditable = array_merge( $uneditable, array(
+			# Uploads
+				'wgUseSharedUploads',
+				'wgUploadDirectory',
+				'wgUploadBaseUrl',
+				'wgUploadPath',
+				'wgHashedUploadDirectory',
+				'wgThumbnailScriptPath',
+				'wgGenerateThumbnailOnParse',
+				'wgSharedUploadDirectory',
+				'wgSharedUploadPath',
+				'wgHashedSharedUploadDirectory',
+				'wgSharedThumbnailScriptPath',
+				'wgSharedUploadDBname',
+				'wgSharedUploadDBprefix',
+				'wgCacheSharedUploads',
+				'wgRepositoryBaseUrl',
+				'wgFetchCommonsDescriptions',
+			# Recent changes
+				'wgRCFilterByAge',
+			# Skins
+				'wgSkipSkin',
+			# Cache
+				'wgParserCacheType',
+				'wgMessageCacheType',
+			) );
+		}
+
+		return $uneditable;
 	}
 }

@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.13.9 - 4 April 2009
+  Settings that weren't taken into account when using database handler with
+  $wgConfigureAllowDeferSetup = true are now ignored with that configuration.
+
 0.13.8 - 1 April 2009
   Added $wgUseImageResize, $wgCopyUploadTimeout, $wgInvalidUsernameCharacters
   and $wgUserrightsInterwikiDelimiter.
