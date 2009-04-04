@@ -86,9 +86,10 @@ var nativeEmbed = {
 	 * native callbacks for the video tag: 
 	 */
 	oncanplaythrough : function(){		
+		this.getVID();
 		//js_log("f:oncanplaythrough start playback");		
 		//start playback (we don't yet support pre-loading clips)  	
-		//this.play();
+		this.vid.play();
 	},
 	onloadedmetadata: function(){
 		js_log('f:onloadedmetadata get duration: ' +this.vid.duration);
