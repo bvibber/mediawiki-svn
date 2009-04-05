@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<exttests>
+	<exttest>
+        	<name>Test resulting true</name>
+		<code><![CDATA[{{#if: test | true | false }}]]></code>
+		<expect><![CDATA[true]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Test resulting false</name>
+        	<code><![CDATA[{{#if: | true | false }}]]></code>
+        	<expect><![CDATA[false]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Textual comparison resulting true</name>
+        	<code><![CDATA[{{#ifeq: test | test | true | false }}]]></code>
+        	<expect><![CDATA[true]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Textual comparison resulting false</name>
+        	<code><![CDATA[{{#ifeq: test | not test | true | false }}]]></code>
+        	<expect><![CDATA[false]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Numerical comparison resulting true</name>
+        	<code><![CDATA[{{#ifeq: 0 | -0 | true | false }}]]></code>
+        	<expect><![CDATA[true]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Textual comparison resulting false</name>
+        	<code><![CDATA[{{#ifeq: 1 | 2 | true | false }}]]></code>
+        	<expect><![CDATA[false]]></expect>
+	</exttest>
+
+</exttests>
+

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<exttests>
+	<exttest>
+        	<name>Individual regular reference</name>
+	        <code><![CDATA[Individual regular reference.<ref>This is a regular reference.</ref><references/>]]></code>
+        	<expect><![CDATA[Individual regular reference.<sup id="cite_ref-0" class="reference"><a href="#cite_note-0" title="">[1]</a></sup><ol class="references"><li id="cite_note-0"><a href="#cite_ref-0" title="">.</a> This is a regular reference.</li></ol>]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Multiple regular references</name>
+        	<code><![CDATA[Multiple regular references.<ref>This is the first in reference.</ref><ref>This is the second reference.</ref><ref>This is the third reference.</ref><ref>This is the fourth reference.</ref><references/>]]></code>
+        	<expect><![CDATA[Multiple regular references.<sup id="cite_ref-0" class="reference"><a href="#cite_note-0" title="">[1]</a></sup><sup id="cite_ref-1" class="reference"><a href="#cite_note-1" title="">[2]</a></sup><sup id="cite_ref-2" class="reference"><a href="#cite_note-2" title="">[3]</a></sup><sup id="cite_ref-3" class="reference"><a href="#cite_note-3" title="">[4]</a></sup><ol class="references"><li id="cite_note-0"><a href="#cite_ref-0" title="">.</a> This is the first in reference.</li>
+<li id="cite_note-1"><a href="#cite_ref-1" title="">.</a> This is the second reference.</li>
+<li id="cite_note-2"><a href="#cite_ref-2" title="">.</a> This is the third reference.</li>
+<li id="cite_note-3"><a href="#cite_ref-3" title="">.</a> This is the fourth reference.</li></ol>]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Named references</name>
+	        <code><![CDATA[Named references.<ref name="test">This is a reference named "test".</ref><ref name="test"/><ref name="test"/><ref name="test"/><references/>]]></code>
+        	<expect><![CDATA[Named references.<sup id="cite_ref-test_0-0" class="reference"><a href="#cite_note-test-0" title="">[1]</a></sup><sup id="cite_ref-test_0-1" class="reference"><a href="#cite_note-test-0" title="">[1]</a></sup><sup id="cite_ref-test_0-2" class="reference"><a href="#cite_note-test-0" title="">[1]</a></sup><sup id="cite_ref-test_0-3" class="reference"><a href="#cite_note-test-0" title="">[1]</a></sup><ol class="references"><li id="cite_note-test-0">. <sup><a href="#cite_ref-test_0-0" title="">1.0</a></sup> <sup><a href="#cite_ref-test_0-1" title="">1.1</a></sup> <sup><a href="#cite_ref-test_0-2" title="">1.2</a></sup> <sup><a href="#cite_ref-test_0-3" title="">1.3</a></sup> This is a reference named "test".</li></ol>]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Grouped references</name>
+        	<code><![CDATA[Grouped references.<ref group="testgroup">This is the first group reference.</ref><ref group="testgroup">This is the second group reference.</ref><ref group="testgroup">This is the third group reference.</ref><ref group="testgroup">This is the fourth group reference.</ref><references group="testgroup"/>]]></code>
+        <expect><![CDATA[Grouped references.<sup id="cite_ref-0" class="reference"><a href="#cite_note-0" title="">[testgroup 1]</a></sup><sup id="cite_ref-1" class="reference"><a href="#cite_note-1" title="">[testgroup 2]</a></sup><sup id="cite_ref-2" class="reference"><a href="#cite_note-2" title="">[testgroup 3]</a></sup><sup id="cite_ref-3" class="reference"><a href="#cite_note-3" title="">[testgroup 4]</a></sup><ol class="references"><li id="cite_note-0"><a href="#cite_ref-0" title="">.</a> This is the first group reference.</li>
+<li id="cite_note-1"><a href="#cite_ref-1" title="">.</a> This is the second group reference.</li>
+<li id="cite_note-2"><a href="#cite_ref-2" title="">.</a> This is the third group reference.</li>
+<li id="cite_note-3"><a href="#cite_ref-3" title="">.</a> This is the fourth group reference.</li></ol>]]></expect>
+	</exttest>
+	<exttest>
+        	<name>Named grouped references</name>
+	        <code><![CDATA[Named grouped references.<ref name="test" group="testgroup">This is the first named group references.</ref><ref name="test" group="testgroup">This is the second named group references.</ref><ref name="test" group="testgroup">This is the third named group reference.</ref><ref name="test" group="testgroup">This is the fourth named group reference.</ref><references group="testgroup"/>]]></code>
+        	<expect><![CDATA[Named grouped references.<sup id="cite_ref-test_0-0" class="reference"><a href="#cite_note-test-0" title="">[testgroup 1]</a></sup><sup id="cite_ref-test_0-1" class="reference"><a href="#cite_note-test-0" title="">[testgroup 1]</a></sup><sup id="cite_ref-test_0-2" class="reference"><a href="#cite_note-test-0" title="">[testgroup 1]</a></sup><sup id="cite_ref-test_0-3" class="reference"><a href="#cite_note-test-0" title="">[testgroup 1]</a></sup><ol class="references"><li id="cite_note-test-0">. <sup><a href="#cite_ref-test_0-0" title="">1.0</a></sup> <sup><a href="#cite_ref-test_0-1" title="">1.1</a></sup> <sup><a href="#cite_ref-test_0-2" title="">1.2</a></sup> <sup><a href="#cite_ref-test_0-3" title="">1.3</a></sup> This is the first named group references.</li></ol>]]></expect>
+	</exttest>
+	<exttest>
+		<name>newtest</name>
+       		<code><![CDATA[Named grouped references.<ref name="test" group="testgroup">This is the first named group references.</ref><ref name="test" group="testgroup">This is the second named group references.</ref><ref name="test" group="testgroup">This is the third named group reference.</ref><ref name="test" group="testgroup">This is the fourth named group reference.</ref><references group="testgroup"/>]]></code>
+		<expect><![CDATA[Named grouped references.<sup id="cite_ref-test_0-0" class="reference"><a href="#cite_note-test-0" title="">[testgroup 1]</a></sup><sup id="cite_ref-test_0-1" class="reference"><a href="#cite_note-test-0" title="">[testgroup 1]</a></sup><sup id="cite_ref-test_0-2" class="reference"><a href="#cite_note-test-0" title="">[testgroup 1]</a></sup><sup id="cite_ref-test_0-3" class="reference"><a href="#cite_note-test-0" title="">[testgroup 1]</a></sup><ol class="references"><li id="cite_note-test-0">. <sup><a href="#cite_ref-test_0-0" title="">1.0</a></sup> <sup><a href="#cite_ref-test_0-1" title="">1.1</a></sup> <sup><a href="#cite_ref-test_0-2" title="">1.2</a></sup> <sup><a href="#cite_ref-test_0-3" title="">1.3</a></sup> This is the first named group references.</li></ol>]]></expect>
+	</exttest>
+</exttests>
