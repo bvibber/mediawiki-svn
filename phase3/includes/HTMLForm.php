@@ -339,6 +339,13 @@ class HTMLCheckField extends HTMLFormField {
 
 class HTMLSelectField extends HTMLFormField {
 	
+	function validate( $value ) {
+		if ( array_key_exists( $value, $this->mParams['options'] ) )
+			return true;
+		else
+			return 'htmlform-select-badoption';
+	}
+	
 	function getInputHTML( $value ) {
 		$select = new XmlSelect( $this->mName, $this->mID, $value );
 		
@@ -351,6 +358,16 @@ class HTMLSelectField extends HTMLFormField {
 }
 
 class HTMLMultiSelectField extends HTMLFormField {
+	function validate( $value ) {
+		// If all options are valid, array_intersect of the valid options and the provided
+		//  options will return the provided options.
+		$validValues = array_intersect( $value, array_keys($this->mParams['options']) );
+		if ( count( $validValues ) == count($value) )
+			return true;
+		else
+			return 'htmlform-select-badoption';
+	}
+	
 	function getInputHTML( $value ) {
 		$html = '';
 		foreach( $this->mParams['options'] as $key => $label ) {
@@ -375,6 +392,13 @@ class HTMLMultiSelectField extends HTMLFormField {
 }
 
 class HTMLRadioField extends HTMLFormField {
+	function validate( $value ) {
+		if ( array_key_exists( $value, $this->mParams['options'] ) )
+			return true;
+		else
+			return 'htmlform-select-badoption';
+	}
+	
 	function getInputHTML( $value ) {
 		$html = '';
 		
