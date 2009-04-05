@@ -1,0 +1,8 @@
+branch allowing users to select mutiple languages in their preferences
+- as fallabck languages of the user interface
+- as hint languages in the translate extension
+- as the (only) languages selected they want to see in wikidata
+this branch is for testing and development and shall be reintegrated
+whan the work is cone and the code is accepted.
+Contact: http://ksh.wikipedia.org/wiki/Metmaacher:Purodha
+
