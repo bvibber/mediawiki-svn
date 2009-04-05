@@ -84,6 +84,14 @@ class HTMLForm {
 			return false;
 		}
 		
+		// Check for validation
+		foreach( $this->mFlatFields as $fieldname => $field ) {
+			if ( !$field->validate( $this->mFieldData[$fieldname] ) ) {
+				return isset($this->mValidationErrorMessage) ?
+						$this->mValidationErrorMessage : array( 'htmlform-invalid-input' );
+			}
+		}
+		
 		$callback = $this->mSubmitCallback;
 		
 		$res = call_user_func( $callback, $this->mFieldData );
@@ -93,6 +101,10 @@ class HTMLForm {
 	
 	function setSubmitCallback( $cb ) {
 		$this->mSubmitCallback = $cb;
+	}
+	
+	function setValidationErrorMessage( $msg ) {
+		$this->mValidationErrorMessage = $msg;
 	}
 	
 	function displayForm( $submitResult ) {
@@ -133,7 +145,7 @@ class HTMLForm {
 		$wgOut->addHTML( $errorstr );
 	}
 	
-	function formatErrors( $errors ) {
+	static function formatErrors( $errors ) {
 		$errorstr = '';
 		foreach ( $errors as $error ) {
 			if (is_array($error)) {
@@ -209,6 +221,14 @@ class HTMLForm {
 abstract class HTMLFormField {
 	abstract function getInputHTML( $value );
 	
+	function validate( $value ) {
+		if ( isset($this->mValidationCallback) ) {
+			return call_user_func( $this->mValidationCallback, $value );
+		}
+		
+		return true;
+	}
+	
 	function loadDataFromRequest( $request ) {
 		if ($request->getCheck( $this->mName ) ) {
 			return $request->getText( $this->mName );
@@ -247,16 +267,26 @@ abstract class HTMLFormField {
 		if ( isset( $params['id'] ) ) {
 			$this->mID = $params['id'];
 		}
+		
+		if ( isset( $params['validation-callback'] ) ) {
+			$this->mValidationCallback = $params['validation-callback'];
+		}
 	}
 	
 	function getTableRow( $value ) {
+		// Check for invalid data.
+		$errors = $this->validate( $value );
+		if ( $errors === true ) {
+			$errors = '';
+		}
+		
 		$html = '';
 		
 		$html .= Xml::tags( 'td', null,
 					Xml::tags( 'label', array( 'for' => $this->mID ), $this->getLabel() )
 				);
 		$html .= Xml::tags( 'td', array( 'class' => 'mw-input' ),
-							$this->getInputHTML( $value ) );
+							$this->getInputHTML( $value ) ."\n$errors" );
 		
 		$html = Xml::tags( 'tr', null, $html ) . "\n";
 		

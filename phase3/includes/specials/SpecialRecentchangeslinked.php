@@ -90,7 +90,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 										$conds,
 										$join_conds,
 										$query_options,
-										$opts['tagfilter'],
+										$opts['tagfilter']
 										);
 
 		// XXX: parent class does this, should we too?
