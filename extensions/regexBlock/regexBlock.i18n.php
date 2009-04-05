@@ -27,7 +27,7 @@ $messages['en'] = array(
 This should be done only to prevent vandalism, and in accordance with policy.
 \'\'This page will allow you to block even non-existing users, and will also block users with names similar to given, i.e. "Test" will be blocked along with "Test 2" etc.
 You can also block full IP addresses, meaning that no one logging in from them will be able to edit pages.
-Note: partial IP addresses will be treated by usernames in determining blocking.
+Note: partial IP addresses will be treated as usernames in determining blocking.
 If no reason is specified, a default generic reason will be used.\'\'',
 	'regexblock-page-title-1' => 'Block address using regular expressions',
 	'regexblock-reason-ip' => 'This IP address is prevented from editing due to vandalism or other disruption by you or by someone who shares your IP address.
