@@ -909,8 +909,10 @@ Please choose a different name.',
 'uid'                        => 'User ID:',
 'prefs-memberingroups'       => 'Member of {{PLURAL:$1|group|groups}}:',
 'yourrealname'               => 'Real name:',
+'prefs-language'             => 'Language Settings',
 'yourlanguage'               => 'Language:',
 'yourvariant'                => 'Variant:', # only translate this message to other languages if you have to change it
+'yourfallbacklanguage'       => 'Fallback language{{PLURAL:$2||&#32;number&nbsp;$1}}:',
 'yournick'                   => 'Signature:',
 'badsig'                     => 'Invalid raw signature.
 Check HTML tags.',

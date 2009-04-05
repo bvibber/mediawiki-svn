@@ -761,6 +761,8 @@ $wgLocalMessageCacheSerialized = true;
 #
 /** Site language code, should be one of ./languages/Language(.*).php */
 $wgLanguageCode = 'en';
+/** Number of fallback languages, a user can specify in preferences */
+$wgUserFallbackLanguages = 1;
 
 /**
  * Some languages need different word forms, usually for different cases.

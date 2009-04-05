@@ -996,6 +996,7 @@ class User {
 		$variant = $wgContLang->getPreferredVariant( false );
 		$defOpt['variant'] = $variant;
 		$defOpt['language'] = $variant;
+#		$defopt['fallbacklang'] = '';	## FIXME: fallbacklanguage is likely not used anywhere.
 
 		foreach( $wgNamespacesToBeSearchedDefault as $nsnum => $val ) {
 			$defOpt['searchNs'.$nsnum] = $val;
@@ -1894,9 +1895,8 @@ class User {
 		return (bool)$this->getOption( $oname );
 	}
 
-	
 	/**
-	 * Get the user's current setting for a given option, as a boolean value.
+	 * Get the user's current setting for a given option, as an integer value.
 	 *
 	 * @param $oname \string The option to check
 	 * @param $defaultOverride \int A default value returned if the option does not exist
@@ -1912,12 +1912,35 @@ class User {
 	}
 
 	/**
+	 * Get the user's current setting for an option, as an array value.
+	 *
+	 * @param $oname \string The option to check
+	 * @param $defaultOverride \array A default value returned if the option does not exist
+	 * @param $eparator \string Used to unserialize the array elements
+	 * @return \array User's current value for the option
+	 * @see getOption()
+	 */
+	function getArrayOption( $oname, $defaultOverride=array(), $separator=':' ) {
+		$val = $this->getOption( $oname );
+		if( $val == '' )
+		{
+			$val = $defaultOverride;
+		}
+		else
+		{
+			$val = explode( $separator, $val );
+		}
+		return ( $val );
+	}
+
+	/**
 	 * Set the given option for a user.
 	 *
 	 * @param $oname \string The option to set
 	 * @param $val \mixed New value to set
+	 * @param $eparator \string Used to serialize elements of $val if it's an array
 	 */
-	function setOption( $oname, $val ) {
+	function setOption( $oname, $val, $separator=':' ) {
 		$this->load();
 		if ( is_null( $this->mOptions ) ) {
 			$this->mOptions = User::getDefaultOptions();
@@ -1926,6 +1949,11 @@ class User {
 			# Clear cached skin, so the new one displays immediately in Special:Preferences
 			unset( $this->mSkin );
 		}
+		if( is_array( $val ) )
+		{
+			$val = implode( $separator, $val );
+# $wgUser->setOption( 'fallbacklang', implode(':', $this->mUserFallbackLanguage) );
+		} 
 		// Filter out any newlines that may have passed through input validation.
 		// Newlines are used to separate items in the options blob.
 		if( $val ) {
@@ -1940,7 +1968,7 @@ class User {
 		}
 		$this->mOptions[$oname] = $val;
 	}
-	
+
 	/**
 	 * Reset all options to the site defaults
 	 */	

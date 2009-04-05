@@ -26,7 +26,7 @@ class PreferencesForm {
 	var $mUserLanguage, $mUserVariant;
 	var $mSearch, $mRecent, $mRecentDays, $mTimeZone, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
 	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
-	var $mUnderline, $mWatchlistEdits, $mGender;
+	var $mUnderline, $mWatchlistEdits, $mGender, $mUserFallbackLanguage;
 
 	/**
 	 * Constructor
@@ -48,6 +48,7 @@ class PreferencesForm {
 		$this->mNick = $request->getVal( 'wpNick' );
 		$this->mUserLanguage = $request->getVal( 'wpUserLanguage' );
 		$this->mUserVariant = $request->getVal( 'wpUserVariant' );
+		$this->mUserFallbackLanguage = $request->getArray( 'wpUserFallbackLanguage' );
 		$this->mSearch = $request->getVal( 'wpSearch' );
 		$this->mRecent = $request->getVal( 'wpRecent' );
 		$this->mRecentDays = $request->getVal( 'wpRecentDays' );
@@ -98,6 +99,31 @@ class PreferencesForm {
 		# Validate language
 		if ( !preg_match( '/^[a-z\-]*$/', $this->mUserLanguage ) ) {
 			$this->mUserLanguage = 'nolanguage';
+		}
+		# Validate fallback languages
+		if ( is_array( $this->mUserFallbackLanguage ) )
+		{
+			$mUFLseen = array();
+			foreach($this->mUserFallbackLanguage as $i => $mUFL)
+			{
+				if ( ( !preg_match( '/^[a-z\-]*$/', $mUFL ) ) ||	// nonsential
+					( !preg_match( '/[a-z]/', $mUFL ) ) ||		// not min 1 char
+					( $mUFL == $this->mUserLanguage ) ||		// user language
+					isset( $mUFLseen[$mUFL] ) )			// duplicate
+				{
+					unset($this->mUserFallbackLanguage[$i]);
+				}
+				else
+				{
+					$mUFLseen[$mUFL] = TRUE;
+				}
+			}
+			unset($mUFLseen);
+			$this->mUserFallbackLanguage = explode( ':', ':'.implode(':', $this->mUserFallbackLanguage ) );
+		}
+		else
+		{
+			$this->mUserFallbackLanguage = array( $this->mUserFallbackLanguage );
 		}
 
 		wfRunHooks( 'InitPreferencesForm', array( $this, $request ) );
@@ -256,6 +282,7 @@ class PreferencesForm {
 
 		$wgUser->setOption( 'language', $this->mUserLanguage );
 		$wgUser->setOption( 'variant', $this->mUserVariant );
+		$wgUser->setOption( 'fallbacklang', $this->mUserFallbackLanguage );
 		$wgUser->setOption( 'nickname', $this->mNick );
 		$wgUser->setOption( 'quickbar', $this->mQuickbar );
 		global $wgAllowUserSkin;
@@ -370,8 +397,8 @@ class PreferencesForm {
 
 		# language value might be blank, default to content language
 		$this->mUserLanguage = $wgUser->getOption( 'language', $wgContLanguageCode );
-
 		$this->mUserVariant = $wgUser->getOption( 'variant');
+		$this->mUserFallbackLanguage = $wgUser->getArrayOption( 'fallbacklang' );
 		$this->mEmailFlag = $wgUser->getOption( 'disablemail' ) == 1 ? 1 : 0;
 		$this->mNick = $wgUser->getOption( 'nickname' );
 
@@ -562,6 +589,7 @@ class PreferencesForm {
 		global $wgEnableEmail, $wgEnableUserEmail, $wgEmailAuthentication;
 		global $wgContLanguageCode, $wgDefaultSkin, $wgCookieExpiration;
 		global $wgEmailConfirmToEdit, $wgEnableMWSuggest, $wgLocalTZoffset;
+		global $wgUserFallbackLanguages;
 
 		$wgOut->setPageTitle( wfMsg( 'preferences' ) );
 		$wgOut->setArticleRelated( false );
@@ -762,12 +790,19 @@ class PreferencesForm {
 			)
 		);
 
+		# language
+		if(!$wgDisableLangConversion || $wgUserFallbackLanguages>0)
+		{
+			$wgOut->addHTML(
+				$this->tableRow( Xml::element( 'h2', null, wfMsg( 'prefs-language' ) ) ) );
+		}
+
 		list( $lsLabel, $lsSelect) = Xml::languageSelector( $this->mUserLanguage, false );
 		$wgOut->addHTML(
 			$this->tableRow( $lsLabel, $lsSelect )
 		);
 
-		/* see if there are multiple language variants to choose from*/
+		/* see if there are multiple language variants to choose from */
 		if(!$wgDisableLangConversion) {
 			$variants = $wgContLang->getVariants();
 			$variantArray = array();
@@ -808,6 +843,19 @@ class PreferencesForm {
 					)
 				);
 			}
+		}
+
+		# Fallback Languages
+		for( $i=1; $i<=$wgUserFallbackLanguages; ++$i)
+		{
+			if ( ! isset( $this->mUserFallbackLanguage[$i] ) )
+			{
+				$this->mUserFallbackLanguage[$i] = ( '-' );
+			}
+			list( $lsLabel, $lsSelect) = Xml::languageSelector( $this->mUserFallbackLanguage[$i], false , $i);
+			$wgOut->addHTML(
+				$this->tableRow( $lsLabel, $lsSelect )
+			);
 		}
 
 		# Password

@@ -601,8 +601,10 @@ Denk dran, Do künnts Der [[Special:Preferences|Ding Enstellunge hee op de {{SIT
 'uid'                        => 'Metmaacher Nommer:',
 'prefs-memberingroups'       => 'Bes en {{PLURAL:$1|de Metmaacherjrupp:|<strong>$1</strong> Metmaacherjruppe:|keijn Metmaacherjruppe.}}',
 'yourrealname'               => 'Dinge richtije Name *',
+'prefs-language'             => 'Shprooche',
 'yourlanguage'               => 'Die Sproch, die et Wiki kalle soll:',
 'yourvariant'                => 'Ding Variant',
+'yourfallbacklanguage'       => 'Dem Wiki sing {{PLURAL:$2||$1.}} Ersatzshprooch:',
 'yournick'                   => 'Name för en Ding Ungerschreff:',
 'badsig'                     => 'Di Ungeschreff jëijd_esu nit — luer noh dem HTML do_dren un maach et rėshtėsh.',
 'badsiglength'               => 'Ding „Unterschref“ es zoo lang.

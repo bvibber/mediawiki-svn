@@ -207,9 +207,10 @@ class Xml {
 	 *
 	 * @param $selected The language code of the selected language
 	 * @param $customisedOnly If true only languages which have some content are listed
+	 * @param $fallbackNum Not used unless a user fallback language, then 1..$wgUserFallbackLanguages
 	 * @return array of label and select
 	 */
-	public static function languageSelector( $selected, $customisedOnly = true ) {
+	public static function languageSelector( $selected, $customisedOnly = true, $fallbackNum = false ) {
 		global $wgContLanguageCode;
 		/**
 		 * Make sure the site language is in the list; a custom language code
@@ -218,6 +219,12 @@ class Xml {
 		$languages = Language::getLanguageNames( $customisedOnly );
 		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
 			$languages[$wgContLanguageCode] = $wgContLanguageCode;
+		}
+		$field = 'wpUserLanguage';
+		if($fallbackNum)
+		{
+			$field = 'wpUserFallbackLanguage['.strval($fallbackNum).']';
+			$languages['-'] = '';
 		}
 		ksort( $languages );
 
@@ -233,9 +240,11 @@ class Xml {
 		}
 
 		return array(
-			Xml::label( wfMsg('yourlanguage'), 'wpUserLanguage' ),
+			Xml::label( wfMsg($fallbackNum ? 'yourfallbacklanguage' : 'yourlanguage',
+					$fallbackNum),
+				'wpUserLanguage' ),
 			Xml::tags( 'select',
-				array( 'id' => 'wpUserLanguage', 'name' => 'wpUserLanguage' ),
+				array( 'id' => 'wpUserLanguage', 'name' => $field ),
 				$options
 			)
 		);

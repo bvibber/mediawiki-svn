@@ -524,14 +524,19 @@ The title of the warning is the message {{msg-mw|nosuchspecialpage}}. <code><now
 {{Identical|Log in}}',
 'youremail'                  => '{{Identical|E-mail}}',
 'username'                   => '{{Identical|Username}}',
-'uid'                        => '{{Identical|User ID}}',
+'uid'                        => 'Used in [[Special:Preferences]], first tab, {{Identical|User ID}}',
 'prefs-memberingroups'       => 'This message is shown on [[Special:Preferences]], first tab, where it is follwed by a colon.',
 'yourrealname'               => 'Used in [[Special:Preferences]], first tab.
 {{Identical|Real name}}',
+'prefs-language'             => 'Used in [[Special:Preferences]], first tab, as section title, only when the wiki has language variants, or users can specify fallback languages.',
 'yourlanguage'               => 'Used in [[Special:Preferences]], first tab.
 {{Identical|Language}}',
-'yourvariant'                => 'Used in [[Special:Preferences]], first tab, when the wiki content language has variants only.
+'yourvariant'                => 'Used in [[Special:Preferences]], first tab, when the wiki content language has variants, only.
+See: [[:me:Manual:$wgUserContentLanguage]].
 {{optional}}',
+'yourfallbacklanguage'       => 'Used in [[Special:Preferences]],
+$1 = the ordinal number (1..$wgUserFallbackLangauges) of this fallback language,
+$2 = the maximum number of fallback languages for this wiki, see [[:mw:Manual:$wgUserFallbackLanguages]]',
 'yournick'                   => 'Used in [[Special:Preferences]], first tab.',
 'badsig'                     => 'Error message displayed when entering invalid signature in user preferences',
 'badsiglength'               => 'Warning message that is displayed on [[Special:Preferences]] when trying to save a signature that is too long. Parameter $1 is the maximum number of characters that is allowed in a signature (multi-byte characters are counted as one character).',
