@@ -86,7 +86,7 @@ class HTMLForm {
 		
 		// Check for validation
 		foreach( $this->mFlatFields as $fieldname => $field ) {
-			if ( !$field->validate( $this->mFieldData[$fieldname] ) ) {
+			if ( $field->validate( $this->mFieldData[$fieldname] ) !== true ) {
 				return isset($this->mValidationErrorMessage) ?
 						$this->mValidationErrorMessage : array( 'htmlform-invalid-input' );
 			}
