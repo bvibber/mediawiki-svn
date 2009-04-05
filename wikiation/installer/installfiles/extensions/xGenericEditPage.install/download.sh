@@ -1,6 +1,6 @@
 #!/bin/sh
 
-repository="$EXTENSIONS_SVN/uniwiki/$NAME"
+repository="$EXTENSIONS_SVN/uniwiki/GenericEditPage"
 
 if [ -d "$DESTINATION_DIR/uniwiki" ]; then
         echo "Directory exists"

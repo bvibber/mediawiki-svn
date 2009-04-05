@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd $DESTINATION_DIR/uniwiki/$NAME
+cd $DESTINATION_DIR/uniwiki/GenericEditPage
 if test -n "$REVISION"; then
 	svn update -r $REVISION
 else
