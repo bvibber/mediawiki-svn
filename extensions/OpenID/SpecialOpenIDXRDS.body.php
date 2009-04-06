@@ -107,7 +107,7 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 		$wgOut->disable();
 
 		// Print content-type and XRDS XML.
-		header("Content-Type", "application/xrds+xml");
+		header("Content-Type: application/xrds+xml");
 		print implode("\n", $xml_template);
 		print $service_text;
 		print implode("\n", array("</XRD>", "</xrds:XRDS>"));
