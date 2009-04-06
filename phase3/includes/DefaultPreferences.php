@@ -11,7 +11,7 @@ class DefaultPreferences {
 		
 		$defaultPreferences = array();
 		// What is quickbar even for?
-		$defaultPreferences['quickbar'] = array( 'type' => 'toggle' );
+#		$defaultPreferences['quickbar'] = array( 'type' => 'toggle' );
 		$defaultPreferences['underline'] =
 				array(
 					'type' => 'select',
@@ -74,9 +74,10 @@ class DefaultPreferences {
 		$defaultPreferences['math'] =
 				array(
 					'type' => 'radio',
-					'options' => $wgLang->getMathNames(),
+					'options' => array_map( 'wfMsg', $wgLang->getMathNames() ),
 					'label' => '&nbsp;',
 					'section' => 'math',
+					'label-message' => 'math',
 				);
 		$defaultPreferences['usenewrc'] =
 				array(
@@ -435,6 +436,7 @@ class DefaultPreferences {
 						'female' => wfMsg('gender-female'),
 						'unknown' => wfMsg('gender-unknown'),
 					),
+					'label' => 'yourgender',
 				);
 				
 		wfRunHooks( 'GetPreferences', array( &$defaultPreferences ) );

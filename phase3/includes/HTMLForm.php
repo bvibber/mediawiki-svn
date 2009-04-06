@@ -173,8 +173,7 @@ class HTMLForm {
 				$msg = $error;
 				$error = array();
 			}
-			$errorstr .= Xml::tags(
-									'li',
+			$errorstr .= Xml::tags( 'li',
 									null,
 									wfMsgExt( $msg, array( 'parseinline' ), $error )
 									);
@@ -294,14 +293,18 @@ abstract class HTMLFormField {
 	
 	function getTableRow( $value ) {
 		// Check for invalid data.
+		global $wgRequest;
+		
 		$errors = $this->validate( $value );
-		if ( $errors === true ) {
+		if ( $errors === true || !$wgRequest->wasPosted() ) {
 			$errors = '';
+		} else {
+			$errors = Xml::tags( 'span', array( 'class' => 'error' ), $errors );
 		}
 		
 		$html = '';
 		
-		$html .= Xml::tags( 'td', null,
+		$html .= Xml::tags( 'td', array( 'style' => 'align: right;' ),
 					Xml::tags( 'label', array( 'for' => $this->mID ), $this->getLabel() )
 				);
 		$html .= Xml::tags( 'td', array( 'class' => 'mw-input' ),
@@ -313,6 +316,7 @@ abstract class HTMLFormField {
 	}
 	
 	function getLabel() {
+		if (!isset($this->mLabel)) die( var_dump( $this ) );
 		return $this->mLabel;
 	}
 	
@@ -462,6 +466,7 @@ class HTMLRadioField extends HTMLFormField {
 									array( 'id' => $this->mID."-$key" ) );
 			$html .= '&nbsp;' .
 				Xml::tags( 'label', array( 'for' => $this->mID."-$key" ), $label );
+			$html .= "<br/>";
 		}
 		
 		return $html;
