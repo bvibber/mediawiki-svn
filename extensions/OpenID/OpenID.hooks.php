@@ -66,7 +66,7 @@ class OpenIDHooks {
 											    'href' => $st->getFullURL() ) );
 						$rt = SpecialPage::getTitleFor( 'OpenIDXRDS', $user->getName() );
 						$wgOut->addMeta( 'http:X-XRDS-Location', $rt->getFullURL() );
-						header( 'X-XRDS-Location', $rt->getFullURL() );
+						header( 'X-XRDS-Location: ' . $rt->getFullURL() );
 					}
 				}
 			}
