@@ -132,6 +132,12 @@ $messages['be-tarask'] = array(
 	'invitations-feature-noneleft' => 'Вы выкарысталі ўсе Вашыя запрашэньні на гэтую магчымасьць',
 	'invitations-feature-noneyet' => 'Вы яшчэ не атрымалі запрашэньняў для гэтай магчымасьці.',
 	'invitations-feature-notallowed' => 'Вы ня маеце доступу для выкарыстаньня <i>$1</i>.',
+	'invitations-inviteform-title' => 'Запрасіць удзельніка выкарыстоўваць $1',
+	'invitations-inviteform-username' => 'Запрасіць удзельніка',
+	'invitations-inviteform-submit' => 'Запрасіць',
+	'invitations-error-baduser' => 'Удзельнік, якога Вы пазначылі, не існуе.',
+	'invitations-error-alreadyinvited' => 'Удзельнік, якога Вы пазначылі, ужо мае доступ да гэтай магчымасьці!',
+	'invitations-invite-success' => 'Вы пасьпяхова запрасілі $1 выкарыстоўваць гэтую магчымасьць!',
 );
 
 /** Bulgarian (Български)

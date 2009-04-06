@@ -77,6 +77,13 @@ $messages['dsb'] = array(
 	'formatsearch-desc' => 'Rumujo bok pytańskich wuslědkow',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'formatsearch-desc' => 'Καθαρίζει την σελίδα αποτελεσμάτων αναζήτησης',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

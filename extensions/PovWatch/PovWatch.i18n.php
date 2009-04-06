@@ -378,6 +378,7 @@ Klikni na slědujucy tłocašk, aby se zregistrěrował.',
  * @author Dead3y3
  */
 $messages['el'] = array(
+	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Επέκταση για την [[Special:PovWatch|προώθηση σελίδων στις λίστες παρακολούθησης]] άλλων χρηστών',
 	'povwatch_no_session' => 'Σφάλμα: Η φόρμα δεν υποβλήθηκε λόγω απώλειας δεδομένων συνεδρίας.',
 	'povwatch_not_allowed_push' => 'Δεν είσαστε ένας διαχειριστής PovWatch, δεν μπορείτε να προωθήσετε σελίδες σε λίστες παρακολούθησης.',
@@ -433,6 +434,7 @@ $messages['eo'] = array(
 	'povwatch_subscribe' => 'Enskribiĝi',
 	'povwatch_added' => 'aldonita',
 	'right-povwatch_admin' => 'Administri uzulajn rajtojn por aldoni paĝojn al atentaroj de aliaj uzantoj',
+	'right-povwatch_user' => 'Aldoni paĝojn al atentaroj de aliaj uzantoj',
 );
 
 /** Spanish (Español)
@@ -955,19 +957,46 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Ilovesabbath
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'povwatch_pushed' => '[[$1]] 문서가 $2명의 사용자 주시문서 목록에 성공적으로 추가되었습니다.',
+	'povwatch' => 'POV주시',
+	'povwatch_desc' => '다른 사용자의 [[Special:PovWatch|주시 목록에 문서를 추가시키는]] 확장 기능',
+	'povwatch_no_session' => '에러: 세션 데이터를 잃어서 폼을 전달할 수 없습니다.',
+	'povwatch_not_allowed_push' => 'POV주시 관리자가 아니면, 주시 목록에 문서를 추가할 수 없습니다.',
+	'povwatch_already_subscribed' => '이미 POV주시를 수신하고 있습니다.',
+	'povwatch_subscribed' => '지금부터 POV주시를 수신합니다.',
+	'povwatch_not_subscribed' => 'POV주시를 수신하지 않으면 수신을 해제할 수 없습니다.',
+	'povwatch_unsubscribed' => 'POV주시의 수신을 해제했습니다.',
+	'povwatch_invalid_title' => '구체화된 제목이 부적절합니다.',
+	'povwatch_pushed' => '[[$1]] 문서가 $2 사용자의 {{PLURAL:$2|주시 목록|주시 목록들}}에 성공적으로 추가됐습니다.',
+	'povwatch_intro' => 'POV주시는 이것을 수신하는 관리자의 주시 목록에 논쟁 중인 문서를 추가할 수 있게 하는 서비스입니다.
+
+최근 추가된 주시 목록의 기록은 [[Special:PovWatch/log]]에서 볼 수 있습니다.',
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|수신자 목록]]을 볼 수 있습니다.',
 	'povwatch_subscriber_list_intro' => '<strong>수신자 목록</strong>',
+	'povwatch_not_allowed_subscribers' => '당신은 POV주시 수신자 목록을 볼 수 있는 권한이 없습니다.',
 	'povwatch_unknown_subpage' => '알려지지 않은 하위 페이지입니다.',
+	'povwatch_push' => '추가',
+	'povwatch_push_intro' => '수신 사용자의 주시 목록에 문서를 추가하려면 아래 폼을 이용하세요.
+제목을 정확히 입력해주세요: 존재하지 않는 제목도 추가될 수 있고, 추가된 제목은 지울 수 없기 때문입니다.',
 	'povwatch_title' => '제목:',
+	'povwatch_comment' => '의견:',
+	'povwatch_no_log' => '로그 엔트리가 없습니다.',
 	'povwatch_no_subscribers' => '수신자가 없습니다.',
+	'povwatch_unsubscribe_intro' => 'POV주시를 수신 중입니다.
+수신을 해제하려면 아래 버튼을 누르세요.',
 	'povwatch_unsubscribe' => '수신 해제',
+	'povwatch_subscribe_intro' => 'POV주시를 수신하고 있지 않습니다.
+수신하려면 아래 버튼을 누르세요.',
 	'povwatch_subscribe' => '수신',
-	'povwatch_added' => '덧붙이는',
-	'right-povwatch_user' => '다른 사용자의 주시문서 목록에 페이지를 추가해주세요',
+	'povwatch_added' => '추가됨',
+	'right-povwatch_admin' => '다른 사용자의 주시 목록에 문서를 추가할 수 있는 관리자 권한',
+	'right-povwatch_user' => '다른 사용자의 주시 목록에 문서를 추가',
+	'action-povwatch_admin' => 'POV주시 관리자',
+	'action-povwatch_user' => '다른 사용자의 주시 목록에 문서를 추가할 수 있는',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -2003,6 +2032,7 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'povwatch_already_subscribed' => '您已订阅过PovWatch',
@@ -2011,6 +2041,7 @@ $messages['zh-hans'] = array(
 	'povwatch_unsubscribed' => '您已取消订阅PovWatch',
 	'povwatch_subscriber_list_intro' => '<strong>订阅用户列表</strong>',
 	'povwatch_title' => '标题：',
+	'povwatch_comment' => '日志注释:',
 	'povwatch_no_subscribers' => '现时没有订阅用户。',
 	'povwatch_unsubscribe' => '取消订阅',
 	'povwatch_subscribe_intro' => '您并未订阅PovWatch。按下方的按钮订阅。',

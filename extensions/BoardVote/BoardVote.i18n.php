@@ -1816,7 +1816,7 @@ Necesitas tener {{PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber he
 	'boardvote_edits' => 'Ediciones',
 	'boardvote_days' => 'Días',
 	'boardvote_ip' => 'IP',
-	'boardvote_ua' => 'Navegador',
+	'boardvote_ua' => 'Agente de usuario',
 	'boardvote_listintro' => '<p>Esta en una lista con todos los votos que hasta ahora han sido registrados.
 $1 para los datos codificados.</p>',
 	'boardvote_dumplink' => 'Haz click aquí',

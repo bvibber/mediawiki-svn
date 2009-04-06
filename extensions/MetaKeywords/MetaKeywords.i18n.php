@@ -105,6 +105,13 @@ $messages['dsb'] = array(
 	'metakeywords-desc' => 'Dowólujo konfiguraćiju toflickowu <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> na mjenjowy rum',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'metakeywords-desc' => 'Επιτρέπει την διαμόρφωση των ετικετών <tt><nowiki><meta "keywords"></nowiki></tt> και <tt><nowiki><meta "description"></nowiki></tt> ανά περιοχή ονομάτων',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

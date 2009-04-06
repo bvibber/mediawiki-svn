@@ -335,6 +335,7 @@ $wgCustomToolbarMessages['bs'] = array(
 	'ct_attachment_caption' => 'Dodaj dodatak',
 	'ct_math_sample' => 'Ubaci LaTeX formulu ovdje',
 	'ct_math_tip_ins' => 'Ubaci matematičku formulu (LaTeX)',
+	'ct_math_caption' => 'Formula',
 	'ct_nowiki_caption' => 'Bez wikija',
 	'ct_horizontal_caption' => 'Vodoravna linija',
 	'ct_upload' => 'Postavljanje $1',
@@ -342,6 +343,7 @@ $wgCustomToolbarMessages['bs'] = array(
 	'ct_close' => 'Zatvori prozor',
 	'ct_success' => 'Postavljanje datoteke uspješno!',
 	'ct_user_user' => 'Korisnik',
+	'ct_user_tip' => 'Ubaci link na korisničku stranicu',
 	'ct_user_caption' => 'Korisnički link',
 	'ct_user_sample' => 'Korisničko ime',
 );
@@ -795,9 +797,10 @@ Por favor, comprobe o seu bloqueador de ventás emerxentes.',
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $wgCustomToolbarMessages['grc'] = array(
-	'ct_submit' => 'Ἱέναι!',
+	'ct_submit' => 'Ἰέναι!',
 	'ct_user_user' => 'Χρώμενος',
 	'ct_user_sample' => 'Ὄνομα χρωμένου',
 );
@@ -1858,7 +1861,7 @@ $wgCustomToolbarMessages['sv'] = array(
 	'ct_horizontal_tip' => 'Sätt in en horisontell linje (använd sparsamt)',
 	'ct_horizontal_caption' => 'Horisontell linje',
 	'ct_upload' => 'Ladda upp $1',
-	'ct_select' => 'Välj $1 för att ladda upp',
+	'ct_select' => 'Välj $1 för att ladda upp:',
 	'ct_submit' => 'Gå!',
 	'ct_close' => 'Stäng fönster',
 	'ct_success' => 'Filen har laddats upp!',

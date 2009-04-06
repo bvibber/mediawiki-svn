@@ -222,9 +222,10 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'searchbox-go' => 'Ἱέναι',
+	'searchbox-go' => 'Ἰέναι',
 	'searchbox-namespaces' => 'Ὀνοματεῖα:',
 );
 
@@ -522,6 +523,15 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'searchbox-search' => 'వెతుకు',
 	'searchbox-go' => 'వెళ్ళు',
+);
+
+/** Thai (ไทย)
+ * @author Mopza
+ */
+$messages['th'] = array(
+	'searchbox-search' => 'ค้นหา',
+	'searchbox-go' => 'ไป',
+	'searchbox-namespaces' => 'กลุ่มชื่อ:',
 );
 
 /** Tagalog (Tagalog)

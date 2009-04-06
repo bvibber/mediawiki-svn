@@ -961,6 +961,7 @@ $2',
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author McDutchie
  * @author PieRRoMaN
@@ -1001,7 +1002,7 @@ Vous devez [[Special:UserRights|ajouter l’utilisateur au groupe]] avant que vo
 	'whitelistnocalendar' => "<font color='red' size=3>Il semble que le module [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], une extension prérequise, n’ait pas été installée convenablement !</font>",
 	'whitelistoverview' => '== Vue générale des changements pour $1 ==',
 	'whitelistoverviewcd' => "* Modification de la date de '''$1''' pour [[:$2|$2]]",
-	'whitelistoverviewsa' => "* Configuration de l'accès à '''$1''' pour [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Configuration de l’accès à '''$1''' pour [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Retrait de l’accès à [[:$1|$1]]',
 	'whitelistoverviewna' => "* Ajout de [[:$1|$1]] à la liste blanche avec les droits de '''$2''' et comme date d’expiration le '''$3'''",
 	'whitelistrequest' => 'Demander un accès à plus de pages',
@@ -1009,7 +1010,7 @@ Vous devez [[Special:UserRights|ajouter l’utilisateur au groupe]] avant que vo
 
 $2',
 	'whitelistrequestconf' => 'Une demande d’accès pour de nouvelles pages a été envoyée à $1',
-	'whitelistnonrestricted' => "L'utilisateur '''$1''' n'a pas des droits restreints.
+	'whitelistnonrestricted' => "L’utilisateur '''$1''' n’a pas des droits restreints.
 Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.",
 	'whitelistnever' => 'jamais',
 	'whitelistnummatches' => ' - {{PLURAL:$1|une occurrence|$1 occurrences}}',
@@ -1135,7 +1136,7 @@ $messages['grc'] = array(
 	'whitelisttablemodifynone' => 'Οὐδέν',
 	'whitelisttableedit' => 'Μεταγράφειν',
 	'whitelisttableremove' => 'Άφαιρεῖν',
-	'whitelistnewtablereview' => 'Éπισκόπησις',
+	'whitelistnewtablereview' => 'Ἐπισκόπησις',
 	'whitelistnever' => 'οὔποτε',
 );
 

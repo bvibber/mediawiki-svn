@@ -97,9 +97,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'minnamelength-error' => 'Το όνομα χρήστη σας είναι πολύ μικρό. Το ελάχιστο όριο είναι $1.',
+	'minnamelength-desc' => 'Επιβολή ενός ελαχίστου μήκους ονόματος χρήστη',
 );
 
 /** Esperanto (Esperanto)

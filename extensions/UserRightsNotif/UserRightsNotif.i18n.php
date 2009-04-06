@@ -328,21 +328,22 @@ $2',
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'userrightsnotifysubject' => 'Changement d’appartenance à des groupes d’utilisateurs sur $1',
-	'userrightsnotifybody' => "Bonjour $1,
+	'userrightsnotifybody' => 'Bonjour $1,
 
-J’ai l'honneur de vous informer que votre appartenance aux groupes d'utilisateurs sur $2 a été modifiée par $3 le $4.
+J’ai l’honneur de vous informer que votre appartenance aux groupes d’utilisateurs sur $2 a été modifiée par $3 le $4.
 
 Ajouté : $5
 Retiré : $6
 
 Cordialement,
 
-$2",
+$2',
 	'userrightsnotif-desc' => 'Envoie un courriel de notification aux utilisateurs dont les droits ont été modifiés',
 );
 

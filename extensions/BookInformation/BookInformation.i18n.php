@@ -563,7 +563,7 @@ $messages['grc'] = array(
 	'bookinfo-result-title' => 'Ἐπιγραφή:',
 	'bookinfo-result-author' => 'Δημιουργός:',
 	'bookinfo-result-publisher' => 'Ἐκδότης:',
-	'bookinfo-result-year' => 'Ἐτός:',
+	'bookinfo-result-year' => 'Ἔτος:',
 );
 
 /** Swiss German (Alemannisch)

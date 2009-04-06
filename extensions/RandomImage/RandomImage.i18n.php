@@ -68,6 +68,13 @@ $messages['dsb'] = array(
 	'randomimage-desc' => 'Póbitujo pśipadny wuběrk multimedialnych datajow z pomocu toflicki <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'randomimage-desc' => 'Παρέχει ένα τυχαίο επιλογέα μέσου χρησιμοποιώντας το <randomimage />',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

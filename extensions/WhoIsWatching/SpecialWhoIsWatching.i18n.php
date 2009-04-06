@@ -240,6 +240,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Dereckson
  * @author Grondin
  * @author McDutchie
@@ -250,8 +251,8 @@ $messages['fr'] = array(
 	'whoiswatching' => 'Qui suit une page wiki',
 	'whoiswatching-desc' => 'Fournit une liste des utilisateurs qui suivent une page wiki',
 	'specialwhoiswatchingthepage' => 'Qui suit %s',
-	'specialwhoiswatchingusage' => "Cette page spéciale ne peut être utilisée seule.
-Veuillez utiliser la page [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d'entrée vers cette page spéciale.",
+	'specialwhoiswatchingusage' => 'Cette page spéciale ne peut être utilisée seule.
+Veuillez utiliser la page [[MediaWiki:Number_of_watching_users_pageview]] pour définir un point d’entrée vers cette page spéciale.',
 	'specialwhoiswatchingaddusers' => 'Ajouter les utilisateurs pour suivre la page',
 	'specialwhoiswatchingaddbtn' => 'Ajouter les utilisateurs sélectionnés',
 );

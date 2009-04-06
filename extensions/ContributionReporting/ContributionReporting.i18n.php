@@ -575,11 +575,13 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Consta
  * @author Crazymadlover
  * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'contributiontotal' => 'Συνολική συνεισφορά',
 	'contributionhistory' => 'Ιστορικό συνεισφορών',
 	'contrib-hist-name' => 'Όνομα',
 	'contrib-hist-date' => 'Ώρα και ημερομηνία',
@@ -595,6 +597,7 @@ $messages['el'] = array(
 	'contribstats-contributions' => 'Εισφορές',
 	'contribstats-total' => 'Σύνολο (USD)',
 	'contribstats-avg' => 'Μέσος Όρος (USD)',
+	'contribstats-max' => 'Μέγιστο (USD)',
 	'contribstats-percentage-ytd' => 'Ποσοστό (YTD)',
 	'contribstats-total-ytd' => 'Σύνολο (YTD)',
 	'contribstats-value-exactly' => 'Ακριβώς $1',
@@ -602,8 +605,11 @@ $messages['el'] = array(
 	'contribstats-value-from' => 'Από $1 έως $2',
 	'contribstats-value-over' => 'Πάνω από $1',
 	'fundraiserstats-date' => 'Ημερομηνία',
+	'fundraiserstats-day' => 'Ημέρα $1 από $2',
 	'fundraiserstats-contributions' => 'Εισφορές',
 	'fundraiserstats-total' => 'Σύνολο (USD)',
+	'fundraiserstats-tab-contributions' => 'Αριθμός συνεισφορών',
+	'fundraiserstats-tab-maximums' => 'Μέγιστα (USD)',
 );
 
 /** Esperanto (Esperanto)
@@ -2780,6 +2786,7 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'contrib-hist-name' => '名称',
+	'contribstats-month' => '月份',
 	'contribstats-value-over' => '超过 $1',
 	'fundraiserstats-date' => '日期',
 );

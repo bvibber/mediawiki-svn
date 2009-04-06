@@ -79,6 +79,13 @@ $messages['dsb'] = array(
 	'mootools12core-desc' => 'Pśidawa [http://mootools.net mootools-1.2-core-yc.js], kompaktny JavaScriptowy wobłukowy system, kuždemu bokoju',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'mootools12core-desc' => 'Προσθέτει το [http://mootools.net mootools-1.2-core-yc.js], ένα συμπυκνωμένο πλαίσιο εργασίας JavaScript, σε κάθε σελίδα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

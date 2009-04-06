@@ -387,9 +387,9 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'gep-desc' => 'Complète le formulaire de modification pour être plus convivial',
 	'gep-emailsubject' => '[$1] Suggestion de catégorie : $2',
-	'gep-emailbody' => "L'utilisateur « $1 » a suggéré la catégorie « $2 » pour le site « $3 ».",
-	'gep-emailfailure' => "Désolé, votre suggestion n'a pas pu être effectuée.",
-	'gep-emailsuccess' => "Merci d'avoir suggéré la catégorie : $1.",
+	'gep-emailbody' => 'L’utilisateur « $1 » a suggéré la catégorie « $2 » pour le site « $3 ».',
+	'gep-emailfailure' => 'Désolé, votre suggestion n’a pas pu être effectuée.',
+	'gep-emailsuccess' => 'Merci d’avoir suggéré la catégorie : $1.',
 	'gep-categories' => 'Catégories',
 	'gep-addcategory' => 'Ajouter une catégorie',
 	'gep-addcategorybutton' => 'Ajouter',
@@ -401,8 +401,8 @@ $messages['fr'] = array(
 	'gep-addsectionbutton' => 'Ajouter',
 	'gep-classicmode' => 'Mode classique',
 	'gep-genericmode' => 'Mode générique',
-	'gep-nosectioninstructions' => "Il n'y a aucune section dans cette page.
-Ajoutez-en en utilisant les outils dans la barre de menu.",
+	'gep-nosectioninstructions' => 'Il n’y a aucune section dans cette page.
+Ajoutez-en en utilisant les outils dans la barre de menu.',
 	'gep-nocategories' => 'Choisir au moins une catégorie avant de sauvegarder la page',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -1028,6 +1028,7 @@ $messages['sv'] = array(
 	'gep-categories' => 'Kategorier',
 	'gep-addcategory' => 'Lägg till en kategori',
 	'gep-addcategorybutton' => 'Lägg till',
+	'gep-sections' => 'Avsnitt',
 	'gep-addsection' => 'Lägg till ett avsnitt',
 	'gep-addsectionbutton' => 'Lägg till',
 );

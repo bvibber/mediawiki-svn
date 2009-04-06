@@ -68,6 +68,13 @@ $messages['dsb'] = array(
 	'emailaddressimage-desc' => 'Pśidawa <tt>&lt;email&gt;</tt> za zwobraznjenje e-mailoweje adresy ako wobraz',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'emailaddressimage-desc' => 'Προσθέτει το <tt>&lt;email&gt;</tt> για την προβολή μίας ηλεκτρονικής διεύθυνσης ως εικόνας',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

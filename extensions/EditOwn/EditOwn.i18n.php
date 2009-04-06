@@ -70,6 +70,13 @@ $messages['dsb'] = array(
 	'editown-desc' => 'Wužywarje bźez pšawa "editall" móžo jano boki wobźěłaś, kótarež su same napórali',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'editown-desc' => 'Οι χρήστες που δεν έχουν το δικαίωμα-επεξεργασίας μπορούν να επεξεργαστούν μόνο τις σελίδες που δημιούργησαν',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

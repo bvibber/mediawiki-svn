@@ -198,14 +198,15 @@ $messages['fa'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'userimages-desc' => "Génère des galeries d'images téléversées par un utilisateur avec <code><nowiki><userimage /></nowiki></code>",
+	'userimages-desc' => 'Génère des galeries d’images téléversées par un utilisateur avec <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Images téléversées par $1',
 	'userimages-noname' => 'Nom d’utilisateur invalide ou manquant.',
-	'userimages-noimages' => "$1 n’a pas téléversé d'image.",
+	'userimages-noimages' => '$1 n’a pas téléversé d’image.',
 );
 
 /** Galician (Galego)

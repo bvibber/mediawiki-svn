@@ -149,24 +149,30 @@ $messages['bs'] = array(
  * @author SMP
  */
 $messages['ca'] = array(
+	'onlinestatus-js-changed' => "El vostre estat s'ha canviat a «$1»",
+	'onlinestatus-js-error' => "Impossible canviar d'estat, el valor «$1» no és vàlid",
 	'onlinestatus-subtitle-offline' => 'Actualment aquest usuari no està connectat',
 	'onlinestatus-subtitle-online' => 'Actualment aquest usuari està connectat',
+	'onlinestatus-tab' => 'Estatus',
 	'onlinestatus-toggles-desc' => 'El vostre estat:',
 	'onlinestatus-toggles-explain' => "Us permet mostrar a la resta d'usuaris si us trobeu connectats al wiki.",
 	'onlinestatus-toggles-show' => "Mostra l'estat de connexió a la pàgina d'usuari",
 	'onlinestatus-toggle-offline' => 'Desconnectat',
 	'onlinestatus-toggle-online' => 'Connectat',
+	'tog-onlineOnLogin' => 'Canvia el meu estat a «en línia» en iniciar sessió',
+	'tog-offlineOnLogout' => 'Canvia el meu estat a «fora de línia» quan finalitzi la sessió',
 );
 
 /** Czech (Česky)
  * @author Danny B.
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'onlinestatus-desc' => 'Přidá možnost zobrazovat, zda je uživatel na wiki momentálně přítomný nebo ne',
 	'onlinestatus-js-anon' => 'Chyba: K využívání této funkce musíte být přihlášeni',
-	'onlinestatus-js-changed' => 'Váš stav byl změněn na „$1”',
-	'onlinestatus-js-error' => 'Nebylo možné změnit stav, hodnota „$1” je neplatná',
+	'onlinestatus-js-changed' => 'Váš stav byl změněn na „$1“',
+	'onlinestatus-js-error' => 'Nebylo možné změnit stav, hodnota „$1“ je neplatná',
 	'onlinestatus-subtitle-offline' => 'Tento uživatel je momentálně odpojený',
 	'onlinestatus-subtitle-online' => 'Tento uživatel je momentálně připojený',
 	'onlinestatus-tab' => 'Stav',

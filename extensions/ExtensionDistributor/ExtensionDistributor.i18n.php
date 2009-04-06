@@ -528,6 +528,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 $messages['eo'] = array(
 	'extensiondistributor' => 'Elŝuti kromprogramon por MediaWiki',
 	'extdist-desc' => 'Kromprogramo por distribui statikajn arkivojn de kromprogramoj',
+	'extdist-not-configured' => 'Bonvolu konfiguri $wgExtDistTarDir kaj $wgExtDistWorkingCopy',
 	'extdist-no-such-extension' => 'Kromprogramo "$1" ne ekzistas',
 	'extdist-no-such-version' => 'La kromprogramo "$1" ne ekzistas en la versio "$2".',
 	'extdist-choose-extension' => 'Elektu kiun kromprogramon tiun vi volas elŝuti.',
@@ -2300,6 +2301,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
+ * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'extensiondistributor' => '下载MediaWiki扩展',
@@ -2311,7 +2313,7 @@ $messages['zh-hans'] = array(
 	'extdist-choose-extension' => '选择您要去下载的扩展:',
 	'extdist-wc-empty' => '设置的工作复本目录无可发布之扩展！',
 	'extdist-submit-extension' => '继续',
-	'extdist-current-version' => '现时版本 (trunk)',
+	'extdist-current-version' => '开发员版 (trunk)',
 	'extdist-choose-version' => '
 <big>您现正下载 <b>$1</b> 扩展。</big>
 

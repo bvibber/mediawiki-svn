@@ -91,6 +91,13 @@ $messages['bs'] = array(
 	'newuseredit-summary' => 'Dodaje [[{{int:newusermessage-template}}|poruku dobrodošlice]] na nove korisničke stranice za razgovor',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'newuseredit-summary' => "Afegint [[{{int:newusermessage-template}}|missatge de benvinguda]] a la pàgina de discussió de l'usuari",
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

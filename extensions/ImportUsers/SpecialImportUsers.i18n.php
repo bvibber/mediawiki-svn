@@ -960,8 +960,13 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'importusers-uploadfile' => 'Йовкстамс файла',
+	'importusers-form-button' => 'Совавтомс',
 	'importusers-log-summary-all' => 'Весе',
+	'importusers-log-summary-added' => 'Поладозь',
 	'importusers-password' => 'совамо вал',
+	'importusers-email' => 'е-сёрма',
+	'importusers-realname' => 'алкуксонь лем',
 );
 
 /** Nahuatl (Nāhuatl)

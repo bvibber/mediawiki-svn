@@ -114,8 +114,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'categoryonupload-desc' => 'Προτρέπει κάποιον χρήστη να επιλέξει μια κατηγορία όταν επιφορτώνει ένα αρχείο',
 	'categoryonupload-label' => 'Κατηγορία:',
 );
 

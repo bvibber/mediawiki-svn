@@ -112,8 +112,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'mediafunctions-desc' => 'Λεξιαναλυτικές συναρτήσεις για την απόκτηση πληροφορίων σχετικών με αρχεία πολυμέσων',
 	'mediafunctions-invalid-title' => '"$1" δεν είναι έγκυρος τίτλος',
 	'mediafunctions-not-exist' => '"$1" δεν υπάρχει',
 );

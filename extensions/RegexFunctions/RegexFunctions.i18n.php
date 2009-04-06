@@ -65,6 +65,13 @@ $messages['dsb'] = array(
 	'regexfunctions-desc' => 'Parserowe funkcije za regularne wuraze',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'regexfunctions-desc' => 'Λεξιαναλυτικές συναρτήσεις τακτικών εκφράσεων',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

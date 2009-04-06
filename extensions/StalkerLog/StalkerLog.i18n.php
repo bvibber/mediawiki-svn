@@ -68,9 +68,11 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'stalkerlog-desc' => 'Dodaj [[Special:Log/stalkerlog|zapisnik]] prijava i odjava korisnika',
 	'stalkerlog-log-login' => 'prijavljen.',
 	'stalkerlog-log-logout' => 'odjavljen.',
 	'stalkerlog-log-type' => 'Zapisnik korisničke potvrde',
+	'stalkerlog-log-text' => 'Ovo je zapisnik korisničkih prijava i odjava.',
 );
 
 /** Czech (Česky)

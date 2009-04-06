@@ -378,6 +378,7 @@ $messages['eo'] = array(
  * @author Imre
  */
 $messages['es'] = array(
+	'spamregex-desc' => '[[Special:SpamRegex|Filtrar]] frases no deseadas en páginas editadas, basadas en expresiones regulares',
 	'spamregex-summary' => 'El texto fue encontrado en el resumen de página.',
 	'spamregex-currently-blocked' => "'''Frases actualmente bloqueadas:'''",
 	'spamregex-move' => 'La razón que ha ingresado contiene una frase bloqueada.',
@@ -395,6 +396,7 @@ $messages['es'] = array(
 	'spamregex-phrase-block' => 'Frase a bloquear:',
 	'spamregex-phrase-block-text' => 'bloquear frase en texto de página',
 	'spamregex-phrase-block-summary' => 'bloquear frase en resumen',
+	'spamregex-block-submit' => 'Block&nbsp;this&nbsp;frases',
 	'spamregex-text' => '(Texto)',
 	'spamregex-summary-log' => '(Resumen)',
 	'right-spamregex' => 'Bloquear frases spam a traves de [[Special:SpamRegex]]',

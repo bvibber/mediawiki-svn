@@ -100,6 +100,15 @@ $messages['dsb'] = array(
 	'nstab-comments' => 'Komentary',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'commentpages-desc' => 'Σελίδες σχολιασμού για την κύρια περιοχή ονομάτων',
+	'nstab-comments' => 'Σχόλιο',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

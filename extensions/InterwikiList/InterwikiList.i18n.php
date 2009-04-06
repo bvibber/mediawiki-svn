@@ -64,6 +64,7 @@ $messages['be-tarask'] = array(
 	'interwikilist-linkname' => 'Інтэрвікі-спасылкі',
 	'interwikilist-target' => 'Мэтавы URL-адрас',
 	'interwikilist-filter' => 'Сьпіс фільтраў',
+	'interwikilist-prefix' => 'Прэфікс інтервікі:',
 );
 
 /** Bulgarian (Български)
@@ -502,6 +503,13 @@ $messages['te'] = array(
 	'interwikilist-target' => 'లక్ష్యిత URL',
 	'interwikilist-filter' => 'జాబితా వడపోత',
 	'interwikilist-prefix' => 'అంతర్వికీ ఉపసర్గ:',
+);
+
+/** Thai (ไทย)
+ * @author Mopza
+ */
+$messages['th'] = array(
+	'interwikilist-linkname' => 'ลิงก์ข้ามภาษา',
 );
 
 /** Turkmen (Türkmençe)

@@ -72,6 +72,13 @@ $messages['cy'] = array(
 	'breadcrumbs-desc' => 'Yn dangos llwybr y defnyddiwr ar hyd y wici.',
 );
 
+/** Danish (Dansk)
+ * @author BabelFrode
+ */
+$messages['da'] = array(
+	'breadcrumbs-desc' => 'Viser brugerstien på wikien.',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'breadcrumbs-desc' => 'Zeigt den Weg des Benutzers durch das Wiki.',
@@ -82,6 +89,13 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'breadcrumbs-desc' => 'Pokazujo drogu wužywarja pśez wiki.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'breadcrumbs-desc' => 'Υποδεικνύει ποιες σελίδες επισκέφθηκε ο εκάστοτε χρήστης σε αυτό το βίκι.',
 );
 
 /** Esperanto (Esperanto)

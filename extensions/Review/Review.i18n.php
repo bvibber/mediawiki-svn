@@ -732,7 +732,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'review_sidebar_title' => 'Éπισκόπησις',
+	'review_sidebar_title' => 'Ἐπισκόπησις',
 	'review_total_statistics' => 'Συνολικόν',
 	'review_user_details_link' => '(λεπτομέρειαι)',
 	'review_topic' => 'Θέμα',
@@ -1141,14 +1141,19 @@ woh de „{{int:review_no_opinion}}“ ußjesooht häs.',
  * @author Robby
  */
 $messages['lb'] = array(
+	'review_sidebar_title' => 'Nokucken',
+	'review-desc' => 'Erlaabt et Benotzer fir Säiten [[Special:Review|nozekucken]].',
 	'review_save' => 'Versioun späicheren',
 	'review_page_link' => 'Statistike vum Nokucken',
+	'review_for_page' => 'Nokucke vun der Säit "$1"',
 	'review_error' => 'Et ass eppes falsch!',
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Versioun',
 	'review_version_link' => 'Versioun #$1',
 	'review_version_statistic_cell' => '$1 vu(n) $2',
+	'review_user_page_list' => 'De Benotzer huet dës Säiten nogekuckt:',
 	'review_user_details_link' => '(Detailer)',
+	'review_page_review' => 'Nokucke vun der Säit "$1"',
 	'review_blocked' => 'Dir sidd gespaart a kënnt net beim Nokucke vu Säite matmaachen.',
 	'review_topic' => 'Thema',
 	'review_no_opinion' => 'Keng Meenung',

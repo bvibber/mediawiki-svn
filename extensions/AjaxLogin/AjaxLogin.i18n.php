@@ -75,6 +75,19 @@ To buźo k drugemu bokoju wjasć a ty by mógał swóju aktualnu změnu zgubiś.
 	'ajaxlogin-create' => 'Konto załožyś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'ajaxlogin-desc' => 'Δυναμικό κουτί που επιτρέπει στους χρήστες να συνδεθούν και υπενθυμίζει τον κωδικό πρόσβασης',
+	'ajaxLogin1' => 'Για να ολοκληρώσετε τη σύνδεση σας, πρέπει να πληκτρολογήσετε ένα νέο κωδικό πρόσβασης.
+Αυτό θα σας απομακρύνει από αυτή τη σελίδα και ίσως χάσετε την τρέχουσα επεξεργασία.',
+	'ajaxLogin2' => "Είστε σίγουρος-η;
+Μπορεί να χάσετε τις αλλαγές σας σ' αυτή τη σελίδα αν την αφήσετε τώρα.",
+	'ajaxlogin-create' => 'Δημιουργία λογαριασμού',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Juan David Ruiz
@@ -302,6 +315,18 @@ $messages['ro'] = array(
 Aceasta înseamnă că vei părăsi pagina de editare şi vei pierde editările efectuate până acum.',
 	'ajaxLogin2' => 'Eşti sigur?
 Vei pierde editările efectuate dacă părăseşti această pagină acum.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'ajaxlogin-desc' => "Scatele dinamica ca permette a l'utinde de collegarse e arrecurdarse d'a passuord",
+	'ajaxLogin1' => "Pe combletà 'u collegamende, tu ha 'nzerì 'na passuord nova.
+Quiste te manne fore da 'a pàgene ca ste cange e puè perder tutte 'u cangiamende ca è fatte.",
+	'ajaxLogin2' => 'Si secure??
+Tu puè perdere le cangiaminde tue de sta pàgene ce tu lasse sta pàgene mò.',
+	'ajaxlogin-create' => "Ccreje 'nu cunde utende",
 );
 
 /** Russian (Русский)

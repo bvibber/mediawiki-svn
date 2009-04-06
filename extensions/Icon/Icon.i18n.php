@@ -21,13 +21,6 @@ $messages['qqq'] = array(
 	'icon-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'icon-badimage' => 'Hond kuva',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05
@@ -450,6 +443,8 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'icon-badimage' => 'Immaggine cattiva',
+	'icon-badwidth' => 'Larghezze sbagliate',
+	'icon-desc' => 'Te permette de ausà immaggine cumme icone e collegaminde a icone',
 );
 
 /** Russian (Русский)
@@ -546,6 +541,13 @@ $messages['vec'] = array(
 	'icon-badimage' => 'Imagine mia valida',
 	'icon-badwidth' => 'Larghessa mia valida',
 	'icon-desc' => 'Permete de doparar le imagini come icone e icone con colegamento',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'icon-badimage' => 'Hond kuva',
 );
 
 /** Vietnamese (Tiếng Việt)

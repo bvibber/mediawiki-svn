@@ -557,6 +557,7 @@ riddler|Arvuuttaja',
 
 /** French (Français)
  * @author Ashar Voultoiz
+ * @author Crochet.david
  * @author Grondin
  * @author Meithal
  * @author PieRRoMaN
@@ -578,7 +579,7 @@ sphinx|Sphinx',
 	'vote-results' => 'Résultats',
 	'vote-results-choice' => 'Choix',
 	'vote-results-count' => 'Voix',
-	'vote-results-none' => "Aucun vote n'a été placé pour le moment.",
+	'vote-results-none' => 'Aucun vote n’a été placé pour le moment.',
 	'vote-login' => 'Vous devez $1 pour voter.',
 	'vote-login-link' => 'vous connecter',
 	'vote-invalid-choice' => 'Vous devez choisir une des options disponibles.',

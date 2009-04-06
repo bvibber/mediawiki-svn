@@ -1338,15 +1338,15 @@ $messages['ksh'] = array(
 	'regexblock-expire-duration' => '1 Stund:1 hour,2 Stund:2 hours,3 Stund:3 hours,6 Stund:6 hours,12 Stund:12 hours,1 Dach:1 day,3 Däch:3 days,1 Woch:1 week,2 Woche:2 weeks,3 Woche:3 weeks,1 Mond:1 month,3 Mond:3 months,6 Mond:6 months,9 Mond:9 months,1 Johr:1 year,2 Johre:2 years,3 Johre:3 years,Iewich:infinite',
 	'regexblock-page-title' => 'Name Sperre övver <i lang="en">regular expressions</i>',
 	'regexblockstats' => 'Statistike övver et {{int:Regexblock-page-title}}',
-	'regexblock-help' => 'En hee däm Fommulaa kanns De en besptemmpte <code lang="en">IP</code>-Addreß odder enem Metmaacher singe Name shperre un domet et Schriive em Wikki verbeede.
+	'regexblock-help' => 'En hee däm Fommulaa kanns De en besptemmpte <code lang="en">IP</code>-Addreß odder enem Metmaacher singe Name shperre un dänne domet et Schriive em Wikki verbeede.
 Dat sullt mer bloß donn, öm Kappottmaacherei ze verhindere, un nur noh dä Räjelle, di mer doför han.
-\'\'Die Sigg hee määt et müjjelesch, Metmaacher ze shperre, die et (noch) nit jitt. Mer hann och leish Metmaacher met ähnlesche Name en einem Rötsch shperre. Zom Beishpell „Ens Versöke“ weet metjeshperrt, wam_mer „Ens Versöke 2“ shperre deiht, un esu wigger. Mer kann och janze <code lang="en">IP</code>-Addresse shperre, wat bedügg, dat keine, dä vun dä Addreß enlogge deiht, mieh Sigge ändere darf. Opjepaß: Hallve <code lang="en">IP</code>-Addresse will be treated by usernames wann et öm et Beshtemme vun Shperre jeiht. Wann keine Jrond för et Shperre aanjejovve es, weed ene Shtandatt-Tex jenumme.\'\'',
+\'\'Die Sigg hee määt et müjjelesch, Metmaacher ze shperre, die et (noch) nit jitt. Mer hann och leish Metmaacher met ähnlesche Name en einem Rötsch shperre. Zom Beishpell „Ens Versöke“ weet metjeshperrt, wam_mer „Ens Versöke 2“ shperre deiht, un esu wigger. Mer kann och janze <code lang="en">IP</code>-Addresse shperre, wat bedügg, dat keine, dä vun dä Addreß enlogge deiht, mieh Sigge ändere darf. Opjepaß: Hallve <code lang="en">IP</code>-Addresse will be ?? treated by usernames ?? wann et öm et Beshtemme vun Shperre jeiht. Wann keine Jrond för et Shperre aanjejovve es, weed ene Shtandatt-Tex jenumme.\'\'',
 	'regexblock-page-title-1' => 'Addresse övver <i lang="en">regular expressions</i> sperre',
 	'regexblock-reason-ip' => 'Et es jraad verbodde, met hee dä IP-Addräß aam Wiki jet ze ändere.
 Dat litt dodraan, dat zoh vill Driß drövver jemaat wood.
 Dat moß ävver nit vun Dir jekumme sin, et kann vun Jedem jekumme sin,
 dä di Address och ens jehatt hät.
-Wann De meins, dat dat esu nit sinn sullt, dann donn $1.',
+Wann De meins, dat dat esu nit sinn sullt, dann donn [[$1|Desch melde]].',
 	'regexblock-reason-name' => 'Dä Metmaacher-Name es jesperrt un kann kei Sigge ändere.
 För jewöhnlesch deiht dat bedügge, dat dä zevill Driß jemaat hät.
 Wann de meins, dat es nit en Odenung, [[$1|lohß et uns weße]].',
@@ -1377,8 +1377,8 @@ Wann de meins, dat es nit en Odenung, [[$1|lohß et uns weße]], odder nemm janz
 	'regexblock-view-account' => '(Neu Aanmelde verbodde)',
 	'regexblock-view-reason' => 'Jrund: $1',
 	'regexblock-view-reason-default' => '— keine Jrund aanjejovve —',
-	'regexblock-view-block-infinite' => 'för iewisch Shperre',
-	'regexblock-view-block-temporary' => 'leuf uß aam',
+	'regexblock-view-block-infinite' => 'för iewisch jesperrt',
+	'regexblock-view-block-temporary' => 'leuf uß aam/öm',
 	'regexblock-view-block-expired' => 'Ußjeloufe',
 	'regexblock-view-block-by' => 'Jesperrt vum:',
 	'regexblock-view-block-unblock' => 'Sperr ophävve',

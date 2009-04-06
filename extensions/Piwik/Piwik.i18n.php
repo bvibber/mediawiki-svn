@@ -147,6 +147,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'piwik-countries' => 'Χώρες',
+	'piwik-browsers' => 'Φυλλομετρητές',
 );
 
 /** Esperanto (Esperanto)

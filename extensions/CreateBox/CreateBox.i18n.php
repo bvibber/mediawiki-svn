@@ -502,6 +502,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'createbox-desc' => 'scatele de input specializzate pe le ccreaziune de le pàggene',
 	'createbox-create' => 'Ccreje',
 );
 

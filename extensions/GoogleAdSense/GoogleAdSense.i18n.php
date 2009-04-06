@@ -79,6 +79,13 @@ $messages['dsb'] = array(
 	'googleadsense-desc' => 'Pśidawa [http://www.google.com/adsense Google AdSense] k nabocnej smuze',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'googleadsense-desc' => 'Προσθέτει το [http://www.google.com/adsense Google AdSense] στην μπάρα εργασίας',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

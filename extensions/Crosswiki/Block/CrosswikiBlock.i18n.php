@@ -2076,6 +2076,15 @@ $messages['tg-cyrl'] = array(
 * [[$4]]",
 );
 
+/** Thai (ไทย)
+ * @author Mopza
+ */
+$messages['th'] = array(
+	'crosswikiblock-expiry' => 'หมดอายุ:',
+	'crosswikiblock-reason' => 'เหตุผล:',
+	'crosswikiblock-submit' => 'บล็อกผู้ใช้รายนี้',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -2122,13 +2131,49 @@ Magbalik sa:
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Mach
  * @author Suelnur
  */
 $messages['tr'] = array(
+	'crosswikiblock-desc' => '[[Special:Crosswikiblock|Özel bir sayfa]] kullanarak diğer vikilerdeki kullanıcıları engellemeye izin verir',
+	'crosswikiblock' => 'Diğer vikide kullanıcıyı engelle',
+	'crosswikiblock-header' => 'Bu sayfa diğer vikide kullanıcı engellemeye izin verir.
+Lütfen bunu gerçekleştirmeye izninizin olduğunu ve eylemlerinizin tüm ilkelerle uyuştuğunu kontrol edin.',
+	'crosswikiblock-target' => 'IP adresi veya kullanıcı adı ve hedef viki:',
+	'crosswikiblock-expiry' => 'Bitiş:',
 	'crosswikiblock-reason' => 'Gerekçe:',
 	'crosswikiblock-submit' => 'Bu kullanıcıyı engelle',
+	'crosswikiblock-anononly' => 'Sadece anonim kullanıcıları engelle',
+	'crosswikiblock-nocreate' => 'Hesap oluşturmayı önle',
+	'crosswikiblock-autoblock' => 'Bu kullanıcı tarafından kullanılan son IP adresini, ve değişiklik yapmaya çalıştıkları mütakip her IP adresini otomatik olarak engelle',
+	'crosswikiblock-noemail' => 'Kullanıcının e-posta göndermesini önle',
+	'crosswikiunblock' => 'Diğer vikide kullanıcının engellemesini kaldır',
+	'crosswikiunblock-header' => 'Bu sayfa diğer vikide kullanıcının engellemesinin kaldırılmasına izin verir.
+Lütfen bunu gerçekleştirmeye izninizin olduğunu ve eylemlerinizin tüm ilkelerle uyuştuğunu kontrol edin.',
+	'crosswikiunblock-user' => 'Kullanıcı adı, IP adresi veya engelleme IDsi ve hedef viki:',
 	'crosswikiunblock-reason' => 'Neden:',
+	'crosswikiunblock-submit' => 'Bu kullanıcının engellemesini kaldır',
+	'crosswikiunblock-success' => "'''$1''' kullanıcısı başarıyla engellemesi kaldırıldı.
+
+Geri dön:
+* [[Special:CrosswikiBlock|Engelleme formu]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Herhangi bir kullanıcı adı verilmedi',
+	'crosswikiblock-local' => 'Yerel engellemeler bu arayüz ile desteklenmez. [[Special:BlockIP|{{int:blockip}}]] kullanın',
+	'crosswikiblock-dbnotfound' => 'Veritabanı $1 mevcut değil',
+	'crosswikiblock-noname' => '"$1" geçerli bir kullanıcı adı değil.',
+	'crosswikiblock-nouser' => '"$3" kullanıcısı bulunamadı.',
+	'crosswikiblock-noexpiry' => 'Geçersiz bitiş: $1.',
+	'crosswikiblock-noreason' => 'Neden belirtilmedi.',
+	'crosswikiblock-alreadyblocked' => '$3 kullanıcısı zaten engellendi.',
+	'crosswikiblock-noblock' => 'Bu kullanıcı engellenmemiş.',
+	'crosswikiblock-success' => "'''$3''' kullanıcısı başarıyla engellendi.
+
+Geri dön:
+* [[Special:CrosswikiBlock|Engelleme formu]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Yerel engelleme kaldırmaları bu arayüz ile desteklenmez. [[Special:IPBlockList|{{int:ipblocklist}}]] kullanın',
 );
 
 /** Vèneto (Vèneto)

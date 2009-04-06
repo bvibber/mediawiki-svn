@@ -70,6 +70,13 @@ $messages['dsb'] = array(
 	'jskit-desc' => 'Integrěrujo rědy JS-kita na wikijowem boku',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'jskit-desc' => 'Ενσωματώνει τα εργαλεία js-kit σε κάποια σελίδα wiki',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Sanbec

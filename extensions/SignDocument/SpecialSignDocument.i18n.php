@@ -896,18 +896,31 @@ $messages['es'] = array(
 	'sign-phone' => 'Número de teléfono:',
 	'sign-bday' => 'Edad:',
 	'sign-email' => 'Dirección de correo electrónico:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> indica campos requeridos.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Nota: Información no listada será todavía visible para los moderadores.</i></small>',
+	'sign-list-anonymous' => 'Listar anónimamente',
+	'sign-list-hideaddress' => 'No listar dirección',
+	'sign-list-hideextaddress' => 'No listar ciudad, estado/región/departamento, código postal, o ciudad',
+	'sign-list-hidephone' => 'No listar teléfono',
+	'sign-list-hidebday' => 'No listar edad',
+	'sign-list-hideemail' => 'No listar correo electrónico',
 	'sign-submit' => 'Firmar documento',
 	'sig-success' => 'Ha firmado exitosamente el documento.',
+	'sign-view-selectfields' => '<b>Campos a mostrar:</b>',
+	'sign-viewfield-entryid' => 'Ingresar ID',
 	'sign-viewfield-realname' => 'Nombre',
 	'sign-viewfield-address' => 'Dirección',
 	'sign-viewfield-city' => 'Ciudad',
 	'sign-viewfield-state' => 'Estado',
 	'sign-viewfield-country' => 'País',
+	'sign-viewfield-zip' => 'Código postal',
 	'sign-viewfield-ip' => 'Dirección IP',
+	'sign-viewfield-agent' => 'Agente de usuario',
 	'sign-viewfield-phone' => 'Teléfono',
 	'sign-viewfield-email' => 'Correo electrónico',
 	'sign-viewfield-age' => 'Edad',
 	'sign-viewfield-options' => 'Opciones',
+	'sign-viewsigs-intro' => 'Lo mostrado abajo son las firmas registradas para <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen' => 'Firma esta actualmente habilitada para este documento.',
 	'sign-sigadmin-close' => 'Deshabilitar firma',
 	'sign-sigadmin-currentlyclosed' => 'Firma actualmente está deshabilitada para este documento.',
@@ -921,9 +934,22 @@ $messages['es'] = array(
 	'sig-anonymous' => '<i>Anónimo</i>',
 	'sig-private' => '<i>Privado</i>',
 	'sign-sigdetails' => 'detalles de firma',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|discusión]] • <!--
+-->[[Special:Contributions/$1|contribuciones]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|bloquear usuario]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} bloquear registro] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+--></span>',
 	'sign-viewfield-reviewedby' => 'Revisor',
 	'sign-viewfield-reviewcomment' => 'Comentario',
+	'sign-detail-uniquequery' => 'Entidades similares',
+	'sign-reviewsig' => 'Revisar firma',
 	'sign-review-comment' => 'Comentario',
+	'sign-submitreview' => 'Enviar revisión',
 	'sign-uniquequery-similarname' => 'Nombre similar',
 	'sign-uniquequery-similaraddress' => 'Dirección similar',
 	'sign-uniquequery-similarphone' => 'Teléfono similar',

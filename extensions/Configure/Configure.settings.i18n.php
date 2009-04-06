@@ -1765,6 +1765,7 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
+ * @author IAlex
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -2321,6 +2322,19 @@ $messages['dsb'] = array(
 	'configure-setting-desc' => 'Wopisanja za konfiguraciske nastajenja MediaWiki',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'configure-setting-wgSitename' => 'Ονομασία ιστοτόπου',
+	'configure-setting-wgDBtype' => 'Τύπος δεδομένων για χρήση',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Τίτλος σελίδας',
+	'configure-setting-wgExtraSubtitle' => 'Υπότιτλος (εμφανίζεται κάτω από κάθε τίτλο σελίδας)',
+	'configure-setting-wgMaxArticleSize' => 'Μέγιστο μέγεθος σελίδας (kB)',
+	'configure-setting-wgAutopromote-value' => 'Συνθήκες',
+	'configure-setting-wgDebugLogGroups-value' => 'Αρχείο',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -2412,6 +2426,7 @@ $messages['es'] = array(
 	'configure-setting-wgSitename' => 'Nombre de sitio',
 	'configure-setting-wgActionPaths-key' => 'Acción',
 	'configure-setting-wgActionPaths-value' => 'Modelo de URL',
+	'configure-setting-wgCheckDBSchema' => 'Verifiqueb que la base de datos está actualizada por cada vista de la página (desaprobado)',
 	'configure-setting-wgDBname' => 'Nombre de la base de datos a usar',
 	'configure-setting-wgDBport' => 'Puerto para el servidor de base de datos',
 	'configure-setting-wgDBtype' => 'Tipo de base de datos a usar',
@@ -2420,21 +2435,38 @@ $messages['es'] = array(
 	'configure-setting-wgSharedPrefix' => 'Prefijo de base de datos compartida',
 	'configure-setting-wgSharedTables' => 'Tablas a compartir',
 	'configure-setting-wgCustomConvertCommand' => 'Escalador alternativo de imagen',
+	'configure-setting-wgGenerateThumbnailOnParse' => 'Generar miniaturas cuando las páginas que los contienen son analizadas',
+	'configure-setting-wgIgnoreImageErrors' => 'No mostrar mensajes de error para imágenes',
 	'configure-setting-wgImageLimits' => 'límites de tamaño de imagen para páginas de descripción',
 	'configure-setting-wgMaxAnimatedGifArea' => 'Máxima área en pixeles para GIFs animados',
 	'configure-setting-wgMaxImageArea' => 'Máxima área en pixeles para imágenes',
 	'configure-setting-wgMediaHandlers-key' => 'Tipo MIME',
+	'configure-setting-wgShowEXIF' => 'Mostrar datos EXIF en páginas de descripción de archivo',
+	'configure-setting-wgThumbLimits' => 'Tamaños miniaturas de imagenes permitidas',
+	'configure-setting-wgTrustedMediaFormats' => "Tipos media y tipos MIME los cuales son considerados 'seguros'",
+	'configure-setting-wgMainCacheType' => 'Tipo de sistema principal de cache',
+	'configure-setting-wgFileCacheDirectory' => 'Directorio cache de archivo',
+	'configure-setting-wgTranscludeCacheExpiry' => 'Expiración de cache para transclusión interwiki',
+	'configure-setting-wgUseFileCache' => 'Usar el cache de archivo',
+	'configure-setting-wgUseGzip' => 'Usar codificación GZIP',
+	'configure-setting-wgAllowDisplayTitle' => 'Permitir el uso de <nowiki>{{DISPLAYTITLE}}</nowiki>',
 	'configure-setting-wgCleanSignatures' => 'Sustituir plantillas en firma',
+	'configure-setting-wgGrammarForms' => 'Formularios de gramática para funciones analizadoras de GRAMATICA',
 	'configure-setting-wgMaxPPNodeCount' => 'Máximo número de nodos que el preprocesador analizará',
 	'configure-setting-wgMaxTemplateDepth' => 'Límite de profundidad de plantilla para preprocesador',
 	'configure-setting-wgParserConf' => 'Configuración de analizador',
 	'configure-setting-wgParserCacheExpireTime' => 'Tiempo de expiración del cache del analizador',
+	'configure-setting-wgRestrictDisplayTitle' => 'Requiere el uso de <nowiki>{{DISPLAYTITLE}}</nowiki> para normalizar al mismo título de página canónico',
 	'configure-setting-wgAmericanDates' => "Requiere 'May 12' en vez de '12 May' en inglés",
 	'configure-setting-wgDisableLangConversion' => 'Deshabilitar conversión de lenguaje',
 	'configure-setting-wgDisableTitleConversion' => 'Deshabilitar conversión de variante de lenguaje para títulos de página',
+	'configure-setting-wgEditEncoding' => 'Caracteres no explicitamente convertidos por codificsción de entrada',
+	'configure-setting-wgInputEncoding' => 'Codificación de texto de entrada',
 	'configure-setting-wgInterwikiMagic' => 'Mostrar vínculos interwiki en una página especial',
 	'configure-setting-wgLanguageCode' => 'Código de lenguaje del sitio',
+	'configure-setting-wgLoginLanguageSelector' => 'Mostrar un selector de lenguaje en inicio de sesión de usuario y formularios de registro',
 	'configure-setting-wgTranslateNumerals' => 'Números transliterados',
+	'configure-setting-wgUseDynamicDates' => 'Reformatear datos vinculados',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Título de página',
 	'configure-setting-wgArticleRobotPolicies-value' => 'Política sobre robots',
 	'configure-setting-wgCapitalLinks' => 'El primer caracter en todas los títulos de página es mayúscula',
@@ -2457,13 +2489,36 @@ $messages['es'] = array(
 	'configure-setting-wgAllowSpecialInclusion' => 'Permitir inclusión de páginas especiales',
 	'configure-setting-wgExportAllowHistory' => 'Permitir exportaciones para incluir en historial total',
 	'configure-setting-wgExportAllowListContributors' => 'Permitir una lista de contribuyentes a ser exportada',
+	'configure-setting-wgLogHeaders' => 'Registrar descripciones',
+	'configure-setting-wgLogNames' => 'Registrar nombres',
+	'configure-setting-wgLogRestrictions' => 'Registrar restricciones de acceso',
+	'configure-setting-wgLogRestrictions-key' => 'Registrar tipo',
 	'configure-setting-wgLogRestrictions-value' => 'Derecho requerido para leer',
+	'configure-setting-wgLogTypes' => 'Registrat tipos',
+	'configure-setting-wgMaxRedirectLinksRetrieved' => 'Número máximo de vínculos a una página de redirección listado en Special:Whatlinkshere/RedirectDestination.',
+	'configure-setting-wgSpecialPageGroups' => 'Grupos de páginas especiales',
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupo',
+	'configure-setting-wgSpecialVersionShowHooks' => 'mostrar los contenidos de $wgHooks en Special:Versión',
+	'configure-setting-wgAutopromote' => 'Condiciones de promoción automática de usuario a grupos específicos',
 	'configure-setting-wgAutopromote-value' => 'Condiciones',
+	'configure-setting-wgAccountCreationThrottle' => 'Número de cuentas por cada dirección IP que se pueden crear',
+	'configure-setting-wgAllowPageInfo' => 'Permitir la acción de información',
+	'configure-setting-wgAutoblockExpiry' => 'Número de segundos antes que las entradas de autobloqueo expiren',
+	'configure-setting-wgDisabledActions' => 'Acciones de página deshabilitadas',
+	'configure-setting-wgEnableAPI' => 'Habilitar API',
+	'configure-setting-wgImplicitGroups' => 'Grupos los cuales no están mostrados en [[Special:ListUsers]]',
+	'configure-setting-wgRestrictionTypes' => 'Acciones que pueden ser restringidas',
+	'configure-setting-wgSpamRegex' => 'Expresiones regulares del filtro de spam',
 	'configure-setting-wgWhitelistRead' => 'Páginas que un usuario anónimo puede ver',
+	'configure-setting-wgEmailAuthentication' => 'Requerir autenticación de direcciones de correo eectrónico para funciones de correo electrónico',
+	'configure-setting-wgEmergencyContact' => 'Correo electrónico del administrador del sitio',
 	'configure-setting-wgEnableEmail' => 'Habilitar características de correo electrónico',
 	'configure-setting-wgPasswordSender' => 'Dirección de correo electrónico recordador de contraseña',
+	'configure-setting-wgPasswordReminderResendTime' => 'Tiempo mínimo, en horas, el cual debe transcurrir entre recordadores de contraseña',
 	'configure-setting-wgDebugLogGroups-value' => 'Archivo',
+	'configure-setting-wgJobRunRate' => 'Número de taeas a ejecutar por vista de página',
+	'configure-setting-wgCookiePrefix' => 'Personalizar prefijo cookie',
+	'configure-setting-wgCookieSecure' => 'Cookies seguros',
 	'configure-setting-wgDisableCookieCheck' => 'Deshabilitar coockies de sesión',
 	'configure-setting-wgSessionName' => 'Nombre de sesión',
 	'configure-setting-wgAllowSlowParserFunctions' => 'Permitir funciones de analizador lento',
@@ -2510,6 +2565,8 @@ $messages['es'] = array(
 	'configure-setting-wgSVGConverters-key' => 'Nombre de convertidor',
 	'configure-setting-wgSVGConverters-value' => 'Comando de conversión',
 	'configure-setting-wgSVGMaxSize' => 'Tamaño máximo para escalado SVG',
+	'configure-setting-wgParserCacheType' => 'Tipo de cache de analizador',
+	'configure-setting-wgEnableParserCache' => 'Habilitar cache de analizador',
 	'configure-setting-wgXMLMimeTypes-key' => 'Tipo MIME',
 	'configure-setting-wgMimeType' => 'Tipo MIME de páginas wiki',
 	'configure-setting-wgLocaltimezone' => 'Huso horario local',
@@ -2518,8 +2575,16 @@ $messages['es'] = array(
 	'configure-setting-wgArticlePath' => 'Ruta de artículo',
 	'configure-setting-wgRCLinkLimits' => 'Límite de cambios en cambios recientes',
 	'configure-setting-wgRCLinkDays' => 'Límite de días en cambios recientes',
+	'configure-setting-wgRCMaxAge' => 'Edad mínima para items de cambios recientes a ser purgados',
+	'configure-setting-wgShowUpdatedMarker' => 'Mostrar "Actualizado (desde mi última visita)" marcador en cambios recientes, listas de vigilancia y vistas de páginas historial',
+	'configure-setting-wgRC2UDPAddress' => 'Dirección para notificación de cambios recientes UDP',
+	'configure-setting-wgRC2UDPInterwikiPrefix' => 'Agregar un prefijo interwiki a las notificaciones de cambios recientes UDP',
 	'configure-setting-wgBlockAllowsUTEdit' => 'Permitir a un usuario bloqueado editar su propia página de discusión',
+	'configure-setting-wgSysopEmailBans' => 'Permite a los administradores prohibir el acceso a usuarios [[Special:EmailUser]]',
+	'configure-setting-wgSysopRangeBans' => 'Permitir a los administradores prohibir rangos IP',
+	'configure-setting-wgSysopUserBans' => 'Permitir a los administradores prohibir usuarios que han iniciado sesión',
 	'configure-setting-wgEnotifMaxRecips' => 'Número máximo de usuarios a postear a la vez cuando se use correo electrónico impersonal',
+	'configure-setting-wgEnotifUseJobQ' => 'Enviar correos electrónicos a través de la cola de trabajo',
 );
 
 /** Basque (Euskara)
@@ -2796,6 +2861,7 @@ $messages['fr'] = array(
 	'configure-setting-wgThumbUpright' => "Facteur d'ajustement de largeur pour les images redimensionnées avec « upright »",
 	'configure-setting-wgShowEXIF' => 'Afficher les données EXIF sur les pages de description des fichiers',
 	'configure-setting-wgThumbLimits' => 'Tailles autorisées des miniatures des images',
+	'configure-setting-wgUseImageResize' => 'Activer le redimensionnement dynamique des images côté serveur',
 	'configure-setting-wgTrustedMediaFormats' => 'Types média et MIME qui sont considérés comme « sûrs »',
 	'configure-setting-wgTiffThumbnailType' => 'Extension de fichier et type mime à utiliser pour transformer les images TIFF',
 	'configure-setting-wgMainCacheType' => 'Type du cache principal',
@@ -2874,6 +2940,7 @@ $messages['fr'] = array(
 	'configure-setting-wgAjaxLicensePreview' => 'Utiliser AJAX pour prévisualiser les licences des fichiers téléchargés',
 	'configure-setting-wgAllowCopyUploads' => 'Autoriser la copie de fichiers depuis des URL',
 	'configure-setting-wgCheckFileExtensions' => "Vérifier l'extension des fichiers importés",
+	'configure-setting-wgCopyUploadTimeout' => 'Temps limite pour copier les fichiers en utilisant le téléversement par URL sur Special:Upload',
 	'configure-setting-wgEnableUploads' => 'Autorise les imports',
 	'configure-setting-wgFileBlacklist' => 'Extensions de fichiers non permises',
 	'configure-setting-wgFileExtensions' => 'Extensions de fichiers préférées',
@@ -3090,6 +3157,8 @@ $messages['fr'] = array(
 	'configure-setting-wgAllowUserSkin' => 'Autoriser les utilisateurs à choisir leur habillage',
 	'configure-setting-wgDefaultUserOptions' => 'Options des utilisateurs par défaut',
 	'configure-setting-wgDisableAnonTalk' => 'Désactiver les page de discussion pour les utilisateurs anonymes',
+	'configure-setting-wgInvalidUsernameCharacters' => 'Caractères interdits lors de la création de compte',
+	'configure-setting-wgUserrightsInterwikiDelimiter' => "Caractère utilisé comme délimiteur pour les droits d'utilisateurs interwiki",
 	'configure-setting-wgMaxNameChars' => "Nombre maximum d'octets pour les noms d'utilisateur",
 	'configure-setting-wgMaxSigChars' => 'Longueur maximale des signatures personnalisées',
 	'configure-setting-wgMinimalPasswordLength' => 'Longueur minimale des mots de passe',
@@ -3175,7 +3244,7 @@ $messages['fr'] = array(
 	'configure-setting-wgLocalMessageCache' => 'Dossier du cache local des messages',
 	'configure-setting-wgMsgCacheExpiry' => "Temps d'expiration du cache des messages",
 	'configure-setting-wgCheckSerialized' => 'Vérifier si les fichiers sérailsés sont à jour',
-	'configure-setting-wgLocalMessageCacheSerialized' => 'Définit le format du cache local des messages',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'Utiliser le format sérialisé de PHP pour le cache des messages local',
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'Taille maximale des messages mis en cache, en octets',
 	'configure-setting-wgParserCacheType' => 'Type du cache du parseur',
 	'configure-setting-wgEnableParserCache' => 'Activer le cache du parseur',
@@ -3730,7 +3799,7 @@ $messages['gl'] = array(
 	'configure-setting-wgLocalMessageCache' => 'Directorio para a caché das mensaxes locais',
 	'configure-setting-wgMsgCacheExpiry' => 'Caducidade da caché da mensaxe',
 	'configure-setting-wgCheckSerialized' => 'Comprobar se os ficheiros de contrasinais están actualizados',
-	'configure-setting-wgLocalMessageCacheSerialized' => 'Define o formato local da caché',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'Use o formato PHP serializado para a caché das mensaxes locais',
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'Tamaño máximo en bytes das entradas da caché das mensaxes',
 	'configure-setting-wgParserCacheType' => 'Tipo da caché do analizador',
 	'configure-setting-wgEnableParserCache' => 'Activar a caché do analizador',
@@ -3909,6 +3978,7 @@ $messages['gsw'] = array(
 	'configure-setting-wgThumbUpright' => 'Aapassigsfaktor fir d Breiti vu Bilder, wu mit „upright“ yybunde sin',
 	'configure-setting-wgShowEXIF' => 'EXIF-Daten uf Dateibschryybigssyten aazeige',
 	'configure-setting-wgThumbLimits' => 'Thumbnailgreßine, wu zuegloo sin',
+	'configure-setting-wgUseImageResize' => 'Dynamischi Greßenänderige vu Bilder uf dr Serversyte megli mache',
 	'configure-setting-wgTrustedMediaFormats' => 'Mediatypen un MIME-Types, wu as „nit gfährlig“ yygstuft wäre',
 	'configure-setting-wgTiffThumbnailType' => 'Dateierwyterig un Mime-Type, wu brucht wäre go TIFF-Bilder umzwandle in',
 	'configure-setting-wgMainCacheType' => 'Typ vum Hauptcachingsyschtem',
@@ -3987,6 +4057,7 @@ $messages['gsw'] = array(
 	'configure-setting-wgAjaxLicensePreview' => 'AJAX verwände go ne Vorschau vu dr Lizänz aazeige bim Uffelade',
 	'configure-setting-wgAllowCopyUploads' => 'Uffelade vu URL zueloo',
 	'configure-setting-wgCheckFileExtensions' => 'Dateierwyterigen iberpriefe',
+	'configure-setting-wgCopyUploadTimeout' => 'Uuszyt zum Dateie kopiere bim Ufelade iber URL uf Special:Upload',
 	'configure-setting-wgEnableUploads' => 'Uffelade zueloo',
 	'configure-setting-wgFileBlacklist' => 'Dateierwyterige, wu nit zuegloo sin',
 	'configure-setting-wgFileExtensions' => 'Bevorzugti Dateierwyterige',
@@ -4204,6 +4275,8 @@ n',
 	'configure-setting-wgAllowUserSkin' => 'Benutzer derfen ihri Benutzeroberflächi ändere',
 	'configure-setting-wgDefaultUserOptions' => 'Voryygstellti Benutzeryystellige',
 	'configure-setting-wgDisableAnonTalk' => 'Diskussionssyte fir anonymi Benutzer (nit aagmäldet) deaktiviere',
+	'configure-setting-wgInvalidUsernameCharacters' => 'Zeiche wu bim Aalege vu neje Benutzerkonte sotte verhinderet wäre',
+	'configure-setting-wgUserrightsInterwikiDelimiter' => 'Zeiche wu as Begänzigszeiche bruucht wird bim Tescht fir Interwiki-Benutzerrächt',
 	'configure-setting-wgMaxNameChars' => 'Maximali Byte-Lengi vun eme Benutzername',
 	'configure-setting-wgMaxSigChars' => 'Maximali Lengi vu aapasste Signature',
 	'configure-setting-wgMinimalPasswordLength' => 'Minimal Passwortlengi',
@@ -4289,7 +4362,7 @@ n',
 	'configure-setting-wgLocalMessageCache' => 'Verzeichnis fir dr lokal Nachrichtecache',
 	'configure-setting-wgMsgCacheExpiry' => 'Giltigkeitsduur vum Nochrichtecache',
 	'configure-setting-wgCheckSerialized' => 'Iberpriefen, eb di serialisierte Dateien aktuäll sin',
-	'configure-setting-wgLocalMessageCacheSerialized' => 'Definiert Format vum lokale Cache',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'Brucht e PHP-serialisiert Format vum lokale Cache',
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'Maximali Greßi vun eme Yytrag im Nochrichtecache in Byte',
 	'configure-setting-wgParserCacheType' => 'Typ vum Paserscache',
 	'configure-setting-wgEnableParserCache' => 'Parsercache aktiviere',
@@ -4770,6 +4843,7 @@ $messages['ja'] = array(
 	'configure-setting-wgThumbUpright' => 'upright サムネイルの幅調整係数',
 	'configure-setting-wgShowEXIF' => 'ファイル解説ページでEXIFデータを表示する',
 	'configure-setting-wgThumbLimits' => '画像サムネイルの許可されたサイズ',
+	'configure-setting-wgUseImageResize' => 'サーバー側での動的な画像リサイズを有効にする',
 	'configure-setting-wgTrustedMediaFormats' => '「安全」だと考えられるメディアタイプおよびMIMEタイプ',
 	'configure-setting-wgTiffThumbnailType' => 'TIFF画像から変換するファイル形式の拡張子およびMIME型',
 	'configure-setting-wgMainCacheType' => 'メインのキャッシュシステムのタイプ',
@@ -4848,6 +4922,7 @@ $messages['ja'] = array(
 	'configure-setting-wgAjaxLicensePreview' => 'AJAX を使ってアップロード時にライセンスをプレビューできるようにする',
 	'configure-setting-wgAllowCopyUploads' => 'URL を指定してのアップロードを許可する',
 	'configure-setting-wgCheckFileExtensions' => 'ファイル拡張子を検査する',
+	'configure-setting-wgCopyUploadTimeout' => 'Special:Upload にて URL によるアップロードを使用するときの、ファイルをコピーするタイムアウト',
 	'configure-setting-wgEnableUploads' => 'アップロードを可能にする',
 	'configure-setting-wgFileBlacklist' => '許可しないファイル拡張子',
 	'configure-setting-wgFileExtensions' => '推奨するファイル拡張子',
@@ -5064,6 +5139,8 @@ $messages['ja'] = array(
 	'configure-setting-wgAllowUserSkin' => '利用者がスキンを変更するのを許可する',
 	'configure-setting-wgDefaultUserOptions' => 'デフォルトの個人設定',
 	'configure-setting-wgDisableAnonTalk' => '(ログインしていない) 匿名利用者の会話ページを無効にする',
+	'configure-setting-wgInvalidUsernameCharacters' => 'アカウント作成時に禁止する文字および記号',
+	'configure-setting-wgUserrightsInterwikiDelimiter' => '外部ウィキの利用者権限を試験する際に、区切りとして使われる記号',
 	'configure-setting-wgMaxNameChars' => '利用者名の最大バイト数',
 	'configure-setting-wgMaxSigChars' => 'カスタマイズした署名の最大長',
 	'configure-setting-wgMinimalPasswordLength' => '最小パスワード長',
@@ -5149,7 +5226,7 @@ $messages['ja'] = array(
 	'configure-setting-wgLocalMessageCache' => 'ローカルメッセージのキャッシュ用ディレクトリ',
 	'configure-setting-wgMsgCacheExpiry' => 'メッセージキャッシュの有効期限',
 	'configure-setting-wgCheckSerialized' => '直列化したファイルが最新であるか検査する',
-	'configure-setting-wgLocalMessageCacheSerialized' => 'ローカルキャッシュのフォーマットを定義する',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'ローカルのメッセージキャッシュに PHP シリアライズ形式を用いる',
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'メッセージキャッシュの項目の最大サイズ (バイト)',
 	'configure-setting-wgParserCacheType' => 'パーサーキャッシュタイプ',
 	'configure-setting-wgEnableParserCache' => 'パーサーキャッシュを有効にする',
@@ -5532,6 +5609,7 @@ $messages['nl'] = array(
 	'configure-setting-wgThumbUpright' => 'Aanpassingsfactor voor de breedte van rechtopstaande thumbnails',
 	'configure-setting-wgShowEXIF' => "EXIF-gegevens weergeven op bestandsbeschrijvingspagina's",
 	'configure-setting-wgThumbLimits' => 'Toegestane afmetingen voor thumbnails',
+	'configure-setting-wgUseImageResize' => 'Dynamisch aanpassen van afbeeldingsgrootte aan de serverzijde inschakelen',
 	'configure-setting-wgTrustedMediaFormats' => "Mediatypen en MIME-typen die als 'veilig' worden beschouwd",
 	'configure-setting-wgTiffThumbnailType' => 'Bestandsextensie en MIME-type om TIFF-afbeeldingen naar te transformeren',
 	'configure-setting-wgMainCacheType' => 'Type van het hoofdcachingsysteem',
@@ -5610,6 +5688,7 @@ $messages['nl'] = array(
 	'configure-setting-wgAjaxLicensePreview' => 'AJAX gebruiken voor de voorvertoning van licenties voor uploads',
 	'configure-setting-wgAllowCopyUploads' => 'Uploads via een URL toestaan',
 	'configure-setting-wgCheckFileExtensions' => 'Bestandsextensies controleren',
+	'configure-setting-wgCopyUploadTimeout' => 'Time-out voor het kopiëren van bestanden wanneer er gebruik gemaakt wordt van uploaden via een URL op Special:Upload',
 	'configure-setting-wgEnableUploads' => 'Uploads toestaan',
 	'configure-setting-wgFileBlacklist' => 'Te weigeren bestandsextensies',
 	'configure-setting-wgFileExtensions' => 'Toegelaten bestandsextensies',
@@ -5826,6 +5905,8 @@ $messages['nl'] = array(
 	'configure-setting-wgAllowUserSkin' => 'Gebruikers toestaan het uiterlijk van de site te wijzigen',
 	'configure-setting-wgDefaultUserOptions' => 'Standaard gebruikersvoorkeuren',
 	'configure-setting-wgDisableAnonTalk' => "Overlegpagina's voor anonieme gebruikers (niet aangemeld) uitschakelen",
+	'configure-setting-wgInvalidUsernameCharacters' => 'Niet toegelaten karakters in gebruikersnamen bij aanmaken gebruiker',
+	'configure-setting-wgUserrightsInterwikiDelimiter' => 'Karakter dat gebruikt wordt als scheidingsteken bij het testen van interwiki gebruikersrechten',
 	'configure-setting-wgMaxNameChars' => 'Maximale aantal bytes in gebruikersnamen',
 	'configure-setting-wgMaxSigChars' => 'Maximale lengte van de aangepaste ondertekening',
 	'configure-setting-wgMinimalPasswordLength' => 'Minimale wachtwoordlengte',
@@ -5911,7 +5992,7 @@ $messages['nl'] = array(
 	'configure-setting-wgLocalMessageCache' => 'Map voor de lokale berichtencache',
 	'configure-setting-wgMsgCacheExpiry' => 'Vervaltijd van de berichtencache',
 	'configure-setting-wgCheckSerialized' => 'Controleren of de geserialiseerde bestanden bijgewerkt zijn',
-	'configure-setting-wgLocalMessageCacheSerialized' => 'Opmaak van de lokale cache',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'Het PHP geserialiseerde formaat gebruiken voor de lokale berichtencache',
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'Maximale grootte van objecten in de berichtencache, in bytes',
 	'configure-setting-wgParserCacheType' => 'Type parsercache',
 	'configure-setting-wgEnableParserCache' => 'Parsercache inschakelen',
@@ -6160,6 +6241,7 @@ $messages['nn'] = array(
 	'configure-setting-wgAjaxLicensePreview' => 'Nytt AJAX for å førehandssyna lisensiering for opplastingar',
 	'configure-setting-wgAllowCopyUploads' => 'Tillat opplastingar gjorde gjennom URL',
 	'configure-setting-wgCheckFileExtensions' => 'Sjekk filendingar',
+	'configure-setting-wgCopyUploadTimeout' => 'Tidsgrense for filkopiering, når ein nyttar opplasting via URL på Special:Upload',
 	'configure-setting-wgEnableUploads' => 'Aktiver opplastingar',
 	'configure-setting-wgFileBlacklist' => 'Ikkje-tillatne filendingar',
 	'configure-setting-wgFileExtensions' => 'Føretrekte filendingar',
@@ -6461,7 +6543,7 @@ $messages['nn'] = array(
 	'configure-setting-wgLocalMessageCache' => 'Stig for lokalt meldingsmellomlager',
 	'configure-setting-wgMsgCacheExpiry' => 'Meldingsmellomlager går ut',
 	'configure-setting-wgCheckSerialized' => 'Sjekk om serielle filer er oppdaterte',
-	'configure-setting-wgLocalMessageCacheSerialized' => 'Definerer formatet til lokalt mellomlager (cache)',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'Bruk PHP serielt format for lokalt mellomlager (cache)',
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'Største storleik for melding lagra i mellomlager, i byte',
 	'configure-setting-wgParserCacheType' => 'Tolkmellomlagertype',
 	'configure-setting-wgEnableParserCache' => 'Aktiver tolkmellomlager',
@@ -7014,7 +7096,7 @@ $messages['oc'] = array(
 	'configure-setting-wgLocalMessageCache' => "Dorsièr de l'amagatal local dels messatges",
 	'configure-setting-wgMsgCacheExpiry' => "Temps d'expiracion de l'amagatal dels messatges",
 	'configure-setting-wgCheckSerialized' => 'Verificar se los fichièrs serializats son a jorn',
-	'configure-setting-wgLocalMessageCacheSerialized' => "Definís lo format de l'amagatal local dels messatges",
+	'configure-setting-wgLocalMessageCacheSerialized' => "Utilizar lo format serializat de PHP per l'amagatal dels messatges locals",
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'Talha maximala dels messatges meses en amagatal, en octets',
 	'configure-setting-wgParserCacheType' => "Tipe d'amagatal del parser",
 	'configure-setting-wgEnableParserCache' => "Activar l'amagatal del parser",
@@ -7297,6 +7379,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author IAlex
  * @author Malafaya
  * @author Waldir
  */
@@ -7944,6 +8027,7 @@ $messages['sk'] = array(
 	'configure-setting-wgThumbUpright' => 'Pomer zmeny šírky pri náhľadoch formátu portrét',
 	'configure-setting-wgShowEXIF' => 'Zobrazovať EXIF údaje na popisných stránkach súborov',
 	'configure-setting-wgThumbLimits' => 'Povolená veľkosť náhľadov obrázkov',
+	'configure-setting-wgUseImageResize' => 'Zapnúť dynamickú zmenu veľkosti obrázkov na strane servera',
 	'configure-setting-wgTrustedMediaFormats' => 'Typy multimediálnych súborov a MIME typy, ktoré sa považujú za „bezpečné“',
 	'configure-setting-wgTiffThumbnailType' => 'Prípona súboru a typ MIME, na ktorý sa transformuje TIFF',
 	'configure-setting-wgMainCacheType' => 'Typ hlavného systému vyrovnávacej pamäte',
@@ -8022,6 +8106,7 @@ $messages['sk'] = array(
 	'configure-setting-wgAjaxLicensePreview' => 'Používať AJAX na náhľad licencovania pri nahrávaní',
 	'configure-setting-wgAllowCopyUploads' => 'Umožniť nahrávania podľa URL',
 	'configure-setting-wgCheckFileExtensions' => 'Kontrolovať prípony súborov',
+	'configure-setting-wgCopyUploadTimeout' => 'Čas do kedy sa musí skopírovať súbor pri použití nahrávania pomocou URL na Special:Upload',
 	'configure-setting-wgEnableUploads' => 'Zapnúť nahrávanie',
 	'configure-setting-wgFileBlacklist' => 'Zakázané prípony súborov',
 	'configure-setting-wgFileExtensions' => 'Uprednostňované typy súborov',
@@ -8238,6 +8323,8 @@ $messages['sk'] = array(
 	'configure-setting-wgAllowUserSkin' => 'Umožniť používateľom zmeniť svoju tému vzhľadu',
 	'configure-setting-wgDefaultUserOptions' => 'Štandardné predvoľby používateľa',
 	'configure-setting-wgDisableAnonTalk' => 'Vypnúť diskusné stránky anonymných (neprihlásených) používateľov',
+	'configure-setting-wgInvalidUsernameCharacters' => 'Znaky, ktoré sú zakázané v nových názvoch účtov',
+	'configure-setting-wgUserrightsInterwikiDelimiter' => 'Znaky, ktoré sa používajú ako oddeľovač pri testovaní interwiki používateľských práv',
 	'configure-setting-wgMaxNameChars' => 'Maximálny počet bajtov používateľského mena',
 	'configure-setting-wgMaxSigChars' => 'Maximálna dĺžka prispôsobeného podpisu',
 	'configure-setting-wgMinimalPasswordLength' => 'Minimálna dĺžka hesla',
@@ -8323,7 +8410,7 @@ $messages['sk'] = array(
 	'configure-setting-wgLocalMessageCache' => 'Adresár lokálnej vyrovnávacej pamäte správ',
 	'configure-setting-wgMsgCacheExpiry' => 'Vypršanie platnosti vyrovnávacej pamäte správ',
 	'configure-setting-wgCheckSerialized' => 'Skontrolovať aktuálnosť serializovaných súborov',
-	'configure-setting-wgLocalMessageCacheSerialized' => 'Definuje formát lokálnej vyrovnávacej pamäte',
+	'configure-setting-wgLocalMessageCacheSerialized' => 'Použiť serializovaný PHP formát lokálnej vyrovnávacej pamäte správ',
 	'configure-setting-wgMaxMsgCacheEntrySize' => 'Maximálna veľkosť položky vo vyrovnávacej pamäti správ v bajtoch',
 	'configure-setting-wgParserCacheType' => 'Typ vyrovnávacej pamäti syntaktického analyzátora',
 	'configure-setting-wgEnableParserCache' => 'Zapnúť vyrovnávaciu pamäť syntaktického analyzátora',
@@ -8458,6 +8545,7 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author IAlex
  * @author Najami
  */
 $messages['sv'] = array(
@@ -8928,6 +9016,7 @@ $messages['tg-cyrl'] = array(
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
+ * @author IAlex
  */
 $messages['tl'] = array(
 	'configure-setting-wgSitename' => 'Pangalan ng sayt',

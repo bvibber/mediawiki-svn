@@ -112,9 +112,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'seealso' => 'Δείτε επίσης',
+	'seealso-desc' => "Εντοπιοποίηση των επικεφαλίδων 'Βλέπε επίσης' μέσω της ετικέτας <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Esperanto (Esperanto)

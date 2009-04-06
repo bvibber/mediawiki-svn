@@ -149,6 +149,13 @@ $messages['dsb'] = array(
 	'newschannel_submit_button' => 'Kanal napóraś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'newschannel_limit' => 'Όριο:',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

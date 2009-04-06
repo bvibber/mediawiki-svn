@@ -142,6 +142,14 @@ $messages['ee'] = array(
 	'dplforum-never' => 'Gbeɖe',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'dplforum-by' => 'από $1',
+	'dplforum-never' => 'Ποτέ',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

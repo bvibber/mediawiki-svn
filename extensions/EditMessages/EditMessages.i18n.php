@@ -428,6 +428,27 @@ $messages['gsw'] = array(
 	'editmsg-patch-success' => 'Erfolgryych patcht.',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'editmessages' => 'સંદેશમા ફેરફાર કરો.',
+	'editmsg-target' => 'લક્ષ્ય સંદેશ:',
+	'editmsg-search' => 'શોધ',
+	'editmsg-show-list' => 'સંદેશનામ "$1" નું મૂલ્ય બતાવે છે.',
+	'editmsg-get-patch' => 'પેચ બનાવો',
+	'editmsg-new-search' => 'નવી શોધ',
+	'editmsg-warning-parse1' => '* સંદેશ નામ regex  $1 સાથે મેળ ખાતું નથી:',
+	'editmsg-warning-parse2' => 'તીરના નીશાન $1 બાદ ક્વોટ કેરેકટર અપેક્ષિત છે.',
+	'editmsg-warning-parse3' => 'સ્ટ્રીંગ મુલ્યનો અંત $1 મળ્યું નથી.',
+	'editmsg-warning-file' => '{{PLURAL:$2|ભાષા|ભાષાઓ}}: $1 માં ફાઇલ વાંચવામાં તકલીફ પડી.',
+	'editmsg-warning-mismatch' => '{{PLURAL:$2|ભાષા|ભાષાઓ}}: $1 માટે મુળ ટેક્સટમાં અપેક્ષિત કિંમત  નથી.',
+	'editmsg-apply-patch' => 'પેચ લાગુ કરો.',
+	'editmsg-no-patch' => '"patch" કમાન્ડ ગ્રહણ કરી શકાયો નહી.',
+	'editmsg-patch-failed' => 'પેચ સ્ટેટસ $1 સાથે નાકામ રહ્યો',
+	'editmsg-patch-success' => 'પેચ સફળતાથી લાગુ પડ્યો.',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

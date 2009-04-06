@@ -396,6 +396,7 @@ $messages['es'] = array(
 	'recordadmin-viewlink' => 'ver',
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Creado',
+	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Acciones',
 	'recordadmin-needscontent' => 'Agregar contenido...',
 );

@@ -70,6 +70,13 @@ $messages['dsb'] = array(
 	'preloader-desc' => 'Zmóžnja pśiměrjujobne tekstowe elementy za nowe boki na mjenjowy rum',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'preloader-desc' => 'Παρέχει για τις καινούργιες σελίδες εξατομικευμένο πανομοιότυπο κείμενο κατά περιοχή ονομάτων',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -104,6 +111,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'preloader-desc' => 'Proporciona, para as páxinas novas, ventás de texto personalizable para os nomes dos espazos',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'preloader-desc' => 'Παρέχει συνηθισμένον πανομοιότυπον κείμενον κατὰ ὀνοματεῖον διὰ τὰς καινοὺς δέλτους',
 );
 
 /** Swiss German (Alemannisch)

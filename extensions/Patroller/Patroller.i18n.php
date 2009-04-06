@@ -214,6 +214,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'patrol' => 'Patrolirane izmjene',
 	'patrol-revert' => 'Vrati',
 	'patrol-revert-reason' => 'Razlog:',
 	'patrol-skip' => 'Preskoči',
@@ -221,10 +222,12 @@ $messages['bs'] = array(
 	'patrol-nonefound' => 'Nije mogla biti nađena odgovarajuća izmjena za patroliranje.',
 	'patrol-endorsed-ok' => 'Izmjena je označena kao patrolirana.',
 	'patrol-endorsed-failed' => 'Izmjena nije mogla biti označena kao patrolirana.',
+	'patrol-reverted-ok' => 'Izmjena je vraćena.',
 	'patrol-reverted-failed' => 'Izmjena nije mogla biti vraćena.',
 	'patrol-reasons' => '* Jednostavni vandalizam
 * Početnička proba
 * Vidi stranicu za razgovor',
+	'patrol-resume' => 'Kliknite ovdje za nastavak.',
 );
 
 /** Danish (Dansk)
@@ -307,6 +310,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'patrol-revert' => 'Αναίρεση',
 	'patrol-revert-reason' => 'Λόγος:',
+	'patrol-reverting' => 'Επαναφορά: $1',
 );
 
 /** Esperanto (Esperanto)
@@ -1416,6 +1420,13 @@ $messages['tet'] = array(
 $messages['tg-cyrl'] = array(
 	'patrol-revert-reason' => 'Сабаб:',
 	'patrol-skip' => 'Ҷаҳиш',
+);
+
+/** Thai (ไทย)
+ * @author Mopza
+ */
+$messages['th'] = array(
+	'patrol-skip' => 'ข้าม',
 );
 
 /** Tagalog (Tagalog)

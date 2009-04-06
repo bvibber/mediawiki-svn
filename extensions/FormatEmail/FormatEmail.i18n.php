@@ -480,6 +480,17 @@ Este email foi enviado pelo sistema de email de {{SITENAME}} por $1.
 $2',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'email-desc' => "Permette le testate/pede de pàgene personalizzate ca ponne essere aggiunde a le e-mail de l'utinde",
+	'email_footer' => "--------------------------------------------------------------------------------------
+Sta e-mail t'ha state mannate attravirse a 'u sisteme de e-mail de {{SITENAME}} da $1.
+
+$2",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

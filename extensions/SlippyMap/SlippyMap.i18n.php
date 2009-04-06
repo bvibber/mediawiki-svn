@@ -324,6 +324,14 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'slippymap_desc' => 'Permite el uso de la etiqueta <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para mostrar un mapa de vías OpenLayers. Los mapas son de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'valor lat perdido (para la latitud).',
+	'slippymap_lonmissing' => 'Valor lon perdido (para la longitud).',
+	'slippymap_zoommissing' => 'Valor z perdido (para el nivel zoom).',
+	'slippymap_longdepreciated' => "Por favor usar 'lon' en lugar de 'long' (el parámetro fue renombrado).",
+	'slippymap_widthnan' => "Valor de anchura (w) '$1' no es un valor entero",
+	'slippymap_heightnan' => "Valor de altura (h) '$1' no es un valor entero",
+	'slippymap_zoomnan' => "Valor de zoom (z) '$1' no es un valor entero",
 	'slippymap_latnan' => "valor de latitud (lat) '%1' no es un número válido",
 	'slippymap_lonnan' => "valor de longitud (lon) '%1' no es un número válido",
 	'slippymap_widthbig' => 'valor de anchura (w) no puede ser mayor que 1000',
@@ -337,6 +345,7 @@ $messages['es'] = array(
 	'slippymap_zoomsmall' => 'valor de zoom (z) no puede ser menor que cero',
 	'slippymap_zoombig' => 'valor de zoom (z) no puede ser mayor que 17.',
 	'slippymap_maperror' => 'Error en mapa:',
+	'slippymap_osmtext' => 'Ver este mapa en OpenStreetMap.org',
 	'slippymap_code' => 'Wikicode para esta vista de mapa:',
 	'slippymap_button_code' => 'Obtener wikicode',
 	'slippymap_resetview' => 'Reestablecer vista',

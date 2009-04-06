@@ -87,6 +87,13 @@ $messages['dsb'] = array(
 	'tooltip-desc' => 'Pśidawa toflicku <tt><nowiki><tooltip></nowiki></tt> a <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'tooltip-desc' => 'Προσθέτει τις ετικέτες <tt><nowiki><tooltip></nowiki></tt> και <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

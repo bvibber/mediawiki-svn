@@ -391,6 +391,15 @@ $messages['stq'] = array(
 	'authors_anonymous' => 'Anonym',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'authors-desc' => 'Lägger till en lista över författarna till sidor',
+	'authors_authors' => 'Författare',
+	'authors_anonymous' => 'Anonym',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

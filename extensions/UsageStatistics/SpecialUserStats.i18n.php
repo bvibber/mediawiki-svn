@@ -611,16 +611,17 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author PieRRoMaN
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'specialuserstats' => "Statistiques d'utilisation",
-	'usagestatistics' => "Statistiques d'utilisation",
-	'usagestatistics-desc' => "Affiche les statistiques d'utilisation par utilisateur et pour l'ensemble du wiki",
-	'usagestatisticsfor' => "<h2>Statistiques d'utilisation pour [[User:$1|$1]]</h2>",
-	'usagestatisticsforallusers' => "<h2>Statistiques d'utilisation pour tous les utilisateurs</h2>",
+	'specialuserstats' => 'Statistiques d’utilisation',
+	'usagestatistics' => 'Statistiques d’utilisation',
+	'usagestatistics-desc' => 'Affiche les statistiques d’utilisation par utilisateur et pour l’ensemble du wiki',
+	'usagestatisticsfor' => '<h2>Statistiques d’utilisation pour [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistiques d’utilisation pour tous les utilisateurs</h2>',
 	'usagestatisticsinterval' => 'Intervalle',
 	'usagestatisticstype' => 'Type',
 	'usagestatisticsstart' => 'Date de début',

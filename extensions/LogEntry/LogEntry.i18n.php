@@ -77,7 +77,9 @@ $messages['be-tarask'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'logentry-append' => 'Pridodaj',
 	'logentry-parserhook-desc' => 'Ova oznaka proširenja omogućuje obrazac za dodavanje/uklanjanje informacija sa stranica zapisnika',
+	'logentry-specialpage-desc' => 'Ova oznaka proširenja omogućuje obradu neriješenih stranica zapisnika',
 	'logentry' => 'StavkaZapisa',
 	'logentry-invalidpage' => 'Nevaljana stranica',
 	'logentry-invalidtoken' => 'Nevaljan token',

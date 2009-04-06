@@ -89,6 +89,13 @@ $messages['dsb'] = array(
 	'substall-desc' => 'Napórajo toflicku <nowiki><substall></nowiki>, kótaraž pśetwórjujo wše pśedłogi do wikisyntaksy',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'substall-desc' => 'Δημιουργεί μία ετικέτα <substall> που μετατρέπει όλα τα πρότυπα σε βικισυντακτικό.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

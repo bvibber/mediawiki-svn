@@ -101,8 +101,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Omnipaedista
  */
 $messages['el'] = array(
+	'donationform-desc' => 'Προσθέτει το tag <tt>&lt;donateform&gt;</tt> για την υποστήριξη δωρεών μέσω PayPal',
 	'donationform-submit' => 'Δωρίστε μέσω PayPal',
 );
 

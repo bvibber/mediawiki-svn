@@ -2530,6 +2530,9 @@ $wdMessages['es'] = array(
 	'importtsv' => 'Wikidata: Importar TSV',
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar definiciones y traducciones',
+	'ow_importtsv_header' => "<p>Importar definiciones y traducciones de un archivo de texto de pestaña delimitada que puedes haber exportado de OpenOffice.org, Excel u otro software de hoja de cálculo.</p>
+<p>El formato del archivo debe ser el mismo que los archivos exportados en la página ExportTSV. Si has cambiado los nombres de columnas, la importación fallará. Si has cambiado el id o la expresión definida de cualquier significado definido, esta línea será ignorada. Si has agregado columnas, deben estar en la forma 'definitions_iso' o 'translations_iso', donde iso es un código de lenguaje ISO 639-3.</p>
+<p>Si la tabla 'test run' está verificada, cualquier acción que estuviera tomada están reportadas. Se le anima a hacer una prueba de ejecución antes que hagas una importación real.</p>",
 	'ow_importtsv_not_allowed' => 'No tiene permiso para hacer una importación TSV',
 	'ow_importtsv_importing' => 'Importando datos TSV',
 	'ow_importtsv_import_failed' => 'Falló la importación',
@@ -3008,9 +3011,9 @@ $wdMessages['fr'] = array(
 	'langman_addlang' => 'Ajouter la langue',
 	'importlangnames' => 'Wikidata : importer des noms de langue',
 	'importlangnames_title' => 'Importer des noms de langue',
-	'importlangnames_not_allowed' => "Vous n'avez pas la permission d'importer des noms de langue.",
+	'importlangnames_not_allowed' => 'Vous n’avez pas la permission d’importer des noms de langue.',
 	'importlangnames_added' => 'Noms de langue pour « $1 » ajoutés.',
-	'importlangnames_not_found' => "<strong>Aucune entrée de langue n'a été trouvée pour « $1 » !</strong>",
+	'importlangnames_not_found' => '<strong>Aucune entrée de langue n’a été trouvée pour « $1 » !</strong>',
 	'datasearch' => 'Wikidata : recherche de données',
 	'datasearch_language' => 'Langue :',
 	'datasearch_found_word' => 'Mot trouvé',
@@ -3019,7 +3022,7 @@ $wdMessages['fr'] = array(
 	'datasearch_search_text' => 'Texte à rechercher :',
 	'datasearch_within_words' => 'Dans les mots :',
 	'datasearch_within_ext_ids' => 'Dans les identificateurs externes :',
-	'datasearch_showing_only' => "Affichage d'au plus {{PLURAL:$1|une correspondance|$1 correspondances}}.",
+	'datasearch_showing_only' => 'Affichage d’au plus {{PLURAL:$1|une correspondance|$1 correspondances}}.',
 	'datasearch_match_ext_ids' => 'Identificateurs externes correspondant à <i>$1</i>',
 	'datasearch_match_words' => 'Mots correspondant à <i>$1</i> et leur signification associée',
 	'datasearch_match_words_lang' => 'Mots en <i>$1</i> correspondant à <i>$2</i> et leur signification associée',
@@ -3058,8 +3061,8 @@ Sélectionnez une collection à exporter. Dans la boite de texte de langues, ent
 	'ow_history' => 'Historique',
 	'ow_datasets' => 'Sélection des ensembles de données',
 	'ow_noedit_title' => 'Pas de permission pour modifier',
-	'ow_noedit' => "Vous n'êtes pas autorisé{{GENDER:||e|(e)}} à modifier les pages dans les données préétablies « $1 ».
-Veuillez consulter [[{{MediaWiki:Ow editing policy url}}|nos règles sur la modification]].",
+	'ow_noedit' => 'Vous n’êtes pas autorisé{{GENDER:||e|(e)}} à modifier les pages dans les données préétablies « $1 ».
+Veuillez consulter [[{{MediaWiki:Ow editing policy url}}|nos règles sur la modification]].',
 	'ow_uipref_datasets' => 'Vue par défaut :',
 	'ow_uiprefs' => 'Données wiki',
 	'ow_none_selected' => 'Aucune sélection',
@@ -3189,8 +3192,8 @@ Vos données semblent avoir été copiées avec succès.
 N’oubliez pas de les vérifier de nouveau pour vous en assurer !',
 	'ow_copy_unsuccessful' => '<h3>Copie infructueuse</h3>
 Aucune opération de copie n’a été mise en place.',
-	'ow_no_action_specified' => "<h3>Aucune action n’a été spécifiée</h3>
-Peut-être êtes-vous arrivé{{GENDER:||e|(e)}} sur cette page directement ? Vous n’avez normalement pas besoin d'être ici.",
+	'ow_no_action_specified' => '<h3>Aucune action n’a été spécifiée</h3>
+Peut-être êtes-vous arrivé{{GENDER:||e|(e)}} sur cette page directement ? Vous n’avez normalement pas besoin d’être ici.',
 	'ow_db_consistency_not_found' => '<h2>Erreur</h2>
 La base de données semble inconsistante, Wikidata ne peut trouver des données valides liées à cet identificateur de sens défini.
 Il pourrait être perdu.
@@ -5492,6 +5495,7 @@ $wdMessages['kw'] = array(
  */
 $wdMessages['lb'] = array(
 	'languages' => 'Wikidata: Sproochmanager',
+	'langman-desc' => 'Sproochastellungen mat [[Special:Languages]] derbäisetzen an änneren',
 	'langman_title' => 'Sproochmanager',
 	'langman_not_allowed' => "Dir hutt net déi néideg Rechter fir d'Sproochenastellungen z'änneren.",
 	'langman_header' => 'Gitt de Sproochcode an den engleschen Numm hei ënnedrënner an:',
@@ -6285,7 +6289,7 @@ $wdMessages['nn'] = array(
 	'datasearch_match_words_lang' => 'Ord i <i>$1</i> svarande til <i>$2</i> og tilknytte tydingar',
 	'importtsv' => 'Wikidata: Importer TSV',
 	'ow_importtsv_title1' => 'Importer TSV',
-	'ow_importtsv_title2' => 'Importér definisjonar og omsetjingar',
+	'ow_importtsv_title2' => 'Importer definisjonar og omsetjingar',
 	'ow_importtsv_header' => "<p>Importer definisjonar og omsetjingar frå ei tabulatordelt tekstfil som du kan til dømes ha eksportert frå OpenOffice.org, Excel eller andre rekneark.</p>
 <p>Filformatet på fila må vera det same som filer eksportert frå sida ExportTSV. Om du har endra kolonnenamna vil importen slå feil. Om du har endra id eller det definerande uttrykket for ei definert setning, vil denne linja verta ignorert. Om du har lagt til kolonner, må dei vera på forma 'definitions_iso' eller 'translations_iso', der iso er ein ISO 639-3 språkkode.</p>
 <p>Om boksen 'test run' er kryssa av, vil alle handlingar verta rapportert og testa, men ingen endringar vert gjort i røynda. Du vert oppmoda til å gjera ein slik test før du gjer ein endeleg importering.</p>",
@@ -6308,8 +6312,8 @@ der iso er språkkoda.</p>",
 Språk lyt vera ISO 639-3-språkkodar.</p>',
 	'exporttsv' => 'Wikidata: Eksporter TSV',
 	'ow_exporttsv_title' => 'Eksporter ei samling til TSV',
-	'ow_exporttsv_header' => "<p>Eksportér ei samling til eit tabulatorseparert tekstformat som du kan importera til OpenOffice.org, Excel eller eit anna reknearkprogram.<br />
-Vél ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparerert liste av språkkoder i høve til ISO 639-3. Byrja med dei språka du kjem til å omsetja frå (vel så månge du ynskjer) og slutt med dei som du kjem til å omsetja til. Klikk deretter på 'Create' (opprett) for å oppretta fila.</p>",
+	'ow_exporttsv_header' => '<p>Eksporter ei samling til eit tabulatorseparert tekstformat som du kan importera til OpenOffice.org, Excel eller eit anna reknearkprogram.<br />
+Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparerert liste av språkkoder i høve til ISO 639-3. Byrja med dei språka du kjem til å omsetja frå (vel så månge du ynskjer) og slutt med dei som du kjem til å omsetja til. Klikk deretter på «Opprett» for å oppretta fila.</p>',
 	'ow_exporttsv_languages' => 'Språk:',
 	'ow_exporttsv_not_allowed' => 'Du har ikkje løve til å gjera ei TSV-eksportering.',
 	'ow_exporttsv_export_failed' => 'Eksporteringa mislukkast',
@@ -6463,7 +6467,7 @@ Vél ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparer
 	'ow_suggest_clear' => 'Tøm',
 	'ow_nstab_definedmeaning' => 'definert tyding',
 	'ow_nstab_edit_copy' => 'endra kopi',
-	'right-addlanguage' => 'Legg til og endre språkinstillingar',
+	'right-addlanguage' => 'Leggja til og endra språkinnstillingar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -8959,12 +8963,16 @@ $wdMessages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Manop
+ * @author Mopza
  * @author Octahedron80
  * @author Passawuth
  */
 $wdMessages['th'] = array(
+	'ow_importtsv_import_failed' => 'การนำเข้าไม่สำเร็จ',
+	'ow_exporttsv_export_failed' => 'การส่งออกไม่สำเร็จ',
 	'ow_save' => 'บันทึก',
 	'ow_history' => 'ประวัติ',
+	'ow_transaction_user' => 'ชื่อผู้ใช้:',
 	'ow_dm_OK' => 'ตกลง',
 	'ow_ClassAttributeLevel' => 'ระดับ',
 	'ow_ClassAttributeType' => 'ชนิด',
@@ -8979,6 +8987,7 @@ $wdMessages['th'] = array(
 	'ow_TranslatedTextAttributeValue' => 'ข้อความ',
 	'ow_LinkAttribute' => 'คุณสมบัติ',
 	'ow_LinkAttributeValues' => 'ลิงก์',
+	'ow_User' => 'ผู้ใช้',
 	'ow_Value' => 'ค่า',
 	'ow_meaningsoftitle' => 'ความหมายของ "$1"',
 );

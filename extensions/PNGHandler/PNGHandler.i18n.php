@@ -78,6 +78,13 @@ $messages['dsb'] = array(
 	'pnghandler-desc' => 'Wjelikosć wobrazow PNG z pomocu pngds změniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'pnghandler-desc' => 'Επαναπροσδιορισμός του μεγέθους των PNG μέσω pngds',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

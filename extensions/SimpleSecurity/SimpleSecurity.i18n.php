@@ -175,6 +175,8 @@ $messages['es'] = array(
 	'security-info-toggle' => 'restricciones de seguridad',
 	'security-inforestrict' => '$1 está restringido a $2',
 	'security-manygroups' => 'grupos $1 y $2',
+	'security-unchain' => 'modificar acciones individualmente',
+	'security-type-category' => 'categoría',
 );
 
 /** French (Français)

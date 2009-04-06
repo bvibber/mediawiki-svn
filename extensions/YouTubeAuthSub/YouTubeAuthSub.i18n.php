@@ -728,7 +728,7 @@ Ole kärsivällinen.',
 $messages['fr'] = array(
 	'youtubeauthsub' => 'Téléverser une vidéo YouTube',
 	'youtubeauthsub-desc' => 'Permet aux utilisateurs de [[Special:YouTubeAuthSub|téléverser des vidéos]] directement sur YouTube',
-	'youtubeauthsub_info' => "Pour téléverser une vidéo sur YouTube afin de l'incorporer dans une page, renseignez les informations suivantes :",
+	'youtubeauthsub_info' => 'Pour téléverser une vidéo sur YouTube afin de l’incorporer dans une page, renseignez les informations suivantes :',
 	'youtubeauthsub_title' => 'Titre',
 	'youtubeauthsub_description' => 'Description',
 	'youtubeauthsub_password' => 'Mot de passe sur YouTube',
@@ -737,15 +737,15 @@ $messages['fr'] = array(
 	'youtubeauthsub_category' => 'Catégorie',
 	'youtubeauthsub_submit' => 'Soumettre',
 	'youtubeauthsub_clickhere' => 'Cliquez ici pour vous connecter sur YouTube',
-	'youtubeauthsub_tokenerror' => "Erreur lors de la demande d'autorisation, essayez de rafraîchir la page.",
+	'youtubeauthsub_tokenerror' => 'Erreur lors de la demande d’autorisation, essayez de rafraîchir la page.',
 	'youtubeauthsub_success' => "Félicitations !
 Votre vidéo est téléversée.
 <a href='http://www.youtube.com/watch?v=$1'>Visionnez votre vidéo</a>.
-Il se peut que YouTube ait besoin d'un certain temps pour prendre en compte votre vidéo, il est donc possible qu'elle ne soit pas encore disponible.
+Il se peut que YouTube ait besoin d’un certain temps pour prendre en compte votre vidéo, il est donc possible qu’elle ne soit pas encore disponible.
 
 Pour incorporer votre vidéo dans une page du wiki, insérez le code suivant dans celle-ci :
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => "Pour téléverser une vidéo, vous devrez d'abord vous connecter sur YouTube.",
+	'youtubeauthsub_authsubinstructions' => 'Pour téléverser une vidéo, vous devrez d’abord vous connecter sur YouTube.',
 	'youtubeauthsub_uploadhere' => 'Téléverser votre vidéo depuis ici :',
 	'youtubeauthsub_uploadbutton' => 'Téléverser',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
@@ -822,7 +822,9 @@ Por favor, sexa paciente.',
  */
 $messages['grc'] = array(
 	'youtubeauthsub_title' => 'Ἐπιγραφή',
-	'youtubeauthsub_description' => 'Διέξοδος',
+	'youtubeauthsub_description' => 'Περιγραφή',
+	'youtubeauthsub_password' => 'Σύνθημα ἐν τῷ YouTube',
+	'youtubeauthsub_username' => 'Ὄνομα χρωμένου ἐν τῷ YouTube',
 	'youtubeauthsub_category' => 'Κατηγορία',
 	'youtubeauthsub_submit' => 'Ὑποβάλλειν',
 	'youtubeauthsub_uploadbutton' => 'Ἐπιφόρτισις',

@@ -1335,6 +1335,7 @@ $messages['el'] = array(
 	'code-status-reverted' => 'αναστράφηκε',
 	'code-status-resolved' => 'επιλύθηκε',
 	'code-status-ok' => 'εντάξει',
+	'code-status-verified' => 'επιβεβαιωμένο',
 	'code-status-deferred' => 'αναβλήθηκε',
 	'code-pathsearch-legend' => 'Αναζήτηση αναθεωρήσεων σε αυτό το αποθηκευτήριο κατά διαδρομή',
 	'code-pathsearch-path' => 'Διαδρομή:',
@@ -1382,7 +1383,9 @@ $4',
  */
 $messages['eo'] = array(
 	'code' => 'Kontrolo de Programkodo',
+	'code-rev-title' => 'r$1 - Koda Kontrolo',
 	'code-comments' => 'Komentoj',
+	'code-references' => 'Farindaj revizioj',
 	'code-change-status' => "ŝanĝis la '''statuson''' de r$1",
 	'code-change-tags' => "ŝanĝis la '''etikedojn''' por r$1",
 	'code-change-removed' => 'forigis:',
@@ -1479,6 +1482,7 @@ $4',
 	'repoadmin-edit-button' => 'Ek',
 	'repoadmin-edit-sucess' => 'La kodujo "[[Special:Code/$1|$1]]" estis sukcese modifita.',
 	'right-repoadmin' => 'Administri kodujojn',
+	'right-codereview-use' => 'Uzo de Special:Code',
 	'right-codereview-add-tag' => 'Aldoni etikedojn al versioj',
 	'right-codereview-remove-tag' => 'Forigi etikedojn de versioj',
 	'right-codereview-post-comment' => 'Aldoni komentojn en versioj',
@@ -3343,12 +3347,15 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Ilovesabbath
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
 	'code' => '코드 검토',
+	'code-rev-title' => 'r$1 - 코드 검토',
 	'code-comments' => '의견',
+	'code-references' => '추적 수정',
 	'code-change-status' => "제 $1판의 '''상태'''를 변경",
 	'code-change-tags' => "제 $1판의 '''태그'''를 변경",
 	'code-change-removed' => '제거:',
@@ -3364,18 +3371,23 @@ $messages['ko'] = array(
 	'code-authors-text' => '다음은 최근에 코드를 적용한 저장소의 저자 목록입니다.',
 	'code-author-haslink' => '이 만든이는 위키 사용자 $1로 연결되어 있습니다.',
 	'code-author-orphan' => '이 저자는 위키 계정과 연결되어 있지 않습니다',
+	'code-author-dolink' => '이 저자를 위키 사용자로 연결하세요:',
 	'code-author-alterlink' => '이 저자와 연결된 위키 사용자를 바꾸세요:',
+	'code-author-orunlink' => '이 위키 사용자로의 링크를 제거하세요:',
 	'code-author-name' => '사용자 이름을 입력하십시오:',
 	'code-author-success' => '제작자 $1은(는) 위키 사용자 $2(으)로 연결되었습니다.',
 	'code-author-link' => '링크하시겠습니까?',
 	'code-author-unlink' => '링크를 해제하시겠습니까?',
+	'code-author-unlinksuccess' => '저자 $1(으)로의 링크가 제거돼 있습니다.',
 	'code-field-id' => '버전',
 	'code-field-author' => '작성자',
 	'code-field-user' => '의견 작성자',
 	'code-field-message' => '코드 적용 요약',
 	'code-field-status' => '상태',
 	'code-field-timestamp' => '날짜',
+	'code-field-comments' => '노트',
 	'code-field-path' => '경로',
+	'code-field-text' => '노트',
 	'code-field-select' => '선택',
 	'code-rev-author' => '만든이:',
 	'code-rev-date' => '날짜:',
@@ -3405,7 +3417,9 @@ $messages['ko'] = array(
 	'code-status-reverted' => '되돌려짐',
 	'code-status-resolved' => '해결됨',
 	'code-status-ok' => '문제없음',
+	'code-status-verified' => '검증됨',
 	'code-status-deferred' => '보류됨',
+	'code-pathsearch-legend' => '이 보관소(repo)에서 있었던 수정 사항을 경로로 검색하기',
 	'code-pathsearch-path' => '경로:',
 	'code-rev-submit' => '저장',
 	'code-rev-submit-next' => '저장 및 다음 미해결된 문서로 이동',
@@ -3413,6 +3427,8 @@ $messages['ko'] = array(
 	'code-batch-tags' => '태그 변경:',
 	'codereview-batch-title' => '모든 선택된 판을 수정',
 	'codereview-batch-submit' => '제출',
+	'code-releasenotes' => '배포 노트',
+	'code-release-legend' => '배포 노트 만들기',
 	'code-release-startrev' => '시작 버전:',
 	'code-release-endrev' => '마지막 버전:',
 	'codereview-subtitle' => '$1',
@@ -3423,6 +3439,14 @@ $messages['ko'] = array(
 전체 URL: $2
 
 내용:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: 추적된 변경 사항',
+	'codereview-email-body2' => '사용자 "$1"이/가 r$2에 추적변경을 만들었습니다.
+
+전체 URL: $3
+
+변경 요약:
 
 $4',
 	'repoadmin' => '저장소 관리',
@@ -3679,6 +3703,7 @@ $messages['lfn'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
 	'code' => 'Kodekontraol',
@@ -3691,7 +3716,7 @@ $messages['li'] = array(
 	'code-change-added' => 'drbie:',
 	'code-prop-changes' => 'Logbook staat èn labels',
 	'code-desc' => '[[Special:Code|Hölpprogramma veur kodekontraol]] mid [[Special:RepoAdmin|óngerstäöning veur Subversion]]',
-	'code-no-repo' => 'dr Is gein repositoir ingesteldj!',
+	'code-no-repo' => "d'r Is gein 'repository' ingesjtèld!",
 	'code-load-diff' => 'Angeringslaajendje...',
 	'code-notes' => 'lèste ópmèrkinger',
 	'code-authors' => 'sjrievers',
@@ -4330,7 +4355,7 @@ $4',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'Databasen [[Special:Code/$1|$1]] har blitt endra.',
 	'right-repoadmin' => 'Handsama kodesamlingar',
-	'right-codereview-use' => 'Bruk av Special:Code',
+	'right-codereview-use' => 'Bruka Special:Code',
 	'right-codereview-add-tag' => 'Leggja til nye merke til versjonar',
 	'right-codereview-remove-tag' => 'Fjerna merke frå versjonar',
 	'right-codereview-post-comment' => 'Leggja til kommentarar til versjonar',
@@ -5219,6 +5244,7 @@ $messages['sah'] = array(
 	'code-status-reverted' => 'төннөрүллүбүт',
 	'code-status-resolved' => 'быһаарыллыбыт',
 	'code-status-ok' => 'сөп',
+	'code-status-verified' => 'тургутулунна',
 	'code-status-deferred' => 'кэлиҥҥигэ көһөрүлүннэ',
 	'code-pathsearch-legend' => 'Биирдиилээн барыллары чопчу аадырыһынан көрдөөһүн',
 	'code-pathsearch-path' => 'Суола:',
@@ -5240,6 +5266,14 @@ $messages['sah'] = array(
 Толору URL: $2
 
 Ырытыы:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Ол кэннинээҕи уларыйыылар',
+	'codereview-email-body2' => '"$1" кыттааччы манна уларытыыны киллэрбит r$2.
+
+Толору URL-а: $3
+
+Уларыйыы туһунан:
 
 $4',
 	'repoadmin' => 'Бырагыраамма куодун харайыыны салайыы',

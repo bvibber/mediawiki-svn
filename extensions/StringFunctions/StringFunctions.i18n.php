@@ -86,6 +86,13 @@ $messages['dsb'] = array(
 	'stringfunctions-desc' => 'Rozšyrja parser wó funkcije za znamuškowe rědy',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'stringfunctions-desc' => 'Ενισχύει τον λεξιαναλυτή με συναρτήσεις συμβολοσειρών',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

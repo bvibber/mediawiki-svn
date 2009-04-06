@@ -381,6 +381,13 @@ Ju liestet aal Sieden in ju Kategorie "$1" as uk aal Unnerkategorien fon ju Kate
 	'autocreatecategorypages-editor' => 'Automatisk Moakjen fon Kategorien',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'autocreatecategorypages-editor' => 'Automatisk kategoriskapning',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

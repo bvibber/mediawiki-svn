@@ -893,6 +893,16 @@ $messages['mt'] = array(
 	'multiupload-toolbox' => "Tella' fajls multipli",
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'multipleupload' => 'Йовкстамс файлат',
+	'multipleupload-saveallfiles' => 'Ванстомс весе файлатнень',
+	'multiupload-fileuploaded' => 'Файлась йовкстазь.',
+	'multiupload-blank' => 'Кочказь файла арась',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
