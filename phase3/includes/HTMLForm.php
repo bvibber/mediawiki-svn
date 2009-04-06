@@ -9,6 +9,17 @@ class HTMLForm {
 					...
 				  )
 	 */
+	 
+	 static $typeMappings = array(
+	 	'text' => 'HTMLTextField',
+	 	'select' => 'HTMLSelectField',
+	 	'radio' => 'HTMLRadioField',
+	 	'multiselect' => 'HTMLMultiSelectField',
+	 	'check' => 'HTMLCheckField',
+	 	'toggle' => 'HTMLCheckField',
+	 	'int' => 'HTMLIntField',
+	 );
+	 
 	function __construct( $descriptor, $messagePrefix ) {
 		$this->mMessagePrefix = $messagePrefix;
 	
@@ -47,8 +58,16 @@ class HTMLForm {
 	}
 
 	static function loadInputFromParameters( $descriptor ) {
-		// FIXME accept a friendlier type variable.
-		$class = $descriptor['class'];
+		if ( isset( $descriptor['class'] ) ) {
+			$class = $descriptor['class'];
+		} elseif ( isset( $descriptor['type'] ) ) {
+			$class = self::$typeMappings[$descriptor['type']];
+		}
+		
+		if (!$class) {
+			throw new MWException( "Descriptor with no class: ".print_r( $descriptor, true ) );
+		}
+		
 		$obj = new $class( $descriptor );
 		
 		return $obj;
@@ -308,13 +327,49 @@ abstract class HTMLFormField {
 
 class HTMLTextField extends HTMLFormField {
 
+	function getSize() {
+		return isset($this->mParams['size']) ? $this->mParams['size'] : 45;
+	}
+
 	function getInputHTML( $value ) {
 		return Xml::input( $this->mName,
-							45,
+							$this->getSize(),
 							$value,
 							array( 'id' => $this->mID ) );
 	}
 	
+}
+
+class HTMLIntField extends HTMLTextField {
+	function getSize() {
+		return isset($this->mParams['size']) ? $this->mParams['size'] : 20;
+	}
+	
+	function validate( $value ) {
+		$p = parent::validate($value);
+		
+		if ($p !== true) return $p;
+		
+		if ( intval($value) != $value ) {
+			return wfMsgExt( 'htmlform-int-invalid', 'parse' );
+		}
+		
+		$in_range = true;
+		
+		if ( isset($this->mParams['min']) ) {
+			$min = $this->mParams['min'];
+			if ( $min > $value )
+				return wfMsgExt( 'htmlform-int-toolow', 'parse', array($min) );
+		}
+		
+		if ( isset($this->mParams['max']) ) {
+			$max = $this->mParams['max'];
+			if ($max < $value)
+				return wfMsgExt( 'htmlform-int-toohigh', 'parse', array($max) );
+		}
+		
+		return true;
+	}
 }
 
 class HTMLCheckField extends HTMLFormField {
@@ -343,7 +398,7 @@ class HTMLSelectField extends HTMLFormField {
 		if ( array_key_exists( $value, $this->mParams['options'] ) )
 			return true;
 		else
-			return 'htmlform-select-badoption';
+			return wfMsgExt( 'htmlform-select-badoption', 'parseinline' );
 	}
 	
 	function getInputHTML( $value ) {
@@ -365,7 +420,7 @@ class HTMLMultiSelectField extends HTMLFormField {
 		if ( count( $validValues ) == count($value) )
 			return true;
 		else
-			return 'htmlform-select-badoption';
+			return wfMsgExt( 'htmlform-select-badoption', 'parseinline' );
 	}
 	
 	function getInputHTML( $value ) {
@@ -396,7 +451,7 @@ class HTMLRadioField extends HTMLFormField {
 		if ( array_key_exists( $value, $this->mParams['options'] ) )
 			return true;
 		else
-			return 'htmlform-select-badoption';
+			return wfMsgExt( 'htmlform-select-badoption', 'parseinline' );
 	}
 	
 	function getInputHTML( $value ) {

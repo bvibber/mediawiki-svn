@@ -3878,4 +3878,10 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 'dberr-outofdate'   => 'Note that their indexes of our content may be out of date.',
 'dberr-cachederror' => 'This is a cached copy of the requested page, and may not be up to date.',
 
+# HTML forms
+'htmlform-invalid-input' => 'There are problems with some of your input',
+'htmlform-select-badoption' => 'The value you specified is not a valid option.',
+'htmlform-int-invalid' => 'The value you specified is not an integer.',
+'htmlform-int-toolow' => 'The value you specified is below the minimum of $1',
+'htmlform-int-toohigh' => 'The value you specified is above the maximum of $1',
 );
