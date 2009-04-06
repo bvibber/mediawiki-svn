@@ -316,7 +316,6 @@ abstract class HTMLFormField {
 	}
 	
 	function getLabel() {
-		if (!isset($this->mLabel)) die( var_dump( $this ) );
 		return $this->mLabel;
 	}
 	
