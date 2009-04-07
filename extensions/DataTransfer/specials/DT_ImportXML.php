@@ -19,7 +19,7 @@ class DTImportXML extends SpecialPage {
 		wfLoadExtensionMessages('DataTransfer');
 	}
 
-	function execute($query = '') {
+	function execute($query) {
 		global $wgUser, $wgOut, $wgRequest;
 		$this->setHeaders();
 
