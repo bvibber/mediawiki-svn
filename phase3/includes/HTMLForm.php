@@ -35,6 +35,7 @@ class HTMLForm {
 			$info['name'] = $fieldname;
 			
 			$field = $this->loadInputFromParameters( $info );
+			$field->mParent = $this;
 			
 			$setSection =& $loadedDescriptor;
 			if ($section) {
@@ -50,6 +51,7 @@ class HTMLForm {
 					$setSection =& $setSection[$newName];
 				}
 			}
+			
 			$setSection[$fieldname] = $field;
 			$this->mFlatFields[$fieldname] = $field;
 		}
@@ -105,7 +107,8 @@ class HTMLForm {
 		
 		// Check for validation
 		foreach( $this->mFlatFields as $fieldname => $field ) {
-			if ( $field->validate( $this->mFieldData[$fieldname] ) !== true ) {
+			if ( $field->validate( $this->mFieldData[$fieldname],
+					$this->mFieldData ) !== true ) {
 				return isset($this->mValidationErrorMessage) ?
 						$this->mValidationErrorMessage : array( 'htmlform-invalid-input' );
 			}
@@ -239,9 +242,9 @@ class HTMLForm {
 abstract class HTMLFormField {
 	abstract function getInputHTML( $value );
 	
-	function validate( $value ) {
+	function validate( $value, $alldata ) {
 		if ( isset($this->mValidationCallback) ) {
-			return call_user_func( $this->mValidationCallback, $value );
+			return call_user_func( $this->mValidationCallback, $value, $alldata );
 		}
 		
 		return true;
@@ -295,7 +298,7 @@ abstract class HTMLFormField {
 		// Check for invalid data.
 		global $wgRequest;
 		
-		$errors = $this->validate( $value );
+		$errors = $this->validate( $value, $this->mParent->mFieldData );
 		if ( $errors === true || !$wgRequest->wasPosted() ) {
 			$errors = '';
 		} else {
@@ -304,7 +307,7 @@ abstract class HTMLFormField {
 		
 		$html = '';
 		
-		$html .= Xml::tags( 'td', array( 'style' => 'align: right;' ),
+		$html .= Xml::tags( 'td', array( 'style' => 'text-align: right;' ),
 					Xml::tags( 'label', array( 'for' => $this->mID ), $this->getLabel() )
 				);
 		$html .= Xml::tags( 'td', array( 'class' => 'mw-input' ),
@@ -335,10 +338,16 @@ class HTMLTextField extends HTMLFormField {
 	}
 
 	function getInputHTML( $value ) {
+		$attribs = array( 'id' => $this->mID );
+		
+		if ( isset($this->mParams['maxlength']) ) {
+			$attribs['maxlength'] = $this->mParams['maxlength'];
+		}
+		
 		return Xml::input( $this->mName,
 							$this->getSize(),
 							$value,
-							array( 'id' => $this->mID ) );
+							$attribs );
 	}
 	
 }
@@ -348,8 +357,8 @@ class HTMLIntField extends HTMLTextField {
 		return isset($this->mParams['size']) ? $this->mParams['size'] : 20;
 	}
 	
-	function validate( $value ) {
-		$p = parent::validate($value);
+	function validate( $value, $alldata ) {
+		$p = parent::validate($value, $alldata);
 		
 		if ($p !== true) return $p;
 		
@@ -386,9 +395,20 @@ class HTMLCheckField extends HTMLFormField {
 	}
 	
 	function loadDataFromRequest( $request ) {
+		$invert = false;
+		if ( isset( $this->mParams['invert'] ) && $this->mParams['invert'] ) {
+			$invert = true;
+		}
+		
 		// GetCheck won't work like we want for checks.
 		if ($request->getCheck( 'wpEditToken' ) ) {
-			return $request->getBool( $this->mName );
+			// XOR has the following truth table, which is what we want
+			// INVERT VALUE | OUTPUT
+			// true   true  | false
+			// false  true  | true
+			// false  false | false
+			// true   false | true
+			return $request->getBool( $this->mName ) xor $invert;
 		} else {
 			return $this->getDefault();
 		}
@@ -397,7 +417,9 @@ class HTMLCheckField extends HTMLFormField {
 
 class HTMLSelectField extends HTMLFormField {
 	
-	function validate( $value ) {
+	function validate( $value, $alldata ) {
+		$p = parent::validate( $value, $alldata );
+		if ($p !== true) return $p;
 		if ( array_key_exists( $value, $this->mParams['options'] ) )
 			return true;
 		else
@@ -416,7 +438,9 @@ class HTMLSelectField extends HTMLFormField {
 }
 
 class HTMLMultiSelectField extends HTMLFormField {
-	function validate( $value ) {
+	function validate( $value, $alldata ) {
+		$p = parent::validate( $value, $alldata );
+		if ($p !== true) return $p;
 		// If all options are valid, array_intersect of the valid options and the provided
 		//  options will return the provided options.
 		$validValues = array_intersect( $value, array_keys($this->mParams['options']) );
@@ -450,7 +474,9 @@ class HTMLMultiSelectField extends HTMLFormField {
 }
 
 class HTMLRadioField extends HTMLFormField {
-	function validate( $value ) {
+	function validate( $value, $alldata ) {
+		$p = parent::validate( $value, $alldata );
+		if ($p !== true) return $p;
 		if ( array_key_exists( $value, $this->mParams['options'] ) )
 			return true;
 		else

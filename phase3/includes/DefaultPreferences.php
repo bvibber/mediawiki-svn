@@ -10,19 +10,139 @@ class DefaultPreferences {
 		global $wgLang, $wgRCMaxAge, $wgUser;
 		
 		$defaultPreferences = array();
-		// What is quickbar even for?
-#		$defaultPreferences['quickbar'] = array( 'type' => 'toggle' );
-		$defaultPreferences['underline'] =
+		
+		## User info #####################################
+		$defaultPreferences['gender'] =
 				array(
 					'type' => 'select',
+					'section' => 'user',
 					'options' => array(
-						0 => wfMsg( 'underline-never' ),
-						1 => wfMsg( 'underline-always' ),
-						2 => wfMsg( 'underline-default' ),
+						'male' => wfMsg('gender-male'),
+						'female' => wfMsg('gender-female'),
+						'unknown' => wfMsg('gender-unknown'),
 					),
-					'label-message' => 'tog-underline',
-					'section' => 'misc',
+					'label-message' => 'yourgender',
 				);
+				
+		global $wgContLang, $wgDisableLangConversion;
+		/* see if there are multiple language variants to choose from*/
+		$variantArray = array();
+		if(!$wgDisableLangConversion) {
+			$variants = $wgContLang->getVariants();
+
+			$languages = Language::getLanguageNames( true );
+			foreach($variants as $v) {
+				$v = str_replace( '_', '-', strtolower($v));
+				if( array_key_exists( $v, $languages ) ) {
+					// If it doesn't have a name, we'll pretend it doesn't exist
+					$variantArray[$v] = $languages[$v];
+				}
+			}
+
+			$options = array();
+			foreach( $variantArray as $code => $name ) {
+				$options[$code] = "$code - $name";
+			}
+
+			if(count($variantArray) > 1) {
+				$defaultPreferences['variant'] =
+					array(
+						'label-message' => 'yourvariant',
+						'type' => 'select',
+						'options' => $options,
+						'section' => 'user',
+					);
+			}
+		}
+		
+		if(count($variantArray) > 1 && !$wgDisableLangConversion && !$wgDisableTitleConversion) {
+			$defaultPreferences['noconvertlink'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'misc',
+						'label-message' => 'tog-noconvertlink',
+					);
+		}
+		
+		global $wgMaxSigChars;
+		$defaultPreferences['nickname'] =
+				array(
+					'type' => 'text',
+					'maxlength' => $wgMaxSigChars,
+					'label-message' => 'yournick',
+					'validation' =>
+						array( 'DefaultPreferences', 'validateSignature' ),
+					'section' => 'user',
+				);
+		$defaultPreferences['fancysig'] =
+				array(
+					'type' => 'toggle',
+					'label-message' => 'tog-fancysig',
+					'section' => 'user'
+				);
+				
+		## TODO STUFF STORED IN USER ROW
+					
+		
+		## Skin #####################################
+		global $wgAllowUserSkin;
+		
+		if ($wgAllowUserSkin) {
+			$defaultPreferences['skin'] =
+					array(
+						'type' => 'radio',
+						'options' => self::generateSkinOptions(),
+						'label-message' => 'skin',
+						'section' => 'skin',
+					);
+		}
+		
+		## TODO QUICKBAR
+				
+		## Math #####################################
+		global $wgUseTeX;
+		if ($wgUseTeX) {
+			$defaultPreferences['math'] =
+					array(
+						'type' => 'radio',
+						'options' => array_map( 'wfMsg', $wgLang->getMathNames() ),
+						'label' => '&nbsp;',
+						'section' => 'math',
+						'label-message' => 'math',
+					);
+		}
+		
+		## Files #####################################
+		$defaultPreferences['imagesize'] =
+				array(
+					'type' => 'select',
+					'options' => self::getImageSizes(),
+					'label-message' => 'imagemaxsize',
+					'section' => 'files',
+				);
+		$defaultPreferences['thumbsize'] =
+				array(
+					'type' => 'select',
+					'options' => self::getThumbSizes(),
+					'label-message' => 'thumbsize',
+					'section' => 'files',
+				);
+		
+		## Date and time #####################################
+		$dateOptions = self::getDateOptions();
+		if ($dateOptions) {
+			$defaultPreferences['date'] =
+					array(
+						'type' => 'radio',
+						'options' => $dateOptions,
+						'label-message' => 'dateformat',
+						'section' => 'date',
+					);
+		}
+		
+		## TODO OFFSET
+		
+		## Editing #####################################
 		$defaultPreferences['cols'] =
 				array(
 					'type' => 'int',
@@ -38,104 +158,6 @@ class DefaultPreferences {
 					'section' => 'editing',
 					'min' => 4,
 					'max' => 1000,
-				);
-		$defaultPreferences['searchlimit'] =
-				array(
-					'type' => 'int',
-					'label-message' => 'resultsperpage',
-					'section' => 'search',
-					'min' => 0,
-				);
-		$defaultPreferences['contextlines'] =
-				array(
-					'type' => 'int',
-					'label-message' => 'contextlines',
-					'section' => 'search',
-					'min' => 0,
-				);
-		$defaultPreferences['contextchars'] =
-				array(
-					'type' => 'int',
-					'label-message' => 'contextchars',
-					'section' => 'search',
-					'min' => 0,
-				);
-#		$defaultPreferences['disablesuggest'] =
-#				array(
-#					// Presumably a toggle, but not on the current preferences form...
-#				);
-		$defaultPreferences['skin'] =
-				array(
-					'type' => 'radio',
-					'options' => self::generateSkinOptions(),
-					'label-message' => 'skin',
-					'section' => 'skin',
-				);
-		$defaultPreferences['math'] =
-				array(
-					'type' => 'radio',
-					'options' => array_map( 'wfMsg', $wgLang->getMathNames() ),
-					'label' => '&nbsp;',
-					'section' => 'math',
-					'label-message' => 'math',
-				);
-		$defaultPreferences['usenewrc'] =
-				array(
-					'type' => 'toggle',
-					'label-message' => 'tog-usenewrc',
-					'section' => 'recentchanges',
-				);
-		$defaultPreferences['rcdays'] =
-				array(
-					'type' => 'int',
-					'label-message' => 'recentchangesdays',
-					'section' => 'recentchanges',
-					'min' => 1,
-					'max' => ceil($wgRCMaxAge / (3600*24)),
-				);
-		$defaultPreferences['rclimit'] =
-				array(
-					'type' => 'int',
-					'label-message' => 'recentchangescount',
-					'section' => 'recentchanges',
-				);
-		$defaultPreferences['wllimit'] =
-				array(
-					'type' => 'int',
-					'min' => 0,
-					'max' => 1000,
-					'label-message' => 'prefs-watchlist-edits',
-					'section' => 'watchlist'
-				);
-		$defaultPreferences['hideminor'] =
-				array(
-					'type' => 'toggle',
-					'label-message' => 'tog-hideminor',
-					'section' => 'recentchanges',
-				);
-		$defaultPreferences['hidepatrolled'] =
-				array(
-					'type' => 'toggle',
-					'section ' => 'recentchanges',
-					'label-message' => 'tog-hidepatrolled',
-				);
-		$defaultPreferences['newpageshidepatrolled'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'recentchanges',
-					'label-message' => 'tog-newpageshidepatrolled',
-				);
-		$defaultPreferences['highlightbroken'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label' => wfMsg('tog-highlightbroken'), // Raw HTML
-				);
-		$defaultPreferences['stubthreshold'] =
-				array(
-					'type' => 'int',
-					'section' => 'misc',
-					'label' => wfMsg('stub-threshold'), // Raw HTML message. Yay?
 				);
 		$defaultPreferences['previewontop'] =
 				array(
@@ -173,12 +195,6 @@ class DefaultPreferences {
 					'section' => 'editing',
 					'label-message' => 'tog-editwidth',
 				);
-		$defaultPreferences['showtoc'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-showtoc',
-				);
 		$defaultPreferences['showtoolbar'] =
 				array(
 					'type' => 'toggle',
@@ -191,88 +207,6 @@ class DefaultPreferences {
 					'section' => 'editing',
 					'label-message' => 'tog-minordefault',
 				);
-		$defaultPreferences['date'] =
-				array(
-					'type' => 'radio',
-					'options' => self::getDateOptions(),
-					'label-message' => 'dateformat',
-				);
-		$defaultPreferences['imagesize'] =
-				array(
-					'type' => 'select',
-					'options' => self::getImageSizes(),
-					'label-message' => 'imagemaxsize',
-				);
-		$defaultPreferences['thumbsize'] =
-				array(
-					'type' => 'select',
-					'options' => self::getThumbSizes(),
-					'label-message' => 'thumbsize',
-				);
-		$defaultPreferences['rememberpassword'] =
-				array(
-					'type' => 'toggle',
-					'label-message' => 'tog-rememberpassword',
-					'section' => 'misc',
-				);
-		$defaultPreferences['nocache'] =
-				array(
-					'type' => 'toggle',
-					'label-message' => 'tog-rememberpassword',
-					'section' => 'misc',
-				);
-		$defaultPreferences['diffonly'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-diffonly',
-				);
-		$defaultPreferences['showhiddencats'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-showhiddencats'
-				);
-		$defaultPreferences['norollbackdiff'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-norollbackdiff',
-				);
-		$defaultPreferences['enotifwatchlistpages'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-enotifwatchlistpages',
-				);
-		$defaultPreferences['enotifusertalkpages'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-enotifusertalkpages',
-				);
-		$defaultPreferences['enotifminoredits'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-enotifminoredits',
-				);
-		$defaultPreferences['enotifrevealaddr'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-enotifrevealaddr'
-				);
-		$defaultPreferences['shownumberswatching'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-shownumberswatching',
-				);
-#		$defaultPreferences['fancysig'] =
-#				array(
-#
-#				);
 		$defaultPreferences['externaleditor'] =
 				array(
 					'type' => 'toggle',
@@ -291,29 +225,69 @@ class DefaultPreferences {
 					'section' => 'editing',
 					'label-message' => 'tog-forceeditsummary',
 				);
-		$defaultPreferences['showjumplinks'] =
+				
+		## RecentChanges #####################################
+		$defaultPreferences['usenewrc'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-showjumplinks',
+					'label-message' => 'tog-usenewrc',
+					'section' => 'recentchanges',
 				);
-		$defaultPreferences['justify'] =
+		$defaultPreferences['rcdays'] =
 				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-justify',
+					'type' => 'int',
+					'label-message' => 'recentchangesdays',
+					'section' => 'recentchanges',
+					'min' => 1,
+					'max' => ceil($wgRCMaxAge / (3600*24)),
 				);
-		$defaultPreferences['numberheadings'] =
+		$defaultPreferences['rclimit'] =
 				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-numberheadings',
+					'type' => 'int',
+					'label-message' => 'recentchangescount',
+					'section' => 'recentchanges',
 				);
-		$defaultPreferences['uselivepreview'] =
+		$defaultPreferences['hideminor'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-uselivepreview',
+					'label-message' => 'tog-hideminor',
+					'section' => 'recentchanges',
+				);
+				
+		global $wgUseRCPatrol;
+		if ($wgUseRCPatrol) {
+			$defaultPreferences['hidepatrolled'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'recentchanges',
+						'label-message' => 'tog-hidepatrolled',
+					);
+			$defaultPreferences['newpageshidepatrolled'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'recentchanges',
+						'label-message' => 'tog-newpageshidepatrolled',
+					);
+		}
+		
+		global $wgRCShowWatchingUsers;
+		if ($wgRCShowWatchingUsers) {
+			$defaultPreferences['shownumberswatching'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'misc',
+						'label-message' => 'tog-shownumberswatching',
+					);
+		}
+				
+		## Watchlist #####################################
+		$defaultPreferences['wllimit'] =
+				array(
+					'type' => 'int',
+					'min' => 0,
+					'max' => 1000,
+					'label-message' => 'prefs-watchlist-edits',
+					'section' => 'watchlist'
 				);
 		$defaultPreferences['watchlistdays'] =
 				array(
@@ -359,13 +333,16 @@ class DefaultPreferences {
 					'section' => 'watchlist',
 					'label-message' => 'tog-watchlisthideliu',
 				);
-		$defaultPreferences['watchlisthidepatrolled'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'watchlist',
-					'label-message' => 'tog-watchlisthidepatrolled',
-				);
-			
+		
+		if ( $wgUseRCPatrol ) {
+			$defaultPreferences['watchlisthidepatrolled'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'watchlist',
+						'label-message' => 'tog-watchlisthidepatrolled',
+					);
+		}
+		
 		$watchTypes = array( 'edit' => 'watchdefault',
 								'move' => 'watchmoves',
 								'delete' => 'watchdeletion' );
@@ -385,59 +362,175 @@ class DefaultPreferences {
 			}
 		}
 		
-		global $wgContLang, $wgDisableLangConversion;
-		/* see if there are multiple language variants to choose from*/
-		if(!$wgDisableLangConversion) {
-			$variants = $wgContLang->getVariants();
-			$variantArray = array();
-
-			$languages = Language::getLanguageNames( true );
-			foreach($variants as $v) {
-				$v = str_replace( '_', '-', strtolower($v));
-				if( array_key_exists( $v, $languages ) ) {
-					// If it doesn't have a name, we'll pretend it doesn't exist
-					$variantArray[$v] = $languages[$v];
-				}
-			}
-
-			$options = "\n";
-			foreach( $variantArray as $code => $name ) {
-#				$options .= Xml::option( "$code - $name", $code, $selected ) . "\n";
-			}
-
-			if(count($variantArray) > 1) {
-				$wgOut->addHTML(
-					$this->tableRow(
-						Xml::label( wfMsg( 'yourvariant' ), 'wpUserVariant' ),
-						Xml::tags( 'select',
-							array( 'name' => 'wpUserVariant', 'id' => 'wpUserVariant' ),
-							$options
-						)
-					)
+		## Search #####################################
+		$defaultPreferences['searchlimit'] =
+				array(
+					'type' => 'int',
+					'label-message' => 'resultsperpage',
+					'section' => 'search',
+					'min' => 0,
 				);
-			}
-		}
-		
-		if(count($variantArray) > 1 && !$wgDisableLangConversion && !$wgDisableTitleConversion) {
-			$defaultPreferences['noconvertlink'] =
+		$defaultPreferences['contextlines'] =
+				array(
+					'type' => 'int',
+					'label-message' => 'contextlines',
+					'section' => 'search',
+					'min' => 0,
+				);
+		$defaultPreferences['contextchars'] =
+				array(
+					'type' => 'int',
+					'label-message' => 'contextchars',
+					'section' => 'search',
+					'min' => 0,
+				);
+				
+		## TODO Searchable namespaces.
+				
+		global $wgEnableMWSuggest;
+		if ($wgEnableMWSuggest) {
+			$defaultPreferences['disablesuggest'] =
 					array(
 						'type' => 'toggle',
-						'section' => 'misc',
-						'label-message' => 'tog-noconvertlink',
+						'label-message' => 'mwsuggest-disable',
+						'section' => 'search',
 					);
 		}
 		
-		$defaultPreferences['gender'] =
+		## Misc #####################################
+		
+		$defaultPreferences['underline'] =
 				array(
 					'type' => 'select',
-					'section' => 'user',
 					'options' => array(
-						'male' => wfMsg('gender-male'),
-						'female' => wfMsg('gender-female'),
-						'unknown' => wfMsg('gender-unknown'),
+						0 => wfMsg( 'underline-never' ),
+						1 => wfMsg( 'underline-always' ),
+						2 => wfMsg( 'underline-default' ),
 					),
-					'label' => 'yourgender',
+					'label-message' => 'tog-underline',
+					'section' => 'misc',
 				);
+		$defaultPreferences['highlightbroken'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label' => wfMsg('tog-highlightbroken'), // Raw HTML
+				);
+		$defaultPreferences['stubthreshold'] =
+				array(
+					'type' => 'int',
+					'section' => 'misc',
+					'label' => wfMsg('stub-threshold'), // Raw HTML message. Yay?
+				);
+		$defaultPreferences['showtoc'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-showtoc',
+				);
+		$defaultPreferences['rememberpassword'] =
+				array(
+					'type' => 'toggle',
+					'label-message' => 'tog-rememberpassword',
+					'section' => 'misc',
+				);
+		$defaultPreferences['nocache'] =
+				array(
+					'type' => 'toggle',
+					'label-message' => 'tog-rememberpassword',
+					'section' => 'misc',
+				);
+		$defaultPreferences['diffonly'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-diffonly',
+				);
+		$defaultPreferences['showhiddencats'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-showhiddencats'
+				);
+		$defaultPreferences['norollbackdiff'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-norollbackdiff',
+				);
+		$defaultPreferences['showjumplinks'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-showjumplinks',
+				);
+		$defaultPreferences['justify'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-justify',
+				);
+		$defaultPreferences['numberheadings'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-numberheadings',
+				);
+		$defaultPreferences['uselivepreview'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-uselivepreview',
+				);
+				
+		## Email #######################################
+		## Email stuff
+		global $wgEnableEmail, $wgEnableUserEmail;
+		if ($wgEnableEmail) {
+		
+			if ($wgEnableUserEmail) {
+				$defaultPreferences['disableemail'] =
+						array(
+							'type' => 'toggle',
+							'invert' => true,
+							'section' => 'email',
+							'label-message' => 'allowemail',
+						);
+				$defaultPreferences['ccmeonemails'] =
+						array(
+							'type' => 'toggle',
+							'section' => 'email',
+							'label-message' => 'tog-ccmeonemails',
+						);
+			}
+			
+			$defaultPreferences['enotifwatchlistpages'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'email',
+						'label-message' => 'tog-enotifwatchlistpages',
+					);
+			$defaultPreferences['enotifusertalkpages'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'email',
+						'label-message' => 'tog-enotifusertalkpages',
+					);
+			$defaultPreferences['enotifminoredits'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'email',
+						'label-message' => 'tog-enotifminoredits',
+					);
+			$defaultPreferences['enotifrevealaddr'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'email',
+						'label-message' => 'tog-enotifrevealaddr'
+					);
+		}
+				
+		## Unsorted --------------------------------------------------------------
 				
 		wfRunHooks( 'GetPreferences', array( &$defaultPreferences ) );
 		
@@ -532,5 +625,22 @@ class DefaultPreferences {
 		}
 		
 		return $ret;
+	}
+	
+	static function validateSignature( $signature, $alldata ) {
+		global $wgParser, $wgMaxSigChars, $wgLang;
+		if( mb_strlen( $signature ) > $wgMaxSigChars ) {
+			return
+				Xml::element( 'span', array( 'class' => 'error' ),
+					wfMsgExt( 'badsiglength', 'parsemag',
+						$wgLang->formatNum( $wgMaxSigChars )
+					)
+				);
+		} elseif( !empty( $alldata['fancysig'] ) &&
+				false === $wgParser->validateSig( $signature ) ) {
+			return Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'badsig' ) );
+		} else {
+			return true;
+		}
 	}
 }
