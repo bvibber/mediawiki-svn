@@ -19,7 +19,7 @@ class DTViewXML extends SpecialPage {
 		wfLoadExtensionMessages('DataTransfer');
 	}
 
-	function execute($query = '') {
+	function execute($query) {
 		$this->setHeaders();
 		doSpecialViewXML($query);
 	}
@@ -232,6 +232,7 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
   $namespace_labels = $wgContLang->getNamespaces();
   $template_label = $namespace_labels[NS_TEMPLATE];
   $namespace_str = str_replace(' ', '_', wfMsgForContent('dt_xml_namespace'));
+  $pages_str = str_replace(' ', '_', wfMsgForContent('dt_xml_pages'));
   $page_str = str_replace(' ', '_', wfMsgForContent('dt_xml_page'));
   $field_str = str_replace(' ', '_', wfMsgForContent('dt_xml_field'));
   $name_str = str_replace(' ', '_', wfMsgForContent('dt_xml_name'));
