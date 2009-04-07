@@ -30,7 +30,7 @@ $messages['en'] = array(
 	'dt_importxml_selectfile'     => 'Please select the XML file to import:',
 	'dt_importxml_editsummary'    => 'XML import',
 	'dt_importxml_importing'      => 'Importing...',
-	'dt_importxml_success'        => 'Imported $1 pages from XML file.',
+	'dt_importxml_success'        => '$1 pages will be imported from XML file.',
 );
 
 /** Message documentation (Message documentation)
