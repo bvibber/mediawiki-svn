@@ -11,19 +11,26 @@ $messages = array();
  * @author Yaron Koren
  */
 $messages['en'] = array(
-	'dt-desc'                     => 'Allows for importing and exporting structured data contained in template calls',
+	'dt-desc'                     => 'Allows for importing and exporting data contained in template calls',
 	'viewxml'                     => 'View XML',
 	'dt_viewxml_docu'             => 'Please select among the following categories and namespaces to view in XML format.',
 	'dt_viewxml_categories'       => 'Categories',
 	'dt_viewxml_namespaces'       => 'Namespaces',
 	'dt_viewxml_simplifiedformat' => 'Simplified format',
 	'dt_xml_namespace'            => 'Namespace',
+	'dt_xml_pages'                => 'Pages',
 	'dt_xml_page'                 => 'Page',
+	'dt_xml_template'             => 'Template',
 	'dt_xml_field'                => 'Field',
 	'dt_xml_name'                 => 'Name',
 	'dt_xml_title'                => 'Title',
 	'dt_xml_id'                   => 'ID',
 	'dt_xml_freetext'             => 'Free Text',
+	'importxml'                   => 'Import XML',
+	'dt_importxml_selectfile'     => 'Please select the XML file to import:',
+	'dt_importxml_editsummary'    => 'XML import',
+	'dt_importxml_importing'      => 'Importing...',
+	'dt_importxml_success'        => 'Imported $1 pages from XML file.',
 );
 
 /** Message documentation (Message documentation)
