@@ -288,12 +288,12 @@ class SharedUserRights extends SpecialPage {
 	}
 
 	function makeGroupNameList( $ids ) {
-		global $wgContentLang;
+		global $wgContLang;
 
 		if ( empty( $ids ) ) {
 			return wfMsgForContent( 'rightsnone' );
 		} else {
-			return $wgContentLang->commaList( $ids );
+			return $wgContLang->commaList( $ids );
 		}
 	}
 
