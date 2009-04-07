@@ -67,8 +67,8 @@ END;
 			//$text .= "<pre>{$page->createText()}</pre>\n";
 		}
 		Job::batchInsert( $jobs );
-		$text .= wfMsg('dt_importxml_success', count($jobs));
+		global $wgLang;
+		$text .= wfMsgExt( 'dt_importxml_success', $wgLang->formatNum( count( $jobs ) ) );
 		return $text;
 	}
-
 }
