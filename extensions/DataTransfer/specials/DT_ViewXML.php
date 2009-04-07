@@ -232,7 +232,6 @@ function getXMLForPage($title, $simplified_format, $groupings, $depth=0) {
   $namespace_labels = $wgContLang->getNamespaces();
   $template_label = $namespace_labels[NS_TEMPLATE];
   $namespace_str = str_replace(' ', '_', wfMsgForContent('dt_xml_namespace'));
-  $pages_str = str_replace(' ', '_', wfMsgForContent('dt_xml_pages'));
   $page_str = str_replace(' ', '_', wfMsgForContent('dt_xml_page'));
   $field_str = str_replace(' ', '_', wfMsgForContent('dt_xml_field'));
   $name_str = str_replace(' ', '_', wfMsgForContent('dt_xml_name'));
@@ -429,8 +428,9 @@ function doSpecialViewXML() {
 	$namespace_labels = $wgContLang->getNamespaces();
 	$category_label = $namespace_labels[NS_CATEGORY];
 	$template_label = $namespace_labels[NS_TEMPLATE];
-	$name_str = "name";
+	$name_str = str_replace(' ', '_', wfMsgForContent('dt_xml_name'));
 	$namespace_str = wfMsg('dt_xml_namespace');
+	$pages_str = str_replace(' ', '_', wfMsgForContent('dt_xml_pages'));
 
 	$form_submitted = false;
 	$page_titles = array();
@@ -450,7 +450,7 @@ function doSpecialViewXML() {
 
 		$groupings = getGroupings();
 		$simplified_format = $wgRequest->getVal('simplified_format');
-		$text = "<Pages>";
+		$text = "<$pages_str>";
 		if ($cats) {
 			foreach ($cats as $cat => $val) {
 				if ($simplified_format)
@@ -489,7 +489,7 @@ function doSpecialViewXML() {
 					$text .= "</$namespace_str>\n";
 			}
 		}
-		$text .= "</Pages>";
+		$text .= "</$pages_str>";
 		print $text;
 	} else {
 		// set 'title' as hidden field, in case there's no URL niceness
