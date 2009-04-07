@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('DT_VERSION','0.1.10');
+define('DT_VERSION','0.2');
 
 // constants for special properties
 define('DT_SP_HAS_XML_GROUPING', 1);
@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][]= array(
 	'version'        => DT_VERSION,
 	'author'         => 'Yaron Koren',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Data_Transfer',
-	'description'    => 'Exports wiki pages as XML, using template calls as the data structure',
+	'description'    => 'Allows for importing and exporting data contained in template calls',
 	'descriptionmsg' => 'dt-desc',
 );
 
@@ -27,6 +27,11 @@ $dtgIP = $IP . '/extensions/DataTransfer';
 // register all special pages and other classes
 $wgSpecialPages['ViewXML'] = 'DTViewXML';
 $wgAutoloadClasses['DTViewXML'] = $dtgIP . '/specials/DT_ViewXML.php';
+$wgSpecialPages['ImportXML'] = 'DTImportXML';
+$wgAutoloadClasses['DTImportXML'] = $dtgIP . '/specials/DT_ImportXML.php';
+$wgJobClasses['dtImport'] = 'DTImportJob';
+$wgAutoloadClasses['DTImportJob'] = $dtgIP . '/includes/DT_ImportJob.php';
+$wgAutoloadClasses['DTXMLParser'] = $dtgIP . '/includes/DT_XMLParser.php';
 
 require_once($dtgIP . '/languages/DT_Language.php');
 $wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
