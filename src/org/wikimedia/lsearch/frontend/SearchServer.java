@@ -55,6 +55,7 @@ public class SearchServer extends Thread {
 	
 	public void startServer(){
 		config = Configuration.open();
+		SearchServer.port = config.getInt("Search","port",8123);
 		/** Logger */
 		org.apache.log4j.Logger log = Logger.getLogger(SearchServer.class);
 		
@@ -134,20 +135,5 @@ public class SearchServer extends Thread {
 	 */
 	public void run() {
 		startServer();
-	}
-	
-	public static void main(String[] args) {
-		System.out.println(
-				"MediaWiki Lucene search indexer - runtime search daemon.\n"
-				);
-		int i = 0;
-		while (i < args.length) {
-			if (args[i].equals("-port")) {
-				port = Integer.valueOf(args[++i]).intValue();
-			} else if (args[i].equals("-configfile")) {
-				Configuration.setConfigFile(args[++i]);
-			} else break;
-			++i;
-		}
 	}
 }
