@@ -59,17 +59,15 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['SlippyMap'] = $dir . 'SlippyMap.class.php';
 $wgExtensionMessagesFiles['SlippyMap'] = $dir . 'SlippyMap.i18n.php';
 
-# Bump this when updating OpenStreetMap.js to help update caches
-$wgSlippyMapVersion = 1;
-
 function wfslippymap() {
-	global $wgParser, $wgMapOfServiceUrl;
+	global $wgParser, $wgHooks, $wgMapOfServiceUrl;
 	# register the extension with the WikiText parser
 	# the first parameter is the name of the new tag.
 	# In this case it defines the tag <slippymap> ... </slippymap>
 	# the second parameter is the callback function for
 	# processing the text between the tags
 	$wgParser->setHook( 'slippymap', array( 'SlippyMap', 'parse' ) );
+	$wgHooks['ParserAfterTidy'][] = 'SlippyMap::ParserAfterTidy';
 	$wgMapOfServiceUrl = "http://osm-tah-cache.firefishy.com/~ojw/MapOf/?";
 	return true;
 }
