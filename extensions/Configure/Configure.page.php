@@ -64,7 +64,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				}
 				if ( is_array( $wgConfigureWikis ) && !in_array( $wiki, $wgConfigureWikis ) ) {
 					$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>',
-						array( 'configure-transwiki-not-in-range', $wiki, $wgLang->commaList( $wgConfigureWikis ) ) );
+						array( 'configure-transwiki-not-in-range', $wiki, $wgLang->commaList( $wgConfigureWikis ), count( $wgConfigureWikis ) ) );
 					return;
 				}
 			}
@@ -345,9 +345,10 @@ abstract class ConfigurationPage extends SpecialPage {
 					}
 				}
 				$wgOut->addWikiMsg( 'configure-edit-old',
-								$wgLang->timeAndDate( $version ) ,
-								$wgLang->date( $version ) ,
-								$wgLang->time( $version ) );
+					$wgLang->timeAndDate( $version ),
+					$wgLang->date( $version ),
+					$wgLang->time( $version )
+				);
 			} else {
 				$wgOut->wrapWikiMsg( '<div class="errorbox">$1</div>',
 					array( 'configure-old-not-available', $version ) );
