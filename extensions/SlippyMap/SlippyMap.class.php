@@ -243,7 +243,7 @@ var markers${unique} = new OpenLayers.Layer.Markers( "Markers" );
 map${unique}.addLayer(markers${unique});
 var size${unique} = new OpenLayers.Size(20,34);
 var offset${unique} = new OpenLayers.Pixel(-(size${unique}.w/2), -size${unique}.h);
-var icon${unique} = new OpenLayers.Icon('http://boston.openguides.org/markers/YELLOW.png', size${unique},offset);
+var icon${unique} = new OpenLayers.Icon('http://boston.openguides.org/markers/YELLOW.png', size${unique},offset${unique});
 markers${unique}.addMarker(new OpenLayers.Marker( lonLat${unique}, icon${unique} ));
 EOT;
 		}
