@@ -1,9 +1,9 @@
 <?php
 
-class DefaultPreferences {
+class Preferences {
 	static $defaultPreferences = null;
 	
-	static function getDefaultPreferences() {
+	static function getPreferences() {
 		if (self::$defaultPreferences)
 			return self::$defaultPreferences;
 	
