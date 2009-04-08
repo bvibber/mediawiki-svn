@@ -76,6 +76,8 @@ $messages['ar'] = array(
 الصور غير الملائمة سيتم حذفها فورا، انظر [[{{MediaWiki:Multipleupload-page}}|سياسة حذف الصور]].",
 	'multiupload-fileuploaded' => 'تم رفع الملف.',
 	'multiupload-toolbox' => 'رفع ملفات متعددة',
+	'multiupload-no-files' => 'من فضلك اختر ملفا واحدا على الأقل للرفع',
+	'multiupload-blank' => 'لا ملف تم اختياره',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1291,6 +1293,7 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
@@ -1298,6 +1301,9 @@ $messages['th'] = array(
 	'multipleupload-ignoreallwarnings' => "ไม่สนใจ '''คำเตือน''' และบันทึกไฟล์",
 	'multipleupload-saveallfiles' => 'บันทึกไฟล์ทั้งหมด',
 	'multiupload-fileuploaded' => 'ไฟล์ถูกอัปโหลดเรียบร้อยแล้ว',
+	'multiupload-toolbox' => 'อัปโหลดหลายไฟล์',
+	'multiupload-no-files' => 'กรุณาเลือกอย่างน้อยหนึ่งไฟล์เพื่ออัปโหลด',
+	'multiupload-blank' => 'ไม่มีไฟล์ถูกเลือก',
 );
 
 /** Tagalog (Tagalog)

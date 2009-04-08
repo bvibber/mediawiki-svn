@@ -1002,16 +1002,17 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
 	'ajax-se-desc' => 'แสดงผู้ใช้ที่กำลังแก้ไขหน้าเดียวกันอยู่',
-	'ajax-se-title' => 'กำลังแก้ไข :',
-	'ajax-se-pending' => 'จนกว่าจะโหลดใหม่ ... (คลิกกล่องนี้หรือเริ่มแก้ไข)',
-	'ajax-se-idling' => '($1 วินาทีผ่านไป)',
-	'ajax-se-pagedoesnotexist' => 'หน้าที่ยังไม่ได้ถูกสร้าง',
-	'ajax-se-userinvalid' => 'ผิดพลาด : ชื่อผู้ใช้ไม่ถูกต้อง',
-	'ajax-se-usernotfound' => 'ผิดพลาด : ไม่พบผู้ใช้นี้',
+	'ajax-se-title' => 'กำลังแก้ไข:',
+	'ajax-se-pending' => 'กำลังรอโหลดใหม่… (คลิกกล่องนี้หรือเริ่มแก้ไข)',
+	'ajax-se-idling' => '($1 วินาทีที่แล้ว)',
+	'ajax-se-pagedoesnotexist' => 'หน้าไม่มี',
+	'ajax-se-userinvalid' => 'ผิดพลาด: ผู้ใช้ไม่ถูกต้อง',
+	'ajax-se-usernotfound' => 'ผิดพลาด: ไม่พบผู้ใช้',
 );
 
 /** Tagalog (Tagalog)

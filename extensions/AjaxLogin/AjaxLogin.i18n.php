@@ -363,6 +363,18 @@ Du kan förlora din redigering om du lämnar den här sidan nu.',
 	'ajaxlogin-create' => 'Skapa ett konto',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'ajaxlogin-desc' => 'กล่องแบบไม่ตายตัว ให้ผู้ใช้ล็อกอินและจดจำรหัสผ่าน',
+	'ajaxLogin1' => 'เพื่อให้การล็อกอินสำเร็จ คุณต้องป้อนรหัสผ่านใหม่
+การดำเนินการนี้จะทำให้คุณออกไปจากหน้าแก้ไข และคุณอาจสูญเสียการแก้ไขปัจจุบันของคุณ',
+	'ajaxLogin2' => 'แน่ใจหรือไม่?
+คุณอาจสูญเสียการเปลี่ยนแปลงที่ทำกับหน้านี้ ถ้าคุณออกไปตอนนี้',
+	'ajaxlogin-create' => 'สร้างบัญชี',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

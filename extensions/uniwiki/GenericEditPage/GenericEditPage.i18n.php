@@ -1065,6 +1065,14 @@ $messages['tet'] = array(
 	'gep-addsectionbutton' => 'Tau tan',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'gep-addcategorybutton' => 'เพิ่ม',
+	'gep-addsectionbutton' => 'เพิ่ม',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

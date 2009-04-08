@@ -260,14 +260,27 @@ $messages['bs'] = array(
 	'crosswikiblock-expiry' => 'Ističe:',
 	'crosswikiblock-reason' => 'Razlog:',
 	'crosswikiblock-submit' => 'Blokiraj ovog korisnika',
+	'crosswikiblock-anononly' => 'Blokiraj samo anonimne korisnike',
+	'crosswikiblock-nocreate' => 'Onemogući pravljenje računa',
 	'crosswikiblock-autoblock' => 'Automatski blokiraj zadnju IP adresu koju je koristio ovaj korisnik i sve druge IP adrese s kojih je on pokušao uređivati',
 	'crosswikiblock-noemail' => 'Onemogući korisnika da šalje e-mail',
 	'crosswikiunblock' => 'Deblokiranje korisnika na drugim wikijima',
+	'crosswikiunblock-user' => 'Korisničko ime, IP adresa ili ID blokade i odredišni wiki:',
 	'crosswikiunblock-reason' => 'Razlog:',
 	'crosswikiunblock-submit' => 'Deblokiraj ovog korisnika',
+	'crosswikiunblock-success' => "Korisnik '''$1''' je uspješno deblokiran.
+
+Nazad na:
+* [[Special:CrosswikiBlock|Obrazac za blokiranje]]
+* [[$2]]",
 	'crosswikiblock-nousername' => 'Nije navedeno korisničko ime',
+	'crosswikiblock-dbnotfound' => 'Baza podataka $1 ne postoji',
+	'crosswikiblock-noname' => '"$1" nije valjano korisničko ime.',
+	'crosswikiblock-nouser' => 'Korisnik "$3" nije pronađen.',
+	'crosswikiblock-noexpiry' => 'Nevaljan rok isteka: $1.',
 	'crosswikiblock-noreason' => 'Nije naveden razlog.',
 	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
+	'crosswikiblock-noblock' => 'Ovaj korisnik nije blokiran.',
 );
 
 /** Catalan (Català)
@@ -2078,11 +2091,13 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Mopza
+ * @author Octahedron80
  */
 $messages['th'] = array(
 	'crosswikiblock-expiry' => 'หมดอายุ:',
 	'crosswikiblock-reason' => 'เหตุผล:',
 	'crosswikiblock-submit' => 'บล็อกผู้ใช้รายนี้',
+	'crosswikiunblock-reason' => 'เหตุผล:',
 );
 
 /** Tagalog (Tagalog)

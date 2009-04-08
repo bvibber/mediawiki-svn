@@ -41,13 +41,27 @@ $messages['qqq'] = array(
 	'dt-desc' => 'Extension description displayed on [[Special:Version]].',
 	'dt_viewxml_categories' => '{{Identical|Categories}}',
 	'dt_viewxml_namespaces' => '{{Identical|Namespaces}}',
-	'dt_xml_namespace' => '{{Identical|Namespace}}',
-	'dt_xml_page' => '{{Identical|Page}}',
-	'dt_xml_field' => '{{Identical|Field}}',
-	'dt_xml_name' => '{{Identical|Name}}',
-	'dt_xml_title' => '{{Identical|Title}}',
-	'dt_xml_id' => '{{Identical|ID}}',
-	'dt_xml_freetext' => '{{Identical|Free text}}',
+	'dt_xml_namespace' => '{{Identical|Namespace}}
+Used as XML tag name.',
+	'dt_xml_pages' => '{{Identical|Page}}
+
+Used as XML tag name.',
+	'dt_xml_page' => '{{Identical|Page}}
+Used as XML tag name.',
+	'dt_xml_template' => '{{Identical|Template}}
+Used as XML tag name.',
+	'dt_xml_field' => '{{Identical|Field}}
+Used as XML tag name.',
+	'dt_xml_name' => '{{Identical|Name}}
+
+Used as XML tag name.',
+	'dt_xml_title' => '{{Identical|Title}}
+Used as XML tag name.',
+	'dt_xml_id' => '{{Identical|ID}}
+
+Used as XML tag name.',
+	'dt_xml_freetext' => '{{Identical|Free text}}
+Used as XML tag name.',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -167,19 +181,26 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'dt-desc' => 'Omogućuje uvoz i izvoz struktuiranih podataka koje sadržane u pozivima šablona',
+	'dt-desc' => 'Omogućuje uvoz i izvoz podataka koji su sadržani u pozivima šablona',
 	'viewxml' => 'Pregledaj XML',
 	'dt_viewxml_docu' => 'Molimo Vas odaberite unutar slijedećih kategorija i imenskih prostora za pregled u XML formatu.',
 	'dt_viewxml_categories' => 'Kategorije',
 	'dt_viewxml_namespaces' => 'Imenski prostori',
 	'dt_viewxml_simplifiedformat' => 'Pojednostavljeni format',
 	'dt_xml_namespace' => 'Imenski prostor',
+	'dt_xml_pages' => 'Stranice',
 	'dt_xml_page' => 'Stranica',
+	'dt_xml_template' => 'Šablon',
 	'dt_xml_field' => 'Polje',
 	'dt_xml_name' => 'Naziv',
 	'dt_xml_title' => 'Naslov',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Slobodni tekst',
+	'importxml' => 'Uvezi XML',
+	'dt_importxml_selectfile' => 'Molimo odaberite XML datoteku za uvoz:',
+	'dt_importxml_editsummary' => 'XML uvoz',
+	'dt_importxml_importing' => 'Uvoz...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti uvezeno iz XML datoteke.',
 );
 
 /** Catalan (Català)
@@ -235,19 +256,26 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'dt-desc' => 'Zmóžnja importěrowanje a eksportěrowanje strukturěrowanych datow w zawołanjach pśedłogow',
+	'dt-desc' => 'Zmóžnja importěrowanje a eksportěrowanje datow w zawołanjach pśedłogow',
 	'viewxml' => 'XML se woglědaś',
 	'dt_viewxml_docu' => 'Pšosym wubjeŕ, kótare slědujucych kategorijow a mjenjowych rumow maju se pokazaś w formaśe XML.',
 	'dt_viewxml_categories' => 'Kategorije',
 	'dt_viewxml_namespaces' => 'Mjenjowe rumy',
 	'dt_viewxml_simplifiedformat' => 'Zjadnorjony format',
 	'dt_xml_namespace' => 'Mjenjowy rum',
+	'dt_xml_pages' => 'Boki',
 	'dt_xml_page' => 'Bok',
+	'dt_xml_template' => 'Pśedłoga',
 	'dt_xml_field' => 'Pólo',
 	'dt_xml_name' => 'Mě',
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Lichy tekst',
+	'importxml' => 'XML importěrowaś',
+	'dt_importxml_selectfile' => 'Pšosym wubjeŕ XML-dataju za importěrowanje:',
+	'dt_importxml_editsummary' => 'XML-importěrowanje',
+	'dt_importxml_importing' => 'Importěrujo se...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|bok importěrujo|boka importěrujotej|boki importěruju|bokow importěrujo}} se z XML-dataje.',
 );
 
 /** Greek (Ελληνικά)
@@ -315,23 +343,32 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
+ * @author IAlex
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
-	'dt-desc' => 'Autorise l’import et l’export de données structurées contenues dans des appels de modèles',
+	'dt-desc' => 'Permet l’import et l’export de données contenues dans des appels de modèles',
 	'viewxml' => 'Voir XML',
 	'dt_viewxml_docu' => 'Veuillez sélectionner parmi les catégories et les espaces de noms suivants afin de visionner au format XML.',
 	'dt_viewxml_categories' => 'Catégories',
 	'dt_viewxml_namespaces' => 'Espaces de noms',
 	'dt_viewxml_simplifiedformat' => 'Format simplifié',
 	'dt_xml_namespace' => 'Espace de noms',
+	'dt_xml_pages' => 'Pages',
 	'dt_xml_page' => 'Page',
+	'dt_xml_template' => 'Modèle',
 	'dt_xml_field' => 'Champ',
 	'dt_xml_name' => 'Nom',
 	'dt_xml_title' => 'Titre',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texte Libre',
+	'importxml' => 'Import en XML',
+	'dt_importxml_selectfile' => 'Veuillez sélectionner le fichier XML à importer :',
+	'dt_importxml_editsummary' => 'Import XML',
+	'dt_importxml_importing' => 'Import en cours...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|page sera importée|pages seront importées}} depuis le fichier XML.',
 );
 
 /** Western Frisian (Frysk)
@@ -404,12 +441,19 @@ $messages['gsw'] = array(
 	'dt_viewxml_namespaces' => 'Namensryym',
 	'dt_viewxml_simplifiedformat' => 'Vereifacht Format',
 	'dt_xml_namespace' => 'Namensruum',
+	'dt_xml_pages' => 'Syte',
 	'dt_xml_page' => 'Syte',
+	'dt_xml_template' => 'Vorlag',
 	'dt_xml_field' => 'Fäld',
 	'dt_xml_name' => 'Name',
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Freje Täxt',
+	'importxml' => 'XML importiere',
+	'dt_importxml_selectfile' => 'Bitte wehl d XML-Datei zum importiere uus:',
+	'dt_importxml_editsummary' => 'XML-Import',
+	'dt_importxml_importing' => 'Am Importiere ...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|Syte|Syte}} wäre vu dr XML-DAtei importiert.',
 );
 
 /** Manx (Gaelg)
@@ -484,19 +528,26 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'dt-desc' => 'Dowola strukturowane daty za importowanje a eksportowanje w předłohowych wołanjach',
+	'dt-desc' => 'Dowola importowanje a eksportowanje datow, kotrež su we wołanjach předłohow wobsahowane',
 	'viewxml' => 'XML wobhladać',
 	'dt_viewxml_docu' => 'Prošu wubjer ze slědowacych kategorijow a mjenowych rumow, zo by w XML-formaće wobhladał.',
 	'dt_viewxml_categories' => 'Kategorije',
 	'dt_viewxml_namespaces' => 'Mjenowe rumy',
 	'dt_viewxml_simplifiedformat' => 'Zjednorjeny format',
 	'dt_xml_namespace' => 'Mjenowy rum',
+	'dt_xml_pages' => 'Strony',
 	'dt_xml_page' => 'Strona',
+	'dt_xml_template' => 'Předłoha',
 	'dt_xml_field' => 'Polo',
 	'dt_xml_name' => 'Mjeno',
 	'dt_xml_title' => 'Titul',
 	'dt_xml_id' => 'Id',
 	'dt_xml_freetext' => 'Swobodny tekst',
+	'importxml' => 'XML importować',
+	'dt_importxml_selectfile' => 'Prošu wubjer XML-dataju za importowanje:',
+	'dt_importxml_editsummary' => 'Importowanje XML',
+	'dt_importxml_importing' => 'Importuje so...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|strona so z XML-dataje importuje|stronje so z XML-dataje importujetej|strony so z XML-dataje importuja|stronow so z XML-dataje importuje}}.',
 );
 
 /** Hungarian (Magyar)
@@ -586,19 +637,26 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'dt-desc' => 'テンプレート呼び出しに関わる構造化データのインポートおよびエクスポートを可能にする',
+	'dt-desc' => 'テンプレート呼び出しに関わるデータのインポートおよびエクスポートを可能にする',
 	'viewxml' => 'XML表示',
 	'dt_viewxml_docu' => 'XML形式で表示するカテゴリや名前空間を以下から選択してください。',
 	'dt_viewxml_categories' => 'カテゴリ',
 	'dt_viewxml_namespaces' => '名前空間',
 	'dt_viewxml_simplifiedformat' => '簡易形式',
 	'dt_xml_namespace' => 'Namespace',
+	'dt_xml_pages' => 'Pages',
 	'dt_xml_page' => 'Page',
+	'dt_xml_template' => 'Template',
 	'dt_xml_field' => 'Field',
 	'dt_xml_name' => 'Name',
 	'dt_xml_title' => 'Title',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Free Text',
+	'importxml' => 'XMLインポート',
+	'dt_importxml_selectfile' => 'インポートする XML ファイルを選択してください:',
+	'dt_importxml_editsummary' => 'XMLのインポート',
+	'dt_importxml_importing' => 'インポート中…',
+	'dt_importxml_success' => 'XML ファイルからは $1個のページがインポートされます。',
 );
 
 /** Javanese (Basa Jawa)
@@ -647,19 +705,26 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'dt-desc' => 'Määt et müjjelesch, Date uß Oproofe fun Schabloone met ier Strukture ze emporteere un ze exporteere.',
+	'dt-desc' => 'Määt et müjjelesch, Date uß Schabloone ier Oproofe ze emporteere un ze exporteere.',
 	'viewxml' => 'XML beloore',
 	'dt_viewxml_docu' => 'Don ußsöke, wat fö_n Saachjruppe un Appachtemangs De em XML Fommaat aanloore wells.',
 	'dt_viewxml_categories' => 'Saachjroppe',
 	'dt_viewxml_namespaces' => 'Appachtemangs',
 	'dt_viewxml_simplifiedformat' => 'Em eijfachere Fommaat',
 	'dt_xml_namespace' => 'Appachtemang',
+	'dt_xml_pages' => 'Sigge',
 	'dt_xml_page' => 'Sigg',
+	'dt_xml_template' => 'Schablohn',
 	'dt_xml_field' => 'Felldt',
 	'dt_xml_name' => 'Name',
 	'dt_xml_title' => 'Tėttel',
 	'dt_xml_id' => 'Kännong',
 	'dt_xml_freetext' => 'Freije Täx',
+	'importxml' => 'XML Empotteere',
+	'dt_importxml_selectfile' => 'Söhk de XML Dattei för zem Empotteere uß:',
+	'dt_importxml_editsummary' => 'uß ene XML Datei empotteet',
+	'dt_importxml_importing' => 'Ben aam Empotteere{{int:Ellipsis}}',
+	'dt_importxml_success' => '{{PLURAL:$1|Ein Sigg|$1 Sigge|Kein einzelne Sigg}} weed_uß dä XML-Dattei empotteet.',
 );
 
 /** Cornish (Kernewek)
@@ -674,19 +739,22 @@ $messages['kw'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'dt-desc' => 'Erlaabt den Import an den Export vu strukturéierten Daten déi beim Opruffe vu Schabloune benotzt ginn.',
+	'dt-desc' => "Erlaabt et Daten déi an Opruffer vu schabloune benotzt ginn z'importéieren an z'exportéieren",
 	'viewxml' => 'XML weisen',
 	'dt_viewxml_docu' => 'Wielt w.e.g. ënnert dëse Kategorien an Nimmraim fir am XML-Format unzeweisen.',
 	'dt_viewxml_categories' => 'Kategorien',
 	'dt_viewxml_namespaces' => 'Nummraim',
 	'dt_viewxml_simplifiedformat' => 'Vereinfachte Format',
 	'dt_xml_namespace' => 'Nummraum',
+	'dt_xml_pages' => 'Säiten',
 	'dt_xml_page' => 'Säit',
+	'dt_xml_template' => 'Schabloun',
 	'dt_xml_field' => 'Feld',
 	'dt_xml_name' => 'Numm',
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'Nummer',
 	'dt_xml_freetext' => 'Fräien Text',
+	'importxml' => 'XML importéieren',
 );
 
 /** Limburgish (Limburgs)
@@ -789,19 +857,26 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'dt-desc' => 'Maakt import en export van gestructureerde gegevens in sjabloonaanroepen mogelijk',
+	'dt-desc' => 'Maakt het importeren en exporteren van gestructureerde gegevens in sjabloonaanroepen mogelijk',
 	'viewxml' => 'XML bekijken',
 	'dt_viewxml_docu' => 'Selecteer uit de volgende categorieën en naamruimten om in XML-formaat te bekijken.',
 	'dt_viewxml_categories' => 'Categorieën',
 	'dt_viewxml_namespaces' => 'Naamruimten',
 	'dt_viewxml_simplifiedformat' => 'Vereenvoudigd formaat',
 	'dt_xml_namespace' => 'Naamruimte',
+	'dt_xml_pages' => "Pagina's",
 	'dt_xml_page' => 'Pagina',
+	'dt_xml_template' => 'Sjabloon',
 	'dt_xml_field' => 'Veld',
 	'dt_xml_name' => 'Naam',
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Vrije tekst',
+	'importxml' => 'XML importeren',
+	'dt_importxml_selectfile' => 'Selecteer het te importeren XML-bestand:',
+	'dt_importxml_editsummary' => 'XML import',
+	'dt_importxml_importing' => 'Bezig met importeren…',
+	'dt_importxml_success' => "Uit het XML-bestand {{PLURAL:$1|wordt één pagina|worden $1 pagina's}} geïmporteerd.",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1000,19 +1075,26 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'dt-desc' => 'Umožňuje import a export štruktúrovaných údajov obsiahnutých v bunkách šablón',
+	'dt-desc' => 'Umožňuje import a export údajov obsiahnutých v bunkách šablón',
 	'viewxml' => 'Zobraziť XML',
 	'dt_viewxml_docu' => 'Prosím, vyberte ktorý spomedzi nasledovných kategórií a menných priestorov zobraziť vo formáte XML.',
 	'dt_viewxml_categories' => 'Kategórie',
 	'dt_viewxml_namespaces' => 'Menné priestory',
 	'dt_viewxml_simplifiedformat' => 'Zjednodušený formát',
 	'dt_xml_namespace' => 'Menný priestor',
+	'dt_xml_pages' => 'Stránky',
 	'dt_xml_page' => 'Stránka',
+	'dt_xml_template' => 'Šablóna',
 	'dt_xml_field' => 'Pole',
 	'dt_xml_name' => 'Názov',
 	'dt_xml_title' => 'Nadpis',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Voľný text',
+	'importxml' => 'Importovať XML',
+	'dt_importxml_selectfile' => 'Prosím, vyberte XML súbor, ktorý chcete importovať:',
+	'dt_importxml_editsummary' => 'Import XML',
+	'dt_importxml_importing' => 'Prebieha import...',
+	'dt_importxml_success' => 'Z XML súboru sa {{PLURAL:$1|importuje $1 stránka|importujú $1 stránky|importuje $1 stránok}}.',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

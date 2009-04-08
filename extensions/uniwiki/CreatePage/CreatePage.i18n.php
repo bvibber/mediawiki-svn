@@ -651,6 +651,13 @@ $messages['te'] = array(
 	'createpage-badtitle' => '"$1"ని పేజీ శీర్షికగా వాడలేరు',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'createpage_submitbutton' => 'ตกลง',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

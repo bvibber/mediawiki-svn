@@ -451,6 +451,13 @@ $messages['tg-cyrl'] = array(
 	'charinsert-desc' => 'Имкони эҷоди қуттиҳои ҶаваСкриптро барои [[MediaWiki:Edittools|дохил кардани аломатҳои ғайристандарӣ]] пешниҳод мекунад',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'charinsert-desc' => 'อนุญาตการสร้างกล่องจาวาสคริปต์สำหรับ[[MediaWiki:Edittools|การใส่อักขระพิเศษ]]',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

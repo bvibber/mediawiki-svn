@@ -379,7 +379,7 @@ $messages['fr'] = array(
 	'formnoname' => 'Aucun nom',
 	'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme « Special:Formulaire/NomDuFormulaire ».',
 	'formbadname' => 'Nom incorrect',
-	'formbadnametext' => "Le nom choisi pour le formulaire est incorrect. Aucun formulaire n'existe sous ce nom.",
+	'formbadnametext' => 'Le nom choisi pour le formulaire est incorrect. Aucun formulaire n’existe sous ce nom.',
 	'formpattern' => 'formulaire-$1',
 	'formtitlepattern' => 'Ajouter un(e) $1',
 	'formsave' => 'Sauvegarder',
@@ -393,8 +393,8 @@ $messages['fr'] = array(
 	'formrequiredfielderror' => '{{PLURAL:$2|Le champ $1 est|Les champs $1 sont}} requis dans ce formulaire.
 Vous devez {{PLURAL:$2|le|les}} remplir.',
 	'formsavesummary' => 'Nouvelle page utilisant [[Special:Form/$1|le formulaire $1]]',
-	'formsaveerror' => "Une erreur s'est produite pendant la sauvegarde.",
-	'formsaveerrortext' => "Une erreur inconnue s'est produite pendant la sauvegarde de ''$1''.",
+	'formsaveerror' => 'Une erreur s’est produite pendant la sauvegarde.',
+	'formsaveerrortext' => "Une erreur inconnue s’est produite pendant la sauvegarde de ''$1''.",
 );
 
 /** Western Frisian (Frysk)

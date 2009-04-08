@@ -323,6 +323,7 @@ $messages['lb'] = array(
 	'newschannel_limit' => 'Limit:',
 	'newschannel_include_category' => 'Zousätzlech Kategorie:',
 	'newschannel_exclude_category' => 'Kategorie ausschléissen:',
+	'newschannel_submit_button' => 'Rubrik uleeën',
 );
 
 /** Dutch (Nederlands)

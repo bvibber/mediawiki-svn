@@ -424,6 +424,7 @@ $wdMessages['an'] = array(
  */
 $wdMessages['ar'] = array(
 	'languages' => 'ويكي داتا: مدير اللغة',
+	'langman-desc' => 'إضافة وتغيير إعدادات اللغات مع [[Special:Languages]]',
 	'langman_title' => 'مدير اللغة',
 	'langman_not_allowed' => 'أنت لا تمتلك السماح لتغيير إعدادات اللغة.',
 	'langman_header' => 'اكتب كود اللغة واسمها الإنجليزي بالأسفل:',
@@ -647,6 +648,7 @@ $wdMessages['ar'] = array(
 	'ow_suggest_clear' => 'إفراغ',
 	'ow_nstab_definedmeaning' => 'معنى معرف',
 	'ow_nstab_edit_copy' => 'عدل النسخة',
+	'right-addlanguage' => 'إضافة وتغيير إعدادات اللغات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -7936,6 +7938,13 @@ $wdMessages['ru'] = array(
 	'ow_nstab_edit_copy' => 'править копию',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$wdMessages['sh'] = array(
+	'ow_suggest_previous' => 'Prethodna',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -8480,11 +8489,13 @@ $wdMessages['su'] = array(
 /** Swedish (Svenska)
  * @author Lokal Profil
  * @author M.M.S.
+ * @author Micke
  * @author Najami
  * @author Sannab
  */
 $wdMessages['sv'] = array(
 	'languages' => 'Wikidata: Språkhanterare',
+	'langman-desc' => 'Lägg till och ändra språkinställningar med [[Special:Languages]]',
 	'langman_title' => 'Språkhanterare',
 	'langman_not_allowed' => 'Du har inte behörighet att ändra språkinställningar.',
 	'langman_header' => 'Skriv in språkkoden och dess engelska namn nedan:',
@@ -8705,6 +8716,7 @@ Var god kontakta serveroperatören eller systemadministratören.',
 	'ow_suggest_clear' => 'Rensa',
 	'ow_nstab_definedmeaning' => 'definierad betydelse',
 	'ow_nstab_edit_copy' => 'redigera kopia',
+	'right-addlanguage' => 'Lägg till och ändra språkinställningar',
 );
 
 /** Silesian (Ślůnski)
@@ -8968,6 +8980,10 @@ $wdMessages['tg-cyrl'] = array(
  * @author Passawuth
  */
 $wdMessages['th'] = array(
+	'langman_langname' => 'ชื่อภาษา:',
+	'langman_iso639-3' => 'รหัส ISO 639-3:',
+	'langman_iso639-2' => 'รหัส ISO 639-2:',
+	'langman_addlang' => 'เพิ่มภาษา',
 	'ow_importtsv_import_failed' => 'การนำเข้าไม่สำเร็จ',
 	'ow_exporttsv_export_failed' => 'การส่งออกไม่สำเร็จ',
 	'ow_save' => 'บันทึก',

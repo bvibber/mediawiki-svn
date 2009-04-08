@@ -870,6 +870,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'inspectcache-ok' => 'ตกลง',
+	'inspectcache-delete' => 'ลบ',
 );
 
 /** Tagalog (Tagalog)

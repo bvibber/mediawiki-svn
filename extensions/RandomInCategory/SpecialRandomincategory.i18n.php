@@ -112,6 +112,11 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'randomincategory' => 'Slučajna stranica u kategoriji',
+	'randomincategory-desc' => '[[Special:Randomincategory|Posebna stranica]] za prikaz slučajne stranice u kategoriji',
+	'randomincategory-toolbox' => 'Slučajna stranica',
+	'randomincategory-nocategory' => 'Kategorija $1 ne postoji ili je prazna',
+	'randomincategory-label' => 'Kategorija:',
 	'randomincategory-submit' => 'Idi',
 );
 

@@ -443,6 +443,13 @@ $messages['tg-cyrl'] = array(
 	'ajax-qp-desc' => 'Илова кардани чанде аз АҶАКС ба СаҳифаҳоиПурсиш монанди [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'ajax-qp-desc' => 'เพิ่ม AJAX ไปยังหน้าสอบถาม ตัวอย่างเช่น [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -1149,6 +1149,15 @@ $messages['tg-cyrl'] = array(
 	'scanset_prev' => '&lt; Қаблӣ',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'scanset_opendir_error' => 'ผิดพลาด: ไม่สามารถเปิดไดเรคทอรี $1 ได้',
+	'scanset_next' => 'ต่อไป &gt;',
+	'scanset_prev' => '&lt; ก่อนหน้า',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

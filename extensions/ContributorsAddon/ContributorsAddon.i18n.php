@@ -266,6 +266,13 @@ $messages['te'] = array(
 	'contributorsaddon-desc' => '"ముఖ్య తోడ్పాటుదారుల" లింకులకి జావాస్క్రిప్టు పాపప్పులను చేరుస్తుంది',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'contributorsaddon-desc' => 'เพิ่มป็อปอัปจาวาสคริปต์สำหรับลิงก์ "ผู้เขียนหลัก"',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

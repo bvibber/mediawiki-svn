@@ -467,6 +467,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'viewapc-display-value' => 'Значэньне',
+	'viewapc-display-filename' => 'Назва файла',
 	'viewapc-display-type' => 'Тып',
 );
 

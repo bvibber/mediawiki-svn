@@ -103,10 +103,15 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'showprocesslist' => 'Pokaži spisak procesa',
+	'showprocesslist-desc' => 'Prikazuje izlaz naredbe [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Korisnik',
+	'showprocesslist-host' => 'Domaćin',
+	'showprocesslist-db' => 'Baza podataka',
 	'showprocesslist-command' => 'Komanda',
 	'showprocesslist-time' => 'Vrijeme',
+	'showprocesslist-state' => 'Status',
+	'showprocesslist-info' => 'Informacije',
 );
 
 /** Corsican (Corsu) */

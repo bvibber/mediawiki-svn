@@ -229,7 +229,13 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'createsigndocument' => 'Omogućuje potpisivanje dokumenata',
 	'createsigndoc-pagename' => 'Stranica:',
+	'createsigndoc-allowedgroup' => 'Dopuštena grupa:',
+	'createsigndoc-email' => 'E-mail adresa:',
 	'createsigndoc-address' => 'Kućna adresa:',
+	'createsigndoc-extaddress' => 'Grad, pokrajina, država:',
+	'createsigndoc-phone' => 'Broj telefona:',
+	'createsigndoc-bday' => 'Rođendan:',
+	'createsigndoc-introtext' => 'Uvod:',
 	'createsigndoc-hidden' => 'Sakriveno',
 	'createsigndoc-create' => 'Napravi',
 	'createsigndoc-error-generic' => 'Greška: $1',
@@ -465,20 +471,21 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'createsigndocument' => "Activer l'authentification des documents",
-	'createsigndoc-head' => "Utilisez ce formulaire pour créer une « page d'authentification » de documents pour la page en question, de façon que chaque utilisateur soit capable de [[Special:SignDocument|l’authentifier]].
-Prière d'indiquer l'intitulé de la page pour lequel vous souhaitez activer la fonction, les membres du groupe d'utilisateurs, quels champs seront accessibles aux utilisateurs et ceux qui seront optionnels, l'âge minimal pour être membre du groupe (pas de minimum par défaut) ;
+	'createsigndocument' => 'Activer l’authentification des documents',
+	'createsigndoc-head' => "Utilisez ce formulaire pour créer une « page d’authentification » de documents pour la page en question, de façon que chaque utilisateur soit capable de [[Special:SignDocument|l’authentifier]].
+Prière d’indiquer l’intitulé de la page pour lequel vous souhaitez activer la fonction, les membres du groupe d’utilisateurs, quels champs seront accessibles aux utilisateurs et ceux qui seront optionnels, l’âge minimal pour être membre du groupe (pas de minimum par défaut) ;
 et un bref document expliquant le document et donnant des instructions aux utilisateurs.
 
-'''Présentement, il n'y a aucun moyen d'effacer les documents une fois créés''', sauf en éditant la base de données du wiki. De plus, le texte de la page affiché sur la page authentifiée sera le texte ''courant'', peu importe les modifications faites par la suite.
+<b>Présentement, il n’y a aucun moyen d’effacer les documents une fois créés</b>, sauf en éditant la base de données du wiki. De plus, le texte de la page affiché sur la page authentifiée sera le texte ''courant'', peu importe les modifications faites par la suite.
 Pour cette raison, soyez certain que le document soit suffisamment stable pour être authentifié.
-''Avant de soumettre le formulaire'', vérifiez que vous avez bien choisi les champs tels que vous souhaitiez qu'ils soient.",
+''Avant de soumettre le formulaire'', vérifiez que vous avez bien choisi les champs tels que vous souhaitiez qu’ils soient.",
 	'createsigndoc-pagename' => 'Page :',
 	'createsigndoc-allowedgroup' => 'Groupe autorisé :',
 	'createsigndoc-email' => 'Addresse de courriel :',
@@ -492,11 +499,11 @@ Pour cette raison, soyez certain que le document soit suffisamment stable pour �
 	'createsigndoc-optional' => 'Optionnel',
 	'createsigndoc-create' => 'Créer',
 	'createsigndoc-error-generic' => 'Erreur : $1',
-	'createsigndoc-error-pagenoexist' => "La page [[$1]] n'existe pas.",
-	'createsigndoc-success' => "L'authentification des documents est activée sur [[$1]].
-Vous pouvez [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} le tester].",
-	'createsigndoc-error-alreadycreated' => "Le document d’authentification pour « $1 » a déjà été créé.
-Il ne peut l'être une seconde fois.",
+	'createsigndoc-error-pagenoexist' => 'La page [[$1]] n’existe pas.',
+	'createsigndoc-success' => 'L’authentification des documents est activée sur [[$1]].
+Vous pouvez [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} le tester].',
+	'createsigndoc-error-alreadycreated' => 'Le document d’authentification pour « $1 » a déjà été créé.
+Il ne peut l’être une seconde fois.',
 );
 
 /** Western Frisian (Frysk)

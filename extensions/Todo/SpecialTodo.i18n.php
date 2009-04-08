@@ -473,6 +473,7 @@ $messages['eu'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author McDutchie
  * @author PieRRoMaN
  * @author Urhixidur
@@ -483,29 +484,29 @@ $messages['fr'] = array(
 	'todo-tab' => 'à faire',
 	'todo-new-queue' => 'Nouveau',
 	'todo-mail-subject' => 'Élément achevé dans la liste des choses à faire de $1',
-	'todo-mail-body' => "Vous avez demandé à être notifié par courriel lors de l'achèvement d'un élément que vous inscrit dans la liste des choses à faire de $1.
+	'todo-mail-body' => 'Vous avez demandé à être notifié par courriel lors de l’achèvement d’un élément que vous inscrit dans la liste des choses à faire de $1.
 
 Élément : $2
 Soumis : $3
 
 Cet élément a été marqué comme terminé, avec le commentaire suivant :
-$4",
+$4',
 	'todo-invalid-item' => 'Élément manquant ou invalide',
-	'todo-update-else-item' => "Tentative de mise à jour des éléments de quelqu'un d'autre",
+	'todo-update-else-item' => "Tentative de mise à jour des éléments de quelqu’un d'autre",
 	'todo-unrecognize-type' => 'Type non reconnu',
-	'todo-user-invalide' => "La chose à faire spécifiée est invalide, manquante, ou l'utilisateur n'a pas de liste de choses à faire.",
+	'todo-user-invalide' => 'La chose à faire spécifiée est invalide, manquante, ou l’utilisateur n’a pas de liste de choses à faire.',
 	'todo-item-list' => 'Vos éléments',
 	'todo-no-item' => 'Aucun élément à accomplir.',
 	'todo-invalid-owner' => 'Propriétaire de cet élément invalide',
-	'todo-add-queue' => "Ajouter à la liste d'attente…",
-	'todo-move-queue' => "Déplacer vers la liste d'attente…",
+	'todo-add-queue' => 'Ajouter à la liste d’attente…',
+	'todo-move-queue' => 'Déplacer vers la liste d’attente…',
 	'todo-list-for' => 'Liste des choses à faire pour $1',
 	'todo-list-change' => 'Modifier',
 	'todo-list-cancel' => 'Annuler',
 	'todo-new-item' => 'Nouvel élément',
 	'todo-issue-summary' => 'Résumé du problème :',
 	'todo-form-details' => 'Précisions :',
-	'todo-form-email' => "Pour recevoir un courriel de notification lorsque l'élément sera fermé, inscrivez votre adresse dans le cadre ci-dessous :",
+	'todo-form-email' => 'Pour recevoir un courriel de notification lorsque l’élément sera fermé, inscrivez votre adresse dans le cadre ci-dessous :',
 	'todo-form-submit' => 'Soumettre la requête',
 );
 

@@ -109,6 +109,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'minipreview-desc' => 'MiniPreview prikazuje male preglede drugih medijalnih datoteka pored slike iz iste kategorije ili koje su prikazane na istim stranicama',
 	'minipreview-files_in_category' => "Ova kategorija sadrži '''$1''' {{PLURAL:$1|datoteku|datoteke|datoteka}}.",
 	'minipreview-files_in_gallery' => "Ova galerija sadrži '''$1''' {{PLURAL:$1|datoteku|datoteke|datoteka}}.",
 	'minipreview-no_more_files_here' => 'Nema više datoteka u ovom pravcu.',

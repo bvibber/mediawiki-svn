@@ -395,6 +395,13 @@ $messages['te'] = array(
 	'antibot-desc' => 'స్పాంబోట్లను కనుక్కోడానికి మరియు పేలోడ్లను వదలడానికి సరళమైన ఫ్రేమువర్క్',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'antibot-desc' => 'ข่ายงานอย่างง่ายสำหรับตรวจสอบสแปมบอตและการยิงข้อมูล',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

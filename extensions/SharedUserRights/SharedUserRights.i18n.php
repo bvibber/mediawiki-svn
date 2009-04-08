@@ -81,6 +81,8 @@ $messages['bs'] = array(
 	'shareduserrights' => 'Upravljanje zajedničkim korisničkim pravima',
 	'gblrights-desc' => 'Lahko [[Special:SharedUserRights|upravljanje globalnim korisničkim pravima]]',
 	'gblrights-logpage' => 'Zapisnik globalnih prava',
+	'gblrights-pagetext' => 'Ovo je zapisnik svih izmjena koje su učinjene u tabeli globalnih prava wiki porodice',
+	'gblrights-rights-entry' => 'izmjenjeno članstvo globalne grupe za $1 sa $2 na $3',
 );
 
 /** Czech (Česky)

@@ -184,6 +184,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'slippymap_desc' => 'Omogućuje korištenje oznake <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> za prikaz OpenLayers slippy mapa. Mape su sa stranice [http://openstreetmap.org openstreetmap.org]',
 	'slippymap_latmissing' => 'Nedostaje vrijednost lat (za geografsku širinu).',
 	'slippymap_lonmissing' => 'Nedostaje vrijednost lon (za geografsku dužinu).',
 	'slippymap_zoommissing' => 'Nedostaje vrijednost z (za nivo zumiranja).',
@@ -202,10 +203,14 @@ $messages['bs'] = array(
 	'slippymap_lonbig' => 'vrijednost geografske dužine (lon) ne može biti veća od 180',
 	'slippymap_lonsmall' => 'vrijednost geografske dužine (lon) ne može biti manja od -180',
 	'slippymap_zoomsmall' => 'vrijednost zumiranja (z) ne može biti manja od nule',
+	'slippymap_zoom18' => "vrijednost zooma (z) ne može biti veća od 17. Zapamtite da je ovo MediaWiki proširenje povezano sa OpenStreetMap 'osmarender' layerom koji ne može ići iznad nivoa zooma 17. Layer Mapnik je dostupan na openstreetmap.org, a podržava nivo zooma 18",
 	'slippymap_zoombig' => 'vrijednost zumiranja (z) ne može biti veća od 17.',
 	'slippymap_invalidlayer' => "Nevaljana vrijednost 'layer' '%1'",
 	'slippymap_maperror' => 'Greška mape:',
 	'slippymap_osmtext' => 'Vidi ovu mapu na OpenStreetMap.org',
+	'slippymap_code' => 'Wikikod za pogled ove mape:',
+	'slippymap_button_code' => 'Preuzmi wikikod',
+	'slippymap_resetview' => 'Poništi pogled',
 );
 
 /** Czech (Česky)

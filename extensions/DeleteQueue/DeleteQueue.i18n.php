@@ -599,6 +599,7 @@ $messages['as'] = array(
 $messages['be-tarask'] = array(
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-header-page' => 'Старонка',
+	'deletequeue-case-page' => 'Старонка:',
 	'deletequeue-case-reason' => 'Прычына:',
 );
 
@@ -4127,7 +4128,8 @@ $messages['tg-cyrl'] = array(
  * @author Octahedron80
  */
 $messages['th'] = array(
-	'deletequeue-list-search' => 'ค้นหา',
+	'deletequeue-list-search' => 'สืบค้น',
+	'deletequeue-case-reason' => 'เหตุผล:',
 );
 
 /** Tagalog (Tagalog)

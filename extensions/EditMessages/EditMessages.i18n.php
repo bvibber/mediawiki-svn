@@ -1167,12 +1167,13 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Manop
+ * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
 	'editmessages' => 'แก้ไขข้อความ',
 	'editmsg-target' => 'ข้อความปลายทาง:',
-	'editmsg-search' => 'ค้นหา',
+	'editmsg-search' => 'สืบค้น',
 	'editmsg-show-list' => 'แสดงค่าสำหรับข้อมูลชื่อ "$1"',
 	'editmsg-new-search' => 'การค้นหาใหม่',
 	'editmsg-warning-file' => '* มีการอ่านไฟล์ผิดพลาดสำหรับ {{PLURAL:$2|ภาษา}}ต่อไปนี้: $1',

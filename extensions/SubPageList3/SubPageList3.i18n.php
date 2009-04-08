@@ -145,13 +145,14 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'spl3-desc' => 'Crée automatiquement une liste de sous-pages d’une page utilisant la balise <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Valeur pour l’option $1 inconnue.',
-	'spl3_nosubpages' => "$1 n'a pas de sous-pages à énumérer.",
+	'spl3_nosubpages' => '$1 n’a pas de sous-pages à énumérer.',
 );
 
 /** Galician (Galego)

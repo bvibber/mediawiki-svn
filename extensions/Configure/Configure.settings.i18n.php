@@ -5512,6 +5512,7 @@ $messages['lb'] = array(
 	'configure-setting-wgAddGroups-value' => 'Gruppen déi derbäigesat kënne ginn',
 	'configure-setting-wgRemoveGroups' => 'Gruppen déi ewech geholl kënne ginn',
 	'configure-setting-wgRemoveGroups-value' => 'Gruppen déi ewech geholl kënne ginn',
+	'configure-setting-wgGroupsAddToSelf-value' => 'Gruppe bäi déi een sech selwer derbäisetze kann',
 	'configure-setting-wgHitcounterUpdateFreq' => 'Frequenz vun der Aktualisatioun vum Compteur vun de Säitenoffroen',
 	'configure-setting-wgValidSkinNames-key' => 'Interne Numm',
 	'configure-setting-wgValidSkinNames-value' => 'Numm weisen',

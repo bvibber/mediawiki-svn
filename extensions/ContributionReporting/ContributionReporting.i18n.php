@@ -608,7 +608,11 @@ $messages['el'] = array(
 	'fundraiserstats-day' => 'Ημέρα $1 από $2',
 	'fundraiserstats-contributions' => 'Εισφορές',
 	'fundraiserstats-total' => 'Σύνολο (USD)',
+	'fundraiserstats-avg' => 'Μέσος όρος (USD)',
+	'fundraiserstats-max' => 'Μέγιστο (USD)',
+	'fundraiserstats-tab-totals' => 'Συνολικά (USD)',
 	'fundraiserstats-tab-contributions' => 'Αριθμός συνεισφορών',
+	'fundraiserstats-tab-averages' => 'Μέσοι όροι (USD)',
 	'fundraiserstats-tab-maximums' => 'Μέγιστα (USD)',
 );
 

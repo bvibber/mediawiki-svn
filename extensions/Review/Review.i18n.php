@@ -1825,6 +1825,13 @@ $messages['tg-cyrl'] = array(
 	'review_comment' => 'Тавзеҳ',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'review_total_statistics' => 'รวม',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

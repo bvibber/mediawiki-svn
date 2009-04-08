@@ -85,6 +85,15 @@ $messages['cy'] = array(
 	'icon-desc' => 'Yn defnyddio delweddau fel eiconau a chysylltiadau ar ffurf eicon',
 );
 
+/** Danish (Dansk)
+ * @author BabelFrode
+ */
+$messages['da'] = array(
+	'icon-badimage' => 'Ubrugeligt billede',
+	'icon-badwidth' => 'Ubrugelig bredde',
+	'icon-desc' => 'Lader dig bruge billeder som ikoner og ikon-links',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Raimond Spekking

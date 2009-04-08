@@ -84,6 +84,7 @@ $wgGoogleMapsMessages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Lloffiwr
+ * @author Passawuth
  * @author Purodha
  */
 $wgGoogleMapsMessages['qqq'] = array(
@@ -129,6 +130,7 @@ This is the text next to an input box which allows the map-maker to add a captio
 {{Identical|Height}}',
 	'gm-scale-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-overview-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-selector-control' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-zoom-control' => '{{Identical|Navigation}}',
 	'gm-large' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
 
@@ -847,7 +849,7 @@ $wgGoogleMapsMessages['cy'] = array(
  * @author Jon Harald Søby
  */
 $wgGoogleMapsMessages['da'] = array(
-	'gm-desc' => 'Skaber let kort med wikikode markører.',
+	'gm-desc' => 'Opretter nemt kort med wikikode markører.',
 	'gm-incompatible-browser' => 'For at kunne se det kort som skulle have været vist her, er du nødt til at bruge en kombatibel webbrowser.',
 	'gm-incompatible-browser-link' => 'Klik her for at se en liste over kombatible browsere.',
 	'gm-no-editor' => 'Desværre, din browser understøtter ikke de interaktive kortfunktioner.  Prøv den seneste version af <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) eller <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',
@@ -4522,35 +4524,61 @@ $wgGoogleMapsMessages['tg-cyrl'] = array(
  * @author Passawuth
  */
 $wgGoogleMapsMessages['th'] = array(
+	'gm-desc' => 'สร้างแผนที่อย่างง่ายด้วยโค้ดวิกิ',
+	'gm-incompatible-browser' => 'เพื่อที่จะดูแผนที่ในที่ว่างนี้ ท่านต้องการเว็บบราวเซอร์ที่รองรับระบบ',
 	'gm-incompatible-browser-link' => 'คลิกที่นี่เพื่อดูรายชื่อเว็บบราวเซอร์ที่รองรับการใช้งาน',
 	'gm-no-editor' => 'ขออภัย เนื่องจากว่าเว็บบราวเซอร์ (โปรแกรมดูเว็บ) ของคุณ ไม่ได้รองรับคุณสมบัติสำหรับแผนที่บนเว็บไซต์นี้
 กรุณาตรวจสอบให้แน่ใจก่อนว่า เว็บบราวเซอร์ของคุณเป็นรุ่นล่าสุดแล้ว สำหรับ อินเตอร์เน็ต เอ็กซ์พลอเรอร์ <a href="http://www.microsoft.com/ie">ตรวจสอบได้ที่นี่</a> (สำหรับวินโดวส์) ส่วนไฟร์ฟอกซ์ <a href="http://www.mozilla.org/products/firefox">ตรวจสอบได้ที่นี่</a> (สำหรับวินโดวส์ แม็ค และ ลินุกซ์)',
 	'gm-balloon-title' => 'ชื่อเรื่อง :',
-	'gm-remove' => 'เอาออก',
+	'gm-balloon-link-article' => 'ลิงก์มายังหน้านี้ (ไม่จำเป็นต้องมี):',
+	'gm-make-marker' => 'คำอธิบาย (สามารถใช้โค้ดวิกิได้):',
+	'gm-remove' => 'นำออก',
+	'gm-caption' => 'คำอธิบาย',
 	'gm-tab-title' => 'ชื่อแท็บ',
 	'gm-tab' => 'แท็บ',
+	'gm-start-path' => 'เริ่มสร้างเส้นทาง',
+	'gm-trace-area' => 'ค้นหาพื้นที่',
 	'gm-save-point' => 'บันทึก และ ปิด',
+	'gm-load-map-from-article' => 'โหลดแผนที่จากหน้า:',
+	'gm-no-maps' => 'ไม่มีแผนที่ในหน้านี้ที่จะโหลด',
+	'gm-refresh-list' => 'โหลดรายชื่อใหม่',
 	'gm-load-map' => 'โหลดแผนที่',
 	'gm-clip-result' => 'เพิ่มไปที่แผนที่',
+	'gm-no-results' => 'ขออภัย ไม่พบผลลัพธ์',
 	'gm-searching' => 'กำลังค้นหา...',
 	'gm-map' => 'แผนที่',
+	'gm-note' => 'หมายเหตุ: กรุณาตรวจสอบให้แน่ใจว่าได้คัดลอกสิ่งที่คุณต้องการบันทึกลงบนหน้าข้างล่าง ก่อนที่จะกดปุ่ม "โหลดแผนที่", "บันทึก" หรือ "ดูตัวอย่าง"',
+	'gm-instructions' => 'ข้างล่างนี้คือโค้ดวิกิเพื่อที่จะสร้างแผนที่ข้างบน:',
 	'gm-are-you-sure' => 'คุณแน่ใจหรือ ?',
+	'gm-clear-all-points' => 'ลบจุดทั้งหมด',
+	'gm-refresh-points' => 'โหลดจุดต่าง ๆ ใหม่',
 	'gm-width' => 'ความกว้าง',
 	'gm-height' => 'ความสูง',
+	'gm-scale-control' => 'มาตราส่วน',
+	'gm-overview-control' => 'แผนที่มุมกว้าง',
+	'gm-selector-control' => 'ตัวเลือกแผนที่/ดาวเทียม',
 	'gm-zoom-control' => 'นำทาง',
 	'gm-large' => 'ใหญ่',
 	'gm-medium' => 'กลาง',
 	'gm-small' => 'เล็ก',
+	'gm-no-zoom-control' => 'ไม่มี',
 	'gm-yes' => 'ใช่',
 	'gm-no' => 'ไม่ใช่',
-	'gm-search' => 'ค้นหา',
+	'gm-search-preface' => 'คลิกบนแผนที่เพื่อที่จะเพิ่มจุด หรือไปยังเมือง ประเทศ ที่อยู่ หรือบริษัท:',
+	'gm-geocode-preface' => 'คลิกบนแผนที่เพื่อที่จะเพิ่มจุด หรือไปยังเมือง ประเทศ หรือที่อยู่:',
+	'gm-no-search-preface' => 'คลิกบนแผนที่เพื่อเพิ่มจุด',
+	'gm-search' => 'สืบค้น',
+	'gm-clear-search' => 'ลบผลลัพธ์การค้นหา',
 	'gm-meters' => 'เมตร',
 	'gm-miles' => 'ไมล์',
+	'gm-editing-path' => 'คลิกบนแผนที่เพื่อที่จะเพิ่มจุดบนเส้นทางนี้',
 	'gm-save-path' => 'บันทึก',
 	'gm-edit-path' => 'เพิ่มจุด',
 	'gm-show-path' => 'แสดงจุด',
 	'gm-color-path' => 'เปลี่ยนสี',
+	'gm-color-fill' => 'เปลี่ยนสีถม',
 	'gm-add-fill' => 'ถมสีในบริเวณ',
+	'gm-remove-fill' => 'นำสีถมออก',
 	'gm-fill-color' => 'สีถม',
 	'gm-line-color' => 'สีเส้น',
 	'gm-opacity' => 'ความทึบ',
@@ -4558,7 +4586,10 @@ $wgGoogleMapsMessages['th'] = array(
 	'gm-make-map' => 'สร้างแผนที่',
 	'gm-hide-map' => 'ซ่อนแผนที่',
 	'gm-back' => 'กลับ',
+	'gm-kml-include' => 'KML/GeoRSS ภายนอก:',
+	'gm-kml-include-link' => 'เพิ่มบนแผนที่',
 	'gm-kml-loading' => 'กำลังโหลด...',
+	'gm-kml-export' => 'ส่งออกแผนที่ในรูปแบบของ KML',
 	'gm-earth' => 'โลก',
 	'gm-moon' => 'ดวงจันทร์',
 	'gm-mars' => 'ดาวอังคาร',

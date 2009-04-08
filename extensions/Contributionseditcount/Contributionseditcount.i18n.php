@@ -505,6 +505,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'contributionseditcount' => 'ผู้ใช้คนนี้ได้แก้ไขทั้งหมด $1 ครั้ง',
+	'contributionseditcount-desc' => 'แสดงจำนวนการแก้ไขใน[[Special:Contributions|หน้าเรื่องที่ผู้ใช้เขียน]]',
 );
 
 /** Tagalog (Tagalog)

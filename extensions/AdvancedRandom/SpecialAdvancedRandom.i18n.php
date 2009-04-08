@@ -483,6 +483,14 @@ $messages['tg-cyrl'] = array(
 	'advancedrandom-desc' => 'Гирифтани саҳифаи тасодуфӣ аз пайвандҳои баҳси киҳо ё саҳифаи мавзӯъ, ки ба саҳифа дода шудаанд, метавонанд монанди [[Special:AdvancedRandom/Template:Featured/Talk]] барои дастрас кардани мақолаи барҷастаи тасодуфии барҷаста ё монанди [[Special:AdvancedRandom/Template:GFDL/Image]] барои дастрас кардани парвандаи тасодуфии GFDL истифода шаванд',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'advancedrandom' => 'การสุ่มขั้นสูง',
+	'advancedrandom-desc' => 'เปิดหน้าที่สุ่มขึ้นจากเนมสเปซใด ๆ หน้าอภิปราย หรือหน้าโครงการ ที่มีการเชื่อมโยงไปยังหน้าที่กำหนด สามารถใช้ได้อย่างเช่น [[Special:AdvancedRandom/Template:Featured/Talk]] เพื่อที่จะเปิดหน้าอภิปรายของบทความคัดสรรแบบสุ่ม หรือใช้ [[Special:AdvancedRandom/Template:GFDL/File]] เพื่อเปิดไฟล์ GFDL แบบสุ่ม',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

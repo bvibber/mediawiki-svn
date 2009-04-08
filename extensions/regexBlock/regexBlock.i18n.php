@@ -1400,13 +1400,15 @@ $messages['lb'] = array(
 	'regexblock-expire-duration' => '1 Stonn,2 Stonnen, 4 Stonnen,6 Stonnen,1 Dag,3 Deeg,1 Woch,2 Wochen,1 Mount,3 Méint,6 Méint,1 Joer,onbegrenzt',
 	'regexblockstats' => 'Regex Spärstatistiken',
 	'regexblock-page-title-1' => 'Adress spären andem regulär Ausdréck (Regex) benotzt ginn',
-	'regexblock-reason-name' => 'Dëse Benotzer ass wéinst Vandalismus oder ähnlech Ursaache gespaart an däerf keng Ännerunge maachen. Wann Dir iwwerzeecht sidd datt et sech ëm ee Feeler handelt, $1',
+	'regexblock-reason-name' => 'Dëse Benotzernumm ass wéinst Vandalismus oder aus ähnlechen Ursaache gespaart an däerf keng Ännerunge maachen. 
+Wann Dir iwwerzeecht sidd datt et sech ëm ee Feeler handelt, [[$1|kontaktéiert eis w.e.g.]]',
 	'regexblock-form-username' => 'IP-Adress oder Benotzer:',
 	'regexblock-form-reason' => 'Grond:',
 	'regexblock-form-account-block' => 'Uleeë vun neie Benotzerkonte spären',
 	'regexblock-form-submit' => 'Dëse Benotzer spären',
 	'regexblock-form-submit-empty' => 'Gitt e Benotzernumm oder eng IP-Adress un fir ze spären.',
 	'regexblock-form-submit-expiry' => "Gitt w.e.g. en Zäitraum fir d'Spär un.",
+	'regexblock-match-stats-record' => "$1 huet '$2' de(n) '$3' ëm '$4' gespaart, ageloggt vun der Adress '$5'",
 	'regexblock-nodata-found' => 'Keng Date fonnt',
 	'regexblock-stats-title' => 'Regex Spärstatistik',
 	'regexblock-unblock-success' => 'Spär opgehuewen',
@@ -1423,7 +1425,7 @@ Warscheinlech gëtt et esou e Benotzer net.',
 	'regexblock-view-block-infinite' => 'permanent Spär',
 	'regexblock-view-block-temporary' => 'bis den',
 	'regexblock-view-block-expired' => 'OFGELAF den',
-	'regexblock-view-block-by' => 'gespaart vum',
+	'regexblock-view-block-by' => 'gespaart vum:',
 	'regexblock-view-block-unblock' => 'Spär ophiewen',
 	'regexblock-view-stats' => 'Statistik',
 	'regexblock-view-empty' => "D'Lëscht vun de gespaarte Benotzer an IP-Adressen ass eidel.",
@@ -2346,6 +2348,8 @@ $messages['tg-cyrl'] = array(
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'regexblock-expire-duration' => '1 ชั่วโมง,2 ชั่วโมง,4 ชั่วโมง,6 ชั่วโมง,1 วัน,3 วัน,1 สัปดาห์,2 สัปดาห์,1 เดือน,3 เดือน,6 เดือน,1 ปี,ตลอดกาล',
+	'regexblock-form-reason' => 'เหตุผล:',
 	'regexblock-view-all' => 'ทั้งหมด',
 );
 

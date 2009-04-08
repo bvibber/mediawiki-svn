@@ -1098,6 +1098,13 @@ $messages['tet'] = array(
 	'authorprotect-reason' => 'Motivu',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'authorprotect-reason' => 'เหตุผล',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

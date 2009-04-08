@@ -671,6 +671,13 @@ $messages['scn'] = array(
 	'backforth-prev' => 'Pricidenti ($1)',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'backforth-prev' => 'Prethodna ($1)',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */

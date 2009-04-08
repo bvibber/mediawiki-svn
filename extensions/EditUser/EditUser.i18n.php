@@ -1069,7 +1069,7 @@ $messages['tg-cyrl'] = array(
 $messages['th'] = array(
 	'edituser' => 'แก้ไขผู้ใช้',
 	'edituser-username' => 'ชื่อ',
-	'edituser-dosearch' => 'ค้นหา',
+	'edituser-dosearch' => 'สืบค้น',
 );
 
 /** Tagalog (Tagalog)

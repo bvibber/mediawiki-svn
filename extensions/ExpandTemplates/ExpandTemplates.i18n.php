@@ -37,18 +37,6 @@ $messages['qqq'] = array(
 	'expand_templates_preview' => '{{Identical|Preview}}',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'expand_templates_input' => 'Tekst:',
-	'expand_templates_output' => "Rezul'tat",
-	'expand_templates_xml_output' => 'XML-lähtmižvend',
-	'expand_templates_ok' => 'OK',
-	'expand_templates_remove_comments' => 'Čuta kommentarijad',
-	'expand_templates_preview' => 'Ezikacund',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -1478,6 +1466,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author AlexSm
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1488,7 +1477,7 @@ $messages['ru'] = array(
 <nowiki>{{</nowiki>#if:…}} и переменные
 <nowiki>{{</nowiki>CURRENTDAY}} — в общем, всё внутри двойных фигурных скобок.
 Это производится корректным образом, с вызовом соответствующего обработчика MediaWiki.',
-	'expand_templates_title' => 'Заголовок страницы для {{PAGENAME}} и т.&nbsp;п.:',
+	'expand_templates_title' => 'Заголовок страницы для {{PAGENAME}} и т. п.:',
 	'expand_templates_input' => 'Входной текст:',
 	'expand_templates_output' => 'Результат',
 	'expand_templates_xml_output' => 'XML вывод',
@@ -1820,6 +1809,18 @@ $messages['vec'] = array(
 	'expand_templates_remove_comments' => 'Ignora i comenti',
 	'expand_templates_generate_xml' => 'Mostra àlbaro sintàtico XML',
 	'expand_templates_preview' => 'Anteprima',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'expand_templates_input' => 'Tekst:',
+	'expand_templates_output' => "Rezul'tat",
+	'expand_templates_xml_output' => 'XML-lähtmižvend',
+	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'Čuta kommentarijad',
+	'expand_templates_preview' => 'Ezikacund',
 );
 
 /** Vietnamese (Tiếng Việt)

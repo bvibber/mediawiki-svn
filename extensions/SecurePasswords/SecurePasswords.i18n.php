@@ -194,7 +194,7 @@ $messages['fr'] = array(
 	'securepasswords-uppercase' => 'contenir au moins 1 lettre majuscule',
 	'securepasswords-digit' => 'contenir au moins 1 chiffre',
 	'securepasswords-special' => 'contenir au moins 1 caractère spécial (les caractères spéciaux sont : $1)',
-	'securepasswords-username' => "être différent de votre nom d'utilisateur",
+	'securepasswords-username' => 'être différent de votre nom d’utilisateur',
 	'securepasswords-word' => 'ne pas être un mot',
 );
 

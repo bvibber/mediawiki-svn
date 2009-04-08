@@ -179,15 +179,28 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'tasklist' => 'Spisak zadataka',
 	'tasklist-parser-desc' => 'Dodaje parsersku funkciju <nowiki>{{#todo:}}</nowiki> za dodjelu zadataka',
+	'tasklist-special-desc' => 'Dodaje posebnu stranicu za pregled [[Special:TaskList|dodjele zadataka]]',
 	'tasklistbyproject' => 'Spisak zadataka po projektima',
+	'tasklistunknownproject' => 'Nepoznat projekt',
 	'tasklistunspecuser' => 'Neodređen korisnik',
 	'tasklistincorrectuser' => 'Netačno korisničko ime',
 	'tasklistemail' => 'Poštovani %s',
+	'tasklistemailsubject' => '[%s] Spisak izmjena zadatka',
 	'tasklistmytasks' => 'Moji zadaci',
+	'tasklistbyprojectbad' => "Projekat '''s%''' nije valjan projekat.
+Za spisak valjanih projekata, pogledajte [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Dodijeljeni zadaci za '''%s'''",
 	'tasklistchooseproj' => 'Odaberite projekat:',
 	'tasklistprojdisp' => 'Prikaz',
 	'tasklistbyname' => '== Spisak za uraditi za %s ==',
+	'tasklistnoprojects' => "Greška: Izgleda da ste omogućili '''\$wgUseProjects''', ali niste napravili [[MediaWiki:TodoTasksValidProjects]]. Pogledajte [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 objašnjenja za instalaciju] za više detalja.",
+	'tasklistemailbody' => ',
+
+Neko je postavio za Vas novi zadatak na %s.
+
+Da pogledate Vaš cijeli spisak zadataka idite na %s.
+
+Vaš prijateljski %s sistem obavijesti',
 );
 
 /** Czech (Česky)
@@ -362,6 +375,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author McDutchie
  * @author PieRRoMaN
@@ -375,16 +389,16 @@ $messages['fr'] = array(
 	'tasklistbyproject' => 'Liste de tâches par projet',
 	'tasklistunknownproject' => 'Projet inconnu',
 	'tasklistunspecuser' => 'Utilisateur non spécifié',
-	'tasklistincorrectuser' => "Nom d'utilisateur incorrect",
+	'tasklistincorrectuser' => 'Nom d’utilisateur incorrect',
 	'tasklistemail' => 'Cher %s',
 	'tasklistemailsubject' => '[%s] Modification dans la liste de tâches',
 	'tasklistmytasks' => 'Mes tâches',
-	'tasklistbyprojectbad' => "Le projet '''%s''' n'est pas valide. Pour une liste des projets valides, voir [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojectbad' => "Le projet '''%s''' n’est pas valide. Pour une liste des projets valides, voir [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Tâches assignées pour '''%s'''.",
 	'tasklistchooseproj' => 'Sélectionner un projet :',
 	'tasklistprojdisp' => 'Afficher',
 	'tasklistbyname' => '== Liste de tâches pour %s ==',
-	'tasklistnoprojects' => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Consultez les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d'installation] pour plus de détails.",
+	'tasklistnoprojects' => "Erreur : il semble que vous ayez activé '''\$wgUseProjects''', mais sans avoir créé [[MediaWiki:TodoTasksValidProjects]]. Consultez les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instructions d’installation] pour plus de détails.",
 	'tasklistemailbody' => ',
 
 Quelqu’un vous a assigné une nouvelle tâche sur %s.

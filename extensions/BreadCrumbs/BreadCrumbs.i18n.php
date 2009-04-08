@@ -400,6 +400,13 @@ $messages['tg-cyrl'] = array(
 	'breadcrumbs-desc' => 'Роҳи корбар тариқи викиро нишон медиҳад.',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'breadcrumbs-desc' => 'แสดงหนทางในวิกิต่อผู้ใช้',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

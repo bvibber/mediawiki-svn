@@ -790,6 +790,7 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Mopza
  * @author Octahedron80
  */
 $messages['th'] = array(
@@ -798,6 +799,7 @@ $messages['th'] = array(
 	'findspam-ip' => 'หมายเลขไอพี:',
 	'findspam-ok' => 'ตกลง',
 	'findspam-notextfound' => 'ไม่พบเรื่องที่เขียน',
+	'right-findspam' => 'ค้นหาเพื่อเพิ่มรายชื่อสแปม',
 );
 
 /** Tagalog (Tagalog)

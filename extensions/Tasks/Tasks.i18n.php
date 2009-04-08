@@ -853,6 +853,7 @@ $messages['es'] = array(
 	'tasks_plain_text_only' => '(texto simple, solamente 256 caracteres)',
 	'tasks_help_page' => 'Tareas',
 	'tasks_more_like_it' => 'más',
+	'tasks_task_types' => '1:cleanup:Limpiar|2:wikify:Wikificar|3:rewrite:Reescribir|4:delete:Borrar|5:create:Crear|6:write:Escribir|7:check:Verificar',
 	'tasks_event_on_creation' => 'chequear',
 	'tasks_event_on_creation_anon' => 'chequear',
 	'tasks_on_creation_comment' => 'Tarea automática, generado en la creación de la página',
@@ -934,6 +935,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Korrigan
@@ -959,7 +961,7 @@ $messages['fr'] = array(
 	'tasks_wontfix' => 'Ne sera pas réparée',
 	'tasks_delete' => 'Supprimer',
 	'tasks_no_task_delete_title' => 'Non autorisé',
-	'tasks_no_task_delete_texe' => "Vous n'avez pas le droit de supprimer une tâche. Seuls les administrateurs peuvent le faire.",
+	'tasks_no_task_delete_texe' => 'Vous n’avez pas le droit de supprimer une tâche. Seuls les administrateurs peuvent le faire.',
 	'tasks_action_delete' => 'Une tâche a été supprimée.',
 	'tasks_task_was_deleted' => 'La tâche a été supprimée avec succès.',
 	'tasks_reopen' => 'Réouvrir',
@@ -1769,6 +1771,7 @@ $messages['lb'] = array(
 	'tasks_title' => 'Aufgabe fir "$1"',
 	'tasks_form_new' => 'Nei Aufgab uleeën',
 	'tasks_form_comment' => 'Bemierkung',
+	'tasks_error1' => 'Aufgab gouf net ugeluecht: et gëtt schonn esou eng Aufgab!',
 	'tasks_ok1' => 'Nei Aufgab gouf ugeluecht!',
 	'tasks_create_header' => 'Eng nei Aufgab uleeën',
 	'tasks_existing_header' => 'Aufgaben déi et gëtt',
@@ -2357,6 +2360,13 @@ $messages['ru'] = array(
 	'tog-show_task_comments' => 'Включить страницу примечаний задачи.',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'tasks_previous' => 'Prethodna',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Rudko
@@ -2585,6 +2595,14 @@ $messages['te'] = array(
 	'tasks_logpage' => 'పనుల చిట్టా',
 	'tasks_logpagetext' => 'ఇది పనులకు జరిగిన మార్పుల చిట్టా',
 	'tasks_logentry' => '"[[$1]]" కొరకు',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'tasks_delete' => 'ลบ',
+	'tasks_search_form_title' => 'สืบค้น',
 );
 
 /** Tagalog (Tagalog)

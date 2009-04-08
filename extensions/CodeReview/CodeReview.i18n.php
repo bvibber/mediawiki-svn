@@ -365,6 +365,7 @@ $messages['ar'] = array(
 	'code-status-reverted' => 'تم استرجاعها',
 	'code-status-resolved' => 'تم حلها',
 	'code-status-ok' => 'موافق',
+	'code-status-verified' => 'محققة',
 	'code-status-deferred' => 'مؤجل',
 	'code-pathsearch-legend' => 'ابحث في النسخ في هذا المستودع بواسطة المسار',
 	'code-pathsearch-path' => 'المسار:',
@@ -2926,6 +2927,14 @@ $messages['ia'] = array(
 Adresse URL complete: $2
 
 Commento:
+
+$4',
+	'codereview-email-subj2' => '[$1] [v$2]: Modificationes subsequente',
+	'codereview-email-body2' => 'Le usator "$1" faceva un modification subsequente al v$2.
+
+URL complete: $3
+
+Summario del modification:
 
 $4',
 	'repoadmin' => 'Administration del depositos',
@@ -6492,6 +6501,14 @@ $messages['vi'] = array(
 URL đầy đủ: $2
 
 Tin nhắn:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Các thay đổi tiếp theo',
+	'codereview-email-body2' => 'Thành viên "$1" đã thực hiện các thay đổi tiếp theo lên r$2.
+
+URL đầy đủ: $3
+
+Tóm lược thay đổi:
 
 $4',
 	'repoadmin' => 'Quản lý kho dữ liệu',

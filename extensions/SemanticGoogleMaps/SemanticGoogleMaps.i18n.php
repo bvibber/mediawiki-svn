@@ -128,7 +128,7 @@ $messages['eu'] = array(
  */
 $messages['fr'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Estimer les coordonnées',
-	'semanticgooglemaps-desc' => "Permet aux utilisateurs d'éditer et d'afficher les données sémantiques de coordonnées utilisant Google Maps",
+	'semanticgooglemaps-desc' => 'Permet aux utilisateurs d’éditer et d’afficher les données sémantiques de coordonnées utilisant Google Maps',
 	'semanticgooglemaps-enteraddresshere' => 'Entrez ici l’adresse',
 );
 

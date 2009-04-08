@@ -523,6 +523,14 @@ $messages['sv'] = array(
 	'absenteelandlord-desc' => 'Låser automatiskt wikins databas om alla administratörer är frånvarande under en viss tid',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'absenteelandlord-reason' => 'ฐานข้อมูลถูกล็อกโดยอัตโนมัติ เนื่องจากไม่มีความเคลื่อนไหวจากผู้ดูแลระบบ',
+	'absenteelandlord-desc' => 'ล็อกฐานข้อมูลวิกิโดยอัตโนมัติ ถ้าผู้ดูแลระบบทั้งหมดไม่มีความเคลื่อนไหวเป็นระยะเวลาหนึ่ง',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

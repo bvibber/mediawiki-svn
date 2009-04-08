@@ -1264,6 +1264,13 @@ $messages['ru'] = array(
 	'right-patroller' => 'Патрулирование страниц',
 );
 
+/** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
+ * @author OC Ripper
+ */
+$messages['sh'] = array(
+	'patrol-revert' => 'Vrati',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1424,8 +1431,10 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Mopza
+ * @author Octahedron80
  */
 $messages['th'] = array(
+	'patrol-revert-reason' => 'เหตุผล:',
 	'patrol-skip' => 'ข้าม',
 );
 

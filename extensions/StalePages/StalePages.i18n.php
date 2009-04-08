@@ -125,6 +125,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Sherbrooke
@@ -133,7 +134,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'stalepages' => 'Pages vieillies',
 	'stalepages-desc' => 'Crée une [[Special:Stalepages|liste des pages]] qui n’ont pas été éditées récemment',
-	'stalepages-summary' => "Ceci est une liste de pages qui n'ont pas été modifiées depuis $1 {{PLURAL:$1|jour|jours}}.",
+	'stalepages-summary' => 'Ceci est une liste de pages qui n’ont pas été modifiées depuis $1 {{PLURAL:$1|jour|jours}}.',
 );
 
 /** Galician (Galego)

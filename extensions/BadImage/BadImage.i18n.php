@@ -2092,6 +2092,7 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Manop
+ * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
@@ -2100,7 +2101,7 @@ $messages['th'] = array(
 	'badimages-added' => '$1 ถูกเพิ่มไปยังรายชื่อเรียบร้อยแล้ว',
 	'badimages-count' => "มีภาพทั้งหมด '''$1''' ภาพในรายการภาพที่เสีย",
 	'badimages-name' => 'ชื่อ :',
-	'badimages-reason' => 'เหตุผล :',
+	'badimages-reason' => 'เหตุผล:',
 	'badimages-remove-btn' => 'เอาออก',
 	'badimages-log-name' => 'รายการภาพที่เสีย',
 	'badimages-page' => '{{ns:help}}:รายการภาพที่เสีย',

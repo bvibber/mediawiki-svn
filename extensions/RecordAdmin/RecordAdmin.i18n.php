@@ -1247,6 +1247,13 @@ $messages['te'] = array(
 	'recordadmin-editlink' => 'మార్చు',
 );
 
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'recordadmin-buttonsearch' => 'สืบค้น',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

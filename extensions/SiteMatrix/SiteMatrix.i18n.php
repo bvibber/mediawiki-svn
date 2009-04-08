@@ -1558,6 +1558,12 @@ $messages['tg-cyrl'] = array(
  * @author Passawuth
  */
 $messages['th'] = array(
+	'sitematrix' => 'รายชื่อวิกิของมูลนิธิวิกิมีเดีย',
+	'sitematrix-summary' => 'หน้าพิเศษนี้แสดงรายชื่อวิกิของมูลนิธิวิกิมีเดีย',
+	'sitematrix-language' => 'ภาษา',
+	'sitematrix-others' => 'โครงการอื่น ๆ ของวิกิมีเดีย',
+	'sitematrix-total' => "'''จำนวนทั้งหมด: $1 เว็บไซต์'''",
+	'sitematrix-sitetotal' => 'รวม',
 	'sitematrix-private' => 'ส่วนตัว',
 );
 

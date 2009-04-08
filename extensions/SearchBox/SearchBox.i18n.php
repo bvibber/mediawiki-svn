@@ -527,9 +527,10 @@ $messages['te'] = array(
 
 /** Thai (ไทย)
  * @author Mopza
+ * @author Octahedron80
  */
 $messages['th'] = array(
-	'searchbox-search' => 'ค้นหา',
+	'searchbox-search' => 'สืบค้น',
 	'searchbox-go' => 'ไป',
 	'searchbox-namespaces' => 'กลุ่มชื่อ:',
 );
