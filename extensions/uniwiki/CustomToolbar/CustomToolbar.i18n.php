@@ -40,7 +40,7 @@ $wgCustomToolbarMessages['en'] = array(
 
 	'ct_nowiki_sample'   => "Insert non-formatted text here",
 	'ct_nowiki_tip_ins'  => "Ignore wiki formatting",
-	'ct_nowiki_tip_wrap' => "Ignore wiki formattting for this text",
+	'ct_nowiki_tip_wrap' => "Ignore wiki formatting for this text",
 	'ct_nowiki_caption'  => "No wiki",
 
 	'ct_horizontal_tip'      => "Insert a horizontal line (use sparingly)",
