@@ -265,8 +265,8 @@ EOT;
 
 <!-- This inline stylesheet defines how the two extra buttons look, and where they are positioned. -->
 <style> .buttonsPanel div { float:left; display:block; position:relative; left:50px; margin-left:3px; margin-top:7px; width:36px;  height:19px; }</style>
-<style> .buttonsPanel .getWikiCodeButtonItemInactive { width:36px; height:19px; background-image:url('" . $wgScriptPath . "/extensions/SlippyMap/wikicode-button.png'); }</style>
-<style> .buttonsPanel .resetButtonItemInactive       { width:36px; height:19px; background-image:url('" . $wgScriptPath . "/extensions/SlippyMap/reset-button.png'); }</style>
+<style> .buttonsPanel .getWikiCodeButtonItemInactive { width:36px; height:19px; background-image:url('$wgScriptPath/extensions/SlippyMap/wikicode-button.png'); }</style>
+<style> .buttonsPanel .resetButtonItemInactive       { width:36px; height:19px; background-image:url('$wgScriptPath/extensions/SlippyMap/reset-button.png'); }</style>
 
 <!-- bring in the OpenLayers javascript library -->
 <script src="http://openlayers.org/api/OpenLayers.js"></script>
@@ -286,11 +286,11 @@ EOT;
 
 	addOnloadHook( slippymap_init );
 
-	function slippymap_resetPosition() {
+	function slippymap_resetPosition${unique}() {
 		map${unique}.setCenter(lonLat${unique}, zoom${unique});
 	}
 
-	function slippymap_getWikicode() {
+	function slippymap_getWikicode${unique}() {
 		LL = map${unique}.getCenter().transform(map${unique}.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
 		Z = map${unique}.getZoom();
 		size = map${unique}.getSize();
@@ -323,20 +323,20 @@ EOT;
 
 		map${unique}.setCenter(lonLat${unique}, zoom${unique});
 
-		var getWikiCodeButton = new OpenLayers.Control.Button({
+		var getWikiCodeButton${unique} = new OpenLayers.Control.Button({
 			title: "${slippymap_button_code}",
 			displayClass: "getWikiCodeButton",
-			trigger: slippymap_getWikicode
+			trigger: slippymap_getWikicode${unique}
 		});
 
-		var resetButton = new OpenLayers.Control.Button({
+		var resetButton${unique} = new OpenLayers.Control.Button({
 			title: "${slippymap_resetview}",
 			displayClass: "resetButton",
-			trigger: slippymap_resetPosition
+			trigger: slippymap_resetPosition${unique}
 		});
 
 		var panel${unique} = new OpenLayers.Control.Panel( { displayClass: "buttonsPanel" } );
-		panel${unique}.addControls([getWikiCodeButton, resetButton]);
+		panel${unique}.addControls([getWikiCodeButton${unique}, resetButton${unique}]);
 		map${unique}.addControl(panel${unique});
 	}
 </script>
