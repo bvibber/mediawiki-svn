@@ -344,7 +344,10 @@ abstract class ConfigurationPage extends SpecialPage {
 							$this->conf[$name] += $current[$name];
 					}
 				}
-				$wgOut->addWikiMsg( 'configure-edit-old', $wgLang->timeAndDate( $version ) );
+				$wgOut->addWikiMsg( 'configure-edit-old',
+								$wgLang->timeAndDate( $version ) ,
+								$wgLang->date( $version ) ,
+								$wgLang->time( $version ) );
 			} else {
 				$wgOut->wrapWikiMsg( '<div class="errorbox">$1</div>',
 					array( 'configure-old-not-available', $version ) );
