@@ -55,7 +55,7 @@ class CodeReleaseNotes extends CodeView {
 
 	protected function showReleaseNotes() {
 		global $wgOut;
-		$linker = new CodeCommentLinkerWiki( $this->mRepo );
+		$linker = new CodeCommentLinkerHtml( $this->mRepo );
 		$dbr = wfGetDB( DB_SLAVE );
 		if ( $this->mEndRev ) {
 			$where = 'cr_id BETWEEN ' . intval( $this->mStartRev ) . ' AND ' . intval( $this->mEndRev );
@@ -93,9 +93,10 @@ class CodeReleaseNotes extends CodeView {
 				if ( $summary ) {
 					$summary = str_replace( "\n", "<br/>", $summary ); // Newlines -> <br/>
 					$wgOut->addHTML( "<li>" );
-					$wikiText = $linker->link( $summary ) . " ''(" . htmlspecialchars( $row->cr_author ) .
-						', ' . $linker->link( "r{$row->cr_id}" ) . ")''";
-					$wgOut->addWikiText( $wikiText, false );
+					$wgOut->addHTML(
+						$linker->link( $summary ) . " <i>(" . htmlspecialchars( $row->cr_author ) .
+						', ' . $linker->link( "r{$row->cr_id}" ) . ")</i>"
+					);
 					$wgOut->addHTML( "</li>\n" );
 				}
 			}
