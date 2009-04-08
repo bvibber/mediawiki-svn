@@ -26,7 +26,7 @@ $wgExtensionCredits[ 'other' ][] = array(
 	'descriptionmsg' => 'multiboilerplate-desc',
 	'author'         => 'MinuteElectron',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:MultiBoilerplate',
-	'version'        => '1.6',
+	'version'        => '1.7',
 );
 
 // Hook into EditPage::showEditForm:initial to modify the edit page header.
@@ -75,7 +75,7 @@ function efMultiBoilerplate( $form ) {
 			$options .= Xml::option( $name, $template, $selected );
 		}
 	} else {
-		$things = wfMsg( 'multiboilerplate' );
+		$things = wfMsgForContent( 'multiboilerplate' );
 		$options = '';
 		$things = explode( "\n", str_replace( "\r", "\n", str_replace( "\r\n", "\n", $things ) ) ); // Ensure line-endings are \n
 		foreach( $things as $row ) {

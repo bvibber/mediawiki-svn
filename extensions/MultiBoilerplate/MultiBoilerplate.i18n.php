@@ -205,6 +205,15 @@ $messages['ia'] = array(
 	'multiboilerplate-submit' => 'Cargar',
 );
 
+/** Icelandic (Íslenska)
+ * @author Sigurður Guðbrandsson <sg@ro.is>
+ */
+$messages['is'] = array(
+	'multiboilerplate-desc'   => 'Leyfir sniðmáti að vera valið úr fellilista staðsettum ofan við ritform er verið er að breyta síðum',
+	'multiboilerplate-legend' => 'Veldu sniðmát',
+	'multiboilerplate-submit' => 'Hlaða',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
