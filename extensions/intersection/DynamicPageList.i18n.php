@@ -810,6 +810,15 @@ $messages['vec'] = array(
 	'intersection_noincludecats' => 'Error: Te ghè da inclùdar almanco na categoria opure specificar un namespace.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'intersection_toomanycats' => 'Error: äjahk kategorijoid!',
+	'intersection_toofewcats' => 'Error: Vähähk kategorijoid!',
+	'intersection_noresults' => "Error: Ei ole rezul'tatoid!",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

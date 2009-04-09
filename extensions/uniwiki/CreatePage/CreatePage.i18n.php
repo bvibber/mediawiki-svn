@@ -690,6 +690,15 @@ $messages['uk'] = array(
 	'createpage-badtitle' => '«$1» не можна використовувати як заголовок сторінки',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'createpage' => "Säta lehtpol'",
+	'createpage-desc' => 'Ližadab [[Special:CreatePage|specialižen lehtpolen]] uzid lehtpolid sätes',
+	'createpage_submitbutton' => 'Oigeta',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

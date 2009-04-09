@@ -7057,6 +7057,13 @@ $messages['tr'] = array(
 	'configure-section-copyright' => 'Telif hakları',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'configure-section-email' => 'ئېلخەت',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */

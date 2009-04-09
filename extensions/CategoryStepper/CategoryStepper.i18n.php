@@ -21,6 +21,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author MinuteElectron
  * @author Purodha
+ * @author RobertL
  */
 $messages['qqq'] = array(
 	'categorystepper-desc' => 'Description of the CategoryStepper extension. A "category stepper box" is a box with links to the previous and next page in a given category.

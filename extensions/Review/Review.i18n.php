@@ -931,7 +931,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'review_sidebar_title' => 'Recension',
-	'review-desc' => 'Le function de [[Special:Review|validation]], restabilite.',
+	'review-desc' => 'Permitte al usatores [[Special:Review|revider]] paginas',
 	'review_topics' => "# Ecce le lista de topicos e intervallos pro le extension Review (Recension).
 # Cata topico se defini con un linea de cinque valores, separate per  ':' (omne altere linea es ignorate).
 # Le ordine es: clave numeric (>0), nomine, intervallo maxime (>1; 2=si/no), significato del valor le plus basse (p.ex. 'mal'), significato del valor le plus alte (p.ex. 'bon').
@@ -951,7 +951,7 @@ $messages['ia'] = array(
 	'review_total_statistics' => 'Total',
 	'review_statistics_left_corner' => 'Version',
 	'review_version_link' => 'Version #$1',
-	'review_statistic_cell' => 'Media: $1 de $2<br />($4 usatores, $5 anonymos)',
+	'review_statistic_cell' => 'Media: $1 de $2<br />($4 {{PLURAL:$4|usator|usatores}} registrate, $5 {{PLURAL:$5|usator|usatores}} anonyme)',
 	'review_version_statistic_cell' => '$1 de $2',
 	'review_version_reviews_link' => '<small>(recensiones de versiones)</small>',
 	'review_concerns_page' => 'Iste recension es a proposito del pagina "$1".',
@@ -1883,6 +1883,14 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'review_user_details_link' => '(detaylar)',
 	'review_topic' => 'Konu',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'review_total_statistics' => 'Kaiked',
+	'review_topic' => 'Tem',
 );
 
 /** Vietnamese (Tiếng Việt)

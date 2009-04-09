@@ -1107,23 +1107,13 @@ Esta páxina só é aplicable aos usuarios limitados",
 	'group-manager-member' => 'Xestor',
 );
 
-/** Gothic
+/** Gothic (Gothic)
+ * @author Crazymadlover
  * @author Jocke Pirat
+ * @author Omnipaedista
  */
 $messages['got'] = array(
 	'whitelisttableedit' => 'Máidjan',
-);
-/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
- * @author Crazymadlover
- * @author Omnipaedista
- */
-$messages['grc'] = array(
-	'mywhitelistpages' => 'Αἱ δέλτοι μου',
-	'whitelisttablemodifyall' => 'Ἅπασαι',
-	'whitelisttablemodifynone' => 'Οὐδέν',
-	'whitelisttableedit' => 'Μεταγράφειν',
-	'whitelisttableremove' => 'Άφαιρεῖν',
-	'whitelistnever' => 'οὔποτε',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

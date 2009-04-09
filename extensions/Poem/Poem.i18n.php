@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'poem-desc' => 'Extension description displayed on [[Special:Version]]',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'poem-desc' => 'Fiegt is <tt>&lt;poem&gt;</tt>-Tag zur Furmatierung voo Gedichta hinzu',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

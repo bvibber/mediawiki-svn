@@ -47,7 +47,6 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
  */
 $messages['qqq'] = array(
 	'deletebatch-desc' => 'Short description of the :Deletebatch extension, shown in [[Special:Version]]. Do not translate or change links.',
-	'deletebatch-button' => '{{Identical|Delete}}',
 	'deletebatch-reason' => '{{Identical|Reason for deletion}}',
 	'deletebatch-processing' => 'Used as page subtitle.
 * $1 is text from {{msg-mw|deletebatch-from-file}} or {{msg-mw|deletebatch-from-form}}',
@@ -128,13 +127,6 @@ $messages['arz'] = array(
 	'deletebatch-select-yourself' => 'أنت',
 	'deletebatch-no-page' => 'من فضلك اختر على الأقل صفحة واحدة للحذف أو اختر ملفا يحتوى على قائمة الصفحات.',
 	'right-deletebatch' => 'حذف باتش الصفحات',
-);
-
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
- * @author EugeneZelenko
- */
-$messages['be-tarask'] = array(
-	'deletebatch-button' => 'Выдаліць',
 );
 
 /** Bulgarian (Български)
@@ -395,7 +387,6 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
  * @author Snakesteuben
  */
 $messages['fy'] = array(
-	'deletebatch-button' => 'Wiskje',
 	'deletebatch-reason' => 'Reden foar it wiskjen',
 );
 
@@ -435,7 +426,6 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'deletebatch-button' => 'Διαγράφειν',
 	'deletebatch-or' => '<b>ἢ</b>',
 	'deletebatch-success-subtitle' => 'διὰ τὸ $1',
 	'deletebatch-select-yourself' => 'σύ',
@@ -697,13 +687,6 @@ $messages['km'] = array(
 	'deletebatch-select-yourself' => 'អ្នក',
 );
 
-/** Krio (Krio)
- * @author Jose77
- */
-$messages['kri'] = array(
-	'deletebatch-button' => 'Dilit',
-);
-
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -773,7 +756,6 @@ $messages['mhr'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'deletebatch-button' => 'Нардамс',
 	'deletebatch-or' => '<b>эли</b>',
 );
 
@@ -781,7 +763,6 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'deletebatch-button' => 'Ticpolōz',
 	'deletebatch-reason' => 'Tlapololiztli īxtlamatiliztli',
 	'deletebatch-processing' => 'mopolocateh zāzanilli',
 	'deletebatch-success-subtitle' => '$1 ītechcopa',
@@ -1135,7 +1116,6 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'deletebatch-button' => 'Halakon',
 	'deletebatch-reason' => 'Motivu ba halakon:',
 );
 

@@ -848,6 +848,7 @@ Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-raj
 
 /** Spanish (Español)
  * @author Aleator
+ * @author Crazymadlover
  * @author Imre
  * @author Remember the dot
  * @author Sanbec
@@ -860,7 +861,7 @@ $messages['es'] = array(
 	'group-oversight-member' => 'supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisión',
 	'right-oversight' => 'Ver una revisión anteriormente escondida',
-	'right-hiderevision' => 'Revisar y restaurar revisiones ocultadas por los administradores',
+	'right-hiderevision' => 'Ocultar revisiones de los administradores',
 	'hiderevision-prompt' => 'Número de revisión a ocultar:',
 	'hiderevision-continue' => 'Seguir',
 	'hiderevision-text' => "Esto '''sólo''' se debería usar en los siguientes casos:
@@ -2414,7 +2415,9 @@ Disse Daten annere togänglich to maken, kann dor för sorgen, dat di de Oversig
  */
 $messages['nds-nl'] = array(
 	'group-oversight' => 'toezichhouwers',
-	'right-hiderevision' => 'Verbörgen versies bekieken en weerummeplaosen',
+	'group-oversight-member' => 'toezichouwer',
+	'grouppage-oversight' => '{{ns:project}}:Toezichhouwer',
+	'right-hiderevision' => 'Versies oek veur beheerders verbargen',
 	'hiderevision-reason' => 'Rejen:',
 	'hiderevision-noreason' => 'Beschrief eers de rejen waorumme disse pagina vort mut.',
 );
@@ -2730,6 +2733,7 @@ $messages['ps'] = array(
  * @author Lijealso
  * @author Malafaya
  * @author Sir Lestaty de Lioncourt
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'hiderevision' => 'Ocultar revisões permanentemente',
@@ -2738,7 +2742,7 @@ $messages['pt'] = array(
 	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisão',
 	'right-oversight' => 'Ver uma revisão previamente ocultada',
-	'right-hiderevision' => 'Rever e restaurar revisões ocultadas dos Sysops',
+	'right-hiderevision' => 'Ocultar revisões aos administradores',
 	'hiderevision-prompt' => 'Número da revisão (edição) a ser removida:',
 	'hiderevision-continue' => 'Avançar',
 	'hiderevision-text' => "Isto deverá ser utilizado '''apenas''' nos seguintes casos:
@@ -3593,6 +3597,14 @@ La divulgazion di ste informassion la pol conportar la rimozion permanente dei d
 	'oversight-legend' => 'Serca i registri de le revision sconte',
 	'oversight-oversighter' => 'Supervisor:',
 	'oversight-offender' => 'Trasgressor:',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'oversight-view' => 'detalid',
+	'oversight-offender' => 'Abidoičii',
 );
 
 /** Vietnamese (Tiếng Việt)

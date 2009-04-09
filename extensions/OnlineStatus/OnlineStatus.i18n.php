@@ -892,6 +892,14 @@ $messages['vec'] = array(
 	'tog-offlineOnLogout' => 'Canbia el me stato a "offline" co me desconéto',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'onlinestatus-tab' => 'Status',
+	'onlinestatus-toggles-desc' => 'Teiden status:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

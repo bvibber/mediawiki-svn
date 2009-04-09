@@ -841,6 +841,14 @@ $messages['nds'] = array(
 	'scanset_prev' => '← Vörig',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'scanset_next' => 'Volgende &gt;',
+	'scanset_prev' => '&lt; Veurige',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

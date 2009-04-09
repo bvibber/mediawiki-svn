@@ -24,6 +24,15 @@ $messages['qqq'] = array(
 	'right-forcepreviewexempt' => '{{doc-right}}',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'forcepreview' => 'Seite speichern (zuerst Vorschau anzeigen)',
+	'forcepreview-desc' => 'Vorschau für unprivilegierte Benutzer erzwingen',
+	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -387,6 +396,13 @@ $messages['pt-br'] = array(
 	'forcepreview' => 'Gravar página (use a previsão primeiro)',
 	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
 	'right-forcepreviewexempt' => 'Pode salvar páginas sem mostrar a previsão antes',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'forcepreview' => "Reggistre 'a vosce (ause l'andeprime apprime)",
 );
 
 /** Russian (Русский)

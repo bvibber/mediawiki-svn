@@ -177,6 +177,14 @@ $messages['gl'] = array(
 	'seealso-desc' => "Cabeceira 'Véxase tamén' localizada empregando a etiqueta <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'seealso' => 'Lueg au',
+	'seealso-desc' => "Lokalisierti 'Lueg au'-Iberschrifte mit em Tag <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author דניאל ב.

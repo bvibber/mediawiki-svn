@@ -24,6 +24,13 @@ The word "dismiss" (or "close") should be in the infinitive mood.',
 	'sitenotice-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Kirmanjki (Kirmanjki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'sitenotice_close' => 'def ke',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -507,7 +514,7 @@ $messages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );
 
-/** Classical Chinese (文言) */
+/** Literary Chinese (文言) */
 $messages['lzh'] = array(
 	'sitenotice_close' => '關',
 );

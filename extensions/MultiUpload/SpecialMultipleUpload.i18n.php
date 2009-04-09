@@ -940,6 +940,7 @@ Zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
  */
@@ -960,6 +961,7 @@ Upassande filer vil bli sletta med ein gong, sjå [[{{MediaWiki:Multipleupload-p
 	'multiupload-fileuploaded' => 'Fil lasta opp.',
 	'multiupload-toolbox' => 'Last opp fleire filer',
 	'multiupload-no-files' => 'Vel minst éi fil som skal verta lasta opp',
+	'multiupload-blank' => 'Inga fil vald',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

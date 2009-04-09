@@ -50,7 +50,6 @@ $messages['qqq'] = array(
 	'importusers-email' => '{{Identical|E-mail}}',
 	'importusers-realname' => '{{Identical|Real name}}',
 	'right-import_users' => '{{doc-right}}',
-	'action-import_users' => '{{doc-action}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -116,7 +115,6 @@ $messages['ar'] = array(
 	'importusers-email' => 'البريد الإلكتروني',
 	'importusers-realname' => 'الاسم الحقيقي',
 	'right-import_users' => 'استيراد المستخدمين بشكل كمي',
-	'action-import_users' => 'استيراد المستخدمين بشكل كمي',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -322,7 +320,6 @@ $messages['dsb'] = array(
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'napšawdne mě',
 	'right-import_users' => 'Wužywarjow z kopicami importěrowaś',
-	'action-import_users' => 'wužywarjow z kopicami importěrowaś',
 );
 
 /** Greek (Ελληνικά)
@@ -450,7 +447,6 @@ $messages['fr'] = array(
 	'importusers-email' => 'adresse courriel',
 	'importusers-realname' => 'nom réel',
 	'right-import_users' => 'Importer des utilisateurs en masse',
-	'action-import_users' => 'importer des utilisateurs en masse',
 );
 
 /** Western Frisian (Frysk)
@@ -487,7 +483,6 @@ $messages['gl'] = array(
 	'importusers-email' => 'correo electrónico',
 	'importusers-realname' => 'nome real',
 	'right-import_users' => 'Importar usuarios en masa',
-	'action-import_users' => 'importar usuarios en masa',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -583,7 +578,6 @@ $messages['he'] = array(
 	'importusers-email' => 'דוא"ל',
 	'importusers-realname' => 'שם אמיתי',
 	'right-import_users' => 'ייבוא משתמשים מרובים',
-	'action-import_users' => 'לייבא משתמשים מרובים',
 );
 
 /** Hindi (हिन्दी)
@@ -675,7 +669,6 @@ $messages['hsb'] = array(
 	'importusers-email' => 'e-mejl',
 	'importusers-realname' => 'woprawdźite mjeno',
 	'right-import_users' => 'Wužiwarjow z masami importować',
-	'action-import_users' => 'wužiwarjow z masami importować',
 );
 
 /** Interlingua (Interlingua)
@@ -752,7 +745,6 @@ $messages['ja'] = array(
 	'importusers-email' => 'メールアドレス',
 	'importusers-realname' => '実名',
 	'right-import_users' => '利用者を一括インポートする',
-	'action-import_users' => '利用者の一括インポート',
 );
 
 /** Javanese (Basa Jawa)
@@ -857,7 +849,6 @@ $messages['ksh'] = array(
 	'importusers-email' => '<i lang="en">e-mail</i>',
 	'importusers-realname' => 'Dinge richtije Name',
 	'right-import_users' => 'Date övver Metmaachere em  Knubbel empotteere',
-	'action-import_users' => 'Metmaacher ier Date em Knubbel ze empotteere',
 );
 
 /** Latin (Latina)
@@ -1008,7 +999,6 @@ $messages['nl'] = array(
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'echte naam',
 	'right-import_users' => 'Gebruikers in bulk importeren',
-	'action-import_users' => 'gebruikers in bulk te importeren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1037,7 +1027,6 @@ $messages['nn'] = array(
 	'importusers-email' => 'e-post',
 	'importusers-realname' => 'verkeleg namn',
 	'right-import_users' => 'Importera fleire brukarar samstundes',
-	'action-import_users' => 'importer fleire brukarar samstundes',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1091,7 +1080,6 @@ $messages['oc'] = array(
 	'importusers-email' => 'adreça de corrièr electronic',
 	'importusers-realname' => 'nom vertadièr',
 	'right-import_users' => "Importar d'utilizaires en massa",
-	'action-import_users' => "importar d'utilizaires en massa",
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -1188,7 +1176,6 @@ $messages['pt'] = array(
 	'importusers-email' => 'email',
 	'importusers-realname' => 'nome real',
 	'right-import_users' => 'Importar utilizadores em bloco',
-	'action-import_users' => 'importar utilizadores em bloco',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1320,7 +1307,6 @@ $messages['sk'] = array(
 	'importusers-email' => 'email',
 	'importusers-realname' => 'skutočné meno',
 	'right-import_users' => 'Hromadne importovať používateľov',
-	'action-import_users' => 'hromadne importovať používateľov',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1481,7 +1467,6 @@ $messages['tl'] = array(
 	'importusers-email' => 'e-liham',
 	'importusers-realname' => 'totoong pangalan',
 	'right-import_users' => 'Umangkat ng bunton ng mga tagagamit',
-	'action-import_users' => 'umangkat ng bunton ng tagagamit',
 );
 
 /** Turkish (Türkçe)
@@ -1497,6 +1482,13 @@ $messages['tr'] = array(
 	'importusers-password' => 'Parola',
 	'importusers-email' => 'E-posta',
 	'importusers-realname' => 'gerçek isminiz',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'importusers-email' => 'ئېلخەت',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

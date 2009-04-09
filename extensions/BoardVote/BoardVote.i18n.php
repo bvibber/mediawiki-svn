@@ -2392,7 +2392,7 @@ $1 para ver os datos cifrados.</p>',
 	'boardvote_dumplink' => 'Prema aquí',
 	'boardvote_submit' => 'De acordo',
 	'boardvote_strike' => 'Riscar',
-	'boardvote_unstrike' => 'Retirar o riscado',
+	'boardvote_unstrike' => 'Retirar o risco',
 	'boardvote_needadmin' => 'Esta operación só a poden realizar os administradores das eleccións.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:BoardVote/vote}}">Eleccións ao Consello de Administración da Wikimedia</a>:
 Votación aberta até o 22 de xuño',
@@ -5063,7 +5063,7 @@ $1 per las donadas criptadas.</p>',
 	'boardvote_bot' => "O planhèm, avètz l'estatut de bòt sus wiki enregistrat. Los comptes de Bòt son autorizats a votar.",
 	'boardvote_welcome' => "Benvengut '''$1'''!",
 	'go_to_board_vote' => 'Eleccions 2008 al Conselh d’administracion de la Wikimèdia',
-	'boardvote_redirecting' => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un servidor extèrn e independent. Seretz redirigit cap a aqueste servidor extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat pas signat benlèu serà afichat.',
+	'boardvote_redirecting' => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un servidor extèrne e independent. Seretz redirigit cap a aqueste servidor extèrne en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat pas signat benlèu serà afichat.',
 	'right-boardvote' => 'Administrar las eleccions',
 );
 
@@ -6633,7 +6633,7 @@ Maaaring lumitaw ang isang babalang pangkaligtasan o pangseguridad na hinggil sa
 	'right-boardvote' => 'Mangasiwa sa mga halalan',
 );
 
-/** Tonga (faka-Tonga) */
+/** Tonga (lea faka-Tonga) */
 $messages['to'] = array(
 	'boardvote' => 'Ko e fili ʻo e kau talāsiti ki he Poate Wikimedia',
 	'boardvote_days' => 'Ngaahi ʻaho',
@@ -6732,6 +6732,13 @@ Bu dış sunucuya 20 saniye içinde yönlendirileceksiniz. Hemen gitmek için [$
 /** Tahitian (Reo Mā`ohi) */
 $messages['ty'] = array(
 	'boardvote_user' => 'Ta’ata fa’a’ohipa',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'boardvote_submit' => 'ماقۇل',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

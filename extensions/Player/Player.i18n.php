@@ -384,17 +384,11 @@ $messages['gl'] = array(
 );
 
 /** Gothic
+ * @author Crazymadlover
  * @author Jocke Pirat
  */
 $messages['got'] = array(
 	'player-goto-file' => 'feilans',
-);
-/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
- * @author Crazymadlover
- */
-$messages['grc'] = array(
-	'player-invalid-title' => 'Ἄκυρος ἐπιγραφή',
-	'player-goto-file' => 'Ἀρχεῖον',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

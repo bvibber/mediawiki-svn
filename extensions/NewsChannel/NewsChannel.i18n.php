@@ -498,6 +498,14 @@ $messages['uk'] = array(
 	'newschannel_submit_button' => 'Вивести',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'newschannel_format' => 'Uzištusiden format:',
+	'newschannel_limit' => 'Tantoižiden uzištusiden lugumär:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

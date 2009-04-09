@@ -229,6 +229,16 @@ $messages['grc'] = array(
 	'searchbox-namespaces' => 'Ὀνοματεῖα:',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'searchbox-desc' => 'Macht s Yybinde vun eme Suechformular megli',
+	'searchbox-search' => 'Sueche',
+	'searchbox-go' => 'Gang',
+	'searchbox-namespaces' => 'Namensryym:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */
@@ -556,6 +566,13 @@ $messages['tr'] = array(
 	'searchbox-namespaces' => 'Alan adları:',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'searchbox-go' => 'كۆچۈش',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */
@@ -571,6 +588,14 @@ $messages['vec'] = array(
 	'searchbox-search' => 'Serca',
 	'searchbox-go' => 'Và',
 	'searchbox-namespaces' => 'Namespace:',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'searchbox-search' => 'Ectä',
+	'searchbox-go' => 'Mända',
 );
 
 /** Vietnamese (Tiếng Việt)

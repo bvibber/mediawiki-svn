@@ -2660,6 +2660,32 @@ Par piaser speta n'atimo.",
 	'youtubeauthsub_jserror_nodesc' => 'Par piaser inserissi na descrission par el video.',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'youtubeauthsub' => 'Jügutoitta video YouTuba-saitalpäi',
+	'youtubeauthsub-desc' => 'Laskeb kävutajile [[Special:YouTubeAuthSub|jügutoitta videod]] YouTube-saitalpäi.',
+	'youtubeauthsub_info' => 'Miše jügutoitta video YouTube-saitalpäi da panda se lehtpolele, täutkat nened pöudod:',
+	'youtubeauthsub_title' => 'Pälkirjutez',
+	'youtubeauthsub_description' => 'Ümbrikirjutand',
+	'youtubeauthsub_password' => 'YouTube-peitsana',
+	'youtubeauthsub_username' => 'Kävutajan nimi YouTube-saital',
+	'youtubeauthsub_keywords' => 'Avadimsanad',
+	'youtubeauthsub_category' => 'Kategorii',
+	'youtubeauthsub_submit' => 'Oigeta',
+	'youtubeauthsub_clickhere' => 'Paingat nakhu, miše tulda YouTube-saitale',
+	'youtubeauthsub_uploadhere' => 'Jügutoitta teiden video täspäi:',
+	'youtubeauthsub_uploadbutton' => 'Jügutoitta',
+	'youtubeauthsub_summary' => 'YouTube-videod jügutoitand',
+	'youtubeauthsub_uploading' => 'Teiden videod jügutoittas.
+Olgat hüväd, varastagat.',
+	'youtubeauthsub_viewpage' => 'Voit [[$1|kacta teiden videod]] mugažo täs.',
+	'youtubeauthsub_jserror_nokeywords' => "Olgat hüväd, kirjutagat üks' avadimsana vai kuverdan-ni avadimsanoid.",
+	'youtubeauthsub_jserror_notitle' => 'Olgat hüväd, kirjutagat videon nimi.',
+	'youtubeauthsub_jserror_nodesc' => 'Olgat hüväd, tehkat videon lühüd ümbrikirjutuz.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

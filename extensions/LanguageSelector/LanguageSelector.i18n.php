@@ -28,6 +28,16 @@ $messages['qqq'] = array(
 	'languageselector-setlang' => 'Part of the "LanguageSelector" extension. This is the text of a submit button to select your user interface language. Mostly the button  is not shown, but sometimes it appears next to the language selector (a dropdown box like in your [[Special:Preferences|user preferences]]).',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'languageselector' => 'Sproache',
+	'languageselector-desc' => 'Sproachaauswoahl uff jeder Seite, au fier Besucher',
+	'languageselector-setlang' => 'setza',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin
@@ -826,6 +836,13 @@ $messages['vec'] = array(
 	'languageselector' => 'Lengua',
 	'languageselector-desc' => 'Un seletor de la lengua su tute le pagine, anca par i visitatori',
 	'languageselector-setlang' => 'selessiona',
+);
+
+/** Veps (Vepsan kel')
+ * @author Triple-ADHD-AS
+ */
+$messages['vep'] = array(
+	'languageselector' => 'Kel’',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -744,6 +744,15 @@ $messages['tr'] = array(
 	'am-email' => 'e-posta',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'am-username' => 'kävutajan nimi',
+	'am-email' => 'e-počt',
+	'am-active' => 'aktivine',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

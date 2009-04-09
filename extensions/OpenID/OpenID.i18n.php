@@ -3434,6 +3434,20 @@ Birçok [http://openid.net/get/ OpenID sağlayıcısı] vardır, ve bir başka s
 	'openid-pref-update-userinfo-on-login' => 'Her oturum açışımda OpenID karakterinden bilgilerimi güncelle',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'openidlanguage' => 'تىل',
+);
+
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'openidlanguage' => 'Til',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Aleksandrit

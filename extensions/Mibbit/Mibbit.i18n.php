@@ -23,6 +23,7 @@ Anonymous users are given an automatically generated one, but it can be changed.
 /** Message documentation (Message documentation)
  * @author Meno25
  * @author MinuteElectron
+ * @author RobertL
  */
 $messages['qqq'] = array(
 	'mibbit' => 'Name of the Mibbit extension.',

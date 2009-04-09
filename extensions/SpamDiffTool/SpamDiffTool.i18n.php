@@ -1272,6 +1272,14 @@ Struca <a href='$1'>qua</a> par tornar indrìo.",
 	'spamdifftool_submit_buttom' => 'Manda',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'spamdifftool_block' => 'Blokiruind:',
+	'spamdifftool_submit_buttom' => 'Oigeta',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

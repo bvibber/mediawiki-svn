@@ -732,6 +732,18 @@ $messages['vec'] = array(
 	'contrib-tracking-button' => 'Và vanti',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'contributiontracking-desc' => 'Rahoidenkeradusen WikiMediale kaclend',
+	'contributiontracking' => 'Lahjoičendan kaclend',
+	'contrib-tracking-error' => 'Petuz',
+	'contrib-tracking-error-text' => 'Forman vär alištuz',
+	'contrib-tracking-submitting' => 'Oigendamine maksuiden processorale...',
+	'contrib-tracking-button' => 'Jatkta',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

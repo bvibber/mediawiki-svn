@@ -2349,6 +2349,14 @@ $messages['ro'] = array(
 	'math_WrongFontEncodingWithHint' => 'Simbolul "$1" nu poate apărea în fontul "$2" (încercaţi să folosiţi comanda "$3{...}")',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'math_CannotRunDvipng' => 'Non ge pozze eseguì dvipng',
+	'math_CannotRunLatex' => 'Non ge pozze eseguì latex',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

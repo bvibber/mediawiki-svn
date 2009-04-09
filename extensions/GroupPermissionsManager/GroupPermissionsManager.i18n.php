@@ -2397,6 +2397,13 @@ $messages['tr'] = array(
 	'grouppermissions-sp-save' => 'Kaydet',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'grouppermissions-dosearch' => 'كۆچۈش',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */

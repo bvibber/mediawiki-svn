@@ -375,7 +375,7 @@ $messages['tl'] = array(
 	'purge-desc' => 'Nagdaragdag ng isang panglaylay/tab na pampurga/panlinis sa ibabaw ng lahat ng pangkaraniwang mga pahina, at lumalaktaw sa pagsusuri ng pagpurga para sa mga hindi nagpapakilalang mga tagagamit na nagpapahintulot sa mabilisang pagpurga ng taguan',
 );
 
-/** Tonga (faka-Tonga)
+/** Tonga (lea faka-Tonga)
  * @author Tauʻolunga
  */
 $messages['to'] = array(

@@ -829,6 +829,13 @@ $messages['tr'] = array(
 	'profiling-data-count' => 'Say',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'profiling-ok' => 'ماقۇل',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */

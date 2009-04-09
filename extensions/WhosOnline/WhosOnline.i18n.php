@@ -19,7 +19,7 @@ $messages['en'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'whosonline'      => 'من موجود',
+	'whosonline' => 'من موجود',
 	'whosonline-desc' => 'يعرض [[Special:WhosOnline|قائمة]] للمستخدمين المسجلين والمجهولين الموجودين حاليا على الشبكة',
 );
 
@@ -35,7 +35,7 @@ $messages['arz'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
-	'whosonline'      => 'Quién ta coneutáu',
+	'whosonline' => 'Quién ta coneutáu',
 	'whosonline-desc' => 'Amuesa [[Special:WhosOnline|una llista]] de los usuarios identificaos y anónimos que tán coneutaos nestos momentos',
 );
 
@@ -43,7 +43,7 @@ $messages['ast'] = array(
  * @author Nkosi ya Cabinda
  */
 $messages['avk'] = array(
-	'whosonline'      => 'Toktan tir dogluyayan ?',
+	'whosonline' => 'Toktan tir dogluyayan ?',
 	'whosonline-desc' => 'Nedira va [[Special:WhosOnline|vexala]] dem dogluyayan favesik yo isu yoltiskik',
 );
 
@@ -61,7 +61,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'whosonline'      => 'Кой е на линия',
+	'whosonline' => 'Кой е на линия',
 	'whosonline-desc' => 'Показва [[Special:WhosOnline|списък]] с анонимни потребители и влезли потребители, които са на линия',
 );
 
@@ -69,7 +69,7 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'whosonline'      => 'Piv zo enlinenn ?',
+	'whosonline' => 'Piv zo enlinenn ?',
 	'whosonline-desc' => 'Diskouez a ra [[Special:WhosOnline|ur roll]] eus an dud enskrivet hag eus an dud dianav zo enlinenn bremañ.',
 );
 
@@ -85,7 +85,7 @@ $messages['bs'] = array(
  * @author Tomas Jensen
  */
 $messages['da'] = array(
-	'whosonline'	=> 'Hvem er på',
+	'whosonline' => 'Hvem er på',
 	'whosonline-desc' => 'Viser [[Special:WhosOnline|en liste]] af, både anonyme og kendte bruger der er logget på',
 );
 
@@ -93,7 +93,7 @@ $messages['da'] = array(
  * @author MF-Warburg
  */
 $messages['de'] = array(
-	'whosonline'      => 'Wer ist online',
+	'whosonline' => 'Wer ist online',
 	'whosonline-desc' => 'Zeigt [[Special:WhosOnline|eine Liste]] der eingeloggten und anonymen Benutzer, die im Moment online sind',
 );
 
@@ -109,7 +109,7 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'whosonline'      => 'Kiu estas konektita',
+	'whosonline' => 'Kiu estas konektita',
 	'whosonline-desc' => 'Montras [[Special:WhosOnline|listo]] de ensalutitaj kaj anonimaj uzantoj nune konektitaj',
 );
 
@@ -120,6 +120,13 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'whosonline' => 'Quien está en línea',
 	'whosonline-desc' => 'Muestra [[Special:WhosOnline|una lista]] de usuarios identificados y anónimos que están conectados actualmente.',
+);
+
+/** Basque (Euskara)
+ * @author Pi
+ */
+$messages['eu'] = array(
+	'whosonline' => 'Zein konektaturik',
 );
 
 /** Finnish (Suomi)
@@ -167,7 +174,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'whosonline'      => 'Štóž je online',
+	'whosonline' => 'Štóž je online',
 	'whosonline-desc' => 'Zwobraznja [[Special:WhosOnline|lisćinu]] přizjewjenych a anonymnych wužiwarjow, kotřiž su runje online',
 );
 
@@ -191,7 +198,7 @@ $messages['ia'] = array(
  * @author S.Örvarr.S
  */
 $messages['is'] = array(
-	'whosonline'      => 'Hver er tengdur',
+	'whosonline' => 'Hver er tengdur',
 	'whosonline-desc' => 'Sýna [[Special:WhosOnline|lista]] yfir innskráða og óþekkta notendur sem eru tengdir',
 );
 
@@ -237,7 +244,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'whosonline'      => 'Wien ass online',
+	'whosonline' => 'Wien ass online',
 	'whosonline-desc' => 'Weist [[Special:WhosOnline|eng Lëscht]] vun den ageloggten an anonyme Benotzer déi elo online sinn',
 );
 
@@ -253,7 +260,7 @@ $messages['lt'] = array(
  * @author Jacob.jose
  */
 $messages['ml'] = array(
-	'whosonline'      => 'ആരൊക്കെ നിലവില്‍ ഓണ്‍ലൈന്‍ ആണ്',
+	'whosonline' => 'ആരൊക്കെ നിലവില്‍ ഓണ്‍ലൈന്‍ ആണ്',
 	'whosonline-desc' => 'നിലവില്‍ ലോഗിന്‍ ചെയ്തും അജ്ഞാ‍തരായും ഓണ്‍ലൈന്‍ ആയിട്ടുള്ള ഉപയോക്താക്കളുടെ [[Special:WhosOnline|ഒരു പട്ടിക]] പ്രദര്‍ശിപ്പിക്കുന്നു',
 );
 
@@ -261,7 +268,7 @@ $messages['ml'] = array(
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'whosonline'      => 'ऑनलाईन कोण आहे?',
+	'whosonline' => 'ऑनलाईन कोण आहे?',
 	'whosonline-desc' => 'दाखवा सध्या ऑनलाईन असलेल्या दाखल झालेल्या सदस्यांची आणि अनामिक नवशागवशांची [[Special:WhosOnline|सूची]] दाखवा',
 );
 
@@ -269,7 +276,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'whosonline'      => 'Wie is er online',
+	'whosonline' => 'Wie is er online',
 	'whosonline-desc' => '[[Special:WhosOnline|Een lijst]] van actieve aangemelde en anonieme gebruikers',
 );
 
@@ -281,11 +288,11 @@ $messages['nn'] = array(
 	'whosonline-desc' => 'Viser [[Special:WhosOnline|ei lista]] over registrerte og anonyme brukarar som er tilkopla',
 );
 
-/** Norwegian (‪Norsk (bokmål)‬)
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'whosonline'      => 'Hvem er logget på',
+	'whosonline' => 'Hvem er logget på',
 	'whosonline-desc' => 'Viser [[Special:WhosOnline|en liste]] over innloggede og anonyme brukere som er koblet til',
 );
 
@@ -293,7 +300,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'whosonline'      => 'Qui es en linha',
+	'whosonline' => 'Qui es en linha',
 	'whosonline-desc' => "Aficha [[Special:WhosOnline|una tièra]] de personas inscrichas e d'utilizaires anonims actualament en linha",
 );
 
@@ -301,7 +308,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'whosonline'      => 'Kto online',
+	'whosonline' => 'Kto online',
 	'whosonline-desc' => 'Wyświetla [[Special:WhosOnline|listę]] zalogowanych i anonimowych użytkowników będących online',
 );
 
@@ -336,7 +343,15 @@ $messages['roa-tara'] = array(
 	'whosonline-desc' => "Face vedè [[Special:WhosOnline|'na liste]] de utinde collegate e anonime ca stonne online jndr'à stu mumende",
 );
 
-/** Sinhalese (සිංහල)
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'whosonline' => 'Сейчас на сайте',
+	'whosonline-desc' => 'Показывает [[Special:WhosOnline|кто из участников сейчас на сайте]]',
+);
+
+/** Sinhala (සිංහල)
  * @author Asiri wiki
  */
 $messages['si'] = array(
@@ -347,7 +362,7 @@ $messages['si'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'whosonline'      => 'Kto je online',
+	'whosonline' => 'Kto je online',
 	'whosonline-desc' => 'Zobrazuje [[Special:WhosOnline|zoznam]] prihlásených a anonymných používateľov, ktorí sú momentálne online',
 );
 
@@ -355,7 +370,7 @@ $messages['sk'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
-	'whosonline'      => 'Nu keur manco',
+	'whosonline' => 'Nu keur manco',
 	'whosonline-desc' => 'Témbongkeun [[Special:WhosOnline|béréndélan]] pamaké asup log atawa anonim nu keur manco',
 );
 
@@ -363,7 +378,7 @@ $messages['su'] = array(
  * @author Lejonel
  */
 $messages['sv'] = array(
-	'whosonline'      => 'Vem är ansluten',
+	'whosonline' => 'Vem är ansluten',
 	'whosonline-desc' => 'Visar [[Special:WhosOnline|en lista]] över inloggade och anonyma användare som för närvarande är anslutna',
 );
 
@@ -371,7 +386,7 @@ $messages['sv'] = array(
  * @author Trengarasu
  */
 $messages['ta'] = array(
-	'whosonline'      => 'இணைப்பில் யார் உள்ளார்',
+	'whosonline' => 'இணைப்பில் யார் உள்ளார்',
 	'whosonline-desc' => '[[Special:WhosOnline| இணைப்பிலுள்ள]] பயனர்களையும் அடையாளம் காட்டாத பயனர்களையும் காட்டுகிறது.',
 );
 
@@ -380,6 +395,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'whosonline' => 'ఆన్&zwnj;లైన్లో ఎవరున్నారు',
+	'whosonline-desc' => 'ప్రస్తుతం ఆన్‌లైనులో ఉన్న ప్రవేశించిన మరియు అజ్ఞాత వాడుకరుల [[Special:WhosOnline|జాబితా]]ని చూపిస్తుంది',
 );
 
 /** Thai (ไทย)
@@ -397,11 +413,26 @@ $messages['tl'] = array(
 	'whosonline-desc' => 'Nagpapakita ng [[Special:WhosOnline|isang talaan]] ng nakatala at hindi nagpapakilalang mga tagagamit na kasalukuyang nasa internet',
 );
 
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'whosonline' => 'Kimler çevrimiçi',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
 $messages['vec'] = array(
 	'whosonline' => 'Chi xe in linea',
 	'whosonline-desc' => 'Mosrta [[Special:WhosOnline|na lista]] dei utenti registrà e anonimi atualmente in linea',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'whosonline' => 'Thành viên trực tuyến',
+	'whosonline-desc' => 'Hiển thị [[Special:WhosOnline|danh sách]] các thành viên đã đăng nhập lẫn vô danh hiện đang trực tuyến',
 );
 

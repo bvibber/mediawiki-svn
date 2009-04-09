@@ -1147,6 +1147,8 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'sitematrix-language' => 'Taal',
+	'sitematrix-sitetotal' => 'Alles samen',
 	'sitematrix-private' => 'beteunde toegang',
 );
 
@@ -1583,7 +1585,7 @@ $messages['tl'] = array(
 	'sitematrix-fishbowl' => 'pinagbabawalan ang pagbago',
 );
 
-/** Tonga (faka-Tonga) */
+/** Tonga (lea faka-Tonga) */
 $messages['to'] = array(
 	'sitematrix' => "Ko e hokohoko ʻo e ngaahi ''wiki''",
 );
@@ -1613,6 +1615,13 @@ $messages['tr'] = array(
  */
 $messages['ts'] = array(
 	'sitematrix-language' => 'Ririmi',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'sitematrix-language' => 'تىل',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

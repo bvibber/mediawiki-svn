@@ -131,6 +131,16 @@ $messages['gl'] = array(
 	'rightfunctions-ns' => '(desde a protección do espazo de nomes)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'rightfunctions-desc' => 'Erlaubnisbasierti Parser-Funktione',
+	'rightfunctions-casc' => '(vu kaskadefermige Quälle)',
+	'rightfunctions-local' => '(vu lokale Syte)',
+	'rightfunctions-ns' => '(vu Namensryymsperrige)',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

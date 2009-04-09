@@ -2705,6 +2705,38 @@ $messages['vec'] = array(
 	'specialpages-group-contribution' => 'Contributi/Racolta fondi',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'contribstats-day' => 'Päiv',
+	'contribstats-month' => 'Ku',
+	'contribstats-currency' => 'Valüt',
+	'contribstats-amount' => 'Summ (USD)',
+	'contribstats-contributions' => 'Lahjoičendad',
+	'contribstats-total' => 'Kaiked (USD)',
+	'contribstats-avg' => 'Keskmäine (USD)',
+	'contribstats-max' => 'Maksimaline (USD)',
+	'contribstats-percentage-ytd' => 'Procent (voden augotišelpäi)',
+	'contribstats-total-ytd' => 'Kaiked (voden augotišelpäi)',
+	'contribstats-value-exactly' => 'Tarkoiktas $1',
+	'contribstats-value-under' => 'Vähemb $1',
+	'contribstats-value-from' => '$1 - $2',
+	'contribstats-value-over' => 'Enamb $1',
+	'fundraiserstatistics' => 'Rahoidenkeradusen statistik',
+	'fundraiserstats-date' => 'Dat',
+	'fundraiserstats-day' => 'Päiv $1 / $2',
+	'fundraiserstats-contributions' => 'Lahjoičendad',
+	'fundraiserstats-total' => 'Kaiked (USD)',
+	'fundraiserstats-avg' => 'Keskmäine (USD)',
+	'fundraiserstats-max' => 'Maksimaline (USD)',
+	'fundraiserstats-tab-totals' => 'Kaiked (USD)',
+	'fundraiserstats-tab-contributions' => 'Lahjoičendoiden lugu',
+	'fundraiserstats-tab-averages' => 'Keskmäine (USD)',
+	'fundraiserstats-tab-maximums' => 'Maksimumad (USD)',
+	'specialpages-group-contribution' => 'Lahjoičendad/Rahoidenkeradand',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

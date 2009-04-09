@@ -289,6 +289,7 @@ $messages['el'] = array(
 	'dt_xml_field' => 'Πεδίο',
 	'dt_xml_name' => 'Όνομα',
 	'dt_xml_title' => 'Τίτλος',
+	'dt_xml_id' => 'ID',
 );
 
 /** Esperanto (Esperanto)

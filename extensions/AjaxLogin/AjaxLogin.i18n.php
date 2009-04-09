@@ -247,9 +247,11 @@ U verliest mogelijk uw huidige bewerkingen als u deze pagina nu verlaat.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'ajaxlogin-desc' => 'Ein dynamisk boks som lét brukarar logga inn og hugsa passord',
 	'ajaxLogin1' => 'For å fullføra innlogginga lyt du skriva inn eit nytt passord.
 Dette vil ta deg vekk frå denne endringssida, og du kan missa den noverande endringa di.',
 	'ajaxLogin2' => 'Er du viss?
@@ -338,12 +340,15 @@ Tu puè perdere le cangiaminde tue de sta pàgene ce tu lasse sta pàgene mò.',
 
 /** Russian (Русский)
  * @author Exlex
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'ajaxlogin-desc' => 'Динамическая область, позволяющая участникам представляться системе и напоминать пароль',
 	'ajaxLogin1' => 'Чтобы закончить вход, необходимо ввести новый пароль.
 При этом Вы покинете страницу редактирования и это может привести к потере внесённых изменений.',
 	'ajaxLogin2' => 'Вы уверены?
 Внесённые изменения могут быть утрачены, если сейчас покинуть эту страницу.',
+	'ajaxlogin-create' => 'Создать учётную запись',
 );
 
 /** Slovak (Slovenčina)

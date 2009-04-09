@@ -291,11 +291,11 @@ $messages['be-tarask'] = array(
 Калі не пазначаная прычына, будзе выкарыстоўвацца агульнае апісаньне па змоўчваньні.''",
 	'regexblock-page-title-1' => 'Блякаваньне адрасоў з выкарыстаньнем рэгулярнага выразу',
 	'regexblock-reason-ip' => 'Гэта ІР-адрас быў заблякаваны па прычыне вандалізму ці іншага парушэньня зробленага Вамі альбо кім-небудзь іншым, хто карыстаецца гэтым ІР-адрасам.
-Калі Вы лічыце, што гэта памылка, калі ласка, $1',
+Калі Вы лічыце, што гэта памылка, калі ласка, [[$1|паведаміце нам]]',
 	'regexblock-reason-name' => 'Гэты ўдзельнік ня можа рэдагаваць у выніку вандалізму ці іншага парушэньня.
-Калі Вы лічыце, што  гэта памылка, калі ласка, $1',
+Калі Вы лічыце, што  гэта памылка, калі ласка, [[$1|паведаміце нам]]',
 	'regexblock-reason-regex' => 'Гэты ўдзельнік ня можа рэдагаваць у выніку вандалізму ці іншага парушэньня, якое зрабіў удзельнік з падобным іменем.
-Калі ласка, стварыце рахунак зь іншай назвай, ці $1 аб праблеме',
+Калі ласка, стварыце рахунак зь іншай назвай альбо [[$1|паведаміце нам пра праблему]]',
 	'regexblock-form-username' => 'ІР-адрас альбо імя ўдзельніка:',
 	'regexblock-form-reason' => 'Прычына:',
 	'regexblock-form-expiry' => 'Тэрмін:',
@@ -324,7 +324,7 @@ $messages['be-tarask'] = array(
 	'regexblock-view-block-infinite' => 'бестэрміновае блякаваньне',
 	'regexblock-view-block-temporary' => 'канчаецца',
 	'regexblock-view-block-expired' => 'СКОНЧЫЛАСЯ',
-	'regexblock-view-block-by' => 'заблякаваны',
+	'regexblock-view-block-by' => 'заблякаваны:',
 	'regexblock-view-block-unblock' => 'разблякаваць',
 	'regexblock-view-stats' => 'статыстыка',
 	'regexblock-view-empty' => 'Сьпіс заблякаваных рахункаў і IP-адрасоў пусты.',
@@ -508,10 +508,10 @@ Vermutlich gibt es keinen solchen Benutzer.',
  * @author Revolus
  */
 $messages['de-formal'] = array(
-	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu Editieren, da von dieser IP-Adresse – von Ihnen oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
-Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, $1',
-	'regexblock-reason-name' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem Verhalten, verboten zu Editieren.
-Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, $1',
+	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu, Seiten zu bearbeiten, da von dieser IP-Adresse – von Ihnen oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
+Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, [[$1|nehmen Sie bitte Kontakt mit uns auf]].',
+	'regexblock-reason-name' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem Verhalten, verboten, Seiten zu bearbeiten.
+Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, [[$1|nehmen Sie bitte Kontakt mit uns auf]].',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -532,11 +532,11 @@ To by měło se jano cyniś, aby zajźowało wandalizm a w makanju z zasadach.
 \'\'Toś ten bok buźo śi zmóžnjaś, samo njeeksistujucych wužywarjow blokěrowaś a buźo teke wužywarjow z pódobnym mjenim blokěrowaś, t.j. "Test" buźo se gromaźe "Test 2" atd. blokěrowaś. Móžoš teke dopołne IP-adrese blokěrowaś, to groni, až nichto, kótaryž se z nimi pśizjawja, njamóžo boki wobźěłaś. Pśispomnjeśe: źělne IP-adrese wobchadaju se ako wužywarske mjenja, aby rozsuźił wo blokěrowanju. Jolic pśicyna njejo pódana, buźo se powšykna pśicyna wužiwaś.\'\'',
 	'regexblock-page-title-1' => 'Adresu z pomocu regularnych wurazow blokěrowaś',
 	'regexblock-reason-ip' => 'Toś tej IP-adresy se zawoborujo wobźěłowanje dla wandalizma abo drugego mólenja wót tebje abo někogo, kótaryž ma samsku IP-adresu.
-Jolic wěriš, až to jo zmólenje, pšosym $1',
+Jolic wěriš, až to jo zmólenje, pšosym [[$1|staj se z nami do zwiska]].',
 	'regexblock-reason-name' => 'Toś tomu wužywarskemu mjenjeju se zawoborujo wobźěłowanje, dla wandalizma abo drugego mólenja.
-Jolic wěriš, až to jo zamólenje, pšosym $1',
+Jolic wěriš, až to jo zamólenje, pšosym [[$1|staj se z nami do zwiska]].',
 	'regexblock-reason-regex' => 'Toś tomu wužywarskemu mjenjeju se zawoborujo wobźěłowanje, dla wandalizma abo drugego mólenja wót wužywarja z pódobnym mjenim.
-Pšosym napóraj druge wužywarske mě abo $1 wó toś tom problemje.',
+Pšosym napóraj druge wužywarske mě abo [[$1|informěruj nas]] wó toś tom problemje.',
 	'regexblock-form-username' => 'IP-adresa abo wužywarske mě:',
 	'regexblock-form-reason' => 'Pśicyna:',
 	'regexblock-form-expiry' => 'Wótběgnjo:',
@@ -565,7 +565,7 @@ Nejskerjej taki wužywaŕ njejo.',
 	'regexblock-view-block-infinite' => 'wobstawne blokěrowanje',
 	'regexblock-view-block-temporary' => 'pśepadnjo',
 	'regexblock-view-block-expired' => 'PŚEPADNJONY',
-	'regexblock-view-block-by' => 'blokěrowany wót',
+	'regexblock-view-block-by' => 'blokěrowany wót:',
 	'regexblock-view-block-unblock' => 'pśipušćiś',
 	'regexblock-view-stats' => 'statistiske pódaśa',
 	'regexblock-view-empty' => 'Lisćina blokěrowanych mjenjow a adresow jo prozna.',
@@ -679,10 +679,11 @@ $messages['fr'] = array(
 	'regexblockstats' => 'Statistiques sur les blocages par expressions régulières',
 	'regexblock-help' => "Utilisez le formulaire ci-dessous pour bloquer l’accès en écriture d’une adresse IP ou d’un nom d’utilisateur. Ceci doit être fait uniquement pour éviter tout vandalisme et conformément aux règles prescrites sur le projet. ''Cette page vous autorise même à bloquer des utilisateurs non enregistrés et permet aussi de bloquer des utilisateur présentant des noms similaires. Par exemple, « Test » sera bloqué en même temps que « Test 2 » etc. Vous pouvez aussi bloquer des adresses IP entières, ce qui signifie que personne travaillant depuis celles-ci ne pourra éditer des pages. Note : des adresses IP partielles seront considérées comme des noms d’utilisateur lors du blocage. Si aucun motif n’est indiqué en commentaire, un motif par défaut sera indiqué.''",
 	'regexblock-page-title-1' => 'Blocage d’une adresse utilisant une expression régulière',
-	'regexblock-reason-ip' => 'Cette adresse IP est écartée de toute édition pour cause de vandalisme ou autres faits analogues par vous ou quelqu’un d’autre partageant votre adresse IP. Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, $1',
+	'regexblock-reason-ip' => 'Cette adresse IP est écartée de toute édition pour cause de vandalisme ou autres faits analogues par vous ou quelqu’un d’autre partageant votre adresse IP.
+Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, [[$1|contactez-nous]]',
 	'regexblock-reason-name' => 'Cet utilisateur est écarté de toute édition pour cause de vandalisme ou autres faits analogues.
-Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, $1.',
-	'regexblock-reason-regex' => 'Cet utilisateur est écarté de toute édition pour cause de vandalisme ou autres faits analogues par un utilisateur ayant un nom similaire. Veuillez créer un autre compte ou $1 pour signaler le problème.',
+Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, [[$1|contactez nous]].',
+	'regexblock-reason-regex' => 'Cet utilisateur est écarté de toute édition pour cause de vandalisme ou autres faits analogues par un utilisateur ayant un nom similaire. Veuillez créer un autre compte ou [[$1|contacter nous]] pour signaler le problème.',
 	'regexblock-form-username' => 'Adresse IP ou Utilisateur :',
 	'regexblock-form-reason' => 'Motif :',
 	'regexblock-form-expiry' => 'Expiration :&#160;',
@@ -710,7 +711,7 @@ Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, $1.',
 	'regexblock-view-block-infinite' => 'blocage permanent',
 	'regexblock-view-block-temporary' => 'expire le',
 	'regexblock-view-block-expired' => 'EXPIRÉ le',
-	'regexblock-view-block-by' => 'bloqué par',
+	'regexblock-view-block-by' => 'bloqué par :',
 	'regexblock-view-block-unblock' => 'débloquer',
 	'regexblock-view-stats' => 'statistiques',
 	'regexblock-view-empty' => 'La liste des utilisateurs et des adresses IP bloqués est vide.',
@@ -746,9 +747,11 @@ $messages['gl'] = array(
 Isto debería facerse só para previr vandalismo, e segundo a política e normas de bloqueo.
 ''Esta páxina permitiralle bloquear incluso usuarios que non existen, e usuarios con nomes semellantes ao dado, é dicir, «Test» será bloqueado xunto con «Test 2», etc. Tamén pode bloquear enderezos IP completos, no sentido de que ninguén rexistrado nos mesmos será capaz de editar páxinas. Nota: os enderezos IP parciais serán tratados polos nomes de usuarios na determinación do bloqueo. Se non se especifica a razón, será usado por defecto un motivo xenérico.''",
 	'regexblock-page-title-1' => 'Bloquear un enderezo usando expresións regulares',
-	'regexblock-reason-ip' => 'A este enderezo IP estalle prohibido editar debido a vandalismo ou outras actividades negativas realizadas por vostede ou por alguén que comparte o seu enderezo IP. Se pensa que se trata dun erro, $1',
-	'regexblock-reason-name' => 'A este nome de usuario estalle prohibido editar debido a vandalismo ou outras actividades negativas. Se pensa que se trata dun erro, $1',
-	'regexblock-reason-regex' => 'A este nome de usuario prohíbeselle editar debido a vandalismo ou outras actividades negativas por parte dun usuario cun nome semellante. Cree un nome de usuario diferente ou $1 sobre o problema',
+	'regexblock-reason-ip' => 'A este enderezo IP estalle prohibido editar debido a vandalismo ou outras actividades negativas realizadas por vostede ou por alguén que comparte o seu enderezo IP. Se pensa que se trata dun erro, [[$1|contacte con nós]]',
+	'regexblock-reason-name' => 'A este nome de usuario estalle prohibido editar debido a vandalismo ou outras actividades negativas.
+Se pensa que se trata dun erro, [[$1|contacte con nós]]',
+	'regexblock-reason-regex' => 'A este nome de usuario estalle prohibido editar debido a vandalismo ou outras actividades negativas por parte dun usuario cun nome semellante.
+Cree un nome de usuario diferente ou [[$1|contacte con nós]] para falar sobre o problema',
 	'regexblock-form-username' => 'Enderezo IP ou nome de usuario:',
 	'regexblock-form-reason' => 'Razón:',
 	'regexblock-form-expiry' => 'Remate:',
@@ -776,7 +779,7 @@ Isto debería facerse só para previr vandalismo, e segundo a política e normas
 	'regexblock-view-block-infinite' => 'bloqueo permanente',
 	'regexblock-view-block-temporary' => 'expira o',
 	'regexblock-view-block-expired' => 'EXPIRADO o',
-	'regexblock-view-block-by' => 'bloqueado por',
+	'regexblock-view-block-by' => 'bloqueado por:',
 	'regexblock-view-block-unblock' => 'desbloquear',
 	'regexblock-view-stats' => 'estatísticas',
 	'regexblock-view-empty' => 'A lista dos nomes e enderezos bloqueados está baleira.',
@@ -784,12 +787,14 @@ Isto debería facerse só para previr vandalismo, e segundo a política e normas
 	'right-regexblock' => 'Bloquearlles aos usuarios a edición en todos os wikis na granxa',
 );
 
-/** Gothic
+/** Gothic (Gothic)
+ * @author Crazymadlover
  * @author Jocke Pirat
  */
 $messages['got'] = array(
 	'regexblock-form-reason' => 'Faírina',
 );
+
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
  */
@@ -820,11 +825,11 @@ Obacht: Teil vu IP-Adrässe wäre bim Sperre as Benutzernamen ufgfasst.
 Wänn kei Sperrgrund aagee wird, wird e Standard-Grund bruucht.''",
 	'regexblock-page-title-1' => 'Adrässe mit regulären Uusdrick sperre',
 	'regexblock-reason-ip' => 'Däre IP-Adräss isch s verbote Bearbeitige z mache, wel vu däre IP-Adräss – vu Dir oder eberem mit dr nämligen IP_Adräss -  Vandalismus oder schädlig Verhalten uusgangen isch.
-Wänn Du dänksch, ass es sich dodebyy um e Fähler handlet, no $1',
+Wänn Du dänksch, ass es sich dodebyy um e Fähler handlet, no [[$1|nimm Kontakt zuen is uf]].',
 	'regexblock-reason-name' => 'Däm Benutzername isch s verbote, Bearbeitige z mache, wäge Vandalismus oder anderem schändlige Verhalte.
-Wänn Du dänksch, ass es sich dodebyy um e Fähler handlet, no $1',
+Wänn Du dänksch, ass es sich dodebyy um e Fähler handlet, no [[$1|nimm Kontakt zuen is uf]]',
 	'regexblock-reason-regex' => 'Däm Benutzername isch s verbote, Bearbeitige z mache, wäge Vandalismus oder anderem schändlige Verhalte.
-Bitte mälde Di mit eme andere Benutzernamen aa oder $1 iber s Probläm.',
+Bitte mälde Di mit eme andere Benutzernamen aa oder [[$1|nimm Kontakt zuen is uf]] zum Probläm.',
 	'regexblock-form-username' => 'IP-Adräss oder Benutzername:',
 	'regexblock-form-reason' => 'Grund:',
 	'regexblock-form-expiry' => 'Ablaufdatum:',
@@ -853,7 +858,7 @@ Wahrschyns git s kei sonige Benutzer.',
 	'regexblock-view-block-infinite' => 'permanenti Sperrig',
 	'regexblock-view-block-temporary' => 'lauft ab am',
 	'regexblock-view-block-expired' => 'ABGLOFFEN am',
-	'regexblock-view-block-by' => 'gsperrt vu',
+	'regexblock-view-block-by' => 'gsperrt vu:',
 	'regexblock-view-block-unblock' => 'entsperre',
 	'regexblock-view-stats' => 'Statischtike',
 	'regexblock-view-empty' => 'D Lischt vu dr gsperrte Nämen un Adrässen isch läär.',
@@ -1059,9 +1064,9 @@ $messages['hsb'] = array(
 	'regexblockstats' => 'Regex Block Statistika',
 	'regexblock-help' => 'Wužij formular deleka, zo by pisanski přistup ze specifiskeje adresy abo wužiwarskeho mjena blokował. To měło so jenož činić, zo by wandalizmej zadźěwało a wotpowědujo prawidłam. \'\'Tuta strona budźe će dowoleć, samo njeeksistowacych wužiwarjow blokować a budźe tež wužiwarjow z mjenom, kotrež je datemu podobne, blokować, t.r. "test" budźe so runje tak blokować kaž "test 2" atd. Móžeš dospołne OP-adresy blokować, zo by něchtó, kiž so z nich přizjewja, strony wobdźěłać móhł. Kedźbu: dźělne IP-adresy so přez wužiwarske mjeno wužiwaja, zo by blokowanje postajiło. Jeli přičina njeje podata, budźe so powšitkowna přičina wužiwać.\'\'',
 	'regexblock-page-title-1' => 'Adresu z pomocu regularnych wurazow blokować',
-	'regexblock-reason-ip' => 'Tuta IP-adresa so dla wandalizma abo mylenje přez tebje abo někoho druheho, kiž IP-adresu z tobu dźěli, za wobdźěłowanje zawěra. Jeli mysliš, zo to je zmylk, prošu $1',
-	'regexblock-reason-name' => 'Tute wužiwarske mjeno so dla wandalizma abo druheho mylenja za wobdźěłowanje zawěra. Jerli mysliš, zo to je zmylk, prošu $1',
-	'regexblock-reason-regex' => 'Tute wužiwarske mjeno so dla wandalizma abo druheho mylenja přez wužiwarja z podobnym mjenom zawěra. Prošu wutwor druhe wužiwarske mjeno abo $1 wo tutym problemje',
+	'regexblock-reason-ip' => 'Tuta IP-adresa so dla wandalizma abo mylenje přez tebje abo někoho druheho, kiž IP-adresu z tobu dźěli, za wobdźěłowanje zawěra. Jeli mysliš, zo to je zmylk, prošu [[$1|skontaktuj nas]].',
+	'regexblock-reason-name' => 'Tute wužiwarske mjeno so dla wandalizma abo druheho mylenja za wobdźěłowanje zawěra. Jeli mysliš, zo to je zmylk, prošu [[$1|skontaktuj nas]].',
+	'regexblock-reason-regex' => 'Tute wužiwarske mjeno so dla wandalizma abo druheho mylenja přez wužiwarja z podobnym mjenom zawěra. Prošu wutwor druhe wužiwarske mjeno abo [[$1|informuj nas]] wo tutym problemje.',
 	'regexblock-form-username' => 'IP-adresa abo wužiwarske mjeno:',
 	'regexblock-form-reason' => 'Přičina:',
 	'regexblock-form-expiry' => 'Spadnjenje:',
@@ -1089,7 +1094,7 @@ $messages['hsb'] = array(
 	'regexblock-view-block-infinite' => 'trajne blokowanje',
 	'regexblock-view-block-temporary' => 'spadnje',
 	'regexblock-view-block-expired' => 'SPADNJENY',
-	'regexblock-view-block-by' => 'zablokowany wot',
+	'regexblock-view-block-by' => 'zablokowany wot:',
 	'regexblock-view-block-unblock' => 'wotblokować',
 	'regexblock-view-stats' => 'statistiske podaća',
 	'regexblock-view-empty' => 'Lisćina zablokowanych mjenow a adresow je prózdna.',
@@ -1117,11 +1122,11 @@ Tu pote tamben blocar adresses IP complete, isto vole dicer que necuno connecten
 Nota: le adresses IP partial essera considerate como nomines de usator in le determination del blocada.
 Si nulle motivo es specificate, un motivo generic predefenite essera usate.\'\'',
 	'regexblock-page-title-1' => 'Blocar adresses per medio de expressiones regular',
-	'regexblock-reason-ip' => 'Iste adresse IP es impedite de facer modificationes pro causa de vandalismo o de altere disruption per te o per alcuno altere qui usa un adresse IP in commun con te. Si tu crede que isto sia un error, per favor $1',
+	'regexblock-reason-ip' => 'Iste adresse IP es impedite de facer modificationes pro causa de vandalismo o de altere disruption per te o per alcuno altere qui usa un adresse IP in commun con te. Si tu crede que isto sia un error, per favor [[$1|contacta nos]].',
 	'regexblock-reason-name' => 'Iste nomine de usator es impedite de facer modificationes pro causa de vandalismo o de altere disruption.
-Si tu crede que isto sia un error, per favor $1',
+Si tu crede que isto sia un error, per favor [[$1|contacta nos]].',
 	'regexblock-reason-regex' => 'Iste nomine de usator es impedite de facer modificationes pro causa de vandalismo o de altere disruption per un usator con un nomine similar.
-Per favor crea un nomine de usator alternative o $1 a proposito de iste problema',
+Per favor crea un nomine de usator alternative o [[$1|contacta nos]] a proposito de iste problema.',
 	'regexblock-form-username' => 'Adresse IP o nomine de usator:',
 	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-expiry' => 'Expiration:',
@@ -1150,7 +1155,7 @@ Probabilemente non existe tal usator.',
 	'regexblock-view-block-infinite' => 'blocada permanente',
 	'regexblock-view-block-temporary' => 'expira le',
 	'regexblock-view-block-expired' => 'EXPIRATE le',
-	'regexblock-view-block-by' => 'blocate per',
+	'regexblock-view-block-by' => 'blocate per:',
 	'regexblock-view-block-unblock' => 'disblocar',
 	'regexblock-view-stats' => 'statisticas',
 	'regexblock-view-empty' => 'Le lista de nomines e adresses blocate es vacue.',
@@ -1594,9 +1599,12 @@ $messages['nl'] = array(
 	'regexblockstats' => 'Statistieken van regex-blokkeren',
 	'regexblock-help' => "Gebruik het onderstaande formulier om schrijftoegang voor een IP-adres of gebruiker te ontzeggen. Dit hoort eigenlijk alleen te gebeuren om vandalisme te voorkomen, en dient in overeenstemming te zijn met het beleid. ''U kunt zelfs gebruikers die nog niet bestaan blokkeren. Daarnaast worden ook gebruikers met gelijkende namen geblokkeerd. \"Test\" wordt samen met \"Test 2\", enzovoort geblokkeerd. U kunt ook een IP-adres blokkeren, wat betekent dat niemand van dat IP-adres pagina's kan bewerken. Opmerking: IP-adressen worden behandeld als gebruikersnamen bij het bepalen van blokkades. Als er geen reden is opgegeven, dan wordt er een standaard reden gebruikt.''",
 	'regexblock-page-title-1' => 'IP-adres blokkeren met behulp van reguliere uitdrukkingen',
-	'regexblock-reason-ip' => 'Dit IP-adres is door u of door iemand met hetzelfde IP-adres geblokkeerd van bewerken door vandalisme of een andere reden. Als u gelooft dat dit een fout is, gelieve $1',
-	'regexblock-reason-name' => 'Deze gebruikersnaam is geblokkeerd van bewerken door vandalisme of een andere reden. Als u gelooft dat dit een fout is, gelieve $1',
-	'regexblock-reason-regex' => 'Deze gebruikersnaam is door een gebruiker met dezelfde naam geblokkeerd van bewerken door vandalisme of een andere reden. Gelieve een andere gebruikersnaam te kiezen of $1 over het probleem',
+	'regexblock-reason-ip' => 'Gebruikers vanaf dit IP-adres mogen niet bewerken wegens vandalisme of verstoring door u of door iemand met hetzelfde IP-adres.
+Als u denk dat dit ten onrechte is, [[$1|neem dan contact met ons op]]',
+	'regexblock-reason-name' => 'Deze gebruiker mag niet bewerken wegens vandalisme of verstoring.
+Als u denkt dat dit ten onrechte is, [[$1|neem dan contact met ons op]]',
+	'regexblock-reason-regex' => 'Deze gebruiker mag niet bewerken wegens vandalisme of verstoring door een gebruiker met een gelijkluidende naam.
+Kies een andere gebruikersnaam of [[$1|neem contact met ons op]] over het probleem',
 	'regexblock-form-username' => 'IP-adres of gebruikersnaam:',
 	'regexblock-form-reason' => 'Reden:',
 	'regexblock-form-expiry' => 'Vervalt:',
@@ -1624,7 +1632,7 @@ $messages['nl'] = array(
 	'regexblock-view-block-infinite' => 'permanente blokkade',
 	'regexblock-view-block-temporary' => 'vervalt op',
 	'regexblock-view-block-expired' => 'vervalt op',
-	'regexblock-view-block-by' => 'geblokkeerd door',
+	'regexblock-view-block-by' => 'geblokkeerd door:',
 	'regexblock-view-block-unblock' => 'deblokkeren',
 	'regexblock-view-stats' => 'statistieken',
 	'regexblock-view-empty' => 'De lijst van geblokkeerde namen en IP-adressen is leeg.',
@@ -1652,11 +1660,11 @@ Dette bør berre bli gjort for å hindra hærverk, og i følgje med retningsline
 Du kan òg blokkera fulle IP-adresser, noko som tyder at ingen som loggar på gjennom desse kan endra sider. 
 Merk: delvise IP-adresser vil bli handsama som brukarnamn under blokkering. Om ingen årsak er oppgjeven vil ein standardårsak bli nytta.''",
 	'regexblock-page-title-1' => 'Blokker adressa ved hjelp av regulære uttrykk',
-	'regexblock-reason-ip' => 'IP-adressa di er hindra frå å endra sider grunna hærverk eller annan forstyrring av deg eller andre som nyttar den same IP-adressa. Om du meiner at dette er ein feil, $1',
-	'regexblock-reason-name' => 'Brukarnamnet ditt er hindra frå å endra sider grunna hærverk eller annan forstyrring. 
-Om du meiner at dette er ein feil, $1',
-	'regexblock-reason-regex' => 'Dette brukarnamnet er hindra frå å endra sider grunna hærverk eller annan forstyrring av ein brukar med liknande namn. 
-Opprett eit anna brukarnamn eller $1 om problemet.',
+	'regexblock-reason-ip' => 'Denne IP-adressa er hindra frå å endra sider grunna hærverk eller anna forstyrring av deg eller andre som nyttar den same IP-adressa. [[$1|Kontakt oss]] om du meiner at dette er ein feil.',
+	'regexblock-reason-name' => 'Brukarnamnet ditt er hindra frå å endra sider grunna hærverk eller anna forstyrring.
+[[$1|Kontakt oss]] om du meiner at dette er ein feil.',
+	'regexblock-reason-regex' => 'Dette brukarnamnet er hindra frå å endra sider grunna hærverk eller anna forstyrring av ein brukar med eit liknande namn. 
+Opprett eit anna brukarnamn eller [[$1|kontakt oss]] om problemet.',
 	'regexblock-form-username' => 'IP-adressa eller brukarnamn:',
 	'regexblock-form-reason' => 'Årsak:',
 	'regexblock-form-expiry' => 'Opphøyrstid:',
@@ -1685,7 +1693,7 @@ Truleg finst det ingen brukar med dette namnet.',
 	'regexblock-view-block-infinite' => 'permanent blokkering',
 	'regexblock-view-block-temporary' => 'endar',
 	'regexblock-view-block-expired' => 'ENDA',
-	'regexblock-view-block-by' => 'blokkert av',
+	'regexblock-view-block-by' => 'blokkert av:',
 	'regexblock-view-block-unblock' => 'avblokker',
 	'regexblock-view-stats' => 'statistikk',
 	'regexblock-view-empty' => 'Lista over blokkerte namn og adresser er tom.',
@@ -1990,10 +1998,10 @@ Nota: endereços IP parciais serão tratados como nomes de utilizadores na deter
 Se nenhum motivo for especificado, um motivo genérico padrão será usado.\'\'',
 	'regexblock-page-title-1' => 'Bloquear endereço utilizando expressões regulares',
 	'regexblock-reason-ip' => 'Este endereço IP está impedido de editar devido a vandalismo ou outra perturbação por si ou outra pessoa que compartilha o seu endereço IP.
-Se você acredita que se trata de um erro, por favor, $1',
-	'regexblock-reason-name' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outro tipo de disrupção. Se julgar tratar-se de um erro, por favor $1',
+Se você acredita que se trata de um erro, por favor, [[$1|contate-nos]]',
+	'regexblock-reason-name' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outro tipo de disrupção. Se julgar tratar-se de um erro, por favor [[$1|contate-nos]]',
 	'regexblock-reason-regex' => 'Este nome de utilizador está impedido de editar devido a vandalismo ou outra perturbação por um utilizador com um nome semelhante.
-Por favor, crie um nome de utilizador alternativo ou $1 sobre o problema',
+Por favor, crie um nome de utilizador alternativo ou [[$1|contate-nos]] sobre o problema',
 	'regexblock-form-username' => 'Endereço IP ou nome de utilizador:',
 	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-expiry' => 'Validade:',
@@ -2021,7 +2029,7 @@ Por favor, crie um nome de utilizador alternativo ou $1 sobre o problema',
 	'regexblock-view-block-infinite' => 'bloqueio permanente',
 	'regexblock-view-block-temporary' => 'expira em',
 	'regexblock-view-block-expired' => 'EXPIRADO em',
-	'regexblock-view-block-by' => 'bloqueado por',
+	'regexblock-view-block-by' => 'bloqueado por:',
 	'regexblock-view-block-unblock' => 'desbloquear',
 	'regexblock-view-stats' => 'estatísticas',
 	'regexblock-view-empty' => 'Esta lista de nomes e endereços bloqueados está vazia.',
@@ -2139,9 +2147,9 @@ $messages['sk'] = array(
 	'regexblockstats' => 'Štatistika regex blokovaní',
 	'regexblock-help' => "Použite tento formulár na zablokovanie úprav z určitej IP adresy alebo používateľského mena. Toto by sa malo využívať iba na predchádzanie vandalizmu a v súlade so zásadami blokovania. ''Táto stránka vým umožní zablokovať aj momentálne neexistujúcich používateľov a používateľov s podobnými menami ako bolo zadané, t.j. okrem « Test » bude zablokovaný aj « Test 2 » atď. Môžete tiež zablokovať celé IP adresy, čo znamená, že nikto, kto z nich pristupuje nebude môcť upravovať stránky. Pozn.: čiastočné IP adresy budú považované za používateľské mená. Ak nebude uvedený dôvod, použije sa štandardný všeobecný dôvod.''",
 	'regexblock-page-title-1' => 'Zablokovať adresu na základe regulárneho výrazu',
-	'regexblock-reason-ip' => 'Tejto IP adrese bolo zakázané upravovanie kvôli vandalizmu alebo inej rušivej činnosti, ktorú ste vykonával vy alebo niekto, s kým máte spoločnú vašu IP adresu. Ak veríte, že toto je omyl, prosím $1',
-	'regexblock-reason-name' => 'Tomuto používateľskému menu bolo zakázané upravovanie kvôli vandalizmu alebo inej rušivej činnosti. Ak veríte, že toto je omyl, prosím $1',
-	'regexblock-reason-regex' => 'Tomuto používateľskému menu bolo zakázané upravovanie kvôli vandalizmu alebo inej rušivej činnosti používateľa s podobným menom. Prosím, vytvorte si alternatívny používateľský účet alebo o probléme $1',
+	'regexblock-reason-ip' => 'Tejto IP adrese bolo zakázané upravovanie kvôli vandalizmu alebo inej rušivej činnosti, ktorú ste vykonávali vy alebo niekto s kým máte spoločnú vašu IP adresu. Ak veríte, že toto je omyl, prosím [[$1|kontaktujte nás]].',
+	'regexblock-reason-name' => 'Tomuto používateľskému menu bolo zakázané upravovanie kvôli vandalizmu alebo inej rušivej činnosti. Ak veríte, že toto je omyl, prosím [[$1|kontaktujte nás]].',
+	'regexblock-reason-regex' => 'Tomuto používateľskému menu bolo zakázané upravovanie kvôli vandalizmu alebo inej rušivej činnosti používateľa s podobným menom. Prosím, vytvorte si alternatívny používateľský účet alebo nás ohľadne problému [[$1|kontaktujte]].',
 	'regexblock-form-username' => 'IP adresa alebo meno používateľa:',
 	'regexblock-form-reason' => 'Dôvod:',
 	'regexblock-form-expiry' => 'Vyprší:',
@@ -2169,7 +2177,7 @@ $messages['sk'] = array(
 	'regexblock-view-block-infinite' => 'trvalé blokovanie',
 	'regexblock-view-block-temporary' => 'vyprší',
 	'regexblock-view-block-expired' => 'VYPRŠALO',
-	'regexblock-view-block-by' => 'zablokoval ho',
+	'regexblock-view-block-by' => 'zablokoval ho:',
 	'regexblock-view-block-unblock' => 'odblokovať',
 	'regexblock-view-stats' => 'štatistiky',
 	'regexblock-view-empty' => 'Zoznam blokovaných mien a IP adries je prázdny.',
@@ -2373,12 +2381,12 @@ Maaari mo ring hadlangan ang buong adres ng IP, na may ibig sabihing walang sinu
 Paunawa: ang hindi buong mga adres ng IP ay tatratuhin ayon sa mga pangalan ng tagagamit para sa pagtukoy ng paghahadlang.
 Kapag walang dahilang tinukoy, isang likas na nakatakdang panglahatan dahil ang gagamitin.\'\'',
 	'regexblock-page-title-1' => 'Hadlangan ang adres sa pamamagitan ng paggamit ng pangkaraniwang mga pagsasaad',
-	'regexblock-reason-ip' => 'Ang adres ng IP na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa bandalismo (pambababoy) o ibang pangaabala mo o ng isang nakikisalo sa iyong adres ng IP.
-Kung naniniwala kang isa itong kamalian, paki $1',
-	'regexblock-reason-name' => 'Ang pangalan ng tagagamit na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa bandalismo (pambababoy) o ibang pangaabala.
-Kung naniniwala kang isa itong kamalian, paki $1',
-	'regexblock-reason-regex' => 'Ang pangalan ng tagagamit na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa bandalismo (pambababoy) o ibang pangaabala ng isang tagagamit na may kahawig na pangalan.
-Pakilikha ang isang kapalit na pangalan ng tagagamit o $1 tungkol sa suliranin',
+	'regexblock-reason-ip' => 'Ang adres ng IP na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa pambababoy o iba pang pang-aabala mo o ng isang nakikisalo sa iyong adres ng IP.
+Kung naniniwala kang isa itong kamalian, paki [[$1|makipag-ugnayan sa amin]]',
+	'regexblock-reason-name' => 'Ang pangalan ng tagagamit na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa pambababoy o iba pang pang-aabala.
+Kung naniniwala kang isa itong kamalian, paki [[$1|makipag-ugnayan sa amin]]',
+	'regexblock-reason-regex' => 'Ang pangalan ng tagagamit na ito ay pinagbawalan sa paggawa ng pagbabago dahil sa pambababoy o iba pang pang-aabala ng isang tagagamit na may kahawig na pangalan.
+Pakilikha ang isang kapalit na pangalan ng tagagamit o [[$1|makipag-ugnayan sa amin]] hinggil sa suliranin',
 	'regexblock-form-username' => 'Adres ng IP o pangalan ng tagagamit:',
 	'regexblock-form-reason' => 'Dahilan:',
 	'regexblock-form-expiry' => 'Katapusan:',
@@ -2407,7 +2415,7 @@ Marahal ay walang ganyang tagagamit.',
 	'regexblock-view-block-infinite' => 'pamalagiang paghadlang',
 	'regexblock-view-block-temporary' => 'magtatapos sa',
 	'regexblock-view-block-expired' => 'NAGTAPOS noong',
-	'regexblock-view-block-by' => 'hinadlangan ni',
+	'regexblock-view-block-by' => 'hinadlangan ni:',
 	'regexblock-view-block-unblock' => 'tanggalin sa pagkakahadlang',
 	'regexblock-view-stats' => 'mga estadistika',
 	'regexblock-view-empty' => 'Walang laman ang talaan ng hinadlangang mga pangalan at mga adres.',
@@ -2422,6 +2430,13 @@ Marahal ay walang ganyang tagagamit.',
 $messages['tr'] = array(
 	'regexblock-form-reason' => 'Neden:',
 	'regexblock-view-all' => 'Hepsi',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'regexblock-view-go' => 'كۆچۈش',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

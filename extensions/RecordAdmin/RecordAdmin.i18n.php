@@ -1297,6 +1297,7 @@ $messages['tl'] = array(
 	'recordadmin-viewlink' => 'tingnan',
 	'recordadmin-editlink' => 'baguhin',
 	'recordadmin-created' => 'Nilikha na',
+	'recordadmin-modified' => 'Binago',
 	'recordadmin-actions' => 'Mga galaw',
 	'recordadmin-needscontent' => 'Idagdag ang nilalaman...',
 	'right-recordadmin' => 'Hanapin at baguhin ang mga pahina ng tala/rekord',
@@ -1310,6 +1311,21 @@ $messages['tr'] = array(
 	'recordadmin-buttoncreate' => 'Oluştur',
 	'recordadmin-buttonreset' => 'Sıfırla',
 	'recordadmin-buttonsave' => 'Kaydet',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'recordadmin-buttonsearch' => 'Ectä',
+	'recordadmin-buttoncreate' => 'Säta',
+	'recordadmin-buttonreset' => 'Udištada',
+	'recordadmin-viewlink' => 'kc.',
+	'recordadmin-editlink' => 'redaktiruida',
+	'recordadmin-created' => 'Sätud',
+	'recordadmin-modified' => 'Toižetadud',
+	'recordadmin-actions' => 'Tegendad',
+	'recordadmin-needscontent' => 'Ližata südäimišt...',
 );
 
 /** Vietnamese (Tiếng Việt)

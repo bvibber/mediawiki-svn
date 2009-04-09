@@ -1727,7 +1727,7 @@ Ginagawa ito nito sa pamamagitan ng pagtawag sa mga kaugnay na mga tanghalang pa
 	'expand_templates_preview' => 'Paunang tingin',
 );
 
-/** Tonga (faka-Tonga) */
+/** Tonga (lea faka-Tonga) */
 $messages['to'] = array(
 	'expandtemplates' => 'Fakalahiange ʻa e ngaahi sīpinga',
 );
@@ -1762,6 +1762,13 @@ Bunu, ilgili derleyici aşamasını MedyaVikinin kendisinden çağırarak yapar.
 $messages['ts'] = array(
 	'expand_templates_ok' => 'Hiswona',
 	'expand_templates_preview' => 'Ringanisa',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'expand_templates_ok' => 'ماقۇل',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

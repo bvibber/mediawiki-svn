@@ -251,6 +251,21 @@ $messages['ia'] = array(
 	'communityvoice-ratings-error-no-title' => 'Le attributo "title" manca in le etiquetta "rating".',
 );
 
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'communityvoice' => 'Voce della comunità',
+	'communityvoice-desc' => 'Strumenti di partecipazione della comunità',
+	'communityvoice-ratings' => 'Valutazioni',
+	'communityvoice-ratings-scale-status-sending' => 'Invio...',
+	'communityvoice-ratings-scale-status-error' => "Errore durante l'invio!",
+	'communityvoice-ratings-scale-status-thanks' => 'Grazie per aver votato!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|voto|voti}} espressi)',
+	'communityvoice-ratings-error-no-category' => "Attributo di categoria mancante nell'etichetta di valutazione.",
+	'communityvoice-ratings-error-no-title' => "Attributo del titolo mancante nell'etichetta di valutazione.",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

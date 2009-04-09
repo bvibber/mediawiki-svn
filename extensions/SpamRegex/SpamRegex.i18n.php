@@ -1388,6 +1388,13 @@ $messages['tr'] = array(
 	'spamregex-summary-log' => '(Özet)',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'spamregex-text' => '(Tekst)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

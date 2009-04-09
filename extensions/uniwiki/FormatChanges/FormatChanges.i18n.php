@@ -30,13 +30,6 @@ $messages['qqq'] = array(
 * $3 is the time at which the page was changed',
 );
 
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
-	'formatchanges-anonymous' => 'Anonim',
-);
-
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -448,6 +441,13 @@ $messages['uk'] = array(
 	'formatchanges-desc' => 'Перетворює [[Special:RecentChanges|нові редагування]]',
 	'formatchanges-anonymous' => 'Анонім',
 	'formatchanges-createdby' => '$1 — створено $2 ($3)',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'formatchanges-anonymous' => 'Anonim',
 );
 
 /** Vietnamese (Tiếng Việt)

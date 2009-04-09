@@ -401,10 +401,12 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
 	'security' => 'Tryggingslogg',
+	'security-desc' => 'Utvidar MediaWiki sin funksjon for sidevern til å gje høve til å sperra mot innsyn i sideinnhald',
 	'security-logpage' => 'Tryggingslogg',
 	'security-logpagetext' => 'Dette er ein logg over handlingar som er blokkerte av [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity-utvidinga].',
 	'badaccess-read' => 'Åtvaring: «$1» er synt til her, men du har ikkje turvande løyve til å få tilgjenge.',
@@ -497,6 +499,27 @@ $messages['pt-br'] = array(
 	'security-type-namespace' => 'domínio',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'security' => 'Журнал безопасности',
+	'security-desc' => 'Расширяет защиту страниц MediaWiki, позволяя ограничивать просмотр содержания страницы',
+	'security-logpage' => 'Журнал безопасности',
+	'security-logpagetext' => 'Это журнал заблокированных действий со стороны [http://www.mediawiki.org/wiki/Extension:SimpleSecurity расширения SimpleSecurity].',
+	'badaccess-read' => 'Предупреждение. «$1» ссылается сюда, но у вас нет достаточных полномочий для доступа к ней.',
+	'security-info' => 'Для этой страницы существуют $1',
+	'security-info-toggle' => 'ограничения, связанные с безопасностью',
+	'security-inforestrict' => '$1 запрещён для $2',
+	'security-desc-LS' => "''(применено, так как эта страница находится в '''$1 $2''')''",
+	'security-desc-PR' => "''(установлено через '''вкладку защиты''')''",
+	'security-infosysops' => "Ограничения не действуют, так как вы являетесь членом группы '''sysop'''",
+	'security-manygroups' => 'групп $1 и $2',
+	'security-unchain' => 'Изменить действия в индивидуальном порядке',
+	'security-type-category' => 'категории',
+	'security-type-namespace' => 'пространстве имён',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -532,7 +555,6 @@ $messages['tl'] = array(
 	'security-inforestrict' => 'Nakahangga ang $1 sa $2',
 	'security-desc-LS' => "''(naaangkop dahil nasa loob ng '''$2 $1''' ang pahinang ito)''",
 	'security-desc-PR' => "''(itinakda mula sa '''panglaylay na pangpananggalang''')''",
-	'security-desc-CR' => "''('''umiiral na ngayon''' ang paghahangga)''",
 	'security-infosysops' => 'Walang umiiral na mga paghahanga dahil isa kang kasapi ng pangkat na tagapagpaandar ng sistema',
 	'security-manygroups' => 'mga pangkat na $1 at $2',
 );

@@ -255,9 +255,11 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
+	'tidy-desc' => 'Dodaje do normalnych stron zakładkę „Uporządkuj” lub „Anuluj uporządkowanie” (zależnie od wartości $wgUseTidy) pozwalającą nadpisać globalną HTML wartość uporządkowania dla pojedynczego widoku',
 	'tidy' => 'Uporządkuj',
 	'untidy' => 'Anuluj uporządkowanie',
 );

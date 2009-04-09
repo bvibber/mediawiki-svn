@@ -141,6 +141,13 @@ $messages['nl'] = array(
 	'pipeescape-desc' => 'Parserfunctie <code>#!</code> om een pipe-karakter gewoon een pipe-karakter te laten zijn',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'pipeescape-desc' => 'Tolkefunksjon <code>#!</code> som lèt «|»-teiknet vera berre eit «|»-teikn.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -174,6 +181,13 @@ $messages['roa-tara'] = array(
  */
 $messages['sk'] = array(
 	'pipeescape-desc' => 'Funkciu syntaktického analyzátora <code>#!</code> použijete vtedy, keď chcete, aby bol znak rúry iba znakom rúry',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'pipeescape-desc' => 'Tungkulin ng banghay na <code>#!</code> para sa kung kailan mo naising maging isang panitik na tubo lamang ang isang panitik na tubo',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -962,8 +962,8 @@ $wdMessages['avk'] = array(
 	'ow_SynonymsAndTranslations' => 'Se milsugdalaca is kalavaks',
 	'ow_Source' => 'Klita',
 	'ow_SourceIdentifier' => 'Klitavrutasiki',
-	'ow_TextAttribute' => 'Pilkaca',
 	'ow_Text' => 'Krent',
+	'ow_TextAttribute' => 'Pilkaca',
 	'ow_TextAttributeValues' => 'Opelaf krent yo',
 	'ow_TranslatedTextAttribute' => 'Pilkaca',
 	'ow_TranslatedText' => 'Kalavayan krent',
@@ -991,8 +991,8 @@ $wdMessages['avk'] = array(
  * @author Filipinayzd
  */
 $wdMessages['bcl'] = array(
-	'datasearch' => 'Wikidata: Data search',
 	'languages' => 'Wikidata: Manager kan tataramon',
+	'datasearch' => 'Wikidata: Data search',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -1307,9 +1307,9 @@ $wdMessages['bg'] = array(
  * @author Bellayet
  */
 $wdMessages['bn'] = array(
-	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
-	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
+	'langman_title' => 'ভাষা ব্যবস্থাপক',
+	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
 );
 
 /** Breton (Brezhoneg)
@@ -2719,9 +2719,9 @@ Contacta por favor el operador o el administrador del servicio.',
  * @author Avjoska
  */
 $wdMessages['et'] = array(
-	'datasearch' => 'Wikiandmed: andmeotsing',
-	'langman_title' => 'Keele haldaja',
 	'languages' => 'Wikiandmed: keele haldaja',
+	'langman_title' => 'Keele haldaja',
+	'datasearch' => 'Wikiandmed: andmeotsing',
 	'ow_save' => 'Salvesta',
 	'ow_history' => 'Ajalugu',
 	'ow_none_selected' => 'Midagi ei valitud',
@@ -2908,8 +2908,8 @@ $wdMessages['fa'] = array(
 	'ow_Spelling' => 'املا',
 	'ow_Synonyms' => 'مترادف‌ها',
 	'ow_Source' => 'منبع',
-	'ow_TextAttribute' => 'خاصیت',
 	'ow_Text' => 'متن',
+	'ow_TextAttribute' => 'خاصیت',
 	'ow_TextAttributeValues' => 'متون ساده',
 	'ow_TranslatedTextAttribute' => 'خاصیت',
 	'ow_TranslatedTextAttributeValue' => 'متن',
@@ -3236,9 +3236,9 @@ $wdMessages['fy'] = array(
  * @author Alison
  */
 $wdMessages['ga'] = array(
-	'datasearch' => 'Vicísonraí: Cuardaigh sonraí',
-	'langman_title' => 'Bainisteoir teangacha',
 	'languages' => 'Vicísonraí: Bainisteoir teangacha',
+	'langman_title' => 'Bainisteoir teangacha',
+	'datasearch' => 'Vicísonraí: Cuardaigh sonraí',
 	'ow_save' => 'Sábháil',
 	'ow_history' => 'Stair',
 	'ow_noedit_title' => 'Ní chead chun chur in eagar',
@@ -3255,8 +3255,8 @@ $wdMessages['ga'] = array(
 	'ow_Synonyms' => 'Comhchiallaigh',
 	'ow_SynonymsAndTranslations' => 'Comhchiallaigh agus aistriúcháin',
 	'ow_Source' => 'Foinse',
-	'ow_TextAttribute' => 'Airí',
 	'ow_Text' => 'Téacs',
+	'ow_TextAttribute' => 'Airí',
 	'ow_TextAttributeValues' => 'Gnáth-théacs',
 	'ow_TranslatedTextAttribute' => 'Airí',
 	'ow_TranslatedTextAttributeValue' => 'Téacs',
@@ -3759,8 +3759,8 @@ Bitte kontaktier dr Serveradminschtrator.',
  * @author MacTire02
  */
 $wdMessages['gv'] = array(
-	'langman_title' => 'Reireyder çhengey',
 	'languages' => 'Wikidata: Reireyder çhengey',
+	'langman_title' => 'Reireyder çhengey',
 	'ow_save' => 'Sauail',
 	'ow_history' => 'Shennaghys',
 	'ow_uiprefs' => 'Wikidata',
@@ -3938,9 +3938,9 @@ $wdMessages['he'] = array(
  * @author Kaustubh
  */
 $wdMessages['hi'] = array(
-	'datasearch' => 'Wikidata: आंकडा़ खोज',
-	'langman_title' => 'भाषा प्रबंधक',
 	'languages' => 'Wikidata: भाषा प्रबंधक',
+	'langman_title' => 'भाषा प्रबंधक',
+	'datasearch' => 'Wikidata: आंकडा़ खोज',
 	'ow_save' => 'संजोयें',
 	'ow_history' => 'इतिहास',
 	'ow_noedit_title' => 'संपादन की अनुमति नहीं है',
@@ -4240,8 +4240,8 @@ $wdMessages['hu'] = array(
 	'ow_SynonymsAndTranslations' => 'Szinonímák és fordítások',
 	'ow_Source' => 'Forrás',
 	'ow_SourceIdentifier' => 'Forrásazonosító',
-	'ow_TextAttribute' => 'Tulajdonság',
 	'ow_Text' => 'Szöveg',
+	'ow_TextAttribute' => 'Tulajdonság',
 	'ow_TextAttributeValues' => 'Egyszerű szövegek',
 	'ow_TranslatedTextAttribute' => 'Tulajdonság',
 	'ow_TranslatedText' => 'Lefordított szöveg',
@@ -5012,8 +5012,8 @@ Mangga priksa alamat wèb.',
 	'ow_SynonymsAndTranslations' => 'Sinonim lan jarwa',
 	'ow_Source' => 'Sumber',
 	'ow_SourceIdentifier' => 'Idèntifikator sumber',
-	'ow_TextAttribute' => 'Sifat',
 	'ow_Text' => 'Tèks',
+	'ow_TextAttribute' => 'Sifat',
 	'ow_TextAttributeValues' => 'Tèks-tèks prasaja',
 	'ow_TranslatedTextAttribute' => 'Sifat',
 	'ow_TranslatedText' => 'Tèks sing wis dipertal',
@@ -5341,11 +5341,13 @@ Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es z
 	'ow_uipref_datasets' => 'Standat-Ansich',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nix ußjewählt',
+	'ow_transaction_count' => 'Aanzahl:',
 	'ow_transaction_user' => 'Metmaacher-Name:',
 	'ow_transaction_no_action' => 'Donn nix',
 	'ow_transaction_previous_version' => 'Vörijje Version',
 	'ow_transaction_restore' => 'Wider zerök holle',
 	'ow_transaction_remove' => 'Fott nämme',
+	'ow_transaction_is_latest' => 'Es et Letzte',
 	'ow_transaction_first_dm' => 'Eezte faßjelaate un explizeete Bedüggdeniß',
 	'ow_transaction_second_dm' => 'Zweite faßjelaate un explizeete Bedüggdeniß',
 	'ow_transaction_summary' => 'Zosammejefaß, Quelle',
@@ -5383,6 +5385,7 @@ Don ens noh dä Webaddress loore.',
 	'ow_Collection_colon' => 'Sammlong:',
 	'ow_CollectionMember' => 'En dä Sammlong',
 	'ow_CollectionMembership' => 'Wat bei de Sammlong hürt',
+	'ow_Definition' => 'Bedüggdeniß',
 	'ow_DefinedMeaningAttributes' => 'Aanmerkung',
 	'ow_DefinedMeaning' => 'Faßjelaate un explizeete Bedüggdeniß',
 	'ow_DefinedMeaningReference' => 'Faßjelaate un explizeete Bedüggdeniß',
@@ -5718,8 +5721,8 @@ $wdMessages['lt'] = array(
  * @author Ggajendra
  */
 $wdMessages['mai'] = array(
-	'datasearch' => 'विकी सूचनाकोष: सूचनाकोष ताकू',
 	'langman_title' => 'भाषा प्रबंधक',
+	'datasearch' => 'विकी सूचनाकोष: सूचनाकोष ताकू',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -5735,6 +5738,12 @@ $wdMessages['mhr'] = array(
  * @author Brest
  */
 $wdMessages['mk'] = array(
+	'langman_langname' => 'Име на јазик:',
+	'langman_iso639-3' => 'ISO 639-3 код:',
+	'langman_iso639-2' => 'ISO 639-2 код:',
+	'langman_wikimedia' => 'Викимедија код:',
+	'langman_field_optional' => '(опционо)',
+	'langman_addlang' => 'Додади јазик',
 	'ow_save' => 'Зачувај',
 	'ow_history' => 'Историја',
 	'ow_uipref_datasets' => 'Основен поглед',
@@ -5776,8 +5785,8 @@ $wdMessages['mk'] = array(
 	'ow_SynonymsAndTranslations' => 'Синоними и преводи',
 	'ow_Source' => 'Извор',
 	'ow_SourceIdentifier' => 'Идентификатор на извор',
-	'ow_TextAttribute' => 'Својство',
 	'ow_Text' => 'Текст',
+	'ow_TextAttribute' => 'Својство',
 	'ow_TranslatedTextAttribute' => 'Својство',
 	'ow_TranslatedText' => 'Преведен текст',
 	'ow_TranslatedTextAttributeValue' => 'Текст',
@@ -5894,8 +5903,8 @@ $wdMessages['mr'] = array(
 	'ow_SynonymsAndTranslations' => 'समानार्थी शब्द आणि भाषांतरे',
 	'ow_Source' => 'स्रोत',
 	'ow_SourceIdentifier' => 'स्रोत जाणकार',
-	'ow_TextAttribute' => 'मालमत्ता',
 	'ow_Text' => 'मसुदा',
+	'ow_TextAttribute' => 'मालमत्ता',
 	'ow_TextAttributeValues' => 'केवळ साधा मजकुर',
 	'ow_TranslatedTextAttribute' => 'वैशिष्ट्य',
 	'ow_TranslatedText' => 'भाषांतरीत मजकुर',
@@ -5947,9 +5956,9 @@ $wdMessages['mwl'] = array(
  * @author Botuzhaleny-sodamo
  */
 $wdMessages['myv'] = array(
-	'datasearch' => 'Викидата: Датань вешнэма',
-	'langman_title' => 'Келень кирдий',
 	'languages' => 'Келень кирдий',
+	'langman_title' => 'Келень кирдий',
+	'datasearch' => 'Викидата: Датань вешнэма',
 	'ow_save' => 'Ванстомс',
 	'ow_history' => 'Путовкст-юртт',
 	'ow_uiprefs' => 'Викидата',
@@ -6015,8 +6024,8 @@ $wdMessages['nds'] = array(
 	'ow_OptionAttribute' => 'Egenschop',
 	'ow_Synonyms' => 'Synonymen',
 	'ow_Source' => 'Born',
-	'ow_TextAttribute' => 'Egenschop',
 	'ow_Text' => 'Text',
+	'ow_TextAttribute' => 'Egenschop',
 	'ow_TranslatedTextAttribute' => 'Egenschop',
 	'ow_TranslatedText' => 'Översett Text',
 	'ow_TranslatedTextAttributeValue' => 'Text',
@@ -6545,8 +6554,8 @@ $wdMessages['no'] = array(
 	'ow_SynonymsAndTranslations' => 'Synonymer og oversettelser',
 	'ow_Source' => 'Kilde',
 	'ow_SourceIdentifier' => 'Kildeidentifikator',
-	'ow_TextAttribute' => 'Egenskap',
 	'ow_Text' => 'Tekst',
+	'ow_TextAttribute' => 'Egenskap',
 	'ow_TextAttributeValues' => 'Rene tekster',
 	'ow_TranslatedTextAttribute' => 'Egenskap',
 	'ow_TranslatedText' => 'Oversatt tekst',
@@ -7053,9 +7062,9 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
  * @author Bèrto 'd Sèra
  */
 $wdMessages['pms'] = array(
-	'datasearch' => 'Wikidata: Arsërca antra ij dat',
-	'langman_title' => 'Gestor dle lenghe',
 	'languages' => 'Wikidata: Gestor dle lenghe',
+	'langman_title' => 'Gestor dle lenghe',
+	'datasearch' => 'Wikidata: Arsërca antra ij dat',
 	'ow_save' => 'Salvé',
 	'ow_datasets' => 'Base dat',
 	'ow_AlternativeDefinition' => 'Definission alternativa',
@@ -7095,8 +7104,8 @@ $wdMessages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $wdMessages['ps'] = array(
-	'langman_title' => 'د ژبې سمبالګر',
 	'languages' => 'Wikidata: د ژبې سمبالګر',
+	'langman_title' => 'د ژبې سمبالګر',
 	'ow_save' => 'خوندي کول',
 	'ow_history' => 'پېښليک',
 	'ow_uiprefs' => 'ويکيډاټا',
@@ -7123,8 +7132,8 @@ $wdMessages['ps'] = array(
 	'ow_Synonyms' => 'هممانيزونه',
 	'ow_SynonymsAndTranslations' => 'هممانيزونه او ژباړې',
 	'ow_Source' => 'سرچينه',
-	'ow_TextAttribute' => 'ځانتيا',
 	'ow_Text' => 'متن',
+	'ow_TextAttribute' => 'ځانتيا',
 	'ow_TranslatedTextAttribute' => 'ځانتيا',
 	'ow_TranslatedText' => 'ژباړل شوی متن',
 	'ow_TranslatedTextAttributeValue' => 'متن',
@@ -7640,8 +7649,8 @@ $wdMessages['ro'] = array(
 	'ow_Synonyms' => 'Sinonime',
 	'ow_SynonymsAndTranslations' => 'Sinonime şi traduceri',
 	'ow_Source' => 'Sursă',
-	'ow_TextAttribute' => 'Proprietate',
 	'ow_Text' => 'Text',
+	'ow_TextAttribute' => 'Proprietate',
 	'ow_TranslatedTextAttribute' => 'Proprietate',
 	'ow_TranslatedText' => 'Text tradus',
 	'ow_TranslatedTextAttributeValue' => 'Text',
@@ -8248,8 +8257,8 @@ $wdMessages['sr-ec'] = array(
 	'ow_SynonymsAndTranslations' => 'Синоними и преводи',
 	'ow_Source' => 'Извор',
 	'ow_SourceIdentifier' => 'Означавалац извора',
-	'ow_TextAttribute' => 'Особина',
 	'ow_Text' => 'Текст',
+	'ow_TextAttribute' => 'Особина',
 	'ow_TextAttributeValues' => 'Равни текстови',
 	'ow_TranslatedTextAttribute' => 'Особина',
 	'ow_TranslatedText' => 'Преведен текст',
@@ -8795,8 +8804,8 @@ Sprowdź eli jeij adres je poprawny.',
 	'ow_SynonymsAndTranslations' => 'Synůńimy a tuplikowańo',
 	'ow_Source' => 'Zdrzůdło',
 	'ow_SourceIdentifier' => 'Identyfikator zdrzůdła',
-	'ow_TextAttribute' => 'Właśćiwość',
 	'ow_Text' => 'Tekst',
+	'ow_TextAttribute' => 'Właśćiwość',
 	'ow_TextAttributeValues' => 'Tekst ńysformatowany',
 	'ow_TranslatedTextAttribute' => 'Właśćiwość',
 	'ow_TranslatedText' => 'Przetuplikowany tekst',
@@ -8832,9 +8841,9 @@ $wdMessages['ta'] = array(
  * @author Veeven
  */
 $wdMessages['te'] = array(
-	'datasearch' => 'వికీడాటా: డాటా అన్వేషణ',
-	'langman_title' => 'భాషా నిర్వహణ',
 	'languages' => 'వికీడాటా: భాషా నిర్వహణ',
+	'langman_title' => 'భాషా నిర్వహణ',
+	'datasearch' => 'వికీడాటా: డాటా అన్వేషణ',
 	'ow_save' => 'భద్రపరచు',
 	'ow_history' => 'చరిత్ర',
 	'ow_datasets' => 'డాటాసెట్ ఎంపిక',
@@ -8874,8 +8883,8 @@ $wdMessages['te'] = array(
 	'ow_Synonyms' => 'సమానార్థాలు',
 	'ow_SynonymsAndTranslations' => 'సమానార్థాలు మరియు అనువాదాలు',
 	'ow_Source' => 'మూలం',
-	'ow_TextAttribute' => 'లక్షణం',
 	'ow_Text' => 'పాఠ్యం',
+	'ow_TextAttribute' => 'లక్షణం',
 	'ow_TextAttributeValues' => 'సాదా పాఠ్యాలు',
 	'ow_TranslatedTextAttribute' => 'లక్షణం',
 	'ow_TranslatedText' => 'అనువాదిత పాఠ్యం',
@@ -8948,8 +8957,8 @@ $wdMessages['tg-cyrl'] = array(
 	'ow_SynonymsAndTranslations' => 'Синонимҳо ва тарҷумаҳо',
 	'ow_Source' => 'Манбаъ',
 	'ow_SourceIdentifier' => 'Ташхискунандаи манбаъ',
-	'ow_TextAttribute' => 'Хосият',
 	'ow_Text' => 'Матн',
+	'ow_TextAttribute' => 'Хосият',
 	'ow_TextAttributeValues' => 'Матнҳои ҳамвор',
 	'ow_TranslatedTextAttribute' => 'Хосият',
 	'ow_TranslatedText' => 'Матни тарҷумашуда',
@@ -9008,7 +9017,7 @@ $wdMessages['th'] = array(
 	'ow_meaningsoftitle' => 'ความหมายของ "$1"',
 );
 
-/** Turkmen (Türkmen)
+/** Turkmen (Türkmençe)
  * @author Runningfridgesrule
  */
 $wdMessages['tk'] = array(
@@ -9378,8 +9387,8 @@ $wdMessages['uk'] = array(
 	'ow_SynonymsAndTranslations' => 'Синоніми і переклади',
 	'ow_Source' => 'Джерело',
 	'ow_SourceIdentifier' => 'Ідентифікатор джерела',
-	'ow_TextAttribute' => 'Властивість',
 	'ow_Text' => 'Текст',
+	'ow_TextAttribute' => 'Властивість',
 	'ow_TextAttributeValues' => 'Прості тексти',
 	'ow_TranslatedTextAttribute' => 'Властивість',
 	'ow_TranslatedText' => 'Перекладений текст',

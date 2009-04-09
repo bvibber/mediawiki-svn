@@ -22,6 +22,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author MinuteElectron
  * @author Purodha
+ * @author RobertL
  */
 $messages['qqq'] = array(
 	'multiboilerplate-desc' => 'Description of the MultiBoilerplate extension, shown on [[Special:Version]]. Do not translate or change links.',

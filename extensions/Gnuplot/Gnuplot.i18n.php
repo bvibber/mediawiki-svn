@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'gnuplot-desc' => 'Shown in [[Special:Version]].',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'gnuplot-desc' => 'Fiegt dan <code><nowiki><gnuplot></nowiki></code>-Tag hinzu, um Gnuplot zu varwenda',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

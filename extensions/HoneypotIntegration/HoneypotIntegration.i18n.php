@@ -23,6 +23,30 @@ $messages['qqq'] = array(
 	'honeypot-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'honeypot-desc' => 'Bied aan MediaWiki-webwerwe integrasie met [http://projecthoneypot.org/ Project Honey Pot]',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Volgens Project Honey Pot is 'n aantal gebeurtenisse opgeteken vanaf die IP-adres",
+);
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'honeypot-desc' => 'يوفر تكاملا مع [http://projecthoneypot.org/ Project Honey Pot] لمواقع ميدياويكي',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'عدد الأحداث الأخيرة التي أطلقها عنوان الأيبي، طبقا لProject Honey Pot',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'honeypot-desc' => "Aotren a ra enframmañ lec'hiennoù MediaWiki gant [http://projecthoneypot.org/ Raktres Honey Pot]",
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Niver a zarvoudoù nevez graet gant ar chomlec'h IP, diouzh raktres Honey Pot",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -101,6 +125,14 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'honeypot-desc' => 'Provide integration con le [http://projecthoneypot.org/ projecto Honey Pot] pro sitos MediaWiki',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Numero de eventos recente que iste adresse IP ha causate, secundo le projecto Honey Pot',
+);
+
+/** Italian (Italiano)
+ * @author Pietrodn
+ */
+$messages['it'] = array(
+	'honeypot-desc' => "Fornisce l'integrazione con il [http://projecthoneypot.org/ Progetto Honey Pot] per i siti MediaWiki",
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Numero di eventi recenti che l'indirizzo IP ha attivato, in base al progetto Honey Pot",
 );
 
 /** Japanese (日本語)
@@ -196,5 +228,13 @@ $messages['sk'] = array(
 $messages['tl'] = array(
 	'honeypot-desc' => "Nagbibigay ng pagsasama sa [http://projecthoneypot.org/ Proyektong Palayok ng Pulot-pukyutan (''Project Honey Pot'')] para sa lahat ng mga sityo ng MediaWiki",
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Bilang ng kamakailang mga kaganapang pinagalaw ng adres ng IP, ayon sa \"Proyektong Palayok ng Pulot-pukyutan\" (''Project Honey Pot'')",
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'honeypot-desc' => 'Cung cấp sự tích hợp với [http://projecthoneypot.org/ Dự Án Hũ Mật] cho các trang MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Số sự kiện gần đây được địa chỉ IP kích hoạt, theo Dự Án Hũ Mật',
 );
 

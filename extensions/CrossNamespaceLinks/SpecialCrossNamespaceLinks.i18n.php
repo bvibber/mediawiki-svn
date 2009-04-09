@@ -932,7 +932,7 @@ $messages['tl'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|kawing|mga kawing}} sa $3',
 );
 
-/** Tonga (faka-Tonga) */
+/** Tonga (lea faka-Tonga) */
 $messages['to'] = array(
 	'crossnamespacelinks' => 'Ngaahi fehokotaki vā fakalava',
 	'crossnamespacelinkstext' => '$1: {{PLURAL:$2||ngaahi}} fehokotaki ʻe $2 ki he $3',

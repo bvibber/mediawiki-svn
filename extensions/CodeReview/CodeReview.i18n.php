@@ -1909,6 +1909,7 @@ $4',
  * @author Dereckson
  * @author Grondin
  * @author IAlex
+ * @author PieRRoMaN
  * @author Verdy p
  * @author Zetud
  */
@@ -2000,6 +2001,14 @@ $messages['fr'] = array(
 Lien hypertexte complet : $2
 
 Commentaire :
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2] : Modification suivie',
+	'codereview-email-body2' => 'L’utilisateur « $1 » a fait des modifications reliées à r$2.
+
+URL complète : $3
+
+Résumé des modifications :
 
 $4',
 	'repoadmin' => 'Administration des dépôts',
@@ -3884,12 +3893,13 @@ $messages['mk'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Izzudin
  */
 $messages['ms'] = array(
 	'code' => 'Semakan Kod',
 	'code-comments' => 'Ulasan',
-	'code-change-status' => "menukar '''status''' semakan ini",
-	'code-change-tags' => "menukar '''label''' semakan ini",
+	'code-change-status' => "'''status''' r$1 ditukar",
+	'code-change-tags' => "'''label''' untuk r$1 ditukar",
 	'code-change-removed' => 'membuang:',
 	'code-change-added' => 'menambah:',
 	'code-prop-changes' => 'Log status & label',
@@ -3932,6 +3942,7 @@ $messages['ms'] = array(
 	'code-rev-modified-r' => 'diganti',
 	'code-rev-modified-d' => 'dihapuskan',
 	'code-rev-modified-m' => 'diubah',
+	'code-rev-imagediff' => 'Perubahan imej',
 	'code-rev-status' => 'Status:',
 	'code-rev-status-set' => 'Tukar status',
 	'code-rev-tags' => 'Label:',
@@ -3961,6 +3972,7 @@ $messages['ms'] = array(
 	'code-release-legend' => 'Jana catatan lepasan',
 	'code-release-startrev' => 'Semakan pertama:',
 	'code-release-endrev' => 'Semakan terakhir:',
+	'codereview-subtitle' => 'Untuk $1',
 	'codereview-reply-link' => 'balas',
 	'codereview-email-subj' => '[$1] [s$2]: Ulasan baru',
 	'codereview-email-body' => 'Pengguna "$1" mengirim ulasan bagi s$3.
@@ -4975,6 +4987,14 @@ $messages['pt-br'] = array(
 URL completa: $2
 
 Comentário:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Mudanças seguintes',
+	'codereview-email-body2' => 'Utilizador "$1" fez mudanças na revisão r$2.
+
+URL Completa: $3
+
+Sumário do envio:
 
 $4',
 	'repoadmin' => 'Administração de Repositório',
@@ -6175,6 +6195,14 @@ $4',
 	'specialpages-group-developer' => 'Geliştirici araçları',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'code-status-ok' => 'ماقۇل',
+	'repoadmin-edit-button' => 'ماقۇل',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */
@@ -6637,6 +6665,7 @@ $messages['zh-hans'] = array(
 	'code-prop-changes' => '状态与标签记录',
 	'code-desc' => '使用[[Special:RepoAdmin|Subversion支持]]的[[Special:Code|代码检查工具]]',
 	'code-no-repo' => '储存库未被设置！',
+	'code-load-diff' => '加载差异中...',
 	'code-notes' => '检查注释',
 	'code-authors' => '作者',
 	'code-status' => '状态',

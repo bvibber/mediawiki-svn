@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 * $1 will not be replaced in this message.",
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'metakeywords-desc' => 'Erlaubt de Konfiguration vn <tt><nowiki><meta "keywords"></nowiki></tt>- und <tt><nowiki><meta "description"></nowiki></tt>-Tags pro Namensraum',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

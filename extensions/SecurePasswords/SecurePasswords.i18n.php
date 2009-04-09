@@ -214,6 +214,22 @@ Debe:',
 	'securepasswords-word' => 'non ser unha palabra',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'securepasswords-desc' => 'Legt sichereri Passwort-Hashes aa un fiegt e Passwortstärchipriefieg zue',
+	'securepasswords-valid' => 'Dyy Passwort isch nit giltig oder z churz.
+S muess:',
+	'securepasswords-minlength' => 'zmindescht $1 {{PLURAL:$1|Zeiche|Zeiche}} lang syy',
+	'securepasswords-lowercase' => 'zmindescht ei Chleibuechstab din haa',
+	'securepasswords-uppercase' => 'zmindescht ei Großbuechstab din haa',
+	'securepasswords-digit' => 'zmindescht ei Ziffer din haa',
+	'securepasswords-special' => 'zmindescht ei Sonderzeiche din haa (Sonderzeiche sin: $1)',
+	'securepasswords-username' => 'sich vu Dynem Benutzernamen unterscheide',
+	'securepasswords-word' => 'ebis anderes syy wie ne Wort',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

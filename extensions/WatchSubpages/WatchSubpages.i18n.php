@@ -726,6 +726,19 @@ $messages['vec'] = array(
 	'watchsubpages-addtitles' => 'Zonta pàxene',
 	'watchsubpages-addtitlestowatchlist' => 'Zonta pàxene ai Osservati Speciali',
 	'watchsubpages-desc' => 'Zonta in pressia [[Special:WatchSubpages|tute le sotopagine]] de na pagina ai osservati speciali',
+	'watchsubpages-form' => 'Selession qua soto le pàxene da tegner d\'ocio.
+Par zontar na pàxena, spunta la casèla in parte de éla, e struca "Zonta pàxene".
+
+Co te spunti o te cavi la spunta a tante pàxene, tegnendo macà el majuscolo te podi selessionar dele casèle consecutive spuntando la prima e l\'ùltima de lore.',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'watchsubpages-addtitles' => 'Ližata lehtpoled',
+	'watchsubpages-addtitlestowatchlist' => 'Ližata lehtpoled kaclendnimikirjuteshe',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Ližadab teravas kaik lehtpolen alalehtpoled]] kaclendnimikirjuteshe',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -457,11 +457,13 @@ $messages['gl'] = array(
 );
 
 /** Gothic
+ * @author Crazymadlover
  * @author Jocke Pirat
  */
 $messages['got'] = array(
 	'patrol-revert-reason' => 'Faírina',
 );
+
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
  */
@@ -720,6 +722,7 @@ $messages['it'] = array(
 	'group-patroller' => 'Patrollatori',
 	'group-patroller-member' => 'Patrollatore',
 	'grouppage-patroller' => '{{ns:project}}:Patrollatore',
+	'right-patroller' => 'Verifica le pagine',
 );
 
 /** Japanese (日本語)

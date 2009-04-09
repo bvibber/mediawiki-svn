@@ -1291,6 +1291,13 @@ Klick op den Knopp, dat du di anmellst.',
 	'action-povwatch_user' => 'disse Sied to de Oppasslist vun en annern Bruker totofögen',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'povwatch_title' => 'Titel:',
+);
+
 /** Dutch (Nederlands)
  * @author GerardM
  * @author SPQRobin
@@ -1979,6 +1986,17 @@ Struca el boton qua soto par iscrìvarte.',
 	'right-povwatch_user' => 'Zonta pàxene ai osservati speciali de altri utenti',
 	'action-povwatch_admin' => 'aministra i parmessi dei utenti par PovWatch',
 	'action-povwatch_user' => "zonta sta pàxena ai osservati speciali de n'altro utente",
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'povwatch_push' => 'Sijata',
+	'povwatch_title' => 'Nimi:',
+	'povwatch_comment' => 'Homaičend aigkirjan täht:',
+	'povwatch_no_log' => 'Aigkirjas ei ole kirjutesid.',
+	'povwatch_added' => 'ližatud',
 );
 
 /** Vietnamese (Tiếng Việt)

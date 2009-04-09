@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'opensearchxml-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Schnittstelle fier Textoausziege',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -360,23 +367,24 @@ $messages['vi'] = array(
 	'opensearchxml-desc' => 'Giao diện [http://www.opensearch.org/ OpenSearch] cung cấp đoạn trích văn bản dạng XML',
 );
 
-/** Cantonese (廣東話)
+/** Yue (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'opensearchxml-desc' => '提供文字擷取嘅[http://www.opensearch.org OpenSearch] XML界面',
 );
 
-/** Chinese Simplified (中文简化字)
+/** Simplified Chinese (‪中文(简体)‬)
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'opensearchxml-desc' => '提供文字撷取的[http://www.opensearch.org OpenSearch] XML界面',
 );
 
-/** Chinese Traditional (中文傳統字)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'opensearchxml-desc' => '提供文字擷取的[http://www.opensearch.org OpenSearch] XML界面',
 );
+

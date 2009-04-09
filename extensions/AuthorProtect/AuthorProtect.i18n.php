@@ -509,7 +509,7 @@ $messages['hu'] = array(
 	'authorprotect-intro' => 'Az űrlap használatával lezárhatod a lapot azon szerkesztők elől, akik nem szerzői annak',
 	'authorprotect-success' => 'Levédés sikeres!',
 	'authorprotect-failure' => 'Levédés sikertelen',
-	'protect-level-author' => 'Levédés nem szerzőkkel szemben',
+	'protect-level-author' => 'Csak a szerző',
 	'restriction-level-author' => 'Szerző-védett',
 );
 

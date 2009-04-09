@@ -1802,6 +1802,13 @@ Eğer bu hata görünmeye devam ederse, muhtemelen veritabanı bozulmuştur.',
 	'right-changeauthor' => 'Bir revizyonun yazarını değiştir',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'changeauthor-pagenameform-go' => 'كۆچۈش',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */

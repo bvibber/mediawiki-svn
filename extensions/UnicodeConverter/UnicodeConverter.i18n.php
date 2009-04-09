@@ -559,6 +559,13 @@ $messages['tr'] = array(
 	'unicodeconverter-newtext' => 'Dönüştürülmüş metin:',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'unicodeconverter-ok' => 'ماقۇل',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */
@@ -584,6 +591,15 @@ $messages['vec'] = array(
 	'unicodeconverter-ok' => 'Va ben',
 	'unicodeconverter-oldtext' => 'Testo orixinàl:',
 	'unicodeconverter-newtext' => 'Testo convertìo:',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Augotižtekst:',
+	'unicodeconverter-newtext' => 'Konvertiruidud tekst',
 );
 
 /** Vietnamese (Tiếng Việt)

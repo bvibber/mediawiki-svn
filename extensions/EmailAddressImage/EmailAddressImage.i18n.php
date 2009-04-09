@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'emailaddressimage-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'emailaddressimage-desc' => 'Argänzt is <tt>&lt;email&gt;</tt>-Tag, um anne E-Mail-Adresse ols Beld doarzustella',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

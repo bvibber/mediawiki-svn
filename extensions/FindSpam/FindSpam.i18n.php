@@ -827,6 +827,13 @@ $messages['tr'] = array(
 	'right-findspam' => 'Son eklenen spamler için ara',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'findspam-ok' => 'ماقۇل',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */
@@ -857,6 +864,16 @@ $messages['vec'] = array(
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nissun contributo catà',
 	'right-findspam' => 'Serca el spam xontà de recente',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'findspam-ip' => 'IP-adres:',
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Ei voi löuta tondad',
+	'right-findspam' => 'Ectä tantošt spamad',
 );
 
 /** Vietnamese (Tiếng Việt)

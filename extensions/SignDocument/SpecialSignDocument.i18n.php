@@ -1546,7 +1546,7 @@ $1',
 	'sign-viewfield-country' => 'Kraj',
 	'sign-viewfield-zip' => 'Póstowe wodźenske čisło',
 	'sign-viewfield-ip' => 'IP-adresa',
-	'sign-viewfield-agent' => 'User agent',
+	'sign-viewfield-agent' => 'Identifikacija wobhladowaka',
 	'sign-viewfield-phone' => 'Telefonowe čisło',
 	'sign-viewfield-email' => 'E-mejl',
 	'sign-viewfield-age' => 'Staroba',
@@ -3690,11 +3690,48 @@ $messages['tr'] = array(
 	'sign-submitreview' => 'Gözden geçirmeyi gönder',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Alfredie
+ */
+$messages['ug-arab'] = array(
+	'sign-viewfield-email' => 'ئېلخەت',
+);
+
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
 	'sign-viewfield-email' => 'Élxet',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'signdocument' => 'Allekitjutada dokument',
+	'sign-realname' => 'Nimi:',
+	'sign-address' => "Adres (ird, pert' i m. e.):",
+	'sign-city' => 'Lidn:',
+	'sign-state' => 'Štat:',
+	'sign-zip' => 'Počtindeks:',
+	'sign-country' => 'Valdkund:',
+	'sign-phone' => 'Telefonnomer:',
+	'sign-bday' => 'Igä:',
+	'sign-email' => 'E-počtan adres:',
+	'sign-viewfield-entryid' => 'Kirjutesen ID',
+	'sign-viewfield-timestamp' => 'Dat/Aig',
+	'sign-viewfield-realname' => 'Nimi',
+	'sign-viewfield-address' => 'Adres',
+	'sign-viewfield-city' => 'Lidn',
+	'sign-viewfield-state' => 'Štat, agj',
+	'sign-viewfield-country' => 'Valdkund',
+	'sign-viewfield-zip' => 'Počtindeks',
+	'sign-viewfield-ip' => 'IP-adres',
+	'sign-viewfield-agent' => 'Kaclim',
+	'sign-viewfield-phone' => 'Telefonnomer',
+	'sign-viewfield-email' => 'E-počtan adres',
+	'sign-viewfield-age' => 'Igä',
+	'sign-viewfield-options' => 'Järgendused',
 );
 
 /** Vietnamese (Tiếng Việt)

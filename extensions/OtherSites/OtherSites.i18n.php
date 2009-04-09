@@ -22,6 +22,14 @@ $messages['qqq'] = array(
 	'othersites-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'othersites' => 'andere Seita',
+	'othersites-desc' => 'Verschiebt Interwikilinks ei anne eegene Box, falls se kääne Sproachlinks doarstella',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -743,13 +743,15 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'filelist' => 'Dosya listesi',
 	'filelist-desc' => 'Yüklenen dosyaların listesi için: [[Special:Filelist|dosya listesi]]',
 	'filelist-show-list' => 'Listeyi gör',
-	'filelist-show-gallery' => 'Galeri göster',
+	'filelist-show-gallery' => 'Galeriyi göster',
+	'filelist-image-desc' => 'açkl',
 );
 
 /** Ukrainian (Українська)
@@ -768,6 +770,13 @@ $messages['vec'] = array(
 	'filelist-show-list' => 'Mostra lista',
 	'filelist-show-gallery' => 'Mostra galeria',
 	'filelist-image-desc' => 'desc',
+);
+
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'filelist' => 'Failoiden nimikirjutez',
 );
 
 /** Vietnamese (Tiếng Việt)

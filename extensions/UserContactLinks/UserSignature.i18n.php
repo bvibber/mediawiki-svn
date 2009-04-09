@@ -29,6 +29,14 @@ $messages['rtm'] = array(
 	'usercontactlink-baduser' => 'Seseva',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'usercontactlink-baduser' => 'falscher Benutzername',
+	'usercontactlink-desc' => 'Macht es möglich, Benutzernamen einfach mit ^^^Benutzer^^^ zu verlinken',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

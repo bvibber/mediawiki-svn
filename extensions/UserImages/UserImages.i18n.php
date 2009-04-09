@@ -34,6 +34,16 @@ Parameters:
 * $1: The user name",
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Piotron
+ */
+$messages['sli'] = array(
+	'userimages-desc' => 'Arzeige per <code><nowiki><userimage /></nowiki></code> Galeria voo Beldern, de voo dan jeweeliga Nutzern huchgeloada wourda',
+	'userimages-caption' => 'Voo $1 huchgeloadene Belder',
+	'userimages-noname' => 'Ungieltiger Nutzernoame oder Eengoabefeld leer.',
+	'userimages-noimages' => '$1 hoot kääne huchgeloadena Belder.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido

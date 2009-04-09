@@ -148,6 +148,13 @@ $messages['dsb'] = array(
 	'right-emergencydesysop' => 'Móžnosć drugemu wužywarjeju status amdministratora mjazsobnje wześ',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'emergencydesysop-nogroups' => 'Κανένα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

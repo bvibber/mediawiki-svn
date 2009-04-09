@@ -123,9 +123,27 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'passwordreset' => 'Ачыстка паролю',
+	'passwordreset-desc' => '[[Special:PasswordReset|Ачышчае паролі ўдзельнікаў]] — патрабуюцца правы на ачыстку пароляў',
+	'passwordreset-invalidusername' => 'Няслушнае імя ўдзельніка',
+	'passwordreset-emptyusername' => 'Пустое імя ўдзельніка',
+	'passwordreset-nopassmatch' => 'Паролі не супадаюць',
+	'passwordreset-badtoken' => 'Няслушная метка рэдагаваньня',
 	'passwordreset-username' => 'Імя ўдзельніка:',
+	'passwordreset-newpass' => 'Новы пароль:',
+	'passwordreset-confirmpass' => 'Пацьверджаньне паролю:',
+	'passwordreset-submit' => 'Ачысьціць пароль',
+	'passwordreset-success' => 'Ачышчаны пароль для удзельніка з ідэнтыфікатарам: $1',
+	'passwordreset-disableuser' => 'Заблякаваць рахунак удзельніка?',
+	'passwordreset-disableuserexplain' => '(зрабіць няслушным хэш паролю, каб удзельнік ня мог ўвайсьці ў сыстэму)',
+	'passwordreset-disablesuccess' => 'Заблякаваны рахунак для ўдзельніка з ідэнтыфікатарам: $1',
+	'passwordreset-accountdisabled' => 'Рахунак заблякаваны',
+	'disabledusers' => 'Заблякаваныя ўдзельнікі',
+	'disabledusers-summary' => 'Гэта сьпіс удзельнікаў, якія былі заблякаваныя з дапамогай ачысткі пароляў.',
+	'right-passwordreset' => 'ачыстка пароляў удзельнікаў з дапамогай [[Special:PasswordReset|службовай старонкі]]',
 );
 
 /** Bulgarian (Български)
@@ -293,6 +311,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'passwordreset-invalidusername' => 'Nombre de usuario inválido',
 	'passwordreset-emptyusername' => 'Nombre de usuario vacío',
+	'passwordreset-badtoken' => 'Ficha de edición inválida',
 	'passwordreset-username' => 'Nombre de usuario:',
 	'passwordreset-newpass' => 'Nueva contraseña:',
 	'passwordreset-confirmpass' => 'Confirmar contraseña:',
@@ -1137,6 +1156,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Illusion
  * @author Kaganer
  * @author Александр Сигачёв
@@ -1159,7 +1179,7 @@ $messages['ru'] = array(
 	'passwordreset-accountdisabled' => 'Учётная запись отключена',
 	'disabledusers' => 'Выключенные участники',
 	'disabledusers-summary' => 'Это список участников, которые были «выключены» с помощью PasswordReset.',
-	'right-passwordreset' => 'сбрасывать пароль участника ([[Special:PasswordReset|служебная страница]])',
+	'right-passwordreset' => 'сброс пароля участника ([[Special:PasswordReset|служебная страница]])',
 );
 
 /** Slovak (Slovenčina)

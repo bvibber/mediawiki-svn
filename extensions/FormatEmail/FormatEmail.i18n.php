@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'email-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Lower Silesian (Schläsch)
+ * @author Jonny84
+ */
+$messages['sli'] = array(
+	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen ei der E-Mail Funktion zu verwenden',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

@@ -1129,7 +1129,14 @@ $messages['es'] = array(
   ** Fuera del enfoque del proyecto',
 	'deletequeue-nom-alreadyqueued' => 'Esta página ya está en una cola de borrado',
 	'deletequeue-speedy-title' => 'Marcar "$1" para borrado rápido',
+	'deletequeue-speedy-text' => "Puedes usar este formulario para marcar la página \"'''\$1'''\" para borrado rápido.
+
+Un administrador revisará esta solicitud, y, si está bien fundamentado, borrará la página.
+Debes seleccionar una razón para el borrado de la lista desplegable de abajo, y agregar alguna otra información relevante.",
 	'deletequeue-prod-title' => 'Proponer borrado de "$1"',
+	'deletequeue-prod-text' => "Puedes usar este formulario para proponer que \"'''\$1'''\" sea borrado.
+
+Si, después de cinco días, nadie ha contestado el borrado de esta página, será borrado después de una revisión final por un administrador.",
 	'deletequeue-delnom-reason' => 'Razón para nominación:',
 	'deletequeue-delnom-otherreason' => 'Otra razón',
 	'deletequeue-delnom-extra' => 'Información extra:',
@@ -1148,6 +1155,14 @@ $messages['es'] = array(
 	'deletequeue-queue-deletediscuss' => 'Discusión de borrado',
 	'deletequeue-page-speedy' => "Esta página ha sido nominada para borrado rápido.
 La razón dada para este borrado es ''$1''.",
+	'deletequeue-page-prod' => "Se ha propuesto que esta página sea borrada.
+La razón dad fue ''$1''.
+Si esta propuesta no es contestada en ''$2'', está página será borrada.
+Puedes contestar el borrado de esta página por [{{fullurl:{{FULLPAGENAME}}|action=delvote}} objetando el borrado].",
+	'deletequeue-page-deletediscuss' => "Esta página ha sido propuesta para borrado, y esta propuesta ha sido contestada.
+La razón dada fue ''$1''.
+Una discusión está en curso en [[$5]], la cual concluirá en ''$2''.",
+	'deletequeue-notqueued' => 'La página que ha seleccionado no está actualmente en espera de borrado',
 	'deletequeue-review-action' => 'Acción a tomar:',
 	'deletequeue-review-delete' => 'Borrar la página.',
 	'deletequeue-review-requeue' => 'Transferir esta página a la siguiente cola:',
@@ -1157,27 +1172,39 @@ La razón dada para este borrado es ''$1''.",
 	'deletequeue-review-newextra' => 'Información extra:',
 	'deletequeue-review-submit' => 'Grabar Revisión',
 	'deletequeue-review-original' => 'Razón para nominación',
+	'deletequeue-actiondisabled-notexpired' => 'la siguiente acción está deshabilitada porque la nominación para borrado aun no ha expirado:',
 	'deletequeue-review-badaction' => 'Usted especificó una acción inválida',
 	'deletequeue-review-actiondenied' => 'Usted ha especificado una acción la cual está dehabilitada para esta página',
+	'deletequeue-review-objections' => "'''Advertencia''': El borrado de esta página tiene [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} objeciones].
+Por favor asegúrese que has considerado estas objeciones antes de borrar esta página.",
 	'deletequeue-reviewspeedy-tab' => 'Revisar borrado rápido',
 	'deletequeue-reviewspeedy-title' => 'Revisar nominación de borrado rápido de "$1"',
+	'deletequeue-reviewspeedy-text' => "Puedes usar este formulario para revisar la nominación de \"'''\$1'''\" para borrado rápido.
+por favor asegúrese que esta página puede ser rápidamente borrada de acuerdo con la política.",
 	'deletequeue-reviewprod-tab' => 'revisar borrado propuesto',
 	'deletequeue-reviewprod-title' => 'Revisar borrado propuesto de "$1"',
+	'deletequeue-reviewprod-text' => "Puedes usar este formulario para revisar la propuesta no contestada para el borrado de \"'''\$1'''\".",
 	'deletequeue-reviewdeletediscuss-tab' => 'Revisar borrado',
 	'deletequeue-reviewdeletediscuss-title' => 'Revisar discusión de borrado para "$1"',
 	'deletequeue-review-success' => 'Has revisado exitosamente el borrado de esta página',
 	'deletequeue-review-success-title' => 'Revisión completa',
 	'deletequeue-discusscreate-summary' => 'creando discusión para el borrado de [[$1]].',
+	'deletequeue-discusscreate-text' => 'Borrado propuesto por las siguientes razones: $2',
+	'deletequeue-role-nominator' => 'nominador original para el borrado',
 	'deletequeue-vote-action' => 'Recomendación:',
 	'deletequeue-vote-reason' => 'Comentarios:',
 	'deletequeue-vote-submit' => 'Enviar',
+	'deletequeue-vote-requeued' => 'Has objetado exitosamente el borrado de esta página.
+A causa de tu objeción, la página ha sido movida a la cola $1.',
 	'deletequeue-showvotes-restrict-object' => 'Mostrar objeciones solamente',
 	'deletequeue-showvotes-showingonly-object' => 'Mostrando sólo objeciones',
 	'deletequeue-showvotes-none-object' => 'No hay objeciones al borrado de esta página.',
 	'deletequeue' => 'Cola de borrado',
+	'deletequeue-list-text' => 'Esta página muestra todas la páginas la cuales están en el sistema de borrado.',
 	'deletequeue-list-search-legend' => 'Buscar páginas',
 	'deletequeue-list-queue' => 'Cola:',
 	'deletequeue-list-status' => 'Estatus:',
+	'deletequeue-list-expired' => 'Mostrar solamente nominaciones que requieren cerrado.',
 	'deletequeue-list-search' => 'Buscar',
 	'deletequeue-list-anyqueue' => '(cualquiera)',
 	'deletequeue-list-votes' => 'Lista de votos',
@@ -1189,6 +1216,7 @@ La razón dada para este borrado es ''$1''.",
 	'deletequeue-case-details' => 'Detalles básicos',
 	'deletequeue-case-page' => 'Página:',
 	'deletequeue-case-reason' => 'Razón:',
+	'deletequeue-case-expiry' => 'Expiración:',
 	'deletequeue-case-needs-review' => 'Este caso requiere [[$1|revisión]].',
 );
 
@@ -2191,6 +2219,7 @@ $messages['io'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sistema per gestire le cancellazioni basato su code]]',
@@ -2304,6 +2333,7 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'deletequeue-list-header-votes' => 'Supporti e opposizioni',
 	'deletequeue-list-header-expiry' => 'Scadenza',
 	'deletequeue-list-header-discusspage' => 'Pagina di discussione',
+	'deletequeue-case-reason' => 'Motivo:',
 );
 
 /** Japanese (日本語)

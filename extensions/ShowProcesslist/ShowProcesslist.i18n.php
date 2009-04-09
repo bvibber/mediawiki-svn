@@ -837,6 +837,20 @@ $messages['uk'] = array(
 	'showprocesslist-user' => 'Користувач',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'showprocesslist-id' => 'Id',
+	'showprocesslist-user' => 'Kävutai',
+	'showprocesslist-host' => 'Host',
+	'showprocesslist-db' => 'Andmusiden baz',
+	'showprocesslist-command' => 'Käsk',
+	'showprocesslist-time' => 'Aig',
+	'showprocesslist-state' => 'Olend',
+	'showprocesslist-info' => 'Informacii',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

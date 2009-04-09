@@ -714,6 +714,13 @@ Pakigamit ang pahinang [[MediaWiki:Number_of_watching_users_pageview|Mediawiki:B
 	'specialwhoiswatchingaddbtn' => 'Idagdag ang napiling mga tagagamit',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'specialwhoiswatchingaddbtn' => 'Ližata valitud kävutajid',
+);
+
 /** Volapük (Volapük)
  * @author Smeira
  */

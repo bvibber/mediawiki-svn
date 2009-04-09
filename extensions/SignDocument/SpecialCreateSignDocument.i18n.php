@@ -1532,6 +1532,26 @@ $messages['ug-latn'] = array(
 	'createsigndoc-pagename' => 'Bet:',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'createsigndoc-pagename' => "Lehtpol'",
+	'createsigndoc-allowedgroup' => 'Lasktud gruppad',
+	'createsigndoc-email' => 'E-počtan adres:',
+	'createsigndoc-address' => 'Kodiadres:',
+	'createsigndoc-extaddress' => 'Lidn, štat, valdkund:',
+	'createsigndoc-phone' => 'Telefonnomer:',
+	'createsigndoc-bday' => 'Sündundpäiv:',
+	'createsigndoc-minage' => 'Minimaline igä:',
+	'createsigndoc-introtext' => 'Tulend:',
+	'createsigndoc-hidden' => 'Peittud',
+	'createsigndoc-optional' => 'Opcionaline',
+	'createsigndoc-create' => 'Säta',
+	'createsigndoc-error-generic' => 'Petuz: $1',
+	'createsigndoc-error-pagenoexist' => "Petuz: ei ole [[$1]]-lehtpol't.",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
