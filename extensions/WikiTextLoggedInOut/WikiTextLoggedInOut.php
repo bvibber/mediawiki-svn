@@ -36,7 +36,7 @@ function wfWikiTextLoggedIn() {
 }
 
 function OutputLoggedInText( $input, $args, &$parser ) {
-	global $wgUser, $wgTitle, $wgOut;
+	global $wgUser, $wgOut;
 
 	if( $wgUser->isLoggedIn() ){
 		return $parser->recursiveTagParse($input);
@@ -58,7 +58,7 @@ function wfWikiTextLoggedOut() {
 }
 
 function OutputLoggedOutText( $input, $args, &$parser ) {
-	global $wgUser, $wgTitle, $wgOut;
+	global $wgUser, $wgOut;
 
 	if( !$wgUser->isLoggedIn() ){
 		return $parser->recursiveTagParse($input);

@@ -45,7 +45,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 		}
 	}
 	function do_stats_page() {
-		global $wgOut, $wgRequest, $wgTitle;
+		global $wgOut, $wgRequest;
 		$wgOut->addWikiText( wfMsg( 'ps_stats_welcome_link' ) );
 	}
 	function do_survey_forum() {

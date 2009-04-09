@@ -45,7 +45,7 @@ class MV_StreamPage extends Article {
  		return new MV_StreamPage( $article->mTitle, $mvTitle );
  	}
  	public function view() {
-		global $wgRequest, $wgUser, $wgOut, $wgTitle, $wgJsMimeType, $mvgScriptPath;
+		global $wgRequest, $wgUser, $wgOut, $wgJsMimeType, $mvgScriptPath;
 		// @@TODO fix stream view() for old versions ... will likely have to replicate Article::view() 
 
 		// include the metavid headers (for embedding video in the page) 

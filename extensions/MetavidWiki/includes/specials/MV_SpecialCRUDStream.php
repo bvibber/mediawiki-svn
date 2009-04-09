@@ -25,7 +25,7 @@ class MV_SpecialCRUDStream extends SpecialPage {
 
 	}
 	function execute() {
-		global $wgRequest, $wgOut, $wgUser, $mvStream_name, $mvgIP, $wgTitle;
+		global $wgRequest, $wgOut, $wgUser, $mvStream_name, $mvgIP;
 		# init html output var:
 		$html = '';				
 		

@@ -113,7 +113,7 @@ class SpecialSignDocument extends SpecialPage {
 	}
 
 	function showSignForm() {
-		global $wgOut, $wgUser, $wgRequest, $wgTitle;
+		global $wgOut, $wgUser, $wgRequest;
 
 		$this->mForm = SignDocumentForm::newFromDB( $wgRequest->getVal('doc') );
 
@@ -306,7 +306,7 @@ class SignatureViewer {
 	private $mFields;
 
 	function execute() {
-		global $wgRequest, $wgTitle, $wgUser;
+		global $wgRequest, $wgUser;
 
 		if ($wgRequest->getVal('detail')) {
 			$this->doDetail();

@@ -1130,7 +1130,7 @@ class DataCenterUI {
 		DataCenterController $controller,
 		array $path
 	) {
-		global $wgTitle, $wgUser;
+		global $wgUser;
 		// Adds main menu
 		self::$output['menu'] .= DataCenterXml::open(
 			'div', array( 'class' => 'menu' )

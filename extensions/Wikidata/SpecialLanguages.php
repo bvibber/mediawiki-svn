@@ -37,7 +37,7 @@ function wfSpecialManageLanguages() {
 		}
 
 		function execute( $par ) {
-			global $wgOut, $wgRequest, $wgTitle, $wgUser;
+			global $wgOut, $wgRequest, $wgUser;
 			$wgOut->setPageTitle(wfMsg('langman_title'));
 			if(!$wgUser->isAllowed('addlanguage')) {
 				$wgOut->addHTML(wfMsg('langman_not_allowed'));

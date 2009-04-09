@@ -32,7 +32,7 @@ function wfRandomUsersWithAvatars() {
 }
 
 function GetRandomUsersWithAvatars( $input, $args, &$parser ){
-	global $wgUser, $wgParser, $wgTitle, $wgOut, $wgUploadDirectory, $wgDBname, $wgMemc;
+	global $wgUser, $wgParser, $wgOut, $wgUploadDirectory, $wgDBname, $wgMemc;
 	wfLoadExtensionMessages('RandomUsersWithAvatars');
 
 	wfProfileIn(__METHOD__);

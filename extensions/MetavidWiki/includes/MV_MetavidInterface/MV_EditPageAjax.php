@@ -98,7 +98,7 @@
 	}
 	/* copy of edit() from edit page (to override empty page)*/
 	function edit( $textbox1_override = null ) {
-		global $wgOut, $wgUser, $wgRequest, $wgTitle;
+		global $wgOut, $wgUser, $wgRequest;
 
 		$fname = 'MV_EditPage::edit';
 		wfProfileIn( $fname );

@@ -40,7 +40,7 @@ function wfSpecialCopy() {
 			UnlistedSpecialPage::UnlistedSpecialPage( 'Copy' );
 		}
 		function execute( $par ) {
-			global $wgOut, $wgRequest, $wgTitle, $wgUser, $wdTermDBDataSet;
+			global $wgOut, $wgRequest, $wgUser, $wdTermDBDataSet;
 
 			#$wgOut->setPageTitle("Special:Copy");
 			if(!$wgUser->isAllowed('wikidata-copy')) {
@@ -122,8 +122,7 @@ function wfSpecialCopy() {
 		 * make sure you haven't used $wgOut before calling this!
 		 */
 		protected function autoredir() {
-			global 
-				$wgTitle, $wgOut, $wgRequest;
+			global $wgOut, $wgRequest;
 
 			$dmid_dirty=$wgRequest->getText("dmid");	
 			$dc1_dirty=$wgRequest->getText("dc1");	

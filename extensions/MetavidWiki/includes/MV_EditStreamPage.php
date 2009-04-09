@@ -37,7 +37,7 @@
  	}
  	/*put thrown together quickly... could clean up/simplify*/
  	function displayEditStreamFiles() {
- 		global $wgOut, $wgTitle, $wgScriptPath, $wgRequest, $wgUser;
+ 		global $wgOut, $wgScriptPath, $wgRequest, $wgUser;
  		$html = '';
  	
 		$streamFiles = $this->mArticle->mvTitle->mvStream->getFileList();

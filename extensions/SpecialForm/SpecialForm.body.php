@@ -86,7 +86,7 @@ class SpecialForm extends SpecialPage {
 	}
 
 	function showForm($form, $errmsg = NULL) {
-		global $wgOut, $wgRequest, $wgParser, $wgTitle, $wgUser, $wgSpecialFormRecaptcha;
+		global $wgOut, $wgRequest, $wgParser, $wgUser, $wgSpecialFormRecaptcha;
 
 		$self = SpecialPage::getTitleFor(wfMsgForContent('form') . '/' . $form->name);
 

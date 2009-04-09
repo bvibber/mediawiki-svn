@@ -23,7 +23,7 @@ class SpecialCrosswikiBlock extends SpecialPage {
 	 * @param mixed $par Parameter passed to the page
 	 */
 	public function execute( $par ) {
-		global $wgOut, $wgUser, $wgTitle, $wgRequest, $wgContLang, $wgLang;
+		global $wgOut, $wgUser, $wgRequest, $wgContLang, $wgLang;
 		global $wgVersion, $wgMaxNameChars, $wgCapitalLinks;
 
 		# Add messages
@@ -256,7 +256,7 @@ class SpecialCrosswikiUnblock extends SpecialPage {
 	 * @param mixed $par Parameter passed to the page
 	 */
 	public function execute( $par ) {
-		global $wgOut, $wgUser, $wgTitle, $wgRequest, $wgContLang, $wgLang;
+		global $wgOut, $wgUser, $wgRequest, $wgContLang, $wgLang;
 		global $wgVersion, $wgMaxNameChars, $wgCapitalLinks;
 
 		# Add messages

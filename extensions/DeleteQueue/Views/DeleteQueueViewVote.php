@@ -16,7 +16,7 @@ class DeleteQueueViewVote extends DeleteQueueView {
 	 * @param Article $article The article to endorse/object to deletion of.
 	 */
 	public function process( $article ) {
-		global $wgRequest,$wgOut,$wgUser,$wgTitle;
+		global $wgRequest,$wgOut,$wgUser;
 
 		$errs =
 			$article->mTitle->getUserPermissionsErrors( 'deletequeue-vote', $wgUser );

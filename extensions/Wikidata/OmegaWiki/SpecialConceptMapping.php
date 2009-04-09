@@ -35,7 +35,7 @@ function wfSpecialConceptMapping() {
 		}
 
 		function execute( $par ) {
-			global $wgOut, $wgRequest, $wgTitle, $wgUser, $wdTermDBDataSet;
+			global $wgOut, $wgRequest, $wgUser, $wdTermDBDataSet;
 			$wgOut->setPageTitle(wfMsg('ow_conceptmapping_title'));
 
 			if(!$wgUser->isAllowed('editwikidata-'.$wdTermDBDataSet)) {

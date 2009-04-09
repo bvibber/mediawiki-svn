@@ -50,7 +50,7 @@ function wfGetDependingOnSkin () {
 
 function registerWikiwygExtension() {
     global $wgOut, $wgSkin, $jsdir, $cssdir, $wgScriptPath;
-    global $wgWikiwygPath, $wgUser, $wgTitle;
+    global $wgWikiwygPath, $wgUser;
     global $wgServer, $wgWikiwygJsPath, $wgWikiwygCssPath, $wgWikiwygImagePath;
     global $wgRequest, $wgWysiwygEnabled;
     global $wgLang, $wgContLang, $wgEnableAjaxLogin;
@@ -252,7 +252,7 @@ class EZParser extends UnlistedSpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgTitle, $wgUser;
+		global $wgRequest, $wgOut, $wgUser;
 
 /*		if (!in_array( 'ezparser', $wgUser->getRights() ) ) {
 			$wgOut->setArticleRelated( false );
@@ -277,7 +277,7 @@ class EZParser extends UnlistedSpecialPage {
 
 	function parseText($text, $title){
 		#still need to make it actually parse the input.
-		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgAllowDiffPreview, $wgEnableDiffPreviewPreference;
+		global $wgOut, $wgUser, $wgParser, $wgAllowDiffPreview, $wgEnableDiffPreviewPreference;
 		$parserOptions = ParserOptions::newFromUser( $wgUser );
 		$parserOptions->setEditSection( false );
 		$rtitle = Title::newFromText($title);
@@ -312,7 +312,7 @@ class PocketDiff extends UnlistedSpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgTitle, $wgUser;
+		global $wgRequest, $wgOut, $wgUser;
 
 		$this->setHeaders();
 

@@ -62,7 +62,7 @@ function wfDataPreview ( &$t , &$dk )
 function wfDataView ( $dt ) # $dt = data type
 	{
 	if ( $dt == '' ) return ;
-	global $wgParser, $wgTitle;
+	global $wgParser;
 	global $wgOut , $wgUser ;
 	$nsdata = 20 ;
 	$s = "<h2>{$dt}</h2>" ;

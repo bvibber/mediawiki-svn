@@ -79,7 +79,7 @@ function wfCheckArticleImageTags($outputPage, $text) {
 function addTag($action, $article) {
 	if($action != 'addTag') return true;
 
-	global $wgRequest, $wgTitle, $wgDBname, $wgOut, $wgUser;
+	global $wgRequest, $wgDBname, $wgOut, $wgUser;
 
 	wfProfileIn( __METHOD__ );
 
@@ -135,7 +135,7 @@ function addTag($action, $article) {
 function removeTag($action, $article) {
 	if ($action != 'removeTag') return true;
 
-	global $wgRequest, $wgTitle, $wgOut, $wgDBname, $wgUser;
+	global $wgRequest, $wgOut, $wgDBname, $wgUser;
 
 	wfProfileIn( __METHOD__ );
 
@@ -184,7 +184,7 @@ function removeTag($action, $article) {
 function tagSearch($action, $article) {
 	if($action != 'tagSearch') return true;
 
-	global $wgRequest, $wgTitle, $wgDBname, $wgOut, $wgUser;
+	global $wgRequest, $wgDBname, $wgOut, $wgUser;
 
 	wfProfileIn( __METHOD__ );
 

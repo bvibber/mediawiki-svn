@@ -37,8 +37,7 @@ function wfSpecialDatasearch() {
 		}
 
 		function execute($parameter) {
-			global
-				$wgOut, $wgTitle;
+			global $wgOut;
 
 			initializeOmegaWikiAttributes(new ViewInformation());
 

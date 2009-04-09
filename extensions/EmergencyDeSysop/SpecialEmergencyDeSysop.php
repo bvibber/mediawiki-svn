@@ -135,7 +135,7 @@ class SpecialEmergencyDeSysop extends SpecialPage {
 	* @brief function executed when the special page is opened.
 	*/
 	function execute( $subpage ) {
-		global $wgRequest, $wgOut, $wgUser, $wgTitle;
+		global $wgRequest, $wgOut, $wgUser;
 		$this->setHeaders();
 		
 		//if the user is blocked, deny access.

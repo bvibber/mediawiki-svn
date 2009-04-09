@@ -4,7 +4,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 class DeleteQueueHooks {
 	public static function onSkinTemplateTabs( $st, &$actions ) {
-		global $wgTitle,$wgRequest,$wgUser;
+		global $wgRequest,$wgUser;
 
 		if (!$st->mTitle) {
 			global $wgTitle;

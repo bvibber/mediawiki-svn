@@ -81,7 +81,7 @@ function wfPolyglotExtension() {
 
 function wfPolyglotArticleFromTitle( &$title, &$article ) {
 	global $wfPolyglotExcemptNamespaces, $wfPolyglotExcemptTalkPages, $wfPolyglotFollowRedirects;
-	global $wgLang, $wgTitle, $wgRequest;
+	global $wgLang, $wgRequest;
 
 	if ($wgRequest->getVal( 'redirect' ) == 'no') {
 		return true;

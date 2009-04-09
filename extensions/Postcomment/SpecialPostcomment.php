@@ -86,7 +86,7 @@ function wfPostcommentForm() {
 
 function wfSpecialPostcomment( $par )
 {
-	global $wgUser, $wgOut, $wgLang, $wgTitle, $wgMemc, $wgDBname;
+	global $wgUser, $wgOut, $wgLang, $wgMemc, $wgDBname;
 	global $wgRequest, $wgSitename, $wgLanguageCode;
 	global $wgFeedClasses, $wgFilterCallback, $wgWhitelistEdit;
 
