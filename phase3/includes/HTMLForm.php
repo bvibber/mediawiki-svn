@@ -548,4 +548,12 @@ class HTMLInfoField extends HTMLFormField {
 	function getInputHTML( $value ) {
 		return !empty($this->mParams['raw']) ? $value : htmlspecialchars($value);
 	}
+	
+	function getTableRow( $value ) {
+		if ( !empty($this->mParams['rawrow']) ) {
+			return $value;
+		}
+		
+		return parent::getTableRow( $value );
+	}
 }

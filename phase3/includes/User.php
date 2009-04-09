@@ -1879,7 +1879,7 @@ class User {
 		}
 
 		if ( array_key_exists( $oname, $this->mOptions ) ) {
-			return trim( $this->mOptions[$oname] );
+			return $this->mOptions[$oname];
 		} else {
 			return $defaultOverride;
 		}
