@@ -129,6 +129,11 @@ $aliases['sw'] = array(
 	'WatchSubpages' => array( 'AngaliaKurasandogo' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'WatchSubpages' => array( 'เฝ้าดูหน้าย่อย' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'WatchSubpages' => array( 'Bantayan ang kabahaging mga pahina' ),

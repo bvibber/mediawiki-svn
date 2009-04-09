@@ -95,10 +95,19 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'inspectcache' => 'Праверыць кэш',
+	'inspectcache-desc' => 'Просты інструмэнт для наладкі і праверкі зьместу агульнага кэша',
 	'inspectcache-ok' => 'Добра',
+	'inspectcache-general' => 'Агульны кэш',
+	'inspectcache-parser' => 'Кэш парсэра',
+	'inspectcache-message' => 'Кэш паведамленьняў',
+	'inspectcache-get' => 'Атрымаць',
 	'inspectcache-delete' => 'Выдаліць',
+	'inspectcache-deleted' => 'Кэш выдалены',
+	'inspectcache-list' => 'Сьпіс',
 );
 
 /** Bulgarian (Български)

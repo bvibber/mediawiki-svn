@@ -175,6 +175,13 @@ $aliases['sw'] = array(
 	'ContributionTotal' => array( 'JumlayaMichango' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'ContributionHistory' => array( 'ประวัติการเขียน' ),
+	'ContributionStatistics' => array( 'สถิติการเขียน' ),
+	'ContributionTotal' => array( 'การเขียนทั้งหมด' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'ContributionHistory' => array( 'Kasaysayan ng ambag' ),

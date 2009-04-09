@@ -3571,8 +3571,10 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Octahedron80
+ * @author Passawuth
  */
 $messages['th'] = array(
+	'sign-email' => 'อีเมล:',
 	'sign-viewfield-ip' => 'หมายเลขไอพี',
 );
 

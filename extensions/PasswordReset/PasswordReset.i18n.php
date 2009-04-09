@@ -145,6 +145,22 @@ $messages['bg'] = array(
 	'disabledusers-summary' => 'Това е списък с потребителски сметки, които са били деактивирани чрез PasswordReset.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'passwordreset' => 'Poništavanje šifre',
+	'passwordreset-invalidusername' => 'Nevaljano korisničko ime',
+	'passwordreset-emptyusername' => 'Prazno korisničko ime',
+	'passwordreset-nopassmatch' => 'Šifre se ne slažu',
+	'passwordreset-username' => 'Korisničko ime:',
+	'passwordreset-newpass' => 'Nova šifra:',
+	'passwordreset-confirmpass' => 'Potvrdi šifru:',
+	'passwordreset-submit' => 'Poništi šifru',
+	'passwordreset-accountdisabled' => 'Račun je onemogućen',
+	'disabledusers' => 'Onemogućeni korisnici',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Mormegil
@@ -1266,20 +1282,22 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'passwordreset' => 'ล้างรหัสผ่าน',
-	'passwordreset-desc' => 'ล้างรหัสผ่านของผู้ใช้วิกิ - ต้องการสิทธิ "ล้างรหัสผ่าน"',
+	'passwordreset-desc' => "[[Special:PasswordReset|เปลี่ยนรหัสผ่านของผู้ใช้]] - ต้องการสิทธิ 'เปลี่ยนรหัสผ่าน'",
 	'passwordreset-invalidusername' => 'ชื่อผู้ใช้ไม่ถูกต้อง',
 	'passwordreset-emptyusername' => 'ชื่อผู้ใช้ว่างเปล่า',
 	'passwordreset-nopassmatch' => 'รหัสผ่านไม่ตรงกัน',
-	'passwordreset-username' => 'ชื่อผู้ใช้',
-	'passwordreset-newpass' => 'รหัสผ่านใหม่',
-	'passwordreset-confirmpass' => 'ยืนยันรหัสผ่าน',
+	'passwordreset-username' => 'ชื่อผู้ใช้:',
+	'passwordreset-newpass' => 'รหัสผ่านใหม่:',
+	'passwordreset-confirmpass' => 'ยืนยันรหัสผ่าน:',
 	'passwordreset-submit' => 'เปลี่ยนรหัสผ่าน',
 	'passwordreset-success' => 'รหัสผ่านถูกเปลี่ยนใหม่เรียบร้อยแล้วสำหรับชื่อผู้ใช้: $1',
 	'passwordreset-disableuser' => 'ระงับการใช้งานบัญชีผู้ใช้?',
+	'passwordreset-disableuserexplain' => '(มีอักขระในรหัสผ่านที่ไม่สามารถใช้งานได้ - ผู้ใช้ไม่สามารถล็อกอินได้)',
 	'passwordreset-disablesuccess' => 'บัญชีผู้ใช้ได้ถูกระงับแล้ว (ไอดีผู้ใช้: $1)',
 	'passwordreset-accountdisabled' => 'บัญชีถูกระงับแล้ว',
 	'disabledusers' => 'ผู้ใช้ที่ถูกระงับ',
 	'disabledusers-summary' => 'นี่คือรายชื่อของผู้ใช้ที่ถูกระงับโดยการล้างรหัสผ่าน',
+	'right-passwordreset' => 'เปลี่ยนรหัสผ่านของผู้ใช้ ([[Special:PasswordReset|หน้าพิเศษ]])',
 );
 
 /** Tagalog (Tagalog)

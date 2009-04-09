@@ -692,6 +692,15 @@ $messages['tg-cyrl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Илова кардани Корбарони интихобшуда',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'whoiswatching' => 'ผู้ที่กำลังเฝ้าดูหน้าวิกิอยู่',
+	'specialwhoiswatchingaddusers' => 'เพิ่มผู้ใช้เพื่อเฝ้าดูหน้า',
+	'specialwhoiswatchingaddbtn' => 'เพิ่มผู้ใช้ที่เลือก',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

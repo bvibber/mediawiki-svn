@@ -64,9 +64,11 @@ $messages['ar'] = array(
 	'security-inforestrict' => '$1 مضبوط إلى $2',
 	'security-desc-LS' => "''(يطبق لأن هذه المقالة موجودة في '''$2 $1''')''",
 	'security-desc-PR' => "''(اضبط من '''لسان الحماية''')''",
-	'security-desc-CR' => "''(هذا الضابط '''فعال الآن''')''",
 	'security-infosysops' => "لا ضوابط مفعلة لأنك عضو في مجموعة '''sysop'''",
 	'security-manygroups' => 'المجموعات $1 و $2',
+	'security-unchain' => 'عدل الأفعال بشكل فردي',
+	'security-type-category' => 'تصنيف',
+	'security-type-namespace' => 'نطاق',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

@@ -1045,14 +1045,25 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'amazonplus-desc' => '輸出Amazon網站資訊的高自定性擴展',
+	'amazonplus-nores' => '錯誤：找不到任何資料！',
+	'amazonplus-noidres' => '錯誤：找不到產品代碼',
+	'amazonplus-fgcerr' => '錯誤：無法從Amazon接收資料！',
+	'amazonplus-slserr' => '錯誤：無法處理來自Amazon的資料！',
 	'amazonplus-used' => '二手',
 	'amazonplus-german' => '德語',
 	'amazonplus-french' => '法語',
 	'amazonplus-japanese' => '日語',
+	'amazonplus-amazon' => 'Amazon價格',
 	'amazonplus-new' => '全新',
+	'amazonplus-none' => '本產品目前無貨可銷售',
+	'amazonplus-cp-none' => '無',
+	'amazonplus-more' => '更多',
+	'amazonplus-less' => '最少',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)

@@ -98,6 +98,13 @@ $messages['hsb'] = array(
 	'pipeescape-desc' => 'Parserowa funkcija <code>#!</code>, jeli chceš znamješko | schować (znamješko | ma so jenož předstajić, bjez wosebiteje funkcije)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'pipeescape-desc' => 'Function del analysator syntactic <code>#!</code> pro inserer le character de barra vertical ("pipe") qua character simple.',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

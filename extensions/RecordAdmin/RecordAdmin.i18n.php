@@ -669,16 +669,19 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'recordadmin' => 'Gestion de datos',
 	'recordadmin-desc' => 'Un [[Special:RecordAdmin|pagina special]] pro cercar e modificar le paginas de datos con un formulario',
-	'recordadmin-select' => 'Selige le typo de datos a cercar',
+	'recordadmin-categoryempty' => 'Al momento il non ha typos de registro. Per favor categorisa le patronos de registro in [[:$1|$1]].',
+	'recordadmin-select' => 'Selige le typo de datos a gerer',
+	'recordadmin-createtype' => 'Entra le nomine de un nove typo de registro a crear',
+	'recordadmin-recordtype' => 'typo de registro',
 	'recordadmin-newsearch' => 'Nove recerca $1',
 	'recordadmin-newrecord' => 'Selige un altere typo de datos',
 	'recordadmin-submit' => 'Submitter',
-	'recordadmin-create' => 'Cercar o crear un dato "$1"',
+	'recordadmin-create' => 'Cercar o crear datos "$1"',
 	'recordadmin-alreadyexist' => 'Pardono, "$1" ja existe!',
 	'recordadmin-createsuccess' => '$1 create',
 	'recordadmin-createerror' => 'Un error occurreva durante le creation de $1!',
 	'recordadmin-badtitle' => 'Titulo invalide!',
-	'recordadmin-recordid' => 'ID del dato:',
+	'recordadmin-recordid' => 'ID del dato/nomine:',
 	'recordadmin-invert' => 'Inverter selection',
 	'recordadmin-buttonsearch' => 'Cercar',
 	'recordadmin-buttoncreate' => 'Crear',
@@ -697,7 +700,9 @@ $messages['ia'] = array(
 	'recordadmin-viewlink' => 'vider',
 	'recordadmin-editlink' => 'modificar',
 	'recordadmin-created' => 'Create',
+	'recordadmin-modified' => 'Modificate',
 	'recordadmin-actions' => 'Actiones',
+	'recordadmin-needscontent' => 'Adder contento…',
 	'right-recordadmin' => 'Cercar e modificar paginas de datos',
 );
 
@@ -840,6 +845,7 @@ $messages['lb'] = array(
 	'recordadmin-created' => 'Ugeluecht',
 	'recordadmin-modified' => 'Geännert',
 	'recordadmin-actions' => 'Aktiounen',
+	'recordadmin-needscontent' => 'Inhalt derbäisetzen …',
 );
 
 /** Nahuatl (Nāhuatl)

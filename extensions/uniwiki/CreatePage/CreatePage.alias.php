@@ -135,6 +135,11 @@ $aliases['sw'] = array(
 	'CreatePage' => array( 'AnzishaUkurasa' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'CreatePage' => array( 'สร้างหน้า' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'CreatePage' => array( 'Likhain ang pahina', 'LikhaPahina' ),

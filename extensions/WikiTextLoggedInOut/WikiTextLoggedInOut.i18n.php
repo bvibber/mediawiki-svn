@@ -339,3 +339,10 @@ $messages['zh-hans'] = array(
 	'wikitextloggedinout-desc' => '使用<tt>&lt;loggedin&gt;</tt> 与 <tt>&lt;loggedout&gt;</tt>这两个解析挂钩，就可以根据用户登录的状态显示不同的文字',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
+$messages['zh-hant'] = array(
+	'wikitextloggedinout-desc' => '使用<tt>&lt;loggedin&gt;</tt> 與 <tt>&lt;loggedout&gt;</tt>這兩個解析掛鉤，就可以根據用戶登錄的狀態顯示不同的文字',
+);
+

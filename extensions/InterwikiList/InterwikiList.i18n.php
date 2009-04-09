@@ -507,9 +507,15 @@ $messages['te'] = array(
 
 /** Thai (ไทย)
  * @author Mopza
+ * @author Passawuth
  */
 $messages['th'] = array(
+	'interwikilist' => 'รายชื่ออินเตอร์วิกิ',
+	'interwikilist-desc' => 'เพิ่ม[[Special:Interwikilist|หน้าพิเศษ]]เพื่อดูอินเตอร์วิกิลิงก์ที่มีอยู่',
 	'interwikilist-linkname' => 'ลิงก์ข้ามภาษา',
+	'interwikilist-target' => 'เป้าหมาย URL',
+	'interwikilist-filter' => 'รายชื่อตัวกรอง',
+	'interwikilist-prefix' => 'คำนำหน้าอินเตอร์วิกิ:',
 );
 
 /** Turkmen (Türkmençe)

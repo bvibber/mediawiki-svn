@@ -1448,10 +1448,12 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Octahedron80
+ * @author Passawuth
  */
 $messages['th'] = array(
 	'importusers-form-button' => 'นำเข้า',
 	'importusers-log-summary-all' => 'ทั้งหมด',
+	'importusers-realname' => 'ชื่อจริง',
 );
 
 /** Tagalog (Tagalog)

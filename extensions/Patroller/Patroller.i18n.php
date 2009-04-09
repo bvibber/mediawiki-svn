@@ -227,6 +227,7 @@ $messages['bs'] = array(
 	'patrol-reasons' => '* Jednostavni vandalizam
 * Početnička proba
 * Vidi stranicu za razgovor',
+	'patrol-another' => 'Prikaži slijedeću izmjenu, ako je moguće.',
 	'patrol-resume' => 'Kliknite ovdje za nastavak.',
 );
 

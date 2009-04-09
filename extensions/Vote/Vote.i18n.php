@@ -1482,11 +1482,16 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Manop
+ * @author Passawuth
  */
 $messages['th'] = array(
-	'vote' => 'โหวต',
+	'vote' => 'ลงคะแนน',
+	'vote-current' => "ปัจจุบันคุณลงคะแนนให้ '''$1'''",
+	'vote-submit' => 'ลงคะแนน',
+	'vote-registered' => 'คะแนนของคุณถูกนับเรียบร้อยแล้ว',
 	'vote-view-results' => 'ดูผล',
 	'vote-results' => 'ผลโหวต',
+	'vote-results-choice' => 'ตัวเลือก',
 	'vote-login' => 'คุณจำเป็นต้อง $1 สำหรับโหวต',
 	'vote-login-link' => 'ล็อกอิน',
 );

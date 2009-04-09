@@ -144,6 +144,11 @@ $aliases['sw'] = array(
 	'SpecialUserStats' => array( 'TakwimuzaMtumiaji', 'TakwimumaalumzaMtumiaji' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'SpecialUserStats' => array( 'สถิติผู้ใช้' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'SpecialUserStats' => array( 'Mga estadistika ng tagagamit', 'Mga estadistika ng natatanging tagagamit' ),

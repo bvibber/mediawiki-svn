@@ -87,6 +87,11 @@ $aliases['ja'] = array(
 	'ViewAPC' => array( 'APC情報', 'APC表示' ),
 );
 
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'ViewAPC' => array( 'APC보기' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ViewAPC' => array( 'APC-Enfommazjuhne' ),

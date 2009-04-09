@@ -95,6 +95,14 @@ $messages['hsb'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Ličba aktualnych podawkow, kotrež IP-adresa je pušćiła, po projekće Honey Pot',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'honeypot-desc' => 'Provide integration con le [http://projecthoneypot.org/ projecto Honey Pot] pro sitos MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Numero de eventos recente que iste adresse IP ha causate, secundo le projecto Honey Pot',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

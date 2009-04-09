@@ -513,10 +513,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'seealso' => '參見',
+	'seealso-desc' => '使用<code><nowiki><seealso></nowiki></code>以在地化「參閱」標題',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

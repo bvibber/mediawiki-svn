@@ -590,9 +590,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'abcdesc' => '加入<tt>&lt;abc&gt;</tt>標籤以格式化ABC音樂',
 	'abcdownload' => '下載:',
 );
 

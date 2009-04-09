@@ -207,6 +207,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'contributionseditcount' => 'A felhasználónak $1 szerkesztése van.',
+	'contributionseditcount-desc' => 'Megjelenít egy szerkesztésszámlálót a [[Special:Contributions|szerkesztő közreműködései lapon]]',
 );
 
 /** Interlingua (Interlingua)

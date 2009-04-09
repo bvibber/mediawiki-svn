@@ -2773,6 +2773,7 @@ YouTube可能需要一些时间处理您的视频，所以可能不会立即出�
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -2787,6 +2788,7 @@ $messages['zh-hant'] = array(
 	'youtubeauthsub_category' => '分類',
 	'youtubeauthsub_submit' => '提交',
 	'youtubeauthsub_clickhere' => '按這裡登入YouTube',
+	'youtubeauthsub_tokenerror' => '驗證使用者訊息發生錯誤，請重新整理頁面。',
 	'youtubeauthsub_success' => "上載成功!
 您的影片經已上載。
 按<a href='http://www.youtube.com/watch?v=$1'這裡</a>觀看恁的影片。

@@ -671,9 +671,9 @@ Dat kann der ßööver ööndlesh beschäfftijje, also beß e besje fürseschtes
 $messages['lb'] = array(
 	'asksql' => 'SQL Offro',
 	'asksql-desc' => 'SQL-Offroen iwwer eng [[Special:Asksql|Spezialsäit]] maachen.',
-	'asksqltext' => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze rrichten.
+	'asksqltext' => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze riichten.
 Benotzt dëst Zeechen' ('esou wéi hei') fir Werter an der Ufro ofzegrenzen.
-Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir froe mir iech dës Funktioun mat Moderatioun ze benotzen.",
+Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir gitt spuersam mat dëser Fonktioun ëm.",
 	'sqlislogged' => 'Zu ärer Informatioun: All Ufroen ginn an e Logbuch agedro',
 	'sqlquery' => 'Ufro aginn',
 	'querybtn' => 'Ufro schécken',

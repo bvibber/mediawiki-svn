@@ -9690,10 +9690,36 @@ $wdMessages['zh-hans'] = array(
 	'ow_Text' => '文本',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
 $wdMessages['zh-hant'] = array(
-	'datasearch' => 'Wikidata: 資料搜尋',
-	'langman_title' => '語言管理員',
 	'languages' => 'Wikidata: 語言管理員',
+	'langman-desc' => '增加與更改[[Special:Languages]]的語言設定',
+	'langman_title' => '語言管理員',
+	'langman_not_allowed' => '您沒有修改語言設定的權限',
+	'langman_header' => '輸入語言代碼和其英語名稱：',
+	'langman_req_fields' => '語言名稱和ISO 639-3碼都需要輸入！',
+	'langman_adding' => '增加 $1 與代碼 $2',
+	'langman_langname' => '語言名稱：',
+	'langman_iso639-3' => 'ISO 639-3 代碼：',
+	'langman_iso639-2' => 'ISO 639-2 代碼：',
+	'langman_wikimedia' => '維基媒體代碼：',
+	'langman_field_optional' => '(可選)',
+	'langman_addlang' => '增加語言',
+	'importlangnames' => 'Wikidata:匯入語言名稱',
+	'importlangnames_title' => '匯入語言名稱',
+	'importlangnames_not_allowed' => '您沒有匯入語言名稱的權限。',
+	'importlangnames_added' => '語言名稱「$1」已增加。',
+	'importlangnames_not_found' => '<strong>找不到語言名稱「$1」</strong>',
+	'datasearch' => 'Wikidata: 資料搜尋',
+	'datasearch_language' => '語言：',
+	'datasearch_found_word' => '找尋字元',
+	'datasearch_meaning' => '意思',
+	'datasearch_ext_identifier' => '外部辨識',
+	'datasearch_search_text' => '搜尋文字：',
+	'datasearch_within_words' => '與字元：',
+	'datasearch_within_ext_ids' => '與外部辨識器：',
+	'importtsv' => 'Wikidata: 匯入分頁分割資料',
 );
 

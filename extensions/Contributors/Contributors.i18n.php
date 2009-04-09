@@ -549,6 +549,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'contributors' => 'Szerkesztők',
+	'contributors-desc' => 'Megjeleníti egy lap főszerkesztőit',
 	'contributors-toolbox' => 'Főszerkesztők',
 	'contributors-legend' => 'A lap főszerkesztőinek listája',
 	'contributors-target' => 'Cím:',

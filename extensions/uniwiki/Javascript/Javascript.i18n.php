@@ -136,6 +136,13 @@ $messages['hsb'] = array(
 	'javascript-desc' => 'Přidawa dataju uniwiki.js ke kóždej stronje, kotraž JavaScriptowy kod wobsahuje, kotryž so přez rozšěrjenja Uniwiki zhromadnje wužiwa',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'javascript-desc' => 'Az uniwiki.js hozzáadása minden laphoz. Ez tartalmazza az Uniwiki-kiterjesztések által közösen használt JavaScript-kódot',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

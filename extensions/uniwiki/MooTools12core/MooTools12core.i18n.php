@@ -152,6 +152,13 @@ $messages['hsb'] = array(
 	'mootools12core-desc' => 'Přidawa [http://mootools.net mootools-1.2-core-yc.js], kompaktny JavaScriptowy wobłukowy system, kóždej stronje',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'mootools12core-desc' => 'A [http://mootools.net mootools-1.2-core-yc.js], egy kompakt JavaScript keretrendszer hozzáadása minden laphoz',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

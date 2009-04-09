@@ -318,6 +318,7 @@ $messages['hu'] = array(
 	'categorywatch-catmoveout' => 'áthelyezte a(z) $1 című lapot a(z) $2 kategóriából a(z) $3 kategóriába',
 	'categorywatch-catadd' => 'hozzáadta a(z) $1 című lapot a(z) $2 kategóriához',
 	'categorywatch-catsub' => 'eltávolította a(z) $1 című lapot a(z) $2 kategóriából',
+	'categorywatch-autocat' => '$1 automatikusan figyeli',
 );
 
 /** Interlingua (Interlingua)

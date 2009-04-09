@@ -99,11 +99,19 @@ $messages['arz'] = array(
 $messages['bs'] = array(
 	'framedvideo_errors' => 'Desilo se više poruke!',
 	'framedvideo_error' => 'Nastala je greška!',
+	'framedvideo_error_unknown_type' => 'Nepoznat id video usluge ("$1"): provjerite parametar "type".',
 	'framedvideo_error_no_id_given' => 'Nedostaje parametar "id".',
+	'framedvideo_error_height_required' => 'Video tipa "$1" zahtijeva parametar "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Video tipa "$1" zahtijeva parametar "height", ne samo parametar "width".',
 	'framedvideo_error_width_too_big' => 'Navedena vrijednost parametra "width" je prevelika.',
 	'framedvideo_error_height_too_big' => 'Navedena vrijednost parametra "height" je prevelika.',
+	'framedvideo_error_no_integer' => 'Navedena vrijednost "$1" nije pozitivan broj.',
 	'framedvideo_error_limit' => 'Najveća dopuštena vrijednost je $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Vrijednosti parametara "full" i "size" nisu dopuštene za id video usluge "$1".',
 	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Više o sintaksi]].',
+	'framedvideo_error_height_and_width_required' => 'Video tipa "$1" zahtijeva parametre "height" i "width2" ili "width".',
+	'framedvideo-desc' => 'Omogućuje uključivanje video snimaka sa raznih web stranica koristeći oznaku <tt><nowiki><video></nowiki></tt>',
 );
 
 /** German (Deutsch)

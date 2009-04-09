@@ -176,6 +176,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'whosonline' => 'Online felhasználók',
+	'whosonline-desc' => '[[Special:WhosOnline|Lista]] a jelenlévő bejelentkezett és névtelen szerkesztőkről',
 );
 
 /** Interlingua (Interlingua)
@@ -379,6 +380,13 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'whosonline' => 'ఆన్&zwnj;లైన్లో ఎవరున్నారు',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'whosonline' => 'ผู้ที่กำลังออนไลน์',
 );
 
 /** Tagalog (Tagalog)

@@ -353,6 +353,7 @@ $wgCustomToolbarMessages['bs'] = array(
 	'ct_submit' => 'Idi!',
 	'ct_close' => 'Zatvori prozor',
 	'ct_success' => 'Postavljanje datoteke uspješno!',
+	'ct_popupblocked' => 'Prozor za postavljanje se nije mogao otvoriti. Molimo provjerite Vaš softver za blokiranje popup prozora.',
 	'ct_user_user' => 'Korisnik',
 	'ct_user_tip' => 'Ubaci link na korisničku stranicu',
 	'ct_user_caption' => 'Korisnički link',

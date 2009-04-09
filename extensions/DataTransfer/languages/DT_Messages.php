@@ -108,14 +108,16 @@ $messages['an'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'dt-desc' => 'يسمح باستيراد وتصدير بيانات هيكلية محتواة في استدعاءات قالب',
+	'dt-desc' => 'يسمح باستيراد وتصدير بيانات محتواة في استدعاءات قالب',
 	'viewxml' => 'عرض XML',
 	'dt_viewxml_docu' => 'من فضلك اختر من بين التصنيفات والنطاقات التالية للعرض في صيغة XML.',
 	'dt_viewxml_categories' => 'تصنيفات',
 	'dt_viewxml_namespaces' => 'نطاقات',
 	'dt_viewxml_simplifiedformat' => 'صيغة مبسطة',
 	'dt_xml_namespace' => 'نطاق',
+	'dt_xml_pages' => 'صفحات',
 	'dt_xml_page' => 'صفحة',
+	'dt_xml_template' => 'قالب',
 	'dt_xml_field' => 'حقل',
 	'dt_xml_name' => 'اسم',
 	'dt_xml_title' => 'عنوان',
@@ -573,19 +575,26 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'dt-desc' => 'Permitte importar e exportar datos structurate continite in appellos de patronos',
+	'dt-desc' => 'Permitte importar e exportar datos continite in appellos a patronos',
 	'viewxml' => 'Vider XML',
 	'dt_viewxml_docu' => 'Per favor selige inter le sequente categorias e spatios de nomines pro vider in formato XML.',
 	'dt_viewxml_categories' => 'Categorias',
 	'dt_viewxml_namespaces' => 'Spatios de nomines',
 	'dt_viewxml_simplifiedformat' => 'Formato simplificate',
 	'dt_xml_namespace' => 'Spatio de nomines',
+	'dt_xml_pages' => 'Paginas',
 	'dt_xml_page' => 'Pagina',
+	'dt_xml_template' => 'Patrono',
 	'dt_xml_field' => 'Campo',
 	'dt_xml_name' => 'Nomine',
 	'dt_xml_title' => 'Titulo',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto libere',
+	'importxml' => 'Importar XML',
+	'dt_importxml_selectfile' => 'Per favor selige un file XML a importar:',
+	'dt_importxml_editsummary' => 'Importation de XML',
+	'dt_importxml_importing' => 'Importation in curso…',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|pagina|paginas}} essera importate ex le file XML.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -884,19 +893,26 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
-	'dt-desc' => 'Gjer det mogleg å importera og eksportera strukturert data i maloppkallingar',
+	'dt-desc' => 'Gjer det mogleg å importera og eksportera data i maloppkallingar',
 	'viewxml' => 'Syn XML',
 	'dt_viewxml_docu' => 'Vel mellom følgjande kategoriar og namnerom for å syna dei i XML-format.',
 	'dt_viewxml_categories' => 'Kategoriar',
 	'dt_viewxml_namespaces' => 'Namnerom',
 	'dt_viewxml_simplifiedformat' => 'Forenkla format',
 	'dt_xml_namespace' => 'Namnerom',
+	'dt_xml_pages' => 'Sider',
 	'dt_xml_page' => 'Side',
+	'dt_xml_template' => 'Mal',
 	'dt_xml_field' => 'Felt',
 	'dt_xml_name' => 'Namn',
 	'dt_xml_title' => 'Tittel',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Fritekst',
+	'importxml' => 'Importer XML',
+	'dt_importxml_selectfile' => 'Vel XML-fila som skal verta importert:',
+	'dt_importxml_editsummary' => 'XML-importering',
+	'dt_importxml_importing' => 'Importerer...',
+	'dt_importxml_success' => '{{PLURAL:$1|Éi side vil verta importert|$1 sider vil verta importerte}} frå XML-fila.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -922,19 +938,26 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'dt-desc' => "Autoriza l’impòrt e l’expòrt de donadas estructuradas contengudas dins d'apèls de modèls",
+	'dt-desc' => "Permet l’impòrt e l’expòrt de donadas contengudas dins d'apèls de modèls",
 	'viewxml' => 'Veire XML',
 	'dt_viewxml_docu' => 'Secconatz demest las categorias e los espacis de nomenatges per visionar en format XML.',
 	'dt_viewxml_categories' => 'Categorias',
 	'dt_viewxml_namespaces' => 'Espacis de nomenatge',
 	'dt_viewxml_simplifiedformat' => 'Format simplificat',
 	'dt_xml_namespace' => 'Espaci de nom',
+	'dt_xml_pages' => 'Paginas',
 	'dt_xml_page' => 'Pagina',
+	'dt_xml_template' => 'Modèl',
 	'dt_xml_field' => 'Camp',
 	'dt_xml_name' => 'Nom',
 	'dt_xml_title' => 'Títol',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Tèxt Liure',
+	'importxml' => 'Impòrt en XML',
+	'dt_importxml_selectfile' => "Seleccionatz lo fichièr XML d'importar :",
+	'dt_importxml_editsummary' => 'Impòrt XML',
+	'dt_importxml_importing' => 'Impòrt en cors...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|pagina serà importada|paginas seràn importadas}} dempuèi lo fichièr XML.',
 );
 
 /** Ossetic (Иронау)
@@ -1239,19 +1262,26 @@ $messages['tl'] = array(
  * @author Mach
  */
 $messages['tr'] = array(
-	'dt-desc' => 'Şablon çağrılarında içerilen yapısal verilerin içe ve dışa aktarımına izin verir',
+	'dt-desc' => 'Şablon çağrılarında içerilen verilerin içe ve dışa aktarımına izin verir',
 	'viewxml' => "XML'i gör",
 	'dt_viewxml_docu' => 'Lütfen, XML formatında görüntülemek için aşağıdaki kategori ve ad alanları arasından seçin.',
 	'dt_viewxml_categories' => 'Kategoriler',
 	'dt_viewxml_namespaces' => 'Alan adları',
 	'dt_viewxml_simplifiedformat' => 'Basitleştirilmiş format',
 	'dt_xml_namespace' => 'Alan adı',
+	'dt_xml_pages' => 'Sayfalar',
 	'dt_xml_page' => 'Sayfa',
+	'dt_xml_template' => 'Şablon',
 	'dt_xml_field' => 'Alan',
 	'dt_xml_name' => 'İsim',
 	'dt_xml_title' => 'Başlık',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Özgür Metin',
+	'importxml' => 'XML içe aktar',
+	'dt_importxml_selectfile' => 'Lütfen içe aktarmak için XML dosyasını seçin:',
+	'dt_importxml_editsummary' => 'XML içe aktarımı',
+	'dt_importxml_importing' => 'İçe aktarıyor...',
+	'dt_importxml_success' => 'XML dosyasından $1 {{PLURAL:$1|sayfa|sayfa}} içe aktarılacak.',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

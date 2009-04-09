@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 	'ajaxlogin-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links or tag names.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'ajaxlogin-create' => 'إنشاء حساب',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -424,10 +431,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
  * @author 許瑜真 (Yuchen Hsu/KaurJmeb)
  */
 $messages['zh-hant'] = array(
+	'ajaxlogin-desc' => '使用動態視窗登入及記憶密碼',
+	'ajaxLogin1' => '為完成登入，您必需輸入一組新密碼。
+這將可以讓您不損失任何編輯資料直接登入。',
 	'ajaxLogin2' => '這動作可能會使你跳離編輯頁面，可能會損失編輯結果。確定要離開嗎？',
+	'ajaxlogin-create' => '建立新帳號',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)

@@ -124,6 +124,13 @@ $messages['hsb'] = array(
 	'contributorsaddon-desc' => 'Přidawa JavaScriptowe wuskakowanske wokna onMouseOver k wotkazam "Hłowni přinošowarjo"',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'contributorsaddon-desc' => 'JavaScriptes előugró ablak a „Főszerkesztők” hivatkozáshoz',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

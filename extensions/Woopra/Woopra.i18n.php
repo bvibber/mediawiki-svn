@@ -371,3 +371,10 @@ $messages['zh-hans'] = array(
 	'woopra-desc' => '允许[http://www.woopra.com/ Woopra 在线跟踪软件]为阁下的MediaWiki安装程序工作',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
+ */
+$messages['zh-hant'] = array(
+	'woopra-desc' => '允許[http://www.woopra.com/ Woopra 線上追縱軟體]為您安裝MediaWiki',
+);
+

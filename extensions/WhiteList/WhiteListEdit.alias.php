@@ -151,6 +151,12 @@ $aliases['sa'] = array(
 	'WhiteListEdit' => array( 'धवलसूचीसम्पादनम्‌' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'WhiteList' => array( 'บัญชีขาว' ),
+	'WhiteListEdit' => array( 'แก้ไขบัญชีขาว' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'WhiteList' => array( 'Puting talaan' ),

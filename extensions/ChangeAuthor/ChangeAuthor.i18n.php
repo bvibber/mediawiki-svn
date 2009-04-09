@@ -875,6 +875,7 @@ $messages['hu'] = array(
 	'changeauthor-success' => 'A kérésedet sikeresen végrehajtottam.',
 	'changeauthor-logentry' => '$1 $2 azonosítójú változatának szerzőjét $3 felhasználóról $4 felhasználóra cserélte',
 	'changeauthor-logpagename' => 'Szerző-változtatási napló',
+	'right-changeauthor' => 'A változat szerzőjének megváltoztatása',
 );
 
 /** Interlingua (Interlingua)

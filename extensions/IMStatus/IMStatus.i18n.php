@@ -126,9 +126,21 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'imstatus-desc' => 'Дадае тэгі для паказу анлайн-статусу розных інтэрнэт-камунікатараў (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Сынтаксіс',
 	'imstatus_default' => 'Па змоўчваньні',
+	'imstatus_example' => 'Прыклад',
+	'imstatus_possible_val' => 'Магчымыя значэньні',
+	'imstatus_max' => 'максымум',
+	'imstatus_min' => 'мінімум',
+	'imstatus_or' => 'ці',
+	'imstatus_style' => 'стыль індыкатара статусу',
+	'imstatus_action' => 'дзеяньне, калі будзе націснутая кнопка',
+	'imstatus_details_saa' => 'Дадатковай інфармацыю пра ўсе стылі і дзеяньні, глядзіце на $1.',
+	'imstatus_your_name' => 'Ваша $1 імя',
 );
 
 /** Bulgarian (Български)

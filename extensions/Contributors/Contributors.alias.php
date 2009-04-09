@@ -182,6 +182,11 @@ $aliases['sw'] = array(
 	'Contributors' => array( 'Wachangiaji' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'Contributors' => array( 'ผู้เขียน' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'Contributors' => array( 'Mga tagapag-ambag' ),

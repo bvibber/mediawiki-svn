@@ -276,6 +276,13 @@ $messages['te'] = array(
 	'newsextension-desc' => 'సరికూర్చిన ఇటీవలి మార్పులని ఒక వికీ పేజీలో కానీ లేదా RSS లేదా ఆటమ్ ఫీడుగానీ చూపిస్తుంది',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'newsextension-desc' => 'แสดงรายการปรับปรุงล่าสุดตามที่เลือกบนหน้าวิกิ หรือในรูปแบบ RSS หรือ Atom feed',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

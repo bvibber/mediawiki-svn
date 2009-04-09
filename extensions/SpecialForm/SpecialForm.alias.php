@@ -134,6 +134,11 @@ $aliases['sw'] = array(
 	'Form' => array( 'Fomu' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'Form' => array( 'ฟอร์ม' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'Form' => array( 'Pormularyo' ),

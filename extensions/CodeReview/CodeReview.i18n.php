@@ -389,6 +389,14 @@ $messages['ar'] = array(
 التعليق:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: تغييرات ملحقة',
+	'codereview-email-body2' => 'المستخدم "$1" قام بتغييرات ملحقة بن$2.
+
+المسار الكامل: $3
+
+ملخص الارتكاب:
+
+$4',
 	'repoadmin' => 'إدارة المستودع',
 	'repoadmin-new-legend' => 'إنشاء مستودع جديد',
 	'repoadmin-new-label' => 'اسم المستودع:',

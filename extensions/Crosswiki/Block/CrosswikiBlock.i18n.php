@@ -256,7 +256,11 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'crosswikiblock-desc' => 'Omogućuje blokiranje korisnika na drugim wikijima koristeći [[Special:Crosswikiblock|posebnu stranicu]]',
 	'crosswikiblock' => 'Blokiranje korisnika na drugim wikijima',
+	'crosswikiblock-header' => 'Ova stranica omogućuje blokiranje korisnika na drugoj wiki.
+Molimo provjerite da li Vam je dopušteno da izvršite akcije na ovoj wiki i da li Vaše akcije odgovaraju svim pravilima.',
+	'crosswikiblock-target' => 'IP adresa ili korisničko ime i odredišna wiki:',
 	'crosswikiblock-expiry' => 'Ističe:',
 	'crosswikiblock-reason' => 'Razlog:',
 	'crosswikiblock-submit' => 'Blokiraj ovog korisnika',
@@ -274,13 +278,16 @@ Nazad na:
 * [[Special:CrosswikiBlock|Obrazac za blokiranje]]
 * [[$2]]",
 	'crosswikiblock-nousername' => 'Nije navedeno korisničko ime',
+	'crosswikiblock-local' => 'Lokalne blokade nisu podržane putem ovog interfejsa. Koristite [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound' => 'Baza podataka $1 ne postoji',
 	'crosswikiblock-noname' => '"$1" nije valjano korisničko ime.',
 	'crosswikiblock-nouser' => 'Korisnik "$3" nije pronađen.',
 	'crosswikiblock-noexpiry' => 'Nevaljan rok isteka: $1.',
 	'crosswikiblock-noreason' => 'Nije naveden razlog.',
+	'crosswikiblock-notoken' => 'Nevaljan token izmjene.',
 	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
 	'crosswikiblock-noblock' => 'Ovaj korisnik nije blokiran.',
+	'crosswikiunblock-local' => 'Lokalne deblokade nisu podržane putem ovog interfejsa. Koristite [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Catalan (Català)

@@ -1476,6 +1476,13 @@ $messages['tg-cyrl'] = array(
 	'createsigndoc-error-pagenoexist' => 'Хато: Саҳифаи [[$1]] вуҷуд надорад.',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'createsigndoc-email' => 'อีเมล:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

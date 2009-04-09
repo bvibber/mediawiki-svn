@@ -171,7 +171,7 @@ $aliases['sw'] = array(
 
 /** Thai (ไทย) */
 $aliases['th'] = array(
-	'WhosOnline' => array( 'ใครออนไลน์อยู่' ),
+	'WhosOnline' => array( 'ผู้ที่กำลังออนไลน์' ),
 );
 
 /** Tagalog (Tagalog) */

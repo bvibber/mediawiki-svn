@@ -596,9 +596,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Alexsh
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'absenteelandlord-reason' => '由於管理員不活躍，數據庫已經被自動鎖定。',
+	'absenteelandlord-desc' => '若所有的管理人員在一段時間內不活躍，維基數據庫將被自動鎖定',
 );
 

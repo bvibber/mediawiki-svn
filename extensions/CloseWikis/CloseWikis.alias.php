@@ -137,6 +137,11 @@ $aliases['sw'] = array(
 	'CloseWiki' => array( 'FungaWiki' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'CloseWiki' => array( 'ปิดวิกิ' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'CloseWiki' => array( 'Isara ang wiki' ),

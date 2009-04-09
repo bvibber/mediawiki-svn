@@ -527,7 +527,7 @@ $messages['hu'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Nincs $1 nevű felhasználó.',
 	'countedits-resultheader' => '$1 eredményei',
-	'countedits-resulttext' => '$1 $2 szerkesztést végzett.',
+	'countedits-resulttext' => '$1 {{PLURAL:$2|egy|$2}} szerkesztést végzett.',
 	'countedits-mostactive' => 'Legaktívabb szerkesztők',
 	'countedits-nocontribs' => 'A wikinek nincsenek szerkesztői.',
 );

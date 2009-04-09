@@ -147,6 +147,11 @@ $aliases['sa'] = array(
 	'Badimages' => array( 'कुचित्र:' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'Badimages' => array( 'ภาพเสีย' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'Badimages' => array( 'Masamang mga larawan', 'Masasamang mga larawan' ),

@@ -504,6 +504,14 @@ $messages['te'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|స్వాగత సందేశా]]న్ని కొత్త వాడుకరి చర్చా పేజీలో చేరుస్తుంది',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'newusermessage-desc' => 'เพิ่มข้อความไปยังหน้าคุยกับผู้ใช้ที่ถูกสร้างขึ้นใหม่',
+	'newuseredit-summary' => 'เพิ่ม[[{{int:newusermessage-template}}|ข้อความต้อนรับ]]ไปยังหน้าคุยกับผู้ใช้ใหม่',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

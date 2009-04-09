@@ -436,6 +436,7 @@ $messages['bs'] = array(
 	'math_MissingOpenBraceAtEnd' => 'Nedostaje otvorena zagrada "{" na kraju unosa',
 	'math_MissingOpenBraceBefore' => 'Nedostaje otvorena zagrada "{" ispred "$1"',
 	'math_TooManyTokens' => 'Unos je predug',
+	'math_UnexpectedNextCell' => 'Komanda "&" se može pojavljivati samo unutar "\\begin ... \\end" bloka',
 	'math_UnexpectedNextRow' => 'Komanda "\\\\" se može nalaziti samo unutar "\\begin ... \\end" bloka',
 	'math_UnmatchedEnd' => 'Pronađen "\\end" bez pripadajućeg "\\begin"',
 	'math_UnmatchedLeft' => 'Pronađeno "\\left" bez pripadajućeg "\\right"',

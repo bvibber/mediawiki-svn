@@ -3281,6 +3281,13 @@ $messages['tg-cyrl'] = array(
 	'openidchoosepassword' => 'гузарвожа:',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'openidemail' => 'อีเมล',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -143,6 +143,11 @@ $aliases['sw'] = array(
 	'MediaSearch' => array( 'TafutaPicha' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'MediaSearch' => array( 'ค้นหาสื่อ' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'MediaSearch' => array( 'Paghahanap ng midya' ),

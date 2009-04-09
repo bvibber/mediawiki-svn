@@ -140,6 +140,11 @@ $aliases['su'] = array(
 	'WhoIsWatching' => array( 'SahaNuMoncorong' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'WhoIsWatching' => array( 'ผู้ที่กำลังเฝ้าดู' ),
+);
+
 /** Tagalog (Tagalog) */
 $aliases['tl'] = array(
 	'WhoIsWatching' => array( 'Sino ang nagbabantay' ),

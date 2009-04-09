@@ -145,6 +145,13 @@ $messages['hsb'] = array(
 	'csshooks-desc' => 'Přidawa CSS k wudaću HTML stronow za lěpši stil',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'csshooks-desc' => 'CSS-t ad a lapok HTML-kimenetéhez a stílusosabb megjelenéshez',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
