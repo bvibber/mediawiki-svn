@@ -90,14 +90,15 @@ class SimpleSecurity {
 	 * Render security info if any restrictions on this title
 	 */
 	public function onOutputPageBeforeHTML( &$out, &$text ) {
-		global $wgTitle, $wgUser;
+		global $wgUser;
 
+		$title = $out->getTitle();
 		# Render security info if any
-		if ( is_object( $wgTitle ) && $wgTitle->exists() && count( $this->info['LS'] ) + count( $this->info['PR'] ) ) {
+		if ( is_object( $title ) && $title->exists() && count( $this->info['LS'] ) + count( $this->info['PR'] ) ) {
 
 			$rights = $wgUser->getRights();
-			$wgTitle->getRestrictions( false );
-			$reqgroups = $wgTitle->mRestrictions;
+			$title->getRestrictions( false );
+			$reqgroups = $title->mRestrictions;
 			$sysop = in_array( 'sysop', $wgUser->getGroups() );
 
 			# Build restrictions text

@@ -112,9 +112,9 @@ class SpecialEmergencyDeSysop extends SpecialPage {
 	* This function shows the request form
 	*/
 	function showForm() {
-		global $wgRequest, $wgOut, $wgUser, $wgTitle;
+		global $wgRequest, $wgOut, $wgUser;
 
-		$action = $wgTitle->escapeLocalUrl();
+		$action = $this->getTitle()->escapeLocalUrl();
 		$f = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'name' => 'request' ) );
 
 

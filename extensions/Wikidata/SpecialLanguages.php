@@ -73,8 +73,8 @@ function wfSpecialManageLanguages() {
 			# $wgRequest->getText( 'page' );
 		}
 		function showForm() {
-			global $wgTitle, $wgOut;
-			$action = $wgTitle->escapeLocalURL( 'action=submit' );
+			global $wgOut;
+			$action = $this->getTitle()->escapeLocalURL( 'action=submit' );
 			$wgOut->addHTML(
 <<<END
 <form name="addlanguage" method="post" action="$action">
