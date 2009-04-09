@@ -144,7 +144,12 @@ class HTMLForm {
 		$html .= Xml::hidden( 'wpEditToken', $wgUser->editToken() );
 		$html .= Xml::hidden( 'title', $this->getTitle() );
 		
-		$html .= Xml::submitButton( $this->getSubmitText() );
+		$attribs = array();
+		
+		if ( isset($this->mSubmitID) )
+			$attribs['id'] = $this->mSubmitID;
+		
+		$html .= Xml::submitButton( $this->getSubmitText(), $attribs );
 		
 		$html = Xml::tags( 'form',
 							array(
@@ -195,6 +200,10 @@ class HTMLForm {
 	
 	function getSubmitText() {
 		return $this->mSubmitText;
+	}
+	
+	function setSubmitID( $t ) {
+		$this->mSubmitID = $t;
 	}
 	
 	function setMessagePrefix( $p ) {

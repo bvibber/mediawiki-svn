@@ -24,12 +24,13 @@ class SpecialPreferences extends SpecialPage {
 		
 		$formDescriptor = Preferences::getPreferences( $wgUser );
 		
-		$htmlForm = new HTMLForm( $formDescriptor, 'prefs' );
+		$htmlForm = new PreferencesForm( $formDescriptor, 'prefs' );
 		
 		$htmlForm->setSubmitText( wfMsg('saveprefs') );
 		$htmlForm->setTitle( $this->getTitle() );
+		$htmlForm->setSubmitID( 'prefsubmit' );
 		$htmlForm->setSubmitCallback( array( 'SpecialPreferences', 'trySubmit' ) );
-		
+
 		$htmlForm->show();
 	}
 	
@@ -92,4 +93,41 @@ class SpecialPreferences extends SpecialPage {
 		
 		return true;
 	}
+}
+
+/** Some tweaks to allow js prefs to work */
+class PreferencesForm extends HTMLForm {
+
+	function displayForm( $submitResult ) {
+		global $wgUser, $wgOut;
+		
+		if ( $submitResult !== false ) {
+			$this->displayErrors( $submitResult );
+		}
+		
+		$html = $this->displaySection( $this->mFieldTree );
+		
+		// Hidden fields
+		$html .= Xml::hidden( 'wpEditToken', $wgUser->editToken() );
+		$html .= Xml::hidden( 'title', $this->getTitle() );
+		
+		$attribs = array();
+		
+		if ( isset($this->mSubmitID) )
+			$attribs['id'] = $this->mSubmitID;
+		
+		$html .= Xml::submitButton( $this->getSubmitText(), $attribs );
+		
+		$html = Xml::tags( 'div', array( 'id' => 'preferences' ), $html );
+		
+		$html = Xml::tags( 'form',
+							array(
+								'action' => $this->getTitle()->getFullURL(),
+								'method' => 'post',
+							),
+							$html );
+							
+		$wgOut->addHTML( $html );
+	}
+	
 }

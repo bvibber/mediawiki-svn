@@ -160,5 +160,5 @@ function updateTimezoneSelection(force_offset) {
 	}
 }
 
-hookEvent("load", unhidetzbutton);
+//hookEvent("load", unhidetzbutton);
 hookEvent("load", tabbedprefs);

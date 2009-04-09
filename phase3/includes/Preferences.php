@@ -18,7 +18,7 @@ class Preferences {
 					'type' => 'info',
 					'label-message' => 'username',
 					'default' => $user->getName(),
-					'section' => 'user',
+					'section' => 'personal',
 				);
 		
 		$defaultPreferences['userid'] =
@@ -26,7 +26,7 @@ class Preferences {
 					'type' => 'info',
 					'label-message' => 'uid',
 					'default' => $user->getId(),
-					'section' => 'user',
+					'section' => 'personal',
 				);
 		
 		# Get groups to which the user belongs
@@ -48,7 +48,7 @@ class Preferences {
 								count($userEffectiveGroupsArray) ),
 					'default' => $wgLang->commaList( $userEffectiveGroupsArray ),
 					'raw' => true,
-					'section' => 'user',
+					'section' => 'personal',
 				);
 		
 		$defaultPreferences['editcount'] =
@@ -56,7 +56,7 @@ class Preferences {
 					'type' => 'info',
 					'label-message' => 'prefs-edits',
 					'default' => $user->getEditCount(),
-					'section' => 'user',
+					'section' => 'personal',
 				);
 		
 		if ($user->getRegistration()) {
@@ -65,7 +65,7 @@ class Preferences {
 						'type' => 'info',
 						'label-message' => 'prefs-registration',
 						'default' => $wgLang->timeanddate( $user->getRegistration() ),
-						'section' => 'user',
+						'section' => 'personal',
 					);
 		}
 				
@@ -76,7 +76,7 @@ class Preferences {
 					array(
 						'type' => 'text',
 						'default' => $user->getRealName(),
-						'section' => 'user',
+						'section' => 'personal',
 						'label-message' => 'yourrealname',
 						'help-message' => 'prefs-help-realname',
 					);
@@ -88,7 +88,7 @@ class Preferences {
 				array(
 					'type' => 'text',
 					'default' => $user->getEmail(),
-					'section' => 'user',
+					'section' => 'personal',
 					'label-message' => 'youremail',
 					'help-message' => $wgEmailConfirmToEdit
 										? 'prefs-help-email-required'
@@ -109,14 +109,14 @@ class Preferences {
 						'raw' => true,
 						'default' => $link,
 						'label-message' => 'yourpassword',
-						'section' => 'user',
+						'section' => 'personal',
 					);
 		}
 		
 		$defaultPreferences['gender'] =
 				array(
 					'type' => 'select',
-					'section' => 'user',
+					'section' => 'personal',
 					'options' => array(
 						'male' => wfMsg('gender-male'),
 						'female' => wfMsg('gender-female'),
@@ -141,7 +141,7 @@ class Preferences {
 		$defaultPreferences['language'] =
 				array(
 					'type' => 'select',
-					'section' => 'user',
+					'section' => 'personal',
 					'options' => $options,
 					'default' => $wgContLanguageCode,
 					'label-message' => 'yourlanguage',
@@ -173,7 +173,7 @@ class Preferences {
 						'label-message' => 'yourvariant',
 						'type' => 'select',
 						'options' => $options,
-						'section' => 'user',
+						'section' => 'personal',
 					);
 			}
 		}
@@ -195,14 +195,14 @@ class Preferences {
 					'label-message' => 'yournick',
 					'validation-callback' =>
 						array( 'Preferences', 'validateSignature' ),
-					'section' => 'user',
+					'section' => 'personal',
 					'filter-callback' => array( 'Preferences', 'cleanSignature' ),
 				);
 		$defaultPreferences['fancysig'] =
 				array(
 					'type' => 'toggle',
 					'label-message' => 'tog-fancysig',
-					'section' => 'user'
+					'section' => 'personal'
 				);
 					
 		
@@ -353,13 +353,13 @@ class Preferences {
 				array(
 					'type' => 'toggle',
 					'label-message' => 'tog-usenewrc',
-					'section' => 'recentchanges',
+					'section' => 'rc',
 				);
 		$defaultPreferences['rcdays'] =
 				array(
 					'type' => 'int',
 					'label-message' => 'recentchangesdays',
-					'section' => 'recentchanges',
+					'section' => 'rc',
 					'min' => 1,
 					'max' => ceil($wgRCMaxAge / (3600*24)),
 				);
@@ -367,13 +367,13 @@ class Preferences {
 				array(
 					'type' => 'int',
 					'label-message' => 'recentchangescount',
-					'section' => 'recentchanges',
+					'section' => 'rc',
 				);
 		$defaultPreferences['hideminor'] =
 				array(
 					'type' => 'toggle',
 					'label-message' => 'tog-hideminor',
-					'section' => 'recentchanges',
+					'section' => 'rc',
 				);
 				
 		global $wgUseRCPatrol;
@@ -381,13 +381,13 @@ class Preferences {
 			$defaultPreferences['hidepatrolled'] =
 					array(
 						'type' => 'toggle',
-						'section' => 'recentchanges',
+						'section' => 'rc',
 						'label-message' => 'tog-hidepatrolled',
 					);
 			$defaultPreferences['newpageshidepatrolled'] =
 					array(
 						'type' => 'toggle',
-						'section' => 'recentchanges',
+						'section' => 'rc',
 						'label-message' => 'tog-newpageshidepatrolled',
 					);
 		}
@@ -489,21 +489,21 @@ class Preferences {
 				array(
 					'type' => 'int',
 					'label-message' => 'resultsperpage',
-					'section' => 'search',
+					'section' => 'searchoptions',
 					'min' => 0,
 				);
 		$defaultPreferences['contextlines'] =
 				array(
 					'type' => 'int',
 					'label-message' => 'contextlines',
-					'section' => 'search',
+					'section' => 'searchoptions',
 					'min' => 0,
 				);
 		$defaultPreferences['contextchars'] =
 				array(
 					'type' => 'int',
 					'label-message' => 'contextchars',
-					'section' => 'search',
+					'section' => 'searchoptions',
 					'min' => 0,
 				);
 		
@@ -522,7 +522,7 @@ class Preferences {
 					'type' => 'multiselect',
 					'label-message' => 'defaultns',
 					'options' => $nsOptions,
-					'section' => 'search',
+					'section' => 'searchoptions',
 				);
 				
 		global $wgEnableMWSuggest;
@@ -531,7 +531,7 @@ class Preferences {
 					array(
 						'type' => 'toggle',
 						'label-message' => 'mwsuggest-disable',
-						'section' => 'search',
+						'section' => 'searchoptions',
 					);
 		}
 		
