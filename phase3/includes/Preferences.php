@@ -70,14 +70,17 @@ class Preferences {
 		}
 				
 		// Actually changeable stuff
-		$defaultPreferences['realname'] =
-				array(
-					'type' => 'text',
-					'default' => $user->getRealName(),
-					'section' => 'user',
-					'label-message' => 'yourrealname',
-					'help-message' => 'prefs-help-realname',
-				);
+		global $wgAllowRealName;
+		if ($wgAllowRealName) {
+			$defaultPreferences['realname'] =
+					array(
+						'type' => 'text',
+						'default' => $user->getRealName(),
+						'section' => 'user',
+						'label-message' => 'yourrealname',
+						'help-message' => 'prefs-help-realname',
+					);
+		}
 				
 		global $wgEmailConfirmToEdit;
 		
@@ -90,7 +93,25 @@ class Preferences {
 					'help-message' => $wgEmailConfirmToEdit
 										? 'prefs-help-email-required'
 										: 'prefs-help-email',
+					'validation-callback' => array( 'Preferences', 'validateEmail' ),
 				);
+		
+		global $wgAuth;
+		if ($wgAuth->allowPasswordChange()) {
+			global $wgUser; // For skin.
+			$link = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'ResetPass' ),
+				wfMsgHtml( 'prefs-resetpass' ), array() ,
+				array('returnto' => SpecialPage::getTitleFor( 'Preferences') ) );
+				
+			$defaultPreferences['password'] =
+					array(
+						'type' => 'info',
+						'raw' => true,
+						'default' => $link,
+						'label-message' => 'yourpassword',
+						'section' => 'user',
+					);
+		}
 		
 		$defaultPreferences['gender'] =
 				array(
@@ -794,5 +815,18 @@ class Preferences {
 		}
 		
 		return $signature;
+	}
+	
+	static function validateEmail( $email, $alldata ) {
+		global $wgUser; // To check
+		if ( !$wgUser->isValidEmailAddr( $email ) ) {
+			return wfMsgExt( 'invalidemailaddress', 'parseinline' );
+		}
+		
+		global $wgEmailConfirmToEdit;
+		if( $wgEmailConfirmToEdit && !$email ) {
+			return wfMsgExt( 'noemailtitle', 'parseinline' );
+		}
+		return true;
 	}
 }
