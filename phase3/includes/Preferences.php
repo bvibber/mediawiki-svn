@@ -3,15 +3,95 @@
 class Preferences {
 	static $defaultPreferences = null;
 	
-	static function getPreferences() {
+	static function getPreferences( $user ) {
 		if (self::$defaultPreferences)
 			return self::$defaultPreferences;
 	
-		global $wgLang, $wgRCMaxAge, $wgUser;
+		global $wgLang, $wgRCMaxAge;
 		
 		$defaultPreferences = array();
 		
 		## User info #####################################
+		// Information panel
+		$defaultPreferences['username'] =
+				array(
+					'type' => 'info',
+					'label-message' => 'username',
+					'default' => $user->getName(),
+					'section' => 'user',
+				);
+		
+		$defaultPreferences['userid'] =
+				array(
+					'type' => 'info',
+					'label-message' => 'uid',
+					'default' => $user->getId(),
+					'section' => 'user',
+				);
+		
+		# Get groups to which the user belongs
+		$userEffectiveGroups = $user->getEffectiveGroups();
+		$userEffectiveGroupsArray = array();
+		foreach( $userEffectiveGroups as $ueg ) {
+			if( $ueg == '*' ) {
+				// Skip the default * group, seems useless here
+				continue;
+			}
+			$userEffectiveGroupsArray[] = User::makeGroupLinkHTML( $ueg );
+		}
+		asort( $userEffectiveGroupsArray );
+		
+		$defaultPreferences['usergroups'] =
+				array(
+					'type' => 'info',
+					'label' => wfMsgExt( 'prefs-memberingroups', 'parseinline',
+								count($userEffectiveGroupsArray) ),
+					'default' => $wgLang->commaList( $userEffectiveGroupsArray ),
+					'raw' => true,
+					'section' => 'user',
+				);
+		
+		$defaultPreferences['editcount'] =
+				array(
+					'type' => 'info',
+					'label-message' => 'prefs-edits',
+					'default' => $user->getEditCount(),
+					'section' => 'user',
+				);
+		
+		if ($user->getRegistration()) {
+			$defaultPreferences['registrationdate'] =
+					array(
+						'type' => 'info',
+						'label-message' => 'prefs-registration',
+						'default' => $wgLang->timeanddate( $user->getRegistration() ),
+						'section' => 'user',
+					);
+		}
+				
+		// Actually changeable stuff
+		$defaultPreferences['realname'] =
+				array(
+					'type' => 'text',
+					'default' => $user->getRealName(),
+					'section' => 'user',
+					'label-message' => 'yourrealname',
+					'help-message' => 'prefs-help-realname',
+				);
+				
+		global $wgEmailConfirmToEdit;
+		
+		$defaultPreferences['emailaddress'] =
+				array(
+					'type' => 'text',
+					'default' => $user->getEmail(),
+					'section' => 'user',
+					'label-message' => 'youremail',
+					'help-message' => $wgEmailConfirmToEdit
+										? 'prefs-help-email-required'
+										: 'prefs-help-email',
+				);
+		
 		$defaultPreferences['gender'] =
 				array(
 					'type' => 'select',
@@ -22,6 +102,28 @@ class Preferences {
 						'unknown' => wfMsg('gender-unknown'),
 					),
 					'label-message' => 'yourgender',
+					'help-message' => 'prefs-help-gender',
+				);
+				
+		// Language
+		global $wgContLanguageCode;
+		$languages = Language::getLanguageNames( false );
+		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
+			$languages[$wgContLanguageCode] = $wgContLanguageCode;
+		}
+		ksort( $languages );
+		
+		$options = array();
+		foreach( $languages as $code => $name ) {
+			$options[$code] = "$code - $name";
+		}
+		$defaultPreferences['language'] =
+				array(
+					'type' => 'select',
+					'section' => 'user',
+					'options' => $options,
+					'default' => $wgContLanguageCode,
+					'label-message' => 'yourlanguage',
 				);
 				
 		global $wgContLang, $wgDisableLangConversion;
@@ -70,9 +172,10 @@ class Preferences {
 					'type' => 'text',
 					'maxlength' => $wgMaxSigChars,
 					'label-message' => 'yournick',
-					'validation' =>
-						array( 'DefaultPreferences', 'validateSignature' ),
+					'validation-callback' =>
+						array( 'Preferences', 'validateSignature' ),
 					'section' => 'user',
+					'filter-callback' => array( 'Preferences', 'cleanSignature' ),
 				);
 		$defaultPreferences['fancysig'] =
 				array(
@@ -80,8 +183,6 @@ class Preferences {
 					'label-message' => 'tog-fancysig',
 					'section' => 'user'
 				);
-				
-		## TODO STUFF STORED IN USER ROW
 					
 		
 		## Skin #####################################
@@ -348,12 +449,12 @@ class Preferences {
 								'delete' => 'watchdeletion' );
 		
 		// Kinda hacky
-		if( $wgUser->isAllowed( 'createpage' ) || $wgUser->isAllowed( 'createtalk' ) ) {
+		if( $user->isAllowed( 'createpage' ) || $user->isAllowed( 'createtalk' ) ) {
 			$watchTypes['read'] = 'watchcreations';
 		}
 								
 		foreach( $watchTypes as $action => $pref ) {
-			if ( $wgUser->isAllowed( $action ) ) {
+			if ( $user->isAllowed( $action ) ) {
 				$defaultPreferences[$pref] = array(
 					'type' => 'toggle',
 					'section' => 'watchlist',
@@ -384,8 +485,24 @@ class Preferences {
 					'section' => 'search',
 					'min' => 0,
 				);
-				
-		## TODO Searchable namespaces.
+		
+		$nsOptions = array();
+		foreach( $wgContLang->getNamespaces() as $ns => $name ) {
+			if ($ns < 0) continue;
+			$displayNs = str_replace( '_', ' ', $name );
+			
+			if (!$displayNs) $displayNs = wfMsg( 'blanknamespace' );
+			
+			$nsOptions[$ns] = $displayNs;
+		}
+		
+		$defaultPreferences['searchNs'] =
+				array(
+					'type' => 'multiselect',
+					'label-message' => 'defaultns',
+					'options' => $nsOptions,
+					'section' => 'search',
+				);
 				
 		global $wgEnableMWSuggest;
 		if ($wgEnableMWSuggest) {
@@ -530,13 +647,36 @@ class Preferences {
 					);
 		}
 				
-		## Unsorted --------------------------------------------------------------
+		## Prod in defaults from the user
+		global $wgDefaultUserOptions;
+		foreach( $defaultPreferences as $name => &$info ) {
+			$prefFromUser = $user->getOption( $name );
+			$field = HTMLForm::loadInputFromParameters( $info ); // For validation
+			$globalDefault = isset($wgDefaultUserOptions[$name])
+								? $wgDefaultUserOptions[$name]
+								: null;
+			
+			// If it validates, set it as the default
+			if ( isset( $user->mOptions[$name] ) && // Make sure we're not just pulling nothing
+					$field->validate( $prefFromUser, $user->mOptions ) ) {
+				$info['default'] = $prefFromUser;
+			} elseif ( isset($info['default']) ) {
+				// Already set, no problem
+				continue;
+			} elseif( $field->validate( $globalDefault, $user->mOptions ) ) {
+				$info['default'] = $globalDefault;
+			}
+		}
 				
 		wfRunHooks( 'GetPreferences', array( &$defaultPreferences ) );
 		
 		self::$defaultPreferences = $defaultPreferences;
 		
 		return $defaultPreferences;
+	}
+	
+	static function savePreferencesFromForm( $data, $user ) {
+		
 	}
 	
 	static function generateSkinOptions() {
@@ -565,12 +705,12 @@ class Preferences {
 			$extraLinks = '';
 			global $wgAllowUserCss, $wgAllowUserJs;
 			if( $wgAllowUserCss ) {
-				$cssPage = Title::makeTitleSafe( NS_USER, $wgUser->getName().'/'.$skinkey.'.css' );
+				$cssPage = Title::makeTitleSafe( NS_USER, $user->getName().'/'.$skinkey.'.css' );
 				$customCSS = $sk->makeLinkObj( $cssPage, wfMsgExt('prefs-custom-css', array() ) );
 				$extraLinks .= " ($customCSS)";
 			}
 			if( $wgAllowUserJs ) {
-				$jsPage = Title::makeTitleSafe( NS_USER, $wgUser->getName().'/'.$skinkey.'.js' );
+				$jsPage = Title::makeTitleSafe( NS_USER, $user->getName().'/'.$skinkey.'.js' );
 				$customJS = $sk->makeLinkObj( $jsPage, wfMsgHtml('prefs-custom-js') );
 				$extraLinks .= " ($customJS)";
 			}
@@ -642,5 +782,17 @@ class Preferences {
 		} else {
 			return true;
 		}
+	}
+	
+	static function cleanSignature( $signature, $alldata ) {
+		global $wgParser;
+		if( $alldata['fancysig'] ) {
+			$signature = $wgParser->cleanSig( $signature );
+		} else {
+			// When no fancy sig used, make sure ~{3,5} get removed.
+			$signature = $wgParser->cleanSigInSig( $signature );
+		}
+		
+		return $signature;
 	}
 }

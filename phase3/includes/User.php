@@ -1921,25 +1921,19 @@ class User {
 	 */
 	function setOption( $oname, $val ) {
 		$this->load();
-		if ( is_null( $this->mOptions ) ) {
-			$this->mOptions = User::getDefaultOptions();
-		}
+		$this->loadOptions();
+		
 		if ( $oname == 'skin' ) {
 			# Clear cached skin, so the new one displays immediately in Special:Preferences
 			unset( $this->mSkin );
 		}
-		// Filter out any newlines that may have passed through input validation.
-		// Newlines are used to separate items in the options blob.
-		if( $val ) {
-			$val = str_replace( "\r\n", "\n", $val );
-			$val = str_replace( "\r", "\n", $val );
-			$val = str_replace( "\n", " ", $val );
-		}
+		
 		// Explicitly NULL values should refer to defaults
 		global $wgDefaultUserOptions;
 		if( is_null($val) && isset($wgDefaultUserOptions[$oname]) ) {
 			$val = $wgDefaultUserOptions[$oname];
 		}
+		
 		$this->mOptions[$oname] = $val;
 	}
 	
@@ -2285,24 +2279,6 @@ class User {
 		# 	We also need to clear here the "you have new message" notification for the own user_talk page
 		#	This is cleared one page view later in Article::viewUpdates();
 		}
-	}
-
-	/**
-	 * Encode this user's options as a string
-	 * @return \string Encoded options
-	 * @private
-	 */
-	function encodeOptions() {
-		$this->load();
-		if ( is_null( $this->mOptions ) ) {
-			$this->mOptions = User::getDefaultOptions();
-		}
-		$a = array();
-		foreach ( $this->mOptions as $oname => $oval ) {
-			array_push( $a, $oname.'='.$oval );
-		}
-		$s = implode( "\n", $a );
-		return $s;
 	}
 
 	/**
@@ -3431,6 +3407,8 @@ class User {
 		while( $row = $dbr->fetchObject( $res ) ) {
 			$this->mOptions[$row->up_property] = unserialize( $row->up_value );
 		}
+		
+		$this->mOptionsLoaded = true;
 	}
 	
 	protected function saveOptions() {

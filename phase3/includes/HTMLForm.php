@@ -18,6 +18,7 @@ class HTMLForm {
 	 	'check' => 'HTMLCheckField',
 	 	'toggle' => 'HTMLCheckField',
 	 	'int' => 'HTMLIntField',
+	 	'info' => 'HTMLInfoField',
 	 );
 	 
 	function __construct( $descriptor, $messagePrefix ) {
@@ -107,6 +108,7 @@ class HTMLForm {
 		
 		// Check for validation
 		foreach( $this->mFlatFields as $fieldname => $field ) {
+			if ( !empty($field->mParams['nodata']) ) continue;
 			if ( $field->validate( $this->mFieldData[$fieldname],
 					$this->mFieldData ) !== true ) {
 				return isset($this->mValidationErrorMessage) ?
@@ -213,7 +215,10 @@ class HTMLForm {
 		
 		foreach( $fields as $key => $value ) {
 			if ( is_object( $value ) ) {
-				$tableHtml .= $value->getTableRow( $this->mFieldData[$key] );
+				$v = empty($value->mParams['nodata'])
+							? $this->mFieldData[$key]
+							: $value->getDefault();
+				$tableHtml .= $value->getTableRow( $v );
 			} elseif ( is_array( $value ) ) {
 				$section = $this->displaySection( $value );
 				$legend = wfMsg( "{$this->mMessagePrefix}-$key" );
@@ -232,7 +237,14 @@ class HTMLForm {
 		$fieldData = array();
 		
 		foreach( $this->mFlatFields as $fieldname => $field ) {
+			if ( !empty($field->mParams['nodata']) ) continue;
 			$fieldData[$fieldname] = $field->loadDataFromRequest( $wgRequest );
+		}
+		
+		// Filter data.
+		foreach( $fieldData as $name => &$value ) {
+			$field = $this->mFlatFields[$name];
+			$value = $field->filter( $value, $this->mFlatFields );
 		}
 		
 		$this->mFieldData = $fieldData;
@@ -248,6 +260,14 @@ abstract class HTMLFormField {
 		}
 		
 		return true;
+	}
+	
+	function filter( $value, $alldata ) {
+		if( isset( $this->mFilterCallback ) ) {
+			$value = call_user_func( $this->mFilterCallback, $value, $alldata );
+		}
+		
+		return $value;
 	}
 	
 	function loadDataFromRequest( $request ) {
@@ -291,6 +311,10 @@ abstract class HTMLFormField {
 		
 		if ( isset( $params['validation-callback'] ) ) {
 			$this->mValidationCallback = $params['validation-callback'];
+		}
+		
+		if ( isset( $params['filter-callback'] ) ) {
+			$this->mFilterCallback = $params['filter-callback'];
 		}
 	}
 	
@@ -441,6 +465,8 @@ class HTMLMultiSelectField extends HTMLFormField {
 	function validate( $value, $alldata ) {
 		$p = parent::validate( $value, $alldata );
 		if ($p !== true) return $p;
+		
+		if (!is_array($value)) return false;
 		// If all options are valid, array_intersect of the valid options and the provided
 		//  options will return the provided options.
 		$validValues = array_intersect( $value, array_keys($this->mParams['options']) );
@@ -453,6 +479,7 @@ class HTMLMultiSelectField extends HTMLFormField {
 	function getInputHTML( $value ) {
 		$html = '';
 		foreach( $this->mParams['options'] as $key => $label ) {
+			global $wgRequest;
 			$checkbox = Xml::check( $this->mName.'[]', in_array( $key, $value ),
 							array( 'id' => $this->mID, 'value' => $key ) );
 			$checkbox .= '&nbsp;' . Xml::tags( 'label', array( 'for' => $this->mID ), $label );
@@ -466,9 +493,22 @@ class HTMLMultiSelectField extends HTMLFormField {
 	function loadDataFromRequest( $request ) {
 		// won't work with getCheck
 		if ($request->getCheck( 'wpEditToken' ) ) {
-			return $request->getArray( $this->mName );
+			$arr = $request->getArray( $this->mName );
+			
+			if (!$arr)
+				$arr = array();
+				
+			return $arr;
 		} else {
 			return $this->getDefault();
+		}
+	}
+	
+	function getDefault() {
+		if ( isset( $this->mDefault ) ) {
+			return $this->mDefault;
+		} else {
+			return array();
 		}
 	}
 }
@@ -495,5 +535,17 @@ class HTMLRadioField extends HTMLFormField {
 		}
 		
 		return $html;
+	}
+}
+
+class HTMLInfoField extends HTMLFormField {
+	function __construct( $info ) {
+		$info['nodata'] = true;
+		
+		parent::__construct($info);
+	}
+	
+	function getInputHTML( $value ) {
+		return !empty($this->mParams['raw']) ? $value : htmlspecialchars($value);
 	}
 }
