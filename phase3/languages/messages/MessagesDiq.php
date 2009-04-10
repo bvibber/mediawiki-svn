@@ -362,7 +362,7 @@ It must have at least $1 characters and be different from your username.',
 'prefs-watchlist' => 'Lista seyr-kerdışi',
 'saveprefs'       => 'Qeyd ke',
 'timezonelegend'  => 'Warey saete',
-'files'           => 'Dosyey',
+'prefs-files'           => 'Dosyey',
 
 # User rights log
 'rightsnone' => '(çino)',

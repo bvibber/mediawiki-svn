@@ -272,7 +272,7 @@ $messages = array(
 'prefs-watchlist'   => 'Watchlist',
 'prefs-misc'        => 'Misc',
 'saveprefs'         => 'Taro',
-'textboxsize'       => 'Mapadécéŋ',
+'prefs-editing'       => 'Mapadécéŋ',
 'searchresultshead' => 'Masappa',
 
 # Groups

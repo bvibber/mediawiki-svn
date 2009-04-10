@@ -1107,12 +1107,12 @@ Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį
 'qbsettings-floatingleft'   => 'Plaukiojantis kairėje',
 'qbsettings-floatingright'  => 'Plaukiojantis dešinėje',
 'changepassword'            => 'Pakeisti slaptažodį',
-'skin'                      => 'Išvaizda',
+'prefs-skin'                      => 'Išvaizda',
 'skin-preview'              => 'Peržiūra',
 'math'                      => 'Matematika',
 'dateformat'                => 'Datos formatas',
 'datedefault'               => 'Jokio pasirinkimo',
-'datetime'                  => 'Data ir laikas',
+'prefs-datetime'                  => 'Data ir laikas',
 'math_failure'              => 'Nepavyko apdoroti',
 'math_unknown_error'        => 'nežinoma klaida',
 'math_unknown_function'     => 'nežinoma funkcija',
@@ -1134,7 +1134,7 @@ Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį
 'saveprefs'                 => 'Išsaugoti',
 'resetprefs'                => 'Išvalyti neišsaugotus pakeitimus',
 'restoreprefs'              => 'Atstatyti visus numatytuosius nustatymus',
-'textboxsize'               => 'Redagavimas',
+'prefs-editing'               => 'Redagavimas',
 'prefs-edit-boxsize'        => 'Redagavimo lango dydis.',
 'rows'                      => 'Eilutės:',
 'columns'                   => 'Stulpeliai:',
@@ -1171,7 +1171,7 @@ Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį
 'prefs-namespaces'          => 'Vardų sritys',
 'defaultns'                 => 'Pagal nutylėjimą ieškoti šiose vardų srityse:',
 'default'                   => 'pagal nutylėjimą',
-'files'                     => 'Failai',
+'prefs-files'                     => 'Failai',
 
 # User rights
 'userrights'                  => 'Naudotojų teisių valdymas', # Not used as normal message but as header for the special page itself

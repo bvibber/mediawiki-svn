@@ -132,7 +132,7 @@ $messages = array(
 'searchresults' => "tu'a le se sisku",
 
 # Preferences page
-'textboxsize'       => 'ca galfi',
+'prefs-editing'       => 'ca galfi',
 'searchresultshead' => "tu'a le se sisku",
 
 # Recent changes

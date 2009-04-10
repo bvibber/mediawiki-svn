@@ -851,12 +851,12 @@ päringu ees prefiksit ''all:''. Konkreetsest nimeruumist otsimiseks kasuta pref
 'qbsettings-floatingleft'   => 'Ujuvalt vasakul',
 'qbsettings-floatingright'  => 'Ujuvalt paremal',
 'changepassword'            => 'Muuda parool',
-'skin'                      => 'Kujundus',
+'prefs-skin'                      => 'Kujundus',
 'skin-preview'              => 'Eelvaade',
 'math'                      => 'Valemite näitamine',
 'dateformat'                => 'Kuupäeva formaat',
 'datedefault'               => 'Eelistus puudub',
-'datetime'                  => 'Kuupäev ja kellaaeg',
+'prefs-datetime'                  => 'Kuupäev ja kellaaeg',
 'math_failure'              => 'Arusaamatu süntaks',
 'math_unknown_error'        => 'Tundmatu viga',
 'math_unknown_function'     => 'Tundmatu funktsioon',
@@ -873,7 +873,7 @@ päringu ees prefiksit ''all:''. Konkreetsest nimeruumist otsimiseks kasuta pref
 'prefs-resetpass'           => 'Muuda parooli',
 'saveprefs'                 => 'Salvesta eelistused',
 'resetprefs'                => 'Lähtesta eelistused',
-'textboxsize'               => 'Redigeerimisseaded',
+'prefs-editing'               => 'Redigeerimisseaded',
 'prefs-edit-boxsize'        => 'Toimetamise akna suurus.',
 'rows'                      => 'Redaktoriakna ridade arv:',
 'columns'                   => 'Veergude arv',
@@ -906,7 +906,7 @@ päringu ees prefiksit ''all:''. Konkreetsest nimeruumist otsimiseks kasuta pref
 'prefs-namespaces'          => 'Nimeruumid',
 'defaultns'                 => 'Vaikimisi otsi järgmistest nimeruumidest:',
 'default'                   => 'vaikeväärtus',
-'files'                     => 'Failid',
+'prefs-files'                     => 'Failid',
 
 # User rights
 'userrights'               => 'Kasutaja õiguste muutmine', # Not used as normal message but as header for the special page itself

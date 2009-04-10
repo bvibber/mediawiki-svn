@@ -832,12 +832,12 @@ Kan ''all:'' laganeyal ta varafa exulera (gon keyaksexo is teza ikz-), oke wetce
 'qbsettings-floatingleft'   => 'Roneon ezas',
 'qbsettings-floatingright'  => 'Talteon ezas',
 'changepassword'            => 'Betara va remravlem',
-'skin'                      => 'Laviuca',
+'prefs-skin'                      => 'Laviuca',
 'skin-preview'              => 'Abdiwira',
 'math'                      => 'Rendu des maths',
 'dateformat'                => 'Evlabreviz',
 'datedefault'               => 'Megelukon',
-'datetime'                  => 'Evla is bartiv',
+'prefs-datetime'                  => 'Evla is bartiv',
 'math_failure'              => 'Erreur math',
 'math_unknown_error'        => 'erreur indéterminée',
 'math_unknown_function'     => 'megrupen fliok',
@@ -858,7 +858,7 @@ Kan ''all:'' laganeyal ta varafa exulera (gon keyaksexo is teza ikz-), oke wetce
 'prefs-resetpass'           => 'Betara va remravlem',
 'saveprefs'                 => 'Va lodamaceem tuená',
 'resetprefs'                => 'Va lodamceem dimplekú',
-'textboxsize'               => 'Sutelaxo',
+'prefs-editing'               => 'Sutelaxo',
 'prefs-edit-boxsize'        => 'Lum ke betaradilk.',
 'rows'                      => 'Emacekeem',
 'columns'                   => 'Brizeem',
@@ -882,7 +882,7 @@ Kan ''all:'' laganeyal ta varafa exulera (gon keyaksexo is teza ikz-), oke wetce
 'prefs-namespaces'          => 'Yoltxo',
 'defaultns'                 => 'Omavon, aneyara ko bato yoltxo se :',
 'default'                   => 'omava',
-'files'                     => 'Iyeltak se',
+'prefs-files'                     => 'Iyeltak se',
 
 # User rights
 'userrights'                  => 'Pofera va favesikrokeem', # Not used as normal message but as header for the special page itself

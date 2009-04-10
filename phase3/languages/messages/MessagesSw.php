@@ -583,7 +583,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'preferences'               => 'Mapendekezo',
 'mypreferences'             => 'Mapendekezo yangu',
 'changepassword'            => 'Badilisha neno la siri',
-'skin'                      => 'Sura',
+'prefs-skin'                      => 'Sura',
 'prefs-watchlist'           => 'Maangalizi',
 'saveprefs'                 => 'Hifadhi',
 'rows'                      => 'Mistari:',
@@ -600,7 +600,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'timezoneregion-europe'     => 'Ulaya',
 'timezoneregion-indian'     => 'Bahari ya Hindi',
 'timezoneregion-pacific'    => 'Bahari ya Pasifiki',
-'files'                     => 'Mafaili',
+'prefs-files'                     => 'Mafaili',
 
 # Groups
 'group'       => 'Kundi:',

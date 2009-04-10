@@ -613,7 +613,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'prefsnologin'       => 'Эсир сайта кĕмен',
 'qbsettings'         => 'Навигаци хăми',
 'changepassword'     => 'Пароле улăштар',
-'skin'               => 'Ерешленӳ',
+'prefs-skin'               => 'Ерешленӳ',
 'skin-preview'       => 'Малтанхи курăну',
 'dateformat'         => 'Дата формачĕ',
 'datedefault'        => 'Палăртман чухнехи',
@@ -622,7 +622,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'prefs-watchlist'    => 'Сăнав списокĕ',
 'prefs-misc'         => 'Ытти ĕнерлевсем',
 'saveprefs'          => 'Çырса хур',
-'textboxsize'        => 'Тӳрлетни',
+'prefs-editing'        => 'Тӳрлетни',
 'rows'               => 'Йěркесем',
 'columns'            => 'Юпасем:',
 'searchresultshead'  => 'Шыраса тупрăмăр',
@@ -632,7 +632,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'timezonelegend'     => 'Сехет поясĕ',
 'localtime'          => 'Вырăнти вăхăт',
 'servertime'         => 'Сервер вăхăчě',
-'files'              => 'Файлсем',
+'prefs-files'              => 'Файлсем',
 
 # User rights
 'userrights'               => 'Хутшăнакансен прависемпе ĕçлесси', # Not used as normal message but as header for the special page itself

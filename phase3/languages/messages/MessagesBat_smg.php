@@ -754,12 +754,12 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'qbsettings'                => 'Greitasā pasėrėnkėms',
 'qbsettings-none'           => 'Neruodītė',
 'changepassword'            => 'Pakeistė slaptažuodė',
-'skin'                      => 'Ėšruoda',
+'prefs-skin'                      => 'Ėšruoda',
 'skin-preview'              => 'Parveiza',
 'math'                      => 'Matematėka',
 'dateformat'                => 'Datuos fuormats',
 'datedefault'               => 'Juokė pasėrėnkėma',
-'datetime'                  => 'Data ė čiesos',
+'prefs-datetime'                  => 'Data ė čiesos',
 'math_failure'              => 'Nepavīka apdoruotė',
 'math_unknown_error'        => 'nežinuoma klaida',
 'math_unknown_function'     => 'nežinuoma funkcėjė',
@@ -775,7 +775,7 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'saveprefs'                 => 'Ėšsauguotė',
 'resetprefs'                => 'Atstatītė nostatīmos',
 'restoreprefs'              => 'Atstatītė vėsus numatītūsius nustatīmus',
-'textboxsize'               => 'Redagavėms',
+'prefs-editing'               => 'Redagavėms',
 'prefs-edit-boxsize'        => 'Redagavėma longa dėdoms.',
 'rows'                      => 'Eilotės:',
 'columns'                   => 'Štolpalē:',
@@ -811,7 +811,7 @@ Kėtė admėnėstratuorē šėtom pruojekte vėsdar galės pasėiktė pasliepta 
 'prefs-namespaces'          => 'Vardū srėtīs',
 'defaultns'                 => 'Palē nutīliejėma ėiškuotė šėtuosė vardū srėtīsė:',
 'default'                   => 'palē nūtīliejėma',
-'files'                     => 'Failā',
+'prefs-files'                     => 'Failā',
 
 # User rights
 'userrights'               => 'Nauduotuoju teisiu valdīms', # Not used as normal message but as header for the special page itself

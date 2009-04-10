@@ -480,7 +480,7 @@ HTML tags جانچئے.',
 'prefsnologin'      => 'نا داخل شدہ حالت',
 'changepassword'    => 'کلمۂ شناخت تبدیل کریں',
 'math'              => 'ریاضی',
-'datetime'          => 'تاریخ و وقت',
+'prefs-datetime'          => 'تاریخ و وقت',
 'prefs-rc'          => 'حالیہ تبدیلیاں',
 'prefs-misc'        => 'دیگر',
 'saveprefs'         => 'محفوظ',
@@ -491,7 +491,7 @@ HTML tags جانچئے.',
 'localtime'         => 'مقامی وقت',
 'allowemail'        => 'دوسرے صارفین کو برقی خظ لکھنے کا اختیار دیں',
 'default'           => 'طے شدہ',
-'files'             => 'فائلیں',
+'prefs-files'             => 'فائلیں',
 
 # User rights
 'userrights'               => 'صارف کے حقوق کا انتظام', # Not used as normal message but as header for the special page itself

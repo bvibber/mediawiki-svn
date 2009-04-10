@@ -246,7 +246,7 @@ $messages = array(
 # Preferences page
 'preferences'              => 'Teythi ow akont',
 'mypreferences'            => 'Teythi ow akont',
-'skin'                     => 'Krohen',
+'prefs-skin'                     => 'Krohen',
 'prefs-watchlist'          => 'Rol golyas',
 'saveprefs'                => 'Gwitha',
 'searchresultshead'        => 'Hwilas',
@@ -255,7 +255,7 @@ $messages = array(
 'timezoneregion-asia'      => 'Asi',
 'timezoneregion-australia' => 'Ostrali',
 'timezoneregion-europe'    => 'Europa',
-'files'                    => 'Restrennow',
+'prefs-files'                    => 'Restrennow',
 
 # Groups
 'group-user'  => 'Devnydhyow',
