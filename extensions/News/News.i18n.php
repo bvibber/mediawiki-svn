@@ -6,7 +6,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'newsextension-desc' => 'Shows customized recent changes on a wiki pages or as RSS or Atom feed',
+	'newsextension-desc' => 'Shows customized recent changes on a wiki page, or as RSS or Atom feed',
 );
 
 /** Message documentation (Message documentation)
