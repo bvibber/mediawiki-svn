@@ -258,7 +258,7 @@ class Preferences {
 						'type' => 'radio',
 						'options' => $dateOptions,
 						'label-message' => 'dateformat',
-						'section' => 'date',
+						'section' => 'datetime',
 					);
 		}
 		
