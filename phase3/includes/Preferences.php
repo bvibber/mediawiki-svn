@@ -819,7 +819,8 @@ class Preferences {
 	
 	static function validateEmail( $email, $alldata ) {
 		global $wgUser; // To check
-		if ( !$wgUser->isValidEmailAddr( $email ) ) {
+		
+		if ( $email && !$wgUser->isValidEmailAddr( $email ) ) {
 			return wfMsgExt( 'invalidemailaddress', 'parseinline' );
 		}
 		

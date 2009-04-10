@@ -526,6 +526,10 @@ class HTMLRadioField extends HTMLFormField {
 	function validate( $value, $alldata ) {
 		$p = parent::validate( $value, $alldata );
 		if ($p !== true) return $p;
+		
+		if (!is_string($value) && !is_int($value))
+			return false;
+		
 		if ( array_key_exists( $value, $this->mParams['options'] ) )
 			return true;
 		else
