@@ -101,13 +101,8 @@ installation. Note that the software depends on having its code all in
 the "OpenID" sub-directory; naming it "OpenID-Test" or "newextension1"
 or whatever won't work.
 
-You must create a table in your MediaWiki database to hold the OpenID
-URL mappings. The openid_table.sql script in this directory should do
-the trick, but first, open it in your favorite text editor and replace
-/*$wgDBprefix*/ comment with the value of $wgDBprefix for your installation,
-and then use the mysql command-line client like so:
-
-        mysql -h yourdbhost -u youradminuser -p yourwikidb < openid_table.sql
+Run update.php script in in your MediaWiki maintenance folder to create
+necessary tables in MediaWiki database.
 
 Version 0.3 and below of this extension used a different database
 structure that was pretty inefficient. If you installed this extension
