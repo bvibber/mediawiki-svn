@@ -103,8 +103,9 @@ or whatever won't work.
 
 You must create a table in your MediaWiki database to hold the OpenID
 URL mappings. The openid_table.sql script in this directory should do
-the trick. Typically you do this using the mysql command-line client,
-like so:
+the trick, but first, open it in your favorite text editor and replace
+/*$wgDBprefix*/ comment with the value of $wgDBprefix for your installation,
+and then use the mysql command-line client like so:
 
         mysql -h yourdbhost -u youradminuser -p yourwikidb < openid_table.sql
 
