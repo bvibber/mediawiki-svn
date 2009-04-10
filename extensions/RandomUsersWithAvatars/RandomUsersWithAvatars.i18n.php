@@ -2,6 +2,7 @@
 /**
  * Internationalization file for the RandomUsersWithAvatars extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
