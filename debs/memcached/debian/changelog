@@ -1,3 +1,6 @@
+memcached (1.2.8-2) wikimedia; urgency=high
+  * add ipc_lock capability to apparmor profile
+
 memcached (1.2.8-1) wikimedia; urgency=high
 
   * New upstream release

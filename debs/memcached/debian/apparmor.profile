@@ -8,6 +8,7 @@
 capability net_bind_service,
 capability setuid,
 capability setgid,
+capability ipc_lock,
 
 /usr/bin/memcached rix,
 
