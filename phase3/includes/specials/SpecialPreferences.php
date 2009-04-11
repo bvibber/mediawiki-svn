@@ -6,7 +6,7 @@ class SpecialPreferences extends SpecialPage {
 	}
 	
 	function execute( $par ) {
-		global $wgOut, $wgUser, $wgRequest, $wgTitle;
+		global $wgOut, $wgUser, $wgRequest;
 		
 		$wgOut->setPageTitle( wfMsg( 'preferences' ) );
 		$wgOut->setArticleRelated( false );
@@ -16,7 +16,7 @@ class SpecialPreferences extends SpecialPage {
 		$wgOut->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
 		
 		if ( $wgUser->isAnon() ) {
-			$wgOut->showErrorPage( 'prefsnologin', 'prefsnologintext', array($wgTitle->getPrefixedDBkey()) );
+			$wgOut->showErrorPage( 'prefsnologin', 'prefsnologintext', array($this->getTitle()->getPrefixedDBkey()) );
 			return;
 		}
 		if ( wfReadOnly() ) {
