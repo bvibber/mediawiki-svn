@@ -1,5 +1,7 @@
-memcached (1.2.8-2) wikimedia; urgency=high
+memcached (1.2.8-3) wikimedia; urgency=high
   * add ipc_lock capability to apparmor profile
+  * remove memory locking
+  * fix startup problem with SIGHUP handling
 
  -- Domas Mituzas <domas.mituzas@gmail.com>  Sat, 11 Apr 2008 13:15:00 +0300
 memcached (1.2.8-1) wikimedia; urgency=high
