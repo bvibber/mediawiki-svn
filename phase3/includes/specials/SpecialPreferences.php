@@ -6,7 +6,7 @@ class SpecialPreferences extends SpecialPage {
 	}
 	
 	function execute( $par ) {
-		global $wgOut, $wgUser, $wgRequest;
+		global $wgOut, $wgUser, $wgRequest, $wgTitle;
 		
 		$wgOut->setPageTitle( wfMsg( 'preferences' ) );
 		$wgOut->setArticleRelated( false );
