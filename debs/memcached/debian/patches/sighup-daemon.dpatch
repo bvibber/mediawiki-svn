@@ -6,13 +6,15 @@
 
 @DPATCH@
 diff -urNad memcached-1.2.8~/memcached.c memcached-1.2.8/memcached.c
---- memcached-1.2.8~/memcached.c	2009-04-11 06:12:29.000000000 +0000
-+++ memcached-1.2.8/memcached.c	2009-04-11 10:49:18.000000000 +0000
-@@ -2979,6 +2979,7 @@
-             fprintf(stderr, "failed to daemon() in order to daemonize\n");
-             return 1;
+--- memcached-1.2.8~/memcached.c	2009-04-11 11:05:32.000000000 +0000
++++ memcached-1.2.8/memcached.c	2009-04-11 11:06:30.000000000 +0000
+@@ -2981,6 +2981,9 @@
          }
-+	signal(SIGHUP,SIG_IGN);
      }
  
++    /* Ignore SIGHUP no matter what - helps Debian/Ubuntu startup scripts, and avoids exit on exit_group() -- domas */
++    signal(SIGHUP,SIG_IGN);
++
      /* lock paged memory if needed */
+     if (lock_memory) {
+ #ifdef HAVE_MLOCKALL
