@@ -147,6 +147,11 @@ parameters:
               applet window. true or false.
 	      Defaults to true
 
+  ignoreAspect: boolean
+              Ignore the aspect ratio as signalled by the video, always assume
+              square pixels. true or false.
+              Defaults to false
+
   video:      boolean
               Use video. When not using video, this property will not create
               resources to play a video stream. true or false.
