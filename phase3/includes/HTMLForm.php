@@ -379,7 +379,7 @@ abstract class HTMLFormField {
 		
 		$html = '';
 		
-		$html .= Xml::tags( 'td', array( 'style' => 'text-align: right;' ),
+		$html .= Xml::tags( 'td', array( 'style' => 'text-align: right; vertical-align: top;' ),
 					Xml::tags( 'label', array( 'for' => $this->mID ), $this->getLabel() )
 				);
 		$html .= Xml::tags( 'td', array( 'class' => 'mw-input' ),
