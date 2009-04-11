@@ -484,6 +484,7 @@ $wgAutoloadLocalClasses = array(
 	'PageArchive' => 'includes/specials/SpecialUndelete.php',
 	'SpecialResetpass' => 'includes/specials/SpecialResetpass.php',
 	'PopularPagesPage' => 'includes/specials/SpecialPopularpages.php',
+	'PreferencesForm' => 'includes/Preferences.php',
 	'RandomPage' => 'includes/specials/SpecialRandompage.php',
 	'SpecialRevisionDelete' => 'includes/specials/SpecialRevisiondelete.php',
 	'RevisionDeleter' => 'includes/specials/SpecialRevisiondelete.php',
