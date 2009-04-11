@@ -203,7 +203,54 @@ class Preferences {
 					'label-message' => 'tog-fancysig',
 					'section' => 'personal'
 				);
-					
+
+
+		## Email #######################################
+		## Email stuff
+		global $wgEnableEmail, $wgEnableUserEmail;
+		if ($wgEnableEmail) {
+		
+			if ($wgEnableUserEmail) {
+				$defaultPreferences['disableemail'] =
+						array(
+							'type' => 'toggle',
+							'invert' => true,
+							'section' => 'email',
+							'label-message' => 'allowemail',
+						);
+				$defaultPreferences['ccmeonemails'] =
+						array(
+							'type' => 'toggle',
+							'section' => 'email',
+							'label-message' => 'tog-ccmeonemails',
+						);
+			}
+			
+			$defaultPreferences['enotifwatchlistpages'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'email',
+						'label-message' => 'tog-enotifwatchlistpages',
+					);
+			$defaultPreferences['enotifusertalkpages'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'email',
+						'label-message' => 'tog-enotifusertalkpages',
+					);
+			$defaultPreferences['enotifminoredits'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'email',
+						'label-message' => 'tog-enotifminoredits',
+					);
+			$defaultPreferences['enotifrevealaddr'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'email',
+						'label-message' => 'tog-enotifrevealaddr'
+					);
+		}
 		
 		## Skin #####################################
 		global $wgAllowUserSkin;
@@ -631,53 +678,6 @@ class Preferences {
 					'section' => 'misc',
 					'label-message' => 'tog-uselivepreview',
 				);
-				
-		## Email #######################################
-		## Email stuff
-		global $wgEnableEmail, $wgEnableUserEmail;
-		if ($wgEnableEmail) {
-		
-			if ($wgEnableUserEmail) {
-				$defaultPreferences['disableemail'] =
-						array(
-							'type' => 'toggle',
-							'invert' => true,
-							'section' => 'email',
-							'label-message' => 'allowemail',
-						);
-				$defaultPreferences['ccmeonemails'] =
-						array(
-							'type' => 'toggle',
-							'section' => 'email',
-							'label-message' => 'tog-ccmeonemails',
-						);
-			}
-			
-			$defaultPreferences['enotifwatchlistpages'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'email',
-						'label-message' => 'tog-enotifwatchlistpages',
-					);
-			$defaultPreferences['enotifusertalkpages'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'email',
-						'label-message' => 'tog-enotifusertalkpages',
-					);
-			$defaultPreferences['enotifminoredits'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'email',
-						'label-message' => 'tog-enotifminoredits',
-					);
-			$defaultPreferences['enotifrevealaddr'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'email',
-						'label-message' => 'tog-enotifrevealaddr'
-					);
-		}
 				
 		## Prod in defaults from the user
 		global $wgDefaultUserOptions;
