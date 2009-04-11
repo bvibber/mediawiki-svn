@@ -132,33 +132,62 @@ class HTMLForm {
 	}
 	
 	function displayForm( $submitResult ) {
-		global $wgUser, $wgOut;
+		global $wgOut;
 		
 		if ( $submitResult !== false ) {
 			$this->displayErrors( $submitResult );
 		}
 		
-		$html = $this->displaySection( $this->mFieldTree );
+		$html = $this->getBody();
 		
 		// Hidden fields
-		$html .= Xml::hidden( 'wpEditToken', $wgUser->editToken() );
-		$html .= Xml::hidden( 'title', $this->getTitle() );
+		$html .= $this->getHiddenFields();
+		
+		// Buttons
+		$html .= $this->getButtons();
+		
+		$html = $this->wrapForm( $html );
+							
+		$wgOut->addHTML( $html );
+	}
+	
+	function wrapForm( $html ) {
+		return Xml::tags( 'form',
+							array(
+								'action' => $this->getTitle()->getFullURL(),
+								'method' => 'post',
+							),
+							$html );
+	}
+	
+	function getHiddenFields() {
+		global $wgUser;
+		$html = '';
+		
+		$html .= Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n";
+		$html .= Xml::hidden( 'title', $this->getTitle() ) . "\n";
+		
+		return $html;
+	}
+	
+	function getButtons() {
+		$html = '';
 		
 		$attribs = array();
 		
 		if ( isset($this->mSubmitID) )
 			$attribs['id'] = $this->mSubmitID;
 		
-		$html .= Xml::submitButton( $this->getSubmitText(), $attribs );
-		
-		$html = Xml::tags( 'form',
-							array(
-								'action' => $this->getTitle()->getFullURL(),
-								'method' => 'post',
-							),
-							$html );
-							
-		$wgOut->addHTML( $html );
+		$html .= Xml::submitButton( $this->getSubmitText(), $attribs ) . "\n";
+		$html .= Xml::element( 'input',
+								array( 'type' => 'reset',
+										'value' => wfMsg('htmlform-reset')
+								) ) . "\n";
+		return $html;
+	}
+	
+	function getBody() {
+		return $this->displaySection( $this->mFieldTree );
 	}
 	
 	function displayErrors( $errors ) {
@@ -199,7 +228,7 @@ class HTMLForm {
 	}
 	
 	function getSubmitText() {
-		return $this->mSubmitText;
+		return isset($this->mSubmitText) ? $this->mSubmitText : wfMsg('htmlform-submit');
 	}
 	
 	function setSubmitID( $t ) {
@@ -231,11 +260,11 @@ class HTMLForm {
 			} elseif ( is_array( $value ) ) {
 				$section = $this->displaySection( $value );
 				$legend = wfMsg( "{$this->mMessagePrefix}-$key" );
-				$subsectionHtml .= Xml::fieldset( $legend, $section );
+				$subsectionHtml .= Xml::fieldset( $legend, $section ) . "\n";
 			}
 		}
 		
-		$tableHtml = "<table><tbody>\n$tableHtml</tbody></table>\n";
+		$tableHtml = "<table><tbody>\n$tableHtml\n</tbody></table>\n";
 		
 		return $subsectionHtml . "\n" . $tableHtml;
 	}

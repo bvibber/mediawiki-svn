@@ -1622,6 +1622,7 @@ please see math/README to configure.',
 'prefs-files'                     => 'Files',
 'prefs-custom-css'          => 'Custom CSS',
 'prefs-custom-js'           => 'Custom JS',
+'prefs-reset-intro'		    => 'You can use this page to reset your preferences to the site defaults. This cannot be undone.',
 
 # User rights
 'userrights'                     => 'User rights management', # Not used as normal message but as header for the special page itself
@@ -3886,4 +3887,6 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 'htmlform-int-invalid' => 'The value you specified is not an integer.',
 'htmlform-int-toolow' => 'The value you specified is below the minimum of $1',
 'htmlform-int-toohigh' => 'The value you specified is above the maximum of $1',
+'htmlform-submit' => 'Submit',
+'htmlform-reset' => 'Undo changes',
 );

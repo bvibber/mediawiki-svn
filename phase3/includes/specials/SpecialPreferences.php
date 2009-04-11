@@ -23,6 +23,11 @@ class SpecialPreferences extends SpecialPage {
 			$wgOut->readOnlyPage();
 			return;
 		}
+		
+		if ($par == 'reset') {
+			$this->showResetForm();
+			return;
+		}
 
 		if ( $wgRequest->getCheck( 'success' ) ) {
 			$wgOut->wrapWikiMsg(
@@ -41,6 +46,31 @@ class SpecialPreferences extends SpecialPage {
 		$htmlForm->setSubmitCallback( array( 'SpecialPreferences', 'trySubmit' ) );
 
 		$htmlForm->show();
+	}
+	
+	function showResetForm() {
+		global $wgOut;
+		
+		$wgOut->addWikiMsg( 'prefs-reset-intro' );
+		
+		$htmlForm = new HTMLForm( array(), 'prefs-restore' );
+		
+		$htmlForm->setSubmitText( wfMsg( 'restoreprefs' ) );
+		$htmlForm->setTitle( $this->getTitle('reset') );
+		$htmlForm->setSubmitCallback( array( __CLASS__, 'submitReset' ) );
+		
+		$htmlForm->show();
+	}
+	
+	static function submitReset( $formData ) {
+		global $wgUser, $wgOut;
+		$wgUser->resetOptions();
+		
+		$url = SpecialPage::getTitleFor( 'Preferences')->getFullURL( 'success' );
+		
+		$wgOut->redirect( $url );
+		
+		return true;
 	}
 	
 	static function trySubmit( $formData ) {
@@ -112,36 +142,23 @@ class SpecialPreferences extends SpecialPage {
 /** Some tweaks to allow js prefs to work */
 class PreferencesForm extends HTMLForm {
 
-	function displayForm( $submitResult ) {
-		global $wgUser, $wgOut;
-		
-		if ( $submitResult !== false ) {
-			$this->displayErrors( $submitResult );
-		}
-		
-		$html = $this->displaySection( $this->mFieldTree );
-		
-		// Hidden fields
-		$html .= Xml::hidden( 'wpEditToken', $wgUser->editToken() );
-		$html .= Xml::hidden( 'title', $this->getTitle() );
-		
-		$attribs = array();
-		
-		if ( isset($this->mSubmitID) )
-			$attribs['id'] = $this->mSubmitID;
-		
-		$html .= Xml::submitButton( $this->getSubmitText(), $attribs );
-		
+	function wrapForm( $html ) {
 		$html = Xml::tags( 'div', array( 'id' => 'preferences' ), $html );
 		
-		$html = Xml::tags( 'form',
-							array(
-								'action' => $this->getTitle()->getFullURL(),
-								'method' => 'post',
-							),
-							$html );
-							
-		$wgOut->addHTML( $html );
+		return parent::wrapForm( $html );
+	}
+	
+	function getButtons() {
+		$html = parent::getButtons();
+		
+		global $wgUser;
+		
+		$sk = $wgUser->getSkin();
+		$t = SpecialPage::getTitleFor( 'Preferences', 'reset' );
+		
+		$html .= "\n" . $sk->link( $t, wfMsg( 'restoreprefs' ) );
+		
+		return $html;
 	}
 	
 }
