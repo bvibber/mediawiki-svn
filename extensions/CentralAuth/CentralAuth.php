@@ -154,7 +154,7 @@ $wgExtensionAliasesFiles['SpecialCentralAuth'] = "$caBase/CentralAuth.alias.php"
 
 $wgHooks['AuthPluginSetup'][] = 'CentralAuthHooks::onAuthPluginSetup';
 $wgHooks['AddNewAccount'][] = 'CentralAuthHooks::onAddNewAccount';
-$wgHooks['PreferencesUserInformationPanel'][] = 'CentralAuthHooks::onPreferencesUserInformationPanel';
+$wgHooks['GetPreferences'][] = 'CentralAuthHooks::onGetPreferences';
 $wgHooks['AbortNewAccount'][] = 'CentralAuthHooks::onAbortNewAccount';
 $wgHooks['UserLoginComplete'][] = 'CentralAuthHooks::onUserLoginComplete';
 $wgHooks['UserLoadFromSession'][] = 'CentralAuthHooks::onUserLoadFromSession';

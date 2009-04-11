@@ -700,7 +700,7 @@ class Preferences {
 			}
 		}
 				
-		wfRunHooks( 'GetPreferences', array( &$defaultPreferences ) );
+		wfRunHooks( 'GetPreferences', array( $user, &$defaultPreferences ) );
 		
 		self::$defaultPreferences = $defaultPreferences;
 		

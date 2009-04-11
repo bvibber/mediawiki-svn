@@ -19,10 +19,10 @@ class CentralAuthHooks {
 	/**
 	 * Add a little pretty to the preferences user info section
 	 */
-	static function onPreferencesUserInformationPanel( $prefsForm, &$html ) {
+	static function onGetPreferences( $user, &$preferences ) {
 		global $wgUser, $wgLang;
 
-		if ( !$wgUser->isAllowed( 'centralauth-merge' ) ) {
+		if ( !$user->isAllowed( 'centralauth-merge' ) ) {
 			// Not allowed to merge, don't display merge information
 			return true;
 		}
@@ -46,33 +46,44 @@ class CentralAuthHooks {
 				$unattached = count( $global->listUnattached() );
 				if( $unattached ) {
 					// Migration incomplete
-					$message = '<strong>' . wfMsgHtml( 'centralauth-prefs-migration' ) . '</strong>' .
+					$message = '<strong>' . wfMsgExt( 'centralauth-prefs-migration', 'parseinline' ) . '</strong>' .
 						'<br />' .
-						htmlspecialchars( wfMsgExt( 'centralauth-prefs-count-attached', array( 'parsemag' ), $wgLang->formatNum( $attached ) ) ) .
+						wfMsgExt( 'centralauth-prefs-count-attached', array( 'parseinline' ), $wgLang->formatNum( $attached ) ) .
 						'<br />' .
-						htmlspecialchars( wfMsgExt( 'centralauth-prefs-count-unattached', array( 'parsemag' ), $wgLang->formatNum( $unattached ) ) );
+						wfMsgExt( 'centralauth-prefs-count-unattached', array( 'parseinline' ), $wgLang->formatNum( $unattached ) );
 				} else {
 					// Migration complete
-					$message = '<strong>' . wfMsgHtml( 'centralauth-prefs-complete' ) . '</strong>' .
+					$message = '<strong>' . wfMsgExt( 'centralauth-prefs-complete', 'parseinline' ) . '</strong>' .
 						'<br />' .
-						htmlspecialchars( wfMsgExt( 'centralauth-prefs-count-attached', array( 'parsemag' ), $wgLang->formatNum( $attached ) ) );
+						wfMsgExt( 'centralauth-prefs-count-attached', array( 'parseinline' ), $wgLang->formatNum( $attached ) );
 				}
 			} else {
 				// Account is in migration, but the local account is not attached
-				$message = '<strong>' . wfMsgHtml( 'centralauth-prefs-unattached' ) . '</strong>' .
+				$message = '<strong>' . wfMsgExt( 'centralauth-prefs-unattached', 'parseinline' ) . '</strong>' .
 					'<br />' .
-					wfMsgHtml( 'centralauth-prefs-detail-unattached' );
+					wfMsgExt( 'centralauth-prefs-detail-unattached', 'parseinline' );
 			}
 		} else {
 			// Not migrated.
-			$message = wfMsgHtml( 'centralauth-prefs-not-managed' );
+			$message = wfMsgExt( 'centralauth-prefs-not-managed', 'parseinline' );
 		}
 
 		$manageLink = $skin->makeKnownLinkObj( $special,
-			wfMsgHtml( 'centralauth-prefs-manage' ) );
-		$html .= $prefsForm->tableRow(
-			wfMsgHtml( 'centralauth-prefs-status' ),
-			"$message<br />($manageLink)" );
+			wfMsgExt( 'centralauth-prefs-manage', 'parseinline' ) );
+		
+		$prefInsert =
+			array( 'globalaccountstatus' =>
+				array(
+					'section' => 'personal',
+					'label-message' => 'centralauth-prefs-status',
+					'type' => 'info',
+					'raw' => true,
+					'default' => "$message<br />($manageLink)"
+				),
+			);
+
+		$preferences = array_insert_after( $preferences, $prefInsert, 'registrationdate' );
+
 		return true;
 	}
 	
