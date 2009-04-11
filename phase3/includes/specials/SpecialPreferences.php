@@ -58,6 +58,7 @@ class SpecialPreferences extends SpecialPage {
 		$htmlForm->setSubmitText( wfMsg( 'restoreprefs' ) );
 		$htmlForm->setTitle( $this->getTitle('reset') );
 		$htmlForm->setSubmitCallback( array( __CLASS__, 'submitReset' ) );
+		$htmlForm->suppressReset();
 		
 		$htmlForm->show();
 	}

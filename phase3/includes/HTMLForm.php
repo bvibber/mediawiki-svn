@@ -58,6 +58,8 @@ class HTMLForm {
 		}
 		
 		$this->mFieldTree = $loadedDescriptor;
+		
+		$this->mShowReset = true;
 	}
 
 	static function loadInputFromParameters( $descriptor ) {
@@ -179,10 +181,14 @@ class HTMLForm {
 			$attribs['id'] = $this->mSubmitID;
 		
 		$html .= Xml::submitButton( $this->getSubmitText(), $attribs ) . "\n";
-		$html .= Xml::element( 'input',
-								array( 'type' => 'reset',
-										'value' => wfMsg('htmlform-reset')
-								) ) . "\n";
+		
+		if ($this->mShowReset) {
+			$html .= Xml::element( 'input',
+									array( 'type' => 'reset',
+											'value' => wfMsg('htmlform-reset')
+									) ) . "\n";
+		}
+		
 		return $html;
 	}
 	
@@ -286,6 +292,10 @@ class HTMLForm {
 		}
 		
 		$this->mFieldData = $fieldData;
+	}
+	
+	function suppressReset( $suppressReset = true ) {
+		$this->mShowReset = !$suppressReset;
 	}
 }
 
