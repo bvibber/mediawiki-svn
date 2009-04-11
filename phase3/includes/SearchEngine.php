@@ -247,11 +247,17 @@ class SearchEngine {
 	 */
 	public static function userNamespaces( &$user ) {
 		$arr = array();
-		foreach( SearchEngine::searchableNamespaces() as $ns => $name ) {
+		$searchableNamespaces = SearchEngine::searchableNamespaces();
+		// Back compat with old format
+		foreach( $searchableNamespaces as $ns => $name ) {
 			if( $user->getOption( 'searchNs' . $ns ) ) {
 				$arr[] = $ns;
 			}
 		}
+		
+		$arr = array_merge( $arr, $user->getOption( 'searchnamespaces' ) );
+		$arr = array_intersect( $arr, array_keys($searchableNamespaces) ); // Filter
+		
 		return $arr;
 	}
 	

@@ -90,6 +90,11 @@ class SpecialPreferences extends SpecialPage {
 		foreach( $saveBlacklist as $b )
 			unset( $formData[$b] );
 		
+		// Reset options to default state before saving.
+		//  Keeps old preferences from interfering due to back-compat
+		//  code, etc.
+		$wgUser->resetOptions();
+		
 		foreach( $formData as $key => $value ) {
 			$wgUser->setOption( $key, $value );
 		}

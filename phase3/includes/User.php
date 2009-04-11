@@ -989,7 +989,7 @@ class User {
 		/**
 		 * Site defaults will override the global/language defaults
 		 */
-		global $wgDefaultUserOptions, $wgContLang;
+		global $wgDefaultUserOptions, $wgContLang, $wgDefaultSkin;
 		$defOpt = $wgDefaultUserOptions + $wgContLang->getDefaultUserOptionOverrides();
 
 		/**
@@ -998,10 +998,10 @@ class User {
 		$variant = $wgContLang->getPreferredVariant( false );
 		$defOpt['variant'] = $variant;
 		$defOpt['language'] = $variant;
-
-		foreach( $wgNamespacesToBeSearchedDefault as $nsnum => $val ) {
-			$defOpt['searchNs'.$nsnum] = $val;
-		}
+		$defOpt['searchnamespaces'] =
+				array_keys( array_filter( $wgNamespacesToBeSearchedDefault) );
+		$defOpt['skin'] = $wgDefaultSkin;
+		
 		return $defOpt;
 	}
 
@@ -1016,7 +1016,7 @@ class User {
 		if( isset( $defOpts[$opt] ) ) {
 			return $defOpts[$opt];
 		} else {
-			return '';
+			return null;
 		}
 	}
 
@@ -1940,7 +1940,7 @@ class User {
 	/**
 	 * Reset all options to the site defaults
 	 */	
-	function restoreOptions() {
+	function resetOptions() {
 		$this->mOptions = User::getDefaultOptions();
 	}
 
@@ -3402,7 +3402,7 @@ class User {
 							);
 		
 		global $wgDefaultUserOptions;
-		$this->mOptions = $wgDefaultUserOptions;
+		$this->mOptions = self::getDefaultOptions();
 		
 		while( $row = $dbr->fetchObject( $res ) ) {
 			$this->mOptions[$row->up_property] = unserialize( $row->up_value );
@@ -3413,7 +3413,6 @@ class User {
 	
 	protected function saveOptions() {
 		$this->loadOptions();
-		global $wgDefaultUserOptions;
 		$dbw = wfGetDB( DB_MASTER );
 		
 		$insert_rows = array();
@@ -3421,8 +3420,8 @@ class User {
 		foreach( $this->mOptions as $key => $value ) {
 			$ser = serialize($value);
 			
-			if ( !isset($wgDefaultUserOptions[$key]) || 
-					$value != $wgDefaultUserOptions[$key] ) {			
+			if ( is_null(self::getDefaultOption($key)) ||
+					$value != self::getDefaultOption( $key ) ) {			
 				$insert_rows[] = array(
 						'up_user' => $this->getId(),
 						'up_property' => $key,

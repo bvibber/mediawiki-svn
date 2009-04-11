@@ -143,7 +143,6 @@ class Preferences {
 					'type' => 'select',
 					'section' => 'personal',
 					'options' => $options,
-					'default' => $wgContLanguageCode,
 					'label-message' => 'yourlanguage',
 				);
 				
@@ -507,6 +506,17 @@ class Preferences {
 					'min' => 0,
 				);
 		
+		// Searchable namespaces back-compat with old format
+		$searchableNamespaces = SearchEngine::searchableNamespaces();
+		$searchDefault = array();
+		foreach( $searchableNamespaces as $ns => $name ) {
+			if( $user->getOption( 'searchNs' . $ns ) ) {
+				$searchDefault[] = $ns;
+			}
+		}
+		
+		$searchDefault = array_merge( $searchDefault, $user->getOption( 'searchnamespaces' ) );
+		
 		$nsOptions = array();
 		foreach( $wgContLang->getNamespaces() as $ns => $name ) {
 			if ($ns < 0) continue;
@@ -517,12 +527,13 @@ class Preferences {
 			$nsOptions[$ns] = $displayNs;
 		}
 		
-		$defaultPreferences['searchNs'] =
+		$defaultPreferences['searchnamespaces'] =
 				array(
 					'type' => 'multiselect',
 					'label-message' => 'defaultns',
 					'options' => $nsOptions,
 					'section' => 'searchoptions',
+					'default' => $searchDefault,
 				);
 				
 		global $wgEnableMWSuggest;
@@ -678,12 +689,12 @@ class Preferences {
 								: null;
 			
 			// If it validates, set it as the default
-			if ( isset( $user->mOptions[$name] ) && // Make sure we're not just pulling nothing
-					$field->validate( $prefFromUser, $user->mOptions ) ) {
-				$info['default'] = $prefFromUser;
-			} elseif ( isset($info['default']) ) {
+			if ( isset($info['default']) ) {
 				// Already set, no problem
 				continue;
+			} elseif ( isset( $user->mOptions[$name] ) && // Make sure we're not just pulling nothing
+					$field->validate( $prefFromUser, $user->mOptions ) ) {
+				$info['default'] = $prefFromUser;
 			} elseif( $field->validate( $globalDefault, $user->mOptions ) ) {
 				$info['default'] = $globalDefault;
 			}
