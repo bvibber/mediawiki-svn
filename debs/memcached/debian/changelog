@@ -1,3 +1,13 @@
+memcached (1.2.8-1) wikimedia; urgency=high
+
+  * New upstream release
+  * Fixes memory leaks and such
+  * Removed CAS and byte alignment
+  * Minor init script documentation changes
+  * added AppArmor
+  * Set growth factor to 1.05
+
+ -- Domas Mituzas <domas.mituzas@gmail.com>  Sat, 11 Apr 2008 11:09:20 +0300
 memcached (1.2.4-1) wikimedia; urgency=high
 
   * New upstream release

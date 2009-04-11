@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## cas-shrink.dpatch by  <domas.mituzas@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad memcached-1.2.8~/memcached.h memcached-1.2.8/memcached.h
+--- memcached-1.2.8~/memcached.h	2009-04-11 05:56:09.000000000 +0000
++++ memcached-1.2.8/memcached.h	2009-04-11 09:23:20.000000000 +0000
+@@ -124,7 +124,7 @@
+     uint8_t         it_flags;   /* ITEM_* above */
+     uint8_t         slabs_clsid;/* which slab class we're in */
+     uint8_t         nkey;       /* key length, w/terminating null and padding */
+-    uint64_t        cas_id;     /* the CAS identifier */
++    uint8_t        cas_id;     /* the CAS identifier */
+     void * end[];
+     /* then null-terminated key */
+     /* then " flags length\r\n" (no terminating null) */

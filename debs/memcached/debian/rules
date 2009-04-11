@@ -9,6 +9,9 @@
 
 # These are used for cross-compiling and for saving the configure script
 # from having to guess our platform (since we know it already)
+#
+include /usr/share/dpatch/dpatch.make
+#
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
@@ -36,7 +39,7 @@ config.status: configure
 
 build: build-stamp
 
-build-stamp:  config.status
+build-stamp: patch-stamp config.status
 	dh_testdir
 
 	# Add here commands to compile the package.
@@ -45,7 +48,7 @@ build-stamp:  config.status
 
 	touch build-stamp
 
-clean:
+clean: unpatch
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp config.log
@@ -65,6 +68,7 @@ install: build
 	rm $(CURDIR)/debian/memcached/usr/bin/memcached-debug
 	#install -d $(CURDIR)/$(PKGBASE)
 	install -m 644 $(CURDIR)/debian/memcached.conf $(CURDIR)/$(PKGBASE)/memcached.conf.default
+	install -m 644 $(CURDIR)/debian/apparmor.profile $(CURDIR)/$(PKGBASE)/apparmor.profile
 	#install -d $(SCRIPTS)
 	install -m 744 $(CURDIR)/scripts/start-memcached $(SCRIPTS)
 

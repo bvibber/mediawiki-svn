@@ -2,12 +2,12 @@ Source: memcached
 Section: web
 Priority: optional
 Maintainer: Domas Mituzas <domas.mituzas@gmail.com>
-Build-Depends: debhelper (>= 4.0.0), libevent-dev
+Build-Depends: debhelper (>= 4.0.0), libevent-dev, dpatch
 Standards-Version: 3.7.2.2
 
 Package: memcached
 Architecture: any
-Depends: ${shlibs:Depends}, perl
+Depends: ${shlibs:Depends}, perl, apparmor-utils
 Suggests: libcache-memcached-perl
 Description: A high-performance memory object caching system
  Danga Interactive developed memcached to enhance the speed of LiveJournal.com, 

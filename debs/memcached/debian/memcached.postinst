@@ -6,4 +6,11 @@ if [ ! -e /etc/memcached.conf ]
 		cp /usr/share/memcached/memcached.conf.default /etc/memcached.conf
 fi
 
+if [ ! -e /etc/apparmor.d/usr.bin.memcached ]
+	then
+		mkdir -p /etc/apparmor.d
+		cp /usr/share/memcached/apparmor.profile /etc/apparmor.d/usr.bin.memcached
+		/usr/sbin/aa-enforce memcached
+	fi
+
 #DEBHELPER#

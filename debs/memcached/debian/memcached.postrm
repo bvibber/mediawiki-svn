@@ -2,7 +2,7 @@
 
 if [ "$1" = "purge" ] 
 	then
-		rm -f /etc/memcached.conf
+		rm -f /etc/memcached.conf /etc/apparmor.d/usr.bin.memcached
 fi
 
 	rm -f /var/run/memcached.pid
