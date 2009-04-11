@@ -1,0 +1,18 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## sighup-daemon.dpatch by  <midom@ragweed.knams.wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad memcached-1.2.8~/memcached.c memcached-1.2.8/memcached.c
+--- memcached-1.2.8~/memcached.c	2009-04-11 06:12:29.000000000 +0000
++++ memcached-1.2.8/memcached.c	2009-04-11 10:49:18.000000000 +0000
+@@ -2979,6 +2979,7 @@
+             fprintf(stderr, "failed to daemon() in order to daemonize\n");
+             return 1;
+         }
++	signal(SIGHUP,SIG_IGN);
+     }
+ 
+     /* lock paged memory if needed */

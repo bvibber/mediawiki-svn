@@ -1,2 +1,3 @@
 cas-shrink.dpatch
 no-chunk-align.dpatch
+sighup-daemon.dpatch
