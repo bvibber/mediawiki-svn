@@ -213,7 +213,7 @@ class Preferences {
 					array(
 						'type' => 'radio',
 						'options' => self::generateSkinOptions(),
-						'label-message' => 'skin',
+						'label' => '&nbsp;',
 						'section' => 'skin',
 					);
 		}
