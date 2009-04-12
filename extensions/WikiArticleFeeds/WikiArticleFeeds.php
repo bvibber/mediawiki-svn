@@ -109,8 +109,13 @@ $wgExtensionCredits['specialpage'][] = array(
     'author'=>'Jim Wilson (wilson.jim.r&lt;at&gt;gmail.com)',
     'url'=>'http://jimbojw.com/wiki/index.php?title=WikiArticleFeeds',
     'description'=>'Produces feeds generated from MediaWiki articles.',
+	'descriptionmsg' => 'wikiarticlefeeds-desc',
     'version'=>WIKIARTICLEFEEDS_VERSION
 );
+
+$dir = dirname( __FILE__ ) . '/';
+
+$wgExtensionMessagesFiles['WikiArticleFeeds'] = $dir . 'WikiArticleFeeds.i18n.php';
 
 /**
  * Wrapper class for consolidating all WAF related parser methods
@@ -410,7 +415,7 @@ function wfPurgeFeedsOnArticlePurge($article) {
  */
 function wfGenerateWikiFeed($article, $feedFormat = 'atom', $filterTags = null) {
 
-    global $wgOut, $wgScript, $wgServer, $wgFeedClasses, $wgMessageCache, $wgVersion, $wgSitename;
+    global $wgOut, $wgScript, $wgServer, $wgFeedClasses, $wgVersion, $wgSitename;
 
     # Setup, handle redirects
     if ($article->isRedirect()) {
@@ -421,8 +426,6 @@ function wfGenerateWikiFeed($article, $feedFormat = 'atom', $filterTags = null) 
     }
     $title = $article->getTitle();
     $feedUrl = $title->getFullUrl();
-
-    $wgMessageCache->addMessage('wikiarticlefeeds_combined_description', 'This is a combination feed, containing items from several feed sources.');
 
     # Parse page into feed items.
     $content = $wgOut->parse($article->getContent()."\n__NOEDITSECTION__ __NOTOC__");
@@ -462,6 +465,7 @@ function wfGenerateWikiFeed($article, $feedFormat = 'atom', $filterTags = null) 
             if (!$feedDescription) {
                 $feedDescription = $segDesc;
             } else {
+				wfLoadExtensionMessages( 'WikiArticleFeeds' );
                 $feedDescription = wfMsg('wikiarticlefeeds_combined_description');
             }
         }
