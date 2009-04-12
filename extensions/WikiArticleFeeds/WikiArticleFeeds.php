@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  * WikiArticleFeeds.php - A MediaWiki extension for converting regular pages into feeds.
  * @author Jim R. Wilson
@@ -93,24 +93,24 @@
  * OTHER DEALINGS IN THE SOFTWARE. 
  * -----------------------------------------------------------------------
  */
- 
- # Confirm MW environment
-if (!defined('MEDIAWIKI')) die();
 
-define('WIKIARTICLEFEEDS_VERSION','0.6.4');
+# Confirm MW environment
+if ( !defined( 'MEDIAWIKI' ) ) die();
+
+define( 'WIKIARTICLEFEEDS_VERSION', '0.6.4' );
 
 # Bring in supporting classes
-require_once("$IP/includes/Feed.php");
-require_once("$IP/includes/Sanitizer.php");
+require_once( "$IP/includes/Feed.php" );
+require_once( "$IP/includes/Sanitizer.php" );
 
 # Credits
 $wgExtensionCredits['specialpage'][] = array(
-    'name'=>'WikiArticleFeeds',
-    'author'=>'Jim Wilson (wilson.jim.r&lt;at&gt;gmail.com)',
-    'url'=>'http://jimbojw.com/wiki/index.php?title=WikiArticleFeeds',
-    'description'=>'Produces feeds generated from MediaWiki articles.',
+	'name' => 'WikiArticleFeeds',
+	'author' => 'Jim Wilson (wilson.jim.r&lt;at&gt;gmail.com)',
+	'url' => 'http://jimbojw.com/wiki/index.php?title=WikiArticleFeeds',
+	'description' => 'Produces feeds generated from MediaWiki articles.',
 	'descriptionmsg' => 'wikiarticlefeeds-desc',
-    'version'=>WIKIARTICLEFEEDS_VERSION
+	'version' => WIKIARTICLEFEEDS_VERSION
 );
 
 $dir = dirname( __FILE__ ) . '/';
@@ -122,62 +122,62 @@ $wgExtensionMessagesFiles['WikiArticleFeeds'] = $dir . 'WikiArticleFeeds.i18n.ph
  */
 class WikiArticleFeedsParser {
 
-    function feedStart( $text, $params = array() ) {
-        return '<!-- FEED_START -->';
-    }
-    
-    function feedEnd( $text, $params = array() ) {
-        return '<!-- FEED_END -->';
-    }
-    
-    function burnFeed( $text, $params = array() ) {
-        return ($params['name']?'<!-- BURN_FEED '.base64_encode(serialize($params['name'])).' -->':'');
-    }
-    
-    function itemTagsTag( $text, $params = array() ) {
-        return ($text?'<!-- ITEM_TAGS '.base64_encode(serialize($text)).' -->':'');
-    }
-    
-    function itemTagsFunction( $parser ) {
-        $tags = func_get_args();
-        array_shift( $tags );
-        return (!empty($tags)?'<pre>@ITEMTAGS@'.base64_encode(serialize(implode(',',$tags))).'@ITEMTAGS@</pre>':'');
-    }
-    
-    function itemTagsMagic( &$magicWords, $langCode=null ) {
-        $magicWords['itemtags'] = array( 0, 'itemtags' );
-        return true;
-    }
-    
-    function itemTagsPlaceholderCorrections( $parser, &$text ) {
-        $text = preg_replace(
-            '|<pre>@ITEMTAGS@([0-9a-zA-Z\\+\\/]+=*)@ITEMTAGS@</pre>|',
-            '<!-- ITEM_TAGS $1 -->',
-            $text
-        );
-        return true;
-    }
+	function feedStart( $text, $params = array() ) {
+		return '<!-- FEED_START -->';
+	}
+
+	function feedEnd( $text, $params = array() ) {
+		return '<!-- FEED_END -->';
+	}
+
+	function burnFeed( $text, $params = array() ) {
+		return ( $params['name'] ? '<!-- BURN_FEED ' . base64_encode( serialize( $params['name'] ) ) . ' -->':'' );
+	}
+
+	function itemTagsTag( $text, $params = array() ) {
+		return ( $text ? '<!-- ITEM_TAGS ' . base64_encode( serialize( $text ) ) . ' -->':'' );
+	}
+
+	function itemTagsFunction( $parser ) {
+		$tags = func_get_args();
+		array_shift( $tags );
+		return ( !empty( $tags ) ? '<pre>@ITEMTAGS@' . base64_encode( serialize( implode( ',', $tags ) ) ) . '@ITEMTAGS@</pre>':'' );
+	}
+
+	function itemTagsMagic( &$magicWords, $langCode = null ) {
+		$magicWords['itemtags'] = array( 0, 'itemtags' );
+		return true;
+	}
+
+	function itemTagsPlaceholderCorrections( $parser, &$text ) {
+		$text = preg_replace(
+							 '|<pre>@ITEMTAGS@([0-9a-zA-Z\\+\\/]+=*)@ITEMTAGS@</pre>|',
+							 '<!-- ITEM_TAGS $1 -->',
+							 $text
+							 );
+		return true;
+	}
 }
 
 # Create global instance
 $wgWikiArticleFeedsParser = new WikiArticleFeedsParser();
-if (version_compare($wgVersion, '1.7', '<')) {
-    # Hack solution to resolve 1.6 array parameter nullification for hook args
-    function wfWAFParserItemTagsMagic( &$magicWords ) {
-        global $wgWikiArticleFeedsParser;
-        $wgWikiArticleFeedsParser->itemTagsMagic( $magicWords );
-        return true;
-    }
-    function wfWAFParserPlaceholderCorrections( $parser, &$text ) {
-        global $wgWikiArticleFeedsParser;
-        $wgWikiArticleFeedsParser->itemTagsPlaceholderCorrections( $parser, $text );
-        return true;
-    }
-    $wgHooks['LanguageGetMagic'][] = 'wfWAFParserItemTagsMagic';
-    $wgHooks['ParserBeforeTidy'][] = 'wfWAFParserPlaceholderCorrections';
+if ( version_compare( $wgVersion, '1.7', '<' ) ) {
+	# Hack solution to resolve 1.6 array parameter nullification for hook args
+	function wfWAFParserItemTagsMagic( &$magicWords ) {
+		global $wgWikiArticleFeedsParser;
+		$wgWikiArticleFeedsParser->itemTagsMagic( $magicWords );
+		return true;
+	}
+	function wfWAFParserPlaceholderCorrections( $parser, &$text ) {
+		global $wgWikiArticleFeedsParser;
+		$wgWikiArticleFeedsParser->itemTagsPlaceholderCorrections( $parser, $text );
+		return true;
+	}
+	$wgHooks['LanguageGetMagic'][] = 'wfWAFParserItemTagsMagic';
+	$wgHooks['ParserBeforeTidy'][] = 'wfWAFParserPlaceholderCorrections';
 } else {
-    $wgHooks['LanguageGetMagic'][] = array($wgWikiArticleFeedsParser, 'itemTagsMagic');
-    $wgHooks['ParserBeforeTidy'][] = array($wgWikiArticleFeedsParser, 'itemTagsPlaceholderCorrections');
+	$wgHooks['LanguageGetMagic'][] = array( $wgWikiArticleFeedsParser, 'itemTagsMagic' );
+	$wgHooks['ParserBeforeTidy'][] = array( $wgWikiArticleFeedsParser, 'itemTagsPlaceholderCorrections' );
 }
 
 # Add Extension Functions
@@ -185,14 +185,14 @@ $wgExtensionFunctions[] = 'wfWikiArticleFeedsParserSetup';
 
 # Sets up the WikiArticleFeeds Parser hooks
 function wfWikiArticleFeedsParserSetup() {
-    global $wgParser, $wgWikiArticleFeedsParser;
-    
-    $wgParser->setHook( 'startFeed', array($wgWikiArticleFeedsParser, 'feedStart') );
-    $wgParser->setHook( 'endFeed', array($wgWikiArticleFeedsParser, 'feedEnd') );
-    $wgParser->setHook( 'feedBurner', array($wgWikiArticleFeedsParser, 'burnFeed') );
-    $wgParser->setHook( 'itemTags', array($wgWikiArticleFeedsParser, 'itemTagsTag') );
-    
-    $wgParser->setFunctionHook( 'itemtags', array($wgWikiArticleFeedsParser, 'itemTagsFunction') );
+	global $wgParser, $wgWikiArticleFeedsParser;
+
+	$wgParser->setHook( 'startFeed', array( $wgWikiArticleFeedsParser, 'feedStart' ) );
+	$wgParser->setHook( 'endFeed', array( $wgWikiArticleFeedsParser, 'feedEnd' ) );
+	$wgParser->setHook( 'feedBurner', array( $wgWikiArticleFeedsParser, 'burnFeed' ) );
+	$wgParser->setHook( 'itemTags', array( $wgWikiArticleFeedsParser, 'itemTagsTag' ) );
+
+	$wgParser->setFunctionHook( 'itemtags', array( $wgWikiArticleFeedsParser, 'itemTagsFunction' ) );
 }
 
 # Attach Hooks
@@ -207,49 +207,49 @@ $wgHooks['ArticlePurge'][] = 'wfPurgeFeedsOnArticlePurge';
  * @param $out Handle to an OutputPage object (presumably $wgOut).
  * @param $text Article/Output text.
  */
-function wfAddWikiFeedHeaders($out, $text) {
+function wfAddWikiFeedHeaders( $out, $text ) {
 
-    # Short-circuit if this article contains no feeds
-    if (!preg_match('/<!-- FEED_START -->/m', $text)) return true;
-    
-    $rssArr = array(
-        'rel' => 'alternate',
-        'type' => 'application/rss+xml',
-        'title' => 'RSS 2.0',
-    );
-    $atomArr = array(
-        'rel' => 'alternate',
-        'type' => 'application/atom+xml',
-        'title' => 'Atom 0.3',
-    );    
+	# Short-circuit if this article contains no feeds
+	if ( !preg_match( '/<!-- FEED_START -->/m', $text ) ) return true;
 
-    # Test for feedBurner presence
-    if (preg_match('/<!-- BURN_FEED ([0-9a-zA-Z\\+\\/]+=*) -->/m', $text, $matches)) {
-        $name = @unserialize(@base64_decode($matches[1]));
-        if ($name) {
-            $rssArr['href'] = 'http://feeds.feedburner.com/'.urlencode($name).'?format=xml';
-            $atomArr['href'] = 'http://feeds.feedburner.com/'.urlencode($name).'?format=xml';
-        }
-    }
-    
-    # If its not being fed by feedBurner, do it ourselves!
-    if (!array_key_exists('href', $rssArr) || !$rssArr['href']) {
+	$rssArr = array(
+					'rel' => 'alternate',
+					'type' => 'application/rss+xml',
+					'title' => 'RSS 2.0',
+					);
+	$atomArr = array(
+					 'rel' => 'alternate',
+					 'type' => 'application/atom+xml',
+					 'title' => 'Atom 0.3',
+					 );
 
-        global $wgServer, $wgScript, $wgTitle;
-    
-        $baseUrl = $wgServer.$wgScript.'?title='.$wgTitle->getDBkey().'&action=feed&feed=';
-        $rssArr['href'] = $baseUrl.'rss';
-        $atomArr['href'] = $baseUrl.'atom';    
-    }
+	# Test for feedBurner presence
+	if ( preg_match( '/<!-- BURN_FEED ([0-9a-zA-Z\\+\\/]+=*) -->/m', $text, $matches ) ) {
+		$name = @unserialize( @base64_decode( $matches[1] ) );
+		if ( $name ) {
+			$rssArr['href'] = 'http://feeds.feedburner.com/' . urlencode( $name ) . '?format=xml';
+			$atomArr['href'] = 'http://feeds.feedburner.com/' . urlencode( $name ) . '?format=xml';
+		}
+	}
 
-    $out->addLink($rssArr);
-    $out->addLink($atomArr);
+	# If its not being fed by feedBurner, do it ourselves!
+	if ( !array_key_exists( 'href', $rssArr ) || !$rssArr['href'] ) {
 
-    global $wgWikiFeedPresent;
-    $wgWikiFeedPresent = true;
-    
-    # True to indicate that other action handlers should continue to process this page
-    return true;
+		global $wgServer, $wgScript, $wgTitle;
+
+		$baseUrl = $wgServer . $wgScript . '?title=' . $wgTitle->getDBkey() . '&action=feed&feed=';
+		$rssArr['href'] = $baseUrl . 'rss';
+		$atomArr['href'] = $baseUrl . 'atom';
+	}
+
+	$out->addLink( $rssArr );
+	$out->addLink( $atomArr );
+
+	global $wgWikiFeedPresent;
+	$wgWikiFeedPresent = true;
+
+	# True to indicate that other action handlers should continue to process this page
+	return true;
 }
 
 /**
@@ -257,53 +257,52 @@ function wfAddWikiFeedHeaders($out, $text) {
  * Usage: $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks';
  * @param QuickTemplate $template Instance of MonoBookTemplate or other QuickTemplate
  */
-function wfWikiArticleFeedsToolboxLinks($template) {
-    
-    global $wgOut, $wgServer, $wgScript, $wgArticle, $wgWikiFeedPresent;
-    
-    # Short-circuit if wgArticle has not been set or there are no Feeds present
-    if (!$wgArticle || !$wgWikiFeedPresent) return true;
-    
-    $result = '<li id="feedlinks">';
+function wfWikiArticleFeedsToolboxLinks( $template ) {
+	global $wgOut, $wgServer, $wgScript, $wgArticle, $wgWikiFeedPresent;
 
-    # Test for feedBurner presence
-    $burned = false;
-    ob_start();
-    $template->html('bodytext');
-    $text = ob_get_contents();
-    ob_end_clean();
-    if (preg_match('/<!-- BURN_FEED ([0-9a-zA-Z\\+\\/]+=*) -->/m', $text, $matches)) {
-        $feedBurnerName = @unserialize(@base64_decode($matches[1]));
-        if ($feedBurnerName) {
-            $feeds = array( 'rss'=>'RSS', 'atom'=>'Atom' );
-            foreach($feeds as $feed=>$name) {
-                $result .= 
-                    '<span id="feed-'.htmlspecialchars($feed).'">'.
-                    '<a href="http://feeds.feedburner.com/'.urlencode($feedBurnerName).'?format=xml">'.
-                    htmlspecialchars($name).'</a>&nbsp;</span>';
-            }
-            $burned = true;
-        }
-    }
+	# Short-circuit if wgArticle has not been set or there are no Feeds present
+	if ( !$wgArticle || !$wgWikiFeedPresent ) return true;
 
-    # Generate regular RSS and Atom feeds if not fed by feedBurner
-    if (!$burned) {
-        $title = $wgArticle->getTitle();
-        $dbKey = $title->getPrefixedDBkey();
-        $baseUrl = $wgServer.$wgScript.'?title='.$dbKey.'&action=feed&feed=';
-        $feeds = array( 'rss'=>'RSS', 'atom'=>'Atom' );
-        foreach($feeds as $feed=>$name) {
-            $result .= 
-                '<span id="feed-'.htmlspecialchars($feed).'">'.
-                '<a href="'.htmlspecialchars($baseUrl.$feed).'">'.
-                htmlspecialchars($name).'</a>&nbsp;</span>';
-        }
-    }
+	$result = '<li id="feedlinks">';
 
-    echo ($result.'</li>');
-    
-    # True to indicate that other action handlers should continue to process this page
-    return true;
+	# Test for feedBurner presence
+	$burned = false;
+	ob_start();
+	$template->html( 'bodytext' );
+	$text = ob_get_contents();
+	ob_end_clean();
+	if ( preg_match( '/<!-- BURN_FEED ([0-9a-zA-Z\\+\\/]+=*) -->/m', $text, $matches ) ) {
+		$feedBurnerName = @unserialize( @base64_decode( $matches[1] ) );
+		if ( $feedBurnerName ) {
+			$feeds = array( 'rss' => 'RSS', 'atom' => 'Atom' );
+			foreach ( $feeds as $feed => $name ) {
+				$result .=
+				'<span id="feed-' . htmlspecialchars( $feed ) . '">' .
+				'<a href="http://feeds.feedburner.com/' . urlencode( $feedBurnerName ) . '?format=xml">' .
+				htmlspecialchars( $name ) . '</a>&nbsp;</span>';
+			}
+			$burned = true;
+		}
+	}
+
+	# Generate regular RSS and Atom feeds if not fed by feedBurner
+	if ( !$burned ) {
+		$title = $wgArticle->getTitle();
+		$dbKey = $title->getPrefixedDBkey();
+		$baseUrl = $wgServer . $wgScript . '?title=' . $dbKey . '&action=feed&feed=';
+		$feeds = array( 'rss' => 'RSS', 'atom' => 'Atom' );
+		foreach ( $feeds as $feed => $name ) {
+			$result .=
+			'<span id="feed-' . htmlspecialchars( $feed ) . '">' .
+			'<a href="' . htmlspecialchars( $baseUrl . $feed ) . '">' .
+			htmlspecialchars( $name ) . '</a>&nbsp;</span>';
+		}
+	}
+
+	echo ( $result . '</li>' );
+
+	# True to indicate that other action handlers should continue to process this page
+	return true;
 }
 
 /**
@@ -312,82 +311,82 @@ function wfWikiArticleFeedsToolboxLinks($template) {
  * @param $action Handle to an action string (presumably same as global $action).
  * @param $article Article to be converted to rss or atom feed  (presumably same as $wgArticle).
  */
-function wfWikiArticleFeedsAction($action, $article) {
+function wfWikiArticleFeedsAction( $action, $article ) {
+	
+	# If some other action is in the works, cut and run!
+	if ( $action != 'feed' ) return true;
 
-    # If some other action is in the works, cut and run!
-    if ($action!='feed') return true;
-    
-    global $wgOut, $wgRequest, $wgFeedClasses, $wgFeedCacheTimeout, $wgDBname, $messageMemc, $wgSitename;
+	global $wgOut, $wgRequest, $wgFeedClasses, $wgFeedCacheTimeout, $wgDBname, $messageMemc, $wgSitename;
 
-    # Get query parameters
-    $feedFormat = $wgRequest->getVal( 'feed', 'atom');
-    $filterTags = $wgRequest->getVal('tags', null);
-    
-    # Process requested tags for use in keys
-    if ($filterTags) {
-        $filterTags = explode(',',$filterTags);
-        array_walk($filterTags, 'trim');
-        sort($filterTags);
-    }
+	# Get query parameters
+	$feedFormat = $wgRequest->getVal( 'feed', 'atom' );
+	$filterTags = $wgRequest->getVal( 'tags', null );
 
-    if( !isset( $wgFeedClasses[$feedFormat] ) ) {
-        wfHttpError( 500, "Internal Server Error", "Unsupported feed type." );
-        return false;
-    }
-    
-    # Setup cache-checking vars
-    $title = $article->getTitle();
-    $titleDBkey = $title->getPrefixedDBkey();
-    $tags = (is_array($filterTags)?':'.implode(',',$filterTags):'');
-    $key = "{$wgDBname}:wikiarticlefeedsextension:{$titleDBkey}:{$feedFormat}{$tags}";
-    $timekey = $key.":timestamp";
-    $cachedFeed = false;
-    $feedLastmod = $messageMemc->get($timekey);
+	# Process requested tags for use in keys
+	if ( $filterTags ) {
+		$filterTags = explode( ',', $filterTags );
+		array_walk( $filterTags, 'trim' );
+		sort( $filterTags );
+	}
 
-    # Dermine last modification time for either the article itself or an included template
-    $lastmod = $article->getTimestamp();
-    $templates = $article->getUsedTemplates();
-    foreach ($templates as $tTitle) {
-        $tArticle = new Article($tTitle);
-        $tmod = $tArticle->getTimestamp();
-        $lastmod = ($lastmod>$tmod?$lastmod:$tmod);
-    }
+	if ( !isset( $wgFeedClasses[$feedFormat] ) ) {
+		wfHttpError( 500, "Internal Server Error", "Unsupported feed type." );
+		return false;
+	}
 
-    # Check for availability of existing cached version
-    if( ( $wgFeedCacheTimeout > 0 ) && $feedLastmod ) {
-        $feedLastmodTS = wfTimestamp( TS_UNIX, $feedLastmod );
-        if(
-            time() - $feedLastmodTS < $wgFeedCacheTimeout ||  
-            $feedLastmodTS > wfTimestamp( TS_UNIX, $lastmod ) 
-        ) {
-            wfDebug( "WikiArticleFeedsExtension: Loading feed from cache ($key; $feedLastmod; $lastmod)...\n" );
-            $cachedFeed = $messageMemc->get( $key );
-        } else {
-            wfDebug( "WikiArticleFeedsExtension: Cached feed timestamp check failed ($feedLastmod; $lastmod)\n" );
-        }
-    }
-    
-    # Display cachedFeed, or generate one from scratch
-    global $wgWikiArticleFeedsSkipCache;
-    if(!$wgWikiArticleFeedsSkipCache && is_string( $cachedFeed ) ) {
-        wfDebug( "WikiArticleFeedsExtension: Outputting cached feed\n" );
-        $feed = new $wgFeedClasses[$feedFormat]($wgSitename.' - '.$title->getText(),'', $title->getFullURL());
-        $feed->httpHeaders();
-        echo $cachedFeed;
-    } else {
-        wfDebug( "WikiArticleFeedsExtension: Rendering new feed and caching it\n" );
-        ob_start();
-        wfGenerateWikiFeed( $article, $feedFormat, $filterTags );
-        $cachedFeed = ob_get_contents();
-        ob_end_flush();
+	# Setup cache-checking vars
+	$title = $article->getTitle();
+	$titleDBkey = $title->getPrefixedDBkey();
+	$tags = ( is_array( $filterTags ) ? ':' . implode( ',', $filterTags ):'' );
+	$key = "{$wgDBname}:wikiarticlefeedsextension:{$titleDBkey}:{$feedFormat}{$tags}";
+	$timekey = $key . ":timestamp";
+	$cachedFeed = false;
+	$feedLastmod = $messageMemc->get( $timekey );
 
-        $expire = 3600 * 24; # One day
-        $messageMemc->set( $key, $cachedFeed );
-        $messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
-    }
-    
-    # False to indicate that other action handlers should not process this page
-    return false;
+	# Dermine last modification time for either the article itself or an included template
+	$lastmod = $article->getTimestamp();
+	$templates = $article->getUsedTemplates();
+	foreach ( $templates as $tTitle ) {
+		$tArticle = new Article( $tTitle );
+		$tmod = $tArticle->getTimestamp();
+		$lastmod = ( $lastmod > $tmod ? $lastmod:$tmod );
+	}
+
+	# Check for availability of existing cached version
+	if ( ( $wgFeedCacheTimeout > 0 ) && $feedLastmod ) {
+		$feedLastmodTS = wfTimestamp( TS_UNIX, $feedLastmod );
+		if (
+			time() - $feedLastmodTS < $wgFeedCacheTimeout ||
+			$feedLastmodTS > wfTimestamp( TS_UNIX, $lastmod )
+			) {
+			wfDebug( "WikiArticleFeedsExtension: Loading feed from cache ($key; $feedLastmod; $lastmod)...\n" );
+			$cachedFeed = $messageMemc->get( $key );
+		} else {
+			wfDebug( "WikiArticleFeedsExtension: Cached feed timestamp check failed ($feedLastmod; $lastmod)\n" );
+		}
+	}
+
+	# Display cachedFeed, or generate one from scratch
+	global $wgWikiArticleFeedsSkipCache;
+	if ( !$wgWikiArticleFeedsSkipCache && is_string( $cachedFeed ) ) {
+		wfDebug( "WikiArticleFeedsExtension: Outputting cached feed\n" );
+		$feed = new $wgFeedClasses[$feedFormat]( $wgSitename . ' - ' . $title->getText(), '', $title->getFullURL() );
+		$feed->httpHeaders();
+		echo $cachedFeed;
+	} else {
+		wfDebug( "WikiArticleFeedsExtension: Rendering new feed and caching it\n" );
+		ob_start();
+		wfGenerateWikiFeed( $article, $feedFormat, $filterTags );
+		$cachedFeed = ob_get_contents();
+		ob_end_flush();
+		
+		$expire = 3600 * 24; # One day
+		$messageMemc->set( $key, $cachedFeed );
+		$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
+	}
+
+	# False to indicate that other action handlers should not process this page
+	return false;
 }
 
 /**
@@ -396,15 +395,15 @@ function wfWikiArticleFeedsAction($action, $article) {
  * @param Article $article The Article which is being purged.
  * @return boolean Always true to permit additional hook processing.
  */
-function wfPurgeFeedsOnArticlePurge($article) {
-    global $messageMemc,$wgDBname;
-    $titleDBKey = $article->mTitle->getPrefixedDBkey();
-    $keyPrefix = "{$wgDBname}:wikiarticlefeedsextension:{$titleDBKey}";
-    $messageMemc->delete("{$keyPrefix}:atom:timestamp");
-    $messageMemc->delete("{$keyPrefix}:atom"); 
-    $messageMemc->delete("{$keyPrefix}:rss"); 
-    $messageMemc->delete("{$keyPrefix}:rss:timestamp"); 
-    return true;
+function wfPurgeFeedsOnArticlePurge( $article ) {
+	global $messageMemc, $wgDBname;
+	$titleDBKey = $article->mTitle->getPrefixedDBkey();
+	$keyPrefix = "{$wgDBname}:wikiarticlefeedsextension:{$titleDBKey}";
+	$messageMemc->delete( "{$keyPrefix}:atom:timestamp" );
+	$messageMemc->delete( "{$keyPrefix}:atom" );
+	$messageMemc->delete( "{$keyPrefix}:rss" );
+	$messageMemc->delete( "{$keyPrefix}:rss:timestamp" );
+	return true;
 }
 
 /**
@@ -413,180 +412,179 @@ function wfPurgeFeedsOnArticlePurge($article) {
  * @param String $feedFormat A format type - must be either 'rss' or 'atom'
  * @param Array $filterTags Tags to use in filtering out items.
  */
-function wfGenerateWikiFeed($article, $feedFormat = 'atom', $filterTags = null) {
+function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null ) {
+	global $wgOut, $wgScript, $wgServer, $wgFeedClasses, $wgVersion, $wgSitename;
 
-    global $wgOut, $wgScript, $wgServer, $wgFeedClasses, $wgVersion, $wgSitename;
+	# Setup, handle redirects
+	if ( $article->isRedirect() ) {
+		$rtitle = Title::newFromRedirect( $article->getContent() );
+		if ( $rtitle ) {
+			$article = new Article( $rtitle );
+		}
+	}
+	$title = $article->getTitle();
+	$feedUrl = $title->getFullUrl();
 
-    # Setup, handle redirects
-    if ($article->isRedirect()) {
-        $rtitle = Title::newFromRedirect($article->getContent());
-        if ($rtitle) {
-            $article = new Article($rtitle);
-        }
-    }
-    $title = $article->getTitle();
-    $feedUrl = $title->getFullUrl();
+	# Parse page into feed items.
+	$content = $wgOut->parse( $article->getContent() . "\n__NOEDITSECTION__ __NOTOC__" );
+	preg_match_all(
+				   '/<!--\\s*FEED_START\\s*-->(.*?)<!--\\s*FEED_END\\s*-->/s',
+				   $content,
+				   $matches
+				   );
+	$feedContentSections = $matches[1];
 
-    # Parse page into feed items.
-    $content = $wgOut->parse($article->getContent()."\n__NOEDITSECTION__ __NOTOC__");
-    preg_match_all(
-        '/<!--\\s*FEED_START\\s*-->(.*?)<!--\\s*FEED_END\\s*-->/s',
-        $content,
-        $matches
-    );
-    $feedContentSections = $matches[1];
+	# Parse and process all feeds, collecting feed items
+	$items = array();
+	$feedDescription = '';
+	foreach ( $feedContentSections as $feedKey => $feedContent ) {
 
-    # Parse and process all feeds, collecting feed items
-    $items = array();
-    $feedDescription = ''; 
-    foreach ($feedContentSections as $feedKey=>$feedContent) {
-    
-        # Determine Feed item depth (what header level defines a feed)
-        preg_match_all( '/<h(\\d)>/m', $feedContent, $matches);
-        if (empty($matches[1])) next;
-        $lvl = $matches[1][0];
-        foreach ($matches[1] as $match) {
-            if ($match < $lvl) $lvl = $match;
-        }
-        
-        # Determine the item titles and default item links
-        preg_match_all(
-            '/<a[^>]*\\s+name=([\'"])(.*?)\\1[^>]*><\\/a><h'.$lvl.'>\\s*(.*?)\\s*<\\/h'.$lvl.'>/m',
-            $feedContent,
-            $matches
-        );
-        $itemLinks = $matches[2];
-        $itemTitles = $matches[3];
-        
-        # Split content into segments
-        $segments = preg_split( '/<a name=([\'"]).*?\\1\\s*><\\/a><h'.$lvl.'>.*?<\\/h'.$lvl.'>/m', $feedContent);
-        $segDesc = trim(strip_tags(array_shift($segments)));
-        if ($segDesc) {
-            if (!$feedDescription) {
-                $feedDescription = $segDesc;
-            } else {
+		# Determine Feed item depth (what header level defines a feed)
+		preg_match_all( '/<h(\\d)>/m', $feedContent, $matches );
+		if ( empty( $matches[1] ) ) next;
+		$lvl = $matches[1][0];
+		foreach ( $matches[1] as $match ) {
+			if ( $match < $lvl ) $lvl = $match;
+		}
+
+		# Determine the item titles and default item links
+		preg_match_all(
+					   '/<a[^>]*\\s+name=([\'"])(.*?)\\1[^>]*><\\/a><h' . $lvl . '>\\s*(.*?)\\s*<\\/h' . $lvl . '>/m',
+					   $feedContent,
+					   $matches
+					   );
+		$itemLinks = $matches[2];
+		$itemTitles = $matches[3];
+
+		# Split content into segments
+		$segments = preg_split( '/<a name=([\'"]).*?\\1\\s*><\\/a><h' . $lvl . '>.*?<\\/h' . $lvl . '>/m', $feedContent );
+		$segDesc = trim( strip_tags( array_shift( $segments ) ) );
+		if ( $segDesc ) {
+			if ( !$feedDescription ) {
+				$feedDescription = $segDesc;
+			} else {
 				wfLoadExtensionMessages( 'WikiArticleFeeds' );
-                $feedDescription = wfMsg('wikiarticlefeeds_combined_description');
-            }
-        }
-        
-        # Loop over parsed segments and add all items to item array
-        foreach ($segments as $key=>$seg) {
-        
-            # Filter by tag (if any are present)
-            $skip = false;
-            $tags = null;
-            if (is_array($filterTags) && !empty($filterTags)) {
-                if (preg_match_all('/<!-- ITEM_TAGS ([0-9a-zA-Z\\+\\/]+=*) -->/m', $seg, $matches)) {  
-                    $tags = array();
-                    foreach ($matches[1] as $encodedString) {
-                        $t = @unserialize(@base64_decode($encodedString));
-                        if ($t) {
-                            $t = explode(',',$t);
-                            array_walk($t, 'trim');
-                            sort($t);
-                            $tags = array_merge($tags, $t);
-                        }
-                    }
-                    $tags = array_unique($tags);
-                    if (!count(array_intersect($tags, $filterTags))) $skip = true;
-                    $seg = preg_replace('/<!-- ITEM_TAGS ([0-9a-zA-Z\\+\\/]+=*) -->/m', '', $seg);
-                } else {
-                    $skip = true;
-                }
-            }
-            if ($skip) continue;
-        
-            # Determine the item author and date
-            $author = null;
-            $date = null;
+				$feedDescription = wfMsg( 'wikiarticlefeeds_combined_description' );
+			}
+		}
 
-            # Look for a regular ~~~~ sig
-            $isAttributable = preg_match(
-                '%<a [^>]*href=([\'"])'.preg_quote($wgScript).'(/|\\?title=)User:.*?\\1[^>]*>(.*?)</a> (\\d\\d):(\\d\\d), (\\d+) ([A-z][a-z]+) (\\d{4}) \\([A-Z]+\\)%m',
-                $seg,
-                $matches
-            );
+		# Loop over parsed segments and add all items to item array
+		foreach ( $segments as $key => $seg ) {
 
-            # As a fallback - look for a --~~~~ like sig with a user page outside the User NS
-            if (!$isAttributable) {
-                $isAttributable = preg_match(
-                    '%--<a [^>]*href=([\'"])'.preg_quote($wgScript).'(/|\\?title=).*?\\1[^>]*>(.*?)</a> (\\d\\d):(\\d\\d), (\\d+) ([A-z][a-z]+) (\\d{4}) \\([A-Z]+\\)%m',
-                    $seg,
-                    $matches
-                );
-            }
-            
-            # Parse it out - if we can
-            if ($isAttributable) {
-                list($author, $hour, $min, $day, $monthName, $year) = array_slice($matches, 3); 
-                $months = array(
-                    'January' => '01', 'February' => '02', 'March' => '03', 'April' => '04',
-                    'May' => '05', 'June' => '06', 'July' => '07', 'August' => '08',
-                    'September' => '09', 'October' => '10', 'November' => '11', 'December' => '12'
-                );
-                $month = $months[$monthName];
-                $day = str_pad($day,2,'0',STR_PAD_LEFT);
-                $date = $year.$month.$day.$hour.$min.'00';
-            }
+			# Filter by tag (if any are present)
+			$skip = false;
+			$tags = null;
+			if ( is_array( $filterTags ) && !empty( $filterTags ) ) {
+				if ( preg_match_all( '/<!-- ITEM_TAGS ([0-9a-zA-Z\\+\\/]+=*) -->/m', $seg, $matches ) ) {
+					$tags = array();
+					foreach ( $matches[1] as $encodedString ) {
+						$t = @unserialize( @base64_decode( $encodedString ) );
+						if ( $t ) {
+							$t = explode( ',', $t );
+							array_walk( $t, 'trim' );
+							sort( $t );
+							$tags = array_merge( $tags, $t );
+						}
+					}
+					$tags = array_unique( $tags );
+					if ( !count( array_intersect( $tags, $filterTags ) ) ) $skip = true;
+					$seg = preg_replace( '/<!-- ITEM_TAGS ([0-9a-zA-Z\\+\\/]+=*) -->/m', '', $seg );
+				} else {
+					$skip = true;
+				}
+			}
+			if ( $skip ) continue;
 
-            # Set default 'article section' feed-link
-            $url = $feedUrl.'#'.$itemLinks[$key];
-            
-            # Look for an alternative to the default link (unless default 'section linking' has been forced)
-            global $wgForceArticleFeedSectionLinks;
-            if (!$wgForceArticleFeedSectionLinks) {
-                $strippedSeg = preg_replace(
-                    array(
-                        '%<a [^>]*href=([\'"])'.preg_quote($wgScript).'(/|\\?title=)User:.*?\\1[^>]*>(.*?)</a> (\\d\\d:\\d\\d, \\d+ [A-z][a-z]+ \\d{4} \\([A-Z]+\\))%m',
-                        '%--<a [^>]*href=([\'"])'.preg_quote($wgScript).'(/|\\?title=).*?\\1[^>]*>(.*?)</a> (\\d\\d:\\d\\d, \\d+ [A-z][a-z]+ \\d{4} \\([A-Z]+\\))%m'
-                    ),
-                    '',
-                    $seg
-                );
-                preg_match(
-                    '%<a [^>]*href=([\'"])(.*?)\\1[^>]*>(.*?)</a>%m',
-                    $strippedSeg,
-                    $matches
-                );
-                if ($matches[2]) {
-                    $url = $matches[2];
-                    if (preg_match('%^/%', $url)) {
-                        $url = $wgServer.$url;
-                    } 
-                }
-            }
+			# Determine the item author and date
+			$author = null;
+			$date = null;
 
-            # Create 'absolutified' segment - where all URLs are fully qualified
-            $seg = preg_replace('/ (href|src)=([\'"])\\//',' $1=$2'.$wgServer.'/',$seg);
+			# Look for a regular ~~~~ sig
+			$isAttributable = preg_match(
+										 '%<a [^>]*href=([\'"])' . preg_quote( $wgScript ) . '(/|\\?title=)User:.*?\\1[^>]*>(.*?)</a> (\\d\\d):(\\d\\d), (\\d+) ([A-z][a-z]+) (\\d{4}) \\([A-Z]+\\)%m',
+										 $seg,
+										 $matches
+										 );
 
-            # Create item and push onto item list 
-            $items[$date][] = new FeedItem(strip_tags($itemTitles[$key]), $seg, $url, $date, $author);
-        }
-    }
-    
-    # Programmatically determine the feed title and id.
-    $feedTitle = $wgSitename.' - '.$title->getPrefixedText();
-    $feedId = $title->getFullUrl();
+			# As a fallback - look for a --~~~~ like sig with a user page outside the User NS
+			if ( !$isAttributable ) {
+				$isAttributable = preg_match(
+											 '%--<a [^>]*href=([\'"])' . preg_quote( $wgScript ) . '(/|\\?title=).*?\\1[^>]*>(.*?)</a> (\\d\\d):(\\d\\d), (\\d+) ([A-z][a-z]+) (\\d{4}) \\([A-Z]+\\)%m',
+											 $seg,
+											 $matches
+											 );
+			}
 
-    # Create feed    
-    $feed = new $wgFeedClasses[$feedFormat]($feedTitle, $feedDescription, $feedId);
-    
-    # Push feed header
-    $tempWgVersion = $wgVersion;
-    $wgVersion .= ' via WikiArticleFeeds '.WIKIARTICLEFEEDS_VERSION;
-    $feed->outHeader();
-    $wgVersion = $tempWgVersion;
-    
-    # Sort all items by date and push onto feed
-    krsort($items);
-    foreach ($items as $itemGroup) {
-        foreach ($itemGroup as $item) {
-            $feed->outItem($item);
-        }
-    }
+			# Parse it out - if we can
+			if ( $isAttributable ) {
+				list( $author, $hour, $min, $day, $monthName, $year ) = array_slice( $matches, 3 );
+				$months = array(
+								'January' => '01', 'February' => '02', 'March' => '03', 'April' => '04',
+								'May' => '05', 'June' => '06', 'July' => '07', 'August' => '08',
+								'September' => '09', 'October' => '10', 'November' => '11', 'December' => '12'
+								);
+				$month = $months[$monthName];
+				$day = str_pad( $day, 2, '0', STR_PAD_LEFT );
+				$date = $year . $month . $day . $hour . $min . '00';
+			}
 
-    # Feed footer
-    $feed->outFooter();
+			# Set default 'article section' feed-link
+			$url = $feedUrl . '#' . $itemLinks[$key];
+
+			# Look for an alternative to the default link (unless default 'section linking' has been forced)
+			global $wgForceArticleFeedSectionLinks;
+			if ( !$wgForceArticleFeedSectionLinks ) {
+				$strippedSeg = preg_replace(
+											array(
+												  '%<a [^>]*href=([\'"])' . preg_quote( $wgScript ) . '(/|\\?title=)User:.*?\\1[^>]*>(.*?)</a> (\\d\\d:\\d\\d, \\d+ [A-z][a-z]+ \\d{4} \\([A-Z]+\\))%m',
+												  '%--<a [^>]*href=([\'"])' . preg_quote( $wgScript ) . '(/|\\?title=).*?\\1[^>]*>(.*?)</a> (\\d\\d:\\d\\d, \\d+ [A-z][a-z]+ \\d{4} \\([A-Z]+\\))%m'
+												  ),
+											'',
+											$seg
+											);
+				preg_match(
+						   '%<a [^>]*href=([\'"])(.*?)\\1[^>]*>(.*?)</a>%m',
+						   $strippedSeg,
+						   $matches
+						   );
+				if ( $matches[2] ) {
+					$url = $matches[2];
+					if ( preg_match( '%^/%', $url ) ) {
+						$url = $wgServer . $url;
+					}
+				}
+			}
+
+			# Create 'absolutified' segment - where all URLs are fully qualified
+			$seg = preg_replace( '/ (href|src)=([\'"])\\//', ' $1=$2' . $wgServer . '/', $seg );
+
+			# Create item and push onto item list
+			$items[$date][] = new FeedItem( strip_tags( $itemTitles[$key] ), $seg, $url, $date, $author );
+		}
+	}
+
+	# Programmatically determine the feed title and id.
+	$feedTitle = $wgSitename . ' - ' . $title->getPrefixedText();
+	$feedId = $title->getFullUrl();
+
+	# Create feed    
+	$feed = new $wgFeedClasses[$feedFormat]( $feedTitle, $feedDescription, $feedId );
+
+	# Push feed header
+	$tempWgVersion = $wgVersion;
+	$wgVersion .= ' via WikiArticleFeeds ' . WIKIARTICLEFEEDS_VERSION;
+	$feed->outHeader();
+	$wgVersion = $tempWgVersion;
+
+	# Sort all items by date and push onto feed
+	krsort( $items );
+	foreach ( $items as $itemGroup ) {
+		foreach ( $itemGroup as $item ) {
+			$feed->outItem( $item );
+		}
+	}
+
+	# Feed footer
+	$feed->outFooter();
 }
 
