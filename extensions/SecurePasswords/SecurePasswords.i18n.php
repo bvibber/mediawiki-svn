@@ -101,6 +101,19 @@ Mora:',
 	'securepasswords-word' => 'ne bude riječ',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'securepasswords-valid' => 'La seva contrasenya no és vàlida o és massa curta:
+Ha de:',
+	'securepasswords-minlength' => 'ser com a mínim de $1 {{PLURAL:$1|caràcter|caràcters}}',
+	'securepasswords-lowercase' => 'contenir com a mínim 1 lletra en minúscula',
+	'securepasswords-uppercase' => 'contenir com a mínim 1 lletra en majúscula',
+	'securepasswords-digit' => 'contenir com a mínim 1 dígit',
+	'securepasswords-special' => 'contenir com a mínim 1 caràcter especial (són caràcters especials els següents: $1)',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Umherirrender
@@ -135,8 +148,10 @@ $messages['dsb'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'securepasswords-desc' => 'Crea cifrados de contraseñas más seguras y añade un comprobador de su fortaleza',
 	'securepasswords-valid' => 'Tu contraseña es inválida o demasiado corta.
 Debe ser:',
 	'securepasswords-minlength' => 'ser al menos $1 {{PLURAL:$1|caracter|caracteres}} de largo',

@@ -126,9 +126,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'purgecache' => 'Purgar caché',
+	'purgecache-desc' => '[[Special:PurgeCache|Página especial]] usada para limpiar la tabla OBJECTCACHE',
 	'purgecache-warning' => 'Esto purgara las tablas de cache.',
 	'purgecache-purged' => 'El cache ha sido purgado.',
 	'purgecache-button' => 'Purgar',

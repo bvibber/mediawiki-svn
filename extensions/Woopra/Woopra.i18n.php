@@ -195,6 +195,13 @@ $messages['km'] = array(
 	'woopra-desc' => 'អនុញ្ញាតឱ្យ [http://www.woopra.com/ Woopra Live Tracking Software] ធ្វើការដំឡើងមេឌាវិគី(MediaWiki)របស់អ្នក។',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'woopra-desc' => '사용자 분의 미디어위키의 설치를 위해 [http://www.woopra.com/ 오페라 라이브 추적 소프트웨어]가 작동하도록 허용해주세요.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

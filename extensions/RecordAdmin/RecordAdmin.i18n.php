@@ -1003,6 +1003,13 @@ $messages['os'] = array(
 	'recordadmin-buttonsave' => 'Афтæ уæд',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'recordadmin-editlink' => 'ennere',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad

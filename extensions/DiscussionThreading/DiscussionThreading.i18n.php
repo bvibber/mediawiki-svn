@@ -210,6 +210,17 @@ $messages['gsw'] = array(
 	'discussionthreading-threadnewsectionhint' => 'E neje Diskussionsstrang aalege',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'discussionthreading-desc' => 'ચર્ચા પાનાં પર આ થ્રેડ ઉમેરો.',
+	'discussionthreading-replysection' => 'જવાબ આપો',
+	'discussionthreading-replysectionhint' => 'આ પોસ્ટીંગનો જવાબ આપો.',
+	'discussionthreading-threadnewsection' => 'નવું',
+	'discussionthreading-threadnewsectionhint' => 'નવો થ્રેડ ચાલુ કરો.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

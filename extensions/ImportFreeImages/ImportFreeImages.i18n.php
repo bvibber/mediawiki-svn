@@ -97,6 +97,9 @@ $messages['bar'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'importfreeimages' => 'Імпарт вольных выяваў',
+	'importfreeimages-desc' => 'Дазваляе [[Special:ImportFreeImages|імпартаваць фатаграфіі, якія ліцэнзаваныя належным чынам]] з [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Гэтая старонка дазваляе Вам шукаць адпаведным чынам ліцэнзаваныя фатаграфіі з flickr і імпартаваць іх у {{GRAMMAR:вінавальны|{{SITENAME}}}}.',
 	'importfreeimages_owner' => 'Аўтар',
 );
 
@@ -817,6 +820,13 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'importfreeimages_owner' => 'Автор',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'importfreeimages_next' => 'Neegschte $1',
 );
 
 /** Polish (Polski)

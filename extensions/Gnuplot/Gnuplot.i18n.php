@@ -121,6 +121,13 @@ $messages['gsw'] = array(
 	'gnuplot-desc' => 'Fiegt s <code><nowiki><gnuplot></nowiki></code>-Tag yy zum Gnuplot verwände',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'gnuplot-desc' => 'Gnuplot (સોફ્ટવેર) વાપરવા માટે <code><nowiki><gnuplot></nowiki></code> ઊમેરે છે.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

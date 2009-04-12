@@ -167,9 +167,11 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Consta
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'layouts_continue' => 'Συνέχεια',
 	'layouts_unknown' => 'Άγνωστο',
 );
 

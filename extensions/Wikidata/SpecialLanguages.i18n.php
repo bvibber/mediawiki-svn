@@ -1295,12 +1295,14 @@ $wdMessages['bg'] = array(
 	'ow_copy_unsuccessful' => '<h3>Копирането беше неуспешно</h3>
 Не беше извършено копиране.',
 	'ow_no_action_specified' => '<h3>Не е посочено действие</h3> Вероятно сте попаднали тук директно? Обикновено не се налага да идвате тук.',
+	'ow_history_transaction' => 'Транзакция:',
 	'ow_needs_xlation_source_lang' => 'Изходен език:',
 	'ow_needs_xlation_dest_lang' => 'Целеви език:',
 	'ow_needs_xlation_no_dest_lang' => 'Необходимо е да се посочи целеви език.',
 	'ow_show' => 'Показване',
 	'ow_upload' => 'Качване',
 	'ow_create' => 'Създаване',
+	'right-addlanguage' => 'Добавяне и променяне на езикови настройки',
 );
 
 /** Bengali (বাংলা)
@@ -2354,6 +2356,7 @@ $wdMessages['el'] = array(
 	'ow_GotoSource' => 'Μετάβαση στην πηγή',
 	'ow_Language' => 'Γλώσσα',
 	'ow_LevelAnnotation' => 'Σχολιασμός',
+	'ow_Multiple_meanings' => 'Πολλαπλές σημασίες:',
 	'ow_OptionAttribute' => 'Ιδιότητα',
 	'ow_OptionAttributeOption' => 'Επιλογή',
 	'ow_OptionAttributeOptions' => 'Επιλογές',
@@ -5055,9 +5058,12 @@ Mangga hubungi operator server utawa pangurus.',
 $wdMessages['ka'] = array(
 	'languages' => 'ვიკიდატა: ენების მენეჯერი',
 	'langman_title' => 'ენების მენეჯერი',
+	'langman_iso639-3' => 'ISO 639-3 კოდი:',
+	'langman_iso639-2' => 'ISO 639-2 კოდი:',
 	'langman_addlang' => 'ენის დამატება',
 	'datasearch' => 'ვიკიდატა: მონაცემთა ძიება',
 	'datasearch_language' => 'ენა:',
+	'ow_importtsv_file' => 'TSV ფაილი:',
 	'ow_exporttsv_languages' => 'ენები:',
 	'ow_save' => 'შენახვა',
 	'ow_history' => 'ისტორია',
@@ -5132,6 +5138,7 @@ $wdMessages['ka'] = array(
 	'ow_Link' => 'ბმული',
 	'ow_LinkAttribute' => 'თვისება',
 	'ow_LinkAttributeValues' => 'ბმულები',
+	'ow_User' => 'მომხმარებელი',
 	'ow_Property' => 'თვისება',
 	'ow_Value' => 'მნიშვნელობა',
 	'ow_meaningsoftitle' => '"$1"-ის მნიშვნელობები',
@@ -5258,6 +5265,83 @@ $wdMessages['km'] = array(
 គ្មាន​សកម្មភាព​ចម្លង​ត្រូវ​បាន​ដាក់ជំនួស​ទេ​។',
 	'ow_no_action_specified' => '<h3>គ្មាន​សកម្មភាព​ត្រូវ​បាន​បញ្ជាក់​ទេ</h3>
 ប្រហែលជា អ្នក​បាន​ចូលមក​ទំព័រ​នេះ​ដោយផ្ទាល់​? ជាធម្មតា អ្នក​មិនចាំបាច់​ចូលមក​ទីនេះ​ទេ​។',
+);
+
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$wdMessages['ko'] = array(
+	'languages' => '위키자료집: 언어 관리자',
+	'langman-desc' => '언어 설정을 바꾸거나 추가하시려면 [[Special:Languages]]로 가세요.',
+	'langman_title' => '언어 관리자',
+	'langman_not_allowed' => '사용자께서는 언어 설정을 변경할 수 있다는 허락을 받지 못하셨습니다.',
+	'langman_header' => '언어 코드의 유형과 아래에 나오는 코드의 영어 이름:',
+	'langman_req_fields' => '언어의 이름과 ISO 639-3 코드 둘 다 필요합니다!',
+	'langman_adding' => '언어 $1을 코드 $2와 함께 추가해주세요.',
+	'langman_langname' => '언어 이름:',
+	'langman_iso639-3' => 'ISO 639-3 코드:',
+	'langman_iso639-2' => 'ISO 639-2 코드:',
+	'langman_wikimedia' => '위키미디어 코드:',
+	'langman_field_optional' => '(선택의)',
+	'langman_addlang' => '언어 추가하기',
+	'importlangnames' => '위키자료집: 언어 이름 수입',
+	'importlangnames_title' => '언어 이름 수입',
+	'importlangnames_not_allowed' => '사용자께서는 언어 이름 수입을 할 수 있는 허락을 받지 못했습니다.',
+	'importlangnames_added' => '언어 이름 "$1"가 추가되었습니다.',
+	'importlangnames_not_found' => '<strong>"$1"에 대해 언어 표제어를 찾을 수 없습니다!</strong>',
+	'datasearch' => '위키자료집: 자료 검색',
+	'datasearch_language' => '언어:',
+	'datasearch_found_word' => '단어 찾음',
+	'datasearch_meaning' => '의미',
+	'datasearch_ext_identifier' => '외부 감정인',
+	'datasearch_search_text' => '본문 검색:',
+	'datasearch_within_words' => '단어 안:',
+	'datasearch_within_ext_ids' => '외부 감정인 안:',
+	'ow_importtsv_import_failed' => '수입 실패함',
+	'ow_exporttsv_languages' => '언어:',
+	'addcollection' => '위키자료집: 수집 추가하기',
+	'ow_save' => '저장',
+	'ow_history' => '역사',
+	'ow_uiprefs' => '위키자료집',
+	'ow_transaction_count' => '계산:',
+	'ow_transaction_user' => '사용자 이름:',
+	'ow_transaction_restore' => '복구',
+	'ow_transaction_remove' => '삭제',
+	'ow_transaction_summary' => '요약',
+	'ow_dm_OK' => '확인',
+	'ow_ClassAttributeLevel' => '수준',
+	'ow_DefinedMeaningAttributes' => '주석',
+	'ow_ExactMeanings' => '정확한 의미',
+	'ow_Expression' => '표현',
+	'ow_Language' => '언어',
+	'ow_LevelAnnotation' => '각주',
+	'ow_Multiple_meanings' => '다양한 의미:',
+	'ow_NewExactMeaning' => '새로운 정확한 의미',
+	'ow_OptionAttributeOption' => '선택',
+	'ow_PopupAnnotation' => '각주',
+	'ow_Remove' => '삭제',
+	'ow_Spelling' => '철자',
+	'ow_Synonyms' => '동의어',
+	'ow_SynonymsAndTranslations' => '동의어와 번역',
+	'ow_Source' => '출처',
+	'ow_Text' => '본문',
+	'ow_TextAttribute' => '특성',
+	'ow_TextAttributeHeader' => '본문 속성',
+	'ow_TextAttributeValues' => '분명한 본문',
+	'ow_Time' => '시대',
+	'ow_TranslatedTextAttribute' => '속성',
+	'ow_TranslatedText' => '번역된 본문',
+	'ow_TranslatedTextAttributeValue' => '본문',
+	'ow_TranslatedTextAttributeValues' => '번역 가능한 본문',
+	'ow_Label' => '분류',
+	'ow_Link' => '링크',
+	'ow_LinkAttribute' => '속성',
+	'ow_LinkAttributeValues' => '링크',
+	'ow_User' => '사용자',
+	'ow_Property' => '속성',
+	'ow_Value' => '평가',
+	'ow_added' => '추가',
+	'ow_removed' => '삭제',
 );
 
 /** Krio (Krio)
@@ -6838,6 +6922,13 @@ $wdMessages['os'] = array(
 	'ow_Language' => 'Æвзаг',
 	'ow_Text' => 'Текст',
 	'ow_LinkAttributeValues' => 'Æрвитæнтæ',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$wdMessages['pdc'] = array(
+	'ow_history' => 'Gschicht',
 );
 
 /** Polish (Polski)

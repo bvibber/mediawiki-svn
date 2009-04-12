@@ -55,7 +55,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'stalepages' => 'Стари страници',
 	'stalepages-desc' => 'Генерира [[Special:Stalepages|списък със страници]], които не са били редактирани скоро',
-	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през последните $1 дни.',
+	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през {{PLURAL:$1|последния|последните}} $1 {{PLURAL:$1|ден|дни}}.',
 );
 
 /** Bosnian (Bosanski)

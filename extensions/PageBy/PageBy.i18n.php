@@ -157,8 +157,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'pageby-desc' => 'Muestra las contribuciones hechas en una página usando la etiqueta <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Página creada por $1, $2',
 	'pageby-last' => 'ültimo <a href="$3">modificado</a> por $1, $2',
 	'pageby-contributors' => 'Contribuyentes:',

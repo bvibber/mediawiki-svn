@@ -386,9 +386,15 @@ $4',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author K sal 15
  */
 $messages['el'] = array(
+	'todo' => 'Λίστα εργασιών',
+	'todo-new-queue' => 'Νέο',
+	'todo-invalid-item' => 'Χαμένο ή άκυρο στοιχείο',
+	'todo-unrecognize-type' => 'Μη αναγνωρισμένος τύπος',
 	'todo-item-list' => 'Τα αντικείμενα σας',
+	'todo-move-queue' => 'Μετακίνηση στην ουρά...',
 	'todo-list-change' => 'Αλλαγή',
 	'todo-list-cancel' => 'Έξοδος',
 	'todo-new-item' => 'Νέο αντικείμενο',

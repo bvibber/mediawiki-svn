@@ -261,6 +261,13 @@ $messages['jv'] = array(
 	'seealso' => 'Uga delengen',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'seealso' => 'იხილეთ აგრეთვე',
+);
+
 /** Kazakh (Cyrillic) (Қазақша (Cyrillic))
  * @author AlefZet
  */
@@ -366,6 +373,13 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'seealso' => 'Vejatz tanben',
 	'seealso-desc' => 'Entèsta « Vejatz tanben » utilizada per la balisa <code><nowiki><seealso></nowiki></code>',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'seealso' => 'Guuck aach',
 );
 
 /** Polish (Polski)

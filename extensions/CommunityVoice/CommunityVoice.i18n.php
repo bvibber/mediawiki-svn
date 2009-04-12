@@ -68,6 +68,13 @@ $messages['arz'] = array(
 	'communityvoice-ratings-error-no-title' => 'صفة العنوان مفقودة فى وسم التقييم.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Изпращане...',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -222,6 +222,16 @@ $messages['gsw'] = array(
 	'msfunc_div_zero' => 'Division dur Null',
 );
 
+/** Gujarati (ગુજરાતી)
+ * @author Dineshjk
+ */
+$messages['gu'] = array(
+	'msfunc_desc' => 'ગાણિતિક અને આંકડાકીય વિધેયોનું કલેક્શન',
+	'msfunc_nan' => 'પરીણામ મૂલ્ય સંખ્યા નથી.',
+	'msfunc_inf' => 'પરીણામ મૂલ્ય અનંત છે.',
+	'msfunc_div_zero' => 'શૂન્ય દ્વારા ભાગાકાર',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

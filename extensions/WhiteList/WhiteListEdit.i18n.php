@@ -404,6 +404,8 @@ $2',
 	'whitelistrequestconf' => 'Заявка за нови страници беше изпратена на $1',
 	'whitelistnever' => 'никога',
 	'whitelistnummatches' => ' - {{PLURAL:$1|едно съвпадение|$1 съвпадения}}',
+	'group-restricted' => 'Ограничени потребители',
+	'group-restricted-member' => 'Ограничен потребител',
 	'group-manager' => 'Управители',
 	'group-manager-member' => 'Управител',
 );
@@ -2145,6 +2147,13 @@ $messages['pa'] = array(
 	'whitelisttablemodifyall' => 'ਸਭ',
 	'whitelisttableedit' => 'ਬਦਲੋ',
 	'whitelisttableview' => 'ਵੇਖੋ',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'whitelisttableedit' => 'Ennere',
 );
 
 /** Polish (Polski)

@@ -619,6 +619,13 @@ $messages['te'] = array(
 	'emergencydesysop-submit' => 'దాఖలుచెయ్యి',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'emergencydesysop-nogroups' => 'ไม่มี',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

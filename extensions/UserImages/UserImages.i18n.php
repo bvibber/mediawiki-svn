@@ -99,6 +99,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'userimages-desc' => 'Генериране на галерии на качените от потребителя картинки чрез <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Файлове, качени от $1',
 	'userimages-noname' => 'Невалидно потребителско име или полето е оставено празно.',
 	'userimages-noimages' => '$1 няма качени файлове.',
@@ -156,8 +157,10 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author K sal 15
  */
 $messages['el'] = array(
+	'userimages-noname' => 'Άκυρο ή μη δοσμένο όνομα χρήστη',
 	'userimages-noimages' => 'Ο/Η $1 δεν έχει ανεβάσει εικόνες.',
 );
 

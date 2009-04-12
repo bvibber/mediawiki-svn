@@ -2644,7 +2644,7 @@ $4',
  */
 $messages['hsb'] = array(
 	'code' => 'Kodowa kontrola',
-	'code-rev-title' => 'r$2 - Přepruwowanje koda',
+	'code-rev-title' => 'r$1 - Přepruwowanje koda',
 	'code-comments' => 'Komentary',
 	'code-references' => 'Naslědne wersije',
 	'code-change-status' => "změni '''status''' wersije r$1",

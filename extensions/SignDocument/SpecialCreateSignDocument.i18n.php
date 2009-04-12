@@ -235,11 +235,17 @@ $messages['bs'] = array(
 	'createsigndoc-extaddress' => 'Grad, pokrajina, država:',
 	'createsigndoc-phone' => 'Broj telefona:',
 	'createsigndoc-bday' => 'Rođendan:',
+	'createsigndoc-minage' => 'Najmanja starost:',
 	'createsigndoc-introtext' => 'Uvod:',
 	'createsigndoc-hidden' => 'Sakriveno',
+	'createsigndoc-optional' => 'Opcionalno',
 	'createsigndoc-create' => 'Napravi',
 	'createsigndoc-error-generic' => 'Greška: $1',
 	'createsigndoc-error-pagenoexist' => 'Greška: Stranica [[$1]] ne postoji.',
+	'createsigndoc-success' => 'Potpisivanje dokumenata je uspješno omogućeno na [[$1]].
+Možete [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ga isprobati].',
+	'createsigndoc-error-alreadycreated' => 'Potpisani dokument "$1" već postoji.
+Ne možete ga potpisati po drugi put.',
 );
 
 /** Catalan (Català)

@@ -702,6 +702,21 @@ $messages['te'] = array(
 	'watchsubpages-addtitles' => 'పేజీలను చేర్చండి',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'watchsubpages' => 'เฝ้าดูหน้าย่อย',
+	'watchsubpages-addedtowatchlist' => 'หน้าดังกล่าวได้ถูกเพิ่มไปยังรายการเฝ้าดูของคุณเรียบร้อยแล้ว',
+	'watchsubpages-addtitles' => 'เพิ่มหน้า',
+	'watchsubpages-addtitlestowatchlist' => 'เพิ่มหน้าต่าง ๆ ไปยังรายการเฝ้าดู',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|เพิ่มหน้าย่อย]]ของหน้าต่าง ๆ เข้าไปในรายชื่อเฝ้าดูของคุณอย่างรวดเร็ว',
+	'watchsubpages-form' => 'เลือกหน้าต่าง ๆ ที่คุณต้องการเพิ่มไปยังรายการเฝ้าดูของคุณด้านล่าง
+เลือกกล่องเช็คบอกซ์ที่ติดกับหน้าที่คุณต้ิองการเพิ่ม และึคลิก "เพิ่มหน้า"
+
+เมื่อกำลังเลือกหรือยกเลิกการเลือกหน้าหลาย ๆ หน้าติดต่อกัน กดปุ่ม shift ค้างไว้ และติ๊กเลือกหน้าบนสุดของรายการกับล่างสุดของรายการ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

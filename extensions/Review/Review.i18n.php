@@ -1829,6 +1829,7 @@ $messages['tg-cyrl'] = array(
  * @author Passawuth
  */
 $messages['th'] = array(
+	'review_sidebar_title' => 'ตรวจสอบ',
 	'review_total_statistics' => 'รวม',
 );
 

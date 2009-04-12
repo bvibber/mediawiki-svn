@@ -70,6 +70,13 @@ $messages['dsb'] = array(
 	'pipeescape-desc' => 'Parserowa funkcija <code>#!</code>, joli coš znamješko | schowaś (znamješko | ma se jano pśedstajiś, bźez wósebneje funkcije)',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'pipeescape-desc' => 'Función del analizador sintáctico <code>#!</code> para insertar el carácter de barra vertical «|» como tal carácter y sin significado especial,',
+);
+
 /** French (Français)
  * @author Grondin
  */

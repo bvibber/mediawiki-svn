@@ -2070,6 +2070,13 @@ $messages['os'] = array(
 	'tasks_search_status' => 'Статус',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'tasks_help_page_link' => 'Hilf',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Maikking

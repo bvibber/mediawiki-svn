@@ -327,6 +327,13 @@ $messages['pnb'] = array(
 	'authors_anonymous' => 'انجان',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'authors_authors' => 'ليکوالان',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

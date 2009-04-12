@@ -170,6 +170,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'newschannel' => 'Canal de noticias',
@@ -178,6 +179,7 @@ $messages['es'] = array(
 	'newschannel_limit' => 'Límite:',
 	'newschannel_include_category' => 'Categoría adicional:',
 	'newschannel_exclude_category' => 'Excluir categoría:',
+	'newschannel_submit_button' => 'Crear sindicación',
 );
 
 /** Finnish (Suomi)
@@ -376,6 +378,13 @@ $messages['oc'] = array(
 	'newschannel_include_category' => 'Categoria(s) addicionala(s) :',
 	'newschannel_exclude_category' => 'Categoria(s) excluida(s) :',
 	'newschannel_submit_button' => 'Crear lo flus',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'newschannel' => 'Nuus',
 );
 
 /** Polish (Polski)

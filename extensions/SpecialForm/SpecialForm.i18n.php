@@ -196,7 +196,10 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'form' => 'Obrazac',
 	'formnoname' => 'Nema imena obrasca',
+	'formbadname' => 'Loš naziv obrasca',
+	'formtitlepattern' => 'Dodaj novi $1',
 	'formsave' => 'Sačuvaj',
+	'formbadpagename' => 'Loš naziv stranice',
 	'formsaveerror' => 'Greška pri spremanju obrasca',
 );
 
@@ -321,6 +324,8 @@ $messages['es'] = array(
 	'formpattern' => 'Formulario de $1',
 	'formtitlepattern' => 'Agregar nuevo $1',
 	'formsave' => 'Guardar',
+	'formindexmismatch-title' => 'No se corresponde el nombre del modelo y la plantilla',
+	'formindexmismatch' => 'Este formulario tiene nombres de patrones y plantillas que no coinciden, comenzando por $1.',
 	'formarticleexists' => 'La página existe',
 	'formarticleexiststext' => 'La página [[$1]] ya existe.',
 	'formbadpagename' => 'Mal nombre de página',

@@ -34,6 +34,13 @@ $messages['ar'] = array(
 	'ajaxlogin-create' => 'إنشاء حساب',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'ajaxlogin-create' => 'Създаване на сметка',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

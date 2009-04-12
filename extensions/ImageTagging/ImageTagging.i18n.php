@@ -1169,6 +1169,13 @@ $messages['os'] = array(
 	'imagetagging-tagcancel-button' => 'Нæ бæззы',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'imagetagging-imghistory' => 'Gschicht',
+);
+
 /** Polish (Polski)
  * @author Maikking
  * @author Sp5uhe

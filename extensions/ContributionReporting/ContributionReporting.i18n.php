@@ -577,6 +577,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author K sal 15
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -604,6 +605,7 @@ $messages['el'] = array(
 	'contribstats-value-under' => 'Κάτω από $1',
 	'contribstats-value-from' => 'Από $1 έως $2',
 	'contribstats-value-over' => 'Πάνω από $1',
+	'fundraiserstatistics' => 'Στατιστικά εράνου',
 	'fundraiserstats-date' => 'Ημερομηνία',
 	'fundraiserstats-day' => 'Ημέρα $1 από $2',
 	'fundraiserstats-contributions' => 'Εισφορές',

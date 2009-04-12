@@ -101,9 +101,13 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'rightfunctions-desc' => 'Funciones sintácticas basadas en permisos',
+	'rightfunctions-casc' => '(a partir de fuentes en cascada)',
 	'rightfunctions-local' => '(de página local)',
+	'rightfunctions-ns' => '(a partir de la protección del espacio de nombres)',
 );
 
 /** French (Français)

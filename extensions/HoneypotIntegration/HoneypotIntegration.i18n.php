@@ -73,9 +73,11 @@ $messages['dsb'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'honeypot-desc' => 'Provee integración con [http://projecthoneypot.org/ Projecto Honey Pot] para sitios MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Número de eventos recientes que la dirección IP ha desencadenado en relación con el proyecto Honey Pot',
 );
 
 /** French (Français)

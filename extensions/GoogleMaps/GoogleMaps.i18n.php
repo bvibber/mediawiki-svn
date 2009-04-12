@@ -2799,6 +2799,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-caption' => 'Beschreiwung',
 	'gm-tab-title' => 'Titel vum Onglet',
 	'gm-tab' => 'Onglet',
+	'gm-start-path' => 'E Wee ufänken',
 	'gm-save-point' => 'Späicheren and zoumaachen',
 	'gm-load-map-from-article' => 'Eng Kaart vun der Säit lueden:',
 	'gm-no-maps' => 'Op dëser Sàit gëtt et keng Kaarten.',
@@ -2815,6 +2816,7 @@ $wgGoogleMapsMessages['lb'] = array(
 	'gm-height' => 'Héicht',
 	'gm-scale-control' => 'Maassstab',
 	'gm-overview-control' => 'Iwwersiicht',
+	'gm-selector-control' => 'Eraussiche vun der Kaart oder dem Satelitt',
 	'gm-zoom-control' => 'Navigatioun',
 	'gm-large' => 'Grouss',
 	'gm-medium' => 'Duerchschnëttlech',
@@ -3529,6 +3531,13 @@ Subukan me ing pekabayung bersion ning <a href="http://www.microsoft.com/ie">Int
 	'gm-kml-export' => 'Ilual (export) ya ining mapa paras king KML',
 	'gm-earth' => 'Yatu',
 	'gm-moon' => 'Bulan',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$wgGoogleMapsMessages['pdc'] = array(
+	'gm-zoom-control' => 'Faahre-Gnepp',
 );
 
 /** Polish (Polski)

@@ -118,6 +118,13 @@ $messages['dsb'] = array(
   #</pre><!-- toś tu smužku njezměniś -->',
 );
 
+/** Greek (Ελληνικά)
+ * @author K sal 15
+ */
+$messages['el'] = array(
+	'editsubpages-desc' => 'Επιτρέπει στους διαχειριστές να ξεκλειδώσουν μια σελίδα και όλα τις υποσελίδες για ανώνυμη επεξεργασία με [[MediaWiki:Unlockedpages]]',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Sanbec

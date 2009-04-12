@@ -357,6 +357,7 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author Dorgan
+ * @author Enbéká
  */
 $messages['hu'] = array(
 	'findspam' => 'Spam keresése',
@@ -364,6 +365,7 @@ $messages['hu'] = array(
 	'findspam-ip' => 'IP-cím:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nem találtam ilyen szerkesztést.',
+	'right-findspam' => 'Újonnan hozzáadott spam keresése',
 );
 
 /** Interlingua (Interlingua)

@@ -146,10 +146,30 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'importusers' => 'Імпарт удзельнікаў',
+	'importusers-desc' => '[[Special:ImportUsers|Масавы імпарт удзельнікаў]] з файлу ў фармаце CSV з кадыроўкай UTF-8',
+	'importusers-uploadfile' => 'Загрузіць файл',
+	'importusers-form-caption' => 'Увядзіце файл у фармаце CSV (UTF-8)',
+	'importusers-form-file' => 'Фармат файлу ўдзельнікаў (CSV):',
+	'importusers-form-replace-present' => 'Замяніць існуючых удзельнікаў',
+	'importusers-form-button' => 'Імпартаваць',
+	'importusers-user-added' => 'Дададзены ўдзельнік <b>%s</b>.',
+	'importusers-user-present-update' => 'Удзельнік <b>%s</b> ужо існуе. Абноўлены.',
+	'importusers-user-present-not-update' => 'Удзельнік <b>%s</b> ужо існуе. Не абноўлены.',
+	'importusers-user-invalid-format' => 'Зьвесткі пра ўдзельніка ў радку #%s маюць няслушны фармат ці пустыя. Прапушчаны.',
+	'importusers-log' => 'Журнал імпарту удзельнікаў',
+	'importusers-log-summary' => 'Вывады',
+	'importusers-log-summary-all' => 'Усе',
+	'importusers-log-summary-added' => 'Дададзены',
+	'importusers-log-summary-updated' => 'Абноўлены',
+	'importusers-login-name' => 'Імя ўдзельніка',
 	'importusers-password' => 'пароль',
 	'importusers-email' => 'Адрас электроннай пошты',
+	'importusers-realname' => 'сапраўднае імя',
+	'right-import_users' => 'масавы імпарт удзельнікаў',
 );
 
 /** Bulgarian (Български)
@@ -203,6 +223,10 @@ $messages['bs'] = array(
  * @author Aleator
  */
 $messages['ca'] = array(
+	'importusers' => 'Importar usuaris',
+	'importusers-desc' => '[[Special:ImportUsers|Importar usuaris]] en bloc des de fitxer CSV; codificació: UTF-8',
+	'importusers-uploadfile' => 'Carregar fitxer',
+	'importusers-form-caption' => 'Entreu un fitxer CSV (UTF-8)',
 	'importusers-log' => "Registre d'importació",
 	'importusers-password' => 'contrasenya',
 );

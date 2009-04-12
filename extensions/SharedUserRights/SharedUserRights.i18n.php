@@ -215,14 +215,15 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fievarsty
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'shareduserrights' => '共有利用者権限管理',
 	'gblrights-desc' => '簡単な[[Special:SharedUserRights|グローバル利用者権限管理]]',
-	'gblrights-logpage' => 'グローバル権限記録',
+	'gblrights-logpage' => 'グローバル権限変更記録',
 	'gblrights-pagetext' => 'これはこのウィキファミリーのグローバル利用者権限テーブルに対するすべての変更の記録です',
-	'gblrights-rights-entry' => '$1 のグローバルグループ所属を $2 から $3 に変更',
+	'gblrights-rights-entry' => '$1 のグローバルグループ所属を $2 から $3 へ変更しました',
 );
 
 /** Khmer (ភាសាខ្មែរ)

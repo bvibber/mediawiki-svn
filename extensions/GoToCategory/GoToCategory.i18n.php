@@ -126,7 +126,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'gotocategory-desc' => '「ページへ移動」機能の検索語照合を Category: 名前空間に対して行う',
+	'gotocategory-desc' => '「ページへ移動」機能において、{{ns:category}}: 名前空間に対して検索語の照合を行う',
 );
 
 /** Ripoarisch (Ripoarisch)

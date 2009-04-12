@@ -1278,6 +1278,8 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'youtubeauthsub' => '유투브 동영상을 올립니다.',
+	'youtubeauthsub-desc' => '사용자가 유투브에 바로 연결되는 [[Special:YouTubeAuthSub|동영상 올리기]]에 접근하도록 허용되었습니다.',
+	'youtubeauthsub_info' => '페이지에 포함된 유투브에 동영상을 올리시려면, 다음의 정보를 작성해주세요:',
 	'youtubeauthsub_title' => '제목',
 	'youtubeauthsub_description' => '설명',
 	'youtubeauthsub_password' => '유투브 비밀번호',
@@ -1286,6 +1288,7 @@ $messages['ko'] = array(
 	'youtubeauthsub_category' => '분류',
 	'youtubeauthsub_submit' => '제출하세요',
 	'youtubeauthsub_clickhere' => '이 곳을 클릭하여 유투브에 로그 인 하세요',
+	'youtubeauthsub_tokenerror' => '권한 부여 표시에 오류가 발생하였습니다. 다시 시도해 주세요.',
 	'youtubeauthsub_success' => "축하드립니다!
 
 당신의 동영상이 올라갔습니다.
@@ -1296,6 +1299,19 @@ $messages['ko'] = array(
 
 위키에 있는 페이지에 당신의 동영상을 포함시키시려면, 다음 코드를 페이지에 입력해 주세요.
 <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => '동영상을 올리시려면, 사용자께서는 먼저 유투브에 로그인을 하셔야 합니다.',
+	'youtubeauthsub_uploadhere' => '이 곳에서 사용자 분의 동영상이 올라갔습니다:',
+	'youtubeauthsub_uploadbutton' => '올리기',
+	'youtubeauthsub_code' => '{{#ev:유투브|$1}}.
+
+[http://www.youtube.com/watch?v=$1 이 동영상을 보세요]',
+	'youtubeauthsub_summary' => '유투브 동영상 올리기',
+	'youtubeauthsub_uploading' => '사용자 분의 동영상이 올라가고 있습니다.
+조금만 기다려주십시요.',
+	'youtubeauthsub_viewpage' => '다른 방법으로, 사용자 분은 [[$1|사용자의 동영상을 볼 수 있습니다]].',
+	'youtubeauthsub_jserror_nokeywords' => '1 이나 좀 더 많은 키워드를 쳐보세요.',
+	'youtubeauthsub_jserror_notitle' => '동영상을 위해 제목을 입력해 주세요.',
+	'youtubeauthsub_jserror_nodesc' => '동영상에 대한 설명을 입력해 주세요.',
 );
 
 /** Kinaray-a (Kinaray-a)

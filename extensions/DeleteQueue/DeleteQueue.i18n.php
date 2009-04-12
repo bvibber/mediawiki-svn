@@ -1967,7 +1967,7 @@ Prošu zawěsć sej, zo sy tute znapřećiwjenja wobkedźbował, prjedy hač wu�
 	'deletequeue-reviewspeedy-text' => "Móžeš tutón formular wužiwać, zo by požadanje za stronu \"'''\$1'''\" wo spěšne wušmórnjenje přepruwował.
 Prošu zawěsć sej, zo tuta strona da so wotpowědujo zasadam spěšnje wušmórnyć.",
 	'deletequeue-reviewprod-tab' => 'Namjetowane wušmórnjenje přepruwować',
-	'deletequeue-reviewprod-title' => 'Namjetowane wušmórnjenje za "$2" přepruwować',
+	'deletequeue-reviewprod-title' => 'Namjetowane wušmórnjenje za "$1" přepruwować',
 	'deletequeue-reviewprod-text' => "Móžeš tutón formular wužiwać, zo by připóznaty namjet za wušmórnjenje \"'''\$1'''\" přepruwował.",
 	'deletequeue-reviewdeletediscuss-tab' => 'Wušmórnjenje přepruwować',
 	'deletequeue-reviewdeletediscuss-title' => 'Diskusiju wo wušmórnjenju za "$1" přepruwować',

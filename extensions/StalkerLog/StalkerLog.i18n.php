@@ -61,6 +61,7 @@ $messages['bg'] = array(
 	'stalkerlog-desc' => 'Добавя [[Special:Log/stalkerlog|дневник]] на потребителските влизания и излизания',
 	'stalkerlog-log-login' => 'влезе в системата.',
 	'stalkerlog-log-logout' => 'излезе от системата.',
+	'stalkerlog-log-type' => 'Дневник на потребителските вписвания',
 	'stalkerlog-log-text' => 'Тази страница съдържа дневник на потребителските влизания и излизания.',
 );
 

@@ -119,7 +119,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'advancedrandom' => 'Rozšyrjony pśipadny bok',
-	'advancedrandom-desc' => 'Wotwołaj pśipadny bok, na kótaremž (abo na jogo diskusijnem boku) jo wótkaz na dany bok. Dajo se wužywaś kaž [[Special:AdvancedRandom/Template:Featured/Talk]], aby se pśipadny wuběrny nastawk zwobraznił abo kaž [[Special:AdvancedRandom/Template:GFDL/Image]], aby se pśipadna dataja GDFL zwobrazniła.',
+	'advancedrandom-desc' => 'Wotwołaj pśipadny bok, na kótaremž (abo na jogo diskusijnem boku) jo wótkaz na dany bok. Dajo se wužywaś kaž [[Special:AdvancedRandom/Template:Featured/Talk]], aby se pśipadny wuběrny nastawk zwobraznił abo kaž [[Special:AdvancedRandom/Template:GFDL/File]], aby se pśipadna dataja GDFL zwobrazniła.',
 );
 
 /** Greek (Ελληνικά)
@@ -232,7 +232,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'advancedrandom' => 'Rozšěrjena připadna strona',
 	'advancedrandom-desc' => 'Wobstaraj připadnu stronu, na kotrejž (abo na jeje diskusijnej stronje) je wotkaz k datej stronje. Da so wužiwać kaž
-[[Special:AdvancedRandom/Template:Featured/Talk]], zo by so připadny wuběrny nastawk zwobraznił abo kaž [[Special:AdvancedRandom/Template:GFDL/Image]], zo by so připadna dataja zwobrazniła, kotraž pod licencu GFDL steji.',
+[[Special:AdvancedRandom/Template:Featured/Talk]], zo by so připadny wuběrny nastawk zwobraznił abo kaž [[Special:AdvancedRandom/Template:GFDL/File]], zo by so připadna dataja zwobrazniła, kotraž pod licencu GFDL steji.',
 );
 
 /** Hungarian (Magyar)

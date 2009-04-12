@@ -86,6 +86,13 @@ $messages['bs'] = array(
 	'metakeywords-desc' => 'Omogućava postavke ključnih riječi (<tt><nowiki><meta "keywords"></nowiki></tt>) i opisa (<tt><nowiki><meta "description"></nowiki></tt>)',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'metakeywords-desc' => 'Permet la configuració de les etiquetes <tt><nowiki><meta "keywords"></nowiki></tt> i <tt><nowiki><meta "description"></nowiki></tt> per espai de noms',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

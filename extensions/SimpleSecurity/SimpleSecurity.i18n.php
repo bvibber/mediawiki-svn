@@ -93,6 +93,14 @@ $messages['be-tarask'] = array(
 	'security-type-namespace' => 'прастора назваў',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'security-type-category' => 'категория',
+	'security-type-namespace' => 'именно пространство',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -368,6 +376,7 @@ dat mer och et Sigge-Aanloore ennschrängke kann.',
  */
 $messages['lb'] = array(
 	'security' => 'Sécherheets-Logbuch',
+	'security-desc' => "Erweidert de MediaWiki-Säiteschutz fir et z'erlaben d'Kucke vum Säiteninhalt ze limitéieren",
 	'security-logpage' => 'Sécherheets-Logbuch',
 	'security-info' => 'Et sinn $1 op dëser Säit',
 	'security-info-toggle' => 'Sécherheetsrestrictiounen',

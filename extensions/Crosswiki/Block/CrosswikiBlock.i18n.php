@@ -269,6 +269,8 @@ Molimo provjerite da li Vam je dopušteno da izvršite akcije na ovoj wiki i da 
 	'crosswikiblock-autoblock' => 'Automatski blokiraj zadnju IP adresu koju je koristio ovaj korisnik i sve druge IP adrese s kojih je on pokušao uređivati',
 	'crosswikiblock-noemail' => 'Onemogući korisnika da šalje e-mail',
 	'crosswikiunblock' => 'Deblokiranje korisnika na drugim wikijima',
+	'crosswikiunblock-header' => 'Ova stranica omogućava da se deblokira korisnik na drugoj wiki.
+Molimo provjerite da li Vam je dopušteno da djelujete na ovoj wiki i da li Vaše akcije odgovaraju svim pravilima.',
 	'crosswikiunblock-user' => 'Korisničko ime, IP adresa ili ID blokade i odredišni wiki:',
 	'crosswikiunblock-reason' => 'Razlog:',
 	'crosswikiunblock-submit' => 'Deblokiraj ovog korisnika',
@@ -287,6 +289,11 @@ Nazad na:
 	'crosswikiblock-notoken' => 'Nevaljan token izmjene.',
 	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
 	'crosswikiblock-noblock' => 'Ovaj korisnik nije blokiran.',
+	'crosswikiblock-success' => "Korisnik '''$3''' je uspješno blokiran.
+
+Nazad na:
+* [[Special:CrosswikiBlock|Obrazac za blokiranje]]
+* [[$4]]",
 	'crosswikiunblock-local' => 'Lokalne deblokade nisu podržane putem ovog interfejsa. Koristite [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 

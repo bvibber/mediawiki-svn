@@ -97,10 +97,11 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'spamregex' => 'تعبير منتظم لسبام',
-	'spamregex-desc' => '[[Special:SpamRegex|فلتر]] العبارات غير المرغوب فيها في الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
+	'spamregex-desc' => '[[Special:SpamRegex|مُرشّح]] العبارات غير المرغوب فيها في الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
 	'spamregex-error-unblocking' => 'خطأ رفع منع "$1". على الأرجح لا يوجد نمط كهذا.',
 	'spamregex-summary' => 'النص تم العثور عليه في ملخص الصفحة.',
 	'spamregex-intro' => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ في نص صفحة بكفاءة.

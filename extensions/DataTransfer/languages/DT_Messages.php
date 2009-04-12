@@ -1026,19 +1026,26 @@ $messages['pt'] = array(
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
-	'dt-desc' => 'Permite a importação e exportação de dados estruturados contidos em chamadas de predefinições',
+	'dt-desc' => 'Permite a importação e exportação de dados contidos em chamadas de predefinições',
 	'viewxml' => 'Ver XML',
 	'dt_viewxml_docu' => 'Por favor, selecione dentre as categorias e espaços nominais seguintes para ver em formato XML.',
 	'dt_viewxml_categories' => 'Categorias',
 	'dt_viewxml_namespaces' => 'Espaços nominais',
 	'dt_viewxml_simplifiedformat' => 'Formato simplificado',
 	'dt_xml_namespace' => 'Espaço nominal',
+	'dt_xml_pages' => 'Páginas',
 	'dt_xml_page' => 'Página',
+	'dt_xml_template' => 'Predefinição',
 	'dt_xml_field' => 'Campo',
 	'dt_xml_name' => 'Nome',
 	'dt_xml_title' => 'Título',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto Livre',
+	'importxml' => 'Importar XML',
+	'dt_importxml_selectfile' => 'Por favor selecione o arquivo XML para importar:',
+	'dt_importxml_editsummary' => 'Importação de XML',
+	'dt_importxml_importing' => 'Importando...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do arquivo XML.',
 );
 
 /** Romanian (Română)

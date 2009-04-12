@@ -494,7 +494,7 @@ $messages['ar'] = array(
 	'configure-select-wiki-view-desc' => 'اختر ويكي تود رؤية النسخ له.',
 	'configure-select-wiki-view-all' => 'كل الويكيهات',
 	'configure-select-wiki-view-specific' => ': ويكي معينة',
-	'configure-select-wiki-submit' => 'انتقاء',
+	'configure-select-wiki-submit' => 'اختر',
 	'configure-setting-not-available' => 'هذا الإعداد غير متاح في هذه النسخة من ميدياويكي',
 	'configure-transwiki-not-in-range' => 'الويكي المطلوب، $1، ليس ضمن {{PLURAL:$3|القيمة|القيم}} المسموح بها: $2.',
 	'configure-view' => 'عرض',
@@ -1977,7 +1977,7 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-select-wiki-view-specific' => 'Wiki específico:',
 	'configure-select-wiki-submit' => 'Seleccionar',
 	'configure-setting-not-available' => 'Esta configuración no esta disponible en esta versión de MediaWiki',
-	'configure-transwiki-not-in-range' => 'El wiki solicitado, $1, no está en valores permitidos ($2).',
+	'configure-transwiki-not-in-range' => 'El wiki solicitado, $1, no está en {{PLURAL:$3|valor|valores}} permitidos: ($2).',
 	'configure-view' => 'Ver',
 	'configure-view-all-versions' => 'Lista completa de versiones',
 	'configure-view-default' => 'Configuraciones por defecto',
@@ -5650,6 +5650,13 @@ $messages['os'] = array(
 	'configure-section-db' => 'Бæрæггæнæнты базæ',
 	'configure-section-email' => 'Эл. посты адрис',
 	'configure-section-category' => 'Категоритæ',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'configure-throttle-action-move' => 'Ziehe',
 );
 
 /** Polish (Polski)
