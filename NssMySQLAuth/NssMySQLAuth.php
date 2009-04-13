@@ -24,10 +24,8 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'nss-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:NssMySQLAuth',
 );
-
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['nssmysqlauth'] = $dir . 'NssMySQLAuth.i18n.php';
-$wgExtensionAliasesFiles['nssmysqlauth'] = $dir . 'NssMySQLAuth.alias.php';
 
 $wgAutoloadClasses['NssMySQLAuthPlugin'] = $dir . 'NssMySQLAuthPlugin.php';
 $wgAutoloadClasses['Md5crypt'] = $dir . 'Md5crypt.php';
