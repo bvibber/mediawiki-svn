@@ -170,9 +170,11 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'refreshspecial' => 'Osvježenje posebnih stranica',
 	'refreshspecial-button' => 'Odabrano osvježavanje',
 	'refreshspecial-refreshing' => 'osvježavam specijalne stranice',
 	'refreshspecial-select-all-pages' => 'Odaberi sve stranice',
+	'refreshspecial-link-back' => 'Idi nazad na posebne stranice',
 	'refreshspecial-db-error' => 'Neuspjelo: greška baze podataka',
 	'refreshspecial-no-page' => 'Nema takve specijalne stranice',
 );

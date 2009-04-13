@@ -155,7 +155,9 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'contributiontracking' => 'Παακολούθηση συνεισφορών',
 	'contrib-tracking-error' => 'Σφάλμα',
+	'contrib-tracking-submitting' => 'Υποβολή στον επεξεργαστή πληρωμών…',
 	'contrib-tracking-continue' => 'Εάν δεν προωθηθήκατε αυτόματα, πατήστε το κουμπί για να ολοκληρώσετε τη δωρεάν σας μέσω PayPal.',
 	'contrib-tracking-button' => 'Συνέχεια',
 );

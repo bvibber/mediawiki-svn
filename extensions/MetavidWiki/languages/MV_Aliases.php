@@ -80,6 +80,11 @@ $aliases['ia'] = array(
 	'MvVideoFeed' => array( 'Metavid Syndication video' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'MediaSearch' => array( 'CercaMedia' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'MediaSearch' => array( 'メディア検索' ),

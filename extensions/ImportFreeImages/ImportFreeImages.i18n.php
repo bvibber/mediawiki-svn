@@ -95,12 +95,22 @@ $messages['bar'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'importfreeimages' => 'Імпарт вольных выяваў',
 	'importfreeimages-desc' => 'Дазваляе [[Special:ImportFreeImages|імпартаваць фатаграфіі, якія ліцэнзаваныя належным чынам]] з [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Гэтая старонка дазваляе Вам шукаць адпаведным чынам ліцэнзаваныя фатаграфіі з flickr і імпартаваць іх у {{GRAMMAR:вінавальны|{{SITENAME}}}}.',
+	'importfreeimages_noapikey' => 'Вы не сканфігуравалі Ваш ключ Flickr API.
+Каб зрабіць гэта, калі ласка, атрымайце ключ API [http://www.flickr.com/services/api/misc.api_keys.html тут] і ўстанавіце wgFlickrAPIKey у ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => "Ня знойдзена фатаграфіяў па Вашаму крытэру пошуку '$1', калі ласка, паспрабуйце яшчэ раз.",
+	'importfreeimages_invalidurl' => 'URL-адрас «$1» не зьяўляецца слушнай выявай Flickr.',
 	'importfreeimages_owner' => 'Аўтар',
+	'importfreeimages_importthis' => 'імпартаваць гэта',
+	'importfreeimages_next' => 'Наступныя $1',
+	'importfreeimages_filefromflickr' => '$1 карыстальніка Flickr <b>[$2]</b>. Арыгінальны URL-адрас',
+	'importfreeimages_promptuserforfilename' => 'Калі ласка, увядзіце назву мэтавага файла:',
+	'importfreeimages_returntoform' => "Ці націсьніце <a href='$1'>тут</a>, каб вярнуцца да вынікаў Вашага пошуку",
 );
 
 /** Bulgarian (Български)

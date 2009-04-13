@@ -107,6 +107,11 @@ $aliases['id'] = array(
 	'Oversight' => array( 'Pengawas revisi' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'HideRevision' => array( 'NascondiRevisione' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'HideRevision' => array( '版の秘匿' ),

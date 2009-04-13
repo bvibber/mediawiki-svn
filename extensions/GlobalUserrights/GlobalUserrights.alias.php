@@ -58,6 +58,11 @@ $aliases['ia'] = array(
 	'GlobalUserrights' => array( 'Derectos global de usatores' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'GlobalUserrights' => array( 'DirittiUtenteGlobale' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'GlobalUserrights' => array( 'グローバル利用者権限' ),

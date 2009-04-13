@@ -145,6 +145,7 @@ $messages['bs'] = array(
 	'errorhandler-error-user-warning' => 'Korisničko upozorenje',
 	'errorhandler-error-user-notice' => 'Korisničko upozorenje',
 	'errorhandler-msg-text' => '$1 : $2 u datoteci $3 (linija $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> u <b>$3</b> (linija <b>$4</b>)',
 	'errorhandler-trace-line' => '$1 (linija $2): $3',
 );
 

@@ -72,6 +72,11 @@ $aliases['ia'] = array(
 	'ImportFreeImages' => array( 'Importar imagines libere' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'ImportFreeImages' => array( 'ImportaImmaginiLibere' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ImportFreeImages' => array( 'フリー画像のインポート', 'フリーの画像をインポート' ),

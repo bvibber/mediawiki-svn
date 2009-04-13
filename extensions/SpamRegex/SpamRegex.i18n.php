@@ -1259,6 +1259,35 @@ $messages['sma'] = array(
 	'spamregex-text' => '(Tjaalege)',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'spamregex-desc' => '[[Special:SpamRegex|Филтрирајте]] нежељене фразе у измењеним странама, помоћу регуларних израза',
+	'spamregex-error-unblocking' => 'Грешка приликом одблокирања "$1". Вероватно та фраза и није блокирана.',
+	'spamregex-summary' => 'Текст се нашао у опису странице.',
+	'spamregex-currently-blocked' => "'''Тренутно блокиране фразе:'''",
+	'spamregex-move' => 'Разлог који сте навели је садржао блокирану фразу.',
+	'spamregex-no-currently-blocked' => "'''Нема блокираних фраза.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 уклони]) додат са $5 на $6 у $7",
+	'spamregex-page-title-1' => 'Блокирај фразе помоћу регуларних израза',
+	'spamregex-unblock-success' => 'Деблокирање успешно',
+	'spamregex-unblock-message' => "Фраза '''$1''' је била одблокирана за измене.",
+	'spamregex-block-success' => 'Блок успешан.',
+	'spamregex-block-message' => "Фраза '''$1''' је сада блокирана.",
+	'spamregex-warning-1' => 'Наведите фразу коју треба блокирати.',
+	'spamregex-error-1' => 'Невалидан регуларни израз.',
+	'spamregex-warning-2' => 'Молимо Вас да означите макар један начин блокирања.',
+	'spamregex-already-blocked' => '"$1" је већ блокирана',
+	'spamregex-phrase-block' => 'Фраза за блокирање:',
+	'spamregex-phrase-block-text' => 'блокирајте фразу у тексту странице',
+	'spamregex-phrase-block-summary' => 'блокирајте фразу у опису измене',
+	'spamregex-block-submit' => 'Блокирајте&nbsp;ову&nbsp;фразу',
+	'spamregex-text' => '(Текст)',
+	'spamregex-summary-log' => '(Опис)',
+	'right-spamregex' => 'Блокирајте спам-фразе помоћу [[Special:SpamRegex]]',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

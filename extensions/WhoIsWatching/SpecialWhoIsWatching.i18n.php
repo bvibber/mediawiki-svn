@@ -633,6 +633,19 @@ $messages['sk'] = array(
 	'specialwhoiswatchingaddbtn' => 'Pridať zvolených používateľov',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'whoiswatching' => 'Ко прати вики страну',
+	'whoiswatching-desc' => 'Приказује списак корисничких имена која прате одрећену страницу',
+	'specialwhoiswatchingthepage' => 'Ко прати %s',
+	'specialwhoiswatchingusage' => 'Ова специјална страна не може бити коришћена сама за себе, већ јој треба улазна тачка.
+Молимо Вас, користите страну [[MediaWiki:Number_of_watching_users_pageview]] да бисте дефинисали ову улазну тачку.',
+	'specialwhoiswatchingaddusers' => 'Додај кориснике који ће пратити ову страну',
+	'specialwhoiswatchingaddbtn' => 'Додај означене кориснике',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

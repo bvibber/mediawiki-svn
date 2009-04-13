@@ -151,6 +151,7 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'deletebatch-caption' => 'Spisak stranica:',
 	'deletebatch-link-back' => 'Nazad na posebnu stranicu',
+	'deletebatch-as' => 'Pokreni skriptu kao:',
 	'deletebatch-or' => '<b>ili</b>',
 	'deletebatch-page' => 'Stranice koje će biti obrisane:',
 	'deletebatch-reason' => 'Razlog brisanja',

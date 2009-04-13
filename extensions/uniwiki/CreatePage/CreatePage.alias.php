@@ -65,6 +65,11 @@ $aliases['ia'] = array(
 	'CreatePage' => array( 'Crear pagina' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'CreatePage' => array( 'CreaPagina' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'CreatePage' => array( 'ページ作成' ),

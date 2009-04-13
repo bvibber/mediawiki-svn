@@ -72,6 +72,11 @@ $aliases['ia'] = array(
 	'FindSpam' => array( 'Cercar spam' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'FindSpam' => array( 'TrovaSpam' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'FindSpam' => array( 'スパムを探す' ),

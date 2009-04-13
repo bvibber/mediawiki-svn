@@ -1735,6 +1735,8 @@ $messages['lb'] = array(
 	'whitelistnewtabledate' => 'Oflafdatum:',
 	'whitelistnewtableedit' => 'Ännerungsparameter',
 	'whitelistnewtableview' => 'Weisen aschalten',
+	'whitelistnowhitelistedusers' => 'Et gëtt keng Benotzer am Grupp "{{MediaWiki:Group-restricted}}".
+Dir musst [[Special:UserRights|Benotzer an de Grupp derbäisetzen]] ier Dir Säiten anengem Benotzer seng white list derbäisetze kënnt.',
 	'whitelistnewtableprocess' => 'Verschaffen',
 	'whitelistnewtablereview' => 'Nokucken',
 	'whitelistselectrestricted' => '== Limitéierte Benotzernumm wielen ==',

@@ -1362,6 +1362,27 @@ $messages['sq'] = array(
 	'vote-invalid-choice' => 'Duhet të zgjidhni një nga zgjedhjet e mundshme.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'vote' => 'Гласање',
+	'vote-desc' => 'Пружа могућности за постављање једноставних гласања',
+	'vote-current' => "Ваш тренутни глас је '''$1'''.",
+	'vote-legend' => 'Дајте или измените глас',
+	'vote-caption' => 'Ваш избор:',
+	'vote-submit' => 'Гласај',
+	'vote-registered' => 'Ваш глас је био урачунат.',
+	'vote-view-results' => 'Приказ резултата',
+	'vote-results' => 'Резултати гласања',
+	'vote-results-choice' => 'Избор',
+	'vote-results-count' => 'Број гласова',
+	'vote-results-none' => 'Тренутно није дат ни један глас.',
+	'vote-login' => 'Морате $1 да бисте глсали.',
+	'vote-login-link' => 'да се улогујете',
+	'vote-invalid-choice' => 'Морате изабрати једну од расположивих опција.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

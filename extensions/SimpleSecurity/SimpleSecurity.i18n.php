@@ -109,6 +109,7 @@ $messages['bs'] = array(
 	'security-logpage' => 'Zapisnik sigurnosti',
 	'security-info' => 'Postoji $1 na ovom članku',
 	'security-info-toggle' => 'sigurnosna ograničenja',
+	'security-inforestrict' => '$1 je onemogućena za $2',
 	'security-manygroups' => 'grupe $1 i $2',
 	'security-unchain' => 'Izmijeni svaku akciju zasebno',
 	'security-type-category' => 'kategorija',
@@ -566,6 +567,9 @@ $messages['tl'] = array(
 	'security-desc-PR' => "''(itinakda mula sa '''panglaylay na pangpananggalang''')''",
 	'security-infosysops' => 'Walang umiiral na mga paghahanga dahil isa kang kasapi ng pangkat na tagapagpaandar ng sistema',
 	'security-manygroups' => 'mga pangkat na $1 at $2',
+	'security-unchain' => 'Baguhin na paisa-isa ang mga galaw',
+	'security-type-category' => 'kaurian',
+	'security-type-namespace' => 'espasyo ng pangalan',
 );
 
 /** Turkish (Türkçe)

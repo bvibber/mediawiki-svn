@@ -105,6 +105,11 @@ $aliases['id'] = array(
 	'Invitations' => array( 'Undangan' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'Invitations' => array( 'Inviti' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Invitations' => array( '招待' ),

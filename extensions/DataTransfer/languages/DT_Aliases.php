@@ -62,6 +62,11 @@ $aliases['ia'] = array(
 	'ViewXML' => array( 'Visualisar XML' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'ViewXML' => array( 'VediXML' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ViewXML' => array( 'XML表示' ),

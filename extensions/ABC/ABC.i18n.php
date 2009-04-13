@@ -468,6 +468,14 @@ $messages['sq'] = array(
 	'abcdownload' => 'Shkarko:',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'abcdesc' => 'Додаје <tt>&lt;abc&gt;</tt> таг за форматирање ABC музике',
+	'abcdownload' => 'Сними:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

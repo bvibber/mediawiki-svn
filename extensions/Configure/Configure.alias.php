@@ -179,6 +179,12 @@ $aliases['id'] = array(
 	'ViewConfig' => array( 'Lihat konfigurasi', 'Lihatkonfigurasi' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'Extensions' => array( 'Estensioni' ),
+	'ViewConfig' => array( 'VediConfigurazione' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Configure' => array( '構成設定' ),

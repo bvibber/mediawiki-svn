@@ -687,6 +687,11 @@ $messages['bs'] = array(
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Traži',
 	'deletequeue-list-header-page' => 'Stranica',
+	'deletequeue-list-header-discusspage' => 'Stranica za razgovor',
+	'deletequeue-list-header-reason' => 'Razlog za brisanje',
+	'deletequeue-case-details' => 'Osnovni detalji',
+	'deletequeue-case-page' => 'Stranica:',
+	'deletequeue-case-reason' => 'Razlog:',
 	'deletequeue-case-expiry' => 'Ističe:',
 );
 

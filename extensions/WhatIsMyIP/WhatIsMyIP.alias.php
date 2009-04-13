@@ -97,6 +97,11 @@ $aliases['ia'] = array(
 	'WhatIsMyIP' => array( 'Que es mi IP' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'WhatIsMyIP' => array( 'IlMioIP' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'WhatIsMyIP' => array( '自分のIPアドレス' ),

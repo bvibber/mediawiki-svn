@@ -95,6 +95,12 @@ $aliases['ia'] = array(
 	'SortPermissions' => array( 'Ordinar permissiones' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'GroupPermissions' => array( 'PermessiGruppo' ),
+	'RemoveUnusedGroups' => array( 'RimuoviGruppiInutilizzati' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'GroupPermissions' => array( 'グループ権限' ),

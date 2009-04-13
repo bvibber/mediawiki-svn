@@ -830,6 +830,7 @@ $messages['ko'] = array(
 	'imagemap_no_link' => '오류: 의미있는 링크를 $1 줄의 끝에서 찾을 수 없습니다.',
 	'imagemap_invalid_title' => '오류: $1 줄에 있는 제목이 제대로 인식되지 않습니다.',
 	'imagemap_no_areas' => '오류: 최소한 한 영역에 대한 구체적인 설명은 꼭 있어야 합니다.',
+	'imagemap_invalid_coord' => '오류: $1번째 줄에서 좌표가 잘못되었습니다. 좌표는 반드시 숫자여야 합니다.',
 	'imagemap_description' => '이 그림에 대한 정보',
 );
 

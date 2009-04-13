@@ -77,6 +77,11 @@ $aliases['id'] = array(
 	'NewsChannel' => array( 'Saluran berita' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'NewsChannel' => array( 'CanaleNotizie' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'NewsChannel' => array( 'ニュース・チャンネル', 'ニュースチャンネル' ),

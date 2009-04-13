@@ -87,6 +87,11 @@ $aliases['id'] = array(
 	'SpecialUserStats' => array( 'Statistik pengguna' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'SpecialUserStats' => array( 'StatisticheUtente' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'SpecialUserStats' => array( '利用統計' ),

@@ -50,6 +50,11 @@ $aliases['ia'] = array(
 	'RandomInCategory' => array( 'Aleatori in categoria' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'RandomInCategory' => array( 'CasualeInCategoria' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'RandomInCategory' => array( 'カテゴリ中のランダムなページ' ),

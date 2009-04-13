@@ -444,6 +444,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'categorystepper-desc' => "Face vedè 'nu passatore de categorije ca te permette de navigà nnande e rrete in ordene alffabbeteche 'mbrà une o cchiù categorije addò 'na pàgene se iacchie",
 	'categorystepper-end' => "(Fine d'a categorije)",
 	'categorystepper-start' => "(Inizie d'a categorije)",
 );

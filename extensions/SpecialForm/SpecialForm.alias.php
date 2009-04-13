@@ -74,6 +74,11 @@ $aliases['id'] = array(
 	'Form' => array( 'Formulir' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'Form' => array( 'Modulo' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Form' => array( 'フォーム' ),

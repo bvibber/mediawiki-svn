@@ -2058,6 +2058,44 @@ $1',
 	'webstore_no_handler' => 'Pre transformáciu tohto typu MIME neexistuje obsluha',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'webstore_path_invalid' => 'Име фајла је било погрешно.',
+	'webstore_dest_open' => 'Циљани фајл "$1" није могао бити отворен.',
+	'webstore_dest_lock' => 'Циљани фајл "$1" није могао бити закључан зарад измена.',
+	'webstore_dest_mkdir' => 'Циљани директоријум "$1" није могао бити направљен.',
+	'webstore_archive_lock' => 'Архивски фајл "$1" није могао бити закључан.',
+	'webstore_archive_mkdir' => 'Архивски директоријум "$1" није могао бити направљен.',
+	'webstore_src_open' => 'Изворни фајл "$1" није могао бити отворен.',
+	'webstore_src_close' => 'Грешка при затварању изворног фајла "$1".',
+	'webstore_src_delete' => 'Грешка приликом брисања изворног фајла "$1".',
+	'webstore_rename' => 'Грешка при преименовању фајла "$1" у "$2".',
+	'webstore_lock_open' => 'Грешка приликом откључавања фајла "$1".',
+	'webstore_dest_exists' => 'Грешка, циљани фајл "$1" постоји.',
+	'webstore_temp_open' => 'Грешка приликом отварања привременог фајла "$1".',
+	'webstore_temp_copy' => 'Грешка приликом копирања привременог фајла "$1" на место циљаног фајла "$2".',
+	'webstore_temp_close' => 'Грешка приликом затварања привременог фајла "$1".',
+	'webstore_temp_lock' => 'Грешка приликом закључавања привременог фајла "$1".',
+	'webstore_no_archive' => 'Циљани фајл постоји и нкаква архива није наведена.',
+	'webstore_no_file' => 'Фајл није послат.',
+	'webstore_move_uploaded' => 'Грешка прилиокм премештања послатог фајла "$1" на привремено место "$2".',
+	'webstore_invalid_zone' => 'Погрешна зона "$1".',
+	'webstore_no_deleted' => 'Није наведен архивски директоријум за обрисане фајлове.',
+	'webstore_curl' => 'Грешка од cURL: $1',
+	'webstore_404' => 'Фајл није пронађен.',
+	'webstore_php_warning' => 'PHP напомена: $1',
+	'webstore_metadata_not_found' => 'Фајл није пронађен: $1',
+	'webstore_postfile_not_found' => 'Није пронађен фајл за слање.',
+	'webstore_invalid_response' => 'Неадекватан одговор од сервера:
+
+$1',
+	'webstore_no_response' => 'Сервер не одговара',
+	'webstore_php_error' => 'Дошло је до PHP грешака:',
+	'webstore_no_handler' => 'Није дефинисано трансформисање овог MIME типа',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

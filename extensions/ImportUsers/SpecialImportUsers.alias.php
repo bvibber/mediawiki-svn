@@ -100,6 +100,11 @@ $aliases['id'] = array(
 	'ImportUsers' => array( 'Impor pengguna' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'ImportUsers' => array( 'ImportaUtenti' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ImportUsers' => array( '利用者のインポート', 'インポートユーザー' ),

@@ -74,6 +74,11 @@ $aliases['id'] = array(
 	'InspectCache' => array( 'Inspeksi tembolok' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'InspectCache' => array( 'IspezionaCache' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'InspectCache' => array( 'キャッシュの点検' ),

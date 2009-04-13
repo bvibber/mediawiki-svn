@@ -103,6 +103,11 @@ $aliases['id'] = array(
 	'InterwikiList' => array( 'Daftar interwiki' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'InterwikiList' => array( 'ListaInterwiki' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'InterwikiList' => array( 'インターウィキ一覧', 'インターウィキリスト' ),

@@ -77,6 +77,12 @@ $aliases['ia'] = array(
 	'Disabledusers' => array( 'Usatores disactivate' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'PasswordReset' => array( 'ReimpostaPassword' ),
+	'Disabledusers' => array( 'UtentiDisabilitati' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'PasswordReset' => array( 'パスワードの再設定', 'パスワード再設定', 'パスワードのリセット', 'パスワードリセット' ),

@@ -57,6 +57,11 @@ $aliases['ia'] = array(
 	'CreateSignDocument' => array( 'Crear signar documento' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'SignDocument' => array( 'FirmaDocumento' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'SignDocument' => array( '文書の署名' ),

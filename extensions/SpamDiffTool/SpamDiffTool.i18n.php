@@ -1079,8 +1079,15 @@ Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľský
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'spamdifftool_no_urls_detected' => "Нису пронађени ликови.
+Кликните <a href='$1'>овде</a> да се вратите.",
+	'spamdifftool_spam_link_text' => 'додај као спам',
+	'spamdifftool_option_domain' => 'све од овог домена',
+	'spamdifftool_option_subdomain' => 'све од овог поддомена',
+	'spamdifftool_option_directory' => 'овај поддомен и директоријум',
 	'spamdifftool_option_none' => 'ништа',
 	'spamdifftool_block' => 'Блок:',
 	'spamdifftool_submit_buttom' => 'Прихвати',

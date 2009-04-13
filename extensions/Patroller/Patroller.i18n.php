@@ -215,6 +215,8 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'patrol' => 'Patrolirane izmjene',
+	'patrol-desc' => 'Napredni interfejs za kontrolu sa dijeljenim radom',
+	'patrol-endorse' => 'Potvrdi',
 	'patrol-revert' => 'Vrati',
 	'patrol-revert-reason' => 'Razlog:',
 	'patrol-skip' => 'Preskoči',
@@ -224,11 +226,17 @@ $messages['bs'] = array(
 	'patrol-endorsed-failed' => 'Izmjena nije mogla biti označena kao patrolirana.',
 	'patrol-reverted-ok' => 'Izmjena je vraćena.',
 	'patrol-reverted-failed' => 'Izmjena nije mogla biti vraćena.',
+	'patrol-skipped-ok' => 'Zanemarujem izmjenu.',
 	'patrol-reasons' => '* Jednostavni vandalizam
 * Početnička proba
 * Vidi stranicu za razgovor',
 	'patrol-another' => 'Prikaži slijedeću izmjenu, ako je moguće.',
+	'patrol-stopped' => 'Vi ste odabrali da ne provjeravate još jednu izmjenu. $1',
 	'patrol-resume' => 'Kliknite ovdje za nastavak.',
+	'group-patroller' => 'Patroleri',
+	'group-patroller-member' => 'patroler',
+	'grouppage-patroller' => '{{ns:project}}:Patroler',
+	'right-patroller' => 'Provjera stranica',
 );
 
 /** Danish (Dansk)

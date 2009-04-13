@@ -653,11 +653,14 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'filelist' => 'Списак фајлова',
+	'filelist-desc' => '[[Special:Filelist|Специјална страна]] за спискове послатих фајлова',
 	'filelist-show-list' => 'Прикажи списак',
 	'filelist-show-gallery' => 'Прикажи галерију',
+	'filelist-image-desc' => 'опис',
 );
 
 /** Sranan Tongo (Sranantongo) */

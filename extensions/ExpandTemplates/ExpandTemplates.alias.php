@@ -65,6 +65,11 @@ $aliases['fi'] = array(
 	'ExpandTemplates' => array( 'Mallineiden laajennus' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'ExpandTemplates' => array( 'ExpansionDesModèles' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'ExpandTemplates' => array( 'Expandir os modelos' ),

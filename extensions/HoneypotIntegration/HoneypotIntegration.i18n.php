@@ -208,6 +208,14 @@ $messages['pt-br'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Número de eventos recentes que o endereço IP disparou, segundo Project Honey Pot',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'honeypot-desc' => "Prevede 'n'indegrazione cu 'u [http://projecthoneypot.org/ Pruggette Honey Pot] pe le site MediaUicchi",
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Numere de le fatte recende ca l'indirzze IP ha scatenate, accurdanne cu 'u Pruggette Joney Pot",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

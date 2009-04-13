@@ -42,6 +42,11 @@ $aliases['ia'] = array(
 	'LookupUser' => array( 'Cercar usator' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'LookupUser' => array( 'ControllaUtente' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'LookupUser' => array( '利用者情報調査', '利用者情報を調査' ),

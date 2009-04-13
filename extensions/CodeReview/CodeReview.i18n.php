@@ -1368,6 +1368,13 @@ $messages['el'] = array(
 Σχόλιο:
 
 $4',
+	'codereview-email-body2' => 'Ο Χρήστης "$1" πραγματοποίησε αλλαγές παρακολούθησης στο r$2.
+
+Πλήρες URL: $3
+
+Υποβολή περίληψης:
+
+$4',
 	'repoadmin' => 'Διαχείριση του αποθηκευτηρίου',
 	'repoadmin-new-legend' => 'Δημιουργία νέου αποθηκευτηρίου',
 	'repoadmin-new-label' => 'Όνομα αποθηκευτηρίου:',
@@ -1379,6 +1386,7 @@ $4',
 	'repoadmin-edit-button' => 'Εντάξει',
 	'repoadmin-edit-sucess' => 'Το αποθηκευτήριο "[[Special:Code/$1|$1]]" τροποποιήθηκε επιτυχώς.',
 	'right-repoadmin' => 'Διαχείριση αποθηκευτηρίων κώδικα',
+	'right-codereview-use' => 'Χρήση του Special:Code',
 	'right-codereview-add-tag' => 'Προσθήκη νέων ετικετών σε αναθεωρήσεις',
 	'right-codereview-remove-tag' => 'Αφαίρεση ετικετών από αναθεωρήσεις',
 	'right-codereview-post-comment' => 'Προσθήκη σχολίων σε αναθεωρήσεις',
@@ -6031,6 +6039,7 @@ $messages['tl'] = array(
 	'code-status-reverted' => 'ibinalik',
 	'code-status-resolved' => 'nalutas na',
 	'code-status-ok' => 'okey',
+	'code-status-verified' => 'napatunayan na',
 	'code-status-deferred' => 'ipinagpaliban',
 	'code-pathsearch-legend' => 'Maghanap ng mga pagbabago sa repositoryong ito sa pamamagitan ng daanan',
 	'code-pathsearch-path' => 'Daanan:',
@@ -6052,6 +6061,14 @@ $messages['tl'] = array(
 Buong URL: $2
 
 Kumento:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Pangtugaygay na mga pagbabago',
+	'codereview-email-body2' => 'Gumawa ng pangtugaygay na mga pagbabago si "$1" sa r$2.
+
+Buong URL: $3
+
+Buod ng pagsasagawa:
 
 $4',
 	'repoadmin' => 'Pamamahala ng Repositoryo',

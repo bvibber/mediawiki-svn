@@ -2257,11 +2257,41 @@ Ju lutemi keni durim.',
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  * @author Јованвб
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'youtubeauthsub' => 'Слање видеа са Јутуба',
+	'youtubeauthsub-desc' => 'Омогући корисницима да [[Special:YouTubeAuthSub|шаљу видее]] директно на Јутуб',
+	'youtubeauthsub_info' => 'Попуните следећи формукар како бисте послали видео на Јутуб и потом га укључили на страну:',
 	'youtubeauthsub_title' => 'Наслов:',
+	'youtubeauthsub_description' => 'Опис',
+	'youtubeauthsub_password' => 'Лозинка на Јутубу',
+	'youtubeauthsub_username' => 'Корисничко име на Јутубу',
+	'youtubeauthsub_keywords' => 'Кључне речи',
 	'youtubeauthsub_category' => 'Категорија',
 	'youtubeauthsub_submit' => 'Прихвати',
+	'youtubeauthsub_clickhere' => 'Кликните овде да бисте се улоговали на Јутуб',
+	'youtubeauthsub_tokenerror' => 'Грешка при генерисању ауторизационог кључа, покушајте са освеживањем странице.',
+	'youtubeauthsub_success' => "Честитамо!
+Ваш видео је послат.
+<a href='http://www.youtube.com/watch?v=$1'>Погледајте свој видео</a>.
+Могуће је да Ваш видео неће бити одмах доступан, јер Јутубу треба времена да га обради.
+
+Да бисте укључили свој видео на Вики-страну, убаците следећи код у њу:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Да бисте послали видео, прво морате да будете улоговани на Јутубу.',
+	'youtubeauthsub_uploadhere' => 'Пошаљите Ваш видео одавде:',
+	'youtubeauthsub_uploadbutton' => 'Слање',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Погледајте овај видео]',
+	'youtubeauthsub_summary' => 'Слање видеа на Јутуб.',
+	'youtubeauthsub_uploading' => 'Овај видео се управо шаље.
+Молимо Вас, будите стрпљиви.',
+	'youtubeauthsub_viewpage' => 'Такође можете да [[$1|погледате свој видео]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Молимо Вас, унесите једну или више кључних речи.',
+	'youtubeauthsub_jserror_notitle' => 'Молимо Вас, унесите наслов видеа.',
+	'youtubeauthsub_jserror_nodesc' => 'Молимо Вас, унесите опис видеа.',
 );
 
 /** Seeltersk (Seeltersk)

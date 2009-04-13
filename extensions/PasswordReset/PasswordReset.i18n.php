@@ -168,15 +168,23 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'passwordreset' => 'Poništavanje šifre',
+	'passwordreset-desc' => "[[Special:PasswordReset|Poništava šifre wiki korisnika]] - zahtijeva privilegije 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nevaljano korisničko ime',
 	'passwordreset-emptyusername' => 'Prazno korisničko ime',
 	'passwordreset-nopassmatch' => 'Šifre se ne slažu',
+	'passwordreset-badtoken' => 'Nevaljan token izmjene',
 	'passwordreset-username' => 'Korisničko ime:',
 	'passwordreset-newpass' => 'Nova šifra:',
 	'passwordreset-confirmpass' => 'Potvrdi šifru:',
 	'passwordreset-submit' => 'Poništi šifru',
+	'passwordreset-success' => 'Šifra je poništena za korisnički ID: $1',
+	'passwordreset-disableuser' => 'Onemogući korisnički račun?',
+	'passwordreset-disableuserexplain' => '(postavljen nevaljan haš šifre - korisnik se ne može prijaviti)',
+	'passwordreset-disablesuccess' => 'Korisnički račun je onemogućen za korisnički ID: $1',
 	'passwordreset-accountdisabled' => 'Račun je onemogućen',
 	'disabledusers' => 'Onemogućeni korisnici',
+	'disabledusers-summary' => 'Ovo je spisak korisnika koji su onemogućeni putem PasswordReset.',
+	'right-passwordreset' => 'Poništavanje šifre korisnika ([[Special:PasswordReset|posebna stranica]])',
 );
 
 /** Czech (Česky)

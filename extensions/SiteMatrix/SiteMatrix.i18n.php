@@ -1346,6 +1346,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'sitematrix-sitetotal' => 'Totele',
+	'sitematrix-private' => 'private',
 );
 
 /** Russian (Русский)

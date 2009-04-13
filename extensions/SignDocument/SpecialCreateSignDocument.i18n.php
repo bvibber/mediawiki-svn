@@ -228,6 +228,14 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'createsigndocument' => 'Omogućuje potpisivanje dokumenata',
+	'createsigndoc-head' => "Koristite ovaj obrazac za pravljenje stranice 'Potpis dokumenta' za navedenu stranicu, tako da bi ti korisnici imali mogućnost da ih [[Special:SignDocument|potpišu]].
+Molimo navedite naziv stranice na kojoj želite omogućiti digitalni potpis, članove koje korisničke grupe će moći ih potpisivati, koja polja želite da budu vidljiva korisnicima a koja bi bila opcionalna, najmanju starost za obavezno potpisivanje dokumenta od strane korisnika (bez minimuma ako nije navedeno);
+i kratki uvodni tekst koji opisuje dokument i daje uputstva korisnicima.
+
+<b>Trenutno ne postoji način da se obrišu ili izmijene potpisani dokumenti nakon što su napravljeni</b> bez direktnog pristupa bazi podataka.
+Dodatno, tekst stranice koji je prikazan na stranici potpisa će biti ''trenutni'' tekst stranice, bez obzira na promjene koje su učinjene nakon današnjeg dana.
+Molimo budite potpuno sigurni, da je dokument spreman i stabilan za potpisivanje.
+Također budite potpuno sigurni da ste naveli sva polja ispravno kako bi trebalo, ''prije nego pošaljete ovaj obrazac''.",
 	'createsigndoc-pagename' => 'Stranica:',
 	'createsigndoc-allowedgroup' => 'Dopuštena grupa:',
 	'createsigndoc-email' => 'E-mail adresa:',

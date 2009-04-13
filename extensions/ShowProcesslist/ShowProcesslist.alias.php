@@ -74,6 +74,11 @@ $aliases['id'] = array(
 	'ShowProcesslist' => array( 'Daftar proses' ),
 );
 
+/** Italian (Italiano) */
+$aliases['it'] = array(
+	'ShowProcesslist' => array( 'MostraListaProcessi' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'ShowProcesslist' => array( 'プロセス一覧表示' ),

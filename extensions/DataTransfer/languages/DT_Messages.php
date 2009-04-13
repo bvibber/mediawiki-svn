@@ -395,19 +395,26 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'dt-desc' => 'Permite importar e exportar datos estruturados contidos en chamadas de modelos',
+	'dt-desc' => 'Permite importar e exportar datos contidos en chamadas de modelos',
 	'viewxml' => 'Ver XML',
 	'dt_viewxml_docu' => 'Por favor seleccione entre as seguintes categorías e espazos de nomes para ver en formato XML.',
 	'dt_viewxml_categories' => 'Categorías',
 	'dt_viewxml_namespaces' => 'Espazos de nomes',
 	'dt_viewxml_simplifiedformat' => 'Formato simplificado',
 	'dt_xml_namespace' => 'Espazo de nomes',
+	'dt_xml_pages' => 'Páxinas',
 	'dt_xml_page' => 'Páxina',
+	'dt_xml_template' => 'Modelo',
 	'dt_xml_field' => 'Campo',
 	'dt_xml_name' => 'Nome',
 	'dt_xml_title' => 'Título',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto Libre',
+	'importxml' => 'Importar XML',
+	'dt_importxml_selectfile' => 'Por favor, seleccione o ficheiro XML a importar:',
+	'dt_importxml_editsummary' => 'Importación en XML',
+	'dt_importxml_importing' => 'Importando...',
+	'dt_importxml_success' => '{{PLURAL:$1|Unha páxina será importada|$1 páxinas serán importadas}} a partir do ficheiro XML.',
 );
 
 /** Gothic
@@ -1004,6 +1011,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1014,12 +1022,15 @@ $messages['pt'] = array(
 	'dt_viewxml_namespaces' => 'Espaços nominais',
 	'dt_viewxml_simplifiedformat' => 'Formato simplificado',
 	'dt_xml_namespace' => 'Espaço nominal',
+	'dt_xml_pages' => 'Páginas',
 	'dt_xml_page' => 'Página',
+	'dt_xml_template' => 'Predefinição',
 	'dt_xml_field' => 'Campo',
 	'dt_xml_name' => 'Nome',
 	'dt_xml_title' => 'Título',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto Livre',
+	'dt_importxml_importing' => 'Importando...',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1068,19 +1079,22 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'dt-desc' => "Permette de 'mbortà e esportà date strutturate ca stonne jndr'à le chiamate a le template",
+	'dt-desc' => "Permètte de 'mbortà e esportà date strutturate ca stonne jndr'à le chiamate a le template",
 	'viewxml' => "Vide l'XML",
 	'dt_viewxml_docu' => "Pe piacere scacchie ìmbrà le categorije seguende e le namespace seguende pe vedè 'u formate XML.",
 	'dt_viewxml_categories' => 'Categorije',
 	'dt_viewxml_namespaces' => 'Namespace',
 	'dt_viewxml_simplifiedformat' => 'Formate semblifichete',
 	'dt_xml_namespace' => 'Namespace',
+	'dt_xml_pages' => 'Pàggene',
 	'dt_xml_page' => 'Pàgene',
+	'dt_xml_template' => 'Template',
 	'dt_xml_field' => 'Cambe',
 	'dt_xml_name' => 'Nome',
 	'dt_xml_title' => 'Titele',
 	'dt_xml_id' => 'Codece (ID)',
 	'dt_xml_freetext' => 'Teste libbere',
+	'importxml' => "'Mborte XML",
 );
 
 /** Russian (Русский)
@@ -1249,19 +1263,26 @@ $messages['th'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'dt-desc' => 'Nagpapahintulot sa pagaangkat at pagluluwas ng nakaayos nang mga datong nasa loob ng mga pagtawag sa suleras',
+	'dt-desc' => 'Nagpapahintulot sa pag-aangkat at pagluluwas ng mga datong nasa loob ng mga pagtawag sa suleras',
 	'viewxml' => 'Tingnan ang XML',
 	'dt_viewxml_docu' => 'Pumili po lamang mula sa sumusunod na mga kaurian at mga espasyo ng pangalan upang makita ang anyong XML.',
 	'dt_viewxml_categories' => 'Mga kaurian',
 	'dt_viewxml_namespaces' => 'Mga espasyo ng pangalan',
 	'dt_viewxml_simplifiedformat' => 'Pinapayak na anyo',
 	'dt_xml_namespace' => 'Espasyo ng pangalan',
+	'dt_xml_pages' => 'Mga pahina',
 	'dt_xml_page' => 'Pahina',
+	'dt_xml_template' => 'Suleras',
 	'dt_xml_field' => 'Hanay',
 	'dt_xml_name' => 'Pangalan',
 	'dt_xml_title' => 'Pamagat',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Malayang Teksto',
+	'importxml' => 'Angkatin ang XML',
+	'dt_importxml_selectfile' => 'Pakipili ang talaksang XML na aangkatin:',
+	'dt_importxml_editsummary' => 'Angkat ng XML',
+	'dt_importxml_importing' => 'Inaangkat...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|pahina|mga pahina}} ang aangkatin mula sa talaksang XML.',
 );
 
 /** Turkish (Türkçe)

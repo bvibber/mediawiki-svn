@@ -394,6 +394,17 @@ $messages['th'] = array(
 	'ajaxlogin-create' => 'สร้างบัญชี',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'ajaxlogin-desc' => 'Masiglang kahong nagpapahintulot sa mga tagagamit na lumagdang papasok at magpaalala ng salitang-hudyat',
+	'ajaxLogin1' => 'Upang mabuo ang lagdang papasok, dapat kang magpasok ng isang bagong salitang-hudyat.',
+	'ajaxLogin2' => 'Nakatitiyak ka ba?
+Maaaring mawala ang mga pagbabago mo sa pahinang ito kapag nilisan mo ngayon ang pahinang ito.',
+	'ajaxlogin-create' => 'Lumikha ng isang akawnt',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
