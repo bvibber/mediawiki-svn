@@ -440,6 +440,15 @@ function toggle_element_activation(ida,idb) {
 	if (!document.getElementById) {
 		return;
 	}
+	//hide and show appropriate upload sizes
+	if(idb == 'wpUploadFileURL'){
+		document.getElementById('mw-upload-maxfilesize').style.display = "none";		
+		document.getElementById('mw-upload-maxfilesize-url').style.display = "block";		
+	}
+	if(idb == 'wpUploadFile'){
+		document.getElementById('mw-upload-maxfilesize-url').style.display =  "none";	
+		document.getElementById('mw-upload-maxfilesize').style.display =  "block";
+	}
 	document.getElementById(ida).disabled=true;
 	document.getElementById(idb).disabled=false;
 }

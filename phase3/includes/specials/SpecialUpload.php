@@ -672,12 +672,18 @@ wgUploadAutoFill = {$autofill};
 				break;
 			default:
 				$val2 = $val;
-		}				
-		$val2 = UploadFromUrl::isEnabled() ? min( $wgMaxUploadSize, $val2 ) : $val2;
+		}						
 		$maxUploadSize = '<div id="mw-upload-maxfilesize">' . 
 			wfMsgExt( 'upload-maxfilesize', array( 'parseinline', 'escapenoentities' ), 
 				$wgLang->formatSize( $val2 ) ) .
 				"</div>\n";
+		//add a hidden filed for upload by url (uses the $wgMaxUploadSize var)
+		if( UploadFromUrl::isEnabled() ){
+			$maxUploadSize.='<div id="mw-upload-maxfilesize-url" style="display:none">' . 
+			wfMsgExt( 'upload-maxfilesize', array( 'parseinline', 'escapenoentities' ), 
+				$wgLang->formatSize( $wgMaxUploadSize ) ) .
+				"</div>\n";			
+		}
 
 		$sourcefilename = wfMsgExt( 'sourcefilename', array( 'parseinline', 'escapenoentities' ) );
         $destfilename = wfMsgExt( 'destfilename', array( 'parseinline', 'escapenoentities' ) ); 
