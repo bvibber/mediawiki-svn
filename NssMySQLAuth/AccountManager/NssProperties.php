@@ -53,4 +53,6 @@ class NssProperties {
 		}
 		$dbw->insert( 'user_props', $insert, __METHOD__ );
 	}
+	
+	public static function getAll() { return array(); }
 }

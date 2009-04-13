@@ -30,13 +30,11 @@ $wgExtensionMessagesFiles['nssmysqlauth'] = $dir . 'NssMySQLAuth.i18n.php';
 $wgAutoloadClasses['NssMySQLAuthPlugin'] = $dir . 'NssMySQLAuthPlugin.php';
 $wgAutoloadClasses['Md5crypt'] = $dir . 'Md5crypt.php';
 $wgAutoloadClasses['SpecialAccountManager'] = $dir . 'SpecialAccountManager.php';
-$wgSpecialPages['AccountManager'] = 'SpecialAccountManager';
 
 $wgNssMySQLAuthDB = false;
 
 $wgExtensionFunctions[] = array( 'NssMySQLAuthPlugin', 'initialize' );
 
-$wgUserProperties = array( 'address', 'city' );
 $wgActivityModes = array( 'active', 'inactive' );
 
 $wgDefaultGid = 1001;

@@ -8,17 +8,21 @@ class NssUser {
 		
 		// Set default values to null
 		$this->uid = $this->gid = $this->home = $this->active = $this->email = null; 
-		$this->exists = false;	}
+		$this->exists = false;
+		
+		$this->group = '';
+		$this->properties = new NssProperties();	
+	}
 	
 	function load() {
-		if ( $this->loaderd )
+		if ( $this->loaded )
 			return;
 		
 		global $wgAuth;
-		$dbw = $wgAuth->getDB( DB_READ );
+		$dbr = $wgAuth->getDB( DB_READ );
 		
 		// Load the user existence from passwd
-		$result = $dbw->select( 'passwd',
+		$result = $dbr->select( 'passwd',
 			array( 'pwd_uid', 'pwd_gid', 'pwd_home', 'pwd_active', 'pwd_email' ),
 		 	array( 'pwd_name', $this->name ),
 		 	__METHOD__ 
@@ -39,9 +43,6 @@ class NssUser {
 		
 			$this->group = NssGroup::nameFromGid( $this->gid );
 			$this->properties = NssProperties::forUser( $this->name );
-		} else {
-			$this->group = '';
-			$this->properties = new NssProperties();
 		}
 			
 		$this->loaded = true;
@@ -59,8 +60,12 @@ class NssUser {
 		$this->email = $email;
 		$this->properties->set( 'email', $email );
 	}
+	
+	function get( $name ) {
+		return $this->properties->get( $name );
+	}
 	function set( $name, $value ) {
-		$this->properties->set( $name, $value );
+		return $this->properties->set( $name, $value );
 	}
 	
 	function commit() {
@@ -75,6 +80,18 @@ class NssUser {
 		
 		$this->properties->commit();
 		$dbw->immediateCommit();
+	}
+	
+	public static function fetchNames() {
+		global $wgAuth;
+		$dbr = $wgAuth->getDB( DB_READ );
+		
+		$res = $dbr->select( 'passwd', 'pwd_name', __METHOD__ );
+		
+		$names = array();
+		while ( $row = $res->fetchObject() )
+			$names[] = $row->pwd_name;
+		return $names;
 	}
 }
 	
