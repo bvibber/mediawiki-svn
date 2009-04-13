@@ -36,6 +36,8 @@ $wgGroupPermissions['sysop']['badimages'] = true;
 $wgBadImageCache = true;
 
 $wgHooks['BadImage'][] = 'efBadImage';
+$wgHooks['ParserTestTables'][] = 'efBadImageAddTable';
+
 $wgLogTypes[] = 'badimage';
 $wgLogNames['badimage'] = 'badimages-log-name';
 $wgLogHeaders['badimage'] = 'badimages-log-header';
@@ -50,3 +52,9 @@ function efBadImage( $image, &$bad ) {
 		return true;
 	}
 }
+
+function efBadImageAddTable( &$tables ) {
+	$tables[] = 'bad_images';
+	return true;
+}
+
