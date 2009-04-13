@@ -528,6 +528,7 @@ mvSequencer.prototype = {
 		item_containers+='<div class="seq_control_container" id="welcome_ic">' + gM('mv_welcome_to_sequencer') + '</div>';
 			
 		$j('#'+this.sequence_tools_id).html( menu_html + item_containers );
+		
 		//add binding for menu
 		$j('#seq_menu li').click(function(){
 			$j('#seq_menu li').removeClass('mv_selected_item');
@@ -575,9 +576,8 @@ mvSequencer.prototype = {
 				this_seq.key_ctrl_down = false;							
 			
 			//backspace or delete key while not focused on a text area: 
-			if( (e.which == 8 || e.which == 46) && !this_seq.inputFocus){								
-				this_seq.removeSelectedClips();	
-			}		
+			if( (e.which == 8 || e.which == 46) && !this_seq.inputFocus)								
+				this_seq.removeSelectedClips();					
 		});
 	},
 	//check all nodes for focus 

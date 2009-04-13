@@ -17,7 +17,7 @@ function do_testing_page(){
 <h3>testing embed</h3>
   <table border="1" cellpadding="6" width="600">
 	    <tr>
-	      <td valign="top"><video id="vogg" src="http://<?= $_SERVER['SERVER_NAME']?>/test.ogg?t=0:0:0/0:6:14"></video></td>
+	      <td valign="top"><video id="vogg" src="http://tinyvid.tv/file/27wsh8kw4vmwi.ogg"></video></td>
 	      <td valign="top"><b>Test embed</b><br />
 	      </td>
 	    </tr>	    

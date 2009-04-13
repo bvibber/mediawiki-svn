@@ -277,13 +277,13 @@ mediaSource.prototype =
     /** Title of the source. */
     title:null,
     /** True if the source has been marked as the default. */
-    marked_default:null,
+    marked_default:false,
 	/** True if the source supports url specification of offset and duration */
-	supports_url_time_encoding:null,
+	serverSideSeeking:false,
     /** Start offset of the requested segment */
     start_offset:null,
     /** Duration of the requested segment (0 if not known) */
-    duration:NaN,
+    duration:0,
     is_playable:null,
     upddate_interval:null,
 
@@ -340,7 +340,7 @@ mediaSource.prototype =
     	//js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp + ' from org: ' + this.start_ntp+ '/'+this.end_ntp);
     	//js_log("pre uri:" + this.src);
     	//if we have time we can use:
-    	if( this.supports_url_time_encoding ){
+    	if( this.serverSideSeeking ){
     		//make sure its a valid start time / end time (else set default) 
     		if( !ntp2seconds(start_ntp) ) 
     			start_ntp = this.start_ntp;
@@ -383,8 +383,8 @@ mediaSource.prototype =
     */
     getURI : function(seek_time_sec)
     {    	
-    	js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.supports_url_time_encoding);
-    	if( !seek_time_sec || !this.supports_url_time_encoding ){    		
+    	js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.serverSideSeeking);
+    	if( !seek_time_sec || !this.serverSideSeeking ){    		
        		return this.src;       		       	
     	}
        	if( this.timeFormat == 'anx' ){
@@ -441,12 +441,12 @@ mediaSource.prototype =
 	    			this.src = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start=' + mp4URL.queryKey['start'];
 	    		}	    			    			    		  	    		
 	    	}
-	    	this.supports_url_time_encoding = true;
+	    	this.serverSideSeeking = true;
 	    	this.start_offset = ntp2seconds(this.start_ntp);
 	    	this.duration = ntp2seconds( this.end_ntp ) - this.start_offset;
     	} //time format	   		
     	
-        if( !this.supports_url_time_encoding ){ 
+        if( !this.serverSideSeeking ){ 
 	     	//else normal media request (can't predict the duration without the plugin reading it)
 	     	this.duration = null;
 	   	 	this.start_offset = 0;
@@ -1340,7 +1340,7 @@ embedVideo.prototype = {
 		//reset slider
 		this.setSliderValue(0);
 		//reset seek_offset:
-		if(this.media_element.selected_source.supports_url_time_encoding)
+		if(this.media_element.selected_source.serverSideSeeking)
 			this.seek_time_sec=0;
 		else
 			this.seek_time_sec=ntp2seconds(start_ntp);
@@ -1952,7 +1952,8 @@ embedVideo.prototype = {
 		return this.media_element.selected_source.getURI( this.seek_time_sec );
 	},
 	supportsURLTimeEncoding: function(){
-		return this.media_element.selected_source.supports_url_time_encoding;
+		//do head request if on the same domain
+		return this.media_element.selected_source.serverSideSeeking;
 	},
 	setSliderValue: function(perc, hide_progress){
 		

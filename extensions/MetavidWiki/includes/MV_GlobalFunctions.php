@@ -106,7 +106,7 @@ function mvSetupExtension() {
 	
 	$wgJSAutoloadClasses['mv_allpages']			= $mv_jspath . 'mv_allpages.js';
 	$wgJSAutoloadClasses['mv_search']			= $mv_jspath . 'mv_search.js';
-	$wgJSAutoloadClasses['mv_stream']			= $mv_jspath . 'mv_stream.js';	
+	$wgJSAutoloadClasses['mv_stream']			= $mv_jspath . 'mv_stream.js';
 	
 	//$wgJSAutoloadClasses['']
 	$wgJSAutoloadClasses['j.ui.mouse']			= $mvjsp . 'jquery/jquery.ui-1.5.2/ui/ui.core.js';
@@ -117,7 +117,9 @@ function mvSetupExtension() {
 	$wgJSAutoloadClasses['j.contextMenu']		= $mvjsp . 'jquery/plugins/jquery.contextMenu.js';
 	$wgJSAutoloadClasses['j.fn.autocomplete']	= $mvjsp . 'jquery/plugins/jquery.autocomplete.js';
 	$wgJSAutoloadClasses['j.fn.hoverIntent']	= $mvjsp . 'jquery/plugins/jquery.hoverIntent.js';
-	$wgJSAutoloadClasses['j.Jcrop'] 				= $mvjsp . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';
+	$wgJSAutoloadClasses['j.Jcrop'] 			= $mvjsp . 'jquery/plugins/Jcrop/js/jquery.Jcrop.js';	
+	$wgJSAutoloadClasses['Date.fromString']  	= $mvjsp . 'jquery/plugins/date.js';
+	$wgJSAutoloadClasses['j.fn.datePicker']		= $mvjsp . 'jquery/plugins/jquery.datePicker.js';
 	
 	//libAddMedia:
 	$wgJSAutoloadClasses['mvFirefogg'] 			= $mvjsp . 'libAddMedia/mvFirefogg.js';
@@ -128,6 +130,7 @@ function mvSetupExtension() {
 	$wgJSAutoloadClasses['mediaWikiSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/mediaWikiSearch.js';
 	$wgJSAutoloadClasses['metavidSearch'] 		= $mvjsp . 'libAddMedia/searchLibs/metavidSearch.js';
 	$wgJSAutoloadClasses['archiveOrgSearch'] 	= $mvjsp . 'libAddMedia/searchLibs/archiveOrgSearch.js';	
+	$wgJSAutoloadClasses['baseRemoteSearch']	= $mvjsp . 'libAddMedia/searchLibs/baseRemoteSearch.js';	
 	
 	//libClipEdit:
 	$wgJSAutoloadClasses['mvClipEdit'] 			= $mvjsp . 'libClipEdit/mvClipEdit.js';
@@ -344,7 +347,12 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 * enables linkback and autocomplete for search
 	 */
 function mvfAutoAllPageHeader() {
+<<<<<<< .mine
+	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle, $mvgJSDebug, $wgEnableScriptLoader, $wgRequest, $wgScriptPath;
+	
+=======
 	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $mvgJSDebug, $wgEnableScriptLoader, $wgRequest;;
+>>>>>>> .r49450
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;	
 	//set the unquie request value 
@@ -360,7 +368,7 @@ function mvfAutoAllPageHeader() {
 						 $wgRequest->getVal('debug')=='true' ||
 						 $wgRequest->getVal('debug')=='1' ) 
 			 		 ? '&debug=true' : '';	
-		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mvwScriptLoader.php?" . 
+		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/mvwScriptLoader.php?" . 
 								"class=window.jQuery,j.fn.autocomplete,j.fn.hoverIntent,mv_embed,mv_allpages,mv_search" .
 								'&urid=' .$unique_req_param . $debug_param . "\"></script>"
 						 );

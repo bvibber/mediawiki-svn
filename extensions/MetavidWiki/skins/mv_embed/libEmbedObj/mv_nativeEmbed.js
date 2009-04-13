@@ -13,13 +13,12 @@ var nativeEmbed = {
     	'overlays':true,
     	'playlist_swap_loader':true //if the object supports playlist functions    	
    },
-    getEmbedHTML : function (){				
+    getEmbedHTML : function (){		
+    	var id = (this.pc!=null)?this.pc.pp.id:this.id;		
 		var embed_code =  this.getEmbedObj();
-		js_log('embed code: ' + embed_code);
-		js_log("DURATION: "+ this.getDuration() );
-		return this.wrapEmebedContainer( embed_code);
-		
-		setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()', 150);
+		js_log("embed code: " + embed_code)				
+		setTimeout('$j(\'#' + id + '\').get(0).postEmbedJS()', 150);
+		return this.wrapEmebedContainer( embed_code);		
     },
     getEmbedObj:function(){
     	//we want to let mv_embed handle the controls so notice the absence of control attribute
@@ -27,10 +26,11 @@ var nativeEmbed = {
     	//http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html    	
     	js_log("native play url:" + this.getURI( this.seek_time_sec ));
 		return '<video ' +
-					'id="'+this.pid + '" ' +
-					'style="width:'+this.width+'px;height:'+this.height+'px;" ' +
-					'width="'+this.width+'" height="'+this.height+'" '+
-				   	'src="' + this.media_element.selected_source.getURI( this.seek_time_sec ) + '" ' +				   	
+					'id="' + this.pid + '" ' +
+					'style="width:' + this.width+'px;height:' + this.height + 'px;" ' +
+					'width="' + this.width + '" height="'+this.height+'" '+
+				   	'src="' + this.media_element.selected_source.getURI( this.seek_time_sec ) + '" ' +
+				   	'autoplay="true" '+				   	
 				   	'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
 				   	'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
 				   	'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' +
@@ -39,7 +39,8 @@ var nativeEmbed = {
 				'</video>';
 	},
 	//@@todo : loading progress	
-	postEmbedJS:function(){		
+	postEmbedJS:function(){
+		js_log("f:native:postEmbedJS:");		
 		this.getVID();
 		if(typeof this.vid != 'undefined'){
 			js_log("GOT video object sending PLAY()");			
@@ -50,17 +51,21 @@ var nativeEmbed = {
 			js_log('could not grab vid obj trying again:' + typeof this.vid);
 			this.grab_try_count++;
 			if(	this.grab_count == 10 ){
-				js_log(' could not get vid object after 10 tries re-run: getEmbedObj()' ) ;
-				//reload the dom:
-				this.grab_try_count=0;
-				this.getEmbedObj();				
+				js_log(' could not get vid object after 10 tries re-run: getEmbedObj()' ) ;						
 			}else{
 				setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()',100);
 			}			
-		}		
+		}
 	},	
+	doSeek:function(perc){
+		js_log('native:seek:' + this.supportsURLTimeEncoding() + ' dur: ' + this.vid.duration);
+		if( this.supportsURLTimeEncoding() ){
+			this.parent_doSeek(perc);
+		}else if( this.vid.duration ){		
+			this.vid.currentTime = perc * this.vid.duration;
+		}
+	},
 	monitor : function(){
-		//js_log('native:monitor');
 		this.getVID(); //make shure we have .vid obj
 		if(!this.vid){
 			js_log('could not find video embed: '+this.id + ' stop monitor');
@@ -86,10 +91,7 @@ var nativeEmbed = {
 	 * native callbacks for the video tag: 
 	 */
 	oncanplaythrough : function(){		
-		this.getVID();
-		//js_log("f:oncanplaythrough start playback");		
-		//start playback (we don't yet support pre-loading clips)  	
-		this.vid.play();
+		js_log('f:oncanplaythrough');
 	},
 	onloadedmetadata: function(){
 		js_log('f:onloadedmetadata get duration: ' +this.vid.duration);
@@ -99,8 +101,9 @@ var nativeEmbed = {
 		js_log('f:onloadedmetadata metadata ready');
 		//set the clip duration 
 	},
-	onprogress: function(e){
-		this.bufferedPercent =  Math.round(e.loaded/e.total*100);
+	onprogress: function(e){		
+		this.bufferedPercent =   e.loaded / e.total;
+		//js_log("onprogress:" +e.loaded + ' / ' +  (e.total) + ' = ' + this.bufferedPercent);
 	},
 	onended:function(){
 		//clip "ended" 

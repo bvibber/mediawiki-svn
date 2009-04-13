@@ -602,7 +602,7 @@ mvPlayList.prototype = {
 			js_log('basic play');
 			//play cur_clip			
 			this.cur_clip.embed.play();		
-		}
+		}		
 		//start up the playlist monitor	
 		this.monitor();		
 	},	

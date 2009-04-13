@@ -636,7 +636,7 @@ remoteSearchDriver.prototype = {
 		//do an upload tab if enabled: 
 		if( this.enable_uploads ){
 			var class_attr = ( this.disp_item =='upload' ) ? 'class="rsd_selected"':'';	
-			o+='<div id="rsd_tab_upload" ' + class_attr + ' >'+gM('upload');+'</li>';
+			o+='<div id="rsd_tab_upload" ' + class_attr + ' >'+gM('upload');+'</div>';
 		}
 		//o+='</ul>';		
 		o+='</div>';
@@ -648,6 +648,15 @@ remoteSearchDriver.prototype = {
 		$j('.rsd_cp_tab').click(function(){
 			_this.selectTab( $j(this).attr('id').replace(/rsd_tab_/, '') );
 		});
+		
+		//setup key binding
+		$j().keyup(function(e){	
+			js_log('keyup on : ' +e.which );				
+			//if escape pressed clear the interface:
+			if(e.which == 27)
+				_this.closeAll();			
+		});  
+		
 	},
 	//resource title 		
 	getResourceFromTitle:function( rTitle , callback){

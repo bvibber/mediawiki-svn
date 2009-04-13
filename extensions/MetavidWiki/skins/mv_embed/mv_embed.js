@@ -21,7 +21,7 @@ if( MV_EMBED_VERSION ){
 	MV_DO_INIT=false;	
 }
 //used to grab fresh copies of scripts. (should be changed on commit)  
-var MV_EMBED_VERSION = '1.0r13';
+var MV_EMBED_VERSION = '1.0r14';
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -36,9 +36,11 @@ var mv_media_iframe_path = '/mv_embed/';
 //the default height/width of the video (if no style or width attribute provided)
 var mv_default_video_size = '400x300'; 
 
-var global_player_list = new Array();
+var mediaWiki_mvEmbed_path = 'extensions/MetavidWiki/skins/mv_embed/';
+
+var global_player_list = new Array(); //the global player list per page
 var global_req_cb = new Array(); //the global request callback array
-var _global = this;
+var _global = this; //global obj
 var mv_init_done=false;
 var global_cb_count =0;
 
@@ -165,8 +167,8 @@ var mvBaseLoader = {
 		 	//only call load base libs once
 		 	mvBaseLoader.calledloadBaseLibs=true;    	
 		 	//issue a style sheet request can come in whenever:
-		 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/styles.css'))
-				loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/styles.css');
+		 	if(!styleSheetPresent( mv_embed_path + 'skins/'+mv_skin_name+'/styles.css'))
+				loadExternalCss( mv_embed_path  + 'skins/'+mv_skin_name+'/styles.css');
 			  	  	  
 			//two loading stages, first get jQuery
 			var _this = this;
@@ -235,7 +237,8 @@ var mvJsLoader = {
 				return ;
 			}					 						
 	 		//check if we should use the script loader to combine all the requests into one:
-		 	if( usingScriptLoaderCheck() ){		
+	 		var slpath = getScriptLoaderPath();	 		
+		 	if( slpath ){		
 		 		var class_set = '';
 		 	 	var last_class = '';	
 		 	 	var coma = ''; 
@@ -248,7 +251,7 @@ var mvJsLoader = {
 		 	 		}
 		 	 	}	 
 		 	 	var dbug_attr = (parseUri( getMvEmbedURL() ).queryKey['debug'])?'&debug=true':''; 		 					 	 	 	
-		 	 	this.libs[ last_class ] = 'mvwScriptLoader.php?class=' + class_set +
+		 	 	this.libs[ last_class ] = slpath + '?class=' + class_set +
 		 	 						'&urid=' + getMvUniqueReqId() + dbug_attr;
 		 	 								
 		 	}else{			 	 		 	 			 		 	 
@@ -256,7 +259,7 @@ var mvJsLoader = {
 			 	for(var i in libs){ //for in loop oky on object
 			 		// do a direct load of the file (pass along unique id from request or mv_embed Version ) 
 			 		var qmark = (libs[i].indexOf('?')!==true)?'?':'&';
-			 		this.libs[i]=libs[i] + qmark + 'urid='+ getMvUniqueReqId(); 
+			 		this.libs[i] =  getMvEmbedPath() + libs[i] + qmark + 'urid='+ getMvUniqueReqId(); 
 			 	}	 				
 			}
 		}
@@ -300,7 +303,7 @@ var mvJsLoader = {
 		 var i=null;
 		 for(var i in this.libs){ //for in loop oky on object			 		 
 			 if( ! this.checkObjPath( i ) ){				 
-				 if(!this.libreq[i]) loadExternalJs( getMvEmbedPath() + this.libs[i] );
+				 if(!this.libreq[i]) loadExternalJs( this.libs[i] );
 				 this.libreq[i]=1;
 				 loading=1;
 			 }
@@ -1294,9 +1297,15 @@ function loadExternalCss(url){
    e.rel = 'stylesheet';
    document.getElementsByTagName("head")[0].appendChild(e);
 }
-function usingScriptLoaderCheck(){
-	return ( getMvEmbedURL().indexOf('mvwScriptLoader.php') != -1 )?true:false;
-	
+function getScriptLoaderPath(){
+	var eurl = getMvEmbedURL();
+	var sln =  'mvwScriptLoader.php';
+	if( eurl.indexOf(sln) != -1 ){
+		//get just the script loader part of the url: 
+		return eurl.substr(0, (eurl.indexOf(sln) + sln.length));
+	}else{
+		return false;
+	}	
 }
 function getMvEmbedURL(){	
 	if( _global['mv_embed_url'] ) 
@@ -1343,7 +1352,8 @@ function getMvEmbedPath(){
 	if( mv_embed_url.indexOf('mv_embed.js') !== -1 ){
 		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
 	}else{
-		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mvwScriptLoader.php'));
+		//script load is in the root of mediaWiki so include the default mv_embed extention path (if using the script loader)
+		mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mvwScriptLoader.php'))  + mediaWiki_mvEmbed_path ;
 	}
 	//absolute the url (if relative) (if we don't have mv_embed path)
 	if( mv_embed_path.indexOf('://') == -1){	
