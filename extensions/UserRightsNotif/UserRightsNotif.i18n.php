@@ -369,6 +369,7 @@ $2',
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Melancholie
  */
 $messages['gsw'] = array(
 	'userrightsnotifysubject' => 'Änderig vu dr Gruppezuegherigkeit vum $1',
@@ -382,7 +383,7 @@ Usegnuh: $6
 Mit härzlige Grieß,
 
 $2',
-	'userrightsnotif-desc' => 'Schickt E-Mail-Benochrichtunge iber Rächtänderige an dr Benutzer',
+	'userrightsnotif-desc' => 'Schickt E-Mail-Benochrichtunge iber Rächtänderige an de Benutzer',
 );
 
 /** Hebrew (עברית)

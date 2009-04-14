@@ -611,6 +611,7 @@ Moatest Du ju bestoundene Siede beoarbaidje?',
 );
 
 /** Swedish (Svenska)
+ * @author Gabbe.g
  * @author Najami
  */
 $messages['sv'] = array(
@@ -619,6 +620,7 @@ $messages['sv'] = array(
 	'createpage_submitbutton' => 'OK',
 	'createpage_instructions' => 'Skriv in titeln till sidan som du vill skapa:',
 	'createpage_entertitle' => 'Var god skriv in en titel för din sida.',
+	'createpage_tryagain' => 'Nej, jag vill skapa en ny sida med ett annat namn.',
 );
 
 /** Swahili (Kiswahili)

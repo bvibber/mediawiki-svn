@@ -236,6 +236,13 @@ $messages['mk'] = array(
 	'catboxattop-categories' => 'Категории',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'catboxattop-categories' => 'Категорият',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

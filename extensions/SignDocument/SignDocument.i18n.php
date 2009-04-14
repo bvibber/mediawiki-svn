@@ -368,6 +368,16 @@ $messages['sk'] = array(
 	'signaturelogentry' => 'podpísal dokument $1',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'signaturelogpage' => 'Историја потписивања',
+	'signature-desc' => 'Омогући документ [[Special:SignDocument|signing]]',
+	'signaturelogpagetext' => 'Ово је историја [[Special:SignDocument|свих потписа докумената]].',
+	'signaturelogentry' => 'потписао документ $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

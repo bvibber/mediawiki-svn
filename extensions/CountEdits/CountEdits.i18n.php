@@ -1144,15 +1144,17 @@ $messages['sr'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'countedits' => 'Бројач измена',
+	'countedits-desc' => '[[Special:CountEdits|Посебна страна]] која израчунава измене корисника и пружа листу десет најактивнијих аутора',
 	'countedits-warning' => "'''Упозорење:''' Не судите о књизи по њеном омоту. Не судите о кориснику по његовом броју измена.",
 	'countedits-username' => 'Корисник:',
 	'countedits-ok' => 'У реду',
 	'countedits-nosuchuser' => 'Не постоји корисник са именом $1.',
 	'countedits-resultheader' => 'Резултати за $1',
-	'countedits-resulttext' => '$1 има $2 измена',
+	'countedits-resulttext' => '$1 је неправио $2 {{PLURAL:$2|измену|измена}}',
 	'countedits-mostactive' => 'Најактивнији корисници',
 	'countedits-nocontribs' => 'Не постоје прилози на овој вики.',
 );

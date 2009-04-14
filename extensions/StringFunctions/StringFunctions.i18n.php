@@ -304,6 +304,13 @@ $messages['sk'] = array(
 	'stringfunctions-desc' => 'Rozširuje syntaktický analyzátor o funkcie na prácu s reťazcami',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'stringfunctions-desc' => 'Обогаћује парсер функцијама за стрингове',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

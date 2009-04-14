@@ -250,6 +250,13 @@ $messages['sk'] = array(
 	'crowdauthentication-desc' => 'Zásuvný modul na overenie služby Atlassian Crowd',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'crowdauthentication-desc' => 'Ауторизацијски плагин за Atlassian Crowd',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -1773,6 +1773,7 @@ $wgGoogleMapsMessages['grc'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Melancholie
  */
 $wgGoogleMapsMessages['gsw'] = array(
 	'gm-desc' => 'Charten aifach aalege mit wikifizierte Markierige',

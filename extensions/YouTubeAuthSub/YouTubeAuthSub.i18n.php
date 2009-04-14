@@ -338,7 +338,14 @@ Molimo budite strpljivi.',
  * @author SMP
  */
 $messages['ca'] = array(
+	'youtubeauthsub' => 'Carregueu vídeo de YouTube',
+	'youtubeauthsub-desc' => 'Permet els usuaris de [[Special:YouTubeAuthSub|carregar vídeos]] directament a YouTube',
+	'youtubeauthsub_info' => "Per carregar un vídeo a YouTube a fi d'incloure'l en una pàgina, completeu la informació següent:",
 	'youtubeauthsub_title' => 'Títol',
+	'youtubeauthsub_description' => 'Descripció',
+	'youtubeauthsub_password' => 'Contrasenya de YouTube',
+	'youtubeauthsub_username' => "Nom d'usuari de YouTube",
+	'youtubeauthsub_keywords' => 'Descriptors',
 	'youtubeauthsub_category' => 'Categoria',
 );
 

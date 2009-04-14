@@ -178,11 +178,13 @@ $messages['bs'] = array(
 	'imstatus_style' => 'stil statusnog pokazatelja',
 	'imstatus_action' => 'akcija kada se klikne dugme',
 	'imstatus_your_name' => 'Vaše $1 ime',
+	'imstatus_gtalk_code' => 'Vaš google talk kod',
 	'imstatus_gtalk_height' => 'visina kutije, u pikselima.',
 	'imstatus_gtalk_width' => 'širina kutije, u pikselima.',
 	'imstatus_icq_id' => 'Vaš ICQ ID',
 	'imstatus_icq_style' => 'broj između 0 i 26 (da, dostupno je 27 stilova...).',
 	'imstatus_live_code' => 'vaš Live Messenger website id',
+	'imstatus_xfire_size' => 'veličina dugmeta, od $1 (najveće) do $2 (najmanje).',
 );
 
 /** Czech (Česky)

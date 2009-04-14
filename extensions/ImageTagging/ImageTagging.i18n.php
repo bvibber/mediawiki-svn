@@ -181,11 +181,38 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'taggedimages' => 'Выявы з пазнакамі',
+	'imagetagging-desc' => 'Дазваляе удзельніку выбіраць рэгіёны убудаванай выявы і зьвязваць старонкі з гэтым рэгіёнамі',
+	'imagetagging-addimagetag' => 'Пазначыць гэту выяву',
 	'imagetagging-article' => 'Старонка:',
+	'imagetagging-articletotag' => 'Старонка для пазнакі',
+	'imagetagging-canteditothermessage' => 'Вы ня можаце рэдагаваць гэтую старонку, таму што Вы ня маеце адпаведных правоў, ці таму што старонка абаронена ад рэдагаваньняў.',
 	'imagetagging-imghistory' => 'Гісторыя',
+	'imagetagging-images' => 'выявы',
+	'imagetagging-inthisimage' => 'У гэтай выяве: $1',
+	'imagetagging-logentry' => 'Выдаліць метку старонкі [[$1]] пастаўленую $2',
+	'imagetagging-log-tagged' => 'Выява [[$1|$2]] была зьвязана са старонкай [[$3]] удзельнікам $4',
+	'imagetagging-new' => '<sup><span style="color:red">Новая!</span></sup>',
+	'imagetagging-removetag' => 'выдаліць метку',
+	'imagetagging-done-button' => 'Метка пастаўлена',
+	'imagetagging-tag-button' => 'Метка',
 	'imagetagging-tagcancel-button' => 'Адмяніць',
+	'imagetagging-tagging-instructions' => 'Пазначце людзей ці рэчы ў выяве якія трэба памеціць.',
+	'imagetagging-addingtag' => 'Даданьне меткі...',
+	'imagetagging-removingtag' => 'Выдаленьне меткі...',
+	'imagetagging-addtagsuccess' => 'Метка дадана.',
+	'imagetagging-removetagsuccess' => 'Метка выдалена.',
+	'imagetagging-canteditneedloginmessage' => 'Вы ня можаце рэдагаваць гэтую старонку.
+Таму што Вам неабходна ўвайсьці ў сыстэму каб пазначаць выявы.
+Вы жадаеце ўвайсьці зараз?',
+	'imagetagging-oneactionatatimemessage' => 'Адначасова можна пазначыць толькі адзін раз.
+Пачакайце заканчэньне адбываючагася дзеяньня.',
+	'imagetagging-oneuniquetagmessage' => 'Гэта выява ўжо зьвязана з гэтым імем.',
+	'imagetagging-imagetag-seemoreimages' => 'Паглядзець болей выяваў «$1» ($2)',
+	'imagetagging-taggedimages-title' => 'Выявы «$1»',
 );
 
 /** Bulgarian (Български)
@@ -988,6 +1015,7 @@ $messages['mwl'] = array(
  */
 $messages['myv'] = array(
 	'imagetagging-article' => 'Лопась:',
+	'imagetagging-imghistory' => 'Путовксонзо-йуронзо',
 	'imagetagging-images' => 'неевтть',
 );
 

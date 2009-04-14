@@ -3400,6 +3400,13 @@ $messages['os'] = array(
 	'deletequeue-delnom-otherreason' => 'Æндæр аххостæ',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'deletequeue-list-header-page' => 'Blatt',
+);
+
 /** Polish (Polski)
  * @author Jwitos
  * @author Leinad

@@ -403,6 +403,14 @@ $messages['sq'] = array(
 	'usercontactlink-baduser' => 'llogari jo korrekte',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'usercontactlink-baduser' => 'неправилно корисничко име',
+	'usercontactlink-desc' => 'Пружа могућност једноставног и непрекидног додавања других корисничких имена, коришћењем ^^^user^^^ синтаксе',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

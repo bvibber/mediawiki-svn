@@ -509,6 +509,7 @@ $messages['grc'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Melancholie
  */
 $messages['gsw'] = array(
 	'spamregex' => 'Spam regex',
@@ -516,7 +517,7 @@ $messages['gsw'] = array(
 	'spamregex-error-unblocking' => 'Het „$1“ nit chenne frejgee. Wahrschyyns git kei sonigs Muschter.',
 	'spamregex-summary' => 'Dr Täxt isch in dr Zämmefassig gfunde wore.',
 	'spamregex-intro' => 'Verwänd des Formular go effektiv verhindere, ass Phrase, wu aagee wore sin, in dr Täxt yygee wäre.
-Wänn s im Täxt Phrase het, wu aagee sin, no wird d Änderig nit gspycheret un e Hiiwyys an dr Benutzer uusgee, wu versuecht het, d Syte z spychere.
+Wänn s im Täxt Phrase het, wu aagee sin, no wird d Änderig nit gspycheret un e Hiiwyys an de Benutzer uusgee, wu versuecht het, d Syte z spychere.
 Bii aber vorsichtig, Phrase sotte nit z churz oder zue allgmein syy.',
 	'spamregex-page-title' => 'Nit gwinschti Uusdrick filtere',
 	'spamregex-currently-blocked' => "'''Im Momänt gsperrti Phrase:'''",

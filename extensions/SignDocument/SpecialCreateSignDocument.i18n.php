@@ -1138,6 +1138,13 @@ $messages['os'] = array(
 	'createsigndoc-pagename' => 'Фарс:',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'createsigndoc-pagename' => 'Blatt:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Maikking

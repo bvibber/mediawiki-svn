@@ -683,14 +683,21 @@ Uistite sa, že {{PLURAL:$3|požadovaný obrázok existuje|všetky požadované 
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'smoothgallery' => 'ЛакаГалерија',
+	'smoothgallery-desc' => 'Омогућује корисницима да праве галерије са сликама које су послали.
+Омогућује већи број опција за SmoothGallery.',
 	'smoothgallery-title' => 'ЛакаГалерија',
 	'smoothgallery-smoothgallerytitle' => 'ЛакаГалерија: $1',
 	'smoothgallery-error' => '<b>ЛакаГалерија грешка:</b>',
+	'smoothgallery-gallery-not-found' => 'Захтевана галерија не постоји.',
 	'smoothgallery-not-found' => 'Нема слика у галерији. Додајте најмање једну слику.',
-	'smoothgallery-no-images' => 'Није пронађена слика у галерији. Уверите се да тражене слике постоје. Следеће слиек нису пронађене: $1',
+	'smoothgallery-no-images' => 'Нису нађене слике у овој галерији.
+Осигурајте се да {{PLURAL:$3|захтевана слика постоји|све захтеване слике постоје}}.
+{{PLURAL:$2|Следећа слика није нађена|Следеће слике нису нађене}}: $1',
+	'smoothgallery-invalid-images' => 'Тип {{PLURAL:$2|следеће захтеване слике|следећих захтеваних слика}} је био непознат: $1',
 	'smoothgallery-unexpected-error' => 'Десила се неочекивана грешка. Молимо обавестите администраторе.',
 	'smoothgallery-javascript-disabled' => 'Јаваскрипт је потребан да би се галерија нормално приказала.',
 );

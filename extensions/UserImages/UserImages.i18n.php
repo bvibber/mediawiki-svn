@@ -565,8 +565,11 @@ $messages['sr'] = array(
 	'userimages-noimages' => '$1 нема послатих слика.',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица) */
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
 $messages['sr-ec'] = array(
+	'userimages-desc' => 'Помоћу <code><nowiki><userimage /></nowiki></code> тага генерише галерије слика, које су послали корисници.',
 	'userimages-caption' => 'Слике које је послао корисник $1',
 	'userimages-noname' => 'Погрешно корисничко име или корисник није послао ни једну слику.',
 	'userimages-noimages' => '$1 нема послатих слика.',

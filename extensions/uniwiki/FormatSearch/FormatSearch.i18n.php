@@ -290,6 +290,13 @@ $messages['sq'] = array(
 	'formatsearch-desc' => 'Pastron faqen e rezultateve të kërkimit',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'formatsearch-desc' => 'Чисти страну са резултатима претраге',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

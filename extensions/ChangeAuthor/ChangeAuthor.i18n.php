@@ -1213,6 +1213,13 @@ $messages['mt'] = array(
 	'changeauthor-comment' => 'Kumment:',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'changeauthor-pagenameform-go' => 'Адя',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

@@ -1282,7 +1282,9 @@ $messages['ee'] = array(
  */
 $messages['el'] = array(
 	'code' => 'Επιθεώρηση του κώδικα',
+	'code-rev-title' => 'r$1 - Επιθεώρηση του Κώδικα',
 	'code-comments' => 'Σχόλια',
+	'code-references' => 'Παρακολούθηση επεξεργασιών',
 	'code-change-status' => "έγινε αλλαγή της '''κατάστασης''' της r$1",
 	'code-change-tags' => "έγινε αλλαγή των '''ετικετών''' για την r$1",
 	'code-change-removed' => 'αφαιρέθηκε:',
@@ -1368,6 +1370,7 @@ $messages['el'] = array(
 Σχόλιο:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Παρακολούθηση αλλαγών',
 	'codereview-email-body2' => 'Ο Χρήστης "$1" πραγματοποίησε αλλαγές παρακολούθησης στο r$2.
 
 Πλήρες URL: $3
@@ -4021,10 +4024,12 @@ $messages['myv'] = array(
 	'code-field-id' => 'Лиякстомтома',
 	'code-field-author' => 'Теицязо',
 	'code-field-user' => 'Мелень-арьсемань каицязо',
-	'code-field-timestamp' => 'Чи',
+	'code-field-timestamp' => 'Ковчизэ',
 	'code-rev-author' => 'Теицязо:',
+	'code-rev-date' => 'Ковчизэ:',
 	'code-rev-purge-link' => 'панемс',
 	'code-status-new' => 'од',
+	'code-status-fixme' => 'витемак',
 	'repoadmin-new-button' => 'Шкик-теик',
 );
 
@@ -5692,6 +5697,7 @@ $4',
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Gabbe.g
  * @author Najami
  */
 $messages['sv'] = array(
@@ -5782,6 +5788,14 @@ $messages['sv'] = array(
 Fullständig URL: $2
 
 Kommentar:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Påföljande ändringar',
+	'codereview-email-body2' => 'Användare "$1" gjorde påföljande ändringar till r$2.
+
+Full URL:  $3
+
+Sammanfattning:
 
 $4',
 	'repoadmin' => 'Databasadministration',

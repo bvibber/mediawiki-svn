@@ -329,6 +329,13 @@ $messages['sq'] = array(
 	'emailaddressimage-desc' => 'Vendosë kodin <tt>&lt;email&gt;</tt> që të paraqesë adresën e postës elektronike si figurë',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'emailaddressimage-desc' => 'Додаје <tt>&lt;email&gt;</tt> таг, за приказивање имејл адреса као слика',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

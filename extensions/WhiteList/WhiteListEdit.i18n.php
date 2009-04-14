@@ -1858,6 +1858,7 @@ $2',
 $messages['myv'] = array(
 	'mywhitelistpages' => 'Монь лопан',
 	'whitelisttablemodifyall' => 'Весе',
+	'whitelisttablepage' => 'Вики лопа',
 	'whitelisttableremove' => 'Нардык',
 	'whitelistnever' => 'зярдояк',
 );

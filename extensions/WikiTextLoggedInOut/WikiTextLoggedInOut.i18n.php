@@ -283,6 +283,13 @@ $messages['sk'] = array(
 	'wikitextloggedinout-desc' => 'Dva prípojné body syntaktického analyzátora, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> na zobrazenie odlišného textu v závslosti na stave prihlásenia používateľa',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikitextloggedinout-desc' => 'Додаје парсеру две куке, <tt>&lt;loggedin&gt;</tt> и <tt>&lt;loggedout&gt;</tt>, које приказују различити текст у зависности од тога да ли је корисник улогован, односно излогован.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

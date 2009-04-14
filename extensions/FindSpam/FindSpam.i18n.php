@@ -720,12 +720,15 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'findspam' => 'Пронађи спам',
+	'findspam-desc' => 'Додаје [[Special:FindSpam|специјалну страну]] која омогућава налажење скоро додатог спама',
 	'findspam-ip' => 'ИП адреса:',
 	'findspam-ok' => 'У реду',
 	'findspam-notextfound' => 'Нису пронађени прилози',
+	'right-findspam' => 'Потражи скоро додати спам',
 );
 
 /** Seeltersk (Seeltersk)

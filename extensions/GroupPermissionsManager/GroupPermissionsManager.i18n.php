@@ -1529,6 +1529,7 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'grouppermissions-search' => 'Курось:',
+	'grouppermissions-dosearch' => 'Адя',
 	'grouppermissions-true' => 'Виде',
 	'grouppermissions-sp-remove' => 'нардык',
 );

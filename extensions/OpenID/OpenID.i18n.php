@@ -3061,10 +3061,35 @@ Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných po
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'openidoptional' => 'Необавезно',
+	'openidrequired' => 'Обавезно',
+	'openidnickname' => 'Надимак',
+	'openidfullname' => 'Пуно име',
 	'openidemail' => 'Е-пошта',
 	'openidlanguage' => 'Језик',
+	'openidchooseinstructions' => 'Сваки корисник треба да има надимак;
+Можете да изаберете једну од опција испод.',
+	'openidchoosefull' => 'Важе пуно име ($1)',
+	'openidchooseurl' => 'Име преузето од вашег OpenID ($1)',
+	'openidchooseauto' => 'Аутоматски генерисано корисничко име ($1)',
+	'openidchoosemanual' => 'Изаберите корисничко име:',
+	'openidchooseexisting' => 'Постојећи налог на овој Вики:',
+	'openidchoosepassword' => 'лозинка:',
+	'openidconvertsuccess' => 'Конверзија ка OpenID је успешна',
+	'openidconvertsuccesstext' => 'Успешно сте прменили свој OpenID на $1.',
+	'openidconvertyourstext' => 'Тај OpenID је већ ваш.',
+	'openidconvertothertext' => 'То је туђ OpenID.',
+	'openidnousername' => 'Није наведено корисничко име.',
+	'openidbadusername' => 'Задато неисправно корисничко име.',
+	'openidclientonlytext' => 'Ви не можете да користите налоге са овог Викија као OpenID-ове на другим сајтовима.',
+	'openidloginlabel' => 'OpenID URL',
+	'openidupdateuserinfo' => 'Актуализуј моје личне податке',
+	'openid-prefstext' => '[http://openid.net/ OpenID] подешавања',
+	'openid-pref-hide' => 'Сакријте свој OpenID URL са корисничке стране, ако се са њим логујете.',
+	'openid-pref-update-userinfo-on-login' => 'Актуализуј моје информације са OpenID личност сваки пут кад се улогујем',
 );
 
 /** Seeltersk (Seeltersk)

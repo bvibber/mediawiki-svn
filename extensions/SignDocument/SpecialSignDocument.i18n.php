@@ -3352,11 +3352,91 @@ $1',
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'signdocument' => 'Потпиши документ',
+	'sign-nodocselected' => 'Молимо Вас, изаберите документ који желите да потпишете',
+	'sign-selectdoc' => 'Документ:',
+	'sign-docheader' => '<div class="noarticletext">Молимо Вас да користите ову форму као бисте потписали документ "[[$1]]", приказан испод.
+Прочитајте цели документ и, ако желите да потврдите да га се са његовим садржајем слажете, попуните потребна поља и потпишите га.</div>',
+	'sign-error-nosuchdoc' => 'Документ који сте затражили ($1) не постоји.',
+	'sign-realname' => 'Име:',
+	'sign-address' => 'Адреса:',
+	'sign-city' => 'Град:',
+	'sign-state' => 'Држава:',
+	'sign-zip' => 'Поштански код:',
+	'sign-country' => 'Земља:',
+	'sign-phone' => 'Телефонски број:',
+	'sign-bday' => 'Старост:',
 	'sign-email' => 'Е-пошта:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> означава обавезно поље.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Напомена: неприказане информације ће још увек бити видљиве модераторима.</i></small>',
+	'sign-list-anonymous' => 'Прикажи као анонимно',
+	'sign-list-hideaddress' => 'Не приказуј адресу',
+	'sign-list-hideextaddress' => 'Не приказуј град, државу, поштански код, или земљу',
+	'sign-list-hidephone' => 'Не пријазуј телефон',
+	'sign-list-hidebday' => 'Не приказуј старост',
+	'sign-list-hideemail' => 'Не приказуј имејл',
+	'sign-submit' => 'Потпиши документ',
+	'sign-information' => '<div class="noarticletext">Хвала Вам што сте одвојили времен да прочитате овај документ.
+Ако се слажете с њим, молимо Вас да покажете вашу подршку попуњавањем обавезних поља испод и кликом на дугме "Потпиши документ".
+
+Молимо Вас да проверите да ли сте ваше личне информације унели исправно и да сте нам дали довољно информација како бисмо Вас могли контактирати зарад провере идентитета.
+Приметите да ће Ваша IP адреса и остале идентификујуће информације бити снимљење кроз ову форму и коришћене од стране модератора, како би се елиминисала дупла слања и потврдила тачност ваших личних података.
+Пошто коришћење отворених и анонимних проксија умањује наше могћности да испунимо овај задатак, потписи послати са њих највероватније неће бити урачунати.
+Ако сте тренутно повезани на интернет преко прокси сервера, молимо Вас да се дисконектујете с њега и користите стандардну конекцију током потписивања документа.</div>
+
+$1',
+	'sig-success' => 'Успешно сте потписали документ.',
+	'sign-view-selectfields' => '<b>Поља за приказ:</b>',
+	'sign-viewfield-entryid' => 'ID уноса',
+	'sign-viewfield-timestamp' => 'Временска марка',
+	'sign-viewfield-realname' => 'Име',
+	'sign-viewfield-address' => 'Адреса',
+	'sign-viewfield-city' => 'Град',
+	'sign-viewfield-state' => 'Држава',
+	'sign-viewfield-country' => 'Земља',
+	'sign-viewfield-zip' => 'Поштански код',
+	'sign-viewfield-ip' => 'IP адреса',
+	'sign-viewfield-agent' => 'Браузер корисника',
+	'sign-viewfield-phone' => 'Телефон',
+	'sign-viewfield-email' => 'Имејл',
+	'sign-viewfield-age' => 'Старост',
+	'sign-viewfield-options' => 'Опције',
+	'sign-viewsigs-intro' => 'Испод су приказани потписи снимљени за <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Потписивање је тренутно омогућено за овај документ.',
+	'sign-sigadmin-close' => 'Онемогући потписивање',
+	'sign-sigadmin-currentlyclosed' => 'Потписивање је тренутно онемогућено за овај документ.',
+	'sign-sigadmin-open' => 'Омогући потписивање',
+	'sign-signatures' => 'Потписи',
+	'sign-sigadmin-closesuccess' => 'Потписивање успешно онемогућено.',
+	'sign-sigadmin-opensuccess' => 'Потписивање успешно омогућено.',
+	'sign-viewsignatures' => 'погледај потписе',
+	'sign-closed' => 'затворено',
+	'sign-error-closed' => 'Потписивање овог документа је тренутно онемогућено.',
+	'sig-anonymous' => '<i>Анонимно</i>',
+	'sig-private' => '<i>Приватно</i>',
+	'sign-sigdetails' => 'Детаљи о потпису',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|разговор]] • <!--
+-->[[Special:Contributions/$1|доприноси]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|блокирај корисника]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} историја блокирања] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+--></span>',
 	'sign-viewfield-reviewcomment' => 'Коментар',
+	'sign-detail-uniquequery' => 'Слични ентитети',
+	'sign-detail-uniquequery-run' => 'Изврши захтев',
 	'sign-review-comment' => 'Коментар',
+	'sign-uniquequery-similarname' => 'Слично име',
+	'sign-uniquequery-similaraddress' => 'Слична адреса',
+	'sign-uniquequery-similarphone' => 'Сличан телефон',
+	'sign-uniquequery-similaremail' => 'Сличан имејл',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] потписан [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Seeltersk (Seeltersk)

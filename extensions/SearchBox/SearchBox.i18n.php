@@ -372,6 +372,13 @@ $messages['ms'] = array(
 	'searchbox-namespaces' => 'Ruang nama:',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'searchbox-go' => 'Адя',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

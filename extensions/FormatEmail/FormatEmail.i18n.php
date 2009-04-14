@@ -530,6 +530,18 @@ Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SIT
 $2',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'email-desc' => 'Омогућује подесиве хедере/футере за имејлове које размењују корисници',
+	'email_footer' => '----------------------------------------------------------------------------
+Овај мејл вам је послат преко система за слање порука, на сајту {{SITENAME}}
+од стране $1
+
+$2',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

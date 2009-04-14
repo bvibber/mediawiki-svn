@@ -345,6 +345,13 @@ $messages['sq'] = array(
 	'didyoumean-desc' => 'Vendosë lidhje në faqet me tituj "të ngjashëm"',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'didyoumean-desc' => 'Додаје линкове ка странама са "сличним" насловима',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

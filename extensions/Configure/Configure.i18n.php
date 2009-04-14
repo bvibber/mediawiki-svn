@@ -4199,9 +4199,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'configure' => 'Enstellunge för et Wiki',
-	'configure-desc' => 'Määt et müjjelesch, dat Metmaacher met dem Rääsch dozo
-[[Special:Configure|Enstellunge för dat Wiki]]
-inger-aktif övver et Web maache künne.',
+	'configure-desc' => 'Määt et müjjelesch, dat Metmaacher met dem Rääsch dozo [[Special:Configure|Enstellunge för dat Wiki]] inger-aktif övver et Web maache künne.',
 	'configure-desc-group' => 'Jropp',
 	'configure-desc-key' => 'Schlößel',
 	'configure-desc-ns' => 'Appachtemang',
@@ -4272,6 +4270,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-section-timezone' => 'Zickzon',
 	'configure-section-zh-conversion' => 'Ömwandlunge för et Shineesesche',
 	'configure-section-debug' => 'Fähler Söke',
+	'configure-section-profiling' => 'Et <i lang="en">Profiling</i>',
 	'configure-section-site' => 'Aanpassunge för de Webßait',
 	'configure-section-css-js' => 'CSS un JavaSkripp',
 	'configure-section-namespaces' => 'Appachtemangs',
@@ -4316,7 +4315,10 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-select-wiki-view-specific' => 'Dat beschtemmpte Wiki:',
 	'configure-select-wiki-submit' => 'Ußsöke!',
 	'configure-setting-not-available' => 'Di Enstellung ham_mer nit en dä Version vum MediaWiki',
-	'configure-transwiki-not-in-range' => 'Dat jewönschte Wiki es „$1“, avver de zojelohße Wikis sinn_er $2, un do es dat nit bei.',
+	'configure-transwiki-not-in-range' => 'Dat jewönschte Wiki es „$1“, avver {{PLURAL:$3
+|zojelohße es bloß $2, allsu woh dat nix
+|de zojelohße Wikis sinn_er $2, un do es dat nit bei
+|kei Wiki es zojelohße}}.',
 	'configure-view' => 'Aanloore',
 	'configure-view-all-versions' => 'De kumpläte Leß met de Versione',
 	'configure-view-default' => 'De Shtandatt-Enshtellunge',
@@ -6453,6 +6455,7 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'configure' => 'Конфигуришите вики',
@@ -6460,7 +6463,7 @@ $messages['sr-ec'] = array(
 	'configure-desc-key' => 'Кључ',
 	'configure-desc-ns' => 'Именски простори',
 	'configure-btn-save' => 'Сними подешавања',
-	'configure-edit-old' => 'Пажња: мењате <strong>стару</strong> верзију подешавања',
+	'configure-edit-old' => "'''Упозорење:''' мењате <strong>стару</strong> верзију подешавања (од $1)",
 	'configure-error' => 'Подешавања не могу бити снимљена',
 	'configure-js-remove' => 'Обриши',
 	'configure-js-remove-row' => 'Обриши овај упис',
@@ -6494,6 +6497,44 @@ $messages['sr-ec'] = array(
 	'configure-section-extension' => 'Екстензије',
 	'configure-section-copyright' => 'Ауторска права',
 	'configure-section-misc' => 'Разно',
+	'viewconfig' => 'Погледај подешавања Викија',
+	'configure-throttle-action-edit' => 'Измени',
+	'configure-throttle-action-move' => 'Премести',
+	'configure-throttle-action-rollback' => 'Врати',
+	'configure-throttle-action-emailuser' => 'Пошаљу мејл',
+	'configure-throttle-group-anon' => 'Сви анонимни корисници',
+	'configure-throttle-group-user' => 'По корисничком налогу',
+	'configure-throttle-group-newbie' => 'По новом корисничком налогу',
+	'configure-throttle-group-ip' => 'По IP адреси',
+	'configure-throttle-count' => 'Дозвољене акције:',
+	'configure-throttle-period' => 'Преиод ресета (секунде):',
+	'configure-throttle-summary' => '$1 акција у $2 секунди.',
+	'configure-throttle-group' => 'Тип',
+	'configure-throttle-limit' => 'Лимит',
+	'configure-throttle-none' => 'Без ограничења',
+	'configure-condition-operator' => 'Оператор:',
+	'configure-condition-operator-or' => 'Логичко или',
+	'configure-condition-operator-and' => 'Логичко и',
+	'configure-condition-operator-xor' => 'Ексклузивно или',
+	'configure-condition-operator-not' => 'Логичко не',
+	'configure-condition-name' => 'Услов',
+	'configure-condition-requirement' => 'Неопходан услов',
+	'configure-condition-name-1' => 'Најмањи број измена',
+	'configure-condition-name-2' => 'Најмања старост',
+	'configure-condition-name-3' => 'Имејл адреса је потврђена',
+	'configure-condition-name-4' => 'У групама',
+	'configure-condition-name-5' => 'Корисничка IP адреса',
+	'configure-condition-name-6' => 'Корисничке IP адресе у CIDR опсегу',
+	'configure-autopromote-noconds' => 'Без пререквизита',
+	'configure-condition-description-1' => 'Минимални број измена од $1',
+	'configure-condition-description-3' => 'Имеј адреса је потврђена',
+	'configure-condition-description-4' => 'У свим групама $1',
+	'configure-condition-description-5' => 'Корисничка IP адреса је $1',
+	'configure-condition-description-6' => 'Корисничке IP адресе у опсегу $1',
+	'configure-boolop-description-and' => 'Сви услови морају бити истинити',
+	'configure-boolop-description-or' => 'Најмање један услов мора бити истинит',
+	'configure-boolop-description-xor' => 'Тачно један услов мора бити истинит',
+	'configure-boolop-description-not' => 'Ни један од услова не сме бити истинит',
 );
 
 /** Seeltersk (Seeltersk)
@@ -6628,6 +6669,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Gabbe.g
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
@@ -6646,6 +6688,7 @@ $messages['sv'] = array(
 	'configure-ext-settings' => 'Inställningar',
 	'configure-ext-use-extension' => 'Använd det här programtillägget',
 	'configure-ext-use' => 'Använd',
+	'configure-form-reason' => 'Anledning för ändring:',
 	'configure-arrayinput-oneperline' => "''(en per rad)''",
 	'configure-summary' => 'Den här specialsidan låter dig konfigurera wikin. Se [http://www.mediawiki.org/wiki/Manual:Configuration_settings manualsidan om konfigurationsinställningar] för mer information.',
 	'configure-btn-save' => 'Spara inställningar',
@@ -6751,6 +6794,9 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'viewconfig' => 'Visa wikikonfigurering',
 	'configure-throttle-action-edit' => 'Redigera',
 	'configure-throttle-action-move' => 'Flytta',
+	'configure-throttle-action-rollback' => 'Rulla tillbaka',
+	'configure-condition-operator-and' => 'Och',
+	'configure-condition-description-5' => 'Användarens Ip-adress är $1',
 );
 
 /** Swahili (Kiswahili)

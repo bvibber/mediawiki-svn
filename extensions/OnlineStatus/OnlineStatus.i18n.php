@@ -808,6 +808,24 @@ $messages['sk'] = array(
 	'tog-offlineOnLogout' => 'Zmeniť môj stav na offline počas odhlasovania',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'onlinestatus-desc' => 'Додаје подешавања да би се показивало да ли је корисник трентно присутан на викију или не.',
+	'onlinestatus-js-anon' => 'Грешка: морате бити улоговани да бисте користили ову погодност.',
+	'onlinestatus-js-changed' => 'Ваш статус је промењен на "$1"',
+	'onlinestatus-js-error' => 'Немогуће променити статус, вредност "$1" је неисправна',
+	'onlinestatus-subtitle-offline' => 'Овај корисник је тренутно одсутан',
+	'onlinestatus-subtitle-online' => 'Овај корисник је тренутно присутан',
+	'onlinestatus-tab' => 'Статус',
+	'onlinestatus-toggles-desc' => 'Ваш статус:',
+	'onlinestatus-toggles-explain' => 'Ово Вам омогућава да покажете другим корисницима да на вашој страни виде да ли сте тренутно присутни или не.',
+	'onlinestatus-toggles-show' => 'Показуј присутност на мојој корисничкој страни',
+	'onlinestatus-toggle-offline' => 'Одсутан',
+	'onlinestatus-toggle-online' => 'Присутан',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Najami

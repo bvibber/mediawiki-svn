@@ -1317,6 +1317,11 @@ Kuckt w.e.g. d'Astellunge vu ärem Popup-Blocker no.",
 $wgCustomToolbarMessages['myv'] = array(
 	'ct_bold_sample' => 'Эчкстэ текст',
 	'ct_italic_sample' => 'Комавтонь текст',
+	'ct_italic_tip_ins' => 'Совавтомс комавтонь текст',
+	'ct_italic_tip_wrap' => 'Те текстэнть комавтык',
+	'ct_italic_caption' => 'Комавтонь текст',
+	'ct_internal_caption' => 'Потмонь сюлмавома пе',
+	'ct_submit' => 'Адя!',
 );
 
 /** Dutch (Nederlands)

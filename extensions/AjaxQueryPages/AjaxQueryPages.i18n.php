@@ -408,6 +408,13 @@ $messages['sk'] = array(
 	'ajax-qp-desc' => 'Pridáva AJAX na stránky požiadaviek ako [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'ajax-qp-desc' => 'AJAX додаци за стране претрага попут [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

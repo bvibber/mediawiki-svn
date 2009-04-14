@@ -300,6 +300,13 @@ $messages['sq'] = array(
 	'randomimage-desc' => 'Mundëson hapje të rastësishme të mediave duke përdorur <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'randomimage-desc' => 'Приказује случајно изабрану слику помоћу тага <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

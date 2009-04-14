@@ -3107,6 +3107,7 @@ $messages['sr'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Millosh
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'hiderevision' => 'Трајно сакриј ревизије',
@@ -3115,7 +3116,7 @@ $messages['sr-ec'] = array(
 	'group-oversight-member' => 'оверсајт',
 	'grouppage-oversight' => '{{ns:project}}:Оверсајт',
 	'right-oversight' => 'Прегледај претходно сакривене верзије.',
-	'right-hiderevision' => 'Преглед и враћање измена сакривених од сисопа.',
+	'right-hiderevision' => 'Сакриј ревизије администратора',
 	'hiderevision-prompt' => 'Број ревизије за уклањање:',
 	'hiderevision-continue' => 'Настави',
 	'hiderevision-text' => "Ова опција треба да се користи '''само''' у следећим случајевима:

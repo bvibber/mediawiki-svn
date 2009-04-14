@@ -134,19 +134,28 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'errorhandler-desc' => 'Upravljač grešaka za MediaWiki',
 	'errorhandler-errors' => 'Greške:',
 	'errorhandler-error-fatal' => 'Fatalna greška',
 	'errorhandler-error-warning' => 'Upozorenje',
 	'errorhandler-error-parse' => 'Greška parsera',
 	'errorhandler-error-notice' => 'Obavještenje',
+	'errorhandler-error-deprecated' => 'Prevaziđeno',
 	'errorhandler-error-core-error' => 'Greška jezgre',
 	'errorhandler-error-core-warning' => 'Upozorenje jezgre',
+	'errorhandler-error-compile-error' => 'Greška kompajlera',
+	'errorhandler-error-compile-warning' => 'Upozorenje kompajlera',
 	'errorhandler-error-user-error' => 'Korisnička greška',
 	'errorhandler-error-user-warning' => 'Korisničko upozorenje',
 	'errorhandler-error-user-notice' => 'Korisničko upozorenje',
+	'errorhandler-error-user-deprecated' => 'Korisnik odbijen',
+	'errorhandler-error-strict' => 'Strogi standardi',
+	'errorhandler-error-recoverable' => 'Čitljiva fatalna greška',
 	'errorhandler-msg-text' => '$1 : $2 u datoteci $3 (linija $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> u <b>$3</b> (linija <b>$4</b>)',
+	'errorhandler-trace' => 'trag:',
 	'errorhandler-trace-line' => '$1 (linija $2): $3',
+	'errorhandler-trace-line-internal' => '[unutrašnja funkcija]: $1',
 );
 
 /** German (Deutsch)
@@ -865,6 +874,32 @@ $messages['sk'] = array(
 	'errorhandler-trace' => 'trasovanie:',
 	'errorhandler-trace-line' => '$1 (riadok $2): $3',
 	'errorhandler-trace-line-internal' => '[vnútorná funkcia]: $1',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'errorhandler-desc' => 'Прихватач грешака за МедијаВики',
+	'errorhandler-errors' => 'Грешке:',
+	'errorhandler-error-fatal' => 'Фатална грешка',
+	'errorhandler-error-warning' => 'Упозорење',
+	'errorhandler-error-parse' => 'Грешка парсера',
+	'errorhandler-error-notice' => 'Напомена',
+	'errorhandler-error-deprecated' => 'Застарело',
+	'errorhandler-error-core-error' => 'Затвори грешку',
+	'errorhandler-error-compile-error' => 'Грешка приликом компајлирања',
+	'errorhandler-error-compile-warning' => 'Упозорење приликом компајлирања',
+	'errorhandler-error-user-error' => 'Корисничка грешка',
+	'errorhandler-error-user-warning' => 'Корисничко упозорење',
+	'errorhandler-error-user-notice' => 'Корисничка напомена',
+	'errorhandler-error-user-deprecated' => 'Застарели налог',
+	'errorhandler-error-strict' => 'Строги стандарди',
+	'errorhandler-msg-text' => '$1 : $2 у $3 (линија $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> у <b>$3</b> (линија <b>$4</b>)',
+	'errorhandler-trace' => 'траг:',
+	'errorhandler-trace-line' => '$1 (линија $2): $3',
+	'errorhandler-trace-line-internal' => '[интерна функција]: $1',
 );
 
 /** Swedish (Svenska)

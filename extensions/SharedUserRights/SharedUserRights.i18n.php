@@ -85,6 +85,17 @@ $messages['bs'] = array(
 	'gblrights-rights-entry' => 'izmjenjeno članstvo globalne grupe za $1 sa $2 na $3',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'shareduserrights' => "Gestió compartida de drets d'usuari",
+	'gblrights-desc' => 'Una gestió fàcil dels [[Special:SharedUserRights|drets globals dels usuaris]]',
+	'gblrights-logpage' => 'Registre de drets globals',
+	'gblrights-pagetext' => 'Aquest és un registre dels canvis que es fan a la taula de drets globals de la família de wikis',
+	'gblrights-rights-entry' => "s'han canviat els grups globals de $1 des de $2 a $3",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

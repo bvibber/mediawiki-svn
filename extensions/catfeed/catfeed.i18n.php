@@ -274,6 +274,14 @@ $messages['sk'] = array(
 	'catfeed-desc' => 'Používa kúsky z kanálov posledných zmien. Vytvorí verziu v rámci stránky. Obzvlášť užitočné pre Wikinews.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'catfeed-desc' => 'Користи битове из протока скорашњих измена.
+Прави верзију унутар стране, посебно корисну за Викивести.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -1247,6 +1247,14 @@ $messages['stq'] = array(
 	'right-recordadmin' => 'Fiend un editier Apteekenge-Sieden',
 );
 
+/** Swedish (Svenska)
+ * @author Gabbe.g
+ */
+$messages['sv'] = array(
+	'recordadmin' => 'Rekordadministration',
+	'recordadmin-desc' => 'En [[Special:RecordAdmin|specialsida]] för att hitta och ändra titelinformation med hjälp av ett formulär.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

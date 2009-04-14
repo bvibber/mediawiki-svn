@@ -2522,6 +2522,7 @@ $messages['sq'] = array(
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Millosh
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'ogg-desc' => 'Руковаоц ogg Теора и Ворбис фајловима са јаваскрипт плејером',
@@ -2538,8 +2539,8 @@ $messages['sr-ec'] = array(
 	'ogg-stop' => 'Стоп',
 	'ogg-play-video' => 'Пусти видео',
 	'ogg-play-sound' => 'Пусти звук',
-	'ogg-player-videoElement' => '<video> елемент',
-	'ogg-player-oggPlugin' => 'плагин за ogg',
+	'ogg-player-videoElement' => 'Уграђена подршка у браузер',
+	'ogg-player-oggPlugin' => 'Плагин за браузер',
 	'ogg-player-thumbnail' => 'још увек само слика',
 	'ogg-player-soundthumb' => 'нема плејера',
 	'ogg-player-selected' => '(означено)',

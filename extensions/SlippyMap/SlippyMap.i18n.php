@@ -1047,6 +1047,32 @@ $messages['sk'] = array(
 	'slippymap_resetview' => 'Obnoviť zobrazenie',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'slippymap_latmissing' => 'Недостаје lat вредност (за латитуду).',
+	'slippymap_lonmissing' => 'Недостаје lon вредност (за лонгитуду)',
+	'slippymap_zoommissing' => 'Недостаје z вредост (за ниво увећања).',
+	'slippymap_longdepreciated' => "Молимо вас да користите 'lon' уместо 'long' (параметар је био преименован).",
+	'slippymap_widthnan' => "задата вредност '%1' ширине (w) није исправна целобројна вредност",
+	'slippymap_heightnan' => "задата вредност '%1' висине (h) није исправна целобројна вредност",
+	'slippymap_zoomnan' => "задата вредност '%1' увећања (z) није исправна целобројна вредност",
+	'slippymap_latnan' => "задата вредност '%1' латитуде (lat) није исправан број",
+	'slippymap_lonnan' => "задата вредност '%1' лонгитуде (lon) није исправан број",
+	'slippymap_widthbig' => 'Ширина (w) не може бити већа од 1000',
+	'slippymap_widthsmall' => 'ширина (w) не може бити мања од 100',
+	'slippymap_heightbig' => 'висина (h) не може бити већа од 1000',
+	'slippymap_heightsmall' => 'Висина (h) не може бити мања од 100',
+	'slippymap_latbig' => 'вредност латитуде (lat) не може бити већа од 90',
+	'slippymap_latsmall' => 'Вредност латитуде (lat) не може бити мања од -90',
+	'slippymap_lonbig' => 'вредност лонгитуде (lon) не може бити већа од 180',
+	'slippymap_lonsmall' => 'вредност лонгитуде (lon) не може бити мања од -180',
+	'slippymap_zoomsmall' => 'вредност увећања (z) не може бити мања од нуле',
+	'slippymap_zoombig' => 'вредност увећања (z) не може бити већа од 18.',
+	'slippymap_osmtext' => 'Погледај ову мапу на OpenStreetMap.org',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.

@@ -665,6 +665,7 @@ $messages['io'] = array(
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn
+ * @author Stefano-c
  */
 $messages['it'] = array(
 	'multipleupload' => 'Carica file multimediali',
@@ -683,6 +684,8 @@ Puoi inserire un '''Nome del file di destinazione''' e fornire dei '''Dettagli''
 File inappropriati verranno cancellati immediatamente, leggi le [[{{MediaWiki:Multipleupload-page}}|regole per la cancellazione dei file]].",
 	'multiupload-fileuploaded' => 'File caricato.',
 	'multiupload-toolbox' => 'Carica file multipli',
+	'multiupload-no-files' => 'Per favore seleziona almeno un file da caricare',
+	'multiupload-blank' => 'Nessun file selezionato',
 );
 
 /** Japanese (日本語)
@@ -1208,6 +1211,21 @@ $messages['sq'] = array(
 	'multipleupload-saveallfiles' => 'Ruaj të gjitha skedat',
 	'multiupload-fileuploaded' => 'Skedat e ngarkuara.',
 	'multiupload-toolbox' => 'Ngarko skeda të shumta',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'multipleupload' => 'Пошаљи фајлове',
+	'multipleupload-desc' => 'Омогући корисницима да [[Special:MultipleUpload|шаљу више фајлова одједном]]',
+	'multipleupload-ignoreallwarnings' => "Игнорипи '''сва упозорења''' и сними фајлове без обзира на њих.",
+	'multipleupload-saveallfiles' => 'Сними све фајлове',
+	'multipleupload-page' => '{{ns:project}}:Политика брисања фајлова',
+	'multiupload-fileuploaded' => 'Фајл послат.',
+	'multiupload-toolbox' => 'Пошаљи више фајлова',
+	'multiupload-no-files' => 'Молимо Вас да назначите макар један фајл за слање',
+	'multiupload-blank' => 'Ни један фајл није био назначен за слање',
 );
 
 /** Seeltersk (Seeltersk)

@@ -717,6 +717,9 @@ $messages['mk'] = array(
  */
 $messages['myv'] = array(
 	'gep-categories' => 'Категорият',
+	'gep-addcategorybutton' => 'Поладомс',
+	'gep-sections' => 'Йавкст',
+	'gep-addsectionbutton' => 'Поладомс',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -1022,6 +1025,7 @@ Mäd do Reewen an ju Siede konnen wäkke bietouföiged wäide.',
 );
 
 /** Swedish (Svenska)
+ * @author Gabbe.g
  * @author Najami
  */
 $messages['sv'] = array(
@@ -1031,6 +1035,8 @@ $messages['sv'] = array(
 	'gep-sections' => 'Avsnitt',
 	'gep-addsection' => 'Lägg till ett avsnitt',
 	'gep-addsectionbutton' => 'Lägg till',
+	'gep-classicmode' => 'Klassiskt läge',
+	'gep-nocategories' => 'Välj minst en kategori innan du sparar.',
 );
 
 /** Telugu (తెలుగు)

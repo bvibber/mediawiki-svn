@@ -582,6 +582,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'contributionreporting-desc' => 'Live αναφορά περί του έρανου του Wikimedia',
 	'contributiontotal' => 'Συνολική συνεισφορά',
 	'contributionhistory' => 'Ιστορικό συνεισφορών',
 	'contrib-hist-name' => 'Όνομα',
@@ -591,6 +592,7 @@ $messages['el'] = array(
 	'contrib-hist-previous' => 'Νεότερες δωρεές',
 	'contrib-hist-anonymous' => 'Ανώνυμος',
 	'contributionstatistics' => 'Στατιστικά συνεισφορών',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Σύνολο για σήμερα|Ημερήσια σύνολα για τις προηγούμενες $1 μέρες}}',
 	'contribstats-day' => 'Ημέρα',
 	'contribstats-month' => 'Μήνας',
 	'contribstats-currency' => 'Νόμισμα',
@@ -616,6 +618,7 @@ $messages['el'] = array(
 	'fundraiserstats-tab-contributions' => 'Αριθμός συνεισφορών',
 	'fundraiserstats-tab-averages' => 'Μέσοι όροι (USD)',
 	'fundraiserstats-tab-maximums' => 'Μέγιστα (USD)',
+	'specialpages-group-contribution' => 'Συνεισφορές/Έρανος',
 );
 
 /** Esperanto (Esperanto)
@@ -1756,6 +1759,13 @@ $messages['ms'] = array(
 	'specialpages-group-contribution' => 'Sumbangan/Tabung',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'fundraiserstats-date' => 'Ковчизэ',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -2374,13 +2384,26 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Јованвб
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'contrib-hist-name' => 'Име',
 	'contrib-hist-date' => 'Време и датум',
 	'contrib-hist-next' => 'Претходне донације',
+	'contribstats-day' => 'Дан',
+	'contribstats-month' => 'Месец',
+	'contribstats-currency' => 'Валута',
+	'contribstats-amount' => 'Сума',
+	'contribstats-contributions' => 'Прилози',
+	'contribstats-total' => 'Укупно',
+	'contribstats-avg' => 'Просечно',
 	'contribstats-max' => 'Максимум (USD)',
+	'contribstats-percentage-ytd' => 'Процентуално',
 	'contribstats-total-ytd' => 'Укупно (YTD)',
+	'contribstats-value-exactly' => 'Тачно $1',
+	'contribstats-value-under' => 'Испод $1',
+	'contribstats-value-from' => 'Од $1 - $2',
+	'contribstats-value-over' => 'Преко $1',
 	'fundraiserstats-date' => 'Датум',
 	'fundraiserstats-total' => 'Укупно (USD)',
 	'fundraiserstats-avg' => 'Просечно (USD)',

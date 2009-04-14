@@ -155,8 +155,10 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
+	'contributiontracking-desc' => 'Παρακολούθηση συνεισφορών για τον έρανο του Wikimedia',
 	'contributiontracking' => 'Παακολούθηση συνεισφορών',
 	'contrib-tracking-error' => 'Σφάλμα',
+	'contrib-tracking-error-text' => 'Υποβολή άκυρου τύπου',
 	'contrib-tracking-submitting' => 'Υποβολή στον επεξεργαστή πληρωμών…',
 	'contrib-tracking-continue' => 'Εάν δεν προωθηθήκατε αυτόματα, πατήστε το κουμπί για να ολοκληρώσετε τη δωρεάν σας μέσω PayPal.',
 	'contrib-tracking-button' => 'Συνέχεια',

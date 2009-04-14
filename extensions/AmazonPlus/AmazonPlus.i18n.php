@@ -584,11 +584,24 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Wrightbus
+ * @author Yknok29
  */
 $messages['ko'] = array(
+	'amazonplus-desc' => '아마존 정보를 전시하기 위한 고도 주문 확장',
+	'amazonplus-nores' => '오류: 아무런 결과를 찾을 수 없습니다!',
+	'amazonplus-noidres' => '오류: 상품 ID를 찾을 수 없습니다!',
+	'amazonplus-fgcerr' => '오류: 아마존으로부터 온 자료가 복구될 수 없습니다!',
+	'amazonplus-slserr' => '오류: 아마존으로부터 온 자료를 인식할 수 없습니다!',
+	'amazonplus-used' => '중고',
 	'amazonplus-german' => '독일어',
 	'amazonplus-french' => '프랑스어',
 	'amazonplus-japanese' => '일본어',
+	'amazonplus-amazon' => '아마존 가격',
+	'amazonplus-new' => '신규',
+	'amazonplus-none' => '이 책의 복사본은 팔지 않습니다.',
+	'amazonplus-cp-none' => '없음',
+	'amazonplus-more' => '좀 더 있음',
+	'amazonplus-less' => '부족함',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -951,6 +964,27 @@ $messages['su'] = array(
 	'amazonplus-japanese' => 'Basa Jepang',
 	'amazonplus-amazon' => 'harga amazon',
 	'amazonplus-new' => 'anyar',
+);
+
+/** Swedish (Svenska)
+ * @author Gabbe.g
+ */
+$messages['sv'] = array(
+	'amazonplus-desc' => 'En utvidgning men stora anpassningsmöjligheter för att visa Amazon-information',
+	'amazonplus-nores' => 'Fel: Inga resultat hittades!',
+	'amazonplus-noidres' => 'Fel: Kunde inte hitta ett produkt-ID!',
+	'amazonplus-fgcerr' => 'Fel: Kunde inte hämta data från Amazon!',
+	'amazonplus-slserr' => 'Fel: Kunde inte analysera data från Amazon!',
+	'amazonplus-used' => 'använd',
+	'amazonplus-german' => 'Tysk',
+	'amazonplus-french' => 'Fransk',
+	'amazonplus-japanese' => 'Japansk',
+	'amazonplus-amazon' => 'amazonpris',
+	'amazonplus-new' => 'ny',
+	'amazonplus-none' => 'Inga kopior av denna produkt är till försäljning.',
+	'amazonplus-cp-none' => 'Ingen',
+	'amazonplus-more' => 'mer',
+	'amazonplus-less' => 'mindre',
 );
 
 /** Telugu (తెలుగు)

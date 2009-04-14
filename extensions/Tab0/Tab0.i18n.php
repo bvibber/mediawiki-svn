@@ -286,6 +286,13 @@ $messages['sk'] = array(
 	'tab0-desc' => 'Pridá záložku „0” vedúcu na úpravu prvej sekcie stránky',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'tab0-desc' => 'Додаје језичак "0", повезујући ка форми за измену прве секције странице',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

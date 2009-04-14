@@ -389,6 +389,13 @@ $messages['lb'] = array(
 	'security-type-namespace' => 'Nummraum',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'security-type-namespace' => 'лемпотмо',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

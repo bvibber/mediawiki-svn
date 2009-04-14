@@ -802,17 +802,23 @@ $messages['id'] = array(
 /** Italian (Italiano)
  * @author Aushulz
  * @author Cruccone
+ * @author Stefano-c
  */
 $messages['it'] = array(
 	'vote' => 'Vota',
+	'vote-desc' => 'Fornisce una funzionalità per semplici sondaggi',
 	'vote-current' => "Il tuo voto corrente è per '''$1'''.",
+	'vote-legend' => 'Imposta o modifica il voto',
 	'vote-caption' => 'La tua selezione:',
 	'vote-submit' => 'Vota',
 	'vote-registered' => 'Il tuo voto è stato registrato.',
 	'vote-view-results' => 'Vedi risultati',
 	'vote-results' => 'Risultati della votazione',
 	'vote-results-choice' => 'Scelta',
+	'vote-results-count' => 'Conteggio',
 	'vote-results-none' => 'Non è stato espresso alcun voto.',
+	'vote-login' => 'È necessario $1 per votare.',
+	'vote-login-link' => 'Accedi',
 	'vote-invalid-choice' => 'Devi selezionare una delle possibili opzioni.',
 );
 
@@ -1368,9 +1374,13 @@ $messages['sq'] = array(
 $messages['sr-ec'] = array(
 	'vote' => 'Гласање',
 	'vote-desc' => 'Пружа могућности за постављање једноставних гласања',
+	'vote-header' => "Овде можете да гласате за '''ваше омиљено јело'''!",
 	'vote-current' => "Ваш тренутни глас је '''$1'''.",
 	'vote-legend' => 'Дајте или измените глас',
 	'vote-caption' => 'Ваш избор:',
+	'vote-choices' => 'vsalata|Воћна салата
+pica|Пица
+pecenje|Печење',
 	'vote-submit' => 'Гласај',
 	'vote-registered' => 'Ваш глас је био урачунат.',
 	'vote-view-results' => 'Приказ резултата',

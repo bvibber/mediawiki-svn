@@ -442,6 +442,16 @@ $messages['sk'] = array(
 	'communityvoice-ratings-error-no-title' => 'V značke hodnotenia chýba atribút názvu.',
 );
 
+/** Swedish (Svenska)
+ * @author Gabbe.g
+ */
+$messages['sv'] = array(
+	'communityvoice-ratings' => 'värderingar',
+	'communityvoice-ratings-scale-status-sending' => 'Skickar...',
+	'communityvoice-ratings-scale-status-error' => 'Fel i samband med sändning.',
+	'communityvoice-ratings-scale-status-thanks' => 'Tack för rösten!',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

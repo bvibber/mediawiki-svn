@@ -545,6 +545,13 @@ $messages['mr'] = array(
 	'randomincategory-submit' => 'चला',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'randomincategory-submit' => 'Адя',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

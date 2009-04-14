@@ -241,17 +241,33 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'todo' => 'Spisak za uraditi',
 	'todo-desc' => 'Probno proširenje ličnog [[Special:Todo|spiska za uraditi]]',
+	'todo-tab' => 'zadaci',
 	'todo-new-queue' => 'novi',
 	'todo-mail-subject' => 'Završena stavka na spisku za uraditi korisnika $1',
+	'todo-mail-body' => 'Tražili ste e-mail potvrdu o završetku svake stavke koju ste poslali online na spisku zadataka za korisnika $1.
+
+Stavka: $2
+Poslano: $3
+
+Ova stavka je označena završenom, sa slijedećim komentarom:
+$4',
 	'todo-invalid-item' => 'Nedostajuća ili nevaljana stavka',
+	'todo-update-else-item' => 'Pokušavate ažurirati stavke nekog drugog',
 	'todo-unrecognize-type' => 'Neprepoznati tip',
+	'todo-user-invalide' => 'Zadatku pripojen nevaljan, nepostojeći ili korisnik kojem se ne može dodijeliti zadatak.',
 	'todo-item-list' => 'Vaše stavke',
 	'todo-no-item' => 'Nema stavki za uraditi.',
+	'todo-invalid-owner' => 'Nevaljan vlasnik ove stavke',
+	'todo-add-queue' => 'Dodaj red…',
+	'todo-move-queue' => 'Premjesti u red…',
 	'todo-list-for' => 'Spisak za uraditi za $1',
 	'todo-list-change' => 'Izmjena',
 	'todo-list-cancel' => 'Odustani',
 	'todo-new-item' => 'Nova stavka',
+	'todo-issue-summary' => 'Sažetak zadatka:',
 	'todo-form-details' => 'Detalji:',
+	'todo-form-email' => 'Da bi ste dobili obavještenje putem e-maila kada je stavka zatvorena, unesite Vašu adresu ovdje:',
+	'todo-form-submit' => 'Pošalji upit',
 );
 
 /** Czech (Česky)

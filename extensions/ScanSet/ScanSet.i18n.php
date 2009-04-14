@@ -441,9 +441,11 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'scanset_next' => 'Ἑπομέναι &gt;',
+	'scanset_prev' => '&lt; Προηγουμένη',
 );
 
 /** Swiss German (Alemannisch)

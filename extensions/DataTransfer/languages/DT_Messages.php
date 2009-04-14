@@ -976,6 +976,13 @@ $messages['os'] = array(
 	'dt_xml_title' => 'Сæргонд',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'dt_xml_page' => 'Blatt',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe

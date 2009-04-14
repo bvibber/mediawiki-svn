@@ -591,6 +591,26 @@ $messages['sk'] = array(
 	'right-emergencydesysop' => 'Dokáže odstrániť správcovské práva iného používateľa zároveň so svojimi',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'emergencydesysop' => 'Скидање администраторских права за случај нужде',
+	'emergencydesysop-desc' => 'Омогућује администратору да скине сопствена права да би их скинуо и другом администратору',
+	'emergencydesysop-title' => 'Уклањање администраторских права са сопственог налога и налога другог администратора',
+	'emergencydesysop-otheradmin' => 'Други администратор, чија права треба уклонити',
+	'emergencydesysop-reason' => 'Разлог за уклањање',
+	'emergencydesysop-submit' => 'Потврди',
+	'emergencydesysop-incomplete' => 'Потребно је попунити сва поља форме, молим Вас да покушате поново.',
+	'emergencydesysop-notasysop' => 'Циљани корисник није у групи администратора.',
+	'emergencydesysop-nogroups' => 'Непопуњено',
+	'emergencydesysop-done' => 'Акција је завршена. Ваша и администраторска права [[$1]] су уклоњена.',
+	'emergencydesysop-invalidtarget' => 'Циљани корисник не постоји.',
+	'emergencydesysop-blocked' => 'Не можете да приступите овој страни док сте под блоком.',
+	'emergencydesysop-noright' => 'Немате права приступа, потребна да бисте приступили овој страни',
+	'right-emergencydesysop' => 'Омогућава администратору да одузме администраторска права себи и другом администратору',
+);
+
 /** Swedish (Svenska)
  * @author Micke
  */

@@ -481,6 +481,18 @@ $messages['sk'] = array(
 	'interwikilist-prefix' => 'Interwiki predpona:',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'interwikilist' => 'Списак међувикија',
+	'interwikilist-desc' => 'Додаје [[Special:Interwikilist|специјалну страну]] за преглед доступног међувикија',
+	'interwikilist-linkname' => 'Међувики веза',
+	'interwikilist-target' => 'Циљани URL',
+	'interwikilist-filter' => 'Списак филтера',
+	'interwikilist-prefix' => 'Међувики префикс:',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

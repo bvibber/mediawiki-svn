@@ -289,6 +289,13 @@ $messages['sq'] = array(
 	'substall-desc' => 'Krijon kodin <nowiki><substall></nowiki> që zgjeron të gjitha stampat në wikisintaksë',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'substall-desc' => 'Додаје <nowiki><substall></nowiki> таг, који развија све шаблоне у викисинтаксу',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */

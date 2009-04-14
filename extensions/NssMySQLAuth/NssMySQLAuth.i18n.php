@@ -696,6 +696,17 @@ $messages['sk'] = array(
 	'nss-db-error' => 'Chyba pri čítaní z overovacej databázy',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'accountmanager' => 'Менаџер за налог',
+	'am-username' => 'корисичко име',
+	'am-email' => 'имејл',
+	'am-active' => 'активан',
+	'am-updated' => 'Баше измене су успешно снимљене',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

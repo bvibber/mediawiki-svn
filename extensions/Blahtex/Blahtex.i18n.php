@@ -425,12 +425,18 @@ $messages['bs'] = array(
 	'math_CannotRunLatex' => 'Ne može se pokrenuti latex',
 	'math_CannotWritePngDirectory' => 'Ne može se pisati u izlazni PNG direktorijum',
 	'math_CannotWriteTexFile' => 'Ne može se pisati u tex datoteku',
+	'math_DoubleSuperscript' => 'Pronađena su dva eksponenta na istoj bazi.
+Samo jedan je dopušten.',
 	'math_IllegalCharacter' => 'Nevaljan znak u unosu',
 	'math_IllegalCommandInMathMode' => 'Komanda "$1" je u nevaljanom math načinu',
+	'math_IllegalCommandInMathModeWithHint' => 'Komanda "$1" je nevaljana u math načinu
+Možda ste htjeli da koristite "$2"?',
 	'math_IllegalCommandInTextMode' => 'Komanda "$1" nije valjana u tekstualnom modu',
 	'math_IllegalFinalBackslash' => 'Nevaljana kosa crta "\\" na kraju unosa',
 	'math_InvalidColour' => 'Boja "$1" nije valjana',
+	'math_InvalidUtf8Input' => 'Uneseni znak nije validni UTF-8',
 	'math_LatexFontNotSpecified' => 'Nijedan LaTeX font nije naveden za "$1"',
+	'math_LatexPackageUnavailable' => 'Ne mogu iscrtati PNG jer je LaTeX paket "$1" nedostupan',
 	'math_MismatchedBeginAndEnd' => 'Komande "$1" i "$2" se ne podudaraju',
 	'math_MissingOpenBraceAfter' => 'Nedostaje otvorena zagrada "{" poslije "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Nedostaje otvorena zagrada "{" na kraju unosa',
@@ -2483,9 +2489,61 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'math_noblahtex' => 'Не може да се изврши blatex, што је на $1',
+	'math-desc' => 'MathML излаз за &lt;math&gt; тагове',
+	'math_AmbiguousInfix' => 'Вишезначна употреба "$1".
+Покушајте да користите додатне велике заграде "{ ... }" да бисте га додатно одредили.',
+	'math_CannotChangeDirectory' => 'Не може да се промени радни директоријум',
+	'math_CannotCreateTexFile' => 'Не може да се направи tex фајл',
+	'math_CannotRunDvipng' => 'Не може да се покрене dvipng',
+	'math_CannotRunLatex' => 'Не може да се покрене latex',
+	'math_CannotWritePngDirectory' => 'Излаз не може да се за пише у PNG директоријум',
+	'math_CannotWriteTexFile' => 'Не може да се пише у tex фајл',
+	'math_CasesRowTooBig' => 'Само два уноса могу да буду у сваком реду блока са "случајевима"',
+	'math_IllegalCharacter' => 'Недозвољени знак у уносу',
+	'math_IllegalCommandInMathMode' => 'Команда "$1" није допуштена у math-моду',
+	'math_IllegalCommandInMathModeWithHint' => 'Команда "$1" није допуштена у math-моду
+Вероватно сте желели да употребите "$2" уместо ње?',
+	'math_IllegalCommandInTextMode' => 'Команда "$1" није дозвољена у текстуалном моду',
+	'math_IllegalCommandInTextModeWithHint' => 'Команда "$1" није дозвољена у текстуалном моду
+Вероватно сте желели да употребите "$2" уместо ње?',
+	'math_IllegalDelimiter' => 'Део "$1" не почиње како треба',
+	'math_IllegalFinalBackslash' => 'Недозвољени бекслеш "\\" на крају уноса',
+	'math_IllegalNestedFontEncodings' => 'Команде за кодирање фонта не могу бити угњеждене',
+	'math_IllegalRedefinition' => 'Команда "$1" је већ дефинисана; не можете је поново дефинисати',
+	'math_InvalidColour' => 'Боја "$1" је неисправна',
+	'math_InvalidUtf8Input' => 'Улазни стринг није валидни UTF-8',
+	'math_LatexFontNotSpecified' => 'Није био наведен LaTeX фонт за "$1"',
+	'math_LatexPackageUnavailable' => 'Није могуће израдити PNG зато што је LaTeX пакет "$1" недоступан',
+	'math_MismatchedBeginAndEnd' => 'Команде "$1" и "$2" се не поклапају',
+	'math_MisplacedLimits' => 'Команда "$1" може да се употреби само након математичког оператора.
+Размислите о коришћењу "\\mathop".',
+	'math_MissingOpenBraceAfter' => 'Медостаје отворена велика загрда "{" након "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Недостаје отворена загрда "{" на крају уноса',
+	'math_MissingOpenBraceBefore' => 'Недостаје отворена заграда "{" пре "$1"',
+	'math_MissingOrIllegalParameterIndex' => 'Индекс параметра недостаје или је неисправан у дефиницији "$1"',
+	'math_NotEnoughArguments' => 'Недовољно аргумената је употребљено за "$1"',
+	'math_PngIncompatibleCharacter' => 'Није било могуће исправно исцртати PNG слиу која садржи карактер $1',
+	'math_SubstackRowTooBig' => 'У сваком реду блока "подстека" се може наћи само један унос',
+	'math_TooManyMathmlNodes' => 'MathML дрво садржи превише чворова',
 	'math_TooManyTokens' => 'Унос је превише дугачак',
+	'math_UnavailableSymbolFontCombination' => 'Симбол "$1" је недоступан у фонту "$2"',
+	'math_UnexpectedNextCell' => 'Команда "&" може да се нађе само унутар "\\begin ... \\end" блока',
+	'math_UnexpectedNextRow' => 'Команда "\\\\" може да се нађе само унутар "\\begin ... \\end" блока',
+	'math_UnmatchedBegin' => 'Постоји "\\bеgin" без упареног "\\end"',
+	'math_UnmatchedCloseBrace' => 'Постоји затварајућа заграда "}" без упарене отворене заграде "{"',
+	'math_UnmatchedEnd' => 'Постоји "\\end" без упареног "\\begin"',
+	'math_UnmatchedLeft' => 'Постоји "\\left" без упареног "\\right"',
+	'math_UnmatchedOpenBrace' => 'Постоји отворена велика заграда "{" без упарене затварајуће заграде "}"',
+	'math_UnmatchedOpenBracket' => 'Постоји отворена средња заграда "[" без упарене затварајуће заграде "]"',
+	'math_UnmatchedRight' => 'Постоји "\\right" без упареног "\\left"',
+	'math_UnrecognisedCommand' => 'Непозната команда "$1"',
+	'math_WrongFontEncoding' => 'Симбол "$1" би могао да се не прикаже при кодирању фонта "$2"',
+	'math_WrongFontEncodingWithHint' => 'Симбол "$1" би могао да се не прикаже при кодирању фонта "$2".
+Покушајте да употребите команду "$3{...}".',
 );
 
 /** Seeltersk (Seeltersk)

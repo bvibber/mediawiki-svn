@@ -936,15 +936,19 @@ $messages['sk'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Chybný vstup!',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица) */
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
 $messages['sr-ec'] = array(
 	'chemicalsources' => 'Хемијски извори',
+	'chemicalsource-desc' => 'Додаје таг <nowiki><chemform></nowiki>, за хемијске формуле',
 	'chemFunctions_ListPage' => 'Хемијски извори',
 	'chemFunctions_DataList' => 'Овде се налази списак веза ка сајтовима који прожају информације о хемојском једињењу коју тражите.
 
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Једињење $MIXCASNameFormula на NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS на Оксфордском универзитету (УК) (немогућа претрага)</a><br />',
 	'chemFunctions_CAS' => 'CAS број',
+	'chemFunctions_Formula' => 'Формула',
 	'chemFunctions_ChemFormInputError' => 'ХемФормула: грешка!',
 );
 

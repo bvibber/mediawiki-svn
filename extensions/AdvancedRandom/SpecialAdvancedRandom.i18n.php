@@ -284,9 +284,11 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Yknok29
  */
 $messages['ko'] = array(
 	'advancedrandom' => '향상된 임의 문서',
+	'advancedrandom-desc' => '어떤 이름 공간에서 오든지 페이지를 얻으면, 그 페이지로 토론이나 종속된 페이지를 연결시켜 주세요. 알찬글로 가는 것이면 [[Special:AdvancedRandom/Template:Featured/Talk]]를 사용하시고, GFDL 파일로 가는 것이면 [[Special:AdvancedRandom/Template:GFDL/File]]를 사용해 주십시오.',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -442,6 +444,14 @@ $messages['scn'] = array(
 $messages['sk'] = array(
 	'advancedrandom' => 'Rozšírený náhodný výber',
 	'advancedrandom-desc' => 'Získa náhodný odkaz na stránku zo stránky alebo diskusnej stránky. Je možné ho použiť na získanie náhodného odporúčaného článku v tvare [[Special:AdvancedRandom/Šablóna:Odporúčané/Diskusia]] alebo na získanie náhodného GFDL súboru v tvare [[Special:AdvancedRandom/Šablóna:GFDL/Obrázok]]',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'advancedrandom' => 'Напредно бирање случајног чланка',
+	'advancedrandom-desc' => 'Изабире случајну страну из било ког именског простора, из садржаја или разговора о њему, на коју линкује. Може да се користи као [[Special:AdvancedRandom/Template:Featured/Talk]] да би се добила страна која укључује наведени шаблон, или слично [[Special:AdvancedRandom/Template:GFDL/File]], итд.',
 );
 
 /** Seeltersk (Seeltersk)
