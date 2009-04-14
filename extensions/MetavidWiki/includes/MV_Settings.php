@@ -26,7 +26,8 @@ $mvGetParentMeta = true;
 
 //script loader settings: 
 $mvgJSDebug=false;
-$wgEnableScriptLoader = true; //if the script loader is on at all
+$wgEnableScriptLoader = false; //if the script loader is on
+
 $wgEnableScriptLoaderJsFile = true; //if you can use the script loader with js files (rather than only js classes) 
 $wgEnableScriptMinify = true;
 
