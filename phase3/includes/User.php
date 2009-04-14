@@ -2517,7 +2517,7 @@ class User {
 		// Clear instance cache other than user table data, which is already accurate
 		$this->clearInstanceCache();
 		
-		$this->saveOptions()
+		$this->saveOptions();
 	}
 
 	/**
