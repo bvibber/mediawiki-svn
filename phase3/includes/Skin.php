@@ -384,6 +384,12 @@ class Skin extends Linker {
 			'wgDigitTransformTable' => $compactDigitTransTable,
 		);
 		
+		//if on upload page output the extension list:
+		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ){ 
+			global $wgFileExtensions;
+			$vars['wgFileExtensions'] = $wgFileExtensions;
+		}
+		
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false )){
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();
 			$vars['wgDBname'] = $wgDBname;

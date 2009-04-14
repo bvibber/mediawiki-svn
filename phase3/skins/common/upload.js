@@ -119,6 +119,13 @@ function fillDestFilename(id) {
 	if (!document.getElementById) {
 		return;
 	}
+	//remove any previously flagged errors
+	var e = document.getElementById('mw-upload-permitted');
+	if(e) e. className = '';
+	
+	var e = document.getElementById('mw-upload-prohibited');
+	if(e) e.className = '';
+	
 	var path = document.getElementById(id).value;
 	// Find trailing part
 	var slash = path.lastIndexOf('/');
@@ -131,7 +138,34 @@ function fillDestFilename(id) {
 	} else {
 		fname = path.substring(backslash+1, 10000);
 	}
-
+	//check for the wgFileExtensions and clear if not a valid fname extension
+	if( wgFileExtensions ){		
+		var found = false;		
+		if( fname.lastIndexOf('.')!=-1 ){		
+			var ext = fname.substr( fname.lastIndexOf('.')+1 );			
+			for(var i=0; i < wgFileExtensions.length; i++){						
+				if( wgFileExtensions[i] == ext )
+					found = true;
+			}
+		}
+		if(!found){
+			//clear the upload set mw-upload-permitted to error
+			document.getElementById(id).value = '';
+			var e = document.getElementById('mw-upload-permitted');
+			if(e) e. className = 'error';
+			
+			var e = document.getElementById('mw-upload-prohibited');
+			if(e) e.className = 'error';
+			
+			//clear the wpDestFile as well: 
+			var e = document.getElementById('wpDestFile')
+			if(e) e.value = '';
+			
+			//return false
+			return false;
+		}		
+	}	
+		
 	// Capitalise first letter and replace spaces by underscores
 	fname = fname.charAt(0).toUpperCase().concat(fname.substring(1,10000)).replace(/ /g, '_');
 
