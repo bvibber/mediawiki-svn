@@ -370,6 +370,7 @@ class Preferences {
 					'raw' => true,
 					'label' => '&nbsp;',
 					'default' => $button,
+					'section' => 'datetime',
 				);
 		
 		## Editing #####################################
@@ -767,10 +768,6 @@ class Preferences {
 		self::$defaultPreferences = $defaultPreferences;
 		
 		return $defaultPreferences;
-	}
-	
-	static function savePreferencesFromForm( $data, $user ) {
-		
 	}
 	
 	static function generateSkinOptions() {
