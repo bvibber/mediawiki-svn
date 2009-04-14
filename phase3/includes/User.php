@@ -3391,6 +3391,8 @@ class User {
 		$this->load();
 		if ($this->mOptionsLoaded || !$this->getId() )
 			return;
+
+		$this->mOptions = self::getDefaultOptions();
 			
 		// Load from database
 		$dbr = wfGetDB( DB_SLAVE );
@@ -3401,14 +3403,13 @@ class User {
 								__METHOD__
 							);
 		
-		global $wgDefaultUserOptions;
-		$this->mOptions = self::getDefaultOptions();
-		
 		while( $row = $dbr->fetchObject( $res ) ) {
 			$this->mOptions[$row->up_property] = unserialize( $row->up_value );
 		}
 		
 		$this->mOptionsLoaded = true;
+		
+		wfRunHooks( 'UserLoadOptions', array( $this, &$this->mOptions ) );
 	}
 	
 	protected function saveOptions() {
@@ -3417,7 +3418,14 @@ class User {
 		
 		$insert_rows = array();
 		
-		foreach( $this->mOptions as $key => $value ) {
+		$saveOptions = $this->mOptions;
+		
+		// Allow hooks to abort, for instance to save to a global profile.
+		// Reset options to default state before saving.
+		if (!wfRunHooks( 'UserSaveOptions', array($this, &$saveOptions) ) )
+			return;
+		
+		foreach( $saveOptions as $key => $value ) {
 			$ser = serialize($value);
 			
 			if ( is_null(self::getDefaultOption($key)) ||

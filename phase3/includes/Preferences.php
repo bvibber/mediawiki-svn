@@ -741,6 +741,8 @@ class Preferences {
 					'label-message' => 'tog-uselivepreview',
 				);
 				
+		wfRunHooks( 'GetPreferences', array( $user, &$defaultPreferences ) );
+				
 		## Prod in defaults from the user
 		global $wgDefaultUserOptions;
 		foreach( $defaultPreferences as $name => &$info ) {
@@ -761,8 +763,6 @@ class Preferences {
 				$info['default'] = $globalDefault;
 			}
 		}
-				
-		wfRunHooks( 'GetPreferences', array( $user, &$defaultPreferences ) );
 		
 		self::$defaultPreferences = $defaultPreferences;
 		
@@ -997,9 +997,10 @@ class Preferences {
 		global $wgUser, $wgEmailAuthentication, $wgEnableEmail;
 		
 		// Filter input
-		foreach( $formData as $name => &$value ) {
+		foreach( array_keys($formData) as $name ) {
 			if ( isset(self::$saveFilters[$name]) ) {
-				$value = call_user_func( self::$saveFilters[$name], $value, $formData );
+				$formData[$name] =
+					call_user_func( self::$saveFilters[$name], $formData[$name], $formData );
 			}
 		}
 		
@@ -1046,8 +1047,7 @@ class Preferences {
 		
 		foreach( $saveBlacklist as $b )
 			unset( $formData[$b] );
-		
-		// Reset options to default state before saving.
+			
 		//  Keeps old preferences from interfering due to back-compat
 		//  code, etc.
 		$wgUser->resetOptions();

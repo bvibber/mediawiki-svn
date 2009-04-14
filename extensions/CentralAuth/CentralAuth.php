@@ -172,6 +172,8 @@ $wgHooks['UserSetCookies'][] = 'CentralAuthHooks::onUserSetCookies';
 $wgHooks['UserLoadDefaults'][] = 'CentralAuthHooks::onUserLoadDefaults';
 $wgHooks['getUserPermissionsErrorsExpensive'][] = 'CentralAuthHooks::onGetUserPermissionsErrorsExpensive';
 $wgHooks['MakeGlobalVariablesScript'][] = 'CentralAuthHooks::onMakeGlobalVariablesScript';
+$wgHooks['UserSaveOptions'][] = 'CentralAuthHooks::onSavePreferences';
+$wgHooks['UserLoadOptions'][] = 'CentralAuthHooks::onUserLoadOptions';
 
 // For interaction with the Special:Renameuser extension
 $wgHooks['RenameUserWarning'][] = 'CentralAuthHooks::onRenameUserWarning';
@@ -219,6 +221,8 @@ $wgLogActions['gblrights/groupprms2']  = 'centralauth-rightslog-entry-groupperms
 $wgLogActions['gblrights/groupprms3']  = 'centralauth-rightslog-entry-groupperms3';
 foreach( array( 'newset', 'setrename', 'setnewtype', 'setchange' ) as $type )
 	$wgLogActionsHandlers["gblrights/{$type}"] = 'efHandleWikiSetLogEntry';
+	
+$wgDefaultUserOptions['globalpreferences'] = true;
 
 function efHandleWikiSetLogEntry( $type, $action, $title, $skin, $params, $filterWikilinks = false ) {
 	wfLoadExtensionMessages('SpecialCentralAuth');
