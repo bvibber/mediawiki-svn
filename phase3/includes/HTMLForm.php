@@ -2,6 +2,8 @@
 
 class HTMLForm {
 
+	static $jsAdded = false;
+
 	/* The descriptor is an array of arrays.
 		i.e. array(
 					'fieldname' => array( 'section' => 'section/subsection',
@@ -61,6 +63,14 @@ class HTMLForm {
 		
 		$this->mShowReset = true;
 	}
+	
+	static function addJS() {
+		if (self::$jsAdded) return;
+		
+		global $wgOut, $wgStylePath;
+		
+		$wgOut->addScriptFile( "$wgStylePath/common/htmlform.js" );
+	}
 
 	static function loadInputFromParameters( $descriptor ) {
 		if ( isset( $descriptor['class'] ) ) {
@@ -80,6 +90,8 @@ class HTMLForm {
 
 	function show() {
 		$html = '';
+		
+		self::addJS();
 		
 		// Load data from the request.
 		$this->loadData();
@@ -379,13 +391,16 @@ abstract class HTMLFormField {
 		
 		$html = '';
 		
-		$html .= Xml::tags( 'td', array( 'style' => 'text-align: right; vertical-align: top;' ),
+		$html .= Xml::tags( 'td', array( 'class' => 'mw-label' ),
 					Xml::tags( 'label', array( 'for' => $this->mID ), $this->getLabel() )
 				);
 		$html .= Xml::tags( 'td', array( 'class' => 'mw-input' ),
 							$this->getInputHTML( $value ) ."\n$errors" );
+							
+		$fieldType = get_class($this);
 		
-		$html = Xml::tags( 'tr', null, $html ) . "\n";
+		$html = Xml::tags( 'tr', array( 'class' => "mw-htmlform-field-$fieldType" ),
+							$html ) . "\n";
 		
 		return $html;
 	}
@@ -506,6 +521,52 @@ class HTMLSelectField extends HTMLFormField {
 		}
 		
 		return $select->getHTML();
+	}
+}
+
+class HTMLSelectOrOtherField extends HTMLTextField {
+	static $jsAdded = false;
+	
+	function getInputHTML( $value ) {
+		$valInSelect = array_key_exists( $value, $this->mParams['options'] );
+		
+		$selected = $valInSelect ? $value : 'other';
+		
+		$select = new XmlSelect( $this->mName, $this->mID, $selected );
+		foreach( $this->mParams['options'] as $key => $label ) {
+			$select->addOption( $label, $key );
+		}
+		
+		$select->setAttribute( 'class', 'mw-htmlform-select-or-other' );
+		
+		$select = $select->getHTML();
+		
+		$tbAttribs = array( 'id' => $this->mID.'-other' );
+		
+		if ( isset($this->mParams['maxlength']) ) {
+			$tbAttribs['maxlength'] = $this->mParams['maxlength'];
+		}
+		
+		$textbox = Xml::input( $this->mName.'-other',
+							$this->getSize(),
+							$valInSelect ? '' : $value,
+							$tbAttribs );
+		
+		return "$select<br/>\n$textbox";
+	}
+	
+	function loadDataFromRequest( $request ) {
+		if ($request->getCheck( $this->mName ) ) {
+			$val = $request->getText( $this->mName );
+			
+			if ($val == 'other') {
+				$val = $request->getText( $this->mName.'-other' );
+			}
+			
+			return $val;
+		} else {
+			return $this->getDefault();
+		}
 	}
 }
 

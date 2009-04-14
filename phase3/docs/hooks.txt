@@ -710,6 +710,10 @@ $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getLocalURL()
 
+'GetPreferences': modify user preferences
+$user: User whose preferences are being modified.
+&$preferences: Preferences description array, to be fed to an HTMLForm object
+
 'getUserPermissionsErrors': Add a permissions error when permissions errors are
 	checked for.  Use instead of userCan for most cases. Return false if the
 	user can't do it, and populate $result with the reason in the form of

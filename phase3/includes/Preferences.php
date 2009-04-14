@@ -2,6 +2,10 @@
 
 class Preferences {
 	static $defaultPreferences = null;
+	static $saveFilters =
+		array(
+			'timecorrection' => array( 'Preferences', 'filterTimezoneInput' ),
+		);
 	
 	static function getPreferences( $user ) {
 		if (self::$defaultPreferences)
@@ -308,7 +312,65 @@ class Preferences {
 					);
 		}
 		
-		## TODO OFFSET
+		// Info
+		$nowlocal = Xml::element( 'span', array( 'id' => 'wpLocalTime' ),
+			$wgLang->time( $now = wfTimestampNow(), true ) );
+		$nowserver = $wgLang->time( $now, false ) .
+			Xml::hidden( 'wpServerTime', substr( $now, 8, 2 ) * 60 + substr( $now, 10, 2 ) );
+		
+		$defaultPreferences['nowserver'] =
+				array(
+					'type' => 'info',
+					'raw' => 1,
+					'label-message' => 'servertime',
+					'default' => $nowserver,
+					'section' => 'datetime',
+				);
+				
+		$defaultPreferences['nowlocal'] =
+				array(
+					'type' => 'info',
+					'raw' => 1,
+					'label-message' => 'localtime',
+					'default' => $nowlocal,
+					'section' => 'datetime',
+				);
+		
+		// Grab existing pref.
+		$tzOffset = $user->getOption( 'timecorrection' );
+		$tz = explode( '|', $tzOffset, 2 );
+		
+		$tzSetting = $tzOffset;
+		if (count($tz) > 1 && $tz[0] == 'Offset') {
+			$minDiff = $tz[1];
+			$tzSetting = sprintf( '%+03d:%02d', floor($minDiff/60), abs($minDiff)%60 );;
+		}
+		
+		$defaultPreferences['timecorrection'] =
+				array(
+					'class' => 'HTMLSelectOrOtherField',
+					'label-message' => 'timezonelegend',
+					'options' => self::getTimezoneOptions(),
+					'default' => $tzSetting,
+					'section' => 'datetime',
+				);
+		
+		// Add auto-select button
+		
+		$button = Xml::element( 'input',
+					array( 'type' => 'button',
+							'id' => 'mw-prefs-guesstimezone',
+							'style' => 'display: none;', // Graceful degradation.
+							'value' => wfMsg( 'guesstimezone' ),
+						) );
+		
+		$defaultPreferences['guesstimezone'] =
+				array(
+					'type' => 'info',
+					'raw' => true,
+					'label' => '&nbsp;',
+					'default' => $button,
+				);
 		
 		## Editing #####################################
 		$defaultPreferences['cols'] =
@@ -854,8 +916,92 @@ class Preferences {
 		return $htmlForm;
 	}
 	
+	static function getTimezoneOptions() {
+		$opt = array();
+		
+		global $wgLocalTZoffset;
+
+		$opt["System|$wgLocalTZoffset"] = wfMsg( 'timezoneuseserverdefault' );
+		$opt['other'] = wfMsg( 'timezoneuseoffset' );
+
+		if ( function_exists( 'timezone_identifiers_list' ) ) {
+			# Read timezone list
+			$tzs = timezone_identifiers_list();
+			sort( $tzs );
+
+			$tzRegions = array();
+			$tzRegions['Africa'] = wfMsg( 'timezoneregion-africa' );
+			$tzRegions['America'] = wfMsg( 'timezoneregion-america' );
+			$tzRegions['Antarctica'] = wfMsg( 'timezoneregion-antarctica' );
+			$tzRegions['Arctic'] = wfMsg( 'timezoneregion-arctic' );
+			$tzRegions['Asia'] = wfMsg( 'timezoneregion-asia' );
+			$tzRegions['Atlantic'] = wfMsg( 'timezoneregion-atlantic' );
+			$tzRegions['Australia'] = wfMsg( 'timezoneregion-australia' );
+			$tzRegions['Europe'] = wfMsg( 'timezoneregion-europe' );
+			$tzRegions['Indian'] = wfMsg( 'timezoneregion-indian' );
+			$tzRegions['Pacific'] = wfMsg( 'timezoneregion-pacific' );
+			asort( $tzRegions );
+
+			$now = date_create( 'now' );
+
+			foreach ( $tzs as $tz ) {
+				$z = explode( '/', $tz, 2 );
+
+				# timezone_identifiers_list() returns a number of
+				# backwards-compatibility entries. This filters them out of the 
+				# list presented to the user.
+				if ( count( $z ) != 2 || !array_key_exists( $z[0], $tzRegions ) )
+					continue;
+
+				# Localize region
+				$z[0] = $tzRegions[$z[0]];
+
+				$minDiff = floor( timezone_offset_get( timezone_open( $tz ), $now ) / 60 );
+				
+				$display = str_replace( '_', ' ', $z[0] . '/' . $z[1] );
+				$value = "ZoneInfo|$minDiff|$tz";
+				
+				$opt[$value] = $display;
+			}
+		}
+		return $opt;
+	}
+	
+	static function filterTimezoneInput( $tz, $alldata ) {
+		$data = explode( '|', $tz, 3 );
+		switch ( $data[0] ) {
+			case 'ZoneInfo':
+			case 'System':
+				return $tz;
+			default:
+				$data = explode( ':', $tz, 2 );
+				$minDiff = 0;
+				if( count( $data ) == 2 ) {
+					$data[0] = intval( $data[0] );
+					$data[1] = intval( $data[1] );
+					$minDiff = abs( $data[0] ) * 60 + $data[1];
+					if ( $data[0] < 0 ) $minDiff = -$minDiff;
+				} else {
+					$minDiff = intval( $data[0] ) * 60;
+				}
+
+				# Max is +14:00 and min is -12:00, see:
+				# http://en.wikipedia.org/wiki/Timezone
+				$minDiff = min( $minDiff, 840 );  # 14:00
+				$minDiff = max( $minDiff, -720 ); # -12:00
+				return 'Offset|'.$minDiff;
+		}
+	}
+	
 	static function tryFormSubmit( $formData ) {
 		global $wgUser, $wgEmailAuthentication, $wgEnableEmail;
+		
+		// Filter input
+		foreach( $formData as $name => &$value ) {
+			if ( isset(self::$saveFilters[$name]) ) {
+				$value = call_user_func( self::$saveFilters[$name], $value, $formData );
+			}
+		}
 		
 		// Stuff that shouldn't be saved as a preference.
 		$saveBlacklist = array(
