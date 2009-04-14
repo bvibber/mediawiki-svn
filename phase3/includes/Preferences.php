@@ -263,7 +263,7 @@ class Preferences {
 			$defaultPreferences['skin'] =
 					array(
 						'type' => 'radio',
-						'options' => self::generateSkinOptions(),
+						'options' => self::generateSkinOptions( $user ),
 						'label' => '&nbsp;',
 						'section' => 'skin',
 					);
@@ -770,7 +770,7 @@ class Preferences {
 		return $defaultPreferences;
 	}
 	
-	static function generateSkinOptions() {
+	static function generateSkinOptions( $user ) {
 		global $wgDefaultSkin;
 		$ret = array();
 		
@@ -789,7 +789,8 @@ class Preferences {
 			}
 		}
 		asort($validSkinNames);
-		
+		$sk = $user->getSkin();
+
 		foreach( $validSkinNames as $skinkey => $sn ) {
 			$mplink = htmlspecialchars( $mptitle->getLocalURL( "useskin=$skinkey" ) );
 			$previewlink = "(<a target='_blank' href=\"$mplink\">$previewtext</a>)";
