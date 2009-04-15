@@ -519,12 +519,15 @@ class IPBlockForm {
 			array('ar_user_text' => $userId), __METHOD__ );
 		# Hide name from logs
 		$dbw->update( 'logging', array("log_deleted = log_deleted $op $delUser"),
-			array('log_user' => $userId), __METHOD__ );
+			array('log_user' => $userId, "log_type != 'suppress'"), __METHOD__ );
 		$dbw->update( 'logging', array("log_deleted = log_deleted $op $delAction"),
-			array('log_namespace' => NS_USER, 'log_title' => $userDbKey), __METHOD__ );
+			array('log_namespace' => NS_USER, 'log_title' => $userDbKey,
+				"log_type != 'suppress'"), __METHOD__ );
 		# Hide name from RC
 		$dbw->update( 'recentchanges', array("rc_deleted = rc_deleted $op $delUser"),
 			array('rc_user_text' => $name), __METHOD__ );
+		$dbw->update( 'recentchanges', array("rc_deleted = rc_deleted $op $delAction"),
+			array('rc_namespace' => NS_USER, 'rc_title' => $userDbKey, 'rc_logid > 0'), __METHOD__ );
 		# Hide name from live images
 		$dbw->update( 'oldimage', array("oi_deleted = oi_deleted $op $delUser"),
 			array('oi_user_text' => $name), __METHOD__ );
@@ -597,7 +600,8 @@ class IPBlockForm {
 			$flags[] = 'anononly';
 		if( $this->BlockCreateAccount )
 			$flags[] = 'nocreate';
-		if( !$this->BlockEnableAutoblock )
+		if( !$this->BlockEnableAutoblock && !IP::isIPAddress( $this->BlockAddress ) )
+			// Same as anononly, this is not displayed when blocking an IP address
 			$flags[] = 'noautoblock';
 		if ( $this->BlockEmail )
 			$flags[] = 'noemail';

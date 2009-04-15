@@ -39,7 +39,7 @@ class SpecialContributions extends SpecialPage {
 			return;
 		}
 
-		$this->opts['limit'] = $wgRequest->getInt( 'limit', 50 );
+		$this->opts['limit'] = $wgRequest->getInt( 'limit', $wgUser->getOption('rclimit') );
 		$this->opts['target'] = $target;
 
 		$nt = Title::makeTitleSafe( NS_USER, $target );
@@ -203,9 +203,9 @@ class SpecialContributions extends SpecialPage {
 	 * @param $this->opts Array: the options to be included.
 	 */
 	protected function getForm() {
-		global $wgScript, $wgTitle;
+		global $wgScript;
 	
-		$this->opts['title'] = $wgTitle->getPrefixedText();
+		$this->opts['title'] = SpecialPage::getTitleFor( 'Contributions' )->getPrefixedText();
 		if( !isset( $this->opts['target'] ) ) {
 			$this->opts['target'] = '';
 		} else {

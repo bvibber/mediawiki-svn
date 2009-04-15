@@ -7,40 +7,27 @@
  */
 
 /**
- * Entry point
- * @param $par String: An article name ??
- */
-function wfSpecialWhatlinkshere($par = NULL) {
-	global $wgRequest;
-	$page = new WhatLinksHerePage( $wgRequest, $par );
-	$page->execute();
-}
-
-/**
  * implements Special:Whatlinkshere
  * @ingroup SpecialPage
  */
-class WhatLinksHerePage {
-	// Stored data
-	protected $par;
+class SpecialWhatLinksHere extends SpecialPage {
 
 	// Stored objects
 	protected $opts, $target, $selfTitle;
 
 	// Stored globals
-	protected $skin, $request;
+	protected $skin;
 
 	protected $limits = array( 20, 50, 100, 250, 500 );
 
-	function WhatLinksHerePage( $request, $par = null ) {
+	public function __construct() {
+		parent::__construct( 'Whatlinkshere' );
 		global $wgUser;
-		$this->request = $request;
 		$this->skin = $wgUser->getSkin();
-		$this->par = $par;
 	}
 
-	function execute() {
-		global $wgOut;
+	function execute( $par ) {
+		global $wgOut, $wgRequest;
 
 		$opts = new FormOptions();
 
@@ -54,12 +41,12 @@ class WhatLinksHerePage {
 		$opts->add( 'hidelinks', false );
 		$opts->add( 'hideimages', false );
 
-		$opts->fetchValuesFromRequest( $this->request );
+		$opts->fetchValuesFromRequest( $wgRequest );
 		$opts->validateIntBounds( 'limit', 0, 5000 );
 
 		// Give precedence to subpage syntax
-		if ( isset($this->par) ) {
-			$opts->setValue( 'target', $this->par );
+		if ( isset($par) ) {
+			$opts->setValue( 'target', $par );
 		}
 
 		// Bind to member variable
@@ -346,7 +333,7 @@ class WhatLinksHerePage {
 	}
 
 	function whatlinkshereForm() {
-		global $wgScript, $wgTitle;
+		global $wgScript;
 
 		// We get nicer value from the title object
 		$this->opts->consumeValue( 'target' );
@@ -360,7 +347,7 @@ class WhatLinksHerePage {
 		$f = Xml::openElement( 'form', array( 'action' => $wgScript ) );
 		
 		# Values that should not be forgotten
-		$f .= Xml::hidden( 'title', $wgTitle->getPrefixedText() );
+		$f .= Xml::hidden( 'title', SpecialPage::getTitleFor( 'Whatlinkshere' )->getPrefixedText() );
 		foreach ( $this->opts->getUnconsumedValues() as $name => $value ) {
 			$f .= Xml::hidden( $name, $value );
 		}
