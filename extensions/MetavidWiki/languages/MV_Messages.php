@@ -71,12 +71,10 @@ Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods<
 	'wgfogg_waring_bad_extension'=> 'You have selected a file with an unsuported extension. <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">More help</a>', 
 
 	# remoteSearchDriver.js
-	#set to ignored for now. Messages does not appear to be final
-	'mv_media_search' => 'Media search', # do not translate or duplicate this message to other languages
+	'mv_media_search' => 'Media search',
 	'rsd_box_layout' => 'Box layout',
 	'rsd_list_layout' => 'List layout',
-	#set to ignored for now. Messages does not appear to be final
-	'rsd_results_desc' => 'Results', # do not translate or duplicate this message to other languages
+	'rsd_results_desc' => 'Results',
 	'rsd_no_results'   => 'No search results for <b>$1</b>',
 	'rsd_results_next' => 'next',
 	'rsd_results_prev' => 'previous',
@@ -158,13 +156,6 @@ Not much documentation yet either', # do not translate or duplicate this message
 Select a clip to enable resource editing',
 	'error_edit_multiple' => '<h3>Multiple resources selected</h3>
 Select a single clip to edit it',
-
-	#'mv_editor_options' => 'Editor options', # duplicate
-	#'mv_editor_mode' => 'Editor mode', # duplicate
-	#'mv_simple_editor_desc' => 'simple editor (iMovie style)', # duplicate
-	#'mv_advanced_editor_desc' => 'advanced editor (Final Cut style)', # duplicate
-	#'mv_other_options' => 'Other options', # duplicate
-	#'mv_contextmenu_opt' => 'Enable context menus', # duplicate
 
 	# normal php based msg keys:
 	'metavid' => 'MetaVid page',
@@ -403,8 +394,6 @@ Jump to stream view: $2',
 	'mv_sequence_player_title' => 'sequence player',
 	'mv_resource_not_found' => "Resource '''$1''' not found",
 	'mv_resource_not_supported' => "Resource '''$1''' type not supported",
-	#'mv_welcome_to_sequencer' => '<h3>Welcome to the sequencer demo</h3>
-	#very <b>limited</b> functionality right now. Click on a clip to edit that resource', # duplicate
 	'mv_resource_locator' => 'Resource Locator',
 	'mv_unknown_clipboard_action' => 'Unknown clipboard action',
 
@@ -448,7 +437,6 @@ Jump to stream view: $2',
 	# mv tools
 	'mv_stream_resource_export' => 'Stream resources export',
 	'mv_export_cmml' => 'Export cmml',
-	#'mv_search_stream' => 'Search stream', # duplicate
 	'mv_navigate_stream' => 'Navigate full stream',
 	'mv_stream_overview' => 'Stream Overview',
 	'mv_edit_time' => 'Edit Time',
@@ -457,7 +445,6 @@ Jump to stream view: $2',
 	'mv_stream_tool_heading' => 'Stream Tools',
 	'mv_tool_missing' => 'requested tool does not exist',
 	'mv_bad_tool_request' => 'bad tool line should be form: tool_name|tool_display_name',
-	#'mv_update_layers' => 'update layers view', # duplicate
 
 	'mv_prev_speech' => 'Previous speech: $1',
 	'mv_next_speech' => 'Next speech: $1',
