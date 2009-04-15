@@ -15,7 +15,7 @@ loadGM( { "mv_media_search" : "Media Search",
 		"rsd_results_prev" : "previous ",
 		"rsd_no_results"   : "No search results for <b>$1</b>",
 		
-		"upload" : "Upload",
+		"mv_upload" : "Upload",
 		"rsd_layout" : "Layout:",
 		"rsd_resource_edit" : "Edit Resource: $1",
 		"resource_description_page": "Resource Description Page",
