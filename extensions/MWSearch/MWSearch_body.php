@@ -435,11 +435,18 @@ class LuceneSearchSet extends SearchResultSet {
 		global $wgLuceneSearchVersion, $wgLuceneSearchCacheExpiry;
 		global $wgLuceneSearchTimeout;
 		
-		if( is_array( $wgLuceneHost ) ) {
-			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
-			$host = $wgLuceneHost[$pick];
+		$hosts = $wgLuceneHost;
+		if( $method == 'prefix'){
+			global $wgLucenePrefixHost;
+			if( isset($wgLucenePrefixHost) )
+				$hosts = $wgLucenePrefixHost;
+		}
+			
+		if( is_array( $hosts ) ) {
+			$pick = mt_rand( 0, count( $hosts ) - 1 );
+			$host = $hosts[$pick];
 		} else {
-			$host = $wgLuceneHost;
+			$host = $hosts;
 		}
 		
 		$enctext = rawurlencode( trim( $query ) );
