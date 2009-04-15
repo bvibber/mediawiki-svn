@@ -696,7 +696,7 @@ class Preferences {
 		$defaultPreferences['nocache'] =
 				array(
 					'type' => 'toggle',
-					'label-message' => 'tog-rememberpassword',
+					'label-message' => 'tog-nocache',
 					'section' => 'misc',
 				);
 		$defaultPreferences['diffonly'] =
