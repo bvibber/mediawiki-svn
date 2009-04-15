@@ -1303,11 +1303,13 @@ $messages['sk'] = array(
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Millosh
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'imagemap_desc' => 'Омогућава клијентској страни кликабилну мапу коришћњењм ознаке <tt><nowiki><imagemap></nowiki></tt>.',
 	'imagemap_no_image' => 'Грешка: Неопходно је одредити слику у првој линији.',
 	'imagemap_invalid_image' => 'Грешка: Слика је лоша или непостојећа.',
+	'imagemap_bad_image' => 'Грешка: слика се налази на црном списку за ову страну',
 	'imagemap_no_link' => 'Грешка: Није пронађена ниједна ваљана веза на крају линије $1.',
 	'imagemap_invalid_title' => 'Грешка: Лош наслов у вези у линији $1.',
 	'imagemap_missing_coord' => 'Грешка: Нема довољно координата за криву у линији $1.',
@@ -1316,6 +1318,7 @@ $messages['sr-ec'] = array(
 	'imagemap_invalid_coord' => 'Грешка: Лоше координате у линији $1; морају бити број.',
 	'imagemap_invalid_desc' => 'Грешка: Лоше desc одређење, мора бити једно од: <tt>$1</tt>.',
 	'imagemap_description' => 'О овој слици',
+	'imagemap_poly_odd' => 'Грешка: нађен је полигон са непарним бројем координата у линији $1',
 );
 
 /** Seeltersk (Seeltersk)

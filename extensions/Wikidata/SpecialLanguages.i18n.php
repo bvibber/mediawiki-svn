@@ -9483,7 +9483,12 @@ $wdMessages['ug-latn'] = array(
  */
 $wdMessages['uk'] = array(
 	'languages' => 'Вікідані: Мовний менеджер',
+	'langman-desc' => 'Додавання або зміна мовних налаштувань за допомогою [[Special:Languages]]',
 	'langman_title' => 'Мовний менеджер',
+	'langman_not_allowed' => 'Ви не маєте дозволу змінювати налаштування мови.',
+	'langman_header' => 'Уведіть код мови та її англійську назву нижче:',
+	'langman_req_fields' => "Назва мови і код ISO 639-3 повинні бути обов'язково зазначені!",
+	'langman_adding' => 'Додавання мови $1 з кодом $2.',
 	'datasearch' => 'Вікідані: Пошук даних',
 	'ow_save' => 'Зберегти',
 	'ow_history' => 'Історія',

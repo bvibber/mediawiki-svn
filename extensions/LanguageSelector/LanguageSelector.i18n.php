@@ -730,9 +730,12 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'languageselector' => 'Језик',
+	'languageselector-desc' => 'Избирач језика на сваком језику, и такође за посетиоце',
+	'languageselector-setlang' => 'постави',
 );
 
 /** Seeltersk (Seeltersk)

@@ -484,6 +484,15 @@ $messages['sk'] = array(
 	'icon-desc' => 'Umožnuje použíť obrázky ako ikony a ikony odkazov',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'icon-badimage' => 'Неисправна слика',
+	'icon-badwidth' => 'Лоша ширина',
+	'icon-desc' => 'Омогућује коришћење слика као икона и њихових спољашњих веза',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
