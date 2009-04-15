@@ -222,9 +222,11 @@ class CentralAuthUser extends AuthPluginUser {
 		
 		$insert_rows = array();
 		
+		global $wgCentralAuthPropertySaveWhitelist;
 		foreach( $this->mProperties as $key => $value ) {
 			if ( is_null(User::getDefaultOption($key)) ||
-					$value != User::getDefaultOption( $key ) ) {
+					$value != User::getDefaultOption( $key ) ||
+					in_array( $key, $wgCentralAuthPropertySaveWhitelist ) ) {
 				$ser = serialize($value);
 				$insert_rows[] = array(
 						'gp_user' => $this->getId(),

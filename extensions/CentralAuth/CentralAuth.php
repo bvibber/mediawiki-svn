@@ -128,6 +128,12 @@ $wgCentralAuthCreateOnView = false;
 $wgCentralAuthUDPAddress = false;
 $wgCentralAuthNew2UDPPrefix = '';
 
+/** Settings which will always be saved to the DB, regardless of whether or not they
+  *  match the local default. This should be mainly settings whose defaults change per-wiki.
+  */
+$wgCentralAuthPropertySaveWhitelist =
+	array( 'language', 'variant' );
+
 /**
  * Initialization of the autoloaders, and special extension pages.
  */
