@@ -106,7 +106,7 @@ Maybe disable the video converter?',
 	# mvClipEdit.js
 	'mv_crop' => 'Crop image',
 	'mv_apply_crop' => 'Apply crop to image',
-	'mv_reset_crop' => 'Rest crop',
+	'mv_reset_crop' => 'Reset crop',
 	'mv_insert_image_page' => 'Insert into page',
 	'mv_preview_insert' => 'Preview insert',
 	'mv_cancel_image_insert' => 'Cancel insert',
