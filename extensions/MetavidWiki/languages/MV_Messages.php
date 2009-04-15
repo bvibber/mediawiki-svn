@@ -60,15 +60,22 @@ Visit the <a href=\"http://metavid.org/wiki/Client_Playback\">Playback methods</
 	'seek_to' => 'Seek to',
 
 	# mvUploader.js
-	'upload-enable-converter' => "Enable video converter. Use this to upload source video not yet converted to Theora format. (<a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more information</a>)",
-	'upload-fogg_not_installed' => "If you want to upload video consider installing <a href=\"http://firefogg.org\">Firefogg</a>. (<a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more information</a>)",
+	'upload-enable-converter' => "Enable video converter.
+	Use this to upload source video not yet converted to Theora format.
+(<a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more information</a>)",
+	'upload-fogg_not_installed' => "If you want to upload video consider installing <a href=\"http://firefogg.org\">Firefogg</a>.
+(<a href=\"http://commons.wikimedia.org/wiki/Commons:Firefogg\">more information</a>)",
 	'upload-in-progress' => 'Transcoding and uploading (do not close this window)',
 	'upload-transcoded-status' => 'Transcoded',
 	'uploaded-status' => 'Uploaded',
 	'upload-select-file' => 'Select file...',
-	'wgfogg_wrong_version' => "You have Firefogg installed but it is outdated. <a href=\"http://firefogg.org\">Please upgrade</a>.",
-	'wgfogg_waring_ogg_upload' => 'You have selected an .ogg file for conversion to Ogg (this is probably unnecessary). Maybe disable the video converter?',
-	'wgfogg_waring_bad_extension'=> 'You have selected a file with an unsuported extension. <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">More help</a>', 
+	'wgfogg_wrong_version' => "You have Firefogg installed but it is outdated.
+<a href=\"http://firefogg.org\">Please upgrade</a>.",
+	'wgfogg_waring_ogg_upload' => 'You have selected an .ogg file for conversion to Ogg.
+This is probably unnecessary.
+Maybe disable the video converter?',
+	'wgfogg_waring_bad_extension'=> 'You have selected a file with an unsuported extension.
+<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">More help</a>.', 
 
 	# remoteSearchDriver.js
 	'mv_media_search' => 'Media search',
