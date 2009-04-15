@@ -164,6 +164,11 @@ $aliases['su'] = array(
 	'WhosOnline' => array( 'SahaNuManco' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'WhosOnline' => array( 'Vem är online?' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'WhosOnline' => array( 'NaniyukoMkondoni' ),

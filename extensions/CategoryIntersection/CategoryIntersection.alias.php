@@ -104,7 +104,7 @@ $aliases['ia'] = array(
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'CategoryIntersection' => array( 'カテゴリ交差' ),
+	'CategoryIntersection' => array( 'カテゴリ交差', 'カテゴリ交差検索' ),
 );
 
 /** Javanese (Basa Jawa) */
