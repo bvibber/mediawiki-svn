@@ -53,8 +53,12 @@ abstract public class HttpHandler extends Thread {
 	boolean headersSent;
 
 	protected HashMap headers;
+	
+	protected static HttpMonitor monitor = null; 
 
 	public HttpHandler(Socket s) {
+		if(monitor == null)
+			monitor = HttpMonitor.getInstance();
 		try {
 			istrm = new DataInputStream(new BufferedInputStream(s.getInputStream()));
 			ostrm = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream(),"utf-8")));			
@@ -185,9 +189,10 @@ abstract public class HttpHandler extends Thread {
 			if(len==0) postData = "";
 			else postData = new String(readBytes(len));
 		}
-
+		monitor.requestStart(this);
 		processRequest();
 		flushOutput();
+		monitor.requestEnd(this);
 	}
 
 	abstract protected void processRequest();
