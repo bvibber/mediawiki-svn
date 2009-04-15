@@ -39,6 +39,14 @@ $messages['ar'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'عدد الأحداث الأخيرة التي أطلقها عنوان الأيبي، طبقا لProject Honey Pot',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'honeypot-desc' => 'Забясьпечвае інтэграцыю сайтаў MediaWiki з [http://projecthoneypot.org/ праектам Honey Pot]',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Колькасьць апошніх падзеяў, якія выклікаў ІР-адрас, у адпаведнасьці з праектам Honey Pot',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

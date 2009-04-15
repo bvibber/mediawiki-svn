@@ -1201,6 +1201,38 @@ $messages['sk'] = array(
 	'right-closewikis' => 'Zatvárať wiki',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'closewikis-desc' => 'Омогућава затварање Вики-сајтова у Вики-фармама',
+	'closewikis-page' => 'Затвори Вики',
+	'closewikis-page-close' => 'Затвори Вики',
+	'closewikis-page-close-wiki' => 'Вики:',
+	'closewikis-page-close-dreason' => 'Разлог (приказан):',
+	'closewikis-page-close-reason' => 'Разлог (забележен):',
+	'closewikis-page-close-submit' => 'Затвори',
+	'closewikis-page-close-success' => 'Вики је успешно затворен',
+	'closewikis-page-reopen' => 'Отвори Вики поново',
+	'closewikis-page-reopen-wiki' => 'Вики:',
+	'closewikis-page-reopen-reason' => 'Разлог:',
+	'closewikis-page-reopen-submit' => 'Отвори поново',
+	'closewikis-page-reopen-success' => 'Вики је успешно поново отворен',
+	'closewikis-page-err-nowiki' => 'Наведен је погрешан Вики',
+	'closewikis-page-err-closed' => 'Вики је већ затворен',
+	'closewikis-page-err-opened' => 'Вики није затворен',
+	'closewikis-list' => 'Затворио листу Викија',
+	'closewikis-list-intro' => 'Овај списак садржи Викије које су стјуарди затворили.',
+	'closewikis-list-header-wiki' => 'Вики',
+	'closewikis-list-header-by' => 'Затворио',
+	'closewikis-list-header-timestamp' => 'Затворен на',
+	'closewikis-list-header-dispreason' => 'Приказани разлог',
+	'closewikis-log' => 'Историја затварања Викија',
+	'closewikis-log-close' => 'затворен $2',
+	'right-editclosedwikis' => 'Измени затворене Викије',
+	'right-closewikis' => 'Затвори Викије',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

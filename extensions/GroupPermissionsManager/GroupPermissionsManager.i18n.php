@@ -270,8 +270,19 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'grouppermissions' => 'Кіраваньне правамі групаў',
+	'sortpermissions' => 'Сартаваць правы',
+	'removeunusedgroups' => 'Выдаліць групы, якія не выкарыстоўваюцца',
+	'grouppermissions-desc' => 'Кіраваньне правамі групаў праз [[Special:GroupPermissions|спэцыяльную старонку]]',
+	'grouppermissions-desc2' => 'Пашыраная сыстэма правоў',
+	'grouppermissions-desc3' => 'Дазваляе настройваць дзеяньні для зьместу (tabs)',
+	'grouppermissions-desc4' => 'Дазваляе дадаваць дадатковыя інструмэнты ў панэль інструмэнтаў',
+	'grouppermissions-desc-nsm' => 'Кіраваньне прасторамі назваў праз спэцыяльную старонку',
+	'grouppermissions-header' => 'Вы можаце выкарыстоўваць гэтую старонку для зьмены правоў розных групаў удзельнікаў.',
+	'grouppermissions-search' => 'Група:',
 	'grouppermissions-comment' => 'Камэнтар:',
 	'grouppermissions-never' => 'Ніколі',
 	'grouppermissions-sp-save' => 'Захаваць',

@@ -589,6 +589,7 @@ La mayoría de extensiones funcionan a través de múltiples versiones de Mediaw
 	'extdist-no-versions' => 'La extensión seleccionada ($1) no esta disponible en ninguna versión!',
 	'extdist-submit-version' => 'Continuar',
 	'extdist-svn-error' => "''Subversion'' encontró un error: <pre>$1</pre>",
+	'extdist-svn-parse-error' => 'Incapaz de procesar el XML de "svn info": <pre>$1</pre>',
 	'extdist-created' => "Una instantánea de la versión <b>$2</b> de la <b>$1</b> extensión para MediaWiki <b>$3</b> ha sido creada. Tu descarga debería comenzar automáticamente en 5 segundos.
 
 El URL para esta instantánea es:

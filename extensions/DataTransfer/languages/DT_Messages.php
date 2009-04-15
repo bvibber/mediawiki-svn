@@ -123,6 +123,11 @@ $messages['ar'] = array(
 	'dt_xml_title' => 'عنوان',
 	'dt_xml_id' => 'رقم',
 	'dt_xml_freetext' => 'نص حر',
+	'importxml' => 'استيراد XML',
+	'dt_importxml_selectfile' => 'من فضلك اختر ملف XML للاستيراد:',
+	'dt_importxml_editsummary' => 'استيراد XML',
+	'dt_importxml_importing' => 'جاري الاستيراد...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|صفحة|صفحة}} سيتم استيرادها من ملف XML.',
 );
 
 /** Araucanian (Mapudungun)
@@ -1022,7 +1027,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'dt-desc' => 'Permite importação e exportação de dados estruturados contidos em chamadas de predefinições',
+	'dt-desc' => 'Permite importação e exportação de dados contidos em chamadas de predefinições',
 	'viewxml' => 'Ver XML',
 	'dt_viewxml_docu' => 'Por favor, seleccione de entre as categorias e espaços nominais seguintes para ver em formato XML.',
 	'dt_viewxml_categories' => 'Categorias',
@@ -1037,7 +1042,11 @@ $messages['pt'] = array(
 	'dt_xml_title' => 'Título',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Texto Livre',
+	'importxml' => 'Importar XML',
+	'dt_importxml_selectfile' => 'Por favor, selecione o ficheiro XML a importar:',
+	'dt_importxml_editsummary' => 'Importação de XML',
 	'dt_importxml_importing' => 'Importando...',
+	'dt_importxml_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do ficheiro XML.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1151,10 +1160,21 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'viewxml' => 'Види XML',
+	'dt_viewxml_categories' => 'Категорије',
+	'dt_viewxml_namespaces' => 'Именски простори',
+	'dt_viewxml_simplifiedformat' => 'Поједностављени формат',
+	'dt_xml_namespace' => 'Именски простор',
+	'dt_xml_pages' => 'Чланци',
 	'dt_xml_page' => 'Страна',
+	'dt_xml_template' => 'Шаблон',
+	'dt_xml_field' => 'Поље',
+	'dt_xml_name' => 'Име',
 	'dt_xml_title' => 'Наслов',
+	'dt_xml_id' => 'ID',
 );
 
 /** Seeltersk (Seeltersk)

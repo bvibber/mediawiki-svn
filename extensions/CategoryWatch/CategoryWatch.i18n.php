@@ -333,6 +333,7 @@ Iste message es pro notificar te que, le $3, le usator $4 $5.',
 	'categorywatch-catmoveout' => 'displaciava $1 ex le categoria $2 in $3',
 	'categorywatch-catadd' => 'addeva $1 al categoria $2',
 	'categorywatch-catsub' => 'retirava $1 del categoria $2',
+	'categorywatch-autocat' => 'Automaticamente observate per $1',
 );
 
 /** Italian (Italiano)

@@ -107,6 +107,7 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'security' => 'Zapisnik sigurnosti',
 	'security-logpage' => 'Zapisnik sigurnosti',
+	'badaccess-read' => 'Upozorenje: "$1" je povezano ovdje, ali nemate dovoljno privilegija da ovdje pristupite.',
 	'security-info' => 'Postoji $1 na ovom članku',
 	'security-info-toggle' => 'sigurnosna ograničenja',
 	'security-inforestrict' => '$1 je onemogućena za $2',

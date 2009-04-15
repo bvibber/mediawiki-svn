@@ -40,6 +40,13 @@ $messages['ast'] = array(
 	'i18ntags-desc' => 'Accede a les funciones i18n pal formatu de númberu, gramática y plurales en cualesquier llingua disponible',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'i18ntags-desc' => 'Доступ да функцыяў лякалізацыі фарматаваньня лікаў, граматыкі і множнага ліку для любой даступнай мовы',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

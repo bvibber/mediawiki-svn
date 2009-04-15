@@ -445,6 +445,13 @@ $messages['sl'] = array(
 	'categoryonupload-label' => 'Kategorija:',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'categoryonupload-label' => 'Категорија:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

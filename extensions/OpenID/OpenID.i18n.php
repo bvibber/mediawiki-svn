@@ -3064,6 +3064,20 @@ Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných po
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'openidfinish' => 'Заврши OpenID логовање',
+	'openidserver' => 'OpenID сервер',
+	'openidconvert' => 'OpenID конвертор',
+	'openiderror' => 'Грешка приликом верификације',
+	'openiderrortext' => 'Дошло је до грешке приликом верификације OpenID URL-а.',
+	'openidconfigerror' => 'Грешка око конфигурације OpenID-а',
+	'openidpermission' => 'Грешка око OpenID права приступа',
+	'openidpermissiontext' => 'OpenID-у кога сте навели није дозвољено да се улогује на овај сервер.',
+	'openidcancel' => 'Верификација поништена',
+	'openidcanceltext' => 'Верификација OpenID URL-а је поништена.',
+	'openidfailure' => 'Верификација није прошла',
+	'openidfailuretext' => 'Верификација OpenID URL-a није прошла. Порука грешке: "$1"',
+	'openidsuccess' => 'Верификација успешна',
+	'openidsuccesstext' => 'Верификација OpenID URL-а је била успешна.',
 	'openidoptional' => 'Необавезно',
 	'openidrequired' => 'Обавезно',
 	'openidnickname' => 'Надимак',

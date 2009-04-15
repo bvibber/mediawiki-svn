@@ -338,6 +338,7 @@ $messages['es'] = array(
 	'scanset_no_files' => 'Error: Sin archivos presentes en el directorio especificado.',
 	'scanset_no_volumes' => 'Error: directorios de volúmenes no encontrados',
 	'scanset_missing_index_file' => 'Error: Archivo de índices $1 no encontrado',
+	'scanset_index_file_error' => 'Error: Error en el formato de archivo índice en la línea $1',
 	'scanset_invalid_volume' => 'Error: Volumen inválido',
 	'scanset_next' => 'Siguiente &gt;',
 	'scanset_prev' => '&lt; Anterior',

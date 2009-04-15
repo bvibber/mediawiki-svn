@@ -172,13 +172,21 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'imstatus_syntax' => 'Sintaksa',
+	'imstatus_default' => 'Pretpostavljeno',
 	'imstatus_example' => 'Primjer',
 	'imstatus_possible_val' => 'Moguće vrijednosti',
+	'imstatus_max' => 'najviše',
+	'imstatus_min' => 'najmanje',
 	'imstatus_or' => 'ili',
 	'imstatus_style' => 'stil statusnog pokazatelja',
 	'imstatus_action' => 'akcija kada se klikne dugme',
+	'imstatus_details_saa' => 'Za više detalja o svim stilovima i akcijama, pogledajte $1.',
 	'imstatus_your_name' => 'Vaše $1 ime',
+	'imstatus_aim_presence' => '$1 prikazuje Vaš status sa linkom koji će pokrenuti AIM da bi Vam poslao IM, koji je korisnik instalirao.',
+	'imstatus_aim_api' => '$1 pokazuje Vaš status sa linkov koji pokreće <b>preglednik</b>, verziju javascript od AIM-a za slanje IM.',
 	'imstatus_gtalk_code' => 'Vaš google talk kod',
+	'imstatus_gtalk_get_code' => 'Vaš kod za google talk: uzmite ga na $1.',
 	'imstatus_gtalk_height' => 'visina kutije, u pikselima.',
 	'imstatus_gtalk_width' => 'širina kutije, u pikselima.',
 	'imstatus_icq_id' => 'Vaš ICQ ID',

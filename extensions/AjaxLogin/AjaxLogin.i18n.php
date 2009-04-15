@@ -31,6 +31,11 @@ $messages['qqq'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
+	'ajaxlogin-desc' => 'صندوق ديناميكي يسمح للمستخدمين بتسجيل الدخول ويذكرهم بكلمة السر',
+	'ajaxLogin1' => 'لإكمال تسجيل دخولك، يجب ان تدخل كلمة سر جديدة.
+هذا سيأخذك من صفحة التعديل هذه وربما تفقد تعديلك الحالي.',
+	'ajaxLogin2' => 'هل أنت متأكد؟
+ربما تفقد تغييراتك لهذه الصفحة لو أنك تركت هذه الصفحة الآن.',
 	'ajaxlogin-create' => 'إنشاء حساب',
 );
 
@@ -203,6 +208,18 @@ $messages['hu'] = array(
 Ez elirányít a szerkesztőablakból, úgyhogy ezek a szerkesztéseid el fognak veszni. Ha ezt nem szeretnéd, másold ki őket a szövegmezőből!',
 	'ajaxLogin2' => 'Biztos vagy benne?
 Az oldal elhagyásával a szerkesztéseid elvesznek.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'ajaxlogin-desc' => 'Quadro dynamic que permitte aperir session e rememorar contrasigno',
+	'ajaxLogin1' => 'Pro completar le apertura de tu session, tu debe entrar un nove contrasigno.
+Tu essera transferite ab iste pagina e potera perder tu modification currente.',
+	'ajaxLogin2' => 'Es tu secur?
+Tu pote perder tu modificationes a iste pagina si tu quita iste pagina ora.',
+	'ajaxlogin-create' => 'Crear un conto',
 );
 
 /** Japanese (日本語)

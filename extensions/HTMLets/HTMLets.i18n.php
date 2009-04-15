@@ -32,6 +32,13 @@ $messages['arz'] = array(
 	'htmlets-desc' => 'يسمح لك باستخدام صيغ HTML من الملفات باستخدام وسم <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'htmlets-desc' => 'Дазваляе Вам выводзіць з файлаў фрагмэнты HTML з дапамогай тэга <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

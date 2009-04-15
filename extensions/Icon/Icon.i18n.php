@@ -48,6 +48,16 @@ $messages['avk'] = array(
 	'icon-badwidth' => 'Lumaj',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'icon-badimage' => 'Няслушная выява',
+	'icon-badwidth' => 'Няслушная шырыня',
+	'icon-desc' => 'Дазваляе Вам выкарыстоўваць выявы як значкі і значкі са спасылкамі',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

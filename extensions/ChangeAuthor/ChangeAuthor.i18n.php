@@ -1588,6 +1588,7 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'changeauthor-pagename-or-revid' => 'Име странице или ИД ревизије:',
@@ -1599,6 +1600,10 @@ $messages['sr-ec'] = array(
 	'changeauthor-nosuchuser' => 'Нема корисника "$1".',
 	'changeauthor-revview' => 'Ревизија #$1 или $2',
 	'changeauthor-nosuchtitle' => 'Не постоји страница под називом "$1".',
+	'changeauthor-success' => 'Баш захтев је био успешно обрађен.',
+	'changeauthor-logentry' => 'Промењен аутор $2 на $1, са $3 на $4',
+	'changeauthor-logpagename' => 'Историја промене аутора',
+	'right-changeauthor' => 'Промени аутора ревизије',
 );
 
 /** Seeltersk (Seeltersk)

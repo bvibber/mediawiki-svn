@@ -1029,6 +1029,24 @@ $messages['sk'] = array(
 	'restriction-level-author' => 'Len pre autorov',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'authorprotect' => 'Заштити чланак од не-аутора',
+	'authorprotect-desc' => 'Омогућава аутору чланка да га заштити од других корисника',
+	'authorprotect-notauthor' => 'Ви нисте аутор овог чланка',
+	'authorprotect-confirm' => 'Промени нивое заштите',
+	'authorprotect-edit' => 'Ограничи право измене на ауторе',
+	'authorprotect-move' => 'Ограничи право премештања само на ауторе',
+	'authorprotect-expiry' => 'Време истека',
+	'authorprotect-reason' => 'Разлог',
+	'authorprotect-intro' => 'Користите ову форму да бисте закључали овај чланак за не-ауторе',
+	'authorprotect-success' => 'Заштита успешна!',
+	'authorprotect-failure' => 'Заштита неуспешна',
+	'protect-level-author' => 'Заштити од не-аутора',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

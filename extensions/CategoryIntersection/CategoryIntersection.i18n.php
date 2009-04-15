@@ -520,6 +520,13 @@ $messages['sk'] = array(
 	'categoryintersection-results' => 'Hľadanie vrátilo $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'categoryintersection' => 'Пресек категорија',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

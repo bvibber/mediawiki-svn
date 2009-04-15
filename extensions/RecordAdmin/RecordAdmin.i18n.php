@@ -222,6 +222,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'recordadmin-select' => 'Odaberite tip zapisa za upravljanje',
 	'recordadmin-recordtype' => 'tip zapisa',
 	'recordadmin-newsearch' => '{{PLURAL:$1|Nova $1 pretraga|Nove $1 pretrage|Novih $1 pretraga}}',
 	'recordadmin-newrecord' => 'Odaberi drugi tip zapisa',
@@ -234,11 +235,17 @@ $messages['bs'] = array(
 	'recordadmin-buttoncreate' => 'Napravi',
 	'recordadmin-buttonreset' => 'Poništi',
 	'recordadmin-searchresult' => 'Rezultati pretrage',
+	'recordadmin-nomatch' => 'Nije pronađen odgovarajući zapis!',
 	'recordadmin-edit' => 'Uređuje se $1',
+	'recordadmin-typeupdated' => '$1 svojstvo ažurirano',
 	'recordadmin-updatesuccess' => '$1 ažurirano',
 	'recordadmin-buttonsave' => 'Sačuvaj',
 	'recordadmin-createlink' => 'napravi jedan',
 	'recordadmin-summary-typecreated' => 'Novi $1 napravljen',
+	'recordadmin-viewlink' => 'pogledaj',
+	'recordadmin-editlink' => 'uredi',
+	'recordadmin-created' => 'Napravljeno',
+	'recordadmin-modified' => 'Izmijenjeno',
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Dodaj sadržaj...',
 );

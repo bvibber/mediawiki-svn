@@ -4009,6 +4009,18 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
 	'deletequeue-case-needs-review' => 'Tento prípad vyžaduje [[$1|kontrolu]].',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'deletequeue-list-queue' => 'Ред:',
+	'deletequeue-list-status' => 'Статус:',
+	'deletequeue-list-search' => 'Претрага',
+	'deletequeue-list-votes' => 'Списак гласова',
+	'deletequeue-list-header-page' => 'Страна',
+	'deletequeue-list-header-queue' => 'Ред',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
