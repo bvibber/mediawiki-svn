@@ -456,6 +456,12 @@ class Preferences {
 					'section' => 'editing',
 					'label-message' => 'tog-forceeditsummary',
 				);
+		$defaultPreferences['uselivepreview'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'misc',
+					'label-message' => 'tog-uselivepreview',
+				);
 				
 		## RecentChanges #####################################
 		$defaultPreferences['usenewrc'] =
@@ -734,12 +740,6 @@ class Preferences {
 					'type' => 'toggle',
 					'section' => 'misc',
 					'label-message' => 'tog-numberheadings',
-				);
-		$defaultPreferences['uselivepreview'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-uselivepreview',
 				);
 				
 		wfRunHooks( 'GetPreferences', array( $user, &$defaultPreferences ) );
