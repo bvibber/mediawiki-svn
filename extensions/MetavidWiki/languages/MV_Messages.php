@@ -28,7 +28,7 @@ Try reloading?',
 	'download_segment' => 'Download selection:',
 	'download_full' => 'Download full video file:',
 	'download_clip' => 'Download the clip',
-	'download_text' => "Download text (<a style=\"color:white\" title=\"cmml\" href=\"http=>//wiki.xiph.org/index.php/CMML\">cmml</a> XML):",
+	'download_text' => "Download text (<a style=\"color:white\" title=\"cmml\" href=\"http://wiki.xiph.org/index.php/CMML\">cmml</a> XML):",
 
 	'clip_linkback' => 'Clip source page',
 
@@ -43,7 +43,7 @@ Try reloading?',
 	'mv_ogg-player-flowplayer' => 'Flowplayer',
 	'mv_ogg-player-selected' => '(selected)',
 	'mv_generic_missing_plugin' => "Your browser does not appear to support playback type: <b>$1</b><br />
-Visit the <a href=\"http=>//metavid.org/wiki/Client_Playback\">Playback methods</a> page to download a player.<br />",
+Visit the <a href=\"http://metavid.org/wiki/Client_Playback\">Playback methods</a> page to download a player.<br />",
 
 	'add_to_end_of_sequence' => 'Add to end of sequence',
 
