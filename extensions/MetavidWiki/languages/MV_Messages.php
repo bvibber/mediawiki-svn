@@ -28,7 +28,7 @@ Try reloading?',
 	'download_segment' => 'Download selection:',
 	'download_full' => 'Download full video file:',
 	'download_clip' => 'Download the clip',
-	'download_text' => "Download text (<a style=\"color:white\" title=\"cmml\" href=\"http=>//wiki.xiph.org/index.php/CMML\">cmml</a> xml:",
+	'download_text' => "Download text (<a style=\"color:white\" title=\"cmml\" href=\"http=>//wiki.xiph.org/index.php/CMML\">cmml</a> XML):",
 
 	'clip_linkback' => 'Clip source page',
 
