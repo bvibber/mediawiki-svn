@@ -126,6 +126,8 @@ class SkinTemplate extends Skin {
 						urlencode( $this->getSkinName() ) ) ;									
 			$this->jsvarurl = $siteGenScriptFile;			
 		}
+		//add jQuery for all skins:
+		$out->addScriptClass( 'jquery' );
 	}
 
 	/**

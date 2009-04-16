@@ -660,10 +660,9 @@ END;
 		$this->setupSkinUserJs( $out );
 					
 		$action = $wgRequest->getVal( 'action', 'view' );
-
-		if( $out->isUserJsAllowed() && $this->loggedin ) {
+		if( $out->isUserJsAllowed() && $this->loggedin ) {			
 			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
-				# XXX: additional security check/prompt?
+				# XXX: additional security check/prompt (userCanPreview checks for html token before doing this js output)
 				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText( 'wpTextbox1' ) . ' /*]]>*/';
 			} else {
 				$userjsPath = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );				

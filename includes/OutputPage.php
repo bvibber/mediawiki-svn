@@ -156,7 +156,7 @@ class OutputPage {
 		);
 			
 	}
-	function addScriptClass( $js_class ){
+	function addScriptClass( $js_class ){		
 		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses;
 		if(isset($wgJSAutoloadClasses[ $js_class ] ) || isset( $wgJSAutoloadLocalClasses[$js_class]) ){
 			$this->mScriptLoaderClassList[] = $js_class;

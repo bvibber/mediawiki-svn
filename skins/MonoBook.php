@@ -124,10 +124,12 @@ class MonoBookTemplate extends QuickTemplate {
 //moved userjs to setupSkinUserJs
 		if($this->data['userjs']) { ?>
 		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs' ) ?>"></script>
-<?php	}*/
+<?php	}
+//moved to setupSkinUserJs
 		if($this->data['userjsprev']) { ?>
 		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
 <?php	}
+*/
 		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>		
 	</head>
 <body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
