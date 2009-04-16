@@ -61,7 +61,7 @@ class SkinMonoBook extends SkinTemplate {
 		
 		//@@todo can move to parent once we update all skins
 		if( $this->jsvarurl )
-			$out->addScriptFile( $this->jsvarurl );
+			$out->addScriptFile( $this->jsvarurl );		
 	}
 }
 

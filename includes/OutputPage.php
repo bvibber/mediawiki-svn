@@ -14,8 +14,8 @@ class OutputPage {
 	var $mLastModified = '', $mETag = false;
 	var $mCategoryLinks = array(), $mLanguageLinks = array();
 	
-	var $mScriptLoaderClassList = array();
-	var $mScriptLoaderURID = false;
+	var $mScriptLoaderClassList = array();	
+	var $mLatestScriptRevID = 0; //the most recent id of any script that is grouped in the script request 
 	
 	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
 	var $mTemplateIds = array();
@@ -102,7 +102,7 @@ class OutputPage {
 	 * @param string $file filename in skins/common or complete on-server path (/foo/bar.js)
 	 */
 	function addScriptFile( $file ) {
-		global $wgStylePath, $wgStyleVersion, $wgJsMimeType, $wgScript;
+		global $wgStylePath, $wgStyleVersion, $wgJsMimeType, $wgScript, $wgUser;
 		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgEnableScriptLoader, $wgScriptPath;
 		
 		if( substr( $file, 0, 1 ) == '/' ) {
@@ -111,8 +111,29 @@ class OutputPage {
 			$path =  "{$wgStylePath}/common/{$file}";
 		}		
 		if( $wgEnableScriptLoader ){	
-			if( strpos($path, $wgScript) !== false ){
-				//we have a wiki page request for js (we have reverse engineer the url and pass along some special wikititle-class 				
+			if( strpos($path, $wgScript) !== false ){								
+				$reqPath = str_replace($wgScript.'?', '', $path);		
+				$reqArgs = split('&', $reqPath);
+				$reqSet = array();
+				
+				foreach($reqArgs as $arg){
+					list($key, $var) = split('=', $arg);
+					$reqSet[$key]= $var;
+				}
+					
+				if( isset( $reqSet['title'] ) &&  $reqSet != '' ) {
+					//extract any extra param (for now just skin) 
+					$ext_param = ( isset( $reqSet['useskin'] ) && $reqSet['useskin'] != '') ? '|useskin=' . ucfirst( $reqSet['useskin'] ) : '';
+					$this->mScriptLoaderClassList[] = 'WT:' . $reqSet['title'] . $ext_param ; 
+					//add the title revision to the key
+					$t = Title::newFromText( $reqSet['title'] );
+					//if there is no title (don't worry we just use the $wgStyleVersion var (which should be updated on relevant commits)
+					if( $t->exists() ){   													
+						if( $t->getLatestRevID() > $this->mLatestScriptRevID  )
+							$this->mLatestScriptRevID = $t->getLatestRevID();
+					}
+					return true;
+				}			
 			}
 			//check for class from path: 
 			$js_class = $this->getJsClassFromPath( $path );
@@ -158,8 +179,8 @@ class OutputPage {
 		//@@todo intelligent unique id generation based on svn version of file (rather than just grabbing the $wgStyleVersion var) 		
 		//@@todo we should check the packaged message text in this javascript file for updates and update the $mScriptLoaderURID id (in getJsClassFromPath)  
 
-		//generate the unique request param (combine with the $mScriptLoaderURID local var which contains the most recent revision id of any wiki page includes)
-		$urid_param = "&urid={$wgStyleVersion}{$this->mScriptLoaderURID}";  
+		//generate the unique request param (combine with the most recent revision id of any wiki page with the $wgStyleVersion var)
+		$urid_param = "&urid={$wgStyleVersion}_{$this->mLatestScriptRevID}";  
 			 		 
 		return Xml::element( 'script', 
 				array(

@@ -2092,9 +2092,8 @@ class Title {
 	public function getLatestRevID( $flags = 0 ) {
 		if( $this->mLatestID !== false )
 			return $this->mLatestID;
-
 		$db = ($flags & GAID_FOR_UPDATE) ? wfGetDB(DB_MASTER) : wfGetDB(DB_SLAVE);
-		$this->mLatestID = $db->selectField( 'page', 'page_latest', $this->pageCond(), __METHOD__ );
+		$this->mLatestID = $db->selectField( 'page', 'page_latest', $this->pageCond(), __METHOD__ );		
 		return $this->mLatestID;
 	}
 

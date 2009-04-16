@@ -496,15 +496,19 @@ class Skin extends Linker {
 	 * top.  For now Monobook.js will be maintained, but it should be consi-
 	 * dered deprecated.
 	 *
+	 * @param force_skin  lets you override the skin name
+	 * 
 	 * @return string
 	 */
-	public function generateUserJs() {
+	public function generateUserJs( $force_skin = false) {
 		global $wgStylePath;
 
 		wfProfileIn( __METHOD__ );
-
+		$skinName = ( $force_skin ) ? $force_skin : $this->getSkinName();
+		
+		
 		$s = "/* generated javascript */\n";
-		$s .= "var skin = '" . Xml::escapeJsString( $this->getSkinName() ) . "';\n";
+		$s .= "var skin = '" . Xml::escapeJsString( $skinName ) . "';\n";
 		$s .= "var stylepath = '" . Xml::escapeJsString( $wgStylePath ) . "';";
 		$s .= "\n\n/* MediaWiki:Common.js */\n";
 		$commonJs = wfMsgForContent( 'common.js' );
@@ -512,10 +516,10 @@ class Skin extends Linker {
 			$s .= $commonJs;
 		}
 
-		$s .= "\n\n/* MediaWiki:".ucfirst( $this->getSkinName() ).".js */\n";
+		$s .= "\n\n/* MediaWiki:".ucfirst( $skinName ).".js */\n";
 		// avoid inclusion of non defined user JavaScript (with custom skins only)
 		// by checking for default message content
-		$msgKey = ucfirst( $this->getSkinName() ).'.js';
+		$msgKey = ucfirst( $skinName ).'.js';
 		$userJS = wfMsgForContent( $msgKey );
 		if ( !wfEmptyMsg( $msgKey, $userJS ) ) {
 			$s .= $userJS;
