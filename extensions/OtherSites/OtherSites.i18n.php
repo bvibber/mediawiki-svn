@@ -329,6 +329,13 @@ $messages['sq'] = array(
 	'othersites' => 'Faqet tjera',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'othersites' => 'Други сајтови',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

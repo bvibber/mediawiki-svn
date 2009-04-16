@@ -460,6 +460,16 @@ $messages['sk'] = array(
 	'newschannel_submit_button' => 'Vytvoriť kanál',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'newschannel_format' => 'Формат:',
+	'newschannel_limit' => 'Лимит:',
+	'newschannel_include_category' => 'Додатна категорија:',
+	'newschannel_exclude_category' => 'Искључи категорију:',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

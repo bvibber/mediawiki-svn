@@ -172,6 +172,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'imstatus-desc' => 'Dodaje oznake za prikaz raznih online statusa za IM (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Sintaksa',
 	'imstatus_default' => 'Pretpostavljeno',
 	'imstatus_example' => 'Primjer',
@@ -991,6 +992,25 @@ Identifikátor, ktorý musíte zadať, sú písmená a číslice medzi „$2” 
 	'imstatus_skype_nbstyle' => 'Pozn.: Ak si zvolíte štýl, ktorý je aj operáciou, pred vašou voľbou operácie bude mať prednosť operácia zodpovedajúca zvolenému štýlu.',
 	'imstatus_xfire_size' => 'veľkosť tlačidla od $1 (najväčšia) do $2 (najmenšia).',
 	'imstatus_yahoo_style' => 'štýl tlačidla od $1 (najväčší) do $2 (najmenší). $3 a $4 slúžia pre hlasovú poštu.',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'imstatus_syntax' => 'Синтакса',
+	'imstatus_default' => 'Подразумевано',
+	'imstatus_example' => 'Пример',
+	'imstatus_possible_val' => 'Могуће вредности',
+	'imstatus_max' => 'макс',
+	'imstatus_min' => 'мин',
+	'imstatus_or' => 'или',
+	'imstatus_action' => 'акција по клику дугмета',
+	'imstatus_your_name' => 'Ваше $1 име',
+	'imstatus_gtalk_height' => 'висина кутије, у пикселима.',
+	'imstatus_gtalk_width' => 'ширина кутије, у пикселима.',
+	'imstatus_icq_id' => 'Ваш ICQ ID',
+	'imstatus_xfire_size' => 'величина дугмета, од $1 (највеће) до $2 (најмање).',
 );
 
 /** Seeltersk (Seeltersk)

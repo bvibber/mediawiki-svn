@@ -1384,6 +1384,41 @@ Počkajte prosím, kým sa dokončí prebiehajúca operácia.',
 	'tag-logpagetext' => 'Toto je záznam všetkých pridaní a odstránení značiek obrázkov.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'taggedimages' => 'Таговане слике',
+	'imagetagging-desc' => 'Омогућава кориснику да изабере регионе једне слике и придружи им чланке',
+	'imagetagging-addimagetag' => 'Тагуј ову слику',
+	'imagetagging-article' => 'Страна:',
+	'imagetagging-canteditothermessage' => 'Не можете да мењате ову страну, због тога што немате потребна права приступа за то или због закључавања стране из других разлога.',
+	'imagetagging-imghistory' => 'Историја',
+	'imagetagging-images' => 'слике',
+	'imagetagging-inthisimage' => 'На овој слици: $1',
+	'imagetagging-logentry' => 'Обрисан таг ка страни [[$1]], од $2',
+	'imagetagging-log-tagged' => 'Слика [[$1|$2]] је тагована на страну [[$3]] од $4',
+	'imagetagging-new' => '<sup><span style="color:red">Ново!</span></sup>',
+	'imagetagging-removetag' => 'обриши таг',
+	'imagetagging-done-button' => 'Таговање завршено',
+	'imagetagging-tag-button' => 'Тагуј',
+	'imagetagging-tagcancel-button' => 'Поништи',
+	'imagetagging-tagging-instructions' => 'Кликните на људе или ствари на слици, како бисте их таговали.',
+	'imagetagging-addingtag' => 'Додавање тага…',
+	'imagetagging-removingtag' => 'Брисање тага…',
+	'imagetagging-addtagsuccess' => 'Додат таг.',
+	'imagetagging-removetagsuccess' => 'Избрисан таг.',
+	'imagetagging-canteditneedloginmessage' => 'Не можете мењати овај чланак.
+Ово може бити због тога што је потребно да се улогујете како би таговали слике.
+Да ли желите да се улогујете?',
+	'imagetagging-oneactionatatimemessage' => 'Могуће је додати само један таг по акцији.
+Молимо вас да сачекате да се претходна акција заврши.',
+	'imagetagging-oneuniquetagmessage' => 'Ова слика већ има таг са овим именом.',
+	'imagetagging-imagetag-seemoreimages' => 'Види више слика од "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Слике од "$1"',
+	'imagetagging-taggedimages-displaying' => 'Приказ $1 - $2 од $3 слика од "$4"',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

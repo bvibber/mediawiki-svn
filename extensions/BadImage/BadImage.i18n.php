@@ -192,6 +192,19 @@ $messages['avk'] = array(
 	'badimages-page' => '{{ns:help}}:Ewaveemaj',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'badimages' => 'Listn vu ned eawünschte Büidln',
+	'badimages-added' => '$1 is zu da Listn dazua dã woan',
+	'badimages-count' => "D'Listn vu de uneawünschtn Büidln håd '''$1''' {{PLURAL:$1|Eintråg|Einträge}}",
+	'badimages-name' => 'Nãm:',
+	'badimages-not-added' => 'Des Büidl håd ned dazuagfügt wean kina.',
+	'badimages-not-removed' => "S'Büidl håd ned entfeand wean kina.",
+	'badimages-reason' => 'Grund:',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

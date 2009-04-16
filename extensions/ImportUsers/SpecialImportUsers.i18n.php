@@ -863,7 +863,7 @@ $messages['ksh'] = array(
 	'importusers-user-present-update' => 'Ne Metmaacher <b>%s</b> johf et ald. Övverschrevve.',
 	'importusers-user-present-not-update' => 'Ne Metmaacher %s jit et ald. Nix jedonn.',
 	'importusers-user-invalid-format' => 'De Metmaacher-Daate en de Reih %s es ledddich udder hät e kapott Fommaat. Övverjange.',
-	'importusers-log' => 'Logbooch fum Metmaacher-Empotteere',
+	'importusers-log' => 'Logbooch fun de empoteete Metmaacher',
 	'importusers-log-summary' => 'Koot Zosammejefass',
 	'importusers-log-summary-all' => 'All',
 	'importusers-log-summary-added' => 'Dobei jedonn',
@@ -1331,6 +1331,29 @@ $messages['sk'] = array(
 	'importusers-email' => 'email',
 	'importusers-realname' => 'skutočné meno',
 	'right-import_users' => 'Hromadne importovať používateľov',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'importusers' => 'Увези кориснике',
+	'importusers-uploadfile' => 'Пошаљи фајл',
+	'importusers-form-replace-present' => 'Пиши преко података постојећих корисника',
+	'importusers-form-button' => 'Увоз',
+	'importusers-user-added' => 'Корисник <b>%s</b> је додат.',
+	'importusers-user-present-update' => 'Корисник <b>%s</b> већ постоји. Ажурирано.',
+	'importusers-user-present-not-update' => 'Корисник <b>%s</b> већ постоји. Није ажурирано.',
+	'importusers-user-invalid-format' => 'Кориснички подаци у линији #%s су неисправно форматирани или је линија празна. Прескочено.',
+	'importusers-log' => 'Историја увоза',
+	'importusers-log-summary' => 'Опис',
+	'importusers-log-summary-all' => 'Све',
+	'importusers-log-summary-added' => 'Додато',
+	'importusers-log-summary-updated' => 'Ажурирано',
+	'importusers-login-name' => 'Корисничко име',
+	'importusers-password' => 'лозинка',
+	'importusers-email' => 'мејл',
+	'importusers-realname' => 'право име',
 );
 
 /** Seeltersk (Seeltersk)

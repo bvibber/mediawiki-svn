@@ -3005,9 +3005,11 @@ $messages['io'] = array(
  * @author Darth Kule
  * @author Melos
  * @author Santu
+ * @author Stefano-c
  */
 $messages['it'] = array(
 	'code' => 'Revisione del codice',
+	'code-rev-title' => 'r$1 - Revisione del codice',
 	'code-comments' => 'Commenti',
 	'code-change-status' => "ha modificato lo '''stato''' di r$1",
 	'code-change-tags' => "ha modificato i '''tag''' di r$1",
@@ -3064,6 +3066,10 @@ $messages['it'] = array(
 	'code-rev-comment-preview' => 'Anteprima',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-status-new' => 'nuovo',
+	'code-status-resolved' => 'risolto',
+	'code-status-ok' => 'ok',
+	'code-status-verified' => 'verificato',
 	'code-pathsearch-legend' => 'Ricerca nelle revisioni di questo repository in base al percorso',
 	'code-pathsearch-path' => 'Percorso:',
 	'code-rev-submit' => 'Salva le modifiche',
@@ -5249,7 +5255,7 @@ $messages['sah'] = array(
 	'code-tags' => 'бэлиэлэр',
 	'code-authors-text' => 'Аллараа ааптардар тиһиктэрэ киллэрбит уларытыыларын кэминэн наарданан (саҥалар — үөһэ) бэриллэр.',
 	'code-author-haslink' => 'Бу ааптар $1 кыттааччыга сигэнэр',
-	'code-author-orphan' => 'Бу ааптар биики-бырайыак ханнык эмит кыттааччытыгар сигэммэт',
+	'code-author-orphan' => 'Бу ааптар биики-бырайыак ханнык да кыттааччытыгар сигэммэт',
 	'code-author-dolink' => 'Бу ааптары ханнык эмит кыттаачыга сигииргэ:',
 	'code-author-alterlink' => 'Бу ааптар кыттааччыга сигэниитин уларытарга:',
 	'code-author-orunlink' => 'Эбэтэр кыттаачыга сигэни эрэ соторго:',

@@ -705,6 +705,11 @@ $messages['sr-ec'] = array(
 	'am-email' => 'имејл',
 	'am-active' => 'активан',
 	'am-updated' => 'Баше измене су успешно снимљене',
+	'nss-create-account-header' => 'Направи нови налог',
+	'nss-create-account' => 'Направи налог',
+	'nss-no-mail' => 'Не шаљи имејл',
+	'nss-welcome-mail' => 'За Вас је направљен налог са корисничким именом $1 и лозинком $2.',
+	'nss-welcome-mail-subject' => 'Прављење налога',
 );
 
 /** Swedish (Svenska)

@@ -798,6 +798,20 @@ $messages['sk'] = array(
 	'inspectcache-list' => 'Zoznam',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'inspectcache' => 'Испитај кеш',
+	'inspectcache-ok' => 'Потврди',
+	'inspectcache-general' => 'Општи кеш',
+	'inspectcache-parser' => 'Кеш парсера',
+	'inspectcache-message' => 'Кеш за поруке',
+	'inspectcache-delete' => 'Обриши',
+	'inspectcache-deleted' => 'Обрисан кеш',
+	'inspectcache-list' => 'Списак',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
