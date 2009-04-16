@@ -172,7 +172,7 @@ class jsScriptLoader{
 					if( substr( $reqClass, 0, 3) == 'WT:' ){
 						$this->jsFileList[ $reqClass ] = true;
 						$this->rKey .= $reqClass;
-						$this->jsvarurl = true;						
+						$this->jsvarurl = true;		
 						continue;
 					}				
 					

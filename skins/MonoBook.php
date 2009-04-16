@@ -59,9 +59,15 @@ class SkinMonoBook extends SkinTemplate {
 		parent::setupSkinUserJs( $out );		
 		$out->addScriptFile( 'wikibits.js' );
 		
-		//@@todo can move to parent once we update all skins
+		//@@todo can move to parent once we update all skins (to not include things twice		
 		if( $this->jsvarurl )
 			$out->addScriptFile( $this->jsvarurl );		
+			
+		if( $this->userjs )		
+			$out->addScriptFile( $this->userjs );
+		
+		if( $this->userjsprev )
+			$out->addInlineScript( $this->userjsprev );
 	}
 }
 

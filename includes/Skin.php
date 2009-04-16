@@ -655,23 +655,20 @@ END;
 	function setupUserJs(  OutputPage $out) {
 		global $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 
-		wfProfileIn( __METHOD__ );
-		//call the skin JS setup
-		$this->setupSkinUserJs( $out );
+		wfProfileIn( __METHOD__ );		
 					
 		$action = $wgRequest->getVal( 'action', 'view' );
 		if( $out->isUserJsAllowed() && $this->loggedin ) {			
 			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
 				# XXX: additional security check/prompt (userCanPreview checks for html token before doing this js output)
 				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText( 'wpTextbox1' ) . ' /*]]>*/';
-			} else {
-				$userjsPath = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );				
-				$out->addScriptFile($userjsPath);				
-				
-				/*@@deprecated userjs is deprecated should update skins*/
-				$this->userjs = $userjsPath;
+			} else {																			
+				$this->userjs = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );	
 			}
 		}				
+		//call the skin JS setup
+		$this->setupSkinUserJs( $out );
+				
 		wfProfileOut( __METHOD__ );
 	}
 	/**
