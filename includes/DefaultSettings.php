@@ -2569,6 +2569,31 @@ $wgSpecialPages = array();
  */
 $wgAutoloadClasses = array();
 
+
+/*
+ * Array mapping javascript class to web path for autoloading js
+ * this var is populated in AutoLoader.php
+ */
+$wgJSAutoloadClasses = array(); 
+
+/*
+ * boolean if the script loader should be used to group all javascript requests.
+ * more about the script loader: http://www.mediawiki.org/wiki/ScriptLoader
+ */
+$wgEnableScriptLoader = false; 
+
+/*
+ * boolean; if relative file paths can be used (in addition to the autoload js classes listed in: $wgJSAutoloadClasses
+ */
+$wgEnableScriptLoaderJsFile = false; 
+
+/*
+ * boolean; if we should minify the output. (note if you send ?debug=true in the page request it will automatically not group and not minify)  
+ */
+$wgEnableScriptMinify = true;
+
+
+
 /**
  * An array of extension types and inside that their names, versions, authors,
  * urls, descriptions and pointers to localized description msgs. Note that

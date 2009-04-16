@@ -26,8 +26,7 @@ class SkinMonoBook extends SkinTemplate {
 		$this->stylename = 'monobook';
 		$this->template  = 'MonoBookTemplate';
 
-	}
-
+	}	
 	function setupSkinUserCss( OutputPage $out ) {
 		global $wgHandheldStyle;
 
@@ -45,7 +44,24 @@ class SkinMonoBook extends SkinTemplate {
 		$out->addStyle( 'monobook/IE60Fixes.css', 'screen', 'IE 6' );
 		$out->addStyle( 'monobook/IE70Fixes.css', 'screen', 'IE 7' );
 
-		$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );
+		$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );		
+		
+		
+		//@@todo we can move this to the parent once we update all skins 
+		if( $this->pagecss )
+			$out->addInlineStyle( $this->pagecss );		
+		
+		if(  $this->usercss )
+			$out->addInlineStyle( $this->usercss );
+				
+	}
+	function setupSkinUserJs( OutputPage $out ) {
+		parent::setupSkinUserJs( $out );		
+		$out->addScriptFile( 'wikibits.js' );
+		
+		//@@todo can move to parent once we update all skins
+		if( $this->jsvarurl )
+			$out->addScriptFile( $this->jsvarurl );
 	}
 }
 
@@ -64,10 +80,9 @@ class MonoBookTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	function execute() {
-		global $wgRequest;
+		global $wgRequest;		
 		$this->skin = $skin = $this->data['skin'];
-		$action = $wgRequest->getText( 'action' );
-
+		$action = $wgRequest->getText( 'action' );		
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
 
@@ -86,26 +101,34 @@ class MonoBookTemplate extends QuickTemplate {
 		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
 
 		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
-
-		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
+		<?			
+			/*<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>*/
+		?>		
 		<!-- Head Scripts -->
 <?php $this->html('headscripts') ?>
-<?php	if($this->data['jsvarurl']) { ?>
+<?php
+//moved to parent::setupSkinUserJs
+/*if($this->data['jsvarurl']) { ?>
 		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('jsvarurl') ?>"><!-- site js --></script>
-<?php	} ?>
-<?php	if($this->data['pagecss']) { ?>
+<?php	} */
+?>
+<?php
+//moved to setupSkinUserCss	
+	/* if($this->data['pagecss']) { ?>
 		<style type="text/css"><?php $this->html('pagecss') ?></style>
 <?php	}
+//moved to setInlineStyle in Skin::setupUserCss
 		if($this->data['usercss']) { ?>
 		<style type="text/css"><?php $this->html('usercss') ?></style>
 <?php	}
+//moved userjs to setupSkinUserJs
 		if($this->data['userjs']) { ?>
 		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('userjs' ) ?>"></script>
-<?php	}
+<?php	}*/
 		if($this->data['userjsprev']) { ?>
 		<script type="<?php $this->text('jsmimetype') ?>"><?php $this->html('userjsprev') ?></script>
 <?php	}
-		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
+		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>		
 	</head>
 <body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>

@@ -99,6 +99,7 @@ $wgAutoloadLocalClasses = array(
 	'IndexPager' => 'includes/Pager.php',
 	'Interwiki' => 'includes/Interwiki.php',
 	'IP' => 'includes/IP.php',
+	'JSMin' => 'includes/JSMin.php',
 	'Job' => 'includes/JobQueue.php',
 	'License' => 'includes/Licenses.php',
 	'Licenses' => 'includes/Licenses.php',
@@ -111,7 +112,7 @@ $wgAutoloadLocalClasses = array(
 	'LogPager' => 'includes/LogEventsList.php',
 	'LogEventsList' => 'includes/LogEventsList.php',
 	'LogReader' => 'includes/LogEventsList.php',
-	'LogViewer' => 'includes/LogEventsList.php',
+	'LogViewer' => 'includes/LogEventsList.php',	
 	'MacBinary' => 'includes/MacBinary.php',
 	'MagicWordArray' => 'includes/MagicWord.php',
 	'MagicWord' => 'includes/MagicWord.php',
@@ -541,7 +542,31 @@ $wgAutoloadLocalClasses = array(
 	'metawikiStatsOutput' => 'maintenance/language/StatOutputs.php',
 	'textStatsOutput' => 'maintenance/language/StatOutputs.php',
 	'csvStatsOutput' => 'maintenance/language/StatOutputs.php',
+		
+);
 
+//autoloader for javascript files (path is from the mediawiki folder    
+global $wgJSAutoloadLocalClasses, $wgScriptPath; 
+$wgJSAutoloadLocalClasses = array(	
+	'ajax' =>  'skins/common/ajax.js',
+    'ajaxwatch' => 'skins/common/ajaxwatch.js',
+    'allmessages' => 'skins/common/allmessages.js',
+	'block' => 'skins/common/block.js',
+	'changepassword' => 'skins/common/changepassword.js',
+	'diff.js' => 'skins/common/diff.js',
+	'edit.js' => 'skins/common/edit.js',
+	'enhancedchanges.js' => 'skins/common/enhancedchanges.js',
+	'history.js' => 'skins/common/history.js',
+	'IEFixes.js' => 'skins/common/IEFixes.js',
+	'metadata.js' => 'skins/common/metadata.js',
+	'mwsuggest.js' => 'skins/common/mwsuggest.js',
+	'prefs.js' => 'skins/common/prefs.js',
+	'preview.js' => 'skins/commn/preview.js',
+	'protect.js' => 'skins/commn/protect.js',
+	'rightclickedit.js' => 'skins/commn/rightclickedit.js',
+	'sticky.js'	=> 'skins/commn/sticky.js',
+	'upload.js' => 'skins/commn/upload.js',
+	'wikibits' => 'skins/common/wikibits.js'
 );
 
 class AutoLoader {

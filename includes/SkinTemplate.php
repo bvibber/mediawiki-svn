@@ -111,6 +111,21 @@ class SkinTemplate extends Skin {
 	function setupSkinUserCss( OutputPage $out ){
 		$out->addStyle( 'common/shared.css', 'screen' );
 		$out->addStyle( 'common/commonPrint.css', 'print' );	
+		
+		//@depricated  pagecss is depricated can remove once skins are updated
+		$this->pagecss = $this->setupPageCss();
+	}
+	/* add specific javascript the base Skin class */
+	function setupSkinUserJs( OutputPage $out ){	
+		global $wgUseSiteJs;	
+		//use site js: 
+		if( $wgUseSiteJs ) {
+			$jsCache = $this->loggedin ? '&smaxage=0' : '';
+			$siteGenScriptFile =  self::makeUrl( '-',
+					"action=raw$jsCache&gen=js&useskin=" .
+						urlencode( $this->getSkinName() ) ) ;									
+			$this->jsvarurl = $siteGenScriptFile;			
+		}
 	}
 
 	/**
@@ -156,6 +171,7 @@ class SkinTemplate extends Skin {
 		$this->setMembers();
 		$tpl = $this->setupTemplate( $this->template, 'skins' );
 
+		
 		#if ( $wgUseDatabaseMessages ) { // uncomment this to fall back to GetText
 		$tpl->setTranslator( new MediaWiki_I18N() );
 		#}
@@ -178,8 +194,11 @@ class SkinTemplate extends Skin {
 		}
 
 		$this->userjs = $this->userjsprev = false;
+			
 		$this->setupUserCss( $out );
-		$this->setupUserJs( $out->isUserJsAllowed() );
+		
+		$this->setupUserJs( $out );
+		
 		$this->titletxt = $this->mTitle->getPrefixedText();
 		wfProfileOut( __METHOD__ . '-stuff' );
 
@@ -241,9 +260,10 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'mimetype', $wgMimeType );
 		$tpl->setRef( 'jsmimetype', $wgJsMimeType );
 		$tpl->setRef( 'charset', $wgOutputEncoding );
-		$tpl->set( 'headlinks', $out->getHeadLinks() );
-		$tpl->set( 'headscripts', $out->getScript() );
+		$tpl->set( 'headlinks', $out->getHeadLinks() );			
+		
 		$tpl->set( 'csslinks', $out->buildCssLinks() );
+		
 		$tpl->setRef( 'wgScript', $wgScript );
 		$tpl->setRef( 'skinname', $this->skinname );
 		$tpl->set( 'skinclass', get_class( $this ) );
@@ -275,20 +295,16 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage );
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href'] );
-		$tpl->set( 'userlang', $wgLang->getCode() );
-		$tpl->set( 'pagecss', $this->setupPageCss() );
+		$tpl->set( 'userlang', $wgLang->getCode() );				
+		
 		$tpl->setRef( 'usercss', $this->usercss );
 		$tpl->setRef( 'userjs', $this->userjs );
-		$tpl->setRef( 'userjsprev', $this->userjsprev );
-		if( $wgUseSiteJs ) {
-			$jsCache = $this->loggedin ? '&smaxage=0' : '';
-			$tpl->set( 'jsvarurl',
-				self::makeUrl( '-',
-					"action=raw$jsCache&gen=js&useskin=" .
-						urlencode( $this->getSkinName() ) ) );
-		} else {
-			$tpl->set( 'jsvarurl', false );
-		}
+		$tpl->setRef( 'userjsprev', $this->userjsprev );	
+		
+		//@@deprecated vars (shoudl stop using them in skins)
+		$tpl->setRef( 'pagecss', $this->pagecss );	
+		$tpl->setRef( 'jsvarurl', $this->jsvarurl );	
+		
 		$newtalks = $wgUser->getNewMessageLinks();
 
 		if( count( $newtalks ) == 1 && $newtalks[0]['wiki'] === wfWikiID() ) {
@@ -449,7 +465,11 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'body_onload', false );
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
-
+		
+		//set the head script near the end: 
+		$tpl->set( 'headscripts', $out->getScript() );
+		
+		
 		// original version by hansm
 		if( !wfRunHooks( 'SkinTemplateOutputPageBeforeExec', array( &$this, &$tpl ) ) ) {
 			wfDebug( __METHOD__ . ": Hook SkinTemplateOutputPageBeforeExec broke outputPage execution!\n" );
@@ -458,8 +478,8 @@ class SkinTemplate extends Skin {
 		// allow extensions adding stuff after the page content.
 		// See Skin::afterContentHook() for further documentation.
 		$tpl->set( 'dataAfterContent', $this->afterContentHook() );
-		wfProfileOut( __METHOD__ . '-stuff5' );
-
+		wfProfileOut( __METHOD__ . '-stuff5' );		
+		
 		// execute template
 		wfProfileIn( __METHOD__ . '-execute' );
 		$res = $tpl->execute();
@@ -968,27 +988,6 @@ class SkinTemplate extends Skin {
 	}
 
 	/**
-	 * @private
-	 */
-	function setupUserJs( $allowUserJs ) {
-		global $wgRequest, $wgJsMimeType;
-
-		wfProfileIn( __METHOD__ );
-
-		$action = $wgRequest->getVal( 'action', 'view' );
-
-		if( $allowUserJs && $this->loggedin ) {
-			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
-				# XXX: additional security check/prompt?
-				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText( 'wpTextbox1' ) . ' /*]]>*/';
-			} else {
-				$this->userjs = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );
-			}
-		}
-		wfProfileOut( __METHOD__ );
-	}
-
-	/**
 	 * Code for extensions to hook into to provide per-page CSS, see
 	 * extensions/PageCSS/PageCSS.php for an implementation of this.
 	 *
@@ -1016,7 +1015,6 @@ class QuickTemplate {
 		$this->data = array();
 		$this->translator = new MediaWiki_I18N();
 	}
-
 	/**
 	 * Sets the value $value to $name
 	 * @param $name

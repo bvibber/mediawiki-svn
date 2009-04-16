@@ -285,7 +285,7 @@ class Skin extends Linker {
 	}
 
 	function outputPage( OutputPage $out ) {
-		global $wgDebugComments;
+		global $wgDebugComments;		
 		wfProfileIn( __METHOD__ );
 
 		$this->setMembers();
@@ -352,6 +352,7 @@ class Skin extends Linker {
 		global $wgVersion, $wgEnableAPI, $wgEnableWriteAPI;
 		global $wgRestrictionTypes, $wgLivePreview;
 		global $wgMWSuggestTemplate, $wgDBname, $wgEnableMWSuggest;
+	
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -395,8 +396,14 @@ class Skin extends Linker {
 			'wgEnableAPI' => $wgEnableAPI,
 			'wgEnableWriteAPI' => $wgEnableWriteAPI,
 			'wgSeparatorTransformTable' => $compactSeparatorTransTable,
-			'wgDigitTransformTable' => $compactDigitTransTable,
+			'wgDigitTransformTable' => $compactDigitTransTable,			
 		);
+		//if on upload page output the extension list:
+		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) ==  "Upload" ){ 
+			global $wgFileExtensions;
+			$vars['wgFileExtensions'] = $wgFileExtensions;
+		}
+		
 		
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ){
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();
@@ -578,7 +585,7 @@ END;
 
 		wfProfileIn( __METHOD__ );
 
-		$this->setupSkinUserCss( $out );
+		$this->setupSkinUserCss( $out );				
 
 		$siteargs = array(
 			'action' => 'raw',
@@ -627,8 +634,8 @@ END;
 			# If we're previewing the CSS page, use it
 			if( $this->mTitle->isCssSubpage() && $this->userCanPreview( $action ) ) {
 				$previewCss = $wgRequest->getText( 'wpTextbox1' );
-				// @FIXME: properly escape the cdata!
-				$this->usercss = "/*<![CDATA[*/\n" . $previewCss . "/*]]>*/";
+				// @FIXME: properly escape the cdata!				
+				$this->usercss = "/*<![CDATA[*/\n" . $previewCss . "/*]]>*/";				
 			} else {
 				$out->addStyle( self::makeUrl( $this->userpage . '/' . $this->getSkinName() .'.css',
 					'action=raw&ctype=text/css' ) );
@@ -637,7 +644,33 @@ END;
 
 		wfProfileOut( __METHOD__ );
 	}
+	
+	/**
+	 * @private
+	 */
+	function setupUserJs(  OutputPage $out) {
+		global $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 
+		wfProfileIn( __METHOD__ );
+		//call the skin JS setup
+		$this->setupSkinUserJs( $out );
+					
+		$action = $wgRequest->getVal( 'action', 'view' );
+
+		if( $out->isUserJsAllowed() && $this->loggedin ) {
+			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
+				# XXX: additional security check/prompt?
+				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText( 'wpTextbox1' ) . ' /*]]>*/';
+			} else {
+				$userjsPath = self::makeUrl( $this->userpage . '/' . $this->skinname . '.js', 'action=raw&ctype=' . $wgJsMimeType );				
+				$out->addScriptFile($userjsPath);				
+				
+				/*@@deprecated userjs is deprecated should update skins*/
+				$this->userjs = $userjsPath;
+			}
+		}				
+		wfProfileOut( __METHOD__ );
+	}
 	/**
 	 * Add skin specific stylesheets
 	 * @param $out OutputPage

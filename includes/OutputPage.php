@@ -13,6 +13,10 @@ class OutputPage {
 	var $mSubtitle = '', $mRedirect = '', $mStatusCode;
 	var $mLastModified = '', $mETag = false;
 	var $mCategoryLinks = array(), $mLanguageLinks = array();
+	
+	var $mScriptLoaderClassList = array();
+	var $mScriptLoaderURID = false;
+	
 	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
 	var $mTemplateIds = array();
 
@@ -98,12 +102,28 @@ class OutputPage {
 	 * @param string $file filename in skins/common or complete on-server path (/foo/bar.js)
 	 */
 	function addScriptFile( $file ) {
-		global $wgStylePath, $wgStyleVersion, $wgJsMimeType;
+		global $wgStylePath, $wgStyleVersion, $wgJsMimeType, $wgScript;
+		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgEnableScriptLoader, $wgScriptPath;
+		
 		if( substr( $file, 0, 1 ) == '/' ) {
 			$path = $file;
 		} else {
 			$path =  "{$wgStylePath}/common/{$file}";
+		}		
+		if( $wgEnableScriptLoader ){	
+			if( strpos($path, $wgScript) !== false ){
+				//we have a wiki page request for js (we have reverse engineer the url and pass along some special wikititle-class 				
+			}
+			//check for class from path: 
+			$js_class = $this->getJsClassFromPath( $path );
+			if( $js_class ){
+				//add to the class list:
+				$this->mScriptLoaderClassList[] = $js_class;
+				return true;
+			}
 		}
+		//die();
+		//if the script loader did not find a way to add the script than skip
 		$this->addScript( 
 			Xml::element( 'script', 
 				array(
@@ -112,9 +132,54 @@ class OutputPage {
 				),
 				'', false
 			)
-		);	
+		);
+			
 	}
-	
+	function addScriptClass( $js_class ){
+		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses;
+		if(isset($wgJSAutoloadClasses[ $js_class ] ) || isset( $wgJSAutoloadLocalClasses[$js_class]) ){
+			$this->mScriptLoaderClassList[] = $js_class;
+		}
+	}
+	/**
+	 * gets the scriptLoader javascript include 
+	 *
+	 */
+	function getScriptLoaderJs(){
+		global $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgRequest;
+		
+		$class_list = implode(',', $this->mScriptLoaderClassList );
+		
+		$debug_param = ( $mvgJSDebug ||
+						 $wgRequest->getVal('debug')=='true' ||
+						 $wgRequest->getVal('debug')=='1' ) 
+			 		 ? '&debug=true' : '';	
+		
+		//@@todo intelligent unique id generation based on svn version of file (rather than just grabbing the $wgStyleVersion var) 		
+		//@@todo we should check the packaged message text in this javascript file for updates and update the $mScriptLoaderURID id (in getJsClassFromPath)  
+
+		//generate the unique request param (combine with the $mScriptLoaderURID local var which contains the most recent revision id of any wiki page includes)
+		$urid_param = "&urid={$wgStyleVersion}{$this->mScriptLoaderURID}";  
+			 		 
+		return Xml::element( 'script', 
+				array(
+					'type' => $wgJsMimeType,
+					'src' => "$wgScriptPath/mvwScriptLoader.php?class={$class_list}{$debug_param}{$urid_param}",
+				),
+				'', false
+			);
+	}
+	function getJsClassFromPath( $path ){
+		global $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $wgScriptPath;
+		
+		$scriptLoaderPaths = array_merge( $wgJSAutoloadClasses,  $wgJSAutoloadLocalClasses );
+		foreach( $scriptLoaderPaths as $js_class => $js_path ){
+			$js_path = "{$wgScriptPath}/{$js_path}";
+			if($path == $js_path)
+				return $js_class;
+		}
+		return false;
+	}
 	/**
 	 * Add a self-contained script tag with the given contents
 	 * @param string $script JavaScript text, no <script> tags
@@ -125,7 +190,13 @@ class OutputPage {
 	}
 
 	function getScript() {
-		return $this->mScripts . $this->getHeadItems();
+		global $wgEnableScriptLoader;
+		if( $wgEnableScriptLoader ){	
+			//include 	$this->mScripts (for anything that we could not package into the scriptloader
+			return $this->mScripts ."\n". $this->getScriptLoaderJs() . $this->getHeadItems();
+		}else{
+			return $this->mScripts . $this->getHeadItems();
+		}
 	}
 
 	function getHeadItems() {
@@ -1504,15 +1575,15 @@ class OutputPage {
 	/**
 	 * @return string The doctype, opening <html>, and head element.
 	 */
-	public function headElement( Skin $sk ) {
+	public function headElement( Skin $sk ) {		
 		global $wgDocType, $wgDTD, $wgContLanguageCode, $wgOutputEncoding, $wgMimeType;
 		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces;
-		global $wgContLang, $wgUseTrackbacks, $wgStyleVersion;
+		global $wgContLang, $wgUseTrackbacks, $wgStyleVersion, $wgEnableScriptLoader;
 
 		$this->addMeta( "http:Content-type", "$wgMimeType; charset={$wgOutputEncoding}" );
 		$this->addStyle( 'common/wikiprintable.css', 'print' );
 		$sk->setupUserCss( $this );
-
+		
 		$ret = '';
 
 		if( $wgMimeType == 'text/xml' || $wgMimeType == 'application/xhtml+xml' || $wgMimeType == 'application/xml' ) {
@@ -1536,13 +1607,17 @@ class OutputPage {
 			$this->getHeadLinks(),
 			$this->buildCssLinks(),
 			$sk->getHeadScripts( $this->mAllowUserJs ),
-			$this->mScripts,
+			$this->mScripts,			
 			$this->getHeadItems(),
 		));
 		if( $sk->usercss ){
 			$ret .= "<style type='text/css'>{$sk->usercss}</style>";
 		}
 
+		if( $wgEnableScriptLoader )
+			$ret .= $this->getScriptLoaderJs();
+		die($ret);
+		
 		if ($wgUseTrackbacks && $this->isArticleRelated())
 			$ret .= $this->getTitle()->trackbackRDF();
 
@@ -1694,7 +1769,9 @@ class OutputPage {
 			$options['dir'] = $dir;
 		$this->styles[$style] = $options;
 	}
-
+	public function addInlineStyle( $style_css ){
+		$this->mScripts .= "<style type=\"text/css\">$style_css</style>";
+	}	
 	/**
 	 * Build a set of <link>s for the stylesheets specified in the $this->styles array.
 	 * These will be applied to various media & IE conditionals.
