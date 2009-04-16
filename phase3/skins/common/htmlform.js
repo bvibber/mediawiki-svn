@@ -6,6 +6,9 @@ addOnloadHook( function() {
 		var select = fields[i];
 		
 		addHandler( select, 'change', htmlforms.selectOrOtherSelectChanged );
+		
+		// Use a fake 'e' to update it.
+		htmlforms.selectOrOtherSelectChanged( { 'target': select } );
 	}
 } );
 

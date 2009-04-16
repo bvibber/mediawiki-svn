@@ -21,6 +21,7 @@ class HTMLForm {
 	 	'toggle' => 'HTMLCheckField',
 	 	'int' => 'HTMLIntField',
 	 	'info' => 'HTMLInfoField',
+	 	'selectorother' => 'HTMLSelectOrOtherField',
 	 );
 	 
 	function __construct( $descriptor, $messagePrefix ) {
@@ -191,6 +192,8 @@ class HTMLForm {
 		
 		if ( isset($this->mSubmitID) )
 			$attribs['id'] = $this->mSubmitID;
+		
+		$attribs['class'] = 'mw-htmlform-submit';
 		
 		$html .= Xml::submitButton( $this->getSubmitText(), $attribs ) . "\n";
 		
@@ -542,6 +545,14 @@ class HTMLSelectField extends HTMLFormField {
 
 class HTMLSelectOrOtherField extends HTMLTextField {
 	static $jsAdded = false;
+	
+	function __construct( $params ) {
+		if (! array_key_exists('other', $params['options']) ) {
+			$params['options']['other'] = wfMsg( 'htmlform-selectorother-other' );
+		}
+		
+		parent::__construct( $params );
+	}
 	
 	function getInputHTML( $value ) {
 		$valInSelect = array_key_exists( $value, $this->mParams['options'] );

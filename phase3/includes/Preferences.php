@@ -374,17 +374,25 @@ class Preferences {
 					'label-message' => 'tog-underline',
 					'section' => 'rendering',
 				);
+				
+		$stubThresholdValues = array( 0, 50, 100, 500, 1000, 2000, 5000, 10000 );
+		$stubThresholdOptions = array();
+		foreach( $stubThresholdValues as $value ) {
+			$stubThresholdOptions[$value] = wfMsg( 'size-bytes', $value );
+		}
+		
+		$defaultPreferences['stubthreshold'] =
+				array(
+					'type' => 'selectorother',
+					'section' => 'rendering',
+					'options' => $stubThresholdOptions,
+					'label' => wfMsg('stub-threshold'), // Raw HTML message. Yay?
+				);
 		$defaultPreferences['highlightbroken'] =
 				array(
 					'type' => 'toggle',
 					'section' => 'rendering',
 					'label' => wfMsg('tog-highlightbroken'), // Raw HTML
-				);
-		$defaultPreferences['stubthreshold'] =
-				array(
-					'type' => 'int',
-					'section' => 'rendering',
-					'label' => wfMsg('stub-threshold'), // Raw HTML message. Yay?
 				);
 		$defaultPreferences['showtoc'] =
 				array(
@@ -514,12 +522,6 @@ class Preferences {
 				);
 				
 		## RecentChanges #####################################
-		$defaultPreferences['usenewrc'] =
-				array(
-					'type' => 'toggle',
-					'label-message' => 'tog-usenewrc',
-					'section' => 'rc',
-				);
 		$defaultPreferences['rcdays'] =
 				array(
 					'type' => 'int',
@@ -532,6 +534,12 @@ class Preferences {
 				array(
 					'type' => 'int',
 					'label-message' => 'recentchangescount',
+					'section' => 'rc',
+				);
+		$defaultPreferences['usenewrc'] =
+				array(
+					'type' => 'toggle',
+					'label-message' => 'tog-usenewrc',
 					'section' => 'rc',
 				);
 		$defaultPreferences['hideminor'] =
