@@ -3,7 +3,8 @@
 /**
  * Special page class for the Vote extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  *
  * Please see the LICENCE file for terms of use and redistribution
@@ -13,13 +14,21 @@ class SpecialVote extends SpecialPage {
 
 	private $user;
 
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		parent::__construct( 'Vote', 'vote' );
 	}
 
+	/**
+	 * Show the special page
+	 *
+	 * @param $mode Mixed: parameter passed to the page or null
+	 */
 	public function execute( $mode ) {
 		global $wgOut, $wgUser;
-		wfLoadExtensionMessages( 'SpecialVote' );
+		wfLoadExtensionMessages( 'Vote' );
 		$this->setHeaders();
 		$this->user = $wgUser;
 		if( strtolower( $mode ) == 'results' ) {

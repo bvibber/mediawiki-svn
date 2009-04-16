@@ -1,20 +1,22 @@
 <?php
-if (!defined('MEDIAWIKI')) {
-echo "Vote extension";
-exit(1);
+if( !defined( 'MEDIAWIKI' ) ) {
+	echo "Vote extension";
+	exit( 1 );
 }
 
 /**
  * Special page allows users to register votes for a particular
  * option in a predefined list
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * Please see the LICENCE file for terms of use and redistribution
  */
  
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Vote',
+	'version' => '1.0',
 	'author' => 'Rob Church',
 	'description' => 'Provides simple polling capabilities',
 	'descriptionmsg' => 'vote-desc',
@@ -26,7 +28,6 @@ $wgExtensionMessagesFiles['Vote'] = $dir . 'Vote.i18n.php';
 $wgExtensionAliasesFiles['Vote'] = $dir . 'Vote.alias.php';
 $wgAutoloadClasses['SpecialVote'] = $dir . 'Vote.page.php';
 $wgSpecialPages['Vote'] = 'SpecialVote';
-$wgExtensionFunctions[] = 'efVote';
 
 /**
  * Users who can vote
@@ -41,13 +42,7 @@ $wgGroupPermissions['bureaucrat']['voteadmin'] = true;
 $wgAvailableRights[] = 'vote';
 $wgAvailableRights[] = 'voteadmin';
 
-/**
- * Extension setup function
- */
-function efVote() {
-	global $wgHooks;
-	$wgHooks['SkinTemplateSetupPageCss'][] = 'efVoteCss';
-}
+$wgHooks['SkinTemplateSetupPageCss'][] = 'efVoteCss';
 
 /**
  * Add extra CSS to the skin
