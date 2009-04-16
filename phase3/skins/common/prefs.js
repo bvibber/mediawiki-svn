@@ -98,12 +98,7 @@ function timezoneSetup() {
 		addHandler( tzSelect, 'change', function(e) { updateTimezoneSelection(false); } );
 		addHandler( tzTextbox, 'blur', function(e) { updateTimezoneSelection(true); } );
 	}
-
-	var tzb = document.getElementById('mw-prefs-guesstimezone');
-	if (tzb) {
-		tzb.style.display = 'inline';
-		addHandler( tzb, 'click', guessTimezone );
-	}
+	
 	updateTimezoneSelection(false);
 }
 
@@ -121,7 +116,7 @@ function fetchTimezone() {
 	return tzString;
 }
 
-function guessTimezone(box) {
+function guessTimezone() {
 	var textbox = document.getElementById("mw-input-timecorrection-other");
 	var selector = document.getElementById( 'mw-input-timecorrection' );
 	
@@ -133,6 +128,11 @@ function guessTimezone(box) {
 
 function updateTimezoneSelection(force_offset) {
 	var selector = document.getElementById("mw-input-timecorrection");
+	
+	if (selector.value == 'guess') {
+		return guessTimezone();
+	}
+	
 	var textbox = document.getElementById( 'mw-input-timecorrection-other' );
 	var localtimeHolder = document.getElementById("wpLocalTime");
 	var servertime = document.getElementsByName("wpServerTime")[0].value;

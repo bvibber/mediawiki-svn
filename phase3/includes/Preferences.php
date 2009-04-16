@@ -207,6 +207,13 @@ class Preferences {
 					'label-message' => 'tog-fancysig',
 					'section' => 'personal'
 				);
+				
+		$defaultPreferences['rememberpassword'] =
+				array(
+					'type' => 'toggle',
+					'label-message' => 'tog-rememberpassword',
+					'section' => 'personal',
+				);
 
 
 		## Email #######################################
@@ -354,23 +361,66 @@ class Preferences {
 					'default' => $tzSetting,
 					'section' => 'datetime',
 				);
-		
-		// Add auto-select button
-		
-		$button = Xml::element( 'input',
-					array( 'type' => 'button',
-							'id' => 'mw-prefs-guesstimezone',
-							'style' => 'display: none;', // Graceful degradation.
-							'value' => wfMsg( 'guesstimezone' ),
-						) );
-		
-		$defaultPreferences['guesstimezone'] =
+				
+		## Page Rendering ##############################
+		$defaultPreferences['underline'] =
 				array(
-					'type' => 'info',
-					'raw' => true,
-					'label' => '&nbsp;',
-					'default' => $button,
-					'section' => 'datetime',
+					'type' => 'select',
+					'options' => array(
+						0 => wfMsg( 'underline-never' ),
+						1 => wfMsg( 'underline-always' ),
+						2 => wfMsg( 'underline-default' ),
+					),
+					'label-message' => 'tog-underline',
+					'section' => 'rendering',
+				);
+		$defaultPreferences['highlightbroken'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'rendering',
+					'label' => wfMsg('tog-highlightbroken'), // Raw HTML
+				);
+		$defaultPreferences['stubthreshold'] =
+				array(
+					'type' => 'int',
+					'section' => 'rendering',
+					'label' => wfMsg('stub-threshold'), // Raw HTML message. Yay?
+				);
+		$defaultPreferences['showtoc'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'rendering',
+					'label-message' => 'tog-showtoc',
+				);
+		$defaultPreferences['nocache'] =
+				array(
+					'type' => 'toggle',
+					'label-message' => 'tog-nocache',
+					'section' => 'rendering',
+				);
+		$defaultPreferences['showhiddencats'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'rendering',
+					'label-message' => 'tog-showhiddencats'
+				);
+		$defaultPreferences['showjumplinks'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'rendering',
+					'label-message' => 'tog-showjumplinks',
+				);
+		$defaultPreferences['justify'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'rendering',
+					'label-message' => 'tog-justify',
+				);
+		$defaultPreferences['numberheadings'] =
+				array(
+					'type' => 'toggle',
+					'section' => 'rendering',
+					'label-message' => 'tog-numberheadings',
 				);
 		
 		## Editing #####################################
@@ -459,7 +509,7 @@ class Preferences {
 		$defaultPreferences['uselivepreview'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'misc',
+					'section' => 'editing',
 					'label-message' => 'tog-uselivepreview',
 				);
 				
@@ -512,7 +562,7 @@ class Preferences {
 			$defaultPreferences['shownumberswatching'] =
 					array(
 						'type' => 'toggle',
-						'section' => 'misc',
+						'section' => 'rc',
 						'label-message' => 'tog-shownumberswatching',
 					);
 		}
@@ -663,83 +713,17 @@ class Preferences {
 		}
 		
 		## Misc #####################################
-		
-		$defaultPreferences['underline'] =
-				array(
-					'type' => 'select',
-					'options' => array(
-						0 => wfMsg( 'underline-never' ),
-						1 => wfMsg( 'underline-always' ),
-						2 => wfMsg( 'underline-default' ),
-					),
-					'label-message' => 'tog-underline',
-					'section' => 'misc',
-				);
-		$defaultPreferences['highlightbroken'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label' => wfMsg('tog-highlightbroken'), // Raw HTML
-				);
-		$defaultPreferences['stubthreshold'] =
-				array(
-					'type' => 'int',
-					'section' => 'misc',
-					'label' => wfMsg('stub-threshold'), // Raw HTML message. Yay?
-				);
-		$defaultPreferences['showtoc'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-showtoc',
-				);
-		$defaultPreferences['rememberpassword'] =
-				array(
-					'type' => 'toggle',
-					'label-message' => 'tog-rememberpassword',
-					'section' => 'misc',
-				);
-		$defaultPreferences['nocache'] =
-				array(
-					'type' => 'toggle',
-					'label-message' => 'tog-nocache',
-					'section' => 'misc',
-				);
 		$defaultPreferences['diffonly'] =
 				array(
 					'type' => 'toggle',
 					'section' => 'misc',
 					'label-message' => 'tog-diffonly',
 				);
-		$defaultPreferences['showhiddencats'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-showhiddencats'
-				);
 		$defaultPreferences['norollbackdiff'] =
 				array(
 					'type' => 'toggle',
 					'section' => 'misc',
 					'label-message' => 'tog-norollbackdiff',
-				);
-		$defaultPreferences['showjumplinks'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-showjumplinks',
-				);
-		$defaultPreferences['justify'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-justify',
-				);
-		$defaultPreferences['numberheadings'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'misc',
-					'label-message' => 'tog-numberheadings',
 				);
 				
 		wfRunHooks( 'GetPreferences', array( $user, &$defaultPreferences ) );
@@ -921,6 +905,7 @@ class Preferences {
 
 		$opt["System|$wgLocalTZoffset"] = wfMsg( 'timezoneuseserverdefault' );
 		$opt['other'] = wfMsg( 'timezoneuseoffset' );
+		$opt['guess'] = wfMsg( 'guesstimezone' );
 
 		if ( function_exists( 'timezone_identifiers_list' ) ) {
 			# Read timezone list
