@@ -1,10 +1,11 @@
 # Simple python script for demultiplexing MediaWiki log files
 
-import sys, os, string
+import sys, os, string, re
 
 transTable = string.maketrans("./", "__")
 openFiles = {}
-baseDir = '/var/log/mw/udp';
+baseDir = '/var/log/mw/udp'
+nameRegex = re.compile(r"^[\040-\176]*$")
 
 while True:
 	# Use readline() not next() to avoid python's buffering
@@ -18,6 +19,11 @@ while True:
 		# No name
 		continue
 	string.translate(name, transTable)
+
+	# ASCII printable?
+	if not nameRegex.match(name):
+		continue
+
 	name += '.log'
 	try:
 		if name in openFiles:
