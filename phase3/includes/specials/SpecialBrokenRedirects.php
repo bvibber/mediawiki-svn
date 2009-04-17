@@ -16,30 +16,13 @@ class BrokenRedirectsPage extends PageQueryPage {
 		return 'BrokenRedirects';
 	}
 
-	function isExpensive( ) { return true; }
+	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
-	function getPageHeader( ) {
+	function getPageHeader() {
 		return wfMsgExt( 'brokenredirectstext', array( 'parse' ) );
 	}
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $page, $redirect ) = $dbr->tableNamesN( 'page', 'redirect' );
-
-		$sql = "SELECT 'BrokenRedirects'  AS type,
-		                p1.page_namespace AS namespace,
-		                p1.page_title     AS title,
-		                rd_namespace,
-		                rd_title
-		           FROM $redirect AS rd
-                   JOIN $page p1 ON (rd.rd_from=p1.page_id)
-		      LEFT JOIN $page AS p2 ON (rd_namespace=p2.page_namespace AND rd_title=p2.page_title )
-			  	  WHERE rd_namespace >= 0
-				    AND p2.page_namespace IS NULL";
-		return $sql;
-	}
-	
 	function getQueryInfo() {
 		return array(
 			'tables' => array( 'redirect', 'page AS p1', 'page AS p2' ),
@@ -64,7 +47,8 @@ class BrokenRedirectsPage extends PageQueryPage {
 		);
 	}
 
-	function getOrder() {
+	function getOrderFields() {
+		// FIXME: really?
 		return array ();
 	}
 
