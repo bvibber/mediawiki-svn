@@ -34,6 +34,9 @@ define('MEDIAWIKI_OPENID_VERSION', '0.8.4');
 
 $wgHideOpenIDLoginLink = false;
 
+# Location of the OpenID login logo. You can copy this to your server if you want. 	 
+$wgOpenIDLoginLogoUrl = $wgScriptPath . '/extensions/OpenID/skin/icons/openid-inputicon.png';
+
 # Whether to show the OpenID identity URL on a user's home page. Possible values are 'always', 'never', or 'user'
 # 'user' lets the user decide.
 
