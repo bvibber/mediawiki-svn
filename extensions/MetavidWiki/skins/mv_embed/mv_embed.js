@@ -184,7 +184,7 @@ var mvBaseLoader = {
 				js_log('jquery loaded');
 				//load the jQuery dependent plugins:  		 		
 				mvJsLoader.doLoad({
-					'embedVideo'	  : 'libEmbedObj/mv_baseEmbed.js',
+					'embedVideo'	  : 'libEmbedVideo/mv_baseEmbed.js',
 					'$j.ui.mouse'	  : 'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
 					'$j.ui.droppable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.droppable.min.js',
 					'$j.ui.draggable' : 'jquery/jquery.ui-1.5.2/ui/minified/ui.draggable.min.js'
@@ -375,7 +375,7 @@ mediaPlayer.prototype =
 		else
 		{
 			var _this = this;
-			var plugin_path = mv_embed_path + 'libEmbedObj/mv_'+this.library+'Embed.js';	
+			var plugin_path = mv_embed_path + 'libEmbedVideo/mv_'+this.library+'Embed.js';	
 			//add the callback: 
 			this.loading_callbacks.push(callback);									
 			//jQuery based get script does not work so well. 
@@ -387,7 +387,7 @@ mediaPlayer.prototype =
 				_this.loading_callbacks = null;
 			});*/
 			
-			eval('var lib = {"'+this.library+'Embed":\'libEmbedObj/mv_'+this.library+'Embed.js\'}');
+			eval('var lib = {"'+this.library+'Embed":\'libEmbedVideo/mv_'+this.library+'Embed.js\'}');
 			js_log('DO LOAD: '+this.library); 
 			mvJsLoader.doLoad(lib,function(){
 				//js_log( 'type of lib: ' + eval( 'typeof ' + this.library + 'Embed' ) );
@@ -1161,7 +1161,7 @@ function do_api_req( options, callback ){
 		loadExternalJs( req_url );				
 	}	
 }
-
+//grab wiki form error for wiki html page proccessing (should be depricated)
 function grabWikiFormError ( result_page ){
 		var res = {};
 		sp = result_page.indexOf('<span class="error">');
@@ -1369,6 +1369,7 @@ function getMvEmbedPath(){
 	}
 	return mv_embed_path;
 }
+
 if (typeof DOMParser == "undefined") {
    DOMParser = function () {}
    DOMParser.prototype.parseFromString = function (str, contentType) {
