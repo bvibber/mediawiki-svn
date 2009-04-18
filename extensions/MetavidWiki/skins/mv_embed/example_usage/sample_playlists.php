@@ -61,19 +61,19 @@ $sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
 
 ?>
   <table border="1" cellpadding="6" width="600">
-  	<? foreach ( $sample_embed as $key => $aval ) {
+  	<?php foreach ( $sample_embed as $key => $aval ) {
   		//  &&
   		if ( $key != 9 && $key != 8 && $key !=4)continue;
   	 ?>
 	    <tr>
-	      <td valign="top"><?=$aval['tag']?></td>
-	      <td valign="top"><b>Sample Embed <?=$key?></b><br />
-	      <?=$aval['desc']?><br />
+	      <td valign="top"><?php echo $aval['tag']?></td>
+	      <td valign="top"><b>Sample Embed <?php echo $key?></b><br />
+	      <?php echo $aval['desc']?><br />
 	      &lt;-- code used: <br />
-	     <pre> <?= htmlentities( $aval['tag'] )?></pre>
+	     <pre> <?php echo htmlentities( $aval['tag'] )?></pre>
 	      </td>
 	    </tr>
-	    <? // oput a separator between video and playlist
+	    <?php // oput a separator between video and playlist
 	    if ( $key == 5 ) {
 	    	echo '<tr><td colspan="2"><b>Sample Playlists:</b></td></tr>';
 	    }
@@ -82,6 +82,6 @@ $sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />&nbsp;
   </body>
 </html>
-<?
+<?php
 }
 ?>
