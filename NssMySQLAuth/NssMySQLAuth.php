@@ -29,7 +29,6 @@ $wgExtensionMessagesFiles['nssmysqlauth'] = $dir . 'NssMySQLAuth.i18n.php';
 
 $wgAutoloadClasses['NssMySQLAuthPlugin'] = $dir . 'NssMySQLAuthPlugin.php';
 $wgAutoloadClasses['Md5crypt'] = $dir . 'Md5crypt.php';
-$wgAutoloadClasses['SpecialAccountManager'] = $dir . 'SpecialAccountManager.php';
 
 $wgNssMySQLAuthDB = false;
 

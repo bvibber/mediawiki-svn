@@ -9,8 +9,8 @@ $wgAutoloadClasses['NssGroup'] = $dir . 'NssGroup.php';
 $wgAutoloadClasses['NssProperties'] = $dir . 'NssProperties.php';
 
 $wgAutoloadClasses['SpecialAccountManager'] = $dir . 'SpecialAccountManager.php';
-$wgAutoloadClasses['AmUserListView'] = $dir . 'AmUserListView';
-$wgAutoloadClasses['AmUserView'] = $dir . 'AmUserView';
+$wgAutoloadClasses['AmUserListView'] = $dir . 'AmUserListView.php';
+$wgAutoloadClasses['AmUserView'] = $dir . 'AmUserView.php';
 
 $wgSpecialPages['AccountManager'] = 'SpecialAccountManager';
 

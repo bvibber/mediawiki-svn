@@ -54,5 +54,8 @@ class NssProperties {
 		$dbw->insert( 'user_props', $insert, __METHOD__ );
 	}
 	
-	public static function getAll() { return array(); }
+	public static function getAll() { 
+		global $wgUserProperties;
+		return array_merge( array( 'username', 'email', 'active' ), $wgUserProperties ); 
+	}
 }
