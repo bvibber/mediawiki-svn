@@ -158,4 +158,5 @@ $wgHooks['RenderPreferencesForm'][] = 'OpenIDHooks::onRenderPreferencesForm';
 $wgHooks['InitPreferencesForm'][] = 'OpenIDHooks::onInitPreferencesForm';
 $wgHooks['ResetPreferences'][] = 'OpenIDHooks::onResetPreferences';
 $wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
-$wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';
+#Fixme, function does not exist
+#$wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';
