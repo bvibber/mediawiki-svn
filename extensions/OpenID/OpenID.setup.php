@@ -26,7 +26,7 @@ if (!defined('MEDIAWIKI')) {
 	exit( 1 );
 }
 
-define('MEDIAWIKI_OPENID_VERSION', '0.8.4');
+define('MEDIAWIKI_OPENID_VERSION', '0.8.4.1');
 
 # CONFIGURATION VARIABLES
 
