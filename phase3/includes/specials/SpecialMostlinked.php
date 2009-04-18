@@ -25,19 +25,21 @@ class MostlinkedPage extends QueryPage {
 	/**
 	 * Note: Getting page_namespace only works if $this->isCached() is false
 	 */
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $pagelinks, $page ) = $dbr->tableNamesN( 'pagelinks', 'page' );
-		return
-			"SELECT 'Mostlinked' AS type,
-				pl_namespace AS namespace,
-				pl_title AS title,
-				COUNT(*) AS value,
-				page_namespace
-			FROM $pagelinks
-			LEFT JOIN $page ON pl_namespace=page_namespace AND pl_title=page_title
-			GROUP BY pl_namespace, pl_title, page_namespace
-			HAVING COUNT(*) > 1";
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'pagelinks', 'page' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'pl_namespace AS namespace',
+					'pl_title AS title',
+					'COUNT(*) AS value',
+					'page_namespace' ),
+			'options' => array ( 'HAVING' => 'COUNT(*) > 1',
+				'GROUP BY' => 'pl_namespace, pl_title, '.
+						'page_namespace' ),
+			'join_conds' => array ( 'page' => array ( 'LEFT JOIN',
+					array ( 'page_namespace = pl_namespace',
+						'page_title = pl_title' ) ) )
+		);
 	}
 
 	/**

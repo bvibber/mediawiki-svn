@@ -19,17 +19,19 @@ class UnusedCategoriesPage extends QueryPage {
 		return wfMsgExt( 'unusedcategoriestext', array( 'parse' ) );
 	}
 
-	function getSQL() {
-		$NScat = NS_CATEGORY;
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $categorylinks, $page ) = $dbr->tableNamesN( 'categorylinks', 'page' );
-		return "SELECT 'Unusedcategories' as type,
-				{$NScat} as namespace, page_title as title, page_title as value
-				FROM $page
-				LEFT JOIN $categorylinks ON page_title=cl_to
-				WHERE cl_from IS NULL
-				AND page_namespace = {$NScat}
-				AND page_is_redirect = 0";
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'page', 'categorylinks' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'page_namespace AS namespace',
+					'page_title AS title',
+					'page_title AS value' ),
+			'conds' => array ( 'cl_from IS NULL',
+					'page_namespace' => NS_CATEGORY,
+					'page_is_redirect' => 0 ),
+			'join_conds' => array ( 'categorylinks' => array (
+					'LEFT JOIN', 'cl_to = page_title' ) )
+		);
 	}
 
 	function formatResult( $skin, $result ) {

@@ -18,20 +18,16 @@ class MostimagesPage extends ImageQueryPage {
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$imagelinks = $dbr->tableName( 'imagelinks' );
-		return
-			"
-			SELECT
-				'Mostimages' as type,
-				" . NS_FILE . " as namespace,
-				il_to as title,
-				COUNT(*) as value
-			FROM $imagelinks
-			GROUP BY il_to
-			HAVING COUNT(*) > 1
-			";
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'imagelinks' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					"'" . NS_FILE . "' AS namespace",
+					'il_to AS title',
+					'COUNT(*) AS value' ),
+			'options' => array ( 'GROUP BY' => 'il_to',
+					'HAVING' => 'COUNT(*) > 1' )
+		);
 	}
 
 	function getCellHtml( $row ) {

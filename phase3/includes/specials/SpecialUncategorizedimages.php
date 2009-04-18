@@ -10,6 +10,7 @@
 /**
  * @ingroup SpecialPage
  */
+// FIXME: Use an instance of UncategorizedPagesPage or something
 class UncategorizedImagesPage extends ImageQueryPage {
 
 	function getName() {

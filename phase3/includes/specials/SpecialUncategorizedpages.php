@@ -8,6 +8,7 @@
  * A special page looking for page without any category.
  * @ingroup SpecialPage
  */
+// FIXME: Make $requestedNamespace selectable, unify all subclasses into one
 class UncategorizedPagesPage extends PageQueryPage {
 	var $requestedNamespace = NS_MAIN;
 
@@ -24,22 +25,19 @@ class UncategorizedPagesPage extends PageQueryPage {
 	}
 	function isSyndicated() { return false; }
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $page, $categorylinks ) = $dbr->tableNamesN( 'page', 'categorylinks' );
-		$name = $dbr->addQuotes( $this->getName() );
-
-		return
-			"
-			SELECT
-				$name as type,
-				page_namespace AS namespace,
-				page_title AS title,
-				page_title AS value
-			FROM $page
-			LEFT JOIN $categorylinks ON page_id=cl_from
-			WHERE cl_from IS NULL AND page_namespace={$this->requestedNamespace} AND page_is_redirect=0
-			";
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'page', 'categorylinks' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'page_namespace AS namespace',
+					'page_title AS title',
+					'page_title AS value' ),
+			'conds' => array ( 'cl_from IS NULL',
+					'page_namespace' => $this->requestedNamespace,
+					'page_is_redirect' => 0 ),
+			'join_conds' => array ( 'categorylinks' => array (
+					'LEFT JOIN', 'cl_from = page_id' ) )
+		);
 	}
 }
 

@@ -14,17 +14,24 @@
  */
 class ListredirectsPage extends QueryPage {
 
-	function getName() { return( 'Listredirects' ); }
-	function isExpensive() { return( true ); }
-	function isSyndicated() { return( false ); }
-	function sortDescending() { return( false ); }
+	function getName() { return 'Listredirects'; }
+	function isExpensive() { return true; }
+	function isSyndicated() { return false; }
+	function sortDescending() { return false; }
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$page = $dbr->tableName( 'page' );
-		$sql = "SELECT 'Listredirects' AS type, page_title AS title, page_namespace AS namespace, 
-			0 AS value FROM $page WHERE page_is_redirect = 1";
-		return( $sql );
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'page' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'page_namespace AS namespace',
+					'page_title AS title' ),
+			'conds' => array ( 'page_is_redirect' => 1 )
+		);
+	}
+
+	function getOrderFields() {
+		// FIXME: really?
+		return array ();
 	}
 
 	function formatResult( $skin, $result ) {

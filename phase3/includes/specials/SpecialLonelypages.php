@@ -27,25 +27,29 @@ class LonelyPagesPage extends PageQueryPage {
 	}
 	function isSyndicated() { return false; }
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $page, $pagelinks, $templatelinks ) = $dbr->tableNamesN( 'page', 'pagelinks', 'templatelinks' );
-
-		return
-		  "SELECT 'Lonelypages'  AS type,
-		          page_namespace AS namespace,
-		          page_title     AS title,
-		          page_title     AS value
-		     FROM $page
-		LEFT JOIN $pagelinks
-		       ON page_namespace=pl_namespace AND page_title=pl_title
-		LEFT JOIN $templatelinks
-				ON page_namespace=tl_namespace AND page_title=tl_title
-		    WHERE pl_namespace IS NULL
-		      AND page_namespace=".NS_MAIN."
-		      AND page_is_redirect=0
-			  AND tl_namespace IS NULL";
-
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'page', 'pagelinks',
+					'templatelinks' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'page_namespace AS namespace',
+					'page_title AS title',
+					'page_title AS value' ),
+			'conds' => array ( 'pl_namespace IS NULL',
+					'page_namespace' => NS_MAIN,
+					'page_is_redirect' => 0,
+					'tl_namespace IS NULL' ),
+			// TODO: test this JOIN
+			'join_conds' => array (
+					'pagelinks' => array (
+						'LEFT JOIN', array (
+						'pl_namespace = page_namespace',
+						'pl_title = page_title' ) ),
+					'templatelinks' => array (
+						'LEFT JOIN', array (
+						'tl_namespace = page_namespace',
+						'tl_title = page_title' ) ) )
+		);
 	}
 }
 

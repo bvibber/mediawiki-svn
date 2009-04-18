@@ -117,35 +117,28 @@ class LinkSearchPage extends QueryPage {
 		return $params;
 	}
 
-	function getSQL() {
+	function getQueryInfo() {
 		global $wgMiserMode;
 		$dbr = wfGetDB( DB_SLAVE );
-		$page = $dbr->tableName( 'page' );
-		$externallinks = $dbr->tableName( 'externallinks' );
-
-		/* strip everything past first wildcard, so that index-based-only lookup would be done */
-		list( $munged, $clause ) = self::mungeQuery( $this->mQuery, $this->mProt );
-		$stripped = substr($munged,0,strpos($munged,'%')+1);
+		// strip everything past first wildcard, so that
+		// index-based-only lookup would be done
+		list( $munged, $clause ) = self::mungeQuery( $this->mQuery,
+					$this->mProt );
+		$stripped = substr( $munged, 0, strpos( $munged, '%' ) + 1 );
 		$encSearch = $dbr->addQuotes( $stripped );
-
-		$encSQL = '';
-		if ( isset ($this->mNs) && !$wgMiserMode )
-			$encSQL = 'AND page_namespace=' . $dbr->addQuotes( $this->mNs );
-
-		$use_index = $dbr->useIndexClause( $clause );
-		return
-			"SELECT
-				page_namespace AS namespace,
-				page_title AS title,
-				el_index AS value,
-				el_to AS url
-			FROM
-				$page,
-				$externallinks $use_index
-			WHERE
-				page_id=el_from
-				AND $clause LIKE $encSearch
-				$encSQL";
+		$retval = array (
+			'tables' => array ( 'page', 'externallinks' ),
+			'fields' => array ( 'page_namespace AS namespace',
+					'page_title AS title',
+					'el_index AS value', 'el_to AS url' ),
+			'conds' => array ( 'page_id = el_from',
+					"$clause LIKE $encSearch" ),
+			'options' => array( 'USE INDEX' => $clause )
+		);
+		if ( isset( $this->mNs ) && !$wgMiserMode ) {
+			$retval['conds']['page_namespace'] = $this->mNs;
+		}
+		return $retval;
 	}
 
 	function formatResult( $skin, $result ) {

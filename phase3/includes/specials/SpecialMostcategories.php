@@ -18,22 +18,20 @@ class MostcategoriesPage extends QueryPage {
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $categorylinks, $page) = $dbr->tableNamesN( 'categorylinks', 'page' );
-		return
-			"
-			SELECT
-			 	'Mostcategories' as type,
-				page_namespace as namespace,
-				page_title as title,
-				COUNT(*) as value
-			FROM $categorylinks
-			LEFT JOIN $page ON cl_from = page_id
-			WHERE page_namespace = " . NS_MAIN . "
-			GROUP BY page_namespace, page_title
-			HAVING COUNT(*) > 1
-			";
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'categorylinks', 'page' ),
+			'fields' => array ( "'{$this->getName()}' AS name",
+					'page_namespace AS namespace',
+					'page_title AS title',
+					'COUNT(*) AS value' ),
+			'conds' => array ( 'page_namespace' => NS_MAIN ),
+			'options' => array ( 'HAVING' => 'COUNT(*) > 1',
+				'GROUP BY' => 'page_namespace, page_title' ),
+			// TODO: test this JOIN
+			'join_conds' => array ( 'page' => array ( 'LEFT JOIN',
+					'page_id = cl_from' ) )
+		);
 	}
 
 	function formatResult( $skin, $result ) {

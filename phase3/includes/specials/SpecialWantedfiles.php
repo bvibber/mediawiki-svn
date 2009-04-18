@@ -19,22 +19,19 @@ class WantedFilesPage extends WantedQueryPage {
 		return 'Wantedfiles';
 	}
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $imagelinks, $page ) = $dbr->tableNamesN( 'imagelinks', 'page' );
-		$name = $dbr->addQuotes( $this->getName() );
-		return
-			"
-			SELECT
-				$name as type,
-				" . NS_FILE . " as namespace,
-				il_to as title,
-				COUNT(*) as value
-			FROM $imagelinks
-			LEFT JOIN $page ON il_to = page_title AND page_namespace = ". NS_FILE ."
-			WHERE page_title IS NULL
-			GROUP BY il_to
-			";
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'imagelinks', 'page' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					"'" . NS_FILE . "' AS namespace",
+					'il_to AS title',
+					'COUNT(*) AS value' ),
+			'conds' => array ( 'page_title IS NULL' ),
+			'options' => array ( 'GROUP BY' => 'il_to' ),
+			'join_conds' => array ( 'page' => array ( 'LEFT JOIN',
+				array ( 'il_to = page_title',
+					'page_namespace' => NS_FILE ) ) )
+		);
 	}
 }
 
