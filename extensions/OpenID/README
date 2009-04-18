@@ -1,7 +1,7 @@
 MediaWiki OpenID extension
 
-version 0.8.2
-12 Mar 2008
+version 0.8.4
+18 Apr 2009
 
 This is the README file for the OpenID extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki
@@ -297,6 +297,10 @@ LocalSettings.php file. Please read carefully.
   wanting the responsibility of being an OpenID server, so this flag
   is for them.
 
+* $wgOpenIDShowProviderIcons -- defaults to false due to potential
+  brand issues. With this enabled, users will see button graphics
+  instead of just links in OpenID provider UI.
+
 == Skins ==
 
 If you are customizing a skin, and you want to show the OpenID
@@ -326,10 +330,14 @@ all have free signup for identities if you want to test, too.
 
 == Bugs ==
 
-Bugs or feature requests can be sent to the author at
-evan@vinismo.com. The TODO file in this distribution has stuff I
-think needs to be todone; + marks show things I've already done, and -
-shows things that are yet to be done.
+Please submit bugs into [https://bugzilla.wikimedia.org/enter_bug.cgi?product=MediaWiki%20extensions&component=OpenID Bugzilla under OpenID extenson component].
+
+== TODO ==
+* Move TODO file and things below into Bugzilla
+
+The TODO file in this distribution has stuff I think needs to be
+todone; + marks show things I've already done, and - shows things
+that are yet to be done.
 
 The big changes for the future:
 
@@ -337,3 +345,6 @@ The big changes for the future:
   control panel
 * Auto-login if you've logged in before with an OpenID, and are logged
   into that account now
+
+== CHANGES ==
+* [http://svn.wikimedia.org/viewvc/mediawiki/tags/extensions/OpenID/REL_0_8_4/ 0.8.4] (April 16, 2009) - Added provider buttons to the OpenID login page with optional icons ($wgOpenIDShowProviderIcons)
