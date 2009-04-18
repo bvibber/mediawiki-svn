@@ -34,10 +34,6 @@ define('MEDIAWIKI_OPENID_VERSION', '0.8.4dev');
 
 $wgHideOpenIDLoginLink = false;
 
-# Location of the OpenID login logo. You can copy this to your server if you want.
-
-$wgOpenIDLoginLogoUrl = 'http://www.openid.net/login-bg.gif';
-
 # Whether to show the OpenID identity URL on a user's home page. Possible values are 'always', 'never', or 'user'
 # 'user' lets the user decide.
 
@@ -103,6 +99,9 @@ $wgOpenIDOnly = false;
 
 $wgOpenIDClientOnly = false;
 
+# If true, will show provider icons instead of the text
+$wgOpenIDShowProviderIcons = false;
+
 # END CONFIGURATION VARIABLES
 
 $wgExtensionCredits['other'][] = array(
@@ -127,6 +126,7 @@ function OpenIDGetServerPath() {
 }
 
 $dir = dirname( __FILE__ ) . '/';
+
 $wgExtensionMessagesFiles['OpenID'] = $dir . 'OpenID.i18n.php';
 $wgExtensionAliasesFiles['OpenID'] = $dir . 'OpenID.alias.php';
 
@@ -141,6 +141,9 @@ $wgAutoloadClasses['SpecialOpenIDConvert'] = $dir . 'SpecialOpenIDConvert.body.p
 $wgAutoloadClasses['SpecialOpenIDServer'] = $dir . 'SpecialOpenIDServer.body.php';
 $wgAutoloadClasses['SpecialOpenIDXRDS'] = $dir . 'SpecialOpenIDXRDS.body.php';
 
+# UI class
+$wgAutoloadClasses['OpenIDProvider'] = $dir . 'OpenIDProvider.body.php';
+
 # Gets stored in the session, needs to be reified before our setup
 $wgAutoloadClasses['Auth_OpenID_CheckIDRequest'] = OpenIDGetServerPath();
 
@@ -152,3 +155,4 @@ $wgHooks['RenderPreferencesForm'][] = 'OpenIDHooks::onRenderPreferencesForm';
 $wgHooks['InitPreferencesForm'][] = 'OpenIDHooks::onInitPreferencesForm';
 $wgHooks['ResetPreferences'][] = 'OpenIDHooks::onResetPreferences';
 $wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
+$wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';

@@ -34,11 +34,23 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function execute($par) {
-		global $wgRequest, $wgUser, $wgOut;
+		global $wgRequest, $wgUser, $wgOut, $wgScriptPath, $wgOpenIDShowProviderIcons;
 
 		wfLoadExtensionMessages( 'OpenID' );
 
 		$this->setHeaders();
+
+		$oidScriptPath = $wgScriptPath . '/extensions/OpenID';
+
+		$wgOut->addLink( array(
+			'rel' => 'stylesheet',
+			'type' => 'text/css',
+			'media' => 'screen, projection',
+			'href' => $oidScriptPath.($wgOpenIDShowProviderIcons ? '/skin/openid.css' : '/skin/openid-plain.css')
+		));
+
+		$wgOut->addScript('<script type="text/javascript" src="'.$oidScriptPath.'/skin/jquery-1.3.2.min.js"></script>'."\n");
+		$wgOut->addScript('<script type="text/javascript" src="'.$oidScriptPath.'/skin/openid.js"></script>'."\n");
 
 		if ($wgUser->getID() != 0) {
 			$this->alreadyLoggedIn();
@@ -59,19 +71,59 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function loginForm() {
-		global $wgOut, $wgUser, $wgOpenIDLoginLogoUrl;
+		global $wgOut, $wgUser, $wgOpenIDLoginLogoUrl, $wgOpenIDShowProviderIcons;
 		$sk = $wgUser->getSkin();
 		$instructions = wfMsgExt('openidlogininstructions', array('parse'));
-		$label = wfMsg('openidloginlabel');
-		$ok = wfMsg('login');
-		$wgOut->addHTML('<form action="' . $sk->makeSpecialUrl('OpenIDLogin') . '" method="POST">' .
-						'<label for="openid_url">' . $label . '</label> ' .
-						'<input type="text" name="openid_url" id="openid_url" size="30" ' .
-						' style="background: url(' . $wgOpenIDLoginLogoUrl . ') ' .
-						'        no-repeat; background-color: #fff; background-position: 0 50%; ' .
-						'        color: #000; padding-left: 18px;" value="" />' .
-						'<input type="submit" value="' . $ok . '" />' .
-						'</form>' .
+
+		$formsHTML = '';
+
+		$largeButtonsHTML = '<div id="openid_large_providers">';
+		foreach (OpenIDProvider::getLargeProviders() as $provider) {
+			$largeButtonsHTML .= $provider->getLargeButtonHTML();
+			$formsHTML .= $provider->getLoginFormHTML();
+		}
+		$largeButtonsHTML .= '</div>';
+
+		$smallButtonsHTML = '';
+		if ($wgOpenIDShowProviderIcons) {
+			$smallButtonsHTML .= '<div id="openid_small_providers_icons">';
+			foreach (OpenIDProvider::getSmallProviders() as $provider) {
+				$smallButtonsHTML .= $provider->getSmallButtonHTML(); 
+				$formsHTML .= $provider->getLoginFormHTML();
+			}
+			$smallButtonsHTML .= '</div>';
+		}
+		else
+		{
+			$smallButtonsHTML .= '<div id="openid_small_providers_links">';
+			$smallButtonsHTML .= '<ul class="openid_small_providers_block">';
+			$small = OpenIDProvider::getSmallProviders();
+
+			$i = 0;
+			$break = true;
+			foreach ($small as $provider) {
+				if ($break && $i > count($small)/2) {
+					$smallButtonsHTML .= '</ul><ul class="openid_small_providers_block">';
+					$break = false;
+				}
+
+				$smallButtonsHTML .= '<li>'.$provider->getSmallButtonHTML().'</li>';
+
+				$formsHTML .= $provider->getLoginFormHTML();
+				$i++;
+			}
+			$smallButtonsHTML .= '</ul>';
+			$smallButtonsHTML .= '</div>';
+		}
+
+		$wgOut->addHTML('<form id="openid_form" action="' . $sk->makeSpecialUrl('OpenIDLogin') . '" method="POST" onsubmit="openid.update()"">' .
+						'<fieldset><legend>' . wfMsg('openidsigninorcreateaccount') . '</legend>' .
+						$largeButtonsHTML .
+						'<div id="openid_input_area">' .
+						$formsHTML .
+						'</div>' . 
+						$smallButtonsHTML .
+						'</fieldset></form>' .
 						$instructions
 						);
 	}

@@ -95,7 +95,13 @@ There are many [http://openid.net/get/ OpenID providers], and you may already ha
 	'openid-prefs' => 'OpenID',
 	'openid-prefstext' => '[http://openid.net/ OpenID] preferences',
 	'openid-pref-hide' => 'Hide your OpenID URL on your user page, if you log in with OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Update my information from OpenID persona every time I login'
+	'openid-pref-update-userinfo-on-login' => 'Update my information from OpenID persona every time I login',
+	'openidsigninorcreateaccount' => 'Sign-in or Create New Account',
+	'openid-provider-label-openid' => 'Enter your OpenID URL',
+	'openid-provider-label-google' => 'Login using your Google account',
+	'openid-provider-label-yahoo' => 'Login using your Yahoo account',
+	'openid-provider-label-aol' => 'Enter your AOL screenname',
+	'openid-provider-label-other-username' => 'Enter your $1 username',
 );
 
 /** Message documentation (Message documentation)
