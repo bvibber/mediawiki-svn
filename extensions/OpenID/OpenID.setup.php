@@ -22,11 +22,11 @@
  * @addtogroup Extensions
  */
 
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-define('MEDIAWIKI_OPENID_VERSION', '0.8.4.1');
+define( 'MEDIAWIKI_OPENID_VERSION', '0.8.4.1' );
 
 # CONFIGURATION VARIABLES
 
@@ -34,7 +34,7 @@ define('MEDIAWIKI_OPENID_VERSION', '0.8.4.1');
 
 $wgHideOpenIDLoginLink = false;
 
-# Location of the OpenID login logo. You can copy this to your server if you want. 	 
+# Location of the OpenID login logo. You can copy this to your server if you want.
 $wgOpenIDLoginLogoUrl = $wgScriptPath . '/extensions/OpenID/skin/icons/openid-inputicon.png';
 
 # Whether to show the OpenID identity URL on a user's home page. Possible values are 'always', 'never', or 'user'
@@ -158,5 +158,5 @@ $wgHooks['RenderPreferencesForm'][] = 'OpenIDHooks::onRenderPreferencesForm';
 $wgHooks['InitPreferencesForm'][] = 'OpenIDHooks::onInitPreferencesForm';
 $wgHooks['ResetPreferences'][] = 'OpenIDHooks::onResetPreferences';
 $wgHooks['SavePreferences'][] = 'OpenIDHooks::onSavePreferences';
-#Fixme, function does not exist
-#$wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';
+# FIXME, function does not exist
+# $wgHooks['UserLoginForm'][] = 'OpenIDHooks::onUserLoginForm';

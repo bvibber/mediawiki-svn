@@ -22,18 +22,18 @@
  * @addtogroup Extensions
  */
 
-if (!defined('MEDIAWIKI'))
-  exit(1);
+if ( !defined( 'MEDIAWIKI' ) )
+  exit( 1 );
 
-require_once("Auth/OpenID/Consumer.php");
+require_once( "Auth/OpenID/Consumer.php" );
 
 class SpecialOpenIDLogin extends SpecialOpenID {
 
 	function SpecialOpenIDLogin() {
-		SpecialPage::SpecialPage("OpenIDLogin");
+		SpecialPage::SpecialPage( "OpenIDLogin" );
 	}
 
-	function execute($par) {
+	function execute( $par ) {
 		global $wgRequest, $wgUser, $wgOut, $wgScriptPath, $wgOpenIDShowProviderIcons;
 
 		wfLoadExtensionMessages( 'OpenID' );
@@ -46,25 +46,25 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			'rel' => 'stylesheet',
 			'type' => 'text/css',
 			'media' => 'screen, projection',
-			'href' => $oidScriptPath.($wgOpenIDShowProviderIcons ? '/skin/openid.css' : '/skin/openid-plain.css')
-		));
+			'href' => $oidScriptPath . ( $wgOpenIDShowProviderIcons ? '/skin/openid.css' : '/skin/openid-plain.css' )
+		) );
 
-		$wgOut->addScript('<script type="text/javascript" src="'.$oidScriptPath.'/skin/jquery-1.3.2.min.js"></script>'."\n");
-		$wgOut->addScript('<script type="text/javascript" src="'.$oidScriptPath.'/skin/openid.js"></script>'."\n");
+		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/jquery-1.3.2.min.js"></script>' . "\n" );
+		$wgOut->addScript( '<script type="text/javascript" src="' . $oidScriptPath . '/skin/openid.js"></script>' . "\n" );
 
-		if ($wgUser->getID() != 0) {
+		if ( $wgUser->getID() != 0 ) {
 			$this->alreadyLoggedIn();
 			return;
 		}
 
-		if ($wgRequest->getText('returnto')) {
-			$this->setReturnTo($wgRequest->getText('returnto'));
+		if ( $wgRequest->getText( 'returnto' ) ) {
+			$this->setReturnTo( $wgRequest->getText( 'returnto' ) );
 		}
 
-		$openid_url = $wgRequest->getText('openid_url');
+		$openid_url = $wgRequest->getText( 'openid_url' );
 
-		if (isset($openid_url) && strlen($openid_url) > 0) {
-			$this->login($openid_url);
+		if ( isset( $openid_url ) && strlen( $openid_url ) > 0 ) {
+			$this->login( $openid_url );
 		} else {
 			$this->loginForm();
 		}
@@ -73,22 +73,22 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function loginForm() {
 		global $wgOut, $wgUser, $wgOpenIDLoginLogoUrl, $wgOpenIDShowProviderIcons;
 		$sk = $wgUser->getSkin();
-		$instructions = wfMsgExt('openidlogininstructions', array('parse'));
+		$instructions = wfMsgExt( 'openidlogininstructions', array( 'parse' ) );
 
 		$formsHTML = '';
 
 		$largeButtonsHTML = '<div id="openid_large_providers">';
-		foreach (OpenIDProvider::getLargeProviders() as $provider) {
+		foreach ( OpenIDProvider::getLargeProviders() as $provider ) {
 			$largeButtonsHTML .= $provider->getLargeButtonHTML();
 			$formsHTML .= $provider->getLoginFormHTML();
 		}
 		$largeButtonsHTML .= '</div>';
 
 		$smallButtonsHTML = '';
-		if ($wgOpenIDShowProviderIcons) {
+		if ( $wgOpenIDShowProviderIcons ) {
 			$smallButtonsHTML .= '<div id="openid_small_providers_icons">';
-			foreach (OpenIDProvider::getSmallProviders() as $provider) {
-				$smallButtonsHTML .= $provider->getSmallButtonHTML(); 
+			foreach ( OpenIDProvider::getSmallProviders() as $provider ) {
+				$smallButtonsHTML .= $provider->getSmallButtonHTML();
 				$formsHTML .= $provider->getLoginFormHTML();
 			}
 			$smallButtonsHTML .= '</div>';
@@ -101,13 +101,13 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 			$i = 0;
 			$break = true;
-			foreach ($small as $provider) {
-				if ($break && $i > count($small)/2) {
+			foreach ( $small as $provider ) {
+				if ( $break && $i > count( $small ) / 2 ) {
 					$smallButtonsHTML .= '</ul><ul class="openid_small_providers_block">';
 					$break = false;
 				}
 
-				$smallButtonsHTML .= '<li>'.$provider->getSmallButtonHTML().'</li>';
+				$smallButtonsHTML .= '<li>' . $provider->getSmallButtonHTML() . '</li>';
 
 				$formsHTML .= $provider->getLoginFormHTML();
 				$i++;
@@ -116,25 +116,25 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$smallButtonsHTML .= '</div>';
 		}
 
-		$wgOut->addHTML('<form id="openid_form" action="' . $sk->makeSpecialUrl('OpenIDLogin') . '" method="POST" onsubmit="openid.update()"">' .
-						'<fieldset><legend>' . wfMsg('openidsigninorcreateaccount') . '</legend>' .
+		$wgOut->addHTML( '<form id="openid_form" action="' . $sk->makeSpecialUrl( 'OpenIDLogin' ) . '" method="POST" onsubmit="openid.update()"">' .
+						'<fieldset><legend>' . wfMsg( 'openidsigninorcreateaccount' ) . '</legend>' .
 						$largeButtonsHTML .
 						'<div id="openid_input_area">' .
 						$formsHTML .
-						'</div>' . 
+						'</div>' .
 						$smallButtonsHTML .
 						'</fieldset></form>' .
 						$instructions
 						);
 	}
 
-	function toUserName($openid) {
-        if (Services_Yadis_identifierScheme($openid) == 'XRI') {
-			wfDebug("OpenID: Handling an XRI: $openid\n");
-			return $this->toUserNameXri($openid);
+	function toUserName( $openid ) {
+		if ( Services_Yadis_identifierScheme( $openid ) == 'XRI' ) {
+			wfDebug( "OpenID: Handling an XRI: $openid\n" );
+			return $this->toUserNameXri( $openid );
 		} else {
-			wfDebug("OpenID: Handling an URL: $openid\n");
-			return $this->toUserNameUrl($openid);
+			wfDebug( "OpenID: Handling an URL: $openid\n" );
+			return $this->toUserNameUrl( $openid );
 		}
 	}
 
@@ -146,58 +146,58 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidalreadyloggedin', $wgUser->getName() ) );
-		$wgOut->returnToMain(false, $this->returnTo() );
+		$wgOut->returnToMain( false, $this->returnTo() );
 	}
 
-	function setUserUrl($user, $url) {
-		$other = $this->getUserUrl($user);
-		if (isset($other)) {
-			$this->updateUserUrl($user, $url);
+	function setUserUrl( $user, $url ) {
+		$other = $this->getUserUrl( $user );
+		if ( isset( $other ) ) {
+			$this->updateUserUrl( $user, $url );
 		} else {
-			$this->insertUserUrl($user, $url);
+			$this->insertUserUrl( $user, $url );
 		}
 	}
 
-	function insertUserUrl($user, $url) {
+	function insertUserUrl( $user, $url ) {
 		global $wgSharedDB, $wgDBname;
 		$dbw =& wfGetDB( DB_MASTER );
 
-		if (isset($wgSharedDB)) {
+		if ( isset( $wgSharedDB ) ) {
 			# It would be nicer to get the existing dbname
 			# and save it, but it's not possible
-			$dbw->selectDB($wgSharedDB);
+			$dbw->selectDB( $wgSharedDB );
 		}
 
-		$dbw->insert('user_openid', array('uoi_user' => $user->getId(),
-										  'uoi_openid' => $url));
+		$dbw->insert( 'user_openid', array( 'uoi_user' => $user->getId(),
+										  'uoi_openid' => $url ) );
 
-		if (isset($wgSharedDB)) {
-			$dbw->selectDB($wgDBname);
+		if ( isset( $wgSharedDB ) ) {
+			$dbw->selectDB( $wgDBname );
 		}
 	}
 
-	function updateUserUrl($user, $url) {
+	function updateUserUrl( $user, $url ) {
 		global $wgSharedDB, $wgDBname;
 		$dbw =& wfGetDB( DB_MASTER );
 
-		if (isset($wgSharedDB)) {
+		if ( isset( $wgSharedDB ) ) {
 			# It would be nicer to get the existing dbname
 			# and save it, but it's not possible
-			$dbw->selectDB($wgSharedDB);
+			$dbw->selectDB( $wgSharedDB );
 		}
 
-		$dbw->set('user_openid', 'uoi_openid', $url,
-				  'uoi_user = ' . $user->getID());
+		$dbw->set( 'user_openid', 'uoi_openid', $url,
+				  'uoi_user = ' . $user->getID() );
 
-		if (isset($wgSharedDB)) {
-			$dbw->selectDB($wgDBname);
+		if ( isset( $wgSharedDB ) ) {
+			$dbw->selectDB( $wgDBname );
 		}
 	}
 
-	function saveValues($response, $sreg) {
+	function saveValues( $response, $sreg ) {
 		global $wgSessionStarted, $wgUser;
 
-		if (!$wgSessionStarted) {
+		if ( !$wgSessionStarted ) {
 			$wgUser->SetupSession();
 		}
 
@@ -208,20 +208,20 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function clearValues() {
-		unset($_SESSION['openid_consumer_response']);
-		unset($_SESSION['openid_consumer_sreg']);
+		unset( $_SESSION['openid_consumer_response'] );
+		unset( $_SESSION['openid_consumer_sreg'] );
 		return true;
 	}
 
 	function fetchValues() {
-		return array($_SESSION['openid_consumer_response'], $_SESSION['openid_consumer_sreg']);
+		return array( $_SESSION['openid_consumer_response'], $_SESSION['openid_consumer_sreg'] );
 	}
 
 	function returnTo() {
 		return $_SESSION['openid_consumer_returnto'];
 	}
 
-	function setReturnTo($returnto) {
+	function setReturnTo( $returnto ) {
 		$_SESSION['openid_consumer_returnto'] = $returnto;
 	}
 }

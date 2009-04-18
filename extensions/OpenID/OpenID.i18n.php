@@ -469,7 +469,7 @@ $messages['bs'] = array(
 	'openiderror' => 'Greška pri provjeri',
 	'openiderrortext' => 'Desila se greška pri provjeri OpenID URL adrese.',
 	'openidconfigerror' => 'Greška OpenID postavki',
-	'openidconfigerrortext' => 'OpenID konfiguracija spremanja za ovaj wiki je nevaljana. 
+	'openidconfigerrortext' => 'OpenID konfiguracija spremanja za ovaj wiki je nevaljana.
 Molimo konsultujte se sa [[Special:ListUsers/sysop|administratorom]].',
 	'openidpermission' => 'Greška kod OpenID dopuštenja',
 	'openidpermissiontext' => 'OpenID koji ste naveli nije dopušteno da se prijavi na ovaj server.',
@@ -2636,10 +2636,10 @@ Jeśli nie spróbuj wcisnąć klawisz „Kontynuuj”.',
 	'openidclientonlytext' => 'Nie można korzystać z kont tej wiki jako OpenID w innych witrynach.',
 	'openidloginlabel' => 'Adres URL OpenID',
 	'openidlogininstructions' => '{{SITENAME}} korzysta ze standardu [http://openid.net/ OpenID] dla zapewnienia jednolitego uwierzytelnienia pomiędzy różnymi witrynami w sieci Web.
-OpenID pozwala na zalogowanie się do wielu różnych witryn sieci Web bez użycia osobnego hasła dla każdej witryny. 
+OpenID pozwala na zalogowanie się do wielu różnych witryn sieci Web bez użycia osobnego hasła dla każdej witryny.
 (Zobacz [http://pl.wikipedia.org/wiki/OpenID artykuł o OpenID w Wikipedii] jeśli chcesz uzyskać więcej informacji.)
 
-Jeśli masz już konto w {{GRAMMAR:MS.lp|{{SITENAME}}}}, możesz [[Specjalna:Userlogin|zalogować się]] jak zwykle używając nazwy użytkownika i hasła. 
+Jeśli masz już konto w {{GRAMMAR:MS.lp|{{SITENAME}}}}, możesz [[Specjalna:Userlogin|zalogować się]] jak zwykle używając nazwy użytkownika i hasła.
 Jeśli chcesz w przyszłości używać OpenID do logowania się, możesz [[Special:OpenIDConvert|przełączyć konto na korzystanie z OpenID]] po normalnym zalogowaniu się.
 
 Jest wielu [http://openid.net/get/ operatorów usługi OpenID] i możesz mieć już konto przełączone na korzystanie z OpenID innego usługodawcy.',
@@ -3260,7 +3260,7 @@ Om du vill använda OpenID att logga in i framtiden, kan du [[Special:OpenIDConv
 	'openidclientonlytext' => 'Du kan inte använda konton från denna wikin som OpenID på en annan sida.',
 	'openidloginlabel' => 'OpenID-adress',
 	'openidlogininstructions' => '{{SITENAME}} stödjer [http://openid.net/ OpenID]-standarden för enhetlig inlogging på många webbsidor.
-OpenID låter dig logga in på många webbsidor utan att använda olika lösenord för varje. 
+OpenID låter dig logga in på många webbsidor utan att använda olika lösenord för varje.
 (Se [http://en.wikipedia.org/wiki/OpenID Wikipedia-artikeln om OpenID] för mer information.)
 
 Om du redan har ett konto på {{SITENAME}}, kan du [[Special:UserLogin|logga in]] som vanligt med ditt användarnamn och lösenord.

@@ -62,4 +62,3 @@
 - Dynamic HTML swap in of OpenID login form on Special:Userlogin
 - warn if a user account has been used as a login before attaching an
   OpenID
-  

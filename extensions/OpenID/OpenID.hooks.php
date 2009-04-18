@@ -19,7 +19,7 @@ class OpenIDHooks {
 		}
 
 		foreach ( $addList as $sp ) {
-			$list['OpenID'.$sp] = 'SpecialOpenID' . $sp;
+			$list['OpenID' . $sp] = 'SpecialOpenID' . $sp;
 		}
 
 		return true;
@@ -39,7 +39,7 @@ class OpenIDHooks {
 
 		if ( $nt && $nt->getNamespace() == NS_USER && strpos( $nt->getText(), '/' ) === false ) {
 			$user = User::newFromName( $nt->getText() );
-			if ($user && $user->getID() != 0) {
+			if ( $user && $user->getID() != 0 ) {
 				$openid = SpecialOpenID::getUserUrl( $user );
 				if ( isset( $openid ) && strlen( $openid ) != 0 ) {
 					global $wgOpenIDShowUrlOnUserPage;
@@ -51,10 +51,10 @@ class OpenIDHooks {
 
 						$url = SpecialOpenID::OpenIDToUrl( $openid );
 						$disp = htmlspecialchars( $openid );
-						$wgOut->setSubtitle("<span class='subpages'>" .
+						$wgOut->setSubtitle( "<span class='subpages'>" .
 											"<img src='$wgOpenIDLoginLogoUrl' alt='OpenID' />" .
 											"<a href='$url'>$disp</a>" .
-											"</span>");
+											"</span>" );
 					}
 				} else {
 					# Add OpenID data iif its allowed
@@ -75,7 +75,7 @@ class OpenIDHooks {
 		return true;
 	}
 
-	public static function onPersonalUrls(&$personal_urls, &$title) {
+	public static function onPersonalUrls( &$personal_urls, &$title ) {
 		global $wgHideOpenIDLoginLink, $wgUser, $wgLang, $wgOut, $wgOpenIDOnly;
 
 		if ( !$wgHideOpenIDLoginLink && $wgUser->getID() == 0 ) {
@@ -83,7 +83,7 @@ class OpenIDHooks {
 			$wgOut->addHeadItem( 'openidloginstyle', self::loginStyle() );
 			$sk = $wgUser->getSkin();
 			$returnto = $title->isSpecial( 'Userlogout' ) ?
-			  '' : ('returnto=' . $title->getPrefixedURL() );
+			  '' : ( 'returnto=' . $title->getPrefixedURL() );
 
 			$personal_urls['openidlogin'] = array(
 				'text' => wfMsg( 'openidlogin' ),
@@ -108,10 +108,10 @@ class OpenIDHooks {
 	private static $oidPrefs = array( 'hide', 'update-userinfo-on-login' );
 
 	public static function onInitPreferencesForm( $prefs, $request ) {
-		foreach (self::$oidPrefs as $oidPref)
+		foreach ( self::$oidPrefs as $oidPref )
 		{
-			$prefs->mToggles['openid-'.$oidPref]
-				= $request->getCheck( "wpOpOpenID-".$oidPref ) ? 1 : 0;
+			$prefs->mToggles['openid-' . $oidPref]
+				= $request->getCheck( "wpOpOpenID-" . $oidPref ) ? 1 : 0;
 		}
 
 		return true;
@@ -122,16 +122,16 @@ class OpenIDHooks {
 
 		$out->addHTML( "\n<fieldset>\n<legend>" . wfMsgHtml( 'openid-prefs' ) . "</legend>\n" );
 
-		$out->addWikiText( wfMsg( 'openid-prefstext') );
+		$out->addWikiText( wfMsg( 'openid-prefstext' ) );
 
-		foreach (self::$oidPrefs as $oidPref)
+		foreach ( self::$oidPrefs as $oidPref )
 		{
-			$out->addHTML( '<div class="toggle"><input type="checkbox" value="1" '.
-					'id="openid-'.$oidPref.'" name="wpOpOpenID-'.$oidPref.'"'.
-					($prefs->mToggles['openid-'.$oidPref] == 1 ? ' checked="checked"' : '').
+			$out->addHTML( '<div class="toggle"><input type="checkbox" value="1" ' .
+					'id="openid-' . $oidPref . '" name="wpOpOpenID-' . $oidPref . '"' .
+					( $prefs->mToggles['openid-' . $oidPref] == 1 ? ' checked="checked"' : '' ) .
 				'/> ' .
-				'<span class="toggletext">'.
-				'<label for="openid-'.$oidPref.'">'.wfMsg( 'openid-pref-'.$oidPref ).'</label>'.
+				'<span class="toggletext">' .
+				'<label for="openid-' . $oidPref . '">' . wfMsg( 'openid-pref-' . $oidPref ) . '</label>' .
 				"</span></div>\n" );
 		}
 
@@ -140,12 +140,12 @@ class OpenIDHooks {
 		return true;
 	}
 
-	public static function onSavePreferences($prefs, $user, &$message, $old)
+	public static function onSavePreferences( $prefs, $user, &$message, $old )
 	{
-		foreach (self::$oidPrefs as $oidPref)
+		foreach ( self::$oidPrefs as $oidPref )
 		{
-			$user->setOption('openid-'.$oidPref, $prefs->mToggles['openid-'.$oidPref]);
-			wfDebugLog('OpenID', 'Setting user preferences: ' . print_r($user, true) );
+			$user->setOption( 'openid-' . $oidPref, $prefs->mToggles['openid-' . $oidPref] );
+			wfDebugLog( 'OpenID', 'Setting user preferences: ' . print_r( $user, true ) );
 		}
 
 		$user->saveSettings();
@@ -156,7 +156,7 @@ class OpenIDHooks {
 	public static function onResetPreferences( $prefs, $user )
 	{
 		foreach ( self::$oidPrefs as $oidPref ) {
-			$prefs->mToggles['openid-'.$oidPref] = $user->getOption( 'openid-'.$oidPref );
+			$prefs->mToggles['openid-' . $oidPref] = $user->getOption( 'openid-' . $oidPref );
 		}
 
 		return true;
@@ -167,9 +167,9 @@ class OpenIDHooks {
 
 		$base = dirname( __FILE__ );
 
-		if( $wgDBtype == 'mysql' ) {
+		if ( $wgDBtype == 'mysql' ) {
 			$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.sql" );
-		} else if( $wgDBtype == 'postgres' ) {
+		} else if ( $wgDBtype == 'postgres' ) {
 			$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
 		}
 
