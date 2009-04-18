@@ -14,11 +14,14 @@ $messages['en'] = array(
 	'importusers-form-file'               => 'User file format (CSV):',
 	'importusers-form-replace-present'    => 'Replace existing users',
 	'importusers-form-button'             => 'Import',
-	'importusers-user-added'              => 'User <b>%s</b> has been added.',
-	'importusers-user-present-update'     => 'User <b>%s</b> already exists. Updated.',
-	'importusers-user-present-not-update' => 'User <b>%s</b> already exists. Did not update.',
-	'importusers-user-invalid-format'     => 'User data in the line #%s has invalid format or is blank. Skipped.',
-	'importusers-log'                     => 'Import users log',
+	'importusers-user-added'              => 'User \'\'\'$1\'\'\' has been added.',
+	'importusers-user-present-update'     => 'User \'\'\'$1\'\'\' already exists.
+Updated.',
+	'importusers-user-present-not-update' => 'User \'\'\'$1\'\'\' already exists.
+Did not update.',
+	'importusers-user-invalid-format'     => 'User data in the line #$1 has invalid format or is blank.
+Skipped.',
+	'importusers-log'                     => 'Import log',
 	'importusers-log-summary'             => 'Summary',
 	'importusers-log-summary-all'         => 'All',
 	'importusers-log-summary-added'       => 'Added',
