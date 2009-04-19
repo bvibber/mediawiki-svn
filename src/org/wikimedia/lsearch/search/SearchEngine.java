@@ -70,7 +70,7 @@ public class SearchEngine {
 
 	protected final int MAXLINES = 1000;
 	protected final int MAXPREFIX = 50;
-	protected final int MAXOFFSET = 10000;
+	protected final int MAXOFFSET = 100000;
 	protected static GlobalConfiguration global = null;
 	protected static Configuration config = null;
 	protected static SearcherCache cache = null;
