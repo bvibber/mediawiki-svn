@@ -13,7 +13,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('EMAILPAGE_VERSION', '1.3.2, 2008-11-05');
+define('EMAILPAGE_VERSION', '1.3.3, 2009-04-19');
 
 $wgEmailPageGroup           = 'sysop';            # Users must belong to this group to send emails (empty string means anyone can send)
 $wgEmailPageContactsCat     = '';                 # This specifies the name of a category containing categories of contact pages
@@ -54,7 +54,7 @@ function wfEmailPageToolboxLink() {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if (is_object($wgTitle) && (empty($wgEmailPageGroup) || in_array($wgEmailPageGroup, $wgUser->getEffectiveGroups()))) {
 		$url = Title::makeTitle(NS_SPECIAL, 'EmailPage')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
-		echo("<li><a href=\"$url\">".wfMsg('emailpage')."</li>");
+		echo("<li><a href=\"$url\">".wfMsg('emailpage')."</a></li>");
 		}
 	return true;
 }
