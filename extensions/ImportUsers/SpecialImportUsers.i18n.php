@@ -21,7 +21,7 @@ Updated.',
 Did not update.',
 	'importusers-user-invalid-format'     => 'User data in the line #$1 has invalid format or is blank.
 Skipped.',
-	'importusers-log'                     => 'Import log',
+	'importusers-log'                     => 'Import users log',
 	'importusers-log-summary'             => 'Summary',
 	'importusers-log-summary-all'         => 'All',
 	'importusers-log-summary-added'       => 'Added',
