@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.13.10 - 19 April 2009
+  Updated AbuseFilter, FlaggedRevs and OpenID extensions.
+
 0.13.9 - 4 April 2009
   Settings that weren't taken into account when using database handler with
   $wgConfigureAllowDeferSetup = true are now ignored with that configuration.
