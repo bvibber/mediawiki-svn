@@ -10,6 +10,11 @@ if (!defined('MEDIAWIKI')) die();
 
 class SGMResultPrinter extends SMWResultPrinter {
 
+	public function getName() {
+		wfLoadExtensionMessages('SemanticGoogleMaps');
+		return wfMsg('semanticgooglemaps_printername');
+	}
+
 	public function getResult($results, $params, $outputmode) {
 		// skip checks, results with 0 entries are normal
 		$this->readParameters($params, $outputmode);
@@ -26,9 +31,9 @@ class SGMResultPrinter extends SMWResultPrinter {
 		// print all result rows
 		while ( $row = $res->getNext() ) {
 			$lat = $lon = $title = $text = $icon = "";
+			$coords_for_page = array();
 			foreach ($row as $i => $field) {
 				$pr = $field->getPrintRequest();
-				$coords_for_page = array();
 				while ( ($object = $field->getNextObject()) !== false ) {
 					if ($object->getTypeID() == '_geo') { // use shorter "LongText" for wikipage
 						// don't add geographical coordinates to the display
