@@ -274,7 +274,7 @@ var mvJsLoader = {
 				setTimeout( 'mvJsLoader.doLoad()', 25 );
 			 }
 		 }else{
-		 	js_log('checkLoading passed for:  do run callbacks');
+		 	//js_log('checkLoading passed for:  do run callbacks');
 		 	//only do callback if we are in the same instance (weird concurency issue) 		 	
 		 	var cb_count=0;
 		 	for(var i=0; i < this.callbacks.length; i++)
@@ -394,9 +394,11 @@ mediaPlayer.prototype =
 				//js_log(_this.id + ' plugin loaded');
 				_this.loaded = true;
 				//make sure we have not already cleared the callbacks: 		
-				if(_this.loading_callbacks != null){ 		
-					for(var i=0; i < _this.loading_callbacks.length; i++ )
-						_this.loading_callbacks[i]();	
+				if( _this.loading_callbacks != null){ 		
+					for(var i=0; i < _this.loading_callbacks.length; i++ ){
+						if(_this.loading_callbacks[i])
+							_this.loading_callbacks[i]();	
+					}
 				}
 				_this.loading_callbacks = null;
 								
@@ -419,7 +421,7 @@ var oggPluginPlayer = new mediaPlayer('oggPlugin',['video/ogg'],'generic');
 var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
 var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
 
-var htmlPlayer = new mediaPlayer('html',['text/html', 'image/jpeg', 'image/png'],'html');
+var htmlPlayer = new mediaPlayer('html',['text/html', 'image/jpeg', 'image/png', 'image/svg'], 'html');
 
 /**
   * mediaPlayers is a collection of mediaPlayer objects supported by the client.
@@ -440,7 +442,8 @@ mediaPlayers.prototype =
     {
         this.players = new Array();
         this.loadPreferences();
-        //set up default players library mapping        
+        
+        //set up default players order for each library type        
         this.default_players['video/x-flv'] = ['flash','vlc'];
         this.default_players['video/h264'] = ['flash', 'vlc'];
         
@@ -477,7 +480,7 @@ mediaPlayers.prototype =
         if(mime_type!=null)
         	player.supported_types.push(mime_type);      
                  
-        this.players.push(player);
+        this.players.push( player );
     },
     getMIMETypePlayers : function(mime_type)
     {    	    	
@@ -532,7 +535,7 @@ mediaPlayers.prototype =
                 break;
             }
         }
-        if(selected_player)
+        if( selected_player )
         {
             for(var i=0; i < global_player_list.length; i++)
             {
@@ -801,10 +804,11 @@ function rewrite_for_oggHanlder( vidIdList ){
 		var src  = re.exec( $j('#'+vidId).html() )[2];
 		//replace the top div with mv_embed based player: 
 		var vid_html = '<video id="vid_' + i +'" '+ 
-		 		'src="' + src + ' poster="' + poster + '" style="width:' + pwidth +
+		 		'src="' + src + '" poster="' + poster + '" style="width:' + pwidth +
 		 			 	'px;height:' + pheight + 'px;"></video>';
+		js_log("video html: " + vid_html);
 		if( src && poster)	
-		 	$j('#'+vidId).replaceWidth( vid_html );		
+		 	$j('#'+vidId).html( vid_html );		
 		//rewrite that video id: 
 		rewrite_by_id('vid_' + i);
 	}
