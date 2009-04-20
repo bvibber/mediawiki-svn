@@ -710,7 +710,7 @@ $messages['nso'] = array(
 $messages['oc'] = array(
 	'crossnamespacelinks' => 'Paginas que contenon de ligams cap a un autre espaci de nom',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Enumèra los ligams a travèrs los espacis de nomenatges]] que deurián pas existir sus {{SITENAME}}',
-	'crossnamespacelinks-summary' => "Aquesta pagina fornís una lista de las paginas de l’espaci de nom principal qu'an un ligam cap a un autre espaci de nom (exceptat pels espacis de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), çò qu’es recomandat.",
+	'crossnamespacelinks-summary' => "Aquesta pagina provesís una lista de las paginas de l’espaci de nom principal qu'an un ligam cap a un autre espaci de nom (exceptat pels espacis de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), çò qu’es recomandat.",
 	'crossnamespacelinkstext' => '$1 : a $2 {{PLURAL:$2|ligam|ligams}} cap a l’espaci « $3 »',
 );
 

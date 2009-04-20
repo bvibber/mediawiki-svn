@@ -1204,6 +1204,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'imagetagging-article' => 'Blatt:',
 	'imagetagging-imghistory' => 'Gschicht',
 );
 

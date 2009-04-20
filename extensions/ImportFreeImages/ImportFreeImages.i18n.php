@@ -238,6 +238,13 @@ Aby to cynił, wobstaraj se pšosym API-kluc wót [http://www.flickr.com/service
 	'importfreeimages_returntoform' => "Abo klikni < a href='$1'>sem</a>, aby se wróśił k swójim pytańskim wuslědkam",
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'importfreeimages_owner' => 'Δημιουργός',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -643,6 +650,8 @@ $messages['lb'] = array(
 	'importfreeimages' => 'Fräi Biller importéieren',
 	'importfreeimages-desc' => "Erméiglecht et fir [[Special:ImportFreeImages|ordentlich lizenzéiert Fotoen]] vu [http://www.flickr.com flickr] z'importéieren",
 	'importfreeimages_description' => "Dës Säit erlaabt iech et fir no uerdentlech lizenzéierte Biller vu flickr ze sichen an dës an är Wiki z'importéieren.",
+	'importfreeimages_noapikey' => 'Dir hutt Äre Flickr API Schlëssel net agestallt.
+Fir dëst ze maachen, Frot w.e.g. en API Schlëssel [http://www.flickr.com/services/api/misc.api_keys.html hei] a setzt wgFlickrAPIKey an ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Et goufe keng Photoen no ärer Sich '$1' fonnt, versicht et w.e.g. nach eng Kéier.",
 	'importfreeimages_invalidurl' => 'D\'URL "$1" ass kee gëltegt Flickr-Bild.',
 	'importfreeimages_owner' => 'Auteur:',

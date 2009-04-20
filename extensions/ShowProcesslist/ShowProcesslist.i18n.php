@@ -622,6 +622,13 @@ $messages['os'] = array(
 	'showprocesslist-time' => 'Рæстæг',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'showprocesslist-user' => 'Yuuser',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Slomox
  */

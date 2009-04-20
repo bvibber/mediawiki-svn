@@ -266,6 +266,13 @@ $messages['gl'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'layouts_unknown' => 'Ἄγνωτη',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

@@ -208,7 +208,7 @@ $messages['bs'] = array(
 	'importusers-user-present-update' => "Korisnik '''$1''' već postoji. Ažuriran.",
 	'importusers-user-present-not-update' => "Korisnik '''$1''' već postoji. Nije ažuriran.",
 	'importusers-user-invalid-format' => 'Korisnički podaci na liniji #$1 nisu u valjanom formatu ili su prazni. Preskočeno.',
-	'importusers-log' => 'Zapisnik uvoza',
+	'importusers-log' => 'Zapisnik uvoza korisnika',
 	'importusers-log-summary' => 'Sažetak',
 	'importusers-log-summary-all' => 'Sve',
 	'importusers-log-summary-added' => 'Dodan',
@@ -448,25 +448,27 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author PieRRoMaN
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'importusers' => 'Importer des utilisateurs',
 	'importusers-desc' => 'Importe des utilisateurs en bloc depuis un fichier CVS ; encodage : UTF-8.',
-	'importusers-uploadfile' => 'Importer le fichier',
+	'importusers-uploadfile' => 'Téléverser le fichier',
 	'importusers-form-caption' => 'Entrez un fichier CVS (UTF-8)',
 	'importusers-form-file' => 'Format du fichier utilisateur (CSV) :',
-	'importusers-form-replace-present' => 'Remplace les utilisateurs existants',
+	'importusers-form-replace-present' => 'Remplacer les utilisateurs existants',
 	'importusers-form-button' => 'Importer',
 	'importusers-user-added' => "L’utilisateur '''$1''' a été ajouté.",
-	'importusers-user-present-update' => "l’utilisateur '''$1''' existe déjà. Mise à jour effectuée.",
+	'importusers-user-present-update' => "L’utilisateur '''$1''' existe déjà.
+Mise à jour effectuée.",
 	'importusers-user-present-not-update' => "L’utilisateur '''$1''' existe déjà. Non mis à jour.",
 	'importusers-user-invalid-format' => 'Les données utilisateur dans la ligne #$1 sont dans un mauvais format ou bien sont inexistantes. Aucune action.',
-	'importusers-log' => 'Journal des importations',
-	'importusers-log-summary' => 'Sommaire',
+	'importusers-log' => "Journal des importations d'utilisateurs",
+	'importusers-log-summary' => 'Résumé',
 	'importusers-log-summary-all' => 'Total',
 	'importusers-log-summary-added' => 'Ajouté',
-	'importusers-log-summary-updated' => 'Mise à jour',
+	'importusers-log-summary-updated' => 'Mis à jour',
 	'importusers-login-name' => 'Nom d’utilisateur',
 	'importusers-password' => 'mot de passe',
 	'importusers-email' => 'adresse courriel',
@@ -494,7 +496,7 @@ $messages['gl'] = array(
 	'importusers-form-file' => 'Formato do ficheiro do usuario (CSV):',
 	'importusers-form-replace-present' => 'Reemprazar os usuarios existentes',
 	'importusers-form-button' => 'Importar',
-	'importusers-user-added' => "Usuario '''$1''' foi engadido.",
+	'importusers-user-added' => "O usuario '''$1''' foi engadido.",
 	'importusers-user-present-update' => "O usuario '''$1''' xa existe. Actualizado.",
 	'importusers-user-present-not-update' => 'O usuario $1 xa existe. Non actualizado.',
 	'importusers-user-invalid-format' => 'Os datos de usuario na liña #$1 teñen un formato inválido ou a liña está en branco. Esta foi saltada.',
@@ -1322,7 +1324,7 @@ $messages['sk'] = array(
 	'importusers-user-present-update' => "Používateľ '''$1''' už existuje. Aktualizovaný.",
 	'importusers-user-present-not-update' => "Používateľ '''$1''' už existuje. Ponecháva sa bez aktualizácie.",
 	'importusers-user-invalid-format' => 'Údaje na riadku #$1 majú neplatný formát alebo je riadok prázdny. Riadok preskočený.',
-	'importusers-log' => 'Záznam importov',
+	'importusers-log' => 'Záznam importov používateľov',
 	'importusers-log-summary' => 'Zhrnutie',
 	'importusers-log-summary-all' => 'Všetky',
 	'importusers-log-summary-added' => 'Pridané',

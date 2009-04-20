@@ -351,6 +351,13 @@ $messages['sk'] = array(
 	'catboxattop-categories' => 'Kategórie',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'catboxattop-categories' => 'Категорија',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

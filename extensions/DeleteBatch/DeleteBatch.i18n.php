@@ -896,6 +896,13 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
 	'right-deletebatch' => 'Suprimir de paginas en lòt',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'deletebatch-success-subtitle' => 'fer $1',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Maikking

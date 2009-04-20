@@ -643,10 +643,11 @@ $messages['ie'] = array(
 
 /** Ido (Ido)
  * @author Malafaya
+ * @author Wyvernoid
  */
 $messages['io'] = array(
-	'passwordreset-username' => 'Uzantonomo',
-	'passwordreset-newpass' => 'Nova Kontrolajo',
+	'passwordreset-username' => 'Uzantonomo:',
+	'passwordreset-newpass' => 'Nova Pasovorto:',
 );
 
 /** Icelandic (Íslenska)
@@ -1212,6 +1213,26 @@ $messages['sk'] = array(
 	'disabledusers' => 'Vypnutí používatelia',
 	'disabledusers-summary' => 'Toto je zoznam používateľov, ktorí boli vypnutí prostredníctvom PasswordReset.',
 	'right-passwordreset' => 'Vygenerovať nové heslo pre používateľa ([[Special:PasswordReset|špeciálna stránka]])',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'passwordreset' => 'Обнављање лозинке',
+	'passwordreset-invalidusername' => 'Неисправно корисничко име',
+	'passwordreset-emptyusername' => 'Празно корисничко име',
+	'passwordreset-nopassmatch' => 'Лозинке се не поклапају',
+	'passwordreset-username' => 'Корисничко име:',
+	'passwordreset-newpass' => 'Нова лозинка:',
+	'passwordreset-confirmpass' => 'Потврди лозинку:',
+	'passwordreset-submit' => 'Обнови лозинку',
+	'passwordreset-success' => 'Лозинка је обновљена за кориснички ID: $1',
+	'passwordreset-disableuser' => 'Онемогућити кориснички налог?',
+	'passwordreset-disableuserexplain' => '(поставља неисправан хеш лозинке — корисник не може да се улогује)',
+	'passwordreset-disablesuccess' => 'Налог је онемогућен за кориснички ID: $1',
+	'passwordreset-accountdisabled' => 'Налог је онемогућен',
+	'disabledusers' => 'Онемогућени корисници',
 );
 
 /** Seeltersk (Seeltersk)

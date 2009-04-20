@@ -106,13 +106,16 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'security' => 'Zapisnik sigurnosti',
+	'security-desc' => 'Proširuje zaštitu MediaWiki stranice da bi se dopustilo pregledanje zaštićenog sadržaja stranice',
 	'security-logpage' => 'Zapisnik sigurnosti',
+	'security-logpagetext' => 'Ovo je zapisnik akcija blokiranih putem [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity proširenja].',
 	'badaccess-read' => 'Upozorenje: "$1" je povezano ovdje, ali nemate dovoljno privilegija da ovdje pristupite.',
 	'security-info' => 'Postoji $1 na ovom članku',
 	'security-info-toggle' => 'sigurnosna ograničenja',
 	'security-inforestrict' => '$1 je onemogućena za $2',
 	'security-desc-LS' => "''(primjenjuje se jer je ova stranica u '''$2 $1''')''",
 	'security-desc-PR' => "''(postavljeno iz '''stranice zaštite''')''",
+	'security-infosysops' => "Nemate aktivnih ograničenja jer ste član grupe '''administratora'''",
 	'security-manygroups' => 'grupe $1 i $2',
 	'security-unchain' => 'Izmijeni svaku akciju zasebno',
 	'security-type-category' => 'kategorija',

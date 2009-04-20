@@ -178,9 +178,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'findspam-ip' => 'Διεύθυνση IP:',
+	'findspam-ok' => 'Εντάξει',
 );
 
 /** Esperanto (Esperanto)

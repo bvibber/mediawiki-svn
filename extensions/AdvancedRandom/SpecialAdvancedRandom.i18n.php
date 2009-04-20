@@ -284,11 +284,14 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
 	'advancedrandom' => '향상된 임의 문서',
-	'advancedrandom-desc' => '어떤 이름 공간에서 오든지 페이지를 얻으면, 그 페이지로 토론이나 종속된 페이지를 연결시켜 주세요. 알찬글로 가는 것이면 [[Special:AdvancedRandom/Template:Featured/Talk]]를 사용하시고, GFDL 파일로 가는 것이면 [[Special:AdvancedRandom/Template:GFDL/File]]를 사용해 주십시오.',
+	'advancedrandom-desc' => '모든 이름공간에서 특정 문서를 가리키는 문서로 이동합니다.
+예를 들어 임의의 알찬 글 토론 문서로 이동하려면 [[Special:AdvancedRandom/Template:Featured/Talk]]를,
+임의의 GFDL 파일로 이동하려면 [[Special:AdvancedRandom/Template:GFDL/File]]의 형식으로 사용할 수 있습니다.',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -304,7 +307,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'advancedrandom' => 'Zoufälleg Säit (erweidert)',
-	'advancedrandom-desc' => 'Eng zoufälleg Säit weisen, z. B. mat [[Special:AdvancedRandom/Template:Featured/Talk]], fir eng zoufälleg Diskussiounssäit vun enger exzellenter Säit oder mat [[Special:AdvancedRandom/Template:GFDL/Image]], fir een zoufällege Fichier ze weisen, den als GFDL lizenzéiert ass.',
+	'advancedrandom-desc' => 'Eng zoufälleg Säit weisen, z. B. mat [[Special:AdvancedRandom/Template:Featured/Talk]], fir eng zoufälleg Diskussiounssäit vun enger exzellenter Säit oder mat [[Special:AdvancedRandom/Template:GFDL/File]], fir een zoufällege Fichier ze weisen, den als GFDL lizenzéiert ass.',
 );
 
 /** Limburgish (Limburgs)

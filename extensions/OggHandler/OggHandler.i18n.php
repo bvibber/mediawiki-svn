@@ -2934,6 +2934,11 @@ $messages['vo'] = array(
 	'ogg-desc-link' => 'Tefü ragiv at',
 );
 
+/** Walloon (Walon) */
+$messages['wa'] = array(
+	'ogg-dismiss' => 'Clôre',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'ogg-desc' => 'Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器',

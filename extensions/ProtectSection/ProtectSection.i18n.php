@@ -354,7 +354,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'protectsection_desc' => 'Permet als utilizaires autorizats a protegir de partidas d’una pagina en utilizant la balisa <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => "Avètz ensajat d'ajustar o d'escafar una seccion protegida.",
-	'protectsection_modify' => 'Avètz ensajat de modificar de tèxt protegit.',
+	'protectsection_modify' => 'Avètz ensajat de modificar de tèxte protegit.',
 	'protectsection_forbidden' => 'Interdich',
 );
 

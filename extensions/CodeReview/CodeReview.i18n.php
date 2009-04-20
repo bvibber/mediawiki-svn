@@ -4655,6 +4655,13 @@ $messages['os'] = array(
 	'code-rev-comment-preview' => 'Разæркаст',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'codereview-subtitle' => 'Fer $1',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Equadus

@@ -226,9 +226,11 @@ $messages['ia'] = array(
 
 /** Ido (Ido)
  * @author Malafaya
+ * @author Wyvernoid
  */
 $messages['io'] = array(
 	'seealso' => 'Videz anke',
+	'seealso-desc' => "Lokizita 'Videz anke' rubikri uzante la kodo <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Icelandic (Íslenska)

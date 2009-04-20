@@ -327,5 +327,6 @@ $aliases['tl'] = array(
 $aliases['vec'] = array(
 	'Configure' => array( 'Configura' ),
 	'Extensions' => array( 'Estensioni' ),
+	'ViewConfig' => array( 'VardaConfigurassion' ),
 );
 

@@ -389,6 +389,13 @@ $messages['sk'] = array(
 	'authors_anonymous' => 'Anonym',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'authors_authors' => 'Аутори',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

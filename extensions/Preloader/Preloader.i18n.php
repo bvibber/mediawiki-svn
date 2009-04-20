@@ -208,7 +208,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'preloader-desc' => 'Provesís, per las paginas novèlas, de fenèstras de tèxt personalizablas per nom d’espaci',
+	'preloader-desc' => 'Provesís, per las paginas novèlas, de fenèstras de tèxte personalizablas per nom d’espaci',
 );
 
 /** Portuguese (Português)

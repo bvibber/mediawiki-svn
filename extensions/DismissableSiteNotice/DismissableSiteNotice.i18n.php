@@ -851,6 +851,11 @@ $messages['vro'] = array(
 	'sitenotice_close' => 'Käkiq ärq',
 );
 
+/** Walloon (Walon) */
+$messages['wa'] = array(
+	'sitenotice_close' => 'muchyî',
+);
+
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',

@@ -2075,6 +2075,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'tasks_help_page_link' => 'Hilf',
+	'tasks_table_header_page' => 'Blatt',
 );
 
 /** Polish (Polski)

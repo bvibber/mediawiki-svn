@@ -417,6 +417,7 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  * @author Dead3y3
  * @author ZaDiak
  */
@@ -432,7 +433,7 @@ $messages['el'] = array(
 	'expand_templates_input' => 'Κείμενο εισόδου:',
 	'expand_templates_output' => 'Αποτέλεσμα',
 	'expand_templates_xml_output' => 'Έξοδος XML',
-	'expand_templates_ok' => 'ΟΚ',
+	'expand_templates_ok' => 'Εντάξει',
 	'expand_templates_remove_comments' => 'Αφαίρεση σχολίων',
 	'expand_templates_generate_xml' => 'Εμφάνιση δέντρου συντακτικής ανάλυσης XML',
 	'expand_templates_preview' => 'Προεπισκόπηση',
@@ -1320,7 +1321,7 @@ $messages['oc'] = array(
 	'expandtemplates-desc' => 'Augmenta los modèls, las foncions parsairs e las variablas per visionar los tèxtes wikis espandits e previsualiza las paginas atal rendudas.',
 	'expand_templates_intro' => 'Aquesta pagina permet de testar l’espandiment de modèls, que son desvolopats recursivament. Las foncions e las variablas predefinidas, coma <nowiki>{{</nowiki>#if:...}} e <nowiki>{{</nowiki>CURRENTDAY}} tanben son desvolopadas.',
 	'expand_templates_title' => 'Títol de l’article, util per exemple se lo modèl utiliza {{PAGENAME}} :',
-	'expand_templates_input' => 'Picatz vòstre tèxt aicí :',
+	'expand_templates_input' => 'Picatz vòstre tèxte aicí :',
 	'expand_templates_output' => 'Visualizatz lo resultat :',
 	'expand_templates_xml_output' => 'Sortida XML',
 	'expand_templates_ok' => "D'acòrdi",

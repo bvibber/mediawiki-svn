@@ -1612,9 +1612,11 @@ Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivan
 	'ow_add_concept_link' => 'Dodaj link ka drugim konceptima',
 	'ow_dm_badtitle' => 'Ova stranica ne pokazuje na bilo koji DefinedMeaning (koncept).
 Molimo provjerite web adresu.',
+	'ow_AddHint' => 'Unesi nove redove za dodati',
 	'ow_AlternativeDefinition' => 'Moguća definicija',
 	'ow_AlternativeDefinitions' => 'Moguće definicije',
 	'ow_ApproximateMeanings' => 'Približna značenja',
+	'ow_Class' => 'Klasa',
 	'ow_ClassAttributeAttribute' => 'Osobina',
 	'ow_ClassAttributes' => 'Atributi klase',
 	'ow_ClassAttributeLevel' => 'nivo',
@@ -1642,6 +1644,7 @@ Molimo provjerite web adresu.',
 	'ow_RelationType' => 'Tip odnosa',
 	'ow_Remove' => 'Ukloni',
 	'ow_Spelling' => 'Pravopis',
+	'ow_SuggestHint' => 'Kliknite za promjenu odabira',
 	'ow_Synonyms' => 'Sinonomi',
 	'ow_SynonymsAndTranslations' => 'Sinonimi i prijevodi',
 	'ow_Source' => 'Izvor',
@@ -1653,6 +1656,7 @@ Molimo provjerite web adresu.',
 	'ow_TranslatedText' => 'Prevedeni tekst',
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
 	'ow_TranslatedTextAttributeValues' => 'Tekstovi koji se mogu prevoditi',
+	'ow_Label' => 'Naslov',
 	'ow_LinkAttribute' => 'Svojstvo',
 	'ow_LinkAttributeValues' => 'Linkovi',
 	'ow_User' => 'Korisnik',
@@ -1677,6 +1681,7 @@ Desila se greška u samoj bazi podataka, wikidata ne može naći valjane podatke
 Moguće je su izgubljeni.
 Molimo kontaktirajte operatora servera ili administratora.',
 	'ow_class_attr_type_plain' => 'Obični tekst',
+	'ow_class_attr_type_link' => 'Link',
 	'ow_create' => 'Napravi',
 	'ow_suggest_previous' => 'Prethodni',
 	'ow_suggest_next' => 'Slijedeći',
@@ -2325,6 +2330,7 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $wdMessages['el'] = array(
@@ -2343,6 +2349,8 @@ $wdMessages['el'] = array(
 	'ow_save' => 'Αποθηκεύστε',
 	'ow_history' => 'Ιστορικό',
 	'ow_uiprefs' => 'Βικιδεδομένα',
+	'ow_transaction_user' => 'Όνομα χρήστη:',
+	'ow_transaction_remove' => 'Αφαίρεση',
 	'ow_transaction_summary' => 'Περίληψη',
 	'ow_dm_OK' => 'Εντάξει',
 	'ow_dm_not_present' => 'δεν εισήχθη',
@@ -2356,6 +2364,7 @@ $wdMessages['el'] = array(
 	'ow_Definition' => 'Ορισμός',
 	'ow_DefinedMeaningAttributes' => 'Σχολιασμός',
 	'ow_Expression' => 'Έκφραση',
+	'ow_Expressions' => 'Εκφράσεις',
 	'ow_GotoSource' => 'Μετάβαση στην πηγή',
 	'ow_Language' => 'Γλώσσα',
 	'ow_LevelAnnotation' => 'Σχολιασμός',
@@ -2365,6 +2374,7 @@ $wdMessages['el'] = array(
 	'ow_OptionAttributeOptions' => 'Επιλογές',
 	'ow_PopupAnnotation' => 'Σχολιασμός',
 	'ow_Relations' => 'Σχέσεις',
+	'ow_Remove' => 'Αφαίρεση',
 	'ow_Synonyms' => 'Συνώνυμα',
 	'ow_SynonymsAndTranslations' => 'Συνώνυμα και μεταφράσεις',
 	'ow_Source' => 'Πηγή',
@@ -2379,9 +2389,11 @@ $wdMessages['el'] = array(
 	'ow_User' => 'Χρήστης',
 	'ow_Property' => 'Ιδιότητα',
 	'ow_Value' => 'Τιμή',
+	'ow_history_transaction' => 'Συναλλαγή:',
 	'ow_class_attr_type_link' => 'Σύνδεσμος',
 	'ow_show' => 'Προβολή',
 	'ow_create' => 'Δημιουργία',
+	'ow_suggest_previous' => 'Προηγούμενος',
 	'ow_suggest_next' => 'Επόμενη',
 );
 
@@ -3978,10 +3990,12 @@ $wdMessages['hil'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author CERminator
  * @author Dalibor Bosits
  */
 $wdMessages['hr'] = array(
 	'ow_save' => 'Spremi',
+	'ow_class_attr_type_link' => 'Poveznica',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -5619,6 +5633,8 @@ $wdMessages['lb'] = array(
 	'ow_importtsv_import_failed' => 'Den Import huet net fonctionnéiert',
 	'ow_importtsv_file' => 'TSV Fichier:',
 	'ow_importtsv_test_run' => 'Testlaf:',
+	'ow_importtsv_not_utf8' => '<p>Dëst schéngt keen UTF-8 codéierte Fichier ze sinn. De Fichier <i>muss</i> UTF-8 codéiert sinn.
+Vergewëssert Iech datt Är Applcatioun the Fichier richteg gespäichert oder exportéiert huet.</p>',
 	'ow_importtsv_not_tsv' => '<p>Dëst schéngt kee valabelen TSV-Fichier ze sinn.</p>',
 	'ow_importtsv_test_run_title' => 'Import vun TSV-Daten testen',
 	'ow_importtsv_nothing_added' => 'Näischt derbäigesat.',
@@ -5636,6 +5652,8 @@ Sprooche mussen dem ISO-639-3-Sproochecode entspriechen.</p>',
 	'ow_history' => 'Versiounen',
 	'ow_datasets' => 'Auswiel vun den Donnéeën',
 	'ow_noedit_title' => "Keng Erlabniss fir z'änneren",
+	'ow_noedit' => 'Dir däerft keng Säiten am Dataset "$1" änneren.
+Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].',
 	'ow_uipref_datasets' => 'Standard Astellung:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Näischt ausgewielt',
@@ -6870,14 +6888,14 @@ als senses definits dins las autras donadas.</p>",
 	'ow_SynonymsAndTranslations' => 'Sinonims e traduccions',
 	'ow_Source' => 'Font',
 	'ow_SourceIdentifier' => 'Identificador de font',
-	'ow_Text' => 'Tèxt',
+	'ow_Text' => 'Tèxte',
 	'ow_TextAttribute' => 'Proprietat',
 	'ow_TextAttributeHeader' => 'Atribut del tèxt',
-	'ow_TextAttributeValues' => 'Tèxt liure',
+	'ow_TextAttributeValues' => 'Tèxte liure',
 	'ow_Time' => 'Data',
 	'ow_TranslatedTextAttribute' => 'Proprietat',
-	'ow_TranslatedText' => 'Tèxt traduch',
-	'ow_TranslatedTextAttributeValue' => 'Tèxt',
+	'ow_TranslatedText' => 'Tèxte traduch',
+	'ow_TranslatedTextAttributeValue' => 'Tèxte',
 	'ow_TranslatedTextAttributeValues' => 'Tèxtes tradusibles',
 	'ow_Label' => 'Labèl',
 	'ow_Link' => 'Ligam',
@@ -6894,9 +6912,9 @@ als senses definits dins las autras donadas.</p>",
 	'ow_copy_no_action_specified' => "Mercé d'especificar una accion",
 	'ow_copy_help' => "L'ajuda es pas encara estada implementada.",
 	'ow_please_proved_dmid' => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del servidor.',
-	'ow_please_proved_dc1' => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI la quala òm copia)<br />
+	'ow_please_proved_dc1' => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxte de la banca 1, banca DEMPUÈI la quala òm copia)<br />
 Contactatz l’administrator.',
-	'ow_please_proved_dc2' => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca CAP A la quala òm copia)<br />
+	'ow_please_proved_dc2' => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxte de la banca 2, banca CAP A la quala òm copia)<br />
 Contactatz l’administrator.',
 	'ow_copy_successful' => '<h2>Capitada de la còpia</h2>Vòstras donadas son estadas copiadas amb succès (verificatz çaquelà).',
 	'ow_copy_unsuccessful' => "<h3>Còpia infructuosa</h3> Cap d'operacion de còpia a pas pres plaça.",
@@ -6951,6 +6969,7 @@ $wdMessages['os'] = array(
  */
 $wdMessages['pdc'] = array(
 	'ow_history' => 'Gschicht',
+	'ow_User' => 'Yuuser',
 );
 
 /** Polish (Polski)
@@ -8323,6 +8342,12 @@ $wdMessages['sr-ec'] = array(
 	'importlangnames_not_found' => '<strong>Није нађен назив језика за "$1"!</strong>',
 	'datasearch_language' => 'Језик:',
 	'datasearch_meaning' => 'Значење',
+	'datasearch_search_text' => 'Претражи текст:',
+	'datasearch_within_words' => 'Међу речима:',
+	'ow_importtsv_importing' => 'Увожење TSV података',
+	'ow_importtsv_import_failed' => 'Увоз није прошао',
+	'ow_importtsv_file' => 'TSV Фајл:',
+	'ow_exporttsv_languages' => 'Језици:',
 	'ow_save' => 'Сачувај',
 	'ow_history' => 'Историја',
 	'ow_datasets' => 'Одабир скупа података',
@@ -8334,9 +8359,12 @@ $wdMessages['sr-ec'] = array(
 	'ow_transaction_count' => 'Број:',
 	'ow_transaction_user' => 'Корисничко име:',
 	'ow_transaction_show_rollback' => 'Приказ контрола за враћање:',
+	'ow_transaction_no_action' => 'Ништа не ради',
+	'ow_transaction_previous_version' => 'Претходна верзија',
 	'ow_transaction_restore' => 'Враћање',
 	'ow_transaction_remove' => 'Брисање',
 	'ow_transaction_operation' => 'Операција',
+	'ow_transaction_object' => 'Објекат',
 	'ow_transaction_first_dm' => 'Прво дефинисано значење',
 	'ow_transaction_second_dm' => 'Друго дефинисано значење',
 	'ow_transaction_summary' => 'Опис',

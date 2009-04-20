@@ -96,6 +96,7 @@ $messages['qqq'] = array(
 * $5: IP address
 * $6: isolated date of $4
 * $7: isolated time of $4',
+	'regexblock-regex-filter' => 'This is a field name for a text field in a form. In the field a user is expected to type a regex filter. If a regex filter is present, the field is prefilled with it.',
 	'regexblock-view-blocked' => 'This is a label followed by a dropdown list of all users who have ever used regexBlock on the wiki, allowing the viewer to filter down the list of regexBlocks, i.e. see all blocks performed by User:X if users X, Y and Z have used regexBlock tool. There is [[mw:File:RegexBlock.png|a screenshot]].',
 	'regexblock-view-all' => '{{Identical|All}}',
 	'regexblock-view-go' => '{{Identical|Go}}',

@@ -269,10 +269,11 @@ Njeposuź pśinosujucych pó licbje jich změnow.",
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'countedits-username' => 'Όνομα χρήστη:',
-	'countedits-ok' => 'ΟΚ',
+	'countedits-ok' => 'Εντάξει',
 );
 
 /** Esperanto (Esperanto)

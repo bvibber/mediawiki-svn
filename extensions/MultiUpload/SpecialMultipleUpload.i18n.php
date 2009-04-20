@@ -1033,6 +1033,8 @@ Wprowadzić, jeśli chcesz, '''Nazwę docelową''' oraz wypełnił '''Opis''' dl
 Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleupload-page}}|Zasady usuwania plików]].",
 	'multiupload-fileuploaded' => 'Plik został przesłany.',
 	'multiupload-toolbox' => 'Prześlij wiele plików',
+	'multiupload-no-files' => 'Wybierz co najmniej jeden plik do przesłania',
+	'multiupload-blank' => 'Nie wybrano pliku',
 );
 
 /** Pashto (پښتو)
@@ -1417,6 +1419,8 @@ Te pol inserir un '''Nome del file de destinassion''' e fornir dei '''Detagli'''
 I file inapropriati i vegnarà scancelati de paca, lèzi le [[{{MediaWiki:Multipleupload-page}}|regole par la scancelassion dei file]].",
 	'multiupload-fileuploaded' => 'File cargà.',
 	'multiupload-toolbox' => 'Carga file multipli',
+	'multiupload-no-files' => 'Par piaser, selessiona almanco un file da cargar',
+	'multiupload-blank' => 'Nissun file selessionà',
 );
 
 /** Veps (Vepsan kel')

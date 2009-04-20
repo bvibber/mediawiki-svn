@@ -3612,6 +3612,13 @@ $messages['id'] = array(
 	'configure-section-search' => 'Gelintar',
 );
 
+/** Ido (Ido)
+ * @author Wyvernoid
+ */
+$messages['io'] = array(
+	'configure-throttle-action-rollback' => 'Dop-rular',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -5117,6 +5124,7 @@ Er wordt een voorvertoning weergegeven als u het veld verlaat.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
@@ -5240,7 +5248,7 @@ Opprett ho eller endra ho for å nytta denne utvidinga.',
 	'configure-select-wiki-view-specific' => 'Einskildwiki:',
 	'configure-select-wiki-submit' => 'Vel',
 	'configure-setting-not-available' => 'Denne innstillinga er ikkje tilgjengeleg i denne versjonen av MediaWiki',
-	'configure-transwiki-not-in-range' => 'Den valde wikien, $1, finst ikkje blant dei tillatne verdiane ($2).',
+	'configure-transwiki-not-in-range' => 'Den valde wikien, $1, finst ikkje blant {{PLURAL:$3|den tilletne verdien|dei tilletne verdiane}}: $2.',
 	'configure-view' => 'Sjå',
 	'configure-view-all-versions' => 'Fullstendig lista over versjonar',
 	'configure-view-default' => 'Standardinnstillingar',

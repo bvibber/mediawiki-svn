@@ -1482,6 +1482,13 @@ $wgCustomToolbarMessages['os'] = array(
 	'ct_math_caption' => 'Формулæ',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$wgCustomToolbarMessages['pdc'] = array(
+	'ct_user_user' => 'Yuuser',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
@@ -1796,6 +1803,22 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
 	'ct_user_tip' => 'Vložiť odkaz na používateľskú stránku',
 	'ct_user_caption' => 'Odkaz na používateľa',
 	'ct_user_sample' => 'Používateľské meno',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$wgCustomToolbarMessages['sr-ec'] = array(
+	'ct_upload' => 'Пошаљи $1',
+	'ct_select' => 'Изабери $1 за слање:',
+	'ct_caption' => 'Додај наслов (необавезно):',
+	'ct_link' => 'Додај назив линка (необавезно):',
+	'ct_submit' => 'Иди!',
+	'ct_close' => 'Затвори прозор',
+	'ct_success' => 'Слање фајла успешно!',
+	'ct_user_user' => 'Корисник',
+	'ct_user_tip' => 'Убаци линк ка корисничкој страни',
+	'ct_user_sample' => 'Корисничко име',
 );
 
 /** Seeltersk (Seeltersk)

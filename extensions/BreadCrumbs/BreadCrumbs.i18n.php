@@ -225,6 +225,13 @@ $messages['km'] = array(
 	'breadcrumbs-desc' => 'បង្ហាញ​ផ្លូវ​របស់​អ្នកប្រើប្រាស់​នានា​តាមរយៈ​វិគី​។',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'breadcrumbs-desc' => '위키를 통해 사용자 경로를 보여줍니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

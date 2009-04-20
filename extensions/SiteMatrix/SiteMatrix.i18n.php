@@ -1720,6 +1720,7 @@ $messages['vo'] = array(
  */
 $messages['wa'] = array(
 	'sitematrix' => 'Djivêye des wikis Wikimedia',
+	'sitematrix-summary' => 'Cisse pådje especiåle ci mostere tos les "Wikis" del Fondåcion Wikimedia.',
 	'sitematrix-language' => 'Lingaedje',
 	'sitematrix-project' => 'No do pordjet, loyén eterpordjet eyet loyén eterwiki',
 	'sitematrix-others' => 'Ôtes pordjes Wikimedia',

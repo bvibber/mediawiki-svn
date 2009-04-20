@@ -903,6 +903,13 @@ $messages['os'] = array(
 	'player-goto-page' => 'Фарс',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'player-goto-page' => 'Blatt',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

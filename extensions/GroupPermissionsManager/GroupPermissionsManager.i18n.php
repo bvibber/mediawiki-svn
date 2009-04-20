@@ -559,11 +559,19 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
 	'grouppermissions-search' => 'Ομάδα:',
 	'grouppermissions-comment' => 'Σχόλιο:',
+	'grouppermissions-true' => 'Αληθινός',
+	'grouppermissions-false' => 'Ψεύτικος',
+	'grouppermissions-never' => 'Ποτέ',
+	'grouppermissions-sort-manage' => 'Διαχείριση',
+	'grouppermissions-sort-admin' => 'Διοίκηση',
+	'grouppermissions-sort-misc' => 'Διάφορος',
 	'grouppermissions-sp-save' => 'Αποθηκεύστε',
+	'grouppermissions-sp-remove' => 'αφαίρεση',
 );
 
 /** Esperanto (Esperanto)

@@ -584,6 +584,20 @@ $messages['ru'] = array(
 	'categorywatch-catsub' => 'удалил $1 из категории $2',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'categorywatch-desc' => 'Кэтээн көрүү тиһигин тупсарар: ханнык эмэ категория сирэйдэригэр уларытыы киирбитин биллэрэр кыаҕы биэрэр',
+	'categorywatch-emailbody' => 'Дорообо, $1. Бу биллэриини "$2" категорияны кэтиир буолаҥҥын туттуҥ.
+Баччаҕа $3 $4 кыттааччы маннык уларытыыны киллэрдэ: $5',
+	'categorywatch-emailsubject' => 'Кэтээн көрөр "$1" категорияҕын таарыйар уларытыылар',
+	'categorywatch-catmovein' => '$3 хаттыгастан $1 сирэй $2 хаттыгаска көһөн биэрдэ',
+	'categorywatch-catmoveout' => '$2 хаттыгастан $1 сирэй бу хаттыгаска көстө $3',
+	'categorywatch-catadd' => '$1 сирэй $2 хаттыгаска киирдэ',
+	'categorywatch-catsub' => '$1 сирэй $2 хаттыгастан таһаарылынна',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

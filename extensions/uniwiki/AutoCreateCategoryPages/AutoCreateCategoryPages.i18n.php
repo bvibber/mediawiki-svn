@@ -370,6 +370,13 @@ Obsahuje všetky stránky v kategórii „$1“ ako aj všeky podkategórie kate
 	'autocreatecategorypages-editor' => 'Autoamtická tvorba kategórií',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'autocreatecategorypages-editor' => 'Аутоматско прављење категорија',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

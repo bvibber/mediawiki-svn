@@ -1257,6 +1257,7 @@ $messages['lb'] = array(
 	'extensiondistributor' => 'MediaWiki Erweiderung eroflueden',
 	'extdist-desc' => "Erweiderung fir d'Verdeele vu Schnappschoss-Archive vun Erweiderungen",
 	'extdist-not-configured' => 'Konfiguréiert w.e.g. $wgExtDistTarDir an $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Den agestallten Arbechts-Kopien-Repertoire gëtt et net!',
 	'extdist-no-such-extension' => 'Et gëtt keng Erweiderung "$1"',
 	'extdist-no-such-version' => 'D\'Erweiderung "$1" gëtt et net an der Versioun "$2".',
 	'extdist-choose-extension' => 'Wielt wat fir eng Erweiderung Dir wëllt eroflueden:',

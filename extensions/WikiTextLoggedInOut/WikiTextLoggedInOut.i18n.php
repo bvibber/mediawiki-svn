@@ -74,9 +74,10 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
-	'wikitextloggedinout-desc' => 'Přidává dva přípojné body sytaktického analyzátoru, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> pro zobrazení odlišného textu v závislosti na stavu přihlášeného uživatele',
+	'wikitextloggedinout-desc' => 'Přidává dva přípojné body syntaktického analyzátoru, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt>, které slouží k zobrazení textu lišícího se podle toho, zda je uživatel přihlášen',
 );
 
 /** German (Deutsch)

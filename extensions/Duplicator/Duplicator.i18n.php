@@ -1242,6 +1242,35 @@ $messages['sk'] = array(
 	'duplicator-toomanyrevisions' => '[[$1]] má príliš veľa ($2) revízií a preto ho nie je možné skopírovať. Aktuálny limit je $3.',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'duplicator' => 'Дуплира чланак',
+	'duplicator-desc' => 'Прави независне [[Special:Duplicate|копије чланака]] са потпуним историјама измена',
+	'duplicator-toolbox' => 'Дуплирај овај чланак',
+	'duplicator-header' => 'Ова страна омогућава комплетно дуплирање неког чланка, прављењем независних копија свих историја.
+Ово је корисно за форковање чланака и сл.',
+	'duplicator-options' => 'Опције',
+	'duplicator-source' => 'Извор:',
+	'duplicator-dest' => 'Циљ:',
+	'duplicator-dotalk' => 'Дуплирај страну за разговор (ако је могуће)',
+	'duplicator-submit' => 'Дуплирај',
+	'duplicator-summary' => 'Ископирано од [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] је ископиран у [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|ревизија је ископирана|равизија је ископирано}}.',
+	'duplicator-success-talkcopied' => 'Страна за разговор је такође ископирана.',
+	'duplicator-success-talknotcopied' => 'Страна за разговор није могла бити ископирана.',
+	'duplicator-failed' => 'Чланак није могао бити дуплиран.
+Дошло је до непозанте грешке.',
+	'duplicator-source-invalid' => 'Молимо Вас да наведете исправан наслов изворног чланка.',
+	'duplicator-source-notexist' => '[[$1]] не постоји. Молимо Вас да наведете наслов постојећег чланка.',
+	'duplicator-dest-invalid' => 'Моломо Вас да наведете исправан назив циљаног наслова.',
+	'duplicator-dest-exists' => '[[$1]] већ постоји. Молимо Вас да наведете незаузет циљани наслов.',
+	'duplicator-toomanyrevisions' => '[[$1]] има превише ($2) измена и не може бити ископиран.
+Тренутни лимит је $3.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

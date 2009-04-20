@@ -666,9 +666,22 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Yknok29
  */
 $messages['ko'] = array(
+	'authorprotect' => '저자가 아닌 사람들로부터 페이지를 보호함',
+	'authorprotect-desc' => '다른 사용자들로부터 페이지를 보호하는 것을 페이지의 저자에게 허용함',
+	'authorprotect-notauthor' => '사용자께서는 이 페이지의 저자가 아닙니다.',
+	'authorprotect-confirm' => '보호 수준을 바꿉니다',
+	'authorprotect-edit' => '저자에게 편집하는 것을 제한함',
+	'authorprotect-move' => '저자에게 옮기는 것을 제한함',
+	'authorprotect-expiry' => '만료 시기',
 	'authorprotect-reason' => '이유',
+	'authorprotect-intro' => '저자가 아닌 사람들로부터 이 페이지를 잠금처리하는 이 형식을 사용합니다',
+	'authorprotect-success' => '성공한 보호!',
+	'authorprotect-failure' => '성공하지 못한 보호',
+	'protect-level-author' => '저자가 아닌 사람들로부터 보호',
+	'restriction-level-author' => '보호된 저자',
 );
 
 /** Ripoarisch (Ripoarisch)

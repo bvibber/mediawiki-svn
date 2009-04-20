@@ -226,6 +226,13 @@ $messages['jv'] = array(
 	'antibot-desc' => 'Krangka kerja prasaja kanggo mriksa spambot lan lat pamicu',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'antibot-desc' => '스팸봇의 간단한 구조를 점검하고 유효한 탑재량을 확인함',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -233,6 +233,12 @@ $messages['ar'] = array(
 	'openid-prefstext' => 'تفضيلات [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
 	'openid-pref-update-userinfo-on-login' => 'حدث معلوماتي من شخصية الهوية المفتوحة كل مرة أسجل الدخول',
+	'openidsigninorcreateaccount' => 'سجل الدخول أو أنشئ حسابا جديدا',
+	'openid-provider-label-openid' => 'أدخل مسار هويتك المفتوحة',
+	'openid-provider-label-google' => 'سجل الدخول باستخدام حساب جوجل الخاص بك',
+	'openid-provider-label-yahoo' => 'سجل الدخول باستخدام حساب ياهو الخاص بك',
+	'openid-provider-label-aol' => 'أدخل اسم شاشة AOL الخاص بك',
+	'openid-provider-label-other-username' => 'أدخل اسم مستخدم $1 الخاص بك',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -389,6 +395,12 @@ $messages['be-tarask'] = array(
 	'openid-prefstext' => 'Устаноўкі [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Хаваць Ваш адрас OpenID на Вашай старонцы ўдзельніка, калі Вы ўвайшлі з дапамогай OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Абнаўляць маю інфармацыю з OpenID кожны раз калі я уваходжу ў сыстэму',
+	'openidsigninorcreateaccount' => 'Увайсьці, ці стварыць новы рахунак',
+	'openid-provider-label-openid' => 'Увесьці Ваш адрас OpenID',
+	'openid-provider-label-google' => 'Увайсьці, карыстаючыся рахункам Google',
+	'openid-provider-label-yahoo' => 'Увайсьці, карыстаючыся Вашым рахункам Yahoo',
+	'openid-provider-label-aol' => 'Увесьці Ваша імя на AOL',
+	'openid-provider-label-other-username' => 'Увесьці Ваша імя ўдзельніка $1',
 );
 
 /** Bulgarian (Български)
@@ -469,7 +481,7 @@ $messages['bs'] = array(
 	'openiderror' => 'Greška pri provjeri',
 	'openiderrortext' => 'Desila se greška pri provjeri OpenID URL adrese.',
 	'openidconfigerror' => 'Greška OpenID postavki',
-	'openidconfigerrortext' => 'OpenID konfiguracija spremanja za ovaj wiki je nevaljana.
+	'openidconfigerrortext' => 'OpenID konfiguracija spremanja za ovaj wiki je nevaljana. 
 Molimo konsultujte se sa [[Special:ListUsers/sysop|administratorom]].',
 	'openidpermission' => 'Greška kod OpenID dopuštenja',
 	'openidpermissiontext' => 'OpenID koji ste naveli nije dopušteno da se prijavi na ovaj server.',
@@ -526,6 +538,12 @@ Postoji mnogo [http://wiki.openid.net/Public_OpenID_providers javnih provajdera 
 	'openid-prefstext' => '[http://openid.net/ OpenID] postavke',
 	'openid-pref-hide' => 'Sakrij Vaš <a href="http://openid.net/">OpenID</a> na Vašoj korisničkoj stranici, ako ste prijavljeni sa OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Ažuriraj moje informacije sa OpenID identiteta svaki put kad se prijavim',
+	'openidsigninorcreateaccount' => 'Prijavite se ili napravite novi račun',
+	'openid-provider-label-openid' => 'Unesite Vaš OpenID URL',
+	'openid-provider-label-google' => 'Prijava putem Vašeg Google računa',
+	'openid-provider-label-yahoo' => 'Prijava putem Vašeg Yahoo računa',
+	'openid-provider-label-aol' => 'Unesite svoj AOL nadimak',
+	'openid-provider-label-other-username' => 'Unesite Vaše $1 korisničko ime',
 );
 
 /** Czech (Česky)
@@ -761,12 +779,23 @@ Jo wjele [http://openid.net/get/ póbitowarjow OpenID] a snaź maš južo konto 
 	'openid-prefstext' => 'Nastajenja [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Schowaj swój <a href="http://openid.net/">OpenID</a> na swójom wužywarskem boku, jolic se pśizjawjaś z OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Kuždy raz, gaž se pízjawjam, móje informacije z identity OpenID aktualizěrowaś',
+	'openidsigninorcreateaccount' => 'Pśizjawiś se abo nowe konto załožyś',
+	'openid-provider-label-openid' => 'Zapódaj swój URL OpenID',
+	'openid-provider-label-google' => 'Z pomocu twójogo konta Google se pśizjawiś',
+	'openid-provider-label-yahoo' => 'Z pomocu twójogo konta Yahoo se pśizjawiś',
+	'openid-provider-label-aol' => 'Zapódaj swójo wužywarske mě AOL',
+	'openid-provider-label-other-username' => 'Zapódaj swójo wužywarske mě $1',
 );
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  */
 $messages['el'] = array(
+	'openidoptional' => 'Προαιρετικός',
+	'openidrequired' => 'Απαιτημένος',
+	'openidnickname' => 'Παρωνύμιο',
+	'openidemail' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου',
 	'openidlanguage' => 'Γλώσσα',
 	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
 	'openidchoosepassword' => 'κωδικός:',
@@ -910,6 +939,11 @@ Hay muchos [[http://openid.net/get proveedores de OpenID]] y quizás ya disponga
 	'openid-prefstext' => 'Preferencias de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ocultar su <a href="http://openid.net/">OpenID</a> en su página de usuario, si usted ingresa con OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Actualizar mi información desde mi perfil OpenID cada vez que ingreso.',
+	'openidsigninorcreateaccount' => 'Ingresar o Crear una nueva cuenta',
+	'openid-provider-label-openid' => 'Ingresar tu URL OpenID',
+	'openid-provider-label-google' => 'Iniciar sesión usando tu cuenta Google',
+	'openid-provider-label-yahoo' => 'Iniciar sesión usando tu cuenta Yahoo',
+	'openid-provider-label-other-username' => 'Ingresar tu nombre de usuario $1',
 );
 
 /** Estonian (Eesti)
@@ -1085,6 +1119,12 @@ Il existe plusieurs [http://openid.net/get/ fournisseur d'OpenID], et vous pouve
 	'openid-prefstext' => 'Préférences de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Cache votre <a href="http://openid.net/">OpenID</a> sur votre page utilisateur, si vous vous connectez avec OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Mettre à jour mes données personnelles depuis OpenID à chaque fois que je me connecte',
+	'openidsigninorcreateaccount' => 'Se connecter ou créer un nouveau compte',
+	'openid-provider-label-openid' => 'Entrez votre URL OpenID',
+	'openid-provider-label-google' => 'Vous connecter en utilisant votre compte Google',
+	'openid-provider-label-yahoo' => 'Vous connecter en utilisant votre compte Yahoo',
+	'openid-provider-label-aol' => 'Entrez votre nom AOL',
+	'openid-provider-label-other-username' => "Entrez votre nom d'utilisateur $1",
 );
 
 /** Irish (Gaeilge)
@@ -1164,6 +1204,12 @@ Hai moitos [http://openid.net/get/ proveedores públicos de OpenID] e xa pode te
 	'openid-prefstext' => 'Preferencias do [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Agoche o enderezo URL do seu OpenID na súa páxina de usuario, se accede ao sistema con OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Actualizar a miña información persoal do OpenID cada vez que acceda ao sistema',
+	'openidsigninorcreateaccount' => 'Acceder ou crear unha conta nova',
+	'openid-provider-label-openid' => 'Insira o enderezo URL do seu OpenID',
+	'openid-provider-label-google' => 'Acceder usando a súa conta do Google',
+	'openid-provider-label-yahoo' => 'Acceder usando a súa conta do Yahoo',
+	'openid-provider-label-aol' => 'Insira o seu nome AOL',
+	'openid-provider-label-other-username' => 'Insira o seu nome de usuario $1',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1248,6 +1294,12 @@ S git vyyl [http://wiki.openid.net/Public_OpenID_providers effentligi OpenID-Pro
 	'openid-prefstext' => '[http://openid.net/ OpenID] Yystellige',
 	'openid-pref-hide' => 'Versteck Dyyni <a href="http://openid.net/">OpenID</a> uf Dyynere Benutzersyte, wänn Di mit OpenID aamäldsch.',
 	'openid-pref-update-userinfo-on-login' => 'Myyni Date mit em OpenID-Konto bi jedere Aamäldig aktualisiere',
+	'openidsigninorcreateaccount' => 'Aamälde oder nej Benutzerkonto aalege',
+	'openid-provider-label-openid' => 'Gib Dyy OpenID URL yy',
+	'openid-provider-label-google' => 'Mäld Di aa mit Dyynem Google-Konto',
+	'openid-provider-label-yahoo' => 'Mäld Di aa mit Dyynme Yahoo-Konto',
+	'openid-provider-label-aol' => 'Gib Dyy AOL-Benutzername yy',
+	'openid-provider-label-other-username' => 'Gib Dyy $1-Benutzername yy',
 );
 
 /** Manx (Gaelg)
@@ -1469,6 +1521,12 @@ Je wjele [http://openid.net/get/ poskićowarjow OpenID], snano maš hižo konto 
 	'openid-prefstext' => 'Nastajenja [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Twój <a href="http://openid.net/">OpenID</a> na twojej wužiwarskej stronje schować, jeli so z OpenID přizjewješ.',
 	'openid-pref-update-userinfo-on-login' => 'Kóždy raz, hdyž so přizjawjam, moje informacije z identity OpenID aktualizować',
+	'openidsigninorcreateaccount' => 'Přizjewić so abo nowe konto załožić',
+	'openid-provider-label-openid' => 'Zapodaj swój URL OpenID',
+	'openid-provider-label-google' => 'Z pomocu twojeho konta Google so přizjewić',
+	'openid-provider-label-yahoo' => 'Z pomocu twojeho konta Yahoo so přizjewić',
+	'openid-provider-label-aol' => 'Zapodaj swoje wužiwarske mjeno AOL',
+	'openid-provider-label-other-username' => 'Zapodaj swoje wužiwarske mjeno $1',
 );
 
 /** Hungarian (Magyar)
@@ -1615,6 +1673,12 @@ Il ha multe [http://openid.net/get/ providitores de OpenID], e tu pote ja dispon
 	'openid-prefstext' => 'Prreferentias de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Celar tu <a href="http://openid.net/">OpenID</a> in tu pagina de usator, si tu aperi un session con OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Actualisar mi informationes ab mi personage OpenID cata vice que io aperi un session',
+	'openidsigninorcreateaccount' => 'Aperir session o crear nove conto',
+	'openid-provider-label-openid' => 'Entra le URL de tu OpenID',
+	'openid-provider-label-google' => 'Aperir session con tu conto de Google',
+	'openid-provider-label-yahoo' => 'Aperir session con tu conto de Yahoo',
+	'openid-provider-label-aol' => 'Entra tu pseudonymo de AOL',
+	'openid-provider-label-other-username' => 'Entra tu nomine de usator de $1',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1706,6 +1770,7 @@ $messages['is'] = array(
  * @author McDutchie
  * @author Nemo bis
  * @author Pietrodn
+ * @author Stefano-c
  */
 $messages['it'] = array(
 	'openid-desc' => 'Effettua il login alla wiki con [http://openid.net/ OpenID] e agli altri siti web che utilizzano OpenID con un account wiki',
@@ -1773,6 +1838,12 @@ Esistono molti [http://openid.net/get/ Provider OpenID]; è possibile che tu abb
 	'openid-prefstext' => 'Preferenze [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Nascondi il tuo <a href="http://openid.net/">OpenID</a> sulla tua pagina utente, se effettui il login con OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Aggiorna le mie informazioni dalla persona OpenID a ogni accesso',
+	'openidsigninorcreateaccount' => 'Entra o crea un nuovo account',
+	'openid-provider-label-openid' => "Inserisci l'URL del tuo OpenID",
+	'openid-provider-label-google' => 'Accedi utilizzando il tuo account Google',
+	'openid-provider-label-yahoo' => 'Accedi utilizzando il tuo account Yahoo',
+	'openid-provider-label-aol' => 'Inserisci il tuo screenname AOL',
+	'openid-provider-label-other-username' => 'Inserisci il tuo $1 nome utente',
 );
 
 /** Japanese (日本語)
@@ -1842,6 +1913,12 @@ $messages['ja'] = array(
 	'openid-prefstext' => '[http://openid.net/ OpenID] の設定',
 	'openid-pref-hide' => 'OpenID でログインしている場合に、あなたの <a href="http://openid.net/">OpenID</a> をあなたの利用者ページで表示しない。',
 	'openid-pref-update-userinfo-on-login' => 'ログインするたびに、自分の情報を OpenID のペルソナから更新する',
+	'openidsigninorcreateaccount' => 'サインインあるいは新規アカウントの作成',
+	'openid-provider-label-openid' => 'あなたの OpenID URL を入力します',
+	'openid-provider-label-google' => 'あなたの Google アカウントを用いてログインする',
+	'openid-provider-label-yahoo' => 'あなたの Yahoo アカウントを用いてログインする',
+	'openid-provider-label-aol' => 'あなたの AOL スクリーンネームを入力します',
+	'openid-provider-label-other-username' => 'あなたの $1 での利用者名を入力します',
 );
 
 /** Javanese (Basa Jawa)
@@ -2002,6 +2079,12 @@ Et jitt en jruuße Zahl [http://wiki.openid.net/Public_OpenID_providers <span la
 	'openid-prefstext' => '[http://openid.net/ OpenID] Enstellunge',
 	'openid-pref-hide' => 'Versteich Ding <a lang="en" href="http://openid.net/">OpenID</a> op Dinge Metmaacher-Sigg, wann de met <span lang="en">OpenID</span> enloggs.',
 	'openid-pref-update-userinfo-on-login' => 'Donn ming Enfomazjuhne vun OpenID jedesmol op der neuste Stand bränge, wann_esch hee enlogge donn',
+	'openidsigninorcreateaccount' => 'Donn enlogge udder Desh neu aanmellde',
+	'openid-provider-label-openid' => 'Donn Ding <i lang="en">OpenID</i> URL aanjevve',
+	'openid-provider-label-google' => 'Donn met Dingem <i lang="en">Google account</i> enlogge',
+	'openid-provider-label-yahoo' => 'Donn met Dinge <i lang="en">Yahoo</i> Kennung enlogge',
+	'openid-provider-label-aol' => 'Donn met Dingem <i lang="en">AOL</i>-Name enlogge',
+	'openid-provider-label-other-username' => 'Donn Dinge Metmaachername vun $1 aanjevve',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2074,6 +2157,8 @@ Et gëtt vill [http://openid.net/get/ OpenID-Provider] a méiglecherweis hutt Di
 	'openid-prefstext' => '[http://openid.net/ OpenID]-Astellungen',
 	'openid-pref-hide' => 'Verstoppt Är <a href="http://openid.net/">OpenID</a> op ärer Benotzersäit, wann dir Iech mat OpenID aloggt.',
 	'openid-pref-update-userinfo-on-login' => 'Meng Informatiounen vu mengem OpenID-Kont all Kéier aktualiséiere wann ech mech aloggen',
+	'openidsigninorcreateaccount' => 'Loggt Iech an oder Maacht en neie Benotzerkont op',
+	'openid-provider-label-other-username' => 'Gitt Äre(n) $1 Benotzernumm  un',
 );
 
 /** Limburgish (Limburgs)
@@ -2346,6 +2431,12 @@ Er zijn veel [http://wiki.openid.net/Public_OpenID_providers publieke OpenID-pro
 	'openid-prefstext' => 'Voorkeuren [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Bij aanmelden met <a href="http://openid.net/">OpenID</a>, uw OpenID op uw gebruikerspagina verbergen.',
 	'openid-pref-update-userinfo-on-login' => 'Mijn informatie van mijn OpenID-persona elke keer als ik aanmeld bijwerken',
+	'openidsigninorcreateaccount' => 'Aanmelden of nieuwe gebruiker aanmaken',
+	'openid-provider-label-openid' => 'Voer de URL van uw OpenID in',
+	'openid-provider-label-google' => 'Aanmelden met uw Google-gebruiker',
+	'openid-provider-label-yahoo' => 'Aanmelden met uw Yahoo-gebruiker',
+	'openid-provider-label-aol' => 'Aanmelden met uw AOL-gebruiker',
+	'openid-provider-label-other-username' => 'Geef uw gebruikersnaam bij $1 in',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2557,6 +2648,12 @@ Existís maites [http://wiki.openid.net/Public_OpenID_providers provesidors d'Op
 	'openid-prefstext' => 'Preferéncias de [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Amaga vòstra <a href="http://openid.net/">OpenID</a> sus vòstra pagina d\'utilizaire, se vos connectaz amb OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Metre a jorn mas donadas personalas dempuèi OpenID a cada còp que me connecti',
+	'openidsigninorcreateaccount' => 'Se connectar o crear un compte novèl',
+	'openid-provider-label-openid' => 'Picatz vòstra URL OpenID',
+	'openid-provider-label-google' => 'Vos connectar en utilizant vòstre compte Google',
+	'openid-provider-label-yahoo' => 'Vos connectar en utilizant vòstre compte Yahoo',
+	'openid-provider-label-aol' => 'Picatz vòstre nom AOL',
+	'openid-provider-label-other-username' => "Picatz vòstre nom d'utilizaire $1",
 );
 
 /** Ossetic (Иронау)
@@ -2636,10 +2733,10 @@ Jeśli nie spróbuj wcisnąć klawisz „Kontynuuj”.',
 	'openidclientonlytext' => 'Nie można korzystać z kont tej wiki jako OpenID w innych witrynach.',
 	'openidloginlabel' => 'Adres URL OpenID',
 	'openidlogininstructions' => '{{SITENAME}} korzysta ze standardu [http://openid.net/ OpenID] dla zapewnienia jednolitego uwierzytelnienia pomiędzy różnymi witrynami w sieci Web.
-OpenID pozwala na zalogowanie się do wielu różnych witryn sieci Web bez użycia osobnego hasła dla każdej witryny.
+OpenID pozwala na zalogowanie się do wielu różnych witryn sieci Web bez użycia osobnego hasła dla każdej witryny. 
 (Zobacz [http://pl.wikipedia.org/wiki/OpenID artykuł o OpenID w Wikipedii] jeśli chcesz uzyskać więcej informacji.)
 
-Jeśli masz już konto w {{GRAMMAR:MS.lp|{{SITENAME}}}}, możesz [[Specjalna:Userlogin|zalogować się]] jak zwykle używając nazwy użytkownika i hasła.
+Jeśli masz już konto w {{GRAMMAR:MS.lp|{{SITENAME}}}}, możesz [[Specjalna:Userlogin|zalogować się]] jak zwykle używając nazwy użytkownika i hasła. 
 Jeśli chcesz w przyszłości używać OpenID do logowania się, możesz [[Special:OpenIDConvert|przełączyć konto na korzystanie z OpenID]] po normalnym zalogowaniu się.
 
 Jest wielu [http://openid.net/get/ operatorów usługi OpenID] i możesz mieć już konto przełączone na korzystanie z OpenID innego usługodawcy.',
@@ -2647,6 +2744,12 @@ Jest wielu [http://openid.net/get/ operatorów usługi OpenID] i możesz mieć j
 	'openid-prefstext' => 'Preferencje [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Ukryj mój adres URL OpenID na stronie użytkownika, jeśli zaloguję się za pomocą OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Aktualizuj informacje o mnie z OpenID za każdym razem w czasie logowania',
+	'openidsigninorcreateaccount' => 'Zaloguj się lub utwórz nowe konto',
+	'openid-provider-label-openid' => 'Wprowadź adres OpenID',
+	'openid-provider-label-google' => 'Zaloguj się korzystając z konta Google',
+	'openid-provider-label-yahoo' => 'Zaloguj się korzystając z konta Yahoo',
+	'openid-provider-label-aol' => 'Wprowadź nazwę wyświetlaną AOL',
+	'openid-provider-label-other-username' => 'Wprowadź swoją nazwę użytkownika $1',
 );
 
 /** Pashto (پښتو)
@@ -3063,6 +3166,12 @@ Existuje množstvo [http://wiki.openid.net/Public_OpenID_providers Verejných po
 	'openid-prefstext' => 'Nastavenia [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Nezobrazovať váš <a href="http://openid.net/">OpenID</a> na vašej používateľskej stránke ak sa prihlasujete pomocou OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Aktualizovať moje informácie z OpenID identity pri každom prihlásení',
+	'openidsigninorcreateaccount' => 'Prihlásiť sa alebo vytvoriť nový účet',
+	'openid-provider-label-openid' => 'Zadajte URL svojho OpenID',
+	'openid-provider-label-google' => 'Prihlásiť sa pomocou účtu Google',
+	'openid-provider-label-yahoo' => 'Prihlásiť sa pomocou účtu Yahoo',
+	'openid-provider-label-aol' => 'Prihlásiť sa pomocou účtu AOL',
+	'openid-provider-label-other-username' => 'Zadajte svoje prihlasovacie meno na $1',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -3477,6 +3586,12 @@ Birçok [http://openid.net/get/ OpenID sağlayıcısı] vardır, ve bir başka s
 	'openid-prefstext' => '[http://openid.net/ OpenID] tercihleri',
 	'openid-pref-hide' => 'Eğer OpenID ile giriş yaparsanız, kullanıcı sayfanızda OpenID URLnizi gizle.',
 	'openid-pref-update-userinfo-on-login' => 'Her oturum açışımda OpenID karakterinden bilgilerimi güncelle',
+	'openidsigninorcreateaccount' => 'Oturum açın ya da Yeni Hesap Oluşturun',
+	'openid-provider-label-openid' => 'OpenID URLnizi girin',
+	'openid-provider-label-google' => 'Google hesabınızı kullanarak giriş yapın',
+	'openid-provider-label-yahoo' => 'Yahoo hesabınızı kullanarak giriş yapın',
+	'openid-provider-label-aol' => 'AOL ekran-adınızı girin',
+	'openid-provider-label-other-username' => '$1 kullanıcı adınızı girin',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)
@@ -3625,6 +3740,12 @@ Ghe xe molti [http://openid.net/get/ Provider OpenID], e te podaressi verghe zà
 	'openid-prefstext' => '[http://openid.net/ OpenID] preferense',
 	'openid-pref-hide' => 'Scondi el to <a href="http://openid.net/">OpenID</a> su la to pàxena utente, se te fè el login con OpenID.',
 	'openid-pref-update-userinfo-on-login' => "Ajorna le me informassion da l'utensa de OpenID ogni olta che me conéto",
+	'openidsigninorcreateaccount' => 'Entra o crèa na utensa nova',
+	'openid-provider-label-openid' => "Inserissi l'URL del to OpenID",
+	'openid-provider-label-google' => 'Entra doparando la to utensa Google',
+	'openid-provider-label-yahoo' => 'Entra doparando la to utensa Yahoo',
+	'openid-provider-label-aol' => 'Inserissi el to screenname AOL',
+	'openid-provider-label-other-username' => 'Inserissi el to nome utente $1',
 );
 
 /** Veps (Vepsan kel')

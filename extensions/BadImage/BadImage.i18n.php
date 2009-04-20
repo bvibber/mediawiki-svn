@@ -1154,12 +1154,23 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Yknok29
  */
 $messages['ko'] = array(
+	'badimages' => '나쁜 이미지 목록',
+	'badimages-desc' => '나쁜 이미지 목록을 확장하는 미디어 위키의 성능',
 	'badimages-add-btn' => '추가',
+	'badimages-added' => '$1이 목록에 추가되었습니다.',
 	'badimages-name' => '이름:',
+	'badimages-not-added' => '이미지가 추가될 수 없습니다.',
+	'badimages-not-removed' => '이미지를 이동할 수 없습니다.',
 	'badimages-reason' => '이유:',
+	'badimages-remove' => '(이동)',
 	'badimages-remove-btn' => '제거',
+	'badimages-removed' => '$1이 목록으로부터 삭제되었습니다.',
+	'badimages-subheading' => '현재 항목',
+	'badimages-log-name' => '나쁜 이미지 목록',
+	'badimages-page' => '{{ns:도움말}}:나쁜 이미지 목록',
 );
 
 /** Ripoarisch (Ripoarisch)

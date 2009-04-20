@@ -998,6 +998,19 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'gep-categories' => 'Категорије',
+	'gep-addcategory' => 'Додај категорију',
+	'gep-addcategorybutton' => 'Додај',
+	'gep-suggestcategory' => 'Сугериши категорију',
+	'gep-suggestcategorybutton' => 'Пошаљи',
+	'gep-addsection' => 'Додај секцију',
+	'gep-addsectionbutton' => 'Додај',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

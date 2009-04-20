@@ -234,12 +234,18 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Crazymadlover
  * @author Konsnos
  */
 $messages['el'] = array(
 	'amazonplus-nores' => 'Σφάλμα: Δεν υπήρξαν αποτελέσματα!',
 	'amazonplus-fgcerr' => 'Σφάλμα: Δεν έγινε ανάκτηση δεδομένων από το Amazon!',
+	'amazonplus-used' => 'χρησιμοποιημένος',
+	'amazonplus-german' => 'Γερμανικά',
+	'amazonplus-french' => 'Γαλλικά',
+	'amazonplus-japanese' => 'Ιαπωνικά',
 	'amazonplus-none' => 'Δεν υπάρχουν αντίτυπα αυτού του προϊόντος προς πώληση.',
+	'amazonplus-cp-none' => 'Κανένας',
 );
 
 /** Esperanto (Esperanto)
@@ -928,6 +934,26 @@ $messages['sk'] = array(
 	'amazonplus-cp-jpy' => 'JPY',
 	'amazonplus-more' => 'viac',
 	'amazonplus-less' => 'menej',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'amazonplus-desc' => 'Широко подесива екстензија за приказ информација са Амазона',
+	'amazonplus-nores' => 'Грешка: Нема нађених резултата!',
+	'amazonplus-noidres' => 'Грешка: Није нађен ID производа!',
+	'amazonplus-fgcerr' => 'Грешка: Подаци са Амазона су недоступни!',
+	'amazonplus-slserr' => 'Грешка: Подаци са Амазона нису могли бити парсирани!',
+	'amazonplus-used' => 'половно',
+	'amazonplus-german' => 'Немачки језик',
+	'amazonplus-french' => 'Француски језик',
+	'amazonplus-japanese' => 'Јапански језик',
+	'amazonplus-amazon' => 'цена на Амазону',
+	'amazonplus-new' => 'ново',
+	'amazonplus-none' => 'Нема више расположивих примерака овог поизвода',
+	'amazonplus-more' => 'више',
+	'amazonplus-less' => 'мање',
 );
 
 /** Seeltersk (Seeltersk)

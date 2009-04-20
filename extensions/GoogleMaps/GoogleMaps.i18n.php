@@ -397,9 +397,20 @@ $wgGoogleMapsMessages['az'] = array(
 $wgGoogleMapsMessages['be-tarask'] = array(
 	'gm-balloon-title' => 'Назва:',
 	'gm-remove' => 'выдаліць',
+	'gm-load-map' => 'Загрузіць мапу',
+	'gm-map' => 'Мапа',
+	'gm-are-you-sure' => 'Вы ўпэўнены?',
+	'gm-width' => 'Шырыня',
+	'gm-height' => 'Вышыня',
+	'gm-scale-control' => 'Маштаб',
 	'gm-yes' => 'Так',
 	'gm-no' => 'Не',
 	'gm-save-path' => 'Захаваць',
+	'gm-line-width' => 'Шырыня',
+	'gm-kml-loading' => 'загрузка…',
+	'gm-earth' => 'Зямля',
+	'gm-moon' => 'Месяц',
+	'gm-mars' => 'Марс',
 );
 
 /** Bulgarian (Български)
@@ -1103,6 +1114,7 @@ $wgGoogleMapsMessages['dsb'] = array(
  */
 $wgGoogleMapsMessages['el'] = array(
 	'gm-balloon-title' => 'Τίτλος:',
+	'gm-remove' => 'αφαίρεση',
 	'gm-load-map-from-article' => 'Φορτώστε ένα χάρτη από τη σελίδα:',
 	'gm-refresh-list' => 'Ανανέωση λίστας',
 	'gm-clip-result' => 'Προσθήκη στο χάρτη',
@@ -1113,7 +1125,11 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-width' => 'Πλάτος',
 	'gm-height' => 'Ύψος',
 	'gm-scale-control' => 'Κλίμακα',
+	'gm-overview-control' => 'Επισκόπηση',
 	'gm-zoom-control' => 'Πλοήγηση',
+	'gm-large' => 'Μεγάλος',
+	'gm-medium' => 'Μέσος',
+	'gm-small' => 'Μικρός',
 	'gm-no-zoom-control' => 'Κανένα',
 	'gm-yes' => 'Ναι',
 	'gm-no' => 'Όχι',

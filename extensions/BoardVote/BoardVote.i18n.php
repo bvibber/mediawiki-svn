@@ -3804,6 +3804,7 @@ $messages['km'] = array(
  * @author Albamhandae
  * @author Ficell
  * @author Kwj2772
+ * @author Yknok29
  */
 $messages['ko'] = array(
 	'boardvote' => '위키미디어 이사회 선거',
@@ -3858,7 +3859,9 @@ $messages['ko'] = array(
 	'boardvote_time' => '시간',
 	'boardvote_user' => '사용자',
 	'boardvote_edits' => '편집',
+	'boardvote_days' => '기간',
 	'boardvote_ua' => '사용자 에이전트',
+	'boardvote_listintro' => '<p>이 것은 날짜가 기록되어있는 모든 투표 목록입니다. 암호화된 자료를 위한 $1</p>',
 	'boardvote_dumplink' => '이곳을 클릭하세요.',
 	'boardvote_submit' => '확인',
 	'boardvote_strike' => '무효 처리',
@@ -3868,6 +3871,7 @@ $messages['ko'] = array(
 선거는 6월 22일까지 열립니다.',
 	'boardvote_notstarted' => '선거가 아직 시작되지 않았습니다.',
 	'boardvote_closed' => '선거가 끝났습니다. [http://meta.wikimedia.org/wiki/Board_elections/2008/Results 선거 결과]를 확인하십시오.',
+	'boardvote_edits_many' => '다수',
 	'group-boardvote' => '보드보트 관리자',
 	'group-boardvote-member' => '보드보트 관리자',
 	'grouppage-boardvote' => '{{ns:project}}:보드보트',
@@ -5103,6 +5107,13 @@ $messages['pam'] = array(
 	'boardvote_edits_many' => 'dakal',
 	'boardvote_welcome' => "Malaus ka '''$1'''!",
 	'go_to_board_vote' => 'Alalan para keng Lupung (Board) ning Wikimedia king Banuang 2008',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'boardvote_user' => 'Yuuser',
 );
 
 /** Plautdietsch (Plautdietsch)

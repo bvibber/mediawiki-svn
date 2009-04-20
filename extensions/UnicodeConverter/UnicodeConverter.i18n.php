@@ -492,6 +492,14 @@ $messages['sk'] = array(
 	'unicodeconverter-newtext' => 'Skonvertovaný text:',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'unicodeconverter-oldtext' => 'Оригинални текст:',
+	'unicodeconverter-newtext' => 'Конвертован текст:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

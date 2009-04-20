@@ -2666,7 +2666,7 @@ $messages['oc'] = array(
 \$1",
 	'sig-success' => 'Avètz autentificat lo document.',
 	'sign-view-selectfields' => "'''Camps d'afichar :'''",
-	'sign-viewfield-entryid' => 'ID de la dintrada',
+	'sign-viewfield-entryid' => "ID de l'entrada",
 	'sign-viewfield-timestamp' => 'Data e ora',
 	'sign-viewfield-realname' => 'Nom',
 	'sign-viewfield-address' => 'Adreça',

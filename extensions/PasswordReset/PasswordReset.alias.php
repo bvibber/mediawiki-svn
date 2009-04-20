@@ -114,7 +114,7 @@ $aliases['mk'] = array(
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'PasswordReset' => array( 'Niej wachwoord instellen' ),
-	'Disabledusers' => array( 'Uut-eschaokelde_gebrukers' ),
+	'Disabledusers' => array( 'Uut-eschakelen_gebrukers' ),
 );
 
 /** Dutch (Nederlands) */

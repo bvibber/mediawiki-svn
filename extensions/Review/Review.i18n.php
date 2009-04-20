@@ -1722,8 +1722,10 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'review_total_statistics' => 'Укупно',
 	'review_comment' => 'Коментар',
 );
 

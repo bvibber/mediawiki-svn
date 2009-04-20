@@ -352,6 +352,7 @@ $messages['dsb'] = array(
  * @author Crazymadlover
  */
 $messages['el'] = array(
+	'recordadmin-submit' => 'Υποβολή',
 	'recordadmin-buttonsearch' => 'Αναζήτηση',
 );
 
@@ -1215,6 +1216,14 @@ $messages['sk'] = array(
 	'recordadmin-actions' => 'Operácie',
 	'recordadmin-needscontent' => 'Pridať obsah...',
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'recordadmin-submit' => 'Пошаљи',
+	'recordadmin-buttonsave' => 'Сними',
 );
 
 /** Seeltersk (Seeltersk)

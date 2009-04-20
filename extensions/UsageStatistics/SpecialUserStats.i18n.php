@@ -1488,6 +1488,15 @@ $messages['sk'] = array(
 	'usagestatistics-editpages' => 'Štatistika stránok jednotlivého používateľa $1',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'usagestatisticsintervalday' => 'Дан',
+	'usagestatisticsintervalweek' => 'Недеља',
+	'usagestatisticsintervalmonth' => 'Месец',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

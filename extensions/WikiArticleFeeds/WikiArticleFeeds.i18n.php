@@ -92,6 +92,13 @@ $messages['ksh'] = array(
 	'wikiarticlefeeds_combined_description' => 'Hee sin Saache uß ongercheidlijje Quelle zosamme ze fenge.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wikiarticlefeeds-desc' => 'Mécht "Feeds" aus MediaWiki-Säiten',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -146,6 +153,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'wikiarticlefeeds-desc' => 'Tvorí kanály zo stránok MediaWiki',
 	'wikiarticlefeeds_combined_description' => 'Toto je kombinovaný kanál, ktorý obsahuje položky z niekoľkých zdrojov kanálov.',
+);
+
+/** Swedish (Svenska)
+ * @author Micke
+ */
+$messages['sv'] = array(
+	'wikiarticlefeeds-desc' => 'Producerar feeds som genereras av MediaWikisidor',
+	'wikiarticlefeeds_combined_description' => 'Detta är en kombinerad feed som innehåller artiklar från flera källor.',
 );
 
 /** Tagalog (Tagalog)

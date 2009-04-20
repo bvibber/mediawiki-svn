@@ -1353,6 +1353,15 @@ $4',
 	'todo-form-submit' => 'Poslať požiadavku',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'todo-list-change' => 'Промени',
+	'todo-list-cancel' => 'Поништи',
+	'todo-form-details' => 'Детаљи:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

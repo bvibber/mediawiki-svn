@@ -52,7 +52,7 @@ $aliases['ja'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'SpamRegex' => array( 'Spam_regeliere_expressie' ),
+	'SpamRegex' => array( 'Spam_regeliere_uutdrokking' ),
 );
 
 /** Dutch (Nederlands) */

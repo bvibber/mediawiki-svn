@@ -164,7 +164,7 @@ $aliases['myv'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'ExpandTemplates' => array( 'Sjablonen_substitueren' ),
+	'ExpandTemplates' => array( 'Mallen_substitueren' ),
 );
 
 /** Dutch (Nederlands) */

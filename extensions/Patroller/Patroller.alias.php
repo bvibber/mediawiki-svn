@@ -74,7 +74,7 @@ $aliases['ja'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'Patroller' => array( 'Contreleren' ),
+	'Patroller' => array( 'Naokieken' ),
 );
 
 /** Dutch (Nederlands) */

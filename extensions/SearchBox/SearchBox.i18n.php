@@ -514,6 +514,13 @@ $messages['sk'] = array(
 	'searchbox-namespaces' => 'Menné priestory:',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'searchbox-namespaces' => 'Именски простори:',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

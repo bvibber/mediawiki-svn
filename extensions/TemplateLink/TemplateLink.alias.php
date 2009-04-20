@@ -71,7 +71,7 @@ $aliases['lb'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'TemplateLink' => array( 'Sjabloonverwiezing' ),
+	'TemplateLink' => array( 'Malverwiezing' ),
 );
 
 /** Dutch (Nederlands) */

@@ -194,6 +194,7 @@ $messages['bs'] = array(
 	'imstatus_icq_style' => 'broj između 0 i 26 (da, dostupno je 27 stilova...).',
 	'imstatus_live_code' => 'vaš Live Messenger website id',
 	'imstatus_xfire_size' => 'veličina dugmeta, od $1 (najveće) do $2 (najmanje).',
+	'imstatus_yahoo_style' => 'stil dugmeta, od $1 (najmanje) do $2 (najveće), $3 i $4 su za zvučni mail.',
 );
 
 /** Czech (Česky)

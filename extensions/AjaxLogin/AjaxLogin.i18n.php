@@ -235,6 +235,18 @@ $messages['ja'] = array(
 	'ajaxlogin-create' => 'アカウント作成',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'ajaxlogin-desc' => '사용자에게 로그인을 허락하고 비밀번호를 생각나게 하는, 동적인 상자',
+	'ajaxLogin1' => '로그인을 완전하게 하시려면, 사용자께서는 새로운 비밀번호를 입력해주셔야만 합니다.
+이 것은 이 편집 페이지로부터 사용자를 이동시킬 것이고 사용자께서는 현재 본인의 편집을 잃으실 수 있습니다.',
+	'ajaxLogin2' => '확신하십니까?
+만약에 지금 사용자께서 이 페이지를 떠나신다면, 사용자께서는 이 페이지의 변화를 잃으실 수 있습니다.',
+	'ajaxlogin-create' => '계정 만들기',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

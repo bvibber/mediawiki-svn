@@ -91,6 +91,14 @@ $messages['bs'] = array(
 	'abcdownload' => 'Skidanje:',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'abcdesc' => "Afegeix l'etiqueta <tt>&lt;abc&gt;</tt> per a utilitzar la notació musical ''ABC music''",
+	'abcdownload' => 'Descarrega:',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'abcdesc' => 'Ergänzt das <tt>&lt;abc&gt;</tt>-Tag zur Notation von Musik in ABC',

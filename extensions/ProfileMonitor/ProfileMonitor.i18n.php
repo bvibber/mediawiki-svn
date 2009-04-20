@@ -184,6 +184,13 @@ $messages['dsb'] = array(
 	'profiling-no-data' => 'Žedne wótpowědujuce daty namakane.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Crazymadlover
+ */
+$messages['el'] = array(
+	'profiling-ok' => 'Εντάξει',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

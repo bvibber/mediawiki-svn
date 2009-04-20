@@ -774,6 +774,7 @@ $messages['ee'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['el'] = array(
@@ -784,7 +785,9 @@ $messages['el'] = array(
 	'whitelisttableedit' => 'Επεξεργασία',
 	'whitelisttableview' => 'Προβολή',
 	'whitelisttablenewdate' => 'Νέα ημερομηνία:',
+	'whitelisttableremove' => 'Αφαίρεση',
 	'whitelistnewtabledate' => 'Ημερομηνία λήξης:',
+	'whitelistnever' => 'Ποτέ',
 	'group-manager' => 'Διαχειριστές',
 	'group-manager-member' => 'Διαχειριστής',
 );

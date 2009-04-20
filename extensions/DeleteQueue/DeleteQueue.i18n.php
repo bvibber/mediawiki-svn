@@ -1022,6 +1022,7 @@ Móžoš k toś tomu wulašowanjeju [{{fullurl:{{FULLPAGENAME}}|action=delvote}}
  * @author Crazymadlover
  */
 $messages['el'] = array(
+	'deletequeue-vote-submit' => 'Υποβολή',
 	'deletequeue-list-search' => 'Αναζήτηση',
 	'deletequeue-case-reason' => 'Αιτία:',
 );
@@ -3405,6 +3406,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'deletequeue-list-header-page' => 'Blatt',
+	'deletequeue-case-page' => 'Blatt:',
 );
 
 /** Polish (Polski)
