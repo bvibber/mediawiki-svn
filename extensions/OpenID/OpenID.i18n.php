@@ -80,7 +80,7 @@ If you want to use OpenID to log in in the future, you can [[Special:OpenIDConve
 	'openidnousername' => 'No username specified.',
 	'openidbadusername' => 'Bad username specified.',
 	'openidautosubmit' => 'This page includes a form that should be automatically submitted if you have JavaScript enabled.
-If not, try the \"Continue\" button.',
+If not, try the "Continue" button.',
 	'openidclientonlytext' => 'You cannot use accounts from this wiki as OpenIDs on another site.',
 	'openidloginlabel' => 'OpenID URL',
 	'openidlogininstructions' => '{{SITENAME}} supports the [http://openid.net/ OpenID] standard for single signon between Web sites.
