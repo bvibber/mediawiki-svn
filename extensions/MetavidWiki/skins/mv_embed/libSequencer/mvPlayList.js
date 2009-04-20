@@ -790,7 +790,8 @@ mvPlayList.prototype = {
 						callback();
 			});		
 		}
-	},	
+	},
+	//this is pretty outdated: 	
 	getPLControls: function(){
 		js_log('getPL cont');
 		return 	'<a id="mv_prev_link_'+this.id+'" title="Previus Clip" onclick="document.getElementById(\''+this.id+'\').prev();return false;" href="#">'+
@@ -848,6 +849,7 @@ mvClip.prototype = {
 		//init:
 		//debugger;
 		
+		
 		this.embed=null;		
 		//js_log('setup embed for clip '+ this.id + ':id is a function?'); 
 		//set up the pl_mv_embed object:
@@ -868,11 +870,11 @@ mvClip.prototype = {
 		
 		if(this.poster)init_pl_embed['thumbnail']=this.poster;
 		
-		if(this.type)init_pl_embed['type'] = this.type;
+		if( this.type ) init_pl_embed['type'] = this.type;
 		
-		this.embed = new PlMvEmbed(init_pl_embed);
+		this.embed = new PlMvEmbed( init_pl_embed );
 				
-		js_log('ve src len:' + this.embed.media_element.sources.length);
+		js_log('media src len:' + this.embed.media_element.sources.length);
 		//js_log('media element:'+ this.embed.media_element.length);
 		//js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);		
 	},
@@ -1018,7 +1020,7 @@ PlMvEmbed.prototype = {
 		}
 		var videoInterface = new embedVideo(ve);			
 		//inherit the videoInterface
-		for(method in videoInterface){			
+		for( method in videoInterface ){			
 			if(method!='style'){
 				if(this[method]){
 					//parent embed method preservation:
@@ -1030,7 +1032,7 @@ PlMvEmbed.prototype = {
 			//string -> boolean:
 			if(this[method]=="false")this[method]=false;
 			if(this[method]=="true")this[method]=true;
-		}				
+		}						
 	},
 	stop:function(){
 		//set up convenience pointer to parent playlist
@@ -1502,7 +1504,7 @@ var smilPlaylist ={
 		var meta_tags = this.data.getElementsByTagName('meta');
 		var metaNames = new Array('title','interface_url', 'linkback', 'mTitle', 'mTalk'); 
 		$j.each(meta_tags, function(i,meta_elm){
-			js_log( "on META tag: "+ $j(meta_elm).attr('name') );
+			//js_log( "on META tag: "+ $j(meta_elm).attr('name') );
 			for(var i in metaNames){
 				var _name = metaNames[i];
 				if( $j(meta_elm).attr('name') && $j(meta_elm).attr('content') ){
@@ -1550,13 +1552,13 @@ var smilPlaylist ={
 						"pp":this, //set the parent playlist object pointer
 						"order": order									
 					}								
-				);
+				);		
 		//set optional params track					 					
 		if( typeof track_id != 'undefined')
 			clipObj["track_id"]	= track_id;
 			 
 		//debugger;
-		if (clipObj ){
+		if ( clipObj ){
 			//set up embed:						
 			clipObj.setUpEmbedObj();						
 			//add clip to track: 
@@ -1590,8 +1592,7 @@ var mvSMILClip=function(sClipElm, mvClipInit){
 mvSMILClip.prototype = {		
 	params : {}, //support param as child of ref clips per SMIL spec  
 	init:function(sClipElm, mvClipInit){
-		_this = this;				
-		
+		_this = this;						
 		//make new mvCLip with ClipInit vals  
 		var myMvClip = new mvClip( mvClipInit );
 		
@@ -1607,14 +1608,14 @@ mvSMILClip.prototype = {
 		//get supported media attr init non-set		
 		$j.each(mv_smil_ref_supported_attributes, function(i, attr){			
 			if( $j(sClipElm).attr(attr)){
-				_this[attr]=$j(sClipElm).attr(attr);
+				_this[attr] = $j(sClipElm).attr(attr);
 			}
 		})				
 		this['tagName'] = sClipElm.tagName;	
 		
 		if( sClipElm.firstChild ){
 			this['wholeText'] = sClipElm.firstChild.nodeValue;
-			js_log("SET wholeText for: "+this['tagName'] + ' '+ this['wholeText']);
+			js_log("SET wholeText for: " + this['tagName'] + ' '+ this['wholeText']);
 		}
 		//debugger;
 		//mv_embed specific property: 
@@ -1635,13 +1636,17 @@ mvSMILClip.prototype = {
 			this.transOut.transAttrType = 'transOut';		
 		}		
 		//parse duration / begin times: 
-		if(this.dur)
-			this.dur = smilParseTime(this.dur);							
+		if( this.dur )
+			this.dur = smilParseTime( this.dur );							
 		
 		//conform type to video/ogg:
-		if(this['type']=='application/ogg'){
-			this['type']='video/ogg'; //conform to 'video/ogg' type
-		}	
+		if( this.type == 'application/ogg' )
+			this.type = 'video/ogg'; //conform to 'video/ogg' type
+				
+		//if unset type and we have innerHTML assume text/html type		
+		if( !this.type  && this.wholeText ){			
+			this.type = 'text/html';
+		}					 
 		
 		//also grab andy child param elements if present: 
 		if( sClipElm.getElementsByTagName('param')[0] ){			

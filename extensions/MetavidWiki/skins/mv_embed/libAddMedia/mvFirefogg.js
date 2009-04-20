@@ -218,23 +218,12 @@ mvFirefogg.prototype = {
 	},
 	//doChunkUpload does both uploading and encoding at the same time and uploads one meg chunks as they are ready
 	doChunkUpload : function(){
-		var _this = this;						
-		//add chunk response hook to build the resultURL when uploading chunks 						
-		/*_this.fogg.setChunkCallback( function( result ){
-			js_log( 'chunkResponseHook:' + result );
-			try{
-				var upRes = JSON.parse( result );				
-				if( upRes.upload.sessionkey ){
-				
-				}
-				if( upRes.upload.result ){
-					
-				}				
-			}catch(e){
-				js_error( 'error could not parse chunkResponse' );
-			}			
-		});*/
+		var _this = this;				
 		
+		if( ! _this.api_url )
+			return js_error( 'Error: can\'t autodetect mode without api url' );				
+						
+		//add chunk response hook to build the resultURL when uploading chunks		
 		
 		//build the api url: 
 		var aReq ={
@@ -250,8 +239,11 @@ mvFirefogg.prototype = {
 		
 		if(  _this.formData['wpIgnoreWarning'] )
 			aReq['ignorewarnings'] = _this.formData['wpIgnoreWarning'];
-													
-		_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  aReq ,  JSON.stringify( _this.formData ) );		
+		
+		js_log('do fogg upload call: '+ _this.api_url + ' :: ' + JSON.stringify( aReq ) );			
+			
+		
+		_this.fogg.upload( JSON.stringify( _this.encoder_settings ),  _this.api_url ,  JSON.stringify( aReq ) );		
 			
 		//update upload status:						
 		_this.doUploadStatus();

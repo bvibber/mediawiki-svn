@@ -501,10 +501,10 @@ mediaElement.prototype =
     init:function( video_element )
     {
         var _this = this;
-        js_log('Initializing mediaElement...' + video_element);
+        js_log('Initializing mediaElement...' );
         this.sources = new Array();
         this.thumbnail = mv_default_thumb_url;
-        // Process the <video> element
+        // Process the source element:
         if($j(video_element).attr("src"))
         	this.tryAddSource(video_element);        	  
         
@@ -592,7 +592,7 @@ mediaElement.prototype =
                 return true;
             }
             //set via user-preference
-            if(embedTypes.players.preference['format_prefrence']==mime_type){
+            if(embedTypes.players.preference['format_prefrence'] == mime_type){
             	 js_log('set via preference: '+playable_sources[source].mime_type);
             	 this.selected_source = playable_sources[source];
             	 return true; 
@@ -678,7 +678,7 @@ mediaElement.prototype =
     */
     tryAddSource:function(element)
     {
-    	//js_log('f:tryAddSource:'+ $j(element).attr("src"));    	
+    	js_log('f:tryAddSource:'+ $j(element).attr("src"));    	
         if (! $j(element).attr("src")){
         	//js_log("element has no src");
             return false;
@@ -695,7 +695,7 @@ mediaElement.prototype =
         }
         var source = new mediaSource( element );        
         this.sources.push(source);        
-        //js_log('pushed source to stack'+ source + 'sl:'+this.sources.length);
+        //alert('pushed source to stack'+ source + 'sl:'+this.sources.length);
     },
     getPlayableSources: function(){    	 
     	 var playable_sources= new Array();
@@ -862,7 +862,7 @@ embedVideo.prototype = {
 	{	
 		js_log('f:init_with_sources_loaded');
 		//set flag that we have run this function:
-		this.init_with_sources_loadedDone=true;				
+		this.init_with_sources_loadedDone=true; 				
 		//autoseletct the source
 		this.media_element.autoSelectSource();		
 		//auto select player based on prefrence or default order
@@ -870,22 +870,23 @@ embedVideo.prototype = {
 		{
 			//check for parent clip: 
 			if( typeof this.pc != 'undefined' ){			
-				js_log('no sources, type:' +this.type + ' check for html');				
+				js_log('no sources, type:' +this.type + ' check for html');	
+				//debugger;			
 				//do load player if just displaying innerHTML: 
-				if(this.pc.type =='text/html'){
+				if( this.pc.type == 'text/html' ){
 					this.selected_player = embedTypes.players.defaultPlayer( 'text/html' );
 					js_log('set selected player:'+ this.selected_player.mime_type);	
 				}
 			}
 		}else{		
         	this.selected_player = embedTypes.players.defaultPlayer( this.media_element.selected_source.mime_type );
-		}			      
+		}			      		
         if( this.selected_player ){
             js_log('selected ' + this.selected_player.getName());
             js_log("PLAYBACK TYPE: "+this.selected_player.library);
             this.thumbnail_disp = true;	    
 			this.inheritEmbedObj();
-        }else{        	        
+        }else{           	   	       
         	//no source's playable
         	var missing_type ='';
         	var or ='';  

@@ -157,12 +157,15 @@ baseRemoteSearch.prototype = {
 	},
 	//default license permission wiki text is cc based template mapping (does not confirm the templates actually exist)  
 	getPermissionWikiTag: function( rObj ){
+		if(!rObj.license)				
+			return '';//no license info
 		//check that its a defined creative commons licnese key: 
-		if( typeof   this.rsd.licenses.cc.licenses[ rObj.license.key ] != 'undefined' ){
+		if(  this.rsd.licenses.cc.licenses[ rObj.license.key ] != 'undefined' ){
 			return '{{Cc-' + rObj.license.key + '}}';
 		}else if( rObj.license.lurl ) {
 			return '{{Template:External_License|' + rObj.license.lurl + '}}';
-		}
+		}		
+		
 	},
 	getImportResourceDescWiki:function(rObj){
 		return rObj.title + ' imported from ' + '[' + this.cp.homepage + 
