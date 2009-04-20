@@ -12,6 +12,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	// user messages
+	'semanticgooglemaps_printername'       => 'Google Maps',
 	'semanticgooglemaps_lookupcoordinates' => 'Look up coordinates',
 	'semanticgooglemaps-desc'              => 'Allows users to edit and display semantic coordinate data using Google Maps',
 	'semanticgooglemaps-enteraddresshere'  => 'Enter address here',
