@@ -27,7 +27,7 @@ if (!defined('MEDIAWIKI')) {
 	require_once ("ApiBase.php");
 }
 
-
+			
 /**
  * @ingroup API
  */
@@ -38,10 +38,13 @@ class ApiUpload extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser;
+		global $wgUser;		
+		
+			
 		$this->getMain()->requestWriteMode();
 		$this->mParams = $this->extractRequestParams();
-		$request = $this->getMain()->getRequest();
+		$request = $this->getMain()->getRequest();			
+		
 		// Add the uploaded file to the params array
 		$this->mParams['file'] = $request->getFileName( 'file' );				
 		
@@ -56,19 +59,17 @@ class ApiUpload extends ApiBase {
 		if( $this->mParams['enablechunks'] ){
 			//chunks upload enabled
 			$this->mUpload = new UploadFromChunks();
-			$this->mUpload->initializeFromParams( $this->mParams );		
-		
-			if( isset( $this->mUpload->status[ 'error' ] ) )
-				$this->dieUsageMsg( $this->mUpload->status[ 'error' ] );	
-			
+			$this->mUpload->initializeFromParams( $this->mParams, $request );								
+			//if getAPIresult did not exit report the status error: 
+			if( isset( $this->mUpload->status[ 'error' ] ) )		
+				$this->dieUsageMsg( $this->mUpload->status[ 'error' ] );
+						
 		} else if( $this->mParams['sessionkey'] ) {
 			// Stashed upload			
 			$this->mUpload = new UploadFromStash();
-			$this->mUpload->initialize( $this->mParams['sessionkey'] );
-							
+			$this->mUpload->initialize( $this->mParams['sessionkey'] );							
 		}else{
-			// Upload from url or file or start a chunks request
-			
+			// Upload from url or file			
 			// Parameter filename is required
 			if( !isset( $this->mParams['filename'] ) )
 				$this->dieUsageMsg( array( 'missingparam', 'filename' ) );
@@ -77,15 +78,16 @@ class ApiUpload extends ApiBase {
 			if( isset( $this->mParams['file'] ) ) {				
 				$this->mUpload = new UploadFromUpload();
 				$this->mUpload->initialize(
+					$request->getFileName( 'file' ),
 					$request->getFileTempName( 'file' ),
-					$request->getFileSize( 'file' ),
-					$request->getFileName( 'file' )
+					$request->getFileSize( 'file' )					
 				);				
 			} elseif( isset( $this->mParams['url'] ) ) {											
 				$this->mUpload = new UploadFromUrl();
 				$this->mUpload->initialize(  $this->mParams['filename'], $this->mParams['url'] );											
 			}
 		}		
+		
 		if( !isset( $this->mUpload ) )		
 			$this->dieUsage( 'No upload module set', 'nomodule' );		
 		
@@ -99,8 +101,7 @@ class ApiUpload extends ApiBase {
 				$this->dieUsageMsg( array( 'mustbeloggedin', 'upload' ) );
 			else
 				$this->dieUsageMsg( array( 'badaccess-groups' ) );
-		}
-		
+		}				
 		// Perform the upload
 		$result = $this->performUpload();
 		
@@ -111,7 +112,7 @@ class ApiUpload extends ApiBase {
 	}
 	
 	private function performUpload() {
-		global $wgUser;
+		global $wgUser;		
 		$result = array();
 		$resultDetails = null;
 		
@@ -122,7 +123,7 @@ class ApiUpload extends ApiBase {
 			return $result;
 		}			
 		
-		$verification = $this->mUpload->verifyUpload( $resultDetails );
+		$verification = $this->mUpload->verifyUpload( $resultDetails );	
 		if( $verification != UploadBase::OK ) {
 			$result['result'] = 'Failure';
 			switch( $verification ) {
@@ -166,8 +167,7 @@ class ApiUpload extends ApiBase {
 					break;
 			}
 			return $result;
-		}
-		
+		}		
 		if( !$this->mParams['ignorewarnings'] ) {
 			$warnings = $this->mUpload->checkWarnings();
 			if( $warnings ) {
@@ -183,13 +183,7 @@ class ApiUpload extends ApiBase {
 					$result['sessionkey'] = $sessionKey;
 				return $result;
 			}
-		}		
-		
-		//check for special API upload response: 
-		$upApiResult = $this->mUpload->getAPIresult( $this->mParams['comment'], $this->mParams['watch'] );
-		if( $upApiResult != UploadBase::OK ) //if we have a result override return it			
-			return $upApiResult;
-		
+		}								
 		//do the upload			
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
 			$this->mParams['comment'], $this->mParams['watch'], $wgUser );
@@ -222,6 +216,7 @@ class ApiUpload extends ApiBase {
 		return array (
 			'filename' => null,
 			'file' => null,
+			'chunk' => null,
 			'url' => null,
 			'comment' => array(
 				ApiBase :: PARAM_DFLT => ''
@@ -231,6 +226,7 @@ class ApiUpload extends ApiBase {
 			'enablechunks' => false,
 			'done'	=> false,
 			'sessionkey' => null,
+			'chunksessionkey'=> null,
 		);
 	}
 
@@ -244,7 +240,8 @@ class ApiUpload extends ApiBase {
 			'ignorewarnings' => 'Ignore any warnings',
 			'enablechunks' => 'Boolean If we are in chunk mode; accepts many small file POSTs',			
 			'done'	=> 'When used with "chunks", Is sent to notify the api The last chunk is being uploaded.',
-			'sessionkey' => 'Session key in case there were any warnings, or uploading chunks'
+			'sessionkey' => 'Session key in case there were any warnings.', 
+			'chunksessionkey'=> 'Used to sync uploading of chunks',
 		);
 	}
 

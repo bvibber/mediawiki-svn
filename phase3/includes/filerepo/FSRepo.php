@@ -220,8 +220,7 @@ class FSRepo extends FileRepo {
 		if ( !is_file( $toAppendPath ) ) 				
 			$status->fatal( 'filenotfound', $toAppendPath );
 			
-		//I assume fopen($src, 'a') fopen ($$toAppend .. etc would be faster / more memory friendly
-		//but ideally we don't append "big" files so it does not matter 
+		//do the append: 
 		if( ! file_put_contents( $srcPath, file_get_contents( $toAppendPath ), FILE_APPEND ) )
 			$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
 					
@@ -260,10 +259,8 @@ class FSRepo extends FileRepo {
 	}
 	/*append to a temporary file (used in chunks uploads) */
 	function appendToTemp( $srcPath, $appendDataPath ) {
-		//open the source file
-
-		$result = $this->append( $srcPath, $appendDataPath );
-		$result->value = $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
+		//append to the "shared" temporary file
+		$result = $this->append( $srcPath, $appendDataPath );		
 		return $result;
 	}
 

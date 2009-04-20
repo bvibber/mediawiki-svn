@@ -100,19 +100,23 @@ class UploadBase {
 	function fetchFile() {
 		return self::OK;
 	}
-
+	//return the file size
+	function isEmptyFile(){
+		return empty( $this->mFileSize); 
+	}
 	/**
 	 * Verify whether the upload is sane. 
 	 * Returns self::OK or else an array with error information
 	 */
-	function verifyUpload() {
+	function verifyUpload() {				
 		/**
 		 * If there was no filename or a zero size given, give up quick.
 		 */
-		if( empty( $this->mFileSize ) ) 
+		
+		if( $this->isEmptyFile() ) 
 			return array( 'status' => self::EMPTY_FILE );
-
-		$nt = $this->getTitle();
+		
+		$nt = $this->getTitle();		
 		if( is_null( $nt ) ) {
 			$result = array( 'status' => $this->mTitleError );
 			if( $this->mTitleError == self::ILLEGAL_FILENAME )
@@ -122,20 +126,20 @@ class UploadBase {
 			return $result;
 		}
 		$this->mLocalFile = wfLocalFile( $nt );
-		$this->mDestName = $this->mLocalFile->getName();
-
+		$this->mDestName = $this->mLocalFile->getName();		
+		
 		/**
 		 * In some cases we may forbid overwriting of existing files.
 		 */
 		$overwrite = $this->checkOverwrite();
 		if( $overwrite !== true )
 			return array( 'status' => self::OVERWRITE_EXISTING_FILE, 'overwrite' => $overwrite );
-		
+					
 		/**
 		 * Look at the contents of the file; if we can recognize the
 		 * type but it's corrupt or data of the wrong type, we should
 		 * probably not accept it.
-		 */
+		 */		
 		$verification = $this->verifyFile( $this->mTempPath );
 
 		if( $verification !== true ) {
@@ -423,7 +427,7 @@ class UploadBase {
 		$status = $repo->storeTemp( $saveName, $tempName );
 		return $status;
 	}
-	/* append to a stached file */
+	/* append to a stashed file */
 	function appendToUploadFile($srcPath, $toAppendPath ){
 		$repo = RepoGroup::singleton()->getLocalRepo();
 		$status = $repo->append($srcPath, $toAppendPath);
@@ -858,11 +862,6 @@ class UploadBase {
 		return true;
 				  
 	}
-	/* allow for getAPIresult override (normally just return  UploadFrom::OK to continue form processing */
-	function getAPIresult(){
-		 return UploadFrom::OK;
-	}
-	
 	/**
 	 * Check if a user is the last uploader
 	 *

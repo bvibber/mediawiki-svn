@@ -18,28 +18,33 @@ class UploadFromChunks extends UploadBase {
 	const CHUNK = 2;
 	const DONE 	= 3;
 	
-	function initializeFromParams( $param ) {		
-		$this->initFromSessionKey( $param['sessionkey'] );		
-				
+	function initializeFromParams( &$param , &$request) {		
+		$this->initFromSessionKey( $param['chunksessionkey'] );			
 		//set the chunk mode: 
-		if( !$this->mSessionKey && !$parm['done'] ){
+		if( !$this->mSessionKey && !$param['done'] ){
 			//session key not set init the chunk upload system: 
-			 $this->chunk_mode = UploadFromChunks::INIT;			  
-		}else if( $this->mSessionKey && !$parm['done']){
+			$this->chunk_mode = UploadFromChunks::INIT;
+			$this->mDesiredDestName = $param['filename'];
+			
+		}else if( $this->mSessionKey && !$param['done']){
 			//this is a chunk piece	
 			$this->chunk_mode = UploadFromChunks::CHUNK;
-			 
-		}else if( $this->mSessionKey && $parm['done']){
+
+			//set chunk related vars: 			
+			$this->mTempPath = $request->getFileTempName( 'chunk' );
+			$this->mFileSize = $request->getFileSize( 'chunk' );		
+			
+		}else if( $this->mSessionKey && $param['done']){
 			//this is the last chunk			 
 			$this->chunk_mode = UploadFromChunks::DONE;
 		}			
 		return $this->status;
 	}	
 	
-	function initFromSessionKey( $sessionKey ){
+	function initFromSessionKey( $sessionKey ){		
 		if( !$sessionKey || empty( $sessionKey ) ){
 			return false;
-		}
+		}		
 		$this->mSessionKey = $sessionKey;
 		if( isset( $_SESSION['wsUploadData'][$this->mSessionKey]['version'] ) &&
 			$_SESSION['wsUploadData'][$this->mSessionKey]['version'] == self::SESSION_VERSION ) {
@@ -48,11 +53,11 @@ class UploadFromChunks extends UploadBase {
 				$this->mWatch			= $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mWatch' ];
 				$this->mFilteredName	= $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mFilteredName' ];	
 				$this->mTempAppendPath  = $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mTempAppendPath' ];
+				$this->mDesiredDestName	= $_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mDesiredDestName' ];
 		}else{
 			$this->status = Array( 'error'=> 'missing session data');
 			return false;
-		}
-		
+		}		
 	}	
 	static function isValidRequest( $request ) {
 		$sessionData = $request->getSessionData('wsUploadData');
@@ -69,88 +74,113 @@ class UploadFromChunks extends UploadBase {
 		$warning = array();
 		return $warning;
 	}
-	
+	function isEmptyFile(){
+		//does not apply to chunk init
+		if(  $this->chunk_mode ==  UploadFromChunks::INIT ){
+			return false;
+		}else{
+			return parent::isEmptyFile();
+		}		
+	}
  	/* Verify whether the upload is sane. 
 	 * Returns self::OK or else an array with error information
 	 */
-	function verifyUpload( $resultDetails ) {
-		/*
-		 * check the internal chunk mode for alternative Verify path
-		 * (for now just return "OK" 
-		 */
-		if( $this->chunk_mode ==  UploadFromChunks::INIT)
+	function verifyUpload( $resultDetails ) {	
+		//no checks on chunk upload mode:
+		if( $this->chunk_mode ==  UploadFromChunks::INIT )
 			return self::OK;
-		
-		return parent::verifyUpload( $resultDetails );
-	}		
 
+		//verify on init and last chunk request 
+		if(	$this->chunk_mode == UploadFromChunks::CHUNK || 
+			$this->chunk_mode == UploadFromChunks::DONE )
+			return parent::verifyUpload( $resultDetails );
+	}		
+	//only run verifyFile on completed uploaded chunks
+	function verifyFile( $tmpFile ){		
+		if( $this->chunk_mode == UploadFromChunks::DONE){
+			return parent::verifyFile($tmpFile);		
+		}else{
+			return true;
+		}
+	}
 	function setupChunkSession( $comment, $watch ) {
-		$key = $this->getSessionKey();
-		//since we can't pass things along in POST store them in the Session:
-		$_SESSION['wsUploadData'][$key] = array(			
+		$this->mSessionKey = $this->getSessionKey();						
+				
+		$_SESSION['wsUploadData'][ $this->mSessionKey ] = array(				
 			'mComment'			=> $comment,
 			'mWatch'			=> $watch,
 			'mFilteredName'		=> $this->mFilteredName,	
-			'mTempAppendPath'	=> null,				
+			'mTempAppendPath'	=> null,	//the repo append path (not temporary local node mTempPath)
+			'mDesiredDestName'	=> $this->mDesiredDestName,
 			'version'         	=> self::SESSION_VERSION,
 	   	);
-	   	return $key;
+	   		   	 
+	   	return $this->mSessionKey;
 	}
 	
 	//lets us return an api result (as flow for chunk uploads is kind of different than others. 
-	function getAPIresult($comment, $watch){	
-		if( $this->chunk_mode == UploadFromChunks::INIT ){
-			//verifyUpload & checkWarnings have already run .. just create the upload store return the upload session key
+	function performUpload($summary='', $comment='', $watch='', $user){	
+		global $wgServer, $wgScriptPath;
+		if( $this->chunk_mode == UploadFromChunks::INIT ){			
+			
+			//firefogg expects a specific result per: 
+			//http://www.firefogg.org/dev/chunk_post.html						
+			print "{\"uploadUrl\": \"{$wgServer}{$wgScriptPath}/api.php?action=upload&format=json&enablechunks=true&chunksessionkey=".
+						$this->setupChunkSession( $comment, $watch ) . "\" }";
+			exit(0);
+			
+			/*
+			 * @@todo would be more ideal to have firefogg pass results back to the client to construct next chunk url 
 			return array( 
 				'sessionkey'=> $this->setupChunkSession( $comment, $watch )
 			);
-		}else if( $this->chunk_mode == UploadFromChunks::CHUNK ){
-			
-			$this->doChunkAppend();
-			
-			//return success:
-			return array(
-				'result' => 1						
-			);						
-			
+			*/
+		}else if( $this->chunk_mode == UploadFromChunks::CHUNK ){		
+			$status = $this->doChunkAppend(); 	
+			if( $status->isOK() ){			
+				//return success:
+				//firefogg expects a specific result per: 
+				//http://www.firefogg.org/dev/chunk_post.html		
+				print "{\"result\": 1}";				
+				exit(0);
+				/*return array(
+					'result' => 1						
+				);*/						
+			}else{
+				return $status;		
+			}
 		}else if( $this->chunk_mode == UploadFromChunks::DONE ){
 			//append the last chunk: 
 			if( $this->doChunkAppend() ){
 				//process the upload normally: 
-				return UploadFrom::OK;
+				return Status::newGood('chunk upload done');
 			}			
 		}		
 	}
 	//append the given chunk to the temporary uploaded file. (if no temporary uploaded file exists created it.
 	function doChunkAppend(){
-		//if we don't have a mTempAppendPath to append to generate that:  
+		//if we don't have a mTempAppendPath to generate a file from the chunk packaged var:  
 		if( ! $this->mTempAppendPath ){
-			//make a chunk store path. (append tmp file to chunk)
-			print "save Temp: " . $this->mTempPath . ' '.  $this->mDestName . "\n";  	
-			if( isset( $this->mDestName ) ){		
-				$stash = $this->saveTempUploadedFile( $this->mDestName, $this->mTempPath );
-				if( !$stash ) {
-					# Couldn't save the file.
-					return false;				
-				}
-				//update the mDestName
-				$this->mTempAppendPath = $stash;
-				$_SESSION[ 'wsUploadData' ][ $this->mSessionKey ] = $this->mTempAppendPath;
-			}
+			//die();
+			//get temp name: 								
+			//make a chunk store path. (append tmp file to chunk)					
+			$status = $this->saveTempUploadedFile( $this->mDestName, $this->mTempPath );
+			
+			if( $status->isOK() ) {				
+				$this->mTempAppendPath = $status->value;
+				$_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mTempAppendPath' ] = $this->mTempAppendPath;
+				print "did save to $status->value \n";
+			}										
+			return $status;			
 		}else{
 			//make sure the file exists: 
 			if( is_file( $this->mTempAppendPath ) ){
 				print "append: " . $this->mTempPath . ' to ' . $this->mTempAppendPath . "\n";
-				$this->appendToUploadFile( $this->mTempAppendPath,  $this->mTempPath );	
+				$status = $this->appendToUploadFile( $this->mTempAppendPath,  $this->mTempPath );
+				return $status;
+			}else{
+				return Status::newFatal('chunk-file-append-missing');
 			}
 		}
-	}
-		
-	function checkAPIresultOverride(){
-		if( $this->chunk_mode == UploadFromChunks::INIT ){
-			return true;
-		}else{
-			return false;
-		}
-	}
+	}	
 }
