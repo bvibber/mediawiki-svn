@@ -200,10 +200,10 @@ mediaWikiSearch.prototype = {
 		}						
 		var style_attr = 'style="width:' + outOpt.width + 'px;height:' + outOpt.height +'px"';
 		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
-		
+		var cat = rObj;		
 		//return the html type: 
 		if(rObj.mime.indexOf('image')!=-1){
-			return '<img ' + id_attr + ' src="' + rObj.url  + '"' + style_attr + ' >';
+			return '<img ' + id_attr + ' src="' + rObj.edit_url  + '"' + style_attr + ' >';
 		}
 		var ahtml='';
 		if(rObj.mime == 'application/ogg' || rObj.mime == 'audio/ogg'){

@@ -129,7 +129,8 @@ mvSequencer.prototype = {
 									}, function(){					
 										this_seq.mySearch = new seqRemoteSearchDriver({
 											'p_seq':this_seq,
-											'target_id':'cliplib_ic',										
+											'target_id':'cliplib_ic',
+											'local_wiki_api_url': 	this_seq.getLocalApiUrl(),										
 											'instance_name': this_seq.instance_name + '.mySearch'						
 										 });
 										 this_seq.mySearch.doInitDisplay();
@@ -433,6 +434,9 @@ mvSequencer.prototype = {
 			}
 		}		
 	},
+	getLocalApiUrl:function(){
+		return this.plObj.interface_url.replace(/index\.php/, 'api.php'); 
+	},
 	plReadyInit:function(){
 		var this_seq = this;
 		//debugger;
@@ -456,10 +460,10 @@ mvSequencer.prototype = {
 				'intoken':'edit',
 				'titles': this_seq.plObj.mTitle
 			};
-			var api_url = this.plObj.interface_url.replace(/index\.php/, 'api.php'); 
+			
 			do_api_req( {
-				'data':reqObj,
-				'url':api_url
+				'data': reqObj,
+				'url' : this_seq.getLocalApiUrl()
 				},function(data){
 					for(var i in data.query.pages){ 
 						if(data.query.pages[i]['edittoken'])
@@ -470,8 +474,8 @@ mvSequencer.prototype = {
 			);
 			reqObj['titles']=this_seq.plObj.mTalk;
 			do_api_req( {
-				'data':reqObj,
-				'url':api_url
+				'data': reqObj,
+				'url' : this_seq.getLocalApiUrl()
 				}, function( data ){
 					for(var j in data.query.pages){
 						if(data.query.pages[j]['edittoken'])

@@ -62,13 +62,13 @@ mvClipEdit.prototype = {
 		}
 
 		//if media type was not supplied detect for resource if possible:
-		//@@todo more advanced detection. 
+		//@@todo more advanced detection. 		
 		if(!this.media_type){
-			if( this.rObj.mime.indexOf("image/") === 0){
+			if( this.rObj.type.indexOf("image/") === 0){
 				this.media_type = 'image';
-			}else if( this.rObj.mime.indexOf("video/") === 0){
+			}else if( this.rObj.type.indexOf("video/") === 0){
 				this.media_type = 'video';
-			}else if( this.rObj.mime.indexOf("text/") === 0){
+			}else if( this.rObj.type.indexOf("text/") === 0){
 				this.media_type = 'template';
 			}
 		}		
@@ -110,9 +110,11 @@ mvClipEdit.prototype = {
 				var end_ntp = ( _this.rObj.embed.end_ntp) ? _this.rObj.embed.end_ntp : _this.rObj.embed.getDuration();
 				if(!end_ntp)
 					end_ntp = seconds2ntp( _this.rObj.dur );
+					
+				var start_ntp = (_this.rObj.embed.start_ntp) ? _this.rObj.embed.start_ntp : seconds2ntp( 0 );
 				$j('#sub_cliplib_ic').html(
 					_this.getSetInOut({
-						'start_ntp'	: _this.rObj.embed.start_ntp, 
+						'start_ntp'	: start_ntp, 
 						'end_ntp'	: 	end_ntp
 					})		
 				);

@@ -28,7 +28,7 @@ seqRemoteSearchDriver.prototype = {
 		var insert_key='na';
 		var clip_key ='';
 		
-		//@@todo support multiple tracks
+		//@@todo support multiple target tracks
 		$j('.mv_clip_box_result').draggable({
 			start:function(){
 				source_pos = $j(this).offset();

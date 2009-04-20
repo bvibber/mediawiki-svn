@@ -325,7 +325,7 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		var dq = (this.default_query)? this.default_query : '';
 		var out = '<div class="rsd_control_container" style="width:100%">' + 
-					'<form id="rsd_form" action="" method="GET">'+
+					'<form id="rsd_form" action="javascript:return false;" method="GET">'+
 					'<table style="width:100%;background-color:transparent;">' +
 						'<tr>'+
 							'<td style="width:110px">'+
@@ -402,7 +402,7 @@ remoteSearchDriver.prototype = {
 			}
 		});								
 		//set form bindings
-		$j('#rsd_form').submit(function(){			
+		$j('#rsd_form').unbind().submit(function(){						
 			_this.runSearch();
 			//don't submit the form
 			return false;
@@ -453,9 +453,9 @@ remoteSearchDriver.prototype = {
 			//check if we need to update: 
 			if( typeof cp.sObj != 'undefined' ){
 				if(cp.sObj.last_query == $j('#rsd_q').val() && cp.sObj.last_offset == cp.offset){
-					js_log('last query is: ' + cp.sObj.last_query + ' matches: ' +  $j('#rsd_q').val());					
+					js_log('last query is: ' + cp.sObj.last_query + ' matches: ' +  $j('#rsd_q').val() );					
 				}else{
-					js_log('last query is: ' + cp.sObj.last_query + ' not match: ' +  $j('#rsd_q').val());
+					js_log('last query is: ' + cp.sObj.last_query + ' not match: ' +  $j('#rsd_q').val() );
 					draw_direct_flag = false;
 				}
 			}else{
@@ -477,7 +477,7 @@ remoteSearchDriver.prototype = {
 	//this check can be avoided by setting the this.import_url_mode = 'api' | 'form' | insted of 'autodetect' or 'none'
 	checkForCopyURLSupport:function ( callback ){
 		var _this = this;
-		js_log('checkForCopyURLSupport');	
+		js_log('checkForCopyURLSupport:: ' + wgArticlePath);	
 		if( this.import_url_mode == 'autodetect' ){
 			do_api_req( {
 				'data':{ 'action':'paraminfo','modules':'upload' },
@@ -489,20 +489,20 @@ remoteSearchDriver.prototype = {
 					$j.ajax({
 						type: "GET",
 						dataType: 'html',
-						url: wgArticlePath.replace('$1', 'Special:Upload'), //@@todo may have problems in localized special pages 
+						url: wgArticlePath.replace( '$1', 'Special:Upload' ), //@@todo may have problems in localized special pages 
 															   //(could hit meta=siteinfo & specialpagealiases ) 
-															   // but might be overkill for now.  
+															   // but might be overkill for now cuz we want to switch to new-upload branch soon.  
 						success: function( form_html ){							
 							if( form_html.indexOf( 'wpUploadFileURL' ) != -1){
-								_this.import_url_mode= 'form';											
+								_this.import_url_mode = 'form';											
 							}else{
-								_this.import_url_mode= 'none';							
+								_this.import_url_mode = 'none';							
 							}
 							callback();
 						},
 						error: function(){
 							js_log('error in getting Special:Upload page');
-							_this.import_url_mode= 'none';
+							_this.import_url_mode = 'none';
 							callback();
 						}
 					});
