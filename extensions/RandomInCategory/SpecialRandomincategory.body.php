@@ -26,14 +26,14 @@ class RandomPageInCategory extends SpecialPage {
 				$par = $requestCategory;
 			}
 			else {
-				$wgOut->addHTML( RandomPageInCategory::getForm() );
+				$wgOut->addHTML( $this->getForm() );
 				return;
 			}
 		}
 
 		$rnd = $this;
 		if( !$rnd->setCategory( $par ) ) {
-			$wgOut->addHTML( RandomPageInCategory::getForm( $par ) );
+			$wgOut->addHTML( $this->getForm( $par ) );
 			return;
 		}
 
@@ -41,7 +41,7 @@ class RandomPageInCategory extends SpecialPage {
 
 		if( is_null( $title ) ) {
 			$wgOut->addWikiText( wfMsg( 'randomincategory-nocategory', $par ) );
-			$wgOut->addHTML( RandomPageInCategory::getForm( $par ) );
+			$wgOut->addHTML( $this->getForm( $par ) );
 			return;
 		}
 
@@ -104,7 +104,7 @@ class RandomPageInCategory extends SpecialPage {
 		return $dbr->fetchObject( $res );
 	}
 
-	public static function getForm( $par = null ) {
+	public function getForm( $par = null ) {
 		global $wgScript, $wgRequest;
 
 		if( !( $category = $par ) ) {
