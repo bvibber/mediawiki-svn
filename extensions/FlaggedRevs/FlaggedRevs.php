@@ -376,10 +376,7 @@ $wgHooks['LogLine'][] = 'FlaggedRevsHooks::reviewLogLine';
 # Disable auto-promotion for demoted users
 $wgHooks['UserRights'][] = 'FlaggedRevsHooks::recordDemote';
 # Local user account preference
-$wgHooks['RenderPreferencesForm'][] = 'FlaggedRevsHooks::injectPreferences';
-$wgHooks['InitPreferencesForm'][] = 'FlaggedRevsHooks::injectFormPreferences';
-$wgHooks['ResetPreferences'][] = 'FlaggedRevsHooks::resetPreferences';
-$wgHooks['SavePreferences'][] = 'FlaggedRevsHooks::savePreferences';
+$wgHooks['GetPreferences'][] = 'FlaggedRevsHooks::onGetPreferences';
 # Rating link
 $wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'FlaggedRevsHooks::addRatingLink';
 $wgHooks['SkinTemplateToolboxEnd'][] = 'FlaggedRevsHooks::ratingToolboxLink';
