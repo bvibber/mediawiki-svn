@@ -130,9 +130,13 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 	
 	$options = array_fill_keys( array_keys($gadgets), array() );
 	
+	$selectedGadgets = $user->getOption( 'gadgets' );
+	
 	foreach( $gadgets as $section => $thisSection ) {
 		foreach( $thisSection as $gname => $code ) {
 			$options[$section][wfMsgExt( "gadget-$gname", 'parseinline' )] = $gname;
+			if ( $user->getOption( "gadget-$gname") )
+				$selectedGadgets[] = $gname;
 		}
 	}
 	
@@ -155,18 +159,6 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 			'label' => '&nbsp;',
 		);
 		
-	return true;
-}
-
-function wfGadgetsResetPreferences( $prefs, $user ) {
-	$gadgets = wfLoadGadgets();
-	if ( !$gadgets ) return true;
-
-	foreach ( $gadgets as $gname => $code ) {
-		$tname = "gadget-$gname";
-		$prefs->mToggles[$tname] = $user->getOption( $tname );
-	}
-
 	return true;
 }
 
