@@ -121,18 +121,6 @@ function wfLoadGadgetsStructured( $forceNewText = NULL ) {
 	return $gadgets;
 }
 
-function wfGadgetsInitPreferencesForm( $prefs, $request ) {
-	$gadgets = wfLoadGadgets();
-	if ( !$gadgets ) return true;
-
-	foreach ( $gadgets as $gname => $code ) {
-		$tname = "gadget-$gname";
-		$prefs->mToggles[$tname] = $request->getCheck( "wpOp$tname" ) ? 1 : 0;
-	}
-
-	return true;
-}
-
 function wfGadgetsGetPreferences( $user, &$preferences ) {
 	$gadgets = wfLoadGadgetsStructured();
 	
@@ -178,43 +166,6 @@ function wfGadgetsResetPreferences( $prefs, $user ) {
 		$tname = "gadget-$gname";
 		$prefs->mToggles[$tname] = $user->getOption( $tname );
 	}
-
-	return true;
-}
-
-function wfGadgetsRenderPreferencesForm( $prefs, $out ) {
-	$gadgets = wfLoadGadgetsStructured();
-	if ( !$gadgets ) return true;
-
-	wfLoadExtensionMessages( 'Gadgets' );
-
-	$out->addHTML( "\n<fieldset>\n<legend>" . wfMsgHtml( 'gadgets-prefs' ) . "</legend>\n" );
-
-	$out->addWikiMsg( 'gadgets-prefstext' );
-
-	$msgOpt = array( 'parseinline' );
-
-	foreach ( $gadgets as $section => $entries ) {
-		if ( $section !== false && $section !== '' ) {
-			$ttext = wfMsgExt( "gadget-section-$section", $msgOpt );
-			$out->addHTML( "\n<h2 id=\"".htmlspecialchars("gadget-section-$section")."\">" . $ttext . "</h2>\n" );
-		}
-
-		foreach ( $entries as $gname => $code ) {
-			$tname = "gadget-$gname";
-			$ttext = wfMsgExt( $tname, $msgOpt );
-			$checked = @$prefs->mToggles[$tname] == 1 ? ' checked="checked"' : '';
-			$disabled = '';
-
-			# NOTE: No label for checkmarks as this causes the checks to toggle
-			# when clicking a link in the describing text.
-			$out->addHTML( "<div class='toggle'><input type='checkbox' value='1' " .
-				"id=\"$tname\" name=\"wpOp$tname\"$checked$disabled />" .
-				" <span class='toggletext'><label for='$tname'>$ttext</label></span></div>\n" );
-		}
-	}
-
-	$out->addHTML( "</fieldset>\n\n" );
 
 	return true;
 }
