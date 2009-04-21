@@ -1199,7 +1199,7 @@ EOT;
 			array(
 				'type' => 'radio',
 				'section' => 'stability',
-				'label-message' => 'flaggedrevs-prefs-UI',
+				'label-message' => 'flaggedrevs-pref-UI',
 				'options' => array(
 					wfMsg( 'flaggedrevs-pref-UI-0' ) => 0,
 					wfMsg( 'flaggedrevs-pref-UI-1' ) => 1,
@@ -1211,7 +1211,7 @@ EOT;
 				array(
 					'type' => 'toggle',
 					'section' => 'stability',
-					'label-message' => 'flaggedrevs-prefs-watch',
+					'label-message' => 'flaggedrevs-pref-watch',
 				);
 		}
 		
