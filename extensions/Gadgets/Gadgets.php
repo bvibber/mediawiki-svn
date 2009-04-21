@@ -27,9 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'gadgets-desc',
 );
 
-$wgHooks['InitPreferencesForm'][] = 'wfGadgetsInitPreferencesForm';
-$wgHooks['RenderPreferencesForm'][] = 'wfGadgetsRenderPreferencesForm';
-$wgHooks['ResetPreferences'][] = 'wfGadgetsResetPreferences';
+$wgHooks['GetPreferences'][] = 'wfGadgetsGetPreferences';
 $wgHooks['BeforePageDisplay'][] = 'wfGadgetsBeforePageDisplay';
 $wgHooks['ArticleSaveComplete'][] = 'wfGadgetsArticleSaveComplete';
 $wgHooks['LoadAllMessages'][] = 'wfGadgetsInjectMessages';
@@ -135,6 +133,43 @@ function wfGadgetsInitPreferencesForm( $prefs, $request ) {
 	return true;
 }
 
+function wfGadgetsGetPreferences( $user, &$preferences ) {
+	$gadgets = wfLoadGadgetsStructured();
+	
+	if (!$gadgets) return true;
+	
+	wfLoadExtensionMessages( 'Gadgets' );
+	
+	$options = array_fill_keys( array_keys($gadgets), array() );
+	
+	foreach( $gadgets as $section => $thisSection ) {
+		foreach( $thisSection as $gname => $code ) {
+			$options[$section][wfMsgExt( "gadget-$gname", 'parseinline' )] = $gname;
+		}
+	}
+	
+	$preferences['gadgets-intro'] =
+		array(
+			'type' => 'info',
+			'label' => '&nbsp;',
+			'default' => Xml::tags( 'td', array( 'colspan' => 2 ),
+									wfMsgExt( 'gadgets-prefstext', 'parseinline' ) ),
+			'section' => 'gadgets',
+			'raw' => 1,
+			'rawrow' => 1,
+		);
+	
+	$preferences['gadgets'] = 
+		array(
+			'type' => 'multiselect',
+			'options' => $options,
+			'section' => 'gadgets',
+			'label' => '&nbsp;',
+		);
+		
+	return true;
+}
+
 function wfGadgetsResetPreferences( $prefs, $user ) {
 	$gadgets = wfLoadGadgets();
 	if ( !$gadgets ) return true;
@@ -198,12 +233,11 @@ function wfGadgetsBeforePageDisplay( &$out ) {
 	if ( !$gadgets ) return true;
 
 	$done = array();
+	
+	$appliedGadgets = $wgUser->getOption( 'gadgets' );
 
 	foreach ( $gadgets as $gname => $code ) {
-		$tname = "gadget-$gname";
-		if ( $wgUser->getOption( $tname ) ) {
-			wfApplyGadgetCode( $code, $out, $done );
-		}
+		wfApplyGadgetCode( $code, $out, $done );
 	}
 
 	return true;

@@ -122,9 +122,9 @@ class Preferences {
 					'type' => 'select',
 					'section' => 'personal',
 					'options' => array(
-						'male' => wfMsg('gender-male'),
-						'female' => wfMsg('gender-female'),
-						'unknown' => wfMsg('gender-unknown'),
+						wfMsg('gender-male') => 'male',
+						wfMsg('gender-female') => 'female',
+						wfMsg('gender-unknown') => 'unknown',
 					),
 					'label-message' => 'yourgender',
 					'help-message' => 'prefs-help-gender',
@@ -132,7 +132,7 @@ class Preferences {
 				
 		// Language
 		global $wgContLanguageCode;
-		$languages = Language::getLanguageNames( false );
+		$languages = array_reverse( Language::getLanguageNames( false ) );
 		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
 			$languages[$wgContLanguageCode] = $wgContLanguageCode;
 		}
@@ -140,7 +140,8 @@ class Preferences {
 		
 		$options = array();
 		foreach( $languages as $code => $name ) {
-			$options[$code] = "$code - $name";
+			$display = "$code - $name";
+			$options[$display] = $code;
 		}
 		$defaultPreferences['language'] =
 				array(
@@ -284,7 +285,8 @@ class Preferences {
 			$defaultPreferences['math'] =
 					array(
 						'type' => 'radio',
-						'options' => array_map( 'wfMsg', $wgLang->getMathNames() ),
+						'options' =>
+							array_flip( array_map( 'wfMsg', $wgLang->getMathNames() ) ),
 						'label' => '&nbsp;',
 						'section' => 'math',
 						'label-message' => 'math',
@@ -367,9 +369,9 @@ class Preferences {
 				array(
 					'type' => 'select',
 					'options' => array(
-						0 => wfMsg( 'underline-never' ),
-						1 => wfMsg( 'underline-always' ),
-						2 => wfMsg( 'underline-default' ),
+						wfMsg( 'underline-never' ) => 0,
+						wfMsg( 'underline-always' ) => 1,
+						wfMsg( 'underline-default' ) => 2,
 					),
 					'label-message' => 'tog-underline',
 					'section' => 'rendering',
@@ -378,7 +380,7 @@ class Preferences {
 		$stubThresholdValues = array( 0, 50, 100, 500, 1000, 2000, 5000, 10000 );
 		$stubThresholdOptions = array();
 		foreach( $stubThresholdValues as $value ) {
-			$stubThresholdOptions[$value] = wfMsg( 'size-bytes', $value );
+			$stubThresholdOptions[wfMsg( 'size-bytes', $value )] = $value;
 		}
 		
 		$defaultPreferences['stubthreshold'] =
@@ -698,7 +700,7 @@ class Preferences {
 			
 			if (!$displayNs) $displayNs = wfMsg( 'blanknamespace' );
 			
-			$nsOptions[$ns] = $displayNs;
+			$nsOptions[$displayNs] = $ns;
 		}
 		
 		$defaultPreferences['searchnamespaces'] =
@@ -800,7 +802,8 @@ class Preferences {
 			}
 			if( $skinkey == $wgDefaultSkin )
 				$sn .= ' (' . wfMsg( 'default' ) . ')';
-			$ret[$skinkey] = "$sn $previewlink{$extraLinks}";
+			$display = "$sn $previewlink{$extraLinks}";
+			$ret[$display] = $skinkey;
 		}
 		
 		return $ret;
@@ -821,7 +824,7 @@ class Preferences {
 				} else {
 					$formatted = $wgLang->timeanddate( $epoch, false, $key );
 				}
-				$ret[$key] = $formatted;
+				$ret[$formatted] = $key;
 			}
 		}
 		return $ret;
@@ -833,7 +836,8 @@ class Preferences {
 		$ret = array();
 		
 		foreach ( $wgImageLimits as $index => $limits ) {
-			$ret[$index] = "{$limits[0]}×{$limits[1]}" . wfMsg('unit-pixel');
+			$display = "{$limits[0]}×{$limits[1]}" . wfMsg('unit-pixel');
+			$ret[$display] = $index;
 		}
 		
 		return $ret;
@@ -845,7 +849,8 @@ class Preferences {
 		$ret = array();
 		
 		foreach ( $wgThumbLimits as $index => $size ) {
-			$ret[$index] = $size . wfMsg('unit-pixel');
+			$display = $size . wfMsg('unit-pixel');
+			$ret[$display] = $index;
 		}
 		
 		return $ret;
@@ -911,9 +916,9 @@ class Preferences {
 		
 		global $wgLocalTZoffset;
 
-		$opt["System|$wgLocalTZoffset"] = wfMsg( 'timezoneuseserverdefault' );
-		$opt['other'] = wfMsg( 'timezoneuseoffset' );
-		$opt['guess'] = wfMsg( 'guesstimezone' );
+		$opt[wfMsg( 'timezoneuseserverdefault' )] = "System|$wgLocalTZoffset";
+		$opt[wfMsg( 'timezoneuseoffset' )] = 'other';
+		$opt[wfMsg( 'guesstimezone' )] = 'guess';
 
 		if ( function_exists( 'timezone_identifiers_list' ) ) {
 			# Read timezone list
@@ -932,6 +937,9 @@ class Preferences {
 			$tzRegions['Indian'] = wfMsg( 'timezoneregion-indian' );
 			$tzRegions['Pacific'] = wfMsg( 'timezoneregion-pacific' );
 			asort( $tzRegions );
+			
+			$prefill = array_fill_keys( array_values($tzRegions), array() );
+			$opt = array_merge( $opt, $prefill );
 
 			$now = date_create( 'now' );
 
@@ -952,7 +960,7 @@ class Preferences {
 				$display = str_replace( '_', ' ', $z[0] . '/' . $z[1] );
 				$value = "ZoneInfo|$minDiff|$tz";
 				
-				$opt[$value] = $display;
+				$opt[$z[0]][$display] = $value;
 			}
 		}
 		return $opt;

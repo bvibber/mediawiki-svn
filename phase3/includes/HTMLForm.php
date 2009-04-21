@@ -435,6 +435,20 @@ abstract class HTMLFormField {
 			return null;
 		}
 	}
+	
+	static function flattenOptions( $options ) {
+		$flatOpts = array();
+		
+		foreach( $options as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$flatOpts = array_merge( $flatOpts, self::flattenOptions( $value ) );
+			} else {
+				$flatOpts[] = $value;
+			}
+		}
+		
+		return $flatOpts;
+	}
 }
 
 class HTMLTextField extends HTMLFormField {
@@ -526,7 +540,9 @@ class HTMLSelectField extends HTMLFormField {
 	function validate( $value, $alldata ) {
 		$p = parent::validate( $value, $alldata );
 		if ($p !== true) return $p;
-		if ( array_key_exists( $value, $this->mParams['options'] ) )
+		
+		$validOptions = HTMLFormField::flattenOptions( $this->mParams['options'] );
+		if ( in_array( $value, $validOptions ) )
 			return true;
 		else
 			return wfMsgExt( 'htmlform-select-badoption', 'parseinline' );
@@ -535,9 +551,7 @@ class HTMLSelectField extends HTMLFormField {
 	function getInputHTML( $value ) {
 		$select = new XmlSelect( $this->mName, $this->mID, $value );
 		
-		foreach( $this->mParams['options'] as $key => $label ) {
-			$select->addOption( $label, $key );
-		}
+		$select->addOptions( $this->mParams['options'] );
 		
 		return $select->getHTML();
 	}
@@ -560,9 +574,7 @@ class HTMLSelectOrOtherField extends HTMLTextField {
 		$selected = $valInSelect ? $value : 'other';
 		
 		$select = new XmlSelect( $this->mName, $this->mID, $selected );
-		foreach( $this->mParams['options'] as $key => $label ) {
-			$select->addOption( $label, $key );
-		}
+		$select->addOptions( $this->mParams['options'] );
 		
 		$select->setAttribute( 'class', 'mw-htmlform-select-or-other' );
 		
@@ -603,9 +615,12 @@ class HTMLMultiSelectField extends HTMLFormField {
 		if ($p !== true) return $p;
 		
 		if (!is_array($value)) return false;
+		
 		// If all options are valid, array_intersect of the valid options and the provided
 		//  options will return the provided options.
-		$validValues = array_intersect( $value, array_keys($this->mParams['options']) );
+		$validOptions = HTMLFormField::flattenOptions( $this->mParams['options'] );
+		
+		$validValues = array_intersect( $value, $validOptions );
 		if ( count( $validValues ) == count($value) )
 			return true;
 		else
@@ -613,14 +628,24 @@ class HTMLMultiSelectField extends HTMLFormField {
 	}
 	
 	function getInputHTML( $value ) {
+		$html = $this->formatOptions( $this->mParams['options'], $value );
+		
+		return $html;
+	}
+	
+	function formatOptions( $options, $value ) {
 		$html = '';
-		foreach( $this->mParams['options'] as $key => $label ) {
-			global $wgRequest;
-			$checkbox = Xml::check( $this->mName.'[]', in_array( $key, $value ),
-							array( 'id' => $this->mID, 'value' => $key ) );
-			$checkbox .= '&nbsp;' . Xml::tags( 'label', array( 'for' => $this->mID ), $label );
-			
-			$html .= Xml::tags( 'p', null, $checkbox );
+		foreach( $options as $label => $info ) {
+			if (is_array($info)) {
+				$html .= Xml::tags( 'h1', null, $label ) . "\n";
+				$html .= $this->formatOptions( $info, $value );
+			} else {
+				$checkbox = Xml::check( $this->mName.'[]', in_array( $info, $value ),
+								array( 'id' => $this->mID, 'value' => $info ) );
+				$checkbox .= '&nbsp;' . Xml::tags( 'label', array( 'for' => $this->mID ), $label );
+				
+				$html .= Xml::tags( 'p', null, $checkbox );
+			}
 		}
 		
 		return $html;
@@ -656,22 +681,35 @@ class HTMLRadioField extends HTMLFormField {
 		
 		if (!is_string($value) && !is_int($value))
 			return false;
+			
+		$validOptions = HTMLFormField::flattenOptions( $this->mParams['options'] );
 		
-		if ( array_key_exists( $value, $this->mParams['options'] ) )
+		if ( in_array( $value, $validOptions ) )
 			return true;
 		else
 			return wfMsgExt( 'htmlform-select-badoption', 'parseinline' );
 	}
 	
 	function getInputHTML( $value ) {
-		$html = '';
+		$html = $this->formatOptions( $this->mParams['options'], $value );
 		
-		foreach( $this->mParams['options'] as $key => $label ) {
-			$html .= Xml::radio( $this->mName, $key, $key == $value,
-									array( 'id' => $this->mID."-$key" ) );
-			$html .= '&nbsp;' .
-				Xml::tags( 'label', array( 'for' => $this->mID."-$key" ), $label );
-			$html .= "<br/>";
+		return $html;
+	}
+	
+	function formatOptions( $options, $value ) {
+		$html = '';
+		foreach( $options as $label => $info ) {
+			if (is_array($info)) {
+				$html .= Xml::tags( 'h1', null, $label ) . "\n";
+				$html .= $this->formatOptions( $info, $value );
+			} else {
+				$html .= Xml::radio( $this->mName, $info, $info == $value,
+										array( 'id' => $this->mID."-$info" ) );
+				$html .= '&nbsp;' .
+						Xml::tags( 'label', array( 'for' => $this->mID."-$info" ), $label );
+				
+				$html .= "<br/>\n";
+			}
 		}
 		
 		return $html;
