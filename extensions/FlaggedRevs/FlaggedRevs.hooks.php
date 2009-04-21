@@ -1191,14 +1191,14 @@ EOT;
 		$preferences['flaggedrevsstable'] =
 			array(
 				'type' => 'toggle',
-				'section' => 'stability',
+				'section' => 'flaggedrevs',
 				'label-message' => 'flaggedrevs-prefs-stable',
 			);
 			
 		$preferences['flaggedrevssimpleui'] =
 			array(
 				'type' => 'radio',
-				'section' => 'stability',
+				'section' => 'flaggedrevs',
 				'label-message' => 'flaggedrevs-pref-UI',
 				'options' => array(
 					wfMsg( 'flaggedrevs-pref-UI-0' ) => 0,
@@ -1210,7 +1210,7 @@ EOT;
 			$preferences['flaggedrevswatch'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'stability',
+					'section' => 'flaggedrevs',
 					'label-message' => 'flaggedrevs-pref-watch',
 				);
 		}
