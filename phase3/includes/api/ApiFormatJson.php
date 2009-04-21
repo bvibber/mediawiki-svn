@@ -61,7 +61,7 @@ class ApiFormatJson extends ApiFormatBase {
 		// Some versions of PHP have a broken json_encode, see PHP bug 
 		// 46944. Test encoding an affected character (U+20000) to 
 		// avoid this.
-		$this->printText( $prefix . $this->getJsonOutput($this->getResultData(),   $this->getIsHtml() )  . $suffix);		
+		$this->printText( $prefix . $this->getJsonEncode($this->getResultData(),   $this->getIsHtml() )  . $suffix);		
 	}	
 	/*
 	 * static to support static calls to json output (instead of json_encode function) 

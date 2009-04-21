@@ -128,6 +128,8 @@ class UploadFromChunks extends UploadBase {
 			ob_clean();						
 			echo ApiFormatJson::getJsonEncode( array( "uploadUrl" => "{$wgServer}{$wgScriptPath}/api.php?action=upload&format=json&enablechunks=true&chunksessionkey=".
 						$this->setupChunkSession( $comment, $watch ) ) );
+			/*print "{\"uploadUrl\" : \"{$wgServer}{$wgScriptPath}/api.php?action=upload&format=json&enablechunks=true&chunksessionkey=".			
+						$this->setupChunkSession( $comment, $watch ) . "\"}";*/
 			exit(0);
 			
 			/*
