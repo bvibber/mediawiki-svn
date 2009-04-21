@@ -124,9 +124,10 @@ class UploadFromChunks extends UploadBase {
 		if( $this->chunk_mode == UploadFromChunks::INIT ){			
 			
 			//firefogg expects a specific result per: 
-			//http://www.firefogg.org/dev/chunk_post.html						
-			print "{\"uploadUrl\": \"{$wgServer}{$wgScriptPath}/api.php?action=upload&format=json&enablechunks=true&chunksessionkey=".
-						$this->setupChunkSession( $comment, $watch ) . "\" }";
+			//http://www.firefogg.org/dev/chunk_post.html
+			ob_clean();						
+			echo ApiFormatJson::getJsonEncode( array( "uploadUrl" => "{$wgServer}{$wgScriptPath}/api.php?action=upload&format=json&enablechunks=true&chunksessionkey=".
+						$this->setupChunkSession( $comment, $watch ) ) );
 			exit(0);
 			
 			/*
@@ -140,8 +141,9 @@ class UploadFromChunks extends UploadBase {
 			if( $status->isOK() ){			
 				//return success:
 				//firefogg expects a specific result per: 
-				//http://www.firefogg.org/dev/chunk_post.html		
-				print "{\"result\": 1}";				
+				//http://www.firefogg.org/dev/chunk_post.html	
+				ob_clean();	
+				echo ApiFormatJson::getJsonEncode( array("result"=>1) );				
 				exit(0);
 				/*return array(
 					'result' => 1						
@@ -152,6 +154,8 @@ class UploadFromChunks extends UploadBase {
 		}else if( $this->chunk_mode == UploadFromChunks::DONE ){
 			//append the last chunk: 
 			if( $this->doChunkAppend() ){
+				//validate the uploaded file 
+				
 				//process the upload normally: 
 				return Status::newGood('chunk upload done');
 			}			
@@ -168,8 +172,7 @@ class UploadFromChunks extends UploadBase {
 			
 			if( $status->isOK() ) {				
 				$this->mTempAppendPath = $status->value;
-				$_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mTempAppendPath' ] = $this->mTempAppendPath;
-				print "did save to $status->value \n";
+				$_SESSION[ 'wsUploadData' ][ $this->mSessionKey ][ 'mTempAppendPath' ] = $this->mTempAppendPath;				
 			}										
 			return $status;			
 		}else{
@@ -182,5 +185,5 @@ class UploadFromChunks extends UploadBase {
 				return Status::newFatal('chunk-file-append-missing');
 			}
 		}
-	}	
+	}		
 }
