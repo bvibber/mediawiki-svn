@@ -103,7 +103,9 @@ var vlcEmbed = {
     */
     monitor: function(){
     	this.getVLC();
-    	if(this.vlc.log){
+    	if(!this.vlc)
+    		return ;
+    	if( this.vlc.log ){
     		//js_log( 'state:' + this.vlc.input.state);
 			//js_log('time: ' + this.vlc.input.time);
 			//js_log('pos: ' + this.vlc.input.position);

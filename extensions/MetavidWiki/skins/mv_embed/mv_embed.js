@@ -47,10 +47,6 @@ var global_cb_count =0;
 /*parseUri class parses URIs:*/
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
 
-var trimStr = function(v){
-	return v.replace(/^\s+|\s+$/g, '');
-}
-
 //get mv_embed location if it has not been set
 if( !mv_embed_path ){
 	var mv_embed_path = getMvEmbedPath();
@@ -806,7 +802,7 @@ function rewrite_for_oggHanlder( vidIdList ){
 		var vid_html = '<video id="vid_' + i +'" '+ 
 		 		'src="' + src + '" poster="' + poster + '" style="width:' + pwidth +
 		 			 	'px;height:' + pheight + 'px;"></video>';
-		js_log("video html: " + vid_html);
+		//js_log("video html: " + vid_html);
 		if( src && poster)	
 		 	$j('#'+vidId).html( vid_html );		
 		//rewrite that video id: 
@@ -1130,7 +1126,7 @@ function do_api_req( options, callback ){
 	//force format to json (if not already set)  		
 	options.data['format'] = 'json';
 	
-	js_log('do api req: ' + options.url + options.data);			
+	js_log('do api req: ' + options.url +' data' + JSON.stringify( options.data ) );			
 	//build request string:	 		
 	if( parseUri( document.URL ).host == parseUri( options.url ).host ){		
 		//local request do api request directly		

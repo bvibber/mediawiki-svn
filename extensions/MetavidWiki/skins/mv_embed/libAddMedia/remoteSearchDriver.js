@@ -1010,7 +1010,7 @@ remoteSearchDriver.prototype = {
 						var wt = '{{Information '+"\n"+
 							'|Description= ' + rObj.pSobj.getImportResourceDescWiki( rObj );
 						//output person and bill info if 
-						wt+='|Source=' + '[' + trimStr( rObj.link ) + ' Original Source]'+ "\n";
+						wt+='|Source=' + '[' +  $j.trim( rObj.link ) + ' Original Source]'+ "\n";
 						
 						if( rObj.author )
 							wt+='|Author=' + rObj.author +"\n";										

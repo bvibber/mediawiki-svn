@@ -89,7 +89,7 @@ metavidSearch.prototype = {
 			o += '* part of longer [' + rObj.parent_clip + ' video clip]'+ "\n";
 			
 		if( rObj.person && rObj.person['url'] && rObj.person['label'] )
-			o += '* also see speeches by [' + trimStr( rObj.person.url ) + ' ' + rObj.person['label'] + ']'+ "\n";
+			o += '* also see speeches by [' +  $j.trim( rObj.person.url ) + ' ' + rObj.person['label'] + ']'+ "\n";
 		
 		//check for bill:
 		if( rObj.bill && rObj.bill['label'] && rObj.bill['url'])
@@ -101,16 +101,16 @@ metavidSearch.prototype = {
 		var o = this.parent_getInlineDescWiki( rObj );		
 		//add in person if found
 		if( rObj.person &&  rObj.person['label'] ){
-			o = trimStr( o.replace(rObj.person['label'], '') );
+			o = $j.trim(  o.replace(rObj.person['label'], '') );
 			//trim leading : 
 			if(o.substr(0,1)==':')
-				o =  trimStr( o.substr(1) );				
+				o =  o.substr(1);				
 			//add quotes and person at the end: 
 			var d = this.getDateFromLink( rObj.link );
 			o ='"' + o + '" [[' + rObj.person['label'] + ']] on ' + d.toDateString();
 		}		
 		//could do ref or direct link:  
-		o += ' \'\'[' + trimStr(rObj.link) + ' source clip]\'\' '; 
+		o += ' \'\'[' + $j.trim( rObj.link ) + ' source clip]\'\' '; 
 		
 		//var o= '"' + o + '" by [[' + rObj.person['label'] + ']] '+
 		//		'<ref>[' + rObj.link + ' Metavid Source Page] for ' + rObj.title +'</ref>';		

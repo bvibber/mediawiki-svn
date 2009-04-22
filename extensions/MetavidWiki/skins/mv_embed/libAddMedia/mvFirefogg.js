@@ -1,7 +1,12 @@
 /* adds firefogg support. 
 * autodetects: new upload api or old http POST.  
  */
- 
+
+loadGM( {
+	"mv_upload_done" : "Your upload <i>should be<\/i> accessible <a href=\"$1\">here<\/a>",
+	"mv_upload_completed" : "Upload Completed"
+});
+
 var default_firefogg_options = {
 	'upload_done_action':'redirect',
 	'enabled':false,
@@ -296,11 +301,24 @@ mvFirefogg.prototype = {
 	},	
 	doUploadStatus:function() {	
 		var _this = this;
+		_this.oldResponseText = '';
 		//setup a local function for timed callback: 				
-		var uploadStatus = function(){	
-			var status = _this.fogg.status();							        					      					        					
-			//js_log(' up stats: ' + status + ' p:' + _this.fogg.progress() + ' state: '+ _this.fogg.state + ' result page:' + _this.fogg.responseText);
-			
+		var uploadStatus = function(){
+			//get the response text: 
+			var response_text =  _this.fogg.responseText;
+			if( !response_text){
+	       		try{
+	       			var pstatus = JSON.parse( _this.fogg.uploadstatus() );
+	       			response_text = pstatus["responseText"];
+	       		}catch(e){
+	       			js_log("could not parse uploadstatus / could not get responseText");
+	       		}
+			}
+		       		
+			if( _this.oldResponseText != response_text){								        					      					        				
+				js_log('new result text:' + response_text);
+				_this.oldResponseText = response_text;
+			}		
 		    //update progress bar
 		    _this.fogg_update_progress( _this.fogg.progress() );
 		    		    
@@ -312,24 +330,20 @@ mvFirefogg.prototype = {
 		    else if( _this.fogg.state == 'upload done' ||  _this.fogg.state == 'done' ) {	
 		       	js_log( 'firefogg:upload done: '); 			        		       			       			       	       		       			       	
 		       	//if in "post" upload mode read the html response (should be depricated): 
-		       	if( _this.upload_mode == 'post' ) {
-		       		var response_text ='';
-		       		try{
-		       			var pstatus = JSON.parse( _this.fogg.uploadstatus() );
-		       			response_text = pstatus["responseText"];
-		       		}catch(e){
-		       			js_log("could not parse uploadstatus / could not get responseText");
-		       		}
+		       	if( _this.upload_mode == 'post' ) {		       		
 		       		//js_log( 'done upload response is: ' + cat["responseText"] );
 		       		_this.procPageResponse( response_text );
 		       		
 		       	}else if( _this.upload_mode == 'chunks'){
-		       		//should have an json result:
-		       		js_error('chunks upload not yet supported');
-		       		//var foo = _this;
-		       		//var cat = _JSON.parse( _this.fogg.uploadstatus() );
-		       		//debugger;
-		       			       		
+		       		if( _this.fogg.resultUrl ){		       		
+		       			//should have an json result:
+		       			$j( '#dlbox-centered' ).html( '<h3>' + gM('mv_upload_completed') + '</h3>' +
+		       				 gM( 'mv_upload_done', _this.fogg.resultUrl) );	
+		       		}else{
+		       			//done state with error? ..not really possible given how firefogg works
+		       			js_log(" upload done, in chunks mode, but no resultUrl!");
+		       		}
+		       		alert("upload done");		       				       				       			       		
 		       	}													
 			}else{  
 				//upload error: 
@@ -343,16 +357,15 @@ mvFirefogg.prototype = {
 	procPageResponse:function( result_page ){
 		js_log('f:procPageResponse');
 		var sstring = 'var wgTitle = "' + this.formData['wpDestFile'].replace('_',' ');		
-		var error_txt = 'Your upload <i>should be</i> accessible <a href="' + 
-						wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) + '">'+
-						'here</a> \n';
+		var result_txt = gM('mv_upload_done', 
+							wgArticlePath.replace(/\$1/, 'File:' + this.formData['wpDestFile'] ) );						
 		//set the error text in case we dont' get far along in processing the response 
-		$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt );
+		$j( '#dlbox-centered' ).html( gM('mv_upload_completed') + result_txt );
 												
 		if( result_page && result_page.toLowerCase().indexOf( sstring.toLowerCase() ) != -1){	
 			js_log( 'upload done got redirect found: ' + sstring + ' r:' + _this.upload_done_action );										
 			if( _this.upload_done_action == 'redirect' ){
-			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt + '<br>' + form_txt);
+			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + result_txt + '<br>' + form_txt);
 				window.location = wgArticlePath.replace( /\$1/, 'File:' + formData['wpDestFile'] );
 			}else{
 				//check if the add_done_action is a callback:
@@ -369,13 +382,13 @@ mvFirefogg.prototype = {
 				var res = grabWikiFormError( result_page );
 							
 				if(res.error_txt)
-					error_txt = res.error_txt;
+					result_txt = res.error_txt;
 					
 				if(res.form_txt)
 					form_txt = res.form_txt;
 			}		
-			js_log( 'error text is: ' + error_txt );		
-			$j( '#dlbox-centered' ).html( '<h3>Upload Completed:</h3>' + error_txt + '<br>' + form_txt);
+			js_log( 'error text is: ' + result_txt );		
+			$j( '#dlbox-centered' ).html( '<h3>' + gM('mv_upload_completed') + '</h3>' + result_txt + '<br>' + form_txt);
 		}
 	}
 }
