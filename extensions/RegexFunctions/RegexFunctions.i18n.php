@@ -256,6 +256,13 @@ $messages['sk'] = array(
 	'regexfunctions-desc' => 'Funkcie syntaktického analyzátora regulárnych výrazov',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'regexfunctions-desc' => 'Парсерске функције за регуларне изразе',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

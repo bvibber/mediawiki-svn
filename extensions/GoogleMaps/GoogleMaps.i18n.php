@@ -792,6 +792,9 @@ $wgGoogleMapsMessages['cu'] = array(
  */
 $wgGoogleMapsMessages['cy'] = array(
 	'gm-desc' => "Lluniwch fapiau'n rhwydd a gosod cystrawen wici ynddynt",
+	'gm-incompatible-browser' => 'Er mwyn gweld y map a ddylai ymddangos fan hyn, rhaid i chi ddefnyddio porwr cydnaws.',
+	'gm-incompatible-browser-link' => 'Pwyswch yma i weld rhestr porwyr cydnaws.',
+	'gm-no-editor' => 'Nid yw\'ch porwr, ysywaeth, yn gallu trin yr offer rhyngweithiol ar gyfer gwneud mapiau. Rhowch gynnig ar y fersiwn diweddaraf o <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) neu <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, a Linux).',
 	'gm-balloon-title' => 'Teitl:',
 	'gm-make-marker' => 'Pennawd (gallwch ddefnyddio cystrawen wici):',
 	'gm-remove' => 'tynnu',
@@ -825,6 +828,7 @@ $wgGoogleMapsMessages['cy'] = array(
 	'gm-no-zoom-control' => 'Dim',
 	'gm-yes' => 'Ie',
 	'gm-no' => 'Na',
+	'gm-search-preface' => 'Cliciwch y map i ychwanegu pwynt, neu i neidio at ddinas, gwlad, cyfeiriad neu fusnes:',
 	'gm-geocode-preface' => 'Cliciwch i map i ychwanegu pwynt, neu i neidio at ddinas, gwlad, neu gyfeiriad:',
 	'gm-no-search-preface' => 'Cliciwch y map i ychwanegu pwynt.',
 	'gm-search' => 'Chwilio',
@@ -836,6 +840,7 @@ $wgGoogleMapsMessages['cy'] = array(
 	'gm-edit-path' => 'ychwanegu pwyntiau',
 	'gm-show-path' => 'dangos y pwyntiau',
 	'gm-color-path' => 'newid lliw',
+	'gm-color-fill' => 'newid y lliw llanw',
 	'gm-add-fill' => "llanw'r ardal",
 	'gm-remove-fill' => "tynnu'r llenwad",
 	'gm-fill-color' => 'Lliw llanw',
@@ -4213,8 +4218,10 @@ $wgGoogleMapsMessages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $wgGoogleMapsMessages['sr-ec'] = array(
+	'gm-desc' => 'Лако прави мапе, помоћу Викифицираних маркера',
 	'gm-incompatible-browser' => 'Како би видели мапу која се приказује овде, морате да користите компатибилан веб браузер.',
 	'gm-incompatible-browser-link' => 'Кликните овде да видите списак компатибилних браузера.',
 	'gm-no-editor' => 'Жао нам је, ваш браузер не подржава интерактивне мапе. Пробајте последњу верзију <a href="http://www.microsoft.com/ie">Интернет Експлорера</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">Фајерфокса</a> (Windows, Mac, and Linux).',
@@ -4224,6 +4231,9 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-remove' => 'уклони',
 	'gm-caption' => 'Назив',
 	'gm-tab-title' => 'Наслов таба',
+	'gm-tab' => 'Таб',
+	'gm-start-path' => 'започни путању',
+	'gm-trace-area' => 'прати неки површину',
 	'gm-save-point' => 'Сними &amp; затвори',
 	'gm-load-map-from-article' => 'Учитај мапу са ове странице:',
 	'gm-no-maps' => 'Нема мапа на овој страници за учитавање.',
@@ -4235,6 +4245,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-map' => 'Мапа',
 	'gm-are-you-sure' => 'Да ли сте сигурни?',
 	'gm-clear-all-points' => 'Обриши све бодове',
+	'gm-refresh-points' => 'Освежи тачке',
 	'gm-width' => 'Ширина',
 	'gm-height' => 'Висина',
 	'gm-overview-control' => 'Преглед',
@@ -4245,15 +4256,23 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-no-zoom-control' => 'Нема',
 	'gm-yes' => 'Да',
 	'gm-no' => 'Не',
+	'gm-search-preface' => 'Кликни мапу за додавање тачке, или скок на град, земљу адресу или предузеће:',
+	'gm-geocode-preface' => 'Кликни мапу за додавање тачке, или скок на град, земљу или адресу:',
+	'gm-no-search-preface' => 'Кликно на мапу за додавање тачке.',
 	'gm-search' => 'Претрага',
 	'gm-clear-search' => 'обриши резултате претраге',
 	'gm-meters' => 'метри',
 	'gm-miles' => 'миље',
+	'gm-editing-path' => 'Кликни мапу за додавање нових тачака овој путањи.',
 	'gm-save-path' => 'Сними',
 	'gm-edit-path' => 'додај бодове',
 	'gm-show-path' => 'покажи бодове',
 	'gm-color-path' => 'промени боју',
+	'gm-color-fill' => 'измени испуњавајућу боју',
+	'gm-add-fill' => 'испуни површину',
+	'gm-fill-color' => 'Боја испуњавања',
 	'gm-line-color' => 'Боја линије',
+	'gm-opacity' => 'Непрозрачност',
 	'gm-line-width' => 'Ширина',
 	'gm-make-map' => 'направи мапу',
 	'gm-hide-map' => 'сакриј мапу',

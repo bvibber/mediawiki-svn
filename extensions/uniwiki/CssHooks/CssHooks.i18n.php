@@ -271,6 +271,13 @@ $messages['sk'] = array(
 	'csshooks-desc' => 'Pridáva CSS do HTML výstupu stránok na zlepšenie štýlu',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'csshooks-desc' => 'Додаје CSS на HTML излаз страна зарад бољег стилизовања',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

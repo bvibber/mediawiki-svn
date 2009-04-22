@@ -894,6 +894,31 @@ $messages['km'] = array(
 	'vote-invalid-choice' => 'អ្នកត្រូវតែជ្រើសយកជម្រើសមួយក្នុងចំណោមជម្រើសទាំងឡាយដែលបានផ្ដល់ឱ្យ។',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'vote' => '투표',
+	'vote-desc' => '간단한 투표 능력을 제공합니다.',
+	'vote-header' => "사용자께서는 이 곳에서 '''세계의 최고 군주'''에 대한 투표를 하실 수 있습니다!",
+	'vote-current' => "사용자의 현재 투표는 '''$1'''을 위한 것입니다.",
+	'vote-legend' => '투표를 제출하거나 변경함',
+	'vote-caption' => '당신의 선택:',
+	'vote-choices' => '조커|그 조커
+펭귄|그 펭귄
+수수께끼|수수께끼',
+	'vote-submit' => '투표',
+	'vote-registered' => '사용자의 투표가 등록되었습니다.',
+	'vote-view-results' => '결과 보기',
+	'vote-results' => '투표 결과',
+	'vote-results-choice' => '선택',
+	'vote-results-count' => '합계',
+	'vote-results-none' => '지금은 아무도 투표할 수 없습니다.',
+	'vote-login' => '사용자께서는 투표를 위해 $1 하셔야만 합니다.',
+	'vote-login-link' => '로그인',
+	'vote-invalid-choice' => '사용자께서는 유효한 후보 중 하나를 택하셔야만 합니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

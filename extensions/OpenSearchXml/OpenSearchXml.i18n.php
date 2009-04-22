@@ -266,7 +266,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'opensearchxml-desc' => "Interfàcia XML per [http://www.opensearch.org OpenSearch] amb d'extraches del tèxt",
+	'opensearchxml-desc' => "Interfàcia XML per [http://www.opensearch.org OpenSearch] amb d'extraches del tèxte",
 );
 
 /** Polish (Polski)

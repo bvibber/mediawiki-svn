@@ -3782,6 +3782,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Innv
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -3846,6 +3847,9 @@ $messages['ru'] = array(
 	'deletequeue-list-header-queue' => 'Очередь',
 	'deletequeue-list-header-expiry' => 'Истёкшие',
 	'deletequeue-list-header-discusspage' => 'Страница обсуждения',
+	'deletequeue-case-page' => 'Страница:',
+	'deletequeue-case-reason' => 'Причина:',
+	'deletequeue-case-expiry' => 'Истекает:',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

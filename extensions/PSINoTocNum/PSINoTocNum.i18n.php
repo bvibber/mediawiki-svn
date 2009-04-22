@@ -280,6 +280,13 @@ $messages['sq'] = array(
 	'psinotocnum-desc' => 'Fjalë e re magjike "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'psinotocnum-desc' => 'Нова магична реч "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

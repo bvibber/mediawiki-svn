@@ -153,6 +153,13 @@ $messages['ja'] = array(
 	'contributorsaddon-desc' => 'JavaScript を用いて、「主な投稿者」へのリンクをポップアップする',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'contributorsaddon-desc' => '자바 스크립트 팝업에 "주요 기여자" 링크를 추가해 주세요',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -257,6 +264,13 @@ $messages['sk'] = array(
  */
 $messages['sq'] = array(
 	'contributorsaddon-desc' => 'Vendosë dritare JavaScript në lidhjet "Kontribuuesit kryesorë"',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'contributorsaddon-desc' => 'Додаје јаваскрипт поп-апове везама ка "Главним ауторима"',
 );
 
 /** Swedish (Svenska)

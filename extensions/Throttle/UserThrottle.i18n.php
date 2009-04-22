@@ -351,6 +351,17 @@ $messages['sk'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Obmedzí rýchlosť vytvárania používateľských účtov',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Прављење налога је било аутоматски суспендовано на пар момената због необично великог броја скорашњих покушаја логовања.
+Молимо Вас да одчекате неколико минута и покушате опет.',
+	'acct_creation_global_hard_throttle_hit' => 'Прављење налога је аутоматски суспендовано на неколико секунди, да би умањило број напада бројним регистрацијама.
+Молимо Вас да мало сачекате и притиснете дугме за освежавање у вашем браузеру, да бисте опет послали податке.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Ограничава учесталост корисничких регистрација',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

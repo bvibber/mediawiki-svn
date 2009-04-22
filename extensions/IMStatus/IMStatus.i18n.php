@@ -193,6 +193,9 @@ $messages['bs'] = array(
 	'imstatus_icq_id' => 'Vaš ICQ ID',
 	'imstatus_icq_style' => 'broj između 0 i 26 (da, dostupno je 27 stilova...).',
 	'imstatus_live_code' => 'vaš Live Messenger website id',
+	'imstatus_live_get_code' => 'Vaš Live Messenger websajt id: <strong>ovo nije Vaša e-mail adresa</strong>, trebate da generišete jedan u <a href="$1">Vašim opcijama za live messenger</a>.
+Id koji trebate da navedete su brojevi i slova između oznaka "$2" i "$3".',
+	'imstatus_skype_nbstyle' => 'Napomena: Ako odaberete stil koji proizvodi akciju, Vaš izbor akcije će biti zamijenjen akcijom koja odgovara Vašem odabranom stilu.',
 	'imstatus_xfire_size' => 'veličina dugmeta, od $1 (najveće) do $2 (najmanje).',
 	'imstatus_yahoo_style' => 'stil dugmeta, od $1 (najmanje) do $2 (najveće), $3 i $4 su za zvučni mail.',
 );
@@ -685,6 +688,7 @@ $messages['lb'] = array(
 	'imstatus_max' => 'max',
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'oder',
+	'imstatus_action' => 'Aktioun wann de Knäppche geklickt ass',
 	'imstatus_your_name' => 'ären $1 Numm',
 	'imstatus_gtalk_code' => 'Äre Google Talk Code',
 	'imstatus_gtalk_height' => 'Höicht vun der Këscht a Pixel.',
@@ -949,6 +953,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Innv
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -960,6 +965,7 @@ $messages['ru'] = array(
 	'imstatus_min' => 'мин.',
 	'imstatus_or' => 'или',
 	'imstatus_style' => 'стиль индикатора состояния',
+	'imstatus_your_name' => 'ваше $1 имя',
 	'imstatus_icq_id' => 'ваш ICQ ID',
 );
 

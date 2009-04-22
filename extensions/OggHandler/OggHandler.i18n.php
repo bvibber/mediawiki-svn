@@ -989,7 +989,7 @@ $messages['gl'] = array(
 	'ogg-pause' => 'Deter',
 	'ogg-stop' => 'Parar',
 	'ogg-play-video' => 'Reproducir vídeo',
-	'ogg-play-sound' => 'Reproducir son',
+	'ogg-play-sound' => 'Reproducir o son',
 	'ogg-no-player' => 'Parece que o seu sistema non dispón de software de reprodución axeitado. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Instale un reprodutor</a>.',
 	'ogg-no-xiphqt' => 'Parece que non dispón do compoñente XiphQT para QuickTime. QuickTime non pode reproducir ficheiros Ogg sen este componente. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Instale XiphQT</a> ou escolla outro reprodutor.',
 	'ogg-player-videoElement' => 'Soporte do navegador nativo',

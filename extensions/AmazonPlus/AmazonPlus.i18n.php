@@ -952,6 +952,7 @@ $messages['sr-ec'] = array(
 	'amazonplus-amazon' => 'цена на Амазону',
 	'amazonplus-new' => 'ново',
 	'amazonplus-none' => 'Нема више расположивих примерака овог поизвода',
+	'amazonplus-cp-none' => 'Ништа',
 	'amazonplus-more' => 'више',
 	'amazonplus-less' => 'мање',
 );

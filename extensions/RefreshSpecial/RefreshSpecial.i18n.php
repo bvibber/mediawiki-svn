@@ -879,9 +879,13 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'refreshspecial' => 'Обновить служебные страницы',
 	'refreshspecial-select-all-pages' => ' выбрать все страницы',
+	'refreshspecial-no-page' => 'Нет такой служебной страницы',
+	'right-refreshspecial' => 'обновление служебных страниц',
 );
 
 /** Slovak (Slovenčina)

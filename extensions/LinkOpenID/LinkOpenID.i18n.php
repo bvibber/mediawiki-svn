@@ -334,6 +334,13 @@ Isto permite-lhe usar a sua página de utilizador como um OpenID também.',
 	'linkopenid-prefstext-v2url' => 'URL do servidor para OpenID versão 2:',
 );
 
+/** Russian (Русский)
+ * @author Innv
+ */
+$messages['ru'] = array(
+	'linkopenid-prefstext-openid' => 'Ваш OpenID:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

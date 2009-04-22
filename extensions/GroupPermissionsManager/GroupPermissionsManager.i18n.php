@@ -560,6 +560,7 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'grouppermissions-search' => 'Ομάδα:',
@@ -569,7 +570,7 @@ $messages['el'] = array(
 	'grouppermissions-never' => 'Ποτέ',
 	'grouppermissions-sort-manage' => 'Διαχείριση',
 	'grouppermissions-sort-admin' => 'Διοίκηση',
-	'grouppermissions-sort-misc' => 'Διάφορος',
+	'grouppermissions-sort-misc' => 'Διάφορα',
 	'grouppermissions-sp-save' => 'Αποθηκεύστε',
 	'grouppermissions-sp-remove' => 'αφαίρεση',
 );

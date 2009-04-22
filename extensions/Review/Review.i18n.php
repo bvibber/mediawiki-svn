@@ -348,13 +348,20 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'review-desc' => 'Omogućuje korisnicima da [[Special:Review|provjere]] stranice',
 	'review_sidebar_explanation' => "Krajnji lijevi potvrdni okvir uvijek znači 'bez mišljenja'.",
 	'review_error' => 'Nešto nije u redu!',
 	'review_total_statistics' => 'Ukupno',
+	'review_statistics_left_corner' => 'Revizija',
+	'review_version_link' => 'Revizija #$1',
 	'review_statistic_cell' => 'Prosjek: $1 of $2<br />($4 {{PLURAL:$4|registrovani korisnik|registrovana korisnika|registrovanih korisnika}}, $5 {{PLURAL:$4|anonimni korisnik|anonimna korisnika|anonimnih korisnika}})',
+	'review_version_statistic_cell' => '$1 od $2',
+	'review_version_reviews_link' => '<small>(pregledi verzije)</small>',
 	'review_user_details_link' => '(detalji)',
 	'review_blocked' => 'Blokirani ste i ne možete učestvovati u pregledima.',
 	'review_topic' => 'Tema',
+	'review_no_opinion' => 'Bez mišljenja',
+	'review_rating' => 'Rejting',
 	'review_comment' => 'Komentar',
 );
 

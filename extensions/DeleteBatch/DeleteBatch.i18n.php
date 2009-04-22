@@ -888,7 +888,7 @@ Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu 
 	'deletebatch-success-subtitle' => 'per « $1 »',
 	'deletebatch-omitting-nonexistant' => 'Omission de la pagina « $1 » inexistenta.',
 	'deletebatch-omitting-invalid' => 'Omission de la pagina « $1 » incorrècta.',
-	'deletebatch-file-bad-format' => 'Lo fichièr deu èsser en tèxt simple',
+	'deletebatch-file-bad-format' => 'Lo fichièr deu èsser en tèxte simple',
 	'deletebatch-file-missing' => 'Impossible de legir lo fichièr donat',
 	'deletebatch-select-script' => "suprimir l'escript de la pagina",
 	'deletebatch-select-yourself' => 'vos',

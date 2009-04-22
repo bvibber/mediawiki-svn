@@ -449,6 +449,7 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'categoryonupload-desc' => 'Тражи од корисника да изабере категорију када шаље фајл',
 	'categoryonupload-label' => 'Категорија:',
 );
 

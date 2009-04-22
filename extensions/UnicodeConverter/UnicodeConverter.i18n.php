@@ -402,8 +402,8 @@ $messages['oc'] = array(
 	'unicodeconverter' => 'Convertidor Unicode',
 	'unicodeconverter-desc' => 'Un simple exemple de mòde de pagina especiala. Balha una cadena de caractèrs al format UTF-8, lo convertís en entitat HTML per una pagina web en ISA 8859-1',
 	'unicodeconverter-ok' => "D'acòrdi",
-	'unicodeconverter-oldtext' => 'Tèxt original :',
-	'unicodeconverter-newtext' => 'Tèxt un còp convertit :',
+	'unicodeconverter-oldtext' => 'Tèxte original :',
+	'unicodeconverter-newtext' => 'Tèxte un còp convertit :',
 );
 
 /** Polish (Polski)

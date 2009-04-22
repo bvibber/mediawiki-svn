@@ -395,12 +395,12 @@ $messages['be-tarask'] = array(
 	'openid-prefstext' => 'Устаноўкі [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Хаваць Ваш адрас OpenID на Вашай старонцы ўдзельніка, калі Вы ўвайшлі з дапамогай OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Абнаўляць маю інфармацыю з OpenID кожны раз калі я уваходжу ў сыстэму',
-	'openidsigninorcreateaccount' => 'Увайсьці, ці стварыць новы рахунак',
-	'openid-provider-label-openid' => 'Увесьці Ваш адрас OpenID',
-	'openid-provider-label-google' => 'Увайсьці, карыстаючыся рахункам Google',
-	'openid-provider-label-yahoo' => 'Увайсьці, карыстаючыся Вашым рахункам Yahoo',
-	'openid-provider-label-aol' => 'Увесьці Ваша імя на AOL',
-	'openid-provider-label-other-username' => 'Увесьці Ваша імя ўдзельніка $1',
+	'openidsigninorcreateaccount' => 'Увайсьці альбо стварыць новы рахунак',
+	'openid-provider-label-openid' => 'Увядзіце Ваш адрас OpenID',
+	'openid-provider-label-google' => 'Увайсьці з дапамогай Вашага рахунку ў Google',
+	'openid-provider-label-yahoo' => 'Увайсьці з дапамогай Вашага рахунку ў Yahoo',
+	'openid-provider-label-aol' => 'Увядзіце назву Вашага рахунку ў AOL',
+	'openid-provider-label-other-username' => 'Увядзіце Вашае імя ўдзельніка $1',
 );
 
 /** Bulgarian (Български)
@@ -2158,6 +2158,10 @@ Et gëtt vill [http://openid.net/get/ OpenID-Provider] a méiglecherweis hutt Di
 	'openid-pref-hide' => 'Verstoppt Är <a href="http://openid.net/">OpenID</a> op ärer Benotzersäit, wann dir Iech mat OpenID aloggt.',
 	'openid-pref-update-userinfo-on-login' => 'Meng Informatiounen vu mengem OpenID-Kont all Kéier aktualiséiere wann ech mech aloggen',
 	'openidsigninorcreateaccount' => 'Loggt Iech an oder Maacht en neie Benotzerkont op',
+	'openid-provider-label-openid' => 'Gitt Är OpenID URL un',
+	'openid-provider-label-google' => 'Loggt Iech mat Ärem Goggle-Benotzerkont an',
+	'openid-provider-label-yahoo' => 'Loggt Iech mat Ärem Yahoo-Benotzerkont an',
+	'openid-provider-label-aol' => 'Gitt Ären AOL Numm un',
 	'openid-provider-label-other-username' => 'Gitt Äre(n) $1 Benotzernumm  un',
 );
 
@@ -2841,6 +2845,8 @@ Existems vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de
 	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Esconder o seu <a href="http://openid.net/">OpenID</a> na sua página de utilizador, se se autenticar com OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Atualizar a minha informação a partir da minha "persona" OpenID cada vez que me autentico',
+	'openid-provider-label-openid' => 'Introduza a sua URL OpenID',
+	'openid-provider-label-other-username' => 'Introduza o seu nome de utilizador $1',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

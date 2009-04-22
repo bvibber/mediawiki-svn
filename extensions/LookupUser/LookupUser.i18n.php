@@ -1047,6 +1047,22 @@ $messages['sk'] = array(
 	'right-lookupuser' => 'Zistiť nastavenia používateľa',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'lookupuser' => 'Погледај информације о кориснику',
+	'lookupuser-nonexistent' => 'Грешка: Корисник не постоји',
+	'lookupuser-authenticated' => 'ауторизација на $1',
+	'lookupuser-not-authenticated' => 'није ауторизовано',
+	'lookupuser-id' => 'Кориснички ID: <tt>#$1</tt>',
+	'lookupuser-email' => 'Имејл: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'није приложено',
+	'lookupuser-realname' => 'Право име: $1',
+	'lookupuser-registration' => 'Датум регистрације: $1',
+	'lookupuser-info-authenticated' => 'Потврда имејла: $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

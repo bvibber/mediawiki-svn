@@ -153,6 +153,14 @@ $messages['ja'] = array(
 	'catfeed-desc' => '最近の更新フィードから一部の情報を抽出し、ページ内バージョンを作成する。ウィキニュースで特に有用',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'catfeed-desc' => '최근바뀜 공급으로부터 온 비트를 사용합니다.
+특별히 위키뉴스에 유용한 페이지 내부 판을 만듭니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

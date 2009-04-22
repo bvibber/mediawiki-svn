@@ -905,6 +905,14 @@ $messages['es'] = array(
 	'sign-list-hidebday' => 'No listar edad',
 	'sign-list-hideemail' => 'No listar correo electrónico',
 	'sign-submit' => 'Firmar documento',
+	'sign-information' => '<div class="noarticletext">Gracias por tomarte el tiempo de revisar este documento.
+Si estás de acuerdo con él, Por favor indica tu apoyo llenando en los campos requeridos abajo y haciendo click en "Firmar documento".
+Por favor asegúrate que tu información personal es correcta y que tenemos alguna forma de contactarte para verificar tu identidad.
+Nota que tu dirección IP y otra información de identidad será registrada mediante este formulario y usada por los moderadores para eliminar firmas duplicadas y confirmar la exactitud de tu información personal.
+Como el uso de proxies abiertos y anónimos inhiben nuestra habilidad de ejecutar esta tarea, las firmas desde estos proxies al parecer no serán contadas.
+Si estás actualmente conectado a través de un servidor proxy, por favor desconéctate de el y usa una conexión standard cuando firmes.</div>
+
+$1',
 	'sig-success' => 'Ha firmado exitosamente el documento.',
 	'sign-view-selectfields' => '<b>Campos a mostrar:</b>',
 	'sign-viewfield-entryid' => 'Ingresar ID',

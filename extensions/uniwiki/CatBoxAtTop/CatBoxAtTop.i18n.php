@@ -355,6 +355,7 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'catboxattop-desc' => 'Додаје кутијицу за категорије у горње десне углове чланака',
 	'catboxattop-categories' => 'Категорија',
 );
 

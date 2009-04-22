@@ -7181,7 +7181,7 @@ $messages['oc'] = array(
 	'configure-setting-wgDisableTitleConversion' => 'Desactivar la conversion de las variantas de lenga pels títols de las paginas',
 	'configure-setting-wgEditEncoding' => 'Caractèrs pas explicitament convertits per l’encodatge de sortida',
 	'configure-setting-wgForceUIMsgAsContentMsg' => "Nom dels messatges de l'interfàcia d'utilizaire d'utilizar coma messatges de contengut",
-	'configure-setting-wgInputEncoding' => "Encodatge del tèxt d'entrada",
+	'configure-setting-wgInputEncoding' => "Encodatge del tèxte d'entrada",
 	'configure-setting-wgInterwikiMagic' => 'Afichar los ligams interwiki dins una lista especiala',
 	'configure-setting-wgLanguageCode' => 'Còde de la lenga del sit',
 	'configure-setting-wgLegacyEncoding' => 'Encodatge ancian de convertir dempuèi',
@@ -7313,7 +7313,7 @@ $messages['oc'] = array(
 	'configure-setting-wgDisableQueryPageUpdate' => 'Lista de paginas de mantenenças que devon pas èsser mesas a jorn',
 	'configure-setting-wgDisableSearchContext' => 'Desactivar las informacions suplementàrias sus la data e las revisions dins los resultats de las recèrcas',
 	'configure-setting-wgDisableSearchUpdate' => "Desactivar la mesa a jorn de l'indèx de recèrca",
-	'configure-setting-wgDisableTextSearch' => 'Desactivar las recèrcas en « tèxt plen »',
+	'configure-setting-wgDisableTextSearch' => 'Desactivar las recèrcas en « tèxte plen »',
 	'configure-setting-wgEdititis' => "Afichar los comptadors d'edicions a diferents endreches",
 	'configure-setting-wgFixDoubleRedirects' => 'Reparar las redireccions doblas aprèp un cambiament de nom de pagina',
 	'configure-setting-wgInvalidRedirectTargets' => 'Lista de las destinacions de redireccions invalidas',
@@ -7427,8 +7427,8 @@ $messages['oc'] = array(
 	'configure-setting-wgMaxCredits' => "Nombre maximum d'autors creditats",
 	'configure-setting-wgRightsIcon' => 'Icòna de copyright',
 	'configure-setting-wgRightsPage' => 'Pagina que descriu la licéncia del sit',
-	'configure-setting-wgRightsText' => 'Tèxt que descriu la licéncia del sit',
-	'configure-setting-wgRightsUrl' => 'Tèxt que descriu la licéncia del sit',
+	'configure-setting-wgRightsText' => 'Tèxte que descriu la licéncia del sit',
+	'configure-setting-wgRightsUrl' => 'Tèxte que descriu la licéncia del sit',
 	'configure-setting-wgShowCreditsIfMax' => "Creditar solament los darrièrs autors se n'i a tròp",
 	'configure-setting-wgUseCopyrightUpload' => "Utilizar d'informacions detalhadas de dreches d'autor al moment de l'impòrt de fichièrs",
 	'configure-setting-wgActiveUserDays' => 'Temps aprèp lo qual un utilizaire es considerat coma inactiu',
@@ -7484,7 +7484,7 @@ $messages['oc'] = array(
 	'configure-setting-wgSQLiteDataDir' => 'Dorsièr de las donadas SQLite',
 	'configure-setting-wgDBmwschema' => 'Esquèma Postgres',
 	'configure-setting-wgDBts2schema' => 'Esquèma de Tsearch2',
-	'configure-setting-wgDBmysql4' => 'Utilizar la recèrca en tèxt plen avançada',
+	'configure-setting-wgDBmysql4' => 'Utilizar la recèrca en tèxte plen avançada',
 	'configure-setting-wgDBmysql5' => "Utilizar l'encodatge UTF-8",
 	'configure-setting-wgDBprefix' => 'Prefix de las taulas',
 	'configure-setting-wgDBTableOptions' => 'Opcions de las taulas',
@@ -7553,7 +7553,7 @@ $messages['oc'] = array(
 	'configure-setting-wgXhtmlDefaultNamespace' => 'Espaci de noms XHTML per defaut',
 	'configure-setting-wgXhtmlNamespaces' => 'Autres espacis de noms XHTML',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Espaci de noms',
-	'configure-setting-wgUseZhdaemon' => 'Utilizar ZhDaemon pel tractament de tèxt en chinés',
+	'configure-setting-wgUseZhdaemon' => 'Utilizar ZhDaemon pel tractament de tèxte en chinés',
 	'configure-setting-wgZhdaemonHost' => 'Òste de ZhDaemon',
 	'configure-setting-wgZhdaemonPort' => 'Pòrt de ZhDaemon',
 	'configure-setting-wgLocaltimezone' => 'Zòna orària locala',
@@ -8417,6 +8417,21 @@ $messages['roa-tara'] = array(
 	'configure-setting-wgActionPaths-key' => 'Azione',
 	'configure-setting-wgActionPaths-value' => "URL d'u template",
 	'configure-setting-wgExtraLanguageNames-value' => 'Nome',
+);
+
+/** Russian (Русский)
+ * @author Innv
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'configure-setting-wgSitename' => 'Имя сайта',
+	'configure-setting-wgActionPaths-value' => 'URL шаблона',
+	'configure-setting-wgMediaHandlers-key' => 'Тип MIME',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Название страницы',
+	'configure-setting-wgExtraLanguageNames-key' => 'Код языка',
+	'configure-setting-wgExtraLanguageNames-value' => 'Название',
+	'configure-setting-wgMaxArticleSize' => 'Максимальный размер страницы (КБ)',
+	'configure-setting-wgVersion' => 'Версия MediaWiki',
 );
 
 /** Slovak (Slovenčina)

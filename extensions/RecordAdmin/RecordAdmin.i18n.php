@@ -856,6 +856,13 @@ $messages['lb'] = array(
 	'recordadmin-needscontent' => 'Inhalt derbäisetzen …',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'recordadmin-invert' => 'Ómgedriejde selectie',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1159,6 +1166,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Innv
  * @author Rubin
  * @author Александр Сигачёв
  */
@@ -1166,6 +1174,9 @@ $messages['ru'] = array(
 	'recordadmin-submit' => 'Отправить',
 	'recordadmin-buttonsearch' => 'Найти',
 	'recordadmin-buttoncreate' => 'Создать',
+	'recordadmin-buttonsave' => 'Сохранить',
+	'recordadmin-viewlink' => 'просмотр',
+	'recordadmin-editlink' => 'править',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

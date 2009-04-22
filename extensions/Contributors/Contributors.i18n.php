@@ -749,10 +749,18 @@ $messages['km'] = array(
 /** Korean (한국어)
  * @author Kwj2772
  * @author ToePeu
+ * @author Yknok29
  */
 $messages['ko'] = array(
+	'contributors' => '기여자',
+	'contributors-desc' => '주요 기여자들을 한 페이지에 요약합니다.',
+	'contributors-toolbox' => '주요 기여자',
+	'contributors-legend' => '하나의 페이지에 대한 주요 기여자 목록',
 	'contributors-target' => '제목:',
 	'contributors-submit' => '보이기',
+	'contributors-subtitle' => '$1에 대한 주요 기여자',
+	'contributors-badtitle' => '효과 없는 제목',
+	'contributors-nosuchpage' => '$1 페이지는 존재하지 않습니다.',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -1170,9 +1178,11 @@ $messages['sr'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'contributors' => 'Доприносиоци',
+	'contributors-desc' => 'Сажима списак главних аутора неког чланка',
 	'contributors-toolbox' => 'Главни доприносиоци',
 	'contributors-legend' => 'Списак главних доприносиоца у чланку',
 	'contributors-target' => 'Наслов:',

@@ -1118,6 +1118,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Innv
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1128,12 +1129,15 @@ $messages['ru'] = array(
 	'dt_viewxml_namespaces' => 'Пространства имён',
 	'dt_viewxml_simplifiedformat' => 'Упрощённый формат',
 	'dt_xml_namespace' => 'Пространство имён',
+	'dt_xml_pages' => 'Страницы',
 	'dt_xml_page' => 'Страница',
+	'dt_xml_template' => 'Шаблон',
 	'dt_xml_field' => 'Поле',
 	'dt_xml_name' => 'Имя',
 	'dt_xml_title' => 'Заголовок',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Свободный текст',
+	'dt_importxml_importing' => 'Импортирование...',
 );
 
 /** Slovak (Slovenčina)

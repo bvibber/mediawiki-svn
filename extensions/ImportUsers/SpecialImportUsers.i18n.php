@@ -1097,7 +1097,7 @@ $messages['oc'] = array(
 	'importusers-user-present-update' => "l’utilizaire '''$1''' existís ja. Mesa a jorn efectuada.",
 	'importusers-user-present-not-update' => "L’utilizaire '''$1''' existís ja. Pas mes a jorn.",
 	'importusers-user-invalid-format' => "Las donadas d'utilizaire dins la linha #$1 son dins un format marrit o alara son inexistentas. Cap d'accion.",
-	'importusers-log' => 'Jornal dels impòrts',
+	'importusers-log' => "Jornal de las importacions d'utilizaires",
 	'importusers-log-summary' => 'Somari',
 	'importusers-log-summary-all' => 'Total',
 	'importusers-log-summary-added' => 'Apondut',
@@ -1193,7 +1193,7 @@ $messages['pt'] = array(
 	'importusers-user-present-update' => "Utilizador '''$1''' já existe. Actualizado.",
 	'importusers-user-present-not-update' => "Utilizador '''$1''' já existe. Não foi actualizado.",
 	'importusers-user-invalid-format' => 'Dados de utilizador na linha #$1 têm um formato inválido ou estão vazios. Passado à frente.',
-	'importusers-log' => 'Registo de importação',
+	'importusers-log' => 'Registo de importação de utilizadores',
 	'importusers-log-summary' => 'Sumário',
 	'importusers-log-summary-all' => 'Todos',
 	'importusers-log-summary-added' => 'Adicionado',
@@ -1483,12 +1483,16 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Mopza
  * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
 	'importusers-form-button' => 'นำเข้า',
+	'importusers-log' => 'ปูมการนำเข้าผู้ใช้',
 	'importusers-log-summary-all' => 'ทั้งหมด',
+	'importusers-password' => 'รหัสผ่าน',
+	'importusers-email' => 'อีเมลของผู้ใช้',
 	'importusers-realname' => 'ชื่อจริง',
 );
 

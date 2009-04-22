@@ -308,6 +308,13 @@ $messages['sq'] = array(
 	'tooltip-desc' => 'Vendosë kodet <tt><nowiki><tooltip></nowiki></tt> dhe <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'tooltip-desc' => 'Додаје <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt> тагове',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

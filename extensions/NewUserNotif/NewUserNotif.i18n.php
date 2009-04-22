@@ -501,9 +501,11 @@ $3 na $4 bol vytvorený nový používateľský účet $2.',
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'newusernotifsubj' => 'Нови корисник за $1',
+	'newusernotif-desc' => 'Шаље мејл обавештења када се нови налог направи',
 	'newusernotifbody' => 'Здраво $1
 Нови кориснички налог, $2, је направљен на $3 у $4.',
 );

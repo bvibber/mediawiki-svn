@@ -288,6 +288,16 @@ $messages['ja'] = array(
 	'communityvoice-ratings-error-no-title' => 'rating タグに title 属性が欠けています。',
 );
 
+/** Korean (한국어)
+ * @author Yknok29
+ */
+$messages['ko'] = array(
+	'communityvoice' => '공동체 알림',
+	'communityvoice-desc' => '공동체 참가 도구',
+	'communityvoice-ratings-scale-status-error' => '오류를 보냅니다!',
+	'communityvoice-ratings-scale-status-thanks' => '투표에 감사드립니다!',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -697,9 +697,11 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'backforth-next' => 'Следеће ($1)',
+	'backforth-desc' => 'Додаје азбучно уређење преко линкова за "Следећи" и "Претходни", на врху страница чланака',
 	'backforth-prev' => 'Претходно ($1)',
 );
 

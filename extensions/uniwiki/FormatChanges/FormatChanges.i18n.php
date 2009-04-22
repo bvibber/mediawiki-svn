@@ -387,6 +387,16 @@ $messages['sk'] = array(
 	'formatchanges-editedby' => '$1 - upravil $2 ($3)',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'formatchanges-desc' => 'Реформатира [[Special:RecentChanges|скорашње измене]]',
+	'formatchanges-anonymous' => 'Анонимно',
+	'formatchanges-createdby' => '$1 - направио $2 ($3)',
+	'formatchanges-editedby' => '$1 - изменио $2 ($3)',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

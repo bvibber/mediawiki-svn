@@ -367,6 +367,7 @@ $messages['ja'] = array(
 
 /** Korean (한국어)
  * @author Kwj2772
+ * @author Yknok29
  */
 $messages['ko'] = array(
 	'categorywatch-desc' => '주시된 분류에 포함되는 문서의 분류 변경을 알리도록 주시문서 목록 기능을 확장',
@@ -377,6 +378,7 @@ $messages['ko'] = array(
 	'categorywatch-catmoveout' => '$1 문서를 분류 $2에서 $3으로 이동',
 	'categorywatch-catadd' => '$1 문서를 $2 분류에 추가',
 	'categorywatch-catsub' => '$1 문서를 $2 분류에서 제거',
+	'categorywatch-autocat' => '$1에 의해 자동적으로 주시됩니다',
 );
 
 /** Ripoarisch (Ripoarisch)

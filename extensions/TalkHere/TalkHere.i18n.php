@@ -791,6 +791,22 @@ Prevádzkovatelia tejto stránky nepreberajú zodpovednosť za obsah takýchto k
 	'talkhere-collapse' => 'skryť editor',
 );
 
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'talkhere-desc' => 'Убацује страну за разговор у чланак',
+	'talkhere-foottext' => 'Коментари изнад су можда оставили посетиоци сајта.
+
+Оператори сајта не могу бити сматрани одговорним за садржај ових коментара.',
+	'talkhere-talkpage' => 'страна за разговор',
+	'talkhere-notalk' => "''(тренутно без коментара)''",
+	'talkhere-addcomment' => 'додајте коментар',
+	'talkhere-beforeinput' => 'Можете да додате коментар испод',
+	'talkhere-loading' => 'учитавање едитора…',
+	'talkhere-collapse' => 'сакриј едитор',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

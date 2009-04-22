@@ -513,8 +513,11 @@ $messages['sk'] = array(
 	'msfunc_div_zero' => 'Delenie nulou',
 );
 
-/** Serbian Cyrillic ekavian (ћирилица) */
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
 $messages['sr-ec'] = array(
+	'msfunc_desc' => 'Колекција математичких и статистичких функција',
 	'msfunc_nan' => 'Резултат није број',
 	'msfunc_inf' => 'Резултат је бесконачан',
 	'msfunc_div_zero' => 'Дељиво са нулом',

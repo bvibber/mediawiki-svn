@@ -497,11 +497,13 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Innv
  * @author Rubin
  */
 $messages['ru'] = array(
 	'searchbox-search' => 'Поиск',
 	'searchbox-go' => 'Перейти',
+	'searchbox-namespaces' => 'Пространства имён:',
 );
 
 /** Slovak (Slovenčina)

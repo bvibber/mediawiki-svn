@@ -601,9 +601,11 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'block_title_error_page_title' => 'Блокиран наслов',
+	'block_title_error-desc' => 'Пружа једноставан начин спречавања прављења или снимања страна са неодговарајућим насловима',
 	'block_title_error' => 'Жао нам је, наслов ове странице није могуће снимити.',
 );
 

@@ -410,6 +410,7 @@ Sopimattomat tiedostot poistetaan välittömästi; katso [[{{MediaWiki:Multipleu
 /** French (Français)
  * @author Dereckson
  * @author Grondin
+ * @author Guérin Nicolas
  * @author IAlex
  * @author Urhixidur
  */
@@ -428,7 +429,7 @@ Vous pouvez optionnellement spécifier la '''destination du fichier''' et rempli
 
 Les images non pertinentes pourront être supprimées immédiatement. Voyez la page des [[{{MediaWiki:Multipleupload-page}}|Règles de suppression d’images]].",
 	'multiupload-fileuploaded' => 'Fichier importé (téléversé).',
-	'multiupload-toolbox' => 'Importer (Téléverser) plusieurs fichiers',
+	'multiupload-toolbox' => 'Importer (téléverser) plusieurs fichiers',
 	'multiupload-no-files' => 'Sélectionnez au moins un fichier à téléverser',
 	'multiupload-blank' => 'Aucun fichier sélectionné',
 );

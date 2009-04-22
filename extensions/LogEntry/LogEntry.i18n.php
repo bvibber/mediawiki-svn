@@ -296,7 +296,7 @@ $messages['nn'] = array(
  */
 $messages['oc'] = array(
 	'logentry-append' => 'Apondre',
-	'logentry-parserhook-desc' => 'Aquesta extension de balisa apond una balisa que provesís un formulari per apondre / prefixar de tèxt a las paginas de jornals',
+	'logentry-parserhook-desc' => 'Aquesta extension de balisa apond una balisa que provesís un formulari per apondre / prefixar de tèxte a las paginas de jornals',
 	'logentry-specialpage-desc' => 'Aquesta extension de balisa apond un processús per apondre a las paginas de jornals',
 	'logentry' => 'Jornal de las entradas',
 	'logentry-invalidpage' => 'Pagina incorrècta',

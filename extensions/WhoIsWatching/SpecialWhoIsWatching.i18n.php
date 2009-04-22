@@ -727,6 +727,19 @@ Pakigamit ang pahinang [[MediaWiki:Number_of_watching_users_pageview|Mediawiki:B
 	'specialwhoiswatchingaddbtn' => 'Idagdag ang napiling mga tagagamit',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'whoiswatching' => 'Bir wiki sayfasını kim izliyor',
+	'whoiswatching-desc' => 'Bir viki sayfasını izleyen kullanıcı adlarının bir listesini sağlar',
+	'specialwhoiswatchingthepage' => '%s sayfasını kim izliyor',
+	'specialwhoiswatchingusage' => 'Bu özel sayfa kendi başına kullanılamaz.
+Lütfen, bu özel sayfaya bir giriş noktası tanımlamak için [[MediaWiki:Number_of_watching_users_pageview]] sayfasını kullanın.',
+	'specialwhoiswatchingaddusers' => 'Sayfayı izlemek için kullanıcıları ekleyin',
+	'specialwhoiswatchingaddbtn' => 'Seçili kullanıcıları ekleyin',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

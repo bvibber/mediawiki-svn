@@ -268,9 +268,10 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'layouts_unknown' => 'Ἄγνωτη',
+	'layouts_unknown' => 'Ἄγνωτος',
 );
 
 /** Swiss German (Alemannisch)
