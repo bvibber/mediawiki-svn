@@ -101,7 +101,7 @@ class UploadBase {
 		return self::OK;
 	}
 	//return the file size
-	function isEmptyFile(){
+	function isEmptyFile(){		
 		return empty( $this->mFileSize); 
 	}
 	/**
@@ -161,13 +161,14 @@ class UploadBase {
 	/**
 	 * Verifies that it's ok to include the uploaded file
 	 *
+	 * this function seems to intermixes tmpfile and $this->mTempPath .. no idea why this is
+	 * 
 	 * @param string $tmpfile the full path of the temporary file to verify
 	 * @return mixed true of the file is verified, a string or array otherwise.
 	 */
 	protected function verifyFile( $tmpfile ) {
-		$this->mFileProps = File::getPropsFromPath( $this->mTempPath, 
-		$this->mFinalExtension );
-		$this->checkMacBinary();
+		$this->mFileProps = File::getPropsFromPath( $this->mTempPath, $this->mFinalExtension );
+		$this->checkMacBinary( );
 		
 		#magically determine mime type
 		$magic = MimeMagic::singleton();
@@ -209,8 +210,7 @@ class UploadBase {
 		$virus = $this->detectVirus($tmpfile);
 		if ( $virus ) {
 			return array( 'uploadvirus', $virus );
-		}
-
+		}		
 		wfDebug( __METHOD__.": all clear; passing.\n" );
 		return true;
 	}

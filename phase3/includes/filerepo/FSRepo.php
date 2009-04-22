@@ -213,17 +213,28 @@ class FSRepo extends FileRepo {
 	}
 	function append( $srcPath, $toAppendPath ){
 		$status = $this->newGood();
+
+		//resolve the virtual url:
+		if ( self::isVirtualUrl( $srcPath ) ) {
+				$srcPath = $this->resolveVirtualUrl( $srcPath );
+		}
 		//make sure files are there: 
 		if ( !is_file( $srcPath ) ) 				
-			$status->fatal( 'filenotfound', $srcPath );
+			$status->fatal( 'append-src-filenotfound', $srcPath );
 			
 		if ( !is_file( $toAppendPath ) ) 				
-			$status->fatal( 'filenotfound', $toAppendPath );
+			$status->fatal( 'append-toappend-filenotfound', $toAppendPath );
 			
 		//do the append: 
-		if( ! file_put_contents( $srcPath, file_get_contents( $toAppendPath ), FILE_APPEND ) )
+		if( file_put_contents( $srcPath, file_get_contents( $toAppendPath ), FILE_APPEND ) ){
+			$status->value = $srcPath;
+		}else{
 			$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
-					
+		}
+		
+		//either way remove the append chunk as we have no use for it now:
+		unlink($toAppendPath);
+			
 		return $status;		
 	}
 	/**
@@ -255,12 +266,6 @@ class FSRepo extends FileRepo {
 
 		$result = $this->store( $srcPath, 'temp', $dstRel );
 		$result->value = $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
-		return $result;
-	}
-	/*append to a temporary file (used in chunks uploads) */
-	function appendToTemp( $srcPath, $appendDataPath ) {
-		//append to the "shared" temporary file
-		$result = $this->append( $srcPath, $appendDataPath );		
 		return $result;
 	}
 

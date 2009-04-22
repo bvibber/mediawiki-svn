@@ -26,18 +26,20 @@ class UploadFromChunks extends UploadBase {
 			$this->chunk_mode = UploadFromChunks::INIT;
 			$this->mDesiredDestName = $param['filename'];
 			
-		}else if( $this->mSessionKey && !$param['done']){
+		}else if( $this->mSessionKey && !$param['done']){			
 			//this is a chunk piece	
-			$this->chunk_mode = UploadFromChunks::CHUNK;
-
-			//set chunk related vars: 			
-			$this->mTempPath = $request->getFileTempName( 'chunk' );
-			$this->mFileSize = $request->getFileSize( 'chunk' );		
-			
-		}else if( $this->mSessionKey && $param['done']){
+			$this->chunk_mode = UploadFromChunks::CHUNK;						
+		}else if( $this->mSessionKey && $param['done']){			
 			//this is the last chunk			 
-			$this->chunk_mode = UploadFromChunks::DONE;
+			$this->chunk_mode = UploadFromChunks::DONE;			
 		}			
+		if( $this->chunk_mode == UploadFromChunks::CHUNK ||
+		    $this->chunk_mode == UploadFromChunks::DONE ){
+				//set chunk related vars: 			
+				$this->mTempPath = $request->getFileTempName( 'chunk' );
+				$this->mFileSize = $request->getFileSize( 'chunk' );
+		}
+			
 		return $this->status;
 	}	
 	
@@ -97,15 +99,29 @@ class UploadFromChunks extends UploadBase {
 	}		
 	//only run verifyFile on completed uploaded chunks
 	function verifyFile( $tmpFile ){		
-		if( $this->chunk_mode == UploadFromChunks::DONE){
-			return parent::verifyFile($tmpFile);		
+		if( $this->chunk_mode == UploadFromChunks::DONE ){	
+			//first append last chunk (so we can do a real verifyFile check... (check file type etc)		
+			$status = $this->doChunkAppend(); 				
+			if( $status->isOK() ){		
+				$this->mTempPath = $this->getRealPath( $this->mTempAppendPath ); 								
+				//verify the completed merged chunks as if it was the file that got uploaded: 
+				return parent::verifyFile( $this->mTempPath ) ;		
+			}else{				
+				//conflict of status returns (have to return the error ary) ... why we don't consistantly use a status object is beyond me..
+				return $status->getErrorsArray();
+			}
 		}else{
 			return true;
 		}
+	}	
+	function getRealPath($srcPath){
+		$repo = RepoGroup::singleton()->getLocalRepo();				
+		if ( $repo->isVirtualUrl( $srcPath) ) {
+			return $repo->resolveVirtualUrl( $srcPath );
+		}
 	}
 	function setupChunkSession( $comment, $watch ) {
-		$this->mSessionKey = $this->getSessionKey();						
-				
+		$this->mSessionKey = $this->getSessionKey();									
 		$_SESSION['wsUploadData'][ $this->mSessionKey ] = array(				
 			'mComment'			=> $comment,
 			'mWatch'			=> $watch,
@@ -114,10 +130,8 @@ class UploadFromChunks extends UploadBase {
 			'mDesiredDestName'	=> $this->mDesiredDestName,
 			'version'         	=> self::SESSION_VERSION,
 	   	);
-	   		   	 
 	   	return $this->mSessionKey;
-	}
-	
+	}	
 	//lets us return an api result (as flow for chunk uploads is kind of different than others. 
 	function performUpload($summary='', $comment='', $watch='', $user){	
 		global $wgServer, $wgScriptPath;
@@ -145,7 +159,11 @@ class UploadFromChunks extends UploadBase {
 				//firefogg expects a specific result per: 
 				//http://www.firefogg.org/dev/chunk_post.html	
 				ob_clean();	
-				echo ApiFormatJson::getJsonEncode( array("result"=>1) );				
+				echo ApiFormatJson::getJsonEncode( array(
+						"result"=>1, 
+						"filesize"=> filesize( $this->getRealPath( $this->mTempAppendPath ) )
+					) 
+				);				
 				exit(0);
 				/*return array(
 					'result' => 1						
@@ -153,14 +171,23 @@ class UploadFromChunks extends UploadBase {
 			}else{
 				return $status;		
 			}
-		}else if( $this->chunk_mode == UploadFromChunks::DONE ){
-			//append the last chunk: 
-			if( $this->doChunkAppend() ){
-				//validate the uploaded file 
-				
-				//process the upload normally: 
-				return Status::newGood('chunk upload done');
-			}			
+		}else if( $this->chunk_mode == UploadFromChunks::DONE ){			
+			$status = parent::performUpload($summary='', $comment='',$watch='', $user );			
+			if( !$status->isGood() ) {
+				return $status;	
+			}						
+			$file = $this->getLocalFile();									
+			//firefogg expects a specific result per: 
+			//http://www.firefogg.org/dev/chunk_post.html	
+			ob_clean();	
+			echo ApiFormatJson::getJsonEncode( array(
+					"result"=>1,
+					"done"=>1,				
+					"resultUrl"=> $file->getDescriptionUrl()
+				) 
+			);	
+			exit(0);
+								
 		}		
 	}
 	//append the given chunk to the temporary uploaded file. (if no temporary uploaded file exists created it.
@@ -178,14 +205,12 @@ class UploadFromChunks extends UploadBase {
 			}										
 			return $status;			
 		}else{
-			//make sure the file exists: 
-			if( is_file( $this->mTempAppendPath ) ){
-				print "append: " . $this->mTempPath . ' to ' . $this->mTempAppendPath . "\n";
-				$status = $this->appendToUploadFile( $this->mTempAppendPath,  $this->mTempPath );
-				return $status;
+			if( is_file( $this->getRealPath( $this->mTempAppendPath ) ) ){					
+				$status = $this->appendToUploadFile( $this->mTempAppendPath,  $this->mTempPath );														
 			}else{
-				return Status::newFatal('chunk-file-append-missing');
+				$status->fatal( 'filenotfound', $this->mTempAppendPath );
 			}
+			return $status;
 		}
 	}		
 }

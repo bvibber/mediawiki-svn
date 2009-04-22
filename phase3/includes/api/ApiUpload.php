@@ -121,8 +121,7 @@ class ApiUpload extends ApiBase {
 			$result['result'] = 'Failure';
 			$result['error'] = 'permission-denied';
 			return $result;
-		}			
-		
+		}					
 		$verification = $this->mUpload->verifyUpload( $resultDetails );	
 		if( $verification != UploadBase::OK ) {
 			$result['result'] = 'Failure';
@@ -167,7 +166,7 @@ class ApiUpload extends ApiBase {
 					break;
 			}
 			return $result;
-		}		
+		}				
 		if( !$this->mParams['ignorewarnings'] ) {
 			$warnings = $this->mUpload->checkWarnings();
 			if( $warnings ) {
@@ -183,7 +182,7 @@ class ApiUpload extends ApiBase {
 					$result['sessionkey'] = $sessionKey;
 				return $result;
 			}
-		}								
+		}									
 		//do the upload			
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
 			$this->mParams['comment'], $this->mParams['watch'], $wgUser );
