@@ -98,6 +98,9 @@ $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 $wgSubversionProxy = false;
 $wgSubversionProxyTimeout = 30; // default 3 secs is too short :)
 
+// What is the default SVN import chunk size?
+$wgCodeReviewImportBatchSize = 400;
+
 // Bump the version number every time you change a CodeReview .css/.js file
 $wgCodeReviewStyleVersion = 5;
 

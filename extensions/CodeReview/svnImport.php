@@ -20,7 +20,7 @@ if ( !$repo ) {
 $svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
 $lastStoredRev = $repo->getLastStoredRev();
 
-$chunkSize = 400;
+$chunkSize = $wgCodeReviewImportBatchSize;
 
 $startTime = microtime( true );
 $revCount = 0;
