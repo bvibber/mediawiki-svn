@@ -686,8 +686,6 @@ class Preferences {
 		$searchableNamespaces = SearchEngine::searchableNamespaces();
 		$searchDefault = self::loadOldSearchNs( $user );
 		
-		$searchDefault = array_merge( $searchDefault, $user->getOption( 'searchnamespaces' ) );
-		
 		$nsOptions = array();
 		foreach( $wgContLang->getNamespaces() as $ns => $name ) {
 			if ($ns < 0) continue;
@@ -705,6 +703,7 @@ class Preferences {
 					'options' => $nsOptions,
 					'section' => 'searchoptions',
 					'default' => $searchDefault,
+					'prefix' => 'searchNs',
 				);
 				
 		global $wgEnableMWSuggest;
@@ -1094,5 +1093,25 @@ class PreferencesForm extends HTMLForm {
 		$html .= "\n" . $sk->link( $t, wfMsg( 'restoreprefs' ) );
 		
 		return $html;
+	}
+	
+	function filterDataForSubmit( $data ) {
+		// Support for separating MultiSelect preferences into multiple preferences
+		// Due to lack of array support.
+		foreach( $this->mFlatFields as $fieldname => $field ) {
+			$info = $field->mParams;
+			if ($field instanceof HTMLMultiSelectField) {
+				$options = HTMLFormField::flattenOptions( $info['options'] );
+				$prefix = isset($info['prefix']) ? $info['prefix'] : $fieldname;
+				
+				foreach( $options as $opt ) {
+					$data["$prefix$opt"] = in_array( $opt, $data[$fieldname] );
+				}
+				
+				unset( $data[$fieldname] );
+			}
+		}
+		
+		return $data;
 	}
 }

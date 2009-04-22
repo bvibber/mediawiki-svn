@@ -249,7 +249,6 @@ class SearchEngine {
 		$arr = Preferences::loadOldSearchNs( $user );
 		$searchableNamespaces = SearchEngine::searchableNamespaces();
 		
-		$arr = array_merge( $arr, $user->getOption( 'searchnamespaces' ) );
 		$arr = array_intersect( $arr, array_keys($searchableNamespaces) ); // Filter
 		
 		return $arr;

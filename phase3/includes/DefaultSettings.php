@@ -2479,6 +2479,7 @@ $wgDefaultUserOptions = array(
 	'watchdeletion'           => 0,
 	'noconvertlink'           => 0,
 	'gender'                  => 'unknown',
+	'ccmeonemails'            => 0,
 );
 
 /** Whether or not to allow and use real name fields. Defaults to true. */

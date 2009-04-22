@@ -521,6 +521,10 @@ $wgLogActions['stable/reset'] = 'stable-logentry2';
 $wgAjaxExportList[] = 'ReaderFeedback::AjaxReview';
 $wgAjaxExportList[] = 'RevisionReview::AjaxReview';
 
+// Defaults for prefs
+$wgDefaultUserOptions['flaggedrevssimpleui'] = true;
+$wgDefaultUserOptions['flaggedrevsstable'] = true;
+
 # Cache update
 $wgSpecialPageCacheUpdates[] = 'efFlaggedRevsUnreviewedPagesUpdate';
 

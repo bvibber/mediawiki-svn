@@ -583,7 +583,6 @@ class CentralAuthHooks {
 	
 	static function onUserLoadOptions( $user, &$preferences ) {
 		$centralUser = CentralAuthUser::getInstance( $user );
-		
 		if ($centralUser->exists() && $centralUser->isAttached() &&
 				!empty($preferences['globalpreferences']) ) {
 			// Pull preferences from global account

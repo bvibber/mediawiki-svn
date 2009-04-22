@@ -210,7 +210,7 @@ class CentralAuthUser extends AuthPluginUser {
 		$properties = array();
 		
 		while( $row = $dbr->fetchObject( $res ) ) {
-			$properties[$row->gp_property] = unserialize($row->gp_value);
+			$properties[$row->gp_property] = $row->gp_value;
 		}
 		
 		$this->mProperties = $properties;
@@ -227,11 +227,10 @@ class CentralAuthUser extends AuthPluginUser {
 			if ( is_null(User::getDefaultOption($key)) ||
 					$value != User::getDefaultOption( $key ) ||
 					in_array( $key, $wgCentralAuthPropertySaveWhitelist ) ) {
-				$ser = serialize($value);
 				$insert_rows[] = array(
 						'gp_user' => $this->getId(),
 						'gp_property' => $key,
-						'gp_value' => $ser,
+						'gp_value' => $value,
 					);
 			}
 		}

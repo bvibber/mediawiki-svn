@@ -78,6 +78,7 @@ class HTMLForm {
 			$class = $descriptor['class'];
 		} elseif ( isset( $descriptor['type'] ) ) {
 			$class = self::$typeMappings[$descriptor['type']];
+			$descriptor['class'] = $class;
 		}
 		
 		if (!$class) {
@@ -133,7 +134,9 @@ class HTMLForm {
 		
 		$callback = $this->mSubmitCallback;
 		
-		$res = call_user_func( $callback, $this->mFieldData );
+		$data = $this->filterDataForSubmit( $this->mFieldData );
+		
+		$res = call_user_func( $callback, $data );
 		
 		return $res;
 	}
@@ -311,6 +314,10 @@ class HTMLForm {
 	
 	function suppressReset( $suppressReset = true ) {
 		$this->mShowReset = !$suppressReset;
+	}
+	
+	function filterDataForSubmit( $data ) {
+		return $data;
 	}
 }
 
@@ -569,7 +576,10 @@ class HTMLSelectOrOtherField extends HTMLTextField {
 	}
 	
 	function getInputHTML( $value ) {
-		$valInSelect = array_key_exists( $value, $this->mParams['options'] );
+	
+		$valInSelect = false;
+		if ($value !== false)
+			$valInSelect = array_key_exists( $value, $this->mParams['options'] );
 		
 		$selected = $valInSelect ? $value : 'other';
 		

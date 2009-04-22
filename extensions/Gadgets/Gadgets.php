@@ -130,7 +130,7 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 	
 	$options = array_fill_keys( array_keys($gadgets), array() );
 	
-	$selectedGadgets = $user->getOption( 'gadgets' );
+	$selectedGadgets = array();
 	
 	foreach( $gadgets as $section => $thisSection ) {
 		foreach( $thisSection as $gname => $code ) {
@@ -157,6 +157,8 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 			'options' => $options,
 			'section' => 'gadgets',
 			'label' => '&nbsp;',
+			'prefix' => 'gadget-',
+			'default' => $selectedGadgets,
 		);
 		
 	return true;
@@ -176,11 +178,12 @@ function wfGadgetsBeforePageDisplay( &$out ) {
 	if ( !$gadgets ) return true;
 
 	$done = array();
-	
-	$appliedGadgets = $wgUser->getOption( 'gadgets' );
 
 	foreach ( $gadgets as $gname => $code ) {
-		wfApplyGadgetCode( $code, $out, $done );
+		$tname = "gadget-$gname";
+		if ( $wgUser->getOption( $tname ) ) {
+			wfApplyGadgetCode( $code, $out, $done );
+		}
 	}
 
 	return true;

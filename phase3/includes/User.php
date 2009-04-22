@@ -998,8 +998,9 @@ class User {
 		$variant = $wgContLang->getPreferredVariant( false );
 		$defOpt['variant'] = $variant;
 		$defOpt['language'] = $variant;
-		$defOpt['searchnamespaces'] =
-				array_keys( array_filter( $wgNamespacesToBeSearchedDefault) );
+		foreach(  SearchEngine::searchableNamespaces() as $nsnum => $nsname ) {
+			$defOpt['searchNs'.$nsnum] = !empty($wgNamespacesToBeSearchedDefault[$nsnum]);
+		}
 		$defOpt['skin'] = $wgDefaultSkin;
 		
 		return $defOpt;
@@ -3406,7 +3407,7 @@ class User {
 							);
 		
 		while( $row = $dbr->fetchObject( $res ) ) {
-			$this->mOptions[$row->up_property] = unserialize( $row->up_value );
+			$this->mOptions[$row->up_property] = $row->up_value;
 		}
 		
 		$this->mOptionsLoaded = true;
@@ -3430,11 +3431,10 @@ class User {
 		foreach( $saveOptions as $key => $value ) {
 			if ( is_null(self::getDefaultOption($key)) ||
 					$value != self::getDefaultOption( $key ) ) {
-				$ser = serialize($value);
 				$insert_rows[] = array(
 						'up_user' => $this->getId(),
 						'up_property' => $key,
-						'up_value' => $ser,
+						'up_value' => $value,
 					);
 			}
 		}
