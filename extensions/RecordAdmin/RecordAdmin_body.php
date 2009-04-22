@@ -298,7 +298,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false ) {
-		global $wgParser;
+		global $wgParser, $wgTitle;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
@@ -345,7 +345,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					$text .= "|$col=$v";
 				}
 				$text .= '}}';
-				$text = $wgParser->parse( $text, $special, $wgParser->mOptions, true, false )->getText();
+				$text = $wgParser->parse( $text, $wgTitle, $wgParser->mOptions, true, false )->getText();
 				$text = preg_replace( "|&lt;(/?td.*?)&gt;|", "<$1>", $text );
 				$table .= "$text\n";
 			}
@@ -359,7 +359,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				);
 				foreach ( $cols ? $cols : array_keys( $th ) as $col ) {
 					if ( !isset( $row[$col] ) ) {
-						$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $special, $wgParser->mOptions, true, false )->getText() : '&nbsp;';
+						$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&nbsp;';
 						$class = 'col' . preg_replace( '|\W|', '-', $col );
 						$row[$col] = "<td class='$class'>$v</td>";
 					}
