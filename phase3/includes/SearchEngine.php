@@ -245,15 +245,9 @@ class SearchEngine {
 	 * @return array
 	 * @static 
 	 */
-	public static function userNamespaces( &$user ) {
-		$arr = array();
+	public static function userNamespaces( $user ) {
+		$arr = Preferences::loadOldSearchNs( $user );
 		$searchableNamespaces = SearchEngine::searchableNamespaces();
-		// Back compat with old format
-		foreach( $searchableNamespaces as $ns => $name ) {
-			if( $user->getOption( 'searchNs' . $ns ) ) {
-				$arr[] = $ns;
-			}
-		}
 		
 		$arr = array_merge( $arr, $user->getOption( 'searchnamespaces' ) );
 		$arr = array_intersect( $arr, array_keys($searchableNamespaces) ); // Filter

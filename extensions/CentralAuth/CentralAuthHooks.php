@@ -82,7 +82,7 @@ class CentralAuthHooks {
 				),
 			);
 
-		$preferences = array_insert_after( $preferences, $prefInsert, 'registrationdate' );
+		$preferences = wfArrayInsertAfter( $preferences, $prefInsert, 'registrationdate' );
 		
 		$preferences['globalpreferences'] =
 				array(

@@ -3428,10 +3428,9 @@ class User {
 			return;
 		
 		foreach( $saveOptions as $key => $value ) {
-			$ser = serialize($value);
-			
 			if ( is_null(self::getDefaultOption($key)) ||
-					$value != self::getDefaultOption( $key ) ) {			
+					$value != self::getDefaultOption( $key ) ) {
+				$ser = serialize($value);
 				$insert_rows[] = array(
 						'up_user' => $this->getId(),
 						'up_property' => $key,

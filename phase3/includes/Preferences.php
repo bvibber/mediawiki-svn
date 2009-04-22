@@ -684,12 +684,7 @@ class Preferences {
 		
 		// Searchable namespaces back-compat with old format
 		$searchableNamespaces = SearchEngine::searchableNamespaces();
-		$searchDefault = array();
-		foreach( $searchableNamespaces as $ns => $name ) {
-			if( $user->getOption( 'searchNs' . $ns ) ) {
-				$searchDefault[] = $ns;
-			}
-		}
+		$searchDefault = self::loadOldSearchNs( $user );
 		
 		$searchDefault = array_merge( $searchDefault, $user->getOption( 'searchnamespaces' ) );
 		
@@ -1062,6 +1057,20 @@ class Preferences {
 		$wgOut->redirect( SpecialPage::getTitleFor( 'Preferences' )->getFullURL( 'success' ) );
 		
 		return true;
+	}
+	
+	public static function loadOldSearchNs( $user ) {
+		$searchableNamespaces = SearchEngine::searchableNamespaces();
+		// Back compat with old format
+		$arr = array();
+		
+		foreach( $searchableNamespaces as $ns => $name ) {
+			if( $user->getOption( 'searchNs' . $ns ) ) {
+				$arr[] = $ns;
+			}
+		}
+		
+		return $arr;
 	}
 }
 

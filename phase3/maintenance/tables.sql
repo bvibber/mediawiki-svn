@@ -86,6 +86,7 @@ CREATE TABLE /*_*/user (
   
   -- Newline-separated list of name=value defining the user
   -- preferences
+  -- Now obsolete in favour of user_properties table.
   user_options blob NOT NULL,
   
   -- This is a timestamp which is updated when a user
@@ -1269,7 +1270,7 @@ CREATE TABLE /*_*/valid_tag (
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*_*/user_properties(
-  up_user bigint not null,
+  up_user int not null,
   up_property varchar(255) not null,
   up_value blob
 ) /*$wgDBTableOptions*/;

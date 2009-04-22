@@ -3048,7 +3048,7 @@ function wfStripIllegalFilenameChars( $name ) {
   * @param array $insert 	The array to insert.
   * @param mixed $after 	The key to insert after
   */
-function array_insert_after( $array, $insert, $after ) {
+function wfArrayInsertAfter( $array, $insert, $after ) {
 	// Find the offset of the element to insert after.
 	$keys = array_keys($array);
 	$offsetByKey = array_flip( $keys );
