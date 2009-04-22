@@ -241,7 +241,7 @@ Or you may want to <a href="$3">Add the stream</a>.',
 	'mv_error_stream_insert' => 'failed to insert stream',
 	'mv_redirect_and_delete_reason' => 'removed redirect page',
 	'mv_remove_reason' => 'Reason for deletion:',
-	'mv_stream_delete_warrning' => '<b>Removing this stream will also remove $1 pieces of associative metadata</b><br />',
+	'mv_stream_delete_warrning' => "'''Removing this stream will also remove $1 {{PLURAL:$1|piece|pieces}} of associative metadata'''<br />",
 
 # stream type
 	'mv_label_stream_type' => 'Stream type',
@@ -249,7 +249,6 @@ Or you may want to <a href="$3">Add the stream</a>.',
 	'mv_metavid_live' => 'Set up live stream',
 	'mv_upload_file' => 'Upload file',
 	'mv_external_file' => 'External file',
-	'mv_stream_delete_warning' => 'Deleting this stream will additionally remove $1 pages of metadata',
 
 # tools
 	'mv_tool_search' => 'Search',
