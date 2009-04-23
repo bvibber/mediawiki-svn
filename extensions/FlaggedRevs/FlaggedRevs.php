@@ -522,7 +522,7 @@ $wgAjaxExportList[] = 'ReaderFeedback::AjaxReview';
 $wgAjaxExportList[] = 'RevisionReview::AjaxReview';
 
 // Defaults for prefs
-$wgDefaultUserOptions['flaggedrevssimpleui'] = true;
+$wgDefaultUserOptions['flaggedrevssimpleui'] = $wgSimpleFlaggedRevsUI;
 $wgDefaultUserOptions['flaggedrevsstable'] = true;
 
 # Cache update
