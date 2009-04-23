@@ -2,7 +2,7 @@
 /*
  * MV_Messages.php Created on Jan 8, 2008
  *
- * Internationalization file for MetavidWiki extension
+ * Internationalization file for MetaVidWiki extension
  */
 
 $messages = array();
@@ -170,7 +170,7 @@ Select a single clip to edit it',
 	'mv_missing_stream' => 'Missing stream: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki special pages',
 
-	'mv_warning_wiki' => '<i>Note: metavid video transcripts [[Help:FAQ#How_accurate_is_the_information.3F|may contain inaccuracies]], help us build [[Help:Participation#Improving_Archive_Accuracy|a more perfect archive]]</i>',
+	'mv_warning_wiki' => '<i>Note: MetaVid video transcripts [[Help:FAQ#How_accurate_is_the_information.3F|may contain inaccuracies]], help us build [[Help:Participation#Improving_Archive_Accuracy|a more perfect archive]]</i>',
 
 	# stream/files key descriptions:
 	'mv_ogg_low_quality' => 'Web streamable - Ogg Theora 300 kbit/s',
@@ -194,11 +194,11 @@ Please report this to the site administrator.',
 
 	# add/edit stream text:
 	'mv_stream_meta' => 'Stream page',
-	'mv_add_stream' => 'Metavid add stream',
-	'mv_edit_stream' => 'Metavid edit stream',
-	'mvexportsearch' => 'Metavid export',
-	'mvexportsequence' => 'Metavid export sequence',
-	'mvexportstream' => 'Metavid export stream',
+	'mv_add_stream' => 'MetaVid add stream',
+	'mv_edit_stream' => 'MetaVid edit stream',
+	'mvexportsearch' => 'MetaVid export',
+	'mvexportsequence' => 'MetaVid export sequence',
+	'mvexportstream' => 'MetaVid export stream',
 	'mv_move_delete_msg' => 'mvd moved to $1',
 	'mv_add_stream_page' => 'Mv add stream',
 	'mv_edit_strea_docu' => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
@@ -216,7 +216,7 @@ Please report this to the site administrator.',
 
 	'mv_base_offset_label' => 'base offset',
 	'mv_duration_label' => 'Duration',
-	'mv_file_desc_label' => 'stream desc msg',
+	'mv_file_desc_label' => 'stream desciption messsage',
 	'mv_delete_stream_file' => 'delete stream file reference',
 	'mv_save_changes' => 'Save changes',
 	'mv_file_with_same_desc' => 'Error: stream file with same description key <i>$1</i> already present',
@@ -294,13 +294,13 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 	'mv_time_separator' => '$1 to $2',
 
 # Messages for  Special List stream
-	'mv_list_streams' => 'Metavid list streams',
+	'mv_list_streams' => 'MetaVid list streams',
 	'mv_list_streams_page' => 'Mv list streams',
 	'mv_list_streams_docu' => 'The following streams exist:',
 	'mv_list_streams_none' => 'No streams exist',
 
 # messages for metavid export feed:
-	'mvvideofeed' => 'Metavid video feed export',
+	'mvvideofeed' => 'MetaVid video feed export',
 	'mvexportask' => 'Semantic video feed export',
 	'video_feed_cat' => 'Video feed for category:',
 	'mv_cat_search_note' => 'Note: Categories only lists top level categories.
@@ -329,7 +329,7 @@ Jump to stream view: $2',
 	'mv_adjust_title' => 'Adjust start and end time',
 	'mv_adjust_preview' => 'Preview adjustment',
 	'mv_adjust_preview_stop' => 'Stop preview',
-	'mv_adjust_default_reason' => 'metavid interface adjust',
+	'mv_adjust_default_reason' => 'MetaVid interface adjust',
 	'mv_adjust_old_title_missing' => 'The page you are trying to move from ($1) does not exist',
 	'mv_adjust_ok_move' => 'Success, adjusting...',
 
@@ -350,7 +350,7 @@ Jump to stream view: $2',
 	'mv_viewprevnext' => 'View ($1) ($2)',
 	'mediasearch' => 'Media search',
 	'mv_search_sel_t' => 'Select search type',
-	'mv_do_media_search' => 'Do Metavid media search for $1',
+	'mv_do_media_search' => 'Do MetaVid media search for $1',
 	'mv_results_for' => 'Results for $1',
 	'mv_video_search' => 'Video search',
 	'mv_page_search' => 'Do wiki page search for $1',
