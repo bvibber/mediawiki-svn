@@ -99,7 +99,12 @@ class HTMLForm {
 		$this->loadData();
 		
 		// Try a submission
-		$result = $this->trySubmit();
+		global $wgUser, $wgRequest;
+		$editToken = $wgRequest->getVal( 'wpEditToken' );
+		
+		$result = false;
+		if ( $wgUser->matchEditToken( $editToken ) )
+			$result = $this->trySubmit();
  		
 		if ($result === true)
 			return $result;
@@ -114,14 +119,6 @@ class HTMLForm {
 	  * Anything else == Error to display.
 	  */
 	function trySubmit() {
-		global $wgRequest, $wgUser;
-		
-		$editToken = $wgRequest->getVal( 'wpEditToken' );
-		
-		if ( !$wgUser->matchEditToken( $editToken ) ) {
-			return false;
-		}
-		
 		// Check for validation
 		foreach( $this->mFlatFields as $fieldname => $field ) {
 			if ( !empty($field->mParams['nodata']) ) continue;
