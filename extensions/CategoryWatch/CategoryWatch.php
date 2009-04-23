@@ -140,16 +140,18 @@ class CategoryWatch {
 		$res = $dbr->select( 'watchlist', array( 'wl_user' ), $conds, __METHOD__ );
 
 		# Wrap message with common body and send to each watcher
-		$page          = $title->getText();
-		$adminAddress  = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
-		$editorAddress = new MailAddress( $editor );
+		$page           = $title->getPrefixedText();
+		$adminAddress   = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
+		$editorAddress  = new MailAddress( $editor );
+		$timecorrection = $watchingUser->getOption( 'timecorrection' );
+		$editdate       = $wgLang->timeanddate( wfTimestampNow(), true, false, $timecorrection );
 		foreach ( $res as $row ) {
 			$watchingUser = User::newFromId( $row->wl_user );
 			if ( $watchingUser->getOption( 'enotifwatchlistpages' ) && $watchingUser->isEmailConfirmed() ) {
 				
-				$to = new MailAddress( $watchingUser );
+				$to      = new MailAddress( $watchingUser );
 				$subject = wfMsg( 'categorywatch-emailsubject', $page );
-				$body = wfMsgForContent( 'enotif_body' );
+				$body    = wfMsgForContent( 'enotif_body' );
 
 				# Reveal the page editor's address as REPLY-TO address only if
 				# the user has not opted-out and the option is enabled at the
@@ -170,10 +172,16 @@ class CategoryWatch {
 				}
 
 				# Define keys for body message
+				$userPage = $editor->getUserPage();
 				$keys = array(
 					'$NEWPAGE'          => $message,
+					'$PAGETITLE'        => $page;
+					'$PAGEEDITDATE'     => $editdate;
 					'$CHANGEDORCREATED' => wfMsgForContent( 'created' ),
-					'$OLDID'            => ''
+					'$PAGETITLE_URL'    => $title->getFullUrl(),
+					'$PAGEEDITOR_WIKI'  => $userPage->getFullUrl(),
+					'$OLDID'            => '',
+					'$PAGEMINOREDIT'    => ''
 				);
 				if ( $editor->isIP( $name ) ) {
 					$utext = wfMsgForContent( 'enotif_anon_editor', $name );
@@ -186,8 +194,7 @@ class CategoryWatch {
 					$emailPage = SpecialPage::getSafeTitleFor( 'Emailuser', $name );
 					$keys['$PAGEEDITOR_EMAIL'] = $emailPage->getFullUrl();
 				}
-				$userPage = $editor->getUserPage();
-				$keys['$PAGEEDITOR_WIKI'] = $userPage->getFullUrl();
+				$keys['$PAGESUMMARY'] = $summary;
 
 				# Replace keys, wrap text and send
 				$body = strtr( $body, $keys );

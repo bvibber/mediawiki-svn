@@ -13,10 +13,10 @@ $messages = array();
 $messages['en'] = array(
 	'categorywatch-desc' => 'Extends watchlist functionality to include notification about membership changes of watched categories',
 	'categorywatch-emailsubject' => "Activity involving watched category \"$1\"",
-	'categorywatch-catmovein' => "[[$1]] has moved into [[:Category:$2]] from [[:Category:$3]]",
-	'categorywatch-catmoveout' => "[[$1]] has moved out of [[:Category:$2]] into [[:Category:$3]]",
-	'categorywatch-catadd' => "[[$1]] has been added to [[:Category:$2]]",
-	'categorywatch-catsub' => "[[$1]] has been removed from [[:Category:$2]]",
+	'categorywatch-catmovein' => "$1 has moved into $2 from $3",
+	'categorywatch-catmoveout' => "$1 has moved out of $2 into $3",
+	'categorywatch-catadd' => "$1 has been added to $2",
+	'categorywatch-catsub' => "$1 has been removed from $2",
 	'categorywatch-autocat' => "Automatically watched by $1",
 );
 
