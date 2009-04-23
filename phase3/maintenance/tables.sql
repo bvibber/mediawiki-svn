@@ -1271,7 +1271,7 @@ CREATE TABLE /*_*/valid_tag (
 
 CREATE TABLE /*_*/user_properties(
   up_user int not null,
-  up_property varchar(255) not null,
+  up_property varbinary(32) not null,
   up_value blob
 ) /*$wgDBTableOptions*/;
 
