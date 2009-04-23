@@ -88,7 +88,12 @@ class CategoryWatch {
 		$cl   = $dbr->tableName( 'categorylinks' );
 		$id   = $article->getID();
 		$res  = $dbr->select( $cl, 'cl_to', "cl_from = $id", __METHOD__, array( 'ORDER BY' => 'cl_sortkey' ) );
-		while ( $row = $dbr->fetchRow( $res ) ) $this->after[] = Title::newFromText( $row[0], NS_CATEGORY )->getPrefixedText();
+		while ( $row = $dbr->fetchRow( $res ) ) {
+			$cat           = Title::newFromText( $row[0], NS_CATEGORY );
+			$catname       = $cat->getPrefixedText();
+			$caturl        = $cat->getFullUrl();
+			$this->after[] = "$catname ($caturl)";
+		}
 		$dbr->freeResult( $res );
 
 		# Get list of added and removed cats
@@ -97,7 +102,12 @@ class CategoryWatch {
 
 		# Notify watchers of each cat about the addition or removal of this article
 		if ( count( $add ) > 0 || count( $sub ) > 0 ) {
-			$page = $article->getTitle()->getPrefixedText();
+
+			$page     = $article->getTitle();
+			$pagename = $page->getPrefixedText();
+			$pageurl  = $page->getFullUrl();
+			$page     = "$pagename ($pageurl)";
+
 			if ( count( $add ) == 1 && count( $sub ) == 1 ) {
 				$add = array_shift( $add );
 				$sub = array_shift( $sub );
