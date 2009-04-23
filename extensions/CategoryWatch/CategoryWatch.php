@@ -143,10 +143,10 @@ class CategoryWatch {
 		$page           = $title->getPrefixedText();
 		$adminAddress   = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
 		$editorAddress  = new MailAddress( $editor );
-		$timecorrection = $watchingUser->getOption( 'timecorrection' );
-		$editdate       = $wgLang->timeanddate( wfTimestampNow(), true, false, $timecorrection );
 		foreach ( $res as $row ) {
-			$watchingUser = User::newFromId( $row->wl_user );
+			$watchingUser   = User::newFromId( $row->wl_user );
+			$timecorrection = $watchingUser->getOption( 'timecorrection' );
+			$editdate       = $wgLang->timeanddate( wfTimestampNow(), true, false, $timecorrection );
 			if ( $watchingUser->getOption( 'enotifwatchlistpages' ) && $watchingUser->isEmailConfirmed() ) {
 				
 				$to      = new MailAddress( $watchingUser );
