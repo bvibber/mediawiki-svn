@@ -175,8 +175,8 @@ class CategoryWatch {
 				$userPage = $editor->getUserPage();
 				$keys = array(
 					'$NEWPAGE'          => $message,
-					'$PAGETITLE'        => $page;
-					'$PAGEEDITDATE'     => $editdate;
+					'$PAGETITLE'        => $page,
+					'$PAGEEDITDATE'     => $editdate,
 					'$CHANGEDORCREATED' => wfMsgForContent( 'created' ),
 					'$PAGETITLE_URL'    => $title->getFullUrl(),
 					'$PAGEEDITOR_WIKI'  => $userPage->getFullUrl(),
