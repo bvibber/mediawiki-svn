@@ -130,7 +130,8 @@ class CategoryWatch {
 	}
 
 	function notifyWatchers( &$title, &$editor, &$message ) {
-		global $wgLang, $wgEmergencyContact, $wgNoReplyAddress, $wgCategoryWatchNotifyEditor;
+		global $wgLang, $wgEmergencyContact, $wgNoReplyAddress, $wgCategoryWatchNotifyEditor,
+			$wgEnotifRevealEditorAddress, $wgEnotifUseRealName, $wgPasswordSender, $wgEnotifFromEditor;
 
 		# Get list of users watching this category
 		$dbr = wfGetDB( DB_SLAVE );
@@ -139,114 +140,60 @@ class CategoryWatch {
 		$res = $dbr->select( 'watchlist', array( 'wl_user' ), $conds, __METHOD__ );
 
 		# Wrap message with common body and send to each watcher
-		$page    = $title->getText();
-		$from    = new MailAddress( $wgEmergencyContact, 'WikiAdmin' );
-		$replyto = new MailAddress( $wgNoReplyAddress );
+		$page          = $title->getText();
+		$adminAddress  = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
+		$editorAddress = new MailAddress( $editor );
 		foreach ( $res as $row ) {
 			$watchingUser = User::newFromId( $row->wl_user );
 			if ( $watchingUser->getOption( 'enotifwatchlistpages' ) && $watchingUser->isEmailConfirmed() ) {
 				
 				$to = new MailAddress( $watchingUser );
-				$timecorrection = $watchingUser->getOption( 'timecorrection' );
-				$editdate =	$wgLang->timeanddate( wfTimestampNow(), true, false, $timecorrection );
-				$editdat1 =	$wgLang->date( wfTimestampNow(), true, false, $timecorrection );
-				$edittim2 =	$wgLang->time( wfTimestampNow(), true, false, $timecorrection );
-				$body = wfMsg(
-					'categorywatch-emailbody',
-					$watchingUser->getName(),
-					$page,
-					$editdate,
-					$editor->getName(),
-					$message,
-					$editdat1,
-					$edittim2
-				);
-
-				$subject = wfMsgForContent( 'enotif_subject' );
-				$body    = wfMsgForContent( 'enotif_body' );
-				$keys    = array();
-
-				if ( $this->oldid ) {
-					$difflink = $this->title->getFullUrl( 'diff=0&oldid=' . $this->oldid );
-					$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_lastvisited', $difflink );
-					$keys['$OLDID']   = $this->oldid;
-					$keys['$CHANGEDORCREATED'] = wfMsgForContent( 'changed' );
-				} else {
-					$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_newpagetext' );
-					# clear $OLDID placeholder in the message template
-					$keys['$OLDID']   = '';
-					$keys['$CHANGEDORCREATED'] = wfMsgForContent( 'created' );
-				}
-
-				if ($wgEnotifImpersonal && $this->oldid)
-					$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_lastdiff', $this->title->getFullURL( "oldid={$this->oldid}&diff=prev" ) );
-
-				$body = strtr( $body, $keys );
-				$pagetitle = $this->title->getPrefixedText();
-				$keys['$PAGETITLE']          = $pagetitle;
-				$keys['$PAGETITLE_URL']      = $this->title->getFullUrl();
-
-				$keys['$PAGEMINOREDIT']      = $medit;
-				$keys['$PAGESUMMARY']        = $summary;
-
-				$subject = strtr( $subject, $keys );
+				$subject = wfMsg( 'categorywatch-emailsubject', $page );
+				$body = wfMsgForContent( 'enotif_body' );
 
 				# Reveal the page editor's address as REPLY-TO address only if
 				# the user has not opted-out and the option is enabled at the
 				# global configuration level.
-				$editor = $this->editor;
-				$name    = $wgEnotifUseRealName ? $editor->getRealName() : $editor->getName();
-				$adminAddress = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
-				$editorAddress = new MailAddress( $editor );
-				if( $wgEnotifRevealEditorAddress
+				$name = $wgEnotifUseRealName ? $editor->getRealName() : $editor->getName();
+				if ( $wgEnotifRevealEditorAddress
 					&& ( $editor->getEmail() != '' )
 					&& $editor->getOption( 'enotifrevealaddr' ) ) {
-					if( $wgEnotifFromEditor ) {
-						$from    = $editorAddress;
+					if ( $wgEnotifFromEditor ) {
+						$from = $editorAddress;
 					} else {
-						$from    = $adminAddress;
+						$from = $adminAddress;
 						$replyto = $editorAddress;
 					}
 				} else {
-					$from    = $adminAddress;
+					$from = $adminAddress;
 					$replyto = new MailAddress( $wgNoReplyAddress );
 				}
 
-				if( $editor->isIP( $name ) ) {
-					#real anon (user:xxx.xxx.xxx.xxx)
-					$utext = wfMsgForContent('enotif_anon_editor', $name);
-					$subject = str_replace('$PAGEEDITOR', $utext, $subject);
-					$keys['$PAGEEDITOR']       = $utext;
+				# Define keys for body message
+				$keys = array(
+					'$NEWPAGE'          => $message,
+					'$CHANGEDORCREATED' => wfMsgForContent( 'created' ),
+					'$OLDID'            => ''
+				);
+				if ( $editor->isIP( $name ) ) {
+					$utext = wfMsgForContent( 'enotif_anon_editor', $name );
+					$subject = str_replace( '$PAGEEDITOR', $utext, $subject );
+					$keys['$PAGEEDITOR'] = $utext;
 					$keys['$PAGEEDITOR_EMAIL'] = wfMsgForContent( 'noemailtitle' );
 				} else {
-					$subject = str_replace('$PAGEEDITOR', $name, $subject);
-					$keys['$PAGEEDITOR']          = $name;
+					$subject = str_replace( '$PAGEEDITOR', $name, $subject );
+					$keys['$PAGEEDITOR'] = $name;
 					$emailPage = SpecialPage::getSafeTitleFor( 'Emailuser', $name );
 					$keys['$PAGEEDITOR_EMAIL'] = $emailPage->getFullUrl();
 				}
 				$userPage = $editor->getUserPage();
 				$keys['$PAGEEDITOR_WIKI'] = $userPage->getFullUrl();
+
+				# Replace keys, wrap text and send
 				$body = strtr( $body, $keys );
 				$body = wordwrap( $body, 72 );
-
-				if ( function_exists( 'userMailer' ) ) {
-					userMailer(
-						$to,
-						$from,
-						wfMsg( 'categorywatch-emailsubject', $page ),
-						$body,
-						$replyto
-					);
-				}
-				else {
-					UserMailer::send(
-						$to,
-						$from,
-						wfMsg( 'categorywatch-emailsubject', $page ),
-						$body,
-						$replyto
-					);
-				}
+				if ( function_exists( 'userMailer' ) ) userMailer( $to, $from, $subject, $body, $replyto );
+				else UserMailer::send( $to, $from, $subject, $body, $replyto );
 			}
 		}
 
