@@ -312,6 +312,16 @@ class HTMLForm {
 		$this->mFieldData = $fieldData;
 	}
 	
+	function importData( $fieldData ) {
+		// Filter data.
+		foreach( $fieldData as $name => &$value ) {
+			$field = $this->mFlatFields[$name];
+			$value = $field->filter( $value, $this->mFlatFields );
+		}
+		
+		$this->mFieldData = $fieldData;
+	}
+	
 	function suppressReset( $suppressReset = true ) {
 		$this->mShowReset = !$suppressReset;
 	}
