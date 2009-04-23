@@ -123,20 +123,14 @@ function wfLoadGadgetsStructured( $forceNewText = NULL ) {
 
 function wfGadgetsGetPreferences( $user, &$preferences ) {
 	$gadgets = wfLoadGadgetsStructured();
-	
 	if (!$gadgets) return true;
 	
 	wfLoadExtensionMessages( 'Gadgets' );
 	
 	$options = array_fill_keys( array_keys($gadgets), array() );
-	
-	$selectedGadgets = array();
-	
 	foreach( $gadgets as $section => $thisSection ) {
 		foreach( $thisSection as $gname => $code ) {
 			$options[$section][wfMsgExt( "gadget-$gname", 'parseinline' )] = $gname;
-			if ( $user->getOption( "gadget-$gname") )
-				$selectedGadgets[] = $gname;
 		}
 	}
 	
@@ -158,7 +152,6 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 			'section' => 'gadgets',
 			'label' => '&nbsp;',
 			'prefix' => 'gadget-',
-			'default' => $selectedGadgets,
 		);
 		
 	return true;

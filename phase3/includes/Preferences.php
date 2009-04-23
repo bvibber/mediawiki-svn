@@ -684,7 +684,6 @@ class Preferences {
 		
 		// Searchable namespaces back-compat with old format
 		$searchableNamespaces = SearchEngine::searchableNamespaces();
-		$searchDefault = self::loadOldSearchNs( $user );
 		
 		$nsOptions = array();
 		foreach( $wgContLang->getNamespaces() as $ns => $name ) {
@@ -702,7 +701,6 @@ class Preferences {
 					'label-message' => 'defaultns',
 					'options' => $nsOptions,
 					'section' => 'searchoptions',
-					'default' => $searchDefault,
 					'prefix' => 'searchNs',
 				);
 				
@@ -735,7 +733,7 @@ class Preferences {
 		## Prod in defaults from the user
 		global $wgDefaultUserOptions;
 		foreach( $defaultPreferences as $name => &$info ) {
-			$prefFromUser = $user->getOption( $name );
+			$prefFromUser = self::getOptionFromUser( $name, $info, $user );
 			$field = HTMLForm::loadInputFromParameters( $info ); // For validation
 			$globalDefault = isset($wgDefaultUserOptions[$name])
 								? $wgDefaultUserOptions[$name]
@@ -745,7 +743,7 @@ class Preferences {
 			if ( isset($info['default']) ) {
 				// Already set, no problem
 				continue;
-			} elseif ( isset( $user->mOptions[$name] ) && // Make sure we're not just pulling nothing
+			} elseif ( !is_null( $prefFromUser ) && // Make sure we're not just pulling nothing
 					$field->validate( $prefFromUser, $user->mOptions ) ) {
 				$info['default'] = $prefFromUser;
 			} elseif( $field->validate( $globalDefault, $user->mOptions ) ) {
@@ -756,6 +754,28 @@ class Preferences {
 		self::$defaultPreferences = $defaultPreferences;
 		
 		return $defaultPreferences;
+	}
+	
+	// Pull option from a user account. Handles stuff like array-type preferences.
+	static function getOptionFromUser( $name, $info, $user ) {
+		$val = $user->getOption( $name );
+		
+		// Handling for array-type preferences
+		if ( ( isset($info['type']) && $info['type'] == 'multiselect' ) ||
+				( isset($info['class']) && $info['class'] == 'HTMLMultiSelectField' ) ) {
+
+			$options = HTMLFormField::flattenOptions($info['options']);
+			$prefix = isset($info['prefix']) ? $info['prefix'] : $name;
+			$val = array();
+			
+			foreach( $options as $label => $value ) {
+				if ($user->getOption( "$prefix$value" ) ) {
+					$val[] = $value;
+				}
+			}
+		}
+	
+		return $val;
 	}
 	
 	static function generateSkinOptions( $user ) {

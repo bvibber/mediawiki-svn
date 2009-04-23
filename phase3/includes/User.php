@@ -1869,7 +1869,7 @@ class User {
 	 * @see getBoolOption()
 	 * @see getIntOption()
 	 */
-	function getOption( $oname, $defaultOverride = '' ) {
+	function getOption( $oname, $defaultOverride = null ) {
 		$this->loadOptions();
 
 		if ( is_null( $this->mOptions ) ) {
