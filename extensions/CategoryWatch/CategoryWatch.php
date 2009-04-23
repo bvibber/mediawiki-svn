@@ -88,12 +88,7 @@ class CategoryWatch {
 		$cl   = $dbr->tableName( 'categorylinks' );
 		$id   = $article->getID();
 		$res  = $dbr->select( $cl, 'cl_to', "cl_from = $id", __METHOD__, array( 'ORDER BY' => 'cl_sortkey' ) );
-		while ( $row = $dbr->fetchRow( $res ) ) {
-			$cat           = Title::newFromText( $row[0], NS_CATEGORY );
-			$catname       = $cat->getPrefixedText();
-			$caturl        = $cat->getFullUrl();
-			$this->after[] = "$catname ($caturl)";
-		}
+		while ( $row = $dbr->fetchRow( $res ) ) $this->after[] = $row[0];
 		$dbr->freeResult( $res );
 
 		# Get list of added and removed cats
@@ -102,7 +97,20 @@ class CategoryWatch {
 
 		# Notify watchers of each cat about the addition or removal of this article
 		if ( count( $add ) > 0 || count( $sub ) > 0 ) {
-
+			
+			# Add urls to article and cat names
+			foreach ( $add as $i => $v ) {
+				$cat     = Title::newFromText( $v, NS_CATEGORY );
+				$catname = $cat->getPrefixedText();
+				$caturl  = $cat->getFullUrl();
+				$add[$i] = "$catname ($caturl)";
+			}
+			foreach ( $sub as $i => $v ) {
+				$cat     = Title::newFromText( $v, NS_CATEGORY );
+				$catname = $cat->getPrefixedText();
+				$caturl  = $cat->getFullUrl();
+				$sub[$i] = "$catname ($caturl)";
+			}
 			$page     = $article->getTitle();
 			$pagename = $page->getPrefixedText();
 			$pageurl  = $page->getFullUrl();
@@ -122,7 +130,7 @@ class CategoryWatch {
 			}
 			else {
 
-				foreach ($add as $cat) {
+				foreach ( $add as $cat ) {
 					$title   = Title::newFromText( $cat, NS_CATEGORY );
 					$message = wfMsg( 'categorywatch-catadd', $page, $cat );
 					$this->notifyWatchers( $title, $user, $message );
