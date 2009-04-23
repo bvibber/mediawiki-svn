@@ -319,6 +319,11 @@ class HTMLForm {
 			$value = $field->filter( $value, $this->mFlatFields );
 		}
 		
+		foreach( $this->mFlatFields as $fieldname => $field ) {
+			if ( !isset($fieldData[$fieldname]) )
+				$fieldData[$fieldname] = $field->getDefault();
+		}
+		
 		$this->mFieldData = $fieldData;
 	}
 	
