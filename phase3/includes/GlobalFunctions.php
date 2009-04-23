@@ -2623,7 +2623,6 @@ function wfHttpOnlySafe() {
 			}
 		}
 	}
-
 	return true;
 }
 

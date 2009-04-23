@@ -60,7 +60,8 @@ class UploadFromChunks extends UploadBase {
 			$this->status = Array( 'error'=> 'missing session data');
 			return false;
 		}		
-	}	
+	}
+		
 	static function isValidRequest( $request ) {
 		$sessionData = $request->getSessionData('wsUploadData');
 		if(! self::isValidSessionKey( 
@@ -76,7 +77,8 @@ class UploadFromChunks extends UploadBase {
 		$warning = array();
 		return $warning;
 	}
-	function isEmptyFile(){
+	
+	function isEmptyFile(){		
 		//does not apply to chunk init
 		if(  $this->chunk_mode ==  UploadFromChunks::INIT ){
 			return false;
@@ -126,7 +128,7 @@ class UploadFromChunks extends UploadBase {
 			'mComment'			=> $comment,
 			'mWatch'			=> $watch,
 			'mFilteredName'		=> $this->mFilteredName,	
-			'mTempAppendPath'	=> null,	//the repo append path (not temporary local node mTempPath)
+			'mTempAppendPath'	=> null, //the repo append path (not temporary local node mTempPath)
 			'mDesiredDestName'	=> $this->mDesiredDestName,
 			'version'         	=> self::SESSION_VERSION,
 	   	);

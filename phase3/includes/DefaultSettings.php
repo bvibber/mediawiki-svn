@@ -1887,6 +1887,10 @@ $wgDiff3 = '/usr/bin/diff3';
 $wgDiff = '/usr/bin/diff';
 
 /**
+ * Path to php
+ */
+
+/**
  * We can also compress text stored in the 'text' table. If this is set on, new
  * revisions will be compressed on page save if zlib support is available. Any
  * compressed revisions will be decompressed on load regardless of this setting
@@ -3484,6 +3488,11 @@ $wgMaxShellTime = 180;
 * Executable name of PHP cli client (php/php5)
 */
 $wgPhpCli = 'php';
+
+/**
+ * the full path to shell out to php scripts:
+ */ 
+$wgPhpCliPath = '/usr/bin/php';
 
 /**
  * DJVU settings

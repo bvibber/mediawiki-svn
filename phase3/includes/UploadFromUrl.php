@@ -1,6 +1,7 @@
 <?php
 class UploadFromUrl extends UploadBase {
-		
+	protected $mTempDownloadPath;
+	
 	static function isAllowed( $user ) {
 		if( !$user->isAllowed( 'upload_by_url' ) )
 			return 'upload_by_url';
@@ -39,20 +40,36 @@ class UploadFromUrl extends UploadBase {
 				'error' => 'upload-proto-error',
 			);
 		}
+		//touch the temporary file:
+		file_put_contents( $this->mTempPath, '' );
+		
+		//move the empty target to the shared repo: 
+		$status = $this->saveTempUploadedFile( $this->mDestName, $this->mTempPath );		
+		if( $status->isOK() ) {			
+			$this->mTempDownloadPath = $status->value;							
+		}else{
+			return $status;
+		}
+		//now do the actual download to the shared target: 
+		$status = Http::doDownload ( $this->mUrl, $this->mTempDownloadPath);
+		
+		return $status;	
+		
+		/*
 		$res = $this->curlCopy();
 		if( $res !== true ) {
 			return array(
 				'status' => self::BEFORE_PROCESSING,
 				'error' => $res,
 			);
-		}
-		return self::OK;
+		}*/
+		
 	}
 	
 	/**
 	 * Safe copy from URL
 	 * Returns true if there was an error, false otherwise
-	 */
+
 	private function curlCopy() {
 		global $wgOut, $wgCopyUploadTimeout;
 
@@ -81,13 +98,13 @@ class UploadFromUrl extends UploadBase {
 
 		return true;
 	}
-	
+	*/
 	/**
 	 * Callback function for CURL-based web transfer
 	 * Write data to file unless we've passed the length limit;
 	 * if so, abort immediately.
 	 * @access private
-	 */
+	 
 	function uploadCurlCallback( $ch, $data ) {
 		global $wgMaxUploadSize;
 		$length = strlen( $data );
@@ -98,6 +115,7 @@ class UploadFromUrl extends UploadBase {
 		fwrite( $this->mCurlDestHandle, $data );
 		return $length;
 	}
+*/
 	static function isValidRequest( $request ){
 		if( !$request->getVal('wpUploadFileURL') )
 			return false;
