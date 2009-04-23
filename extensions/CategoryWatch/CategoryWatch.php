@@ -15,7 +15,7 @@
 
 if ( !defined('MEDIAWIKI' ) ) die( 'Not an entry point.' );
 
-define( 'CATEGORYWATCH_VERSION', '1.0.0, 2009-03-22' );
+define( 'CATEGORYWATCH_VERSION', '1.1.0, 2009-04-21' );
 
 $wgCategoryWatchNotifyEditor = true;
 $wgCategoryWatchUseAutoCat   = false;
@@ -106,9 +106,9 @@ class CategoryWatch {
 				$message = wfMsg( 'categorywatch-catmovein', $page, $add, $sub );
 				$this->notifyWatchers( $title, $user, $message );
 
-				$title   = Title::newFromText( $sub, NS_CATEGORY );
-				$message = wfMsg( 'categorywatch-catmoveout', $page, $sub, $add );
-				$this->notifyWatchers( $title, $user, $message );
+				#$title   = Title::newFromText( $sub, NS_CATEGORY );
+				#$message = wfMsg( 'categorywatch-catmoveout', $page, $sub, $add );
+				#$this->notifyWatchers( $title, $user, $message );
 			}
 			else {
 
@@ -118,11 +118,11 @@ class CategoryWatch {
 					$this->notifyWatchers( $title, $user, $message );
 				}
 
-				foreach ( $sub as $cat ) {
-					$title   = Title::newFromText( $cat, NS_CATEGORY );
-					$message = wfMsg( 'categorywatch-catsub', $page, $cat );
-					$this->notifyWatchers( $title, $user, $message );
-				}
+				#foreach ( $sub as $cat ) {
+				#	$title   = Title::newFromText( $cat, NS_CATEGORY );
+				#	$message = wfMsg( 'categorywatch-catsub', $page, $cat );
+				#	$this->notifyWatchers( $title, $user, $message );
+				#}
 			}
 		}
 
@@ -145,6 +145,7 @@ class CategoryWatch {
 		foreach ( $res as $row ) {
 			$watchingUser = User::newFromId( $row->wl_user );
 			if ( $watchingUser->getOption( 'enotifwatchlistpages' ) && $watchingUser->isEmailConfirmed() ) {
+				
 				$to = new MailAddress( $watchingUser );
 				$timecorrection = $watchingUser->getOption( 'timecorrection' );
 				$editdate =	$wgLang->timeanddate( wfTimestampNow(), true, false, $timecorrection );
@@ -160,6 +161,74 @@ class CategoryWatch {
 					$editdat1,
 					$edittim2
 				);
+
+				$subject = wfMsgForContent( 'enotif_subject' );
+				$body    = wfMsgForContent( 'enotif_body' );
+				$keys    = array();
+
+				if ( $this->oldid ) {
+					$difflink = $this->title->getFullUrl( 'diff=0&oldid=' . $this->oldid );
+					$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_lastvisited', $difflink );
+					$keys['$OLDID']   = $this->oldid;
+					$keys['$CHANGEDORCREATED'] = wfMsgForContent( 'changed' );
+				} else {
+					$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_newpagetext' );
+					# clear $OLDID placeholder in the message template
+					$keys['$OLDID']   = '';
+					$keys['$CHANGEDORCREATED'] = wfMsgForContent( 'created' );
+				}
+
+				if ($wgEnotifImpersonal && $this->oldid)
+					$keys['$NEWPAGE'] = wfMsgForContent( 'enotif_lastdiff', $this->title->getFullURL( "oldid={$this->oldid}&diff=prev" ) );
+
+				$body = strtr( $body, $keys );
+				$pagetitle = $this->title->getPrefixedText();
+				$keys['$PAGETITLE']          = $pagetitle;
+				$keys['$PAGETITLE_URL']      = $this->title->getFullUrl();
+
+				$keys['$PAGEMINOREDIT']      = $medit;
+				$keys['$PAGESUMMARY']        = $summary;
+
+				$subject = strtr( $subject, $keys );
+
+				# Reveal the page editor's address as REPLY-TO address only if
+				# the user has not opted-out and the option is enabled at the
+				# global configuration level.
+				$editor = $this->editor;
+				$name    = $wgEnotifUseRealName ? $editor->getRealName() : $editor->getName();
+				$adminAddress = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
+				$editorAddress = new MailAddress( $editor );
+				if( $wgEnotifRevealEditorAddress
+					&& ( $editor->getEmail() != '' )
+					&& $editor->getOption( 'enotifrevealaddr' ) ) {
+					if( $wgEnotifFromEditor ) {
+						$from    = $editorAddress;
+					} else {
+						$from    = $adminAddress;
+						$replyto = $editorAddress;
+					}
+				} else {
+					$from    = $adminAddress;
+					$replyto = new MailAddress( $wgNoReplyAddress );
+				}
+
+				if( $editor->isIP( $name ) ) {
+					#real anon (user:xxx.xxx.xxx.xxx)
+					$utext = wfMsgForContent('enotif_anon_editor', $name);
+					$subject = str_replace('$PAGEEDITOR', $utext, $subject);
+					$keys['$PAGEEDITOR']       = $utext;
+					$keys['$PAGEEDITOR_EMAIL'] = wfMsgForContent( 'noemailtitle' );
+				} else {
+					$subject = str_replace('$PAGEEDITOR', $name, $subject);
+					$keys['$PAGEEDITOR']          = $name;
+					$emailPage = SpecialPage::getSafeTitleFor( 'Emailuser', $name );
+					$keys['$PAGEEDITOR_EMAIL'] = $emailPage->getFullUrl();
+				}
+				$userPage = $editor->getUserPage();
+				$keys['$PAGEEDITOR_WIKI'] = $userPage->getFullUrl();
+				$body = strtr( $body, $keys );
+				$body = wordwrap( $body, 72 );
+
 				if ( function_exists( 'userMailer' ) ) {
 					userMailer(
 						$to,
