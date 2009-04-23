@@ -47,8 +47,11 @@ function efSkinPerPageBeforePageDisplayHook( &$out, &$skin ){
 		return true;
 
 	$ns = $wgTitle->getNamespace();
-	if( isset( $wgSkinPerNamespace[$ns] ) )
+	if( isset( $wgSkinPerNamespace[$ns] ) ) {
 		$skin = Skin::newFromKey( $wgSkinPerNamespace[$ns] );
+		if( is_callable( array( $skin, 'setTitle' ) ) ) # 1.15 +
+			$skin->setTitle( $out->getTitle() );
+	}
 
 	return true;
 }
