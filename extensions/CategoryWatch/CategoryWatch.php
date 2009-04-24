@@ -80,7 +80,7 @@ class CategoryWatch {
 	/**
 	 * Find changes in categorisation and send messages to watching users
 	 */
-	function onArticleSaveComplete( &$article, &$user, &$text ) {
+	function onArticleSaveComplete( &$article, &$user, &$text, &$summary, &$medit, ) {
 
 		# Get cats after update
 		$this->after = array();
@@ -102,31 +102,31 @@ class CategoryWatch {
 			$pagename = $page->getPrefixedText();
 			$pageurl  = $page->getFullUrl();
 			$page     = "$pagename ($pageurl)";
-
+			
 			if ( count( $add ) == 1 && count( $sub ) == 1 ) {
 				$add = array_shift( $add );
 				$sub = array_shift( $sub );
 
 				$title   = Title::newFromText( $add, NS_CATEGORY );
 				$message = wfMsg( 'categorywatch-catmovein', $page, $this->friendlyCat( $add ), $this->friendlyCat( $sub ) );
-				$this->notifyWatchers( $title, $user, $message );
+				$this->notifyWatchers( $title, $user, $message, $summary, $medit );
 
 				#$title   = Title::newFromText( $sub, NS_CATEGORY );
 				#$message = wfMsg( 'categorywatch-catmoveout', $page, $this->friendlyCat( $sub ), $this->friendlyCat( $add ) );
-				#$this->notifyWatchers( $title, $user, $message );
+				#$this->notifyWatchers( $title, $user, $message, $summary, $medit );
 			}
 			else {
 
 				foreach ( $add as $cat ) {
 					$title   = Title::newFromText( $cat, NS_CATEGORY );
 					$message = wfMsg( 'categorywatch-catadd', $page, $this->friendlyCat( $cat ) );
-					$this->notifyWatchers( $title, $user, $message );
+					$this->notifyWatchers( $title, $user, $message, $summary, $medit );
 				}
 
 				#foreach ( $sub as $cat ) {
 				#	$title   = Title::newFromText( $cat, NS_CATEGORY );
 				#	$message = wfMsg( 'categorywatch-catsub', $page, $this->friendlyCat( $cat ) );
-				#	$this->notifyWatchers( $title, $user, $message );
+				#	$this->notifyWatchers( $title, $user, $message, $summary, $medit );
 				#}
 			}
 		}
@@ -144,7 +144,7 @@ class CategoryWatch {
 		return "$catname ($caturl)";
 	}
 
-	function notifyWatchers( &$title, &$editor, &$message ) {
+	function notifyWatchers( &$title, &$editor, &$message, &$summary, &$medit ) {
 		global $wgLang, $wgEmergencyContact, $wgNoReplyAddress, $wgCategoryWatchNotifyEditor,
 			$wgEnotifRevealEditorAddress, $wgEnotifUseRealName, $wgPasswordSender, $wgEnotifFromEditor;
 
@@ -158,6 +158,8 @@ class CategoryWatch {
 		$page           = $title->getPrefixedText();
 		$adminAddress   = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
 		$editorAddress  = new MailAddress( $editor );
+		$summary        = $summary ? $summary : ' - ';
+		$medit          = $medit ? wfMsg( 'minoredit' ) : '';
 		while ( $row = $dbr->fetchRow( $res ) ) {
 			$watchingUser   = User::newFromId( $row[0] );
 			$timecorrection = $watchingUser->getOption( 'timecorrection' );
@@ -196,8 +198,9 @@ class CategoryWatch {
 					'$CHANGEDORCREATED' => wfMsgForContent( 'changed' ),
 					'$PAGETITLE_URL'    => $title->getFullUrl(),
 					'$PAGEEDITOR_WIKI'  => $userPage->getFullUrl(),
-					'$OLDID'            => '',
-					'$PAGEMINOREDIT'    => ''
+					'$PAGESUMMARY'      => $summary,
+					'$PAGEMINOREDIT'    => $medit,
+					'$OLDID'            => ''
 				);
 				if ( $editor->isIP( $name ) ) {
 					$utext = wfMsgForContent( 'enotif_anon_editor', $name );
