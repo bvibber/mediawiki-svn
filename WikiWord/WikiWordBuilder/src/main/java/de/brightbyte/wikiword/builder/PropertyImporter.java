@@ -12,9 +12,7 @@ import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
-import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
-import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
 
 public class PropertyImporter extends ConceptImporter {
 	
@@ -42,14 +40,7 @@ public class PropertyImporter extends ConceptImporter {
 	*/
 	
 	@Override
-	public int importPage(int namespace, String title, String text, Date timestamp) throws PersistenceException {
-		WikiTextAnalyzer.WikiPage analyzerPage = analyzer.makePage(namespace, title, text, forceTitleCase);
-		
-		if (!isRelevant(analyzerPage)) {
-			out.trace("ignored page "+title+" in namespace "+namespace); //XXX: trace only!
-			return -1;
-		}
-		
+	public int importPage(WikiTextAnalyzer.WikiPage analyzerPage, Date timestamp) throws PersistenceException {
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
 		
@@ -74,7 +65,8 @@ public class PropertyImporter extends ConceptImporter {
 		return cid;
 	}
 	
-	private boolean isRelevant(WikiPage analyzerPage) {
+	@Override 
+	protected boolean isRelevant(WikiPage analyzerPage) {
 		ResourceType t = analyzerPage.getResourceType();
 		
 		if (t!=ResourceType.ARTICLE 
@@ -101,7 +93,7 @@ public class PropertyImporter extends ConceptImporter {
 	}
 
 	@Override
-	public void configure(Arguments args) {
+	public void configure(Arguments args) throws Exception  {
 		super.configure(args);
 	}
 

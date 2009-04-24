@@ -80,8 +80,9 @@ public interface WikiWordImporter {
 	/**
 	 * called once after the WikiWordImporter has been created, should initialize permanent options
 	 * from command line switches.
+	 * @throws Exception 
 	 */
-	public void configure(Arguments args);
+	public void configure(Arguments args) throws Exception;
 
 	/**
 	 * Tells the WikiWordImporter to skip all pages up to the given title.

@@ -1,7 +1,10 @@
 package de.brightbyte.wikiword.builder;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 import java.util.Random;
@@ -15,10 +18,13 @@ import de.brightbyte.io.Output;
 import de.brightbyte.job.Progress;
 import de.brightbyte.job.ProgressRateTracker;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.util.SystemUtils;
 import de.brightbyte.wikiword.NamespaceSet;
+import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiTextSniffer;
+import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
@@ -110,6 +116,8 @@ public abstract class AbstractImporter implements WikiWordImporter {
 	protected LeveledOutput out;
 	
 	protected boolean forceTitleCase = false; //NOTE: per default, trust title case supplied by import driver!
+	private Collection<WikiPageFilter> filters;
+	protected String fileecoding = SystemUtils.getPropertySafely("file.encoding", "utf-8");
 
 	public AbstractImporter(WikiTextAnalyzer analyzer, WikiWordStoreBuilder store, TweakSet tweaks) {
 		if (analyzer==null) throw new NullPointerException();
@@ -125,6 +133,20 @@ public abstract class AbstractImporter implements WikiWordImporter {
 		if (tweaks.getTweak("importer.catchDupes", false)) stoplist = new ChunkyBitSet();
 		
 		out = new LogOutput();
+	}
+	
+	public void loadTitleList(File f, String enc) throws PersistenceException {
+		  if (enc==null) enc = fileecoding;
+		
+		   out.info("loading page title from "+f);
+			TitleSetFilter filter = new  TitleSetFilter(f, enc);
+			addFilter(filter);
+	}
+	
+	public void addFilter(WikiPageFilter filter) {
+			if (filter==null) return;
+			if (filters==null) filters = new ArrayList<WikiPageFilter>();
+			filters.add(filter);
 	}
 	
 	public void setLogLevel(int level) {
@@ -260,8 +282,50 @@ public abstract class AbstractImporter implements WikiWordImporter {
 		}
 	}
 	
-	protected abstract int importPage(int namespace, String title, String text, Date timestamp) throws PersistenceException;
+	
+	protected boolean isRelevant(WikiPage analyzerPage) {
+		ResourceType ptype = analyzerPage.getResourceType();
+		CharSequence text = analyzerPage.getText();
+		int namespace = analyzerPage.getNamespace();
+		CharSequence title = analyzerPage.getTitle();
 
+		if (text.length()==0) {
+			out.warn("blank page "+title); 
+			return false;
+		}
+		
+		if (ptype==ResourceType.OTHER || ptype==ResourceType.UNKNOWN) {
+			out.trace("bad page "+title+" in namespace "+namespace+" with type "+ptype); 
+			return false;
+		}
+		
+		if (filters!=null) {
+			for (WikiPageFilter filter: filters) {
+				if (!filter.matches(analyzerPage)) {
+					out.trace("page "+title+" matches filter "+filter.getName()); 
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}	
+	
+	protected final int importPage(int namespace, String title, String text, Date timestamp) throws PersistenceException {
+		    WikiTextAnalyzer.WikiPage page = analyzer.makePage(namespace, title, text, forceTitleCase);
+
+		    //TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
+		    
+			if (!isRelevant(page)) {
+				out.trace("ignored page "+title+" in namespace "+namespace); 
+				return -1;
+			}
+		    
+			return importPage(page, timestamp); 
+	}
+
+	protected abstract int importPage(WikiTextAnalyzer.WikiPage page, Date timestamp) throws PersistenceException;
+	
 	public int getProgressInterval() {
 		return progressInterval;
 	}
@@ -292,7 +356,10 @@ public abstract class AbstractImporter implements WikiWordImporter {
 				"can be used to reproduce random sets of pages.");
 
 		args.declare("catchdupes", null, false, Boolean.class, "catch and ignore duplicates (uses more memory)");
-		
+
+		args.declare("titlelist", null, true, String.class, "file containing a list if page titles to filter by, one per line");
+		args.declare("fileencoding", null, true, String.class, "encoding to use when reading files");
+
 		//args.declare("nodef", null, true, String.class, "do not extract and store definitions (improves speed)");
 		//args.declare("nolinks", null, true, String.class, "do not store links between pages (improves speed)");
 		//args.declare("noterms", null, true, String.class, "do not store term usage");
@@ -300,7 +367,7 @@ public abstract class AbstractImporter implements WikiWordImporter {
 		//args.declare("plaintext", null, true, String.class, "store full stripped text");
 	}
 
-	public void configure(Arguments args) {		
+	public void configure(Arguments args) throws Exception {		
 		if (args.isSet("from")) {
 			this.skipTo = args.getStringOption("from", null);
 		}
@@ -324,6 +391,13 @@ public abstract class AbstractImporter implements WikiWordImporter {
 		
 		if (args.isSet("catchdupes")) {
 			if (this.stoplist==null) this.stoplist = new ChunkyBitSet();
+		}
+		
+		fileecoding = args.getStringOption("fileencoding", "utf-8");
+
+		if (args.isSet("titlelist")) {
+			String f = args.getStringOption("titlelist", null);
+			loadTitleList(new File(f), fileecoding);
 		}
 	}
 

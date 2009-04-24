@@ -242,22 +242,14 @@ public class ConceptImporter extends AbstractImporter {
 	}
 	
 	@Override
-	public int importPage(int namespace, String title, String text, Date timestamp) throws PersistenceException {
-		if (text.length()==0) {
-			out.warn("WARNING: ignored blank page "+title); 
-			return -1;
-		}
-		
-		WikiTextAnalyzer.WikiPage analyzerPage = analyzer.makePage(namespace, title, text, forceTitleCase); 
+	public int importPage(WikiTextAnalyzer.WikiPage analyzerPage, Date timestamp) throws PersistenceException {
 		ResourceType ptype = analyzerPage.getResourceType();
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
+		String text = analyzerPage.getText().toString();
+		//int namespace = analyzerPage.getNamespace();
+		//String title = analyzerPage.getTitle().toString();
 		
-		if (ptype==ResourceType.OTHER || ptype==ResourceType.UNKNOWN) {
-			out.trace("ignored page "+title+" in namespace "+namespace+" with type "+ptype); 
-			return -1;
-		}
-
 		//TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
 		int rcId = storeResource(rcName, ptype, timestamp);
 				
@@ -476,7 +468,7 @@ public class ConceptImporter extends AbstractImporter {
 	}
 
 	@Override
-	public void configure(Arguments args) {
+	public void configure(Arguments args) throws Exception {
 		super.configure(args);
 		
 		this.storeDefinitions = !args.isSet("nodef");

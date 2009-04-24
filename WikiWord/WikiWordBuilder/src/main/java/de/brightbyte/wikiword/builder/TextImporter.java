@@ -8,6 +8,7 @@ import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
+import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer.WikiPage;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
 public class TextImporter extends AbstractImporter {
@@ -46,14 +47,22 @@ public class TextImporter extends AbstractImporter {
 	}
 	*/
 	
+	protected boolean isRelevant(WikiPage analyzerPage) {
+			int namespace = analyzerPage.getNamespace();
+			CharSequence title = analyzerPage.getTitle();
+			
+			if (namespace!=Namespace.MAIN) {
+				out.trace("ignored page "+title+" in namespace "+namespace); //XXX: trace only!
+				return false;
+			}
+			
+			return super.isRelevant(analyzerPage);
+	}	
+	
 	@Override
-	public int importPage(int namespace, String title, String text, Date timestamp) throws PersistenceException {
-		if (namespace!=Namespace.MAIN) {
-			out.trace("ignored page "+title+" in namespace "+namespace); //XXX: trace only!
-			return -1;
-		}
+	public int importPage(WikiPage analyzerPage, Date timestamp) throws PersistenceException {
+		String text = analyzerPage.getText().toString();
 
-		WikiTextAnalyzer.WikiPage analyzerPage = analyzer.makePage(namespace, title, text, forceTitleCase);  
 		ResourceType ptype = analyzerPage.getResourceType();
 		String name = analyzerPage.getName().toString();
 		
@@ -93,7 +102,7 @@ public class TextImporter extends AbstractImporter {
 	}
 
 	@Override
-	public void configure(Arguments args) {
+	public void configure(Arguments args) throws Exception {
 		super.configure(args);
 		
 		//this.storeDefinitions = !args.isSet("defs");

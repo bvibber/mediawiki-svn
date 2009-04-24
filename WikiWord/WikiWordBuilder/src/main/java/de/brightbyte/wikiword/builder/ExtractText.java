@@ -38,39 +38,8 @@ public class ExtractText extends ImportDump<LocalConceptStoreBuilder> {
 		
 		args.declareHelp("<dump-file>", "the dump file to process");
 		args.declare("wiki", null, true, String.class, "sets the wiki name (overrides the name given by, or " +
-			"guessed from, the <wiki-or-dump> parameter)");
+			"guessed from, the <dump-file> parameter)");
 	}
-
-	/*@Override
-	protected TextStoreBuilder createStore() throws IOException, PersistenceException {...
-		if (args.isSet("stream")) {
-			String n = args.getOption("stream", null);
-			OutputStream out;
-			String enc = args.getStringOption("encoding", "utf-8");
-			
-			if (n.equals("-")) {
-				out = System.out;
-			}
-			else {
-				File f = new File(n);
-				out = new BufferedOutputStream(new FileOutputStream(f, args.isSet("append")));
-			}
-			
-			return new PlainTextOutput(out, enc);
-		}
-		else {
-			return super.createStore();
-		}
-	}
-
-	@Override
-	protected TextStoreBuilder createStore(DataSource db) throws PersistenceException {
-		try {
-			return new DatabaseTextStoreBuilder(getCorpus(), db, tweaks);
-		} catch (SQLException e) {
-			throw new PersistenceException(e);
-		}
-	}*/
 	
 	public static void main(String[] argv) throws Exception {
 		ExtractText app = new ExtractText();
