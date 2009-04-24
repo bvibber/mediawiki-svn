@@ -98,19 +98,6 @@ class CategoryWatch {
 		# Notify watchers of each cat about the addition or removal of this article
 		if ( count( $add ) > 0 || count( $sub ) > 0 ) {
 			
-			# Add urls to article and cat names
-			foreach ( $add as $i => $v ) {
-				$cat     = Title::newFromText( $v, NS_CATEGORY );
-				$catname = $cat->getPrefixedText();
-				$caturl  = $cat->getFullUrl();
-				$add[$i] = "$catname ($caturl)";
-			}
-			foreach ( $sub as $i => $v ) {
-				$cat     = Title::newFromText( $v, NS_CATEGORY );
-				$catname = $cat->getPrefixedText();
-				$caturl  = $cat->getFullUrl();
-				$sub[$i] = "$catname ($caturl)";
-			}
 			$page     = $article->getTitle();
 			$pagename = $page->getPrefixedText();
 			$pageurl  = $page->getFullUrl();
@@ -121,30 +108,40 @@ class CategoryWatch {
 				$sub = array_shift( $sub );
 
 				$title   = Title::newFromText( $add, NS_CATEGORY );
-				$message = wfMsg( 'categorywatch-catmovein', $page, $add, $sub );
+				$message = wfMsg( 'categorywatch-catmovein', $page, $this->friendlyCat( $add ), $this->friendlyCat( $sub ) );
 				$this->notifyWatchers( $title, $user, $message );
 
 				#$title   = Title::newFromText( $sub, NS_CATEGORY );
-				#$message = wfMsg( 'categorywatch-catmoveout', $page, $sub, $add );
+				#$message = wfMsg( 'categorywatch-catmoveout', $page, $this->friendlyCat( $sub ), $this->friendlyCat( $add ) );
 				#$this->notifyWatchers( $title, $user, $message );
 			}
 			else {
 
 				foreach ( $add as $cat ) {
 					$title   = Title::newFromText( $cat, NS_CATEGORY );
-					$message = wfMsg( 'categorywatch-catadd', $page, $cat );
+					$message = wfMsg( 'categorywatch-catadd', $page, $this->friendlyCat( $cat ) );
 					$this->notifyWatchers( $title, $user, $message );
 				}
 
 				#foreach ( $sub as $cat ) {
 				#	$title   = Title::newFromText( $cat, NS_CATEGORY );
-				#	$message = wfMsg( 'categorywatch-catsub', $page, $cat );
+				#	$message = wfMsg( 'categorywatch-catsub', $page, $this->friendlyCat( $cat ) );
 				#	$this->notifyWatchers( $title, $user, $message );
 				#}
 			}
 		}
 
 		return true;
+	}
+
+	/**
+	 * Return "Category:Cat (URL)" from "Cat"
+	 */
+	function friendlyCat( $cat ) {
+		$cat     = Title::newFromText( $cat, NS_CATEGORY );
+		$catname = $cat->getPrefixedText();
+		$caturl  = $cat->getFullUrl();
+		return "$catname ($caturl)";
 	}
 
 	function notifyWatchers( &$title, &$editor, &$message ) {
@@ -161,8 +158,8 @@ class CategoryWatch {
 		$page           = $title->getPrefixedText();
 		$adminAddress   = new MailAddress( $wgPasswordSender, 'WikiAdmin' );
 		$editorAddress  = new MailAddress( $editor );
-		foreach ( $res as $row ) {
-			$watchingUser   = User::newFromId( $row->wl_user );
+		while ( $row = $dbr->fetchRow( $res ) ) {
+			$watchingUser   = User::newFromId( $row[0] );
 			$timecorrection = $watchingUser->getOption( 'timecorrection' );
 			$editdate       = $wgLang->timeanddate( wfTimestampNow(), true, false, $timecorrection );
 			if ( $watchingUser->getOption( 'enotifwatchlistpages' ) && $watchingUser->isEmailConfirmed() ) {
@@ -192,10 +189,11 @@ class CategoryWatch {
 				# Define keys for body message
 				$userPage = $editor->getUserPage();
 				$keys = array(
+					'$WATCHINGUSERNAME' => $name,
 					'$NEWPAGE'          => $message,
 					'$PAGETITLE'        => $page,
 					'$PAGEEDITDATE'     => $editdate,
-					'$CHANGEDORCREATED' => wfMsgForContent( 'created' ),
+					'$CHANGEDORCREATED' => wfMsgForContent( 'changed' ),
 					'$PAGETITLE_URL'    => $title->getFullUrl(),
 					'$PAGEEDITOR_WIKI'  => $userPage->getFullUrl(),
 					'$OLDID'            => '',
