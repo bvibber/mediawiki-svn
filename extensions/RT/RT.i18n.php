@@ -28,7 +28,7 @@ You tried: '''\$1'''",
 You tried: '''\$1'''",
 	'rt-badqueue'     => "Invalid queue (q) arg: must be a simple word.
 You tried: '''\$1'''",
-	'rt-badowner'     => "Invalid owner (o) arg: must be a valud username.
+	'rt-badowner'     => "Invalid owner (o) arg: must be a valid username.
 You tried: '''\$1'''",
 	'rt-nomatches'    => 'No matching RT tickets were found',
 );
