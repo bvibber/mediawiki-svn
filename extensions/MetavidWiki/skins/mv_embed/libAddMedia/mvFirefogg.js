@@ -317,7 +317,9 @@ mvFirefogg.prototype = {
 		       		
 			if( _this.oldResponseText != response_text){								        					      					        				
 				js_log('new result text:' + response_text);
-				_this.oldResponseText = response_text;
+				_this.oldResponseText = response_text;				
+				//try and pare the response see if we need to take action:
+				   
 			}		
 		    //update progress bar
 		    _this.fogg_update_progress( _this.fogg.progress() );
@@ -342,8 +344,7 @@ mvFirefogg.prototype = {
 		       		}else{
 		       			//done state with error? ..not really possible given how firefogg works
 		       			js_log(" upload done, in chunks mode, but no resultUrl!");
-		       		}
-		       		alert("upload done");		       				       				       			       		
+		       		}		       				       				       				       			       	
 		       	}													
 			}else{  
 				//upload error: 
