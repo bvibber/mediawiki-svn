@@ -20,7 +20,7 @@
 
 $rt_uri = 'http://www.mediawiki.org/wiki/Extension:RT';
 
-## Default values: Override in LocalSettings.php, not here!
+# Default values: Override in LocalSettings.php, not here!
 $wgRequestTracker_URL         = 'http://rt.example.com/Ticket/Display.html?id';
 $wgRequestTracker_DBconn      = 'user=rt dbname=rt';
 $wgRequestTracker_Formats     = array();
@@ -28,13 +28,13 @@ $wgRequestTracker_Cachepage   = 0;
 $wgRequestTracker_Useballoons = 1;
 $wgRequestTracker_Active      = 1;
 
-## Time formatting
-## Example formats:
-## FMHH:MI AM FMMon DD, YYYY => 2:42 PM Jan 23, 2009
-## HH:MI FMMonth DD, YYYY => 14:42 January 23, 2009
-## YYYY/MM/DD => 2009/01/23
-## For a more complete list of possibilities, please visit:
-## http://www.postgresql.org/docs/current/interactive/functions-formatting.html
+# Time formatting
+# Example formats:
+# FMHH:MI AM FMMon DD, YYYY => 2:42 PM Jan 23, 2009
+# HH:MI FMMonth DD, YYYY => 14:42 January 23, 2009
+# YYYY/MM/DD => 2009/01/23
+# For a more complete list of possibilities, please visit:
+# http://www.postgresql.org/docs/current/interactive/functions-formatting.html
 $wgRequestTracker_TIMEFORMAT_LASTUPDATED  = 'FMHH:MI AM FMMonth DD, YYYY';
 $wgRequestTracker_TIMEFORMAT_LASTUPDATED2 = 'FMMonth DD, YYYY';
 $wgRequestTracker_TIMEFORMAT_CREATED      = 'FMHH:MI AM FMMonth DD, YYYY';
@@ -80,9 +80,9 @@ function efRT_Setup() {
 	return true;
 }
 
- 
+
 // This is called to process <rt>...</rt> within a page
-function rtRender( $input, $args=array(), $parser=null ) {
+function rtRender( $input, $args = array(), $parser = null ) {
 
 	global $wgRequestTracker_Cachepage, $wgRequestTracker_Active, $wgRequestTracker_DBconn,
 		$wgRequestTracker_TIMEFORMAT_LASTUPDATED,
@@ -128,7 +128,7 @@ function rtRender( $input, $args=array(), $parser=null ) {
 		}
 	}
 
-	// If we are not 'active', we leave right away, with minimal output	
+	// If we are not 'active', we leave right away, with minimal output
 	if ( !$wgRequestTracker_Active ) {
 		if ( $ticketnum ) {
 			return "<span class='rt-ticket-inactive'>RT #$ticketnum</span>";
@@ -164,8 +164,8 @@ function rtRender( $input, $args=array(), $parser=null ) {
 
 	// If just a single number, treat it as <rt>#</rt>
 	if ( 1 === count( $args ) ) {
-		if ( preg_match( '/^\d+$/', key($args) ) ) {
-			$ticketnum = key($args);
+		if ( preg_match( '/^\d+$/', key( $args ) ) ) {
+			$ticketnum = key( $args );
 		}
 	}
 
@@ -221,7 +221,7 @@ function rtRender( $input, $args=array(), $parser=null ) {
 			if ( array_key_exists( $word, $valid_orderby ) ) {
 				$word = $valid_orderby[$word];
 			}
-			else if ( !preg_match ('/^\d+$/', $word ) ) {
+			else if ( !preg_match ( '/^\d+$/', $word ) ) {
 				die ( wfMsg ( 'rt-badorderby', $word ) );
 			}
 			$orderby .= " $word$mod,";
@@ -251,7 +251,7 @@ function rtRender( $input, $args=array(), $parser=null ) {
 
 	// See if we are limiting to one or more queues
 	$searchq = '';
-	if ( array_key_exists('q', $args ) ) {
+	if ( array_key_exists( 'q', $args ) ) {
 		$qargs = trim( strtolower( $args['q'] ) );
 		$searchq = 'AND LOWER(q.name) IN (';
 		foreach ( preg_split( '/\s*,\s*/', $qargs ) as $word ) {
@@ -266,7 +266,7 @@ function rtRender( $input, $args=array(), $parser=null ) {
 
 	// See if we are limiting to one or more owners
 	$searchowner = '';
-	if ( array_key_exists('o', $args ) ) {
+	if ( array_key_exists( 'o', $args ) ) {
 		$oargs = trim( strtolower( $args['o'] ) );
 		$searchowner = 'AND LOWER(u.name) IN (';
 		foreach ( preg_split( '/\s*,\s*/', $oargs ) as $word ) {
@@ -298,8 +298,8 @@ function rtRender( $input, $args=array(), $parser=null ) {
 
 	// The queue: show by default unless searching a single queue
 	$showqueue = 1;
-	if ( array_key_exists('noqueue', $args )
-		|| ($searchq
+	if ( array_key_exists( 'noqueue', $args )
+		|| ( $searchq
 			&& false === strpos( $searchq, ',' )
 			&& !array_key_exists( 'queue', $args ) ) ) {
 		$showqueue = 0;
@@ -317,7 +317,7 @@ function rtRender( $input, $args=array(), $parser=null ) {
 	// The status: show by default unless searching a single status
 	$showstatus = 1;
 	if ( array_key_exists( 'nostatus', $args )
-		|| ( false === strpos($searchstatus, ',' )
+		|| ( false === strpos( $searchstatus, ',' )
 			&& !array_key_exists( 'status', $args ) ) ) {
 		$showstatus = 0;
 	}
@@ -337,7 +337,7 @@ function rtRender( $input, $args=array(), $parser=null ) {
 	$showage       = array_key_exists( 'age',       $args );
 
 	// Unless 'tablerows' has been set, output the table and header tags
-	if ( !array_key_exists( 'tablerows',$args ) ) {
+	if ( !array_key_exists( 'tablerows', $args ) ) {
 
 		$output = "<table class='rt-table' border='1'><tr>";
 
@@ -362,12 +362,12 @@ function rtRender( $input, $args=array(), $parser=null ) {
 
 		if ( $showticket )  {
 			$id = rtFancyLink( $row, $args, $parser, 1 );
-			$output .= "<td style='white-space: nowrap'>$id</td>"; 
+			$output .= "<td style='white-space: nowrap'>$id</td>";
 		}
 		if ( $showqueue )     { $output .= '<td>' . htmlspecialchars( $row['queue'] )   . '</td>'; }
 		if ( $showsubject )   { $output .= '<td>' . htmlspecialchars( $row['subject'] ) . '</td>'; }
 		if ( $showstatus )    { $output .= '<td>' . htmlspecialchars( $row['status'] )  . '</td>'; }
-		if ( $showpriority )  { $output .= '<td>' . htmlspecialchars( $row['priority'] ). '</td>'; }
+		if ( $showpriority )  { $output .= '<td>' . htmlspecialchars( $row['priority'] ) . '</td>'; }
 		if ( $showowner )     { $output .= '<td>' . htmlspecialchars( $row['owner'] )   . '</td>'; }
 		if ( $showupdated )   { $output .= '<td>' . $row['lastupdated']                 . '</td>'; }
 		if ( $showupdated2 )  { $output .= '<td>' . $row['lastupdated2']                . '</td>'; }
@@ -379,7 +379,7 @@ function rtRender( $input, $args=array(), $parser=null ) {
 		$output .= '<tr>';
 	}
 
-	if ( !array_key_exists( 'tablerows',$args ) ) {
+	if ( !array_key_exists( 'tablerows', $args ) ) {
 		$output .= '</table>';
 	}
 
@@ -394,8 +394,8 @@ function rtFancyLink( $row, $args, $parser, $istable ) {
 	$ticketnum = $row['id'];
 	$ret = "[$wgRequestTracker_URL=$ticketnum RT #$ticketnum]";
 
-	## Check for any custom format args in the rt tag.
-	## If any are found, use that and ignore any other args
+	# Check for any custom format args in the rt tag.
+	# If any are found, use that and ignore any other args
 	$foundformat = 0;
 	foreach ( array_keys( $args ) as $val ) {
 		if ( array_key_exists( $val, $wgRequestTracker_Formats ) ) {
@@ -409,7 +409,7 @@ function rtFancyLink( $row, $args, $parser, $istable ) {
 		}
 	}
 
-	## Process any column-based args to the rt tag
+	# Process any column-based args to the rt tag
 	if ( !$foundformat and !$istable ) {
 		foreach ( array_keys( $args ) as $val ) {
 			if ( array_key_exists( $val, $row ) ) {
@@ -437,7 +437,7 @@ function rtFancyLink( $row, $args, $parser, $istable ) {
 	$safesub = htmlspecialchars( $safesub );
 
 	$safeowner = $row['owner'];
-	if ($row['owner'] !== $row['username']) {
+	if ( $row['owner'] !== $row['username'] ) {
 		$safeowner .= " ($row[username])";
 	}
 	$safeowner = preg_replace( '/\"/', '\"', $safeowner );
@@ -461,7 +461,7 @@ function rtFancyLink( $row, $args, $parser, $istable ) {
 		$text .= "<br />Last updated: <b>$row[lastupdated]</b>";
 	}
 
-	## Prepare some balloon-tek
+	# Prepare some balloon-tek
 	$link   = isset( $args['link'] )   ? $args['link']   : '';
 	$target = isset( $args['target'] ) ? $args['target'] : '';
 	$sticky = isset( $args['sticky'] ) ? $args['sticky'] : '0';
@@ -471,12 +471,12 @@ function rtFancyLink( $row, $args, $parser, $istable ) {
 	$event2 = '';
 	$event  = "$event=\"balloon.showTooltip(event,'${text}',${sticky},${width})\"";
 
-	if ( preg_match( '/onclick/',$event ) && $args['hover'] ) {
+	if ( preg_match( '/onclick/', $event ) && $args['hover'] ) {
 		$event2 = " onmouseover=\"balloon.showTooltip(event,'" . $args['hover'] . "',0,${width})\"";
 	}
 
 	$has_style = isset( $args['style'] ) && $args['style'];
-	$style  = "style=\"" . ($has_style ? $args['style'] . ";cursor:pointer\"" : "cursor:pointer\"");
+	$style  = "style=\"" . ( $has_style ? $args['style'] . ";cursor:pointer\"" : "cursor:pointer\"" );
 	$target = $target ? "target=${target}" : '';
 	$output = "<span class='rt-ticket' ${event} ${event2} ${style}>$ret</span>";
 
