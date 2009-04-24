@@ -4,7 +4,7 @@
  * Extension that adds a new toggle in user preferences to show if the user is
  * aviabled or not. See http://mediawiki.org/wiki/Extension:OnlineStatus for
  * more informations.
- * Require MediaWiki 1.11.0 to work.
+ * Require MediaWiki 1.15 alpha r49790 or higher to work.
  *
  * @addtogroup Extensions
  * @author Alexandre Emsenhuber
@@ -27,6 +27,7 @@ $wgExtensionCredits['other'][] = array(
  */
 $wgAllowAnyUserOnlineStatusFunction = true;
 
+// FIXME: Should be a separate class file
 class OnlineStatus {
 
 	static function init(){
@@ -54,7 +55,7 @@ class OnlineStatus {
 		$wgHooks['SavePreferences'][] = 'OnlineStatus::SavePreferences';
 
 		// User hook
-		$wgHooks['UserToggles'][] = 'OnlineStatus::UserToggles';
+		$wgHooks['GetPreferences'][] = 'OnlineStatus::onGetPreferences';
 		$wgHooks['UserLoginComplete'][] = 'OnlineStatus::UserLoginComplete';
 		$wgHooks['UserLogoutComplete'][] = 'OnlineStatus::UserLogoutComplete';
 
@@ -288,23 +289,35 @@ class OnlineStatus {
 	}
 
 	/**
-	 * Hook for UserToggles
+	 * Hook for user preferences
 	 */
-	static function UserToggles( &$toggles ){
-		$toggles[] = 'onlineOnLogin';
-		$toggles[] = 'offlineOnLogout';
-		return true;	
+	public static function onGetPreferences( $user, &$preferences ) {
+		$preferences['onlinestatusonlogin'] =
+			array(
+				'type' => 'toggle',
+				'section' => 'misc',
+				'label-message' => 'onlinestatus-pref-onlineonlogin',
+			);
+
+		$preferences['onlinestatusonlogoff'] =
+			array(
+				'type' => 'toggle',
+				'section' => 'misc',
+				'label-message' => 'onlinestatus-pref-offlineonlogout',
+			);
+
+		return true;
 	}
 
 	/**
 	 * Hook for UserLoginComplete
 	 */
 	static function UserLoginComplete( $user ){
-		if( $user->getOption( 'offlineOnLogout' ) ){
+		if( $user->getOption( 'offlineonlogout' ) ){
 			$user->setOption( 'online', 'online' );
 			$user->saveSettings();
 		}
-		return true;	
+		return true;
 	}
 
 	/**
@@ -316,11 +329,11 @@ class OnlineStatus {
 		$oldUser = User::newFromName( $oldName );
 		if( !$oldUser instanceof User )
 			return true;
-		if( $oldUser->getOption( 'offlineOnLogout' ) ){
+		if( $oldUser->getOption( 'offlineonlogout' ) ){
 			$oldUser->setOption( 'online', 'offline' );
 			$oldUser->saveSettings();
 		}
-		return true;	
+		return true;
 	}
 
 	/**
