@@ -22,7 +22,7 @@ $messages['en'] = array(
 	'onlinestatus-toggles-show' => 'Show online status on my user page',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Change my status to online when logging-in',
+	'onlinestatus-pref-onlineonlogin' => 'Change my status to online when logging-in',
 	'onlinestatus-pref-offlineonlogout' => 'Change my status to offline when logging-out',
 );
 
@@ -63,7 +63,7 @@ $messages['ar'] = array(
 	'onlinestatus-toggles-show' => 'اعرض حالتي على الإنترنت على صفحة مستخدمي',
 	'onlinestatus-toggle-offline' => 'غير متصل',
 	'onlinestatus-toggle-online' => 'متصل',
-	'onlinestatus-pref-offlineonlogon' => 'غير حالتي إلى موجود عند تسجيل الدخول',
+	'onlinestatus-pref-onlineonlogin' => 'غير حالتي إلى موجود عند تسجيل الدخول',
 	'onlinestatus-pref-offlineonlogout' => 'غير حالتي إلى غير موجود عند تسجيل الخروج',
 );
 
@@ -84,7 +84,7 @@ $messages['arz'] = array(
 	'onlinestatus-toggles-show' => 'اعرض حالتى على الإنترنت على صفحة يوزرى',
 	'onlinestatus-toggle-offline' => 'غير متصل',
 	'onlinestatus-toggle-online' => 'متصل',
-	'onlinestatus-pref-offlineonlogon' => 'غير حالتى إلى موجود عند تسجيل الدخول',
+	'onlinestatus-pref-onlineonlogin' => 'غير حالتى إلى موجود عند تسجيل الدخول',
 	'onlinestatus-pref-offlineonlogout' => 'غير حالتى إلى غير موجود عند تسجيل الخروج',
 );
 
@@ -105,7 +105,7 @@ $messages['be-tarask'] = array(
 	'onlinestatus-toggles-show' => 'Паказаць маю прысутнасьць на маёй старонцы ўдзельніка',
 	'onlinestatus-toggle-offline' => 'Няма ў {{GRAMMAR:месны|{{SITENAME}}}}',
 	'onlinestatus-toggle-online' => 'У {{GRAMMAR:месны|{{SITENAME}}}}',
-	'onlinestatus-pref-offlineonlogon' => 'Зьмяняць мой статус на «у {{GRAMMAR:месны|{{SITENAME}}}}» пры ўваходзе ў сыстэму',
+	'onlinestatus-pref-onlineonlogin' => 'Зьмяняць мой статус на «у {{GRAMMAR:месны|{{SITENAME}}}}» пры ўваходзе ў сыстэму',
 	'onlinestatus-pref-offlineonlogout' => 'Зьмяняць мой статус на «няма ў {{GRAMMAR:месны|{{SITENAME}}}}» пры выхадзе з сыстэмы',
 );
 
@@ -141,7 +141,7 @@ $messages['bs'] = array(
 	'onlinestatus-toggles-show' => 'Prikaži status na mreži na mojoj korisničkoj stranici',
 	'onlinestatus-toggle-offline' => 'Van mreže',
 	'onlinestatus-toggle-online' => 'Na mreži',
-	'onlinestatus-pref-offlineonlogon' => "Promijeni moj status na ''na mreži'' pri prijavi",
+	'onlinestatus-pref-onlineonlogin' => "Promijeni moj status na ''na mreži'' pri prijavi",
 	'onlinestatus-pref-offlineonlogout' => "Promijeni moj status na ''van mreže'' pri odjavi",
 );
 
@@ -159,7 +159,7 @@ $messages['ca'] = array(
 	'onlinestatus-toggles-show' => "Mostra l'estat de connexió a la pàgina d'usuari",
 	'onlinestatus-toggle-offline' => 'Desconnectat',
 	'onlinestatus-toggle-online' => 'Connectat',
-	'onlinestatus-pref-offlineonlogon' => 'Canvia el meu estat a «en línia» en iniciar sessió',
+	'onlinestatus-pref-onlineonlogin' => 'Canvia el meu estat a «en línia» en iniciar sessió',
 	'onlinestatus-pref-offlineonlogout' => 'Canvia el meu estat a «fora de línia» quan finalitzi la sessió',
 );
 
@@ -181,7 +181,7 @@ $messages['cs'] = array(
 	'onlinestatus-toggles-show' => 'Zobrazovat můj stav na mojí uživatelské stránce',
 	'onlinestatus-toggle-offline' => 'Odpojený',
 	'onlinestatus-toggle-online' => 'Připojený',
-	'onlinestatus-pref-offlineonlogon' => 'Změnit po přihlášení můj stav na „online“',
+	'onlinestatus-pref-onlineonlogin' => 'Změnit po přihlášení můj stav na „online“',
 	'onlinestatus-pref-offlineonlogout' => 'Změnit po odhlášení můj stav na „offline“',
 );
 
@@ -201,7 +201,7 @@ $messages['cy'] = array(
 	'onlinestatus-toggles-show' => 'Dangos fy nghylwr ar/all-lein ar fy nhudalen defnyddiwr',
 	'onlinestatus-toggle-offline' => 'All-lein',
 	'onlinestatus-toggle-online' => 'Ar-lein',
-	'onlinestatus-pref-offlineonlogon' => 'Newid nodyn fy nghyflwr i ar-lein wrth fewngofnodi',
+	'onlinestatus-pref-onlineonlogin' => 'Newid nodyn fy nghyflwr i ar-lein wrth fewngofnodi',
 	'onlinestatus-pref-offlineonlogout' => 'Newid nodyn fy nghyflwr i all-lein wrth allgofnodi',
 );
 
@@ -221,7 +221,7 @@ $messages['de'] = array(
 	'onlinestatus-toggles-show' => 'Zeige Onlinestatus auf meiner Benutzerseite',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Status auf online ändern, sobald ich mich anmelde',
+	'onlinestatus-pref-onlineonlogin' => 'Status auf online ändern, sobald ich mich anmelde',
 	'onlinestatus-pref-offlineonlogout' => 'Status auf offline ändern, wenn ich mich abmelde',
 );
 
@@ -241,7 +241,7 @@ $messages['dsb'] = array(
 	'onlinestatus-toggles-show' => 'Status online na mójom wužywarskim boku pokazaś',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Status pśi pśizjawjenju do online změniś',
+	'onlinestatus-pref-onlineonlogin' => 'Status pśi pśizjawjenju do online změniś',
 	'onlinestatus-pref-offlineonlogout' => 'Status pśi wótzjawjenju do offline změniś',
 );
 
@@ -293,7 +293,7 @@ $messages['eu'] = array(
 	'onlinestatus-toggles-show' => 'Erakutsi konexio egoera nire erabiltzaile orrialdean',
 	'onlinestatus-toggle-offline' => 'Deskonektatuta',
 	'onlinestatus-toggle-online' => 'Konektatuta',
-	'onlinestatus-pref-offlineonlogon' => 'Saioa hastean nire konexio-egoera konektatua jarri',
+	'onlinestatus-pref-onlineonlogin' => 'Saioa hastean nire konexio-egoera konektatua jarri',
 	'onlinestatus-pref-offlineonlogout' => 'Saioa ixtean nire konexio-egoera deskonektatua jarri',
 );
 
@@ -332,7 +332,7 @@ $messages['fr'] = array(
 	'onlinestatus-toggles-show' => 'Montrer mon statut sur ma page utilisateur',
 	'onlinestatus-toggle-offline' => 'Absent',
 	'onlinestatus-toggle-online' => 'Présent',
-	'onlinestatus-pref-offlineonlogon' => 'Changer mon statut à en ligne quand je me connecte',
+	'onlinestatus-pref-onlineonlogin' => 'Changer mon statut à en ligne quand je me connecte',
 	'onlinestatus-pref-offlineonlogout' => 'Changer mon statut à hors ligne quand je me déconnecte',
 );
 
@@ -352,7 +352,7 @@ $messages['gl'] = array(
 	'onlinestatus-toggles-show' => 'Amosar o meu estado na miña páxina de usuario',
 	'onlinestatus-toggle-offline' => 'Desconectado',
 	'onlinestatus-toggle-online' => 'Conectado',
-	'onlinestatus-pref-offlineonlogon' => 'Cambiar o meu status a "conectado" cando acceda ao sistema',
+	'onlinestatus-pref-onlineonlogin' => 'Cambiar o meu status a "conectado" cando acceda ao sistema',
 	'onlinestatus-pref-offlineonlogout' => 'Cambiar o meu status a "desconectado" cando saia do sistema',
 );
 
@@ -379,7 +379,7 @@ $messages['gsw'] = array(
 	'onlinestatus-toggles-show' => 'Zeig Onlinestatus uf myynere Benutzersyte',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Status uf online ändere, wänn i mi aamäld',
+	'onlinestatus-pref-onlineonlogin' => 'Status uf online ändere, wänn i mi aamäld',
 	'onlinestatus-pref-offlineonlogout' => 'Status uf offline ändere, wänn i mi abmäld',
 );
 
@@ -400,7 +400,7 @@ $messages['he'] = array(
 	'onlinestatus-toggles-show' => 'הצגת מצב הנוכחות בדף המשתמש שלכם',
 	'onlinestatus-toggle-offline' => 'מנותק',
 	'onlinestatus-toggle-online' => 'מקוון',
-	'onlinestatus-pref-offlineonlogon' => 'שינוי המצב שלכם למקוון בעת הכניסה לחשבון',
+	'onlinestatus-pref-onlineonlogin' => 'שינוי המצב שלכם למקוון בעת הכניסה לחשבון',
 	'onlinestatus-pref-offlineonlogout' => 'שינוי המצב שלכם למנותק בעת היציאה מהחשבון',
 );
 
@@ -447,7 +447,7 @@ $messages['hsb'] = array(
 	'onlinestatus-toggles-show' => 'Status online na mojej wužiwarskej stronje pokazać',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Při přizjewjenju status do online změnić',
+	'onlinestatus-pref-onlineonlogin' => 'Při přizjewjenju status do online změnić',
 	'onlinestatus-pref-offlineonlogout' => 'Při wotzjewjenju status do offline změnić',
 );
 
@@ -466,7 +466,7 @@ $messages['hu'] = array(
 	'onlinestatus-toggles-explain' => 'Lehetővé teszi számodra, hogy a szerkesztői lapodon jelezd más szerkesztők számára, hogy wikiközelben vagy-e vagy sem.',
 	'onlinestatus-toggles-show' => 'Elérhetőségi állapotom mutatása a szerkesztői lapomon',
 	'onlinestatus-toggle-online' => 'Elérhető',
-	'onlinestatus-pref-offlineonlogon' => 'Változtassa az állapotomat elérhetőre, ha bejelentkezek',
+	'onlinestatus-pref-onlineonlogin' => 'Változtassa az állapotomat elérhetőre, ha bejelentkezek',
 );
 
 /** Interlingua (Interlingua)
@@ -485,7 +485,7 @@ $messages['ia'] = array(
 	'onlinestatus-toggles-show' => 'Monstrar mi stato de connexion in mi pagina de usator',
 	'onlinestatus-toggle-offline' => 'Foras de linea',
 	'onlinestatus-toggle-online' => 'In linea',
-	'onlinestatus-pref-offlineonlogon' => 'Cambiar mi stato a in linea quando io aperi un session',
+	'onlinestatus-pref-onlineonlogin' => 'Cambiar mi stato a in linea quando io aperi un session',
 	'onlinestatus-pref-offlineonlogout' => 'Cambiar mi stato a foras de linea quando io claude mi session',
 );
 
@@ -506,7 +506,7 @@ $messages['ja'] = array(
 	'onlinestatus-toggles-show' => '自分の利用者ページでオンライン状態を表示する',
 	'onlinestatus-toggle-offline' => 'オフライン',
 	'onlinestatus-toggle-online' => 'オンライン',
-	'onlinestatus-pref-offlineonlogon' => 'ログイン時に、自分の状態をオンラインに変更する',
+	'onlinestatus-pref-onlineonlogin' => 'ログイン時に、自分の状態をオンラインに変更する',
 	'onlinestatus-pref-offlineonlogout' => 'ログアウト時に、自分の状態をオフラインに変更する',
 );
 
@@ -537,7 +537,7 @@ $messages['km'] = array(
 	'onlinestatus-toggles-show' => 'បង្ហាញ​ស្ថានភាព​លើបណ្ដាញ​នៅ​លើ​ទំព័រ​អ្នកប្រើប្រាស់​របស់​ខ្ញុំ',
 	'onlinestatus-toggle-offline' => 'ក្រៅបណ្ដាញ',
 	'onlinestatus-toggle-online' => 'លើបណ្ដាញ',
-	'onlinestatus-pref-offlineonlogon' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​លើបណ្ដាញ នៅពេល​ឡុកអ៊ីន​(ចូល)',
+	'onlinestatus-pref-onlineonlogin' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​លើបណ្ដាញ នៅពេល​ឡុកអ៊ីន​(ចូល)',
 	'onlinestatus-pref-offlineonlogout' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​ក្រៅបណ្ដាញ នៅពេល​ចាកចេញ',
 );
 
@@ -557,7 +557,7 @@ $messages['ksh'] = array(
 	'onlinestatus-toggles-show' => 'Zeich minge Online-Stattus op minge Metmachersigg',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Donn minge Stattuß op „onlain“ saze, wann esch ennlogg',
+	'onlinestatus-pref-onlineonlogin' => 'Donn minge Stattuß op „onlain“ saze, wann esch ennlogg',
 	'onlinestatus-pref-offlineonlogout' => 'Donn minge Stattuß op „offlain“ saze, wann esch ußlogg',
 );
 
@@ -577,7 +577,7 @@ $messages['lb'] = array(
 	'onlinestatus-toggles-show' => 'Online-Status op menger Benotzersäit weisen',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Mäi Statut op online änneren esoubal ech mech aloggen',
+	'onlinestatus-pref-onlineonlogin' => 'Mäi Statut op online änneren esoubal ech mech aloggen',
 	'onlinestatus-pref-offlineonlogout' => 'Mäi Statu op offline änneren esoubal ech mech ausloggen',
 );
 
@@ -633,7 +633,7 @@ $messages['nl'] = array(
 	'onlinestatus-toggles-show' => 'Onlinestatus weergeven op mijn gebruikerspagina',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Mijn status naar online wijzigen als ik me aanmeld',
+	'onlinestatus-pref-onlineonlogin' => 'Mijn status naar online wijzigen als ik me aanmeld',
 	'onlinestatus-pref-offlineonlogout' => 'Mijn status naar offline wijzigen als ik me afmeld',
 );
 
@@ -653,7 +653,7 @@ $messages['nn'] = array(
 	'onlinestatus-toggles-show' => 'Vis påloggingsstatus på brukarsida mi',
 	'onlinestatus-toggle-offline' => 'Ikkje pålogga',
 	'onlinestatus-toggle-online' => 'Logga på',
-	'onlinestatus-pref-offlineonlogon' => 'Endra statusen min til pålogga når eg loggar inn',
+	'onlinestatus-pref-onlineonlogin' => 'Endra statusen min til pålogga når eg loggar inn',
 	'onlinestatus-pref-offlineonlogout' => 'Endra statusen min til ikkje pålogga når eg loggar ut',
 );
 
@@ -691,7 +691,7 @@ $messages['oc'] = array(
 	'onlinestatus-toggles-show' => "Mostrar mon estatut sus ma pagina d'utilizaire",
 	'onlinestatus-toggle-offline' => 'Absent',
 	'onlinestatus-toggle-online' => 'Present',
-	'onlinestatus-pref-offlineonlogon' => 'Cambiar mon estatut a en linha quand me connècti',
+	'onlinestatus-pref-onlineonlogin' => 'Cambiar mon estatut a en linha quand me connècti',
 	'onlinestatus-pref-offlineonlogout' => 'Cambiar mon estatut a fòra linha quand me desconnècti',
 );
 
@@ -748,7 +748,7 @@ $messages['pt'] = array(
 	'onlinestatus-toggles-show' => 'Exibir o estado da minha ligação na minha página de utilizador',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Alterar o meu estado para online quando me autenticar',
+	'onlinestatus-pref-onlineonlogin' => 'Alterar o meu estado para online quando me autenticar',
 	'onlinestatus-pref-offlineonlogout' => 'Alterar o meu estado para offline quando me desautenticar',
 );
 
@@ -768,7 +768,7 @@ $messages['pt-br'] = array(
 	'onlinestatus-toggles-show' => 'Exibir o estado da minha ligação na minha página de utilizador',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
-	'onlinestatus-pref-offlineonlogon' => 'Alterar o meu estado para online quando me autenticar',
+	'onlinestatus-pref-onlineonlogin' => 'Alterar o meu estado para online quando me autenticar',
 	'onlinestatus-pref-offlineonlogout' => 'Alterar o meu estado para offline quando me desautenticar',
 );
 
@@ -804,7 +804,7 @@ $messages['sk'] = array(
 	'onlinestatus-toggles-show' => 'Zobrazovať stav pripojenia na mojej používateľskej stránke',
 	'onlinestatus-toggle-offline' => 'Odpojený',
 	'onlinestatus-toggle-online' => 'Pripojený',
-	'onlinestatus-pref-offlineonlogon' => 'Zmeniť môj stav na online počas prihlasovania',
+	'onlinestatus-pref-onlineonlogin' => 'Zmeniť môj stav na online počas prihlasovania',
 	'onlinestatus-pref-offlineonlogout' => 'Zmeniť môj stav na offline počas odhlasovania',
 );
 
@@ -843,7 +843,7 @@ $messages['sv'] = array(
 	'onlinestatus-toggles-show' => 'Visa anslutningsstatus på min användarsida',
 	'onlinestatus-toggle-offline' => 'Ej ansluten',
 	'onlinestatus-toggle-online' => 'Ansluten',
-	'onlinestatus-pref-offlineonlogon' => 'Ändra min status till online när jag loggar in',
+	'onlinestatus-pref-onlineonlogin' => 'Ändra min status till online när jag loggar in',
 	'onlinestatus-pref-offlineonlogout' => 'Ändra min status till offline när jag loggar ut',
 );
 
@@ -886,7 +886,7 @@ $messages['tl'] = array(
 	'onlinestatus-toggles-show' => 'Ipakita sa ibabaw ng aking pahina ng tagagamit ang aking katayuan ng pagkakaugnay sa internet',
 	'onlinestatus-toggle-offline' => 'Hindi nakaugnay sa internet',
 	'onlinestatus-toggle-online' => 'Nakaugnay sa internet',
-	'onlinestatus-pref-offlineonlogon' => 'Palitan ang katayuan ko bilang nakakunekta sa internet kapag lumalagda',
+	'onlinestatus-pref-onlineonlogin' => 'Palitan ang katayuan ko bilang nakakunekta sa internet kapag lumalagda',
 	'onlinestatus-pref-offlineonlogout' => 'Palitan ang katayuan ko bilang hindi nakakunekta sa internet kapag umaalis sa pagkakalagda',
 );
 
@@ -906,7 +906,7 @@ $messages['vec'] = array(
 	'onlinestatus-toggles-show' => 'Mostra se son in linea o no su la me pagina utente',
 	'onlinestatus-toggle-offline' => 'Mìa in linea',
 	'onlinestatus-toggle-online' => 'In linea',
-	'onlinestatus-pref-offlineonlogon' => 'Canbia el me stato a "online" co fasso el login',
+	'onlinestatus-pref-onlineonlogin' => 'Canbia el me stato a "online" co fasso el login',
 	'onlinestatus-pref-offlineonlogout' => 'Canbia el me stato a "offline" co me desconéto',
 );
 
