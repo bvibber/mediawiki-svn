@@ -13,11 +13,10 @@ var nativeEmbed = {
     	'overlays':true,
     	'playlist_swap_loader':true //if the object supports playlist functions    	
    },
-    getEmbedHTML : function (){		
-    	var id = (this.pc!=null)?this.pc.pp.id:this.id;		
+    getEmbedHTML : function (){		    		
 		var embed_code =  this.getEmbedObj();
 		js_log("embed code: " + embed_code)				
-		setTimeout('$j(\'#' + id + '\').get(0).postEmbedJS()', 150);
+		setTimeout('$j(\'#' + this.id + '\').get(0).postEmbedJS()', 150);
 		return this.wrapEmebedContainer( embed_code);		
     },
     getEmbedObj:function(){
@@ -81,8 +80,8 @@ var nativeEmbed = {
 		//update duration if not set (for now trust the getDuration more than this.vid.duration		
 		this.duration = ( this.getDuration() ) ?this.getDuration() : this.vid.duration;	
 				
-		//update currentTime
-		this.currentTime = this.vid.currentTime;
+		//update currentTime		
+		this.currentTime = this.vid.currentTime;		
 		
 		//once currentTime is updated call parent_monitor 
 		this.parent_monitor();												

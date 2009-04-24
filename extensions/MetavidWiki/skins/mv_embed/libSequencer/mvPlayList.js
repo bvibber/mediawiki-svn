@@ -51,6 +51,8 @@ mvPlayList.prototype = {
 	loading:true,	
 	loading_external_data:true, //if we are loading external data (set to loading by default)
 	
+	activeClipList:null,
+	
 	interface_url:null, //the interface url 
 	tracks:{},
 	default_track:null, // the default track to add clips to.
@@ -70,7 +72,8 @@ mvPlayList.prototype = {
 		js_log('mvPlayList:init:');		
 		this.tracks={};		
 		this.default_track=null;						
-	    	
+	    
+	    this.activeClipList = new activeClipList();
 		//add default track & default track pointer: 
 		this.tracks[0]= new trackObj();
 		this.default_track = this.tracks[0];				
@@ -233,10 +236,14 @@ mvPlayList.prototype = {
 						
 		var durSum=0;		
 		$j.each( this.default_track.clips, function( i, clip ){	
-			if( clip.embed ){			
-				js_log('plDUR:add : '+ clip.getDuration() + ' src:' + clip.embed.src);
+			if( clip.embed ){
 				clip.dur_offset = durSum;
-				durSum += clip.getDuration();
+				if( clip.embed.supports['playlist_swap_loader'] ){
+					//don't include transition time (for 	playlist_swap_loader compatible clips) should have a better name for that				
+					durSum += clip.getSoloDuration(); 
+				}else{
+					durSum += clip.getDuration();	
+				}								
 			}else{
 				js_log("ERROR: clip " +clip.id + " not ready");
 			}
@@ -530,14 +537,21 @@ mvPlayList.prototype = {
 		//@@todo where the plugin supports pre_loading future clips and manage that in javascript
 		//stop current clip
 		this.cur_clip.embed.stop();
-		this.updateCurrentClip(next_clip);				
+		
+		this.updateCurrentClip(next_clip);
+				
 		this.cur_clip.embed.play();					
 	},
-	updateCurrentClip:function(new_clip){		
-		js_log('f:updateCurrentClip:'+new_clip.id);		
+	updateCurrentClip:function(new_clip){				
+		js_log('f:updateCurrentClip:'+new_clip.id);
+		//keep the active play clip in sync:
+		if( this.cur_clip )
+			this.activeClipList.remove(this.cur_clip )			
+		this.activeClipList.add( new_clip );	
+				
 		//do swap:		
 		$j('#clipDesc_'+this.cur_clip.id).hide();			
-		this.cur_clip=new_clip;			
+		this.cur_clip=new_clip;					
 		$j('#clipDesc_'+this.cur_clip.id).show();
 		//update the playhead: 
 		this.setSliderValue( this.cur_clip.dur_offset / this.getDuration() ); 			
@@ -573,33 +587,38 @@ mvPlayList.prototype = {
 	//playlist play
 	play: function(){
 		var plObj=this;
-		js_log('pl play');
+		//js_log('pl play');
 		//hide the playlist play button: 
 		$j('#big_play_link_'+this.id).hide();				
 		
 		//un-pause if paused:
 		if(this.paused)
-			this.paused=false;
+			this.paused=false;		
 		
-		//update the control: 
-		
+		//update the control: 		
 		this.start_clip = this.cur_clip;		
 		this.start_clip_src= this.cur_clip.src;
 		 
 		if(this.cur_clip.embed.supports['playlist_swap_loader'] ){
+			//set the cur_clip to active
+			this.activeClipList.add(this.cur_clip);
+			
 			//navtive support:
 			// * pre-loads clips
 			// * mv_playlist smil extension, manages transitions animations overlays etc. 			
-			js_log('clip obj supports playlist swap_loader (ie playlist controlled playback)');							
-			//@@todo pre-load each clip: 
-			this.cur_clip.embed.play();			
+			//js_log('clip obj supports playlist swap_loader (ie playlist controlled playback)');							
+			//@@todo pre-load each clip:
+			//play all active clips (playlist_swap_loader can have more than one clip active) 		
+			$j.each(this.activeClipList.getClipList(), function(inx, clip){ 
+				clip.embed.play();		
+			}); 	
 		}else if(this.cur_clip.embed.supports['playlist_driver']){				
-			js_log('playlist_driver');
+			//js_log('playlist_driver');
 			//embedObject is feed the playlist info directly and manages next/prev
-			this.cur_clip.embed.playMovieAt(this.cur_clip.order);
+			this.cur_clip.embed.playMovieAt( this.cur_clip.order );
 		}else{
 			//not much playlist support just play the first clip:
-			js_log('basic play');
+			//js_log('basic play');
 			//play cur_clip			
 			this.cur_clip.embed.play();		
 		}		
@@ -610,18 +629,23 @@ mvPlayList.prototype = {
 		this.cur_clip.embed.toggleMute();
 	},	
 	pause:function(){		
-		js_log('f:pause: playlist');
+		//js_log('f:pause: playlist');
 		var ct = new Date();
 		this.pauseTime = this.currentTime;
 		this.paused=true;
-		js_log('pause time: '+ this.pauseTime + ' call embed pause:');					
-		this.cur_clip.embed.pause();		
+		//js_log('pause time: '+ this.pauseTime + ' call embed pause:');
+		
+		//pause all the active clips:
+		$j.each(this.activeClipList.getClipList(), function(inx, clip){ 
+			clip.embed.pause();		
+		});
 	},
 	fullscreen:function(){
 		this.cur_clip.embed.fullscreen();
 	},
 	//playlist stops playback for the current clip (and resets state for start clips)
 	stop:function(){
+		var _this = this;
 		/*js_log("pl stop:"+ this.start_clip.id + ' c:'+this.cur_clip.id);
 		//if start clip 
 		if(this.start_clip.id!=this.cur_clip.id){
@@ -635,15 +659,34 @@ mvPlayList.prototype = {
 			this.start_clip.embed.thumbnail_disp=true;
 		}
 		//empty the play-back container
-		$j('#mv_ebct_'+this.id).empty();*/
+		$j('#mv_ebct_'+this.id).empty();*/			
 		
-		//make sure the current clip is vissable:
-		$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});
-		
-		//do stop current clip
+		//stop all the clips: monitor: 
+		window.clearInterval( this.smil_monitorTimerId );
+		/*for (var i=0;i<this.clips.length;i++){
+			var clip = this.clips[i];
+			if(clip){
+				clip.embed.stop();
+				$j('#clipDesc_'+clip.id).hide();
+			}
+		}*/
+		//stop, hide and remove all active clips:
+		$j.each(this.activeClipList.getClipList(), function(inx, clip){
+			if(clip){
+				clip.embed.stop();
+				$j('#clipDesc_'+clip.id).hide();
+				_this.activeClipList.remove(clip);
+			}
+		});		
+		//set the current clip to the first clip: 
+		this.cur_clip = this.start_clip;
+		//display the first clip thumb: 
 		this.cur_clip.embed.stop();
-		//stop the monitor: 
-		window.clearInterval( this.smil_monitorTimerId );	
+		//make sure the current clip is vissable:
+		$j('#clipDesc_'+this.cur_clip.id).show();
+		//reset the currentTime: 
+		this.currentTime = 0;
+		//FIXME still some issues with "stoping" and reseting the playlist	
 	},	
 	doSeek:function(v){
 		js_log('pl:doSeek:'+v);
@@ -738,7 +781,7 @@ mvPlayList.prototype = {
 					
 		var cov = parseInt( this.cur_clip.order ) + parseInt( clip_offset );
 		var cmax = this.getClipCount()-1;
-		js_log( 'f:getClip: '+clip_offset + ' cov:'+cov +' cmax:'+ cmax);
+		//js_log( 'f:getClip: '+clip_offset + ' cov:'+cov +' cmax:'+ cmax);
 		
 		//force first or last clip if offset is outOfBounds 
 		if( cov >= 0 && cov <= cmax ){			
@@ -1074,7 +1117,7 @@ PlMvEmbed.prototype = {
 		}*/
 	},
 	play:function(){
-		js_log('pl eb play');		
+		//js_log('pl eb play');		
 		var plObj = this.pc.pp;	
 		//check if we are already playing
 		if( !this.thumbnail_disp ){
@@ -1262,6 +1305,16 @@ mvPlayList.prototype.monitor = function(){
 		this.stop();
 	
 	//update the playlist current time: 
+	//check for a trsnOut from the previus clip to subtract
+	/*var prev_clip =  this.getClip(-1);
+	var transOffset = 0;
+	if( prev_clip.id != this.cur_clip.id ){
+		if( prev_clip.transOut ){
+			transOffset = prev_clip.transOut.getDuration();
+			js_log("should add: " + transOffset + " off:" + this.cur_clip.dur_offset+  " to " +this.cur_clip.embed.currentTime +
+				 ' = ' + ( this.cur_clip.dur_offset + this.cur_clip.embed.currentTime + transOffset) );
+		}
+	}*/
 	this.currentTime = this.cur_clip.dur_offset + this.cur_clip.embed.currentTime;	
 		
 	//update slider: 
@@ -1390,8 +1443,11 @@ var mvTransLib = {
 			if(typeof(other_pClip)=='undefined' ||  other_pClip.id == tObj.pClip.pp.cur_clip.id)
 				js_log('Error: crossfade without media asset');
 			//if not sliding start playback: 
-			if(!tObj.pClip.pp.userSlide)
-				other_pClip.embed.play();						
+			if(!tObj.pClip.pp.userSlide){			
+				other_pClip.embed.play();
+				//manualy ad the extra layer to the activeClipList
+				tObj.pClip.pp.activeClipList.add( other_pClip );
+			}						
 			tObj.overlay_selector_id = 'clipDesc_'+other_pClip.id;			
 		}else{
 			tObj.overlay_selector_id =this.getOverlaySelector(tObj);																
@@ -1672,12 +1728,22 @@ mvSMILClip.prototype = {
 	 * getDuration
 	 * @returns duration in int
 	 */
-	getDuration:function(){
+	getDuration:function(){					
 		//check for smil dur: 
 		if( this.dur )
 			return this.dur;			
 		return this.embed.getDuration();					
-	}	
+	},
+	//gets the duration of the clip subracting transitions
+	getSoloDuration:function(){
+		var fulldur = this.getDuration();
+		//see if we need to subtract from time eating transitions (transOut)
+		if(this.transOut)
+			fulldur -= this.transOut.getDuration();
+
+		js_log("getSoloDuration:: td: " + this.getDuration() + ' sd:' + fulldur);
+		return fulldur;
+	}
 }
 /* object to manage embedding html with smil timings 
  *  grabs settings from parent clip 
@@ -1711,6 +1777,9 @@ transitionObj.prototype = {
 		//http://www.w3.org/TR/SMIL3/smil-timing.html#Timing-ClockValueSyntax
 		if(_this.dur)
 			_this.dur = smilParseTime(_this.dur);
+	},
+	getDuration:function(){
+		return this.dur;
 	},
 	//returns the values of supported_attributes: 
 	getAttributeObj:function(){
@@ -1811,9 +1880,38 @@ transitionObj.prototype = {
 function smilParseTime(time_str){
 	return parseInt(time_str.replace('s', ''));
 }
-/***************************
- * end SMIL specific code
- ***************************/
+//stores a list pointers to active clips (maybe this should just be a property of clips (but results in lots of seeks) 
+var activeClipList = function(){
+	return this.init();
+}
+activeClipList.prototype = {
+	init:function(){
+		this.clipList = new Array();
+	},
+	add:function( clip ){
+		//make sure the clip is not already active: 
+		for(var i =0;i < this.clipList.lenght; i++){
+			var active_clip = this.clipList[i];
+			if(clip.id == active_clip.id) //clip already active: 
+				return false;
+		}
+		this.clipList.push( clip );
+		return true;
+	},
+	remove:function( clip ){
+		for(var i = 0; i < this.clipList.length; i++){
+			var active_clip = this.clipList[i];
+			if(clip.id == active_clip.id){
+				this.clipList.splice(i, 1);
+				return true;
+			}
+		}
+		return false;
+	},
+	getClipList:function(){
+		return this.clipList;
+	}	
+}
  var trackObj = function( initObj ){
  	return this.init( initObj );
  }

@@ -1775,8 +1775,8 @@ embedVideo.prototype = {
 	*/
 	play:function(){
 		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;		
-		js_log( "mv_embed play:" + this.id);		
-		js_log('thum disp:'+this.thumbnail_disp);
+		//js_log( "mv_embed play:" + this.id);		
+		//js_log('thum disp:'+this.thumbnail_disp);
 		//check if thumbnail is being displayed and embed html
 		if( this.thumbnail_disp ){			
 			if( !this.selected_player ){
@@ -1807,7 +1807,7 @@ embedVideo.prototype = {
 	 */
 	pause: function(){
 		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;		
-		js_log('mv_embed:do pause');		
+		//js_log('mv_embed:do pause');		
         //(playing) do pause        
         this.paused=true; 
         //update the ctrl "paused state"            	

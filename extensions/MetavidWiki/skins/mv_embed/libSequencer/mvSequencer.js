@@ -252,10 +252,10 @@ mvSequencer.prototype = {
 		rewrite_by_id( this.plObj_id );	
 		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);		
 	},
-	updateSeqSaveButtons:function(){		
-		var cancel_button = '<a style="border:' +
-				'solid gray;font-size:1.2em;" onClick="window.confirm("' + gM('edit_cancel_confirm') + '\")" '+ 
-				'href="javascript:'+this.instance_name+'.closeModEditor()">'+
+	updateSeqSaveButtons:function(){	
+		var _this = this;	
+		var cancel_button = '<a id="mv_cancel_seq_button" href="#" style="border:' +
+				'solid gray;font-size:1.2em;" ">' +
 					gM('edit_cancel') + '</a> ';
 		if( this.sequenceEditToken ){
 			$j('#'+this.sequence_container_id+'_save_cancel').html( cancel_button + 
@@ -268,6 +268,15 @@ mvSequencer.prototype = {
 		}else{
 			$j('#'+this.sequence_container_id+'_save_cancel').html( cancel_button + gM('no_edit_permissions') );
 		}
+		//assing bindings
+		$j('#mv_cancel_seq_button').unbind().click(function(){
+			var x = window.confirm( gM('edit_cancel_confirm') );
+			if( x ){
+				_this.closeModEditor();
+			}else{
+				//close request canceled. 
+			}
+		});
 	},
 	//display a menu item (hide the rest) 
 	disp:function( item ){
