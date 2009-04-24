@@ -49,10 +49,16 @@ public class TextImporter extends AbstractImporter {
 	
 	protected boolean isRelevant(WikiPage analyzerPage) {
 			int namespace = analyzerPage.getNamespace();
-			CharSequence title = analyzerPage.getTitle();
+			//CharSequence title = analyzerPage.getTitle();
+			ResourceType type = analyzerPage.getResourceType();
 			
 			if (namespace!=Namespace.MAIN) {
-				out.trace("ignored page "+title+" in namespace "+namespace); //XXX: trace only!
+				out.trace("bad namespace "+namespace); 
+				return false;
+			}
+			
+			if (!storeWikiText && type!=ResourceType.ARTICLE) {
+				out.trace("bad type "+type); 
 				return false;
 			}
 			

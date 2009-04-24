@@ -39,6 +39,9 @@ public class ExtractText extends ImportDump<LocalConceptStoreBuilder> {
 		args.declareHelp("<dump-file>", "the dump file to process");
 		args.declare("wiki", null, true, String.class, "sets the wiki name (overrides the name given by, or " +
 			"guessed from, the <dump-file> parameter)");
+
+		args.declare("plain", null, false, Boolean.class, "output plain text");
+		args.declare("tsv", null, false, Boolean.class, "output TSV table");
 	}
 	
 	public static void main(String[] argv) throws Exception {

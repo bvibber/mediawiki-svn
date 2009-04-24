@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.store.builder;
+package de.brightbyte.wikiword.store.dumper;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.store.builder.FauxStoreBuilder;
+import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
 public class PlainTextOutput extends FauxStoreBuilder implements TextStoreBuilder {
 	
