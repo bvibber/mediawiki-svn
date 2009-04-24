@@ -49,13 +49,9 @@ class OnlineStatus {
 		$wgHooks['ParserGetVariableValueSwitch'][] = 'OnlineStatus::ParserGetVariable';
 
 		// Hooks for Special:Preferences
-		$wgHooks['InitPreferencesForm'][] = 'OnlineStatus::InitPreferencesForm';
-		$wgHooks['PreferencesUserInformationPanel'][] = 'OnlineStatus::PreferencesUserInformationPanel';
-		$wgHooks['ResetPreferences'][] = 'OnlineStatus::ResetPreferences';
-		$wgHooks['SavePreferences'][] = 'OnlineStatus::SavePreferences';
+		$wgHooks['GetPreferences'][] = 'OnlineStatus::GetPreferences';
 
 		// User hook
-		$wgHooks['GetPreferences'][] = 'OnlineStatus::onGetPreferences';
 		$wgHooks['UserLoginComplete'][] = 'OnlineStatus::UserLoginComplete';
 		$wgHooks['UserLogoutComplete'][] = 'OnlineStatus::UserLogoutComplete';
 
@@ -215,52 +211,11 @@ class OnlineStatus {
 	}
 
 	/**
-	 * Hook function for SavePreferences
+	 * Hook for user preferences
 	 */
-	static function SavePreferences( $prefs, $user, &$msg, $old = array() ){
-		# We need to invalidate caches for these pages, maybe it would be good
-		# to be done for subpages, but it would too expensive
-		if( !is_array( $old ) || empty( $old ) ){
-			# MediaWiki is < 1.13, at that time, $old param wasn't present
-			# We can't check if the user changed the online toggle as it is
-			# already saved :(
-			$changed = true;
-		} elseif( !isset( $old['online'] ) || !isset( $old['showonline'] ) )  {
-			$changed = true;
-		} else {
-			$changed = !( $old['online'] == $user->mOptions['online']
-				&& $old['showonline'] == $user->mOptions['showonline'] );
-		}
-		if( $changed ){
-			$user->getUserPage()->invalidateCache();
-			$user->getTalkPage()->invalidateCache();
-		}
-		return true;
-	}
-
-	/**
-	 * Hook function for InitPreferencesForm
-	 */
-	static function InitPreferencesForm( $prefs, $request ) {
-		$prefs->mToggles['online'] = $request->getVal( 'wpOnline' );
-		$prefs->mToggles['showonline'] = $request->getCheck( 'wpOpShowOnline' ) ? 1 : 0;
-		return true;
-	}
-
-	/**
-	 * Hook function for ResetPreferences
-	 */
-	static function ResetPreferences( $prefs, $user ) {
-		$prefs->mToggles['online'] = $user->getOption( 'online' );
-		$prefs->mToggles['showonline'] = $user->getOption( 'showonline' );
-		return true;
-	}
-
-	/**
-	 * Hook function for PreferencesUserInformationPanel
-	 */
-	static function PreferencesUserInformationPanel( $prefsForm, &$html ) {
+	public static function GetPreferences( $user, &$preferences ) {
 		wfLoadExtensionMessages( 'OnlineStatus' );
+
 		$msg = wfMsgForContentNoTrans( 'onlinestatus-levels' );
 		$lines = explode( "\n", $msg );
 		$radios = array();
@@ -268,30 +223,9 @@ class OnlineStatus {
 			if( substr( $line, 0, 1 ) != '*' )
 				continue;
 			$lev = trim( $line, '* ' );
-			$radios[] = Xml::radioLabel(
-				wfMsg( 'onlinestatus-toggle-' . $lev ),
-				'wpOnline',
-				$lev,
-				'wpOnline-' . $lev,
-				$lev == $prefsForm->mToggles['online']
-			);
+			$radios[wfMsg( 'onlinestatus-toggle-' . $lev )] = $lev;
 		}
-		$out = "<ul>\n<li>";
-		$out .= implode( "</li>\n<li>", $radios );
-		$out .= "</li>\n</ul>";
-		$html .= $prefsForm->tableRow(
-			wfMsgExt( 'onlinestatus-toggles-desc', array( 'escapenoentities' ) ),
-			$out .
-			Xml::checkLabel( wfMsg( 'onlinestatus-toggles-show' ), 'wpOpShowOnline', 'wpOpShowOnline', (bool)$prefsForm->mToggles['showonline'] ) .
-			wfMsgExt( 'onlinestatus-toggles-explain', array( 'parse' ) )
-		);
-		return true;
-	}
 
-	/**
-	 * Hook for user preferences
-	 */
-	public static function onGetPreferences( $user, &$preferences ) {
 		$preferences['onlinestatusonlogin'] =
 			array(
 				'type' => 'toggle',
@@ -305,6 +239,22 @@ class OnlineStatus {
 				'section' => 'misc',
 				'label-message' => 'onlinestatus-pref-offlineonlogout',
 			);
+
+		$prefs = array(
+			'online' => array(
+				'type' => 'radio',
+				'section' => 'personal',
+				'options' => $radios,
+				'label-message' => 'onlinestatus-toggles-desc',
+			),
+			'showonline' => array(
+				'type' => 'check',
+				'section' => 'personal',
+				'label-message' => 'onlinestatus-toggles-show',
+				'help-message' => 'onlinestatus-toggles-explain',
+			)
+		);
+		$preferences = wfArrayInsertAfter( $preferences, $prefs, 'registrationdate' );
 
 		return true;
 	}
