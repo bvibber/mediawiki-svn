@@ -139,6 +139,8 @@ public class UpdateThread extends Thread {
 			log.info("Syncing "+li.iid);
 			if(!iid.isMySearch())
 				iid.forceMySearch();
+			// be sure to have the latest version here
+			registry.refreshCurrent(iid);
 			rebuild(li,RebuildType.STANDALONE); // rsync, update registry, cache
 			pending.remove(li.iid.toString());
 		}

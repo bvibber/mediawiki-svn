@@ -198,7 +198,7 @@ public class RMIMessengerClient {
 			recheckRemote(iid,host);
 			HighlightPack pack = new HighlightPack(new SearchResults());
 			pack.res.retry();			
-			log.warn("Error invoking remote method searchPart on host "+host+" : "+e.getMessage(),e);
+			log.warn("Error invoking searchPart("+iid+",(term="+searchterm+"),(q="+query+"),"+offset+","+limit+") on "+host+" : "+e.getMessage(),e);
 			e.printStackTrace();
 			return pack;
 		}

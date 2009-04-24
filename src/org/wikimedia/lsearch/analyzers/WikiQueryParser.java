@@ -1054,6 +1054,11 @@ public class WikiQueryParser {
 				return false; // don't support patterns like *a*
 			//if(index == length-1 && buffer[index]=='?')
 			//	return false; // probably just an ordinary question mark
+			
+			// don't let * be in middle for performance reasons
+			if(Character.isLetterOrDigit(buffer[0]) && Character.isLetterOrDigit(buffer[length-1]))
+				return false;
+			
 			for(int i=0;i<length;i++){
 				if(Character.isLetterOrDigit(buffer[i]))
 					return true; // +card :P
